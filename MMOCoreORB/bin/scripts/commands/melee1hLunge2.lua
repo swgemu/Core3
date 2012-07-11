@@ -46,11 +46,10 @@ Melee1hLunge2Command = {
 
 	damageMultiplier = 3.0,
 	speedMultiplier = 2.5,
-	accuracyBonus = 25,
-	
 	healthCostMultiplier = 0.625,
 	actionCostMultiplier = 0.625,
 	mindCostMultiplier = 1.5,
+        accuracyBonus = 25,
 
 	animationCRC = hashCode("melee1hlunge2"),
 
@@ -64,7 +63,7 @@ Melee1hLunge2Command = {
 		{ "knockdownRecovery", "lastKnockdown" }, 
 		{ "knockdown_defense" }, 
 		{}, 
-		40, 
+		100, 
 		100, 
 		10 
 	  )

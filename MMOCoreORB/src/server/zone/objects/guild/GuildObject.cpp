@@ -621,7 +621,7 @@ bool GuildObject::hasWarPermission(unsigned long long playerID) {
 
 DistributedObjectServant* GuildObject::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -667,31 +667,31 @@ GuildObjectImplementation::operator const GuildObject*() {
 }
 
 void GuildObjectImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void GuildObjectImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void GuildObjectImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void GuildObjectImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void GuildObjectImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void GuildObjectImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void GuildObjectImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void GuildObjectImplementation::_serializationHelperMethod() {
@@ -974,53 +974,43 @@ bool GuildObjectImplementation::isGuildLeader(CreatureObject* player) {
 }
 
 byte GuildObjectImplementation::getWarStatus(unsigned long long guildoid) {
-	// server/zone/objects/guild/GuildObject.idl():  		return waringGuilds.get(guildoid);
+	// server/zone/objects/guild/GuildObject.idl():  		}
+{
+	Locker _locker((&waringGuildsMutex));
+	// server/zone/objects/guild/GuildObject.idl():  			return waringGuilds.get(guildoid);
 	return (&waringGuilds)->get(guildoid);
+}
 }
 
 void GuildObjectImplementation::setWarStatus(unsigned long long guildoid, byte status) {
-	// server/zone/objects/guild/GuildObject.idl():  			waringGuilds.put(guildoid, status);
-	if (status == WAR_NONE)	// server/zone/objects/guild/GuildObject.idl():  			waringGuilds.drop(guildoid);
+	// server/zone/objects/guild/GuildObject.idl():  		}
+{
+	Locker _locker((&waringGuildsMutex));
+	// server/zone/objects/guild/GuildObject.idl():  				waringGuilds.put(guildoid, status);
+	if (status == WAR_NONE)	// server/zone/objects/guild/GuildObject.idl():  				waringGuilds.drop(guildoid);
 	(&waringGuilds)->drop(guildoid);
 
-	else 	// server/zone/objects/guild/GuildObject.idl():  			waringGuilds.put(guildoid, status);
+	else 	// server/zone/objects/guild/GuildObject.idl():  				waringGuilds.put(guildoid, status);
 	(&waringGuilds)->put(guildoid, status);
 }
-
-bool GuildObjectImplementation::isInWaringGuild(CreatureObject* creature) {
-	// server/zone/objects/guild/GuildObject.idl():  		GuildObject attackerGuild = creature.getGuildObject();
-	ManagedReference<GuildObject* > attackerGuild = creature->getGuildObject();
-	// server/zone/objects/guild/GuildObject.idl():  		return 
-	if (attackerGuild != NULL){
-	// server/zone/objects/guild/GuildObject.idl():  			rlock();
-	rlock();
-	// server/zone/objects/guild/GuildObject.idl():  			runlock(
-	if (isAtWarWith(attackerGuild->getObjectID())){
-	// server/zone/objects/guild/GuildObject.idl():  				runlock();
-	runlock();
-	// server/zone/objects/guild/GuildObject.idl():  				return true;
-	return true;
-}
-	// server/zone/objects/guild/GuildObject.idl():  			runlock();
-	runlock();
-}
-	// server/zone/objects/guild/GuildObject.idl():  		return false;
-	return false;
-}
-
-bool GuildObjectImplementation::isAtWarWith(unsigned long long guildoid) {
-	// server/zone/objects/guild/GuildObject.idl():  		return waringGuilds.get(guildoid) == WAR_MUTUAL;
-	return (&waringGuilds)->get(guildoid) == WAR_MUTUAL;
 }
 
 bool GuildObjectImplementation::hasDeclaredWarOn(unsigned long long guildoid) {
-	// server/zone/objects/guild/GuildObject.idl():  		return waringGuilds.get(guildoid) == WAR_OUT;
+	// server/zone/objects/guild/GuildObject.idl():  		}
+{
+	Locker _locker((&waringGuildsMutex));
+	// server/zone/objects/guild/GuildObject.idl():  			return waringGuilds.get(guildoid) == WAR_OUT;
 	return (&waringGuilds)->get(guildoid) == WAR_OUT;
+}
 }
 
 bool GuildObjectImplementation::hasDeclaredWarBy(unsigned long long guildoid) {
-	// server/zone/objects/guild/GuildObject.idl():  		return waringGuilds.get(guildoid) == WAR_IN;
+	// server/zone/objects/guild/GuildObject.idl():  		}
+{
+	Locker _locker((&waringGuildsMutex));
+	// server/zone/objects/guild/GuildObject.idl():  			return waringGuilds.get(guildoid) == WAR_IN;
 	return (&waringGuilds)->get(guildoid) == WAR_IN;
+}
 }
 
 VectorMap<unsigned long long, byte>* GuildObjectImplementation::getWaringGuilds() {

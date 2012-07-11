@@ -43,11 +43,14 @@
 
 FanShotCommand = {
         name = "fanshot",
-	damageMultiplier = 4,
-	speedMultiplier = 2.4,
-	healthCostMultiplier = 1,
+	damageMultiplier = 3.0,
+	speedMultiplier = 2.0,
+	healthCostMultiplier = 0.5,
 	actionCostMultiplier = 1,
-	mindCostMultiplier = 1,
+	mindCostMultiplier = 0.5,
+        accuracyBonus = 50,
+
+        --cone angle isn't strictly documented, leaving it alone
 	coneAngle = 60,
 	coneAction = true,
 

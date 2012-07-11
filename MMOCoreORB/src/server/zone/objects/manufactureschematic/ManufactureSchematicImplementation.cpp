@@ -530,6 +530,9 @@ void ManufactureSchematicImplementation::cleanupIngredientSlots(CreatureObject* 
 
 bool ManufactureSchematicImplementation::isReadyForAssembly() {
 
+	if(ingredientSlots.isEmpty() || !initialized)
+		return false;
+
 	for (int i = 0; i < ingredientSlots.size(); ++i) {
 
 		Reference<IngredientSlot* > slot = ingredientSlots.get(i);
@@ -540,10 +543,15 @@ bool ManufactureSchematicImplementation::isReadyForAssembly() {
 		if(slot == NULL || !slot->isFull())
 			return false;
 	}
+
 	return true;
 }
 
 void ManufactureSchematicImplementation::setAssembled() {
+
+	if(ingredientSlots.isEmpty() || !initialized)
+		return;
+
 	assembled = true;
 	craftingValues->clearSlots();
 

@@ -16,13 +16,13 @@
 
 class WearablesDeltaVector : public DeltaVector<ManagedReference<TangibleObject*> > {
 protected:
-	VectorMap<uint8, Vector<ArmorObject*> > armorMap;
+	VectorMap<uint8, Vector<ManagedReference<ArmorObject*> > > protectionArmorMap;
 
 public:
 	WearablesDeltaVector() : DeltaVector<ManagedReference<TangibleObject*> >() {
-		armorMap.setAllowOverwriteInsertPlan();
+		protectionArmorMap.setAllowOverwriteInsertPlan();
 
-		addSerializableVariable("armorMap", &armorMap);
+		addSerializableVariable("protectionArmorMap", &protectionArmorMap);
 	}
 
 	void insertItemToMessage(ManagedReference<TangibleObject*>* item, BaseMessage* msg) {
@@ -42,11 +42,11 @@ public:
 			ManagedReference<ArmorObject*> armor = cast<ArmorObject*>(element.get());
 			uint8 hitLocation = armor->getHitLocation();
 
-			Vector<ArmorObject*> armors = armorMap.get(hitLocation);
+			Vector<ManagedReference<ArmorObject*> > armors = protectionArmorMap.get(hitLocation);
 			armors.add(armor);
 
-			armorMap.drop(hitLocation);
-			armorMap.put(hitLocation, armors);
+			protectionArmorMap.drop(hitLocation);
+			protectionArmorMap.put(hitLocation, armors);
 		}
 
 		return DeltaVector<ManagedReference<TangibleObject*> >::add(element, message, updates);
@@ -59,18 +59,18 @@ public:
 			ManagedReference<ArmorObject*> armor = cast<ArmorObject*>(element.get());
 			uint8 hitLocation = armor->getHitLocation();
 
-			Vector<ArmorObject*> armors = armorMap.get(hitLocation);
+			Vector<ManagedReference<ArmorObject*> > armors = protectionArmorMap.get(hitLocation);
 			armors.removeElement(armor);
 
-			armorMap.drop(hitLocation);
-			armorMap.put(hitLocation, armors);
+			protectionArmorMap.drop(hitLocation);
+			protectionArmorMap.put(hitLocation, armors);
 		}
 
 		return DeltaVector<ManagedReference<TangibleObject*> >::remove(index, message, updates);
 	}
 
-	Vector<ArmorObject*> getArmorAtHitLocation(uint8 hl) {
-		return armorMap.get(hl);
+	Vector<ManagedReference<ArmorObject*> > getArmorAtHitLocation(uint8 hl) {
+		return protectionArmorMap.get(hl);
 	}
 };
 

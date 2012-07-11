@@ -93,11 +93,11 @@ public:
 			}
 
 		} else {
-			if (player->getPvpStatusBitmask() == CreatureFlag::PLAYER) {
+			if (player->getPvpStatusBitmask() & CreatureFlag::PLAYER) {
 				player->setPvpStatusBitmask(CreatureFlag::NONE);
 				player->sendSystemMessage("You are now invulnerable.");
 
-			} else if (player->getPvpStatusBitmask() == CreatureFlag::NONE) {
+			} else {
 				player->setPvpStatusBitmask(CreatureFlag::PLAYER);
 				player->sendSystemMessage("You are no longer invulnerable");
 

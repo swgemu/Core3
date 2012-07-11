@@ -20,7 +20,7 @@
  *	BuildingObjectStub
  */
 
-enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_ISALLOWEDENTRY__CREATUREOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__SCENEOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_LONG_,RPC_ISBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__,RPC_GETREDEEDMESSAGE__,RPC_HASACCESSFEE__,RPC_GETACCESSFEE__,RPC_CANCHANGEACCESSFEE__,RPC_SETACCESSFEE__INT_INT_,RPC_REMOVEACCESSFEE__,RPC_GETACCESSFEEDELAY__,RPC_PAYACCESSFEE__CREATUREOBJECT_,RPC_UPDATEPAIDACCESSLIST__};
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_BROADCASTCELLPERMISSIONS__LONG_,RPC_ISALLOWEDENTRY__CREATUREOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__SCENEOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_LONG_,RPC_ISBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__,RPC_GETREDEEDMESSAGE__,RPC_HASACCESSFEE__,RPC_GETACCESSFEE__,RPC_CANCHANGEACCESSFEE__,RPC_SETACCESSFEE__INT_INT_,RPC_REMOVEACCESSFEE__,RPC_GETACCESSFEEDELAY__,RPC_PAYACCESSFEE__CREATUREOBJECT_,RPC_UPDATEPAIDACCESSLIST__};
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
@@ -168,6 +168,20 @@ void BuildingObject::broadcastCellPermissions() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->broadcastCellPermissions();
+}
+
+void BuildingObject::broadcastCellPermissions(unsigned long long objectid) {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_BROADCASTCELLPERMISSIONS__LONG_);
+		method.addUnsignedLongParameter(objectid);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->broadcastCellPermissions(objectid);
 }
 
 bool BuildingObject::isAllowedEntry(CreatureObject* player) {
@@ -785,7 +799,7 @@ void BuildingObject::updatePaidAccessList() {
 
 DistributedObjectServant* BuildingObject::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -831,31 +845,31 @@ BuildingObjectImplementation::operator const BuildingObject*() {
 }
 
 void BuildingObjectImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void BuildingObjectImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void BuildingObjectImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void BuildingObjectImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void BuildingObjectImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void BuildingObjectImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void BuildingObjectImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void BuildingObjectImplementation::_serializationHelperMethod() {
@@ -1028,11 +1042,11 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 
 BuildingObjectImplementation::BuildingObjectImplementation() {
 	_initializeImplementation();
-	Reference<SortedVector<ManagedReference<QuadTreeEntry* > >*> _ref0;
+	Reference<CloseObjectsVector*> _ref0;
 	// server/zone/objects/building/BuildingObject.idl():  		Logger.setLoggingName("BuildingObject");
 	Logger::setLoggingName("BuildingObject");
-	// server/zone/objects/building/BuildingObject.idl():  		super.closeobjects = new SortedVector<QuadTreeEntry>();
-	StructureObjectImplementation::closeobjects = _ref0 = new SortedVector<ManagedReference<QuadTreeEntry* > >();
+	// server/zone/objects/building/BuildingObject.idl():  		super.closeobjects = new CloseObjectsVector();
+	StructureObjectImplementation::closeobjects = _ref0 = new CloseObjectsVector();
 	// server/zone/objects/building/BuildingObject.idl():  		super.closeobjects.setNoDuplicateInsertPlan();
 	StructureObjectImplementation::closeobjects->setNoDuplicateInsertPlan();
 	// server/zone/objects/building/BuildingObject.idl():  		super.staticObject = false;
@@ -1220,6 +1234,11 @@ void BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_BROADCASTCELLPERMISSIONS__:
 		{
 			broadcastCellPermissions();
+		}
+		break;
+	case RPC_BROADCASTCELLPERMISSIONS__LONG_:
+		{
+			broadcastCellPermissions(inv->getUnsignedLongParameter());
 		}
 		break;
 	case RPC_ISALLOWEDENTRY__CREATUREOBJECT_:
@@ -1461,6 +1480,10 @@ void BuildingObjectAdapter::updateCellPermissionsTo(CreatureObject* creature) {
 
 void BuildingObjectAdapter::broadcastCellPermissions() {
 	(static_cast<BuildingObject*>(stub))->broadcastCellPermissions();
+}
+
+void BuildingObjectAdapter::broadcastCellPermissions(unsigned long long objectid) {
+	(static_cast<BuildingObject*>(stub))->broadcastCellPermissions(objectid);
 }
 
 bool BuildingObjectAdapter::isAllowedEntry(CreatureObject* player) {

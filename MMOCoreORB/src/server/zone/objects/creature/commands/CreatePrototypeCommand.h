@@ -96,6 +96,9 @@ public:
 			return GENERALERROR;
 		}
 
+		if(session->getState() != 6)
+			return GENERALERROR;
+
 		Locker locker(session);
 		session->createPrototype(clientCounter, (practice == 0));
 

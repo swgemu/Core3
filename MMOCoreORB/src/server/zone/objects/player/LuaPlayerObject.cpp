@@ -23,11 +23,12 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "increaseFactionStanding", &LuaPlayerObject::increaseFactionStanding },
 		{ "decreaseFactionStanding", &LuaPlayerObject::decreaseFactionStanding },
 		{ "addWaypoint", &LuaPlayerObject::addWaypoint },
-		{ "addRewardedSchematic", &LuaPlayerObject::addRewardedSchematic},
-		{ "addPermissionGroup", &LuaPlayerObject::addPermissionGroup},
-		{ "removePermissionGroup", &LuaPlayerObject::removePermissionGroup},
-		{ "hasPermissionGroup", &LuaPlayerObject::hasPermissionGroup},
-		{ "awardBadge", &LuaPlayerObject::awardBadge},
+		{ "addRewardedSchematic", &LuaPlayerObject::addRewardedSchematic },
+		{ "addPermissionGroup", &LuaPlayerObject::addPermissionGroup },
+		{ "removePermissionGroup", &LuaPlayerObject::removePermissionGroup },
+		{ "hasPermissionGroup", &LuaPlayerObject::hasPermissionGroup },
+		{ "awardBadge", &LuaPlayerObject::awardBadge },
+		{ "hasBadge", &LuaPlayerObject::hasBadge },
 		{ 0, 0 }
 };
 
@@ -178,4 +179,12 @@ int LuaPlayerObject::awardBadge(lua_State* L){
 	realObject->awardBadge(badgeId);
 
 	return 0;
+}
+
+int LuaPlayerObject::hasBadge(lua_State* L){
+	int badgeId = lua_tointeger(L, -1);
+
+	lua_pushboolean(L, realObject->hasBadge(badgeId));
+
+	return 1;
 }

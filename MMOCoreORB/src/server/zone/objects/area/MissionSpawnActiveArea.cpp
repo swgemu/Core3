@@ -64,7 +64,7 @@ void MissionSpawnActiveArea::setMissionObjective(DestroyMissionObjective* missio
 
 DistributedObjectServant* MissionSpawnActiveArea::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -110,31 +110,31 @@ MissionSpawnActiveAreaImplementation::operator const MissionSpawnActiveArea*() {
 }
 
 void MissionSpawnActiveAreaImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void MissionSpawnActiveAreaImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void MissionSpawnActiveAreaImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void MissionSpawnActiveAreaImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void MissionSpawnActiveAreaImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void MissionSpawnActiveAreaImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void MissionSpawnActiveAreaImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void MissionSpawnActiveAreaImplementation::_serializationHelperMethod() {
@@ -217,10 +217,12 @@ void MissionSpawnActiveAreaImplementation::notifyEnter(SceneObject* player) {
 }
 
 	else {
+	// server/zone/objects/area/MissionSpawnActiveArea.idl():  			DestroyMissionObjective objective = destroyMissionObjective;
+	ManagedReference<DestroyMissionObjective* > objective = destroyMissionObjective;
 	// server/zone/objects/area/MissionSpawnActiveArea.idl():  			}
-	if (destroyMissionObjective != NULL){
-	// server/zone/objects/area/MissionSpawnActiveArea.idl():  				CreatureObject missionOwner = destroyMissionObjective.getPlayerOwner();
-	ManagedReference<CreatureObject* > missionOwner = destroyMissionObjective.get()->getPlayerOwner();
+	if (objective != NULL){
+	// server/zone/objects/area/MissionSpawnActiveArea.idl():  				CreatureObject missionOwner = objective.getPlayerOwner();
+	ManagedReference<CreatureObject* > missionOwner = objective->getPlayerOwner();
 	// server/zone/objects/area/MissionSpawnActiveArea.idl():  			}
 	if ((CreatureObject*) player == missionOwner){
 	// server/zone/objects/area/MissionSpawnActiveArea.idl():  					destroyMissionObjective.spawnLair();

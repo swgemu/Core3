@@ -97,6 +97,7 @@
 
 #include "server/zone/managers/stringid/StringIdManager.h"
 
+int PlayerManagerImplementation::MAX_CHAR_ONLINE_COUNT = 2;
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
 Logger("PlayerManager") {
@@ -294,7 +295,7 @@ bool PlayerManagerImplementation::kickUser(const String& name, const String& adm
 
 	player->sendMessage(new LogoutMessage());
 
-	ZoneClientSession* session = player->getClient();
+	ManagedReference<ZoneClientSession*> session = player->getClient();
 
 	if(session != NULL)
 		session->disconnect(true);
@@ -1105,8 +1106,6 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap) {
 	uint32 totalDamage = threatMap->getTotalDamage();
 
-	int level = destructedObject->getLevel();
-
 	//info("level: " + String::valueOf(level), true);
 
 	VectorMap<GroupObject*, int> groups;
@@ -1130,9 +1129,17 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 			String xpType = entry->elementAt(j).getKey();
 
-			int xpAmount = (int) (float((float(damage) / float(totalDamage))) * 40.f * level);
+			int xpAmount =  40.f * destructedObject->getLevel(); // TODO: need better formula for tano exp
+
+			ManagedReference<AiAgent*> ai = cast<AiAgent*>(destructedObject);
+			if (ai != NULL)
+				xpAmount = ai->getBaseXp();
+
+			xpAmount *= (int) (float((float(damage) / float(totalDamage))));
 
 			//info("xpAmmount: " + String::valueOf(xpAmmount), true);
+
+			xpAmount = MIN(xpAmount, calculatePlayerLevel(player) * 300);
 
 			playerWeaponXp += xpAmount;
 
@@ -1489,20 +1496,16 @@ void PlayerManagerImplementation::handleAddItemToTradeWindow(CreatureObject* pla
 	CreatureObject* receiver = cast<CreatureObject*>( obj.get());
 
 	ManagedReference<SceneObject*> objectToTrade = server->getObject(itemID);
-	if (objectToTrade == NULL) {
-		player->sendSystemMessage("@container_error_message:container10");
-		handleAbortTradeMessage(player);
-		return;
-	}
-
-	if (!objectToTrade->isASubChildOf(player) || !objectToTrade->checkContainerPermission(player, ContainerPermissions::MOVECONTAINER)) {
-		player->sendSystemMessage("@container_error_message:container08");
+	
+	if (objectToTrade == NULL || !objectToTrade->isASubChildOf(player) ||
+			!objectToTrade->checkContainerPermission(player, ContainerPermissions::MOVECONTAINER)) {
+		player->sendSystemMessage("@container_error_message:container26");
 		handleAbortTradeMessage(player);
 		return;
 	}
 
 	if (objectToTrade->isNoTrade()) {
-		player->sendSystemMessage("@container_error_message:container25");
+		player->sendSystemMessage("@container_error_message:container26");
 		handleAbortTradeMessage(player);
 		return;
 	}
@@ -1868,35 +1871,27 @@ int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observabl
 }
 
 void PlayerManagerImplementation::sendBattleFatigueMessage(CreatureObject* player, CreatureObject* target) {
-	uint32 battleFatigue = target->getShockWounds();
+	uint32 targetBattleFatigue = target->getShockWounds();
 
-	if (battleFatigue == 0)
-		return;
+	uint32 playerBattleFatigue = player->getShockWounds();
 
 	String targetName = target->getFirstName();
 
-	StringBuffer msgPlayer, msgTarget;
-
-	if (battleFatigue < 250) {
-		return;
-	} else if (battleFatigue < 500) {
-		msgPlayer << targetName << "'s battle fatigue is reducing the effectiveness of the medicine.";
-		msgTarget << "Your battle fatigue is reducing the effectiveness of the medicine.";
-	} else if (battleFatigue < 750) {
-		msgPlayer << targetName << "'s battle fatigue is significantly reducing the effectiveness of the medicine.";
-		msgTarget << "Your battle fatigue is significantly reducing the effectiveness of the medicine.";
-	} else if (battleFatigue < 1000) {
-		msgPlayer << targetName << "'s battle fatigue is greatly reducing the effectiveness of the medicine.";
-		msgTarget << "Your battle fatigue is greatly reducing the effectiveness of the medicine. You should seek an entertainer.";
-	} else {
-		msgPlayer << targetName << "'s battle fatigue is too high for the medicine to do any good.";
-		msgTarget << "Your battle fatigue is too high for the medicine to do any good. You should seek an entertainer.";
+	if (targetBattleFatigue >= 250 && targetBattleFatigue < 500) {
+		target->sendSystemMessage("@healing:shock_effect_low_target");
+	} else if (targetBattleFatigue >= 500 && targetBattleFatigue < 750) {
+		target->sendSystemMessage("@healing:shock_effect_medium_target");
+	} else if (targetBattleFatigue >= 750) {
+		target->sendSystemMessage("@healing:shock_effec_high_target");
 	}
 
-	target->sendSystemMessage(msgTarget.toString());
-
-	if (player != target)
-		player->sendSystemMessage(msgPlayer.toString());
+	if (playerBattleFatigue >= 250 && playerBattleFatigue < 500) {
+		player->sendSystemMessage("@healing:shock_effect_low");
+	} else if (playerBattleFatigue >= 500 && playerBattleFatigue < 750) {
+		player->sendSystemMessage("@healing:shock_effect_medium");
+	} else if (playerBattleFatigue >= 750) {
+		player->sendSystemMessage("@healing:shock_effect_high");
+	}
 }
 
 int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration) {
@@ -2743,10 +2738,7 @@ int PlayerManagerImplementation::calculatePlayerLevel(CreatureObject* player) {
 
 	String weaponType = weapon->getWeaponType();
 
-	int level = player->getSkillMod("private_" + weaponType + "_combat_difficulty") / 100;
-
-	if (level < 3)
-		level = 3;
+	int level = MIN(24, MAX(1, player->getSkillMod("private_" + weaponType + "_combat_difficulty") / 100));
 
 	return level;
 }
@@ -2771,12 +2763,14 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 
 	ManagedReference<CraftingStation*> station = NULL;
 
-	Locker locker(zone);
+	//Locker locker(zone);
 
-	SortedVector < ManagedReference<QuadTreeEntry*> > *closeObjects = player->getCloseObjects();
+	SortedVector < QuadTreeEntry* > *closeObjects = new SortedVector<QuadTreeEntry*>(100, 50);
+	CloseObjectsVector* vec = (CloseObjectsVector*) player->getCloseObjects();
+	vec->safeCopyTo(*closeObjects);
 
 	for (int i = 0; i < closeObjects->size(); ++i) {
-		SceneObject* scno = cast<SceneObject*> (closeObjects->get(i).get());
+		SceneObject* scno = cast<SceneObject*> (closeObjects->get(i));
 
 		if (scno->isCraftingStation() && (abs(scno->getPositionZ() - player->getPositionZ()) < 7.0f) && player->isInRange(scno, 7.0f)) {
 
@@ -2838,13 +2832,17 @@ Account* PlayerManagerImplementation::getAccount(uint32 accountID) {
 }
 
 Account* PlayerManagerImplementation::queryForAccount(const String& query) {
-
-
 	Account* account = NULL;
 
-	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+	Reference<ResultSet*> result;
 
-	if (result->next()) {
+	try {
+		result = ServerDatabase::instance()->executeQuery(query);
+	} catch (DatabaseException& e) {
+		error(e.getMessage());
+	}
+
+	if (result != NULL && result->next()) {
 
 		account = new Account();
 
@@ -2862,7 +2860,6 @@ Account* PlayerManagerImplementation::queryForAccount(const String& query) {
 		account->updateFromDatabase();
 	}
 
-	delete result;
 	result = NULL;
 
 	return account;
@@ -2900,7 +2897,7 @@ String PlayerManagerImplementation::banAccount(PlayerObject* admin, Account* acc
 
 					player->sendMessage(new LogoutMessage());
 
-					ZoneClientSession* session = player->getClient();
+					Reference<ZoneClientSession*> session = player->getClient();
 
 					if(session != NULL)
 						session->disconnect(true);
@@ -3273,6 +3270,10 @@ void PlayerManagerImplementation::decreaseOnlineCharCount(ZoneClientSession* cli
 
 	if (!onlineZoneClientMap.containsKey(accountId))
 		return;
+		
+	BaseClientProxy* session = client->getSession();
+	
+	
 
 	Vector<Reference<ZoneClientSession*> > clients = onlineZoneClientMap.get(accountId);
 
@@ -3287,18 +3288,34 @@ void PlayerManagerImplementation::decreaseOnlineCharCount(ZoneClientSession* cli
 		onlineZoneClientMap.remove(accountId);
 	else
 		onlineZoneClientMap.put(accountId, clients);
+		
+	locker.release();
+	
+	if (session != NULL) {
+		onlineZoneClientMap.accountLoggedOut(session->getIPAddress(), accountId);
+	}
 }
 
 bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSession* client) {
 	Locker locker(&onlineMapMutex);
 
 	uint32 accountId = client->getAccountID();
+	
+	BaseClientProxy* session = client->getSession();
 
 	if (!onlineZoneClientMap.containsKey(accountId)) {
 		Vector<Reference<ZoneClientSession*> > clients;
 		clients.add(client);
 
 		onlineZoneClientMap.put(accountId, clients);
+		
+		locker.release();
+				
+		if (session != NULL) {
+			String ip = session->getIPAddress();
+			
+			onlineZoneClientMap.addAccount(ip, accountId);
+		}
 
 		return true;
 	}
@@ -3310,8 +3327,16 @@ bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSe
 	for (int i = 0; i < clients.size(); ++i) {
 		ZoneClientSession* session = clients.get(i);
 
-		if (session->getPlayer() != NULL)
-			++onlineCount;
+		ManagedReference<SceneObject*> player = session->getPlayer();
+
+		if (player != NULL) {
+			ManagedReference<PlayerObject*> ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
+
+			if (ghost != NULL && ghost->getAdminLevel() > 0)
+				continue;
+			else if (player->getClient() == session)
+				++onlineCount;
+		}
 	}
 
 	if (onlineCount >= MAX_CHAR_ONLINE_COUNT)
@@ -3320,7 +3345,15 @@ bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSe
 	clients.add(client);
 
 	onlineZoneClientMap.put(accountId, clients);
-
+	
+	locker.release();
+	
+	if (session != NULL) {
+		String ip = session->getIPAddress();
+			
+		onlineZoneClientMap.addAccount(ip, accountId);
+	}
+	
 	return true;
 }
 

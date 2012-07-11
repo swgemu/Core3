@@ -112,13 +112,13 @@ class Component extends TangibleObject {
 	public native void addProperty(final string attributeName, final float value,
 		final int precision, final string craftingTitle, final boolean hidden);
 
-	public native float getAttributeValue(string attributeName);
+	public native float getAttributeValue(final string attributeName);
 	
-	public native int getAttributePrecision(string attributeName);
+	public native int getAttributePrecision(final string attributeName);
 	
-	public native string getAttributeTitle(string attributeName);
+	public native string getAttributeTitle(final string attributeName);
 	
-	public native boolean getAttributeHidden(string attributeName);
+	public native boolean getAttributeHidden(final string attributeName);
 
 	public native void setPropertyToHidden(final string property);
 	

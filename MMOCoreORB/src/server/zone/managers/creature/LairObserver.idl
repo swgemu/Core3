@@ -58,16 +58,14 @@ class LairObserver extends Observer implements Logger {
 	
 	protected transient HealLairObserverEvent healLairEvent;
 	
-	protected int minDifficulty;
-	protected int maxDifficulty;
+	protected int difficulty;
 
 	public LairObserver() {
 		super();
 		
 		Logger.setLoggingName("LairObserver");
 		
-		minDifficulty = 0;
-		maxDifficulty = 500;
+		difficulty = 50;
 		
 		lairTemplate = null;
 		healLairEvent = null;
@@ -86,9 +84,8 @@ class LairObserver extends Observer implements Logger {
 		lairTemplate = tmpl;
 	}
 	
-	public void setDifficulty(int min, int max) {
-		minDifficulty = min;
-		maxDifficulty = max;
+	public void setDifficulty(int diff) {
+		difficulty = diff;
 	}
 	
 	public boolean isLairObserver() {

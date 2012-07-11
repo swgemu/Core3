@@ -57,6 +57,7 @@ import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 import system.util.VectorMap;
 include server.zone.packets.auction.AuctionQueryHeadersResponseMessage;
+include server.zone.managers.auction.TerminalListVector;
 
 class AuctionManager extends ManagedService implements Logger {
 	protected AuctionsMap auctionMap;
@@ -66,6 +67,12 @@ class AuctionManager extends ManagedService implements Logger {
 	@dereferenced
 	protected VectorMap<unsigned long, Task> auctionEvents;
 	
+	@dereferenced
+	protected VectorMap<SceneObject, string> pendingUIDUpdates;
+	
+	@dereferenced
+	protected VectorMap<SceneObject, string> pendingOldUIDUpdates;
+	
 	public final static int MAXBAZAARPRICE = 20000;
 	public final static int MAXSALES = 25; // this only apply to bazaars
 	public final static int SALESFEE = 20;
@@ -74,12 +81,16 @@ class AuctionManager extends ManagedService implements Logger {
 	public final static int MAXVENDORPRICE = 99999999;
 	public final static int ITEMSPERPAGE = 100;
 	
+	public final static int EXPIREPERIOD = 2592000; // Seconds
+	
+	private int test;
+	
 	public AuctionManager(ZoneServer server) {
 		zoneServer = server;
 		Logger.setLoggingName("AuctionManager");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
-		
+		test= 0;
 		auctionEvents.setNoDuplicateInsertPlan();
 		auctionEvents.setNullValue(null);
 	}
@@ -87,20 +98,20 @@ class AuctionManager extends ManagedService implements Logger {
 	public native void initialize();
 	
 	@local
-	public native void addSaleItem(CreatureObject player, unsigned long objectid, TangibleObject vendor, final unicode description, int price, unsigned int duration, boolean auction, boolean premium);
+	public native void addSaleItem(CreatureObject player, unsigned long objectid, SceneObject vendor, final unicode description, int price, unsigned int duration, boolean auction, boolean premium);
 	
 	@local
-	public native AuctionItem createVendorItem(CreatureObject player, SceneObject objectToSell, TangibleObject vendor, final unicode description, int price, unsigned int duration, boolean auction, boolean premium);
+	public native AuctionItem createVendorItem(CreatureObject player, SceneObject objectToSell, SceneObject vendor, final unicode description, int price, unsigned int duration, boolean auction, boolean premium);
 	
 	@local
-	public native int checkSaleItem(CreatureObject player, SceneObject object, TangibleObject vendor, int price, boolean premium);
+	public native int checkSaleItem(CreatureObject player, SceneObject object, SceneObject vendor, int price, boolean premium);
 	
 	public native void getItemAttributes(CreatureObject player, unsigned long objectid);
 
 	public native void getData(CreatureObject player, int extent, unsigned long vendorObjectID, int screen, unsigned int category, int count, int offset);	
 
 	@local
-	public native void getAuctionData(CreatureObject player, TangibleObject vendor, string search, int screen, unsigned int category, int count, int offset);
+	public native void getAuctionData(CreatureObject player, SceneObject usedVendor, final string planet, final string region, SceneObject vendor, int screen, unsigned int category, int count, int offset);
 
 	private native void refundAuction(AuctionItem item); 
 
@@ -116,7 +127,7 @@ class AuctionManager extends ManagedService implements Logger {
 	public native void cancelItem(CreatureObject player, unsigned long objectID);
 	
 	@local
-	public native AuctionQueryHeadersResponseMessage fillAuctionQueryHeadersResponseMessage(CreatureObject player, TangibleObject vendor, SortedVector<AuctionItem> items, int screen, unsigned int category, int count, int offset);
+	public native AuctionQueryHeadersResponseMessage fillAuctionQueryHeadersResponseMessage(CreatureObject player, SceneObject vendor, TerminalListVector terminalList, int screen, unsigned int category, int count, int offset);
 
 	public AuctionsMap getAuctionMap() {
 		return auctionMap;
@@ -125,14 +136,33 @@ class AuctionManager extends ManagedService implements Logger {
 	public native void checkVendorItems();
 	
 	public native void checkAuctions();
+	
+	@local
+	private native void doAuctionMaint(TerminalListVector items);
 
 	public native string getVendorUID(SceneObject vendor);
 	
 	public void updateVendorUID(SceneObject vendor, final string oldUID, final string newUID) {
+		
+		if(auctionMap == null) {
+			pendingUIDUpdates.put(vendor, newUID);
+			pendingOldUIDUpdates.put(vendor, oldUID);
+			return;
+		}
+		
 		auctionMap.updateUID(vendor, oldUID, newUID);
 	}
 	
+	public void updateVendorSearch(SceneObject vendor, boolean enabled) {
+		auctionMap.updateVendorSearch(vendor, enabled);
+	}
+	
+	public native void expireSale(AuctionItem item);
+	public native void expireBidAuction(AuctionItem item);
+	
 	public native void expireAuction(AuctionItem item);
+
+	public native void deleteExpiredSale(AuctionItem item);
 
 }
 

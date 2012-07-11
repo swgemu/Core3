@@ -54,6 +54,8 @@ StatusServer::StatusServer(ConfigManager* conf, ZoneServer* server)
 
 	statusInterval = configManager->getStatusInterval();
 
+	signal(SIGPIPE, SIG_IGN);
+	
 	setLogging(false);
 }
 
@@ -87,7 +89,10 @@ void StatusServer::shutdown() {
 ServiceClient* StatusServer::createConnection(Socket* sock, SocketAddress& addr) {
 	Packet* pack = getStatusXMLPacket();
 
+try {
 	sock->send(pack);
+} catch (...) {
+}
 
 	sock->close();
 	delete sock;
@@ -113,6 +118,7 @@ Packet* StatusServer::getStatusXMLPacket() {
 		str << "<status>up</status>" << endl;
 		str << "<users>" << endl;
 		str << "<connected>" << zoneServer->getConnectionCount() << "</connected>" << endl;
+		str << "<cap>" << zoneServer->getServerCap() << "</cap>" << endl;
 		str << "<max>" << zoneServer->getMaxPlayers() << "</max>" << endl;
 		str << "<total>" << zoneServer->getTotalPlayers() << "</total>" << endl;
 		str << "<deleted>" << zoneServer->getDeletedPlayers() << "</deleted>" << endl;

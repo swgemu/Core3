@@ -10,16 +10,37 @@
 
 #include "SceneObjectComponent.h"
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
 class DataObjectComponent : public SceneObjectComponent, public Serializable {
+protected:
+	ManagedReference<SceneObject*> parent;
+
 public:
 
-	virtual void initializeTransientMembers() {
+	DataObjectComponent();
 
-	}
+	~DataObjectComponent();
 
-	virtual void notifyObjectDestroyingFromDatabase() {
+	virtual void initializeTransientMembers();
 
-	}
+	virtual void notifyObjectDestroyingFromDatabase();
+
+	void setParent(SceneObject* object);
+
+	SceneObject* getParent();
 
 	virtual bool isDiceData() {
 		return false;
@@ -29,11 +50,13 @@ public:
 		return false;
 	}
 
-	virtual bool isCreatureHabitatData() {
+	virtual bool isAuctionTerminalData() {
 		return false;
 	}
 
-
+	virtual bool isCreatureHabitatData() {
+		return false;
+	}
 };
 
 

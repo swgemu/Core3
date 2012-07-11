@@ -4041,7 +4041,7 @@ void CreatureObject::notifyDissapear(QuadTreeEntry* entry) {
 
 DistributedObjectServant* CreatureObject::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -4085,31 +4085,31 @@ CreatureObjectImplementation::operator const CreatureObject*() {
 }
 
 void CreatureObjectImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void CreatureObjectImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void CreatureObjectImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void CreatureObjectImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void CreatureObjectImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void CreatureObjectImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void CreatureObjectImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void CreatureObjectImplementation::_serializationHelperMethod() {
@@ -4931,8 +4931,8 @@ void CreatureObjectImplementation::setCurrentSpeed(float newSpeed) {
 }
 
 bool CreatureObjectImplementation::hasDamage(int attribute) {
-	// server/zone/objects/creature/CreatureObject.idl():  		return maxHamList.get(attribute) - hamList.get(attribute);
-	return (&maxHamList)->get(attribute) - (&hamList)->get(attribute);
+	// server/zone/objects/creature/CreatureObject.idl():  		return hamList.get(attribute) + wounds.get(attribute) < maxHamList.get(attribute);
+	return (&hamList)->get(attribute) + (&wounds)->get(attribute) < (&maxHamList)->get(attribute);
 }
 
 bool CreatureObjectImplementation::removeStateBuff(unsigned long long state) {

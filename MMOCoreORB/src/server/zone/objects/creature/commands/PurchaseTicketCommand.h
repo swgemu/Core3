@@ -98,6 +98,12 @@ public:
 		if (creature->getZone() != departureZone)
 			return INVALIDPARAMETERS;
 
+		if (departureZone == NULL)
+			return GENERALERROR;
+
+		if (arrivalZone == NULL)
+			return GENERALERROR;
+
 		ManagedReference<PlanetManager*> pmDeparture = departureZone->getPlanetManager();
 		ManagedReference<PlanetManager*> pmArrival = arrivalZone->getPlanetManager();
 

@@ -469,7 +469,7 @@ class CreatureObject extends TangibleObject {
 	public native int inflictDamage(TangibleObject attacker, int damageType, float damage, boolean destroy, final string xp, boolean notifyClient = true);
 
 	public boolean hasDamage(int attribute) {
-		return maxHamList.get(attribute) - hamList.get(attribute); // should we include woundS?
+		return hamList.get(attribute) + wounds.get(attribute) < maxHamList.get(attribute);
 	}
 	
 	/**

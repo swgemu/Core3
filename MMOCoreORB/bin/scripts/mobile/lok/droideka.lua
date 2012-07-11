@@ -21,7 +21,7 @@ droideka = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE +ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -29,7 +29,18 @@ droideka = Creature:new {
 	aiTemplate = "default",
 
 	templates = {"object/mobile/droideka.iff"},
-	lootGroups = {},
+	lootGroups = {
+	     {
+			groups = {
+				{group = "junk", chance = 6500000},
+				{group = "nyms_common", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+				{group = "tailor_components", chance = 500000}
+			},
+			lootChance = 3500000
+		}
+	},
 	weapons = {"droid_droideka_ranged"},
 	conversationTemplate = "",
 	attacks = {

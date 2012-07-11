@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "../../packets/BaseLineMessage.h"
 
 #include "../../objects/creature/CreatureObject.h"
+#include "../../objects/creature/AiAgent.h"
 #include "../tangible/TangibleObjectMessage6.h"
 
 class CreatureObjectMessage6 : public TangibleObjectMessage6 {

@@ -117,13 +117,13 @@ public:
 
 	void addProperty(const String& attributeName, const float value, const int precision, const String& craftingTitle, const bool hidden);
 
-	float getAttributeValue(String& attributeName);
+	float getAttributeValue(const String& attributeName);
 
-	int getAttributePrecision(String& attributeName);
+	int getAttributePrecision(const String& attributeName);
 
-	String getAttributeTitle(String& attributeName);
+	String getAttributeTitle(const String& attributeName);
 
-	bool getAttributeHidden(String& attributeName);
+	bool getAttributeHidden(const String& attributeName);
 
 	void setPropertyToHidden(const String& property);
 
@@ -196,13 +196,13 @@ public:
 
 	void addProperty(const String& attributeName, const float value, const int precision, const String& craftingTitle, const bool hidden);
 
-	float getAttributeValue(String& attributeName);
+	float getAttributeValue(const String& attributeName);
 
-	int getAttributePrecision(String& attributeName);
+	int getAttributePrecision(const String& attributeName);
 
-	String getAttributeTitle(String& attributeName);
+	String getAttributeTitle(const String& attributeName);
 
-	bool getAttributeHidden(String& attributeName);
+	bool getAttributeHidden(const String& attributeName);
 
 	void setPropertyToHidden(const String& property);
 
@@ -269,13 +269,13 @@ public:
 
 	void addProperty(const String& attributeName, const float value, const int precision, const String& craftingTitle, const bool hidden);
 
-	float getAttributeValue(String& attributeName);
+	float getAttributeValue(const String& attributeName);
 
-	int getAttributePrecision(String& attributeName);
+	int getAttributePrecision(const String& attributeName);
 
-	String getAttributeTitle(String& attributeName);
+	String getAttributeTitle(const String& attributeName);
 
-	bool getAttributeHidden(String& attributeName);
+	bool getAttributeHidden(const String& attributeName);
 
 	void setPropertyToHidden(const String& property);
 

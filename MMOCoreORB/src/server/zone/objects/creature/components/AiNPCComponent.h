@@ -33,7 +33,7 @@ class AiNPCComponent : public AiInterfaceComponent, public Logger {
 public:
 	void notifyPositionUpdate(SceneObject* scno, QuadTreeEntry* entry) {
 		// TODO: all of this logic will change soon, this is just a placeholder from the old code
-		if(!scno->isCreatureObject())
+/*		if(!scno->isCreatureObject())
 			return;
 
 		Reference<CreatureObject*> creo = cast<CreatureObject*>(scno);
@@ -41,17 +41,22 @@ public:
 		if (creo->isDead())
 			return;
 
-		if (!creo->isAiAgent())
-			return;
+		/*if (!creo->isAiAgent())
+			return;*/
 
-		Reference<AiAgent*> ai = cast<AiAgent*>(creo.get());
+		AiAgent* ai = cast<AiAgent*>(scno);
 
 		if (ai->getPvpStatusBitmask() == CreatureFlag::NONE)
 			return;
 
+		if (ai->isDead())
+			return;
+
 		int radius = 32;
 
-		if(ai->getParent() != NULL && ai->getParent().get()->isCellObject())
+		ManagedReference<SceneObject*> par = ai->getParent();
+
+		if(par != NULL && par->isCellObject())
 			radius = 12;
 
 		int awarenessRadius = ai->getFerocity() + radius;
@@ -59,14 +64,14 @@ public:
 		if(!entry->isInRange(scno, awarenessRadius))
 			return;
 
-		Reference<SceneObject*> scnoEntry = cast<SceneObject*>( entry);
+		SceneObject* scnoEntry = cast<SceneObject*>( entry);
 
 		// don't worry about this if no one's around, and do it for any creature
 		if (scnoEntry == scno || ai->getNumberOfPlayersInRange() <= 0  || !scnoEntry->isCreatureObject() || ai->isRetreating() || ai->isFleeing() || ai->isInCombat())
 			return;
 
 		if (ai->getFollowObject() == NULL || ai->getFollowObject() == scnoEntry) {
-			Reference<CreatureObject*> creoEntry = cast<CreatureObject*>( scnoEntry.get());
+			CreatureObject* creoEntry = cast<CreatureObject*>( scnoEntry);
 
 			if(creoEntry->getPvpStatusBitmask() == CreatureFlag::NONE)
 				return;
@@ -75,8 +80,8 @@ public:
 				return;
 
 			/// If not in combat, ignore creatures in different cells
-			if(!ai->isInCombat() && ai->getParent() != NULL) {
-				if(ai->getParent().get() != creoEntry->getParent().get())
+			if(!ai->isInCombat() && par != NULL) {
+				if(ai->getParent() != creoEntry->getParent())
 					return;
 			}
 
@@ -84,10 +89,10 @@ public:
 
 			// determine if creature can be a threat
 			if (creoEntry->isAiAgent()) {
-				Reference<AiAgent*> aio = cast<AiAgent*>(creoEntry.get());
+				AiAgent* aio = cast<AiAgent*>(creoEntry);
 				if ((aio->getFerocity() <= 0 || ai->getFerocity() <= 0) && aio->getLevel() >= ai->getLevel())
 					return;
-			} else if (ai->isAttackableBy(creoEntry) && ai->isInRange(scnoEntry, 15) && !creoEntry->isDead()) { //no aigent<->aigent combat for now
+			} else if (ai->isInRange(scnoEntry, 15) && ai->isAttackableBy(creoEntry) && !creoEntry->isDead()) { //no aigent<->aigent combat for now
 				ai->activateAwarenessEvent(creoEntry);
 			}
 		}

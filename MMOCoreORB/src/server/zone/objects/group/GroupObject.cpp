@@ -14,7 +14,7 @@
  *	GroupObjectStub
  */
 
-enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_,RPC_SENDSYSTEMMESSAGE__STRING_,RPC_ADDMEMBER__SCENEOBJECT_,RPC_REMOVEMEMBER__SCENEOBJECT_,RPC_DISBAND__,RPC_MAKELEADER__SCENEOBJECT_,RPC_HASMEMBER__SCENEOBJECT_,RPC_HASMEMBER__LONG_,RPC_STARTCHATROOM__,RPC_DESTROYCHATROOM__,RPC_GETGROUPHARVESTMODIFIER__CREATUREOBJECT_,RPC_GETGROUPLEVEL__,RPC_GETGROUPCHANNEL__,RPC_GETGROUPSIZE__,RPC_GETGROUPMEMBER__INT_,RPC_INITIALIZELEADER__SCENEOBJECT_,RPC_GETLEADER__,RPC_ISGROUPOBJECT__,RPC_HASSQUADLEADER__,RPC_ADDGROUPMODIFIERS__,RPC_REMOVEGROUPMODIFIERS__,RPC_ADDGROUPMODIFIERS__CREATUREOBJECT_,RPC_REMOVEGROUPMODIFIERS__CREATUREOBJECT_};
+enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_,RPC_SENDSYSTEMMESSAGE__STRING_,RPC_ADDMEMBER__SCENEOBJECT_,RPC_REMOVEMEMBER__SCENEOBJECT_,RPC_DISBAND__,RPC_MAKELEADER__SCENEOBJECT_,RPC_HASMEMBER__SCENEOBJECT_,RPC_HASMEMBER__LONG_,RPC_STARTCHATROOM__,RPC_DESTROYCHATROOM__,RPC_GETGROUPHARVESTMODIFIER__CREATUREOBJECT_,RPC_CALCGROUPLEVEL__,RPC_GETGROUPLEVEL__,RPC_GETGROUPCHANNEL__,RPC_GETGROUPSIZE__,RPC_GETGROUPMEMBER__INT_,RPC_INITIALIZELEADER__SCENEOBJECT_,RPC_GETLEADER__,RPC_ISGROUPOBJECT__,RPC_HASSQUADLEADER__,RPC_ADDGROUPMODIFIERS__,RPC_REMOVEGROUPMODIFIERS__,RPC_ADDGROUPMODIFIERS__CREATUREOBJECT_,RPC_REMOVEGROUPMODIFIERS__CREATUREOBJECT_};
 
 GroupObject::GroupObject() : SceneObject(DummyConstructorParameter::instance()) {
 	GroupObjectImplementation* _implementation = new GroupObjectImplementation();
@@ -222,6 +222,19 @@ float GroupObject::getGroupHarvestModifier(CreatureObject* player) {
 		return _implementation->getGroupHarvestModifier(player);
 }
 
+void GroupObject::calcGroupLevel() {
+	GroupObjectImplementation* _implementation = static_cast<GroupObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CALCGROUPLEVEL__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->calcGroupLevel();
+}
+
 int GroupObject::getGroupLevel() {
 	GroupObjectImplementation* _implementation = static_cast<GroupObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -393,7 +406,7 @@ void GroupObject::removeGroupModifiers(CreatureObject* player) {
 
 DistributedObjectServant* GroupObject::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -439,31 +452,31 @@ GroupObjectImplementation::operator const GroupObject*() {
 }
 
 void GroupObjectImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void GroupObjectImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void GroupObjectImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void GroupObjectImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void GroupObjectImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void GroupObjectImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void GroupObjectImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void GroupObjectImplementation::_serializationHelperMethod() {
@@ -687,6 +700,11 @@ void GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertFloat(getGroupHarvestModifier(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		}
 		break;
+	case RPC_CALCGROUPLEVEL__:
+		{
+			calcGroupLevel();
+		}
+		break;
 	case RPC_GETGROUPLEVEL__:
 		{
 			resp->insertSignedInt(getGroupLevel());
@@ -802,6 +820,10 @@ void GroupObjectAdapter::destroyChatRoom() {
 
 float GroupObjectAdapter::getGroupHarvestModifier(CreatureObject* player) {
 	return (static_cast<GroupObject*>(stub))->getGroupHarvestModifier(player);
+}
+
+void GroupObjectAdapter::calcGroupLevel() {
+	(static_cast<GroupObject*>(stub))->calcGroupLevel();
 }
 
 int GroupObjectAdapter::getGroupLevel() {

@@ -62,7 +62,7 @@ void CreatureManagerImplementation::spawnRandomCreaturesAround(SceneObject* crea
 	spawnRandomCreature(1, newX, zone->getHeight(newX, newY), newY);
 }
 
-TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, int minDifficulty, int maxDifficulty, float x, float z, float y) {
+TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y) {
 	LairTemplate* lairTmpl = creatureTemplateManager->getLairTemplate(lairTemplate);
 
 	if (lairTmpl == NULL)
@@ -70,7 +70,7 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
 
  	String buildingToSpawn;
 
- 	VectorMap<String, uint32>* mobiles = lairTmpl->getMobiles();
+ 	VectorMap<String, int>* mobiles = lairTmpl->getMobiles();
 
  	if (mobiles->size() == 0)
  		return NULL;
@@ -79,7 +79,7 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
 
  	String mobile = mobiles->elementAt(rand).getKey();
 
- 	buildingToSpawn = lairTmpl->getBuilding((uint32)maxDifficulty);
+ 	buildingToSpawn = lairTmpl->getBuilding((uint32)difficulty);
 
  	if (buildingToSpawn.isEmpty()) {
  		error("error spawning " + buildingToSpawn);
@@ -97,14 +97,14 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
 
  	building->setPvpStatusBitmask(CreatureFlag::ATTACKABLE);
  	building->setOptionsBitmask(0, false);
- 	building->setMaxCondition(maxDifficulty * 1000);
+ 	building->setMaxCondition(difficulty * 1000);
  	building->setConditionDamage(0, false);
  	building->initializePosition(x, z, y);
 
  	ManagedReference<LairObserver*> lairObserver = new LairObserver();
  	lairObserver->deploy();
  	lairObserver->setLairTemplate(lairTmpl);
- 	lairObserver->setDifficulty(minDifficulty, maxDifficulty);
+ 	lairObserver->setDifficulty(difficulty);
  	lairObserver->setObserverType(ObserverType::LAIR);
 
  	building->registerObserver(ObserverEventType::OBJECTDESTRUCTION, lairObserver);

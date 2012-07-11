@@ -46,10 +46,10 @@ UnarmedHit3Command = {
 
 	damageMultiplier = 4.0,
 	speedMultiplier = 3.0,
-
 	healthCostMultiplier = 2,
 	actionCostMultiplier = 2,
 	mindCostMultiplier = 2,
+        accuracyBonus = 15,
 
 	animationCRC = hashCode("combo_5a_medium"),
 

@@ -58,6 +58,7 @@ public:
 	const static int FULLINVENTORY = 12;
 
 	const static int TOOFAR = 0x100;
+	const static int DONTRETRIEVE = 0x200;
 public:
     RetrieveAuctionItemResponseMessage(uint64 objectid, int status) : BaseMessage() {
 		insertShort(0x03);

@@ -128,7 +128,7 @@ bool StimPack::isStimPack() {
 
 DistributedObjectServant* StimPack::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -174,31 +174,31 @@ StimPackImplementation::operator const StimPack*() {
 }
 
 void StimPackImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void StimPackImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void StimPackImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void StimPackImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void StimPackImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void StimPackImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void StimPackImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void StimPackImplementation::_serializationHelperMethod() {
@@ -301,8 +301,8 @@ unsigned int StimPackImplementation::calculatePower(CreatureObject* healer, Crea
 	float power = getEffectiveness();
 	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		float 
 	if (applyBattleFatigue){
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			power = power - power * patient.calculateBFRatio();
-	power = power - power * patient->calculateBFRatio();
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			power = power - (power * patient.calculateBFRatio() * healer.calculateBFRatio());
+	power = power - (power * patient->calculateBFRatio() * healer->calculateBFRatio());
 }
 	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		float modSkill = (float) healer.getSkillMod("healing_injury_treatment");
 	float modSkill = (float) healer->getSkillMod("healing_injury_treatment");

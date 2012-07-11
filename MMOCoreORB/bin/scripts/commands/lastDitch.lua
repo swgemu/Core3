@@ -44,11 +44,12 @@
 LastDitchCommand = {
         name = "lastditch",
 
-	damageMultiplier = 6.0,
+	damageMultiplier = 4.0,
 	speedMultiplier = 4.0,
-	healthCostMultiplier = 1,
-	actionCostMultiplier = 1,
-	mindCostMultiplier = 1,
+	healthCostMultiplier = 0.5,
+	actionCostMultiplier = 1.25,
+	mindCostMultiplier = 0.5,
+	accuracyBonus = 50,
 
 	stateEffects = {
 	  StateEffect( 
@@ -56,9 +57,9 @@ LastDitchCommand = {
 		{}, 
 		{ "stun_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		40, 
+		70, 
 		100, 
-		10 
+		30 
 	  )
 	},
 

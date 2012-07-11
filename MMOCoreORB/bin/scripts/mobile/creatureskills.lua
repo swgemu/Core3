@@ -6,7 +6,7 @@
 brawlernovice = { {"intimidate1",""},{"melee1hspinattack1",""},{"melee1hlunge1",""},{"melee2hlunge1",""},{"polearmlunge1",""},{"unarmedlunge1",""} }
 marksmannovice = { {"overchargeshot1",""},{"pointblanksingle1",""} }
 --creature level 11 to 15 use combinations of depending on weapons in thier weapons groups
---brawlerua = { {"intimidate1",""},{"beserk1",""},{"unarmedlunge1",""},{"unarmedhit1",""},{"unarmedstun1",""},{"unarmedstun1",""},{"unarmedspinattack1",""},{"unarmedblind1",""} }
+--brawlerua = { {"intimidate1",""},{"berserk1",""},{"unarmedlunge1",""},{"unarmedhit1",""},{"unarmedstun1",""},{"unarmedstun1",""},{"unarmedspinattack1",""},{"unarmedblind1",""} }
 --brawler1hand = { {"intimidate1",""},{"melee1hspinattack1",""},{"melee1hlunge1",""},{"melee1hdizzyhit1",""},{"melee1hhit1",""},{"melee1hbodyhit1",""} }
 --brawler2hand = { {"intimidate1",""},{"melee2hhit1",""},{"melee2hlunge1",""},{"melee2hheadhit1",""},{"melee2hsweep1",""},{"melee2hspinattack1",""} }
 --brawlerpole = { {"intimidate1",""},{"polearmlunge1",""},{"polearmhit1",""},{"polearmleghit1",""},{"polearmstun1",""},{"polearmspinattack1",""} }
@@ -44,9 +44,9 @@ brawlermaster = { {"intimidate1",""},{"unarmedlunge1",""},{"unarmedhit1",""},{"u
 --tkatech = { {"unarmedcombo2",""},{"unarmedhit2",""},{"unarmedspinattack2",""} }
 --tkastriking = { {"unarmedbodyhit1",""},{"unarmedheadhit1",""},{"unarmedhit2",""},{"unarmedleghit1",""} }
 --creature level 30 and above use combinations of base profesion masterery and these
-carbineermaster = { {"actionshot2",""},{"fullautosingle2",""},{"wildshot2",""},{"scattershot2",""},{"legshot2",""},{"cripplingshot",""},{"burstshot2",""},{"suppresionfire2",""} }
+carbineermaster = { {"actionshot2",""},{"fullautosingle2",""},{"wildshot2",""},{"scattershot2",""},{"legshot2",""},{"cripplingshot",""},{"burstshot2",""},{"suppressionfire2",""} }
 pistoleermaster = { {"healthshot2",""},{"pointblanksingle2",""},{"bodyshot3",""},{"pistolmeleedefense2",""},{"disarmingshot1",""},{"doubletap",""},{"stoppingshot",""},{"fanshot",""} }
-riflemanmaster = { {"strafeshot2",""},{"mindshot2",""},{"supriseshot",""},{"snipershot",""},{"concealshot",""},{"flushingshot2",""},{"startleshot2",""},{"flurryshot2",""} }
+riflemanmaster = { {"strafeshot2",""},{"mindshot2",""},{"surpriseshot",""},{"snipershot",""},{"concealshot",""},{"flushingshot2",""},{"startleshot2",""},{"flurryshot2",""} }
 fencermaster = { {"melee1hhit2",""},{"melee1hscatterhit2",""},{"melee1hdizzyhit2",""},{"melee1hhealthhit2",""},{"melee1hspinattack2",""},{"melee1hbodyhit2",""},{"melee1hblindhit2",""} }
 swordsmanmaster = { {"melee2hhit2",""},{"melee2harea2",""},{"melee2hspinattack2",""},{"melee2hsweep2",""},{"melee2hmindhit2",""} }
 pikemanmaster = { {"polearmactionhit2",""},{"polearmarea2",""},{"polearmhit2",""},{"polearmleghit3",""},{"polearmspinattack2",""},{"polearmstun2",""},{"polearmsweep2",""} }

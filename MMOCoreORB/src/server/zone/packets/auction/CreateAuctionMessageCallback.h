@@ -54,7 +54,7 @@ public:
 			return;
 
 		AuctionManager* auctionManager = server->getZoneServer()->getAuctionManager();
-		//duration = 60;
+
 		auctionManager->addSaleItem(player, objectID, vendor, description, price, duration, true, premium);
 	}
 

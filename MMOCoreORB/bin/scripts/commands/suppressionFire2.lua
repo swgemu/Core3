@@ -44,11 +44,12 @@
 SuppressionFire2Command = {
         name = "suppressionfire2",
 
-	damageMultiplier = 2.47,
-	speedMultiplier = 2.8,
-	healthCostMultiplier = 2.1,
-	actionCostMultiplier = 1.4,
-	mindCostMultiplier = 0.6,
+	damageMultiplier = 1.5,
+	speedMultiplier = 1.5,
+	healthCostMultiplier = 2.0,
+	actionCostMultiplier = 1.25,
+	mindCostMultiplier = 0.5,
+	accuracyBonus = 25,
 
 	stateEffects = {
 	  StateEffect( 

@@ -44,11 +44,12 @@
 SniperShotCommand = {
         name = "snipershot",
 
-	damageMultiplier = 1.25,
-	speedMultiplier = 1.25,
-	healthCostMultiplier = 1,
-	actionCostMultiplier = 1,
-	mindCostMultiplier = 1,
+	damageMultiplier = 0.75,
+	speedMultiplier = 2.0,
+	healthCostMultiplier = 0.5,
+	actionCostMultiplier = 0.5,
+	mindCostMultiplier = 2.0,
+	accuracyBonus = 5,
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 

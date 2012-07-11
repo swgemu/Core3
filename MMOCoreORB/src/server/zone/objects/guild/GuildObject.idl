@@ -53,6 +53,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 import system.lang.String;
 import system.util.SortedVector;
+include system.thread.ReadWriteLock;
 
 class GuildObject extends SceneObject {
 	protected ChatRoom chatRoom;
@@ -69,6 +70,9 @@ class GuildObject extends SceneObject {
 	protected unsigned int guildID;
 	protected string guildName;
 	protected string guildAbbrev;
+	
+	@dereferenced
+	protected transient ReadWriteLock waringGuildsMutex; 
 	
 	protected unsigned long guildLeaderID;
 	
@@ -201,43 +205,34 @@ class GuildObject extends SceneObject {
 	}
 	
 	public byte getWarStatus(unsigned long guildoid) {
-		return waringGuilds.get(guildoid);
+		synchronized (waringGuildsMutex) {
+			return waringGuilds.get(guildoid);
+		}
 	}
 	
 	public void setWarStatus(unsigned long guildoid, byte status) {
-		if (status == WAR_NONE)
-			waringGuilds.drop(guildoid);
-		else
-			waringGuilds.put(guildoid, status);
-	}
-	
-	public boolean isInWaringGuild(CreatureObject creature) {
-		GuildObject attackerGuild = creature.getGuildObject();
-
-		if (attackerGuild != null) {
-			rlock();
-
-			if (isAtWarWith(attackerGuild.getObjectID())) {
-				runlock();
-				return true;
-			}
-
-			runlock();
+		synchronized (waringGuildsMutex) {
+			if (status == WAR_NONE)
+				waringGuilds.drop(guildoid);
+			else
+				waringGuilds.put(guildoid, status);
 		}
-		
-		return false;
 	}
 	
-	public boolean isAtWarWith(unsigned long guildoid) {
-		return waringGuilds.get(guildoid) == WAR_MUTUAL;
-	}
+	public native boolean isInWaringGuild(CreatureObject creature);
+	
+	public native boolean isAtWarWith(unsigned long guildoid);
 	
 	public boolean hasDeclaredWarOn(unsigned long guildoid) {
-		return waringGuilds.get(guildoid) == WAR_OUT;
+		synchronized (waringGuildsMutex) {
+			return waringGuilds.get(guildoid) == WAR_OUT;
+		}
 	}
 	
 	public boolean hasDeclaredWarBy(unsigned long guildoid) {
-		return waringGuilds.get(guildoid) == WAR_IN;
+		synchronized (waringGuildsMutex) {
+			return waringGuilds.get(guildoid) == WAR_IN;
+		}
 	}
 	
 	@local

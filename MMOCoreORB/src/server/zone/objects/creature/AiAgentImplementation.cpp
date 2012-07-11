@@ -79,6 +79,8 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	npcTemplate = templateData;
 
 	setPvpStatusBitmask(npcTemplate->getPvpBitmask());
+	if (npcTemplate->getPvpBitmask() == 0)
+		closeobjects = NULL;
 
 	optionsBitmask = npcTemplate->getOptionsBitmask();
 	//npcTemplate->getCreatureBitmask(); -- TODO: need to add a bitmask for AI (pack, herd, etc)
@@ -290,8 +292,8 @@ void AiAgentImplementation::initializeTransientMembers() {
 
 void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 	for (int i = 0; i < aiInterfaceComponents.size(); i++) {
-		Reference<AiInterfaceComponent*> interface = aiInterfaceComponents.get(i);
-		interface->notifyPositionUpdate(_this.get(), entry);
+		AiInterfaceComponent* interface = aiInterfaceComponents.get(i);
+		interface->notifyPositionUpdate(_this.getReferenceUnsafeStaticCast(), entry);
 	}
 
 	CreatureObjectImplementation::notifyPositionUpdate(entry);
@@ -299,8 +301,8 @@ void AiAgentImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 
 void AiAgentImplementation::doAwarenessCheck(Coordinate& start, uint64 time, CreatureObject* target) {
 	for (int i = 0; i < aiInterfaceComponents.size(); i++) {
-		Reference<AiInterfaceComponent*> interface = aiInterfaceComponents.get(i);
-		interface->doAwarenessCheck(_this.get(), start, time, target);
+		AiInterfaceComponent* interface = aiInterfaceComponents.get(i);
+		interface->doAwarenessCheck(_this.getReferenceUnsafeStaticCast(), start, time, target);
 	}
 }
 
@@ -681,6 +683,12 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 		zone->transferObject(_this.get(), -1, true);
 }
 
+void AiAgentImplementation::sendBaselinesTo(SceneObject* player) {
+	ReadLocker locker(&despawnMutex);
+
+	CreatureObjectImplementation::sendBaselinesTo(player);
+}
+
 void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	if (moveEvent != NULL) {
 		moveEvent->clearCreatureObject();
@@ -701,6 +709,8 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 
 	int oldLevel = level;
 
+	Locker locker(&despawnMutex);
+
 	loadTemplateData(templateObject);
 	loadTemplateData(npcTemplate);
 
@@ -708,9 +718,11 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 		setLevel(level);
 
 	stateBitmask = 0;
-	posture = CreaturePosture::UPRIGHT;
+	setPosture(CreaturePosture::UPRIGHT, false);
 	shockWounds = 0;
 	threatMap->removeAll();
+
+	locker.release();
 
 	//Delete all loot out of inventory
 	ManagedReference<SceneObject*> inventory = getSlottedObject("inventory");
@@ -879,6 +891,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 	float dist = 0;
 	float dx = 0, dy = 0;
 	ManagedReference<SceneObject*> cellObject;
+	Zone* zone = getZone();
 
 #ifdef SHOW_WALK_PATH
 	CreateClientPathMessage* pathMessage = new CreateClientPathMessage();
@@ -891,6 +904,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 	while (!found && patrolPoints.size() != 0) {
 		PatrolPoint* targetPosition = &patrolPoints.get(0);
+		
+		if (targetPosition->getCell() == NULL && zone != NULL) {
+			targetPosition->setPositionZ(zone->getHeight(targetPosition->getPositionX(), targetPosition->getPositionY()));
+		}
 
 		Vector<WorldCoordinates>* path = pathFinder->findPath(_this.get().get(), targetPosition->getCoordinates());
 
@@ -993,7 +1010,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 						}
 
 						if (nextPosition->getCell() == NULL) {
-							Zone* zone = getZone();
+							
 
 							if (zone != NULL)
 								newPositionZ = zone->getHeight(newPositionX, newPositionY);
@@ -1196,6 +1213,8 @@ void AiAgentImplementation::doMovement() {
 }
 
 bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
+	return false;
+
 	Locker locker(&targetMutex);
 
 	// Check masked scent
@@ -1225,6 +1244,8 @@ bool AiAgentImplementation::isScentMasked(CreatureObject* target) {
 }
 
 bool AiAgentImplementation::isConcealed(CreatureObject* target) {
+	return false;
+
 	Locker locker(&targetMutex);
 
 	if (!target->hasState(CreatureState::MASKSCENT)) {
@@ -1334,7 +1355,7 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 	lastDamageReceived.updateToCurrentTime();
 
 	activateRecovery();
-
+	
 	if (attacker->isPlayerCreature()) {
 		CreatureObject* player = cast<CreatureObject*>( attacker);
 
@@ -1351,6 +1372,8 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 }
 
 int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient) {
+	lastDamageReceived.updateToCurrentTime();
+
 	activateRecovery();
 
 	if (attacker->isPlayerCreature()) {

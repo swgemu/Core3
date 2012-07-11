@@ -20,7 +20,7 @@
  *	EntertainingSessionStub
  */
 
-enum {RPC_DOENTERTAINERPATRONEFFECTS__ = 6,RPC_DOPERFORMANCEACTION__,RPC_ADDENTERTAINERFLOURISHBUFF__,RPC_STARTDANCING__STRING_STRING_,RPC_STARTPLAYINGMUSIC__STRING_STRING_INT_,RPC_STARTENTERTAINING__,RPC_FINALIZE__,RPC_HEALWOUNDS__CREATUREOBJECT_FLOAT_FLOAT_,RPC_ISINENTERTAININGBUILDING__CREATUREOBJECT_,RPC_DOFLOURISH__INT_,RPC_CANHEALBATTLEFATIGUE__,RPC_CANGIVEENTERTAINBUFF__,RPC_ADDFLOURISHXP__INT_,RPC_ADDHEALINGXP__INT_,RPC_ADDHEALINGXPGROUP__INT_,RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_STOPPLAYINGMUSIC__,RPC_STOPDANCING__,RPC_ACTIVATEACTION__,RPC_STARTTICKTASK__,RPC_GETENTERTAINERBUFFSTRENGTH__CREATUREOBJECT_INT_,RPC_GETENTERTAINERBUFFDURATION__CREATUREOBJECT_INT_,RPC_GETENTERTAINERBUFFSTARTTIME__CREATUREOBJECT_INT_,RPC_SENDENTERTAININGUPDATE__CREATUREOBJECT_FLOAT_STRING_INT_INT_,RPC_SENDENTERTAINMENTUPDATE__CREATUREOBJECT_LONG_STRING_BOOL_,RPC_ACTIVATEENTERTAINERBUFF__CREATUREOBJECT_INT_,RPC_GETINSTRUMENT__CREATUREOBJECT_,RPC_ADDWATCHER__CREATUREOBJECT_,RPC_ADDLISTENER__CREATUREOBJECT_,RPC_ISDANCING__,RPC_ISPLAYINGMUSIC__,RPC_ISACCEPTINGBANDFLOURISHES__,RPC_SETACCEPTINGBANDFLOURISHES__BOOL_,RPC_REMOVEWATCHER__CREATUREOBJECT_,RPC_REMOVELISTENER__CREATUREOBJECT_,RPC_SETPERFORMANCENAME__STRING_,RPC_SETDANCING__BOOL_,RPC_SETTARGETINSTRUMENT__BOOL_,RPC_UPDATEENTERTAINERMISSIONSTATUS__BOOL_INT_,RPC_ISINDENYSERVICELIST__CREATUREOBJECT_,RPC_ADDTODENYSERVICELIST__CREATUREOBJECT_,RPC_REMOVEFROMDENYSERVICELIST__CREATUREOBJECT_,RPC_INCREASEENTERTAINERBUFF__CREATUREOBJECT_};
+enum {RPC_DOENTERTAINERPATRONEFFECTS__ = 6,RPC_DOPERFORMANCEACTION__,RPC_ADDENTERTAINERFLOURISHBUFF__,RPC_STARTDANCING__STRING_STRING_,RPC_STARTPLAYINGMUSIC__STRING_STRING_INT_,RPC_STARTENTERTAINING__,RPC_FINALIZE__,RPC_HEALWOUNDS__CREATUREOBJECT_FLOAT_FLOAT_,RPC_ISINENTERTAININGBUILDING__CREATUREOBJECT_,RPC_DOFLOURISH__INT_,RPC_CANHEALBATTLEFATIGUE__,RPC_CANGIVEENTERTAINBUFF__,RPC_ADDFLOURISHXP__INT_,RPC_ADDHEALINGXP__INT_,RPC_ADDHEALINGXPGROUP__INT_,RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_STOPPLAYINGMUSIC__,RPC_STOPDANCING__,RPC_ACTIVATEACTION__,RPC_STARTTICKTASK__,RPC_GETENTERTAINERBUFFSTRENGTH__CREATUREOBJECT_INT_,RPC_GETENTERTAINERBUFFDURATION__CREATUREOBJECT_INT_,RPC_GETENTERTAINERBUFFSTARTTIME__CREATUREOBJECT_INT_,RPC_SENDENTERTAININGUPDATE__CREATUREOBJECT_FLOAT_STRING_INT_INT_,RPC_SENDENTERTAINMENTUPDATE__CREATUREOBJECT_LONG_STRING_BOOL_,RPC_ACTIVATEENTERTAINERBUFF__CREATUREOBJECT_INT_,RPC_GETINSTRUMENT__CREATUREOBJECT_,RPC_ADDWATCHER__CREATUREOBJECT_,RPC_ADDLISTENER__CREATUREOBJECT_,RPC_ISDANCING__,RPC_ISPLAYINGMUSIC__,RPC_ISACCEPTINGBANDFLOURISHES__,RPC_SETACCEPTINGBANDFLOURISHES__BOOL_,RPC_REMOVEWATCHER__CREATUREOBJECT_,RPC_REMOVELISTENER__CREATUREOBJECT_,RPC_SETPERFORMANCENAME__STRING_,RPC_SETDANCING__BOOL_,RPC_SETTARGETINSTRUMENT__BOOL_,RPC_UPDATEENTERTAINERMISSIONSTATUS__BOOL_INT_,RPC_ISINDENYSERVICELIST__CREATUREOBJECT_,RPC_ADDTODENYSERVICELIST__CREATUREOBJECT_,RPC_REMOVEFROMDENYSERVICELIST__CREATUREOBJECT_,RPC_INCREASEENTERTAINERBUFF__CREATUREOBJECT_,RPC_AWARDENTERTAINEREXPERIENCE__};
 
 EntertainingSession::EntertainingSession(CreatureObject* ent) : Facade(DummyConstructorParameter::instance()) {
 	EntertainingSessionImplementation* _implementation = new EntertainingSessionImplementation(ent);
@@ -691,9 +691,22 @@ void EntertainingSession::increaseEntertainerBuff(CreatureObject* patron) {
 		_implementation->increaseEntertainerBuff(patron);
 }
 
+void EntertainingSession::awardEntertainerExperience() {
+	EntertainingSessionImplementation* _implementation = static_cast<EntertainingSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_AWARDENTERTAINEREXPERIENCE__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->awardEntertainerExperience();
+}
+
 DistributedObjectServant* EntertainingSession::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -737,31 +750,31 @@ EntertainingSessionImplementation::operator const EntertainingSession*() {
 }
 
 void EntertainingSessionImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void EntertainingSessionImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void EntertainingSessionImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void EntertainingSessionImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void EntertainingSessionImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void EntertainingSessionImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void EntertainingSessionImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void EntertainingSessionImplementation::_serializationHelperMethod() {
@@ -1377,6 +1390,11 @@ void EntertainingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* 
 			increaseEntertainerBuff(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		}
 		break;
+	case RPC_AWARDENTERTAINEREXPERIENCE__:
+		{
+			awardEntertainerExperience();
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -1560,6 +1578,10 @@ void EntertainingSessionAdapter::removeFromDenyServiceList(CreatureObject* targe
 
 void EntertainingSessionAdapter::increaseEntertainerBuff(CreatureObject* patron) {
 	(static_cast<EntertainingSession*>(stub))->increaseEntertainerBuff(patron);
+}
+
+void EntertainingSessionAdapter::awardEntertainerExperience() {
+	(static_cast<EntertainingSession*>(stub))->awardEntertainerExperience();
 }
 
 /*

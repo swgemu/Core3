@@ -248,7 +248,8 @@ public:
 			}
 
 			float modSkill = (float) creature->getSkillMod("healing_injury_treatment");
-			float effectiveness = 150.0f;
+
+			float effectiveness = creatureTarget->calculateBFRatio();
 
 			int healPower = (int) round((100.0f + modSkill) / 100.0f * effectiveness);
 
@@ -284,14 +285,13 @@ public:
 			//if (playerManager->getMedicalFacilityRating(enhancer) <= 0) {
 			float modEnvironment = 1 + (creature->getSkillMod("private_medical_rating") / 100.0f);
 			float modSkill = (float) creature->getSkillMod("healing_wound_treatment");
-			float effectiveness = 150.0f;
+
+			float effectiveness = creatureTarget->calculateBFRatio();
 
 			//Since this skill can be used anywhere, we need to check that modEnvironment is not 0.
 			modEnvironment = modEnvironment > 0.0f ? modEnvironment : 1.0f;
 
-			int healPower = (int) round(effectiveness  * modEnvironment * (100.0f + modSkill) / 10000.0f);
-
-			//TODO: Battle Fatigue
+			int healPower = (int) round(effectiveness  * modEnvironment * (100.0f + modSkill) / 1000.0f);
 
 			int healedWounds = creatureTarget->healWound(creature, attribute, healPower);
 

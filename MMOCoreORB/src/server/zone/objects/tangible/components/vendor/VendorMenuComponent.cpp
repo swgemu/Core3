@@ -40,11 +40,11 @@ void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 	if(vendorData->getOwnerId() != player->getObjectID())
 		return;
 
-	menuResponse->addRadialMenuItem(240, 3, "@player_structure:vendor_control");
+	menuResponse->addRadialMenuItem(70, 3, "@player_structure:vendor_control");
 
 	if (!vendorData->isInitialized()) {
 
-		menuResponse->addRadialMenuItemToRadialID(240, 242, 3, "@player_structure:vendor_init");
+		menuResponse->addRadialMenuItemToRadialID(70, 79, 3, "@player_structure:vendor_init");
 
 		menuResponse->addRadialMenuItem(10, 3, "@ui_radial:item_pickup");
 
@@ -54,32 +54,32 @@ void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 
 	} else {
 
-		menuResponse->addRadialMenuItemToRadialID(240, 241, 3, "@player_structure:vendor_status");
-		menuResponse->addRadialMenuItemToRadialID(240, 246, 3, "@player_structure:change_name");
-		menuResponse->addRadialMenuItemToRadialID(240, 248, 3, "@player_structure:pay_vendor_t");
-		menuResponse->addRadialMenuItemToRadialID(240, 249, 3, "@player_structure:withdraw_vendor_t");
+		menuResponse->addRadialMenuItemToRadialID(70, 71, 3, "@player_structure:vendor_status");
+		menuResponse->addRadialMenuItemToRadialID(70, 72, 3, "@player_structure:change_name");
+		menuResponse->addRadialMenuItemToRadialID(70, 73, 3, "@player_structure:pay_vendor_t");
+		menuResponse->addRadialMenuItemToRadialID(70, 74, 3, "@player_structure:withdraw_vendor_t");
 
 		if (vendorData->isVendorSearchEnabled())
-			menuResponse->addRadialMenuItemToRadialID(240, 243, 3, "@player_structure:disable_vendor_search");
+			menuResponse->addRadialMenuItemToRadialID(70, 75, 3, "@player_structure:disable_vendor_search");
 		else
-			menuResponse->addRadialMenuItemToRadialID(240, 243, 3, "@player_structure:enable_vendor_search");
+			menuResponse->addRadialMenuItemToRadialID(70, 75, 3, "@player_structure:enable_vendor_search");
 
 		if(player->hasSkill("crafting_merchant_advertising_03")) {
 			if (!vendorData->isRegistered())
-				menuResponse->addRadialMenuItemToRadialID(240, 244, 3, "@player_structure:register_vendor");
+				menuResponse->addRadialMenuItemToRadialID(70, 76, 3, "@player_structure:register_vendor");
 			else
-				menuResponse->addRadialMenuItemToRadialID(240, 244, 3, "@player_structure:unregister_vendor");
+				menuResponse->addRadialMenuItemToRadialID(70, 76, 3, "@player_structure:unregister_vendor");
 		}
 
 		if(player->hasSkill("crafting_merchant_advertising_01")) {
 			if (!vendorData->isAdBarkingEnabled())
-				menuResponse->addRadialMenuItemToRadialID(240, 247, 3, "@player_structure:vendor_areabarks_on");
+				menuResponse->addRadialMenuItemToRadialID(70, 77, 3, "@player_structure:vendor_areabarks_on");
 			else
-				menuResponse->addRadialMenuItemToRadialID(240, 247, 3, "@player_structure:vendor_areabarks_off");
+				menuResponse->addRadialMenuItemToRadialID(70, 77, 3, "@player_structure:vendor_areabarks_off");
 		}
 	}
 
-	menuResponse->addRadialMenuItemToRadialID(240, 245, 3, "@player_structure:remove_vendor");
+	menuResponse->addRadialMenuItemToRadialID(70, 78, 3, "@player_structure:remove_vendor");
 }
 
 int VendorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
@@ -107,29 +107,26 @@ int VendorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		return 0;
 
 	switch (selectedID) {
-	case 241: {
+	case 71: {
 		VendorManager::instance()->handleDisplayStatus(player, vendor);
 		return 0;
 	}
-
-	case 242: {
-		if (player->getRootParent().get() != vendor->getRootParent().get()) {
-			player->sendSystemMessage("@player_structure:vendor_not_in_same_building");
-			return 0;
-		}
-
-		if (vendorData->isInitialized()) {
-			player->sendSystemMessage("@player_structure:vendor_already_initialized");
-			return 0;
-		}
-
-		player->sendSystemMessage("@player_structure:vendor_initialized");
-		vendorData->setInitialized(true);
-		vendorData->runVendorUpdate();
+	case 72: {
+		VendorManager::instance()->promptRenameVendorTo(player, vendor);
 		return 0;
 	}
 
-	case 243: {
+	case 73: {
+		vendorData->payMaintanence();
+		return 0;
+	}
+
+	case 74: {
+		vendorData->withdrawMaintanence();
+		return 0;
+	}
+
+	case 75: {
 		if (vendorData->isVendorSearchEnabled()) {
 			vendorData->setVendorSearchEnabled(false);
 			player->sendSystemMessage("@player_structure:vendor_search_disabled");
@@ -141,7 +138,7 @@ int VendorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		return 0;
 	}
 
-	case 244: {
+	case 76: {
 		if(player->hasSkill("crafting_merchant_advertising_03")) {
 			if (!vendorData->isRegistered())
 				VendorManager::instance()->sendRegisterVendorTo(player, vendor);
@@ -151,17 +148,7 @@ int VendorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		return 0;
 	}
 
-	case 245: {
-		VendorManager::instance()->promptDestroyVendor(player, vendor);
-		return 0;
-	}
-
-	case 246: {
-		VendorManager::instance()->promptRenameVendorTo(player, vendor);
-		return 0;
-	}
-
-	case 247: {
+	case 77: {
 		if(player->hasSkill("crafting_merchant_advertising_01")) {
 			if (!vendorData->isAdBarkingEnabled()) {
 
@@ -177,13 +164,27 @@ int VendorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		return 0;
 	}
 
-	case 248: {
-		vendorData->payMaintanence();
+	case 78: {
+		VendorManager::instance()->promptDestroyVendor(player, vendor);
 		return 0;
 	}
 
-	case 249: {
-		vendorData->withdrawMaintanence();
+
+	case 79: {
+		if (player->getRootParent().get() != vendor->getRootParent().get()) {
+			player->sendSystemMessage("@player_structure:vendor_not_in_same_building");
+			return 0;
+		}
+
+		if (vendorData->isInitialized()) {
+			player->sendSystemMessage("@player_structure:vendor_already_initialized");
+			return 0;
+		}
+
+		player->sendSystemMessage("@player_structure:vendor_initialized");
+		vendorData->setInitialized(true);
+		vendorData->setEmpty(true);
+		vendorData->runVendorUpdate();
 		return 0;
 	}
 

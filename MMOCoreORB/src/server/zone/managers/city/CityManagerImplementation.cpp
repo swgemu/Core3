@@ -168,6 +168,32 @@ CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const S
 	return city;
 }
 
+bool CityManagerImplementation::isCityRankCapped(const String& planetName, byte rank) {
+	Vector<byte>* citiesAllowed = &citiesAllowedPerRank.get(planetName);
+	byte maxCities = citiesAllowed->get(0);
+	byte maxAtRank = citiesAllowed->get(rank);
+	byte totalCities = 0;
+
+	Locker _lock(_this.get());
+
+	for (int i = 0; i < cities.size(); ++i) {
+		CityRegion* city = cities.get(i);
+
+		Locker _clock(city, _this.get());
+
+		Zone* cityZone = city->getZone();
+
+		if (cityZone == NULL || cityZone->getZoneName() != planetName)
+			continue;
+
+		if (++totalCities > maxCities || totalCities > maxAtRank) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 bool CityManagerImplementation::validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y) {
 	Vector3 testPosition(x, y, 0);
 
@@ -478,20 +504,23 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city) {
 		int votes = entry.getValue();
 
 		//Ensure that each vote is for a valid citizen candidate by a current city citizen.
-		if (city->isCitizen(candidateID) && city->isCandidate(candidateID) && city->isCitizen(candidateID)) {
+		if (city->isCitizen(candidateID) && city->isCandidate(candidateID)) {
 			ManagedReference<SceneObject*> mayorObject = zoneServer->getObject(candidateID);
 
 			if (mayorObject != NULL && mayorObject->isPlayerCreature()) {
-				Locker _lock(mayorObject);
+				Locker _crosslock(mayorObject, city);
 
 				CreatureObject* mayor = cast<CreatureObject*>(mayorObject.get());
 				PlayerObject* ghost = cast<PlayerObject*>(mayorObject->getSlottedObject("ghost"));
 
 				//Make sure the candidate is still a politician.
-				if (mayor->hasSkill("social_politician_novice") && votes > topVotes) {
-					ghost->addExperience("political", 300, true);
-					topCandidate = candidateID;
-					topVotes = votes;
+				if (mayor->hasSkill("social_politician_novice")) {
+					ghost->addExperience("political", votes * 300, true);
+
+					if (votes > topVotes) {
+						topCandidate = candidateID;
+						topVotes = votes;
+					}
 				}
 			}
 		}
@@ -546,7 +575,16 @@ void CityManagerImplementation::contractCity(CityRegion* city) {
 
 void CityManagerImplementation::expandCity(CityRegion* city) {
 	uint8 currentRank = city->getCityRank();
-	uint8 newRank = city->getCityRank() + 1;
+
+	if (currentRank == METROPOLIS) //City doesn't expand if it's metropolis.
+		return;
+
+	uint8 newRank = currentRank + 1;
+
+	Zone* zone = city->getZone();
+
+	if (zone == NULL)
+		return;
 
 	ManagedReference<SceneObject*> obj = zoneServer->getObject(city->getMayorID());
 
@@ -560,19 +598,15 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 
 		UnicodeString subject = "@city/city:city_expand_subject";
 
-		if (currentRank == METROPOLIS) {
+		if (isCityRankCapped(zone->getZoneName(), newRank)) {
 			params.setStringId("city/city", "city_expand_cap_body"); //Capped
-			params.setDI(currentRank);
-
 			subject = "@city/city:city_expand_cap_subject";
+			newRank = currentRank;
 		}
 
 		ChatManager* chatManager = zoneServer->getChatManager();
 		chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);
 	}
-
-	if (currentRank == METROPOLIS)
-		return;
 
 	//TODO: Add new citizens within limits.
 

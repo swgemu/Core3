@@ -30,7 +30,7 @@
  *	CreatureManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_SPAWNLAIR__INT_INT_INT_FLOAT_FLOAT_FLOAT_,RPC_SPAWNCREATUREWITHAI__INT_FLOAT_FLOAT_FLOAT_SCENEOBJECT_BOOL_,RPC_SPAWNCREATUREWITHLEVEL__INT_INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_BOOL_,RPC_CREATECREATURE__INT_BOOL_,RPC_PLACECREATURE__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_LONG_,RPC_GETTEMPLATETOSPAWN__INT_,RPC_LOADSPAWNAREAS__,RPC_LOADSINGLESPAWNS__,RPC_LOADTRAINERS__,RPC_LOADMISSIONSPAWNS__,RPC_LOADINFORMANTS__,RPC_SPAWNRANDOMCREATURESAROUND__SCENEOBJECT_,RPC_SPAWNRANDOMCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_HARVEST__CREATURE_CREATUREOBJECT_INT_,RPC_ADDTORESERVEPOOL__AIAGENT_,RPC_GETSPAWNEDRANDOMCREATURES__,RPC_GETSPAWNAREA__STRING_,RPC_ADDWEARABLEITEM__CREATUREOBJECT_TANGIBLEOBJECT_};
+enum {RPC_INITIALIZE__ = 6,RPC_SPAWNLAIR__INT_INT_FLOAT_FLOAT_FLOAT_,RPC_SPAWNCREATUREWITHAI__INT_FLOAT_FLOAT_FLOAT_SCENEOBJECT_BOOL_,RPC_SPAWNCREATUREWITHLEVEL__INT_INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_BOOL_,RPC_CREATECREATURE__INT_BOOL_,RPC_PLACECREATURE__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_LONG_,RPC_GETTEMPLATETOSPAWN__INT_,RPC_LOADSPAWNAREAS__,RPC_LOADAITEMPLATES__,RPC_LOADSINGLESPAWNS__,RPC_LOADTRAINERS__,RPC_LOADMISSIONSPAWNS__,RPC_LOADINFORMANTS__,RPC_SPAWNRANDOMCREATURESAROUND__SCENEOBJECT_,RPC_SPAWNRANDOMCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_HARVEST__CREATURE_CREATUREOBJECT_INT_,RPC_ADDTORESERVEPOOL__AIAGENT_,RPC_GETSPAWNEDRANDOMCREATURES__,RPC_GETSPAWNAREA__STRING_,RPC_ADDWEARABLEITEM__CREATUREOBJECT_TANGIBLEOBJECT_};
 
 CreatureManager::CreatureManager(Zone* planet) : ZoneManager(DummyConstructorParameter::instance()) {
 	CreatureManagerImplementation* _implementation = new CreatureManagerImplementation(planet);
@@ -61,23 +61,22 @@ void CreatureManager::initialize() {
 		_implementation->initialize();
 }
 
-TangibleObject* CreatureManager::spawnLair(unsigned int lairTemplate, int minDifficulty, int maxDifficulty, float x, float z, float y) {
+TangibleObject* CreatureManager::spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y) {
 	CreatureManagerImplementation* _implementation = static_cast<CreatureManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SPAWNLAIR__INT_INT_INT_FLOAT_FLOAT_FLOAT_);
+		DistributedMethod method(this, RPC_SPAWNLAIR__INT_INT_FLOAT_FLOAT_FLOAT_);
 		method.addUnsignedIntParameter(lairTemplate);
-		method.addSignedIntParameter(minDifficulty);
-		method.addSignedIntParameter(maxDifficulty);
+		method.addSignedIntParameter(difficulty);
 		method.addFloatParameter(x);
 		method.addFloatParameter(z);
 		method.addFloatParameter(y);
 
 		return static_cast<TangibleObject*>(method.executeWithObjectReturn());
 	} else
-		return _implementation->spawnLair(lairTemplate, minDifficulty, maxDifficulty, x, z, y);
+		return _implementation->spawnLair(lairTemplate, difficulty, x, z, y);
 }
 
 CreatureObject* CreatureManager::spawnCreatureWithAi(unsigned int templateCRC, float x, float z, float y, SceneObject* cell, bool persistent) {
@@ -225,6 +224,19 @@ void CreatureManager::loadSpawnAreas() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->loadSpawnAreas();
+}
+
+void CreatureManager::loadAiTemplates() {
+	CreatureManagerImplementation* _implementation = static_cast<CreatureManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_LOADAITEMPLATES__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->loadAiTemplates();
 }
 
 void CreatureManager::loadSingleSpawns() {
@@ -430,7 +442,7 @@ bool CreatureManager::addWearableItem(CreatureObject* creature, TangibleObject* 
 
 DistributedObjectServant* CreatureManager::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -476,31 +488,31 @@ CreatureManagerImplementation::operator const CreatureManager*() {
 }
 
 void CreatureManagerImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void CreatureManagerImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void CreatureManagerImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void CreatureManagerImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void CreatureManagerImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void CreatureManagerImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void CreatureManagerImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void CreatureManagerImplementation::_serializationHelperMethod() {
@@ -619,6 +631,8 @@ CreatureManagerImplementation::CreatureManagerImplementation(Zone* planet) : Zon
 void CreatureManagerImplementation::initialize() {
 	// server/zone/managers/creature/CreatureManager.idl():  		loadSpawnAreas();
 	loadSpawnAreas();
+	// server/zone/managers/creature/CreatureManager.idl():  		loadAiTemplates();
+	loadAiTemplates();
 	// server/zone/managers/creature/CreatureManager.idl():  		loadTrainers();
 	loadTrainers();
 	// server/zone/managers/creature/CreatureManager.idl():  		loadSingleSpawns();
@@ -688,9 +702,9 @@ void CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 			initialize();
 		}
 		break;
-	case RPC_SPAWNLAIR__INT_INT_INT_FLOAT_FLOAT_FLOAT_:
+	case RPC_SPAWNLAIR__INT_INT_FLOAT_FLOAT_FLOAT_:
 		{
-			resp->insertLong(spawnLair(inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
+			resp->insertLong(spawnLair(inv->getUnsignedIntParameter(), inv->getSignedIntParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
 		}
 		break;
 	case RPC_SPAWNCREATUREWITHAI__INT_FLOAT_FLOAT_FLOAT_SCENEOBJECT_BOOL_:
@@ -731,6 +745,11 @@ void CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_LOADSPAWNAREAS__:
 		{
 			loadSpawnAreas();
+		}
+		break;
+	case RPC_LOADAITEMPLATES__:
+		{
+			loadAiTemplates();
 		}
 		break;
 	case RPC_LOADSINGLESPAWNS__:
@@ -798,8 +817,8 @@ void CreatureManagerAdapter::initialize() {
 	(static_cast<CreatureManager*>(stub))->initialize();
 }
 
-TangibleObject* CreatureManagerAdapter::spawnLair(unsigned int lairTemplate, int minDifficulty, int maxDifficulty, float x, float z, float y) {
-	return (static_cast<CreatureManager*>(stub))->spawnLair(lairTemplate, minDifficulty, maxDifficulty, x, z, y);
+TangibleObject* CreatureManagerAdapter::spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y) {
+	return (static_cast<CreatureManager*>(stub))->spawnLair(lairTemplate, difficulty, x, z, y);
 }
 
 CreatureObject* CreatureManagerAdapter::spawnCreatureWithAi(unsigned int templateCRC, float x, float z, float y, SceneObject* cell, bool persistent) {
@@ -832,6 +851,10 @@ String CreatureManagerAdapter::getTemplateToSpawn(unsigned int templateCRC) {
 
 void CreatureManagerAdapter::loadSpawnAreas() {
 	(static_cast<CreatureManager*>(stub))->loadSpawnAreas();
+}
+
+void CreatureManagerAdapter::loadAiTemplates() {
+	(static_cast<CreatureManager*>(stub))->loadAiTemplates();
 }
 
 void CreatureManagerAdapter::loadSingleSpawns() {

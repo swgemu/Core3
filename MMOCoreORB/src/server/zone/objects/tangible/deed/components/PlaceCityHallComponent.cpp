@@ -6,6 +6,7 @@
  */
 
 #include "PlaceCityHallComponent.h"
+#include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/deed/Deed.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
@@ -26,6 +27,14 @@ int PlaceCityHallComponent::placeStructure(StructureDeed* deed, CreatureObject* 
 
 	if (zone == NULL)
 		return 1;
+
+	//Check the capped cities on this planet.
+	CityManager* cityManager = zone->getZoneServer()->getCityManager();
+
+	if (cityManager->isCityRankCapped(zone->getZoneName(), CityManager::OUTPOST)) {
+		creature->sendSystemMessage("This planet cannot support anymore cities. You will have to find another planet.");
+		return 1;
+	}
 
 	ManagedReference<BuildingObject*> declaredResidence = ghost->getDeclaredResidence();
 

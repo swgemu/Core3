@@ -184,7 +184,7 @@ void CreatureObjectImplementation::initializeMembers() {
 	commandQueue = new CommandQueueActionVector();
 	immediateQueue = new CommandQueueActionVector();
 
-	closeobjects = new SortedVector<ManagedReference<QuadTreeEntry*> > ();
+	closeobjects = new CloseObjectsVector();
 	closeobjects->setNoDuplicateInsertPlan();
 
 	healthWoundHeal = 0;
@@ -342,22 +342,28 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 }
 
 void CreatureObjectImplementation::sendBaselinesTo(SceneObject* player) {
-	if (player == _this.get()) {
+	Reference<CreatureObject*> thisPointer = _this.get();
+	Zone* zone = getZone();
+
+	if (zone == NULL)
+		return;
+
+	if (player == thisPointer) {
 		//info("sending baselines to myself", true);
 
-		CreatureObjectMessage1* msg = new CreatureObjectMessage1(_this.get());
+		CreatureObjectMessage1* msg = new CreatureObjectMessage1(thisPointer);
 		player->sendMessage(msg);
 	}
 
-	CreatureObjectMessage3* msg3 = new CreatureObjectMessage3(_this.get());
+	CreatureObjectMessage3* msg3 = new CreatureObjectMessage3(thisPointer);
 	player->sendMessage(msg3);
 
-	if (player == _this.get()) {
-		CreatureObjectMessage4* msg4 = new CreatureObjectMessage4(_this.get());
+	if (player == thisPointer) {
+		CreatureObjectMessage4* msg4 = new CreatureObjectMessage4(thisPointer);
 		player->sendMessage(msg4);
 	}
 
-	CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(_this.get());
+	CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(thisPointer);
 	player->sendMessage(msg6);
 
 	if (!player->isPlayerCreature())
@@ -488,14 +494,14 @@ void CreatureObjectImplementation::setWeapon(WeaponObject* weao,
 }
 
 void CreatureObjectImplementation::setLevel(int level) {
-	TangibleObjectImplementation::setLevel(level);
-
-	if (this->level == level)
+	if (this->level == level && level >= 0)
 		return;
 
-	CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(
-			_this.get());
-	msg->updateLevel(level);
+	TangibleObjectImplementation::setLevel(level);
+
+	CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(_this.get());
+
+	msg->updateLevel(this->level);
 	msg->close();
 
 	broadcastMessage(msg, true);
@@ -655,11 +661,22 @@ bool CreatureObjectImplementation::setState(uint64 state, bool notifyClient) {
 
 				setPosture(CreaturePosture::SITTING, false);
 
-				if (thisZone != NULL) {
-					Locker locker(thisZone);
+				SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
+				int maxInRangeObjects = 0;
 
-					for (int i = 0; i < closeobjects->size(); ++i) {
-						SceneObject* object = cast<SceneObject*> (closeobjects->get(i).get());
+				if (thisZone != NULL) {
+					//Locker locker(thisZone);
+
+					if (closeobjects == NULL) {
+						thisZone->getInRangeObjects(getWorldPositionX(), getWorldPositionY(), 192, &closeSceneObjects, true);
+						maxInRangeObjects = closeSceneObjects.size();
+					} else {
+						closeobjects->safeCopyTo(closeSceneObjects);
+						maxInRangeObjects = closeSceneObjects.size();
+					}
+
+					for (int i = 0; i < closeSceneObjects.size(); ++i) {
+						SceneObject* object = cast<SceneObject*> (closeSceneObjects.get(i).get());
 
 						if (object->getParent().get() == getParent().get()) {
 							SitOnObject* soo = new SitOnObject(_this.get(), getPositionX(), getPositionZ(), getPositionY());
@@ -2434,13 +2451,13 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 	uint32 targetFactionStatus = targetGhost->getFactionStatus();
 	uint32 currentFactionStatus = ghost->getFactionStatus();
 
-	if (getFaction() != object->getFaction() && !(currentFactionStatus & FactionStatus::ONLEAVE))
+	if (getFaction() != object->getFaction() && !(targetFactionStatus & FactionStatus::ONLEAVE))
 		return false;
 
 	if ((targetFactionStatus & FactionStatus::OVERT) && !(currentFactionStatus & FactionStatus::OVERT))
 		return false;
 
-	if ((targetFactionStatus & FactionStatus::COVERT) && (currentFactionStatus & FactionStatus::ONLEAVE))
+	if (!(targetFactionStatus & FactionStatus::ONLEAVE) && (currentFactionStatus & FactionStatus::ONLEAVE))
 		return false;
 
 	return true;

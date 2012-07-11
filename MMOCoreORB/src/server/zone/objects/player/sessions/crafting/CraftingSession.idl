@@ -191,4 +191,7 @@ class CraftingSession extends Facade {
 	 */
 	private native void startCreationTasks(int timer, boolean practice);
 
+	public int getState() {
+		return state;
+	}
 }

@@ -28,7 +28,7 @@ chuba = Creature:new {
 
 	aiTemplate = "default",
 
-	templates = {"object/mobile/chuba.iff"},
+	templates = {"object/mobile/chuba_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

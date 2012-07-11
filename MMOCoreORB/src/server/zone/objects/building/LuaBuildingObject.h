@@ -32,6 +32,8 @@ namespace building {
 		// Methods we will need to use
 		int getCell(lua_State* L);
 		int grantPermission(lua_State* L);
+		int broadcastSpecificCellPermissions(lua_State* L);
+
 	private:
 		// The pointer to the 'real object' defined in object.cc
 		Reference<BuildingObject*> realObject;

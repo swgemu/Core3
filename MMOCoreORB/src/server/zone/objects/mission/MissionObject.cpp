@@ -22,7 +22,7 @@
  *	MissionObjectStub
  */
 
-enum {RPC_CREATEWAYPOINT__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETREFRESHCOUNTER__INT_BOOL_,RPC_SETTYPECRC__INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETMISSIONDESCRIPTION__STRING_STRING_BOOL_,RPC_SETMISSIONTITLE__STRING_STRING_BOOL_,RPC_SETMISSIONTARGETNAME__STRING_BOOL_,RPC_SETMISSIONDIFFICULTY__INT_BOOL_,RPC_SETREWARDCREDITS__INT_BOOL_,RPC_SETSTARTPOSITION__FLOAT_FLOAT_STRING_BOOL_,RPC_SETENDPOSITION__FLOAT_FLOAT_STRING_BOOL_,RPC_SETCREATORNAME__STRING_BOOL_,RPC_GETSTARTPLANETCRC__,RPC_UPDATEMISSIONLOCATION__,RPC_ABORT__,RPC_SETFACTION__INT_,RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_,RPC_SETSTARTPLANET__STRING_,RPC_SETREWARDFACTIONPOINTSREBEL__INT_,RPC_SETREWARDFACTIONPOINTSIMPERIAL__INT_,RPC_SETENDPLANET__STRING_,RPC_SETMISSIONTARGET__NPCSPAWNPOINT_,RPC_SETMISSIONTARGETDEST__NPCSPAWNPOINT_,RPC_SETMISSIONNUMBER__INT_,RPC_SETTARGETOPTIONALTEMPLATE__STRING_,RPC_SETTEMPLATESTRINGS__STRING_STRING_,RPC_GETMISSIONOBJECTIVE__,RPC_GETFACTION__,RPC_GETREWARDFACTIONPOINTSREBEL__,RPC_GETREWARDFACTIONPOINTSIMPERIAL__,RPC_GETSTARTPOSITIONX__,RPC_GETSTARTPOSITIONY__,RPC_GETTARGETOPTIONALTEMPLATE__,RPC_GETSTARTPLANET__,RPC_GETENDPOSITIONX__,RPC_GETENDPOSITIONY__,RPC_GETENDPLANET__,RPC_GETWAYPOINTTOMISSION__,RPC_GETMISSIONTARGET__,RPC_GETMISSIONTARGETDEST__,RPC_GETTYPECRC__,RPC_GETREWARDCREDITS__,RPC_GETCREATORNAME__,RPC_GETDIFFICULTYLEVEL__,RPC_GETTARGETNAME__,RPC_GETREFRESHCOUNTER__,RPC_GETMISSIONNUMBER__,RPC_ISSURVEYMISSION__,RPC_ISMISSIONOBJECT__,RPC_GETTEMPLATESTRING1__,RPC_GETTEMPLATESTRING2__,RPC_GETTARGETOBJECTID__,RPC_SETTARGETOBJECTID__LONG_,RPC_SETMISSIONLEVEL__INT_,RPC_GETMISSIONLEVEL__};
+enum {RPC_CREATEWAYPOINT__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_UPDATETODATABASEALLOBJECTS__BOOL_,RPC_SETREFRESHCOUNTER__INT_BOOL_,RPC_SETTYPECRC__INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SETMISSIONDESCRIPTION__STRING_STRING_BOOL_,RPC_SETMISSIONTITLE__STRING_STRING_BOOL_,RPC_SETMISSIONTARGETNAME__STRING_BOOL_,RPC_SETMISSIONDIFFICULTY__INT_BOOL_,RPC_SETMISSIONDIFFICULTY__INT_INT_BOOL_,RPC_SETREWARDCREDITS__INT_BOOL_,RPC_SETSTARTPOSITION__FLOAT_FLOAT_STRING_BOOL_,RPC_SETENDPOSITION__FLOAT_FLOAT_STRING_BOOL_,RPC_SETCREATORNAME__STRING_BOOL_,RPC_GETSTARTPLANETCRC__,RPC_UPDATEMISSIONLOCATION__,RPC_ABORT__,RPC_SETFACTION__INT_,RPC_SETMISSIONOBJECTIVE__MISSIONOBJECTIVE_,RPC_SETSTARTPLANET__STRING_,RPC_SETREWARDFACTIONPOINTSREBEL__INT_,RPC_SETREWARDFACTIONPOINTSIMPERIAL__INT_,RPC_SETENDPLANET__STRING_,RPC_SETMISSIONTARGET__NPCSPAWNPOINT_,RPC_SETMISSIONTARGETDEST__NPCSPAWNPOINT_,RPC_SETMISSIONNUMBER__INT_,RPC_SETTARGETOPTIONALTEMPLATE__STRING_,RPC_SETTEMPLATESTRINGS__STRING_STRING_,RPC_GETMISSIONOBJECTIVE__,RPC_GETFACTION__,RPC_GETREWARDFACTIONPOINTSREBEL__,RPC_GETREWARDFACTIONPOINTSIMPERIAL__,RPC_GETSTARTPOSITIONX__,RPC_GETSTARTPOSITIONY__,RPC_GETTARGETOPTIONALTEMPLATE__,RPC_GETSTARTPLANET__,RPC_GETENDPOSITIONX__,RPC_GETENDPOSITIONY__,RPC_GETENDPLANET__,RPC_GETWAYPOINTTOMISSION__,RPC_GETMISSIONTARGET__,RPC_GETMISSIONTARGETDEST__,RPC_GETTYPECRC__,RPC_GETREWARDCREDITS__,RPC_GETCREATORNAME__,RPC_GETDIFFICULTYLEVEL__,RPC_GETDIFFICULTYDISPLAY__,RPC_GETTARGETNAME__,RPC_GETREFRESHCOUNTER__,RPC_GETMISSIONNUMBER__,RPC_ISSURVEYMISSION__,RPC_ISMISSIONOBJECT__,RPC_GETTEMPLATESTRING1__,RPC_GETTEMPLATESTRING2__,RPC_GETTARGETOBJECTID__,RPC_SETTARGETOBJECTID__LONG_,RPC_SETMISSIONLEVEL__INT_,RPC_GETMISSIONLEVEL__};
 
 MissionObject::MissionObject() : IntangibleObject(DummyConstructorParameter::instance()) {
 	MissionObjectImplementation* _implementation = new MissionObjectImplementation();
@@ -198,6 +198,22 @@ void MissionObject::setMissionDifficulty(int difficulty, bool notifyClient) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setMissionDifficulty(difficulty, notifyClient);
+}
+
+void MissionObject::setMissionDifficulty(int difficulty, int display, bool notifyClient) {
+	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETMISSIONDIFFICULTY__INT_INT_BOOL_);
+		method.addSignedIntParameter(difficulty);
+		method.addSignedIntParameter(display);
+		method.addBooleanParameter(notifyClient);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setMissionDifficulty(difficulty, display, notifyClient);
 }
 
 void MissionObject::setRewardCredits(int creds, bool notifyClient) {
@@ -709,6 +725,19 @@ int MissionObject::getDifficultyLevel() {
 		return _implementation->getDifficultyLevel();
 }
 
+int MissionObject::getDifficultyDisplay() {
+	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDIFFICULTYDISPLAY__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getDifficultyDisplay();
+}
+
 StringId* MissionObject::getMissionDescription() {
 	MissionObjectImplementation* _implementation = static_cast<MissionObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -889,7 +918,7 @@ int MissionObject::getMissionLevel() {
 
 DistributedObjectServant* MissionObject::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -935,31 +964,31 @@ MissionObjectImplementation::operator const MissionObject*() {
 }
 
 void MissionObjectImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void MissionObjectImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void MissionObjectImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void MissionObjectImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void MissionObjectImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void MissionObjectImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void MissionObjectImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void MissionObjectImplementation::_serializationHelperMethod() {
@@ -1009,6 +1038,11 @@ bool MissionObjectImplementation::readObjectMember(ObjectInputStream* stream, co
 
 	if (_name == "MissionObject.difficultyLevel") {
 		TypeInfo<int >::parseFromBinaryStream(&difficultyLevel, stream);
+		return true;
+	}
+
+	if (_name == "MissionObject.difficultyDisplay") {
+		TypeInfo<int >::parseFromBinaryStream(&difficultyDisplay, stream);
 		return true;
 	}
 
@@ -1178,6 +1212,14 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&difficultyLevel, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "MissionObject.difficultyDisplay";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&difficultyDisplay, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -1374,7 +1416,7 @@ int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 28;
+	return _count + 29;
 }
 
 MissionObjectImplementation::MissionObjectImplementation() {
@@ -1391,6 +1433,8 @@ MissionObjectImplementation::MissionObjectImplementation() {
 	targetName = "Testing target name";
 	// server/zone/objects/mission/MissionObject.idl():  		difficultyLevel = 50;
 	difficultyLevel = 50;
+	// server/zone/objects/mission/MissionObject.idl():  		difficultyDisplay = 80;
+	difficultyDisplay = 80;
 	// server/zone/objects/mission/MissionObject.idl():  		rewardCredits = 100;
 	rewardCredits = 100;
 	// server/zone/objects/mission/MissionObject.idl():  		rewardFactionPointsRebel = 0;
@@ -1566,6 +1610,11 @@ int MissionObjectImplementation::getDifficultyLevel() {
 	return difficultyLevel;
 }
 
+int MissionObjectImplementation::getDifficultyDisplay() {
+	// server/zone/objects/mission/MissionObject.idl():  		return difficultyDisplay;
+	return difficultyDisplay;
+}
+
 StringId* MissionObjectImplementation::getMissionDescription() {
 	// server/zone/objects/mission/MissionObject.idl():  		return missionDescription;
 	return (&missionDescription);
@@ -1702,6 +1751,11 @@ void MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETMISSIONDIFFICULTY__INT_BOOL_:
 		{
 			setMissionDifficulty(inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
+		break;
+	case RPC_SETMISSIONDIFFICULTY__INT_INT_BOOL_:
+		{
+			setMissionDifficulty(inv->getSignedIntParameter(), inv->getSignedIntParameter(), inv->getBooleanParameter());
 		}
 		break;
 	case RPC_SETREWARDCREDITS__INT_BOOL_:
@@ -1891,6 +1945,11 @@ void MissionObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertSignedInt(getDifficultyLevel());
 		}
 		break;
+	case RPC_GETDIFFICULTYDISPLAY__:
+		{
+			resp->insertSignedInt(getDifficultyDisplay());
+		}
+		break;
 	case RPC_GETTARGETNAME__:
 		{
 			resp->insertAscii(getTargetName());
@@ -1993,6 +2052,10 @@ void MissionObjectAdapter::setMissionTargetName(const String& target, bool notif
 
 void MissionObjectAdapter::setMissionDifficulty(int difficulty, bool notifyClient) {
 	(static_cast<MissionObject*>(stub))->setMissionDifficulty(difficulty, notifyClient);
+}
+
+void MissionObjectAdapter::setMissionDifficulty(int difficulty, int display, bool notifyClient) {
+	(static_cast<MissionObject*>(stub))->setMissionDifficulty(difficulty, display, notifyClient);
 }
 
 void MissionObjectAdapter::setRewardCredits(int creds, bool notifyClient) {
@@ -2137,6 +2200,10 @@ UnicodeString MissionObjectAdapter::getCreatorName() {
 
 int MissionObjectAdapter::getDifficultyLevel() {
 	return (static_cast<MissionObject*>(stub))->getDifficultyLevel();
+}
+
+int MissionObjectAdapter::getDifficultyDisplay() {
+	return (static_cast<MissionObject*>(stub))->getDifficultyDisplay();
 }
 
 String MissionObjectAdapter::getTargetName() {

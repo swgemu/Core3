@@ -46,11 +46,10 @@ Melee1hSpinAttack1Command = {
 
 	damageMultiplier = 2.0,
 	speedMultiplier = 1.5,
-	accuracyBonus = 25,
-	
-	healthCostMultiplier = 1,
-	actionCostMultiplier = 1,
+	healthCostMultiplier = 1.0,
+	actionCostMultiplier = 1.0,
 	mindCostMultiplier = 1.5,
+        accuracyBonus = 25,
 
 	animationCRC = hashCode("attack_high_right_medium_2"),
 

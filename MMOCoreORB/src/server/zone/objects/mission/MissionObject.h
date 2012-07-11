@@ -176,6 +176,8 @@ public:
 
 	void setMissionDifficulty(int difficulty, bool notifyClient = true);
 
+	void setMissionDifficulty(int difficulty, int display, bool notifyClient = true);
+
 	void setRewardCredits(int creds, bool notifyClient = true);
 
 	void setTargetTemplate(SharedObjectTemplate* templ, bool notifyClient = true);
@@ -250,6 +252,8 @@ public:
 
 	int getDifficultyLevel();
 
+	int getDifficultyDisplay();
+
 	StringId* getMissionDescription();
 
 	StringId* getMissionTitle();
@@ -311,6 +315,8 @@ protected:
 	unsigned int typeCRC;
 
 	int difficultyLevel;
+
+	int difficultyDisplay;
 
 	UnicodeString creatorName;
 
@@ -417,6 +423,8 @@ public:
 
 	void setMissionDifficulty(int difficulty, bool notifyClient = true);
 
+	void setMissionDifficulty(int difficulty, int display, bool notifyClient = true);
+
 	void setRewardCredits(int creds, bool notifyClient = true);
 
 	void setTargetTemplate(SharedObjectTemplate* templ, bool notifyClient = true);
@@ -490,6 +498,8 @@ public:
 	UnicodeString getCreatorName();
 
 	int getDifficultyLevel();
+
+	int getDifficultyDisplay();
 
 	StringId* getMissionDescription();
 
@@ -584,6 +594,8 @@ public:
 
 	void setMissionDifficulty(int difficulty, bool notifyClient);
 
+	void setMissionDifficulty(int difficulty, int display, bool notifyClient);
+
 	void setRewardCredits(int creds, bool notifyClient);
 
 	void setStartPosition(float posX, float posY, const String& planet, bool notifyClient);
@@ -655,6 +667,8 @@ public:
 	UnicodeString getCreatorName();
 
 	int getDifficultyLevel();
+
+	int getDifficultyDisplay();
 
 	String getTargetName();
 

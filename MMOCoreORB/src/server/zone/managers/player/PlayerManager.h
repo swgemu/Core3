@@ -262,8 +262,6 @@ namespace player {
 
 class PlayerManager : public Observer {
 public:
-	static const int MAX_CHAR_ONLINE_COUNT = 2;
-
 	PlayerManager(ZoneServer* zoneServer, ZoneProcessServer* impl);
 
 	void loadNameMap();
@@ -416,6 +414,8 @@ public:
 
 	SortedVector<String> getTeachableSkills(CreatureObject* teacher, CreatureObject* student);
 
+	OnlineZoneClientMap* getOnlineZoneClientMap();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -460,7 +460,7 @@ class PlayerManagerImplementation : public ObserverImplementation, public Logger
 	OnlineZoneClientMap onlineZoneClientMap;
 
 public:
-	static const int MAX_CHAR_ONLINE_COUNT = 2;
+	static int MAX_CHAR_ONLINE_COUNT;
 
 private:
 	Reference<StartingItemList* > startingItemList;
@@ -639,6 +639,8 @@ public:
 	bool acceptTeachingOffer(CreatureObject* teacher, CreatureObject* student, Skill* skill);
 
 	SortedVector<String> getTeachableSkills(CreatureObject* teacher, CreatureObject* student);
+
+	OnlineZoneClientMap* getOnlineZoneClientMap();
 
 	WeakReference<PlayerManager*> _this;
 

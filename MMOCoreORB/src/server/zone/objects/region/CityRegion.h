@@ -121,6 +121,8 @@ using namespace server::zone::managers::city;
 
 #include "server/zone/objects/region/CityStructureInventory.h"
 
+#include "system/thread/atomic/AtomicInteger.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -173,6 +175,8 @@ public:
 	bool containsPoint(float x, float y);
 
 	Time* getNextUpdateTime();
+
+	int getCurrentPlayerCount();
 
 	void addCitizen(unsigned long long citizenID);
 
@@ -334,6 +338,10 @@ public:
 
 	void resetVotingPeriod();
 
+	bool isLoaded();
+
+	void setLoaded(bool load);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -367,6 +375,8 @@ protected:
 	VectorMap<unsigned long long, int> candidates;
 
 	VectorMap<unsigned long long, unsigned long long> mayoralVotes;
+
+	AtomicInteger currentPlayers;
 
 	String customRegionName;
 
@@ -407,6 +417,8 @@ protected:
 	bool hasShuttle;
 
 	unsigned long long shuttleID;
+
+	bool loaded;
 
 	Time nextUpdateTime;
 
@@ -465,6 +477,8 @@ public:
 
 	Time* getNextUpdateTime();
 
+	int getCurrentPlayerCount();
+
 	void addCitizen(unsigned long long citizenID);
 
 	void removeCitizen(unsigned long long citizenID);
@@ -624,6 +638,10 @@ public:
 	bool isVotingPeriod();
 
 	void resetVotingPeriod();
+
+	bool isLoaded();
+
+	void setLoaded(bool load);
 
 	WeakReference<CityRegion*> _this;
 
@@ -698,6 +716,8 @@ public:
 
 	bool containsPoint(float x, float y);
 
+	int getCurrentPlayerCount();
+
 	void addCitizen(unsigned long long citizenID);
 
 	void removeCitizen(unsigned long long citizenID);
@@ -843,6 +863,10 @@ public:
 	bool isVotingPeriod();
 
 	void resetVotingPeriod();
+
+	bool isLoaded();
+
+	void setLoaded(bool load);
 
 };
 

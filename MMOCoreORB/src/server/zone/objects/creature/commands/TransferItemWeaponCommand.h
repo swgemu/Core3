@@ -174,6 +174,11 @@ public:
 
 						if (creature->hasBuff(String("centerofbeing").hashCode()))
 							creature->removeBuff(String("centerofbeing").hashCode());
+
+						ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
+						if (playerManager != NULL) {
+							creature->setLevel(playerManager->calculatePlayerLevel(creature));
+						}
 					}
 
 				}

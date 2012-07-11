@@ -98,6 +98,9 @@ ZoneServerImplementation::ZoneServerImplementation(ConfigManager* config) :
 	galaxyName = "Core3";
 
 	processor = NULL;
+	
+	
+	serverCap = 1500;
 
 	phandler = NULL;
 
@@ -207,6 +210,9 @@ void ZoneServerImplementation::initialize() {
 	cityManager->deploy("CityManager");
 	cityManager->loadLuaConfig();
 
+	auctionManager = new AuctionManager(_this.get());
+	auctionManager->deploy();
+
 	startZones();
 
 	startManagers();
@@ -250,10 +256,6 @@ void ZoneServerImplementation::startZones() {
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
 
-	auctionManager = new AuctionManager(_this.get());
-	auctionManager->deploy();
-	auctionManager->initialize();
-
 	missionManager = new MissionManager(_this.get(), processor);
 	missionManager->deploy("MissionManager");
 
@@ -272,6 +274,8 @@ void ZoneServerImplementation::startManagers() {
 
 	//start global screne plays
 	DirectorManager::instance()->startGlobalScreenPlays();
+
+	auctionManager->initialize();
 }
 
 void ZoneServerImplementation::start(int p, int mconn) {
@@ -401,8 +405,9 @@ void ZoneServerImplementation::processMessage(Message* message) {
 
 	Task* task = zonePacketHandler->generateMessageTask(client, message);
 
-	if (task != NULL)
-		Core::getTaskManager()->executeTask(task);
+	if (task != NULL) {
+		Core::getTaskManager()->executeTask(task, ((MessageCallback*)task)->getTaskQueue());
+	}
 
 	delete message;
 }
@@ -496,7 +501,10 @@ void ZoneServerImplementation::destroyObjectFromDatabase(uint64 objectID) {
 void ZoneServerImplementation::changeUserCap(int amount) {
 	lock();
 
+	serverCap += amount;
 	//userManager->changeUserCap(amount);
+	
+	info("server cap changed to " + String::valueOf(serverCap), true);
 
 	unlock();
 }
@@ -560,7 +568,8 @@ void ZoneServerImplementation::printInfo() {
 		}
 	}
 
-	msg << dec << totalCreatures << " random creatures spawned" << endl;
+//	msg << dec << totalCreatures << " random creatures spawned" << endl;
+	msg << dec << playerManager->getOnlineZoneClientMap()->getDistinctIps() << " total distinct ips connected";
 #endif
 
 	unlock();

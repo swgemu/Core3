@@ -169,6 +169,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/player/sessions/SlicingSession.cpp \
 				server/zone/objects/player/sessions/FindSession.cpp \
 				server/zone/objects/player/sessions/vendor/CreateVendorSession.cpp \
+				server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.cpp \
 				server/zone/objects/player/sessions/PlaceStructureSession.cpp \
 				server/zone/objects/player/sessions/DestroyStructureSession.cpp \
 				server/zone/objects/player/sessions/ConversationSession.cpp \
@@ -265,7 +266,6 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/tangible/terminal/mission/MissionTerminal.cpp \
 				server/zone/objects/tangible/wearables/RobeObject.cpp \
 				server/zone/objects/auction/AuctionItem.cpp \
-				server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.cpp \
 				server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
 				server/zone/objects/tangible/terminal/gambling/GamblingTerminal.cpp \
 				server/zone/objects/mission/MissionObject.cpp \
@@ -287,6 +287,9 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/creature/ai/AiActor.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/tangible/components/ElevatorMenuComponent.cpp \
+		server/zone/objects/tangible/components/ElevatorUpMenuComponent.cpp \
+		server/zone/objects/tangible/components/ElevatorDownMenuComponent.cpp \
 		server/zone/managers/player/PermissionLevelList.cpp \
 		server/zone/objects/creature/components/TrainerMenuComponent.cpp \
 		server/zone/objects/creature/variables/CreatureTemplateReference.cpp \
@@ -328,6 +331,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/LootContainerComponent.cpp \
 		server/zone/objects/scene/components/ContainerComponent.cpp \
 		server/zone/objects/scene/components/DataObjectComponentReference.cpp \
+		server/zone/objects/scene/components/DataObjectComponent.cpp \
 		server/zone/objects/region/components/CityVotingMenuComponent.cpp \
 		server/zone/objects/region/components/CityManagementMenuComponent.cpp \
 		server/zone/objects/player/components/PlayerObjectMenuComponent.cpp \
@@ -379,6 +383,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/ServerCore.cpp \
 		server/web/WebServer.cpp \
 		server/web/servlets/permissions/PermissionsServlet.cpp \
+		server/web/servlets/admin/AdminServlet.cpp \
 		server/web/HttpRequest.cpp \
 		server/web/HttpResponse.cpp \
 		server/web/session/HttpSession.cpp \
@@ -473,7 +478,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/auction/AuctionItemImplementation.cpp \
 		server/zone/objects/tangible/terminal/guild/GuildTerminalImplementation.cpp \
 		server/zone/objects/tangible/terminal/gambling/GamblingTerminalImplementation.cpp \
-		server/zone/objects/tangible/terminal/elevator/ElevatorTerminalImplementation.cpp \
 		server/zone/objects/tangible/consumable/ConsumableImplementation.cpp \
 		server/zone/objects/tangible/consumable/DelayedBuffObserverImplementation.cpp \
 		server/zone/objects/tangible/deed/DeedImplementation.cpp \
@@ -580,6 +584,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sessions/SlicingSessionImplementation.cpp \
 		server/zone/objects/player/sessions/FindSessionImplementation.cpp \
 		server/zone/objects/player/sessions/vendor/CreateVendorSessionImplementation.cpp \
+		server/zone/objects/player/sessions/vendor/VendorAdBarkingSessionImplementation.cpp \
 		server/zone/objects/player/sessions/PlaceStructureSessionImplementation.cpp \
 		server/zone/objects/player/sessions/DestroyStructureSessionImplementation.cpp \
 		server/zone/objects/player/sui/SuiBoxImplementation.cpp \

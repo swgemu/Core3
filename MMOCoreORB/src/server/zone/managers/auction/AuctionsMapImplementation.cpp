@@ -5,8 +5,10 @@
  *      Author: kyle
  */
 
+#include "engine/engine.h"
 
 #include "AuctionsMap.h"
+#include "AuctionTerminalMap.h"
 #include "server/zone/objects/auction/AuctionItem.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/ZoneServer.h"
@@ -16,37 +18,43 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/packets/auction/ItemSoldMessage.h"
 
-int AuctionsMapImplementation::addItem(CreatureObject* player, SceneObject* vendor, String& uid, AuctionItem* item) {
+int AuctionsMapImplementation::addItem(CreatureObject* player, SceneObject* vendor, AuctionItem* item) {
+
+	if(vendor == NULL || vendor->getZone() == NULL)
+		return ItemSoldMessage::VENDORNOTWORKING;
+
+	String planet = vendor->getZone()->getZoneName();
+
+	String region = "@planet_n:" + vendor->getZone()->getZoneName();
+	ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion();
+	if(cityRegion != NULL)
+		region = cityRegion->getRegionName();
 
 	if(vendor->isBazaarTerminal())
-		return addBazaarItem(player, uid, item);
+		return addBazaarItem(player, planet, region, vendor, item);
 
-	return addVendorItem(player, vendor, uid, item);
+	return addVendorItem(player, planet, region, vendor, item);
 }
 
-int AuctionsMapImplementation::addVendorItem(CreatureObject* player, SceneObject* vendor, String& uid, AuctionItem* item) {
+int AuctionsMapImplementation::addVendorItem(CreatureObject* player, const String& planet, const String& region, SceneObject* vendor, AuctionItem* item) {
 
-	VuidString vuid(uid);
+	vendorItemsForSale.ensureTerminalDataExists(planet, region, vendor);
 
-	if(!vendorItemsForSale.contains(vuid)) {
-		SortedVector<ManagedReference<AuctionItem*> > items;
-		items.setNoDuplicateInsertPlan();
-		vendorItemsForSale.put(vuid, items);
-	}
-
-	SortedVector<ManagedReference<AuctionItem*> >* vendorItems = &vendorItemsForSale.get(vuid);
+	Reference<TerminalItemList*> vendorItems = vendorItemsForSale.getVendorListing(planet, region, vendor);
 
 	if(vendorItems == NULL)
 		return ItemSoldMessage::VENDORNOTWORKING;
 
-	Locker _locker(_this.get());
-
-	if(vendorItems->contains(item))
+	if(allItems.contains(item->getAuctionedItemObjectID()))
 		return ItemSoldMessage::ALREADYFORSALE;
 
-	vendorItems->put(item);
+	Locker locker(_this.get());
+	int result = vendorItems->put(item);
+
+	if(result == -1)
+		return ItemSoldMessage::UNKNOWNERROR;
+
 	allItems.put(item->getAuctionedItemObjectID(), item);
-	item->setVendorUID(vuid);
 
 	if(vendorItems->size() == 1 && player != NULL)
 		sendVendorUpdateMail(vendor, false);
@@ -54,54 +62,62 @@ int AuctionsMapImplementation::addVendorItem(CreatureObject* player, SceneObject
 	return ItemSoldMessage::SUCCESS;
 }
 
-int AuctionsMapImplementation::addBazaarItem(CreatureObject* player, String& uid, AuctionItem* item) {
+int AuctionsMapImplementation::addBazaarItem(CreatureObject* player, const String& planet, const String& region, SceneObject* vendor, AuctionItem* item) {
 
-	VuidString vuid(uid);
+	bazaarItemsForSale.ensureTerminalDataExists(planet, region, vendor);
 
-	if(!bazaarItemsForSale.contains(vuid)) {
-		SortedVector<ManagedReference<AuctionItem*> > items;
-		items.setNoDuplicateInsertPlan();
-		bazaarItemsForSale.put(vuid, items);
-	}
-
-	SortedVector<ManagedReference<AuctionItem*> >* bazaarItems = &bazaarItemsForSale.get(vuid);
+	Reference<TerminalItemList*> bazaarItems = bazaarItemsForSale.getVendorListing(planet, region, vendor);
 
 	if(bazaarItems == NULL)
 		return ItemSoldMessage::VENDORNOTWORKING;
 
-	Locker _locker(_this.get());
-
-	if(bazaarItems->contains(item))
+	if(allItems.contains(item->getAuctionedItemObjectID()))
 		return ItemSoldMessage::ALREADYFORSALE;
 
-	bazaarItems->put(item);
-	allItems.put(item->getAuctionedItemObjectID(), item);
-	item->setVendorUID(vuid);
+	Locker locker(_this.get());
+	int result = bazaarItems->put(item);
 
+	if(result == -1)
+		return ItemSoldMessage::UNKNOWNERROR;
+
+	allItems.put(item->getAuctionedItemObjectID(), item);
 	int count = bazaarCount.get(item->getOwnerID()) + 1;
 	bazaarCount.put(item->getOwnerID(), count);
 
 	return ItemSoldMessage::SUCCESS;
 }
 
-int AuctionsMapImplementation::removeItem(SceneObject* vendor, String& uid, AuctionItem* item) {
+int AuctionsMapImplementation::removeItem(SceneObject* vendor, AuctionItem* item) {
+
+	if(vendor->getZone() == NULL)
+		return ItemSoldMessage::VENDORNOTWORKING;
+
+	String planet = vendor->getZone()->getZoneName();
+
+	String region = "@planet_n:" + vendor->getZone()->getZoneName();
+	ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion();
+	if(cityRegion != NULL)
+		region = cityRegion->getRegionName();
 
 	if(vendor->isBazaarTerminal())
-		return removeBazaarItem(uid, item);
+		return removeBazaarItem(planet, region, vendor, item);
 
-	return removeVendorItem(vendor, uid, item);
+	return removeVendorItem(planet, region, vendor, item);
 }
 
-int AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, String& uid, AuctionItem* item) {
+int AuctionsMapImplementation::removeVendorItem(const String& planet, const String& region, SceneObject* vendor,  AuctionItem* item) {
 
-	if(!vendorItemsForSale.contains(uid)) {
+	Reference<TerminalItemList*> vendorItems = vendorItemsForSale.getVendorListing(planet, region, vendor);
+
+	if(vendorItems == NULL)
 		return ItemSoldMessage::VENDORNOTWORKING;
-	}
 
-	SortedVector<ManagedReference<AuctionItem*> >* vendorItems = &vendorItemsForSale.get(uid);
+	if(!vendorItems->contains(item))
+		return ItemSoldMessage::INVALIDITEM;
 
-	Locker _locker(_this.get());
-	if(vendorItems->drop(item)) {
+	Locker locker(_this.get());
+	if(vendorItems->removeElement(item)) {
+
 		allItems.drop(item->getAuctionedItemObjectID());
 
 		if(vendorItems->size() == 0)
@@ -114,24 +130,20 @@ int AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, String& uid
 	return ItemSoldMessage::UNKNOWNERROR;
 }
 
-int AuctionsMapImplementation::removeBazaarItem(String& uid, AuctionItem* item) {
+int AuctionsMapImplementation::removeBazaarItem(const String& planet, const String& region, SceneObject* vendor,  AuctionItem* item) {
 
-	if(!bazaarItemsForSale.contains(uid)) {
+	Reference<TerminalItemList*> bazaarItems = bazaarItemsForSale.getVendorListing(planet, region, vendor);
+
+	if(bazaarItems == NULL)
 		return ItemSoldMessage::VENDORNOTWORKING;
-	}
 
-	SortedVector<ManagedReference<AuctionItem*> >* bazaarItems = &bazaarItemsForSale.get(uid);
+	if(!bazaarItems->contains(item))
+		return ItemSoldMessage::INVALIDITEM;
 
-	Locker _locker(_this.get());
-	if(bazaarItems->drop(item)) {
+	Locker locker(_this.get());
+	if(bazaarItems->removeElement(item)) {
+
 		allItems.drop(item->getAuctionedItemObjectID());
-
-		int count = bazaarCount.get(item->getOwnerID()) - 1;
-
-		if(count <= 0)
-			bazaarCount.drop(item->getOwnerID());
-		else
-			bazaarCount.put(item->getOwnerID(), count);
 
 		return ItemSoldMessage::SUCCESS;
 	}
@@ -140,160 +152,44 @@ int AuctionsMapImplementation::removeBazaarItem(String& uid, AuctionItem* item) 
 	return ItemSoldMessage::UNKNOWNERROR;
 }
 
-SortedVector<ManagedReference<AuctionItem* > > AuctionsMapImplementation::getVendorItems(CreatureObject* player, SceneObject* vendor, const String& vuid, const String& search) {
-	int lowerbound = 0;
-	int upperbound = vendorItemsForSale.size() - 1;
-
-	VuidString searchTerm(search);
-
-	if(!searchTerm.isEmpty()) {
-		lowerbound = vendorItemsForSale.lowerBound(searchTerm);
-		upperbound = vendorItemsForSale.upperBound(searchTerm);
-	}
-//	System::out << "\nSearch: " << searchTerm << " LowerBound: " << lowerbound << " Upperbound: " << upperbound << "\n" << endl;
-
-	SortedVector<ManagedReference<AuctionItem* > > results;
-
-//	System::out << "Vendors\n" << endl;
-//	for(int i = 0; i < vendorItemsForSale.size(); ++i)
-//		System::out << "  " << i << ". "  << vendorItemsForSale.elementAt(i).getKey() << "   " << vendorItemsForSale.elementAt(i).getKey().compareTo(search) << "\n" << endl;
-
-
-	if(lowerbound != -1 && upperbound == -1)
-		upperbound = lowerbound;
-
-	if(lowerbound == -1 || upperbound == -1 || vendorItemsForSale.isEmpty())
-		return results;
-
-	VendorDataComponent* vendorData = NULL;
-	DataObjectComponentReference* data = NULL;
-
-	if(vendor != NULL) {
-		data = vendor->getDataObjectComponent();
-		if(data != NULL && data->get() != NULL && data->get()->isVendorData())
-			vendorData = cast<VendorDataComponent*>(data->get());
-	}
-
-//	System::out << "\nVendor Match\n " << endl;
-
-	for(int i = lowerbound; i <= upperbound; ++i) {
-
-//		System::out << i << ". " << vendorItemsForSale.elementAt(i).getKey() << "\n" << endl;
-
-		SortedVector<ManagedReference<AuctionItem* > >* items = &vendorItemsForSale.get(i);
-		SceneObject* thisVendor = NULL;
-		VendorDataComponent* thisVendorData = NULL;
-
-		for(int j = 0; j < items->size(); ++j) {
-			ManagedReference<AuctionItem*> item = items->get(j);
-			if(vendor == NULL) {
-				results.add(item);
-				continue;
-			}
-
-			if(player == NULL)
-				break;
-
-			if(thisVendor == NULL) {
-				thisVendor = vendor->getZoneServer()->getObject(item->getVendorID());
-
-				if(thisVendor != NULL && thisVendor->isVendor()) {
-					DataObjectComponentReference* thisData = thisVendor->getDataObjectComponent();
-					if(thisData != NULL && thisData->get() != NULL && thisData->get()->isVendorData())
-						thisVendorData = cast<VendorDataComponent*>(thisData->get());
-				}
-			}
-
-			if(thisVendorData == NULL || thisVendor == NULL) {
-				logger.error("NULL vendor data");
-				continue;
-			}
-
-			/// Vendor search should see all items if vendor search is enabled
-			if(vendor->isBazaarTerminal() && thisVendorData->isVendorSearchEnabled())
-				results.add(item);
-
-			/// if the vendor i'm looking at is the same vendor the items is on, list it
-			else if(thisVendorData->getUID() == vuid)
-				results.add(item);
-
-			/// If the owner is search, should see all items that are on his vendors
-			else if(thisVendorData->getOwnerId() == player->getObjectID())
-				results.add(item);
-		}
-	}
-//	System::out << "\n" << endl;
-
-	return results;
+TerminalListVector AuctionsMapImplementation::getVendorTerminalData(const String& planet, const String& region, SceneObject* vendor) {
+	return vendorItemsForSale.getTerminalData(planet, region, vendor);
 }
 
-SortedVector<ManagedReference<AuctionItem* > > AuctionsMapImplementation::getBazaarItems(SceneObject* vendor, const String& vuid, const String& search) {
-
-	int lowerbound = 0;
-	int upperbound = bazaarItemsForSale.size() - 1;
-
-	VuidString searchTerm(search);
-
-	if(!searchTerm.isEmpty()) {
-		lowerbound = bazaarItemsForSale.lowerBound(searchTerm);
-		upperbound = bazaarItemsForSale.upperBound(searchTerm);
-	}
-	//System::out << "\nSearch: " << searchTerm << " LowerBound: " << lowerbound << " Upperbound: " << upperbound << "\n" << endl;
-
-	SortedVector<ManagedReference<AuctionItem* > > results;
-
-	//System::out << "Vendors\n" << endl;
-	//for(int i = 0; i < bazaarItemsForSale.size(); ++i)
-	//	System::out << "  " << i << ". "  << bazaarItemsForSale.elementAt(i).getKey() << "   " << bazaarItemsForSale.elementAt(i).getKey().compareTo(search) << "\n" << endl;
-
-
-	if(lowerbound != -1 && upperbound == -1)
-		upperbound = lowerbound;
-
-	if(lowerbound == -1 || upperbound == -1 || bazaarItemsForSale.isEmpty())
-		return results;
-
-	//System::out << "\nVendor Match\n " << endl;
-	for(int i = lowerbound; i <= upperbound; ++i) {
-
-		//System::out << i << ". " << bazaarItemsForSale.elementAt(i).getKey() << "\n" << endl;
-
-		SortedVector<ManagedReference<AuctionItem* > >* items = &bazaarItemsForSale.get(i);
-
-		for(int j = 0; j < items->size(); ++j) {
-			ManagedReference<AuctionItem*> item = items->get(j);
-			if(item != NULL)
-				results.add(item);
-		}
-	}
-	//System::out << "\n" << endl;
-
-	return results;
+TerminalListVector AuctionsMapImplementation::getBazaarTerminalData(const String& planet, const String& region, SceneObject* vendor) {
+	return bazaarItemsForSale.getTerminalData(planet, region, vendor);
 }
 
-int AuctionsMapImplementation::getVendorItemCount(const String& uid) {
+int AuctionsMapImplementation::getVendorItemCount(SceneObject* vendor) {
 
-	if(!vendorItemsForSale.contains(uid))
+	if(vendor->getZone() == NULL) {
+		logger.error("null zone in AuctionsMapImplementation::getVendorItemCount");
+		return 0;
+	}
+
+	String planet = vendor->getZone()->getZoneName();
+
+	String region = "@planet_n:" + vendor->getZone()->getZoneName();
+	ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion();
+	if(cityRegion != NULL)
+		region = cityRegion->getRegionName();
+
+	Reference<TerminalItemList*> vendorItems = vendorItemsForSale.getVendorListing(planet, region, vendor);
+
+	if(vendorItems == NULL)
 		return 0;
 
-	return vendorItemsForSale.get(uid).size();
+	return vendorItems->size();
 }
 
-void AuctionsMapImplementation::deleteVendorItems(const String& uid) {
+void AuctionsMapImplementation::deleteTerminalItems(SceneObject* vendor) {
 
-	if(!vendorItemsForSale.contains(uid))
+	if(vendor->isBazaarTerminal()) {
+		logger.error("null zone in AuctionsMapImplementation::deleteTerminalItems");
 		return;
-
-	SortedVector<ManagedReference<AuctionItem* > >* items = &vendorItemsForSale.get(uid);
-
-	Locker locker(_this.get());
-	while(items->size() > 0) {
-		ManagedReference<AuctionItem* > item = items->remove(0);
-
-		ObjectManager::instance()->destroyObjectFromDatabase(item->_getObjectID());
 	}
 
-	vendorItemsForSale.drop(uid);
+	vendorItemsForSale.removeTerminal(vendor);
 }
 
 void AuctionsMapImplementation::sendVendorUpdateMail(SceneObject* vendor, bool isEmpty) {
@@ -335,120 +231,35 @@ void AuctionsMapImplementation::sendVendorUpdateMail(SceneObject* vendor, bool i
 
 void AuctionsMapImplementation::updateUID(SceneObject* vendor, const String& oldUID, const String& newUID) {
 
-	if(vendorItemsForSale.contains(oldUID)) {
-		Locker locker(_this.get());
-		SortedVector<ManagedReference<AuctionItem* > > itemList = vendorItemsForSale.get(oldUID);
-		vendorItemsForSale.drop(oldUID);
-
-		String planetStr = vendor->getZone()->getZoneName();
-		ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion();
-		String region = "";
-
-		if (cityRegion != NULL)
-			region = cityRegion->getRegionName();
-
-		for(int i = 0; i < itemList.size(); ++i) {
-			ManagedReference<AuctionItem* > item = itemList.get(i);
-			if(item == NULL)
-				continue;
-
-			item->setPlanet(planetStr);
-			item->setRegion(region);
-			item->setVendorUID(newUID);
-		}
-
-		vendorItemsForSale.put(newUID, itemList);
+	if (vendor == NULL || vendor->getZone() == NULL || (!vendor->isVendor() && !vendor->isBazaarTerminal())) {
+		logger.error("NULL zone while updating UID  Vendor Is Bazaar: " + String::valueOf(vendor->isBazaarTerminal()));
+		return;
 	}
 
-	if(bazaarItemsForSale.contains(oldUID)) {
-		Locker locker(_this.get());
-		SortedVector<ManagedReference<AuctionItem* > > itemList = bazaarItemsForSale.get(oldUID);
-		bazaarItemsForSale.drop(oldUID);
+	String planet = vendor->getZone()->getZoneName();
 
-		String planetStr = vendor->getZone()->getZoneName();
-		ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion();
-		String region = planetStr;
+	String region = "@planet_n:" + vendor->getZone()->getZoneName();
+	ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion();
+	if(cityRegion != NULL)
+		region = cityRegion->getRegionName();
 
-		if (cityRegion != NULL)
-			region = cityRegion->getRegionName();
-
-		for(int i = 0; i < itemList.size(); ++i) {
-			ManagedReference<AuctionItem* > item = itemList.get(i);
-			if(item == NULL)
-				continue;
-
-			item->setPlanet(planetStr);
-			item->setRegion(region);
-			item->setVendorUID(newUID);
-		}
-
-		bazaarItemsForSale.put(newUID, itemList);
-	}
+	if(vendor->isVendor())
+		vendorItemsForSale.updateTerminalUID(planet, region, vendor, newUID);
+	else
+		bazaarItemsForSale.updateTerminalUID(planet, region, vendor, newUID);
 }
 
-//bool AuctionsMapImplementation::addItem(String& vendorUID, AuctionItem* item) {
-//
-//	/// Send mail every 5 days
-//	if (lastTimeVendorEmpty - time(0) > 60 * 60 * 24 * 5 * mailNum) {
-//		sendVendorUpdateMail(true);
-//		mailNum++;
-//	}
-//
-//	/// Destroy after 30 days
-//	if (lastTimeVendorEmpty - time(0) > 60 * 60 * 24 * 30) {
-//		sendVendorDestroyMail();
-//		vendor->destroyObjectFromWorld(true);
-//		vendor->destroyObjectFromDatabase(true);
-//		return;
-//	}
-//}
-//
+void AuctionsMapImplementation::updateVendorSearch(SceneObject* vendor, bool enabled) {
 
-//
-//void AuctionsMapImplementation::sendVendorDestroyMail() {
-//
-//	ChatManager* cman = vendor->getZoneServer()->getChatManager();
-//	ManagedReference<CreatureObject*> owner = cast<CreatureObject*>(vendor->getZoneServer()->getObject(ownerId));
-//
-//	String sender = vendor->getDisplayedName();
-//	UnicodeString subject("@auction:vendor_status_subject");
-//
-//	if (cman == NULL || owner == NULL)
-//		return;
-//
-//	Locker playerLocker(owner);
-//
-//	StringIdChatParameter body("@auction:vendor_status_deleted");
-//	body.setTO(vendor->getDisplayedName());
-//	cman->sendMail(sender, subject, body, owner->getFirstName());
-//
-//}
-//
-//
-//inline void addVendorItem(AuctionItem* item) {
-//	if (vendorItems.size() == 0 && !vendor->isBazaarTerminal()) {
-//		sendVendorUpdateMail(false);
-//		mailNum = 1;
-//		lastTimeVendorEmpty = 0;
-//	}
-//
-//	vendorItems.put(item->getAuctionedItemObjectID(), item);
-//}
-//
-//inline bool containsVendorItem(uint64 itemID) {
-//	return vendorItems.contains(itemID);
-//}
-//
-//inline void dropVendorItem(uint64 itemID) {
-//	vendorItems.drop(itemID);
-//
-//	if (vendorItems.size() == 0 && !vendor->isBazaarTerminal())
-//		sendVendorUpdateMail(true);
-//}
-//
-//inline void dropVendorItem(AuctionItem* item) {
-//	vendorItems.drop(item->getAuctionedItemObjectID());
-//
-//	if (vendorItems.size() == 0 && !vendor->isBazaarTerminal())
-//		sendVendorUpdateMail(true);
-//}
+	if (vendor == NULL || !vendor->isVendor())
+		return;
+
+	String planet = vendor->getZone()->getZoneName();
+
+	String region = "@planet_n:" + vendor->getZone()->getZoneName();
+	ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion();
+	if(cityRegion != NULL)
+		region = cityRegion->getRegionName();
+
+	vendorItemsForSale.updateTerminalSearch(planet, region, vendor, enabled);
+}

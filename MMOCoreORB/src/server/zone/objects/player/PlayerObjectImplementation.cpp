@@ -830,6 +830,10 @@ void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient
 	}
 
 	PlayerObject* playerToAddGhost = playerToAdd->getPlayerObject();
+
+	if (playerToAddGhost == NULL)
+		return;
+
 	playerToAddGhost->addReverseFriend(cast<CreatureObject*>(parent.get().get())->getFirstName());
 	playerToAddGhost->updateToDatabase();
 
@@ -895,6 +899,10 @@ void PlayerObjectImplementation::removeFriend(const String& name, bool notifyCli
 	}
 
 	PlayerObject* playerToRemoveGhost = playerToRemove->getPlayerObject();
+
+	if (playerToRemoveGhost == NULL)
+		return;
+
 	playerToRemoveGhost->removeReverseFriend((cast<CreatureObject*>(parent.get().get()))->getFirstName());
 	playerToRemoveGhost->updateToDatabase();
 
@@ -1377,11 +1385,18 @@ void PlayerObjectImplementation::reload(ZoneClientSession* client) {
 void PlayerObjectImplementation::disconnect(bool closeClient, bool doLock) {
 	Locker locker(parent.get());
 
+	CreatureObject* creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
 	if (!isOnline()) {
+		ZoneClientSession* owner = creature->getClient();
+
+		if (closeClient && owner != NULL)
+			owner->closeConnection(false, true);
+
+		creature->setClient(NULL);
+
 		return;
 	}
-
-	CreatureObject* creature = dynamic_cast<CreatureObject*>(parent.get().get());
 
 	if (/*isInCombat() && */!isLinkDead()) {
 		info("link dead");
@@ -1677,4 +1692,17 @@ void PlayerObjectImplementation::removePermissionGroup(const String& group, bool
 
 bool PlayerObjectImplementation::hasPermissionGroup(const String& group) {
 	return permissionGroups.contains(group);
+}
+
+void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	IntangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
+
+	for (int i = 0; i < ownedStructures.size(); ++i) {
+		ManagedReference<StructureObject*> structure = ownedStructures.get(i);
+
+		if (structure != NULL) {
+			structure->destroyObjectFromWorld(false);
+			structure->destroyObjectFromDatabase(true);
+		}
+	}
 }

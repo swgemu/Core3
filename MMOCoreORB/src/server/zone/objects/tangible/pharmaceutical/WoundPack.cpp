@@ -143,7 +143,7 @@ byte WoundPack::getAttribute() {
 
 DistributedObjectServant* WoundPack::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -189,31 +189,31 @@ WoundPackImplementation::operator const WoundPack*() {
 }
 
 void WoundPackImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void WoundPackImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void WoundPackImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void WoundPackImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void WoundPackImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void WoundPackImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void WoundPackImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void WoundPackImplementation::_serializationHelperMethod() {
@@ -370,15 +370,15 @@ unsigned int WoundPackImplementation::calculatePower(CreatureObject* healer, Cre
 	float power = getEffectiveness();
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		ZoneServer 
 	if (applyBattleFatigue){
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  			power = power - power * patient.calculateBFRatio();
-	power = power - power * patient->calculateBFRatio();
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  			power = power - (power * patient.calculateBFRatio() * healer.calculateBFRatio());
+	power = power - (power * patient->calculateBFRatio() * healer->calculateBFRatio());
 }
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		ZoneServer zoneServer = super.getZoneServer();
 	ManagedReference<ZoneServer* > zoneServer = PharmaceuticalObjectImplementation::getZoneServer();
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		PlayerManager playerManager = zoneServer.getPlayerManager();
 	ManagedReference<PlayerManager* > playerManager = zoneServer->getPlayerManager();
-	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		float modEnvironment = 1 + (healer.getSkillMod("private_medical_rating") / 100.0f);
-	float modEnvironment = 1 + (healer->getSkillMod("private_medical_rating") / 100.0f);
+	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		float modEnvironment = 1 + ((float) healer.getSkillMod("private_medical_rating") / 100.0f);
+	float modEnvironment = 1 + ((float) healer->getSkillMod("private_medical_rating") / 100.0f);
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
 	float modSkill = (float) healer->getSkillMod("healing_wound_treatment");
 	// server/zone/objects/tangible/pharmaceutical/WoundPack.idl():  		return (power * modEnvironment * (100.0f + modSkill) / 100.0f);

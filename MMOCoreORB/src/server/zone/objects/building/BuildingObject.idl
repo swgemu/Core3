@@ -59,6 +59,7 @@ import server.zone.templates.SharedObjectTemplate;
 import engine.util.u3d.Vector3;
 import system.lang.StackTrace;
 include server.zone.objects.cell.CellObject;
+include engine.util.u3d.CloseObjectsVector;
 
 class BuildingObject extends StructureObject {
 	@dereferenced
@@ -86,7 +87,7 @@ class BuildingObject extends StructureObject {
 	public BuildingObject() {
 		Logger.setLoggingName("BuildingObject");
 		
-		super.closeobjects = new SortedVector<QuadTreeEntry>();
+		super.closeobjects = new CloseObjectsVector();
 		super.closeobjects.setNoDuplicateInsertPlan();
 
 		super.staticObject = false;
@@ -142,6 +143,11 @@ class BuildingObject extends StructureObject {
 	 * @post Zone unlocked
 	 */
 	public native void broadcastCellPermissions();
+	
+	/**
+	 * Updates a specific cell's permissions to the players in the area
+	 */
+	public native void broadcastCellPermissions(unsigned long objectid);
 	
 	/**
 	 * Checks to see if the player with the name is allowed entry.

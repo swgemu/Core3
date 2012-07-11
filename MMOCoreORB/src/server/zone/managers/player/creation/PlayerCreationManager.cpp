@@ -511,7 +511,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 				int accountPermissionLevel = playerAccount->getAdminLevel();
 				String accountName = playerAccount->getUsername();
 
-				if(accountPermissionLevel > 0) {
+				if(accountPermissionLevel > 0 && (accountPermissionLevel == 12 || accountPermissionLevel == 15)) {
 					playerManager->updatePermissionLevel(playerCreature, accountPermissionLevel);
 				}
 

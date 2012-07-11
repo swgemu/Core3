@@ -160,7 +160,7 @@ bool EnhancePack::isEnhancePack() {
 
 DistributedObjectServant* EnhancePack::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -206,31 +206,31 @@ EnhancePackImplementation::operator const EnhancePack*() {
 }
 
 void EnhancePackImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void EnhancePackImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void EnhancePackImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void EnhancePackImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void EnhancePackImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void EnhancePackImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void EnhancePackImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void EnhancePackImplementation::_serializationHelperMethod() {
@@ -412,15 +412,11 @@ int EnhancePackImplementation::handleObjectMenuSelect(CreatureObject* player, by
 unsigned int EnhancePackImplementation::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float power = getEffectiveness();
 	float power = getEffectiveness();
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		ZoneServer 
-	if (applyBattleFatigue)	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  			power = power - (power * patient.calculateBFRatio());
-	power = power - (power * patient->calculateBFRatio());
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		ZoneServer zoneServer = super.getZoneServer();
-	ManagedReference<ZoneServer* > zoneServer = PharmaceuticalObjectImplementation::getZoneServer();
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		PlayerManager playerManager = zoneServer.getPlayerManager();
-	ManagedReference<PlayerManager* > playerManager = zoneServer->getPlayerManager();
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float modEnvironment = (healer.getSkillMod("private_medical_rating") / 100);
-	float modEnvironment = (healer->getSkillMod("private_medical_rating") / 100);
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float 
+	if (applyBattleFatigue)	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  			power = power - (power * patient.calculateBFRatio() * healer.calculateBFRatio());
+	power = power - (power * patient->calculateBFRatio() * healer->calculateBFRatio());
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float modEnvironment = ((float) healer.getSkillMod("private_medical_rating") / 100);
+	float modEnvironment = ((float) healer->getSkillMod("private_medical_rating") / 100);
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
 	float modSkill = (float) healer->getSkillMod("healing_wound_treatment");
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		return power * modEnvironment * ((100 + modSkill) / 100);

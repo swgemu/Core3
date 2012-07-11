@@ -32,13 +32,12 @@ jawa_leader = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 3000000},
-				{group = "color_crystals", chance = 200000},
-				{group = "pistols", chance = 500000},
-				{group = "rifles", chance = 500000},
-				{group = "carbines", chance = 500000}
+				{group = "junk", chance = 7000000},
+				{group = "tailor_components", chance = 1300000},
+				{group = "loot_kit_parts", chance = 1500000},
+				{group = "color_crystals", chance = 200000}
 			},
-			lootChance = 3500000
+			lootChance = 2900000
 		}							
 	},
 	weapons = {"rebel_weapons_medium"},

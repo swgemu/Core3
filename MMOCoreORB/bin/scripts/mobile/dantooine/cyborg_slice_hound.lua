@@ -28,6 +28,7 @@ cyborg_slice_hound = Creature:new {
 
 	aiTemplate = "default",
 	scale = 2.0,
+	scale = 2.0,
 
 	templates = {"object/mobile/warren_cyborg_slicehound.iff"},
 	lootGroups = {},

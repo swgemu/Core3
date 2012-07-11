@@ -258,7 +258,7 @@ bool LootManagerImplementation::createLoot(SceneObject* container, AiAgent* crea
 	if (lootCollection == NULL)
 		return false;
 
-	createLootFromCollection(container, lootCollection, creature->getLevel());
+	return createLootFromCollection(container, lootCollection, creature->getLevel());
 }
 
 bool LootManagerImplementation::createLootFromCollection(SceneObject* container, LootGroupCollection* lootCollection, int level) {

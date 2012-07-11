@@ -457,7 +457,7 @@ class TangibleObject extends SceneObject {
 	}
 	
 	public boolean isDestroyed() {
-		return conditionDamage > maxCondition;
+		return conditionDamage >= maxCondition;
 	}
 	
 	public void setFaction(unsigned int crc) {

@@ -78,13 +78,13 @@ public:
 		if (startNpc != NULL) {
 			Locker locker(startNpc);
 
-			startNpc->scheduleDespawn(0);
+			startNpc->scheduleDespawn(1);
 		}
 
 		if (endNpc != NULL) {
 			Locker locker(endNpc);
 
-			endNpc->scheduleDespawn(0);
+			endNpc->scheduleDespawn(1);
 		}
 	}
 };

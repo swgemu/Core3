@@ -388,14 +388,20 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	float heightOrigin = 1.f;
 	float heightEnd = 1.f;
 
-	Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> closeObjects = object1->getCloseObjects();
+	Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
+	// = object1->getCloseObjects();
 
 	int maxInRangeObjectCount = 0;
 
-	if (closeObjects == NULL) {
-		closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
-		zone->getInRangeObjects(object1->getPositionX(), object1->getPositionY(), 512, closeObjects.get(), true);
+	if (object1->getCloseObjects() == NULL) {
+//		closeObjectsCopy = new SortedVector<ManagedReference<QuadTreeEntry*> >();
+		zone->getInRangeObjects(object1->getPositionX(), object1->getPositionY(), 512, closeObjects, true);
+	} else {
+		CloseObjectsVector* vec = (CloseObjectsVector*) object1->getCloseObjects();
+		vec->safeCopyTo(*closeObjects);		
 	}
+	
+		
 
 	if (object1->isCreatureObject())
 		heightOrigin = getRayOriginPoint(cast<CreatureObject*>(object1));
@@ -412,7 +418,7 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	float intersectionDistance;
 	Triangle* triangle = NULL;
 
-	zone->rlock();
+//	zone->rlock();
 
 	try {
 		for (int i = 0; i < closeObjects->size(); ++i) {
@@ -429,14 +435,14 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 			} catch (Exception& e) {
 				aabbTree = NULL;
 			} catch (...) {
-				zone->runlock();
+//				zone->runlock();
 
 				throw;
 			}
 
 			if (aabbTree != NULL) {
 				//moving ray to model space
-				zone->runlock();
+//				zone->runlock();
 
 				try {
 					Ray ray = convertToModelSpace(rayOrigin, rayEnd, scno);
@@ -450,7 +456,7 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 					throw;
 				}
 
-				zone->rlock();
+//				zone->rlock();
 
 			}
 		}
@@ -459,7 +465,7 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 		Logger::console.error(e.getMessage());
 	}
 
-	zone->runlock();
+//	zone->runlock();
 
 	ManagedReference<SceneObject*> parent1 = object1->getParent();
 	ManagedReference<SceneObject*> parent2 = object2->getParent();

@@ -145,13 +145,13 @@ class WoundPack extends PharmaceuticalObject {
 		float power = getEffectiveness();
 
 		if (applyBattleFatigue) {
-			power = power - power * patient.calculateBFRatio();
+			power = power - (power * patient.calculateBFRatio() * healer.calculateBFRatio());
 		}
 
 		ZoneServer zoneServer = super.getZoneServer();
 		PlayerManager playerManager = zoneServer.getPlayerManager();
 		
-		float modEnvironment = 1 + (healer.getSkillMod("private_medical_rating") / 100.0f);	
+		float modEnvironment = 1 + ((float) healer.getSkillMod("private_medical_rating") / 100.0f);	
 		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
 
 		return (power * modEnvironment * (100.0f + modSkill) / 100.0f);

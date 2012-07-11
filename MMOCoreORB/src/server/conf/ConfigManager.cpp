@@ -93,6 +93,8 @@ ConfigManager::ConfigManager() {
 
 	pingAllowedConnections = 3000;
 	enabledZones.setNoDuplicateInsertPlan();
+
+	purgeDeletedCharacters = 10; //Default is 10 minutes.
 }
 
 bool ConfigManager::loadConfigData() {
@@ -154,6 +156,8 @@ bool ConfigManager::loadConfigData() {
 	webSessionTimeout = getGlobalInt("WebSessionTimeout");
 
 	progressMonitors = getGlobalBoolean("ProgressMonitors");
+
+	purgeDeletedCharacters = getGlobalInt("PurgeDeletedCharacters");
 
 	return true;
 }

@@ -47,6 +47,7 @@ import engine.core.ManagedObject;
 import server.zone.objects.tangible.TangibleObject;
 import engine.util.u3d.QuadTreeEntry;
 import system.util.SortedVector;
+include engine.util.u3d.CloseObjectsVector;
 
 class ShipObject extends TangibleObject {
 	protected float totalMass;
@@ -58,7 +59,7 @@ class ShipObject extends TangibleObject {
 		
 		totalMass = 500.0;
 		
-		super.closeobjects = new SortedVector<QuadTreeEntry>();
+		super.closeobjects = new CloseObjectsVector();
 		super.closeobjects.setNoDuplicateInsertPlan();
 	}
 	

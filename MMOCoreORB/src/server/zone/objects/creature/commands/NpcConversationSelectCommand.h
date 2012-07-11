@@ -72,17 +72,26 @@ public:
 		ManagedReference<CreatureObject*> object = ghost->getConversatingCreature();
 
 		if (object != NULL) {
-			if (!player->isInRange(object, 5))
-				return TOOFAR;
-
 			int option = Integer::valueOf(arguments.toString());
 
 			try {
 				Locker clocker(object, creature);
 
-				object->selectConversationOption(option, player);
+				ValidatedPosition* validPosition = ghost->getLastValidatedPosition();
+				uint64 parentid = validPosition->getParent();
 
-				object->notifyObservers(ObserverEventType::SELECTCONVERSATION, creature, option);
+				if (parentid != object->getParentID())
+					return TOOFAR;
+
+				Vector3 vec = validPosition->getWorldPosition(server->getZoneServer());
+
+				if (vec.distanceTo(object->getWorldPosition()) <= 5.f) {
+					object->selectConversationOption(option, player);
+
+					object->notifyObservers(ObserverEventType::SELECTCONVERSATION, creature, option);
+				} else {
+					return TOOFAR;
+				}
 			} catch (Exception& e) {
 
 			}

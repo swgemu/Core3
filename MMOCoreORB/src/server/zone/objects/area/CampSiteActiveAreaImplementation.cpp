@@ -28,6 +28,8 @@ void CampSiteActiveAreaImplementation::init(CampStructureTemplate* campData) {
 }
 
 void CampSiteActiveAreaImplementation::startTasks() {
+	Locker locker(&taskMutex);
+
 	if(despawnTask == NULL) {
 		despawnTask = new CampDespawnTask(_this.get());
 	} else {
@@ -69,6 +71,8 @@ void CampSiteActiveAreaImplementation::notifyEnter(SceneObject* object) {
 	}
 
 	if(object == campOwner && !abandoned) {
+
+		Locker locker(&taskMutex);
 
 		if(abandonTask->isScheduled())
 			abandonTask->cancel();
@@ -117,6 +121,7 @@ void CampSiteActiveAreaImplementation::notifyExit(SceneObject* object) {
 		return;
 	}
 
+	Locker locker(&taskMutex);
 
 	if(!abandoned && abandonTask != NULL && !abandonTask->isScheduled()) {
 		try {
@@ -136,6 +141,8 @@ int CampSiteActiveAreaImplementation::notifyHealEvent(int64 quantity) {
 int CampSiteActiveAreaImplementation::notifyCombatEvent() {
 	abandonCamp();
 
+	Locker locker(&taskMutex);
+
 	if(abandonTask != NULL)
 		if(abandonTask->isScheduled())
 			abandonTask->cancel();
@@ -150,6 +157,8 @@ void CampSiteActiveAreaImplementation::abandonCamp() {
 	abandoned = true;
 
 	currentXp = 0;
+
+	Locker locker(&taskMutex);
 
 	if(despawnTask != NULL && despawnTask->isScheduled()) {
 		despawnTask->cancel();
@@ -169,6 +178,7 @@ void CampSiteActiveAreaImplementation::abandonCamp() {
 }
 
 bool CampSiteActiveAreaImplementation::despawnCamp() {
+	Locker locker(_this.get());
 
 	if(!abandoned && campOwner != NULL && campOwner->getZoneServer() != NULL) {
 		/// Get Player Manager
@@ -190,6 +200,8 @@ bool CampSiteActiveAreaImplementation::despawnCamp() {
 		playerManager->awardExperience(campOwner, "camp", awarded, true);
 	}
 
+	Locker tlocker(&taskMutex);
+
 	if(despawnTask != NULL ) {
 		if(despawnTask->isScheduled())
 			despawnTask->cancel();
@@ -202,6 +214,8 @@ bool CampSiteActiveAreaImplementation::despawnCamp() {
 			abandonTask->cancel();
 		abandonTask = NULL;
 	}
+
+	tlocker.release();
 
 	if(campOwner != NULL)
 		campOwner->dropObserver(ObserverEventType::STARTCOMBAT, campObserver);
@@ -248,6 +262,8 @@ void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 	}
 
 	campOwner->registerObserver(ObserverEventType::STARTCOMBAT, campObserver);
+
+	Locker locker(&taskMutex);
 
 	if(abandonTask != NULL && abandonTask->isScheduled())
 		abandonTask->cancel();

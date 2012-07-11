@@ -22,7 +22,7 @@
  *	CityRegionStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_,RPC_REMOVESHUTTLEINSTALLATION__,RPC_HASSHUTTLEINSTALLATION__,RPC_SETSHUTTLEID__LONG_,RPC_GETMISSIONTERMINALCOUNT__,RPC_GETDECORATIONCOUNT__,RPC_GETSKILLTRAINERCOUNT__,RPC_ADDMISSIONTERMINAL__SCENEOBJECT_,RPC_ADDDECORATION__SCENEOBJECT_,RPC_ADDSKILLTRAINER__SCENEOBJECT_,RPC_REMOVEMISSIONTERMINAL__SCENEOBJECT_,RPC_REMOVEDECORATION__SCENEOBJECT_,RPC_REMOVESKILLTRAINERS__SCENEOBJECT_,RPC_ADDBAZAAR__TANGIBLEOBJECT_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_REMOVEALLSKILLTRAINERS__,RPC_REMOVEALLTERMINALS__,RPC_UPDATEMILITIA__,RPC_ADDTOCITYSTRUCTUREINVENTORY__BYTE_SCENEOBJECT_,RPC_REMOVEFROMCITYSTRUCTUREINVENTORY__SCENEOBJECT_,RPC_CHECKLIMITEDPLACEMENTSTUCTURE__INT_,RPC_ADDLIMITEDPLACEMENTSTRUCTURE__INT_,RPC_REMOVELIMITEDPLACEMENTSTRUCTURE__INT_,RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_,RPC_ADDCANDIDATE__LONG_,RPC_SETMAYORALVOTE__LONG_LONG_,RPC_GETCANDIDATEVOTES__LONG_,RPC_RESETCANDIDATES__,RPC_RESETMAYORALVOTES__,RPC_REMOVECANDIDATE__LONG_,RPC_ISCANDIDATE__LONG_,RPC_ISVOTINGPERIODOVER__,RPC_ISVOTINGPERIOD__,RPC_RESETVOTINGPERIOD__};
+enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETCURRENTPLAYERCOUNT__,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_,RPC_REMOVESHUTTLEINSTALLATION__,RPC_HASSHUTTLEINSTALLATION__,RPC_SETSHUTTLEID__LONG_,RPC_GETMISSIONTERMINALCOUNT__,RPC_GETDECORATIONCOUNT__,RPC_GETSKILLTRAINERCOUNT__,RPC_ADDMISSIONTERMINAL__SCENEOBJECT_,RPC_ADDDECORATION__SCENEOBJECT_,RPC_ADDSKILLTRAINER__SCENEOBJECT_,RPC_REMOVEMISSIONTERMINAL__SCENEOBJECT_,RPC_REMOVEDECORATION__SCENEOBJECT_,RPC_REMOVESKILLTRAINERS__SCENEOBJECT_,RPC_ADDBAZAAR__TANGIBLEOBJECT_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_REMOVEALLSKILLTRAINERS__,RPC_REMOVEALLTERMINALS__,RPC_UPDATEMILITIA__,RPC_ADDTOCITYSTRUCTUREINVENTORY__BYTE_SCENEOBJECT_,RPC_REMOVEFROMCITYSTRUCTUREINVENTORY__SCENEOBJECT_,RPC_CHECKLIMITEDPLACEMENTSTUCTURE__INT_,RPC_ADDLIMITEDPLACEMENTSTRUCTURE__INT_,RPC_REMOVELIMITEDPLACEMENTSTRUCTURE__INT_,RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_,RPC_ADDCANDIDATE__LONG_,RPC_SETMAYORALVOTE__LONG_LONG_,RPC_GETCANDIDATEVOTES__LONG_,RPC_RESETCANDIDATES__,RPC_RESETMAYORALVOTES__,RPC_REMOVECANDIDATE__LONG_,RPC_ISCANDIDATE__LONG_,RPC_ISVOTINGPERIODOVER__,RPC_ISVOTINGPERIOD__,RPC_RESETVOTINGPERIOD__,RPC_ISLOADED__,RPC_SETLOADED__BOOL_};
 
 CityRegion::CityRegion() : ManagedObject(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation();
@@ -258,6 +258,19 @@ Time* CityRegion::getNextUpdateTime() {
 
 	} else
 		return _implementation->getNextUpdateTime();
+}
+
+int CityRegion::getCurrentPlayerCount() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCURRENTPLAYERCOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getCurrentPlayerCount();
 }
 
 void CityRegion::addCitizen(unsigned long long citizenID) {
@@ -1319,9 +1332,36 @@ void CityRegion::resetVotingPeriod() {
 		_implementation->resetVotingPeriod();
 }
 
+bool CityRegion::isLoaded() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISLOADED__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isLoaded();
+}
+
+void CityRegion::setLoaded(bool load) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETLOADED__BOOL_);
+		method.addBooleanParameter(load);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setLoaded(load);
+}
+
 DistributedObjectServant* CityRegion::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -1367,31 +1407,31 @@ CityRegionImplementation::operator const CityRegion*() {
 }
 
 void CityRegionImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void CityRegionImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void CityRegionImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void CityRegionImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void CityRegionImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void CityRegionImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void CityRegionImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void CityRegionImplementation::_serializationHelperMethod() {
@@ -1441,6 +1481,11 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 
 	if (_name == "CityRegion.mayoralVotes") {
 		TypeInfo<VectorMap<unsigned long long, unsigned long long> >::parseFromBinaryStream(&mayoralVotes, stream);
+		return true;
+	}
+
+	if (_name == "CityRegion.currentPlayers") {
+		TypeInfo<AtomicInteger >::parseFromBinaryStream(&currentPlayers, stream);
 		return true;
 	}
 
@@ -1600,6 +1645,14 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<unsigned long long, unsigned long long> >::toBinaryStream(&mayoralVotes, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "CityRegion.currentPlayers";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<AtomicInteger >::toBinaryStream(&currentPlayers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -1780,7 +1833,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 26;
+	return _count + 27;
 }
 
 CityRegionImplementation::CityRegionImplementation() {
@@ -1838,6 +1891,11 @@ Time* CityRegionImplementation::getNextUpdateTime() {
 	return (&nextUpdateTime);
 }
 
+int CityRegionImplementation::getCurrentPlayerCount() {
+	// server/zone/objects/region/CityRegion.idl():  		return currentPlayers.get();
+	return (&currentPlayers)->get();
+}
+
 void CityRegionImplementation::addCitizen(unsigned long long citizenID) {
 	// server/zone/objects/region/CityRegion.idl():  		citizenList.put(citizenID);
 	(&citizenList)->put(citizenID);
@@ -1846,8 +1904,11 @@ void CityRegionImplementation::addCitizen(unsigned long long citizenID) {
 void CityRegionImplementation::removeCitizen(unsigned long long citizenID) {
 	// server/zone/objects/region/CityRegion.idl():  		citizenList.drop(citizenID);
 	(&citizenList)->drop(citizenID);
-	// server/zone/objects/region/CityRegion.idl():  		militiaMembers.drop(citizenID);
+	// server/zone/objects/region/CityRegion.idl():  	}
+	if (isLoaded()){
+	// server/zone/objects/region/CityRegion.idl():  			militiaMembers.drop(citizenID);
 	(&militiaMembers)->drop(citizenID);
+}
 }
 
 void CityRegionImplementation::addBannedPlayer(unsigned long long playerid) {
@@ -2210,6 +2271,16 @@ bool CityRegionImplementation::isVotingPeriod() {
 	return !(&nextInauguration)->isPast();
 }
 
+bool CityRegionImplementation::isLoaded() {
+	// server/zone/objects/region/CityRegion.idl():  		return loaded;
+	return loaded;
+}
+
+void CityRegionImplementation::setLoaded(bool load) {
+	// server/zone/objects/region/CityRegion.idl():  		loaded = load;
+	loaded = load;
+}
+
 /*
  *	CityRegionAdapter
  */
@@ -2298,6 +2369,11 @@ void CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_CONTAINSPOINT__FLOAT_FLOAT_:
 		{
 			resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
+		}
+		break;
+	case RPC_GETCURRENTPLAYERCOUNT__:
+		{
+			resp->insertSignedInt(getCurrentPlayerCount());
 		}
 		break;
 	case RPC_ADDCITIZEN__LONG_:
@@ -2668,6 +2744,16 @@ void CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resetVotingPeriod();
 		}
 		break;
+	case RPC_ISLOADED__:
+		{
+			resp->insertBoolean(isLoaded());
+		}
+		break;
+	case RPC_SETLOADED__BOOL_:
+		{
+			setLoaded(inv->getBooleanParameter());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -2731,6 +2817,10 @@ bool CityRegionAdapter::hasZoningRights(unsigned long long objectid) {
 
 bool CityRegionAdapter::containsPoint(float x, float y) {
 	return (static_cast<CityRegion*>(stub))->containsPoint(x, y);
+}
+
+int CityRegionAdapter::getCurrentPlayerCount() {
+	return (static_cast<CityRegion*>(stub))->getCurrentPlayerCount();
 }
 
 void CityRegionAdapter::addCitizen(unsigned long long citizenID) {
@@ -3023,6 +3113,14 @@ bool CityRegionAdapter::isVotingPeriod() {
 
 void CityRegionAdapter::resetVotingPeriod() {
 	(static_cast<CityRegion*>(stub))->resetVotingPeriod();
+}
+
+bool CityRegionAdapter::isLoaded() {
+	return (static_cast<CityRegion*>(stub))->isLoaded();
+}
+
+void CityRegionAdapter::setLoaded(bool load) {
+	(static_cast<CityRegion*>(stub))->setLoaded(load);
 }
 
 /*

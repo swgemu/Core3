@@ -8,6 +8,7 @@
 #include "MissionManager.h"
 #include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/mission/SurveyMissionObjective.h"
 #include "server/zone/objects/mission/DestroyMissionObjective.h"
@@ -203,7 +204,7 @@ void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionT
 void MissionManagerImplementation::createDestroyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player) {
 	ManagedReference<DestroyMissionObjective*> objective = new DestroyMissionObjective(mission);
 	objective->setLairTemplateToSpawn(mission->getTargetOptionalTemplate());
-	objective->setDifficulty(mission->getDifficultyLevel(), mission->getDifficultyLevel());
+	objective->setDifficulty(mission->getDifficultyLevel());
 
 	ObjectManager::instance()->persistObject(objective, 1, "missionobjectives");
 
@@ -540,7 +541,14 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 		return;
 	}
 
-	int difficulty = server->getPlayerManager()->calculatePlayerLevel(player);
+	int playerLevel = server->getPlayerManager()->calculatePlayerLevel(player);
+	int difficulty = System::random(randomLairSpawn->getMaxDifficulty() - randomLairSpawn->getMinDifficulty()) + randomLairSpawn->getMinDifficulty();
+	int diffDisplay = difficulty + playerLevel + 7;
+	if (player->isGrouped())
+		diffDisplay += player->getGroup()->getGroupLevel();
+	else
+		diffDisplay += playerLevel;
+
 	String building = lairTemplateObject->getBuilding(difficulty);
 
 	if (building.isEmpty()) {
@@ -606,7 +614,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	mission->setTargetOptionalTemplate(lairTemplate);
 
 	mission->setRewardCredits(System::random(difficulty * 100) + (difficulty * 200));
-	mission->setMissionDifficulty(difficulty);
+	mission->setMissionDifficulty(difficulty, diffDisplay);
 
 	mission->setFaction(faction);
 
@@ -633,9 +641,9 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 
 	String messageDifficulty;
 
-	if (difficulty <= 10)
+	if (difficulty <= 20)
 		messageDifficulty = "_easy";
-	else if (difficulty <= 17)
+	else if (difficulty <= 40)
 		messageDifficulty = "_medium";
 	else
 		messageDifficulty = "_hard";
@@ -801,7 +809,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 		mission->setTargetObjectId(0);
 
-		mission->setMissionDifficulty(creoTemplate->getLevel());
+		mission->setMissionDifficulty(3 * creoTemplate->getLevel() + 7);
 		mission->setMissionTitle("mission/mission_bounty_neutral_" + diffString, "m" + String::valueOf(randTexts) + "t");
 		mission->setMissionDescription("mission/mission_bounty_neutral_" + diffString, "m" + String::valueOf(randTexts) + "d");
 	} else {
@@ -893,7 +901,12 @@ int MissionManagerImplementation::getDeliverMissionSpawnType(const int faction) 
 
 bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* player, MissionObject* mission, bool inTownMission, const int faction) {
 	//Get the current planet and position of the player.
-	String planetName = player->getZone()->getZoneName();
+	ManagedReference<Zone*> zone = player->getZone();
+
+	if (zone == NULL)
+		return false;
+
+	String planetName = zone->getZoneName();
 
 	Vector3 playerPosition = player->getWorldPosition();
 	playerPosition.setZ(0);
@@ -1146,7 +1159,7 @@ void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject
 		return;
 	}
 
-	VectorMap<String, uint32>* mobiles = lairTemplate->getMobiles();
+	VectorMap<String, int>* mobiles = lairTemplate->getMobiles();
 
 	if (mobiles->size() == 0) {
 		mission->setTypeCRC(0);
@@ -1435,12 +1448,11 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 	int playerLevel = server->getPlayerManager()->calculatePlayerLevel(player);
 	LairSpawn* lairSpawn = NULL;
 
-	//Try to pick random lair within playerLeve +-5;
+	//Try to pick random lair within playerLevel +-5;
 	while (counter > 0 && !foundLair) {
 		LairSpawn* randomLairSpawn = availableLairList->get(System::random(availableLairList->size() - 1));
 		if (randomLairSpawn != NULL) {
-			if (randomLairSpawn->getMinDifficulty() <= (playerLevel + 5) ||
-					randomLairSpawn->getMaxDifficulty() >= (playerLevel - 5)) {
+			if (randomLairSpawn->getMinDifficulty() <= (playerLevel + 5) && randomLairSpawn->getMaxDifficulty() >= (playerLevel - 5)) {
 				lairSpawn = randomLairSpawn;
 				foundLair = true;
 			}
@@ -1450,11 +1462,10 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 	}
 
 	if (!foundLair) {
-		//No random lair found, iterate through all lairs and find the first within playerLeve +-5;
+		//No random lair found, iterate through all lairs and find the first within playerLevel +-5;
 		for (int i = 0; i < availableLairList->size(); i++) {
 			LairSpawn* randomLairSpawn = availableLairList->get(i);
-			if (randomLairSpawn->getMinDifficulty() <= (playerLevel + 5) ||
-					randomLairSpawn->getMaxDifficulty() >= (playerLevel - 5)) {
+			if (randomLairSpawn->getMinDifficulty() <= (playerLevel + 5) && randomLairSpawn->getMaxDifficulty() >= (playerLevel - 5)) {
 				lairSpawn = randomLairSpawn;
 				break;
 			}

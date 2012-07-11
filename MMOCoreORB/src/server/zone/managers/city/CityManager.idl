@@ -178,6 +178,8 @@ class CityManager extends ManagedService implements Logger {
 		return cities.contains(name);
 	}
 	
+	public native boolean isCityRankCapped(final string planetName, byte cityRank);
+	
 	public native boolean validateCityInRange(CreatureObject creature, Zone zone, float x, float y);
 
 	public void toggleZoningEnabled(CityRegion city, CreatureObject mayor) {

@@ -46,11 +46,10 @@ Melee1hHit1Command = {
 
 	damageMultiplier = 2.0,
 	speedMultiplier = 1.5,
-	accuracyBonus = 25,
-	
 	healthCostMultiplier = 0.5,
 	actionCostMultiplier = 0.5,
 	mindCostMultiplier = 0.625,
+        accuracyBonus = 25,
 
 	animationCRC = hashCode("counter_high_center_light"),
 

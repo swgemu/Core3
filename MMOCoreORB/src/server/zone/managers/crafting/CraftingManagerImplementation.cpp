@@ -73,6 +73,12 @@ int CraftingManagerImplementation::calculateAssemblySuccess(CreatureObject* play
 	// assemblyPoints is 0-12
 	float assemblyPoints = ((float)player->getSkillMod(draftSchematic->getAssemblySkill())) / 10.0f;
 
+	int failMitigate = (player->getSkillMod(draftSchematic->getAssemblySkill()) - 100) / 5;
+	if(failMitigate < 0)
+		failMitigate = 0;
+	if(failMitigate > 5)
+		failMitigate = 5;
+
 	// 0.85-1.15
 	float toolModifier = 1.0f + (effectiveness / 100.0f);
 
@@ -88,13 +94,12 @@ int CraftingManagerImplementation::calculateAssemblySuccess(CreatureObject* play
 		}
 	}
 
-
 	int luckRoll = System::random(100);
 
-	if(luckRoll > (95 - craftbonus))
+	if(luckRoll > (95 - craftbonus - failMitigate))
 		return AMAZINGSUCCESS;
 
-	if(luckRoll < (5 - craftbonus))
+	if(luckRoll < (5 - craftbonus - failMitigate))
 		luckRoll -= System::random(100);
 
 	//if(luckRoll < 5)
@@ -167,6 +172,12 @@ int CraftingManagerImplementation::calculateExperimentationSuccess(CreatureObjec
 	// assemblyPoints is 0-12
 	float experimentingPoints = ((float)player->getSkillMod(draftSchematic->getExperimentationSkill())) / 10.0f;
 
+	int failMitigate = (player->getSkillMod(draftSchematic->getAssemblySkill()) - 100) / 5;
+	if(failMitigate < 0)
+		failMitigate = 0;
+	if(failMitigate > 5)
+		failMitigate = 5;
+
 	// 0.85-1.15
 	float toolModifier = 1.0f + (effectiveness / 100.0f);
 
@@ -185,10 +196,10 @@ int CraftingManagerImplementation::calculateExperimentationSuccess(CreatureObjec
 	/// Range 0-100
 	int luckRoll = System::random(100);
 
-	if(luckRoll > (95 - expbonus))
+	if(luckRoll > (95 - expbonus - failMitigate))
 		return AMAZINGSUCCESS;
 
-	if(luckRoll < (5 - expbonus))
+	if(luckRoll < (5 - expbonus - failMitigate))
 		luckRoll -= System::random(100);
 
 	//if(luckRoll < 5)

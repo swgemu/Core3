@@ -55,6 +55,7 @@ which carries forward this exception.
 #include "server/zone/templates/datatables/DataTableRow.h"
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage4.h"
+#include "../../packets/creature/CreatureObjectDeltaMessage6.h"
 
 SkillManager::SkillManager()
 		: Logger("SkillManager") {
@@ -369,6 +370,11 @@ bool SkillManager::awardSkill(const String& skillName, CreatureObject* creature,
 			creature->error("skill points mismatch calculated: " + String::valueOf(totalSkillPointsWasted) + " found: " + String::valueOf(ghost->getSkillPoints()));
 			ghost->setSkillPoints(totalSkillPointsWasted);
 		}
+
+		ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
+		if (playerManager != NULL) {
+			creature->setLevel(playerManager->calculatePlayerLevel(creature));
+		}
 	}
 
 	/// Update client with new values for things like Terrain Negotiation
@@ -453,6 +459,11 @@ bool SkillManager::surrenderSkill(const String& skillName, CreatureObject* creat
 		if (ghost->getSkillPoints() != totalSkillPointsWasted) {
 			creature->error("skill points mismatch calculated: " + String::valueOf(totalSkillPointsWasted) + " found: " + String::valueOf(ghost->getSkillPoints()));
 			ghost->setSkillPoints(totalSkillPointsWasted);
+		}
+
+		ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
+		if (playerManager != NULL) {
+			creature->setLevel(playerManager->calculatePlayerLevel(creature));
 		}
 	}
 

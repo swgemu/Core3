@@ -49,7 +49,9 @@ PointBlankArea1Command = {
 	healthCostMultiplier = 0.5,
 	actionCostMultiplier = 1.25,
 	mindCostMultiplier = 0.5,
-	coneAngle = 60,
+	accuracyBonus = 15,
+
+	coneAngle = 15,
 	coneAction = true,
 
 	animationCRC = hashCode("fire_area_no_trails_light"),

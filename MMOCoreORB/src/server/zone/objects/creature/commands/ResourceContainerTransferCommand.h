@@ -71,8 +71,15 @@ public:
 		ManagedReference<ResourceContainer* > toContainer = cast<ResourceContainer*>( server->getZoneServer()->getObject(toContainerID));
 
 		if((fromContainer == NULL || toContainer == NULL || !fromContainer->isResourceContainer()
-				|| !toContainer->isResourceContainer() || !creature->isPlayerCreature()))
+				|| !toContainer->isResourceContainer() || !creature->isPlayerCreature() || !fromContainer->isASubChildOf(creature) || !toContainer->isASubChildOf(creature)))
 			return INVALIDTARGET;
+
+		ManagedReference<SceneObject*> par = toContainer->getParent();
+
+		if (par != NULL && par->isContainerFull()) {
+			creature->sendSystemMessage("@container_error_message:container03");
+			return GENERALERROR;
+		}
 
 		toContainer->combine(fromContainer);
 

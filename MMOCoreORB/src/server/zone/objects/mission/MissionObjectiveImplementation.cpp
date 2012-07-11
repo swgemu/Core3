@@ -19,6 +19,7 @@
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/objects/mission/events/FailMissionAfterCertainTimeTask.h"
+#include "events/CompleteMissionObjectiveTask.h"
 
 void MissionObjectiveImplementation::destroyObjectFromDatabase() {
 	for (int i = 0; i < observers.size(); ++i) {
@@ -61,11 +62,13 @@ void MissionObjectiveImplementation::complete() {
 
 	_lock.release();
 
-	awardReward();
+	Reference<CompleteMissionObjectiveTask*> task = new CompleteMissionObjectiveTask(_this.get());
+	task->execute();
+	/*awardReward();
 
 	awardFactionPoints();
 
-	removeMissionFromPlayer();
+	removeMissionFromPlayer();*/
 }
 
 void MissionObjectiveImplementation::addObserver(MissionObserver* observer, bool makePersistent) {
@@ -98,28 +101,30 @@ void MissionObjectiveImplementation::awardFactionPoints() {
 	//Award faction points for faction delivery missions.
 	ManagedReference<CreatureObject*> creatureOwner = getPlayerOwner();
 
-	ManagedReference<PlayerObject*> ghost = creatureOwner->getPlayerObject();
-	if (ghost != NULL) {
-		Locker ghostLocker(creatureOwner);
+	if (creatureOwner != NULL) {
+		ManagedReference<PlayerObject*> ghost = creatureOwner->getPlayerObject();
+		if (ghost != NULL) {
+			Locker ghostLocker(creatureOwner);
 
-		//Switch to get the correct order.
-		switch (mission->getFaction()) {
-		case MissionObject::FACTIONIMPERIAL:
-			if (factionPointsImperial > 0) {
-				ghost->increaseFactionStanding("imperial", factionPointsImperial);
+			//Switch to get the correct order.
+			switch (mission->getFaction()) {
+			case MissionObject::FACTIONIMPERIAL:
+				if (factionPointsImperial > 0) {
+					ghost->increaseFactionStanding("imperial", factionPointsImperial);
+				}
+				if (factionPointsRebel < 0) {
+					ghost->decreaseFactionStanding("rebel", -factionPointsRebel);
+				}
+				break;
+			case MissionObject::FACTIONREBEL:
+				if (factionPointsRebel > 0) {
+					ghost->increaseFactionStanding("rebel", factionPointsRebel);
+				}
+				if (factionPointsImperial < 0) {
+					ghost->decreaseFactionStanding("imperial", -factionPointsImperial);
+				}
+				break;
 			}
-			if (factionPointsRebel < 0) {
-				ghost->decreaseFactionStanding("rebel", -factionPointsRebel);
-			}
-			break;
-		case MissionObject::FACTIONREBEL:
-			if (factionPointsRebel > 0) {
-				ghost->increaseFactionStanding("rebel", factionPointsRebel);
-			}
-			if (factionPointsImperial < 0) {
-				ghost->decreaseFactionStanding("imperial", -factionPointsImperial);
-			}
-			break;
 		}
 	}
 }
@@ -149,12 +154,10 @@ void MissionObjectiveImplementation::awardReward() {
 
 	ManagedReference<CreatureObject*> owner = getPlayerOwner();
 
-	Locker locker(owner);
-
 	ManagedReference<GroupObject*> group = owner->getGroup();
 
 	if (group != NULL) {
-		Locker lockerGroup(group, owner);
+		Locker lockerGroup(group, _this.get());
 
 		for(int i = 0; i < group->getGroupSize(); i++) {
 			ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? cast<CreatureObject*>(group->getGroupMember(i)) : NULL;
@@ -180,8 +183,6 @@ void MissionObjectiveImplementation::awardReward() {
 		players.add(owner);
 	}
 
-	locker.release();
-
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
 	int dividedReward = mission->getRewardCredits() / players.size();
@@ -192,7 +193,7 @@ void MissionObjectiveImplementation::awardReward() {
 		stringId.setDI(dividedReward);
 		player->sendSystemMessage(stringId);
 
-		Locker lockerPl(player);
+		Locker lockerPl(player, _this.get());
 		player->addBankCredits(dividedReward, true);
 	}
 }

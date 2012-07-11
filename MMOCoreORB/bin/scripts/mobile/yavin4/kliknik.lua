@@ -21,7 +21,7 @@ kliknik = Creature:new {
 	milk = 0,
 	tamingChance = 0.25,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
@@ -32,9 +32,9 @@ kliknik = Creature:new {
 	lootGroups = {
 	    {
 	        groups = {
-				{group = "kliknik_common", chance = 3300000}
+				{group = "kliknik_common", chance = 10000000}
 			},
-			lootChance = 4300000
+			lootChance = 3000000
 		}
 	},
 	weapons = {"creature_spit_small_yellow"},

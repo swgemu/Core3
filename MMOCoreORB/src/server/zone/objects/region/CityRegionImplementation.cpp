@@ -17,16 +17,21 @@
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/ServerCore.h"
 #include "server/zone/managers/city/CityManager.h"
-#include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/creature/commands/BoardShuttleCommand.h"
+
+int BoardShuttleCommand::MAXIMUM_PLAYER_COUNT = 200;
 
 void CityRegionImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
+
+	loaded = false;
 }
 
 void CityRegionImplementation::notifyLoadFromDatabase() {
@@ -77,6 +82,8 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 		if (shuttle != NULL)
 			zone->getPlanetManager()->scheduleShuttle(shuttle);
 	}
+
+	loaded = true;
 }
 
 void CityRegionImplementation::initialize() {
@@ -175,44 +182,24 @@ int CityRegionImplementation::getTimeToUpdate() {
 
 void CityRegionImplementation::notifyEnter(SceneObject* object) {
 
-	/// We have to update the VUID of bazaar's and vendors when they enter
-	/// a city region
-	String oldUID = "";
-	ManagedReference<AuctionManager*> aman = object->getZoneServer()->getAuctionManager();
-	if (object->isBazaarTerminal() || object->isVendor()) {
-		if(aman != NULL)
-			oldUID = aman->getVendorUID(object);
-	}
-
 	object->setCityRegion(_this.get());
 
-	if (object->isBazaarTerminal()) {
-		TangibleObject* bazaar = cast<TangibleObject*>(object);
-		if(bazaar == NULL) {
-			error("Bazaar terminal isn't really a bazaar terminal");
-			return;
-		}
-		bazaars.put(object->getObjectID(), bazaar);
+	if (object->isBazaarTerminal() || object->isVendor()) {
 
-		if(aman != NULL)
-			aman->updateVendorUID(object, oldUID, aman->getVendorUID(object));
-	}
+		if (object->isBazaarTerminal())
+			bazaars.put(object->getObjectID(), cast<TangibleObject*>(object));
 
-	if (object->isVendor()) {
-
-		VendorDataComponent* vendorData = NULL;
+		AuctionTerminalDataComponent* terminalData = NULL;
 		DataObjectComponentReference* data = object->getDataObjectComponent();
-		if(data != NULL && data->get() != NULL && data->get()->isVendorData())
-			vendorData = cast<VendorDataComponent*>(data->get());
+		if(data != NULL && data->get() != NULL && data->get()->isAuctionTerminalData())
+			terminalData = cast<AuctionTerminalDataComponent*>(data->get());
 
-		if(vendorData != NULL) {
-			vendorData->updateUID();
-			if(aman != NULL)
-				aman->updateVendorUID(object, oldUID, aman->getVendorUID(object));
-
-		} else
-			error("Unable to update vendor UID");
+		if(terminalData != NULL)
+			terminalData->updateUID();
 	}
+
+	if (object->isPlayerCreature())
+		currentPlayers.increment();
 
 	if (isClientRegion())
 		return;
@@ -259,38 +246,25 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 
 void CityRegionImplementation::notifyExit(SceneObject* object) {
 
-	/// We have to update the VUID of bazaar's and vendors when they exit
-	/// a city region
-	String oldUID = "";
-	ManagedReference<AuctionManager*> aman = object->getZoneServer()->getAuctionManager();
-	if (object->isBazaarTerminal() || object->isVendor()) {
-		if(aman != NULL)
-			oldUID = aman->getVendorUID(object);
-	}
 
 	object->setCityRegion(NULL);
 
-	if (object->isBazaarTerminal()) {
-		bazaars.drop(object->getObjectID());
-		if(aman != NULL)
-			aman->updateVendorUID(object, oldUID, aman->getVendorUID(object));
+	if (object->isBazaarTerminal() || object->isVendor()) {
 
-	}
+		if (object->isBazaarTerminal())
+			bazaars.drop(object->getObjectID());
 
-	if (object->isVendor()) {
-
-		VendorDataComponent* vendorData = NULL;
+		AuctionTerminalDataComponent* terminalData = NULL;
 		DataObjectComponentReference* data = object->getDataObjectComponent();
-		if(data != NULL && data->get() != NULL && data->get()->isVendorData())
-			vendorData = cast<VendorDataComponent*>(data->get());
+		if(data != NULL && data->get() != NULL && data->get()->isAuctionTerminalData())
+			terminalData = cast<AuctionTerminalDataComponent*>(data->get());
 
-		if(vendorData != NULL) {
-			vendorData->updateUID();
-			if(aman != NULL)
-				aman->updateVendorUID(object, oldUID, aman->getVendorUID(object));
-		} else
-			error("Unable to update vendor UID");
+		if(terminalData != NULL)
+			terminalData->updateUID();
 	}
+
+	if (object->isPlayerCreature())
+		currentPlayers.decrement();
 
 	if (isClientRegion())
 		return;

@@ -96,7 +96,10 @@ int LuaConversationScreen::sendTo(lua_State* L) {
 int LuaConversationScreen::getScreenID(lua_State* L) {
 	//inline String& getScreenID() {
 
-	String text = realObject->getScreenID();
+	String text;
+
+	if (realObject != NULL)
+		text = realObject->getScreenID();
 
 	lua_pushstring(L, text.toCharArray());
 

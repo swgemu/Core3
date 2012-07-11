@@ -1308,4 +1308,6 @@ class PlayerObject extends IntangibleObject {
 	public int getVendorCount() {
 		return ownedVendors.size();
 	}
+	
+	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
 }

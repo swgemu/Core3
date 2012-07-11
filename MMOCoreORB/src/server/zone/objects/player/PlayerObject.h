@@ -778,6 +778,8 @@ public:
 
 	int getVendorCount();
 
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -1433,6 +1435,8 @@ public:
 
 	int getVendorCount();
 
+	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
+
 	WeakReference<PlayerObject*> _this;
 
 	operator const PlayerObject*();
@@ -1865,6 +1869,8 @@ public:
 	void removeVendor(SceneObject* vendor);
 
 	int getVendorCount();
+
+	void destroyObjectFromDatabase(bool destroyContainedObjects);
 
 };
 

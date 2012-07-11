@@ -109,7 +109,7 @@ bool ShipObject::isShipObject() {
 
 DistributedObjectServant* ShipObject::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -155,31 +155,31 @@ ShipObjectImplementation::operator const ShipObject*() {
 }
 
 void ShipObjectImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void ShipObjectImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void ShipObjectImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void ShipObjectImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void ShipObjectImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void ShipObjectImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void ShipObjectImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void ShipObjectImplementation::_serializationHelperMethod() {
@@ -248,15 +248,15 @@ int ShipObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 ShipObjectImplementation::ShipObjectImplementation() {
 	_initializeImplementation();
-	Reference<SortedVector<ManagedReference<QuadTreeEntry* > >*> _ref0;
+	Reference<CloseObjectsVector*> _ref0;
 	// server/zone/objects/ship/ShipObject.idl():  		Logger.setLoggingName("ShipObject");
 	Logger::setLoggingName("ShipObject");
 	// server/zone/objects/ship/ShipObject.idl():  		super.unknownByte = 1;
 	TangibleObjectImplementation::unknownByte = 1;
 	// server/zone/objects/ship/ShipObject.idl():  		totalMass = 500.0;
 	totalMass = 500.0;
-	// server/zone/objects/ship/ShipObject.idl():  		super.closeobjects = new SortedVector<QuadTreeEntry>();
-	TangibleObjectImplementation::closeobjects = _ref0 = new SortedVector<ManagedReference<QuadTreeEntry* > >();
+	// server/zone/objects/ship/ShipObject.idl():  		super.closeobjects = new CloseObjectsVector();
+	TangibleObjectImplementation::closeobjects = _ref0 = new CloseObjectsVector();
 	// server/zone/objects/ship/ShipObject.idl():  		super.closeobjects.setNoDuplicateInsertPlan();
 	TangibleObjectImplementation::closeobjects->setNoDuplicateInsertPlan();
 }

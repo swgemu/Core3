@@ -1,4 +1,4 @@
-rebel_second_lieuteneant = Creature:new {
+rebel_second_lieutenant = Creature:new {
 	objectName = "@mob/creature_names:rebel_second_lieutenant",
 	socialGroup = "rebel",
 	pvpFaction = "rebel",
@@ -25,8 +25,6 @@ rebel_second_lieuteneant = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
-
-	aiTemplate = "default",
 
 	templates = {
 		"object/mobile/dressed_rebel_second_lieutenant_human_female_01.iff",
@@ -55,4 +53,4 @@ rebel_second_lieuteneant = Creature:new {
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(rebel_second_lieuteneant, "rebel_second_lieuteneant")
+CreatureTemplates:addCreatureTemplate(rebel_second_lieutenant, "rebel_second_lieutenant")

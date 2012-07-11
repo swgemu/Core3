@@ -150,7 +150,7 @@ void Component::addProperty(const String& attributeName, const float value, cons
 		_implementation->addProperty(attributeName, value, precision, craftingTitle, hidden);
 }
 
-float Component::getAttributeValue(String& attributeName) {
+float Component::getAttributeValue(const String& attributeName) {
 	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -164,7 +164,7 @@ float Component::getAttributeValue(String& attributeName) {
 		return _implementation->getAttributeValue(attributeName);
 }
 
-int Component::getAttributePrecision(String& attributeName) {
+int Component::getAttributePrecision(const String& attributeName) {
 	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -178,7 +178,7 @@ int Component::getAttributePrecision(String& attributeName) {
 		return _implementation->getAttributePrecision(attributeName);
 }
 
-String Component::getAttributeTitle(String& attributeName) {
+String Component::getAttributeTitle(const String& attributeName) {
 	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -194,7 +194,7 @@ String Component::getAttributeTitle(String& attributeName) {
 		return _implementation->getAttributeTitle(attributeName);
 }
 
-bool Component::getAttributeHidden(String& attributeName) {
+bool Component::getAttributeHidden(const String& attributeName) {
 	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -285,7 +285,7 @@ bool Component::changeAttributeValue(String& property, float value) {
 
 DistributedObjectServant* Component::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -331,31 +331,31 @@ ComponentImplementation::operator const Component*() {
 }
 
 void ComponentImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void ComponentImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void ComponentImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void ComponentImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void ComponentImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void ComponentImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void ComponentImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void ComponentImplementation::_serializationHelperMethod() {
@@ -626,19 +626,19 @@ void ComponentAdapter::addProperty(const String& attributeName, const float valu
 	(static_cast<Component*>(stub))->addProperty(attributeName, value, precision, craftingTitle, hidden);
 }
 
-float ComponentAdapter::getAttributeValue(String& attributeName) {
+float ComponentAdapter::getAttributeValue(const String& attributeName) {
 	return (static_cast<Component*>(stub))->getAttributeValue(attributeName);
 }
 
-int ComponentAdapter::getAttributePrecision(String& attributeName) {
+int ComponentAdapter::getAttributePrecision(const String& attributeName) {
 	return (static_cast<Component*>(stub))->getAttributePrecision(attributeName);
 }
 
-String ComponentAdapter::getAttributeTitle(String& attributeName) {
+String ComponentAdapter::getAttributeTitle(const String& attributeName) {
 	return (static_cast<Component*>(stub))->getAttributeTitle(attributeName);
 }
 
-bool ComponentAdapter::getAttributeHidden(String& attributeName) {
+bool ComponentAdapter::getAttributeHidden(const String& attributeName) {
 	return (static_cast<Component*>(stub))->getAttributeHidden(attributeName);
 }
 

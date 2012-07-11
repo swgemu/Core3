@@ -26,7 +26,7 @@
  *	CraftingSessionStub
  */
 
-enum {RPC_INITIALIZESESSION__CRAFTINGTOOL_CRAFTINGSTATION_ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_GETSCHEMATIC__,RPC_SELECTDRAFTSCHEMATIC__INT_,RPC_SENDINGREDIENTFORUILISTEN__,RPC_ADDINGREDIENT__TANGIBLEOBJECT_INT_INT_,RPC_REMOVEINGREDIENT__TANGIBLEOBJECT_INT_INT_,RPC_NEXTCRAFTINGSTAGE__INT_,RPC_EXPERIMENT__INT_STRING_INT_,RPC_CUSTOMIZATION__STRING_BYTE_INT_STRING_,RPC_CREATEPROTOTYPE__INT_BOOL_,RPC_CREATEMANUFACTURESCHEMATIC__INT_,};
+enum {RPC_INITIALIZESESSION__CRAFTINGTOOL_CRAFTINGSTATION_ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_GETSCHEMATIC__,RPC_SELECTDRAFTSCHEMATIC__INT_,RPC_SENDINGREDIENTFORUILISTEN__,RPC_ADDINGREDIENT__TANGIBLEOBJECT_INT_INT_,RPC_REMOVEINGREDIENT__TANGIBLEOBJECT_INT_INT_,RPC_NEXTCRAFTINGSTAGE__INT_,RPC_EXPERIMENT__INT_STRING_INT_,RPC_CUSTOMIZATION__STRING_BYTE_INT_STRING_,RPC_CREATEPROTOTYPE__INT_BOOL_,RPC_CREATEMANUFACTURESCHEMATIC__INT_,RPC_GETSTATE__};
 
 CraftingSession::CraftingSession(CreatureObject* creature) : Facade(DummyConstructorParameter::instance()) {
 	CraftingSessionImplementation* _implementation = new CraftingSessionImplementation(creature);
@@ -233,9 +233,22 @@ void CraftingSession::createManufactureSchematic(int clientCounter) {
 		_implementation->createManufactureSchematic(clientCounter);
 }
 
+int CraftingSession::getState() {
+	CraftingSessionImplementation* _implementation = static_cast<CraftingSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSTATE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getState();
+}
+
 DistributedObjectServant* CraftingSession::_getImplementation() {
 
-	_updated = true;
+	 if (!_updated) _updated = true;
 	return _impl;
 }
 
@@ -281,31 +294,31 @@ CraftingSessionImplementation::operator const CraftingSession*() {
 }
 
 void CraftingSessionImplementation::lock(bool doLock) {
-	_this.get()->lock(doLock);
+	_this.getReferenceUnsafeStaticCast()->lock(doLock);
 }
 
 void CraftingSessionImplementation::lock(ManagedObject* obj) {
-	_this.get()->lock(obj);
+	_this.getReferenceUnsafeStaticCast()->lock(obj);
 }
 
 void CraftingSessionImplementation::rlock(bool doLock) {
-	_this.get()->rlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->rlock(doLock);
 }
 
 void CraftingSessionImplementation::wlock(bool doLock) {
-	_this.get()->wlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->wlock(doLock);
 }
 
 void CraftingSessionImplementation::wlock(ManagedObject* obj) {
-	_this.get()->wlock(obj);
+	_this.getReferenceUnsafeStaticCast()->wlock(obj);
 }
 
 void CraftingSessionImplementation::unlock(bool doLock) {
-	_this.get()->unlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->unlock(doLock);
 }
 
 void CraftingSessionImplementation::runlock(bool doLock) {
-	_this.get()->runlock(doLock);
+	_this.getReferenceUnsafeStaticCast()->runlock(doLock);
 }
 
 void CraftingSessionImplementation::_serializationHelperMethod() {
@@ -374,6 +387,11 @@ CraftingSessionImplementation::CraftingSessionImplementation(CreatureObject* cre
 ManagedWeakReference<ManufactureSchematic* > CraftingSessionImplementation::getSchematic() {
 	// server/zone/objects/player/sessions/crafting/CraftingSession.idl():  		return manufactureSchematic;
 	return manufactureSchematic;
+}
+
+int CraftingSessionImplementation::getState() {
+	// server/zone/objects/player/sessions/crafting/CraftingSession.idl():  		return state;
+	return state;
 }
 
 /*
@@ -458,6 +476,11 @@ void CraftingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 			createManufactureSchematic(inv->getSignedIntParameter());
 		}
 		break;
+	case RPC_GETSTATE__:
+		{
+			resp->insertSignedInt(getState());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -513,6 +536,10 @@ void CraftingSessionAdapter::createPrototype(int clientCounter, bool practice) {
 
 void CraftingSessionAdapter::createManufactureSchematic(int clientCounter) {
 	(static_cast<CraftingSession*>(stub))->createManufactureSchematic(clientCounter);
+}
+
+int CraftingSessionAdapter::getState() {
+	return (static_cast<CraftingSession*>(stub))->getState();
 }
 
 /*

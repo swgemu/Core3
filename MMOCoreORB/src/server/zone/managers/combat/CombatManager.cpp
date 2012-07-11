@@ -335,8 +335,16 @@ int CombatManager::calculatePostureModifier(CreatureObject* creature) {
 		accuracy += 16;
 	else if (creature->isProne())
 		accuracy += 50;
-	else if (creature->isRunning())
-		accuracy -= 50;
+
+	creature->updateLocomotion();
+
+	switch (CreaturePosture::instance()->getSpeed(creature->getPosture(), creature->getLocomotion())) {
+	case CreatureLocomotion::FAST:
+		accuracy -= 40;
+	case CreatureLocomotion::SLOW:
+		accuracy -= 10;
+		break;
+	}
 
 	return accuracy;
 }
@@ -396,7 +404,10 @@ int CombatManager::getAttackerAccuracyBonus(CreatureObject* attacker, WeaponObje
 	return bonus;
 }
 
-int CombatManager::getDefenderDefenseModifier(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon) {
+int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponObject* weapon) {
+	if (!defender->isPlayerCreature())
+		return defender->getLevel();
+
 	int targetDefense = 0;
 	int buffDefense = 0;
 
@@ -411,7 +422,6 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* attacker, Creature
 	//info("Base target defense is " + String::valueOf(targetDefense), true);
 
 	targetDefense += defender->getSkillMod("private_defense");
-	targetDefense += calculateTargetPostureModifier(attacker, defender);
 
 	// defense hardcap
 	if (targetDefense > 125)
@@ -502,11 +512,11 @@ int CombatManager::calculateDamageRange(CreatureObject* attacker, CreatureObject
 			break;
 		}
 
-		for (int i = 1; i <= 3; i++) {
-			if (defenderGhost->hasAbility(mitString + i))
-				continue;
-			else
-				damageMitigation = i - 1;
+		for (int i = 3; i > 0; i--) {
+			if (defenderGhost->hasAbility(mitString + i)) {
+				damageMitigation = i;
+				break;
+			}
 		}
 
 		if (damageMitigation > 0)
@@ -622,7 +632,7 @@ int CombatManager::getArmorObjectReduction(CreatureObject* attacker, ArmorObject
 }
 
 ArmorObject* CombatManager::getHealthArmor(CreatureObject* attacker, CreatureObject* defender) {
-	Vector<ArmorObject*> healthArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::CHEST);
+	Vector<ManagedReference<ArmorObject*> > healthArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::CHEST);
 
 	if (System::random(1) == 0)
 		healthArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::ARMS);
@@ -636,7 +646,7 @@ ArmorObject* CombatManager::getHealthArmor(CreatureObject* attacker, CreatureObj
 }
 
 ArmorObject* CombatManager::getActionArmor(CreatureObject* attacker, CreatureObject* defender) {
-	Vector<ArmorObject*> actionArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::LEGS);
+	Vector<ManagedReference<ArmorObject*> > actionArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::LEGS);
 
 	ManagedReference<ArmorObject*> armorToHit = NULL;
 
@@ -647,7 +657,7 @@ ArmorObject* CombatManager::getActionArmor(CreatureObject* attacker, CreatureObj
 }
 
 ArmorObject* CombatManager::getMindArmor(CreatureObject* attacker, CreatureObject* defender) {
-	Vector<ArmorObject*> mindArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::HEAD);
+	Vector<ManagedReference<ArmorObject*> > mindArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::HEAD);
 
 	ManagedReference<ArmorObject*> armorToHit = NULL;
 
@@ -727,7 +737,6 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 	ManagedReference<ArmorObject*> psg = getPSGArmor(attacker, defender);
 
 	if (psg != NULL && !psg->isVulnerable(weapon->getDamageType())) {
-		float originalDamage = damage;
 		float armorPiercing = getArmorPiercing(psg, weapon);
 		float armorReduction =  getArmorObjectReduction(attacker, psg);
 
@@ -737,8 +746,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		// inflict condition damage
 		// TODO: this formula makes PSG's take more damage than regular armor, but that's how it was on live
 		// it can be fixed by doing condition damage after all damage reductions
-		float conditionDamage = (originalDamage * armorPiercing - damage) * 0.1;
-		psg->inflictDamage(psg, 0, conditionDamage, true, true);
+		psg->inflictDamage(psg, 0, damage * 0.1, true, true);
 	}
 
 	// Next is Jedi stuff
@@ -784,7 +792,6 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 
 	if (armor != NULL && !armor->isVulnerable(weapon->getDamageType())) {
 		// use only the damage applied to the armor for piercing (after the PSG takes some off)
-		float originalDamage = damage;
 		float armorPiercing = getArmorPiercing(armor, weapon);
 		float armorReduction = getArmorObjectReduction(attacker, armor);
 
@@ -792,8 +799,7 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
 
 		// inflict condition damage
-		float conditionDamage = (originalDamage * armorPiercing - damage) * 0.1;
-		armor->inflictDamage(armor, 0, conditionDamage, true, true);
+		armor->inflictDamage(armor, 0, damage * 0.1, true, true);
 	}
 
 	return damage;
@@ -801,9 +807,12 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, CreatureObject* d
 
 float CombatManager::getArmorPiercing(ArmorObject* armor, WeaponObject* weapon) {
 	int armorPiercing = weapon->getArmorPiercing();
+	if (weapon->isBroken())
+		armorPiercing = 0;
+
 	int armorReduction = 0;
 
-	if (armor != NULL)
+	if (armor != NULL && !armor->isBroken())
 		armorReduction = armor->getRating();
 
 	if (armorPiercing > armorReduction)
@@ -814,6 +823,9 @@ float CombatManager::getArmorPiercing(ArmorObject* armor, WeaponObject* weapon) 
 
 float CombatManager::getArmorPiercing(AiAgent* defender, WeaponObject* weapon) {
 	int armorPiercing = weapon->getArmorPiercing();
+	if (weapon->isBroken())
+		armorPiercing = 0;
+
 	int armorReduction = defender->getArmor();
 
 	if (armorPiercing > armorReduction)
@@ -921,10 +933,11 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 	// need to also add in general attack accuracy (mostly gotten from foods and states)
 	accuracyBonus += getAttackerAccuracyBonus(creature, weapon);
+	accuracyBonus += calculateTargetPostureModifier(creature, targetCreature);
 
 	//info("Attacker accuracy bonus is " + String::valueOf(accuracyBonus), true);
 
-	int targetDefense = getDefenderDefenseModifier(creature, targetCreature, weapon);
+	int targetDefense = getDefenderDefenseModifier(targetCreature, weapon);
 
 	// first (and third) argument is divided by 2, second isn't
 	float accTotal = hitChanceEquation(attackerAccuracy + weaponAccuracy, accuracyBonus, targetDefense);
@@ -1317,12 +1330,21 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 	}
 
 	try {
-		zone->rlock();
+		//zone->rlock();
 
-		SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = attacker->getCloseObjects();
+		CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
 
-		for (int i = 0; i < closeObjects->size(); ++i) {
-			ManagedReference<SceneObject*> object = cast<SceneObject*>(closeObjects->get(i).get());
+		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+
+		if (vec != NULL) {
+			closeObjects.removeAll(vec->size(), 10);
+			vec->safeCopyTo(closeObjects);
+		} else {
+			zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
+		}
+
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			ManagedReference<SceneObject*> object = cast<SceneObject*>(closeObjects.get(i).get());
 
 			if (!object->isTangibleObject()) {
 				//error("object is not tangible");
@@ -1356,7 +1378,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 				continue;
 			}
 
-			zone->runlock();
+//			zone->runlock();
 
 			try {
 				if (CollisionManager::checkLineOfSight(object, attacker)) {
@@ -1370,12 +1392,12 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 				throw;
 			}
 
-			zone->rlock();
+//			zone->rlock();
 		}
 
-		zone->runlock();
+//		zone->runlock();
 	} catch (...) {
-		zone->runlock();
+//		zone->runlock();
 
 		throw;
 	}
@@ -1386,12 +1408,25 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid) {
 	Zone* zone = attacker->getZone();
 
-	Locker _locker(zone);
+	if (zone == NULL)
+		return;
 
-	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = attacker->getCloseObjects();
+	//Locker _locker(zone);
 
-	for (int i = 0; i < closeObjects->size(); ++i) {
-		SceneObject* object = cast<SceneObject*>( closeObjects->get(i).get());
+	CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
+
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+
+	if (vec != NULL) {
+		closeObjects.removeAll(vec->size(), 10);
+		vec->safeCopyTo(closeObjects);
+	} else {
+		zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
+	}
+
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* object = cast<SceneObject*>( closeObjects.get(i).get());
 
 		if (object->isPlayerCreature() && attacker->isInRange(object, 70)) {
 			CreatureObject* player = cast<CreatureObject*>( object);

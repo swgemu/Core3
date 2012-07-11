@@ -99,7 +99,7 @@ class PlayerManager extends Observer implements Logger {
 	@dereferenced
 	private transient OnlineZoneClientMap onlineZoneClientMap;
 	
-	public final static int MAX_CHAR_ONLINE_COUNT = 2;
+	public transient static int MAX_CHAR_ONLINE_COUNT;
 	
 	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServer impl);
 	public native void loadNameMap();
@@ -315,4 +315,9 @@ class PlayerManager extends Observer implements Logger {
 	 */
 	@local @dereferenced
 	public native SortedVector<string> getTeachableSkills(CreatureObject teacher, CreatureObject student);
+
+	@local
+	public OnlineZoneClientMap getOnlineZoneClientMap() {
+		return onlineZoneClientMap;
+	}
 }

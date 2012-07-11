@@ -52,7 +52,7 @@ class CreatureManager extends ZoneManager {
 		loadInformants();
 	}
 	
-	public native TangibleObject spawnLair(unsigned int lairTemplate, int minDifficulty, int maxDifficulty, float x, float z, float y);
+	public native TangibleObject spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y);
 	
 	/**
 	 * Spawns the specified creature into zone

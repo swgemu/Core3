@@ -44,11 +44,12 @@
 PanicShotCommand = {
         name = "panicshot",
 
-	damageMultiplier = 2.0,
-	speedMultiplier = 2.6,
-	healthCostMultiplier = 1,
-	actionCostMultiplier = 1,
-	mindCostMultiplier = 1,
+	damageMultiplier = 1.0,
+	speedMultiplier = 3.0,
+	healthCostMultiplier = 0.5,
+	actionCostMultiplier = 1.25,
+	mindCostMultiplier = 0.5,
+	accuracyBonus = 50,
 
 	stateEffects = {
 	  StateEffect( 

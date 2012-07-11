@@ -118,7 +118,7 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 	Locker* locker = NULL;
 
 	if (zone != NULL) {
-		locker = new Locker(zone);
+//		locker = new Locker(zone);
 	}
 
 	bool ret = false;
@@ -183,5 +183,15 @@ void CellObjectImplementation::destroyAllPlayerItems() {
 		//removeObject(containerObject, false);
 
 		containerObject->destroyObjectFromDatabase(true);
+	}
+}
+
+void CellObjectImplementation::sendPermissionsTo(CreatureObject* creature, bool allowEntry) {
+	if (!containerPermissions.hasInheritPermissionsFromParent() && !checkContainerPermission(creature, ContainerPermissions::MOVEIN)) {
+		BaseMessage* perm = new UpdateCellPermissionsMessage(getObjectID(), false);
+		creature->sendMessage(perm);
+	} else {
+		BaseMessage* perm = new UpdateCellPermissionsMessage(getObjectID(), allowEntry);
+		creature->sendMessage(perm);
 	}
 }
