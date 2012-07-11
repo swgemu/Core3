@@ -72,7 +72,7 @@ class AuctionsMap extends ManagedObject {
 		allItems.setNullValue(null);
 		allItems.setNoDuplicateInsertPlan();
 		
-		bazaarCount.setNoDuplicateInsertPlan();
+		bazaarCount.setAllowOverwriteInsertPlan();
 		bazaarCount.setNullValue(0);
 		
 		logger.setLoggingName("AuctionsMap");
