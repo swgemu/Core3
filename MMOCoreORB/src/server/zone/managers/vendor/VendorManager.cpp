@@ -86,7 +86,7 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* 
 	statusBox->setPromptTitle("@player_structure:vendor_status");
 	statusBox->setPromptText("Vendor Status");
 
-	int condition = ((float)vendor->getMaxCondition() - (float)vendor->getConditionDamage()) / (float)vendor->getMaxCondition();
+	int condition = (((float)vendor->getMaxCondition() - (float)vendor->getConditionDamage()) / (float)vendor->getMaxCondition()) * 100;
 	statusBox->addMenuItem("Condition: " + String::valueOf(condition) + "%");
 	statusBox->addMenuItem("Maintenance Pool: " + String::valueOf(vendorData->getMaint()));
 
