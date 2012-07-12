@@ -1446,6 +1446,9 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 	bool foundLair = false;
 	int counter = availableLairList->size();
 	int playerLevel = server->getPlayerManager()->calculatePlayerLevel(player);
+	if (player->isGrouped())
+		playerLevel = player->getGroup()->getGroupLevel();
+
 	LairSpawn* lairSpawn = NULL;
 
 	//Try to pick random lair within playerLevel +-5;
