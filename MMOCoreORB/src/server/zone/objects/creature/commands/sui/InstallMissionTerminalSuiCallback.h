@@ -17,7 +17,7 @@
 class InstallMissionTerminalSuiCallback : public SuiCallback {
 public:
 	InstallMissionTerminalSuiCallback(ZoneServer* server)
-		: SuiCallback(server) {
+	: SuiCallback(server) {
 	}
 
 	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
@@ -28,16 +28,22 @@ public:
 			return;
 
 		if (player->getParent() != NULL)
-					return;
+			return;
 
 		ManagedReference<CityRegion*> city = player->getCityRegion();
 
+		if (city == NULL)
+			return;
+
 		if (city->getMissionTerminalCount() >= (int) city->getCityRank() * 3){
-					player->sendSystemMessage("@city/city:no_more_mt");
-					return;
+			player->sendSystemMessage("@city/city:no_more_mt");
+			return;
 		}
 
 		Zone* zone = player->getZone();
+
+		if (zone == NULL)
+			return;
 
 		PlayerObject* ghost = player->getPlayerObject();
 
@@ -48,20 +54,20 @@ public:
 		switch (option) {
 
 		case 0: terminalTemplatePath = "object/tangible/terminal/terminal_mission.iff";
-				break;
+		break;
 
 		case 1: terminalTemplatePath = "object/tangible/terminal/terminal_mission_artisan.iff";
-				break;
+		break;
 
 		case 2: terminalTemplatePath = "object/tangible/terminal/terminal_mission_bounty.iff";
-				break;
+		break;
 
 		case 3: terminalTemplatePath = "object/tangible/terminal/terminal_mission_entertainer.iff";
-				break;
+		break;
 
 		case 4: terminalTemplatePath = "object/tangible/terminal/terminal_mission_scout.iff";
 
-				break;
+		break;
 		}
 
 		if (terminalTemplatePath != ""){
