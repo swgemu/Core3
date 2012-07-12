@@ -1137,15 +1137,21 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 
 			targetDefense -= targetCreature->calculateBFRatio();
 
-			if (targetDefense > 125)
-				targetDefense = 125;
-
 			// now roll to see if it gets applied
+			int defDiff = targetDefense - 90;
+			if (defDiff > 0 && creature->getLevel() != 0)
+				targetDefense = 90 + defDiff * 0.25 * targetCreature->getLevel() / creature->getLevel();
+
+			if (targetDefense > 0 && System::random(100) < targetDefense)
+							failed = true;
+			/*
+			 * old way...
 			uint32 strength = effect.getStateStrength();
 			if (strength == 0) strength = getAttackerAccuracyModifier(creature, creature->getWeapon());
 			strength += creature->getSkillMod(data.getCommand()->getAccuracySkillMod());
 			if (targetDefense > 0 && strength != 0 && System::random(100) > hitChanceEquation(strength, 0.0f, targetDefense))
 				failed = true;
+			 */
 
 			// no reason to apply jedi defenses if primary defense was successful
 			if (!failed) {
@@ -1155,12 +1161,15 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 				for (int j = 0; j < jediMods.size(); j++)
 					targetDefense += targetCreature->getSkillMod(jediMods.get(j));
 
-				if (targetDefense > 125)
-					targetDefense = 125;
-
 				// now roll again to see if it gets applied
-				if (targetDefense > 0 && strength != 0 && System::random(100) > hitChanceEquation(strength, 0.0f, targetDefense))
-					failed = true;
+				defDiff = targetDefense - 90;
+				if (defDiff > 0 && creature->getLevel() != 0)
+					targetDefense = 90 + defDiff * 0.25 * targetCreature->getLevel() / creature->getLevel();
+
+				if (targetDefense > 0 && System::random(100) < targetDefense)
+								failed = true;
+				//if (targetDefense > 0 && strength != 0 && System::random(100) > hitChanceEquation(strength, 0.0f, targetDefense))
+				//	failed = true;
 			}
 		}
 
