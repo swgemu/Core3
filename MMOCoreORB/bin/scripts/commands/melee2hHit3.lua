@@ -43,7 +43,7 @@
 
 Melee2hHit3Command = {
         name = "melee2hhit3",
-	damageMultiplier = 4,
+	damageMultiplier = 4.0,
 	speedMultiplier = 2.5,
 	healthCostMultiplier = 1.25,
 	actionCostMultiplier = 2.0,

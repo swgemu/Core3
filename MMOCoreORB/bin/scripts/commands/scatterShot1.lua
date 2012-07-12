@@ -44,7 +44,7 @@
 ScatterShot1Command = {
         name = "scattershot1",
 
-	damageMultiplier = 2.0,
+	damageMultiplier = 3.25,
 	speedMultiplier = 2,
 	healthCostMultiplier = 1.75,
 	actionCostMultiplier = 1.25,

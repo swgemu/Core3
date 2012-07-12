@@ -44,7 +44,7 @@
 PistolMeleeDefense1Command = {
         name = "pistolmeleedefense1",
 
-	damageMultiplier = 2.0,
+	damageMultiplier = 3.0,
 	speedMultiplier = 2.0,
 	healthCostMultiplier = 0.50,
 	actionCostMultiplier = 0.75,
