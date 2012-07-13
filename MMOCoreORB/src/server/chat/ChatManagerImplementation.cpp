@@ -608,7 +608,7 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 		return;
 	}
 
-	BaseMessage* msg = new ChatInstantMessageToClient(message->getGame(), message->getGalaxy(), sender->getFirstName(), text);
+	BaseMessage* msg = new ChatInstantMessageToClient("SWG", sender->getZoneServer()->getGalaxyName(), sender->getFirstName(), text);
 	receiver->sendMessage(msg);
 
 	BaseMessage* amsg = new ChatOnSendInstantMessage(message->getSequence(), IM_SUCCESS);
