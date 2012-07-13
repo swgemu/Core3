@@ -31,6 +31,9 @@ public:
 
 	bool createTerminalListing(const String& planet, const String& region, SceneObject* vendor) {
 
+		Locker locker(this);
+		Locker glocker(&galaxyListing);
+
 		if(vendor == NULL) {
 			warning("unable to create NULL vendor");
 			return false;
@@ -57,7 +60,7 @@ public:
 
 			if(existingRegion != NULL) {
 				itemList = existingRegion->get(vendor->getObjectID());
-				Locker locker(existingRegion);
+
 				existingRegion->drop(vendor->getObjectID());
 			}
 
@@ -69,7 +72,6 @@ public:
 				itemList->setNoDuplicateInsertPlan();
 			}
 
-			Locker _locker(this);
 			targetRegion->put(vendor->getObjectID(), itemList);
 			put(vendor->getObjectID(), itemList);
 		}
@@ -82,6 +84,9 @@ public:
 			warning("unable to drop NULL vendor");
 			return false;
 		}
+
+		Locker locker(this);
+		Locker glocker(&galaxyListing);
 
 		Reference<TerminalRegionList*> existingRegion = getVendorRegion(vendor);
 		if(existingRegion == NULL)
@@ -161,15 +166,25 @@ public:
 
 		TerminalListVector terminals;
 
-		for(int i = 0; i < size(); ++i) {
+		try {
 
-			Reference<TerminalItemList*> itemList = get(i);
+			rlock();
 
-			if(itemList == NULL)
-				continue;
+			for(int i = 0; i < size(); ++i) {
 
-			terminals.add(itemList);
+				Reference<TerminalItemList*> itemList = get(i);
 
+				if(itemList == NULL)
+					continue;
+
+				terminals.add(itemList);
+
+			}
+
+			unlock();
+		}
+		catch(Exception& e) {
+			unlock();
 		}
 
 		return terminals;
@@ -210,8 +225,6 @@ private:
 		if(galaxyListing.contains(planet))
 			return true;
 
-		Locker locker(&galaxyListing);
-
 		Reference<TerminalPlanetList*> newPlanet = new TerminalPlanetList();
 		newPlanet->setNoDuplicateInsertPlan();
 		newPlanet->setNullValue(NULL);
@@ -224,7 +237,6 @@ private:
 		if(!galaxyListing.contains(planet))
 			return true;
 
-		Locker locker(&galaxyListing);
 		return galaxyListing.drop(planet);
 	}
 
@@ -233,7 +245,6 @@ private:
 		if(planetList->contains(region))
 			return true;
 
-		Locker locker(planetList);
 		Reference<TerminalRegionList*> newRegion = new TerminalRegionList();
 		newRegion->setNoDuplicateInsertPlan();
 		newRegion->setNullValue(NULL);
@@ -246,12 +257,12 @@ private:
 		if(!planetList->contains(region))
 			return true;
 
-		Locker locker(planetList);
 		return planetList->drop(region);
 	}
 
+	/// Pre Locked
 	TerminalRegionList* getVendorRegion(SceneObject* vendor) {
-		Locker locker(&galaxyListing);
+
 		for(int i = 0; i < galaxyListing.size(); ++i) {
 
 			Reference<TerminalPlanetList*> planetList = galaxyListing.get(i);
@@ -263,21 +274,10 @@ private:
 
 					if(regionList != NULL) {
 
-						try {
-
-							regionList->rlock();
-
-							for(int k = 0; k < regionList->size(); ++k) {
-								if(regionList->elementAt(k).getKey() == vendor->getObjectID()) {
-									regionList->unlock();
-									return regionList;
-								}
+						for(int k = 0; k < regionList->size(); ++k) {
+							if(regionList->elementAt(k).getKey() == vendor->getObjectID()) {
+								return regionList;
 							}
-
-							regionList->unlock();
-						}
-						catch(Exception& e) {
-							regionList->unlock();
 						}
 					}
 				}
@@ -290,12 +290,21 @@ private:
 
 		if(planetList != NULL) {
 
-			for(int j = 0; j < planetList->size(); ++j) {
+			try {
 
-				Reference<TerminalRegionList*> regionList = planetList->get(j);
+				planetList->rlock();
 
-				if(regionList != NULL)
-					getRegionListing(terminals, regionList);
+				for(int j = 0; j < planetList->size(); ++j) {
+
+					Reference<TerminalRegionList*> regionList = planetList->get(j);
+
+					if(regionList != NULL)
+						getRegionListing(terminals, regionList);
+				}
+				planetList->unlock();
+			}
+			catch(Exception& e) {
+				planetList->unlock();
 			}
 		}
 	}

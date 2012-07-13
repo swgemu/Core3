@@ -62,6 +62,8 @@ int AuctionsMapImplementation::addVendorItem(CreatureObject* player, const Strin
 		return ItemSoldMessage::INVALIDAUCTIONER;
 
 	Locker locker(_this.get());
+	Locker vlocker(vendorItems);
+
 	int result = vendorItems->put(item);
 
 	if(result == -1)
@@ -89,6 +91,7 @@ int AuctionsMapImplementation::addBazaarItem(CreatureObject* player, const Strin
 		return ItemSoldMessage::INVALIDAUCTIONER;
 
 	Locker locker(_this.get());
+	Locker blocker(bazaarItems);
 	int result = bazaarItems->put(item);
 
 	if(result == -1)
@@ -123,6 +126,8 @@ int AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, AuctionItem
 		return ItemSoldMessage::INVALIDITEM;
 
 	Locker locker(_this.get());
+	Locker vlocker(vendorItems);
+
 	if(vendorItems->removeElement(item)) {
 
 		allItems.drop(item->getAuctionedItemObjectID());
@@ -148,6 +153,8 @@ int AuctionsMapImplementation::removeBazaarItem(SceneObject* vendor,  AuctionIte
 		return ItemSoldMessage::INVALIDITEM;
 
 	Locker locker(_this.get());
+	Locker blocker(bazaarItems);
+
 	if(bazaarItems->removeElement(item)) {
 
 		allItems.drop(item->getAuctionedItemObjectID());
