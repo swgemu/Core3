@@ -121,6 +121,10 @@ class WoundPack extends PharmaceuticalObject {
 	 * @returns 0 if successfull
 	 */
 	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
+		
+		if (!isASubChildOf(player))
+			return 0;
+
 		if (selectedID != 20)
 			return 1;
 

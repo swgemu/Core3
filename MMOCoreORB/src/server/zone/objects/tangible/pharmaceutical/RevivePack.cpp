@@ -446,6 +446,9 @@ void RevivePackImplementation::fillAttributeList(AttributeListMessage* msg, Crea
 
 int RevivePackImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		if 
+	if (!isASubChildOf(player))	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  			return 0;
+	return 0;
+	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		if 
 	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  			return 1;
 	return 1;
 	// server/zone/objects/tangible/pharmaceutical/RevivePack.idl():  		}

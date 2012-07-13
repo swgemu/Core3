@@ -284,6 +284,9 @@ void StatePackImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 
 int StatePackImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		if 
+	if (!isASubChildOf(player))	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  			return 0;
+	return 0;
+	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		if 
 	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  			return 1;
 	return 1;
 	// server/zone/objects/tangible/pharmaceutical/StatePack.idl():  		}

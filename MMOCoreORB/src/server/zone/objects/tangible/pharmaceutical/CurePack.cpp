@@ -387,6 +387,9 @@ void CurePackImplementation::loadTemplateData(SharedObjectTemplate* templateData
 
 int CurePackImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		if 
+	if (!isASubChildOf(player))	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  			return 0;
+	return 0;
+	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		if 
 	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  			return 1;
 	return 1;
 	// server/zone/objects/tangible/pharmaceutical/CurePack.idl():  		}

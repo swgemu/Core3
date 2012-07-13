@@ -383,6 +383,9 @@ void EnhancePackImplementation::loadTemplateData(SharedObjectTemplate* templateD
 
 int EnhancePackImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		if 
+	if (!isASubChildOf(player))	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  			return 0;
+	return 0;
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		if 
 	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  			return 1;
 	return 1;
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		}
