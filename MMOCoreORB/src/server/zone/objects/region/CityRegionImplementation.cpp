@@ -226,7 +226,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		creature->sendSystemMessage(params);
 	}
 
-	if (object->isBuildingObject()){
+	if (loaded && object->isBuildingObject()){
 		BuildingObject* building = cast<BuildingObject*>(object);
 
 		uint64 creatureID = building->getOwnerObjectID();
@@ -286,7 +286,7 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 	}
 
 
-	if (object->isBuildingObject()){
+	if (loaded && object->isBuildingObject()){
 
 		float x = object->getWorldPositionX();
 		float y = object->getWorldPositionY();

@@ -91,6 +91,8 @@ class CityRegion extends ManagedObject implements Logger {
 	protected boolean hasShuttle;
 	
 	protected unsigned long shuttleID;
+	
+	protected transient boolean loaded;
 		
 	@dereferenced
 	protected Time nextUpdateTime;
@@ -110,6 +112,8 @@ class CityRegion extends ManagedObject implements Logger {
 	public static final byte RANK_METROPOLIS = 5;
 	
 	public CityRegion() {
+		loaded = false;
+		
 		initialize();
 		
 		candidates.setAllowOverwriteInsertPlan();
@@ -532,4 +536,8 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 	
 	public native void resetVotingPeriod();
+	
+	public void setLoaded() {
+		loaded = true;
+	}
 }

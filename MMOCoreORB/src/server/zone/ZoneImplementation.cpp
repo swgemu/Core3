@@ -503,6 +503,8 @@ void ZoneImplementation::updateCityRegions() {
 		if (seconds < 0) //If the update occurred in the past, force an immediate update.
 			seconds = 0;
 
+		city->setLoaded();
+
 		city->rescheduleUpdateEvent(seconds);
 	}
 

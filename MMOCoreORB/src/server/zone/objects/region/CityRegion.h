@@ -338,6 +338,8 @@ public:
 
 	void resetVotingPeriod();
 
+	void setLoaded();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -413,6 +415,8 @@ protected:
 	bool hasShuttle;
 
 	unsigned long long shuttleID;
+
+	bool loaded;
 
 	Time nextUpdateTime;
 
@@ -632,6 +636,8 @@ public:
 	bool isVotingPeriod();
 
 	void resetVotingPeriod();
+
+	void setLoaded();
 
 	WeakReference<CityRegion*> _this;
 
@@ -853,6 +859,8 @@ public:
 	bool isVotingPeriod();
 
 	void resetVotingPeriod();
+
+	void setLoaded();
 
 };
 
