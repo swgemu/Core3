@@ -368,7 +368,7 @@ ZoneClientSession* ZoneServerImplementation::createConnection(Socket* sock, Sock
 	ZoneClientSession* client = new ZoneClientSession(session);
 	//clients arent undeployed instantly so we get already deployed clients
 	//client->deploy("ZoneClientSession " + addr.getFullIPAddress());
-	client->deploy();
+	//client->deploy();
 
 	String address = session->getAddress();
 
