@@ -932,15 +932,15 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	//info("Base attacker accuracy is " + String::valueOf(attackerAccuracy), true);
 
 	// need to also add in general attack accuracy (mostly gotten from foods and states)
-	accuracyBonus += getAttackerAccuracyBonus(creature, weapon);
-	accuracyBonus += calculateTargetPostureModifier(creature, targetCreature);
+	int totalBonus = getAttackerAccuracyBonus(creature, weapon);
+	totalBonus += calculateTargetPostureModifier(creature, targetCreature);
 
 	//info("Attacker accuracy bonus is " + String::valueOf(accuracyBonus), true);
 
 	int targetDefense = getDefenderDefenseModifier(targetCreature, weapon);
 
 	// first (and third) argument is divided by 2, second isn't
-	float accTotal = hitChanceEquation(attackerAccuracy + weaponAccuracy, accuracyBonus, targetDefense);
+	float accTotal = hitChanceEquation(attackerAccuracy + weaponAccuracy + accuracyBonus, totalBonus, targetDefense);
 
 	// this is the scout/ranger creature hit bonus that only works against creatures (not NPCS)
 	if (targetCreature->isCreature())
@@ -975,7 +975,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 			else return HIT;
 		}
 
-		accTotal = hitChanceEquation(attackerAccuracy + weaponAccuracy, accuracyBonus, targetDefense);
+		accTotal = hitChanceEquation(attackerAccuracy + weaponAccuracy + accuracyBonus, totalBonus, targetDefense);
 
 		if (accTotal > 100)
 			accTotal = 100.0;
@@ -984,7 +984,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 		int cobMod = targetCreature->getSkillMod("private_center_of_being");
 
-		if (System::random(100) > accTotal || (cobMod > 0 && System::random(100) > hitChanceEquation(attackerAccuracy + weaponAccuracy, accuracyBonus, cobMod))) { // successful secondary defense, return type of defense
+		if (System::random(100) > accTotal || (cobMod > 0 && System::random(100) > hitChanceEquation(attackerAccuracy + weaponAccuracy + accuracyBonus, totalBonus, cobMod))) { // successful secondary defense, return type of defense
 
 			// this means use defensive acuity, which mean random 1, 2, or 3
 			if (targetWeapon == NULL)
