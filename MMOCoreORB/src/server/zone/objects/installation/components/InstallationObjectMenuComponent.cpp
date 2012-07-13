@@ -38,9 +38,6 @@ void InstallationObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneO
 	menuResponse->addRadialMenuItemToRadialID(117, 121, 3, "@player_structure:permission_admin"); //Administrator List
 	menuResponse->addRadialMenuItemToRadialID(117, 123, 3, "@player_structure:permission_hopper"); //Hopper List
 
-	/// Temp for log viewing
-	menuResponse->addRadialMenuItemToRadialID(118, 72, 3, "@space/story_loot_n:loot_tatooine_hutt"); //a Log
-
 }
 
 int InstallationObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
@@ -95,38 +92,6 @@ int InstallationObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneOb
 		installation->sendPermissionListTo(player, "HOPPER");
 		break;
 
-	case 72:
-		if(true) {
-			/// 2 sui's, log of what is happening / happened
-			/// and items in hopper
-			HopperList* hopper = installation->getHopperList();
-			ManagedReference<SuiListBox*> contents = new SuiListBox(player);
-			contents->setPromptTitle("Items");
-			contents->setPromptText("Contents of this harvester");
-			for(int i = 0; i < hopper->size(); ++i) {
-				ResourceContainer* container = hopper->get(i);
-				if(container != NULL)
-					contents->addMenuItem(container->getSpawnName() + " : " + container->getQuantity(), 0);
-			}
-			if(hopper->size() == 0)
-				contents->addMenuItem("Empty", 0);
-
-			player->sendMessage(contents->generateMessage());
-
-			ManagedReference<SuiMessageBox*> logs = new SuiMessageBox(player, 0);
-			logs->setPromptTitle("Log");
-
-			Vector<String>* logList = installation->getLogs();
-			StringBuffer builder;
-			for(int i = 0; i < logList->size(); ++i) {
-				builder << logList->get(i) << "\n";
-			}
-			logs->setPromptText(builder.toString());
-
-			player->sendMessage(logs->generateMessage());
-		}
-
-		break;
 
 	default:
 		break;

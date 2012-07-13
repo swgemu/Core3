@@ -130,7 +130,6 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 	}
 
 	Time timeToWorkTill;
-	history.add(timeToWorkTill.getFormattedTime() + ":  setOperating: " + String::valueOf(value) + " Density: " + String::valueOf(spawnDensity));
 
 	operating = value;
 	extractionRemainder = 0;
@@ -175,7 +174,6 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 void InstallationObjectImplementation::setActiveResource(ResourceContainer* container) {
 
 	Time timeToWorkTill;
-	history.add(timeToWorkTill.getFormattedTime() + ": setActiveResource: " + container->getSpawnName());
 
 	if (resourceHopper.size() == 0) {
 		addResourceToHopper(container);
@@ -294,8 +292,6 @@ void InstallationObjectImplementation::updateInstallationWork() {
 
 	Time timeToWorkTill;
 
-	history.add(timeToWorkTill.getFormattedTime() + ": updateInstallationWork");
-
 	bool shutdownAfterWork = updateMaintenance(timeToWorkTill);
 	updateHopper(timeToWorkTill, shutdownAfterWork);
 }
@@ -303,8 +299,6 @@ void InstallationObjectImplementation::updateInstallationWork() {
 bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 
 	Time now;
-
-	history.add(now.getFormattedTime() + ": updateMaintenance");
 	
 	int currentTime = time(0);
 	int lastTime = lastMaintenanceTime.getTime();
@@ -314,13 +308,7 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 
 	float payAmount = ((float)elapsedTime / 3600.0f) * getMaintenanceRate();
 
-	history.add("		elapsedTime: " + String::valueOf(elapsedTime));
-	history.add("		MaintRate: " + String::valueOf(getMaintenanceRate()));
-	history.add("		payAmount: " + String::valueOf(payAmount));
-	history.add("		surplusMaintenance: " + String::valueOf(surplusMaintenance));
-
 	bool shutdownWork = false;
-
 
 
 	if (payAmount > surplusMaintenance) {
@@ -343,11 +331,6 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 
 	if (isOperating()) {
 		float enegeryAmount = (elapsedTime / 3600.0) * basePowerRate;
-
-		history.add("		enegeryAmount: " + String::valueOf(enegeryAmount));
-		history.add("		surplusPower: " + String::valueOf(surplusPower));
-		history.add("		basePowerRate: " + String::valueOf(basePowerRate));
-
 
 		if (enegeryAmount > surplusPower) {
 			enegeryAmount = surplusPower;
@@ -377,7 +360,6 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	Locker locker(_this.get());
 
 	Time timeToWorkTill;
-	history.add(timeToWorkTill.getFormattedTime() + ": updateHopper:" + String::valueOf(isOperating()));
 
 	if (!isOperating()) {
 		if(lastStopTime.compareTo(resourceHopperTimestamp) != -1)
@@ -404,8 +386,6 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	int availableCapacity = (int)(getHopperSizeMax() - getHopperSize());
 	harvestAmount = harvestAmount > availableCapacity ? availableCapacity : harvestAmount;
 
-	history.add("		unadjustedHarvestAmount: " + String::valueOf(harvestAmount));
-
 	if(harvestAmount < 0)
 		harvestAmount = 0;
 
@@ -414,17 +394,6 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	harvestAmount = (int) harvestAmount;
 
 	float currentQuantity = container->getQuantity();
-
-	history.add("		spawn: " + spawn->getName());
-	history.add("		despawned: " + String::valueOf(spawn->getDespawned() < time(0)));
-	history.add("		harvestUntil: " + String::valueOf(harvestUntil));
-	history.add("		lastHopperUpdate: " + String::valueOf(lastHopperUpdate));
-	history.add("		elapsedTime: " + String::valueOf(elapsedTime));
-	history.add("		spawnDensity: " + String::valueOf(spawnDensity));
-	history.add("		Extraction Rate: " + String::valueOf(getExtractionRate()));
-	history.add("		availableCapacity: " + String::valueOf(availableCapacity));
-	history.add("		harvestAmount: " + String::valueOf(harvestAmount));
-	history.add("		currentQuantity: " + String::valueOf(currentQuantity));
 
 
 	if(harvestAmount > 0) {
@@ -461,8 +430,6 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 void InstallationObjectImplementation::clearResourceHopper() {
 
 	Time timeToWorkTill;
-	history.add(timeToWorkTill.getFormattedTime() + ": clearResourceHopper");
-
 
 	if (resourceHopper.size() == 0)
 		return;
@@ -496,8 +463,6 @@ void InstallationObjectImplementation::addResourceToHopper(ResourceContainer* co
 		return;
 
 	Time timeToWorkTill;
-	history.add(timeToWorkTill.getFormattedTime() + ": addResourceToHopper: " + container->getSpawnName());
-
 
 	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.get());
 	inso7->updateHopper();
@@ -530,8 +495,6 @@ void InstallationObjectImplementation::changeActiveResourceID(uint64 spawnID) {
 	}
 
 	Time timeToWorkTill;
-	history.add(timeToWorkTill.getFormattedTime() + ": changeActiveResource: " + newSpawn->getName());
-
 
 	Time currentTime;
 
@@ -620,11 +583,6 @@ void InstallationObjectImplementation::destroyObjectFromDatabase(bool destroyCon
 void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient) {
 
 	Time timeToWorkTill;
-	history.add(timeToWorkTill.getFormattedTime() + ": updateResourceContainerQuantity:" + String::valueOf(newQuantity));
-
-	history.add("		newQuantity: " + String::valueOf(newQuantity));
-	history.add("		oldQuantity: " + String::valueOf(container->getQuantity()));
-	history.add("		notifyClient: " + String::valueOf(notifyClient));
 
 	container->setQuantity(newQuantity, false, true);
 
