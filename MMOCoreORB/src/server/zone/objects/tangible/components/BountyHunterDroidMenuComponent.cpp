@@ -47,6 +47,9 @@ int BountyHunterDroidMenuComponent::handleObjectMenuSelect(SceneObject* droidObj
 		return 0;
 	}
 
+	if (!droidObject->isASubChildOf(player))
+		return 0;
+
 	if (isProbeDroid(droidObject)) {
 		if (selectedID == 138 && droidIsInPlayerInventory(droidObject, player)) {
 			performDroidAction(BountyHunterDroid::CALLDROID, droidObject, player);

@@ -34,6 +34,9 @@ int TrapMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Creature
 	if (!sceneObject->isTangibleObject())
 		return 0;
 
+	if (!sceneObject->isASubChildOf(player))
+			return 0;
+
 	if(selectedID == 20) {
 		ManagedReference<ZoneServer*> server = player->getZoneServer();
 		if(server == NULL)

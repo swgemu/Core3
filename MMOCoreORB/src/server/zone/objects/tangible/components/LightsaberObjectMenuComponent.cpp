@@ -38,6 +38,9 @@ int LightsaberObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 	if (!sceneObject->isTangibleObject())
 		return 0;
 
+	if (!sceneObject->isASubChildOf(player))
+		return 0;
+
 	ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(sceneObject);
 	if (weapon == NULL)
 		return 1;

@@ -48,6 +48,9 @@ int LootSchematicMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	if (!player->isPlayerCreature())
 		return 0;
 
+	if (!sceneObject->isASubChildOf(player))
+		return 0;
+
 	if(selectedID == 50) {
 		PlayerObject* ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
 

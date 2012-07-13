@@ -11,6 +11,9 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 
 int FireHeavyWeaponMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+	if (!sceneObject->isASubChildOf(player))
+		return 0;
+
 	switch (selectedID) {
 	case 20:
 		player->sendExecuteConsoleCommand("fireheavyweapon");
