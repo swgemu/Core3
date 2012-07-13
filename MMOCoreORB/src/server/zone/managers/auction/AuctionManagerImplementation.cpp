@@ -123,7 +123,7 @@ void AuctionManagerImplementation::checkVendorItems() {
 
 	TerminalListVector items = auctionMap->getVendorTerminalData("", "", 0);
 
-	info("Checking " + String::valueOf(items.size()) + " vendor items", true);
+	info("Checking " + String::valueOf(items.size()) + " vendor terminals", true);
 
 	doAuctionMaint(&items);
 }
@@ -135,7 +135,7 @@ void AuctionManagerImplementation::checkAuctions() {
 
 	TerminalListVector items = auctionMap->getBazaarTerminalData("", "", 0);
 
-	info("Checking " + String::valueOf(items.size()) + " bazaar items", true);
+	info("Checking " + String::valueOf(items.size()) + " bazaar terminals", true);
 
 	doAuctionMaint(&items);
 }
@@ -438,7 +438,6 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 	item->setBuyerID(0);
 	item->setBidderName("");
 
-
 	VendorDataComponent* vendorData = NULL;
 	DataObjectComponentReference* data = vendor->getDataObjectComponent();
 	if(data != NULL && data->get() != NULL && data->get()->isVendorData())
@@ -453,13 +452,10 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 			item->setStatus(AuctionItem::OFFERED);
 			item->setOfferToID(vendorData->getOwnerId());
 		}
-
-		item->setSearchable(vendorData->isVendorSearchEnabled());
 	}
 
 	if (vendor->isBazaarTerminal()) {
 		item->setOnBazaar(true);
-		item->setSearchable(true);
 	}
 
 	ObjectManager::instance()->persistObject(item, 0, "auctionitems");
@@ -862,6 +858,10 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 		if(items == NULL)
 			continue;
 
+		/// Exclude non-searchable vendor Items
+		if(vendor->isBazaarTerminal() && screen == 7 && !items->isSearchable())
+			continue;
+
 		try {
 			items->rlock();
 
@@ -878,8 +878,6 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 
 				switch(screen) {
 				case 7: // Vendor search Bazaar && Vendor
-					if((vendor->isBazaarTerminal() && !item->isSearchable()))
-						continue;
 
 					if(vendor->isVendor() && item->getVendorID() != vendor->getObjectID()) {
 						if(item->getOwnerID() != player->getObjectID())

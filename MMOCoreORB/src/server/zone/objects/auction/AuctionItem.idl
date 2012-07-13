@@ -75,7 +75,6 @@ class AuctionItem extends ManagedObject {
 	protected int status;
 
 	protected boolean onBazaar;
-	protected boolean searchable;
 
 	protected unsigned long buyerID;
 
@@ -107,7 +106,6 @@ class AuctionItem extends ManagedObject {
 		auction = true;
 
 		onBazaar = false;
-		searchable = false;
 		
 		buyerID = 0;
 		expireTime = 0;
@@ -232,11 +230,7 @@ class AuctionItem extends ManagedObject {
 	public unsigned long getOfferToID() {
 		return offerToID;
 	}
-	
-	public void setSearchable(boolean enabled) {
-		searchable = enabled;
-	}
-	
+
 	public void setVendorUID(final string uid) {
 		vuid = uid;
 	}
@@ -292,8 +286,5 @@ class AuctionItem extends ManagedObject {
 	public boolean isAuctionObject() {
 		return true;
 	}
-	
-	public boolean isSearchable() {
-		return searchable == true;
-	}
+
 }

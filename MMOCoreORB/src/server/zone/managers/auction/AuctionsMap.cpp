@@ -312,8 +312,8 @@ AuctionsMapImplementation::AuctionsMapImplementation() {
 	(&allItems)->setNullValue(NULL);
 	// server/zone/managers/auction/AuctionsMap.idl():  		allItems.setNoDuplicateInsertPlan();
 	(&allItems)->setNoDuplicateInsertPlan();
-	// server/zone/managers/auction/AuctionsMap.idl():  		bazaarCount.setNoDuplicateInsertPlan();
-	(&bazaarCount)->setNoDuplicateInsertPlan();
+	// server/zone/managers/auction/AuctionsMap.idl():  		bazaarCount.setAllowOverwriteInsertPlan();
+	(&bazaarCount)->setAllowOverwriteInsertPlan();
 	// server/zone/managers/auction/AuctionsMap.idl():  		bazaarCount.setNullValue(0);
 	(&bazaarCount)->setNullValue(0);
 	// server/zone/managers/auction/AuctionsMap.idl():  		logger.setLoggingName("AuctionsMap");

@@ -122,8 +122,6 @@ public:
 
 	unsigned long long getOfferToID();
 
-	void setSearchable(bool enabled);
-
 	void setVendorUID(const String& uid);
 
 	const String getVendorUID();
@@ -151,8 +149,6 @@ public:
 	bool isOwner(CreatureObject* player);
 
 	bool isAuctionObject();
-
-	bool isSearchable();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -207,8 +203,6 @@ protected:
 	int status;
 
 	bool onBazaar;
-
-	bool searchable;
 
 	unsigned long long buyerID;
 
@@ -289,8 +283,6 @@ public:
 
 	unsigned long long getOfferToID();
 
-	void setSearchable(bool enabled);
-
 	void setVendorUID(const String& uid);
 
 	const String getVendorUID();
@@ -318,8 +310,6 @@ public:
 	bool isOwner(CreatureObject* player);
 
 	bool isAuctionObject();
-
-	bool isSearchable();
 
 	WeakReference<AuctionItem*> _this;
 
@@ -416,8 +406,6 @@ public:
 
 	unsigned long long getOfferToID();
 
-	void setSearchable(bool enabled);
-
 	void setVendorUID(const String& uid);
 
 	const String getVendorUID();
@@ -445,8 +433,6 @@ public:
 	bool isOwner(CreatureObject* player);
 
 	bool isAuctionObject();
-
-	bool isSearchable();
 
 };
 

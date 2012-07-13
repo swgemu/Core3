@@ -14,145 +14,127 @@
 #include "server/zone/objects/auction/AuctionItem.h"
 #include "server/zone/managers/object/ObjectManager.h"
 
-class AuctionTerminalMap {
+class AuctionTerminalMap : public VectorMap<uint64, Reference<TerminalItemList*> >, public Logger, public ReadWriteLock {
 
 	TerminalGalaxyList galaxyListing;
 
 public:
 	AuctionTerminalMap() {
+		setNullValue(NULL);
+		setNoDuplicateInsertPlan();
 
+		galaxyListing.setNoDuplicateInsertPlan();
+		galaxyListing.setNullValue(NULL);
+
+		setLoggingName("AuctionTerminalMap");
 	}
 
-	void ensureTerminalDataExists(const String& planet, const String& region, SceneObject* vendor, TerminalItemList* items = NULL) {
+	bool createTerminalListing(const String& planet, const String& region, SceneObject* vendor) {
 
-		if(planet.isEmpty() || region.isEmpty() || vendor == NULL)
-			return;
-
-		if(!galaxyListing.contains(planet)) {
-
-			Reference<TerminalPlanetList*> newPlanet = new TerminalPlanetList();;
-			newPlanet->setNoDuplicateInsertPlan();
-			newPlanet->setNullValue(NULL);
-
-			galaxyListing.wlock();
-			galaxyListing.put(planet, newPlanet);
-			galaxyListing.unlock();
+		if(vendor == NULL) {
+			warning("unable to create NULL vendor");
+			return false;
 		}
+
+		if(!galaxyListing.contains(planet) && !addPlanetListing(planet)) {
+			error("Unable to create planet listing");
+			return false;
+		}
+
 
 		Reference<TerminalPlanetList*> planetList = galaxyListing.get(planet);
-		if(!planetList->contains(region)) {
-			Reference<TerminalRegionList*> newRegion = new TerminalRegionList();
-			newRegion->setNoDuplicateInsertPlan();
-			newRegion->setNullValue(NULL);
-
-			Locker _locker(planetList);
-			planetList->put(region, newRegion);
+		if(planetList == NULL || (!planetList->contains(region) && !addRegionListing(planetList, region))) {
+			error("unable to create region listing");
+			return false;
 		}
 
-		Reference<TerminalRegionList*> regionList = planetList->get(region);
-		if(!regionList->contains(vendor->getObjectID())) {
-			Reference<TerminalItemList*> newItemList = new TerminalItemList();
-			newItemList->setNoDuplicateInsertPlan();
+		Reference<TerminalRegionList*> targetRegion = planetList->get(region);
+		Reference<TerminalRegionList*> existingRegion = getVendorRegion(vendor);
 
-			if(items != NULL) {
-				Locker locker(items);
-				while(items->size() > 0) {
-					newItemList->add(items->remove(0));
-				}
+		if(!targetRegion->contains(vendor->getObjectID()) || !contains(vendor->getObjectID())) {
+
+			Reference<TerminalItemList*> itemList = NULL;
+
+			if(existingRegion != NULL) {
+				itemList = existingRegion->get(vendor->getObjectID());
+				Locker locker(existingRegion);
+				existingRegion->drop(vendor->getObjectID());
 			}
 
-			Locker _locker(regionList);
-			regionList->put(vendor->getObjectID(), newItemList);
+			if(itemList == NULL)
+				itemList = get(vendor->getObjectID());
+
+			if(itemList == NULL) {
+				itemList = new TerminalItemList();
+				itemList->setNoDuplicateInsertPlan();
+			}
+
+			Locker _locker(this);
+			targetRegion->put(vendor->getObjectID(), itemList);
+			put(vendor->getObjectID(), itemList);
 		}
+		return true;
 	}
 
-	void removeTerminal(SceneObject* vendor) {
+	bool dropTerminalListing(SceneObject* vendor) {
 
-		if(vendor == NULL)
-			return;
-
-		Reference<TerminalItemList*> vendorItems = NULL;
-		Reference<TerminalRegionList*> vendorRegion = NULL;
-
-		for(int i = 0; i < galaxyListing.size(); ++i) {
-
-			Reference<TerminalPlanetList*> planetList = galaxyListing.get(i);
-
-			if(planetList != NULL) {
-				for(int j = 0; j < planetList->size(); ++j) {
-
-					Reference<TerminalRegionList*> regionList = planetList->get(j);
-
-					if(regionList != NULL) {
-						for(int k = 0; k < regionList->size(); ++k) {
-							if(regionList->elementAt(k).getKey() == vendor->getObjectID()) {
-								vendorItems = regionList->get(k);
-								vendorRegion = regionList;
-								i = galaxyListing.size();
-								j = planetList->size();
-								break;
-							}
-						}
-					}
-				}
-			}
+		if(vendor == NULL) {
+			warning("unable to drop NULL vendor");
+			return false;
 		}
 
-		if(vendorItems != NULL) {
-			Locker _locker(vendorItems);
-			while(vendorItems->size() > 0) {
-				ManagedReference<AuctionItem*> item = vendorItems->remove(0);
-				ObjectManager::instance()->destroyObjectFromDatabase(item->_getObjectID());
-			}
+		Reference<TerminalRegionList*> existingRegion = getVendorRegion(vendor);
+		if(existingRegion == NULL)
+			return drop(vendor->getObjectID());
 
-			Locker locker(vendorRegion);
-			vendorRegion->drop(vendor->getObjectID());
-		}
+		if(existingRegion->drop(vendor->getObjectID()))
+			return drop(vendor->getObjectID());
+
+		return false;
 	}
 
-	void updateTerminalUID(const String& planet, const String& region, SceneObject* vendor, const String& newVuid) {
+	bool updateTerminalUID(const String& planet, const String& region, SceneObject* vendor, const String& newVuid) {
 
-		if(moveVendorListing(vendor, planet, region)) {
 
-			Reference<TerminalItemList*> items = getVendorListing(planet, region, vendor);
-
-			if(items == NULL)
-				items = findVendorItems(vendor);
-
-			if(items == NULL || items->isEmpty())
-				return;
-
-			Locker locker(items);
-			for(int i = 0; i < items->size(); ++i) {
-				ManagedReference<AuctionItem* > item = items->get(i);
-				if(item == NULL)
-					continue;
-
-				Locker locker(item);
-				item->setVendorUID(newVuid);
-			}
-			return;
+		if(!createTerminalListing(planet, region, vendor)) {
+			error("unable to update terminal UID");
+			return false;
 		}
+
+		Reference<TerminalItemList*> itemList = get(vendor->getObjectID());
+
+		if(itemList == NULL)
+			return false;
+
+		if(itemList->isEmpty())
+			return true;
+
+		Locker locker(itemList);
+		for(int i = 0; i < itemList->size(); ++i) {
+			ManagedReference<AuctionItem* > item = itemList->get(i);
+			if(item == NULL)
+				continue;
+
+			Locker locker(item);
+			item->setVendorUID(newVuid);
+		}
+
+		return true;
+
 	}
 
-	void updateTerminalSearch(const String& planet, const String& region, SceneObject* vendor, bool enabled) {
+	void updateTerminalSearch(SceneObject* vendor, bool enabled) {
 
 		if(vendor == NULL || vendor->isBazaarTerminal())
 			return;
 
-		Reference<TerminalItemList*> items = getVendorListing(planet, region, vendor);
-		if(items == NULL || items->isEmpty())
+		Reference<TerminalItemList*> itemList = get(vendor->getObjectID());
+
+		if(itemList == NULL)
 			return;
 
-		Locker locker(items);
-		for(int i = 0; i < items->size(); ++i) {
-			ManagedReference<AuctionItem* > item = items->get(i);
-			if(item == NULL)
-				continue;
-
-			Locker _locker(item);
-			item->setSearchable(enabled);
-		}
+		Locker locker(itemList);
+		itemList->setSearchable(enabled);
 	}
 
 	TerminalListVector getTerminalData(const String& planet, const String& region, SceneObject* vendor) {
@@ -168,15 +150,7 @@ public:
 
 		TerminalListVector terminals;
 
-		Reference<TerminalPlanetList*> planetList = galaxyListing.get(planet);
-		if(planetList == NULL)
-			return terminals;
-
-		Reference<TerminalRegionList*> regionList = planetList->get(region);
-		if(regionList == NULL)
-			return terminals;
-
-		Reference<TerminalItemList*> itemList = getVendorListing(planet, region, vendor);
+		Reference<TerminalItemList*> itemList = get(vendor->getObjectID());
 		if(itemList != NULL)
 			terminals.add(itemList);
 
@@ -187,11 +161,15 @@ public:
 
 		TerminalListVector terminals;
 
-		for(int i = 0; i < galaxyListing.size(); ++i) {
+		for(int i = 0; i < size(); ++i) {
 
-			Reference<TerminalPlanetList*> planetList = galaxyListing.get(i);
+			Reference<TerminalItemList*> itemList = get(i);
 
-			getPlanetListing(&terminals, planetList);
+			if(itemList == NULL)
+				continue;
+
+			terminals.add(itemList);
+
 		}
 
 		return terminals;
@@ -209,23 +187,6 @@ public:
 		return terminals;
 	}
 
-	void getPlanetListing(TerminalListVector* terminals, TerminalPlanetList* planetList) {
-
-		if(planetList != NULL) {
-
-			for(int j = 0; j < planetList->size(); ++j) {
-
-				Reference<TerminalRegionList*> regionList = planetList->get(j);
-
-				if(regionList != NULL) {
-
-					for(int k = 0; k < regionList->size(); ++k) {
-						terminals->add(regionList->get(k));
-					}
-				}
-			}
-		}
-	}
 
 	TerminalListVector getRegionListing(const String& planet, const String& region) {
 
@@ -243,50 +204,59 @@ public:
 		return terminals;
 	}
 
-	void getRegionListing(TerminalListVector* terminals, TerminalRegionList* regionList) {
+private:
+	bool addPlanetListing(const String& planet) {
 
-		if(regionList != NULL) {
-			try {
+		if(galaxyListing.contains(planet))
+			return true;
 
-				regionList->rlock();
+		Locker locker(&galaxyListing);
 
-				for(int k = 0; k < regionList->size(); ++k)
-					terminals->add(regionList->get(k));
+		Reference<TerminalPlanetList*> newPlanet = new TerminalPlanetList();
+		newPlanet->setNoDuplicateInsertPlan();
+		newPlanet->setNullValue(NULL);
 
-				regionList->unlock();
-			}
-			catch(Exception& e) {
-				regionList->unlock();
-			}
-		}
+		return (galaxyListing.put(planet, newPlanet) != -1);
 	}
 
-	TerminalItemList* getVendorListing(const String& planet, const String& region, SceneObject* vendor) {
+	bool removePlanetListing(const String& planet) {
 
+		if(!galaxyListing.contains(planet))
+			return true;
 
-		Reference<TerminalPlanetList*> planetList = galaxyListing.get(planet);
-		if(planetList == NULL)
-			return NULL;
-
-		Reference<TerminalRegionList*> regionList = planetList->get(region);
-		if(regionList == NULL)
-			return NULL;
-
-		Reference<TerminalItemList*> itemList = regionList->get(vendor->getObjectID());
-
-		if(itemList == NULL)
-			return NULL;
-
-		return itemList;
+		Locker locker(&galaxyListing);
+		return galaxyListing.drop(planet);
 	}
 
-	TerminalItemList* findVendorItems(SceneObject* vendor) {
+	bool addRegionListing(TerminalPlanetList* planetList, const String& region) {
 
+		if(planetList->contains(region))
+			return true;
+
+		Locker locker(planetList);
+		Reference<TerminalRegionList*> newRegion = new TerminalRegionList();
+		newRegion->setNoDuplicateInsertPlan();
+		newRegion->setNullValue(NULL);
+
+		return (planetList->put(region, newRegion) != -1);
+	}
+
+	bool removeRegionListing(TerminalPlanetList* planetList, const String& region) {
+
+		if(!planetList->contains(region))
+			return true;
+
+		Locker locker(planetList);
+		return planetList->drop(region);
+	}
+
+	TerminalRegionList* getVendorRegion(SceneObject* vendor) {
+		Locker locker(&galaxyListing);
 		for(int i = 0; i < galaxyListing.size(); ++i) {
 
 			Reference<TerminalPlanetList*> planetList = galaxyListing.get(i);
-
 			if(planetList != NULL) {
+
 				for(int j = 0; j < planetList->size(); ++j) {
 
 					Reference<TerminalRegionList*> regionList = planetList->get(j);
@@ -294,11 +264,16 @@ public:
 					if(regionList != NULL) {
 
 						try {
+
 							regionList->rlock();
+
 							for(int k = 0; k < regionList->size(); ++k) {
-								if(regionList->elementAt(k).getKey() == vendor->getObjectID())
-									return regionList->get(k);
+								if(regionList->elementAt(k).getKey() == vendor->getObjectID()) {
+									regionList->unlock();
+									return regionList;
+								}
 							}
+
 							regionList->unlock();
 						}
 						catch(Exception& e) {
@@ -311,51 +286,45 @@ public:
 		return NULL;
 	}
 
-	bool moveVendorListing(SceneObject* vendor, const String& planet, const String& region) {
+	void getPlanetListing(TerminalListVector* terminals, TerminalPlanetList* planetList) {
 
-		Reference<TerminalItemList*> vendorItems = NULL;
-		Reference<TerminalRegionList*> vendorRegion = NULL;
+		if(planetList != NULL) {
 
-		Locker locker(&galaxyListing);
-		for(int i = 0; i < galaxyListing.size(); ++i) {
+			for(int j = 0; j < planetList->size(); ++j) {
 
-			Reference<TerminalPlanetList*> planetList = galaxyListing.get(i);
+				Reference<TerminalRegionList*> regionList = planetList->get(j);
 
-			if(planetList != NULL) {
-
-				Locker plocker(planetList);
-				for(int j = 0; j < planetList->size(); ++j) {
-
-					Reference<TerminalRegionList*> regionList = planetList->get(j);
-
-					if(regionList != NULL) {
-
-						Locker rlocker(regionList);
-
-						for(int k = 0; k < regionList->size(); ++k) {
-							if(regionList->elementAt(k).getKey() == vendor->getObjectID()) {
-								vendorItems = regionList->get(k);
-								vendorRegion = regionList;
-								i = galaxyListing.size();
-								j = planetList->size();
-								break;
-							}
-						}
-					}
-				}
+				if(regionList != NULL)
+					getRegionListing(terminals, regionList);
 			}
 		}
-
-		if(vendorItems == NULL)
-			return false;
-
-		ensureTerminalDataExists(planet, region, vendor, vendorItems);
-
-		Locker rlocker(vendorRegion);
-		vendorRegion->drop(vendor->getObjectID());
-
-		return true;
 	}
+
+	void getRegionListing(TerminalListVector* terminals, TerminalRegionList* regionList) {
+
+		if(regionList != NULL) {
+			try {
+
+				regionList->rlock();
+
+				for(int i = 0; i < regionList->size(); ++i) {
+
+					Reference<TerminalItemList*> itemList = regionList->get(i);
+
+					if(itemList == NULL)
+						continue;
+
+					terminals->add(itemList);
+				}
+
+				regionList->unlock();
+			}
+			catch(Exception& e) {
+				regionList->unlock();
+			}
+		}
+	}
+
 };
 
 #endif /* AUCTIONTERMINALMAP_H_ */

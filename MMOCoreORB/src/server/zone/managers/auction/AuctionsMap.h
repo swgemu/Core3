@@ -130,9 +130,9 @@ public:
 	int removeItem(SceneObject* vendor, AuctionItem* item);
 
 private:
-	int removeVendorItem(const String& planet, const String& region, SceneObject* vendor, AuctionItem* item);
+	int removeVendorItem(SceneObject* vendor, AuctionItem* item);
 
-	int removeBazaarItem(const String& planet, const String& region, SceneObject* vendor, AuctionItem* item);
+	int removeBazaarItem(SceneObject* vendor, AuctionItem* item);
 
 public:
 	AuctionItem* getItem(unsigned long long id);

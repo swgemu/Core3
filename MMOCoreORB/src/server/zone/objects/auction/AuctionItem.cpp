@@ -12,7 +12,7 @@
  *	AuctionItemStub
  */
 
-enum {RPC_COMPARETO__AUCTIONITEM_ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_SETVENDORID__LONG_,RPC_SETITEMNAME__STRING_,RPC_SETITEMDESCRIPTION__STRING_,RPC_SETPRICE__INT_,RPC_SETAUCTIONEDITEMOBJECTID__LONG_,RPC_SETITEMTYPE__INT_,RPC_SETOWNERID__LONG_,RPC_SETOFFERTOID__LONG_,RPC_SETBIDDERNAME__STRING_,RPC_SETOWNERNAME__STRING_,RPC_SETAUCTION__BOOL_,RPC_SETAUCTIONPREMIUM__,RPC_CLEARAUCTIONWITHDRAW__,RPC_SETONBAZAAR__BOOL_,RPC_SETEXPIRETIME__INT_,RPC_SETBUYERID__LONG_,RPC_SETSTATUS__INT_,RPC_ISONBAZAAR__,RPC_ISAUCTION__,RPC_GETSTATUS__,RPC_GETVENDORID__,RPC_GETAUCTIONEDITEMOBJECTID__,RPC_GETOWNERID__,RPC_GETOFFERTOID__,RPC_SETSEARCHABLE__BOOL_,RPC_SETVENDORUID__STRING_,RPC_GETVENDORUID__,RPC_GETOWNERNAME__,RPC_GETITEMNAME__,RPC_GETEXPIRETIME__,RPC_GETPRICE__,RPC_GETITEMTYPE__,RPC_GETBUYERID__,RPC_GETBIDDERNAME__,RPC_GETITEMDESCRIPTION__,RPC_GETAUCTIONOPTIONS__,RPC_ISPREMIUMAUCTION__,RPC_ISOWNER__CREATUREOBJECT_,RPC_ISAUCTIONOBJECT__,RPC_ISSEARCHABLE__};
+enum {RPC_COMPARETO__AUCTIONITEM_ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_SETVENDORID__LONG_,RPC_SETITEMNAME__STRING_,RPC_SETITEMDESCRIPTION__STRING_,RPC_SETPRICE__INT_,RPC_SETAUCTIONEDITEMOBJECTID__LONG_,RPC_SETITEMTYPE__INT_,RPC_SETOWNERID__LONG_,RPC_SETOFFERTOID__LONG_,RPC_SETBIDDERNAME__STRING_,RPC_SETOWNERNAME__STRING_,RPC_SETAUCTION__BOOL_,RPC_SETAUCTIONPREMIUM__,RPC_CLEARAUCTIONWITHDRAW__,RPC_SETONBAZAAR__BOOL_,RPC_SETEXPIRETIME__INT_,RPC_SETBUYERID__LONG_,RPC_SETSTATUS__INT_,RPC_ISONBAZAAR__,RPC_ISAUCTION__,RPC_GETSTATUS__,RPC_GETVENDORID__,RPC_GETAUCTIONEDITEMOBJECTID__,RPC_GETOWNERID__,RPC_GETOFFERTOID__,RPC_SETVENDORUID__STRING_,RPC_GETVENDORUID__,RPC_GETOWNERNAME__,RPC_GETITEMNAME__,RPC_GETEXPIRETIME__,RPC_GETPRICE__,RPC_GETITEMTYPE__,RPC_GETBUYERID__,RPC_GETBIDDERNAME__,RPC_GETITEMDESCRIPTION__,RPC_GETAUCTIONOPTIONS__,RPC_ISPREMIUMAUCTION__,RPC_ISOWNER__CREATUREOBJECT_,RPC_ISAUCTIONOBJECT__};
 
 AuctionItem::AuctionItem(unsigned long long objectid) : ManagedObject(DummyConstructorParameter::instance()) {
 	AuctionItemImplementation* _implementation = new AuctionItemImplementation(objectid);
@@ -384,20 +384,6 @@ unsigned long long AuctionItem::getOfferToID() {
 		return _implementation->getOfferToID();
 }
 
-void AuctionItem::setSearchable(bool enabled) {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETSEARCHABLE__BOOL_);
-		method.addBooleanParameter(enabled);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setSearchable(enabled);
-}
-
 void AuctionItem::setVendorUID(const String& uid) {
 	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -592,19 +578,6 @@ bool AuctionItem::isAuctionObject() {
 		return _implementation->isAuctionObject();
 }
 
-bool AuctionItem::isSearchable() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ISSEARCHABLE__);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->isSearchable();
-}
-
 DistributedObjectServant* AuctionItem::_getImplementation() {
 
 	 if (!_updated) _updated = true;
@@ -780,11 +753,6 @@ bool AuctionItemImplementation::readObjectMember(ObjectInputStream* stream, cons
 		return true;
 	}
 
-	if (_name == "AuctionItem.searchable") {
-		TypeInfo<bool >::parseFromBinaryStream(&searchable, stream);
-		return true;
-	}
-
 	if (_name == "AuctionItem.buyerID") {
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&buyerID, stream);
 		return true;
@@ -934,14 +902,6 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.searchable";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<bool >::toBinaryStream(&searchable, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
 	_name = "AuctionItem.buyerID";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -975,7 +935,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 19;
+	return _count + 18;
 }
 
 AuctionItemImplementation::AuctionItemImplementation(unsigned long long objectid) {
@@ -996,8 +956,6 @@ AuctionItemImplementation::AuctionItemImplementation(unsigned long long objectid
 	auction = true;
 	// server/zone/objects/auction/AuctionItem.idl():  		onBazaar = false;
 	onBazaar = false;
-	// server/zone/objects/auction/AuctionItem.idl():  		searchable = false;
-	searchable = false;
 	// server/zone/objects/auction/AuctionItem.idl():  		buyerID = 0;
 	buyerID = 0;
 	// server/zone/objects/auction/AuctionItem.idl():  		expireTime = 0;
@@ -1136,11 +1094,6 @@ unsigned long long AuctionItemImplementation::getOfferToID() {
 	return offerToID;
 }
 
-void AuctionItemImplementation::setSearchable(bool enabled) {
-	// server/zone/objects/auction/AuctionItem.idl():  		searchable = enabled;
-	searchable = enabled;
-}
-
 void AuctionItemImplementation::setVendorUID(const String& uid) {
 	// server/zone/objects/auction/AuctionItem.idl():  		vuid = uid;
 	vuid = uid;
@@ -1209,11 +1162,6 @@ bool AuctionItemImplementation::isOwner(CreatureObject* player) {
 bool AuctionItemImplementation::isAuctionObject() {
 	// server/zone/objects/auction/AuctionItem.idl():  		return true;
 	return true;
-}
-
-bool AuctionItemImplementation::isSearchable() {
-	// server/zone/objects/auction/AuctionItem.idl():  		return searchable == true;
-	return searchable == true;
 }
 
 /*
@@ -1365,11 +1313,6 @@ void AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertLong(getOfferToID());
 		}
 		break;
-	case RPC_SETSEARCHABLE__BOOL_:
-		{
-			setSearchable(inv->getBooleanParameter());
-		}
-		break;
 	case RPC_SETVENDORUID__STRING_:
 		{
 			String uid; 
@@ -1439,11 +1382,6 @@ void AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ISAUCTIONOBJECT__:
 		{
 			resp->insertBoolean(isAuctionObject());
-		}
-		break;
-	case RPC_ISSEARCHABLE__:
-		{
-			resp->insertBoolean(isSearchable());
 		}
 		break;
 	default:
@@ -1555,10 +1493,6 @@ unsigned long long AuctionItemAdapter::getOfferToID() {
 	return (static_cast<AuctionItem*>(stub))->getOfferToID();
 }
 
-void AuctionItemAdapter::setSearchable(bool enabled) {
-	(static_cast<AuctionItem*>(stub))->setSearchable(enabled);
-}
-
 void AuctionItemAdapter::setVendorUID(const String& uid) {
 	(static_cast<AuctionItem*>(stub))->setVendorUID(uid);
 }
@@ -1613,10 +1547,6 @@ bool AuctionItemAdapter::isOwner(CreatureObject* player) {
 
 bool AuctionItemAdapter::isAuctionObject() {
 	return (static_cast<AuctionItem*>(stub))->isAuctionObject();
-}
-
-bool AuctionItemAdapter::isSearchable() {
-	return (static_cast<AuctionItem*>(stub))->isSearchable();
 }
 
 /*
