@@ -2716,7 +2716,7 @@ int PlayerManagerImplementation::calculatePlayerLevel(CreatureObject* player) {
 
 	String weaponType = weapon->getWeaponType();
 
-	int level = MIN(24, MAX(1, player->getSkillMod("private_" + weaponType + "_combat_difficulty") / 100));
+	int level = MAX(1, player->getSkillMod("private_" + weaponType + "_combat_difficulty") / 100);
 
 	return level;
 }
