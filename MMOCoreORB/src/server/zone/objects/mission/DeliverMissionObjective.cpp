@@ -303,16 +303,6 @@ bool DeliverMissionObjectiveImplementation::readObjectMember(ObjectInputStream* 
 	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "DeliverMissionObjective.target") {
-		TypeInfo<ManagedReference<AiAgent* > >::parseFromBinaryStream(&target, stream);
-		return true;
-	}
-
-	if (_name == "DeliverMissionObjective.destination") {
-		TypeInfo<ManagedReference<AiAgent* > >::parseFromBinaryStream(&destination, stream);
-		return true;
-	}
-
 	if (_name == "DeliverMissionObjective.item") {
 		TypeInfo<ManagedReference<TangibleObject* > >::parseFromBinaryStream(&item, stream);
 		return true;
@@ -350,22 +340,6 @@ int DeliverMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	String _name;
 	int _offset;
 	uint32 _totalSize;
-	_name = "DeliverMissionObjective.target";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<ManagedReference<AiAgent* > >::toBinaryStream(&target, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "DeliverMissionObjective.destination";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<ManagedReference<AiAgent* > >::toBinaryStream(&destination, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
 	_name = "DeliverMissionObjective.item";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -399,7 +373,7 @@ int DeliverMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 6;
+	return _count + 4;
 }
 
 DeliverMissionObjectiveImplementation::DeliverMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {

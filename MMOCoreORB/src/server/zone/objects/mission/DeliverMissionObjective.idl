@@ -57,13 +57,8 @@ include server.zone.templates.TemplateReference;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.MissionSpawnActiveArea;
 include server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
-include server.zone.objects.mission.events.DespawnMissionNpcsTask;
 
 class DeliverMissionObjective extends MissionObjective {
-	protected transient DespawnMissionNpcsTask despawnMissionNpcsTask;
-	
-	protected AiAgent target;
-	protected AiAgent destination;
 	protected TangibleObject item;
 	
 	protected NpcSpawnPoint targetSpawnPoint;

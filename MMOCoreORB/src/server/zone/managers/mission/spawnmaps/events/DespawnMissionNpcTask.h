@@ -42,8 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef DESPAWNMISSIONNPCSTASK_H_
-#define DESPAWNMISSIONNPCSTASK_H_
+#ifndef DESPAWNMISSIONNPCTASK_H_
+#define DESPAWNMISSIONNPCTASK_H_
 
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/managers/mission/spawnmaps/NpcSpawnPoint.h"
@@ -51,50 +51,40 @@ which carries forward this exception.
 
 namespace server {
 namespace zone {
-namespace objects {
+namespace managers {
 namespace mission {
+namespace spawnmaps {
 namespace events {
 
-class DespawnMissionNpcsTask : public Task {
-	ManagedReference<AiAgent*> startNpc;
-	ManagedReference<AiAgent*> endNpc;
-	Reference<NpcSpawnPoint*> startNpcSpawnPoint;
-	Reference<NpcSpawnPoint*> endNpcSpawnPoint;
-	ManagedReference<MissionManager*> missionManager;
+class DespawnMissionNpcTask : public Task {
+	ManagedReference<AiAgent*> npc;
+	Reference<NpcSpawnPoint*> npcSpawnPoint;
 
 public:
-	DespawnMissionNpcsTask(AiAgent* startNpc, AiAgent* endNpc, NpcSpawnPoint* startNpcSpawnPoint, NpcSpawnPoint* endNpcSpawnPoint, MissionManager* missionManager) {
-		this->startNpc = startNpc;
-		this->endNpc = endNpc;
-		this->startNpcSpawnPoint = startNpcSpawnPoint;
-		this->endNpcSpawnPoint = endNpcSpawnPoint;
-		this->missionManager = missionManager;
+	DespawnMissionNpcTask(AiAgent* npc, NpcSpawnPoint* npcSpawnPoint) {
+		this->npc = npc;
+		this->npcSpawnPoint = npcSpawnPoint;
 	}
 
 	void run() {
-		missionManager->returnSpawnPoint(startNpcSpawnPoint);
-		missionManager->returnSpawnPoint(endNpcSpawnPoint);
+		if (npc != NULL) {
+			Locker locker(npc);
 
-		if (startNpc != NULL) {
-			Locker locker(startNpc);
-
-			startNpc->scheduleDespawn(1);
+			npc->scheduleDespawn(1);
 		}
-
-		if (endNpc != NULL) {
-			Locker locker(endNpc);
-
-			endNpc->scheduleDespawn(1);
+		if (npcSpawnPoint != NULL) {
+			npcSpawnPoint->decreaseUsageCount();
 		}
 	}
 };
 
 } // namespace events
+} // namespace spawnmaps
 } // namespace mission
-} // namespace objects
+} // namespace managers
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::mission::events;
+using namespace server::zone::managers::mission::spawnmaps::events;
 
-#endif /* DESPAWNMISSIONNPCSTASK_H_ */
+#endif /* DESPAWNMISSIONNPCTASK_H_ */

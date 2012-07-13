@@ -125,8 +125,6 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/managers/mission/spawnmaps/NpcSpawnPoint.h"
 
-#include "server/zone/objects/mission/events/DespawnMissionNpcsTask.h"
-
 #include "engine/util/Observer.h"
 
 #include "engine/util/Observable.h"
@@ -198,12 +196,6 @@ namespace mission {
 
 class DeliverMissionObjectiveImplementation : public MissionObjectiveImplementation {
 protected:
-	Reference<DespawnMissionNpcsTask* > despawnMissionNpcsTask;
-
-	ManagedReference<AiAgent* > target;
-
-	ManagedReference<AiAgent* > destination;
-
 	ManagedReference<TangibleObject* > item;
 
 	Reference<NpcSpawnPoint* > targetSpawnPoint;

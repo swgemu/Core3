@@ -90,10 +90,9 @@ public:
 	 * @param spawnType the spawn type bitmask required for the spawn.
 	 * @param minDistance the minimum distance between the spawn point and the position supplied.
 	 * @param minDistance the maximum distance between the spawn point and the position supplied.
-	 * @param mustBeFree the spawn point must be free to use (automatically set to used when found).
 	 * @return random npc matching requirements or NULL if none could be found.
 	 */
-	NpcSpawnPoint* getRandomNpcSpawnPoint(const uint32 planetCRC, const Vector3* position, const int spawnType, const float minDistance, const float maxDistance, const bool mustBeFree);
+	NpcSpawnPoint* getRandomNpcSpawnPoint(const uint32 planetCRC, const Vector3* position, const int spawnType, const float minDistance, const float maxDistance);
 
 	/**
 	 * Get the center coordinates of a random city not close to the supplied coordinates.

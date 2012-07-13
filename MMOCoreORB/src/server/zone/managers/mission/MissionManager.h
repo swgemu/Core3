@@ -147,6 +147,8 @@ class CreatureTemplate;
 
 using namespace server::zone::templates::mobile;
 
+#include "server/zone/managers/terrain/TerrainManager.h"
+
 #include "server/zone/managers/mission/LairObjectsToSpawnMap.h"
 
 #include "server/zone/managers/mission/BountyTargetListElement.h"
@@ -252,8 +254,6 @@ public:
 
 	NpcSpawnPoint* getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType);
 
-	void returnSpawnPoint(NpcSpawnPoint* spawnPoint);
-
 	void createSpawnPoint(CreatureObject* player, const String& spawnTypes);
 
 	LairSpawn* getRandomLairSpawn(CreatureObject* player, const int faction);
@@ -283,6 +283,10 @@ public:
 	void completePlayerBounty(unsigned long long targetId, unsigned long long bountyHunter);
 
 	void failPlayerBountyMission(unsigned long long bountyHunter);
+
+	void spawnMissionNpcs(NpcSpawnPoint* target, NpcSpawnPoint* destination, TerrainManager* terrainManager, CreatureManager* creatureManager, MissionObject* mission);
+
+	void despawnMissionNpc(NpcSpawnPoint* npc);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -421,8 +425,6 @@ public:
 
 	NpcSpawnPoint* getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType);
 
-	void returnSpawnPoint(NpcSpawnPoint* spawnPoint);
-
 	void createSpawnPoint(CreatureObject* player, const String& spawnTypes);
 
 	LairSpawn* getRandomLairSpawn(CreatureObject* player, const int faction);
@@ -452,6 +454,10 @@ public:
 	void completePlayerBounty(unsigned long long targetId, unsigned long long bountyHunter);
 
 	void failPlayerBountyMission(unsigned long long bountyHunter);
+
+	void spawnMissionNpcs(NpcSpawnPoint* target, NpcSpawnPoint* destination, TerrainManager* terrainManager, CreatureManager* creatureManager, MissionObject* mission);
+
+	void despawnMissionNpc(NpcSpawnPoint* npc);
 
 	WeakReference<MissionManager*> _this;
 
@@ -576,8 +582,6 @@ public:
 
 	NpcSpawnPoint* getRandomFreeNpcSpawnPoint(unsigned const int planetCRC, const float x, const float y, const int spawnType);
 
-	void returnSpawnPoint(NpcSpawnPoint* spawnPoint);
-
 	void createSpawnPoint(CreatureObject* player, const String& spawnTypes);
 
 	MissionObject* getBountyHunterMission(CreatureObject* player);
@@ -603,6 +607,8 @@ public:
 	void completePlayerBounty(unsigned long long targetId, unsigned long long bountyHunter);
 
 	void failPlayerBountyMission(unsigned long long bountyHunter);
+
+	void despawnMissionNpc(NpcSpawnPoint* npc);
 
 };
 

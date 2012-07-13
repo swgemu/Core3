@@ -55,6 +55,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.region.Region;
 import server.zone.objects.scene.SceneObject;
 import server.zone.managers.stringid.StringIdManager;
+include server.zone.managers.terrain.TerrainManager;
 include server.zone.managers.mission.LairObjectsToSpawnMap;
 include server.zone.managers.mission.BountyTargetListElement;
 include server.zone.managers.mission.spawnmaps.MissionNpcSpawnMap;
@@ -160,7 +161,6 @@ class MissionManager extends Observer implements Logger {
 	public native void createCraftingMissionObjectives(MissionObject mission, MissionTerminal missionTerminal, CreatureObject player);
 
 	public native NpcSpawnPoint getRandomFreeNpcSpawnPoint(final unsigned int planetCRC, final float x, final float y, final int spawnType);
-	public native void returnSpawnPoint(NpcSpawnPoint spawnPoint);
 	public native void createSpawnPoint(CreatureObject player, final string spawnTypes);
 	
 	@local
@@ -182,4 +182,8 @@ class MissionManager extends Observer implements Logger {
 	public native BountyTargetListElement getRandomPlayerBounty(CreatureObject player);
 	public native void completePlayerBounty(unsigned long targetId, unsigned long bountyHunter);
 	public native void failPlayerBountyMission(unsigned long bountyHunter);
+	
+	@local
+	public native void spawnMissionNpcs(NpcSpawnPoint target, NpcSpawnPoint destination, TerrainManager terrainManager, CreatureManager creatureManager, MissionObject mission);
+	public native void despawnMissionNpc(NpcSpawnPoint npc);
 }

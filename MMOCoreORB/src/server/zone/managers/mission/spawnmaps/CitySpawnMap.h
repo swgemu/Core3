@@ -85,12 +85,11 @@ protected:
 	 * @param minDistance the minimum distance between the spawn point and the supplied position.
 	 * @param minDistance the maximum distance between the spawn point and the supplied position.
 	 * @param spawnType spawn type bitmask that must be fulfilled.
-	 * @param mustBeFree the spawn point must be free to use.
 	 * @return true if the spawn fulfills spawn type, distance and is free, false otherwise.
 	 */
-	bool fulfillsRequirements(NpcSpawnPoint* npc, const Vector3* position, const float minDistance, const float maxDistance, int spawnType, const bool mustBeFree) {
+	bool fulfillsRequirements(NpcSpawnPoint* npc, const Vector3* position, const float minDistance, const float maxDistance, int spawnType) {
 		if (npc != NULL) {
-			if (((npc->getSpawnType() & spawnType) == spawnType) && (!mustBeFree || !npc->getInUse())) {
+			if (((npc->getSpawnType() & spawnType) == spawnType)) {
 				float squaredDistance = npc->getPosition()->squaredDistanceTo(*position);
 				if ((squaredDistance <= maxDistance * maxDistance) &&
 					(squaredDistance >= minDistance * minDistance)) {
@@ -128,12 +127,11 @@ public:
 	 * from the given position if it exists.
 	 * @param position The position to measure distance from.
 	 * @param spawnType the spawn type bit mask needed on the spawn point.
-	 * @param mustBeFree the spawn point must be free to use.
 	 * @param minDistance minimum distance between the spawn point and the given position.
 	 * @param maxDistance maximum distance between the spawn point and the given position.
 	 * @return random spawn point matching the requirements or NULL if none can be found.
 	 */
-	NpcSpawnPoint* getRandomNpcSpawnPoint(const Vector3* position, const int spawnType, const bool mustBeFree, const float minDistance = 0.0, const float maxDistance = 100000.0) {
+	NpcSpawnPoint* getRandomNpcSpawnPoint(const Vector3* position, const int spawnType, const float minDistance = 0.0, const float maxDistance = 100000.0) {
 		if (npcSpawnMap.size() == 0) {
 			return NULL;
 		}
@@ -145,7 +143,7 @@ public:
 
 			NpcSpawnPoint* npc = npcSpawnMap.get(npcNumber);
 
-			if (fulfillsRequirements(npc, position, minDistance, maxDistance, spawnType, mustBeFree)) {
+			if (fulfillsRequirements(npc, position, minDistance, maxDistance, spawnType)) {
 				return npc;
 			}
 
@@ -156,7 +154,7 @@ public:
 		for (int i = 0; i < npcSpawnMap.size(); ++i) {
 			NpcSpawnPoint* npc = npcSpawnMap.get(i);
 
-			if (fulfillsRequirements(npc, position, minDistance, maxDistance, spawnType, mustBeFree)) {
+			if (fulfillsRequirements(npc, position, minDistance, maxDistance, spawnType)) {
 				return npc;
 			}
 		}

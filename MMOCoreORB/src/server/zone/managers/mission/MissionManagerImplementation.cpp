@@ -754,7 +754,6 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 	bool npcTarget = true;
 	if (level == 3) {
 		int compareValue = playerBountyList.size() > 50 ? 50 : playerBountyList.size();
-		//TODO: remove * 10.
 		if (System::random(100) < compareValue) {
 			npcTarget = false;
 			randomTexts = 6;
@@ -918,7 +917,7 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	//Find a spawn point in current city.
 	float minDistance = 0.0f;
 	float maxDistance = 300.0f;
-	Reference<NpcSpawnPoint*> startNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), startPosition, getDeliverMissionSpawnType(faction), minDistance, maxDistance, false);
+	Reference<NpcSpawnPoint*> startNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), startPosition, getDeliverMissionSpawnType(faction), minDistance, maxDistance);
 
 	if (startNpc == NULL) {
 		//Couldn't find a suitable spawn point.
@@ -935,7 +934,7 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	//Search in all parts of the city for the end spawn.
 	minDistance = 5.0f;
 	maxDistance = 1500.0f;
-	Reference<NpcSpawnPoint*> endNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), endPosition, getDeliverMissionSpawnType(faction), minDistance, maxDistance, false);
+	Reference<NpcSpawnPoint*> endNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), endPosition, getDeliverMissionSpawnType(faction), minDistance, maxDistance);
 
 	if (endNpc == NULL) {
 		//Couldn't find a suitable spawn point.
@@ -999,7 +998,7 @@ NpcSpawnPoint* MissionManagerImplementation::getRandomFreeNpcSpawnPoint(unsigned
 
 	//Try to find a free NPC spawn point in a circle with a radius of max.
 	while (max <= 1600.0f) {
-		Reference<NpcSpawnPoint* > npc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetCRC, new Vector3(x, y, 0), spawnType, min, max, true);
+		Reference<NpcSpawnPoint* > npc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetCRC, new Vector3(x, y, 0), spawnType, min, max);
 		if (npc != NULL) {
 			return npc;
 		} else {
@@ -1010,14 +1009,6 @@ NpcSpawnPoint* MissionManagerImplementation::getRandomFreeNpcSpawnPoint(unsigned
 
 	//Couldn't find any free NPC spawn point.
 	return NULL;
-}
-
-void MissionManagerImplementation::returnSpawnPoint(NpcSpawnPoint* spawnPoint) {
-	if (spawnPoint != NULL) {
-		//Lock spawn map before changing the spawn point parameters.
-		Locker missionSpawnLocker(&missionNpcSpawnMap);
-		spawnPoint->setInUse(false);
-	}
 }
 
 void MissionManagerImplementation::randomizeCraftingMission(CreatureObject* player, MissionObject* mission) {
@@ -1074,7 +1065,6 @@ void MissionManagerImplementation::randomizeGenericEntertainerMission(CreatureOb
 		return;
 	}
 
-	// TODO: filter by distance (get closer locations for lower difficulties)
 	SceneObject* target = performanceLocations->getRandomTarget(player, randomRange);
 	if (target == NULL || !target->isStructureObject()) {
 		mission->setTypeCRC(0);
@@ -1312,7 +1302,6 @@ void MissionManagerImplementation::randomizeReconMission(CreatureObject* player,
 }
 
 void MissionManagerImplementation::randomizeImperialDestroyMission(CreatureObject* player, MissionObject* mission) {
-	// TODO: add faction-specific targets
 	randomizeGenericDestroyMission(player, mission, MissionObject::FACTIONIMPERIAL);
 }
 
@@ -1329,7 +1318,6 @@ void MissionManagerImplementation::randomizeImperialReconMission(CreatureObject*
 }
 
 void MissionManagerImplementation::randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission) {
-	// TODO: add faction-specific targets
 	randomizeGenericDestroyMission(player, mission, MissionObject::FACTIONREBEL);
 }
 
@@ -1642,4 +1630,18 @@ void MissionManagerImplementation::failPlayerBountyMission(uint64 bountyHunter) 
 			}
 		}
 	}
+}
+
+void MissionManagerImplementation::spawnMissionNpcs(NpcSpawnPoint* target, NpcSpawnPoint* destination, TerrainManager* terrainManager, CreatureManager* creatureManager, MissionObject* mission) {
+	//Lock mission spawn points.
+	Locker missionSpawnLocker(&missionNpcSpawnMap);
+
+	target->spawnNpc(terrainManager, creatureManager, mission);
+	destination->spawnNpc(terrainManager, creatureManager, mission);
+}
+
+void MissionManagerImplementation::despawnMissionNpc(NpcSpawnPoint* npc) {
+	//Lock mission spawn points.
+	Locker missionSpawnLocker(&missionNpcSpawnMap);
+	npc->despawnNpc();
 }
