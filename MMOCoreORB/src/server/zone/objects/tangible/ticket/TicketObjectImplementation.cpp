@@ -23,6 +23,9 @@ int TicketObjectImplementation::handleObjectMenuSelect(CreatureObject* player, b
 	if (selectedID != 20)
 		return 0;
 
+	if (!isASubChildOf(player))
+		return 0;
+
 	player->executeObjectControllerAction(0x5DCD41A2, getObjectID(), ""); //boardShuttle
 
 	return 0;
