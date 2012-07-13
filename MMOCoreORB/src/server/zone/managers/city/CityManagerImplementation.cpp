@@ -179,8 +179,6 @@ bool CityManagerImplementation::isCityRankCapped(const String& planetName, byte 
 	for (int i = 0; i < cities.size(); ++i) {
 		CityRegion* city = cities.get(i);
 
-		Locker _clock(city, _this.get());
-
 		Zone* cityZone = city->getZone();
 
 		if (cityZone == NULL || cityZone->getZoneName() != planetName)
