@@ -91,6 +91,9 @@ int WearableObjectImplementation::socketsUsed() {
 void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 		Attachment* attachment) {
 
+	if (!isASubChildOf(player))
+		return;
+
 	if (socketsLeft() > 0) {
 
 		if (isEquipped())

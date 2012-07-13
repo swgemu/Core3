@@ -104,7 +104,7 @@ public:
 			if (object->isAttachment()) {
 				Attachment* attachment = cast<Attachment*>( object.get());
 
-				if (sceno->isWearableObject()) {
+				if (sceno->isWearableObject() && sceno->isASubChildOf(creature)) {
 					WearableObject* wearable = cast<WearableObject*>( sceno.get());
 					wearable->applyAttachment(creature, attachment);
 					return SUCCESS;
