@@ -1085,7 +1085,8 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 			return;
 		}
 	} else if (item->getStatus() == AuctionItem::OFFERED) {
-		if(item->getOfferToID() != player->getObjectID()) {
+		if(item->getOfferToID() != player->getObjectID() &&
+				item->getOwnerID() != player->getObjectID()) {
 			error("not the target of offered item in cancelItem()");
 			BaseMessage* msg = new CancelLiveAuctionResponseMessage(objectID, CancelLiveAuctionResponseMessage::INVALIDITEM);
 			player->sendMessage(msg);
@@ -1114,8 +1115,8 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 		}
 	}
 
-
-	if(item->getStatus() == AuctionItem::OFFERED) {
+	/// If the offeree cancels
+	if(item->getStatus() == AuctionItem::OFFERED && item->getOfferToID() == player->getObjectID()) {
 
 		SceneObject* vendor = zoneServer->getObject(item->getVendorID());
 
