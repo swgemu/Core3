@@ -171,7 +171,7 @@ CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const S
 bool CityManagerImplementation::isCityRankCapped(const String& planetName, byte rank) {
 	Vector<byte>* citiesAllowed = &citiesAllowedPerRank.get(planetName);
 	byte maxCities = citiesAllowed->get(0);
-	byte maxAtRank = citiesAllowed->get(rank);
+	byte maxAtRank = citiesAllowed->get(rank - 1);
 	byte totalCities = 0;
 
 	Locker _lock(_this.get());
@@ -833,7 +833,7 @@ void CityManagerImplementation::sendCityAdvancement(CityRegion* city, CreatureOb
 		return;
 
 	int currentRank = citizensPerRank.get(rank - 1);
-	int nextRank = citizensPerRank.get(rank);
+	int nextRank = citizensPerRank.get(currentRank == METROPOLIS ? currentRank : rank);
 
 	//pop_req_current_rankPop. Req. for Current Rank:
 	//pop_req_next_rankPop. Req. for Next Rank:
