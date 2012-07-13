@@ -1138,9 +1138,9 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 			targetDefense -= targetCreature->calculateBFRatio();
 
 			// now roll to see if it gets applied
-			int defDiff = targetDefense - 90;
+			int defDiff = targetDefense - 95;
 			if (defDiff > 0 && creature->getLevel() != 0)
-				targetDefense = 90 + defDiff * 0.25 * targetCreature->getLevel() / creature->getLevel();
+				targetDefense = 95 + defDiff * 0.25 * targetCreature->getLevel() / creature->getLevel();
 
 			if (targetDefense > 0 && System::random(100) < targetDefense)
 							failed = true;
@@ -1162,9 +1162,9 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 					targetDefense += targetCreature->getSkillMod(jediMods.get(j));
 
 				// now roll again to see if it gets applied
-				defDiff = targetDefense - 90;
+				defDiff = targetDefense - 95;
 				if (defDiff > 0 && creature->getLevel() != 0)
-					targetDefense = 90 + defDiff * 0.25 * targetCreature->getLevel() / creature->getLevel();
+					targetDefense = 95 + defDiff * 0.25 * targetCreature->getLevel() / creature->getLevel();
 
 				if (targetDefense > 0 && System::random(100) < targetDefense)
 								failed = true;
