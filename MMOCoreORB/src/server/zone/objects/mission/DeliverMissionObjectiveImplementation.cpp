@@ -104,16 +104,6 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 	if (targetPosition == NULL) {
 		return false;
 	}
-//	String deliverNpc = "deliver_npc";
-//	//Get the terrain height at the spawn point.
-//	float z = terrainManager->getHeight(targetPosition->getX(), targetPosition->getY());
-//	//Spawn the NPC.
-//	target = cast<AiAgent*>(creatureManager->spawnCreature(deliverNpc.hashCode(), 0, targetPosition->getX(), z, targetPosition->getY(), 0));
-//	//Update the heading direction of the NPC.
-//	Quaternion* direction = targetSpawnPoint->getDirection();
-//	target->updateDirection(direction->getW(), direction->getX(), direction->getY(), direction->getZ());
-//	//Set the name of the NPC.
-//	target->setCustomObjectName(mission->getCreatorName(), true);
 
 	//Destination NPC.
 	//Find a free spawn point.
@@ -124,19 +114,6 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 
 	targetSpawnPoint->spawnNpc(terrainManager, creatureManager, mission);
 	destinationSpawnPoint->spawnNpc(terrainManager, creatureManager, mission);
-//	Vector3* destinationPosition = destinationSpawnPoint->getPosition();
-//	if (destinationPosition == NULL) {
-//		return false;
-//	}
-//	//Get the terrain height at the spawn point.
-//	z = terrainManager->getHeight(destinationPosition->getX(), destinationPosition->getY());
-//	//Spawn the NPC.
-//	destination = cast<AiAgent*>(creatureManager->spawnCreature(deliverNpc.hashCode(), 0, destinationPosition->getX(), z, destinationPosition->getY(), 0));
-//	//Update the heading direction of the NPC.
-//	direction = destinationSpawnPoint->getDirection();
-//	destination->updateDirection(direction->getW(), direction->getX(), direction->getY(), direction->getZ());
-//	//Set the name of the NPC.
-//	destination->setCustomObjectName(mission->getTargetName(), true);
 
 	//Create waypoint and activate it.
 	if (objectiveStatus == 0) {
@@ -176,20 +153,6 @@ void DeliverMissionObjectiveImplementation::despawnNpcs() {
 
 	missionManager->despawnMissionNpc(targetSpawnPoint);
 	missionManager->despawnMissionNpc(destinationSpawnPoint);
-
-//	targetSpawnPoint->despawnNpc(missionManager);
-//	destinationSpawnPoint->despawnNpc(missionManager);
-
-//	if (despawnMissionNpcsTask == NULL) {
-//		despawnMissionNpcsTask = new DespawnMissionNpcsTask(target, destination, targetSpawnPoint, destinationSpawnPoint, missionManager);
-//	}
-//
-//	if (despawnMissionNpcsTask->isScheduled()) {
-//		return;
-//	} else {
-//		//Despawn after 1 minute.
-//		despawnMissionNpcsTask->schedule(60 * 1000);
-//	}
 }
 
 void DeliverMissionObjectiveImplementation::updateMissionStatus(CreatureObject* player) {
