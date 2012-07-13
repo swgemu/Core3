@@ -28,7 +28,6 @@ VendorDataComponent::VendorDataComponent() : AuctionTerminalDataComponent() {
 	adBarking = false;
 	mail1Sent = false;
 	mail2Sent = false;
-	empty = true;
 	addSerializableVariables();
 }
 
@@ -46,7 +45,6 @@ void VendorDataComponent::addSerializableVariables() {
 	addSerializableVariable("mail1Sent", &mail1Sent);
 	addSerializableVariable("mail2Sent", &mail2Sent);
 	addSerializableVariable("emptyTimer", &emptyTimer);
-	addSerializableVariable("empty", &empty);
 }
 
 void VendorDataComponent::initializeTransientMembers() {

@@ -12,6 +12,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/auction/AuctionItem.h"
 #include "server/zone/managers/vendor/VendorManager.h"
+#include "server/zone/managers/auction/AuctionsMap.h"
 #include "server/zone/Zone.h"
 
 class VendorDataComponent : public AuctionTerminalDataComponent {
@@ -37,8 +38,6 @@ protected:
 	Time emptyTimer;
 	Time inactiveTimer;
 
-	bool empty;
-
 	bool mail1Sent;
 	bool mail2Sent;
 
@@ -47,14 +46,14 @@ public:
 	static const int USEXPINTERVAL = 5;
 
 	// 60 Minutes
-	static const int VENDORCHECKINTERVAL = 1;//60;
-	static const int VENDORCHECKDELAY = 0;//20;
+	static const int VENDORCHECKINTERVAL = 60;
+	static const int VENDORCHECKDELAY = 20;
 
-	static const int FIRSTWARNING = 60 * 60 * 3;//24 * 25; // 5 days
-	static const int SECONDWARNING = 60 * 60 * 4;//24 * 50; // 10 days
-	static const int EMPTYDELETE = 60 * 60 * 5;//24 * 14; // 14 days
+	static const int FIRSTWARNING = 60 * 60 * 24 * 25; // 5 days
+	static const int SECONDWARNING = 60 * 60 * 24 * 50; // 10 days
+	static const int EMPTYDELETE = 60 * 60 * 24 * 14; // 14 days
 
-	static const int DELETEWARNING = 60 * 60 * 3;//24 * 100; // 100 days
+	static const int DELETEWARNING = 60 * 60 * 24 * 100; // 100 days
 
 public:
 	VendorDataComponent();
@@ -155,16 +154,23 @@ public:
 	}
 
 	inline bool isEmpty() {
-		return empty;
+
+		if(auctionManager == NULL)
+			return false;
+
+		ManagedReference<AuctionsMap*> auctionsMap = auctionManager->getAuctionMap();
+		if(auctionsMap == NULL) {
+			return false;
+		}
+
+		return auctionsMap->getVendorItemCount(parent) == 0;
 	}
 
-	inline void setEmpty(bool value) {
-		empty = value;
+	inline void setEmpty() {
 		mail1Sent = false;
 		mail2Sent = false;
 
-		if(empty)
-			emptyTimer.updateToCurrentTime();
+		emptyTimer.updateToCurrentTime();
 	}
 
 	inline int getMaint() {

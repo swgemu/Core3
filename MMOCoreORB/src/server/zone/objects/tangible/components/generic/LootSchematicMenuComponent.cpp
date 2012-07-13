@@ -67,6 +67,7 @@ int LootSchematicMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		ManagedReference<DraftSchematic* > schematic = SchematicMap::instance()->get(schematicData->getTargetDraftSchematic().hashCode());
 
 		if (schematic == NULL) {
+			player->sendSystemMessage("Error learning schematic, try again later");
 			error("Unable to create schematic: " + schematicData->getTargetDraftSchematic());
 			return 0;
 		}

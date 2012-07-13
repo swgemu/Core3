@@ -225,13 +225,12 @@ void AuctionsMapImplementation::sendVendorUpdateMail(SceneObject* vendor, bool i
 		StringIdChatParameter body("@auction:vendor_status_empty");
 		body.setTO(vendor->getDisplayedName());
 		cman->sendMail(sender, subject, body, owner->getFirstName());
-		vendorData->setEmpty(true);
+		vendorData->setEmpty();
 		VendorManager::instance()->handleUnregisterVendor(owner, cast<TangibleObject*>(vendor));
 	} else {
 		StringIdChatParameter body("@auction:vendor_status_normal");
 		body.setTO(vendor->getDisplayedName());
 		cman->sendMail(sender, subject, body, owner->getFirstName());
-		vendorData->setEmpty(false);
 	}
 
 }
