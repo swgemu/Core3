@@ -328,13 +328,16 @@ float CombatManager::getWeaponRangeModifier(float currentRange, WeaponObject* we
 	return smallMod + ((currentRange - smallRange) / (bigRange - smallRange) * (bigMod - smallMod));
 }
 
-int CombatManager::calculatePostureModifier(CreatureObject* creature) {
+int CombatManager::calculatePostureModifier(CreatureObject* creature, WeaponObject* weapon) {
 	int accuracy = 0;
 
 	if (creature->isKneeling())
 		accuracy += 16;
 	else if (creature->isProne())
 		accuracy += 50;
+
+	if (weapon->getAttackType() != WeaponObject::RANGEDATTACK)
+		accuracy *= -1;
 
 	creature->updateLocomotion();
 
@@ -394,7 +397,7 @@ int CombatManager::getAttackerAccuracyBonus(CreatureObject* attacker, WeaponObje
 	if (weapon->getAttackType() == WeaponObject::RANGEDATTACK)
 		bonus += attacker->getSkillMod("private_ranged_accuracy_bonus");
 
-	bonus += calculatePostureModifier(attacker);
+	bonus += calculatePostureModifier(attacker, weapon);
 
 	if (attacker->isAiAgent()) {
 		ManagedReference<AiAgent*> agent = dynamic_cast<AiAgent*>(attacker);
