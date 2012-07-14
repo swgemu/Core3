@@ -108,7 +108,7 @@ protected:
 
 	ManagedReference<AiAgent*> npc;
 
-	DespawnMissionNpcTask * despawnMissionNpcTask;
+	Reference<DespawnMissionNpcTask*> despawnMissionNpcTask;
 
 public:
 	/**
