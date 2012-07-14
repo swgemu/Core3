@@ -25,7 +25,11 @@ settler = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_settler.iff"},
+	templates = {
+		"object/mobile/dressed_commoner_tatooine_bith_female_03.iff",
+		"object/mobile/dressed_commoner_old_human_male_02.iff",
+		"object/mobile/dressed_commoner_naboo_twilek_female_01.iff"
+	},
 	lootGroups = {},
 	weapons = {"rebel_weapons_light"},
 	attacks = merge(marksmannovice,brawlernovice)
