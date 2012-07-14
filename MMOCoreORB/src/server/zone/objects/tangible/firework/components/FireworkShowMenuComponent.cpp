@@ -32,6 +32,10 @@ void FireworkShowMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 
 int FireworkShowMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		CreatureObject* player, byte selectedID) {
+
+	if(!sceneObject->isASubChildOf(player))
+		return 0;
+
 	if (!sceneObject->isFireworkObject())
 		return 0;
 
