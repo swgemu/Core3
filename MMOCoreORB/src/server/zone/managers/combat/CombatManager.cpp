@@ -859,6 +859,9 @@ float CombatManager::calculateDamage(CreatureObject* attacker, TangibleObject* d
 
 	damage += getDamageModifier(attacker, weapon);
 
+	if (weapon->getAttackType() == WeaponObject::MELEEATTACK)
+		damage *= 1.25;
+
 	if (attacker->isPlayerCreature()) {
 		if (!weapon->isCertifiedFor(attacker))
 			damage /= 5;
@@ -891,6 +894,9 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 				damage /= 5;
 		}
 	}
+
+	if (weapon->getAttackType() == WeaponObject::MELEEATTACK)
+		damage *= 1.25;
 
 	damage += getDamageModifier(attacker, weapon);
 	damage += defender->getSkillMod("private_damage_susceptibility");
