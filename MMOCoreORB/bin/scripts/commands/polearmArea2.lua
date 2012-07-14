@@ -60,18 +60,18 @@ PolearmArea2Command = {
 		{}, 
 		{ "dizzy_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		30, 
+		75, 
 		100, 
-		10 
+		30 
 	  ),
 	  StateEffect( 
 		STUN_EFFECT, 
 		{}, 
 		{ "stun_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		30, 
+		75, 
 		100, 
-		10 
+		30
 	  )
 	},
 

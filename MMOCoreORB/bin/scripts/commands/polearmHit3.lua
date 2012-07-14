@@ -56,9 +56,9 @@ PolearmHit3Command = {
 		{}, 
 		{ "stun_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		20, 
+		75, 
 		100, 
-		10 
+		45 
 	  ),
 	  StateEffect( 
 		POSTUREDOWN_EFFECT, 

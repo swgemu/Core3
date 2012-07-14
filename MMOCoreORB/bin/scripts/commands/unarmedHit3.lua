@@ -61,9 +61,9 @@ UnarmedHit3Command = {
 		{}, 
 		{ "blind_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		30, 
+		40, 
 		100, 
-		10 
+		30
 	  )
 	},
 	

@@ -60,9 +60,9 @@ PolearmSpinAttack2Command = {
 		{}, 
 		{ "dizzy_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		30, 
+		75, 
 		100, 
-		10 
+		25 
 	  )
 	},
 

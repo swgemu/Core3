@@ -57,7 +57,7 @@ LastDitchCommand = {
 		{}, 
 		{ "stun_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		70, 
+		75, 
 		100, 
 		30 
 	  )
