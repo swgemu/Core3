@@ -12,7 +12,7 @@ hostile_huurton = Creature:new {
 	baseHAMmax = 5000,
 	armor = 0,
 	resists = {5,5,5,5,5,0,0,0,-1},
-	meatType = "",
+	meatType = "meat_wild",
 	meatAmount = 0,
 	hideType = "hide_wooly",
 	hideAmount = 0,
@@ -26,7 +26,7 @@ hostile_huurton = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/huurton.iff"},
+	templates = {"object/mobile/huurton_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -26,7 +26,7 @@ angry_baz_nitch_avenger = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/baz_nitch.iff"},
+	templates = {"object/mobile/baz_nitch_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

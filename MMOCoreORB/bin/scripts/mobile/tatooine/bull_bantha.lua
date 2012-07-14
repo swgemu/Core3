@@ -26,7 +26,7 @@ bull_bantha = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/bantha.iff"},
+	templates = {"object/mobile/bantha_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
