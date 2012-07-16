@@ -458,7 +458,6 @@ bool WebServer::authorize(HttpSession* session) {
 	session->setPassword("");
 
 	if(account == NULL) {
-		info("Non-existent account: " + session->getUserName());
 		return false;
 	}
 
@@ -493,24 +492,27 @@ ManagedReference<Account*> WebServer::validateAccountCredentials(LoginClient* cl
 		return NULL;
 
 	StringBuffer query;
-	query << "SELECT a.password FROM accounts a WHERE a.username = '" << username << " 'LIMIT 1;";
+	query << "SELECT a.password, a.salt FROM accounts a WHERE a.username = '" << username << " 'LIMIT 1;";
 
 	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
 
 	String dbPassword;
+	String dbSalt;
 
 	if (result->next()) {
 		dbPassword = result->getString(0);
+		dbSalt = result->getString(1);
 	} else {
 		return NULL;
 	}
 
-	String inputtedPassword = Crypto::SHA256Hash(configManager->getDBSecret() + password + account->getSalt());
+	String inputtedPassword = Crypto::SHA256Hash(configManager->getDBSecret() + password + dbSalt);
 
 	if(inputtedPassword == dbPassword) {
 		return account;
 	}
 
+	error("Invalid Password");
 	return NULL;
 }
 
