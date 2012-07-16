@@ -833,7 +833,7 @@ void CityManagerImplementation::sendCityAdvancement(CityRegion* city, CreatureOb
 		return;
 
 	int currentRank = citizensPerRank.get(rank - 1);
-	int nextRank = citizensPerRank.get(currentRank == METROPOLIS ? currentRank : rank);
+	int nextRank = citizensPerRank.get(currentRank == METROPOLIS ? rank - 1 : rank);
 
 	//pop_req_current_rankPop. Req. for Current Rank:
 	//pop_req_next_rankPop. Req. for Next Rank:
