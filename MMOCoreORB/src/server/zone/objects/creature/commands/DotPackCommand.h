@@ -288,6 +288,8 @@ public:
 			return GENERALERROR;
 		}
 
+		if (creature != creatureTarget && !creature->isInRange(creatureTarget, dotPack->getRange()))
+			return TOOFAR;
 
 		Locker clocker(creatureTarget, creature);
 
