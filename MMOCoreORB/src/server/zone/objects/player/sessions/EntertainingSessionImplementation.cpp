@@ -979,7 +979,8 @@ void EntertainingSessionImplementation::awardEntertainerExperience() {
 			if (playerManager != NULL)
 				playerManager->awardExperience(player, xptype, flourishXp, true);
 
-			flourishXp--;
+			//flourishXp--;
+			flourishXp = 0;
 		}
 
 		if (healingXp > 0) {
