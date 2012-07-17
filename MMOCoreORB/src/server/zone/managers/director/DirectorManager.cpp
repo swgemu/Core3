@@ -221,11 +221,15 @@ int DirectorManager::writeScreenPlayData(lua_State* L) {
 	String data = lua_tostring(L, -1);
 	String variable = lua_tostring(L, -2);
 	String screenPlay = lua_tostring(L, -3);
-	CreatureObject* player = (CreatureObject*) lua_touserdata(L, -4);
 
-	//writeScreenPlayData(player, screenPlay, variable, data)
+	SceneObject* player = (SceneObject*) lua_touserdata(L, -4);
 
-	PlayerObject* ghost = player->getPlayerObject();
+	if (player == NULL || !player->isPlayerCreature()) {
+		DirectorManager::instance()->error("Attempted to write screen play data to a non-player Scene Object.");
+		return 0;
+	}
+
+	PlayerObject* ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
 	ghost->setScreenPlayData(screenPlay, variable, data);
 
 	return 0;
@@ -277,8 +281,14 @@ int DirectorManager::getTimestamp(lua_State* L) {
 int DirectorManager::readScreenPlayData(lua_State* L) {
 	String variable = lua_tostring(L, -1);
 	String screenPlay = lua_tostring(L, -2);
-	CreatureObject* player = (CreatureObject*) lua_touserdata(L, -3);
-	PlayerObject* ghost = player->getPlayerObject();
+	SceneObject* player = (SceneObject*) lua_touserdata(L, -3);
+
+	if (player == NULL || !player->isPlayerCreature()) {
+		DirectorManager::instance()->error("Attempted to read screen play data from a non-player Scene Object.");
+		return 0;
+	}
+
+	PlayerObject* ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
 
 	//readScreenPlayData(player, screenPlay, variable)
 
@@ -289,8 +299,14 @@ int DirectorManager::readScreenPlayData(lua_State* L) {
 
 int DirectorManager::clearScreenPlayData(lua_State* L) {
 	String screenPlay = lua_tostring(L, -1);
-	CreatureObject* player = (CreatureObject*) lua_touserdata(L, -2);
-	PlayerObject* ghost = player->getPlayerObject();
+	SceneObject* player = (SceneObject*) lua_touserdata(L, -2);
+
+	if (player == NULL || !player->isPlayerCreature()) {
+		DirectorManager::instance()->error("Attempted to clear screen play data from a non-player Scene Object.");
+		return 0;
+	}
+
+	PlayerObject* ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
 
 	ghost->clearScreenPlayData(screenPlay);
 
