@@ -12,32 +12,11 @@
 
 void ElevatorUpMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* creature) {
 	menuResponse->addRadialMenuItem(198, 3, "@elevator_text:up");
-
-	//TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, creature);
 }
 
 int ElevatorUpMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) {
-	if (creature->getParentID() != sceneObject->getParentID()) {
-		//creature->sendSystemMessage("");
+	if (selectedID != 198)
 		return 0;
-	}
 
-	float z = creature->getPositionZ();
-
-	switch (selectedID) {
-	case 198: //UP
-		z += 10;
-		creature->playEffect("clienteffect/elevator_rise.cef", "");
-		break;
-	default:
-		return 0;
-	}
-
-	float x = creature->getPositionX();
-	float y = creature->getPositionY();
-
-	creature->teleport(x, z, y, sceneObject->getParentID());
-
-	return 0;
+	return ElevatorMenuComponent::handleObjectMenuSelect(sceneObject, creature, selectedID);
 }
-

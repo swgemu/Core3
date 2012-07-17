@@ -11,33 +11,13 @@
 #include "server/zone/objects/scene/SceneObject.h"
 
 void ElevatorDownMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* creature) {
-	menuResponse->addRadialMenuItem(198, 3, "@elevator_text:down");
-
-	//TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, creature);
+	menuResponse->addRadialMenuItem(199, 3, "@elevator_text:down");
 }
 
 int ElevatorDownMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) {
-	if (creature->getParentID() != sceneObject->getParentID()) {
-		//creature->sendSystemMessage("");
+	if (selectedID != 199)
 		return 0;
-	}
 
-	float z = creature->getPositionZ();
-
-	switch (selectedID) {
-	case 199: //DOWN
-		z -= 10;
-		creature->playEffect("clienteffect/elevator_descend.cef", "");
-		break;
-	default:
-		return 0;
-	}
-
-	float x = creature->getPositionX();
-	float y = creature->getPositionY();
-
-	creature->teleport(x, z, y, sceneObject->getParentID());
-
-	return 0;
+	return ElevatorMenuComponent::handleObjectMenuSelect(sceneObject, creature, selectedID);
 }
 

@@ -8,9 +8,9 @@
 #ifndef ELEVATORUPMENUCOMPONENT_H_
 #define ELEVATORUPMENUCOMPONENT_H_
 
-#include "TangibleObjectMenuComponent.h"
+#include "ElevatorMenuComponent.h"
 
-class ElevatorUpMenuComponent : public TangibleObjectMenuComponent {
+class ElevatorUpMenuComponent : public ElevatorMenuComponent {
 protected:
 public:
 	virtual void fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
