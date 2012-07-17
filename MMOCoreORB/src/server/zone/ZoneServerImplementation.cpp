@@ -213,6 +213,9 @@ void ZoneServerImplementation::initialize() {
 	auctionManager = new AuctionManager(_this.get());
 	auctionManager->deploy();
 
+	missionManager = new MissionManager(_this.get(), processor);
+	missionManager->deploy("MissionManager");
+
 	startZones();
 
 	startManagers();
@@ -255,9 +258,6 @@ void ZoneServerImplementation::startZones() {
 
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
-
-	missionManager = new MissionManager(_this.get(), processor);
-	missionManager->deploy("MissionManager");
 
 	radialManager = new RadialManager(_this.get());
 	radialManager->deploy("RadialManager");
