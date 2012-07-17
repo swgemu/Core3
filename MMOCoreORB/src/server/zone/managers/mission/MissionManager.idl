@@ -186,4 +186,6 @@ class MissionManager extends Observer implements Logger {
 	@local
 	public native void spawnMissionNpcs(NpcSpawnPoint target, NpcSpawnPoint destination, TerrainManager terrainManager, CreatureManager creatureManager, MissionObject mission);
 	public native void despawnMissionNpc(NpcSpawnPoint npc);
+	
+	public native void deactivateMissions(CreatureObject player);
 }

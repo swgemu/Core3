@@ -26,6 +26,10 @@
 #include "MissionObserver.h"
 
 void DeliverMissionObjectiveImplementation::activate() {
+	if (activated) {
+		return;
+	}
+
 	MissionObjectiveImplementation::activate();
 
 	if (!activateWithResult()) {
@@ -41,6 +45,13 @@ void DeliverMissionObjectiveImplementation::activate() {
 		owner->sendSystemMessage(message);
 
 		removeMissionFromPlayer();
+	}
+}
+
+void DeliverMissionObjectiveImplementation::deactivate() {
+	if (activated) {
+		MissionObjectiveImplementation::deactivate();
+		despawnNpcs();
 	}
 }
 
@@ -106,8 +117,13 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 
 	//Destination NPC.
 	//Find a free spawn point.
-	destinationSpawnPoint = missionManager->getRandomFreeNpcSpawnPoint(mission->getEndPlanet().hashCode(), mission->getEndPositionX(), mission->getEndPositionY(), spawnType);
-	if (destinationSpawnPoint == NULL) {
+	int retries = 10;
+	destinationSpawnPoint = NULL;
+	while (retries > 0 && (destinationSpawnPoint == NULL || destinationSpawnPoint == targetSpawnPoint)) {
+		destinationSpawnPoint = missionManager->getRandomFreeNpcSpawnPoint(mission->getEndPlanet().hashCode(), mission->getEndPositionX(), mission->getEndPositionY(), spawnType);
+		retries--;
+	}
+	if (destinationSpawnPoint == NULL || destinationSpawnPoint == targetSpawnPoint) {
 		return false;
 	}
 

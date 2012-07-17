@@ -934,9 +934,15 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	//Search in all parts of the city for the end spawn.
 	minDistance = 5.0f;
 	maxDistance = 1500.0f;
-	Reference<NpcSpawnPoint*> endNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), endPosition, getDeliverMissionSpawnType(faction), minDistance, maxDistance);
 
-	if (endNpc == NULL) {
+	Reference<NpcSpawnPoint*> endNpc;
+	int retries = 10;
+	while ((endNpc == NULL || endNpc == startNpc) && (retries > 0)) {
+		endNpc = missionNpcSpawnMap.getRandomNpcSpawnPoint(planetName.hashCode(), endPosition, getDeliverMissionSpawnType(faction), minDistance, maxDistance);
+		retries--;
+	}
+
+	if (endNpc == NULL || endNpc == startNpc) {
 		//Couldn't find a suitable spawn point.
 		return false;
 	}
@@ -1644,4 +1650,32 @@ void MissionManagerImplementation::despawnMissionNpc(NpcSpawnPoint* npc) {
 	//Lock mission spawn points.
 	Locker missionSpawnLocker(&missionNpcSpawnMap);
 	npc->despawnNpc();
+}
+
+void MissionManagerImplementation::deactivateMissions(CreatureObject* player) {
+	if (player == NULL) {
+		return;
+	}
+
+	SceneObject* datapad = player->getSlottedObject("datapad");
+
+	if (datapad == NULL) {
+		return;
+	}
+
+	int datapadSize = datapad->getContainerObjectsSize();
+
+	for (int i = datapadSize - 1; i >= 0; --i) {
+		if (datapad->getContainerObject(i)->isMissionObject()) {
+			MissionObject* mission = cast<MissionObject*>(datapad->getContainerObject(i));
+
+			if (mission != NULL) {
+				//Check if it is target or destination NPC
+				MissionObjective* objective = mission->getMissionObjective();
+				if (objective != NULL) {
+					objective->deactivate();
+				}
+			}
+		}
+	}
 }

@@ -288,6 +288,8 @@ public:
 
 	void despawnMissionNpc(NpcSpawnPoint* npc);
 
+	void deactivateMissions(CreatureObject* player);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -459,6 +461,8 @@ public:
 
 	void despawnMissionNpc(NpcSpawnPoint* npc);
 
+	void deactivateMissions(CreatureObject* player);
+
 	WeakReference<MissionManager*> _this;
 
 	operator const MissionManager*();
@@ -609,6 +613,8 @@ public:
 	void failPlayerBountyMission(unsigned long long bountyHunter);
 
 	void despawnMissionNpc(NpcSpawnPoint* npc);
+
+	void deactivateMissions(CreatureObject* player);
 
 };
 

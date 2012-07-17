@@ -18,7 +18,7 @@
  *	MissionObjectiveStub
  */
 
-enum {RPC_DESTROYOBJECTFROMDATABASE__ = 6,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ADDOBSERVER__MISSIONOBSERVER_BOOL_,RPC_DROPOBSERVER__MISSIONOBSERVER_BOOL_,RPC_GETOBSERVERCOUNT__,RPC_REMOVEALLOBSERVERS__,RPC_GETOBSERVER__INT_,RPC_HASOBSERVERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_FAIL__,RPC_GETMISSIONOBJECT__,RPC_GETOBJECTIVETYPE__,RPC_GETPLAYEROWNER__,RPC_AWARDFACTIONPOINTS__,RPC_REMOVEMISSIONFROMPLAYER__,RPC_AWARDREWARD__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_ADDOBSERVER__MISSIONOBSERVER_BOOL_,RPC_DROPOBSERVER__MISSIONOBSERVER_BOOL_,RPC_GETOBSERVERCOUNT__,RPC_REMOVEALLOBSERVERS__,RPC_GETOBSERVER__INT_,RPC_HASOBSERVERS__,RPC_ACTIVATE__,RPC_DEACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_FAIL__,RPC_GETMISSIONOBJECT__,RPC_GETOBJECTIVETYPE__,RPC_GETPLAYEROWNER__,RPC_AWARDFACTIONPOINTS__,RPC_REMOVEMISSIONFROMPLAYER__,RPC_AWARDREWARD__,};
 
 MissionObjective::MissionObjective(MissionObject* parent) : ManagedObject(DummyConstructorParameter::instance()) {
 	MissionObjectiveImplementation* _implementation = new MissionObjectiveImplementation(parent);
@@ -35,6 +35,19 @@ MissionObjective::~MissionObjective() {
 }
 
 
+
+void MissionObjective::initializeTransientMembers() {
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->initializeTransientMembers();
+}
 
 void MissionObjective::destroyObjectFromDatabase() {
 	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
@@ -161,6 +174,19 @@ void MissionObjective::activate() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->activate();
+}
+
+void MissionObjective::deactivate() {
+	MissionObjectiveImplementation* _implementation = static_cast<MissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DEACTIVATE__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->deactivate();
 }
 
 void MissionObjective::abort() {
@@ -424,6 +450,11 @@ bool MissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream,
 		return true;
 	}
 
+	if (_name == "MissionObjective.activated") {
+		TypeInfo<bool >::parseFromBinaryStream(&activated, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -489,8 +520,16 @@ int MissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "MissionObjective.activated";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<bool >::toBinaryStream(&activated, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 6;
+
+	return _count + 7;
 }
 
 MissionObjectiveImplementation::MissionObjectiveImplementation(MissionObject* parent) {
@@ -501,8 +540,15 @@ MissionObjectiveImplementation::MissionObjectiveImplementation(MissionObject* pa
 	Logger::setLoggingName("MissionObjective");
 	// server/zone/objects/mission/MissionObjective.idl():  		timeRemaining = 48 * 60 * 60 * 1000;
 	timeRemaining = 48 * 60 * 60 * 1000;
+	// server/zone/objects/mission/MissionObjective.idl():  		activated = false;
+	activated = false;
 	// server/zone/objects/mission/MissionObjective.idl():  		missionStartTime.updateToCurrentTime();
 	(&missionStartTime)->updateToCurrentTime();
+}
+
+void MissionObjectiveImplementation::initializeTransientMembers() {
+	// server/zone/objects/mission/MissionObjective.idl():  		activated = false;
+	activated = false;
 }
 
 int MissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
@@ -538,6 +584,11 @@ bool MissionObjectiveImplementation::hasObservers() {
 	return (&observers)->size() != 0;
 }
 
+void MissionObjectiveImplementation::deactivate() {
+	// server/zone/objects/mission/MissionObjective.idl():  		activated = false;
+	activated = false;
+}
+
 ManagedWeakReference<MissionObject* > MissionObjectiveImplementation::getMissionObject() {
 	// server/zone/objects/mission/MissionObjective.idl():  		return mission;
 	return mission;
@@ -563,6 +614,11 @@ void MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
+		{
+			initializeTransientMembers();
+		}
+		break;
 	case RPC_DESTROYOBJECTFROMDATABASE__:
 		{
 			destroyObjectFromDatabase();
@@ -606,6 +662,11 @@ void MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	case RPC_ACTIVATE__:
 		{
 			activate();
+		}
+		break;
+	case RPC_DEACTIVATE__:
+		{
+			deactivate();
 		}
 		break;
 	case RPC_ABORT__:
@@ -658,6 +719,10 @@ void MissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 	}
 }
 
+void MissionObjectiveAdapter::initializeTransientMembers() {
+	(static_cast<MissionObjective*>(stub))->initializeTransientMembers();
+}
+
 void MissionObjectiveAdapter::destroyObjectFromDatabase() {
 	(static_cast<MissionObjective*>(stub))->destroyObjectFromDatabase();
 }
@@ -692,6 +757,10 @@ bool MissionObjectiveAdapter::hasObservers() {
 
 void MissionObjectiveAdapter::activate() {
 	(static_cast<MissionObjective*>(stub))->activate();
+}
+
+void MissionObjectiveAdapter::deactivate() {
+	(static_cast<MissionObjective*>(stub))->deactivate();
 }
 
 void MissionObjectiveAdapter::abort() {

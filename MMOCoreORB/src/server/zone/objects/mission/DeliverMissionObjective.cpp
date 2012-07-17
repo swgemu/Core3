@@ -24,7 +24,7 @@
  *	DeliverMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_GETITEM__,RPC_GETOBJECTIVESTATUS__,RPC_ACTIVATE__,RPC_ACTIVATEWITHRESULT__,RPC_ABORT__,RPC_COMPLETE__,RPC_DESPAWNNPCS__,RPC_UPDATEMISSIONSTATUS__CREATUREOBJECT_,RPC_UPDATEMISSIONTARGET__CREATUREOBJECT_,RPC_GETTARGETSPAWNPOINT__,RPC_GETDESTINATIONSPAWNPOINT__};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_GETITEM__,RPC_GETOBJECTIVESTATUS__,RPC_ACTIVATE__,RPC_DEACTIVATE__,RPC_ACTIVATEWITHRESULT__,RPC_ABORT__,RPC_COMPLETE__,RPC_DESPAWNNPCS__,RPC_UPDATEMISSIONSTATUS__CREATUREOBJECT_,RPC_UPDATEMISSIONTARGET__CREATUREOBJECT_,RPC_GETTARGETSPAWNPOINT__,RPC_GETDESTINATIONSPAWNPOINT__};
 
 DeliverMissionObjective::DeliverMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	DeliverMissionObjectiveImplementation* _implementation = new DeliverMissionObjectiveImplementation(mission);
@@ -92,6 +92,19 @@ void DeliverMissionObjective::activate() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->activate();
+}
+
+void DeliverMissionObjective::deactivate() {
+	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DEACTIVATE__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->deactivate();
 }
 
 bool DeliverMissionObjective::activateWithResult() {
@@ -454,6 +467,11 @@ void DeliverMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMeth
 			activate();
 		}
 		break;
+	case RPC_DEACTIVATE__:
+		{
+			deactivate();
+		}
+		break;
 	case RPC_ACTIVATEWITHRESULT__:
 		{
 			resp->insertBoolean(activateWithResult());
@@ -517,6 +535,10 @@ int DeliverMissionObjectiveAdapter::getObjectiveStatus() {
 
 void DeliverMissionObjectiveAdapter::activate() {
 	(static_cast<DeliverMissionObjective*>(stub))->activate();
+}
+
+void DeliverMissionObjectiveAdapter::deactivate() {
+	(static_cast<DeliverMissionObjective*>(stub))->deactivate();
 }
 
 bool DeliverMissionObjectiveAdapter::activateWithResult() {

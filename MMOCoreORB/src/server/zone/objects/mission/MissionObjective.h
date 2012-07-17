@@ -104,6 +104,8 @@ class MissionObjective : public ManagedObject {
 public:
 	MissionObjective(MissionObject* parent);
 
+	void initializeTransientMembers();
+
 	void destroyObjectFromDatabase();
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
@@ -121,6 +123,8 @@ public:
 	bool hasObservers();
 
 	void activate();
+
+	void deactivate();
 
 	void abort();
 
@@ -180,10 +184,14 @@ protected:
 
 	unsigned long long timeRemaining;
 
+	bool activated;
+
 public:
 	MissionObjectiveImplementation(MissionObject* parent);
 
 	MissionObjectiveImplementation(DummyConstructorParameter* param);
+
+	virtual void initializeTransientMembers();
 
 	virtual void destroyObjectFromDatabase();
 
@@ -202,6 +210,8 @@ public:
 	bool hasObservers();
 
 	virtual void activate();
+
+	virtual void deactivate();
 
 	virtual void abort();
 
@@ -266,6 +276,8 @@ public:
 
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void initializeTransientMembers();
+
 	void destroyObjectFromDatabase();
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
@@ -283,6 +295,8 @@ public:
 	bool hasObservers();
 
 	void activate();
+
+	void deactivate();
 
 	void abort();
 

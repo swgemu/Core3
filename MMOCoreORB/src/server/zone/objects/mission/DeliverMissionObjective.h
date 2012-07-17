@@ -154,6 +154,8 @@ public:
 
 	void activate();
 
+	void deactivate();
+
 	bool activateWithResult();
 
 	void abort();
@@ -225,6 +227,8 @@ public:
 
 	virtual void activate();
 
+	virtual void deactivate();
+
 	bool activateWithResult();
 
 	virtual void abort();
@@ -291,6 +295,8 @@ public:
 	int getObjectiveStatus();
 
 	void activate();
+
+	void deactivate();
 
 	bool activateWithResult();
 

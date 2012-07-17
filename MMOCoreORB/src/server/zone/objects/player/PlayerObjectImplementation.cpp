@@ -50,6 +50,7 @@ which carries forward this exception.
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/chat/ChatManager.h"
 #include "server/chat/room/ChatRoom.h"
@@ -193,6 +194,9 @@ void PlayerObjectImplementation::unload() {
 	SceneObject* savedParent = NULL;
 
 	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
+	MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
+	missionManager->deactivateMissions(creature);
 
 	notifyOffline();
 

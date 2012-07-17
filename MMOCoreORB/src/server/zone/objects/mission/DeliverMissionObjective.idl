@@ -95,8 +95,9 @@ class DeliverMissionObjective extends MissionObjective {
 	public int getObjectiveStatus() {
 		return objectiveStatus;
 	}
-	
+
 	public abstract native void activate();
+	public abstract native void deactivate();
 	public native boolean activateWithResult();
 	public abstract native void abort();
 	public abstract native void complete();

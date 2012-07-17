@@ -42,14 +42,17 @@ ManagedWeakReference<CreatureObject*> MissionObjectiveImplementation::getPlayerO
 }
 
 void MissionObjectiveImplementation::activate() {
-	timeRemaining -= missionStartTime.miliDifference();
+	if (!activated) {
+		activated = true;
+		timeRemaining -= missionStartTime.miliDifference();
 
-	if (timeRemaining < 1) {
-		timeRemaining = 1;
+		if (timeRemaining < 1) {
+			timeRemaining = 1;
+		}
+
+		failTask = new FailMissionAfterCertainTimeTask(_this.get());
+		failTask->schedule(timeRemaining);
 	}
-
-	failTask = new FailMissionAfterCertainTimeTask(_this.get());
-	failTask->schedule(timeRemaining);
 }
 
 void MissionObjectiveImplementation::complete() {
