@@ -450,11 +450,6 @@ bool MissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream,
 		return true;
 	}
 
-	if (_name == "MissionObjective.activated") {
-		TypeInfo<bool >::parseFromBinaryStream(&activated, stream);
-		return true;
-	}
-
 
 	return false;
 }
@@ -520,16 +515,8 @@ int MissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObjective.activated";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<bool >::toBinaryStream(&activated, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
 
-
-	return _count + 7;
+	return _count + 6;
 }
 
 MissionObjectiveImplementation::MissionObjectiveImplementation(MissionObject* parent) {
