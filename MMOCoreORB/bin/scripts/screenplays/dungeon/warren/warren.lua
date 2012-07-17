@@ -770,7 +770,7 @@ function MCRElevatorMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, 
 		return
 	end
 	
-	local z = creature:getPositionZ() - 10	
+	local z = obj:getPositionZ() - 20
 	local x = creature:getPositionX()
 	local y = creature:getPositionY()
 	

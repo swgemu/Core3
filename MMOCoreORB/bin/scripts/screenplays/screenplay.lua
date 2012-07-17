@@ -111,11 +111,12 @@ includeFile("caves/tatooine_sennex_cave.lua")
 includeFile("caves/tatooine_squill_cave.lua")
 includeFile("caves/tatooine_tusken_bunker.lua")
 includeFile("caves/corellia_drall_cave.lua")
-includeFile("caves/naboo_weapons_facility.lua")
 includeFile("caves/dantooine_kunga_stronghold.lua")
 includeFile("caves/dantooine_janta_cave.lua")
 includeFile("caves/dantooine_force_crystal_hunter_cave.lua")
 includeFile("caves/lok_droid_engineer_cave.lua")
+includeFile("caves/dathomir_rancor_cave.lua")
+includeFile("caves/dathomir_spider_clan_cave.lua")
 
 --POIs
 includeFile("poi/tatooine_fort_tusken.lua")
@@ -124,6 +125,8 @@ includeFile("poi/dantooine_dantari_village.lua")
 includeFile("poi/naboo_mauler_stronghold.lua")
 includeFile("poi/yavin4_woolamander_temple.lua")
 includeFile("poi/yavin4_blueleaf_temple.lua")
+includeFile("poi/dantooine_mokk_stronghold.lua")
+includeFile("poi/naboo_weapon_testing_facility.lua")
 
 --Tests
 --includeFile("tests/options_bitmask_test.lua")
