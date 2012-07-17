@@ -44,6 +44,8 @@ int ElevatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 	case 198: //UP
 		if (i <= 0) {
 			creature->sendSystemMessage("You are already on the highest floor");
+			delete floors;
+			floors = NULL;
 			return 0;
 		}
 
@@ -53,6 +55,8 @@ int ElevatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 	case 199: //DOWN
 		if (i >= floorCount - 1) {
 			creature->sendSystemMessage("You are already on the lowest floor");
+			delete floors;
+			floors = NULL;
 			return 0;
 		}
 
@@ -60,10 +64,15 @@ int ElevatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 		creature->playEffect("clienteffect/elevator_descend.cef", "");
 		break;
 	default:
+		delete floors;
+		floors = NULL;
 		return 0;
 	}
 
 	creature->teleport(x, z, y, sceneObject->getParentID());
+
+	delete floors;
+	floors = NULL;
 
 	return 0;
 }
