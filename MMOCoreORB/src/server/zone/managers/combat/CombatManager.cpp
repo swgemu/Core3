@@ -1090,18 +1090,9 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 	float action = weapon->getActionAttackCost() * data.getActionCostMultiplier();
 	float mind = weapon->getMindAttackCost() * data.getMindCostMultiplier();
 
-	float strengthMod = attacker->getHAM(CreatureAttribute::STRENGTH) / 100.f;
-	float quicknessMod = attacker->getHAM(CreatureAttribute::QUICKNESS) / 100.f;
-	float focusMod = attacker->getHAM(CreatureAttribute::FOCUS) / 100.f;
-
-	if (strengthMod > 0)
-		health /= strengthMod;
-
-	if (quicknessMod > 0)
-		action /= quicknessMod;
-
-	if (focusMod > 0)
-		mind /= focusMod;
+	health -= health * attacker->getHAM(CreatureAttribute::STRENGTH) / 2000.f;
+	action -= action * attacker->getHAM(CreatureAttribute::QUICKNESS) / 2000.f;
+	mind -= mind * attacker->getHAM(CreatureAttribute::FOCUS) / 2000.f;
 
 	if (attacker->getHAM(CreatureAttribute::HEALTH) <= health)
 		return false;
