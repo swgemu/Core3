@@ -25,8 +25,10 @@
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/creature/commands/BoardShuttleCommand.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/creature/commands/BoardShuttleCommand.h"
 
-int BoardShuttleCommand::MAXIMUM_PLAYER_COUNT = 200;
+int BoardShuttleCommand::MAXIMUM_PLAYER_COUNT = 3000;
 
 void CityRegionImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
@@ -223,7 +225,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		creature->sendSystemMessage(params);
 	}
 
-	if (object->isBuildingObject()){
+	if (loaded && object->isBuildingObject()){
 		BuildingObject* building = cast<BuildingObject*>(object);
 
 		uint64 creatureID = building->getOwnerObjectID();
@@ -282,7 +284,7 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 	}
 
 
-	if (object->isBuildingObject()){
+	if (loaded && object->isBuildingObject()){
 
 		float x = object->getWorldPositionX();
 		float y = object->getWorldPositionY();

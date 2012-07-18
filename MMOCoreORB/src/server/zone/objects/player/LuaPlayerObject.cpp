@@ -29,6 +29,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "hasPermissionGroup", &LuaPlayerObject::hasPermissionGroup },
 		{ "awardBadge", &LuaPlayerObject::awardBadge },
 		{ "hasBadge", &LuaPlayerObject::hasBadge },
+		{ "hasPermissionGroup", &LuaPlayerObject::hasPermissionGroup},
 		{ 0, 0 }
 };
 
@@ -188,3 +189,4 @@ int LuaPlayerObject::hasBadge(lua_State* L){
 
 	return 1;
 }
+

@@ -112,6 +112,8 @@ class CityRegion extends ManagedObject implements Logger {
 	public static final byte RANK_METROPOLIS = 5;
 	
 	public CityRegion() {
+		loaded = false;
+		
 		initialize();
 		
 		candidates.setAllowOverwriteInsertPlan();
@@ -537,12 +539,13 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 	
 	public native void resetVotingPeriod();
-	
+
 	public boolean isLoaded() {
 		return loaded;
 	}
 	
-	public void setLoaded(boolean load) {
-		loaded = load;
+	public void setLoaded() {
+		loaded = true;
 	}
+
 }

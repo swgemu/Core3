@@ -276,7 +276,7 @@ void BuildingObjectImplementation::sendBaselinesTo(SceneObject* player) {
 
 bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
 
-	if (getOwnerCreatureObject() == player)
+	if (getOwnerObjectID() == player->getObjectID())
 		return true;
 
 	if (isOnBanList(player))
@@ -616,9 +616,10 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 
 		if (isCondemned()) {
 			//Handle condemned messages.
-			CreatureObject* owner = getOwnerCreatureObject();
+			//CreatureObject* owner = getOwnerCreatureObject();
+			uint64 ownerOid = getOwnerObjectID();
 
-			if (owner != NULL && owner->getFirstName() == player->getFirstName()) {
+			if (ownerOid == player->getObjectID()) {
 				//Owner trying to enter building.
 				ManagedReference<Zone* >zone = getZone();
 				if (zone != NULL) {

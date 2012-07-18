@@ -148,7 +148,7 @@ function imperial_retreat_kaja_orzee_screenplay:notifyStartEscort1(pMoff, pPlaye
 	end
 	
 	moffAi:setFollowObject(pPlayer)
-	playerObject:addWaypoint("naboo", "@theme_park_imperial/kaja_orzee:return_waypoint_name_1", "@theme_park_imperial/kaja_orzee:return_waypoint_description_1", imperial_retreat_kaja_orzee_screenplay.loc.kaja.x, imperial_retreat_kaja_orzee_screenplay.loc.kaja.y, WAYPOINTBLUE, true, true)
+	--playerObject:addWaypoint("naboo", "@theme_park_imperial/kaja_orzee:return_waypoint_name_1", "@theme_park_imperial/kaja_orzee:return_waypoint_description_1", imperial_retreat_kaja_orzee_screenplay.loc.kaja.x, imperial_retreat_kaja_orzee_screenplay.loc.kaja.y, WAYPOINTBLUE, true, true)
 	self:setState(player, self.states.quest1.escorting)
 	
 	return 1

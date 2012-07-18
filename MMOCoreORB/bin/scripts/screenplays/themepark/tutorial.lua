@@ -30,27 +30,29 @@ function imperial_officer_3_handler:getNextConversationScreen(conversationTempla
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
 		
 		nextConversationScreen = conversation:getScreen(optionLink)
-		local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
-
-		if (nextLuaConversationScreen:getScreenID() == "convoscreen5") then
-			
-			
-			--give player weapons
-			local creatureSceneObject = LuaSceneObject(conversingPlayer)
-			inventory = creatureSceneObject:getSlottedObject("inventory")
-			local inventoryObj = LuaSceneObject(inventory)
-						
-			addStartingWeaponsInto(conversingPlayer, inventory)
-			
-			--testing datapad
-			--addTestItem(conversingPlayer, inventory)
-			
-			creature:sendSystemMessage("@newbie_tutorial/system_messages:receive_weapon")
-			
-		end
 		
-		if (nextLuaConversationScreen:getScreenID() == "convoscreen6") then
-			writeData(creature:getObjectID() .. ":tutorial:officer3flag", 1)
+		if (nextConversationScreen ~= nil) then
+			local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
+
+			if (nextLuaConversationScreen:getScreenID() == "convoscreen5") then
+				--give player weapons
+				local creatureSceneObject = LuaSceneObject(conversingPlayer)
+				inventory = creatureSceneObject:getSlottedObject("inventory")
+				local inventoryObj = LuaSceneObject(inventory)
+						
+				addStartingWeaponsInto(conversingPlayer, inventory)
+			
+				--testing datapad
+				--addTestItem(conversingPlayer, inventory)
+			
+				creature:sendSystemMessage("@newbie_tutorial/system_messages:receive_weapon")
+				
+			end
+		
+			if (nextLuaConversationScreen:getScreenID() == "convoscreen6") then
+				writeData(creature:getObjectID() .. ":tutorial:officer3flag", 1)
+			end
+		
 		end
 	else
 		
@@ -100,11 +102,14 @@ function imperial_officer_5_handler:getNextConversationScreen(conversationTempla
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
 		
 		nextConversationScreen = conversation:getScreen(optionLink)
-		local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
 		
-		if (nextLuaConversationScreen:getScreenID() == "convoscreen2") then
-			writeData(creature:getObjectID() .. ":tutorial:officer5flag", 1)
-			createEvent(1000, "TutorialScreenPlay", "stopOfficer5", conversingPlayer)
+		if (nextConversationScreen ~= nil) then
+			local nextLuaConversationScreen = LuaConversationScreen(nextConversationScreen)
+		
+			if (nextLuaConversationScreen:getScreenID() == "convoscreen2") then
+				writeData(creature:getObjectID() .. ":tutorial:officer5flag", 1)
+				createEvent(1000, "TutorialScreenPlay", "stopOfficer5", conversingPlayer)
+			end
 		end
 	else
 		

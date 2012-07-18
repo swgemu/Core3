@@ -1064,7 +1064,12 @@ void MissionManagerImplementation::randomizeGenericEntertainerMission(CreatureOb
 
 	int randomRange = System::random(difficulty - 1) + 1;
 
-	PlanetManager* pmng = player->getZone()->getPlanetManager();
+	Zone* zone = player->getZone();
+
+	if (zone == NULL)
+		return;
+
+	PlanetManager* pmng = zone->getPlanetManager();
 	MissionTargetMap* performanceLocations = pmng->getPerformanceLocations();
 	if (performanceLocations->size() <= 0) {
 		mission->setTypeCRC(0);
@@ -1093,8 +1098,8 @@ void MissionManagerImplementation::randomizeGenericEntertainerMission(CreatureOb
 	mission->setMissionNumber(randTexts);
 	mission->setCreatorName(nm->makeCreatureName());
 
-	mission->setStartPlanet(player->getZone()->getZoneName());
-	mission->setStartPosition(target->getPositionX(), target->getPositionY(), player->getZone()->getZoneName());
+	mission->setStartPlanet(zone->getZoneName());
+	mission->setStartPosition(target->getPositionX(), target->getPositionY(), zone->getZoneName());
 
 	if (missionType == MissionObject::DANCER) {
 		mission->setMissionTargetName("@ui_mission:dancer_tab");

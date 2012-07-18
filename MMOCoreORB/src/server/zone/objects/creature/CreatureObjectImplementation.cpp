@@ -379,30 +379,34 @@ void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 			getSlottedObjectsSize());
 	objects.setNoDuplicateInsertPlan();
 
-	for (int i = 0; i < getSlottedObjectsSize(); ++i) {
-		SceneObject* object = getSlottedObject(i);
+	try {
+		for (int i = 0; i < getSlottedObjectsSize(); ++i) {
+			SceneObject* object = getSlottedObject(i);
 
-		int arrangementSize = object->getArrangementDescriptorSize();
+			int arrangementSize = object->getArrangementDescriptorSize();
 
-		bool sendWithoutContents = false;
+			bool sendWithoutContents = false;
 
-		for (int i = 0; i < arrangementSize; ++i) {
-			String childArrangement = object->getArrangementDescriptor(i);
+			for (int i = 0; i < arrangementSize; ++i) {
+				String childArrangement = object->getArrangementDescriptor(i);
 
-			if (player != _this.get() && ((childArrangement == "bank")
-					|| (childArrangement == "inventory") || (childArrangement
-							== "datapad") || (childArrangement == "mission_bag"))) {
-				sendWithoutContents = true;
-				break;
+				if (player != _this.get() && ((childArrangement == "bank")
+						|| (childArrangement == "inventory") || (childArrangement
+								== "datapad") || (childArrangement == "mission_bag"))) {
+					sendWithoutContents = true;
+					break;
+				}
+			}
+
+			if (objects.put(object) != -1) {
+				if (sendWithoutContents)
+					object->sendWithoutContainerObjectsTo(player);
+				else
+					object->sendTo(player, true);
 			}
 		}
+	} catch (Exception& e) {
 
-		if (objects.put(object) != -1) {
-			if (sendWithoutContents)
-				object->sendWithoutContainerObjectsTo(player);
-			else
-				object->sendTo(player, true);
-		}
 	}
 }
 
@@ -1591,7 +1595,7 @@ void CreatureObjectImplementation::enqueueCommand(unsigned int actionCRC,
 	if (queueCommand == NULL) {
 		StringBuffer msg;
 		msg << "trying to enqueue NULL QUEUE COMMAND 0x" << hex << actionCRC;
-		error(msg.toString());
+		//error(msg.toString());
 
 		//StackTrace::printStackTrace();
 		return;

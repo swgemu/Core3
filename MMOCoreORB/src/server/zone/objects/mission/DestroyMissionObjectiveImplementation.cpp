@@ -194,6 +194,8 @@ void DestroyMissionObjectiveImplementation::abort() {
 			//spawnActiveArea->destroyObjectFromDatabase(true);
 	}
 
+	ManagedReference<MissionSpawnActiveArea* > spawnActiveArea = this->spawnActiveArea;
+
 	if (spawnActiveArea != NULL) {
 		Locker locker(spawnActiveArea);
 

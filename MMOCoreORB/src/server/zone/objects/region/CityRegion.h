@@ -338,9 +338,7 @@ public:
 
 	void resetVotingPeriod();
 
-	bool isLoaded();
-
-	void setLoaded(bool load);
+	void setLoaded();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -639,9 +637,7 @@ public:
 
 	void resetVotingPeriod();
 
-	bool isLoaded();
-
-	void setLoaded(bool load);
+	void setLoaded();
 
 	WeakReference<CityRegion*> _this;
 
@@ -864,9 +860,7 @@ public:
 
 	void resetVotingPeriod();
 
-	bool isLoaded();
-
-	void setLoaded(bool load);
+	void setLoaded();
 
 };
 

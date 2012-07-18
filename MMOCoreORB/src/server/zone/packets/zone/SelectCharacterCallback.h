@@ -36,12 +36,19 @@ public:
 
 	void run() {
 		ZoneServer* zoneServer = server->getZoneServer();
+		
+		if (zoneServer->isServerLocked()) {
+			ErrorMessage* errMsg = new ErrorMessage("Login Errror", "Server is currently locked", 0);
+			client->sendMessage(errMsg);
+			
+			return;
+		}
 
 		if(!client->hasCharacter(characterID, zoneServer->getGalaxyID())) {
 			ErrorMessage* errMsg = new ErrorMessage("Login Error", "You are unable to login with this character\n\nIf you feel this is an error please close your client, and try again.", 0x0);
 			client->sendMessage(errMsg);
 
-			client->error("invalid character id " + String::valueOf(characterID) + " in account: " + String::valueOf(client->getAccountID()));
+			//client->error("invalid character id " + String::valueOf(characterID) + " in account: " + String::valueOf(client->getAccountID()));
 			return;
 		}
 
