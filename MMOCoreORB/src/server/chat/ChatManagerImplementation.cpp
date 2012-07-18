@@ -467,15 +467,6 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	//Locker zoneLocker(zone);
 	//zone->rlock();
 
-<<<<<<< .working
-	//	bool readlock = !zone->isLockedByCurrentThread();
-=======
-//	bool readlock = !zone->isLockedByCurrentThread();
->>>>>>> .merge-right.r5676
-
-	//zone->rlock(readlock);
-
-<<<<<<< .working
 	CloseObjectsVector* closeObjects = (CloseObjectsVector*) player->getCloseObjects();
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeEntryObjects(200, 50);
@@ -520,15 +511,6 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	
 	*/
 
-	try {
-		for (int i = 0; i < closeEntryObjects.size(); ++i) {
-			SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i).get());
-
-			if (object->isPlayerCreature()) {
-				CreatureObject* creature = cast<CreatureObject*>(object);
->>>>>>> .merge-right.r5676
-
-	 */
 
 	try {
 		for (int i = 0; i < closeEntryObjects.size(); ++i) {
@@ -583,12 +565,6 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 
 		throw;
 	}
-
-<<<<<<< .working
-	//	zone->runlock(readlock);
-=======
-//	zone->runlock(readlock);
->>>>>>> .merge-right.r5676
 
 	//zone->runlock();
 
