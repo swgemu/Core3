@@ -62,8 +62,8 @@ object_tangible_food_crafted_dish_vercupti_of_agazza_boleruuee = object_tangible
 
 	modifiers = { "health", 0, "action", 0, "mind", 0 },
 
-	buffName = "vercupti_of_agazza_boleruuee",
-	buffCRC = 0,
+	buffName = "food.dish_vercupti_of_agazza_boleruuee",
+	buffCRC = 0x50AFB0A1,
 	speciesRestriction = "",
 
 	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2},
