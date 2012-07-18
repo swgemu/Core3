@@ -409,7 +409,7 @@ int CombatManager::getAttackerAccuracyBonus(CreatureObject* attacker, WeaponObje
 
 int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponObject* weapon) {
 	if (!defender->isPlayerCreature())
-		return defender->getLevel();
+		return MIN(125, defender->getLevel());
 
 	int targetDefense = 0;
 	int buffDefense = 0;
