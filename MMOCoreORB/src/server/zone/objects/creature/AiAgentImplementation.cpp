@@ -716,7 +716,7 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 		setLevel(level);
 
 	stateBitmask = 0;
-	posture = CreaturePosture::UPRIGHT;
+	setPosture(CreaturePosture::UPRIGHT);
 	shockWounds = 0;
 	threatMap->removeAll();
 

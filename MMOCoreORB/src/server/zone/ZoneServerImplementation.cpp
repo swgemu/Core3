@@ -100,7 +100,7 @@ ZoneServerImplementation::ZoneServerImplementation(ConfigManager* config) :
 	processor = NULL;
 	
 	
-	serverCap = 1500;
+	serverCap = 3000;
 
 	phandler = NULL;
 
@@ -217,8 +217,8 @@ void ZoneServerImplementation::initialize() {
 
 	startManagers();
 
-	//serverState = LOCKED;
-	serverState = ONLINE; //Test Center does not need to apply this change, but would be convenient for Dev Servers.
+	serverState = LOCKED;
+	//serverState = ONLINE; //Test Center does not need to apply this change, but would be convenient for Dev Servers.
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
@@ -353,6 +353,8 @@ void ZoneServerImplementation::stopManagers() {
 ZoneClientSession* ZoneServerImplementation::createConnection(Socket* sock, SocketAddress& addr) {
 	/*if (!userManager->checkUser(addr.getIPID()))
 		return NULL;*/
+		
+	//static AtomicInteger count;
 
 	BaseClientProxy* session = new BaseClientProxy(sock, addr);
 
@@ -366,8 +368,8 @@ ZoneClientSession* ZoneServerImplementation::createConnection(Socket* sock, Sock
 
 	ZoneClientSession* client = new ZoneClientSession(session);
 	//clients arent undeployed instantly so we get already deployed clients
-	//client->deploy("ZoneClientSession " + addr.getFullIPAddress());
-	client->deploy();
+	//client->deploy("ZoneClientSession " + addr.getFullIPAddress() );
+	//client->deploy();
 
 	String address = session->getAddress();
 

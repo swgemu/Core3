@@ -24,6 +24,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "decreaseFactionStanding", &LuaPlayerObject::decreaseFactionStanding },
 		{ "addWaypoint", &LuaPlayerObject::addWaypoint },
 		{ "addRewardedSchematic", &LuaPlayerObject::addRewardedSchematic},
+		{ "hasPermissionGroup", &LuaPlayerObject::hasPermissionGroup},
 		{ 0, 0 }
 };
 
@@ -142,3 +143,11 @@ int LuaPlayerObject::addRewardedSchematic(lua_State* L){
 	return 0;
 
 }
+int LuaPlayerObject::hasPermissionGroup(lua_State* L){
+	String permissionGroup = lua_tostring(L, -1);
+
+	lua_pushboolean(L, realObject->hasPermissionGroup(permissionGroup));
+
+	return 1;
+}
+

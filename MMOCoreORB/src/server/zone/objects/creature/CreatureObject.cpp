@@ -38,6 +38,8 @@
 
 #include "server/zone/ZoneClientSession.h"
 
+#include "server/zone/packets/scene/AttributeListMessage.h"
+
 /*
  *	CreatureObjectStub
  */

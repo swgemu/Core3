@@ -546,6 +546,8 @@ public:
 
 	void removePermissionGroup(const String& group, bool updateInRangeBuildingPermissions = false);
 
+	bool hasPermissionGroup(const String& group);
+
 	SortedVector<String>* getPermissionGroups();
 
 	bool isFirstIncapacitationExpired();
@@ -1195,6 +1197,8 @@ public:
 
 	void removePermissionGroup(const String& group, bool updateInRangeBuildingPermissions = false);
 
+	bool hasPermissionGroup(const String& group);
+
 	SortedVector<String>* getPermissionGroups();
 
 	bool isFirstIncapacitationExpired();
@@ -1657,6 +1661,8 @@ public:
 	void addPermissionGroup(const String& group, bool updateInRangeBuildingPermissions);
 
 	void removePermissionGroup(const String& group, bool updateInRangeBuildingPermissions);
+
+	bool hasPermissionGroup(const String& group);
 
 	bool isFirstIncapacitationExpired();
 

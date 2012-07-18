@@ -26,7 +26,7 @@
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/creature/commands/BoardShuttleCommand.h"
 
-int BoardShuttleCommand::MAXIMUM_PLAYER_COUNT = 200;
+int BoardShuttleCommand::MAXIMUM_PLAYER_COUNT = 3000;
 
 void CityRegionImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
