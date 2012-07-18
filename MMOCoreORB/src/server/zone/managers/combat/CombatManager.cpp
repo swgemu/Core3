@@ -1070,14 +1070,7 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 
 	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
 
-	int health = (int) (weapon->getHealthAttackCost() * data.getHealthCostMultiplier());
-	int action = (int) (weapon->getActionAttackCost() * data.getActionCostMultiplier());
-	int mind = (int) (weapon->getMindAttackCost() * data.getMindCostMultiplier());
-	int force = (int) round(((weapon->getForceCost()) * data.getForceCostMultiplier()) / 4);
-
-	health = MAX(0, health - (float(attacker->getHAM(CreatureAttribute::STRENGTH)) / 10.f));
-	action = MAX(0, action - (float(attacker->getHAM(CreatureAttribute::QUICKNESS)) / 10.f));
-	mind = MAX(0, mind - (float(attacker->getHAM(CreatureAttribute::FOCUS)) / 10.f));
+	float force = weapon->getForceCost() * data.getForceCostMultiplier();
 
 	if (force > 0) { // Need Force check first otherwise it can be spammed.
 		ManagedReference<PlayerObject*> playerObject = attacker->getPlayerObject();
@@ -1093,6 +1086,23 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 		}
 	}
 
+	float health = weapon->getHealthAttackCost() * data.getHealthCostMultiplier();
+	float action = weapon->getActionAttackCost() * data.getActionCostMultiplier();
+	float mind = weapon->getMindAttackCost() * data.getMindCostMultiplier();
+
+	float strengthMod = attacker->getHAM(CreatureAttribute::STRENGTH) / 100.f;
+	float quicknessMod = attacker->getHAM(CreatureAttribute::QUICKNESS) / 100.f;
+	float focusMod = attacker->getHAM(CreatureAttribute::FOCUS) / 100.f;
+
+	if (strengthMod > 0)
+		health /= strengthMod;
+
+	if (quicknessMod > 0)
+		action /= quicknessMod;
+
+	if (focusMod > 0)
+		mind /= focusMod;
+
 	if (attacker->getHAM(CreatureAttribute::HEALTH) <= health)
 		return false;
 
@@ -1102,17 +1112,14 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 	if (attacker->getHAM(CreatureAttribute::MIND) <= mind)
 		return false;
 
-	if (health > 0) {
+	if (health > 0)
 		attacker->inflictDamage(attacker, CreatureAttribute::HEALTH, health, true);
-	}
 
-	if (action > 0) {
+	if (action > 0)
 		attacker->inflictDamage(attacker, CreatureAttribute::ACTION, action, true);
-	}
 
-	if (mind > 0) {
+	if (mind > 0)
 		attacker->inflictDamage(attacker, CreatureAttribute::MIND, mind, true);
-	}
 
 	weapon->decay(attacker, health + action + mind);
 
