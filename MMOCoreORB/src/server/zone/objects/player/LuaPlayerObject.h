@@ -41,7 +41,6 @@ public:
 	int hasBadge(lua_State* L);
 
 private:
-	int hasPermissionGroup(lua_State* L);
 	// The pointer to the 'real object' defined in object.cc
 	Reference<PlayerObject*> realObject;
 };
