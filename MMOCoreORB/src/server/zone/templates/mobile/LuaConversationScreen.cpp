@@ -195,11 +195,3 @@ int LuaConversationScreen::setDialogTextDI(lua_State* L) {
 
 	return 0;
 }
-
-int LuaConversationScreen::setCustomDialogText(lua_State* L) {
-	String text = lua_tostring(L, -1);
-
-	realObject->setCustomDialogText(UnicodeString(text));
-
-	return 0;
-}
