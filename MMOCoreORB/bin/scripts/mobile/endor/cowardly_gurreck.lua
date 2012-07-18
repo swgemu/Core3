@@ -26,7 +26,7 @@ cowardly_gurreck = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/gurreck.iff"},
+	templates = {"object/mobile/gurreck_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

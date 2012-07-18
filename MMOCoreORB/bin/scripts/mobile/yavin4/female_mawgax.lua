@@ -26,7 +26,7 @@ female_mawgax = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/mawgax.iff"},
+	templates = {"object/mobile/mawgax_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

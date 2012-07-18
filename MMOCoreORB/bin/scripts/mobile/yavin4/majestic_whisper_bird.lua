@@ -26,7 +26,7 @@ majestic_whisper_bird = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/whisper_bird.iff"},
+	templates = {"object/mobile/whisper_bird_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

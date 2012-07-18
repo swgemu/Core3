@@ -21,12 +21,12 @@ dune_kimogila = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/kimogila.iff"},
+	templates = {"object/mobile/kimogila_hue.iff"},
 	lootGroups = {
 	 {
 	        groups = {

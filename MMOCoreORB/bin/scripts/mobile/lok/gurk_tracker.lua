@@ -26,7 +26,7 @@ gurk_tracker = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/gurk.iff"},
+	templates = {"object/mobile/gurk_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

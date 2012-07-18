@@ -26,7 +26,7 @@ festering_squill = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/squill.iff"},
+	templates = {"object/mobile/squill_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

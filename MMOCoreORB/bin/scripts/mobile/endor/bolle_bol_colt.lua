@@ -26,7 +26,7 @@ bolle_bol_colt = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/bolle_bol.iff"},
+	templates = {"object/mobile/bolle_bol_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
