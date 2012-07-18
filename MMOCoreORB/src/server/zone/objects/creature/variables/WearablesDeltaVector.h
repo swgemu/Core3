@@ -40,13 +40,19 @@ public:
 	bool add(ManagedReference<TangibleObject*> element, DeltaMessage* message = NULL, int updates = 1) {
 		if (element->isArmorObject()) {
 			ManagedReference<ArmorObject*> armor = cast<ArmorObject*>(element.get());
-			uint8 hitLocation = armor->getHitLocation();
+			uint8 hitLocations = armor->getHitLocation();
 
-			Vector<ManagedReference<ArmorObject*> > armors = protectionArmorMap.get(hitLocation);
-			armors.add(armor);
+			if (hitLocations & 0x01)
+				addArmor(0x01, armor);
 
-			protectionArmorMap.drop(hitLocation);
-			protectionArmorMap.put(hitLocation, armors);
+			if (hitLocations & 0x02)
+				addArmor(0x02, armor);
+
+			if (hitLocations & 0x04)
+				addArmor(0x04, armor);
+
+			if (hitLocations & 0x08)
+				addArmor(0x08, armor);
 		}
 
 		return DeltaVector<ManagedReference<TangibleObject*> >::add(element, message, updates);
@@ -57,13 +63,19 @@ public:
 
 		if (element->isArmorObject()) {
 			ManagedReference<ArmorObject*> armor = cast<ArmorObject*>(element.get());
-			uint8 hitLocation = armor->getHitLocation();
+			uint8 hitLocations = armor->getHitLocation();
 
-			Vector<ManagedReference<ArmorObject*> > armors = protectionArmorMap.get(hitLocation);
-			armors.removeElement(armor);
+			if (hitLocations & 0x01)
+				removeArmor(0x01, armor);
 
-			protectionArmorMap.drop(hitLocation);
-			protectionArmorMap.put(hitLocation, armors);
+			if (hitLocations & 0x02)
+				removeArmor(0x02, armor);
+
+			if (hitLocations & 0x04)
+				removeArmor(0x04, armor);
+
+			if (hitLocations & 0x08)
+				removeArmor(0x08, armor);
 		}
 
 		return DeltaVector<ManagedReference<TangibleObject*> >::remove(index, message, updates);
@@ -71,6 +83,22 @@ public:
 
 	Vector<ManagedReference<ArmorObject*> > getArmorAtHitLocation(uint8 hl) {
 		return protectionArmorMap.get(hl);
+	}
+
+	void addArmor(uint8 hitLocation, ManagedReference<ArmorObject*> armor) {
+		Vector<ManagedReference<ArmorObject*> > armors = protectionArmorMap.get(hitLocation);
+		armors.add(armor);
+
+		protectionArmorMap.drop(hitLocation);
+		protectionArmorMap.put(hitLocation, armors);
+	}
+
+	void removeArmor(uint8 hitLocation, ManagedReference<ArmorObject*> armor) {
+		Vector<ManagedReference<ArmorObject*> > armors = protectionArmorMap.get(hitLocation);
+		armors.removeElement(armor);
+
+		protectionArmorMap.drop(hitLocation);
+		protectionArmorMap.put(hitLocation, armors);
 	}
 };
 
