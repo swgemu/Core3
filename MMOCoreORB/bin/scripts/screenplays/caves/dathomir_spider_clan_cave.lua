@@ -36,7 +36,9 @@ SpiderClanCaveScreenPlay = ScreenPlay:new {
 registerScreenPlay("SpiderClanCaveScreenPlay", true)
 
 function SpiderClanCaveScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("dathomir")) then
+		self:spawnMobiles()
+	end
 end
 
 function SpiderClanCaveScreenPlay:spawnMobiles()
