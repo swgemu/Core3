@@ -1702,7 +1702,11 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 	IntangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 
 	for (int i = 0; i < ownedStructures.size(); ++i) {
-		ManagedReference<StructureObject*> structure = ownedStructures.get(i);
+		//ManagedReference<StructureObject*> structure = ownedStructures.get(i);
+
+		uint64 oid = ownedStructures.get(i);
+
+		ManagedReference<StructureObject*> structure = cast<StructureObject*>(getZoneServer()->getObject(oid));
 
 		if (structure != NULL) {
 			structure->destroyObjectFromWorld(false);
