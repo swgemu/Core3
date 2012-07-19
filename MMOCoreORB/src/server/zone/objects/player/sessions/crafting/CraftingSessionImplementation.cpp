@@ -598,7 +598,7 @@ void CraftingSessionImplementation::nextCraftingStage(int clientCounter) {
 	}
 
 	// Make sure all the require resources are there, if not, return them to inventory and close tool
-	if (!manufactureSchematic->isReadyForAssembly()) {
+	if (!manufactureSchematic->isAssembled() && !manufactureSchematic->isReadyForAssembly()) {
 
 		sendSlotMessage(clientCounter, IngredientSlot::PARTIALASSEMBLE);
 		return;
@@ -633,6 +633,12 @@ void CraftingSessionImplementation::nextCraftingStage(int clientCounter) {
 	} else if (state == 3) {
 
 		finishAssembly(clientCounter);
+
+	} else if (state == 4) {
+
+		finishStage1(clientCounter);
+		finishStage2(clientCounter);
+		state = 6;
 
 	} else if (state == 5) {
 
