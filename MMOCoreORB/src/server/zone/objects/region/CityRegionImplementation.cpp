@@ -85,7 +85,6 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 			zone->getPlanetManager()->scheduleShuttle(shuttle);
 	}
 
-	loaded = true;
 }
 
 void CityRegionImplementation::initialize() {
@@ -220,7 +219,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 
 		uint64 creatureID = structure->getOwnerObjectID();
 
-		if (!citizenList.contains(creatureID)) {
+		if (structure->isBuildingObject() && !citizenList.contains(creatureID)) {
 			BuildingObject* building = cast<BuildingObject*>(object);
 			CreatureObject* owner = building->getOwnerCreatureObject();
 
