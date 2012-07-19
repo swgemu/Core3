@@ -76,6 +76,9 @@ lok_regions = {
 	{"westerly",0,0,0,0,1},
 	{"western_mountains",0,0,0,0,1},
 	{"western_plains",0,0,0,0,1},
+	{"world_factional_imperial",0,0,-1,6,1,"factional_imperial"},
+	{"world_factional_neutral",0,0,-1,4,1,"factional_neutral"},
+	{"world_factional_rebel",0,0,-1,5,1,"factional_rebel"},
 	{"world_spawner",0,0,-1,3,1,"lok_world_creatures"},
 }
 

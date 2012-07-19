@@ -44,7 +44,11 @@
 PolearmHit3Command = {
         name = "polearmhit3",
 	damageMultiplier = 4.0,
-	speedMultiplier = 3.0,
+	speedMultiplier = 2.5,
+	healthCostMultiplier = 2.0,
+	actionCostMultiplier = 1.5,
+	mindCostMultiplier = 1.5,
+	accuracyBonus = 10,
 
 	stateEffects = {
 	  StateEffect( 
@@ -52,9 +56,9 @@ PolearmHit3Command = {
 		{}, 
 		{ "stun_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		20, 
+		75, 
 		100, 
-		10 
+		45 
 	  ),
 	  StateEffect( 
 		POSTUREDOWN_EFFECT, 

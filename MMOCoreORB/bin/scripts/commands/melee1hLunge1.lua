@@ -46,11 +46,10 @@ Melee1hLunge1Command = {
 
 	damageMultiplier = 2.0,
 	speedMultiplier = 1.5,
-	accuracyBonus = 25,
-	
 	healthCostMultiplier = 0.5,
 	actionCostMultiplier = 0.5,
 	mindCostMultiplier = 1.0,
+        accuracyBonus = 25,
 
 	animationCRC = hashCode("lower_posture_1hmelee_1"),
 
@@ -64,7 +63,7 @@ Melee1hLunge1Command = {
 		{ "postureDownRecovery" }, 
 		{ "posture_change_down_defense" }, 
 		{}, 
-		40, 
+		100, 
 		100, 
 		0 
 	  )

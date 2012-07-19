@@ -150,7 +150,7 @@ void Component::addProperty(const String& attributeName, const float value, cons
 		_implementation->addProperty(attributeName, value, precision, craftingTitle, hidden);
 }
 
-float Component::getAttributeValue(String& attributeName) {
+float Component::getAttributeValue(const String& attributeName) {
 	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -164,7 +164,7 @@ float Component::getAttributeValue(String& attributeName) {
 		return _implementation->getAttributeValue(attributeName);
 }
 
-int Component::getAttributePrecision(String& attributeName) {
+int Component::getAttributePrecision(const String& attributeName) {
 	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -178,7 +178,7 @@ int Component::getAttributePrecision(String& attributeName) {
 		return _implementation->getAttributePrecision(attributeName);
 }
 
-String Component::getAttributeTitle(String& attributeName) {
+String Component::getAttributeTitle(const String& attributeName) {
 	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -194,7 +194,7 @@ String Component::getAttributeTitle(String& attributeName) {
 		return _implementation->getAttributeTitle(attributeName);
 }
 
-bool Component::getAttributeHidden(String& attributeName) {
+bool Component::getAttributeHidden(const String& attributeName) {
 	ComponentImplementation* _implementation = static_cast<ComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -626,19 +626,19 @@ void ComponentAdapter::addProperty(const String& attributeName, const float valu
 	(static_cast<Component*>(stub))->addProperty(attributeName, value, precision, craftingTitle, hidden);
 }
 
-float ComponentAdapter::getAttributeValue(String& attributeName) {
+float ComponentAdapter::getAttributeValue(const String& attributeName) {
 	return (static_cast<Component*>(stub))->getAttributeValue(attributeName);
 }
 
-int ComponentAdapter::getAttributePrecision(String& attributeName) {
+int ComponentAdapter::getAttributePrecision(const String& attributeName) {
 	return (static_cast<Component*>(stub))->getAttributePrecision(attributeName);
 }
 
-String ComponentAdapter::getAttributeTitle(String& attributeName) {
+String ComponentAdapter::getAttributeTitle(const String& attributeName) {
 	return (static_cast<Component*>(stub))->getAttributeTitle(attributeName);
 }
 
-bool ComponentAdapter::getAttributeHidden(String& attributeName) {
+bool ComponentAdapter::getAttributeHidden(const String& attributeName) {
 	return (static_cast<Component*>(stub))->getAttributeHidden(attributeName);
 }
 

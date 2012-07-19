@@ -18,6 +18,9 @@ int HologrindHolocronMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 	if (selectedID != 20)
 		return 0;
 
+	if (!sceneObject->isASubChildOf(creature))
+		return 0;
+
 	ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
 	if (playerObject != NULL) {

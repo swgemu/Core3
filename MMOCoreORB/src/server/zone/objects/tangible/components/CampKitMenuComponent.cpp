@@ -47,6 +47,9 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	if (player->getZone() == NULL)
 		return 0;
 
+	if (!sceneObject->isASubChildOf(player))
+		return 0;
+
 	if (selectedID == 20) {
 
 		/// Get Camp Kit Template
@@ -162,7 +165,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 				return 0;
 			}
 
-			if (scno != NULL && scno->isStructureObject() &&
+			if (scno != NULL && !scno->isCampStructure() && scno->isStructureObject() &&
 					scno->getDistanceTo(player) <= 100) {
 				player->sendSystemMessage("@camp:error_building_too_close");
 				return 0;

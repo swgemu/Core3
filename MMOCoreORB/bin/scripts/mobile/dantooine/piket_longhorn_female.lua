@@ -26,7 +26,7 @@ piket_longhorn_female = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/piket_longhorn.iff"},
+	templates = {"object/mobile/piket_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

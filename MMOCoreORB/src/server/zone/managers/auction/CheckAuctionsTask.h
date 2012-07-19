@@ -27,6 +27,7 @@ public:
 			return;
 
 		strongRef->checkAuctions();
+		strongRef->checkVendorItems();
 	}
 };
 

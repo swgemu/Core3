@@ -26,7 +26,7 @@ domesticated_merek = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/merek.iff"},
+	templates = {"object/mobile/merek_hue.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

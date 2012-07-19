@@ -46,10 +46,10 @@ UnarmedDizzy1Command = {
 
 	damageMultiplier = 1.5,
 	speedMultiplier = 2.0,
-
 	healthCostMultiplier = 1.5,
 	actionCostMultiplier = 1.5,
 	mindCostMultiplier = 1.5,
+        accuracyBonus = 15,
 
 	stateEffects = {
 	  StateEffect( 

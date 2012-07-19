@@ -31,13 +31,14 @@ imperial_deserter = Creature:new {
 		{
 			groups = {
 				{group = "color_crystals", chance = 200000},
-				{group = "junk", chance = 3600000},
-				{group = "rifles", chance = 1000000},
-				{group = "pistols", chance = 1000000},
-				{group = "clothing_attachments", chance = 500000},
-				{group = "armor_attachments", chance = 500000}
+				{group = "junk", chance = 4600000},
+				{group = "rifles", chance = 1600000},
+				{group = "pistols", chance = 1600000},
+                                                                {group = "melee_weapons", chance = 1500000},
+				{group = "clothing_attachments", chance = 250000},
+				{group = "armor_attachments", chance = 250000}
 			},
-			lootChance = 4000000
+			lootChance = 3000000
 		}
 	},
 	weapons = {"imperial_weapons_heavy"},

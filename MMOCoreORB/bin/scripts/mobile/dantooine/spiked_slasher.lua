@@ -21,12 +21,12 @@ spiked_slasher = Creature:new {
 	milk = 0,
 	tamingChance = 0.05,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/voritor_lizard.iff"},
+	templates = {"object/mobile/voritor_lizard_hue.iff"},
 	lootGroups = {
 	 {
 	        groups = {

@@ -116,7 +116,7 @@ object_tangible_wearables_armor_ubese_armor_ubese_bracer_l = object_tangible_wea
 	experimentalMin = {0, 0, 0, 1000, 1, 15000, 11, 14, 19, 1, 1, 1, 18750},
 	experimentalMax = {0, 0, 0, 1000, 30, 25000, 7, 8, 11, 1, 1, 40, 31250},
 	experimentalPrecision = {0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1},
+	experimentalCombineType = {0, 0, 4, 1, 1, 1, 1, 1, 1, 4, 4, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_ubese_armor_ubese_bracer_l, "object/tangible/wearables/armor/ubese/armor_ubese_bracer_l.iff")

@@ -30,14 +30,16 @@ imperial_major = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "color_crystals", chance = 200000},
-				{group = "junk", chance = 3600000},
+				{group = "color_crystals", chance = 100000},
+				{group = "junk", chance = 5700000},
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
-				{group = "clothing_attachments", chance = 500000},
-				{group = "armor_attachments", chance = 500000}
+                {group = "melee_weapons", chance = 1000000},
+                {group = "carbines", chance = 1000000},
+				{group = "clothing_attachments", chance = 100000},
+				{group = "armor_attachments", chance = 100000}
 			},
-			lootChance = 4000000
+			lootChance = 3000000
 		}							
 	},
 	weapons = {"imperial_weapons_heavy"},

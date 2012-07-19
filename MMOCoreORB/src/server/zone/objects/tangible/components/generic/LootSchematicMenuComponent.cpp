@@ -48,6 +48,9 @@ int LootSchematicMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	if (!player->isPlayerCreature())
 		return 0;
 
+	if (!sceneObject->isASubChildOf(player))
+		return 0;
+
 	if(selectedID == 50) {
 		PlayerObject* ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
 
@@ -67,6 +70,7 @@ int LootSchematicMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		ManagedReference<DraftSchematic* > schematic = SchematicMap::instance()->get(schematicData->getTargetDraftSchematic().hashCode());
 
 		if (schematic == NULL) {
+			player->sendSystemMessage("Error learning schematic, try again later");
 			error("Unable to create schematic: " + schematicData->getTargetDraftSchematic());
 			return 0;
 		}

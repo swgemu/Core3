@@ -383,6 +383,9 @@ void EnhancePackImplementation::loadTemplateData(SharedObjectTemplate* templateD
 
 int EnhancePackImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		if 
+	if (!isASubChildOf(player))	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  			return 0;
+	return 0;
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		if 
 	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  			return 1;
 	return 1;
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		}
@@ -412,15 +415,11 @@ int EnhancePackImplementation::handleObjectMenuSelect(CreatureObject* player, by
 unsigned int EnhancePackImplementation::calculatePower(CreatureObject* healer, CreatureObject* patient, bool applyBattleFatigue) {
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float power = getEffectiveness();
 	float power = getEffectiveness();
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		ZoneServer 
-	if (applyBattleFatigue)	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  			power = power - (power * patient.calculateBFRatio());
-	power = power - (power * patient->calculateBFRatio());
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		ZoneServer zoneServer = super.getZoneServer();
-	ManagedReference<ZoneServer* > zoneServer = PharmaceuticalObjectImplementation::getZoneServer();
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		PlayerManager playerManager = zoneServer.getPlayerManager();
-	ManagedReference<PlayerManager* > playerManager = zoneServer->getPlayerManager();
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float modEnvironment = (healer.getSkillMod("private_medical_rating") / 100);
-	float modEnvironment = (healer->getSkillMod("private_medical_rating") / 100);
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float 
+	if (applyBattleFatigue)	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  			power = power - (power * patient.calculateBFRatio() * healer.calculateBFRatio());
+	power = power - (power * patient->calculateBFRatio() * healer->calculateBFRatio());
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float modEnvironment = ((float) healer.getSkillMod("private_medical_rating") / 100);
+	float modEnvironment = ((float) healer->getSkillMod("private_medical_rating") / 100);
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
 	float modSkill = (float) healer->getSkillMod("healing_wound_treatment");
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		return power * modEnvironment * ((100 + modSkill) / 100);

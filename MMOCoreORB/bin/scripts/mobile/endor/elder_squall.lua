@@ -26,7 +26,7 @@ elder_squall = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/squall.iff"},
+	templates = {"object/mobile/squall_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

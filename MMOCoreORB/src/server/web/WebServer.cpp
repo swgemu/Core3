@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "servlets/character/CharacterServlet.h"
 #include "servlets/account/AccountServlet.h"
 #include "servlets/permissions/PermissionsServlet.h"
+#include "servlets/admin/AdminServlet.h"
 
 mg_context *WebServer::ctx;
 int WebServer::sessionTimeout;
@@ -62,9 +63,6 @@ WebServer::WebServer() {
 
 	// Lookup zone to have access to playerobjects
 	zoneServer = cast<ZoneServer*>(DistributedObjectBroker::instance()->lookUp("ZoneServer"));
-
-	// Lookup login for account info
-	loginServer = cast<LoginServer*>(DistributedObjectBroker::instance()->lookUp("LoginServer"));
 
 	// Default Time in minutes, value is in script
 	sessionTimeout = 10;
@@ -114,13 +112,13 @@ void WebServer::init() {
 }
 
 void WebServer::registerBaseContexts() {
-
 	addContext("login", new LoginServlet("login"));
 	addContext("main", new MainServlet("main"));
 	addContext("logs", new LogsServlet("logs"));
 	addContext("character", new CharacterServlet("character"));
 	addContext("account", new AccountServlet("account"));
 	addContext("permissions", new PermissionsServlet("permissions"));
+	addContext("admin", new AdminServlet("admin"));
 }
 
 void WebServer::whitelistInit() {
@@ -239,12 +237,12 @@ void* WebServer::uriHandler(
 void* WebServer::handleRequest(struct mg_connection *conn, const struct mg_request_info *request_info) {
 
 	/// First we validate the IP address to see if we should proceed
-	if(!validateIPAccess(request_info->remote_ip)) {
-
-		displayUnauthorized(conn);
-		info("Unauthorized access attempt from " + ipLongToString((uint32)request_info->remote_ip));
-		return (void*)1;
-	}
+//	if(!validateIPAccess(request_info->remote_ip)) {
+//
+//		displayUnauthorized(conn);
+//		info("Unauthorized access attempt from " + ipLongToString((uint32)request_info->remote_ip));
+//		return (void*)1;
+//	}
 
 	HttpSession* session = getSession(conn, request_info);
 
@@ -453,14 +451,13 @@ void WebServer::displayLogin(StringBuffer* out) {
 
 bool WebServer::authorize(HttpSession* session) {
 
-	ManagedReference<Account*> account = loginServer->getAccountManager()->validateAccountCredentials(NULL,
+	ManagedReference<Account*> account = validateAccountCredentials(NULL,
 			session->getUserName(), session->getPassword());
 
 	/// Remove Password
 	session->setPassword("");
 
 	if(account == NULL) {
-		info("Non-existent account: " + session->getUserName());
 		return false;
 	}
 
@@ -471,19 +468,52 @@ bool WebServer::authorize(HttpSession* session) {
 		return false;
 	}
 
-	WebCredentials* credentials = authorizedUsers.get(session->getUserName());
-
-	String address = ipLongToString((long)session->getSessionIp());
-
-	if(credentials->contains(address)) {
+//	WebCredentials* credentials = authorizedUsers.get(session->getUserName());
+//
+//	String address = ipLongToString((long)session->getSessionIp());
+//
+//	if(credentials->contains(address)) {
 		session->setAuthenticated(true);
-		info("Successful Login: " + session->getUserName() + " from " + address);
+		info("Successful Login: " + session->getUserName());
 		return true;
+//	}
+//
+//	info("Failed Login: " + session->getUserName());
+//
+//	return false;
+}
+
+ManagedReference<Account*> WebServer::validateAccountCredentials(LoginClient* client, const String& username, const String& password) {
+
+
+	ManagedReference<Account*> account = zoneServer->getPlayerManager()->getAccount(username);
+
+	if(account == NULL)
+		return NULL;
+
+	StringBuffer query;
+	query << "SELECT a.password, a.salt FROM accounts a WHERE a.username = '" << username << " 'LIMIT 1;";
+
+	ResultSet* result = ServerDatabase::instance()->executeQuery(query);
+
+	String dbPassword;
+	String dbSalt;
+
+	if (result->next()) {
+		dbPassword = result->getString(0);
+		dbSalt = result->getString(1);
+	} else {
+		return NULL;
 	}
 
-	info("Failed Login: " + session->getUserName());
+	String inputtedPassword = Crypto::SHA256Hash(configManager->getDBSecret() + password + dbSalt);
 
-	return false;
+	if(inputtedPassword == dbPassword) {
+		return account;
+	}
+
+	error("Invalid Password");
+	return NULL;
 }
 
 bool WebServer::isLocalHost(String address) {

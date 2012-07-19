@@ -30,11 +30,12 @@ disciple_of_lord_nyax = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 4000000},
+				{group = "junk", chance = 7000000},
 				{group = "pistols", chance = 1000000},
-				{group = "rifles", chance = 1000000}
+				{group = "rifles", chance = 1000000},
+                {group = "carbines", chance = 1000000}
 			},
-			lootChance = 4000000
+			lootChance = 3000000
 		}
 	},
 	weapons = {"ranged_weapons"},

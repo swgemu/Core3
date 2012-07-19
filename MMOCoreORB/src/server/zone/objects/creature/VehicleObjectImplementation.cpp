@@ -163,11 +163,13 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
 
 	if (linkedCreature != NULL) {
+		linkedCreature->sendSystemMessage("@pet/pet_menu:veh_disabled");
 		try {
 			if (attacker != _this.get()) {
 				Locker clocker(linkedCreature, attacker);
 
 				linkedCreature->executeObjectControllerAction(String("dismount").hashCode());
+
 			} else {
 				Locker locker(linkedCreature);
 

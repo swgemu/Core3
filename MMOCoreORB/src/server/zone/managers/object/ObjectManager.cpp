@@ -22,11 +22,15 @@
 #include "ObjectVersionUpdateManager.h"
 #include "server/ServerCore.h"
 #include "server/zone/objects/scene/SceneObjectType.h"
+#include "DeleteCharactersTask.h"
+#include "server/conf/ConfigManager.h"
 
 using namespace engine::db;
 
 ObjectManager::ObjectManager() : DOBObjectManager() {
 	server = NULL;
+
+	deleteCharactersTask = new DeleteCharactersTask();
 
 	databaseManager = ObjectDatabaseManager::instance();
 	databaseManager->loadDatabases(ServerCore::truncateDatabases());
@@ -94,6 +98,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<CreatureObject>(SceneObjectType::PLAYERCREATURE);
 
 	objectFactory.registerObject<IntangibleObject>(SceneObjectType::INTANGIBLE);
+	objectFactory.registerObject<IntangibleObject>(SceneObjectType::DATA2);
 
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::ARMOR);
 	objectFactory.registerObject<ArmorObject>(SceneObjectType::BODYARMOR); //chest plates
@@ -173,6 +178,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<HarvesterObject>(SceneObjectType::HARVESTER);
 	objectFactory.registerObject<FactoryObject>(SceneObjectType::FACTORY);
 	objectFactory.registerObject<GeneratorObject>(SceneObjectType::GENERATOR);
+	objectFactory.registerObject<InstallationObject>(SceneObjectType::TURRET);
 
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::WEAPON);
 	objectFactory.registerObject<WeaponObject>(SceneObjectType::MELEEWEAPON);
@@ -199,7 +205,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<StartingLocationTerminal>(SceneObjectType::NEWBIETUTORIALTERMINAL);
 	objectFactory.registerObject<CharacterBuilderTerminal>(SceneObjectType::CHARACTERBUILDERTERMINAL);
 	objectFactory.registerObject<Terminal>(SceneObjectType::PLAYERTERMINALSTRUCTURE);
-	objectFactory.registerObject<ElevatorTerminal>(SceneObjectType::ELEVATORTERMINAL);
 	objectFactory.registerObject<TicketCollector>(SceneObjectType::TICKETCOLLECTOR);
 	objectFactory.registerObject<TicketObject>(SceneObjectType::TRAVELTICKET);
 	objectFactory.registerObject<TravelTerminal>(SceneObjectType::TRAVELTERMINAL);
@@ -943,5 +948,12 @@ void ObjectManager::onCommitData() {
 		} catch (Exception& e) {
 			System::out << e.getMessage();
 		}
+	}
+
+	//Spawn the delete characters task.
+	if (!deleteCharactersTask->isScheduled()) {
+		deleteCharactersTask->updateDeletedCharacters();
+		int mins = ConfigManager::instance()->getPurgeDeletedCharacters();
+		deleteCharactersTask->schedule(mins * 60 * 1000);
 	}
 }

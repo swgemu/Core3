@@ -5,6 +5,9 @@
  *      Author: victor
  */
 
+#ifndef LUABUILDINGOBJECT_H_
+#define LUABUILDINGOBJECT_H_
+
 #include "engine/engine.h"
 
 #include "server/zone/objects/scene/LuaSceneObject.h"
@@ -29,6 +32,8 @@ namespace building {
 		// Methods we will need to use
 		int getCell(lua_State* L);
 		int grantPermission(lua_State* L);
+		int broadcastSpecificCellPermissions(lua_State* L);
+
 	private:
 		// The pointer to the 'real object' defined in object.cc
 		Reference<BuildingObject*> realObject;
@@ -40,3 +45,5 @@ namespace building {
 }
 
 using namespace server::zone::objects::building;
+
+#endif /*LUABUILDINGOBJECT_H_*/

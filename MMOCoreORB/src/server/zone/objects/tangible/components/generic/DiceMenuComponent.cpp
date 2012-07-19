@@ -56,6 +56,9 @@ int DiceMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	if (!sceneObject->isDiceObject())
 		return 0;
 
+	if (!sceneObject->isASubChildOf(player))
+		return 0;
+
 	TangibleObject* dice = cast<TangibleObject*>(sceneObject);
 	if (dice == NULL)
 		return 0;

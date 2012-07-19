@@ -16,6 +16,7 @@
 #include "server/zone/objects/tangible/components/vendor/VendorContainerComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorMenuComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
 #include "server/zone/objects/player/components/PlayerZoneComponent.h"
 #include "server/zone/objects/building/components/ShuttleZoneComponent.h"
 #include "server/zone/objects/player/components/PlayerObjectMenuComponent.h"
@@ -47,6 +48,9 @@
 #include "server/zone/objects/installation/components/FactoryObjectMenuComponent.h"
 #include "server/zone/ZoneContainerComponent.h"
 #include "server/zone/objects/structure/components/StructureContainerComponent.h"
+#include "server/zone/objects/tangible/components/ElevatorMenuComponent.h"
+#include "server/zone/objects/tangible/components/ElevatorUpMenuComponent.h"
+#include "server/zone/objects/tangible/components/ElevatorDownMenuComponent.h"
 #include "server/zone/objects/region/components/CityManagementMenuComponent.h"
 #include "server/zone/objects/region/components/CityVotingMenuComponent.h"
 #include "server/zone/objects/scene/components/AiInterfaceComponent.h"
@@ -126,6 +130,7 @@ ComponentManager::ComponentManager() {
 	components.put("VendorContainerComponent", new VendorContainerComponent());
 	components.put("VendorMenuComponent", new VendorMenuComponent());
 	dataObjectFactory.registerObject<VendorDataComponent>("VendorDataComponent");
+	dataObjectFactory.registerObject<AuctionTerminalDataComponent>("AuctionTerminalDataComponent");
 
 	components.put("CityManagementMenuComponent", new CityManagementMenuComponent());
 	components.put("CityVotingMenuComponent", new CityVotingMenuComponent());
@@ -171,5 +176,9 @@ ComponentManager::ComponentManager() {
 	components.put("SpawnStateComponent", new SpawnStateComponent());
 	components.put("StandingStateComponent", new StandingStateComponent());
 	components.put("WanderingStateComponent", new WanderingStateComponent());
+
+	components.put("ElevatorMenuComponent", new ElevatorMenuComponent());
+	components.put("ElevatorUpMenuComponent", new ElevatorUpMenuComponent());
+	components.put("ElevatorDownMenuComponent", new ElevatorDownMenuComponent());
 
 }

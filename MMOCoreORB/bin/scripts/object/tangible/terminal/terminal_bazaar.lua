@@ -42,6 +42,9 @@
 
 
 object_tangible_terminal_terminal_bazaar = object_tangible_terminal_shared_terminal_bazaar:new {
+	
+	dataObjectComponent = "AuctionTerminalDataComponent",	
+
 	planetMapCategory = "terminal",
 	planetMapSubCategory = "terminal_bazaar"
 }

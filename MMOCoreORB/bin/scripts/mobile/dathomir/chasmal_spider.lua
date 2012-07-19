@@ -26,7 +26,7 @@ chasmal_spider = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/gaping_spider.iff"},
+	templates = {"object/mobile/gaping_spider_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

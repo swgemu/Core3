@@ -25,7 +25,7 @@ enraged_tybis = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/tybis.iff"},
+	templates = {"object/mobile/tybis_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	attacks = {}

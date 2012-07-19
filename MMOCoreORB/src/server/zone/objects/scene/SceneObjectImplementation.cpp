@@ -82,7 +82,6 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/objects/tangible/terminal/elevator/ElevatorTerminal.h"
 #include "server/zone/templates/ChildObject.h"
 #include "server/zone/objects/tangible/terminal/Terminal.h"
 #include "server/zone/objects/scene/components/ZoneComponent.h"
@@ -116,8 +115,10 @@ void SceneObjectImplementation::initializeTransientMembers() {
 		objectMenuComponent = cast<ObjectMenuComponent*>(templateObject->getObjectMenuComponent());
 	}
 
-	if(dataObjectComponent != NULL)
+	if(dataObjectComponent != NULL) {
+		dataObjectComponent->setParent(_this.get());
 		dataObjectComponent->initializeTransientMembers();
+	}
 
 	movementCounter = 0;
 
@@ -285,6 +286,51 @@ void SceneObjectImplementation::updateToDatabaseAllObjects(bool startTask) {
 	 */
 
 	//info("saved in " + String::valueOf(start.miliDifference()) + " ms");
+}
+
+void SceneObjectImplementation::destroyPlayerCreatureFromDatabase(bool destroyContainedObjects) {
+	if (!isPlayerCreature())
+		return;
+
+	if(dataObjectComponent != NULL) {
+		dataObjectComponent->notifyObjectDestroyingFromDatabase();
+	}
+
+	ZoneServer* server = getZoneServer();
+
+	server->destroyObjectFromDatabase(getObjectID());
+
+	_this.get()->setPersistent(0);
+
+	if (!destroyContainedObjects)
+		return;
+
+	SortedVector<ManagedReference<SceneObject*> > destroyedObjects;
+	destroyedObjects.setNoDuplicateInsertPlan();
+
+	for (int i = 0; i < getSlottedObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> object = getSlottedObject(i);
+
+		if (destroyedObjects.put(object) != -1)
+			object->destroyObjectFromDatabase(true);
+	}
+
+	for (int j = 0; j < getContainerObjectsSize(); ++j) {
+		ManagedReference<SceneObject*> object = getContainerObject(j);
+
+		if (destroyedObjects.put(object) != -1)
+			object->destroyObjectFromDatabase(true);
+	}
+
+	//Remove all child objects from database
+	for (int i = 0; i < childObjects.size(); ++i) {
+		ManagedReference<SceneObject*> child = childObjects.get(i);
+
+		if (child == NULL)
+			continue;
+
+		child->destroyObjectFromDatabase(true);
+	}
 }
 
 void SceneObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
@@ -552,7 +598,7 @@ void SceneObjectImplementation::sendAttributeListTo(CreatureObject* object) {
 
 void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, SceneObject* selfObject) {
 	if (parent != NULL) {
-		ManagedReference<SceneObject*> grandParent = getRootParent();
+		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParentUnsafe());
 
 		if (grandParent != NULL) {
 			grandParent->broadcastObjectPrivate(object, selfObject);
@@ -622,7 +668,7 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 
 void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, SceneObject* selfObject) {
 	if (parent != NULL) {
-		ManagedReference<SceneObject*> grandParent = getRootParent();
+		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParentUnsafe());
 
 		if (grandParent != NULL) {
 			grandParent->broadcastDestroyPrivate(object, selfObject);
@@ -691,7 +737,7 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendS
 
 void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, SceneObject* selfObject, bool lockZone) {
 	if (parent != NULL) {
-		ManagedReference<SceneObject*> grandParent = getRootParent();
+		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParentUnsafe());
 
 		if (grandParent != NULL) {
 			grandParent->broadcastMessagePrivate(message, selfObject, lockZone);
@@ -808,7 +854,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 
 void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* messages, SceneObject* selfObject) {
 	if (parent != NULL) {
-		ManagedReference<SceneObject*> grandParent = getRootParent();
+		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParentUnsafe());
 
 		if (grandParent != NULL) {
 			grandParent->broadcastMessagesPrivate(messages, selfObject);

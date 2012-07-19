@@ -31,9 +31,6 @@ public:
 		box->setPromptTitle("Player Info"); //Register City
 		//box->setPromptText("@city/city:register_d");
 
-		StringBuffer msg;
-		msg << "SkillMods:\n";
-
 		SkillModList* skillModList = targetObject->getSkillModList();
 
 		StringBuffer promptText;
@@ -52,6 +49,8 @@ public:
 			totalSkillPointsWasted += skill->getSkillPointsRequired();
 		}
 
+		promptText << "Level: " << targetObject->getLevel() << endl;
+
 		promptText << "totalSkillPointsWasted = " << totalSkillPointsWasted << " skillPoints var:" << ghost->getSkillPoints() << endl;
 
 		promptText << "Ability list:" << endl;
@@ -67,7 +66,7 @@ public:
 			Vector<byte>* holoProfessions = ghost->getHologrindProfessions();
 
 			promptText << endl;
-			promptText << "Hologrind professions:";
+			promptText << "Hologrind professions:\n";
 
 			for (int i = 0; i < holoProfessions->size(); ++i) {
 				byte prof = holoProfessions->get(i);

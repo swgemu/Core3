@@ -611,6 +611,9 @@ void DotPackImplementation::fillAttributeList(AttributeListMessage* msg, Creatur
 
 int DotPackImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		if 
+	if (!isASubChildOf(player))	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			return 0;
+	return 0;
+	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		if 
 	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  			return 1;
 	return 1;
 	// server/zone/objects/tangible/pharmaceutical/DotPack.idl():  		}

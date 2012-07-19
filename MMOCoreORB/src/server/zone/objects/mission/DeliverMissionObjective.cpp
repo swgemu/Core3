@@ -24,7 +24,7 @@
  *	DeliverMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_GETITEM__,RPC_GETOBJECTIVESTATUS__,RPC_ACTIVATE__,RPC_ACTIVATEWITHRESULT__,RPC_ABORT__,RPC_COMPLETE__,RPC_DESPAWNNPCS__,RPC_UPDATEMISSIONSTATUS__CREATUREOBJECT_,RPC_UPDATEMISSIONTARGET__CREATUREOBJECT_,RPC_GETTARGETSPAWNPOINT__,RPC_GETDESTINATIONSPAWNPOINT__};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_GETITEM__,RPC_GETOBJECTIVESTATUS__,RPC_ACTIVATE__,RPC_DEACTIVATE__,RPC_ACTIVATEWITHRESULT__,RPC_ABORT__,RPC_COMPLETE__,RPC_DESPAWNNPCS__,RPC_UPDATEMISSIONSTATUS__CREATUREOBJECT_,RPC_UPDATEMISSIONTARGET__CREATUREOBJECT_,RPC_GETTARGETSPAWNPOINT__,RPC_GETDESTINATIONSPAWNPOINT__};
 
 DeliverMissionObjective::DeliverMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	DeliverMissionObjectiveImplementation* _implementation = new DeliverMissionObjectiveImplementation(mission);
@@ -92,6 +92,19 @@ void DeliverMissionObjective::activate() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->activate();
+}
+
+void DeliverMissionObjective::deactivate() {
+	DeliverMissionObjectiveImplementation* _implementation = static_cast<DeliverMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DEACTIVATE__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->deactivate();
 }
 
 bool DeliverMissionObjective::activateWithResult() {
@@ -303,16 +316,6 @@ bool DeliverMissionObjectiveImplementation::readObjectMember(ObjectInputStream* 
 	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "DeliverMissionObjective.target") {
-		TypeInfo<ManagedReference<AiAgent* > >::parseFromBinaryStream(&target, stream);
-		return true;
-	}
-
-	if (_name == "DeliverMissionObjective.destination") {
-		TypeInfo<ManagedReference<AiAgent* > >::parseFromBinaryStream(&destination, stream);
-		return true;
-	}
-
 	if (_name == "DeliverMissionObjective.item") {
 		TypeInfo<ManagedReference<TangibleObject* > >::parseFromBinaryStream(&item, stream);
 		return true;
@@ -350,22 +353,6 @@ int DeliverMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	String _name;
 	int _offset;
 	uint32 _totalSize;
-	_name = "DeliverMissionObjective.target";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<ManagedReference<AiAgent* > >::toBinaryStream(&target, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "DeliverMissionObjective.destination";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<ManagedReference<AiAgent* > >::toBinaryStream(&destination, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
 	_name = "DeliverMissionObjective.item";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -399,7 +386,7 @@ int DeliverMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 6;
+	return _count + 4;
 }
 
 DeliverMissionObjectiveImplementation::DeliverMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {
@@ -480,6 +467,11 @@ void DeliverMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMeth
 			activate();
 		}
 		break;
+	case RPC_DEACTIVATE__:
+		{
+			deactivate();
+		}
+		break;
 	case RPC_ACTIVATEWITHRESULT__:
 		{
 			resp->insertBoolean(activateWithResult());
@@ -543,6 +535,10 @@ int DeliverMissionObjectiveAdapter::getObjectiveStatus() {
 
 void DeliverMissionObjectiveAdapter::activate() {
 	(static_cast<DeliverMissionObjective*>(stub))->activate();
+}
+
+void DeliverMissionObjectiveAdapter::deactivate() {
+	(static_cast<DeliverMissionObjective*>(stub))->deactivate();
 }
 
 bool DeliverMissionObjectiveAdapter::activateWithResult() {

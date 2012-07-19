@@ -258,6 +258,10 @@ bool LootManagerImplementation::createLoot(SceneObject* container, AiAgent* crea
 	if (lootCollection == NULL)
 		return false;
 
+	return createLootFromCollection(container, lootCollection, creature->getLevel());
+}
+
+bool LootManagerImplementation::createLootFromCollection(SceneObject* container, LootGroupCollection* lootCollection, int level) {
 	for (int i = 0; i < lootCollection->count(); ++i) {
 		LootGroupCollectionEntry* entry = lootCollection->get(i);
 		int lootChance = entry->getLootChance();
@@ -284,7 +288,7 @@ bool LootManagerImplementation::createLoot(SceneObject* container, AiAgent* crea
 			if (tempChance < roll)
 				continue;
 
-			createLoot(container, entry->getLootGroupName(), creature->getLevel());
+			createLoot(container, entry->getLootGroupName(), level);
 
 			break;
 		}

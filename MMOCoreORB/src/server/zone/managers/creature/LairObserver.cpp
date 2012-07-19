@@ -14,7 +14,7 @@
  *	LairObserverStub
  */
 
-enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_BOOL_,RPC_HEALLAIR__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_CHECKFORHEAL__TANGIBLEOBJECT_TANGIBLEOBJECT_BOOL_,RPC_SETDIFFICULTY__INT_INT_,RPC_ISLAIROBSERVER__};
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_BOOL_,RPC_HEALLAIR__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_CHECKFORHEAL__TANGIBLEOBJECT_TANGIBLEOBJECT_BOOL_,RPC_SETDIFFICULTY__INT_,RPC_ISLAIROBSERVER__};
 
 LairObserver::LairObserver() : Observer(DummyConstructorParameter::instance()) {
 	LairObserverImplementation* _implementation = new LairObserverImplementation();
@@ -120,19 +120,18 @@ void LairObserver::setLairTemplate(LairTemplate* tmpl) {
 		_implementation->setLairTemplate(tmpl);
 }
 
-void LairObserver::setDifficulty(int min, int max) {
+void LairObserver::setDifficulty(int diff) {
 	LairObserverImplementation* _implementation = static_cast<LairObserverImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETDIFFICULTY__INT_INT_);
-		method.addSignedIntParameter(min);
-		method.addSignedIntParameter(max);
+		DistributedMethod method(this, RPC_SETDIFFICULTY__INT_);
+		method.addSignedIntParameter(diff);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setDifficulty(min, max);
+		_implementation->setDifficulty(diff);
 }
 
 bool LairObserver::isLairObserver() {
@@ -258,13 +257,8 @@ bool LairObserverImplementation::readObjectMember(ObjectInputStream* stream, con
 		return true;
 	}
 
-	if (_name == "LairObserver.minDifficulty") {
-		TypeInfo<int >::parseFromBinaryStream(&minDifficulty, stream);
-		return true;
-	}
-
-	if (_name == "LairObserver.maxDifficulty") {
-		TypeInfo<int >::parseFromBinaryStream(&maxDifficulty, stream);
+	if (_name == "LairObserver.difficulty") {
+		TypeInfo<int >::parseFromBinaryStream(&difficulty, stream);
 		return true;
 	}
 
@@ -293,34 +287,24 @@ int LairObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LairObserver.minDifficulty";
+	_name = "LairObserver.difficulty";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<int >::toBinaryStream(&minDifficulty, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "LairObserver.maxDifficulty";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<int >::toBinaryStream(&maxDifficulty, stream);
+	TypeInfo<int >::toBinaryStream(&difficulty, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 3;
+	return _count + 2;
 }
 
 LairObserverImplementation::LairObserverImplementation() : ObserverImplementation() {
 	_initializeImplementation();
 	// server/zone/managers/creature/LairObserver.idl():  		Logger.setLoggingName("LairObserver");
 	Logger::setLoggingName("LairObserver");
-	// server/zone/managers/creature/LairObserver.idl():  		minDifficulty = 0;
-	minDifficulty = 0;
-	// server/zone/managers/creature/LairObserver.idl():  		maxDifficulty = 500;
-	maxDifficulty = 500;
+	// server/zone/managers/creature/LairObserver.idl():  		difficulty = 50;
+	difficulty = 50;
 	// server/zone/managers/creature/LairObserver.idl():  		lairTemplate = null;
 	lairTemplate = NULL;
 	// server/zone/managers/creature/LairObserver.idl():  		healLairEvent = null;
@@ -332,11 +316,9 @@ void LairObserverImplementation::setLairTemplate(LairTemplate* tmpl) {
 	lairTemplate = tmpl;
 }
 
-void LairObserverImplementation::setDifficulty(int min, int max) {
-	// server/zone/managers/creature/LairObserver.idl():  		minDifficulty = min;
-	minDifficulty = min;
-	// server/zone/managers/creature/LairObserver.idl():  		maxDifficulty = max;
-	maxDifficulty = max;
+void LairObserverImplementation::setDifficulty(int diff) {
+	// server/zone/managers/creature/LairObserver.idl():  		difficulty = diff;
+	difficulty = diff;
 }
 
 bool LairObserverImplementation::isLairObserver() {
@@ -384,9 +366,9 @@ void LairObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			checkForHeal(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		}
 		break;
-	case RPC_SETDIFFICULTY__INT_INT_:
+	case RPC_SETDIFFICULTY__INT_:
 		{
-			setDifficulty(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+			setDifficulty(inv->getSignedIntParameter());
 		}
 		break;
 	case RPC_ISLAIROBSERVER__:
@@ -419,8 +401,8 @@ void LairObserverAdapter::checkForHeal(TangibleObject* lair, TangibleObject* att
 	(static_cast<LairObserver*>(stub))->checkForHeal(lair, attacker, forceNewUpdate);
 }
 
-void LairObserverAdapter::setDifficulty(int min, int max) {
-	(static_cast<LairObserver*>(stub))->setDifficulty(min, max);
+void LairObserverAdapter::setDifficulty(int diff) {
+	(static_cast<LairObserver*>(stub))->setDifficulty(diff);
 }
 
 bool LairObserverAdapter::isLairObserver() {

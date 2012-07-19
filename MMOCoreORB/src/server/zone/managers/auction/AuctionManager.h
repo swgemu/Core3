@@ -117,9 +117,13 @@ using namespace server::zone::objects::scene;
 
 #include "server/zone/packets/auction/AuctionQueryHeadersResponseMessage.h"
 
+#include "server/zone/managers/auction/TerminalListVector.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/core/ManagedService.h"
+
+#include "engine/core/Task.h"
 
 #include "system/util/VectorMap.h"
 
@@ -132,33 +136,35 @@ class AuctionManager : public ManagedService {
 public:
 	static const int MAXBAZAARPRICE = 20000;
 
-	static const int MAXSALES = 20;
+	static const int MAXSALES = 25;
 
 	static const int SALESFEE = 20;
 
-	static const int CHECKEVERY = 2;
+	static const int CHECKEVERY = 60;
 
 	static const int MAXVENDORPRICE = 99999999;
 
 	static const int ITEMSPERPAGE = 100;
 
+	static const int EXPIREPERIOD = 2592000;
+
 	AuctionManager(ZoneServer* server);
 
 	void initialize();
 
-	void addSaleItem(CreatureObject* player, unsigned long long objectid, TangibleObject* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
+	void addSaleItem(CreatureObject* player, unsigned long long objectid, SceneObject* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
 
-	AuctionItem* createVendorItem(CreatureObject* player, SceneObject* objectToSell, TangibleObject* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
+	AuctionItem* createVendorItem(CreatureObject* player, SceneObject* objectToSell, SceneObject* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
 
-	int checkSaleItem(CreatureObject* player, SceneObject* object, TangibleObject* vendor, int price, bool premium);
+	int checkSaleItem(CreatureObject* player, SceneObject* object, SceneObject* vendor, int price, bool premium);
 
 	void getItemAttributes(CreatureObject* player, unsigned long long objectid);
 
 	void getData(CreatureObject* player, int extent, unsigned long long vendorObjectID, int screen, unsigned int category, int count, int offset);
 
-	void getAuctionData(CreatureObject* player, TangibleObject* vendor, String& search, int screen, unsigned int category, int count, int offset);
+	void getAuctionData(CreatureObject* player, SceneObject* usedVendor, const String& planet, const String& region, SceneObject* vendor, int screen, unsigned int category, int count, int offset);
 
-	int checkRetrieve(CreatureObject* player, unsigned long long objectIdToRetrieve, TangibleObject* vendor);
+	int checkRetrieve(CreatureObject* player, unsigned long long objectIdToRetrieve, SceneObject* vendor);
 
 	void retrieveItem(CreatureObject* player, unsigned long long objectid, unsigned long long vendorID);
 
@@ -172,13 +178,27 @@ public:
 
 	void cancelItem(CreatureObject* player, unsigned long long objectID);
 
-	AuctionQueryHeadersResponseMessage* fillAuctionQueryHeadersResponseMessage(CreatureObject* player, TangibleObject* vendor, SortedVector<ManagedReference<AuctionItem* > >* items, int screen, unsigned int category, int count, int offset);
+	AuctionQueryHeadersResponseMessage* fillAuctionQueryHeadersResponseMessage(CreatureObject* player, SceneObject* vendor, TerminalListVector* terminalList, int screen, unsigned int category, int count, int offset);
 
 	AuctionsMap* getAuctionMap();
 
 	void checkVendorItems();
 
 	void checkAuctions();
+
+	String getVendorUID(SceneObject* vendor);
+
+	void updateVendorUID(SceneObject* vendor, const String& oldUID, const String& newUID);
+
+	void updateVendorSearch(SceneObject* vendor, bool enabled);
+
+	void expireSale(AuctionItem* item);
+
+	void expireBidAuction(AuctionItem* item);
+
+	void expireAuction(AuctionItem* item);
+
+	void deleteExpiredSale(AuctionItem* item);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -210,46 +230,54 @@ protected:
 
 	ManagedReference<ZoneServer* > zoneServer;
 
+	VectorMap<unsigned long long, Task*> auctionEvents;
+
+	VectorMap<ManagedReference<SceneObject* >, String> pendingUIDUpdates;
+
+	VectorMap<ManagedReference<SceneObject* >, String> pendingOldUIDUpdates;
+
 public:
 	static const int MAXBAZAARPRICE = 20000;
 
-	static const int MAXSALES = 20;
+	static const int MAXSALES = 25;
 
 	static const int SALESFEE = 20;
 
-	static const int CHECKEVERY = 2;
+	static const int CHECKEVERY = 60;
 
 	static const int MAXVENDORPRICE = 99999999;
 
 	static const int ITEMSPERPAGE = 100;
 
+	static const int EXPIREPERIOD = 2592000;
+
+private:
+	int test;
+
+public:
 	AuctionManagerImplementation(ZoneServer* server);
 
 	AuctionManagerImplementation(DummyConstructorParameter* param);
 
 	void initialize();
 
-	void addSaleItem(CreatureObject* player, unsigned long long objectid, TangibleObject* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
+	void addSaleItem(CreatureObject* player, unsigned long long objectid, SceneObject* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
 
-private:
-	String getVendorUID(SceneObject* vendor);
+	AuctionItem* createVendorItem(CreatureObject* player, SceneObject* objectToSell, SceneObject* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
 
-public:
-	AuctionItem* createVendorItem(CreatureObject* player, SceneObject* objectToSell, TangibleObject* vendor, const UnicodeString& description, int price, unsigned int duration, bool auction, bool premium);
-
-	int checkSaleItem(CreatureObject* player, SceneObject* object, TangibleObject* vendor, int price, bool premium);
+	int checkSaleItem(CreatureObject* player, SceneObject* object, SceneObject* vendor, int price, bool premium);
 
 	void getItemAttributes(CreatureObject* player, unsigned long long objectid);
 
 	void getData(CreatureObject* player, int extent, unsigned long long vendorObjectID, int screen, unsigned int category, int count, int offset);
 
-	void getAuctionData(CreatureObject* player, TangibleObject* vendor, String& search, int screen, unsigned int category, int count, int offset);
+	void getAuctionData(CreatureObject* player, SceneObject* usedVendor, const String& planet, const String& region, SceneObject* vendor, int screen, unsigned int category, int count, int offset);
 
 private:
 	void refundAuction(AuctionItem* item);
 
 public:
-	int checkRetrieve(CreatureObject* player, unsigned long long objectIdToRetrieve, TangibleObject* vendor);
+	int checkRetrieve(CreatureObject* player, unsigned long long objectIdToRetrieve, SceneObject* vendor);
 
 	void retrieveItem(CreatureObject* player, unsigned long long objectid, unsigned long long vendorID);
 
@@ -263,13 +291,31 @@ public:
 
 	void cancelItem(CreatureObject* player, unsigned long long objectID);
 
-	AuctionQueryHeadersResponseMessage* fillAuctionQueryHeadersResponseMessage(CreatureObject* player, TangibleObject* vendor, SortedVector<ManagedReference<AuctionItem* > >* items, int screen, unsigned int category, int count, int offset);
+	AuctionQueryHeadersResponseMessage* fillAuctionQueryHeadersResponseMessage(CreatureObject* player, SceneObject* vendor, TerminalListVector* terminalList, int screen, unsigned int category, int count, int offset);
 
 	AuctionsMap* getAuctionMap();
 
 	void checkVendorItems();
 
 	void checkAuctions();
+
+private:
+	void doAuctionMaint(TerminalListVector* items);
+
+public:
+	String getVendorUID(SceneObject* vendor);
+
+	void updateVendorUID(SceneObject* vendor, const String& oldUID, const String& newUID);
+
+	void updateVendorSearch(SceneObject* vendor, bool enabled);
+
+	void expireSale(AuctionItem* item);
+
+	void expireBidAuction(AuctionItem* item);
+
+	void expireAuction(AuctionItem* item);
+
+	void deleteExpiredSale(AuctionItem* item);
 
 	WeakReference<AuctionManager*> _this;
 
@@ -337,6 +383,20 @@ public:
 	void checkVendorItems();
 
 	void checkAuctions();
+
+	String getVendorUID(SceneObject* vendor);
+
+	void updateVendorUID(SceneObject* vendor, const String& oldUID, const String& newUID);
+
+	void updateVendorSearch(SceneObject* vendor, bool enabled);
+
+	void expireSale(AuctionItem* item);
+
+	void expireBidAuction(AuctionItem* item);
+
+	void expireAuction(AuctionItem* item);
+
+	void deleteExpiredSale(AuctionItem* item);
 
 };
 

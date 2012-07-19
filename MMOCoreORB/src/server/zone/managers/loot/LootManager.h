@@ -107,6 +107,8 @@ using namespace server::zone::objects::tangible;
 
 #include "server/zone/managers/loot/LootGroupMap.h"
 
+#include "server/zone/managers/loot/lootgroup/LootGroupCollection.h"
+
 #include "server/zone/templates/LootItemTemplate.h"
 
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
@@ -135,6 +137,8 @@ public:
 	int calculateLootCredits(int level);
 
 	bool createLoot(SceneObject* container, AiAgent* creature);
+
+	bool createLootFromCollection(SceneObject* container, LootGroupCollection* collection, int level);
 
 	bool createLoot(SceneObject* container, const String& lootGroup, int level = -1);
 
@@ -211,6 +215,8 @@ public:
 	int calculateLootCredits(int level);
 
 	bool createLoot(SceneObject* container, AiAgent* creature);
+
+	bool createLootFromCollection(SceneObject* container, LootGroupCollection* collection, int level);
 
 	bool createLoot(SceneObject* container, const String& lootGroup, int level = -1);
 

@@ -43,18 +43,23 @@
 
 Melee2hArea3Command = {
         name = "melee2harea3",
-	damageMultiplier = 3.5,
-	speedMultiplier = 2.6,
+	damageMultiplier = 4.0,
+	speedMultiplier = 2.5,
+	healthCostMultiplier = 1.5,
+	actionCostMultiplier = 2.5,
+	mindCostMultiplier = 1.5,
+        accuracyBonus = 10,
 
 	stateEffects = {
 	  StateEffect( 
-		BLIND_EFFECT, 
+               --documentation clearly defines dizzy instead of blind
+		DIZZY_EFFECT, 
 		{}, 
-		{ "blind_defense", "resistance_states" }, 
+		{ "dizzy_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		20, 
+		30, 
 		100, 
-		10 
+		30
 	  ),
 	  StateEffect( 
 		POSTUREDOWN_EFFECT, 

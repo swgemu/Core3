@@ -145,6 +145,11 @@ class BuildingObject extends StructureObject {
 	public native void broadcastCellPermissions();
 	
 	/**
+	 * Updates a specific cell's permissions to the players in the area
+	 */
+	public native void broadcastCellPermissions(unsigned long objectid);
+	
+	/**
 	 * Checks to see if the player with the name is allowed entry.
 	 * @param firstName The name of the player.
 	 * @return Returns true if allowed to enter.
@@ -314,6 +319,10 @@ class BuildingObject extends StructureObject {
 	
 	public boolean hasAccessFee() {
 		return accessFee > 0;
+	}
+	
+	public int getAccessFee() {
+		return accessFee;
 	}
 	
 	public native boolean canChangeAccessFee();

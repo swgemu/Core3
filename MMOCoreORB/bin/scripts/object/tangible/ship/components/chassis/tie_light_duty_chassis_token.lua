@@ -43,6 +43,11 @@
 
 object_tangible_ship_components_chassis_tie_light_duty_chassis_token = object_tangible_ship_components_chassis_shared_tie_light_duty_chassis_token:new {
 
+    templateType = SHIPCHASSIS,
+	chassisDeed = "object/tangible/ship/crafted/chassis/tie_light_duty_deed.iff",
+	dealerFee = 1000,
+	certRequired = "",
+	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},
 	experimentalProperties = {"XX", "XX", "HR", "OQ", "SR", "UT", "MA", "OQ", "SR", "UT"},

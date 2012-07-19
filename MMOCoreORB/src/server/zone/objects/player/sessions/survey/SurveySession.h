@@ -97,6 +97,38 @@ class ResourceManager;
 
 using namespace server::zone::managers::resource;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace resource {
+
+class ResourceSpawn;
+
+} // namespace resource
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::resource;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace waypoint {
+
+class WaypointObject;
+
+} // namespace waypoint
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::waypoint;
+
+#include "server/zone/managers/resource/resourcespawner/ResourceSpawner.h"
+
+#include "server/zone/packets/resource/SurveyMessage.h"
+
 #include "server/zone/objects/scene/SessionFacadeType.h"
 
 #include "server/zone/templates/customization/CustomizationVariable.h"
@@ -148,6 +180,12 @@ public:
 
 	void clearRichSampleLocation();
 
+	void rescheduleSurvey(SurveyMessage* surveyMessage, WaypointObject* waypoint, float maxDensity, ResourceSpawn* resourceSpawn);
+
+	void rescheduleSample();
+
+	void rescheduleSampleResults(ResourceSpawner* resourceSpawner, float density, const String& resname);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -193,6 +231,12 @@ protected:
 	bool doGamble;
 
 	String lastResourceSampleName;
+
+	Reference<Task* > surveyTask;
+
+	Reference<Task* > sampleTask;
+
+	Reference<Task* > sampleResultsTask;
 
 public:
 	SurveySessionImplementation(CreatureObject* creature);
@@ -242,6 +286,12 @@ public:
 	Coordinate* getRichSampleLocation();
 
 	void clearRichSampleLocation();
+
+	void rescheduleSurvey(SurveyMessage* surveyMessage, WaypointObject* waypoint, float maxDensity, ResourceSpawn* resourceSpawn);
+
+	void rescheduleSample();
+
+	void rescheduleSampleResults(ResourceSpawner* resourceSpawner, float density, const String& resname);
 
 	WeakReference<SurveySession*> _this;
 

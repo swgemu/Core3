@@ -217,49 +217,17 @@ void EntertainingSessionImplementation::activateAction() {
 
 	Locker locker(entertainer);
 
-	doEntertainerPatronEffects();
-	doPerformanceAction();
-
 	if (!isDancing() && !isPlayingMusic()) {
 		return; // don't tick action if they aren't doing anything
 	}
 
-	ManagedReference<PlayerManager*> playerManager = entertainer->getZoneServer()->getPlayerManager();
-
-	CreatureObject* player = entertainer->isPlayerCreature() ? cast<CreatureObject*>(entertainer.get()) : NULL;
-
-	if (player != NULL) {
-		if (flourishXp > 0) {
-			String xptype;
-
-			if (isDancing())
-				xptype = "dance";
-			else if (isPlayingMusic())
-				xptype = "music";
-
-			if (playerManager != NULL)
-				playerManager->awardExperience(player, xptype, flourishXp, true);
-
-			flourishXp--;
-		}
-
-		if (healingXp > 0) {
-			String healxptype("entertainer_healing");
-
-			if (playerManager != NULL)
-				playerManager->awardExperience(player, healxptype, healingXp, true);
-
-			healingXp = 0;
-		}
-	}
-
-	flourishXp = 0;
-	healingXp = 0;
-	flourishCount = 0;
+	doEntertainerPatronEffects();
+	doPerformanceAction();
+	awardEntertainerExperience();
 
 	startTickTask();
 
-	player->info("EntertainerEvent completed.");
+	entertainer->info("EntertainerEvent completed.");
 }
 
 void EntertainingSessionImplementation::startTickTask() {
@@ -522,10 +490,10 @@ void EntertainingSessionImplementation::addEntertainerFlourishBuff() {
 	// Watchers that are in our group for passive buff
 	VectorMap<ManagedReference<CreatureObject*>, EntertainingData>* patrons = NULL;
 	if (dancing) {
-			patrons = &watchers;
+		patrons = &watchers;
 	}
 	else if (playingMusic) {
-			patrons = &listeners;
+		patrons = &listeners;
 	}
 	if (patrons != NULL) {
 		for (int i = 0; i < patrons->size(); ++i) {
@@ -856,30 +824,30 @@ void EntertainingSessionImplementation::activateEntertainerBuff(CreatureObject* 
 
 		ManagedReference<PerformanceBuff*> oldBuff = NULL;
 		switch (performanceType){
-			case PerformanceType::MUSIC:
-			{
-				uint32 focusBuffCRC = String("performance_enhance_music_focus").hashCode();
-				uint32 willBuffCRC = String("performance_enhance_music_willpower").hashCode();
-				oldBuff = cast<PerformanceBuff*>(creature->getBuff(focusBuffCRC));
-				if (oldBuff != NULL && oldBuff->getBuffStrength() > buffStrength)
-					return;
-				ManagedReference<PerformanceBuff*> focusBuff = new PerformanceBuff(creature, focusBuffCRC, buffStrength, buffDuration * 60, PerformanceBuffType::MUSIC_FOCUS);
-				ManagedReference<PerformanceBuff*> willBuff = new PerformanceBuff(creature, willBuffCRC, buffStrength, buffDuration * 60, PerformanceBuffType::MUSIC_WILLPOWER);
+		case PerformanceType::MUSIC:
+		{
+			uint32 focusBuffCRC = String("performance_enhance_music_focus").hashCode();
+			uint32 willBuffCRC = String("performance_enhance_music_willpower").hashCode();
+			oldBuff = cast<PerformanceBuff*>(creature->getBuff(focusBuffCRC));
+			if (oldBuff != NULL && oldBuff->getBuffStrength() > buffStrength)
+				return;
+			ManagedReference<PerformanceBuff*> focusBuff = new PerformanceBuff(creature, focusBuffCRC, buffStrength, buffDuration * 60, PerformanceBuffType::MUSIC_FOCUS);
+			ManagedReference<PerformanceBuff*> willBuff = new PerformanceBuff(creature, willBuffCRC, buffStrength, buffDuration * 60, PerformanceBuffType::MUSIC_WILLPOWER);
 
-				creature->addBuff(focusBuff);
-				creature->addBuff(willBuff);
-				break;
-			}
-			case PerformanceType::DANCE:
-			{
-				uint32 mindBuffCRC = String("performance_enhance_dance_mind").hashCode();
-				oldBuff = cast<PerformanceBuff*>(creature->getBuff(mindBuffCRC));
-				if (oldBuff != NULL && oldBuff->getBuffStrength() > buffStrength)
-					return;
-				ManagedReference<PerformanceBuff*> mindBuff = new PerformanceBuff(creature, mindBuffCRC, buffStrength, buffDuration * 60, PerformanceBuffType::DANCE_MIND);
-				creature->addBuff(mindBuff);
-				break;
-			}
+			creature->addBuff(focusBuff);
+			creature->addBuff(willBuff);
+			break;
+		}
+		case PerformanceType::DANCE:
+		{
+			uint32 mindBuffCRC = String("performance_enhance_dance_mind").hashCode();
+			oldBuff = cast<PerformanceBuff*>(creature->getBuff(mindBuffCRC));
+			if (oldBuff != NULL && oldBuff->getBuffStrength() > buffStrength)
+				return;
+			ManagedReference<PerformanceBuff*> mindBuff = new PerformanceBuff(creature, mindBuffCRC, buffStrength, buffDuration * 60, PerformanceBuffType::DANCE_MIND);
+			creature->addBuff(mindBuff);
+			break;
+		}
 		}
 
 
@@ -965,3 +933,67 @@ void EntertainingSessionImplementation::increaseEntertainerBuff(CreatureObject* 
 	addEntertainerBuffStrength(patron, performance->getType(), performance->getHealShockWound());
 
 }
+
+void EntertainingSessionImplementation::awardEntertainerExperience() {
+	ManagedReference<CreatureObject*> entertainer = this->entertainer.get();
+	ManagedReference<PlayerManager*> playerManager = entertainer->getZoneServer()->getPlayerManager();
+
+	CreatureObject* player = entertainer->isPlayerCreature() ? cast<CreatureObject*>(entertainer.get()) : NULL;
+
+	if (player != NULL) {
+		if (flourishXp > 0) {
+			String xptype;
+
+			if (isDancing())
+				xptype = "dance";
+			else if (isPlayingMusic())
+				xptype = "music";
+
+			int groupBonusPercent = 0;
+			int groupBonus  = 0;
+
+			if(player->getGroup() != NULL) {
+
+				ManagedReference<GroupObject*> group = player->getGroup();
+				int groupSize = group->getGroupSize();
+
+				for(int i = 0; i < groupSize; ++i) {
+					ManagedReference<CreatureObject*> groupMember = group->getGroupMember(i)->isPlayerCreature() ? cast<CreatureObject*>(group->getGroupMember(i)) : NULL;
+
+					if (groupMember != NULL) {
+						Locker clocker(groupMember, entertainer);
+
+						if (groupMember->isEntertaining() && groupMember->isInRange(entertainer, 40.0f)
+								&& groupMember->hasSkill("social_entertainer_novice")) {
+							++groupBonusPercent;
+						}
+					}
+				}
+
+				groupBonus = ceil(flourishXp * (groupBonusPercent / 100));
+
+			}
+
+			flourishXp += groupBonus;
+
+			if (playerManager != NULL)
+				playerManager->awardExperience(player, xptype, flourishXp, true);
+
+			//flourishXp--;
+			flourishXp = 0;
+		}
+
+		if (healingXp > 0) {
+			String healxptype("entertainer_healing");
+
+			if (playerManager != NULL)
+				playerManager->awardExperience(player, healxptype, healingXp, true);
+
+			healingXp = 0;
+		}
+	}
+
+	healingXp = 0;
+	flourishCount = 0;
+}
+

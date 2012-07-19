@@ -63,6 +63,64 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		ZoneServer* zoneServer = server->getZoneServer();
+
+		SceneObject* targetObj = zoneServer->getObject(target);
+
+		if(targetObj == NULL)
+			return GENERALERROR;
+
+		Locker clocker(targetObj, creature);
+
+		String newName = arguments.toString();
+		String oldName = targetObj->getCustomObjectName().toString();
+
+		if (targetObj->isPlayerCreature()) {
+			CreatureObject* targetCreature = cast<CreatureObject*>(targetObj);
+			ManagedReference<PlayerObject*> targetPlayer = targetCreature->getPlayerObject();
+
+			String oldFirstName = targetCreature->getFirstName();
+			String oldLastName = targetCreature->getLastName();
+
+			targetCreature->setCustomObjectName(newName, true);
+
+			ChatManager* chatManager = zoneServer->getChatManager();
+			chatManager->removePlayer(oldFirstName);
+			chatManager->addPlayer(targetCreature);
+
+			PlayerManager* playerManager = zoneServer->getPlayerManager();
+			playerManager->removePlayer(oldFirstName);
+			playerManager->addPlayer(targetCreature);
+
+
+			for(int i = 0; i < targetPlayer->getTotalOwnedStructureCount(); ++i) {
+				ManagedReference<StructureObject*> structure = targetPlayer->getOwnedStructure(i);
+				structure->revokePermission("ADMIN", oldName);
+				structure->grantPermission("ADMIN", newName);
+			}
+
+			StringBuffer charDirtyQuery;
+			charDirtyQuery
+					<< "UPDATE `characters_dirty` SET `firstname` = '"  << targetCreature->getFirstName()
+					<< "', `surname` = '" << targetCreature->getLastName()
+					<< "' WHERE `character_oid` = '" << targetCreature->getObjectID() << "'";
+
+			ServerDatabase::instance()->executeStatement(charDirtyQuery);
+
+			StringBuffer charQuery;
+			charQuery
+					<< "UPDATE `characters` SET `firstname` = '"  << targetCreature->getFirstName()
+					<< "', `surname` = '" << targetCreature->getLastName()
+					<< "' WHERE `character_oid` = '" << targetCreature->getObjectID() << "'";
+
+			ServerDatabase::instance()->executeStatement(charQuery);
+
+		} else {
+			targetObj->setCustomObjectName(newName, true);
+		}
+
+
+
 		return SUCCESS;
 	}
 

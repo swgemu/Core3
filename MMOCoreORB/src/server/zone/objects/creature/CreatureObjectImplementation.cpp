@@ -498,14 +498,14 @@ void CreatureObjectImplementation::setWeapon(WeaponObject* weao,
 }
 
 void CreatureObjectImplementation::setLevel(int level) {
-	TangibleObjectImplementation::setLevel(level);
-
-	if (this->level == level)
+	if (this->level == level && level >= 0)
 		return;
 
-	CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(
-			_this.get());
-	msg->updateLevel(level);
+	TangibleObjectImplementation::setLevel(level);
+
+	CreatureObjectDeltaMessage6* msg = new CreatureObjectDeltaMessage6(_this.get());
+
+	msg->updateLevel(this->level);
 	msg->close();
 
 	broadcastMessage(msg, true);
@@ -2195,9 +2195,9 @@ void CreatureObjectImplementation::activateHAMRegeneration() {
 	if (mindTick < 1)
 		mindTick = 1;
 
-	healDamage(_this.get(), CreatureAttribute::HEALTH, healthTick);
-	healDamage(_this.get(), CreatureAttribute::ACTION, actionTick);
-	healDamage(_this.get(), CreatureAttribute::MIND, mindTick);
+	healDamage(_this.get(), CreatureAttribute::HEALTH, healthTick, true, false);
+	healDamage(_this.get(), CreatureAttribute::ACTION, actionTick, true, false);
+	healDamage(_this.get(), CreatureAttribute::MIND, mindTick, true, false);
 
 
 	activatePassiveWoundRegeneration();
@@ -2242,7 +2242,7 @@ void CreatureObjectImplementation::activatePassiveWoundRegeneration() {
 	if(healthRegen > 0) {
 		healthWoundHeal += (int)(healthRegen * 0.2);
 		if(healthWoundHeal >= 100) {
-			healWound(_this.get(), CreatureAttribute::HEALTH, 1, true);
+			healWound(_this.get(), CreatureAttribute::HEALTH, 1, true, false);
 			healthWoundHeal -= 100;
 		}
 	}
@@ -2253,7 +2253,7 @@ void CreatureObjectImplementation::activatePassiveWoundRegeneration() {
 	if(actionRegen > 0) {
 		actionWoundHeal += (int)(actionRegen * 0.2);
 		if(actionWoundHeal >= 100) {
-			healWound(_this.get(), CreatureAttribute::ACTION, 1, true);
+			healWound(_this.get(), CreatureAttribute::ACTION, 1, true, false);
 			actionWoundHeal -= 100;
 		}
 	}
@@ -2264,7 +2264,7 @@ void CreatureObjectImplementation::activatePassiveWoundRegeneration() {
 	if(mindRegen > 0) {
 		mindWoundHeal += (int)(mindRegen * 0.2);
 		if(mindWoundHeal >= 100) {
-			healWound(_this.get(), CreatureAttribute::MIND, 1, true);
+			healWound(_this.get(), CreatureAttribute::MIND, 1, true, false);
 			mindWoundHeal -= 100;
 		}
 	}
@@ -2458,13 +2458,13 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 	uint32 targetFactionStatus = targetGhost->getFactionStatus();
 	uint32 currentFactionStatus = ghost->getFactionStatus();
 
-	if (getFaction() != object->getFaction() && !(currentFactionStatus & FactionStatus::ONLEAVE))
+	if (getFaction() != object->getFaction() && !(targetFactionStatus & FactionStatus::ONLEAVE))
 		return false;
 
 	if ((targetFactionStatus & FactionStatus::OVERT) && !(currentFactionStatus & FactionStatus::OVERT))
 		return false;
 
-	if ((targetFactionStatus & FactionStatus::COVERT) && (currentFactionStatus & FactionStatus::ONLEAVE))
+	if (!(targetFactionStatus & FactionStatus::ONLEAVE) && (currentFactionStatus & FactionStatus::ONLEAVE))
 		return false;
 
 	return true;

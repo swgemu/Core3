@@ -220,6 +220,9 @@ void FactoryCrateImplementation::split(int newStackSize) {
 	if (getUseCount() <= newStackSize)
 		return;
 
+	if(newStackSize > getUseCount())
+		newStackSize = getUseCount();
+
 	TangibleObject* prototype = getPrototype();
 
 	if(prototype == NULL || !prototype->isTangibleObject()) {

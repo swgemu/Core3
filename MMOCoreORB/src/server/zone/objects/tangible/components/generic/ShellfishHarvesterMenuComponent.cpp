@@ -29,6 +29,8 @@ void ShellfishHarvesterMenuComponent::fillObjectMenuResponse(SceneObject* sceneO
 }
 
 int ShellfishHarvesterMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+	if (!sceneObject->isASubChildOf(player))
+		return 0;
 
 	if (!sceneObject->isTangibleObject())
 		return 0;

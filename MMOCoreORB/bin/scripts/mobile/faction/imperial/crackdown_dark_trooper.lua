@@ -30,12 +30,15 @@ crackdown_dark_trooper = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 3000000},
-				{group = "holocron_dark", chance = 100000},
-				{group = "rifles", chance = 1000000},
-				{group = "pistols", chance = 1000000},
-				{group = "clothing_attachments", chance = 500000},
-				{group = "armor_attachments", chance = 500000}
+				{group = "color_crystals", chance = 200000},
+				{group = "junk", chance = 6500000},
+				{group = "rifles", chance = 500000},
+				{group = "holocron_dark", chance = 650000},
+				{group = "holocron_light", chance = 650000},
+				{group = "carbines", chance = 500000},
+				{group = "pistols", chance = 500000},
+				{group = "clothing_attachments", chance = 250000},
+				{group = "armor_attachments", chance = 250000}
 			},
 			lootChance = 4000000
 		}

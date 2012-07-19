@@ -45,19 +45,19 @@ ActionShot2Command = {
         name = "actionshot2",
 
 	damageMultiplier = 2.0,
-	speedMultiplier = 1.7,
-	healthCostMultiplier = 2.1,
-	actionCostMultiplier = 1.4,
-	mindCostMultiplier = 0.6,
+	speedMultiplier = 2.0,
+	healthCostMultiplier = 2.0,
+	actionCostMultiplier = 1.25,
+	mindCostMultiplier = 0.5,
 
-	coneAngle = 30,
+	coneAngle = 15,
 	coneAction = true,
 
 	poolsToDamage = ACTION_ATTRIBUTE,
 
 	animationCRC = hashCode("fire_area_medium"),
 
-	combatSpam = "legshot",
+	combatSpam = "sapblast",
 
 	dotEffects = {
 	  DotEffect( 

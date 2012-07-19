@@ -21,12 +21,12 @@ gnarled_rancor = Creature:new {
 	milk = 0,
 	tamingChance = 0.25,
 	ferocity = 10,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/rancor.iff"},
+	templates = {"object/mobile/rancor_hue.iff"},
 	lootGroups = {
 		{
 			groups = {

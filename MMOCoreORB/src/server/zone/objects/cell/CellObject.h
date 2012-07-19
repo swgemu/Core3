@@ -13,6 +13,20 @@
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace creature {
+
+class CreatureObject;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
 
 class Zone;
 
@@ -32,6 +46,8 @@ class SharedObjectTemplate;
 } // namespace server
 
 using namespace server::zone::templates;
+
+#include "engine/lua/Luna.h"
 
 #include "server/zone/objects/scene/variables/ContainerPermissions.h"
 
@@ -57,6 +73,8 @@ public:
 	void notifyLoadFromDatabase();
 
 	void sendContainerObjectsTo(SceneObject* player);
+
+	void sendPermissionsTo(CreatureObject* object, bool allowEntry);
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
@@ -118,6 +136,8 @@ public:
 	void notifyLoadFromDatabase();
 
 	void sendContainerObjectsTo(SceneObject* player);
+
+	void sendPermissionsTo(CreatureObject* object, bool allowEntry);
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
@@ -186,6 +206,8 @@ public:
 
 	void sendContainerObjectsTo(SceneObject* player);
 
+	void sendPermissionsTo(CreatureObject* object, bool allowEntry);
+
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	bool transferObject(SceneObject* object, int containmentType, bool notifyClient);
@@ -221,6 +243,34 @@ public:
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class Singleton<CellObjectHelper>;
+};
+
+class LuaCellObject {
+public:
+	static const char className[];
+	static Luna<LuaCellObject>::RegType Register[];
+
+	LuaCellObject(lua_State *L);
+	virtual ~LuaCellObject();
+
+	int _setObject(lua_State *L);
+	int _getObject(lua_State *L);
+	int loadTemplateData(lua_State *L);
+	int setAllowEntryPermissionGroup(lua_State *L);
+	int notifyLoadFromDatabase(lua_State *L);
+	int sendContainerObjectsTo(lua_State *L);
+	int sendPermissionsTo(lua_State *L);
+	int canAddObject(lua_State *L);
+	int transferObject(lua_State *L);
+	int initializeTransientMembers(lua_State *L);
+	int sendBaselinesTo(lua_State *L);
+	int getCurrentNumberOfPlayerItems(lua_State *L);
+	int destroyAllPlayerItems(lua_State *L);
+	int getCellNumber(lua_State *L);
+	int setCellNumber(lua_State *L);
+	int isCellObject(lua_State *L);
+
+	Reference<CellObject*> realObject;
 };
 
 } // namespace cell

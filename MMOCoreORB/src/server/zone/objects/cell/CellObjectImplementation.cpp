@@ -185,3 +185,13 @@ void CellObjectImplementation::destroyAllPlayerItems() {
 		containerObject->destroyObjectFromDatabase(true);
 	}
 }
+
+void CellObjectImplementation::sendPermissionsTo(CreatureObject* creature, bool allowEntry) {
+	if (!containerPermissions.hasInheritPermissionsFromParent() && !checkContainerPermission(creature, ContainerPermissions::MOVEIN)) {
+		BaseMessage* perm = new UpdateCellPermissionsMessage(getObjectID(), false);
+		creature->sendMessage(perm);
+	} else {
+		BaseMessage* perm = new UpdateCellPermissionsMessage(getObjectID(), allowEntry);
+		creature->sendMessage(perm);
+	}
+}

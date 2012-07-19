@@ -43,6 +43,11 @@
 
 object_tangible_ship_components_chassis_tiefighter_chassis_token = object_tangible_ship_components_chassis_shared_tiefighter_chassis_token:new {
 
+    templateType = SHIPCHASSIS,
+	chassisDeed = "object/tangible/ship/crafted/chassis/tiefighter_deed.iff",
+	dealerFee = 2000,
+	certRequired = "",
+	POB = 0,
 
 	numberExperimentalProperties = {1, 1, 4, 4},
 	experimentalProperties = {"XX", "XX", "HR", "OQ", "SR", "UT", "MA", "OQ", "SR", "UT"},

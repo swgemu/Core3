@@ -39,6 +39,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "destroyObjectFromWorld", &LuaSceneObject::destroyObjectFromWorld },
 		{ "destroyObjectFromDatabase", &LuaSceneObject::destroyObjectFromDatabase },
 		{ "isCreatureObject", &LuaSceneObject::isCreatureObject },
+		{ "isPlayerCreature", &LuaSceneObject::isPlayerCreature },
 		{ "sendTo", &LuaSceneObject::sendTo },
 		{ "getCustomObjectName", &LuaSceneObject::getCustomObjectName },
 		{ "getContainerObjectById", &LuaSceneObject::getContainerObjectById },
@@ -52,7 +53,12 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "setContainerInheritPermissionsFromParent", &LuaSceneObject::setContainerInheritPermissionsFromParent},
 		{ "setContainerAllowPermission", &LuaSceneObject::setContainerAllowPermission},
 		{ "setContainerDenyPermission", &LuaSceneObject::setContainerDenyPermission},
+		{ "setContainerDefaultAllowPermission", &LuaSceneObject::setContainerDefaultAllowPermission},
+		{ "clearContainerDefaultAllowPermission", &LuaSceneObject::clearContainerDefaultAllowPermission},
+		{ "setContainerDefaultDenyPermission", &LuaSceneObject::setContainerDefaultDenyPermission},
+		{ "clearContainerDefaultDenyPermission", &LuaSceneObject::clearContainerDefaultDenyPermission},
 		{ "hasActiveArea", &LuaSceneObject::hasActiveArea},
+		{ "setObjectName", &LuaSceneObject::setObjectName},
 		{ 0, 0 }
 
 };
@@ -382,6 +388,14 @@ int LuaSceneObject::isCreatureObject(lua_State* L) {
 	return 1;
 }
 
+int LuaSceneObject::isPlayerCreature(lua_State* L) {
+	bool val = realObject->isPlayerCreature();
+
+	lua_pushboolean(L, val);
+
+	return 1;
+}
+
 int LuaSceneObject::wlock(lua_State* L) {
 	return 0;
 }
@@ -442,3 +456,45 @@ int LuaSceneObject::setContainerDenyPermission(lua_State* L) {
 	return 0;
 }
 
+int LuaSceneObject::setContainerDefaultAllowPermission(lua_State* L) {
+	uint16 perm = lua_tointeger(L, -1);
+
+	realObject->setContainerDefaultAllowPermission(perm);
+
+	return 0;
+}
+
+int LuaSceneObject::clearContainerDefaultAllowPermission(lua_State* L) {
+	uint16 perm = lua_tointeger(L, -1);
+
+	realObject->clearContainerDefaultAllowPermission(perm);
+
+	return 0;
+}
+
+int LuaSceneObject::setContainerDefaultDenyPermission(lua_State* L) {
+	uint16 perm = lua_tointeger(L, -1);
+
+	realObject->setContainerDefaultDenyPermission(perm);
+
+	return 0;
+}
+
+int LuaSceneObject::clearContainerDefaultDenyPermission(lua_State* L) {
+	uint16 perm = lua_tointeger(L, -1);
+
+	realObject->clearContainerDefaultDenyPermission(perm);
+
+	return 0;
+}
+
+int LuaSceneObject::setObjectName(lua_State* L) {
+	String file = lua_tostring(L, -2);
+	String key = lua_tostring(L, -1);
+
+	StringId stringid(file, key);
+
+	realObject->setObjectName(stringid);
+
+	return 0;
+}

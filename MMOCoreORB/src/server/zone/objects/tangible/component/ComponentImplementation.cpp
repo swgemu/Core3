@@ -97,19 +97,19 @@ void ComponentImplementation::fillAttributeList(AttributeListMessage* alm,
 	}
 }
 
-float ComponentImplementation::getAttributeValue(String& attributeName){
+float ComponentImplementation::getAttributeValue(const String& attributeName){
 	return attributeMap.get(attributeName);
 }
 
-int ComponentImplementation::getAttributePrecision(String& attributeName){
+int ComponentImplementation::getAttributePrecision(const String& attributeName){
 	return precisionMap.get(attributeName);
 }
 
-String ComponentImplementation::getAttributeTitle(String& attributeName){
+String ComponentImplementation::getAttributeTitle(const String& attributeName){
 	return titleMap.get(attributeName);
 }
 
-bool ComponentImplementation::getAttributeHidden(String& attributeName){
+bool ComponentImplementation::getAttributeHidden(const String& attributeName){
 	return hiddenMap.get(attributeName);
 }
 

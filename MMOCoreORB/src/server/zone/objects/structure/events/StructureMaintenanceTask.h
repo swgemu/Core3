@@ -49,6 +49,8 @@ public:
 
 		if (strongRef->getSurplusMaintenance() > 0) {
 			//Incorrect scheduling, reschedule.
+			Locker locker(strongRef);
+
 			strongRef->scheduleMaintenanceExpirationEvent();
 			return;
 		}

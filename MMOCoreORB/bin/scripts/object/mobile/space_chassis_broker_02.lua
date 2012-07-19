@@ -42,7 +42,7 @@
 
 
 object_mobile_space_chassis_broker_02 = object_mobile_shared_space_chassis_broker_02:new {
-
+	--objectMenuComponent = {"cpp", "ChassisBrokerMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_mobile_space_chassis_broker_02, "object/mobile/space_chassis_broker_02.iff")

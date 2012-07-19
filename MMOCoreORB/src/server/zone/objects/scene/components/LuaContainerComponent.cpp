@@ -33,9 +33,12 @@ int LuaContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* o
 
 	lua->callFunction(&runMethod);
 
-	int result = lua_tonumber(lua->getLuaState(), -1);
+	int result = lua_tointeger(lua->getLuaState(), -1);
 
 	lua_pop(lua->getLuaState(), 1);
+
+	if (result == -1)
+		result = ContainerComponent::canAddObject(sceneObject, object, containmentType, errorDescription);
 
 	return result;
 }
@@ -53,9 +56,12 @@ bool LuaContainerComponent::transferObject(SceneObject* sceneObject, SceneObject
 
 	lua->callFunction(&runMethod);
 
-	bool result = lua_toboolean(lua->getLuaState(), -1);
+	int result = lua_tointeger(lua->getLuaState(), -1);
 
 	lua_pop(lua->getLuaState(), 1);
+
+	if (result == -1)
+		result = ContainerComponent::transferObject(sceneObject, object, containmentType, notifyClient);
 
 	return result;
 }
@@ -73,9 +79,12 @@ bool LuaContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* 
 
 	lua->callFunction(&runMethod);
 
-	bool result = lua_toboolean(lua->getLuaState(), -1);
+	int result = lua_tointeger(lua->getLuaState(), -1);
 
 	lua_pop(lua->getLuaState(), 1);
+
+	if (result == -1)
+		result = ContainerComponent::removeObject(sceneObject, object, destination, notifyClient);
 
 	return result;
 }

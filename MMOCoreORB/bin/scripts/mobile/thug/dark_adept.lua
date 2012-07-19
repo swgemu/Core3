@@ -30,16 +30,18 @@ dark_adept = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "holocron_dark", chance = 500000},
+				{group = "holocron_dark", chance = 400000},
+				{group = "holocron_light", chance = 400000},
+				{group = "crystals_premium", chance = 400000},
+				{group = "color_crystals", chance = 1000000},
 				{group = "rifles", chance = 1500000},
 				{group = "pistols", chance = 1500000},
 				{group = "melee_weapons", chance = 1500000},
-				{group = "armor_attachments", chance = 1750000},
-				{group = "clothing_attachments", chance = 1750000},
-				{group = "carbines", chance = 1500000}
-				
+				{group = "armor_attachments", chance = 900000},
+				{group = "clothing_attachments", chance = 900000},
+				{group = "carbines", chance = 1500000}				
 			},
-			lootChance = 6500000
+			lootChance = 5500000
 		}
 	},
 	weapons = {"dark_jedi_weapons_gen2"},

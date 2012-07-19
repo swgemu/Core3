@@ -33,8 +33,8 @@ nightsister_protector = Creature:new {
 				{group = "crystals_select", chance = 500000},
 				{group = "color_crystals", chance = 500000},
 				{group = "nightsister_common", chance = 6500000},
-				{group = "armor_attachments", chance = 550000},
-				{group = "clothing_attachments", chance = 550000},
+				{group = "armor_attachments", chance = 500000},
+				{group = "clothing_attachments", chance = 500000},
 				{group = "melee_baton", chance = 750000},
 				{group = "melee_two_handed", chance = 750000}
 			},

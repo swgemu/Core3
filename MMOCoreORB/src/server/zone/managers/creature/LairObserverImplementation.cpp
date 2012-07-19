@@ -185,7 +185,7 @@ void LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 
 	//SortedVector<uint32>* objectsToSpawn = getObjectsToSpawn();
 
-	VectorMap<String, uint32>* objectsToSpawn = lairTemplate->getMobiles();
+	VectorMap<String, int>* objectsToSpawn = lairTemplate->getMobiles();
 
 	String templateToSpawn = objectsToSpawn->elementAt((int)System::random(objectsToSpawn->size() - 1)).getKey();
 
@@ -195,13 +195,9 @@ void LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 	float y = lair->getPositionY() + (20.0f - System::random(400) / 10.0f);
 	float z = lair->getZone()->getHeight(x, y);
 
-	int defaultLevel = objectsToSpawn->get(templateToSpawn);
+	int levelDiff = objectsToSpawn->get(templateToSpawn);
 
-	if (minDifficulty != 0 || maxDifficulty != 0) {
-		defaultLevel = minDifficulty + System::random(abs(maxDifficulty - minDifficulty));
-	}
-
-	ManagedReference<CreatureObject*> creature = creatureManager->spawnCreatureWithLevel(templateToSpawn.hashCode(), defaultLevel, x, z, y);
+	ManagedReference<CreatureObject*> creature = creatureManager->spawnCreatureWithLevel(templateToSpawn.hashCode(), difficulty + levelDiff, x, z, y);
 
 	if (creature == NULL)
 		return;

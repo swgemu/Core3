@@ -116,10 +116,15 @@ void MissionObjectImplementation::setMissionTargetName(const String& target, boo
 }
 
 void MissionObjectImplementation::setMissionDifficulty(int difficulty, bool notifyClient) {
+	setMissionDifficulty(difficulty, difficulty, notifyClient);
+}
+
+void MissionObjectImplementation::setMissionDifficulty(int difficulty, int display, bool notifyClient) {
 	if (difficultyLevel == difficulty)
 		return;
 
 	difficultyLevel = difficulty;
+	difficultyDisplay = display;
 
 	if (!notifyClient)
 		return;
@@ -128,7 +133,7 @@ void MissionObjectImplementation::setMissionDifficulty(int difficulty, bool noti
 
 	if (player != NULL) {
 		MissionObjectDeltaMessage3* delta = new MissionObjectDeltaMessage3(_this.get());
-		delta->updateDifficultyLevel(difficultyLevel);
+		delta->updateDifficultyLevel(difficultyDisplay);
 		delta->close();
 
 		player->sendMessage(delta);

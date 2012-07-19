@@ -48,7 +48,7 @@ object_tangible_food_crafted_drink_aitha = object_tangible_food_crafted_shared_d
 	filling = 10,
 	nutrition = 10,
 
-	effectType = 0,
+	effectType = 6,
 
 	fillingMin = 18,
 	fillingMax = 11,

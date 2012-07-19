@@ -90,10 +90,16 @@ public:
 
 				StringTokenizer tokenizer(listString);
 
-				galaxyID = tokenizer.getIntToken();
+				try {
+					galaxyID = tokenizer.getIntToken();
 
-				tokenizer.getStringToken(galaxyName);
-				tokenizer.getStringToken(galaxyName);
+					tokenizer.getStringToken(galaxyName);
+					tokenizer.getStringToken(galaxyName);
+				} catch(Exception& e) {
+					player->error("Unknown exception in PlayerManagementSessionSuiCallback::runAccountInfo: " + e.getMessage());
+					player->sendSystemMessage(e.getMessage());
+					galaxyID = -1;
+				}
 
 			}
 
@@ -103,7 +109,7 @@ public:
 				StringTokenizer tokenizer(listString);
 				tokenizer.getStringToken(firstName);
 
-				galaxyID = getPlayerGalaxyID(listBox, index, galaxyName);
+				galaxyID = getPlayerGalaxyID(player, listBox, index, galaxyName);
 				playerName = firstName;
 			}
 
@@ -119,7 +125,7 @@ public:
 		session->getPlayerInfo(tablevel, firstName);
 	}
 
-	uint32 getPlayerGalaxyID(SuiListBox* listBox, int index, String& galaxyName) {
+	uint32 getPlayerGalaxyID(CreatureObject* player, SuiListBox* listBox, int index, String& galaxyName) {
 
 		while(index > 0) {
 			index--;
@@ -132,20 +138,37 @@ public:
 				tablevel++;
 			}
 
+			if(tablevel != 1)
+				continue;
+
 			listString = listString.trim();
 			StringTokenizer tokenizer(listString);
+			uint32 galaxyID = 0;
 
-			uint32 galaxyID = tokenizer.getIntToken();
+			try {
+				galaxyID = tokenizer.getIntToken();
 
-			tokenizer.getStringToken(galaxyName);
-			tokenizer.getStringToken(galaxyName);
+				String colon;
+				tokenizer.getStringToken(colon);
 
-			if(tablevel == 1)
-				return galaxyID;
+				galaxyName = "";
+				while(tokenizer.hasMoreTokens()) {
+					String token;
+					tokenizer.getStringToken(token);
+					galaxyName += token + " ";
+				}
+			} catch(Exception& e) {
+				player->error("Unknown exception in PlayerManagementSessionSuiCallback::getPlayerGalaxyID: " + e.getMessage());
+				player->sendSystemMessage(e.getMessage());
+			}
+
+			galaxyName = galaxyName.trim();
+
+			return galaxyID;
 
 		}
 
-		return 0;
+		return -1;
 
 	}
 

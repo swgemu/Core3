@@ -57,13 +57,8 @@ include server.zone.templates.TemplateReference;
 import server.zone.templates.SharedObjectTemplate;
 import server.zone.objects.area.MissionSpawnActiveArea;
 include server.zone.managers.mission.spawnmaps.NpcSpawnPoint;
-include server.zone.objects.mission.events.DespawnMissionNpcsTask;
 
 class DeliverMissionObjective extends MissionObjective {
-	protected transient DespawnMissionNpcsTask despawnMissionNpcsTask;
-	
-	protected AiAgent target;
-	protected AiAgent destination;
 	protected TangibleObject item;
 	
 	protected NpcSpawnPoint targetSpawnPoint;
@@ -100,8 +95,9 @@ class DeliverMissionObjective extends MissionObjective {
 	public int getObjectiveStatus() {
 		return objectiveStatus;
 	}
-	
+
 	public abstract native void activate();
+	public abstract native void deactivate();
 	public native boolean activateWithResult();
 	public abstract native void abort();
 	public abstract native void complete();

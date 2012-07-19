@@ -1,4 +1,4 @@
- /*
+/*
  * ChatManagerImplementation.cpp
  *
  *  Created on: 28/07/2009
@@ -285,7 +285,7 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 		firstName = (cast<CreatureObject*>(sender))->getFirstName().toLowerCase();
 
 	CloseObjectsVector* vec = (CloseObjectsVector*) sender->getCloseObjects();
-	
+
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeEntryObjects(200, 50);
 
 	if (vec != NULL) {
@@ -299,7 +299,30 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 	try {
 //		zone->rlock(readlock);
 
+	if (vec != NULL) {
+		vec->safeCopyTo(closeEntryObjects);
+	} else {
+		zone->getInRangeObjects(sender->getWorldPositionX(), sender->getWorldPositionX(), 192, &closeEntryObjects, true);
+	}
+
+	//Vector<QuadTreeEntry*> closeEntryObjects(closeObjects->size(), 50);
+	/*
+	try {
+//		zone->rlock(readlock);
+
 		for (int i = 0; i < closeObjects->size(); ++i) {
+			closeEntryObjects.add(closeObjects->get(i).get());
+		}
+
+//		zone->runlock(readlock);
+	} catch (...) {
+//		zone->runlock(readlock);
+	}
+	 
+	for (int i = 0; i < closeEntryObjects.size(); ++i) {
+		SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i).get());
+
+	for (int i = 0; i < closeObjects->size(); ++i) {
 			closeEntryObjects.add(closeObjects->get(i).get());
 		}
 
@@ -336,8 +359,8 @@ void ChatManagerImplementation::sendRoomList(CreatureObject* player) {
 	String game = "SWG";
 	populateRoomListMessage(gameRooms.get(game), crl);
 
- 	crl->insertChannelListCount();
- 	player->sendMessage(crl);
+	crl->insertChannelListCount();
+	player->sendMessage(crl);
 }
 
 void ChatManagerImplementation::addPlayer(CreatureObject* player) {
@@ -414,7 +437,7 @@ void ChatManagerImplementation::broadcastMessage(BaseMessage* message) {
 }
 
 void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const UnicodeString& message,  uint64 target, uint32 moodid, uint32 mood2) {
-		Zone* zone = player->getZone();
+	Zone* zone = player->getZone();
 
 	if (zone == NULL)
 		return;
@@ -444,10 +467,18 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	//Locker zoneLocker(zone);
 	//zone->rlock();
 
-//	bool readlock = !zone->isLockedByCurrentThread();
+	CloseObjectsVector* closeObjects = (CloseObjectsVector*) player->getCloseObjects();
 
-	//zone->rlock(readlock);
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeEntryObjects(200, 50);
 
+	if (closeObjects != NULL) {
+		closeObjects->safeCopyTo(closeEntryObjects);
+	} else {
+		zone->getInRangeObjects(player->getWorldPositionX(), player->getWorldPositionY(), 192, &closeEntryObjects, true);
+	}
+
+	/*
+=======
 	CloseObjectsVector* closeObjects = (CloseObjectsVector*) player->getCloseObjects();
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeEntryObjects(200, 50);
@@ -459,6 +490,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	}
 	
 /*
+>>>>>>> .merge-right.r5676
 	try {
 		zone->rlock(readlock);
 
@@ -466,6 +498,12 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 			closeEntryObjects.add(closeObjects->get(i).get());
 		}
 
+<<<<<<< .working
+		zone->runlock(readlock);
+	} catch (...) {
+		zone->runlock(readlock);
+	}
+=======
 		zone->runlock(readlock);
 	} catch (...) {
 		zone->runlock(readlock);
@@ -473,15 +511,23 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	
 	*/
 
+
 	try {
 		for (int i = 0; i < closeEntryObjects.size(); ++i) {
 			SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i).get());
 
-			if (object->isPlayerCreature()) {
-				CreatureObject* creature = cast<CreatureObject*>(object);
+			if (player->isInRange(object, 128)) {
 
-				if (player->isInRange(creature, 128)) {
+				//Notify observers that are expecting spatial chat.
+				if (object->getObserverCount(ObserverEventType::SPATIALCHATRECEIVED)) {
+					ManagedReference<ChatMessage*> chatMessage = new ChatMessage();
+					chatMessage->setString(message.toString());
 
+					object->notifyObservers(ObserverEventType::SPATIALCHATRECEIVED, chatMessage);
+				}
+
+				if (object->isPlayerCreature()) {
+					CreatureObject* creature = cast<CreatureObject*>(object);
 					PlayerObject* ghost = creature->getPlayerObject();
 
 					if (ghost == NULL)
@@ -519,8 +565,6 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 
 		throw;
 	}
-
-//	zone->runlock(readlock);
 
 	//zone->runlock();
 
@@ -601,7 +645,7 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 		return;
 	}
 
-	BaseMessage* msg = new ChatInstantMessageToClient(message->getGame(), message->getGalaxy(), sender->getFirstName(), text);
+	BaseMessage* msg = new ChatInstantMessageToClient("SWG", sender->getZoneServer()->getGalaxyName(), sender->getFirstName(), text);
 	receiver->sendMessage(msg);
 
 	BaseMessage* amsg = new ChatOnSendInstantMessage(message->getSequence(), IM_SUCCESS);

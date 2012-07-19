@@ -124,7 +124,7 @@ object_tangible_component_armor_shield_generator_personal_b = object_tangible_co
 	experimentalMin = {0, 0, 1000, 1, 1000, 0, 0, 0, 1, 2, 1, 1000},
 	experimentalMax = {0, 0, 1000, 30, 2000, 0, 0, 0, 1, 2, 45, 2000},
 	experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 4, 4, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 4, 4, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shield_generator_personal_b, "object/tangible/component/armor/shield_generator_personal_b.iff")

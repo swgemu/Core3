@@ -21,11 +21,11 @@ mountain_vesp_medium = Creature:new {
 	milk = 0,
 	tamingChance = 0.250000,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/vesp.iff"},
+	templates = {"object/mobile/vesp_hue.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	attacks = {

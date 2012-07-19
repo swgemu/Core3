@@ -45,12 +45,14 @@ which carries forward this exception.
 package server.zone.objects.cell;
 
 import server.zone.objects.scene.SceneObject;
+import server.zone.objects.creature.CreatureObject;
 import engine.lua.LuaObject;
 import system.util.VectorMap;
 import server.zone.Zone;
 include server.zone.objects.scene.variables.ContainerPermissions;
 import server.zone.templates.SharedObjectTemplate;
 
+@lua
 class CellObject extends SceneObject {
 	protected int cellNumber;
 	
@@ -87,6 +89,8 @@ class CellObject extends SceneObject {
 	 * @param player SceneObject that will receive the objects 
 	 */
 	public native void sendContainerObjectsTo(SceneObject player);
+	
+	public native void sendPermissionsTo(CreatureObject object, boolean allowEntry);
 	
 	/**
 	 * Evaluates if this object has the necessary free slots to be able to add the specified SceneObject

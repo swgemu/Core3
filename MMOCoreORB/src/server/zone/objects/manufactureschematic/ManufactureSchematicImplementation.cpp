@@ -543,6 +543,7 @@ bool ManufactureSchematicImplementation::isReadyForAssembly() {
 		if(slot == NULL || !slot->isFull())
 			return false;
 	}
+
 	return true;
 }
 

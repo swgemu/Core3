@@ -62,7 +62,7 @@ FullAutoSingle1Command = {
 		{ "dizzy_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		30, 
-		0, 
+		100, 
 		30 
 	  ),
 	  StateEffect( 
@@ -71,8 +71,8 @@ FullAutoSingle1Command = {
 		{ "blind_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		30, 
-		0, 
-		30 
+		100, 
+		40 
 	  ),
 	  StateEffect( 
 		STUN_EFFECT, 
@@ -80,7 +80,7 @@ FullAutoSingle1Command = {
 		{ "stun_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
 		30, 
-		0, 
+		100, 
 		30 
 	  )
 	},

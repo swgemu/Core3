@@ -65,6 +65,7 @@ class MissionObject extends IntangibleObject {
 	
 	protected unsigned int typeCRC;
 	protected int difficultyLevel;
+	protected int difficultyDisplay;
 	protected unicode creatorName;
 	protected int rewardCredits;
 	protected int rewardFactionPointsRebel;
@@ -120,8 +121,8 @@ class MissionObject extends IntangibleObject {
 	
 	//Faction types
 	public static final int FACTIONNEUTRAL = 0;
-	public static final int FACTIONIMPERIAL = 1;
-	public static final int FACTIONREBEL = 2;
+	public static final int FACTIONIMPERIAL = 0xDB4ACC54;
+	public static final int FACTIONREBEL = 0x16148850;
 	
 	public MissionObject() {
 		typeCRC = SURVEY;
@@ -135,6 +136,7 @@ class MissionObject extends IntangibleObject {
 		missionTitle.setStringId("mission/mission_npc_survey_neutral_easy", "m1t");
 		targetName = "Testing target name";
 		difficultyLevel = 50;
+		difficultyDisplay = 80;
 		
 		rewardCredits = 100;
 		rewardFactionPointsRebel = 0;
@@ -181,6 +183,7 @@ class MissionObject extends IntangibleObject {
 	public native void setMissionTitle(final string file, final string id, boolean notifyClient = true);
 	public native void setMissionTargetName(final string target, boolean notifyClient = true);
 	public native void setMissionDifficulty(int difficulty, boolean notifyClient = true);
+	public native void setMissionDifficulty(int difficulty, int display, boolean notifyClient = true);
 	public native void setRewardCredits(int creds, boolean notifyClient = true);
 	@local
 	public native void setTargetTemplate(SharedObjectTemplate templ, boolean notifyClient = true);
@@ -312,6 +315,10 @@ class MissionObject extends IntangibleObject {
 	
 	public int getDifficultyLevel() {
 		return difficultyLevel;
+	}
+	
+	public int getDifficultyDisplay() {
+		return difficultyDisplay;
 	}
 	
 	@local

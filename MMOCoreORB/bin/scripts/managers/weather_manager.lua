@@ -103,7 +103,6 @@
 --   Corellia
 -----------------
 corellia = {
-	weatherEnabled = 1,
 
 	defaultWeather = 0, -- Sunny
 
@@ -116,7 +115,6 @@ corellia = {
 --   Tatooine 
 -----------------
 tatooine = {
-	weatherEnabled = 1,
 
 	defaultWeather = 0, -- Sunny
 
@@ -134,7 +132,6 @@ tatooine = {
 --   Dantooine
 -----------------
 dantooine = {
-	weatherEnabled = 1,
 
 	defaultWeather = 0, -- Sunny
 
@@ -147,7 +144,6 @@ dantooine = {
 --   Dathomir
 -----------------
 dathomir = {
-	weatherEnabled = 1,
 
 	defaultWeather = 0, -- Sunny
 
@@ -160,7 +156,6 @@ dathomir = {
 --    Endor
 -----------------
 endor = {
-	weatherEnabled = 1,
 
 	defaultWeather = 0, -- Sunny
 
@@ -173,7 +168,6 @@ endor = {
 --     Lok
 -----------------
 lok = {
-	weatherEnabled = 1,
 
 	defaultWeather = 0, -- Sunny
 
@@ -190,7 +184,6 @@ lok = {
 --    Naboo
 -----------------
 naboo = {
-	weatherEnabled = 1,
 
 	defaultWeather = 0, -- Sunny
 
@@ -203,7 +196,6 @@ naboo = {
 --     Rori
 -----------------
 rori = {
-	weatherEnabled = 1,
 
 	defaultWeather = 0, -- Sunny
 
@@ -216,7 +208,6 @@ rori = {
 --    Talus
 -----------------
 talus = {
-	weatherEnabled = 1,
 
 	defaultWeather = 0, -- Sunny
 
@@ -229,7 +220,6 @@ talus = {
 --    Yavin4
 -----------------
 yavin4 = {
-	weatherEnabled = 1,
 
 	defaultWeather = 0, -- Sunny
 

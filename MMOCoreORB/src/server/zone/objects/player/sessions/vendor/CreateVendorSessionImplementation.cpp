@@ -8,6 +8,9 @@
 #include "CreateVendorSession.h"
 #include "server/zone/ZoneServer.h"
 
+#include "server/zone/managers/auction/AuctionManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
+
 #include "server/zone/managers/vendor/VendorManager.h"
 #include "server/zone/managers/vendor/VendorSelectionNode.h"
 #include "server/zone/objects/player/sessions/vendor/sui/CreateVendorSuiCallback.h"
@@ -15,6 +18,9 @@
 #include "server/zone/objects/player/PlayerObject.h"
 
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "server/zone/templates/tangible/VendorCreatureTemplate.h"
+#include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
+
 
 int CreateVendorSessionImplementation::initializeSession() {
 
@@ -111,16 +117,16 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 		return;
 	}
 
-	vendor = cast<TangibleObject*>(player->getZoneServer()->createObject(templatePath.hashCode()));
+	ManagedReference<TangibleObject*> vendor = cast<TangibleObject*>(player->getZoneServer()->createObject(templatePath.hashCode()));
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
-	if (vendor == NULL || inventory == NULL || !vendor.get()->isVendor()) {
+	if (vendor == NULL || inventory == NULL || !vendor->isVendor()) {
 		cancelSession();
 		return;
 	}
 
-	vendor.get()->createChildObjects();
+	vendor->createChildObjects();
 
 	Locker inventoryLocker(inventory);
 
@@ -130,7 +136,7 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 		return;
 	}
 
-	DataObjectComponentReference* data = vendor.get()->getDataObjectComponent();
+	DataObjectComponentReference* data = vendor->getDataObjectComponent();
 	if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
 		error("Invalid vendor, no data component: " + templatePath);
 		player->sendSystemMessage("@player_structure:create_failed");
@@ -147,20 +153,91 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 	}
 
 	vendorData->setOwnerId(player->getObjectID());
-	vendorData->setVendor(vendor.get());
 
-	vendor.get()->setCustomObjectName("Vendor: " + name, false);
-	vendor.get()->setContainerOwnerID(player->getObjectID());
+	vendor->setCustomObjectName("Vendor: " + name, false);
+	vendor->setContainerOwnerID(player->getObjectID());
 
-	if(!inventory->transferObject(vendor.get(), -1, false)) {
+	vendor->setMaxCondition(1000, false);
+	vendor->setConditionDamage(0, false);
+
+	if(vendor->isCreatureObject()) {
+		randomizeVendorLooks(cast<CreatureObject*>(vendor.get()));
+	}
+
+	if(!inventory->transferObject(vendor, -1, false)) {
 		player->sendSystemMessage("@player_structure:create_failed");
 		cancelSession();
 		return;
 	}
 
-	inventory->broadcastObject(vendor.get(), true);
-	player->getPlayerObject()->addVendor(vendor.get());
+	inventory->broadcastObject(vendor, true);
+	player->getPlayerObject()->addVendor(vendor);
 
 	player->sendSystemMessage("@player_structure:create_success");
 	cancelSession();
+}
+
+void CreateVendorSessionImplementation::randomizeVendorLooks(CreatureObject* vendor) {
+
+	VendorCreatureTemplate* vendorTempl = dynamic_cast<VendorCreatureTemplate*> (vendor->getObjectTemplate());
+
+	if (vendorTempl == NULL)
+		return;
+
+	String randomOutfit = vendorTempl->getOutfitName(System::random(vendorTempl->getOutfitsSize() -1));
+	if (randomOutfit.isEmpty())
+		return;
+
+	Reference<Outfit*> outfit = VendorOutfitManager::instance()->getOutfit(randomOutfit);
+
+	if (outfit == NULL)
+		return;
+
+	String hairFile = vendorTempl->getHairFile(System::random(vendorTempl->getHairSize() - 1));
+	ManagedReference<SceneObject*> hairSlot = vendor->getSlottedObject("hair");
+
+	if (hairSlot == NULL && !hairFile.isEmpty()) {
+		String hairCustomization;
+		ManagedReference<PlayerManager*> pman = player->getZoneServer()->getPlayerManager();
+		TangibleObject* hair = pman->createHairObject(hairFile, hairCustomization);
+
+		if (hair != NULL)
+			vendor->transferObject(hair, 4);
+	}
+
+	Vector<uint32>* clothing = outfit->getClothing();
+
+	for (int i = 0; i < clothing->size(); ++i) {
+		ManagedReference<SceneObject*> obj = player->getZoneServer()->createObject(clothing->get(i), 1);
+		if (obj == NULL)
+			continue;
+
+		for (int k = 0; k < obj->getArrangementDescriptorSize(); ++k) {
+			String arrangementDescriptor = obj->getArrangementDescriptor(k);
+			ManagedReference<SceneObject*> slot = vendor->getSlottedObject(arrangementDescriptor);
+			if (slot != NULL) {
+				slot->destroyObjectFromWorld(true);
+
+				slot->destroyObjectFromDatabase(true);
+			}
+		}
+
+		vendor->transferObject(obj, 4);
+	}
+
+//	VectorMap<String, Reference<CustomizationVariable*> > variables;
+//
+//	AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(vendorTempl->getAppearanceFilename().hashCode(), variables, true);
+//	Reference<RangedIntCustomizationVariable*> color = cast<RangedIntCustomizationVariable*>(variables.get("index_color_skin"));
+//	Reference<RangedIntCustomizationVariable*> skinny = cast<RangedIntCustomizationVariable*>(variables.get("blend_skinny"));
+//	Reference<RangedIntCustomizationVariable*> fat = cast<RangedIntCustomizationVariable*>(variables.get("blend_fat"));
+//
+//	if(color != NULL) {
+//		int value = color->g
+//	}
+//
+//	// Customization Variables -- TESTING
+//	vendor->setCustomizationVariable("index_color_skin", 230);
+//	vendor->setCustomizationVariable("blend_skinny", 0);
+//	vendor->setCustomizationVariable("blend_fat", (((1 - .5f) / .5f) * 255));
 }

@@ -82,6 +82,15 @@ public:
 		if (weapon == NULL)
 			return GENERALERROR;
 
+		if (!pup->checkContainerPermission(creature, ContainerPermissions::MOVECONTAINER))
+			return GENERALERROR;
+
+		if (!weapon->isASubChildOf(creature))
+			return GENERALERROR;
+
+		if (!pup->isASubChildOf(creature))
+			return GENERALERROR;
+
 		if((weapon->isRangedWeapon() && pup->isRanged()) ||
 				(weapon->isMeleeWeapon() && pup->isMelee()) ||
 				(weapon->isThrownWeapon() && pup->isThrown()) ||

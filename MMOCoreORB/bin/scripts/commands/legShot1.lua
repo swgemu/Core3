@@ -55,7 +55,7 @@ LegShot1Command = {
 
 	animationCRC = hashCode("test_homing"),
 
-	combatSpam = "legshot",
+	combatSpam = "leg",
 
 	range = -1
 

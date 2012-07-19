@@ -32,6 +32,8 @@ void WearableObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 }
 
 int WearableObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+	if (!sceneObject->isASubChildOf(player))
+		return 0;
 
 	if(selectedID == 70) {
 

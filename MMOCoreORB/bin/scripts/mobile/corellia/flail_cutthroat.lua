@@ -39,11 +39,11 @@ flail_cutthroat = Creature:new {
 	lootGroups = {
 			{
 			groups = {
-				{group = "junk", chance = 4000000},
-				{group = "pistols", chance = 1000000},
-				{group = "color_crystals", chance = 500000}
+				{group = "junk", chance = 7000000},
+				{group = "rifles", chance = 2000000},
+				{group = "color_crystals", chance = 1000000}
 			},
-			lootChance = 5000000
+			lootChance = 3000000
 		}
 	},
 	weapons = {"rebel_weapons_medium"},

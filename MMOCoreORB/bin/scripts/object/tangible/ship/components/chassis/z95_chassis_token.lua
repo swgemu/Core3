@@ -43,6 +43,12 @@
 
 object_tangible_ship_components_chassis_z95_chassis_token = object_tangible_ship_components_chassis_shared_z95_chassis_token:new {
 
+    templateType = SHIPCHASSIS,
+	chassisDeed = "object/tangible/ship/crafted/chassis/z95_deed.iff",
+	dealerFee = 1000,
+	certRequired = "pilot_rebel_navy_novice",
+	POB = 0,
+
 
 	numberExperimentalProperties = {1, 1, 4, 4},
 	experimentalProperties = {"XX", "XX", "HR", "OQ", "SR", "UT", "MA", "OQ", "SR", "UT"},

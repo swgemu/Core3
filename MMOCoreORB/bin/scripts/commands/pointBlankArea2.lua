@@ -44,19 +44,21 @@
 PointBlankArea2Command = {
         name = "pointblankarea2",
 
-	damageMultiplier = 4.3,
-	speedMultiplier = 3.0,
-	healthCostMultiplier = 1,
-	actionCostMultiplier = 1,
-	mindCostMultiplier = 1,
-	coneAngle = 30,
+	damageMultiplier = 4.0,
+	speedMultiplier = 1.5,
+	healthCostMultiplier = 0.5,
+	actionCostMultiplier = 1.5,
+	mindCostMultiplier = 0.5,
+	accuracyBonus = 50,
+
+	coneAngle = 60,
 	coneAction = true,
 
 	animationCRC = hashCode("fire_area_no_trails_light"),
 
 	combatSpam = "areashot",
 
-	range = 10
+	range = 12
 }
 
 AddCommand(PointBlankArea2Command)

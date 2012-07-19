@@ -44,11 +44,12 @@
 LegShot3Command = {
         name = "legshot3",
 
-	damageMultiplier = 3.0,
-	speedMultiplier = 1.5,
+	damageMultiplier = 2.0,
+	speedMultiplier = 2.0,
 	healthCostMultiplier = 0.5,
-	actionCostMultiplier = 1.3,
-	mindCostMultiplier = 1.2,
+	actionCostMultiplier = 2.0,
+	mindCostMultiplier = 2.0,
+	accuracyBonus = 25,
 
 	stateEffects = {
 	  StateEffect( 
@@ -56,9 +57,9 @@ LegShot3Command = {
 		{}, 
 		{ "stun_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		25, 
 		100, 
-		10 
+		100, 
+		30 
 	  )
 	},
 

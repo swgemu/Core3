@@ -30,11 +30,11 @@ talus_liberation_party_volunteer = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 3000000},
-				{group = "tailor_components", chance = 500000},
+				{group = "junk", chance = 7000000},
+				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000}
 			},
-			lootChance = 3200000
+			lootChance = 2200000
 		}				
 	},
 	weapons = {"pirate_weapons_light"},

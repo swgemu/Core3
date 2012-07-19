@@ -55,6 +55,7 @@ import engine.lua.Lua;
 import server.zone.ZoneServer;
 import server.zone.objects.tangible.TangibleObject;
 include server.zone.managers.loot.LootGroupMap;
+include server.zone.managers.loot.lootgroup.LootGroupCollection;
 include server.zone.templates.LootItemTemplate;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
@@ -118,6 +119,9 @@ class LootManager extends ManagedService implements Logger {
 	public native int calculateLootCredits(int level);
 
 	public native boolean createLoot(SceneObject container, AiAgent creature);
+	
+	@local
+	public native boolean createLootFromCollection(SceneObject container, LootGroupCollection collection, int level);
 	
 	public native boolean createLoot(SceneObject container, final string lootGroup, int level = -1);
 	

@@ -26,7 +26,7 @@ domesticated_snorbal = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/snorbal.iff"},
+	templates = {"object/mobile/snorbal_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -4913,8 +4913,8 @@ void CreatureObjectImplementation::setCurrentSpeed(float newSpeed) {
 }
 
 bool CreatureObjectImplementation::hasDamage(int attribute) {
-	// server/zone/objects/creature/CreatureObject.idl():  		return maxHamList.get(attribute) - hamList.get(attribute);
-	return (&maxHamList)->get(attribute) - (&hamList)->get(attribute);
+	// server/zone/objects/creature/CreatureObject.idl():  		return hamList.get(attribute) + wounds.get(attribute) < maxHamList.get(attribute);
+	return (&hamList)->get(attribute) + (&wounds)->get(attribute) < (&maxHamList)->get(attribute);
 }
 
 bool CreatureObjectImplementation::removeStateBuff(unsigned long long state) {

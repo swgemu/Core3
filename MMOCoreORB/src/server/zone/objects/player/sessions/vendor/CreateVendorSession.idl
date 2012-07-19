@@ -61,11 +61,8 @@ import server.zone.managers.auction.AuctionManager;
 
 
 class CreateVendorSession extends Facade {
-	@weakReference
+	@weakreference
 	protected CreatureObject player;
-
-	@weakReference
-	protected TangibleObject vendor;
 
 	VendorSelectionNode currentNode;
 	
@@ -79,7 +76,6 @@ class CreateVendorSession extends Facade {
 		Logger.setLogging(true);
 
 		player = play;
-		vendor = null;
 		suiNameVendor = null;
 	}
 	
@@ -96,7 +92,6 @@ class CreateVendorSession extends Facade {
 	
 	public int clearSession() {
 		player = null;
-		vendor = null;
 		currentNode = null;
 		suiSelectVendor = null;
 		suiNameVendor = null;
@@ -107,5 +102,7 @@ class CreateVendorSession extends Facade {
 	public native void handleVendorSelection(byte menuID);
 
 	public native void createVendor(string name);
+
+	private native void randomizeVendorLooks(CreatureObject vendor);
 
 }

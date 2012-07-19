@@ -27,8 +27,13 @@ void SlicingToolImplementation::loadTemplateData(SharedObjectTemplate* templateD
 }
 
 int SlicingToolImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+
+	if (!isASubChildOf(player))
+		return 0;
+
 	if (selectedID != 20)
 		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
+
 	/*
 	ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::SLICING);
 	ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());

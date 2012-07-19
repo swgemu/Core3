@@ -301,8 +301,8 @@ unsigned int StimPackImplementation::calculatePower(CreatureObject* healer, Crea
 	float power = getEffectiveness();
 	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		float 
 	if (applyBattleFatigue){
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			power = power - power * patient.calculateBFRatio();
-	power = power - power * patient->calculateBFRatio();
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			power = power - (power * patient.calculateBFRatio() * healer.calculateBFRatio());
+	power = power - (power * patient->calculateBFRatio() * healer->calculateBFRatio());
 }
 	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		float modSkill = (float) healer.getSkillMod("healing_injury_treatment");
 	float modSkill = (float) healer->getSkillMod("healing_injury_treatment");
@@ -311,6 +311,9 @@ unsigned int StimPackImplementation::calculatePower(CreatureObject* healer, Crea
 }
 
 int StimPackImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		if 
+	if (!isASubChildOf(player))	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			return 0;
+	return 0;
 	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		if 
 	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			return 1;
 	return 1;

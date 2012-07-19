@@ -168,12 +168,14 @@ public:
 					return GENERALERROR;
 				}
 
+				// TODO: should this grab the lair template and get the diffs from the template?
 				int minLevel = args.getIntToken();
 				int maxLevel = args.getIntToken();
+				int level = System::random(maxLevel - minLevel) + minLevel;
 
 				CreatureManager* creatureManager = creature->getZone()->getCreatureManager();
 
-				TangibleObject* tano = creatureManager->spawnLair(lairTemplate.hashCode(), minLevel, maxLevel, creature->getPositionX(), creature->getPositionZ(), creature->getPositionY());
+				TangibleObject* tano = creatureManager->spawnLair(lairTemplate.hashCode(), level, creature->getPositionX(), creature->getPositionZ(), creature->getPositionY());
 
 				if (tano != NULL) {
 					creature->sendSystemMessage("lair spawned");

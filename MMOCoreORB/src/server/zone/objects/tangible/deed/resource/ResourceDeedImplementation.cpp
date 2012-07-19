@@ -38,6 +38,9 @@ int ResourceDeedImplementation::useObject(CreatureObject* creature) {
 	if (creature == NULL)
 		return 0;
 
+	if (!isASubChildOf(creature))
+		return 0;
+
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 	if (ghost == NULL || ghost->hasSuiBoxWindowType(SuiWindowType::FREE_RESOURCE)) {

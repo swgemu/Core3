@@ -250,8 +250,6 @@ public:
 
 	void addResourceToHopper(ResourceContainer* container);
 
-	void removeResourceFromHopper(ResourceContainer* container);
-
 	void clearResourceHopper();
 
 	float getHopperSize();
@@ -385,8 +383,6 @@ public:
 
 	void addResourceToHopper(ResourceContainer* container);
 
-	void removeResourceFromHopper(ResourceContainer* container);
-
 	void clearResourceHopper();
 
 	float getHopperSize();
@@ -503,8 +499,6 @@ public:
 	void changeActiveResourceID(unsigned long long spawnObjectID);
 
 	void addResourceToHopper(ResourceContainer* container);
-
-	void removeResourceFromHopper(ResourceContainer* container);
 
 	void clearResourceHopper();
 

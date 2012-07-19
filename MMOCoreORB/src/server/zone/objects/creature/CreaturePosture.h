@@ -169,6 +169,21 @@ public:
 		return CreatureLocomotion::INVALID;
 	}
 
+	uint8 getSpeed(uint8 pos, uint8 loc) {
+		CreatureMovementEntry* move = &movementTable.get(pos);
+
+		if (loc == move->stationary)
+			return CreatureLocomotion::STATIONARY;
+
+		if (loc == move->slow)
+			return CreatureLocomotion::SLOW;
+
+		if (loc == move->fast)
+			return CreatureLocomotion::FAST;
+
+		return CreatureLocomotion::INVALID;
+	}
+
 	float getMovementScale(uint8 pos) {
 		return movementTable.get(pos).movementScale;
 	}

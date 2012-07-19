@@ -153,7 +153,7 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 	if (lairObject == NULL) {
 		CreatureManager* creatureManager = zone->getCreatureManager();
 
-		lairObject = creatureManager->spawnLair(lairTemplate.hashCode(), minDifficulty, maxDifficulty, pos.getX(), pos.getZ(), pos.getY());
+		lairObject = creatureManager->spawnLair(lairTemplate.hashCode(), difficulty, pos.getX(), pos.getZ(), pos.getY());
 
 		if (lairObject != NULL) {
 			ManagedReference<MissionObserver*> observer = new MissionObserver(_this.get());

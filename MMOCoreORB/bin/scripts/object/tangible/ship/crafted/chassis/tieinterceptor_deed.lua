@@ -43,6 +43,9 @@
 
 object_tangible_ship_crafted_chassis_tieinterceptor_deed = object_tangible_ship_crafted_chassis_shared_tieinterceptor_deed:new {
 
+    templateType = SHIPDEED,
+	shipControlObject = "object/intangible/ship/tieinterceptor_pcd.iff",
+	generatedObjectTemplate = "object/ship/player/player_tieinterceptor.iff",
 }
 
 ObjectTemplates:addTemplate(object_tangible_ship_crafted_chassis_tieinterceptor_deed, "object/tangible/ship/crafted/chassis/tieinterceptor_deed.iff")

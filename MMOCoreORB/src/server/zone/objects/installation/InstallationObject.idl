@@ -95,7 +95,7 @@ class InstallationObject extends StructureObject {
 	protected float extractionRate;
 	protected float extractionRemainder;
 	protected float spawnDensity;
-
+	
 	public InstallationObject() {
 		Logger.setLoggingName("InstallationObject");
 		
@@ -174,7 +174,6 @@ class InstallationObject extends StructureObject {
 	public native void setActiveResource(ResourceContainer container);
 	public native void changeActiveResourceID(unsigned long spawnObjectID);
 	public native void addResourceToHopper(ResourceContainer container);
-	public native void removeResourceFromHopper(ResourceContainer container);
 	public native void clearResourceHopper();
 	
 	public native float getHopperSize();
@@ -258,7 +257,6 @@ class InstallationObject extends StructureObject {
 	
 	@local
 	public native void setExtractionRate(float rate);
-	
 	
 }	
 	

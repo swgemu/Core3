@@ -44,7 +44,7 @@
 ActionShot1Command = {
 	name = "actionshot1",
 
-	damageMultiplier = 1.5,
+	damageMultiplier = 1.0,
 	speedMultiplier = 1.5,
 	healthCostMultiplier = 1.75,
 	actionCostMultiplier = 1.25,
@@ -55,7 +55,7 @@ ActionShot1Command = {
 
 	animationCRC = hashCode("fire_3_single_light"),
 
-	combatSpam = "kneecapshot",
+	combatSpam = "sapshot",
 	    
 	stateEffects = {
 	  StateEffect( 

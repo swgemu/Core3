@@ -69,13 +69,26 @@ class MissionObjective extends ManagedObject implements Logger {
 	protected Time missionStartTime;
 	
 	protected FailMissionAfterCertainTimeTask failTask;
+	
+	protected unsigned long timeRemaining;
+	
+	protected transient boolean activated;
 
 	public MissionObjective(MissionObject parent) {
 		mission = parent;
 		
 		Logger.setLoggingName("MissionObjective");
 		
+		//Default time remaining 2 days.
+		timeRemaining = 48 * 60 * 60 * 1000;
+		
+		activated = false;
+		
 		missionStartTime.updateToCurrentTime();
+	}
+	
+	public abstract void initializeTransientMembers() {
+		activated = false;
 	}
 	
 	/**
@@ -113,8 +126,11 @@ class MissionObjective extends ManagedObject implements Logger {
 	public boolean hasObservers() {
 		return observers.size() != 0;
 	}
-	
+
 	public native abstract void activate();
+	public abstract void deactivate() {
+		activated = false;
+	}
 	
 	public native abstract void abort();
 

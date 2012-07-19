@@ -184,7 +184,7 @@ public:
 
 	void initialize();
 
-	TangibleObject* spawnLair(unsigned int lairTemplate, int minDifficulty, int maxDifficulty, float x, float z, float y);
+	TangibleObject* spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y);
 
 	CreatureObject* spawnCreatureWithAi(unsigned int templateCRC, float x, float z, float y, SceneObject* cell, bool persistent = false);
 
@@ -227,6 +227,12 @@ public:
 	Vector3 getRandomJediTrainer();
 
 	Vector<ManagedReference<SpawnArea* > >* getWorldSpawnAreas();
+
+	Vector<ManagedReference<SpawnArea* > >* getFactionalNeutralMissionSpawnAreas();
+
+	Vector<ManagedReference<SpawnArea* > >* getFactionalRebelMissionSpawnAreas();
+
+	Vector<ManagedReference<SpawnArea* > >* getFactionalImperialMissionSpawnAreas();
 
 	SpawnArea* getSpawnArea(const String& areaname);
 
@@ -277,7 +283,7 @@ public:
 
 	void initialize();
 
-	TangibleObject* spawnLair(unsigned int lairTemplate, int minDifficulty, int maxDifficulty, float x, float z, float y);
+	TangibleObject* spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y);
 
 	CreatureObject* spawnCreatureWithAi(unsigned int templateCRC, float x, float z, float y, SceneObject* cell, bool persistent = false);
 
@@ -329,6 +335,12 @@ public:
 
 	Vector<ManagedReference<SpawnArea* > >* getWorldSpawnAreas();
 
+	Vector<ManagedReference<SpawnArea* > >* getFactionalNeutralMissionSpawnAreas();
+
+	Vector<ManagedReference<SpawnArea* > >* getFactionalRebelMissionSpawnAreas();
+
+	Vector<ManagedReference<SpawnArea* > >* getFactionalImperialMissionSpawnAreas();
+
 	SpawnArea* getSpawnArea(const String& areaname);
 
 	bool addWearableItem(CreatureObject* creature, TangibleObject* clothing);
@@ -378,7 +390,7 @@ public:
 
 	void initialize();
 
-	TangibleObject* spawnLair(unsigned int lairTemplate, int minDifficulty, int maxDifficulty, float x, float z, float y);
+	TangibleObject* spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y);
 
 	CreatureObject* spawnCreatureWithAi(unsigned int templateCRC, float x, float z, float y, SceneObject* cell, bool persistent);
 

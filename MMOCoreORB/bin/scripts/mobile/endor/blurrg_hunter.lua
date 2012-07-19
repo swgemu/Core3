@@ -26,7 +26,7 @@ blurrg_hunter = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/blurrg.iff"},
+	templates = {"object/mobile/blurrg_hue.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

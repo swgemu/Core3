@@ -51,7 +51,7 @@ object_draft_schematic_food_component_container_barrel = object_draft_schematic_
    complexity = 15, 
    size = 1, 
 
-   xpType = "crafting_food_general", 
+   xpType = "crafting_general", 
    xp = 500, 
 
    assemblySkill = "food_assembly", 

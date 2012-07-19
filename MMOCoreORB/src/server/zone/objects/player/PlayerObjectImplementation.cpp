@@ -50,6 +50,7 @@ which carries forward this exception.
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/chat/ChatManager.h"
 #include "server/chat/room/ChatRoom.h"
@@ -193,6 +194,9 @@ void PlayerObjectImplementation::unload() {
 	SceneObject* savedParent = NULL;
 
 	ManagedReference<CreatureObject*> creature = dynamic_cast<CreatureObject*>(parent.get().get());
+
+	MissionManager* missionManager = creature->getZoneServer()->getMissionManager();
+	missionManager->deactivateMissions(creature);
 
 	notifyOffline();
 
@@ -1036,6 +1040,13 @@ void PlayerObjectImplementation::notifyOnline() {
 		}
 	}
 
+	//Resend all suis.
+	for (int i = 0; i < suiBoxes.size(); ++i) {
+		ManagedReference<SuiBox*> sui = suiBoxes.get(i);
+
+		parent->sendMessage(sui->generateMessage());
+	}
+
 	//Login to visibility manager
 	VisibilityManager::instance()->login(playerCreature);
 }
@@ -1685,4 +1696,17 @@ void PlayerObjectImplementation::removePermissionGroup(const String& group, bool
 
 bool PlayerObjectImplementation::hasPermissionGroup(const String& group) {
 	return permissionGroups.contains(group);
+}
+
+void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	IntangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
+
+	for (int i = 0; i < ownedStructures.size(); ++i) {
+		ManagedReference<StructureObject*> structure = ownedStructures.get(i);
+
+		if (structure != NULL) {
+			structure->destroyObjectFromWorld(false);
+			structure->destroyObjectFromDatabase(true);
+		}
+	}
 }

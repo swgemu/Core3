@@ -96,6 +96,8 @@ public:
 
 	float getGroupHarvestModifier(CreatureObject* player);
 
+	void calcGroupLevel();
+
 	int getGroupLevel();
 
 	ChatRoom* getGroupChannel();
@@ -185,6 +187,8 @@ public:
 	void destroyChatRoom();
 
 	float getGroupHarvestModifier(CreatureObject* player);
+
+	void calcGroupLevel();
 
 	int getGroupLevel();
 
@@ -280,6 +284,8 @@ public:
 	void destroyChatRoom();
 
 	float getGroupHarvestModifier(CreatureObject* player);
+
+	void calcGroupLevel();
 
 	int getGroupLevel();
 

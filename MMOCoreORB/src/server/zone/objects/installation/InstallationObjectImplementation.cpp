@@ -129,6 +129,8 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 		}
 	}
 
+	Time timeToWorkTill;
+
 	operating = value;
 	extractionRemainder = 0;
 
@@ -170,11 +172,22 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 }
 
 void InstallationObjectImplementation::setActiveResource(ResourceContainer* container) {
+
+	Time timeToWorkTill;
+
 	if (resourceHopper.size() == 0) {
 		addResourceToHopper(container);
 
+		ResourceSpawn* spawn = container->getSpawnObject();
+		if(spawn != NULL)
+			spawnDensity = spawn->getDensityAt(getZone()->getZoneName(), getPositionX(), getPositionY());
+		else
+			spawnDensity = 0;
+
 		return;
 	}
+
+	updateInstallationWork();
 
 	int i = 0;
 	for (; i < resourceHopper.size(); ++i) {
@@ -276,20 +289,27 @@ ResourceContainer* InstallationObjectImplementation::getContainerFromHopper(Reso
 }
 
 void InstallationObjectImplementation::updateInstallationWork() {
+
 	Time timeToWorkTill;
+
 	bool shutdownAfterWork = updateMaintenance(timeToWorkTill);
 	updateHopper(timeToWorkTill, shutdownAfterWork);
 }
 
 bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
-	Time currentTime;
 
-	float elapsedTime = (currentTime.getTime() - lastMaintenanceTime.getTime());
-	float workTimePermitted = elapsedTime;
+	Time now;
+	
+	int currentTime = time(0);
+	int lastTime = lastMaintenanceTime.getTime();
 
-	float payAmount = (elapsedTime / 3600.0) * getMaintenanceRate();
+	int elapsedTime = currentTime - lastTime;
+	int workTimePermitted = elapsedTime;
+
+	float payAmount = ((float)elapsedTime / 3600.0f) * getMaintenanceRate();
 
 	bool shutdownWork = false;
+
 
 	if (payAmount > surplusMaintenance) {
 		//payAmount = surplusMaintenance;
@@ -337,6 +357,10 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 
 void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shutdownAfterUpdate) {
 
+	Locker locker(_this.get());
+
+	Time timeToWorkTill;
+
 	if (!isOperating()) {
 		if(lastStopTime.compareTo(resourceHopperTimestamp) != -1)
 			return;
@@ -371,6 +395,7 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 
 	float currentQuantity = container->getQuantity();
 
+
 	if(harvestAmount > 0) {
 		spawn->extractResource(getZone()->getZoneName(), harvestAmount);
 
@@ -403,8 +428,13 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 
 
 void InstallationObjectImplementation::clearResourceHopper() {
+
+	Time timeToWorkTill;
+
 	if (resourceHopper.size() == 0)
 		return;
+
+	setOperating(false);
 
 	//lets delete the containers from db
 	for (int i = 0; i < resourceHopper.size(); ++i) {
@@ -425,44 +455,14 @@ void InstallationObjectImplementation::clearResourceHopper() {
 
 	inso7->close();
 
-	setOperating(false);
-
 	broadcastToOperators(inso7);
-}
-
-void InstallationObjectImplementation::removeResourceFromHopper(ResourceContainer* container) {
-	int index = resourceHopper.find(container);
-
-	if (index == -1)
-		return;
-
-	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.get());
-	inso7->updateHopper();
-	inso7->startUpdate(0x0D);
-
-	if(isOperating() && index == 0) {
-		container->setQuantity(0, false, true);
-		resourceHopper.set(index, container, inso7, 1);
-	} else {
-		container->destroyObjectFromDatabase(true);
-		resourceHopper.remove(index, inso7, 1);
-	}
-
-	inso7->updateActiveResourceSpawn(getActiveResourceSpawnID());
-	inso7->updateHopperSize(getHopperSize());
-	inso7->updateExtractionRate(getActualRate());
-
-	inso7->close();
-
-	broadcastToOperators(inso7);
-
-	if (resourceHopper.size() == 0)
-		setOperating(false);
 }
 
 void InstallationObjectImplementation::addResourceToHopper(ResourceContainer* container) {
 	if (resourceHopper.contains(container))
 		return;
+
+	Time timeToWorkTill;
 
 	InstallationObjectDeltaMessage7* inso7 = new InstallationObjectDeltaMessage7( _this.get());
 	inso7->updateHopper();
@@ -493,6 +493,8 @@ void InstallationObjectImplementation::changeActiveResourceID(uint64 spawnID) {
 		error("new spawn null");
 		return;
 	}
+
+	Time timeToWorkTill;
 
 	Time currentTime;
 
@@ -579,13 +581,10 @@ void InstallationObjectImplementation::destroyObjectFromDatabase(bool destroyCon
 }
 
 void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient) {
-	if (container->getQuantity() == newQuantity && newQuantity != 0)
-		return;
+
+	Time timeToWorkTill;
 
 	container->setQuantity(newQuantity, false, true);
-
-	if (!notifyClient)
-		return;
 
 	for (int i = 0; i < resourceHopper.size(); ++i) {
 		ResourceContainer* cont = resourceHopper.get(i);
@@ -602,7 +601,10 @@ void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceC
 			inso7->updateExtractionRate(getActualRate());
 			inso7->close();
 
-			broadcastToOperators(inso7);
+			if (notifyClient)
+				broadcastToOperators(inso7);
+			else
+				delete inso7;
 		}
 	}
 

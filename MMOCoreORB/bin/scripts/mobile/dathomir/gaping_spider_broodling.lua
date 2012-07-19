@@ -21,8 +21,8 @@ gaping_spider_broodling = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 5,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
-	creatureBitmask = PACK + STALKER,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	creatureBitmask = PACK + STALKER + KILLER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 

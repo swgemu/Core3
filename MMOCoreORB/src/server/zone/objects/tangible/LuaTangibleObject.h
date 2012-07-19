@@ -28,6 +28,7 @@ namespace tangible {
 
 		int setOptionsBitmask(lua_State *L);
 		int setCustomizationVariable(lua_State *L);
+		int setConditionDamage(lua_State *L);
 
 	private:
 		Reference<TangibleObject*> realObject;

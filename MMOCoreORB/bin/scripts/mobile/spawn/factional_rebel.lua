@@ -7,7 +7,7 @@ factional_rebel = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "criminal_thug",
+			lairTemplateName = "criminal_base",
 			spawnLimit = 0,
 			minDifficulty = 7,
 			maxDifficulty = 7,

@@ -54,7 +54,7 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 
 			if (vehicle != NULL && vehicle->isInQuadTree()) {
 				if (++currentlySpawned > 2)
-					player->sendSystemMessage("You can only generate 3 vehicles"); // TODO:find appropiate string id
+					player->sendSystemMessage("@pet/pet_menu:has_max_vehicle");
 
 				return;
 			}

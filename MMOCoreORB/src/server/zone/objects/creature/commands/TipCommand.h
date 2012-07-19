@@ -159,18 +159,23 @@ public:
 		try {
 			args.getStringToken(amountOrPlayer);
 
+			//Check for people impersonating the bank.
+			if (amountOrPlayer == "bank") {
+				creature->sendSystemMessage("@base_player:tip_syntax"); //SYNTAX: /tip (to current target) or /tip
+				return INVALIDPARAMETERS;
+			}
+
 			amount = Integer::valueOf(amountOrPlayer);
 
 			if (amount == 0) { // First param is player or invalid
-				targetPlayer
-						= server->getZoneServer()->getPlayerManager()->getPlayer(
-								amountOrPlayer);
+				targetPlayer = server->getZoneServer()->getPlayerManager()->getPlayer(amountOrPlayer);
 
 				amount = args.getIntToken();
+				if(amount == 0)
+					throw NumberFormatException();
 
 				if (targetPlayer == NULL) {
-					StringIdChatParameter ptip("base_player",
-							"prose_tip_invalid_param"); // /TIP: invalid amount ("%TO") parameter.
+					StringIdChatParameter ptip("base_player", "prose_tip_invalid_param"); // /TIP: invalid amount ("%TO") parameter.
 					ptip.setTO(amountOrPlayer);
 					creature->sendSystemMessage(ptip);
 					return INVALIDPARAMETERS;

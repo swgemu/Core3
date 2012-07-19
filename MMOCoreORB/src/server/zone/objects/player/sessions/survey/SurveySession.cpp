@@ -16,11 +16,15 @@
 
 #include "server/zone/managers/resource/ResourceManager.h"
 
+#include "server/zone/objects/resource/ResourceSpawn.h"
+
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
 /*
  *	SurveySessionStub
  */
 
-enum {RPC_INITIALIZESESSION__SURVEYTOOL_ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_STARTSURVEY__STRING_,RPC_RESAMPLE__,RPC_STARTSAMPLE__STRING_,RPC_SURVEYCNODEMINIGAME__INT_,RPC_SURVEYGNODEMINIGAME__INT_,RPC_GETACTIVESURVEYTOOL__,RPC_SETACTIVESURVEYTOOL__SURVEYTOOL_,RPC_GETOPENSURVEYTOOL__,RPC_SETOPENSURVEYTOOL__SURVEYTOOL_,RPC_TRYGAMBLE__,RPC_CLEARGAMBLE__,RPC_CLEARRICHSAMPLELOCATION__};
+enum {RPC_INITIALIZESESSION__SURVEYTOOL_ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_STARTSURVEY__STRING_,RPC_RESAMPLE__,RPC_STARTSAMPLE__STRING_,RPC_SURVEYCNODEMINIGAME__INT_,RPC_SURVEYGNODEMINIGAME__INT_,RPC_GETACTIVESURVEYTOOL__,RPC_SETACTIVESURVEYTOOL__SURVEYTOOL_,RPC_GETOPENSURVEYTOOL__,RPC_SETOPENSURVEYTOOL__SURVEYTOOL_,RPC_TRYGAMBLE__,RPC_CLEARGAMBLE__,RPC_CLEARRICHSAMPLELOCATION__,};
 
 SurveySession::SurveySession(CreatureObject* creature) : Facade(DummyConstructorParameter::instance()) {
 	SurveySessionImplementation* _implementation = new SurveySessionImplementation(creature);
@@ -247,6 +251,33 @@ void SurveySession::clearRichSampleLocation() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->clearRichSampleLocation();
+}
+
+void SurveySession::rescheduleSurvey(SurveyMessage* surveyMessage, WaypointObject* waypoint, float maxDensity, ResourceSpawn* resourceSpawn) {
+	SurveySessionImplementation* _implementation = static_cast<SurveySessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->rescheduleSurvey(surveyMessage, waypoint, maxDensity, resourceSpawn);
+}
+
+void SurveySession::rescheduleSample() {
+	SurveySessionImplementation* _implementation = static_cast<SurveySessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->rescheduleSample();
+}
+
+void SurveySession::rescheduleSampleResults(ResourceSpawner* resourceSpawner, float density, const String& resname) {
+	SurveySessionImplementation* _implementation = static_cast<SurveySessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->rescheduleSampleResults(resourceSpawner, density, resname);
 }
 
 DistributedObjectServant* SurveySession::_getImplementation() {

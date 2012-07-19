@@ -51,8 +51,29 @@ which carries forward this exception.
 #include "engine/lua/Lua.h"
 #include "engine/orb/object/DistributedObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/terrain/TerrainManager.h"
 #include <iostream>
 #include <fstream>
+
+namespace server {
+namespace zone {
+namespace managers {
+namespace mission {
+namespace spawnmaps {
+namespace events {
+
+class DespawnMissionNpcTask;
+
+} // namespace events
+} // namespace spawnmaps
+} // namespace mission
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::mission::spawnmaps::events;
 
 namespace server {
 namespace zone {
@@ -83,7 +104,11 @@ protected:
 	/**
 	 * Indicator if the spawn is in use or not (i.e. free to use in a new mission).
 	 */
-	bool inUse;
+	int inUseByNumberOfMissions;
+
+	ManagedReference<AiAgent*> npc;
+
+	Reference<DespawnMissionNpcTask*> despawnMissionNpcTask;
 
 public:
 	/**
@@ -110,71 +135,27 @@ public:
 	/**
 	 * Default constructor.
 	 */
-	NpcSpawnPoint() {
-		spawnType = 0;
-	}
+	NpcSpawnPoint();
 
 	/**
 	 * Constructor for dynamic NPC spawn point creation.
 	 * @param player Player creature object to get position and direction from.
 	 * @param spawnTypes string containing the spawn types for the spawn point.
 	 */
-	NpcSpawnPoint(CreatureObject* player, const String& spawnTypes) {
-		//Parse spawn types.
-		String st = spawnTypes.toLowerCase();
-		spawnType = 0;
-		if (st.contains("neutral")) {
-			spawnType |= NEUTRALSPAWN;
-		}
-		if (st.contains("imperial")) {
-			spawnType |= IMPERIALSPAWN;
-		}
-		if (st.contains("rebel")) {
-			spawnType |= REBELSPAWN;
-		}
-		if (st.contains("bhtarget")) {
-			spawnType |= BHTARGETSPAWN;
-		}
-		if (st.contains("nospawn")) {
-			//No spawn overrides all other spawn types.
-			spawnType = NOSPAWN;
-		}
-		position.setX(player->getPosition().getX());
-		position.setY(player->getPosition().getY());
-		direction.setHeadingDirection(player->getDirection()->getRadians());
-		inUse = false;
-	}
+	NpcSpawnPoint(CreatureObject* player, const String& spawnTypes);
 
 	/**
 	 * Loads the object from a lua script file.
 	 * @param luaObject the object to load the spawn point from.
 	 */
-	void readObject(LuaObject* luaObject) {
-		float x = luaObject->getFloatAt(1);
-		float y = luaObject->getFloatAt(2);
-		float radians = luaObject->getFloatAt(3);
-		spawnType = luaObject->getIntAt(4);
-		position.setX(x);
-		position.setY(y);
-		position.setZ(0);
-		direction.setHeadingDirection(radians);
-		inUse = false;
-	}
+	void readObject(LuaObject* luaObject);
 
 	/**
 	 * Get the in use information.
 	 * @return true if spawn already is in use, false if it is free to use.
 	 */
-	inline bool getInUse() {
-		return inUse;
-	}
-
-	/**
-	 * Set the in use information.
-	 * @param value the value to set.
-	 */
-	inline void setInUse(bool value) {
-		inUse = value;
+	inline int getInUse() {
+		return inUseByNumberOfMissions;
 	}
 
 	/**
@@ -206,24 +187,14 @@ public:
 	 * @param stream stream to load from.
 	 * @return true if successful.
 	 */
-	bool parseFromBinaryStream(ObjectInputStream* stream) {
-		spawnType = stream->readInt();
-		inUse = stream->readBoolean();
-		bool result = position.parseFromBinaryStream(stream);
-		return result & direction.parseFromBinaryStream(stream);
-	}
+	bool parseFromBinaryStream(ObjectInputStream* stream);
 
 	/**
 	 * Write the spawn point to a stream.
 	 * @param stream stream to write to.
 	 * @return true if successful.
 	 */
-	bool toBinaryStream(ObjectOutputStream* stream) {
-		stream->writeInt(spawnType);
-		stream->writeBoolean(inUse);
-		bool result = position.toBinaryStream(stream);
-		return result & direction.toBinaryStream(stream);
-	}
+	bool toBinaryStream(ObjectOutputStream* stream);
 
 	/**
 	 * Saves the spawn points to a file.
@@ -235,8 +206,17 @@ public:
 	}
 
 	String toString() {
-		return "NpcSpawnPoint at " + position.toString() + " of spawntype " + String::valueOf(spawnType) + " is " + (inUse ? " in use." : "free.");
+		return "NpcSpawnPoint at " + position.toString() + " of spawntype " + String::valueOf(spawnType) + " is " + (inUseByNumberOfMissions > 0 ? " in use." : "free.");
 	}
+
+	void spawnNpc(TerrainManager* terrainManager, CreatureManager* creatureManager, ManagedReference<MissionObject*> mission);
+
+	void despawnNpc();
+
+	void decreaseUsageCount() {
+		inUseByNumberOfMissions--;
+	}
+
 };
 
 } // namespace spawnmaps

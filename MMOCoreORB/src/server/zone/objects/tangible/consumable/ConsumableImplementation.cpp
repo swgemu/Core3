@@ -113,6 +113,9 @@ void ConsumableImplementation::updateCraftingValues(CraftingValues* values, bool
 }
 
 int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+	if (!isASubChildOf(player))
+		return 0;
+
 	if (selectedID != 20) {
 		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 	}

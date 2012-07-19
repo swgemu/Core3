@@ -304,6 +304,8 @@ public:
 
 	void updateToDatabaseAllObjects(bool startTask);
 
+	void destroyPlayerCreatureFromDatabase(bool destroyContainedObjects = false);
+
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
 	int canBeDestroyed(CreatureObject* player);
@@ -702,7 +704,11 @@ public:
 
 	void setContainerDefaultAllowPermission(unsigned short perm);
 
+	void clearContainerDefaultAllowPermission(unsigned short perm);
+
 	void setContainerDefaultDenyPermission(unsigned short perm);
+
+	void clearContainerDefaultDenyPermission(unsigned short perm);
 
 	void setContainerInheritPermissionsFromParent(bool val);
 
@@ -938,6 +944,8 @@ public:
 	void updateToDatabaseWithoutChildren();
 
 	void updateToDatabaseAllObjects(bool startTask);
+
+	virtual void destroyPlayerCreatureFromDatabase(bool destroyContainedObjects = false);
 
 	virtual void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
@@ -1343,7 +1351,11 @@ public:
 
 	void setContainerDefaultAllowPermission(unsigned short perm);
 
+	void clearContainerDefaultAllowPermission(unsigned short perm);
+
 	void setContainerDefaultDenyPermission(unsigned short perm);
+
+	void clearContainerDefaultDenyPermission(unsigned short perm);
 
 	void setContainerInheritPermissionsFromParent(bool val);
 
@@ -1521,6 +1533,8 @@ public:
 	void updateToDatabaseWithoutChildren();
 
 	void updateToDatabaseAllObjects(bool startTask);
+
+	void destroyPlayerCreatureFromDatabase(bool destroyContainedObjects);
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects);
 
@@ -1856,7 +1870,11 @@ public:
 
 	void setContainerDefaultAllowPermission(unsigned short perm);
 
+	void clearContainerDefaultAllowPermission(unsigned short perm);
+
 	void setContainerDefaultDenyPermission(unsigned short perm);
+
+	void clearContainerDefaultDenyPermission(unsigned short perm);
 
 	void setContainerInheritPermissionsFromParent(bool val);
 

@@ -42,9 +42,7 @@
 
 
 object_tangible_terminal_terminal_elevator_up = object_tangible_terminal_shared_terminal_elevator_up:new {
-	templateType = ELEVATORTERMINAL,
-	gameObjectType = 16403,
-	movementType = 0 -- Up only
+	objectMenuComponent = {"cpp", "ElevatorUpMenuComponent"}
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_terminal_elevator_up, "object/tangible/terminal/terminal_elevator_up.iff")

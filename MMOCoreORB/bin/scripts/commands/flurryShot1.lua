@@ -44,11 +44,12 @@
 FlurryShot1Command = {
         name = "flurryshot1",
 
-	damageMultiplier = 2.5,
+	damageMultiplier = 2.0,
 	speedMultiplier = 2.0,
-	healthCostMultiplier = 1,
-	actionCostMultiplier = 1,
-	mindCostMultiplier = 1,
+	healthCostMultiplier = 0.5,
+	actionCostMultiplier = 0.5,
+	mindCostMultiplier = 1.5,
+	accuracyBonus = 5,
 
 	stateEffects = {
 	  StateEffect( 
@@ -56,9 +57,9 @@ FlurryShot1Command = {
 		{}, 
 		{ "dizzy_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		10, 
+		85, 
 		100, 
-		10 
+		45 
 	  )
 	},
 

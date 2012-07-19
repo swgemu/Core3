@@ -28,30 +28,20 @@ using namespace server::zone::objects::auction;
 namespace server {
 namespace zone {
 namespace objects {
-namespace scene {
+namespace creature {
 
-class SceneObject;
+class CreatureObject;
 
-} // namespace scene
+} // namespace creature
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::scene;
+using namespace server::zone::objects::creature;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace player {
+#include "server/zone/managers/auction/AuctionTerminalMap.h"
 
-class PlayerObject;
-
-} // namespace player
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::player;
+#include "server/zone/managers/auction/TerminalListVector.h"
 
 #include "engine/core/ManagedObject.h"
 
@@ -66,17 +56,27 @@ class AuctionsMap : public ManagedObject {
 public:
 	AuctionsMap();
 
-	int addItem(SceneObject* vendor, String& uid, AuctionItem* item);
+	int addItem(CreatureObject* player, SceneObject* vendor, AuctionItem* item);
+
+	int removeItem(SceneObject* vendor, AuctionItem* item);
 
 	AuctionItem* getItem(unsigned long long id);
 
-	SortedVector<ManagedReference<AuctionItem* > > getVendorItems(const String& search);
+	bool containsItem(unsigned long long id);
 
-	SortedVector<ManagedReference<AuctionItem* > > getBazaarItems(const String& search);
+	TerminalListVector getVendorTerminalData(const String& planet, const String& region, SceneObject* vendor);
 
-	int getVendorItemCount(PlayerObject* ghost);
+	TerminalListVector getBazaarTerminalData(const String& planet, const String& region, SceneObject* vendor);
 
-	int getBazaarItemCount(PlayerObject* ghost);
+	int getVendorItemCount(SceneObject* vendor);
+
+	void deleteTerminalItems(SceneObject* vendor);
+
+	int getBazaarItemCount(CreatureObject* player);
+
+	void updateUID(SceneObject* vendor, const String& oldUID, const String& newUID);
+
+	void updateVendorSearch(SceneObject* vendor, bool enabled);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -104,38 +104,58 @@ namespace auction {
 
 class AuctionsMapImplementation : public ManagedObjectImplementation {
 protected:
-	VectorMap<String, SortedVector<ManagedReference<AuctionItem* > >*> vendorItemsForSale;
+	AuctionTerminalMap vendorItemsForSale;
 
-	VectorMap<String, SortedVector<ManagedReference<AuctionItem* > >*> bazaarItemsForSale;
+	AuctionTerminalMap bazaarItemsForSale;
 
 	VectorMap<unsigned long long, ManagedReference<AuctionItem* > > allItems;
+
+	VectorMap<unsigned long long, int> bazaarCount;
+
+	Logger logger;
 
 public:
 	AuctionsMapImplementation();
 
 	AuctionsMapImplementation(DummyConstructorParameter* param);
 
-	int addItem(SceneObject* vendor, String& uid, AuctionItem* item);
+	int addItem(CreatureObject* player, SceneObject* vendor, AuctionItem* item);
 
 private:
-	int addVendorItem(SceneObject* vendor, String& uid, AuctionItem* item);
+	int addVendorItem(CreatureObject* player, const String& planet, const String& region, SceneObject* vendor, AuctionItem* item);
 
-	int addBazaarItem(String& uid, AuctionItem* item);
+	int addBazaarItem(CreatureObject* player, const String& planet, const String& region, SceneObject* vendor, AuctionItem* item);
+
+public:
+	int removeItem(SceneObject* vendor, AuctionItem* item);
+
+private:
+	int removeVendorItem(SceneObject* vendor, AuctionItem* item);
+
+	int removeBazaarItem(SceneObject* vendor, AuctionItem* item);
 
 public:
 	AuctionItem* getItem(unsigned long long id);
 
-	SortedVector<ManagedReference<AuctionItem* > > getVendorItems(const String& search);
+	bool containsItem(unsigned long long id);
 
-	SortedVector<ManagedReference<AuctionItem* > > getBazaarItems(const String& search);
+	TerminalListVector getVendorTerminalData(const String& planet, const String& region, SceneObject* vendor);
+
+	TerminalListVector getBazaarTerminalData(const String& planet, const String& region, SceneObject* vendor);
 
 private:
 	void sendVendorUpdateMail(SceneObject* vendor, bool isEmpty);
 
 public:
-	int getVendorItemCount(PlayerObject* ghost);
+	int getVendorItemCount(SceneObject* vendor);
 
-	int getBazaarItemCount(PlayerObject* ghost);
+	void deleteTerminalItems(SceneObject* vendor);
+
+	int getBazaarItemCount(CreatureObject* player);
+
+	void updateUID(SceneObject* vendor, const String& oldUID, const String& newUID);
+
+	void updateVendorSearch(SceneObject* vendor, bool enabled);
 
 	WeakReference<AuctionsMap*> _this;
 
@@ -180,13 +200,23 @@ public:
 
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
-	int addItem(SceneObject* vendor, String& uid, AuctionItem* item);
+	int addItem(CreatureObject* player, SceneObject* vendor, AuctionItem* item);
+
+	int removeItem(SceneObject* vendor, AuctionItem* item);
 
 	AuctionItem* getItem(unsigned long long id);
 
-	int getVendorItemCount(PlayerObject* ghost);
+	bool containsItem(unsigned long long id);
 
-	int getBazaarItemCount(PlayerObject* ghost);
+	int getVendorItemCount(SceneObject* vendor);
+
+	void deleteTerminalItems(SceneObject* vendor);
+
+	int getBazaarItemCount(CreatureObject* player);
+
+	void updateUID(SceneObject* vendor, const String& oldUID, const String& newUID);
+
+	void updateVendorSearch(SceneObject* vendor, bool enabled);
 
 };
 

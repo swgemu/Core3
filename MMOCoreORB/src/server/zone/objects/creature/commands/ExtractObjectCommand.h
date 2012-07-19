@@ -74,6 +74,9 @@ public:
 				return GENERALERROR;
 			}
 
+			if (!object->isASubChildOf(creature))
+				return GENERALERROR;
+
 			ManagedReference<FactoryCrate*> crate = cast<FactoryCrate*>( object.get());
 
 			if (!crate->extractObjectToParent()) {

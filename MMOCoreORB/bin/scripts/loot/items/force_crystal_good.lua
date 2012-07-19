@@ -12,7 +12,7 @@ force_crystal_good = {
 		{"hitpoints",650,750,0},		
 		{"woundchance",2,4,5},
 		{"attackhealthcost",0,3,0},
-		{"attackmindcost",0,3,0},
+		{"attackactioncost",0,3,0},
 		{"attackmindcost",0,3,0},
 		{"forcecost",0,6,0},
 	    {"color",31,31,0},

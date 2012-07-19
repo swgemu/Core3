@@ -86,6 +86,8 @@ namespace server {
 			int webSessionTimeout;
 			String revision;
 
+			int purgeDeletedCharacters;
+
 			String loginRequiredVersion;
 			int loginProcessingThreads;
 			int loginAllowedConnections;
@@ -292,6 +294,10 @@ namespace server {
 
 			SortedVector<String>* getEnabledZones() {
 				return &enabledZones;
+			}
+
+			inline int getPurgeDeletedCharacters() {
+				return purgeDeletedCharacters;
 			}
 		};
 	}

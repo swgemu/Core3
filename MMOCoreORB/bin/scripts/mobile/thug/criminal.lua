@@ -36,7 +36,16 @@ criminal = Creature:new {
 					"object/mobile/dressed_criminal_thug_bothan_male_01.iff",
 					"object/mobile/dressed_villain_trandoshan_female_01.iff"
 					},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 6000000},
+				{group = "tailor_components", chance = 5500000},
+				{group = "loot_kit_parts", chance = 1500000}
+			},
+			lootChance = 2200000
+		}
+	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)

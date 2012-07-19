@@ -30,6 +30,7 @@ tusken_executioner = Creature:new {
 	lootGroups = {
 		{
 			groups = {
+				{group = "junk", chance = 5000000},
 				{group = "tusken", chance = 3000000},
 				{group = "armor_attachments", chance = 500000},
 				{group = "clothing_attachments", chance = 500000},

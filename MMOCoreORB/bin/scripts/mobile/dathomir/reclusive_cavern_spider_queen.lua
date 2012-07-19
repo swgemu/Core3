@@ -21,10 +21,11 @@ reclusive_cavern_spider_queen = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
+	scale = 3.0,
 
 	templates = {"object/mobile/gaping_spider_recluse.iff"},
 	lootGroups = {},

@@ -46,10 +46,10 @@ UnarmedLegHit1Command = {
 
 	damageMultiplier = 2.5,
 	speedMultiplier = 2.0,
-
 	healthCostMultiplier = 1.75,
 	actionCostMultiplier = 1.75,
 	mindCostMultiplier = 1.75,
+        accuracyBonus = 15,
 
 	poolsToDamage = ACTION_ATTRIBUTE,
 

@@ -8,24 +8,19 @@
 #ifndef VENDORDATACOMPONENT_H_
 #define VENDORDATACOMPONENT_H_
 
-#include "VendorDataComponent.h"
+#include "AuctionTerminalDataComponent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/scene/components/DataObjectComponent.h"
 #include "server/zone/objects/auction/AuctionItem.h"
 #include "server/zone/managers/vendor/VendorManager.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/managers/auction/AuctionsMap.h"
 #include "server/zone/Zone.h"
 
-class VendorDataComponent : public DataObjectComponent {
+class VendorDataComponent : public AuctionTerminalDataComponent {
 protected:
 	uint64 ownerId;
-	uint64 vendorId;
-
-	ManagedReference<TangibleObject*> vendor;
 
 	Reference<Task*> vendorCheckTask;
 
-	String location;
 	bool initialized;
 	bool vendorSearchEnabled;
 	bool disabled;
@@ -38,13 +33,27 @@ protected:
 	Time lastXpAward;
 	int awardUsageXP;
 
-	String UID;
+	bool adBarking;
+
+	Time emptyTimer;
+	Time inactiveTimer;
+
+	bool mail1Sent;
+	bool mail2Sent;
 
 public:
 	/// 5 minutes
-	static const int USEXPINTERVAL = 1;//60 * 5;
+	static const int USEXPINTERVAL = 5;
+
 	// 60 Minutes
-	static const int VENDORCHECKINTERVAL = 1;//60 * 5;
+	static const int VENDORCHECKINTERVAL = 60;
+	static const int VENDORCHECKDELAY = 20;
+
+	static const int FIRSTWARNING = 60 * 60 * 24 * 25; // 5 days
+	static const int SECONDWARNING = 60 * 60 * 24 * 50; // 10 days
+	static const int EMPTYDELETE = 60 * 60 * 24 * 14; // 14 days
+
+	static const int DELETEWARNING = 60 * 60 * 24 * 100; // 100 days
 
 public:
 	VendorDataComponent();
@@ -72,32 +81,8 @@ public:
 		return ownerId;
 	}
 
-	void updateUID() {
-
-		if(vendor == NULL)
-			return;
-
-		UID = vendor->getZone()->getZoneName() + ".";
-
-		String region = vendor->getZone()->getZoneName();
-		ManagedReference<CityRegion*> cityRegion = vendor->getCityRegion();
-		if(cityRegion != NULL)
-			region = cityRegion->getRegionName();
-
-		UID += region + "." + vendor->getDisplayedName() + "#";
-		UID += String::valueOf(vendor->getPositionX()) + "," + String::valueOf(vendor->getPositionY());
-	}
-
-	String getUID() {
-		return UID;
-	}
-
 	bool isVendorData() {
 		return true;
-	}
-	inline void setVendor(TangibleObject* objRef) {
-		vendor = objRef;
-		vendorId = objRef->getObjectID();
 	}
 
 	inline void setInitialized(bool val) {
@@ -105,9 +90,7 @@ public:
 		updateUID();
 	}
 
-	inline void setVendorSearchEnabled(bool enabled) {
-		vendorSearchEnabled = enabled;
-	}
+	void setVendorSearchEnabled(bool enabled);
 
 	inline void setDisabled(bool isDisabled) {
 		disabled = isDisabled;
@@ -115,19 +98,12 @@ public:
 
 	inline void setRegistered(bool reg) {
 		registered = reg;
-	}
 
-
-	inline TangibleObject* getVendor() {
-		return vendor;
-	}
-
-	virtual inline String getLocation() {
-		return location;
-	}
-
-	inline void setLocation(const String& loc) {
-		location = loc;
+		/// This is just a precaution in case somehow items get lost
+		/// and this would link up a missing auction list unless it was totally
+		/// gone
+		if(registered)
+			updateUID();
 	}
 
 	inline int getOwnershipRightsOf(CreatureObject* player) {
@@ -163,11 +139,51 @@ public:
 	}
 
 	inline void awardUseXP() {
-		if(time(0) - lastXpAward.getTime() > USEXPINTERVAL) {
+		if(time(0) - lastXpAward.getTime() > USEXPINTERVAL * 60) {
 			awardUsageXP++;
 			lastXpAward.updateToCurrentTime();
 		}
 	}
+
+	inline bool isAdBarkingEnabled() {
+		return adBarking;
+	}
+
+	inline void setAdBarking(bool value) {
+		adBarking = value;
+	}
+
+	inline bool isEmpty() {
+
+		if(auctionManager == NULL)
+			return false;
+
+		ManagedReference<AuctionsMap*> auctionsMap = auctionManager->getAuctionMap();
+		if(auctionsMap == NULL) {
+			return false;
+		}
+
+		return auctionsMap->getVendorItemCount(parent) == 0;
+	}
+
+	inline void setEmpty() {
+		mail1Sent = false;
+		mail2Sent = false;
+
+		emptyTimer.updateToCurrentTime();
+	}
+
+	inline int getMaint() {
+		return maintAmount;
+	}
+
+	void payMaintanence();
+
+	void withdrawMaintanence();
+
+	void handlePayMaintanence(int value);
+
+	void handleWithdrawMaintanence(int value);
 
 	private:
 		void addSerializableVariables();

@@ -12,6 +12,7 @@
 #include "AiMap.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
+#include "server/chat/ChatManager.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/faction/FactionManager.h"
@@ -61,7 +62,7 @@ void CreatureManagerImplementation::spawnRandomCreaturesAround(SceneObject* crea
 	spawnRandomCreature(1, newX, zone->getHeight(newX, newY), newY);
 }
 
-TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, int minDifficulty, int maxDifficulty, float x, float z, float y) {
+TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y) {
 	LairTemplate* lairTmpl = creatureTemplateManager->getLairTemplate(lairTemplate);
 
 	if (lairTmpl == NULL)
@@ -69,7 +70,7 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
 
  	String buildingToSpawn;
 
- 	VectorMap<String, uint32>* mobiles = lairTmpl->getMobiles();
+ 	VectorMap<String, int>* mobiles = lairTmpl->getMobiles();
 
  	if (mobiles->size() == 0)
  		return NULL;
@@ -78,7 +79,7 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
 
  	String mobile = mobiles->elementAt(rand).getKey();
 
- 	buildingToSpawn = lairTmpl->getBuilding((uint32)maxDifficulty);
+ 	buildingToSpawn = lairTmpl->getBuilding((uint32)difficulty);
 
  	if (buildingToSpawn.isEmpty()) {
  		error("error spawning " + buildingToSpawn);
@@ -96,14 +97,14 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
 
  	building->setPvpStatusBitmask(CreatureFlag::ATTACKABLE);
  	building->setOptionsBitmask(0, false);
- 	building->setMaxCondition(maxDifficulty * 1000);
+ 	building->setMaxCondition(difficulty * 1000);
  	building->setConditionDamage(0, false);
  	building->initializePosition(x, z, y);
 
  	ManagedReference<LairObserver*> lairObserver = new LairObserver();
  	lairObserver->deploy();
  	lairObserver->setLairTemplate(lairTmpl);
- 	lairObserver->setDifficulty(minDifficulty, maxDifficulty);
+ 	lairObserver->setDifficulty(difficulty);
  	lairObserver->setObserverType(ObserverType::LAIR);
 
  	building->registerObserver(ObserverEventType::OBJECTDESTRUCTION, lairObserver);
@@ -616,14 +617,22 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 	if (!clothing->isWearableObject() && !clothing->isWeaponObject())
 		return false;
 
+	ChatManager* chatMan = zoneServer->getChatManager();
+
 	SharedTangibleObjectTemplate* tanoData = dynamic_cast<SharedTangibleObjectTemplate*>(clothing->getObjectTemplate());
 	Vector<uint32>* races = tanoData->getPlayerRaces();
 	String race = creature->getObjectTemplate()->getFullTemplateString();
 
 	if (!races->contains(race.hashCode())) {
-		String message = "I can't wear that";
-		SpatialChat* cmsg = new SpatialChat(creature->getObjectID(), 0, message, 0, creature->getMoodID(), 0, 0);
-		creature->broadcastMessage(cmsg, false);
+		UnicodeString message;
+
+		if(creature->getObjectTemplate()->getFullTemplateString().contains("ithorian"))
+			message = "@player_structure:wear_not_ithorian";
+		else
+			message = "@player_structure:wear_no";
+
+		chatMan->broadcastMessage(creature, message, clothing->getObjectID(), creature->getMoodID(), 0);
+
 		return false;
 	}
 
@@ -646,9 +655,13 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 	creature->doAnimation("pose_proudly");
 	creature->broadcastObject(clothing, true);
 
-	String message = "Thank you, much better";
-	SpatialChat* cmsg = new SpatialChat(creature->getObjectID(), 0, message, 0, creature->getMoodID(), 0, 0);
-	creature->broadcastMessage(cmsg, false);
+	UnicodeString message;
+	if(clothing->isWeaponObject())
+		message = "@player_structure:wear_yes_weapon";
+	else
+		message = "@player_structure:wear_yes";
+
+	chatMan->broadcastMessage(creature, message, clothing->getObjectID(), creature->getMoodID(), 0);
 
 	return true;
 }

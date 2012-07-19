@@ -24,7 +24,7 @@
  *	DestroyMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNLAIR__,RPC_DESTROYOBJECTFROMDATABASE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SETDIFFICULTY__INT_INT_,};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNLAIR__,RPC_DESTROYOBJECTFROMDATABASE__,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SETDIFFICULTY__INT_,};
 
 DestroyMissionObjective::DestroyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	DestroyMissionObjectiveImplementation* _implementation = new DestroyMissionObjectiveImplementation(mission);
@@ -156,19 +156,18 @@ void DestroyMissionObjective::setLairTemplateToSpawn(const String& sp) {
 		_implementation->setLairTemplateToSpawn(sp);
 }
 
-void DestroyMissionObjective::setDifficulty(int min, int max) {
+void DestroyMissionObjective::setDifficulty(int diff) {
 	DestroyMissionObjectiveImplementation* _implementation = static_cast<DestroyMissionObjectiveImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETDIFFICULTY__INT_INT_);
-		method.addSignedIntParameter(min);
-		method.addSignedIntParameter(max);
+		DistributedMethod method(this, RPC_SETDIFFICULTY__INT_);
+		method.addSignedIntParameter(diff);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setDifficulty(min, max);
+		_implementation->setDifficulty(diff);
 }
 
 Vector3 DestroyMissionObjective::getEndPosition() {
@@ -298,13 +297,8 @@ bool DestroyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* 
 		return true;
 	}
 
-	if (_name == "DestroyMissionObjective.minDifficulty") {
-		TypeInfo<int >::parseFromBinaryStream(&minDifficulty, stream);
-		return true;
-	}
-
-	if (_name == "DestroyMissionObjective.maxDifficulty") {
-		TypeInfo<int >::parseFromBinaryStream(&maxDifficulty, stream);
+	if (_name == "DestroyMissionObjective.difficulty") {
+		TypeInfo<int >::parseFromBinaryStream(&difficulty, stream);
 		return true;
 	}
 
@@ -349,32 +343,22 @@ int DestroyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DestroyMissionObjective.minDifficulty";
+	_name = "DestroyMissionObjective.difficulty";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<int >::toBinaryStream(&minDifficulty, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "DestroyMissionObjective.maxDifficulty";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<int >::toBinaryStream(&maxDifficulty, stream);
+	TypeInfo<int >::toBinaryStream(&difficulty, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 5;
+	return _count + 4;
 }
 
 DestroyMissionObjectiveImplementation::DestroyMissionObjectiveImplementation(MissionObject* mission) : MissionObjectiveImplementation(mission) {
 	_initializeImplementation();
-	// server/zone/objects/mission/DestroyMissionObjective.idl():  		minDifficulty = 0;
-	minDifficulty = 0;
-	// server/zone/objects/mission/DestroyMissionObjective.idl():  		maxDifficulty = 0;
-	maxDifficulty = 0;
+	// server/zone/objects/mission/DestroyMissionObjective.idl():  		difficulty = 0;
+	difficulty = 0;
 	// server/zone/objects/mission/DestroyMissionObjective.idl():  		Logger.setLoggingName("DestroyMissionObjective");
 	Logger::setLoggingName("DestroyMissionObjective");
 }
@@ -389,11 +373,9 @@ void DestroyMissionObjectiveImplementation::initializeTransientMembers() {
 	Logger::setLoggingName("MissionObject");
 }
 
-void DestroyMissionObjectiveImplementation::setDifficulty(int min, int max) {
-	// server/zone/objects/mission/DestroyMissionObjective.idl():  		minDifficulty = min;
-	minDifficulty = min;
-	// server/zone/objects/mission/DestroyMissionObjective.idl():  		maxDifficulty = max;
-	maxDifficulty = max;
+void DestroyMissionObjectiveImplementation::setDifficulty(int diff) {
+	// server/zone/objects/mission/DestroyMissionObjective.idl():  		difficulty = diff;
+	difficulty = diff;
 }
 
 /*
@@ -451,9 +433,9 @@ void DestroyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMeth
 			resp->insertSignedInt(notifyObserverEvent(static_cast<MissionObserver*>(inv->getObjectParameter()), inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		}
 		break;
-	case RPC_SETDIFFICULTY__INT_INT_:
+	case RPC_SETDIFFICULTY__INT_:
 		{
-			setDifficulty(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+			setDifficulty(inv->getSignedIntParameter());
 		}
 		break;
 	default:
@@ -493,8 +475,8 @@ int DestroyMissionObjectiveAdapter::notifyObserverEvent(MissionObserver* observe
 	return (static_cast<DestroyMissionObjective*>(stub))->notifyObserverEvent(observer, eventType, observable, arg1, arg2);
 }
 
-void DestroyMissionObjectiveAdapter::setDifficulty(int min, int max) {
-	(static_cast<DestroyMissionObjective*>(stub))->setDifficulty(min, max);
+void DestroyMissionObjectiveAdapter::setDifficulty(int diff) {
+	(static_cast<DestroyMissionObjective*>(stub))->setDifficulty(diff);
 }
 
 /*

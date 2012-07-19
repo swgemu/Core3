@@ -11,13 +11,8 @@
 #include "engine/engine.h"
 #include "VendorSelectionNode.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "VendorOutfitManager.h"
-#include "server/zone/objects/area/ActiveArea.h"
-#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/name/NameManager.h"
-
+#include "VendorOutfitManager.h"
 
 namespace server {
 namespace zone {
@@ -56,6 +51,8 @@ public:
 	void promptRenameVendorTo(CreatureObject* player, TangibleObject* vendor);
 
 	void handleDestroyCallback(CreatureObject* player, TangibleObject* vendor);
+
+	void destroyVendor(SceneObject* vendor);
 
 	void sendRegisterVendorTo(CreatureObject* player, TangibleObject* vendor);
 

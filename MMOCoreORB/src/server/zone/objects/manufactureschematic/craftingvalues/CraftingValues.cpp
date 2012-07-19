@@ -696,7 +696,7 @@ float CraftingValues::getMaxPercentageAverage(const int i) {
 
 	subclasses = experimentalValuesMap.get(title);
 
-	float average = 0;
+	float value = 0;
 	float count = 0;
 
 	for (int j = 0; j < subclasses->size(); ++j) {
@@ -706,12 +706,13 @@ float CraftingValues::getMaxPercentageAverage(const int i) {
 				values->getMaxPercentage() <= 1.0f
 				&& !values->isFiller()) {
 
-			average += values->getMaxPercentage();
-			count++;
+			if(values->getMaxPercentage() > value)
+				value = values->getMaxPercentage();
+
 		}
 	}
 
-	return (average / count);
+	return value;
 }
 
 float CraftingValues::getMaxValue(const String& attribute) {
@@ -912,7 +913,7 @@ String CraftingValues::toString() {
 		str << "\n*************************" << endl;
 		str << "Subclass " << i << endl;
 		str << "Class: " << tempSubclasses->getClassTitle() << endl;
-		str << "Average %: " << getMaxPercentageAverage(i);
+		str << "Average %: " << getMaxPercentageAverage(i) << endl;
 		str << tempSubclasses->toString();
 		str << "**************************" << endl;
 	}

@@ -22,7 +22,11 @@
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/creature/commands/BoardShuttleCommand.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/creature/commands/BoardShuttleCommand.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/creature/commands/BoardShuttleCommand.h"
 
@@ -30,6 +34,8 @@ int BoardShuttleCommand::MAXIMUM_PLAYER_COUNT = 3000;
 
 void CityRegionImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
+
+	loaded = false;
 }
 
 void CityRegionImplementation::notifyLoadFromDatabase() {
@@ -80,6 +86,8 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 		if (shuttle != NULL)
 			zone->getPlanetManager()->scheduleShuttle(shuttle);
 	}
+
+	loaded = true;
 }
 
 void CityRegionImplementation::initialize() {
@@ -177,28 +185,21 @@ int CityRegionImplementation::getTimeToUpdate() {
 }
 
 void CityRegionImplementation::notifyEnter(SceneObject* object) {
+
 	object->setCityRegion(_this.get());
 
-	if (object->isBazaarTerminal()) {
-		TangibleObject* bazaar = cast<TangibleObject*>(object);
-		if(bazaar == NULL) {
-			error("Bazaar terminal isn't really a bazaar terminal");
-			return;
-		}
-		bazaars.put(object->getObjectID(), bazaar);
-	}
+	if (object->isBazaarTerminal() || object->isVendor()) {
 
-	if (object->isVendor()) {
+		if (object->isBazaarTerminal())
+			bazaars.put(object->getObjectID(), cast<TangibleObject*>(object));
 
-		VendorDataComponent* vendorData = NULL;
+		AuctionTerminalDataComponent* terminalData = NULL;
 		DataObjectComponentReference* data = object->getDataObjectComponent();
-		if(data != NULL && data->get() != NULL && data->get()->isVendorData())
-			vendorData = cast<VendorDataComponent*>(data->get());
+		if(data != NULL && data->get() != NULL && data->get()->isAuctionTerminalData())
+			terminalData = cast<AuctionTerminalDataComponent*>(data->get());
 
-		if(vendorData != NULL)
-			vendorData->updateUID();
-		else
-			error("Unable to update vendor UID");
+		if(terminalData != NULL)
+			terminalData->updateUID();
 	}
 
 	if (object->isPlayerCreature())
@@ -248,23 +249,22 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 }
 
 void CityRegionImplementation::notifyExit(SceneObject* object) {
+
+
 	object->setCityRegion(NULL);
 
-	if (object->isBazaarTerminal()) {
-		bazaars.drop(object->getObjectID());
-	}
+	if (object->isBazaarTerminal() || object->isVendor()) {
 
-	if (object->isVendor()) {
+		if (object->isBazaarTerminal())
+			bazaars.drop(object->getObjectID());
 
-		VendorDataComponent* vendorData = NULL;
+		AuctionTerminalDataComponent* terminalData = NULL;
 		DataObjectComponentReference* data = object->getDataObjectComponent();
-		if(data != NULL && data->get() != NULL && data->get()->isVendorData())
-			vendorData = cast<VendorDataComponent*>(data->get());
+		if(data != NULL && data->get() != NULL && data->get()->isAuctionTerminalData())
+			terminalData = cast<AuctionTerminalDataComponent*>(data->get());
 
-		if(vendorData != NULL)
-			vendorData->updateUID();
-		else
-			error("Unable to update vendor UID");
+		if(terminalData != NULL)
+			terminalData->updateUID();
 	}
 
 	if (object->isPlayerCreature())

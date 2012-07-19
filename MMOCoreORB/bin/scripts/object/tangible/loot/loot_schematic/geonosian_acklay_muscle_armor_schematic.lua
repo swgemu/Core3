@@ -45,6 +45,7 @@ object_tangible_loot_loot_schematic_geonosian_acklay_muscle_armor_schematic = ob
 	templateType = LOOTSCHEMATIC,
 	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
 	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "crafting_armorsmith_master",
 	targetDraftSchematic = "object/draft_schematic/armor/armor_segment_ris_acklay.iff",
 	targetUseCount = 5
 }

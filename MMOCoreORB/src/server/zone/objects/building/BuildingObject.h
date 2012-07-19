@@ -138,6 +138,8 @@ public:
 
 	void broadcastCellPermissions();
 
+	void broadcastCellPermissions(unsigned long long objectid);
+
 	bool isAllowedEntry(CreatureObject* player);
 
 	int notifyStructurePlaced(CreatureObject* player);
@@ -217,6 +219,8 @@ public:
 	String getRedeedMessage();
 
 	bool hasAccessFee();
+
+	int getAccessFee();
 
 	bool canChangeAccessFee();
 
@@ -305,6 +309,8 @@ public:
 
 	void broadcastCellPermissions();
 
+	void broadcastCellPermissions(unsigned long long objectid);
+
 	bool isAllowedEntry(CreatureObject* player);
 
 	virtual int notifyStructurePlaced(CreatureObject* player);
@@ -385,6 +391,8 @@ public:
 
 	bool hasAccessFee();
 
+	int getAccessFee();
+
 	bool canChangeAccessFee();
 
 	void setAccessFee(int fee, int duration);
@@ -462,6 +470,8 @@ public:
 
 	void broadcastCellPermissions();
 
+	void broadcastCellPermissions(unsigned long long objectid);
+
 	bool isAllowedEntry(CreatureObject* player);
 
 	int notifyStructurePlaced(CreatureObject* player);
@@ -527,6 +537,8 @@ public:
 	String getRedeedMessage();
 
 	bool hasAccessFee();
+
+	int getAccessFee();
 
 	bool canChangeAccessFee();
 

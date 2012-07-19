@@ -12,6 +12,8 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
 void InstallationObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (!sceneObject->isInstallationObject())
@@ -35,6 +37,7 @@ void InstallationObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneO
 	menuResponse->addRadialMenuItem(117, 3, "@player_structure:permissions"); //Structure Permissions
 	menuResponse->addRadialMenuItemToRadialID(117, 121, 3, "@player_structure:permission_admin"); //Administrator List
 	menuResponse->addRadialMenuItemToRadialID(117, 123, 3, "@player_structure:permission_hopper"); //Hopper List
+
 }
 
 int InstallationObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
@@ -89,9 +92,12 @@ int InstallationObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneOb
 		installation->sendPermissionListTo(player, "HOPPER");
 		break;
 
+
 	default:
 		break;
 	}
 
 	return 0;
 }
+
+

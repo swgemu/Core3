@@ -100,7 +100,7 @@ ZoneServerImplementation::ZoneServerImplementation(ConfigManager* config) :
 	processor = NULL;
 	
 	
-	serverCap = 3000;
+	serverCap = 1500;
 
 	phandler = NULL;
 
@@ -210,6 +210,9 @@ void ZoneServerImplementation::initialize() {
 	cityManager->deploy("CityManager");
 	cityManager->loadLuaConfig();
 
+	auctionManager = new AuctionManager(_this.get());
+	auctionManager->deploy();
+
 	missionManager = new MissionManager(_this.get(), processor);
 	missionManager->deploy("MissionManager");
 
@@ -217,8 +220,8 @@ void ZoneServerImplementation::initialize() {
 
 	startManagers();
 
-	serverState = LOCKED;
-	//serverState = ONLINE; //Test Center does not need to apply this change, but would be convenient for Dev Servers.
+	//serverState = LOCKED;
+	serverState = ONLINE; //Test Center does not need to apply this change, but would be convenient for Dev Servers.
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
@@ -256,10 +259,6 @@ void ZoneServerImplementation::startZones() {
 void ZoneServerImplementation::startManagers() {
 	info("loading managers..");
 
-	auctionManager = new AuctionManager(_this.get());
-	auctionManager->deploy();
-	auctionManager->initialize();
-
 	radialManager = new RadialManager(_this.get());
 	radialManager->deploy("RadialManager");
 
@@ -275,6 +274,8 @@ void ZoneServerImplementation::startManagers() {
 
 	//start global screne plays
 	DirectorManager::instance()->startGlobalScreenPlays();
+
+	auctionManager->initialize();
 }
 
 void ZoneServerImplementation::start(int p, int mconn) {
@@ -353,8 +354,6 @@ void ZoneServerImplementation::stopManagers() {
 ZoneClientSession* ZoneServerImplementation::createConnection(Socket* sock, SocketAddress& addr) {
 	/*if (!userManager->checkUser(addr.getIPID()))
 		return NULL;*/
-		
-	//static AtomicInteger count;
 
 	BaseClientProxy* session = new BaseClientProxy(sock, addr);
 
@@ -368,7 +367,7 @@ ZoneClientSession* ZoneServerImplementation::createConnection(Socket* sock, Sock
 
 	ZoneClientSession* client = new ZoneClientSession(session);
 	//clients arent undeployed instantly so we get already deployed clients
-	//client->deploy("ZoneClientSession " + addr.getFullIPAddress() );
+	//client->deploy("ZoneClientSession " + addr.getFullIPAddress());
 	//client->deploy();
 
 	String address = session->getAddress();

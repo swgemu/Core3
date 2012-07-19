@@ -397,6 +397,9 @@ void RangedStimPackImplementation::fillAttributeList(AttributeListMessage* msg, 
 
 int RangedStimPackImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		if 
+	if (!isASubChildOf(player))	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  			return 0;
+	return 0;
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		if 
 	if (selectedID != 20)	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  			return 1;
 	return 1;
 	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		}
@@ -442,8 +445,8 @@ unsigned int RangedStimPackImplementation::calculatePower(CreatureObject* healer
 	float power = getEffectiveness();
 	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		float 
 	if (applyBattleFatigue){
-	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  			power = power - power * patient.calculateBFRatio();
-	power = power - power * patient->calculateBFRatio();
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  			power = power - (power * patient.calculateBFRatio() * healer.calculateBFRatio());
+	power = power - (power * patient->calculateBFRatio() * healer->calculateBFRatio());
 }
 	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		float modSkill = (float) healer.getSkillMod("combat_medic_effectiveness");
 	float modSkill = (float) healer->getSkillMod("combat_medic_effectiveness");

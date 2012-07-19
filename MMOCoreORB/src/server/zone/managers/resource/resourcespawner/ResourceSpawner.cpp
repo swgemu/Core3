@@ -43,9 +43,6 @@
  */
 
 #include "ResourceSpawner.h"
-#include "SurveyTask.h"
-#include "SampleTask.h"
-#include "SampleResultsTask.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
@@ -53,6 +50,7 @@
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/packets/resource/ResourceListForSurveyMessage.h"
 #include "server/zone/packets/resource/SurveyMessage.h"
+#include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
@@ -617,7 +615,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 	String zoneName = player->getZone()->getZoneName();
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-	Survey* surveyMessage = new Survey();
+	SurveyMessage* surveyMessage = new SurveyMessage();
 
 	int toolRange = surveyTool->getRange(player);
 	int points = surveyTool->getPoints();
@@ -684,8 +682,8 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 	player->sendMessage(sysMessage);
 
 	ManagedReference<ResourceSpawn*> resourceSpawn = resourceMap->get(resname.toLowerCase());
-	Reference<SurveyTask*> surveyTask = new SurveyTask(player, surveyMessage, waypoint, maxDensity * 100, resourceSpawn);
-	player->addPendingTask("survey", surveyTask, 3000);
+
+	session->rescheduleSurvey(surveyMessage, waypoint, maxDensity, resourceSpawn);
 }
 
 void ResourceSpawner::sendSample(CreatureObject* player, const String& resname,
@@ -727,14 +725,8 @@ void ResourceSpawner::sendSample(CreatureObject* player, const String& resname,
 	// Get resource Density ay players position
 	float density = resourceMap->getDensityAt(resname, zoneName, posX, posY);
 
-	// Add sampleresultstask
-	Reference<SampleResultsTask*> sampleResultsTask = new SampleResultsTask(
-			player, this, density, resname);
-	player->addPendingTask("sampleresults", sampleResultsTask, 3000);
-
-	// Add sampletask
-	Reference<SampleTask*> sampleTask = new SampleTask(player, surveyTool);
-	player->addPendingTask("sample", sampleTask, 18000);
+	session->rescheduleSampleResults(this, density, resname);
+	session->rescheduleSample();
 }
 
 void ResourceSpawner::sendSampleResults(CreatureObject* player,

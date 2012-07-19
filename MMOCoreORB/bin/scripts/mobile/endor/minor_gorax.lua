@@ -21,7 +21,7 @@ minor_gorax = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
@@ -30,11 +30,11 @@ minor_gorax = Creature:new {
 	lootGroups = {
 	    {
 	        groups = {
-				{group = "minor_gorax", chance = 3000000},
-				{group = "armor_attachments", chance = 3500000},
-				{group = "clothing_attachments", chance = 3500000}
+				{group = "minor_gorax", chance = 5000000},
+				{group = "armor_attachments", chance = 2500000},
+				{group = "clothing_attachments", chance = 2500000}
 			},
-			lootChance = 6000000
+			lootChance = 3000000
 		}
 	},
 	weapons = {},

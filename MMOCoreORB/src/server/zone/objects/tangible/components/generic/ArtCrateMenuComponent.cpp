@@ -28,6 +28,9 @@ int ArtCrateMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 	if (!player->isPlayerCreature())
 		return 0;
 
+	if (!sceneObject->isASubChildOf(player))
+		return 0;
+
 	if (selectedID == 20) {
 		ManagedReference<LootManager*> lootManager = sceneObject->getZone()->getZoneServer()->getLootManager();
 

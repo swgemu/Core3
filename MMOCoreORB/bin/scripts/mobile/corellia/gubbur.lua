@@ -26,7 +26,7 @@ gubbur = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/gubbur.iff"},
+	templates = {"object/mobile/gubbur_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

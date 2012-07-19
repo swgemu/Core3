@@ -61,7 +61,7 @@ class SampleResultsTask : public Task {
 
 protected:
 	ManagedReference<CreatureObject*> playerCreature;
-	ResourceSpawner* resourceSpawner;
+	Reference<ResourceSpawner*> resourceSpawner;
 	float density;
 	String resname;
 

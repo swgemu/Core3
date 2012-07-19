@@ -21,12 +21,12 @@ swarming_kliknik = Creature:new {
 	milk = 0,
 	tamingChance = 0.05,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/kliknik.iff"},
+	templates = {"object/mobile/kliknik_hue.iff"},
 	lootGroups = {
 	 {
 	        groups = {

@@ -58,9 +58,9 @@ EyeShotCommand = {
 		{}, 
 		{ "blind_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		40, 
+		60, 
 		100, 
-		10 
+		40 
 	  )
 	},
 

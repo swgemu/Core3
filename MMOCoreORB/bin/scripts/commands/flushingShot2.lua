@@ -44,12 +44,14 @@
 FlushingShot2Command = {
         name = "flushingshot2",
 
-	damageMultiplier = 4,
-	speedMultiplier = 2.6,
-	healthCostMultiplier = 1,
-	actionCostMultiplier = 1,
-	mindCostMultiplier = 1,
-	coneAngle = 60,
+	damageMultiplier = 4.0,
+	speedMultiplier = 2.0,
+	healthCostMultiplier = 0.5,
+	actionCostMultiplier = 0.5,
+	mindCostMultiplier = 2.0,
+	accuracyBonus = 5,
+
+	coneAngle = 15,
 	coneAction = true,
 
 	stateEffects = {
@@ -58,9 +60,9 @@ FlushingShot2Command = {
 		{}, 
 		{ "stun_defense", "resistance_states" }, 
 		{ "jedi_state_defense" }, 
-		40, 
 		100, 
-		10 
+		100, 
+		35
 	  ),
 	  StateEffect( 
 		POSTUREUP_EFFECT, 

@@ -44,7 +44,7 @@
 OverChargeShot1Command = {
 	name = "overchargeshot1",
 
-	damageMultiplier = 2,
+	damageMultiplier = 2.75,
 	speedMultiplier = 1.25,
 	healthCostMultiplier = 0.5,
 	actionCostMultiplier = 0.5,

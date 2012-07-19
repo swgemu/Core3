@@ -11,6 +11,10 @@
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 
 int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+
+	if (!isASubChildOf(player))
+		return 0;
+
 	if (selectedID != 20)
 		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 

@@ -47,12 +47,14 @@ public:
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer().get().get());
 		ManagedReference<TangibleObject*> vendor = cast<TangibleObject*>(server->getZoneServer()->getObject(vendorID));
 
-		if (player == NULL || !vendor->isVendor() || vendor == NULL)
+		if (player == NULL || vendor == NULL)
 			return;
 
+		if (!vendor->isBazaarTerminal() && !vendor->isVendor())
+			return;
 
 		AuctionManager* auctionManager = server->getZoneServer()->getAuctionManager();
-		//duration = 60;
+
 		auctionManager->addSaleItem(player, objectID, vendor, description, price, duration, true, premium);
 	}
 

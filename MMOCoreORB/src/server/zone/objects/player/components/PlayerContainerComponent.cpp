@@ -97,37 +97,16 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 
 	if (object->isArmorObject()) {
 		PlayerManager* playerManager = sceneObject->getZoneServer()->getPlayerManager();
-
 		playerManager->applyEncumbrancies(creo, cast<ArmorObject*>(object));
+	}
 
-		WearableObject* armor = cast<WearableObject*>( object);
-		armor->setAttachmentMods(creo);
-
-	} else if (object->isWearableObject()) {
+	if (object->isWearableObject()) {
 		WearableObject* clothing = cast<WearableObject*>( object);
 		clothing->setAttachmentMods(creo);
 	}
 
-	if (object->isRobeObject()) {
-		ManagedReference<PlayerObject*> playerObject = creo->getPlayerObject();
-
-		if (playerObject != NULL && playerObject->getForcePowerMax() > 0) {
-			playerObject->setForcePowerMax(playerObject->getForcePowerMax() + 250);
-			playerObject->setForcePowerRegen(playerObject->getForcePowerRegen() + 10);
-
-			// Increase visibilty for equipping Jedi Robe.
-			VisibilityManager::instance()->increaseVisibility(creo);
-		}
-	}
-
-	if (object->isWeaponObject()){
-		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>( object);
-
-		if (weapon->isJediWeapon()){
-			// Increase visibilty for equipping Lightsaber..
-			VisibilityManager::instance()->increaseVisibility(creo);
-		}
-	}
+	if (object->isRobeObject() || (object->isWeaponObject() && cast<WeaponObject*>(object)->isJediWeapon()))
+		VisibilityManager::instance()->increaseVisibility(creo);
 
 	if (object->isInstrument() && creo->isEntertaining())
 		creo->stopEntertaining();
@@ -145,6 +124,11 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 		}
 	}
 
+	if (creo != NULL && object->isTangibleObject()) {
+		ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(object);
+		tano->addTemplateSkillMods(creo);
+	}
+
 	return ContainerComponent::notifyObjectInserted(sceneObject, object);
 }
 
@@ -157,13 +141,10 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 
 	if (object->isArmorObject()) {
 		PlayerManager* playerManager = creo->getZoneServer()->getPlayerManager();
-
 		playerManager->removeEncumbrancies(creo, cast<ArmorObject*>(object));
+	}
 
-		WearableObject* armor = cast<WearableObject*>( object);
-		armor->setAttachmentMods(creo, true);
-
-	} else if (object->isWearableObject()) {
+	if (object->isWearableObject()) {
 		WearableObject* clothing = cast<WearableObject*>( object);
 		clothing->setAttachmentMods(creo, true);
 	}
@@ -173,26 +154,8 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 			creo->stopEntertaining();
 	}
 
-	if (object->isRobeObject()) {
-		ManagedReference<PlayerObject*> playerObject = creo->getPlayerObject();
-
-		if (playerObject != NULL && playerObject->getForcePowerMax() > 0) {
-			playerObject->setForcePowerMax(playerObject->getForcePowerMax() - 250);
-			playerObject->setForcePowerRegen(playerObject->getForcePowerRegen() - 10);
-
-			// Increase visibilty for unequipping Jedi Robe.
-			VisibilityManager::instance()->increaseVisibility(creo);
-		}
-	}
-
-	if (object->isWeaponObject()){
-		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>( object);
-
-		if (weapon->isJediWeapon()){
-			// Increase visibilty for unequipping Lightsaber..
-			VisibilityManager::instance()->increaseVisibility(creo);
-		}
-	}
+	if (object->isRobeObject() || (object->isWeaponObject() && cast<WeaponObject*>(object)->isJediWeapon()))
+		VisibilityManager::instance()->increaseVisibility(creo);
 
 	//this it to update the equipment list
 	//we need a DeltaVector with all the slotted objects it seems
@@ -205,6 +168,11 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 		if (arrangement != "mission_bag" && arrangement != "ghost" && arrangement != "bank") {
 			creo->removeWearableObject(cast<TangibleObject*>(object), true);
 		}
+	}
+
+	if (creo != NULL && object->isTangibleObject()) {
+		ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(object);
+		tano->removeTemplateSkillMods(creo);
 	}
 
 	return ContainerComponent::notifyObjectRemoved(sceneObject, object, destination);

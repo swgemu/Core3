@@ -1106,108 +1106,92 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap) {
 	uint32 totalDamage = threatMap->getTotalDamage();
 
-	int level = destructedObject->getLevel();
-
-	//info("level: " + String::valueOf(level), true);
-
-	VectorMap<GroupObject*, int> groups;
-	groups.setNullValue(0);
+	VectorMap<ManagedReference<CreatureObject*>, int> slExperience;
+	slExperience.setAllowOverwriteInsertPlan();
+	slExperience.setNullValue(0);
 
 	for (int i = 0; i < threatMap->size(); ++i) {
 		CreatureObject* player = threatMap->elementAt(i).getKey();
+
 		if (!player->isPlayerCreature())
 			continue;
+
+		ManagedReference<GroupObject*> group = player->getGroup();
 
 		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
 
 		Locker crossLocker(player, destructedObject);
 
-		uint32 totalPlayerDamage = 0;
-		uint32 playerWeaponXp = 0;
+		uint32 combatXp = 0;
 
 		for (int j = 0; j < entry->size(); ++j) {
 			uint32 damage = entry->elementAt(j).getValue();
-			totalPlayerDamage += damage;
-
 			String xpType = entry->elementAt(j).getKey();
 
-			int xpAmount = (int) (float((float(damage) / float(totalDamage))) * 40.f * level);
+			float xpAmount =  40.f * destructedObject->getLevel(); //TODO: need better formula for tano exp
 
-			//info("xpAmmount: " + String::valueOf(xpAmmount), true);
+			ManagedReference<AiAgent*> ai = cast<AiAgent*>(destructedObject);
 
-			playerWeaponXp += xpAmount;
+			if (ai != NULL)
+				xpAmount = ai->getBaseXp();
 
-			if (xpType != "jedi_general") {
-				awardExperience(player, xpType, xpAmount);
-				awardExperience(player, "combat_general", playerWeaponXp / 10);
-			} else // Grant Jedi general experience for lightsabers AND Force powers.
-				awardExperience(player, "jedi_general", xpAmount / 4);
+			xpAmount *= (float) damage / totalDamage;
 
+			//Cap xp based on player level
+			xpAmount = MIN(xpAmount, calculatePlayerLevel(player) * 300.f);
+
+			//Apply group bonus if in group
+			if (group != NULL)
+				xpAmount *= 1.20; //TODO: Add groupExperienceModifier to lua player_manager.lua - requires refactor of startingitems (move to player creation manager).
+
+			//Jedi experience doesn't count towards combat experience supposedly.
+			if (xpType != "jedi_general")
+				combatXp += xpAmount;
+
+			//Award individual weapon exp.
+			awardExperience(player, xpType, xpAmount);
 		}
 
-		if (player->isGrouped()) {
-			ManagedReference<GroupObject*> group = player->getGroup();
-			if (!squadLeaderCheck(player, group))
-				continue;
+		combatXp /= 10.f;
 
-			int amount = playerWeaponXp;
+		//Award combat xp
+		awardExperience(player, "combat_general", combatXp);
 
-			if (groups.contains(group)) {
-				amount += groups.get(group);
-				groups.drop(group);
-			}
+		//Check if the group leader is a squad leader
+		if (group == NULL)
+			continue;
 
-			groups.put(group, amount);
+		Vector3 pos(player->getWorldPositionX(), player->getWorldPositionY(), 0);
+
+		crossLocker.release();
+
+		ManagedReference<SceneObject*> groupLeader = group->getLeader();
+
+		if (groupLeader == NULL || !groupLeader->isPlayerCreature())
+			continue;
+
+		CreatureObject* squadLeader = groupLeader.castTo<CreatureObject*>();
+
+		Locker squadLock(squadLeader, destructedObject);
+
+		//If he is a squad leader, and is in range of this player, then add the combat exp for him to use.
+		if (squadLeader->hasSkill("outdoors_squadleader_novice") && pos.distanceTo(player->getWorldPosition()) <= 192.f) {
+			int v = slExperience.get(squadLeader) + combatXp;
+			slExperience.put(squadLeader, v);
 		}
-
 	}
 
-	if (!groups.isEmpty())
-		for (int x = 0; x < groups.size(); x++)
-			awardSquadLeaderExperience(groups.elementAt(x).getKey(), groups.get(x), destructedObject);
+	//Send out squad leader experience.
+	for (int i = 0; i < slExperience.size(); ++i) {
+		VectorMapEntry<ManagedReference<CreatureObject*>, int>* entry = &slExperience.elementAt(i);
+
+		Locker clock(entry->getKey(), destructedObject);
+
+		awardExperience(entry->getKey(), "squadleader", entry->getValue() * 2.f);
+	}
 
 	threatMap->removeAll();
 }
-
-void PlayerManagerImplementation::awardSquadLeaderExperience(GroupObject* group, int amount, TangibleObject* source) {
-	if (source == NULL || group == NULL || amount <= 0)
-		return;
-
-	ManagedReference<SceneObject*> leader = group->getLeader();
-
-	if (leader == NULL)
-		return;
-
-	if (!leader->isPlayerCreature())
-		return;
-
-	ManagedReference<CreatureObject*> leaderPlayer = cast<CreatureObject*>( leader.get());
-
-	Locker clocker(leaderPlayer, source);
-
-	float groupModifier = group->getGroupSize() / 10.0f;
-	if (groupModifier < 1)
-		groupModifier += 1;
-
-	awardExperience(leaderPlayer, "squadleader", (int) amount * groupModifier * 0.75);
-}
-
-bool PlayerManagerImplementation::squadLeaderCheck(CreatureObject* player, GroupObject* group) {
-	if (player == NULL || group == NULL)
-		return false;
-
-	if (!group->hasSquadLeader())
-		return false;
-
-	if (group->getLeader()->getZone() != player->getZone())
-		return false;
-
-	if (group->getLeader()->compareTo(player) == 0)
-		return false;
-
-	return true;
-}
-
 
 bool PlayerManagerImplementation::checkEncumbrancies(CreatureObject* player, ArmorObject* armor) {
 	int strength = player->getHAM(CreatureAttribute::STRENGTH);
@@ -1490,7 +1474,7 @@ void PlayerManagerImplementation::handleAddItemToTradeWindow(CreatureObject* pla
 	CreatureObject* receiver = cast<CreatureObject*>( obj.get());
 
 	ManagedReference<SceneObject*> objectToTrade = server->getObject(itemID);
-
+	
 	if (objectToTrade == NULL || !objectToTrade->isASubChildOf(player) ||
 			!objectToTrade->checkContainerPermission(player, ContainerPermissions::MOVECONTAINER)) {
 		player->sendSystemMessage("@container_error_message:container26");
@@ -1865,35 +1849,27 @@ int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observabl
 }
 
 void PlayerManagerImplementation::sendBattleFatigueMessage(CreatureObject* player, CreatureObject* target) {
-	uint32 battleFatigue = target->getShockWounds();
+	uint32 targetBattleFatigue = target->getShockWounds();
 
-	if (battleFatigue == 0)
-		return;
+	uint32 playerBattleFatigue = player->getShockWounds();
 
 	String targetName = target->getFirstName();
 
-	StringBuffer msgPlayer, msgTarget;
-
-	if (battleFatigue < 250) {
-		return;
-	} else if (battleFatigue < 500) {
-		msgPlayer << targetName << "'s battle fatigue is reducing the effectiveness of the medicine.";
-		msgTarget << "Your battle fatigue is reducing the effectiveness of the medicine.";
-	} else if (battleFatigue < 750) {
-		msgPlayer << targetName << "'s battle fatigue is significantly reducing the effectiveness of the medicine.";
-		msgTarget << "Your battle fatigue is significantly reducing the effectiveness of the medicine.";
-	} else if (battleFatigue < 1000) {
-		msgPlayer << targetName << "'s battle fatigue is greatly reducing the effectiveness of the medicine.";
-		msgTarget << "Your battle fatigue is greatly reducing the effectiveness of the medicine. You should seek an entertainer.";
-	} else {
-		msgPlayer << targetName << "'s battle fatigue is too high for the medicine to do any good.";
-		msgTarget << "Your battle fatigue is too high for the medicine to do any good. You should seek an entertainer.";
+	if (targetBattleFatigue >= 250 && targetBattleFatigue < 500) {
+		target->sendSystemMessage("@healing:shock_effect_low_target");
+	} else if (targetBattleFatigue >= 500 && targetBattleFatigue < 750) {
+		target->sendSystemMessage("@healing:shock_effect_medium_target");
+	} else if (targetBattleFatigue >= 750) {
+		target->sendSystemMessage("@healing:shock_effec_high_target");
 	}
 
-	target->sendSystemMessage(msgTarget.toString());
-
-	if (player != target)
-		player->sendSystemMessage(msgPlayer.toString());
+	if (playerBattleFatigue >= 250 && playerBattleFatigue < 500) {
+		player->sendSystemMessage("@healing:shock_effect_low");
+	} else if (playerBattleFatigue >= 500 && playerBattleFatigue < 750) {
+		player->sendSystemMessage("@healing:shock_effect_medium");
+	} else if (playerBattleFatigue >= 750) {
+		player->sendSystemMessage("@healing:shock_effect_high");
+	}
 }
 
 int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration) {
@@ -2740,10 +2716,7 @@ int PlayerManagerImplementation::calculatePlayerLevel(CreatureObject* player) {
 
 	String weaponType = weapon->getWeaponType();
 
-	int level = player->getSkillMod("private_" + weaponType + "_combat_difficulty") / 100;
-
-	if (level < 3)
-		level = 3;
+	int level = MIN(25, player->getSkillMod("private_" + weaponType + "_combat_difficulty") / 100 + 1);
 
 	return level;
 }

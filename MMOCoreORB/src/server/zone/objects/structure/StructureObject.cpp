@@ -1202,8 +1202,8 @@ void StructureObjectImplementation::notifyInsertToZone(Zone* zone) {
 	if (!TangibleObjectImplementation::staticObject){
 	// server/zone/objects/structure/StructureObject.idl():  			super.maxCondition = baseMaintenanceRate * 24 * 7 * 4;
 	TangibleObjectImplementation::maxCondition = baseMaintenanceRate * 24 * 7 * 4;
-	// server/zone/objects/structure/StructureObject.idl():  			scheduleMaintenanceTask(10 * 60);
-	scheduleMaintenanceTask(10 * 60);
+	// server/zone/objects/structure/StructureObject.idl():  			scheduleMaintenanceExpirationEvent();
+	scheduleMaintenanceExpirationEvent();
 }
 }
 

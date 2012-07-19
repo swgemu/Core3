@@ -60,13 +60,13 @@ class ResourceSpawner;
 
 class SurveyTask : public Task {
 	ManagedReference<CreatureObject* > playerCreature;
-	Survey* surveyMessage;
+	SurveyMessage* surveyMessage;
 	ManagedReference<WaypointObject*> waypoint;
 	float density;
 	ManagedReference<ResourceSpawn*> resourceSpawn;
 
 public:
-	SurveyTask(ManagedReference<CreatureObject* > play, Survey* surveyM, ManagedReference<WaypointObject*> way, float density, ManagedReference<ResourceSpawn*> resourceSpawn) {
+	SurveyTask(ManagedReference<CreatureObject* > play, SurveyMessage* surveyM, ManagedReference<WaypointObject*> way, float density, ManagedReference<ResourceSpawn*> resourceSpawn) {
 		playerCreature = play;
 		surveyMessage = surveyM;
 		waypoint = way;

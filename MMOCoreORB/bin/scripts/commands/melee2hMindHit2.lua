@@ -43,8 +43,12 @@
 
 Melee2hMindHit2Command = {
         name = "melee2hmindhit2",
-	damageMultiplier = 2,
-	speedMultiplier = 2.5,
+	damageMultiplier = 2.0,
+	speedMultiplier = 2.0,
+	healthCostMultiplier = 1.0,
+	actionCostMultiplier = 1.5,
+	mindCostMultiplier = 1.0,
+        accuracyBonus = 10,
 
 	poolsToDamage = MIND_ATTRIBUTE,
 

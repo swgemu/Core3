@@ -358,6 +358,14 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public native void updateToDatabaseAllObjects(boolean startTask);
 	
 	/**
+	 * Destroys a PlayerCreature from the database. If this object is not a PlayerCreature then the method will return without doing anything.
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
+	public abstract native void destroyPlayerCreatureFromDatabase(boolean destroyContainedObjects = false);
+	
+	/**
 	 * Destroys this object from database
 	 * @pre { this is locked }
 	 * @post { this is locked }
@@ -1563,8 +1571,16 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		containerPermissions.setDefaultAllowPermission(perm);
 	}
 	
+	public void clearContainerDefaultAllowPermission(unsigned short perm) {
+		containerPermissions.clearDefaultAllowPermission(perm);
+	}
+	
 	public void setContainerDefaultDenyPermission(unsigned short perm) {
 		containerPermissions.setDefaultDenyPermission(perm);
+	}
+	
+	public void clearContainerDefaultDenyPermission(unsigned short perm) {
+		containerPermissions.clearDefaultDenyPermission(perm);
 	}
 	
 	public void setContainerInheritPermissionsFromParent(boolean val) {

@@ -184,6 +184,8 @@ public:
 
 	bool containsCityName(const String& name);
 
+	bool isCityRankCapped(const String& planetName, byte cityRank);
+
 	bool validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
@@ -332,6 +334,8 @@ public:
 
 	bool containsCityName(const String& name);
 
+	bool isCityRankCapped(const String& planetName, byte cityRank);
+
 	bool validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
@@ -454,6 +458,8 @@ public:
 	void sendMaintenanceReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
 
 	bool containsCityName(const String& name);
+
+	bool isCityRankCapped(const String& planetName, byte cityRank);
 
 	bool validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y);
 

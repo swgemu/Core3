@@ -30,11 +30,12 @@ black_sun_assassin = Creature:new {
 	lootGroups = {
         {
 			groups = {
-				{group = "pistols", chance =   1000000},
-				{group = "rifles", chance = 1000000},
-				{group = "carbines", chance =  1000000},
-				{group = "bounty_hunter_armor_looted", chance = 500000},
-				{group = "jetpack_base", chance = 100000},
+				{group = "junk", chance = 7000000},
+				{group = "pistols", chance = 750000},
+				{group = "rifles", chance = 750000},
+				{group = "carbines", chance =  750000},
+				{group = "bounty_hunter_armor_looted", chance = 700000},
+				{group = "jetpack_base", chance = 50000},
 			},
 			lootChance = 3500000
 		}	

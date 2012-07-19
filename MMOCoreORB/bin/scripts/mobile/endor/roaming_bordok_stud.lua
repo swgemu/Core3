@@ -26,7 +26,7 @@ roaming_bordok_stud = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/bordok.iff"},
+	templates = {"object/mobile/bordok_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

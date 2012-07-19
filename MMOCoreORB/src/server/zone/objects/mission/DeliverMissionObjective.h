@@ -125,8 +125,6 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/managers/mission/spawnmaps/NpcSpawnPoint.h"
 
-#include "server/zone/objects/mission/events/DespawnMissionNpcsTask.h"
-
 #include "engine/util/Observer.h"
 
 #include "engine/util/Observable.h"
@@ -155,6 +153,8 @@ public:
 	int getObjectiveStatus();
 
 	void activate();
+
+	void deactivate();
 
 	bool activateWithResult();
 
@@ -198,12 +198,6 @@ namespace mission {
 
 class DeliverMissionObjectiveImplementation : public MissionObjectiveImplementation {
 protected:
-	Reference<DespawnMissionNpcsTask* > despawnMissionNpcsTask;
-
-	ManagedReference<AiAgent* > target;
-
-	ManagedReference<AiAgent* > destination;
-
 	ManagedReference<TangibleObject* > item;
 
 	Reference<NpcSpawnPoint* > targetSpawnPoint;
@@ -232,6 +226,8 @@ public:
 	int getObjectiveStatus();
 
 	virtual void activate();
+
+	virtual void deactivate();
 
 	bool activateWithResult();
 
@@ -299,6 +295,8 @@ public:
 	int getObjectiveStatus();
 
 	void activate();
+
+	void deactivate();
 
 	bool activateWithResult();
 
