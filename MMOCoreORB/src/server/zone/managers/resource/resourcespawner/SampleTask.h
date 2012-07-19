@@ -89,7 +89,7 @@ public:
 		}
 
 		playerCreature->removePendingTask("sample");
-
+		cancelled = false;
 	}
 
 
