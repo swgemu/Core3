@@ -87,7 +87,6 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 			zone->getPlanetManager()->scheduleShuttle(shuttle);
 	}
 
-	loaded = true;
 }
 
 void CityRegionImplementation::initialize() {
