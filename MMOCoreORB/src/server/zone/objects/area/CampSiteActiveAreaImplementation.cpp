@@ -245,7 +245,7 @@ void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 	/// Get Ghost
 	PlayerObject* ghost = campOwner->getPlayerObject();
 
-	if (ghost != NULL) {
+	if (ghost != NULL && camp != NULL) {
 		ghost->removeOwnedStructure(camp);
 	}
 

@@ -337,10 +337,16 @@ class PlayerObject extends IntangibleObject {
 	public native void sendMessage(BasePacket msg);
 	
 	public synchronized void addOwnedStructure(StructureObject obj) {
+		if (obj == null)
+			return;
+		
 		ownedStructures.put(obj.getObjectID());
 	}
 	
 	public synchronized void removeOwnedStructure(StructureObject obj) {
+		if (obj == null)
+			return;
+		
 		ownedStructures.drop(obj.getObjectID());
 	}
 	
@@ -349,6 +355,9 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public synchronized boolean isOwnedStructure(StructureObject obj) {
+		if (obj == null)
+			return false;
+		
 		return ownedStructures.contains(obj.getObjectID());
 	}
 	
