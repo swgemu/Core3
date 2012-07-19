@@ -189,7 +189,7 @@ bool PlayerObject::isOwnedStructure(StructureObject* obj) {
 		return _implementation->isOwnedStructure(obj);
 }
 
-StructureObject* PlayerObject::getOwnedStructure(int i) {
+unsigned long long PlayerObject::getOwnedStructure(int i) {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -198,7 +198,7 @@ StructureObject* PlayerObject::getOwnedStructure(int i) {
 		DistributedMethod method(this, RPC_GETOWNEDSTRUCTURE__INT_);
 		method.addSignedIntParameter(i);
 
-		return static_cast<StructureObject*>(method.executeWithObjectReturn());
+		return method.executeWithUnsignedLongReturn();
 	} else
 		return _implementation->getOwnedStructure(i);
 }
@@ -3229,7 +3229,7 @@ bool PlayerObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 	}
 
 	if (_name == "PlayerObject.ownedStructures") {
-		TypeInfo<SortedVector<ManagedReference<StructureObject* > > >::parseFromBinaryStream(&ownedStructures, stream);
+		TypeInfo<SortedVector<unsigned long long> >::parseFromBinaryStream(&ownedStructures, stream);
 		return true;
 	}
 
@@ -3614,7 +3614,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<SortedVector<ManagedReference<StructureObject* > > >::toBinaryStream(&ownedStructures, stream);
+	TypeInfo<SortedVector<unsigned long long> >::toBinaryStream(&ownedStructures, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -4067,14 +4067,14 @@ void PlayerObjectImplementation::finalize() {
 
 void PlayerObjectImplementation::addOwnedStructure(StructureObject* obj) {
 	Locker _locker(_this.get());
-	// server/zone/objects/player/PlayerObject.idl():  		ownedStructures.put(obj);
-	(&ownedStructures)->put(obj);
+	// server/zone/objects/player/PlayerObject.idl():  		ownedStructures.put(obj.getObjectID());
+	(&ownedStructures)->put(obj->getObjectID());
 }
 
 void PlayerObjectImplementation::removeOwnedStructure(StructureObject* obj) {
 	Locker _locker(_this.get());
-	// server/zone/objects/player/PlayerObject.idl():  		ownedStructures.drop(obj);
-	(&ownedStructures)->drop(obj);
+	// server/zone/objects/player/PlayerObject.idl():  		ownedStructures.drop(obj.getObjectID());
+	(&ownedStructures)->drop(obj->getObjectID());
 }
 
 int PlayerObjectImplementation::getTotalOwnedStructureCount() {
@@ -4085,11 +4085,11 @@ int PlayerObjectImplementation::getTotalOwnedStructureCount() {
 
 bool PlayerObjectImplementation::isOwnedStructure(StructureObject* obj) {
 	Locker _locker(_this.get());
-	// server/zone/objects/player/PlayerObject.idl():  		return ownedStructures.contains(obj);
-	return (&ownedStructures)->contains(obj);
+	// server/zone/objects/player/PlayerObject.idl():  		return ownedStructures.contains(obj.getObjectID());
+	return (&ownedStructures)->contains(obj->getObjectID());
 }
 
-StructureObject* PlayerObjectImplementation::getOwnedStructure(int i) {
+unsigned long long PlayerObjectImplementation::getOwnedStructure(int i) {
 	Locker _locker(_this.get());
 	// server/zone/objects/player/PlayerObject.idl():  		return ownedStructures.get(i);
 	return (&ownedStructures)->get(i);
@@ -4104,8 +4104,10 @@ int PlayerObjectImplementation::getLotsRemaining() {
 	int i = 0;
 	i < (&ownedStructures)->size();
  ++i) {
-	// server/zone/objects/player/PlayerObject.idl():  			StructureObject structure = ownedStructures.get(i);
-	ManagedReference<StructureObject* > structure = (&ownedStructures)->get(i);
+	// server/zone/objects/player/PlayerObject.idl():  			unsigned long oid = ownedStructures.get(i);
+	unsigned long long oid = (&ownedStructures)->get(i);
+	// server/zone/objects/player/PlayerObject.idl():  			StructureObject structure = (StructureObject) super.getZoneServer().getObject(oid);
+	ManagedReference<StructureObject* > structure = (StructureObject*) IntangibleObjectImplementation::getZoneServer()->getObject(oid);
 	// server/zone/objects/player/PlayerObject.idl():  			lotsRemaining = lotsRemaining - structure.getLotSize();
 	lotsRemaining = lotsRemaining - structure->getLotSize();
 }
@@ -4964,7 +4966,7 @@ void PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETOWNEDSTRUCTURE__INT_:
 		{
-			resp->insertLong(getOwnedStructure(inv->getSignedIntParameter())->_getObjectID());
+			resp->insertLong(getOwnedStructure(inv->getSignedIntParameter()));
 		}
 		break;
 	case RPC_GETLOTSREMAINING__:
@@ -5976,7 +5978,7 @@ bool PlayerObjectAdapter::isOwnedStructure(StructureObject* obj) {
 	return (static_cast<PlayerObject*>(stub))->isOwnedStructure(obj);
 }
 
-StructureObject* PlayerObjectAdapter::getOwnedStructure(int i) {
+unsigned long long PlayerObjectAdapter::getOwnedStructure(int i) {
 	return (static_cast<PlayerObject*>(stub))->getOwnedStructure(i);
 }
 

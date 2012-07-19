@@ -38,7 +38,7 @@
  *	PlayerManagerStub
  */
 
-enum {RPC_LOADNAMEMAP__ = 6,RPC_GETHIGHESTBADGEINDEX__,RPC_FINALIZE__,RPC_KICKUSER__STRING_STRING_STRING_BOOL_,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_KILLPLAYER__TANGIBLEOBJECT_CREATUREOBJECT_INT_,RPC_CALCULATEINCAPACITATIONTIMER__CREATUREOBJECT_INT_,RPC_CHECKENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_APPLYENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_REMOVEENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_AWARDBADGE__PLAYEROBJECT_INT_,RPC_SETEXPERIENCEMULTIPLIER__FLOAT_,RPC_AWARDEXPERIENCE__CREATUREOBJECT_STRING_INT_BOOL_FLOAT_,RPC_HANDLEABORTTRADEMESSAGE__CREATUREOBJECT_,RPC_HANDLEADDITEMTOTRADEWINDOW__CREATUREOBJECT_LONG_,RPC_HANDLEGIVEMONEYMESSAGE__CREATUREOBJECT_INT_,RPC_HANDLEACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_,RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_,RPC_HANDLEVERIFYTRADEMESSAGE__CREATUREOBJECT_,RPC_CHECKTRADEITEMS__CREATUREOBJECT_CREATUREOBJECT_,RPC_GETINRANGESTRUCTUREWITHADMINRIGHTS__CREATUREOBJECT_LONG_,RPC_GETINRANGEOWNEDSTRUCTURE__CREATUREOBJECT_FLOAT_,RPC_SENDBATTLEFATIGUEMESSAGE__CREATUREOBJECT_CREATUREOBJECT_,RPC_STOPWATCH__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STOPLISTEN__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STARTWATCH__CREATUREOBJECT_LONG_,RPC_STARTLISTEN__CREATUREOBJECT_LONG_,RPC_LOOTALL__CREATUREOBJECT_CREATUREOBJECT_,RPC_HEALENHANCE__CREATUREOBJECT_CREATUREOBJECT_BYTE_INT_FLOAT_,RPC_SQUADLEADERCHECK__CREATUREOBJECT_GROUPOBJECT_,RPC_CALCULATEPLAYERLEVEL__CREATUREOBJECT_,RPC_AWARDSQUADLEADEREXPERIENCE__GROUPOBJECT_INT_TANGIBLEOBJECT_,RPC_SENDLOGINMESSAGE__CREATUREOBJECT_,RPC_RESENDLOGINMESSAGETOALL__,RPC_SENDACTIVATECLONEREQUEST__CREATUREOBJECT_INT_,RPC_SENDPLAYERTOCLONER__CREATUREOBJECT_LONG_INT_,RPC_CHECKEXISTENTNAMEINDATABASE__STRING_,RPC_CREATEHAIROBJECT__STRING_STRING_,RPC_CREATEALLPLAYEROBJECTS__CREATUREOBJECT_,RPC_CREATEDEFAULTPLAYERITEMS__CREATUREOBJECT_STRING_STRING_,RPC_CREATETUTORIALBUILDING__CREATUREOBJECT_,RPC_CREATESKIPPEDTUTORIALBUILDING__CREATUREOBJECT_,RPC_CHECKSPEEDHACKSECONDTEST__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_,RPC_EXISTSNAME__STRING_,RPC_GETOBJECTID__STRING_,RPC_GETPLAYER__STRING_,RPC_UPDATEPERMISSIONLEVEL__CREATUREOBJECT_INT_,RPC_UPDATEPERMISSIONNAME__CREATUREOBJECT_INT_,RPC_GENERATEHOLOGRINDSKILLS__CREATUREOBJECT_,RPC_ADDPLAYER__CREATUREOBJECT_,RPC_GETBADGEKEY__INT_,RPC_GETNEARBYCRAFTINGSTATION__CREATUREOBJECT_INT_,RPC_FINISHHOLOGRIND__CREATUREOBJECT_,RPC_GETACCOUNT__STRING_,RPC_GETACCOUNT__INT_,RPC_BANACCOUNT__PLAYEROBJECT_ACCOUNT_INT_STRING_,RPC_UNBANACCOUNT__PLAYEROBJECT_ACCOUNT_STRING_,RPC_BANFROMGALAXY__PLAYEROBJECT_ACCOUNT_INT_INT_STRING_,RPC_UNBANFROMGALAXY__PLAYEROBJECT_ACCOUNT_INT_STRING_,RPC_BANCHARACTER__PLAYEROBJECT_ACCOUNT_STRING_INT_INT_STRING_,RPC_UNBANCHARACTER__PLAYEROBJECT_ACCOUNT_STRING_INT_STRING_,RPC_PROMPTTEACHABLESKILLS__CREATUREOBJECT_SCENEOBJECT_,RPC_DECREASEONLINECHARCOUNT__ZONECLIENTSESSION_,RPC_INCREASEONLINECHARCOUNTIFPOSSIBLE__ZONECLIENTSESSION_,};
+enum {RPC_LOADNAMEMAP__ = 6,RPC_GETHIGHESTBADGEINDEX__,RPC_FINALIZE__,RPC_KICKUSER__STRING_STRING_STRING_BOOL_,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_KILLPLAYER__TANGIBLEOBJECT_CREATUREOBJECT_INT_,RPC_CALCULATEINCAPACITATIONTIMER__CREATUREOBJECT_INT_,RPC_CHECKENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_APPLYENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_REMOVEENCUMBRANCIES__CREATUREOBJECT_ARMOROBJECT_,RPC_AWARDBADGE__PLAYEROBJECT_INT_,RPC_SETEXPERIENCEMULTIPLIER__FLOAT_,RPC_AWARDEXPERIENCE__CREATUREOBJECT_STRING_INT_BOOL_FLOAT_,RPC_HANDLEABORTTRADEMESSAGE__CREATUREOBJECT_,RPC_HANDLEADDITEMTOTRADEWINDOW__CREATUREOBJECT_LONG_,RPC_HANDLEGIVEMONEYMESSAGE__CREATUREOBJECT_INT_,RPC_HANDLEACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_,RPC_HANDLEUNACCEPTTRANSACTIONMESSAGE__CREATUREOBJECT_,RPC_HANDLEVERIFYTRADEMESSAGE__CREATUREOBJECT_,RPC_CHECKTRADEITEMS__CREATUREOBJECT_CREATUREOBJECT_,RPC_GETINRANGESTRUCTUREWITHADMINRIGHTS__CREATUREOBJECT_LONG_,RPC_GETINRANGEOWNEDSTRUCTURE__CREATUREOBJECT_FLOAT_,RPC_SENDBATTLEFATIGUEMESSAGE__CREATUREOBJECT_CREATUREOBJECT_,RPC_STOPWATCH__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STOPLISTEN__CREATUREOBJECT_LONG_BOOL_BOOL_BOOL_BOOL_,RPC_STARTWATCH__CREATUREOBJECT_LONG_,RPC_STARTLISTEN__CREATUREOBJECT_LONG_,RPC_LOOTALL__CREATUREOBJECT_CREATUREOBJECT_,RPC_HEALENHANCE__CREATUREOBJECT_CREATUREOBJECT_BYTE_INT_FLOAT_,RPC_CALCULATEPLAYERLEVEL__CREATUREOBJECT_,RPC_SENDLOGINMESSAGE__CREATUREOBJECT_,RPC_RESENDLOGINMESSAGETOALL__,RPC_SENDACTIVATECLONEREQUEST__CREATUREOBJECT_INT_,RPC_SENDPLAYERTOCLONER__CREATUREOBJECT_LONG_INT_,RPC_CHECKEXISTENTNAMEINDATABASE__STRING_,RPC_CREATEHAIROBJECT__STRING_STRING_,RPC_CREATEALLPLAYEROBJECTS__CREATUREOBJECT_,RPC_CREATEDEFAULTPLAYERITEMS__CREATUREOBJECT_STRING_STRING_,RPC_CREATETUTORIALBUILDING__CREATUREOBJECT_,RPC_CREATESKIPPEDTUTORIALBUILDING__CREATUREOBJECT_,RPC_CHECKSPEEDHACKSECONDTEST__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_INT_SCENEOBJECT_,RPC_EXISTSNAME__STRING_,RPC_GETOBJECTID__STRING_,RPC_GETPLAYER__STRING_,RPC_UPDATEPERMISSIONLEVEL__CREATUREOBJECT_INT_,RPC_UPDATEPERMISSIONNAME__CREATUREOBJECT_INT_,RPC_GENERATEHOLOGRINDSKILLS__CREATUREOBJECT_,RPC_ADDPLAYER__CREATUREOBJECT_,RPC_REMOVEPLAYER__STRING_,RPC_GETBADGEKEY__INT_,RPC_GETNEARBYCRAFTINGSTATION__CREATUREOBJECT_INT_,RPC_FINISHHOLOGRIND__CREATUREOBJECT_,RPC_GETACCOUNT__STRING_,RPC_GETACCOUNT__INT_,RPC_BANACCOUNT__PLAYEROBJECT_ACCOUNT_INT_STRING_,RPC_UNBANACCOUNT__PLAYEROBJECT_ACCOUNT_STRING_,RPC_BANFROMGALAXY__PLAYEROBJECT_ACCOUNT_INT_INT_STRING_,RPC_UNBANFROMGALAXY__PLAYEROBJECT_ACCOUNT_INT_STRING_,RPC_BANCHARACTER__PLAYEROBJECT_ACCOUNT_STRING_INT_INT_STRING_,RPC_UNBANCHARACTER__PLAYEROBJECT_ACCOUNT_STRING_INT_STRING_,RPC_PROMPTTEACHABLESKILLS__CREATUREOBJECT_SCENEOBJECT_,RPC_DECREASEONLINECHARCOUNT__ZONECLIENTSESSION_,RPC_INCREASEONLINECHARCOUNTIFPOSSIBLE__ZONECLIENTSESSION_,};
 
 PlayerManager::PlayerManager(ZoneServer* zoneServer, ZoneProcessServer* impl) : Observer(DummyConstructorParameter::instance()) {
 	PlayerManagerImplementation* _implementation = new PlayerManagerImplementation(zoneServer, impl);
@@ -556,21 +556,6 @@ void PlayerManager::disseminateExperience(TangibleObject* destructedObject, Thre
 		_implementation->disseminateExperience(destructedObject, threatMap);
 }
 
-bool PlayerManager::squadLeaderCheck(CreatureObject* player, GroupObject* group) {
-	PlayerManagerImplementation* _implementation = static_cast<PlayerManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SQUADLEADERCHECK__CREATUREOBJECT_GROUPOBJECT_);
-		method.addObjectParameter(player);
-		method.addObjectParameter(group);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->squadLeaderCheck(player, group);
-}
-
 int PlayerManager::calculatePlayerLevel(CreatureObject* player) {
 	PlayerManagerImplementation* _implementation = static_cast<PlayerManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -583,22 +568,6 @@ int PlayerManager::calculatePlayerLevel(CreatureObject* player) {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->calculatePlayerLevel(player);
-}
-
-void PlayerManager::awardSquadLeaderExperience(GroupObject* group, int amount, TangibleObject* source) {
-	PlayerManagerImplementation* _implementation = static_cast<PlayerManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_AWARDSQUADLEADEREXPERIENCE__GROUPOBJECT_INT_TANGIBLEOBJECT_);
-		method.addObjectParameter(group);
-		method.addSignedIntParameter(amount);
-		method.addObjectParameter(source);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->awardSquadLeaderExperience(group, amount, source);
 }
 
 void PlayerManager::sendLoginMessage(CreatureObject* player) {
@@ -872,6 +841,20 @@ void PlayerManager::addPlayer(CreatureObject* player) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->addPlayer(player);
+}
+
+void PlayerManager::removePlayer(String& playerName) {
+	PlayerManagerImplementation* _implementation = static_cast<PlayerManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEPLAYER__STRING_);
+		method.addAsciiParameter(playerName);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removePlayer(playerName);
 }
 
 String PlayerManager::getBadgeKey(int idx) {
@@ -1316,6 +1299,11 @@ void PlayerManagerImplementation::addPlayer(CreatureObject* player) {
 	nameMap->put(player);
 }
 
+void PlayerManagerImplementation::removePlayer(String& playerName) {
+	// server/zone/managers/player/PlayerManager.idl():  		nameMap.remove(playerName);
+	nameMap->remove(playerName);
+}
+
 OnlineZoneClientMap* PlayerManagerImplementation::getOnlineZoneClientMap() {
 	// server/zone/managers/player/PlayerManager.idl():  		return onlineZoneClientMap;
 	return (&onlineZoneClientMap);
@@ -1488,19 +1476,9 @@ void PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertSignedInt(healEnhance(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter(), inv->getSignedIntParameter(), inv->getFloatParameter()));
 		}
 		break;
-	case RPC_SQUADLEADERCHECK__CREATUREOBJECT_GROUPOBJECT_:
-		{
-			resp->insertBoolean(squadLeaderCheck(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GroupObject*>(inv->getObjectParameter())));
-		}
-		break;
 	case RPC_CALCULATEPLAYERLEVEL__CREATUREOBJECT_:
 		{
 			resp->insertSignedInt(calculatePlayerLevel(static_cast<CreatureObject*>(inv->getObjectParameter())));
-		}
-		break;
-	case RPC_AWARDSQUADLEADEREXPERIENCE__GROUPOBJECT_INT_TANGIBLEOBJECT_:
-		{
-			awardSquadLeaderExperience(static_cast<GroupObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), static_cast<TangibleObject*>(inv->getObjectParameter()));
 		}
 		break;
 	case RPC_SENDLOGINMESSAGE__CREATUREOBJECT_:
@@ -1597,6 +1575,12 @@ void PlayerManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ADDPLAYER__CREATUREOBJECT_:
 		{
 			addPlayer(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_REMOVEPLAYER__STRING_:
+		{
+			String playerName; 
+			removePlayer(inv->getAsciiParameter(playerName));
 		}
 		break;
 	case RPC_GETBADGEKEY__INT_:
@@ -1801,16 +1785,8 @@ int PlayerManagerAdapter::healEnhance(CreatureObject* enhancer, CreatureObject* 
 	return (static_cast<PlayerManager*>(stub))->healEnhance(enhancer, patient, attribute, buffvalue, duration);
 }
 
-bool PlayerManagerAdapter::squadLeaderCheck(CreatureObject* player, GroupObject* group) {
-	return (static_cast<PlayerManager*>(stub))->squadLeaderCheck(player, group);
-}
-
 int PlayerManagerAdapter::calculatePlayerLevel(CreatureObject* player) {
 	return (static_cast<PlayerManager*>(stub))->calculatePlayerLevel(player);
-}
-
-void PlayerManagerAdapter::awardSquadLeaderExperience(GroupObject* group, int amount, TangibleObject* source) {
-	(static_cast<PlayerManager*>(stub))->awardSquadLeaderExperience(group, amount, source);
 }
 
 void PlayerManagerAdapter::sendLoginMessage(CreatureObject* player) {
@@ -1883,6 +1859,10 @@ void PlayerManagerAdapter::generateHologrindSkills(CreatureObject* player) {
 
 void PlayerManagerAdapter::addPlayer(CreatureObject* player) {
 	(static_cast<PlayerManager*>(stub))->addPlayer(player);
+}
+
+void PlayerManagerAdapter::removePlayer(String& playerName) {
+	(static_cast<PlayerManager*>(stub))->removePlayer(playerName);
 }
 
 String PlayerManagerAdapter::getBadgeKey(int idx) {

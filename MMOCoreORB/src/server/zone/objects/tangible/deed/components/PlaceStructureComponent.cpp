@@ -13,6 +13,7 @@
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/region/CityRegion.h"
 
 int PlaceStructureComponent::placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle) {
 	Zone* zone = creature->getZone();
@@ -34,5 +35,6 @@ int PlaceStructureComponent::notifyStructurePlaced(StructureDeed* deed, Creature
 		installationObject->setExtractionRate(deed->getExtractionRate());
 		installationObject->setHopperSizeMax(deed->getHopperSize());
 	}
+
 	return 0;
 }

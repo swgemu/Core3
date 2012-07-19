@@ -52,7 +52,6 @@ object_building_player_city_hospital_naboo = object_building_player_city_shared_
 	width = 5,
 	planetMapCategory = "medicalcenter",
 	cityRankRequired = 3,
-	limitToOnePerCity = 0,
 	abilitiesRequired = {"place_hospital"},
 	zoneComponent = "StructureZoneComponent",
 	childObjects = {

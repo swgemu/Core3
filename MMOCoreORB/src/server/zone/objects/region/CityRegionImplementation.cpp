@@ -112,18 +112,6 @@ void CityRegionImplementation::initialize() {
 	zoningRights.setAllowOverwriteInsertPlan();
 	zoningRights.setNullValue(0);
 
-	limitedPlacementStructures.setNoDuplicateInsertPlan();
-
-	cityStructureInventory.put(uint8(1), SortedVector<ManagedReference<SceneObject*> >());
-	cityStructureInventory.put(uint8(2), SortedVector<ManagedReference<SceneObject*> >());
-	cityStructureInventory.put(uint8(3), SortedVector<ManagedReference<SceneObject*> >());
-	cityStructureInventory.put(uint8(4), SortedVector<ManagedReference<SceneObject*> >());
-
-	cityStructureInventory.get(0).setNoDuplicateInsertPlan();
-	cityStructureInventory.get(1).setNoDuplicateInsertPlan();
-	cityStructureInventory.get(2).setNoDuplicateInsertPlan();
-	cityStructureInventory.get(3).setNoDuplicateInsertPlan();
-
 	cityMissionTerminals.setNoDuplicateInsertPlan();
 	cityDecorations.setNoDuplicateInsertPlan();
 	citySkillTrainers.setNoDuplicateInsertPlan();
@@ -223,14 +211,17 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		}
 
 		creature->sendSystemMessage(params);
+
+		//applySpecializationModifiers(creature);
 	}
 
-	if (loaded && object->isBuildingObject()){
-		BuildingObject* building = cast<BuildingObject*>(object);
+	if (loaded && object->isStructureObject()){
+		StructureObject* structure = cast<StructureObject*>(object);
 
-		uint64 creatureID = building->getOwnerObjectID();
+		uint64 creatureID = structure->getOwnerObjectID();
 
 		if (!citizenList.contains(creatureID)) {
+			BuildingObject* building = cast<BuildingObject*>(object);
 			CreatureObject* owner = building->getOwnerCreatureObject();
 
 			if (owner != NULL) {
@@ -241,14 +232,13 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 				}
 			}
 		}
-	}
 
-	//Apply skillmods for specialization
+		if (structure->isCivicStructure())
+			addStructure(structure);
+	}
 }
 
 void CityRegionImplementation::notifyExit(SceneObject* object) {
-
-
 	object->setCityRegion(NULL);
 
 	if (object->isBazaarTerminal() || object->isVendor()) {
@@ -280,22 +270,24 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 
 		creature->sendSystemMessage(params);
 
-		//Remove skillmods for specialization
+		//removeSpecializationModifiers(creature);
 	}
 
 
-	if (loaded && object->isBuildingObject()){
+	if (loaded && object->isStructureObject()){
 
 		float x = object->getWorldPositionX();
 		float y = object->getWorldPositionY();
 
 		//StructureObject* structure = cast<StructureObject*>(object);
 
-		BuildingObject* building = cast<BuildingObject*>(object);
+		StructureObject* structure = cast<StructureObject*>(object);
 
-		uint64 creatureID = building->getOwnerObjectID();
+		uint64 creatureID = structure->getOwnerObjectID();
 
-		if (citizenList.contains(creatureID)) {
+		if (structure->isBuildingObject() && citizenList.contains(creatureID)) {
+			BuildingObject* building = cast<BuildingObject*>(object);
+
 			CreatureObject* owner = building->getOwnerCreatureObject();
 
 			if (owner != NULL) {
@@ -307,6 +299,8 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 			}
 		}
 
+		if (structure->isCivicStructure())
+			removeStructure(structure);
 	}
 }
 
@@ -374,93 +368,41 @@ String CityRegionImplementation::getRegionName() {
 	return regionName.getFullPath();
 }
 
-void CityRegionImplementation::addToCityStructureInventory(uint8 rankRequired, SceneObject* structure){
+bool CityRegionImplementation::hasUniqueStructure(uint32 crc){
 	Locker locker(_this.get());
 
-	if(cityStructureInventory.contains(rankRequired)){
-		cityStructureInventory.get(rankRequired).put(structure);
+	for (int i = 0; i < structures.size(); ++i) {
+		ManagedReference<StructureObject*> structure = structures.get(i);
 
-	}
-
-
-}
-
-void CityRegionImplementation::removeFromCityStructureInventory(SceneObject* structure){
-	Locker locker(_this.get());
-
-	if(cityStructureInventory.get(uint8(1)).contains(structure))
-		cityStructureInventory.get(uint8(1)).drop(structure);
-
-	else if(cityStructureInventory.get(uint8(2)).contains(structure))
-		cityStructureInventory.get(uint8(2)).drop(structure);
-
-	else if(cityStructureInventory.get(uint8(3)).contains(structure))
-		cityStructureInventory.get(uint8(3)).drop(structure);
-
-	else if(cityStructureInventory.get(uint8(4)).contains(structure))
-		cityStructureInventory.get(uint8(4)).drop(structure);
-}
-
-bool CityRegionImplementation::checkLimitedPlacementStucture(uint32 id){
-	Locker locker(_this.get());
-
-	if (limitedPlacementStructures.contains(id))
-		return true;
-
-	return false;
-}
-
-bool CityRegionImplementation::addLimitedPlacementStructure(uint32 id){
-	Locker locker(_this.get());
-
-	if (!limitedPlacementStructures.contains(id)){
-		limitedPlacementStructures.put(id);
-		return true;
+		if (structure->getObjectTemplate()->getServerObjectCRC() == crc)
+			return true;
 	}
 
 	return false;
-}
-
-void CityRegionImplementation::removeLimitedPlacementStructure(uint32 id){
-	Locker locker(_this.get());
-
-	limitedPlacementStructures.drop(id);
-
 }
 
 void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
 	Locker locker(_this.get());
 
-	SortedVector<ManagedReference<SceneObject*> >* sceneObjects = &cityStructureInventory.get(rank);
+	if (zone == NULL)
+		return;
 
-	int structureCount = sceneObjects->size();
-	int i;
+	StructureManager* structureManager = zone->getStructureManager();
 
+	for (int i = structures.size(); i >= 0; --i) {
+		ManagedReference<StructureObject*> structure = structures.get(i);
 
-	if (structureCount > 0) {
-		for (i = structureCount - 1; i >= 0; i--) {
-			ManagedReference<SceneObject*> sceo = sceneObjects->get(i);
+		SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(structure->getObjectTemplate());
 
-			Locker locker(sceo, _this.get());
+		//We only want to destroy civic structures.
+		if (ssot == NULL || ssot->getCityRankRequired() < rank || !ssot->isCivicStructure())
+			continue;
 
-			Zone* zoneObject = sceo->getZone();
+		Locker _clocker(structure, _this.get());
 
-			if (zoneObject != NULL) {
-				StructureManager* manager = zoneObject->getStructureManager();
+		structureManager->destroyStructure(structure);
 
-				if (manager != NULL) {
-					if (sceo->isStructureObject()) {
-						manager->destroyStructure(cast<StructureObject*>(sceo.get()));
-					} else {
-						sceo->destroyObjectFromWorld(true);
-						sceo->destroyObjectFromDatabase(true);
-					}
-				}
-
-			}
-
-			sceneObjects->drop(sceo);
-		}
+		structures.drop(structure);
 	}
 }
 

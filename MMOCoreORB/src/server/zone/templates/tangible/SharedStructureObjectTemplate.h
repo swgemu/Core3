@@ -22,7 +22,12 @@ protected:
 
 	uint8 lotSize;
 	uint8 cityRankRequired;
-	uint8 limitToOnePerCity;
+
+	bool uniqueStructure;
+
+	//If it has a maintenance rate, then it is a civic structure.
+	int cityMaintenanceBase;
+	int cityMaintenanceRate;
 
 public:
 	SharedStructureObjectTemplate() {
@@ -41,6 +46,26 @@ public:
 
 	inline bool isAllowedZone(const String& zoneName) {
 		return allowedZones.contains(zoneName);
+	}
+
+	inline bool isCivicStructure() {
+		return (cityMaintenanceBase > 0);
+	}
+
+	inline bool isUniqueStructure() {
+		return uniqueStructure;
+	}
+
+	inline int getCityMaintenanceBase() {
+		return cityMaintenanceBase;
+	}
+
+	inline int getCityMaintenanceRate() {
+		return cityMaintenanceRate;
+	}
+
+	inline int getCityMaintenanceAtRank(int rank) {
+		return cityMaintenanceBase + cityMaintenanceRate * rank;
 	}
 
 	inline int getTotalAllowedZones() {
@@ -67,25 +92,12 @@ public:
 		return cityRankRequired;
 	}
 
-	inline uint8 getLimitToOnePerCity(){
-		return limitToOnePerCity;
-	}
-
 	inline String& getConstructionMarkerTemplate() {
 		return constructionMarkerTemplate;
 	}
 
 	inline virtual bool isPublicStructure() {
 		return false;
-	}
-
-	//TODO: Deprecate. Use SFP
-	inline int getWidth() {
-		return 0;
-	}
-
-	inline int getLength() {
-		return 0;
 	}
 };
 

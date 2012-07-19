@@ -191,17 +191,10 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creat
 			return 1;
 		}
 
-		int limitToOne = (int) serverTemplate->getLimitToOnePerCity();
-
-		if (limitToOne == 1){
-			if (!city->addLimitedPlacementStructure(serverTemplate->getServerObjectCRC())){
-				creature->sendSystemMessage("@player_structure:cant_place_unique");
-				return 1;
-			}
+		if (serverTemplate->isUniqueStructure() && city->hasUniqueStructure(serverTemplate->getServerObjectCRC())){
+			creature->sendSystemMessage("@player_structure:cant_place_unique"); //This city can only support a single structure of this type.
+			return 1;
 		}
-
-
-
 	}
 
 	Locker _lock(deed, creature);
@@ -310,15 +303,7 @@ StructureObject* StructureManagerImplementation::placeStructure(CreatureObject* 
 	zone->transferObject(structureObject, -1, true);
 	structureObject->createChildObjects();
 
-
-
 	structureObject->notifyStructurePlaced(creature);
-
-	ManagedReference<CityRegion*> city = structureObject->getCityRegion();
-
-	if (city != NULL && serverTemplate->getCityRankRequired() > 0){
-		city->addToCityStructureInventory(serverTemplate->getCityRankRequired(), obj);
-	}
 
 	return structureObject;
 }
@@ -362,17 +347,6 @@ int StructureManagerImplementation::destroyStructure(StructureObject* structureO
 			PlayerObject* playerObject = cast<PlayerObject*>( ghost.get());
 			playerObject->removeOwnedStructure(structureObject);
 		}
-	}
-
-	ManagedReference<CityRegion*> city = structureObject->getCityRegion();
-
-	if (city != NULL) {
-		city->removeFromCityStructureInventory(structureObject);
-
-		SharedStructureObjectTemplate* serverTemplate = cast<SharedStructureObjectTemplate*>(structureObject->getObjectTemplate());
-
-		if (serverTemplate->getLimitToOnePerCity() == 1)
-			city->removeLimitedPlacementStructure(serverTemplate->getServerObjectCRC());
 	}
 
 	structureObject->destroyObjectFromWorld(true);

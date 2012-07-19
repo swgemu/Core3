@@ -51,7 +51,7 @@ object_building_player_city_garden_corellia_med_02 = object_building_player_city
 	
 	width = 5,
 	cityRankRequired = 2,
-	limitToOnePerCity = 0,
+	cityMaintenanceBase = 20000,
 	abilityRequired = "place_medium_garden",
 	zoneComponent = "StructureZoneComponent",
 	childObjects = {

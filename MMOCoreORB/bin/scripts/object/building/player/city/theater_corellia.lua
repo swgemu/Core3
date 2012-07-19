@@ -55,7 +55,6 @@ object_building_player_city_theater_corellia = object_building_player_city_share
 		{"private_med_battle_fatigue", 5}
 	},
 	cityRankRequired = 4,
-	limitToOnePerCity = 0,
 	zoneComponent = "StructureZoneComponent",
 	childObjects = {
 			{templateFile = "object/tangible/sign/player/house_address.iff", x = 11, z = 2, y = -14.95, ox = 0, oy = -0.707107, oz = 0, ow = 0.707107, cellid = -1, containmentType = -1},

@@ -60,11 +60,8 @@ class CityRegion extends ManagedObject implements Logger {
 	@dereferenced
 	protected CitizenList bannedList;
 	
-	@dereferenced 
-	protected SortedVector<unsigned int> limitedPlacementStructures;
-	
 	@dereferenced
-	protected CityStructureInventory cityStructureInventory;
+	protected SortedVector<StructureObject> structures;
 	
 	@dereferenced
 	protected SortedVector<SceneObject> cityMissionTerminals;
@@ -121,6 +118,8 @@ class CityRegion extends ManagedObject implements Logger {
 		
 		mayoralVotes.setAllowOverwriteInsertPlan();
 		mayoralVotes.setNullValue(0);
+		
+		structures.setNoDuplicateInsertPlan();
 	}
 	
 	public native void initialize();
@@ -291,7 +290,7 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 	
 	public int getStructuresCount() {
-		return 0;
+		return structures.size();
 	}
 	
 	public string getCitySpecialization() {
@@ -456,17 +455,22 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	public native void updateMilitia();
 	
-	public native void addToCityStructureInventory(byte rankRequired, SceneObject structure);
+	public void addStructure(StructureObject structure) {
+		structures.put(structure);
+	}
 	
-	public native void removeFromCityStructureInventory(SceneObject structure);
+	public void removeStructure(StructureObject structure) {
+		structures.drop(structure);
+	}
 	
-	public native boolean checkLimitedPlacementStucture(unsigned int id);
+	/**
+	 * Checks if the city has a structure in it's structures list of a particular template type.
+	 * @param crc The crc of the template of the structure to search for.
+	 * @return True if the city has a structure of this type.
+	 */
+	public native boolean hasUniqueStructure(unsigned int crc);
 	
-	public native boolean addLimitedPlacementStructure(unsigned int id);
-	
-	public native void removeLimitedPlacementStructure(unsigned int id);
-	
-	public native void destroyAllStructuresForRank(byte rank);	
+	public native void destroyAllStructuresForRank(byte rank);
 	
 	/**
 	 * Adds a candidate to the ballot.

@@ -50,7 +50,9 @@ object_building_player_city_cityhall_tatooine = object_building_player_city_shar
 	planetMapCategory = "cityhall",
 	zoneComponent = "CityHallZoneComponent",
 	cityRankRequired = 0,
-	limitToOnePerCity = 1,
+	uniqueStructure = true,
+	cityMaintenanceBase = 35000,
+	cityMaintenanceRate = 25000,
 	abilityRequired = "place_cityhall",
 	skillMods = {
 		{"private_buff_mind", 100},

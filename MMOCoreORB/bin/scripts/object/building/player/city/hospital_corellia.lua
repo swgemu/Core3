@@ -52,7 +52,6 @@ object_building_player_city_hospital_corellia = object_building_player_city_shar
 	length = 5,
 	width = 5,
 	cityRankRequired = 3,
-	limitToOnePerCity = 0,
 	abilitiesRequired = {"place_hospital"},
 	zoneComponent = "StructureZoneComponent",
 	childObjects = {
