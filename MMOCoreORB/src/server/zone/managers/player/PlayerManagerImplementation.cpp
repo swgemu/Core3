@@ -2294,7 +2294,9 @@ StructureObject* PlayerManagerImplementation::getInRangeOwnedStructure(CreatureO
 	float closestDistance = 16000.f;
 
 	for (int i = 0; i < ghost->getTotalOwnedStructureCount(); ++i) {
-		ManagedReference<StructureObject*> structure = ghost->getOwnedStructure(i);
+		uint64 oid = ghost->getOwnedStructure(i);
+
+		ManagedReference<StructureObject*> structure = cast<StructureObject*>(ghost->getZoneServer()->getObject(oid));
 
 		Locker _slock(structure, creature);
 

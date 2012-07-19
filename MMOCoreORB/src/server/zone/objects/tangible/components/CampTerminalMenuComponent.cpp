@@ -50,7 +50,11 @@ void CampTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 
 	/// Make sure player doesn't already have a camp setup somewhere else
 	for (int i = 0; i < ghost->getTotalOwnedStructureCount(); ++i) {
-		if (ghost->getOwnedStructure(i) == camp) {
+		uint64 oid = ghost->getOwnedStructure(i);
+
+		ManagedReference<StructureObject*> structure = cast<StructureObject*>(ghost->getZoneServer()->getObject(oid));
+
+		if (structure == camp) {
 			menuResponse->addRadialMenuItem(182, 3, "@camp:mnu_disband");
 			return;
 		}
