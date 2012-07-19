@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
 #include "server/chat/ChatManager.h"
 #include "server/chat/room/ChatRoom.h"
 #include "server/zone/Zone.h"
@@ -1709,7 +1710,14 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 		ManagedReference<StructureObject*> structure = cast<StructureObject*>(getZoneServer()->getObject(oid));
 
 		if (structure != NULL) {
-			structure->destroyObjectFromWorld(false);
+			Zone* zone = structure->getZone();
+
+			if (zone != NULL) {
+				StructureManager* man = zone->getStructureManager();
+
+				man->destroyStructure(structure);
+			}
+
 			structure->destroyObjectFromDatabase(true);
 		}
 	}
