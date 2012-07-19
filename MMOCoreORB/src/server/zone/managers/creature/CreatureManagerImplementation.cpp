@@ -478,6 +478,9 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 	if (zone == NULL || !creature->isCreature())
 		return;
 
+	if (!player->isInRange(creature, 7))
+		return;
+
 	ManagedReference<ResourceManager*> resourceManager = zone->getZoneServer()->getResourceManager();
 
 	String restype = "";
