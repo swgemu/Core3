@@ -100,7 +100,7 @@ ZoneServerImplementation::ZoneServerImplementation(ConfigManager* config) :
 	processor = NULL;
 	
 	
-	serverCap = 1500;
+	serverCap = 3000;
 
 	phandler = NULL;
 
@@ -220,8 +220,8 @@ void ZoneServerImplementation::initialize() {
 
 	startManagers();
 
-	//serverState = LOCKED;
-	serverState = ONLINE; //Test Center does not need to apply this change, but would be convenient for Dev Servers.
+	serverState = LOCKED;
+	//serverState = ONLINE; //Test Center does not need to apply this change, but would be convenient for Dev Servers.
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
