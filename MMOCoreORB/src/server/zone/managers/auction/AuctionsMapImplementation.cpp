@@ -98,8 +98,8 @@ int AuctionsMapImplementation::addBazaarItem(CreatureObject* player, const Strin
 		return ItemSoldMessage::UNKNOWNERROR;
 
 	allItems.put(item->getAuctionedItemObjectID(), item);
-	int count = bazaarCount.get(item->getOwnerID()) + 1;
-	bazaarCount.put(item->getOwnerID(), count);
+//	int count = bazaarCount.get(item->getOwnerID()) + 1;
+//	bazaarCount.put(item->getOwnerID(), count);
 
 	return ItemSoldMessage::SUCCESS;
 }
