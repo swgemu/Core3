@@ -526,8 +526,6 @@ function WarrenScreenPlay:useReactorCoreSwitch(pTerminal, pPlayer)
 				local building = LuaBuildingObject(pWarren)
 				building:broadcastSpecificCellPermissions(8575715)
 			end
-			
-			createEvent(self.recycleReactor, "WarrenScreenPlay", "recycleReactorRoom", nil)
 		end
 	end
 end
@@ -873,7 +871,7 @@ function EnterReactorRoomComponent:transferObject(pContainer, pObj, slot)
 							building:broadcastSpecificCellPermissions(8575755)
 						end
 						
-						createEvent(self.recycleReactor, "WarrenScreenPlay", "recycleReactorRoom", nil)
+						createEvent(WarrenScreenPlay.recycleReactor, "WarrenScreenPlay", "recycleReactorRoom", nil)
 					end
 				end
 			end
