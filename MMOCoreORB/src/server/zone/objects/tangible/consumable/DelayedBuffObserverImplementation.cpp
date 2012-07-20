@@ -48,8 +48,11 @@ which carries forward this exception.
 
 
 int DelayedBuffObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
+	ManagedReference<DelayedBuff*> buff = this->buff.get();
 
-	buff.get()->useCharge();
+	if (buff != NULL)
+		buff->useCharge();
+
 	return 0;
 
 }
