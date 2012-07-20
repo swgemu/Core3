@@ -36,6 +36,8 @@ public:
 		if (player == NULL)
 			return;
 
+		Locker locker(player);
+
 		AuctionManager* auctionManager = server->getZoneServer()->getAuctionManager();
 		auctionManager->buyItem(player, objectid, price1, price2);
 	}
