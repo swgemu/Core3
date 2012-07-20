@@ -482,11 +482,13 @@ void VehicleObjectImplementation::setDefender(SceneObject* defender) {
 }
 
 bool VehicleObjectImplementation::isAttackableBy(CreatureObject* object) {
+	// server/zone/objects/creature/VehicleObject.idl():  		CreatureObject creature = super.linkedCreature;
+	ManagedReference<CreatureObject* > creature = CreatureObjectImplementation::linkedCreature.getForUpdate();
 	// server/zone/objects/creature/VehicleObject.idl():  		return 
-	if (CreatureObjectImplementation::linkedCreature.getForUpdate() == NULL)	// server/zone/objects/creature/VehicleObject.idl():  			return false;
+	if (creature == NULL)	// server/zone/objects/creature/VehicleObject.idl():  			return false;
 	return false;
-	// server/zone/objects/creature/VehicleObject.idl():  		return super.linkedCreature.isAttackableBy(object);
-	return CreatureObjectImplementation::linkedCreature.getForUpdate().get()->isAttackableBy(object);
+	// server/zone/objects/creature/VehicleObject.idl():  		return creature.isAttackableBy(object);
+	return creature->isAttackableBy(object);
 }
 
 bool VehicleObjectImplementation::isVehicleObject() {

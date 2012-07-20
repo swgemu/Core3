@@ -248,17 +248,17 @@ void MissionReconActiveAreaImplementation::notifyEnter(SceneObject* player) {
 }
 
 	else {
+	// server/zone/objects/area/MissionReconActiveArea.idl():  			ReconMissionObjective strongReference = missionObjective;
+	ManagedReference<ReconMissionObjective* > strongReference = missionObjective;
 	// server/zone/objects/area/MissionReconActiveArea.idl():  			}
-	if (missionObjective != NULL){
-	// server/zone/objects/area/MissionReconActiveArea.idl():  				CreatureObject missionOwner = missionObjective.getPlayerOwner();
-	ManagedReference<CreatureObject* > missionOwner = missionObjective.get()->getPlayerOwner();
+	if (strongReference != NULL){
+	// server/zone/objects/area/MissionReconActiveArea.idl():  				CreatureObject missionOwner = strongReference.getPlayerOwner();
+	ManagedReference<CreatureObject* > missionOwner = strongReference->getPlayerOwner();
 	// server/zone/objects/area/MissionReconActiveArea.idl():  			}
 	if ((CreatureObject*) player == missionOwner){
 	// server/zone/objects/area/MissionReconActiveArea.idl():  					if 
 	if (completeTask == NULL){
 	Reference<CompleteMissionAfterCertainTimeTask*> _ref0;
-	// server/zone/objects/area/MissionReconActiveArea.idl():  						ReconMissionObjective strongReference = missionObjective;
-	ManagedReference<ReconMissionObjective* > strongReference = missionObjective;
 	// server/zone/objects/area/MissionReconActiveArea.idl():  						completeTask = new CompleteMissionAfterCertainTimeTask(strongReference);
 	completeTask = _ref0 = new CompleteMissionAfterCertainTimeTask(strongReference);
 }
@@ -289,10 +289,12 @@ void MissionReconActiveAreaImplementation::notifyExit(SceneObject* player) {
 }
 
 	else {
+	// server/zone/objects/area/MissionReconActiveArea.idl():  			ReconMissionObjective strongReference = missionObjective;
+	ManagedReference<ReconMissionObjective* > strongReference = missionObjective;
 	// server/zone/objects/area/MissionReconActiveArea.idl():  			}
-	if (missionObjective != NULL){
-	// server/zone/objects/area/MissionReconActiveArea.idl():  				CreatureObject missionOwner = missionObjective.getPlayerOwner();
-	ManagedReference<CreatureObject* > missionOwner = missionObjective.get()->getPlayerOwner();
+	if (strongReference != NULL){
+	// server/zone/objects/area/MissionReconActiveArea.idl():  				CreatureObject missionOwner = strongReference.getPlayerOwner();
+	ManagedReference<CreatureObject* > missionOwner = strongReference->getPlayerOwner();
 	// server/zone/objects/area/MissionReconActiveArea.idl():  			}
 	if ((CreatureObject*) player == missionOwner){
 	// server/zone/objects/area/MissionReconActiveArea.idl():  				}

@@ -1090,9 +1090,15 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 	float action = weapon->getActionAttackCost() * data.getActionCostMultiplier();
 	float mind = weapon->getMindAttackCost() * data.getMindCostMultiplier();
 
+	/*
 	health -= MIN(health, health * attacker->getHAM(CreatureAttribute::STRENGTH) / 10000.f);
 	action -= MIN(action, action * attacker->getHAM(CreatureAttribute::QUICKNESS) / 10000.f);
 	mind -= MIN(mind, mind * attacker->getHAM(CreatureAttribute::FOCUS) / 10000.f);
+	*/
+
+	health = MAX(0, health - (float(attacker->getHAM(CreatureAttribute::STRENGTH)) / 10.f));
+	action = MAX(0, action - (float(attacker->getHAM(CreatureAttribute::QUICKNESS)) / 10.f));
+	mind = MAX(0, mind - (float(attacker->getHAM(CreatureAttribute::FOCUS)) / 10.f));
 
 	if (attacker->getHAM(CreatureAttribute::HEALTH) <= health)
 		return false;

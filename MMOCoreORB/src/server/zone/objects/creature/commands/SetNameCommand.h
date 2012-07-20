@@ -96,8 +96,7 @@ public:
 			for(int i = 0; i < targetPlayer->getTotalOwnedStructureCount(); ++i) {
 				uint64 oid = targetPlayer->getOwnedStructure(i);
 
-			 	ManagedReference<StructureObject*> structure = cast<StructureObject*>(targetPlayer->getZoneServer()->getObject(oid));
-
+				ManagedReference<StructureObject*> structure = cast<StructureObject*>(targetPlayer->getZoneServer()->getObject(oid));
 				structure->revokePermission("ADMIN", oldName);
 				structure->grantPermission("ADMIN", newName);
 			}

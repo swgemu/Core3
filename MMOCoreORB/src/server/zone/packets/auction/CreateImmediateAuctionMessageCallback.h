@@ -48,6 +48,8 @@ public:
 		if (player == NULL || (!vendor->isVendor() && !vendor->isBazaarTerminal()) || vendor == NULL)
 			return;
 
+		Locker locker(player);
+
 		AuctionManager* auctionManager = server->getZoneServer()->getAuctionManager();
 
 		auctionManager->addSaleItem(player, objectID, vendor, description, price, duration, false, premium);

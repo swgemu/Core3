@@ -52,8 +52,8 @@ which carries forward this exception.
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
-#include "server/chat/ChatManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/chat/ChatManager.h"
 #include "server/chat/room/ChatRoom.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
@@ -1703,21 +1703,22 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 	IntangibleObjectImplementation::destroyObjectFromDatabase(destroyContainedObjects);
 
 	for (int i = 0; i < ownedStructures.size(); ++i) {
-	 	//ManagedReference<StructureObject*> structure = ownedStructures.get(i);
+		//ManagedReference<StructureObject*> structure = ownedStructures.get(i);
 
-	 	uint64 oid = ownedStructures.get(i);
+		uint64 oid = ownedStructures.get(i);
 
-	 	ManagedReference<StructureObject*> structure = cast<StructureObject*>(getZoneServer()->getObject(oid));
+		ManagedReference<StructureObject*> structure = cast<StructureObject*>(getZoneServer()->getObject(oid));
 
 		if (structure != NULL) {
-			structure->destroyObjectFromWorld(false);
-            Zone* zone = structure->getZone();
+			Zone* zone = structure->getZone();
 
-            if (zone != NULL) {
-            	StructureManager* man = zone->getStructureManager();
+			if (zone != NULL) {
+				StructureManager* man = zone->getStructureManager();
 
 				man->destroyStructure(structure);
-            }
+			}
+
+			structure->destroyObjectFromDatabase(true);
 		}
 	}
 }

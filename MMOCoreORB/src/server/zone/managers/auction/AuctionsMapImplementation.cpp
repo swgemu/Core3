@@ -19,7 +19,6 @@
 #include "server/zone/packets/auction/ItemSoldMessage.h"
 
 int AuctionsMapImplementation::addItem(CreatureObject* player, SceneObject* vendor, AuctionItem* item) {
-
 	if(vendor == NULL || vendor->getZone() == NULL)
 		return ItemSoldMessage::VENDORNOTWORKING;
 
@@ -37,6 +36,7 @@ int AuctionsMapImplementation::addItem(CreatureObject* player, SceneObject* vend
 }
 
 int AuctionsMapImplementation::addVendorItem(CreatureObject* player, const String& planet, const String& region, SceneObject* vendor, AuctionItem* item) {
+	Locker locker(_this.get());
 
 	if(allItems.contains(item->getAuctionedItemObjectID()))
 		return ItemSoldMessage::ALREADYFORSALE;
@@ -61,7 +61,6 @@ int AuctionsMapImplementation::addVendorItem(CreatureObject* player, const Strin
 	if(vendorItems == NULL)
 		return ItemSoldMessage::INVALIDAUCTIONER;
 
-	Locker locker(_this.get());
 	Locker vlocker(vendorItems);
 
 	int result = vendorItems->put(item);
@@ -78,6 +77,7 @@ int AuctionsMapImplementation::addVendorItem(CreatureObject* player, const Strin
 }
 
 int AuctionsMapImplementation::addBazaarItem(CreatureObject* player, const String& planet, const String& region, SceneObject* vendor, AuctionItem* item) {
+	Locker locker(_this.get());
 
 	if(allItems.contains(item->getAuctionedItemObjectID()))
 		return ItemSoldMessage::ALREADYFORSALE;
@@ -90,7 +90,6 @@ int AuctionsMapImplementation::addBazaarItem(CreatureObject* player, const Strin
 	if(bazaarItems == NULL)
 		return ItemSoldMessage::INVALIDAUCTIONER;
 
-	Locker locker(_this.get());
 	Locker blocker(bazaarItems);
 	int result = bazaarItems->put(item);
 
@@ -98,8 +97,8 @@ int AuctionsMapImplementation::addBazaarItem(CreatureObject* player, const Strin
 		return ItemSoldMessage::UNKNOWNERROR;
 
 	allItems.put(item->getAuctionedItemObjectID(), item);
-	int count = bazaarCount.get(item->getOwnerID()) + 1;
-	bazaarCount.put(item->getOwnerID(), count);
+//	int count = bazaarCount.get(item->getOwnerID()) + 1;
+//	bazaarCount.put(item->getOwnerID(), count);
 
 	return ItemSoldMessage::SUCCESS;
 }
@@ -116,6 +115,7 @@ int AuctionsMapImplementation::removeItem(SceneObject* vendor, AuctionItem* item
 }
 
 int AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, AuctionItem* item) {
+	Locker locker(_this.get());
 
 	Reference<TerminalItemList*> vendorItems = vendorItemsForSale.get(vendor->getObjectID());
 
@@ -125,7 +125,6 @@ int AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, AuctionItem
 	if(!vendorItems->contains(item))
 		return ItemSoldMessage::INVALIDITEM;
 
-	Locker locker(_this.get());
 	Locker vlocker(vendorItems);
 
 	if(vendorItems->removeElement(item)) {
@@ -143,6 +142,7 @@ int AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, AuctionItem
 }
 
 int AuctionsMapImplementation::removeBazaarItem(SceneObject* vendor,  AuctionItem* item) {
+	Locker locker(_this.get());
 
 	Reference<TerminalItemList*> bazaarItems = bazaarItemsForSale.get(vendor->getObjectID());
 
@@ -152,7 +152,7 @@ int AuctionsMapImplementation::removeBazaarItem(SceneObject* vendor,  AuctionIte
 	if(!bazaarItems->contains(item))
 		return ItemSoldMessage::INVALIDITEM;
 
-	Locker locker(_this.get());
+
 	Locker blocker(bazaarItems);
 
 	if(bazaarItems->removeElement(item)) {

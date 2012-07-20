@@ -89,11 +89,11 @@ class AuctionsMap extends ManagedObject {
 	private native int removeBazaarItem(SceneObject vendor, AuctionItem item);
 
 	
-	public AuctionItem getItem(unsigned long id) {
+	public synchronized AuctionItem getItem(unsigned long id) {
 		return allItems.get(id);
 	}
 	
-	public boolean containsItem(unsigned long id) {
+	public synchronized boolean containsItem(unsigned long id) {
 		return allItems.contains(id);
 	}
 

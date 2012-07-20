@@ -34,6 +34,8 @@ public:
 		if (player == NULL)
 			return;
 
+		Locker locker(player);
+
 		AuctionManager* auctionManager = server->getZoneServer()->getAuctionManager();
 
 		auctionManager->retrieveItem(player, objectid, bazaarid);

@@ -70,12 +70,13 @@ class MissionReconActiveArea extends ActiveArea {
 		if (!player.isPlayerCreature()) {
 			return;
 		} else {
-			if (missionObjective != null) {
-				CreatureObject missionOwner = missionObjective.getPlayerOwner();
+			ReconMissionObjective strongReference = missionObjective;
+			
+			if (strongReference != null) {
+				CreatureObject missionOwner = strongReference.getPlayerOwner();
 				
 				if ((CreatureObject)player == missionOwner) {
 					if (completeTask == null) {
-						ReconMissionObjective strongReference = missionObjective;
 						completeTask = new CompleteMissionAfterCertainTimeTask(strongReference);
 					}
 					
@@ -98,8 +99,10 @@ class MissionReconActiveArea extends ActiveArea {
 		if (!player.isPlayerCreature()) {
 			return;
 		} else {
-			if (missionObjective != null) {
-				CreatureObject missionOwner = missionObjective.getPlayerOwner();
+			ReconMissionObjective strongReference = missionObjective;
+			
+			if (strongReference != null) {
+				CreatureObject missionOwner = strongReference.getPlayerOwner();
 				
 				if ((CreatureObject)player == missionOwner) {
 					if (completeTask != null) {
