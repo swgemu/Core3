@@ -120,6 +120,8 @@ class CityManager extends ManagedService implements Logger {
 	 */
 	public native void updateCityVoting(CityRegion city);
 	
+	public native void deductCityMaintenance(CityRegion city);
+	
 	public native void contractCity(CityRegion city);
 	
 	public native void expandCity(CityRegion city);

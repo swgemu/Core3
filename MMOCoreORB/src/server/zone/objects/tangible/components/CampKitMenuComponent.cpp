@@ -138,7 +138,11 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 		/// Make sure player doesn't already have a camp setup somewhere else
 		for (int i = 0; i < ghost->getTotalOwnedStructureCount(); ++i) {
-			if (ghost->getOwnedStructure(i)->isCampStructure()) {
+		 	uint64 oid = ghost->getOwnedStructure(i);
+
+		 	ManagedReference<StructureObject*> structure = cast<StructureObject*>(ghost->getZoneServer()->getObject(oid));
+
+		 	if (structure->isCampStructure()) {
 				player->sendSystemMessage("@camp:sys_already_camping");
 				return 0;
 			}

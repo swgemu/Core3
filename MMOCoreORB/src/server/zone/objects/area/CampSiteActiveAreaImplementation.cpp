@@ -241,11 +241,13 @@ bool CampSiteActiveAreaImplementation::despawnCamp() {
 }
 
 void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
+	if (camp == NULL)
+		return;
 
 	/// Get Ghost
 	PlayerObject* ghost = campOwner->getPlayerObject();
 
-	if (ghost != NULL) {
+	if (ghost != NULL && camp != NULL) {
 		ghost->removeOwnedStructure(camp);
 	}
 

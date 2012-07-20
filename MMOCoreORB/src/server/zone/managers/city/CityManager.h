@@ -132,6 +132,8 @@ public:
 
 	void updateCityVoting(CityRegion* city);
 
+	void deductCityMaintenance(CityRegion* city);
+
 	void contractCity(CityRegion* city);
 
 	void expandCity(CityRegion* city);
@@ -280,6 +282,8 @@ public:
 
 	void updateCityVoting(CityRegion* city);
 
+	void deductCityMaintenance(CityRegion* city);
+
 	void contractCity(CityRegion* city);
 
 	void expandCity(CityRegion* city);
@@ -404,6 +408,8 @@ public:
 	void processCityUpdate(CityRegion* city);
 
 	void updateCityVoting(CityRegion* city);
+
+	void deductCityMaintenance(CityRegion* city);
 
 	void contractCity(CityRegion* city);
 

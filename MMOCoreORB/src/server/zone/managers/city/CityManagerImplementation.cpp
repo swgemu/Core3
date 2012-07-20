@@ -479,7 +479,13 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 	city->rescheduleUpdateEvent(cityUpdateInterval * 60);
 
 	//TODO: Taxation
-	//TODO: Deduct Maintenance
+
+
+	deductCityMaintenance(city);
+}
+
+void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
+
 }
 
 void CityManagerImplementation::updateCityVoting(CityRegion* city) {

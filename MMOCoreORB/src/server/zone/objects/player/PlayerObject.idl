@@ -114,7 +114,7 @@ class PlayerObject extends IntangibleObject {
 	protected boolean teleporting;
 	
 	@dereferenced
-	protected SortedVector<StructureObject> ownedStructures;
+	protected SortedVector<unsigned long> ownedStructures;
 	
 	@dereferenced
 	protected SortedVector<unsigned long> ownedVendors;
@@ -337,11 +337,17 @@ class PlayerObject extends IntangibleObject {
 	public native void sendMessage(BasePacket msg);
 	
 	public synchronized void addOwnedStructure(StructureObject obj) {
-		ownedStructures.put(obj);
+		if (obj == null) 
+				return;
+		
+		ownedStructures.put(obj.getObjectID());
 	}
 	
 	public synchronized void removeOwnedStructure(StructureObject obj) {
-		ownedStructures.drop(obj);
+		if (obj == null) 
+			return;
+	
+		ownedStructures.drop(obj.getObjectID());
 	}
 	
 	public synchronized int getTotalOwnedStructureCount() {
@@ -349,10 +355,13 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public synchronized boolean isOwnedStructure(StructureObject obj) {
-		return ownedStructures.contains(obj);
+		if (obj == null) 
+			return false;
+	
+		return ownedStructures.contains(obj.getObjectID());
 	}
 	
-	public synchronized StructureObject getOwnedStructure(int i) {
+	public synchronized unsigned long getOwnedStructure(int i) {
 		return ownedStructures.get(i);
 	}
 	
@@ -360,7 +369,9 @@ class PlayerObject extends IntangibleObject {
 		int lotsRemaining = maximumLots;
 		
 		for (int i = 0; i < ownedStructures.size(); ++i) {
-			StructureObject structure = ownedStructures.get(i);
+			unsigned long oid = ownedStructures.get(i);
+			
+			StructureObject structure = (StructureObject) super.getZoneServer().getObject(oid); 
 			
 			lotsRemaining = lotsRemaining - structure.getLotSize();
 		}
