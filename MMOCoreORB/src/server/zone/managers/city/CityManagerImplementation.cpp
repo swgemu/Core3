@@ -132,7 +132,7 @@ void CityManagerImplementation::loadCityRegions() {
 
 			if (object != NULL && object->getZone() != NULL) {
 				++i;
-				cities.put(object->getRegionName().toLowerCase(), object);
+				cities.put(object->getRegionName(), object);
 			} else {
 				error("Failed to load city region with objectid: " + String::valueOf(objectID));
 			}
