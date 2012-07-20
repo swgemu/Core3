@@ -346,7 +346,7 @@ public:
 
 	bool isOwnedStructure(StructureObject* obj);
 
-	unsigned long long getOwnedStructure(int i);
+	StructureObject* getOwnedStructure(int i);
 
 	int getLotsRemaining();
 
@@ -836,7 +836,7 @@ protected:
 
 	bool teleporting;
 
-	SortedVector<unsigned long long> ownedStructures;
+	SortedVector<ManagedReference<StructureObject* > > ownedStructures;
 
 	SortedVector<unsigned long long> ownedVendors;
 
@@ -999,7 +999,7 @@ public:
 
 	bool isOwnedStructure(StructureObject* obj);
 
-	unsigned long long getOwnedStructure(int i);
+	StructureObject* getOwnedStructure(int i);
 
 	int getLotsRemaining();
 
@@ -1498,7 +1498,7 @@ public:
 
 	bool isOwnedStructure(StructureObject* obj);
 
-	unsigned long long getOwnedStructure(int i);
+	StructureObject* getOwnedStructure(int i);
 
 	int getLotsRemaining();
 

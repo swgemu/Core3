@@ -214,10 +214,10 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		//applySpecializationModifiers(creature);
 	}
 
-	if (loaded && object->isStructureObject()){
+	if (object->isStructureObject()){
 		StructureObject* structure = cast<StructureObject*>(object);
 
-		uint64 creatureID = structure->getOwnerObjectID();
+		/*uint64 creatureID = structure->getOwnerObjectID();
 
 		if (structure->isBuildingObject() && !citizenList.contains(creatureID)) {
 			BuildingObject* building = cast<BuildingObject*>(object);
@@ -230,7 +230,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 					addCitizen(creatureID);
 				}
 			}
-		}
+		}*/
 
 		if (structure->isCivicStructure())
 			addStructure(structure);
@@ -273,7 +273,7 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 	}
 
 
-	if (loaded && object->isStructureObject()){
+	if (object->isStructureObject()) {
 
 		float x = object->getWorldPositionX();
 		float y = object->getWorldPositionY();
@@ -282,7 +282,7 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 
 		StructureObject* structure = cast<StructureObject*>(object);
 
-		uint64 creatureID = structure->getOwnerObjectID();
+		/*uint64 creatureID = structure->getOwnerObjectID();
 
 		if (structure->isBuildingObject() && citizenList.contains(creatureID)) {
 			BuildingObject* building = cast<BuildingObject*>(object);
@@ -296,7 +296,7 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 					removeCitizen(creatureID);
 				}
 			}
-		}
+		}*/
 
 		if (structure->isCivicStructure())
 			removeStructure(structure);

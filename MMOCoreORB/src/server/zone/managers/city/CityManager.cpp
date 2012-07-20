@@ -808,8 +808,6 @@ CityManagerImplementation::CityManagerImplementation(ZoneServer* zserv) {
 	(&cities)->setNoDuplicateInsertPlan();
 	// server/zone/managers/city/CityManager.idl():  		cities.setNullValue(null);
 	(&cities)->setNullValue(NULL);
-	// server/zone/managers/city/CityManager.idl():  		configLoaded = false;
-	configLoaded = false;
 }
 
 bool CityManagerImplementation::containsCityName(const String& name) {
