@@ -132,6 +132,8 @@ public:
 
 	void updateCityVoting(CityRegion* city);
 
+	void deductCityMaintenance(CityRegion* city);
+
 	void contractCity(CityRegion* city);
 
 	void expandCity(CityRegion* city);
@@ -249,8 +251,6 @@ public:
 private:
 	VectorMap<String, ManagedReference<CityRegion* > > cities;
 
-	bool configLoaded;
-
 public:
 	static const byte CLIENT = 0;
 
@@ -281,6 +281,8 @@ public:
 	void processCityUpdate(CityRegion* city);
 
 	void updateCityVoting(CityRegion* city);
+
+	void deductCityMaintenance(CityRegion* city);
 
 	void contractCity(CityRegion* city);
 
@@ -406,6 +408,8 @@ public:
 	void processCityUpdate(CityRegion* city);
 
 	void updateCityVoting(CityRegion* city);
+
+	void deductCityMaintenance(CityRegion* city);
 
 	void contractCity(CityRegion* city);
 

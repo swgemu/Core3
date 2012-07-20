@@ -312,3 +312,13 @@ void StructureObjectImplementation::removeTemplateSkillMods(TangibleObject* targ
 
 	SkillModManager::instance()->verifyStructureSkillMods(targetObject);
 }
+
+bool StructureObjectImplementation::isCivicStructure() {
+	SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(templateObject.get());
+
+	if (ssot == NULL)
+		return false;
+
+
+	return ssot->isCivicStructure();
+}

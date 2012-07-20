@@ -325,11 +325,13 @@ AuctionsMapImplementation::AuctionsMapImplementation() {
 }
 
 AuctionItem* AuctionsMapImplementation::getItem(unsigned long long id) {
+	Locker _locker(_this.get());
 	// server/zone/managers/auction/AuctionsMap.idl():  		return allItems.get(id);
 	return (&allItems)->get(id);
 }
 
 bool AuctionsMapImplementation::containsItem(unsigned long long id) {
+	Locker _locker(_this.get());
 	// server/zone/managers/auction/AuctionsMap.idl():  		return allItems.contains(id);
 	return (&allItems)->contains(id);
 }

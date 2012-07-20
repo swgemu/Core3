@@ -49,7 +49,8 @@ object_building_player_city_cloning_naboo = object_building_player_city_shared_c
 	length = 5,
 	width = 5,
 	cityRankRequired = 3,
-	limitToOnePerCity = 1,
+	uniqueStructure = true,
+	cityMaintenanceBase = 20000,
 	spawningPoints = { {x = -9.6, z = -1.2, y = -6.4, ow = 1, ox = 0, oz = 0, oy = 0, cellid = 4} }, -- { x, z, y, ow, ox, oy, oz, cellid }
 	templateType = CLONINGBUILDING,
 	abilityRequired = "place_cloning",

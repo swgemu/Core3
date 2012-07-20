@@ -30,15 +30,17 @@ crackdown_elite_dark_trooper = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "color_crystals", chance = 200000},
-				{group = "junk", chance = 3600000},
-				{group = "rifles", chance = 300000},
-				{group = "pistols", chance = 300000},
-				{group = "clothing_attachments", chance = 100000},
-				{group = "armor_attachments", chance = 100000}
+				{group = "color_crystals", chance = 100000},
+				{group = "junk", chance = 7650000},
+				{group = "rifles", chance = 550000},
+				{group = "pistols", chance = 550000},
+                {group = "melee_weapons", chance = 550000},
+                {group = "carbines", chance = 550000},
+				{group = "clothing_attachments", chance = 25000},
+				{group = "armor_attachments", chance = 25000}
 			},
-			lootChance = 4000000
-		}			
+			lootChance = 2800000
+		}						
 	},
 	weapons = {"stormtrooper_weapons"},
 	conversationTemplate = "",

@@ -132,7 +132,7 @@ void CityManagerImplementation::loadCityRegions() {
 
 			if (object != NULL && object->getZone() != NULL) {
 				++i;
-				cities.put(object->getRegionName(), object);
+				cities.put(object->getRegionName().toLowerCase(), object);
 			} else {
 				error("Failed to load city region with objectid: " + String::valueOf(objectID));
 			}
@@ -453,22 +453,19 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 
 	int citizens = city->getCitizenCount();
 
-	if (cityRank - 1 >= citizensPerRank.size() || cityRank >= citizensPerRank.size())
+	if (cityRank - 1 >= citizensPerRank.size())
 		return;
 
-	int maintainCitizens = citizensPerRank.get(cityRank - 1);
-	int advanceCitizens = citizensPerRank.get(cityRank);
+	if (cityRank != METROPOLIS) {
+		int maintainCitizens = citizensPerRank.get(cityRank - 1);
+		int advanceCitizens = citizensPerRank.get(cityRank);
 
-	//System::out << "maintainCitizens: " << maintainCitizens << endl;
-	//System::out << "advanceCitizens: " << advanceCitizens << endl;
-
-	if (citizens < maintainCitizens) {
-		contractCity(city);
-	} else if (citizens >= advanceCitizens) {
-		expandCity(city);
+		if (citizens < maintainCitizens) {
+			contractCity(city);
+		} else if (citizens >= advanceCitizens) {
+			expandCity(city);
+		}
 	}
-
-	//city->updateMilitia();
 
 	updateCityVoting(city);
 
@@ -482,7 +479,13 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 	city->rescheduleUpdateEvent(cityUpdateInterval * 60);
 
 	//TODO: Taxation
-	//TODO: Deduct Maintenance
+
+
+	deductCityMaintenance(city);
+}
+
+void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
+
 }
 
 void CityManagerImplementation::updateCityVoting(CityRegion* city) {

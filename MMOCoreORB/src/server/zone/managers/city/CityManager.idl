@@ -79,8 +79,6 @@ class CityManager extends ManagedService implements Logger {
 	@dereferenced
 	private transient VectorMap<string, CityRegion> cities;
 	
-	private transient boolean configLoaded;
-	
 	//City Ranks
 	public static final byte CLIENT = 0;
 	public static final byte OUTPOST = 1;
@@ -98,8 +96,6 @@ class CityManager extends ManagedService implements Logger {
 		
 		cities.setNoDuplicateInsertPlan();
 		cities.setNullValue(null);
-		
-		configLoaded = false;
 	}
 	
 	/**
@@ -123,6 +119,8 @@ class CityManager extends ManagedService implements Logger {
 	 * @post city locked
 	 */
 	public native void updateCityVoting(CityRegion city);
+	
+	public native void deductCityMaintenance(CityRegion city);
 	
 	public native void contractCity(CityRegion city);
 	

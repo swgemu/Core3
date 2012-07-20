@@ -429,4 +429,6 @@ class StructureObject extends TangibleObject {
 	public abstract string getRedeedMessage() {
 		return "";
 	}
+	
+	public native boolean isCivicStructure();
 }

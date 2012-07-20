@@ -39,6 +39,9 @@ public:
 		Locker locker(player);
 
 		AuctionManager* auctionManager = server->getZoneServer()->getAuctionManager();
+
+		Locker clocker(auctionManager, player);
+
 		auctionManager->buyItem(player, objectid, price1, price2);
 	}
 

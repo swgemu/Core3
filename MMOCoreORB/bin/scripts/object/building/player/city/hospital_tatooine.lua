@@ -52,7 +52,6 @@ object_building_player_city_hospital_tatooine = object_building_player_city_shar
 	width = 5,
 	planetMapCategory = "medicalcenter",
 	cityRankRequired = 3,
-	limitToOnePerCity = 0,
 	abilityRequired = "place_hospital",
 	zoneComponent = "StructureZoneComponent",
 	childObjects = {

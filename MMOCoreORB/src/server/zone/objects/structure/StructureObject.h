@@ -258,6 +258,8 @@ public:
 
 	String getRedeedMessage();
 
+	bool isCivicStructure();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -443,6 +445,8 @@ public:
 
 	virtual String getRedeedMessage();
 
+	bool isCivicStructure();
+
 	WeakReference<StructureObject*> _this;
 
 	operator const StructureObject*();
@@ -605,6 +609,8 @@ public:
 	bool isRedeedable();
 
 	String getRedeedMessage();
+
+	bool isCivicStructure();
 
 };
 

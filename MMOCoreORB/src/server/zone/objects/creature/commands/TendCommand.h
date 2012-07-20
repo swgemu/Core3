@@ -41,7 +41,7 @@ protected:
 
 public:
 	TendCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+	: QueueCommand(name, server) {
 		mindCost = 0;
 		mindWoundCost = 0;
 
@@ -185,7 +185,7 @@ public:
 
 		CreatureObject* creatureTarget = cast<CreatureObject*>(object.get());
 
-	/*	if (!target->isPlayer() && !target->isNonPlayerCreature()) {
+		/*	if (!target->isPlayer() && !target->isNonPlayerCreature()) {
 			creature->sendSystemMessage("@healing_response:healing_response_a1"); //Target must be a player or a creature pet in order to tend damage.
 			return GENERALERROR;
 		}*/
@@ -249,9 +249,10 @@ public:
 
 			float modSkill = (float) creature->getSkillMod("healing_injury_treatment");
 
-			float effectiveness = 1.f - creatureTarget->calculateBFRatio();
+			float bfScale = 1 - creatureTarget->calculateBFRatio();
+			int effectiveness = 150;
 
-			int healPower = (int) round((100.0f + modSkill) / 100.0f * effectiveness);
+			int healPower = (int) round((100.0f + modSkill) / 100.0f * effectiveness * bfScale);
 
 			int healedHealth = creatureTarget->healDamage(creature, CreatureAttribute::HEALTH, healPower);
 			int healedAction = creatureTarget->healDamage(creature, CreatureAttribute::ACTION, healPower, true, false);
@@ -286,12 +287,13 @@ public:
 			float modEnvironment = 1 + (creature->getSkillMod("private_medical_rating") / 100.0f);
 			float modSkill = (float) creature->getSkillMod("healing_wound_treatment");
 
-			float effectiveness = 1.f - creatureTarget->calculateBFRatio();
+			float bfScale = 1 - creatureTarget->calculateBFRatio();
+			int effectiveness = 150;
 
 			//Since this skill can be used anywhere, we need to check that modEnvironment is not 0.
 			modEnvironment = modEnvironment > 0.0f ? modEnvironment : 1.0f;
 
-			int healPower = (int) round(effectiveness  * modEnvironment * (100.0f + modSkill) / 1000.0f);
+			int healPower = (int) round(effectiveness * bfScale  * modEnvironment * (100.0f + modSkill) / 1000.0f);
 
 			int healedWounds = creatureTarget->healWound(creature, attribute, healPower);
 
@@ -309,7 +311,7 @@ public:
 		//creature->changeWillpowerWoundsBar(mindWoundCost);
 		creature->addShockWounds(2);
 
-		if (creatureTarget != creature)
+		if (creatureTarget != creature && tendWound)
 			awardXp(creature, "medical", 100);
 
 		doAnimations(creature, creatureTarget);

@@ -302,15 +302,11 @@ public:
 
 	void updateMilitia();
 
-	void addToCityStructureInventory(byte rankRequired, SceneObject* structure);
+	void addStructure(StructureObject* structure);
 
-	void removeFromCityStructureInventory(SceneObject* structure);
+	void removeStructure(StructureObject* structure);
 
-	bool checkLimitedPlacementStucture(unsigned int id);
-
-	bool addLimitedPlacementStructure(unsigned int id);
-
-	void removeLimitedPlacementStructure(unsigned int id);
+	bool hasUniqueStructure(unsigned int crc);
 
 	void destroyAllStructuresForRank(byte rank);
 
@@ -337,6 +333,8 @@ public:
 	bool isVotingPeriod();
 
 	void resetVotingPeriod();
+
+	bool isLoaded();
 
 	void setLoaded();
 
@@ -390,9 +388,7 @@ protected:
 
 	CitizenList bannedList;
 
-	SortedVector<unsigned int> limitedPlacementStructures;
-
-	CityStructureInventory cityStructureInventory;
+	SortedVector<ManagedReference<StructureObject* > > structures;
 
 	SortedVector<ManagedReference<SceneObject* > > cityMissionTerminals;
 
@@ -601,15 +597,11 @@ public:
 
 	void updateMilitia();
 
-	void addToCityStructureInventory(byte rankRequired, SceneObject* structure);
+	void addStructure(StructureObject* structure);
 
-	void removeFromCityStructureInventory(SceneObject* structure);
+	void removeStructure(StructureObject* structure);
 
-	bool checkLimitedPlacementStucture(unsigned int id);
-
-	bool addLimitedPlacementStructure(unsigned int id);
-
-	void removeLimitedPlacementStructure(unsigned int id);
+	bool hasUniqueStructure(unsigned int crc);
 
 	void destroyAllStructuresForRank(byte rank);
 
@@ -636,6 +628,8 @@ public:
 	bool isVotingPeriod();
 
 	void resetVotingPeriod();
+
+	bool isLoaded();
 
 	void setLoaded();
 
@@ -828,15 +822,11 @@ public:
 
 	void updateMilitia();
 
-	void addToCityStructureInventory(byte rankRequired, SceneObject* structure);
+	void addStructure(StructureObject* structure);
 
-	void removeFromCityStructureInventory(SceneObject* structure);
+	void removeStructure(StructureObject* structure);
 
-	bool checkLimitedPlacementStucture(unsigned int id);
-
-	bool addLimitedPlacementStructure(unsigned int id);
-
-	void removeLimitedPlacementStructure(unsigned int id);
+	bool hasUniqueStructure(unsigned int crc);
 
 	void destroyAllStructuresForRank(byte rank);
 
@@ -859,6 +849,8 @@ public:
 	bool isVotingPeriod();
 
 	void resetVotingPeriod();
+
+	bool isLoaded();
 
 	void setLoaded();
 
