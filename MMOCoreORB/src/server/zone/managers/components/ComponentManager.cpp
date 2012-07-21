@@ -33,6 +33,7 @@
 #include "server/zone/objects/tangible/components/BankTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/components/CloningTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/components/HologrindHolocronMenuComponent.h"
+#include "server/zone/objects/tangible/components/VillageHolocronMenuComponent.h"
 #include "server/zone/objects/tangible/components/ForceShrineMenuComponent.h"
 #include "server/zone/objects/tangible/components/RobeObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/generic/ArtCrateMenuComponent.h"
@@ -112,6 +113,7 @@ ComponentManager::ComponentManager() {
 	components.put("ZoneContainerComponent", new ZoneContainerComponent());
 
 	components.put("HologrindHolocronMenuComponent", new HologrindHolocronMenuComponent());
+	components.put("VillageHolocronMenuComponent", new VillageHolocronMenuComponent());
 
 	components.put("AttributeListComponent", new AttributeListComponent());
 	components.put("LootSchematicAttributeListComponent", new LootSchematicAttributeListComponent());

@@ -1321,4 +1321,8 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+	
+	public boolean isJedi() {
+		return jediState > 2; //TODO: Implement jedi constants.
+	}
 }

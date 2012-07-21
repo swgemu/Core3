@@ -780,6 +780,8 @@ public:
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
+	bool isJedi();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -1437,6 +1439,8 @@ public:
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
+	bool isJedi();
+
 	WeakReference<PlayerObject*> _this;
 
 	operator const PlayerObject*();
@@ -1871,6 +1875,8 @@ public:
 	int getVendorCount();
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects);
+
+	bool isJedi();
 
 };
 
