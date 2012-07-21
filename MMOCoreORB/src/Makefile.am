@@ -347,6 +347,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/InsuranceTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/components/BankTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/components/HologrindHolocronMenuComponent.cpp \
+		server/zone/objects/tangible/components/VillageHolocronMenuComponent.cpp \
 		server/zone/objects/tangible/components/ForceShrineMenuComponent.cpp \
 		server/zone/objects/tangible/components/CloningTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/components/generic/ArtCrateMenuComponent.cpp \
