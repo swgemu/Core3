@@ -44,6 +44,7 @@ which carries forward this exception.
 
 #include "NpcSpawnPoint.h"
 #include "server/zone/managers/mission/spawnmaps/events/DespawnMissionNpcTask.h"
+#include "server/zone/managers/name/NameManager.h"
 
 NpcSpawnPoint::NpcSpawnPoint() {
 	spawnType = 0;
@@ -113,21 +114,21 @@ void NpcSpawnPoint::spawnNpc(TerrainManager* terrainManager, CreatureManager* cr
 		if (despawnMissionNpcTask != NULL && despawnMissionNpcTask->isScheduled()) {
 			despawnMissionNpcTask->cancel();
 		} else {
-			String deliverNpc = "deliver_npc";
-			//Get the terrain height at the spawn point.
-			float z = terrainManager->getHeight(position.getX(), position.getY());
 			//Spawn the NPC.
+			String deliverNpc = "deliver_npc";
+			float z = terrainManager->getHeight(position.getX(), position.getY());
 			npc = cast<AiAgent*>(creatureManager->spawnCreature(deliverNpc.hashCode(), 0, position.getX(), z, position.getY(), 0));
-			//Update the heading direction of the NPC.
 			npc->updateDirection(direction.getW(), direction.getX(), direction.getY(), direction.getZ());
 			//Set the name of the NPC.
-			npc->setCustomObjectName(mission->getCreatorName(), true);
+			NameManager* nm = npc->getZoneProcessServer()->getNameManager();
+			npc->setCustomObjectName(nm->makeCreatureName(), true);
 		}
 	}
 }
 
 void NpcSpawnPoint::despawnNpc() {
 	inUseByNumberOfMissions--;
+
 	if (inUseByNumberOfMissions == 0) {
 		if (despawnMissionNpcTask == NULL) {
 			despawnMissionNpcTask = new DespawnMissionNpcTask(npc, this);
