@@ -246,6 +246,10 @@ void MissionObjectImplementation::setStartPosition(float posX, float posY, const
 	}
 }
 
+void MissionObjectImplementation::setStartPosition(float posX, float posY, bool notifyClient) {
+	setStartPosition(posX, posY, startPlanet, notifyClient);
+}
+
 uint32 MissionObjectImplementation::getStartPlanetCRC() {
 	return startPlanet.hashCode();
 }
