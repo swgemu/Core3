@@ -26,7 +26,7 @@ domestic_krahbu = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/krahbu.iff"},
+	templates = {"object/mobile/krahbu_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

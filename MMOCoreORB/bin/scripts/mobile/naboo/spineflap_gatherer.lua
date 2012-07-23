@@ -26,7 +26,7 @@ spineflap_gatherer = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/capper_spineflap.iff"},
+	templates = {"object/mobile/capper_spineflap_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

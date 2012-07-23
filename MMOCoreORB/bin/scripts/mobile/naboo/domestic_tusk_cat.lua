@@ -26,7 +26,7 @@ domestic_tusk_cat = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/tusk_cat.iff"},
+	templates = {"object/mobile/tusk_cat_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

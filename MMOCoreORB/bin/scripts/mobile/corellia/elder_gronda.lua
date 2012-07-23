@@ -26,7 +26,7 @@ elder_gronda = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/gronda.iff"},
+	templates = {"object/mobile/gronda_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -26,7 +26,7 @@ canoid_hunter = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/canoid.iff"},
+	templates = {"object/mobile/canoid_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

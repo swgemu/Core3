@@ -26,7 +26,7 @@ dreaded_vir_vur = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/vir_vur.iff"},
+	templates = {"object/mobile/vir_vur_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

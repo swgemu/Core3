@@ -26,7 +26,7 @@ sharnaff_reckless_ravager = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/sharnaff.iff"},
+	templates = {"object/mobile/sharnaff_hue.iff"},
 	lootGroups = {
 		{
 			groups = {

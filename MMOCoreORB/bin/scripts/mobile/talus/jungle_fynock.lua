@@ -26,7 +26,7 @@ jungle_fynock = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/fynock.iff"},
+	templates = {"object/mobile/fynock_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

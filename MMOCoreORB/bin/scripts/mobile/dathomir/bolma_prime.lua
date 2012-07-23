@@ -21,8 +21,8 @@ bolma_prime = Creature:new {
 	milk = 0,
 	tamingChance = 0.05,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
-	creatureBitmask = PACK + HERD + KILLER,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	creatureBitmask = PACK + HERD,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 

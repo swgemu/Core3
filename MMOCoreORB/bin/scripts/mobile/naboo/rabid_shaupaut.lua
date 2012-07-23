@@ -26,7 +26,7 @@ rabid_shaupaut = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/shaupaut.iff"},
+	templates = {"object/mobile/shaupaut_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -21,12 +21,12 @@ borgle_protector = Creature:new {
 	milk = 0,
 	tamingChance = 0.25,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/borgle.iff"},
+	templates = {"object/mobile/borgle_hue.iff"},
 	lootGroups = {
 	    {
 	        groups = {

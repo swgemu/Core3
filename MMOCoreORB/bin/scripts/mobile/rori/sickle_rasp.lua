@@ -26,7 +26,7 @@ sickle_rasp = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/crowned_rasp.iff"},
+	templates = {"object/mobile/crowned_rasp_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
