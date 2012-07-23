@@ -857,10 +857,13 @@ float CombatManager::calculateDamage(CreatureObject* attacker, TangibleObject* d
 	if (diff >= 0)
 		damage = System::random(diff) + (int)minDamage;
 
-	damage += getDamageModifier(attacker, weapon);
+	if (attacker->isPlayerCreature())
+		damage *= 1.5;
 
-	if (weapon->getAttackType() == WeaponObject::MELEEATTACK)
+	if (weapon->getAttackType() == WeaponObject::MELEEATTACK && attacker->isPlayerCreature())
 		damage *= 1.25;
+
+	damage += getDamageModifier(attacker, weapon);
 
 	if (attacker->isPlayerCreature()) {
 		if (!weapon->isCertifiedFor(attacker))
@@ -895,7 +898,10 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 		}
 	}
 
-	if (weapon->getAttackType() == WeaponObject::MELEEATTACK)
+	if (attacker->isPlayerCreature())
+		damage *= 1.5;
+
+	if (weapon->getAttackType() == WeaponObject::MELEEATTACK && attacker->isPlayerCreature())
 		damage *= 1.25;
 
 	damage += getDamageModifier(attacker, weapon);
