@@ -4068,7 +4068,7 @@ void PlayerObjectImplementation::finalize() {
 void PlayerObjectImplementation::addOwnedStructure(StructureObject* obj) {
 	Locker _locker(_this.get());
 	// server/zone/objects/player/PlayerObject.idl():  		ownedStructures.
-	if (obj == NULL)	// server/zone/objects/player/PlayerObject.idl():  				return;
+	if (obj == NULL)	// server/zone/objects/player/PlayerObject.idl():  			return;
 	return;
 	// server/zone/objects/player/PlayerObject.idl():  		ownedStructures.put(obj.getObjectID());
 	(&ownedStructures)->put(obj->getObjectID());

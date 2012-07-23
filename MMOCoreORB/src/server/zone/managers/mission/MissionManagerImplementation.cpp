@@ -1653,6 +1653,9 @@ void MissionManagerImplementation::spawnMissionNpcs(NpcSpawnPoint* target, NpcSp
 
 void MissionManagerImplementation::despawnMissionNpc(NpcSpawnPoint* npc) {
 	//Lock mission spawn points.
+	if (npc == NULL)
+		return;
+		
 	Locker missionSpawnLocker(&missionNpcSpawnMap);
 	npc->despawnNpc();
 }
