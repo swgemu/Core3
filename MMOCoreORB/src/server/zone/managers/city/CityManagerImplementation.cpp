@@ -634,6 +634,10 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 
 	zone = city->getZone();
 
+	cities.drop(city->getRegionName());
+
+	locker.release();
+
 	city->destroyActiveAreas();
 
 	ManagedReference<StructureObject*> cityhall = city->getCityHall();
@@ -651,7 +655,7 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 
 	zoneServer->destroyObjectFromDatabase(city->_getObjectID());
 
-	cities.drop(city->getRegionName());
+
 	city->setZone(NULL);
 
 	//TODO: Destroy civic structures.
