@@ -1643,12 +1643,12 @@ void MissionManagerImplementation::failPlayerBountyMission(uint64 bountyHunter) 
 	}
 }
 
-void MissionManagerImplementation::spawnMissionNpcs(NpcSpawnPoint* target, NpcSpawnPoint* destination, TerrainManager* terrainManager, CreatureManager* creatureManager, MissionObject* mission) {
+void MissionManagerImplementation::spawnMissionNpcs(NpcSpawnPoint* target, NpcSpawnPoint* destination, TerrainManager* terrainManager, CreatureManager* creatureManager) {
 	//Lock mission spawn points.
 	Locker missionSpawnLocker(&missionNpcSpawnMap);
 
-	target->spawnNpc(terrainManager, creatureManager, mission);
-	destination->spawnNpc(terrainManager, creatureManager, mission);
+	target->spawnNpc(terrainManager, creatureManager);
+	destination->spawnNpc(terrainManager, creatureManager);
 }
 
 void MissionManagerImplementation::despawnMissionNpc(NpcSpawnPoint* npc) {

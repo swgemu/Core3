@@ -51,7 +51,6 @@ which carries forward this exception.
 #include "engine/lua/Lua.h"
 #include "engine/orb/object/DistributedObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include <iostream>
@@ -209,7 +208,7 @@ public:
 		return "NpcSpawnPoint at " + position.toString() + " of spawntype " + String::valueOf(spawnType) + " is " + (inUseByNumberOfMissions > 0 ? " in use." : "free.");
 	}
 
-	void spawnNpc(TerrainManager* terrainManager, CreatureManager* creatureManager, ManagedReference<MissionObject*> mission);
+	void spawnNpc(TerrainManager* terrainManager, CreatureManager* creatureManager);
 
 	void despawnNpc();
 

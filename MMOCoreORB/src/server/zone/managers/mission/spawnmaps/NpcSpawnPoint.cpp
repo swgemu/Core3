@@ -107,7 +107,7 @@ bool NpcSpawnPoint::toBinaryStream(ObjectOutputStream* stream) {
 	return result & npc.toBinaryStream(stream);
 }
 
-void NpcSpawnPoint::spawnNpc(TerrainManager* terrainManager, CreatureManager* creatureManager, ManagedReference<MissionObject*> mission) {
+void NpcSpawnPoint::spawnNpc(TerrainManager* terrainManager, CreatureManager* creatureManager) {
 	inUseByNumberOfMissions++;
 
 	if (inUseByNumberOfMissions == 1) {

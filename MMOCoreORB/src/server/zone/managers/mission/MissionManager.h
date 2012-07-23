@@ -284,7 +284,7 @@ public:
 
 	void failPlayerBountyMission(unsigned long long bountyHunter);
 
-	void spawnMissionNpcs(NpcSpawnPoint* target, NpcSpawnPoint* destination, TerrainManager* terrainManager, CreatureManager* creatureManager, MissionObject* mission);
+	void spawnMissionNpcs(NpcSpawnPoint* target, NpcSpawnPoint* destination, TerrainManager* terrainManager, CreatureManager* creatureManager);
 
 	void despawnMissionNpc(NpcSpawnPoint* npc);
 
@@ -457,7 +457,7 @@ public:
 
 	void failPlayerBountyMission(unsigned long long bountyHunter);
 
-	void spawnMissionNpcs(NpcSpawnPoint* target, NpcSpawnPoint* destination, TerrainManager* terrainManager, CreatureManager* creatureManager, MissionObject* mission);
+	void spawnMissionNpcs(NpcSpawnPoint* target, NpcSpawnPoint* destination, TerrainManager* terrainManager, CreatureManager* creatureManager);
 
 	void despawnMissionNpc(NpcSpawnPoint* npc);
 

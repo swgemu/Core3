@@ -127,8 +127,7 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 		return false;
 	}
 
-	targetSpawnPoint->spawnNpc(terrainManager, creatureManager, mission);
-	destinationSpawnPoint->spawnNpc(terrainManager, creatureManager, mission);
+	missionManager->spawnMissionNpcs(targetSpawnPoint, destinationSpawnPoint, terrainManager, creatureManager);
 
 	//Create waypoint and activate it.
 	if (objectiveStatus == 0) {

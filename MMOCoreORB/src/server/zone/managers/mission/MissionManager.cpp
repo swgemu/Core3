@@ -877,13 +877,13 @@ void MissionManager::failPlayerBountyMission(unsigned long long bountyHunter) {
 		_implementation->failPlayerBountyMission(bountyHunter);
 }
 
-void MissionManager::spawnMissionNpcs(NpcSpawnPoint* target, NpcSpawnPoint* destination, TerrainManager* terrainManager, CreatureManager* creatureManager, MissionObject* mission) {
+void MissionManager::spawnMissionNpcs(NpcSpawnPoint* target, NpcSpawnPoint* destination, TerrainManager* terrainManager, CreatureManager* creatureManager) {
 	MissionManagerImplementation* _implementation = static_cast<MissionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->spawnMissionNpcs(target, destination, terrainManager, creatureManager, mission);
+		_implementation->spawnMissionNpcs(target, destination, terrainManager, creatureManager);
 }
 
 void MissionManager::despawnMissionNpc(NpcSpawnPoint* npc) {
