@@ -1158,7 +1158,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 
 			// now roll to see if it gets applied
 			int defDiff = targetDefense - 95;
-			float lRatio = MIN(1.5, targetCreature->getLevel() / creature->getLevel());
+			float lRatio = MAX(0.5, targetCreature->getLevel() / creature->getLevel());
 			if (defDiff > 0 && creature->getLevel() != 0)
 				targetDefense = 95 + defDiff * 0.25 * lRatio;
 
