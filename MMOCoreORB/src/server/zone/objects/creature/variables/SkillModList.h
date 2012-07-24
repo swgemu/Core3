@@ -159,7 +159,7 @@ public:
 		return &mods.get(type);
 	}
 
-	int getSkillMod(String skillMod) {
+	int getSkillMod(const String& skillMod) {
 
 		int skill = 0;
 

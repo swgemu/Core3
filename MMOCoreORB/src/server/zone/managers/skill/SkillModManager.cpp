@@ -170,12 +170,14 @@ void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
 	mods.setNullValue(0);
 
 	ManagedReference<SceneObject*> parent = creature->getRootParent();
+
 	if(parent == NULL) {
 		if(creature->getCurrentCamp() != NULL) {
 			ManagedReference<CampSiteActiveArea*> campArea = creature->getCurrentCamp();
 			parent = campArea->getCamp();
 		}
 	}
+
 	if(parent != NULL && parent->isStructureObject()) {
 		StructureObject* structure = cast<StructureObject*>(parent.get());
 

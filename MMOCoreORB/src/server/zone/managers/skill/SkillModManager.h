@@ -99,6 +99,7 @@ public:
 	const static int BONUSMOD = 0x1000;
 	const static int WEARABLE = 0x1001; /// From Wearable items
 	const static int STRUCTURE = 0x1002; /// From Structures creature is in
+	const static int CITY = 0x1003; // From Cities
 
 	// Temp Mod
 	const static int TEMPORARYMOD = 0x10000;

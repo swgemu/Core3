@@ -230,7 +230,7 @@ void SurveySessionImplementation::startSample(const String& resname) {
 void SurveySessionImplementation::surveyCnodeMinigameSui() {
 	ManagedReference<CreatureObject*> surveyer = this->surveyer.get();
 
-	int surveyMod = surveyer->getSkillMod("surveying");
+	//int surveyMod = surveyer->getSkillMod("surveying");
 
 	ManagedReference<SuiListBox*> suiConcMinigameBox = new SuiListBox(
 			surveyer, SuiWindowType::SURVEY_TOOL_CONCENTRATED_MINIGAME, 0);
@@ -298,10 +298,9 @@ void SurveySessionImplementation::surveyCnodeMinigame(int value) {
 void SurveySessionImplementation::surveyGnodeMinigameSui() {
 	ManagedReference<CreatureObject*> surveyer = this->surveyer.get();
 
-	int surveyMod = surveyer->getSkillMod("surveying");
+	//int surveyMod = surveyer->getSkillMod("surveying");
 
-	ManagedReference<SuiListBox*> suiConcMinigameBox = new SuiListBox(
-			surveyer, SuiWindowType::SURVEY_TOOL_CONCENTRATED_MINIGAME2, 0);
+	ManagedReference<SuiListBox*> suiConcMinigameBox = new SuiListBox(surveyer, SuiWindowType::SURVEY_TOOL_CONCENTRATED_MINIGAME2, 0);
 
 	suiConcMinigameBox->setPromptTitle("@survey:gnode_t");
 	suiConcMinigameBox->setPromptText("@survey:gnode_d");

@@ -422,8 +422,8 @@ unsigned int EnhancePackImplementation::calculatePower(CreatureObject* healer, C
 	float modEnvironment = ((float) healer->getSkillMod("private_medical_rating") / 100);
 	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
 	float modSkill = (float) healer->getSkillMod("healing_wound_treatment");
-	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		return power * modEnvironment * ((100 + modSkill) / 100);
-	return power * modEnvironment * ((100 + modSkill) / 100);
+	// server/zone/objects/tangible/pharmaceutical/EnhancePack.idl():  		return power * modEnvironment * (100 + modSkill) / 100;
+	return power * modEnvironment * (100 + modSkill) / 100;
 }
 
 float EnhancePackImplementation::getEffectiveness() {

@@ -32,6 +32,7 @@
 #include "server/zone/objects/building/BuildingObject.h"
 
 CitiesAllowed CityManagerImplementation::citiesAllowedPerRank;
+CitySpecializationMap CityManagerImplementation::citySpecializations;
 Vector<uint8> CityManagerImplementation::citizensPerRank;
 Vector<uint16> CityManagerImplementation::radiusPerRank;
 int CityManagerImplementation::cityUpdateInterval = 0;
@@ -76,6 +77,12 @@ void CityManagerImplementation::loadLuaConfig() {
 	}
 
 	luaObject.pop();
+
+	luaObject = lua->getGlobalObject("CitySpecializations");
+	citySpecializations.readObject(&luaObject);
+	luaObject.pop();
+
+	info("Loaded " + String::valueOf(citySpecializations.size()) + " city specializations.", true);
 
 	//Only load the static values on the first zone.
 	cityUpdateInterval = lua->getGlobalInt("CityUpdateInterval");
@@ -257,6 +264,9 @@ void CityManagerImplementation::changeCitySpecialization(CityRegion* city, Creat
 	StringIdChatParameter params("city/city", "spec_set"); //The city's specialization has been set to %TO.
 	params.setTO(spec);
 	mayor->sendSystemMessage(params);
+
+	//Resetting the city radius will remove it and reinsert it, updating it to everything in the area.
+	city->setRadius(city->getRadius());
 }
 
 void CityManagerImplementation::sendStatusReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
@@ -1196,4 +1206,11 @@ void CityManagerImplementation::registerForMayoralRace(CityRegion* city, Creatur
 		CreatureObject* creo = cast<CreatureObject*>(obj.get());
 		creo->sendSystemMessage(params);
 	}
+}
+
+CitySpecialization* CityManagerImplementation::getCitySpecialization(const String& name) {
+	if (!citySpecializations.containsKey(name))
+		return NULL;
+
+	return &citySpecializations.get(name);
 }

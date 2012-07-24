@@ -338,6 +338,10 @@ public:
 
 	void setLoaded();
 
+	void applySpecializationModifiers(CreatureObject* creature);
+
+	void removeSpecializationModifiers(CreatureObject* creature);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -633,6 +637,10 @@ public:
 
 	void setLoaded();
 
+	void applySpecializationModifiers(CreatureObject* creature);
+
+	void removeSpecializationModifiers(CreatureObject* creature);
+
 	WeakReference<CityRegion*> _this;
 
 	operator const CityRegion*();
@@ -853,6 +861,10 @@ public:
 	bool isLoaded();
 
 	void setLoaded();
+
+	void applySpecializationModifiers(CreatureObject* creature);
+
+	void removeSpecializationModifiers(CreatureObject* creature);
 
 };
 

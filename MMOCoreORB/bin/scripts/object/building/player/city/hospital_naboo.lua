@@ -52,7 +52,7 @@ object_building_player_city_hospital_naboo = object_building_player_city_shared_
 	width = 5,
 	planetMapCategory = "medicalcenter",
 	cityRankRequired = 3,
-	abilitiesRequired = {"place_hospital"},
+	abilityRequired = "place_hospital",
 	zoneComponent = "StructureZoneComponent",
 	childObjects = {
 			{templateFile = "object/tangible/sign/player/house_address_naboo.iff", x = 9.4, z = 2, y = 10.32, ox = 0, oy = 0.707107, oz = 0, ow = -0.707107, cellid = -1, containmentType = -1},

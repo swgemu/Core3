@@ -42,7 +42,8 @@
 
 
 object_tangible_jedi_jedi_holocron_dark = object_tangible_jedi_shared_jedi_holocron_dark:new {
-	objectMenuComponent = {"cpp", "HologrindHolocronMenuComponent"},
+	--objectMenuComponent = {"cpp", "HologrindHolocronMenuComponent"},
+	objectMenuComponent = {"cpp", "VillageHolocronMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_jedi_jedi_holocron_dark, "object/tangible/jedi/jedi_holocron_dark.iff")

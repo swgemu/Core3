@@ -167,7 +167,7 @@ class EnhancePack extends PharmaceuticalObject {
 		float modEnvironment = ((float) healer.getSkillMod("private_medical_rating") / 100);
 		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
 
-		return power * modEnvironment * ((100 + modSkill) / 100);
+		return power * modEnvironment * (100 + modSkill) / 100;
 	}
 	
 	public float getEffectiveness() {

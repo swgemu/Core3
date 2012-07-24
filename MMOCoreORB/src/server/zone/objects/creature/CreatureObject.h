@@ -522,7 +522,9 @@ public:
 
 	void addSkillMod(const int modType, const String& skillMod, int value, bool notifyClient = true);
 
-	void removeSkillMod(const int modType, const String& skillMod, int value, bool notifyCLient = true);
+	void removeSkillMod(const int modType, const String& skillMod, int value, bool notifyClient = true);
+
+	void removeAllSkillModsOfType(const int modType, bool notifyClient = true);
 
 	void updateGroupInviterID(unsigned long long id, bool notifyClient = true);
 
@@ -1297,7 +1299,9 @@ public:
 
 	void addSkillMod(const int modType, const String& skillMod, int value, bool notifyClient = true);
 
-	void removeSkillMod(const int modType, const String& skillMod, int value, bool notifyCLient = true);
+	void removeSkillMod(const int modType, const String& skillMod, int value, bool notifyClient = true);
+
+	void removeAllSkillModsOfType(const int modType, bool notifyClient = true);
 
 	void updateGroupInviterID(unsigned long long id, bool notifyClient = true);
 
@@ -1908,7 +1912,9 @@ public:
 
 	void addSkillMod(const int modType, const String& skillMod, int value, bool notifyClient);
 
-	void removeSkillMod(const int modType, const String& skillMod, int value, bool notifyCLient);
+	void removeSkillMod(const int modType, const String& skillMod, int value, bool notifyClient);
+
+	void removeAllSkillModsOfType(const int modType, bool notifyClient);
 
 	void updateGroupInviterID(unsigned long long id, bool notifyClient);
 

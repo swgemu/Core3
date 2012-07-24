@@ -1205,9 +1205,7 @@ void CreatureObjectImplementation::removeSkill(const String& skill,
 	removeSkill(skillObject, notifyClient);
 }
 
-void CreatureObjectImplementation::addSkillMod(const int modType, const String& skillMod,
-		int value, bool notifyClient) {
-
+void CreatureObjectImplementation::addSkillMod(const int modType, const String& skillMod, int value, bool notifyClient) {
 	SkillModEntry oldMod;
 
 	if(skillModList.contains(skillMod)) {
@@ -1222,13 +1220,13 @@ void CreatureObjectImplementation::addSkillMod(const int modType, const String& 
 		return;
 
 	if (notifyClient) {
-		CreatureObjectDeltaMessage4* msg =
-				new CreatureObjectDeltaMessage4(_this.get());
+		CreatureObjectDeltaMessage4* msg = new CreatureObjectDeltaMessage4(_this.get());
 		msg->startUpdate(0x03);
 		if(newMod.getTotalSkill() != 0)
 			skillModList.set(skillMod, newMod, msg, 1);
-		else
+		else {
 			skillModList.drop(skillMod, msg, 1);
+		}
 		msg->close();
 
 		sendMessage(msg);
@@ -1240,10 +1238,23 @@ void CreatureObjectImplementation::addSkillMod(const int modType, const String& 
 	}
 }
 
-void CreatureObjectImplementation::removeSkillMod(const int modType, const String& skillMod,
-		int value, bool notifyClient) {
-
+void CreatureObjectImplementation::removeSkillMod(const int modType, const String& skillMod, int value, bool notifyClient) {
 	addSkillMod(modType, skillMod, -value, notifyClient);
+}
+
+void CreatureObjectImplementation::removeAllSkillModsOfType(const int modType, bool notifyClient) {
+	SkillModGroup* modGroup = skillModList.getSkillModGroup(modType);
+
+	if (notifyClient) {
+		for (int i = modGroup->size() - 1; i >= 0; --i) {
+			VectorMapEntry<String, int>* entry = &modGroup->elementAt(i);
+			String key = entry->getKey();
+			int val = entry->getValue();
+			removeSkillMod(SkillModManager::CITY, key, val, true);
+		}
+	} else {
+		modGroup->removeAll();
+	}
 }
 
 int CreatureObjectImplementation::getSkillMod(const String& skillmod) {

@@ -85,6 +85,10 @@ using namespace server::zone::objects::region;
 
 #include "server/zone/managers/city/CitiesAllowed.h"
 
+#include "server/zone/managers/city/CitySpecialization.h"
+
+#include "server/zone/managers/city/CitySpecializationMap.h"
+
 #include "engine/core/ManagedService.h"
 
 #include "engine/log/Logger.h"
@@ -202,6 +206,8 @@ public:
 
 	void castMayoralVote(CityRegion* city, CreatureObject* creature, unsigned long long oid);
 
+	CitySpecialization* getCitySpecialization(const String& cityspec);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -236,6 +242,8 @@ public:
 
 private:
 	static CitiesAllowed citiesAllowedPerRank;
+
+	static CitySpecializationMap citySpecializations;
 
 public:
 	static int cityUpdateInterval;
@@ -351,6 +359,8 @@ public:
 	void registerForMayoralRace(CityRegion* city, CreatureObject* creature);
 
 	void castMayoralVote(CityRegion* city, CreatureObject* creature, unsigned long long oid);
+
+	CitySpecialization* getCitySpecialization(const String& cityspec);
 
 	WeakReference<CityManager*> _this;
 

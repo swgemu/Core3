@@ -211,7 +211,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 
 		creature->sendSystemMessage(params);
 
-		//applySpecializationModifiers(creature);
+		applySpecializationModifiers(creature);
 	}
 
 	if (object->isStructureObject()){
@@ -269,7 +269,7 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 
 		creature->sendSystemMessage(params);
 
-		//removeSpecializationModifiers(creature);
+		removeSpecializationModifiers(creature);
 	}
 
 
@@ -442,4 +442,30 @@ void CityRegionImplementation::removeAllSkillTrainers(){
 void CityRegionImplementation::resetVotingPeriod() {
 	nextInauguration.updateToCurrentTime();
 	nextInauguration.addMiliTime(CityManagerImplementation::cityVotingDuration * 60000);
+}
+
+void CityRegionImplementation::applySpecializationModifiers(CreatureObject* creature) {
+	if (getZone() == NULL)
+		return;
+
+	CityManager* cityManager = getZone()->getZoneServer()->getCityManager();
+	CitySpecialization* cityspec = cityManager->getCitySpecialization(citySpecialization);
+
+	if (cityspec == NULL)
+		return;
+
+	//Remove all current city skillmods
+	creature->removeAllSkillModsOfType(SkillModManager::CITY);
+
+	VectorMap<String, int>* mods = cityspec->getSkillMods();
+
+	for (int i = 0; i < mods->size(); ++i) {
+		VectorMapEntry<String, int> entry = mods->elementAt(i);
+
+		creature->addSkillMod(SkillModManager::CITY, entry.getKey(), entry.getValue());
+	}
+}
+
+void CityRegionImplementation::removeSpecializationModifiers(CreatureObject* creature) {
+	creature->removeAllSkillModsOfType(SkillModManager::CITY);
 }

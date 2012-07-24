@@ -46,11 +46,11 @@
 ------------------------------
 CitySpecializationCooldown = 604800000 --Milliseconds: 1 Week = 604800000
 TreasuryWithdrawalCooldown = 86400000 --Milliseconds: 1 Day = 86400000
-CityVotingDuration = 10080 --Minutes until the next vote occurs. (60 = 1 hour, 1440 = 1 day, 10080 = 1 week)
-CityUpdateInterval = 15 --Minutes between city rank updates (60 = 1 hour, 1440 = 1 day, 10080 = 1 week)
-NewCityGracePeriod = 10 --Minutes before a new city has to reach rank 1 citizens before it decays.
+CityVotingDuration = 15 --Minutes until the next vote occurs. (60 = 1 hour, 1440 = 1 day, 10080 = 1 week)
+CityUpdateInterval = 5 --Minutes between city rank updates (60 = 1 hour, 1440 = 1 day, 10080 = 1 week)
+NewCityGracePeriod = 5 --Minutes before a new city has to reach rank 1 citizens before it decays.
 
-CitizensPerRank = {2, 5, 10, 15, 20}
+CitizensPerRank = {1, 1, 1, 1, 1}
 --CitizensPerRank = {10, 20, 35, 55, 85}
 RadiusPerRank = {150, 200, 300, 400, 450}
 
@@ -73,86 +73,61 @@ CitiesAllowed = {
 }
 
 CitySpecializations = {
-	{"@city/city:city_spec_sample_rich", { --Sample Rich
+	{
+		name = "@city/city:city_spec_sample_rich",
+		cost = 70000,
+		skillMods = {
+			{"private_spec_samplesize", 20},
+			{"private_spec_samplerate", 10}
 		}
 	},
-	{"@city/city:city_spec_industry", { --Manufacturing Center
-			{"advanced_assembly", 15},
-			{"armor_assembly", 15},
-			{"bio_engineer_assembly", 15},
-			{"booster_assembly", 15},
-			{"chassis_assembly", 15},
-			{"clothing_assembly", 15},
-			{"combat_medicine_assembly", 15},
-			{"creature_assembly", 15},
-			{"droid_assembly", 15},
-			{"engine_assembly", 15},
-			{"food_assembly", 15},
-			{"force_assembly", 15},
-			{"general_assembly", 15},
-			{"grenade_assembly", 15},
-			{"instrument_assembly", 15},
-			{"jedi_saber_assembly", 15},
-			{"medicine_assembly", 15},
-			{"shields_assembly", 15},
-			{"spice_assembly", 15},
-			{"structure_assembly", 15},
-			{"tissue_assembly", 15},
-			{"weapon_assembly", 15}
+	{
+		name = "@city/city:city_spec_industry",
+		cost = 50000,
+		skillMods = {
+			{"private_spec_assembly", 10}
 		}
 	},
-	{"@city/city:city_spec_doctor", { --Medical Center
+	{
+		name = "@city/city:city_spec_doctor",
+		cost = 80000,
+		skillMods = {
 			{"private_medical_rating", 10}
 		}
 	},
-	{"@city/city:city_spec_clone", { --Clone Lab
-			{"private_medical_rating", 10}
+	{
+		name = "@city/city:city_spec_clone",
+		cost = 80000,
+		skillMods = {
+			{"private_spec_cloning", 20}
 		}
 	},
-	{"@city/city:city_spec_research", { --Research Center
-			{"private_medical_rating", 10}
+	{
+		name = "@city/city:city_spec_research",
+		cost = 125000,
+		skillMods = {
+			{"private_spec_experimentation", 15}
 		}
 	},
-	{"@city/city:city_spec_missions", { --Improved Job Market
-			{"private_medical_rating", 10}
+	{
+		name = "@city/city:city_spec_missions",
+		cost = 80000,
+		skillMods = {
+			{"private_spec_missions", 20}
 		}
 	},
-	{"@city/city:city_spec_entertainer", { --Entertainment District
-			{"private_medical_rating", 10}
+	{
+		name = "@city/city:city_spec_entertainer",
+		cost = 80000,
+		skillMods = {
+			{"private_spec_entertainer", 10}
 		}
 	},
-	{"@city/city:city_spec_stronghold", { --Stronghold
-			{"melee_defense", 50},
-			{"ranged_defense", 50}
-		}
-	},
-	{"@city/city:city_spec_master_healing", { --Scientific Society
-			{"private_medical_rating", 10}
-		}
-	},
-	{"@city/city:city_spec_master_manufacturing", { --Industrial Society
-			{"advanced_assembly", 15},
-			{"armor_assembly", 15},
-			{"bio_engineer_assembly", 15},
-			{"booster_assembly", 15},
-			{"chassis_assembly", 15},
-			{"clothing_assembly", 15},
-			{"combat_medicine_assembly", 15},
-			{"creature_assembly", 15},
-			{"droid_assembly", 15},
-			{"engine_assembly", 15},
-			{"food_assembly", 15},
-			{"force_assembly", 15},
-			{"general_assembly", 15},
-			{"grenade_assembly", 15},
-			{"instrument_assembly", 15},
-			{"jedi_saber_assembly", 15},
-			{"medicine_assembly", 15},
-			{"shields_assembly", 15},
-			{"spice_assembly", 15},
-			{"structure_assembly", 15},
-			{"tissue_assembly", 15},
-			{"weapon_assembly", 15}
+	{
+		name = "@city/city:city_spec_stronghold",
+		cost = 150000,
+		skillMods = { --Stronghold
+			{"private_defense", 50}
 		}
 	},
 }

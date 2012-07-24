@@ -57,6 +57,8 @@ import system.util.HashTable;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.region.CityRegion;
 include server.zone.managers.city.CitiesAllowed;
+include server.zone.managers.city.CitySpecialization;
+include server.zone.managers.city.CitySpecializationMap;
 
 class CityManager extends ManagedService implements Logger {
 	private transient ZoneServer zoneServer;
@@ -69,6 +71,9 @@ class CityManager extends ManagedService implements Logger {
 	
 	@dereferenced
 	private transient static CitiesAllowed citiesAllowedPerRank;
+	
+	@dereferenced
+	private transient static CitySpecializationMap citySpecializations;
 	
 	public transient static int cityUpdateInterval;
 	public transient static int newCityGracePeriod;
@@ -216,4 +221,7 @@ class CityManager extends ManagedService implements Logger {
 	public native void registerForMayoralRace(CityRegion city, CreatureObject creature);
 	
 	public native void castMayoralVote(CityRegion city, CreatureObject creature, unsigned long oid);
+	
+	@local
+	public native CitySpecialization getCitySpecialization(final string cityspec); 
 }

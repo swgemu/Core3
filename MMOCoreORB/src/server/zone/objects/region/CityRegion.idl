@@ -551,5 +551,8 @@ class CityRegion extends ManagedObject implements Logger {
 	public void setLoaded() {
 		loaded = true;
 	}
+	
+	public native void applySpecializationModifiers(CreatureObject creature);
+	public native void removeSpecializationModifiers(CreatureObject creature);
 
 }
