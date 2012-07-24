@@ -424,11 +424,11 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponOb
 
 	//info("Base target defense is " + String::valueOf(targetDefense), true);
 
-	targetDefense += defender->getSkillMod("private_defense");
-
 	// defense hardcap
 	if (targetDefense > 125)
 		targetDefense = 125;
+
+	targetDefense += defender->getSkillMod("private_defense");
 
 	//info("Target defense after state affects and cap is " +  String::valueOf(targetDefense), true);
 
