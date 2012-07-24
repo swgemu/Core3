@@ -250,6 +250,8 @@ void CityManagerImplementation::promptCitySpecialization(CityRegion* city, Creat
 		Time* timeRemaining = mayor->getCooldownTime("city_specialization");
 		params.setTO(String::valueOf(round(abs(timeRemaining->miliDifference() / 1000.f))) + " seconds");
 		mayor->sendSystemMessage(params);
+
+		return;
 	}
 
 	ManagedReference<CitySpecializationSession*> session = new CitySpecializationSession(mayor, city, terminal);
