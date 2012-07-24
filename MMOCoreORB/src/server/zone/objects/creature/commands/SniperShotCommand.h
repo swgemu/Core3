@@ -62,14 +62,45 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+			
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;			
 
 		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
 
 		if (!weapon->isRifleWeapon()) {
 			return INVALIDWEAPON;
 		}
+		
+		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
+		
+		if (creature == targetObject || targetObject == NULL || !targetObject->isPlayerCreature())
+			return GENERALERROR;
 
-		return doCombatAction(creature, target);
+		CreatureObject* player = cast<CreatureObject*>( targetObject.get());
+
+		Locker clocker(player, creature);
+
+		PlayerManager* playerManager = server->getPlayerManager();
+
+		if (!CollisionManager::checkLineOfSight(creature, player)) {
+			creature->sendSystemMessage("@container_error_message:container18");
+			return GENERALERROR;
+		}
+
+		if (!player->isIncapacitated()){
+			creature->sendSystemMessage("@error_message:target_not_incapacitated");
+			return GENERALERROR;
+		}
+		
+		int maxRange = weapon->getMaxRange();
+				
+		if (player->isAttackableBy(creature) && player->isInRange(creature, maxRange)) {
+			playerManager->killPlayer(creature, player, 1);			
+		}	
+
+		return SUCCESS;
+
 	}
 
 };
