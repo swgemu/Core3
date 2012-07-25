@@ -33,13 +33,13 @@ brawlerPolearm = "object/weapon/melee/polearm/lance_staff_wood_s1.iff"
 
 survivalKnife = "object/weapon/melee/knife/knife_survival.iff"
 
-genericTool = "object/tangible/crafting/station/genericTool.iff"
+genericTool = "object/tangible/crafting/station/generic_tool.iff"
 
-foodTool = "object/tangible/crafting/station/foodTool.iff"
+foodTool = "object/tangible/crafting/station/food_tool.iff"
 
-mineralTool = "object/tangible/surveyTool/surveyTool_mineral.iff"
+mineralTool = "object/tangible/surveyTool/survey_tool_mineral.iff"
 
-chemicalTool = "object/tangible/surveyTool/surveyTool_liquid.iff"
+chemicalTool = "object/tangible/surveyTool/survey_tool_liquid.iff"
 
 slitherhorn = "object/tangible/instrument/slitherhorn.iff"
 
