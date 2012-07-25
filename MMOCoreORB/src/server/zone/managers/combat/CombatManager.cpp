@@ -1158,8 +1158,8 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 
 			// now roll to see if it gets applied
 			int defDiff = targetDefense - 95;
-			float lRatio = MAX(0.5, targetCreature->getLevel() / creature->getLevel());
-			if (defDiff > 0 && creature->getLevel() != 0)
+			float lRatio = MAX(0.5, targetCreature->getLevel() / MAX(1, creature->getLevel()));
+			if (defDiff > 0)
 				targetDefense = 95 + defDiff * 0.25 * lRatio;
 
 			if (targetDefense > 0 && System::random(100) < targetDefense)
@@ -1183,7 +1183,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 
 				// now roll again to see if it gets applied
 				defDiff = targetDefense - 95;
-				if (defDiff > 0 && creature->getLevel() != 0)
+				if (defDiff > 0)
 					targetDefense = 95 + defDiff * 0.25 * lRatio;
 
 				if (targetDefense > 0 && System::random(100) < targetDefense)
