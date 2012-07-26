@@ -22,7 +22,7 @@
  *	CityRegionStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETCURRENTPLAYERCOUNT__,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_,RPC_REMOVESHUTTLEINSTALLATION__,RPC_HASSHUTTLEINSTALLATION__,RPC_SETSHUTTLEID__LONG_,RPC_GETMISSIONTERMINALCOUNT__,RPC_GETDECORATIONCOUNT__,RPC_GETSKILLTRAINERCOUNT__,RPC_ADDMISSIONTERMINAL__SCENEOBJECT_,RPC_ADDDECORATION__SCENEOBJECT_,RPC_ADDSKILLTRAINER__SCENEOBJECT_,RPC_REMOVEMISSIONTERMINAL__SCENEOBJECT_,RPC_REMOVEDECORATION__SCENEOBJECT_,RPC_REMOVESKILLTRAINERS__SCENEOBJECT_,RPC_ADDBAZAAR__TANGIBLEOBJECT_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_REMOVEALLSKILLTRAINERS__,RPC_REMOVEALLTERMINALS__,RPC_UPDATEMILITIA__,RPC_ADDSTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVESTRUCTURE__STRUCTUREOBJECT_,RPC_HASUNIQUESTRUCTURE__INT_,RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_,RPC_ADDCANDIDATE__LONG_,RPC_SETMAYORALVOTE__LONG_LONG_,RPC_GETCANDIDATEVOTES__LONG_,RPC_RESETCANDIDATES__,RPC_RESETMAYORALVOTES__,RPC_REMOVECANDIDATE__LONG_,RPC_ISCANDIDATE__LONG_,RPC_ISVOTINGPERIODOVER__,RPC_ISVOTINGPERIOD__,RPC_RESETVOTINGPERIOD__,RPC_ISLOADED__,RPC_SETLOADED__,RPC_APPLYSPECIALIZATIONMODIFIERS__CREATUREOBJECT_,RPC_REMOVESPECIALIZATIONMODIFIERS__CREATUREOBJECT_};
+enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETCURRENTPLAYERCOUNT__,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_,RPC_REMOVESHUTTLEINSTALLATION__,RPC_HASSHUTTLEINSTALLATION__,RPC_SETSHUTTLEID__LONG_,RPC_GETMISSIONTERMINALCOUNT__,RPC_GETDECORATIONCOUNT__,RPC_GETSKILLTRAINERCOUNT__,RPC_ADDMISSIONTERMINAL__SCENEOBJECT_,RPC_ADDDECORATION__SCENEOBJECT_,RPC_ADDSKILLTRAINER__SCENEOBJECT_,RPC_REMOVEMISSIONTERMINAL__SCENEOBJECT_,RPC_REMOVEDECORATION__SCENEOBJECT_,RPC_REMOVESKILLTRAINERS__SCENEOBJECT_,RPC_ADDBAZAAR__TANGIBLEOBJECT_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_REMOVEALLSKILLTRAINERS__,RPC_REMOVEALLTERMINALS__,RPC_UPDATEMILITIA__,RPC_ADDSTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVESTRUCTURE__STRUCTUREOBJECT_,RPC_HASUNIQUESTRUCTURE__INT_,RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_,RPC_ADDCANDIDATE__LONG_,RPC_SETMAYORALVOTE__LONG_LONG_,RPC_GETCANDIDATEVOTES__LONG_,RPC_RESETCANDIDATES__,RPC_RESETMAYORALVOTES__,RPC_REMOVECANDIDATE__LONG_,RPC_ISCANDIDATE__LONG_,RPC_ISVOTINGPERIODOVER__,RPC_ISVOTINGPERIOD__,RPC_RESETVOTINGPERIOD__,RPC_ISLOADED__,RPC_SETLOADED__,RPC_APPLYSPECIALIZATIONMODIFIERS__CREATUREOBJECT_,RPC_REMOVESPECIALIZATIONMODIFIERS__CREATUREOBJECT_,RPC_GETPROPERTYTAX__,RPC_GETINCOMETAX__,RPC_GETSALESTAX__,RPC_GETTRAVELTAX__,RPC_GETGARAGETAX__,RPC_GETTAX__INT_,RPC_SETTAX__INT_INT_};
 
 CityRegion::CityRegion() : ManagedObject(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation();
@@ -1357,6 +1357,100 @@ void CityRegion::removeSpecializationModifiers(CreatureObject* creature) {
 		_implementation->removeSpecializationModifiers(creature);
 }
 
+int CityRegion::getPropertyTax() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETPROPERTYTAX__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getPropertyTax();
+}
+
+int CityRegion::getIncomeTax() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETINCOMETAX__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getIncomeTax();
+}
+
+int CityRegion::getSalesTax() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSALESTAX__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getSalesTax();
+}
+
+int CityRegion::getTravelTax() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETTRAVELTAX__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getTravelTax();
+}
+
+int CityRegion::getGarageTax() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETGARAGETAX__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getGarageTax();
+}
+
+int CityRegion::getTax(int tax) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETTAX__INT_);
+		method.addSignedIntParameter(tax);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getTax(tax);
+}
+
+void CityRegion::setTax(int tax, int value) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETTAX__INT_INT_);
+		method.addSignedIntParameter(tax);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setTax(tax, value);
+}
+
 DistributedObjectServant* CityRegion::_getImplementation() {
 
 	 if (!_updated) _updated = true;
@@ -1577,6 +1671,11 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
+	if (_name == "CityRegion.taxes") {
+		TypeInfo<Vector<int> >::parseFromBinaryStream(&taxes, stream);
+		return true;
+	}
+
 	if (_name == "CityRegion.nextUpdateTime") {
 		TypeInfo<Time >::parseFromBinaryStream(&nextUpdateTime, stream);
 		return true;
@@ -1793,6 +1892,14 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "CityRegion.taxes";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Vector<int> >::toBinaryStream(&taxes, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "CityRegion.nextUpdateTime";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -1818,7 +1925,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 26;
+	return _count + 27;
 }
 
 CityRegionImplementation::CityRegionImplementation() {
@@ -1827,6 +1934,16 @@ CityRegionImplementation::CityRegionImplementation() {
 	loaded = false;
 	// server/zone/objects/region/CityRegion.idl():  		initialize();
 	initialize();
+	// server/zone/objects/region/CityRegion.idl():  		taxes.add(0);
+	(&taxes)->add(0);
+	// server/zone/objects/region/CityRegion.idl():  		taxes.add(0);
+	(&taxes)->add(0);
+	// server/zone/objects/region/CityRegion.idl():  		taxes.add(0);
+	(&taxes)->add(0);
+	// server/zone/objects/region/CityRegion.idl():  		taxes.add(0);
+	(&taxes)->add(0);
+	// server/zone/objects/region/CityRegion.idl():  		taxes.add(0);
+	(&taxes)->add(0);
 	// server/zone/objects/region/CityRegion.idl():  		candidates.setAllowOverwriteInsertPlan();
 	(&candidates)->setAllowOverwriteInsertPlan();
 	// server/zone/objects/region/CityRegion.idl():  		candidates.setNullValue(0);
@@ -2278,6 +2395,47 @@ bool CityRegionImplementation::isLoaded() {
 void CityRegionImplementation::setLoaded() {
 	// server/zone/objects/region/CityRegion.idl():  		loaded = true;
 	loaded = true;
+}
+
+int CityRegionImplementation::getPropertyTax() {
+	// server/zone/objects/region/CityRegion.idl():  		return taxes.get(TAX_PROPERTY);
+	return (&taxes)->get(TAX_PROPERTY);
+}
+
+int CityRegionImplementation::getIncomeTax() {
+	// server/zone/objects/region/CityRegion.idl():  		return taxes.get(TAX_INCOME);
+	return (&taxes)->get(TAX_INCOME);
+}
+
+int CityRegionImplementation::getSalesTax() {
+	// server/zone/objects/region/CityRegion.idl():  		return taxes.get(TAX_SALES);
+	return (&taxes)->get(TAX_SALES);
+}
+
+int CityRegionImplementation::getTravelTax() {
+	// server/zone/objects/region/CityRegion.idl():  		return taxes.get(TAX_TRAVEL);
+	return (&taxes)->get(TAX_TRAVEL);
+}
+
+int CityRegionImplementation::getGarageTax() {
+	// server/zone/objects/region/CityRegion.idl():  		return taxes.get(TAX_GARAGE);
+	return (&taxes)->get(TAX_GARAGE);
+}
+
+int CityRegionImplementation::getTax(int tax) {
+	// server/zone/objects/region/CityRegion.idl():  		return 
+	if (tax > (&taxes)->size() - 1 || tax < 0)	// server/zone/objects/region/CityRegion.idl():  			return 0;
+	return 0;
+	// server/zone/objects/region/CityRegion.idl():  		return taxes.get(tax);
+	return (&taxes)->get(tax);
+}
+
+void CityRegionImplementation::setTax(int tax, int value) {
+	// server/zone/objects/region/CityRegion.idl():  		taxes.
+	if (tax > (&taxes)->size() - 1 || tax < 0)	// server/zone/objects/region/CityRegion.idl():  			return;
+	return;
+	// server/zone/objects/region/CityRegion.idl():  		taxes.set(tax, value);
+	(&taxes)->set(tax, value);
 }
 
 /*
@@ -2753,6 +2911,41 @@ void CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			removeSpecializationModifiers(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		}
 		break;
+	case RPC_GETPROPERTYTAX__:
+		{
+			resp->insertSignedInt(getPropertyTax());
+		}
+		break;
+	case RPC_GETINCOMETAX__:
+		{
+			resp->insertSignedInt(getIncomeTax());
+		}
+		break;
+	case RPC_GETSALESTAX__:
+		{
+			resp->insertSignedInt(getSalesTax());
+		}
+		break;
+	case RPC_GETTRAVELTAX__:
+		{
+			resp->insertSignedInt(getTravelTax());
+		}
+		break;
+	case RPC_GETGARAGETAX__:
+		{
+			resp->insertSignedInt(getGarageTax());
+		}
+		break;
+	case RPC_GETTAX__INT_:
+		{
+			resp->insertSignedInt(getTax(inv->getSignedIntParameter()));
+		}
+		break;
+	case RPC_SETTAX__INT_INT_:
+		{
+			setTax(inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -3120,6 +3313,34 @@ void CityRegionAdapter::applySpecializationModifiers(CreatureObject* creature) {
 
 void CityRegionAdapter::removeSpecializationModifiers(CreatureObject* creature) {
 	(static_cast<CityRegion*>(stub))->removeSpecializationModifiers(creature);
+}
+
+int CityRegionAdapter::getPropertyTax() {
+	return (static_cast<CityRegion*>(stub))->getPropertyTax();
+}
+
+int CityRegionAdapter::getIncomeTax() {
+	return (static_cast<CityRegion*>(stub))->getIncomeTax();
+}
+
+int CityRegionAdapter::getSalesTax() {
+	return (static_cast<CityRegion*>(stub))->getSalesTax();
+}
+
+int CityRegionAdapter::getTravelTax() {
+	return (static_cast<CityRegion*>(stub))->getTravelTax();
+}
+
+int CityRegionAdapter::getGarageTax() {
+	return (static_cast<CityRegion*>(stub))->getGarageTax();
+}
+
+int CityRegionAdapter::getTax(int tax) {
+	return (static_cast<CityRegion*>(stub))->getTax(tax);
+}
+
+void CityRegionAdapter::setTax(int tax, int value) {
+	(static_cast<CityRegion*>(stub))->setTax(tax, value);
 }
 
 /*

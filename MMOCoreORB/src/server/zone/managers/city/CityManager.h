@@ -83,11 +83,31 @@ class CityRegion;
 
 using namespace server::zone::objects::region;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace waypoint {
+
+class WaypointObject;
+
+} // namespace waypoint
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::waypoint;
+
+#include "server/chat/StringIdChatParameter.h"
+
 #include "server/zone/managers/city/CitiesAllowed.h"
 
 #include "server/zone/managers/city/CitySpecialization.h"
 
 #include "server/zone/managers/city/CitySpecializationMap.h"
+
+#include "server/zone/managers/city/CityTax.h"
+
+#include "server/zone/managers/city/CityTaxMap.h"
 
 #include "engine/core/ManagedService.h"
 
@@ -134,6 +154,8 @@ public:
 
 	void processCityUpdate(CityRegion* city);
 
+	void processIncomeTax(CityRegion* city);
+
 	void updateCityVoting(CityRegion* city);
 
 	void deductCityMaintenance(CityRegion* city);
@@ -186,7 +208,13 @@ public:
 
 	void promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, SceneObject* terminal = NULL);
 
+	void promptSetTax(CityRegion* city, CreatureObject* mayor, int selectedTax, SceneObject* terminal = NULL);
+
+	void setTax(CityRegion* city, CreatureObject* mayor, int selectedTax, int value);
+
 	void sendMaintenanceReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void sendMail(CityRegion* city, const String& sender, const UnicodeString& subject, StringIdChatParameter& params, WaypointObject* waypoint);
 
 	bool containsCityName(const String& name);
 
@@ -207,6 +235,8 @@ public:
 	void castMayoralVote(CityRegion* city, CreatureObject* creature, unsigned long long oid);
 
 	CitySpecialization* getCitySpecialization(const String& cityspec);
+
+	CityTax* getCityTax(int idx);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -244,6 +274,8 @@ private:
 	static CitiesAllowed citiesAllowedPerRank;
 
 	static CitySpecializationMap citySpecializations;
+
+	static CityTaxMap cityTaxes;
 
 public:
 	static int cityUpdateInterval;
@@ -288,6 +320,8 @@ public:
 
 	void processCityUpdate(CityRegion* city);
 
+	void processIncomeTax(CityRegion* city);
+
 	void updateCityVoting(CityRegion* city);
 
 	void deductCityMaintenance(CityRegion* city);
@@ -340,7 +374,13 @@ public:
 
 	void promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, SceneObject* terminal = NULL);
 
+	void promptSetTax(CityRegion* city, CreatureObject* mayor, int selectedTax, SceneObject* terminal = NULL);
+
+	void setTax(CityRegion* city, CreatureObject* mayor, int selectedTax, int value);
+
 	void sendMaintenanceReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
+
+	void sendMail(CityRegion* city, const String& sender, const UnicodeString& subject, StringIdChatParameter& params, WaypointObject* waypoint);
 
 	bool containsCityName(const String& name);
 
@@ -361,6 +401,8 @@ public:
 	void castMayoralVote(CityRegion* city, CreatureObject* creature, unsigned long long oid);
 
 	CitySpecialization* getCitySpecialization(const String& cityspec);
+
+	CityTax* getCityTax(int idx);
 
 	WeakReference<CityManager*> _this;
 
@@ -417,6 +459,8 @@ public:
 
 	void processCityUpdate(CityRegion* city);
 
+	void processIncomeTax(CityRegion* city);
+
 	void updateCityVoting(CityRegion* city);
 
 	void deductCityMaintenance(CityRegion* city);
@@ -468,6 +512,10 @@ public:
 	void unregisterCity(CityRegion* city, CreatureObject* mayor);
 
 	void promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, SceneObject* terminal);
+
+	void promptSetTax(CityRegion* city, CreatureObject* mayor, int selectedTax, SceneObject* terminal);
+
+	void setTax(CityRegion* city, CreatureObject* mayor, int selectedTax, int value);
 
 	void sendMaintenanceReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
 

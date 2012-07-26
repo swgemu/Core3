@@ -90,6 +90,9 @@ class CityRegion extends ManagedObject implements Logger {
 	protected unsigned long shuttleID;
 	
 	protected transient boolean loaded;
+	
+	@dereferenced
+	protected Vector<int> taxes;
 		
 	@dereferenced
 	protected Time nextUpdateTime;
@@ -108,10 +111,22 @@ class CityRegion extends ManagedObject implements Logger {
 	public static final byte RANK_CITY = 4;
 	public static final byte RANK_METROPOLIS = 5;
 	
+	public static final byte TAX_PROPERTY = 0;
+	public static final byte TAX_INCOME = 1;
+	public static final byte TAX_SALES = 2;
+	public static final byte TAX_TRAVEL = 3;
+	public static final byte TAX_GARAGE = 4;
+	
 	public CityRegion() {
 		loaded = false;
 		
 		initialize();
+		
+		taxes.add(0); //Property Tax
+		taxes.add(0); //Income Tax
+		taxes.add(0); //Sales Tax
+		taxes.add(0); //Travel Fee
+		taxes.add(0); //Garage Fee
 		
 		candidates.setAllowOverwriteInsertPlan();
 		candidates.setNullValue(0);
@@ -554,5 +569,38 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	public native void applySpecializationModifiers(CreatureObject creature);
 	public native void removeSpecializationModifiers(CreatureObject creature);
+	
+	public int getPropertyTax() {
+		return taxes.get(TAX_PROPERTY);
+	}
+	
+	public int getIncomeTax() {
+		return taxes.get(TAX_INCOME);
+	}
+	
+	public int getSalesTax() {
+		return taxes.get(TAX_SALES);
+	}
+	
+	public int getTravelTax() {
+		return taxes.get(TAX_TRAVEL);
+	}
 
+	public int getGarageTax() {
+		return taxes.get(TAX_GARAGE);
+	}
+	
+	public int getTax(int tax) {
+		if (tax > taxes.size() - 1 || tax < 0)
+			return 0;
+		
+		return taxes.get(tax);
+	}
+	
+	public void setTax(int tax, int value) {
+		if (tax > taxes.size() - 1 || tax < 0)
+			return;
+		
+		taxes.set(tax, value);
+	}
 }

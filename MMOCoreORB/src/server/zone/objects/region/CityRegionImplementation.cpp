@@ -55,6 +55,16 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 	if (isRegistered())
 		zone->getPlanetManager()->addRegion(_this.get());
 
+	//Add taxes if they dont exist.
+	if (taxes.size() <= 0) {
+		info("Adding taxes for existing city that had no taxes.", true);
+		taxes.add(0);
+		taxes.add(0);
+		taxes.add(0);
+		taxes.add(0);
+		taxes.add(0);
+	}
+
 	/*
 	int seconds = -1 * round(nextUpdateTime.miliDifference() / 1000.f);
 

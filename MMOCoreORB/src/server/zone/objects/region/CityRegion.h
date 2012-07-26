@@ -142,6 +142,16 @@ public:
 
 	static const byte RANK_METROPOLIS = 5;
 
+	static const byte TAX_PROPERTY = 0;
+
+	static const byte TAX_INCOME = 1;
+
+	static const byte TAX_SALES = 2;
+
+	static const byte TAX_TRAVEL = 3;
+
+	static const byte TAX_GARAGE = 4;
+
 	CityRegion();
 
 	void initialize();
@@ -342,6 +352,20 @@ public:
 
 	void removeSpecializationModifiers(CreatureObject* creature);
 
+	int getPropertyTax();
+
+	int getIncomeTax();
+
+	int getSalesTax();
+
+	int getTravelTax();
+
+	int getGarageTax();
+
+	int getTax(int tax);
+
+	void setTax(int tax, int value);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -418,6 +442,8 @@ protected:
 
 	bool loaded;
 
+	Vector<int> taxes;
+
 	Time nextUpdateTime;
 
 	Time nextInauguration;
@@ -438,6 +464,16 @@ public:
 	static const byte RANK_CITY = 4;
 
 	static const byte RANK_METROPOLIS = 5;
+
+	static const byte TAX_PROPERTY = 0;
+
+	static const byte TAX_INCOME = 1;
+
+	static const byte TAX_SALES = 2;
+
+	static const byte TAX_TRAVEL = 3;
+
+	static const byte TAX_GARAGE = 4;
 
 	CityRegionImplementation();
 
@@ -640,6 +676,20 @@ public:
 	void applySpecializationModifiers(CreatureObject* creature);
 
 	void removeSpecializationModifiers(CreatureObject* creature);
+
+	int getPropertyTax();
+
+	int getIncomeTax();
+
+	int getSalesTax();
+
+	int getTravelTax();
+
+	int getGarageTax();
+
+	int getTax(int tax);
+
+	void setTax(int tax, int value);
 
 	WeakReference<CityRegion*> _this;
 
@@ -865,6 +915,20 @@ public:
 	void applySpecializationModifiers(CreatureObject* creature);
 
 	void removeSpecializationModifiers(CreatureObject* creature);
+
+	int getPropertyTax();
+
+	int getIncomeTax();
+
+	int getSalesTax();
+
+	int getTravelTax();
+
+	int getGarageTax();
+
+	int getTax(int tax);
+
+	void setTax(int tax, int value);
 
 };
 

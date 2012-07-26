@@ -486,6 +486,7 @@ int AuctionManagerImplementation::checkBidAuction(CreatureObject* player, Auctio
 
 void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionItem* item) {
 	ManagedReference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
+
 	if (vendor == NULL)
 		return;
 
@@ -650,15 +651,17 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 }
 
 void AuctionManagerImplementation::buyItem(CreatureObject* player, uint64 objectid, int price1, int price2) {
-
 	ManagedReference<AuctionItem*> item = auctionMap->getItem(objectid);
+
 	if (item == NULL) {
 		BaseMessage* msg = new BidAuctionResponseMessage(objectid, BidAuctionResponseMessage::INVALIDITEM);
 		player->sendMessage(msg);
 		return;
 	}
 
-	if (item->getStatus() == AuctionItem::SOLD) {
+	ManagedReference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
+
+	if (vendor == NULL || item->getStatus() == AuctionItem::SOLD) {
 		BaseMessage* msg = new BidAuctionResponseMessage(objectid, BidAuctionResponseMessage::INVALIDITEM);
 		player->sendMessage(msg);
 		return;
@@ -670,6 +673,16 @@ void AuctionManagerImplementation::buyItem(CreatureObject* player, uint64 object
 		return;
 	}
 
+	ManagedReference<CityRegion*> city = vendor->getCityRegion();
+
+	//TODO: Apply the sales tax to the price here, and check the total price
+	int totalPrice = item->getPrice();
+
+	if (city != NULL)
+		totalPrice *= 1.f + (float) city->getSalesTax() / 100.f;
+
+	//We should send this to checkBidAuction, but how will it work with auctions???
+
 	int res = checkBidAuction(player, item, price1, price2);
 
 	if (res != 0) {
@@ -677,6 +690,8 @@ void AuctionManagerImplementation::buyItem(CreatureObject* player, uint64 object
 		player->sendMessage(msg);
 		return;
 	}
+
+	//Then down here, we would actually set the price on the item to the totalPrice.
 
 	if (!item->isAuction()) { // Instant buy
 		doInstantBuy(player, item);

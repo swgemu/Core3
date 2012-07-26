@@ -33,7 +33,7 @@ public:
 		skillMods = spec.skillMods;
 	}
 
-	CitySpecialization operator=(const CitySpecialization& spec) {
+	CitySpecialization& operator=(const CitySpecialization& spec) {
 		if (this == &spec)
 			return *this;
 

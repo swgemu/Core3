@@ -55,6 +55,82 @@ CitizensPerRank = {1, 1, 1, 1, 1}
 RadiusPerRank = {150, 200, 300, 400, 450}
 
 ------------------------------
+--  City Tax Settings
+------------------------------
+--[[
+	Notes on modifying existing taxes:
+	WARNING: DO NOT CHANGE THE ORDER OR ADD NEW TAXES TO THE LIST BELOW WITHOUT MODIFYING THE CORE FIRST TO HANDLE IT.
+	Each Tax table in the CityTaxes table below corresponds to a tax. They depend upon their position to be referenced in the core.
+	They have the properties below:
+	min: The minimum value the tax can have.
+	max: the maximum value the tax can have.
+	menuText: The string key corresponding to their menu text in the "Adjust Taxes" selection menu. Must come from city/city.stf.
+	inputTitle: The string key corresponding to the title of the input box for the tax. Must come from city/city.stf.
+	inputText: The string key corresponding to the body of the input box for the tax. Must come from city/city.stf.
+	statusPrompt: The text displayed in the status report, showing the amount of tax. Leave this blank to omit this tax from the status report. Must come from city/city.stf
+	systemMessage: The system message shown to the mayor upon success. Must come from city/city.stf.
+	emailSubject: The subject of the email that is sent out to players when tax changes. Must come from city/city.stf.
+	emailBody: The body of the email that is sent out to players when tax changes. Must come from city/city.stf.
+--]]
+CityTaxes = {
+	{
+		--Property Tax
+		min = 0, max = 50,
+		menuText = "property_tax_prompt",
+		inputTitle = "set_tax_t_property",
+		inputText = "set_tax_d_property",
+		statusPrompt = "promperty_tax_prompt",
+		systemMessage = "set_property_tax",
+		emailSubject = "tax_property_subject",
+		emailBody = "tax_property_body"
+	},
+	{
+		--Income Tax
+		min = 0, max = 2000,
+		menuText = "income_tax",
+		inputTitle = "set_tax_t_income",
+		inputText = "set_tax_d_income",
+		statusPrompt = "income_tax_prompt",
+		systemMessage = "set_income_tax",
+		emailSubject = "tax_income_subject",
+		emailBody = "tax_income_body"
+	},
+	{
+		--Sales Tax
+		min = 0, max = 20,
+		menuText = "sales_tax",
+		inputTitle = "set_tax_t_sales",
+		inputText = "set_tax_d_sales",
+		statusPrompt = "sales_tax_prompt",
+		systemMessage = "set_sales_tax",
+		emailSubject = "tax_sales_subject",
+		emailBody = "tax_sales_body"
+	},
+	{
+		--Travel Tax
+		min = 0, max = 500,
+		menuText = "travel_tax",
+		inputTitle = "set_tax_t_travel",
+		inputText = "set_tax_d_travel",
+		statusPrompt = "travel_cost_prompt",
+		systemMessage = "set_travel_fee",
+		emailSubject = "tax_travel_subject",
+		emailBody = "tax_travel_body"
+	},
+	{
+		--Garage Tax
+		min = 0, max = 30,
+		menuText = "garage_tax",
+		inputTitle = "set_tax_t_garage",
+		inputText = "set_tax_d_garage",
+		statusPrompt = "",
+		systemMessage = "set_garage_tax",
+		emailSubject = "garage_fee_subject",
+		emailBody = "garage_fee_body"
+	}
+}
+
+------------------------------
 --  Cities Per Planet
 ------------------------------
 --{rank1, rank2, rank3, rank4, rank5}
