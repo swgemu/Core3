@@ -960,7 +960,7 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 
 	NameManager* nm = processor->getNameManager();
 	mission->setCreatorName(nm->makeCreatureName());
-	mission->setMissionTargetName(nm->makeCreatureName());
+	mission->setMissionTargetName(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_datadisk.iff").hashCode())->getObjectName());
 
 	String planet = player->getZone()->getZoneName();
 	mission->setStartPlanet(planet);
