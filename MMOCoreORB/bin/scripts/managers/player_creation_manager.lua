@@ -37,9 +37,9 @@ genericTool = "object/tangible/crafting/station/generic_tool.iff"
 
 foodTool = "object/tangible/crafting/station/food_tool.iff"
 
-mineralTool = "object/tangible/surveyTool/survey_tool_mineral.iff"
+mineralTool = "object/tangible/survey_tool/survey_tool_mineral.iff"
 
-chemicalTool = "object/tangible/surveyTool/survey_tool_liquid.iff"
+chemicalTool = "object/tangible/survey_tool/survey_tool_liquid.iff"
 
 slitherhorn = "object/tangible/instrument/slitherhorn.iff"
 
