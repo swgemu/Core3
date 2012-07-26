@@ -50,6 +50,7 @@ object_mobile_vendor_sullustan_male = object_mobile_vendor_shared_sullustan_male
 	objectMenuComponent = {"cpp", "VendorMenuComponent"},
 	dataObjectComponent = "VendorDataComponent",	
 	containerComponent = {"cpp", "VendorContainerComponent"},
+	zoneComponent = "VendorZoneComponent",
 
 	noTrade = 1,
 

@@ -30,6 +30,11 @@ int VendorAdBarkingSessionImplementation::initializeSession() {
 
 void VendorAdBarkingSessionImplementation::sendPhraseOptions() {
 
+	if(owner == NULL || vendor == NULL) {
+		cancelSession();
+		return;
+	}
+
 	ManagedReference<SuiListBox*> phrases = new SuiListBox(owner, SuiWindowType::VENDOR_PHRASES);
 	phrases->setPromptTitle("@player_structure:vendor_strcats_t"); //Select Phrase Category
 	phrases->setPromptText("@player_structure:vendor_strcats_d"); //Select the type of phrase for the vendor to bark. If you have "Advanced Vocalization" an option to customize the advertisement will appear on the list.
@@ -62,6 +67,11 @@ void VendorAdBarkingSessionImplementation::sendPhraseOptions() {
 
 void VendorAdBarkingSessionImplementation::sendCustomMessageInput() {
 
+	if(owner == NULL || vendor == NULL) {
+		cancelSession();
+		return;
+	}
+
 	ManagedReference<SuiInputBox*> input = new SuiInputBox(owner, SuiWindowType::VENDOR_CUSTOM_PHRASE);
 	input->setPromptTitle("@player_structure:cust_t");
 	input->setPromptText("@player_structure:cust_d");
@@ -74,6 +84,11 @@ void VendorAdBarkingSessionImplementation::sendCustomMessageInput() {
 }
 
 void VendorAdBarkingSessionImplementation::sendMoodSelect() {
+
+	if(owner == NULL || vendor == NULL) {
+		cancelSession();
+		return;
+	}
 
 	ManagedReference<SuiListBox*> moods = new SuiListBox(owner, SuiWindowType::VENDOR_MOODS);
 	moods->setPromptTitle("@player_structure:vendor_moods_t");
@@ -107,6 +122,11 @@ void VendorAdBarkingSessionImplementation::sendMoodSelect() {
 
 void VendorAdBarkingSessionImplementation::sendAnimationSelect() {
 
+	if(owner == NULL || vendor == NULL) {
+		cancelSession();
+		return;
+	}
+
 	ManagedReference<SuiListBox*> moods = new SuiListBox(owner, SuiWindowType::VENDOR_ANIMATION);
 	moods->setPromptTitle("@player_structure:vendor_anim_t");
 	moods->setPromptText("@player_structure:vendor_anim_d");
@@ -132,6 +152,11 @@ void VendorAdBarkingSessionImplementation::sendAnimationSelect() {
 }
 
 void VendorAdBarkingSessionImplementation::completeSession() {
+
+	if(owner == NULL || vendor == NULL) {
+		cancelSession();
+		return;
+	}
 
 	DataObjectComponentReference* data = vendor->getDataObjectComponent();
 	if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {

@@ -50,6 +50,7 @@ object_mobile_vendor_gran_male = object_mobile_vendor_shared_gran_male:new {
 	objectMenuComponent = {"cpp", "VendorMenuComponent"},
 	dataObjectComponent = "VendorDataComponent",	
 	containerComponent = {"cpp", "VendorContainerComponent"},
+	zoneComponent = "VendorZoneComponent",
 
 	noTrade = 1,
 
@@ -206,6 +207,7 @@ object_mobile_vendor_gran_male = object_mobile_vendor_shared_gran_male:new {
 			"Humanoid1471","Humanoid1472","Humanoid1473","Humanoid1474","Humanoid1475","Humanoid1476","Humanoid1477","Humanoid1478","Humanoid1479","Humanoid1480",
 			"Humanoid1481","Humanoid1482","Humanoid1483","Humanoid1484","Humanoid1485","Humanoid1486","Humanoid1487","Humanoid1488","Humanoid1489","Humanoid1490",
 			"Humanoid1491","Humanoid1492","Humanoid1493","Humanoid1494","Humanoid1495","Humanoid1496","Humanoid1497","Humanoid1498","Humanoid1499","Humanoid1500",
+
 			"Humanoid1501","Humanoid1502","Humanoid1503","Humanoid1504","Humanoid1505","Humanoid1506","Humanoid1507","Humanoid1508","Humanoid1509","Humanoid1510",
 			"Humanoid1511","Humanoid1512","Humanoid1513","Humanoid1514","Humanoid1515","Humanoid1516","Humanoid1517","Humanoid1518","Humanoid1519","Humanoid1520",
 			"Humanoid1521","Humanoid1522","Humanoid1523","Humanoid1524","Humanoid1525","Humanoid1526","Humanoid1527","Humanoid1528","Humanoid1529","Humanoid1530",

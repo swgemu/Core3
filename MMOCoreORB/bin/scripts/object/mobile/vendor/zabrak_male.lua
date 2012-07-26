@@ -51,6 +51,7 @@ object_mobile_vendor_zabrak_male = object_mobile_vendor_shared_zabrak_male:new {
 	objectMenuComponent = {"cpp", "VendorMenuComponent"},
 	dataObjectComponent = "VendorDataComponent",	
 	containerComponent = {"cpp", "VendorContainerComponent"},
+	zoneComponent = "VendorZoneComponent",
 
 	noTrade = 1,
 
