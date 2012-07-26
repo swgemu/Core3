@@ -46,11 +46,11 @@
 ------------------------------
 CitySpecializationCooldown = 604800000 --Milliseconds: 1 Week = 604800000
 TreasuryWithdrawalCooldown = 86400000 --Milliseconds: 1 Day = 86400000
-CityVotingDuration = 15 --Minutes until the next vote occurs. (60 = 1 hour, 1440 = 1 day, 10080 = 1 week)
-CityUpdateInterval = 5 --Minutes between city rank updates (60 = 1 hour, 1440 = 1 day, 10080 = 1 week)
-NewCityGracePeriod = 5 --Minutes before a new city has to reach rank 1 citizens before it decays.
+CityVotingDuration = 45 --Minutes until the next vote occurs. (60 = 1 hour, 1440 = 1 day, 10080 = 1 week)
+CityUpdateInterval = 15 --Minutes between city rank updates (60 = 1 hour, 1440 = 1 day, 10080 = 1 week)
+NewCityGracePeriod = 15 --Minutes before a new city has to reach rank 1 citizens before it decays.
 
-CitizensPerRank = {1, 1, 1, 1, 1}
+CitizensPerRank = {1, 2, 4, 7, 11}
 --CitizensPerRank = {10, 20, 35, 55, 85}
 RadiusPerRank = {150, 200, 300, 400, 450}
 
