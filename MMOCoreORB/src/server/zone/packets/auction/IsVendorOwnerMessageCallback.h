@@ -12,7 +12,6 @@
 
 #include "IsVendorOwnerResponseMessage.h"
 #include "server/zone/objects/region/CityRegion.h"
-
 #include "server/zone/Zone.h"
 
 class IsVendorOwnerMessageCallback : public MessageCallback {
@@ -54,7 +53,7 @@ public:
 			vendorRegion = cityRegion->getRegionName();
 
 
-		IsVendorOwnerResponseMessage* msg = new IsVendorOwnerResponseMessage(sceno, player, planetString, vendorRegion, 0);
+		IsVendorOwnerResponseMessage* msg = new IsVendorOwnerResponseMessage(sceno, player, planetString, vendorRegion);
 		client->sendMessage(msg);
 
 	}

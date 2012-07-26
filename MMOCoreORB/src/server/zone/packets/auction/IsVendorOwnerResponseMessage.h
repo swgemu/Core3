@@ -53,16 +53,21 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 
 class IsVendorOwnerResponseMessage : public BaseMessage {
+
 public:
-    IsVendorOwnerResponseMessage(SceneObject* vendor, CreatureObject* player, const String& planet, const String& region, uint32 errorCode = 0) {
-		insertShort(3);
+    IsVendorOwnerResponseMessage(SceneObject* vendor, CreatureObject* player, const String& planet, const String& region) {
+
+    	insertShort(3);
 		insertInt(0xCE04173E);
 
 		// Make sure sceno is a valid Vendor Object.
 		if (!vendor->isVendor() && !vendor->isBazaarTerminal())
 			return;
 
+		Reference<AuctionManager*> auctionManager = player->getZoneServer()->getAuctionManager();
+
 		int rights = 2;
+		bool marketIssues = auctionManager->isMarketEnabled() == false;
 
 		if(vendor->isVendor()) {
 
@@ -78,6 +83,11 @@ public:
 			}
 
 			rights = vendorData->getOwnershipRightsOf(player);
+
+			if(vendorData->isOnStrike()) {
+				marketIssues = true;
+				player->sendSystemMessage("@ui_auc:err_vendor_deactivated");
+			}
 		}
 
 		uint64 objectID = vendor->getObjectID();
@@ -85,7 +95,7 @@ public:
 		// 0: own vendor, 1: someone else owns the vendor, 2: the galaxy owns the vendor (bazaar)
 		insertInt(rights);
 
-		insertInt(errorCode);
+		insertInt(marketIssues);
 		
 		insertLong(objectID);
 
@@ -95,13 +105,13 @@ public:
 		int x = vendor->getWorldPositionX();
 		int y = vendor->getWorldPositionY();
 
-		Reference<AuctionManager*> auctionManager = player->getZoneServer()->getAuctionManager();
 		String uuid = auctionManager->getVendorUID(vendor);
 
 		insertAscii(uuid);
 		
 		insertShort(0x64); // ?? 64
 	}
+
 };
 
 #endif /*ISVENDOROWNERRESPONSEMESSAGE_H_*/

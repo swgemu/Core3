@@ -82,15 +82,16 @@ class AuctionManager extends ManagedService implements Logger {
 	public final static int ITEMSPERPAGE = 100;
 	
 	public final static int EXPIREPERIOD = 2592000; // Seconds
+	public final static int OFFEREXPIREPERIOD = 604800; 
 	
-	private int test;
-	
+	private boolean marketEnabled;
+
 	public AuctionManager(ZoneServer server) {
 		zoneServer = server;
 		Logger.setLoggingName("AuctionManager");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
-		test= 0;
+		marketEnabled = false;
 		auctionEvents.setNoDuplicateInsertPlan();
 		auctionEvents.setNullValue(null);
 	}
@@ -121,7 +122,7 @@ class AuctionManager extends ManagedService implements Logger {
 	
 	public native void buyItem(CreatureObject player, unsigned long objectid, int price1, int price2);
 	public native void doAuctionBid(CreatureObject player, AuctionItem item, int price1, int price2);
-	public native void doInstantBuy(CreatureObject player, AuctionItem item, int price1, int price2);
+	public native void doInstantBuy(CreatureObject player, AuctionItem item);
 	public native int checkBidAuction(CreatureObject player, AuctionItem item, int price1, int price2);
 
 	public native void cancelItem(CreatureObject player, unsigned long objectID);
@@ -164,5 +165,15 @@ class AuctionManager extends ManagedService implements Logger {
 
 	public native void deleteExpiredSale(AuctionItem item);
 
+	public boolean isMarketEnabled() {
+		return marketEnabled == true;
+	}
+	
+	public synchronized void setMarketEnabled(boolean value) {
+		marketEnabled = value;
+	}
+	
+	public native void displayInfo(CreatureObject player);
+		
 }
 

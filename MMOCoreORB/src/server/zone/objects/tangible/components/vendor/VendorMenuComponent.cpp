@@ -71,7 +71,7 @@ void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 				menuResponse->addRadialMenuItemToRadialID(70, 76, 3, "@player_structure:unregister_vendor");
 		}
 
-		if(player->hasSkill("crafting_merchant_advertising_01")) {
+		if(player->hasSkill("crafting_merchant_advertising_01") && sceneObject->isCreatureObject()) {
 			if (!vendorData->isAdBarkingEnabled())
 				menuResponse->addRadialMenuItemToRadialID(70, 77, 3, "@player_structure:vendor_areabarks_on");
 			else
@@ -149,13 +149,16 @@ int VendorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	}
 
 	case 77: {
-		if(player->hasSkill("crafting_merchant_advertising_01")) {
+		if(player->hasSkill("crafting_merchant_advertising_01") && vendor->isCreatureObject()) {
 			if (!vendorData->isAdBarkingEnabled()) {
 
-				ManagedReference<VendorAdBarkingSession*> session = new VendorAdBarkingSession(player);
+				if (player->containsActiveSession(SessionFacadeType::VENDORADBARKING)) {
+					return 0;
+				}
+
+				ManagedReference<VendorAdBarkingSession*> session = new VendorAdBarkingSession(player, sceneObject);
 				session->initializeSession();
 
-				player->sendSystemMessage("@player_structure:areabarks_enabled");
 			} else {
 				vendorData->setAdBarking(false);
 				player->sendSystemMessage("@player_structure:areabarks_disabled");

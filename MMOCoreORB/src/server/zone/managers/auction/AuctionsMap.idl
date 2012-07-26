@@ -118,4 +118,16 @@ class AuctionsMap extends ManagedObject {
 	public native void updateUID(SceneObject vendor, final string oldUID, final string newUID);
 
 	public native void updateVendorSearch(SceneObject vendor, boolean enabled);
+
+	public int getBazaarCount() {
+		return bazaarItemsForSale.size();
+	}
+	
+	public int getVendorCount() {
+		return vendorItemsForSale.size();
+	}
+	
+	public int getTotalItemCount() {
+		return allItems.size();
+	}
 }

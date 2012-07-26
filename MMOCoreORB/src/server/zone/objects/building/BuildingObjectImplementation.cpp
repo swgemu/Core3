@@ -834,6 +834,10 @@ void BuildingObjectImplementation::payAccessFee(CreatureObject* player) {
 		paidAccessList.drop(player->getObjectID());
 
 	paidAccessList.put(player->getObjectID(), time(0) + (accessDuration * 60));
+
+	if(getOwnerCreatureObject() != NULL && getOwnerCreatureObject()->isPlayerCreature())
+		getOwnerCreatureObject()->getPlayerObject()->addExperience("merchant", 50, true);
+
 	updatePaidAccessList();
 
 	player->sendSystemMessage("@player/player_utility:access_granted");

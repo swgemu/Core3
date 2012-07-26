@@ -14,6 +14,7 @@
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/AttributeListComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorContainerComponent.h"
+#include "server/zone/objects/tangible/components/vendor/VendorZoneComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorMenuComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
@@ -131,6 +132,7 @@ ComponentManager::ComponentManager() {
 
 	components.put("VendorContainerComponent", new VendorContainerComponent());
 	components.put("VendorMenuComponent", new VendorMenuComponent());
+	components.put("VendorZoneComponent", new VendorZoneComponent());
 	dataObjectFactory.registerObject<VendorDataComponent>("VendorDataComponent");
 	dataObjectFactory.registerObject<AuctionTerminalDataComponent>("AuctionTerminalDataComponent");
 

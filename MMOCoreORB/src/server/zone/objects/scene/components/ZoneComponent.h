@@ -84,6 +84,10 @@ public:
 	 */
 	virtual void updateZoneWithParent(SceneObject* sceneObject, SceneObject* newParent, bool lightUpdate, bool sendPackets = true);
 
+	virtual void notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) {
+
+	}
+
 	virtual void notifySelfPositionUpdate(SceneObject* sceneObject);
 
 	virtual void notifyInsert(SceneObject* sceneObject, QuadTreeEntry* entry) {

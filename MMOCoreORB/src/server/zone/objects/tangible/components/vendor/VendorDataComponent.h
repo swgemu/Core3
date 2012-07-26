@@ -41,6 +41,12 @@ protected:
 	bool mail1Sent;
 	bool mail2Sent;
 
+	Vector<uint64> vendorBarks;
+	uint64 lastBark;
+	String barkMessage;
+	String barkMood;
+	String barkAnimation;
+
 public:
 	/// 5 minutes
 	static const int USEXPINTERVAL = 5;
@@ -54,6 +60,8 @@ public:
 	static const int EMPTYDELETE = 60 * 60 * 24 * 14; // 14 days
 
 	static const int DELETEWARNING = 60 * 60 * 24 * 100; // 100 days
+
+	static const int BARKRANGE = 10; //Meters
 
 public:
 	VendorDataComponent();
@@ -150,6 +158,7 @@ public:
 	}
 
 	inline void setAdBarking(bool value) {
+		vendorBarks.removeAll();
 		adBarking = value;
 	}
 
@@ -177,6 +186,22 @@ public:
 		return maintAmount;
 	}
 
+	inline bool isOnStrike() {
+		return maintAmount <= 0;
+	}
+
+	void setAdPhrase(const String& message) {
+		barkMessage = message;
+	}
+
+	void setAdMood(const String& mood) {
+		barkMood = mood;
+	}
+
+	void setAdAnimation(const String& animation) {
+		barkAnimation = animation;
+	}
+
 	void payMaintanence();
 
 	void withdrawMaintanence();
@@ -184,6 +209,10 @@ public:
 	void handlePayMaintanence(int value);
 
 	void handleWithdrawMaintanence(int value);
+
+	void clearVendorBark(SceneObject* target);
+
+	void performVendorBark(SceneObject* target);
 
 	private:
 		void addSerializableVariables();

@@ -214,6 +214,11 @@ public:
 	static const uint16 INSTALL_MISSION_TERMINAL = 1005;
 	static const uint16 RECRUIT_SKILL_TRAINER = 1006;
 	static const uint16 HOLOGRIND_UNLOCK = 1007;
+	static const uint16 MARKET_INFO = 1008;
+	static const uint16 VENDOR_PHRASES = 1009;
+	static const uint16 VENDOR_MOODS = 1010;
+	static const uint16 VENDOR_CUSTOM_PHRASE = 1011;
+	static const uint16 VENDOR_ANIMATION = 1012;
 };
 
 #endif /*SuiWindowType_H_*/

@@ -78,6 +78,12 @@ public:
 
 	void updateVendorSearch(SceneObject* vendor, bool enabled);
 
+	int getBazaarCount();
+
+	int getVendorCount();
+
+	int getTotalItemCount();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -157,6 +163,12 @@ public:
 
 	void updateVendorSearch(SceneObject* vendor, bool enabled);
 
+	int getBazaarCount();
+
+	int getVendorCount();
+
+	int getTotalItemCount();
+
 	WeakReference<AuctionsMap*> _this;
 
 	operator const AuctionsMap*();
@@ -217,6 +229,12 @@ public:
 	void updateUID(SceneObject* vendor, const String& oldUID, const String& newUID);
 
 	void updateVendorSearch(SceneObject* vendor, bool enabled);
+
+	int getBazaarCount();
+
+	int getVendorCount();
+
+	int getTotalItemCount();
 
 };
 

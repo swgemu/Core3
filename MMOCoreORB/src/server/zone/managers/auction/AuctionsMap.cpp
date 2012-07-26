@@ -12,7 +12,7 @@
  *	AuctionsMapStub
  */
 
-enum {RPC_ADDITEM__CREATUREOBJECT_SCENEOBJECT_AUCTIONITEM_ = 6,RPC_REMOVEITEM__SCENEOBJECT_AUCTIONITEM_,RPC_GETITEM__LONG_,RPC_CONTAINSITEM__LONG_,RPC_GETVENDORITEMCOUNT__SCENEOBJECT_,RPC_DELETETERMINALITEMS__SCENEOBJECT_,RPC_GETBAZAARITEMCOUNT__CREATUREOBJECT_,RPC_UPDATEUID__SCENEOBJECT_STRING_STRING_,RPC_UPDATEVENDORSEARCH__SCENEOBJECT_BOOL_};
+enum {RPC_ADDITEM__CREATUREOBJECT_SCENEOBJECT_AUCTIONITEM_ = 6,RPC_REMOVEITEM__SCENEOBJECT_AUCTIONITEM_,RPC_GETITEM__LONG_,RPC_CONTAINSITEM__LONG_,RPC_GETVENDORITEMCOUNT__SCENEOBJECT_,RPC_DELETETERMINALITEMS__SCENEOBJECT_,RPC_GETBAZAARITEMCOUNT__CREATUREOBJECT_,RPC_UPDATEUID__SCENEOBJECT_STRING_STRING_,RPC_UPDATEVENDORSEARCH__SCENEOBJECT_BOOL_,RPC_GETBAZAARCOUNT__,RPC_GETVENDORCOUNT__,RPC_GETTOTALITEMCOUNT__};
 
 AuctionsMap::AuctionsMap() : ManagedObject(DummyConstructorParameter::instance()) {
 	AuctionsMapImplementation* _implementation = new AuctionsMapImplementation();
@@ -180,6 +180,45 @@ void AuctionsMap::updateVendorSearch(SceneObject* vendor, bool enabled) {
 		_implementation->updateVendorSearch(vendor, enabled);
 }
 
+int AuctionsMap::getBazaarCount() {
+	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETBAZAARCOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getBazaarCount();
+}
+
+int AuctionsMap::getVendorCount() {
+	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETVENDORCOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getVendorCount();
+}
+
+int AuctionsMap::getTotalItemCount() {
+	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETTOTALITEMCOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getTotalItemCount();
+}
+
 DistributedObjectServant* AuctionsMap::_getImplementation() {
 
 	 if (!_updated) _updated = true;
@@ -341,6 +380,21 @@ int AuctionsMapImplementation::getBazaarItemCount(CreatureObject* player) {
 	return (&bazaarCount)->get(player->getObjectID());
 }
 
+int AuctionsMapImplementation::getBazaarCount() {
+	// server/zone/managers/auction/AuctionsMap.idl():  		return bazaarItemsForSale.size();
+	return (&bazaarItemsForSale)->size();
+}
+
+int AuctionsMapImplementation::getVendorCount() {
+	// server/zone/managers/auction/AuctionsMap.idl():  		return vendorItemsForSale.size();
+	return (&vendorItemsForSale)->size();
+}
+
+int AuctionsMapImplementation::getTotalItemCount() {
+	// server/zone/managers/auction/AuctionsMap.idl():  		return allItems.size();
+	return (&allItems)->size();
+}
+
 /*
  *	AuctionsMapAdapter
  */
@@ -402,6 +456,21 @@ void AuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			updateVendorSearch(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		}
 		break;
+	case RPC_GETBAZAARCOUNT__:
+		{
+			resp->insertSignedInt(getBazaarCount());
+		}
+		break;
+	case RPC_GETVENDORCOUNT__:
+		{
+			resp->insertSignedInt(getVendorCount());
+		}
+		break;
+	case RPC_GETTOTALITEMCOUNT__:
+		{
+			resp->insertSignedInt(getTotalItemCount());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -441,6 +510,18 @@ void AuctionsMapAdapter::updateUID(SceneObject* vendor, const String& oldUID, co
 
 void AuctionsMapAdapter::updateVendorSearch(SceneObject* vendor, bool enabled) {
 	(static_cast<AuctionsMap*>(stub))->updateVendorSearch(vendor, enabled);
+}
+
+int AuctionsMapAdapter::getBazaarCount() {
+	return (static_cast<AuctionsMap*>(stub))->getBazaarCount();
+}
+
+int AuctionsMapAdapter::getVendorCount() {
+	return (static_cast<AuctionsMap*>(stub))->getVendorCount();
+}
+
+int AuctionsMapAdapter::getTotalItemCount() {
+	return (static_cast<AuctionsMap*>(stub))->getTotalItemCount();
 }
 
 /*

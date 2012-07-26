@@ -15,6 +15,9 @@
 #include "server/zone/objects/auction/events/UpdateVendorTask.h"
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/packets/object/SpatialChat.h"
+#include "server/zone/objects/player/Races.h"
+
 
 VendorDataComponent::VendorDataComponent() : AuctionTerminalDataComponent() {
 	ownerId = 0;
@@ -28,6 +31,7 @@ VendorDataComponent::VendorDataComponent() : AuctionTerminalDataComponent() {
 	adBarking = false;
 	mail1Sent = false;
 	mail2Sent = false;
+	barkMessage = "";
 	addSerializableVariables();
 }
 
@@ -45,11 +49,16 @@ void VendorDataComponent::addSerializableVariables() {
 	addSerializableVariable("mail1Sent", &mail1Sent);
 	addSerializableVariable("mail2Sent", &mail2Sent);
 	addSerializableVariable("emptyTimer", &emptyTimer);
+	addSerializableVariable("barkMessage", &barkMessage);
+	addSerializableVariable("barkMood", &barkMood);
+	addSerializableVariable("barkAnimation", &barkAnimation);
 }
 
 void VendorDataComponent::initializeTransientMembers() {
 
 	AuctionTerminalDataComponent::initializeTransientMembers();
+
+	lastBark = 0;
 
 	if(parent != NULL) {
 
@@ -149,7 +158,7 @@ void VendorDataComponent::runVendorUpdate() {
 		}
 	}
 
-	if(maintAmount <= 0) {
+	if(isOnStrike()) {
 
 		if(time(0) - inactiveTimer.getTime() > DELETEWARNING) {
 
@@ -279,4 +288,46 @@ void VendorDataComponent::setVendorSearchEnabled(bool enabled) {
 
 	vendorSearchEnabled = enabled;
 	auctionManager->updateVendorSearch(parent, vendorSearchEnabled);
+}
+
+void VendorDataComponent::clearVendorBark(SceneObject* target) {
+	vendorBarks.removeElement(target->getObjectID());
+}
+
+void VendorDataComponent::performVendorBark(SceneObject* target) {
+
+	if(vendorBarks.contains(target->getObjectID()))
+		return;
+
+	if(time(0) - lastBark <= 60)
+		return;
+
+	CreatureObject* vendor = cast<CreatureObject*>(parent.get());
+	if(vendor == NULL)
+		return;
+
+	CreatureObject* player = cast<CreatureObject*>(target);
+	if(target == NULL || !target->isPlayerCreature())
+		return;
+
+	lastBark = time(0);
+
+	vendor->faceObject(target);
+	vendor->updateDirection(vendor->getDirectionAngle());
+
+	SpatialChat* chatMessage = NULL;
+
+	if(barkMessage.beginsWith("@")) {
+		StringIdChatParameter message;
+		message.setStringId(barkMessage);
+		message.setTT(player->getObjectID());
+		chatMessage = new SpatialChat(vendor->getObjectID(), target->getObjectID(), message, target->getObjectID(), Races::getMoodID(barkMood), 0);
+
+	} else {
+		UnicodeString uniMessage(barkMessage);
+		chatMessage = new SpatialChat(vendor->getObjectID(), target->getObjectID(), uniMessage, target->getObjectID(), Races::getMoodID(barkMood), 0, 0);
+	}
+
+	vendor->broadcastMessage(chatMessage, false);
+	vendor->doAnimation(barkAnimation);
 }

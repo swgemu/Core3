@@ -24,7 +24,7 @@
  *	AuctionManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_GETITEMATTRIBUTES__CREATUREOBJECT_LONG_,RPC_GETDATA__CREATUREOBJECT_INT_LONG_INT_INT_INT_INT_,RPC_RETRIEVEITEM__CREATUREOBJECT_LONG_LONG_,RPC_BUYITEM__CREATUREOBJECT_LONG_INT_INT_,RPC_DOAUCTIONBID__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_DOINSTANTBUY__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_CHECKBIDAUCTION__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_CANCELITEM__CREATUREOBJECT_LONG_,RPC_GETAUCTIONMAP__,RPC_CHECKVENDORITEMS__,RPC_CHECKAUCTIONS__,RPC_GETVENDORUID__SCENEOBJECT_,RPC_UPDATEVENDORUID__SCENEOBJECT_STRING_STRING_,RPC_UPDATEVENDORSEARCH__SCENEOBJECT_BOOL_,RPC_EXPIRESALE__AUCTIONITEM_,RPC_EXPIREBIDAUCTION__AUCTIONITEM_,RPC_EXPIREAUCTION__AUCTIONITEM_,RPC_DELETEEXPIREDSALE__AUCTIONITEM_};
+enum {RPC_INITIALIZE__ = 6,RPC_GETITEMATTRIBUTES__CREATUREOBJECT_LONG_,RPC_GETDATA__CREATUREOBJECT_INT_LONG_INT_INT_INT_INT_,RPC_RETRIEVEITEM__CREATUREOBJECT_LONG_LONG_,RPC_BUYITEM__CREATUREOBJECT_LONG_INT_INT_,RPC_DOAUCTIONBID__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_DOINSTANTBUY__CREATUREOBJECT_AUCTIONITEM_,RPC_CHECKBIDAUCTION__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_CANCELITEM__CREATUREOBJECT_LONG_,RPC_GETAUCTIONMAP__,RPC_CHECKVENDORITEMS__,RPC_CHECKAUCTIONS__,RPC_GETVENDORUID__SCENEOBJECT_,RPC_UPDATEVENDORUID__SCENEOBJECT_STRING_STRING_,RPC_UPDATEVENDORSEARCH__SCENEOBJECT_BOOL_,RPC_EXPIRESALE__AUCTIONITEM_,RPC_EXPIREBIDAUCTION__AUCTIONITEM_,RPC_EXPIREAUCTION__AUCTIONITEM_,RPC_DELETEEXPIREDSALE__AUCTIONITEM_,RPC_ISMARKETENABLED__,RPC_SETMARKETENABLED__BOOL_,RPC_DISPLAYINFO__CREATUREOBJECT_};
 
 AuctionManager::AuctionManager(ZoneServer* server) : ManagedService(DummyConstructorParameter::instance()) {
 	AuctionManagerImplementation* _implementation = new AuctionManagerImplementation(server);
@@ -185,21 +185,19 @@ void AuctionManager::doAuctionBid(CreatureObject* player, AuctionItem* item, int
 		_implementation->doAuctionBid(player, item, price1, price2);
 }
 
-void AuctionManager::doInstantBuy(CreatureObject* player, AuctionItem* item, int price1, int price2) {
+void AuctionManager::doInstantBuy(CreatureObject* player, AuctionItem* item) {
 	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_DOINSTANTBUY__CREATUREOBJECT_AUCTIONITEM_INT_INT_);
+		DistributedMethod method(this, RPC_DOINSTANTBUY__CREATUREOBJECT_AUCTIONITEM_);
 		method.addObjectParameter(player);
 		method.addObjectParameter(item);
-		method.addSignedIntParameter(price1);
-		method.addSignedIntParameter(price2);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->doInstantBuy(player, item, price1, price2);
+		_implementation->doInstantBuy(player, item);
 }
 
 int AuctionManager::checkBidAuction(CreatureObject* player, AuctionItem* item, int price1, int price2) {
@@ -385,6 +383,47 @@ void AuctionManager::deleteExpiredSale(AuctionItem* item) {
 		_implementation->deleteExpiredSale(item);
 }
 
+bool AuctionManager::isMarketEnabled() {
+	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISMARKETENABLED__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isMarketEnabled();
+}
+
+void AuctionManager::setMarketEnabled(bool value) {
+	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETMARKETENABLED__BOOL_);
+		method.addBooleanParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setMarketEnabled(value);
+}
+
+void AuctionManager::displayInfo(CreatureObject* player) {
+	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DISPLAYINFO__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->displayInfo(player);
+}
+
 DistributedObjectServant* AuctionManager::_getImplementation() {
 
 	 if (!_updated) _updated = true;
@@ -515,8 +554,8 @@ bool AuctionManagerImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
-	if (_name == "AuctionManager.test") {
-		TypeInfo<int >::parseFromBinaryStream(&test, stream);
+	if (_name == "AuctionManager.marketEnabled") {
+		TypeInfo<bool >::parseFromBinaryStream(&marketEnabled, stream);
 		return true;
 	}
 
@@ -577,11 +616,11 @@ int AuctionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionManager.test";
+	_name = "AuctionManager.marketEnabled";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<int >::toBinaryStream(&test, stream);
+	TypeInfo<bool >::toBinaryStream(&marketEnabled, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -599,8 +638,8 @@ AuctionManagerImplementation::AuctionManagerImplementation(ZoneServer* server) {
 	Logger::setLogging(false);
 	// server/zone/managers/auction/AuctionManager.idl():  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-	// server/zone/managers/auction/AuctionManager.idl():  		test= 0;
-	test = 0;
+	// server/zone/managers/auction/AuctionManager.idl():  		marketEnabled = false;
+	marketEnabled = false;
 	// server/zone/managers/auction/AuctionManager.idl():  		auctionEvents.setNoDuplicateInsertPlan();
 	(&auctionEvents)->setNoDuplicateInsertPlan();
 	// server/zone/managers/auction/AuctionManager.idl():  		auctionEvents.setNullValue(null);
@@ -629,6 +668,17 @@ void AuctionManagerImplementation::updateVendorUID(SceneObject* vendor, const St
 void AuctionManagerImplementation::updateVendorSearch(SceneObject* vendor, bool enabled) {
 	// server/zone/managers/auction/AuctionManager.idl():  		auctionMap.updateVendorSearch(vendor, enabled);
 	auctionMap->updateVendorSearch(vendor, enabled);
+}
+
+bool AuctionManagerImplementation::isMarketEnabled() {
+	// server/zone/managers/auction/AuctionManager.idl():  		return marketEnabled == true;
+	return marketEnabled == true;
+}
+
+void AuctionManagerImplementation::setMarketEnabled(bool value) {
+	Locker _locker(_this.get());
+	// server/zone/managers/auction/AuctionManager.idl():  		marketEnabled = value;
+	marketEnabled = value;
 }
 
 /*
@@ -676,9 +726,9 @@ void AuctionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			doAuctionBid(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<AuctionItem*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		}
 		break;
-	case RPC_DOINSTANTBUY__CREATUREOBJECT_AUCTIONITEM_INT_INT_:
+	case RPC_DOINSTANTBUY__CREATUREOBJECT_AUCTIONITEM_:
 		{
-			doInstantBuy(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<AuctionItem*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+			doInstantBuy(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<AuctionItem*>(inv->getObjectParameter()));
 		}
 		break;
 	case RPC_CHECKBIDAUCTION__CREATUREOBJECT_AUCTIONITEM_INT_INT_:
@@ -742,6 +792,21 @@ void AuctionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			deleteExpiredSale(static_cast<AuctionItem*>(inv->getObjectParameter()));
 		}
 		break;
+	case RPC_ISMARKETENABLED__:
+		{
+			resp->insertBoolean(isMarketEnabled());
+		}
+		break;
+	case RPC_SETMARKETENABLED__BOOL_:
+		{
+			setMarketEnabled(inv->getBooleanParameter());
+		}
+		break;
+	case RPC_DISPLAYINFO__CREATUREOBJECT_:
+		{
+			displayInfo(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -771,8 +836,8 @@ void AuctionManagerAdapter::doAuctionBid(CreatureObject* player, AuctionItem* it
 	(static_cast<AuctionManager*>(stub))->doAuctionBid(player, item, price1, price2);
 }
 
-void AuctionManagerAdapter::doInstantBuy(CreatureObject* player, AuctionItem* item, int price1, int price2) {
-	(static_cast<AuctionManager*>(stub))->doInstantBuy(player, item, price1, price2);
+void AuctionManagerAdapter::doInstantBuy(CreatureObject* player, AuctionItem* item) {
+	(static_cast<AuctionManager*>(stub))->doInstantBuy(player, item);
 }
 
 int AuctionManagerAdapter::checkBidAuction(CreatureObject* player, AuctionItem* item, int price1, int price2) {
@@ -821,6 +886,18 @@ void AuctionManagerAdapter::expireAuction(AuctionItem* item) {
 
 void AuctionManagerAdapter::deleteExpiredSale(AuctionItem* item) {
 	(static_cast<AuctionManager*>(stub))->deleteExpiredSale(item);
+}
+
+bool AuctionManagerAdapter::isMarketEnabled() {
+	return (static_cast<AuctionManager*>(stub))->isMarketEnabled();
+}
+
+void AuctionManagerAdapter::setMarketEnabled(bool value) {
+	(static_cast<AuctionManager*>(stub))->setMarketEnabled(value);
+}
+
+void AuctionManagerAdapter::displayInfo(CreatureObject* player) {
+	(static_cast<AuctionManager*>(stub))->displayInfo(player);
 }
 
 /*

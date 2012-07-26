@@ -1030,6 +1030,8 @@ void SceneObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 
 	//Core::getTaskManager()->executeTask(new PositionUpdateTask(_this.get(), entry));
 	//#endif
+
+	zoneComponent->notifyPositionUpdate(_this.get(), entry);
 }
 
 void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {

@@ -148,6 +148,8 @@ public:
 
 	static const int EXPIREPERIOD = 2592000;
 
+	static const int OFFEREXPIREPERIOD = 604800;
+
 	AuctionManager(ZoneServer* server);
 
 	void initialize();
@@ -172,7 +174,7 @@ public:
 
 	void doAuctionBid(CreatureObject* player, AuctionItem* item, int price1, int price2);
 
-	void doInstantBuy(CreatureObject* player, AuctionItem* item, int price1, int price2);
+	void doInstantBuy(CreatureObject* player, AuctionItem* item);
 
 	int checkBidAuction(CreatureObject* player, AuctionItem* item, int price1, int price2);
 
@@ -199,6 +201,12 @@ public:
 	void expireAuction(AuctionItem* item);
 
 	void deleteExpiredSale(AuctionItem* item);
+
+	bool isMarketEnabled();
+
+	void setMarketEnabled(bool value);
+
+	void displayInfo(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -251,8 +259,10 @@ public:
 
 	static const int EXPIREPERIOD = 2592000;
 
+	static const int OFFEREXPIREPERIOD = 604800;
+
 private:
-	int test;
+	bool marketEnabled;
 
 public:
 	AuctionManagerImplementation(ZoneServer* server);
@@ -285,7 +295,7 @@ public:
 
 	void doAuctionBid(CreatureObject* player, AuctionItem* item, int price1, int price2);
 
-	void doInstantBuy(CreatureObject* player, AuctionItem* item, int price1, int price2);
+	void doInstantBuy(CreatureObject* player, AuctionItem* item);
 
 	int checkBidAuction(CreatureObject* player, AuctionItem* item, int price1, int price2);
 
@@ -316,6 +326,12 @@ public:
 	void expireAuction(AuctionItem* item);
 
 	void deleteExpiredSale(AuctionItem* item);
+
+	bool isMarketEnabled();
+
+	void setMarketEnabled(bool value);
+
+	void displayInfo(CreatureObject* player);
 
 	WeakReference<AuctionManager*> _this;
 
@@ -372,7 +388,7 @@ public:
 
 	void doAuctionBid(CreatureObject* player, AuctionItem* item, int price1, int price2);
 
-	void doInstantBuy(CreatureObject* player, AuctionItem* item, int price1, int price2);
+	void doInstantBuy(CreatureObject* player, AuctionItem* item);
 
 	int checkBidAuction(CreatureObject* player, AuctionItem* item, int price1, int price2);
 
@@ -397,6 +413,12 @@ public:
 	void expireAuction(AuctionItem* item);
 
 	void deleteExpiredSale(AuctionItem* item);
+
+	bool isMarketEnabled();
+
+	void setMarketEnabled(bool value);
+
+	void displayInfo(CreatureObject* player);
 
 };
 
