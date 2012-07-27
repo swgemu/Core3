@@ -709,6 +709,11 @@ bool InstallationObjectImplementation::readObjectMember(ObjectInputStream* strea
 		return true;
 	}
 
+	if (_name == "InstallationObject.currentSpawn") {
+		TypeInfo<ManagedReference<ResourceSpawn* > >::parseFromBinaryStream(&currentSpawn, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -814,8 +819,16 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "InstallationObject.currentSpawn";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<ManagedReference<ResourceSpawn* > >::toBinaryStream(&currentSpawn, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 11;
+
+	return _count + 12;
 }
 
 InstallationObjectImplementation::InstallationObjectImplementation() {

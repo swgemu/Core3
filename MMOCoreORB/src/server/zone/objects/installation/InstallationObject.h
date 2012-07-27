@@ -348,6 +348,8 @@ protected:
 
 	float spawnDensity;
 
+	ManagedReference<ResourceSpawn* > currentSpawn;
+
 public:
 	InstallationObjectImplementation();
 

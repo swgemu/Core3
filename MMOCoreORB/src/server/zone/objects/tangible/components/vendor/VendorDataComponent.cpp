@@ -17,7 +17,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/packets/object/SpatialChat.h"
 #include "server/zone/objects/player/Races.h"
-
+#include "server/zone/objects/tangible/tasks/VendorReturnToPositionTask.h"
 
 VendorDataComponent::VendorDataComponent() : AuctionTerminalDataComponent() {
 	ownerId = 0;
@@ -32,6 +32,7 @@ VendorDataComponent::VendorDataComponent() : AuctionTerminalDataComponent() {
 	mail1Sent = false;
 	mail2Sent = false;
 	barkMessage = "";
+	originalDirection = 1000;
 	addSerializableVariables();
 }
 
@@ -52,6 +53,7 @@ void VendorDataComponent::addSerializableVariables() {
 	addSerializableVariable("barkMessage", &barkMessage);
 	addSerializableVariable("barkMood", &barkMood);
 	addSerializableVariable("barkAnimation", &barkAnimation);
+	addSerializableVariable("originalDirection", &originalDirection);
 }
 
 void VendorDataComponent::initializeTransientMembers() {
@@ -67,6 +69,12 @@ void VendorDataComponent::initializeTransientMembers() {
 
 			/// Schedule initial task
 			vendorCheckTask->schedule((VENDORCHECKDELAY + System::random(VENDORCHECKINTERVAL)) * 60 * 1000);
+
+			if(originalDirection == 1000)
+				originalDirection = parent->getDirectionAngle();
+
+			if(isRegistered() && parent->getZone() != NULL)
+				parent->getZone()->registerObjectWithPlanetaryMap(parent);
 		}
 	}
 }
@@ -97,6 +105,8 @@ void VendorDataComponent::runVendorUpdate() {
 	if (owner == NULL || !owner->isPlayerCreature() || playerManager == NULL || vendor == NULL) {
 		return;
 	}
+
+	vendorBarks.removeAll();
 
 	int now = time(0);
 	int last = lastSuccessfulUpdate.getTime();
@@ -290,17 +300,8 @@ void VendorDataComponent::setVendorSearchEnabled(bool enabled) {
 	auctionManager->updateVendorSearch(parent, vendorSearchEnabled);
 }
 
-void VendorDataComponent::clearVendorBark(SceneObject* target) {
-	vendorBarks.removeElement(target->getObjectID());
-}
 
 void VendorDataComponent::performVendorBark(SceneObject* target) {
-
-	if(vendorBarks.contains(target->getObjectID()))
-		return;
-
-	if(time(0) - lastBark <= 60)
-		return;
 
 	CreatureObject* vendor = cast<CreatureObject*>(parent.get());
 	if(vendor == NULL)
@@ -330,4 +331,9 @@ void VendorDataComponent::performVendorBark(SceneObject* target) {
 
 	vendor->broadcastMessage(chatMessage, false);
 	vendor->doAnimation(barkAnimation);
+
+	addBarkTarget(target);
+
+	Reference<VendorReturnToPositionTask*> returnTask = new VendorReturnToPositionTask(vendor, originalDirection);
+	vendor->addPendingTask("vendorreturn", returnTask, 3000);
 }

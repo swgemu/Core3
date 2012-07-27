@@ -105,12 +105,14 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 		if(resourceHopper.size() == 0)
 			return;
 
-		ResourceContainer* container = resourceHopper.get(0);
-		ResourceSpawn* spawn = container->getSpawnObject();
-		if(spawn == NULL)
+		if(currentSpawn == NULL)
 			return;
 
-		spawnDensity = spawn->getDensityAt(getZone()->getZoneName(), getPositionX(), getPositionY());
+		spawnDensity = currentSpawn->getDensityAt(getZone()->getZoneName(), getPositionX(), getPositionY());
+
+		if(spawnDensity < .10) {
+			return;
+		}
 
 		if (basePowerRate != 0 && surplusPower <= 0) {
 			StringIdChatParameter stringId("player_structure", "power_deposit_incomplete");
@@ -177,12 +179,9 @@ void InstallationObjectImplementation::setActiveResource(ResourceContainer* cont
 
 	if (resourceHopper.size() == 0) {
 		addResourceToHopper(container);
+		currentSpawn = container->getSpawnObject();
 
-		ResourceSpawn* spawn = container->getSpawnObject();
-		if(spawn != NULL)
-			spawnDensity = spawn->getDensityAt(getZone()->getZoneName(), getPositionX(), getPositionY());
-		else
-			spawnDensity = 0;
+		spawnDensity = currentSpawn->getDensityAt(getZone()->getZoneName(), getPositionX(), getPositionY());
 
 		return;
 	}
@@ -210,11 +209,8 @@ void InstallationObjectImplementation::setActiveResource(ResourceContainer* cont
 			else
 				resourceHopper.remove(i, inso7, 0);
 
-			ResourceSpawn* spawn = container->getSpawnObject();
-			if(spawn != NULL)
-				spawnDensity = spawn->getDensityAt(getZone()->getZoneName(), getPositionX(), getPositionY());
-			else
-				spawnDensity = 0;
+			currentSpawn = container->getSpawnObject();
+			spawnDensity = currentSpawn->getDensityAt(getZone()->getZoneName(), getPositionX(), getPositionY());
 
 			inso7->updateHopperSize(getHopperSize());
 			inso7->updateExtractionRate(getActualRate());
@@ -366,15 +362,21 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 			return;
 	}
 
-	if (resourceHopper.size() == 0) // no active spawn
-		return;
+	if (resourceHopper.size() == 0) { // no active spawn
+		if(currentSpawn == NULL)
+			return;
 
-	ResourceContainer* container = resourceHopper.get(0);
-	ResourceSpawn* spawn = container->getSpawnObject();
+		addResourceToHopper(currentSpawn->createResource(0));
+	}
+
+	ManagedReference<ResourceContainer*> container = resourceHopper.get(0);
+
+	if(currentSpawn == NULL)
+		currentSpawn = container->getSpawnObject();
 
 	Time currentTime = workingTime;
 
-	Time spawnExpireTimestamp(spawn->getDespawned());
+	Time spawnExpireTimestamp(currentSpawn->getDespawned());
 	// if (t1 < t2) return 1 - if spawnTime is sooner currentTime, use spawnTime, else use spawn time
 	uint32 harvestUntil = (spawnExpireTimestamp.compareTo(currentTime) > 0) ? spawnExpireTimestamp.getTime() : currentTime.getTime();
 	uint32 lastHopperUpdate = resourceHopperTimestamp.getTime();
@@ -397,7 +399,7 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 
 
 	if(harvestAmount > 0) {
-		spawn->extractResource(getZone()->getZoneName(), harvestAmount);
+		currentSpawn->extractResource(getZone()->getZoneName(), harvestAmount);
 
 		updateResourceContainerQuantity(container, (currentQuantity + harvestAmount), true);
 	}
@@ -488,8 +490,8 @@ void InstallationObjectImplementation::changeActiveResourceID(uint64 spawnID) {
 		updateInstallationWork();
 	}
 
-	ManagedReference<ResourceSpawn*> newSpawn = dynamic_cast<ResourceSpawn*>(getZoneServer()->getObject(spawnID));
-	if (newSpawn == NULL) {
+	currentSpawn = dynamic_cast<ResourceSpawn*>(getZoneServer()->getObject(spawnID));
+	if (currentSpawn == NULL) {
 		error("new spawn null");
 		return;
 	}
@@ -500,10 +502,10 @@ void InstallationObjectImplementation::changeActiveResourceID(uint64 spawnID) {
 
 	resourceHopperTimestamp.updateToCurrentTime();
 
-	ManagedReference<ResourceContainer*> container = getContainerFromHopper(newSpawn);
+	ManagedReference<ResourceContainer*> container = getContainerFromHopper(currentSpawn);
 
 	if (container == NULL) {
-		container = newSpawn->createResource(0);
+		container = currentSpawn->createResource(0);
 
 		addResourceToHopper(container);
 		setActiveResource(container);
@@ -615,15 +617,14 @@ void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceC
 }
 
 uint64 InstallationObjectImplementation::getActiveResourceSpawnID() {
-	if (resourceHopper.size() == 0) {
+	if (resourceHopper.size() == 0 || currentSpawn == NULL) {
 		return 0;
 	} else {
-		ResourceContainer* entry = resourceHopper.get(0);
-		ResourceSpawn* spawn = entry->getSpawnObject();
-		if(spawn->getDespawned() < time(0))
+
+		if(currentSpawn->getDespawned() < time(0))
 			return 0;
 
-		return entry->getSpawnObject()->getObjectID();
+		return currentSpawn->getObjectID();
 	}
 }
 
@@ -633,9 +634,6 @@ float InstallationObjectImplementation::getActualRate() {
 
 	if (resourceHopper.size() == 0)
 		return 0;
-
-	ResourceContainer* container = resourceHopper.get(0);
-	ResourceSpawn* spawn = container->getSpawnObject();
 
 	return extractionRate * spawnDensity;
 }

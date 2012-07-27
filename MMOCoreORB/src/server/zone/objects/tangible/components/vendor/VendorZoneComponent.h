@@ -53,18 +53,19 @@ public:
 		if(terminalData == NULL || !terminalData->isAdBarkingEnabled())
 			return;
 
-		if(target->getDistanceTo(sceneObject) > VendorDataComponent::BARKRANGE) {
-			Locker locker(sceneObject);
-			terminalData->clearVendorBark(target);
-			return;
-		}
+		Locker locker(sceneObject);
 
-		if(terminalData != NULL) {
-			Locker locker(sceneObject);
-			terminalData->performVendorBark(target);
+		if(terminalData->hasBarkTarget(target))
+			return;
+
+		if(target->getDistanceTo(sceneObject) <= VendorDataComponent::BARKRANGE) {
+
+			if(terminalData->canBark())
+				terminalData->performVendorBark(target);
+			else
+				terminalData->addBarkTarget(target);
 		}
 	}
-
 };
 
 #endif /* VENDORZONECOMPONENT_H_ */

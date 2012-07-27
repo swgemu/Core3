@@ -45,7 +45,6 @@ object_tangible_vendor_base_base_vendor = object_tangible_vendor_base_shared_bas
 	objectMenuComponent = {"cpp", "VendorMenuComponent"},
 	dataObjectComponent = "VendorDataComponent",	
 	containerComponent = {"cpp", "VendorContainerComponent"},
-	zoneComponent = "VendorZoneComponent",
 
 	noTrade = 1,
 	

@@ -95,6 +95,7 @@ class InstallationObject extends StructureObject {
 	protected float extractionRate;
 	protected float extractionRemainder;
 	protected float spawnDensity;
+	protected ResourceSpawn currentSpawn;
 	
 	public InstallationObject() {
 		Logger.setLoggingName("InstallationObject");
