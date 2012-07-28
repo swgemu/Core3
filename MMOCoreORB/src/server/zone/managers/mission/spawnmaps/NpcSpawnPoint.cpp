@@ -49,6 +49,7 @@ which carries forward this exception.
 NpcSpawnPoint::NpcSpawnPoint() {
 	spawnType = 0;
 	despawnMissionNpcTask = NULL;
+	npcSpawned = false;
 }
 
 NpcSpawnPoint::NpcSpawnPoint(CreatureObject* player, const String& spawnTypes) {
@@ -76,6 +77,7 @@ NpcSpawnPoint::NpcSpawnPoint(CreatureObject* player, const String& spawnTypes) {
 	direction.setHeadingDirection(player->getDirection()->getRadians());
 	inUseByNumberOfMissions = 0;
 	despawnMissionNpcTask = NULL;
+	npcSpawned = false;
 }
 
 void NpcSpawnPoint::readObject(LuaObject* luaObject) {
@@ -89,11 +91,13 @@ void NpcSpawnPoint::readObject(LuaObject* luaObject) {
 	direction.setHeadingDirection(radians);
 	inUseByNumberOfMissions = 0;
 	despawnMissionNpcTask = NULL;
+	npcSpawned = false;
 }
 
 bool NpcSpawnPoint::parseFromBinaryStream(ObjectInputStream* stream) {
 	spawnType = stream->readInt();
 	inUseByNumberOfMissions = stream->readInt();
+	npcSpawned = stream->readBoolean();
 	bool result = position.parseFromBinaryStream(stream);
 	result &= direction.parseFromBinaryStream(stream);
 	return result & npc.parseFromBinaryStream(stream);
@@ -102,36 +106,44 @@ bool NpcSpawnPoint::parseFromBinaryStream(ObjectInputStream* stream) {
 bool NpcSpawnPoint::toBinaryStream(ObjectOutputStream* stream) {
 	stream->writeInt(spawnType);
 	stream->writeInt(inUseByNumberOfMissions);
+	stream->writeBoolean(npcSpawned);
 	bool result = position.toBinaryStream(stream);
 	result &= direction.toBinaryStream(stream);
 	return result & npc.toBinaryStream(stream);
 }
 
-void NpcSpawnPoint::spawnNpc(TerrainManager* terrainManager, CreatureManager* creatureManager) {
+void NpcSpawnPoint::allocateNpc(TerrainManager* terrainManager, CreatureManager* creatureManager) {
 	inUseByNumberOfMissions++;
 
-	if (inUseByNumberOfMissions == 1) {
+	if (inUseByNumberOfMissions > 0) {
 		if (despawnMissionNpcTask != NULL && despawnMissionNpcTask->isScheduled()) {
 			despawnMissionNpcTask->cancel();
-		} else {
+		}
+
+		if (!npcSpawned) {
 			//Spawn the NPC.
 			String deliverNpc = "deliver_npc";
 			float z = terrainManager->getHeight(position.getX(), position.getY());
 			npc = cast<AiAgent*>(creatureManager->spawnCreature(deliverNpc.hashCode(), 0, position.getX(), z, position.getY(), 0));
-			npc->updateDirection(direction.getW(), direction.getX(), direction.getY(), direction.getZ());
-			//Set the name of the NPC.
-			NameManager* nm = npc->getZoneProcessServer()->getNameManager();
-			npc->setCustomObjectName(nm->makeCreatureName(), true);
+			if (npc != NULL) {
+				npc->updateDirection(direction.getW(), direction.getX(), direction.getY(), direction.getZ());
+				//Set the name of the NPC.
+				NameManager* nm = npc->getZoneProcessServer()->getNameManager();
+				npc->setCustomObjectName(nm->makeCreatureName(), true);
+				npcSpawned = true;
+			} else {
+				info("Failed to spawn npc at " + position.toString(), true);
+			}
 		}
 	}
 }
 
-void NpcSpawnPoint::despawnNpc() {
+void NpcSpawnPoint::freeNpc(Reference<MissionManager*> missionManager) {
 	inUseByNumberOfMissions--;
 
 	if (inUseByNumberOfMissions == 0) {
 		if (despawnMissionNpcTask == NULL) {
-			despawnMissionNpcTask = new DespawnMissionNpcTask(npc, this);
+			despawnMissionNpcTask = new DespawnMissionNpcTask(missionManager, this);
 		}
 
 		if (despawnMissionNpcTask->isScheduled()) {
@@ -140,5 +152,14 @@ void NpcSpawnPoint::despawnNpc() {
 			//Despawn after 1 minute.
 			despawnMissionNpcTask->schedule(60 * 1000);
 		}
+	}
+}
+
+void NpcSpawnPoint::despawnNpc() {
+	npcSpawned = false;
+	if (npc != NULL) {
+		Locker locker(npc);
+
+		npc->scheduleDespawn(1);
 	}
 }

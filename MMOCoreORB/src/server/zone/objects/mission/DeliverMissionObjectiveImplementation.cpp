@@ -127,7 +127,7 @@ bool DeliverMissionObjectiveImplementation::activateWithResult() {
 		return false;
 	}
 
-	missionManager->spawnMissionNpcs(targetSpawnPoint, destinationSpawnPoint, terrainManager, creatureManager);
+	missionManager->allocateMissionNpcs(targetSpawnPoint, destinationSpawnPoint, terrainManager, creatureManager);
 
 	//Create waypoint and activate it.
 	if (objectiveStatus == 0) {
@@ -165,8 +165,8 @@ void DeliverMissionObjectiveImplementation::despawnNpcs() {
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 	MissionManager* missionManager = zoneServer->getMissionManager();
 
-	missionManager->despawnMissionNpc(targetSpawnPoint);
-	missionManager->despawnMissionNpc(destinationSpawnPoint);
+	missionManager->freeMissionNpc(targetSpawnPoint);
+	missionManager->freeMissionNpc(destinationSpawnPoint);
 }
 
 void DeliverMissionObjectiveImplementation::updateMissionStatus(CreatureObject* player) {

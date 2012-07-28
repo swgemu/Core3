@@ -184,7 +184,8 @@ class MissionManager extends Observer implements Logger {
 	public native void failPlayerBountyMission(unsigned long bountyHunter);
 	
 	@local
-	public native void spawnMissionNpcs(NpcSpawnPoint target, NpcSpawnPoint destination, TerrainManager terrainManager, CreatureManager creatureManager);
+	public native void allocateMissionNpcs(NpcSpawnPoint target, NpcSpawnPoint destination, TerrainManager terrainManager, CreatureManager creatureManager);
+	public native void freeMissionNpc(NpcSpawnPoint npc);
 	public native void despawnMissionNpc(NpcSpawnPoint npc);
 	
 	public native void deactivateMissions(CreatureObject player);

@@ -109,6 +109,8 @@ protected:
 
 	Reference<DespawnMissionNpcTask*> despawnMissionNpcTask;
 
+	bool npcSpawned;
+
 public:
 	/**
 	 * Spawn type no spawn.
@@ -208,13 +210,11 @@ public:
 		return "NpcSpawnPoint at " + position.toString() + " of spawntype " + String::valueOf(spawnType) + " is " + (inUseByNumberOfMissions > 0 ? " in use." : "free.");
 	}
 
-	void spawnNpc(TerrainManager* terrainManager, CreatureManager* creatureManager);
+	void allocateNpc(TerrainManager* terrainManager, CreatureManager* creatureManager);
+
+	void freeNpc(Reference<MissionManager*> missionManager);
 
 	void despawnNpc();
-
-	void decreaseUsageCount() {
-		inUseByNumberOfMissions--;
-	}
 
 };
 
