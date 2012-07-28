@@ -140,7 +140,7 @@ void VendorDataComponent::runVendorUpdate() {
 
 	if(isEmpty()) {
 
-		ChatManager* cman = parent->getZoneServer()->getChatManager();
+		ManagedReference<ChatManager*> cman = parent->getZoneServer()->getChatManager();
 
 		String sender = parent->getDisplayedName();
 		UnicodeString subject("@auction:vendor_status_subject");
@@ -172,7 +172,7 @@ void VendorDataComponent::runVendorUpdate() {
 
 		if(time(0) - inactiveTimer.getTime() > DELETEWARNING) {
 
-			ChatManager* cman = parent->getZoneServer()->getChatManager();
+			ManagedReference<ChatManager*> cman = parent->getZoneServer()->getChatManager();
 
 			String sender = parent->getDisplayedName();
 			UnicodeString subject("@auction:vendor_status_subject");
@@ -303,11 +303,11 @@ void VendorDataComponent::setVendorSearchEnabled(bool enabled) {
 
 void VendorDataComponent::performVendorBark(SceneObject* target) {
 
-	CreatureObject* vendor = cast<CreatureObject*>(parent.get());
+	ManagedReference<CreatureObject*> vendor = cast<CreatureObject*>(parent.get());
 	if(vendor == NULL)
 		return;
 
-	CreatureObject* player = cast<CreatureObject*>(target);
+	ManagedReference<CreatureObject*> player = cast<CreatureObject*>(target);
 	if(target == NULL || !target->isPlayerCreature())
 		return;
 

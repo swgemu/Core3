@@ -238,7 +238,7 @@ protected:
 
 	ManagedReference<ZoneServer* > zoneServer;
 
-	VectorMap<unsigned long long, Task*> auctionEvents;
+	VectorMap<unsigned long long, Reference<Task*> > auctionEvents;
 
 	VectorMap<ManagedReference<SceneObject* >, String> pendingUIDUpdates;
 

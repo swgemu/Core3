@@ -212,7 +212,7 @@ void AuctionsMapImplementation::sendVendorUpdateMail(SceneObject* vendor, bool i
 	if(vendorData == NULL)
 		return;
 
-	ChatManager* cman = vendor->getZoneServer()->getChatManager();
+	ManagedReference<ChatManager*> cman = vendor->getZoneServer()->getChatManager();
 	ManagedReference<CreatureObject*> owner = cast<CreatureObject*>(vendor->getZoneServer()->getObject(vendorData->getOwnerId()));
 
 	String sender = vendor->getDisplayedName();

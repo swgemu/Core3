@@ -65,7 +65,7 @@ class AuctionManager extends ManagedService implements Logger {
 	protected ZoneServer zoneServer;
 	
 	@dereferenced
-	protected VectorMap<unsigned long, Task> auctionEvents;
+	protected VectorMap<unsigned long, Reference<Task> > auctionEvents;
 	
 	@dereferenced
 	protected VectorMap<SceneObject, string> pendingUIDUpdates;
