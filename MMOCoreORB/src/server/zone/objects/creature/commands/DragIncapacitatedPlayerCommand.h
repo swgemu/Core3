@@ -203,6 +203,12 @@ public:
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		Locker clocker(targetPlayer, creature);
+		
+		if (creature->getZone() == NULL)
+			return GENERALERROR;
+			
+		if (targetPlayer->getZone() == NULL)
+			return GENERALERROR;
 
 		//Determine if the player has the proper skill.
 		if (!player->hasSkill("science_medic_injury_speed_02")) {

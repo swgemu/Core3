@@ -689,7 +689,11 @@ int AuctionManagerImplementation::checkRetrieve(CreatureObject* player, uint64 o
 	if (!auctionMap->containsItem(objectIdToRetrieve))
 		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
 
-	SceneObject* saleItem = zoneServer->getObject(objectIdToRetrieve);
+	ManagedReference<SceneObject*> saleItem = zoneServer->getObject(objectIdToRetrieve);
+	
+	if (saleItem == NULL) {
+		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
+	}
 
 	if(saleItem->isIntangibleObject()) {
 		SceneObject* datapad = player->getSlottedObject("datapad");

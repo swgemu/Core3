@@ -1589,7 +1589,10 @@ void CombatManager::freeDuelList(CreatureObject* player, bool spam) {
 	/* Pre: player not NULL and is locked
 	 * Post: player removed and warned all of the objects from its duel list
 	 */
-	PlayerObject* ghost = player->getPlayerObject();
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+	
+	if (ghost == NULL)
+		return;
 
 	if (ghost->isDuelListEmpty())
 		return;
