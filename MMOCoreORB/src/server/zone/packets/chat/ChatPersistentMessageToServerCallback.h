@@ -116,6 +116,10 @@ public:
 
 	int sendMailToPlayer(const String& recipientName) {
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer().get().get());
+		
+		if (player == NULL)
+			return 0;
+			
 		ChatManager* chatManager = server->getChatManager();
 
 		uint64 receiverObjectID = server->getPlayerManager()->getObjectID(recipientName);
