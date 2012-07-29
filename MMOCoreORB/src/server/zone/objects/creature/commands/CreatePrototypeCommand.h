@@ -76,19 +76,20 @@ public:
 
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 
-		int clientCounter, practice;
+		int clientCounter;
+		bool createItem;
 
 		StringTokenizer tokenizer(arguments.toString());
 
 		if(tokenizer.hasMoreTokens())
 			clientCounter = tokenizer.getIntToken();
 		else
-			return GENERALERROR;
+			clientCounter = 0;
 
 		if(tokenizer.hasMoreTokens())
-			practice = tokenizer.getIntToken();
+			createItem = tokenizer.getIntToken();
 		else
-			practice = 1;
+			createItem = true;
 
 		Reference<CraftingSession*> session = cast<CraftingSession*>(creature->getActiveSession(SessionFacadeType::CRAFTING));
 
@@ -100,7 +101,7 @@ public:
 			return GENERALERROR;
 
 		Locker locker(session);
-		session->createPrototype(clientCounter, (practice == 0));
+		session->createPrototype(clientCounter, createItem);
 
 		return SUCCESS;
 	}

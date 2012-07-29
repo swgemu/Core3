@@ -329,7 +329,7 @@ void VendorDataComponent::performVendorBark(SceneObject* target) {
 		chatMessage = new SpatialChat(vendor->getObjectID(), target->getObjectID(), uniMessage, target->getObjectID(), Races::getMoodID(barkMood), 0, 0);
 	}
 
-	vendor->broadcastMessage(chatMessage, false);
+	vendor->broadcastMessage(chatMessage, true);
 	vendor->doAnimation(barkAnimation);
 
 	addBarkTarget(target);

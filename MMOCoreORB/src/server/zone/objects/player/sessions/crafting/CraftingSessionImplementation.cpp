@@ -1125,18 +1125,18 @@ void CraftingSessionImplementation::finishStage2(int clientCounter) {
 	crafter->sendMessage(objMsg);
 }
 
-void CraftingSessionImplementation::createPrototype(int clientCounter, bool practice) {
+void CraftingSessionImplementation::createPrototype(int clientCounter, bool createItem) {
 	ManagedReference<CraftingTool*> craftingTool = this->craftingTool.get();
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
 	ManagedReference<ManufactureSchematic*> manufactureSchematic = this->manufactureSchematic.get();
 
 	if (manufactureSchematic == NULL) {
-		sendSlotMessage(0, IngredientSlot::NOSCHEMATIC);
+		sendSlotMessage(clientCounter, IngredientSlot::NOSCHEMATIC);
 		return;
 	}
 
 	if (prototype == NULL) {
-		sendSlotMessage(0, IngredientSlot::PROTOTYPENOTFOUND);
+		sendSlotMessage(clientCounter, IngredientSlot::PROTOTYPENOTFOUND);
 		return;
 	}
 
@@ -1152,7 +1152,7 @@ void CraftingSessionImplementation::createPrototype(int clientCounter, bool prac
 		String xpType = manufactureSchematic->getDraftSchematic()->getXpType();
 		int xp = manufactureSchematic->getDraftSchematic()->getXpAmount();
 
-		if (!practice) {
+		if (createItem) {
 
 			startCreationTasks(manufactureSchematic->getComplexity() * 2, false);
 
@@ -1174,6 +1174,8 @@ void CraftingSessionImplementation::createPrototype(int clientCounter, bool prac
 
 		sendSlotMessage(clientCounter, IngredientSlot::WEIRDFAILEDMESSAGE);
 	}
+
+	cancelSession();
 }
 
 
@@ -1267,4 +1269,5 @@ void CraftingSessionImplementation::createManufactureSchematic(int clientCounter
 		sendSlotMessage(clientCounter, IngredientSlot::WEIRDFAILEDMESSAGE);
 	}
 
+	cancelSession();
 }

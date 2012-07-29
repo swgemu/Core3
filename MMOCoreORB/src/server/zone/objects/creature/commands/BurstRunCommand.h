@@ -118,8 +118,7 @@ public:
 		creature->updateCooldownTimer("burstrun", (300 + duration) * 1000);
 
 		Reference<BurstRunNotifyAvailableEvent*> task = new BurstRunNotifyAvailableEvent(creature);
-		task->schedule((300 + duration) * 1000);
-
+		creature->addPendingTask("burst_run_notify", task, (300 + duration) * 1000);
 
 		return SUCCESS;
 	}

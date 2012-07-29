@@ -577,6 +577,8 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("CRAFTINGASSEMBLY", ObserverEventType::CRAFTINGASSEMBLY);
 	luaTemplatesInstance->setGlobalInt("CRAFTINGEXPERIMENTATION", ObserverEventType::CRAFTINGEXPERIMENTATION);
 	luaTemplatesInstance->setGlobalInt("HEALINGPERFORMED", ObserverEventType::HEALINGPERFORMED);
+	luaTemplatesInstance->setGlobalInt("ENHANCINGPERFORMED", ObserverEventType::ENHANCINGPERFORMED);
+	luaTemplatesInstance->setGlobalInt("WOUNDHEALINGPERFORMED", ObserverEventType::WOUNDHEALINGPERFORMED);
 	luaTemplatesInstance->setGlobalInt("XPAWARDED", ObserverEventType::XPAWARDED);
 	luaTemplatesInstance->setGlobalInt("SPICEDOWNERACTIVATED", ObserverEventType::SPICEDOWNERACTIVATED);
 
