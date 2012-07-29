@@ -60,7 +60,14 @@ public:
 			return;
 
 		MissionObject* missionObject = cast<MissionObject*>( mission.get());
+
+		if (missionObject == NULL)
+			return;
+
 		MissionTerminal* missionTerminal = cast<MissionTerminal*>( terminal.get());
+
+		if (missionTerminal == NULL)
+			return;
 
 		MissionManager* manager = server->getZoneServer()->getMissionManager();
 		manager->handleMissionAccept(missionTerminal, missionObject, player);
