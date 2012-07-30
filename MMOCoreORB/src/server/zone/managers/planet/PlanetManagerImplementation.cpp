@@ -40,6 +40,7 @@
 #include "PlanetTravelPoint.h"
 
 ClientPoiDataTable PlanetManagerImplementation::clientPoiDataTable;
+Mutex PlanetManagerImplementation::poiMutex;
 
 void PlanetManagerImplementation::initialize() {
 	performanceLocations = new MissionTargetMap();
@@ -419,6 +420,9 @@ void PlanetManagerImplementation::loadStaticTangibleObjects() {
 }
 
 void PlanetManagerImplementation::loadClientPoiData() {
+
+	Locker locker(&poiMutex);
+
 	if (clientPoiDataTable.size() != 0)
 		return;
 

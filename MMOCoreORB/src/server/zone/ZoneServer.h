@@ -390,6 +390,8 @@ public:
 
 	void initialize();
 
+	void finishInitialization();
+
 	void shutdown();
 
 	void startManagers();
@@ -626,6 +628,8 @@ private:
 public:
 	void initialize();
 
+	void finishInitialization();
+
 	void shutdown();
 
 	void startManagers();
@@ -796,6 +800,8 @@ public:
 	void initializeTransientMembers();
 
 	void initialize();
+
+	void finishInitialization();
 
 	void shutdown();
 

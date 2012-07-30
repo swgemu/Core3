@@ -37,6 +37,7 @@
 #include "LairObserver.h"
 #include "server/zone/packets/object/SpatialChat.h"
 
+Mutex CreatureManagerImplementation::loadMutex;
 
 void CreatureManagerImplementation::setCreatureTemplateManager() {
 	creatureTemplateManager = CreatureTemplateManager::instance();
@@ -360,6 +361,9 @@ void CreatureManagerImplementation::loadSpawnAreas() {
 }
 
 void CreatureManagerImplementation::loadAiTemplates() {
+
+	Locker locker(&loadMutex);
+
 	info("loading ai templates...", true);
 	aiMap = AiMap::instance();
 	aiMap->initialize();

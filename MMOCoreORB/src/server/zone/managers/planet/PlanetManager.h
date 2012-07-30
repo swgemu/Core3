@@ -185,6 +185,8 @@ using namespace server::zone::objects::area;
 
 #include "system/util/Vector.h"
 
+#include "system/thread/Mutex.h"
+
 namespace server {
 namespace zone {
 namespace managers {
@@ -327,6 +329,8 @@ protected:
 	static ClientPoiDataTable clientPoiDataTable;
 
 	Vector<ManagedReference<SceneObject* > > shuttlesToLoad;
+
+	static Mutex poiMutex;
 
 public:
 	PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv);

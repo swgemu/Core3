@@ -196,6 +196,18 @@ void ServerCore::initialize() {
 			zoneServer->start(zonePort, zoneAllowedConnections);
 		}
 
+	} catch (ServiceException& e) {
+		shutdown();
+	} catch (DatabaseException& e) {
+		info(e.getMessage());
+
+		exit(1);
+	}
+}
+
+void ServerCore::finishInitialize() {
+	try {
+
 		if (statusServer != NULL) {
 			int statusPort = configManager->getStatusPort();
 			int statusAllowedConnections =

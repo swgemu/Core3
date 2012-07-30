@@ -13,10 +13,12 @@
 #include "Zone.h"
 
 class ZoneLoadManagersTask : public Task {
+	ManagedReference<ZoneServer*> zoneServer;
 	ManagedReference<Zone*> zone;
 public:
-	ZoneLoadManagersTask(Zone* zone) {
+	ZoneLoadManagersTask(ZoneServer* server, Zone* zone) {
 		this->zone = zone;
+		zoneServer = server;
 	}
 
 	void run() {
@@ -27,6 +29,7 @@ public:
 			return;
 
 		zone->startManagers();
+		zoneServer->finishInitialization();
 	}
 };
 

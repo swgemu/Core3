@@ -217,6 +217,20 @@ void ZoneServerImplementation::initialize() {
 	missionManager->deploy("MissionManager");
 
 	startZones();
+}
+
+void ZoneServerImplementation::finishInitialization() {
+
+	Locker locker(_this.get());
+
+	for (int i = 0; i < zones->size(); ++i) {
+		Zone* zone = zones->get(i);
+
+		if (zone != NULL) {
+			if(!zone->hasManagersStarted())
+				return;
+		}
+	}
 
 	startManagers();
 
@@ -225,7 +239,7 @@ void ZoneServerImplementation::initialize() {
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
-	return;
+	ServerCore::getInstance()->finishInitialize();
 }
 
 void ZoneServerImplementation::startZones() {
@@ -250,9 +264,10 @@ void ZoneServerImplementation::startZones() {
 
 	for (int i = 0; i < zones->size(); ++i) {
 		Zone* zone = zones->get(i);
-
-		if (zone != NULL)
-			zone->startManagers();
+		if (zone != NULL) {
+			ZoneLoadManagersTask* task = new ZoneLoadManagersTask(_this.get(), zone);
+			task->schedule(0);
+		}
 	}
 }
 

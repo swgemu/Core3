@@ -165,6 +165,8 @@ class ZoneServer extends ManagedService implements Logger {
 	
 	public native void initialize();
 
+	public native void finishInitialization();
+	
 	public native void shutdown();
 
 	public native void startManagers();
