@@ -165,8 +165,11 @@ void DeliverMissionObjectiveImplementation::despawnNpcs() {
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 	MissionManager* missionManager = zoneServer->getMissionManager();
 
-	missionManager->freeMissionNpc(targetSpawnPoint);
-	missionManager->freeMissionNpc(destinationSpawnPoint);
+	if (targetSpawnPoint != NULL)
+		missionManager->freeMissionNpc(targetSpawnPoint);
+
+	if (destinationSpawnPoint != NULL)
+		missionManager->freeMissionNpc(destinationSpawnPoint);
 }
 
 void DeliverMissionObjectiveImplementation::updateMissionStatus(CreatureObject* player) {
