@@ -5121,8 +5121,8 @@ void CreatureObjectImplementation::updateLastSuccessfulCombatAction() {
 }
 
 void CreatureObjectImplementation::updateKnockdownRecovery() {
-	// server/zone/objects/creature/CreatureObject.idl():  		cooldownTimerMap.updateToCurrentAndAddMili("knockdownRecovery", 30000);
-	cooldownTimerMap->updateToCurrentAndAddMili("knockdownRecovery", 30000);
+	// server/zone/objects/creature/CreatureObject.idl():  		cooldownTimerMap.updateToCurrentAndAddMili("knockdownRecovery", 5000);
+	cooldownTimerMap->updateToCurrentAndAddMili("knockdownRecovery", 5000);
 }
 
 void CreatureObjectImplementation::updateLastKnockdown() {

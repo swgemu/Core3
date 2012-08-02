@@ -1107,7 +1107,7 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	public void updateKnockdownRecovery() {
-		cooldownTimerMap.updateToCurrentAndAddMili("knockdownRecovery", 30000);
+		cooldownTimerMap.updateToCurrentAndAddMili("knockdownRecovery", 5000);
 	}
 
 	// misc methods
