@@ -1712,11 +1712,8 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 		if (structure != NULL) {
 			Zone* zone = structure->getZone();
 
-			if (zone != NULL) {
-				StructureManager* man = zone->getStructureManager();
-
-				man->destroyStructure(structure);
-			}
+			if (zone != NULL)
+				StructureManager::instance()->destroyStructure(structure);
 
 			structure->destroyObjectFromDatabase(true);
 		}

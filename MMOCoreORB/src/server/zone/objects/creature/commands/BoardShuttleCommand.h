@@ -49,8 +49,10 @@ which carries forward this exception.
 #ifndef BOARDSHUTTLECOMMAND_H_
 #define BOARDSHUTTLECOMMAND_H_
 
+#include "QueueCommand.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/callbacks/TicketSelectionSuiCallback.h"

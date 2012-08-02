@@ -224,13 +224,7 @@ bool CampSiteActiveAreaImplementation::despawnCamp() {
 		if(camp->getZone() == NULL)
 			return false;
 
-		ManagedReference<StructureManager*> structureManager = camp->getZone()->getStructureManager();
-		if (structureManager == NULL) {
-			error("Unable to get StructureManager when placing camp");
-			return false;
-		}
-
-		structureManager->destroyStructure(camp);
+		StructureManager::instance()->destroyStructure(camp);
 	}
 
 	destroyObjectFromWorld(true);

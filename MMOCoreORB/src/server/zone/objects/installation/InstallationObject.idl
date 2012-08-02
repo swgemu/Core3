@@ -51,9 +51,7 @@ import system.util.SortedVector;
 import system.util.VectorMap;
 import engine.lua.LuaObject;
 import engine.service.proto.BasePacket;
-
 import server.zone.objects.structure.StructureObject;
-import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.packets.object.ObjectMenuResponse;
 import server.zone.packets.scene.AttributeListMessage;
@@ -63,12 +61,12 @@ import server.zone.objects.installation.SyncrhonizedUiListenInstallationTask;
 import server.zone.objects.resource.ResourceSpawn;
 import server.zone.objects.resource.ResourceContainer;
 import server.zone.objects.area.ActiveArea;
-include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
-include server.zone.objects.installation.HopperList;
 import system.lang.Time;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.tangible.TangibleObject;
-import server.zone.objects.tangible.TangibleObject;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.objects.installation.HopperList;
+
 class InstallationObject extends StructureObject {
 	protected transient SyncrhonizedUiListenInstallationTask syncUiTask;
 

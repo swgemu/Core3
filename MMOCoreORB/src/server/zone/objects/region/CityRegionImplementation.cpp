@@ -7,26 +7,25 @@
 
 #include "CityRegion.h"
 #include "events/CityUpdateEvent.h"
-#include "server/zone/Zone.h"
-#include "server/zone/objects/area/ActiveArea.h"
 #include "server/chat/StringIdChatParameter.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/structure/StructureObject.h"
-#include "server/zone/objects/region/Region.h"
-#include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/ServerCore.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/creature/commands/BoardShuttleCommand.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/region/Region.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
-#include "server/zone/objects/creature/commands/QueueCommand.h"
-#include "server/zone/objects/creature/commands/BoardShuttleCommand.h"
-#include "server/zone/objects/creature/commands/QueueCommand.h"
-#include "server/zone/objects/creature/commands/BoardShuttleCommand.h"
+#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
+#include "server/zone/Zone.h"
 
 int BoardShuttleCommand::MAXIMUM_PLAYER_COUNT = 3000;
 
@@ -396,7 +395,7 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
 	if (zone == NULL)
 		return;
 
-	StructureManager* structureManager = zone->getStructureManager();
+	StructureManager* structureManager = StructureManager::instance();
 
 	for (int i = structures.size(); i >= 0; --i) {
 		ManagedReference<StructureObject*> structure = structures.get(i);

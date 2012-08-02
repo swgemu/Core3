@@ -13,6 +13,16 @@
 
 namespace server {
 namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace structure {
 namespace events {
@@ -40,20 +50,6 @@ class SceneObject;
 } // namespace server
 
 using namespace server::zone::objects::scene;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace creature {
-
-class CreatureObject;
-
-} // namespace creature
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {

@@ -6,15 +6,15 @@
  */
 
 #include "DestroyStructureSession.h"
-#include "server/zone/Zone.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sui/callbacks/DestroyStructureCodeSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/DestroyStructureRequestSuiCallback.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sui/callbacks/DestroyStructureRequestSuiCallback.h"
-#include "server/zone/objects/player/sui/callbacks/DestroyStructureCodeSuiCallback.h"
 #include "server/zone/objects/structure/StructureObject.h"
+#include "server/zone/Zone.h"
 
 int DestroyStructureSessionImplementation::initializeSession() {
 	//TODO: Temporary until CreatureObject* dependency removed.
@@ -105,8 +105,7 @@ int DestroyStructureSessionImplementation::destroyStructure() {
 	if (structureObject == NULL || structureObject->getZone() == NULL)
 		return cancelSession();
 
-	StructureManager* structureManager = structureObject->getZone()->getStructureManager();
-	structureManager->redeedStructure(creatureObject);
+	StructureManager::instance()->redeedStructure(creatureObject);
 
 	return 0;
 }

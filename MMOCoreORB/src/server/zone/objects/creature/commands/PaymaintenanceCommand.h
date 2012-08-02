@@ -82,7 +82,7 @@ public:
 		if (zone == NULL)
 			return INVALIDPARAMETERS;
 
-		StructureManager* structureManager = zone->getStructureManager();
+		StructureManager* structureManager = StructureManager::instance();
 
 		try {
 			UnicodeTokenizer tokenizer(arguments);

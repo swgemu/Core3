@@ -709,6 +709,7 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 }
 
 void CityManagerImplementation::destroyCity(CityRegion* city) {
+	//TODO: Review this.
 	Locker locker(_this.get());
 
 	ManagedReference<SceneObject*> obj = zoneServer->getObject(city->getMayorID());
@@ -742,7 +743,7 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 			cityhall->getZone();
 
 		if (zone != NULL) {
-			zone->getStructureManager()->destroyStructure(cityhall);
+			StructureManager::instance()->destroyStructure(cityhall);
 		}
 	}
 

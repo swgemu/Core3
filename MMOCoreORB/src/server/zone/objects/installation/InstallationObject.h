@@ -27,20 +27,6 @@ using namespace server::zone::objects::creature;
 
 namespace server {
 namespace zone {
-namespace objects {
-namespace creature {
-
-class CreatureObject;
-
-} // namespace creature
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::creature;
-
-namespace server {
-namespace zone {
 namespace packets {
 namespace object {
 
@@ -162,20 +148,6 @@ class SceneObject;
 } // namespace server
 
 using namespace server::zone::objects::scene;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace tangible {
-
-class TangibleObject;
-
-} // namespace tangible
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::tangible;
 
 namespace server {
 namespace zone {

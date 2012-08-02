@@ -73,20 +73,6 @@ using namespace server::zone::managers::planet;
 
 namespace server {
 namespace zone {
-namespace managers {
-namespace structure {
-
-class StructureManager;
-
-} // namespace structure
-} // namespace managers
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::managers::structure;
-
-namespace server {
-namespace zone {
 
 class Zone;
 

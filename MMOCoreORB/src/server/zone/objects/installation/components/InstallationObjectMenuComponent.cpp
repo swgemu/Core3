@@ -54,10 +54,7 @@ int InstallationObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneOb
 	if (!installation->isOnAdminList(player))
 		return 1;
 
-	ManagedReference<StructureManager*> structureManager = zone->getStructureManager();
-
-	if (structureManager == NULL)
-		return 1;
+	StructureManager* structureManager = StructureManager::instance();
 
 	switch (selectedID) {
 	case 124:

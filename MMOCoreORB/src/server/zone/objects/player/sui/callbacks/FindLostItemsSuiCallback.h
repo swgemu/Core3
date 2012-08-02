@@ -31,8 +31,7 @@ public:
 		if (building->getZone() == NULL)
 			return;
 
-		ManagedReference<StructureManager*> structureManager = building->getZone()->getStructureManager();
-		structureManager->moveFirstItemTo(creature, building);
+		StructureManager::instance()->moveFirstItemTo(creature, building);
 	}
 };
 

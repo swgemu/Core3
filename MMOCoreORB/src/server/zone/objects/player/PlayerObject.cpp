@@ -4,37 +4,35 @@
 
 #include "PlayerObject.h"
 
-#include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/chat/room/ChatRoom.h"
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
-#include "server/zone/objects/structure/StructureObject.h"
-
-#include "server/zone/ZoneClientSession.h"
-
-#include "server/zone/objects/waypoint/WaypointObject.h"
-
-#include "server/zone/Zone.h"
-
-#include "server/zone/templates/SharedObjectTemplate.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
-
-#include "server/chat/room/ChatRoom.h"
-
 #include "server/zone/objects/building/BuildingObject.h"
 
-#include "server/zone/objects/tangible/tool/SurveyTool.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
 
-#include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/player/events/PlayerDisconnectEvent.h"
 
 #include "server/zone/objects/player/events/PlayerRecoveryEvent.h"
+
+#include "server/zone/objects/scene/SceneObject.h"
+
+#include "server/zone/objects/structure/StructureObject.h"
+
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
+
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
+#include "server/zone/templates/SharedObjectTemplate.h"
+
+#include "server/zone/Zone.h"
+
+#include "server/zone/ZoneClientSession.h"
 
 /*
  *	PlayerObjectStub

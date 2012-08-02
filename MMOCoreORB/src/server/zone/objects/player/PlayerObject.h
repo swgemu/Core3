@@ -12,32 +12,44 @@
 #include "engine/core/ManagedWeakReference.h"
 
 namespace server {
+namespace chat {
+namespace room {
+
+class ChatRoom;
+
+} // namespace room
+} // namespace chat
+} // namespace server
+
+using namespace server::chat::room;
+
+namespace server {
 namespace zone {
-namespace objects {
-namespace scene {
+namespace managers {
+namespace objectcontroller {
 
-class SceneObject;
+class ObjectController;
 
-} // namespace scene
-} // namespace objects
+} // namespace objectcontroller
+} // namespace managers
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::scene;
+using namespace server::zone::managers::objectcontroller;
 
 namespace server {
 namespace zone {
 namespace objects {
-namespace creature {
+namespace building {
 
-class CreatureObject;
+class BuildingObject;
 
-} // namespace creature
+} // namespace building
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::creature;
+using namespace server::zone::objects::building;
 
 namespace server {
 namespace zone {
@@ -57,80 +69,6 @@ using namespace server::zone::objects::creature::commands;
 
 namespace server {
 namespace zone {
-namespace managers {
-namespace objectcontroller {
-
-class ObjectController;
-
-} // namespace objectcontroller
-} // namespace managers
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::managers::objectcontroller;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace structure {
-
-class StructureObject;
-
-} // namespace structure
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::structure;
-
-namespace server {
-namespace zone {
-
-class ZoneClientSession;
-
-} // namespace zone
-} // namespace server
-
-using namespace server::zone;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace waypoint {
-
-class WaypointObject;
-
-} // namespace waypoint
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::waypoint;
-
-namespace server {
-namespace zone {
-
-class Zone;
-
-} // namespace zone
-} // namespace server
-
-using namespace server::zone;
-
-namespace server {
-namespace zone {
-namespace templates {
-
-class SharedObjectTemplate;
-
-} // namespace templates
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::templates;
-
-namespace server {
-namespace zone {
 namespace objects {
 namespace creature {
 
@@ -142,64 +80,6 @@ class CreatureObject;
 } // namespace server
 
 using namespace server::zone::objects::creature;
-
-namespace server {
-namespace chat {
-namespace room {
-
-class ChatRoom;
-
-} // namespace room
-} // namespace chat
-} // namespace server
-
-using namespace server::chat::room;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace building {
-
-class BuildingObject;
-
-} // namespace building
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::building;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace tangible {
-namespace tool {
-
-class SurveyTool;
-
-} // namespace tool
-} // namespace tangible
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::tangible::tool;
-
-namespace server {
-namespace zone {
-namespace objects {
-namespace tangible {
-namespace tool {
-
-class CraftingTool;
-
-} // namespace tool
-} // namespace tangible
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::tangible::tool;
 
 namespace server {
 namespace zone {
@@ -233,19 +113,131 @@ class PlayerRecoveryEvent;
 
 using namespace server::zone::objects::player::events;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+
+class SceneObject;
+
+} // namespace scene
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace structure {
+
+class StructureObject;
+
+} // namespace structure
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::structure;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace tool {
+
+class CraftingTool;
+
+} // namespace tool
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::tool;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace tool {
+
+class SurveyTool;
+
+} // namespace tool
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::tool;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace waypoint {
+
+class WaypointObject;
+
+} // namespace waypoint
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::waypoint;
+
+namespace server {
+namespace zone {
+namespace templates {
+
+class SharedObjectTemplate;
+
+} // namespace templates
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::templates;
+
+namespace server {
+namespace zone {
+
+class Zone;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
+namespace server {
+namespace zone {
+
+class ZoneClientSession;
+
+} // namespace zone
+} // namespace server
+
+using namespace server::zone;
+
+#include "server/zone/objects/creature/variables/Skill.h"
+
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
+
+#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+
+#include "server/zone/objects/player/badges/Badges.h"
+
 #include "server/zone/objects/player/events/BountyHunterTefRemovalTaskMap.h"
 
 #include "server/zone/objects/player/sui/SuiBox.h"
 
 #include "server/zone/objects/player/ValidatedPosition.h"
 
-#include "server/zone/objects/player/variables/WaypointList.h"
-
-#include "server/zone/objects/creature/variables/Skill.h"
-
 #include "server/zone/objects/player/variables/Ability.h"
 
 #include "server/zone/objects/player/variables/AbilityList.h"
+
+#include "server/zone/objects/player/variables/FactionStandingList.h"
 
 #include "server/zone/objects/player/variables/FriendList.h"
 
@@ -253,37 +245,27 @@ using namespace server::zone::objects::player::events;
 
 #include "server/zone/objects/player/variables/SchematicList.h"
 
-#include "server/zone/objects/player/variables/FactionStandingList.h"
-
-#include "server/zone/objects/player/badges/Badges.h"
-
-#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
+#include "server/zone/objects/player/variables/WaypointList.h"
 
 #include "server/zone/objects/scene/variables/DeltaVector.h"
 
-#include "server/zone/objects/draftschematic/DraftSchematic.h"
-
-#include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/objects/scene/variables/DeltaVectorMap.h"
 
 #include "engine/lua/LuaObject.h"
 
+#include "engine/service/proto/BaseMessage.h"
+
+#include "engine/service/proto/BasePacket.h"
+
+#include "engine/util/u3d/Vector3.h"
+
 #include "server/zone/objects/intangible/IntangibleObject.h"
+
+#include "system/util/SortedVector.h"
 
 #include "system/util/Vector.h"
 
 #include "system/util/VectorMap.h"
-
-#include "engine/service/proto/BasePacket.h"
-
-#include "engine/service/proto/BaseMessage.h"
-
-#include "system/util/SortedVector.h"
-
-#include "system/util/Vector.h"
-
-#include "system/util/SortedVector.h"
-
-#include "engine/util/u3d/Vector3.h"
 
 namespace server {
 namespace zone {

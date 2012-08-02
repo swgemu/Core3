@@ -46,7 +46,6 @@ which carries forward this exception.
 
 #include "ZoneProcessServer.h"
 #include "objects/scene/SceneObject.h"
-#include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
@@ -85,7 +84,6 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& na
 	//galacticTime = new Time();
 
 	planetManager = NULL;
-	structureManager = NULL;
 
 	setLoggingName("Zone " + name);
 }
@@ -96,8 +94,6 @@ void ZoneImplementation::createContainerComponent() {
 
 void ZoneImplementation::initializePrivateData() {
 	planetManager = new PlanetManager(_this.get(), processor);
-
-	structureManager = new StructureManager(_this.get(), processor);
 
 	creatureManager = new CreatureManager(_this.get());
 	creatureManager->deploy("CreatureManager " + zoneName);
@@ -125,8 +121,6 @@ void ZoneImplementation::initializeTransientMembers() {
 
 void ZoneImplementation::startManagers() {
 	planetManager->initialize();
-
-	structureManager->initialize();
 
 	creatureManager->initialize();
 

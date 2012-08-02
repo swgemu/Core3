@@ -18,10 +18,8 @@
 int PlaceStructureComponent::placeStructure(StructureDeed* deed, CreatureObject* creature, float x, float y, int angle) {
 	Zone* zone = creature->getZone();
 
-	if (zone != NULL) {
-		StructureManager* structureManager = zone->getStructureManager();
-		structureManager->placeStructureFromDeed(creature, deed, x, y, angle);
-	}
+	if (zone != NULL)
+		StructureManager::instance()->placeStructureFromDeed(creature, deed, x, y, angle);
 
 	return 0;
 }

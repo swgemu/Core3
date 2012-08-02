@@ -140,14 +140,7 @@ void CampTerminalMenuComponent::disbandCamp(SceneObject* sceneObject,
 	if(campArea != NULL && campArea->despawnCamp())
 		return;
 
-	// For some reason if the area is gone, clean up camp anyways
-	ManagedReference<StructureManager*> structureManager = camp->getZone()->getStructureManager();
-	if (structureManager == NULL) {
-		error("Unable to get StructureManager when placing camp");
-		return;
-	}
-
-	structureManager->destroyStructure(camp);
+	StructureManager::instance()->destroyStructure(camp);
 	campArea->destroyObjectFromWorld(true);
 	campArea->destroyObjectFromDatabase(true);
 }

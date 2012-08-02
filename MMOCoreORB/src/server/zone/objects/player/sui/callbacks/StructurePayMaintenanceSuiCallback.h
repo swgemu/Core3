@@ -44,7 +44,7 @@ public:
 		//Creature is already locked (done in handleSuiEventNotification in SuiManager).
 		Locker _lock(structure, creature);
 
-		zone->getStructureManager()->payMaintenance(structure, creature, amount);
+		StructureManager::instance()->payMaintenance(structure, creature, amount);
 	}
 };
 

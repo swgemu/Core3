@@ -614,20 +614,14 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 		i = 1;
 		ejectObject(player);
 
+		//TODO: Redo this.
 		if (isCondemned()) {
 			//Handle condemned messages.
 			//CreatureObject* owner = getOwnerCreatureObject();
 			uint64 ownerOid = getOwnerObjectID();
 
 			if (ownerOid == player->getObjectID()) {
-				//Owner trying to enter building.
-				ManagedReference<Zone* >zone = getZone();
-				if (zone != NULL) {
-					ManagedReference<StructureManager*> structureManager = zone->getStructureManager();
-					if (structureManager != NULL) {
-						structureManager->promptPayUncondemnMaintenance(player, _this.get());
-					}
-				}
+					StructureManager::instance()->promptPayUncondemnMaintenance(player, _this.get());
 			} else {
 				//Other player than the owner trying to enter the building.
 				StringIdChatParameter message("@player_structure:structure_condemned_not_owner");

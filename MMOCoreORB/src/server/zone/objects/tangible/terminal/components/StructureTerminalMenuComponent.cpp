@@ -94,10 +94,7 @@ int StructureTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 
 	if (structureObject->isOnAdminList(creature)) {
 
-		ManagedReference<StructureManager*> structureManager = zone->getStructureManager();
-
-		if (structureManager == NULL)
-			return 1;
+		StructureManager* structureManager = StructureManager::instance();
 
 		Locker structureLocker(structureObject, creature);
 

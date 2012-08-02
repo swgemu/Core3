@@ -53,20 +53,6 @@ class StructureObject;
 
 using namespace server::zone::objects::structure;
 
-namespace server {
-namespace zone {
-namespace managers {
-namespace structure {
-
-class StructureManager;
-
-} // namespace structure
-} // namespace managers
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::managers::structure;
-
 #include "server/zone/objects/scene/SessionFacadeType.h"
 
 #include "engine/util/Facade.h"

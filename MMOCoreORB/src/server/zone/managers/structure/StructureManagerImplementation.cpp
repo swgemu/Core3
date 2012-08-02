@@ -1,76 +1,15 @@
 /*
- * StructureManagerImplementation.cpp
+ * StructureManager.cpp
  *
- *  Created on: 23/07/2009
- *      Author: TheAnswer
+ *  Created on: 01/08/2012
+ *      Author: swgemu
  */
-
-#include "engine/engine.h"
-
-#include "server/db/ServerDatabase.h"
-
-#include "server/zone/ZoneServer.h"
-#include "server/zone/ZoneProcessServer.h"
-#include "server/zone/Zone.h"
-
-#include "server/zone/managers/templates/TemplateManager.h"
-#include "server/zone/managers/city/CityManager.h"
-#include "server/zone/managers/object/ObjectManager.h"
-#include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/managers/stringid/StringIdManager.h"
-#include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/objects/installation/InstallationObject.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/chat/StringIdChatParameter.h"
-#include "server/zone/objects/cell/CellObject.h"
-#include "server/zone/objects/region/Region.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
-#include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
-#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
-
-#include "server/zone/objects/tangible/Container.h"
-#include "server/zone/objects/tangible/terminal/gambling/GamblingTerminal.h"
-#include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
-
-#include "server/zone/managers/objectcontroller/ObjectController.h"
-#include "server/chat/ChatManager.h"
-
-#include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
-#include "server/zone/objects/tangible/sign/SignObject.h"
-#include "server/zone/objects/tangible/tool/CraftingStation.h"
-
-#include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
-
-#include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
-
-#include "tasks/StructureConstructionCompleteTask.h"
 
 #include "StructureManager.h"
 
-#include "server/zone/objects/structure/StructureObject.h"
-#include "server/zone/managers/minigames/events/GamblingEvent.h"
-
-#include "server/zone/templates/footprint/StructureFootprint.h"
-#include "server/zone/objects/region/CityRegion.h"
-
-#include "server/zone/objects/player/sessions/PlaceStructureSession.h"
-#include "server/zone/objects/player/sessions/DestroyStructureSession.h"
-#include "server/zone/objects/player/sui/callbacks/DeleteAllItemsSuiCallback.h"
-#include "server/zone/objects/player/sui/callbacks/FindLostItemsSuiCallback.h"
-#include "server/zone/objects/player/sui/callbacks/StructureStatusSuiCallback.h"
-#include "server/zone/objects/player/sui/callbacks/NameStructureSuiCallback.h"
-#include "server/zone/objects/player/sui/callbacks/StructurePayMaintenanceSuiCallback.h"
-#include "server/zone/objects/player/sui/callbacks/StructurePayUncondemnMaintenanceSuiCallback.h"
-#include "server/zone/managers/planet/PlanetTravelPoint.h"
-#include "server/conf/ConfigManager.h"
-
-void StructureManagerImplementation::loadPlayerStructures() {
-
+void StructureManager::loadPlayerStructures() {
 	StringBuffer msg;
-	msg << "StructureManagerImplementation::loadPlayerStructures()";
+	msg << "StructureManager::loadPlayerStructures()";
 	info(msg.toString());
 
 	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
@@ -130,7 +69,7 @@ void StructureManagerImplementation::loadPlayerStructures() {
 	info(String::valueOf(i) + " player structures loaded.", true);
 }
 
-int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creature, StructureDeed* deed, float x, float y, int angle) {
+int StructureManager::placeStructureFromDeed(CreatureObject* creature, StructureDeed* deed, float x, float y, int angle) {
 	//Already placing a structure?
 	if (creature->containsActiveSession(SessionFacadeType::PLACESTRUCTURE))
 		return 1;
@@ -243,7 +182,7 @@ int StructureManagerImplementation::placeStructureFromDeed(CreatureObject* creat
 	return 0;
 }
 
-StructureObject* StructureManagerImplementation::placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle) {
+StructureObject* StructureManager::placeStructure(CreatureObject* creature, const String& structureTemplatePath, float x, float y, int angle) {
 	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
 	SharedStructureObjectTemplate* serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(structureTemplatePath.hashCode()));
 
@@ -308,7 +247,7 @@ StructureObject* StructureManagerImplementation::placeStructure(CreatureObject* 
 	return structureObject;
 }
 
-int StructureManagerImplementation::destroyStructure(StructureObject* structureObject) {
+int StructureManager::destroyStructure(StructureObject* structureObject) {
 	float x = structureObject->getPositionX();
 	float y = structureObject->getPositionY();
 	float z = zone->getHeight(x, y);
@@ -355,7 +294,7 @@ int StructureManagerImplementation::destroyStructure(StructureObject* structureO
 	return 0;
 }
 
-String StructureManagerImplementation::getTimeString(uint32 timestamp) {
+String StructureManager::getTimeString(uint32 timestamp) {
 	String abbrvs[4] = {"seconds", "minutes", "hours", "days"};
 
 	int intervals[4] = {1, 60, 3600, 86400};
@@ -378,7 +317,7 @@ String StructureManagerImplementation::getTimeString(uint32 timestamp) {
 	return str.toString();
 }
 
-int StructureManagerImplementation::declareResidence(CreatureObject* player, StructureObject* structureObject) {
+int StructureManager::declareResidence(CreatureObject* player, StructureObject* structureObject) {
 	if (!structureObject->isBuildingObject()) {
 		player->sendSystemMessage("@player_structure:residence_must_be_building"); //Your declared residence must be a building.
 		return 1;
@@ -451,7 +390,7 @@ int StructureManagerImplementation::declareResidence(CreatureObject* player, Str
 	return 0;
 }
 
-SceneObject* StructureManagerImplementation::getInRangeParkingGarage(SceneObject* obj, int range) {
+SceneObject* StructureManager::getInRangeParkingGarage(SceneObject* obj, int range) {
 	if (obj->getZone() != zone)
 		return NULL;
 
@@ -474,7 +413,7 @@ SceneObject* StructureManagerImplementation::getInRangeParkingGarage(SceneObject
 	return NULL;
 }
 
-int StructureManagerImplementation::redeedStructure(CreatureObject* creature) {
+int StructureManager::redeedStructure(CreatureObject* creature) {
 	ManagedReference<DestroyStructureSession*> session = dynamic_cast<DestroyStructureSession*>(creature->getActiveSession(SessionFacadeType::DESTROYSTRUCTURE));
 
 	if (session == NULL)
@@ -520,7 +459,7 @@ int StructureManagerImplementation::redeedStructure(CreatureObject* creature) {
 	return session->cancelSession();
 }
 
-void StructureManagerImplementation::promptDeleteAllItems(CreatureObject* creature, StructureObject* structure) {
+void StructureManager::promptDeleteAllItems(CreatureObject* creature, StructureObject* structure) {
 	ManagedReference<SuiMessageBox*> sui = new SuiMessageBox(creature, 0x00);
 	sui->setUsingObject(structure);
 	sui->setPromptTitle("@player_structure:delete_all_items"); //Delete All Items
@@ -536,7 +475,7 @@ void StructureManagerImplementation::promptDeleteAllItems(CreatureObject* creatu
 	}
 }
 
-void StructureManagerImplementation::promptFindLostItems(CreatureObject* creature, StructureObject* structure) {
+void StructureManager::promptFindLostItems(CreatureObject* creature, StructureObject* structure) {
 	ManagedReference<SuiMessageBox*> sui = new SuiMessageBox(creature, 0x00);
 	sui->setUsingObject(structure);
 	sui->setPromptTitle("@player_structure:move_first_item"); //Find Lost Items
@@ -551,7 +490,7 @@ void StructureManagerImplementation::promptFindLostItems(CreatureObject* creatur
 	}
 }
 
-void StructureManagerImplementation::moveFirstItemTo(CreatureObject* creature, StructureObject* structure) {
+void StructureManager::moveFirstItemTo(CreatureObject* creature, StructureObject* structure) {
 	if (!structure->isBuildingObject())
 		return;
 
@@ -581,7 +520,7 @@ void StructureManagerImplementation::moveFirstItemTo(CreatureObject* creature, S
 	}
 }
 
-void StructureManagerImplementation::reportStructureStatus(CreatureObject* creature, StructureObject* structure) {
+void StructureManager::reportStructureStatus(CreatureObject* creature, StructureObject* structure) {
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 	if (ghost == NULL)
@@ -640,7 +579,7 @@ void StructureManagerImplementation::reportStructureStatus(CreatureObject* creat
 	creature->sendMessage(status->generateMessage());
 }
 
-void StructureManagerImplementation::promptNameStructure(CreatureObject* creature, StructureObject* structure, TangibleObject* object) {
+void StructureManager::promptNameStructure(CreatureObject* creature, StructureObject* structure, TangibleObject* object) {
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 	if (ghost == NULL)
@@ -662,7 +601,7 @@ void StructureManagerImplementation::promptNameStructure(CreatureObject* creatur
 	creature->sendMessage(inputBox->generateMessage());
 }
 
-void StructureManagerImplementation::promptPayUncondemnMaintenance(CreatureObject* creature, StructureObject* structure) {
+void StructureManager::promptPayUncondemnMaintenance(CreatureObject* creature, StructureObject* structure) {
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 	if (ghost == NULL) {
@@ -714,7 +653,7 @@ void StructureManagerImplementation::promptPayUncondemnMaintenance(CreatureObjec
 	creature->sendMessage(sui->generateMessage());
 }
 
-void StructureManagerImplementation::promptPayMaintenance(StructureObject* structure, CreatureObject* creature, SceneObject* terminal) {
+void StructureManager::promptPayMaintenance(StructureObject* structure, CreatureObject* creature, SceneObject* terminal) {
 	int availableCredits = creature->getCashCredits();
 
 	if (availableCredits <= 0) {
@@ -744,7 +683,7 @@ void StructureManagerImplementation::promptPayMaintenance(StructureObject* struc
 	creature->sendMessage(sui->generateMessage());
 }
 
-void StructureManagerImplementation::payMaintenance(StructureObject* structure, CreatureObject* creature, int amount) {
+void StructureManager::payMaintenance(StructureObject* structure, CreatureObject* creature, int amount) {
 	if (!creature->isInRange(structure, 16.f) && creature->getRootParent() != structure) {
 		creature->sendSystemMessage("@player_structure:pay_out_of_range"); //You have moved out of range of your original /payMaintenance target. Aborting...
 		return;

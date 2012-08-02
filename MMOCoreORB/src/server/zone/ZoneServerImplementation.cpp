@@ -75,6 +75,7 @@ which carries forward this exception.
 #include "managers/faction/FactionManager.h"
 #include "managers/director/DirectorManager.h"
 #include "managers/city/CityManager.h"
+#include "managers/structure/StructureManager.h"
 
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -231,6 +232,9 @@ void ZoneServerImplementation::startZones() {
 
 	SortedVector<String>* enabledZones = configManager->getEnabledZones();
 
+	StructureManager* structureManager = StructureManager::instance();
+	structureManager->setZoneServer(_this.get());
+
 	for (int i = 0; i < enabledZones->size(); ++i) {
 		String zoneName = enabledZones->get(i);
 
@@ -261,6 +265,8 @@ void ZoneServerImplementation::startZones() {
 			while (!zone->hasManagersStarted())
 				Thread::sleep(500);
 		}
+
+		structureManager->loadPlayerStructures(zone->getZoneName());
 	}
 }
 

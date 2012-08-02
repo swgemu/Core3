@@ -46,7 +46,6 @@ which carries forward this exception.
 #define PLACESTRUCTURECOMMAND_H_
 
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/tangible/deed/Deed.h"
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 
@@ -59,7 +58,6 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
@@ -86,6 +84,8 @@ public:
 			info(e.getMessage());
 			return INVALIDPARAMETERS;
 		}
+
+		//We want to begin the session here.
 
 		ManagedReference<StructureDeed*> deed = dynamic_cast<StructureDeed*>(server->getZoneServer()->getObject(deedID));
 

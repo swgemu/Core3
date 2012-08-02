@@ -12,8 +12,6 @@
 
 #include "server/zone/objects/structure/StructureObject.h"
 
-#include "server/zone/managers/structure/StructureManager.h"
-
 /*
  *	CitySpecializationSessionStub
  */
