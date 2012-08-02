@@ -48,13 +48,13 @@ which carries forward this exception.
 
 #include "server/zone/managers/customization/CustomizationIdManager.h"
 
-CustomizationVariables::CustomizationVariables() : VectorMap<uint8, int16>() {
+CustomizationVariables::CustomizationVariables() : VectorMap<uint8, int16>(1, 1) {
 	removeAll();
 
 	unknown = 1;
 	setNullValue(0);
 
-	keyIndex.removeAll();
+	keyIndex.removeAll(1, 1);
 
 	setInsertPlan(SortedVector<uint8>::NO_DUPLICATE);
 }

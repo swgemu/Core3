@@ -114,7 +114,7 @@ protected:
 	Mutex lockMutex;
 
 public:
-	ThreatMap(TangibleObject* me) {
+	ThreatMap(TangibleObject* me) : VectorMap<ManagedReference<CreatureObject*> , ThreatMapEntry>(1, 0) {
 		self = me;
 		currentThreat = NULL;
 		setNoDuplicateInsertPlan();

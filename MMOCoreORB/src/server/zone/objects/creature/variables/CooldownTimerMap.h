@@ -101,7 +101,7 @@ class CooldownTimerMap : public Object {
 	HashTable<String, CooldownTimer> timers;
 
 public:
-	CooldownTimerMap() {
+	CooldownTimerMap() : timers(1, 1) {
 	}
 
 	CooldownTimerMap(const CooldownTimerMap& map) : Object() {

@@ -11,7 +11,14 @@
 #include "engine/engine.h"
 
 class PendingTasksMap : public VectorMap<String, Reference<Task*> > {
+public:
+	PendingTasksMap() : VectorMap<String, Reference<Task*> >(1, 1) {
 
+	}
+
+	PendingTasksMap(const PendingTasksMap& p) : VectorMap<String, Reference<Task*> >(p) {
+
+	}
 };
 
 

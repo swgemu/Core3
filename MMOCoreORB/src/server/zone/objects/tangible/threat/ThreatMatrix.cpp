@@ -9,7 +9,7 @@
 #include "ThreatMap.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
-ThreatMatrix::ThreatMatrix() {
+ThreatMatrix::ThreatMatrix() : damageMap(1, 0), aggroMap(1, 0), healMap(1, 0) {
 	tauntThreat = NULL;
 	focusedThreat = NULL;
 }
