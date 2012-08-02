@@ -115,8 +115,6 @@ public:
 
 	void initialize();
 
-	void finishInitialize();
-
 	void run();
 
 	void shutdown();

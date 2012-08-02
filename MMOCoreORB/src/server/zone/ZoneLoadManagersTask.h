@@ -29,7 +29,6 @@ public:
 			return;
 
 		zone->startManagers();
-		zoneServer->finishInitialization();
 	}
 };
 

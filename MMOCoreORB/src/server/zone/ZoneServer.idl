@@ -164,8 +164,6 @@ class ZoneServer extends ManagedService implements Logger {
 	private native void loadGalaxyName();
 	
 	public native void initialize();
-
-	public native void finishInitialization();
 	
 	public native void shutdown();
 

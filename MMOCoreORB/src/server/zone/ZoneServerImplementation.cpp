@@ -217,20 +217,6 @@ void ZoneServerImplementation::initialize() {
 	missionManager->deploy("MissionManager");
 
 	startZones();
-}
-
-void ZoneServerImplementation::finishInitialization() {
-
-	Locker locker(_this.get());
-
-	for (int i = 0; i < zones->size(); ++i) {
-		Zone* zone = zones->get(i);
-
-		if (zone != NULL) {
-			if(!zone->hasManagersStarted())
-				return;
-		}
-	}
 
 	startManagers();
 
@@ -238,8 +224,6 @@ void ZoneServerImplementation::finishInitialization() {
 	serverState = ONLINE; //Test Center does not need to apply this change, but would be convenient for Dev Servers.
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
-
-	ServerCore::getInstance()->finishInitialize();
 }
 
 void ZoneServerImplementation::startZones() {
@@ -266,7 +250,16 @@ void ZoneServerImplementation::startZones() {
 		Zone* zone = zones->get(i);
 		if (zone != NULL) {
 			ZoneLoadManagersTask* task = new ZoneLoadManagersTask(_this.get(), zone);
-			task->schedule(0);
+			task->execute();
+		}
+	}
+
+	for (int i = 0; i < zones->size(); ++i) {
+		Zone* zone = zones->get(i);
+
+		if (zone != NULL) {
+			while (!zone->hasManagersStarted())
+				Thread::sleep(500);
 		}
 	}
 }
