@@ -225,6 +225,12 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 
 		auctionMap->removeItem(vendor, oldItem);
 		ObjectManager::instance()->destroyObjectFromDatabase(oldItem->_getObjectID());
+
+		if (objectToSell == NULL) {
+			ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::INVALIDITEM);
+			player->sendMessage(soldMessage);
+			return;
+		}
 	}
 
 	ManagedReference<Zone*> zone = vendor->getZone();
