@@ -26,12 +26,12 @@ bh_targets_at_mission_level = {
 		"bodyguard_zabrak_female"
 	},
 	level2 = {
-		"bodyguard",
-		"bodyguard_zabrak_female"
+		"dune_stalker_brawler",
+		"kai_tok_prowler"
 	},
 	level3 = {
-		"bodyguard",
-		"bodyguard_zabrak_female"
+		"pirate_leader",
+		"sennex_guard"
 	}
 }
 
