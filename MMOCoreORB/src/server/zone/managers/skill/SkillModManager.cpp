@@ -292,10 +292,6 @@ bool SkillModManager::compareMods(VectorMap<String, int> mods, CreatureObject* c
 		compare << "	" << key << "	" << value << "	" << currentValue << endl;
 
 		if(value != currentValue) {
-			if(currentValue == 0)
-				group->drop(key);
-			else
-				group->put(key, currentValue);
 
 			creature->removeSkillMod(type, key, value, true);
 			creature->addSkillMod(type, key, currentValue, true);
