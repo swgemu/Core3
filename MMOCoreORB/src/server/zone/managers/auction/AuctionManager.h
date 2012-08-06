@@ -146,9 +146,9 @@ public:
 
 	static const int ITEMSPERPAGE = 100;
 
-	static const int EXPIREPERIOD = 2592000;
+	static const int VENDOREXPIREPERIOD = 2592000;
 
-	static const int OFFEREXPIREPERIOD = 604800;
+	static const int COMMODITYEXPIREPERIOD = 604800;
 
 	AuctionManager(ZoneServer* server);
 
@@ -208,6 +208,8 @@ public:
 
 	void displayInfo(CreatureObject* player);
 
+	void updateAuctionOwner(AuctionItem* item, CreatureObject* player);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -257,9 +259,9 @@ public:
 
 	static const int ITEMSPERPAGE = 100;
 
-	static const int EXPIREPERIOD = 2592000;
+	static const int VENDOREXPIREPERIOD = 2592000;
 
-	static const int OFFEREXPIREPERIOD = 604800;
+	static const int COMMODITYEXPIREPERIOD = 604800;
 
 private:
 	bool marketEnabled;
@@ -332,6 +334,8 @@ public:
 	void setMarketEnabled(bool value);
 
 	void displayInfo(CreatureObject* player);
+
+	void updateAuctionOwner(AuctionItem* item, CreatureObject* player);
 
 	WeakReference<AuctionManager*> _this;
 
@@ -419,6 +423,8 @@ public:
 	void setMarketEnabled(bool value);
 
 	void displayInfo(CreatureObject* player);
+
+	void updateAuctionOwner(AuctionItem* item, CreatureObject* player);
 
 };
 

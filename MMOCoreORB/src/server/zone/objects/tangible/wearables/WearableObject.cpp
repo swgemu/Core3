@@ -355,8 +355,8 @@ WearableObjectImplementation::WearableObjectImplementation() {
 	socketsGenerated = false;
 	// server/zone/objects/tangible/wearables/WearableObject.idl():  		socketCount = 0;
 	socketCount = 0;
-	// server/zone/objects/tangible/wearables/WearableObject.idl():  		wearableSkillMods.setNoDuplicateInsertPlan();
-	(&wearableSkillMods)->setNoDuplicateInsertPlan();
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  		wearableSkillMods.setAllowOverwriteInsertPlan();
+	(&wearableSkillMods)->setAllowOverwriteInsertPlan();
 	// server/zone/objects/tangible/wearables/WearableObject.idl():  		Logger.setLoggingName("WearableObject");
 	Logger::setLoggingName("WearableObject");
 }

@@ -81,8 +81,8 @@ class AuctionManager extends ManagedService implements Logger {
 	public final static int MAXVENDORPRICE = 99999999;
 	public final static int ITEMSPERPAGE = 100;
 	
-	public final static int EXPIREPERIOD = 2592000; // Seconds
-	public final static int OFFEREXPIREPERIOD = 604800; 
+	public final static int VENDOREXPIREPERIOD = 2592000; // Seconds
+	public final static int COMMODITYEXPIREPERIOD = 604800; 
 	
 	private boolean marketEnabled;
 
@@ -175,5 +175,6 @@ class AuctionManager extends ManagedService implements Logger {
 	
 	public native void displayInfo(CreatureObject player);
 		
+	public native void updateAuctionOwner(AuctionItem item, CreatureObject player);
 }
 

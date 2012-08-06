@@ -63,14 +63,22 @@ void BuffImplementation::initializeTransientMembers() {
 }
 
 void BuffImplementation::notifyLoadFromDatabase() {
-	if (buffEvent != NULL)
-		return;
+
+	if (buffEvent != NULL && buffEvent->isScheduled()) {
+		buffEvent->cancel();
+		error("Buff had event scheduled before it was loaded!");
+	}
 
 	//info("initializeTransientMembers() nextExecutionTime difference from now" + String::valueOf(nextExecutionTime.miliDifference()), true);
 
+	if(nextExecutionTime.getTime() - time(0) > buffDuration) {
+		error("Buff timer was f'ed in the a!  Serialized Time:" + String::valueOf((int)(nextExecutionTime.getTime() - time(0))) + " Duration: " + String::valueOf(buffDuration));
+		nextExecutionTime = time(0) + (int)buffDuration;
+	}
+
 	if (nextExecutionTime.isPast()) {
 		buffEvent = new BuffDurationEvent(creature.get(), _this.get());
-		buffEvent->schedule(1000);
+		buffEvent->execute();
 		//info("nextExeutionTime.isPast()", true);
 	} else {
 		buffEvent = new BuffDurationEvent(creature.get(), _this.get());

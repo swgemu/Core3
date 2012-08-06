@@ -69,6 +69,7 @@ class AuctionItem extends ManagedObject {
 	protected string itemDescription;
 
 	protected int price;
+	protected int proxyBid;
 
 	protected boolean auction;
 
@@ -101,6 +102,7 @@ class AuctionItem extends ManagedObject {
 		offerToID = 0;
 		
 		price = 0;
+		proxyBid = 0;
 		status = FORSALE;
 		
 		auction = true;
@@ -150,6 +152,10 @@ class AuctionItem extends ManagedObject {
 	
 	public void setPrice(int newPrice) {
 		price = newPrice;
+	}
+	
+	public void setProxy(int newProxy) {
+		proxyBid = newProxy;
 	}
 	
 	public void setAuctionedItemObjectID(unsigned long objectID) {
@@ -253,6 +259,10 @@ class AuctionItem extends ManagedObject {
 	
 	public int getPrice() {
 		return price;
+	}
+	
+	public int getProxy() {
+		return proxyBid;
 	}
 	
 	public int getItemType() {

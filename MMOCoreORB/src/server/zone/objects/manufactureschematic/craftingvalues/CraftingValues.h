@@ -158,15 +158,14 @@ public:
 	float getCurrentPercentage(const String& attribute);
 	float getCurrentPercentage(const int i);
 
-	float getCurrentPercentageAverage(const int i);
-	float getCurrentPercentageAverage(const String title);
+	float getCurrentVisiblePercentage(const String title);
 
 	void setMaxPercentage(const String& attribute, const float value);
 
 	float getMaxPercentage(const String& attribute);
 	float getMaxPercentage(const int i);
 
-	float getMaxPercentageAverage(const int i);
+	float getMaxVisiblePercentage(const int i);
 
 	float getMinValue(const String& attribute);
 	float getMaxValue(const String& attribute);

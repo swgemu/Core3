@@ -24,7 +24,7 @@
  *	AuctionManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_GETITEMATTRIBUTES__CREATUREOBJECT_LONG_,RPC_GETDATA__CREATUREOBJECT_INT_LONG_INT_INT_INT_INT_,RPC_RETRIEVEITEM__CREATUREOBJECT_LONG_LONG_,RPC_BUYITEM__CREATUREOBJECT_LONG_INT_INT_,RPC_DOAUCTIONBID__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_DOINSTANTBUY__CREATUREOBJECT_AUCTIONITEM_,RPC_CHECKBIDAUCTION__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_CANCELITEM__CREATUREOBJECT_LONG_,RPC_GETAUCTIONMAP__,RPC_CHECKVENDORITEMS__,RPC_CHECKAUCTIONS__,RPC_GETVENDORUID__SCENEOBJECT_,RPC_UPDATEVENDORUID__SCENEOBJECT_STRING_STRING_,RPC_UPDATEVENDORSEARCH__SCENEOBJECT_BOOL_,RPC_EXPIRESALE__AUCTIONITEM_,RPC_EXPIREBIDAUCTION__AUCTIONITEM_,RPC_EXPIREAUCTION__AUCTIONITEM_,RPC_DELETEEXPIREDSALE__AUCTIONITEM_,RPC_ISMARKETENABLED__,RPC_SETMARKETENABLED__BOOL_,RPC_DISPLAYINFO__CREATUREOBJECT_};
+enum {RPC_INITIALIZE__ = 6,RPC_GETITEMATTRIBUTES__CREATUREOBJECT_LONG_,RPC_GETDATA__CREATUREOBJECT_INT_LONG_INT_INT_INT_INT_,RPC_RETRIEVEITEM__CREATUREOBJECT_LONG_LONG_,RPC_BUYITEM__CREATUREOBJECT_LONG_INT_INT_,RPC_DOAUCTIONBID__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_DOINSTANTBUY__CREATUREOBJECT_AUCTIONITEM_,RPC_CHECKBIDAUCTION__CREATUREOBJECT_AUCTIONITEM_INT_INT_,RPC_CANCELITEM__CREATUREOBJECT_LONG_,RPC_GETAUCTIONMAP__,RPC_CHECKVENDORITEMS__,RPC_CHECKAUCTIONS__,RPC_GETVENDORUID__SCENEOBJECT_,RPC_UPDATEVENDORUID__SCENEOBJECT_STRING_STRING_,RPC_UPDATEVENDORSEARCH__SCENEOBJECT_BOOL_,RPC_EXPIRESALE__AUCTIONITEM_,RPC_EXPIREBIDAUCTION__AUCTIONITEM_,RPC_EXPIREAUCTION__AUCTIONITEM_,RPC_DELETEEXPIREDSALE__AUCTIONITEM_,RPC_ISMARKETENABLED__,RPC_SETMARKETENABLED__BOOL_,RPC_DISPLAYINFO__CREATUREOBJECT_,RPC_UPDATEAUCTIONOWNER__AUCTIONITEM_CREATUREOBJECT_};
 
 AuctionManager::AuctionManager(ZoneServer* server) : ManagedService(DummyConstructorParameter::instance()) {
 	AuctionManagerImplementation* _implementation = new AuctionManagerImplementation(server);
@@ -424,6 +424,21 @@ void AuctionManager::displayInfo(CreatureObject* player) {
 		_implementation->displayInfo(player);
 }
 
+void AuctionManager::updateAuctionOwner(AuctionItem* item, CreatureObject* player) {
+	AuctionManagerImplementation* _implementation = static_cast<AuctionManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_UPDATEAUCTIONOWNER__AUCTIONITEM_CREATUREOBJECT_);
+		method.addObjectParameter(item);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updateAuctionOwner(item, player);
+}
+
 DistributedObjectServant* AuctionManager::_getImplementation() {
 
 	 if (!_updated) _updated = true;
@@ -807,6 +822,11 @@ void AuctionManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			displayInfo(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		}
 		break;
+	case RPC_UPDATEAUCTIONOWNER__AUCTIONITEM_CREATUREOBJECT_:
+		{
+			updateAuctionOwner(static_cast<AuctionItem*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -898,6 +918,10 @@ void AuctionManagerAdapter::setMarketEnabled(bool value) {
 
 void AuctionManagerAdapter::displayInfo(CreatureObject* player) {
 	(static_cast<AuctionManager*>(stub))->displayInfo(player);
+}
+
+void AuctionManagerAdapter::updateAuctionOwner(AuctionItem* item, CreatureObject* player) {
+	(static_cast<AuctionManager*>(stub))->updateAuctionOwner(item, player);
 }
 
 /*

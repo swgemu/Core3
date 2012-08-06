@@ -43,9 +43,15 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/managers/auction/TerminalListVector.h"
 
+#include "server/zone/managers/auction/CommoditiesLimit.h"
+
 #include "engine/core/ManagedObject.h"
 
+#include "engine/core/ManagedWeakReference.h"
+
 #include "system/util/VectorMap.h"
+
+#include "system/util/HashTable.h"
 
 namespace server {
 namespace zone {
@@ -58,7 +64,7 @@ public:
 
 	int addItem(CreatureObject* player, SceneObject* vendor, AuctionItem* item);
 
-	int removeItem(SceneObject* vendor, AuctionItem* item);
+	void deleteItem(SceneObject* vendor, AuctionItem* item);
 
 	AuctionItem* getItem(unsigned long long id);
 
@@ -72,11 +78,15 @@ public:
 
 	void deleteTerminalItems(SceneObject* vendor);
 
-	int getBazaarItemCount(CreatureObject* player);
+	int getCommodityCount(CreatureObject* player);
 
 	void updateUID(SceneObject* vendor, const String& oldUID, const String& newUID);
 
 	void updateVendorSearch(SceneObject* vendor, bool enabled);
+
+	void addToCommodityLimit(AuctionItem* item);
+
+	void removeFromCommodityLimit(AuctionItem* item);
 
 	int getBazaarCount();
 
@@ -116,8 +126,10 @@ protected:
 
 	VectorMap<unsigned long long, ManagedReference<AuctionItem* > > allItems;
 
-	VectorMap<unsigned long long, int> bazaarCount;
+private:
+	CommoditiesLimit commoditiesLimit;
 
+protected:
 	Logger logger;
 
 public:
@@ -133,12 +145,12 @@ private:
 	int addBazaarItem(CreatureObject* player, const String& planet, const String& region, SceneObject* vendor, AuctionItem* item);
 
 public:
-	int removeItem(SceneObject* vendor, AuctionItem* item);
+	void deleteItem(SceneObject* vendor, AuctionItem* item);
 
 private:
-	int removeVendorItem(SceneObject* vendor, AuctionItem* item);
+	void removeVendorItem(SceneObject* vendor, AuctionItem* item);
 
-	int removeBazaarItem(SceneObject* vendor, AuctionItem* item);
+	void removeBazaarItem(SceneObject* vendor, AuctionItem* item);
 
 public:
 	AuctionItem* getItem(unsigned long long id);
@@ -157,11 +169,15 @@ public:
 
 	void deleteTerminalItems(SceneObject* vendor);
 
-	int getBazaarItemCount(CreatureObject* player);
+	int getCommodityCount(CreatureObject* player);
 
 	void updateUID(SceneObject* vendor, const String& oldUID, const String& newUID);
 
 	void updateVendorSearch(SceneObject* vendor, bool enabled);
+
+	void addToCommodityLimit(AuctionItem* item);
+
+	void removeFromCommodityLimit(AuctionItem* item);
 
 	int getBazaarCount();
 
@@ -214,7 +230,7 @@ public:
 
 	int addItem(CreatureObject* player, SceneObject* vendor, AuctionItem* item);
 
-	int removeItem(SceneObject* vendor, AuctionItem* item);
+	void deleteItem(SceneObject* vendor, AuctionItem* item);
 
 	AuctionItem* getItem(unsigned long long id);
 
@@ -224,11 +240,15 @@ public:
 
 	void deleteTerminalItems(SceneObject* vendor);
 
-	int getBazaarItemCount(CreatureObject* player);
+	int getCommodityCount(CreatureObject* player);
 
 	void updateUID(SceneObject* vendor, const String& oldUID, const String& newUID);
 
 	void updateVendorSearch(SceneObject* vendor, bool enabled);
+
+	void addToCommodityLimit(AuctionItem* item);
+
+	void removeFromCommodityLimit(AuctionItem* item);
 
 	int getBazaarCount();
 

@@ -12,7 +12,7 @@
  *	AuctionsMapStub
  */
 
-enum {RPC_ADDITEM__CREATUREOBJECT_SCENEOBJECT_AUCTIONITEM_ = 6,RPC_REMOVEITEM__SCENEOBJECT_AUCTIONITEM_,RPC_GETITEM__LONG_,RPC_CONTAINSITEM__LONG_,RPC_GETVENDORITEMCOUNT__SCENEOBJECT_,RPC_DELETETERMINALITEMS__SCENEOBJECT_,RPC_GETBAZAARITEMCOUNT__CREATUREOBJECT_,RPC_UPDATEUID__SCENEOBJECT_STRING_STRING_,RPC_UPDATEVENDORSEARCH__SCENEOBJECT_BOOL_,RPC_GETBAZAARCOUNT__,RPC_GETVENDORCOUNT__,RPC_GETTOTALITEMCOUNT__};
+enum {RPC_ADDITEM__CREATUREOBJECT_SCENEOBJECT_AUCTIONITEM_ = 6,RPC_DELETEITEM__SCENEOBJECT_AUCTIONITEM_,RPC_GETITEM__LONG_,RPC_CONTAINSITEM__LONG_,RPC_GETVENDORITEMCOUNT__SCENEOBJECT_,RPC_DELETETERMINALITEMS__SCENEOBJECT_,RPC_GETCOMMODITYCOUNT__CREATUREOBJECT_,RPC_UPDATEUID__SCENEOBJECT_STRING_STRING_,RPC_UPDATEVENDORSEARCH__SCENEOBJECT_BOOL_,RPC_ADDTOCOMMODITYLIMIT__AUCTIONITEM_,RPC_REMOVEFROMCOMMODITYLIMIT__AUCTIONITEM_,RPC_GETBAZAARCOUNT__,RPC_GETVENDORCOUNT__,RPC_GETTOTALITEMCOUNT__};
 
 AuctionsMap::AuctionsMap() : ManagedObject(DummyConstructorParameter::instance()) {
 	AuctionsMapImplementation* _implementation = new AuctionsMapImplementation();
@@ -46,19 +46,19 @@ int AuctionsMap::addItem(CreatureObject* player, SceneObject* vendor, AuctionIte
 		return _implementation->addItem(player, vendor, item);
 }
 
-int AuctionsMap::removeItem(SceneObject* vendor, AuctionItem* item) {
+void AuctionsMap::deleteItem(SceneObject* vendor, AuctionItem* item) {
 	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_REMOVEITEM__SCENEOBJECT_AUCTIONITEM_);
+		DistributedMethod method(this, RPC_DELETEITEM__SCENEOBJECT_AUCTIONITEM_);
 		method.addObjectParameter(vendor);
 		method.addObjectParameter(item);
 
-		return method.executeWithSignedIntReturn();
+		method.executeWithVoidReturn();
 	} else
-		return _implementation->removeItem(vendor, item);
+		_implementation->deleteItem(vendor, item);
 }
 
 AuctionItem* AuctionsMap::getItem(unsigned long long id) {
@@ -135,18 +135,18 @@ void AuctionsMap::deleteTerminalItems(SceneObject* vendor) {
 		_implementation->deleteTerminalItems(vendor);
 }
 
-int AuctionsMap::getBazaarItemCount(CreatureObject* player) {
+int AuctionsMap::getCommodityCount(CreatureObject* player) {
 	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETBAZAARITEMCOUNT__CREATUREOBJECT_);
+		DistributedMethod method(this, RPC_GETCOMMODITYCOUNT__CREATUREOBJECT_);
 		method.addObjectParameter(player);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getBazaarItemCount(player);
+		return _implementation->getCommodityCount(player);
 }
 
 void AuctionsMap::updateUID(SceneObject* vendor, const String& oldUID, const String& newUID) {
@@ -178,6 +178,34 @@ void AuctionsMap::updateVendorSearch(SceneObject* vendor, bool enabled) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->updateVendorSearch(vendor, enabled);
+}
+
+void AuctionsMap::addToCommodityLimit(AuctionItem* item) {
+	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDTOCOMMODITYLIMIT__AUCTIONITEM_);
+		method.addObjectParameter(item);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addToCommodityLimit(item);
+}
+
+void AuctionsMap::removeFromCommodityLimit(AuctionItem* item) {
+	AuctionsMapImplementation* _implementation = static_cast<AuctionsMapImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEFROMCOMMODITYLIMIT__AUCTIONITEM_);
+		method.addObjectParameter(item);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeFromCommodityLimit(item);
 }
 
 int AuctionsMap::getBazaarCount() {
@@ -324,6 +352,11 @@ bool AuctionsMapImplementation::readObjectMember(ObjectInputStream* stream, cons
 	if (ManagedObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
+	if (_name == "AuctionsMap.commoditiesLimit") {
+		TypeInfo<CommoditiesLimit >::parseFromBinaryStream(&commoditiesLimit, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -341,8 +374,16 @@ int AuctionsMapImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint32 _totalSize;
+	_name = "AuctionsMap.commoditiesLimit";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<CommoditiesLimit >::toBinaryStream(&commoditiesLimit, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 0;
+
+	return _count + 1;
 }
 
 AuctionsMapImplementation::AuctionsMapImplementation() {
@@ -351,10 +392,10 @@ AuctionsMapImplementation::AuctionsMapImplementation() {
 	(&allItems)->setNullValue(NULL);
 	// server/zone/managers/auction/AuctionsMap.idl():  		allItems.setNoDuplicateInsertPlan();
 	(&allItems)->setNoDuplicateInsertPlan();
-	// server/zone/managers/auction/AuctionsMap.idl():  		bazaarCount.setAllowOverwriteInsertPlan();
-	(&bazaarCount)->setAllowOverwriteInsertPlan();
-	// server/zone/managers/auction/AuctionsMap.idl():  		bazaarCount.setNullValue(0);
-	(&bazaarCount)->setNullValue(0);
+	// server/zone/managers/auction/AuctionsMap.idl():  		commoditiesLimit.setNullValue(null);
+	(&commoditiesLimit)->setNullValue(NULL);
+	// server/zone/managers/auction/AuctionsMap.idl():  		commoditiesLimit.setNoDuplicateInsertPlan();
+	(&commoditiesLimit)->setNoDuplicateInsertPlan();
 	// server/zone/managers/auction/AuctionsMap.idl():  		logger.setLoggingName("AuctionsMap");
 	(&logger)->setLoggingName("AuctionsMap");
 	// server/zone/managers/auction/AuctionsMap.idl():  		logger.setGlobalLogging(true);
@@ -373,11 +414,6 @@ bool AuctionsMapImplementation::containsItem(unsigned long long id) {
 	Locker _locker(_this.get());
 	// server/zone/managers/auction/AuctionsMap.idl():  		return allItems.contains(id);
 	return (&allItems)->contains(id);
-}
-
-int AuctionsMapImplementation::getBazaarItemCount(CreatureObject* player) {
-	// server/zone/managers/auction/AuctionsMap.idl():  		return bazaarCount.get(player.getObjectID());
-	return (&bazaarCount)->get(player->getObjectID());
 }
 
 int AuctionsMapImplementation::getBazaarCount() {
@@ -415,9 +451,9 @@ void AuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertSignedInt(addItem(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<AuctionItem*>(inv->getObjectParameter())));
 		}
 		break;
-	case RPC_REMOVEITEM__SCENEOBJECT_AUCTIONITEM_:
+	case RPC_DELETEITEM__SCENEOBJECT_AUCTIONITEM_:
 		{
-			resp->insertSignedInt(removeItem(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<AuctionItem*>(inv->getObjectParameter())));
+			deleteItem(static_cast<SceneObject*>(inv->getObjectParameter()), static_cast<AuctionItem*>(inv->getObjectParameter()));
 		}
 		break;
 	case RPC_GETITEM__LONG_:
@@ -440,9 +476,9 @@ void AuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			deleteTerminalItems(static_cast<SceneObject*>(inv->getObjectParameter()));
 		}
 		break;
-	case RPC_GETBAZAARITEMCOUNT__CREATUREOBJECT_:
+	case RPC_GETCOMMODITYCOUNT__CREATUREOBJECT_:
 		{
-			resp->insertSignedInt(getBazaarItemCount(static_cast<CreatureObject*>(inv->getObjectParameter())));
+			resp->insertSignedInt(getCommodityCount(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		}
 		break;
 	case RPC_UPDATEUID__SCENEOBJECT_STRING_STRING_:
@@ -454,6 +490,16 @@ void AuctionsMapAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_UPDATEVENDORSEARCH__SCENEOBJECT_BOOL_:
 		{
 			updateVendorSearch(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
+		break;
+	case RPC_ADDTOCOMMODITYLIMIT__AUCTIONITEM_:
+		{
+			addToCommodityLimit(static_cast<AuctionItem*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_REMOVEFROMCOMMODITYLIMIT__AUCTIONITEM_:
+		{
+			removeFromCommodityLimit(static_cast<AuctionItem*>(inv->getObjectParameter()));
 		}
 		break;
 	case RPC_GETBAZAARCOUNT__:
@@ -480,8 +526,8 @@ int AuctionsMapAdapter::addItem(CreatureObject* player, SceneObject* vendor, Auc
 	return (static_cast<AuctionsMap*>(stub))->addItem(player, vendor, item);
 }
 
-int AuctionsMapAdapter::removeItem(SceneObject* vendor, AuctionItem* item) {
-	return (static_cast<AuctionsMap*>(stub))->removeItem(vendor, item);
+void AuctionsMapAdapter::deleteItem(SceneObject* vendor, AuctionItem* item) {
+	(static_cast<AuctionsMap*>(stub))->deleteItem(vendor, item);
 }
 
 AuctionItem* AuctionsMapAdapter::getItem(unsigned long long id) {
@@ -500,8 +546,8 @@ void AuctionsMapAdapter::deleteTerminalItems(SceneObject* vendor) {
 	(static_cast<AuctionsMap*>(stub))->deleteTerminalItems(vendor);
 }
 
-int AuctionsMapAdapter::getBazaarItemCount(CreatureObject* player) {
-	return (static_cast<AuctionsMap*>(stub))->getBazaarItemCount(player);
+int AuctionsMapAdapter::getCommodityCount(CreatureObject* player) {
+	return (static_cast<AuctionsMap*>(stub))->getCommodityCount(player);
 }
 
 void AuctionsMapAdapter::updateUID(SceneObject* vendor, const String& oldUID, const String& newUID) {
@@ -510,6 +556,14 @@ void AuctionsMapAdapter::updateUID(SceneObject* vendor, const String& oldUID, co
 
 void AuctionsMapAdapter::updateVendorSearch(SceneObject* vendor, bool enabled) {
 	(static_cast<AuctionsMap*>(stub))->updateVendorSearch(vendor, enabled);
+}
+
+void AuctionsMapAdapter::addToCommodityLimit(AuctionItem* item) {
+	(static_cast<AuctionsMap*>(stub))->addToCommodityLimit(item);
+}
+
+void AuctionsMapAdapter::removeFromCommodityLimit(AuctionItem* item) {
+	(static_cast<AuctionsMap*>(stub))->removeFromCommodityLimit(item);
 }
 
 int AuctionsMapAdapter::getBazaarCount() {

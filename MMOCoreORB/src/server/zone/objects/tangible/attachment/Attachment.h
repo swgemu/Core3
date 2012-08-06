@@ -97,7 +97,7 @@ using namespace server::zone;
 
 #include "engine/lua/LuaObject.h"
 
-#include "system/util/VectorMap.h"
+#include "system/util/HashTable.h"
 
 namespace server {
 namespace zone {
@@ -125,7 +125,7 @@ public:
 
 	bool isClothingAttachment();
 
-	VectorMap<String, int>* getSkillMods();
+	HashTable<String, int>* getSkillMods();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -157,7 +157,7 @@ class AttachmentImplementation : public TangibleObjectImplementation {
 protected:
 	int attachmentType;
 
-	VectorMap<String, int> skillModMap;
+	HashTable<String, int> skillModMap;
 
 	static const int CLOTHINGTYPE = 1;
 
@@ -184,7 +184,7 @@ public:
 
 	bool isClothingAttachment();
 
-	VectorMap<String, int>* getSkillMods();
+	HashTable<String, int>* getSkillMods();
 
 	WeakReference<Attachment*> _this;
 

@@ -2123,12 +2123,12 @@ void CreatureObjectImplementation::addBuff(Buff* buff) {
 
 	uint32 buffcrc = buff->getBuffCRC();
 
-	creatureBuffs.addBuff(_this.get(), buff);
+	creatureBuffs.addBuff(buff);
 }
 
 bool CreatureObjectImplementation::removeBuff(uint32 buffcrc) {
 	//BuffList::removeBuff checks to see if the buffcrc exists in the map.
-	return creatureBuffs.removeBuff(_this.get(), buffcrc);
+	return creatureBuffs.removeBuff(buffcrc);
 }
 
 void CreatureObjectImplementation::removeBuff(Buff* buff) {
@@ -2138,11 +2138,11 @@ void CreatureObjectImplementation::removeBuff(Buff* buff) {
 	uint32 buffcrc = buff->getBuffCRC();
 
 	//BuffList::removeBuff checks to see if the buffcrc exists in the map.
-	creatureBuffs.removeBuff(_this.get(), buff);
+	creatureBuffs.removeBuff(buff);
 }
 
 void CreatureObjectImplementation::clearBuffs(bool updateclient) {
-	creatureBuffs.clearBuffs(_this.get(), updateclient);
+	creatureBuffs.clearBuffs(updateclient);
 }
 
 void CreatureObjectImplementation::notifyPostureChange(int newPosture) {

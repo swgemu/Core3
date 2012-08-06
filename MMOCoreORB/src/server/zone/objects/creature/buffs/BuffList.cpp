@@ -92,7 +92,7 @@ void BuffList::sendDestroyTo(CreatureObject* player) {
 	}
 }
 
-void BuffList::addBuff(CreatureObject* creature, Buff* buff) {
+void BuffList::addBuff(Buff* buff) {
 	if (buff == NULL)
 		return;
 
@@ -103,7 +103,7 @@ void BuffList::addBuff(CreatureObject* creature, Buff* buff) {
 	//Remove the old buff if it exists. (Exists checked in removeBuff)
 	if ((buff->getBuffType() == BuffType::FOOD && !buff->isAttributeBuff())
 			|| (buff->getBuffType() != BuffType::FOOD))
-		removeBuff(creature, buffcrc);
+		removeBuff(buffcrc);
 
 	if (!buff->isPersistent())
 		ObjectManager::instance()->persistObject(buff, 1, "buffs");
@@ -117,18 +117,18 @@ void BuffList::addBuff(CreatureObject* creature, Buff* buff) {
 		buff->activate();
 }
 
-bool BuffList::removeBuff(CreatureObject* creature, uint32 buffcrc) {
+bool BuffList::removeBuff(uint32 buffcrc) {
 	ManagedReference<Buff*> buff = buffList.get(buffcrc);
 
 	if (buff == NULL)
 		return false;
 
-	removeBuff(creature, buff);
+	removeBuff(buff);
 
 	return true;
 }
 
-void BuffList::removeBuff(CreatureObject* creature, Buff* buff) {
+void BuffList::removeBuff(Buff* buff) {
 	if (buff == NULL)
 		return;
 
@@ -156,7 +156,7 @@ void BuffList::removeBuff(CreatureObject* creature, Buff* buff) {
 	}
 }
 
-void BuffList::clearBuffs(CreatureObject* creature, bool updateclient) {
+void BuffList::clearBuffs(bool updateclient) {
 	while (buffList.size() > 0) {
 		ManagedReference<Buff*> buff = buffList.get(0);
 

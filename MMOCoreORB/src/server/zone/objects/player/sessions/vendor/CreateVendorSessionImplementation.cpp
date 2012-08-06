@@ -86,19 +86,25 @@ void CreateVendorSessionImplementation::handleVendorSelection(byte menuID) {
 	if (node->hasChildNode()) {
 		currentNode = node;
 		node->addChildrenToListBox(suiSelectVendor, hiringMod);
-		player->sendMessage(suiSelectVendor->generateMessage());
-		player->getPlayerObject()->addSuiBox(suiSelectVendor);
 
-	} else {
-		SuiInputBox* input = new SuiInputBox(player, SuiWindowType::STRUCTURE_NAME_VENDOR);
-		input->setCallback(new NameVendorSuiCallback(player->getZoneServer()));
-		input->setCancelButton(true, "@cancel");
-		input->setPromptTitle("@player_structure:name_t");
-		input->setPromptText("@player_structure:name_d");
+		/// If there are selections available for vendors
+		if(suiSelectVendor->getMenuSize() != 0) {
+			player->sendMessage(suiSelectVendor->generateMessage());
+			player->getPlayerObject()->addSuiBox(suiSelectVendor);
+			return;
+		}
 
-		player->sendMessage(input->generateMessage());
-		player->getPlayerObject()->addSuiBox(input);
+		templatePath = templatePath + node->getRandomTemplate(hiringMod) + (System::random(1) == 0 ? "male.iff" : "female.iff");
 	}
+	SuiInputBox* input = new SuiInputBox(player, SuiWindowType::STRUCTURE_NAME_VENDOR);
+	input->setCallback(new NameVendorSuiCallback(player->getZoneServer()));
+	input->setCancelButton(true, "@cancel");
+	input->setPromptTitle("@player_structure:name_t");
+	input->setPromptText("@player_structure:name_d");
+
+	player->sendMessage(input->generateMessage());
+	player->getPlayerObject()->addSuiBox(input);
+
 }
 
 void CreateVendorSessionImplementation::createVendor(String& name) {

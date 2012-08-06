@@ -16,7 +16,7 @@ rootNode = VendorSelectionNode("root", "", "@player_structure:vendor_type_", 0)
 -- RootMenu Vendor Type Selections
 terminalNode = VendorSelectionNode("@player_structure:terminal", "object/tangible/vendor/vendor_terminal_", "@player_structure:terminal_type_", 10)
 droidNode = VendorSelectionNode("@player_structure:droid", "object/tangible/vendor/vendor_droid_", "@player_structure:droid_type_", 20)
-npcNode = VendorSelectionNode("@player_structure:npc", "object/mobile/vendor/", "@player_structure:race_type_", 50)
+npcNode = VendorSelectionNode("@player_structure:npc", "object/mobile/vendor/", "@player_structure:race_type_", 30)
 
 -- TerminalMenu - Selections 
 terminalNode:addChildNode(VendorSelectionNode("@player_structure:terminal_bulky", "bulky.iff", "", 10))

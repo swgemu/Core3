@@ -226,7 +226,7 @@ void ManufactureSchematicImplementation::sendMsco7(SceneObject* player) {
 
 	for (int i = 0; i < titleCount; i++) {
 		String title = craftingValues->getVisibleExperimentalPropertyTitle(i);
-		mcso7->insertFloat(craftingValues->getCurrentPercentageAverage(title));
+		mcso7->insertFloat(craftingValues->getCurrentVisiblePercentage(title));
 	}
 	// ************
 

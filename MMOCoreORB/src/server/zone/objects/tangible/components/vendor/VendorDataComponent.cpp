@@ -303,6 +303,10 @@ void VendorDataComponent::setVendorSearchEnabled(bool enabled) {
 
 void VendorDataComponent::performVendorBark(SceneObject* target) {
 
+	if(isOnStrike()) {
+		return;
+	}
+
 	ManagedReference<CreatureObject*> vendor = cast<CreatureObject*>(parent.get());
 	if(vendor == NULL)
 		return;

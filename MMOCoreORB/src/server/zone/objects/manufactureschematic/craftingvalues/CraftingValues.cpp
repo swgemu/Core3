@@ -565,34 +565,7 @@ float CraftingValues::getCurrentPercentage(const int i) {
 	return VALUENOTFOUND;
 }
 
-float CraftingValues::getCurrentPercentageAverage(const int i) {
-	Subclasses* subclasses;
-	Values* values;
-
-	String title = getVisibleExperimentalPropertyTitle(i);
-
-	subclasses = experimentalValuesMap.get(title);
-
-	if (subclasses == NULL)
-		return -1;
-
-	float average = 0;
-	float count = 0;
-
-	for (int j = 0; j < subclasses->size(); ++j) {
-		values = subclasses->get(j);
-
-		if (values->getMaxPercentage() < 1.0f && !values->isFiller()) {
-
-			average += values->getPercentage();
-			count++;
-		}
-	}
-
-	return (average / count);
-}
-
-float CraftingValues::getCurrentPercentageAverage(const String title) {
+float CraftingValues::getCurrentVisiblePercentage(const String title) {
 	Subclasses* subclasses;
 	Values* values;
 
@@ -601,8 +574,7 @@ float CraftingValues::getCurrentPercentageAverage(const String title) {
 	if (subclasses == NULL)
 		return -1;
 
-	float average = 0;
-	float count = 0;
+	float value = 0;
 
 	for (int j = 0; j < subclasses->size(); ++j) {
 		values = subclasses->get(j);
@@ -612,14 +584,13 @@ float CraftingValues::getCurrentPercentageAverage(const String title) {
 				!values->isFiller()) {
 
 			float item = values->getPercentage();
-			if (item > 0) {
-				average += item;
-				count++;
-			}
+			if (item > value)
+				value = item;
+
 		}
 	}
 
-	return (average / count);
+	return value;
 }
 
 void CraftingValues::setMaxPercentage(
@@ -688,7 +659,7 @@ float CraftingValues::getMaxPercentage(const int i) {
 	return VALUENOTFOUND;
 }
 
-float CraftingValues::getMaxPercentageAverage(const int i) {
+float CraftingValues::getMaxVisiblePercentage(const int i) {
 	Subclasses* subclasses;
 	Values* values;
 
@@ -708,7 +679,6 @@ float CraftingValues::getMaxPercentageAverage(const int i) {
 
 			if(values->getMaxPercentage() > value)
 				value = values->getMaxPercentage();
-
 		}
 	}
 
@@ -913,7 +883,6 @@ String CraftingValues::toString() {
 		str << "\n*************************" << endl;
 		str << "Subclass " << i << endl;
 		str << "Class: " << tempSubclasses->getClassTitle() << endl;
-		str << "Average %: " << getMaxPercentageAverage(i) << endl;
 		str << tempSubclasses->toString();
 		str << "**************************" << endl;
 	}

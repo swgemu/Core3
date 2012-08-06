@@ -54,14 +54,14 @@ import server.zone.templates.SharedObjectTemplate;
 import server.zone.packets.scene.AttributeListMessage;
 include server.zone.objects.scene.SceneObjectType;
 import server.zone.Zone;
-import system.util.VectorMap;
+import system.util.HashTable;
 
 class Attachment extends TangibleObject {
 
 	protected int attachmentType;
 
 	@dereferenced
-	protected VectorMap<string, int> skillModMap;
+	protected HashTable<string, int> skillModMap;
 
 	protected static final int CLOTHINGTYPE = 1;
 	protected static final int ARMORTYPE = 2;
@@ -70,7 +70,6 @@ class Attachment extends TangibleObject {
 		Logger.setLoggingName("Attachment");
 
 		skillModMap.setNullValue(0);
-		skillModMap.setNoDuplicateInsertPlan();
 				
 		//generateSkillMods();
 	}
@@ -118,7 +117,7 @@ class Attachment extends TangibleObject {
 	} 
 	
 	@local
-	public VectorMap<string, int> getSkillMods() {
+	public HashTable<string, int> getSkillMods() {
 		return skillModMap;
 	}
 	

@@ -82,6 +82,8 @@ public:
 
 	void setPrice(int newPrice);
 
+	void setProxy(int newProxy);
+
 	void setAuctionedItemObjectID(unsigned long long objectID);
 
 	void setItemType(int type);
@@ -133,6 +135,8 @@ public:
 	int getExpireTime();
 
 	int getPrice();
+
+	int getProxy();
 
 	int getItemType();
 
@@ -198,6 +202,8 @@ protected:
 
 	int price;
 
+	int proxyBid;
+
 	bool auction;
 
 	int status;
@@ -242,6 +248,8 @@ public:
 	void setItemDescription(const String& descr);
 
 	void setPrice(int newPrice);
+
+	void setProxy(int newProxy);
 
 	void setAuctionedItemObjectID(unsigned long long objectID);
 
@@ -294,6 +302,8 @@ public:
 	int getExpireTime();
 
 	int getPrice();
+
+	int getProxy();
 
 	int getItemType();
 
@@ -366,6 +376,8 @@ public:
 
 	void setPrice(int newPrice);
 
+	void setProxy(int newProxy);
+
 	void setAuctionedItemObjectID(unsigned long long objectID);
 
 	void setItemType(int type);
@@ -417,6 +429,8 @@ public:
 	int getExpireTime();
 
 	int getPrice();
+
+	int getProxy();
 
 	int getItemType();
 

@@ -162,7 +162,7 @@ public:
 
 			String title = craftingValues->getVisibleExperimentalPropertyTitle(i);
 
-			float value = craftingValues->getCurrentPercentageAverage(title);
+			float value = craftingValues->getCurrentVisiblePercentage(title);
 
 			if(value > 0 && value < .01)
 				value = .01f;
@@ -216,7 +216,7 @@ public:
 
 		for (int i = 0; i < titleCount; i++) {
 
-			value = craftingValues->getMaxPercentageAverage(i);
+			value = craftingValues->getMaxVisiblePercentage(i);
 
 			removeListFloatElement(i, value);
 

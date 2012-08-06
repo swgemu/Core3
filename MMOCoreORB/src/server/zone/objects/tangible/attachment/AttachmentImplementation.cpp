@@ -62,10 +62,17 @@ void AttachmentImplementation::fillAttributeList(AttributeListMessage* msg, Crea
 	TangibleObjectImplementation::fillAttributeList(msg, object);
 
 	StringBuffer name;
+
+	HashTableIterator<String, int> iterator = skillModMap.iterator();
+
+	String key = "";
+	int value = 0;
+
 	for(int i = 0; i < skillModMap.size(); ++i) {
 
-		name << "cat_skill_mod_bonus.@stat_n:" << skillModMap.elementAt(i).getKey();
-		int value = skillModMap.elementAt(i).getValue();
+		iterator.getNextKeyAndValue(key, value);
+
+		name << "cat_skill_mod_bonus.@stat_n:" << key;
 
 		msg->insertAttribute(name.toString(), value);
 

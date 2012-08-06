@@ -630,17 +630,19 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 	Vector<uint32>* races = tanoData->getPlayerRaces();
 	String race = creature->getObjectTemplate()->getFullTemplateString();
 
-	if (!races->contains(race.hashCode())) {
-		UnicodeString message;
+	if(clothing->isWearableObject()) {
+		if (!races->contains(race.hashCode())) {
+			UnicodeString message;
 
-		if(creature->getObjectTemplate()->getFullTemplateString().contains("ithorian"))
-			message = "@player_structure:wear_not_ithorian";
-		else
-			message = "@player_structure:wear_no";
+			if(creature->getObjectTemplate()->getFullTemplateString().contains("ithorian"))
+				message = "@player_structure:wear_not_ithorian";
+			else
+				message = "@player_structure:wear_no";
 
-		chatMan->broadcastMessage(creature, message, clothing->getObjectID(), creature->getMoodID(), 0);
+			chatMan->broadcastMessage(creature, message, clothing->getObjectID(), creature->getMoodID(), 0);
 
-		return false;
+			return false;
+		}
 	}
 
 	ManagedReference<SceneObject*> clothingParent = clothing->getParent();

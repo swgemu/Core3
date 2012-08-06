@@ -45,11 +45,14 @@ which carries forward this exception.
 package server.zone.managers.auction;
 
 import engine.core.ManagedObject;
+import engine.core.ManagedWeakReference;
 import system.util.VectorMap;
+import system.util.HashTable;
 import server.zone.objects.auction.AuctionItem;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.managers.auction.AuctionTerminalMap;
 include server.zone.managers.auction.TerminalListVector;
+include server.zone.managers.auction.CommoditiesLimit;
 
 class AuctionsMap extends ManagedObject {
 	
@@ -63,7 +66,7 @@ class AuctionsMap extends ManagedObject {
 	protected transient VectorMap<unsigned long, AuctionItem> allItems;
 	
 	@dereferenced
-	protected transient VectorMap<unsigned long, int> bazaarCount;
+	CommoditiesLimit commoditiesLimit;
 	
 	@dereferenced
 	protected transient Logger logger;
@@ -72,9 +75,9 @@ class AuctionsMap extends ManagedObject {
 		allItems.setNullValue(null);
 		allItems.setNoDuplicateInsertPlan();
 		
-		bazaarCount.setAllowOverwriteInsertPlan();
-		bazaarCount.setNullValue(0);
-		
+		commoditiesLimit.setNullValue(null);
+		commoditiesLimit.setNoDuplicateInsertPlan();
+
 		logger.setLoggingName("AuctionsMap");
 		logger.setGlobalLogging(true);
 		logger.setLogging(true);
@@ -84,9 +87,9 @@ class AuctionsMap extends ManagedObject {
 	private native int addVendorItem(CreatureObject player, final string planet, final string region, SceneObject vendor, AuctionItem item);
 	private native int addBazaarItem(CreatureObject player, final string planet, final string region, SceneObject vendor, AuctionItem item);
 
-	public native int removeItem(SceneObject vendor, AuctionItem item);
-	private native int removeVendorItem(SceneObject vendor, AuctionItem item);
-	private native int removeBazaarItem(SceneObject vendor, AuctionItem item);
+	public native void deleteItem(SceneObject vendor, AuctionItem item);
+	private native void removeVendorItem(SceneObject vendor, AuctionItem item);
+	private native void removeBazaarItem(SceneObject vendor, AuctionItem item);
 
 	
 	public synchronized AuctionItem getItem(unsigned long id) {
@@ -111,14 +114,16 @@ class AuctionsMap extends ManagedObject {
 	
 	public native void deleteTerminalItems(SceneObject vendor);
 	
-	public int getBazaarItemCount(CreatureObject player) {
-		return bazaarCount.get(player.getObjectID());
-	}
+	public native int getCommodityCount(CreatureObject player);
 	
 	public native void updateUID(SceneObject vendor, final string oldUID, final string newUID);
 
 	public native void updateVendorSearch(SceneObject vendor, boolean enabled);
 
+	public native void addToCommodityLimit(AuctionItem item);
+	
+	public native void removeFromCommodityLimit(AuctionItem item);
+	
 	public int getBazaarCount() {
 		return bazaarItemsForSale.size();
 	}

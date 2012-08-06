@@ -12,7 +12,7 @@
  *	AuctionItemStub
  */
 
-enum {RPC_COMPARETO__AUCTIONITEM_ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_SETVENDORID__LONG_,RPC_SETITEMNAME__STRING_,RPC_SETITEMDESCRIPTION__STRING_,RPC_SETPRICE__INT_,RPC_SETAUCTIONEDITEMOBJECTID__LONG_,RPC_SETITEMTYPE__INT_,RPC_SETOWNERID__LONG_,RPC_SETOFFERTOID__LONG_,RPC_SETBIDDERNAME__STRING_,RPC_SETOWNERNAME__STRING_,RPC_SETAUCTION__BOOL_,RPC_SETAUCTIONPREMIUM__,RPC_CLEARAUCTIONWITHDRAW__,RPC_SETONBAZAAR__BOOL_,RPC_SETEXPIRETIME__INT_,RPC_SETBUYERID__LONG_,RPC_SETSTATUS__INT_,RPC_ISONBAZAAR__,RPC_ISAUCTION__,RPC_GETSTATUS__,RPC_GETVENDORID__,RPC_GETAUCTIONEDITEMOBJECTID__,RPC_GETOWNERID__,RPC_GETOFFERTOID__,RPC_SETVENDORUID__STRING_,RPC_GETVENDORUID__,RPC_GETOWNERNAME__,RPC_GETITEMNAME__,RPC_GETEXPIRETIME__,RPC_GETPRICE__,RPC_GETITEMTYPE__,RPC_GETBUYERID__,RPC_GETBIDDERNAME__,RPC_GETITEMDESCRIPTION__,RPC_GETAUCTIONOPTIONS__,RPC_ISPREMIUMAUCTION__,RPC_ISOWNER__CREATUREOBJECT_,RPC_ISAUCTIONOBJECT__};
+enum {RPC_COMPARETO__AUCTIONITEM_ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_SETVENDORID__LONG_,RPC_SETITEMNAME__STRING_,RPC_SETITEMDESCRIPTION__STRING_,RPC_SETPRICE__INT_,RPC_SETPROXY__INT_,RPC_SETAUCTIONEDITEMOBJECTID__LONG_,RPC_SETITEMTYPE__INT_,RPC_SETOWNERID__LONG_,RPC_SETOFFERTOID__LONG_,RPC_SETBIDDERNAME__STRING_,RPC_SETOWNERNAME__STRING_,RPC_SETAUCTION__BOOL_,RPC_SETAUCTIONPREMIUM__,RPC_CLEARAUCTIONWITHDRAW__,RPC_SETONBAZAAR__BOOL_,RPC_SETEXPIRETIME__INT_,RPC_SETBUYERID__LONG_,RPC_SETSTATUS__INT_,RPC_ISONBAZAAR__,RPC_ISAUCTION__,RPC_GETSTATUS__,RPC_GETVENDORID__,RPC_GETAUCTIONEDITEMOBJECTID__,RPC_GETOWNERID__,RPC_GETOFFERTOID__,RPC_SETVENDORUID__STRING_,RPC_GETVENDORUID__,RPC_GETOWNERNAME__,RPC_GETITEMNAME__,RPC_GETEXPIRETIME__,RPC_GETPRICE__,RPC_GETPROXY__,RPC_GETITEMTYPE__,RPC_GETBUYERID__,RPC_GETBIDDERNAME__,RPC_GETITEMDESCRIPTION__,RPC_GETAUCTIONOPTIONS__,RPC_ISPREMIUMAUCTION__,RPC_ISOWNER__CREATUREOBJECT_,RPC_ISAUCTIONOBJECT__};
 
 AuctionItem::AuctionItem(unsigned long long objectid) : ManagedObject(DummyConstructorParameter::instance()) {
 	AuctionItemImplementation* _implementation = new AuctionItemImplementation(objectid);
@@ -111,6 +111,20 @@ void AuctionItem::setPrice(int newPrice) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setPrice(newPrice);
+}
+
+void AuctionItem::setProxy(int newProxy) {
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETPROXY__INT_);
+		method.addSignedIntParameter(newProxy);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setProxy(newProxy);
 }
 
 void AuctionItem::setAuctionedItemObjectID(unsigned long long objectID) {
@@ -469,6 +483,19 @@ int AuctionItem::getPrice() {
 		return _implementation->getPrice();
 }
 
+int AuctionItem::getProxy() {
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETPROXY__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getProxy();
+}
+
 int AuctionItem::getItemType() {
 	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -738,6 +765,11 @@ bool AuctionItemImplementation::readObjectMember(ObjectInputStream* stream, cons
 		return true;
 	}
 
+	if (_name == "AuctionItem.proxyBid") {
+		TypeInfo<int >::parseFromBinaryStream(&proxyBid, stream);
+		return true;
+	}
+
 	if (_name == "AuctionItem.auction") {
 		TypeInfo<bool >::parseFromBinaryStream(&auction, stream);
 		return true;
@@ -878,6 +910,14 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "AuctionItem.proxyBid";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&proxyBid, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "AuctionItem.auction";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -935,7 +975,7 @@ int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 18;
+	return _count + 19;
 }
 
 AuctionItemImplementation::AuctionItemImplementation(unsigned long long objectid) {
@@ -950,6 +990,8 @@ AuctionItemImplementation::AuctionItemImplementation(unsigned long long objectid
 	offerToID = 0;
 	// server/zone/objects/auction/AuctionItem.idl():  		price = 0;
 	price = 0;
+	// server/zone/objects/auction/AuctionItem.idl():  		proxyBid = 0;
+	proxyBid = 0;
 	// server/zone/objects/auction/AuctionItem.idl():  		status = FORSALE;
 	status = FORSALE;
 	// server/zone/objects/auction/AuctionItem.idl():  		auction = true;
@@ -997,6 +1039,11 @@ void AuctionItemImplementation::setItemDescription(const String& descr) {
 void AuctionItemImplementation::setPrice(int newPrice) {
 	// server/zone/objects/auction/AuctionItem.idl():  		price = newPrice;
 	price = newPrice;
+}
+
+void AuctionItemImplementation::setProxy(int newProxy) {
+	// server/zone/objects/auction/AuctionItem.idl():  		proxyBid = newProxy;
+	proxyBid = newProxy;
 }
 
 void AuctionItemImplementation::setAuctionedItemObjectID(unsigned long long objectID) {
@@ -1124,6 +1171,11 @@ int AuctionItemImplementation::getPrice() {
 	return price;
 }
 
+int AuctionItemImplementation::getProxy() {
+	// server/zone/objects/auction/AuctionItem.idl():  		return proxyBid;
+	return proxyBid;
+}
+
 int AuctionItemImplementation::getItemType() {
 	// server/zone/objects/auction/AuctionItem.idl():  		return itemType;
 	return itemType;
@@ -1209,6 +1261,11 @@ void AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETPRICE__INT_:
 		{
 			setPrice(inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_SETPROXY__INT_:
+		{
+			setProxy(inv->getSignedIntParameter());
 		}
 		break;
 	case RPC_SETAUCTIONEDITEMOBJECTID__LONG_:
@@ -1344,6 +1401,11 @@ void AuctionItemAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertSignedInt(getPrice());
 		}
 		break;
+	case RPC_GETPROXY__:
+		{
+			resp->insertSignedInt(getProxy());
+		}
+		break;
 	case RPC_GETITEMTYPE__:
 		{
 			resp->insertSignedInt(getItemType());
@@ -1411,6 +1473,10 @@ void AuctionItemAdapter::setItemDescription(const String& descr) {
 
 void AuctionItemAdapter::setPrice(int newPrice) {
 	(static_cast<AuctionItem*>(stub))->setPrice(newPrice);
+}
+
+void AuctionItemAdapter::setProxy(int newProxy) {
+	(static_cast<AuctionItem*>(stub))->setProxy(newProxy);
 }
 
 void AuctionItemAdapter::setAuctionedItemObjectID(unsigned long long objectID) {
@@ -1515,6 +1581,10 @@ int AuctionItemAdapter::getExpireTime() {
 
 int AuctionItemAdapter::getPrice() {
 	return (static_cast<AuctionItem*>(stub))->getPrice();
+}
+
+int AuctionItemAdapter::getProxy() {
+	return (static_cast<AuctionItem*>(stub))->getProxy();
 }
 
 int AuctionItemAdapter::getItemType() {

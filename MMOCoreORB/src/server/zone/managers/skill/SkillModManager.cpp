@@ -121,9 +121,11 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 	mods.setAllowOverwriteInsertPlan();
 	mods.setNullValue(0);
 
+	Vector<ManagedReference<SceneObject*> > usedObjects;
+
 	for(int i = 0; i < creature->getSlottedObjectsSize(); ++i) {
 		ManagedReference<TangibleObject*> object = cast<TangibleObject*>(creature->getSlottedObject(i));
-		if(object == NULL)
+		if(object == NULL || usedObjects.contains(object.get()))
 			continue;
 
 		if(object->isWearableObject()) {
@@ -132,8 +134,8 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 
 				VectorMap<String, int>* wearableSkillMods = wearable->getWearableSkillMods();
 
-				for (int i = 0; i < wearableSkillMods->size(); ++i) {
-					String name = wearableSkillMods->elementAt(i).getKey();
+				for (int j = 0; j < wearableSkillMods->size(); ++j) {
+					String name = wearableSkillMods->elementAt(j).getKey();
 					int value = wearableSkillMods->get(name);
 
 					if(mods.contains(name)) {
@@ -148,6 +150,8 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 		if(object->isWeaponObject()) {
 
 		}
+
+		usedObjects.add(object.get());
 	}
 
 	if(!compareMods(mods, creature, WEARABLE)) {

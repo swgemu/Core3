@@ -78,7 +78,11 @@ public:
 	void addItemToList(AuctionItem* ai) {
 		locationList.put(ai->getVendorUID());
 		locationList.put(ai->getOwnerName());
-		locationList.put(ai->getBidderName());
+
+		if(ai->isAuction() && ai->getStatus() == AuctionItem::FORSALE)
+			locationList.put("");
+		else
+			locationList.put(ai->getBidderName());
 
 		itemList.add(ai);
 	}
@@ -146,10 +150,15 @@ public:
 
 	    	insertShort(locationList.find(il->getOwnerName()));
 
-	    	insertLong(il->getBuyerID()); // buyer ID
-	    	insertShort(locationList.find(il->getBidderName()));
+	    	if(il->isAuction() && il->getStatus() == AuctionItem::FORSALE) {
+	    		insertLong(0);
+	    		insertShort(locationList.find(""));
+	    	} else {
+	    		insertLong(il->getBuyerID()); // buyer ID
+	    		insertShort(locationList.find(il->getBidderName()));
+	    	}
 
-	    	insertInt(il->getPrice()); // my proxy not implemented yet
+	    	insertInt(il->getProxy()); // my proxy not implemented yet
 	    	insertInt(il->getPrice()); // my bid default to price
 
 	    	insertInt(il->getItemType());
