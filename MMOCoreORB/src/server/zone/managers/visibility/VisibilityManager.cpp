@@ -108,14 +108,17 @@ void VisibilityManager::decreaseVisibility(CreatureObject* creature) {
 
 	if (ghost != NULL) {
 		Locker locker(ghost);
-		float visibilityDecrease = ghost->getLastVisibilityUpdateTimestamp().miliDifference() / 1000.f / 3600.f;
-		if (ghost->getVisibility() <= visibilityDecrease) {
-			clearVisibility(creature);
-		} else {
-			ghost->setVisibility(ghost->getVisibility() - visibilityDecrease);
+		if (ghost->getVisibility() > 0)
+		{
+			float visibilityDecrease = ghost->getLastVisibilityUpdateTimestamp().miliDifference() / 1000.f / 3600.f;
+			if (ghost->getVisibility() <= visibilityDecrease) {
+				clearVisibility(creature);
+			} else {
+				ghost->setVisibility(ghost->getVisibility() - visibilityDecrease);
 
-			if (ghost->getVisibility() < TERMINALVISIBILITYLIMIT) {
-				removePlayerFromBountyList(creature);
+				if (ghost->getVisibility() < TERMINALVISIBILITYLIMIT) {
+					removePlayerFromBountyList(creature);
+				}
 			}
 		}
 	}
