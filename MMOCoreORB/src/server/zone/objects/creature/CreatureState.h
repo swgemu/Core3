@@ -120,9 +120,8 @@ public:
 		}
 	}
 
-	uint64 getState(String state) {
-		state = state.toLowerCase();
-		return states.get(state);
+	uint64 getState(const String& state) {
+		return states.get(state.toLowerCase());
 	}
 
 	String getSpecialName(const uint64 state, bool initialCap = false) {

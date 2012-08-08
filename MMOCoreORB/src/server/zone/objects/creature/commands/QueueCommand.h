@@ -113,6 +113,7 @@ public:
 	const static int NOKNEELING = 10;
 	const static int INSUFFICIENTPERMISSION = 11;
 	const static int NOJEDIARMOR = 12;
+	const static int INVALIDSYNTAX = 13;
 
 
 	virtual ~QueueCommand() {
@@ -125,6 +126,13 @@ public:
 
 	void onStateFail(CreatureObject* creature, uint32 actioncntr);
 	void onLocomotionFail(CreatureObject* creature, uint32 actioncntr);
+
+	/**
+	 * Gets a string describing this commands syntax usage.
+	 */
+	virtual String getSyntax() const {
+		return String("");
+	}
 
 	/*
 	 * Unsuccessful command completion alerts the player of the invalid state, must clear the queue action from client queue
