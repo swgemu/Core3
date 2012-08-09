@@ -125,6 +125,11 @@ Vector3 DestroyMissionObjectiveImplementation::findValidSpawnPosition(Zone* zone
 void DestroyMissionObjectiveImplementation::spawnLair() {
 	ManagedReference<MissionObject* > mission = this->mission.get();
 
+	ManagedReference<MissionSpawnActiveArea* > spawnActiveArea = this->spawnActiveArea;
+
+	if (spawnActiveArea == NULL)
+		return;
+
 	if (lairObject != NULL && lairObject->getZone() != NULL)
 		return;
 
