@@ -82,7 +82,7 @@ void AuctionManagerImplementation::initialize() {
 		auctionMap->addItem(NULL, vendor, auctionItem);
 
 		if(auctionItem->isAuction()) {
-			Task* newTask = new ExpireAuctionTask(_this.get(), auctionItem);
+			Reference<Task*> newTask = new ExpireAuctionTask(_this.get(), auctionItem);
 			newTask->schedule((auctionItem->getExpireTime() - time(0)) * 1000);
 			auctionEvents.put(auctionItem->getAuctionedItemObjectID(), newTask);
 		}
@@ -100,7 +100,7 @@ void AuctionManagerImplementation::initialize() {
 			auctionItem->setVendorID(defaultBazaar->getObjectID());
 
 			if(auctionItem->isAuction()) {
-				Task* newTask = new ExpireAuctionTask(_this.get(), auctionItem);
+				Reference<Task*> newTask = new ExpireAuctionTask(_this.get(), auctionItem);
 				newTask->schedule((auctionItem->getExpireTime() - time(0)) * 1000);
 				auctionEvents.put(auctionItem->getAuctionedItemObjectID(), newTask);
 			}
@@ -314,7 +314,7 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 	item->setPersistent(1);
 
 	if(item->isAuction()) {
-		Task* newTask = new ExpireAuctionTask(_this.get(), item);
+		Reference<Task*> newTask = new ExpireAuctionTask(_this.get(), item);
 		newTask->schedule((item->getExpireTime() - time(0)) * 1000);
 		auctionEvents.put(item->getAuctionedItemObjectID(), newTask);
 	}
@@ -1118,7 +1118,8 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 	if (item->isAuction()) {
 		refundAuction(item);
 		if(auctionEvents.contains(item->getAuctionedItemObjectID())) {
-			Task* newTask = auctionEvents.get(item->getAuctionedItemObjectID());
+			Reference<Task*> newTask = auctionEvents.get(item->getAuctionedItemObjectID());
+
 			if(newTask != NULL)
 				newTask->cancel();
 			auctionEvents.drop(item->getAuctionedItemObjectID());
