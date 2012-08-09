@@ -58,7 +58,7 @@ import server.zone.objects.scene.SceneObject;
 import system.util.VectorMap;
 include server.zone.packets.auction.AuctionQueryHeadersResponseMessage;
 include server.zone.managers.auction.TerminalListVector;
-include server.zone.managers.auction.AuctionsEventsMap;
+include server.zone.managers.auction.AuctionEventsMap;
 
 class AuctionManager extends ManagedService implements Logger {
 	protected AuctionsMap auctionMap;
@@ -68,7 +68,7 @@ class AuctionManager extends ManagedService implements Logger {
 	/*@dereferenced
 	protected VectorMap<unsigned long, Task> auctionEvents;*/
 	@dereferenced
-	protected AuctionEveventsMap auctionEvents;
+	protected AuctionEventsMap auctionEvents;
 	
 	@dereferenced
 	protected VectorMap<SceneObject, string> pendingUIDUpdates;
