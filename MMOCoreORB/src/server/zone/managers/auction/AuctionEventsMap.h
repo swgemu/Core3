@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-class AuctionsEventMap : public VectorMap<uint64, Reference<Task*> > {
+class AuctionEventMap : public VectorMap<uint64, Reference<Task*> > {
 
 };
 
