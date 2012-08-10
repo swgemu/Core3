@@ -551,6 +551,9 @@ void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	for (int j = 0; j < getContainerObjectsSize(); ++j) {
 		SceneObject* containerObject = getContainerObject(j);
 
+		if (containerObject == NULL)
+			continue;
+
 		if (containerObject->isInQuadTree()) {
 			notifyInsert(containerObject);
 		} else {
