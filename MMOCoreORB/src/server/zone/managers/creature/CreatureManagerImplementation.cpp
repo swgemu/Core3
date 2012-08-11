@@ -482,7 +482,7 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 	if (zone == NULL || !creature->isCreature())
 		return;
 
-	if (!player->isInRange(creature, 7))
+	if (!creature->canHarvestMe(player))
 		return;
 
 	ManagedReference<ResourceManager*> resourceManager = zone->getZoneServer()->getResourceManager();
