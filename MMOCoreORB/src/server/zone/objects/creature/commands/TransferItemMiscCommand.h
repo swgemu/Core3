@@ -156,7 +156,7 @@ public:
 		}
 
 		if(destinationObject->isCellObject()) {
-			Vector3 endPoint(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY());
+			Vector3 endPoint(creature->getPositionX(), creature->getPositionY(), creature->getPositionZ());
 
 			if (!CollisionManager::checkLineOfSightInParentCell(creature, endPoint)) {
 				creature->sendSystemMessage("@player_structure:not_valid_location"); //That is not a valid location.
