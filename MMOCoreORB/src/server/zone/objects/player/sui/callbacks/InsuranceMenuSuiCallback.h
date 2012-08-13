@@ -85,7 +85,7 @@ public:
 					return;
 				}
 
-				TangibleObject* item = cast<TangibleObject*>( obj);
+				TangibleObject* item = cast<TangibleObject*>( obj.get());
 
 				if (item != NULL && !(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject())) {
 
