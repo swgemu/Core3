@@ -105,8 +105,11 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 		clothing->setAttachmentMods(creo);
 	}
 
-	if (object->isRobeObject() || (object->isWeaponObject() && cast<WeaponObject*>(object)->isJediWeapon()))
-		VisibilityManager::instance()->increaseVisibility(creo);
+	if (creo->getPlayerObject()->isJedi())
+	{
+		if ((object->isRobeObject() && cast<RobeObject*>( object)->getSkillRequired() != "") || (object->isWeaponObject() && cast<WeaponObject*>(object)->isJediWeapon()))
+			VisibilityManager::instance()->increaseVisibility(creo);
+	}
 
 	if (object->isInstrument() && creo->isEntertaining())
 		creo->stopEntertaining();
@@ -154,8 +157,11 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 			creo->stopEntertaining();
 	}
 
-	if (object->isRobeObject() || (object->isWeaponObject() && cast<WeaponObject*>(object)->isJediWeapon()))
-		VisibilityManager::instance()->increaseVisibility(creo);
+	if (creo->getPlayerObject()->isJedi())
+	{
+		if ((object->isRobeObject() && cast<RobeObject*>( object)->getSkillRequired() != "") || (object->isWeaponObject() && cast<WeaponObject*>(object)->isJediWeapon()))
+			VisibilityManager::instance()->increaseVisibility(creo);
+	}
 
 	//this it to update the equipment list
 	//we need a DeltaVector with all the slotted objects it seems

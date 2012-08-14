@@ -1086,8 +1086,6 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 				return false;
 			} else {
 				playerObject->setForcePower(playerObject->getForcePower() - force);
-				// Increase visibilty for using a Force Power attack.
-				VisibilityManager::instance()->increaseVisibility(attacker);
 			}
 		}
 	}
