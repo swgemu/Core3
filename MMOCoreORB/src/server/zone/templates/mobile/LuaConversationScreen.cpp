@@ -18,6 +18,8 @@ Luna<LuaConversationScreen>::RegType LuaConversationScreen::Register[] = {
 		{ "getScreenID", &LuaConversationScreen::getScreenID},
 		{ "cloneScreen", &LuaConversationScreen::cloneScreen},
 		{ "addOption", &LuaConversationScreen::addOption},
+		{ "removeAllOptions", &LuaConversationScreen::removeAllOptions},
+		{ "setDialogTextStringId", &LuaConversationScreen::setDialogTextStringId},
 		{ "setDialogTextTT", &LuaConversationScreen::setDialogTextTT},
 		{ "setDialogTextTO", &LuaConversationScreen::setDialogTextTO},
 		{ "setDialogTextTU", &LuaConversationScreen::setDialogTextTU},
@@ -119,6 +121,24 @@ int LuaConversationScreen::addOption(lua_State* L) {
 	String text = lua_tostring(L, -2);
 
 	realObject->addOption(text, linked);
+
+	return 0;
+}
+
+int LuaConversationScreen::removeAllOptions(lua_State* L)
+{
+	//void removeAllOptions()
+	realObject->removeAllOptions();
+
+	return 0;
+}
+
+int LuaConversationScreen::setDialogTextStringId(lua_State* L)
+{
+	const char* str1 = lua_tostring(L, -1);
+	StringIdChatParameter stringToSet(str1);
+
+	realObject->setDialogText(stringToSet);
 
 	return 0;
 }

@@ -31,6 +31,8 @@ public:
 	int getScreenID(lua_State* L);
 	int cloneScreen(lua_State* L);
 	int addOption(lua_State* L);
+	int removeAllOptions(lua_State* L);
+	int setDialogTextStringId(lua_State* L);
 	int setDialogTextTT(lua_State* L);
 	int setDialogTextTO(lua_State* L);
 	int setDialogTextTU(lua_State* L);

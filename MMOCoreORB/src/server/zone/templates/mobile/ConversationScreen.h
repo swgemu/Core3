@@ -149,6 +149,10 @@ public:
 		options.remove(idx);
 	}
 
+	void removeAllOptions() {
+		options.removeAll();
+	}
+
 	ConversationOption* getOption(int idx) {
 		return options.get(idx);
 	}
