@@ -105,8 +105,9 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 		clothing->setAttachmentMods(creo);
 	}
 
-	if (creo->getPlayerObject()->isJedi())
-	{
+	PlayerObject* ghost = creo->getPlayerObject();
+
+	if (ghost && ghost->isJedi()) {
 		if ((object->isRobeObject() && cast<RobeObject*>( object)->getSkillRequired() != "") || (object->isWeaponObject() && cast<WeaponObject*>(object)->isJediWeapon()))
 			VisibilityManager::instance()->increaseVisibility(creo);
 	}
