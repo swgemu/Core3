@@ -21,6 +21,7 @@
 #include "server/zone/packets/object/CombatAction.h"
 #include "QueueCommand.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/objects/tangible/threat/ThreatMap.h"
 
 class DotPackCommand : public QueueCommand {
 protected:
