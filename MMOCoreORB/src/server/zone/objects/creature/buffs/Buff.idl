@@ -121,6 +121,8 @@ class Buff extends ManagedObject implements Logger {
 	 */
 	public native void notifyLoadFromDatabase();
 	
+	public native void loadBuffDurationEvent(CreatureObject creo);
+	
 	public void init() {
 		attributeModifiers.setNoDuplicateInsertPlan();
 		attributeModifiers.setNullValue(0);

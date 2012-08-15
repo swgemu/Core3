@@ -120,6 +120,8 @@
 #include "ai/AiActor.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 
+#include "buffs/BuffDurationEvent.h"
+
 float CreatureObjectImplementation::DEFAULTRUNSPEED = 5.376;
 
 void CreatureObjectImplementation::initializeTransientMembers() {
@@ -1783,6 +1785,12 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 
 	if (bankCredits < 0)
 		bankCredits = 0;
+
+	for (int i = 0; i < creatureBuffs.getBuffListSize(); ++i) {
+		ManagedReference<Buff*> buff = creatureBuffs.getBuffByIndex(i);
+
+		buff->loadBuffDurationEvent(_this.get());
+	}
 
 	if (isIncapacitated()) {
 		int health = getHAM(CreatureAttribute::HEALTH);

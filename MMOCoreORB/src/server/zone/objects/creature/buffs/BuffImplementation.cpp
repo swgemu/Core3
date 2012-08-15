@@ -62,30 +62,34 @@ void BuffImplementation::initializeTransientMembers() {
 	skillModifiers.setNullValue(0);
 }
 
-void BuffImplementation::notifyLoadFromDatabase() {
-
-	if (buffEvent != NULL && buffEvent->isScheduled()) {
-		buffEvent->cancel();
-		error("Buff had event scheduled before it was loaded!");
-	}
-
-	//info("initializeTransientMembers() nextExecutionTime difference from now" + String::valueOf(nextExecutionTime.miliDifference()), true);
-
+void BuffImplementation::loadBuffDurationEvent(CreatureObject* creo) {
 	if(nextExecutionTime.getTime() - time(0) > buffDuration) {
 		error("Buff timer was f'ed in the a!  Serialized Time:" + String::valueOf((int)(nextExecutionTime.getTime() - time(0))) + " Duration: " + String::valueOf(buffDuration));
 		nextExecutionTime = time(0) + (int)buffDuration;
 	}
 
 	if (nextExecutionTime.isPast()) {
-		buffEvent = new BuffDurationEvent(creature.get(), _this.get());
+		buffEvent = new BuffDurationEvent(creo, _this.get());
 		buffEvent->execute();
 		//info("nextExeutionTime.isPast()", true);
 	} else {
-		buffEvent = new BuffDurationEvent(creature.get(), _this.get());
+		buffEvent = new BuffDurationEvent(creo, _this.get());
 		buffEvent->schedule(nextExecutionTime);
 
 		//info("scheduling buffEvent with nextExecutionTime difference from now" + String::valueOf(nextExecutionTime.miliDifference()), true);
 	}
+}
+
+void BuffImplementation::notifyLoadFromDatabase() {
+/*
+	if (buffEvent != NULL && buffEvent->isScheduled()) {
+		buffEvent->cancel();
+		error("Buff had event scheduled before it was loaded!");
+	}
+
+	*/
+
+	//info("initializeTransientMembers() nextExecutionTime difference from now" + String::valueOf(nextExecutionTime.miliDifference()), true);
 }
 
 void BuffImplementation::sendTo(CreatureObject* player) {

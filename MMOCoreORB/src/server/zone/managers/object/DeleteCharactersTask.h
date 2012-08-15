@@ -24,6 +24,9 @@ public:
 	void run() {
 		ZoneServer* server = ServerCore::getZoneServer();
 
+		if (server == NULL)
+			return;
+
 		info("Running delete characters task.", true);
 
 		int galaxyid = server->getGalaxyID();

@@ -85,6 +85,8 @@ public:
 
 	void notifyLoadFromDatabase();
 
+	void loadBuffDurationEvent(CreatureObject* creo);
+
 	void init();
 
 	void sendTo(CreatureObject* player);
@@ -250,6 +252,8 @@ public:
 
 	void notifyLoadFromDatabase();
 
+	void loadBuffDurationEvent(CreatureObject* creo);
+
 	void init();
 
 	virtual void sendTo(CreatureObject* player);
@@ -378,6 +382,8 @@ public:
 	void initializeTransientMembers();
 
 	void notifyLoadFromDatabase();
+
+	void loadBuffDurationEvent(CreatureObject* creo);
 
 	void init();
 
