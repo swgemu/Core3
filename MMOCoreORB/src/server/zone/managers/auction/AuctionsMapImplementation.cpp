@@ -167,14 +167,19 @@ int AuctionsMapImplementation::removeBazaarItem(SceneObject* vendor,  AuctionIte
 }
 
 TerminalListVector AuctionsMapImplementation::getVendorTerminalData(const String& planet, const String& region, SceneObject* vendor) {
+	Locker locker(_this.get());
+
 	return vendorItemsForSale.getTerminalData(planet, region, vendor);
 }
 
 TerminalListVector AuctionsMapImplementation::getBazaarTerminalData(const String& planet, const String& region, SceneObject* vendor) {
+	Locker locker(_this.get());
+
 	return bazaarItemsForSale.getTerminalData(planet, region, vendor);
 }
 
 int AuctionsMapImplementation::getVendorItemCount(SceneObject* vendor) {
+	Locker locker(_this.get());
 
 	if(vendor == NULL) {
 		logger.error("null vendor in AuctionsMapImplementation::getVendorItemCount");
@@ -190,6 +195,7 @@ int AuctionsMapImplementation::getVendorItemCount(SceneObject* vendor) {
 }
 
 void AuctionsMapImplementation::deleteTerminalItems(SceneObject* vendor) {
+	Locker locker(_this.get());
 
 	if(vendor->isBazaarTerminal()) {
 		logger.error("null zone in AuctionsMapImplementation::deleteTerminalItems");
@@ -236,6 +242,7 @@ void AuctionsMapImplementation::sendVendorUpdateMail(SceneObject* vendor, bool i
 }
 
 void AuctionsMapImplementation::updateUID(SceneObject* vendor, const String& oldUID, const String& newUID) {
+	Locker locker(_this.get());
 
 	if (vendor == NULL) {
 		logger.error("NULL vendor while updating UID  Vendor Is Bazaar: " + String::valueOf(vendor->isBazaarTerminal()));
@@ -261,6 +268,7 @@ void AuctionsMapImplementation::updateUID(SceneObject* vendor, const String& old
 }
 
 void AuctionsMapImplementation::updateVendorSearch(SceneObject* vendor, bool enabled) {
+	Locker locker(_this.get());
 
 	if (vendor == NULL)
 		return;

@@ -111,7 +111,7 @@ class AuctionsMap extends ManagedObject {
 	
 	public native void deleteTerminalItems(SceneObject vendor);
 	
-	public int getBazaarItemCount(CreatureObject player) {
+	public synchronized int getBazaarItemCount(CreatureObject player) {
 		return bazaarCount.get(player.getObjectID());
 	}
 	
