@@ -83,6 +83,7 @@ dathomir_regions = {
 }
 
 dathomir_static_spawns = {
+	{"nightsister_spell_weaver",900,-849,147,2788,142,0, "", ""},
 	{"nightsister_rancor",900,-2498.9,125.8,1508.8,0,0, "", ""},
 	{"nightsister_rancor",900,-2544.6,126,1508.8,0,0, "", ""},
 	{"nightsister_rancor",900,114.7,-67.3,-88.6,97,8575582, "", ""},
