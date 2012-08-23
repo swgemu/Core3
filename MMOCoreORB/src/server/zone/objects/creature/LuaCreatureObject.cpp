@@ -22,6 +22,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getBankCredits", &LuaCreatureObject::getBankCredits },
 		{ "setBankCredits", &LuaCreatureObject::setBankCredits },
 		{ "sendSystemMessage", &LuaCreatureObject::sendSystemMessage },
+		{ "sendSystemMessageWithDI", &LuaCreatureObject::sendSystemMessageWithDI },
 		{ "sendGroupMessage", &LuaCreatureObject::sendGroupMessage },
 		{ "playMusicMessage", &LuaCreatureObject::playMusicMessage },
 		{ "sendNewbieTutorialRequest", &LuaCreatureObject::sendNewbieTutorialRequest },
@@ -160,6 +161,18 @@ int LuaCreatureObject::sendOpenHolocronToPageMessage(lua_State* L) {
 int LuaCreatureObject::sendSystemMessage(lua_State* L) {
 	String value = lua_tostring(L, -1);
 	realObject->sendSystemMessage(value);
+
+	return 0;
+}
+
+int LuaCreatureObject::sendSystemMessageWithDI(lua_State* L) {
+	String text = lua_tostring(L, -2);
+	uint32 value = (uint32) lua_tonumber(L, -1);
+
+	StringIdChatParameter param(text);
+	param.setDI(value);
+
+	realObject->sendSystemMessage(param);
 
 	return 0;
 }
