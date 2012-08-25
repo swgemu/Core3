@@ -501,7 +501,7 @@ int LuaSceneObject::setObjectName(lua_State* L) {
 }
 
 int LuaSceneObject::isASubChildOf(lua_State* L) {
-	SceneObject* obj = lua_touserdata(L, -1);
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
 
 	lua_pushboolean(L, realObject->isASubChildOf(obj));
 
