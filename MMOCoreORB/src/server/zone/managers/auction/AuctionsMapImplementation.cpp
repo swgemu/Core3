@@ -61,7 +61,7 @@ int AuctionsMapImplementation::addVendorItem(CreatureObject* player, const Strin
 	if(vendorItems == NULL)
 		return ItemSoldMessage::INVALIDAUCTIONER;
 
-	Locker vlocker(vendorItems);
+	//Locker vlocker(vendorItems);
 
 	int result = vendorItems->put(item);
 
@@ -90,7 +90,7 @@ int AuctionsMapImplementation::addBazaarItem(CreatureObject* player, const Strin
 	if(bazaarItems == NULL)
 		return ItemSoldMessage::INVALIDAUCTIONER;
 
-	Locker blocker(bazaarItems);
+	//Locker blocker(bazaarItems);
 	int result = bazaarItems->put(item);
 
 	if(result == -1)
@@ -125,7 +125,7 @@ int AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, AuctionItem
 	if(!vendorItems->contains(item))
 		return ItemSoldMessage::INVALIDITEM;
 
-	Locker vlocker(vendorItems);
+	//Locker vlocker(vendorItems);
 
 	if(vendorItems->removeElement(item)) {
 
@@ -153,7 +153,7 @@ int AuctionsMapImplementation::removeBazaarItem(SceneObject* vendor,  AuctionIte
 		return ItemSoldMessage::INVALIDITEM;
 
 
-	Locker blocker(bazaarItems);
+	//Locker blocker(bazaarItems);
 
 	if(bazaarItems->removeElement(item)) {
 

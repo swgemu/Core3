@@ -31,8 +31,8 @@ public:
 
 	bool createTerminalListing(const String& planet, const String& region, SceneObject* vendor) {
 
-		Locker locker(this);
-		Locker glocker(&galaxyListing);
+		//Locker locker(this);
+		//Locker glocker(&galaxyListing);
 
 		if(vendor == NULL) {
 			warning("unable to create NULL vendor");
@@ -85,8 +85,8 @@ public:
 			return false;
 		}
 
-		Locker locker(this);
-		Locker glocker(&galaxyListing);
+		//Locker locker(this);
+		//Locker glocker(&galaxyListing);
 
 		Reference<TerminalRegionList*> existingRegion = getVendorRegion(vendor);
 		if(existingRegion == NULL)
@@ -114,13 +114,13 @@ public:
 		if(itemList->isEmpty())
 			return true;
 
-		Locker locker(itemList);
+		//Locker locker(itemList);
 		for(int i = 0; i < itemList->size(); ++i) {
 			ManagedReference<AuctionItem* > item = itemList->get(i);
 			if(item == NULL)
 				continue;
 
-			Locker locker(item);
+			//Locker locker(item);
 			item->setVendorUID(newVuid);
 		}
 
@@ -138,7 +138,7 @@ public:
 		if(itemList == NULL)
 			return;
 
-		Locker locker(itemList);
+		//Locker locker(itemList);
 		itemList->setSearchable(enabled);
 	}
 
@@ -166,7 +166,7 @@ public:
 
 		TerminalListVector terminals;
 
-		ReadLocker rlocker(this);
+		//ReadLocker rlocker(this);
 
 		for(int i = 0; i < size(); ++i) {
 
@@ -283,7 +283,7 @@ private:
 	void getPlanetListing(TerminalListVector* terminals, TerminalPlanetList* planetList) {
 
 		if(planetList != NULL) {
-			ReadLocker rlocker(planetList);
+			//ReadLocker rlocker(planetList);
 
 			for(int j = 0; j < planetList->size(); ++j) {
 
@@ -299,7 +299,7 @@ private:
 	void getRegionListing(TerminalListVector* terminals, TerminalRegionList* regionList) {
 
 		if(regionList != NULL) {
-			ReadLocker rlocker(regionList);
+			//ReadLocker rlocker(regionList);
 
 			for(int i = 0; i < regionList->size(); ++i) {
 
