@@ -59,6 +59,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "clearContainerDefaultDenyPermission", &LuaSceneObject::clearContainerDefaultDenyPermission},
 		{ "hasActiveArea", &LuaSceneObject::hasActiveArea},
 		{ "setObjectName", &LuaSceneObject::setObjectName},
+		{ "isASubChildOf", &LuaSceneObject::isASubChildOf},
 		{ 0, 0 }
 
 };
@@ -497,4 +498,12 @@ int LuaSceneObject::setObjectName(lua_State* L) {
 	realObject->setObjectName(stringid);
 
 	return 0;
+}
+
+int LuaSceneObject::isASubChildOf(lua_State* L) {
+	SceneObject* obj = lua_touserdata(L, -1);
+
+	lua_pushboolean(L, realObject->isASubChildOf(obj));
+
+	return 1;
 }
