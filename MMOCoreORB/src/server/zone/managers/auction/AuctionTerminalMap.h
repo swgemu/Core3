@@ -299,7 +299,7 @@ private:
 	void getRegionListing(TerminalListVector* terminals, TerminalRegionList* regionList) {
 
 		if(regionList != NULL) {
-			ReadLocker rlocker(planetList);
+			ReadLocker rlocker(regionList);
 
 			for(int i = 0; i < regionList->size(); ++i) {
 
