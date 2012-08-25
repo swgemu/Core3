@@ -166,26 +166,20 @@ public:
 
 		TerminalListVector terminals;
 
-		try {
+		ReadLocker rlocker(this);
 
-			rlock();
+		for(int i = 0; i < size(); ++i) {
 
-			for(int i = 0; i < size(); ++i) {
+			Reference<TerminalItemList*> itemList = get(i);
 
-				Reference<TerminalItemList*> itemList = get(i);
+			if(itemList == NULL)
+				continue;
 
-				if(itemList == NULL)
-					continue;
+			terminals.add(itemList);
 
-				terminals.add(itemList);
-
-			}
-
-			unlock();
 		}
-		catch(Exception& e) {
-			unlock();
-		}
+
+
 
 		return terminals;
 	}
@@ -289,47 +283,32 @@ private:
 	void getPlanetListing(TerminalListVector* terminals, TerminalPlanetList* planetList) {
 
 		if(planetList != NULL) {
+			ReadLocker rlocker(planetList);
 
-			try {
+			for(int j = 0; j < planetList->size(); ++j) {
 
-				planetList->rlock();
+				Reference<TerminalRegionList*> regionList = planetList->get(j);
 
-				for(int j = 0; j < planetList->size(); ++j) {
-
-					Reference<TerminalRegionList*> regionList = planetList->get(j);
-
-					if(regionList != NULL)
-						getRegionListing(terminals, regionList);
-				}
-				planetList->unlock();
+				if(regionList != NULL)
+					getRegionListing(terminals, regionList);
 			}
-			catch(Exception& e) {
-				planetList->unlock();
-			}
+
 		}
 	}
 
 	void getRegionListing(TerminalListVector* terminals, TerminalRegionList* regionList) {
 
 		if(regionList != NULL) {
-			try {
+			ReadLocker rlocker(planetList);
 
-				regionList->rlock();
+			for(int i = 0; i < regionList->size(); ++i) {
 
-				for(int i = 0; i < regionList->size(); ++i) {
+				Reference<TerminalItemList*> itemList = regionList->get(i);
 
-					Reference<TerminalItemList*> itemList = regionList->get(i);
+				if(itemList == NULL)
+					continue;
 
-					if(itemList == NULL)
-						continue;
-
-					terminals->add(itemList);
-				}
-
-				regionList->unlock();
-			}
-			catch(Exception& e) {
-				regionList->unlock();
+				terminals->add(itemList);
 			}
 		}
 	}

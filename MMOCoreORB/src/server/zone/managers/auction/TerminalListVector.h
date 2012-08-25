@@ -19,6 +19,19 @@ public:
 		searchable = false;
 	}
 
+	TerminalItemList(const TerminalItemList& list) : SortedVector<ManagedReference<AuctionItem*> >(list), ReadWriteLock() {
+		searchable = list.searchable;
+	}
+
+	TerminalItemList& operator=(const TerminalItemList& list) {
+		if (this == &list)
+			return *this;
+
+		searchable = list.searchable;
+
+		return *this;
+	}
+
 	inline void setSearchable(bool value) {
 		searchable = value;
 	}
