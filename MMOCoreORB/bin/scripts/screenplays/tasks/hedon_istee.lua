@@ -236,7 +236,7 @@ function hedon_istee_holo_map_menucomponent:handleObjectMenuSelect(pSceneObject,
 	
 	local luaSceneObject = LuaSceneObject(pSceneObject)
 	
-	if (luaSceneObject:isASubChildOf(pPlayer) == false)
+	if (luaSceneObject:isASubChildOf(pPlayer) == false) then
 		return 0
 	end
 	
