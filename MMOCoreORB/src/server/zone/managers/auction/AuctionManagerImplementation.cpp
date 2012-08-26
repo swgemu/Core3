@@ -621,7 +621,17 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 
 		int increase = price1 - item->getPrice();
 
-		priorBidder->subtractBankCredits(proxyBid + increase - item->getPrice());
+		int fullPrice = proxyBid + increase - item->getPrice();
+
+		//TODO: prior didnt have enough money -> assert.. fix properly
+		if (priorBidder->getBankCredits() < fullPrice) {
+			BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), BidAuctionResponseMessage::NOTENOUGHCREDITS);
+			player->sendMessage(msg);
+
+			return;
+		}
+
+		priorBidder->subtractBankCredits(fullPrice);
 		item->setPrice(proxyBid + increase);
 		BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), BidAuctionResponseMessage::SUCCEDED);
 		player->sendMessage(msg);
