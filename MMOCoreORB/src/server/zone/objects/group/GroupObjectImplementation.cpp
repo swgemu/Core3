@@ -79,6 +79,8 @@ void GroupObjectImplementation::broadcastMessage(CreatureObject* player, BaseMes
 }
 
 void GroupObjectImplementation::addMember(SceneObject* player) {
+	Locker locker(_this.get());
+
 	GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(_this.get());
 	grp->startUpdate(1);
 	groupMembers.add(player, grp);
@@ -236,6 +238,10 @@ bool GroupObjectImplementation::hasSquadLeader() {
 }
 
 void GroupObjectImplementation::addGroupModifiers() {
+	ManagedReference<GroupObject*> thisGroup = _this.get();
+
+	Locker glocker(thisGroup);
+
 	for (int i = 0; i < groupMembers.size(); i++) {
 		CreatureObject* crea = cast<CreatureObject*>(groupMembers.get(i).get());
 
@@ -246,6 +252,9 @@ void GroupObjectImplementation::addGroupModifiers() {
 			continue;
 
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( crea);
+
+		Locker clocker(player, thisGroup);
+
 		addGroupModifiers(player);
 	}
 

@@ -21,8 +21,13 @@ public:
 
 		if (player->isGrouped()) {
 			ManagedReference<GroupObject*> group = player->getGroup();
+
 			if (group == NULL)
 				return;
+
+			playerLocker.release();
+
+			Locker glocker(group);
 
 			if (group->hasSquadLeader())
 				group->addGroupModifiers();
