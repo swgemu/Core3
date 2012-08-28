@@ -457,7 +457,6 @@ int StructureManager::redeedStructure(CreatureObject* creature) {
 	Locker _locker(structureObject);
 
 	ManagedReference<StructureDeed*> deed = dynamic_cast<StructureDeed*>(server->getObject(structureObject->getDeedObjectID()));
-	structureObject->setDeedObjectID(0); //Set this to 0 so the deed doesn't get destroyed with the structure.
 
 	int maint = structureObject->getSurplusMaintenance();
 	int redeedCost = structureObject->getRedeedCost();
@@ -474,6 +473,8 @@ int StructureManager::redeedStructure(CreatureObject* creature) {
 		} else {
 			deed->setSurplusMaintenance(maint - redeedCost);
 			deed->setSurplusPower(structureObject->getSurplusPower());
+
+			structureObject->setDeedObjectID(0); //Set this to 0 so the deed doesn't get destroyed with the structure.
 
 			destroyStructure(structureObject);
 
