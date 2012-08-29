@@ -42,7 +42,7 @@ public:
 				Emote* emsg = new Emote(creature, creature, 0, 72, false);
 				creature->broadcastMessage(emsg, true);
 
-				AreaTrackTask* att = new AreaTrackTask(creature, index);
+				Reference<AreaTrackTask*> att = new AreaTrackTask(creature, index);
 				creature->addPendingTask("areatrack", att, 6000);
 				creature->addCooldown("areatrack", 6000);
 			}
