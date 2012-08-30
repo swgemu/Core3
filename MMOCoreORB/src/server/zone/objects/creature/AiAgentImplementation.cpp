@@ -1287,8 +1287,12 @@ void AiAgentImplementation::activateMovementEvent() {
 		moveEvent->schedule(UPDATEMOVEMENTINTERVAL);
 	}
 
-	if (!moveEvent->isScheduled())
-		moveEvent->schedule(UPDATEMOVEMENTINTERVAL);
+	try {
+		if (!moveEvent->isScheduled())
+			moveEvent->schedule(UPDATEMOVEMENTINTERVAL);
+	} catch (IllegalArgumentException& e) {
+
+	}
 }
 
 void AiAgentImplementation::activateWaitEvent() {
