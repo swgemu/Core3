@@ -47,6 +47,7 @@ object_building_player_player_house_corellia_medium_style_01 = object_building_p
 	allowedZones = {"corellia", "talus"},
 	publicStructure = 0,
 	skillMods = {
+		{"private_medical_rating", 65},
 		{"private_buff_mind", 100},
 		{"private_med_battle_fatigue", 5}
 	},

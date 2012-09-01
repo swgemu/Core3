@@ -44,6 +44,9 @@
 object_building_military_small_imperial_cloning_facility_s02 = object_building_military_shared_small_imperial_cloning_facility_s02:new {
 	planetMapCategory = "cloningfacility",
 
+	skillMods = {
+		{"private_medical_rating", 100}
+	},
 
 	spawningPoints = {                     
 		{ x = 3.61815, z = 0.125266, y = -3.75189, ow = -0.705876, ox = 0, oz = 0, oy = 0.708336, cellid = 5 },

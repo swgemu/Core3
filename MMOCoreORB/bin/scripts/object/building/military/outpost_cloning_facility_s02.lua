@@ -44,6 +44,9 @@
 object_building_military_outpost_cloning_facility_s02 = object_building_military_shared_outpost_cloning_facility_s02:new {
 	planetMapCategory = "cloningfacility",
 
+	skillMods = {
+		{"private_medical_rating", 100}
+	},
 
 	spawningPoints = {                     
 		{ x = 4.44727, z = 0.125266, y = -3.80136, ow = 0.707745, ox = 0, oz = 0, oy = -0.706468, cellid = 5 },

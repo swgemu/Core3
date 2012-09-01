@@ -47,6 +47,7 @@ object_building_player_player_house_generic_large_style_02 = object_building_pla
 	allowedZones = {"corellia", "dantooine", "lok", "naboo", "rori", "talus", "tatooine"},
 	publicStructure = 0,
 	skillMods = {
+		{"private_medical_rating", 65},
 		{"private_buff_mind", 100},
 		{"private_med_battle_fatigue", 5}
 	},

@@ -43,7 +43,12 @@
 
 object_building_military_military_base_shed_imperial_style_cantina_s01 = object_building_military_shared_military_base_shed_imperial_style_cantina_s01:new {
 	gameObjectType = 518,
-	planetMapCategory = "cantina"
+	planetMapCategory = "cantina",
+	skillMods = {
+		{"private_med_wound_mind", 20},
+		{"private_buff_mind", 100},
+		{"private_med_battle_fatigue", 5}
+	}
 }
 
 ObjectTemplates:addTemplate(object_building_military_military_base_shed_imperial_style_cantina_s01, "object/building/military/military_base_shed_imperial_style_cantina_s01.iff")
