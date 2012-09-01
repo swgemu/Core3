@@ -278,6 +278,9 @@ bool LootManagerImplementation::createLootFromCollection(SceneObject* container,
 
 		LootGroups* lootGroups = entry->getLootGroups();
 
+		//Now we do the second roll to determine loot group.
+		roll = System::random(10000000);
+
 		//Select the loot group to use.
 		for (int i = 0; i < lootGroups->count(); ++i) {
 			LootGroupEntry* entry = lootGroups->get(i);
@@ -308,7 +311,7 @@ bool LootManagerImplementation::createLoot(SceneObject* container, const String&
 		return false;
 	}
 
-	//Now we do the second roll for the item out of the group.
+	//Now we do the third roll for the item out of the group.
 	int roll = System::random(10000000);
 
 	Reference<LootItemTemplate*> itemTemplate = lootGroupMap->getLootItemTemplate(group->getLootItemTemplateForRoll(roll));
