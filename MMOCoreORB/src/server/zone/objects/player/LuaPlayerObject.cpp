@@ -23,6 +23,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "increaseFactionStanding", &LuaPlayerObject::increaseFactionStanding },
 		{ "decreaseFactionStanding", &LuaPlayerObject::decreaseFactionStanding },
 		{ "addWaypoint", &LuaPlayerObject::addWaypoint },
+		{ "removeWaypoint", &LuaPlayerObject::removeWaypoint },
 		{ "addRewardedSchematic", &LuaPlayerObject::addRewardedSchematic },
 		{ "addPermissionGroup", &LuaPlayerObject::addPermissionGroup },
 		{ "removePermissionGroup", &LuaPlayerObject::removePermissionGroup },
@@ -131,6 +132,17 @@ int LuaPlayerObject::addWaypoint(lua_State* L) {
 		waypoint->setDetailedDescription(desc);
 
 	realObject->setWaypoint(waypoint, notifyClient);
+
+	lua_pushinteger(L, waypoint->getObjectID());
+
+	return 1;
+}
+
+int LuaPlayerObject::removeWaypoint(lua_State* L) {
+	unsigned long long int waypointID = lua_tointeger(L, -2);
+	bool notifyClient = lua_toboolean(L, -1);
+
+	realObject->removeWaypoint(waypointID, notifyClient);
 
 	return 0;
 }
