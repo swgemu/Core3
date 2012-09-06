@@ -32,6 +32,9 @@ namespace scene {
 		int getPositionX(lua_State* L);
 		int getPositionZ(lua_State* L);
 		int getPositionY(lua_State* L);
+		int getWorldPositionX(lua_State* L);
+		int getWorldPositionZ(lua_State* L);
+		int getWorldPositionY(lua_State* L);
 		int getObjectID(lua_State* L);
 		int getParentID(lua_State* L);
 		int isInRange(lua_State* L);

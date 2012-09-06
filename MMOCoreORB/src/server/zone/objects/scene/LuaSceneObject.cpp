@@ -21,6 +21,9 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getPositionX", &LuaSceneObject::getPositionX },
 		{ "getPositionY", &LuaSceneObject::getPositionY },
 		{ "getPositionZ", &LuaSceneObject::getPositionZ },
+		{ "getWorldPositionX", &LuaSceneObject::getWorldPositionX },
+		{ "getWorldPositionY", &LuaSceneObject::getWorldPositionY },
+		{ "getWorldPositionZ", &LuaSceneObject::getWorldPositionZ },
 		{ "getParentID", &LuaSceneObject::getParentID },
 		{ "isInRangeWithObject", &LuaSceneObject::isInRangeWithObject },
 		{ "setCustomObjectName", &LuaSceneObject::setCustomObjectName},
@@ -158,6 +161,24 @@ int LuaSceneObject::getPositionX(lua_State* L) {
 
 int LuaSceneObject::getPositionZ(lua_State* L) {
 	lua_pushnumber(L, realObject->getPositionZ());
+
+	return 1;
+}
+
+int LuaSceneObject::getWorldPositionY(lua_State* L) {
+	lua_pushnumber(L, realObject->getWorldPositionY());
+
+	return 1;
+}
+
+int LuaSceneObject::getWorldPositionX(lua_State* L) {
+	lua_pushnumber(L, realObject->getWorldPositionX());
+
+	return 1;
+}
+
+int LuaSceneObject::getWorldPositionZ(lua_State* L) {
+	lua_pushnumber(L, realObject->getWorldPositionZ());
 
 	return 1;
 }

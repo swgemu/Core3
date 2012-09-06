@@ -21,6 +21,7 @@
 #include "ScreenPlayTask.h"
 #include "ScreenPlayObserver.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/player/creation/PlayerCreationManager.h"
 #include "server/ServerCore.h"
 #include "server/chat/ChatManager.h"
@@ -127,6 +128,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "clearScreenPlayData", clearScreenPlayData);
 	lua_register(luaEngine->getLuaState(), "getObjectTemplatePathByCRC", getObjectTemplatePathByCRC);
 	lua_register(luaEngine->getLuaState(), "getTimestamp", getTimestamp);
+	lua_register(luaEngine->getLuaState(), "getSpawnPoint", getSpawnPoint);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -1106,4 +1108,51 @@ int DirectorManager::isZoneEnabled(lua_State* L) {
 	lua_pushboolean(L, (zone != NULL));
 	
 	return 1;
+}
+
+int DirectorManager::getSpawnPoint(lua_State* L) {
+	float maximumDistance = lua_tonumber(L, -1);
+	float minimumDistance = lua_tonumber(L, -2);
+	float y = lua_tonumber(L, -3);
+	float x = lua_tonumber(L, -4);
+	CreatureObject* creatureObject = (CreatureObject*) lua_touserdata(L, -5);
+
+	if (creatureObject == NULL) {
+		return 0;
+	}
+
+	bool found = false;
+	Vector3 position;
+	int retries = 20;
+
+	while (!found && retries > 0) {
+		float distance = minimumDistance + System::random(maximumDistance - minimumDistance);
+		float angle = System::random(360);
+		float newAngle = angle * (M_PI / 180.0f);
+
+		float newX = x + (cos(newAngle) * distance); // client has x/y inverted
+		float newY = y + (sin(newAngle) * distance);
+		float newZ = creatureObject->getZone()->getHeight(newX, newY);
+
+		position = Vector3(newX, newY, newZ);
+
+		if (creatureObject->getZone()->isWithinBoundaries(position)) {
+			found = creatureObject->getZone()->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL);
+		}
+		retries--;
+	}
+
+	if (found) {
+		lua_newtable(L);
+		lua_pushnumber(L, position.getX());
+		lua_pushnumber(L, position.getZ());
+		lua_pushnumber(L, position.getY());
+		lua_rawseti(L, -4, 3);
+		lua_rawseti(L, -3, 2);
+		lua_rawseti(L, -2, 1);
+
+		return 1;
+	} else {
+		return 0;
+	}
 }

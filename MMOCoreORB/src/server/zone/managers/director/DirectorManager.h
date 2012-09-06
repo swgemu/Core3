@@ -114,6 +114,7 @@ namespace server {
 		static int createParameterMessage(lua_State* L);
 		static int sendParameterMessage(lua_State* L);
 		static int getTimestamp(lua_State* L);
+		static int getSpawnPoint(lua_State* L);
 
 	private:
 		void initializeLuaEngine(Lua* lua);
