@@ -179,7 +179,7 @@ class CreatureObject extends TangibleObject {
 	protected SkillModList skillModList;
 	
 	@dereferenced
-	protected Mutex skillModMutex;
+	protected transient Mutex skillModMutex;
 		
 	@transactional
 	protected transient CommandQueueActionVector commandQueue;
