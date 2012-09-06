@@ -86,6 +86,7 @@ include server.zone.objects.creature.variables.WearablesDeltaVector;
 import system.lang.Long;
 import engine.service.proto.BasePacket;
 import server.zone.packets.scene.AttributeListMessage;
+import system.thread.Mutex;
 
 class CreatureObject extends TangibleObject {
 	protected transient ZoneClientSession owner;
@@ -176,6 +177,9 @@ class CreatureObject extends TangibleObject {
 		
 	@dereferenced
 	protected SkillModList skillModList;
+	
+	@dereferenced
+	protected Mutex skillModMutex;
 		
 	@transactional
 	protected transient CommandQueueActionVector commandQueue;

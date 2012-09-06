@@ -1209,7 +1209,7 @@ void CreatureObjectImplementation::removeSkill(const String& skill,
 
 void CreatureObjectImplementation::addSkillMod(const int modType, const String& skillMod, int value, bool notifyClient) {
 
-	Locker locker(_this.get());
+	Locker locker(&skillModMutex);
 
 	SkillModEntry oldMod;
 
