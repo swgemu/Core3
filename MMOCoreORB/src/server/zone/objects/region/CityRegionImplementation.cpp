@@ -261,6 +261,7 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 		object->setCityRegion(NULL);
 	}
 
+
 	if (object->isBazaarTerminal() || object->isVendor()) {
 		if (object->isBazaarTerminal())
 			bazaars.drop(object->getObjectID());
