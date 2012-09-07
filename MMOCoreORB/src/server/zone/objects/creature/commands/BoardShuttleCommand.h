@@ -123,8 +123,11 @@ public:
 		}
 
 		// Is shuttle ready to board yet?
-		if (!planetManager->checkShuttleStatus(creature, shuttle))
-			return GENERALERROR;
+		// Shuttle at Theed Spaceport, Naboo should always be available. Even when the shuttle isn't there.
+		if (!closestPoint->isPoint("naboo","Theed Spaceport")){
+			if (!planetManager->checkShuttleStatus(creature, shuttle))
+				return GENERALERROR;
+		}
 
 		uint64 ticketoid = target;
 
