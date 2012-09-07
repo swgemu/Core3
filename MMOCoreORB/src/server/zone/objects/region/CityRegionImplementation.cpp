@@ -247,10 +247,21 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 }
 
 void CityRegionImplementation::notifyExit(SceneObject* object) {
-	object->setCityRegion(NULL);
+	//pre: no 2 different city regions should ever overlap, only 2 Regions of the same city region
+	ManagedReference<Region*> activeRegion = cast<Region*>(object->getActiveRegion());
+
+	if (activeRegion != NULL) {
+		ManagedReference<CityRegion*> city = activeRegion->getCityRegion();
+
+		object->setCityRegion(city);
+
+		if (city == _this.get()) // if its the same city we wait till the object exits the last region
+			return;
+	} else {
+		object->setCityRegion(NULL);
+	}
 
 	if (object->isBazaarTerminal() || object->isVendor()) {
-
 		if (object->isBazaarTerminal())
 			bazaars.drop(object->getObjectID());
 
@@ -281,9 +292,7 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 		removeSpecializationModifiers(creature);
 	}
 
-
 	if (object->isStructureObject()) {
-
 		float x = object->getWorldPositionX();
 		float y = object->getWorldPositionY();
 
