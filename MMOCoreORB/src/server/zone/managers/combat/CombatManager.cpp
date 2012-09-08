@@ -1604,7 +1604,7 @@ void CombatManager::freeDuelList(CreatureObject* player, bool spam) {
 		ManagedReference<CreatureObject*> targetPlayer = ghost->getDuelListObject(0);
 		PlayerObject* targetGhost = targetPlayer->getPlayerObject();
 
-		if (targetPlayer != NULL && targetPlayer.get() != player) {
+		if (targetPlayer != NULL && targetGhost != NULL && targetPlayer.get() != player) {
 			try {
 				Locker clocker(targetPlayer, player);
 
