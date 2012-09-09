@@ -186,6 +186,8 @@ class PlanetManager extends ManagedService implements Logger {
 	
 	public native boolean isInRangeWithPoi(float x, float y, float range);
 	
+	public native boolean isInObjectsNoBuildZone(float x, float y, float extraMargin);
+	
 	/**
 	 * Gets the cost to travel via shuttleport/starport to the destination planet.
 	 * If the value is 0, then travel to the planet from this planet is disabled.

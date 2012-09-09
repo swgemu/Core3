@@ -218,6 +218,8 @@ public:
 
 	bool isInRangeWithPoi(float x, float y, float range);
 
+	bool isInObjectsNoBuildZone(float x, float y, float extraMargin);
+
 	int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
 
 	void sendPlanetTravelPointListResponse(CreatureObject* player);
@@ -379,6 +381,8 @@ public:
 
 	bool isInRangeWithPoi(float x, float y, float range);
 
+	bool isInObjectsNoBuildZone(float x, float y, float extraMargin);
+
 	int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
 
 	void sendPlanetTravelPointListResponse(CreatureObject* player);
@@ -497,6 +501,8 @@ public:
 	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild);
 
 	bool isInRangeWithPoi(float x, float y, float range);
+
+	bool isInObjectsNoBuildZone(float x, float y, float extraMargin);
 
 	int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
 
