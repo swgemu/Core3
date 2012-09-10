@@ -130,6 +130,8 @@ class TangibleObject extends SceneObject {
 		
 		sliceable = false;
 		sliced = false;
+		
+		threatMap = null;
 	}
 	
 	/**
@@ -538,9 +540,7 @@ class TangibleObject extends SceneObject {
 	}
 
 	@local
-	public ThreatMap getThreatMap() {
-		return threatMap;
-	}
+	public native ThreatMap getThreatMap();
 	
 	/*
 	 * Set the initial values for this object based on the schematic

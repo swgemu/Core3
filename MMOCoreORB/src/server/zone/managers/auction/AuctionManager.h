@@ -119,6 +119,8 @@ using namespace server::zone::objects::scene;
 
 #include "server/zone/managers/auction/TerminalListVector.h"
 
+#include "server/zone/managers/auction/AuctionEventsMap.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/core/ManagedService.h"
@@ -230,7 +232,7 @@ protected:
 
 	ManagedReference<ZoneServer* > zoneServer;
 
-	VectorMap<unsigned long long, Task*> auctionEvents;
+	AuctionEventsMap auctionEvents;
 
 	VectorMap<ManagedReference<SceneObject* >, String> pendingUIDUpdates;
 

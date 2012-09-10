@@ -857,7 +857,7 @@ int CreatureObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 		CreatureObject* player = cast<CreatureObject*>( attacker);
 
 		if (damage > 0) {
-			threatMap->addDamage(player, damage, xp);
+			getThreatMap()->addDamage(player, damage, xp);
 		}
 	}
 

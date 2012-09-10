@@ -332,7 +332,7 @@ void AiAgentImplementation::doAttack() {
 		return;
 	}
 
-	CreatureObject* target = threatMap->getHighestThreatCreature();
+	CreatureObject* target = getThreatMap()->getHighestThreatCreature();
 
 	if (target != NULL && !defenderList.contains(target) && (!target->isDead() && !target->isIncapacitated()) && target->getDistanceTo(_this.get()) < 128.f && target->isAttackableBy(_this.get()) && lastDamageReceived.miliDifference() < 20000)
 		addDefender(target);
@@ -572,7 +572,8 @@ bool AiAgentImplementation::tryRetreat() {
 
 		homeLocation.setReached(false);
 
-		threatMap->removeAll();
+		if (threatMap != NULL)
+			threatMap->removeAll();
 
 		patrolPoints.removeAll();
 		patrolPoints.add(homeLocation);
@@ -613,11 +614,11 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 
 	if (defender != NULL) {
 		if (defender->isCreatureObject())
-			threatMap->dropDamage(cast<CreatureObject*>(defender));
+			getThreatMap()->dropDamage(cast<CreatureObject*>(defender));
 	}
 
 	if (followObject == defender) {
-		CreatureObject* target = threatMap->getHighestThreatCreature();
+		CreatureObject* target = getThreatMap()->getHighestThreatCreature();
 
 		if (target == NULL && defenderList.size() > 0) {
 			SceneObject* tarObj = defenderList.get(0);
@@ -644,7 +645,8 @@ void AiAgentImplementation::removeDefender(SceneObject* defender) {
 void AiAgentImplementation::clearCombatState(bool clearDefenders) {
 	CreatureObjectImplementation::clearCombatState(clearDefenders);
 
-	threatMap->removeAll();
+	if (threatMap != NULL)
+		threatMap->removeAll();
 
 	setOblivious();
 }
@@ -720,7 +722,9 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 	setPosture(CreaturePosture::UPRIGHT, false);
 
 	shockWounds = 0;
-	threatMap->removeAll();
+
+	if (threatMap != NULL)
+		threatMap->removeAll();
 
 	locker.release();
 
@@ -1364,7 +1368,7 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 		CreatureObject* player = cast<CreatureObject*>( attacker);
 
 		if (damage > 0) {
-			threatMap->addDamage(player, damage);
+			getThreatMap()->addDamage(player, damage);
 
 			if (System::random(5) == 1) {
 				setDefender(player);
@@ -1384,7 +1388,7 @@ int AiAgentImplementation::inflictDamage(TangibleObject* attacker, int damageTyp
 		CreatureObject* player = cast<CreatureObject*>( attacker);
 
 		if (damage > 0) {
-			threatMap->addDamage(player, damage, xp);
+			getThreatMap()->addDamage(player, damage, xp);
 
 			if (System::random(5) == 1) {
 				setDefender(player);

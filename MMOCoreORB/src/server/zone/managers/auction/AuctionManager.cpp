@@ -501,7 +501,7 @@ bool AuctionManagerImplementation::readObjectMember(ObjectInputStream* stream, c
 	}
 
 	if (_name == "AuctionManager.auctionEvents") {
-		TypeInfo<VectorMap<unsigned long long, Task*> >::parseFromBinaryStream(&auctionEvents, stream);
+		TypeInfo<AuctionEventsMap >::parseFromBinaryStream(&auctionEvents, stream);
 		return true;
 	}
 
@@ -557,7 +557,7 @@ int AuctionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<VectorMap<unsigned long long, Task*> >::toBinaryStream(&auctionEvents, stream);
+	TypeInfo<AuctionEventsMap >::toBinaryStream(&auctionEvents, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -613,6 +613,7 @@ AuctionsMap* AuctionManagerImplementation::getAuctionMap() {
 }
 
 void AuctionManagerImplementation::updateVendorUID(SceneObject* vendor, const String& oldUID, const String& newUID) {
+	Locker _locker(_this.get());
 	// server/zone/managers/auction/AuctionManager.idl():  		auctionMap.
 	if (auctionMap == NULL){
 	// server/zone/managers/auction/AuctionManager.idl():  			pendingUIDUpdates.put(vendor, newUID);
@@ -627,6 +628,7 @@ void AuctionManagerImplementation::updateVendorUID(SceneObject* vendor, const St
 }
 
 void AuctionManagerImplementation::updateVendorSearch(SceneObject* vendor, bool enabled) {
+	Locker _locker(_this.get());
 	// server/zone/managers/auction/AuctionManager.idl():  		auctionMap.updateVendorSearch(vendor, enabled);
 	auctionMap->updateVendorSearch(vendor, enabled);
 }
