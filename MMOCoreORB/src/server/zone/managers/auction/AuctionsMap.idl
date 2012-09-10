@@ -124,7 +124,7 @@ class AuctionsMap extends ManagedObject {
 	
 	public native void removeFromCommodityLimit(AuctionItem item);
 	
-	public int getBazaarCount() {
+	public synchronized int getBazaarCount() {
 		return bazaarItemsForSale.size();
 	}
 	

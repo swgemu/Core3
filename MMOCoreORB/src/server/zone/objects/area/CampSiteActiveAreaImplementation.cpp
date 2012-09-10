@@ -74,7 +74,7 @@ void CampSiteActiveAreaImplementation::notifyEnter(SceneObject* object) {
 
 		Locker locker(&taskMutex);
 
-		if(abandonTask->isScheduled())
+		if(abandonTask != NULL && abandonTask->isScheduled())
 			abandonTask->cancel();
 
 		object->registerObserver(ObserverEventType::STARTCOMBAT, campObserver);

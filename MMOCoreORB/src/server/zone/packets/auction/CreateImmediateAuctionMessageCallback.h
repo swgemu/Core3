@@ -45,7 +45,7 @@ public:
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer().get().get());
 		ManagedReference<TangibleObject*> vendor = cast<TangibleObject*>(server->getZoneServer()->getObject(vendorID));
 
-		if (player == NULL || (!vendor->isVendor() && !vendor->isBazaarTerminal()) || vendor == NULL)
+		if (player == NULL || vendor == NULL || (!vendor->isVendor() && !vendor->isBazaarTerminal()))
 			return;
 
 		Locker locker(player);

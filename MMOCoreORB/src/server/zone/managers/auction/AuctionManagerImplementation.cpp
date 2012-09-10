@@ -747,6 +747,10 @@ int AuctionManagerImplementation::checkRetrieve(CreatureObject* player, uint64 o
 		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
 
 	ManagedReference<SceneObject*> saleItem = zoneServer->getObject(objectIdToRetrieve);
+	
+	if (saleItem == NULL) {
+		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
+	}
 
 	if(saleItem->isIntangibleObject()) {
 		ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
@@ -1183,8 +1187,10 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 		refundAuction(item);
 		if(auctionEvents.contains(item->getAuctionedItemObjectID())) {
 			Reference<Task*> newTask = auctionEvents.get(item->getAuctionedItemObjectID());
+			
 			if(newTask != NULL)
 				newTask->cancel();
+				
 			auctionEvents.drop(item->getAuctionedItemObjectID());
 		}
 	}

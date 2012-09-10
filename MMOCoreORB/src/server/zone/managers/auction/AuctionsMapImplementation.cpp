@@ -61,7 +61,7 @@ int AuctionsMapImplementation::addVendorItem(CreatureObject* player, const Strin
 	if(vendorItems == NULL)
 		return ItemSoldMessage::INVALIDAUCTIONER;
 
-	Locker vlocker(vendorItems);
+	//Locker vlocker(vendorItems);
 
 	int result = vendorItems->put(item);
 
@@ -90,7 +90,7 @@ int AuctionsMapImplementation::addBazaarItem(CreatureObject* player, const Strin
 	if(bazaarItems == NULL)
 		return ItemSoldMessage::INVALIDAUCTIONER;
 
-	Locker blocker(bazaarItems);
+	//Locker blocker(bazaarItems);
 	int result = bazaarItems->put(item);
 
 	if(result == -1)
@@ -116,7 +116,8 @@ void AuctionsMapImplementation::deleteItem(SceneObject* vendor, AuctionItem* ite
 }
 
 void AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, AuctionItem* item) {
-
+	Locker locker(_this.get());
+		
 	Reference<TerminalItemList*> vendorItems = vendorItemsForSale.get(vendor->getObjectID());
 
 	if(vendorItems == NULL)
@@ -125,7 +126,7 @@ void AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, AuctionIte
 	if(!vendorItems->contains(item))
 		return;
 
-	Locker vlocker(vendorItems);
+	//Locker vlocker(vendorItems);
 
 	if(vendorItems->removeElement(item)) {
 
@@ -139,7 +140,8 @@ void AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, AuctionIte
 }
 
 void AuctionsMapImplementation::removeBazaarItem(SceneObject* vendor,  AuctionItem* item) {
-
+	Locker locker(_this.get());
+		
 	Reference<TerminalItemList*> bazaarItems = bazaarItemsForSale.get(vendor->getObjectID());
 
 	if(bazaarItems == NULL)
@@ -148,7 +150,7 @@ void AuctionsMapImplementation::removeBazaarItem(SceneObject* vendor,  AuctionIt
 	if(!bazaarItems->contains(item))
 		return;
 
-	Locker blocker(bazaarItems);
+	//Locker blocker(bazaarItems);
 
 	if(!bazaarItems->removeElement(item))
 		logger.error("unable to remove bazaar item");
@@ -156,15 +158,20 @@ void AuctionsMapImplementation::removeBazaarItem(SceneObject* vendor,  AuctionIt
 }
 
 TerminalListVector AuctionsMapImplementation::getVendorTerminalData(const String& planet, const String& region, SceneObject* vendor) {
+	Locker locker(_this.get());
+	
 	return vendorItemsForSale.getTerminalData(planet, region, vendor);
 }
 
 TerminalListVector AuctionsMapImplementation::getBazaarTerminalData(const String& planet, const String& region, SceneObject* vendor) {
+	Locker locker(_this.get());
+	
 	return bazaarItemsForSale.getTerminalData(planet, region, vendor);
 }
 
 int AuctionsMapImplementation::getVendorItemCount(SceneObject* vendor) {
-
+	Locker locker(_this.get());
+	
 	if(vendor == NULL) {
 		logger.error("null vendor in AuctionsMapImplementation::getVendorItemCount");
 		return 0;
@@ -179,7 +186,8 @@ int AuctionsMapImplementation::getVendorItemCount(SceneObject* vendor) {
 }
 
 void AuctionsMapImplementation::deleteTerminalItems(SceneObject* vendor) {
-
+	Locker locker(_this.get());
+	
 	if(vendor->isBazaarTerminal()) {
 		return;
 	}
@@ -236,7 +244,8 @@ void AuctionsMapImplementation::sendVendorUpdateMail(SceneObject* vendor, bool i
 }
 
 void AuctionsMapImplementation::updateUID(SceneObject* vendor, const String& oldUID, const String& newUID) {
-
+	Locker locker(_this.get());
+	
 	if (vendor == NULL) {
 		logger.error("NULL vendor while updating UID  Vendor Is Bazaar: " + String::valueOf(vendor->isBazaarTerminal()));
 		return;
@@ -261,7 +270,8 @@ void AuctionsMapImplementation::updateUID(SceneObject* vendor, const String& old
 }
 
 void AuctionsMapImplementation::updateVendorSearch(SceneObject* vendor, bool enabled) {
-
+	Locker locker(_this.get());
+	
 	if (vendor == NULL)
 		return;
 

@@ -59,10 +59,6 @@ SharedInstallationObjectTemplate = SharedTangibleObjectTemplate:new {
 	
 	abilityRequired = "",
 	
-	cityMaintenanceRate = 0,
-	cityMaintenanceBase = 0,
-	uniqueStructure = false,
-	
 	length = 1,
 	width = 1
 }

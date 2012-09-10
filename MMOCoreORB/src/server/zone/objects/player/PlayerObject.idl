@@ -370,7 +370,9 @@ class PlayerObject extends IntangibleObject {
 			
 			StructureObject structure = (StructureObject) super.getZoneServer().getObject(oid); 
 			
-			lotsRemaining = lotsRemaining - structure.getLotSize();
+			if (structure != null) {
+				lotsRemaining = lotsRemaining - structure.getLotSize();
+			}
 		}
 		
 		return lotsRemaining;

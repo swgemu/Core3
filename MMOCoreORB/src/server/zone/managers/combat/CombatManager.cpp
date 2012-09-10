@@ -177,11 +177,11 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 
 	if (damage > 0) {
 		attacker->updateLastSuccessfulCombatAction();
-
-		Locker clocker(defenderObject, attacker);
-
-		defenderObject->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, damage);
 	}
+
+	Locker clocker(defenderObject, attacker);
+
+	defenderObject->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, damage);	
 
 	return damage;
 }
@@ -1605,7 +1605,7 @@ void CombatManager::freeDuelList(CreatureObject* player, bool spam) {
 		ManagedReference<CreatureObject*> targetPlayer = ghost->getDuelListObject(0);
 		PlayerObject* targetGhost = targetPlayer->getPlayerObject();
 
-		if (targetPlayer != NULL && targetPlayer.get() != player && targetGhost != NULL) {
+		if (targetPlayer != NULL && targetGhost != NULL && targetPlayer.get() != player) {
 			try {
 				Locker clocker(targetPlayer, player);
 

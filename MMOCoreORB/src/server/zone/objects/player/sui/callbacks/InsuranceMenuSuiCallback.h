@@ -78,14 +78,14 @@ public:
 		} else {
 			if (index != -1) {
 				uint64 objectID = listBox->getMenuObjectID(index);
-				SceneObject* obj = zoneServer->getObject(objectID);
+				ManagedReference<SceneObject*> obj = zoneServer->getObject(objectID);
 
-				if (!obj->isTangibleObject()) {
+				if (obj == NULL || !obj->isTangibleObject()) {
 					player->sendSystemMessage("@error_message:unable_to_insure");
 					return;
 				}
 
-				TangibleObject* item = cast<TangibleObject*>( obj);
+				TangibleObject* item = cast<TangibleObject*>( obj.get());
 
 				if (item != NULL && !(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject())) {
 

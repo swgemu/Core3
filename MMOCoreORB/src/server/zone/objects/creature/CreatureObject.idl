@@ -1259,8 +1259,10 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	public unsigned long getCreatureLinkID() {
-		if (linkedCreature != null)
-			return linkedCreature.getObjectID();
+		CreatureObject strongRef = linkedCreature;
+		
+		if (strongRef != null)
+			return strongRef.getObjectID();
 		else
 			return 0;
 	}

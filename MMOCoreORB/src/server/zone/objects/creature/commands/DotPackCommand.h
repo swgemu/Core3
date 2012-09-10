@@ -21,6 +21,7 @@
 #include "server/zone/packets/object/CombatAction.h"
 #include "QueueCommand.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/objects/tangible/threat/ThreatMap.h"
 
 class DotPackCommand : public QueueCommand {
 protected:
@@ -195,6 +196,7 @@ public:
 			awardXp(creature, "medical", dotDMG); //No experience for healing yourself.
 
 			creatureTarget->addDefender(creature);
+			creatureTarget->getThreatMap()->addDamage(creature, dotDMG, "");
 			creature->addDefender(creatureTarget);
 		} else {
 			StringIdChatParameter stringId("dot_message", "dot_resisted");
@@ -329,6 +331,7 @@ public:
 
 		if (dotDMG) {
 			awardXp(creature, "medical", dotDMG); //No experience for healing yourself.
+			creatureTarget->getThreatMap()->addDamage(creature, dotDMG, "");
 		} else {
 			StringIdChatParameter stringId("dot_message", "dot_resisted");
 			stringId.setTT(creatureTarget->getObjectID());

@@ -168,18 +168,22 @@ void CampTerminalMenuComponent::assumeCampOwnership(SceneObject* sceneObject,
 	ManagedReference<ActiveArea*> area = NULL;
 	for(int i = 0; i < areas->size(); ++i) {
 		area = areas->get(i);
+
 		if(area->isCampArea()) {
 			break;
 		}
-		area == NULL;
+
+		area = NULL;
 	}
 
 	CampSiteActiveArea* campArea = cast<CampSiteActiveArea*>(area.get());
-	if(!campArea->isAbandoned())
-		return;
 
-	campArea->assumeOwnership(player);
+	if (campArea != NULL) {
+		if(!campArea->isAbandoned())
+			return;
 
+		campArea->assumeOwnership(player);
+	}
 }
 
 void CampTerminalMenuComponent::showCampStatus(SceneObject* sceneObject,
