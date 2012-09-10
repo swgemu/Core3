@@ -186,8 +186,6 @@ int AuctionsMapImplementation::getVendorItemCount(SceneObject* vendor) {
 }
 
 void AuctionsMapImplementation::deleteTerminalItems(SceneObject* vendor) {
-	Locker locker(_this.get());
-	
 	if(vendor->isBazaarTerminal()) {
 		return;
 	}
