@@ -558,8 +558,6 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 		body2.setDI(item->getPrice());
 
 		//Send the Mail
-		locker.release();
-
 		cman->sendMail(sender, subject1, body1, sellerName);
 		cman->sendMail(sender, subject2, body2, item->getBidderName(), waypoint);
 
@@ -579,7 +577,6 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 		body2.setTT(item->getOwnerName());
 		body2.setDI(item->getPrice());
 
-		locker.release();
 
 		//Send the Mail
 		cman->sendMail(sender, subject1, body1, item->getOwnerName());
@@ -591,8 +588,6 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 		error("seller null for name " + item->getOwnerName());
 		return;
 	}
-
-	locker.release();
 
 	Locker slocker(seller);
 	seller->addBankCredits(item->getPrice());
@@ -651,7 +646,7 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 	}
 
 	Locker locker(item);
-	Locker plocker(player, item);
+	Locker plocker(player);
 
 	item->setProxy(proxyBid);
 
@@ -672,18 +667,13 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 		// mail prior bidder with outcome
 		UnicodeString subject("@auction:subject_auction_outbid");
 
-
+		cman->sendMail("auctioner", subject, body, item->getBidderName());
 		item->setPrice(price1);
 		item->setBuyerID(player->getObjectID());
 		item->setBidderName(playername);
 
 		// take money from high bidder
 		player->subtractBankCredits(item->getPrice());
-
-		plocker.release();
-		locker.release();
-
-		cman->sendMail("auctioner", subject, body, item->getBidderName());
 
 		// no prior bidder, just take the money
 	} else {
@@ -1239,14 +1229,13 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 }
 
 void AuctionManagerImplementation::expireSale(AuctionItem* item) {
-	Locker locker(item);
 
 	if(item->getStatus() == AuctionItem::EXPIRED) {
-		locker.release();
-
 		deleteExpiredSale(item);
 		return;
 	}
+
+	Locker locker(item);
 
 	ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
 
@@ -1258,7 +1247,7 @@ void AuctionManagerImplementation::expireSale(AuctionItem* item) {
 	StringIdChatParameter body1("@auction:seller_fail");
 	body1.setTO(item->getItemName());
 
-
+	cman->sendMail(sender, subject1, body1, item->getOwnerName());
 
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
@@ -1272,13 +1261,10 @@ void AuctionManagerImplementation::expireSale(AuctionItem* item) {
 	item->setStatus(AuctionItem::EXPIRED);
 	item->setExpireTime(availableTime);
 	item->clearAuctionWithdraw();
-
-	locker.release();
-
-	cman->sendMail(sender, subject1, body1, item->getOwnerName());
 }
 
 void AuctionManagerImplementation::expireBidAuction(AuctionItem* item) {
+
 	Locker locker(item);
 
 	ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
@@ -1291,6 +1277,8 @@ void AuctionManagerImplementation::expireBidAuction(AuctionItem* item) {
 	StringIdChatParameter body1("@auction:seller_fail");
 	body1.setTO(item->getItemName());
 
+	cman->sendMail(sender, subject1, body1, item->getOwnerName());
+
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
 	uint64 availableTime = 0;
@@ -1303,10 +1291,6 @@ void AuctionManagerImplementation::expireBidAuction(AuctionItem* item) {
 	item->setStatus(AuctionItem::EXPIRED);
 	item->setExpireTime(availableTime);
 	item->clearAuctionWithdraw();
-
-	locker.release();
-
-	cman->sendMail(sender, subject1, body1, item->getOwnerName());
 }
 
 void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
@@ -1328,7 +1312,6 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 	item->clearAuctionWithdraw();
 
 	if(playername.isEmpty()) {
-		locker.release();
 
 		expireBidAuction(item);
 
@@ -1361,8 +1344,6 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 		body2.setTO(item->getItemName());
 		body2.setTT(item->getOwnerName());
 		body2.setDI(item->getPrice());
-
-		locker.release();
 
 		//Send the Mail
 		cman->sendMail(sender, subject1, body1, item->getOwnerName());
