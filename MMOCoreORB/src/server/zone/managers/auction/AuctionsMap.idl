@@ -51,6 +51,7 @@ import system.util.HashTable;
 import server.zone.objects.auction.AuctionItem;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.managers.auction.AuctionTerminalMap;
+include server.zone.managers.auction.AuctionEventsMap;
 include server.zone.managers.auction.TerminalListVector;
 include server.zone.managers.auction.CommoditiesLimit;
 
