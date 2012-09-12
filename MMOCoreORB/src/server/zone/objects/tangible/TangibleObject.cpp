@@ -1562,6 +1562,8 @@ void TangibleObjectImplementation::initializeMembers() {
 	sliceable = false;
 	// server/zone/objects/tangible/TangibleObject.idl():  		sliced = false;
 	sliced = false;
+	// server/zone/objects/tangible/TangibleObject.idl():  		threatMap = null;
+	threatMap = NULL;
 }
 
 void TangibleObjectImplementation::addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient) {
@@ -1813,11 +1815,6 @@ void TangibleObjectImplementation::setLevel(int lev) {
 String TangibleObjectImplementation::getSerialNumber() {
 	// server/zone/objects/tangible/TangibleObject.idl():  		return objectSerial;
 	return objectSerial;
-}
-
-ThreatMap* TangibleObjectImplementation::getThreatMap() {
-	// server/zone/objects/tangible/TangibleObject.idl():  		return threatMap;
-	return threatMap;
 }
 
 String TangibleObjectImplementation::repairAttempt(int repairChance) {

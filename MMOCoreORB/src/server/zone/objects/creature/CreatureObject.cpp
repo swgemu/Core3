@@ -5284,9 +5284,11 @@ ManagedWeakReference<CreatureObject* > CreatureObjectImplementation::getLinkedCr
 }
 
 unsigned long long CreatureObjectImplementation::getCreatureLinkID() {
+	// server/zone/objects/creature/CreatureObject.idl():  		CreatureObject strongRef = linkedCreature;
+	ManagedReference<CreatureObject* > strongRef = linkedCreature;
 	// server/zone/objects/creature/CreatureObject.idl():  			return 0;
-	if (linkedCreature != NULL)	// server/zone/objects/creature/CreatureObject.idl():  			return linkedCreature.getObjectID();
-	return linkedCreature.get()->getObjectID();
+	if (strongRef != NULL)	// server/zone/objects/creature/CreatureObject.idl():  			return strongRef.getObjectID();
+	return strongRef->getObjectID();
 
 	else 	// server/zone/objects/creature/CreatureObject.idl():  			return 0;
 	return 0;

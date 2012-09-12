@@ -76,7 +76,7 @@ which carries forward this exception.
 void TangibleObjectImplementation::initializeTransientMembers() {
 	SceneObjectImplementation::initializeTransientMembers();
 
-	threatMap = new ThreatMap(_this.get());
+	threatMap = NULL;
 
 	setLoggingName("TangibleObject");
 
@@ -106,7 +106,7 @@ void TangibleObjectImplementation::loadTemplateData(SharedObjectTemplate* templa
 
 	faction = tanoData->getFaction();
 
-	threatMap = new ThreatMap(_this.get());
+	threatMap = NULL;
 }
 
 void TangibleObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -444,7 +444,7 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 		CreatureObject* player = cast<CreatureObject*>( attacker);
 
 		if (damage > 0 && attacker != _this.get())
-			threatMap->addDamage(player, (uint32)damage);
+			getThreatMap()->addDamage(player, (uint32)damage);
 	}
 
 	if (newConditionDamage >= maxCondition)
@@ -465,7 +465,7 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 		CreatureObject* player = cast<CreatureObject*>( attacker);
 
 		if (damage > 0 && attacker != _this.get())
-			threatMap->addDamage(player, (uint32)damage, xp);
+			getThreatMap()->addDamage(player, (uint32)damage, xp);
 	}
 
 	if (newConditionDamage >= maxCondition)
@@ -477,7 +477,9 @@ int TangibleObjectImplementation::inflictDamage(TangibleObject* attacker, int da
 int TangibleObjectImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
 	notifyObservers(ObserverEventType::OBJECTDESTRUCTION, attacker, condition);
 
-	threatMap->removeAll();
+	if (threatMap != NULL)
+		threatMap->removeAll();
+
 	dropFromDefenderLists(attacker);
 
 	return 1;
@@ -963,4 +965,10 @@ void TangibleObjectImplementation::repair(CreatureObject* player) {
 	player->sendSystemMessage(result);
 }
 
+ThreatMap* TangibleObjectImplementation::getThreatMap() {
+	if (threatMap == NULL)
+		threatMap = new ThreatMap(_this.get());
+
+	return threatMap;
+}
 

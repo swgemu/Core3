@@ -22,11 +22,13 @@ protected:
 	Vector<E> vector;
 	uint32 updateCounter;
 
-	ReadWriteLock mutex;
+	ReadWriteLock* mutex;
 
 public:
 	DeltaVector() : Serializable(), vector(1, 1) {
 		updateCounter = 1;
+
+		mutex = NULL;
 
 		addSerializableVariables();
 	}
@@ -34,12 +36,16 @@ public:
 	DeltaVector(int initsize, int incr) : Serializable(), vector(initsize, incr) {
 		updateCounter = 1;
 
+		mutex = NULL;
+
 		addSerializableVariables();
 	}
 
 	DeltaVector(const DeltaVector& v) : Object(), Serializable() {
 		vector = v.vector;
 		updateCounter = v.updateCounter;
+
+		mutex = NULL;
 
 		addSerializableVariables();
 	}
@@ -60,7 +66,7 @@ public:
 	}
 
 	virtual E set(int idx, const E& newValue, DeltaMessage* message = NULL, int updates = 1) {
-		Locker locker(&mutex);
+		Locker locker(getLock());
 
 		E object = vector.set(idx, newValue);
 
@@ -79,7 +85,7 @@ public:
 	}
 
 	virtual bool add(const E& element, DeltaMessage* message = NULL, int updates = 1) {
-		Locker locker(&mutex);
+		Locker locker(getLock());
 
 		bool val = vector.add(element);
 
@@ -102,7 +108,7 @@ public:
 	}
 
 	E remove(int index, DeltaMessage* message = NULL, int updates = 1) {
-		Locker locker(&mutex);
+		Locker locker(getLock());
 
 		E object = vector.remove(index);
 
@@ -118,7 +124,7 @@ public:
 	}
 
 	void removeAll(DeltaMessage* message = NULL) {
-		Locker locker(&mutex);
+		Locker locker(getLock());
 
 		vector.removeAll();
 
@@ -129,7 +135,7 @@ public:
 	}
 
 	virtual void insertToMessage(BaseMessage* msg) {
-		ReadLocker locker(&mutex);
+		ReadLocker locker(getLock());
 
 		msg->insertInt(size());
 		msg->insertInt(updateCounter);
@@ -175,6 +181,15 @@ public:
 
 	inline int size() {
 		return vector.size();
+	}
+
+private:
+	inline ReadWriteLock* getLock() {
+		if (mutex == NULL) {
+			mutex = new ReadWriteLock();
+		}
+
+		return mutex;
 	}
 
 };

@@ -4128,8 +4128,11 @@ int PlayerObjectImplementation::getLotsRemaining() {
 	unsigned long long oid = (&ownedStructures)->get(i);
 	// server/zone/objects/player/PlayerObject.idl():  			StructureObject structure = (StructureObject) super.getZoneServer().getObject(oid);
 	ManagedReference<StructureObject* > structure = (StructureObject*) IntangibleObjectImplementation::getZoneServer()->getObject(oid);
-	// server/zone/objects/player/PlayerObject.idl():  			lotsRemaining = lotsRemaining - structure.getLotSize();
+	// server/zone/objects/player/PlayerObject.idl():  		}
+	if (structure != NULL){
+	// server/zone/objects/player/PlayerObject.idl():  				lotsRemaining = lotsRemaining - structure.getLotSize();
 	lotsRemaining = lotsRemaining - structure->getLotSize();
+}
 }
 	// server/zone/objects/player/PlayerObject.idl():  		return lotsRemaining;
 	return lotsRemaining;

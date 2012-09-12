@@ -39,7 +39,8 @@ void CreatureImplementation::runAway(CreatureObject* target) {
 
 	setOblivious();
 
-	threatMap->removeAll();
+	if (threatMap != NULL)
+		threatMap->removeAll();
 
 	Vector3 runTrajectory(getPositionX() - target->getPositionX(), getPositionY() - target->getPositionY(), 0);
 	runTrajectory = runTrajectory * (100 / runTrajectory.length());
