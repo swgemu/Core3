@@ -1500,7 +1500,7 @@ ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParent() {
 	if (parent == NULL)
 		return NULL;
 
-	assert(parent != _this);
+	assert(parent != _this.get());
 
 	return ManagedWeakReference<SceneObject*>(parent.castTo<SceneObject*>());
 }
