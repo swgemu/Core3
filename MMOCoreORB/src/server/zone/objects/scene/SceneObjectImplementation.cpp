@@ -1495,12 +1495,14 @@ void SceneObjectImplementation::initializeChildObject(SceneObject* controllerObj
 }
 
 ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParent() {
-	ManagedReference<QuadTreeEntry*> parent = this->parent;
+	ManagedReference<QuadTreeEntry*> parent = this->parent.get();
 
 	if (parent == NULL)
 		return NULL;
 
-	return ManagedWeakReference<SceneObject*>(dynamic_cast<SceneObject*>(parent.get()));
+	assert(parent != _this);
+
+	return ManagedWeakReference<SceneObject*>(parent.castTo<SceneObject*>());
 }
 
 SortedVector<ManagedReference<Observer* > >* SceneObjectImplementation::getObservers(unsigned int eventType) {
