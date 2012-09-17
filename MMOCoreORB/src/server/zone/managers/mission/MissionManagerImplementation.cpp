@@ -1492,13 +1492,20 @@ Vector3 MissionManagerImplementation::getRandomBountyTargetPosition(CreatureObje
 	float radiusX = player->getZone()->getMaxX() - player->getZone()->getMinX();
 	float radiusY = player->getZone()->getMaxY() - player->getZone()->getMinY();
 	float radius = radiusX > radiusY ? radiusX : radiusY;
+	int retries = 20;
 
-	while (!found) {
+	while (!found && retries > 0) {
 		position = player->getWorldCoordinate(System::random(radius), System::random(360));
 
 		if (player->getZone()->isWithinBoundaries(position)) {
 			found = player->getZone()->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL);
 		}
+
+		retries--;
+	}
+
+	if (retries == 0) {
+		position.set(0, 0, 0);
 	}
 
 	return position;
