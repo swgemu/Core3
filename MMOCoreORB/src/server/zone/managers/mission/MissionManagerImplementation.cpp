@@ -1483,12 +1483,15 @@ Vector3 MissionManagerImplementation::getRandomBountyTargetPosition(CreatureObje
 	if (player->getZone() == NULL)
 		return position;
 
+	int retries = 0;
 	bool found = false;
 	float radiusX = player->getZone()->getMaxX() - player->getZone()->getMinX();
 	float radiusY = player->getZone()->getMaxY() - player->getZone()->getMinY();
 	float radius = radiusX > radiusY ? radiusX : radiusY;
 
-	while (!found) {
+	//TODO: fix failure to find a coordinate
+
+	while (!found && (++retries < 20)) {
 		position = player->getWorldCoordinate(System::random(radius), System::random(360));
 
 		if (player->getZone()->isWithinBoundaries(position)) {
