@@ -43,6 +43,7 @@
 
 CreatureAreaPoisonCommand = {
         name = "creatureareapoison",
+        combatSpam = "attack",
 	dotEffects = {
 	  DotEffect( 
 		POISONED_EFFECT, 

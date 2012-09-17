@@ -43,6 +43,7 @@
 
 MildDiseaseCommand = {
         name = "milddisease",
+        combatSpam = "attack",
 	dotEffects = {
 	  DotEffect( 
 		DISEASED, 

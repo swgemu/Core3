@@ -43,6 +43,7 @@
 
 CreatureAreaDiseaseCommand = {
         name = "creatureareadisease",
+        combatSpam = "attack",
 	dotEffects = {
 	  DotEffect( 
 		DISEASED, 

@@ -43,6 +43,7 @@
 
 DizzyAttackCommand = {
 	name = "dizzyattack",
+	combatSpam = "attack",
 	stateEffects = {
 	  StateEffect( 
 		DIZZY_EFFECT, 

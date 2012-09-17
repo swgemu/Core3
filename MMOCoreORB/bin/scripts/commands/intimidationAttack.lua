@@ -43,6 +43,7 @@
 
 IntimidationAttackCommand = {
         name = "intimidationattack",
+        combatSpam = "attack",
 	stateEffects = {
 	  StateEffect( 
 		INTIMIDATE_EFFECT, 

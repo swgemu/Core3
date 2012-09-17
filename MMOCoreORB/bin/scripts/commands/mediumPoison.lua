@@ -43,6 +43,7 @@
 
 MediumPoisonCommand = {
         name = "mediumpoison",
+        combatSpam = "attack",
 	dotEffects = {
 	  DotEffect( 
 		POISONED_EFFECT, 

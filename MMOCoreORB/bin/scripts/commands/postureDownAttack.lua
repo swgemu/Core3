@@ -43,6 +43,7 @@
 
 PostureDownAttackCommand = {
         name = "posturedownattack",
+        combatSpam = "attack",
 	stateEffects = {
 	  StateEffect( 
 		POSTUREDOWN_EFFECT, 
