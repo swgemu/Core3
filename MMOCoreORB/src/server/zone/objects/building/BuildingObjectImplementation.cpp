@@ -36,6 +36,7 @@
 
 #include "server/zone/objects/player/sui/callbacks/StructurePayAccessFeeSuiCallback.h"
 #include "server/zone/objects/building/tasks/RevokePaidAccessTask.h"
+#include "server/zone/objects/region/CityRegion.h"
 
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
@@ -273,6 +274,20 @@ void BuildingObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	BaseMessage* buio6 = new TangibleObjectMessage6(_this.get());
 	player->sendMessage(buio6);
 }
+
+
+bool BuildingObjectImplementation::isCityBanned(CreatureObject* player){
+
+	ManagedReference<CityRegion*> thisRegion  = this->getCityRegion();
+
+	if (thisRegion != NULL)
+		if (thisRegion->isBanned(player->getObjectID()))
+			return true;
+
+	return false;
+}
+
+
 
 bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
 
@@ -627,8 +642,18 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 				StringIdChatParameter message("@player_structure:structure_condemned_not_owner");
 				player->sendSystemMessage(message);
 			}
+
 		}
 	}
+
+	if (isCivicStructure() && isCityBanned(player)) {
+
+		ejectObject(player);
+		player->sendSystemMessage("@city/city:youre_city_banned"); // you are banned from this city and may not use any of its public services and structures
+	}
+
+
+
 }
 
 void BuildingObjectImplementation::onExit(CreatureObject* player, uint64 parentid) {

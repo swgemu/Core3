@@ -98,6 +98,11 @@ void MissionManagerImplementation::loadLuaSettings() {
 }
 
 void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* missionTerminal, CreatureObject* player, int counter) {
+
+
+
+
+
 	// newbie and statue terminals don't exist, but their templates do
 	if (missionTerminal->isStatueTerminal() || missionTerminal->isNewbieTerminal()) {
 		player->sendSystemMessage("@skill_teacher:skill_terminal_disabled");
@@ -107,6 +112,15 @@ void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* mis
 	if (missionTerminal->isBountyTerminal()) {
 		if (!player->hasSkill("combat_bountyhunter_novice")) {
 			player->sendSystemMessage("@mission/mission_generic:not_bounty_hunter_terminal");
+			return;
+		}
+	}
+
+	ManagedReference<CityRegion*> terminalCity = missionTerminal->getCityRegion();
+
+	if (terminalCity != NULL) {
+		if (terminalCity.get()->isBanned(player->getObjectID())) {
+			player->sendSystemMessage("@city/city:youre_city_banned"); // you are banned from this city and may not use any of its public services and structures.
 			return;
 		}
 	}
@@ -1253,7 +1267,7 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 		if (player->getZone()->isWithinBoundaries(position)) {
 			//Check if it is a position where you can build and away from any travel points.
 			if (player->getZone()->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL)) {
-				ManagedReference<PlanetTravelPoint*> travelPoint = player->getZone()->getPlanetManager()->getNearestPlanetTravelPoint(position);
+				Reference<PlanetTravelPoint*> travelPoint = player->getZone()->getPlanetManager()->getNearestPlanetTravelPoint(position);
 
 				if (travelPoint->getArrivalPosition().distanceTo(position) > 1000.0f) {
 					foundPosition = true;

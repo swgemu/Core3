@@ -157,6 +157,14 @@ class BuildingObject extends StructureObject {
 	public native boolean isAllowedEntry(CreatureObject player);
 	
 	/**
+	 * Checks to see if the player is CityBanned from the city
+	 * that the building is in
+	 * returns true if the player is cityBanned
+	 * returns false if the player is not CityBanned
+	 */
+	public native boolean isCityBanned(CreatureObject player);
+	
+	/**
 	 * Gets called when the structure has been created;
 	 */
 	public abstract int notifyStructurePlaced(CreatureObject player) {

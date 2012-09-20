@@ -15,6 +15,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.h"
 #include "server/zone/Zone.h"
+#include "server/zone/objects/region/CityRegion.h"
 
 void BankTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* creature) {
 
@@ -64,6 +65,15 @@ int BankTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 	String planet = ghost->getBankLocation();
+
+	ManagedReference<CityRegion* > region = sceneObject->getCityRegion().get();
+
+	if (region != NULL) {
+		if (region->isBanned(creature->getObjectID())) {
+				creature->sendSystemMessage("@city/city:youre_city_banned"); // you are banned from this city and may not use any of its public services and structures
+				return 0;
+		}
+	}
 
 	if(selectedID == WITHDRAW || selectedID == 20) {
 
