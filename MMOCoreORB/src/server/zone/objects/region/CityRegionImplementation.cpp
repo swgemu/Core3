@@ -407,7 +407,7 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
 
 	StructureManager* structureManager = StructureManager::instance();
 
-	for (int i = structures.size(); i >= 0; --i) {
+	for (int i = structures.size() - 1; i >= 0; --i) {
 		ManagedReference<StructureObject*> structure = structures.get(i);
 
 		SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(structure->getObjectTemplate());
