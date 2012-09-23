@@ -113,4 +113,8 @@ class WearableObject extends TangibleObject {
 		return wearableSkillMods;
 	}
 	
+	@local
+	public void addWearableSkillMod(final string mod, int value) {
+		wearableSkillMods.put(mod, value);
+	}
 }

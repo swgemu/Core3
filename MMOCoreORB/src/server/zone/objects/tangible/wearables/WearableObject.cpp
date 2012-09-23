@@ -184,6 +184,15 @@ VectorMap<String, int>* WearableObject::getWearableSkillMods() {
 		return _implementation->getWearableSkillMods();
 }
 
+void WearableObject::addWearableSkillMod(const String& mod, int value) {
+	WearableObjectImplementation* _implementation = static_cast<WearableObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->addWearableSkillMod(mod, value);
+}
+
 DistributedObjectServant* WearableObject::_getImplementation() {
 
 	 if (!_updated) _updated = true;
@@ -379,6 +388,11 @@ int WearableObjectImplementation::socketsLeft() {
 VectorMap<String, int>* WearableObjectImplementation::getWearableSkillMods() {
 	// server/zone/objects/tangible/wearables/WearableObject.idl():  		return wearableSkillMods;
 	return (&wearableSkillMods);
+}
+
+void WearableObjectImplementation::addWearableSkillMod(const String& mod, int value) {
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  		wearableSkillMods.put(mod, value);
+	(&wearableSkillMods)->put(mod, value);
 }
 
 /*

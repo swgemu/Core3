@@ -92,7 +92,7 @@ void LootManagerImplementation::setInitialObjectStats(LootItemTemplate* template
 				continue;
 
 			craftingValues->addExperimentalProperty(property, property, mins->get(i), maxs->get(i), prec->get(i), false, CraftingManager::LINEARCOMBINE);
-			if(title == "null")
+			if (title == "null")
 				craftingValues->setHidden(property);
 		}
 	}
@@ -246,10 +246,24 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	craftingValues.addExperimentalProperty("creatureLevel", "creatureLevel", level, level, 0, false, CraftingManager::LINEARCOMBINE);
 	craftingValues.setHidden("creatureLevel");
 
+	setSkillMods(prototype, templateObject);
+
 	// Update the Tano with new values
 	prototype->updateCraftingValues(&craftingValues, true);
 
 	return prototype;
+}
+
+void LootManagerImplementation::setSkillMods(TangibleObject* object, LootItemTemplate* templateObject) {
+	if (object->isWearableObject()) {
+		ManagedReference<WearableObject*> wearableObject = cast<WearableObject*>(object);
+
+		VectorMap<String, int>* skillMods = templateObject->getSkillMods();
+
+		for (int i = 0; i < skillMods->size(); i++) {
+			wearableObject->addWearableSkillMod(skillMods->elementAt(i).getKey(), skillMods->elementAt(i).getValue());
+		}
+	}
 }
 
 bool LootManagerImplementation::createLoot(SceneObject* container, AiAgent* creature) {

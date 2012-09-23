@@ -25,6 +25,8 @@ protected:
 	Vector<String> customizationStringNames;
 	Vector<Vector<int> > customizationValues;
 
+	VectorMap<String, int> skillMods;
+
 public:
 	LootItemTemplate(const String& name) {
 		templateName = name;
@@ -101,6 +103,20 @@ public:
 		}
 
 		custValues.pop();
+
+		LuaObject skillModsLuaObject = templateData->getObjectField("skillMods");
+
+		for (int i = 1; i <= skillModsLuaObject.getTableSize(); ++i) {
+			lua_rawgeti(templateData->getLuaState(), -1, i);
+
+			LuaObject skill(templateData->getLuaState());
+
+			skillMods.put(skill.getStringAt(1), skill.getIntAt(2));
+
+			skill.pop();
+		}
+
+		skillModsLuaObject.pop();
 	}
 
 	String& getDirectObjectTemplate() {
@@ -121,6 +137,10 @@ public:
 
 	CraftingValues getCraftingValuesCopy() {
 		return craftingValues;
+	}
+
+	VectorMap<String, int>* getSkillMods() {
+		return &skillMods;
 	}
 };
 

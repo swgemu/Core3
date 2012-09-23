@@ -93,6 +93,8 @@ public:
 
 	VectorMap<String, int>* getWearableSkillMods();
 
+	void addWearableSkillMod(const String& mod, int value);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -163,6 +165,8 @@ public:
 	String repairAttempt(int repairChance);
 
 	VectorMap<String, int>* getWearableSkillMods();
+
+	void addWearableSkillMod(const String& mod, int value);
 
 	WeakReference<WearableObject*> _this;
 
