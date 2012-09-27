@@ -84,7 +84,12 @@ void ForageManagerImplementation::startForaging(CreatureObject* player, int fora
 	ManagedReference<ZoneServer*> zoneServer = player->getZoneServer();
 
 	//Queue the foraging task.
-	Reference<Task*> foragingEvent = new ForagingEvent(player, forageType, playerX, playerY, player->getZone()->getZoneName());
+	Zone* zone = player->getZone();
+
+	if (zone == NULL)
+		return;
+
+	Reference<Task*> foragingEvent = new ForagingEvent(player, forageType, playerX, playerY, zone->getZoneName());
 	player->addPendingTask("foraging", foragingEvent, 8500);
 
 	player->sendSystemMessage("@skl_use:sys_forage_start"); //"You begin to search the area for goods."
