@@ -57,6 +57,8 @@ class WearableObject extends TangibleObject {
 	protected int socketCount;
 	protected boolean socketsGenerated;
 	
+	protected int modsNotInSockets;
+	
 	public static final int MAXSOCKETS = 4;
 	
 	@dereferenced
@@ -65,6 +67,7 @@ class WearableObject extends TangibleObject {
 	public WearableObject() {
 		socketsGenerated = false;
 		socketCount = 0;
+		modsNotInSockets = 0;
 		wearableSkillMods.setAllowOverwriteInsertPlan();
 		Logger.setLoggingName("WearableObject");
 	}
@@ -116,5 +119,16 @@ class WearableObject extends TangibleObject {
 	@local
 	public void addWearableSkillMod(final string mod, int value) {
 		wearableSkillMods.put(mod, value);
+		modsNotInSockets++;
+	}
+	
+	public void setMaxSockets(int maxSockets) {
+		if (maxSockets < 0) {
+			maxSockets = 0;
+		} else if (maxSockets > MAXSOCKETS) {
+			maxSockets = MAXSOCKETS;
+		}
+		socketCount = maxSockets;
+		socketsGenerated = true;
 	}
 }

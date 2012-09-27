@@ -104,11 +104,6 @@ void LootManagerImplementation::setInitialObjectStats(LootItemTemplate* template
 		String customizationString = customizationData->get(i);
 		Vector<int>* values = &customizationValues->get(i);
 
-		int idx = customizationString.lastIndexOf("/");
-
-		if (idx != -1)
-			customizationString = customizationString.subString(idx + 1);
-
 		if (values->size() > 0) {
 			int randomValue = values->get(System::random(values->size() - 1));
 
@@ -248,6 +243,8 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 	setSkillMods(prototype, templateObject);
 
+	setSockets(prototype, &craftingValues);
+
 	// Update the Tano with new values
 	prototype->updateCraftingValues(&craftingValues, true);
 
@@ -263,6 +260,14 @@ void LootManagerImplementation::setSkillMods(TangibleObject* object, LootItemTem
 		for (int i = 0; i < skillMods->size(); i++) {
 			wearableObject->addWearableSkillMod(skillMods->elementAt(i).getKey(), skillMods->elementAt(i).getValue());
 		}
+	}
+}
+
+void LootManagerImplementation::setSockets(TangibleObject* object, CraftingValues* craftingValues) {
+	if (object->isWearableObject() && craftingValues->hasProperty("sockets")) {
+		ManagedReference<WearableObject*> wearableObject = cast<WearableObject*>(object);
+		// Round number of sockets to closes integer.
+		wearableObject->setMaxSockets(craftingValues->getCurrentValue("sockets") + 0.5);
 	}
 }
 

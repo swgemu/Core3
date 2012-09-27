@@ -211,6 +211,8 @@ private:
 
 	void setCustomObjectName(TangibleObject* object, LootItemTemplate* templateObject);
 
+	void setSockets(TangibleObject* object, CraftingValues* craftingValues);
+
 public:
 	TangibleObject* createLootObject(LootItemTemplate* templateObject, int level);
 

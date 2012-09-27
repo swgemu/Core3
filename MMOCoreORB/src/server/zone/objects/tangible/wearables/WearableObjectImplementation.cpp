@@ -42,12 +42,15 @@ void WearableObjectImplementation::updateCraftingValues(CraftingValues* values, 
 	 * hitpoints			1000-1000 (Don't Use)
 	 */
 	if(initialUpdate) {
-		if(values->hasProperty("sockets"))
+		if(values->hasProperty("sockets") && values->getCurrentValue("sockets") >= 0)
 			generateSockets(values);
 	}
 }
 
 void WearableObjectImplementation::generateSockets(CraftingValues* craftingValues) {
+	if (socketsGenerated) {
+		return;
+	}
 
 	int skill = 0;
 	int luck = 0;
@@ -85,7 +88,7 @@ void WearableObjectImplementation::generateSockets(CraftingValues* craftingValue
 }
 
 int WearableObjectImplementation::socketsUsed() {
-	return wearableSkillMods.size();
+	return wearableSkillMods.size() - modsNotInSockets;
 }
 
 void WearableObjectImplementation::applyAttachment(CreatureObject* player,
