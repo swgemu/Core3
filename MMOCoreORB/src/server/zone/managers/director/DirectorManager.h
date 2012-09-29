@@ -53,6 +53,8 @@ namespace server {
 #else
 		Reference<DirectorSharedMemory* > sharedMemory;
 #endif
+	public:
+		static int DEBUG_MODE;
 
 	public:
 		DirectorManager();

@@ -46,6 +46,8 @@
 #include "server/zone/objects/scene/components/LuaObjectMenuResponse.h"
 #include "server/zone/objects/scene/variables/ContainerPermissions.h"
 
+int DirectorManager::DEBUG_MODE = 0;
+
 DirectorManager::DirectorManager() : Logger("DirectorManager") {
 	info("loading..", true);
 
@@ -67,6 +69,9 @@ void DirectorManager::startGlobalScreenPlays() {
 }
 
 void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
+	if (DEBUG_MODE)
+		setLogging(true);
+
 	info("initializeLuaEngine");
 
 	luaEngine->init();
@@ -347,6 +352,10 @@ int DirectorManager::checkInt64Lua(lua_State* L) {
 
 int DirectorManager::includeFile(lua_State* L) {
 	String filename = Lua::getStringParameter(L);
+
+	if (DEBUG_MODE) {
+		DirectorManager::instance()->info("running file: scripts/screenplays/" + filename);
+	}
 
 	Lua::runFile("scripts/screenplays/" + filename, L);
 
