@@ -71,7 +71,7 @@ int main(int argc, char* argv[]) {
 
 			printf("Done\n");
 
-			return;
+			return 0;
 		}
 
 		bool truncateData = arguments.contains("clean");
