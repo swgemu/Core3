@@ -164,19 +164,21 @@ void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
 	if(creature == NULL)
 		return;
 
-	Locker locker(creature);
+	//Locker locker(creature);
 	VectorMap<String, int> mods;
 	mods.setAllowOverwriteInsertPlan();
 	mods.setNullValue(0);
 
 	ManagedReference<SceneObject*> parent = creature->getRootParent();
-	if(parent == NULL) {
+
+	if (parent == NULL) {
 		if(creature->getCurrentCamp() != NULL) {
 			ManagedReference<CampSiteActiveArea*> campArea = creature->getCurrentCamp();
 			parent = campArea->getCamp();
 		}
 	}
-	if(parent != NULL && parent->isStructureObject()) {
+
+	if (parent != NULL && parent->isStructureObject()) {
 		StructureObject* structure = cast<StructureObject*>(parent.get());
 
 		VectorMap<String, int>* templateMods = structure->getTemplateSkillMods();
@@ -260,6 +262,10 @@ bool SkillModManager::compareMods(VectorMap<String, int> mods, CreatureObject* c
 
 	mods.setAllowOverwriteInsertPlan();
 	mods.setNullValue(0);
+
+	Mutex* skillModMutex = creature->getSkillModMutex();
+
+	Locker skillModLocker(skillModMutex);
 
 	SkillModList* skillModList = creature->getSkillModList();
 

@@ -364,6 +364,9 @@ void TemplateManager::loadLuaTemplates() {
 	info(String::valueOf(portalLayoutMap->size()) + " portal layouts loaded", true);
 	info(String::valueOf(floorMeshMap->size()) + " floor meshes loaded", true);
 	info(String::valueOf(structureFootprints.size()) + " structure footprints.", true);
+
+	delete luaTemplatesInstance;
+	luaTemplatesInstance = NULL;
 }
 
 void TemplateManager::loadTreArchive() {

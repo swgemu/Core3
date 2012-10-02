@@ -922,6 +922,8 @@ public:
 
 	void setInvisible(bool invis);
 
+	Mutex* getSkillModMutex();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -1051,6 +1053,8 @@ protected:
 	SkillList skillList;
 
 	SkillModList skillModList;
+
+	Mutex skillModMutex;
 
 	Reference<CommandQueueActionVector* > commandQueue;
 
@@ -1696,6 +1700,8 @@ public:
 	bool isInvisible();
 
 	void setInvisible(bool invis);
+
+	Mutex* getSkillModMutex();
 
 	WeakReference<CreatureObject*> _this;
 
