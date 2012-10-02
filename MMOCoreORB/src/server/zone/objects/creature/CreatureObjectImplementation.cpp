@@ -1249,6 +1249,8 @@ void CreatureObjectImplementation::removeSkillMod(const int modType, const Strin
 }
 
 int CreatureObjectImplementation::getSkillMod(const String& skillmod) {
+	Locker locker(&skillModMutex);
+
 	return skillModList.getSkillMod(skillmod);
 }
 
