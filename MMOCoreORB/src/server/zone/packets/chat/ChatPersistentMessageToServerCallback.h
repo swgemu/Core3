@@ -95,10 +95,18 @@ public:
 
 			int max = guild->getTotalMembers();
 
+			Vector<uint64> guildMembers(max, 5);
+
 			for (int i = 0; i < max; ++i) {
 				uint64 oid = guild->getMember(i);
 
-				ManagedReference<SceneObject*> receiver = server->getZoneServer()->getObject(oid);
+				guildMembers.add(oid);
+			}
+
+			locker.release();
+
+			for (int i = 0; i < guildMembers.size(); ++i) {
+				ManagedReference<SceneObject*> receiver = server->getZoneServer()->getObject(guildMembers.get(i));
 
 				if (receiver == NULL || !receiver->isPlayerCreature())
 					continue;
