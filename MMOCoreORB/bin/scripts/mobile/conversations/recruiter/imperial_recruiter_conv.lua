@@ -363,4 +363,69 @@ imp_recruiter_accepted_bribe_100k = ConvoScreen:new {
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_accepted_bribe_100k);
 
 
+-- selected option to purchase faction items
+imp_recruiter_faction_purchase = ConvoScreen:new {
+	id = "faction_purchase",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_482", 
+	stopConversation = "false",
+	options = {
+			{ "@faction_recruiter:option_purchase_weapons_armor", "fp_weapons_armor" }, --I'm interested in weapons and armor
+	},
+}
+
+imperial_recruiter_convotemplate:addScreen(imp_recruiter_faction_purchase);
+
+
+-- selected option to view weapoins and armor
+imp_recruiter_fp_weapons_armor = ConvoScreen:new {
+	id = "fp_weapons_armor",
+	leftDialog = "@faction_recruiter:select_item_purchase",
+	stopConversation = "false",
+	options = {
+
+		},
+	
+}
+
+imperial_recruiter_convotemplate:addScreen(imp_recruiter_fp_weapons_armor);
+
+-- purchase failed
+imp_recruiter_purchased_not_enough= ConvoScreen:new {
+	id = "purchased_not_enough",
+	leftDialog = "@faction_recruiter:get_lost_faction",
+	stopConversation = "true",
+	options = {
+	
+	}
+}
+
+imperial_recruiter_convotemplate:addScreen(imp_recruiter_purchased_not_enough);
+
+-- inventory is full screen
+imp_recruiter_inventory_full= ConvoScreen:new {
+	id = "inventory_full",
+	leftDialog = "@dispenser:inventory_full", -- Your inventory is full.  YOu must make some room before you can purchase.  
+	stopConversation = "true",
+	options = {
+	
+	}
+}
+
+imperial_recruiter_convotemplate:addScreen(imp_recruiter_inventory_full);
+
+-- finish purchase screen
+imp_recruiter_purchased= ConvoScreen:new {
+	id = "purchased",
+	leftDialog = "@faction_recruiter:order_purchase_complete",
+	stopConversation = "true",
+	options = {
+	
+	}
+}
+
+imperial_recruiter_convotemplate:addScreen(imp_recruiter_purchased);
+
+
+
+
 addConversationTemplate("imperial_recruiter_convotemplate", imperial_recruiter_convotemplate);

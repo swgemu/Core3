@@ -1,11 +1,20 @@
+includeFile("recruiters/factionperkdata.lua")
+
 recruiter_convo_handler = Object:new {
 	rebelHashCode = 370444368, 
 	imperialHashCode = 3679112276,
 	rebelString = "rebel",
-	imperialString = "imperial"
+	imperialString = "imperial",
+	SUCCESS = 0,
+	INVENTORYFULL = 1,
+	NOTENOUGHFACTION = 2,
+	GENERALERROR = 3
+
 }
 
+	
 function recruiter_convo_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption, conversingNPC)
+	
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	
@@ -27,9 +36,16 @@ function recruiter_convo_handler:getNextConversationScreen(conversationTemplate,
 		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
 		
-		--printf("optionLink " .. optionLink .. "\n")
+		--print("optionLink " .. optionLink .. "\n")
 		
-		nextConversationScreen = conversation:getScreen(optionLink)
+		if ( string.find(optionLink,"armor_",1) ) then
+			--print("purchased armor switching the next screen")
+			nextConversationScreen = conversation:getScreen("purchased")
+		else
+			--print("Handling next screen normally")
+			nextConversationScreen = conversation:getScreen(optionLink)
+		end
+		
 		
 		if (nextConversationScreen == nil) then
 			--printf("nextConversationScreen nill for option link = " .. optionLink .. "\n")
@@ -45,7 +61,7 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 	local screen = LuaConversationScreen(conversationScreen)
 	
 	local screenID = screen:getScreenID()
-	
+
 	local player = LuaCreatureObject(conversingPlayer)
 	local playerObjectPointer = player:getPlayerObject()
 	
@@ -174,6 +190,20 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 		
 			self:grantBribe(conversingPlayer, 100000, 1250)
 		end
+	elseif (screenID == "fp_weapons_armor") then
+	
+		conversationScreen = screen:cloneScreen()
+		
+		local clonedConversation = LuaConversationScreen(conversationScreen)
+				
+		if (clonedConversation ~= nil) then
+				self:addWeaponsArmor(clonedConversation)
+		end
+		
+	elseif (screenID == "purchased") then
+			
+		conversationScreen = self:processArmorPurchase(conversingPlayer, conversationTemplate, selectedOption)
+				
 	end
 	
 	return conversationScreen
@@ -278,9 +308,11 @@ function recruiter_convo_handler:greetMemberCovert(player, conversationTemplate)
 	
 	self:updateScreenWithPromotions(player, conversationTemplate, screenCopy)
 	self:updateScreenWithBribe(player, conversationTemplate, screenCopy)
+	self:updateScreenWithFactionItems(screenCopy)
 	
 	return screenCopy
 end
+
 
 function recruiter_convo_handler:greetMemberOvert(player, conversationTemplate)
 	local template = LuaConversationTemplate(conversationTemplate)
@@ -296,8 +328,14 @@ function recruiter_convo_handler:greetMemberOvert(player, conversationTemplate)
 
 	self:updateScreenWithPromotions(player, conversationTemplate, screenCopy)
 	self:updateScreenWithBribe(player, conversationTemplate, screenCopy)
+	self:updateScreenWithFactionItems(screenCopy)
 	
 	return screenCopy
+end
+
+function recruiter_convo_handler:updateScreenWithFactionItems(screen)
+	local tscreenObject = LuaConversationScreen(screen)
+	tscreenObject:addOption("@faction_recruiter:faction_purchase", "faction_purchase")
 end
 
 function recruiter_convo_handler:updateScreenWithBribe(player, conversationTemplate, screen)
@@ -380,6 +418,27 @@ function recruiter_convo_handler:getEnemyFactionString()
 	return ""
 end
 
+function recruiter_convo_handler:addWeaponsArmor(thisConversation)
+
+	if (self:getRecruiterFactionString() == "rebel") then
+		
+		--go through rebel_weapons_armor table and add them to the converstaion
+		for k,v in pairs(rebel_weapons_armor_list) do
+			if ( rebel_weapons_armor[v].display ~= nil ) then
+				thisConversation:addOption(rebel_weapons_armor[v].display .. " - " .. rebel_weapons_armor[v].cost, v)
+			end
+		end
+	
+	else
+		for k,v in pairs(imperial_weapons_armor_list) do
+			if ( imperial_weapons_armor[v].display ~= nil ) then
+				thisConversation:addOption(imperial_weapons_armor[v].display .. " - " .. imperial_weapons_armor[v].cost, v)
+			end
+		end
+	end
+
+end
+
 function recruiter_convo_handler:getInitialScreen(play, npc, conversationTemplate)
 	local convoTemplate = LuaConversationTemplate(conversationTemplate)
 	local conversingPlayer = LuaCreatureObject(play)
@@ -421,3 +480,136 @@ function recruiter_convo_handler:getInitialScreen(play, npc, conversationTemplat
 	return nil
 	
 end
+
+function recruiter_convo_handler:getItemCost(itemstring)
+
+	local itemcost = nil
+	if (self:getRecruiterFactionString() == "rebel") then
+		itemcost = rebel_weapons_armor[itemstring].cost
+	elseif (self:getRecruiterFactionString() == "imperial") then
+		itemcost = imperial_weapons_armor[itemstring].cost
+	end
+
+	return itemcost
+end
+
+
+-- player, convo template, and the option number selected from the previous screen
+function recruiter_convo_handler:processArmorPurchase(conversingPlayer, conversationTemplate, selectedOption)
+
+	local player = LuaCreatureObject(conversingPlayer)
+
+	local convosession = player:getConversationSession()
+		
+	lastConversationScreen = nil
+	local conversationScreen = nil
+		
+	if (convosession ~= nil) then
+		local session = LuaConversationSession(convosession)
+		lastConversationScreen = session:getLastConversationScreen()
+	end
+
+	local itemname = nil
+	local conversationScreen = nill
+		
+	if (lastConversationScreen ~= nil) then	
+			
+		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
+		
+		local convoTemplate = LuaConversationTemplate(conversationTemplate)
+		
+		itemname = luaLastConversationScreen:getOptionLink(selectedOption)
+	
+		local awardresult = self:awarditem(conversingPlayer, itemname) 
+		
+		if (awardresult == self.SUCCESS) then
+		
+			local purchasedScreen = convoTemplate:getScreen("purchased")  -- Your requisition of the %TT order is complete.
+			local screenObject = LuaConversationScreen(purchasedScreen)
+			conversationScreen = screenObject:cloneScreen()
+			
+			screenObject = LuaConversationScreen(conversationScreen)
+			screenObject:setDialogTextTT("wearables_name", itemname)
+		
+		elseif (awardresult == self.NOTENOUGHFACTION) then
+		
+			conversationScreen = convoTemplate:getScreen("purchased_not_enough") -- don't offer money when you can't afford to pay
+			
+		elseif (awardresult == self.INVENTORYFULL) then
+		
+			conversationScreen = convoTemplate:getScreen("inventory_full") -- YOur inventory is full.  YOu must make some room before you can purchase.
+		end
+		
+	end
+		
+	return conversationScreen
+
+end
+
+function recruiter_convo_handler:awarditem(player, itemstring)
+	local obj = LuaSceneObject(player)
+	
+	local creatureObject = LuaCreatureObject(player)
+	
+	if ( creatureObject == nil or obj == nil ) then
+	
+		return self.GENERALERROR
+	end
+	
+	local pPlayer = creatureObject:getPlayerObject()
+	
+	local playerObject = LuaPlayerObject(pPlayer)
+	
+	local pInventory = obj:getSlottedObject("inventory")
+	
+	local factionstanding = playerObject:getFactionStanding(self:getRecruiterFactionString())
+		
+	local itemcost = self:getItemCost(itemstring)
+	
+	if ( pInventory ~= nil and playerObject ~= nil ) then 
+		
+		if (factionstanding  >= itemcost) then
+			--print("faction is good")
+			local pItem
+			
+			if (pInventory ~= nil) then
+			
+				local inventory = LuaSceneObject(pInventory)
+				
+				if (inventory:hasFullContainerObjects()) then
+					--print("inventory is full in awarditem()")
+					return self.INVENTORYFULL
+				end
+			
+				if (self:getRecruiterFactionString() == "rebel") then
+					pItem = giveItem(pInventory,rebel_weapons_armor[itemstring].item,-1)
+				else
+					local templatepath = imperial_weapons_armor[itemstring].item
+					pItem = giveItem(pInventory,templatepath,-1)
+					--print("done giving the item")
+				end
+			
+				if (pItem ~= nil) then
+				
+					local item = LuaSceneObject(pItem)
+					item:sendTo(player)
+					playerObject:decreaseFactionStanding(self:getRecruiterFactionString(),itemcost)
+							
+				else
+					--creatureObject:sendSystemMessage("Unable to process that item") 
+					return self.GENERALERROR
+				end
+			end
+		
+		else
+			return self.NOTENOUGHFACTION
+		end
+	
+	else
+		return self.GENERALERROR
+	end
+	
+	return self.SUCCESS
+
+end
+
