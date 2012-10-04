@@ -390,6 +390,8 @@ public:
 
 	void removePendingTask(const String& name);
 
+	PendingTasksMap* getPendingTasks();
+
 	Task* getPendingTask(const String& name);
 
 	bool containsPendingTask(const String& name);
@@ -866,7 +868,7 @@ protected:
 
 	StringId objectName;
 
-	PendingTasksMap pendingTasks;
+	Reference<PendingTasksMap* > pendingTasks;
 
 	bool staticObject;
 
@@ -1036,6 +1038,8 @@ public:
 	void addPendingTask(const String& name, Task* task, int miliseconds);
 
 	void removePendingTask(const String& name);
+
+	PendingTasksMap* getPendingTasks();
 
 	Task* getPendingTask(const String& name);
 
@@ -1599,6 +1603,8 @@ public:
 	int compareTo(SceneObject* obj);
 
 	unsigned long long getParentID();
+
+	PendingTasksMap* getPendingTasks();
 
 	bool containsPendingTask(const String& name);
 

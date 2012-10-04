@@ -131,8 +131,8 @@ void SceneObjectImplementation::initializeTransientMembers() {
 }
 
 void SceneObjectImplementation::initializePrivateData() {
-	pendingTasks.setNoDuplicateInsertPlan();
-	pendingTasks.setNullValue(NULL);
+	pendingTasks = NULL;
+
 	objectActiveSessions.setNullValue(NULL);
 	objectActiveSessions.setNoDuplicateInsertPlan();
 

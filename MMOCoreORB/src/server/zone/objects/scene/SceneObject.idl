@@ -135,7 +135,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dereferenced
 	protected StringId objectName;
 		
-	@dereferenced
 	protected transient PendingTasksMap pendingTasks;
 	
 	protected boolean staticObject;
@@ -715,7 +714,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@local
 	public void addPendingTask(final string name, Task task, int miliseconds) {
-		pendingTasks.put(name, task);
+		getPendingTasks().put(name, task);
 		task.schedule(miliseconds);
 	}
 	
@@ -727,7 +726,20 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@local
 	public void removePendingTask(final string name) {
+		if (pendingTasks == null)
+			return;
+		
 		pendingTasks.drop(name);
+	}
+	
+	public PendingTasksMap getPendingTasks() {
+		if (pendingTasks == null) {
+			pendingTasks = new PendingTasksMap();
+			pendingTasks.setNoDuplicateInsertPlan();
+			pendingTasks.setNullValue(null);
+		}
+		
+		return pendingTasks;
 	}
 	
 	/**
@@ -739,11 +751,17 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@local
 	@read
 	public Task getPendingTask(final string name) {
+		if (pendingTasks == null)
+			return null;
+		
 		return pendingTasks.get(name);
 	}
 	
 	@read
 	public boolean containsPendingTask(final string name) {
+		if (pendingTasks == null)
+			return false;
+		
 		return pendingTasks.contains(name);
 	}
 	
