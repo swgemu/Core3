@@ -143,7 +143,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	protected VectorMap<unsigned int, Facade> objectActiveSessions;
 
 	protected unsigned int gameObjectType;
-	protected unsigned int clientGameObjectType;
 	protected unsigned int containmentType;
 	
 	protected int planetMapCategory;
@@ -732,6 +731,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		pendingTasks.drop(name);
 	}
 	
+	@local
 	public PendingTasksMap getPendingTasks() {
 		if (pendingTasks == null) {
 			pendingTasks = new PendingTasksMap();
@@ -1161,7 +1161,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@read
 	public unsigned int getClientGameObjectType() {
-		return clientGameObjectType;
+		return templateObject.getClientGameObjectType();
 	}
 
 	@read

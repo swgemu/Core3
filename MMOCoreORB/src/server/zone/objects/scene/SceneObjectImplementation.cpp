@@ -153,7 +153,6 @@ void SceneObjectImplementation::initializePrivateData() {
 	planetMapSubCategory = 0;
 
 	gameObjectType = 0;
-	clientGameObjectType = 0;
 
 	containmentType = 4;
 
@@ -176,7 +175,6 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	//detailedDescription.setStringId(templateData->getDetailedDescription());
 
 	gameObjectType = templateData->getGameObjectType();
-	clientGameObjectType = templateData->getClientGameObjectType();
 	clientObjectCRC = templateData->getClientObjectCRC();
 
 	containerType = templateData->getContainerType();

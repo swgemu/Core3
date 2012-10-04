@@ -876,8 +876,6 @@ protected:
 
 	unsigned int gameObjectType;
 
-	unsigned int clientGameObjectType;
-
 	unsigned int containmentType;
 
 	int planetMapCategory;
@@ -1603,8 +1601,6 @@ public:
 	int compareTo(SceneObject* obj);
 
 	unsigned long long getParentID();
-
-	PendingTasksMap* getPendingTasks();
 
 	bool containsPendingTask(const String& name);
 
