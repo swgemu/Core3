@@ -169,6 +169,12 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 			return TransferErrorCode::CANTNESTOBJECT;
 		}
 		
+		if (object->isContainerObject() && getArrangementDescriptorSize() == 0) {
+			errorDescription = "@container_error_message:container12";
+
+			return TransferErrorCode::CANTNESTOBJECT;
+		}
+
 		ManagedReference<SceneObject*> myParent = getParent();
 		ManagedReference<SceneObject*> otherParent = object->getParent();
 
