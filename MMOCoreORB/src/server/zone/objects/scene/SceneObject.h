@@ -396,6 +396,8 @@ public:
 
 	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
 
+	int getContainedObjectsRecursive();
+
 	Facade* getActiveSession(unsigned int type);
 
 	void addActiveSession(unsigned int type, Facade* session);
@@ -1043,6 +1045,8 @@ public:
 
 	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
 
+	int getContainedObjectsRecursive();
+
 	Facade* getActiveSession(unsigned int type);
 
 	void addActiveSession(unsigned int type, Facade* session);
@@ -1603,6 +1607,8 @@ public:
 	bool containsPendingTask(const String& name);
 
 	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
+
+	int getContainedObjectsRecursive();
 
 	Facade* getActiveSession(unsigned int type);
 

@@ -155,8 +155,13 @@ int CellObjectImplementation::getCurrentNumberOfPlayerItems() {
 		for (int j = 0; j < getContainerObjectsSize(); ++j) {
 			ManagedReference<SceneObject*> containerObject = getContainerObject(j);
 
-			if (!getParent().get()->containsChildObject(containerObject) && !containerObject->isCreatureObject())
+			if (!getParent().get()->containsChildObject(containerObject) && !containerObject->isCreatureObject()) {
+
+				if (containerObject->isContainerObject())
+					count += containerObject->getContainedObjectsRecursive();
+
 				++count;
+			}
 		}
 	}
 

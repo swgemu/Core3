@@ -1542,3 +1542,19 @@ void SceneObjectImplementation::addActiveArea(ActiveArea* area) {
 
 	activeAreas.put(area);
 }
+
+int SceneObjectImplementation::getContainedObjectsRecursive() {
+	int count = 0;
+
+	Locker locker(&containerLock);
+
+	for (int i = 0; i < containerObjects.size(); ++i) {
+		ManagedReference<SceneObject*> obj = containerObjects.get(i);
+
+		++count;
+
+		count += obj->getContainedObjectsRecursive();
+	}
+
+	return count;
+}
