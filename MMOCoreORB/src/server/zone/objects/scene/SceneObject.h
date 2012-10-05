@@ -604,6 +604,8 @@ public:
 
 	bool isCreatureObject();
 
+	bool isAiAgent();
+
 	bool isShipObject();
 
 	bool isVehicleObject();
@@ -1253,6 +1255,8 @@ public:
 
 	virtual bool isCreatureObject();
 
+	virtual bool isAiAgent();
+
 	virtual bool isShipObject();
 
 	virtual bool isVehicleObject();
@@ -1775,6 +1779,8 @@ public:
 	bool isRegion();
 
 	bool isCreatureObject();
+
+	bool isAiAgent();
 
 	bool isShipObject();
 

@@ -900,8 +900,6 @@ public:
 
 	bool isPlayerCreature();
 
-	bool isAiAgent();
-
 	bool isAiActor();
 
 	bool isInformantCreature();
@@ -1679,8 +1677,6 @@ public:
 
 	bool isPlayerCreature();
 
-	virtual bool isAiAgent();
-
 	bool isAiActor();
 
 	virtual bool isInformantCreature();
@@ -2269,8 +2265,6 @@ public:
 	bool isCreature();
 
 	bool isPlayerCreature();
-
-	bool isAiAgent();
 
 	bool isAiActor();
 

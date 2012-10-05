@@ -122,6 +122,8 @@ void AuctionManagerImplementation::initialize() {
 	checkAuctions();
 	checkVendorItems();
 
+	info("loaded auctionsMap of size: " + String::valueOf(auctionMap->getTotalItemCount()), true);
+
 	marketEnabled = true;
 }
 

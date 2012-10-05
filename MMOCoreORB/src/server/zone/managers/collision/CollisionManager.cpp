@@ -17,6 +17,7 @@
 #include "server/zone/templates/appearance/MeshAppearanceTemplate.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/collision/PathFinderManager.h"
 #include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/objects/area/ActiveArea.h"
 
@@ -372,6 +373,15 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	if (object2->getZone() != zone)
 		return false;
 
+	if (object1->isAiAgent() || object2->isAiAgent()) {
+		Vector<WorldCoordinates>* path = PathFinderManager::instance()->findPath(object1, object2);
+
+		if (path == NULL)
+			return false;
+		else
+			delete path;
+	}
+
 	ManagedReference<SceneObject*> rootParent1 = object1->getRootParent();
 	ManagedReference<SceneObject*> rootParent2 = object2->getRootParent();
 
@@ -400,8 +410,6 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 		CloseObjectsVector* vec = (CloseObjectsVector*) object1->getCloseObjects();
 		vec->safeCopyTo(*closeObjects);		
 	}
-	
-		
 
 	if (object1->isCreatureObject())
 		heightOrigin = getRayOriginPoint(cast<CreatureObject*>(object1));
@@ -485,7 +493,6 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	}
 
 	return true;
-
 }
 
 

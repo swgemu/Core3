@@ -1656,10 +1656,6 @@ class CreatureObject extends TangibleObject {
 		return getPlayerObject() != null;
 	}
 	
-	public abstract boolean isAiAgent() {
-		return false;
-	}
-	
 	@read
 	public boolean isAiActor() {
 		return getActorObject() != null;

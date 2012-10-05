@@ -1320,6 +1320,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	@dirty
+	public abstract boolean isAiAgent() {
+		return false;
+	}
+	
+	@dirty
 	public abstract boolean isShipObject() {
 		return false;
 	}
