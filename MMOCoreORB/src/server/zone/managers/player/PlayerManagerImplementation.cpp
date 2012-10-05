@@ -3082,12 +3082,6 @@ void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
 		if (powerBoost != NULL)
 			player->removeBuff(powerBoost);
 
-		//now encumb
-
-		int healthEncum = player->getEncumbrance(CreatureEncumbrance::HEALTH);
-		int actionEncum = player->getEncumbrance(CreatureEncumbrance::ACTION);
-		int mindEncum = player->getEncumbrance(CreatureEncumbrance::MIND);
-
 		int encumbranceType = -1;
 
 		for (int i = 0; i < 9; ++i) {
@@ -3105,7 +3099,7 @@ void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
 
 			//info("attribute: " + CreatureAttribute::getName(i, true) + " max = " + String::valueOf(max) + " calculatedMax = " + String::valueOf(calculated), true);
 
-			if (calculated != max) {
+			if (calculated != max && calculated > 1) {
 				if (player->getHAM(i) > calculated)
 					player->setHAM(i, calculated, false);
 

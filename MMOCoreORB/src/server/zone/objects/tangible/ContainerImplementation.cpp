@@ -163,7 +163,7 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 	}
 
 	if (containmentType == -1) {
-		if (gameObjectType == SceneObjectType::WEARABLECONTAINER && object->getGameObjectType() == SceneObjectType::WEARABLECONTAINER) {
+		if ((gameObjectType == SceneObjectType::WEARABLECONTAINER && object->getGameObjectType() == SceneObjectType::WEARABLECONTAINER)) {
 			errorDescription = "@container_error_message:container12";
 
 			return TransferErrorCode::CANTNESTOBJECT;
