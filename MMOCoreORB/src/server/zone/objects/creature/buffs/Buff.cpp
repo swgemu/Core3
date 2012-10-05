@@ -504,6 +504,15 @@ int Buff::getBuffType() {
 		return _implementation->getBuffType();
 }
 
+VectorMap<byte, int>* Buff::getAttributeModifiers() {
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getAttributeModifiers();
+}
+
 int Buff::getAttributeModifierValue(byte attribute) {
 	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1141,6 +1150,11 @@ float BuffImplementation::getBuffDuration() {
 int BuffImplementation::getBuffType() {
 	// server/zone/objects/creature/buffs/Buff.idl():  		return buffType;
 	return buffType;
+}
+
+VectorMap<byte, int>* BuffImplementation::getAttributeModifiers() {
+	// server/zone/objects/creature/buffs/Buff.idl():  		return attributeModifiers;
+	return (&attributeModifiers);
 }
 
 int BuffImplementation::getAttributeModifierValue(byte attribute) {

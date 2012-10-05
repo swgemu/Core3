@@ -1786,12 +1786,6 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 	if (bankCredits < 0)
 		bankCredits = 0;
 
-	for (int i = 0; i < creatureBuffs.getBuffListSize(); ++i) {
-		ManagedReference<Buff*> buff = creatureBuffs.getBuffByIndex(i);
-
-		buff->loadBuffDurationEvent(_this.get());
-	}
-
 	if (isIncapacitated()) {
 		int health = getHAM(CreatureAttribute::HEALTH);
 
@@ -1813,6 +1807,14 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 
 	if (ghost == NULL)
 		return;
+
+	getZoneServer()->getPlayerManager()->fixHAM(_this.get());
+
+	for (int i = 0; i < creatureBuffs.getBuffListSize(); ++i) {
+		ManagedReference<Buff*> buff = creatureBuffs.getBuffByIndex(i);
+
+		buff->loadBuffDurationEvent(_this.get());
+	}
 
 	ZoneServer* zoneServer = server->getZoneServer();
 	SkillManager* skillManager = SkillManager::instance();
@@ -1836,6 +1838,8 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 	ghost->getSchematics()->addRewardedSchematics(ghost);
 
 	skillManager->updateXpLimits(ghost);
+
+	//
 }
 
 int CreatureObjectImplementation::notifyObjectInserted(SceneObject* object) {

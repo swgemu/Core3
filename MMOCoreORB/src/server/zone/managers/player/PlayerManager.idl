@@ -264,22 +264,15 @@ class PlayerManager extends Observer implements Logger {
 	
 	public native void finishHologrind(CreatureObject player);
 
-	public native Account getAccount(final string username);
-	
+	public native Account getAccount(final string username);	
 	public native Account getAccount(unsigned int accountID);
-
 	private native Account queryForAccount(final string query);
 	
-	public native string banAccount(PlayerObject admin, Account account, unsigned int seconds, final string reason);
-	
-	public native string unbanAccount(PlayerObject admin, Account account, final string reason);
-	
-	public native string banFromGalaxy(PlayerObject admin, Account account, final unsigned int galaxy, unsigned int seconds, final string reason);
-	
-	public native string unbanFromGalaxy(PlayerObject admin, Account account, final unsigned int galaxy, final string reason);
-	
+	public native string banAccount(PlayerObject admin, Account account, unsigned int seconds, final string reason);	
+	public native string unbanAccount(PlayerObject admin, Account account, final string reason);	
+	public native string banFromGalaxy(PlayerObject admin, Account account, final unsigned int galaxy, unsigned int seconds, final string reason);	
+	public native string unbanFromGalaxy(PlayerObject admin, Account account, final unsigned int galaxy, final string reason);	
 	public native string banCharacter(PlayerObject admin, Account account, final string name, unsigned int galaxyID, unsigned int seconds, final string reason);
-
 	public native string unbanCharacter(PlayerObject admin, Account account, final string name, unsigned int galaxyID, final string reason);
 	
 	public native boolean promptTeachableSkills(CreatureObject teacher, SceneObject target);
@@ -287,6 +280,8 @@ class PlayerManager extends Observer implements Logger {
 	public native void decreaseOnlineCharCount(ZoneClientSession client);
 	public native boolean increaseOnlineCharCountIfPossible(ZoneClientSession client);
 	//public native int getOnlineCharCount(unsigned int accountId);
+	
+	public native void fixHAM(CreatureObject player);
 	
 	/**
 	 * Sends a confirmation box to the student asking if they want to learn the skill.

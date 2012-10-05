@@ -151,6 +151,8 @@ public:
 
 	int getBuffType();
 
+	VectorMap<byte, int>* getAttributeModifiers();
+
 	int getAttributeModifierValue(byte attribute);
 
 	int getSkillModifierValue(const String& modname);
@@ -282,7 +284,7 @@ public:
 
 	virtual void removeStates();
 
-	void clearBuffEvent();
+	virtual void clearBuffEvent();
 
 	void setBuffEventNull();
 
@@ -317,6 +319,8 @@ public:
 	float getBuffDuration();
 
 	int getBuffType();
+
+	VectorMap<byte, int>* getAttributeModifiers();
 
 	virtual int getAttributeModifierValue(byte attribute);
 

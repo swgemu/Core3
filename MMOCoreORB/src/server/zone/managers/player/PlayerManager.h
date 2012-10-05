@@ -404,6 +404,8 @@ public:
 
 	bool increaseOnlineCharCountIfPossible(ZoneClientSession* client);
 
+	void fixHAM(CreatureObject* player);
+
 	bool offerTeaching(CreatureObject* teacher, CreatureObject* student, Skill* skill);
 
 	bool acceptTeachingOffer(CreatureObject* teacher, CreatureObject* student, Skill* skill);
@@ -626,6 +628,8 @@ public:
 
 	bool increaseOnlineCharCountIfPossible(ZoneClientSession* client);
 
+	void fixHAM(CreatureObject* player);
+
 	bool offerTeaching(CreatureObject* teacher, CreatureObject* student, Skill* skill);
 
 	bool acceptTeachingOffer(CreatureObject* teacher, CreatureObject* student, Skill* skill);
@@ -802,6 +806,8 @@ public:
 	void decreaseOnlineCharCount(ZoneClientSession* client);
 
 	bool increaseOnlineCharCountIfPossible(ZoneClientSession* client);
+
+	void fixHAM(CreatureObject* player);
 
 };
 

@@ -97,10 +97,12 @@
 
 #include "server/zone/managers/stringid/StringIdManager.h"
 
+#include "server/zone/objects/creature/buffs/PowerBoostBuff.h"
+
 int PlayerManagerImplementation::MAX_CHAR_ONLINE_COUNT = 2;
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
-Logger("PlayerManager") {
+		Logger("PlayerManager") {
 	server = zoneServer;
 	processor = impl;
 
@@ -1359,7 +1361,7 @@ void PlayerManagerImplementation::awardBadge(PlayerObject* ghost, uint32 badge) 
 	if (profsDone > 5) // Corresponds to the total professions needed in Generate holo.
 		finishHologrind(player); // Method to send popup and grant Force Sensitive box.
 
-	*/
+	 */
 
 }
 
@@ -1474,7 +1476,7 @@ void PlayerManagerImplementation::handleAddItemToTradeWindow(CreatureObject* pla
 	CreatureObject* receiver = cast<CreatureObject*>( obj.get());
 
 	ManagedReference<SceneObject*> objectToTrade = server->getObject(itemID);
-	
+
 	if (objectToTrade == NULL || !objectToTrade->isASubChildOf(player) ||
 			!objectToTrade->checkContainerPermission(player, ContainerPermissions::MOVECONTAINER)) {
 		player->sendSystemMessage("@container_error_message:container26");
@@ -2619,17 +2621,17 @@ void PlayerManagerImplementation::generateHologrindSkills(CreatureObject* player
 	for (int i = 0; i < 32; ++i)
 		profs.put(i + 1);
 
-	 // TODO: Remove ungrindable professions (temporary.)
-		// Commando.
-		profs.drop(5);
-		// Droid Engineer.
-		profs.drop(16);
-		// Bio-Engineer.
-		profs.drop(20);
-		// Creature Handler.
-		profs.drop(21);
-		// Politician.
-		profs.drop(32);
+	// TODO: Remove ungrindable professions (temporary.)
+	// Commando.
+	profs.drop(5);
+	// Droid Engineer.
+	profs.drop(16);
+	// Bio-Engineer.
+	profs.drop(20);
+	// Creature Handler.
+	profs.drop(21);
+	// Politician.
+	profs.drop(32);
 
 	uint8 totalProfsNeeded = 6; // Six for the time being (static amount), if number is altered, please also change method in awardBadge that calls finishHologrind.
 
@@ -3049,6 +3051,72 @@ String PlayerManagerImplementation::unbanCharacter(PlayerObject* admin, Account*
 	return "Character Successfully Unbanned";
 }
 
+void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
+	Locker locker(player);
+
+	try {
+		BuffList* buffs = player->getBuffList();
+
+		VectorMap<byte, int> attributeValues;
+		attributeValues.setNullValue(0);
+		attributeValues.setAllowOverwriteInsertPlan();
+
+		ManagedReference<Buff*> powerBoost;
+
+		//check buffs
+		for (int i = 0; i < buffs->getBuffListSize(); ++i) {
+			ManagedReference<Buff*> buff = buffs->getBuffByIndex(i);
+
+			VectorMap<byte, int>* attributeModifiers = buff->getAttributeModifiers();
+
+			for (int j = 0; j < attributeModifiers->size(); ++j) {
+				byte modifier = attributeModifiers->elementAt(j).getKey();
+				int val = attributeModifiers->elementAt(j).getValue();
+
+				attributeValues.put(modifier, attributeValues.get(modifier) + val);
+			}
+
+			powerBoost = dynamic_cast<PowerBoostBuff*>(buff.get());
+		}
+
+		if (powerBoost != NULL)
+			player->removeBuff(powerBoost);
+
+		//now encumb
+
+		int healthEncum = player->getEncumbrance(CreatureEncumbrance::HEALTH);
+		int actionEncum = player->getEncumbrance(CreatureEncumbrance::ACTION);
+		int mindEncum = player->getEncumbrance(CreatureEncumbrance::MIND);
+
+		int encumbranceType = -1;
+
+		for (int i = 0; i < 9; ++i) {
+			int maxModifier = attributeValues.get((byte)i);
+			int baseHam = player->getBaseHAM(i);
+			int max = player->getMaxHAM(i);
+
+			int calculated = baseHam + maxModifier;
+
+			if (i % 3 == 0) {
+				++encumbranceType;
+			} else {
+				calculated -= player->getEncumbrance(encumbranceType);
+			}
+
+			//info("attribute: " + CreatureAttribute::getName(i, true) + " max = " + String::valueOf(max) + " calculatedMax = " + String::valueOf(calculated), true);
+
+			if (calculated != max) {
+				if (player->getHAM(i) > calculated)
+					player->setHAM(i, calculated, false);
+
+				player->setMaxHAM(i, calculated, false);
+			}
+		}
+	} catch (Exception& e) {
+		error(e.getMessage());
+	}
+}
+
 bool PlayerManagerImplementation::promptTeachableSkills(CreatureObject* teacher, SceneObject* target) {
 	if (target == NULL || !target->isPlayerCreature()) {
 		teacher->sendSystemMessage("@teaching:no_target"); //Whom do you want to teach?
@@ -3151,8 +3219,8 @@ bool PlayerManagerImplementation::offerTeaching(CreatureObject* teacher, Creatur
 
 	StringBuffer prompt;
 	prompt << teacher->getDisplayedName()
-					<< " has offered to teach you " << sklname << " (" << skill->getXpCost()
-					<< " " << expname  << " experience cost).";
+							<< " has offered to teach you " << sklname << " (" << skill->getXpCost()
+							<< " " << expname  << " experience cost).";
 
 	suibox->setPromptText(prompt.toString());
 	suibox->setCallback(new PlayerTeachConfirmSuiCallback(server, skill));
@@ -3248,10 +3316,10 @@ void PlayerManagerImplementation::decreaseOnlineCharCount(ZoneClientSession* cli
 
 	if (!onlineZoneClientMap.containsKey(accountId))
 		return;
-		
+
 	BaseClientProxy* session = client->getSession();
-	
-	
+
+
 
 	Vector<Reference<ZoneClientSession*> > clients = onlineZoneClientMap.get(accountId);
 
@@ -3266,9 +3334,9 @@ void PlayerManagerImplementation::decreaseOnlineCharCount(ZoneClientSession* cli
 		onlineZoneClientMap.remove(accountId);
 	else
 		onlineZoneClientMap.put(accountId, clients);
-		
+
 	locker.release();
-	
+
 	if (session != NULL) {
 		onlineZoneClientMap.accountLoggedOut(session->getIPAddress(), accountId);
 	}
@@ -3278,7 +3346,7 @@ bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSe
 	Locker locker(&onlineMapMutex);
 
 	uint32 accountId = client->getAccountID();
-	
+
 	BaseClientProxy* session = client->getSession();
 
 	if (!onlineZoneClientMap.containsKey(accountId)) {
@@ -3286,12 +3354,12 @@ bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSe
 		clients.add(client);
 
 		onlineZoneClientMap.put(accountId, clients);
-		
+
 		locker.release();
-				
+
 		if (session != NULL) {
 			String ip = session->getIPAddress();
-			
+
 			onlineZoneClientMap.addAccount(ip, accountId);
 		}
 
@@ -3323,15 +3391,15 @@ bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSe
 	clients.add(client);
 
 	onlineZoneClientMap.put(accountId, clients);
-	
+
 	locker.release();
-	
+
 	if (session != NULL) {
 		String ip = session->getIPAddress();
-			
+
 		onlineZoneClientMap.addAccount(ip, accountId);
 	}
-	
+
 	return true;
 }
 
@@ -3340,4 +3408,4 @@ int PlayerManagerImplementation::getOnlineCharCount(unsigned int accountId) {
 	//onlineMapMutex.rlock()
 	return 0;
 }
-*/
+ */
