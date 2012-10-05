@@ -305,6 +305,8 @@ using namespace server::zone::packets::scene;
 
 #include "engine/service/proto/BasePacket.h"
 
+#include "system/thread/Mutex.h"
+
 namespace server {
 namespace zone {
 namespace objects {

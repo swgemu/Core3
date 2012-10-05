@@ -37,6 +37,8 @@
 #include "server/zone/objects/player/sui/callbacks/StructurePayAccessFeeSuiCallback.h"
 #include "server/zone/objects/building/tasks/RevokePaidAccessTask.h"
 
+#include "tasks/EjectObjectEvent.h"
+
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
 
@@ -568,9 +570,11 @@ void BuildingObjectImplementation::ejectObject(SceneObject* obj) {
 	float z = 0;
 
 	if (zone != NULL)
-		zone->getHeight(x, y);
+		z = zone->getHeight(x, y);
 
-	obj->teleport(x, z, y);
+	Reference<Task*> task = new EjectObjectEvent(obj, x, z, y);
+	task->execute();
+	//obj->teleport(x, z, y);
 }
 
 void BuildingObjectImplementation::onEnter(CreatureObject* player) {
