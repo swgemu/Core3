@@ -395,26 +395,44 @@ static unsigned int attributeLimits[10][19] = {
 class Races {
 public:
 	inline const static char* getRace(int raceid) {
+		if (raceid < 0 || raceid > 19)
+			return "";
+
 		return RaceStrs[raceid];
 	}
 
 	inline static int getSpeciesID(int raceid) {
+		if (raceid < 0 || raceid > 19)
+			return 0;
+
 		return TemplateSpecies[raceid];
 	}
 
 	inline const static char* getMood(int moodid) {
+		if (moodid < 0 || moodid > 189)
+			return "";
+
 		return MoodStr[moodid][0];
 	}
 
 	inline const static char* getSpecies(int raceid) {
+		if (raceid < 0 || raceid > 19)
+			return "";
+
 		return Species[raceid];
 	}
 
 	inline const static char* getGender(int raceid) {
+		if (raceid < 0 || raceid > 19)
+			return "";
+
 		return Gender[raceid];
 	}
 
 	inline static uint32 getRaceCRC(int raceid) {
+		if (raceid < 0 || raceid > 19)
+			return 0;
+
 		return SharedRace[raceid];
 	}
 
