@@ -1511,6 +1511,12 @@ void CombatManager::requestDuel(CreatureObject* player, CreatureObject* targetPl
 		return;
 	}
 
+	if (ghost->getDuelListSize() >= 30) {
+		player->sendSystemMessage("You cannot request to duel more people");
+
+		return;
+	}
+
 	player->info("requesting duel");
 
 	ghost->addToDuelList(targetPlayer);
