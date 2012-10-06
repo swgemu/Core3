@@ -186,8 +186,8 @@ class PlayerObject extends IntangibleObject {
 	protected string lastNpcConvo;
 	@dereferenced
 	protected Vector<string> lastNpcConvoOptions; //Deprecate. Conversation could also be a session.
-	@weakReference
-	protected CreatureObject conversatingCreature; //If conversation is a session, then this would be stored on the session.
+	
+	protected unsigned long conversatingCreature; //If conversation is a session, then this would be stored on the session.
 	
 	
 	// Jedi Trainers.
@@ -283,6 +283,8 @@ class PlayerObject extends IntangibleObject {
 		cloningFacility = 0;
 		
 		skillPoints = 0;
+		
+		conversatingCreature = 0;
 		
 		forcePower = 0;
 		forcePowerMax = 0;
@@ -648,11 +650,13 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public void setConversatingCreature(CreatureObject creature) {
-		conversatingCreature = creature;
+		if (creature == null)
+			conversatingCreature = 0;
+		else
+			conversatingCreature = creature.getObjectID();
 	}
 	
-	@weakReference
-	public CreatureObject getConversatingCreature() {
+	public unsigned long getConversatingCreature() {
 		return conversatingCreature;
 	}
 	

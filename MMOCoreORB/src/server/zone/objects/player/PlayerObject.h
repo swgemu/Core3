@@ -456,7 +456,7 @@ public:
 
 	void setConversatingCreature(CreatureObject* creature);
 
-	ManagedWeakReference<CreatureObject* > getConversatingCreature();
+	unsigned long long getConversatingCreature();
 
 	void setTrainerCoordinates(const Vector3& trainer);
 
@@ -894,7 +894,7 @@ protected:
 
 	Vector<String> lastNpcConvoOptions;
 
-	ManagedWeakReference<CreatureObject* > conversatingCreature;
+	unsigned long long conversatingCreature;
 
 	Vector3 trainerCoordinates;
 
@@ -1109,7 +1109,7 @@ public:
 
 	void setConversatingCreature(CreatureObject* creature);
 
-	ManagedWeakReference<CreatureObject* > getConversatingCreature();
+	unsigned long long getConversatingCreature();
 
 	void setTrainerCoordinates(const Vector3& trainer);
 
@@ -1586,7 +1586,7 @@ public:
 
 	void setConversatingCreature(CreatureObject* creature);
 
-	ManagedWeakReference<CreatureObject* > getConversatingCreature();
+	unsigned long long getConversatingCreature();
 
 	void setTrainerZoneName(String& zoneName);
 
