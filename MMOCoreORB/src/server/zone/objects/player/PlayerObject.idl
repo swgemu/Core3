@@ -164,7 +164,7 @@ class PlayerObject extends IntangibleObject {
 	protected SortedVector<ChatRoom> chatRooms;
 		
 	@dereferenced
-	protected SortedVector<CreatureObject> duelList;
+	protected transient SortedVector<CreatureObject> duelList;
 	
 	@dereferenced
 	protected BountyHunterTefRemovalTaskMap bountyLockList;
