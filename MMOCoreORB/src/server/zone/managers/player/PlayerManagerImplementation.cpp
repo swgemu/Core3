@@ -2944,7 +2944,7 @@ String PlayerManagerImplementation::banFromGalaxy(PlayerObject* admin, Account* 
 
 					player->sendMessage(new LogoutMessage());
 
-					ZoneClientSession* session = player->getClient();
+					ManagedReference<ZoneClientSession*> session = player->getClient();
 
 					if(session != NULL)
 						session->disconnect(true);
