@@ -300,6 +300,8 @@ public:
 
 	SortedVector<ManagedReference<SceneObject* > > getInsurableItems(CreatureObject* player, bool onlyInsurable = true);
 
+	void addInsurableItemsRecursive(SceneObject* obj, SortedVector<ManagedReference<SceneObject* > >* items, bool onlyInsurable);
+
 	void handleAbortTradeMessage(CreatureObject* player);
 
 	void handleAddItemToTradeWindow(CreatureObject* player, unsigned long long itemID);
@@ -519,6 +521,8 @@ public:
 	void awardExperience(CreatureObject* player, const String& xpType, int amount, bool sendSystemMessage = true, float localMultiplier = 1.0f);
 
 	SortedVector<ManagedReference<SceneObject* > > getInsurableItems(CreatureObject* player, bool onlyInsurable = true);
+
+	void addInsurableItemsRecursive(SceneObject* obj, SortedVector<ManagedReference<SceneObject* > >* items, bool onlyInsurable);
 
 	void handleAbortTradeMessage(CreatureObject* player);
 

@@ -142,6 +142,8 @@ public:
 
 	bool isAllowedEntry(CreatureObject* player);
 
+	bool isCityBanned(CreatureObject* player);
+
 	int notifyStructurePlaced(CreatureObject* player);
 
 	Vector3 getEjectionPoint();
@@ -313,6 +315,8 @@ public:
 
 	bool isAllowedEntry(CreatureObject* player);
 
+	bool isCityBanned(CreatureObject* player);
+
 	virtual int notifyStructurePlaced(CreatureObject* player);
 
 	Vector3 getEjectionPoint();
@@ -473,6 +477,8 @@ public:
 	void broadcastCellPermissions(unsigned long long objectid);
 
 	bool isAllowedEntry(CreatureObject* player);
+
+	bool isCityBanned(CreatureObject* player);
 
 	int notifyStructurePlaced(CreatureObject* player);
 

@@ -300,6 +300,15 @@ SortedVector<ManagedReference<SceneObject* > > PlayerManager::getInsurableItems(
 		return _implementation->getInsurableItems(player, onlyInsurable);
 }
 
+void PlayerManager::addInsurableItemsRecursive(SceneObject* obj, SortedVector<ManagedReference<SceneObject* > >* items, bool onlyInsurable) {
+	PlayerManagerImplementation* _implementation = static_cast<PlayerManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->addInsurableItemsRecursive(obj, items, onlyInsurable);
+}
+
 void PlayerManager::handleAbortTradeMessage(CreatureObject* player) {
 	PlayerManagerImplementation* _implementation = static_cast<PlayerManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {

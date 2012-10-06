@@ -2663,6 +2663,26 @@ StartingLocation* PlayerManagerImplementation::getStartingLocation(const String&
 	return NULL;
 }
 
+void PlayerManagerImplementation::addInsurableItemsRecursive(SceneObject* obj, SortedVector<ManagedReference<SceneObject*> >* items, bool onlyInsurable) {
+	for (int j = 0; j < obj->getContainerObjectsSize(); j++) {
+		SceneObject* object = obj->getContainerObject(j);
+
+		if (!object->isTangibleObject())
+			continue;
+
+		TangibleObject* item = cast<TangibleObject*>( object);
+
+		if (item != NULL && !(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject())) {
+			items->put(item);
+		} else if ((item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject()) && !onlyInsurable) {
+			items->put(item);
+		}
+
+		if (object->isContainerObject())
+			addInsurableItemsRecursive(object, items, onlyInsurable);
+	}
+}
+
 SortedVector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getInsurableItems(CreatureObject* player, bool onlyInsurable) {
 	SortedVector<ManagedReference<SceneObject*> > insurableItems;
 	insurableItems.setNoDuplicateInsertPlan();
@@ -2690,20 +2710,7 @@ SortedVector<ManagedReference<SceneObject*> > PlayerManagerImplementation::getIn
 			}
 		}
 
-		for (int j = 0; j < container->getContainerObjectsSize(); j++) {
-			SceneObject* object = container->getContainerObject(j);
-
-			if (!object->isTangibleObject())
-				continue;
-
-			TangibleObject* item = cast<TangibleObject*>( object);
-
-			if (item != NULL && !(item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject())) {
-				insurableItems.put(item);
-			} else if ((item->getOptionsBitmask() & OptionBitmask::INSURED) && (item->isWeaponObject() || item->isArmorObject() || item->isWearableObject()) && !onlyInsurable) {
-				insurableItems.put(item);
-			}
-		}
+		addInsurableItemsRecursive(container, &insurableItems, onlyInsurable);
 	}
 
 	return insurableItems;
