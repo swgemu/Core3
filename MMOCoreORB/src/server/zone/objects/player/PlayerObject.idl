@@ -169,11 +169,9 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	protected BountyHunterTefRemovalTaskMap bountyLockList;
 	
-	@weakReference
-	protected BuildingObject declaredResidence;
+	protected unsigned long declaredResidence;
 	
-	@weakReference
-	protected BuildingObject cloningFacility;
+	protected unsigned long cloningFacility;
 
 	@dereferenced
 	protected SortedVector<unsigned long> persistentMessages;
@@ -279,6 +277,10 @@ class PlayerObject extends IntangibleObject {
 		suiBoxNextID = 0;
 		
 		savedParentID = 0;
+		
+		declaredResidence = 0;
+		
+		cloningFacility = 0;
 		
 		skillPoints = 0;
 		
@@ -725,21 +727,25 @@ class PlayerObject extends IntangibleObject {
 		commandMessageStrings.drop(actionCRC);
 	}
 	
-	@weakReference
-	public BuildingObject getDeclaredResidence() {
+	public unsigned long getDeclaredResidence() {
 		return declaredResidence;
 	}
 	
 	public void setDeclaredResidence(BuildingObject residence) {
-		declaredResidence = residence;
+		if (residence == null)
+			declaredResidence = 0;
+		else
+			declaredResidence = residence.getObjectID();
 	}
 	
 	public void setCloningFacility(BuildingObject cloningfac) {
-		cloningFacility = cloningfac;
+		if (cloningfac == null)
+			cloningFacility = 0;
+		else
+			cloningFacility = cloningfac.getObjectID();
 	}
 	
-	@weakReference
-	public BuildingObject getCloningFacility() {
+	public unsigned long getCloningFacility() {
 		return cloningFacility;
 	}
 	

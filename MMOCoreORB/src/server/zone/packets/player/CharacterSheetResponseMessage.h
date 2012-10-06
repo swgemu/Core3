@@ -61,7 +61,8 @@ public:
 		insertInt(0); //??
 		insertInt(0); //??
 
-		ManagedReference<BuildingObject*> cloningFacility = ghost->getCloningFacility();
+		uint64 preDesignatedFacilityOid = ghost->getCloningFacility();
+		ManagedReference<SceneObject*> cloningFacility = player->getZoneServer()->getObject(preDesignatedFacilityOid);
 
 		if (cloningFacility != NULL && cloningFacility->getZone() != NULL) {
 			insertFloat(cloningFacility->getPositionX());
@@ -80,7 +81,9 @@ public:
 		insertFloat(0); //Bank Location Y
 		insertAscii(ghost->getBankLocation()); //Bank Planet
 
-		ManagedReference<BuildingObject*> declaredResidence = ghost->getDeclaredResidence();
+		uint64 declaredOidResidence = ghost->getDeclaredResidence();
+
+		ManagedReference<SceneObject*> declaredResidence = player->getZoneServer()->getObject(declaredOidResidence);
 
 		if (declaredResidence != NULL && declaredResidence->getZone() != NULL) {
 			insertFloat(declaredResidence->getPositionX()); //Home Location X

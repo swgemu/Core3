@@ -403,7 +403,9 @@ int StructureManagerImplementation::declareResidence(CreatureObject* player, Str
 	PlayerObject* ghost = player->getPlayerObject();
 	uint64 objectid = player->getObjectID();
 
-	ManagedReference<BuildingObject*> declaredResidence = ghost->getDeclaredResidence();
+	uint64 declaredOidResidence = ghost->getDeclaredResidence();
+
+	ManagedReference<BuildingObject*> declaredResidence = cast<BuildingObject*>(zone->getZoneServer()->getObject(declaredOidResidence));
 	ManagedReference<CityRegion*> cityRegion = buildingObject->getCityRegion();
 
 	CityManager* cityManager = server->getZoneServer()->getCityManager();
@@ -605,7 +607,9 @@ void StructureManagerImplementation::reportStructureStatus(CreatureObject* creat
 		status->addMenuItem("@player_structure:owner_prompt " + owner->getFirstName());
 	}
 
-	ManagedReference<BuildingObject*> declaredResidence = ghost->getDeclaredResidence();
+	uint64 declaredOidResidence = ghost->getDeclaredResidence();
+
+	ManagedReference<BuildingObject*> declaredResidence = cast<BuildingObject*>(zone->getZoneServer()->getObject(declaredOidResidence));
 
 	if (declaredResidence == structure) {
 		status->addMenuItem("@player_structure:declared_residency"); //You have declared your residency here.

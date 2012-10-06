@@ -1149,7 +1149,9 @@ void CityManagerImplementation::registerForMayoralRace(CityRegion* city, Creatur
 	if (ghost == NULL)
 		return;
 
-	ManagedReference<BuildingObject*> declaredResidence = ghost->getDeclaredResidence();
+	uint64 declaredOidResidence = ghost->getDeclaredResidence();
+
+	ManagedReference<BuildingObject*> declaredResidence = cast<BuildingObject*>(creature->getZoneServer()->getObject(declaredOidResidence));
 
 	if (declaredResidence != NULL) {
 		ManagedReference<CityRegion*> declaredCity = declaredResidence->getCityRegion();

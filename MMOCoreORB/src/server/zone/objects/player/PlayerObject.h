@@ -492,13 +492,13 @@ public:
 
 	void removeCommandMessageString(unsigned int actionCRC);
 
-	ManagedWeakReference<BuildingObject* > getDeclaredResidence();
+	unsigned long long getDeclaredResidence();
 
 	void setDeclaredResidence(BuildingObject* residence);
 
 	void setCloningFacility(BuildingObject* cloningfac);
 
-	ManagedWeakReference<BuildingObject* > getCloningFacility();
+	unsigned long long getCloningFacility();
 
 	void notifyOnline();
 
@@ -878,9 +878,9 @@ protected:
 
 	BountyHunterTefRemovalTaskMap bountyLockList;
 
-	ManagedWeakReference<BuildingObject* > declaredResidence;
+	unsigned long long declaredResidence;
 
-	ManagedWeakReference<BuildingObject* > cloningFacility;
+	unsigned long long cloningFacility;
 
 	SortedVector<unsigned long long> persistentMessages;
 
@@ -1145,13 +1145,13 @@ public:
 
 	void removeCommandMessageString(unsigned int actionCRC);
 
-	ManagedWeakReference<BuildingObject* > getDeclaredResidence();
+	unsigned long long getDeclaredResidence();
 
 	void setDeclaredResidence(BuildingObject* residence);
 
 	void setCloningFacility(BuildingObject* cloningfac);
 
-	ManagedWeakReference<BuildingObject* > getCloningFacility();
+	unsigned long long getCloningFacility();
 
 	void notifyOnline();
 
@@ -1612,13 +1612,13 @@ public:
 
 	void removeCommandMessageString(unsigned int actionCRC);
 
-	ManagedWeakReference<BuildingObject* > getDeclaredResidence();
+	unsigned long long getDeclaredResidence();
 
 	void setDeclaredResidence(BuildingObject* residence);
 
 	void setCloningFacility(BuildingObject* cloningfac);
 
-	ManagedWeakReference<BuildingObject* > getCloningFacility();
+	unsigned long long getCloningFacility();
 
 	void notifyOnline();
 
