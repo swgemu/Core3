@@ -1179,14 +1179,18 @@ int BuildingObjectImplementation::getAccessFee() {
 }
 
 void BuildingObjectImplementation::removeAccessFee() {
-	// server/zone/objects/building/BuildingObject.idl():  		accessFee = 0;
+	// server/zone/objects/building/BuildingObject.idl():  		}
+{
+	Locker _locker((&paidAccessListMutex));
+	// server/zone/objects/building/BuildingObject.idl():  			accessFee = 0;
 	accessFee = 0;
-	// server/zone/objects/building/BuildingObject.idl():  		accessDuration = 0;
+	// server/zone/objects/building/BuildingObject.idl():  			accessDuration = 0;
 	accessDuration = 0;
-	// server/zone/objects/building/BuildingObject.idl():  		paidAccessList.removeAll();
+	// server/zone/objects/building/BuildingObject.idl():  			paidAccessList.removeAll();
 	(&paidAccessList)->removeAll();
-	// server/zone/objects/building/BuildingObject.idl():  		updatePaidAccessList();
+	// server/zone/objects/building/BuildingObject.idl():  			updatePaidAccessList();
 	updatePaidAccessList();
+}
 }
 
 /*

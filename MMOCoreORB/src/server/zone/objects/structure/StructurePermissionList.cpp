@@ -19,25 +19,84 @@ StructurePermissionList::StructurePermissionList() {
 	addList("HOPPER");
 	addList("BAN");
 	addList("VENDOR");
-
-	addSerializableVariables();
 }
 
-StructurePermissionList::StructurePermissionList(const StructurePermissionList& spl) : Object(), Serializable() {
+StructurePermissionList::StructurePermissionList(const StructurePermissionList& spl) : Object() {
 	permissionLists = spl.permissionLists;
-
-	addSerializableVariables();
 }
 
-void StructurePermissionList::addSerializableVariables() {
-	addSerializableVariable("permissionLists", &permissionLists);
+bool StructurePermissionList::toBinaryStream(ObjectOutputStream* stream) {
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
+
+	return true;
+}
+
+int StructurePermissionList::writeObjectMembers(ObjectOutputStream* stream) {
+	String _name;
+	int _offset;
+	uint32 _totalSize;
+
+	_name = "permissionLists";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<VectorMap<String, SortedVector<String> > >::toBinaryStream(&permissionLists, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	String emptyName; // making it serialize the same way as Serializable so bas doesnt have to update all the objects
+
+	_name = "_className";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<String>::toBinaryStream(&emptyName, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	return 2;
+}
+
+bool StructurePermissionList::readObjectMember(ObjectInputStream* stream, const String& name) {
+	if (name == "permissionLists") {
+		TypeInfo<float>::parseFromBinaryStream(&permissionLists, stream);
+
+		return true;
+	}
+
+	return false;
+}
+
+bool StructurePermissionList::parseFromBinaryStream(ObjectInputStream* stream) {
+	uint16 _varCount = stream->readShort();
+
+	for (int i = 0; i < _varCount; ++i) {
+		String _name;
+		_name.parseFromBinaryStream(stream);
+
+		uint32 _varSize = stream->readInt();
+
+		int _currentOffset = stream->getOffset();
+
+		if(readObjectMember(stream, _name)) {
+		}
+
+		stream->setOffset(_currentOffset + _varSize);
+	}
+
+	return true;
 }
 
 void StructurePermissionList::sendTo(CreatureObject* creature, const String& listName) {
 	ZoneServer* zoneServer = creature->getZoneServer();
 
+	ReadLocker locker(&lock);
+
 	if (!permissionLists.contains(listName)) {
-			return;
+		return;
 	}
 
 	PermissionListCreateMessage* listMsg = new PermissionListCreateMessage(listName);
@@ -52,6 +111,7 @@ void StructurePermissionList::sendTo(CreatureObject* creature, const String& lis
 }
 
 int StructurePermissionList::togglePermission(const String& listName, const String& playerName) {
+	Locker locker(&lock);
 
 	if(playerName == ownerName)
 		return CANTCHANGEOWNER;
@@ -74,6 +134,7 @@ int StructurePermissionList::togglePermission(const String& listName, const Stri
 }
 
 int StructurePermissionList::grantPermission(const String& listName, const String& playerName) {
+	Locker locker(&lock);
 
 	if(playerName == ownerName)
 		return CANTCHANGEOWNER;
@@ -88,6 +149,7 @@ int StructurePermissionList::grantPermission(const String& listName, const Strin
 }
 
 int StructurePermissionList::revokePermission(const String& listName, const String& playerName) {
+	Locker locker(&lock);
 
 	if(playerName == ownerName)
 		return CANTCHANGEOWNER;
@@ -102,6 +164,7 @@ int StructurePermissionList::revokePermission(const String& listName, const Stri
 }
 
 int StructurePermissionList::revokeAllPermissions(const String& playerName) {
+	Locker locker(&lock);
 
 	if(playerName == ownerName)
 		return CANTCHANGEOWNER;

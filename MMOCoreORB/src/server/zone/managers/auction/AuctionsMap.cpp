@@ -417,6 +417,7 @@ bool AuctionsMapImplementation::containsItem(unsigned long long id) {
 }
 
 int AuctionsMapImplementation::getBazaarCount() {
+	Locker _locker(_this.get());
 	// server/zone/managers/auction/AuctionsMap.idl():  		return bazaarItemsForSale.size();
 	return (&bazaarItemsForSale)->size();
 }

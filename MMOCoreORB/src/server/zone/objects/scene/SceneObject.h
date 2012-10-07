@@ -630,8 +630,6 @@ public:
 
 	bool isPsgArmorObject();
 
-	bool isLairObject();
-
 	bool isCellObject();
 
 	bool isTangibleObject();
@@ -1281,8 +1279,6 @@ public:
 
 	bool isPsgArmorObject();
 
-	virtual bool isLairObject();
-
 	virtual bool isCellObject();
 
 	virtual bool isTangibleObject();
@@ -1805,8 +1801,6 @@ public:
 	bool isFireworkObject();
 
 	bool isPsgArmorObject();
-
-	bool isLairObject();
 
 	bool isCellObject();
 

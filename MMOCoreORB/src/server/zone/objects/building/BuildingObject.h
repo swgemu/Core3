@@ -107,6 +107,8 @@ using namespace server::zone::templates;
 
 #include "system/lang/StackTrace.h"
 
+#include "system/thread/Mutex.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -275,6 +277,8 @@ protected:
 	int accessDuration;
 
 	unsigned int lastAccessFeeChange;
+
+	Mutex paidAccessListMutex;
 
 	VectorMap<unsigned long long, unsigned int> paidAccessList;
 

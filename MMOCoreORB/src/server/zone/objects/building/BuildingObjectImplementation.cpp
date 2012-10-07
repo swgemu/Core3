@@ -597,6 +597,8 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 
 	addTemplateSkillMods(player);
 
+	Locker acessLock(&paidAccessListMutex);
+
 	if (accessFee > 0 && !isOnEntryList(player)) {
 		//thread safety issues!
 		if (paidAccessList.contains(player->getObjectID())) {
@@ -853,10 +855,14 @@ void BuildingObjectImplementation::payAccessFee(CreatureObject* player) {
 	else
 		error("Unable to pay access fee credits to owner");
 
+	Locker acessLock(&paidAccessListMutex);
+
 	if(paidAccessList.contains(player->getObjectID()))
 		paidAccessList.drop(player->getObjectID());
 
 	paidAccessList.put(player->getObjectID(), time(0) + (accessDuration * 60));
+
+	acessLock.release();
 
 	if(getOwnerCreatureObject() != NULL && getOwnerCreatureObject()->isPlayerCreature())
 		getOwnerCreatureObject()->getPlayerObject()->addExperience("merchant", 50, true);
@@ -887,6 +893,8 @@ void BuildingObjectImplementation::updatePaidAccessList() {
 
 	Vector<uint64> ejectList;
 	uint32 nextExpirationTime = 0;
+
+	Locker acessLock(&paidAccessListMutex);
 
 	for(int i = 0; i < paidAccessList.size(); ++i) {
 		uint32 expirationTime = paidAccessList.elementAt(i).getValue();

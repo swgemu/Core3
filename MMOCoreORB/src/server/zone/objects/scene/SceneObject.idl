@@ -1383,11 +1383,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public native boolean isPsgArmorObject() {
 		return gameObjectType == SceneObjectType.SHIELDGENERATOR;
 	}
-
-	@dirty
-	public abstract boolean isLairObject() {
-		return false;
-	}
 	
 	@dirty
 	public abstract boolean isCellObject() {

@@ -555,7 +555,7 @@ bool AuctionManagerImplementation::readObjectMember(ObjectInputStream* stream, c
 	}
 
 	if (_name == "AuctionManager.auctionEvents") {
-		TypeInfo<VectorMap<unsigned long long, Reference<Task*> > >::parseFromBinaryStream(&auctionEvents, stream);
+		TypeInfo<AuctionEventsMap >::parseFromBinaryStream(&auctionEvents, stream);
 		return true;
 	}
 
@@ -611,7 +611,7 @@ int AuctionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<VectorMap<unsigned long long, Reference<Task*> > >::toBinaryStream(&auctionEvents, stream);
+	TypeInfo<AuctionEventsMap >::toBinaryStream(&auctionEvents, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 

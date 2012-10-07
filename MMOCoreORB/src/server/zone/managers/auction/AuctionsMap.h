@@ -41,6 +41,8 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/managers/auction/AuctionTerminalMap.h"
 
+#include "server/zone/managers/auction/AuctionEventsMap.h"
+
 #include "server/zone/managers/auction/TerminalListVector.h"
 
 #include "server/zone/managers/auction/CommoditiesLimit.h"
