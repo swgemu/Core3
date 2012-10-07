@@ -100,7 +100,12 @@ int CellObjectImplementation::canAddObject(SceneObject* object, int containmentT
 	if (parent != NULL && getParent().get()->isBuildingObject()) {
 		ManagedReference<BuildingObject*> building = cast<BuildingObject*>( parent.get().get());
 
-		if (building->getCurrentNumberOfPlayerItems() >= building->getMaximumNumberOfPlayerItems()) {
+		int count = 1;
+
+		if (object->isContainerObject())
+			count += object->getContainedObjectsRecursive();
+
+		if (building->getCurrentNumberOfPlayerItems() + count > building->getMaximumNumberOfPlayerItems()) {
 			errorDescription = "@container_error_message:container13";
 
 			return TransferErrorCode::TOOMANYITEMSINHOUSE;
