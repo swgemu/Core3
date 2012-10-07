@@ -746,6 +746,10 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 								if (!object->getCloseObjects()->contains(child)) {
 									object->addInRangeObject(child, false);
 									child->sendTo(object, true);//sendTo because notifyInsert doesnt send objects with parent
+								} else {
+									if (object->getClient() != NULL && child->isCreatureObject()) {
+										object->sendMessage(child->link(cell->getObjectID(), -1));
+									}
 								}
 							} else {
 								object->notifyInsert(child);
