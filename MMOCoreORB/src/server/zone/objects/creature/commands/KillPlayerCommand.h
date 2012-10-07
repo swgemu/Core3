@@ -64,25 +64,227 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<CreatureObject*> targetToKill = NULL;
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		//Check privileges
+		if (ghost == NULL || !ghost->isPrivileged())
+			return INSUFFICIENTPERMISSION;
+
+		//Explain syntax
+		if (arguments.isEmpty() && target == 0) {
+			creature->sendSystemMessage("Syntax: /killPlayer [player name] [-area [range]] [<health> [action] [mind]]");
+			return GENERALERROR;
+		}
+
+		ManagedReference<CreatureObject*> targetPlayer = NULL;
+		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 
-		if (!arguments.isEmpty()) {
-			targetToKill = playerManager->getPlayer(arguments.toString());
-		} else {
-			ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
-
-			if (obj != NULL && obj->isPlayerCreature())
-				targetToKill = cast<CreatureObject*>( obj.get());
+		if (targetObject != NULL) {
+			if (targetObject->isPlayerCreature())
+				targetPlayer = cast<CreatureObject*>(targetObject.get());
+			else {
+				creature->sendSystemMessage("Invalid target.");
+				return INVALIDTARGET;
+			}
 		}
 
-		if (targetToKill == NULL)
-			return INVALIDTARGET;
+		StringTokenizer args(arguments.toString());
 
-		Locker clocker(targetToKill, creature);
+		//Initialize default damage amount
+		int healthDamage = 9999999;
+		int actionDamage = healthDamage;
+		int mindDamage = healthDamage;
 
-		playerManager->killPlayer(creature, targetToKill, 1);
+		//Initialize components used to kill nearby creatures
+		bool area = false;
+		bool damage = false;
+		float range = 64;
+
+		while (args.hasMoreTokens()) {
+
+			String arg;
+			args.getStringToken(arg);
+			bool validOption = false;
+
+			//If first argument is player name, break loop and kill player
+			ManagedReference<CreatureObject*>findPlayer = playerManager->getPlayer(arg);
+			if (findPlayer != NULL) {
+				targetPlayer = findPlayer;
+				break;
+			}
+
+			//Command Options
+			if (arg.charAt(0) == '-') {
+				//Help Syntax
+				if (arg.toLowerCase() == "-help" || arg == "-H") {
+					validOption = true;
+					creature->sendSystemMessage("Syntax: /kill [-area [range]] [<health> [action] [mind]]");
+					return GENERALERROR;
+				}
+
+				//Make command area affect with optional range
+				if (arg.toLowerCase() == "-area" || arg == "-a") {
+					validOption = true;
+					area = true;
+
+					if (args.hasMoreTokens()) {
+						range = args.getFloatToken();
+						if (range <= 0) {
+							creature->sendSystemMessage("Invalid range.");
+							return INVALIDPARAMETERS;
+						}
+					}
+				}
+
+				if (!validOption) {
+					creature->sendSystemMessage("Invalid option " + arg);
+					return INVALIDPARAMETERS;
+				}
+			}
+
+			else {
+				//Override default damage amount
+				try {
+					//Test if value is integer
+					for (int i = 0; i < arg.length(); i++) {
+						if (!Character::isDigit(arg.charAt(i)))
+							throw Exception("Invalid damage amount.");
+					}
+
+					damage = true;
+					healthDamage = Integer::valueOf(arg);
+					actionDamage = healthDamage;
+					mindDamage = healthDamage;
+
+					if (args.hasMoreTokens()) {
+						args.getStringToken(arg);
+						//Test if value is integer
+						for (int i = 0; i < arg.length(); i++) {
+							if (!Character::isDigit(arg.charAt(i)))
+								throw Exception("Invalid action damage amount.");
+						}
+
+						actionDamage = Integer::valueOf(arg);
+						mindDamage = 0;
+
+						if (args.hasMoreTokens()) {
+							args.getStringToken(arg);
+							//Test if value is integer
+							for (int i = 0; i < arg.length(); i++) {
+								if (!Character::isDigit(arg.charAt(i)))
+									throw Exception("Invalid mind damage amount.");
+							}
+
+							mindDamage = Integer::valueOf(arg);
+
+							if (args.hasMoreTokens())
+								throw Exception("Too many arguments.");
+						}
+					}
+				}
+				catch (Exception e) {
+					creature->sendSystemMessage(e.getMessage());
+					return INVALIDPARAMETERS;
+				}
+			}
+		}
+
+		//Deal area damage if specified
+		if (area) {
+			//Retrieve nearby objects
+			SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+			Zone* zone = creature->getZone();
+
+			if (creature->getCloseObjects() == NULL) {
+				zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
+			}
+			else {
+				CloseObjectsVector* closeVector = (CloseObjectsVector*) creature->getCloseObjects();
+				closeVector->safeCopyTo(closeObjects);
+			}
+
+			int count = 0;
+
+			//Deal area damage if specified
+			if (damage) {
+				for (int i = 0; i < closeObjects.size(); i++) {
+					SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
+					if (targetObject->isPlayerCreature()) {
+						targetPlayer = cast<CreatureObject*>(targetObject);
+
+						Locker locker(targetPlayer, creature);
+						//Deal damage if target is in range, a player
+						if (creature->isInRange(targetPlayer, range) && targetPlayer->isPlayerCreature() && targetPlayer != creature) {
+							targetPlayer->inflictDamage(creature, 0, healthDamage, true, true);
+							targetPlayer->inflictDamage(creature, 3, actionDamage, true, true);
+							targetPlayer->inflictDamage(creature, 6, mindDamage, true, true);
+							targetPlayer->sendSystemMessage("You have been damaged!");
+
+							++count;
+						}
+					}
+				}
+				creature->sendSystemMessage(String::valueOf(count) + " players damaged.");
+				return SUCCESS;
+			}
+
+			//Kill players in area
+			else {
+				for (int i = 0; i < closeObjects.size(); i++) {
+					SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
+					if (targetObject->isPlayerCreature()) {
+						targetPlayer = cast<CreatureObject*>(targetObject);
+
+						if (targetPlayer->isPlayerCreature() && targetPlayer != creature) {
+							Locker locker (targetPlayer, creature);
+
+							playerManager->killPlayer(creature, targetPlayer, 1);
+
+							++count;
+						}
+					}
+				}
+				creature->sendSystemMessage(String::valueOf(count) + " players killed.");
+				return SUCCESS;
+			}
+		}
+
+		//Deal damage to single target
+		else if (damage) {
+			if (targetPlayer != NULL) {
+				if (targetPlayer->isPlayerCreature()) {
+					Locker locker(targetPlayer, creature);
+
+					targetPlayer->inflictDamage(creature, 0, healthDamage, true, true);
+					targetPlayer->inflictDamage(creature, 3, actionDamage, true, true);
+					targetPlayer->inflictDamage(creature, 6, mindDamage, true, true);
+
+					creature->sendSystemMessage(targetPlayer->getFirstName() + " damaged.");
+					return SUCCESS;
+				}
+			}
+			else {
+				creature->sendSystemMessage("Invalid target.");
+				return INVALIDTARGET;
+			}
+		}
+
+		//Kill single target
+		else {
+			if (targetPlayer != NULL) {
+				if (targetPlayer->isPlayerCreature()) {
+					Locker locker(targetPlayer, creature);
+
+					playerManager->killPlayer(creature, targetPlayer, 1);
+				}
+			}
+			else {
+				creature->sendSystemMessage("Invalid target.");
+				return INVALIDTARGET;
+			}
+		}
 
 		return SUCCESS;
 	}

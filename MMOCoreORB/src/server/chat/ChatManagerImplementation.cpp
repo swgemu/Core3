@@ -293,9 +293,9 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 	} else {
 		zone->getInRangeObjects(sender->getWorldPositionX(), sender->getWorldPositionX(), 192, &closeEntryObjects, true);
 	}
-	
-//Vector<QuadTreeEntry*> closeEntryObjects(closeObjects->size(), 50);
-/*
+
+	//Vector<QuadTreeEntry*> closeEntryObjects(closeObjects->size(), 50);
+	/*
 	try {
 //		zone->rlock(readlock);
 
@@ -318,7 +318,7 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 	} catch (...) {
 //		zone->runlock(readlock);
 	}
-	 
+
 	for (int i = 0; i < closeEntryObjects.size(); ++i) {
 		SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i).get());
 
@@ -330,7 +330,7 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 	} catch (...) {
 //		zone->runlock(readlock);
 	}
-*/
+	 */
 	for (int i = 0; i < closeEntryObjects.size(); ++i) {
 		SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i).get());
 
@@ -395,6 +395,21 @@ CreatureObject* ChatManagerImplementation::removePlayer(const String& name) {
 	CreatureObject* player = playerMap->remove(lName, false);
 
 	return player;
+}
+
+void ChatManagerImplementation::broadcastGalaxy(const String& message, const String& faction) {
+	Locker locker(_this.get());
+
+	playerMap->resetIterator(false);
+
+	uint32 factionCRC = faction.hashCode();
+
+	while (playerMap->hasNext(false)) {
+		ManagedReference<CreatureObject*> playerObject = playerMap->getNextValue(false);
+
+		if (playerObject->getFaction() == factionCRC || playerObject->getPlayerObject()->isPrivileged())
+			playerObject->sendSystemMessage(message);
+	}
 }
 
 void ChatManagerImplementation::broadcastGalaxy(CreatureObject* player, const String& message) {
@@ -482,13 +497,13 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	CloseObjectsVector* closeObjects = (CloseObjectsVector*) player->getCloseObjects();
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeEntryObjects(200, 50);
-	
+
 	if (closeObjects != NULL) {
 		closeObjects->safeCopyTo(closeEntryObjects);
 	} else {
 		zone->getInRangeObjects(player->getWorldPositionX(), player->getWorldPositionY(), 192, &closeEntryObjects, true);
 	}
-	
+
 /*
 >>>>>>> .merge-right.r5676
 	try {
@@ -508,8 +523,8 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	} catch (...) {
 		zone->runlock(readlock);
 	}
-	
-	*/
+
+	 */
 
 
 	try {

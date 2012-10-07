@@ -191,6 +191,9 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject
 
 	Locker clocker(tano, attacker);
 
+	if (!tano->isAttackableBy(attacker))
+		return 0;
+
 	attacker->addDefender(tano);
 	tano->addDefender(attacker);
 
@@ -1389,11 +1392,6 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 
 			if (!attacker->isInRange(object, range)) {
 				//error("not in range " + String::valueOf(range));
-				continue;
-			}
-
-			if (!tano->isAttackableBy(attacker)) {
-				//error("object is not attackable");
 				continue;
 			}
 
