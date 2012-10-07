@@ -62,7 +62,7 @@ int StructurePermissionList::writeObjectMembers(ObjectOutputStream* stream) {
 
 bool StructurePermissionList::readObjectMember(ObjectInputStream* stream, const String& name) {
 	if (name == "permissionLists") {
-		TypeInfo<float>::parseFromBinaryStream(&permissionLists, stream);
+		TypeInfo<VectorMap<String, SortedVector<String> > >::parseFromBinaryStream(&permissionLists, stream);
 
 		return true;
 	}
