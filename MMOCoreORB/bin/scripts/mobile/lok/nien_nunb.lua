@@ -23,10 +23,12 @@ nien_nunb = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_patron_sullustan_01.iff"},
 	lootGroups = {},
+	conversationTemplate = "theme_park_mission_giver_convotemplate",
 	weapons = {},
 	attacks = {}
 }

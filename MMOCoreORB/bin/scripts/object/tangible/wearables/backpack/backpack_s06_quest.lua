@@ -62,6 +62,12 @@ object_tangible_wearables_backpack_backpack_s06_quest = object_tangible_wearable
 				"object/creature/player/wookiee_female.iff",
 				"object/creature/player/zabrak_male.iff",
 				"object/creature/player/zabrak_female.iff" },
+				
+				skillMods = {
+				    {"weapon_assembly", 5},
+				    {"weapon_repair", 5},
+				    {"weapon_experimentation", 3}
+				},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_backpack_backpack_s06_quest, "object/tangible/wearables/backpack/backpack_s06_quest.iff")

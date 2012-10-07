@@ -84,9 +84,14 @@ Act = Object:new {
 }
 
 
+-- Theme parks
+includeFile("themepark/themeParkLogic.lua")
+includeFile("themepark/conversations/mission_giver_conv_handler.lua")
+includeFile("themepark/conversations/mission_target_conv_handler.lua")
+includeFile("themepark/rebel/themeParkRebel.lua")
 
 includeFile("themepark/tutorial.lua")
-includeFile("themepark/themepark_jabba.lua")
+
 includeFile("recruiters/recruiters.lua")
 includeFile("tasks/mozo_bondog.lua")
 includeFile("tasks/dolac_legasi.lua")
@@ -99,7 +104,6 @@ includeFile("dungeon/death_watch_bunker.lua")
 includeFile("dungeon/geonosian_lab.lua")
 includeFile("dungeon/warren/warren.lua")
 includeFile("dungeon/death_watch_bunker_conv_handles.lua")
-includeFile("themepark/imperial_retreat/kaja_orzee_handler.lua")
 
 --Caves
 includeFile("caves/corellia_afarathu_cave.lua")

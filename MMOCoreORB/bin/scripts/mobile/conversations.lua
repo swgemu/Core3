@@ -21,6 +21,10 @@ includeFile("conversations/themepark/jabba/reelo_baruk_conv.lua")
 includeFile("conversations/themepark/imperial/imperial_retreat_kaja_orzee_conv.lua")
 includeFile("conversations/themepark/imperial/imperial_retreat_governor_grayed_wintozzen_conv.lua")
 
+-- Rebel Themepark
+includeFile("conversations/themepark/rebel/mission_giver_conv.lua")
+includeFile("conversations/themepark/rebel/mission_target_conv.lua")
+
 -- ** DUNGEONS **
 
 -- Death Watch Bunker

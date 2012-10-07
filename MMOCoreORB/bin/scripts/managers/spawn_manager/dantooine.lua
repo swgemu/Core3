@@ -3,7 +3,7 @@
 -- tier: 0 = no spawn, 1 = static spawn area, 2 = dynamic spawn area, 3 = lair spawn area
 
 dantooine_regions = {
-	{"abandoned_rebel_base_1",0,0,0,0,1},
+	{"abandoned_rebel_base_1",-6820,5560,500,1,1},
 	{"an_imperial_outpost",0,0,0,0,1},
 	{"an_outpost",0,0,0,0,1},
 	{"arissi_plains_1",0,0,0,0,1},
