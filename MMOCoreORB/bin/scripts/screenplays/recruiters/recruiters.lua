@@ -35,18 +35,15 @@ function recruiter_convo_handler:getNextConversationScreen(conversationTemplate,
 		--Get the linked screen for the selected option.
 		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
-		
-		--print("optionLink " .. optionLink .. "\n")
-		
-		if ( string.find(optionLink,"armor_",1) ) then
-			--print("purchased armor switching the next screen")
+		--print("optionlink is " .. optionLink)
+		if ( self:isWeapon(optionLink) or self:isArmor(optionLink) or self:isUniform(optionLink) or self:isFurniture(optionLink) ) then
 			nextConversationScreen = conversation:getScreen("purchased")
 		else
+		
 			--print("Handling next screen normally")
 			nextConversationScreen = conversation:getScreen(optionLink)
 		end
-		
-		
+			
 		if (nextConversationScreen == nil) then
 			--printf("nextConversationScreen nill for option link = " .. optionLink .. "\n")
 		end
@@ -191,7 +188,6 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 			self:grantBribe(conversingPlayer, 100000, 1250)
 		end
 	elseif (screenID == "fp_weapons_armor") then
-	
 		conversationScreen = screen:cloneScreen()
 		
 		local clonedConversation = LuaConversationScreen(conversationScreen)
@@ -199,11 +195,25 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 		if (clonedConversation ~= nil) then
 				self:addWeaponsArmor(clonedConversation)
 		end
+	elseif ( screenID == "fp_uniforms" ) then
+		conversationScreen = screen:cloneScreen()
+		
+		local clonedConversation = LuaConversationScreen(conversationScreen)
+		
+		if ( clonedConversation ~= nil ) then
+			self:addUniforms(clonedConversation)
+		end
+	elseif ( screenID == "fp_furniture" ) then
+		conversationScreen = screen:cloneScreen()
+		
+		local clonedConversation = LuaConversationScreen(conversationScreen)
+		
+		if ( clonedConversation ~= nil ) then
+			self:addFurniture(clonedConversation)
+		end
 		
 	elseif (screenID == "purchased") then
-			
-		conversationScreen = self:processArmorPurchase(conversingPlayer, conversationTemplate, selectedOption)
-				
+		conversationScreen = self:processPurchase(conversingPlayer, conversationTemplate, selectedOption)
 	end
 	
 	return conversationScreen
@@ -418,25 +428,18 @@ function recruiter_convo_handler:getEnemyFactionString()
 	return ""
 end
 
+
+function recruiter_convo_handler:addUniforms(thisConversation)
+
+	printf("pure recruiter_convo_handler:addUniforms(thisConversation)")
+end
+
+function recruiter_convo_handler:addFurniture(thisConversation)
+	printf("pure recruiter_convo_handler:addFurniture(thisConversation)")
+end
+
 function recruiter_convo_handler:addWeaponsArmor(thisConversation)
-
-	if (self:getRecruiterFactionString() == "rebel") then
-		
-		--go through rebel_weapons_armor table and add them to the converstaion
-		for k,v in pairs(rebel_weapons_armor_list) do
-			if ( rebel_weapons_armor[v].display ~= nil ) then
-				thisConversation:addOption(rebel_weapons_armor[v].display .. " - " .. rebel_weapons_armor[v].cost, v)
-			end
-		end
-	
-	else
-		for k,v in pairs(imperial_weapons_armor_list) do
-			if ( imperial_weapons_armor[v].display ~= nil ) then
-				thisConversation:addOption(imperial_weapons_armor[v].display .. " - " .. imperial_weapons_armor[v].cost, v)
-			end
-		end
-	end
-
+	printf("pure recruiter_convo_handler:addWeaponsArmor(thisConversation)")
 end
 
 function recruiter_convo_handler:getInitialScreen(play, npc, conversationTemplate)
@@ -481,22 +484,10 @@ function recruiter_convo_handler:getInitialScreen(play, npc, conversationTemplat
 	
 end
 
-function recruiter_convo_handler:getItemCost(itemstring)
-
-	local itemcost = nil
-	if (self:getRecruiterFactionString() == "rebel") then
-		itemcost = rebel_weapons_armor[itemstring].cost
-	elseif (self:getRecruiterFactionString() == "imperial") then
-		itemcost = imperial_weapons_armor[itemstring].cost
-	end
-
-	return itemcost
-end
-
-
 -- player, convo template, and the option number selected from the previous screen
-function recruiter_convo_handler:processArmorPurchase(conversingPlayer, conversationTemplate, selectedOption)
 
+function recruiter_convo_handler:processPurchase(conversingPlayer, conversationTemplate, selectedOption)
+	--print("processing armor/weapon purchase")
 	local player = LuaCreatureObject(conversingPlayer)
 
 	local convosession = player:getConversationSession()
@@ -529,7 +520,22 @@ function recruiter_convo_handler:processArmorPurchase(conversingPlayer, conversa
 			conversationScreen = screenObject:cloneScreen()
 			
 			screenObject = LuaConversationScreen(conversationScreen)
-			screenObject:setDialogTextTT("wearables_name", itemname)
+			
+			-- if it's a weapon, use weapons_name if it's armor, use wearables_name
+			if ( self:isArmor(itemname) or self:isUniform(itemname) ) then
+				screenObject:setDialogTextTT("wearables_name", itemname)
+			elseif ( self:isWeapon(itemname) ) then
+				screenObject:setDialogTextTT("weapon_name", itemname)
+			elseif ( self:isFurniture(itemname) ) then
+			
+				if ( self:isContainer(itemname) ) then
+					screenObject:setDialogTextTT("container_name",itemname)
+				else
+					screenObject:setDialogTextTT("frn_n",itemname)
+				end
+				
+			end
+			
 		
 		elseif (awardresult == self.NOTENOUGHFACTION) then
 		
@@ -548,7 +554,7 @@ end
 
 function recruiter_convo_handler:awarditem(player, itemstring)
 	local obj = LuaSceneObject(player)
-	
+	--print("awarding item " .. itemstring)
 	local creatureObject = LuaCreatureObject(player)
 	
 	if ( creatureObject == nil or obj == nil ) then
@@ -565,9 +571,9 @@ function recruiter_convo_handler:awarditem(player, itemstring)
 	local factionstanding = playerObject:getFactionStanding(self:getRecruiterFactionString())
 		
 	local itemcost = self:getItemCost(itemstring)
-	
-	if ( pInventory ~= nil and playerObject ~= nil ) then 
-		
+
+	if ( pInventory ~= nil and playerObject ~= nil and itemcost ~= nil ) then 
+		--print("itemcost is " .. itemcost)
 		if (factionstanding  >= itemcost) then
 			--print("faction is good")
 			local pItem
@@ -581,14 +587,15 @@ function recruiter_convo_handler:awarditem(player, itemstring)
 					return self.INVENTORYFULL
 				end
 			
-				if (self:getRecruiterFactionString() == "rebel") then
-					pItem = giveItem(pInventory,rebel_weapons_armor[itemstring].item,-1)
-				else
-					local templatepath = imperial_weapons_armor[itemstring].item
-					pItem = giveItem(pInventory,templatepath,-1)
-					--print("done giving the item")
+				local strTemplatePath = self:getTemplatePath(itemstring)
+				
+				if ( strTemplatePath ~= nil ) then
+					--print("templatepath is " .. strTemplatePath)
+					pItem = giveItem(pInventory, strTemplatePath, -1)
+				else 
+					--print("strpath is null ")
 				end
-			
+				
 				if (pItem ~= nil) then
 				
 					local item = LuaSceneObject(pItem)
@@ -613,3 +620,32 @@ function recruiter_convo_handler:awarditem(player, itemstring)
 
 end
 
+function recruiter_convo_handler:getItemCost(itemstring)
+	printf("pure recruiter_convo_handler:getItemCost(itemstring)")
+end
+
+function recruiter_convo_handler:getTemplatePath(strItem)
+	printf("pure recruiter_convo_handler:getTemplatePath(strItem)")
+end
+function recruiter_convo_handler:isWeapon(strItem)
+
+	printf("pure recruiter_convo_handler:isWeapon(strItem)")
+
+end
+
+function recruiter_convo_handler:isArmor(strItem)
+	printf("pure recruiter_convo_handler:isArmor(strItem)")
+end
+
+function recruiter_convo_handler:isUniform(strItem)
+	printf("pure recruiter_convo_handler:isUniform(strItem)")
+	
+end
+
+function recruiter_convo_handler:isFurniture(strItem)
+	printf("pure recruiter_convo_handler:isFurtinture(strItem)")
+end
+
+function recruiter_convo_handler:isContainer(strItem)
+	printf("pure recruiter_convo_handler:isContainer(strItem)")
+end

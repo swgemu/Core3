@@ -370,11 +370,25 @@ imp_recruiter_faction_purchase = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 			{ "@faction_recruiter:option_purchase_weapons_armor", "fp_weapons_armor" }, --I'm interested in weapons and armor
+		    { "@faction_recruiter:option_purchase_uniforms", "fp_uniforms" }, -- I'm interested in uniforms
+		    { "@faction_recruiter:option_purchase_furniture", "fp_furniture"}, -- I'm interested in furniture.
 	},
 }
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_faction_purchase);
 
+
+-- selected option to view furniture
+imp_recruiter_fp_furniture = ConvoScreen:new {
+	id = "fp_furniture",
+	leftDialog = "@faction_recruiter:select_item_purchase", -- select the item you wish to request.  All costs are in faction standing poitns.
+	stopConversation = "false",
+	options = {
+
+		},
+	
+}
+imperial_recruiter_convotemplate:addScreen(imp_recruiter_fp_furniture);
 
 -- selected option to view weapoins and armor
 imp_recruiter_fp_weapons_armor = ConvoScreen:new {
@@ -386,8 +400,19 @@ imp_recruiter_fp_weapons_armor = ConvoScreen:new {
 		},
 	
 }
-
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_fp_weapons_armor);
+
+imp_recruiter_fp_uniforms = ConvoScreen:new {
+	id = "fp_uniforms",
+	leftDialog = "@faction_recruiter:select_item_purchase",
+	stopConversation = "false",
+	options = {
+
+		},
+	
+}
+
+imperial_recruiter_convotemplate:addScreen(imp_recruiter_fp_uniforms);
 
 -- purchase failed
 imp_recruiter_purchased_not_enough= ConvoScreen:new {
@@ -404,7 +429,7 @@ imperial_recruiter_convotemplate:addScreen(imp_recruiter_purchased_not_enough);
 -- inventory is full screen
 imp_recruiter_inventory_full= ConvoScreen:new {
 	id = "inventory_full",
-	leftDialog = "@dispenser:inventory_full", -- Your inventory is full.  YOu must make some room before you can purchase.  
+	leftDialog = "@dispenser:inventory_full", -- Your inventory is full.  You must make some room before you can purchase.  
 	stopConversation = "true",
 	options = {
 	
