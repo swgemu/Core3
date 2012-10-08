@@ -139,6 +139,7 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 			if self.themePark:hasRequiredItem(pConversingPlayer) == true then
 			 	self.themePark:removeDeliverItem(pConversingPlayer)
 				self.themePark:completeMission(pConversingPlayer)
+				self.themePark:removeWaypoint(pConversingPlayer)
 				nextScreenID = "npc_smuggle_n"
 			else
 				nextScreenID = "notit_n"
@@ -149,6 +150,7 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 	elseif mission.missionType == "escort" then
 		if correctNpc == true then
 			self.themePark:followPlayer(pConversingNpc, pConversingPlayer)
+			self.themePark:removeWaypoint(pConversingPlayer)
 			nextScreenID = "npc_takeme_n"
 		else
 			nextScreenID = "otherescort_n"
@@ -156,6 +158,7 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 	elseif mission.missionType == "retrieve" then
 		if correctNpc == true then
 			self.themePark:giveMissionItems(mission, pConversingPlayer)
+			self.themePark:removeWaypoint(pConversingPlayer)
 			nextScreenID = "npc_smuggle_n"
 		else
 			nextScreenID = "dontknowyou_n"

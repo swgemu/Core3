@@ -14,15 +14,6 @@ ThemeParkLogic = ScreenPlay:new {
 	missionCompletionMessageStf = ""
 }
 
-function ThemeParkLogic:setData(npcMapNew, permissionMapNew, classNameNew, screenPlayStateNew, missionDescriptionStfNew)
-	self.npcMap = npcMapNew
-	self.permissionMap = permissionMapNew
-	self.className = classNameNew
-	self.screenPlayState = screenPlayStateNew
-	self.missionDescriptionStf = missionDescriptionStfNew
-	self.missionCompletionMessageStf = missionCompletionMessageStfNew
-end
-
 function ThemeParkLogic:start()
 	self:spawnNpcs()
 	self:permissionObservers()
@@ -44,11 +35,27 @@ end
 function ThemeParkLogic:permissionObservers()
 	for i = 1, # self.permissionMap, 1 do
 		local permission = self.permissionMap[i]
+		self:setupPermissionGroups(permission)
 		local pRegion = getRegion(permission.planetName, permission.regionName)
 		
 		if pRegion ~= nil then
 			createObserver(ENTEREDAREA, self.className, "cellPermissionsObserver", pRegion)
 		end 
+	end
+end
+
+function ThemeParkLogic:setupPermissionGroups(permission)
+	for i = 1, #permission.permissions, 1 do
+		local thisPermission = permission.permissions[i]
+		for j = 1, #thisPermission.cells, 1 do
+			local pCell = getSceneObject(cells[i])
+			if pCell ~= nil then
+				cell = LuaSceneObject(pCell)
+				cell:setContainerInheritPermissionsFromParent(false)
+				cell:clearContainerDefaultAllowPermission(MOVEIN)
+				cell:setContainerAllowPermission(permission.regionName .. i, MOVEIN)
+			end
+		end
 	end
 end
 
@@ -64,7 +71,7 @@ function ThemeParkLogic:cellPermissionsObserver(pRegion, pCreature)
 		
 		for i = 1, # self.permissionMap, 1 do
 			if self.permissionMap[i].regionName == region:getObjectName() then
-				self:setCellPermissions(self.permissionMap[i].permissions, pCreature)
+				self:setCellPermissions(self.permissionMap[i], pCreature)
 			end
 		end
 	end	
@@ -73,8 +80,16 @@ function ThemeParkLogic:cellPermissionsObserver(pRegion, pCreature)
 end
 
 function ThemeParkLogic:setCellPermissions(permissions, pCreature)
-	for i = 1, # permissions, 1 do
-		self:updateCellPermissions(permissions[i].cells, self:hasPermission(permissions[i].conditions, pCreature), pCreature)
+	if pCreature ~= nil then
+		local creature = LuaCreatureObject(pCreature)
+		local pGhost = creature:getPlayerObject()
+		if pGhost ~= nil then	
+			ghost = LuaPlayerObject(pGhost)
+			for i = 1, # permissions.permissions, 1 do
+				local allowedEntry = self:hasPermission(permissions.permissions[i].conditions, pCreature)
+				ghost:addPermissionGroup(permissions.regionName .. i)
+			end
+		end
 	end
 end
 
@@ -92,19 +107,6 @@ function ThemeParkLogic:hasPermission(conditions, pCreature)
 		end
 	end
 	return hasPermission
-end
-
-function ThemeParkLogic:updateCellPermissions(cells, allowedEntry, pCreature)
-	if pCreature == nil then
-		return
-	end
-		
-	for i = 1, # cells, 1 do
-		local pCell = getSceneObject(cells[i])
-		if pCell ~= nil then
-			updateCellPermission(pCell, allowEntry, pCreature)
-		end
-	end
 end
 
 function ThemeParkLogic:isInFaction(faction, pCreature)
@@ -350,6 +352,7 @@ function ThemeParkLogic:notifyDefeatedTarget(pVictim, pAttacker)
 		
 		if currentKillCount == self:getMissionKillCount(pAttacker) then
 			self:completeMission(pAttacker)
+			self:removeWaypoint(pAttacker)
 		end
 	end
 	
@@ -464,7 +467,7 @@ function ThemeParkLogic:getMissionDescription(pConversingPlayer)
 	return self.missionDescriptionStf .. missionNumber
 end
 
-function ThemeParkLogic:updateWaypoint(pConversingPlayer, planetName, x, y)
+function ThemeParkLogic:removeWaypoint(pConversingPlayer)
 	if pConversingPlayer ~= nil then
 		local creature = LuaCreatureObject(pConversingPlayer)
 		local pGhost = creature:getPlayerObject()
@@ -472,6 +475,17 @@ function ThemeParkLogic:updateWaypoint(pConversingPlayer, planetName, x, y)
 			local ghost = LuaPlayerObject(pGhost)
 			local waypointID = readData(creature:getObjectID() .. "themePark:waypointID")
 			ghost:removeWaypoint(waypointID, true)
+		end
+	end
+end
+
+function ThemeParkLogic:updateWaypoint(pConversingPlayer, planetName, x, y)
+	self:removeWaypoint(pConversingPlayer)
+	if pConversingPlayer ~= nil then
+		local creature = LuaCreatureObject(pConversingPlayer)
+		local pGhost = creature:getPlayerObject()
+		if pGhost ~= nil then
+			local ghost = LuaPlayerObject(pGhost)
 
 			waypointID = ghost:addWaypoint(planetName, self:getMissionDescription(pConversingPlayer), "", x, y, WAYPOINT_COLOR_PURPLE, true, true)
 			writeData(creature:getObjectID() .. "themePark:waypointID", waypointID)
