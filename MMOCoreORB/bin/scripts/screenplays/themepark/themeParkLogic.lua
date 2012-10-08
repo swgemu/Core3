@@ -87,7 +87,7 @@ function ThemeParkLogic:setCellPermissions(permissions, pCreature)
 			ghost = LuaPlayerObject(pGhost)
 			for i = 1, # permissions.permissions, 1 do
 				local allowedEntry = self:hasPermission(permissions.permissions[i].conditions, pCreature)
-				ghost:addPermissionGroup(permissions.regionName .. i)
+				ghost:addPermissionGroup(permissions.regionName .. i, true)
 			end
 		end
 	end
