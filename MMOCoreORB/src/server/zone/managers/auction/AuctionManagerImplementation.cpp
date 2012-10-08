@@ -115,6 +115,8 @@ void AuctionManagerImplementation::initialize() {
 		auctionMap->updateUID(vendor, oldUID, uid);
 	}
 
+	locker.release();
+
 	checkAuctions();
 	checkVendorItems();
 }
