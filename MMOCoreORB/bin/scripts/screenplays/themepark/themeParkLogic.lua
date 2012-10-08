@@ -48,7 +48,7 @@ function ThemeParkLogic:setupPermissionGroups(permission)
 	for i = 1, #permission.permissions, 1 do
 		local thisPermission = permission.permissions[i]
 		for j = 1, #thisPermission.cells, 1 do
-			local pCell = getSceneObject(cells[i])
+			local pCell = getSceneObject(thisPermission.cells[i])
 			if pCell ~= nil then
 				cell = LuaSceneObject(pCell)
 				cell:setContainerInheritPermissionsFromParent(false)
