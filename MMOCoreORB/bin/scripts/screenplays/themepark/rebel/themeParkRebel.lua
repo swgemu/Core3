@@ -954,10 +954,13 @@ ThemeParkRebel = ThemeParkLogic:new {
 	numberOfActs = 1,
 	npcMap = npcMapRebel,
 	permissionMap = permissionMapRebel,
-	className = "ThemeParkRebel"
+	className = "ThemeParkRebel",
+	screenPlayState = "rebel_theme_park",
+	missionDescriptionStf = "@theme_park_rebel/quest_details:rebel_hideout_",
+	missionCompletionMessageStf = "@theme_park_rebel/quest_details:rebel_hideout_"
 }
 
-ThemeParkRebel:setData(npcMapRebel, permissionMapRebel, "ThemeParkRebel")
+--ThemeParkRebel:setData(npcMapRebel, permissionMapRebel, "ThemeParkRebel", "rebel_theme_park", "@theme_park_rebel/quest_details:rebel_hideout_")
 
 registerScreenPlay("ThemeParkRebel", true)
 

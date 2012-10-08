@@ -8,13 +8,19 @@ ThemeParkLogic = ScreenPlay:new {
 	numberOfActs = 1,
 	npcMap = {},
 	permissionMap = {},
-	className = "ThemeParkLogic"
+	className = "ThemeParkLogic",
+	screenPlayState = "theme_park_general",
+	missionDescriptionStf = "",
+	missionCompletionMessageStf = ""
 }
 
-function ThemeParkLogic:setData(npcMapNew, permissionMapNew, classNameNew)
+function ThemeParkLogic:setData(npcMapNew, permissionMapNew, classNameNew, screenPlayStateNew, missionDescriptionStfNew)
 	self.npcMap = npcMapNew
 	self.permissionMap = permissionMapNew
 	self.className = classNameNew
+	self.screenPlayState = screenPlayStateNew
+	self.missionDescriptionStf = missionDescriptionStfNew
+	self.missionCompletionMessageStf = missionCompletionMessageStfNew
 end
 
 function ThemeParkLogic:start()
@@ -169,7 +175,7 @@ function ThemeParkLogic:getActiveNpcNumber(pConversingPlayer)
 	local npcNumber = 1
 	local activeNpcNumber = 1
 	for i = 1, 10, 1 do
-		if creature:hasScreenPlayState(npcNumber, "rebel_theme_park") == 1 then
+		if creature:hasScreenPlayState(npcNumber, self.screenPlayState) == 1 then
 			activeNpcNumber = npcNumber * 2
 		end
 		npcNumber = npcNumber * 2
@@ -202,7 +208,7 @@ function ThemeParkLogic:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 		local missionsCompleted = 0
 		local stateToCheck = 1
 		for i = 1, numberOfMissionsTotal, 1 do
-			if creature:hasScreenPlayState(stateToCheck, "rebel_theme_park_mission_" .. npcName) == 1 then
+			if creature:hasScreenPlayState(stateToCheck, self.screenPlayState .. "_mission_" .. npcName) == 1 then
 				stateToCheck = stateToCheck * 2
 				missionsCompleted = missionsCompleted + 1
 			end
@@ -455,7 +461,7 @@ function ThemeParkLogic:getMissionDescription(pConversingPlayer)
 		npcNumber = npcNumber * 2
 	end
 	
-	return "@theme_park_rebel/quest_details:rebel_hideout_" .. missionNumber
+	return self.missionDescriptionStf .. missionNumber
 end
 
 function ThemeParkLogic:updateWaypoint(pConversingPlayer, planetName, x, y)
@@ -488,17 +494,6 @@ function ThemeParkLogic:getSpawnPoints(numberOfSpawns, x, y, pConversingPlayer)
 	end
 	
 	return spawnPoints
-		
-	--if numberOfSpawns == 3 then
-	--	return {{0, 1, -0.5, 8555472},
-	--			{0, 1, -1.5, 8555472},
-	--			{0, 1, -2.5, 8555472}}
-	--elseif numberOfSpawns == 2 then
-	--	return {{0, 1, -0.5, 8555472},
-	--			{0, 1, -2.5, 8555472}}
-	--else
-	--	return {{0, 1, -0.5, 8555472}}
-	--end
 end
 
 function ThemeParkLogic:hasRequiredItem(pConversingPlayer)
@@ -573,7 +568,7 @@ function ThemeParkLogic:completeMission(pConversingPlayer)
 	end
 	
 	local creature = LuaCreatureObject(pConversingPlayer)
-	creature:sendSystemMessage("@theme_park/messages:rebel_completion_message")
+	creature:sendSystemMessage(self.missionCompletionMessageStf)
 	
 	writeData(creature:getObjectID() .. ":activeMission", 2)
 end
@@ -732,10 +727,10 @@ function ThemeParkLogic:goToNextMission(pConversingPlayer)
 	
 	local creature = LuaCreatureObject(pConversingPlayer)
 	writeData(creature:getObjectID() .. ":activeMission", 0)
-	creature:setScreenPlayState(math.pow(2, missionNumber - 1), "rebel_theme_park_mission_" .. npcName)
+	creature:setScreenPlayState(math.pow(2, missionNumber - 1), self.screenPlayState .. "_mission_" .. npcName)
 	
 	if missionNumber == table.getn(npcData.missions) then
-		creature:setScreenPlayState(npcNumber, "rebel_theme_park")
+		creature:setScreenPlayState(npcNumber, self.screenPlayState)
 	end
 end
 
