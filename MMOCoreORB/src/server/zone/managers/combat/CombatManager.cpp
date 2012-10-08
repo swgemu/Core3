@@ -1449,6 +1449,8 @@ void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject
 		zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
 	}
 
+	if (closeObjects.size() > 100)
+		return;
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* object = cast<SceneObject*>( closeObjects.get(i).get());
