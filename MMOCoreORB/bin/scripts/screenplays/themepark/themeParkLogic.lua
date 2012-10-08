@@ -7,12 +7,14 @@ FACTIONREBEL = 0x16148850
 ThemeParkLogic = ScreenPlay:new {
 	numberOfActs = 1,
 	npcMap = {},
-	permissionMap = {}
+	permissionMap = {},
+	className = "ThemeParkLogic"
 }
 
-function ThemeParkLogic:setData(npcMapNew, permissionMapNew)
+function ThemeParkLogic:setData(npcMapNew, permissionMapNew, classNameNew)
 	self.npcMap = npcMapNew
 	self.permissionMap = permissionMapNew
+	self.className = classNameNew
 end
 
 function ThemeParkLogic:start()
@@ -39,7 +41,7 @@ function ThemeParkLogic:permissionObservers()
 		local pRegion = getRegion(permission.planetName, permission.regionName)
 		
 		if pRegion ~= nil then
-			createObserver(ENTEREDAREA, "ThemeParkLogic", "cellPermissionsObserver", pRegion)
+			createObserver(ENTEREDAREA, self.className, "cellPermissionsObserver", pRegion)
 		end 
 	end
 end
@@ -48,7 +50,7 @@ function ThemeParkLogic:cellPermissionsObserver(pRegion, pCreature)
 	if pRegion == nil or pCreature == nil then
 		return 0
 	end
-	
+
 	creatureSceneObject = LuaSceneObject(pCreature)
 	
 	if creatureSceneObject:isCreatureObject() then
@@ -153,7 +155,7 @@ function ThemeParkLogic:getNpcData(npcNumber)
 			return self.npcMap[i]
 		end
 	end
-	
+
 	return nil
 end
 
@@ -191,21 +193,25 @@ function ThemeParkLogic:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 		return 0
 	end
 	local creature = LuaCreatureObject(pConversingPlayer)
-	
+
 	local npcData = self:getNpcData(npcNumber)
-	local npcName = npcData.spawnData.npcTemplate	
-	local numberOfMissionsTotal = table.getn(npcData.missions)
-	
-	local missionsCompleted = 0
-	local stateToCheck = 1
-	for i = 1, numberOfMissionsTotal, 1 do
-		if creature:hasScreenPlayState(stateToCheck, "rebel_theme_park_mission_" .. npcName) == 1 then
-			stateToCheck = stateToCheck * 2
-			missionsCompleted = missionsCompleted + 1
+	if npcData ~= nil then
+		local npcName = npcData.spawnData.npcTemplate	
+		local numberOfMissionsTotal = table.getn(npcData.missions)
+		
+		local missionsCompleted = 0
+		local stateToCheck = 1
+		for i = 1, numberOfMissionsTotal, 1 do
+			if creature:hasScreenPlayState(stateToCheck, "rebel_theme_park_mission_" .. npcName) == 1 then
+				stateToCheck = stateToCheck * 2
+				missionsCompleted = missionsCompleted + 1
+			end
 		end
+		
+		return missionsCompleted + 1
+	else
+		return 0
 	end
-	
-	return missionsCompleted + 1
 end
 
 function ThemeParkLogic:missionStatus(pConversingPlayer)
@@ -304,8 +310,8 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 				self:updateWaypoint(pConversingPlayer, mainNpcs[i].planetName, spawnPoints[i][1], spawnPoints[i][3])
 			end
 			if mission.missionType == "assassinate" then
-				createObserver(OBJECTDESTRUCTION, "ThemeParkLogic", "notifyDefeatedTarget", pNpc)
-				createObserver(DAMAGERECEIVED, "ThemeParkLogic", "notifyDamagedTarget", pNpc)
+				createObserver(OBJECTDESTRUCTION, self.className, "notifyDefeatedTarget", pNpc)
+				createObserver(DAMAGERECEIVED, self.className, "notifyDamagedTarget", pNpc)
 				local npc = LuaCreatureObject(pNpc)
 				local creature = LuaCreatureObject(pConversingPlayer)
 				writeData(npc:getObjectID() .. ":missionOwnerID", creature:getObjectID())
@@ -359,7 +365,7 @@ function ThemeParkLogic:notifyDamagedTarget(pTarget, pAttacker, damage)
 	local attackerID = attacker:getObjectID()
 	
 	if self:killedByCorrectPlayer(victimID, attackerID) == true then
-		spatialChat(pTarget, "@theme_park_rebel/" .. stfFile .. ":npc_breech_" .. missionNumber)
+		spatialChat(pTarget, stfFile .. ":npc_breech_" .. missionNumber)
 		return 1
 	end
 	

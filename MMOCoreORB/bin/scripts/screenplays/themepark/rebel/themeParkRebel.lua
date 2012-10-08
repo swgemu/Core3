@@ -953,10 +953,11 @@ permissionMapRebel = {
 ThemeParkRebel = ThemeParkLogic:new {
 	numberOfActs = 1,
 	npcMap = npcMapRebel,
-	permissionMap = permissionMapRebel
+	permissionMap = permissionMapRebel,
+	className = "ThemeParkRebel"
 }
 
-ThemeParkRebel:setData(npcMapRebel, permissionMapRebel)
+ThemeParkRebel:setData(npcMapRebel, permissionMapRebel, "ThemeParkRebel")
 
 registerScreenPlay("ThemeParkRebel", true)
 
