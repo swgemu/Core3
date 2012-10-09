@@ -552,8 +552,8 @@ function ThemeParkLogic:hasLootedRequiredItem(activeNpcNumber, pConversingPlayer
 
 	local numberOfItems = inventory:getContainerObjectsSize()
 	local requiredItem = self:getRequiredItem(activeNpcNumber, pConversingPlayer)
-	
-	for i = 1, numberOfItems, 1 do
+
+	for i = 0, numberOfItems - 1, 1 do
 		local pItem = inventory:getContainerObject(i)
 		
 		if pItem ~= nil then
