@@ -884,6 +884,8 @@ int DirectorManager::spawnMobile(lua_State* L) {
 
 	if (creature == NULL) {
 		instance()->error("coult not spawn mobile " + mobile);
+
+		lua_pushnil(L);
 	} else {
 		creature->updateDirection(Math::deg2rad(heading));
 		
@@ -891,9 +893,9 @@ int DirectorManager::spawnMobile(lua_State* L) {
 			AiAgent* ai = cast<AiAgent*>(creature);
 			ai->setRespawnTimer(respawnTimer);
 		}
-	}
 
-	lua_pushlightuserdata(L, creature);
+		lua_pushlightuserdata(L, creature);
+	}
 
 	return 1;
 	//public native CreatureObject spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long parentID = 0);
