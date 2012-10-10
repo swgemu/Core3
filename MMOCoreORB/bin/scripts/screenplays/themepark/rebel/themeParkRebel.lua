@@ -188,7 +188,7 @@ wedge_missions =
 		missionType = "assassinate",
 	 	primarySpawns = 
 	 	{ 
-	 		{ npcTemplate = "theme_park_imperial_general_graise", planetName = "corellia", npcName = "General Boize" } 
+	 		{ npcTemplate = "theme_park_imperial_general_boize", planetName = "corellia", npcName = "General Boize" } 
 	 	}, 
 	 	secondarySpawns = 
 	 	{
@@ -210,7 +210,7 @@ wedge_missions =
 		missionType = "assassinate",
 	 	primarySpawns = 
 	 	{ 
-	 		{ npcTemplate = "theme_park_rebel_captain_montrasword", planetName = "corellia", npcName = "random" } 
+	 		{ npcTemplate = "theme_park_imperial_officer_emil", planetName = "corellia", npcName = "Officer Emil" } 
 	 	}, 
 	 	secondarySpawns = 
 	 	{
