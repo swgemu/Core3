@@ -168,7 +168,7 @@ wedge_missions =
 		}
 	},
 	{ 
-		missionType = "assassinate",
+		missionType = "escort",
 	 	primarySpawns = 
 	 	{ 
 	 		{ npcTemplate = "theme_park_imperial_general_graise", planetName = "corellia", npcName = "General Graise" } 
@@ -178,10 +178,7 @@ wedge_missions =
 			{ npcTemplate = "imperial_first_lieutenant", planetName = "corellia", npcName = "Imperial First Lieutenant" },
 			{ npcTemplate = "imperial_staff_corporal", planetName = "corellia", npcName = "Imperial Staff Corporal" }
 		}, 
-	 	itemSpawns = 
-	 	{
-	 		{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "Documents" }
-	 	}, 
+	 	itemSpawns = {}, 
 	 	rewards = 
 	 	{ 
 	 		{ rewardType = "credits", amount = 450 } 

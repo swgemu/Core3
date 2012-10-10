@@ -792,22 +792,19 @@ function ThemeParkLogic:escortedNpcInTheSameCell(pConversingPlayer)
 	creature = LuaCreatureObject(pConversingPlayer)
 	playerSceneObject = LuaSceneObject(pConversingPlayer)
 	local playerCellID = playerSceneObject:getParentID()
-
-	local numberOfSpawns = readData(creature:getObjectID() .. ":missionSpawns")
-	for i = 1, numberOfSpawns, 1 do
-		local objectID = readData(creature:getObjectID() .. ":missionSpawn:no" .. i)
-		local pNpc = getSceneObject(objectID)
+	
+	local objectID = readData(creature:getObjectID() .. ":missionSpawn:no1")
+	local pNpc = getSceneObject(objectID)
 			
-		if pNpc ~= nil then
-			local npc = LuaSceneObject(pNpc)
-			npcCellID = npc:getParentID()
+	if pNpc ~= nil then
+		local npc = LuaSceneObject(pNpc)
+		npcCellID = npc:getParentID()
 
-			if playerCellID ~= npcCellID then
-				return false
-			end
-		else
+		if playerCellID ~= npcCellID then
 			return false
 		end
+	else
+		return false
 	end
 	
 	return true
