@@ -957,7 +957,7 @@ ThemeParkRebel = ThemeParkLogic:new {
 	className = "ThemeParkRebel",
 	screenPlayState = "rebel_theme_park",
 	missionDescriptionStf = "@theme_park_rebel/quest_details:rebel_hideout_",
-	missionCompletionMessageStf = "@theme_park/messages:rebel_hideout_message"
+	missionCompletionMessageStf = "@theme_park/messages:rebel_completion_message"
 }
 
 registerScreenPlay("ThemeParkRebel", true)

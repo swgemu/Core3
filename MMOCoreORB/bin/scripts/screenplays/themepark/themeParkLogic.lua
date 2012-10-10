@@ -366,7 +366,7 @@ function ThemeParkLogic:notifyDamagedTarget(pTarget, pAttacker, damage)
 	end
 	local npcNumber = self:getActiveNpcNumber(pAttacker)
 	local missionNumber = self:getCurrentMissionNumber(npcNumber, pAttacker)
-	local stfFile = ThemeParkLogic:getStfFile(npcNumber)
+	local stfFile = self:getStfFile(npcNumber)
 	
 	local attacker = LuaCreatureObject(pAttacker)
 	local target = LuaCreatureObject(pTarget)
@@ -374,7 +374,7 @@ function ThemeParkLogic:notifyDamagedTarget(pTarget, pAttacker, damage)
 	local targetID = target:getObjectID()
 	local attackerID = attacker:getObjectID()
 	
-	if self:killedByCorrectPlayer(victimID, attackerID) == true then
+	if self:killedByCorrectPlayer(targetID, attackerID) == true then
 		spatialChat(pTarget, stfFile .. ":npc_breech_" .. missionNumber)
 		return 1
 	end
@@ -551,23 +551,35 @@ function ThemeParkLogic:hasLootedRequiredItem(activeNpcNumber, pConversingPlayer
 	local inventory = LuaSceneObject(pInventory)
 
 	local numberOfItems = inventory:getContainerObjectsSize()
-	local requiredItem = self:getRequiredItem(activeNpcNumber, pConversingPlayer)
+	local requiredItems = self:getRequiredItem(activeNpcNumber, pConversingPlayer)
 
-	for i = 0, numberOfItems - 1, 1 do
-		local pItem = inventory:getContainerObject(i)
-		
-		if pItem ~= nil then
-			local item = LuaSceneObject(pItem)
+	local unmatchedItems = 0
+	local itemsToDestroy = {}
+	for j = 1, # requiredItems, 1 do
+		unmatchedItems = unmatchedItems + 1
+		for i = 0, numberOfItems - 1, 1 do
+			local pItem = inventory:getContainerObject(i)
 			
-			if requiredItem.itemTemplate == item:getTemplateObjectPath() and requiredItem.itemName == item:getCustomObjectName() then
-				item:destroyObjectFromWorld()
-				item:destroyObjectFromDatabase()
-				return true
+			if pItem ~= nil then
+				local item = LuaSceneObject(pItem)
+				if requiredItems[j].itemTemplate == item:getTemplateObjectPath() and requiredItems[j].itemName == item:getCustomObjectName() then
+					table.insert(itemsToDestroy, item)
+					unmatchedItems = unmatchedItems - 1
+					break
+				end
 			end
 		end
 	end
 	
-	return false
+	if unmatchedItems == 0 then
+		for i = 1, # itemsToDestroy, 1 do
+			itemsToDestroy[i]:destroyObjectFromWorld()
+			itemsToDestroy[i]:destroyObjectFromDatabase()
+		end
+		return true
+	else
+		return false
+	end
 end
 
 function ThemeParkLogic:getRequiredItem(activeNpcNumber, pConversingPlayer)
@@ -634,6 +646,7 @@ function ThemeParkLogic:giveLoot(pConversingPlayer, lootGroup)
 	end
 	
 	createLoot(pInventory, lootGroup, 0)
+	creature:sendSystemMessage("@theme_park/messages:theme_park_reward")
 end
 
 function ThemeParkLogic:giveCredits(pConversingPlayer, amount)
