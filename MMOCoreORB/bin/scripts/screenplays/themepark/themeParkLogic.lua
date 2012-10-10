@@ -52,8 +52,8 @@ function ThemeParkLogic:setupPermissionGroups(permission)
 			if pCell ~= nil then
 				cell = LuaSceneObject(pCell)
 				cell:setContainerInheritPermissionsFromParent(false)
-				cell:clearContainerDefaultAllowPermission(MOVEIN)
-				cell:setContainerAllowPermission(permission.regionName .. i, MOVEIN)
+				cell:clearContainerDefaultAllowPermission(WALKIN)
+				cell:setContainerAllowPermission(permission.regionName .. i, WALKIN)
 			end
 		end
 	end

@@ -71,8 +71,8 @@ class CellObject extends SceneObject {
 	
 	public void setAllowEntryPermissionGroup(final string group) {
 		super.setContainerInheritPermissionsFromParent(false);
-		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVEIN);
-		super.setContainerAllowPermission(group, ContainerPermissions.MOVEIN);
+		super.setContainerDefaultDenyPermission(ContainerPermissions.WALKIN);
+		super.setContainerAllowPermission(group, ContainerPermissions.WALKIN);
 	}
 	
 	/**

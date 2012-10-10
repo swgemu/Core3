@@ -203,6 +203,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("OPEN", ContainerPermissions::OPEN);
 	luaEngine->setGlobalInt("MOVEIN", ContainerPermissions::MOVEIN);
 	luaEngine->setGlobalInt("MOVEOUT", ContainerPermissions::MOVEOUT);
+	luaEngine->setGlobalInt("WALKIN", ContainerPermissions::WALKIN);
 
 	Luna<LuaCellObject>::Register(luaEngine->getLuaState());
 	Luna<LuaBuildingObject>::Register(luaEngine->getLuaState());

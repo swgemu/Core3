@@ -29,6 +29,7 @@ namespace server {
     	const static uint16 MOVEIN = 1 << 1;
     	const static uint16 MOVEOUT = 1 << 2;
     	const static uint16 MOVECONTAINER = 1 << 3;
+    	const static uint16 WALKIN = 1 << 4;
 
     	/// Vendors have special checks
     	const static uint16 MOVEVENDOR = 1 << 8;

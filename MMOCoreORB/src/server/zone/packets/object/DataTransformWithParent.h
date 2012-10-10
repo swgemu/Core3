@@ -255,7 +255,7 @@ public:
 		ContainerPermissions* perms = newParent->getContainerPermissions();
 
 		if (!perms->hasInheritPermissionsFromParent()) {
-			if (!newParent->checkContainerPermission(object, ContainerPermissions::MOVEIN)) {
+			if (!newParent->checkContainerPermission(object, ContainerPermissions::WALKIN)) {
 				bounceBack(object, pos);
 
 				return;

@@ -162,7 +162,7 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 		if (!perms->hasInheritPermissionsFromParent()) {
 			CreatureObject* creo = cast<CreatureObject*>(player);
 
-			if (creo != NULL && !cell->checkContainerPermission(creo, ContainerPermissions::MOVEIN)) {
+			if (creo != NULL && !cell->checkContainerPermission(creo, ContainerPermissions::WALKIN)) {
 				BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), false);
 				player->sendMessage(perm);
 			}
