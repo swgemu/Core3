@@ -54,6 +54,7 @@ function ThemeParkLogic:setupPermissionGroups(permission)
 				cell:setContainerInheritPermissionsFromParent(false)
 				cell:clearContainerDefaultAllowPermission(WALKIN)
 				cell:setContainerAllowPermission(permission.regionName .. i, WALKIN)
+				cell:setContainerDenyPermission(permission.regionName .. i, MOVEIN)
 			end
 		end
 	end
@@ -88,6 +89,8 @@ function ThemeParkLogic:setCellPermissions(permissions, pCreature)
 			for i = 1, # permissions.permissions, 1 do
 				if self:hasPermission(permissions.permissions[i].conditions, pCreature) == true then
 					ghost:addPermissionGroup(permissions.regionName .. i, true)
+				else
+					ghost:removePermissionGroup(permissions.regionName .. i, true)
 				end
 			end
 		end
