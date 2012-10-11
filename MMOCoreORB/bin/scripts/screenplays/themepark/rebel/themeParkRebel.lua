@@ -326,7 +326,7 @@ nien_missions =
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", 750 } 
+			{ rewardType = "credits", amount = 750 } 
 		}
 	},
 	{
@@ -339,7 +339,7 @@ nien_missions =
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", 800 } 
+			{ rewardType = "credits", amount = 800 } 
 		}
 	},
 	{
@@ -352,7 +352,7 @@ nien_missions =
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", 850 } 
+			{ rewardType = "credits", amount = 850 } 
 		}
 	},
 	{
