@@ -34,6 +34,7 @@ imperial_weapons_armor_list = {
 	"armor_stormtrooper_bracer_l",
 	"armor_stormtrooper_bracer_r",
 	"armor_stormtrooper_gloves",
+	"armor_stormtrooper_utility_belt",
 	"carbine_e11",
 	"pistol_power5",
 	"sword_02",

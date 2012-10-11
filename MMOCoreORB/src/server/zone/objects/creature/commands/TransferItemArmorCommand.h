@@ -97,7 +97,7 @@ public:
 		if (!objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT))
 			return GENERALERROR;
 
-		if (!objectToTransfer->isArmorObject()) {
+		if (!objectToTransfer->isWearableObject()) {
 			creature->error("objectToTransfer is not an armor object in transferitemarmor");
 			return GENERALERROR;
 		}
