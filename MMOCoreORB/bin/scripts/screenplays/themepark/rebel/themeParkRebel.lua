@@ -136,6 +136,7 @@ qualdo_missions =
 		}
 	}
 }
+
 wedge_missions = 
 {
 	{ 
@@ -847,7 +848,7 @@ npcMapRebel =
 		spawnData = { planetName = "corellia", npcTemplate = "leia_organa", x = -11.13, z = 7.00971, y = 11.31, direction = 175, cellID = 8555481, position = STAND }, 
 		npcNumber = 8,   
 		stfFile = "@theme_park_rebel/princess_leia",  
-		missions = {} 
+		missions = leia_missions 
 	},
 	{ 
 		spawnData = { planetName = "lok", npcTemplate = "nien_nunb", x = -12.12, z = -0.894992, y = 23.08, direction = 80.0024, cellID = 8145384, position = SIT }, 
@@ -889,7 +890,7 @@ npcMapRebel =
 		spawnData = { planetName = "yavin4", npcTemplate = "luke_skywalker", x = 1.2, z = -6.0, y = -26.8, direction = 180, cellID = 3465390, position = STAND }, 
 		npcNumber = 512, 
 		stfFile = "@theme_park_rebel/luke_skywalker", 
-		missions = {} 
+		missions = luke_missions 
 	}
 }
 
