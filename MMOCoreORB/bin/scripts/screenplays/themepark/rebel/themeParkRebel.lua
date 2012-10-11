@@ -298,7 +298,7 @@ leia_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "theme_park_imperial_commander.lua", planetName = "corellia", npcName = "Imperial Undercover Commander" } 
+			{ npcTemplate = "theme_park_imperial_commander", planetName = "corellia", npcName = "Imperial Undercover Commander" } 
 		}, 
 		secondarySpawns = 
 		{
