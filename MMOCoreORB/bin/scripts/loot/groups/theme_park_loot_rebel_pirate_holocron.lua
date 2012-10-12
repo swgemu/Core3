@@ -5,7 +5,7 @@ theme_park_loot_rebel_pirate_holocron = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "holocron_splinter", weight = 10000000}
+		{itemTemplate = "holocron_splinters", weight = 10000000}
 	}
 }
 
