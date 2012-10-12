@@ -362,7 +362,10 @@ nien_missions =
 			{ npcTemplate = "theme_park_rebel_hyperdrive_seller", planetName = "lok", npcName = "Pirate" } 
 		}, 
 		secondarySpawns = {}, 
-		itemSpawns = {}, 
+		itemSpawns = 
+		{
+			{ itemTemplate = "object/tangible/loot/misc/hyperdrive_part_s01.iff", itemName = "Hyperdrive" }
+		}, 
 		rewards = 
 		{ 
 			{ rewardType = "faction", faction = "rebel", amount = 150 },

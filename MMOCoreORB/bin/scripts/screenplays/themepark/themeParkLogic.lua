@@ -265,7 +265,6 @@ end
 function ThemeParkLogic:handleDeliverMissionAccept(mission, pConversingPlayer, missionNumber)
 	if self:spawnMissionNpcs(mission, pConversingPlayer) == true then
 		self:giveMissionItems(mission, pConversingPlayer)
-		writeData(creature:getObjectID() .. ":activeMission", 1)
 		return true
 	else
 		return false
@@ -437,6 +436,8 @@ function ThemeParkLogic:giveMissionItems(mission, pConversingPlayer)
 	end
 
 	creature = LuaCreatureObject(pConversingPlayer)
+	writeData(creature:getObjectID() .. ":activeMission", 1)
+	
 	itemsToGive = mission.itemSpawns
 	
 	pInventory = creature:getSlottedObject("inventory")
