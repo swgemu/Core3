@@ -60,6 +60,7 @@ which carries forward this exception.
 #include "server/zone/templates/appearance/PortalLayout.h"
 #include "server/zone/templates/appearance/FloorMesh.h"
 #include "server/zone/templates/appearance/PathGraph.h"
+#include "server/zone/objects/region/Region.h"
 
 #include "managers/minigames/FishingManager.h"
 #include "managers/minigames/GamblingManager.h"
@@ -507,6 +508,17 @@ void ZoneImplementation::updateCityRegions() {
 		city->setLoaded();
 
 		city->rescheduleUpdateEvent(seconds);
+
+		Region* region = city->getRegion(0);
+
+		if (!city->isRegistered())
+			continue;
+
+		if (city->getRegionsCount() == 0)
+			continue;
+
+		unregisterObjectWithPlanetaryMap(region);
+		registerObjectWithPlanetaryMap(region);
 	}
 
 	cityRegionUpdateVector.removeAll();
