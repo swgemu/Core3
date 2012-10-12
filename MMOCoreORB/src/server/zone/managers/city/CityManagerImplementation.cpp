@@ -186,9 +186,9 @@ CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const S
 
 bool CityManagerImplementation::isCityRankCapped(const String& planetName, byte rank) {
 	Vector<byte>* citiesAllowed = &citiesAllowedPerRank.get(planetName);
-	byte maxCities = citiesAllowed->get(0);
 	byte maxAtRank = citiesAllowed->get(rank - 1);
-	byte totalCities = 0;
+	// http://www.swgemu.com/archive/scrapbookv51/data/20070127193144/index.html  for information
+	byte totalAtRank = 0;
 
 	Locker _lock(_this.get());
 
@@ -200,12 +200,14 @@ bool CityManagerImplementation::isCityRankCapped(const String& planetName, byte 
 		if (cityZone == NULL || cityZone->getZoneName() != planetName)
 			continue;
 
-		if (++totalCities > maxCities || totalCities > maxAtRank) {
-			return true;
+		if (city->getCityRank() >= rank) {
+			if (++totalAtRank >= maxAtRank) {
+				return true;
+			}
 		}
 	}
-
-	return false;
+	
+	return (totalAtRank >= maxAtRank);
 }
 
 bool CityManagerImplementation::validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y) {
