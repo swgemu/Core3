@@ -501,6 +501,17 @@ void ZoneImplementation::updateCityRegions() {
 		city->setLoaded();
 
 		city->rescheduleUpdateEvent(seconds);
+
+		if (!city->isRegistered())
+			continue;
+
+		if (city->getRegionsCount() == 0)
+			continue;
+
+		Region* region = city->getRegion(0);
+
+		unregisterObjectWithPlanetaryMap(region);
+		registerObjectWithPlanetaryMap(region);
 	}
 
 	cityRegionUpdateVector.removeAll();
