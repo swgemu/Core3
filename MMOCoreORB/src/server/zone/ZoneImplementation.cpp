@@ -61,6 +61,8 @@ which carries forward this exception.
 #include "server/zone/templates/appearance/FloorMesh.h"
 #include "server/zone/templates/appearance/PathGraph.h"
 
+#include "server/zone/managers/structure/StructureManager.h"
+
 #include "managers/minigames/FishingManager.h"
 #include "managers/minigames/GamblingManager.h"
 #include "managers/minigames/ForageManager.h"
@@ -124,6 +126,8 @@ void ZoneImplementation::startManagers() {
 	planetManager->initialize();
 
 	creatureManager->initialize();
+
+	StructureManager::instance()->loadPlayerStructures(getZoneName());
 
 	updateCityRegions();
 

@@ -265,8 +265,6 @@ void ZoneServerImplementation::startZones() {
 			while (!zone->hasManagersStarted())
 				Thread::sleep(500);
 		}
-
-		structureManager->loadPlayerStructures(zone->getZoneName());
 	}
 }
 
