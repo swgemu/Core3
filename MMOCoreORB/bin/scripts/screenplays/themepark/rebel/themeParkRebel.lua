@@ -386,7 +386,7 @@ han_missions =
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", 900 } 
+			{ rewardType = "credits", amount = 900 } 
 		}
 	},
 	{
@@ -404,7 +404,7 @@ han_missions =
 		}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", 950 } 
+			{ rewardType = "credits", amount = 950 } 
 		}
 	},
 	{
@@ -422,7 +422,7 @@ han_missions =
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", 1000 } 
+			{ rewardType = "credits", amount = 1000 } 
 		}
 	},
 	{
@@ -439,7 +439,7 @@ han_missions =
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", 1050 } 
+			{ rewardType = "credits", amount = 1050 } 
 		}
 	},
 	{ 
@@ -475,7 +475,7 @@ ackbar_missions =
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", 1100 } 
+			{ rewardType = "credits", amount = 1100 } 
 		}
 	},
 	{
@@ -491,7 +491,7 @@ ackbar_missions =
 		}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", 1150 } 
+			{ rewardType = "credits", amount = 1150 } 
 		}
 	},
 	{ 
@@ -582,7 +582,7 @@ mon_missions =
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", 1350 } 
+			{ rewardType = "credits", amount = 1350 } 
 		}
 	},
 	{
@@ -599,7 +599,7 @@ mon_missions =
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", 1400 } 
+			{ rewardType = "credits", amount = 1400 } 
 		}
 	},
 	{
@@ -616,7 +616,7 @@ mon_missions =
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", 1450 } 
+			{ rewardType = "credits", amount = 1450 } 
 		}
 	},
 	{
@@ -633,7 +633,7 @@ mon_missions =
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", 1500 } 
+			{ rewardType = "credits", amount = 1500 } 
 		}
 	},
 	{
@@ -672,7 +672,7 @@ jan_missions =
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", 1550 } 
+			{ rewardType = "credits", amount = 1550 } 
 		}
 	},
 	{
@@ -685,7 +685,7 @@ jan_missions =
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", 1600 } 
+			{ rewardType = "credits", amount = 1600 } 
 		}
 	},
 	{
@@ -702,7 +702,7 @@ jan_missions =
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", 1650 } 
+			{ rewardType = "credits", amount = 1650 } 
 		}
 	},
 	{ 
