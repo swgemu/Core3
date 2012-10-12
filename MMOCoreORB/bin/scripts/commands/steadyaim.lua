@@ -46,7 +46,7 @@ SteadyaimCommand = {
 
 	action = "steadyaim",
 	--actionCRC = action.hashCode(),
-	combatSpam = "steadyaim",
+	combatSpam = "steadyaim_buff",
 }
 
 AddCommand(SteadyaimCommand)
