@@ -211,6 +211,8 @@ using namespace server::zone::objects::creature;
 
 #include "server/zone/objects/scene/variables/ContainerPermissions.h"
 
+#include "server/zone/objects/scene/variables/ContainerObjectsMap.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/core/ManagedReference.h"
@@ -896,7 +898,7 @@ protected:
 
 	ReadWriteLock containerLock;
 
-	VectorMap<unsigned long long, ManagedReference<SceneObject* > > containerObjects;
+	ContainerObjectsMap containerObjects;
 
 public:
 	SceneObjectImplementation();

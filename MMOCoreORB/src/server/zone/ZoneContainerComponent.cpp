@@ -244,9 +244,9 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 
 		while (activeAreas->size() > 0) {
 			ManagedReference<ActiveArea*> area = activeAreas->get(0);
-			area->enqueueExitEvent(object);
-
 			activeAreas->remove(0);
+
+			area->enqueueExitEvent(object);
 		}
 
 		SortedVector<ManagedReference<SceneObject*> >* childObjects = object->getChildObjects();

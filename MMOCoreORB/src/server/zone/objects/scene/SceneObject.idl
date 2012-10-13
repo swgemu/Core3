@@ -97,6 +97,7 @@ import server.zone.objects.region.CityRegion;
 import server.zone.objects.creature.CreatureObject;
 import engine.util.u3d.Matrix4;
 import system.thread.ReadWriteLock;
+include server.zone.objects.scene.variables.ContainerObjectsMap;
 
 class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient ZoneProcessServer server;
@@ -167,8 +168,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dereferenced
 	protected transient ReadWriteLock containerLock;
 
-	@dereferenced
+	/*@dereferenced
 	protected VectorMap<unsigned long, SceneObject> containerObjects;
+	*/
+	@dereferenced
+	protected ContainerObjectsMap containerObjects;
 
 	/**
 	 * SceneObject constructor, used to initialize the object.
@@ -1074,7 +1078,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@local
 	public VectorMap<unsigned long, SceneObject> getContainerObjects() {
-		return containerObjects;
+		return containerObjects.getContainerObjects();
 	}
 	
 	@read

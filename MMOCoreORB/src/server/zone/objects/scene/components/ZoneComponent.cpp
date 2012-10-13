@@ -455,9 +455,9 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 
 		while (activeAreas->size() > 0) {
 			ManagedReference<ActiveArea*> area = activeAreas->get(0);
-			area->enqueueExitEvent(sceneObject);
-
 			activeAreas->remove(0);
+
+			area->enqueueExitEvent(sceneObject);
 		}
 	}
 }

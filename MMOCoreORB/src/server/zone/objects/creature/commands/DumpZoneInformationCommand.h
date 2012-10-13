@@ -111,6 +111,8 @@ public:
 			msg << endl << "in range object count = " << vec->size() << endl;
 		}
 
+		msg << "active areas size = " << player->getActiveAreasSize() << endl;
+
 		creature->sendSystemMessage(msg.toString());
 
 		ChatManager* chatManager = server->getZoneServer()->getChatManager();

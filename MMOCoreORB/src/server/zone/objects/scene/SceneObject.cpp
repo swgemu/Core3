@@ -3786,7 +3786,7 @@ bool SceneObjectImplementation::readObjectMember(ObjectInputStream* stream, cons
 	}
 
 	if (_name == "SceneObject.containerObjects") {
-		TypeInfo<VectorMap<unsigned long long, ManagedReference<SceneObject* > > >::parseFromBinaryStream(&containerObjects, stream);
+		TypeInfo<ContainerObjectsMap >::parseFromBinaryStream(&containerObjects, stream);
 		return true;
 	}
 
@@ -3987,7 +3987,7 @@ int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<VectorMap<unsigned long long, ManagedReference<SceneObject* > > >::toBinaryStream(&containerObjects, stream);
+	TypeInfo<ContainerObjectsMap >::toBinaryStream(&containerObjects, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -4389,8 +4389,8 @@ SceneObject* SceneObjectImplementation::getContainerObject(int idx) {
 }
 
 VectorMap<unsigned long long, ManagedReference<SceneObject* > >* SceneObjectImplementation::getContainerObjects() {
-	// server/zone/objects/scene/SceneObject.idl():  		return containerObjects;
-	return (&containerObjects);
+	// server/zone/objects/scene/SceneObject.idl():  		return containerObjects.getContainerObjects();
+	return (&containerObjects)->getContainerObjects();
 }
 
 bool SceneObjectImplementation::hasObjectInContainer(unsigned long long objectID) {
