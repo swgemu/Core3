@@ -222,8 +222,9 @@ void EntertainingSessionImplementation::activateAction() {
 	}
 
 	doEntertainerPatronEffects();
-	doPerformanceAction();
 	awardEntertainerExperience();
+	doPerformanceAction();
+
 
 	startTickTask();
 
@@ -941,7 +942,7 @@ void EntertainingSessionImplementation::awardEntertainerExperience() {
 	CreatureObject* player = entertainer->isPlayerCreature() ? cast<CreatureObject*>(entertainer.get()) : NULL;
 
 	if (player != NULL) {
-		if (flourishXp > 0) {
+		if (flourishXp > 0 && (isDancing() || isPlayingMusic())) {
 			String xptype;
 
 			if (isDancing())
