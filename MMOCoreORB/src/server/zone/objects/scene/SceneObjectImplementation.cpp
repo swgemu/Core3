@@ -399,7 +399,7 @@ void SceneObjectImplementation::sendWithoutParentTo(SceneObject* player) {
 }
 
 void SceneObjectImplementation::sendTo(SceneObject* player, bool doClose) {
-	if (isStaticObject() || !sendToClient)
+	if (isStaticObject() || !sendToClient || player->getClient() == NULL)
 		return;
 
 	/*StringBuffer msgInfo;
@@ -446,27 +446,29 @@ void SceneObjectImplementation::sendWithoutContainerObjectsTo(SceneObject* playe
 }
 
 void SceneObjectImplementation::notifyLoadFromDatabase() {
-	for (int i = 0; i < slottedObjects.size(); ++i) {
-		ManagedReference<SceneObject* > obj = slottedObjects.get(i);
+	if (!containerObjects.hasDelayedLoadOperationMode()) {
+		for (int i = 0; i < slottedObjects.size(); ++i) {
+			ManagedReference<SceneObject* > obj = slottedObjects.get(i);
 
-		if (obj->getParent().get() != _this.get()) {
-			obj->setParent(_this.get());
-			//			obj->setContainmentType(4);
+			if (obj->getParent().get() != _this.get()) {
+				obj->setParent(_this.get());
+				//			obj->setContainmentType(4);
 
-			if (obj->isPlayerCreature())
-				obj->setContainmentType(5);
-			else
-				obj->setContainmentType(4);
+				if (obj->isPlayerCreature())
+					obj->setContainmentType(5);
+				else
+					obj->setContainmentType(4);
+			}
 		}
-	}
 
-	for (int i = 0; i < containerObjects.size(); ++i) {
-		ManagedReference<SceneObject* > obj = containerObjects.get(i);
+		for (int i = 0; i < containerObjects.size(); ++i) {
+			ManagedReference<SceneObject* > obj = containerObjects.get(i);
 
-		if (obj->getParent() != _this.get()) {
-			obj->setParent(_this.get());
-			obj->setContainmentType(-1);
-			//			obj->setContainmentType(4);
+			if (obj->getParent() != _this.get()) {
+				obj->setParent(_this.get());
+				obj->setContainmentType(-1);
+				//			obj->setContainmentType(4);
+			}
 		}
 	}
 

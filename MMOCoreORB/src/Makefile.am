@@ -558,6 +558,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/scene/variables/ContainerPermissions.cpp \
 		server/zone/objects/scene/variables/StringIdParameter.cpp \
 		server/zone/objects/scene/variables/CustomizationVariables.cpp \
+		server/zone/objects/scene/variables/ContainerObjectsMap.cpp \
 		server/zone/objects/cell/CellObjectImplementation.cpp \
 		server/zone/objects/installation/InstallationObjectImplementation.cpp \
 		server/zone/objects/building/BuildingObjectImplementation.cpp \

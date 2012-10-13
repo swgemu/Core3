@@ -62,6 +62,8 @@ void ContainerImplementation::initializeTransientMembers() {
 void ContainerImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
+	containerObjects.setDelayedLoadOperationMode();
+
 	ContainerTemplate* containerTemplate = dynamic_cast<ContainerTemplate*>(templateData);
 
 	if (containerTemplate == NULL)
