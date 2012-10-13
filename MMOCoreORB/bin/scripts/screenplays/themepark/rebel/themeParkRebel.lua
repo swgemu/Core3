@@ -275,7 +275,7 @@ leia_missions =
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", 650 } 
+			{ rewardType = "credits", amount = 650 } 
 		}
 	},
 	{ 
