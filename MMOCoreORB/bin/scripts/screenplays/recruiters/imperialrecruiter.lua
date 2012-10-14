@@ -46,10 +46,19 @@ function imperial_recruiter_handler:isWeapon(strItem)
 end
 
 function imperial_recruiter_handler:isArmor(strItem)
+	print("checking isarmor()")
 	if ( imperial_weapons_armor[strItem] ~= nil ) then
+		print(strItem .. " is in the weapon/armor list")
+		
 		if ( imperial_weapons_armor[strItem].type == rewards.armor ) then
+			print(strItem .. " type is in the item detail table in isarmor()")
 			return true
+		else 
+			print(strItem .. " type is not armor  in isarmor() ")
+						
 		end
+	else
+		print(strItem .. " is not int he weapons/armor list in isarmor()")
 	end
 	return false
 end
@@ -107,8 +116,11 @@ end
 
 function imperial_recruiter_handler:getItemCost(itemstring)
 	local itemcost = nil
+	print("getItemCost()")
 	if ( self:isWeapon(itemstring) or self:isArmor(itemstring)  and imperial_weapons_armor[itemstring] ~= nil ) then
+		print("getItemCost() is a weapon or armor")
 		if ( imperial_weapons_armor[itemstring].cost ~= nil ) then
+			print("returnign itemcost in getItemCost()")
 			return imperial_weapons_armor[itemstring].cost
 		end
 	elseif (self:isUniform(itemstring) ) then
@@ -119,18 +131,26 @@ function imperial_recruiter_handler:getItemCost(itemstring)
 		if(imperial_furniture[itemstring].cost ~= nil) then
 			return imperial_furniture[itemstring].cost
 		end
+	else
+		print("unable to get item type to find cost in getItemCost()")
 	end
 
 	return itemcost
 end
 
 function imperial_recruiter_handler:getTemplatePath(itemstring)
+	print("inside getTemplatePath()")
 	if ( self:isWeapon(itemstring) or self:isArmor(itemstring) ) then
+		print("returning path for weapon/armor")
 		return imperial_weapons_armor[itemstring].item
 	elseif ( self:isUniform(itemstring) ) then
+		print("returning path for uniform")
 		return imperial_uniforms[itemstring].item
 	elseif ( self:isFurniture(itemstring) ) then
+		print("returning path for furniture")
 		return imperial_furniture[itemstring].item
+	else
+		print("unable to determine item type in getTemplatePath()")
 	end
 	return nil
 end

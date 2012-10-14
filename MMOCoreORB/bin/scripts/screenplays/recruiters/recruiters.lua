@@ -8,7 +8,11 @@ recruiter_convo_handler = Object:new {
 	SUCCESS = 0,
 	INVENTORYFULL = 1,
 	NOTENOUGHFACTION = 2,
-	GENERALERROR = 3
+	GENERALERROR = 3,
+	ITEMCOST = 4,
+	INVENTORYERROR = 5,
+	TEMPLATEPATHERROR = 6,
+	GIVEERROR = 7,
 
 }
 
@@ -213,7 +217,7 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 		end
 		
 	elseif (screenID == "purchased") then
-		conversationScreen = self:processPurchase(conversingPlayer, conversationTemplate, selectedOption)
+		conversationScreen = self:processPurchase(conversingPlayer, conversationTemplate, selectedOption, conversingNPC)
 	end
 	
 	return conversationScreen
@@ -486,7 +490,7 @@ end
 
 -- player, convo template, and the option number selected from the previous screen
 
-function recruiter_convo_handler:processPurchase(conversingPlayer, conversationTemplate, selectedOption)
+function recruiter_convo_handler:processPurchase(conversingPlayer, conversationTemplate, selectedOption, conversingNPC)
 	--print("processing armor/weapon purchase")
 	local player = LuaCreatureObject(conversingPlayer)
 
@@ -533,7 +537,8 @@ function recruiter_convo_handler:processPurchase(conversingPlayer, conversationT
 				else
 					screenObject:setDialogTextTT("frn_n",itemname)
 				end
-				
+			else
+				spatialChat(conversingNPC, "I'm sorry.  We were unable to determine the TYPE of item you are requesting")
 			end
 			
 		
@@ -543,9 +548,18 @@ function recruiter_convo_handler:processPurchase(conversingPlayer, conversationT
 			
 		elseif (awardresult == self.INVENTORYFULL) then
 		
-			conversationScreen = convoTemplate:getScreen("inventory_full") -- YOur inventory is full.  YOu must make some room before you can purchase.
+			conversationScreen = convoTemplate:getScreen("inventory_full") -- Your inventory is full.  YOu must make some room before you can purchase.
+		elseif ( awardresult == self.ITEMCOST ) then
+			spatialChat(conversingNPC, "I'm sorry.  We were unable to price this item " .. selectedOption)
+		elseif ( awardresult == self.INVENTORYERROR) then
+			spatialChat(conversingNPC, "I don't see where you can put this item.")
+		elseif (awardresult == self.TEMPLATEPATHERROR) then
+			spatialChat(conversingNPC, "Sorry.  I was unable to locate the item ERROR: " .. selectedOption)
+		elseif (awardresult == self.TEMPLATEPATHERROR ) then
+			spatialChat(conversingNPC, "Sorry, I cannot GIVE this item to you at the moment.")
 		end
-		
+	else
+		spatialChat(converstingNPC, "I'm sorry.  I forgot what we were talking about")
 	end
 		
 	return conversationScreen
@@ -554,11 +568,12 @@ end
 
 function recruiter_convo_handler:awarditem(player, itemstring)
 	local obj = LuaSceneObject(player)
-	--print("awarding item " .. itemstring)
+	
+	print("awarding item " .. itemstring)
 	local creatureObject = LuaCreatureObject(player)
-	
+	creatureObject:sendSystemMessage("Awarding item " .. itemstring)
 	if ( creatureObject == nil or obj == nil ) then
-	
+		creatureObject:sendSystemMessage("NULL creature in awarditem")
 		return self.GENERALERROR
 	end
 	
@@ -572,6 +587,13 @@ function recruiter_convo_handler:awarditem(player, itemstring)
 		
 	local itemcost = self:getItemCost(itemstring)
 
+	-- additional error message
+	if ( itemcost == nil ) then
+		creatureObject:sendSystemMessage("Unable find item cost")
+		print("null itemcost")
+		return self.ITEMCOST
+	end
+	
 	if ( pInventory ~= nil and playerObject ~= nil and itemcost ~= nil ) then 
 		--print("itemcost is " .. itemcost)
 		if (factionstanding  >= itemcost) then
@@ -590,25 +612,35 @@ function recruiter_convo_handler:awarditem(player, itemstring)
 				local strTemplatePath = self:getTemplatePath(itemstring)
 				
 				if ( strTemplatePath ~= nil ) then
-					--print("templatepath is " .. strTemplatePath)
+					creatureObject:sendSystemMessage("template path " .. strTemplatePath)
+					print("templatepath is " .. strTemplatePath)
 					pItem = giveItem(pInventory, strTemplatePath, -1)
 				else 
-					--print("strpath is null ")
+					print("unable to find template path")
+					creatureObject:sendSystemMessage("unable to find template path")
+					return self.TEMPLATEPATHERROR
 				end
 				
 				if (pItem ~= nil) then
 				
 					local item = LuaSceneObject(pItem)
+					creatureObject:sendSystemMessage("giving the item")
 					item:sendTo(player)
+					creatureObject:sendSystemMessage("finished trying to give the item")
 					playerObject:decreaseFactionStanding(self:getRecruiterFactionString(),itemcost)
 							
 				else
-					--creatureObject:sendSystemMessage("Unable to process that item") 
-					return self.GENERALERROR
+					creatureObject:sendSystemMessage("Unable to process that item") 
+					return self.GIVEERROR
 				end
+			else
+				-- temp message for additional item requisition failure
+				creatureObject:sendSystemMessage("unable to get inventory")
+				return self.INVENTORYERROR
 			end
 		
 		else
+			
 			return self.NOTENOUGHFACTION
 		end
 	
