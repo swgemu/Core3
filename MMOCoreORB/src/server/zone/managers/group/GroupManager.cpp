@@ -159,6 +159,17 @@ void GroupManager::joinGroup(CreatureObject* player) {
 		return;
 	}
 
+	// if invite IS in the group but is not the leader
+	if ( group->getLeader() != inviter ){
+		player->updateGroupInviterID(0);
+		StringIdChatParameter param("group", "prose_leader_changed"); // "%TU has abdicated group leadership to %TT."
+		param.setTU( inviter->getDisplayedName() );
+		param.setTT( group->getLeader()->getDisplayedName() ) ;
+		player->sendSystemMessage(param);
+
+		return;
+    }
+
 	player->info("joining group");
 
 	group->addMember(player);
