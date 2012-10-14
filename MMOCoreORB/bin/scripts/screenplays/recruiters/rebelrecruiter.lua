@@ -47,12 +47,28 @@ function rebel_recruiter_handler:isWeapon(strItem)
 end
 
 function rebel_recruiter_handler:isArmor(strItem)
+		
 	if ( rebel_weapons_armor[strItem] ~= nil ) then
+		
+		if ( rewards.armor ~= nil ) then
+			print("value of static reward type = " .. rewards.armor)
+		else
+			print("rewards.armor is nil")
+		end
+		
+		if ( rebel_weapons_armor[strItem].type ~= nil ) then
+			print("table .type = " .. rebel_weapons_armor[strItem].type)
+		else
+			print("table .type = nil")
+		end
 		
 		if ( rebel_weapons_armor[strItem].type == rewards.armor ) then
 			return true
+		else
+			print("type did not match armor in isarmor()")
 		end
-		
+	else
+		print(strItem .. " is not in the weapons/armor list in isarmor() so cannt check type")
 	end
 	
 	return false

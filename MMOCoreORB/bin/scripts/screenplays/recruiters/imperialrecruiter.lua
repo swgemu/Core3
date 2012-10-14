@@ -47,18 +47,32 @@ end
 
 function imperial_recruiter_handler:isArmor(strItem)
 	print("checking isarmor()")
+	
+	
 	if ( imperial_weapons_armor[strItem] ~= nil ) then
-		print(strItem .. " is in the weapon/armor list")
+				
+		if ( rewards.armor ~= nil ) then
+			print("value of static reward type = " .. rewards.armor)
+		else
+			print("rewards.armor is nil")
+		end
+	
+		if ( imperial_weapons_armor[strItem].type ~= nil ) then
+			print("table .type = " .. imperial_weapons_armor[strItem].type)
+		else
+			print("table .type = nil")
+		end
 		
 		if ( imperial_weapons_armor[strItem].type == rewards.armor ) then
 			print(strItem .. " type is in the item detail table in isarmor()")
+			
 			return true
 		else 
 			print(strItem .. " type is not armor  in isarmor() ")
 						
 		end
 	else
-		print(strItem .. " is not int he weapons/armor list in isarmor()")
+		print(strItem .. " is not int he weapons/armor list in isarmor() so cannot check type")
 	end
 	return false
 end
