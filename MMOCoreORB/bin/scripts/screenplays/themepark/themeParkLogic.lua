@@ -810,3 +810,15 @@ function ThemeParkLogic:escortedNpcInTheSameCell(pConversingPlayer)
 	
 	return true
 end
+
+function ThemeParkLogic:resetCurrentMission(pConversingPlayer)
+	if pConversingPlayer == nil then
+		return
+	end
+	
+	local creature = LuaCreatureObject(pConversingPlayer)
+	writeData(creature:getObjectID() .. ":activeMission", 0)
+	
+	self:cleanUpMission(pConversingPlayer)
+	self:removeWaypoint(pConversingPlayer)
+end

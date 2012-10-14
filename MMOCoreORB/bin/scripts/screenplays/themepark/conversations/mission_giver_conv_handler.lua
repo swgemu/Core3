@@ -69,6 +69,8 @@ function mission_giver_conv_handler:runScreenHandlers(pConversationTemplate, pCo
 		pConversationScreen = self:handleScreenNext(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "notyet" then	
 		pConversationScreen = self:handleScreenNotYet(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+	elseif screenID == "npc_backtowork_n" then	
+		pConversationScreen = self:handleScreenBackToWork(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	end
 	return pConversationScreen
 end
@@ -242,7 +244,7 @@ function mission_giver_conv_handler:handleScreenReset(pConversationTemplate, pCo
 	
 	clonedScreen:setDialogTextStringId(stfFile .. ":npc_reset_" .. missionNumber)
 
-	-- TODO handle reset
+	self.themePark:resetCurrentMission(pConversingPlayer)
 	
 	return pConversationScreen
 end
@@ -298,6 +300,20 @@ function mission_giver_conv_handler:handleScreenNotYet(pConversationTemplate, pC
 	local stfFile = self.themePark:getStfFile(npcNumber)
 	
 	clonedScreen:setDialogTextStringId(stfFile .. ":notyet")
+	
+	return pConversationScreen
+end
+
+function mission_giver_conv_handler:handleScreenBackToWork(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+	local screen = LuaConversationScreen(pConversationScreen)
+	pConversationScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConversationScreen)
+	
+	local npcNumber = self.themePark:getNpcNumber(pConversingNpc)
+	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
+	local stfFile = self.themePark:getStfFile(npcNumber)
+	
+	clonedScreen:setDialogTextStringId(stfFile .. ":npc_backtowork_" .. missionNumber)
 	
 	return pConversationScreen
 end
