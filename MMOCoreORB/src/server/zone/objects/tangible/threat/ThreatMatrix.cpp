@@ -33,9 +33,14 @@ void ThreatMatrix::clear() {
 	tauntThreat = NULL;
 	focusedThreat = NULL;
 
-	damageMap.removeAll();
-	aggroMap.removeAll();
-	healMap.removeAll();
+	if (damageMap.size() > 0)
+		damageMap.removeAll();
+
+	if (aggroMap.size() > 0)
+		aggroMap.removeAll();
+
+	if (healMap.size() > 0)
+		healMap.removeAll();
 }
 
 void ThreatMatrix::add(CreatureObject* creature, ThreatMapEntry* entry) {

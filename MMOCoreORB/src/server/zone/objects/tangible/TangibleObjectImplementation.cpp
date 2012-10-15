@@ -966,8 +966,11 @@ void TangibleObjectImplementation::repair(CreatureObject* player) {
 }
 
 ThreatMap* TangibleObjectImplementation::getThreatMap() {
-	if (threatMap == NULL)
-		threatMap = new ThreatMap(_this.get());
+	if (threatMap == NULL) {
+		Reference<ThreatMap*> newMap = new ThreatMap(_this.get());
+
+		threatMap.compareAndSet(NULL, newMap.get());
+	}
 
 	return threatMap;
 }
