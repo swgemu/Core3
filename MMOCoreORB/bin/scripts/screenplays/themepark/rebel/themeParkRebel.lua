@@ -796,7 +796,7 @@ luke_missions =
 		secondarySpawns = {}, 
 		itemSpawns = 
 		{
-	 		{ itemTemplate = "object/tangible/parrot_cage/parrot_cage.iff", itemName = "An Empty Cage" }
+	 		{ itemTemplate = "object/tangible/loot/misc/cage_s01.iff", itemName = "An Empty Cage" }
 		}, 
 		rewards = 
 		{ 
@@ -812,7 +812,7 @@ luke_missions =
 		secondarySpawns = {}, 
 		itemSpawns = 
 		{ 
-	 		{ itemTemplate = "object/static/item/item_cage_bamboo.iff", itemName = "An Empty Cage" }
+	 		{ itemTemplate = "object/tangible/loot/misc/cage_s01.iff", itemName = "An Empty Cage" }
 		}, 
 		rewards = 
 		{ 
