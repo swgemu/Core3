@@ -758,6 +758,7 @@ luke_missions =
 	},
 	{
 		missionType = "assassinate", 
+		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "theme_park_rebel_big_creature", planetName = "yavin4", npcName = "Big Creature" }
@@ -786,7 +787,8 @@ luke_missions =
 		}
 	},
 	{
-		missionType = "assassinate", 
+		missionType = "assassinate",  
+		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "theme_park_rebel_big_creature_cage", planetName = "yavin4", npcName = "Big Creature" }
@@ -794,7 +796,7 @@ luke_missions =
 		secondarySpawns = {}, 
 		itemSpawns = 
 		{
-	 		{ itemTemplate = "object/static/item/item_cage_bamboo.iff", itemName = "An Empty Cage" }
+	 		{ itemTemplate = "object/tangible/parrot_cage/parrot_cage.iff", itemName = "An Empty Cage" }
 		}, 
 		rewards = 
 		{ 

@@ -331,7 +331,9 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 			end
 			if mission.missionType == "assassinate" then
 				createObserver(OBJECTDESTRUCTION, self.className, "notifyDefeatedTarget", pNpc)
-				createObserver(DAMAGERECEIVED, self.className, "notifyDamagedTarget", pNpc)
+				if mission.silentTarget ~= "yes" then
+					createObserver(DAMAGERECEIVED, self.className, "notifyDamagedTarget", pNpc)
+				end
 				local npc = LuaCreatureObject(pNpc)
 				local creature = LuaCreatureObject(pConversingPlayer)
 				writeData(npc:getObjectID() .. ":missionOwnerID", creature:getObjectID())
