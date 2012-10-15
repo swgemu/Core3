@@ -52,6 +52,7 @@ function ThemeParkLogic:setupPermissionGroups(permission)
 			if pCell ~= nil then
 				cell = LuaSceneObject(pCell)
 				cell:setContainerInheritPermissionsFromParent(false)
+				cell:clearContainerDefaultDenyPermission(WALKIN)
 				cell:clearContainerDefaultAllowPermission(WALKIN)
 				cell:setContainerAllowPermission(permission.regionName .. i, WALKIN)
 				cell:setContainerDenyPermission(permission.regionName .. i, MOVEIN)
@@ -69,7 +70,6 @@ function ThemeParkLogic:cellPermissionsObserver(pRegion, pCreature)
 	
 	if creatureSceneObject:isCreatureObject() then
 		region = LuaSceneObject(pRegion)
-		
 		for i = 1, # self.permissionMap, 1 do
 			if self.permissionMap[i].regionName == region:getObjectName() then
 				self:setCellPermissions(self.permissionMap[i], pCreature)
@@ -620,7 +620,23 @@ function ThemeParkLogic:handleMissionReward(pConversingPlayer)
 			self:giveLoot(pConversingPlayer, reward.lootGroup)
 		elseif reward.rewardType == "badge" then
 			self:giveBadge(pConversingPlayer, reward.badge)
+		elseif reward.rewardType == "permission" then
+			self:givePermission(pConversingPlayer, reward.permissionGroup)
 		end
+	end
+end
+
+function ThemeParkLogic:givePermission(pConversingPlayer, permissionGroup)
+	if pConversingPlayer == nil then
+		return
+	end
+	
+	local creature = LuaCreatureObject(pConversingPlayer)
+	local pGhost = creature:getPlayerObject()
+	
+	if pGhost ~= nil then
+		ghost = LuaPlayerObject(pGhost)
+		ghost:addPermissionGroup(permissionGroup, true)
 	end
 end
 
