@@ -122,8 +122,16 @@ void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 	if (npcTarget == NULL) {
 		Vector3 position = getTargetPosition();
 
-		npcTarget = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(mission->getTargetOptionalTemplate().hashCode(), 0, position.getX(), zone->getHeight(position.getX(), position.getY()), position.getY(), 0));
-
+		try {
+			npcTarget = cast<AiAgent*>(zone->getCreatureManager()->spawnCreature(mission->getTargetOptionalTemplate().hashCode(), 0, position.getX(), zone->getHeight(position.getX(), position.getY()), position.getY(), 0));
+		} catch (Exception& e) {
+			fail();
+			ManagedReference<CreatureObject*> player = getPlayerOwner();
+			if (player != NULL) {
+				player->sendSystemMessage("ERROR: could not find template for target. Please report this on Mantis to help us track down the root cause.");
+			}
+			error("Template error: " + e.getMessage() + " Template = '" + mission->getTargetOptionalTemplate() +"'");
+		}
 		if (npcTarget != NULL) {
 			npcTarget->setCustomObjectName(mission->getTargetName(), true);
 			//TODO add observer to catch player kill and fail mission in that case.
