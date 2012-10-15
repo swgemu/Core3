@@ -115,7 +115,7 @@ public:
 			} else if (action == "subtract") {
 
 				if (location.toLowerCase() == "cash") {
-					if (player->getCashCredits() >= amount)
+					if (player->verifyCashCredits(amount))
 						player->subtractCashCredits(amount);
 					else
 						player->setCashCredits(0, true);
@@ -124,7 +124,7 @@ public:
 				}
 
 				if (location.toLowerCase() == "bank") {
-					if (player->getBankCredits() >= amount)
+					if (player->verifyBankCredits(amount))
 						player->subtractBankCredits(amount);
 					else
 						player->setBankCredits(0, true);
