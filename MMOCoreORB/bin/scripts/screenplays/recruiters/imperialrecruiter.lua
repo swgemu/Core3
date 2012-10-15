@@ -36,8 +36,8 @@ function imperial_recruiter_handler:add100kBribeOption(screen)
 end
 
 function imperial_recruiter_handler:isWeapon(strItem)
-	if ( imperial_weapons_armor[strItem] ~= nil ) then
-		if ( imperial_weapons_armor[strItem].type == rewards.weapon ) then
+	if ( faction_reward_data.imperial_weapons_armor[strItem] ~= nil ) then
+		if ( faction_reward_data.imperial_weapons_armor[strItem].type == faction_reward_type.weapon ) then
 			return true
 		end
 	end
@@ -46,40 +46,18 @@ function imperial_recruiter_handler:isWeapon(strItem)
 end
 
 function imperial_recruiter_handler:isArmor(strItem)
-	print("checking isarmor()")
-	
-	
-	if ( imperial_weapons_armor[strItem] ~= nil ) then
-				
-		if ( rewards.armor ~= nil ) then
-			print("value of static reward type = " .. rewards.armor)
-		else
-			print("rewards.armor is nil")
-		end
-	
-		if ( imperial_weapons_armor[strItem].type ~= nil ) then
-			print("table .type = " .. imperial_weapons_armor[strItem].type)
-		else
-			print("table .type = nil")
-		end
-		
-		if ( imperial_weapons_armor[strItem].type == rewards.armor ) then
-			print(strItem .. " type is in the item detail table in isarmor()")
-			
+	if ( faction_reward_data.imperial_weapons_armor[strItem] ~= nil ) then
+		if ( faction_reward_data.imperial_weapons_armor[strItem].type == faction_reward_type.armor ) then
 			return true
-		else 
-			print(strItem .. " type is not armor  in isarmor() ")
-						
 		end
-	else
-		print(strItem .. " is not int he weapons/armor list in isarmor() so cannot check type")
 	end
+	
 	return false
 end
 
 
 function imperial_recruiter_handler:isUniform(strItem)
-	if ( imperial_uniforms[strItem] ~= nil ) then
+	if ( faction_reward_data.imperial_uniforms[strItem] ~= nil ) then
 		return true
 	end
 
@@ -87,7 +65,7 @@ function imperial_recruiter_handler:isUniform(strItem)
 end
 
 function imperial_recruiter_handler:isFurniture(strItem)
-	if ( imperial_furniture[strItem] ~= nil ) then
+	if ( faction_reward_data.imperial_furniture[strItem] ~= nil ) then
 		return true
 	end
 	
@@ -95,7 +73,7 @@ function imperial_recruiter_handler:isFurniture(strItem)
 end
 
 function imperial_recruiter_handler:isContainer(strItem)
-	if ( imperial_furniture[strItem] ~= nil and imperial_furniture[strItem].type == rewards.container) then
+	if ( faction_reward_data.imperial_furniture[strItem] ~= nil and faction_reward_data.imperial_furniture[strItem].type == faction_reward_type.container) then
 		return true
 	end
 	
@@ -103,26 +81,26 @@ function imperial_recruiter_handler:isContainer(strItem)
 end
 
 function imperial_recruiter_handler:addUniforms(screen) 
-	for k,v in pairs(imperial_uniform_list) do
-		if ( imperial_uniforms[v] ~= nil and imperial_uniforms[v].display ~= nil and imperial_uniforms[v].cost ~= nil ) then
-			screen:addOption(imperial_uniforms[v].display .. " - " .. imperial_uniforms[v].cost, v)
+	for k,v in pairs(faction_reward_data.imperial_uniform_list) do
+		if ( faction_reward_data.imperial_uniforms[v] ~= nil and faction_reward_data.imperial_uniforms[v].display ~= nil and faction_reward_data.imperial_uniforms[v].cost ~= nil ) then
+			screen:addOption(faction_reward_data.imperial_uniforms[v].display .. " - " .. faction_reward_data.imperial_uniforms[v].cost, v)
 		end
 	end
 end
 
 
 function imperial_recruiter_handler:addWeaponsArmor(screen)
-	for k,v in pairs(imperial_weapons_armor_list) do
-		if ( imperial_weapons_armor[v] ~= nill and 	imperial_weapons_armor[v].display ~= nil and imperial_weapons_armor[v].cost ~= nil ) then
-				screen:addOption(imperial_weapons_armor[v].display .. " - " .. imperial_weapons_armor[v].cost, v)
+	for k,v in pairs(faction_reward_data.imperial_weapons_armor_list) do
+		if ( faction_reward_data.imperial_weapons_armor[v] ~= nill and 	faction_reward_data.imperial_weapons_armor[v].display ~= nil and faction_reward_data.imperial_weapons_armor[v].cost ~= nil ) then
+				screen:addOption(faction_reward_data.imperial_weapons_armor[v].display .. " - " .. faction_reward_data.imperial_weapons_armor[v].cost, v)
 		end
 	end
 end
 
 function imperial_recruiter_handler:addFurniture(screen) 
-	for k,v in pairs(imperial_furniture_list) do
-		if ( imperial_furniture[v] ~= nil and imperial_furniture[v].display ~= nil and imperial_furniture[v].cost ~= nil ) then
-			screen:addOption(imperial_furniture[v].display .. " - " .. imperial_furniture[v].cost, v)
+	for k,v in pairs(faction_reward_data.imperial_furniture_list) do
+		if ( faction_reward_data.imperial_furniture[v] ~= nil and faction_reward_data.imperial_furniture[v].display ~= nil and faction_reward_data.imperial_furniture[v].cost ~= nil ) then
+			screen:addOption(faction_reward_data.imperial_furniture[v].display .. " - " .. faction_reward_data.imperial_furniture[v].cost, v)
 		end
 	end
 end
@@ -130,41 +108,31 @@ end
 
 function imperial_recruiter_handler:getItemCost(itemstring)
 	local itemcost = nil
-	print("getItemCost()")
-	if ( self:isWeapon(itemstring) or self:isArmor(itemstring)  and imperial_weapons_armor[itemstring] ~= nil ) then
-		print("getItemCost() is a weapon or armor")
-		if ( imperial_weapons_armor[itemstring].cost ~= nil ) then
-			print("returnign itemcost in getItemCost()")
-			return imperial_weapons_armor[itemstring].cost
+	
+	if ( self:isWeapon(itemstring) or self:isArmor(itemstring)  and faction_reward_data.imperial_weapons_armor[itemstring] ~= nil ) then
+		if ( faction_reward_data.imperial_weapons_armor[itemstring].cost ~= nil ) then
+			return faction_reward_data.imperial_weapons_armor[itemstring].cost
 		end
 	elseif (self:isUniform(itemstring) ) then
-		if ( imperial_uniforms[itemstring].cost ~= nil ) then
-			return imperial_uniforms[itemstring].cost
+		if ( faction_reward_data.imperial_uniforms[itemstring].cost ~= nil ) then
+			return faction_reward_data.imperial_uniforms[itemstring].cost
 		end
 	elseif ( self:isFurniture(itemstring) ) then
-		if(imperial_furniture[itemstring].cost ~= nil) then
-			return imperial_furniture[itemstring].cost
+		if(faction_reward_data.imperial_furniture[itemstring].cost ~= nil) then
+			return faction_reward_data.imperial_furniture[itemstring].cost
 		end
-	else
-		print("unable to get item type to find cost in getItemCost()")
 	end
 
 	return itemcost
 end
 
 function imperial_recruiter_handler:getTemplatePath(itemstring)
-	print("inside getTemplatePath()")
 	if ( self:isWeapon(itemstring) or self:isArmor(itemstring) ) then
-		print("returning path for weapon/armor")
-		return imperial_weapons_armor[itemstring].item
+			return faction_reward_data.imperial_weapons_armor[itemstring].item
 	elseif ( self:isUniform(itemstring) ) then
-		print("returning path for uniform")
-		return imperial_uniforms[itemstring].item
+		return faction_reward_data.imperial_uniforms[itemstring].item
 	elseif ( self:isFurniture(itemstring) ) then
-		print("returning path for furniture")
-		return imperial_furniture[itemstring].item
-	else
-		print("unable to determine item type in getTemplatePath()")
+		return faction_reward_data.imperial_furniture[itemstring].item
 	end
 	return nil
 end

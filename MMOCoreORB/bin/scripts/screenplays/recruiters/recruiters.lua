@@ -569,11 +569,10 @@ end
 function recruiter_convo_handler:awarditem(player, itemstring)
 	local obj = LuaSceneObject(player)
 	
-	print("awarding item " .. itemstring)
+	--print("awarding item " .. itemstring)
 	local creatureObject = LuaCreatureObject(player)
-	creatureObject:sendSystemMessage("Awarding item " .. itemstring)
+	
 	if ( creatureObject == nil or obj == nil ) then
-		creatureObject:sendSystemMessage("NULL creature in awarditem")
 		return self.GENERALERROR
 	end
 	
@@ -589,8 +588,6 @@ function recruiter_convo_handler:awarditem(player, itemstring)
 
 	-- additional error message
 	if ( itemcost == nil ) then
-		creatureObject:sendSystemMessage("Unable find item cost")
-		print("null itemcost")
 		return self.ITEMCOST
 	end
 	
@@ -612,25 +609,17 @@ function recruiter_convo_handler:awarditem(player, itemstring)
 				local strTemplatePath = self:getTemplatePath(itemstring)
 				
 				if ( strTemplatePath ~= nil ) then
-					creatureObject:sendSystemMessage("template path " .. strTemplatePath)
-					print("templatepath is " .. strTemplatePath)
 					pItem = giveItem(pInventory, strTemplatePath, -1)
 				else 
-					print("unable to find template path")
-					creatureObject:sendSystemMessage("unable to find template path")
 					return self.TEMPLATEPATHERROR
 				end
 				
 				if (pItem ~= nil) then
 				
 					local item = LuaSceneObject(pItem)
-					creatureObject:sendSystemMessage("giving the item")
 					item:sendTo(player)
-					creatureObject:sendSystemMessage("finished trying to give the item")
 					playerObject:decreaseFactionStanding(self:getRecruiterFactionString(),itemcost)
-							
 				else
-					creatureObject:sendSystemMessage("Unable to process that item") 
 					return self.GIVEERROR
 				end
 			else

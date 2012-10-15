@@ -36,9 +36,9 @@ function rebel_recruiter_handler:add100kBribeOption(screen)
 end
 
 function rebel_recruiter_handler:isWeapon(strItem)
-	if ( rebel_weapons_armor[strItem] ~= nil ) then
+	if ( faction_reward_data.rebel_weapons_armor[strItem] ~= nil ) then
 		
-		if ( rebel_weapons_armor[strItem].type == rewards.weapon ) then
+		if ( faction_reward_data.rebel_weapons_armor[strItem].type == faction_reward_type.weapon ) then
 			return true
 		end
 	end
@@ -47,28 +47,10 @@ function rebel_recruiter_handler:isWeapon(strItem)
 end
 
 function rebel_recruiter_handler:isArmor(strItem)
-		
-	if ( rebel_weapons_armor[strItem] ~= nil ) then
-		
-		if ( rewards.armor ~= nil ) then
-			print("value of static reward type = " .. rewards.armor)
-		else
-			print("rewards.armor is nil")
-		end
-		
-		if ( rebel_weapons_armor[strItem].type ~= nil ) then
-			print("table .type = " .. rebel_weapons_armor[strItem].type)
-		else
-			print("table .type = nil")
-		end
-		
-		if ( rebel_weapons_armor[strItem].type == rewards.armor ) then
+	if ( faction_reward_data.rebel_weapons_armor[strItem] ~= nil ) then
+		if ( faction_reward_data.rebel_weapons_armor[strItem].type == faction_reward_type.armor ) then
 			return true
-		else
-			print("type did not match armor in isarmor()")
 		end
-	else
-		print(strItem .. " is not in the weapons/armor list in isarmor() so cannt check type")
 	end
 	
 	return false
@@ -80,7 +62,7 @@ function rebel_recruiter_handler:isUniform(strItem)
 end
 
 function rebel_recruiter_handler:isFurniture(strItem)
-	if ( rebel_furniture[strItem] ~= nil ) then
+	if ( faction_reward_data.rebel_furniture[strItem] ~= nil ) then
 		return true
 	end
 	
@@ -88,7 +70,7 @@ function rebel_recruiter_handler:isFurniture(strItem)
 end
 
 function rebel_recruiter_handler:isContainer(strItem)
-	if ( rebel_furniture[strItem] ~= nil and rebel_furniture[strItem].type == rewards.container) then
+	if ( faction_reward_data.rebel_furniture[strItem] ~= nil and faction_reward_data.rebel_furniture[strItem].type == faction_reward_type.container) then
 		return true
 	end
 	
@@ -97,13 +79,14 @@ end
 
 function rebel_recruiter_handler:getItemCost(itemstring)
 	local itemcost = nil
-	if ( self:isWeapon(itemstring) or self:isArmor(itemstring)  and rebel_weapons_armor[itemstring] ~= nil ) then
-		if ( rebel_weapons_armor[itemstring].cost ~= nil ) then
-			return rebel_weapons_armor[itemstring].cost
+	
+	if ( self:isWeapon(itemstring) or self:isArmor(itemstring)  and faction_reward_data.rebel_weapons_armor[itemstring] ~= nil ) then
+		if ( faction_reward_data.rebel_weapons_armor[itemstring].cost ~= nil ) then
+			return faction_reward_data.rebel_weapons_armor[itemstring].cost
 		end
 	elseif ( self:isFurniture(itemstring) ) then
-		if(rebel_furniture[itemstring].cost ~= nil) then
-			return rebel_furniture[itemstring].cost
+		if(faction_reward_data.rebel_furniture[itemstring].cost ~= nil) then
+			return faction_reward_data.rebel_furniture[itemstring].cost
 		end
 	end
 
@@ -112,17 +95,17 @@ end
 
 
 function rebel_recruiter_handler:addWeaponsArmor(screen)
-	for k,v in pairs(rebel_weapons_armor_list) do
-		if ( rebel_weapons_armor[v] ~= nill and 	rebel_weapons_armor[v].display ~= nil and rebel_weapons_armor[v].cost ~= nil ) then
-				screen:addOption(rebel_weapons_armor[v].display .. " - " .. rebel_weapons_armor[v].cost, v)
+	for k,v in pairs(faction_reward_data.rebel_weapons_armor_list) do
+		if ( faction_reward_data.rebel_weapons_armor[v] ~= nill and 	faction_reward_data.rebel_weapons_armor[v].display ~= nil and faction_reward_data.rebel_weapons_armor[v].cost ~= nil ) then
+				screen:addOption(faction_reward_data.rebel_weapons_armor[v].display .. " - " .. faction_reward_data.rebel_weapons_armor[v].cost, v)
 		end
 	end
 end
 
 function rebel_recruiter_handler:addFurniture(screen) 
-	for k,v in pairs(rebel_furniture_list) do
-		if ( rebel_furniture[v] ~= nil and rebel_furniture[v].display ~= nil and rebel_furniture[v].cost ~= nil ) then
-			screen:addOption(rebel_furniture[v].display .. " - " .. rebel_furniture[v].cost, v)
+	for k,v in pairs(faction_reward_data.rebel_furniture_list) do
+		if ( faction_reward_data.rebel_furniture[v] ~= nil and faction_reward_data.rebel_furniture[v].display ~= nil and faction_reward_data.rebel_furniture[v].cost ~= nil ) then
+			screen:addOption(faction_reward_data.rebel_furniture[v].display .. " - " .. faction_reward_data.rebel_furniture[v].cost, v)
 		end
 	end
 end
@@ -131,9 +114,9 @@ end
 function rebel_recruiter_handler:getTemplatePath(itemstring)
 	
 	if ( self:isWeapon(itemstring) or self:isArmor(itemstring) ) then
-		return rebel_weapons_armor[itemstring].item
+		return faction_reward_data.rebel_weapons_armor[itemstring].item
 	elseif ( self:isFurniture(itemstring) ) then
-		return rebel_furniture[itemstring].item
+		return faction_reward_data.rebel_furniture[itemstring].item
 	end
 	return nil
 end
