@@ -255,6 +255,15 @@ function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversin
 	end
 end
 
+function ThemeParkLogic:writeData(pConversingPlayer, dataName, value)
+	if pConversingPlayer == nil then
+		return
+	end
+	
+	local creature = LuaCreatureObject(pConversingPlayer)
+	writeData(creature:getObjectID() .. dataName, value)
+end
+
 function ThemeParkLogic:getMission(npcNumber, missionNumber)
 	local npcData = self:getNpcData(npcNumber)
 	local missions = npcData.missions
@@ -273,7 +282,7 @@ end
 
 function ThemeParkLogic:handleRetrieveMissionAccept(mission, pConversingPlayer, missionNumber)
 	if self:spawnMissionNpcs(mission, pConversingPlayer) == true then
-		writeData(creature:getObjectID() .. ":activeMission", 0)
+		self:writeData(pConversingPlayer, ":activeMission", 0)
 		return true
 	else
 		return false
@@ -282,7 +291,7 @@ end
 
 function ThemeParkLogic:handleEscortMissionAccept(mission, pConversingPlayer, missionNumber)
 	if self:spawnMissionNpcs(mission, pConversingPlayer) == true then
-		writeData(creature:getObjectID() .. ":activeMission", 1)
+		self:writeData(pConversingPlayer, ":activeMission", 1)
 		return true
 	else
 		return false
@@ -291,8 +300,8 @@ end
 
 function ThemeParkLogic:handleAssassinateMissionAccept(mission, pConversingPlayer, missionNumber)
 	if self:spawnMissionNpcs(mission, pConversingPlayer) == true then
-		writeData(creature:getObjectID() .. ":activeMission", 1)
-		writeData(creature:getObjectID() .. ":killedMissionNpcs", 0)
+		self:writeData(pConversingPlayer, ":activeMission", 1)
+		self:writeData(pConversingPlayer, ":killedMissionNpcs", 0)
 		return true
 	else
 		return false
