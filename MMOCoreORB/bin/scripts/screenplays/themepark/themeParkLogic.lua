@@ -438,7 +438,7 @@ function ThemeParkLogic:getNpcName(name)
 	if name ~= "random" then
 		return name
 	end
-	return "Random name"
+	return makeCreatureName(true)
 end
 
 function ThemeParkLogic:giveMissionItems(mission, pConversingPlayer)
