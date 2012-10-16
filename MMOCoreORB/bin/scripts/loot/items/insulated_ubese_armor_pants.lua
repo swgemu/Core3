@@ -3,7 +3,7 @@
 insulated_ubese_armor_pants = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Insulated Ubese Armor Jacket",
+	customObjectName = "Insulated Ubese Armor Pants",
 	directObjectTemplate = "object/tangible/wearables/armor/ubese/armor_ubese_pants.iff",
 	craftingValues = {
 		{"armor_effectiveness",15,15,0},
