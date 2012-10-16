@@ -18,6 +18,7 @@
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/managers/name/NameManager.h"
 #include "ScreenPlayTask.h"
 #include "ScreenPlayObserver.h"
 #include "server/zone/managers/creature/CreatureManager.h"
@@ -134,6 +135,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getObjectTemplatePathByCRC", getObjectTemplatePathByCRC);
 	lua_register(luaEngine->getLuaState(), "getTimestamp", getTimestamp);
 	lua_register(luaEngine->getLuaState(), "getSpawnPoint", getSpawnPoint);
+	lua_register(luaEngine->getLuaState(), "makeCreatureName", makeCreatureName);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -1167,4 +1169,14 @@ int DirectorManager::getSpawnPoint(lua_State* L) {
 	} else {
 		return 0;
 	}
+}
+
+int DirectorManager::makeCreatureName(lua_State* L) {
+	bool surname = lua_toboolean(L, -1);
+
+	NameManager* nameManager = NameManager::instance();
+	String name = nameManager->makeCreatureName(surname);
+
+	lua_pushstring(L, name);
+	return 1;
 }
