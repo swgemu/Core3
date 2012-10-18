@@ -576,12 +576,12 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 		UnicodeString subject2("@auction:subject_instant_buyer");
 		StringIdChatParameter body2("@auction:buyer_success");
 		body2.setTO(item->getItemName());
-		body2.setTT(item->getOwnerName());
+		body2.setTT(sellerName);
 		body2.setDI(item->getPrice());
 
 
 		//Send the Mail
-		cman->sendMail(sender, subject1, body1, item->getOwnerName());
+		cman->sendMail(sender, subject1, body1, sellerName);
 		cman->sendMail(sender, subject2, body2, item->getBidderName(), waypoint);
 
 	}
@@ -1307,7 +1307,7 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 		return;
 
 	String playername = item->getBidderName();
-
+	String sellerName = item->getOwnerName();
 	ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
 	ManagedReference<PlayerManager*> pman = zoneServer->getPlayerManager();
 
@@ -1350,11 +1350,11 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 		UnicodeString subject2("@auction:subject_vendor_buyer");
 		StringIdChatParameter body2("@auction:buyer_success");
 		body2.setTO(item->getItemName());
-		body2.setTT(item->getOwnerName());
+		body2.setTT(sellerName);
 		body2.setDI(item->getPrice());
 
 		//Send the Mail
-		cman->sendMail(sender, subject1, body1, item->getOwnerName());
+		cman->sendMail(sender, subject1, body1, sellerName);
 		cman->sendMail(sender, subject2, body2, item->getBidderName(), waypoint);
 	}
 }
