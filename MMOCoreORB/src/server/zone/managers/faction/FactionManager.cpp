@@ -113,22 +113,21 @@ void FactionManager::awardFactionStanding(CreatureObject* player, const String& 
 
 void FactionManager::awardPvpFactionPoints(TangibleObject* killer, CreatureObject* destructedObject) {
 	if (killer->isPlayerCreature() && destructedObject->isPlayerCreature()) {
-		ManagedReference<PlayerObject*> ghost = destructedObject->getPlayerObject();
 		CreatureObject* killerCreature = cast<CreatureObject*>(killer);
+		ManagedReference<PlayerObject*> ghost = killerCreature->getPlayerObject();
+
 		ManagedReference<PlayerObject*> killedGhost = destructedObject->getPlayerObject();
 
-		if (killer->getFaction() != destructedObject->getFaction()) {
-			if (killer->isRebel() && destructedObject->isImperial()) {
-				killedGhost->increaseFactionStanding("rebel", 75);
-				killedGhost->decreaseFactionStanding("imperial", 75);
+		if (killer->isRebel() && destructedObject->isImperial()) {
+			ghost->increaseFactionStanding("rebel", 75);
+			ghost->decreaseFactionStanding("imperial", 75);
 
-				ghost->decreaseFactionStanding("imperial", 75); //TODO: find formulas
-			} else if (killer->isImperial() && destructedObject->isRebel()) {
-				killedGhost->increaseFactionStanding("imperial", 75);
-				killedGhost->decreaseFactionStanding("rebel", 75);
+			killedGhost->decreaseFactionStanding("imperial", 75); //TODO: find formulas
+		} else if (killer->isImperial() && destructedObject->isRebel()) {
+			ghost->increaseFactionStanding("imperial", 75);
+			ghost->decreaseFactionStanding("rebel", 75);
 
-				ghost->decreaseFactionStanding("rebel", 75);
-			}
+			killedGhost->decreaseFactionStanding("rebel", 75);
 		}
 	} else if (destructedObject->isPlayerCreature()) {
 		ManagedReference<PlayerObject*> ghost = destructedObject->getPlayerObject();
