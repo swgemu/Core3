@@ -95,7 +95,9 @@ object_tangible_wearables_armor_stormtrooper_armor_stormtrooper_gloves = object_
 
 	-- LIGHT, MEDIUM, HEAVY
 	rating = LIGHT,
-
+	
+	maxCondition = 45000,
+	
 	kinetic = 30,
 	energy = 30,
 	electricity = 30,

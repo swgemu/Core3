@@ -91,7 +91,9 @@ object_tangible_wearables_armor_marine_armor_marine_chest_plate = object_tangibl
 	
 	-- Damage types in WeaponObject
 	vulnerability = ACID + STUN + LIGHTSABER,
-
+	
+	maxCondition = 45000,
+	
 	-- These are default Blue Frog stats
 	healthEncumbrance = 150,
 	actionEncumbrance = 40,

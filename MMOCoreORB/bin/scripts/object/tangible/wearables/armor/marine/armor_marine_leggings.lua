@@ -99,7 +99,9 @@ object_tangible_wearables_armor_marine_armor_marine_leggings = object_tangible_w
 
 	-- LIGHT, MEDIUM, HEAVY
 	rating = LIGHT,
-
+	
+	maxCondition = 45000,
+	
 	kinetic = 30,
 	energy = 30,
 	electricity = 30,
