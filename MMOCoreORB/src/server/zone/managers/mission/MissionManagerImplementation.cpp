@@ -669,7 +669,6 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	mission->setMissionDescription("mission/mission_destroy_neutral" +  messageDifficulty + "_creature", "m" + String::valueOf(randTexts) + "d");
 
 	mission->setTypeCRC(MissionObject::DESTROY);
-
 }
 
 void MissionManagerImplementation::randomizeSurveyMission(CreatureObject* player, MissionObject* mission) {
@@ -1331,6 +1330,7 @@ void MissionManagerImplementation::randomizeReconMission(CreatureObject* player,
 
 void MissionManagerImplementation::randomizeImperialDestroyMission(CreatureObject* player, MissionObject* mission) {
 	randomizeGenericDestroyMission(player, mission, MissionObject::FACTIONIMPERIAL);
+	generateRandomFactionalDestroyMissionDescription(player, mission, "imperial");
 }
 
 void MissionManagerImplementation::randomizeImperialDeliverMission(CreatureObject* player, MissionObject* mission) {
@@ -1347,6 +1347,7 @@ void MissionManagerImplementation::randomizeImperialReconMission(CreatureObject*
 
 void MissionManagerImplementation::randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission) {
 	randomizeGenericDestroyMission(player, mission, MissionObject::FACTIONREBEL);
+	generateRandomFactionalDestroyMissionDescription(player, mission, "rebel");
 }
 
 void MissionManagerImplementation::randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission) {
@@ -1359,6 +1360,44 @@ void MissionManagerImplementation::randomizeRebelCraftingMission(CreatureObject*
 
 void MissionManagerImplementation::randomizeRebelReconMission(CreatureObject* player, MissionObject* mission) {
 	randomizeGenericReconMission(player, mission, MissionObject::FACTIONREBEL);
+}
+
+void MissionManagerImplementation::generateRandomFactionalDestroyMissionDescription(CreatureObject* player, MissionObject* mission, const String& faction) {
+	String difficultyString = faction;
+	int randomMax;
+
+	if (player->getFaction() == MissionObject::FACTIONIMPERIAL) {
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+		if (ghost->getFactionStatus() == FactionStatus::OVERT) {
+			difficultyString += "_military";
+			randomMax = 50;
+		} else {
+			difficultyString += "_non_military";
+			randomMax = 13;
+		}
+	} else {
+		difficultyString += "_non_military";
+		randomMax = 13;
+	}
+
+	int difficulty = mission->getDifficultyLevel();
+
+	if (difficulty < 20) {
+		difficultyString += "_easy";
+	} else if (difficulty < 40) {
+		difficultyString += "_medium";
+		randomMax = 50;
+	} else {
+		difficultyString += "_hard";
+		randomMax = (randomMax < 50) ? 25 : 50;
+	}
+
+	int randomNumber = System::random(randomMax) + 1;
+
+	mission->setMissionTitle("mission/mission_destroy_" + difficultyString, "m" + String::valueOf(randomNumber) + "t");
+	mission->setMissionDescription("mission/mission_destroy_" +  difficultyString, "m" + String::valueOf(randomNumber) + "d");
+	mission->setMissionTargetName("mission/mission_destroy_" +  difficultyString, "m" + String::valueOf(randomNumber) + "t");
 }
 
 void MissionManagerImplementation::createSpawnPoint(CreatureObject* player, const String& spawnTypes) {

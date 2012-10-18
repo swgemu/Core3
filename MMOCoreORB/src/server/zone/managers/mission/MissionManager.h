@@ -409,6 +409,10 @@ public:
 
 	void randomizeRebelReconMission(CreatureObject* player, MissionObject* mission);
 
+private:
+	void generateRandomFactionalDestroyMissionDescription(CreatureObject* player, MissionObject* mission, const String& faction);
+
+public:
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
 	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
