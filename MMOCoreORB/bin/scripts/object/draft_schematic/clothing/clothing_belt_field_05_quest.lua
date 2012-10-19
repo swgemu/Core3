@@ -43,6 +43,37 @@
 
 object_draft_schematic_clothing_clothing_belt_field_05_quest = object_draft_schematic_clothing_shared_clothing_belt_field_05_quest:new {
 
+   templateType = DRAFTSCHEMATIC,
+
+   customObjectName = "Demolitionist\'s Belt",
+
+   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   complexity = 16, 
+   size = 1, 
+
+   xpType = "crafting_clothing_general", 
+   xp = 285, 
+
+   assemblySkill = "clothing_assembly", 
+   experimentingSkill = "clothing_experimentation", 
+   customizationSkill = "clothing_customization", 
+
+   customizationOptions = {2, 1},
+   customizationStringNames = {"/private/index_color_1", "/private/index_color_2"},
+   customizationDefaults = {0, 0},
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"shell", "binding_and_reinforcement", "hardware"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"petrochem_inert", "metal", "iron"},
+   resourceQuantities = {50, 25, 35},
+   contribution = {100, 100, 100},
+
+
+   targetTemplate = "object/tangible/wearables/belt/belt_s05_quest.iff",
+
+   additionalTemplates = {
+             }
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_belt_field_05_quest, "object/draft_schematic/clothing/clothing_belt_field_05_quest.iff")

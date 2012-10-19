@@ -23,11 +23,13 @@ ree_yees = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gran_male.iff"},
 	lootGroups = {},
 	weapons = {},
+	conversationTemplate = "theme_park_mission_giver_convotemplate",
 	attacks = {}
 }
 

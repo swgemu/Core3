@@ -43,6 +43,37 @@
 
 object_draft_schematic_clothing_clothing_dress_formal_08_quest = object_draft_schematic_clothing_shared_clothing_dress_formal_08_quest:new {
 
+  templateType = DRAFTSCHEMATIC,
+
+   customObjectName = "Exotic Dancers Leotard",
+
+   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   complexity = 23, 
+   size = 4, 
+
+   xpType = "crafting_clothing_general", 
+   xp = 330, 
+
+   assemblySkill = "clothing_assembly", 
+   experimentingSkill = "clothing_experimentation", 
+   customizationSkill = "clothing_customization", 
+
+   customizationOptions = {2},
+   customizationStringNames = {"/private/index_color_1"},
+   customizationDefaults = {31},
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"trim_and_binding", "extra_trim", "jewelry_setting", "hardware", "skirt", "Appearance"},
+   ingredientSlotType = {0, 1, 1, 0, 1, 1},
+   resourceTypes = {"hide", "object/tangible/component/clothing/shared_trim.iff", "object/tangible/component/clothing/shared_jewelry_setting.iff", "metal", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/clothing/shared_clothing_tratment_crystalline.iff"},
+   resourceQuantities = {60, 3, 2, 50, 3, 1},
+   contribution = {100, 100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/wearables/dress/dress_s08_quest.iff",
+
+   additionalTemplates = {
+             }
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_dress_formal_08_quest, "object/draft_schematic/clothing/clothing_dress_formal_08_quest.iff")

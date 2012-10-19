@@ -23,14 +23,14 @@ barada = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/barada.iff"},
 	lootGroups = {},
 	weapons = {},
 	outfit = "barada_outfit",
-	conversationTemplate = "",
+	conversationTemplate = "theme_park_mission_giver_convotemplate",
 	attacks = {
 	}
 }

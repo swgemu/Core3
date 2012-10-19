@@ -43,6 +43,12 @@
 
 object_tangible_loot_quest_schematic_belt_s05_quest = object_tangible_loot_quest_shared_schematic_belt_s05_quest:new {
 
+templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "crafting_tailor_field_03",
+	targetDraftSchematic = "object/draft_schematic/clothing/clothing_belt_field_05_quest.iff",
+	targetUseCount = 3
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_quest_schematic_belt_s05_quest, "object/tangible/loot/quest/schematic_belt_s05_quest.iff")

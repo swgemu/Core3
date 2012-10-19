@@ -21,12 +21,14 @@ sirad_far = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = NONE,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/sirad_far.iff"},
+	templates = {"object/mobile/dressed_tatooine_jabba_thug.iff"},
 	lootGroups = {},
+	conversationTemplate = "theme_park_mission_target_convotemplate",
 	weapons = {},
 	attacks = {}
 }

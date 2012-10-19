@@ -85,11 +85,12 @@ Act = Object:new {
 
 
 -- Theme parks
+
 includeFile("themepark/themeParkLogic.lua")
 includeFile("themepark/conversations/mission_giver_conv_handler.lua")
 includeFile("themepark/conversations/mission_target_conv_handler.lua")
 includeFile("themepark/rebel/themeParkRebel.lua")
-
+includeFile("themepark/jabba/themeParkJabba.lua")
 includeFile("themepark/tutorial.lua")
 
 includeFile("recruiters/recruiters.lua")
