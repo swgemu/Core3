@@ -29,7 +29,7 @@ han_solo = Creature:new {
 	templates = {"object/mobile/han_solo.iff"},
 	lootGroups = {},
 	weapons = {"han_solo_weapons"},
-	conversationTemplate = "theme_park_mission_giver_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_giver_convotemplate",
 	attacks = {
 	}
 }

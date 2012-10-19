@@ -36,7 +36,7 @@ theme_park_imperial_general_boize = Creature:new {
 		}						
 	},
 	weapons = {"imperial_weapons_heavy"},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
 	attacks = merge(riflemanmaster,carbineermaster)
 }
 

@@ -80,4 +80,5 @@ function createMissionTargetConvoTemplate(templateName, convoHandler)
 	addConversationTemplate(templateName, mission_target_convotemplate);
 end
 
-createMissionTargetConvoTemplate("theme_park_mission_target_convotemplate","mission_target_conv_handler")
+createMissionTargetConvoTemplate("theme_park_rebel_mission_target_convotemplate","theme_park_rebel_mission_target_conv_handler")
+createMissionTargetConvoTemplate("theme_park_jabba_mission_target_convotemplate","theme_park_jabba_mission_target_conv_handler")

@@ -29,7 +29,7 @@ bib_fortuna = Creature:new {
 	templates = {"object/mobile/bib_fortuna.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_giver_convotemplate",
+	conversationTemplate = "theme_park_jabba_mission_giver_convotemplate",
 	attacks = {
 	}
 }

@@ -34,7 +34,7 @@ theme_park_rebel_nym_contact = Creature:new {
 				"object/mobile/dressed_nym_pirate_strong_wee_m.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 

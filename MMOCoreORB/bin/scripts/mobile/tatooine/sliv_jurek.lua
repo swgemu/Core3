@@ -33,7 +33,7 @@ sliv_jurek = Creature:new {
 	},
 	lootGroups = {},
 	weapons = {"ranged_weapons"},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_jabba_mission_target_convotemplate",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

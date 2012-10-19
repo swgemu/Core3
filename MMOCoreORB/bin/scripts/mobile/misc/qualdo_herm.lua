@@ -28,7 +28,7 @@ qualdo_herm = Creature:new {
 
 	templates = {"object/mobile/dressed_qualdo_herm.iff"},
 	lootGroups = {},
-	conversationTemplate = "theme_park_mission_giver_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_giver_convotemplate",
 	weapons = {},
 	attacks = {}
 }

@@ -35,7 +35,7 @@ theme_park_rebel_officer = Creature:new {
 		"object/mobile/dressed_rebel_first_lieutenant_sullustan_male_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
 	attacks = {
 	}
 }

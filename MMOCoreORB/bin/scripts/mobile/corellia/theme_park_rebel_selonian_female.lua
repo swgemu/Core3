@@ -40,7 +40,7 @@ theme_park_rebel_selonian_female = Creature:new {
 				 "object/mobile/dressed_selonian_f_12.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
 	attacks = {
 	}
 }

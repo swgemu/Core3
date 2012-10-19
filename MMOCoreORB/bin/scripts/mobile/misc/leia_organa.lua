@@ -29,7 +29,7 @@ leia_organa = Creature:new {
 	templates = {"object/mobile/leia_organa.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_giver_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_giver_convotemplate",
 	attacks = {
 	}
 }

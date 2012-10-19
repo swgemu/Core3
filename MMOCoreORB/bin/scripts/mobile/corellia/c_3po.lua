@@ -29,7 +29,7 @@ c_3po = Creature:new {
 	templates = {"object/mobile/c_3po.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_giver_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_giver_convotemplate",
 	attacks = {
 	}
 }

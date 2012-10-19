@@ -30,7 +30,7 @@ scrib_leras = Creature:new {
 	templates = {"object/mobile/dressed_hutt_medic2_twilek_male_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_jabba_mission_target_convotemplate",
 }
 
 CreatureTemplates:addCreatureTemplate(scrib_leras, "scrib_leras")

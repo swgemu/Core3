@@ -35,7 +35,7 @@ theme_park_rebel_supervisor = Creature:new {
 		"object/mobile/dressed_rebel_brigadier_general_trandoshan_female.iff"},
 	lootGroups = {},
 	weapons = {"rebel_weapons_heavy"},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 

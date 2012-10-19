@@ -166,4 +166,5 @@ function createMissionGiverConvoTemplate(templateName, convoHandler)
 	addConversationTemplate(templateName, mission_giver_convotemplate);
 end
 
-createMissionGiverConvoTemplate("theme_park_mission_giver_convotemplate", "mission_giver_conv_handler")
+createMissionGiverConvoTemplate("theme_park_rebel_mission_giver_convotemplate", "theme_park_rebel_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("theme_park_jabba_mission_giver_convotemplate", "theme_park_jabba_mission_giver_conv_handler")

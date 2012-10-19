@@ -31,7 +31,7 @@ theme_park_rebel_teria_alessie = Creature:new {
 				 "object/mobile/dressed_dancer_trainer_twk_female_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
 	attacks = {
 	}
 }

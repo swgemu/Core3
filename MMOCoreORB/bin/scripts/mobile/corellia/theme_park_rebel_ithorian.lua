@@ -29,7 +29,7 @@ theme_park_rebel_ithorian = Creature:new {
 	templates = {"object/mobile/ithorian_male.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
 	attacks = {
 	}
 }

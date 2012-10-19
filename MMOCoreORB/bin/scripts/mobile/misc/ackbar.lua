@@ -29,7 +29,7 @@ ackbar = Creature:new {
 	templates = {"object/mobile/dressed_ackbar.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_giver_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_giver_convotemplate",
 	attacks = {
 	}
 }

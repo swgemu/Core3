@@ -29,7 +29,7 @@ theme_park_rebel_deasie_afresel = Creature:new {
 	templates = {"object/mobile/dressed_criminal_organized_twilek_female_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
 	attacks = {
 	}
 }

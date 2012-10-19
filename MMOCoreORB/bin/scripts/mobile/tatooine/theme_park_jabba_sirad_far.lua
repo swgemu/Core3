@@ -30,7 +30,7 @@ theme_park_jabba_sirad_far = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	attacks = {},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_jabba_mission_target_convotemplate",
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_jabba_sirad_far, "theme_park_jabba_sirad_far")

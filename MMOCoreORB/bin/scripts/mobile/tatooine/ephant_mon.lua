@@ -29,7 +29,7 @@ ephant_mon = Creature:new {
 	templates = {"object/mobile/ephant_mon.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_giver_convotemplate",
+	conversationTemplate = "theme_park_jabba_mission_giver_convotemplate",
 	attacks = {
 	}
 }

@@ -578,6 +578,9 @@ ThemeParkJabba = ThemeParkLogic:new {
 
 registerScreenPlay("ThemeParkJabba", true)
 
-mission_giver_conv_handler:setThemePark(ThemeParkJabba)
-
-mission_target_conv_handler:setThemePark(ThemeParkJabba)
+theme_park_jabba_mission_giver_conv_handler = mission_giver_conv_handler:new {
+	themePark = ThemeParkJabba
+}
+theme_park_jabba_mission_target_conv_handler = mission_target_conv_handler:new {
+	themePark = ThemeParkJabba
+}

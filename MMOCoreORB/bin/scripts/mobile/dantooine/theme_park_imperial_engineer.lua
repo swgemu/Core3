@@ -37,7 +37,7 @@ theme_park_imperial_engineer = Creature:new {
 	lootGroups = {},
 	weapons = {"imperial_weapons_medium"},
 	attacks = {},
-	conversationTemplate = "theme_park_mission_target_convotemplate"
+	conversationTemplate = "theme_park_rebel_mission_target_convotemplate"
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_engineer, "theme_park_imperial_engineer")

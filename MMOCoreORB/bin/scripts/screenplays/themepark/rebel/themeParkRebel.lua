@@ -966,6 +966,9 @@ ThemeParkRebel = ThemeParkLogic:new {
 
 registerScreenPlay("ThemeParkRebel", true)
 
-mission_giver_conv_handler:setThemePark(ThemeParkRebel)
-
-mission_target_conv_handler:setThemePark(ThemeParkRebel)
+theme_park_rebel_mission_giver_conv_handler = mission_giver_conv_handler:new {
+	themePark = ThemeParkRebel
+}
+theme_park_rebel_mission_target_conv_handler = mission_target_conv_handler:new {
+	themePark = ThemeParkRebel
+}

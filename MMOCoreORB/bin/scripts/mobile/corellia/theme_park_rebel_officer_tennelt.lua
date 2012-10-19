@@ -29,7 +29,7 @@ theme_park_rebel_officer_tennelt = Creature:new {
 	templates = {"object/mobile/dressed_eisley_officer_twilek_male_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
 	attacks = {
 	}
 }

@@ -38,7 +38,7 @@ theme_park_rebel_bothan = Creature:new {
 				 "object/mobile/dressed_noble_bothan_male_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
 	attacks = {
 	}
 }

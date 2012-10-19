@@ -29,7 +29,7 @@ belshu_dadar = Creature:new {
 	templates = {"object/mobile/dressed_tatooine_jabba_henchman.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_jabba_mission_target_convotemplate",
 	attacks = {
 	}
 }

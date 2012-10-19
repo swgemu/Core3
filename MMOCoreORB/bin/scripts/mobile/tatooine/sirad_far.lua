@@ -28,7 +28,7 @@ sirad_far = Creature:new {
 
 	templates = {"object/mobile/dressed_tatooine_jabba_thug.iff"},
 	lootGroups = {},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_jabba_mission_target_convotemplate",
 	weapons = {},
 	attacks = {}
 }

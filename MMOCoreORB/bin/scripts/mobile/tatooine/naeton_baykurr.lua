@@ -30,7 +30,7 @@ naeton_baykurr = Creature:new {
 	templates = {"object/mobile/dressed_aakuan_defender_human_male_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_jabba_mission_target_convotemplate",
 	attacks = {
 	}
 }

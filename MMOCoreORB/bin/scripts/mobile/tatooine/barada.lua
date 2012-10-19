@@ -30,7 +30,7 @@ barada = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	outfit = "barada_outfit",
-	conversationTemplate = "theme_park_mission_giver_convotemplate",
+	conversationTemplate = "theme_park_jabba_mission_giver_convotemplate",
 	attacks = {
 	}
 }

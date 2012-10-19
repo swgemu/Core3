@@ -29,7 +29,7 @@ theme_park_imperial_commander = Creature:new {
 	templates = {"object/mobile/dressed_imperial_commander_m.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
 	attacks = {
 	}
 }

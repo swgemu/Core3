@@ -36,7 +36,7 @@ theme_park_rebel_hyperdrive_seller = Creature:new {
 		"object/mobile/dressed_marooned_pirate_tran_m.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
 	attacks = {
 	}
 }

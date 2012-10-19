@@ -29,7 +29,7 @@ theme_park_rebel_edycu = Creature:new {
 	templates = {"object/mobile/dressed_binayre_smuggler_trandoshan_male_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_medium"},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 

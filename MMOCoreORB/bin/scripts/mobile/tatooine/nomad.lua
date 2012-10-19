@@ -29,7 +29,7 @@ nomad = Creature:new {
 	templates = {"object/mobile/dressed_tatooine_nomad.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_jabba_mission_target_convotemplate",
 	attacks = {
 	}
 }

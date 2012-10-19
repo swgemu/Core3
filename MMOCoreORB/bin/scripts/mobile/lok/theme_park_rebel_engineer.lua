@@ -31,7 +31,7 @@ theme_park_rebel_engineer = Creature:new {
 				 "object/mobile/dressed_artisan_trainer_03.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
 	attacks = {
 	}
 }

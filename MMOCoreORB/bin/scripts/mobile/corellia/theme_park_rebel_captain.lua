@@ -30,7 +30,7 @@ theme_park_rebel_captain = Creature:new {
 				 "object/mobile/dressed_rebel_army_captain_moncal_male_01.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
 	attacks = {
 	}
 }

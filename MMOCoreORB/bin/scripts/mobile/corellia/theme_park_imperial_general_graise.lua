@@ -29,7 +29,7 @@ theme_park_imperial_general_graise = Creature:new {
 	templates = {"object/mobile/dressed_imperial_general_m.iff"},
 	lootGroups = {},
 	weapons = {"imperial_weapons_heavy"},
-	conversationTemplate = "theme_park_mission_target_convotemplate",
+	conversationTemplate = "theme_park_rebel_mission_target_convotemplate",
 	attacks = merge(riflemanmaster,carbineermaster)
 }
 

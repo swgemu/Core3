@@ -29,7 +29,7 @@ ree_yees = Creature:new {
 	templates = {"object/mobile/gran_male.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "theme_park_mission_giver_convotemplate",
+	conversationTemplate = "theme_park_jabba_mission_giver_convotemplate",
 	attacks = {}
 }
 
