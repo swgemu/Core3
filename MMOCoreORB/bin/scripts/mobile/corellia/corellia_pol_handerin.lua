@@ -1,5 +1,6 @@
 corellia_pol_handerin = Creature:new {
 	objectName = "@mob/creature_names:corellia_pol_handerin",
+	customName = "Pol Handerin",
 	socialGroup = "Corellia Times",
 	pvpFaction = "",
 	faction = "",
