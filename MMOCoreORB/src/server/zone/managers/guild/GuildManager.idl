@@ -54,7 +54,6 @@ include server.zone.packets.guild.GuildObjectDeltaMessage3;
 import server.zone.objects.guild.GuildObject;
 import server.zone.objects.tangible.terminal.guild.GuildTerminal;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.variables.DeltaSet;
 include server.chat.StringIdChatParameter;
 
@@ -132,6 +131,8 @@ class GuildManager extends ManagedService implements Logger {
 	public synchronized GuildObject getSponsoredGuild(unsigned long playerID) {
 		return sponsoredPlayers.get(playerID);
 	}
+
+	
 	
 	public native void sendBaselinesTo(CreatureObject player);
 	
@@ -203,6 +204,17 @@ class GuildManager extends ManagedService implements Logger {
 	
 	public native ChatRoom createGuildChannels(GuildObject guild);
 	
+	public native void sendGuildTransferTo(CreatureObject player, GuildTerminal guildTerminal);
+
+	public native void sendTransferAckTo(CreatureObject player,  final string newOwnerName, SceneObject guildTerminal);
+
+	public native void transferLeadership(CreatureObject newOwner, CreatureObject oldOwner, SceneObject guildTerminal);  
+	
+	public native void sendAcceptLotsTo(CreatureObject newOwner, GuildTerminal guildTerminal);
+	
+	public native void transferGuildHall(CreatureObject newOwner, SceneObject guildTerminal);
+	
+		
 	@local
 	public native void sendGuildMail(final string subject, @dereferenced StringIdChatParameter body, GuildObject guild);
 }

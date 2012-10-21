@@ -41,7 +41,9 @@
 #include "server/zone/objects/guild/sui/GuildSponsoredOptionsSuiCallback.h"
 #include "server/zone/objects/guild/sui/GuildWarEnemyNameSuiCallback.h"
 #include "server/zone/objects/guild/sui/GuildAddEnemySuiCallback.h"
-
+#include "server/zone/objects/guild/sui/GuildTransferLeadershipSuiCallback.h"
+#include "server/zone/objects/guild/sui/GuildTransferLeaderAckSuiCallback.h"
+#include "server/zone/objects/guild/sui/GuildTransferLotsSuiCallback.h"
 #include "server/zone/objects/creature/commands/sui/ListGuildsResponseSuiCallback.h"
 
 #include "server/zone/packets/scene/SceneObjectCreateMessage.h"
@@ -50,6 +52,12 @@
 #include "server/zone/packets/guild/GuildObjectMessage6.h"
 #include "server/zone/packets/guild/GuildObjectDeltaMessage3.h"
 #include "server/zone/packets/creature/CreatureObjectDeltaMessage6.h"
+
+#include "server/zone/objects/building/BuildingObject.h"
+
+#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/creature/commands/TransferstructureCommand.h"
 
 void GuildManagerImplementation::loadGuilds() {
 	Locker _lock(_this.get());
@@ -293,6 +301,162 @@ void GuildManagerImplementation::sendGuildMemberOptionsTo(CreatureObject* player
 	player->getPlayerObject()->addSuiBox(suiBox);
 	player->sendMessage(suiBox->generateMessage());
 }
+
+void GuildManagerImplementation::sendGuildTransferTo(CreatureObject* player, GuildTerminal* guildTerminal) {
+
+	if ( !player->getPlayerObject()->hasSuiBoxWindowType( SuiWindowType::GUILD_TRANSFER_LEADER)) {
+
+		ManagedReference<SuiInputBox*> suiBox = new SuiInputBox(player, SuiWindowType::GUILD_TRANSFER_LEADER);
+		suiBox->setCallback(new GuildTransferLeadershipSuiCallback(server));
+		suiBox->setPromptTitle("@guild:make_leader_t"); //Transfer PA Leadership
+		suiBox->setPromptText("@guild:make_leader_d"); // You are about to transfer leadership of this Player Association!  Once you take this action you will be made a normal member and your leader permissions will be revoked.
+		suiBox->setCancelButton(true, "@cancel");
+		suiBox->setUsingObject(guildTerminal);
+		player->getPlayerObject()->addSuiBox(suiBox);
+		player->sendMessage(suiBox->generateMessage());
+
+	}
+}
+
+void GuildManagerImplementation::sendTransferAckTo(CreatureObject* player, const String& newOwnerName, SceneObject* sceoTerminal){
+
+	ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+	ManagedReference<CreatureObject*> target = playerManager->getPlayer(newOwnerName);
+
+	if (target == NULL) {
+		player->sendSystemMessage("@guild:ml_fail"); // unable to find a member of the PA with that name
+		return;
+	}
+
+	ManagedReference<GuildObject*> guild = player->getGuildObject();
+
+	if (guild == NULL)
+		return;
+
+	Locker _lock(guild);
+
+	// make sure target is in the guild
+	if ( !guild->hasMember(target->getObjectID())) {
+		player->sendSystemMessage("@ui_community:friend_location_failed_noname"); // no player with that name exists
+		return;
+	}
+	_lock.release();
+
+	Locker _clocker(target, player);
+
+	// make sure player transferring to  is nearby
+	if (!target->isOnline() || !player->isInRange(target, 32)) {
+		StringIdChatParameter params("@cmd_err:target_range_prose");  // your target is too far away to %TO
+		params.setTO("Transfer PA Leadership");
+		player->sendSystemMessage(params);
+		return;
+	}
+
+	if ( !target->getPlayerObject()->hasLotsRemaining(5) )
+		target->sendSystemMessage("@guild:ml_no_lots_free");  // That person does not have enough free lots to own the PA hall.  PA hall ownership is a requiement be guild leader
+
+	if ( !target->getPlayerObject()->hasSuiBoxWindowType(SuiWindowType::GUILD_TRANSFER_LEADER_CONFIRM) ) {
+		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(target, SuiWindowType::GUILD_TRANSFER_LEADER_CONFIRM);
+		suiBox->setCallback(new GuildTransferLeaderAckSuiCallback(server));
+		suiBox->setPromptTitle("@guild:make_leader_p"); //Transfer PA leadership
+		suiBox->setPromptText("@guild:make_leader_p");  // the lead of this PA wants to transfer leadership to you.  Do you accept?
+		suiBox->setUsingObject(sceoTerminal);  // maybe can remove this
+		suiBox->setCancelButton(true, "@no");
+		suiBox->setOkButton(true, "@yes");
+
+		target->getPlayerObject()->addSuiBox(suiBox);
+		target->sendMessage(suiBox->generateMessage());
+
+	} else {
+		player->sendSystemMessage("A transfer confirmation for " + target->getFirstName() + " is already pending");
+	}
+}
+
+void GuildManagerImplementation::sendAcceptLotsTo(CreatureObject* newOwner, GuildTerminal* guildTerminal) {
+
+	if ( !newOwner->getPlayerObject()->hasSuiBoxWindowType(SuiWindowType::GUILD_TAKE_LOTS)) {
+		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(newOwner, SuiWindowType::GUILD_TAKE_LOTS);
+		suiBox->setCallback(new GuildTransferLotsSuiCallback(server));
+		suiBox->setPromptTitle("@guild:accept_pa_hall_t"); //Accept PA Hall LOts
+		suiBox->setPromptText("@guild:need_accept_hall"); // YOu are the PA leader, but you do not own the PA Hall.
+														 // You must accept ownership of the PA hall before you or your PA
+    													 // members can use the management terminal.
+
+		suiBox->setUsingObject(guildTerminal);
+		suiBox->setOkButton(true,"@guild:accept_pa_hall_t");
+		suiBox->setCancelButton(true, "@cancel");
+		newOwner->getPlayerObject()->addSuiBox(suiBox);
+		newOwner->sendMessage(suiBox->generateMessage());
+
+	}
+}
+
+
+// pre: guild is locked
+void GuildManagerImplementation::transferLeadership(CreatureObject* newLeader, CreatureObject* oldLeader, SceneObject* sceoTerminal){
+	GuildObject* guild = newLeader->getGuildObject();
+
+	Locker glock(guild);
+	guild->setGuildLeaderID(newLeader->getObjectID());
+
+	// change admin privs for old and new leader
+	GuildMemberInfo* gmiLeader = guild->getMember(newLeader->getObjectID());
+
+	if ( gmiLeader!= NULL )
+		gmiLeader->togglePermission(GuildObject::PERMISSION_ALL);
+
+	if ( oldLeader != NULL) {
+		GuildMemberInfo* gmiOldLeader = guild->getMember(oldLeader->getObjectID());
+		if ( gmiOldLeader != NULL)
+			gmiOldLeader->togglePermission(GuildObject::PERMISSION_NONE);
+	}
+	glock.release();
+
+	oldLeader->sendSystemMessage("@guild:ml_success");  // PA leadership transferred.  YOu are now a normal member of the PA.
+	newLeader->sendSystemMessage("@guild:ml_you_are_leader"); // You have been made leader of your PA
+
+
+}
+
+// pre: newOwner locked ... old owner not locked
+void GuildManagerImplementation::transferGuildHall(CreatureObject* newOwner, SceneObject* sceoTerminal){
+	if (sceoTerminal == NULL || !sceoTerminal->isTerminal())
+		return;
+
+	Terminal* terminal = cast<Terminal*>( sceoTerminal);
+
+	if (!terminal->isGuildTerminal())
+		return;
+
+	GuildTerminal* guildTerminal = cast<GuildTerminal*>( terminal);
+
+	if ( guildTerminal == NULL )
+		return;
+
+	ManagedReference<BuildingObject*> buildingObject = cast<BuildingObject*>( guildTerminal->getParentRecursively(SceneObjectType::BUILDING).get().get());
+
+
+	if ( buildingObject != NULL ) {
+
+			ManagedReference<CreatureObject*> oldOwner = NULL;
+
+			if ( buildingObject!= NULL)
+				oldOwner = buildingObject->getOwnerCreatureObject();
+			else
+				return;
+
+			if ( oldOwner != newOwner && oldOwner != NULL){
+
+				Locker _lockc(oldOwner, newOwner);
+
+				TransferstructureCommand::doTransferStructure(oldOwner, newOwner, buildingObject, true);
+
+			} else {
+				newOwner->sendSystemMessage("@player_structure:already_owner"); //You are already the owner.
+			}
+		}
+}
+
 
 void GuildManagerImplementation::sendGuildMemberListTo(CreatureObject* player, GuildObject* guild, GuildTerminal* guildTerminal) {
 	if (guild == NULL)
@@ -624,9 +788,8 @@ void GuildManagerImplementation::sponsorPlayer(CreatureObject* player, GuildTerm
 
 	if (target->isInGuild()) {
 		StringIdChatParameter params;
-		params.setStringId("@guild:sponsor_already_in_guild"); //%TU is already in a guild.
 		params.setTU(target);
-
+		params.setStringId("@guild:sponsor_already_in_guild"); //%TU is already in a guild.
 		player->sendSystemMessage(params);
 		return;
 	}

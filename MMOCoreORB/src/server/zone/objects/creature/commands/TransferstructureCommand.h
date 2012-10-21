@@ -56,6 +56,8 @@ public:
 
 	}
 
+
+
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
@@ -132,6 +134,17 @@ public:
 
 		Locker _lock(targetCreature, creature);
 
+		return doTransferStructure(creature, targetCreature, structure);
+
+	}
+
+	// pre: creature locked and targetCreature are locked
+	// structure not locked
+	// bForceTransfer = whether or not to force the transfer.  meaning do the trasnfer even if the owner is offline or out of range
+	static int doTransferStructure(CreatureObject* creature, CreatureObject* targetCreature, StructureObject* structure, bool bForceTransfer = false){
+
+
+
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 		ManagedReference<PlayerObject*> targetGhost = targetCreature->getPlayerObject();
 
@@ -142,7 +155,7 @@ public:
 		Locker _slock(structure);
 
 		//Ensure that they are within at least 16m of the transferrer.
-		if (!targetCreature->isInRange(creature, 16.f) || !targetGhost->isOnline()) {
+		if ((!targetCreature->isInRange(creature, 16.f) || !targetGhost->isOnline()) && !bForceTransfer ) {
 			StringIdChatParameter params("@cmd_err:target_range_prose"); //Your target is too far away to %TO.
 			params.setTO("Transfer Structure");
 			creature->sendSystemMessage(params);
@@ -152,11 +165,15 @@ public:
 		int lotSize = structure->getLotSize();
 
 		if (!targetGhost->hasLotsRemaining(lotSize)) {
-			System::out << "lotsize: " << lotSize << endl;
-			StringIdChatParameter params("@player_structure:not_able_to_own"); //%NT is not able to own this structure.
-			params.setTT(targetCreature);
-			creature->sendSystemMessage(params);
+			if ( !bForceTransfer) {
+				System::out << "lotsize: " << lotSize << endl;
+				StringIdChatParameter params("@player_structure:not_able_to_own"); //%NT is not able to own this structure.
+				params.setTT(targetCreature);
+				creature->sendSystemMessage(params);
+			} else {
 
+				// send message to the person trying to do the guild transfer
+			}
 			return GENERALERROR;
 		}
 
@@ -164,7 +181,6 @@ public:
 		//@player_structure:trail_no_transfer Trial accounts may not be involved in a property ownership transfer.
 		//@player_structure:building_has_no_trade The object %TT may not be traded and must be put in your inventory or destroyed before the building can be transferred.
 		//@player_structure:faction_base You cannot transfer your factional base access and allotment responsibility to anyone else.
-
 		ManagedReference<CityRegion*> region = structure->getCityRegion();
 
 		if (region != NULL) {
@@ -197,12 +213,13 @@ public:
 			buildingObject->updateCellPermissionsTo(creature);
 		}
 
-		StringIdChatParameter params("@player_structure:ownership_transferred_in"); //%NT has transfered ownership of the structure to you
-		params.setTT(creature);
+		StringIdChatParameter params("@player_structure:ownership_transferred_in"); //%TT has transfered ownership of the structure to you
+		params.setTT(creature->getFirstName());
 		targetCreature->sendSystemMessage(params);
 
+
 		params.setStringId("@player_structure:ownership_transferred_out"); //Ownership of the structure has been transferred to %NT.
-		params.setTT(targetCreature);
+		params.setTT(targetCreature->getFirstName());
 		creature->sendSystemMessage(params);
 
 		return SUCCESS;
