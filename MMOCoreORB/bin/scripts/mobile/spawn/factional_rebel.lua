@@ -6,15 +6,26 @@ factional_rebel = {
 	maxSpawnLimit = 0,
 
 	lairSpawns = {
+		
 		{
-			lairTemplateName = "criminal_base",
+			lairTemplateName = "imperial_banner",
 			spawnLimit = 0,
-			minDifficulty = 7,
-			maxDifficulty = 7,
+			minDifficulty = 11,
+			maxDifficulty = 11,
+			numberToSpawn = 0,
+			weighting = 5,
+			size = 15
+		},	
+		{
+			lairTemplateName = "imperial",
+			spawnLimit = 0,
+			minDifficulty = 25,
+			maxDifficulty = 25,
 			numberToSpawn = 0,
 			weighting = 5,
 			size = 15
 		},
+		
 		{
 			lairTemplateName = "global_stormtrooper",
 			spawnLimit = -1,
@@ -51,6 +62,9 @@ factional_rebel = {
 			weighting = 5,
 			size = 15
 		},
+	
+	
+	
 	}
 }
 
