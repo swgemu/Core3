@@ -673,6 +673,11 @@ PathNode* CollisionManager::findNearestPathNode(TriangleNode* triangle, FloorMes
 	// this is overkill TODO: find something faster
 	PathGraph* graph = floor->getPathGraph();
 	Vector<PathNode*>* pathNodes = graph->getPathNodes();
+
+	if (pathNodes == NULL) {
+		return NULL;
+	}
+
 	PathNode* returnNode = NULL;
 	float distance = 16000;
 	Vector3 trianglePos(triangle->getBarycenter());
