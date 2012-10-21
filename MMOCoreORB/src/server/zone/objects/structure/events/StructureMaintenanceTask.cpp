@@ -64,7 +64,7 @@ void StructureMaintenanceTask::run() {
 			//Reschedule task in 1 day.
 			reschedule(oneDayTime);
 		} else {
-			if (strongRef->isBuildingObject()) {
+			if (strongRef->isBuildingObject() && !shouldBuildingBeDestroyed(strongRef)) {
 				BuildingObject* building = strongRef.castTo<BuildingObject*>();
 
 				//Building is condemned since it has decayed.
@@ -132,5 +132,15 @@ void StructureMaintenanceTask::sendMailCondemned(CreatureObject* owner, Structur
 		emailBody.setTO("(" + String::valueOf((int)structure->getPositionX()) + ", " + String::valueOf((int)structure->getPositionY()) + ")");
 		emailBody.setDI(-structure->getSurplusMaintenance());
 		chatManager->sendMail("@player_structure:your_structure_prefix", subject, emailBody, owner->getFirstName());
+	}
+}
+
+bool StructureMaintenanceTask::shouldBuildingBeDestroyed(StructureObject* structure) {
+	int threeMonthsOfMaintenance = 3 * 30 * 24 * structure->getMaintenanceRate();
+
+	if (threeMonthsOfMaintenance + structure->getSurplusMaintenance() < 0) {
+		return true;
+	} else {
+		return false;
 	}
 }
