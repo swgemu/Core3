@@ -163,7 +163,7 @@ int CellObjectImplementation::getCurrentNumberOfPlayerItems() {
 			if (!getParent().get()->containsChildObject(containerObject) && !containerObject->isCreatureObject()) {
 
 				if (containerObject->isContainerObject())
-					count += containerObject->getContainedObjectsRecursive();
+					count += containerObject->getCountableObjectsRecursive();
 
 				++count;
 			}

@@ -20,7 +20,7 @@
  *	FactoryCrateStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISFACTORYCRATE__,RPC_GETMAXCAPACITY__,RPC_SETMAXCAPACITY__INT_,RPC_SETUSECOUNT__INT_BOOL_,RPC_GETPROTOTYPE__,RPC_GETCRAFTERSNAME__,RPC_GETSERIALNUMBER__,RPC_EXTRACTOBJECTTOPARENT__,RPC_EXTRACTOBJECT__INT_,RPC_SPLIT__INT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISFACTORYCRATE__,RPC_GETMAXCAPACITY__,RPC_SETMAXCAPACITY__INT_,RPC_SETUSECOUNT__INT_BOOL_,RPC_GETPROTOTYPE__,RPC_GETCRAFTERSNAME__,RPC_GETSERIALNUMBER__,RPC_EXTRACTOBJECTTOPARENT__,RPC_EXTRACTOBJECT__INT_,RPC_SPLIT__INT_,RPC_GETCOUNTABLEOBJECTSRECURSIVE__};
 
 FactoryCrate::FactoryCrate() : TangibleObject(DummyConstructorParameter::instance()) {
 	FactoryCrateImplementation* _implementation = new FactoryCrateImplementation();
@@ -246,6 +246,19 @@ void FactoryCrate::split(int newStackSize) {
 		_implementation->split(newStackSize);
 }
 
+int FactoryCrate::getCountableObjectsRecursive() {
+	FactoryCrateImplementation* _implementation = static_cast<FactoryCrateImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCOUNTABLEOBJECTSRECURSIVE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getCountableObjectsRecursive();
+}
+
 DistributedObjectServant* FactoryCrate::_getImplementation() {
 
 	 if (!_updated) _updated = true;
@@ -416,6 +429,11 @@ void FactoryCrateImplementation::setMaxCapacity(int value) {
 	maxCapacity = value;
 }
 
+int FactoryCrateImplementation::getCountableObjectsRecursive() {
+	// server/zone/objects/factorycrate/FactoryCrate.idl():  		return 0;
+	return 0;
+}
+
 /*
  *	FactoryCrateAdapter
  */
@@ -496,6 +514,11 @@ void FactoryCrateAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			split(inv->getSignedIntParameter());
 		}
 		break;
+	case RPC_GETCOUNTABLEOBJECTSRECURSIVE__:
+		{
+			resp->insertSignedInt(getCountableObjectsRecursive());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -551,6 +574,10 @@ TangibleObject* FactoryCrateAdapter::extractObject(int count) {
 
 void FactoryCrateAdapter::split(int newStackSize) {
 	(static_cast<FactoryCrate*>(stub))->split(newStackSize);
+}
+
+int FactoryCrateAdapter::getCountableObjectsRecursive() {
+	return (static_cast<FactoryCrate*>(stub))->getCountableObjectsRecursive();
 }
 
 /*

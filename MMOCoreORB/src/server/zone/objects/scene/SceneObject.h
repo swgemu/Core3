@@ -400,6 +400,8 @@ public:
 
 	int getContainedObjectsRecursive();
 
+	int getCountableObjectsRecursive();
+
 	Facade* getActiveSession(unsigned int type);
 
 	void addActiveSession(unsigned int type, Facade* session);
@@ -1049,6 +1051,8 @@ public:
 
 	int getContainedObjectsRecursive();
 
+	virtual int getCountableObjectsRecursive();
+
 	Facade* getActiveSession(unsigned int type);
 
 	void addActiveSession(unsigned int type, Facade* session);
@@ -1611,6 +1615,8 @@ public:
 	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
 
 	int getContainedObjectsRecursive();
+
+	int getCountableObjectsRecursive();
 
 	Facade* getActiveSession(unsigned int type);
 
