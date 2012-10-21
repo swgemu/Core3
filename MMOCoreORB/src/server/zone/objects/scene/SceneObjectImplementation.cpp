@@ -1554,9 +1554,10 @@ int SceneObjectImplementation::getContainedObjectsRecursive() {
 	for (int i = 0; i < containerObjects.size(); ++i) {
 		ManagedReference<SceneObject*> obj = containerObjects.get(i);
 
-		++count;
-
-		count += obj->getContainedObjectsRecursive();
+		if (!isFactoryCrate()) {
+			++count;
+			count += obj->getContainedObjectsRecursive();
+		}
 	}
 
 	return count;
