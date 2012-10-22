@@ -150,7 +150,7 @@ public:
 
 	static const int VENDOREXPIREPERIOD = 2592000;
 
-	static const int COMMODITYEXPIREPERIOD = 604800;
+	static const int COMMODITYEXPIREPERIOD = 2592000;
 
 	AuctionManager(ZoneServer* server);
 
@@ -263,7 +263,7 @@ public:
 
 	static const int VENDOREXPIREPERIOD = 2592000;
 
-	static const int COMMODITYEXPIREPERIOD = 604800;
+	static const int COMMODITYEXPIREPERIOD = 2592000;
 
 private:
 	bool marketEnabled;
