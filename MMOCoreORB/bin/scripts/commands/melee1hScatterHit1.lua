@@ -53,7 +53,7 @@ Melee1hScatterHit1Command = {
 
 	animationCRC = hashCode("combo_3b_light"),
 
-	poolsToDamage = HEALTH_ATTRIBUTE + ACTION_ATTRIBUTE,
+	poolsToDamage = HEALTH_ATTRIBUTE + ACTION_ATTRIBUTE + MIND_ATTRIBUTE,
 
 	combatSpam = "scatterstab",
 
