@@ -131,8 +131,8 @@ void SceneObjectImplementation::initializeTransientMembers() {
 }
 
 void SceneObjectImplementation::initializePrivateData() {
-	pendingTasks.setNoDuplicateInsertPlan();
-	pendingTasks.setNullValue(NULL);
+	pendingTasks = NULL;
+
 	objectActiveSessions.setNullValue(NULL);
 	objectActiveSessions.setNoDuplicateInsertPlan();
 
@@ -153,7 +153,6 @@ void SceneObjectImplementation::initializePrivateData() {
 	planetMapSubCategory = 0;
 
 	gameObjectType = 0;
-	clientGameObjectType = 0;
 
 	containmentType = 4;
 
@@ -176,7 +175,6 @@ void SceneObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	//detailedDescription.setStringId(templateData->getDetailedDescription());
 
 	gameObjectType = templateData->getGameObjectType();
-	clientGameObjectType = templateData->getClientGameObjectType();
 	clientObjectCRC = templateData->getClientObjectCRC();
 
 	containerType = templateData->getContainerType();
@@ -1500,12 +1498,14 @@ void SceneObjectImplementation::initializeChildObject(SceneObject* controllerObj
 }
 
 ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParent() {
-	ManagedReference<QuadTreeEntry*> parent = this->parent;
+	ManagedReference<QuadTreeEntry*> parent = this->parent.get();
 
 	if (parent == NULL)
 		return NULL;
 
-	return ManagedWeakReference<SceneObject*>(dynamic_cast<SceneObject*>(parent.get()));
+	assert(parent != _this.get());
+
+	return ManagedWeakReference<SceneObject*>(parent.castTo<SceneObject*>());
 }
 
 SortedVector<ManagedReference<Observer* > >* SceneObjectImplementation::getObservers(unsigned int eventType) {

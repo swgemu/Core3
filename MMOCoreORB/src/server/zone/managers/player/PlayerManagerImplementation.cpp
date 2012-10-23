@@ -945,7 +945,9 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	}*/
 
 	ManagedReference<SceneObject*> closestCloning = zone->getNearestPlanetaryObject(player, "cloningfacility");
-	ManagedReference<SceneObject*> preDesignatedFacility = ghost->getCloningFacility().get().get();
+
+	uint64 preDesignatedFacilityOid = ghost->getCloningFacility();
+	ManagedReference<SceneObject*> preDesignatedFacility = server->getObject(preDesignatedFacilityOid);
 
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
@@ -1053,7 +1055,8 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 
 	player->switchZone(zone->getZoneName(), coordinate->getPositionX(), coordinate->getPositionZ(), coordinate->getPositionY(), cell->getObjectID());
 
-	ManagedReference<SceneObject*> preDesignatedFacility = ghost->getCloningFacility().get().get();
+	uint64 preDesignatedFacilityOid = ghost->getCloningFacility();
+	ManagedReference<SceneObject*> preDesignatedFacility = server->getObject(preDesignatedFacilityOid);
 
 	if (preDesignatedFacility != NULL && preDesignatedFacility == cloningBuilding) {
 		// bind removed
@@ -2953,7 +2956,7 @@ String PlayerManagerImplementation::banFromGalaxy(PlayerObject* admin, Account* 
 
 					player->sendMessage(new LogoutMessage());
 
-					ZoneClientSession* session = player->getClient();
+					ManagedReference<ZoneClientSession*> session = player->getClient();
 
 					if(session != NULL)
 						session->disconnect(true);

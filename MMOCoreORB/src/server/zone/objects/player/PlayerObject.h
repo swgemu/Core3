@@ -438,7 +438,7 @@ public:
 
 	void setConversatingCreature(CreatureObject* creature);
 
-	ManagedWeakReference<CreatureObject* > getConversatingCreature();
+	unsigned long long getConversatingCreature();
 
 	void setTrainerCoordinates(const Vector3& trainer);
 
@@ -474,13 +474,13 @@ public:
 
 	void removeCommandMessageString(unsigned int actionCRC);
 
-	ManagedWeakReference<BuildingObject* > getDeclaredResidence();
+	unsigned long long getDeclaredResidence();
 
 	void setDeclaredResidence(BuildingObject* residence);
 
 	void setCloningFacility(BuildingObject* cloningfac);
 
-	ManagedWeakReference<BuildingObject* > getCloningFacility();
+	unsigned long long getCloningFacility();
 
 	void notifyOnline();
 
@@ -862,9 +862,9 @@ protected:
 
 	BountyHunterTefRemovalTaskMap bountyLockList;
 
-	ManagedWeakReference<BuildingObject* > declaredResidence;
+	unsigned long long declaredResidence;
 
-	ManagedWeakReference<BuildingObject* > cloningFacility;
+	unsigned long long cloningFacility;
 
 	SortedVector<unsigned long long> persistentMessages;
 
@@ -878,7 +878,7 @@ protected:
 
 	Vector<String> lastNpcConvoOptions;
 
-	ManagedWeakReference<CreatureObject* > conversatingCreature;
+	unsigned long long conversatingCreature;
 
 	Vector3 trainerCoordinates;
 
@@ -1093,7 +1093,7 @@ public:
 
 	void setConversatingCreature(CreatureObject* creature);
 
-	ManagedWeakReference<CreatureObject* > getConversatingCreature();
+	unsigned long long getConversatingCreature();
 
 	void setTrainerCoordinates(const Vector3& trainer);
 
@@ -1129,13 +1129,13 @@ public:
 
 	void removeCommandMessageString(unsigned int actionCRC);
 
-	ManagedWeakReference<BuildingObject* > getDeclaredResidence();
+	unsigned long long getDeclaredResidence();
 
 	void setDeclaredResidence(BuildingObject* residence);
 
 	void setCloningFacility(BuildingObject* cloningfac);
 
-	ManagedWeakReference<BuildingObject* > getCloningFacility();
+	unsigned long long getCloningFacility();
 
 	void notifyOnline();
 
@@ -1572,7 +1572,7 @@ public:
 
 	void setConversatingCreature(CreatureObject* creature);
 
-	ManagedWeakReference<CreatureObject* > getConversatingCreature();
+	unsigned long long getConversatingCreature();
 
 	void setTrainerZoneName(String& zoneName);
 
@@ -1598,13 +1598,13 @@ public:
 
 	void removeCommandMessageString(unsigned int actionCRC);
 
-	ManagedWeakReference<BuildingObject* > getDeclaredResidence();
+	unsigned long long getDeclaredResidence();
 
 	void setDeclaredResidence(BuildingObject* residence);
 
 	void setCloningFacility(BuildingObject* cloningfac);
 
-	ManagedWeakReference<BuildingObject* > getCloningFacility();
+	unsigned long long getCloningFacility();
 
 	void notifyOnline();
 

@@ -924,6 +924,8 @@ public:
 
 	void setInvisible(bool invis);
 
+	Mutex* getSkillModMutex();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -1700,6 +1702,8 @@ public:
 	bool isInvisible();
 
 	void setInvisible(bool invis);
+
+	Mutex* getSkillModMutex();
 
 	WeakReference<CreatureObject*> _this;
 

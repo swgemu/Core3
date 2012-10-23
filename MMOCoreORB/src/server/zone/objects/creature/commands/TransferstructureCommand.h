@@ -191,7 +191,7 @@ public:
 			//TODO: Also check to make sure they have zoning rights.
 		}
 
-		if (ghost->getDeclaredResidence().get() == structure)
+		if (ghost->getDeclaredResidence() == structure->getObjectID())
 			ghost->setDeclaredResidence(NULL);
 
 		//Transfer ownership

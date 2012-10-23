@@ -918,7 +918,7 @@ void PlayerObject::setConversatingCreature(CreatureObject* creature) {
 		_implementation->setConversatingCreature(creature);
 }
 
-ManagedWeakReference<CreatureObject* > PlayerObject::getConversatingCreature() {
+unsigned long long PlayerObject::getConversatingCreature() {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -926,7 +926,7 @@ ManagedWeakReference<CreatureObject* > PlayerObject::getConversatingCreature() {
 
 		DistributedMethod method(this, RPC_GETCONVERSATINGCREATURE__);
 
-		return static_cast<CreatureObject*>(method.executeWithObjectReturn());
+		return method.executeWithUnsignedLongReturn();
 	} else
 		return _implementation->getConversatingCreature();
 }
@@ -1146,7 +1146,7 @@ void PlayerObject::removeCommandMessageString(unsigned int actionCRC) {
 		_implementation->removeCommandMessageString(actionCRC);
 }
 
-ManagedWeakReference<BuildingObject* > PlayerObject::getDeclaredResidence() {
+unsigned long long PlayerObject::getDeclaredResidence() {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -1154,7 +1154,7 @@ ManagedWeakReference<BuildingObject* > PlayerObject::getDeclaredResidence() {
 
 		DistributedMethod method(this, RPC_GETDECLAREDRESIDENCE__);
 
-		return static_cast<BuildingObject*>(method.executeWithObjectReturn());
+		return method.executeWithUnsignedLongReturn();
 	} else
 		return _implementation->getDeclaredResidence();
 }
@@ -1187,7 +1187,7 @@ void PlayerObject::setCloningFacility(BuildingObject* cloningfac) {
 		_implementation->setCloningFacility(cloningfac);
 }
 
-ManagedWeakReference<BuildingObject* > PlayerObject::getCloningFacility() {
+unsigned long long PlayerObject::getCloningFacility() {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -1195,7 +1195,7 @@ ManagedWeakReference<BuildingObject* > PlayerObject::getCloningFacility() {
 
 		DistributedMethod method(this, RPC_GETCLONINGFACILITY__);
 
-		return static_cast<BuildingObject*>(method.executeWithObjectReturn());
+		return method.executeWithUnsignedLongReturn();
 	} else
 		return _implementation->getCloningFacility();
 }
@@ -3334,23 +3334,18 @@ bool PlayerObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 		return true;
 	}
 
-	if (_name == "PlayerObject.duelList") {
-		TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::parseFromBinaryStream(&duelList, stream);
-		return true;
-	}
-
 	if (_name == "PlayerObject.bountyLockList") {
 		TypeInfo<BountyHunterTefRemovalTaskMap >::parseFromBinaryStream(&bountyLockList, stream);
 		return true;
 	}
 
 	if (_name == "PlayerObject.declaredResidence") {
-		TypeInfo<ManagedWeakReference<BuildingObject* > >::parseFromBinaryStream(&declaredResidence, stream);
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&declaredResidence, stream);
 		return true;
 	}
 
 	if (_name == "PlayerObject.cloningFacility") {
-		TypeInfo<ManagedWeakReference<BuildingObject* > >::parseFromBinaryStream(&cloningFacility, stream);
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&cloningFacility, stream);
 		return true;
 	}
 
@@ -3385,7 +3380,7 @@ bool PlayerObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 	}
 
 	if (_name == "PlayerObject.conversatingCreature") {
-		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&conversatingCreature, stream);
+		TypeInfo<unsigned long long >::parseFromBinaryStream(&conversatingCreature, stream);
 		return true;
 	}
 
@@ -3773,14 +3768,6 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.duelList";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::toBinaryStream(&duelList, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
 	_name = "PlayerObject.bountyLockList";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -3793,7 +3780,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<ManagedWeakReference<BuildingObject* > >::toBinaryStream(&declaredResidence, stream);
+	TypeInfo<unsigned long long >::toBinaryStream(&declaredResidence, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -3801,7 +3788,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<ManagedWeakReference<BuildingObject* > >::toBinaryStream(&cloningFacility, stream);
+	TypeInfo<unsigned long long >::toBinaryStream(&cloningFacility, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -3857,7 +3844,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&conversatingCreature, stream);
+	TypeInfo<unsigned long long >::toBinaryStream(&conversatingCreature, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -4014,7 +4001,7 @@ int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 64;
+	return _count + 63;
 }
 
 PlayerObjectImplementation::PlayerObjectImplementation() {
@@ -4031,8 +4018,14 @@ PlayerObjectImplementation::PlayerObjectImplementation() {
 	suiBoxNextID = 0;
 	// server/zone/objects/player/PlayerObject.idl():  		savedParentID = 0;
 	savedParentID = 0;
+	// server/zone/objects/player/PlayerObject.idl():  		declaredResidence = 0;
+	declaredResidence = 0;
+	// server/zone/objects/player/PlayerObject.idl():  		cloningFacility = 0;
+	cloningFacility = 0;
 	// server/zone/objects/player/PlayerObject.idl():  		skillPoints = 0;
 	skillPoints = 0;
+	// server/zone/objects/player/PlayerObject.idl():  		conversatingCreature = 0;
+	conversatingCreature = 0;
 	// server/zone/objects/player/PlayerObject.idl():  		forcePower = 0;
 	forcePower = 0;
 	// server/zone/objects/player/PlayerObject.idl():  		forcePowerMax = 0;
@@ -4213,11 +4206,15 @@ void PlayerObjectImplementation::clearLastNpcConvOptions() {
 }
 
 void PlayerObjectImplementation::setConversatingCreature(CreatureObject* creature) {
-	// server/zone/objects/player/PlayerObject.idl():  		conversatingCreature = creature;
-	conversatingCreature = creature;
+	// server/zone/objects/player/PlayerObject.idl():  			conversatingCreature = creature.getObjectID();
+	if (creature == NULL)	// server/zone/objects/player/PlayerObject.idl():  			conversatingCreature = 0;
+	conversatingCreature = 0;
+
+	else 	// server/zone/objects/player/PlayerObject.idl():  			conversatingCreature = creature.getObjectID();
+	conversatingCreature = creature->getObjectID();
 }
 
-ManagedWeakReference<CreatureObject* > PlayerObjectImplementation::getConversatingCreature() {
+unsigned long long PlayerObjectImplementation::getConversatingCreature() {
 	// server/zone/objects/player/PlayerObject.idl():  		return conversatingCreature;
 	return conversatingCreature;
 }
@@ -4292,22 +4289,30 @@ void PlayerObjectImplementation::removeCommandMessageString(unsigned int actionC
 	(&commandMessageStrings)->drop(actionCRC);
 }
 
-ManagedWeakReference<BuildingObject* > PlayerObjectImplementation::getDeclaredResidence() {
+unsigned long long PlayerObjectImplementation::getDeclaredResidence() {
 	// server/zone/objects/player/PlayerObject.idl():  		return declaredResidence;
 	return declaredResidence;
 }
 
 void PlayerObjectImplementation::setDeclaredResidence(BuildingObject* residence) {
-	// server/zone/objects/player/PlayerObject.idl():  		declaredResidence = residence;
-	declaredResidence = residence;
+	// server/zone/objects/player/PlayerObject.idl():  			declaredResidence = residence.getObjectID();
+	if (residence == NULL)	// server/zone/objects/player/PlayerObject.idl():  			declaredResidence = 0;
+	declaredResidence = 0;
+
+	else 	// server/zone/objects/player/PlayerObject.idl():  			declaredResidence = residence.getObjectID();
+	declaredResidence = residence->getObjectID();
 }
 
 void PlayerObjectImplementation::setCloningFacility(BuildingObject* cloningfac) {
-	// server/zone/objects/player/PlayerObject.idl():  		cloningFacility = cloningfac;
-	cloningFacility = cloningfac;
+	// server/zone/objects/player/PlayerObject.idl():  			cloningFacility = cloningfac.getObjectID();
+	if (cloningfac == NULL)	// server/zone/objects/player/PlayerObject.idl():  			cloningFacility = 0;
+	cloningFacility = 0;
+
+	else 	// server/zone/objects/player/PlayerObject.idl():  			cloningFacility = cloningfac.getObjectID();
+	cloningFacility = cloningfac->getObjectID();
 }
 
-ManagedWeakReference<BuildingObject* > PlayerObjectImplementation::getCloningFacility() {
+unsigned long long PlayerObjectImplementation::getCloningFacility() {
 	// server/zone/objects/player/PlayerObject.idl():  		return cloningFacility;
 	return cloningFacility;
 }
@@ -5231,7 +5236,7 @@ void PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETCONVERSATINGCREATURE__:
 		{
-			resp->insertLong(getConversatingCreature().get()->_getObjectID());
+			resp->insertLong(getConversatingCreature());
 		}
 		break;
 	case RPC_SETTRAINERZONENAME__STRING_:
@@ -5301,7 +5306,7 @@ void PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETDECLAREDRESIDENCE__:
 		{
-			resp->insertLong(getDeclaredResidence().get()->_getObjectID());
+			resp->insertLong(getDeclaredResidence());
 		}
 		break;
 	case RPC_SETDECLAREDRESIDENCE__BUILDINGOBJECT_:
@@ -5316,7 +5321,7 @@ void PlayerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETCLONINGFACILITY__:
 		{
-			resp->insertLong(getCloningFacility().get()->_getObjectID());
+			resp->insertLong(getCloningFacility());
 		}
 		break;
 	case RPC_NOTIFYONLINE__:
@@ -6187,7 +6192,7 @@ void PlayerObjectAdapter::setConversatingCreature(CreatureObject* creature) {
 	(static_cast<PlayerObject*>(stub))->setConversatingCreature(creature);
 }
 
-ManagedWeakReference<CreatureObject* > PlayerObjectAdapter::getConversatingCreature() {
+unsigned long long PlayerObjectAdapter::getConversatingCreature() {
 	return (static_cast<PlayerObject*>(stub))->getConversatingCreature();
 }
 
@@ -6239,7 +6244,7 @@ void PlayerObjectAdapter::removeCommandMessageString(unsigned int actionCRC) {
 	(static_cast<PlayerObject*>(stub))->removeCommandMessageString(actionCRC);
 }
 
-ManagedWeakReference<BuildingObject* > PlayerObjectAdapter::getDeclaredResidence() {
+unsigned long long PlayerObjectAdapter::getDeclaredResidence() {
 	return (static_cast<PlayerObject*>(stub))->getDeclaredResidence();
 }
 
@@ -6251,7 +6256,7 @@ void PlayerObjectAdapter::setCloningFacility(BuildingObject* cloningfac) {
 	(static_cast<PlayerObject*>(stub))->setCloningFacility(cloningfac);
 }
 
-ManagedWeakReference<BuildingObject* > PlayerObjectAdapter::getCloningFacility() {
+unsigned long long PlayerObjectAdapter::getCloningFacility() {
 	return (static_cast<PlayerObject*>(stub))->getCloningFacility();
 }
 

@@ -98,11 +98,6 @@ void MissionManagerImplementation::loadLuaSettings() {
 }
 
 void MissionManagerImplementation::handleMissionListRequest(MissionTerminal* missionTerminal, CreatureObject* player, int counter) {
-
-
-
-
-
 	// newbie and statue terminals don't exist, but their templates do
 	if (missionTerminal->isStatueTerminal() || missionTerminal->isNewbieTerminal()) {
 		player->sendSystemMessage("@skill_teacher:skill_terminal_disabled");

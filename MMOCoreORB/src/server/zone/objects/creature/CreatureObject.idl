@@ -1706,4 +1706,9 @@ class CreatureObject extends TangibleObject {
 	public void setInvisible(boolean invis) {
 		invisible = invis;
 	}
+	
+	@local
+	public Mutex getSkillModMutex() {
+		return skillModMutex;
+	}
 }

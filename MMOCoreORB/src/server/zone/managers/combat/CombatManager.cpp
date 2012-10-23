@@ -179,6 +179,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 		attacker->updateLastSuccessfulCombatAction();
 	}
 
+	/// Always do this if it is a hit, even if it is 0 damage
 	Locker clocker(defenderObject, attacker);
 
 	defenderObject->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, damage);	

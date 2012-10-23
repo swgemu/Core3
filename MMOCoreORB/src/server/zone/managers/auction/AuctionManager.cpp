@@ -667,6 +667,7 @@ AuctionsMap* AuctionManagerImplementation::getAuctionMap() {
 }
 
 void AuctionManagerImplementation::updateVendorUID(SceneObject* vendor, const String& oldUID, const String& newUID) {
+	Locker _locker(_this.get());
 	// server/zone/managers/auction/AuctionManager.idl():  		auctionMap.
 	if (auctionMap == NULL){
 	// server/zone/managers/auction/AuctionManager.idl():  			pendingUIDUpdates.put(vendor, newUID);
@@ -681,6 +682,7 @@ void AuctionManagerImplementation::updateVendorUID(SceneObject* vendor, const St
 }
 
 void AuctionManagerImplementation::updateVendorSearch(SceneObject* vendor, bool enabled) {
+	Locker _locker(_this.get());
 	// server/zone/managers/auction/AuctionManager.idl():  		auctionMap.updateVendorSearch(vendor, enabled);
 	auctionMap->updateVendorSearch(vendor, enabled);
 }

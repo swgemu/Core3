@@ -121,7 +121,8 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 	mods.setAllowOverwriteInsertPlan();
 	mods.setNullValue(0);
 
-	Vector<ManagedReference<SceneObject*> > usedObjects;
+	SortedVector<ManagedReference<SceneObject*> > usedObjects;
+	usedObjects.setNoDuplicateInsertPlan();
 
 	for(int i = 0; i < creature->getSlottedObjectsSize(); ++i) {
 		ManagedReference<TangibleObject*> object = cast<TangibleObject*>(creature->getSlottedObject(i));
@@ -151,7 +152,7 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 
 		}
 
-		usedObjects.add(object.get());
+		usedObjects.put(object.get());
 	}
 
 	if(!compareMods(mods, creature, WEARABLE)) {
@@ -168,7 +169,7 @@ void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
 	if(creature == NULL)
 		return;
 
-	Locker locker(creature);
+	//Locker locker(creature);
 	VectorMap<String, int> mods;
 	mods.setAllowOverwriteInsertPlan();
 	mods.setNullValue(0);
@@ -266,6 +267,10 @@ bool SkillModManager::compareMods(VectorMap<String, int> mods, CreatureObject* c
 
 	mods.setAllowOverwriteInsertPlan();
 	mods.setNullValue(0);
+	
+	Mutex* skillModMutex = creature->getSkillModMutex();
+
+	Locker skillModLocker(skillModMutex);
 
 	SkillModList* skillModList = creature->getSkillModList();
 

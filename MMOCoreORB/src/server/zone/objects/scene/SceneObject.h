@@ -392,6 +392,8 @@ public:
 
 	void removePendingTask(const String& name);
 
+	PendingTasksMap* getPendingTasks();
+
 	Task* getPendingTask(const String& name);
 
 	bool containsPendingTask(const String& name);
@@ -872,15 +874,13 @@ protected:
 
 	StringId objectName;
 
-	PendingTasksMap pendingTasks;
+	Reference<PendingTasksMap* > pendingTasks;
 
 	bool staticObject;
 
 	VectorMap<unsigned int, ManagedReference<Facade* > > objectActiveSessions;
 
 	unsigned int gameObjectType;
-
-	unsigned int clientGameObjectType;
 
 	unsigned int containmentType;
 
@@ -1042,6 +1042,8 @@ public:
 	void addPendingTask(const String& name, Task* task, int miliseconds);
 
 	void removePendingTask(const String& name);
+
+	PendingTasksMap* getPendingTasks();
 
 	Task* getPendingTask(const String& name);
 

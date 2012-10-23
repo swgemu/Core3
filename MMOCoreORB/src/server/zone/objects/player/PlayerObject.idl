@@ -161,16 +161,14 @@ class PlayerObject extends IntangibleObject {
 	protected SortedVector<ChatRoom> chatRooms;
 		
 	@dereferenced
-	protected SortedVector<CreatureObject> duelList;
+	protected transient SortedVector<CreatureObject> duelList;
 	
 	@dereferenced
 	protected BountyHunterTefRemovalTaskMap bountyLockList;
 	
-	@weakReference
-	protected BuildingObject declaredResidence;
+	protected unsigned long declaredResidence;
 	
-	@weakReference
-	protected BuildingObject cloningFacility;
+	protected unsigned long cloningFacility;
 
 	@dereferenced
 	protected SortedVector<unsigned long> persistentMessages;
@@ -185,8 +183,8 @@ class PlayerObject extends IntangibleObject {
 	protected string lastNpcConvo;
 	@dereferenced
 	protected Vector<string> lastNpcConvoOptions; //Deprecate. Conversation could also be a session.
-	@weakReference
-	protected CreatureObject conversatingCreature; //If conversation is a session, then this would be stored on the session.
+	
+	protected unsigned long conversatingCreature; //If conversation is a session, then this would be stored on the session.
 	
 	
 	// Jedi Trainers.
@@ -277,7 +275,13 @@ class PlayerObject extends IntangibleObject {
 		
 		savedParentID = 0;
 		
+		declaredResidence = 0;
+		
+		cloningFacility = 0;
+		
 		skillPoints = 0;
+		
+		conversatingCreature = 0;
 		
 		forcePower = 0;
 		forcePowerMax = 0;
@@ -643,11 +647,13 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public void setConversatingCreature(CreatureObject creature) {
-		conversatingCreature = creature;
+		if (creature == null)
+			conversatingCreature = 0;
+		else
+			conversatingCreature = creature.getObjectID();
 	}
 	
-	@weakReference
-	public CreatureObject getConversatingCreature() {
+	public unsigned long getConversatingCreature() {
 		return conversatingCreature;
 	}
 	
@@ -722,21 +728,25 @@ class PlayerObject extends IntangibleObject {
 		commandMessageStrings.drop(actionCRC);
 	}
 	
-	@weakReference
-	public BuildingObject getDeclaredResidence() {
+	public unsigned long getDeclaredResidence() {
 		return declaredResidence;
 	}
 	
 	public void setDeclaredResidence(BuildingObject residence) {
-		declaredResidence = residence;
+		if (residence == null)
+			declaredResidence = 0;
+		else
+			declaredResidence = residence.getObjectID();
 	}
 	
 	public void setCloningFacility(BuildingObject cloningfac) {
-		cloningFacility = cloningfac;
+		if (cloningfac == null)
+			cloningFacility = 0;
+		else
+			cloningFacility = cloningfac.getObjectID();
 	}
 	
-	@weakReference
-	public BuildingObject getCloningFacility() {
+	public unsigned long getCloningFacility() {
 		return cloningFacility;
 	}
 	

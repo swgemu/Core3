@@ -136,7 +136,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dereferenced
 	protected StringId objectName;
 		
-	@dereferenced
 	protected transient PendingTasksMap pendingTasks;
 	
 	protected boolean staticObject;
@@ -145,7 +144,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	protected VectorMap<unsigned int, Facade> objectActiveSessions;
 
 	protected unsigned int gameObjectType;
-	protected unsigned int clientGameObjectType;
 	protected unsigned int containmentType;
 	
 	protected int planetMapCategory;
@@ -719,7 +717,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@local
 	public void addPendingTask(final string name, Task task, int miliseconds) {
-		pendingTasks.put(name, task);
+		getPendingTasks().put(name, task);
 		task.schedule(miliseconds);
 	}
 	
@@ -731,7 +729,21 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@local
 	public void removePendingTask(final string name) {
+		if (pendingTasks == null)
+			return;
+		
 		pendingTasks.drop(name);
+	}
+	
+	@local
+	public PendingTasksMap getPendingTasks() {
+		if (pendingTasks == null) {
+			pendingTasks = new PendingTasksMap();
+			pendingTasks.setNoDuplicateInsertPlan();
+			pendingTasks.setNullValue(null);
+		}
+		
+		return pendingTasks;
 	}
 	
 	/**
@@ -743,11 +755,17 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@local
 	@read
 	public Task getPendingTask(final string name) {
+		if (pendingTasks == null)
+			return null;
+		
 		return pendingTasks.get(name);
 	}
 	
 	@read
 	public boolean containsPendingTask(final string name) {
+		if (pendingTasks == null)
+			return false;
+		
 		return pendingTasks.contains(name);
 	}
 	
@@ -1151,7 +1169,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@read
 	public unsigned int getClientGameObjectType() {
-		return clientGameObjectType;
+		return templateObject.getClientGameObjectType();
 	}
 
 	@read

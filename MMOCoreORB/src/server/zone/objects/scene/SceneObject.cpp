@@ -923,6 +923,15 @@ void SceneObject::removePendingTask(const String& name) {
 		_implementation->removePendingTask(name);
 }
 
+PendingTasksMap* SceneObject::getPendingTasks() {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getPendingTasks();
+}
+
 Task* SceneObject::getPendingTask(const String& name) {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -3758,11 +3767,6 @@ bool SceneObjectImplementation::readObjectMember(ObjectInputStream* stream, cons
 		return true;
 	}
 
-	if (_name == "SceneObject.clientGameObjectType") {
-		TypeInfo<unsigned int >::parseFromBinaryStream(&clientGameObjectType, stream);
-		return true;
-	}
-
 	if (_name == "SceneObject.containmentType") {
 		TypeInfo<unsigned int >::parseFromBinaryStream(&containmentType, stream);
 		return true;
@@ -3932,14 +3936,6 @@ int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.clientGameObjectType";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<unsigned int >::toBinaryStream(&clientGameObjectType, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
 	_name = "SceneObject.containmentType";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -4005,7 +4001,7 @@ int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 23;
+	return _count + 22;
 }
 
 SceneObjectImplementation::SceneObjectImplementation() {
@@ -4111,25 +4107,49 @@ unsigned long long SceneObjectImplementation::getParentID() {
 }
 
 void SceneObjectImplementation::addPendingTask(const String& name, Task* task, int miliseconds) {
-	// server/zone/objects/scene/SceneObject.idl():  		pendingTasks.put(name, task);
-	(&pendingTasks)->put(name, task);
+	// server/zone/objects/scene/SceneObject.idl():  		getPendingTasks().put(name, task);
+	getPendingTasks()->put(name, task);
 	// server/zone/objects/scene/SceneObject.idl():  		task.schedule(miliseconds);
 	task->schedule(miliseconds);
 }
 
 void SceneObjectImplementation::removePendingTask(const String& name) {
+	// server/zone/objects/scene/SceneObject.idl():  		pendingTasks.
+	if (pendingTasks == NULL)	// server/zone/objects/scene/SceneObject.idl():  			return;
+	return;
 	// server/zone/objects/scene/SceneObject.idl():  		pendingTasks.drop(name);
-	(&pendingTasks)->drop(name);
+	pendingTasks->drop(name);
+}
+
+PendingTasksMap* SceneObjectImplementation::getPendingTasks() {
+	// server/zone/objects/scene/SceneObject.idl():  		return 
+	if (pendingTasks == NULL){
+	Reference<PendingTasksMap*> _ref0;
+	// server/zone/objects/scene/SceneObject.idl():  			pendingTasks = new PendingTasksMap();
+	pendingTasks = _ref0 = new PendingTasksMap();
+	// server/zone/objects/scene/SceneObject.idl():  			pendingTasks.setNoDuplicateInsertPlan();
+	pendingTasks->setNoDuplicateInsertPlan();
+	// server/zone/objects/scene/SceneObject.idl():  			pendingTasks.setNullValue(null);
+	pendingTasks->setNullValue(NULL);
+}
+	// server/zone/objects/scene/SceneObject.idl():  		return pendingTasks;
+	return pendingTasks;
 }
 
 Task* SceneObjectImplementation::getPendingTask(const String& name) {
+	// server/zone/objects/scene/SceneObject.idl():  		return 
+	if (pendingTasks == NULL)	// server/zone/objects/scene/SceneObject.idl():  			return null;
+	return NULL;
 	// server/zone/objects/scene/SceneObject.idl():  		return pendingTasks.get(name);
-	return (&pendingTasks)->get(name);
+	return pendingTasks->get(name);
 }
 
 bool SceneObjectImplementation::containsPendingTask(const String& name) {
+	// server/zone/objects/scene/SceneObject.idl():  		return 
+	if (pendingTasks == NULL)	// server/zone/objects/scene/SceneObject.idl():  			return false;
+	return false;
 	// server/zone/objects/scene/SceneObject.idl():  		return pendingTasks.contains(name);
-	return (&pendingTasks)->contains(name);
+	return pendingTasks->contains(name);
 }
 
 Facade* SceneObjectImplementation::getActiveSession(unsigned int type) {
@@ -4485,8 +4505,8 @@ unsigned int SceneObjectImplementation::getGameObjectType() {
 }
 
 unsigned int SceneObjectImplementation::getClientGameObjectType() {
-	// server/zone/objects/scene/SceneObject.idl():  		return clientGameObjectType;
-	return clientGameObjectType;
+	// server/zone/objects/scene/SceneObject.idl():  		return templateObject.getClientGameObjectType();
+	return templateObject->getClientGameObjectType();
 }
 
 unsigned int SceneObjectImplementation::getContainmentType() {
