@@ -18,9 +18,11 @@
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/managers/name/NameManager.h"
 #include "ScreenPlayTask.h"
 #include "ScreenPlayObserver.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/player/creation/PlayerCreationManager.h"
 #include "server/ServerCore.h"
 #include "server/chat/ChatManager.h"
@@ -45,6 +47,8 @@
 #include "server/zone/objects/scene/components/LuaObjectMenuResponse.h"
 #include "server/zone/objects/scene/variables/ContainerPermissions.h"
 
+int DirectorManager::DEBUG_MODE = 0;
+
 DirectorManager::DirectorManager() : Logger("DirectorManager") {
 	info("loading..", true);
 
@@ -66,6 +70,9 @@ void DirectorManager::startGlobalScreenPlays() {
 }
 
 void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
+	if (DEBUG_MODE)
+		setLogging(true);
+
 	info("initializeLuaEngine");
 
 	luaEngine->init();
@@ -127,6 +134,8 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "clearScreenPlayData", clearScreenPlayData);
 	lua_register(luaEngine->getLuaState(), "getObjectTemplatePathByCRC", getObjectTemplatePathByCRC);
 	lua_register(luaEngine->getLuaState(), "getTimestamp", getTimestamp);
+	lua_register(luaEngine->getLuaState(), "getSpawnPoint", getSpawnPoint);
+	lua_register(luaEngine->getLuaState(), "makeCreatureName", makeCreatureName);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -196,6 +205,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("OPEN", ContainerPermissions::OPEN);
 	luaEngine->setGlobalInt("MOVEIN", ContainerPermissions::MOVEIN);
 	luaEngine->setGlobalInt("MOVEOUT", ContainerPermissions::MOVEOUT);
+	luaEngine->setGlobalInt("WALKIN", ContainerPermissions::WALKIN);
 
 	Luna<LuaCellObject>::Register(luaEngine->getLuaState());
 	Luna<LuaBuildingObject>::Register(luaEngine->getLuaState());
@@ -345,6 +355,10 @@ int DirectorManager::checkInt64Lua(lua_State* L) {
 
 int DirectorManager::includeFile(lua_State* L) {
 	String filename = Lua::getStringParameter(L);
+
+	if (DEBUG_MODE) {
+		DirectorManager::instance()->info("running file: scripts/screenplays/" + filename);
+	}
 
 	Lua::runFile("scripts/screenplays/" + filename, L);
 
@@ -872,6 +886,8 @@ int DirectorManager::spawnMobile(lua_State* L) {
 
 	if (creature == NULL) {
 		instance()->error("coult not spawn mobile " + mobile);
+
+		lua_pushnil(L);
 	} else {
 		creature->updateDirection(Math::deg2rad(heading));
 		
@@ -879,9 +895,9 @@ int DirectorManager::spawnMobile(lua_State* L) {
 			AiAgent* ai = cast<AiAgent*>(creature);
 			ai->setRespawnTimer(respawnTimer);
 		}
-	}
 
-	lua_pushlightuserdata(L, creature);
+		lua_pushlightuserdata(L, creature);
+	}
 
 	return 1;
 	//public native CreatureObject spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long parentID = 0);
@@ -1105,5 +1121,62 @@ int DirectorManager::isZoneEnabled(lua_State* L) {
 	
 	lua_pushboolean(L, (zone != NULL));
 	
+	return 1;
+}
+
+int DirectorManager::getSpawnPoint(lua_State* L) {
+	float maximumDistance = lua_tonumber(L, -1);
+	float minimumDistance = lua_tonumber(L, -2);
+	float y = lua_tonumber(L, -3);
+	float x = lua_tonumber(L, -4);
+	CreatureObject* creatureObject = (CreatureObject*) lua_touserdata(L, -5);
+
+	if (creatureObject == NULL) {
+		return 0;
+	}
+
+	bool found = false;
+	Vector3 position;
+	int retries = 20;
+
+	while (!found && retries > 0) {
+		float distance = minimumDistance + System::random(maximumDistance - minimumDistance);
+		float angle = System::random(360);
+		float newAngle = angle * (M_PI / 180.0f);
+
+		float newX = x + (cos(newAngle) * distance); // client has x/y inverted
+		float newY = y + (sin(newAngle) * distance);
+		float newZ = creatureObject->getZone()->getHeight(newX, newY);
+
+		position = Vector3(newX, newY, newZ);
+
+		if (creatureObject->getZone()->isWithinBoundaries(position)) {
+			found = creatureObject->getZone()->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL);
+		}
+		retries--;
+	}
+
+	if (found) {
+		lua_newtable(L);
+		lua_pushnumber(L, position.getX());
+		lua_pushnumber(L, position.getZ());
+		lua_pushnumber(L, position.getY());
+		lua_rawseti(L, -4, 3);
+		lua_rawseti(L, -3, 2);
+		lua_rawseti(L, -2, 1);
+
+		return 1;
+	} else {
+		return 0;
+	}
+}
+
+int DirectorManager::makeCreatureName(lua_State* L) {
+	bool surname = lua_toboolean(L, -1);
+
+	NameManager* nameManager = NameManager::instance();
+	String name = nameManager->makeCreatureName(surname);
+
+	lua_pushstring(L, name);
 	return 1;
 }

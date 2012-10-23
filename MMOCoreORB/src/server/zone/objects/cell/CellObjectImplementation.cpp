@@ -100,7 +100,12 @@ int CellObjectImplementation::canAddObject(SceneObject* object, int containmentT
 	if (parent != NULL && getParent().get()->isBuildingObject()) {
 		ManagedReference<BuildingObject*> building = cast<BuildingObject*>( parent.get().get());
 
-		if (building->getCurrentNumberOfPlayerItems() >= building->getMaximumNumberOfPlayerItems()) {
+		int count = 1;
+
+		if (object->isContainerObject())
+			count += object->getContainedObjectsRecursive();
+
+		if (building->getCurrentNumberOfPlayerItems() + count > building->getMaximumNumberOfPlayerItems()) {
 			errorDescription = "@container_error_message:container13";
 
 			return TransferErrorCode::TOOMANYITEMSINHOUSE;
@@ -155,8 +160,13 @@ int CellObjectImplementation::getCurrentNumberOfPlayerItems() {
 		for (int j = 0; j < getContainerObjectsSize(); ++j) {
 			ManagedReference<SceneObject*> containerObject = getContainerObject(j);
 
-			if (!getParent().get()->containsChildObject(containerObject) && !containerObject->isCreatureObject())
+			if (!getParent().get()->containsChildObject(containerObject) && !containerObject->isCreatureObject()) {
+
+				if (containerObject->isContainerObject())
+					count += containerObject->getCountableObjectsRecursive();
+
 				++count;
+			}
 		}
 	}
 
@@ -187,7 +197,7 @@ void CellObjectImplementation::destroyAllPlayerItems() {
 }
 
 void CellObjectImplementation::sendPermissionsTo(CreatureObject* creature, bool allowEntry) {
-	if (!containerPermissions.hasInheritPermissionsFromParent() && !checkContainerPermission(creature, ContainerPermissions::MOVEIN)) {
+	if (!containerPermissions.hasInheritPermissionsFromParent() && !checkContainerPermission(creature, ContainerPermissions::WALKIN)) {
 		BaseMessage* perm = new UpdateCellPermissionsMessage(getObjectID(), false);
 		creature->sendMessage(perm);
 	} else {

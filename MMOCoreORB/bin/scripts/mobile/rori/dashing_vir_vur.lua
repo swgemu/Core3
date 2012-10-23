@@ -26,7 +26,7 @@ dashing_vir_vur = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/vir_vur.iff"},
+	templates = {"object/mobile/vir_vur_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

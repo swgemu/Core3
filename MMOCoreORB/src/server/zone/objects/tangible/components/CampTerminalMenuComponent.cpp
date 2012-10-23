@@ -140,16 +140,12 @@ void CampTerminalMenuComponent::disbandCamp(SceneObject* sceneObject,
 	if(campArea != NULL && campArea->despawnCamp())
 		return;
 
-	// For some reason if the area is gone, clean up camp anyways
-	ManagedReference<StructureManager*> structureManager = camp->getZone()->getStructureManager();
-	if (structureManager == NULL) {
-		error("Unable to get StructureManager when placing camp");
-		return;
-	}
+	StructureManager::instance()->destroyStructure(camp);
 
-	structureManager->destroyStructure(camp);
-	campArea->destroyObjectFromWorld(true);
-	campArea->destroyObjectFromDatabase(true);
+	if(campArea != NULL) {
+		campArea->destroyObjectFromWorld(true);
+		campArea->destroyObjectFromDatabase(true);
+	}
 }
 
 void CampTerminalMenuComponent::assumeCampOwnership(SceneObject* sceneObject,
@@ -216,13 +212,25 @@ void CampTerminalMenuComponent::showCampStatus(SceneObject* sceneObject,
 		area == NULL;
 	}
 
-	CampSiteActiveArea* campArea = cast<CampSiteActiveArea*>(area.get());
+	if(area == NULL) {
 
-	if(area == NULL || campArea == NULL) {
+		ManagedReference<StructureManager*> structureManager = StructureManager::instance();
+		if (structureManager == NULL) {
+			error("Unable to get StructureManager in CampTerminalMenuComponent::showCampStatus");
+			return;
+		}
+
+		structureManager->destroyStructure(camp);
+		player->sendSystemMessage("This camp is broken, removing from world.  Thanks!");
 		error("CampSiteActiveArea is null in CampTerminalMenuComponent::showCampStatus");
 		return;
 	}
 
+	CampSiteActiveArea* campArea = cast<CampSiteActiveArea*>(area.get());
+	if(campArea == NULL) {
+		error("How the fuck did this happen");
+		return;
+	}
 	/// Get Ghost
 	PlayerObject* ghost = cast<PlayerObject*> (player->getSlottedObject("ghost"));
 	if (ghost == NULL) {

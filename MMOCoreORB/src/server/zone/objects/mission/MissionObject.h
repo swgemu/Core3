@@ -184,6 +184,8 @@ public:
 
 	void setStartPosition(float posX, float posY, const String& planet, bool notifyClient = true);
 
+	void setStartPosition(float posX, float posY, bool notifyClient = true);
+
 	void setEndPosition(float posX, float posY, const String& planet, bool notifyClient = true);
 
 	void setCreatorName(const String& name, bool notifyClient = true);
@@ -431,6 +433,8 @@ public:
 
 	void setStartPosition(float posX, float posY, const String& planet, bool notifyClient = true);
 
+	void setStartPosition(float posX, float posY, bool notifyClient = true);
+
 	void setEndPosition(float posX, float posY, const String& planet, bool notifyClient = true);
 
 	void setCreatorName(const String& name, bool notifyClient = true);
@@ -599,6 +603,8 @@ public:
 	void setRewardCredits(int creds, bool notifyClient);
 
 	void setStartPosition(float posX, float posY, const String& planet, bool notifyClient);
+
+	void setStartPosition(float posX, float posY, bool notifyClient);
 
 	void setEndPosition(float posX, float posY, const String& planet, bool notifyClient);
 

@@ -46,7 +46,7 @@ FormupCommand = {
 
 	action = "formup",
 	--actionCRC = action.hashCode(),
-	combatSpam = "formup",
+	combatSpam = "formup_buff",
 
 }
 

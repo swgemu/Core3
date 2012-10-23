@@ -49,7 +49,7 @@ VolleyFireCommand = {
 	actionCostMultiplier = 0,
 	mindCostMultiplier = 0,
 
-	combatSpam = "volleyfire",
+	combatSpam = "volley",
 	range = -1,
 
 	action = "volleyfire",

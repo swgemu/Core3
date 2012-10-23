@@ -53,7 +53,6 @@ import engine.core.ManagedObject;
 
 import server.zone.ZoneProcessServer;
 include server.zone.ZoneServer;
-import server.zone.managers.structure.StructureManager;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.area.ActiveArea;
 import server.zone.managers.planet.PlanetManager;
@@ -85,8 +84,6 @@ class Zone extends SceneObject {
 	private transient ObjectMap objectMap;
 
 	private transient PlanetManager planetManager;
-	
-	private transient StructureManager structureManager;
 	
 	private transient CreatureManager creatureManager;
 	
@@ -172,11 +169,6 @@ class Zone extends SceneObject {
 	@dirty
 	public PlanetManager getPlanetManager() {
 		return planetManager;
-	}
-	
-	@dirty
-	public StructureManager getStructureManager() {
-		return structureManager;
 	}
 
 	@dirty

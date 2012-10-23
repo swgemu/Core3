@@ -43,6 +43,7 @@
 
 PostureUpAttackCommand = {
         name = "postureupattack",
+        combatSpam = "attack",
 	stateEffects = {
 	  StateEffect( 
 		POSTUREUP_EFFECT, 

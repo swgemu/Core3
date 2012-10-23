@@ -15,7 +15,7 @@
 #include "server/zone/managers/auction/AuctionsMap.h"
 #include "server/zone/Zone.h"
 
-class VendorDataComponent : public AuctionTerminalDataComponent {
+class VendorDataComponent: public AuctionTerminalDataComponent {
 protected:
 	uint64 ownerId;
 
@@ -41,6 +41,14 @@ protected:
 	bool mail1Sent;
 	bool mail2Sent;
 
+	Vector<uint64> vendorBarks;
+	uint64 lastBark;
+	String barkMessage;
+	String barkMood;
+	String barkAnimation;
+
+	float originalDirection;
+
 public:
 	/// 5 minutes
 	static const int USEXPINTERVAL = 5;
@@ -55,11 +63,14 @@ public:
 
 	static const int DELETEWARNING = 60 * 60 * 24 * 100; // 100 days
 
+	static const int BARKRANGE = 15; //Meters
+	static const int BARKINTERVAL = 60 * 2; //Minutes
+
 public:
 	VendorDataComponent();
 
 	virtual ~VendorDataComponent() {
-		if(vendorCheckTask != NULL)
+		if (vendorCheckTask != NULL)
 			vendorCheckTask->cancel();
 	}
 
@@ -88,6 +99,7 @@ public:
 	inline void setInitialized(bool val) {
 		initialized = val;
 		updateUID();
+		originalDirection = parent->getDirectionAngle();
 	}
 
 	void setVendorSearchEnabled(bool enabled);
@@ -102,7 +114,7 @@ public:
 		/// This is just a precaution in case somehow items get lost
 		/// and this would link up a missing auction list unless it was totally
 		/// gone
-		if(registered)
+		if (registered)
 			updateUID();
 	}
 
@@ -139,7 +151,7 @@ public:
 	}
 
 	inline void awardUseXP() {
-		if(time(0) - lastXpAward.getTime() > USEXPINTERVAL * 60) {
+		if (time(0) - lastXpAward.getTime() > USEXPINTERVAL * 60) {
 			awardUsageXP++;
 			lastXpAward.updateToCurrentTime();
 		}
@@ -150,16 +162,18 @@ public:
 	}
 
 	inline void setAdBarking(bool value) {
+		vendorBarks.removeAll();
 		adBarking = value;
 	}
 
 	inline bool isEmpty() {
 
-		if(auctionManager == NULL)
+		if (auctionManager == NULL)
 			return false;
 
-		ManagedReference<AuctionsMap*> auctionsMap = auctionManager->getAuctionMap();
-		if(auctionsMap == NULL) {
+		ManagedReference<AuctionsMap*> auctionsMap =
+				auctionManager->getAuctionMap();
+		if (auctionsMap == NULL) {
 			return false;
 		}
 
@@ -177,6 +191,38 @@ public:
 		return maintAmount;
 	}
 
+	inline bool isOnStrike() {
+		return maintAmount <= 0;
+	}
+
+	void setAdPhrase(const String& message) {
+		barkMessage = message;
+	}
+
+	void setAdMood(const String& mood) {
+		barkMood = mood;
+	}
+
+	void setAdAnimation(const String& animation) {
+		barkAnimation = animation;
+	}
+
+	bool hasBarkTarget(SceneObject* target) {
+		return vendorBarks.contains(target->getObjectID());
+	}
+
+	void addBarkTarget(SceneObject* target) {
+		vendorBarks.add(target->getObjectID());
+	}
+
+	bool canBark() {
+		return (time(0) - lastBark > BARKINTERVAL);
+	}
+
+	void clearVendorBark(SceneObject* target) {
+		vendorBarks.removeElement(target->getObjectID());
+	}
+
 	void payMaintanence();
 
 	void withdrawMaintanence();
@@ -185,9 +231,10 @@ public:
 
 	void handleWithdrawMaintanence(int value);
 
-	private:
-		void addSerializableVariables();
-};
+	void performVendorBark(SceneObject* target);
 
+private:
+	void addSerializableVariables();
+};
 
 #endif /* VENDORDATACOMPONENT_H_ */

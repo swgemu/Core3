@@ -10,7 +10,10 @@
 #include "server/zone/objects/scene/SceneObject.h"
 
 void MapLocationTable::transferObject(SceneObject* object) {
-	PlanetMapCategory* pmc = object->getPlanetMapCategory();
+	PlanetMapCategory* pmc = object->getPlanetMapSubCategory();
+
+	if (pmc == NULL)
+		pmc = object->getPlanetMapCategory();
 
 	if (pmc == NULL)
 		return;
@@ -34,7 +37,10 @@ void MapLocationTable::transferObject(SceneObject* object) {
 }
 
 void MapLocationTable::dropObject(SceneObject* object) {
-	PlanetMapCategory* pmc = object->getPlanetMapCategory();
+	PlanetMapCategory* pmc = object->getPlanetMapSubCategory();
+
+	if (pmc == NULL)
+		pmc = object->getPlanetMapCategory();
 
 	if (pmc == NULL)
 		return;

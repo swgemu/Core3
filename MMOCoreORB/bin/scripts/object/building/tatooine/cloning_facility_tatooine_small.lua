@@ -44,6 +44,9 @@
 object_building_tatooine_cloning_facility_tatooine_small = object_building_tatooine_shared_cloning_facility_tatooine_small:new {
 	planetMapCategory = "cloningfacility",
 
+	skillMods = {
+		{"private_medical_rating", 100}
+	},
 
 	childObjects = {
 		{templateFile = "object/tangible/terminal/terminal_insurance.iff", x = 5, z = -0.05, y = 5, ox = 0, oy = -0.707106, oz = 0, ow = 0.707106, cellid = 1, containmentType = -1},

@@ -192,6 +192,8 @@ public:
 
 	void removeSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
 
+	void removeAllSkillModsOfType(const int skillType, bool notifyClient = true);
+
 	void removeTemplateSkillMods(TangibleObject* tangibleObject);
 
 	VectorMap<String, int>* getTemplateSkillMods();
@@ -425,6 +427,8 @@ public:
 
 	virtual void removeSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
 
+	virtual void removeAllSkillModsOfType(const int skillType, bool notifyClient = true);
+
 	virtual void removeTemplateSkillMods(TangibleObject* tangibleObject);
 
 	VectorMap<String, int>* getTemplateSkillMods();
@@ -635,6 +639,8 @@ public:
 	void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient);
 
 	void removeSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient);
+
+	void removeAllSkillModsOfType(const int skillType, bool notifyClient);
 
 	void initializeTransientMembers();
 

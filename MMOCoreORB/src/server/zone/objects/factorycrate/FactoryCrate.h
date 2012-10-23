@@ -144,6 +144,8 @@ public:
 
 	void split(int newStackSize);
 
+	int getCountableObjectsRecursive();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -208,6 +210,8 @@ public:
 	TangibleObject* extractObject(int count = 1);
 
 	void split(int newStackSize);
+
+	virtual int getCountableObjectsRecursive();
 
 	WeakReference<FactoryCrate*> _this;
 
@@ -277,6 +281,8 @@ public:
 	TangibleObject* extractObject(int count);
 
 	void split(int newStackSize);
+
+	int getCountableObjectsRecursive();
 
 };
 

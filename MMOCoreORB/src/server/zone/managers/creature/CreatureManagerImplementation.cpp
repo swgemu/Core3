@@ -37,6 +37,7 @@
 #include "LairObserver.h"
 #include "server/zone/packets/object/SpatialChat.h"
 
+Mutex CreatureManagerImplementation::loadMutex;
 
 void CreatureManagerImplementation::setCreatureTemplateManager() {
 	creatureTemplateManager = CreatureTemplateManager::instance();
@@ -360,6 +361,9 @@ void CreatureManagerImplementation::loadSpawnAreas() {
 }
 
 void CreatureManagerImplementation::loadAiTemplates() {
+
+	Locker locker(&loadMutex);
+
 	info("loading ai templates...", true);
 	aiMap = AiMap::instance();
 	aiMap->initialize();
@@ -407,14 +411,10 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 			player->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);
 
 			FactionManager* factionManager = FactionManager::instance();
-			factionManager->awardFactionStanding(player, destructedObject->getFactionString());
 
-			if (destructedObject->getFaction() != 0) {
-				if (destructedObject->isImperial())
-					factionManager->awardFactionStanding(player, "imperial");
-				else
-					factionManager->awardFactionStanding(player, "rebel");
-			}
+			if (destructedObject->getFaction() != 0)
+				factionManager->awardFactionStanding(player, destructedObject->getFactionString());
+
 		}
 
 		if (playerManager != NULL)
@@ -478,6 +478,9 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 	if (zone == NULL || !creature->isCreature())
 		return;
 
+	if (!creature->canHarvestMe(player))
+		return;
+		
 	if (!player->isInRange(creature, 7))
 		return;
 
@@ -626,17 +629,19 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 	Vector<uint32>* races = tanoData->getPlayerRaces();
 	String race = creature->getObjectTemplate()->getFullTemplateString();
 
-	if (!races->contains(race.hashCode())) {
-		UnicodeString message;
+	if(clothing->isWearableObject()) {
+		if (!races->contains(race.hashCode())) {
+			UnicodeString message;
 
-		if(creature->getObjectTemplate()->getFullTemplateString().contains("ithorian"))
-			message = "@player_structure:wear_not_ithorian";
-		else
-			message = "@player_structure:wear_no";
+			if(creature->getObjectTemplate()->getFullTemplateString().contains("ithorian"))
+				message = "@player_structure:wear_not_ithorian";
+			else
+				message = "@player_structure:wear_no";
 
-		chatMan->broadcastMessage(creature, message, clothing->getObjectID(), creature->getMoodID(), 0);
+			chatMan->broadcastMessage(creature, message, clothing->getObjectID(), creature->getMoodID(), 0);
 
-		return false;
+			return false;
+		}
 	}
 
 	ManagedReference<SceneObject*> clothingParent = clothing->getParent();

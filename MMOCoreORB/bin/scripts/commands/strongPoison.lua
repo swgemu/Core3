@@ -43,6 +43,7 @@
 
 StrongPoisonCommand = {
         name = "strongpoison",
+        combatSpam = "attack",
 	dotEffects = {
 	  DotEffect( 
 		POISONED_EFFECT, 

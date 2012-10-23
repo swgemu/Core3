@@ -44,6 +44,9 @@
 object_building_naboo_cloning_facility_naboo = object_building_naboo_shared_cloning_facility_naboo:new {
 	planetMapCategory = "cloningfacility",
 
+	skillMods = {
+		{"private_medical_rating", 100}
+	},
 
 	childObjects = {
 			{templateFile = "object/tangible/terminal/terminal_cloning.iff", x = 1, z = -0.05, y = 2.5, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1},

@@ -38,7 +38,14 @@ public:
 		ZoneServer* zoneServer = server->getZoneServer();
 		
 		if (zoneServer->isServerLocked()) {
-			ErrorMessage* errMsg = new ErrorMessage("Login Errror", "Server is currently locked", 0);
+			ErrorMessage* errMsg = new ErrorMessage("Login Error", "Server is currently locked", 0);
+			client->sendMessage(errMsg);
+
+			return;
+		}
+
+		if (zoneServer->isServerLoading()) {
+			ErrorMessage* errMsg = new ErrorMessage("Login Error", "Server is currently loading", 0);
 			client->sendMessage(errMsg);
 			
 			return;

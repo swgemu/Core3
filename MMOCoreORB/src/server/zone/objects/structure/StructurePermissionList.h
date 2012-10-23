@@ -12,11 +12,14 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-class StructurePermissionList : public Serializable {
+class StructurePermissionList : public Object {
 	VectorMap<String, SortedVector<String> > permissionLists;
 	String ownerName;
+	ReadWriteLock lock;
 
-	void addSerializableVariables();
+private:
+	int writeObjectMembers(ObjectOutputStream* stream);
+	bool readObjectMember(ObjectInputStream* stream, const String& name);
 
 public:
 	static const int LISTNOTFOUND = 0xFF;
@@ -29,6 +32,9 @@ public:
 public:
 	StructurePermissionList();
 	StructurePermissionList(const StructurePermissionList& spl);
+
+	bool toBinaryStream(ObjectOutputStream* stream);
+	bool parseFromBinaryStream(ObjectInputStream* stream);
 
 	/**
 	 * Sends the list to the creature so that it appears in Sui format.
@@ -60,6 +66,8 @@ public:
 	 * @return Returns false if the permission list does not exist, or the player name is not found in the list.
 	 */
 	inline bool isOnPermissionList(const String& listName, const String& playerName) {
+		ReadLocker locker(&lock);
+
 		if (!permissionLists.contains(listName))
 			return false;
 
@@ -74,6 +82,8 @@ public:
 	 * @return Returns true if the permission list does not exist or it exceeds or equals the the max number of entries allowed per list.
 	 */
 	inline bool isListFull(const String& listName) {
+		ReadLocker locker(&lock);
+
 		if (!permissionLists.contains(listName))
 			return true;
 
@@ -87,6 +97,8 @@ public:
 	 * @param listName The list to add.
 	 */
 	inline void addList(const String& listName) {
+		Locker locker(&lock);
+
 		if (permissionLists.contains(listName))
 			return;
 
@@ -100,6 +112,8 @@ public:
 	 * @param listName The list to drop.
 	 */
 	inline void dropList(const String& listName) {
+		Locker locker(&lock);
+
 		permissionLists.drop(listName);
 	}
 
@@ -109,6 +123,8 @@ public:
 	 * @return Returns true if the specified list exists, or false if it does not exist.
 	 */
 	inline bool containsList(const String& listName) {
+		ReadLocker locker(&lock);
+
 		return permissionLists.contains(listName);
 	}
 };

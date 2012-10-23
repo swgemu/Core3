@@ -43,6 +43,15 @@
 
 object_building_general_space_dungeon_corellian_corvette = object_building_general_shared_space_dungeon_corellian_corvette:new {
 
+   childObjects = {
+      	{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 0, z = -12, y = 37.6, ow = 5, ox = 0, oy = 5, oz = 5, cellid = 19, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 0, z = 0, y = 37.6, ow = 5, ox = 0, oy = 5, oz = 5, cellid = 19, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 5, z = 0, y = -13.4, ow = 5, ox = 0, oy = 5, oz = 5, cellid = 18, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 5, z = 12, y = -13.4, ow = 5, ox = 0, oy = 5, oz = 5, cellid = 18, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_elevator_up.iff", x = 18, z = -24, y = 120.6, ow = 5, ox = 0, oy = 5, oz = 5, cellid = 56, containmentType = -1},
+		{templateFile = "object/tangible/terminal/terminal_elevator_down.iff", x = 18, z = -12, y = 120.6, ow = 5, ox = 0, oy = 5, oz = 5, cellid = 56, containmentType = -1},
+	}
+
 }
 
 ObjectTemplates:addTemplate(object_building_general_space_dungeon_corellian_corvette, "object/building/general/space_dungeon_corellian_corvette.iff")

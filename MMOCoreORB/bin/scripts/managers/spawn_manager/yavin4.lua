@@ -53,7 +53,7 @@ yavin4_regions = {
 	{"taurin_delta_2",0,0,0,0,1},
 	{"taurin_delta_3",0,0,0,0,1},
 	{"taurin_delta_4",0,0,0,0,1},
-	{"temple_of_exar_kun",0,0,0,0,1},
+	{"temple_of_exar_kun",5163,5539,500,1,1},
 	{"valarnos_jungle_1",0,0,0,0,1},
 	{"valarnos_jungle_2",0,0,0,0,1},
 	{"valarnos_jungle_3",0,0,0,0,1},

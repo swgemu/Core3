@@ -835,7 +835,9 @@ class CreatureObject extends TangibleObject {
 	 * @param skillMod skill mod to remove
 	 * @param notifyClient if set true the client will be updated with the changes
 	 */
-	public native void removeSkillMod(final int modType, final string skillMod, int value, boolean notifyCLient = true);
+	public native void removeSkillMod(final int modType, final string skillMod, int value, boolean notifyClient = true);
+	
+	public native void removeAllSkillModsOfType(final int modType, boolean notifyClient = true);
 	
 	/**
 	 * Sets a new group inviter id
@@ -1109,7 +1111,7 @@ class CreatureObject extends TangibleObject {
 	}
 	
 	public void updateKnockdownRecovery() {
-		cooldownTimerMap.updateToCurrentAndAddMili("knockdownRecovery", 30000);
+		cooldownTimerMap.updateToCurrentAndAddMili("knockdownRecovery", 5000);
 	}
 
 	// misc methods
@@ -1652,10 +1654,6 @@ class CreatureObject extends TangibleObject {
 	@read
 	public boolean isPlayerCreature() {
 		return getPlayerObject() != null;
-	}
-	
-	public abstract boolean isAiAgent() {
-		return false;
 	}
 	
 	@read

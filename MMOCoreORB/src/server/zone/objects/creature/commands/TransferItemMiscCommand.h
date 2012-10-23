@@ -155,6 +155,15 @@ public:
 			return GENERALERROR;
 		}
 
+		if(destinationObject->isCellObject()) {
+			Vector3 endPoint(creature->getPositionX(), creature->getPositionY(), creature->getPositionZ());
+
+			if (!CollisionManager::checkLineOfSightInParentCell(creature, endPoint)) {
+				creature->sendSystemMessage("@player_structure:not_valid_location"); //That is not a valid location.
+				return GENERALERROR;
+			}
+		}
+
 		if (objectToTransfer->isVendor() && !destinationObject->checkContainerPermission(creature, ContainerPermissions::MOVEVENDOR))
 			return GENERALERROR;
 

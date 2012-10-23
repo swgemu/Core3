@@ -63,7 +63,53 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		UnicodeTokenizer tok(arguments);
+		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
+
+		CreatureObject* targetCreature = creature;
+
+		if (obj == NULL || !obj->isPlayerCreature()) {
+			if (!tok.hasMoreTokens())
+				return INVALIDSYNTAX;
+
+			String targetName;
+			tok.getStringToken(targetName);
+			obj = server->getPlayerManager()->getPlayer(targetName);
+
+			//The command issuer is the target if they have not specified a target or name.
+			if (obj != NULL && obj->isPlayerCreature())
+				targetCreature = obj.castTo<CreatureObject*>();
+		} else {
+			targetCreature = obj.castTo<CreatureObject*>();
+		}
+
+		if (!tok.hasMoreTokens())
+			return INVALIDSYNTAX;
+
+		String state;
+		tok.getStringToken(state);
+
+		uint64 stateID = CreatureState::instance()->getState(state);
+
+		Locker _clock(targetCreature, creature);
+
+		String actionName;
+
+		if (targetCreature->hasState(stateID)) {
+			targetCreature->clearState(stateID, true);
+			actionName = "cleared";
+		} else {
+			targetCreature->setState(stateID, true);
+			actionName = "set";
+		}
+
+		creature->sendSystemMessage("You have " + actionName + " " + targetCreature->getDisplayedName() + "'s '" + state + "' state.");
+
 		return SUCCESS;
+	}
+
+	String getSyntax() const {
+		return String("/setPlayerState [target|name] {state}");
 	}
 
 };

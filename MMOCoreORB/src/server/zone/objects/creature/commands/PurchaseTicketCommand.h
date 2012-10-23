@@ -50,6 +50,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/objects/region/CityRegion.h"
 
 class PurchaseTicketCommand : public QueueCommand {
 public:
@@ -66,6 +67,16 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		ManagedReference<CityRegion*> currentCity = creature->getCityRegion().get();
+
+		if (currentCity == NULL)
+			return GENERALERROR;
+
+		if (currentCity->isBanned(creature->getObjectID())) {
+			creature->sendSystemMessage("@city/city:city_cant_purchase_ticket"); //You are banned from using the services of this city. You cannot purchase a ticket.
+			return GENERALERROR;
+		}
+		
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
 		if (inventory == NULL)
@@ -94,6 +105,7 @@ public:
 		ManagedReference<Zone*> departureZone = server->getZoneServer()->getZone(departurePlanet);
 		ManagedReference<Zone*> arrivalZone = server->getZoneServer()->getZone(arrivalPlanet);
 
+
 		//Check to see if the departure planet is the same planet the player is on.
 		if (creature->getZone() != departureZone)
 			return INVALIDPARAMETERS;
@@ -110,6 +122,26 @@ public:
 		if (!pmArrival->isExistingPlanetTravelPoint(arrivalPoint)) {
 			creature->sendSystemMessage("@travel:no_location_found"); //No location was found for your destination.
 			return INVALIDPARAMETERS;
+		}
+
+		Reference<PlanetTravelPoint*>  destPoint = pmArrival->getPlanetTravelPoint(arrivalPoint);
+
+		if (destPoint == NULL)
+			return GENERALERROR;
+
+		ManagedReference<CreatureObject*> arrivalShuttle = destPoint->getShuttle();
+
+		if (arrivalShuttle == NULL)
+			return GENERALERROR;
+
+		ManagedReference<CityRegion*> destCity = arrivalShuttle->getCityRegion();
+
+		if (destCity == NULL)
+			return GENERALERROR;
+
+		if (destCity.get()->isBanned(creature->getObjectID())) {
+			creature->sendSystemMessage("@city/city:banned_from_that_city");  // You have been banned from traveling to that city by the city militia
+			return GENERALERROR;
 		}
 
 		//Check to see if this point can be reached from this location.

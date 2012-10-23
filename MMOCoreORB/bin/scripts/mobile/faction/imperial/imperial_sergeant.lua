@@ -34,7 +34,7 @@ imperial_sergeant = Creature:new {
 		"object/mobile/dressed_imperial_officer_m_4.iff",
 		"object/mobile/dressed_imperial_officer_m_5.iff",
 		"object/mobile/dressed_imperial_officer_m_6.iff"},
-	llootGroups = {
+	lootGroups = {
 		{
 			groups = {
 				{group = "color_crystals", chance = 100000},

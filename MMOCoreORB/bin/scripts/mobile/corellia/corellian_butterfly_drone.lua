@@ -26,7 +26,7 @@ corellian_butterfly_drone = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/corellian_butterfly.iff"},
+	templates = {"object/mobile/corellian_butterfly_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

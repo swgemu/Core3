@@ -130,6 +130,25 @@ public:
 		return childNodes.size();
 	}
 
+	String getRandomTemplate(int skillLevel) {
+
+		if(childNodes.size() == 0)
+			return "";
+
+		VendorSelectionNode* node = NULL;
+		int loop = 0;
+
+		do {
+			node = childNodes.get(System::random(childNodes.size() - 1));
+			loop++;
+		} while((node == NULL || node->getHiringRequired() > skillLevel) && loop < 10 );
+
+		if(node == NULL)
+			return "";
+
+		return node->getTemplatePath();
+	}
+
 	inline String& getNodeName() {
 		return nodeTitle;
 	}

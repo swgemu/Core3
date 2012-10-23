@@ -254,6 +254,8 @@ public:
 
 	void broadcastGalaxy(CreatureObject* player, const String& message);
 
+	void broadcastGalaxy(const String& message, const String& faction);
+
 	void setPlayerManager(PlayerManager* manager);
 
 	ChatRoom* getChatRoom(unsigned int id);
@@ -388,6 +390,8 @@ public:
 
 	void broadcastGalaxy(CreatureObject* player, const String& message);
 
+	void broadcastGalaxy(const String& message, const String& faction);
+
 	void setPlayerManager(PlayerManager* manager);
 
 	ChatRoom* getChatRoom(unsigned int id);
@@ -500,6 +504,8 @@ public:
 	void deletePersistentMessage(CreatureObject* player, unsigned int mailID);
 
 	void broadcastGalaxy(CreatureObject* player, const String& message);
+
+	void broadcastGalaxy(const String& message, const String& faction);
 
 	void setPlayerManager(PlayerManager* manager);
 

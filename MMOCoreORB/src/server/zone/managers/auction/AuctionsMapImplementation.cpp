@@ -97,90 +97,81 @@ int AuctionsMapImplementation::addBazaarItem(CreatureObject* player, const Strin
 		return ItemSoldMessage::UNKNOWNERROR;
 
 	allItems.put(item->getAuctionedItemObjectID(), item);
-//	int count = bazaarCount.get(item->getOwnerID()) + 1;
-//	bazaarCount.put(item->getOwnerID(), count);
-
 	return ItemSoldMessage::SUCCESS;
 }
 
-int AuctionsMapImplementation::removeItem(SceneObject* vendor, AuctionItem* item) {
+void AuctionsMapImplementation::deleteItem(SceneObject* vendor, AuctionItem* item) {
 
-	if(vendor == NULL)
-		return ItemSoldMessage::VENDORNOTWORKING;
-
-	if(vendor->isBazaarTerminal())
-		return removeBazaarItem(vendor, item);
-
-	return removeVendorItem(vendor, item);
-}
-
-int AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, AuctionItem* item) {
 	Locker locker(_this.get());
 
+	if(vendor != NULL) {
+		if(vendor->isBazaarTerminal())
+			removeBazaarItem(vendor, item);
+		else
+			removeVendorItem(vendor, item);
+	}
+
+	allItems.drop(item->getAuctionedItemObjectID());
+	ObjectManager::instance()->destroyObjectFromDatabase(item->_getObjectID());
+}
+
+void AuctionsMapImplementation::removeVendorItem(SceneObject* vendor, AuctionItem* item) {
+	Locker locker(_this.get());
+		
 	Reference<TerminalItemList*> vendorItems = vendorItemsForSale.get(vendor->getObjectID());
 
 	if(vendorItems == NULL)
-		return ItemSoldMessage::VENDORNOTWORKING;
+		return;
 
 	if(!vendorItems->contains(item))
-		return ItemSoldMessage::INVALIDITEM;
+		return;
 
 	//Locker vlocker(vendorItems);
 
 	if(vendorItems->removeElement(item)) {
 
-		allItems.drop(item->getAuctionedItemObjectID());
-
 		if(vendorItems->size() == 0)
 			sendVendorUpdateMail(vendor, true);
 
-		return ItemSoldMessage::SUCCESS;
+		return;
 	}
 
 	logger.error("unable to remove vendor item");
-	return ItemSoldMessage::UNKNOWNERROR;
 }
 
-int AuctionsMapImplementation::removeBazaarItem(SceneObject* vendor,  AuctionItem* item) {
+void AuctionsMapImplementation::removeBazaarItem(SceneObject* vendor,  AuctionItem* item) {
 	Locker locker(_this.get());
-
+		
 	Reference<TerminalItemList*> bazaarItems = bazaarItemsForSale.get(vendor->getObjectID());
 
 	if(bazaarItems == NULL)
-		return ItemSoldMessage::VENDORNOTWORKING;
+		return;
 
 	if(!bazaarItems->contains(item))
-		return ItemSoldMessage::INVALIDITEM;
-
+		return;
 
 	//Locker blocker(bazaarItems);
 
-	if(bazaarItems->removeElement(item)) {
+	if(!bazaarItems->removeElement(item))
+		logger.error("unable to remove bazaar item");
 
-		allItems.drop(item->getAuctionedItemObjectID());
-
-		return ItemSoldMessage::SUCCESS;
-	}
-
-	logger.error("unable to remove bazaar item");
-	return ItemSoldMessage::UNKNOWNERROR;
 }
 
 TerminalListVector AuctionsMapImplementation::getVendorTerminalData(const String& planet, const String& region, SceneObject* vendor) {
 	Locker locker(_this.get());
-
+	
 	return vendorItemsForSale.getTerminalData(planet, region, vendor);
 }
 
 TerminalListVector AuctionsMapImplementation::getBazaarTerminalData(const String& planet, const String& region, SceneObject* vendor) {
 	Locker locker(_this.get());
-
+	
 	return bazaarItemsForSale.getTerminalData(planet, region, vendor);
 }
 
 int AuctionsMapImplementation::getVendorItemCount(SceneObject* vendor) {
 	Locker locker(_this.get());
-
+	
 	if(vendor == NULL) {
 		logger.error("null vendor in AuctionsMapImplementation::getVendorItemCount");
 		return 0;
@@ -195,11 +186,20 @@ int AuctionsMapImplementation::getVendorItemCount(SceneObject* vendor) {
 }
 
 void AuctionsMapImplementation::deleteTerminalItems(SceneObject* vendor) {
+	if(vendor->isBazaarTerminal()) {
+		return;
+	}
+
 	Locker locker(_this.get());
 
-	if(vendor->isBazaarTerminal()) {
-		logger.error("null zone in AuctionsMapImplementation::deleteTerminalItems");
-		return;
+	Reference<TerminalItemList*> vendorItems = vendorItemsForSale.get(vendor->getObjectID());
+
+	if(vendorItems != NULL) {
+		for(int i = 0; i < vendorItems->size(); ++i) {
+			ManagedReference<AuctionItem*> item = vendorItems->get(i);
+			if(item != NULL)
+				allItems.drop(item->getAuctionedItemObjectID());
+		}
 	}
 
 	vendorItemsForSale.dropTerminalListing(vendor);
@@ -218,7 +218,7 @@ void AuctionsMapImplementation::sendVendorUpdateMail(SceneObject* vendor, bool i
 	if(vendorData == NULL)
 		return;
 
-	ChatManager* cman = vendor->getZoneServer()->getChatManager();
+	ManagedReference<ChatManager*> cman = vendor->getZoneServer()->getChatManager();
 	ManagedReference<CreatureObject*> owner = cast<CreatureObject*>(vendor->getZoneServer()->getObject(vendorData->getOwnerId()));
 
 	String sender = vendor->getDisplayedName();
@@ -243,7 +243,7 @@ void AuctionsMapImplementation::sendVendorUpdateMail(SceneObject* vendor, bool i
 
 void AuctionsMapImplementation::updateUID(SceneObject* vendor, const String& oldUID, const String& newUID) {
 	Locker locker(_this.get());
-
+	
 	if (vendor == NULL) {
 		logger.error("NULL vendor while updating UID  Vendor Is Bazaar: " + String::valueOf(vendor->isBazaarTerminal()));
 		return;
@@ -269,9 +269,60 @@ void AuctionsMapImplementation::updateUID(SceneObject* vendor, const String& old
 
 void AuctionsMapImplementation::updateVendorSearch(SceneObject* vendor, bool enabled) {
 	Locker locker(_this.get());
-
+	
 	if (vendor == NULL)
 		return;
 
 	vendorItemsForSale.updateTerminalSearch(vendor, enabled);
 }
+
+int AuctionsMapImplementation::getCommodityCount(CreatureObject* player) {
+
+	Locker locker(&commoditiesLimit);
+
+	if(!commoditiesLimit.contains(player->getObjectID()))
+		return 0;
+
+	Vector<ManagedWeakReference<AuctionItem*> >* items = &commoditiesLimit.get(player->getObjectID());
+
+	for(int i = items->size() -1; i >= 0; --i) {
+		ManagedReference<AuctionItem*> item = items->get(i);
+		if(item == NULL || item->getOwnerID() != player->getObjectID() ||
+				item->getStatus() == AuctionItem::RETRIEVED) {
+			items->remove(i);
+		}
+	}
+
+	return items->size();
+}
+
+void AuctionsMapImplementation::addToCommodityLimit(AuctionItem* item) {
+
+	Locker locker(&commoditiesLimit);
+
+	if(!commoditiesLimit.contains(item->getOwnerID())) {
+		Vector<ManagedWeakReference<AuctionItem*> > newItems;
+		commoditiesLimit.put(item->getOwnerID(), newItems);
+	}
+
+	Vector<ManagedWeakReference<AuctionItem*> >* items = &commoditiesLimit.get(item->getOwnerID());
+	if(items != NULL)
+		items->add(item);
+
+}
+
+void AuctionsMapImplementation::removeFromCommodityLimit(AuctionItem* item) {
+
+	Locker locker(&commoditiesLimit);
+
+	if(!commoditiesLimit.contains(item->getOwnerID()))
+		return;
+
+	Vector<ManagedWeakReference<AuctionItem*> >* items = &commoditiesLimit.get(item->getOwnerID());
+	if(items != NULL)
+		items->removeElement(item);
+
+	if(items->isEmpty())
+		commoditiesLimit.drop(item->getOwnerID());
+}
+

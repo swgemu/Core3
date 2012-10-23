@@ -67,9 +67,7 @@ void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResp
 	if (checkInRangeGarage() && !isDestroyed())
 		menuResponse->addRadialMenuItem(62, 3, "Repair");*/
 
-	if (player->isInRange(_this.get(), 10.0f)
-			&& !player->isInCombat() && player->hasSkill("outdoors_scout_novice")
-			&& isDead() && canHarvestMe(player)) {
+	if (canHarvestMe(player)) {
 
 		menuResponse->addRadialMenuItem(112, 3, "@sui:harvest_corpse");
 
@@ -93,8 +91,7 @@ int CreatureImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 	if (getZone() == NULL)
 		return 0;
 
-	if ((selectedID == 112 || selectedID == 234 || selectedID == 235 || selectedID == 236) &&
-			canHarvestMe(player)) {
+	if ((selectedID == 112 || selectedID == 234 || selectedID == 235 || selectedID == 236)) {
 
 		getZone()->getCreatureManager()->harvest(_this.get(), player, selectedID);
 
@@ -228,6 +225,12 @@ void CreatureImplementation::notifyDespawn(Zone* zone) {
 }
 
 bool CreatureImplementation::canHarvestMe(CreatureObject* player) {
+
+	if(!player->isInRange(_this.get(), 10.0f)
+			|| player->isInCombat() || !player->hasSkill("outdoors_scout_novice")
+			|| player->isDead() || player->isIncapacitated())
+		return false;
+
 	if (!hasOrganics())
 		return false;
 

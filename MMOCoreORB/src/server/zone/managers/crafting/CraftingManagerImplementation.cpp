@@ -71,9 +71,12 @@ int CraftingManagerImplementation::calculateAssemblySuccess(CreatureObject* play
 		DraftSchematic* draftSchematic, float effectiveness) {
 
 	// assemblyPoints is 0-12
-	float assemblyPoints = ((float)player->getSkillMod(draftSchematic->getAssemblySkill())) / 10.0f;
+	/// City bonus should be 10
+	float cityBonus = player->getSkillMod("private_spec_assembly");
 
-	int failMitigate = (player->getSkillMod(draftSchematic->getAssemblySkill()) - 100) / 5;
+	float assemblyPoints = ((float)player->getSkillMod(draftSchematic->getAssemblySkill())) / 10.0f;
+	int failMitigate = (player->getSkillMod(draftSchematic->getAssemblySkill() - 100) + cityBonus) / 7;
+
 	if(failMitigate < 0)
 		failMitigate = 0;
 	if(failMitigate > 5)
@@ -94,9 +97,9 @@ int CraftingManagerImplementation::calculateAssemblySuccess(CreatureObject* play
 		}
 	}
 
-	int luckRoll = System::random(100);
+	int luckRoll = System::random(100) + cityBonus;
 
-	if(luckRoll > (95 - craftbonus - failMitigate))
+	if(luckRoll > (95 - craftbonus))
 		return AMAZINGSUCCESS;
 
 	if(luckRoll < (5 - craftbonus - failMitigate))
@@ -169,10 +172,12 @@ int CraftingManagerImplementation::calculateExperimentationFailureRate(CreatureO
 int CraftingManagerImplementation::calculateExperimentationSuccess(CreatureObject* player,
 		DraftSchematic* draftSchematic, float effectiveness) {
 
+	float cityBonus = player->getSkillMod("private_spec_experimentation");
+
 	// assemblyPoints is 0-12
 	float experimentingPoints = ((float)player->getSkillMod(draftSchematic->getExperimentationSkill())) / 10.0f;
 
-	int failMitigate = (player->getSkillMod(draftSchematic->getAssemblySkill()) - 100) / 5;
+	int failMitigate = (player->getSkillMod(draftSchematic->getAssemblySkill() - 100) + cityBonus) / 7;
 	if(failMitigate < 0)
 		failMitigate = 0;
 	if(failMitigate > 5)
@@ -194,9 +199,9 @@ int CraftingManagerImplementation::calculateExperimentationSuccess(CreatureObjec
 	}
 
 	/// Range 0-100
-	int luckRoll = System::random(100);
+	int luckRoll = System::random(100) + cityBonus;
 
-	if(luckRoll > (95 - expbonus - failMitigate))
+	if(luckRoll > (95 - expbonus))
 		return AMAZINGSUCCESS;
 
 	if(luckRoll < (5 - expbonus - failMitigate))

@@ -43,6 +43,38 @@
 
 object_draft_schematic_clothing_clothing_backpack_field_06_quest = object_draft_schematic_clothing_shared_clothing_backpack_field_06_quest:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Spec-Ops Field Agent Pack",
+
+   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 1, 
+
+   xpType = "crafting_clothing_general", 
+   xp = 60, 
+
+   assemblySkill = "clothing_assembly", 
+   experimentingSkill = "clothing_experimentation", 
+   customizationSkill = "clothing_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"primary_pocket", "secondary_pocket", "tertiary_pocket", "strap_pad", "strap_adjustment", "frame_reinforcement", "pocket_plating", "camouflage_net"},
+   ingredientSlotType = {2, 2, 2, 2, 0, 0, 0, 0},
+   resourceTypes = {"object/tangible/component/clothing/shared_cargo_pocket.iff", "object/tangible/component/clothing/shared_cargo_pocket.iff", "object/tangible/component/clothing/shared_cargo_pocket.iff", "object/tangible/component/clothing/shared_leather_heavy_duty.iff", "metal", "aluminum_titanium", "aluminum_titanium", "vegetable_fungi_rori"},
+   resourceQuantities = {1, 1, 1, 1, 5, 10, 10, 10},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/wearables/backpack/backpack_s06_quest.iff",
+
+   additionalTemplates = {
+              "object/tangible/wearables/backpack/shared_backpack_s06_quest.iff",
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_backpack_field_06_quest, "object/draft_schematic/clothing/clothing_backpack_field_06_quest.iff")

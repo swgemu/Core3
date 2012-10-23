@@ -67,7 +67,7 @@ object_tangible_scout_trap_trap_ranged_def_1 = object_tangible_scout_trap_shared
 	defenseMod = "",
 
 	successMessage = "trap_ranged_def_1_effect",
-	failMessage = "trap_ranged_def_1_effect_no",
+	failMessage = "",
 
 	startSpam = "ranged_def_1_on",
 	stopSpam = "ranged_def_1_off",

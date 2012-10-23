@@ -121,6 +121,8 @@ class Buff extends ManagedObject implements Logger {
 	 */
 	public native void notifyLoadFromDatabase();
 	
+	public native void loadBuffDurationEvent(CreatureObject creo);
+	
 	public void init() {
 		attributeModifiers.setNoDuplicateInsertPlan();
 		attributeModifiers.setNullValue(0);
@@ -155,7 +157,7 @@ class Buff extends ManagedObject implements Logger {
 	public native abstract void removeSkillModifiers();
 	public native abstract void removeStates();
 
-	public native void clearBuffEvent();
+	public abstract native void clearBuffEvent();
 
 	public native void setBuffEventNull();
 
@@ -214,6 +216,11 @@ class Buff extends ManagedObject implements Logger {
 
 	public int getBuffType() {
 		return buffType;
+	}
+	
+	@local
+	public VectorMap<byte, int> getAttributeModifiers() {
+		return attributeModifiers;
 	}
 
 	public abstract int getAttributeModifierValue(byte attribute) {

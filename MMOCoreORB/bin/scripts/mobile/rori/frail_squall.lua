@@ -26,7 +26,7 @@ frail_squall = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/squall.iff"},
+	templates = {"object/mobile/squall_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

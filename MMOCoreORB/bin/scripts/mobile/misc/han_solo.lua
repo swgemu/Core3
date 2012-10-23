@@ -23,13 +23,13 @@ han_solo = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/han_solo.iff"},
 	lootGroups = {},
 	weapons = {"han_solo_weapons"},
-	conversationTemplate = "",
+	conversationTemplate = "theme_park_rebel_mission_giver_convotemplate",
 	attacks = {
 	}
 }

@@ -62,11 +62,11 @@ public:
 
 	void updateBuffsToDatabase();
 
-	void addBuff(CreatureObject* creature, Buff* buff);
-	bool removeBuff(CreatureObject* creature, uint32 buffcrc);
-	void removeBuff(CreatureObject* creature, Buff* buff);
+	void addBuff(Buff* buff);
+	bool removeBuff(uint32 buffcrc);
+	void removeBuff(Buff* buff);
 
-	void clearBuffs(CreatureObject* creature, bool updateclient);
+	void clearBuffs(bool updateclient);
 
 	String getDurationString(bool showhours = true, bool showminutes = true) const;
 

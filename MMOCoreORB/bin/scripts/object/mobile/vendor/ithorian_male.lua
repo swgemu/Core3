@@ -50,6 +50,7 @@ object_mobile_vendor_ithorian_male = object_mobile_vendor_shared_ithorian_male:n
 	objectMenuComponent = {"cpp", "VendorMenuComponent"},
 	dataObjectComponent = "VendorDataComponent",	
 	containerComponent = {"cpp", "VendorContainerComponent"},
+	zoneComponent = "VendorZoneComponent",
 
 	noTrade = 1,
 

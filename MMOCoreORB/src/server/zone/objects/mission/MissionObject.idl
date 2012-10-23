@@ -188,6 +188,7 @@ class MissionObject extends IntangibleObject {
 	@local
 	public native void setTargetTemplate(SharedObjectTemplate templ, boolean notifyClient = true);
 	public native void setStartPosition(float posX, float posY, final string planet, boolean notifyClient = true);
+	public native void setStartPosition(float posX, float posY, boolean notifyClient = true);
 	public native void setEndPosition(float posX, float posY, final string planet, boolean notifyClient = true);
 	public native void setCreatorName(final string name, boolean notifyClient = true);
 	

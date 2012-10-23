@@ -26,7 +26,7 @@ domesticated_mott = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/mott.iff"},
+	templates = {"object/mobile/mott_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

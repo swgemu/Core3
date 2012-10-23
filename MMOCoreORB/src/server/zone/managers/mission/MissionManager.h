@@ -284,7 +284,9 @@ public:
 
 	void failPlayerBountyMission(unsigned long long bountyHunter);
 
-	void spawnMissionNpcs(NpcSpawnPoint* target, NpcSpawnPoint* destination, TerrainManager* terrainManager, CreatureManager* creatureManager, MissionObject* mission);
+	void allocateMissionNpcs(NpcSpawnPoint* target, NpcSpawnPoint* destination, TerrainManager* terrainManager, CreatureManager* creatureManager);
+
+	void freeMissionNpc(NpcSpawnPoint* npc);
 
 	void despawnMissionNpc(NpcSpawnPoint* npc);
 
@@ -407,6 +409,10 @@ public:
 
 	void randomizeRebelReconMission(CreatureObject* player, MissionObject* mission);
 
+private:
+	void generateRandomFactionalDestroyMissionDescription(CreatureObject* player, MissionObject* mission, const String& faction);
+
+public:
 	void createMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
 
 	void createSurveyMissionObjectives(MissionObject* mission, MissionTerminal* missionTerminal, CreatureObject* player);
@@ -457,7 +463,9 @@ public:
 
 	void failPlayerBountyMission(unsigned long long bountyHunter);
 
-	void spawnMissionNpcs(NpcSpawnPoint* target, NpcSpawnPoint* destination, TerrainManager* terrainManager, CreatureManager* creatureManager, MissionObject* mission);
+	void allocateMissionNpcs(NpcSpawnPoint* target, NpcSpawnPoint* destination, TerrainManager* terrainManager, CreatureManager* creatureManager);
+
+	void freeMissionNpc(NpcSpawnPoint* npc);
 
 	void despawnMissionNpc(NpcSpawnPoint* npc);
 
@@ -611,6 +619,8 @@ public:
 	void completePlayerBounty(unsigned long long targetId, unsigned long long bountyHunter);
 
 	void failPlayerBountyMission(unsigned long long bountyHunter);
+
+	void freeMissionNpc(NpcSpawnPoint* npc);
 
 	void despawnMissionNpc(NpcSpawnPoint* npc);
 

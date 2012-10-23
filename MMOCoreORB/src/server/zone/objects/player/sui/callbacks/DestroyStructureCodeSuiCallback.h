@@ -10,7 +10,6 @@
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/player/sessions/DestroyStructureSession.h"
-#include "server/zone/managers/structure/StructureManager.h"
 
 
 class DestroyStructureCodeSuiCallback : public SuiCallback {

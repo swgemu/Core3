@@ -85,11 +85,6 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			return 0;
 		}
 
-		ManagedReference<StructureManager*> structureManager = zone->getStructureManager();
-		if (structureManager == NULL) {
-			error("Unable to get StructureManager when placing camp");
-			return 0;
-		}
 
 		/// Get Ghost
 		PlayerObject* ghost = cast<PlayerObject*> (player->getSlottedObject("ghost"));
@@ -99,6 +94,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		}
 
 		int playerSkill = player->getSkillMod("camp");
+
 		if(playerSkill < campStructureData->getSkillRequired()) {
 			player->sendSystemMessage("@camp:sys_nsf_skill");
 			return 0;
@@ -197,7 +193,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		player->sendSystemMessage("@camp:starting_camp");
 
 		/// Create Structure
-		StructureObject* structureObject = structureManager->placeStructure(
+		StructureObject* structureObject = StructureManager::instance()->placeStructure(
 				player, campKitData->getSpawnObjectTemplate(),
 				player->getPositionX(), player->getPositionY(),
 				(int) player->getDirectionAngle());

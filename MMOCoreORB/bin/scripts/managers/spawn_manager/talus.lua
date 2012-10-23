@@ -629,7 +629,7 @@ talus_static_spawns = {
 	{"trainer_squadleader",1,590.114,6,-2934,0,0, "", ""},
 	{"trainer_tailor",1,370.2,6,-2877.2,0,0, "", ""},
 	{"trainer_tailor",1,11.1,1.1,-14.3,0,4265395, "calm", ""},
-	{"trainer_unarmed",1,418,6,-2906,0,0, "", ""},
+	{"trainer_unarmed",1,418,6,-2906,0,3175391, "", ""},
 	{"trainer_weaponsmith",1,516,0,-2912,180,0, "", ""},
 	{"trainer_weaponsmith",1,-2.5,1.13306,-8.4,91,3175562, "", ""},
 	{"trainer_weaponsmith",1,-2.5,1.13306,-8.4,91,4265416, "", ""},

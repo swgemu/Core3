@@ -12,10 +12,10 @@
  *	VendorAdBarkingSessionStub
  */
 
-enum {RPC_INITIALIZESESSION__ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,};
+enum {RPC_INITIALIZESESSION__ = 6,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_SETMESSAGE__STRING_,RPC_SETMOOD__STRING_,RPC_SETANIMATION__STRING_,RPC_SENDPHRASEOPTIONS__,RPC_SENDCUSTOMMESSAGEINPUT__,RPC_SENDMOODSELECT__,RPC_SENDANIMATIONSELECT__,};
 
-VendorAdBarkingSession::VendorAdBarkingSession(CreatureObject* play) : Facade(DummyConstructorParameter::instance()) {
-	VendorAdBarkingSessionImplementation* _implementation = new VendorAdBarkingSessionImplementation(play);
+VendorAdBarkingSession::VendorAdBarkingSession(CreatureObject* play, SceneObject* vend) : Facade(DummyConstructorParameter::instance()) {
+	VendorAdBarkingSessionImplementation* _implementation = new VendorAdBarkingSessionImplementation(play, vend);
 	_impl = _implementation;
 	_impl->_setStub(this);
 	_setClassName("VendorAdBarkingSession");
@@ -67,6 +67,100 @@ int VendorAdBarkingSession::clearSession() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->clearSession();
+}
+
+void VendorAdBarkingSession::setMessage(const String& mess) {
+	VendorAdBarkingSessionImplementation* _implementation = static_cast<VendorAdBarkingSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETMESSAGE__STRING_);
+		method.addAsciiParameter(mess);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setMessage(mess);
+}
+
+void VendorAdBarkingSession::setMood(const String& mo) {
+	VendorAdBarkingSessionImplementation* _implementation = static_cast<VendorAdBarkingSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETMOOD__STRING_);
+		method.addAsciiParameter(mo);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setMood(mo);
+}
+
+void VendorAdBarkingSession::setAnimation(const String& ani) {
+	VendorAdBarkingSessionImplementation* _implementation = static_cast<VendorAdBarkingSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETANIMATION__STRING_);
+		method.addAsciiParameter(ani);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setAnimation(ani);
+}
+
+void VendorAdBarkingSession::sendPhraseOptions() {
+	VendorAdBarkingSessionImplementation* _implementation = static_cast<VendorAdBarkingSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDPHRASEOPTIONS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendPhraseOptions();
+}
+
+void VendorAdBarkingSession::sendCustomMessageInput() {
+	VendorAdBarkingSessionImplementation* _implementation = static_cast<VendorAdBarkingSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDCUSTOMMESSAGEINPUT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendCustomMessageInput();
+}
+
+void VendorAdBarkingSession::sendMoodSelect() {
+	VendorAdBarkingSessionImplementation* _implementation = static_cast<VendorAdBarkingSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDMOODSELECT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendMoodSelect();
+}
+
+void VendorAdBarkingSession::sendAnimationSelect() {
+	VendorAdBarkingSessionImplementation* _implementation = static_cast<VendorAdBarkingSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDANIMATIONSELECT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendAnimationSelect();
 }
 
 DistributedObjectServant* VendorAdBarkingSession::_getImplementation() {
@@ -179,6 +273,11 @@ bool VendorAdBarkingSessionImplementation::readObjectMember(ObjectInputStream* s
 		return true;
 	}
 
+	if (_name == "VendorAdBarkingSession.vendor") {
+		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&vendor, stream);
+		return true;
+	}
+
 	if (_name == "VendorAdBarkingSession.advertisingMod") {
 		TypeInfo<int >::parseFromBinaryStream(&advertisingMod, stream);
 		return true;
@@ -209,6 +308,14 @@ int VendorAdBarkingSessionImplementation::writeObjectMembers(ObjectOutputStream*
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "VendorAdBarkingSession.vendor";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&vendor, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "VendorAdBarkingSession.advertisingMod";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -218,10 +325,10 @@ int VendorAdBarkingSessionImplementation::writeObjectMembers(ObjectOutputStream*
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 2;
+	return _count + 3;
 }
 
-VendorAdBarkingSessionImplementation::VendorAdBarkingSessionImplementation(CreatureObject* play) {
+VendorAdBarkingSessionImplementation::VendorAdBarkingSessionImplementation(CreatureObject* play, SceneObject* vend) {
 	_initializeImplementation();
 	// server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.idl():  		Logger.setLoggingName("VendorAdBarkingSession");
 	Logger::setLoggingName("VendorAdBarkingSession");
@@ -229,6 +336,8 @@ VendorAdBarkingSessionImplementation::VendorAdBarkingSessionImplementation(Creat
 	Logger::setLogging(true);
 	// server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.idl():  		owner = play;
 	owner = play;
+	// server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.idl():  		vendor = vend;
+	vendor = vend;
 }
 
 int VendorAdBarkingSessionImplementation::cancelSession() {
@@ -246,6 +355,27 @@ int VendorAdBarkingSessionImplementation::clearSession() {
 	owner = NULL;
 	// server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.idl():  		return 0;
 	return 0;
+}
+
+void VendorAdBarkingSessionImplementation::setMessage(const String& mess) {
+	// server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.idl():  		message = mess;
+	message = mess;
+	// server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.idl():  		sendMoodSelect();
+	sendMoodSelect();
+}
+
+void VendorAdBarkingSessionImplementation::setMood(const String& mo) {
+	// server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.idl():  		mood = mo;
+	mood = mo;
+	// server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.idl():  		sendAnimationSelect();
+	sendAnimationSelect();
+}
+
+void VendorAdBarkingSessionImplementation::setAnimation(const String& ani) {
+	// server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.idl():  		animation = ani;
+	animation = ani;
+	// server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.idl():  		completeSession();
+	completeSession();
 }
 
 /*
@@ -278,6 +408,44 @@ void VendorAdBarkingSessionAdapter::invokeMethod(uint32 methid, DistributedMetho
 			resp->insertSignedInt(clearSession());
 		}
 		break;
+	case RPC_SETMESSAGE__STRING_:
+		{
+			String mess; 
+			setMessage(inv->getAsciiParameter(mess));
+		}
+		break;
+	case RPC_SETMOOD__STRING_:
+		{
+			String mo; 
+			setMood(inv->getAsciiParameter(mo));
+		}
+		break;
+	case RPC_SETANIMATION__STRING_:
+		{
+			String ani; 
+			setAnimation(inv->getAsciiParameter(ani));
+		}
+		break;
+	case RPC_SENDPHRASEOPTIONS__:
+		{
+			sendPhraseOptions();
+		}
+		break;
+	case RPC_SENDCUSTOMMESSAGEINPUT__:
+		{
+			sendCustomMessageInput();
+		}
+		break;
+	case RPC_SENDMOODSELECT__:
+		{
+			sendMoodSelect();
+		}
+		break;
+	case RPC_SENDANIMATIONSELECT__:
+		{
+			sendAnimationSelect();
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -293,6 +461,34 @@ int VendorAdBarkingSessionAdapter::cancelSession() {
 
 int VendorAdBarkingSessionAdapter::clearSession() {
 	return (static_cast<VendorAdBarkingSession*>(stub))->clearSession();
+}
+
+void VendorAdBarkingSessionAdapter::setMessage(const String& mess) {
+	(static_cast<VendorAdBarkingSession*>(stub))->setMessage(mess);
+}
+
+void VendorAdBarkingSessionAdapter::setMood(const String& mo) {
+	(static_cast<VendorAdBarkingSession*>(stub))->setMood(mo);
+}
+
+void VendorAdBarkingSessionAdapter::setAnimation(const String& ani) {
+	(static_cast<VendorAdBarkingSession*>(stub))->setAnimation(ani);
+}
+
+void VendorAdBarkingSessionAdapter::sendPhraseOptions() {
+	(static_cast<VendorAdBarkingSession*>(stub))->sendPhraseOptions();
+}
+
+void VendorAdBarkingSessionAdapter::sendCustomMessageInput() {
+	(static_cast<VendorAdBarkingSession*>(stub))->sendCustomMessageInput();
+}
+
+void VendorAdBarkingSessionAdapter::sendMoodSelect() {
+	(static_cast<VendorAdBarkingSession*>(stub))->sendMoodSelect();
+}
+
+void VendorAdBarkingSessionAdapter::sendAnimationSelect() {
+	(static_cast<VendorAdBarkingSession*>(stub))->sendAnimationSelect();
 }
 
 /*

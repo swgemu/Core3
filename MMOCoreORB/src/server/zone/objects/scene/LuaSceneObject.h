@@ -32,6 +32,9 @@ namespace scene {
 		int getPositionX(lua_State* L);
 		int getPositionZ(lua_State* L);
 		int getPositionY(lua_State* L);
+		int getWorldPositionX(lua_State* L);
+		int getWorldPositionZ(lua_State* L);
+		int getWorldPositionY(lua_State* L);
 		int getObjectID(lua_State* L);
 		int getParentID(lua_State* L);
 		int isInRange(lua_State* L);
@@ -57,6 +60,7 @@ namespace scene {
 		int sendTo(lua_State* L);
 		int getCustomObjectName(lua_State* L);
 		int setCustomObjectName(lua_State* L);
+		int getObjectName(lua_State* L);
 		int getContainerObjectById(lua_State* L);
 		int hasFullContainerObjects(lua_State* L);
 		int setDirectionalHeading(lua_State* L);
@@ -74,6 +78,7 @@ namespace scene {
 		int clearContainerDefaultDenyPermission(lua_State* L);
 		int hasActiveArea(lua_State* L);
 		int setObjectName(lua_State* L);
+		int isASubChildOf(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc

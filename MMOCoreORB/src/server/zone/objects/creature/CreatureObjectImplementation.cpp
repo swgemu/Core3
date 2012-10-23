@@ -120,6 +120,8 @@
 #include "ai/AiActor.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 
+#include "buffs/BuffDurationEvent.h"
+
 float CreatureObjectImplementation::DEFAULTRUNSPEED = 5.376;
 
 void CreatureObjectImplementation::initializeTransientMembers() {
@@ -1205,8 +1207,7 @@ void CreatureObjectImplementation::removeSkill(const String& skill,
 	removeSkill(skillObject, notifyClient);
 }
 
-void CreatureObjectImplementation::addSkillMod(const int modType, const String& skillMod,
-		int value, bool notifyClient) {
+void CreatureObjectImplementation::addSkillMod(const int modType, const String& skillMod, int value, bool notifyClient) {
 
 	Locker locker(&skillModMutex);
 
@@ -1224,13 +1225,13 @@ void CreatureObjectImplementation::addSkillMod(const int modType, const String& 
 		return;
 
 	if (notifyClient) {
-		CreatureObjectDeltaMessage4* msg =
-				new CreatureObjectDeltaMessage4(_this.get());
+		CreatureObjectDeltaMessage4* msg = new CreatureObjectDeltaMessage4(_this.get());
 		msg->startUpdate(0x03);
 		if(newMod.getTotalSkill() != 0)
 			skillModList.set(skillMod, newMod, msg, 1);
-		else
+		else {
 			skillModList.drop(skillMod, msg, 1);
+		}
 		msg->close();
 
 		sendMessage(msg);
@@ -1242,10 +1243,23 @@ void CreatureObjectImplementation::addSkillMod(const int modType, const String& 
 	}
 }
 
-void CreatureObjectImplementation::removeSkillMod(const int modType, const String& skillMod,
-		int value, bool notifyClient) {
-
+void CreatureObjectImplementation::removeSkillMod(const int modType, const String& skillMod, int value, bool notifyClient) {
 	addSkillMod(modType, skillMod, -value, notifyClient);
+}
+
+void CreatureObjectImplementation::removeAllSkillModsOfType(const int modType, bool notifyClient) {
+	SkillModGroup* modGroup = skillModList.getSkillModGroup(modType);
+
+	if (notifyClient) {
+		for (int i = modGroup->size() - 1; i >= 0; --i) {
+			VectorMapEntry<String, int>* entry = &modGroup->elementAt(i);
+			String key = entry->getKey();
+			int val = entry->getValue();
+			removeSkillMod(SkillModManager::CITY, key, val, true);
+		}
+	} else {
+		modGroup->removeAll();
+	}
 }
 
 int CreatureObjectImplementation::getSkillMod(const String& skillmod) {
@@ -1796,6 +1810,14 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 	if (ghost == NULL)
 		return;
 
+	getZoneServer()->getPlayerManager()->fixHAM(_this.get());
+
+	for (int i = 0; i < creatureBuffs.getBuffListSize(); ++i) {
+		ManagedReference<Buff*> buff = creatureBuffs.getBuffByIndex(i);
+
+		buff->loadBuffDurationEvent(_this.get());
+	}
+
 	ZoneServer* zoneServer = server->getZoneServer();
 	SkillManager* skillManager = SkillManager::instance();
 
@@ -1818,6 +1840,8 @@ void CreatureObjectImplementation::notifyLoadFromDatabase() {
 	ghost->getSchematics()->addRewardedSchematics(ghost);
 
 	skillManager->updateXpLimits(ghost);
+
+	//
 }
 
 int CreatureObjectImplementation::notifyObjectInserted(SceneObject* object) {
@@ -2113,12 +2137,12 @@ void CreatureObjectImplementation::addBuff(Buff* buff) {
 
 	uint32 buffcrc = buff->getBuffCRC();
 
-	creatureBuffs.addBuff(_this.get(), buff);
+	creatureBuffs.addBuff(buff);
 }
 
 bool CreatureObjectImplementation::removeBuff(uint32 buffcrc) {
 	//BuffList::removeBuff checks to see if the buffcrc exists in the map.
-	return creatureBuffs.removeBuff(_this.get(), buffcrc);
+	return creatureBuffs.removeBuff(buffcrc);
 }
 
 void CreatureObjectImplementation::removeBuff(Buff* buff) {
@@ -2128,11 +2152,11 @@ void CreatureObjectImplementation::removeBuff(Buff* buff) {
 	uint32 buffcrc = buff->getBuffCRC();
 
 	//BuffList::removeBuff checks to see if the buffcrc exists in the map.
-	creatureBuffs.removeBuff(_this.get(), buff);
+	creatureBuffs.removeBuff(buff);
 }
 
 void CreatureObjectImplementation::clearBuffs(bool updateclient) {
-	creatureBuffs.clearBuffs(_this.get(), updateclient);
+	creatureBuffs.clearBuffs(updateclient);
 }
 
 void CreatureObjectImplementation::notifyPostureChange(int newPosture) {

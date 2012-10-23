@@ -42,12 +42,15 @@ void WearableObjectImplementation::updateCraftingValues(CraftingValues* values, 
 	 * hitpoints			1000-1000 (Don't Use)
 	 */
 	if(initialUpdate) {
-		if(values->hasProperty("sockets"))
+		if(values->hasProperty("sockets") && values->getCurrentValue("sockets") >= 0)
 			generateSockets(values);
 	}
 }
 
 void WearableObjectImplementation::generateSockets(CraftingValues* craftingValues) {
+	if (socketsGenerated) {
+		return;
+	}
 
 	int skill = 0;
 	int luck = 0;
@@ -85,7 +88,7 @@ void WearableObjectImplementation::generateSockets(CraftingValues* craftingValue
 }
 
 int WearableObjectImplementation::socketsUsed() {
-	return wearableSkillMods.size();
+	return wearableSkillMods.size() - modsNotInSockets;
 }
 
 void WearableObjectImplementation::applyAttachment(CreatureObject* player,
@@ -96,47 +99,27 @@ void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 
 	if (socketsLeft() > 0) {
 
+		Locker locker(player);
+
 		if (isEquipped())
 			setAttachmentMods(player, true, false);
 
-		VectorMap<String, int>* mods = attachment->getSkillMods();
-
-		VectorMap<short, SortedVector<String> > reverseMods;
+		HashTable<String, int>* mods = attachment->getSkillMods();
+		HashTableIterator<String, int> iterator = mods->iterator();
 
 		for(int i = 0; i < mods->size(); ++i) {
 
-			short value = mods->get(i);
-			if(!reverseMods.contains(value)) {
-				SortedVector<String> newSorted;
-				reverseMods.put(value, newSorted);
-			}
-
-			SortedVector<String>* stats = &reverseMods.get(value);
-
-			stats->add(mods->elementAt(i).getKey());
-		}
-
-		for(int i = reverseMods.size() - 1; i >= 0; --i) {
-
-			SortedVector<String>* stats = &reverseMods.elementAt(i).getValue();
-			int value = reverseMods.elementAt(i).getKey();
-
+			int existingValue = -25;
+			int newValue = 0;
 			String statName = "";
 
-			for(int j = 0; j < stats->size(); ++j) {
+			iterator.getNextKeyAndValue(statName, newValue);
 
-				statName = stats->get(j);
+			if(wearableSkillMods.contains(statName))
+				existingValue = wearableSkillMods.get(statName);
 
-				if(!wearableSkillMods.contains(statName))
-					break;
-
-				statName = "";
-			}
-
-			if(!statName.isEmpty()) {
-				wearableSkillMods.put(statName, value);
-				break;
-			}
+			if(newValue > existingValue)
+				wearableSkillMods.put(statName, newValue);
 		}
 
 		attachment->destroyObjectFromWorld(true);

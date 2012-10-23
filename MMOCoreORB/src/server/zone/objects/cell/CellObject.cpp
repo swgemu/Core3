@@ -387,10 +387,10 @@ CellObjectImplementation::CellObjectImplementation() {
 void CellObjectImplementation::setAllowEntryPermissionGroup(const String& group) {
 	// server/zone/objects/cell/CellObject.idl():  		super.setContainerInheritPermissionsFromParent(false);
 	SceneObjectImplementation::setContainerInheritPermissionsFromParent(false);
-	// server/zone/objects/cell/CellObject.idl():  		super.setContainerDefaultDenyPermission(ContainerPermissions.MOVEIN);
-	SceneObjectImplementation::setContainerDefaultDenyPermission(ContainerPermissions::MOVEIN);
-	// server/zone/objects/cell/CellObject.idl():  		super.setContainerAllowPermission(group, ContainerPermissions.MOVEIN);
-	SceneObjectImplementation::setContainerAllowPermission(group, ContainerPermissions::MOVEIN);
+	// server/zone/objects/cell/CellObject.idl():  		super.setContainerDefaultDenyPermission(ContainerPermissions.WALKIN);
+	SceneObjectImplementation::setContainerDefaultDenyPermission(ContainerPermissions::WALKIN);
+	// server/zone/objects/cell/CellObject.idl():  		super.setContainerAllowPermission(group, ContainerPermissions.WALKIN);
+	SceneObjectImplementation::setContainerAllowPermission(group, ContainerPermissions::WALKIN);
 }
 
 int CellObjectImplementation::getCellNumber() {

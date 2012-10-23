@@ -322,7 +322,7 @@ uint32 ResourceManagerImplementation::getAvailablePowerFromPlayer(CreatureObject
 			continue;
 
 		int quantity = rcno->getQuantity();
-		int pe = spawn->getValueOf(3); // potential energy
+		int pe = spawn->getValueOf(CraftingManager::PE); // potential energy
 
 		float modifier = MAX(1.0f, pe / 500.0f);
 
@@ -353,7 +353,7 @@ void ResourceManagerImplementation::removePowerFromPlayer(CreatureObject* player
 			continue;
 
 		int quantity = rcno->getQuantity();
-		int pe = spawn->getValueOf(3); // potential energy
+		int pe = spawn->getValueOf(CraftingManager::PE); // potential energy
 
 		float modifier = MAX(1.0f, pe / 500.0f);
 

@@ -173,6 +173,8 @@ using namespace server::zone::objects::area;
 
 #include "engine/util/u3d/Vector3.h"
 
+#include "system/thread/Mutex.h"
+
 namespace server {
 namespace zone {
 namespace managers {
@@ -275,6 +277,8 @@ protected:
 	SortedVector<ManagedReference<AiAgent* > > reservePool;
 
 	int spawnedRandomCreatures;
+
+	static Mutex loadMutex;
 
 public:
 	CreatureManagerImplementation(Zone* planet);

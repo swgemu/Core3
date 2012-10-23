@@ -7,7 +7,9 @@ foraged_stimpack = {
 	directObjectTemplate = "object/tangible/medicine/stimpack_sm_s1.iff",
 	craftingValues = {
 	      {"power",75,95,0},
+	      {"charges",5,10,0},
 	      {"skillmodmin",5,5,0},
+	      {"hitpoints",1000,1000,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

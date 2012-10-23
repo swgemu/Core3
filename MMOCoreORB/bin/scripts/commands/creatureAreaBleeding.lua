@@ -43,6 +43,7 @@
 
 CreatureAreaBleedingCommand = {
         name = "creatureareableeding",
+        combatSpam = "attack",
 	dotEffects = {
 	  DotEffect( 
 		BLEEDING, 

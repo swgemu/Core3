@@ -23,10 +23,12 @@ jan_dodonna = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_jan_dodonna.iff"},
 	lootGroups = {},
+	conversationTemplate = "theme_park_rebel_mission_giver_convotemplate",
 	weapons = {},
 	attacks = {}
 }

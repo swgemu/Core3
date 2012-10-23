@@ -46,7 +46,6 @@ which carries forward this exception.
 
 #include "ZoneProcessServer.h"
 #include "objects/scene/SceneObject.h"
-#include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
@@ -55,12 +54,14 @@ which carries forward this exception.
 #include "server/zone/packets/player/GetMapLocationsResponseMessage.h"
 
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
 #include "server/zone/templates/appearance/PortalLayout.h"
 #include "server/zone/templates/appearance/FloorMesh.h"
 #include "server/zone/templates/appearance/PathGraph.h"
-#include "server/zone/objects/region/Region.h"
+
+#include "server/zone/managers/structure/StructureManager.h"
 
 #include "managers/minigames/FishingManager.h"
 #include "managers/minigames/GamblingManager.h"
@@ -86,7 +87,6 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& na
 	//galacticTime = new Time();
 
 	planetManager = NULL;
-	structureManager = NULL;
 
 	setLoggingName("Zone " + name);
 }
@@ -97,8 +97,6 @@ void ZoneImplementation::createContainerComponent() {
 
 void ZoneImplementation::initializePrivateData() {
 	planetManager = new PlanetManager(_this.get(), processor);
-
-	structureManager = new StructureManager(_this.get(), processor);
 
 	creatureManager = new CreatureManager(_this.get());
 	creatureManager->deploy("CreatureManager " + zoneName);
@@ -127,9 +125,9 @@ void ZoneImplementation::initializeTransientMembers() {
 void ZoneImplementation::startManagers() {
 	planetManager->initialize();
 
-	structureManager->initialize();
-
 	creatureManager->initialize();
+
+	StructureManager::instance()->loadPlayerStructures(getZoneName());
 
 	updateCityRegions();
 
@@ -509,13 +507,13 @@ void ZoneImplementation::updateCityRegions() {
 
 		city->rescheduleUpdateEvent(seconds);
 
-		Region* region = city->getRegion(0);
-
 		if (!city->isRegistered())
 			continue;
 
 		if (city->getRegionsCount() == 0)
 			continue;
+
+		Region* region = city->getRegion(0);
 
 		unregisterObjectWithPlanetaryMap(region);
 		registerObjectWithPlanetaryMap(region);

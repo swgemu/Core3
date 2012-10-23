@@ -26,7 +26,7 @@ guf_drolg_female = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/guf_drolg.iff"},
+	templates = {"object/mobile/guf_drolg_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

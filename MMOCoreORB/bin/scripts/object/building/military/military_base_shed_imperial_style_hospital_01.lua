@@ -43,8 +43,12 @@
 
 object_building_military_military_base_shed_imperial_style_hospital_01 = object_building_military_shared_military_base_shed_imperial_style_hospital_01:new {
 	gameObjectType = 517,
-	planetMapCategory = "medicalcenter"
-
+	planetMapCategory = "medicalcenter",
+	skillMods = {
+		{"private_medical_rating", 100},
+		{"private_med_wound_health", 100},
+		{"private_med_wound_action", 100}
+	}
 
 }
 

@@ -102,6 +102,8 @@ void ZoneProcessServerImplementation::finalize() {
 }
 
 void ZoneProcessServerImplementation::initialize() {
+	//StructureManager::instance();
+
 	vendorManager = VendorManager::instance();
 	vendorManager->initialize(_this.get());
 

@@ -101,6 +101,11 @@ void QueueCommand::onLocomotionFail(CreatureObject* creature, uint32 actioncntr)
 void QueueCommand::onFail(uint32 actioncntr, CreatureObject* creature, uint32 errorNumber) {
 	StringIdChatParameter prm;
 	switch (errorNumber) {
+	case INVALIDSYNTAX:
+		creature->sendSystemMessage(getSyntax());
+		if (addToQueue)
+			creature->clearQueueAction(actioncntr);
+		break;
 	case INVALIDSTATE:
 		onStateFail(creature, actioncntr);
 		break;

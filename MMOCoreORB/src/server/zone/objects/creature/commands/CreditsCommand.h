@@ -115,12 +115,20 @@ public:
 			} else if (action == "subtract") {
 
 				if (location.toLowerCase() == "cash") {
-					player->subtractCashCredits(amount);
+					if (player->verifyCashCredits(amount))
+						player->subtractCashCredits(amount);
+					else
+						player->setCashCredits(0, true);
+
 					success = true;
 				}
 
 				if (location.toLowerCase() == "bank") {
-					player->subtractBankCredits(amount);
+					if (player->verifyBankCredits(amount))
+						player->subtractBankCredits(amount);
+					else
+						player->setBankCredits(0, true);
+
 					success = true;
 				}
 			}

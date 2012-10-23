@@ -107,6 +107,8 @@ using namespace server::zone::templates;
 
 #include "system/lang/StackTrace.h"
 
+#include "system/thread/Mutex.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -141,6 +143,8 @@ public:
 	void broadcastCellPermissions(unsigned long long objectid);
 
 	bool isAllowedEntry(CreatureObject* player);
+
+	bool isCityBanned(CreatureObject* player);
 
 	int notifyStructurePlaced(CreatureObject* player);
 
@@ -274,6 +278,8 @@ protected:
 
 	unsigned int lastAccessFeeChange;
 
+	Mutex paidAccessListMutex;
+
 	VectorMap<unsigned long long, unsigned int> paidAccessList;
 
 public:
@@ -312,6 +318,8 @@ public:
 	void broadcastCellPermissions(unsigned long long objectid);
 
 	bool isAllowedEntry(CreatureObject* player);
+
+	bool isCityBanned(CreatureObject* player);
 
 	virtual int notifyStructurePlaced(CreatureObject* player);
 
@@ -473,6 +481,8 @@ public:
 	void broadcastCellPermissions(unsigned long long objectid);
 
 	bool isAllowedEntry(CreatureObject* player);
+
+	bool isCityBanned(CreatureObject* player);
 
 	int notifyStructurePlaced(CreatureObject* player);
 

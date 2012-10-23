@@ -43,6 +43,37 @@
 
 object_draft_schematic_clothing_clothing_bandolier_field_04_quest = object_draft_schematic_clothing_shared_clothing_bandolier_field_04_quest:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Weaponsmith\'s Tool Set",
+
+   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 1, 
+
+   xpType = "crafting_clothing_general", 
+   xp = 110, 
+
+   assemblySkill = "clothing_assembly", 
+   experimentingSkill = "clothing_experimentation", 
+   customizationSkill = "clothing_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"utility_pocket", "load_bearing_harness", "steel_interstructure", "steel_crossframe", "reinforcement", "tool_mount", "tool_set", "clasps"},
+   ingredientSlotType = {2, 0, 0, 0, 0, 2, 2, 1},
+   resourceTypes = {"object/tangible/component/clothing/shared_cargo_pocket.iff", "fiberplast", "metal", "metal", "metal_nonferrous", "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff", "object/tangible/crafting/station/shared_weapon_repair.iff", "object/tangible/component/clothing/shared_clasp_heavy_duty.iff"},
+   resourceQuantities = {1, 20, 15, 10, 15, 1, 1, 2},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/wearables/bandolier/bandolier_s04_quest.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_bandolier_field_04_quest, "object/draft_schematic/clothing/clothing_bandolier_field_04_quest.iff")

@@ -26,7 +26,7 @@ ancient_bull_rancor = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/bull_rancor_hue.iff"},
+	templates = {"object/mobile/bull_rancor.iff"},
 	lootGroups = {
 		{
 			groups = {

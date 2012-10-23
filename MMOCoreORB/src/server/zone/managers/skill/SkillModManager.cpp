@@ -121,9 +121,12 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 	mods.setAllowOverwriteInsertPlan();
 	mods.setNullValue(0);
 
+	SortedVector<ManagedReference<SceneObject*> > usedObjects;
+	usedObjects.setNoDuplicateInsertPlan();
+
 	for(int i = 0; i < creature->getSlottedObjectsSize(); ++i) {
 		ManagedReference<TangibleObject*> object = cast<TangibleObject*>(creature->getSlottedObject(i));
-		if(object == NULL)
+		if(object == NULL || usedObjects.contains(object.get()))
 			continue;
 
 		if(object->isWearableObject()) {
@@ -132,8 +135,8 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 
 				VectorMap<String, int>* wearableSkillMods = wearable->getWearableSkillMods();
 
-				for (int i = 0; i < wearableSkillMods->size(); ++i) {
-					String name = wearableSkillMods->elementAt(i).getKey();
+				for (int j = 0; j < wearableSkillMods->size(); ++j) {
+					String name = wearableSkillMods->elementAt(j).getKey();
 					int value = wearableSkillMods->get(name);
 
 					if(mods.contains(name)) {
@@ -148,6 +151,8 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 		if(object->isWeaponObject()) {
 
 		}
+
+		usedObjects.put(object.get());
 	}
 
 	if(!compareMods(mods, creature, WEARABLE)) {
@@ -171,14 +176,14 @@ void SkillModManager::verifyStructureSkillMods(TangibleObject* tano) {
 
 	ManagedReference<SceneObject*> parent = creature->getRootParent();
 
-	if (parent == NULL) {
+	if(parent == NULL) {
 		if(creature->getCurrentCamp() != NULL) {
 			ManagedReference<CampSiteActiveArea*> campArea = creature->getCurrentCamp();
 			parent = campArea->getCamp();
 		}
 	}
 
-	if (parent != NULL && parent->isStructureObject()) {
+	if(parent != NULL && parent->isStructureObject()) {
 		StructureObject* structure = cast<StructureObject*>(parent.get());
 
 		VectorMap<String, int>* templateMods = structure->getTemplateSkillMods();
@@ -262,7 +267,7 @@ bool SkillModManager::compareMods(VectorMap<String, int> mods, CreatureObject* c
 
 	mods.setAllowOverwriteInsertPlan();
 	mods.setNullValue(0);
-
+	
 	Mutex* skillModMutex = creature->getSkillModMutex();
 
 	Locker skillModLocker(skillModMutex);
@@ -296,10 +301,9 @@ bool SkillModManager::compareMods(VectorMap<String, int> mods, CreatureObject* c
 		compare << "	" << key << "	" << value << "	" << currentValue << endl;
 
 		if(value != currentValue) {
-			if(currentValue == 0)
-				group->drop(key);
-			else
-				group->put(key, currentValue);
+
+			creature->removeSkillMod(type, key, value, true);
+			creature->addSkillMod(type, key, currentValue, true);
 
 			match = false;
 		}

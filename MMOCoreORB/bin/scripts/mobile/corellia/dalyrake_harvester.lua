@@ -26,7 +26,7 @@ dalyrake_harvester = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/dalyrake.iff"},
+	templates = {"object/mobile/dalyrake_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

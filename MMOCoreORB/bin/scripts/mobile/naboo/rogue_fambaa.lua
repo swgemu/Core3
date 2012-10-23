@@ -21,12 +21,12 @@ rogue_fambaa = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 9,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = NONE,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/fambaa.iff"},
+	templates = {"object/mobile/fambaa_hue.iff"},
 	lootGroups = {
 	 {
 	        groups = {

@@ -45,47 +45,44 @@ which carries forward this exception.
 package server.zone.objects.player;
 
 import engine.lua.LuaObject;
-import server.zone.objects.scene.SceneObject;
-import server.zone.objects.intangible.IntangibleObject;
-import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.commands.QueueCommand;
-import server.zone.managers.objectcontroller.ObjectController;
-import server.zone.objects.structure.StructureObject;
-import server.zone.ZoneClientSession;
-import server.zone.objects.waypoint.WaypointObject;
-import server.zone.Zone;
-import server.zone.templates.SharedObjectTemplate;
-import system.util.Vector;
-import system.util.VectorMap;
-import engine.service.proto.BasePacket;
 import engine.service.proto.BaseMessage;
-import server.zone.objects.creature.CreatureObject;
+import engine.service.proto.BasePacket;
+import engine.util.u3d.Vector3;
 import server.chat.room.ChatRoom;
-import system.util.SortedVector;
+import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.objects.building.BuildingObject;
-import server.zone.objects.tangible.tool.SurveyTool;
-import server.zone.objects.tangible.tool.CraftingTool;
+import server.zone.objects.creature.commands.QueueCommand;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.player.events.PlayerDisconnectEvent;
 import server.zone.objects.player.events.PlayerRecoveryEvent;
+import server.zone.objects.scene.SceneObject;
+import server.zone.objects.structure.StructureObject;
+import server.zone.objects.tangible.tool.CraftingTool;
+import server.zone.objects.tangible.tool.SurveyTool;
+import server.zone.objects.waypoint.WaypointObject;
+import server.zone.templates.SharedObjectTemplate;
+import server.zone.Zone;
+import server.zone.ZoneClientSession;
+import system.util.SortedVector;
+import system.util.Vector;
+import system.util.VectorMap;
+include server.zone.objects.creature.variables.Skill;
+include server.zone.objects.draftschematic.DraftSchematic;
+include server.zone.objects.manufactureschematic.ManufactureSchematic;
+include server.zone.objects.player.badges.Badges;
 include server.zone.objects.player.events.BountyHunterTefRemovalTaskMap;
 include server.zone.objects.player.sui.SuiBox;
 include server.zone.objects.player.ValidatedPosition;
-include server.zone.objects.player.variables.WaypointList;
-include server.zone.objects.creature.variables.Skill;
 include server.zone.objects.player.variables.Ability;
 include server.zone.objects.player.variables.AbilityList;
+include server.zone.objects.player.variables.FactionStandingList;
 include server.zone.objects.player.variables.FriendList;
 include server.zone.objects.player.variables.IgnoreList;
 include server.zone.objects.player.variables.SchematicList;
-include server.zone.objects.player.variables.FactionStandingList;
-include server.zone.objects.player.badges.Badges;
-include server.zone.objects.scene.variables.DeltaVectorMap;
+include server.zone.objects.player.variables.WaypointList;
 include server.zone.objects.scene.variables.DeltaVector;
-include server.zone.objects.draftschematic.DraftSchematic;
-include server.zone.objects.manufactureschematic.ManufactureSchematic;
-import system.util.Vector;
-import system.util.SortedVector;
-import engine.util.u3d.Vector3;
+include server.zone.objects.scene.variables.DeltaVectorMap;
 
 class PlayerObject extends IntangibleObject {	
 	protected unsigned int characterBitmask;
@@ -1333,4 +1330,8 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+	
+	public boolean isJedi() {
+		return jediState > 2; //TODO: Implement jedi constants.
+	}
 }

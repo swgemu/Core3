@@ -57,24 +57,17 @@ namespace spawnmaps {
 namespace events {
 
 class DespawnMissionNpcTask : public Task {
-	ManagedReference<AiAgent*> npc;
+	ManagedReference<MissionManager*> missionManager;
 	Reference<NpcSpawnPoint*> npcSpawnPoint;
 
 public:
-	DespawnMissionNpcTask(AiAgent* npc, NpcSpawnPoint* npcSpawnPoint) {
-		this->npc = npc;
+	DespawnMissionNpcTask(MissionManager* missionManager, NpcSpawnPoint* npcSpawnPoint) {
+		this->missionManager = missionManager;
 		this->npcSpawnPoint = npcSpawnPoint;
 	}
 
 	void run() {
-		if (npc != NULL) {
-			Locker locker(npc);
-
-			npc->scheduleDespawn(1);
-		}
-		if (npcSpawnPoint != NULL) {
-			npcSpawnPoint->decreaseUsageCount();
-		}
+		missionManager->despawnMissionNpc(npcSpawnPoint);
 	}
 };
 

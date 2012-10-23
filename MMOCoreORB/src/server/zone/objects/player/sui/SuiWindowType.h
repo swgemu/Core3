@@ -83,6 +83,8 @@ public:
 	static const uint16 GUILD_TRANSFER_LEADER_CONFIRM = 37;
 	static const uint16 GUILD_WAR_LIST = 38;
 	static const uint16 GUILD_WAR_ENTER_NAME = 39;
+	static const uint16 GUILD_TAKE_LOTS = 40;
+
 
 	//Travel 51 - 60
 	static const uint16 TICKET_PURCHASE_MESSAGE = 51;
@@ -128,6 +130,8 @@ public:
 	static const uint16 CITY_REGISTER = 126;
 	static const uint16 CITY_MAYOR_STANDINGS = 127;
 	static const uint16 CITY_MAYOR_VOTE = 128;
+	static const uint16 CITY_ADJUST_TAX = 129;
+	static const uint16 CITY_TAX_PROMPT = 130;
 
 	//Structure 141 - 170
 	static const uint16 STRUCTURE_STATUS = 141;
@@ -214,6 +218,11 @@ public:
 	static const uint16 INSTALL_MISSION_TERMINAL = 1005;
 	static const uint16 RECRUIT_SKILL_TRAINER = 1006;
 	static const uint16 HOLOGRIND_UNLOCK = 1007;
+	static const uint16 MARKET_INFO = 1008;
+	static const uint16 VENDOR_PHRASES = 1009;
+	static const uint16 VENDOR_MOODS = 1010;
+	static const uint16 VENDOR_CUSTOM_PHRASE = 1011;
+	static const uint16 VENDOR_ANIMATION = 1012;
 };
 
 #endif /*SuiWindowType_H_*/

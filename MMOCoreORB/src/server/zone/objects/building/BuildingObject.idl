@@ -60,6 +60,7 @@ import engine.util.u3d.Vector3;
 import system.lang.StackTrace;
 include server.zone.objects.cell.CellObject;
 include engine.util.u3d.CloseObjectsVector;
+import system.thread.Mutex;
 
 class BuildingObject extends StructureObject {
 	@dereferenced
@@ -74,6 +75,9 @@ class BuildingObject extends StructureObject {
 	protected int accessFee;
 	protected int accessDuration;
 	protected transient unsigned int lastAccessFeeChange;
+	
+	@dereferenced
+	protected transient Mutex paidAccessListMutex; 
 	
 	@dereferenced
 	protected VectorMap<unsigned long, unsigned int> paidAccessList;
@@ -155,6 +159,14 @@ class BuildingObject extends StructureObject {
 	 * @return Returns true if allowed to enter.
 	 */
 	public native boolean isAllowedEntry(CreatureObject player);
+	
+	/**
+	 * Checks to see if the player is CityBanned from the city
+	 * that the building is in
+	 * returns true if the player is cityBanned
+	 * returns false if the player is not CityBanned
+	 */
+	public native boolean isCityBanned(CreatureObject player);
 	
 	/**
 	 * Gets called when the structure has been created;
@@ -330,10 +342,12 @@ class BuildingObject extends StructureObject {
 	public native void setAccessFee(int fee, int duration);
 	
 	public void removeAccessFee() {
-		accessFee = 0;
-		accessDuration = 0;
-		paidAccessList.removeAll();
-		updatePaidAccessList();
+		synchronized (paidAccessListMutex) {
+			accessFee = 0;
+			accessDuration = 0;
+			paidAccessList.removeAll();
+			updatePaidAccessList();
+		}
 	}
 	
 	public native int getAccessFeeDelay();

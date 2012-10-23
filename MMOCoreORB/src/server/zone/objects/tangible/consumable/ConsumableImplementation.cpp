@@ -224,32 +224,35 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		break;
 	}
 
-	/*case EFFECT_INSTANT: {
+	case EFFECT_INSTANT: {
 		if (modifiers.isEmpty())
 			return 0;
 
 		//TODO: Handle each instant effect on its own...
 		String effect = modifiers.elementAt(0).getKey();
 
-		if (effect == "slow_dot") {
-			//We need to reduce the duration of all the player's current dot effects by nutritions %
-			//player->slowDots(nutrition);
-		} else if (effect == "burst_run") {
+		if (effect == "burst_run") {
 			//We need to reduce the cooldown and efficiency.
-			player->activateBurstRun(30, 300 - duration, nutrition);
+			player->executeObjectControllerAction(String("burstrun").hashCode());
 
-			if (player->isBurstRunning()) {
+			if (player->hasBuff(String("burstrun").hashCode())) {
+				float reduction = 1.f - ((float)nutrition / 100.f);
+				player->updateCooldownTimer("burstrun", ((300 * reduction) + duration) * 1000);
 				player->sendSystemMessage("@combat_effects:instant_burst_run"); //You instantly burst run at increased efficiency!
+
+				Reference<Task*> task = player->getPendingTask("burst_run_notify");
+				task->reschedule(((300 * reduction) + duration) * 1000);
+
 			} else {
 				//Couldnt burst run yet.
 				return 0;
 			}
 		} else if (effect == "food_reduce") {
 			//Tilla till reduces food stomach filling by a percentage
-			int currentfilling = player->getFoodFilling();
-			player->setFoodFilling(round(currentfilling * (100 - nutrition) / 100.0f), true);
+			int currentfilling = ghost->getFoodFilling();
+			ghost->setFoodFilling(round(currentfilling * (100 - nutrition) / 100.0f), true);
 		}
-	}*/
+	}
 	}
 
 	if (buff != NULL)

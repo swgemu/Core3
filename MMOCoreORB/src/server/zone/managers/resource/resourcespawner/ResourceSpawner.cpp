@@ -729,10 +729,10 @@ void ResourceSpawner::sendSample(CreatureObject* player, const String& resname,
 	session->rescheduleSample();
 }
 
-void ResourceSpawner::sendSampleResults(CreatureObject* player,
-		const float density, const String& resname) {
+void ResourceSpawner::sendSampleResults(CreatureObject* player, const float density, const String& resname) {
 
 	ManagedReference<SurveySession*> session = cast<SurveySession*>(player->getActiveSession(SessionFacadeType::SURVEY));
+
 	if(session == NULL) {
 		return;
 	}
@@ -761,6 +761,7 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player,
 
 	// Lower skill levels mean you can't sample lower concetrations
 	int surveySkill = player->getSkillMod("surveying");
+
 	if ((density * 100) < (32 - ((surveySkill / 20) * 6)) || density < .10) {
 		StringIdChatParameter message("survey", "density_below_threshold");
 		message.setTO(resname);
@@ -771,11 +772,10 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player,
 
 	Coordinate* richSampleLocation = session->getRichSampleLocation();
 
-	float sampleRate = (surveySkill * density) + System::random(100);
+	float sampleRate = (surveySkill * density) + System::random(100) + player->getSkillMod("private_spec_samplerate");
 
 	// Was the sample successful or not
-	if (!session->tryGamble() && richSampleLocation == NULL && sampleRate
-			< 40) {
+	if (!session->tryGamble() && richSampleLocation == NULL && sampleRate < 40) {
 		StringIdChatParameter message("survey", "sample_failed");
 		message.setTO(resname);
 		player->sendSystemMessage(message);
@@ -785,8 +785,9 @@ void ResourceSpawner::sendSampleResults(CreatureObject* player,
 
 	int maxUnitsExtracted = (int) (density * (25 + System::random(3)));
 
-	int unitsExtracted = (maxUnitsExtracted * (float(surveySkill) / 100.0f))
-			* samplingMultiplier;
+	float cityMultiplier = 1.f + player->getSkillMod("private_spec_samplesize") / 100.f;
+
+	int unitsExtracted = maxUnitsExtracted * (float(surveySkill) / 100.0f) * samplingMultiplier * cityMultiplier;
 	int xpcap = 40;
 
 	if (session->tryGamble()) {

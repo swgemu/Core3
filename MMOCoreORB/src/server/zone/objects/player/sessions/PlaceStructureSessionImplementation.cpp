@@ -6,21 +6,22 @@
  */
 
 #include "PlaceStructureSession.h"
-#include "server/zone/Zone.h"
+#include "server/chat/ChatManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
-#include "server/chat/ChatManager.h"
-#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/managers/structure/tasks/StructureConstructionCompleteTask.h"
+#include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/installation/InstallationObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/scene/SessionFacadeType.h"
+#include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 #include "server/zone/packets/player/EnterStructurePlacementModeMessage.h"
-#include "server/zone/managers/structure/tasks/StructureConstructionCompleteTask.h"
-#include "server/zone/objects/structure/StructureObject.h"
-#include "server/zone/objects/installation/InstallationObject.h"
-#include "server/zone/objects/building/BuildingObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
-#include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
+#include "server/zone/Zone.h"
+
 
 int PlaceStructureSessionImplementation::constructStructure(float x, float y, int angle) {
 	positionX = x;
@@ -63,7 +64,7 @@ int PlaceStructureSessionImplementation::completeSession() {
 
 	String serverTemplatePath = deedObject->getGeneratedObjectTemplate();
 
-	StructureManager* structureManager = zone->getStructureManager();
+	StructureManager* structureManager = StructureManager::instance();
 	ManagedReference<StructureObject*> structureObject = structureManager->placeStructure(creatureObject, serverTemplatePath, positionX, positionY, directionAngle);
 
 	if (structureObject == NULL) {

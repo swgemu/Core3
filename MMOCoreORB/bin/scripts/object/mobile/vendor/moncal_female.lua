@@ -50,6 +50,7 @@ object_mobile_vendor_moncal_female = object_mobile_vendor_shared_moncal_female:n
 	objectMenuComponent = {"cpp", "VendorMenuComponent"},
 	dataObjectComponent = "VendorDataComponent",	
 	containerComponent = {"cpp", "VendorContainerComponent"},
+	zoneComponent = "VendorZoneComponent",
 
 	noTrade = 1,
 

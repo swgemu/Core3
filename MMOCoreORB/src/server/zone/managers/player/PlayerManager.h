@@ -300,6 +300,8 @@ public:
 
 	SortedVector<ManagedReference<SceneObject* > > getInsurableItems(CreatureObject* player, bool onlyInsurable = true);
 
+	void addInsurableItemsRecursive(SceneObject* obj, SortedVector<ManagedReference<SceneObject* > >* items, bool onlyInsurable);
+
 	void handleAbortTradeMessage(CreatureObject* player);
 
 	void handleAddItemToTradeWindow(CreatureObject* player, unsigned long long itemID);
@@ -403,6 +405,8 @@ public:
 	void decreaseOnlineCharCount(ZoneClientSession* client);
 
 	bool increaseOnlineCharCountIfPossible(ZoneClientSession* client);
+
+	void fixHAM(CreatureObject* player);
 
 	bool offerTeaching(CreatureObject* teacher, CreatureObject* student, Skill* skill);
 
@@ -518,6 +522,8 @@ public:
 
 	SortedVector<ManagedReference<SceneObject* > > getInsurableItems(CreatureObject* player, bool onlyInsurable = true);
 
+	void addInsurableItemsRecursive(SceneObject* obj, SortedVector<ManagedReference<SceneObject* > >* items, bool onlyInsurable);
+
 	void handleAbortTradeMessage(CreatureObject* player);
 
 	void handleAddItemToTradeWindow(CreatureObject* player, unsigned long long itemID);
@@ -625,6 +631,8 @@ public:
 	void decreaseOnlineCharCount(ZoneClientSession* client);
 
 	bool increaseOnlineCharCountIfPossible(ZoneClientSession* client);
+
+	void fixHAM(CreatureObject* player);
 
 	bool offerTeaching(CreatureObject* teacher, CreatureObject* student, Skill* skill);
 
@@ -802,6 +810,8 @@ public:
 	void decreaseOnlineCharCount(ZoneClientSession* client);
 
 	bool increaseOnlineCharCountIfPossible(ZoneClientSession* client);
+
+	void fixHAM(CreatureObject* player);
 
 };
 

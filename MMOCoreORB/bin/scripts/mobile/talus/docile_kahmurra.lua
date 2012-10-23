@@ -26,7 +26,7 @@ docile_kahmurra = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/kahmurra.iff"},
+	templates = {"object/mobile/kahmurra_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

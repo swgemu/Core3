@@ -117,7 +117,9 @@ object_weapon_creature_creature_default_weapon = object_weapon_creature_shared_c
 	minDamage = 20,
 	maxDamage = 90,
 	
-	attackSpeed = 3.7
+	attackSpeed = 3.7,
+	
+	woundsRatio = 5
 
 }
 

@@ -26,7 +26,7 @@ agrilat_rasp = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/flite_rasp.iff"},
+	templates = {"object/mobile/flite_rasp_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

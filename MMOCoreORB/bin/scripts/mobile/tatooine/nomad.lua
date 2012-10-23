@@ -21,14 +21,17 @@ nomad = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_nomad.iff"},
 	lootGroups = {},
 	weapons = {},
-	attacks = merge(marksmannovice,brawlernovice)
+	conversationTemplate = "theme_park_jabba_mission_target_convotemplate",
+	attacks = {
+	}
 }
 
 CreatureTemplates:addCreatureTemplate(nomad, "nomad")

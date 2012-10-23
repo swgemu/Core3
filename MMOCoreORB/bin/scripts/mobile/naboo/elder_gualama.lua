@@ -26,7 +26,7 @@ elder_gualama = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/gualama.iff"},
+	templates = {"object/mobile/gualama_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

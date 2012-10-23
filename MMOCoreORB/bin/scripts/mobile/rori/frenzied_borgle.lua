@@ -26,7 +26,7 @@ frenzied_borgle = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/borgle.iff"},
+	templates = {"object/mobile/borgle_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

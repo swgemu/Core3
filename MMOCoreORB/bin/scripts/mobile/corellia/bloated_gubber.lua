@@ -26,7 +26,7 @@ bloated_gubber = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/gubbur.iff"},
+	templates = {"object/mobile/gubbur_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

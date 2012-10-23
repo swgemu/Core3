@@ -23,20 +23,6 @@ using namespace server::zone;
 
 namespace server {
 namespace zone {
-namespace managers {
-namespace structure {
-
-class StructureManager;
-
-} // namespace structure
-} // namespace managers
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::managers::structure;
-
-namespace server {
-namespace zone {
 namespace objects {
 namespace area {
 
@@ -244,8 +230,6 @@ public:
 
 	PlanetManager* getPlanetManager();
 
-	StructureManager* getStructureManager();
-
 	ZoneServer* getZoneServer();
 
 	CreatureManager* getCreatureManager();
@@ -304,8 +288,6 @@ class ZoneImplementation : public SceneObjectImplementation {
 	Reference<ObjectMap* > objectMap;
 
 	ManagedReference<PlanetManager* > planetManager;
-
-	ManagedReference<StructureManager* > structureManager;
 
 	ManagedReference<CreatureManager* > creatureManager;
 
@@ -375,8 +357,6 @@ public:
 	void dropSceneObject(SceneObject* object);
 
 	PlanetManager* getPlanetManager();
-
-	StructureManager* getStructureManager();
 
 	ZoneServer* getZoneServer();
 
@@ -476,8 +456,6 @@ public:
 	void dropSceneObject(SceneObject* object);
 
 	PlanetManager* getPlanetManager();
-
-	StructureManager* getStructureManager();
 
 	ZoneServer* getZoneServer();
 

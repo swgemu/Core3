@@ -149,6 +149,10 @@ class TangibleObject extends SceneObject {
 		
 	}
 	
+	public abstract void removeAllSkillModsOfType(final int skillType, boolean notifyClient = true) {
+		
+	}
+	
 	/**
 	 * Removes this object's skill mod map from the target object's skill mod map
 	 * @param targetObject the targeted object containing the SkillModMap which will be affected.

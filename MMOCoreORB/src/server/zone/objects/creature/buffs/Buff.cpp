@@ -14,7 +14,7 @@
  *	BuffStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_INIT__,RPC_SENDTO__CREATUREOBJECT_,RPC_SENDDESTROYTO__CREATUREOBJECT_,RPC_ACTIVATE__BOOL_,RPC_DEACTIVATE__BOOL_,RPC_ACTIVATE__,RPC_DEACTIVATE__,RPC_APPLYATTRIBUTEMODIFIERS__,RPC_APPLYSKILLMODIFIERS__,RPC_APPLYSTATES__,RPC_REMOVEATTRIBUTEMODIFIERS__,RPC_REMOVESKILLMODIFIERS__,RPC_REMOVESTATES__,RPC_CLEARBUFFEVENT__,RPC_SETBUFFEVENTNULL__,RPC_SCHEDULEBUFFEVENT__,RPC_PARSEATTRIBUTEMODIFIERSTRING__STRING_,RPC_PARSESKILLMODIFIERSTRING__STRING_,RPC_GETATTRIBUTEMODIFIERSTRING__,RPC_GETSKILLMODIFIERSTRING__,RPC_GETTIMELEFT__,RPC_SETATTRIBUTEMODIFIER__BYTE_INT_,RPC_SETSKILLMODIFIER__STRING_INT_,RPC_ADDSTATE__LONG_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_,RPC_SETFILLATTRIBUTESONBUFF__BOOL_,RPC_GETBUFFNAME__,RPC_GETBUFFCRC__,RPC_GETBUFFDURATION__,RPC_GETBUFFTYPE__,RPC_GETATTRIBUTEMODIFIERVALUE__BYTE_,RPC_GETSKILLMODIFIERVALUE__STRING_,RPC_ISACTIVE__,RPC_ISSPICEBUFF__,RPC_ISATTRIBUTEBUFF__,RPC_SETSTARTFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_,RPC_SETENDFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_LOADBUFFDURATIONEVENT__CREATUREOBJECT_,RPC_INIT__,RPC_SENDTO__CREATUREOBJECT_,RPC_SENDDESTROYTO__CREATUREOBJECT_,RPC_ACTIVATE__BOOL_,RPC_DEACTIVATE__BOOL_,RPC_ACTIVATE__,RPC_DEACTIVATE__,RPC_APPLYATTRIBUTEMODIFIERS__,RPC_APPLYSKILLMODIFIERS__,RPC_APPLYSTATES__,RPC_REMOVEATTRIBUTEMODIFIERS__,RPC_REMOVESKILLMODIFIERS__,RPC_REMOVESTATES__,RPC_CLEARBUFFEVENT__,RPC_SETBUFFEVENTNULL__,RPC_SCHEDULEBUFFEVENT__,RPC_PARSEATTRIBUTEMODIFIERSTRING__STRING_,RPC_PARSESKILLMODIFIERSTRING__STRING_,RPC_GETATTRIBUTEMODIFIERSTRING__,RPC_GETSKILLMODIFIERSTRING__,RPC_GETTIMELEFT__,RPC_SETATTRIBUTEMODIFIER__BYTE_INT_,RPC_SETSKILLMODIFIER__STRING_INT_,RPC_ADDSTATE__LONG_,RPC_SETSPEEDMULTIPLIERMOD__FLOAT_,RPC_SETACCELERATIONMULTIPLIERMOD__FLOAT_,RPC_SETFILLATTRIBUTESONBUFF__BOOL_,RPC_GETBUFFNAME__,RPC_GETBUFFCRC__,RPC_GETBUFFDURATION__,RPC_GETBUFFTYPE__,RPC_GETATTRIBUTEMODIFIERVALUE__BYTE_,RPC_GETSKILLMODIFIERVALUE__STRING_,RPC_ISACTIVE__,RPC_ISSPICEBUFF__,RPC_ISATTRIBUTEBUFF__,RPC_SETSTARTFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_,RPC_SETENDFLYTEXT__STRING_STRING_BYTE_BYTE_BYTE_};
 
 Buff::Buff(CreatureObject* creo, unsigned int buffcrc, float duration, int bufftype) : ManagedObject(DummyConstructorParameter::instance()) {
 	BuffImplementation* _implementation = new BuffImplementation(creo, buffcrc, duration, bufftype);
@@ -56,6 +56,20 @@ void Buff::notifyLoadFromDatabase() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->notifyLoadFromDatabase();
+}
+
+void Buff::loadBuffDurationEvent(CreatureObject* creo) {
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_LOADBUFFDURATIONEVENT__CREATUREOBJECT_);
+		method.addObjectParameter(creo);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->loadBuffDurationEvent(creo);
 }
 
 void Buff::init() {
@@ -488,6 +502,15 @@ int Buff::getBuffType() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getBuffType();
+}
+
+VectorMap<byte, int>* Buff::getAttributeModifiers() {
+	BuffImplementation* _implementation = static_cast<BuffImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getAttributeModifiers();
 }
 
 int Buff::getAttributeModifierValue(byte attribute) {
@@ -1129,6 +1152,11 @@ int BuffImplementation::getBuffType() {
 	return buffType;
 }
 
+VectorMap<byte, int>* BuffImplementation::getAttributeModifiers() {
+	// server/zone/objects/creature/buffs/Buff.idl():  		return attributeModifiers;
+	return (&attributeModifiers);
+}
+
 int BuffImplementation::getAttributeModifierValue(byte attribute) {
 	// server/zone/objects/creature/buffs/Buff.idl():  		return 
 	if ((&attributeModifiers)->contains(attribute))	// server/zone/objects/creature/buffs/Buff.idl():  			return attributeModifiers.get(attribute);
@@ -1178,6 +1206,11 @@ void BuffAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_NOTIFYLOADFROMDATABASE__:
 		{
 			notifyLoadFromDatabase();
+		}
+		break;
+	case RPC_LOADBUFFDURATIONEVENT__CREATUREOBJECT_:
+		{
+			loadBuffDurationEvent(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		}
 		break;
 	case RPC_INIT__:
@@ -1387,6 +1420,10 @@ void BuffAdapter::initializeTransientMembers() {
 
 void BuffAdapter::notifyLoadFromDatabase() {
 	(static_cast<Buff*>(stub))->notifyLoadFromDatabase();
+}
+
+void BuffAdapter::loadBuffDurationEvent(CreatureObject* creo) {
+	(static_cast<Buff*>(stub))->loadBuffDurationEvent(creo);
 }
 
 void BuffAdapter::init() {

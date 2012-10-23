@@ -21,8 +21,8 @@ criminal = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
-	creatureBitmask = PACK + STALKER,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 

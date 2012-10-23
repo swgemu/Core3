@@ -64,13 +64,27 @@ namespace vendor {
 
 class VendorAdBarkingSession : public Facade {
 public:
-	VendorAdBarkingSession(CreatureObject* play);
+	VendorAdBarkingSession(CreatureObject* play, SceneObject* vend);
 
 	int initializeSession();
 
 	int cancelSession();
 
 	int clearSession();
+
+	void setMessage(const String& mess);
+
+	void setMood(const String& mo);
+
+	void setAnimation(const String& ani);
+
+	void sendPhraseOptions();
+
+	void sendCustomMessageInput();
+
+	void sendMoodSelect();
+
+	void sendAnimationSelect();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -104,10 +118,18 @@ class VendorAdBarkingSessionImplementation : public FacadeImplementation {
 protected:
 	ManagedReference<CreatureObject* > owner;
 
+	ManagedReference<SceneObject* > vendor;
+
 	int advertisingMod;
 
+	String message;
+
+	String mood;
+
+	String animation;
+
 public:
-	VendorAdBarkingSessionImplementation(CreatureObject* play);
+	VendorAdBarkingSessionImplementation(CreatureObject* play, SceneObject* vend);
 
 	VendorAdBarkingSessionImplementation(DummyConstructorParameter* param);
 
@@ -117,8 +139,22 @@ public:
 
 	int clearSession();
 
-private:
+	void setMessage(const String& mess);
+
+	void setMood(const String& mo);
+
+	void setAnimation(const String& ani);
+
 	void sendPhraseOptions();
+
+	void sendCustomMessageInput();
+
+	void sendMoodSelect();
+
+	void sendAnimationSelect();
+
+private:
+	void completeSession();
 
 public:
 	WeakReference<VendorAdBarkingSession*> _this;
@@ -169,6 +205,20 @@ public:
 	int cancelSession();
 
 	int clearSession();
+
+	void setMessage(const String& mess);
+
+	void setMood(const String& mo);
+
+	void setAnimation(const String& ani);
+
+	void sendPhraseOptions();
+
+	void sendCustomMessageInput();
+
+	void sendMoodSelect();
+
+	void sendAnimationSelect();
 
 };
 

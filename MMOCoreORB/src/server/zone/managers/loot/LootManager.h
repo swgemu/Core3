@@ -207,7 +207,11 @@ public:
 private:
 	void setInitialObjectStats(LootItemTemplate* templateObject, CraftingValues* craftingValues, TangibleObject* prototype);
 
+	void setSkillMods(TangibleObject* object, LootItemTemplate* templateObject);
+
 	void setCustomObjectName(TangibleObject* object, LootItemTemplate* templateObject);
+
+	void setSockets(TangibleObject* object, CraftingValues* craftingValues);
 
 public:
 	TangibleObject* createLootObject(LootItemTemplate* templateObject, int level);

@@ -44,7 +44,6 @@
 object_building_player_city_cityhall_corellia = object_building_player_city_shared_cityhall_corellia:new {
 	lotSize = 0,
 	baseMaintenanceRate = 0,
-	planetMapCategory = "cityhall",
 	allowedZones = {"corellia", "talus"},
 	zoneComponent = "CityHallZoneComponent",
 	cityRankRequired = 0,

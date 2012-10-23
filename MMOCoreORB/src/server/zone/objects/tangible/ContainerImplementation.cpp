@@ -70,7 +70,6 @@ void ContainerImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 		return;
 
 	locked = containerTemplate->getLocked();
-
 }
 
 /*void ContainerImplementation::sendContainerObjectsTo(SceneObject* player) {
@@ -165,12 +164,18 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 	}
 
 	if (containmentType == -1) {
-		if (gameObjectType == SceneObjectType::WEARABLECONTAINER && object->getGameObjectType() == SceneObjectType::WEARABLECONTAINER) {
+		if ((gameObjectType == SceneObjectType::WEARABLECONTAINER && object->getGameObjectType() == SceneObjectType::WEARABLECONTAINER)) {
 			errorDescription = "@container_error_message:container12";
 
 			return TransferErrorCode::CANTNESTOBJECT;
 		}
 		
+		if (object->isContainerObject() && getArrangementDescriptorSize() == 0) {
+			errorDescription = "@container_error_message:container12";
+
+			return TransferErrorCode::CANTNESTOBJECT;
+		}
+
 		ManagedReference<SceneObject*> myParent = getParent();
 		ManagedReference<SceneObject*> otherParent = object->getParent();
 

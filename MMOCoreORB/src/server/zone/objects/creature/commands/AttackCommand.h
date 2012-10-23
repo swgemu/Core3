@@ -54,8 +54,6 @@ public:
 
 	AttackCommand(const String& name, ZoneProcessServer* server)
 		: CombatQueueCommand(name, server) {
-
-		damageMultiplier = 1.5;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {

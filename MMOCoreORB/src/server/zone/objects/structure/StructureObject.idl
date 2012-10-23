@@ -44,13 +44,10 @@ which carries forward this exception.
 
 package server.zone.objects.structure;
 
+import server.zone.Zone;
 import server.zone.objects.tangible.TangibleObject;
-
-include server.zone.objects.structure.StructurePermissionList;
 import server.zone.objects.structure.events.StructureMaintenanceTask;
-
 import server.zone.objects.scene.SceneObject;
-import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.PlayerObject;
 import server.zone.templates.SharedObjectTemplate;
@@ -59,6 +56,7 @@ import engine.util.u3d.AABBTree;
 import engine.util.u3d.AABBNode;
 import engine.util.u3d.Vector3;
 import system.lang.Time;
+include server.zone.objects.structure.StructurePermissionList;
 
 class StructureObject extends TangibleObject {
 	protected transient StructureMaintenanceTask structureMaintenanceTask;

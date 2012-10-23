@@ -96,7 +96,8 @@ Vector3 DestroyMissionObjectiveImplementation::findValidSpawnPosition(Zone* zone
 
 	while ((!zone->isWithinBoundaries(position) ||
 			(terrain->getWaterHeight(newX, newY, waterHeight) && waterHeight > height)
-			|| CollisionManager::checkSphereCollision(position, 25.f , zone)) && tries < 128) {
+			|| CollisionManager::checkSphereCollision(position, 25.f , zone) ||
+			zone->getPlanetManager()->isInObjectsNoBuildZone(newX, newY, 25)) && tries < 128) {
 		newX = spawnActiveArea->getPositionX() + (distance - (float) System::random(distance * 2));
 		newY = spawnActiveArea->getPositionY() + (distance - (float) System::random(distance * 2));
 		height = zone->getHeight(newX, newY);
@@ -149,6 +150,8 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 	waypoint->setPosition(pos.getX(), 0, pos.getY());
 	mission->updateMissionLocation();
+
+	mission->setStartPosition(pos.getX(), pos.getY());
 
 	//TODO: find correct string id
 	ManagedReference<CreatureObject*> player = getPlayerOwner();

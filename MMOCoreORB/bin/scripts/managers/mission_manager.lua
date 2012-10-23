@@ -4,7 +4,7 @@ crafting_mission_items = {
 	"object/draft_schematic/item/quest_item/attunement_grid.iff",
 	"object/draft_schematic/item/quest_item/current_alternator.iff",
 	"object/draft_schematic/item/quest_item/feedback_controller.iff",
-	"object/draft_schematic/item/quest_item/output_govenor.iff",
+	"object/draft_schematic/item/quest_item/output_governor.iff",
 	"object/draft_schematic/item/quest_item/power_regulator.iff"
 }
 
@@ -26,12 +26,12 @@ bh_targets_at_mission_level = {
 		"bodyguard_zabrak_female"
 	},
 	level2 = {
-		"bodyguard",
-		"bodyguard_zabrak_female"
+		"dune_stalker_brawler",
+		"kai_tok_prowler"
 	},
 	level3 = {
-		"bodyguard",
-		"bodyguard_zabrak_female"
+		"pirate_leader",
+		"sennex_guard"
 	}
 }
 

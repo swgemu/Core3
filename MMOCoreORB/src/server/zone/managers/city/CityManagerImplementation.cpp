@@ -28,10 +28,14 @@
 #include "server/zone/objects/player/sui/callbacks/CityAddMilitiaMemberSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/CityRegisterSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/CityMayoralVoteSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/CityAdjustTaxSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/CitySetTaxSuiCallback.h"
 #include "server/zone/objects/region/CitizenList.h"
 #include "server/zone/objects/building/BuildingObject.h"
 
 CitiesAllowed CityManagerImplementation::citiesAllowedPerRank;
+CitySpecializationMap CityManagerImplementation::citySpecializations;
+CityTaxMap CityManagerImplementation::cityTaxes;
 Vector<uint8> CityManagerImplementation::citizensPerRank;
 Vector<uint16> CityManagerImplementation::radiusPerRank;
 int CityManagerImplementation::cityUpdateInterval = 0;
@@ -76,6 +80,18 @@ void CityManagerImplementation::loadLuaConfig() {
 	}
 
 	luaObject.pop();
+
+	luaObject = lua->getGlobalObject("CitySpecializations");
+	citySpecializations.readObject(&luaObject);
+	luaObject.pop();
+
+	info("Loaded " + String::valueOf(citySpecializations.size()) + " city specializations.", true);
+
+	luaObject = lua->getGlobalObject("CityTaxes");
+	cityTaxes.readObject(&luaObject);
+	luaObject.pop();
+
+	info("Loaded " + String::valueOf(cityTaxes.size()) + " city tax rules.", true);
 
 	//Only load the static values on the first zone.
 	cityUpdateInterval = lua->getGlobalInt("CityUpdateInterval");
@@ -170,9 +186,9 @@ CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor, const S
 
 bool CityManagerImplementation::isCityRankCapped(const String& planetName, byte rank) {
 	Vector<byte>* citiesAllowed = &citiesAllowedPerRank.get(planetName);
-	byte maxCities = citiesAllowed->get(0);
 	byte maxAtRank = citiesAllowed->get(rank - 1);
-	byte totalCities = 0;
+	// http://www.swgemu.com/archive/scrapbookv51/data/20070127193144/index.html  for information
+	byte totalAtRank = 0;
 
 	Locker _lock(_this.get());
 
@@ -184,12 +200,14 @@ bool CityManagerImplementation::isCityRankCapped(const String& planetName, byte 
 		if (cityZone == NULL || cityZone->getZoneName() != planetName)
 			continue;
 
-		if (++totalCities > maxCities || totalCities > maxAtRank) {
-			return true;
+		if (city->getCityRank() >= rank) {
+			if (++totalAtRank >= maxAtRank) {
+				return true;
+			}
 		}
 	}
-
-	return false;
+	
+	return (totalAtRank >= maxAtRank);
 }
 
 bool CityManagerImplementation::validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y) {
@@ -243,6 +261,8 @@ void CityManagerImplementation::promptCitySpecialization(CityRegion* city, Creat
 		Time* timeRemaining = mayor->getCooldownTime("city_specialization");
 		params.setTO(String::valueOf(round(abs(timeRemaining->miliDifference() / 1000.f))) + " seconds");
 		mayor->sendSystemMessage(params);
+
+		return;
 	}
 
 	ManagedReference<CitySpecializationSession*> session = new CitySpecializationSession(mayor, city, terminal);
@@ -257,6 +277,9 @@ void CityManagerImplementation::changeCitySpecialization(CityRegion* city, Creat
 	StringIdChatParameter params("city/city", "spec_set"); //The city's specialization has been set to %TO.
 	params.setTO(spec);
 	mayor->sendSystemMessage(params);
+
+	//Resetting the city radius will remove it and reinsert it, updating it to everything in the area.
+	city->setRadius(city->getRadius());
 }
 
 void CityManagerImplementation::sendStatusReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
@@ -287,6 +310,17 @@ void CityManagerImplementation::sendStatusReport(CityRegion* city, CreatureObjec
 	list->addMenuItem("@city/city:reg_citizen_prompt " + String::valueOf(city->getCitizenCount())); //Registered Citizens:
 	list->addMenuItem("@city/city:structures_prompt " + String::valueOf(city->getStructuresCount())); //Structures:
 	list->addMenuItem("@city/city:specialization_prompt " + city->getCitySpecialization()); //Specialization:
+
+	for (int i = 0; i < cityTaxes.size(); ++i) {
+		CityTax* cityTax = &cityTaxes.get(i);
+		int tax = city->getTax(i);
+		String prompt = cityTax->getStatusPrompt();
+
+		if (prompt.isEmpty())
+			continue;
+
+		list->addMenuItem("@city/city:" + prompt + " " + String::valueOf(tax));
+	}
 
 	//TODO: Tax information and travel cost.
 
@@ -478,10 +512,71 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 
 	city->rescheduleUpdateEvent(cityUpdateInterval * 60);
 
-	//TODO: Taxation
-
-
 	deductCityMaintenance(city);
+
+	processIncomeTax(city);
+}
+
+void CityManagerImplementation::processIncomeTax(CityRegion* city) {
+	int incomeTax = city->getIncomeTax();
+
+	if (incomeTax <= 0)
+		return;
+
+	ManagedReference<SceneObject*> mayorObject = zoneServer->getObject(city->getMayorID());
+
+	if (mayorObject == NULL || !mayorObject->isPlayerCreature()) {
+		error("Mayor is null or not set in process income tax for city: " + city->getRegionName());
+		return;
+	}
+
+	CreatureObject* mayor = mayorObject.castTo<CreatureObject*>();
+	String mayorName = mayor->getFirstName();
+
+	ChatManager* chatManager = zoneServer->getChatManager();
+
+	CitizenList* citizens = city->getCitizenList();
+
+	int totalIncome = 0;
+
+	StringIdChatParameter params("city/city", "income_tax_paid_body");
+	params.setDI(incomeTax);
+
+	for (int i = 0; i < citizens->size(); ++i) {
+		uint64 oid = citizens->get(i);
+
+		ManagedReference<SceneObject*> obj = zoneServer->getObject(oid);
+
+		if (obj == NULL || !obj->isPlayerCreature())
+			continue;
+
+		CreatureObject* citizen = obj.castTo<CreatureObject*>();
+
+		Locker _clock(citizen, city);
+
+		params.setTO(citizen->getDisplayedName());
+
+		int bank = citizen->getBankCredits();
+
+		if (bank < incomeTax) {
+			params.setStringId("city/city", "income_tax_nopay_body");
+			chatManager->sendMail("@city/city:new_city_from", "@city/city:income_tax_nopay_subject", params, citizen->getFirstName(), NULL);
+
+			params.setStringId("city/city", "income_tax_nopay_mayor_body");
+			chatManager->sendMail("@city/city:new_city_from", "@city/city:income_tax_nopay_mayor_subject", params, mayorName, NULL);
+
+			continue;
+		}
+
+		citizen->subtractBankCredits(incomeTax);
+
+		params.setStringId("city/city", "income_tax_paid_body");
+		chatManager->sendMail("@city/city:new_city_from", "@city/city:income_tax_paid_subject", params, citizen->getFirstName(), NULL);
+
+		totalIncome += incomeTax;
+	}
+
+	city->addToCityTreasury(totalIncome);
 }
 
 void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
@@ -616,6 +711,7 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 }
 
 void CityManagerImplementation::destroyCity(CityRegion* city) {
+	//TODO: Review this.
 	Locker locker(_this.get());
 
 	ManagedReference<SceneObject*> obj = zoneServer->getObject(city->getMayorID());
@@ -649,7 +745,7 @@ void CityManagerImplementation::destroyCity(CityRegion* city) {
 			cityhall->getZone();
 
 		if (zone != NULL) {
-			zone->getStructureManager()->destroyStructure(cityhall);
+			StructureManager::instance()->destroyStructure(cityhall);
 		}
 	}
 
@@ -937,10 +1033,86 @@ void CityManagerImplementation::unregisterCity(CityRegion* city, CreatureObject*
 }
 
 void CityManagerImplementation::promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
-	//adjust_taxes_t Adjust Taxes
-	//adjust_taxes_d Select the tax you wish to adjust from the list below.
-	//cant_tax You lack the knowledge to manage the city's taxes.
-	//manage_taxes
+	ManagedReference<PlayerObject*> ghost = mayor->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	if (!ghost->hasAbility("manage_taxes")) {
+		mayor->sendSystemMessage("@city/city:cant_tax"); //You lack the knowledge to manage the city's taxes.
+		return;
+	}
+
+	ManagedReference<SuiListBox*> listbox = new SuiListBox(mayor, SuiWindowType::CITY_ADJUST_TAX);
+	listbox->setPromptTitle("@city/city:adjust_taxes_t"); //Adjust Taxes
+	listbox->setPromptText("@city/city:adjust_taxes_d"); //Select the tax you wish to adjust from the list below.
+	listbox->setUsingObject(terminal);
+	listbox->setForceCloseDistance(16.f);
+	listbox->setCallback(new CityAdjustTaxSuiCallback(zoneServer, city));
+
+	for (int i = 0; i < cityTaxes.size(); ++i) {
+		CityTax* cityTax = &cityTaxes.get(i);
+		listbox->addMenuItem("@city/city:" + cityTax->getMenuText(), i); //Property Tax
+	}
+
+	ghost->addSuiBox(listbox);
+	mayor->sendMessage(listbox->generateMessage());
+}
+
+void CityManagerImplementation::promptSetTax(CityRegion* city, CreatureObject* mayor, int selectedTax, SceneObject* terminal) {
+	CityTax* cityTax = getCityTax(selectedTax);
+
+	if (cityTax == NULL)
+		return;
+
+	ManagedReference<PlayerObject*> ghost = mayor->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	if (!ghost->hasAbility("manage_taxes")) {
+		mayor->sendSystemMessage("@city/city:cant_tax"); //You lack the knowledge to manage the city's taxes.
+		return;
+	}
+
+	ManagedReference<SuiInputBox*> inputbox = new SuiInputBox(mayor, SuiWindowType::CITY_TAX_PROMPT);
+	inputbox->setUsingObject(terminal);
+	inputbox->setForceCloseDistance(16.f);
+	inputbox->setCallback(new CitySetTaxSuiCallback(zoneServer, city, selectedTax));
+	inputbox->setPromptTitle("@city/city:" + cityTax->getInputTitle());
+	inputbox->setPromptText("@city/city:" + cityTax->getInputText());
+
+	ghost->addSuiBox(inputbox);
+	mayor->sendMessage(inputbox->generateMessage());
+}
+
+void CityManagerImplementation::setTax(CityRegion* city, CreatureObject* mayor, int selectedTax, int value) {
+	CityTax* cityTax = getCityTax(selectedTax);
+
+	if (cityTax == NULL)
+		return;
+
+	if (value < cityTax->getMinValue() || value > cityTax->getMaxValue()) {
+		mayor->sendSystemMessage("@city/city:tax_out_of_range"); //That tax value is outside the range limitations.
+		return;
+	}
+
+	Locker _lock(city, mayor);
+
+	city->setTax(selectedTax, value);
+
+	_lock.release();
+
+	StringIdChatParameter params("city/city", cityTax->getSystemMessage());
+	params.setDI(value);
+
+	mayor->sendSystemMessage(params);
+
+	//Send out emails to all residents.
+	params.setStringId("city/city", cityTax->getEmailBody());
+	params.setTO(city->getRegionName());
+
+	sendMail(city, "@city/city:new_city_from", cityTax->getEmailSubject(), params, NULL);
 }
 
 void CityManagerImplementation::sendMaintenanceReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
@@ -1197,5 +1369,40 @@ void CityManagerImplementation::registerForMayoralRace(CityRegion* city, Creatur
 
 		CreatureObject* creo = cast<CreatureObject*>(obj.get());
 		creo->sendSystemMessage(params);
+	}
+}
+
+CitySpecialization* CityManagerImplementation::getCitySpecialization(const String& name) {
+	if (!citySpecializations.containsKey(name))
+		return NULL;
+
+	return &citySpecializations.get(name);
+}
+
+CityTax* CityManagerImplementation::getCityTax(int idx) {
+	if (idx > cityTaxes.size() - 1 || idx < 0)
+		return NULL;
+
+	return &cityTaxes.get(idx);
+}
+
+void CityManagerImplementation::sendMail(CityRegion* city, const String& sender, const UnicodeString& subject, StringIdChatParameter& params, WaypointObject* waypoint) {
+	ChatManager* chat = zoneServer->getChatManager();
+
+	CitizenList* citizenList = city->getCitizenList();
+
+	if (citizenList == NULL)
+		return;
+
+	for (int i = 0; i < citizenList->size(); ++i) {
+		uint64 citizenID = citizenList->get(i);
+		ManagedReference<SceneObject*> obj = zoneServer->getObject(citizenID);
+
+		if (!obj->isPlayerCreature())
+			continue;
+
+		CreatureObject* creo = obj.castTo<CreatureObject*>();
+		//TODO: Modify Chat Manager so that you can send a creo instead of simply the firstname, since sendMail eventually gets the creo anyways
+		chat->sendMail(sender, subject, params, creo->getFirstName(), waypoint);
 	}
 }

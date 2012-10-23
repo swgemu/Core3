@@ -23,13 +23,13 @@ luke_skywalker = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_luke_skywalker.iff"},
 	lootGroups = {},
 	weapons = {"luke_skywalker_weapons"},
-	conversationTemplate = "",
+	conversationTemplate = "theme_park_rebel_mission_giver_convotemplate",
 	attacks = {
 	}
 }

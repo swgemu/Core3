@@ -270,6 +270,9 @@ public:
 			int healedWounds = creatureTarget->healWound(creature, attribute, healPower);
 
 			sendWoundMessage(creature, creatureTarget, attribute, -healedWounds);
+
+			if (creatureTarget != creature && healedWounds > 0)
+				awardXp(creature, "medical", round(healedWounds * 0.5f));
 		} else
 			return GENERALERROR;
 
@@ -281,11 +284,7 @@ public:
 		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
 		creature->addWounds(CreatureAttribute::FOCUS, mindWoundCost);
 		creature->addWounds(CreatureAttribute::WILLPOWER, mindWoundCost);
-		//creature->changeWillpowerWoundsBar(mindWoundCost);
 		creature->addShockWounds(2);
-
-		if (creatureTarget != creature && tendWound)
-			awardXp(creature, "medical", 100);
 
 		doAnimations(creature, creatureTarget);
 

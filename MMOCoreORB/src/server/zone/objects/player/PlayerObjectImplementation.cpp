@@ -1195,12 +1195,7 @@ void PlayerObjectImplementation::decreaseFactionStanding(const String& factionNa
 	CreatureObject* player = cast<CreatureObject*>( parent.get().get());
 
 	//Ensure that the new amount is not less than -5000.
-	//float newAmount = MAX(-5000.f, currentAmount - amount);
-	float newAmount = currentAmount - amount;
-	if (!factionStandingList.isPvpFaction(factionName))
-		newAmount = MAX(-5000, newAmount);
-	else
-		newAmount = MAX(-FactionManager::instance()->getFactionPointsCap(player->getFactionRank()), newAmount);
+	float newAmount = MAX(-5000, currentAmount - amount);
 
 	factionStandingList.put(factionName, newAmount);
 
@@ -1712,11 +1707,8 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 		if (structure != NULL) {
 			Zone* zone = structure->getZone();
 
-			if (zone != NULL) {
-				StructureManager* man = zone->getStructureManager();
-
-				man->destroyStructure(structure);
-			}
+			if (zone != NULL)
+				StructureManager::instance()->destroyStructure(structure);
 
 			structure->destroyObjectFromDatabase(true);
 		}

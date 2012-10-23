@@ -79,6 +79,9 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	case 218: //Manage Militia
 		cityManager->sendManageMilitia(city, player, sceneObject);
 		break;
+	case 219: //Adjust Taxes
+		cityManager->promptAdjustTaxes(city, player, sceneObject);
+		break;
 	case 220: //Treasury Deposit
 		cityManager->promptDepositCityTreasury(city, player, sceneObject);
 		break;

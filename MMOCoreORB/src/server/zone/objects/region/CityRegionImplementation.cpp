@@ -7,26 +7,25 @@
 
 #include "CityRegion.h"
 #include "events/CityUpdateEvent.h"
-#include "server/zone/Zone.h"
-#include "server/zone/objects/area/ActiveArea.h"
 #include "server/chat/StringIdChatParameter.h"
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/structure/StructureObject.h"
-#include "server/zone/objects/region/Region.h"
-#include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/ServerCore.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/creature/commands/BoardShuttleCommand.h"
+#include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/region/Region.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
-#include "server/zone/objects/creature/commands/QueueCommand.h"
-#include "server/zone/objects/creature/commands/BoardShuttleCommand.h"
-#include "server/zone/objects/creature/commands/QueueCommand.h"
-#include "server/zone/objects/creature/commands/BoardShuttleCommand.h"
+#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
+#include "server/zone/Zone.h"
 
 int BoardShuttleCommand::MAXIMUM_PLAYER_COUNT = 3000;
 
@@ -54,6 +53,16 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 
 	if (isRegistered())
 		zone->getPlanetManager()->addRegion(_this.get());
+
+	//Add taxes if they dont exist.
+	if (taxes.size() <= 0) {
+		info("Adding taxes for existing city that had no taxes.", true);
+		taxes.add(0);
+		taxes.add(0);
+		taxes.add(0);
+		taxes.add(0);
+		taxes.add(0);
+	}
 
 	/*
 	int seconds = -1 * round(nextUpdateTime.miliDifference() / 1000.f);
@@ -211,7 +220,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 
 		creature->sendSystemMessage(params);
 
-		//applySpecializationModifiers(creature);
+		applySpecializationModifiers(creature);
 	}
 
 	if (object->isStructureObject()){
@@ -238,10 +247,22 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 }
 
 void CityRegionImplementation::notifyExit(SceneObject* object) {
-	object->setCityRegion(NULL);
+	//pre: no 2 different city regions should ever overlap, only 2 Regions of the same city region
+	ManagedReference<Region*> activeRegion = cast<Region*>(object->getActiveRegion());
+
+	if (activeRegion != NULL) {
+		ManagedReference<CityRegion*> city = activeRegion->getCityRegion();
+
+		object->setCityRegion(city);
+
+		if (city == _this.get()) // if its the same city we wait till the object exits the last region
+			return;
+	} else {
+		object->setCityRegion(NULL);
+	}
+
 
 	if (object->isBazaarTerminal() || object->isVendor()) {
-
 		if (object->isBazaarTerminal())
 			bazaars.drop(object->getObjectID());
 
@@ -269,12 +290,10 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 
 		creature->sendSystemMessage(params);
 
-		//removeSpecializationModifiers(creature);
+		removeSpecializationModifiers(creature);
 	}
 
-
 	if (object->isStructureObject()) {
-
 		float x = object->getWorldPositionX();
 		float y = object->getWorldPositionY();
 
@@ -386,9 +405,9 @@ void CityRegionImplementation::destroyAllStructuresForRank(uint8 rank){
 	if (zone == NULL)
 		return;
 
-	StructureManager* structureManager = zone->getStructureManager();
+	StructureManager* structureManager = StructureManager::instance();
 
-	for (int i = structures.size(); i >= 0; --i) {
+	for (int i = structures.size() - 1; i >= 0; --i) {
 		ManagedReference<StructureObject*> structure = structures.get(i);
 
 		SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(structure->getObjectTemplate());
@@ -442,4 +461,30 @@ void CityRegionImplementation::removeAllSkillTrainers(){
 void CityRegionImplementation::resetVotingPeriod() {
 	nextInauguration.updateToCurrentTime();
 	nextInauguration.addMiliTime(CityManagerImplementation::cityVotingDuration * 60000);
+}
+
+void CityRegionImplementation::applySpecializationModifiers(CreatureObject* creature) {
+	if (getZone() == NULL)
+		return;
+
+	CityManager* cityManager = getZone()->getZoneServer()->getCityManager();
+	CitySpecialization* cityspec = cityManager->getCitySpecialization(citySpecialization);
+
+	if (cityspec == NULL)
+		return;
+
+	//Remove all current city skillmods
+	creature->removeAllSkillModsOfType(SkillModManager::CITY);
+
+	VectorMap<String, int>* mods = cityspec->getSkillMods();
+
+	for (int i = 0; i < mods->size(); ++i) {
+		VectorMapEntry<String, int> entry = mods->elementAt(i);
+
+		creature->addSkillMod(SkillModManager::CITY, entry.getKey(), entry.getValue());
+	}
+}
+
+void CityRegionImplementation::removeSpecializationModifiers(CreatureObject* creature) {
+	creature->removeAllSkillModsOfType(SkillModManager::CITY);
 }

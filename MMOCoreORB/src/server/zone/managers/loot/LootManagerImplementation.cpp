@@ -92,7 +92,7 @@ void LootManagerImplementation::setInitialObjectStats(LootItemTemplate* template
 				continue;
 
 			craftingValues->addExperimentalProperty(property, property, mins->get(i), maxs->get(i), prec->get(i), false, CraftingManager::LINEARCOMBINE);
-			if(title == "null")
+			if (title == "null")
 				craftingValues->setHidden(property);
 		}
 	}
@@ -103,11 +103,6 @@ void LootManagerImplementation::setInitialObjectStats(LootItemTemplate* template
 	for (int i = 0; i < customizationData->size(); ++i) {
 		String customizationString = customizationData->get(i);
 		Vector<int>* values = &customizationValues->get(i);
-
-		int idx = customizationString.lastIndexOf("/");
-
-		if (idx != -1)
-			customizationString = customizationString.subString(idx + 1);
 
 		if (values->size() > 0) {
 			int randomValue = values->get(System::random(values->size() - 1));
@@ -246,10 +241,34 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	craftingValues.addExperimentalProperty("creatureLevel", "creatureLevel", level, level, 0, false, CraftingManager::LINEARCOMBINE);
 	craftingValues.setHidden("creatureLevel");
 
+	setSkillMods(prototype, templateObject);
+
+	setSockets(prototype, &craftingValues);
+
 	// Update the Tano with new values
 	prototype->updateCraftingValues(&craftingValues, true);
 
 	return prototype;
+}
+
+void LootManagerImplementation::setSkillMods(TangibleObject* object, LootItemTemplate* templateObject) {
+	if (object->isWearableObject()) {
+		ManagedReference<WearableObject*> wearableObject = cast<WearableObject*>(object);
+
+		VectorMap<String, int>* skillMods = templateObject->getSkillMods();
+
+		for (int i = 0; i < skillMods->size(); i++) {
+			wearableObject->addWearableSkillMod(skillMods->elementAt(i).getKey(), skillMods->elementAt(i).getValue());
+		}
+	}
+}
+
+void LootManagerImplementation::setSockets(TangibleObject* object, CraftingValues* craftingValues) {
+	if (object->isWearableObject() && craftingValues->hasProperty("sockets")) {
+		ManagedReference<WearableObject*> wearableObject = cast<WearableObject*>(object);
+		// Round number of sockets to closes integer.
+		wearableObject->setMaxSockets(craftingValues->getCurrentValue("sockets") + 0.5);
+	}
 }
 
 bool LootManagerImplementation::createLoot(SceneObject* container, AiAgent* creature) {
@@ -277,6 +296,9 @@ bool LootManagerImplementation::createLootFromCollection(SceneObject* container,
 		int tempChance = 0; //Start at 0.
 
 		LootGroups* lootGroups = entry->getLootGroups();
+
+		//Now we do the second roll to determine loot group.
+		roll = System::random(10000000);
 
 		//Select the loot group to use.
 		for (int i = 0; i < lootGroups->count(); ++i) {
@@ -308,7 +330,7 @@ bool LootManagerImplementation::createLoot(SceneObject* container, const String&
 		return false;
 	}
 
-	//Now we do the second roll for the item out of the group.
+	//Now we do the third roll for the item out of the group.
 	int roll = System::random(10000000);
 
 	Reference<LootItemTemplate*> itemTemplate = lootGroupMap->getLootItemTemplate(group->getLootItemTemplateForRoll(roll));

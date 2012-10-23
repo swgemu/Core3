@@ -53,6 +53,8 @@ namespace server {
 #else
 		Reference<DirectorSharedMemory* > sharedMemory;
 #endif
+	public:
+		static int DEBUG_MODE;
 
 	public:
 		DirectorManager();
@@ -114,6 +116,8 @@ namespace server {
 		static int createParameterMessage(lua_State* L);
 		static int sendParameterMessage(lua_State* L);
 		static int getTimestamp(lua_State* L);
+		static int getSpawnPoint(lua_State* L);
+		static int makeCreatureName(lua_State* L);
 
 	private:
 		void initializeLuaEngine(Lua* lua);

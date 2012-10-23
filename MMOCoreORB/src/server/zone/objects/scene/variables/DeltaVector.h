@@ -25,7 +25,7 @@ protected:
 	ReadWriteLock* mutex;
 
 public:
-	DeltaVector() : Serializable() {
+	DeltaVector() : Serializable(), vector(1, 1) {
 		updateCounter = 1;
 
 		mutex = NULL;

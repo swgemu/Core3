@@ -43,6 +43,7 @@ which carries forward this exception.
  */
 
 #include "server/ServerCore.h"
+#include "server/zone/managers/director/DirectorManager.h"
 
 /*#include "system/mm/AllocationTracker.h"
 
@@ -60,6 +61,17 @@ int main(int argc, char* argv[]) {
 		SortedVector<String> arguments;
 		for (int i = 1; i < argc; ++i) {
 			arguments.put(argv[i]);
+		}
+
+		if (arguments.contains("testScreenPlays")) {
+			printf("Testing screen plays...\n");
+
+			DirectorManager::DEBUG_MODE = 1;
+			DirectorManager::instance()->getLuaInstance();
+
+			printf("Done\n");
+
+			return 0;
 		}
 
 		bool truncateData = arguments.contains("clean");

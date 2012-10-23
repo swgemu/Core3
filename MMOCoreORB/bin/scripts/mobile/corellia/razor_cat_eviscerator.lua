@@ -26,7 +26,7 @@ razor_cat_eviscerator = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/corellian_sand_panther.iff"},
+	templates = {"object/mobile/corellian_sand_panther_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

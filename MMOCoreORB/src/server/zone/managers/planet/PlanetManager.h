@@ -185,6 +185,8 @@ using namespace server::zone::objects::area;
 
 #include "system/util/Vector.h"
 
+#include "system/thread/Mutex.h"
+
 namespace server {
 namespace zone {
 namespace managers {
@@ -215,6 +217,8 @@ public:
 	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild = NULL);
 
 	bool isInRangeWithPoi(float x, float y, float range);
+
+	bool isInObjectsNoBuildZone(float x, float y, float extraMargin);
 
 	int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
 
@@ -328,6 +332,8 @@ protected:
 
 	Vector<ManagedReference<SceneObject* > > shuttlesToLoad;
 
+	static Mutex poiMutex;
+
 public:
 	PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv);
 
@@ -374,6 +380,8 @@ public:
 	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild = NULL);
 
 	bool isInRangeWithPoi(float x, float y, float range);
+
+	bool isInObjectsNoBuildZone(float x, float y, float extraMargin);
 
 	int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
 
@@ -493,6 +501,8 @@ public:
 	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild);
 
 	bool isInRangeWithPoi(float x, float y, float range);
+
+	bool isInObjectsNoBuildZone(float x, float y, float extraMargin);
 
 	int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
 

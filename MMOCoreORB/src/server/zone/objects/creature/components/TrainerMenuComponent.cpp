@@ -14,39 +14,22 @@
 #include "server/zone/objects/region/CityRegion.h"
 
 void TrainerMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
-
-	if (!sceneObject->isTangibleObject())
-		return;
-
-	TangibleObject* tano = cast<TangibleObject*>(sceneObject);
-
-	if(tano == NULL)
-		return;
-
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
 
-	ManagedReference<CityRegion*> city = player->getCityRegion();
+	ManagedReference<CityRegion*> city = sceneObject->getCityRegion();
 
-	if(city != NULL && city->isMayor(player->getObjectID())){
-
-		menuResponse->addRadialMenuItem(72, 3, "Remove");
-	}
-
-
+	if (city != NULL && city->isMayor(player->getObjectID()))
+		menuResponse->addRadialMenuItem(72, 3, "@city/city:mt_remove"); //Remove
 }
 
 int TrainerMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
-
-	if (!sceneObject->isTangibleObject())
-		return 0;
-
 	if (selectedID == 72) {
-
-		ManagedReference<CityRegion*> city = player->getCityRegion();
+		ManagedReference<CityRegion*> city = sceneObject->getCityRegion();
 
 		if (city != NULL)
 			city->removeSkillTrainers(sceneObject);
 
+		//TODO: Move this to CityRegion::removeSkillTrainer()
 		sceneObject->destroyObjectFromWorld(false);
 		sceneObject->destroyObjectFromDatabase(false);
 

@@ -57,7 +57,6 @@ which carries forward this exception.
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/player/sui/SuiBox.h"

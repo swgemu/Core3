@@ -14,6 +14,7 @@
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/AttributeListComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorContainerComponent.h"
+#include "server/zone/objects/tangible/components/vendor/VendorZoneComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorMenuComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
@@ -33,6 +34,7 @@
 #include "server/zone/objects/tangible/components/BankTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/components/CloningTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/components/HologrindHolocronMenuComponent.h"
+#include "server/zone/objects/tangible/components/VillageHolocronMenuComponent.h"
 #include "server/zone/objects/tangible/components/ForceShrineMenuComponent.h"
 #include "server/zone/objects/tangible/components/RobeObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/generic/ArtCrateMenuComponent.h"
@@ -112,6 +114,7 @@ ComponentManager::ComponentManager() {
 	components.put("ZoneContainerComponent", new ZoneContainerComponent());
 
 	components.put("HologrindHolocronMenuComponent", new HologrindHolocronMenuComponent());
+	components.put("VillageHolocronMenuComponent", new VillageHolocronMenuComponent());
 
 	components.put("AttributeListComponent", new AttributeListComponent());
 	components.put("LootSchematicAttributeListComponent", new LootSchematicAttributeListComponent());
@@ -129,6 +132,7 @@ ComponentManager::ComponentManager() {
 
 	components.put("VendorContainerComponent", new VendorContainerComponent());
 	components.put("VendorMenuComponent", new VendorMenuComponent());
+	components.put("VendorZoneComponent", new VendorZoneComponent());
 	dataObjectFactory.registerObject<VendorDataComponent>("VendorDataComponent");
 	dataObjectFactory.registerObject<AuctionTerminalDataComponent>("AuctionTerminalDataComponent");
 

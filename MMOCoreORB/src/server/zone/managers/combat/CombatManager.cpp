@@ -153,7 +153,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 
 	//info("past start combat", true);
 
-	if (attacker->hasAttackDelay())
+	if (attacker->hasAttackDelay() || !attacker->checkKnockdownRecovery())
 		return -3;
 
 	//info("past delay", true);
@@ -182,7 +182,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 	/// Always do this if it is a hit, even if it is 0 damage
 	Locker clocker(defenderObject, attacker);
 
-	defenderObject->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, damage);
+	defenderObject->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, damage);	
 
 	return damage;
 }
@@ -191,6 +191,9 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject
 	int damage = 0;
 
 	Locker clocker(tano, attacker);
+
+	if (!tano->isAttackableBy(attacker))
+		return 0;
 
 	attacker->addDefender(tano);
 	tano->addDefender(attacker);
@@ -425,11 +428,11 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponOb
 
 	//info("Base target defense is " + String::valueOf(targetDefense), true);
 
-	targetDefense += defender->getSkillMod("private_defense");
-
 	// defense hardcap
 	if (targetDefense > 125)
 		targetDefense = 125;
+
+	targetDefense += defender->getSkillMod("private_defense");
 
 	//info("Target defense after state affects and cap is " +  String::valueOf(targetDefense), true);
 
@@ -858,10 +861,13 @@ float CombatManager::calculateDamage(CreatureObject* attacker, TangibleObject* d
 	if (diff >= 0)
 		damage = System::random(diff) + (int)minDamage;
 
-	damage += getDamageModifier(attacker, weapon);
+	if (attacker->isPlayerCreature())
+		damage *= 1.5;
 
-	if (weapon->getAttackType() == WeaponObject::MELEEATTACK)
+	if (weapon->getAttackType() == WeaponObject::MELEEATTACK && attacker->isPlayerCreature())
 		damage *= 1.25;
+
+	damage += getDamageModifier(attacker, weapon);
 
 	if (attacker->isPlayerCreature()) {
 		if (!weapon->isCertifiedFor(attacker))
@@ -896,7 +902,10 @@ float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* d
 		}
 	}
 
-	if (weapon->getAttackType() == WeaponObject::MELEEATTACK)
+	if (attacker->isPlayerCreature())
+		damage *= 1.5;
+
+	if (weapon->getAttackType() == WeaponObject::MELEEATTACK && attacker->isPlayerCreature())
 		damage *= 1.25;
 
 	damage += getDamageModifier(attacker, weapon);
@@ -1081,8 +1090,6 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 				return false;
 			} else {
 				playerObject->setForcePower(playerObject->getForcePower() - force);
-				// Increase visibilty for using a Force Power attack.
-				VisibilityManager::instance()->increaseVisibility(attacker);
 			}
 		}
 	}
@@ -1153,8 +1160,9 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 
 			// now roll to see if it gets applied
 			int defDiff = targetDefense - 95;
-			if (defDiff > 0 && creature->getLevel() != 0)
-				targetDefense = 95 + defDiff * 0.25 * targetCreature->getLevel() / creature->getLevel();
+			float lRatio = MAX(0.5, targetCreature->getLevel() / MAX(1, creature->getLevel()));
+			if (defDiff > 0)
+				targetDefense = 95 + defDiff * 0.25 * lRatio;
 
 			if (targetDefense > 0 && System::random(100) < targetDefense)
 							failed = true;
@@ -1177,8 +1185,8 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 
 				// now roll again to see if it gets applied
 				defDiff = targetDefense - 95;
-				if (defDiff > 0 && creature->getLevel() != 0)
-					targetDefense = 95 + defDiff * 0.25 * targetCreature->getLevel() / creature->getLevel();
+				if (defDiff > 0)
+					targetDefense = 95 + defDiff * 0.25 * lRatio;
 
 				if (targetDefense > 0 && System::random(100) < targetDefense)
 								failed = true;
@@ -1388,11 +1396,6 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 				continue;
 			}
 
-			if (!tano->isAttackableBy(attacker)) {
-				//error("object is not attackable");
-				continue;
-			}
-
 			if (tano->isCreatureObject() && (cast<CreatureObject*>(tano))->isIncapacitated()) {
 				//error("object is incapacitated");
 				continue;
@@ -1449,8 +1452,6 @@ void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject
 		zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
 	}
 
-	if (closeObjects.size() > 100)
-		return;
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		SceneObject* object = cast<SceneObject*>( closeObjects.get(i).get());
@@ -1509,12 +1510,6 @@ void CombatManager::requestDuel(CreatureObject* player, CreatureObject* targetPl
 		StringIdChatParameter stringId("duel", "already_challenged");
 		stringId.setTT(targetPlayer->getObjectID());
 		player->sendSystemMessage(stringId);
-
-		return;
-	}
-
-	if (ghost->getDuelListSize() >= 30) {
-		player->sendSystemMessage("You cannot request to duel more people");
 
 		return;
 	}
@@ -1598,10 +1593,7 @@ void CombatManager::freeDuelList(CreatureObject* player, bool spam) {
 	/* Pre: player not NULL and is locked
 	 * Post: player removed and warned all of the objects from its duel list
 	 */
-	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
-	
-	if (ghost == NULL)
-		return;
+	PlayerObject* ghost = player->getPlayerObject();
 
 	if (ghost->isDuelListEmpty())
 		return;

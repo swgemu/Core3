@@ -61,13 +61,21 @@ class VendorAdBarkingSession extends Facade {
 	@weakreference
 	protected CreatureObject owner;
 	
+	@weakreference
+	protected SceneObject vendor;
+	
 	protected int advertisingMod;
+	
+	protected transient string message;
+	protected transient string mood;
+	protected transient string animation;
 		
-	public VendorAdBarkingSession(CreatureObject play) {
+	public VendorAdBarkingSession(CreatureObject play, SceneObject vend) {
 		Logger.setLoggingName("VendorAdBarkingSession");
 		Logger.setLogging(true);
 
 		owner = play;
+		vendor = vend;
 	}
 	
 	// Session
@@ -87,5 +95,26 @@ class VendorAdBarkingSession extends Facade {
 		return 0;
 	}
 	
-	private native void sendPhraseOptions();
+	public void setMessage(final string mess) {
+		message = mess;
+		sendMoodSelect();
+	}
+	
+	public void setMood(final string mo) {
+		mood = mo;
+		sendAnimationSelect();
+	}
+	
+	public void setAnimation(final string ani) {
+		animation = ani;
+		completeSession();
+	}
+	
+	public native void sendPhraseOptions();
+	public native void sendCustomMessageInput();
+	public native void sendMoodSelect();
+	public native void sendAnimationSelect();
+	
+	private native void completeSession();
+
 }

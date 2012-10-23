@@ -42,7 +42,11 @@
 
 
 object_building_general_cloning_facility_general = object_building_general_shared_cloning_facility_general:new {
-	planetMapCategory = "cloningfacility"
+	planetMapCategory = "cloningfacility",
+
+	skillMods = {
+		{"private_medical_rating", 100}
+	}
 }
 
 ObjectTemplates:addTemplate(object_building_general_cloning_facility_general, "object/building/general/cloning_facility_general.iff")

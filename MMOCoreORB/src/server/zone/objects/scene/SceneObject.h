@@ -400,6 +400,10 @@ public:
 
 	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
 
+	int getContainedObjectsRecursive();
+
+	int getCountableObjectsRecursive();
+
 	Facade* getActiveSession(unsigned int type);
 
 	void addActiveSession(unsigned int type, Facade* session);
@@ -606,6 +610,8 @@ public:
 
 	bool isCreatureObject();
 
+	bool isAiAgent();
+
 	bool isShipObject();
 
 	bool isVehicleObject();
@@ -629,8 +635,6 @@ public:
 	bool isFireworkObject();
 
 	bool isPsgArmorObject();
-
-	bool isLairObject();
 
 	bool isCellObject();
 
@@ -1047,6 +1051,10 @@ public:
 
 	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
 
+	int getContainedObjectsRecursive();
+
+	virtual int getCountableObjectsRecursive();
+
 	Facade* getActiveSession(unsigned int type);
 
 	void addActiveSession(unsigned int type, Facade* session);
@@ -1253,6 +1261,8 @@ public:
 
 	virtual bool isCreatureObject();
 
+	virtual bool isAiAgent();
+
 	virtual bool isShipObject();
 
 	virtual bool isVehicleObject();
@@ -1276,8 +1286,6 @@ public:
 	virtual bool isFireworkObject();
 
 	bool isPsgArmorObject();
-
-	virtual bool isLairObject();
 
 	virtual bool isCellObject();
 
@@ -1608,6 +1616,10 @@ public:
 
 	void showFlyText(const String& file, const String& uax, byte red, byte green, byte blue);
 
+	int getContainedObjectsRecursive();
+
+	int getCountableObjectsRecursive();
+
 	Facade* getActiveSession(unsigned int type);
 
 	void addActiveSession(unsigned int type, Facade* session);
@@ -1774,6 +1786,8 @@ public:
 
 	bool isCreatureObject();
 
+	bool isAiAgent();
+
 	bool isShipObject();
 
 	bool isVehicleObject();
@@ -1797,8 +1811,6 @@ public:
 	bool isFireworkObject();
 
 	bool isPsgArmorObject();
-
-	bool isLairObject();
 
 	bool isCellObject();
 

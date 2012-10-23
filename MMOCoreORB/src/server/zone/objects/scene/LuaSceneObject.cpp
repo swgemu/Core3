@@ -21,6 +21,9 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getPositionX", &LuaSceneObject::getPositionX },
 		{ "getPositionY", &LuaSceneObject::getPositionY },
 		{ "getPositionZ", &LuaSceneObject::getPositionZ },
+		{ "getWorldPositionX", &LuaSceneObject::getWorldPositionX },
+		{ "getWorldPositionY", &LuaSceneObject::getWorldPositionY },
+		{ "getWorldPositionZ", &LuaSceneObject::getWorldPositionZ },
 		{ "getParentID", &LuaSceneObject::getParentID },
 		{ "isInRangeWithObject", &LuaSceneObject::isInRangeWithObject },
 		{ "setCustomObjectName", &LuaSceneObject::setCustomObjectName},
@@ -42,6 +45,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "isPlayerCreature", &LuaSceneObject::isPlayerCreature },
 		{ "sendTo", &LuaSceneObject::sendTo },
 		{ "getCustomObjectName", &LuaSceneObject::getCustomObjectName },
+		{ "getObjectName", &LuaSceneObject::getObjectName },
 		{ "getContainerObjectById", &LuaSceneObject::getContainerObjectById },
 		{ "setDirectionalHeading", &LuaSceneObject::setDirectionalHeading },
 		{ "getZoneName", &LuaSceneObject::getZoneName },
@@ -59,6 +63,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "clearContainerDefaultDenyPermission", &LuaSceneObject::clearContainerDefaultDenyPermission},
 		{ "hasActiveArea", &LuaSceneObject::hasActiveArea},
 		{ "setObjectName", &LuaSceneObject::setObjectName},
+		{ "isASubChildOf", &LuaSceneObject::isASubChildOf},
 		{ 0, 0 }
 
 };
@@ -157,6 +162,24 @@ int LuaSceneObject::getPositionX(lua_State* L) {
 
 int LuaSceneObject::getPositionZ(lua_State* L) {
 	lua_pushnumber(L, realObject->getPositionZ());
+
+	return 1;
+}
+
+int LuaSceneObject::getWorldPositionY(lua_State* L) {
+	lua_pushnumber(L, realObject->getWorldPositionY());
+
+	return 1;
+}
+
+int LuaSceneObject::getWorldPositionX(lua_State* L) {
+	lua_pushnumber(L, realObject->getWorldPositionX());
+
+	return 1;
+}
+
+int LuaSceneObject::getWorldPositionZ(lua_State* L) {
+	lua_pushnumber(L, realObject->getWorldPositionZ());
 
 	return 1;
 }
@@ -420,6 +443,14 @@ int LuaSceneObject::getCustomObjectName(lua_State* L) {
 	return 1;
 }
 
+int LuaSceneObject::getObjectName(lua_State* L) {
+	String objname = realObject->getObjectName()->getStringID();
+
+	lua_pushstring(L, objname);
+
+	return 1;
+}
+
 int LuaSceneObject::setDirectionalHeading(lua_State* L) {
 	int heading = lua_tointeger(L, -1);
 
@@ -497,4 +528,12 @@ int LuaSceneObject::setObjectName(lua_State* L) {
 	realObject->setObjectName(stringid);
 
 	return 0;
+}
+
+int LuaSceneObject::isASubChildOf(lua_State* L) {
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -1);
+
+	lua_pushboolean(L, realObject->isASubChildOf(obj));
+
+	return 1;
 }

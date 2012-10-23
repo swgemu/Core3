@@ -1,3 +1,4 @@
+
 includeFile("townsperson/agriculturalist.lua")
 includeFile("townsperson/artisan.lua")
 includeFile("townsperson/audience_member.lua")
@@ -40,7 +41,6 @@ includeFile("townsperson/spacer.lua")
 includeFile("townsperson/surgical_droid_21b.lua")
 includeFile("townsperson/smuggler_patrol_thief_5.lua")
 includeFile("townsperson/teras_kasi_master.lua")
-includeFile("townsperson/tiem_rutnar.lua")
 includeFile("townsperson/theater_manager.lua")
 includeFile("townsperson/twilek_slave.lua")
 includeFile("townsperson/vendor.lua")

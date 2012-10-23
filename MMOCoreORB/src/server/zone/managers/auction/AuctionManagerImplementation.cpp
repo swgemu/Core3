@@ -18,6 +18,7 @@
 #include "server/zone/packets/auction/AuctionQueryHeadersResponseMessage.h"
 #include "server/zone/packets/auction/RetrieveAuctionItemResponseMessage.h"
 #include "server/zone/packets/auction/BidAuctionResponseMessage.h"
+#include "server/zone/packets/auction/IsVendorOwnerMessageCallback.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -34,6 +35,7 @@
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
 
 void AuctionManagerImplementation::initialize() {
+
 	Locker locker(_this.get());
 
 	auctionMap = new AuctionsMap();
@@ -78,8 +80,10 @@ void AuctionManagerImplementation::initialize() {
 		if(vendor->isBazaarTerminal() && defaultBazaar == NULL)
 			defaultBazaar = vendor;
 
-
 		auctionMap->addItem(NULL, vendor, auctionItem);
+
+		if(auctionItem->isOnBazaar() || auctionItem->getStatus() == AuctionItem::OFFERED)
+			auctionMap->addToCommodityLimit(auctionItem);
 
 		if(auctionItem->isAuction()) {
 			Reference<Task*> newTask = new ExpireAuctionTask(_this.get(), auctionItem);
@@ -108,7 +112,7 @@ void AuctionManagerImplementation::initialize() {
 	}
 
 	for(int i = 0; i < pendingUIDUpdates.size(); ++i) {
-		SceneObject* vendor = pendingUIDUpdates.elementAt(i).getKey();
+		ManagedReference<SceneObject*> vendor = pendingUIDUpdates.elementAt(i).getKey();
 		String uid = pendingUIDUpdates.get(vendor);
 		String oldUID = pendingOldUIDUpdates.get(vendor);
 
@@ -119,6 +123,10 @@ void AuctionManagerImplementation::initialize() {
 
 	checkAuctions();
 	checkVendorItems();
+
+	info("loaded auctionsMap of size: " + String::valueOf(auctionMap->getTotalItemCount()), true);
+
+	marketEnabled = true;
 }
 
 void AuctionManagerImplementation::checkVendorItems() {
@@ -146,7 +154,6 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items) {
 
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
-	uint64 availableTime = currentTime + EXPIREPERIOD;
 
 	for (int i = 0; i < items->size(); ++i) {
 		Reference<TerminalItemList*> list = items->get(i);
@@ -161,11 +168,8 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items) {
 			ManagedReference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
 			uint64 objectId = item->getAuctionedItemObjectID();
 
-			if (vendor == NULL || vendor->getZone() == NULL) {
-
-				auctionMap->removeItem(vendor, item);
-				ObjectManager::instance()->destroyObjectFromDatabase(item->_getObjectID());
-
+			if(vendor == NULL || vendor->getZone() == NULL) {
+				auctionMap->deleteItem(vendor, item);
 				continue;
 			}
 
@@ -175,16 +179,14 @@ void AuctionManagerImplementation::doAuctionMaint(TerminalListVector* items) {
 
 			if (item->getExpireTime() <= currentTime) {
 				if (item->getStatus() == AuctionItem::EXPIRED) {
-					locker.release();
-
 					expireSale(item);
 				}
 			}
 
 			if (item->getStatus() == AuctionItem::RETRIEVED) {
 
-				auctionMap->removeItem(vendor, item);
-				ObjectManager::instance()->destroyObjectFromDatabase(item->_getObjectID());
+				auctionMap->deleteItem(vendor, item);
+
 			}
 		}
 	}
@@ -205,9 +207,8 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 
 	if(oldItem == NULL) {
 		if (objectToSell == NULL || !objectToSell->isASubChildOf(player) || objectToSell->isNoTrade()) {
-			if (objectToSell != NULL && !objectToSell->isNoTrade())
+			if(objectToSell != NULL && !objectToSell->isNoTrade())
 				error("trying to add invalid object");
-
 			ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::INVALIDITEM);
 			player->sendMessage(soldMessage);
 			return;
@@ -228,14 +229,8 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 			return;
 		}
 
-		auctionMap->removeItem(vendor, oldItem);
-		ObjectManager::instance()->destroyObjectFromDatabase(oldItem->_getObjectID());
+		auctionMap->deleteItem(vendor, oldItem);
 
-		if (objectToSell == NULL) {
-			ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::INVALIDITEM);
-			player->sendMessage(soldMessage);
-			return;
-		}
 	}
 
 	ManagedReference<Zone*> zone = vendor->getZone();
@@ -270,6 +265,7 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 	if(result != ItemSoldMessage::SUCCESS) {
 		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, result);
 		player->sendMessage(soldMessage);
+		auctionMap->removeFromCommodityLimit(item);
 		return;
 	}
 
@@ -374,6 +370,9 @@ int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObj
 		if (player->getObjectID() == vendorData->getOwnerId()) {
 			if (auctionMap->getVendorItemCount(vendor) >= player->getSkillMod("vendor_item_limit"))
 				return ItemSoldMessage::TOOMANYITEMS;
+		} else {
+			if (auctionMap->getCommodityCount(player) >= MAXSALES)
+				return ItemSoldMessage::TOOMANYITEMS;
 		}
 
 		if (price > MAXVENDORPRICE)
@@ -381,7 +380,7 @@ int AuctionManagerImplementation::checkSaleItem(CreatureObject* player, SceneObj
 	}
 
 	if(vendor->isBazaarTerminal()) {
-		if (auctionMap->getBazaarItemCount(player) >= MAXSALES)
+		if (auctionMap->getCommodityCount(player) >= MAXSALES)
 			return ItemSoldMessage::TOOMANYITEMS;
 
 		if (price > MAXBAZAARPRICE)
@@ -408,9 +407,8 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 	if (zone == NULL)
 		return NULL;
 
-	Time expireTime;
-	expireTime.addMiliTime(duration * 1000);
-	uint64 expire = expireTime.getMiliTime() / 1000;
+	uint64 vendorExpire = time(0) + AuctionManager::VENDOREXPIREPERIOD;
+	uint64 commodityExpire = time(0) + AuctionManager::COMMODITYEXPIREPERIOD;
 
 	String playername = player->getFirstName().toLowerCase();
 	String descr = description.toString();
@@ -424,27 +422,20 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 	if (cityRegion != NULL)
 		region = cityRegion->getRegionName();
 
-	StringId* objectName = objectToSell->getObjectName();
-
-	String name = objectToSell->getCustomObjectName().toString();
-
-	if (name.length() < 2)
-		objectName->getFullPath(name);
+	String name = objectToSell->getDisplayedName();
 
 	item->setVendorUID(getVendorUID(vendor));
+	item->setOnBazaar(vendor->isBazaarTerminal());
 
 	if (premium)
 		item->setAuctionPremium();
 
 	item->setVendorID(vendor->getObjectID());
-	item->setOwnerID(player->getObjectID());
-	item->setOwnerName(playername);
 	item->setItemName(name);
 	item->setItemDescription(description.toString());
 	item->setItemType(objectToSell->getClientGameObjectType());
 	item->setPrice(price);
 	item->setAuction(auction);
-	item->setExpireTime(expire);
 	item->setStatus(AuctionItem::FORSALE);
 	item->setBuyerID(0);
 	item->setBidderName("");
@@ -462,13 +453,15 @@ AuctionItem* AuctionManagerImplementation::createVendorItem(CreatureObject* play
 		if(vendorData->getOwnershipRightsOf(player) == 1) {
 			item->setStatus(AuctionItem::OFFERED);
 			item->setOfferToID(vendorData->getOwnerId());
+			item->setExpireTime(commodityExpire);
+		} else {
+			item->setExpireTime(vendorExpire);
 		}
+	} else {
+		item->setExpireTime(commodityExpire);
 	}
 
-	if (vendor->isBazaarTerminal()) {
-		item->setOnBazaar(true);
-	}
-
+	updateAuctionOwner(item, player);
 	ObjectManager::instance()->persistObject(item, 0, "auctionitems");
 
 
@@ -491,15 +484,16 @@ int AuctionManagerImplementation::checkBidAuction(CreatureObject* player, Auctio
 	return 0;
 }
 
-void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionItem* item, int price1, int price2) {
+void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionItem* item) {
 	ManagedReference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
+
 	if (vendor == NULL)
 		return;
 
 	String playername = player->getFirstName().toLowerCase();
 
-	ChatManager* cman = zoneServer->getChatManager();
-	PlayerManager* pman = zoneServer->getPlayerManager();
+	ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
+	ManagedReference<PlayerManager*> pman = zoneServer->getPlayerManager();
 	ManagedReference<CreatureObject*> seller = pman->getPlayer(item->getOwnerName());
 
 	String sender = "auctioner";
@@ -507,14 +501,17 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
-	uint64 availableTime = currentTime + EXPIREPERIOD;
+	uint64 availableTime = 0;
+
 
 	Locker locker(item);
 
-	if(item->getStatus() == AuctionItem::OFFERED) {
-		item->setOwnerID(player->getObjectID());
-		item->setOwnerName(playername);
-	}
+	if(item->isOnBazaar() || item->getStatus() == AuctionItem::OFFERED)
+		availableTime = currentTime + AuctionManager::COMMODITYEXPIREPERIOD;
+	else
+		availableTime = currentTime + AuctionManager::VENDOREXPIREPERIOD;
+
+	updateAuctionOwner(item, player);
 
 	item->setStatus(AuctionItem::SOLD);
 	item->setExpireTime(availableTime);
@@ -522,7 +519,7 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	item->setBidderName(playername);
 	item->clearAuctionWithdraw();
 
-	player->subtractBankCredits(price1);
+	player->subtractBankCredits(item->getPrice());
 
 	BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), 0);
 	player->sendMessage(msg);
@@ -577,19 +574,19 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 		StringIdChatParameter body1("@auction:seller_success");
 		body1.setTO(item->getItemName());
 		body1.setTT(item->getBidderName());
-		body1.setDI(price1);
+		body1.setDI(item->getPrice());
 
 		// Setup the mail to the buyer
 		UnicodeString subject2("@auction:subject_instant_buyer");
 		StringIdChatParameter body2("@auction:buyer_success");
 		body2.setTO(item->getItemName());
-		body2.setTT(item->getOwnerName());
-		body2.setDI(price1);
+		body2.setTT(sellerName);
+		body2.setDI(item->getPrice());
 
 		locker.release();
 
 		//Send the Mail
-		cman->sendMail(sender, subject1, body1, item->getOwnerName());
+		cman->sendMail(sender, subject1, body1, sellerName);
 		cman->sendMail(sender, subject2, body2, item->getBidderName(), waypoint);
 
 	}
@@ -602,28 +599,68 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	locker.release();
 
 	Locker slocker(seller);
-	seller->addBankCredits(price1);
+	seller->addBankCredits(item->getPrice());
 
 }
 
-void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionItem* item, int price1, int price2) {
-	String playername = player->getFirstName().toLowerCase();
+void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionItem* item, int price1, int proxyBid) {
 
-	ChatManager *cman = zoneServer->getChatManager();
-	PlayerManager *pman = zoneServer->getPlayerManager();
-	// don't allow owner or last bidder bid on the item.  don't allow old auction info
-	// send auctioner invalid message
-	if (playername == item->getBidderName() || playername == item->getOwnerName() || price1 <= item->getPrice()) {
+	if(price1 <= item->getPrice() || proxyBid <= price1) {
 		BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), 1);
 		player->sendMessage(msg);
 		return;
 	}
 
+	String playername = player->getFirstName().toLowerCase();
+
+	ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
+	ManagedReference<PlayerManager*> pman = zoneServer->getPlayerManager();
+	// don't allow owner bid on the item.  don't allow old auction info
+	// send auctioner invalid message
+	if (playername == item->getOwnerName() || price1 <= item->getPrice() || proxyBid <= price1) {
+		BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), 1);
+		player->sendMessage(msg);
+		return;
+	}
+
+	ManagedReference<CreatureObject*> priorBidder = pman->getPlayer(item->getBidderName());
+
+	/// Use previous proxy
+	if(priorBidder != NULL && proxyBid < item->getProxy()) {
+
+		int increase = price1 - item->getPrice();
+
+		int fullPrice = proxyBid + increase - item->getPrice();
+
+		//TODO: prior didnt have enough money -> assert.. fix properly
+		if (priorBidder->getBankCredits() < fullPrice) {
+			BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), BidAuctionResponseMessage::NOTENOUGHCREDITS);
+			player->sendMessage(msg);
+
+			return;
+		}
+
+		priorBidder->subtractBankCredits(fullPrice);
+		item->setPrice(proxyBid + increase);
+		BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), BidAuctionResponseMessage::SUCCEDED);
+		player->sendMessage(msg);
+
+		if(priorBidder != player) {
+			StringIdChatParameter body("@auction:bidder_outbid");
+			body.setTO(item->getItemName());
+			priorBidder->sendSystemMessage(body);
+		}
+
+		return;
+	}
+
 	Locker locker(item);
+	Locker plocker(player);
+
+	item->setProxy(proxyBid);
 
 	// send prior bidder their money back
 	if (item->getBidderName().length() > 0) {
-		ManagedReference<CreatureObject*> priorBidder = pman->getPlayer(item->getBidderName());
 
 		StringIdChatParameter body("@auction:bidder_outbid");
 		body.setTO(item->getItemName());
@@ -631,22 +668,23 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 		if (priorBidder != NULL) {
 			Locker clocker(priorBidder, player);
 
-			priorBidder->sendSystemMessage(body);
+			if(priorBidder != player)
+				priorBidder->sendSystemMessage(body);
 			priorBidder->addBankCredits(item->getPrice());
-
-			clocker.release();
 		}
 
 		// mail prior bidder with outcome
 		UnicodeString subject("@auction:subject_auction_outbid");
+
 
 		item->setPrice(price1);
 		item->setBuyerID(player->getObjectID());
 		item->setBidderName(playername);
 
 		// take money from high bidder
-		player->subtractBankCredits(price1);
+		player->subtractBankCredits(item->getPrice());
 
+		plocker.release();
 		locker.release();
 
 		cman->sendMail("auctioner", subject, body, item->getBidderName());
@@ -657,7 +695,7 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 		item->setBuyerID(player->getObjectID());
 		item->setBidderName(playername);
 
-		player->subtractBankCredits(price1);
+		player->subtractBankCredits(item->getPrice());
 	}
 
 	BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), 0);
@@ -665,15 +703,17 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 }
 
 void AuctionManagerImplementation::buyItem(CreatureObject* player, uint64 objectid, int price1, int price2) {
-
 	ManagedReference<AuctionItem*> item = auctionMap->getItem(objectid);
+
 	if (item == NULL) {
 		BaseMessage* msg = new BidAuctionResponseMessage(objectid, BidAuctionResponseMessage::INVALIDITEM);
 		player->sendMessage(msg);
 		return;
 	}
 
-	if (item->getStatus() == AuctionItem::SOLD) {
+	ManagedReference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
+
+	if (vendor == NULL || item->getStatus() == AuctionItem::SOLD) {
 		BaseMessage* msg = new BidAuctionResponseMessage(objectid, BidAuctionResponseMessage::INVALIDITEM);
 		player->sendMessage(msg);
 		return;
@@ -685,6 +725,16 @@ void AuctionManagerImplementation::buyItem(CreatureObject* player, uint64 object
 		return;
 	}
 
+	ManagedReference<CityRegion*> city = vendor->getCityRegion();
+
+	//TODO: Apply the sales tax to the price here, and check the total price
+	int totalPrice = item->getPrice();
+
+	if (city != NULL)
+		totalPrice *= 1.f + (float) city->getSalesTax() / 100.f;
+
+	//We should send this to checkBidAuction, but how will it work with auctions???
+
 	int res = checkBidAuction(player, item, price1, price2);
 
 	if (res != 0) {
@@ -693,8 +743,10 @@ void AuctionManagerImplementation::buyItem(CreatureObject* player, uint64 object
 		return;
 	}
 
+	//Then down here, we would actually set the price on the item to the totalPrice.
+
 	if (!item->isAuction()) { // Instant buy
-		doInstantBuy(player, item, price1, price2);
+		doInstantBuy(player, item);
 	} else { // For Auction Bids
 		doAuctionBid(player, item, price1, price2);
 	}
@@ -715,21 +767,23 @@ int AuctionManagerImplementation::checkRetrieve(CreatureObject* player, uint64 o
 	}
 
 	if(saleItem->isIntangibleObject()) {
-		SceneObject* datapad = player->getSlottedObject("datapad");
+		ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
 		if (datapad->hasFullContainerObjects())
 			return RetrieveAuctionItemResponseMessage::FULLINVENTORY;
 	} else {
-		SceneObject* inventory = player->getSlottedObject("inventory");
+		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
 		if (inventory->hasFullContainerObjects())
 			return RetrieveAuctionItemResponseMessage::FULLINVENTORY;
 	}
 
 	ManagedReference<AuctionItem*> item = auctionMap->getItem(objectIdToRetrieve);
-	if (item == NULL) {
-		error("Null item in checkRetrieve");
+	if (item == NULL || item->getStatus() == AuctionItem::RETRIEVED) {
 		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
 	}
+
+	if(item->isAuction() && item->getStatus() == AuctionItem::FORSALE)
+		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
 
 	if(item->getStatus() == AuctionItem::SOLD && player->getObjectID() == item->getOwnerID()) {
 		item->setStatus(AuctionItem::EXPIRED);
@@ -780,9 +834,9 @@ int AuctionManagerImplementation::checkRetrieve(CreatureObject* player, uint64 o
 }
 
 void AuctionManagerImplementation::refundAuction(AuctionItem* item) {
-	PlayerManager* pman = zoneServer->getPlayerManager();
+	ManagedReference<PlayerManager*> pman = zoneServer->getPlayerManager();
 	ManagedReference<CreatureObject*> bidder = pman->getPlayer(item->getBidderName());
-	ChatManager* cman = zoneServer->getChatManager();
+	ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
 
 	// send the player a mail and system message
 	UnicodeString subject("@auction:subject_auction_cancelled");
@@ -815,7 +869,7 @@ void AuctionManagerImplementation::retrieveItem(CreatureObject* player, uint64 o
 
 	if (res != 0) {
 		if(res != RetrieveAuctionItemResponseMessage::TOOFAR) {
-			if(RetrieveAuctionItemResponseMessage::DONTRETRIEVE)
+			if(res == RetrieveAuctionItemResponseMessage::DONTRETRIEVE)
 				res = 0;
 			msg = new RetrieveAuctionItemResponseMessage(objectid, res);
 			player->sendMessage(msg);
@@ -839,34 +893,38 @@ void AuctionManagerImplementation::retrieveItem(CreatureObject* player, uint64 o
 	}
 
 	Locker locker(item);
+	Locker plocker(player);
 
-	if(objectToRetrieve->isIntangibleObject()) {
-		SceneObject* datapad = player->getSlottedObject("datapad");
-		datapad->transferObject(objectToRetrieve, -1, false);
-		datapad->broadcastObject(objectToRetrieve, true);
+	ManagedReference<SceneObject*> destination = NULL;
+
+	if(objectToRetrieve->isIntangibleObject())
+		destination = player->getSlottedObject("datapad");
+	else
+		destination = player->getSlottedObject("inventory");
+
+	if(destination->transferObject(objectToRetrieve, -1, false)) {
+		destination->broadcastObject(objectToRetrieve, true);
+
+		item->setStatus(AuctionItem::RETRIEVED);
+
+		String vuid = getVendorUID(vendor);
+
+		auctionMap->deleteItem(vendor, item);
+
+		msg = new RetrieveAuctionItemResponseMessage(objectid, 0);
+		player->sendMessage(msg);
 	} else {
-		SceneObject* inventory = player->getSlottedObject("inventory");
-		inventory->transferObject(objectToRetrieve, -1, false);
-		inventory->broadcastObject(objectToRetrieve, true);
+		msg = new RetrieveAuctionItemResponseMessage(objectid, RetrieveAuctionItemResponseMessage::NOTALLOWED);
+		player->sendMessage(msg);
 	}
-
-	item->setStatus(AuctionItem::RETRIEVED);
-
-	String vuid = getVendorUID(vendor);
-	auctionMap->removeItem(vendor, item);
-
-	ObjectManager::instance()->destroyObjectFromDatabase(item->_getObjectID());
-
-	msg = new RetrieveAuctionItemResponseMessage(objectid, 0);
-	player->sendMessage(msg);
 }
 
-AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQueryHeadersResponseMessage(CreatureObject* player, SceneObject* vendor, TerminalListVector* terminalList, int screen, uint32 category, int count, int offset) {
-	AuctionQueryHeadersResponseMessage* reply = new AuctionQueryHeadersResponseMessage(screen, count, player);
+AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQueryHeadersResponseMessage(CreatureObject* player, SceneObject* vendor, TerminalListVector* terminalList, int screen, uint32 category, int clientcounter, int offset) {
+	AuctionQueryHeadersResponseMessage* reply = new AuctionQueryHeadersResponseMessage(screen, clientcounter, player);
 
-	int displaying = 0;
 	String pname = player->getFirstName().toLowerCase();
 	uint32 now = time(0);
+	int currentCount = -1;
 
 	/*System::out << "Screen =" + String::valueOf(screen) << endl;
 	System::out << "Category =" + String::valueOf(category) << endl;
@@ -874,7 +932,7 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 	System::out << "AuctionItemSize =" + String::valueOf(auctionMap->getAuctionCount()) << endl;
 	System::out << "______________________________" << endl;*/
 
-	for (int j = 0; (j < terminalList->size()) && (displaying < (offset + 100)); ++j) {
+	for (int j = 0; (j < terminalList->size()) && (reply->getListSize() < 100); ++j) {
 
 		Reference<TerminalItemList*> items = terminalList->get(j);
 
@@ -888,7 +946,7 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 		try {
 			items->rlock();
 
-			for (int i = 0; (i < items->size()) && (displaying < (offset + 100)); i++) {
+			for (int i = 0; (i < items->size()) && (reply->getListSize() < 100); i++) {
 				ManagedReference<AuctionItem*> item = items->get(i);
 
 				if(item == NULL)
@@ -898,6 +956,10 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 					expireSale(item);
 					continue;
 				}
+
+				currentCount++;
+				if(currentCount < offset)
+					continue;
 
 				switch(screen) {
 				case 7: // Vendor search Bazaar && Vendor
@@ -910,26 +972,16 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 					if (item->getStatus() == AuctionItem::FORSALE) {
 						if (category & 255) { // Searching a sub category
 							if (item->getItemType() == category) {
-								if (displaying >= offset)
-									reply->addItemToList(items->get(i));
-
-								displaying++;
+								reply->addItemToList(items->get(i));
 							}
 						} else if (item->getItemType() & category) {
-							if (displaying >= offset)
-								reply->addItemToList(items->get(i));
+							reply->addItemToList(items->get(i));
 
-							displaying++;
 						} else if ((category == 8192) && (item->getItemType() < 256)) {
-							if (displaying >= offset)
-								reply->addItemToList(items->get(i));
+							reply->addItemToList(items->get(i));
 
-							displaying++;
 						} else if (category == 0 && vendor->isVendor()) { // Searching all items
-							if (displaying >= offset)
-								reply->addItemToList(item);
-
-							displaying++;
+							reply->addItemToList(item);
 						}
 					}
 					break;
@@ -939,17 +991,20 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 					}
 					break;
 				case 4: // My Bids
-					if (item->isAuction() && item->getStatus() == AuctionItem::FORSALE && (item->getBidderName() == pname))
+					if (item->isAuction() && item->getStatus() == AuctionItem::FORSALE && (item->getBidderName() == pname)) {
 						reply->addItemToList(item);
+					}
 					break;
 				case 5: // Retrieve items screen
 					if ((item->getStatus() == AuctionItem::SOLD && item->getBuyerID() == player->getObjectID()) ||
-							(item->getStatus() == AuctionItem::EXPIRED && item->getOwnerID() == player->getObjectID()))
+							(item->getStatus() == AuctionItem::EXPIRED && item->getOwnerID() == player->getObjectID())) {
 						reply->addItemToList(item);
+					}
 					break;
 				case 6: // Offers to Vendor (vendor owner)
-					if (item->getStatus() == AuctionItem::OFFERED && item->getOfferToID() == player->getObjectID())
+					if (item->getStatus() == AuctionItem::OFFERED && item->getOfferToID() == player->getObjectID()) {
 						reply->addItemToList(item);
+					}
 					break;
 				case 8: // Stockroom
 					if ((item->getStatus() == AuctionItem::EXPIRED && item->getOwnerID() == player->getObjectID()) ||
@@ -957,8 +1012,9 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 						reply->addItemToList(item);
 					break;
 				case 9: // Offers to vendor (browsing player)
-					if (item->getStatus() == AuctionItem::OFFERED && item->getOwnerID() == player->getObjectID())
+					if (item->getStatus() == AuctionItem::OFFERED && item->getOwnerID() == player->getObjectID()) {
 						reply->addItemToList(item);
+					}
 					break;
 				}
 			}
@@ -969,7 +1025,7 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 		}
 	}
 
-	if (displaying == (offset + 100))
+	if (reply->getListSize() >= 100)
 		reply->createMessage(offset, true);
 	else
 		reply->createMessage(offset);
@@ -1078,7 +1134,7 @@ void AuctionManagerImplementation::getItemAttributes(CreatureObject* player, uin
 
 	String cust = "";
 	if(object->isTangibleObject()) {
-		TangibleObject* tano = cast<TangibleObject*>(object.get());
+		ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(object.get());
 		if(tano != NULL)
 			tano->getCustomizationString(cust);
 	}
@@ -1100,6 +1156,10 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 		return;
 	}
 
+	Time expireTime;
+	uint64 currentTime = expireTime.getMiliTime() / 1000;
+	uint64 availableTime = 0;
+
 	if (item->getStatus() == AuctionItem::FORSALE) {
 		if(item->getOwnerID() != player->getObjectID()) {
 			error("not the owner of the item in cancelItem()");
@@ -1107,6 +1167,12 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 			player->sendMessage(msg);
 			return;
 		}
+
+		if(item->isOnBazaar())
+			availableTime = currentTime + AuctionManager::COMMODITYEXPIREPERIOD;
+		else
+			availableTime = currentTime + AuctionManager::VENDOREXPIREPERIOD;
+
 	} else if (item->getStatus() == AuctionItem::OFFERED) {
 		if(item->getOfferToID() != player->getObjectID() &&
 				item->getOwnerID() != player->getObjectID()) {
@@ -1115,6 +1181,9 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 			player->sendMessage(msg);
 			return;
 		}
+		/// 7 Days
+		availableTime = currentTime + AuctionManager::COMMODITYEXPIREPERIOD;
+
 	} else {
 		BaseMessage* msg = new CancelLiveAuctionResponseMessage(objectID, CancelLiveAuctionResponseMessage::ALREADYCOMPLETED);
 		player->sendMessage(msg);
@@ -1132,9 +1201,10 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 		refundAuction(item);
 		if(auctionEvents.contains(item->getAuctionedItemObjectID())) {
 			Reference<Task*> newTask = auctionEvents.get(item->getAuctionedItemObjectID());
-
+			
 			if(newTask != NULL)
 				newTask->cancel();
+				
 			auctionEvents.drop(item->getAuctionedItemObjectID());
 		}
 	}
@@ -1142,10 +1212,10 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 	/// If the offeree cancels
 	if(item->getStatus() == AuctionItem::OFFERED && item->getOfferToID() == player->getObjectID()) {
 
-		SceneObject* vendor = zoneServer->getObject(item->getVendorID());
+		ManagedReference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
 
 		if(vendor != NULL) {
-			ChatManager* cman = zoneServer->getChatManager();
+			ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
 			String sender = "auctioner";
 
 			// Waypoint to Vendor / bazaar
@@ -1169,10 +1239,6 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 
 	Locker locker(item);
 
-	Time expireTime;
-	uint64 currentTime = expireTime.getMiliTime() / 1000;
-	uint64 availableTime = currentTime + EXPIREPERIOD;
-
 	item->setStatus(AuctionItem::EXPIRED);
 	item->setExpireTime(availableTime);
 	item->clearAuctionWithdraw();
@@ -1184,15 +1250,13 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 
 void AuctionManagerImplementation::expireSale(AuctionItem* item) {
 	Locker locker(item);
-
+		
 	if(item->getStatus() == AuctionItem::EXPIRED) {
-		locker.release();
-
 		deleteExpiredSale(item);
 		return;
 	}
 
-	ChatManager* cman = zoneServer->getChatManager();
+	ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
 
 	//Send the mail to the vendor owner
 	String sender = "auctioner";
@@ -1201,25 +1265,30 @@ void AuctionManagerImplementation::expireSale(AuctionItem* item) {
 
 	StringIdChatParameter body1("@auction:seller_fail");
 	body1.setTO(item->getItemName());
+	
+	locker.release();
+
+	cman->sendMail(sender, subject1, body1, item->getOwnerName());
 
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
-	uint64 availableTime = currentTime + EXPIREPERIOD;
+	uint64 availableTime = 0;
+
+	if(item->isOnBazaar())
+		availableTime = currentTime + AuctionManager::COMMODITYEXPIREPERIOD;
+	else
+		availableTime = currentTime + AuctionManager::VENDOREXPIREPERIOD;
 
 	item->setStatus(AuctionItem::EXPIRED);
 	item->setExpireTime(availableTime);
 	item->clearAuctionWithdraw();
-
-	locker.release();
-
-	cman->sendMail(sender, subject1, body1, item->getOwnerName());
 }
 
 void AuctionManagerImplementation::expireBidAuction(AuctionItem* item) {
 
 	Locker locker(item);
 
-	ChatManager* cman = zoneServer->getChatManager();
+	ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
 
 	//Send the mail to the vendor owner
 	String sender = "auctioner";
@@ -1231,14 +1300,19 @@ void AuctionManagerImplementation::expireBidAuction(AuctionItem* item) {
 
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
-	uint64 availableTime = currentTime + EXPIREPERIOD;
+	uint64 availableTime = 0;
+
+	if(item->isOnBazaar())
+		availableTime = currentTime + AuctionManager::COMMODITYEXPIREPERIOD;
+	else
+		availableTime = currentTime + AuctionManager::VENDOREXPIREPERIOD;
 
 	item->setStatus(AuctionItem::EXPIRED);
 	item->setExpireTime(availableTime);
 	item->clearAuctionWithdraw();
-
+	
 	locker.release();
-
+	
 	cman->sendMail(sender, subject1, body1, item->getOwnerName());
 }
 
@@ -1248,13 +1322,13 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 		return;
 
 	String playername = item->getBidderName();
-
-	ChatManager* cman = zoneServer->getChatManager();
-	PlayerManager* pman = zoneServer->getPlayerManager();
+	String sellerName = item->getOwnerName();
+	ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
+	ManagedReference<PlayerManager*> pman = zoneServer->getPlayerManager();
 
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
-	uint64 availableTime = currentTime + EXPIREPERIOD;
+	uint64 availableTime = currentTime + AuctionManager::COMMODITYEXPIREPERIOD;
 
 	Locker locker(item);
 	item->setExpireTime(availableTime);
@@ -1262,11 +1336,14 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 
 	if(playername.isEmpty()) {
 		locker.release();
-
 		expireBidAuction(item);
+
 	} else {
 		// Someone won the auction
+		ManagedReference<CreatureObject*> buyer = pman->getPlayer(item->getBidderName());
+
 		item->setStatus(AuctionItem::SOLD);
+		updateAuctionOwner(item, buyer);
 
 		// Waypoint to Vendor / bazaar
 		float waypointX = vendor->getWorldPositionX();
@@ -1288,24 +1365,24 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 		UnicodeString subject2("@auction:subject_vendor_buyer");
 		StringIdChatParameter body2("@auction:buyer_success");
 		body2.setTO(item->getItemName());
-		body2.setTT(item->getOwnerName());
+		body2.setTT(sellerName);
 		body2.setDI(item->getPrice());
 
 		//Send the Mail
 		locker.release();
-
-		cman->sendMail(sender, subject1, body1, item->getOwnerName());
+		
+		cman->sendMail(sender, subject1, body1, sellerName);
 		cman->sendMail(sender, subject2, body2, item->getBidderName(), waypoint);
 	}
 }
 
 void AuctionManagerImplementation::deleteExpiredSale(AuctionItem* item) {
 	Locker locker(item);
-
+		
 	ManagedReference<SceneObject*> vendor = zoneServer->getObject(item->getVendorID());
 	if (vendor != NULL) {
 
-		ChatManager* cman = zoneServer->getChatManager();
+		ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
 		String sender = "auctioner";
 
 		// Waypoint to Vendor / bazaar
@@ -1324,12 +1401,43 @@ void AuctionManagerImplementation::deleteExpiredSale(AuctionItem* item) {
 
 		//Send the Mail
 		locker.release();
-
+		
 		cman->sendMail(sender, subject, body, item->getOwnerName(), waypoint);
 	}
 
-	auctionMap->removeItem(vendor, item);
+	auctionMap->deleteItem(vendor, item);
+}
 
-	ObjectManager::instance()->destroyObjectFromDatabase(item->_getObjectID());
+void AuctionManagerImplementation::displayInfo(CreatureObject* player) {
+	ManagedReference<SuiListBox*> list = new SuiListBox(player, SuiWindowType::MARKET_INFO, 0x00);
+	list->setPromptTitle("Market Info");
+	list->setPromptText("Information about the commodities market");
 
+	list->addMenuItem("Terminals with items");
+	list->addMenuItem("\tBazaars: " + String::valueOf(auctionMap->getBazaarCount()));
+	list->addMenuItem("\tVendors: " + String::valueOf(auctionMap->getVendorCount()));
+	list->addMenuItem("Total Items: " + String::valueOf(auctionMap->getTotalItemCount()));
+
+	player->sendMessage(list->generateMessage());
+}
+
+void AuctionManagerImplementation::updateAuctionOwner(AuctionItem* item, CreatureObject* player) {
+
+	Locker locker(item);
+
+	ManagedReference<PlayerManager*> pman = zoneServer->getPlayerManager();
+	ManagedReference<CreatureObject*> previousOwner = pman->getPlayer(item->getOwnerName());
+
+	if(player == previousOwner)
+		return;
+
+	auctionMap->removeFromCommodityLimit(item);
+
+	item->setOwnerID(player->getObjectID());
+	item->setOwnerName(player->getFirstName());
+
+	if(!item->isOnBazaar() && item->getStatus() != AuctionItem::OFFERED)
+		return;
+
+	auctionMap->addToCommodityLimit(item);
 }

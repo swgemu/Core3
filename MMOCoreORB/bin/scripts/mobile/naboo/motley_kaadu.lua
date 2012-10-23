@@ -26,7 +26,7 @@ motley_kaadu = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/kaadu.iff"},
+	templates = {"object/mobile/kaadu_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

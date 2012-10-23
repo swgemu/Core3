@@ -71,8 +71,7 @@ public:
 
 		StructureObject* structure = cast<StructureObject*>(obj.get());
 
-		StructureManager* structureManager = creature->getZone()->getStructureManager();
-		structureManager->declareResidence(creature, structure);
+		StructureManager::instance()->declareResidence(creature, structure);
 
 		return SUCCESS;
 	}

@@ -9,10 +9,13 @@
 #include "GuildTerminal.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/managers/guild/GuildManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
+
 
 void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (guildObject == NULL) {
@@ -36,13 +39,15 @@ void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 	uint64 playerID = player->getObjectID();
 
 	//Only members have access.
-	if (!guildObject->hasMember(playerID))
+	if (!guildObject->hasMember(playerID) && !player->getPlayerObject()->isPrivileged())
 		return;
 
 	//Guild exists -> display these functions.
 	menuResponse->addRadialMenuItem(193, 3, "@guild:menu_guild_management"); //Guild Management
 	menuResponse->addRadialMenuItemToRadialID(193, 186, 3, "@guild:menu_info"); //Guild Information
 	menuResponse->addRadialMenuItemToRadialID(193, 189, 3, "@guild:menu_enemies"); //Guild Enemies
+	if ( guildObject->getGuildLeaderID() == playerID )
+	menuResponse->addRadialMenuItemToRadialID(193, 195, 3, "@guild:accept_hall"); // Accept
 
 	if (guildObject->hasDisbandPermission(playerID))
 		menuResponse->addRadialMenuItemToRadialID(193, 191, 3, "@guild:menu_disband"); //Disband Guild
@@ -60,7 +65,7 @@ void GuildTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 
 	menuResponse->addRadialMenuItemToRadialID(194, 190, 3, "@guild:menu_sponsor"); //Sponsor for Membership
 
-	if (guildObject->getGuildLeaderID() == playerID)
+	if (guildObject->getGuildLeaderID() == playerID || player->getPlayerObject()->isPrivileged())
 		menuResponse->addRadialMenuItemToRadialID(194, 69, 3, "@guild:menu_leader_change"); //Transfer PA Leadership
 
 	return;
@@ -75,6 +80,9 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		return TerminalImplementation::handleObjectMenuSelect(player, selectedID);
 
 	switch (selectedID) {
+	case 69:
+		guildManager->sendGuildTransferTo(player, _this.get());
+		break;
 	case 185:
 		guildManager->sendGuildCreateNameTo(player, _this.get());
 		break;
@@ -97,8 +105,14 @@ int GuildTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, 
 		break;
 	case 190:
 		guildManager->sendGuildSponsorTo(player, guildObject, _this.get());
+		break;
+	case 195:
+		guildManager->sendAcceptLotsTo(player, _this.get());
+		break;
 	default:
 		TerminalImplementation::handleObjectMenuSelect(player, selectedID);
 	}
 	return 0;
 }
+
+

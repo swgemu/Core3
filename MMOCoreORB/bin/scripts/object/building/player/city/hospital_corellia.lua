@@ -52,7 +52,7 @@ object_building_player_city_hospital_corellia = object_building_player_city_shar
 	length = 5,
 	width = 5,
 	cityRankRequired = 3,
-	abilitiesRequired = {"place_hospital"},
+	abilityRequired = "place_hospital",
 	zoneComponent = "StructureZoneComponent",
 	childObjects = {
 			{templateFile = "object/tangible/sign/player/house_address_corellia.iff", x = 9.4, z = 2, y = 10.32, ox = 0, oy = 0.707107, oz = 0, ow = -0.707107, cellid = -1, containmentType = -1},

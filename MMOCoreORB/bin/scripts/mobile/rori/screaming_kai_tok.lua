@@ -26,7 +26,7 @@ screaming_kai_tok = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/kai_tok.iff"},
+	templates = {"object/mobile/kai_tok_hue.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_green"},
 	conversationTemplate = "",

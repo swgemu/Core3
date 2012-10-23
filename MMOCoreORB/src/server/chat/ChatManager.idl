@@ -162,6 +162,7 @@ class ChatManager extends ManagedService implements Logger {
 	public native void deletePersistentMessage(CreatureObject player, unsigned int mailID);
 	
 	public native void broadcastGalaxy(CreatureObject player, final string message);
+	public native void broadcastGalaxy(final string message, final string faction);
 	
 	/*public native void sendMailBody(CreatureObject receiver, unsigned int mailid);
 	public native void listMail(CreatureObject ply);

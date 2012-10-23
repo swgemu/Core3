@@ -470,6 +470,7 @@ void SceneObjectImplementation::notifyLoadFromDatabase() {
 				//			obj->setContainmentType(4);
 			}
 		}
+
 	}
 
 	for (int i = 0; i < activeAreas.size(); ++i) {
@@ -1033,6 +1034,8 @@ void SceneObjectImplementation::notifyPositionUpdate(QuadTreeEntry* entry) {
 
 	//Core::getTaskManager()->executeTask(new PositionUpdateTask(_this.get(), entry));
 	//#endif
+
+	zoneComponent->notifyPositionUpdate(_this.get(), entry);
 }
 
 void SceneObjectImplementation::updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets) {
@@ -1541,4 +1544,36 @@ void SceneObjectImplementation::addActiveArea(ActiveArea* area) {
 		area->deploy();
 
 	activeAreas.put(area);
+}
+
+int SceneObjectImplementation::getCountableObjectsRecursive() {
+	int count = 0;
+
+	Locker locker(&containerLock);
+
+	for (int i = 0; i < containerObjects.size(); ++i) {
+		ManagedReference<SceneObject*> obj = containerObjects.get(i);
+
+		++count;
+
+		count += obj->getCountableObjectsRecursive();
+	}
+
+	return count;
+}
+
+int SceneObjectImplementation::getContainedObjectsRecursive() {
+	int count = 0;
+
+	Locker locker(&containerLock);
+
+	for (int i = 0; i < containerObjects.size(); ++i) {
+		ManagedReference<SceneObject*> obj = containerObjects.get(i);
+
+		++count;
+
+		count += obj->getContainedObjectsRecursive();
+	}
+
+	return count;
 }

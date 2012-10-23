@@ -16,11 +16,13 @@
 
 #include "server/zone/objects/region/CityRegion.h"
 
+#include "server/zone/objects/waypoint/WaypointObject.h"
+
 /*
  *	CityManagerStub
  */
 
-enum {RPC_LOADLUACONFIG__ = 6,RPC_LOADCITYREGIONS__,RPC_VALIDATECITYNAME__STRING_,RPC_ISCITYINRANGE__ZONE_FLOAT_FLOAT_,RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_,RPC_PROCESSCITYUPDATE__CITYREGION_,RPC_UPDATECITYVOTING__CITYREGION_,RPC_DEDUCTCITYMAINTENANCE__CITYREGION_,RPC_CONTRACTCITY__CITYREGION_,RPC_EXPANDCITY__CITYREGION_,RPC_DESTROYCITY__CITYREGION_,RPC_SENDSTATUSREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_,RPC_PROMPTWITHDRAWCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTDEPOSITCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_WITHDRAWFROMCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_,RPC_DEPOSITTOCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_,RPC_SENDTREASURYREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_SENDCITIZENSHIPREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITIZEN__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITIZEN__CITYREGION_CREATUREOBJECT_BOOL_,RPC_SENDMANAGEMILITIA__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_ADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_STRING_,RPC_REMOVEMILITIAMEMBER__CITYREGION_CREATUREOBJECT_LONG_,RPC_SENDCITYADVANCEMENT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTUNREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITY__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITY__CITYREGION_CREATUREOBJECT_,RPC_PROMPTADJUSTTAXES__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_SENDMAINTENANCEREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CONTAINSCITYNAME__STRING_,RPC_ISCITYRANKCAPPED__STRING_BYTE_,RPC_VALIDATECITYINRANGE__CREATUREOBJECT_ZONE_FLOAT_FLOAT_,RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_,RPC_GETTOTALCITIES__,RPC_SENDMAYORALSTANDINGS__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTMAYORALVOTE__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERFORMAYORALRACE__CITYREGION_CREATUREOBJECT_,RPC_CASTMAYORALVOTE__CITYREGION_CREATUREOBJECT_LONG_};
+enum {RPC_LOADLUACONFIG__ = 6,RPC_LOADCITYREGIONS__,RPC_VALIDATECITYNAME__STRING_,RPC_ISCITYINRANGE__ZONE_FLOAT_FLOAT_,RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_,RPC_PROCESSCITYUPDATE__CITYREGION_,RPC_PROCESSINCOMETAX__CITYREGION_,RPC_UPDATECITYVOTING__CITYREGION_,RPC_DEDUCTCITYMAINTENANCE__CITYREGION_,RPC_CONTRACTCITY__CITYREGION_,RPC_EXPANDCITY__CITYREGION_,RPC_DESTROYCITY__CITYREGION_,RPC_SENDSTATUSREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_,RPC_PROMPTWITHDRAWCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTDEPOSITCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_WITHDRAWFROMCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_,RPC_DEPOSITTOCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_,RPC_SENDTREASURYREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_SENDCITIZENSHIPREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITIZEN__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITIZEN__CITYREGION_CREATUREOBJECT_BOOL_,RPC_SENDMANAGEMILITIA__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_ADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_STRING_,RPC_REMOVEMILITIAMEMBER__CITYREGION_CREATUREOBJECT_LONG_,RPC_SENDCITYADVANCEMENT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTUNREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITY__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITY__CITYREGION_CREATUREOBJECT_,RPC_PROMPTADJUSTTAXES__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTSETTAX__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_,RPC_SETTAX__CITYREGION_CREATUREOBJECT_INT_INT_,RPC_SENDMAINTENANCEREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CONTAINSCITYNAME__STRING_,RPC_ISCITYRANKCAPPED__STRING_BYTE_,RPC_VALIDATECITYINRANGE__CREATUREOBJECT_ZONE_FLOAT_FLOAT_,RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_,RPC_GETTOTALCITIES__,RPC_SENDMAYORALSTANDINGS__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTMAYORALVOTE__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERFORMAYORALRACE__CITYREGION_CREATUREOBJECT_,RPC_CASTMAYORALVOTE__CITYREGION_CREATUREOBJECT_LONG_,};
 
 CityManager::CityManager(ZoneServer* zserv) : ManagedService(DummyConstructorParameter::instance()) {
 	CityManagerImplementation* _implementation = new CityManagerImplementation(zserv);
@@ -123,6 +125,20 @@ void CityManager::processCityUpdate(CityRegion* city) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->processCityUpdate(city);
+}
+
+void CityManager::processIncomeTax(CityRegion* city) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_PROCESSINCOMETAX__CITYREGION_);
+		method.addObjectParameter(city);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->processIncomeTax(city);
 }
 
 void CityManager::updateCityVoting(CityRegion* city) {
@@ -529,6 +545,40 @@ void CityManager::promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, Sce
 		_implementation->promptAdjustTaxes(city, mayor, terminal);
 }
 
+void CityManager::promptSetTax(CityRegion* city, CreatureObject* mayor, int selectedTax, SceneObject* terminal) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_PROMPTSETTAX__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_);
+		method.addObjectParameter(city);
+		method.addObjectParameter(mayor);
+		method.addSignedIntParameter(selectedTax);
+		method.addObjectParameter(terminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->promptSetTax(city, mayor, selectedTax, terminal);
+}
+
+void CityManager::setTax(CityRegion* city, CreatureObject* mayor, int selectedTax, int value) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETTAX__CITYREGION_CREATUREOBJECT_INT_INT_);
+		method.addObjectParameter(city);
+		method.addObjectParameter(mayor);
+		method.addSignedIntParameter(selectedTax);
+		method.addSignedIntParameter(value);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setTax(city, mayor, selectedTax, value);
+}
+
 void CityManager::sendMaintenanceReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -543,6 +593,15 @@ void CityManager::sendMaintenanceReport(CityRegion* city, CreatureObject* creatu
 		method.executeWithVoidReturn();
 	} else
 		_implementation->sendMaintenanceReport(city, creature, terminal);
+}
+
+void CityManager::sendMail(CityRegion* city, const String& sender, const UnicodeString& subject, StringIdChatParameter& params, WaypointObject* waypoint) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->sendMail(city, sender, subject, params, waypoint);
 }
 
 bool CityManager::containsCityName(const String& name) {
@@ -680,6 +739,24 @@ void CityManager::castMayoralVote(CityRegion* city, CreatureObject* creature, un
 		method.executeWithVoidReturn();
 	} else
 		_implementation->castMayoralVote(city, creature, oid);
+}
+
+CitySpecialization* CityManager::getCitySpecialization(const String& cityspec) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getCitySpecialization(cityspec);
+}
+
+CityTax* CityManager::getCityTax(int idx) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getCityTax(idx);
 }
 
 DistributedObjectServant* CityManager::_getImplementation() {
@@ -902,6 +979,11 @@ void CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			processCityUpdate(static_cast<CityRegion*>(inv->getObjectParameter()));
 		}
 		break;
+	case RPC_PROCESSINCOMETAX__CITYREGION_:
+		{
+			processIncomeTax(static_cast<CityRegion*>(inv->getObjectParameter()));
+		}
+		break;
 	case RPC_UPDATECITYVOTING__CITYREGION_:
 		{
 			updateCityVoting(static_cast<CityRegion*>(inv->getObjectParameter()));
@@ -1034,6 +1116,16 @@ void CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			promptAdjustTaxes(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
 		}
 		break;
+	case RPC_PROMPTSETTAX__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_:
+		{
+			promptSetTax(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_SETTAX__CITYREGION_CREATUREOBJECT_INT_INT_:
+		{
+			setTax(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getSignedIntParameter());
+		}
+		break;
 	case RPC_SENDMAINTENANCEREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_:
 		{
 			sendMaintenanceReport(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
@@ -1113,6 +1205,10 @@ CityRegion* CityManagerAdapter::createCity(CreatureObject* mayor, const String& 
 
 void CityManagerAdapter::processCityUpdate(CityRegion* city) {
 	(static_cast<CityManager*>(stub))->processCityUpdate(city);
+}
+
+void CityManagerAdapter::processIncomeTax(CityRegion* city) {
+	(static_cast<CityManager*>(stub))->processIncomeTax(city);
 }
 
 void CityManagerAdapter::updateCityVoting(CityRegion* city) {
@@ -1217,6 +1313,14 @@ void CityManagerAdapter::unregisterCity(CityRegion* city, CreatureObject* mayor)
 
 void CityManagerAdapter::promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
 	(static_cast<CityManager*>(stub))->promptAdjustTaxes(city, mayor, terminal);
+}
+
+void CityManagerAdapter::promptSetTax(CityRegion* city, CreatureObject* mayor, int selectedTax, SceneObject* terminal) {
+	(static_cast<CityManager*>(stub))->promptSetTax(city, mayor, selectedTax, terminal);
+}
+
+void CityManagerAdapter::setTax(CityRegion* city, CreatureObject* mayor, int selectedTax, int value) {
+	(static_cast<CityManager*>(stub))->setTax(city, mayor, selectedTax, value);
 }
 
 void CityManagerAdapter::sendMaintenanceReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {

@@ -133,4 +133,8 @@ class FactoryCrate extends TangibleObject {
 	public native TangibleObject extractObject(int count = 1);
 	
 	public native void split(int newStackSize);
+	
+	public abstract native int getCountableObjectsRecursive() {
+		return 0;
+	}
 }

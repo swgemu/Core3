@@ -469,7 +469,7 @@ function WarrenScreenPlay:recycleReactorRoom()
 	if (pCell ~= nil) then
 		local cell = LuaSceneObject(pCell)
 		cell:setContainerInheritPermissionsFromParent(false)
-		cell:clearContainerDefaultAllowPermission(MOVEIN)
+		cell:clearContainerDefaultAllowPermission(WALKIN)
 		
 		local pWarren = getSceneObject(self.buildingID)
 		
@@ -518,7 +518,7 @@ function WarrenScreenPlay:useReactorCoreSwitch(pTerminal, pPlayer)
 		
 		if (pCell ~= nil) then
 			local cell = LuaSceneObject(pCell)
-			cell:setContainerDefaultAllowPermission(MOVEIN)
+			cell:setContainerDefaultAllowPermission(WALKIN)
 			
 			local pWarren = getSceneObject(self.buildingID)
 			
@@ -862,7 +862,7 @@ function EnterReactorRoomComponent:transferObject(pContainer, pObj, slot)
 		
 					if (pCell ~= nil) then
 						local cell = LuaSceneObject(pCell)
-						cell:setContainerDefaultAllowPermission(MOVEIN)
+						cell:setContainerDefaultAllowPermission(WALKIN)
 						
 						local pWarren = getSceneObject(self.buildingID)
 						

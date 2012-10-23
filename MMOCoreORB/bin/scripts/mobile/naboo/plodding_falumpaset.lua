@@ -26,7 +26,7 @@ plodding_falumpaset = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/falumpaset.iff"},
+	templates = {"object/mobile/falumpaset_hue.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

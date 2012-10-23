@@ -4,11 +4,11 @@
 
 #include "StructureObject.h"
 
+#include "server/zone/Zone.h"
+
 #include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
-
-#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
 

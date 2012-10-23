@@ -12,7 +12,6 @@
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/Region.h"
 

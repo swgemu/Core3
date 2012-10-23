@@ -40,6 +40,7 @@
 #include "PlanetTravelPoint.h"
 
 ClientPoiDataTable PlanetManagerImplementation::clientPoiDataTable;
+Mutex PlanetManagerImplementation::poiMutex;
 
 void PlanetManagerImplementation::initialize() {
 	performanceLocations = new MissionTargetMap();
@@ -419,6 +420,9 @@ void PlanetManagerImplementation::loadStaticTangibleObjects() {
 }
 
 void PlanetManagerImplementation::loadClientPoiData() {
+
+	Locker locker(&poiMutex);
+
 	if (clientPoiDataTable.size() != 0)
 		return;
 
@@ -610,14 +614,40 @@ bool PlanetManagerImplementation::isInRangeWithPoi(float x, float y, float range
 	return false;
 }
 
-bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneObject* object) {
-	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
+bool PlanetManagerImplementation::isInObjectsNoBuildZone(float x, float y, float extraMargin) {
 	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
 
 	Vector3 targetPos(x, y, zone->getHeight(x, y));
 
-	zone->getInRangeActiveAreas(x, y, &activeAreas, true);
 	zone->getInRangeObjects(x, y, 512, &closeObjects, true);
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* obj = cast<SceneObject*>(closeObjects.get(i).get());
+
+		SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
+
+		if (objectTemplate != NULL) {
+			float radius = objectTemplate->getNoBuildRadius() + extraMargin;
+
+			if (radius > 0) {
+				Vector3 objWorldPos = obj->getWorldPosition();
+
+				if (objWorldPos.squaredDistanceTo(targetPos) < radius * radius) {
+					return true;
+				}
+			}
+		}
+	}
+
+	return false;
+}
+
+bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneObject* object) {
+	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
+
+	Vector3 targetPos(x, y, zone->getHeight(x, y));
+
+	zone->getInRangeActiveAreas(x, y, &activeAreas, true);
 
 	for (int i = 0; i < activeAreas.size(); ++i) {
 		ActiveArea* area = activeAreas.get(i);
@@ -627,22 +657,8 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 		}
 	}
 
-	for (int i = 0; i < closeObjects.size(); ++i) {
-		SceneObject* obj = cast<SceneObject*>(closeObjects.get(i).get());
-
-		SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
-
-		if (objectTemplate != NULL) {
-			float radius = objectTemplate->getNoBuildRadius();
-
-			if (radius > 0) {
-				Vector3 objWorldPos = obj->getWorldPosition();
-
-				if (objWorldPos.squaredDistanceTo(targetPos) < radius * radius) {
-					return false;
-				}
-			}
-		}
+	if (isInObjectsNoBuildZone(x, y, 0)) {
+		return false;
 	}
 
 	if (isInWater(targetPos.getX(), targetPos.getY())) {

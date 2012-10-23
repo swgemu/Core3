@@ -49,8 +49,10 @@ which carries forward this exception.
 #ifndef BOARDSHUTTLECOMMAND_H_
 #define BOARDSHUTTLECOMMAND_H_
 
+#include "QueueCommand.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/callbacks/TicketSelectionSuiCallback.h"
@@ -121,8 +123,11 @@ public:
 		}
 
 		// Is shuttle ready to board yet?
-		if (!planetManager->checkShuttleStatus(creature, shuttle))
-			return GENERALERROR;
+		// Shuttle at Theed Spaceport, Naboo should always be available. Even when the shuttle isn't there.
+		if (!closestPoint->isPoint("naboo","Theed Spaceport")){
+			if (!planetManager->checkShuttleStatus(creature, shuttle))
+				return GENERALERROR;
+		}
 
 		uint64 ticketoid = target;
 
@@ -173,8 +178,21 @@ public:
 				if (region->getCurrentPlayerCount() >= MAXIMUM_PLAYER_COUNT) {
 					creature->sendSystemMessage("Your destination is currently under maintenance, please try again later.");
 					return GENERALERROR;
+				} else 	if (region->isBanned(creature->getObjectID())) {
+					creature->sendSystemMessage("@city/city:banned_from_that_city"); // You have been banned from traveling to that city by the city militia
+					return GENERALERROR;
 				}
 			}
+		}
+
+		ManagedReference<CityRegion*> departCity = shuttle->getCityRegion();
+
+		if (departCity == NULL)
+			return GENERALERROR;
+
+		if (departCity->isBanned(creature->getObjectID())) {
+			creature->sendSystemMessage("@city/city:youre_city_banned"); // you are banned from this city and may not use any of its public services and structures
+			return GENERALERROR;
 		}
 
 		// Randomize the arrival a bit to try and avoid everyone zoning on top of each other

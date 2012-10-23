@@ -43,7 +43,17 @@
 
 object_building_tatooine_housing_tatt_style02_med = object_building_tatooine_shared_housing_tatt_style02_med:new {
 
+-- Used as tavern for: Mos Taike?
 
+	planetMapCategory = "tavern",
+	
+	skillMods = {
+		{"private_med_wound_mind", 20},
+		{"private_buff_mind", 100},
+		{"private_med_battle_fatigue", 5},
+		{"private_med_wound_health", 100},
+		{"private_med_wound_action", 100}
+	},
 
 
 

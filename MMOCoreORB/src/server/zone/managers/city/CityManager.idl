@@ -56,7 +56,13 @@ import system.util.Vector;
 import system.util.HashTable;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.region.CityRegion;
+import server.zone.objects.waypoint.WaypointObject;
+include server.chat.StringIdChatParameter;
 include server.zone.managers.city.CitiesAllowed;
+include server.zone.managers.city.CitySpecialization;
+include server.zone.managers.city.CitySpecializationMap;
+include server.zone.managers.city.CityTax;
+include server.zone.managers.city.CityTaxMap;
 
 class CityManager extends ManagedService implements Logger {
 	private transient ZoneServer zoneServer;
@@ -69,6 +75,12 @@ class CityManager extends ManagedService implements Logger {
 	
 	@dereferenced
 	private transient static CitiesAllowed citiesAllowedPerRank;
+	
+	@dereferenced
+	private transient static CitySpecializationMap citySpecializations;
+	
+	@dereferenced
+	private transient static CityTaxMap cityTaxes;
 	
 	public transient static int cityUpdateInterval;
 	public transient static int newCityGracePeriod;
@@ -112,6 +124,13 @@ class CityManager extends ManagedService implements Logger {
 	public native CityRegion createCity(CreatureObject mayor, final string cityName, float x, float y);
 	
 	public native void processCityUpdate(CityRegion city);
+	
+	/**
+	 * Processes income tax from all citizens
+	 * @pre city locked
+	 * @post city locked
+	 */
+	public native void processIncomeTax(CityRegion city);
 	
 	/**
 	 * Handles the voting of the city, tallys votes, see's who won. Resets the voting process.
@@ -170,7 +189,14 @@ class CityManager extends ManagedService implements Logger {
 	
 	public native void promptAdjustTaxes(CityRegion city, CreatureObject mayor, SceneObject terminal = null);
 	
+	public native void promptSetTax(CityRegion city, CreatureObject mayor, int selectedTax, SceneObject terminal = null);
+	
+	public native void setTax(CityRegion city, CreatureObject mayor, int selectedTax, int value);
+	
 	public native void sendMaintenanceReport(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+	
+	@local
+	public native void sendMail(CityRegion city, final string sender, final unicode subject, @dereferenced StringIdChatParameter params, WaypointObject waypoint);
 	
 	public synchronized boolean containsCityName(final string name) {
 		return cities.contains(name);
@@ -216,4 +242,10 @@ class CityManager extends ManagedService implements Logger {
 	public native void registerForMayoralRace(CityRegion city, CreatureObject creature);
 	
 	public native void castMayoralVote(CityRegion city, CreatureObject creature, unsigned long oid);
+	
+	@local
+	public native CitySpecialization getCitySpecialization(final string cityspec); 
+	
+	@local
+	public native CityTax getCityTax(int idx);
 }

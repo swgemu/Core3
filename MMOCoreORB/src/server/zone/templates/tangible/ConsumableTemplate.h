@@ -58,10 +58,8 @@ public:
 
 		LuaObject eventTypes = templateData->getObjectField("eventTypes");
 
-		for (int i = 1; i <= eventTypes.getTableSize(); i += 2) {
-			float value = eventTypes.getFloatAt(i);
-
-			eventType.add(value);
+		for (int i = 1; i <= eventTypes.getTableSize(); ++i) {
+			eventType.add(eventTypes.getIntAt(i));
 		}
 
 		eventTypes.pop();

@@ -19,32 +19,40 @@ professions = {
 	"social_entertainer"
 }
 
-cdefPistol = "object/weapon/ranged/pistol/pistol_cdef.iff"
+marksmanPistol = "object/weapon/ranged/pistol/pistol_cdef.iff"
 	
-cdefRifle = "object/weapon/ranged/rifle/rifle_cdef.iff"
+marksmanRifle = "object/weapon/ranged/rifle/rifle_cdef.iff"
 
-cdefCarbine = "object/weapon/ranged/carbine/carbine_cdef.iff"
+marksmanCarbine = "object/weapon/ranged/carbine/carbine_cdef.iff"
+
+brawlerOneHander = "object/weapon/melee/knife/knife_stone.iff"
+
+brawlerTwoHander = "object/weapon/melee/axe/axe_heavy_duty.iff"
+
+brawlerPolearm = "object/weapon/melee/polearm/lance_staff_wood_s1.iff"
 
 survivalKnife = "object/weapon/melee/knife/knife_survival.iff"
 
-generic_tool = "object/tangible/crafting/station/generic_tool.iff"
+genericTool = "object/tangible/crafting/station/generic_tool.iff"
 
-mineral_tool = "object/tangible/survey_tool/survey_tool_mineral.iff"
+foodTool = "object/tangible/crafting/station/food_tool.iff"
 
-chemical_tool = "object/tangible/survey_tool/survey_tool_liquid.iff"
+mineralTool = "object/tangible/survey_tool/survey_tool_mineral.iff"
+
+chemicalTool = "object/tangible/survey_tool/survey_tool_liquid.iff"
 
 slitherhorn = "object/tangible/instrument/slitherhorn.iff"
 
-maroj_melon = "object/tangible/food/foraged/foraged_fruit_s1.iff"
+marojMelon = "object/tangible/food/foraged/foraged_fruit_s1.iff"
 
 professionSpecificItems = {
-	combat_brawler = { survivalKnife },
-	combat_marksman = { cdefPistol, cdefCarbine, cdefRifle },
-	crafting_artisan = { cdefPistol, survivalKnife, generic_tool, mineral_tool, chemical_tool },
+	combat_brawler = { brawlerOneHander, brawlerTwoHander, brawlerPolearm },
+	combat_marksman = { marksmanPistol, marksmanCarbine, marksmanRifle },
+	crafting_artisan = { genericTool, mineralTool, chemicalTool },
 	jedi = { },
-	outdoors_scout = { cdefPistol, generic_tool},
-	science_medic = { cdefPistol, generic_tool, survivalKnife },
-	social_entertainer = { cdefPistol, survivalKnife, slitherhorn }
+	outdoors_scout = { genericTool },
+	science_medic = { foodTool },
+	social_entertainer = { slitherhorn }
 }
 
-commonStartingItems = { maroj_melon }
+commonStartingItems = { marojMelon, survivalKnife }

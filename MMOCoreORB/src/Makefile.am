@@ -230,7 +230,6 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/managers/loot/LootManager.cpp \
 				server/zone/managers/loot/LootGroupMap.cpp \
 				server/zone/managers/crafting/schematicmap/SchematicMap.cpp \
-				server/zone/managers/structure/StructureManager.cpp \
 				server/zone/managers/weather/WeatherManager.cpp \
 				server/zone/managers/city/CityManager.cpp \
 				server/zone/managers/planet/PlanetManager.cpp \
@@ -287,6 +286,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/creature/ai/AiActor.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		server/zone/objects/structure/events/StructureMaintenanceTask.cpp \
 		server/zone/objects/tangible/components/ElevatorMenuComponent.cpp \
 		server/zone/objects/tangible/components/ElevatorUpMenuComponent.cpp \
 		server/zone/objects/tangible/components/ElevatorDownMenuComponent.cpp \
@@ -347,6 +347,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/InsuranceTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/components/BankTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/components/HologrindHolocronMenuComponent.cpp \
+		server/zone/objects/tangible/components/VillageHolocronMenuComponent.cpp \
 		server/zone/objects/tangible/components/ForceShrineMenuComponent.cpp \
 		server/zone/objects/tangible/components/CloningTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/components/generic/ArtCrateMenuComponent.cpp \
@@ -604,7 +605,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/mission/spawnmaps/NpcSpawnPoint.cpp \
 		server/zone/objects/waypoint/WaypointObjectImplementation.cpp \
 		server/zone/objects/tangible/weapon/WeaponObjectImplementation.cpp \
-		server/zone/managers/structure/StructureManagerImplementation.cpp \
+		server/zone/managers/structure/StructureManager.cpp \
 		server/zone/managers/weather/WeatherManagerImplementation.cpp \
 		server/zone/managers/city/CityManagerImplementation.cpp \
 		server/zone/objects/structure/StructureObjectImplementation.cpp \

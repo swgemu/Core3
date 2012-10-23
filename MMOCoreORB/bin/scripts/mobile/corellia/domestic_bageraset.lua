@@ -26,7 +26,7 @@ domestic_bageraset = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/bageraset.iff"},
+	templates = {"object/mobile/bageraset_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

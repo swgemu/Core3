@@ -234,6 +234,12 @@ function hedon_istee_holo_map_menucomponent:handleObjectMenuSelect(pSceneObject,
 		return 0
 	end
 	
+	local luaSceneObject = LuaSceneObject(pSceneObject)
+	
+	if (luaSceneObject:isASubChildOf(pPlayer) == false) then
+		return 0
+	end
+	
 	if (selectedID == 120) then
 		local suiManager = LuaSuiManager()
 		suiManager:sendMessageBox(pSceneObject, pPlayer, "@treasure_map/treasure_map:title_hedon1", "@treasure_map/treasure_map:text_hedon1", "@treasure_map/treasure_map:store_waypoint", "hedon_istee_screenplay", "handleTreasureMapCallback")

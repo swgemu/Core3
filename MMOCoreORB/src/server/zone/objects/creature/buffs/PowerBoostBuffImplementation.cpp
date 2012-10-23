@@ -101,6 +101,8 @@ void PowerBoostBuffImplementation::doMindTick(bool up) {
 }
 
 void PowerBoostBuffImplementation::clearBuffEvent() {
+	BuffImplementation::clearBuffEvent();
+
 	if (pbBuffEvent != NULL) {
 		if (pbBuffEvent->isScheduled())
 			pbBuffEvent->cancel();

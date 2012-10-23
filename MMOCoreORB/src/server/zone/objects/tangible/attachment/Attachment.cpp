@@ -130,7 +130,7 @@ bool Attachment::isClothingAttachment() {
 		return _implementation->isClothingAttachment();
 }
 
-VectorMap<String, int>* Attachment::getSkillMods() {
+HashTable<String, int>* Attachment::getSkillMods() {
 	AttachmentImplementation* _implementation = static_cast<AttachmentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -250,7 +250,7 @@ bool AttachmentImplementation::readObjectMember(ObjectInputStream* stream, const
 	}
 
 	if (_name == "Attachment.skillModMap") {
-		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&skillModMap, stream);
+		TypeInfo<HashTable<String, int> >::parseFromBinaryStream(&skillModMap, stream);
 		return true;
 	}
 
@@ -283,7 +283,7 @@ int AttachmentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<VectorMap<String, int> >::toBinaryStream(&skillModMap, stream);
+	TypeInfo<HashTable<String, int> >::toBinaryStream(&skillModMap, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -297,8 +297,6 @@ AttachmentImplementation::AttachmentImplementation() {
 	Logger::setLoggingName("Attachment");
 	// server/zone/objects/tangible/attachment/Attachment.idl():  		skillModMap.setNullValue(0);
 	(&skillModMap)->setNullValue(0);
-	// server/zone/objects/tangible/attachment/Attachment.idl():  		skillModMap.setNoDuplicateInsertPlan();
-	(&skillModMap)->setNoDuplicateInsertPlan();
 }
 
 void AttachmentImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -323,7 +321,7 @@ bool AttachmentImplementation::isClothingAttachment() {
 	return TangibleObjectImplementation::gameObjectType == SceneObjectType::CLOTHINGATTACHMENT;
 }
 
-VectorMap<String, int>* AttachmentImplementation::getSkillMods() {
+HashTable<String, int>* AttachmentImplementation::getSkillMods() {
 	// server/zone/objects/tangible/attachment/Attachment.idl():  		return skillModMap;
 	return (&skillModMap);
 }

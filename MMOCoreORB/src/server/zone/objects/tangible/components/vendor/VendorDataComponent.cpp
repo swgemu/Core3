@@ -15,6 +15,9 @@
 #include "server/zone/objects/auction/events/UpdateVendorTask.h"
 #include "server/zone/managers/auction/AuctionManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/packets/object/SpatialChat.h"
+#include "server/zone/objects/player/Races.h"
+#include "server/zone/objects/tangible/tasks/VendorReturnToPositionTask.h"
 
 VendorDataComponent::VendorDataComponent() : AuctionTerminalDataComponent() {
 	ownerId = 0;
@@ -28,6 +31,8 @@ VendorDataComponent::VendorDataComponent() : AuctionTerminalDataComponent() {
 	adBarking = false;
 	mail1Sent = false;
 	mail2Sent = false;
+	barkMessage = "";
+	originalDirection = 1000;
 	addSerializableVariables();
 }
 
@@ -45,11 +50,17 @@ void VendorDataComponent::addSerializableVariables() {
 	addSerializableVariable("mail1Sent", &mail1Sent);
 	addSerializableVariable("mail2Sent", &mail2Sent);
 	addSerializableVariable("emptyTimer", &emptyTimer);
+	addSerializableVariable("barkMessage", &barkMessage);
+	addSerializableVariable("barkMood", &barkMood);
+	addSerializableVariable("barkAnimation", &barkAnimation);
+	addSerializableVariable("originalDirection", &originalDirection);
 }
 
 void VendorDataComponent::initializeTransientMembers() {
 
 	AuctionTerminalDataComponent::initializeTransientMembers();
+
+	lastBark = 0;
 
 	if(parent != NULL) {
 
@@ -58,6 +69,12 @@ void VendorDataComponent::initializeTransientMembers() {
 
 			/// Schedule initial task
 			vendorCheckTask->schedule((VENDORCHECKDELAY + System::random(VENDORCHECKINTERVAL)) * 60 * 1000);
+
+			if(originalDirection == 1000)
+				originalDirection = parent->getDirectionAngle();
+
+			if(isRegistered() && parent->getZone() != NULL)
+				parent->getZone()->registerObjectWithPlanetaryMap(parent);
 		}
 	}
 }
@@ -88,6 +105,8 @@ void VendorDataComponent::runVendorUpdate() {
 	if (owner == NULL || !owner->isPlayerCreature() || playerManager == NULL || vendor == NULL) {
 		return;
 	}
+
+	vendorBarks.removeAll();
 
 	int now = time(0);
 	int last = lastSuccessfulUpdate.getTime();
@@ -121,7 +140,7 @@ void VendorDataComponent::runVendorUpdate() {
 
 	if(isEmpty()) {
 
-		ChatManager* cman = parent->getZoneServer()->getChatManager();
+		ManagedReference<ChatManager*> cman = parent->getZoneServer()->getChatManager();
 
 		String sender = parent->getDisplayedName();
 		UnicodeString subject("@auction:vendor_status_subject");
@@ -149,11 +168,11 @@ void VendorDataComponent::runVendorUpdate() {
 		}
 	}
 
-	if(maintAmount <= 0) {
+	if(isOnStrike()) {
 
 		if(time(0) - inactiveTimer.getTime() > DELETEWARNING) {
 
-			ChatManager* cman = parent->getZoneServer()->getChatManager();
+			ManagedReference<ChatManager*> cman = parent->getZoneServer()->getChatManager();
 
 			String sender = parent->getDisplayedName();
 			UnicodeString subject("@auction:vendor_status_subject");
@@ -279,4 +298,46 @@ void VendorDataComponent::setVendorSearchEnabled(bool enabled) {
 
 	vendorSearchEnabled = enabled;
 	auctionManager->updateVendorSearch(parent, vendorSearchEnabled);
+}
+
+
+void VendorDataComponent::performVendorBark(SceneObject* target) {
+
+	if(isOnStrike()) {
+		return;
+	}
+
+	ManagedReference<CreatureObject*> vendor = cast<CreatureObject*>(parent.get());
+	if(vendor == NULL)
+		return;
+
+	ManagedReference<CreatureObject*> player = cast<CreatureObject*>(target);
+	if(target == NULL || !target->isPlayerCreature())
+		return;
+
+	lastBark = time(0);
+
+	vendor->faceObject(target);
+	vendor->updateDirection(vendor->getDirectionAngle());
+
+	SpatialChat* chatMessage = NULL;
+
+	if(barkMessage.beginsWith("@")) {
+		StringIdChatParameter message;
+		message.setStringId(barkMessage);
+		message.setTT(player->getObjectID());
+		chatMessage = new SpatialChat(vendor->getObjectID(), target->getObjectID(), message, target->getObjectID(), Races::getMoodID(barkMood), 0);
+
+	} else {
+		UnicodeString uniMessage(barkMessage);
+		chatMessage = new SpatialChat(vendor->getObjectID(), target->getObjectID(), uniMessage, target->getObjectID(), Races::getMoodID(barkMood), 0, 0);
+	}
+
+	vendor->broadcastMessage(chatMessage, true);
+	vendor->doAnimation(barkAnimation);
+
+	addBarkTarget(target);
+
+	Reference<VendorReturnToPositionTask*> returnTask = new VendorReturnToPositionTask(vendor, originalDirection);
+	vendor->addPendingTask("vendorreturn", returnTask, 3000);
 }

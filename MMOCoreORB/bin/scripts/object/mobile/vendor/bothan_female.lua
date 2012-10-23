@@ -50,6 +50,7 @@ object_mobile_vendor_bothan_female = object_mobile_vendor_shared_bothan_female:n
 	objectMenuComponent = {"cpp", "VendorMenuComponent"},
 	dataObjectComponent = "VendorDataComponent",	
 	containerComponent = {"cpp", "VendorContainerComponent"},
+	zoneComponent = "VendorZoneComponent",
 
 	noTrade = 1,
 

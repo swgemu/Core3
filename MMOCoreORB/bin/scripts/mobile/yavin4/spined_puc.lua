@@ -26,7 +26,7 @@ spined_puc = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/spined_puc.iff"},
+	templates = {"object/mobile/spined_puc_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

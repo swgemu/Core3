@@ -36,6 +36,7 @@
 
 #include "server/zone/objects/player/sui/callbacks/StructurePayAccessFeeSuiCallback.h"
 #include "server/zone/objects/building/tasks/RevokePaidAccessTask.h"
+#include "server/zone/objects/region/CityRegion.h"
 
 #include "tasks/EjectObjectEvent.h"
 
@@ -161,7 +162,7 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 		if (!perms->hasInheritPermissionsFromParent()) {
 			CreatureObject* creo = cast<CreatureObject*>(player);
 
-			if (creo != NULL && !cell->checkContainerPermission(creo, ContainerPermissions::MOVEIN)) {
+			if (creo != NULL && !cell->checkContainerPermission(creo, ContainerPermissions::WALKIN)) {
 				BaseMessage* perm = new UpdateCellPermissionsMessage(cell->getObjectID(), false);
 				player->sendMessage(perm);
 			}
@@ -275,6 +276,20 @@ void BuildingObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	BaseMessage* buio6 = new TangibleObjectMessage6(_this.get());
 	player->sendMessage(buio6);
 }
+
+
+bool BuildingObjectImplementation::isCityBanned(CreatureObject* player){
+
+	ManagedReference<CityRegion*> thisRegion  = this->getCityRegion();
+
+	if (thisRegion != NULL)
+		if (thisRegion->isBanned(player->getObjectID()))
+			return true;
+
+	return false;
+}
+
+
 
 bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
 
@@ -574,7 +589,6 @@ void BuildingObjectImplementation::ejectObject(SceneObject* obj) {
 
 	Reference<Task*> task = new EjectObjectEvent(obj, x, z, y);
 	task->execute();
-	//obj->teleport(x, z, y);
 }
 
 void BuildingObjectImplementation::onEnter(CreatureObject* player) {
@@ -585,6 +599,8 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 		return;
 
 	addTemplateSkillMods(player);
+
+	Locker acessLock(&paidAccessListMutex);
 
 	if (accessFee > 0 && !isOnEntryList(player)) {
 		//thread safety issues!
@@ -618,27 +634,31 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 		i = 1;
 		ejectObject(player);
 
+		//TODO: Redo this.
 		if (isCondemned()) {
 			//Handle condemned messages.
 			//CreatureObject* owner = getOwnerCreatureObject();
 			uint64 ownerOid = getOwnerObjectID();
 
 			if (ownerOid == player->getObjectID()) {
-				//Owner trying to enter building.
-				ManagedReference<Zone* >zone = getZone();
-				if (zone != NULL) {
-					ManagedReference<StructureManager*> structureManager = zone->getStructureManager();
-					if (structureManager != NULL) {
-						structureManager->promptPayUncondemnMaintenance(player, _this.get());
-					}
-				}
+					StructureManager::instance()->promptPayUncondemnMaintenance(player, _this.get());
 			} else {
 				//Other player than the owner trying to enter the building.
 				StringIdChatParameter message("@player_structure:structure_condemned_not_owner");
 				player->sendSystemMessage(message);
 			}
+
 		}
 	}
+
+	if (isCivicStructure() && isCityBanned(player)) {
+
+		ejectObject(player);
+		player->sendSystemMessage("@city/city:youre_city_banned"); // you are banned from this city and may not use any of its public services and structures
+	}
+
+
+
 }
 
 void BuildingObjectImplementation::onExit(CreatureObject* player, uint64 parentid) {
@@ -731,6 +751,10 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 								if (!object->getCloseObjects()->contains(child)) {
 									object->addInRangeObject(child, false);
 									child->sendTo(object, true);//sendTo because notifyInsert doesnt send objects with parent
+								} else {
+									if (object->getClient() != NULL && child->isCreatureObject()) {
+										object->sendMessage(child->link(cell->getObjectID(), -1));
+									}
 								}
 							} else {
 								object->notifyInsert(child);
@@ -834,10 +858,18 @@ void BuildingObjectImplementation::payAccessFee(CreatureObject* player) {
 	else
 		error("Unable to pay access fee credits to owner");
 
+	Locker acessLock(&paidAccessListMutex);
+
 	if(paidAccessList.contains(player->getObjectID()))
 		paidAccessList.drop(player->getObjectID());
 
 	paidAccessList.put(player->getObjectID(), time(0) + (accessDuration * 60));
+
+	acessLock.release();
+
+	if(getOwnerCreatureObject() != NULL && getOwnerCreatureObject()->isPlayerCreature())
+		getOwnerCreatureObject()->getPlayerObject()->addExperience("merchant", 50, true);
+
 	updatePaidAccessList();
 
 	player->sendSystemMessage("@player/player_utility:access_granted");
@@ -864,6 +896,8 @@ void BuildingObjectImplementation::updatePaidAccessList() {
 
 	Vector<uint64> ejectList;
 	uint32 nextExpirationTime = 0;
+
+	Locker acessLock(&paidAccessListMutex);
 
 	for(int i = 0; i < paidAccessList.size(); ++i) {
 		uint32 expirationTime = paidAccessList.elementAt(i).getValue();

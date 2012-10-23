@@ -771,6 +771,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@dirty
 	public native void showFlyText(final string file, final string uax, byte red, byte green, byte blue);
+
+	public native int getContainedObjectsRecursive();
+	
+	public abstract native int getCountableObjectsRecursive();
 	
 	/**
 	 * Returns a Facade session
@@ -1340,6 +1344,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	@dirty
+	public abstract boolean isAiAgent() {
+		return false;
+	}
+	
+	@dirty
 	public abstract boolean isShipObject() {
 		return false;
 	}
@@ -1397,11 +1406,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dirty
 	public native boolean isPsgArmorObject() {
 		return gameObjectType == SceneObjectType.SHIELDGENERATOR;
-	}
-
-	@dirty
-	public abstract boolean isLairObject() {
-		return false;
 	}
 	
 	@dirty

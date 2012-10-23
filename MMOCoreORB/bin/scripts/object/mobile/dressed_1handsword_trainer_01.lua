@@ -42,7 +42,6 @@
 
 
 object_mobile_dressed_1handsword_trainer_01 = object_mobile_shared_dressed_1handsword_trainer_01:new {
-
 	objectMenuComponent = {"cpp", "TrainerMenuComponent"}
 }
 

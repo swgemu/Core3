@@ -61,16 +61,19 @@ void MapLocationEntry::setObject(SceneObject *obj) {
 	String newName = object->getDisplayedName();
 
 	if(object->isCreatureObject()) { // Try FirstName + FastName if it's a creature
-		CreatureObject* creature = cast<CreatureObject*>(object.get());
+		if(!object->isVendor()) {
 
-		String fName = creature->getFirstName();
-		String lName = creature->getLastName();
+			CreatureObject* creature = cast<CreatureObject*>(object.get());
 
-		if(fName.length() > 0) {
-			newName = fName;
+			String fName = creature->getFirstName();
+			String lName = creature->getLastName();
 
-			if(lName.length() > 0)
-				newName += " " + lName;
+			if(fName.length() > 0) {
+				newName = fName;
+
+				if(lName.length() > 0)
+					newName += " " + lName;
+			}
 		}
 	} else if(category->getIndex() == MapLocationType::SHUTTLEPORT) { // Shuttleports take on the name of nearest travel point
 		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();

@@ -85,6 +85,8 @@ public:
 
 	void notifyLoadFromDatabase();
 
+	void loadBuffDurationEvent(CreatureObject* creo);
+
 	void init();
 
 	void sendTo(CreatureObject* player);
@@ -148,6 +150,8 @@ public:
 	float getBuffDuration();
 
 	int getBuffType();
+
+	VectorMap<byte, int>* getAttributeModifiers();
 
 	int getAttributeModifierValue(byte attribute);
 
@@ -250,6 +254,8 @@ public:
 
 	void notifyLoadFromDatabase();
 
+	void loadBuffDurationEvent(CreatureObject* creo);
+
 	void init();
 
 	virtual void sendTo(CreatureObject* player);
@@ -278,7 +284,7 @@ public:
 
 	virtual void removeStates();
 
-	void clearBuffEvent();
+	virtual void clearBuffEvent();
 
 	void setBuffEventNull();
 
@@ -313,6 +319,8 @@ public:
 	float getBuffDuration();
 
 	int getBuffType();
+
+	VectorMap<byte, int>* getAttributeModifiers();
 
 	virtual int getAttributeModifierValue(byte attribute);
 
@@ -378,6 +386,8 @@ public:
 	void initializeTransientMembers();
 
 	void notifyLoadFromDatabase();
+
+	void loadBuffDurationEvent(CreatureObject* creo);
 
 	void init();
 
