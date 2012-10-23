@@ -812,30 +812,24 @@ function ThemeParkLogic:getMissionType(activeNpcNumber, pConversingPlayer)
 	return mission.missionType
 end
 
-function ThemeParkLogic:escortedNpcInTheSameCell(pConversingPlayer)
+function ThemeParkLogic:escortedNpcCloseEnough(pConversingPlayer)
 	if pConversingPlayer == nil then
 		return false
 	end
 
 	local creature = LuaCreatureObject(pConversingPlayer)
 	local playerSceneObject = LuaSceneObject(pConversingPlayer)
-	local playerCellID = playerSceneObject:getParentID()
 	
 	local objectID = readData(creature:getObjectID() .. ":missionSpawn:no1")
 	local pNpc = getSceneObject(objectID)
 			
 	if pNpc ~= nil then
-		local npc = LuaSceneObject(pNpc)
-		local npcCellID = npc:getParentID()
-
-		if playerCellID ~= npcCellID then
-			return false
+		if playerSceneObject:getDistanceTo(pNpc) < 64 then
+			return true
 		end
-	else
-		return false
 	end
 	
-	return true
+	return false
 end
 
 function ThemeParkLogic:resetCurrentMission(pConversingPlayer)

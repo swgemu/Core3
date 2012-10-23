@@ -85,7 +85,7 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 		
 		if npcCompare == 0 then
 			if self.themePark:missionStatus(pConversingPlayer) == 1 then
-				if self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "escort" and self.themePark:escortedNpcInTheSameCell(pConversingPlayer) == true then
+				if self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "escort" and self.themePark:escortedNpcCloseEnough(pConversingPlayer) == true then
 					nextScreenName = "npc_reward_n"
 				elseif self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "retrieve" and self.themePark:hasRequiredItem(pConversingPlayer) == true then
 			 		self.themePark:removeDeliverItem(pConversingPlayer)
