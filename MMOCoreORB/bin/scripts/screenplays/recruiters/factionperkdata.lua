@@ -4,6 +4,7 @@ faction_reward_type = {
 	uniform=3,
 	furniture=4,
 	container=5,
+	terminal=6,
 }
 
 faction_reward_data = {
@@ -62,8 +63,6 @@ faction_reward_data = {
 	},
 
 	rebel_furniture_list = {
-		--"data_terminal_s1",
-		--"data_terminal_s2",
 		"tech_armoire",
 		"tech_bookcase",
 		"frn_cabinet",
@@ -72,13 +71,15 @@ faction_reward_data = {
 		"frn_coffee_table",
 		"frn_couch",
 		"frn_end_table",
-		"table_s1"
+		"table_s1",
+		"data_terminal_s1",
+		"data_terminal_s2",
 	},
 
 	rebel_furniture = {
 	
-		data_terminal_s1 = { type=faction_reward_type.furniture, display="@frn_n:frn_data_terminal", item="object/tangible/furniture/imperial/data_terminal_s1.iff",cost=560},
-		data_terminal_s2 = { type=faction_reward_type.furniture, display="@frn_n:frn_data_terminal", item="object/tangible/furniture/imperial/data_terminal_s2.iff",cost=700},
+		data_terminal_s1 = { type=faction_reward_type.terminal, display="@frn_n:frn_data_terminal", item="object/tangible/furniture/imperial/data_terminal_s1.iff",cost=850},
+		data_terminal_s2 = { type=faction_reward_type.terminal, display="@frn_n:frn_data_terminal", item="object/tangible/furniture/imperial/data_terminal_s2.iff",cost=1000},
 		--frn_table = { type=faction_reward_type.furniture, display="@frn_n:frn_table", item="object/tangible/furniture/imperial/table_s1.iff",cost=1400},
 		tech_armoire = { type=faction_reward_type.container, display="@container_name:tech_armoire", item="object/tangible/furniture/technical/armoire_s01.iff", cost=1400},
 		tech_bookcase = { type=faction_reward_type.container, display="@container_name:tech_bookcase", item="object/tangible/furniture/technical/bookcase_s01.iff", cost=1400},
@@ -92,10 +93,6 @@ faction_reward_data = {
 	},
 
 	imperial_furniture_list = {
-		--"data_terminal_s1",
-		--"data_terminal_s2",
-		--"data_terminal_s3",
-		--"data_terminal_s4",
 		"frn_table",
 		"tech_armoire",
 		"tech_bookcase",
@@ -105,15 +102,19 @@ faction_reward_data = {
 		"frn_coffee_table",
 		"frn_couch",
 		"frn_end_table",
-		"table_s1"
+		"table_s1",
+		"data_terminal_s1",
+		"data_terminal_s2",
+		"data_terminal_s3",
+		"data_terminal_s4",
 	},
 
 	imperial_furniture = {
 	
-		data_terminal_s1 = { type=faction_reward_type.furniture, display="@frn_n:frn_data_terminal", item="object/tangible/furniture/imperial/data_terminal_s1.iff",cost=560},
-		data_terminal_s2 = { type=faction_reward_type.furniture, display="@frn_n:frn_data_terminal", item="object/tangible/furniture/imperial/data_terminal_s2.iff",cost=700},
-		data_terminal_s3 = { type=faction_reward_type.furniture, display="@frn_n:frn_data_terminal", item="object/tangible/furniture/imperial/data_terminal_s3.iff",cost=840},
-		data_terminal_s4 = { type=faction_reward_type.furniture, display="@frn_n:frn_data_terminal", item="object/tangible/furniture/imperial/data_terminal_s4.iff",cost=980},
+		data_terminal_s1 = { type=faction_reward_type.terminal, display="@frn_n:frn_data_terminal", item="object/tangible/furniture/imperial/data_terminal_s1.iff",cost=560},
+		data_terminal_s2 = { type=faction_reward_type.terminal, display="@frn_n:frn_data_terminal", item="object/tangible/furniture/imperial/data_terminal_s2.iff",cost=700},
+		data_terminal_s3 = { type=faction_reward_type.terminal, display="@frn_n:frn_data_terminal", item="object/tangible/furniture/imperial/data_terminal_s3.iff",cost=840},
+		data_terminal_s4 = { type=faction_reward_type.terminal, display="@frn_n:frn_data_terminal", item="object/tangible/furniture/imperial/data_terminal_s4.iff",cost=980},
 		frn_table = { type=faction_reward_type.furniture, display="@frn_n:frn_table", item="object/tangible/furniture/imperial/table_s1.iff",cost=700},
 		tech_armoire = { type=faction_reward_type.container, display="@container_name:tech_armoire", item="object/tangible/furniture/technical/armoire_s01.iff", cost=980},
 		tech_bookcase = { type=faction_reward_type.container, display="@container_name:tech_bookcase", item="object/tangible/furniture/technical/bookcase_s01.iff", cost=980},
