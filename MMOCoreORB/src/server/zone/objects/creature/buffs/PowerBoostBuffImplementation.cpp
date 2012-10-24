@@ -26,6 +26,10 @@ void PowerBoostBuffImplementation::initializeTransientMembers() {
 }
 
 void PowerBoostBuffImplementation::activate(bool applyModifiers) {
+	if (counter != 0 && pbBuffEvent == NULL) {
+		pbBuffEvent = new PowerBoostBuffDurationEvent(creature.get(), _this.get());
+	}
+
 	if(creature.get() != NULL) {
 		if(counter == 0) {
 			BuffImplementation::activate(false);
