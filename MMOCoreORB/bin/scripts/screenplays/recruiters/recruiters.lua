@@ -675,5 +675,5 @@ function recruiter_convo_handler:isContainer(strItem)
 end
 
 function recruiter_convo_handler:isTerminal(strItem)
-	printf("pure recruiter_confo_handler:isTerminal(strItem)")
+	printf("pure recruiter_convo_handler:isTerminal(strItem)")
 end
