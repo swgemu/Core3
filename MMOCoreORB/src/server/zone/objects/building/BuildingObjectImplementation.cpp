@@ -578,20 +578,22 @@ void BuildingObjectImplementation::updateCellPermissionsTo(CreatureObject* creat
 }
 
 void BuildingObjectImplementation::ejectObject(CreatureObject* creature) {
-	if (!creature->getPlayerObject()->isPrivileged())
-	{
-		Vector3 ejectionPoint = getEjectionPoint();
+	PlayerObject* ghost = creature->getPlayerObject();
 
-		float x = ejectionPoint.getX();
-		float y = ejectionPoint.getY();
-		float z = 0;
+	if (ghost != NULL && ghost->isPrivileged())
+		return;
 
-		if (zone != NULL)
-			z = zone->getHeight(x, y);
+	Vector3 ejectionPoint = getEjectionPoint();
 
-		Reference<Task*> task = new EjectObjectEvent(creature, x, z, y);
-		task->execute();
-	}
+	float x = ejectionPoint.getX();
+	float y = ejectionPoint.getY();
+	float z = 0;
+
+	if (zone != NULL)
+		z = zone->getHeight(x, y);
+
+	Reference<Task*> task = new EjectObjectEvent(creature, x, z, y);
+	task->execute();
 }
 
 void BuildingObjectImplementation::onEnter(CreatureObject* player) {

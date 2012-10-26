@@ -143,7 +143,7 @@ void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 			if (player != NULL) {
 				player->sendSystemMessage("ERROR: could not find template for target. Please report this on Mantis to help us track down the root cause.");
 			}
-			error("Template error: " + e.getMessage() + " Template = '" + mission->getTargetOptionalTemplate() +"'");
+			error("Could not spawn template: '" + mission->getTargetOptionalTemplate() + "'");
 		}
 	}
 }
