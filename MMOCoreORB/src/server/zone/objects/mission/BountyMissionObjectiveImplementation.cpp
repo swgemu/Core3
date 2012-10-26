@@ -137,6 +137,13 @@ void BountyMissionObjectiveImplementation::spawnTarget(const String& zoneName) {
 			//TODO add observer to catch player kill and fail mission in that case.
 			addObserverToCreature(ObserverEventType::OBJECTDESTRUCTION, npcTarget);
 			addObserverToCreature(ObserverEventType::DAMAGERECEIVED, npcTarget);
+		} else {
+			fail();
+			ManagedReference<CreatureObject*> player = getPlayerOwner();
+			if (player != NULL) {
+				player->sendSystemMessage("ERROR: could not find template for target. Please report this on Mantis to help us track down the root cause.");
+			}
+			error("Template error: " + e.getMessage() + " Template = '" + mission->getTargetOptionalTemplate() +"'");
 		}
 	}
 }
