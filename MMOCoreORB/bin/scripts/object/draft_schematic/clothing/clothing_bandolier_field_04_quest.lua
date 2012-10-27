@@ -71,6 +71,12 @@ object_draft_schematic_clothing_clothing_bandolier_field_04_quest = object_draft
 
 
    targetTemplate = "object/tangible/wearables/bandolier/bandolier_s04_quest.iff",
+				
+	skillMods = {
+	    {"weapon_assembly", 5},
+	    {"weapon_repair", 5},
+	    {"weapon_experimentation", 3}
+	},
 
    additionalTemplates = {
              }

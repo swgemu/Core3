@@ -140,6 +140,8 @@ public:
 
 	String getTemplate(int i);
 
+	DraftSchematicObjectTemplate* getDraftSchematicTemplate();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -229,6 +231,8 @@ public:
 	int getTemplateListSize();
 
 	String getTemplate(int i);
+
+	DraftSchematicObjectTemplate* getDraftSchematicTemplate();
 
 	WeakReference<DraftSchematic*> _this;
 

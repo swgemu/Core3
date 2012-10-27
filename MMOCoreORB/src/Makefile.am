@@ -252,6 +252,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/tangible/tool/repair/RepairTool.cpp \
 				server/zone/objects/tangible/tool/SurveyTool.cpp \
 				server/zone/objects/tangible/wearables/WearableObject.cpp \
+				server/zone/objects/tangible/wearables/WearableContainerObject.cpp \
 				server/zone/objects/tangible/wearables/ClothingObject.cpp \
 				server/zone/objects/tangible/wearables/ArmorObject.cpp \
 				server/zone/objects/tangible/wearables/PsgArmorObject.cpp \
@@ -610,6 +611,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/city/CityManagerImplementation.cpp \
 		server/zone/objects/structure/StructureObjectImplementation.cpp \
 		server/zone/objects/tangible/wearables/WearableObjectImplementation.cpp \
+		server/zone/objects/tangible/wearables/WearableContainerObjectImplementation.cpp \
 		server/zone/objects/tangible/wearables/ArmorObjectImplementation.cpp \
 		server/zone/objects/tangible/wearables/PsgArmorObjectImplementation.cpp \
 		server/zone/objects/tangible/attachment/AttachmentImplementation.cpp \

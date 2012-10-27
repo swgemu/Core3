@@ -70,6 +70,8 @@ protected:
 
 	uint32 tanoCRC;
 
+	VectorMap<String, int> skillMods;
+
 public:
 	DraftSchematicObjectTemplate();
 
@@ -160,6 +162,14 @@ public:
     }
 
 	Vector<Reference<ResourceWeight* > >* getResourceWeights();
+
+    VectorMap<String, int>* getSkillMods() {
+    	return &skillMods;
+    }
+
+    int getSkillMod(const String& mod) {
+    	return skillMods.get(mod);
+    }
 
 };
 

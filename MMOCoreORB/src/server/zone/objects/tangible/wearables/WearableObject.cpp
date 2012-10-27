@@ -14,7 +14,7 @@
  *	WearableObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_APPLYATTACHMENT__CREATUREOBJECT_ATTACHMENT_,RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_BOOL_,RPC_ISWEARABLEOBJECT__,RPC_ISEQUIPPED__,RPC_GETMAXSOCKETS__,RPC_SOCKETSUSED__,RPC_SOCKETSLEFT__,RPC_REPAIRATTEMPT__INT_,RPC_SETMAXSOCKETS__INT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_APPLYATTACHMENT__CREATUREOBJECT_ATTACHMENT_,RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_BOOL_,RPC_ISWEARABLEOBJECT__,RPC_ISEQUIPPED__,RPC_GETMAXSOCKETS__,RPC_SOCKETSUSED__,RPC_SOCKETSLEFT__,RPC_REPAIRATTEMPT__INT_,RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_,RPC_SETMAXSOCKETS__INT_};
 
 WearableObject::WearableObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	WearableObjectImplementation* _implementation = new WearableObjectImplementation();
@@ -191,6 +191,23 @@ void WearableObject::addWearableSkillMod(const String& mod, int value) {
 
 	} else
 		_implementation->addWearableSkillMod(mod, value);
+}
+
+void WearableObject::addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient) {
+	WearableObjectImplementation* _implementation = static_cast<WearableObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_);
+		method.addSignedIntParameter(skillType);
+		method.addAsciiParameter(skillMod);
+		method.addSignedIntParameter(value);
+		method.addBooleanParameter(notifyClient);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addSkillMod(skillType, skillMod, value, notifyClient);
 }
 
 void WearableObject::setMaxSockets(int maxSockets) {
@@ -426,6 +443,11 @@ void WearableObjectImplementation::addWearableSkillMod(const String& mod, int va
 	modsNotInSockets ++;
 }
 
+void WearableObjectImplementation::addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient) {
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  		addWearableSkillMod(skillMod, value);
+	addWearableSkillMod(skillMod, value);
+}
+
 void WearableObjectImplementation::setMaxSockets(int maxSockets) {
 	// server/zone/objects/tangible/wearables/WearableObject.idl():  		socketCount 
 	if (maxSockets < 0){
@@ -504,6 +526,12 @@ void WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			resp->insertAscii(repairAttempt(inv->getSignedIntParameter()));
 		}
 		break;
+	case RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_:
+		{
+			String skillMod; 
+			addSkillMod(inv->getSignedIntParameter(), inv->getAsciiParameter(skillMod), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
+		break;
 	case RPC_SETMAXSOCKETS__INT_:
 		{
 			setMaxSockets(inv->getSignedIntParameter());
@@ -548,6 +576,10 @@ int WearableObjectAdapter::socketsLeft() {
 
 String WearableObjectAdapter::repairAttempt(int repairChance) {
 	return (static_cast<WearableObject*>(stub))->repairAttempt(repairChance);
+}
+
+void WearableObjectAdapter::addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient) {
+	(static_cast<WearableObject*>(stub))->addSkillMod(skillType, skillMod, value, notifyClient);
 }
 
 void WearableObjectAdapter::setMaxSockets(int maxSockets) {

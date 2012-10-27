@@ -95,6 +95,8 @@ public:
 
 	void addWearableSkillMod(const String& mod, int value);
 
+	void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
+
 	void setMaxSockets(int maxSockets);
 
 	DistributedObjectServant* _getImplementation();
@@ -172,6 +174,8 @@ public:
 
 	void addWearableSkillMod(const String& mod, int value);
 
+	virtual void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
+
 	void setMaxSockets(int maxSockets);
 
 	WeakReference<WearableObject*> _this;
@@ -234,6 +238,8 @@ public:
 	int socketsLeft();
 
 	String repairAttempt(int repairChance);
+
+	void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient);
 
 	void setMaxSockets(int maxSockets);
 

@@ -122,6 +122,10 @@ class WearableObject extends TangibleObject {
 		modsNotInSockets++;
 	}
 	
+	public abstract void addSkillMod(final int skillType, final string skillMod, int value, boolean notifyClient = true) {
+		addWearableSkillMod(skillMod, value);
+	}
+	
 	public void setMaxSockets(int maxSockets) {
 		if (maxSockets < 0) {
 			maxSockets = 0;
