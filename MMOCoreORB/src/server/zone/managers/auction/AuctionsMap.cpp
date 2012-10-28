@@ -416,17 +416,10 @@ bool AuctionsMapImplementation::containsItem(unsigned long long id) {
 	return (&allItems)->contains(id);
 }
 
-<<<<<<< .copia-de-trabajo
 int AuctionsMapImplementation::getBazaarCount() {
 	Locker _locker(_this.get());
 	// server/zone/managers/auction/AuctionsMap.idl():  		return bazaarItemsForSale.size();
 	return (&bazaarItemsForSale)->size();
-=======
-int AuctionsMapImplementation::getBazaarItemCount(CreatureObject* player) {
-	Locker _locker(_this.get());
-	// server/zone/managers/auction/AuctionsMap.idl():  		return bazaarCount.get(player.getObjectID());
-	return (&bazaarCount)->get(player->getObjectID());
->>>>>>> .derecha-fusion.r5987
 }
 
 int AuctionsMapImplementation::getVendorCount() {
