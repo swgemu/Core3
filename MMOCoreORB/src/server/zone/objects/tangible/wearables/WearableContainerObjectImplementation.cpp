@@ -6,9 +6,33 @@
  */
 
 #include "WearableContainerObject.h"
-#include "server/zone/templates/tangible/ContainerTemplate.h"
-#include "server/zone/packets/object/ObjectMenuResponse.h"
-#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/player/PlayerObject.h"
-#include "server/zone/objects/creature/AiAgent.h"
+
+void WearableContainerObjectImplementation::applySkillModsTo(CreatureObject* creature, bool doCheck) {
+	if (creature == NULL) {
+		return;
+	}
+
+	for (int i = 0; i < wearableSkillMods.size(); ++i) {
+		String name = wearableSkillMods.elementAt(i).getKey();
+		int value = wearableSkillMods.get(name);
+
+		creature->addSkillMod(SkillModManager::WEARABLE, name, value, true);
+	}
+
+	if(doCheck)
+		SkillModManager::instance()->verifyWearableSkillMods(creature);
+}
+
+void WearableContainerObjectImplementation::removeSkillModsFrom(CreatureObject* creature) {
+	if (creature == NULL) {
+		return;
+	}
+
+	for (int i = 0; i < wearableSkillMods.size(); ++i) {
+		String name = wearableSkillMods.elementAt(i).getKey();
+		int value = wearableSkillMods.get(name);
+
+		creature->removeSkillMod(SkillModManager::WEARABLE, name, value, true);
+	}
+}

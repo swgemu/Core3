@@ -37,6 +37,12 @@ class WearableContainerObject : public Container {
 public:
 	WearableContainerObject();
 
+	void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
+
+	void applySkillModsTo(CreatureObject* creature, bool doCheck = true);
+
+	void removeSkillModsFrom(CreatureObject* creature);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -64,11 +70,19 @@ namespace tangible {
 namespace wearables {
 
 class WearableContainerObjectImplementation : public ContainerImplementation {
+protected:
+	VectorMap<String, int> wearableSkillMods;
 
 public:
 	WearableContainerObjectImplementation();
 
 	WearableContainerObjectImplementation(DummyConstructorParameter* param);
+
+	virtual void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
+
+	virtual void applySkillModsTo(CreatureObject* creature, bool doCheck = true);
+
+	virtual void removeSkillModsFrom(CreatureObject* creature);
 
 	WeakReference<WearableContainerObject*> _this;
 
@@ -112,6 +126,12 @@ public:
 	WearableContainerObjectAdapter(WearableContainerObject* impl);
 
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
+
+	void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient);
+
+	void applySkillModsTo(CreatureObject* creature, bool doCheck);
+
+	void removeSkillModsFrom(CreatureObject* creature);
 
 };
 

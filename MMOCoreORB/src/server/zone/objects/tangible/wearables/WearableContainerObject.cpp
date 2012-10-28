@@ -10,6 +10,8 @@
  *	WearableContainerObjectStub
  */
 
+enum {RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_ = 6,RPC_APPLYSKILLMODSTO__CREATUREOBJECT_BOOL_,RPC_REMOVESKILLMODSFROM__CREATUREOBJECT_};
+
 WearableContainerObject::WearableContainerObject() : Container(DummyConstructorParameter::instance()) {
 	WearableContainerObjectImplementation* _implementation = new WearableContainerObjectImplementation();
 	_impl = _implementation;
@@ -25,6 +27,52 @@ WearableContainerObject::~WearableContainerObject() {
 }
 
 
+
+void WearableContainerObject::addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient) {
+	WearableContainerObjectImplementation* _implementation = static_cast<WearableContainerObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_);
+		method.addSignedIntParameter(skillType);
+		method.addAsciiParameter(skillMod);
+		method.addSignedIntParameter(value);
+		method.addBooleanParameter(notifyClient);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addSkillMod(skillType, skillMod, value, notifyClient);
+}
+
+void WearableContainerObject::applySkillModsTo(CreatureObject* creature, bool doCheck) {
+	WearableContainerObjectImplementation* _implementation = static_cast<WearableContainerObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_APPLYSKILLMODSTO__CREATUREOBJECT_BOOL_);
+		method.addObjectParameter(creature);
+		method.addBooleanParameter(doCheck);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->applySkillModsTo(creature, doCheck);
+}
+
+void WearableContainerObject::removeSkillModsFrom(CreatureObject* creature) {
+	WearableContainerObjectImplementation* _implementation = static_cast<WearableContainerObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVESKILLMODSFROM__CREATUREOBJECT_);
+		method.addObjectParameter(creature);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeSkillModsFrom(creature);
+}
 
 DistributedObjectServant* WearableContainerObject::_getImplementation() {
 
@@ -131,6 +179,11 @@ bool WearableContainerObjectImplementation::readObjectMember(ObjectInputStream* 
 	if (ContainerImplementation::readObjectMember(stream, _name))
 		return true;
 
+	if (_name == "WearableContainerObject.wearableSkillMods") {
+		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&wearableSkillMods, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -148,14 +201,29 @@ int WearableContainerObjectImplementation::writeObjectMembers(ObjectOutputStream
 	String _name;
 	int _offset;
 	uint32 _totalSize;
+	_name = "WearableContainerObject.wearableSkillMods";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<VectorMap<String, int> >::toBinaryStream(&wearableSkillMods, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 0;
+
+	return _count + 1;
 }
 
 WearableContainerObjectImplementation::WearableContainerObjectImplementation() : ContainerImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/wearables/WearableContainerObject.idl():  		Logger.setLoggingName("WearableContainerObject");
 	Logger::setLoggingName("WearableContainerObject");
+	// server/zone/objects/tangible/wearables/WearableContainerObject.idl():  		wearableSkillMods.setAllowOverwriteInsertPlan();
+	(&wearableSkillMods)->setAllowOverwriteInsertPlan();
+}
+
+void WearableContainerObjectImplementation::addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient) {
+	// server/zone/objects/tangible/wearables/WearableContainerObject.idl():  		wearableSkillMods.put(skillMod, value);
+	(&wearableSkillMods)->put(skillMod, value);
 }
 
 /*
@@ -173,9 +241,37 @@ void WearableContainerObjectAdapter::invokeMethod(uint32 methid, DistributedMeth
 	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
+	case RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_:
+		{
+			String skillMod; 
+			addSkillMod(inv->getSignedIntParameter(), inv->getAsciiParameter(skillMod), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
+		break;
+	case RPC_APPLYSKILLMODSTO__CREATUREOBJECT_BOOL_:
+		{
+			applySkillModsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
+		break;
+	case RPC_REMOVESKILLMODSFROM__CREATUREOBJECT_:
+		{
+			removeSkillModsFrom(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
+}
+
+void WearableContainerObjectAdapter::addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient) {
+	(static_cast<WearableContainerObject*>(stub))->addSkillMod(skillType, skillMod, value, notifyClient);
+}
+
+void WearableContainerObjectAdapter::applySkillModsTo(CreatureObject* creature, bool doCheck) {
+	(static_cast<WearableContainerObject*>(stub))->applySkillModsTo(creature, doCheck);
+}
+
+void WearableContainerObjectAdapter::removeSkillModsFrom(CreatureObject* creature) {
+	(static_cast<WearableContainerObject*>(stub))->removeSkillModsFrom(creature);
 }
 
 /*

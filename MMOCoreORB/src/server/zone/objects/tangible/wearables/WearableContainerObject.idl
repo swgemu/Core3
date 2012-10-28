@@ -48,9 +48,21 @@ import server.zone.objects.tangible.Container;
 import server.zone.objects.creature.CreatureObject;
 
 class WearableContainerObject extends Container {	
+	
+	@dereferenced
+	protected VectorMap<string, int> wearableSkillMods;
 
 	public WearableContainerObject() {
 		super();
 		Logger.setLoggingName("WearableContainerObject");
+		wearableSkillMods.setAllowOverwriteInsertPlan();
 	}
+	
+	public abstract void addSkillMod(final int skillType, final string skillMod, int value, boolean notifyClient = true) {
+		wearableSkillMods.put(skillMod, value);
+	}
+	
+	public abstract native void applySkillModsTo(CreatureObject creature, boolean doCheck = true);
+	
+	public abstract native void removeSkillModsFrom(CreatureObject creature);
 }
