@@ -99,20 +99,6 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace creature {
-
-class CreatureObject;
-
-} // namespace creature
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::creature;
-
 #include "server/zone/managers/guild/GuildList.h"
 
 #include "server/zone/packets/guild/GuildObjectDeltaMessage3.h"
@@ -221,6 +207,16 @@ public:
 	void toggleGuildPermission(CreatureObject* player, unsigned long long targetID, int permissionIndex, GuildTerminal* guildTerminal);
 
 	ChatRoom* createGuildChannels(GuildObject* guild);
+
+	void sendGuildTransferTo(CreatureObject* player, GuildTerminal* guildTerminal);
+
+	void sendTransferAckTo(CreatureObject* player, const String& newOwnerName, SceneObject* guildTerminal);
+
+	void transferLeadership(CreatureObject* newOwner, CreatureObject* oldOwner, SceneObject* guildTerminal);
+
+	void sendAcceptLotsTo(CreatureObject* newOwner, GuildTerminal* guildTerminal);
+
+	void transferGuildHall(CreatureObject* newOwner, SceneObject* guildTerminal);
 
 	void sendGuildMail(const String& subject, StringIdChatParameter& body, GuildObject* guild);
 
@@ -362,6 +358,16 @@ public:
 
 	ChatRoom* createGuildChannels(GuildObject* guild);
 
+	void sendGuildTransferTo(CreatureObject* player, GuildTerminal* guildTerminal);
+
+	void sendTransferAckTo(CreatureObject* player, const String& newOwnerName, SceneObject* guildTerminal);
+
+	void transferLeadership(CreatureObject* newOwner, CreatureObject* oldOwner, SceneObject* guildTerminal);
+
+	void sendAcceptLotsTo(CreatureObject* newOwner, GuildTerminal* guildTerminal);
+
+	void transferGuildHall(CreatureObject* newOwner, SceneObject* guildTerminal);
+
 	void sendGuildMail(const String& subject, StringIdChatParameter& body, GuildObject* guild);
 
 	WeakReference<GuildManager*> _this;
@@ -496,6 +502,16 @@ public:
 	void toggleGuildPermission(CreatureObject* player, unsigned long long targetID, int permissionIndex, GuildTerminal* guildTerminal);
 
 	ChatRoom* createGuildChannels(GuildObject* guild);
+
+	void sendGuildTransferTo(CreatureObject* player, GuildTerminal* guildTerminal);
+
+	void sendTransferAckTo(CreatureObject* player, const String& newOwnerName, SceneObject* guildTerminal);
+
+	void transferLeadership(CreatureObject* newOwner, CreatureObject* oldOwner, SceneObject* guildTerminal);
+
+	void sendAcceptLotsTo(CreatureObject* newOwner, GuildTerminal* guildTerminal);
+
+	void transferGuildHall(CreatureObject* newOwner, SceneObject* guildTerminal);
 
 };
 

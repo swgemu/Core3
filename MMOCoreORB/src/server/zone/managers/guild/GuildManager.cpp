@@ -18,13 +18,11 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
-
 /*
  *	GuildManagerStub
  */
 
-enum {RPC_SETCHATMANAGER__CHATMANAGER_ = 6,RPC_SENDGUILDLISTTO__CREATUREOBJECT_STRING_,RPC_ADDPENDINGGUILD__LONG_STRING_,RPC_REMOVEPENDINGGUILD__LONG_,RPC_GETPENDINGGUILDNAME__LONG_,RPC_ADDSPONSOREDPLAYER__LONG_GUILDOBJECT_,RPC_REMOVESPONSOREDPLAYER__LONG_,RPC_ISCREATINGGUILD__LONG_,RPC_ISSPONSOREDPLAYER__LONG_,RPC_GETSPONSOREDGUILD__LONG_,RPC_SENDBASELINESTO__CREATUREOBJECT_,RPC_LOADGUILDS__,RPC_SENDGUILDCREATENAMETO__CREATUREOBJECT_GUILDTERMINAL_,RPC_SENDGUILDCREATEABBREVTO__CREATUREOBJECT_GUILDTERMINAL_,RPC_SENDGUILDINFORMATIONTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDMEMBERLISTTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDMEMBEROPTIONSTO__CREATUREOBJECT_GUILDOBJECT_LONG_GUILDTERMINAL_,RPC_SENDGUILDDISBANDCONFIRMTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSOREDLISTTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSOREDOPTIONSTO__CREATUREOBJECT_GUILDOBJECT_LONG_GUILDTERMINAL_,RPC_SENDGUILDSPONSORTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSORVERIFYTO__CREATUREOBJECT_CREATUREOBJECT_,RPC_SENDGUILDKICKPROMPTTO__CREATUREOBJECT_CREATUREOBJECT_,RPC_SENDGUILDSETTITLETO__CREATUREOBJECT_CREATUREOBJECT_,RPC_SENDGUILDWARSTATUSTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_PROMPTADDNEWENEMY__CREATUREOBJECT_GUILDOBJECT_SCENEOBJECT_,RPC_TOGGLEWARSTATUS__CREATUREOBJECT_GUILDOBJECT_LONG_,RPC_DECLAREWARBYNAME__CREATUREOBJECT_GUILDOBJECT_STRING_,RPC_UPDATEWARSTATUSTOWARINGGUILD__GUILDOBJECT_GUILDOBJECT_,RPC_SENDMEMBERPERMISSIONSTO__CREATUREOBJECT_LONG_GUILDTERMINAL_,RPC_VALIDATEGUILDNAME__CREATUREOBJECT_STRING_,RPC_VALIDATEGUILDABBREV__CREATUREOBJECT_STRING_,RPC_GUILDNAMEEXISTS__STRING_,RPC_GUILDABBREVEXISTS__STRING_,RPC_CREATEGUILD__CREATUREOBJECT_GUILDTERMINAL_STRING_STRING_,RPC_DISBANDGUILD__CREATUREOBJECT_GUILDOBJECT_,RPC_SPONSORPLAYER__CREATUREOBJECT_GUILDTERMINAL_STRING_,RPC_ACCEPTSPONSORSHIPREQUEST__CREATUREOBJECT_CREATUREOBJECT_,RPC_ACCEPTSPONSOREDPLAYER__CREATUREOBJECT_LONG_,RPC_KICKMEMBER__CREATUREOBJECT_CREATUREOBJECT_,RPC_LEAVEGUILD__CREATUREOBJECT_GUILDOBJECT_,RPC_SETMEMBERTITLE__CREATUREOBJECT_CREATUREOBJECT_STRING_,RPC_SETALLEGIANCETO__CREATUREOBJECT_LONG_GUILDTERMINAL_,RPC_TOGGLEGUILDPERMISSION__CREATUREOBJECT_LONG_INT_GUILDTERMINAL_,RPC_CREATEGUILDCHANNELS__GUILDOBJECT_,};
+enum {RPC_SETCHATMANAGER__CHATMANAGER_ = 6,RPC_SENDGUILDLISTTO__CREATUREOBJECT_STRING_,RPC_ADDPENDINGGUILD__LONG_STRING_,RPC_REMOVEPENDINGGUILD__LONG_,RPC_GETPENDINGGUILDNAME__LONG_,RPC_ADDSPONSOREDPLAYER__LONG_GUILDOBJECT_,RPC_REMOVESPONSOREDPLAYER__LONG_,RPC_ISCREATINGGUILD__LONG_,RPC_ISSPONSOREDPLAYER__LONG_,RPC_GETSPONSOREDGUILD__LONG_,RPC_SENDBASELINESTO__CREATUREOBJECT_,RPC_LOADGUILDS__,RPC_SENDGUILDCREATENAMETO__CREATUREOBJECT_GUILDTERMINAL_,RPC_SENDGUILDCREATEABBREVTO__CREATUREOBJECT_GUILDTERMINAL_,RPC_SENDGUILDINFORMATIONTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDMEMBERLISTTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDMEMBEROPTIONSTO__CREATUREOBJECT_GUILDOBJECT_LONG_GUILDTERMINAL_,RPC_SENDGUILDDISBANDCONFIRMTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSOREDLISTTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSOREDOPTIONSTO__CREATUREOBJECT_GUILDOBJECT_LONG_GUILDTERMINAL_,RPC_SENDGUILDSPONSORTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_SENDGUILDSPONSORVERIFYTO__CREATUREOBJECT_CREATUREOBJECT_,RPC_SENDGUILDKICKPROMPTTO__CREATUREOBJECT_CREATUREOBJECT_,RPC_SENDGUILDSETTITLETO__CREATUREOBJECT_CREATUREOBJECT_,RPC_SENDGUILDWARSTATUSTO__CREATUREOBJECT_GUILDOBJECT_GUILDTERMINAL_,RPC_PROMPTADDNEWENEMY__CREATUREOBJECT_GUILDOBJECT_SCENEOBJECT_,RPC_TOGGLEWARSTATUS__CREATUREOBJECT_GUILDOBJECT_LONG_,RPC_DECLAREWARBYNAME__CREATUREOBJECT_GUILDOBJECT_STRING_,RPC_UPDATEWARSTATUSTOWARINGGUILD__GUILDOBJECT_GUILDOBJECT_,RPC_SENDMEMBERPERMISSIONSTO__CREATUREOBJECT_LONG_GUILDTERMINAL_,RPC_VALIDATEGUILDNAME__CREATUREOBJECT_STRING_,RPC_VALIDATEGUILDABBREV__CREATUREOBJECT_STRING_,RPC_GUILDNAMEEXISTS__STRING_,RPC_GUILDABBREVEXISTS__STRING_,RPC_CREATEGUILD__CREATUREOBJECT_GUILDTERMINAL_STRING_STRING_,RPC_DISBANDGUILD__CREATUREOBJECT_GUILDOBJECT_,RPC_SPONSORPLAYER__CREATUREOBJECT_GUILDTERMINAL_STRING_,RPC_ACCEPTSPONSORSHIPREQUEST__CREATUREOBJECT_CREATUREOBJECT_,RPC_ACCEPTSPONSOREDPLAYER__CREATUREOBJECT_LONG_,RPC_KICKMEMBER__CREATUREOBJECT_CREATUREOBJECT_,RPC_LEAVEGUILD__CREATUREOBJECT_GUILDOBJECT_,RPC_SETMEMBERTITLE__CREATUREOBJECT_CREATUREOBJECT_STRING_,RPC_SETALLEGIANCETO__CREATUREOBJECT_LONG_GUILDTERMINAL_,RPC_TOGGLEGUILDPERMISSION__CREATUREOBJECT_LONG_INT_GUILDTERMINAL_,RPC_CREATEGUILDCHANNELS__GUILDOBJECT_,RPC_SENDGUILDTRANSFERTO__CREATUREOBJECT_GUILDTERMINAL_,RPC_SENDTRANSFERACKTO__CREATUREOBJECT_STRING_SCENEOBJECT_,RPC_TRANSFERLEADERSHIP__CREATUREOBJECT_CREATUREOBJECT_SCENEOBJECT_,RPC_SENDACCEPTLOTSTO__CREATUREOBJECT_GUILDTERMINAL_,RPC_TRANSFERGUILDHALL__CREATUREOBJECT_SCENEOBJECT_,};
 
 GuildManager::GuildManager(ZoneServer* serv, ZoneProcessServer* proc) : ManagedService(DummyConstructorParameter::instance()) {
 	GuildManagerImplementation* _implementation = new GuildManagerImplementation(serv, proc);
@@ -727,6 +725,83 @@ ChatRoom* GuildManager::createGuildChannels(GuildObject* guild) {
 		return _implementation->createGuildChannels(guild);
 }
 
+void GuildManager::sendGuildTransferTo(CreatureObject* player, GuildTerminal* guildTerminal) {
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDGUILDTRANSFERTO__CREATUREOBJECT_GUILDTERMINAL_);
+		method.addObjectParameter(player);
+		method.addObjectParameter(guildTerminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendGuildTransferTo(player, guildTerminal);
+}
+
+void GuildManager::sendTransferAckTo(CreatureObject* player, const String& newOwnerName, SceneObject* guildTerminal) {
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDTRANSFERACKTO__CREATUREOBJECT_STRING_SCENEOBJECT_);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(newOwnerName);
+		method.addObjectParameter(guildTerminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendTransferAckTo(player, newOwnerName, guildTerminal);
+}
+
+void GuildManager::transferLeadership(CreatureObject* newOwner, CreatureObject* oldOwner, SceneObject* guildTerminal) {
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_TRANSFERLEADERSHIP__CREATUREOBJECT_CREATUREOBJECT_SCENEOBJECT_);
+		method.addObjectParameter(newOwner);
+		method.addObjectParameter(oldOwner);
+		method.addObjectParameter(guildTerminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->transferLeadership(newOwner, oldOwner, guildTerminal);
+}
+
+void GuildManager::sendAcceptLotsTo(CreatureObject* newOwner, GuildTerminal* guildTerminal) {
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDACCEPTLOTSTO__CREATUREOBJECT_GUILDTERMINAL_);
+		method.addObjectParameter(newOwner);
+		method.addObjectParameter(guildTerminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendAcceptLotsTo(newOwner, guildTerminal);
+}
+
+void GuildManager::transferGuildHall(CreatureObject* newOwner, SceneObject* guildTerminal) {
+	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_TRANSFERGUILDHALL__CREATUREOBJECT_SCENEOBJECT_);
+		method.addObjectParameter(newOwner);
+		method.addObjectParameter(guildTerminal);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->transferGuildHall(newOwner, guildTerminal);
+}
+
 void GuildManager::sendGuildMail(const String& subject, StringIdChatParameter& body, GuildObject* guild) {
 	GuildManagerImplementation* _implementation = static_cast<GuildManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1243,6 +1318,32 @@ void GuildManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertLong(createGuildChannels(static_cast<GuildObject*>(inv->getObjectParameter()))->_getObjectID());
 		}
 		break;
+	case RPC_SENDGUILDTRANSFERTO__CREATUREOBJECT_GUILDTERMINAL_:
+		{
+			sendGuildTransferTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_SENDTRANSFERACKTO__CREATUREOBJECT_STRING_SCENEOBJECT_:
+		{
+			String newOwnerName; 
+			sendTransferAckTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(newOwnerName), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_TRANSFERLEADERSHIP__CREATUREOBJECT_CREATUREOBJECT_SCENEOBJECT_:
+		{
+			transferLeadership(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_SENDACCEPTLOTSTO__CREATUREOBJECT_GUILDTERMINAL_:
+		{
+			sendAcceptLotsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<GuildTerminal*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_TRANSFERGUILDHALL__CREATUREOBJECT_SCENEOBJECT_:
+		{
+			transferGuildHall(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -1426,6 +1527,26 @@ void GuildManagerAdapter::toggleGuildPermission(CreatureObject* player, unsigned
 
 ChatRoom* GuildManagerAdapter::createGuildChannels(GuildObject* guild) {
 	return (static_cast<GuildManager*>(stub))->createGuildChannels(guild);
+}
+
+void GuildManagerAdapter::sendGuildTransferTo(CreatureObject* player, GuildTerminal* guildTerminal) {
+	(static_cast<GuildManager*>(stub))->sendGuildTransferTo(player, guildTerminal);
+}
+
+void GuildManagerAdapter::sendTransferAckTo(CreatureObject* player, const String& newOwnerName, SceneObject* guildTerminal) {
+	(static_cast<GuildManager*>(stub))->sendTransferAckTo(player, newOwnerName, guildTerminal);
+}
+
+void GuildManagerAdapter::transferLeadership(CreatureObject* newOwner, CreatureObject* oldOwner, SceneObject* guildTerminal) {
+	(static_cast<GuildManager*>(stub))->transferLeadership(newOwner, oldOwner, guildTerminal);
+}
+
+void GuildManagerAdapter::sendAcceptLotsTo(CreatureObject* newOwner, GuildTerminal* guildTerminal) {
+	(static_cast<GuildManager*>(stub))->sendAcceptLotsTo(newOwner, guildTerminal);
+}
+
+void GuildManagerAdapter::transferGuildHall(CreatureObject* newOwner, SceneObject* guildTerminal) {
+	(static_cast<GuildManager*>(stub))->transferGuildHall(newOwner, guildTerminal);
 }
 
 /*
