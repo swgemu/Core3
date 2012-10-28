@@ -41,7 +41,7 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_draft_schematic_clothing_clothing_apron_field_01_quest_01 = object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_01:new {
+object_draft_schematic_clothing_clothing_apron_field_01_quest_04 = object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_04:new {
 
    templateType = DRAFTSCHEMATIC,
 
@@ -81,4 +81,4 @@ object_draft_schematic_clothing_clothing_apron_field_01_quest_01 = object_draft_
 	},
 
 }
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_apron_field_01_quest_01, "object/draft_schematic/clothing/clothing_apron_field_01_quest_01.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_apron_field_01_quest_04, "object/draft_schematic/clothing/clothing_apron_field_01_quest_04.iff")

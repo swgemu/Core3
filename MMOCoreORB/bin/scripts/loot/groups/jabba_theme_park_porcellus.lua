@@ -3,7 +3,10 @@ jabba_theme_park_porcellus = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "schematic_crafters_apron", weight = 10000000},
+		{itemTemplate = "schematic_crafters_apron", weight = 2500000},
+		{itemTemplate = "schematic_crafters_apron_02", weight = 2500000},
+		{itemTemplate = "schematic_crafters_apron_03", weight = 2500000},
+		{itemTemplate = "schematic_crafters_apron_04", weight = 2500000},
 	}
 }
 

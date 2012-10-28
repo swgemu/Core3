@@ -1874,6 +1874,24 @@ object_tangible_loot_quest_shared_schematic_apron_s01_quest = SharedTangibleObje
 
 ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_apron_s01_quest, "object/tangible/loot/quest/shared_schematic_apron_s01_quest.iff")
 
+object_tangible_loot_quest_shared_schematic_apron_s01_quest_02 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/quest/shared_schematic_apron_s01_quest.iff"	
+}
+
+ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_apron_s01_quest_02, "object/tangible/loot/quest/shared_schematic_apron_s01_quest_02.iff")
+
+object_tangible_loot_quest_shared_schematic_apron_s01_quest_03 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/quest/shared_schematic_apron_s01_quest.iff"	
+}
+
+ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_apron_s01_quest_03, "object/tangible/loot/quest/shared_schematic_apron_s01_quest_03.iff")
+
+object_tangible_loot_quest_shared_schematic_apron_s01_quest_04 = SharedTangibleObjectTemplate:new {
+	clientTemplateFileName = "object/tangible/loot/quest/shared_schematic_apron_s01_quest.iff"	
+}
+
+ObjectTemplates:addClientTemplate(object_tangible_loot_quest_shared_schematic_apron_s01_quest_04, "object/tangible/loot/quest/shared_schematic_apron_s01_quest_04.iff")
+
 object_tangible_loot_quest_shared_schematic_backpack_s03_quest = SharedTangibleObjectTemplate:new {
 	clientTemplateFileName = "object/tangible/loot/quest/shared_schematic_backpack_s03_quest.iff"
 	--Data below here is deprecated and loaded from the tres, keeping for easy lookups
