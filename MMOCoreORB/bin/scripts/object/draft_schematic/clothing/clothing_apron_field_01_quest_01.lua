@@ -61,7 +61,7 @@ object_draft_schematic_clothing_clothing_apron_field_01_quest_01 = object_draft_
    customizationOptions = {},
    customizationStringNames = {},
    customizationDefaults = {},
-
+   
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"body", "binding_and_reinforcement", "binding_and_hardware", "colorizable_cloth_panel", "lining", "herbs_spices", "cooking_utensils"},
    ingredientSlotType = {1, 0, 0, 1, 0, 0, 3},
@@ -73,7 +73,12 @@ object_draft_schematic_clothing_clothing_apron_field_01_quest_01 = object_draft_
    targetTemplate = "object/tangible/wearables/apron/apron_porcellus.iff",
 
    additionalTemplates = {
-             }
+             },
+      
+        skillMods = {
+	    {"food_assembly", 5},
+	    {"food_experimentation", 5},
+	},
 
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_apron_field_01_quest_01, "object/draft_schematic/clothing/clothing_apron_field_01_quest_01.iff")

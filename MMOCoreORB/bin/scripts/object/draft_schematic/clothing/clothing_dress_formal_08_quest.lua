@@ -65,15 +65,21 @@ object_draft_schematic_clothing_clothing_dress_formal_08_quest = object_draft_sc
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"trim_and_binding", "extra_trim", "jewelry_setting", "hardware", "skirt", "Appearance"},
    ingredientSlotType = {0, 1, 1, 0, 1, 1},
-   resourceTypes = {"hide", "object/tangible/component/clothing/shared_trim.iff", "object/tangible/component/clothing/shared_jewelry_setting.iff", "metal", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/clothing/shared_clothing_tratment_crystalline.iff"},
+   resourceTypes = {"hide", "object/tangible/component/clothing/shared_trim.iff", "object/tangible/component/clothing/shared_jewelry_setting.iff", "metal", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "object/tangible/component/clothing/shared_clothing_treatment_crystalline.iff"},
    resourceQuantities = {60, 3, 2, 50, 3, 1},
    contribution = {100, 100, 100, 100, 100, 100},
 
 
    targetTemplate = "object/tangible/wearables/dress/dress_s08_quest.iff",
 
-   additionalTemplates = {
-             }
+    additionalTemplates = {
+             },
+      
+        skillMods = {
+	    {"healing_dance_mind", 5},
+	    {"healing_dance_shock", 5},
+	    {"healing_dance_wound", 5},
+	},
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_dress_formal_08_quest, "object/draft_schematic/clothing/clothing_dress_formal_08_quest.iff")

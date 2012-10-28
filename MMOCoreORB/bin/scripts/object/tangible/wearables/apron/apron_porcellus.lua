@@ -86,13 +86,7 @@ object_tangible_wearables_apron_apron_porcellus = object_tangible_wearables_apro
 				"object/mobile/vendor/wookiee_male.iff",
 				"object/mobile/vendor/zabrak_female.iff",
 				"object/mobile/vendor/zabrak_male.iff",
-				
-	},
-				
-	skillMods = {
-	    {"food_assembly", 5},
-	    {"food_experimentation", 5},
-	},
+				},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_apron_apron_porcellus, "object/tangible/wearables/apron/apron_porcellus.iff")

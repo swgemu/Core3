@@ -41,8 +41,44 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_draft_schematic_clothing_clothing_apron_field_01_quest_02 = object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_02:new {
+object_draft_schematic_clothing_clothing_apron_field_01_quest_01 = object_draft_schematic_clothing_shared_clothing_apron_field_01_quest_01:new {
+
+   templateType = DRAFTSCHEMATIC,
+
+   customObjectName = "Crafter\'s Apron",
+
+   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 1, 
+
+   xpType = "crafting_clothing_general", 
+   xp = 1000, 
+
+   assemblySkill = "clothing_assembly", 
+   experimentingSkill = "clothing_experimentation", 
+   customizationSkill = "clothing_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+   
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"body", "binding_and_reinforcement", "binding_and_hardware", "colorizable_cloth_panel", "lining", "herbs_spices", "cooking_utensils"},
+   ingredientSlotType = {1, 0, 0, 1, 0, 0, 3},
+   resourceTypes = {"object/tangible/component/clothing/shared_leather_heavy_duty.iff", "chemical", "chemical", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "hide", "organic", "object/tangible/crafting/station/shared_food_tool.iff"},
+   resourceQuantities = {2, 8, 3, 1, 50, 30, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/wearables/apron/apron_porcellus.iff",
+
+   additionalTemplates = {
+             },
+      
+        skillMods = {
+	    {"medicine_assembly", 5},
+	    {"medicine_experimentation", 5},
+	},
 
 }
-
-ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_apron_field_01_quest_02, "object/draft_schematic/clothing/clothing_apron_field_01_quest_02.iff")
+ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_apron_field_01_quest_01, "object/draft_schematic/clothing/clothing_apron_field_01_quest_01.iff")
