@@ -88,8 +88,10 @@ class WearableObject extends TangibleObject {
 	public native void updateCraftingValues(CraftingValues values, boolean initialUpdate);
 
 	public native void applyAttachment(CreatureObject player, Attachment attachment);
-
-	public native void setAttachmentMods(CreatureObject player, boolean remove = false, boolean doCheck = true);
+	
+	public abstract native void applySkillModsTo(CreatureObject creature, boolean doCheck = true);
+	
+	public abstract native void removeSkillModsFrom(CreatureObject creature);
 	
 	public boolean isWearableObject() {
 		return true;
@@ -116,14 +118,9 @@ class WearableObject extends TangibleObject {
 		return wearableSkillMods;
 	}
 	
-	@local
-	public void addWearableSkillMod(final string mod, int value) {
-		wearableSkillMods.put(mod, value);
-		modsNotInSockets++;
-	}
-	
 	public abstract void addSkillMod(final int skillType, final string skillMod, int value, boolean notifyClient = true) {
-		addWearableSkillMod(skillMod, value);
+		wearableSkillMods.put(skillMod, value);
+		modsNotInSockets++;
 	}
 	
 	public void setMaxSockets(int maxSockets) {

@@ -101,8 +101,9 @@ void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 
 		Locker locker(player);
 
-		if (isEquipped())
-			setAttachmentMods(player, true, false);
+		if (isEquipped()) {
+			removeSkillModsFrom(player);
+		}
 
 		HashTable<String, int>* mods = attachment->getSkillMods();
 		HashTableIterator<String, int> iterator = mods->iterator();
@@ -124,30 +125,41 @@ void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 
 		attachment->destroyObjectFromWorld(true);
 
-		if (isEquipped())
-			setAttachmentMods(player);
+		if (isEquipped()) {
+			applySkillModsTo(player);
+		}
 
 	}
 
 }
 
-void WearableObjectImplementation::setAttachmentMods(CreatureObject* player,
-		bool remove, bool doCheck) {
-	if (player == NULL)
+void WearableObjectImplementation::applySkillModsTo(CreatureObject* creature, bool doCheck) {
+	if (creature == NULL) {
 		return;
+	}
 
 	for (int i = 0; i < wearableSkillMods.size(); ++i) {
 		String name = wearableSkillMods.elementAt(i).getKey();
 		int value = wearableSkillMods.get(name);
 
-		if (!remove)
-			player->addSkillMod(SkillModManager::WEARABLE, name, value, true);
-		else
-			player->removeSkillMod(SkillModManager::WEARABLE, name, value, true);
+		creature->addSkillMod(SkillModManager::WEARABLE, name, value, true);
 	}
 
 	if(doCheck)
-		SkillModManager::instance()->verifyWearableSkillMods(player);
+		SkillModManager::instance()->verifyWearableSkillMods(creature);
+}
+
+void WearableObjectImplementation::removeSkillModsFrom(CreatureObject* creature) {
+	if (creature == NULL) {
+		return;
+	}
+
+	for (int i = 0; i < wearableSkillMods.size(); ++i) {
+		String name = wearableSkillMods.elementAt(i).getKey();
+		int value = wearableSkillMods.get(name);
+
+		creature->removeSkillMod(SkillModManager::WEARABLE, name, value, true);
+	}
 }
 
 bool WearableObjectImplementation::isEquipped() {

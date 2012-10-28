@@ -10,16 +10,14 @@
  *	WearableContainerObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_ISCONTAINEROBJECT__};
-
-WearableContainerObject::WearableContainerObject() : WearableObject(DummyConstructorParameter::instance()) {
+WearableContainerObject::WearableContainerObject() : Container(DummyConstructorParameter::instance()) {
 	WearableContainerObjectImplementation* _implementation = new WearableContainerObjectImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
 	_setClassName("WearableContainerObject");
 }
 
-WearableContainerObject::WearableContainerObject(DummyConstructorParameter* param) : WearableObject(param) {
+WearableContainerObject::WearableContainerObject(DummyConstructorParameter* param) : Container(param) {
 	_setClassName("WearableContainerObject");
 }
 
@@ -27,81 +25,6 @@ WearableContainerObject::~WearableContainerObject() {
 }
 
 
-
-void WearableContainerObject::loadTemplateData(SharedObjectTemplate* templateData) {
-	WearableContainerObjectImplementation* _implementation = static_cast<WearableContainerObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->loadTemplateData(templateData);
-}
-
-void WearableContainerObject::initializeTransientMembers() {
-	WearableContainerObjectImplementation* _implementation = static_cast<WearableContainerObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->initializeTransientMembers();
-}
-
-void WearableContainerObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	WearableContainerObjectImplementation* _implementation = static_cast<WearableContainerObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		_implementation->fillObjectMenuResponse(menuResponse, player);
-}
-
-int WearableContainerObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	WearableContainerObjectImplementation* _implementation = static_cast<WearableContainerObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_);
-		method.addObjectParameter(player);
-		method.addByteParameter(selectedID);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->handleObjectMenuSelect(player, selectedID);
-}
-
-int WearableContainerObject::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	WearableContainerObjectImplementation* _implementation = static_cast<WearableContainerObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_);
-		method.addObjectParameter(object);
-		method.addSignedIntParameter(containmentType);
-		method.addAsciiParameter(errorDescription);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->canAddObject(object, containmentType, errorDescription);
-}
-
-bool WearableContainerObject::isContainerObject() {
-	WearableContainerObjectImplementation* _implementation = static_cast<WearableContainerObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ISCONTAINEROBJECT__);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->isContainerObject();
-}
 
 DistributedObjectServant* WearableContainerObject::_getImplementation() {
 
@@ -117,7 +40,7 @@ void WearableContainerObject::_setImplementation(DistributedObjectServant* serva
  *	WearableContainerObjectImplementation
  */
 
-WearableContainerObjectImplementation::WearableContainerObjectImplementation(DummyConstructorParameter* param) : WearableObjectImplementation(param) {
+WearableContainerObjectImplementation::WearableContainerObjectImplementation(DummyConstructorParameter* param) : ContainerImplementation(param) {
 	_initializeImplementation();
 }
 
@@ -139,7 +62,7 @@ void WearableContainerObjectImplementation::_initializeImplementation() {
 
 void WearableContainerObjectImplementation::_setStub(DistributedObjectStub* stub) {
 	_this = static_cast<WearableContainerObject*>(stub);
-	WearableObjectImplementation::_setStub(stub);
+	ContainerImplementation::_setStub(stub);
 }
 
 DistributedObjectStub* WearableContainerObjectImplementation::_getStub() {
@@ -179,7 +102,7 @@ void WearableContainerObjectImplementation::runlock(bool doLock) {
 }
 
 void WearableContainerObjectImplementation::_serializationHelperMethod() {
-	WearableObjectImplementation::_serializationHelperMethod();
+	ContainerImplementation::_serializationHelperMethod();
 
 	_setClassName("WearableContainerObject");
 
@@ -205,7 +128,7 @@ void WearableContainerObjectImplementation::readObject(ObjectInputStream* stream
 }
 
 bool WearableContainerObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (WearableObjectImplementation::readObjectMember(stream, _name))
+	if (ContainerImplementation::readObjectMember(stream, _name))
 		return true;
 
 
@@ -220,7 +143,7 @@ void WearableContainerObjectImplementation::writeObject(ObjectOutputStream* stre
 }
 
 int WearableContainerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
-	int _count = WearableObjectImplementation::writeObjectMembers(stream);
+	int _count = ContainerImplementation::writeObjectMembers(stream);
 
 	String _name;
 	int _offset;
@@ -229,15 +152,10 @@ int WearableContainerObjectImplementation::writeObjectMembers(ObjectOutputStream
 	return _count + 0;
 }
 
-WearableContainerObjectImplementation::WearableContainerObjectImplementation() {
+WearableContainerObjectImplementation::WearableContainerObjectImplementation() : ContainerImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/tangible/wearables/WearableContainerObject.idl():  		Logger.setLoggingName("WearableContainerObject");
 	Logger::setLoggingName("WearableContainerObject");
-}
-
-bool WearableContainerObjectImplementation::isContainerObject() {
-	// server/zone/objects/tangible/wearables/WearableContainerObject.idl():  		return true;
-	return true;
 }
 
 /*
@@ -248,53 +166,16 @@ bool WearableContainerObjectImplementation::isContainerObject() {
 #include "engine/orb/messages/InvokeMethodMessage.h"
 
 
-WearableContainerObjectAdapter::WearableContainerObjectAdapter(WearableContainerObject* obj) : WearableObjectAdapter(obj) {
+WearableContainerObjectAdapter::WearableContainerObjectAdapter(WearableContainerObject* obj) : ContainerAdapter(obj) {
 }
 
 void WearableContainerObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
-	case RPC_INITIALIZETRANSIENTMEMBERS__:
-		{
-			initializeTransientMembers();
-		}
-		break;
-	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
-		{
-			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
-		}
-		break;
-	case RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_:
-		{
-			String errorDescription; 
-			resp->insertSignedInt(canAddObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(errorDescription)));
-		}
-		break;
-	case RPC_ISCONTAINEROBJECT__:
-		{
-			resp->insertBoolean(isContainerObject());
-		}
-		break;
 	default:
 		throw Exception("Method does not exists");
 	}
-}
-
-void WearableContainerObjectAdapter::initializeTransientMembers() {
-	(static_cast<WearableContainerObject*>(stub))->initializeTransientMembers();
-}
-
-int WearableContainerObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return (static_cast<WearableContainerObject*>(stub))->handleObjectMenuSelect(player, selectedID);
-}
-
-int WearableContainerObjectAdapter::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	return (static_cast<WearableContainerObject*>(stub))->canAddObject(object, containmentType, errorDescription);
-}
-
-bool WearableContainerObjectAdapter::isContainerObject() {
-	return (static_cast<WearableContainerObject*>(stub))->isContainerObject();
 }
 
 /*

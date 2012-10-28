@@ -102,7 +102,7 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 
 	if (object->isWearableObject()) {
 		WearableObject* clothing = cast<WearableObject*>( object);
-		clothing->setAttachmentMods(creo);
+		clothing->applySkillModsTo(creo);
 	}
 
 	PlayerObject* ghost = creo->getPlayerObject();
@@ -150,7 +150,7 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 
 	if (object->isWearableObject()) {
 		WearableObject* clothing = cast<WearableObject*>( object);
-		clothing->setAttachmentMods(creo, true);
+		clothing->removeSkillModsFrom(creo);
 	}
 
 	if (object->isInstrument()) {

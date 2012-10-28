@@ -25,7 +25,7 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
-#include "server/zone/objects/tangible/wearables/WearableObject.h"
+#include "server/zone/objects/tangible/Container.h"
 
 namespace server {
 namespace zone {
@@ -33,21 +33,9 @@ namespace objects {
 namespace tangible {
 namespace wearables {
 
-class WearableContainerObject : public WearableObject {
+class WearableContainerObject : public Container {
 public:
 	WearableContainerObject();
-
-	void loadTemplateData(SharedObjectTemplate* templateData);
-
-	void initializeTransientMembers();
-
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
-
-	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
-	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
-
-	bool isContainerObject();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -75,24 +63,12 @@ namespace objects {
 namespace tangible {
 namespace wearables {
 
-class WearableContainerObjectImplementation : public WearableObjectImplementation {
+class WearableContainerObjectImplementation : public ContainerImplementation {
 
 public:
 	WearableContainerObjectImplementation();
 
 	WearableContainerObjectImplementation(DummyConstructorParameter* param);
-
-	void loadTemplateData(SharedObjectTemplate* templateData);
-
-	void initializeTransientMembers();
-
-	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
-
-	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
-	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
-
-	bool isContainerObject();
 
 	WeakReference<WearableContainerObject*> _this;
 
@@ -131,19 +107,11 @@ protected:
 	friend class WearableContainerObject;
 };
 
-class WearableContainerObjectAdapter : public WearableObjectAdapter {
+class WearableContainerObjectAdapter : public ContainerAdapter {
 public:
 	WearableContainerObjectAdapter(WearableContainerObject* impl);
 
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void initializeTransientMembers();
-
-	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
-
-	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
-
-	bool isContainerObject();
 
 };
 
