@@ -62,12 +62,12 @@ object_draft_schematic_clothing_clothing_belt_field_05_quest = object_draft_sche
    customizationStringNames = {"/private/index_color_1", "/private/index_color_2"},
    customizationDefaults = {0, 0},
 
-   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
-   ingredientTitleNames = {"shell", "binding_and_reinforcement", "hardware"},
-   ingredientSlotType = {0, 0, 0},
-   resourceTypes = {"petrochem_inert", "metal", "iron"},
-   resourceQuantities = {50, 25, 35},
-   contribution = {100, 100, 100},
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"shell", "binding_and_reinforcement", "hardware", "grenade_fasteners", "explosives", "clasps"},
+   ingredientSlotType = {0, 0, 0, 0, 1, 1},
+   resourceTypes = {"petrochem_inert", "metal", "iron", "metal_nonferrous", "object/tangible/component/munition/shared_warhead_medium.iff", "object/tangible/component/clothing/shared_clasp_heavy_duty.iff"},
+   resourceQuantities = {50, 25, 35, 6, 6, 1},
+   contribution = {100, 100, 100, 100, 100, 100},
 
 
    targetTemplate = "object/tangible/wearables/belt/belt_s05_quest.iff",
