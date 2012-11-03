@@ -6,6 +6,7 @@
  */
 
 #include "RectangularAreaShape.h"
+#include "engine/util/u3d/Segment.h"
 
 bool RectangularAreaShapeImplementation::containsPoint(float x, float y) {
 	if ((x >= (areaCenter.getX() - width / 2)) && (x <= (areaCenter.getX() + width / 2)) &&
@@ -58,11 +59,16 @@ Vector3 RectangularAreaShapeImplementation::getClosestPoint(const Vector3& posit
 	bottomRight.set(areaCenter.getX() + width / 2, 0, areaCenter.getY() + height / 2);
 
 	// Find closest point on each side.
+	Segment topSegment(topLeft, topRight);
+	Segment rightSegment(topRight, bottomRight);
+	Segment bottomSegment(bottomRight, bottomLeft);
+	Segment leftSegment(bottomLeft, topLeft);
+
 	Vector3 top, right, bottom, left;
-	top = getClosestPointOnLine(topLeft, topRight, position);
-	right = getClosestPointOnLine(topRight, bottomRight, position);
-	bottom = getClosestPointOnLine(bottomRight, bottomLeft, position);
-	left = getClosestPointOnLine(bottomLeft, topLeft, position);
+	top = topSegment.getClosestPointTo(position);
+	right = rightSegment.getClosestPointTo(position);
+	bottom = bottomSegment.getClosestPointTo(position);
+	left = leftSegment.getClosestPointTo(position);
 
 	// Find the closes of the four side points.
 	Vector3 point = top;
@@ -77,50 +83,4 @@ Vector3 RectangularAreaShapeImplementation::getClosestPoint(const Vector3& posit
 	}
 
 	return point;
-}
-
-Vector3 RectangularAreaShapeImplementation::getClosestPointOnLine(const Vector3& coordinate1, const Vector3& coordinate2, const Vector3& position) {
-	// Calculate line equation. n * y = m * x + c
-	// lineVector x = n, y = m, z = c
-	Vector3 lineVector = coordinate1 - coordinate2;
-	lineVector.setZ(lineVector.getY() * coordinate1.getY() - lineVector.getX() * coordinate1.getX());
-
-	// Calculate the orthogonal line equation. m * y = -n * x + d -> o * y = p * x + d
-	// Orthogonal line equationVector equation
-	Vector3 orthogonalLineVector;
-	orthogonalLineVector.set(lineVector.getY(), 0, -lineVector.getX());
-	orthogonalLineVector.setZ(orthogonalLineVector.getY() * position.getY() - orthogonalLineVector.getX() * position.getX());
-
-	// Find the point where the two lines cross each other.
-	// Find the x coordinate.
-	int x;
-	if (lineVector.getY() == 0 || orthogonalLineVector.getY() == 0) {
-		x = position.getX();
-	} else {
-		//n * y = m * x + c -> y = m / n * x + c / n
-		//o * y = p * x + d -> y = p / o * x + d / o
-		// (m / n + p / o) * x = d / o - c / n - > x = (d / o - c / n) / (m / n + p / o)
-		x = ((orthogonalLineVector.getZ() / orthogonalLineVector.getY()) - (lineVector.getZ() / lineVector.getY())) /
-				((lineVector.getX() / lineVector.getY()) + (orthogonalLineVector.getX() / orthogonalLineVector.getY()));
-	}
-	// Calculate the y coordinate.
-	int y = (lineVector.getX() * x + lineVector.getZ()) / lineVector.getY();
-
-	// Check if the point is on the line between the coordinates or select the closest one.
-	Vector3 point;
-	point.set(x, 0, y);
-	float lineLength = coordinate1.distanceTo(coordinate2);
-	float distance1 = point.distanceTo(coordinate1);
-	float distance2 = point.distanceTo(coordinate2);
-	if (distance1 < lineLength && distance2 < lineLength) {
-		// Point is on the line, finished.
-		return point;
-	} else {
-		// Point is not on the line, return the closest coordinate.
-		if (distance1 < distance2) {
-			return coordinate1;
-		} else {
-			return coordinate2;
-		}
-	}
 }

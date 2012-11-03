@@ -119,8 +119,6 @@ public:
 private:
 	Vector3 getClosestPoint(const Vector3& position);
 
-	Vector3 getClosestPointOnLine(const Vector3& coordinate1, const Vector3& coordinate2, const Vector3& position);
-
 public:
 	WeakReference<RectangularAreaShape*> _this;
 
