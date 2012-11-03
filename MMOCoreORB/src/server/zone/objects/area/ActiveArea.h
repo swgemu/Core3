@@ -35,6 +35,22 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace area {
+namespace areashapes {
+
+class AreaShape;
+
+} // namespace areashapes
+} // namespace area
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::area::areashapes;
+
 #include "engine/util/u3d/QuadTreeEntry.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
@@ -88,6 +104,12 @@ public:
 
 	void setCellObjectID(unsigned long long celloid);
 
+	void setAreaShape(AreaShape* area);
+
+	AreaShape* getAreaShape();
+
+	bool intersectsWith(ActiveArea* area);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -114,8 +136,6 @@ namespace area {
 
 class ActiveAreaImplementation : public SceneObjectImplementation {
 protected:
-	float radius2;
-
 	bool noBuildArea;
 
 	bool municipalZone;
@@ -123,6 +143,8 @@ protected:
 	unsigned long long cellObjectID;
 
 	bool noSpawnArea;
+
+	ManagedReference<AreaShape* > areaShape;
 
 public:
 	ActiveAreaImplementation();
@@ -168,6 +190,12 @@ public:
 	unsigned long long getCellObjectID();
 
 	void setCellObjectID(unsigned long long celloid);
+
+	void setAreaShape(AreaShape* area);
+
+	AreaShape* getAreaShape();
+
+	bool intersectsWith(ActiveArea* area);
 
 	WeakReference<ActiveArea*> _this;
 
@@ -251,6 +279,12 @@ public:
 	unsigned long long getCellObjectID();
 
 	void setCellObjectID(unsigned long long celloid);
+
+	void setAreaShape(AreaShape* area);
+
+	AreaShape* getAreaShape();
+
+	bool intersectsWith(ActiveArea* area);
 
 };
 

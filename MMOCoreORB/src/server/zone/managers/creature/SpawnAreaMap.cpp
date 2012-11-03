@@ -10,6 +10,7 @@
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/conf/ConfigManager.h"
+#include "server/zone/objects/area/areashapes/CircularAreaShape.h"
 
 void SpawnAreaMap::loadMap(Zone* z) {
 	zone = z;
@@ -43,19 +44,14 @@ void SpawnAreaMap::loadMap(Zone* z) {
 
 		for (int i = 0; i < size(); ++i) {
 			SpawnArea* area = get(i);
-			/*if (area->isDynamicArea()) {
-				DynamicSpawnArea* dynamicArea = cast<DynamicSpawnArea*>(area);*/
-
-			Vector3 d(area->getPositionX(), area->getPositionY(), 0);
 
 			for (int j = 0; j < noSpawnAreas.size(); ++j) {
 				SpawnArea* notHere = noSpawnAreas.get(j);
-				Vector3 offset(notHere->getPosition());
 
-				if (d.distanceTo(offset) < area->getRadius() + notHere->getRadius())
+				if (area->intersectsWith(notHere)) {
 					area->addNoSpawnArea(notHere);
+				}
 			}
-			//}
 		}
 
 		loadStaticSpawns();
@@ -198,9 +194,10 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 
 	area->setObjectName(nameID);
 
-	area->setPosition(x, 0, y);
-
-	area->setRadius(radius);
+	ManagedReference<CircularAreaShape*> circularAreaShape = new CircularAreaShape();
+	circularAreaShape->setAreaCenter(x, y);
+	circularAreaShape->setRadius(radius);
+	area->setAreaShape(circularAreaShape);
 
 	area->setTier(tier);
 
@@ -212,7 +209,7 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	if (radius != -1)
 		zone->transferObject(area, -1, true);
 	else {
-		area->setRadius(zone->getBoundingRadius());
+		circularAreaShape->setRadius(zone->getBoundingRadius());
 
 		switch (tier) {
 		case 4:

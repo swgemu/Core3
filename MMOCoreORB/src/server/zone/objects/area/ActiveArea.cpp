@@ -8,11 +8,13 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "server/zone/objects/area/areashapes/AreaShape.h"
+
 /*
  *	ActiveAreaStub
  */
 
-enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCITYREGION__,RPC_ISNOBUILDAREA__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS2__,RPC_SETNOBUILDAREA__BOOL_,RPC_SETMUNICIPALZONE__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_ISCAMPAREA__,RPC_SETNOSPAWNAREA__BOOL_,RPC_ISNOSPAWNAREA__,RPC_ISMUNICIPALZONE__,RPC_GETCELLOBJECTID__,RPC_SETCELLOBJECTID__LONG_};
+enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCITYREGION__,RPC_ISNOBUILDAREA__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS2__,RPC_SETNOBUILDAREA__BOOL_,RPC_SETMUNICIPALZONE__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_ISCAMPAREA__,RPC_SETNOSPAWNAREA__BOOL_,RPC_ISNOSPAWNAREA__,RPC_ISMUNICIPALZONE__,RPC_GETCELLOBJECTID__,RPC_SETCELLOBJECTID__LONG_,RPC_SETAREASHAPE__AREASHAPE_,RPC_GETAREASHAPE__,RPC_INTERSECTSWITH__ACTIVEAREA_};
 
 ActiveArea::ActiveArea() : SceneObject(DummyConstructorParameter::instance()) {
 	ActiveAreaImplementation* _implementation = new ActiveAreaImplementation();
@@ -303,6 +305,47 @@ void ActiveArea::setCellObjectID(unsigned long long celloid) {
 		_implementation->setCellObjectID(celloid);
 }
 
+void ActiveArea::setAreaShape(AreaShape* area) {
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETAREASHAPE__AREASHAPE_);
+		method.addObjectParameter(area);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setAreaShape(area);
+}
+
+AreaShape* ActiveArea::getAreaShape() {
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETAREASHAPE__);
+
+		return static_cast<AreaShape*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getAreaShape();
+}
+
+bool ActiveArea::intersectsWith(ActiveArea* area) {
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INTERSECTSWITH__ACTIVEAREA_);
+		method.addObjectParameter(area);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->intersectsWith(area);
+}
+
 DistributedObjectServant* ActiveArea::_getImplementation() {
 
 	 if (!_updated) _updated = true;
@@ -408,11 +451,6 @@ bool ActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, const
 	if (SceneObjectImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "ActiveArea.radius2") {
-		TypeInfo<float >::parseFromBinaryStream(&radius2, stream);
-		return true;
-	}
-
 	if (_name == "ActiveArea.noBuildArea") {
 		TypeInfo<bool >::parseFromBinaryStream(&noBuildArea, stream);
 		return true;
@@ -433,6 +471,11 @@ bool ActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
+	if (_name == "ActiveArea.areaShape") {
+		TypeInfo<ManagedReference<AreaShape* > >::parseFromBinaryStream(&areaShape, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -450,14 +493,6 @@ int ActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint32 _totalSize;
-	_name = "ActiveArea.radius2";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<float >::toBinaryStream(&radius2, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
 	_name = "ActiveArea.noBuildArea";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -490,14 +525,20 @@ int ActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "ActiveArea.areaShape";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<ManagedReference<AreaShape* > >::toBinaryStream(&areaShape, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 
 	return _count + 5;
 }
 
 ActiveAreaImplementation::ActiveAreaImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/area/ActiveArea.idl():  		radius2 = 0;
-	radius2 = 0;
 	// server/zone/objects/area/ActiveArea.idl():  		cellObjectID = 0;
 	cellObjectID = 0;
 	// server/zone/objects/area/ActiveArea.idl():  		noBuildArea = false;
@@ -506,6 +547,8 @@ ActiveAreaImplementation::ActiveAreaImplementation() {
 	municipalZone = false;
 	// server/zone/objects/area/ActiveArea.idl():  		noSpawnArea = false;
 	noSpawnArea = false;
+	// server/zone/objects/area/ActiveArea.idl():  		areaShape = null;
+	areaShape = NULL;
 	// server/zone/objects/area/ActiveArea.idl():  		Logger.setLoggingName("ActiveArea");
 	Logger::setLoggingName("ActiveArea");
 }
@@ -534,8 +577,16 @@ bool ActiveAreaImplementation::isNoBuildArea() {
 }
 
 float ActiveAreaImplementation::getRadius2() {
-	// server/zone/objects/area/ActiveArea.idl():  		return radius2;
-	return radius2;
+	// server/zone/objects/area/ActiveArea.idl():  		}
+	if (areaShape != NULL){
+	// server/zone/objects/area/ActiveArea.idl():  			return areaShape.getRadius() * areaShape.getRadius();
+	return areaShape->getRadius() * areaShape->getRadius();
+}
+
+	else {
+	// server/zone/objects/area/ActiveArea.idl():  			return super.getRadius() * super.getRadius();
+	return SceneObjectImplementation::getRadius() * SceneObjectImplementation::getRadius();
+}
 }
 
 void ActiveAreaImplementation::setNoBuildArea(bool val) {
@@ -549,10 +600,13 @@ void ActiveAreaImplementation::setMunicipalZone(bool val) {
 }
 
 void ActiveAreaImplementation::setRadius(float r) {
+	// server/zone/objects/area/ActiveArea.idl():  		super.
+	if (areaShape != NULL && r < areaShape->getRadius()){
+	// server/zone/objects/area/ActiveArea.idl():  			r = areaShape.getRadius();
+	r = areaShape->getRadius();
+}
 	// server/zone/objects/area/ActiveArea.idl():  		super.setRadius(r);
 	SceneObjectImplementation::setRadius(r);
-	// server/zone/objects/area/ActiveArea.idl():  		radius2 = r * r;
-	radius2 = r * r;
 }
 
 bool ActiveAreaImplementation::isCampArea() {
@@ -583,6 +637,21 @@ unsigned long long ActiveAreaImplementation::getCellObjectID() {
 void ActiveAreaImplementation::setCellObjectID(unsigned long long celloid) {
 	// server/zone/objects/area/ActiveArea.idl():  		cellObjectID = celloid;
 	cellObjectID = celloid;
+}
+
+void ActiveAreaImplementation::setAreaShape(AreaShape* area) {
+	// server/zone/objects/area/ActiveArea.idl():  		areaShape = area;
+	areaShape = area;
+	// server/zone/objects/area/ActiveArea.idl():  	}
+	if (areaShape != NULL){
+	// server/zone/objects/area/ActiveArea.idl():  			setRadius(areaShape.getRadius());
+	setRadius(areaShape->getRadius());
+}
+}
+
+AreaShape* ActiveAreaImplementation::getAreaShape() {
+	// server/zone/objects/area/ActiveArea.idl():  		return areaShape;
+	return areaShape;
 }
 
 /*
@@ -700,6 +769,21 @@ void ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			setCellObjectID(inv->getUnsignedLongParameter());
 		}
 		break;
+	case RPC_SETAREASHAPE__AREASHAPE_:
+		{
+			setAreaShape(static_cast<AreaShape*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_GETAREASHAPE__:
+		{
+			resp->insertLong(getAreaShape()->_getObjectID());
+		}
+		break;
+	case RPC_INTERSECTSWITH__ACTIVEAREA_:
+		{
+			resp->insertBoolean(intersectsWith(static_cast<ActiveArea*>(inv->getObjectParameter())));
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -783,6 +867,18 @@ unsigned long long ActiveAreaAdapter::getCellObjectID() {
 
 void ActiveAreaAdapter::setCellObjectID(unsigned long long celloid) {
 	(static_cast<ActiveArea*>(stub))->setCellObjectID(celloid);
+}
+
+void ActiveAreaAdapter::setAreaShape(AreaShape* area) {
+	(static_cast<ActiveArea*>(stub))->setAreaShape(area);
+}
+
+AreaShape* ActiveAreaAdapter::getAreaShape() {
+	return (static_cast<ActiveArea*>(stub))->getAreaShape();
+}
+
+bool ActiveAreaAdapter::intersectsWith(ActiveArea* area) {
+	return (static_cast<ActiveArea*>(stub))->intersectsWith(area);
 }
 
 /*

@@ -116,6 +116,9 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/area/StaticSpawnArea.cpp \
 				server/zone/objects/area/SpawnObserver.cpp \
 				server/zone/objects/area/CampSiteObserver.cpp \
+				server/zone/objects/area/areashapes/AreaShape.cpp \
+				server/zone/objects/area/areashapes/CircularAreaShape.cpp \
+				server/zone/objects/area/areashapes/RectangularAreaShape.cpp \
 				server/zone/objects/factorycrate/FactoryCrate.cpp \
 				server/zone/objects/intangible/IntangibleObject.cpp \
 				server/zone/objects/intangible/ControlDevice.cpp \
@@ -457,6 +460,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/area/SpawnAreaImplementation.cpp \
 		server/zone/objects/area/DynamicSpawnAreaImplementation.cpp \
 		server/zone/objects/area/StaticSpawnAreaImplementation.cpp \
+		server/zone/objects/area/areashapes/AreaShapeImplementation.cpp \
+		server/zone/objects/area/areashapes/CircularAreaShapeImplementation.cpp \
+		server/zone/objects/area/areashapes/RectangularAreaShapeImplementation.cpp \
 		server/zone/objects/region/RegionImplementation.cpp \
 		server/zone/objects/terrain/ProceduralTerrainAppearance.cpp \
 		server/zone/objects/terrain/MapFractal.cpp \

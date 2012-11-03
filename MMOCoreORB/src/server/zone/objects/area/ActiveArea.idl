@@ -49,10 +49,9 @@ include engine.util.u3d.QuadTreeEntry;
 import server.zone.Zone;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.area.areashapes.AreaShape;
 
-class ActiveArea extends SceneObject {
-	protected float radius2;
-	
+class ActiveArea extends SceneObject {	
 	protected boolean noBuildArea;
 	
 	protected boolean municipalZone;
@@ -61,9 +60,9 @@ class ActiveArea extends SceneObject {
 	
 	protected boolean noSpawnArea;
 	
-	public ActiveArea() {
-		radius2 = 0;
-		
+	protected AreaShape areaShape;
+	
+	public ActiveArea() {		
 		cellObjectID = 0;
 		
 		noBuildArea = false;
@@ -71,6 +70,8 @@ class ActiveArea extends SceneObject {
 		municipalZone = false;
 		
 		noSpawnArea = false;
+		
+		areaShape = null;
 		
 		Logger.setLoggingName("ActiveArea");
 	}
@@ -111,7 +112,11 @@ class ActiveArea extends SceneObject {
 	public native boolean containsPoint(float x, float y);
 		
 	public float getRadius2() {
-		return radius2;
+		if (areaShape != null) {
+			return areaShape.getRadius() * areaShape.getRadius();
+		} else {
+			return super.getRadius() * super.getRadius();
+		}
 	}
 	
 	public void setNoBuildArea(boolean val) {
@@ -123,9 +128,11 @@ class ActiveArea extends SceneObject {
 	}
 	
 	public void setRadius(float r) {
+		if (areaShape != null && r < areaShape.getRadius()) {
+			r = areaShape.getRadius();
+		}
+			
 		super.setRadius(r);
-		
-		radius2 = r * r;
 	}
 	
 	public abstract boolean isCampArea() {
@@ -151,4 +158,18 @@ class ActiveArea extends SceneObject {
 	public void setCellObjectID(unsigned long celloid) {
 		cellObjectID = celloid;
 	}
+	
+	public void setAreaShape(AreaShape area) {
+		areaShape = area;
+		
+		if (areaShape != null) {
+			setRadius(areaShape.getRadius());
+		}
+	}
+	
+	public AreaShape getAreaShape() {
+		return areaShape;
+	}
+	
+	public native boolean intersectsWith(ActiveArea area);
 }

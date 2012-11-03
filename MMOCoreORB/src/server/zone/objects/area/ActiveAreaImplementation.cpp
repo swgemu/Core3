@@ -9,9 +9,14 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "events/ActiveAreaEvent.h"
 #include "server/zone/Zone.h"
+#include "server/zone/objects/area/areashapes/AreaShape.h"
 
 bool ActiveAreaImplementation::containsPoint(float px, float py) {
-	return (((px - getPositionX()) * (px - getPositionX())) + ((py - getPositionY()) * (py - getPositionY())) <= radius2 );
+	if (areaShape == NULL) {
+		return false;
+	}
+
+	return areaShape->containsPoint(px, py);
 }
 
 void ActiveAreaImplementation::enqueueEnterEvent(SceneObject* obj) {
@@ -42,4 +47,12 @@ void ActiveAreaImplementation::notifyEnter(SceneObject* obj) {
 void ActiveAreaImplementation::notifyExit(SceneObject* obj) {
 	if (cellObjectID == 0 || cellObjectID == obj->getParentID())
 		notifyObservers(ObserverEventType::EXITEDAREA, obj);
+}
+
+bool ActiveAreaImplementation::intersectsWith(ActiveArea* area) {
+	if (areaShape == NULL) {
+		return false;
+	}
+
+	return areaShape->intersectsWith(area->getAreaShape());
 }
