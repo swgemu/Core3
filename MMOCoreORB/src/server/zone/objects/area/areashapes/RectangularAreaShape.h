@@ -117,7 +117,9 @@ public:
 	virtual bool intersectsWith(AreaShape* areaShape);
 
 private:
-	bool intersectsWithCircle(CircularAreaShape* circle);
+	Vector3 getClosestPoint(const Vector3& position);
+
+	Vector3 getClosestPointOnLine(const Vector3& coordinate1, const Vector3& coordinate2, const Vector3& position);
 
 public:
 	WeakReference<RectangularAreaShape*> _this;

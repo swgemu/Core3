@@ -146,11 +146,24 @@ class RectangularAreaShape extends AreaShape {
 	 * @return true if the area shapes intersects each other.
 	 */
 	public native abstract boolean intersectsWith(AreaShape areaShape);
-
+	
 	/**
-	 * Check if this area shape intersects with the supplied circular area shape.
-	 * @param circle the circular area shape to check for intersections with.
-	 * @return true if the circles intersects with each other.
+	 * Calculates the point in the area that has the shortest distance to the supplied
+	 * position.
+	 * @param position the position to find the closest point towards.
+	 * @return the closest point inside the area.
 	 */
-	private native boolean intersectsWithCircle(CircularAreaShape circle);
+	@dereferenced
+	@local
+	private native Vector3 getClosestPoint(@dereferenced final Vector3 position);
+	
+	/**
+	 * Calculates the point on the line between the two supplied coordinates that has the
+	 * shortest distance towards the supplied position.
+	 * @param position the position to find the closest point towards.
+	 * @return the closest point inside the area.
+	 */
+	@dereferenced
+	@local
+	private native Vector3 getClosestPointOnLine(@dereferenced final Vector3 coordinate1, @dereferenced final Vector3 coordinate2, @dereferenced final Vector3 position);
 }
