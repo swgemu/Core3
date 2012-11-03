@@ -24,6 +24,9 @@ DraftSchematicObjectTemplate::DraftSchematicObjectTemplate() {
 	tangibleTemplate = NULL;
 
 	tanoCRC = 0;
+
+	skillMods.setNoDuplicateInsertPlan();
+	skillMods.setNullValue(0);
 }
 
 DraftSchematicObjectTemplate::~DraftSchematicObjectTemplate() {
@@ -122,6 +125,19 @@ void DraftSchematicObjectTemplate::readObject(LuaObject* templateData) {
 		additionalTemplates->add(availableTemplateList.getStringAt(i));
 	}
 	contributionList.pop();
+
+	LuaObject skillModList = templateData->getObjectField("skillMods");
+	for (int i = 1; i <= skillModList.getTableSize(); ++i) {
+		LuaObject mod = skillModList.getObjectAt(i);
+
+		String modName = mod.getStringAt(1);
+		int modValue = mod.getIntAt(2);
+
+		skillMods.put(modName, modValue);
+
+		mod.pop();
+	}
+	skillModList.pop();
 }
 
 Vector<Reference<ResourceWeight*> >* DraftSchematicObjectTemplate::getResourceWeights() {

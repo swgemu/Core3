@@ -8,7 +8,8 @@ aakuan_belt = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {{"resistance_disease", 10}}
 }
 
 addLootItemTemplate("aakuan_belt", aakuan_belt)

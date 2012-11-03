@@ -80,6 +80,14 @@ function imperial_recruiter_handler:isContainer(strItem)
 	return false
 end
 
+function imperial_recruiter_handler:isTerminal(strItem)
+	if(faction_reward_data.imperial_furniture[strItem] ~= nil and faction_reward_data.imperial_furniture[strItem].type == faction_reward_type.terminal) then
+		return true
+	end
+	
+	return false
+end
+
 function imperial_recruiter_handler:addUniforms(screen) 
 	for k,v in pairs(faction_reward_data.imperial_uniform_list) do
 		if ( faction_reward_data.imperial_uniforms[v] ~= nil and faction_reward_data.imperial_uniforms[v].display ~= nil and faction_reward_data.imperial_uniforms[v].cost ~= nil ) then

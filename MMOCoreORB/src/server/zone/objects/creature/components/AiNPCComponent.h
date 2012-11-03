@@ -41,7 +41,7 @@ public:
 		if (creo->isDead())
 			return;
 
-		/*if (!creo->isAiAgent())
+		if (!creo->isAiAgent())
 			return;*/
 
 		AiAgent* ai = cast<AiAgent*>(scno);

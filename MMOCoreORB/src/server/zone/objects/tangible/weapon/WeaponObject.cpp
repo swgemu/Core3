@@ -22,7 +22,7 @@
  *	WeaponObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINERTO__CREATUREOBJECT_,RPC_CREATECHILDOBJECTS__,RPC_ISCERTIFIEDFOR__CREATUREOBJECT_,RPC_SETCERTIFIED__BOOL_,RPC_GETATTACKTYPE__,RPC_SETATTACKTYPE__INT_,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__BOOL_,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__BOOL_,RPC_GETIDEALRANGE__BOOL_,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__BOOL_,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__BOOL_,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__BOOL_,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__BOOL_,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__BOOL_,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__BOOL_,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__BOOL_,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETDAMAGERADIUS__BOOL_,RPC_SETDAMAGERADIUS__FLOAT_,RPC_GETHEALTHATTACKCOST__BOOL_,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__BOOL_,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__BOOL_,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_SETFORCECOST__INT_,RPC_GETBLADECOLOR__,RPC_SETBLADECOLOR__INT_,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_GETWEAPONTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISMINEWEAPON__,RPC_ISJEDIWEAPON__,RPC_ISJEDIONEHANDEDWEAPON__,RPC_ISJEDITWOHANDEDWEAPON__,RPC_ISJEDIPOLEARMWEAPON__,RPC_ISWEAPONOBJECT__,RPC_HASPOWERUP__,RPC_APPLYPOWERUP__CREATUREOBJECT_POWERUPOBJECT_,RPC_REMOVEPOWERUP__,RPC_DECREASEPOWERUPUSES__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_,RPC_DECAY__CREATUREOBJECT_FLOAT_,RPC_SETDAMAGESLICE__FLOAT_,RPC_SETSPEEDSLICE__FLOAT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINERTO__CREATUREOBJECT_,RPC_CREATECHILDOBJECTS__,RPC_ISCERTIFIEDFOR__CREATUREOBJECT_,RPC_SETCERTIFIED__BOOL_,RPC_GETATTACKTYPE__,RPC_SETATTACKTYPE__INT_,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__BOOL_,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__BOOL_,RPC_GETIDEALRANGE__BOOL_,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__BOOL_,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__BOOL_,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__BOOL_,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__BOOL_,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__BOOL_,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__BOOL_,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__BOOL_,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETDAMAGERADIUS__BOOL_,RPC_SETDAMAGERADIUS__FLOAT_,RPC_GETHEALTHATTACKCOST__BOOL_,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__BOOL_,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__BOOL_,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_SETFORCECOST__INT_,RPC_GETBLADECOLOR__,RPC_SETBLADECOLOR__INT_,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_GETWEAPONTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISMINEWEAPON__,RPC_ISJEDIWEAPON__,RPC_ISJEDIONEHANDEDWEAPON__,RPC_ISJEDITWOHANDEDWEAPON__,RPC_ISJEDIPOLEARMWEAPON__,RPC_ISWEAPONOBJECT__,RPC_HASPOWERUP__,RPC_APPLYPOWERUP__CREATUREOBJECT_POWERUPOBJECT_,RPC_REMOVEPOWERUP__,RPC_DECREASEPOWERUPUSES__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_,RPC_DECAY__CREATUREOBJECT_FLOAT_,RPC_SETDAMAGESLICE__FLOAT_,RPC_SETSPEEDSLICE__FLOAT_,RPC_APPLYSKILLMODSTO__CREATUREOBJECT_BOOL_,RPC_REMOVESKILLMODSFROM__CREATUREOBJECT_,RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_};
 
 WeaponObject::WeaponObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	WeaponObjectImplementation* _implementation = new WeaponObjectImplementation();
@@ -1101,6 +1101,52 @@ void WeaponObject::setSpeedSlice(float value) {
 		_implementation->setSpeedSlice(value);
 }
 
+void WeaponObject::applySkillModsTo(CreatureObject* creature, bool doCheck) {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_APPLYSKILLMODSTO__CREATUREOBJECT_BOOL_);
+		method.addObjectParameter(creature);
+		method.addBooleanParameter(doCheck);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->applySkillModsTo(creature, doCheck);
+}
+
+void WeaponObject::removeSkillModsFrom(CreatureObject* creature) {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVESKILLMODSFROM__CREATUREOBJECT_);
+		method.addObjectParameter(creature);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeSkillModsFrom(creature);
+}
+
+void WeaponObject::addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient) {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_);
+		method.addSignedIntParameter(skillType);
+		method.addAsciiParameter(skillMod);
+		method.addSignedIntParameter(value);
+		method.addBooleanParameter(notifyClient);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addSkillMod(skillType, skillMod, value, notifyClient);
+}
+
 DistributedObjectServant* WeaponObject::_getImplementation() {
 
 	 if (!_updated) _updated = true;
@@ -1331,6 +1377,11 @@ bool WeaponObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 		return true;
 	}
 
+	if (_name == "WeaponObject.wearableSkillMods") {
+		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&wearableSkillMods, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -1548,8 +1599,16 @@ int WeaponObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "WeaponObject.wearableSkillMods";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<VectorMap<String, int> >::toBinaryStream(&wearableSkillMods, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 25;
+
+	return _count + 26;
 }
 
 WeaponObjectImplementation::WeaponObjectImplementation() {
@@ -1598,6 +1657,8 @@ WeaponObjectImplementation::WeaponObjectImplementation() {
 	damageSlice = 1;
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		speedSlice = 1;
 	speedSlice = 1;
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		wearableSkillMods.setAllowOverwriteInsertPlan();
+	(&wearableSkillMods)->setAllowOverwriteInsertPlan();
 }
 
 Vector<String>* WeaponObjectImplementation::getDamageModifiers() {
@@ -1896,6 +1957,11 @@ void WeaponObjectImplementation::setSpeedSlice(float value) {
 	return;
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		speedSlice = 1 - value;
 	speedSlice = 1 - value;
+}
+
+void WeaponObjectImplementation::addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		wearableSkillMods.put(skillMod, value);
+	(&wearableSkillMods)->put(skillMod, value);
 }
 
 /*
@@ -2268,6 +2334,22 @@ void WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			setSpeedSlice(inv->getFloatParameter());
 		}
 		break;
+	case RPC_APPLYSKILLMODSTO__CREATUREOBJECT_BOOL_:
+		{
+			applySkillModsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
+		break;
+	case RPC_REMOVESKILLMODSFROM__CREATUREOBJECT_:
+		{
+			removeSkillModsFrom(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_:
+		{
+			String skillMod; 
+			addSkillMod(inv->getSignedIntParameter(), inv->getAsciiParameter(skillMod), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -2555,6 +2637,18 @@ void WeaponObjectAdapter::setDamageSlice(float value) {
 
 void WeaponObjectAdapter::setSpeedSlice(float value) {
 	(static_cast<WeaponObject*>(stub))->setSpeedSlice(value);
+}
+
+void WeaponObjectAdapter::applySkillModsTo(CreatureObject* creature, bool doCheck) {
+	(static_cast<WeaponObject*>(stub))->applySkillModsTo(creature, doCheck);
+}
+
+void WeaponObjectAdapter::removeSkillModsFrom(CreatureObject* creature) {
+	(static_cast<WeaponObject*>(stub))->removeSkillModsFrom(creature);
+}
+
+void WeaponObjectAdapter::addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient) {
+	(static_cast<WeaponObject*>(stub))->addSkillMod(skillType, skillMod, value, notifyClient);
 }
 
 /*

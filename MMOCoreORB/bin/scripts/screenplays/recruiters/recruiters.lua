@@ -535,6 +535,9 @@ function recruiter_convo_handler:processPurchase(conversingPlayer, conversationT
 				if ( self:isContainer(itemname) ) then
 					screenObject:setDialogTextTT("container_name",itemname)
 				else
+					if (self:isTerminal(itemname)) then
+						itemname = "frn_data_terminal"
+					end
 					screenObject:setDialogTextTT("frn_n",itemname)
 				end
 			else
@@ -669,4 +672,8 @@ end
 
 function recruiter_convo_handler:isContainer(strItem)
 	printf("pure recruiter_convo_handler:isContainer(strItem)")
+end
+
+function recruiter_convo_handler:isTerminal(strItem)
+	printf("pure recruiter_convo_handler:isTerminal(strItem)")
 end

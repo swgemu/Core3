@@ -93,14 +93,7 @@ object_tangible_wearables_bandolier_bandolier_s04_quest = object_tangible_wearab
 		"object/mobile/vendor/wookiee_male.iff",
 		"object/mobile/vendor/zabrak_female.iff",
 		"object/mobile/vendor/zabrak_male.iff" 
-	},
-				
-	skillMods = {
-	    {"camouflage", 5},
-	    {"foraging", 5},
-	    {"melee_defense", 3},
-	    {"ranged_defense", 3}
-	},
+	}
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_bandolier_bandolier_s04_quest, "object/tangible/wearables/bandolier/bandolier_s04_quest.iff")

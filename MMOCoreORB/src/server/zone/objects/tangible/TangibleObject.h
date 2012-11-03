@@ -188,6 +188,10 @@ public:
 
 	void addTemplateSkillMods(TangibleObject* targetObject);
 
+	void applySkillModsTo(CreatureObject* creature, bool doCheck = true);
+
+	void removeSkillModsFrom(CreatureObject* creature);
+
 	void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
 
 	void removeSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
@@ -423,6 +427,10 @@ public:
 
 	virtual void addTemplateSkillMods(TangibleObject* targetObject);
 
+	virtual void applySkillModsTo(CreatureObject* creature, bool doCheck = true);
+
+	virtual void removeSkillModsFrom(CreatureObject* creature);
+
 	virtual void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
 
 	virtual void removeSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
@@ -635,6 +643,10 @@ public:
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initializeMembers();
+
+	void applySkillModsTo(CreatureObject* creature, bool doCheck);
+
+	void removeSkillModsFrom(CreatureObject* creature);
 
 	void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient);
 

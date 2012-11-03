@@ -14,7 +14,7 @@
  *	WearableObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_APPLYATTACHMENT__CREATUREOBJECT_ATTACHMENT_,RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_BOOL_,RPC_ISWEARABLEOBJECT__,RPC_ISEQUIPPED__,RPC_GETMAXSOCKETS__,RPC_SOCKETSUSED__,RPC_SOCKETSLEFT__,RPC_REPAIRATTEMPT__INT_,RPC_SETMAXSOCKETS__INT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_APPLYATTACHMENT__CREATUREOBJECT_ATTACHMENT_,RPC_APPLYSKILLMODSTO__CREATUREOBJECT_BOOL_,RPC_REMOVESKILLMODSFROM__CREATUREOBJECT_,RPC_ISWEARABLEOBJECT__,RPC_ISEQUIPPED__,RPC_GETMAXSOCKETS__,RPC_SOCKETSUSED__,RPC_SOCKETSLEFT__,RPC_REPAIRATTEMPT__INT_,RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_,RPC_SETMAXSOCKETS__INT_};
 
 WearableObject::WearableObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	WearableObjectImplementation* _implementation = new WearableObjectImplementation();
@@ -78,20 +78,33 @@ void WearableObject::applyAttachment(CreatureObject* player, Attachment* attachm
 		_implementation->applyAttachment(player, attachment);
 }
 
-void WearableObject::setAttachmentMods(CreatureObject* player, bool remove, bool doCheck) {
+void WearableObject::applySkillModsTo(CreatureObject* creature, bool doCheck) {
 	WearableObjectImplementation* _implementation = static_cast<WearableObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_BOOL_);
-		method.addObjectParameter(player);
-		method.addBooleanParameter(remove);
+		DistributedMethod method(this, RPC_APPLYSKILLMODSTO__CREATUREOBJECT_BOOL_);
+		method.addObjectParameter(creature);
 		method.addBooleanParameter(doCheck);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setAttachmentMods(player, remove, doCheck);
+		_implementation->applySkillModsTo(creature, doCheck);
+}
+
+void WearableObject::removeSkillModsFrom(CreatureObject* creature) {
+	WearableObjectImplementation* _implementation = static_cast<WearableObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVESKILLMODSFROM__CREATUREOBJECT_);
+		method.addObjectParameter(creature);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeSkillModsFrom(creature);
 }
 
 bool WearableObject::isWearableObject() {
@@ -184,13 +197,21 @@ VectorMap<String, int>* WearableObject::getWearableSkillMods() {
 		return _implementation->getWearableSkillMods();
 }
 
-void WearableObject::addWearableSkillMod(const String& mod, int value) {
+void WearableObject::addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient) {
 	WearableObjectImplementation* _implementation = static_cast<WearableObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
 
+		DistributedMethod method(this, RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_);
+		method.addSignedIntParameter(skillType);
+		method.addAsciiParameter(skillMod);
+		method.addSignedIntParameter(value);
+		method.addBooleanParameter(notifyClient);
+
+		method.executeWithVoidReturn();
 	} else
-		_implementation->addWearableSkillMod(mod, value);
+		_implementation->addSkillMod(skillType, skillMod, value, notifyClient);
 }
 
 void WearableObject::setMaxSockets(int maxSockets) {
@@ -419,9 +440,9 @@ VectorMap<String, int>* WearableObjectImplementation::getWearableSkillMods() {
 	return (&wearableSkillMods);
 }
 
-void WearableObjectImplementation::addWearableSkillMod(const String& mod, int value) {
-	// server/zone/objects/tangible/wearables/WearableObject.idl():  		wearableSkillMods.put(mod, value);
-	(&wearableSkillMods)->put(mod, value);
+void WearableObjectImplementation::addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient) {
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  		wearableSkillMods.put(skillMod, value);
+	(&wearableSkillMods)->put(skillMod, value);
 	// server/zone/objects/tangible/wearables/WearableObject.idl():  		modsNotInSockets++;
 	modsNotInSockets ++;
 }
@@ -469,9 +490,14 @@ void WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			applyAttachment(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<Attachment*>(inv->getObjectParameter()));
 		}
 		break;
-	case RPC_SETATTACHMENTMODS__CREATUREOBJECT_BOOL_BOOL_:
+	case RPC_APPLYSKILLMODSTO__CREATUREOBJECT_BOOL_:
 		{
-			setAttachmentMods(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter(), inv->getBooleanParameter());
+			applySkillModsTo(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+		}
+		break;
+	case RPC_REMOVESKILLMODSFROM__CREATUREOBJECT_:
+		{
+			removeSkillModsFrom(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		}
 		break;
 	case RPC_ISWEARABLEOBJECT__:
@@ -504,6 +530,12 @@ void WearableObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			resp->insertAscii(repairAttempt(inv->getSignedIntParameter()));
 		}
 		break;
+	case RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_:
+		{
+			String skillMod; 
+			addSkillMod(inv->getSignedIntParameter(), inv->getAsciiParameter(skillMod), inv->getSignedIntParameter(), inv->getBooleanParameter());
+		}
+		break;
 	case RPC_SETMAXSOCKETS__INT_:
 		{
 			setMaxSockets(inv->getSignedIntParameter());
@@ -522,8 +554,12 @@ void WearableObjectAdapter::applyAttachment(CreatureObject* player, Attachment* 
 	(static_cast<WearableObject*>(stub))->applyAttachment(player, attachment);
 }
 
-void WearableObjectAdapter::setAttachmentMods(CreatureObject* player, bool remove, bool doCheck) {
-	(static_cast<WearableObject*>(stub))->setAttachmentMods(player, remove, doCheck);
+void WearableObjectAdapter::applySkillModsTo(CreatureObject* creature, bool doCheck) {
+	(static_cast<WearableObject*>(stub))->applySkillModsTo(creature, doCheck);
+}
+
+void WearableObjectAdapter::removeSkillModsFrom(CreatureObject* creature) {
+	(static_cast<WearableObject*>(stub))->removeSkillModsFrom(creature);
 }
 
 bool WearableObjectAdapter::isWearableObject() {
@@ -548,6 +584,10 @@ int WearableObjectAdapter::socketsLeft() {
 
 String WearableObjectAdapter::repairAttempt(int repairChance) {
 	return (static_cast<WearableObject*>(stub))->repairAttempt(repairChance);
+}
+
+void WearableObjectAdapter::addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient) {
+	(static_cast<WearableObject*>(stub))->addSkillMod(skillType, skillMod, value, notifyClient);
 }
 
 void WearableObjectAdapter::setMaxSockets(int maxSockets) {

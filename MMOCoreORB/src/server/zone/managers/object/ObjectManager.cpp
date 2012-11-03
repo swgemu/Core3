@@ -24,6 +24,7 @@
 #include "server/zone/objects/scene/SceneObjectType.h"
 #include "DeleteCharactersTask.h"
 #include "server/conf/ConfigManager.h"
+#include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
 
 using namespace engine::db;
 
@@ -128,7 +129,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<FireworkObject>(SceneObjectType::FIREWORK);
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::ITEM);
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::GENERICITEM);
-	objectFactory.registerObject<Container>(SceneObjectType::WEARABLECONTAINER);
+	objectFactory.registerObject<WearableContainerObject>(SceneObjectType::WEARABLECONTAINER);
 	objectFactory.registerObject<LootkitObject>(SceneObjectType::LOOTKIT);
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::CAMPKIT);
 	objectFactory.registerObject<Container>(SceneObjectType::STATICLOOTCONTAINER);

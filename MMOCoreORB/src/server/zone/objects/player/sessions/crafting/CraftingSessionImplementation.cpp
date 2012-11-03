@@ -707,6 +707,8 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	// Update the prototype with new values
 	prototype->updateCraftingValues(craftingValues, true);
 
+	addSkillMods();
+
 	// Set default customization
 	SharedTangibleObjectTemplate* templateData =
 			cast<SharedTangibleObjectTemplate*>(prototype->getObjectTemplate());
@@ -1270,4 +1272,18 @@ void CraftingSessionImplementation::createManufactureSchematic(int clientCounter
 	}
 
 	cancelSession();
+}
+
+void CraftingSessionImplementation::addSkillMods() {
+	ManagedReference<ManufactureSchematic*> manufactureSchematic = this->manufactureSchematic.get();
+	ManagedReference<TangibleObject*> prototype = this->prototype.get();
+
+	ManagedReference<DraftSchematic*> draftSchematic = manufactureSchematic->getDraftSchematic();
+
+	VectorMap<String, int>* skillMods = draftSchematic->getDraftSchematicTemplate()->getSkillMods();
+
+	for (int i = 0; i < skillMods->size(); i++) {
+		VectorMapEntry<String, int> mod = skillMods->elementAt(i);
+		prototype->addSkillMod(SkillModManager::WEARABLE, mod.getKey(), mod.getValue(), false);
+	}
 }

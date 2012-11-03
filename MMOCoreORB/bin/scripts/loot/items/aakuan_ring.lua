@@ -8,7 +8,8 @@ aakuan_ring = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {{"ranged_defense", 5}}
 }
 
 addLootItemTemplate("aakuan_ring", aakuan_ring)

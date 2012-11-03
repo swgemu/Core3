@@ -103,6 +103,9 @@ class WeaponObject extends TangibleObject {
 	
 	protected transient SharedWeaponObjectTemplate weaponTemplate;
 	
+	@dereferenced
+	protected VectorMap<string, int> wearableSkillMods;
+	
 	public static final int NONE = 0;
 	public static final int LIGHT = 1;
 	public static final int MEDIUM = 2;
@@ -165,6 +168,8 @@ class WeaponObject extends TangibleObject {
 		
 		damageSlice = 1;
 		speedSlice = 1;
+		
+		wearableSkillMods.setAllowOverwriteInsertPlan();
 	}
 	
 	@local
@@ -481,4 +486,11 @@ class WeaponObject extends TangibleObject {
 		speedSlice = 1 - value;
 	}
 	
+	public abstract native void applySkillModsTo(CreatureObject creature, boolean doCheck = true);
+	
+	public abstract native void removeSkillModsFrom(CreatureObject creature);
+	
+	public abstract void addSkillMod(final int skillType, final string skillMod, int value, boolean notifyClient = true) {
+		wearableSkillMods.put(skillMod, value);
+	}	
 }

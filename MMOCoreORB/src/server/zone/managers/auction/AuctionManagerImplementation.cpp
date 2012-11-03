@@ -88,6 +88,8 @@ void AuctionManagerImplementation::initialize() {
 		if(auctionItem->isAuction()) {
 			Reference<Task*> newTask = new ExpireAuctionTask(_this.get(), auctionItem);
 			newTask->schedule((auctionItem->getExpireTime() - time(0)) * 1000);
+
+			Locker locker(&auctionEvents);
 			auctionEvents.put(auctionItem->getAuctionedItemObjectID(), newTask);
 		}
 	}
@@ -106,6 +108,8 @@ void AuctionManagerImplementation::initialize() {
 			if(auctionItem->isAuction()) {
 				Reference<Task*> newTask = new ExpireAuctionTask(_this.get(), auctionItem);
 				newTask->schedule((auctionItem->getExpireTime() - time(0)) * 1000);
+
+				Locker locker(&auctionEvents);
 				auctionEvents.put(auctionItem->getAuctionedItemObjectID(), newTask);
 			}
 		}
@@ -317,6 +321,8 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 	if(item->isAuction()) {
 		Reference<Task*> newTask = new ExpireAuctionTask(_this.get(), item);
 		newTask->schedule((item->getExpireTime() - time(0)) * 1000);
+
+		Locker locker(&auctionEvents);
 		auctionEvents.put(item->getAuctionedItemObjectID(), newTask);
 	}
 
@@ -1199,6 +1205,8 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 	// refund auction money
 	if (item->isAuction()) {
 		refundAuction(item);
+		Locker locker(&auctionEvents);
+
 		if(auctionEvents.contains(item->getAuctionedItemObjectID())) {
 			Reference<Task*> newTask = auctionEvents.get(item->getAuctionedItemObjectID());
 			

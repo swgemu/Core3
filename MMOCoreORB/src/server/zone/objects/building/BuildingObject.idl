@@ -181,9 +181,9 @@ class BuildingObject extends StructureObject {
 	
 	/**
 	 * Ejects an object to this building's ejection point.
-	 * @param obj The object to eject.
+	 * @param creature The creature to eject.
 	 */
-	public native void ejectObject(SceneObject obj);
+	public native void ejectObject(CreatureObject creature);
 	
 	public native void notifyRemoveFromZone();
 	

@@ -341,6 +341,12 @@ public:
 
 	void setSpeedSlice(float value);
 
+	void applySkillModsTo(CreatureObject* creature, bool doCheck = true);
+
+	void removeSkillModsFrom(CreatureObject* creature);
+
+	void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -420,6 +426,8 @@ protected:
 	float speedSlice;
 
 	Reference<SharedWeaponObjectTemplate* > weaponTemplate;
+
+	VectorMap<String, int> wearableSkillMods;
 
 public:
 	static const int NONE = 0;
@@ -636,6 +644,12 @@ public:
 
 	void setSpeedSlice(float value);
 
+	virtual void applySkillModsTo(CreatureObject* creature, bool doCheck = true);
+
+	virtual void removeSkillModsFrom(CreatureObject* creature);
+
+	virtual void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
+
 	WeakReference<WeaponObject*> _this;
 
 	operator const WeaponObject*();
@@ -820,6 +834,12 @@ public:
 	void setDamageSlice(float value);
 
 	void setSpeedSlice(float value);
+
+	void applySkillModsTo(CreatureObject* creature, bool doCheck);
+
+	void removeSkillModsFrom(CreatureObject* creature);
+
+	void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient);
 
 };
 

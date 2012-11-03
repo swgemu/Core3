@@ -44,6 +44,12 @@
 schematics = {
 {path="object/draft_schematic/slicing/slicing_armor_upgrade_kit.iff"},
 {path="object/draft_schematic/armor/armor_segment_zam.iff"},
+{path="object/draft_schematic/clothing/clothing_apron_field_01_quest_01.iff"},
+{path="object/draft_schematic/clothing/clothing_apron_field_01_quest_02.iff"},
+{path="object/draft_schematic/clothing/clothing_apron_field_01_quest_03.iff"},
+{path="object/draft_schematic/clothing/clothing_apron_field_01_quest_04.iff"},
+{path="object/draft_schematic/clothing/clothing_belt_field_05_quest.iff"},
+{path="object/draft_schematic/clothing/clothing_dress_formal_08_quest.iff"},
 {path="object/draft_schematic/clothing/clothing_armor_zam_belt.iff"},
 {path="object/draft_schematic/clothing/clothing_armor_zam_boots.iff"},
 {path="object/draft_schematic/clothing/clothing_armor_zam_chest.iff"},

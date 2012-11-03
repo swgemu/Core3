@@ -77,7 +77,9 @@ public:
 
 	void applyAttachment(CreatureObject* player, Attachment* attachment);
 
-	void setAttachmentMods(CreatureObject* player, bool remove = false, bool doCheck = true);
+	void applySkillModsTo(CreatureObject* creature, bool doCheck = true);
+
+	void removeSkillModsFrom(CreatureObject* creature);
 
 	bool isWearableObject();
 
@@ -93,7 +95,7 @@ public:
 
 	VectorMap<String, int>* getWearableSkillMods();
 
-	void addWearableSkillMod(const String& mod, int value);
+	void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
 
 	void setMaxSockets(int maxSockets);
 
@@ -150,7 +152,9 @@ public:
 
 	void applyAttachment(CreatureObject* player, Attachment* attachment);
 
-	void setAttachmentMods(CreatureObject* player, bool remove = false, bool doCheck = true);
+	virtual void applySkillModsTo(CreatureObject* creature, bool doCheck = true);
+
+	virtual void removeSkillModsFrom(CreatureObject* creature);
 
 	bool isWearableObject();
 
@@ -170,7 +174,7 @@ public:
 
 	VectorMap<String, int>* getWearableSkillMods();
 
-	void addWearableSkillMod(const String& mod, int value);
+	virtual void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
 
 	void setMaxSockets(int maxSockets);
 
@@ -221,7 +225,9 @@ public:
 
 	void applyAttachment(CreatureObject* player, Attachment* attachment);
 
-	void setAttachmentMods(CreatureObject* player, bool remove, bool doCheck);
+	void applySkillModsTo(CreatureObject* creature, bool doCheck);
+
+	void removeSkillModsFrom(CreatureObject* creature);
 
 	bool isWearableObject();
 
@@ -234,6 +240,8 @@ public:
 	int socketsLeft();
 
 	String repairAttempt(int repairChance);
+
+	void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient);
 
 	void setMaxSockets(int maxSockets);
 

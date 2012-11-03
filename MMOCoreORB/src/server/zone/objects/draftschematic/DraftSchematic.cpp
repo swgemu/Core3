@@ -16,7 +16,7 @@
  *	DraftSchematicStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_,RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_,RPC_SETGROUPNAME__STRING_,RPC_GETGROUPNAME__,RPC_GETDRAFTSLOTCOUNT__,RPC_ISVALIDDRAFTSCHEMATIC__,RPC_GETRESOURCEWEIGHTCOUNT__,RPC_GETCOMPLEXITY__,RPC_GETTOOLTAB__,RPC_GETSIZE__,RPC_GETXPTYPE__,RPC_GETXPAMOUNT__,RPC_GETASSEMBLYSKILL__,RPC_GETEXPERIMENTATIONSKILL__,RPC_GETCUSTOMIZATIONSKILL__,RPC_GETCUSTOMNAME__,RPC_GETTANOCRC__,RPC_GETTEMPLATELISTSIZE__,RPC_GETTEMPLATE__INT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_,RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_,RPC_SETGROUPNAME__STRING_,RPC_GETGROUPNAME__,RPC_GETDRAFTSLOTCOUNT__,RPC_ISVALIDDRAFTSCHEMATIC__,RPC_GETRESOURCEWEIGHTCOUNT__,RPC_GETCOMPLEXITY__,RPC_GETTOOLTAB__,RPC_GETSIZE__,RPC_GETXPTYPE__,RPC_GETXPAMOUNT__,RPC_GETASSEMBLYSKILL__,RPC_GETEXPERIMENTATIONSKILL__,RPC_GETCUSTOMIZATIONSKILL__,RPC_GETCUSTOMNAME__,RPC_GETTANOCRC__,RPC_GETTEMPLATELISTSIZE__,RPC_GETTEMPLATE__INT_,};
 
 DraftSchematic::DraftSchematic() : IntangibleObject(DummyConstructorParameter::instance()) {
 	DraftSchematicImplementation* _implementation = new DraftSchematicImplementation();
@@ -376,6 +376,15 @@ String DraftSchematic::getTemplate(int i) {
 		return _implementation->getTemplate(i);
 }
 
+DraftSchematicObjectTemplate* DraftSchematic::getDraftSchematicTemplate() {
+	DraftSchematicImplementation* _implementation = static_cast<DraftSchematicImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getDraftSchematicTemplate();
+}
+
 DistributedObjectServant* DraftSchematic::_getImplementation() {
 
 	 if (!_updated) _updated = true;
@@ -535,6 +544,11 @@ int DraftSchematicImplementation::getTemplateListSize() {
 String DraftSchematicImplementation::getTemplate(int i) {
 	// server/zone/objects/draftschematic/DraftSchematic.idl():  		return schematicTemplate.getTemplate(i);
 	return schematicTemplate->getTemplate(i);
+}
+
+DraftSchematicObjectTemplate* DraftSchematicImplementation::getDraftSchematicTemplate() {
+	// server/zone/objects/draftschematic/DraftSchematic.idl():  		return schematicTemplate;
+	return schematicTemplate;
 }
 
 /*

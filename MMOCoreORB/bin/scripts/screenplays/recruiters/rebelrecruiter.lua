@@ -77,6 +77,14 @@ function rebel_recruiter_handler:isContainer(strItem)
 	return false
 end
 
+function rebel_recruiter_handler:isTerminal(strItem)
+	if(faction_reward_data.rebel_furniture[strItem] ~= nil and faction_reward_data.rebel_furniture[strItem].type == faction_reward_type.terminal) then
+		return true
+	end
+	
+	return false
+end
+
 function rebel_recruiter_handler:getItemCost(itemstring)
 	local itemcost = nil
 	

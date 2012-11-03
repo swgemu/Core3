@@ -199,4 +199,9 @@ class DraftSchematic extends IntangibleObject {
 	public string getTemplate(int i) {
 		return schematicTemplate.getTemplate(i);
 	}
+	
+	@local
+	public DraftSchematicObjectTemplate getDraftSchematicTemplate() {
+		return schematicTemplate;
+	}
 }

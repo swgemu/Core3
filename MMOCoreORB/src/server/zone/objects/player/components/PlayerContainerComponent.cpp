@@ -100,9 +100,9 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 		playerManager->applyEncumbrancies(creo, cast<ArmorObject*>(object));
 	}
 
-	if (object->isWearableObject()) {
-		WearableObject* clothing = cast<WearableObject*>( object);
-		clothing->setAttachmentMods(creo);
+	if (object->isTangibleObject()) {
+		TangibleObject* tano = cast<TangibleObject*>(object);
+		tano->applySkillModsTo(creo);
 	}
 
 	PlayerObject* ghost = creo->getPlayerObject();
@@ -148,9 +148,9 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 		playerManager->removeEncumbrancies(creo, cast<ArmorObject*>(object));
 	}
 
-	if (object->isWearableObject()) {
-		WearableObject* clothing = cast<WearableObject*>( object);
-		clothing->setAttachmentMods(creo, true);
+	if (object->isTangibleObject()) {
+		TangibleObject* tano = cast<TangibleObject*>(object);
+		tano->removeSkillModsFrom(creo);
 	}
 
 	if (object->isInstrument()) {

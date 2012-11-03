@@ -74,7 +74,13 @@ object_draft_schematic_clothing_clothing_backpack_field_06_quest = object_draft_
 
    additionalTemplates = {
               "object/tangible/wearables/backpack/shared_backpack_s06_quest.iff",
-             }
-
+             },
+		
+	skillMods = {
+	    {"camouflage", 5},
+	    {"foraging", 5},
+	    {"melee_defense", 3},
+	    {"ranged_defense", 3}
+	}
 }
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_backpack_field_06_quest, "object/draft_schematic/clothing/clothing_backpack_field_06_quest.iff")

@@ -150,7 +150,7 @@ public:
 
 	Vector3 getEjectionPoint();
 
-	void ejectObject(SceneObject* obj);
+	void ejectObject(CreatureObject* creature);
 
 	void notifyRemoveFromZone();
 
@@ -325,7 +325,7 @@ public:
 
 	Vector3 getEjectionPoint();
 
-	void ejectObject(SceneObject* obj);
+	void ejectObject(CreatureObject* creature);
 
 	void notifyRemoveFromZone();
 
@@ -486,7 +486,7 @@ public:
 
 	int notifyStructurePlaced(CreatureObject* player);
 
-	void ejectObject(SceneObject* obj);
+	void ejectObject(CreatureObject* creature);
 
 	void notifyRemoveFromZone();
 

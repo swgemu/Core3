@@ -672,11 +672,11 @@ bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targe
 PathNode* CollisionManager::findNearestPathNode(TriangleNode* triangle, FloorMesh* floor, const Vector3& finalTarget) {
 	// this is overkill TODO: find something faster
 	PathGraph* graph = floor->getPathGraph();
-	Vector<PathNode*>* pathNodes = graph->getPathNodes();
 
-	if (pathNodes == NULL) {
+	if (graph == NULL)
 		return NULL;
-	}
+
+	Vector<PathNode*>* pathNodes = graph->getPathNodes();
 
 	PathNode* returnNode = NULL;
 	float distance = 16000;

@@ -73,7 +73,13 @@ object_draft_schematic_clothing_clothing_belt_field_05_quest = object_draft_sche
    targetTemplate = "object/tangible/wearables/belt/belt_s05_quest.iff",
 
    additionalTemplates = {
-             }
+             },
+      
+        skillMods = {
+	    {"grenade_assembly", 5},
+	    {"grenade_experimentation", 5},
+	    {"thrown_accuracy", 5},
+	},
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_belt_field_05_quest, "object/draft_schematic/clothing/clothing_belt_field_05_quest.iff")

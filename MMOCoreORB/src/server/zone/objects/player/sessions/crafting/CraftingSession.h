@@ -313,6 +313,10 @@ private:
 public:
 	int getState();
 
+private:
+	void addSkillMods();
+
+public:
 	WeakReference<CraftingSession*> _this;
 
 	operator const CraftingSession*();

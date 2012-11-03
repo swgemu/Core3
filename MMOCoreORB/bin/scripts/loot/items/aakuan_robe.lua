@@ -8,7 +8,8 @@ aakuan_robe = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {{"resistance_poison", 10}}
 }
 
 addLootItemTemplate("aakuan_robe", aakuan_robe)

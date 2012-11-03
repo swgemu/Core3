@@ -258,7 +258,7 @@ void LootManagerImplementation::setSkillMods(TangibleObject* object, LootItemTem
 		VectorMap<String, int>* skillMods = templateObject->getSkillMods();
 
 		for (int i = 0; i < skillMods->size(); i++) {
-			wearableObject->addWearableSkillMod(skillMods->elementAt(i).getKey(), skillMods->elementAt(i).getValue());
+			wearableObject->addSkillMod(SkillModManager::WEARABLE, skillMods->elementAt(i).getKey(), skillMods->elementAt(i).getValue());
 		}
 	}
 }
