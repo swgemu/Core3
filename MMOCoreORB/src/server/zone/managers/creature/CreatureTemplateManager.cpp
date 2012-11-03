@@ -66,6 +66,9 @@ void CreatureTemplateManager::loadTemplates() {
 		e.printStackTrace();
 	}
 
+	delete lua;
+	lua = NULL;
+
 	printf("\n");
 	info("done loading mobile templates", true);
 }
