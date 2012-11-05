@@ -58,6 +58,16 @@ void ArmorObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	setSliceable(true);
 }
 
+void ArmorObjectImplementation::notifyLoadFromDatabase() {
+	WearableObjectImplementation::notifyLoadFromDatabase();
+
+	if (templateObject == NULL)
+		return;
+
+	if (rating != LIGHT && templateObject->getClientTemplateFileName().contains("armor_bounty_hunter_"))
+		rating = LIGHT;
+}
+
 void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	WearableObjectImplementation::fillAttributeList(alm, object);
 

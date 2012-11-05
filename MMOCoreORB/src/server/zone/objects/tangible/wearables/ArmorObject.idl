@@ -114,6 +114,8 @@ class ArmorObject extends WearableObject {
 	
 	public native void initializeTransientMembers();
 	
+	public native void notifyLoadFromDatabase();
+	
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
 	 * @pre { templateData is a valid pointer }
