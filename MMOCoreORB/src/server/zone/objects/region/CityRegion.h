@@ -123,6 +123,8 @@ using namespace server::zone::managers::city;
 
 #include "system/thread/atomic/AtomicInteger.h"
 
+#include "system/thread/Mutex.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -183,6 +185,8 @@ public:
 	bool hasZoningRights(unsigned long long objectid);
 
 	bool containsPoint(float x, float y);
+
+	void cleanupCitizens();
 
 	Time* getNextUpdateTime();
 
@@ -418,6 +422,10 @@ protected:
 
 	SortedVector<ManagedReference<StructureObject* > > structures;
 
+	SortedVector<unsigned long long> completeStructureList;
+
+	Mutex structureListMutex;
+
 	SortedVector<ManagedReference<SceneObject* > > cityMissionTerminals;
 
 	SortedVector<ManagedReference<SceneObject* > > cityDecorations;
@@ -508,6 +516,8 @@ public:
 	bool hasZoningRights(unsigned long long objectid);
 
 	bool containsPoint(float x, float y);
+
+	void cleanupCitizens();
 
 	Time* getNextUpdateTime();
 
@@ -763,6 +773,8 @@ public:
 	bool hasZoningRights(unsigned long long objectid);
 
 	bool containsPoint(float x, float y);
+
+	void cleanupCitizens();
 
 	int getCurrentPlayerCount();
 

@@ -24,6 +24,7 @@ include server.zone.objects.region.CitizenList;
 include server.zone.objects.region.events.CityUpdateEvent;
 include server.zone.objects.region.CityStructureInventory;
 include system.thread.atomic.AtomicInteger;
+import system.thread.Mutex;
 
 class CityRegion extends ManagedObject implements Logger {
 	protected StructureObject cityHall;
@@ -62,6 +63,12 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	@dereferenced
 	protected SortedVector<StructureObject> structures;
+	
+	@dereferenced
+	protected transient SortedVector<unsigned long> completeStructureList;
+	
+	@dereferenced
+	protected transient Mutex structureListMutex;
 	
 	@dereferenced
 	protected SortedVector<SceneObject> cityMissionTerminals;
@@ -135,6 +142,8 @@ class CityRegion extends ManagedObject implements Logger {
 		mayoralVotes.setNullValue(0);
 		
 		structures.setNoDuplicateInsertPlan();
+		
+		completeStructureList.setNoDuplicateInsertPlan();
 	}
 	
 	public native void initialize();
@@ -186,6 +195,8 @@ class CityRegion extends ManagedObject implements Logger {
 
 		return false;
 	}
+	
+	public native void cleanupCitizens();
 	
 	@local
 	public Time getNextUpdateTime() {
@@ -471,11 +482,15 @@ class CityRegion extends ManagedObject implements Logger {
 	public native void updateMilitia();
 	
 	public void addStructure(StructureObject structure) {
-		structures.put(structure);
+		synchronized (structureListMutex) {
+			structures.put(structure);
+		}
 	}
 	
 	public void removeStructure(StructureObject structure) {
-		structures.drop(structure);
+		synchronized (structureListMutex) {
+			structures.drop(structure);
+		}
 	}
 	
 	/**
