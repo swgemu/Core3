@@ -26,7 +26,7 @@ using namespace server::zone::objects::scene;
 
 class DataObjectComponent : public SceneObjectComponent, public Serializable {
 protected:
-	ManagedReference<SceneObject*> parent;
+	ManagedWeakReference<SceneObject*> parent;
 
 public:
 
