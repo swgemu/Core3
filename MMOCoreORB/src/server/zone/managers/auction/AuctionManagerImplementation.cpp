@@ -930,15 +930,14 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 
 	String pname = player->getFirstName().toLowerCase();
 	uint32 now = time(0);
-	int currentCount = -1;
-
+	int displaying = 0;
 	/*System::out << "Screen =" + String::valueOf(screen) << endl;
 	System::out << "Category =" + String::valueOf(category) << endl;
 	System::out << "VendorItemSize =" + String::valueOf(auctionMap->getVendorItemCount()) << endl;
 	System::out << "AuctionItemSize =" + String::valueOf(auctionMap->getAuctionCount()) << endl;
 	System::out << "______________________________" << endl;*/
 
-	for (int j = 0; (j < terminalList->size()) && (reply->getListSize() < 100); ++j) {
+	for (int j = 0; (j < terminalList->size()) && (displaying < (offset + 100)); ++j) {
 
 		Reference<TerminalItemList*> items = terminalList->get(j);
 
@@ -952,7 +951,7 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 		try {
 			items->rlock();
 
-			for (int i = 0; (i < items->size()) && (reply->getListSize() < 100); i++) {
+			for (int i = 0; (i < items->size()) && (displaying < (offset + 100)); i++) {
 				ManagedReference<AuctionItem*> item = items->get(i);
 
 				if(item == NULL)
@@ -962,10 +961,6 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 					expireSale(item);
 					continue;
 				}
-
-				currentCount++;
-				if(currentCount < offset)
-					continue;
 
 				switch(screen) {
 				case 7: // Vendor search Bazaar && Vendor
@@ -978,16 +973,27 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 					if (item->getStatus() == AuctionItem::FORSALE) {
 						if (category & 255) { // Searching a sub category
 							if (item->getItemType() == category) {
-								reply->addItemToList(items->get(i));
+								if (displaying >= offset)
+									reply->addItemToList(items->get(i));
+
+								displaying++;
 							}
 						} else if (item->getItemType() & category) {
-							reply->addItemToList(items->get(i));
+							if (displaying >= offset)
+								reply->addItemToList(items->get(i));
+
+							displaying++;
 
 						} else if ((category == 8192) && (item->getItemType() < 256)) {
-							reply->addItemToList(items->get(i));
+							if (displaying >= offset)
+								reply->addItemToList(items->get(i));
 
+							displaying++;
 						} else if (category == 0 && vendor->isVendor()) { // Searching all items
-							reply->addItemToList(item);
+							if (displaying >= offset)
+								reply->addItemToList(item);
+
+							displaying++;
 						}
 					}
 					break;
@@ -1031,7 +1037,7 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 		}
 	}
 
-	if (reply->getListSize() >= 100)
+	if (displaying == (offset + 100))
 		reply->createMessage(offset, true);
 	else
 		reply->createMessage(offset);
