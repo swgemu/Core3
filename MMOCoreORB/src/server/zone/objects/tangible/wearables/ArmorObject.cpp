@@ -958,6 +958,8 @@ ArmorObjectImplementation::ArmorObjectImplementation() {
 	specialProtection = 0;
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		specialResists = 0;
 	specialResists = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		vulnerabilites = 0;
+	vulnerabilites = 0;
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		hitLocation = 0;
 	hitLocation = 0;
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		setSliceable(true);
