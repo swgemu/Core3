@@ -952,6 +952,10 @@ ArmorObjectImplementation::ArmorObjectImplementation() {
 	effectivenessSlice = 1;
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		encumbranceSlice = 1;
 	encumbranceSlice = 1;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		baseProtection = 0;
+	baseProtection = 0;
+	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		specialProtection = 0;
+	specialProtection = 0;
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		specialResists = 0;
 	specialResists = 0;
 	// server/zone/objects/tangible/wearables/ArmorObject.idl():  		hitLocation = 0;

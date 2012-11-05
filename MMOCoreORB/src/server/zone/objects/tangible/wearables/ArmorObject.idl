@@ -102,7 +102,9 @@ class ArmorObject extends WearableObject {
 		lightSaber = 0;
 		effectivenessSlice = 1;
 		encumbranceSlice = 1;
-
+		
+		baseProtection = 0;
+		specialProtection = 0;
 		specialResists = 0;
 		
 		hitLocation = 0;
