@@ -99,7 +99,7 @@ public:
 	inline void setInitialized(bool val) {
 		initialized = val;
 		updateUID();
-		originalDirection = parent->getDirectionAngle();
+		originalDirection = parent.get()->getDirectionAngle();
 	}
 
 	void setVendorSearchEnabled(bool enabled);
@@ -177,7 +177,7 @@ public:
 			return false;
 		}
 
-		return auctionsMap->getVendorItemCount(parent) == 0;
+		return auctionsMap->getVendorItemCount(parent.get()) == 0;
 	}
 
 	inline void setEmpty() {
