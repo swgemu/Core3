@@ -103,8 +103,11 @@ class ArmorObject extends WearableObject {
 		effectivenessSlice = 1;
 		encumbranceSlice = 1;
 
+		baseProtection = 0;
+		specialProtection = 0;
 		specialResists = 0;
 		
+		vulnerabilites = 0;
 		hitLocation = 0;
 
 		setSliceable(true);
