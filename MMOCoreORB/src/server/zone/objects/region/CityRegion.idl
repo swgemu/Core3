@@ -210,12 +210,14 @@ class CityRegion extends ManagedObject implements Logger {
 	public void addCitizen(unsigned long citizenID) {
 		citizenList.put(citizenID);
 	}
-	
+
 	public void removeCitizen(unsigned long citizenID) {
-		citizenList.drop(citizenID);
-		
-		if (isLoaded()) {
-			militiaMembers.drop(citizenID);
+		synchronized (structureListMutex) {
+			citizenList.drop(citizenID);
+
+			if (isLoaded()) {
+				militiaMembers.drop(citizenID);
+			}
 		}
 	}
 	

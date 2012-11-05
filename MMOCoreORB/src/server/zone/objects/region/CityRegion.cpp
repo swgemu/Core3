@@ -2023,12 +2023,16 @@ void CityRegionImplementation::addCitizen(unsigned long long citizenID) {
 }
 
 void CityRegionImplementation::removeCitizen(unsigned long long citizenID) {
-	// server/zone/objects/region/CityRegion.idl():  		citizenList.drop(citizenID);
+	// server/zone/objects/region/CityRegion.idl():  		}
+{
+	Locker _locker((&structureListMutex));
+	// server/zone/objects/region/CityRegion.idl():  			citizenList.drop(citizenID);
 	(&citizenList)->drop(citizenID);
-	// server/zone/objects/region/CityRegion.idl():  	}
+	// server/zone/objects/region/CityRegion.idl():  		}
 	if (isLoaded()){
-	// server/zone/objects/region/CityRegion.idl():  			militiaMembers.drop(citizenID);
+	// server/zone/objects/region/CityRegion.idl():  				militiaMembers.drop(citizenID);
 	(&militiaMembers)->drop(citizenID);
+}
 }
 }
 
