@@ -179,7 +179,7 @@ int CityRegionImplementation::getTimeToUpdate() {
 }
 
 void CityRegionImplementation::notifyEnter(SceneObject* object) {
-	if (object->getCityRegion() != _this.get && object->isPlayerCreature())
+	if (object->getCityRegion().get() != _this.get() && object->isPlayerCreature())
 		currentPlayers.increment();
 
 	object->setCityRegion(_this.get());
