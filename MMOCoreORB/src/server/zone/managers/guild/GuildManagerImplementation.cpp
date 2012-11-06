@@ -320,6 +320,12 @@ void GuildManagerImplementation::sendGuildTransferTo(CreatureObject* player, Gui
 
 void GuildManagerImplementation::sendTransferAckTo(CreatureObject* player, const String& newOwnerName, SceneObject* sceoTerminal){
 
+
+	if(player->getFirstName().toLowerCase() == newOwnerName.toLowerCase())	{
+		player->sendSystemMessage("Cannot transfer guild to yourself");
+		return;
+	}
+
 	ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 	ManagedReference<CreatureObject*> target = playerManager->getPlayer(newOwnerName);
 
@@ -402,13 +408,15 @@ void GuildManagerImplementation::transferLeadership(CreatureObject* newLeader, C
 	// change admin privs for old and new leader
 	GuildMemberInfo* gmiLeader = guild->getMember(newLeader->getObjectID());
 
-	if ( gmiLeader!= NULL )
-		gmiLeader->togglePermission(GuildObject::PERMISSION_ALL);
+	if (gmiLeader!= NULL){
+		gmiLeader->setPermissions(GuildObject::PERMISSION_ALL);
+	}
 
 	if ( oldLeader != NULL) {
 		GuildMemberInfo* gmiOldLeader = guild->getMember(oldLeader->getObjectID());
-		if ( gmiOldLeader != NULL)
-			gmiOldLeader->togglePermission(GuildObject::PERMISSION_NONE);
+		if (gmiOldLeader != NULL){
+			gmiOldLeader->setPermissions(GuildObject::PERMISSION_NONE);
+		}
 	}
 	glock.release();
 
