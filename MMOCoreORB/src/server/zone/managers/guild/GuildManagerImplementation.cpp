@@ -320,8 +320,14 @@ void GuildManagerImplementation::sendGuildTransferTo(CreatureObject* player, Gui
 
 void GuildManagerImplementation::sendTransferAckTo(CreatureObject* player, const String& newOwnerName, SceneObject* sceoTerminal){
 
+	if(player->getFirstName().toLowerCase() == newOwnerName.toLowerCase())	{
+		player->sendSystemMessage("Cannot transfer guild to yourself");
+		return;
+	}
+
 	ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 	ManagedReference<CreatureObject*> target = playerManager->getPlayer(newOwnerName);
+
 
 	if (target == NULL) {
 		player->sendSystemMessage("@guild:ml_fail"); // unable to find a member of the PA with that name
@@ -402,20 +408,23 @@ void GuildManagerImplementation::transferLeadership(CreatureObject* newLeader, C
 	// change admin privs for old and new leader
 	GuildMemberInfo* gmiLeader = guild->getMember(newLeader->getObjectID());
 
-	if ( gmiLeader!= NULL )
-		gmiLeader->togglePermission(GuildObject::PERMISSION_ALL);
+	if (gmiLeader!= NULL){
+			gmiLeader->setPermissions(GuildObject::PERMISSION_ALL);
+	}
 
 	if ( oldLeader != NULL) {
+
 		GuildMemberInfo* gmiOldLeader = guild->getMember(oldLeader->getObjectID());
-		if ( gmiOldLeader != NULL)
-			gmiOldLeader->togglePermission(GuildObject::PERMISSION_NONE);
+
+		if (gmiOldLeader != NULL){
+			gmiOldLeader->setPermissions(GuildObject::PERMISSION_NONE);
+		}
 	}
+
 	glock.release();
 
 	oldLeader->sendSystemMessage("@guild:ml_success");  // PA leadership transferred.  YOu are now a normal member of the PA.
 	newLeader->sendSystemMessage("@guild:ml_you_are_leader"); // You have been made leader of your PA
-
-
 }
 
 // pre: newOwner locked ... old owner not locked
