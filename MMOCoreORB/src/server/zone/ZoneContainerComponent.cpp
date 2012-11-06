@@ -94,8 +94,14 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 
 	zone->getInRangeObjects(activeArea->getPositionX(), activeArea->getPositionY(), 512, &objects, false);
 
+	zone->dropSceneObject(activeArea);
+
+	zoneLocker.release();
+
 	for (int i = 0; i < objects.size(); ++i) {
 		SceneObject* object = cast<SceneObject*>(objects.get(i).get());
+
+		Locker olocker(object);
 
 		if (object->hasActiveArea(activeArea)) {
 			object->dropActiveArea(activeArea);
@@ -104,8 +110,6 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 	}
 
 	activeArea->setZone(NULL);
-
-	zone->dropSceneObject(activeArea);
 
 	activeArea->notifyRemoveFromZone();
 
