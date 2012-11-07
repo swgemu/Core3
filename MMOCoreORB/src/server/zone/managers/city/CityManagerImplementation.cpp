@@ -319,7 +319,7 @@ void CityManagerImplementation::sendStatusReport(CityRegion* city, CreatureObjec
 		if (prompt.isEmpty())
 			continue;
 
-		list->addMenuItem("@city/city:" + prompt + " " + String::valueOf(tax));
+		list->addMenuItem(prompt + " " + String::valueOf(tax));
 	}
 
 	//TODO: Tax information and travel cost.
