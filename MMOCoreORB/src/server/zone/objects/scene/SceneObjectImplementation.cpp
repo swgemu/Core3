@@ -1117,7 +1117,7 @@ ManagedWeakReference<SceneObject*> SceneObjectImplementation::getRootParent() {
 	ManagedReference<SceneObject*> grandParent = getParent();
 	ManagedReference<SceneObject*> tempParent = NULL;
 
-	if (grandParent == NULL)
+	if (grandParent == NULL || grandParent == _this.get())
 		return NULL;
 
 	while ((tempParent = grandParent->getParent()) != NULL)
