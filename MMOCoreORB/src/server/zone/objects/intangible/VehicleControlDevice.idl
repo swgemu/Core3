@@ -79,20 +79,22 @@ class VehicleControlDevice extends ControlDevice {
 	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
 		Logger.info("selected call");
 		
+		TangibleObject controlledObject = super.controlledObject;
+		
 		if (selectedID == RadialOptions.VEHICLE_GENERATE) {
 			
-			if (super.controlledObject == null) {
+			if (controlledObject == null) {
 				Logger.error("null controlled object in vehicle control device");
 				return 1;
 			} else {
 				this.generateObject(player);
 			}
 		} else if (selectedID == RadialOptions.VEHICLE_STORE) {
-			if (super.controlledObject == null) {
+			if (controlledObject == null) {
 				Logger.error("null controlled object in vehicle control device");
 				return 1;
 			} else {
-				if (super.status == 1 && !super.controlledObject.isInQuadTree()) {
+				if (super.status == 1 && !controlledObject.isInQuadTree()) {
 					this.generateObject(player);
 				} else {
 					this.storeObject(player);

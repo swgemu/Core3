@@ -372,28 +372,28 @@ float GroupObjectImplementation::getGroupHarvestModifier(CreatureObject* player)
 }
 
 void GroupObjectImplementation::calcGroupLevel() {
-        groupLevel = 0;
+	groupLevel = 0;
 
-        for (int i = 0; i < getGroupSize(); i++) {
-                SceneObject* member = getGroupMember(i);
+	for (int i = 0; i < getGroupSize(); i++) {
+		SceneObject* member = getGroupMember(i);
 
-                if (member->isCreatureObject()) {
-                        CreatureObject* creature = (CreatureObject*) member;
+		if (member->isCreatureObject()) {
+			CreatureObject* creature = cast<CreatureObject*>(member);
 
-                        int currentlevel = groupLevel - getGroupSize();
-                        int memberlevel = creature->getLevel();
+			int currentlevel = groupLevel - getGroupSize();
+			int memberlevel = creature->getLevel();
 
-                        if (memberlevel > currentlevel)
-                                groupLevel = memberlevel + getGroupSize();
-                }
-        }
+			if (memberlevel > currentlevel)
+				groupLevel = memberlevel + getGroupSize();
+		}
+	}
 
-    	GroupObjectDeltaMessage6* msg = new GroupObjectDeltaMessage6(_this.get());
+	GroupObjectDeltaMessage6* msg = new GroupObjectDeltaMessage6(_this.get());
 
-    	msg->updateLevel(this->groupLevel);
-    	msg->close();
+	msg->updateLevel(this->groupLevel);
+	msg->close();
 
-    	broadcastMessage(msg);
+	broadcastMessage(msg);
 }
 
 void GroupObjectImplementation::sendSystemMessage(StringIdChatParameter& param) {

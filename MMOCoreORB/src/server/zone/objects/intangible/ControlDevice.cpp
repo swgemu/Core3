@@ -240,7 +240,7 @@ bool ControlDeviceImplementation::readObjectMember(ObjectInputStream* stream, co
 		return true;
 
 	if (_name == "ControlDevice.controlledObject") {
-		TypeInfo<ManagedReference<TangibleObject* > >::parseFromBinaryStream(&controlledObject, stream);
+		TypeInfo<ManagedWeakReference<TangibleObject* > >::parseFromBinaryStream(&controlledObject, stream);
 		return true;
 	}
 
@@ -265,7 +265,7 @@ int ControlDeviceImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<ManagedReference<TangibleObject* > >::toBinaryStream(&controlledObject, stream);
+	TypeInfo<ManagedWeakReference<TangibleObject* > >::toBinaryStream(&controlledObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -294,10 +294,12 @@ ControlDeviceImplementation::ControlDeviceImplementation() {
 }
 
 void ControlDeviceImplementation::updateToDatabaseAllObjects(bool startTask) {
+	// server/zone/objects/intangible/ControlDevice.idl():  		TangibleObject obj = controlledObject;
+	ManagedReference<TangibleObject* > obj = controlledObject;
 	// server/zone/objects/intangible/ControlDevice.idl():  		}
-	if (controlledObject != NULL){
-	// server/zone/objects/intangible/ControlDevice.idl():  			controlledObject.updateToDatabaseWithoutChildren();
-	controlledObject->updateToDatabaseWithoutChildren();
+	if (obj != NULL){
+	// server/zone/objects/intangible/ControlDevice.idl():  			obj.updateToDatabaseWithoutChildren();
+	obj->updateToDatabaseWithoutChildren();
 	// server/zone/objects/intangible/ControlDevice.idl():  			super.updateToDatabaseAllObjects(startTask);
 	IntangibleObjectImplementation::updateToDatabaseAllObjects(startTask);
 }
@@ -329,8 +331,10 @@ void ControlDeviceImplementation::setControlledObject(TangibleObject* object) {
 }
 
 TangibleObject* ControlDeviceImplementation::getControlledObject() {
-	// server/zone/objects/intangible/ControlDevice.idl():  		return controlledObject;
-	return controlledObject;
+	// server/zone/objects/intangible/ControlDevice.idl():  		TangibleObject obj = controlledObject;
+	ManagedReference<TangibleObject* > obj = controlledObject;
+	// server/zone/objects/intangible/ControlDevice.idl():  		return obj;
+	return obj;
 }
 
 bool ControlDeviceImplementation::isControlDevice() {

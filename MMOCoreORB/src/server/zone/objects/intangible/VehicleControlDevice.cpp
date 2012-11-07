@@ -293,10 +293,12 @@ VehicleControlDeviceImplementation::VehicleControlDeviceImplementation() {
 int VehicleControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 	// server/zone/objects/intangible/VehicleControlDevice.idl():  		Logger.info("selected call");
 	Logger::info("selected call");
+	// server/zone/objects/intangible/VehicleControlDevice.idl():  		TangibleObject controlledObject = super.controlledObject;
+	ManagedReference<TangibleObject* > controlledObject = ControlDeviceImplementation::controlledObject.getForUpdate();
 	// server/zone/objects/intangible/VehicleControlDevice.idl():  		return 
 	if (selectedID == RadialOptions::VEHICLE_GENERATE){
 	// server/zone/objects/intangible/VehicleControlDevice.idl():  			}
-	if (ControlDeviceImplementation::controlledObject.getForUpdate() == NULL){
+	if (controlledObject == NULL){
 	// server/zone/objects/intangible/VehicleControlDevice.idl():  				Logger.error("null controlled object in vehicle control device");
 	Logger::error("null controlled object in vehicle control device");
 	// server/zone/objects/intangible/VehicleControlDevice.idl():  				return 1;
@@ -312,7 +314,7 @@ int VehicleControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* p
 	else 	// server/zone/objects/intangible/VehicleControlDevice.idl():  		return 
 	if (selectedID == RadialOptions::VEHICLE_STORE){
 	// server/zone/objects/intangible/VehicleControlDevice.idl():  			}
-	if (ControlDeviceImplementation::controlledObject.getForUpdate() == NULL){
+	if (controlledObject == NULL){
 	// server/zone/objects/intangible/VehicleControlDevice.idl():  				Logger.error("null controlled object in vehicle control device");
 	Logger::error("null controlled object in vehicle control device");
 	// server/zone/objects/intangible/VehicleControlDevice.idl():  				return 1;
@@ -321,7 +323,7 @@ int VehicleControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* p
 
 	else {
 	// server/zone/objects/intangible/VehicleControlDevice.idl():  				}
-	if (ControlDeviceImplementation::status == 1 && !ControlDeviceImplementation::controlledObject.getForUpdate()->isInQuadTree()){
+	if (ControlDeviceImplementation::status == 1 && !controlledObject->isInQuadTree()){
 	// server/zone/objects/intangible/VehicleControlDevice.idl():  					this.generateObject(player);
 	_this.get()->generateObject(player);
 }
