@@ -849,21 +849,27 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public native void addActiveArea(ActiveArea area);
 	
 	public void dropActiveArea(ActiveArea area) {
-		activeAreas.drop(area);
+		synchronized (containerLock) {
+			activeAreas.drop(area);
+		}
 	}
 	
 	@read
 	public boolean hasActiveArea(ActiveArea area) {
-		return activeAreas.contains(area);
+		synchronized (containerLock) {
+			return activeAreas.contains(area);
+		}
 	}
 	
 	@read
 	public boolean hasActiveArea(unsigned long objectid) {
-		for (int i = 0; i < activeAreas.size(); ++i) {
-			ActiveArea area = activeAreas.get(i);
-			
-			if (area.getObjectID() == objectid) {
-				return true;
+		synchronized (containerLock) {
+			for (int i = 0; i < activeAreas.size(); ++i) {
+				ActiveArea area = activeAreas.get(i);
+
+				if (area.getObjectID() == objectid) {
+					return true;
+				}
 			}
 		}
 		
@@ -883,11 +889,13 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@read
 	public ActiveArea getActiveRegion() {
-		for (int i = 0; i < activeAreas.size(); i++) {
-			ActiveArea region = activeAreas.get(i);
-			
-			if (region.isRegion()) {
-				return region;
+		synchronized (containerLock) {
+			for (int i = 0; i < activeAreas.size(); i++) {
+				ActiveArea region = activeAreas.get(i);
+
+				if (region.isRegion()) {
+					return region;
+				}
 			}
 		}
 		

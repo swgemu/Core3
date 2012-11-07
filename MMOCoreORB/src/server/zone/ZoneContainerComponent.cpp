@@ -101,7 +101,7 @@ bool ZoneContainerComponent::removeActiveArea(Zone* zone, ActiveArea* activeArea
 	for (int i = 0; i < objects.size(); ++i) {
 		SceneObject* object = cast<SceneObject*>(objects.get(i).get());
 
-		Locker olocker(object);
+	//	Locker olocker(object);
 
 		if (object->hasActiveArea(activeArea)) {
 			object->dropActiveArea(activeArea);

@@ -4193,27 +4193,39 @@ int SceneObjectImplementation::notifyObjectRemoved(SceneObject* object) {
 }
 
 void SceneObjectImplementation::dropActiveArea(ActiveArea* area) {
-	// server/zone/objects/scene/SceneObject.idl():  		activeAreas.drop(area);
+	// server/zone/objects/scene/SceneObject.idl():  		}
+{
+	Locker _locker((&containerLock));
+	// server/zone/objects/scene/SceneObject.idl():  			activeAreas.drop(area);
 	(&activeAreas)->drop(area);
+}
 }
 
 bool SceneObjectImplementation::hasActiveArea(ActiveArea* area) {
-	// server/zone/objects/scene/SceneObject.idl():  		return activeAreas.contains(area);
+	// server/zone/objects/scene/SceneObject.idl():  		}
+{
+	Locker _locker((&containerLock));
+	// server/zone/objects/scene/SceneObject.idl():  			return activeAreas.contains(area);
 	return (&activeAreas)->contains(area);
+}
 }
 
 bool SceneObjectImplementation::hasActiveArea(unsigned long long objectid) {
 	// server/zone/objects/scene/SceneObject.idl():  		}
-	for (	// server/zone/objects/scene/SceneObject.idl():  		for (int i = 0;
+{
+	Locker _locker((&containerLock));
+	// server/zone/objects/scene/SceneObject.idl():  			}
+	for (	// server/zone/objects/scene/SceneObject.idl():  			for (int i = 0;
 	int i = 0;
 	i < (&activeAreas)->size();
  ++i) {
-	// server/zone/objects/scene/SceneObject.idl():  			ActiveArea area = activeAreas.get(i);
+	// server/zone/objects/scene/SceneObject.idl():  				ActiveArea area = activeAreas.get(i);
 	ManagedReference<ActiveArea* > area = (&activeAreas)->get(i);
-	// server/zone/objects/scene/SceneObject.idl():  		}
+	// server/zone/objects/scene/SceneObject.idl():  			}
 	if (area->getObjectID() == objectid){
-	// server/zone/objects/scene/SceneObject.idl():  				return true;
+	// server/zone/objects/scene/SceneObject.idl():  					return true;
 	return true;
+}
 }
 }
 	// server/zone/objects/scene/SceneObject.idl():  		return false;
@@ -4232,16 +4244,20 @@ int SceneObjectImplementation::getActiveAreasSize() {
 
 ActiveArea* SceneObjectImplementation::getActiveRegion() {
 	// server/zone/objects/scene/SceneObject.idl():  		}
-	for (	// server/zone/objects/scene/SceneObject.idl():  		for (int i = 0;
+{
+	Locker _locker((&containerLock));
+	// server/zone/objects/scene/SceneObject.idl():  			}
+	for (	// server/zone/objects/scene/SceneObject.idl():  			for (int i = 0;
 	int i = 0;
 	i < (&activeAreas)->size();
 i ++) {
-	// server/zone/objects/scene/SceneObject.idl():  			ActiveArea region = activeAreas.get(i);
+	// server/zone/objects/scene/SceneObject.idl():  				ActiveArea region = activeAreas.get(i);
 	ManagedReference<ActiveArea* > region = (&activeAreas)->get(i);
-	// server/zone/objects/scene/SceneObject.idl():  		}
+	// server/zone/objects/scene/SceneObject.idl():  			}
 	if (region->isRegion()){
-	// server/zone/objects/scene/SceneObject.idl():  				return region;
+	// server/zone/objects/scene/SceneObject.idl():  					return region;
 	return region;
+}
 }
 }
 	// server/zone/objects/scene/SceneObject.idl():  		return null;
