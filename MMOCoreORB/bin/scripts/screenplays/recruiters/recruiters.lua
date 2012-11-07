@@ -321,7 +321,7 @@ function recruiter_convo_handler:greetMemberCovert(player, conversationTemplate)
 	local screenCopy = screenObject:cloneScreen()
 	
 	self:updateScreenWithPromotions(player, conversationTemplate, screenCopy)
-	self:updateScreenWithBribe(player, conversationTemplate, screenCopy)
+	--self:updateScreenWithBribe(player, conversationTemplate, screenCopy)
 	self:updateScreenWithFactionItems(screenCopy)
 	
 	return screenCopy
@@ -589,9 +589,16 @@ function recruiter_convo_handler:awarditem(player, itemstring)
 		
 	local itemcost = self:getItemCost(itemstring)
 
+	
+	
 	-- additional error message
 	if ( itemcost == nil ) then
 		return self.ITEMCOST
+	end
+	
+	if(itemcost > 4 and creatureObject:hasSkill("combat_smuggler_master") ) then
+		--print("give a 25% discount")
+		itemcost = itemcost * .75
 	end
 	
 	if ( pInventory ~= nil and playerObject ~= nil and itemcost ~= nil ) then 
