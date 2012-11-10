@@ -1052,7 +1052,7 @@ void CityManagerImplementation::promptAdjustTaxes(CityRegion* city, CreatureObje
 
 	for (int i = 0; i < cityTaxes.size(); ++i) {
 		CityTax* cityTax = &cityTaxes.get(i);
-		listbox->addMenuItem("@city/city:" + cityTax->getMenuText(), i); //Property Tax
+		listbox->addMenuItem(cityTax->getMenuText(), i); //Property Tax
 	}
 
 	ghost->addSuiBox(listbox);
@@ -1079,8 +1079,8 @@ void CityManagerImplementation::promptSetTax(CityRegion* city, CreatureObject* m
 	inputbox->setUsingObject(terminal);
 	inputbox->setForceCloseDistance(16.f);
 	inputbox->setCallback(new CitySetTaxSuiCallback(zoneServer, city, selectedTax));
-	inputbox->setPromptTitle("@city/city:" + cityTax->getInputTitle());
-	inputbox->setPromptText("@city/city:" + cityTax->getInputText());
+	inputbox->setPromptTitle(cityTax->getInputTitle());
+	inputbox->setPromptText(cityTax->getInputText());
 
 	ghost->addSuiBox(inputbox);
 	mayor->sendMessage(inputbox->generateMessage());
@@ -1103,13 +1103,14 @@ void CityManagerImplementation::setTax(CityRegion* city, CreatureObject* mayor, 
 
 	_lock.release();
 
-	StringIdChatParameter params("city/city", cityTax->getSystemMessage());
+	StringIdChatParameter params(cityTax->getSystemMessage());
 	params.setDI(value);
 
 	mayor->sendSystemMessage(params);
 
 	//Send out emails to all residents.
-	params.setStringId("city/city", cityTax->getEmailBody());
+
+	params.setStringId(cityTax->getEmailBody());
 	params.setTO(city->getRegionName());
 
 	sendMail(city, "@city/city:new_city_from", cityTax->getEmailSubject(), params, NULL);
