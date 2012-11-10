@@ -140,22 +140,24 @@ void DynamicSpawnAreaImplementation::spawnCreature(uint32 templateCRC, CreatureO
 		break;
 	}
 
-	ManagedReference<AiGroup*> group = dynamic_cast<AiGroup*>(getZone()->getZoneServer()->createObject(crc, 0));
-	if (group == NULL)
-		return;
-
 	Vector3 rOuter = getRandomPosition(player);
 
-	float x = rOuter.getX();
-	float y = rOuter.getY();
-	float z = getZone()->getHeight(x, y);
+	if (rOuter.getX() != 0 || rOuter.getY() != 0) {
+		ManagedReference<AiGroup*> group = dynamic_cast<AiGroup*>(getZone()->getZoneServer()->createObject(crc, 0));
+		if (group == NULL)
+			return;
 
-	group->setPosition(x, z, y);
+		float x = rOuter.getX();
+		float y = rOuter.getY();
+		float z = getZone()->getHeight(x, y);
 
-	//group->insertToZone(getZone());
-	getZone()->transferObject(group, -1, true);
+		group->setPosition(x, z, y);
 
-	group->setup(templ);
+		//group->insertToZone(getZone());
+		getZone()->transferObject(group, -1, true);
 
-	spawnedGroups.put(group);
+		group->setup(templ);
+
+		spawnedGroups.put(group);
+	}
 }

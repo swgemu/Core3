@@ -12,8 +12,9 @@
 Vector3 SpawnAreaImplementation::getRandomPosition(SceneObject* player) {
 	Vector3 position;
 	bool positionFound = false;
+	int retries = 10;
 
-	while (!positionFound) {
+	while (!positionFound && retries-- > 0) {
 		if (getZone() != NULL && areaShape->getRadius() >= getZone()->getBoundingRadius()) {
 			position = areaShape->getRandomPosition(player->getWorldPosition(), 64.0f, 256.0f);
 		} else {
@@ -29,6 +30,10 @@ Vector3 SpawnAreaImplementation::getRandomPosition(SceneObject* player) {
 				break;
 			}
 		}
+	}
+
+	if (!positionFound) {
+		position.set(0, 0, 0);
 	}
 
 	return position;

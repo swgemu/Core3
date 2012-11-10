@@ -157,6 +157,10 @@ int LairSpawnAreaImplementation::trySpawnLair(SceneObject* object) {
 
 	Vector3 randomPosition = getRandomPosition(object);
 
+	if (randomPosition.getX() == 0 && randomPosition.getY() == 0) {
+		return 6;
+	}
+
 	float spawnZ = zone->getHeight(randomPosition.getX(), randomPosition.getY());
 
 	randomPosition.setZ(spawnZ);
