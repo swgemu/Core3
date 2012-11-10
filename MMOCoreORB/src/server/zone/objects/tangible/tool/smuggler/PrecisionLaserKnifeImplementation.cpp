@@ -15,12 +15,25 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* pl
 	if (!isASubChildOf(player))
 		return 0;
 
+	if(!player->hasSkill("combat_smuggler_novice")){
+		player->sendSystemMessage("You must be at least a Novice Smuggler to use this tool.");
+		return 0;
+	}
+
 	if (selectedID != 20)
 		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 
 	uint32 targetID = player->getTargetID();
 	ZoneServer* zs = player->getZoneServer();
 	ManagedReference<TangibleObject*> target = dynamic_cast<TangibleObject*>(zs->getObject(targetID, true));
+
+	if (target->isMissionTerminal() && !player->hasSkill("combat_smuggler_slicing_01"))
+		return 0;
+	else if (target->isWeaponObject() && !player->hasSkill("combat_smuggler_slicing_02"))
+		return 0;
+	else if (target->isArmorObject() && !player->hasSkill("combat_smuggler_slicing_03"))
+		return 0;
+
 
 	if (target == NULL || !target->isSliceable()) {
 		player->sendSystemMessage("You cannot slice that.");

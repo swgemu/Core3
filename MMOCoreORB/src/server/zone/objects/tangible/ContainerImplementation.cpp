@@ -132,7 +132,7 @@ int ContainerImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 			return 0;
 		}
 
-	} else if (selectedID == 69) {
+	} else if (selectedID == 69 && player->hasSkill("combat_smuggler_novice")) {
 		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::SLICING);
 		ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
 

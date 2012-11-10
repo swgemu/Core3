@@ -49,7 +49,7 @@ int WeaponObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 
 	if(weapon->isASubChildOf(player)) {
 
-		if (selectedID == 69) {
+		if (selectedID == 69 && player->hasSkill("combat_smuggler_slicing_02")) {
 			if (weapon->isSliced()) {
 				player->sendSystemMessage("@slicing/slicing:already_sliced");
 				return 0;
