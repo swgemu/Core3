@@ -675,6 +675,10 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 
 	SceneObject* cell = homeLocation.getCell();
 
+	setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY());
+	nextStepPosition.setPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY());
+	nextStepPosition.setCell(cell);
+
 	Locker zoneLocker(zone);
 
 	if (cell != NULL)
