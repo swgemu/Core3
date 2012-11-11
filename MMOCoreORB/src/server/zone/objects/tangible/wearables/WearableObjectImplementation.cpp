@@ -81,6 +81,9 @@ void WearableObjectImplementation::generateSockets(CraftingValues* craftingValue
 	if (generatedCount < 0)
 		generatedCount = 0;
 
+	// TODO: remove this backwards compatibility fix at next wipe. Only usedSocketCount variable should be used.
+	objectCreatedPreUsedSocketCountFix = false;
+	usedSocketCount = 0;
 
 	socketCount = generatedCount;
 
@@ -88,7 +91,12 @@ void WearableObjectImplementation::generateSockets(CraftingValues* craftingValue
 }
 
 int WearableObjectImplementation::socketsUsed() {
-	return wearableSkillMods.size() - modsNotInSockets;
+	// TODO: remove this backwards compatibility fix at next wipe. Only usedSocketCount variable should be used.
+	if (objectCreatedPreUsedSocketCountFix) {
+		return wearableSkillMods.size() - modsNotInSockets;
+	} else {
+		return usedSocketCount;
+	}
 }
 
 void WearableObjectImplementation::applyAttachment(CreatureObject* player,
@@ -122,6 +130,8 @@ void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 			if(newValue > existingValue)
 				wearableSkillMods.put(statName, newValue);
 		}
+
+		usedSocketCount++;
 
 		attachment->destroyObjectFromWorld(true);
 

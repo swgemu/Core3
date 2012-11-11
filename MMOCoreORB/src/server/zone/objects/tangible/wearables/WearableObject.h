@@ -131,6 +131,10 @@ protected:
 
 	bool socketsGenerated;
 
+	bool objectCreatedPreUsedSocketCountFix;
+
+	int usedSocketCount;
+
 	int modsNotInSockets;
 
 public:

@@ -343,6 +343,16 @@ bool WearableObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
+	if (_name == "WearableObject.objectCreatedPreUsedSocketCountFix") {
+		TypeInfo<bool >::parseFromBinaryStream(&objectCreatedPreUsedSocketCountFix, stream);
+		return true;
+	}
+
+	if (_name == "WearableObject.usedSocketCount") {
+		TypeInfo<int >::parseFromBinaryStream(&usedSocketCount, stream);
+		return true;
+	}
+
 	if (_name == "WearableObject.modsNotInSockets") {
 		TypeInfo<int >::parseFromBinaryStream(&modsNotInSockets, stream);
 		return true;
@@ -386,6 +396,22 @@ int WearableObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "WearableObject.objectCreatedPreUsedSocketCountFix";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<bool >::toBinaryStream(&objectCreatedPreUsedSocketCountFix, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "WearableObject.usedSocketCount";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&usedSocketCount, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "WearableObject.modsNotInSockets";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -403,7 +429,7 @@ int WearableObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 4;
+	return _count + 6;
 }
 
 WearableObjectImplementation::WearableObjectImplementation() {
@@ -412,6 +438,10 @@ WearableObjectImplementation::WearableObjectImplementation() {
 	socketsGenerated = false;
 	// server/zone/objects/tangible/wearables/WearableObject.idl():  		socketCount = 0;
 	socketCount = 0;
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  		objectCreatedPreUsedSocketCountFix = true;
+	objectCreatedPreUsedSocketCountFix = true;
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  		usedSocketCount = 0;
+	usedSocketCount = 0;
 	// server/zone/objects/tangible/wearables/WearableObject.idl():  		modsNotInSockets = 0;
 	modsNotInSockets = 0;
 	// server/zone/objects/tangible/wearables/WearableObject.idl():  		wearableSkillMods.setAllowOverwriteInsertPlan();
