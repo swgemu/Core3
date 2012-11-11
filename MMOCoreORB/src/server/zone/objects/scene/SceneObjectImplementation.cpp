@@ -1123,6 +1123,9 @@ ManagedWeakReference<SceneObject*> SceneObjectImplementation::getRootParent() {
 	while ((tempParent = grandParent->getParent()) != NULL && grandParent != _this.get())
 		grandParent = tempParent;
 
+	if (grandParent == _this.get())
+		return NULL;
+
 	ManagedWeakReference<SceneObject*> weak = grandParent.get();
 
 	return weak;
@@ -1137,13 +1140,16 @@ ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParentRecursive
 	if (temp->getGameObjectType() == gameObjectType)
 		return temp.get();
 
-	while ((temp = temp->getParent()) != NULL) {
+	while ((temp = temp->getParent()) != NULL && temp != _this.get()) {
 		if (temp->getGameObjectType() == gameObjectType) {
 			ManagedWeakReference<SceneObject*> weak = temp.get();
 
 			return weak;
 		}
 	}
+
+	if (temp == _this.get())
+		return NULL;
 
 	return NULL;
 }
