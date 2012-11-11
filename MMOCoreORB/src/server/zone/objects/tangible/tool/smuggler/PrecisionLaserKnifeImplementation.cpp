@@ -32,7 +32,7 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* pl
 		return 0;
 	}
 
-	if (target->isMissionTerminal() && !player->hasSkill("combat_smuggler_slicing_01"))
+	if (target->isMissionTerminal() && !player->hasSkill("combat_smuggler_novice"))
 		return 0;
 	else if (target->isWeaponObject() && !player->hasSkill("combat_smuggler_slicing_02"))
 		return 0;
