@@ -27,18 +27,17 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* pl
 	ZoneServer* zs = player->getZoneServer();
 	ManagedReference<TangibleObject*> target = dynamic_cast<TangibleObject*>(zs->getObject(targetID, true));
 
+	if (target == NULL || !target->isSliceable()) {
+		player->sendSystemMessage("You cannot slice that.");
+		return 0;
+	}
+
 	if (target->isMissionTerminal() && !player->hasSkill("combat_smuggler_slicing_01"))
 		return 0;
 	else if (target->isWeaponObject() && !player->hasSkill("combat_smuggler_slicing_02"))
 		return 0;
 	else if (target->isArmorObject() && !player->hasSkill("combat_smuggler_slicing_03"))
 		return 0;
-
-
-	if (target == NULL || !target->isSliceable()) {
-		player->sendSystemMessage("You cannot slice that.");
-		return 0;
-	}
 
 	if (target->isSliced()) {
 		player->sendSystemMessage("@slicing/slicing:already_sliced");
