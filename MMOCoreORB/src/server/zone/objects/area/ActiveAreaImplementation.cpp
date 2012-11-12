@@ -13,7 +13,7 @@
 
 bool ActiveAreaImplementation::containsPoint(float px, float py) {
 	if (areaShape == NULL) {
-		return false;
+		return QuadTreeEntryImplementation::containsPoint(px, py);
 	}
 
 	return areaShape->containsPoint(px, py);
