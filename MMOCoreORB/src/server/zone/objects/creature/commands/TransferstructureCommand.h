@@ -191,7 +191,7 @@ public:
 				return GENERALERROR;
 			}
 
-			if (!region->hasZoningRights(targetCreature->getObjectID())) {
+			if (region->isZoningEnabled() && !region->hasZoningRights(targetCreature->getObjectID())) {
 				targetCreature->sendSystemMessage("@player_structure:no_rights"); //You don't have the right to place that structure in this city. The mayor or one of the city milita must grant you zoning rights first.
 
 				return GENERALERROR;
