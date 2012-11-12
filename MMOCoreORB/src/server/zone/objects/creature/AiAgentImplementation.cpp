@@ -604,6 +604,10 @@ void AiAgentImplementation::addDefender(SceneObject* defender) {
 	if (defenderList.size() == 0)
 		showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0, 0);
 
+	if(followState <= STALKING){
+		followState = FOLLOWING;
+	}
+
 	CreatureObjectImplementation::addDefender(defender);
 
 	activateRecovery();
