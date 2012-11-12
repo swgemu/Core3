@@ -31,6 +31,8 @@ void GarageInstallationImplementation::createChildObjects() {
 	getZone()->transferObject(activeArea, -1, true);
 
 	garageArea = activeArea;
+
+	TangibleObjectImplementation::createChildObjects();
 }
 
 void GarageInstallationImplementation::notifyRemoveFromZone() {
