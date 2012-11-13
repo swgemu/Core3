@@ -255,6 +255,8 @@ using namespace server::zone::objects::creature;
 
 #include "system/thread/ReadWriteLock.h"
 
+#include "system/thread/Mutex.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -567,6 +569,8 @@ public:
 	unsigned int getMovementCounter();
 
 	ManagedWeakReference<SceneObject* > getParent();
+
+	void setParent(QuadTreeEntry* entry);
 
 	ZoneServer* getZoneServer();
 
@@ -900,6 +904,8 @@ protected:
 
 	ReadWriteLock containerLock;
 
+	Mutex parentLock;
+
 	ContainerObjectsMap containerObjects;
 
 public:
@@ -1218,6 +1224,8 @@ public:
 	unsigned int getMovementCounter();
 
 	ManagedWeakReference<SceneObject* > getParent();
+
+	void setParent(QuadTreeEntry* entry);
 
 	ZoneServer* getZoneServer();
 
@@ -1757,6 +1765,8 @@ public:
 	unsigned int getMovementCounter();
 
 	ManagedWeakReference<SceneObject* > getParent();
+
+	void setParent(QuadTreeEntry* entry);
 
 	ZoneServer* getZoneServer();
 

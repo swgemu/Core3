@@ -1503,7 +1503,15 @@ void SceneObjectImplementation::showFlyText(const String& file, const String& au
 void SceneObjectImplementation::initializeChildObject(SceneObject* controllerObject) {
 }
 
+void SceneObjectImplementation::setParent(QuadTreeEntry* entry) {
+	Locker locker(&parentLock);
+
+	QuadTreeEntryImplementation::setParent(entry);
+}
+
 ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParent() {
+	Locker locker(&parentLock);
+
 	ManagedReference<QuadTreeEntry*> parent = this->parent.get();
 
 	if (parent == NULL)
