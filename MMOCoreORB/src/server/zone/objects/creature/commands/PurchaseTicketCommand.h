@@ -69,12 +69,11 @@ public:
 
 		ManagedReference<CityRegion*> currentCity = creature->getCityRegion().get();
 
-		if (currentCity == NULL)
-			return GENERALERROR;
-
-		if (currentCity->isBanned(creature->getObjectID())) {
-			creature->sendSystemMessage("@city/city:city_cant_purchase_ticket"); //You are banned from using the services of this city. You cannot purchase a ticket.
-			return GENERALERROR;
+		if (currentCity != NULL){
+			if (currentCity->isBanned(creature->getObjectID())) {
+				creature->sendSystemMessage("@city/city:city_cant_purchase_ticket"); //You are banned from using the services of this city. You cannot purchase a ticket.
+				return GENERALERROR;
+			}
 		}
 		
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
@@ -136,12 +135,11 @@ public:
 
 		ManagedReference<CityRegion*> destCity = arrivalShuttle->getCityRegion();
 
-		if (destCity == NULL)
-			return GENERALERROR;
-
-		if (destCity.get()->isBanned(creature->getObjectID())) {
-			creature->sendSystemMessage("@city/city:banned_from_that_city");  // You have been banned from traveling to that city by the city militia
-			return GENERALERROR;
+		if (destCity != NULL){
+			if (destCity.get()->isBanned(creature->getObjectID())) {
+				creature->sendSystemMessage("@city/city:banned_from_that_city");  // You have been banned from traveling to that city by the city militia
+				return GENERALERROR;
+			}
 		}
 
 		//Check to see if this point can be reached from this location.

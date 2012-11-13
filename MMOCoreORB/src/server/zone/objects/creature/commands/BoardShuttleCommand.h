@@ -192,12 +192,11 @@ public:
 
 		ManagedReference<CityRegion*> departCity = shuttle->getCityRegion();
 
-		if (departCity == NULL)
-			return GENERALERROR;
-
-		if (departCity->isBanned(creature->getObjectID())) {
-			creature->sendSystemMessage("@city/city:youre_city_banned"); // you are banned from this city and may not use any of its public services and structures
-			return GENERALERROR;
+		if (departCity != NULL){
+			if (departCity->isBanned(creature->getObjectID())) {
+				creature->sendSystemMessage("@city/city:youre_city_banned"); // you are banned from this city and may not use any of its public services and structures
+				return GENERALERROR;
+			}
 		}
 
 		// Randomize the arrival a bit to try and avoid everyone zoning on top of each other
