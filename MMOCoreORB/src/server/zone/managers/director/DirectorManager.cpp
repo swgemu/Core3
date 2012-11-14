@@ -1151,7 +1151,8 @@ int DirectorManager::getSpawnPoint(lua_State* L) {
 		position = Vector3(newX, newY, newZ);
 
 		if (creatureObject->getZone()->isWithinBoundaries(position)) {
-			found = creatureObject->getZone()->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL);
+			found = creatureObject->getZone()->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL) &
+					!creatureObject->getZone()->getPlanetManager()->isInObjectsNoBuildZone(position.getX(), position.getY(), 5.0);
 		}
 		retries--;
 	}
