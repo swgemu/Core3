@@ -791,10 +791,12 @@ int AuctionManagerImplementation::checkRetrieve(CreatureObject* player, uint64 o
 	if(item->isAuction() && item->getStatus() == AuctionItem::FORSALE)
 		return RetrieveAuctionItemResponseMessage::NOTALLOWED;
 
+	/*
 	if(item->getStatus() == AuctionItem::SOLD && player->getObjectID() == item->getOwnerID()) {
 		item->setStatus(AuctionItem::EXPIRED);
 		return RetrieveAuctionItemResponseMessage::DONTRETRIEVE;
 	}
+	*/
 
 	String playername = player->getFirstName();
 
