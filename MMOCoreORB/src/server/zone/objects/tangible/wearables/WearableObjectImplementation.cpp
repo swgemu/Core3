@@ -113,22 +113,33 @@ void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 			removeSkillModsFrom(player);
 		}
 
-		HashTable<String, int>* mods = attachment->getSkillMods();
-		HashTableIterator<String, int> iterator = mods->iterator();
+		if (wearableSkillMods.size() < 6) {
+			HashTable<String, int>* mods = attachment->getSkillMods();
+			HashTableIterator<String, int> iterator = mods->iterator();
 
-		for(int i = 0; i < mods->size(); ++i) {
+			VectorMap<int, String> sortedMods;
+			sortedMods.setAllowDuplicateInsertPlan();
 
-			int existingValue = -25;
-			int newValue = 0;
-			String statName = "";
+			for (int i = 0; i < mods->size(); ++i) {
+				String statName;
+				int newValue;
+				iterator.getNextKeyAndValue(statName, newValue);
+				sortedMods.put(newValue, statName);
+			}
 
-			iterator.getNextKeyAndValue(statName, newValue);
+			for (int i = sortedMods.size() - 1; i >= 0; --i) {
+				int existingValue = -26;
+				int newValue = sortedMods.elementAt(i).getKey();
+				String statName = sortedMods.elementAt(i).getValue();
 
-			if(wearableSkillMods.contains(statName))
-				existingValue = wearableSkillMods.get(statName);
+				if(wearableSkillMods.contains(statName))
+					existingValue = wearableSkillMods.get(statName);
 
-			if(newValue > existingValue)
-				wearableSkillMods.put(statName, newValue);
+				if(newValue > existingValue) {
+					wearableSkillMods.put(statName, newValue);
+					break;
+				}
+			}
 		}
 
 		usedSocketCount++;

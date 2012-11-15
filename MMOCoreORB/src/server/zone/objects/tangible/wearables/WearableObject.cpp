@@ -471,10 +471,13 @@ VectorMap<String, int>* WearableObjectImplementation::getWearableSkillMods() {
 }
 
 void WearableObjectImplementation::addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient) {
-	// server/zone/objects/tangible/wearables/WearableObject.idl():  		wearableSkillMods.put(skillMod, value);
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  	}
+	if ((&wearableSkillMods)->size() <= 6){
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  			wearableSkillMods.put(skillMod, value);
 	(&wearableSkillMods)->put(skillMod, value);
-	// server/zone/objects/tangible/wearables/WearableObject.idl():  		modsNotInSockets++;
+	// server/zone/objects/tangible/wearables/WearableObject.idl():  			modsNotInSockets++;
 	modsNotInSockets ++;
+}
 }
 
 void WearableObjectImplementation::setMaxSockets(int maxSockets) {
