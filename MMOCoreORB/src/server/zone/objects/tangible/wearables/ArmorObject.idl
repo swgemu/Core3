@@ -105,7 +105,10 @@ class ArmorObject extends WearableObject {
 		
 		baseProtection = 0;
 		specialProtection = 0;
+		baseProtection = 0;
+		specialProtection = 0;
 		specialResists = 0;
+		vulnerabilites = 0;
 		vulnerabilites = 0;
 		hitLocation = 0;
 
@@ -115,6 +118,8 @@ class ArmorObject extends WearableObject {
 	}
 	
 	public native void initializeTransientMembers();
+	
+	public native void notifyLoadFromDatabase();
 	
 	/**
 	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject

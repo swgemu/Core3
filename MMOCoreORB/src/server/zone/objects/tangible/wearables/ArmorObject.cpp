@@ -14,7 +14,7 @@
  *	ArmorObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISSPECIAL__INT_,RPC_ISVULNERABLE__INT_,RPC_ISARMOROBJECT__,RPC_SETRATING__INT_,RPC_GETRATING__,RPC_GETKINETIC__,RPC_SETKINETIC__FLOAT_,RPC_GETENERGY__,RPC_SETENERGY__FLOAT_,RPC_GETELECTRICITY__,RPC_SETELECTRICITY__FLOAT_,RPC_GETSTUN__,RPC_SETSTUN__FLOAT_,RPC_GETBLAST__,RPC_SETBLAST__FLOAT_,RPC_GETHEAT__,RPC_SETHEAT__FLOAT_,RPC_GETCOLD__,RPC_SETCOLD__FLOAT_,RPC_GETACID__,RPC_SETACID__FLOAT_,RPC_GETLIGHTSABER__,RPC_SETLIGHTSABER__FLOAT_,RPC_GETHEALTHENCUMBRANCE__,RPC_SETHEALTHENCUMBRANCE__INT_,RPC_GETACTIONENCUMBRANCE__,RPC_SETACTIONENCUMBRANCE__INT_,RPC_GETMINDENCUMBRANCE__,RPC_SETMINDENCUMBRANCE__INT_,RPC_SETEFFECTIVENESSSLICE__FLOAT_,RPC_SETENCUMBRANCESLICE__FLOAT_,RPC_GETHITLOCATION__,RPC_SETHITLOCATION__BYTE_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_NOTIFYLOADFROMDATABASE__,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_ISSPECIAL__INT_,RPC_ISVULNERABLE__INT_,RPC_ISARMOROBJECT__,RPC_SETRATING__INT_,RPC_GETRATING__,RPC_GETKINETIC__,RPC_SETKINETIC__FLOAT_,RPC_GETENERGY__,RPC_SETENERGY__FLOAT_,RPC_GETELECTRICITY__,RPC_SETELECTRICITY__FLOAT_,RPC_GETSTUN__,RPC_SETSTUN__FLOAT_,RPC_GETBLAST__,RPC_SETBLAST__FLOAT_,RPC_GETHEAT__,RPC_SETHEAT__FLOAT_,RPC_GETCOLD__,RPC_SETCOLD__FLOAT_,RPC_GETACID__,RPC_SETACID__FLOAT_,RPC_GETLIGHTSABER__,RPC_SETLIGHTSABER__FLOAT_,RPC_GETHEALTHENCUMBRANCE__,RPC_SETHEALTHENCUMBRANCE__INT_,RPC_GETACTIONENCUMBRANCE__,RPC_SETACTIONENCUMBRANCE__INT_,RPC_GETMINDENCUMBRANCE__,RPC_SETMINDENCUMBRANCE__INT_,RPC_SETEFFECTIVENESSSLICE__FLOAT_,RPC_SETENCUMBRANCESLICE__FLOAT_,RPC_GETHITLOCATION__,RPC_SETHITLOCATION__BYTE_};
 
 ArmorObject::ArmorObject() : WearableObject(DummyConstructorParameter::instance()) {
 	ArmorObjectImplementation* _implementation = new ArmorObjectImplementation();
@@ -43,6 +43,19 @@ void ArmorObject::initializeTransientMembers() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->initializeTransientMembers();
+}
+
+void ArmorObject::notifyLoadFromDatabase() {
+	ArmorObjectImplementation* _implementation = static_cast<ArmorObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYLOADFROMDATABASE__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->notifyLoadFromDatabase();
 }
 
 void ArmorObject::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -1154,6 +1167,11 @@ void ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			initializeTransientMembers();
 		}
 		break;
+	case RPC_NOTIFYLOADFROMDATABASE__:
+		{
+			notifyLoadFromDatabase();
+		}
+		break;
 	case RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_:
 		{
 			resp->insertSignedInt(handleObjectMenuSelect(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getByteParameter()));
@@ -1331,6 +1349,10 @@ void ArmorObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 void ArmorObjectAdapter::initializeTransientMembers() {
 	(static_cast<ArmorObject*>(stub))->initializeTransientMembers();
+}
+
+void ArmorObjectAdapter::notifyLoadFromDatabase() {
+	(static_cast<ArmorObject*>(stub))->notifyLoadFromDatabase();
 }
 
 int ArmorObjectAdapter::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {

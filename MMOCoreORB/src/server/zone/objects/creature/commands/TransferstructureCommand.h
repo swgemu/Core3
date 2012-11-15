@@ -184,15 +184,27 @@ public:
 		ManagedReference<CityRegion*> region = structure->getCityRegion();
 
 		if (region != NULL) {
-			//TODO: Check if the target is banned from the city.
-			//player->sendSystemMessage("@city/city:cant_transfer_to_city_banned"); //You cannot transfer ownership of a structure to someone who is banned from the city in which the structure resides.
-			//return GENERALERROR;
+			Locker locker(region, creature);
 
-			//TODO: Also check to make sure they have zoning rights.
+			if (region->isBanned(targetCreature->getObjectID())) {
+				creature->sendSystemMessage("@city/city:cant_transfer_to_city_banned"); //You cannot transfer ownership of a structure to someone who is banned from the city in which the structure resides.
+				return GENERALERROR;
+			}
+
+			if (region->isZoningEnabled() && !region->hasZoningRights(targetCreature->getObjectID())) {
+				targetCreature->sendSystemMessage("@player_structure:no_rights"); //You don't have the right to place that structure in this city. The mayor or one of the city milita must grant you zoning rights first.
+
+				return GENERALERROR;
+			}
+
+			if (ghost->getDeclaredResidence() == structure->getObjectID()) {
+				region->removeCitizen(creature->getObjectID());
+			}
 		}
 
-		if (ghost->getDeclaredResidence() == structure->getObjectID())
+		if (ghost->getDeclaredResidence() == structure->getObjectID()) {
 			ghost->setDeclaredResidence(NULL);
+		}
 
 		//Transfer ownership
 		ghost->removeOwnedStructure(structure);

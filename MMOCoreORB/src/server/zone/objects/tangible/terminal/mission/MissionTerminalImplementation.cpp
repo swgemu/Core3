@@ -26,7 +26,7 @@ void MissionTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* m
 }
 
 int MissionTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (selectedID == 69) {
+	if (selectedID == 69 && player->hasSkill("combat_smuggler_slicing_01")) {
 
 		if (player->containsActiveSession(SessionFacadeType::SLICING)) {
 			player->sendSystemMessage("@slicing/slicing:already_slicing");

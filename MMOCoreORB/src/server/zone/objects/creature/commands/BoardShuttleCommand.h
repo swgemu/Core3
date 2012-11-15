@@ -59,6 +59,8 @@ which carries forward this exception.
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
 
+//#define ENABLE_CITY_TRAVEL_LIMIT
+
 class BoardShuttleCommand : public QueueCommand {
 public:
 
@@ -175,10 +177,13 @@ public:
 			ManagedReference<CityRegion*> region = targetShuttleObject->getCityRegion();
 
 			if (region != NULL) {
+#ifdef ENABLE_CITY_TRAVEL_LIMIT
 				if (region->getCurrentPlayerCount() >= MAXIMUM_PLAYER_COUNT) {
 					creature->sendSystemMessage("Your destination is currently under maintenance, please try again later.");
 					return GENERALERROR;
-				} else 	if (region->isBanned(creature->getObjectID())) {
+				}
+#endif
+				if (region->isBanned(creature->getObjectID())) {
 					creature->sendSystemMessage("@city/city:banned_from_that_city"); // You have been banned from traveling to that city by the city militia
 					return GENERALERROR;
 				}

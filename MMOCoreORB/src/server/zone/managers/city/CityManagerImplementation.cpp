@@ -485,6 +485,8 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 		return;
 	}
 
+	city->cleanupCitizens();
+
 	int citizens = city->getCitizenCount();
 
 	if (cityRank - 1 >= citizensPerRank.size())
@@ -662,11 +664,10 @@ void CityManagerImplementation::contractCity(CityRegion* city) {
 		chatManager->sendMail("@city/city:new_city_from", subject, params, mayor->getFirstName(), NULL);
 	}
 
-	//TODO: Remove citizens outside city limits.
-
 	city->setCityRank(newRank);
 	city->setRadius(radiusPerRank.get(newRank - 1));
 	city->destroyAllStructuresForRank(uint8(newRank + 1));
+	city->cleanupCitizens();
 }
 
 void CityManagerImplementation::expandCity(CityRegion* city) {

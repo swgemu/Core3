@@ -465,14 +465,14 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 
 	Locker locker(_this.get());
 
+	Locker locker2(tano);
+
 	/// Check if item is on the player, but not in a crafting tool
 	/// Or if the item is in a crafting station to prevent some duping
 	if(!tano->isASubChildOf(crafter) && (craftingStation == NULL || !tano->isASubChildOf(craftingStation))) {
 		sendSlotMessage(clientCounter, IngredientSlot::INVALIDINGREDIENT);
 		return;
 	}
-
-	Locker locker2(tano);
 
 	ManagedReference<SceneObject*> craftingComponents = craftingTool->getSlottedObject("crafted_components");
 	ManagedReference<SceneObject*> craftingComponentsSatchel = NULL;

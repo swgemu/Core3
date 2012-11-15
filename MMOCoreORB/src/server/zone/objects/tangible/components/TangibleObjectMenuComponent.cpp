@@ -62,7 +62,7 @@ int TangibleObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	TangibleObject* tano = cast<TangibleObject*>( sceneObject);
 
 
-	if (selectedID == 69) { // Slice [PlayerLootCrate]
+	if (selectedID == 69 && player->hasSkill("combat_smuggler_novice") ) { // Slice [PlayerLootCrate]
 		if (player->containsActiveSession(SessionFacadeType::SLICING)) {
 			player->sendSystemMessage("@slicing/slicing:already_slicing");
 			return 0;

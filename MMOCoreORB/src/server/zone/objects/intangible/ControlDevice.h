@@ -148,7 +148,7 @@ namespace intangible {
 
 class ControlDeviceImplementation : public IntangibleObjectImplementation {
 protected:
-	ManagedReference<TangibleObject* > controlledObject;
+	ManagedWeakReference<TangibleObject* > controlledObject;
 
 public:
 	ControlDeviceImplementation();

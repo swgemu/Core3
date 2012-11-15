@@ -20,6 +20,11 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 	if (player->getParent() != NULL)
 		return;
 
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+
+	if (controlledObject == NULL)
+		return;
+
 	if (controlledObject->isInQuadTree())
 		return;
 
@@ -63,7 +68,7 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 
 	if(player->getCurrentCamp() == NULL && player->getCityRegion() == NULL) {
 
-		CallMountTask* callMount = new CallMountTask(_this.get(), player, "call_mount");
+		Reference<CallMountTask*> callMount = new CallMountTask(_this.get(), player, "call_mount");
 
 		StringIdChatParameter message("pet/pet_menu", "call_vehicle_delay");
 		message.setDI(15);
@@ -89,6 +94,11 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 
 	ZoneServer* zoneServer = getZoneServer();
+
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+
+	if (controlledObject == NULL)
+		return;
 
 	controlledObject->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 
@@ -125,6 +135,8 @@ void VehicleControlDeviceImplementation::cancelSpawnObject(CreatureObject* playe
 }
 
 void VehicleControlDeviceImplementation::storeObject(CreatureObject* player) {
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+
 	if (controlledObject == NULL)
 		return;
 
@@ -147,6 +159,8 @@ void VehicleControlDeviceImplementation::storeObject(CreatureObject* player) {
 }
 
 void VehicleControlDeviceImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+
 	if (controlledObject != NULL) {
 		Locker locker(controlledObject);
 
@@ -177,6 +191,8 @@ void VehicleControlDeviceImplementation::destroyObjectFromDatabase(bool destroyC
 }
 
 int VehicleControlDeviceImplementation::canBeDestroyed(CreatureObject* player) {
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+
 	if (controlledObject != NULL) {
 		if (controlledObject->isInQuadTree())
 			return 1;

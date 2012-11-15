@@ -179,6 +179,8 @@ int CityRegionImplementation::getTimeToUpdate() {
 }
 
 void CityRegionImplementation::notifyEnter(SceneObject* object) {
+	if (object->getCityRegion().get() != _this.get() && object->isPlayerCreature())
+		currentPlayers.increment();
 
 	object->setCityRegion(_this.get());
 
@@ -195,9 +197,6 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		if(terminalData != NULL)
 			terminalData->updateUID();
 	}
-
-	if (object->isPlayerCreature())
-		currentPlayers.increment();
 
 	if (isClientRegion())
 		return;
@@ -240,6 +239,10 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 				}
 			}
 		}*/
+
+		Locker slocker(&structureListMutex);
+
+		completeStructureList.put(structure->getObjectID());
 
 		if (structure->isCivicStructure())
 			addStructure(structure);
@@ -317,8 +320,45 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 			}
 		}*/
 
+		Locker slocker(&structureListMutex);
+
+		completeStructureList.drop(structure->getObjectID());
+
 		if (structure->isCivicStructure())
 			removeStructure(structure);
+	}
+}
+
+void CityRegionImplementation::cleanupCitizens() {
+	Locker slocker(&structureListMutex);
+
+	SortedVector<uint64> ownerIds;
+	ownerIds.setNoDuplicateInsertPlan();
+
+	for (int i = 0; i < completeStructureList.size(); ++i) {
+		uint64 oid = completeStructureList.get(i);
+
+		ManagedReference<BuildingObject*> building = dynamic_cast<BuildingObject*>(zone->getZoneServer()->getObject(oid));
+
+		if (building != NULL) {
+			uint64 owner = building->getOwnerObjectID();
+
+			ownerIds.put(owner);
+		}
+	}
+
+	SortedVector<uint64> removeIds;
+	removeIds.setNoDuplicateInsertPlan();
+
+	for (int i = 0; i < citizenList.size(); ++i) {
+		uint64 id = citizenList.get(i);
+
+		if (!ownerIds.contains(id))
+			removeIds.put(id);
+	}
+
+	for (int i = 0; i < removeIds.size(); ++i) {
+		removeCitizen(removeIds.get(i));
 	}
 }
 

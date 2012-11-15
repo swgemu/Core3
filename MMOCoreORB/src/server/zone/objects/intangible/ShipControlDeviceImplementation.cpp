@@ -53,6 +53,8 @@ void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
 
 	ZoneServer* zoneServer = getZoneServer();
 
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+
 	Locker clocker(controlledObject, player);
 
 	controlledObject->initializePosition(player->getPositionX(), player->getPositionZ() + 10, player->getPositionY());
@@ -77,6 +79,11 @@ void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
 void ShipControlDeviceImplementation::storeObject(CreatureObject* player) {
 	player->clearState(CreatureState::PILOTINGSHIP);
 
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+
+	if (controlledObject == NULL)
+		return;
+
 	Locker clocker(controlledObject, player);
 
 	if (!controlledObject->isInQuadTree())
@@ -98,6 +105,8 @@ void ShipControlDeviceImplementation::storeObject(CreatureObject* player) {
 
 void ShipControlDeviceImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	//ControlDeviceImplementation::fillObjectMenuResponse(menuResponse, player);
+
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 
 	if (!controlledObject->isInQuadTree()) {
 		//menuResponse->addRadialMenuItem(60, 3, "Launch Ship"); //Launch

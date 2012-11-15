@@ -97,6 +97,7 @@ import server.zone.objects.region.CityRegion;
 import server.zone.objects.creature.CreatureObject;
 import engine.util.u3d.Matrix4;
 import system.thread.ReadWriteLock;
+import system.thread.Mutex;
 include server.zone.objects.scene.variables.ContainerObjectsMap;
 
 class SceneObject extends QuadTreeEntry implements Logger {
@@ -165,6 +166,9 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@dereferenced
 	protected transient ReadWriteLock containerLock;
+	
+	@dereferenced
+	protected transient Mutex parentLock;
 
 	/*@dereferenced
 	protected VectorMap<unsigned long, SceneObject> containerObjects;
@@ -702,10 +706,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@read
 	public unsigned long getParentID() {
-		if (super.parent != null) {
-			return super.parent.getObjectID();
-		} else
-			return 0;
+		synchronized (parentLock) {
+			if (super.parent != null) {
+				return super.parent.getObjectID();
+			} else
+				return 0;
+		}
 	}
 	
 	/**
@@ -849,21 +855,27 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public native void addActiveArea(ActiveArea area);
 	
 	public void dropActiveArea(ActiveArea area) {
-		activeAreas.drop(area);
+		synchronized (containerLock) {
+			activeAreas.drop(area);
+		}
 	}
 	
 	@read
 	public boolean hasActiveArea(ActiveArea area) {
-		return activeAreas.contains(area);
+		synchronized (containerLock) {
+			return activeAreas.contains(area);
+		}
 	}
 	
 	@read
 	public boolean hasActiveArea(unsigned long objectid) {
-		for (int i = 0; i < activeAreas.size(); ++i) {
-			ActiveArea area = activeAreas.get(i);
-			
-			if (area.getObjectID() == objectid) {
-				return true;
+		synchronized (containerLock) {
+			for (int i = 0; i < activeAreas.size(); ++i) {
+				ActiveArea area = activeAreas.get(i);
+
+				if (area.getObjectID() == objectid) {
+					return true;
+				}
 			}
 		}
 		
@@ -883,11 +895,13 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@read
 	public ActiveArea getActiveRegion() {
-		for (int i = 0; i < activeAreas.size(); i++) {
-			ActiveArea region = activeAreas.get(i);
-			
-			if (region.isRegion()) {
-				return region;
+		synchronized (containerLock) {
+			for (int i = 0; i < activeAreas.size(); i++) {
+				ActiveArea region = activeAreas.get(i);
+
+				if (region.isRegion()) {
+					return region;
+				}
 			}
 		}
 		
@@ -1218,6 +1232,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@read
 	@weakReference
 	public native SceneObject getParent();
+	
+	public native void setParent(QuadTreeEntry entry);
 
 	@read
 	public ZoneServer getZoneServer() {

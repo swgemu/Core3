@@ -65,6 +65,6 @@ void DataObjectComponent::setParent(SceneObject* object) {
 }
 
 SceneObject* DataObjectComponent::getParent() {
-	return parent;
+	return parent.get().get();
 }
 

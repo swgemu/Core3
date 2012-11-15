@@ -246,7 +246,7 @@ int ShipControlDeviceImplementation::handleObjectMenuSelect(CreatureObject* play
 
 	else {
 	// server/zone/objects/intangible/ShipControlDevice.idl():  				}
-	if (ControlDeviceImplementation::status == 1 && !ControlDeviceImplementation::controlledObject.getForUpdate()->isInQuadTree()){
+	if (ControlDeviceImplementation::status == 1 && !ControlDeviceImplementation::controlledObject.getForUpdate().get()->isInQuadTree()){
 	// server/zone/objects/intangible/ShipControlDevice.idl():  					this.generateObject(player);
 	_this.get()->generateObject(player);
 }

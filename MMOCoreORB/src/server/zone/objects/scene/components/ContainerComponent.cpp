@@ -175,6 +175,9 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		for (int i = 0; i < arrangementSize; ++i) {
 			slottedObjects->put(object->getArrangementDescriptor(i), object);
 		}
+
+		object->setParent(sceneObject);
+		object->setContainmentType(containmentType);
 	} else if (containmentType == -1) { /* else if (containerType == 2 || containerType == 3) {*/
 		Locker contLocker(sceneObject->getContainerLock());
 
@@ -187,14 +190,14 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		if (containerObjects->put(object->getObjectID(), object) == -1)
 			update = false;
 
+		object->setParent(sceneObject);
+		object->setContainmentType(containmentType);
+
 	} else {
-		sceneObject->error("unknown contained type " + String::valueOf(containmentType));
+		sceneObject->error("unknown containment type " + String::valueOf(containmentType));
 		StackTrace::printStackTrace();
 		return false;
 	}
-
-	object->setParent(sceneObject);
-	object->setContainmentType(containmentType);
 
 	if ((containmentType == 4 || containmentType == 5) && objZone == NULL)
 		sceneObject->broadcastObject(object, true);
@@ -279,6 +282,8 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 		containerObjects->drop(object->getObjectID());
 	}
 
+	object->setParent(NULL);
+
 	contLocker.release();
 	/*
 
@@ -289,8 +294,6 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 		return false;
 	}
 	*/
-
-	object->setParent(NULL);
 
 	if (notifyClient)
 		sceneObject->broadcastMessage(object->link((uint64) 0, 0xFFFFFFFF), true);
@@ -303,7 +306,12 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 	if (sceneObject->getParent() == NULL) {
 		sceneObject->notifyObjectRemovedFromChild(object, sceneObject);
 	} else {
-		sceneObject->getRootParent().get()->notifyObjectRemovedFromChild(object, sceneObject);
+		ManagedReference<SceneObject*> rootParent = sceneObject->getRootParent();
+
+		if (rootParent != NULL)
+			rootParent->notifyObjectRemovedFromChild(object, sceneObject);
+		else
+			sceneObject->notifyObjectRemovedFromChild(object, sceneObject);
 	}
 
 	return true;

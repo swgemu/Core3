@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #include "Container.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
@@ -99,7 +99,7 @@ uint8 ContainerImplementation::checkPermission(CreatureObject* player) {
 
 	return 2;
 }
-*/
+ */
 void ContainerImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
@@ -132,7 +132,7 @@ int ContainerImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 			return 0;
 		}
 
-	} else if (selectedID == 69) {
+	} else if (selectedID == 69 && player->hasSkill("combat_smuggler_novice")) {
 		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::SLICING);
 		ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
 
@@ -153,7 +153,7 @@ int ContainerImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 }
 
 int ContainerImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-//	if (locked)
+	//	if (locked)
 	//	return TransferErrorCode::CONTAINERLOCKED;
 
 	if ((object->isIntangibleObject() && getContainerType() != 3)
@@ -169,7 +169,7 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 
 			return TransferErrorCode::CANTNESTOBJECT;
 		}
-		
+
 		if (object->isContainerObject() && getArrangementDescriptorSize() == 0) {
 			errorDescription = "@container_error_message:container12";
 
@@ -196,6 +196,20 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 						}
 					}
 
+				}
+			}
+		}
+
+		if (getParentRecursively(SceneObjectType::PLAYERCREATURE) == NULL) {
+			ManagedReference<SceneObject*> rootParent = getRootParent();
+
+			if (rootParent != NULL && rootParent->isBuildingObject()) {
+				BuildingObject* building = rootParent.castTo<BuildingObject*>();
+
+				if (!building->isStaticBuilding() && (building->getCurrentNumberOfPlayerItems() + 1 > building->getMaximumNumberOfPlayerItems())) {
+					errorDescription = "@container_error_message:container13";
+
+					return TransferErrorCode::TOOMANYITEMSINHOUSE;
 				}
 			}
 		}

@@ -1595,7 +1595,7 @@ void CombatManager::freeDuelList(CreatureObject* player, bool spam) {
 	 */
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if (ghost->isDuelListEmpty())
+	if (ghost == NULL || ghost->isDuelListEmpty())
 		return;
 
 	player->info("freeing duel list");

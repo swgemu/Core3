@@ -56,6 +56,7 @@ import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.variables.ContainerPermissions;
 
 class ControlDevice extends IntangibleObject {
+	@weakReference
 	protected TangibleObject controlledObject;
 	
 	public ControlDevice() {
@@ -79,8 +80,10 @@ class ControlDevice extends IntangibleObject {
 	 * @param startTask if true, queues a new update task
 	 */
 	public void updateToDatabaseAllObjects(boolean startTask) {
-		if (controlledObject != null) {
-			controlledObject.updateToDatabaseWithoutChildren();
+		TangibleObject obj = controlledObject;
+		
+		if (obj != null) {
+			obj.updateToDatabaseWithoutChildren();
 			
 			super.updateToDatabaseAllObjects(startTask);
 		} else {
@@ -105,7 +108,8 @@ class ControlDevice extends IntangibleObject {
 	}
 	
 	public TangibleObject getControlledObject() {
-		return controlledObject;
+		TangibleObject obj = controlledObject;
+		return obj;
 	}
 	
 	public boolean isControlDevice() {

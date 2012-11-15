@@ -123,11 +123,18 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 		return;
 	}
 
-	ManagedReference<TangibleObject*> vendor = cast<TangibleObject*>(player->getZoneServer()->createObject(templatePath.hashCode()));
+	ManagedReference<TangibleObject*> vendor;
+
+	try {
+		vendor = cast<TangibleObject*>(player->getZoneServer()->createObject(templatePath.hashCode()));
+	} catch (Exception& e) {
+		error(e.getMessage());
+	}
 
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
 	if (vendor == NULL || inventory == NULL || !vendor->isVendor()) {
+		error("could not create vendor " + templatePath);
 		cancelSession();
 		return;
 	}

@@ -604,6 +604,10 @@ void AiAgentImplementation::addDefender(SceneObject* defender) {
 	if (defenderList.size() == 0)
 		showFlyText("npc_reaction/flytext", "threaten", 0xFF, 0, 0);
 
+	if(followState <= STALKING){
+		followState = FOLLOWING;
+	}
+
 	CreatureObjectImplementation::addDefender(defender);
 
 	activateRecovery();
@@ -674,6 +678,10 @@ void AiAgentImplementation::respawn(Zone* zone, int level) {
 	initializePosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY());
 
 	SceneObject* cell = homeLocation.getCell();
+
+	setNextPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY());
+	nextStepPosition.setPosition(homeLocation.getPositionX(), homeLocation.getPositionZ(), homeLocation.getPositionY());
+	nextStepPosition.setCell(cell);
 
 	Locker zoneLocker(zone);
 

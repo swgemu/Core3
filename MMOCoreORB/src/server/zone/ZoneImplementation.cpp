@@ -505,6 +505,8 @@ void ZoneImplementation::updateCityRegions() {
 
 		city->setLoaded();
 
+		city->cleanupCitizens();
+
 		city->rescheduleUpdateEvent(seconds);
 
 		if (!city->isRegistered())

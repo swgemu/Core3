@@ -3077,6 +3077,13 @@ void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
 		for (int i = 0; i < buffs->getBuffListSize(); ++i) {
 			ManagedReference<Buff*> buff = buffs->getBuffByIndex(i);
 
+			PowerBoostBuff* power = dynamic_cast<PowerBoostBuff*>(buff.get());
+
+			if (power != NULL) {
+				powerBoost = power;
+				continue;
+			}
+
 			VectorMap<byte, int>* attributeModifiers = buff->getAttributeModifiers();
 
 			for (int j = 0; j < attributeModifiers->size(); ++j) {
@@ -3085,8 +3092,6 @@ void PlayerManagerImplementation::fixHAM(CreatureObject* player) {
 
 				attributeValues.put(modifier, attributeValues.get(modifier) + val);
 			}
-
-			powerBoost = dynamic_cast<PowerBoostBuff*>(buff.get());
 		}
 
 		if (powerBoost != NULL)

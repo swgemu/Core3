@@ -319,8 +319,6 @@ void GuildManagerImplementation::sendGuildTransferTo(CreatureObject* player, Gui
 }
 
 void GuildManagerImplementation::sendTransferAckTo(CreatureObject* player, const String& newOwnerName, SceneObject* sceoTerminal){
-
-
 	if(player->getFirstName().toLowerCase() == newOwnerName.toLowerCase())	{
 		player->sendSystemMessage("Cannot transfer guild to yourself");
 		return;

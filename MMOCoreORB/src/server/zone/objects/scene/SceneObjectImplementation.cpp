@@ -1120,8 +1120,11 @@ ManagedWeakReference<SceneObject*> SceneObjectImplementation::getRootParent() {
 	if (grandParent == NULL)
 		return NULL;
 
-	while ((tempParent = grandParent->getParent()) != NULL)
+	while ((tempParent = grandParent->getParent()) != NULL && grandParent != _this.get())
 		grandParent = tempParent;
+
+	if (grandParent == _this.get())
+		return NULL;
 
 	ManagedWeakReference<SceneObject*> weak = grandParent.get();
 
@@ -1137,13 +1140,16 @@ ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParentRecursive
 	if (temp->getGameObjectType() == gameObjectType)
 		return temp.get();
 
-	while ((temp = temp->getParent()) != NULL) {
+	while ((temp = temp->getParent()) != NULL && temp != _this.get()) {
 		if (temp->getGameObjectType() == gameObjectType) {
 			ManagedWeakReference<SceneObject*> weak = temp.get();
 
 			return weak;
 		}
 	}
+
+	if (temp == _this.get())
+		return NULL;
 
 	return NULL;
 }
@@ -1497,7 +1503,15 @@ void SceneObjectImplementation::showFlyText(const String& file, const String& au
 void SceneObjectImplementation::initializeChildObject(SceneObject* controllerObject) {
 }
 
+void SceneObjectImplementation::setParent(QuadTreeEntry* entry) {
+	Locker locker(&parentLock);
+
+	QuadTreeEntryImplementation::setParent(entry);
+}
+
 ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParent() {
+	Locker locker(&parentLock);
+
 	ManagedReference<QuadTreeEntry*> parent = this->parent.get();
 
 	if (parent == NULL)

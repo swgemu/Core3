@@ -58,6 +58,16 @@ void ArmorObjectImplementation::loadTemplateData(SharedObjectTemplate* templateD
 	setSliceable(true);
 }
 
+void ArmorObjectImplementation::notifyLoadFromDatabase() {
+	WearableObjectImplementation::notifyLoadFromDatabase();
+
+	if (templateObject == NULL)
+		return;
+
+	if (rating != LIGHT && templateObject->getClientTemplateFileName().contains("armor_bounty_hunter_"))
+		rating = LIGHT;
+}
+
 void ArmorObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	WearableObjectImplementation::fillAttributeList(alm, object);
 
@@ -267,7 +277,7 @@ float ArmorObjectImplementation::getTypeValue(int type, float value) {
 }
 
 int ArmorObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (selectedID == 69) {
+	if (selectedID == 69 && player->hasSkill("combat_smuggler_slicing_03")) {
 		if (isSliced()) {
 			player->sendSystemMessage("@slicing/slicing:already_sliced");
 			return 0;
