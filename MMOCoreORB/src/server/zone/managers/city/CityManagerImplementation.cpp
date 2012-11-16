@@ -32,6 +32,7 @@
 #include "server/zone/objects/player/sui/callbacks/CitySetTaxSuiCallback.h"
 #include "server/zone/objects/region/CitizenList.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "TaxPayMailTask.h"
 
 CitiesAllowed CityManagerImplementation::citiesAllowedPerRank;
 CitySpecializationMap CityManagerImplementation::citySpecializations;
