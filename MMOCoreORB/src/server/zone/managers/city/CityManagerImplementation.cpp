@@ -34,6 +34,7 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "TaxPayMailTask.h"
 
+
 CitiesAllowed CityManagerImplementation::citiesAllowedPerRank;
 CitySpecializationMap CityManagerImplementation::citySpecializations;
 CityTaxMap CityManagerImplementation::cityTaxes;

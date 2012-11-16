@@ -28,6 +28,10 @@
 
 using namespace engine::db;
 
+//databaseManager->truncateDatabases();
+
+// http://tinyurl.com/2g9mqh
+
 ObjectManager::ObjectManager() : DOBObjectManager() {
 	server = NULL;
 
