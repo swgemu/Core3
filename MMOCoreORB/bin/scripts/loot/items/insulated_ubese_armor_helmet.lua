@@ -15,7 +15,6 @@ insulated_ubese_armor_helmet = {
 		{"kineticeffectiveness",19,19,0},
 		{"energyeffectiveness",14,14,0},
 		{"blasteffectiveness",14,14,0},
-		{"restraineffectiveness",15,15,0},
 		{"acideffectiveness",14,14,0},
 		{"electricaleffectiveness",14,14,0},
 		{"sockets",-1,-1,0},
