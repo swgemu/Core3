@@ -259,16 +259,21 @@ void BuffImplementation::applyAttributeModifiers() {
 		if (value == 0)
 			continue;
 
-		int attributemax = creature.get()->getMaxHAM(attribute) + value;
-		int attributeval = MAX(attributemax, creature.get()->getHAM(attribute) + value);
+		try {
+			int attributemax = creature.get()->getMaxHAM(attribute) + value;
+			int attributeval = MAX(attributemax, creature.get()->getHAM(attribute) + value);
 
-		creature.get()->setMaxHAM(attribute, attributemax);
+			creature.get()->setMaxHAM(attribute, attributemax);
 
-		if (fillAttributesOnBuff) {
-			//creature.get()->setHAM(attribute, attributeval - creature.get()->getWounds(attribute));
-			creature.get()->healDamage(creature.get(), attribute, attributeval, true);
-		} else if (value >= 0)
-			creature.get()->healDamage(creature.get(), attribute, value);
+			if (fillAttributesOnBuff) {
+				//creature.get()->setHAM(attribute, attributeval - creature.get()->getWounds(attribute));
+				creature.get()->healDamage(creature.get(), attribute, attributeval, true);
+			} else if (value >= 0)
+				creature.get()->healDamage(creature.get(), attribute, value);
+		} catch (Exception& e) {
+			error(e.getMessage());
+			e.printStackTrace();
+		}
 	}
 
 }
@@ -324,18 +329,25 @@ void BuffImplementation::removeAttributeModifiers() {
 		if (value == 0)
 			continue;
 
-		int attributemax = creature.get()->getMaxHAM(attribute) - value;
+		try {
 
-		int currentVal = creature.get()->getHAM(attribute);
+			int attributemax = creature.get()->getMaxHAM(attribute) - value;
 
-		creature.get()->setMaxHAM(attribute, attributemax);
+			int currentVal = creature.get()->getHAM(attribute);
 
-		if (currentVal >= attributemax) {
-			//creature.get()->inflictDamage(creature.get(), attribute, currentVal - attributemax, isSpiceBuff());
+			creature.get()->setMaxHAM(attribute, attributemax);
 
-			if (attribute % 3 == 0) {
-				creature.get()->inflictDamage(creature.get(), attribute, currentVal - attributemax, false);
-			} // else setMaxHam sets secondaries to max
+			if (currentVal >= attributemax) {
+				//creature.get()->inflictDamage(creature.get(), attribute, currentVal - attributemax, isSpiceBuff());
+
+				if (attribute % 3 == 0) {
+					creature.get()->inflictDamage(creature.get(), attribute, currentVal - attributemax, false);
+				} // else setMaxHam sets secondaries to max
+			}
+
+		} catch (Exception& e) {
+			error(e.getMessage());
+			e.printStackTrace();
 		}
 
 
