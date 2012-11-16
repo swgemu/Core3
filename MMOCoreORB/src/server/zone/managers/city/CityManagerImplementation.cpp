@@ -539,10 +539,7 @@ void CityManagerImplementation::processIncomeTax(CityRegion* city) {
 
 	CitizenList* citizens = city->getCitizenList();
 
-	int totalIncome = 0;
-
-	StringIdChatParameter params("city/city", "income_tax_paid_body");
-	params.setDI(incomeTax);
+	Reference<TaxPayMailTask*> task = new TaxPayMailTask(incomeTax, mayorName, chatManager, city);
 
 	for (int i = 0; i < citizens->size(); ++i) {
 		uint64 oid = citizens->get(i);
@@ -554,31 +551,10 @@ void CityManagerImplementation::processIncomeTax(CityRegion* city) {
 
 		CreatureObject* citizen = obj.castTo<CreatureObject*>();
 
-		Locker _clock(citizen, city);
-
-		params.setTO(citizen->getDisplayedName());
-
-		int bank = citizen->getBankCredits();
-
-		if (bank < incomeTax) {
-			params.setStringId("city/city", "income_tax_nopay_body");
-			chatManager->sendMail("@city/city:new_city_from", "@city/city:income_tax_nopay_subject", params, citizen->getFirstName(), NULL);
-
-			params.setStringId("city/city", "income_tax_nopay_mayor_body");
-			chatManager->sendMail("@city/city:new_city_from", "@city/city:income_tax_nopay_mayor_subject", params, mayorName, NULL);
-
-			continue;
-		}
-
-		citizen->subtractBankCredits(incomeTax);
-
-		params.setStringId("city/city", "income_tax_paid_body");
-		chatManager->sendMail("@city/city:new_city_from", "@city/city:income_tax_paid_subject", params, citizen->getFirstName(), NULL);
-
-		totalIncome += incomeTax;
+		task->addCitizen(citizen);
 	}
 
-	city->addToCityTreasury(totalIncome);
+	task->execute();
 }
 
 void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
