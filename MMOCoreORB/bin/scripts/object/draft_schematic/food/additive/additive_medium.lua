@@ -64,7 +64,7 @@ object_draft_schematic_food_additive_additive_medium = object_draft_schematic_fo
 
    ingredientTemplateNames = {"craft_food_ingredients_n", "craft_food_ingredients_n"},
    ingredientTitleNames = {"suspension_agent", "bio_component"},
-   ingredientSlotType = {0, 3},
+   ingredientSlotType = {0, 1},
    resourceTypes = {"water", "object/tangible/component/bio/shared_bio_component_food_medium.iff"},
    resourceQuantities = {15, 1},
    contribution = {100, 100},
