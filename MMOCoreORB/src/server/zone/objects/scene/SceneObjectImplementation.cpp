@@ -601,7 +601,9 @@ void SceneObjectImplementation::sendAttributeListTo(CreatureObject* object) {
 }
 
 void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, SceneObject* selfObject) {
-	if (getZoneServer()->isServerLoading())
+	ZoneServer* zoneServer = getZoneServer();
+
+	if (zoneServer != NULL && zoneServer->isServerLoading())
 		return;
 
 	if (parent != NULL) {
@@ -743,7 +745,9 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendS
 }
 
 void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, SceneObject* selfObject, bool lockZone) {
-	if (getZoneServer()->isServerLoading())
+	ZoneServer* zoneServer = getZoneServer();
+
+	if (zoneServer != NULL && zoneServer->isServerLoading())
 		return;
 
 	if (parent != NULL) {
