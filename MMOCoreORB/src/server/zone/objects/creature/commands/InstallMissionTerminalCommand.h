@@ -88,6 +88,10 @@ public:
 		suiTerminalType->addMenuItem("@terminal_name:terminal_mission_entertainer", 3);
 		suiTerminalType->addMenuItem("@terminal_name:terminal_mission_scout", 4);
 
+		if(creature->hasSkill("social_politician_martial_04")){
+			suiTerminalType->addMenuItem("@terminal_name:terminal_mission_imperial", 5);
+			suiTerminalType->addMenuItem("@terminal_name:terminal_mission_rebel", 6);
+		}
 		creature->getPlayerObject()->addSuiBox(suiTerminalType);
 		creature->sendMessage(suiTerminalType->generateMessage());
 

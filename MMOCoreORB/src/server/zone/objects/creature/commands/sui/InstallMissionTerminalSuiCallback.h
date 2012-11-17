@@ -66,7 +66,12 @@ public:
 		break;
 
 		case 4: terminalTemplatePath = "object/tangible/terminal/terminal_mission_scout.iff";
+		break;
 
+		case 5: terminalTemplatePath = "object/tangible/terminal/terminal_mission_imperial.iff";
+		break;
+
+		case 6: terminalTemplatePath = "object/tangible/terminal/terminal_mission_rebel.iff";
 		break;
 		}
 
