@@ -94,7 +94,7 @@ class ChatManager extends ManagedService implements Logger {
 	public static final int IM_SUCCESS = 0x00;
 	public static final int IM_OFFLINE = 0x04;
 	public static final int IM_IGNORED = 0x09;
-	public static final int IM_TOOLONG = 0x16;
+	public static final int IM_TOOLONG = 0x10;
 	
 	public static final int IM_MAXSIZE = 255;
 	public static final int PM_MAXSIZE = 4000;

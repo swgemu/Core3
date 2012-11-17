@@ -186,7 +186,7 @@ public:
 
 	static const int IM_IGNORED = 0x09;
 
-	static const int IM_TOOLONG = 0x16;
+	static const int IM_TOOLONG = 0x10;
 
 	static const int IM_MAXSIZE = 255;
 
@@ -318,7 +318,7 @@ public:
 
 	static const int IM_IGNORED = 0x09;
 
-	static const int IM_TOOLONG = 0x16;
+	static const int IM_TOOLONG = 0x10;
 
 	static const int IM_MAXSIZE = 255;
 
