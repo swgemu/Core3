@@ -601,6 +601,9 @@ void SceneObjectImplementation::sendAttributeListTo(CreatureObject* object) {
 }
 
 void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, SceneObject* selfObject) {
+	if (getZoneServer()->isServerLoading())
+		return;
+
 	if (parent != NULL) {
 		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParentUnsafe());
 
@@ -740,6 +743,9 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendS
 }
 
 void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, SceneObject* selfObject, bool lockZone) {
+	if (getZoneServer()->isServerLoading())
+		return;
+
 	if (parent != NULL) {
 		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParentUnsafe());
 
