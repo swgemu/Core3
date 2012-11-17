@@ -33,6 +33,13 @@
 #include "server/zone/objects/region/CitizenList.h"
 #include "server/zone/objects/building/BuildingObject.h"
 
+
+#ifndef CITY_DEBUG
+#define CITY_DEBUG
+#endif
+
+
+
 CitiesAllowed CityManagerImplementation::citiesAllowedPerRank;
 CitySpecializationMap CityManagerImplementation::citySpecializations;
 CityTaxMap CityManagerImplementation::cityTaxes;
@@ -43,6 +50,8 @@ int CityManagerImplementation::newCityGracePeriod = 0;
 uint64 CityManagerImplementation::citySpecializationCooldown = 0;
 int CityManagerImplementation::cityVotingDuration = 0;
 uint64 CityManagerImplementation::treasuryWithdrawalCooldown = 0;
+
+
 
 void CityManagerImplementation::loadLuaConfig() {
 	info("Loading configuration file.", true);
@@ -257,7 +266,6 @@ void CityManagerImplementation::promptCitySpecialization(CityRegion* city, Creat
 
 	if (!mayor->checkCooldownRecovery("city_specialization")) {
 		StringIdChatParameter params("city/city", "spec_time"); //You can't set another city spec right now. Time Remaining: %TO
-
 		Time* timeRemaining = mayor->getCooldownTime("city_specialization");
 		params.setTO(String::valueOf(round(abs(timeRemaining->miliDifference() / 1000.f))) + " seconds");
 		mayor->sendSystemMessage(params);
@@ -492,15 +500,16 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 	if (cityRank - 1 >= citizensPerRank.size())
 		return;
 
-	if (cityRank != METROPOLIS) {
-		int maintainCitizens = citizensPerRank.get(cityRank - 1);
+	int maintainCitizens = citizensPerRank.get(cityRank - 1);
+
+	if (citizens < maintainCitizens) {
+			contractCity(city);
+	} else if (cityRank < METROPOLIS) {
+
 		int advanceCitizens = citizensPerRank.get(cityRank);
 
-		if (citizens < maintainCitizens) {
-			contractCity(city);
-		} else if (citizens >= advanceCitizens) {
+		if(citizens >= advanceCitizens)
 			expandCity(city);
-		}
 	}
 
 	updateCityVoting(city);
@@ -933,11 +942,11 @@ void CityManagerImplementation::sendCityAdvancement(CityRegion* city, CreatureOb
 
 	int rank = city->getCityRank();
 
-	if (rank - 1 >= citizensPerRank.size() || rank >= citizensPerRank.size())
+	if (rank - 1 >= citizensPerRank.size())
 		return;
 
 	int currentRank = citizensPerRank.get(rank - 1);
-	int nextRank = citizensPerRank.get(currentRank == METROPOLIS ? rank - 1 : rank);
+	int nextRank = citizensPerRank.get(rank == METROPOLIS ? rank - 1 : rank);
 
 	//pop_req_current_rankPop. Req. for Current Rank:
 	//pop_req_next_rankPop. Req. for Next Rank:
@@ -1347,10 +1356,12 @@ void CityManagerImplementation::registerForMayoralRace(CityRegion* city, Creatur
 		return;
 	}
 
+
 	city->addCandidate(objectid);
 	creature->sendSystemMessage("@city/city:register_congrats"); //Congratulations, you are now listed on the ballot for the Mayoral race!
+#ifndef CITY_DEBUG
 	creature->addCooldown("register_mayor", 24 * 3600 * 1000); //Can only vote once per day.
-
+#endif
 	StringIdChatParameter params("city/city", "rceb"); //%TO has entered the race for mayor. You can now vote for this candidate at the city voting terminal.
 	params.setTO(creature->getDisplayedName());
 

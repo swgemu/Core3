@@ -11,6 +11,10 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/city/CityManager.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#ifndef CITY_DEBUG
+#define CITY_DEBUG
+#endif
 
 void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	ManagedReference<CityRegion*> city = sceneObject->getCityRegion();
@@ -28,6 +32,17 @@ void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	menuResponse->addRadialMenuItemToRadialID(211, 224, 3, "@city/city:city_maint"); //Maintenance Report
 	menuResponse->addRadialMenuItemToRadialID(211, 215, 3, "@city/city:treasury_status"); //Treasury Report
 	menuResponse->addRadialMenuItemToRadialID(211, 220, 3, "@city/city:treasury_deposit"); //Treasury Deposit
+
+#ifdef CITY_DEBUG
+	if(player->getPlayerObject()->isPrivileged()){
+		menuResponse->addRadialMenuItem(227,3,"MANUAL");
+		menuResponse->addRadialMenuItemToRadialID(227,228,3,"EXPAND CITY");
+		menuResponse->addRadialMenuItemToRadialID(227,229,3,"CONTRACT CITY");
+		menuResponse->addRadialMenuItemToRadialID(227,230,3,"UPDATE CITY");
+		menuResponse->addRadialMenuItemToRadialID(227,231,3,"COUNT VOTES");
+
+	}
+#endif
 
 	if (!city->isMayor(player->getObjectID()))
 		return;
@@ -107,6 +122,22 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	case 226: //Toggle Zoning Enabled
 		cityManager->toggleZoningEnabled(city, player);
 		break;
+
+#ifdef CITY_DEBUG
+	case 228:
+		cityManager->expandCity(city);
+		break;
+	case 229:
+		cityManager->contractCity(city);
+		break;
+	case 230:
+		cityManager->processCityUpdate(city);
+		break;
+	case 231:
+		cityManager->updateCityVoting(city);
+		break;
+#endif
+
 	}
 	return 0;
 }
