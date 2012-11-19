@@ -14,7 +14,7 @@ light_weight_vibro_unit = {
 		{"attackhealthcost",20,20,0},
 		{"attackactioncost",10,10,0},
 		{"attackmindcost",20,20,0},
-		{"useCount",5,5,0},
+		{"useCount",2,10,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}
