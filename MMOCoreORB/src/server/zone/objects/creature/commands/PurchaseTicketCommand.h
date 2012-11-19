@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/managers/city/CityManager.h"
 
 class PurchaseTicketCommand : public QueueCommand {
 public:
@@ -69,10 +70,14 @@ public:
 
 		ManagedReference<CityRegion*> currentCity = creature->getCityRegion().get();
 
+		int departureTax = 0;
 		if (currentCity != NULL){
 			if (currentCity->isBanned(creature->getObjectID())) {
 				creature->sendSystemMessage("@city/city:city_cant_purchase_ticket"); //You are banned from using the services of this city. You cannot purchase a ticket.
 				return GENERALERROR;
+			}
+			if(!currentCity->isClientRegion()){
+				departureTax = currentCity->getTax(CityRegion::TAX_TRAVEL);
 			}
 		}
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
@@ -132,13 +137,19 @@ public:
 		if (arrivalShuttle == NULL)
 			return GENERALERROR;
 
+
 		ManagedReference<CityRegion*> destCity = arrivalShuttle->getCityRegion();
+
+		int arrivalTax = 0;
 
 		if (destCity != NULL){
 			if (destCity.get()->isBanned(creature->getObjectID())) {
 				creature->sendSystemMessage("@city/city:banned_from_that_city");  // You have been banned from traveling to that city by the city militia
 				return GENERALERROR;
 			}
+
+			if(!destCity->isClientRegion())
+				arrivalTax = destCity->getTax(CityRegion::TAX_TRAVEL);
 		}
 
 		//Check to see if this point can be reached from this location.
@@ -149,6 +160,8 @@ public:
 			return GENERALERROR; //If they are doing a round trip, make sure they can travel back.
 
 		int fare = pmDeparture->getTravelFare(departurePlanet, arrivalPlanet);
+
+		fare = fare + arrivalTax + departureTax;
 
 		if (roundTrip)
 			fare += pmArrival->getTravelFare(arrivalPlanet, departurePlanet);
@@ -179,9 +192,12 @@ public:
 
 			creature->subtractBankCredits(bank); //Take all from the bank, since they didn't have enough to cover.
 			creature->subtractCashCredits(diff); //Take the rest from the cash.
+
 		} else {
 			creature->subtractBankCredits(fare); //Take all of the fare from the bank.
 		}
+
+
 
 		StringIdChatParameter params("@base_player:prose_pay_acct_success"); //You successfully make a payment of %DI credits to %TO.
 		params.setDI(fare);
@@ -198,6 +214,18 @@ public:
 			ManagedReference<SceneObject*> ticket2 = pmArrival->createTicket(arrivalPoint, departurePlanet, departurePoint);
 			ticket2->sendTo(creature, true);
 			inventory->transferObject(ticket2, -1, true);
+		}
+		_lock.release();
+
+		if(!currentCity->isClientRegion()){
+			Locker clocker(currentCity, creature);
+			currentCity->addToCityTreasury(departureTax + (roundTrip * departureTax));
+
+		}
+
+		if(!destCity->isClientRegion()){
+			Locker clocker(destCity, creature);
+			destCity->addToCityTreasury(arrivalTax + (roundTrip * arrivalTax));
 		}
 
 		ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(creature, 0);

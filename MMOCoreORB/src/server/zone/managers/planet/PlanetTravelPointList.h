@@ -41,8 +41,23 @@ public:
 
 		message->insertInt(totalPoints);
 
-		for (int i = 0; i < totalPoints; ++i)
-			message->insertInt(0); //TODO: Implement taxes.
+		for (int i = 0; i < totalPoints; ++i){
+			Reference<PlanetTravelPoint*> ptp = get(i);
+			ManagedReference<CreatureObject*> shuttle = ptp->getShuttle();
+			if(shuttle == NULL){
+				message->insertInt(0);
+				continue;
+			}
+
+			if(shuttle->getCityRegion() == NULL){
+				message->insertInt(0);
+				continue;
+			}
+			ManagedReference<CityRegion*> city = shuttle->getCityRegion().get();
+
+			message->insertInt(city->getTax(CityRegion::TAX_TRAVEL));
+
+		}
 
 		message->insertInt(totalPoints);
 

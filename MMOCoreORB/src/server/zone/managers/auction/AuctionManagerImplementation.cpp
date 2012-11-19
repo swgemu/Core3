@@ -496,6 +496,12 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	if (vendor == NULL)
 		return;
 
+	int tax = 0;
+	ManagedReference<CityRegion*> city = NULL;
+	if( vendor->getCityRegion() != NULL){
+		city = vendor->getCityRegion().get();
+		tax = item->getPrice() * (float) city->getSalesTax() / 100.f;
+	}
 	String playername = player->getFirstName().toLowerCase();
 
 	ManagedReference<ChatManager*> cman = zoneServer->getChatManager();
@@ -525,7 +531,7 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	item->setBidderName(playername);
 	item->clearAuctionWithdraw();
 
-	player->subtractBankCredits(item->getPrice());
+	player->subtractBankCredits(item->getPrice() + tax);
 
 	BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), 0);
 	player->sendMessage(msg);
@@ -606,6 +612,14 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 
 	Locker slocker(seller);
 	seller->addBankCredits(item->getPrice());
+	slocker.release();
+
+
+	if(city != NULL && !city->isClientRegion() && tax){
+		city->isClientRegion();
+		Locker clock(city);
+		city->addToCityTreasury(tax);
+	}
 
 }
 
@@ -736,12 +750,12 @@ void AuctionManagerImplementation::buyItem(CreatureObject* player, uint64 object
 	//TODO: Apply the sales tax to the price here, and check the total price
 	int totalPrice = item->getPrice();
 
-	if (city != NULL)
+	if (city != NULL && !city->isClientRegion())
 		totalPrice *= 1.f + (float) city->getSalesTax() / 100.f;
 
 	//We should send this to checkBidAuction, but how will it work with auctions???
 
-	int res = checkBidAuction(player, item, price1, price2);
+	int res = checkBidAuction(player, item, totalPrice , price2);
 
 	if (res != 0) {
 		BaseMessage* msg = new BidAuctionResponseMessage(objectid, res);
