@@ -767,7 +767,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 //	bool readlock = lockZone && !zone->isLockedByCurrentThread();
 
 	SortedVector<ManagedReference<QuadTreeEntry*> >* closeSceneObjects = NULL;
-	SortedVector<QuadTreeEntry*>* closeNoneReference = NULL;
+	SortedVector<ManagedReference<QuadTreeEntry*> >* closeNoneReference = NULL;
 	int maxInRangeObjectCount = 0;
 	bool deleteVector = true;
 
@@ -784,7 +784,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 //			maxInRangeObjectCount = closeobjects->size();
 			//closeSceneObjects = closeobjects;
 			
-			closeNoneReference = new SortedVector<QuadTreeEntry*>(maxInRangeObjectCount, 50);
+			closeNoneReference = new SortedVector<ManagedReference<QuadTreeEntry*> >(maxInRangeObjectCount, 50);
 			
 
 /*			for (int i = 0; i < closeobjects->size(); ++i) {
@@ -831,7 +831,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 		if (closeSceneObjects != NULL)
 			scno  = cast<SceneObject*>(closeSceneObjects->get(i).get());
 		else
-			scno = cast<SceneObject*>(closeNoneReference->get(i));
+			scno = cast<SceneObject*>(closeNoneReference->get(i).get());
 
 		if (selfObject == scno)
 			continue;
