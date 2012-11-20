@@ -49,8 +49,8 @@ object_tangible_component_chemistry_dispersal_mechanism_advanced = object_tangib
 	experimentalWeights = {1, 1, 1, 1, 3, 1, 2, 1, 2, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "null", "exp_charges", "exp_effectiveness", "exp_charges", "null", "null", "null"},
 	experimentalSubGroupTitles = {"null", "null", "power", "charges", "area", "range", "potency", "duration", "hitpoints"},
-	experimentalMin = {0, 0, 0, 5, 20, 5, 0, 0, 1000},
-	experimentalMax = {0, 0, 0, 30, 5, 25, 0, 0, 1000},
+	experimentalMin = {0, 0, 0, 5, 5, 5, 0, 0, 1000},
+	experimentalMax = {0, 0, 0, 30, 20, 25, 0, 0, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 4},
 }

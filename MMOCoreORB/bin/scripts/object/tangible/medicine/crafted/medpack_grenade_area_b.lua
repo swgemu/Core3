@@ -56,8 +56,8 @@ object_tangible_medicine_crafted_medpack_grenade_area_b = object_tangible_medici
 	experimentalWeights = {1, 1, 2, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1},
 	experimentalGroupTitles = {"null", "null", "exp_effectiveness", "exp_charges", "expEaseOfUse", "exp_charges", "exp_effectiveness", "null"},
 	experimentalSubGroupTitles = {"null", "null", "power", "charges", "skillmodmin", "range", "area", "hitpoints"},
-	experimentalMin = {0, 0, 100, 15, 60, 15, 30, 1000},
-	experimentalMax = {0, 0, 500, 30, 45, 30, 10, 1000},
+	experimentalMin = {0, 0, 100, 15, 60, 15, 10, 1000},
+	experimentalMax = {0, 0, 500, 30, 45, 30, 30, 1000},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 4},
 }
