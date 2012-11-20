@@ -217,13 +217,13 @@ public:
 		}
 		_lock.release();
 
-		if(!currentCity->isClientRegion()){
+		if(currentCity != NULL && !currentCity->isClientRegion()){
 			Locker clocker(currentCity, creature);
 			currentCity->addToCityTreasury(departureTax + (roundTrip * departureTax));
 
 		}
 
-		if(!destCity->isClientRegion()){
+		if(destCity != NULL && !destCity->isClientRegion()){
 			Locker clocker(destCity, creature);
 			destCity->addToCityTreasury(arrivalTax + (roundTrip * arrivalTax));
 		}
