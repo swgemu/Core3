@@ -326,6 +326,11 @@ void PlayerObjectImplementation::notifySceneReady() {
 		}
 	}
 
+	ZoneServer* zoneServer = getZoneServer();
+
+	if (zoneServer != NULL && zoneServer->isServerLoading())
+		return;
+
 	if(creature->getZone() != NULL && creature->getZone()->getPlanetManager() != NULL) {
 		ManagedReference<WeatherManager*> weatherManager = creature->getZone()->getPlanetManager()->getWeatherManager();
 		if(weatherManager != NULL) {
