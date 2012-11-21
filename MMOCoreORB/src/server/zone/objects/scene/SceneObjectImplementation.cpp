@@ -601,6 +601,11 @@ void SceneObjectImplementation::sendAttributeListTo(CreatureObject* object) {
 }
 
 void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, SceneObject* selfObject) {
+	ZoneServer* zoneServer = getZoneServer();
+
+	if (zoneServer != NULL && zoneServer->isServerLoading())
+		return;
+
 	if (parent != NULL) {
 		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParentUnsafe());
 
@@ -671,6 +676,11 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 }
 
 void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, SceneObject* selfObject) {
+	ZoneServer* zoneServer = getZoneServer();
+
+	if (zoneServer != NULL && zoneServer->isServerLoading())
+		return;
+
 	if (parent != NULL) {
 		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParentUnsafe());
 
@@ -740,6 +750,11 @@ void SceneObjectImplementation::broadcastDestroy(SceneObject* object, bool sendS
 }
 
 void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, SceneObject* selfObject, bool lockZone) {
+	ZoneServer* zoneServer = getZoneServer();
+
+	if (zoneServer != NULL && zoneServer->isServerLoading())
+		return;
+
 	if (parent != NULL) {
 		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParentUnsafe());
 
@@ -857,6 +872,11 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 }
 
 void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* messages, SceneObject* selfObject) {
+	ZoneServer* zoneServer = getZoneServer();
+
+	if (zoneServer != NULL && zoneServer->isServerLoading())
+		return;
+
 	if (parent != NULL) {
 		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParentUnsafe());
 
