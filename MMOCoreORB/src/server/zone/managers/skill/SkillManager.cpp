@@ -643,6 +643,21 @@ bool SkillManager::fullfillsSkillPrerequisites(const String& skillName, Creature
 		return false;
 	}
 
+	Vector<String>* requiredSpecies = skill->getSpeciesRequired();
+	if (requiredSpecies->size() > 0) {
+		bool foundSpecies = false;
+		for (int i = 0; i < requiredSpecies->size(); i++) {
+			if (creature->getSpeciesName() == requiredSpecies->get(i)) {
+				foundSpecies = true;
+				break;
+			}
+		}
+		if (!foundSpecies) {
+			return false;
+		}
+	}
+
+
 	//Check for required skills.
 	Vector<String>* requiredSkills = skill->getSkillsRequired();
 	for (int i = 0; i < requiredSkills->size(); ++i) {

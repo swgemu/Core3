@@ -299,6 +299,14 @@ public:
 		return pointsRequired;
 	}
 
+	/**
+	 * Returns the species required for the skill.
+	 * @return the species required for the skill.
+	 */
+	inline Vector<String>* getSpeciesRequired() {
+		return &speciesRequired;
+	}
+
 private:
 	inline void setParentNode(Skill* skill) {
 		parentNode = skill;
