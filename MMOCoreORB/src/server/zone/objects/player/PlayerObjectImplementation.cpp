@@ -1256,6 +1256,12 @@ void PlayerObjectImplementation::logout(bool doLock) {
 
 
 void PlayerObjectImplementation::doRecovery() {
+	if (getZoneServer()->isServerLoading()) {
+		activateRecovery();
+
+		return;
+	}
+
 	CreatureObject* creature = dynamic_cast<CreatureObject*>(parent.get().get());
 
 	/*if (!creature->isInQuadTree() && creature->getParent() != NULL && creature->getParent()->isCellObject() && creature->getClient() == NULL) {
@@ -1310,13 +1316,11 @@ void PlayerObjectImplementation::doRecovery() {
 		//enqueueCommand(0xA8FEF90A, 0, getTargetID(), ""); // Do default attack
 	}
 
-	if (!getZoneServer()->isServerLoading()) {
-		if(creature->getZone() != NULL && creature->getZone()->getPlanetManager() != NULL) {
-			ManagedReference<WeatherManager*> weatherManager = creature->getZone()->getPlanetManager()->getWeatherManager();
+	if(creature->getZone() != NULL && creature->getZone()->getPlanetManager() != NULL) {
+		ManagedReference<WeatherManager*> weatherManager = creature->getZone()->getPlanetManager()->getWeatherManager();
 
-			if (weatherManager != NULL)
-				weatherManager->sendWeatherTo(creature);
-		}
+		if (weatherManager != NULL)
+			weatherManager->sendWeatherTo(creature);
 	}
 
 	activateRecovery();
