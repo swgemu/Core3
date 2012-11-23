@@ -49,7 +49,7 @@ import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.intangible.ControlDevice;
 import server.zone.objects.creature.VehicleObject;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.Zone;
 import system.lang.System;
