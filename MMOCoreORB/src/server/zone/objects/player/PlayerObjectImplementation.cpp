@@ -1310,11 +1310,13 @@ void PlayerObjectImplementation::doRecovery() {
 		//enqueueCommand(0xA8FEF90A, 0, getTargetID(), ""); // Do default attack
 	}
 
-	if(creature->getZone() != NULL && creature->getZone()->getPlanetManager() != NULL) {
-		ManagedReference<WeatherManager*> weatherManager = creature->getZone()->getPlanetManager()->getWeatherManager();
+	if (!getZoneServer()->isServerLoading()) {
+		if(creature->getZone() != NULL && creature->getZone()->getPlanetManager() != NULL) {
+			ManagedReference<WeatherManager*> weatherManager = creature->getZone()->getPlanetManager()->getWeatherManager();
 
-		if (weatherManager != NULL)
-			weatherManager->sendWeatherTo(creature);
+			if (weatherManager != NULL)
+				weatherManager->sendWeatherTo(creature);
+		}
 	}
 
 	activateRecovery();
