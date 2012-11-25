@@ -242,7 +242,9 @@ class CityManager extends ManagedService implements Logger {
 	public native void registerForMayoralRace(CityRegion city, CreatureObject creature);
 	
 	public native void castMayoralVote(CityRegion city, CreatureObject creature, unsigned long oid);
-	
+
+	public native void sendStructureReport(CityRegion city, CreatureObject creature, SceneObject terminal = null);
+		
 	@local
 	public native CitySpecialization getCitySpecialization(final string cityspec); 
 	

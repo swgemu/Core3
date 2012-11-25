@@ -88,6 +88,9 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	case 213: //Citizenship Report
 		cityManager->sendCitizenshipReport(city, player, sceneObject);
 		break;
+	case 214:
+		cityManager->sendStructureReport(city, player, sceneObject);
+		break;
 	case 215: //Treasury Report
 		cityManager->sendTreasuryReport(city, player, sceneObject);
 		break;

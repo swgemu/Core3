@@ -26,6 +26,7 @@
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
 #include "server/zone/Zone.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 
 int BoardShuttleCommand::MAXIMUM_PLAYER_COUNT = 3000;
 
@@ -327,6 +328,41 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 		if (structure->isCivicStructure())
 			removeStructure(structure);
 	}
+}
+
+void CityRegionImplementation::getStructureReport(CreatureObject* creature){
+
+	PlayerObject* ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	Locker clocker(_this.get());
+
+	ManagedReference<SuiListBox*> tList = new SuiListBox(creature,SuiWindowType::CITY_TREASURY_REPORT);
+	tList->setPromptText("@city/city:structure_list_d");
+
+	for(int i = 0; i < structures.size(); i++){
+		ManagedReference<StructureObject*> structure = structures.get(i);
+		if(structure != NULL)
+			tList->addMenuItem(structure->getDisplayedName() + "  - Condition: "
+					+ String::valueOf(structure->getDecayPercentage()) + "%");
+	}
+
+	for( int i = 0; i < citySkillTrainers.size(); i++){
+		ManagedReference<SceneObject*> trainer = citySkillTrainers.get(i);
+		if(trainer != NULL)
+			tList->addMenuItem(trainer->getDisplayedName(),i);
+	}
+
+	for(int i = 0; i < cityDecorations.size(); i++){
+		ManagedReference<SceneObject*> sceno = cityDecorations.get(i);
+		if(sceno != NULL)
+			tList->addMenuItem(sceno->getDisplayedName() );
+	}
+	ghost->addSuiBox(tList);
+	creature->sendMessage(tList->generateMessage());
+	return;
 }
 
 void CityRegionImplementation::cleanupCitizens() {

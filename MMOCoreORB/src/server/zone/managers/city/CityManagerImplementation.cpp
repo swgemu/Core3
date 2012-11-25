@@ -335,6 +335,10 @@ void CityManagerImplementation::sendStatusReport(CityRegion* city, CreatureObjec
 	creature->sendMessage(list->generateMessage());
 }
 
+void CityManagerImplementation::sendStructureReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal){
+	city->getStructureReport(creature);
+}
+
 void CityManagerImplementation::promptWithdrawCityTreasury(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
 	if (!city->isMayor(mayor->getObjectID()))
 		return;

@@ -370,6 +370,8 @@ public:
 
 	void setTax(int tax, int value);
 
+	void getStructureReport(CreatureObject* creature);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -701,6 +703,8 @@ public:
 
 	void setTax(int tax, int value);
 
+	void getStructureReport(CreatureObject* creature);
+
 	WeakReference<CityRegion*> _this;
 
 	operator const CityRegion*();
@@ -941,6 +945,8 @@ public:
 	int getTax(int tax);
 
 	void setTax(int tax, int value);
+
+	void getStructureReport(CreatureObject* creature);
 
 };
 
