@@ -121,7 +121,7 @@ int LuaSceneObject::getTemplateObjectPath(lua_State* L) {
 	if (realObject != NULL) {
 		String tempPath = realObject->getObjectTemplate()->getFullTemplateString();
 
-		lua_pushstring(L, tempPath);
+		lua_pushstring(L, tempPath.toCharArray());
 	} else {
 		lua_pushstring(L, "");
 	}
@@ -149,7 +149,7 @@ int LuaSceneObject::getZoneName(lua_State* L) {
 		name = zone->getZoneName();
 	}
 
-	lua_pushstring(L, name);
+	lua_pushstring(L, name.toCharArray());
 
 	return 1;
 }
@@ -438,7 +438,7 @@ int LuaSceneObject::sendTo(lua_State* L) {
 int LuaSceneObject::getCustomObjectName(lua_State* L) {
 	String objname = realObject->getCustomObjectName().toString();
 
-	lua_pushstring(L, objname);
+	lua_pushstring(L, objname.toCharArray());
 
 	return 1;
 }
@@ -446,7 +446,7 @@ int LuaSceneObject::getCustomObjectName(lua_State* L) {
 int LuaSceneObject::getObjectName(lua_State* L) {
 	String objname = realObject->getObjectName()->getStringID();
 
-	lua_pushstring(L, objname);
+	lua_pushstring(L, objname.toCharArray());
 
 	return 1;
 }
