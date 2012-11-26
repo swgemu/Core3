@@ -19,7 +19,7 @@ void LuaSuiCallback::run(CreatureObject* creature, SuiBox* sui, bool cancelPress
 	startScreenPlay << cancelPressed;
 
 	for (int i = 0; i < args->size(); ++i) {
-		startScreenPlay << args->get(i).toString();
+		startScreenPlay << args->get(i).toString().toCharArray();
 	}
 
 	lua->callFunction(&startScreenPlay);
