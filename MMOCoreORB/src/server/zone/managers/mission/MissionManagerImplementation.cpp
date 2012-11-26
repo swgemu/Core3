@@ -1392,7 +1392,7 @@ void MissionManagerImplementation::generateRandomFactionalDestroyMissionDescript
 
 	mission->setMissionTitle("mission/mission_destroy_" + difficultyString, "m" + String::valueOf(randomNumber) + "t");
 	mission->setMissionDescription("mission/mission_destroy_" +  difficultyString, "m" + String::valueOf(randomNumber) + "d");
-	mission->setMissionTargetName("mission/mission_destroy_" +  difficultyString, "m" + String::valueOf(randomNumber) + "t");
+	mission->setMissionTargetName("@mission/mission_destroy_" +  difficultyString + ":[m" + String::valueOf(randomNumber) + "t]");
 }
 
 void MissionManagerImplementation::createSpawnPoint(CreatureObject* player, const String& spawnTypes) {
