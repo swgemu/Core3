@@ -370,7 +370,13 @@ public:
 
 	void setTax(int tax, int value);
 
-	void getStructureReport(CreatureObject* creature);
+	StructureObject* getCivicStructure(int indx);
+
+	SceneObject* getCityDecoration(int indx);
+
+	SceneObject* getCityMissionTerminal(int indx);
+
+	SceneObject* getCitySkillTrainer(int indx);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -703,7 +709,13 @@ public:
 
 	void setTax(int tax, int value);
 
-	void getStructureReport(CreatureObject* creature);
+	StructureObject* getCivicStructure(int indx);
+
+	SceneObject* getCityDecoration(int indx);
+
+	SceneObject* getCityMissionTerminal(int indx);
+
+	SceneObject* getCitySkillTrainer(int indx);
 
 	WeakReference<CityRegion*> _this;
 
@@ -945,8 +957,6 @@ public:
 	int getTax(int tax);
 
 	void setTax(int tax, int value);
-
-	void getStructureReport(CreatureObject* creature);
 
 };
 

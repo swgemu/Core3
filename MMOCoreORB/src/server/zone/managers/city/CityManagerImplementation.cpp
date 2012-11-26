@@ -32,6 +32,7 @@
 #include "server/zone/objects/player/sui/callbacks/CitySetTaxSuiCallback.h"
 #include "server/zone/objects/region/CitizenList.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
 
 
 #ifndef CITY_DEBUG
@@ -280,8 +281,9 @@ void CityManagerImplementation::promptCitySpecialization(CityRegion* city, Creat
 
 void CityManagerImplementation::changeCitySpecialization(CityRegion* city, CreatureObject* mayor, const String& spec) {
 	city->setCitySpecialization(spec);
+#ifndef CITY_DEBUG
 	mayor->addCooldown("city_specialization", citySpecializationCooldown); //1 week.
-
+#endif
 	StringIdChatParameter params("city/city", "spec_set"); //The city's specialization has been set to %TO.
 	params.setTO(spec);
 	mayor->sendSystemMessage(params);
@@ -336,7 +338,31 @@ void CityManagerImplementation::sendStatusReport(CityRegion* city, CreatureObjec
 }
 
 void CityManagerImplementation::sendStructureReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal){
-	city->getStructureReport(creature);
+	PlayerObject* ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	Locker clocker(city);
+
+	ManagedReference<SuiListBox*> maintList = new SuiListBox(creature,SuiWindowType::CITY_TREASURY_REPORT);
+	maintList->setPromptText("@city/city:structure_list_d");
+
+	for(int i = 0; i < city->getStructuresCount(); i++){
+		ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
+		if(structure != NULL)
+			maintList->addMenuItem(structure->getDisplayedName() + " - Condition : " +
+					String::valueOf(structure->getDecayPercentage()) + "%",i);
+	}
+
+	for(int i = 0; i < city->getDecorationCount(); i++){
+		ManagedReference<SceneObject*> sceno = city->getCityDecoration(i);
+		if(sceno != NULL)
+			maintList->addMenuItem(sceno->getDisplayedName() );
+	}
+
+	ghost->addSuiBox(maintList);
+	creature->sendMessage(maintList->generateMessage());
 }
 
 void CityManagerImplementation::promptWithdrawCityTreasury(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
@@ -497,6 +523,8 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 		return;
 	}
 
+	Locker lock(city);
+
 	city->cleanupCitizens();
 
 	int citizens = city->getCitizenCount();
@@ -530,6 +558,7 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 	deductCityMaintenance(city);
 
 	processIncomeTax(city);
+
 }
 
 void CityManagerImplementation::processIncomeTax(CityRegion* city) {
@@ -1132,6 +1161,15 @@ void CityManagerImplementation::setTax(CityRegion* city, CreatureObject* mayor, 
 
 void CityManagerImplementation::sendMaintenanceReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal) {
 	//TODO: Encapsulate this, and clean up.
+
+	if(city == NULL || creature == NULL)
+		return;
+
+	PlayerObject* ghost = creature->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
 	int seconds = city->getTimeToUpdate();
 
 	int days = floor(seconds / 86400);
@@ -1187,10 +1225,93 @@ void CityManagerImplementation::sendMaintenanceReport(CityRegion* city, Creature
 	if (updateStr.isEmpty())
 		updateStr = "Now";
 
-	StringIdChatParameter params("city/city", "city_update_eta"); //Next City Update: %TO
-	params.setTO(updateStr);
+	//StringIdChatParameter params("city/city", "city_update_eta"); //Next City Update: %TO
+	//params.setTO(updateStr);
 
-	creature->sendSystemMessage(params);
+	//creature->sendSystemMessage(params);
+
+
+	int totalcost = 0;
+
+	ManagedReference<SuiListBox*> maintList = new SuiListBox(creature,SuiWindowType::CITY_TREASURY_REPORT);
+	maintList->setPromptTitle("@city/city:maint_info_t");
+	maintList->setPromptText("@city/city:maint_info_d");
+
+	maintList->addMenuItem("Next City Update: " + updateStr);
+	Locker lock(city);
+
+
+
+
+	for ( int i = 0; i < city->getStructuresCount();i++){
+		ManagedReference<StructureObject*> structure =  city->getCivicStructure(i);
+
+		if(structure != NULL) {
+			String maintString = structure->getDisplayedName();
+
+			TemplateManager* templateManager = TemplateManager::instance();
+
+			if(templateManager != NULL){
+				if(structure->getObjectTemplate()==NULL)
+					continue;
+
+				Reference<SharedStructureObjectTemplate*> serverTemplate = cast<SharedStructureObjectTemplate*>(structure->getObjectTemplate());
+
+				if(serverTemplate != NULL) {
+					int thiscost = serverTemplate->getCityMaintenanceBase() + (serverTemplate->getCityMaintenanceRate()*(city->getCityRank()-1));
+					totalcost += thiscost;
+					maintString += " - " + String::valueOf(thiscost);
+
+				} else {
+					maintString += " - NA";
+				}
+
+			}
+
+			maintList->addMenuItem(maintString);
+		}
+	}
+
+
+	for( int i = 0; i < city->getSkillTrainerCount(); i++){
+		ManagedReference<SceneObject*> trainer = city->getCitySkillTrainer(i);
+		if(trainer != NULL){
+			totalcost += 1500;
+			maintList->addMenuItem(trainer->getDisplayedName() + " - 1500",i);
+		}
+	}
+
+	for(int i = 0; i < city->getDecorationCount(); i++){
+		ManagedReference<SceneObject*> sceno = city->getCityDecoration(i);
+		if(sceno != NULL) {
+			maintList->addMenuItem(sceno->getDisplayedName() + " - NA " );
+		}
+	}
+
+	for(int i = 0; i < city->getMissionTerminalCount(); i++){
+		ManagedReference<SceneObject*> term = city->getCityMissionTerminal(i);
+
+		if(term != NULL){
+			totalcost += 1500;
+			maintList->addMenuItem(term->getDisplayedName() + " - 1500");
+		}
+	}
+
+	if(city->getCitySpecialization() != ""){
+		CitySpecialization* spec  = getCitySpecialization(city->getCitySpecialization());
+
+		if(spec != NULL) {
+			int speccost = spec->getCost();
+			totalcost += speccost;
+			maintList->addMenuItem(city->getCitySpecialization() + " - " + String::valueOf(speccost));
+		}
+
+	}
+	maintList->addMenuItem("Total: " + String::valueOf(totalcost));
+
+
+	ghost->addSuiBox(maintList);
+	creature->sendMessage(maintList->generateMessage());
 }
 
 bool CityManagerImplementation::isCityInRange(Zone* zone, float x, float y) {

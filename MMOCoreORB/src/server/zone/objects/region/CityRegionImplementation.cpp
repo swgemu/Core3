@@ -330,40 +330,6 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 	}
 }
 
-void CityRegionImplementation::getStructureReport(CreatureObject* creature){
-
-	PlayerObject* ghost = creature->getPlayerObject();
-
-	if (ghost == NULL)
-		return;
-
-	Locker clocker(_this.get());
-
-	ManagedReference<SuiListBox*> tList = new SuiListBox(creature,SuiWindowType::CITY_TREASURY_REPORT);
-	tList->setPromptText("@city/city:structure_list_d");
-
-	for(int i = 0; i < structures.size(); i++){
-		ManagedReference<StructureObject*> structure = structures.get(i);
-		if(structure != NULL)
-			tList->addMenuItem(structure->getDisplayedName() + "  - Condition: "
-					+ String::valueOf(structure->getDecayPercentage()) + "%");
-	}
-
-	for( int i = 0; i < citySkillTrainers.size(); i++){
-		ManagedReference<SceneObject*> trainer = citySkillTrainers.get(i);
-		if(trainer != NULL)
-			tList->addMenuItem(trainer->getDisplayedName(),i);
-	}
-
-	for(int i = 0; i < cityDecorations.size(); i++){
-		ManagedReference<SceneObject*> sceno = cityDecorations.get(i);
-		if(sceno != NULL)
-			tList->addMenuItem(sceno->getDisplayedName() );
-	}
-	ghost->addSuiBox(tList);
-	creature->sendMessage(tList->generateMessage());
-	return;
-}
 
 void CityRegionImplementation::cleanupCitizens() {
 	Locker slocker(&structureListMutex);
@@ -378,7 +344,6 @@ void CityRegionImplementation::cleanupCitizens() {
 
 		if (building != NULL) {
 			uint64 owner = building->getOwnerObjectID();
-
 			ownerIds.put(owner);
 		}
 	}

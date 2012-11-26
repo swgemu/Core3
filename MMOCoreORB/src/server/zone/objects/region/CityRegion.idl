@@ -476,7 +476,7 @@ class CityRegion extends ManagedObject implements Logger {
 	public int getBazaarCount() {
 		return bazaars.size();
 	}
-		
+
 	public native void removeAllSkillTrainers();
 	
 	public native void removeAllTerminals();
@@ -621,5 +621,25 @@ class CityRegion extends ManagedObject implements Logger {
 		taxes.set(tax, value);
 	}
 
-	public native void getStructureReport(CreatureObject creature);
+	@local
+	public StructureObject getCivicStructure(int indx){
+		return structures.get(indx);
+	}
+
+	@local
+	public SceneObject getCityDecoration(int indx){
+		return cityDecorations.get(indx);
+	}
+
+	@local 
+	public SceneObject getCityMissionTerminal(int indx){
+		return cityMissionTerminals.get(indx);
+	}
+
+	@local 
+	public SceneObject getCitySkillTrainer(int indx){
+		return citySkillTrainers.get(indx);
+	}
+
+
 }

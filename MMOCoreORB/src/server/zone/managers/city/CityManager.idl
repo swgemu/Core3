@@ -131,7 +131,7 @@ class CityManager extends ManagedService implements Logger {
 	 * @post city locked
 	 */
 	public native void processIncomeTax(CityRegion city);
-	
+ 	
 	/**
 	 * Handles the voting of the city, tallys votes, see's who won. Resets the voting process.
 	 * @pre city locked
