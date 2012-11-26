@@ -259,7 +259,7 @@ public:
 
 		file << std::endl << "\t}" << std::endl;
 		file << "}" << std::endl << std::endl;
-		file << "universe:addPlanet(planet_" + planetName.toCharArray() + ");" << std::endl << std::endl;
+		file << "universe:addPlanet(planet_" << planetName.toCharArray() << ");" << std::endl << std::endl;
 	}
 };
 
