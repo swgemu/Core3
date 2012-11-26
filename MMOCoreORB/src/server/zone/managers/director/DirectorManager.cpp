@@ -302,7 +302,7 @@ int DirectorManager::readScreenPlayData(lua_State* L) {
 
 	//readScreenPlayData(player, screenPlay, variable)
 
-	lua_pushstring(L, ghost->getScreenPlayData(screenPlay, variable));
+	lua_pushstring(L, ghost->getScreenPlayData(screenPlay, variable).toCharArray());
 
 	return 1;
 }
@@ -431,7 +431,7 @@ int DirectorManager::readStringSharedMemory(lua_State* L) {
 	DirectorManager::instance()->runlock();
 #endif
 
-	lua_pushstring(L, data);
+	lua_pushstring(L, data.toCharArray());
 
 	return 1;
 }
@@ -1109,7 +1109,7 @@ int DirectorManager::getFactionPointsCap(lua_State* L) {
 int DirectorManager::getObjectTemplatePathByCRC(lua_State* L) {
 	uint32 crc = lua_tointeger(L, -1);
 
-	lua_pushstring(L, TemplateManager::instance()->getTemplateFile(crc));
+	lua_pushstring(L, TemplateManager::instance()->getTemplateFile(crc).toCharArray());
 
 	return 1;
 }
@@ -1177,6 +1177,6 @@ int DirectorManager::makeCreatureName(lua_State* L) {
 	NameManager* nameManager = NameManager::instance();
 	String name = nameManager->makeCreatureName(surname);
 
-	lua_pushstring(L, name);
+	lua_pushstring(L, name.toCharArray());
 	return 1;
 }

@@ -75,7 +75,7 @@ int CraftingManagerImplementation::calculateAssemblySuccess(CreatureObject* play
 	float cityBonus = player->getSkillMod("private_spec_assembly");
 
 	float assemblyPoints = ((float)player->getSkillMod(draftSchematic->getAssemblySkill())) / 10.0f;
-	int failMitigate = (player->getSkillMod(draftSchematic->getAssemblySkill() - 100) + cityBonus) / 7;
+	int failMitigate = (player->getSkillMod(draftSchematic->getAssemblySkill()) - 100 + cityBonus) / 7;
 
 	if(failMitigate < 0)
 		failMitigate = 0;
