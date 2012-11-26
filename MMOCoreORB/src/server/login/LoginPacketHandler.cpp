@@ -130,7 +130,7 @@ void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Messa
     deleteStatement << "DELETE FROM characters WHERE character_oid = " << charId;
     deleteStatement << " AND account_id = " << accountId << " AND galaxy_id = " << ServerId;
 
-    int dbDelete;
+    int dbDelete = 0;
 
     try {
 

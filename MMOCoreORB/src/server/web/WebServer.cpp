@@ -200,9 +200,9 @@ void WebServer::mongooseMgrInit() {
 	sessionTimeout = configManager->getWebSessionTimeout();
 
 	const char *options[] = {
-		"error_log_file", errorLog,
-		"access_log_file", webLog,
-		"listening_ports", ports,
+		"error_log_file", errorLog.toCharArray(),
+		"access_log_file", webLog.toCharArray(),
+		"listening_ports", ports.toCharArray(),
 		"enable_directory_listing", "no",
 		"document_root", "../doc/www",
 		NULL
@@ -431,7 +431,7 @@ void WebServer::displayUnauthorized(struct mg_connection *conn) {
 	out.append("Content-Type: text/html\r\n\r\n");
 	out.append("Access denied");
 
-	mg_printf(conn, out.toString());
+	mg_printf(conn, out.toString().toCharArray());
 }
 
 void WebServer::displayNotFound(struct mg_connection *conn) {
@@ -442,7 +442,7 @@ void WebServer::displayNotFound(struct mg_connection *conn) {
 	out.append("Content-Type: text/html\r\n\r\n");
 	out.append("404: Page not found");
 
-	mg_printf(conn, out.toString());
+	mg_printf(conn, out.toString().toCharArray());
 }
 
 void WebServer::displayLogin(StringBuffer* out) {
