@@ -243,8 +243,8 @@ public:
 	 * @param file the file stream to save the spawn points to.
 	 */
 	void saveSpawnPoints(std::ofstream& file) {
-		file << "planet_" << planetName << " = PlanetSpawnMap:new {" << std::endl;
-		file << "\tname = \"" << planetName << "\"," << std::endl;
+		file << "planet_" << planetName.toCharArray() << " = PlanetSpawnMap:new {" << std::endl;
+		file << "\tname = \"" << planetName.toCharArray() << "\"," << std::endl;
 		file << "\tnpcs = {" << std::endl;
 
 		int numberOfNpcSpawnPointsInCity = 0;
@@ -259,7 +259,7 @@ public:
 
 		file << std::endl << "\t}" << std::endl;
 		file << "}" << std::endl << std::endl;
-		file << "universe:addPlanet(planet_" + planetName + ");" << std::endl << std::endl;
+		file << "universe:addPlanet(planet_" + planetName.toCharArray() + ");" << std::endl << std::endl;
 	}
 };
 
