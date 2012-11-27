@@ -58,6 +58,7 @@ import server.zone.objects.area.ActiveArea;
 import server.zone.managers.planet.PlanetManager;
 import server.zone.managers.creature.CreatureManager;
 import server.zone.managers.objectcontroller.ObjectController;
+import server.zone.managers.gcw.GCWManager;
 import system.util.VectorMap;
 import system.util.SortedVector;
 import server.zone.managers.minigames.FishingManager;
@@ -87,6 +88,8 @@ class Zone extends SceneObject {
 	
 	private transient CreatureManager creatureManager;
 	
+	private transient GCWManager gcwManager;
+
 	@dereferenced
 	private transient SortedVector<CityRegion> cityRegionUpdateVector;
 	
@@ -229,5 +232,9 @@ class Zone extends SceneObject {
 	@dirty
 	public unsigned int getZoneCRC() {
 		return zoneCRC;
+	}
+	
+	public native GCWManager getGCWManager(){
+		return gcwManager;
 	}
 }

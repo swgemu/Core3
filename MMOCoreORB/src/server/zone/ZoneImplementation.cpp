@@ -52,7 +52,7 @@ which carries forward this exception.
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/templates/SharedObjectTemplate.h"
 #include "server/zone/packets/player/GetMapLocationsResponseMessage.h"
-
+#include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/building/BuildingObject.h"
@@ -88,6 +88,8 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& na
 
 	planetManager = NULL;
 
+	gcwManager = NULL;
+
 	setLoggingName("Zone " + name);
 }
 
@@ -101,6 +103,10 @@ void ZoneImplementation::initializePrivateData() {
 	creatureManager = new CreatureManager(_this.get());
 	creatureManager->deploy("CreatureManager " + zoneName);
 	creatureManager->setZoneProcessor(processor);
+
+	gcwManager = new GCWManager(_this.get());
+
+
 }
 
 void ZoneImplementation::finalize() {
@@ -129,11 +135,17 @@ void ZoneImplementation::startManagers() {
 
 	StructureManager::instance()->loadPlayerStructures(getZoneName());
 
+	gcwManager->loadFactionStructures(getZoneName());
+
+	gcwManager->start();
+
 	updateCityRegions();
 
 	planetManager->loadShuttleTicketCollectors();
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
+
+
 
 	managersStarted = true;
 }

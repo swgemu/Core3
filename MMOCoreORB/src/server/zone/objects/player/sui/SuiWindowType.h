@@ -209,6 +209,12 @@ public:
 	static const uint16 RANGER_TRACK_OPTIONS = 400;
 	static const uint16 RANGER_TRACK_RESULTS = 401;
 
+	// FACTION HQ STRUCTURE
+	//static const uint16 HQ_DEFENSE_STATUS = 420;
+	//static const uint16 HQ_RESET_VULNERABILITY = 421;
+	static const uint16 HQ_TERMINAL = 420;
+
+
 	//Miscellaneous 1000+
 	static const uint16 OBJECT_NAME = 1000;
 	static const uint16 FINDSESSION = 1001;

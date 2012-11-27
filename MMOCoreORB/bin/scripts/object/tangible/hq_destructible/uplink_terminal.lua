@@ -42,7 +42,7 @@
 
 
 object_tangible_hq_destructible_uplink_terminal = object_tangible_hq_destructible_shared_uplink_terminal:new {
-
+	objectMenuComponent = "UplinkTerminalMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_hq_destructible_uplink_terminal, "object/tangible/hq_destructible/uplink_terminal.iff")

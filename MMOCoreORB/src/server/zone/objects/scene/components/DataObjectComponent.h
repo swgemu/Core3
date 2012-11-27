@@ -57,6 +57,16 @@ public:
 	virtual bool isCreatureHabitatData() {
 		return false;
 	}
+
+	virtual bool isBuildingData(){
+		return false;
+	}
+
+	virtual bool isDestructibleBuildingData(){
+		return false;
+	}
+
+
 };
 
 

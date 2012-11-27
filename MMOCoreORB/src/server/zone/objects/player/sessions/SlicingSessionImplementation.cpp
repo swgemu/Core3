@@ -12,6 +12,7 @@
 
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/loot/LootManager.h"
+#include "server/zone/managers/gcw/GCWManager.h"
 
 #include "server/zone/objects/tangible/Container.h"
 #include "server/zone/objects/tangible/RelockLootContainerEvent.h"
@@ -24,6 +25,10 @@
 
 #include "server/zone/ZoneServer.h"
 
+#include "server/zone/Zone.h"
+#include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/scene/SceneObjectType.h"
+
 int SlicingSessionImplementation::initializeSession() {
 	firstCable = System::random(1);
 	nodeCable = 0;
@@ -35,6 +40,8 @@ int SlicingSessionImplementation::initializeSession() {
 	usedClamp = false;
 
 	relockEvent = NULL;
+
+	baseSlice = false;
 
 	return 0;
 }
@@ -49,7 +56,7 @@ void SlicingSessionImplementation::initalizeSlicingMenu(CreatureObject* pl, Tang
 	if (player == NULL || tangibleObject == NULL)
 		return;
 
-	if (!tangibleObject->isSliceable())
+	if (!tangibleObject->isSliceable() && !isBaseSlice())
 		return;
 
 	if (tangibleObject->containsActiveSession(SessionFacadeType::SLICING)) {
@@ -67,20 +74,22 @@ void SlicingSessionImplementation::initalizeSlicingMenu(CreatureObject* pl, Tang
 	if (inventory == NULL)
 		return;
 
-	if (!inventory->hasObjectInContainer(tangibleObject->getObjectID()) && tangibleObject->getGameObjectType() != SceneObjectType::STATICLOOTCONTAINER
-			&& tangibleObject->getGameObjectType() != SceneObjectType::MISSIONTERMINAL) {
-		player->sendSystemMessage("The object must be in your inventory in order to perform the slice.");
-		return;
-	}
+	if(!isBaseSlice()){
+		if (!inventory->hasObjectInContainer(tangibleObject->getObjectID()) && tangibleObject->getGameObjectType() != SceneObjectType::STATICLOOTCONTAINER
+				&& tangibleObject->getGameObjectType() != SceneObjectType::MISSIONTERMINAL ) {
+			player->sendSystemMessage("The object must be in your inventory in order to perform the slice.");
+			return;
+		}
 
-	if (tangibleObject->isWeaponObject() && !hasWeaponUpgradeKit()) {
-		player->sendSystemMessage("@slicing/slicing:no_weapon_kit");
-		return;
-	}
+		if (tangibleObject->isWeaponObject() && !hasWeaponUpgradeKit()) {
+			player->sendSystemMessage("@slicing/slicing:no_weapon_kit");
+			return;
+		}
 
-	if (tangibleObject->isArmorObject() && !hasArmorUpgradeKit()) {
-		player->sendSystemMessage("@slicing/slicing:no_armor_kit");
-		return;
+		if (tangibleObject->isArmorObject() && !hasArmorUpgradeKit()) {
+			player->sendSystemMessage("@slicing/slicing:no_armor_kit");
+			return;
+		}
 	}
 
 	slicingSuiBox = new SuiListBox(player, SuiWindowType::SLICING_MENU, 2);
@@ -214,6 +223,7 @@ void SlicingSessionImplementation::endSlicing() {
 
 	if (tangibleObject->isMissionTerminal())
 		player->addCooldown("slicing.terminal", (2 * (60 * 1000))); // 2min Cooldown
+
 
 	cancelSession();
 
@@ -473,6 +483,11 @@ void SlicingSessionImplementation::handleSlice(SuiListBox* suiBox) {
 	} else if (tangibleObject->isArmorObject()) {
 		handleArmorSlice();
 		playerManager->awardExperience(player, "slicing", 1000, true); // Armor Slice XP
+	} else {
+		player->sendSystemMessage("@slicing/slicing:hq_security_success");
+		playerManager->awardExperience(player,"slicing", 1000, true); // Base slicing
+		// TODO: Check for nulls
+		player->getZone()->getGCWManager()->completeSecuritySlice(this->tangibleObject.get());
 	}
 
 	endSlicing();
@@ -721,16 +736,24 @@ void SlicingSessionImplementation::handleSliceFailed() {
 		player->sendSystemMessage("@slicing/slicing:fail_armor");
 	else if (tangibleObject->isContainerObject() || tangibleObject->getGameObjectType() == SceneObjectType::PLAYERLOOTCRATE)
 		player->sendSystemMessage("@slicing/slicing:container_fail");
+	else if (isBaseSlice())
+		player->sendSystemMessage("@slicing/slicing:hq_security_fail"); // Unable to sucessfully slice the terminal, you realize that the only away
 	else
 		player->sendSystemMessage("Your attempt to slice the object has failed.");
+
 
 	if (tangibleObject->isContainerObject()) {
 		relockEvent = new RelockLootContainerEvent(tangibleObject);
 		relockEvent->schedule(3600 * 1000); // This will reactivate the 'broken' lock. (1 Hour)
 		tangibleObject->setSliced(true);
+	} else if (isBaseSlice()){
+		// TODO: Check for nulls
+		player->getZone()->getGCWManager()->failSecuritySlice(this->tangibleObject.get());
+
 	} else if (!tangibleObject->isMissionTerminal()) {
 		tangibleObject->setSliced(true);
 	}
 
 	endSlicing();
 }
+

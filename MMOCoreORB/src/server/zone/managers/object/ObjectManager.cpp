@@ -52,8 +52,11 @@ ObjectManager::ObjectManager() : DOBObjectManager() {
 	databaseManager->loadObjectDatabase("spawnareas", true);
 	databaseManager->loadObjectDatabase("spawnobservers", true);
 	databaseManager->loadObjectDatabase("aiobservers", true);
+	databaseManager->loadObjectDatabase("factionstructures", true);
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
+	databaseManager->setLogLevel(databaseManager->DEBUG);
+
 
 	loadLastUsedObjectID();
 
@@ -750,6 +753,7 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, int persistenceLevel,
 
 	object = instantiateSceneObject(objectCRC, oid, true);
 
+
 	if (object == NULL) {
 		StringBuffer msg;
 		msg << "could not create object CRC = 0x" << hex << objectCRC << " template:" << templateManager->getTemplateFile(objectCRC);
@@ -766,6 +770,7 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, int persistenceLevel,
 
 		object->queueUpdateToDatabaseTask();
 	}
+
 
 	return object;
 }
@@ -879,8 +884,13 @@ int ObjectManager::destroyObjectFromDatabase(uint64 objectID) {
 	DistributedObject* obj = getObject(objectID);
 
 	if (obj != NULL)
+	{
+		//setLogging(true);
+		//info("Marking " + String::valueOf(objectID) + " for deletion deletion");
+	//	setLogging(false);
 		obj->_setMarkedForDeletion(true);
 
+	}
 
 	return 1;
 }

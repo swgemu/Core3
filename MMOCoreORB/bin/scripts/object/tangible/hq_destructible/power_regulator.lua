@@ -42,7 +42,7 @@
 
 
 object_tangible_hq_destructible_power_regulator = object_tangible_hq_destructible_shared_power_regulator:new {
-
+	objectMenuComponent = "PowerRegulatorMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_hq_destructible_power_regulator, "object/tangible/hq_destructible/power_regulator.iff")

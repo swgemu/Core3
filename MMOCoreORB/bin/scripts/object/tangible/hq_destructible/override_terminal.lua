@@ -42,7 +42,7 @@
 
 
 object_tangible_hq_destructible_override_terminal = object_tangible_hq_destructible_shared_override_terminal:new {
-
+	objectMenuComponent = "OverrideTerminalMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_hq_destructible_override_terminal, "object/tangible/hq_destructible/override_terminal.iff")

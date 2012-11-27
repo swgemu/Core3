@@ -48,7 +48,7 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 		maintenanceCost = 5,
 		baseMaintenanceRate = 5,
 		dataObjectComponent = "DestructibleBuildingDataComponent",
-		allowedZones = {"dantooine", "naboo", "rori"},
+		allowedZones = {"dantooine", "naboo", "rori","tatooine"},
 		constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
 		length = 7,
 		width = 6,
@@ -56,6 +56,7 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 
 			{templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = 0, z = 0, y = -6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 3, containmentType = -1 },
 			
+			--{templateFile = "object/installation/turret/turret_block_med.iff", x=0, z=0, y=0, ox=0, oy=0, oz=0, ow=1, cell=-1, containmenttype=-1},
 			-- left side columns
 			
 			{templateFile = "object/static/structure/military/military_column_med_rebel_style_01.iff", x=-5.5, z=0, y=30.75, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 1

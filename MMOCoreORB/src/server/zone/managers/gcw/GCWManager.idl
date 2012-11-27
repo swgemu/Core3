@@ -1,0 +1,222 @@
+package server.zone.managers.gcw;
+
+import engine.core.ManagedService;
+import engine.core.Task;
+import server.zone.Zone;
+import engine.log.Logger;
+
+
+import engine.core.ManagedObject;
+import system.util.SortedVector;
+
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.building.BuildingObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.player.PlayerObject;
+
+include server.zone.objects.building.components.DestructibleBuildingDataComponent;
+
+class GCWManager extends ManagedService implements Logger {
+
+	public final static int GCWCHECKTIMER = 7200; // 2 hours
+	public final static int VULNERABILITYDURATION = 7200; //  10 minutes for testing
+	public final static int VULNERABILITYFREQUENCY = 172800; // 1 hour for testing
+	public final static int RESETTIMER = 300; // amount of time before waiting to reset vulnerability	
+	public final static int SLICECOOLDOWN = 120; // test for 30 seconds after a failed slice
+	public final static int TOTALDNASAMPLES = 10;
+	public final static int DNAMATCHESREQUIRED = 10;
+	public final static int DESTRUCTIONTIMER = 600;
+	
+	private Zone zone;
+	
+	@dereferenced 
+	protected transient SortedVector<BuildingObject > gcwBaseList;
+	
+	@dereferenced
+	protected transient VectorMap<unsigned long, Reference<Task> > gcwStartTasks;
+	
+	@dereferenced
+	protected transient VectorMap<unsigned long, Reference<Task> > gcwEndTasks;
+	
+	@dereferenced
+	protected transient VectorMap<string, string> dnaHash;
+	
+	@dereferenced
+	protected transient VectorMap<unsigned long, Reference<Task> > gcwDestroyTasks;
+	
+	public native GCWManager(Zone zne);
+	
+	public native void initialize();
+	
+	public native void start();
+	
+	public native void loadFactionStructures(final string zoneName);
+	
+	//public native void initializeGCWBase(BuildingObject building);
+
+	public native void registerGCWBase(BuildingObject building, boolean initializeBase);
+	
+	public native void unregisterGCWBase(BuildingObject building);
+	
+	public native void performGCWTasks();
+
+	public native void startVulnerability(BuildingObject building);
+
+	public native void endVulnerability(BuildingObject building);
+	
+	public native boolean isBaseVulnerable(BuildingObject building);
+	
+	public native boolean isBandIdentified(BuildingObject building);
+	
+	public native boolean isUplinkJammed(BuildingObject building);
+	
+	public native boolean isShutdownSequenceStarted(BuildingObject building);
+	
+	public native boolean isSecurityTermSliced(BuildingObject building);
+
+	public native boolean isPowerOverloaded(BuildingObject building);
+	
+	// called to reschedule the vulnerability time of a base
+	public native void resetVulnerability(CreatureObject creature, BuildingObject building);
+
+	public  native void sendBaseDefenseStatus(CreatureObject creature, BuildingObject building);
+	
+	public native void doBaseDestruction(BuildingObject building);
+	
+	public native void sendResetVerification(CreatureObject creature, BuildingObject building);
+	
+	public native void sendJamUplinkMenu(CreatureObject creature, BuildingObject building);
+	
+	public native void verifyUplinkBand(CreatureObject creature, BuildingObject building, int band);
+	
+	public native void startSlice(CreatureObject creature, BuildingObject building);
+	
+	public native void sendDNASampleMenu(CreatureObject creature, BuildingObject building);
+		
+	public native void completeSecuritySlice(TangibleObject securityTerminal);
+	
+	public native void failSecuritySlice(TangibleObject securityTerminal);
+	
+	public native boolean isTerminalDamaged(TangibleObject securityTerminal);
+	
+	public native boolean isDNASampled(BuildingObject building);
+	
+	public native void repairTerminal(CreatureObject creature, TangibleObject securityTerminal);
+	
+	public native void abortShutdownSequence(CreatureObject creature, BuildingObject building);
+	
+	public native void processDNASample(CreatureObject creature, BuildingObject building, int indx);
+	
+	//public native void processDNASample(CreatureObject creature, BuildingObject building, final string dnaString, int indx);
+	
+	public native void handlePowerRegulatorSwitch(CreatureObject creature, BuildingObject building, int indx);
+	
+	public native void sendPowerRegulatorControls(CreatureObject creature, BuildingObject building);
+	
+	public synchronized string getDNAHash(final string usersample){
+		return dnaHash.get(usersample); 
+	}
+	
+	protected synchronized void addDNAHash(final string usersample, final string systemsample){
+		dnaHash.put(usersample, systemsample);
+	}
+	
+	protected synchronized boolean hasBase(BuildingObject building){
+		return gcwBaseList.contains(building);
+	}
+	
+	protected synchronized boolean dropBase(BuildingObject building){
+		return gcwBaseList.drop(building);
+	}
+	
+	protected synchronized void addBase(BuildingObject building){
+		gcwBaseList.put(building);
+	}
+	
+	protected synchronized BuildingObject getBase(int indx){
+		return gcwBaseList.get(indx);
+	}
+	protected synchronized boolean hasStartTask(unsigned long id){
+		return gcwStartTasks.contains(id);
+	}
+	
+	@local
+	protected synchronized boolean addStartTask(unsigned long id, Reference<Task> newTask){
+		if(!gcwStartTasks.contains(id)){
+			return gcwStartTasks.put(id, newTask);
+		}
+	return false;
+	}
+	
+	@local
+	protected synchronized Reference<Task> getStartTask(unsigned long id){
+		return gcwStartTasks.get(id);
+	}
+	
+	protected synchronized boolean dropStartTask(unsigned long id){
+		return gcwStartTasks.drop(id);
+	}
+	
+	protected synchronized boolean hasEndTask(unsigned long id){
+		return gcwEndTasks.contains(id);
+	}
+	
+	@local
+	protected synchronized boolean addEndTask(unsigned long id, Reference<Task> newTask){
+		if(!gcwEndTasks.contains(id)){
+			return	gcwEndTasks.put(id, newTask);
+		}
+		return false;
+	}
+	
+	@local
+	protected synchronized Reference<Task> getEndTask(unsigned long id){
+		return gcwEndTasks.get(id);
+	}
+	
+	protected synchronized boolean dropEndTask(unsigned long id){
+		return gcwEndTasks.drop(id);
+	}
+	
+	protected synchronized boolean hasDestroyTask(unsigned long id){
+		return gcwDestroyTasks.contains(id);
+	}
+	
+	@local
+	protected synchronized boolean addDestroyTask(unsigned long id, Reference<Task> newTask){
+		if(!gcwDestroyTasks.contains(id)){
+			return	gcwDestroyTasks.put(id, newTask);
+		}
+		return false;
+	}
+	
+	@local
+	protected synchronized Reference<Task> getDestroyTask(unsigned long id){
+		return gcwDestroyTasks.get(id);
+	}
+		
+	protected synchronized boolean dropDestroyTask(unsigned long id){
+		return gcwDestroyTasks.drop(id);
+	}
+	private native DestructibleBuildingDataComponent getDestructibleBuildingData(BuildingObject building);
+	
+	private native void checkVulnerabilityData(BuildingObject building);
+
+	private native void scheduleVulnerabilityStart(BuildingObject building);
+
+	private native void scheduleVulnerabilityEnd(BuildingObject building);
+
+	public native void scheduleBaseDestruction(BuildingObject building);
+	
+	private native void initializeBaseTimers(BuildingObject building);
+	
+	private native void renewUplinkBand(BuildingObject building);
+	
+	private native void refreshExpiredVulnerability(BuildingObject building);
+	
+	private native void initializeNewVulnerability(DestructibleBuildingDataComponent data);
+	
+	private native void refreshDNA(DestructibleBuildingDataComponent data);
+		
+}
+

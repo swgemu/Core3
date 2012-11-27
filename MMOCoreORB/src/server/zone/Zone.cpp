@@ -14,6 +14,8 @@
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
+#include "server/zone/managers/gcw/GCWManager.h"
+
 #include "server/zone/managers/minigames/FishingManager.h"
 
 #include "server/zone/managers/minigames/GamblingManager.h"
@@ -28,7 +30,7 @@
  *	ZoneStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECONTAINERCOMPONENT__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_ADDCITYREGIONTOUPDATE__CITYREGION_,RPC_UPDATECITYREGIONS__,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_GETBOUNDINGRADIUS__,RPC_REGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_UNREGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_GETZONENAME__,RPC_GETZONECRC__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECONTAINERCOMPONENT__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_ADDCITYREGIONTOUPDATE__CITYREGION_,RPC_UPDATECITYREGIONS__,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_GETBOUNDINGRADIUS__,RPC_REGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_UNREGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_GETZONENAME__,RPC_GETZONECRC__,RPC_GETGCWMANAGER__};
 
 Zone::Zone(ZoneProcessServer* processor, const String& zoneName) : SceneObject(DummyConstructorParameter::instance()) {
 	ZoneImplementation* _implementation = new ZoneImplementation(processor, zoneName);
@@ -491,6 +493,19 @@ unsigned int Zone::getZoneCRC() {
 		return _implementation->getZoneCRC();
 }
 
+GCWManager* Zone::getGCWManager() {
+	ZoneImplementation* _implementation = static_cast<ZoneImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETGCWMANAGER__);
+
+		return static_cast<GCWManager*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getGCWManager();
+}
+
 DistributedObjectServant* Zone::_getImplementation() {
 
 	 if (!_updated) _updated = true;
@@ -713,6 +728,11 @@ unsigned int ZoneImplementation::getZoneCRC() {
 	return zoneCRC;
 }
 
+GCWManager* ZoneImplementation::getGCWManager() {
+	// server/zone/Zone.idl():  		return gcwManager;
+	return gcwManager;
+}
+
 /*
  *	ZoneAdapter
  */
@@ -869,6 +889,11 @@ void ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertInt(getZoneCRC());
 		}
 		break;
+	case RPC_GETGCWMANAGER__:
+		{
+			resp->insertLong(getGCWManager()->_getObjectID());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -984,6 +1009,10 @@ String ZoneAdapter::getZoneName() {
 
 unsigned int ZoneAdapter::getZoneCRC() {
 	return (static_cast<Zone*>(stub))->getZoneCRC();
+}
+
+GCWManager* ZoneAdapter::getGCWManager() {
+	return (static_cast<Zone*>(stub))->getGCWManager();
 }
 
 /*

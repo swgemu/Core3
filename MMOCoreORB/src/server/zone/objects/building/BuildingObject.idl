@@ -357,4 +357,7 @@ class BuildingObject extends StructureObject {
 	public native void payAccessFee(CreatureObject player);
 
 	public native void updatePaidAccessList();
+
+	public native boolean isGCWBase();
+
 }

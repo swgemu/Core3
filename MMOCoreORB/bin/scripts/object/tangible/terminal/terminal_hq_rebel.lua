@@ -42,7 +42,7 @@
 
 
 object_tangible_terminal_terminal_hq_rebel = object_tangible_terminal_shared_terminal_hq_rebel:new {
-
+	objectMenuComponent = "HQMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_terminal_hq_rebel, "object/tangible/terminal/terminal_hq_rebel.iff")

@@ -31,7 +31,6 @@
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
-
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 
 #include "server/zone/objects/player/sui/callbacks/StructurePayAccessFeeSuiCallback.h"
@@ -880,6 +879,20 @@ void BuildingObjectImplementation::payAccessFee(CreatureObject* player) {
 	player->sendSystemMessage("@player/player_utility:access_granted");
 
 }
+
+bool BuildingObjectImplementation::isGCWBase(){
+
+	DataObjectComponentReference* data = getDataObjectComponent();
+
+	if(dataObjectComponent == NULL)
+		return false;
+
+	if(!dataObjectComponent->isDestructibleBuildingData())
+		return false;
+
+	return true;
+}
+
 
 void BuildingObjectImplementation::setAccessFee(int fee, int duration) {
 	accessFee = fee;

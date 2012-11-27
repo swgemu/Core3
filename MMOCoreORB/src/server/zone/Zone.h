@@ -80,6 +80,20 @@ using namespace server::zone::managers::objectcontroller;
 namespace server {
 namespace zone {
 namespace managers {
+namespace gcw {
+
+class GCWManager;
+
+} // namespace gcw
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::gcw;
+
+namespace server {
+namespace zone {
+namespace managers {
 namespace minigames {
 
 class FishingManager;
@@ -258,6 +272,8 @@ public:
 
 	unsigned int getZoneCRC();
 
+	GCWManager* getGCWManager();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -290,6 +306,8 @@ class ZoneImplementation : public SceneObjectImplementation {
 	ManagedReference<PlanetManager* > planetManager;
 
 	ManagedReference<CreatureManager* > creatureManager;
+
+	ManagedReference<GCWManager* > gcwManager;
 
 	SortedVector<ManagedReference<CityRegion* > > cityRegionUpdateVector;
 
@@ -385,6 +403,8 @@ public:
 	String getZoneName();
 
 	unsigned int getZoneCRC();
+
+	GCWManager* getGCWManager();
 
 	WeakReference<Zone*> _this;
 
@@ -482,6 +502,8 @@ public:
 	String getZoneName();
 
 	unsigned int getZoneCRC();
+
+	GCWManager* getGCWManager();
 
 };
 

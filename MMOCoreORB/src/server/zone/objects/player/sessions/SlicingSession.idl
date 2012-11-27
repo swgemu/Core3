@@ -76,6 +76,8 @@ class SlicingSession extends Facade {
 
 	protected boolean usedNode;
 	protected boolean usedClamp;
+
+	protected boolean baseSlice;
 		
 	public SlicingSession(CreatureObject parent) {
 		Logger.setLoggingName("SlicingSession");
@@ -116,7 +118,7 @@ class SlicingSession extends Facade {
 	private native void generateSliceMenu(SuiListBox suiBox);
 	
 	private string getPrefix(TangibleObject obj) {
-		if (obj.isMissionTerminal())
+		if (obj.isMissionTerminal() || isBaseSlice())
 			return "terminal_";
 		else if (obj.isWeaponObject())
 			return "weapon_";
@@ -132,6 +134,13 @@ class SlicingSession extends Facade {
 		return ((byte) cableBlue + (byte) cableRed);
 	}
 
+	public native boolean isBaseSlice() {
+		return baseSlice;
+	}
+
+	public native void setBaseSlice(boolean val){
+		baseSlice = val;
+	}
 	private native void handleSliceFailed();
 		/*if (tangibleObject.isMissionTerminal())
 			player.sendSystemMessage("@slicing/slicing:terminal_fail");
@@ -186,5 +195,7 @@ class SlicingSession extends Facade {
 	private native void handleSliceEffectiveness(byte percent);
 
 	private native void handleContainerSlice();
+
+
 
 }

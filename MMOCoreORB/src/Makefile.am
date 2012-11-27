@@ -299,6 +299,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/variables/CreatureTemplateReference.cpp \
 		server/zone/objects/player/sessions/ImageDesignPositionObserverImplementation.cpp \
 		server/zone/objects/building/components/CityHallZoneComponent.cpp \
+		server/zone/objects/building/components/DestructibleBuildingDataComponent.cpp \
 		server/zone/objects/structure/components/StructureZoneComponent.cpp \
 		server/zone/objects/tangible/components/FireHeavyWeaponMenuComponent.cpp \
 		server/zone/objects/tangible/components/ThrowGrenadeMenuComponent.cpp \
@@ -308,6 +309,11 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/installation/components/InstallationObjectMenuComponent.cpp \
 		server/zone/objects/installation/components/FactoryObjectMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.cpp \
+		server/zone/objects/tangible/terminal/components/HQMenuComponent.cpp \
+		server/zone/objects/tangible/terminal/components/UplinkTerminalMenuComponent.cpp \
+		server/zone/objects/tangible/terminal/components/SecurityTerminalMenuComponent.cpp \
+		server/zone/objects/tangible/terminal/components/OverrideTerminalMenuComponent.cpp \
+		server/zone/objects/tangible/terminal/components/PowerRegulatorMenuComponent.cpp \
 		server/zone/objects/region/events/CityUpdateEvent.cpp \
 		server/zone/objects/tangible/deed/structure/StructureDeedImplementation.cpp \
 		server/zone/objects/player/sui/callbacks/CityManageMilitiaSuiCallback.cpp \
@@ -413,6 +419,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/loot/LootManagerImplementation.cpp \
 		server/zone/managers/faction/FactionManager.cpp \
 		server/zone/managers/faction/FactionMap.cpp \
+		server/zone/managers/gcw/GCWManager.cpp \
+		server/zone/managers/gcw/GCWManagerImplementation.cpp \
 		server/zone/managers/components/ComponentManager.cpp \
 		server/zone/managers/planet/HeightMap.cpp \
 		server/zone/managers/visibility/VisibilityManager.cpp \

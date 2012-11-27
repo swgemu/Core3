@@ -81,6 +81,10 @@ public:
 
 	void endSlicing();
 
+	bool isBaseSlice();
+
+	void setBaseSlice(bool val);
+
 	int getSlicingSkill(CreatureObject* slicer);
 
 	bool hasPrecisionLaserKnife(bool removeItem = true);
@@ -139,6 +143,8 @@ protected:
 
 	bool usedClamp;
 
+	bool baseSlice;
+
 public:
 	SlicingSessionImplementation(CreatureObject* parent);
 
@@ -163,6 +169,12 @@ private:
 
 	byte getProgress();
 
+public:
+	bool isBaseSlice();
+
+	void setBaseSlice(bool val);
+
+private:
 	void handleSliceFailed();
 
 public:
@@ -248,6 +260,10 @@ public:
 	int clearSession();
 
 	void endSlicing();
+
+	bool isBaseSlice();
+
+	void setBaseSlice(bool val);
 
 	int getSlicingSkill(CreatureObject* slicer);
 

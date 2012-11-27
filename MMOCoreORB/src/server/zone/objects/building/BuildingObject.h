@@ -238,6 +238,8 @@ public:
 
 	void updatePaidAccessList();
 
+	bool isGCWBase();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -417,6 +419,8 @@ public:
 
 	void updatePaidAccessList();
 
+	bool isGCWBase();
+
 	WeakReference<BuildingObject*> _this;
 
 	operator const BuildingObject*();
@@ -561,6 +565,8 @@ public:
 	void payAccessFee(CreatureObject* player);
 
 	void updatePaidAccessList();
+
+	bool isGCWBase();
 
 };
 

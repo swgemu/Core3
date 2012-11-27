@@ -19,6 +19,8 @@
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
 #include "server/zone/objects/player/components/PlayerZoneComponent.h"
+#include "server/zone/objects/building/components/BuildingDataComponent.h"
+#include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
 #include "server/zone/objects/building/components/ShuttleZoneComponent.h"
 #include "server/zone/objects/player/components/PlayerObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/ContainerObjectComponent.h"
@@ -46,6 +48,11 @@
 #include "server/zone/objects/tangible/deed/components/PlaceStructureComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceCityHallComponent.h"
 #include "server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.h"
+#include "server/zone/objects/tangible/terminal/components/HQMenuComponent.h"
+#include "server/zone/objects/tangible/terminal/components/UplinkTerminalMenuComponent.h"
+#include "server/zone/objects/tangible/terminal/components/SecurityTerminalMenuComponent.h"
+#include "server/zone/objects/tangible/terminal/components/OverrideTerminalMenuComponent.h"
+#include "server/zone/objects/tangible/terminal/components/PowerRegulatorMenuComponent.h"
 #include "server/zone/objects/installation/components/InstallationObjectMenuComponent.h"
 #include "server/zone/objects/installation/components/FactoryObjectMenuComponent.h"
 #include "server/zone/ZoneContainerComponent.h"
@@ -94,6 +101,11 @@ ComponentManager::ComponentManager() {
 	components.put("ShuttleZoneComponent", new ShuttleZoneComponent());
 	components.put("ShuttleInstallationZoneComponent", new ShuttleInstallationZoneComponent());
 
+	components.put("BuildingDataComponent", new BuildingDataComponent() );
+	components.put("DestructibleBuildingDataComponent", new DestructibleBuildingDataComponent());
+	dataObjectFactory.registerObject<BuildingDataComponent>("BuildingDataComponent");
+	dataObjectFactory.registerObject<DestructibleBuildingDataComponent>("DestructibleBuildingDataComponent");
+
 	components.put("ObjectMenuComponent", new ObjectMenuComponent());
 	components.put("TangibleObjectMenuComponent", new TangibleObjectMenuComponent());
 	components.put("PlayerObjectMenuComponent", new PlayerObjectMenuComponent());
@@ -127,6 +139,8 @@ ComponentManager::ComponentManager() {
 	components.put("FactoryObjectMenuComponent", new FactoryObjectMenuComponent());
 	components.put("InstallationObjectMenuComponent", new InstallationObjectMenuComponent());
 
+
+	components.put("HQMenuComponent", new HQMenuComponent());
 	components.put("ContainerObjectComponent", new ContainerObjectComponent());
 	components.put("StructureContainerComponent", new StructureContainerComponent());
 
@@ -184,5 +198,9 @@ ComponentManager::ComponentManager() {
 	components.put("ElevatorMenuComponent", new ElevatorMenuComponent());
 	components.put("ElevatorUpMenuComponent", new ElevatorUpMenuComponent());
 	components.put("ElevatorDownMenuComponent", new ElevatorDownMenuComponent());
+	components.put("UplinkTerminalMenuComponent", new UplinkTerminalMenuComponent());
+	components.put("SecurityTerminalMenuComponent", new SecurityTerminalMenuComponent());
+	components.put("OverrideTerminalMenuComponent", new OverrideTerminalMenuComponent());
+	components.put("PowerRegulatorMenuComponent", new PowerRegulatorMenuComponent());
 
 }

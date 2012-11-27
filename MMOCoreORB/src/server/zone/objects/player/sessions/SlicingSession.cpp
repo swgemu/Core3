@@ -12,7 +12,7 @@
  *	SlicingSessionStub
  */
 
-enum {RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_ENDSLICING__,RPC_GETSLICINGSKILL__CREATUREOBJECT_,RPC_HASPRECISIONLASERKNIFE__BOOL_,RPC_HASWEAPONUPGRADEKIT__,RPC_HASARMORUPGRADEKIT__,RPC_USECLAMPFROMINVENTORY__SLICINGTOOL_,};
+enum {RPC_INITIALIZESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_ENDSLICING__,RPC_ISBASESLICE__,RPC_SETBASESLICE__BOOL_,RPC_GETSLICINGSKILL__CREATUREOBJECT_,RPC_HASPRECISIONLASERKNIFE__BOOL_,RPC_HASWEAPONUPGRADEKIT__,RPC_HASARMORUPGRADEKIT__,RPC_USECLAMPFROMINVENTORY__SLICINGTOOL_,};
 
 SlicingSession::SlicingSession(CreatureObject* parent) : Facade(DummyConstructorParameter::instance()) {
 	SlicingSessionImplementation* _implementation = new SlicingSessionImplementation(parent);
@@ -98,6 +98,33 @@ void SlicingSession::endSlicing() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->endSlicing();
+}
+
+bool SlicingSession::isBaseSlice() {
+	SlicingSessionImplementation* _implementation = static_cast<SlicingSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISBASESLICE__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isBaseSlice();
+}
+
+void SlicingSession::setBaseSlice(bool val) {
+	SlicingSessionImplementation* _implementation = static_cast<SlicingSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETBASESLICE__BOOL_);
+		method.addBooleanParameter(val);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setBaseSlice(val);
 }
 
 int SlicingSession::getSlicingSkill(CreatureObject* slicer) {
@@ -313,6 +340,11 @@ bool SlicingSessionImplementation::readObjectMember(ObjectInputStream* stream, c
 		return true;
 	}
 
+	if (_name == "SlicingSession.baseSlice") {
+		TypeInfo<bool >::parseFromBinaryStream(&baseSlice, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -394,8 +426,16 @@ int SlicingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "SlicingSession.baseSlice";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<bool >::toBinaryStream(&baseSlice, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 8;
+
+	return _count + 9;
 }
 
 SlicingSessionImplementation::SlicingSessionImplementation(CreatureObject* parent) {
@@ -432,7 +472,7 @@ int SlicingSessionImplementation::clearSession() {
 
 String SlicingSessionImplementation::getPrefix(TangibleObject* obj) {
 	// server/zone/objects/player/sessions/SlicingSession.idl():  			return "";
-	if (obj->isMissionTerminal())	// server/zone/objects/player/sessions/SlicingSession.idl():  			return "terminal_";
+	if (obj->isMissionTerminal() || isBaseSlice())	// server/zone/objects/player/sessions/SlicingSession.idl():  			return "terminal_";
 	return "terminal_";
 
 	else 	// server/zone/objects/player/sessions/SlicingSession.idl():  			return "";
@@ -454,6 +494,16 @@ String SlicingSessionImplementation::getPrefix(TangibleObject* obj) {
 byte SlicingSessionImplementation::getProgress() {
 	// server/zone/objects/player/sessions/SlicingSession.idl():  		return ((byte) cableBlue + (byte) cableRed);
 	return ((byte) cableBlue + (byte) cableRed);
+}
+
+bool SlicingSessionImplementation::isBaseSlice() {
+	// server/zone/objects/player/sessions/SlicingSession.idl():  		return baseSlice;
+	return baseSlice;
+}
+
+void SlicingSessionImplementation::setBaseSlice(bool val) {
+	// server/zone/objects/player/sessions/SlicingSession.idl():  		baseSlice = val;
+	baseSlice = val;
 }
 
 /*
@@ -489,6 +539,16 @@ void SlicingSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_ENDSLICING__:
 		{
 			endSlicing();
+		}
+		break;
+	case RPC_ISBASESLICE__:
+		{
+			resp->insertBoolean(isBaseSlice());
+		}
+		break;
+	case RPC_SETBASESLICE__BOOL_:
+		{
+			setBaseSlice(inv->getBooleanParameter());
 		}
 		break;
 	case RPC_GETSLICINGSKILL__CREATUREOBJECT_:
@@ -535,6 +595,14 @@ int SlicingSessionAdapter::clearSession() {
 
 void SlicingSessionAdapter::endSlicing() {
 	(static_cast<SlicingSession*>(stub))->endSlicing();
+}
+
+bool SlicingSessionAdapter::isBaseSlice() {
+	return (static_cast<SlicingSession*>(stub))->isBaseSlice();
+}
+
+void SlicingSessionAdapter::setBaseSlice(bool val) {
+	(static_cast<SlicingSession*>(stub))->setBaseSlice(val);
 }
 
 int SlicingSessionAdapter::getSlicingSkill(CreatureObject* slicer) {
