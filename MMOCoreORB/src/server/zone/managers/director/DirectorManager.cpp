@@ -46,6 +46,7 @@
 #include "server/zone/objects/player/sui/LuaSuiBox.h"
 #include "server/zone/objects/scene/components/LuaObjectMenuResponse.h"
 #include "server/zone/objects/scene/variables/ContainerPermissions.h"
+#include "server/zone/objects/tangible/deed/Deed.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 
@@ -222,6 +223,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaSuiManager>::Register(luaEngine->getLuaState());
 	Luna<LuaSuiBox>::Register(luaEngine->getLuaState());
 	Luna<LuaObjectMenuResponse>::Register(luaEngine->getLuaState());
+	Luna<LuaDeed>::Register(luaEngine->getLuaState());
 
 	if (!luaEngine->runFile("scripts/screenplays/screenplay.lua"))
 		error("could not run scripts/screenplays/screenplay.lua");
