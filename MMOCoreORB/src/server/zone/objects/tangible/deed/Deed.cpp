@@ -388,3 +388,157 @@ DistributedObjectAdapter* DeedHelper::createAdapter(DistributedObjectStub* obj) 
 	return adapter;
 }
 
+const char LuaDeed::className[] = "LuaDeed";
+
+Luna<LuaDeed>::RegType LuaDeed::Register[] = {
+	{ "_setObject", &LuaDeed::_setObject },
+	{ "_getObject", &LuaDeed::_getObject },
+	{ "initializeTransientMembers", &LuaDeed::initializeTransientMembers },
+	{ "loadTemplateData", &LuaDeed::loadTemplateData },
+	{ "fillAttributeList", &LuaDeed::fillAttributeList },
+	{ "updateCraftingValues", &LuaDeed::updateCraftingValues },
+	{ "setGeneratedObjectTemplate", &LuaDeed::setGeneratedObjectTemplate },
+	{ "getGeneratedObjectTemplate", &LuaDeed::getGeneratedObjectTemplate },
+	{ "isDeedObject", &LuaDeed::isDeedObject },
+	{ 0, 0 }
+};
+
+LuaDeed::LuaDeed(lua_State *L) {
+	realObject = static_cast<Deed*>(lua_touserdata(L, 1));
+}
+
+LuaDeed::~LuaDeed() {
+}
+
+int LuaDeed::_setObject(lua_State* L) {
+	realObject = static_cast<Deed*>(lua_touserdata(L, -1));
+
+	return 0;
+}
+
+int LuaDeed::_getObject(lua_State* L) {
+	lua_pushlightuserdata(L, realObject.get());
+
+	return 1;
+}
+
+int LuaDeed::initializeTransientMembers(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (parameterCount == 0) {
+		realObject->initializeTransientMembers();
+
+		return 0;
+	} else {
+		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'Deed:initializeTransientMembers()'");
+	}
+}
+
+int LuaDeed::loadTemplateData(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (lua_isuserdata(L, -1)) {
+		if (parameterCount == 1) {
+			SharedObjectTemplate* templateData = static_cast<SharedObjectTemplate*>(lua_touserdata(L, -1));
+
+			realObject->loadTemplateData(templateData);
+
+			return 0;
+		} else {
+			throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'Deed:loadTemplateData(userdata)'");
+		}
+	} else {
+		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'Deed:loadTemplateData(userdata)'");
+	}
+}
+
+int LuaDeed::fillAttributeList(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (lua_isuserdata(L, -1)) {
+		if (lua_isuserdata(L, -2)) {
+			if (parameterCount == 2) {
+				AttributeListMessage* alm = static_cast<AttributeListMessage*>(lua_touserdata(L, -2));
+				CreatureObject* object = static_cast<CreatureObject*>(lua_touserdata(L, -1));
+
+				realObject->fillAttributeList(alm, object);
+
+				return 0;
+			} else {
+				throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'Deed:fillAttributeList(userdata, userdata)'");
+			}
+		} else {
+			throw LuaCallbackException(L, "invalid argument at 1 for lua method 'Deed:fillAttributeList(userdata, userdata)'");
+		}
+	} else {
+		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'Deed:fillAttributeList(userdata, userdata)'");
+	}
+}
+
+int LuaDeed::updateCraftingValues(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (lua_isboolean(L, -1)) {
+		if (lua_isuserdata(L, -2)) {
+			if (parameterCount == 2) {
+				CraftingValues* values = static_cast<CraftingValues*>(lua_touserdata(L, -2));
+				bool firstUpdate = lua_toboolean(L, -1);
+
+				realObject->updateCraftingValues(values, firstUpdate);
+
+				return 0;
+			} else {
+				throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'Deed:updateCraftingValues(userdata, boolean)'");
+			}
+		} else {
+			throw LuaCallbackException(L, "invalid argument at 1 for lua method 'Deed:updateCraftingValues(userdata, boolean)'");
+		}
+	} else {
+		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'Deed:updateCraftingValues(userdata, boolean)'");
+	}
+}
+
+int LuaDeed::setGeneratedObjectTemplate(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (lua_isstring(L, -1)) {
+		if (parameterCount == 1) {
+			const String templ = lua_tostring(L, -1);
+
+			realObject->setGeneratedObjectTemplate(templ);
+
+			return 0;
+		} else {
+			throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'Deed:setGeneratedObjectTemplate(string)'");
+		}
+	} else {
+		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'Deed:setGeneratedObjectTemplate(string)'");
+	}
+}
+
+int LuaDeed::getGeneratedObjectTemplate(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (parameterCount == 0) {
+		String result = realObject->getGeneratedObjectTemplate();
+
+		lua_pushstring(L, result.toCharArray());
+		return 1;
+	} else {
+		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'Deed:getGeneratedObjectTemplate()'");
+	}
+}
+
+int LuaDeed::isDeedObject(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (parameterCount == 0) {
+		bool result = realObject->isDeedObject();
+
+		lua_pushboolean(L, result);
+		return 1;
+	} else {
+		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'Deed:isDeedObject()'");
+	}
+}
+

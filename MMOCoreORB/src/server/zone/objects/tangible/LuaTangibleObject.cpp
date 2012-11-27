@@ -15,6 +15,10 @@ Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 		{ "setOptionsBitmask", &LuaTangibleObject::setOptionsBitmask },
 		{ "setCustomizationVariable", &LuaTangibleObject::setCustomizationVariable },
 		{ "setConditionDamage", &LuaTangibleObject::setConditionDamage },
+		{ "setFaction", &LuaTangibleObject::setFaction },
+		{ "getFaction", &LuaTangibleObject::getFaction },
+		{ "isImperial", &LuaTangibleObject::isImperial },
+		{ "isRebel", &LuaTangibleObject::isRebel },
 		{ 0, 0 }
 };
 
@@ -48,4 +52,33 @@ int LuaTangibleObject::setConditionDamage(lua_State* L) {
 	realObject->setConditionDamage(damage, true);
 
 	return 0;
+}
+
+int LuaTangibleObject::setFaction(lua_State* L){
+	uint32 faction = lua_tointeger(L, -1);
+
+	realObject->setFaction(faction);
+
+	return 0;
+}
+
+int LuaTangibleObject::getFaction(lua_State* L){
+	uint32 faction = realObject->getFaction();
+
+	lua_pushinteger(L, faction);
+
+	return 1;
+
+}
+
+int LuaTangibleObject::isImperial(lua_State* L){
+	lua_pushboolean(L, realObject->isImperial());
+
+	return 1;
+}
+
+int LuaTangibleObject::isRebel(lua_State* L){
+	lua_pushboolean(L, realObject->isRebel());
+
+	return 1;
 }

@@ -61,6 +61,8 @@ class SharedObjectTemplate;
 
 using namespace server::zone::templates;
 
+#include "engine/lua/Luna.h"
+
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 #include "engine/lua/LuaObject.h"
@@ -210,6 +212,27 @@ public:
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class Singleton<DeedHelper>;
+};
+
+class LuaDeed {
+public:
+	static const char className[];
+	static Luna<LuaDeed>::RegType Register[];
+
+	LuaDeed(lua_State *L);
+	virtual ~LuaDeed();
+
+	int _setObject(lua_State *L);
+	int _getObject(lua_State *L);
+	int initializeTransientMembers(lua_State *L);
+	int loadTemplateData(lua_State *L);
+	int fillAttributeList(lua_State *L);
+	int updateCraftingValues(lua_State *L);
+	int setGeneratedObjectTemplate(lua_State *L);
+	int getGeneratedObjectTemplate(lua_State *L);
+	int isDeedObject(lua_State *L);
+
+	Reference<Deed*> realObject;
 };
 
 } // namespace deed
