@@ -40,7 +40,7 @@ function recruiter_convo_handler:getNextConversationScreen(conversationTemplate,
 		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
 		--print("optionlink is " .. optionLink)
-		if ( self:isWeapon(optionLink) or self:isArmor(optionLink) or self:isUniform(optionLink) or self:isFurniture(optionLink) ) then
+		if ( self:isWeapon(optionLink) or self:isArmor(optionLink) or self:isUniform(optionLink) or self:isFurniture(optionLink)  or self:isInstallation(optionLink) )then
 			nextConversationScreen = conversation:getScreen("purchased")
 		else
 		
@@ -218,6 +218,14 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 		
 	elseif (screenID == "purchased") then
 		conversationScreen = self:processPurchase(conversingPlayer, conversationTemplate, selectedOption, conversingNPC)
+	elseif (screenID == "fp_installations") then
+		conversationScreen = screen:cloneScreen()
+		
+		local clonedConversation = LuaConversationScreen(conversationScreen)
+		
+		if (clonedConversation ~= nil) then
+			self:addInstallations(clonedConversation)
+		end
 	end
 	
 	return conversationScreen
@@ -432,9 +440,7 @@ function recruiter_convo_handler:getEnemyFactionString()
 	return ""
 end
 
-
 function recruiter_convo_handler:addUniforms(thisConversation)
-
 	printf("pure recruiter_convo_handler:addUniforms(thisConversation)")
 end
 
@@ -444,6 +450,10 @@ end
 
 function recruiter_convo_handler:addWeaponsArmor(thisConversation)
 	printf("pure recruiter_convo_handler:addWeaponsArmor(thisConversation)")
+end
+
+function recruiter_convo_handler:addInstallations(thisConversation)
+	printf("pure recruiter_convo_handler:addInstallations(thisConversation)")
 end
 
 function recruiter_convo_handler:getInitialScreen(play, npc, conversationTemplate)
@@ -540,6 +550,8 @@ function recruiter_convo_handler:processPurchase(conversingPlayer, conversationT
 					end
 					screenObject:setDialogTextTT("frn_n",itemname)
 				end
+			elseif ( self:isInstallation(itemname)) then
+				screenObject:setDialogTextTT("deed",itemname)
 			else
 				spatialChat(conversingNPC, "I'm sorry.  We were unable to determine the TYPE of item you are requesting")
 			end
@@ -617,7 +629,7 @@ function recruiter_convo_handler:awarditem(player, itemstring)
 				end
 			
 				local strTemplatePath = self:getTemplatePath(itemstring)
-				
+				--print("template path is " .. strTemplatePath)
 				if ( strTemplatePath ~= nil ) then
 					pItem = giveItem(pInventory, strTemplatePath, -1)
 				else 
@@ -626,7 +638,28 @@ function recruiter_convo_handler:awarditem(player, itemstring)
 				
 				if (pItem ~= nil) then
 				
+					if (self:isInstallation(itemstring)) then
+						print("it's an installation")
+						
+						local deed = LuaDeed(pItem)
+						local genPath = self:getGeneratedObjectTemplate(itemstring)
+						
+						if (genPath == nil ) then
+							return self.TEMPLATEPATHERROR
+						end
+						print("genPath is " .. genPath)
+						deed:setGeneratedObjectTemplate(genPath)
+								
+						local tano = LuaTangibleObject(pItem)
+						if (tano == nil )  then
+							print("unable to get tano.  can't set faction")
+						else
+							tano:setFaction(self:getRecruiterFactionHashCode())
+						end
+					end
+					
 					local item = LuaSceneObject(pItem)
+					print("templateobjectpath is " .. item:getTemplateObjectPath())
 					item:sendTo(player)
 					playerObject:decreaseFactionStanding(self:getRecruiterFactionString(),itemcost)
 				else

@@ -88,6 +88,16 @@ function imperial_recruiter_handler:isTerminal(strItem)
 	return false
 end
 
+function imperial_recruiter_handler:isInstallation(strItem)
+	--print("isinstallatoin called for " .. strItem)
+	if(faction_reward_data.imperial_installations[strItem] ~= nil and faction_reward_data.imperial_installations[strItem].type == faction_reward_type.installation) then
+		return true
+	else
+		--print("not an installation")
+	end
+	
+	return false
+end
 function imperial_recruiter_handler:addUniforms(screen) 
 	for k,v in pairs(faction_reward_data.imperial_uniform_list) do
 		if ( faction_reward_data.imperial_uniforms[v] ~= nil and faction_reward_data.imperial_uniforms[v].display ~= nil and faction_reward_data.imperial_uniforms[v].cost ~= nil ) then
@@ -113,6 +123,16 @@ function imperial_recruiter_handler:addFurniture(screen)
 	end
 end
 
+function imperial_recruiter_handler:addInstallations(screen)
+		--print("addInstallations()")
+		for k,v in pairs(faction_reward_data.imperial_installations_list) do
+		if ( faction_reward_data.imperial_installations[v] ~= nil and faction_reward_data.imperial_installations[v].display ~= nil and faction_reward_data.imperial_installations[v].cost ~= nil ) then
+			screen:addOption(faction_reward_data.imperial_installations[v].display .. " - " .. faction_reward_data.imperial_installations[v].cost, v)
+		else
+			--print("not in table")
+		end
+	end
+end
 
 function imperial_recruiter_handler:getItemCost(itemstring)
 	local itemcost = nil
@@ -129,6 +149,10 @@ function imperial_recruiter_handler:getItemCost(itemstring)
 		if(faction_reward_data.imperial_furniture[itemstring].cost ~= nil) then
 			return faction_reward_data.imperial_furniture[itemstring].cost
 		end
+	elseif (self:isInstallation(itemstring)) then
+		if(faction_reward_data.imperial_installations[itemstring].cost ~= nil) then
+			return faction_reward_data.imperial_installations[itemstring].cost
+		end
 	end
 
 	return itemcost
@@ -141,7 +165,19 @@ function imperial_recruiter_handler:getTemplatePath(itemstring)
 		return faction_reward_data.imperial_uniforms[itemstring].item
 	elseif ( self:isFurniture(itemstring) ) then
 		return faction_reward_data.imperial_furniture[itemstring].item
+	elseif (self:isInstallation(itemstring)) then
+		return faction_reward_data.imperial_installations[itemstring].item
 	end
 	return nil
 end
 
+
+function imperial_recruiter_handler:getGeneratedObjectTemplate(itemstring)
+  	if( self:isInstallation(itemstring)) then
+ 		if ( faction_reward_data.imperial_installations[itemstring].generatedObjectTemplate ~= nil ) then
+ 			return faction_reward_data.imperial_installations[itemstring].generatedObjectTemplate
+ 		end
+ 		
+ 	end
+ 	return nil
+end

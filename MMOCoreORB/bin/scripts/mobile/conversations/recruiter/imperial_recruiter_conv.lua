@@ -372,6 +372,7 @@ imp_recruiter_faction_purchase = ConvoScreen:new {
 			{ "@faction_recruiter:option_purchase_weapons_armor", "fp_weapons_armor" }, --I'm interested in weapons and armor
 		    { "@faction_recruiter:option_purchase_uniforms", "fp_uniforms" }, -- I'm interested in uniforms
 		    { "@faction_recruiter:option_purchase_furniture", "fp_furniture"}, -- I'm interested in furniture.
+		    { "@faction_recruiter:option_purchase_installation", "fp_installations" }, -- I'm interested in installations.
 	},
 }
 
@@ -401,6 +402,20 @@ imp_recruiter_fp_weapons_armor = ConvoScreen:new {
 	
 }
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_fp_weapons_armor);
+
+
+-- selected option to view installations
+imp_recruiter_fp_installations = ConvoScreen:new {
+	id = "fp_installations",
+	leftDialog = "@faction_recruiter:select_item_purchase", -- select the item you wish to request.  All costs are in faction standing poitns.
+	stopConversation = "false",
+	options = {
+
+		},
+	
+}
+imperial_recruiter_convotemplate:addScreen(imp_recruiter_fp_installations);
+
 
 imp_recruiter_fp_uniforms = ConvoScreen:new {
 	id = "fp_uniforms",

@@ -368,6 +368,7 @@ imp_recruiter_faction_purchase = ConvoScreen:new {
 	options = {
 			{ "@faction_recruiter:option_purchase_weapons_armor", "fp_weapons_armor" }, --I'm interested in weapons and armor
 			{ "@faction_recruiter:option_purchase_furniture", "fp_furniture"}, -- I'm interested in furniture.
+			{ "@faction_recruiter:option_purchase_installation", "fp_installations" }, -- I'm interested in installations.
 	},
 }
 
@@ -375,7 +376,7 @@ rebel_recruiter_convotemplate:addScreen(imp_recruiter_faction_purchase);
 
 
 
--- selected option to view weapoins and armor
+-- selected option to view furniture
 imp_recruiter_fp_furniture = ConvoScreen:new {
 	id = "fp_furniture",
 	leftDialog = "@faction_recruiter:select_item_purchase", -- select the item you wish to request.  All costs are in faction standing poitns.
@@ -399,6 +400,18 @@ imp_recruiter_fp_weapons_armor = ConvoScreen:new {
 }
 
 rebel_recruiter_convotemplate:addScreen(imp_recruiter_fp_weapons_armor);
+
+-- selected option to view installations
+imp_recruiter_fp_installations = ConvoScreen:new {
+	id = "fp_installations",
+	leftDialog = "@faction_recruiter:select_item_purchase", -- select the item you wish to request.  All costs are in faction standing poitns.
+	stopConversation = "false",
+	options = {
+
+		},
+	
+}
+rebel_recruiter_convotemplate:addScreen(imp_recruiter_fp_installations);
 
 -- purchase failed
 imp_recruiter_purchased_not_enough= ConvoScreen:new {

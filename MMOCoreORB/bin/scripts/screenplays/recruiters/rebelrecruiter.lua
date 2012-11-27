@@ -96,6 +96,10 @@ function rebel_recruiter_handler:getItemCost(itemstring)
 		if(faction_reward_data.rebel_furniture[itemstring].cost ~= nil) then
 			return faction_reward_data.rebel_furniture[itemstring].cost
 		end
+	elseif (self:isInstallation(itemstring)) then
+		if(faction_reward_data.rebel_installations[itemstring].cost ~= nil) then
+			return faction_reward_data.rebel_installations[itemstring].cost
+		end
 	end
 
 	return itemcost
@@ -118,13 +122,45 @@ function rebel_recruiter_handler:addFurniture(screen)
 	end
 end
 
+function rebel_recruiter_handler:addInstallations(screen)
+	--print("addInstallations()")
+	for k,v in pairs(faction_reward_data.rebel_installations_list) do
+		if ( faction_reward_data.rebel_installations[v] ~= nil and faction_reward_data.rebel_installations[v].display ~= nil and faction_reward_data.rebel_installations[v].cost ~= nil ) then
+			screen:addOption(faction_reward_data.rebel_installations[v].display .. " - " .. faction_reward_data.rebel_installations[v].cost, v)
+		else
+			--print("not in table")
+		end
+	end
+end
 
 function rebel_recruiter_handler:getTemplatePath(itemstring)
-	
 	if ( self:isWeapon(itemstring) or self:isArmor(itemstring) ) then
 		return faction_reward_data.rebel_weapons_armor[itemstring].item
 	elseif ( self:isFurniture(itemstring) ) then
 		return faction_reward_data.rebel_furniture[itemstring].item
+	elseif (self:isInstallation(itemstring)) then
+		return faction_reward_data.rebel_installations[itemstring].item
 	end
 	return nil
+end
+
+function rebel_recruiter_handler:isInstallation(strItem)
+	--print("isinstallatoin called for " .. strItem)
+	
+	if(faction_reward_data.rebel_installations[strItem] ~= nil and faction_reward_data.rebel_installations[strItem].type == faction_reward_type.installation) then
+		return true
+	else
+		return false
+	end
+end
+
+
+function rebel_recruiter_handler:getGeneratedObjectTemplate(itemstring)
+  	if( self:isInstallation(itemstring)) then
+ 		if ( faction_reward_data.rebel_installations[itemstring].generatedObjectTemplate ~= nil ) then
+ 			return faction_reward_data.rebel_installations[itemstring].generatedObjectTemplate
+ 		end
+ 		
+ 	end
+ 	return nil
 end
