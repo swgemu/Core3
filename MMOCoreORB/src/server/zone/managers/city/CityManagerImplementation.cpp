@@ -637,6 +637,7 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city) {
 	int topVotes = 0;
 
 	//Loop through the candidate votes.
+
 	for (int i = 0; i < candidates->size(); ++i) {
 		VectorMapEntry<uint64, int> entry = candidates->elementAt(i);
 
@@ -656,7 +657,6 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city) {
 				//Make sure the candidate is still a politician.
 				if (mayor->hasSkill("social_politician_novice")) {
 					ghost->addExperience("political", votes * 300, true);
-
 					if (votes > topVotes) {
 						topCandidate = candidateID;
 						topVotes = votes;
@@ -674,6 +674,7 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city) {
 	city->resetMayoralVotes();
 	city->resetCandidates();
 	city->resetVotingPeriod();
+
 }
 
 void CityManagerImplementation::contractCity(CityRegion* city) {
@@ -1329,8 +1330,9 @@ void CityManagerImplementation::sendMayoralStandings(CityRegion* city, CreatureO
 
 	ManagedReference<SceneObject*> mayor = zoneServer->getObject(mayorid);
 
-	if (mayor != NULL)
-		listbox->addMenuItem("Incumbent: " + mayor->getDisplayedName() + " -- Votes: " + String::valueOf(city->getCandidateVotes(mayorid)));
+	// removed when taking out mayoral auto register
+	//if (mayor != NULL)
+	//	listbox->addMenuItem("Incumbent: " + mayor->getDisplayedName() + " -- Votes: " + String::valueOf(city->getCandidateVotes(mayorid)));
 
 	VectorMap<uint64, int>* candidates = city->getCandidates();
 
@@ -1339,15 +1341,20 @@ void CityManagerImplementation::sendMayoralStandings(CityRegion* city, CreatureO
 
 		uint64 oid = entry->getKey();
 
-		if (oid == mayorid)
-			continue;
+		//if (oid == mayorid)
+		//	continue;
 
 		ManagedReference<SceneObject*> candidate = zoneServer->getObject(oid);
 
 		if (candidate == NULL)
 			continue;
 
-		listbox->addMenuItem("Challenger: " + candidate->getDisplayedName() + " -- Votes: " + String::valueOf(entry->getValue()));
+		if(oid != mayorid)
+			listbox->addMenuItem("Challenger: " + candidate->getDisplayedName() + " -- Votes: " + String::valueOf(entry->getValue()));
+		else
+			listbox->addMenuItem("Incumbent: " + mayor->getDisplayedName() + " -- Votes: " + String::valueOf(entry->getValue()));
+
+
 	}
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
@@ -1380,16 +1387,21 @@ void CityManagerImplementation::promptMayoralVote(CityRegion* city, CreatureObje
 
 	ManagedReference<SceneObject*> mayor = zoneServer->getObject(city->getMayorID());
 
-	if (mayor != NULL)
-		listbox->addMenuItem(mayor->getDisplayedName() + " (Incumbent)", city->getMayorID());
+	// removed when taking out mayoral auto register
+	//if (mayor != NULL)
+	//	listbox->addMenuItem(mayor->getDisplayedName() + " (Incumbent)", city->getMayorID());
 
 	for (int i = 0; i < candidates->size(); ++i) {
 		VectorMapEntry<uint64, int>* entry = &candidates->elementAt(i);
 
 		ManagedReference<SceneObject*> candidate = zoneServer->getObject(entry->getKey());
 
-		if (candidate != NULL)
-			listbox->addMenuItem(candidate->getDisplayedName() + " (Challenger)", entry->getKey());
+		if (candidate != NULL) {
+			if(candidate == mayor)
+				listbox->addMenuItem(mayor->getDisplayedName() + " (Incumbent)", city->getMayorID());
+			else
+				listbox->addMenuItem(candidate->getDisplayedName() + " (Challenger)", entry->getKey());
+		}
 	}
 
 	listbox->addMenuItem("Abstain", 0);
@@ -1441,10 +1453,13 @@ void CityManagerImplementation::registerForMayoralRace(CityRegion* city, Creatur
 		return;
 	}
 
+	/* Remove auto regiseter.  mayor can now restier for the race
 	if (city->isMayor(objectid)) {
 		creature->sendSystemMessage("@city/city:register_incumbent"); //You are the incumbent Mayor and are automatically registered in the race.
 		return;
 	}
+	*/
+
 
 	if (city->isCandidate(objectid)) {
 		creature->sendSystemMessage("@city/city:register_dupe"); //You are already registered for the Mayoral race.
@@ -1464,7 +1479,7 @@ void CityManagerImplementation::registerForMayoralRace(CityRegion* city, Creatur
 	if (declaredResidence != NULL) {
 		ManagedReference<CityRegion*> declaredCity = declaredResidence->getCityRegion();
 
-		if (declaredCity != NULL && declaredCity->isMayor(objectid)) {
+		if (declaredCity != NULL && declaredCity->isMayor(objectid) && city != declaredCity) {
 			creature->sendSystemMessage("@city/city:already_mayor"); //You are already the mayor of a city.  You may not be mayor of another city.
 			return;
 		}
