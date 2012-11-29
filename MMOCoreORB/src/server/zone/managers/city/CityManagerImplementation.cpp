@@ -1001,9 +1001,15 @@ void CityManagerImplementation::unregisterCity(CityRegion* city, CreatureObject*
 
 	if (city->getRegionsCount() != 0) {
 		ManagedReference<Region*> aa = city->getRegion(0);
-		aa->getZone()->unregisterObjectWithPlanetaryMap(aa);
+		Zone* aaZone = aa->getZone();
+
+		if (aaZone != NULL) {
+			aaZone->unregisterObjectWithPlanetaryMap(aa);
+
+			aaZone->getPlanetManager()->dropRegion(city->getRegionName());
+		}
+
 		aa->setPlanetMapCategory(NULL);
-		aa->getZone()->getPlanetManager()->dropRegion(city->getRegionName());
 	}
 
 	mayor->sendSystemMessage("@city/city:unregistered"); //Your city is no longer registered on the planetary map.
