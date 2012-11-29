@@ -29,13 +29,15 @@ void DestroyMissionObjectiveImplementation::setLairTemplateToSpawn(const String&
 void DestroyMissionObjectiveImplementation::destroyObjectFromDatabase() {
 	MissionObjectiveImplementation::destroyObjectFromDatabase();
 
+	ManagedReference<MissionSpawnActiveArea* > spawnActiveArea = this->spawnActiveArea;
+
 	if (spawnActiveArea != NULL) {
 		Locker locker(spawnActiveArea);
 
 		spawnActiveArea->destroyObjectFromWorld(true);
 		spawnActiveArea->destroyObjectFromDatabase(true);
 
-		spawnActiveArea = NULL;
+		this->spawnActiveArea = NULL;
 	}
 }
 
