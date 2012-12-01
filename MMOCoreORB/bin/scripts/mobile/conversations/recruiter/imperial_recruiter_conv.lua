@@ -432,7 +432,7 @@ imperial_recruiter_convotemplate:addScreen(imp_recruiter_fp_uniforms);
 -- purchase failed
 imp_recruiter_purchased_not_enough= ConvoScreen:new {
 	id = "purchased_not_enough",
-	leftDialog = "@faction_recruiter:get_lost_faction",
+	leftDialog = "@faction_recruiter:not_enough_standing_spend", -- You do not have enough faction standing to spend
 	stopConversation = "true",
 	options = {
 	

@@ -416,7 +416,7 @@ rebel_recruiter_convotemplate:addScreen(imp_recruiter_fp_installations);
 -- purchase failed
 imp_recruiter_purchased_not_enough= ConvoScreen:new {
 	id = "purchased_not_enough",
-	leftDialog = "@faction_recruiter:get_lost_faction", -- don't offer money when you can't afford to pay
+	leftDialog = "@faction_recruiter:not_enough_standing_spend", -- YOu do not have enough faction standing to spend.
 	stopConversation = "true",
 	options = {
 	

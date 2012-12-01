@@ -558,9 +558,14 @@ function recruiter_convo_handler:processPurchase(conversingPlayer, conversationT
 			
 		
 		elseif (awardresult == self.NOTENOUGHFACTION) then
-		
-			conversationScreen = convoTemplate:getScreen("purchased_not_enough") -- don't offer money when you can't afford to pay
-			
+		        local notEnoughScreen = convoTemplate:getScreen("purchased_not_enough")
+				local screenObject = LuaConversationScreen(notEnoughScreen)
+				conversationScreen = screenObject:cloneScreen()
+								
+				local screen = LuaConversationScreen(conversationScreen)
+				screen:setDialogTextTO("@ui_charsheet:" .. self:getRecruiterFactionString() .. "faction")
+				screen:setDialogTextDI(200)
+				
 		elseif (awardresult == self.INVENTORYFULL) then
 		
 			conversationScreen = convoTemplate:getScreen("inventory_full") -- Your inventory is full.  YOu must make some room before you can purchase.
