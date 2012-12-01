@@ -310,7 +310,7 @@ void CreatureObjectImplementation::sendToOwner(bool doClose) {
 
 	ManagedReference<SceneObject*> grandParent = getRootParent();
 
-	if (parent != NULL) {
+	if (grandParent != NULL) {
 		grandParent->sendTo(_this.get(), true);
 	} else
 		sendTo(_this.get(), doClose);
