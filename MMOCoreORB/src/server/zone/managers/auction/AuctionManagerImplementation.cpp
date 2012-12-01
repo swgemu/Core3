@@ -616,7 +616,6 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 
 
 	if(city != NULL && !city->isClientRegion() && tax){
-		city->isClientRegion();
 		Locker clock(city);
 		city->addToCityTreasury(tax);
 	}
