@@ -16,7 +16,7 @@ dantooine_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "tusk_cat",
+			lairTemplateName = "dantooine_huurton_howler_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 14,
 			maxDifficulty = 18,
@@ -101,6 +101,24 @@ dantooine_world_creatures = {
 			spawnLimit = -1,
 			minDifficulty = 40,
 			maxDifficulty = 50,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "dantooine_huurton_matron_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 40,
+			maxDifficulty = 50,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "dantooine_picket_longhorn_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 30,
+			maxDifficulty = 45,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
