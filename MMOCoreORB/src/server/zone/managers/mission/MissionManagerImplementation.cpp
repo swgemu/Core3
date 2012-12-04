@@ -673,6 +673,11 @@ void MissionManagerImplementation::randomizeSurveyMission(CreatureObject* player
 void MissionManagerImplementation::randomizeGenericSurveyMission(CreatureObject* player, MissionObject* mission, const int faction) {
 	int maxLevel = 50;
 	int minLevel = 50;
+	Zone* playerZone = player->getZone();
+
+	if (playerZone == NULL)
+		return;
+
 	long long surveySkill = player->getSkillMod("surveying");
 	if (surveySkill > 30) {
 		maxLevel += 10;
@@ -699,7 +704,7 @@ void MissionManagerImplementation::randomizeGenericSurveyMission(CreatureObject*
 
 	ResourceManager* manager = server->getResourceManager();
 
-	String zoneName = player->getZone()->getZoneName();
+	String zoneName = playerZone->getZoneName();
 
 	Vector<ManagedReference<ResourceSpawn*> > resources;
 
@@ -732,7 +737,7 @@ void MissionManagerImplementation::randomizeGenericSurveyMission(CreatureObject*
 	mission->setFaction(faction);
 
 	mission->setMissionDifficulty(randLevel);
-	mission->setStartPosition(player->getPositionX(), player->getPositionY(), player->getZone()->getZoneName());
+	mission->setStartPosition(player->getPositionX(), player->getPositionY(), playerZone->getZoneName());
 	mission->setMissionTitle("mission/mission_npc_survey_neutral_easy", "m" + String::valueOf(texts) + "t");
 	mission->setMissionDescription("mission/mission_npc_survey_neutral_easy", "m" + String::valueOf(texts) + "o");
 	mission->setCreatorName(nm->makeCreatureName());
@@ -747,6 +752,13 @@ void MissionManagerImplementation::randomizeBountyMission(CreatureObject* player
 void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject* player, MissionObject* mission, const int faction) {
 	if (!player->hasSkill("combat_bountyhunter_novice")) {
 		player->sendSystemMessage("@mission/mission_generic:not_bounty_hunter_terminal");
+		mission->setTypeCRC(0);
+		return;
+	}
+
+	Zone* playerZone = player->getZone();
+
+	if (playerZone == NULL) {
 		mission->setTypeCRC(0);
 		return;
 	}
@@ -775,8 +787,8 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 	mission->setMissionNumber(randTexts);
 
-	mission->setStartPlanet(player->getZone()->getZoneName());
-	mission->setStartPosition(player->getPositionX(), player->getPositionY(), player->getZone()->getZoneName());
+	mission->setStartPlanet(playerZone->getZoneName());
+	mission->setStartPosition(player->getPositionX(), player->getPositionY(), playerZone->getZoneName());
 
 	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_bounty_target.iff").hashCode()));
 
@@ -789,7 +801,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 		mission->setMissionTargetName(nm->makeCreatureName());
 
 		Vector3 endPos = getRandomBountyTargetPosition(player);
-		String planet = player->getZone()->getZoneName();
+		String planet = playerZone->getZoneName();
 		if (level == 3 && bhTargetZones.size() > 0) {
 			int randomNumber = System::random(bhTargetZones.size() - 1);
 			planet = bhTargetZones.get(randomNumber);
@@ -970,7 +982,7 @@ bool MissionManagerImplementation::randomGenericDeliverMission(CreatureObject* p
 	mission->setCreatorName(nm->makeCreatureName());
 	mission->setMissionTargetName(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_datadisk.iff").hashCode())->getObjectName());
 
-	String planet = player->getZone()->getZoneName();
+	String planet = zone->getZoneName();
 	mission->setStartPlanet(planet);
 	mission->setStartPosition(startNpc->getPosition()->getX(), startNpc->getPosition()->getY(), planet, true);
 	mission->setEndPosition(endNpc->getPosition()->getX(), endNpc->getPosition()->getY(), planet);
@@ -1164,6 +1176,13 @@ void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject
 		return;
 	}
 
+	Zone* playerZone = player->getZone();
+
+	if (playerZone == NULL) {
+		mission->setTypeCRC(0);
+		return;
+	}
+
 	LairTemplate* lairTemplate = CreatureTemplateManager::instance()->getLairTemplate(randomLairSpawn->getLairTemplateName().hashCode());
 
 	if (lairTemplate == NULL) {
@@ -1216,8 +1235,8 @@ void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject
 	mission->setMissionNumber(randTexts);
 	mission->setCreatorName(creatorName);
 
-	mission->setStartPlanet(player->getZone()->getZoneName());
-	mission->setStartPosition(player->getPositionX(), player->getPositionY(), player->getZone()->getZoneName());
+	mission->setStartPlanet(playerZone->getZoneName());
+	mission->setStartPosition(player->getPositionX(), player->getPositionY(), playerZone->getZoneName());
 
 	mission->setMissionTargetName(creatureTemplate->getObjectName());
 	mission->setTargetTemplate(sharedTemplate);
@@ -1250,7 +1269,9 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 	bool foundPosition = false;
 	Vector3 position;
 
-	if (player->getZone() == NULL) {
+	Zone* playerZone = player->getZone();
+
+	if (playerZone == NULL) {
 		return;
 	}
 
@@ -1258,10 +1279,10 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 	while (!foundPosition && maximumNumberOfTries-- > 0) {
 		position = player->getWorldCoordinate(System::random(3000) + 1000, (float)System::random(360));
 
-		if (player->getZone()->isWithinBoundaries(position)) {
+		if (playerZone->isWithinBoundaries(position)) {
 			//Check if it is a position where you can build and away from any travel points.
-			if (player->getZone()->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL)) {
-				Reference<PlanetTravelPoint*> travelPoint = player->getZone()->getPlanetManager()->getNearestPlanetTravelPoint(position);
+			if (playerZone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL)) {
+				Reference<PlanetTravelPoint*> travelPoint = playerZone->getPlanetManager()->getNearestPlanetTravelPoint(position);
 
 				if (travelPoint->getArrivalPosition().distanceTo(position) > 1000.0f) {
 					foundPosition = true;
@@ -1284,8 +1305,8 @@ void MissionManagerImplementation::randomizeGenericReconMission(CreatureObject* 
 	mission->setMissionTargetName(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_recon_target.iff").hashCode())->getObjectName());
 	mission->setTargetTemplate(TemplateManager::instance()->getTemplate(String("object/tangible/mission/mission_recon_target.iff").hashCode()));
 
-	mission->setStartPlanet(player->getZone()->getZoneName());
-	mission->setStartPosition(position.getX(), position.getY(), player->getZone()->getZoneName());
+	mission->setStartPlanet(playerZone->getZoneName());
+	mission->setStartPosition(position.getX(), position.getY(), playerZone->getZoneName());
 
 	int reward = position.distanceTo(player->getWorldPosition()) / 5;
 
@@ -1533,8 +1554,12 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 Vector3 MissionManagerImplementation::getRandomBountyTargetPosition(CreatureObject* player) {
 	Vector3 position;
 	//TODO use correct zone.
-	if (player->getZone() == NULL)
+
+	Zone* playerZone = player->getZone();
+
+	if (playerZone == NULL) {
 		return position;
+	}
 
 	bool found = false;
 	float radiusX = player->getZone()->getMaxX() - player->getZone()->getMinX();
@@ -1545,8 +1570,8 @@ Vector3 MissionManagerImplementation::getRandomBountyTargetPosition(CreatureObje
 	while (!found && retries > 0) {
 		position = player->getWorldCoordinate(System::random(radius), System::random(360));
 
-		if (player->getZone()->isWithinBoundaries(position)) {
-			found = player->getZone()->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL);
+		if (playerZone->isWithinBoundaries(position)) {
+			found = playerZone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL);
 		}
 
 		retries--;
