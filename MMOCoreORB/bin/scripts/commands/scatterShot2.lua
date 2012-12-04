@@ -55,7 +55,7 @@ ScatterShot2Command = {
 
 	combatSpam = "scatterblast",
 
-	poolsToDamage = RANDOM_ATTRIBUTE,
+	poolsToDamage = HEALTH_ATTRIBUTE + ACTION_ATTRIBUTE + MIND_ATTRIBUTE,
 
 	range = -1
 }
