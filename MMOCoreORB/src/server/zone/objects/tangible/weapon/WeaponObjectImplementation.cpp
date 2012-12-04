@@ -92,11 +92,13 @@ void WeaponObjectImplementation::sendContainerTo(CreatureObject* player) {
 
 		ManagedReference<SceneObject*> saberInv = getSlottedObject("saber_inv");
 
-		saberInv->sendDestroyTo(player);
-		//saberInv->closeContainerTo(player, true);
+		if (saberInv != NULL) {
+			saberInv->sendDestroyTo(player);
+			//saberInv->closeContainerTo(player, true);
 
-		saberInv->sendWithoutContainerObjectsTo(player);
-		saberInv->openContainerTo(player);
+			saberInv->sendWithoutContainerObjectsTo(player);
+			saberInv->openContainerTo(player);
+		}
 
 	}
 }
