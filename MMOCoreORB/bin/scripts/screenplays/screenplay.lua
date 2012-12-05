@@ -133,6 +133,7 @@ includeFile("poi/yavin4_blueleaf_temple.lua")
 includeFile("poi/dantooine_mokk_stronghold.lua")
 includeFile("poi/naboo_weapon_testing_facility.lua")
 includeFile("poi/rori_rebel_military_base.lua")
+includeFile("poi/rori_garyn_raiders_bunker.lua")
 
 --Tests
 --includeFile("tests/options_bitmask_test.lua")
