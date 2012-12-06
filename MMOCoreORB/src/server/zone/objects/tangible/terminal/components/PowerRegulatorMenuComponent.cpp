@@ -34,7 +34,7 @@ void PowerRegulatorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	GCWManager* gcwMan = zone->getGCWManager();
 
 	// add is gcw->isoverride to this too
-	if( gcwMan->isSecurityTermSliced(building) && !gcwMan->isPowerOverloaded(building) &&  player->getFaction() != building->getFaction() ) {
+	if( gcwMan->isDNASampled(building) && !gcwMan->isPowerOverloaded(building) &&  player->getFaction() != building->getFaction() ) {
 		menuResponse->addRadialMenuItem(228, 3, "@hq:mnu_set_overload"); // Set to overload
 	}
 

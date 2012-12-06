@@ -63,7 +63,53 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if ( creature != NULL  )
+			{
+				uint64 objectID = 0;
+				UnicodeTokenizer tokenizer(arguments);
+				tokenizer.setDelimeter(" ");
+
+				// if we have an argument passed, use it
+				if (tokenizer.hasMoreTokens())
+				{	try {
+						objectID = tokenizer.getLongToken();
+					} catch ( Exception& err ) {
+						creature->sendSystemMessage("INVALID OBJECT.  Please specify a valid object name or objectid");
+						return INVALIDPARAMETERS;
+
+					}
+				}
+				// if nothing is passed to the command as an argument, use the objectid of the target
+				else {
+					objectID = target;
+				}
+
+				// if the objectIDis 0, then send an error message
+				if ( objectID == 0 )
+				{
+					creature->sendSystemMessage("You need to target an object or specify an object id: /getobjvars <objectID> ");
+				}
+
+				ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(objectID, false);
+
+				if ( object == NULL)
+				{
+					creature->sendSystemMessage("ERROR GETTIGN OBJECT - NULL" + String::valueOf(target));
+				} else {
+
+					String strClassName = object->getObjectNameStringIdName();
+					String strDescription = object->getDetailedDescription();
+					bool bMarkedForDelete = object->_isMarkedForDeletion();
+					bool bIsUpdated = object->_isUpdated();
+					int rCount = object.get()->getReferenceCount();
+					creature->sendSystemMessage("OBJECTID " + String::valueOf(objectID) + " CLASS: " + strClassName +
+					" WILL BE DELETED: " + String::valueOf(bMarkedForDelete) + "  ISUPDATED: " + String::valueOf(bIsUpdated) +
+					" REFERENCE COUNT " + String::valueOf(rCount) +
+					 " Children: " + String::valueOf(object->getChildObjects()->size()));
+				}
+			}
 		return SUCCESS;
+
 	}
 
 };

@@ -2187,6 +2187,33 @@ bool SceneObject::isVendor() {
 		return _implementation->isVendor();
 }
 
+bool SceneObject::isGCWBase() {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->isGCWBase();
+}
+
+bool SceneObject::isTurret() {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->isTurret();
+}
+
+bool SceneObject::isDetector() {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->isDetector();
+}
+
 ZoneComponent* SceneObject::getZoneComponent() {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -4595,6 +4622,21 @@ bool SceneObjectImplementation::isPlayerCreature() {
 bool SceneObjectImplementation::isVendor() {
 	// server/zone/objects/scene/SceneObject.idl():  		dataObjectComponent.get().isVendorData();
 	return (&dataObjectComponent) != NULL && (&dataObjectComponent)->get() != NULL && (&dataObjectComponent)->get()->isVendorData();
+}
+
+bool SceneObjectImplementation::isGCWBase() {
+	// server/zone/objects/scene/SceneObject.idl():  		dataObjectComponent.get().isGCWBaseData();
+	return (&dataObjectComponent) != NULL && (&dataObjectComponent)->get() != NULL && (&dataObjectComponent)->get()->isGCWBaseData();
+}
+
+bool SceneObjectImplementation::isTurret() {
+	// server/zone/objects/scene/SceneObject.idl():  		dataObjectComponent.get().isTurretData();
+	return (&dataObjectComponent) != NULL && (&dataObjectComponent)->get() != NULL && (&dataObjectComponent)->get()->isTurretData();
+}
+
+bool SceneObjectImplementation::isDetector() {
+	// server/zone/objects/scene/SceneObject.idl():  		dataObjectComponent.get().isDetectorData();
+	return (&dataObjectComponent) != NULL && (&dataObjectComponent)->get() != NULL && (&dataObjectComponent)->get()->isDetectorData();
 }
 
 ZoneComponent* SceneObjectImplementation::getZoneComponent() {

@@ -210,6 +210,9 @@ class ZoneServer extends ManagedService implements Logger {
 	public native SceneObject getObject(unsigned long objectID, boolean doLock = true);
 	
 	@dirty
+	public native SceneObject createObject(unsigned int templateCRC, final string dbname, int persistenceLevel = 2);
+
+	@dirty
 	public native SceneObject createObject(unsigned int templateCRC, int persistenceLevel = 2, unsigned long objectID = 0);
 	
 	@dirty

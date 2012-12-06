@@ -32,6 +32,15 @@
 #include "server/zone/templates/tangible/SharedInstallationObjectTemplate.h"
 
 #include "SyncrhonizedUiListenInstallationTask.h"
+#include "server/zone/objects/installation/components/TurretObserver.h"
+#include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
+
+//#include "server/zone/objects/tangible/threat/ThreatMap.h"
+
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
+#include "server/zone/objects/building/BuildingObject.h"
 
 void InstallationObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	StructureObjectImplementation::loadTemplateData(templateData);
@@ -43,13 +52,19 @@ void InstallationObjectImplementation::loadTemplateData(SharedObjectTemplate* te
 
 void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	//send buios here
-	info("sending installation baselines");
 
 	BaseMessage* buio3 = new InstallationObjectMessage3(_this.get());
 	player->sendMessage(buio3);
 
 	BaseMessage* buio6 = new InstallationObjectMessage6(_this.get());
 	player->sendMessage(buio6);
+
+
+	if(this->isTurret()){
+			UpdatePVPStatusMessage* upvpsms = new UpdatePVPStatusMessage(_this.get());
+			player->sendMessage(upvpsms);
+	}
+
 }
 
 void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
@@ -652,7 +667,16 @@ void InstallationObjectImplementation::updateStructureStatus() {
 
 	if (surplusMaintenance < 0) {
 		setConditionDamage(-surplusMaintenance, true);
+
 	} else {
 		setConditionDamage(0, true);
 	}
 }
+
+bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object){
+	if(object->getFaction() == getFaction())
+		return false;
+
+	return true;
+}
+

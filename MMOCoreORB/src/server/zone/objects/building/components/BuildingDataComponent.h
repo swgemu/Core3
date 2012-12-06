@@ -18,6 +18,10 @@ public:
 	virtual ~BuildingDataComponent(){
 	}
 
+	virtual bool isGCWBaseData(){
+		return false;
+	}
+
 	bool isBuildingData(){
 		return true;
 	}

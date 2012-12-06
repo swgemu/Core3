@@ -55,6 +55,12 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 			menuResponse->addRadialMenuItem(231, 3, "@hq:mnu_shutdown");  // Shutdown facility
 		}
 
+		// donate menus removed
+		menuResponse->addRadialMenuItem(37, 3, "@hq:mnu_donate"); // Donate
+		//menuResponse->addRadialMenuItemToRadialID(37, 225, 3,  "@hq:mnu_donate_money"); // Donate MOney
+		menuResponse->addRadialMenuItemToRadialID(37, 226, 3, "@hq:mnu_donate_deed"); // donate defense
+		//menuResponse->addRadialMenuItemToRadialID(37, 227, 3, "@hq:mnu_donate_resource"); // donate resource
+
 		if(building->getOwnerCreatureObject() == player){
 			menuResponse->addRadialMenuItem(38, 3, "@hq:mnu_reset_vulnerability"); // Reset Vulnerability
 		}
@@ -64,7 +70,7 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 
 		if(playerObject->getFactionStatus() == FactionStatus::OVERT) {
 
-			menuResponse->addRadialMenuItem(228, 3, "@hq:mnu_defense_status");
+			//menuResponse->addRadialMenuItem(228, 3, "@hq:mnu_defense_status");
 
 			if(gcwMan->isPowerOverloaded(building) && !gcwMan->isShutdownSequenceStarted(building)){
 				menuResponse->addRadialMenuItem(230, 3, "@hq:mnu_overload");  // activate overload
@@ -79,11 +85,7 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 
 
 
-	// donate menus removed
-	//menuResponse->addRadialMenuItem(37, 3, "@hq:mnu_donate"); // Donate
-	//menuResponse->addRadialMenuItemToRadialID(37, 225, 3,  "@hq:mnu_donate_money"); // Donate MOney
-	//menuResponse->addRadialMenuItemToRadialID(37, 226, 3, "@hq:mnu_donate_deed"); // donate defense
-	//menuResponse->addRadialMenuItemToRadialID(37, 227, 3, "@hq:mnu_donate_resource"); // donate resource
+
 
 
 
@@ -131,7 +133,10 @@ int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureOb
 	if(gcwMan == NULL)
 		return 1;
 
-	if ( selectedID == 228 || selectedID == 20){
+	if (selectedID == 20){
+		gcwMan->sendStatus(building,creature);
+	}
+	else if( selectedID == 228 || selectedID == 20){
 
 		if(ghost->getFactionStatus() != FactionStatus::OVERT && creature->getFaction() != building->getFaction()){
 				creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:declared_personnel_only"); // Only Special Forces personnel may access this terminal
@@ -152,6 +157,8 @@ int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureOb
 		//info("abort shutdown",true);
 		gcwMan->abortShutdownSequence(creature,building);
 
+	} else if (selectedID == 226){
+		gcwMan->sendSelectDeedToDonate(building,creature,0);
 	}
 	return 0;
 }

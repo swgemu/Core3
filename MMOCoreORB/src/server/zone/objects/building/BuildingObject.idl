@@ -358,6 +358,8 @@ class BuildingObject extends StructureObject {
 
 	public native void updatePaidAccessList();
 
-	public native boolean isGCWBase();
+	//public native boolean isGCWBase();
+
+	public native void createChildObjects();
 
 }

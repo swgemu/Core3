@@ -1,22 +1,24 @@
 /*
- * HQDefenseStatusCallback.h
+ * RemoveDefenseSuiCallback.h
  *
- *  Created on: Oct 27, 2012
+ *  Created on: Dec 3, 2012
  *      Author: root
  */
 
-#ifndef HQDEFENSESTATUSSUICALLBACK_H_
-#define HQDEFENSESTATUSSUICALLBACK_H_
-
+#ifndef REMOVEDEFENSESUICALLBACK_H_
+#define REMOVEDEFENSESUICALLBACK_H_
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/objects/scene/SceneObjectType.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 
-class HQDefenseStatusSuiCallback : public SuiCallback {
+class RemoveDefenseSuiCallback : public SuiCallback {
+private:
+	uint64 deed;
 public:
-	HQDefenseStatusSuiCallback(ZoneServer* server)
+	RemoveDefenseSuiCallback(ZoneServer* server, uint64 deedID)
 		: SuiCallback(server) {
+		deed = deedID;
 	}
 
 	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
@@ -32,28 +34,13 @@ public:
 
 		GCWManager* gcwMan = player->getZone()->getGCWManager();
 
+
 		if(gcwMan==NULL)
 			return;
 
-		bool otherPressed = Bool::valueOf(args->get(0).toString());
-		int indx = Integer::valueOf(args->get(1).toString());
-
-		if(indx == -1)
-			return;
-
-		SuiListBox* listBox = cast<SuiListBox*>(suiBox);
-
-		uint64 turretOID = listBox->getMenuObjectID(indx);
-
-
-		if(otherPressed)
-			gcwMan->sendRemoveDefenseConfirmation(building, player, turretOID);
-		else
-			gcwMan->sendBaseDefenseStatus(player, building);
+		gcwMan->removeDefense(building, player,deed);
 
 	}
 };
 
-
-
-#endif /* HQDEFENSESTATUSCALLBACK_H_ */
+#endif /* REMOVEDEFENSESUICALLBACK_H_ */

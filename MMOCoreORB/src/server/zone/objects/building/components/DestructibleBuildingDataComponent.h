@@ -11,6 +11,7 @@
 //#include "server/zone/objects/scene/components/DataObjectComponent.h"
 #include "server/zone/objects/building/components/BuildingDataComponent.h"
 #include "system/util/Vector.h"
+#include "system/util/VectorMap.h"
 #include "system/util/HashTable.h"
 
 class DestructibleBuildingDataComponent : public BuildingDataComponent, public Logger {
@@ -27,6 +28,8 @@ private:
 	int  sampleMatches; // serialized
 	int  switchesTurnedOn; // serialized
 	Vector<bool> powerSwitchesTester;
+	Vector<uint64> turretSlots;
+
 	Time lastVulnerableTime; // serialized
 	Time nextVulnerableTime; // serialized
 	Time vulnerabilityEndTime; //se rialized
@@ -34,6 +37,7 @@ private:
 	Time lastResetTime; // serialized
 	Time repairTime; // serialized
 	int uplinkBand; // secret code used to jam the uplink
+	bool activeDefenses;
 
 public:
 	const static int INVULNERABLE = 0;
@@ -67,9 +71,10 @@ public:
 		}
 		powerSwitchesTester.get(0) = false;
 
-
+		activeDefenses = true;
 
 	}
+
 	virtual ~DestructibleBuildingDataComponent(){
 
 	}
@@ -184,7 +189,9 @@ public:
 		sampleMatches = val;
 	}
 
-
+	void setActiveTurret(int indx, uint64 turretOID){
+		turretSlots.get(indx) = turretOID;
+	}
 	void modifySampleAt(int indx, String val){
 		if(indx < dnaProfiles.size()) {
 			dnaProfiles.remove(indx);
@@ -252,6 +259,51 @@ public:
 		switchesTurnedOn = POWERSWITCHCOUNT;
 	}
 
+
+	int getTotalTurretCount(){
+		return turretSlots.size();
+	}
+
+	bool isTurretSlotOccupied(int indx){
+		return (turretSlots.get(indx) > 0);
+	}
+
+	uint64 getTurretID(int indx){
+		return turretSlots.elementAt(indx);
+	}
+
+	bool hasTurret(uint64 turretID){
+		return turretSlots.contains(turretID);
+	}
+
+	int getIndexOfTurret(uint64 turretID){
+
+		for(int i =0; i< turretSlots.size();i++){
+			if(turretSlots.elementAt(i) == turretID)
+				return i;
+		}
+		return -1;
+	}
+
+	void setTurretID(int indx, uint64 turretOID){
+		turretSlots.elementAt(indx) = turretOID;
+	}
+	void addTurret(int indx, uint64 turretOID){
+		turretSlots.add(indx, turretOID);
+	}
+	void spawnChildCreatures();
+
+	bool isGCWBaseData(){
+		return true;
+	}
+
+	bool hasDefense(){
+		return activeDefenses;
+	}
+
+	void setDefense(bool value){
+		activeDefenses = value;
+	}
 
 private:
 

@@ -125,6 +125,27 @@ public:
 		insertShort(0); // number of defenders
 	}
 
+
+	CombatAction(TangibleObject* attacker, CreatureObject* defender, uint32 animcrc,uint8 hit, long wpnID = 0) :
+		ObjectControllerMessage(attacker->getObjectID(), 0x1B, 0xCC) {
+			insertInt(animcrc);
+
+			insertLong(attacker->getObjectID());
+			insertLong(wpnID);
+
+			insertByte(0x0);
+			insertByte(0xFF);
+			insertByte(0xFF);
+
+			defenderSize = 1;
+
+			insertShort(1);
+			insertLong(defender->getObjectID());
+			insertByte(defender->getPosture());
+			insertByte(hit);
+			insertByte(0);
+	}
+
 	CombatAction(CreatureObject* attacker, CreatureObject* defender,
 			uint32 animcrc,uint8 hit, long wpnID) :
 		ObjectControllerMessage(attacker->getObjectID(), 0x1B, 0xCC) {

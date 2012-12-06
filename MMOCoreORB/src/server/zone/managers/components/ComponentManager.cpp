@@ -17,6 +17,9 @@
 #include "server/zone/objects/tangible/components/vendor/VendorZoneComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorMenuComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "server/zone/objects/installation/components/TurretDataComponent.h"
+//#include "server/zone/objects/installation/components/DetectorDataComponent.h"
+#include "server/zone/objects/installation/components/TurretZoneComponent.h"
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
 #include "server/zone/objects/player/components/PlayerZoneComponent.h"
 #include "server/zone/objects/building/components/BuildingDataComponent.h"
@@ -47,6 +50,7 @@
 #include "server/zone/objects/tangible/components/RobeObjectAttributeListComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceStructureComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceCityHallComponent.h"
+#include "server/zone/objects/tangible/deed/components/PlaceGCWBaseComponent.h"
 #include "server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/terminal/components/HQMenuComponent.h"
 #include "server/zone/objects/tangible/terminal/components/UplinkTerminalMenuComponent.h"
@@ -135,6 +139,7 @@ ComponentManager::ComponentManager() {
 
 	components.put("PlaceStructureComponent", new PlaceStructureComponent());
 	components.put("PlaceCityHallComponent", new PlaceCityHallComponent());
+	components.put("PlaceGCWBaseComponent", new PlaceGCWBaseComponent());
 	components.put("StructureTerminalMenuComponent", new StructureTerminalMenuComponent());
 	components.put("FactoryObjectMenuComponent", new FactoryObjectMenuComponent());
 	components.put("InstallationObjectMenuComponent", new InstallationObjectMenuComponent());
@@ -147,6 +152,7 @@ ComponentManager::ComponentManager() {
 	components.put("VendorContainerComponent", new VendorContainerComponent());
 	components.put("VendorMenuComponent", new VendorMenuComponent());
 	components.put("VendorZoneComponent", new VendorZoneComponent());
+	components.put("TurretZoneComponent", new TurretZoneComponent());
 	dataObjectFactory.registerObject<VendorDataComponent>("VendorDataComponent");
 	dataObjectFactory.registerObject<AuctionTerminalDataComponent>("AuctionTerminalDataComponent");
 
@@ -167,6 +173,12 @@ ComponentManager::ComponentManager() {
 
 	components.put("DiceMenuComponent", new DiceMenuComponent());
 	dataObjectFactory.registerObject<DiceDataComponent>("DiceDataComponent");
+
+	components.put("TurretDataComponent", new TurretDataComponent());
+	dataObjectFactory.registerObject<TurretDataComponent>("TurretDataComponent");
+
+	//components.put("DetectorDataComponent", new DetectorDataComponent());
+	//dataObjectFactory.registerObject<DetectorDataComponent>("DetectorDataComponent");
 
 	components.put("CreatureHabitatMenuComponent", new CreatureHabitatMenuComponent());
 	components.put("WearableObjectMenuComponent", new WearableObjectMenuComponent());

@@ -67,6 +67,10 @@ import server.zone.objects.tangible.TangibleObject;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 include server.zone.objects.installation.HopperList;
 
+include engine.util.u3d.QuadTreeEntry;
+include engine.util.u3d.CloseObjectsVector;
+include server.zone.objects.scene.components.DataObjectComponentReference;
+
 class InstallationObject extends StructureObject {
 	protected transient SyncrhonizedUiListenInstallationTask syncUiTask;
 
@@ -97,7 +101,9 @@ class InstallationObject extends StructureObject {
 	
 	public InstallationObject() {
 		Logger.setLoggingName("InstallationObject");
-		
+	
+		super.closeobjects = new CloseObjectsVector();
+		super.closeobjects.setNoDuplicateInsertPlan();
 		operating = false;
 		
 		installationType = 0;
@@ -108,6 +114,7 @@ class InstallationObject extends StructureObject {
 		hopperSizeMax = 10000;
 		extractionRate = 100;
 		spawnDensity = 0;
+		
 	}
 	
 	public void initializeTransientMembers() {
@@ -118,7 +125,7 @@ class InstallationObject extends StructureObject {
 		operatorList.setNoDuplicateInsertPlan();
 		
 		Logger.setLoggingName("InstallationObject");
-
+		
 		/*if (resourceHopper.size() != 0) {
 			Logger.info("loaded with hopper size:" + String.valueOf(resourceHopper.size()), true);
 		}*/
@@ -144,7 +151,6 @@ class InstallationObject extends StructureObject {
 	@local
 	public native void loadTemplateData(SharedObjectTemplate templateData);
  
-
 	/**
 	 * Broadcasts the message to the in range objects
 	 * @pre {this object is locked, message is not null }
@@ -256,6 +262,18 @@ class InstallationObject extends StructureObject {
 	
 	@local
 	public native void setExtractionRate(float rate);
+
+	//public native void setCombatState();
+
+	/**
+	* pre{ object is locked}
+	* post{this object is locked}
+	*/ 
+	public native boolean isAttackableBy(CreatureObject object);
+
 	
+	//@local
+	//private native void checkZoneComponents();
+
 }	
 	

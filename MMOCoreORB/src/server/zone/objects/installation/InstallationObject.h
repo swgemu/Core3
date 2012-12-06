@@ -167,6 +167,12 @@ using namespace server::zone::objects::tangible;
 
 #include "server/zone/objects/installation/HopperList.h"
 
+#include "engine/util/u3d/QuadTreeEntry.h"
+
+#include "engine/util/u3d/CloseObjectsVector.h"
+
+#include "server/zone/objects/scene/components/DataObjectComponentReference.h"
+
 #include "system/lang/String.h"
 
 #include "system/lang/ref/Reference.h"
@@ -269,6 +275,8 @@ public:
 	void setHopperSizeMax(float size);
 
 	void setExtractionRate(float rate);
+
+	bool isAttackableBy(CreatureObject* object);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -405,6 +413,8 @@ public:
 
 	void setExtractionRate(float rate);
 
+	bool isAttackableBy(CreatureObject* object);
+
 	WeakReference<InstallationObject*> _this;
 
 	operator const InstallationObject*();
@@ -511,6 +521,8 @@ public:
 	bool isGeneratorObject();
 
 	bool isShuttleInstallation();
+
+	bool isAttackableBy(CreatureObject* object);
 
 };
 

@@ -38,7 +38,9 @@
 #include "server/zone/objects/region/CityRegion.h"
 
 #include "tasks/EjectObjectEvent.h"
+#include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
 
+#include "server/zone/managers/gcw/GCWManager.h"
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
 
@@ -68,6 +70,7 @@ void BuildingObjectImplementation::loadTemplateData(
 	optionsBitmask = 0x00000100;
 
 	publicStructure = buildingData->isPublicStructure();
+
 }
 
 void BuildingObjectImplementation::createContainerComponent() {
@@ -119,9 +122,10 @@ int BuildingObjectImplementation::getCurrentNumberOfPlayerItems() {
 }
 
 void BuildingObjectImplementation::createCellObjects() {
+
 	for (int i = 0; i < totalCellNumber; ++i) {
-		SceneObject* newCell = getZoneServer()->createObject(0xAD431713,
-				getPersistenceLevel());
+
+		SceneObject* newCell = newCell = getZoneServer()->createObject(0xAD431713, getPersistenceLevel());
 
 		if (!transferObject(newCell, -1))
 			error("could not add cell");
@@ -880,20 +884,6 @@ void BuildingObjectImplementation::payAccessFee(CreatureObject* player) {
 
 }
 
-bool BuildingObjectImplementation::isGCWBase(){
-
-	DataObjectComponentReference* data = getDataObjectComponent();
-
-	if(dataObjectComponent == NULL)
-		return false;
-
-	if(!dataObjectComponent->isDestructibleBuildingData())
-		return false;
-
-	return true;
-}
-
-
 void BuildingObjectImplementation::setAccessFee(int fee, int duration) {
 	accessFee = fee;
 	accessDuration = duration;
@@ -955,6 +945,117 @@ void BuildingObjectImplementation::updatePaidAccessList() {
 	} else {
 		pendingTask->reschedule(timeToSchedule);
 	}
+
+}
+
+
+void BuildingObjectImplementation::createChildObjects(){
+	if(isGCWBase()){
+
+		SharedObjectTemplate* serverTemplate = getObjectTemplate();
+
+		if(serverTemplate == NULL)
+			return;
+
+		//info("servertemplate is good",true);
+		Vector3 position = getPosition();
+
+		ZoneServer* server = getZoneServer();
+
+		if(server == NULL)
+			return;
+
+		for(int i = 0; i < serverTemplate->getChildObjectsSize();i++){
+			//info("iterating child",true);
+			ChildObject* child = serverTemplate->getChildObject(i);
+
+			if(child == NULL)
+				continue;
+
+			SharedObjectTemplate* thisTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
+
+			if(thisTemplate == NULL)
+				continue;
+
+
+			String dbString = "sceneobjects";
+
+			if( thisTemplate->getGameObjectType() == SceneObjectType::TURRET || thisTemplate->getGameObjectType() == SceneObjectType::STATICOBJECT ){
+				dbString = "playerstructures";
+			}
+
+			ManagedReference<SceneObject*> obj = server->createObject(child->getTemplateFile().hashCode(),dbString,1);
+
+			if (obj == NULL )
+				continue;
+
+			if(obj->isCreatureObject())
+				continue;
+
+			Vector3 childPosition = child->getPosition();
+			childObjects.put(obj);
+			obj->initializePosition(childPosition.getX(), childPosition.getZ(), childPosition.getY());
+			obj->setDirection(child->getDirection());
+
+
+			// if it's inside
+			if(child->getCellId() >= 0){
+				int totalCells = getTotalCellNumber();
+				try {
+					if (totalCells >= child->getCellId()) {
+						ManagedReference<CellObject*> cellObject = getCell(child->getCellId());
+
+						if (cellObject != NULL) {
+							cellObject->transferObject(obj, child->getContainmentType(), true);
+						} else
+							error("NULL CELL OBJECT");
+					}
+				} catch (Exception& e) {
+					error("unreported exception caught in void SceneObjectImplementation::createChildObjects()!");
+					e.printStackTrace();
+				}
+
+			} else {
+
+				SharedObjectTemplate* thisTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
+
+				Vector3 childPosition = child->getPosition();
+				float angle = getDirection()->getRadians();
+				float x = (Math::cos(angle) * childPosition.getX()) + (childPosition.getY() * Math::sin(angle));
+				float y = (Math::cos(angle) * childPosition.getY()) - (childPosition.getX() * Math::sin(angle));
+				x += position.getX();
+				y += position.getY();
+
+				float z = position.getZ() + childPosition.getZ();
+				float degrees = getDirection()->getDegrees();
+
+				Quaternion dir = child->getDirection();
+
+				obj->initializePosition(x, z, y);
+				obj->setDirection(dir.rotate(Vector3(0, 1, 0), degrees));
+
+				if(obj->isTurret()){
+					GCWManager* gcwMan = zone->getGCWManager();
+					gcwMan->addTurret(_this.get(),obj);
+					TangibleObject* tano = cast<TangibleObject*>(obj.get());
+					tano->setFaction(getFaction());
+				}
+
+				getZone()->transferObject(obj, -1, false);
+			}
+			ContainerPermissions* permissions = obj->getContainerPermissions();
+			permissions->setOwner(getObjectID());
+			permissions->setInheritPermissionsFromParent(false);
+			permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
+			permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
+			obj->initializeChildObject(_this.get());
+
+		}
+	} else {
+
+		StructureObjectImplementation::createChildObjects();
+	}
+
 
 }
 

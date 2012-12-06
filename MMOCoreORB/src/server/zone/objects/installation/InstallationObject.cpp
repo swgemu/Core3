@@ -30,7 +30,7 @@
  *	InstallationObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_,RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_,RPC_SETOPERATING__BOOL_BOOL_,RPC_ACTIVATEUISYNC__,RPC_UPDATEOPERATORS__,RPC_VERIFYOPERATORS__,RPC_UPDATEINSTALLATIONWORK__,RPC_HANDLESTRUCTUREADDENERGY__CREATUREOBJECT_,RPC_SETACTIVERESOURCE__RESOURCECONTAINER_,RPC_CHANGEACTIVERESOURCEID__LONG_,RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_,RPC_CLEARRESOURCEHOPPER__,RPC_GETHOPPERSIZE__,RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_,RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_,RPC_GETACTIVERESOURCESPAWNID__,RPC_GETACTUALRATE__,RPC_BROADCASTTOOPERATORS__BASEPACKET_,RPC_ADDOPERATOR__CREATUREOBJECT_,RPC_REMOVEOPERATOR__CREATUREOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISINSTALLATIONOBJECT__,RPC_ISOPERATING__,RPC_GETINSTALLATIONTYPE__,RPC_GETEXTRACTIONRATE__,RPC_GETHOPPERSIZEMAX__,RPC_UPDATESTRUCTURESTATUS__,RPC_ISHARVESTEROBJECT__,RPC_ISGENERATOROBJECT__,RPC_ISSHUTTLEINSTALLATION__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_,RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_,RPC_SETOPERATING__BOOL_BOOL_,RPC_ACTIVATEUISYNC__,RPC_UPDATEOPERATORS__,RPC_VERIFYOPERATORS__,RPC_UPDATEINSTALLATIONWORK__,RPC_HANDLESTRUCTUREADDENERGY__CREATUREOBJECT_,RPC_SETACTIVERESOURCE__RESOURCECONTAINER_,RPC_CHANGEACTIVERESOURCEID__LONG_,RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_,RPC_CLEARRESOURCEHOPPER__,RPC_GETHOPPERSIZE__,RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_,RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_,RPC_GETACTIVERESOURCESPAWNID__,RPC_GETACTUALRATE__,RPC_BROADCASTTOOPERATORS__BASEPACKET_,RPC_ADDOPERATOR__CREATUREOBJECT_,RPC_REMOVEOPERATOR__CREATUREOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISINSTALLATIONOBJECT__,RPC_ISOPERATING__,RPC_GETINSTALLATIONTYPE__,RPC_GETEXTRACTIONRATE__,RPC_GETHOPPERSIZEMAX__,RPC_UPDATESTRUCTURESTATUS__,RPC_ISHARVESTEROBJECT__,RPC_ISGENERATOROBJECT__,RPC_ISSHUTTLEINSTALLATION__,RPC_ISATTACKABLEBY__CREATUREOBJECT_};
 
 InstallationObject::InstallationObject() : StructureObject(DummyConstructorParameter::instance()) {
 	InstallationObjectImplementation* _implementation = new InstallationObjectImplementation();
@@ -545,6 +545,20 @@ void InstallationObject::setExtractionRate(float rate) {
 		_implementation->setExtractionRate(rate);
 }
 
+bool InstallationObject::isAttackableBy(CreatureObject* object) {
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISATTACKABLEBY__CREATUREOBJECT_);
+		method.addObjectParameter(object);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isAttackableBy(object);
+}
+
 DistributedObjectServant* InstallationObject::_getImplementation() {
 
 	 if (!_updated) _updated = true;
@@ -829,8 +843,13 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 
 InstallationObjectImplementation::InstallationObjectImplementation() {
 	_initializeImplementation();
+	Reference<CloseObjectsVector*> _ref0;
 	// server/zone/objects/installation/InstallationObject.idl():  		Logger.setLoggingName("InstallationObject");
 	Logger::setLoggingName("InstallationObject");
+	// server/zone/objects/installation/InstallationObject.idl():  		super.closeobjects = new CloseObjectsVector();
+	StructureObjectImplementation::closeobjects = _ref0 = new CloseObjectsVector();
+	// server/zone/objects/installation/InstallationObject.idl():  		super.closeobjects.setNoDuplicateInsertPlan();
+	StructureObjectImplementation::closeobjects->setNoDuplicateInsertPlan();
 	// server/zone/objects/installation/InstallationObject.idl():  		operating = false;
 	operating = false;
 	// server/zone/objects/installation/InstallationObject.idl():  		installationType = 0;
@@ -1091,6 +1110,11 @@ void InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 			resp->insertBoolean(isShuttleInstallation());
 		}
 		break;
+	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
+		{
+			resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -1222,6 +1246,10 @@ bool InstallationObjectAdapter::isGeneratorObject() {
 
 bool InstallationObjectAdapter::isShuttleInstallation() {
 	return (static_cast<InstallationObject*>(stub))->isShuttleInstallation();
+}
+
+bool InstallationObjectAdapter::isAttackableBy(CreatureObject* object) {
+	return (static_cast<InstallationObject*>(stub))->isAttackableBy(object);
 }
 
 /*

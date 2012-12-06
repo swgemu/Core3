@@ -8,7 +8,11 @@
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
+#include "server/zone/objects/structure/StructureObject.h"
+
 #include "server/zone/objects/building/BuildingObject.h"
+
+#include "server/zone/objects/installation/InstallationObject.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
@@ -18,7 +22,7 @@
  *	GCWManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_START__,RPC_LOADFACTIONSTRUCTURES__STRING_,RPC_REGISTERGCWBASE__BUILDINGOBJECT_BOOL_,RPC_UNREGISTERGCWBASE__BUILDINGOBJECT_,RPC_PERFORMGCWTASKS__,RPC_STARTVULNERABILITY__BUILDINGOBJECT_,RPC_ENDVULNERABILITY__BUILDINGOBJECT_,RPC_ISBASEVULNERABLE__BUILDINGOBJECT_,RPC_ISBANDIDENTIFIED__BUILDINGOBJECT_,RPC_ISUPLINKJAMMED__BUILDINGOBJECT_,RPC_ISSHUTDOWNSEQUENCESTARTED__BUILDINGOBJECT_,RPC_ISSECURITYTERMSLICED__BUILDINGOBJECT_,RPC_ISPOWEROVERLOADED__BUILDINGOBJECT_,RPC_RESETVULNERABILITY__CREATUREOBJECT_BUILDINGOBJECT_,RPC_SENDBASEDEFENSESTATUS__CREATUREOBJECT_BUILDINGOBJECT_,RPC_DOBASEDESTRUCTION__BUILDINGOBJECT_,RPC_SENDRESETVERIFICATION__CREATUREOBJECT_BUILDINGOBJECT_,RPC_SENDJAMUPLINKMENU__CREATUREOBJECT_BUILDINGOBJECT_,RPC_VERIFYUPLINKBAND__CREATUREOBJECT_BUILDINGOBJECT_INT_,RPC_STARTSLICE__CREATUREOBJECT_BUILDINGOBJECT_,RPC_SENDDNASAMPLEMENU__CREATUREOBJECT_BUILDINGOBJECT_,RPC_COMPLETESECURITYSLICE__TANGIBLEOBJECT_,RPC_FAILSECURITYSLICE__TANGIBLEOBJECT_,RPC_ISTERMINALDAMAGED__TANGIBLEOBJECT_,RPC_ISDNASAMPLED__BUILDINGOBJECT_,RPC_REPAIRTERMINAL__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_ABORTSHUTDOWNSEQUENCE__CREATUREOBJECT_BUILDINGOBJECT_,RPC_PROCESSDNASAMPLE__CREATUREOBJECT_BUILDINGOBJECT_INT_,RPC_HANDLEPOWERREGULATORSWITCH__CREATUREOBJECT_BUILDINGOBJECT_INT_,RPC_SENDPOWERREGULATORCONTROLS__CREATUREOBJECT_BUILDINGOBJECT_,RPC_GETDNAHASH__STRING_,RPC_SCHEDULEBASEDESTRUCTION__BUILDINGOBJECT_,};
+enum {RPC_INITIALIZE__ = 6,RPC_START__,RPC_LOADFACTIONSTRUCTURES__STRING_,RPC_REGISTERGCWBASE__BUILDINGOBJECT_BOOL_,RPC_UNREGISTERGCWBASE__BUILDINGOBJECT_,RPC_PERFORMGCWTASKS__,RPC_STARTVULNERABILITY__BUILDINGOBJECT_,RPC_ENDVULNERABILITY__BUILDINGOBJECT_,RPC_ISBASEVULNERABLE__BUILDINGOBJECT_,RPC_ISBANDIDENTIFIED__BUILDINGOBJECT_,RPC_ISUPLINKJAMMED__BUILDINGOBJECT_,RPC_ISSHUTDOWNSEQUENCESTARTED__BUILDINGOBJECT_,RPC_ISSECURITYTERMSLICED__BUILDINGOBJECT_,RPC_ISPOWEROVERLOADED__BUILDINGOBJECT_,RPC_RESETVULNERABILITY__CREATUREOBJECT_BUILDINGOBJECT_,RPC_SENDBASEDEFENSESTATUS__CREATUREOBJECT_BUILDINGOBJECT_,RPC_DOBASEDESTRUCTION__STRUCTUREOBJECT_,RPC_DOBASEDESTRUCTION__BUILDINGOBJECT_,RPC_SENDRESETVERIFICATION__CREATUREOBJECT_BUILDINGOBJECT_,RPC_SENDJAMUPLINKMENU__CREATUREOBJECT_BUILDINGOBJECT_,RPC_VERIFYUPLINKBAND__CREATUREOBJECT_BUILDINGOBJECT_INT_,RPC_STARTSLICE__CREATUREOBJECT_BUILDINGOBJECT_,RPC_SENDDNASAMPLEMENU__CREATUREOBJECT_BUILDINGOBJECT_,RPC_COMPLETESECURITYSLICE__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_FAILSECURITYSLICE__TANGIBLEOBJECT_,RPC_ISTERMINALDAMAGED__TANGIBLEOBJECT_,RPC_ISDNASAMPLED__BUILDINGOBJECT_,RPC_REPAIRTERMINAL__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_ABORTSHUTDOWNSEQUENCE__CREATUREOBJECT_BUILDINGOBJECT_,RPC_PROCESSDNASAMPLE__CREATUREOBJECT_BUILDINGOBJECT_INT_,RPC_HANDLEPOWERREGULATORSWITCH__CREATUREOBJECT_BUILDINGOBJECT_INT_,RPC_SENDPOWERREGULATORCONTROLS__CREATUREOBJECT_BUILDINGOBJECT_,RPC_GETDNAHASH__STRING_,RPC_ISPLANETCAPPED__,RPC_SCHEDULEBASEDESTRUCTION__BUILDINGOBJECT_,RPC_SPAWNCHILDRENCREATURES__BUILDINGOBJECT_,RPC_INITIALIZETURRETS__BUILDINGOBJECT_,RPC_NOTIFYTURRETDESTRUCTION__BUILDINGOBJECT_INSTALLATIONOBJECT_,RPC_SENDSELECTTURRETTODONATE__BUILDINGOBJECT_CREATUREOBJECT_,RPC_SENDSELECTDEEDTODONATE__BUILDINGOBJECT_CREATUREOBJECT_INT_,RPC_SENDREMOVEDEFENSECONFIRMATION__BUILDINGOBJECT_CREATUREOBJECT_LONG_,RPC_PERFORMDEFENSEDONTATION__BUILDINGOBJECT_CREATUREOBJECT_LONG_INT_,RPC_SENDSTATUS__BUILDINGOBJECT_CREATUREOBJECT_,RPC_ADDTURRET__BUILDINGOBJECT_SCENEOBJECT_,RPC_REMOVEDEFENSE__BUILDINGOBJECT_CREATUREOBJECT_LONG_};
 
 GCWManager::GCWManager(Zone* zne) : ManagedService(DummyConstructorParameter::instance()) {
 	GCWManagerImplementation* _implementation = new GCWManagerImplementation(zne);
@@ -260,6 +264,20 @@ void GCWManager::sendBaseDefenseStatus(CreatureObject* creature, BuildingObject*
 		_implementation->sendBaseDefenseStatus(creature, building);
 }
 
+void GCWManager::doBaseDestruction(StructureObject* structure) {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DOBASEDESTRUCTION__STRUCTUREOBJECT_);
+		method.addObjectParameter(structure);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->doBaseDestruction(structure);
+}
+
 void GCWManager::doBaseDestruction(BuildingObject* building) {
 	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -350,18 +368,19 @@ void GCWManager::sendDNASampleMenu(CreatureObject* creature, BuildingObject* bui
 		_implementation->sendDNASampleMenu(creature, building);
 }
 
-void GCWManager::completeSecuritySlice(TangibleObject* securityTerminal) {
+void GCWManager::completeSecuritySlice(CreatureObject* creature, TangibleObject* securityTerminal) {
 	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_COMPLETESECURITYSLICE__TANGIBLEOBJECT_);
+		DistributedMethod method(this, RPC_COMPLETESECURITYSLICE__CREATUREOBJECT_TANGIBLEOBJECT_);
+		method.addObjectParameter(creature);
 		method.addObjectParameter(securityTerminal);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->completeSecuritySlice(securityTerminal);
+		_implementation->completeSecuritySlice(creature, securityTerminal);
 }
 
 void GCWManager::failSecuritySlice(TangibleObject* securityTerminal) {
@@ -499,6 +518,19 @@ String GCWManager::getDNAHash(const String& usersample) {
 		return _implementation->getDNAHash(usersample);
 }
 
+bool GCWManager::isPlanetCapped() {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISPLANETCAPPED__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isPlanetCapped();
+}
+
 void GCWManager::scheduleBaseDestruction(BuildingObject* building) {
 	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -511,6 +543,159 @@ void GCWManager::scheduleBaseDestruction(BuildingObject* building) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->scheduleBaseDestruction(building);
+}
+
+void GCWManager::spawnChildrenCreatures(BuildingObject* building) {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SPAWNCHILDRENCREATURES__BUILDINGOBJECT_);
+		method.addObjectParameter(building);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->spawnChildrenCreatures(building);
+}
+
+void GCWManager::initializeTurrets(BuildingObject* building) {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INITIALIZETURRETS__BUILDINGOBJECT_);
+		method.addObjectParameter(building);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->initializeTurrets(building);
+}
+
+void GCWManager::notifyTurretDestruction(BuildingObject* building, InstallationObject* turret) {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_NOTIFYTURRETDESTRUCTION__BUILDINGOBJECT_INSTALLATIONOBJECT_);
+		method.addObjectParameter(building);
+		method.addObjectParameter(turret);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->notifyTurretDestruction(building, turret);
+}
+
+void GCWManager::sendSelectTurretToDonate(BuildingObject* building, CreatureObject* creature) {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDSELECTTURRETTODONATE__BUILDINGOBJECT_CREATUREOBJECT_);
+		method.addObjectParameter(building);
+		method.addObjectParameter(creature);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendSelectTurretToDonate(building, creature);
+}
+
+void GCWManager::sendSelectDeedToDonate(BuildingObject* building, CreatureObject* creature, int turretIndex) {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDSELECTDEEDTODONATE__BUILDINGOBJECT_CREATUREOBJECT_INT_);
+		method.addObjectParameter(building);
+		method.addObjectParameter(creature);
+		method.addSignedIntParameter(turretIndex);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendSelectDeedToDonate(building, creature, turretIndex);
+}
+
+void GCWManager::sendRemoveDefenseConfirmation(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID) {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDREMOVEDEFENSECONFIRMATION__BUILDINGOBJECT_CREATUREOBJECT_LONG_);
+		method.addObjectParameter(building);
+		method.addObjectParameter(creature);
+		method.addUnsignedLongParameter(deedOID);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendRemoveDefenseConfirmation(building, creature, deedOID);
+}
+
+void GCWManager::performDefenseDontation(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID, int turretIndex) {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_PERFORMDEFENSEDONTATION__BUILDINGOBJECT_CREATUREOBJECT_LONG_INT_);
+		method.addObjectParameter(building);
+		method.addObjectParameter(creature);
+		method.addUnsignedLongParameter(deedOID);
+		method.addSignedIntParameter(turretIndex);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->performDefenseDontation(building, creature, deedOID, turretIndex);
+}
+
+void GCWManager::sendStatus(BuildingObject* building, CreatureObject* creature) {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDSTATUS__BUILDINGOBJECT_CREATUREOBJECT_);
+		method.addObjectParameter(building);
+		method.addObjectParameter(creature);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendStatus(building, creature);
+}
+
+void GCWManager::addTurret(BuildingObject* building, SceneObject* turret) {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDTURRET__BUILDINGOBJECT_SCENEOBJECT_);
+		method.addObjectParameter(building);
+		method.addObjectParameter(turret);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addTurret(building, turret);
+}
+
+void GCWManager::removeDefense(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID) {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEDEFENSE__BUILDINGOBJECT_CREATUREOBJECT_LONG_);
+		method.addObjectParameter(building);
+		method.addObjectParameter(creature);
+		method.addUnsignedLongParameter(deedOID);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeDefense(building, creature, deedOID);
 }
 
 DistributedObjectServant* GCWManager::_getImplementation() {
@@ -775,6 +960,12 @@ bool GCWManagerImplementation::dropDestroyTask(unsigned long long id) {
 	return (&gcwDestroyTasks)->drop(id);
 }
 
+bool GCWManagerImplementation::isPlanetCapped() {
+	Locker _locker(_this.get());
+	// server/zone/managers/gcw/GCWManager.idl():  		return MAXBASES <= gcwBaseList.size();
+	return MAXBASES <= (&gcwBaseList)->size();
+}
+
 /*
  *	GCWManagerAdapter
  */
@@ -871,6 +1062,11 @@ void GCWManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			sendBaseDefenseStatus(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<BuildingObject*>(inv->getObjectParameter()));
 		}
 		break;
+	case RPC_DOBASEDESTRUCTION__STRUCTUREOBJECT_:
+		{
+			doBaseDestruction(static_cast<StructureObject*>(inv->getObjectParameter()));
+		}
+		break;
 	case RPC_DOBASEDESTRUCTION__BUILDINGOBJECT_:
 		{
 			doBaseDestruction(static_cast<BuildingObject*>(inv->getObjectParameter()));
@@ -901,9 +1097,9 @@ void GCWManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			sendDNASampleMenu(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<BuildingObject*>(inv->getObjectParameter()));
 		}
 		break;
-	case RPC_COMPLETESECURITYSLICE__TANGIBLEOBJECT_:
+	case RPC_COMPLETESECURITYSLICE__CREATUREOBJECT_TANGIBLEOBJECT_:
 		{
-			completeSecuritySlice(static_cast<TangibleObject*>(inv->getObjectParameter()));
+			completeSecuritySlice(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()));
 		}
 		break;
 	case RPC_FAILSECURITYSLICE__TANGIBLEOBJECT_:
@@ -952,9 +1148,64 @@ void GCWManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertAscii(getDNAHash(inv->getAsciiParameter(usersample)));
 		}
 		break;
+	case RPC_ISPLANETCAPPED__:
+		{
+			resp->insertBoolean(isPlanetCapped());
+		}
+		break;
 	case RPC_SCHEDULEBASEDESTRUCTION__BUILDINGOBJECT_:
 		{
 			scheduleBaseDestruction(static_cast<BuildingObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_SPAWNCHILDRENCREATURES__BUILDINGOBJECT_:
+		{
+			spawnChildrenCreatures(static_cast<BuildingObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_INITIALIZETURRETS__BUILDINGOBJECT_:
+		{
+			initializeTurrets(static_cast<BuildingObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_NOTIFYTURRETDESTRUCTION__BUILDINGOBJECT_INSTALLATIONOBJECT_:
+		{
+			notifyTurretDestruction(static_cast<BuildingObject*>(inv->getObjectParameter()), static_cast<InstallationObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_SENDSELECTTURRETTODONATE__BUILDINGOBJECT_CREATUREOBJECT_:
+		{
+			sendSelectTurretToDonate(static_cast<BuildingObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_SENDSELECTDEEDTODONATE__BUILDINGOBJECT_CREATUREOBJECT_INT_:
+		{
+			sendSelectDeedToDonate(static_cast<BuildingObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_SENDREMOVEDEFENSECONFIRMATION__BUILDINGOBJECT_CREATUREOBJECT_LONG_:
+		{
+			sendRemoveDefenseConfirmation(static_cast<BuildingObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
+		}
+		break;
+	case RPC_PERFORMDEFENSEDONTATION__BUILDINGOBJECT_CREATUREOBJECT_LONG_INT_:
+		{
+			performDefenseDontation(static_cast<BuildingObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter(), inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_SENDSTATUS__BUILDINGOBJECT_CREATUREOBJECT_:
+		{
+			sendStatus(static_cast<BuildingObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_ADDTURRET__BUILDINGOBJECT_SCENEOBJECT_:
+		{
+			addTurret(static_cast<BuildingObject*>(inv->getObjectParameter()), static_cast<SceneObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_REMOVEDEFENSE__BUILDINGOBJECT_CREATUREOBJECT_LONG_:
+		{
+			removeDefense(static_cast<BuildingObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
 		}
 		break;
 	default:
@@ -1026,6 +1277,10 @@ void GCWManagerAdapter::sendBaseDefenseStatus(CreatureObject* creature, Building
 	(static_cast<GCWManager*>(stub))->sendBaseDefenseStatus(creature, building);
 }
 
+void GCWManagerAdapter::doBaseDestruction(StructureObject* structure) {
+	(static_cast<GCWManager*>(stub))->doBaseDestruction(structure);
+}
+
 void GCWManagerAdapter::doBaseDestruction(BuildingObject* building) {
 	(static_cast<GCWManager*>(stub))->doBaseDestruction(building);
 }
@@ -1050,8 +1305,8 @@ void GCWManagerAdapter::sendDNASampleMenu(CreatureObject* creature, BuildingObje
 	(static_cast<GCWManager*>(stub))->sendDNASampleMenu(creature, building);
 }
 
-void GCWManagerAdapter::completeSecuritySlice(TangibleObject* securityTerminal) {
-	(static_cast<GCWManager*>(stub))->completeSecuritySlice(securityTerminal);
+void GCWManagerAdapter::completeSecuritySlice(CreatureObject* creature, TangibleObject* securityTerminal) {
+	(static_cast<GCWManager*>(stub))->completeSecuritySlice(creature, securityTerminal);
 }
 
 void GCWManagerAdapter::failSecuritySlice(TangibleObject* securityTerminal) {
@@ -1090,8 +1345,52 @@ String GCWManagerAdapter::getDNAHash(const String& usersample) {
 	return (static_cast<GCWManager*>(stub))->getDNAHash(usersample);
 }
 
+bool GCWManagerAdapter::isPlanetCapped() {
+	return (static_cast<GCWManager*>(stub))->isPlanetCapped();
+}
+
 void GCWManagerAdapter::scheduleBaseDestruction(BuildingObject* building) {
 	(static_cast<GCWManager*>(stub))->scheduleBaseDestruction(building);
+}
+
+void GCWManagerAdapter::spawnChildrenCreatures(BuildingObject* building) {
+	(static_cast<GCWManager*>(stub))->spawnChildrenCreatures(building);
+}
+
+void GCWManagerAdapter::initializeTurrets(BuildingObject* building) {
+	(static_cast<GCWManager*>(stub))->initializeTurrets(building);
+}
+
+void GCWManagerAdapter::notifyTurretDestruction(BuildingObject* building, InstallationObject* turret) {
+	(static_cast<GCWManager*>(stub))->notifyTurretDestruction(building, turret);
+}
+
+void GCWManagerAdapter::sendSelectTurretToDonate(BuildingObject* building, CreatureObject* creature) {
+	(static_cast<GCWManager*>(stub))->sendSelectTurretToDonate(building, creature);
+}
+
+void GCWManagerAdapter::sendSelectDeedToDonate(BuildingObject* building, CreatureObject* creature, int turretIndex) {
+	(static_cast<GCWManager*>(stub))->sendSelectDeedToDonate(building, creature, turretIndex);
+}
+
+void GCWManagerAdapter::sendRemoveDefenseConfirmation(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID) {
+	(static_cast<GCWManager*>(stub))->sendRemoveDefenseConfirmation(building, creature, deedOID);
+}
+
+void GCWManagerAdapter::performDefenseDontation(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID, int turretIndex) {
+	(static_cast<GCWManager*>(stub))->performDefenseDontation(building, creature, deedOID, turretIndex);
+}
+
+void GCWManagerAdapter::sendStatus(BuildingObject* building, CreatureObject* creature) {
+	(static_cast<GCWManager*>(stub))->sendStatus(building, creature);
+}
+
+void GCWManagerAdapter::addTurret(BuildingObject* building, SceneObject* turret) {
+	(static_cast<GCWManager*>(stub))->addTurret(building, turret);
+}
+
+void GCWManagerAdapter::removeDefense(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID) {
+	(static_cast<GCWManager*>(stub))->removeDefense(building, creature, deedOID);
 }
 
 /*

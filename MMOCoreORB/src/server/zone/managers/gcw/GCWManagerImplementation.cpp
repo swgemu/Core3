@@ -27,7 +27,24 @@
 #include "server/zone/objects/player/sui/callbacks/JamUplinkSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/OverrideTerminalSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/PowerRegulatorSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/RemoveDefenseSuiCallback.h"
+
 #include "server/zone/managers/structure/StructureManager.h"
+
+#include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/objects/creature/AiAgent.h"
+
+#include "server/zone/objects/installation/InstallationObject.h"
+#include "server/zone/objects/installation/components/TurretObserver.h"
+
+#include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
+#include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
+
+#include "server/zone/objects/tangible/deed/Deed.h"
+#include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
+#include "server/zone/objects/player/sui/callbacks/DonateDefenseSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/SelectTurretDonationSuiCallback.h"
+#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
 
 #define DEBUG_GCW
 
@@ -70,6 +87,10 @@ void GCWManagerImplementation::start(){
 
 void GCWManagerImplementation::loadFactionStructures(const String& zoneName){
 	// load structures
+
+	// faction structures moved to playerstructures DB
+	return;
+
 
 	info("GCWManager Loading FACTION Structures for from factionstructures.db for zone " + zoneName,true);
 
@@ -142,6 +163,9 @@ void GCWManagerImplementation::loadFactionStructures(const String& zoneName){
 					else
 						info("Unable to register gcwBuilding",true);
 
+				} else if (object->isTurret()){
+					//ManagedReference<InstallationObject*> installation = cast<InstallationObject*>(object);
+
 				}
 				printf("\r\tLoading gcw structures [%d] / [?]\t", i);
 			} else {
@@ -210,12 +234,12 @@ void GCWManagerImplementation::scheduleVulnerabilityStart(BuildingObject* buildi
 	if(baseData == NULL)
 		return;
 
-	info("Scheduling next vuln in " + baseData->getNextVulnerableTime().getFormattedTime(),true);
+	info("Base " + String::valueOf(building->getObjectID()) + " scheduling next vulnerable time for " + baseData->getNextVulnerableTime().getFormattedTime(),true);
 
 	Time vulnTime = baseData->getNextVulnerableTime();
 	int64 vulnDif = vulnTime.miliDifference();
 	if(vulnDif >= 0){
-		info("Cannot schedule start time.  IT has already passed");
+		info("Base: " + String::valueOf(building->getObjectID()) + " Cannot schedule start time.  IT has already passed",true);
 		return;
 	}
 
@@ -450,8 +474,20 @@ void GCWManagerImplementation::abortShutdownSequence(CreatureObject* creature, B
 	}
 }
 
-void GCWManagerImplementation::doBaseDestruction(BuildingObject* building){
+void GCWManagerImplementation::doBaseDestruction(StructureObject* structure){
+	if(structure == NULL)
+		return;
 
+	BuildingObject* building = cast<BuildingObject*>(structure);
+
+	if(building != NULL)
+		doBaseDestruction(building);
+}
+void GCWManagerImplementation::doBaseDestruction(BuildingObject* building){
+	if(building == NULL)
+		return;
+
+	info("Destroying Base " + String::valueOf(building->getObjectID()),true);
 
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
 
@@ -476,6 +512,7 @@ void GCWManagerImplementation::unregisterGCWBase(BuildingObject* building){
 	if(oldStartTask != NULL){
 		oldStartTask->cancel();
 		this->dropStartTask(building->getObjectID());
+		info("deleting start task for building " + String::valueOf(building->getObjectID()),true);
 	}
 
 	Reference<Task*> oldEndTask = this->getEndTask(building->getObjectID());
@@ -491,6 +528,8 @@ void GCWManagerImplementation::unregisterGCWBase(BuildingObject* building){
 		oldDestroyTask->cancel();
 		this->dropDestroyTask(building->getObjectID());
 	}
+
+	info("Base " + String::valueOf(building->getObjectID()) + " has been removed",true);
 }
 
 void GCWManagerImplementation::performGCWTasks(){
@@ -535,12 +574,14 @@ void GCWManagerImplementation::performGCWTasks(){
 }
 
 void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool initializeBase){
-	info("Registering base");
+	info("Registering base " + String::valueOf(building->getObjectID()),true);
 
 	if ( !this->hasBase(building)){
 
 		// initializebase should be for a first plant.
 		if(initializeBase){
+
+
 			DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
 			if(baseData == NULL){
@@ -562,6 +603,10 @@ void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool in
 			checkVulnerabilityData(building);
 
 		}
+
+		this->initializeTurrets(building);
+
+		//this->spawnChildrenCreatures(building);
 	}else
 		error("Building already in gcwBaseList");
 }
@@ -721,17 +766,19 @@ void GCWManagerImplementation::resetVulnerability(CreatureObject* creature, Buil
 	{
 		if(creature != NULL)
 			creature->sendSystemMessage("Can't reset yet again.  You must wait " + String::valueOf(ttime.miliDifference()/1000));
-
 		return;
 	}
 
-	Locker block(building);
+	Locker clock(building,creature);
 
 	//info("Resetting vulnerability timer",true);
 	baseData->setLastResetTime(Time());
 
 	Time nextTime = Time();
 
+	clock.release();
+
+	Locker glock(_this.get(),creature);
 	baseData->setLastVulnerableTime(nextTime);
 
 	nextTime.addMiliTime(GCWManager::VULNERABILITYFREQUENCY*1000);
@@ -740,7 +787,6 @@ void GCWManagerImplementation::resetVulnerability(CreatureObject* creature, Buil
 	nextTime.addMiliTime(GCWManager::VULNERABILITYDURATION*1000);
 	baseData->setVulnerabilityEndTime(nextTime.getTime()); // (working)
 
-	block.release();
 
 	Reference<Task*> task = this->getStartTask(building->getObjectID());
 	if(task == NULL)
@@ -758,6 +804,17 @@ void GCWManagerImplementation::resetVulnerability(CreatureObject* creature, Buil
 		creature->sendSystemMessage("@hq:vulnerability_reset"); // the vulnerability of this structure has been reset
 
 }
+void GCWManagerImplementation::sendStatus(BuildingObject* building, CreatureObject* creature){
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
+
+	if(creature==NULL || baseData == NULL)
+		return;
+
+	if(baseData->isVulnerable())
+			creature->sendSystemMessage("Base is vulnerable until " + baseData->getVulnerabilityEndTime().getFormattedTime() );
+		else
+			creature->sendSystemMessage("Base will be vulnerable on " + baseData->getNextVulnerableTime().getFormattedTime());
+}
 
 void GCWManagerImplementation::sendBaseDefenseStatus(CreatureObject* creature, BuildingObject* building){
 	ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
@@ -769,22 +826,33 @@ void GCWManagerImplementation::sendBaseDefenseStatus(CreatureObject* creature, B
 
 	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
 	status->setPromptTitle("@hq:mnu_defense_status"); //Defense status
-	status->setPromptText("DEFENSE \\#FF0000STATUS\\"); // DEfense status
+	status->setPromptText("@faction/faction_hq/faction_hq_response:terminal_response21"); // If you want to remove a defense select it and press remove
 	status->setUsingObject(building);
-	status->setOkButton(true, "@refresh");
 	status->setCancelButton(true, "@cancel");
+	if(creature == building->getOwnerCreatureObject()){
+		status->setOtherButton(true,"@ui:remove");
+	}
+	status->setOkButton(true, "@ok");
 	status->setCallback( new HQDefenseStatusSuiCallback(this->zone->getZoneServer()) );
 
-	if(baseData->isVulnerable())
-		status->addMenuItem("Base is vulnerable until " + baseData->getVulnerabilityEndTime().getFormattedTime() );
-	else
-		status->addMenuItem("Base will be vulnerable on " + baseData->getNextVulnerableTime().getFormattedTime());
 
-	status->addMenuItem("X credits in reserve.");
-	status->addMenuItem("X troops in reserve.");
-	status->addMenuItem("X resources in reserve");
-	status->addMenuItem("X turrets in reserve");
+	ZoneServer* zoneServer = zone->getZoneServer();
+	if(zoneServer != NULL){
+		for(int i =0; i < baseData->getTotalTurretCount();i++){
+			ManagedReference<SceneObject*> sceno = zoneServer->getObject(baseData->getTurretID(i));
+			if(sceno != NULL && sceno->isTurret()) {
 
+				status->addMenuItem(sceno->getDisplayedName(),sceno->getObjectID());
+			} else {
+				//status->addMenuItem("Turret " + String::valueOf(i+1) + ": EMPTY");
+			}
+		}
+	}
+	//status->addMenuItem("X credits in reserve.");
+	//status->addMenuItem("X troops in reserve.");
+	//status->addMenuItem("X resources in reserve");
+	//status->addMenuItem("X turrets in reserve");
+	//status->addMenuItem("Child Objects: " + String::valueOf(building->getChildObjects()->size()));
 	ghost->addSuiBox(status);
 	creature->sendMessage(status->generateMessage());
 }
@@ -844,7 +912,7 @@ void GCWManagerImplementation::verifyUplinkBand(CreatureObject* creature, Buildi
 
 	if( band == baseData->getUplinkBand()){
 
-		Locker block(building);
+		Locker block(building,creature);
 
 		if(this->isBandIdentified(building))
 			baseData->setState(DestructibleBuildingDataComponent::JAMMED);
@@ -979,7 +1047,9 @@ void GCWManagerImplementation::startSlice(CreatureObject* creature, BuildingObje
 
 }
 
-void GCWManagerImplementation::completeSecuritySlice(TangibleObject* securityTerminal){
+// @pre: player is locked since called from Slicing session
+// @post: player is locked
+void GCWManagerImplementation::completeSecuritySlice(CreatureObject* creature, TangibleObject* securityTerminal){
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(securityTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 
 	if(building == NULL)
@@ -994,6 +1064,8 @@ void GCWManagerImplementation::completeSecuritySlice(TangibleObject* securityTer
 
 	Locker block(building);
 	baseData->setState(DestructibleBuildingDataComponent::SLICED);
+
+
 }
 
 bool GCWManagerImplementation::isTerminalDamaged(TangibleObject* securityTerminal){
@@ -1028,7 +1100,6 @@ bool GCWManagerImplementation::isTerminalDamaged(TangibleObject* securityTermina
 		return true;
 
 }
-
 void GCWManagerImplementation::repairTerminal(CreatureObject* creature, TangibleObject* securityTerminal){
 	if(securityTerminal == NULL)
 			return;
@@ -1062,14 +1133,13 @@ void GCWManagerImplementation::repairTerminal(CreatureObject* creature, Tangible
 			return;
 		} else {
 			//info("repairing slice",true);
-			Locker block(building);
+			Locker block(building,creature);
 			baseData->setSliceRepairTime(Time());
 			baseData->setTerminalBeingRepaired(true);
 		}
 
 	}
 }
-
 void GCWManagerImplementation::failSecuritySlice(TangibleObject* securityTerminal){
 
 	if(securityTerminal == NULL)
@@ -1119,8 +1189,7 @@ void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, Build
 	status->setCancelButton(true, "@cancel");
 
 
-
-	Locker block(building);
+	Locker block(building,creature);
 
 	// TODO: use with dnaHash
 
@@ -1213,16 +1282,12 @@ void GCWManagerImplementation::processDNASample(CreatureObject* creature, Buildi
 		return;
 	}
 
-
 	if(!this->isBaseVulnerable(building))
 		return;
 
 	String dnaString = baseData->getSystemDNAString();
 
-	// multiple people can be doing this.  maybe lock both?
-	Locker lock(_this.get());
-	Locker block(building, _this.get());
-
+	Locker block(building, creature);
 
 	int currentMatchCount = 0;
 	int j = -1;
@@ -1333,7 +1398,7 @@ void GCWManagerImplementation::handlePowerRegulatorSwitch(CreatureObject* creatu
 	if(!this->isBaseVulnerable(building))
 			return;
 
-	Locker block(building);
+	Locker block(building,creature);
 
 	if(indx > -1){
 		int change = System::random(0x2); // 0-2 to give a little more weight to the switch changing
@@ -1363,5 +1428,417 @@ void GCWManagerImplementation::handlePowerRegulatorSwitch(CreatureObject* creatu
 		block.release();
 		this->sendPowerRegulatorControls(creature,building);
 	}
+
+}
+
+// TODO: make sure building is locked
+void GCWManagerImplementation::initializeTurrets(BuildingObject* building){
+	Locker _lock(building);
+
+	SortedVector <ManagedReference<SceneObject* > > *childObjects = building->getChildObjects();
+	for(int i =0; i<childObjects->size();i++){
+		if(childObjects->get(i)->isTurret()) {
+			ManagedReference<SceneObject*> sceno = childObjects->get(i);
+			if(sceno == NULL)
+				continue;
+
+			ManagedReference<TurretObserver*> observer = new TurretObserver(building);
+			ManagedReference<InstallationObject*> installation = cast<InstallationObject*>(sceno.get());
+			installation->registerObserver(ObserverEventType::OBJECTDESTRUCTION,observer);
+
+		}
+	}
+}
+
+void GCWManagerImplementation::notifyTurretDestruction(BuildingObject* building, InstallationObject* turret){
+
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	Locker _lock(building);
+
+	Locker clock(turret, building);
+
+	if(baseData == NULL){
+		error("ERROR:  could not get base data for base");
+		return;
+	}
+
+	if(baseData->hasTurret(turret->getObjectID())){
+
+		if( building->containsChildObject(cast<SceneObject*>(turret))) {
+
+
+			PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", zone->getZoneName(), turret->getPositionX(), turret->getPositionZ(), turret->getPositionY());
+			building->broadcastMessage(explodeLoc, false);
+			//info("building does contain the child",true);
+			//info("removed child",true);
+			building->getChildObjects()->drop(cast<SceneObject*>(turret));
+
+		}
+		else {
+			info("building does not contain child",true);
+		}
+
+		if(baseData->hasTurret(turret->getObjectID())){
+			int indx = baseData->getIndexOfTurret(turret->getObjectID());
+
+			//building->getChildObjects()->removeElement(cast<SceneObject*>(turret));
+			baseData->setTurretID(indx,0);
+			turret->destroyObjectFromWorld(true);
+			turret->destroyObjectFromDatabase(true);
+
+
+			// see if all the turrets are destroyed
+			int defensecount = 0;
+
+			for(int i = 0; i < baseData->getTotalTurretCount();i++){
+				if(baseData->getTurretID(i))
+					defensecount++;
+			}
+
+			info("Base " + String::valueOf(building->getObjectID()) + " turret destroyed.  Remaining turrets: " + String::valueOf(defensecount),true);
+
+			if(!defensecount)
+				baseData->setDefense(false);
+
+		} else{
+			info("Base " + String::valueOf(building->getObjectID()) + " does not contain turret " + String::valueOf(turret->getObjectID()),true);
+		}
+
+
+	} else {
+		info("base no contain turret",true);
+	}
+
+}
+void GCWManagerImplementation::spawnChildrenCreatures(BuildingObject* building){
+	//info("spawning children NPCs",true);
+
+	/*
+	Locker _lock(building);
+
+	SharedObjectTemplate* serverTemplate = building->getObjectTemplate();
+
+	if(serverTemplate == NULL)
+		return;
+
+	//info("servertemplate is good",true);
+	Vector3 position = building->getPosition();
+
+	for(int i = 0; i < serverTemplate->getChildObjectsSize();i++){
+		//info("iterating child",true);
+			ChildObject* child = serverTemplate->getChildObject(i);
+			if(child != NULL){
+				//info("child template " + child->getTemplateFile(),true);
+
+				SharedObjectTemplate* thisTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
+				//info(thisTemplate->getClientObjectCRC())
+				//info("child typs is " + String::valueOf(thisTemplate->getGameObjectType()),true);
+
+				if(thisTemplate->getGameObjectType() == SceneObjectType::NPCCREATURE){
+
+
+					Vector3 childPosition = child->getPosition();
+					float angle = building->getDirection()->getRadians();
+
+					float x = (Math::cos(angle) * childPosition.getX()) + (childPosition.getY() * Math::sin(angle));
+					float y = (Math::cos(angle) * childPosition.getY()) - (childPosition.getX() * Math::sin(angle));
+
+					x += position.getX();
+					y += position.getY();
+
+					float z = position.getZ() + childPosition.getZ();
+
+					float degrees = building->getDirection()->getDegrees();
+
+					String mobileName = child->getMobile();
+					CreatureManager* creatureManager = zone->getCreatureManager();
+					CreatureObject* creature = creatureManager->spawnCreature(mobileName.hashCode(),0,x,z,y,0);
+					if(creature->isAiAgent()){
+						AiAgent* ai = cast<AiAgent*>(creature);
+						ai->setRespawnTimer(30);
+					}
+
+
+				}
+			} else {
+				info("child is null",true);
+			}
+		}
+		*/
+
+
+}
+
+void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, CreatureObject* creature, int turretIndex){
+	if(creature == NULL)
+		return;
+
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if(ghost == NULL)
+		return;
+
+	ManagedReference<SceneObject*> inv = creature->getSlottedObject("inventory");
+
+	if(inv == NULL)
+		return;
+
+	ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
+
+	ManagedReference<SuiListBox*> donate = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
+	donate->setPromptTitle("@hq:mnu_defense_status");
+	donate->setPromptText("Donate a deed");
+	donate->setUsingObject(building);
+	donate->setOkButton(true, "@donate");
+	donate->setCancelButton(true, "@cancel");
+	donate->setCallback( new DonateDefenseSuiCallback(zone->getZoneServer(), turretIndex) );
+
+	for(int i =0;i < inv->getContainerObjectsSize(); ++i){
+		ManagedReference<SceneObject*> inventoryObject = inv->getContainerObject(i);
+		if(inventoryObject->isDeedObject()){
+			donate->addMenuItem(inventoryObject->getDisplayedName(),inventoryObject->getObjectID());
+		}
+	}
+
+	ghost->addSuiBox(donate);
+	creature->sendMessage(donate->generateMessage());
+
+}
+
+void GCWManagerImplementation::sendSelectTurretToDonate(BuildingObject* building, CreatureObject* creature){
+	if(creature == NULL)
+		return;
+
+	ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
+
+	if(ghost==NULL || baseData == NULL)
+		return;
+
+
+	ManagedReference<SceneObject*> inv = creature->getSlottedObject("inventory");
+
+	ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
+
+	ManagedReference<SuiListBox*> donate = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
+	donate->setPromptTitle("TURRET SELECT");
+	donate->setPromptText("SELECT TURRET");
+	donate->setUsingObject(building);
+	donate->setOkButton(true, "@select");
+	donate->setCancelButton(true, "@cancel");
+	donate->setCallback( new SelectTurretDonationSuiCallback(zone->getZoneServer()));
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+	if(zoneServer != NULL){
+
+		for(int i = 0; i < baseData->getTotalTurretCount();++i){
+			ManagedReference<SceneObject*> sceno = zoneServer->getObject(baseData->getTurretID(i));
+			if(sceno != NULL && sceno->isTurret()) {
+				donate->addMenuItem("Turret " + String::valueOf(i+1) + " : " + sceno->getDisplayedName());
+			} else {
+				donate->addMenuItem("Turret " + String::valueOf(i+1) + ": EMPTY");
+			}
+
+		}
+	}
+	ghost->addSuiBox(donate);
+	creature->sendMessage(donate->generateMessage());
+}
+
+void GCWManagerImplementation::sendRemoveDefenseConfirmation(BuildingObject* building, CreatureObject* creature, uint64 deedOID){
+	info("deed oid is " + String::valueOf(deedOID),true);
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+	if(zoneServer == NULL)
+		return;
+
+	ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
+
+	if(ghost==NULL || baseData == NULL)
+		return;
+
+	ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
+
+	ManagedReference<SuiListBox*> removeDefense = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
+	removeDefense->setPromptTitle("TURRET SELECT");
+	removeDefense->setPromptText("@faction/faction_hq/faction_hq_response:terminal_response25"); // are you sure you want to remove the selected defense?
+	removeDefense->setUsingObject(building);
+	removeDefense->setOkButton(true, "@select");
+	removeDefense->setCancelButton(true, "@cancel");
+	removeDefense->setCallback( new RemoveDefenseSuiCallback(zone->getZoneServer(),deedOID));
+
+	ghost->addSuiBox(removeDefense);
+	creature->sendMessage(removeDefense->generateMessage());
+}
+
+void GCWManagerImplementation::removeDefense(BuildingObject* building, CreatureObject* creature, uint64 deedOID){
+	//info("remove defense " + String::valueOf(deedOID),true);
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+
+	if(zoneServer == NULL)
+			return;
+
+	ManagedReference<SceneObject*> defense = zoneServer->getObject(deedOID);
+
+	if(defense == NULL || !defense->isTurret())
+		return;
+
+	Locker clock(defense,creature);
+	TangibleObject* tano = cast<TangibleObject*>(defense.get());
+	tano->inflictDamage(creature,0,999999,true,true);
+
+}
+
+void GCWManagerImplementation::performDefenseDontation(BuildingObject* building, CreatureObject* creature, uint64 deedOID, int turretIndex){
+	//info("deed oid is " + String::valueOf(deedOID),true);
+
+	ZoneServer* zoneServer = zone->getZoneServer();
+	if(zoneServer == NULL)
+		return;
+
+	ManagedReference<SceneObject*> deedObj = zoneServer->getObject(deedOID);
+
+	if(deedObj == NULL)
+		return;
+
+	ManagedReference<StructureDeed*> turretDeed = dynamic_cast<StructureDeed*>(deedObj.get());
+
+	// verify it's a deed
+	if(turretDeed == NULL){
+		StringIdChatParameter param("@faction/faction_hq/faction_hq_response:terminal_response43"); // This facility does not accept deeds of type '%TO'. Cancelling donation..."
+		param.setTO(deedObj->getObjectName());
+		creature->sendSystemMessage(param);
+		return;
+	}
+
+	// verify that the generated object is a turret
+	Reference<SharedObjectTemplate* > generatedTemplate = TemplateManager::instance()->getTemplate(turretDeed->getGeneratedObjectTemplate().hashCode());
+
+	if(generatedTemplate->getGameObjectType() != SceneObjectType::TURRET) {
+		StringIdChatParameter param("@faction/faction_hq/faction_hq_response:terminal_response43"); // This facility does not accept deeds of type '%TO'. Cancelling donation..."
+		param.setTO(deedObj->getObjectName());
+		creature->sendSystemMessage(param);
+		return;
+	}
+
+	String serverTemplatePath = turretDeed->getGeneratedObjectTemplate();
+	TemplateManager* templateManager = TemplateManager::instance();
+	Reference<SharedObjectTemplate*> baseServerTemplate = building->getObjectTemplate();
+
+	Reference<SharedObjectTemplate*> turretTemplate = NULL;
+	ChildObject* child = NULL;
+	int currentTurretIndex = 0;
+
+	// search through the baseData to find the first empty turret index
+
+	Locker block(building,creature);
+
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
+
+	if(baseData == NULL)
+		return;
+
+	int nextAvailableTurret = 0;
+	for(nextAvailableTurret = 0; nextAvailableTurret < baseData->getTotalTurretCount(); nextAvailableTurret++){
+		if(baseData->getTurretID(nextAvailableTurret) == 0)
+			break;
+	}
+
+	if ( nextAvailableTurret >= baseData->getTotalTurretCount() ){
+		return;
+	}
+
+	// now find the coords of the nth turret
+
+	for (int i = 0; i < baseServerTemplate->getChildObjectsSize(); ++i) {
+		 child = baseServerTemplate->getChildObject(i);
+		 turretTemplate = NULL;
+		if(child != NULL){
+
+			turretTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
+			if(turretTemplate->getGameObjectType() == SceneObjectType::TURRET){
+				if(currentTurretIndex == nextAvailableTurret){
+					break;
+				} else{
+					currentTurretIndex++;
+				}
+			}
+		}
+	}
+
+	if(child == NULL || turretTemplate == NULL || turretTemplate->getGameObjectType() != SceneObjectType::TURRET)
+		return;
+
+
+	Vector3 position = building->getPosition();
+
+	Quaternion* direction = building->getDirection();
+	Vector3 childPosition = child->getPosition();
+	float angle = direction->getRadians();
+
+	float x = (Math::cos(angle) * childPosition.getX()) + (childPosition.getY() * Math::sin(angle));
+	float y = (Math::cos(angle) * childPosition.getY()) - (childPosition.getX() * Math::sin(angle));
+
+	x += position.getX();
+	y += position.getY();
+
+	float z = position.getZ() + childPosition.getZ();
+
+	float degrees = direction->getDegrees();
+
+	Quaternion dir = child->getDirection();
+	//info("templatestring is " + turretDeed->getGeneratedObjectTemplate(),true);
+	// TODO: do we need to create this in factionsructures db?
+	//ManagedReference<SceneObject*> obj = ObjectManager::instance()->createObject(serverTemplatePath.hashCode(),1,"playerstructures");
+	ManagedReference<SceneObject*> obj = zone->getZoneServer()->createObject(turretDeed->getGeneratedObjectTemplate().hashCode(), 1);
+	obj->initializePosition(x, z, y);
+	obj->setDirection(dir.rotate(Vector3(0, 1, 0), degrees));
+
+	if(!obj->isTangibleObject())
+		return;
+
+	TangibleObject* tano = cast<TangibleObject*>(obj.get());
+	if(tano != NULL)
+		tano->setFaction(building->getFaction());
+
+	zone->transferObject(obj, -1, false);
+
+	building->getChildObjects()->put(obj);
+
+	ManagedReference<TurretObserver*> observer = new TurretObserver(building);
+	obj->registerObserver(ObserverEventType::OBJECTDESTRUCTION,observer);
+
+	baseData->setTurretID(currentTurretIndex,obj->getObjectID());
+
+	StringIdChatParameter params;
+	params.setStringId("@faction/faction_hq/faction_hq_response:terminal_response45");  // you successfully donate deed
+	params.setTO(turretDeed->getDisplayedName());
+	creature->sendSystemMessage(params);
+
+	block.release();
+
+	if(turretDeed != NULL) {
+		Locker clock(turretDeed, creature);
+		turretDeed->destroyObjectFromWorld(true);
+	}
+
+
+
+}
+
+void GCWManagerImplementation::addTurret(BuildingObject* building, SceneObject* turret){
+	if(building == NULL || turret == NULL)
+		return;
+
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
+
+	if(baseData == NULL)
+		return;
+	Locker _lock(building);
+
+	baseData->addTurret(baseData->getTotalTurretCount(), turret->getObjectID());
 
 }

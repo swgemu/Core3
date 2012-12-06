@@ -238,7 +238,7 @@ public:
 
 	void updatePaidAccessList();
 
-	bool isGCWBase();
+	void createChildObjects();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -419,7 +419,7 @@ public:
 
 	void updatePaidAccessList();
 
-	bool isGCWBase();
+	void createChildObjects();
 
 	WeakReference<BuildingObject*> _this;
 
@@ -566,7 +566,7 @@ public:
 
 	void updatePaidAccessList();
 
-	bool isGCWBase();
+	void createChildObjects();
 
 };
 

@@ -135,7 +135,7 @@ void ZoneImplementation::startManagers() {
 
 	StructureManager::instance()->loadPlayerStructures(getZoneName());
 
-	gcwManager->loadFactionStructures(getZoneName());
+	//gcwManager->loadFactionStructures(getZoneName());
 
 	gcwManager->start();
 

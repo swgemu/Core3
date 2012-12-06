@@ -16,6 +16,7 @@
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/Zone.h"
 
+#include "server/zone/managers/gcw/GCWManager.h"
 int DestroyStructureSessionImplementation::initializeSession() {
 	//TODO: Temporary until CreatureObject* dependency removed.
 	if (!creatureObject->isPlayerCreature())
@@ -105,7 +106,21 @@ int DestroyStructureSessionImplementation::destroyStructure() {
 	if (structureObject == NULL || structureObject->getZone() == NULL)
 		return cancelSession();
 
-	StructureManager::instance()->redeedStructure(creatureObject);
+	if(!structureObject->isGCWBase()) {
+		info("not a gcwbase",true);
+		StructureManager::instance()->redeedStructure(creatureObject);
+	} else{
 
+		Zone* zone = structureObject->getZone();
+		if(zone == NULL)
+			return cancelSession();
+
+		GCWManager* gcwMan = zone->getGCWManager();
+		if(gcwMan == NULL)
+			return cancelSession();
+
+		gcwMan->doBaseDestruction(structureObject);
+		return cancelSession();
+	}
 	return 0;
 }

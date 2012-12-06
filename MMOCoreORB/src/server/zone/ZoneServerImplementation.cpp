@@ -466,6 +466,24 @@ void ZoneServerImplementation::updateObjectToDatabase(SceneObject* object) {
 void ZoneServerImplementation::updateObjectToStaticDatabase(SceneObject* object) {
 	objectManager->updatePersistentObject(object);
 }
+SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, const String& dbname, int persistenceLevel ){
+	SceneObject* obj = NULL;
+
+	try {
+		//lock(); ObjectManager has its own mutex
+
+		obj = objectManager->createObject(templateCRC, persistenceLevel, dbname, 0);
+
+		//unlock();
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+
+		//unlock();
+	}
+
+	return obj;
+}
 
 SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, int persistenceLevel, uint64 oid) {
 	SceneObject* obj = NULL;

@@ -590,6 +590,12 @@ public:
 
 	bool isVendor();
 
+	bool isGCWBase();
+
+	bool isTurret();
+
+	bool isDetector();
+
 	ZoneComponent* getZoneComponent();
 
 	ObjectMenuComponent* getObjectMenuComponent();
@@ -1244,6 +1250,12 @@ public:
 	virtual bool isPlayerCreature();
 
 	bool isVendor();
+
+	bool isGCWBase();
+
+	bool isTurret();
+
+	bool isDetector();
 
 	ZoneComponent* getZoneComponent();
 

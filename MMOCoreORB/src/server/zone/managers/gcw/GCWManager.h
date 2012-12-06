@@ -38,6 +38,20 @@ using namespace server::zone::objects::tangible;
 namespace server {
 namespace zone {
 namespace objects {
+namespace structure {
+
+class StructureObject;
+
+} // namespace structure
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::structure;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace building {
 
 class BuildingObject;
@@ -48,6 +62,20 @@ class BuildingObject;
 } // namespace server
 
 using namespace server::zone::objects::building;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace installation {
+
+class InstallationObject;
+
+} // namespace installation
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::installation;
 
 namespace server {
 namespace zone {
@@ -89,6 +117,8 @@ using namespace server::zone::objects::player;
 
 #include "system/util/SortedVector.h"
 
+#include "system/thread/Mutex.h"
+
 namespace server {
 namespace zone {
 namespace managers {
@@ -98,19 +128,21 @@ class GCWManager : public ManagedService {
 public:
 	static const int GCWCHECKTIMER = 7200;
 
-	static const int VULNERABILITYDURATION = 7200;
+	static const int VULNERABILITYDURATION = 1800;
 
-	static const int VULNERABILITYFREQUENCY = 172800;
+	static const int VULNERABILITYFREQUENCY = 3600;
 
-	static const int RESETTIMER = 300;
+	static const int RESETTIMER = 120;
 
-	static const int SLICECOOLDOWN = 120;
+	static const int SLICECOOLDOWN = 30;
 
 	static const int TOTALDNASAMPLES = 10;
 
 	static const int DNAMATCHESREQUIRED = 10;
 
-	static const int DESTRUCTIONTIMER = 600;
+	static const int DESTRUCTIONTIMER = 180;
+
+	static const int MAXBASES = 5;
 
 	GCWManager(Zone* zne);
 
@@ -146,6 +178,8 @@ public:
 
 	void sendBaseDefenseStatus(CreatureObject* creature, BuildingObject* building);
 
+	void doBaseDestruction(StructureObject* structure);
+
 	void doBaseDestruction(BuildingObject* building);
 
 	void sendResetVerification(CreatureObject* creature, BuildingObject* building);
@@ -158,7 +192,7 @@ public:
 
 	void sendDNASampleMenu(CreatureObject* creature, BuildingObject* building);
 
-	void completeSecuritySlice(TangibleObject* securityTerminal);
+	void completeSecuritySlice(CreatureObject* creature, TangibleObject* securityTerminal);
 
 	void failSecuritySlice(TangibleObject* securityTerminal);
 
@@ -178,7 +212,29 @@ public:
 
 	String getDNAHash(const String& usersample);
 
+	bool isPlanetCapped();
+
 	void scheduleBaseDestruction(BuildingObject* building);
+
+	void spawnChildrenCreatures(BuildingObject* building);
+
+	void initializeTurrets(BuildingObject* building);
+
+	void notifyTurretDestruction(BuildingObject* building, InstallationObject* turret);
+
+	void sendSelectTurretToDonate(BuildingObject* building, CreatureObject* creature);
+
+	void sendSelectDeedToDonate(BuildingObject* building, CreatureObject* creature, int turretIndex);
+
+	void sendRemoveDefenseConfirmation(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID);
+
+	void performDefenseDontation(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID, int turretIndex);
+
+	void sendStatus(BuildingObject* building, CreatureObject* creature);
+
+	void addTurret(BuildingObject* building, SceneObject* turret);
+
+	void removeDefense(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -208,19 +264,21 @@ class GCWManagerImplementation : public ManagedServiceImplementation, public Log
 public:
 	static const int GCWCHECKTIMER = 7200;
 
-	static const int VULNERABILITYDURATION = 7200;
+	static const int VULNERABILITYDURATION = 1800;
 
-	static const int VULNERABILITYFREQUENCY = 172800;
+	static const int VULNERABILITYFREQUENCY = 3600;
 
-	static const int RESETTIMER = 300;
+	static const int RESETTIMER = 120;
 
-	static const int SLICECOOLDOWN = 120;
+	static const int SLICECOOLDOWN = 30;
 
 	static const int TOTALDNASAMPLES = 10;
 
 	static const int DNAMATCHESREQUIRED = 10;
 
-	static const int DESTRUCTIONTIMER = 600;
+	static const int DESTRUCTIONTIMER = 180;
+
+	static const int MAXBASES = 5;
 
 private:
 	ManagedReference<Zone* > zone;
@@ -235,6 +293,8 @@ protected:
 	VectorMap<String, String> dnaHash;
 
 	VectorMap<unsigned long long, Reference<Task*> > gcwDestroyTasks;
+
+	Mutex baseMutex;
 
 public:
 	GCWManagerImplementation(Zone* zne);
@@ -273,6 +333,8 @@ public:
 
 	void sendBaseDefenseStatus(CreatureObject* creature, BuildingObject* building);
 
+	void doBaseDestruction(StructureObject* structure);
+
 	void doBaseDestruction(BuildingObject* building);
 
 	void sendResetVerification(CreatureObject* creature, BuildingObject* building);
@@ -285,7 +347,7 @@ public:
 
 	void sendDNASampleMenu(CreatureObject* creature, BuildingObject* building);
 
-	void completeSecuritySlice(TangibleObject* securityTerminal);
+	void completeSecuritySlice(CreatureObject* creature, TangibleObject* securityTerminal);
 
 	void failSecuritySlice(TangibleObject* securityTerminal);
 
@@ -340,6 +402,9 @@ protected:
 
 	bool dropDestroyTask(unsigned long long id);
 
+public:
+	bool isPlanetCapped();
+
 private:
 	DestructibleBuildingDataComponent* getDestructibleBuildingData(BuildingObject* building);
 
@@ -364,6 +429,26 @@ private:
 	void refreshDNA(DestructibleBuildingDataComponent* data);
 
 public:
+	void spawnChildrenCreatures(BuildingObject* building);
+
+	void initializeTurrets(BuildingObject* building);
+
+	void notifyTurretDestruction(BuildingObject* building, InstallationObject* turret);
+
+	void sendSelectTurretToDonate(BuildingObject* building, CreatureObject* creature);
+
+	void sendSelectDeedToDonate(BuildingObject* building, CreatureObject* creature, int turretIndex);
+
+	void sendRemoveDefenseConfirmation(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID);
+
+	void performDefenseDontation(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID, int turretIndex);
+
+	void sendStatus(BuildingObject* building, CreatureObject* creature);
+
+	void addTurret(BuildingObject* building, SceneObject* turret);
+
+	void removeDefense(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID);
+
 	WeakReference<GCWManager*> _this;
 
 	operator const GCWManager*();
@@ -439,6 +524,8 @@ public:
 
 	void sendBaseDefenseStatus(CreatureObject* creature, BuildingObject* building);
 
+	void doBaseDestruction(StructureObject* structure);
+
 	void doBaseDestruction(BuildingObject* building);
 
 	void sendResetVerification(CreatureObject* creature, BuildingObject* building);
@@ -451,7 +538,7 @@ public:
 
 	void sendDNASampleMenu(CreatureObject* creature, BuildingObject* building);
 
-	void completeSecuritySlice(TangibleObject* securityTerminal);
+	void completeSecuritySlice(CreatureObject* creature, TangibleObject* securityTerminal);
 
 	void failSecuritySlice(TangibleObject* securityTerminal);
 
@@ -471,7 +558,29 @@ public:
 
 	String getDNAHash(const String& usersample);
 
+	bool isPlanetCapped();
+
 	void scheduleBaseDestruction(BuildingObject* building);
+
+	void spawnChildrenCreatures(BuildingObject* building);
+
+	void initializeTurrets(BuildingObject* building);
+
+	void notifyTurretDestruction(BuildingObject* building, InstallationObject* turret);
+
+	void sendSelectTurretToDonate(BuildingObject* building, CreatureObject* creature);
+
+	void sendSelectDeedToDonate(BuildingObject* building, CreatureObject* creature, int turretIndex);
+
+	void sendRemoveDefenseConfirmation(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID);
+
+	void performDefenseDontation(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID, int turretIndex);
+
+	void sendStatus(BuildingObject* building, CreatureObject* creature);
+
+	void addTurret(BuildingObject* building, SceneObject* turret);
+
+	void removeDefense(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID);
 
 };
 

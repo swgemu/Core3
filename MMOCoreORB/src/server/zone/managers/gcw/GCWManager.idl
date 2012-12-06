@@ -10,22 +10,26 @@ import engine.core.ManagedObject;
 import system.util.SortedVector;
 
 import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.structure.StructureObject;
 import server.zone.objects.building.BuildingObject;
+import server.zone.objects.installation.InstallationObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.PlayerObject;
+import system.thread.Mutex;
 
 include server.zone.objects.building.components.DestructibleBuildingDataComponent;
 
 class GCWManager extends ManagedService implements Logger {
 
 	public final static int GCWCHECKTIMER = 7200; // 2 hours
-	public final static int VULNERABILITYDURATION = 7200; //  10 minutes for testing
-	public final static int VULNERABILITYFREQUENCY = 172800; // 1 hour for testing
-	public final static int RESETTIMER = 300; // amount of time before waiting to reset vulnerability	
-	public final static int SLICECOOLDOWN = 120; // test for 30 seconds after a failed slice
+	public final static int VULNERABILITYDURATION = 1800; //  30 minute test
+	public final static int VULNERABILITYFREQUENCY = 3600; // 1 hour for testing
+	public final static int RESETTIMER = 120; // amount of time before waiting to reset vulnerability	
+	public final static int SLICECOOLDOWN = 30; // test for 30 seconds after a failed slice
 	public final static int TOTALDNASAMPLES = 10;
 	public final static int DNAMATCHESREQUIRED = 10;
-	public final static int DESTRUCTIONTIMER = 600;
+	public final static int DESTRUCTIONTIMER = 180; // 3 minute 
+	public final static int MAXBASES = 5;  // MAX BASES PER PLANET
 	
 	private Zone zone;
 	
@@ -44,6 +48,9 @@ class GCWManager extends ManagedService implements Logger {
 	@dereferenced
 	protected transient VectorMap<unsigned long, Reference<Task> > gcwDestroyTasks;
 	
+	@dereferenced
+	protected transient Mutex baseMutex;
+
 	public native GCWManager(Zone zne);
 	
 	public native void initialize();
@@ -81,6 +88,8 @@ class GCWManager extends ManagedService implements Logger {
 
 	public  native void sendBaseDefenseStatus(CreatureObject creature, BuildingObject building);
 	
+	public native void doBaseDestruction(StructureObject structure);
+
 	public native void doBaseDestruction(BuildingObject building);
 	
 	public native void sendResetVerification(CreatureObject creature, BuildingObject building);
@@ -93,7 +102,7 @@ class GCWManager extends ManagedService implements Logger {
 	
 	public native void sendDNASampleMenu(CreatureObject creature, BuildingObject building);
 		
-	public native void completeSecuritySlice(TangibleObject securityTerminal);
+	public native void completeSecuritySlice(CreatureObject creature, TangibleObject securityTerminal);
 	
 	public native void failSecuritySlice(TangibleObject securityTerminal);
 	
@@ -198,6 +207,11 @@ class GCWManager extends ManagedService implements Logger {
 	protected synchronized boolean dropDestroyTask(unsigned long id){
 		return gcwDestroyTasks.drop(id);
 	}
+
+	public synchronized boolean isPlanetCapped(){
+		return MAXBASES <= gcwBaseList.size();
+	}
+
 	private native DestructibleBuildingDataComponent getDestructibleBuildingData(BuildingObject building);
 	
 	private native void checkVulnerabilityData(BuildingObject building);
@@ -217,6 +231,27 @@ class GCWManager extends ManagedService implements Logger {
 	private native void initializeNewVulnerability(DestructibleBuildingDataComponent data);
 	
 	private native void refreshDNA(DestructibleBuildingDataComponent data);
-		
+
+	public native void spawnChildrenCreatures(BuildingObject building);
+
+	public native void initializeTurrets(BuildingObject building);
+
+	public native void notifyTurretDestruction(BuildingObject building, InstallationObject turret);
+
+	public native void sendSelectTurretToDonate(BuildingObject building, CreatureObject creature);
+
+	public native void sendSelectDeedToDonate(BuildingObject building, CreatureObject creature,int turretIndex);
+
+	public native void sendRemoveDefenseConfirmation(BuildingObject building, CreatureObject creature, unsigned long deedOID);
+
+	public native void performDefenseDontation(BuildingObject building, CreatureObject creature, unsigned long deedOID, int turretIndex);
+
+	public native void sendStatus(BuildingObject building, CreatureObject creature);
+
+	public native void addTurret(BuildingObject building, SceneObject turret);
+
+	public native void removeDefense(BuildingObject building, CreatureObject creature, unsigned long deedOID);
+
+	
 }
 

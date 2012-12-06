@@ -39,7 +39,7 @@ void UplinkTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	GCWManager* gcwMan = zone->getGCWManager();
 
 	// if the base is vulnerable and the uplink hasn't been jammed
-	info("Building faction = " + String::valueOf(building->getFaction()) + " player = " + String::valueOf(player->getFaction()),true);
+	//info("Building faction = " + String::valueOf(building->getFaction()) + " player = " + String::valueOf(player->getFaction()),true);
 	if(building->getFaction() != player->getFaction()) {
 		if( gcwMan->isBaseVulnerable(building) && !gcwMan->isUplinkJammed(building)) {
 			menuResponse->addRadialMenuItem(227, 3, "@hq:mnu_jam");

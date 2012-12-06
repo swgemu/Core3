@@ -483,11 +483,19 @@ void SlicingSessionImplementation::handleSlice(SuiListBox* suiBox) {
 	} else if (tangibleObject->isArmorObject()) {
 		handleArmorSlice();
 		playerManager->awardExperience(player, "slicing", 1000, true); // Armor Slice XP
-	} else {
+	} else if ( isBaseSlice()){
 		player->sendSystemMessage("@slicing/slicing:hq_security_success");
 		playerManager->awardExperience(player,"slicing", 1000, true); // Base slicing
-		// TODO: Check for nulls
-		player->getZone()->getGCWManager()->completeSecuritySlice(this->tangibleObject.get());
+
+		Zone* zone = player->getZone();
+
+		if(zone != NULL){
+			GCWManager* gcwMan = zone->getGCWManager();
+
+		if(gcwMan != NULL)
+			gcwMan->completeSecuritySlice(player, this->tangibleObject.get());
+		}
+
 	}
 
 	endSlicing();
@@ -747,13 +755,19 @@ void SlicingSessionImplementation::handleSliceFailed() {
 		relockEvent->schedule(3600 * 1000); // This will reactivate the 'broken' lock. (1 Hour)
 		tangibleObject->setSliced(true);
 	} else if (isBaseSlice()){
-		// TODO: Check for nulls
-		player->getZone()->getGCWManager()->failSecuritySlice(this->tangibleObject.get());
 
+		Zone* zone = player->getZone();
+		if(zone != NULL){
+			GCWManager* gcwMan = zone->getGCWManager();
+			if(gcwMan != NULL)
+				gcwMan->failSecuritySlice(this->tangibleObject.get());
+
+		}
 	} else if (!tangibleObject->isMissionTerminal()) {
 		tangibleObject->setSliced(true);
 	}
 
 	endSlicing();
+
 }
 

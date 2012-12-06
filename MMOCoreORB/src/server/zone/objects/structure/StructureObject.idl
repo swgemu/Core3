@@ -124,7 +124,7 @@ class StructureObject extends TangibleObject {
 	public void notifyInsertToZone(Zone zone) {
 		super.notifyInsertToZone(zone);
 		
-		if (!super.staticObject) {
+		if (!super.staticObject && !isTurret() ) {
 			//Decay is 4 weeks.
 			super.maxCondition = baseMaintenanceRate * 24 * 7 * 4;
 			

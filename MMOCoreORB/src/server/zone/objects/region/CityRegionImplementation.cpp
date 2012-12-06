@@ -245,8 +245,10 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 
 		completeStructureList.put(structure->getObjectID());
 
-		if (structure->isCivicStructure())
+		if (structure->isCivicStructure()) {
+			info("civic structure added : " + structure->getDisplayedName(),true);
 			addStructure(structure);
+		}
 	}
 }
 

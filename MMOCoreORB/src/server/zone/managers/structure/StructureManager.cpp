@@ -35,6 +35,8 @@
 #include "server/zone/objects/player/sui/callbacks/StructurePayMaintenanceSuiCallback.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 
+#include "server/zone/managers/gcw/GCWManager.h"
+
 void StructureManager::loadPlayerStructures(const String& zoneName) {
 
 	info("Loading player structures from playerstructures.db");
@@ -75,6 +77,21 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 
 			if (object != NULL) {
 				++i;
+
+				if(object->isGCWBase()){
+					Zone* zone = object->getZone();
+
+					if(zone == NULL)
+						return;
+
+					GCWManager* gcwMan = zone->getGCWManager();
+					if(gcwMan == NULL)
+						return;
+
+					gcwMan->registerGCWBase(cast<BuildingObject*>(object),false);
+
+				}
+
 				if (ConfigManager::instance()->isProgressMonitorActivated())
 					printf("\r\tLoading player structures [%d] / [?]\t", i);
 			} else {
@@ -232,6 +249,7 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 		const String& structureTemplatePath, float x, float y, int angle) {
 	ManagedReference<Zone*> zone = creature->getZone();
 
+	info("placestructure from manager",true);
 	if (zone == NULL)
 		return NULL;
 
@@ -281,11 +299,12 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 				+ zIncreaseWhenNoAvailableFootprint;
 
 	String strDatabase = "playerstructures";
+
 	bool bIsFactionBuilding = (serverTemplate->getGameObjectType()
 			== SceneObjectType::FACTIONBUILDING);
 
-	if (bIsFactionBuilding) {
-		strDatabase = "factionstructures";
+	if (bIsFactionBuilding || serverTemplate->getGameObjectType() == SceneObjectType::TURRET) {
+		strDatabase = "playerstructures";
 	}
 
 	ManagedReference<SceneObject*> obj =
@@ -322,16 +341,6 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 
 	structureObject->notifyStructurePlaced(creature);
 
-	if (buildingObject != NULL && buildingObject->isGCWBase()) {
-		GCWManager* gcwManager = zone->getGCWManager();
-		if (gcwManager != NULL)
-			gcwManager->registerGCWBase(
-					(cast<BuildingObject*>(structureObject)), true);
-		else {
-			setLogging(true);
-			info("gcwManager is null in placeStructure()");
-		}
-	}
 	return structureObject;
 }
 
@@ -372,18 +381,6 @@ int StructureManager::destroyStructure(StructureObject* structureObject) {
 			}
 		}
 
-		// TODO: may want to disable /destroystructure command for bases to get this out of structuremanager
-		if (buildingObject->isGCWBase()) {
-			GCWManager* gcwManager = zone->getGCWManager();
-			if (gcwManager != NULL)
-				gcwManager->unregisterGCWBase(buildingObject);
-			else {
-				setLogging(true);
-				info("gcwManager is null in buildingobject.destroystructure()");
-				setLogging(false);
-			}
-		}
-
 	}
 
 	//Get the owner of the structure, and remove the structure from their possession.
@@ -401,7 +398,7 @@ int StructureManager::destroyStructure(StructureObject* structureObject) {
 
 	structureObject->destroyObjectFromWorld(true);
 	structureObject->destroyObjectFromDatabase(true);
-
+	structureObject->notifyObservers(ObserverEventType::OBJECTDESTRUCTION, structureObject, 0);
 	return 0;
 }
 

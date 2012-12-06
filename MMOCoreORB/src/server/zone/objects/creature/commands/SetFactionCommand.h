@@ -48,6 +48,8 @@ which carries forward this exception.
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/FactionStatus.h"
 
 class SetFactionCommand : public QueueCommand {
 public:
@@ -77,6 +79,16 @@ public:
 
 		TangibleObject* tano = cast<TangibleObject*>( obj.get());
 
+		uint32 pvpStatus = tano->getPvpStatusBitmask();
+		uint32 optionsBitmask = tano->getOptionsBitmask();
+		uint32 intFaction = tano->getFaction();
+		info("PvPStatus = " + String::valueOf(pvpStatus) + "   Options = " + String::valueOf(optionsBitmask) + "  Faction = " + String::valueOf(intFaction),true);
+
+		// for testing
+		UpdatePVPStatusMessage* upvpsms = new UpdatePVPStatusMessage(tano);
+		tano->broadcastMessage(upvpsms, true, true);
+
+
 		//First, check if they passed a name with the command.
 		UnicodeTokenizer tokenizer(arguments);
 		tokenizer.setDelimeter(" ");
@@ -87,7 +99,6 @@ public:
 		String faction;
 		tokenizer.getStringToken(faction);
 
-		uint32 pvpStatus = tano->getPvpStatusBitmask();
 
 		if (faction == "neutral")
 			tano->setFaction(0);
@@ -100,24 +111,38 @@ public:
 			String status;
 			tokenizer.getStringToken(status);
 
-			if (status == "overt")
-				pvpStatus |= CreatureFlag::OVERT;
+			ManagedReference<CreatureObject*> pobj = cast<CreatureObject*>( obj.get());
+			ManagedReference<PlayerObject*> targetPlayerObject = NULL;
 
-			if (status == "covert")
-				pvpStatus &= ~CreatureFlag::OVERT;
+			if (pobj != NULL)
+				targetPlayerObject = pobj->getPlayerObject();;
 
-			//if (status == "onleave")
+			if (targetPlayerObject != NULL) {
+				if ( status == "overt") {
+					targetPlayerObject->setFactionStatus(FactionStatus::OVERT);
+				} else  if (status == "covert"){
+					targetPlayerObject->setFactionStatus(FactionStatus::COVERT);
+				} else if (status == "onleave") {
+					targetPlayerObject->setFactionStatus(FactionStatus::ONLEAVE);
+				}
+
+			}  else {
+				if (status == "overt")
+					pvpStatus |= CreatureFlag::OVERT;
+
+				if (status == "covert")
+					pvpStatus &= ~CreatureFlag::OVERT;
+
+				//if (status == "onleave")
 				//Do something
-
-			tano->setPvpStatusBitmask(pvpStatus);
+				
+				tano->setPvpStatusBitmask(pvpStatus);
+			}
 		}
-
 		UpdatePVPStatusMessage* upvpsm = new UpdatePVPStatusMessage(tano);
 		tano->broadcastMessage(upvpsm, true, true);
-
 		return SUCCESS;
 	}
-
 };
 
 #endif //SETFACTIONCOMMAND_H_

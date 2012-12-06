@@ -283,6 +283,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/mission/HuntingMissionObjective.cpp \
 				server/zone/objects/mission/ReconMissionObjective.cpp \
 				server/zone/objects/mission/MissionObserver.cpp \
+				server/zone/objects/installation/components/TurretObserver.cpp \
 				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp \
 				server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.cpp \
 				server/zone/objects/tangible/ticket/TicketObject.cpp \
@@ -307,6 +308,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/firework/components/FireworkMenuComponent.cpp \
 		server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.cpp \
 		server/zone/objects/installation/components/InstallationObjectMenuComponent.cpp \
+		server/zone/objects/installation/components/TurretZoneComponent.cpp \
 		server/zone/objects/installation/components/FactoryObjectMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/HQMenuComponent.cpp \
@@ -337,6 +339,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/terminal/spaceship/SpaceshipTerminalImplementation.cpp \
 		server/zone/objects/tangible/deed/components/PlaceStructureComponent.cpp \
 		server/zone/objects/tangible/deed/components/PlaceCityHallComponent.cpp \
+		server/zone/objects/tangible/deed/components/PlaceGCWBaseComponent.cpp \
 		server/zone/objects/player/components/PlayerContainerComponent.cpp \
 		server/zone/objects/tangible/components/LootContainerComponent.cpp \
 		server/zone/objects/scene/components/ContainerComponent.cpp \
@@ -654,6 +657,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/mission/HuntingMissionObjectiveImplementation.cpp \
 		server/zone/objects/mission/ReconMissionObjectiveImplementation.cpp \
 		server/zone/objects/mission/MissionObserverImplementation.cpp \
+		server/zone/objects/installation/components/TurretObserverImplementation.cpp \
 		server/zone/objects/mission/bountyhunter/BountyHunterDroid.cpp \
 		server/zone/templates/string/StringFile.cpp \
 		server/zone/templates/faction/FactionRanks.cpp \

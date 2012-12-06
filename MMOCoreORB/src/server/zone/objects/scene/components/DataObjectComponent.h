@@ -66,6 +66,18 @@ public:
 		return false;
 	}
 
+	virtual bool isTurretData(){
+		return false;
+	}
+
+	virtual bool isDetectorData(){
+		return false;
+	}
+
+	virtual bool isGCWBaseData(){
+		return false;
+	}
+
 
 };
 

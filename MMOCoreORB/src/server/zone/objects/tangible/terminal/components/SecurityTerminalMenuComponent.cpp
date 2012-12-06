@@ -43,6 +43,7 @@ void SecurityTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObj
 
 	if( gcwMan->isUplinkJammed(building) && !gcwMan->isSecurityTermSliced(building) && player->getFaction() != building->getFaction() ) {
 		// if it's not damaged, give the slicing menu
+
 		if (!gcwMan->isTerminalDamaged(cast<TangibleObject*>(sceneObject)))
 			menuResponse->addRadialMenuItem(228, 3, "@slicing/slicing:slice"); // Slice
 		else
@@ -88,11 +89,9 @@ int SecurityTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 			session->initalizeSlicingMenu(player, tano);
 
 		} else if ( selectedID == 229){
-
-				gcwMan->repairTerminal(player, tano);
+			gcwMan->repairTerminal(player, tano);
 		}
 	}
-
 
 	return 0;
 }

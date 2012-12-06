@@ -1300,6 +1300,30 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isVendorData();
 	}
+
+	@local 
+	@read
+	public boolean isGCWBase(){
+
+		return dataObjectComponent != null &&
+		dataObjectComponent.get() != null &&
+		dataObjectComponent.get().isGCWBaseData();
+	}
+	@local
+	@read
+	public boolean isTurret() {
+		return dataObjectComponent != null && 
+		dataObjectComponent.get() != null &&
+		dataObjectComponent.get().isTurretData();
+	}
+
+	@local
+	@read
+	public boolean isDetector() {
+		return dataObjectComponent != null && 
+		dataObjectComponent.get() != null &&
+		dataObjectComponent.get().isDetectorData();
+	}
 	
 	@local
 	@read
@@ -1841,5 +1865,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public void setSendToClient(boolean val) {
 		sendToClient = val;
 	}
+
+	
 }
 
