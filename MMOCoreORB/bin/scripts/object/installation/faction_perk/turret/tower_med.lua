@@ -42,7 +42,11 @@
 
 
 object_installation_faction_perk_turret_tower_med = object_installation_faction_perk_turret_shared_tower_med:new {
-
+	pvpStatusBitmask = 1,
+	optionsBitmask = 0,
+	maxCondition = 200000,
+	zoneComponent = "TurretZoneComponent",
+	dataObjectComponent = "TurretDataComponent",
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_turret_tower_med, "object/installation/faction_perk/turret/tower_med.iff")

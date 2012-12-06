@@ -43,8 +43,8 @@
 
 object_building_faction_perk_hq_hq_s04_imp_pvp = object_building_faction_perk_hq_shared_hq_s04_imp_pvp:new {
 		lotSize = 0,
-		maintenanceCost = 5,
-		baseMaintenanceRate = 5,
+		maintenanceCost = 0,
+		baseMaintenanceRate = 0,
 		faction = "imperial",
 		pvpFaction = "imperial",
 		dataObjectComponent = "DestructibleBuildingDataComponent",
@@ -90,17 +90,35 @@ object_building_faction_perk_hq_hq_s04_imp_pvp = object_building_faction_perk_hq
 			{templateFile = "object/static/structure/military/military_wall_med_imperial_style_01.iff", x=8, z=0, y=-17, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, 
 			
 			-- turret
-			{templateFile = "object/installation/turret/turret_block_large.iff", x=-15, z=0, y=20, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- left turret front
-			{templateFile = "object/installation/turret/turret_block_large.iff", x=15, z=0, y=20,  ox=0, oy=-.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-15, z=0, y=20, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- left turret front
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=15, z=0, y=20,  ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1}, 
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-17, z=0, y=-5.5, ox=0, oy=.7,  oz=0, ow=-.7, cellid=-1, containmentType=-1}, -- back turret front
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=17, z=0, y=-5.5,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
+			
+			
 			
 			{templateFile = "object/tangible/terminal/terminal_hq_imperial.iff", x = .38, z = .25, y = 1.75, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
 			{templateFile = "object/tangible/hq_destructible/power_regulator.iff", x = 12, z = -11.5, y = -21, ox = 0, oy = .69, oz = 0, ow = .68, cellid = 10, containmentType = -1 },
 			 {templateFile = "object/tangible/hq_destructible/override_terminal.iff", x = 18.25, z = -13.75, y = 8.5, ox = 0, oy = .75, oz = 0, ow = -.5, cellid = 9, containmentType = -1 },
 			 {templateFile = "object/tangible/hq_destructible/security_terminal.iff", x = -5.5, z = -13.75, y = 7.5, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 7, containmentType = -1 },
 			 {templateFile = "object/tangible/hq_destructible/uplink_terminal.iff", x = 1, z = -6.75, y = -5.75, ow = .7, ox =0, oz = 0, oy = .7, cellid = 5, containmentType = -1},
+			 
+			 -- NPCs
+			  {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=0, z=0, y= 25, ow = .7, ox =0, oz = 0, oy = .7, cellid = -1, containmentType = -1},
+			  
+			  -- left outside
+			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=-18, z=0, y=22, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, 
+			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=-5, z=0, y=28, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- stormtroopertest
+			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=-10, z=0, y=38, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- stormtroopertest
+
+			-- right outside
+			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=18, z=0, y=22, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, 
+			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=5, z=0, y=28, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- stormtroopertest
+			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=10, z=0, y=38, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- stormtroopertest
 			
-			--{templateFile = "object/mobile/stormtrooper.iff", x=0, z=0, y= 25, ow = .7, ox =0, oz = 0, oy = .7, cellid = -1, containmentType = -1},
 		},
+		
+		turretCount = 2,
 	
 }
 

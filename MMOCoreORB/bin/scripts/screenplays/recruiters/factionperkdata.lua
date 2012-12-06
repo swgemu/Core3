@@ -84,6 +84,16 @@ faction_reward_data = {
 		--"hq_s03_pvp_imperial",
 		--"hq_s04_pvp_imperial",
 		--"hq_s05_pvp_imperial",
+		--"turret_block_lg",
+		--"turret_block_med",
+		--"turret_block_sm",
+		--"turret_dish_sm",
+		--"turret_dish_med",
+		--"turret_dish_lg",
+		--"turret_tower_sm",
+		--"turret_tower_med",
+		--"turret_tower_lg",
+		--"covert_detector_32m",
 	},
 
 	imperial_installations = {
@@ -101,6 +111,38 @@ faction_reward_data = {
 		
 		hq_s05_pvp_imperial = {type=faction_reward_type.installation, display="@deed:hq_s05_pvp_imperial", item="object/tangible/deed/faction_perk/hq/hq_s05_pvp.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s05_imp_pvp.iff", cost=1},
+			
+		turret_block_lg = { type=faction_reward_type.installation, display="@deed:turret_block_lg", item="object/tangible/deed/faction_perk/turret/block_lg_deed.iff",
+			generatedObjectTemplate="object/installation/faction_perk/turret/block_lg.iff", cost=6300 },
+		
+		turret_block_med = { type=faction_reward_type.installation, display="@deed:turret_block_med", item="object/tangible/deed/faction_perk/turret/block_med_deed.iff",
+			generatedObjectTemplate="object/installation/faction_perk/turret/block_med.iff", cost=4200 },	
+		
+		turret_block_sm = { type=faction_reward_type.installation, display="@deed:turret_block_sm", item="object/tangible/deed/faction_perk/turret/block_sm_deed.iff",
+			generatedObjectTemplate="object/installation/faction_perk/turret/block_sm.iff", cost=1400 },
+			
+		turret_dish_sm = { type=faction_reward_type.installation, display="@deed:turret_dish_sm", item="object/tangible/deed/faction_perk/turret/dish_sm_deed.iff",
+			generatedObjectTemplate="object/installation/faction_perk/turret/dish_sm.iff", cost=1400 },
+	
+		--turret_dish_med = { type=faction_reward_type.installation, display="@deed:turret_dish_med", item="object/tangible/deed/faction_perk/turret/dish_med_deed.iff",
+		--	generatedObjectTemplate="object/installation/faction_perk/turret/dish_med.iff", cost=4200 },	
+		
+		turret_dish_lg = { type=faction_reward_type.installation, display="@deed:turret_dish_lg", item="object/tangible/deed/faction_perk/turret/dish_lg_deed.iff",
+			generatedObjectTemplate="object/installation/faction_perk/turret/dish_lg.iff", cost=6300 },
+			
+		turret_tower_sm = { type=faction_reward_type.installation, display="@deed:turret_tower_sm", item="object/tangible/deed/faction_perk/turret/tower_sm_deed.iff",
+			generatedObjectTemplate="object/installation/faction_perk/turret/tower_sm.iff", cost=1400 },
+	
+		turret_tower_med = { type=faction_reward_type.installation, display="@deed:turret_tower_med", item="object/tangible/deed/faction_perk/turret/tower_med_deed.iff",
+			generatedObjectTemplate="object/installation/faction_perk/turret/tower_med.iff", cost=4200 },	
+		
+		turret_tower_lg = { type=faction_reward_type.installation, display="@deed:turret_tower_lg", item="object/tangible/deed/faction_perk/turret/tower_lg_deed.iff",
+			generatedObjectTemplate="object/installation/faction_perk/turret/tower_lg.iff", cost=6300 },
+		
+		covert_detector_32m = { type=faction_reward_type.installation, display="@deed:covert_detector_32m", item="object/tangible/deed/faction_perk/covert_detector/detector_32m_deed.iff",
+			generatedObjectTemplate="object/installation/faction_perk/covert_detector/detector_base.iff", cost=3000 },
+		
+	
 	},
 	
 	rebel_installations_list = {
@@ -109,6 +151,15 @@ faction_reward_data = {
 		--"hq_s03_pvp_rebel",
 		--"hq_s04_pvp_rebel",
 		--"hq_s05_pvp_rebel",
+		--"turret_block_lg",
+		--"turret_block_med",
+		--"turret_block_sm",
+		--"turret_dish_sm",
+		--"turret_dish_med",
+		--"turret_dish_lg",
+		--"turret_tower_sm",
+		--"turret_tower_med",
+		--"turret_tower_lg",
 	}, 
 	
 	rebel_installations = {
@@ -126,6 +177,38 @@ faction_reward_data = {
 		
 		hq_s05_pvp_rebel = {type=faction_reward_type.installation, display="@deed:hq_s05_pvp_rebel", item="object/tangible/deed/faction_perk/hq/hq_s05_pvp.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s05_rebel_pvp.iff", cost=1},
+					
+		turret_block_lg = { type=faction_reward_type.installation, display="@deed:turret_block_lg", item="object/tangible/deed/faction_perk/turret/block_lg_deed.iff",
+			generatedObjectTemplate="object/installation/faction_perk/turret/block_lg.iff", cost=6300 },
+		
+		turret_block_med = { type=faction_reward_type.installation, display="@deed:turret_block_med", item="object/tangible/deed/faction_perk/turret/block_med_deed.iff",
+			generatedObjectTemplate="object/installation/faction_perk/turret/block_med.iff", cost=4200 },	
+		
+		turret_block_sm = { type=faction_reward_type.installation, display="@deed:turret_block_sm", item="object/tangible/deed/faction_perk/turret/block_sm_deed.iff",
+			generatedObjectTemplate="object/installation/faction_perk/turret/block_sm.iff", cost=1400 },
+			
+		turret_dish_sm = { type=faction_reward_type.installation, display="@deed:turret_dish_sm", item="object/tangible/deed/faction_perk/turret/dish_sm_deed.iff",
+			generatedObjectTemplate="object/installation/faction_perk/turret/dish_sm.iff", cost=1400 },
+	
+		--turret_dish_med = { type=faction_reward_type.installation, display="@deed:turret_dish_med", item="object/tangible/deed/faction_perk/turret/dish_med_deed.iff",
+		--	generatedObjectTemplate="object/installation/faction_perk/turret/dish_med.iff", cost=4200 },	
+		
+		turret_dish_lg = { type=faction_reward_type.installation, display="@deed:turret_dish_lg", item="object/tangible/deed/faction_perk/turret/dish_lg_deed.iff",
+			generatedObjectTemplate="object/installation/faction_perk/turret/dish_lg.iff", cost=6300 },
+			
+		turret_tower_sm = { type=faction_reward_type.installation, display="@deed:turret_tower_sm", item="object/tangible/deed/faction_perk/turret/tower_sm_deed.iff",
+			generatedObjectTemplate="object/installation/faction_perk/turret/tower_sm.iff", cost=1400 },
+	
+		turret_tower_med = { type=faction_reward_type.installation, display="@deed:turret_tower_med", item="object/tangible/deed/faction_perk/turret/tower_med_deed.iff",
+			generatedObjectTemplate="object/installation/faction_perk/turret/tower_med.iff", cost=4200 },	
+		
+		turret_tower_lg = { type=faction_reward_type.installation, display="@deed:turret_tower_lg", item="object/tangible/deed/faction_perk/turret/tower_lg_deed.iff",
+			generatedObjectTemplate="object/installation/faction_perk/turret/tower_lg.iff", cost=6300 },
+		
+		covert_detector_32m = { type=faction_reward_type.installation, display="@deed:covert_detector_32m", item="object/tangible/deed/faction_perk/covert_detector/detector_32m_deed.iff",
+			generatedObjectTemplate="object/installation/faction_perk/covert_detector/detector_base.iff", cost=3000 },
+		
+	
 	},
 	
 	rebel_furniture = {

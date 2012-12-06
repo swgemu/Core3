@@ -42,7 +42,12 @@
 
 
 object_installation_faction_perk_turret_dish_sm = object_installation_faction_perk_turret_shared_dish_sm:new {
-
+	pvpStatusBitmask = 1,
+	optionsBitmask = 0,
+	maxCondition = 75000,
+	zoneComponent = "TurretZoneComponent",
+	resists = {75,75,75,75,0,75,75,75,0},
+	dataObjectComponent = "TurretDataComponent",
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_turret_dish_sm, "object/installation/faction_perk/turret/dish_sm.iff")

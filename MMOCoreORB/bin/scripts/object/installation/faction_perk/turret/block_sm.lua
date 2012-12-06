@@ -42,7 +42,11 @@
 
 
 object_installation_faction_perk_turret_block_sm = object_installation_faction_perk_turret_shared_block_sm:new {
-
+	pvpStatusBitmask = 1,
+	optionsBitmask = 0,
+	maxCondition = 75000,
+	zoneComponent = "TurretZoneComponent",
+	dataObjectComponent = "TurretDataComponent",
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_turret_block_sm, "object/installation/faction_perk/turret/block_sm.iff")

@@ -644,15 +644,14 @@ function recruiter_convo_handler:awarditem(player, itemstring)
 				if (pItem ~= nil) then
 				
 					if (self:isInstallation(itemstring)) then
-						print("it's an installation")
-						
+										
 						local deed = LuaDeed(pItem)
 						local genPath = self:getGeneratedObjectTemplate(itemstring)
 						
 						if (genPath == nil ) then
 							return self.TEMPLATEPATHERROR
 						end
-						print("genPath is " .. genPath)
+						
 						deed:setGeneratedObjectTemplate(genPath)
 								
 						local tano = LuaTangibleObject(pItem)
@@ -664,7 +663,7 @@ function recruiter_convo_handler:awarditem(player, itemstring)
 					end
 					
 					local item = LuaSceneObject(pItem)
-					print("templateobjectpath is " .. item:getTemplateObjectPath())
+					
 					item:sendTo(player)
 					playerObject:decreaseFactionStanding(self:getRecruiterFactionString(),itemcost)
 				else

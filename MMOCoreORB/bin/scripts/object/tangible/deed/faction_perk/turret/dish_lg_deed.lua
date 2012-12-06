@@ -42,7 +42,10 @@
 
 
 object_tangible_deed_faction_perk_turret_dish_lg_deed = object_tangible_deed_faction_perk_turret_shared_dish_lg_deed:new {
-
+	templateType = STRUCTUREDEED,
+	placeStructureComponent = "PlaceStructureComponent",
+	gameObjectType = 8388609,
+	generatedObjectTemplate = "object/installation/faction_perk/turret/dish_lg.iff",
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_turret_dish_lg_deed, "object/tangible/deed/faction_perk/turret/dish_lg_deed.iff")

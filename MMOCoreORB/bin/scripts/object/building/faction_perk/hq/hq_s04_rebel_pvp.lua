@@ -45,8 +45,8 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 		lotSize = 0,
 		faction = "rebel",
 		pvpFaction = "rebel",
-		maintenanceCost = 5,
-		baseMaintenanceRate = 5,
+		maintenanceCost = 0,
+		baseMaintenanceRate = 0,
 		dataObjectComponent = "DestructibleBuildingDataComponent",
 		allowedZones = {"dantooine", "naboo", "rori","tatooine"},
 		constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
@@ -94,6 +94,11 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 			{templateFile = "object/static/structure/military/military_wall_med_rebl_16_style_01.iff", x=11.5, z=0, y=-9.25, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1},
 			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=0, z=0, y=-9.25, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1},
 			
+			-- turret
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-11.5, z=0, y=33, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- left turret front
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=11.5, z=0, y=33,  ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1}, 
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-22, z=0, y=-5.5, ox=0, oy=.7,  oz=0, ow=-.7, cellid=-1, containmentType=-1}, -- back turret front
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=22, z=0, y=-5.5,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
 			
 			
 			--[[ DO NOT DELETE
@@ -124,6 +129,7 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 			 {templateFile = "object/tangible/hq_destructible/override_terminal.iff", x = 18.25, z = -13.75, y = 8.5, ox = 0, oy = .75, oz = 0, ow = -.5, cellid = 9, containmentType = -1 },
 			 {templateFile = "object/tangible/hq_destructible/security_terminal.iff", x = -5.5, z = -13.75, y = 7.5, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 7, containmentType = -1 },
 			 {templateFile = "object/tangible/hq_destructible/uplink_terminal.iff", x = 1, z = -6.75, y = -5.75, ow = .7, ox =0, oz = 0, oy = .7, cellid = 5, containmentType = -1},
+			
 			
 		},
 
