@@ -38,7 +38,7 @@ private:
 	Time repairTime; // serialized
 	int uplinkBand; // secret code used to jam the uplink
 	bool activeDefenses;
-
+	bool exposed;
 public:
 	const static int INVULNERABLE = 0;
 	const static int VULNERABLE = 1;
@@ -72,6 +72,7 @@ public:
 		powerSwitchesTester.get(0) = false;
 
 		activeDefenses = true;
+		exposed = false;
 
 	}
 
@@ -304,6 +305,7 @@ public:
 	void setDefense(bool value){
 		activeDefenses = value;
 	}
+
 
 private:
 

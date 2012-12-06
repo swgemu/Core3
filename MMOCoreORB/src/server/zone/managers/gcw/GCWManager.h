@@ -449,6 +449,10 @@ public:
 
 	void removeDefense(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID);
 
+private:
+	void verifyTurrets(BuildingObject* building);
+
+public:
 	WeakReference<GCWManager*> _this;
 
 	operator const GCWManager*();

@@ -559,6 +559,8 @@ void GCWManagerImplementation::performGCWTasks(){
 		thisOid = this->getBase(i)->getObjectID();
 		info("Base " + String::valueOf(i) + " id: " + String::valueOf(thisOid) + " - " +   " Start: " + String::valueOf( this->hasStartTask(thisOid) )
 				+ " End: " + String::valueOf(this->hasEndTask(thisOid)) + " DESTROY: " + String::valueOf(this->hasDestroyTask(thisOid)),true );
+
+
 	}
 
 
@@ -609,6 +611,7 @@ void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool in
 		//this->spawnChildrenCreatures(building);
 	}else
 		error("Building already in gcwBaseList");
+
 }
 
 // PRE: nothing locked
@@ -830,11 +833,10 @@ void GCWManagerImplementation::sendBaseDefenseStatus(CreatureObject* creature, B
 	status->setUsingObject(building);
 	status->setCancelButton(true, "@cancel");
 	if(creature == building->getOwnerCreatureObject()){
-		status->setOtherButton(true,"@ui:remove");
+		status->setOtherButton(true,"Remove");
 	}
 	status->setOkButton(true, "@ok");
-	status->setCallback( new HQDefenseStatusSuiCallback(this->zone->getZoneServer()) );
-
+	status->setCallback(new HQDefenseStatusSuiCallback(zone->getZoneServer()));
 
 	ZoneServer* zoneServer = zone->getZoneServer();
 	if(zoneServer != NULL){
@@ -1448,6 +1450,8 @@ void GCWManagerImplementation::initializeTurrets(BuildingObject* building){
 
 		}
 	}
+
+	verifyTurrets(building);
 }
 
 void GCWManagerImplementation::notifyTurretDestruction(BuildingObject* building, InstallationObject* turret){
@@ -1510,6 +1514,7 @@ void GCWManagerImplementation::notifyTurretDestruction(BuildingObject* building,
 		info("base no contain turret",true);
 	}
 
+	verifyTurrets(building);
 }
 void GCWManagerImplementation::spawnChildrenCreatures(BuildingObject* building){
 	//info("spawning children NPCs",true);
@@ -1818,6 +1823,7 @@ void GCWManagerImplementation::performDefenseDontation(BuildingObject* building,
 	params.setTO(turretDeed->getDisplayedName());
 	creature->sendSystemMessage(params);
 
+	verifyTurrets(building);
 	block.release();
 
 	if(turretDeed != NULL) {
@@ -1840,5 +1846,27 @@ void GCWManagerImplementation::addTurret(BuildingObject* building, SceneObject* 
 	Locker _lock(building);
 
 	baseData->addTurret(baseData->getTotalTurretCount(), turret->getObjectID());
+	this->verifyTurrets(building);
+}
 
+void GCWManagerImplementation::verifyTurrets(BuildingObject* building){
+	//info("verify turrets",true);
+
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
+
+	if(baseData == NULL)
+		return;
+
+	int turrets = 0;
+	Locker blocker(building);
+	for(int i = 0; i < baseData->getTotalTurretCount(); ++i){
+		if(baseData->getTurretID(i)){
+				turrets++;
+		}
+	}
+
+	//info("Remaining turrets = " + String::valueOf(turrets),true);
+
+
+		baseData->setDefense(turrets);
 }

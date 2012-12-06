@@ -14,6 +14,7 @@
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/AttributeListComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorContainerComponent.h"
+#include "server/zone/objects/building/components/GCWBaseContainerComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorZoneComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorMenuComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
@@ -215,4 +216,5 @@ ComponentManager::ComponentManager() {
 	components.put("OverrideTerminalMenuComponent", new OverrideTerminalMenuComponent());
 	components.put("PowerRegulatorMenuComponent", new PowerRegulatorMenuComponent());
 
+	components.put("GCWBaseContainerComponent", new GCWBaseContainerComponent());
 }

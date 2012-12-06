@@ -41,6 +41,8 @@
 #include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
 
 #include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/objects/player/FactionStatus.h"
+
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
 
@@ -125,13 +127,14 @@ void BuildingObjectImplementation::createCellObjects() {
 
 	for (int i = 0; i < totalCellNumber; ++i) {
 
-		SceneObject* newCell = newCell = getZoneServer()->createObject(0xAD431713, getPersistenceLevel());
+		SceneObject* newCell = getZoneServer()->createObject(0xAD431713, getPersistenceLevel());
 
 		if (!transferObject(newCell, -1))
 			error("could not add cell");
 
 		addCell(cast<CellObject*>(newCell), i + 1);
 	}
+
 
 	updateToDatabase();
 }
@@ -609,6 +612,13 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 	addTemplateSkillMods(player);
 
 	Locker acessLock(&paidAccessListMutex);
+
+	if(isGCWBase()){
+		if(!checkContainerPermission(player,ContainerPermissions::WALKIN)){
+			ejectObject(player);
+		}
+		return;
+	}
 
 	if (accessFee > 0 && !isOnEntryList(player)) {
 		//thread safety issues!

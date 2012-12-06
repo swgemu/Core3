@@ -173,7 +173,15 @@ int DestructibleBuildingDataComponent::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	return 14;
+	_name = "exposed";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Vector<bool> >::toBinaryStream(&powerSwitchesTester, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	return 15;
 
 
 }
@@ -245,6 +253,10 @@ bool DestructibleBuildingDataComponent::readObjectMember(ObjectInputStream* stre
 
 	if(name == "activeDefenses"){
 		TypeInfo<bool>::parseFromBinaryStream(&activeDefenses, stream);
+		return true;
+	}
+	if(name == "exposed"){
+		TypeInfo<bool>::parseFromBinaryStream(&exposed, stream);
 		return true;
 	}
 

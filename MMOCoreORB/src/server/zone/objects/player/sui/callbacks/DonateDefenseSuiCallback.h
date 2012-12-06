@@ -36,10 +36,6 @@ public:
 
 		int indx = Integer::valueOf(args->get(0).toString());
 
-		Logger::Logger tlog("cback");
-		tlog.info("index selected is " + String::valueOf(indx),true);
-
-
 		uint64 objectid = listBox->getMenuObjectID(indx);
 
 		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(obj.get());

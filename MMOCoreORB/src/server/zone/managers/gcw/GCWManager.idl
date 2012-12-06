@@ -252,6 +252,6 @@ class GCWManager extends ManagedService implements Logger {
 
 	public native void removeDefense(BuildingObject building, CreatureObject creature, unsigned long deedOID);
 
-	
+	private native void verifyTurrets(BuildingObject building);
 }
 
