@@ -43,6 +43,7 @@
 
 object_building_faction_perk_hq_hq_s04_imp_pvp = object_building_faction_perk_hq_shared_hq_s04_imp_pvp:new {
 		lotSize = 0,
+		containerComponent = "GCWBaseContainerComponent",
 		maintenanceCost = 0,
 		baseMaintenanceRate = 0,
 		faction = "imperial",
