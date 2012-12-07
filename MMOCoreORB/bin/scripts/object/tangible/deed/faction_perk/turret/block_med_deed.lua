@@ -43,7 +43,7 @@
 
 object_tangible_deed_faction_perk_turret_block_med_deed = object_tangible_deed_faction_perk_turret_shared_block_med_deed:new {
 	templateType = STRUCTUREDEED,
-	placeStructureComponent = "PlaceStructureComponent",
+	--placeStructureComponent = "PlaceStructureComponent",
 	gameObjectType = 8388609,
 	generatedObjectTemplate = "object/installation/faction_perk/turret/block_med.iff",
 }
