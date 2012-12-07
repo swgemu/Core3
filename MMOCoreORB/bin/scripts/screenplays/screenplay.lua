@@ -135,6 +135,7 @@ includeFile("poi/naboo_weapon_testing_facility.lua")
 includeFile("poi/rori_rebel_military_base.lua")
 includeFile("poi/rori_garyn_raiders_bunker.lua")
 includeFile("poi/rori_gungans_swamp_town.lua")
+includeFile("caves/talus_aakuan_cave.lua")
 
 --Tests
 --includeFile("tests/options_bitmask_test.lua")
