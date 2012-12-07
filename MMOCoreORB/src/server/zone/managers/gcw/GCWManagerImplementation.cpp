@@ -1576,8 +1576,15 @@ void GCWManagerImplementation::spawnChildrenCreatures(BuildingObject* building){
 }
 
 void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, CreatureObject* creature, int turretIndex){
-	if(creature == NULL)
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
+
+	if(creature ==NULL || baseData == NULL)
+			return;
+
+	if(baseData->isVulnerable()) {
+		creature->sendSystemMessage("@hq:under_attack"); // You cannot add defenses while the HQ is under attack.
 		return;
+	}
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
@@ -1592,6 +1599,8 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 	ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
 
 	ManagedReference<SuiListBox*> donate = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
+
+
 	donate->setPromptTitle("@hq:mnu_defense_status");
 	donate->setPromptText("Donate a deed");
 	donate->setUsingObject(building);
