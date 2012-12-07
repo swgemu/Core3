@@ -1051,7 +1051,8 @@ void BuildingObjectImplementation::createChildObjects(){
 					tano->setFaction(getFaction());
 				}
 
-				getZone()->transferObject(obj, -1, false);
+				if (getZone())
+					getZone()->transferObject(obj, -1, false);
 			}
 			ContainerPermissions* permissions = obj->getContainerPermissions();
 			permissions->setOwner(getObjectID());
