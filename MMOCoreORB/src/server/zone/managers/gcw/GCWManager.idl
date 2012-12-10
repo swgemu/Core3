@@ -21,7 +21,7 @@ include server.zone.objects.building.components.DestructibleBuildingDataComponen
 
 class GCWManager extends ManagedService implements Logger {
 
-	public final static int GCWCHECKTIMER = 120; // 2 hours
+	public final static int GCWCHECKTIMER = 7200; // 2 hours
 	public final static int VULNERABILITYDURATION = 1800; //  30 minute test
 	public final static int VULNERABILITYFREQUENCY = 3600; // 1 hour for testing
 	public final static int RESETTIMER = 120; // amount of time before waiting to reset vulnerability	
