@@ -23,7 +23,7 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* pl
 	if (selectedID != 20)
 		return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 
-	uint32 targetID = player->getTargetID();
+	uint64 targetID = player->getTargetID();
 	ZoneServer* zs = player->getZoneServer();
 	ManagedReference<TangibleObject*> target = dynamic_cast<TangibleObject*>(zs->getObject(targetID, true));
 
