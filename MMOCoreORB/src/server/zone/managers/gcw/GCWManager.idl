@@ -98,7 +98,7 @@ class GCWManager extends ManagedService implements Logger {
 	
 	public native void verifyUplinkBand(CreatureObject creature, BuildingObject building, int band);
 	
-	public native void startSlice(CreatureObject creature, BuildingObject building);
+	public native boolean canStartSlice(CreatureObject creature, TangibleObject terminal);
 	
 	public native void sendDNASampleMenu(CreatureObject creature, BuildingObject building);
 		

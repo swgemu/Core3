@@ -1324,6 +1324,14 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isDetectorData();
 	}
+
+	@local
+	@read
+	public boolean isSecurityTerminal(){
+		return dataObjectComponent != null && 
+		dataObjectComponent.get() != null &&
+		dataObjectComponent.get().isSecurityTerminalData();
+	}
 	
 	@local
 	@read

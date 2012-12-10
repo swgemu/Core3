@@ -9,7 +9,8 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
-
+#include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/Zone.h"
 int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
 
 	if (!isASubChildOf(player))
@@ -27,7 +28,7 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* pl
 	ZoneServer* zs = player->getZoneServer();
 	ManagedReference<TangibleObject*> target = dynamic_cast<TangibleObject*>(zs->getObject(targetID, true));
 
-	if (target == NULL || !target->isSliceable()) {
+	if (target == NULL || (!target->isSliceable() && !target->isSecurityTerminal())) {
 		player->sendSystemMessage("You cannot slice that.");
 		return 0;
 	}
@@ -38,6 +39,20 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* pl
 		return 0;
 	else if (target->isArmorObject() && !player->hasSkill("combat_smuggler_slicing_03"))
 		return 0;
+	else if (target->isSecurityTerminal()){
+		Zone* zone = target->getZone();
+		if(zone == NULL)
+			return 0;
+
+		GCWManager* gcwMan = zone->getGCWManager();
+		if(gcwMan == NULL)
+			return 0;
+
+		if(!gcwMan->canStartSlice(player, target))
+			return 0;
+
+	}
+
 
 	if (target->isSliced()) {
 		player->sendSystemMessage("@slicing/slicing:already_sliced");
@@ -56,6 +71,10 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* pl
 
 	//Create Session
 	ManagedReference<SlicingSession*> session = new SlicingSession(player);
+
+	if(target->isSecurityTerminal())
+		session->setBaseSlice(true);
+
 	session->initalizeSlicingMenu(player, target);
 
 	useCharge(player);

@@ -1097,8 +1097,16 @@ bool GCWManagerImplementation::isShutdownSequenceStarted(BuildingObject* buildin
 	return(baseData->getState() == DestructibleBuildingDataComponent::SHUTDOWNSEQUENCE);
 }
 
-void GCWManagerImplementation::startSlice(CreatureObject* creature, BuildingObject* building){
+bool GCWManagerImplementation::canStartSlice(CreatureObject* creature, TangibleObject* tano){
+		Locker _lock(creature);
+		Locker clocker(tano, creature);
 
+		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(tano->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+
+		if(isUplinkJammed(building) && !isSecurityTermSliced(building) && creature->getFaction() != building->getFaction())
+			return true;
+
+		return false;
 
 }
 

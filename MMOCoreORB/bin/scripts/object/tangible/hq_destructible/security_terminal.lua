@@ -43,6 +43,8 @@
 
 object_tangible_hq_destructible_security_terminal = object_tangible_hq_destructible_shared_security_terminal:new {
 	objectMenuComponent = "SecurityTerminalMenuComponent",
+	dataObjectComponent = "SecurityTerminalDataComponent",
+	sliceable = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_hq_destructible_security_terminal, "object/tangible/hq_destructible/security_terminal.iff")

@@ -18,6 +18,7 @@
 #include "server/zone/objects/tangible/components/vendor/VendorZoneComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorMenuComponent.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "server/zone/objects/tangible/terminal/components/SecurityTerminalDataComponent.h"
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
 //#include "server/zone/objects/installation/components/DetectorDataComponent.h"
 #include "server/zone/objects/installation/components/TurretZoneComponent.h"
@@ -156,6 +157,7 @@ ComponentManager::ComponentManager() {
 	components.put("TurretZoneComponent", new TurretZoneComponent());
 	dataObjectFactory.registerObject<VendorDataComponent>("VendorDataComponent");
 	dataObjectFactory.registerObject<AuctionTerminalDataComponent>("AuctionTerminalDataComponent");
+	dataObjectFactory.registerObject<SecurityTerminalDataComponent>("SecurityTerminalDataComponent");
 
 	components.put("CityManagementMenuComponent", new CityManagementMenuComponent());
 	components.put("CityVotingMenuComponent", new CityVotingMenuComponent());

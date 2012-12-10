@@ -1803,6 +1803,10 @@ bool TangibleObjectImplementation::isSliceable() {
 	else 	// server/zone/objects/tangible/TangibleObject.idl():  		return 
 	if (SceneObjectImplementation::gameObjectType == SceneObjectType::PLAYERLOOTCRATE)	// server/zone/objects/tangible/TangibleObject.idl():  			return sliceable;
 	return sliceable;
+
+	else 	// server/zone/objects/tangible/TangibleObject.idl():  		return 
+	if (isSecurityTerminal())	// server/zone/objects/tangible/TangibleObject.idl():  			return sliceable;
+	return sliceable;
 	// server/zone/objects/tangible/TangibleObject.idl():  		return false;
 	return false;
 }

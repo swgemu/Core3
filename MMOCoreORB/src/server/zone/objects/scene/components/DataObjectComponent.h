@@ -78,7 +78,9 @@ public:
 		return false;
 	}
 
-
+	virtual bool isSecurityTerminalData(){
+		return false;
+	}
 };
 
 

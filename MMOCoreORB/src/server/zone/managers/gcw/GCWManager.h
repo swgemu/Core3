@@ -188,7 +188,7 @@ public:
 
 	void verifyUplinkBand(CreatureObject* creature, BuildingObject* building, int band);
 
-	void startSlice(CreatureObject* creature, BuildingObject* building);
+	bool canStartSlice(CreatureObject* creature, TangibleObject* terminal);
 
 	void sendDNASampleMenu(CreatureObject* creature, BuildingObject* building);
 
@@ -343,7 +343,7 @@ public:
 
 	void verifyUplinkBand(CreatureObject* creature, BuildingObject* building, int band);
 
-	void startSlice(CreatureObject* creature, BuildingObject* building);
+	bool canStartSlice(CreatureObject* creature, TangibleObject* terminal);
 
 	void sendDNASampleMenu(CreatureObject* creature, BuildingObject* building);
 
@@ -538,7 +538,7 @@ public:
 
 	void verifyUplinkBand(CreatureObject* creature, BuildingObject* building, int band);
 
-	void startSlice(CreatureObject* creature, BuildingObject* building);
+	bool canStartSlice(CreatureObject* creature, TangibleObject* terminal);
 
 	void sendDNASampleMenu(CreatureObject* creature, BuildingObject* building);
 

@@ -2214,6 +2214,15 @@ bool SceneObject::isDetector() {
 		return _implementation->isDetector();
 }
 
+bool SceneObject::isSecurityTerminal() {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->isSecurityTerminal();
+}
+
 ZoneComponent* SceneObject::getZoneComponent() {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -4637,6 +4646,11 @@ bool SceneObjectImplementation::isTurret() {
 bool SceneObjectImplementation::isDetector() {
 	// server/zone/objects/scene/SceneObject.idl():  		dataObjectComponent.get().isDetectorData();
 	return (&dataObjectComponent) != NULL && (&dataObjectComponent)->get() != NULL && (&dataObjectComponent)->get()->isDetectorData();
+}
+
+bool SceneObjectImplementation::isSecurityTerminal() {
+	// server/zone/objects/scene/SceneObject.idl():  		dataObjectComponent.get().isSecurityTerminalData();
+	return (&dataObjectComponent) != NULL && (&dataObjectComponent)->get() != NULL && (&dataObjectComponent)->get()->isSecurityTerminalData();
 }
 
 ZoneComponent* SceneObjectImplementation::getZoneComponent() {

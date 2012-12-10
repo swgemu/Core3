@@ -507,6 +507,8 @@ class TangibleObject extends SceneObject {
 			return sliceable;
 		else if (super.gameObjectType == SceneObjectType.PLAYERLOOTCRATE)
 			return sliceable;
+		else if (isSecurityTerminal())
+			return sliceable;
 
 		return false;
 	}
