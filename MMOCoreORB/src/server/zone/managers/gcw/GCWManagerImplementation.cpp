@@ -852,10 +852,24 @@ void GCWManagerImplementation::sendStatus(BuildingObject* building, CreatureObje
 	if(creature==NULL || baseData == NULL)
 		return;
 
-	if(baseData->isVulnerable())
-			creature->sendSystemMessage("Base is vulnerable until " + baseData->getVulnerabilityEndTime().getFormattedTime() );
-		else
-			creature->sendSystemMessage("Base will be vulnerable on " + baseData->getNextVulnerableTime().getFormattedTime());
+	uint64 dif = 0;
+
+	if( baseData->isVulnerable())
+		dif = baseData->getVulnerabilityEndTime().getTime() - time(0);
+	else
+		dif = baseData->getNextVulnerableTime().getTime() - time(0);
+
+	int days = floor(dif/86400);
+	dif = dif - (days*86400);
+	int hours = floor(dif/3600);
+	dif = dif - (hours*3600);
+	int minutes = ceil(dif/60);
+
+	if(baseData->isVulnerable()){
+		creature->sendSystemMessage("Vulnerability ends in " + String::valueOf(hours) + " hours and " + String::valueOf(minutes) + " minutes.");
+	} else {
+		creature->sendSystemMessage("Base will be vulnerable in " + String::valueOf(days) + " days, " + String::valueOf(hours) + " hours, and " + String::valueOf(minutes) + " minutes");
+	}
 }
 
 void GCWManagerImplementation::sendBaseDefenseStatus(CreatureObject* creature, BuildingObject* building){
@@ -872,7 +886,7 @@ void GCWManagerImplementation::sendBaseDefenseStatus(CreatureObject* creature, B
 	status->setUsingObject(building);
 	status->setCancelButton(true, "@cancel");
 	if(creature == building->getOwnerCreatureObject()){
-		status->setOtherButton(true,"Remove");
+		status->setOtherButton(true,"@ui:permission_remove");
 	}
 	status->setOkButton(true, "@ok");
 	status->setCallback(new HQDefenseStatusSuiCallback(zone->getZoneServer()));
