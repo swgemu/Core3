@@ -22,7 +22,7 @@
  *	GCWManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_START__,RPC_LOADFACTIONSTRUCTURES__STRING_,RPC_REGISTERGCWBASE__BUILDINGOBJECT_BOOL_,RPC_UNREGISTERGCWBASE__BUILDINGOBJECT_,RPC_PERFORMGCWTASKS__,RPC_STARTVULNERABILITY__BUILDINGOBJECT_,RPC_ENDVULNERABILITY__BUILDINGOBJECT_,RPC_ISBASEVULNERABLE__BUILDINGOBJECT_,RPC_ISBANDIDENTIFIED__BUILDINGOBJECT_,RPC_ISUPLINKJAMMED__BUILDINGOBJECT_,RPC_ISSHUTDOWNSEQUENCESTARTED__BUILDINGOBJECT_,RPC_ISSECURITYTERMSLICED__BUILDINGOBJECT_,RPC_ISPOWEROVERLOADED__BUILDINGOBJECT_,RPC_RESETVULNERABILITY__CREATUREOBJECT_BUILDINGOBJECT_,RPC_SENDBASEDEFENSESTATUS__CREATUREOBJECT_BUILDINGOBJECT_,RPC_DOBASEDESTRUCTION__STRUCTUREOBJECT_,RPC_DOBASEDESTRUCTION__BUILDINGOBJECT_,RPC_SENDRESETVERIFICATION__CREATUREOBJECT_BUILDINGOBJECT_,RPC_SENDJAMUPLINKMENU__CREATUREOBJECT_BUILDINGOBJECT_,RPC_VERIFYUPLINKBAND__CREATUREOBJECT_BUILDINGOBJECT_INT_,RPC_CANSTARTSLICE__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_SENDDNASAMPLEMENU__CREATUREOBJECT_BUILDINGOBJECT_,RPC_COMPLETESECURITYSLICE__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_FAILSECURITYSLICE__TANGIBLEOBJECT_,RPC_ISTERMINALDAMAGED__TANGIBLEOBJECT_,RPC_ISDNASAMPLED__BUILDINGOBJECT_,RPC_REPAIRTERMINAL__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_ABORTSHUTDOWNSEQUENCE__CREATUREOBJECT_BUILDINGOBJECT_,RPC_PROCESSDNASAMPLE__CREATUREOBJECT_BUILDINGOBJECT_INT_,RPC_HANDLEPOWERREGULATORSWITCH__CREATUREOBJECT_BUILDINGOBJECT_INT_,RPC_SENDPOWERREGULATORCONTROLS__CREATUREOBJECT_BUILDINGOBJECT_,RPC_GETDNAHASH__STRING_,RPC_ISPLANETCAPPED__,RPC_SCHEDULEBASEDESTRUCTION__BUILDINGOBJECT_CREATUREOBJECT_,RPC_SPAWNCHILDRENCREATURES__BUILDINGOBJECT_,RPC_INITIALIZETURRETS__BUILDINGOBJECT_,RPC_NOTIFYTURRETDESTRUCTION__BUILDINGOBJECT_INSTALLATIONOBJECT_,RPC_SENDSELECTTURRETTODONATE__BUILDINGOBJECT_CREATUREOBJECT_,RPC_SENDSELECTDEEDTODONATE__BUILDINGOBJECT_CREATUREOBJECT_INT_,RPC_SENDREMOVEDEFENSECONFIRMATION__BUILDINGOBJECT_CREATUREOBJECT_LONG_,RPC_PERFORMDEFENSEDONTATION__BUILDINGOBJECT_CREATUREOBJECT_LONG_INT_,RPC_SENDSTATUS__BUILDINGOBJECT_CREATUREOBJECT_,RPC_ADDTURRET__BUILDINGOBJECT_SCENEOBJECT_,RPC_REMOVEDEFENSE__BUILDINGOBJECT_CREATUREOBJECT_LONG_,};
+enum {RPC_INITIALIZE__ = 6,RPC_START__,RPC_LOADFACTIONSTRUCTURES__STRING_,RPC_REGISTERGCWBASE__BUILDINGOBJECT_BOOL_,RPC_UNREGISTERGCWBASE__BUILDINGOBJECT_,RPC_PERFORMGCWTASKS__,RPC_STARTVULNERABILITY__BUILDINGOBJECT_,RPC_ENDVULNERABILITY__BUILDINGOBJECT_,RPC_ISBASEVULNERABLE__BUILDINGOBJECT_,RPC_ISBANDIDENTIFIED__BUILDINGOBJECT_,RPC_ISUPLINKJAMMED__BUILDINGOBJECT_,RPC_ISSHUTDOWNSEQUENCESTARTED__BUILDINGOBJECT_,RPC_ISSECURITYTERMSLICED__BUILDINGOBJECT_,RPC_ISPOWEROVERLOADED__BUILDINGOBJECT_,RPC_RESETVULNERABILITY__CREATUREOBJECT_BUILDINGOBJECT_,RPC_SENDBASEDEFENSESTATUS__CREATUREOBJECT_BUILDINGOBJECT_,RPC_DOBASEDESTRUCTION__STRUCTUREOBJECT_,RPC_DOBASEDESTRUCTION__BUILDINGOBJECT_,RPC_SENDRESETVERIFICATION__CREATUREOBJECT_BUILDINGOBJECT_,RPC_SENDJAMUPLINKMENU__CREATUREOBJECT_BUILDINGOBJECT_,RPC_VERIFYUPLINKBAND__CREATUREOBJECT_BUILDINGOBJECT_INT_,RPC_CANSTARTSLICE__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_SENDDNASAMPLEMENU__CREATUREOBJECT_BUILDINGOBJECT_,RPC_COMPLETESECURITYSLICE__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_FAILSECURITYSLICE__TANGIBLEOBJECT_,RPC_ISTERMINALDAMAGED__TANGIBLEOBJECT_,RPC_ISDNASAMPLED__BUILDINGOBJECT_,RPC_REPAIRTERMINAL__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_ABORTSHUTDOWNSEQUENCE__CREATUREOBJECT_BUILDINGOBJECT_,RPC_PROCESSDNASAMPLE__CREATUREOBJECT_BUILDINGOBJECT_INT_,RPC_HANDLEPOWERREGULATORSWITCH__CREATUREOBJECT_BUILDINGOBJECT_INT_,RPC_SENDPOWERREGULATORCONTROLS__CREATUREOBJECT_BUILDINGOBJECT_,RPC_GETDNAHASH__STRING_,RPC_ISPLANETCAPPED__,RPC_SCHEDULEBASEDESTRUCTION__BUILDINGOBJECT_CREATUREOBJECT_,RPC_SPAWNCHILDRENCREATURES__BUILDINGOBJECT_,RPC_INITIALIZETURRETS__BUILDINGOBJECT_,RPC_NOTIFYTURRETDESTRUCTION__BUILDINGOBJECT_INSTALLATIONOBJECT_,RPC_SENDSELECTTURRETTODONATE__BUILDINGOBJECT_CREATUREOBJECT_,RPC_SENDSELECTDEEDTODONATE__BUILDINGOBJECT_CREATUREOBJECT_INT_,RPC_SENDREMOVEDEFENSECONFIRMATION__BUILDINGOBJECT_CREATUREOBJECT_LONG_,RPC_PERFORMDEFENSEDONTATION__BUILDINGOBJECT_CREATUREOBJECT_LONG_INT_,RPC_SENDSTATUS__BUILDINGOBJECT_CREATUREOBJECT_,RPC_ADDTURRET__BUILDINGOBJECT_SCENEOBJECT_,RPC_REMOVEDEFENSE__BUILDINGOBJECT_CREATUREOBJECT_LONG_,RPC_GETIMPERIALBASECOUNT__,RPC_GETREBELBASECOUNT__,};
 
 GCWManager::GCWManager(Zone* zne) : ManagedService(DummyConstructorParameter::instance()) {
 	GCWManagerImplementation* _implementation = new GCWManagerImplementation(zne);
@@ -699,6 +699,32 @@ void GCWManager::removeDefense(BuildingObject* building, CreatureObject* creatur
 		_implementation->removeDefense(building, creature, deedOID);
 }
 
+int GCWManager::getImperialBaseCount() {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETIMPERIALBASECOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getImperialBaseCount();
+}
+
+int GCWManager::getRebelBaseCount() {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETREBELBASECOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getRebelBaseCount();
+}
+
 DistributedObjectServant* GCWManager::_getImplementation() {
 
 	 if (!_updated) _updated = true;
@@ -809,6 +835,16 @@ bool GCWManagerImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 	}
 
+	if (_name == "GCWManager.rebelBases") {
+		TypeInfo<int >::parseFromBinaryStream(&rebelBases, stream);
+		return true;
+	}
+
+	if (_name == "GCWManager.imperialBases") {
+		TypeInfo<int >::parseFromBinaryStream(&imperialBases, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -834,8 +870,52 @@ int GCWManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "GCWManager.rebelBases";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&rebelBases, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 1;
+	_name = "GCWManager.imperialBases";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&imperialBases, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+
+	return _count + 3;
+}
+
+GCWManagerImplementation::GCWManagerImplementation(Zone* zne) {
+	_initializeImplementation();
+	// server/zone/managers/gcw/GCWManager.idl():  		imperialBases = 0;
+	imperialBases = 0;
+	// server/zone/managers/gcw/GCWManager.idl():  		rebelBases = 0;
+	rebelBases = 0;
+	// server/zone/managers/gcw/GCWManager.idl():  		Logger.setLoggingName("GCWManager");
+	Logger::setLoggingName("GCWManager");
+	// server/zone/managers/gcw/GCWManager.idl():  		Logger.info("GCWManager instantiated for " + zne.getZoneName(),true);
+	Logger::info("GCWManager instantiated for " + zne->getZoneName(), true);
+	// server/zone/managers/gcw/GCWManager.idl():  		gcwBaseList.setNoDuplicateInsertPlan();
+	(&gcwBaseList)->setNoDuplicateInsertPlan();
+	// server/zone/managers/gcw/GCWManager.idl():  		zone = zne;
+	zone = zne;
+	// server/zone/managers/gcw/GCWManager.idl():  		gcwStartTasks.setNoDuplicateInsertPlan();
+	(&gcwStartTasks)->setNoDuplicateInsertPlan();
+	// server/zone/managers/gcw/GCWManager.idl():  		gcwStartTasks.setNullValue(null);
+	(&gcwStartTasks)->setNullValue(NULL);
+	// server/zone/managers/gcw/GCWManager.idl():  		gcwEndTasks.setNoDuplicateInsertPlan();
+	(&gcwEndTasks)->setNoDuplicateInsertPlan();
+	// server/zone/managers/gcw/GCWManager.idl():  		gcwEndTasks.setNullValue(null);
+	(&gcwEndTasks)->setNullValue(NULL);
+	// server/zone/managers/gcw/GCWManager.idl():  		gcwDestroyTasks.setNoDuplicateInsertPlan();
+	(&gcwDestroyTasks)->setNoDuplicateInsertPlan();
+	// server/zone/managers/gcw/GCWManager.idl():  		gcwDestroyTasks.setNullValue(null);
+	(&gcwDestroyTasks)->setNullValue(NULL);
 }
 
 String GCWManagerImplementation::getDNAHash(const String& usersample) {
@@ -965,6 +1045,26 @@ bool GCWManagerImplementation::isPlanetCapped() {
 	Locker _locker(_this.get());
 	// server/zone/managers/gcw/GCWManager.idl():  		return MAXBASES <= gcwBaseList.size();
 	return MAXBASES <= (&gcwBaseList)->size();
+}
+
+int GCWManagerImplementation::getImperialBaseCount() {
+	// server/zone/managers/gcw/GCWManager.idl():  		return imperialBases;
+	return imperialBases;
+}
+
+int GCWManagerImplementation::getRebelBaseCount() {
+	// server/zone/managers/gcw/GCWManager.idl():  		return rebelBases;
+	return rebelBases;
+}
+
+void GCWManagerImplementation::setRebelBaseCount(int val) {
+	// server/zone/managers/gcw/GCWManager.idl():  		rebelBases = val;
+	rebelBases = val;
+}
+
+void GCWManagerImplementation::setImperialBaseCount(int val) {
+	// server/zone/managers/gcw/GCWManager.idl():  		imperialBases = val;
+	imperialBases = val;
 }
 
 /*
@@ -1209,6 +1309,16 @@ void GCWManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			removeDefense(static_cast<BuildingObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getUnsignedLongParameter());
 		}
 		break;
+	case RPC_GETIMPERIALBASECOUNT__:
+		{
+			resp->insertSignedInt(getImperialBaseCount());
+		}
+		break;
+	case RPC_GETREBELBASECOUNT__:
+		{
+			resp->insertSignedInt(getRebelBaseCount());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -1392,6 +1502,14 @@ void GCWManagerAdapter::addTurret(BuildingObject* building, SceneObject* turret)
 
 void GCWManagerAdapter::removeDefense(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID) {
 	(static_cast<GCWManager*>(stub))->removeDefense(building, creature, deedOID);
+}
+
+int GCWManagerAdapter::getImperialBaseCount() {
+	return (static_cast<GCWManager*>(stub))->getImperialBaseCount();
+}
+
+int GCWManagerAdapter::getRebelBaseCount() {
+	return (static_cast<GCWManager*>(stub))->getRebelBaseCount();
 }
 
 /*

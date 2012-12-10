@@ -46,6 +46,9 @@ which carries forward this exception.
 #define GCWSTATUSCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/Zone.h"
+#include "server/zone/managers/gcw/GCWManager.h"
+#include "server/chat/StringIdChatParameter.h"
 
 class GcwStatusCommand : public QueueCommand {
 public:
@@ -62,6 +65,31 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		Zone* zone = creature->getZone();
+		if(zone == NULL)
+			return GENERALERROR;
+
+		GCWManager* gcwMan = zone->getGCWManager();
+
+		if(gcwMan == NULL)
+			return GENERALERROR;
+
+		int rebelBases = gcwMan->getRebelBaseCount();
+		int imperialBases = gcwMan->getImperialBaseCount();
+
+		String results = "@faction_perk:gcw_tied";  // Neither the rebellion or the Empire has teh advantage
+
+		if(rebelBases > imperialBases)
+			results = "@faction_perk:gcw_rebel_ahead"; // the rebellion has the advantage over the empire
+		else if (imperialBases > rebelBases)
+			results = "@faction_perk:gcw_imperial_ahead";  // the empire has the advantage over the rebellion
+
+		creature->sendSystemMessage(results);
+
+		// temporary for testing bases
+		creature->sendSystemMessage(" Rebel Bases: " + String::valueOf(rebelBases) + " Imperial Bases: " + String::valueOf(imperialBases));
+
 
 		return SUCCESS;
 	}

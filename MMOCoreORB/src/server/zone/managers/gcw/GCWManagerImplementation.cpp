@@ -48,21 +48,7 @@
 
 #define DEBUG_GCW
 
-GCWManagerImplementation::GCWManagerImplementation(Zone* zne) {
-	setLoggingName("GCWManager");
-	info("GCWManager instantiated for " + zne->getZoneName(),true);
-	gcwBaseList.setNoDuplicateInsertPlan();
-	zone = zne;
 
-	gcwStartTasks.setNoDuplicateInsertPlan();
-	gcwStartTasks.setNullValue(NULL);
-
-	gcwEndTasks.setNoDuplicateInsertPlan();
-	gcwEndTasks.setNullValue(NULL);
-
-	gcwDestroyTasks.setNoDuplicateInsertPlan();
-	gcwDestroyTasks.setNullValue(NULL);
-}
 
 void GCWManagerImplementation::initialize(){
 	// TODO: initialize things
@@ -544,8 +530,16 @@ void GCWManagerImplementation::doBaseDestruction(BuildingObject* building){
 }
 
 void GCWManagerImplementation::unregisterGCWBase(BuildingObject* building){
-	this->dropBase(building);
 
+	if(hasBase(building)){
+		dropBase(building);
+
+		if(building->getFaction() == IMPERIALHASH)
+			imperialBases--;
+
+		else if (building->getFaction() == REBELHASH)
+			rebelBases--;
+	}
 	Reference<Task*> oldStartTask = this->getStartTask(building->getObjectID());
 
 	if(oldStartTask != NULL){
@@ -575,8 +569,13 @@ void GCWManagerImplementation::performGCWTasks(){
 
 
 	Locker locker(_this.get());
-	if(gcwBaseList.size() == 0)
+
+	if(gcwBaseList.size() == 0) {
+		setRebelBaseCount(0);
+		setImperialBaseCount(0);
 		return;
+	}
+
 
 
 	info("Performing gcw maintenance for "+ zone->getZoneName());
@@ -590,19 +589,33 @@ void GCWManagerImplementation::performGCWTasks(){
 	//info("Size of end list is   " + String::valueOf(endCount),true);
 	//info("Size of destroy list is   " + String::valueOf(destroyCount),true);
 
-
-
 	uint64  thisOid;
+
+		int rebelCheck = 0;
+	int imperialCheck = 0;
 
 	for(int i = 0; i< gcwBaseList.size();i++){
 		thisOid = this->getBase(i)->getObjectID();
-		info("Base " + String::valueOf(i) + " id: " + String::valueOf(thisOid) + " - " +   " Start: " + String::valueOf( this->hasStartTask(thisOid) )
-				+ " End: " + String::valueOf(this->hasEndTask(thisOid)) + " DESTROY: " + String::valueOf(this->hasDestroyTask(thisOid)),true );
 
+		BuildingObject* building = cast<BuildingObject*>(zone->getZoneServer()->getObject(thisOid));
+
+		if(building == NULL)
+			continue;
+
+		if(building->getFaction() == REBELHASH)
+			rebelCheck++;
+
+		else if (building->getFaction() == IMPERIALHASH)
+			imperialCheck++;
+
+		info("Base " + String::valueOf(i) + " id: " + String::valueOf(thisOid) + " - " +   " Start: " + String::valueOf( this->hasStartTask(thisOid) )
+				+ " End: " + String::valueOf(this->hasEndTask(thisOid)) + " DESTROY: " + String::valueOf(this->hasDestroyTask(thisOid))
+				+ " FACTION:  " + String::valueOf(building->getFaction()),true );
 
 	}
 
-
+	setRebelBaseCount(rebelCheck);
+	setImperialBaseCount(imperialCheck);
 
 	/*
 	for(int i = gcwBaseList.size() -1; i >= 0; i--){
@@ -618,6 +631,13 @@ void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool in
 	info("Registering base " + String::valueOf(building->getObjectID()),true);
 
 	if ( !this->hasBase(building)){
+
+
+		if(building->getFaction() == IMPERIALHASH)
+			imperialBases++;
+
+		else if (building->getFaction() == REBELHASH)
+			rebelBases++;
 
 		// initializebase should be for a first plant.
 		if(initializeBase){
@@ -1936,5 +1956,5 @@ void GCWManagerImplementation::verifyTurrets(BuildingObject* building){
 	//info("Remaining turrets = " + String::valueOf(turrets),true);
 
 
-		baseData->setDefense(turrets);
+	baseData->setDefense(turrets);
 }

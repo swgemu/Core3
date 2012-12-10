@@ -126,7 +126,7 @@ namespace gcw {
 
 class GCWManager : public ManagedService {
 public:
-	static const int GCWCHECKTIMER = 7200;
+	static const int GCWCHECKTIMER = 120;
 
 	static const int VULNERABILITYDURATION = 1800;
 
@@ -143,6 +143,10 @@ public:
 	static const int DESTRUCTIONTIMER = 120;
 
 	static const int MAXBASES = 5;
+
+	static const int IMPERIALHASH = 3679112276;
+
+	static const int REBELHASH = 370444368;
 
 	GCWManager(Zone* zne);
 
@@ -236,6 +240,10 @@ public:
 
 	void removeDefense(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID);
 
+	int getImperialBaseCount();
+
+	int getRebelBaseCount();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -262,7 +270,7 @@ namespace gcw {
 
 class GCWManagerImplementation : public ManagedServiceImplementation, public Logger {
 public:
-	static const int GCWCHECKTIMER = 7200;
+	static const int GCWCHECKTIMER = 120;
 
 	static const int VULNERABILITYDURATION = 1800;
 
@@ -280,6 +288,10 @@ public:
 
 	static const int MAXBASES = 5;
 
+	static const int IMPERIALHASH = 3679112276;
+
+	static const int REBELHASH = 370444368;
+
 private:
 	ManagedReference<Zone* > zone;
 
@@ -295,6 +307,11 @@ protected:
 	VectorMap<unsigned long long, Reference<Task*> > gcwDestroyTasks;
 
 	Mutex baseMutex;
+
+private:
+	int rebelBases;
+
+	int imperialBases;
 
 public:
 	GCWManagerImplementation(Zone* zne);
@@ -453,6 +470,16 @@ private:
 	void verifyTurrets(BuildingObject* building);
 
 public:
+	int getImperialBaseCount();
+
+	int getRebelBaseCount();
+
+private:
+	void setRebelBaseCount(int val);
+
+	void setImperialBaseCount(int val);
+
+public:
 	WeakReference<GCWManager*> _this;
 
 	operator const GCWManager*();
@@ -585,6 +612,10 @@ public:
 	void addTurret(BuildingObject* building, SceneObject* turret);
 
 	void removeDefense(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID);
+
+	int getImperialBaseCount();
+
+	int getRebelBaseCount();
 
 };
 

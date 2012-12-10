@@ -21,7 +21,7 @@ include server.zone.objects.building.components.DestructibleBuildingDataComponen
 
 class GCWManager extends ManagedService implements Logger {
 
-	public final static int GCWCHECKTIMER = 7200; // 2 hours
+	public final static int GCWCHECKTIMER = 120; // 2 hours
 	public final static int VULNERABILITYDURATION = 1800; //  30 minute test
 	public final static int VULNERABILITYFREQUENCY = 3600; // 1 hour for testing
 	public final static int RESETTIMER = 120; // amount of time before waiting to reset vulnerability	
@@ -30,6 +30,9 @@ class GCWManager extends ManagedService implements Logger {
 	public final static int DNAMATCHESREQUIRED = 10;
 	public final static int DESTRUCTIONTIMER = 120; // 3 minute 
 	public final static int MAXBASES = 5;  // MAX BASES PER PLANET
+
+	public final static int IMPERIALHASH = 3679112276;
+	public final static int REBELHASH = 370444368;
 	
 	private Zone zone;
 	
@@ -51,7 +54,27 @@ class GCWManager extends ManagedService implements Logger {
 	@dereferenced
 	protected transient Mutex baseMutex;
 
-	public native GCWManager(Zone zne);
+	private int rebelBases;
+
+	private int imperialBases;
+
+	public GCWManager(Zone zne){
+		imperialBases = 0;
+		rebelBases = 0;
+		Logger.setLoggingName("GCWManager");
+		Logger.info("GCWManager instantiated for " + zne.getZoneName(),true);
+		gcwBaseList.setNoDuplicateInsertPlan();
+		zone = zne;
+
+		gcwStartTasks.setNoDuplicateInsertPlan();
+		gcwStartTasks.setNullValue(null);
+
+		gcwEndTasks.setNoDuplicateInsertPlan();
+		gcwEndTasks.setNullValue(null);
+
+		gcwDestroyTasks.setNoDuplicateInsertPlan();
+		gcwDestroyTasks.setNullValue(null);
+	}
 	
 	public native void initialize();
 	
@@ -253,5 +276,23 @@ class GCWManager extends ManagedService implements Logger {
 	public native void removeDefense(BuildingObject building, CreatureObject creature, unsigned long deedOID);
 
 	private native void verifyTurrets(BuildingObject building);
+
+	public int getImperialBaseCount(){
+		return imperialBases;
+	}
+
+	public int getRebelBaseCount(){
+		return rebelBases;
+	}
+
+	@local 
+	private void setRebelBaseCount(int val){
+		rebelBases = val;
+	}
+
+	@local
+	private void setImperialBaseCount(int val){
+		imperialBases = val;
+	}
 }
 
