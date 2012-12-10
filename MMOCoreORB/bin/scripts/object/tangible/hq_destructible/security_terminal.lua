@@ -42,18 +42,7 @@
 
 
 object_tangible_hq_destructible_security_terminal = object_tangible_hq_destructible_shared_security_terminal:new {
-	
-	-- tests to get it to load the template file.
-	-- 1) try with gameobjecttype  =512
-	-- 2) try with missionterm and gameobjecttype as 16390
-	--templateType = MISSIONTERMINAL,
-	--gameObjectType = 16390,
-	--objectMenuComponent = "SecurityTerminalMenuComponent",
-	-- working
-	
 	objectMenuComponent = "SecurityTerminalMenuComponent",
-	sliceable = 1,
-	faction = "imperial",
 }
 
 ObjectTemplates:addTemplate(object_tangible_hq_destructible_security_terminal, "object/tangible/hq_destructible/security_terminal.iff")
