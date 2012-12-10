@@ -134,7 +134,8 @@ int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureOb
 		return 1;
 
 	if (selectedID == 20){
-		gcwMan->sendStatus(building,creature);
+		if(creature->getFaction() == building->getFaction())
+			gcwMan->sendStatus(building,creature);
 	}
 	else if( selectedID == 228 || selectedID == 20){
 
@@ -158,6 +159,7 @@ int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureOb
 		gcwMan->abortShutdownSequence(creature,building);
 
 	} else if (selectedID == 226){
+
 		gcwMan->sendSelectDeedToDonate(building,creature,0);
 	}
 	return 0;
