@@ -385,6 +385,8 @@ bool CityRegionImplementation::hasZoningRights(uint64 objectid) {
 	//if (isMilitiaMember(objectid))
 	//	return true;
 
+	if(objectid == getMayorID())
+		return true;
 	uint32 timestamp = zoningRights.get(objectid);
 
 	if (timestamp == 0)
