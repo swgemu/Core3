@@ -1677,7 +1677,7 @@ void GCWManagerImplementation::sendRemoveDefenseConfirmation(BuildingObject* bui
 	removeDefense->setPromptTitle("TURRET SELECT");
 	removeDefense->setPromptText("@faction/faction_hq/faction_hq_response:terminal_response25"); // are you sure you want to remove the selected defense?
 	removeDefense->setUsingObject(building);
-	removeDefense->setOkButton(true, "@select");
+	removeDefense->setOkButton(true, "@ok");
 	removeDefense->setCancelButton(true, "@cancel");
 	removeDefense->setCallback( new RemoveDefenseSuiCallback(zone->getZoneServer(),deedOID));
 
