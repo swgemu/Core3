@@ -28,7 +28,7 @@ class GCWManager extends ManagedService implements Logger {
 	public final static int SLICECOOLDOWN = 30; // test for 30 seconds after a failed slice
 	public final static int TOTALDNASAMPLES = 10;
 	public final static int DNAMATCHESREQUIRED = 10;
-	public final static int DESTRUCTIONTIMER = 180; // 3 minute 
+	public final static int DESTRUCTIONTIMER = 120; // 3 minute 
 	public final static int MAXBASES = 5;  // MAX BASES PER PLANET
 	
 	private Zone zone;
@@ -220,7 +220,7 @@ class GCWManager extends ManagedService implements Logger {
 
 	private native void scheduleVulnerabilityEnd(BuildingObject building);
 
-	public native void scheduleBaseDestruction(BuildingObject building);
+	public native void scheduleBaseDestruction(BuildingObject building, CreatureObject creature);
 	
 	private native void initializeBaseTimers(BuildingObject building);
 	

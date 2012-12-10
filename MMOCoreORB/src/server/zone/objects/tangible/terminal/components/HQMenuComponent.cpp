@@ -69,26 +69,11 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 	} else {
 
 		if(playerObject->getFactionStatus() == FactionStatus::OVERT) {
-
-			//menuResponse->addRadialMenuItem(228, 3, "@hq:mnu_defense_status");
-
 			if(gcwMan->isPowerOverloaded(building) && !gcwMan->isShutdownSequenceStarted(building)){
 				menuResponse->addRadialMenuItem(230, 3, "@hq:mnu_overload");  // activate overload
 			}
 		}
 	}
-
-
-	//if(true){
-
-
-
-
-
-
-
-
-
 
 	// Admin menus to test out vulnerability manually
 	/*
@@ -151,9 +136,7 @@ int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureOb
 		//info("Destroy base here",true);
 		gcwMan->doBaseDestruction(building);
 	} else if ( selectedID == 230 ) {
-		creature->sendSystemMessage("BASE WILL BE DESTROYED UNLESS IT IS STOPPED");
-
-		gcwMan->scheduleBaseDestruction(building);
+		gcwMan->scheduleBaseDestruction(building,creature);
 	} else if (selectedID == 231) {
 		//info("abort shutdown",true);
 		gcwMan->abortShutdownSequence(creature,building);

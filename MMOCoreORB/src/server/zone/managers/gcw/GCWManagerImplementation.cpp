@@ -425,7 +425,7 @@ void GCWManagerImplementation::scheduleVulnerabilityEnd(BuildingObject* building
 }
 
 // no locks needed
-void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building){
+void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building, CreatureObject* creature){
 	info("Scheduling destruction",true);
 
 	if(this->isBaseVulnerable(building) && !this->hasDestroyTask(building->getObjectID()) ){
@@ -438,15 +438,54 @@ void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building)
 		}
 		//info("setting state of the building to SHUTDOWN",true);
 
-		Locker block(building);
+		Locker block(building,creature);
+
+		//Default range of broadcast
+		float range = 64;
+
+		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+		Zone* zone = creature->getZone();
+
+		if (creature->getCloseObjects() == NULL) {
+			zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
+		} else {
+			CloseObjectsVector* closeVector = (CloseObjectsVector*) creature->getCloseObjects();
+			closeVector->safeCopyTo(closeObjects);
+		}
+
+		StringIdChatParameter destroyMessage("@faction/faction_hq/faction_hq_response:terminal_response40"); // COUNTDOWN INITIATED: estimated time to detonation: %DI minutes.
+		int minutesRemaining = ceil(this->DESTRUCTIONTIMER/60);
+		destroyMessage.setDI(minutesRemaining);
+
+		for (int i = 0; i < closeObjects.size(); i++) {
+			SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
+
+			if (targetObject->isPlayerCreature() && creature->isInRange(targetObject, range)) {
+				CreatureObject* targetPlayer = cast<CreatureObject*>(targetObject);
+
+				if (targetPlayer != NULL)
+					targetPlayer->sendSystemMessage(destroyMessage);
+			}
+		}
+
+		block.release();
+
+		Locker _lock(_this.get(),creature);
+
 
 		baseData->setState(DestructibleBuildingDataComponent::SHUTDOWNSEQUENCE);
 
 		Reference<Task*> newTask = new BaseDestructionTask(_this.get(), building);
 		newTask->schedule(this->DESTRUCTIONTIMER*1000);
-		block.release();
+
 
 		this->addDestroyTask(building->getObjectID(),newTask);
+
+
+
+
+
+		//creature->sendSystemMessage(destroyMessage);
 	}
 }
 

@@ -140,7 +140,7 @@ public:
 
 	static const int DNAMATCHESREQUIRED = 10;
 
-	static const int DESTRUCTIONTIMER = 180;
+	static const int DESTRUCTIONTIMER = 120;
 
 	static const int MAXBASES = 5;
 
@@ -214,7 +214,7 @@ public:
 
 	bool isPlanetCapped();
 
-	void scheduleBaseDestruction(BuildingObject* building);
+	void scheduleBaseDestruction(BuildingObject* building, CreatureObject* creature);
 
 	void spawnChildrenCreatures(BuildingObject* building);
 
@@ -276,7 +276,7 @@ public:
 
 	static const int DNAMATCHESREQUIRED = 10;
 
-	static const int DESTRUCTIONTIMER = 180;
+	static const int DESTRUCTIONTIMER = 120;
 
 	static const int MAXBASES = 5;
 
@@ -415,7 +415,7 @@ private:
 	void scheduleVulnerabilityEnd(BuildingObject* building);
 
 public:
-	void scheduleBaseDestruction(BuildingObject* building);
+	void scheduleBaseDestruction(BuildingObject* building, CreatureObject* creature);
 
 private:
 	void initializeBaseTimers(BuildingObject* building);
@@ -564,7 +564,7 @@ public:
 
 	bool isPlanetCapped();
 
-	void scheduleBaseDestruction(BuildingObject* building);
+	void scheduleBaseDestruction(BuildingObject* building, CreatureObject* creature);
 
 	void spawnChildrenCreatures(BuildingObject* building);
 
