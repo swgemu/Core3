@@ -1604,7 +1604,7 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 	donate->setPromptTitle("@hq:mnu_defense_status");
 	donate->setPromptText("Donate a deed");
 	donate->setUsingObject(building);
-	donate->setOkButton(true, "@donate");
+	donate->setOkButton(true, "Donate");
 	donate->setCancelButton(true, "@cancel");
 	donate->setCallback( new DonateDefenseSuiCallback(zone->getZoneServer(), turretIndex) );
 
@@ -1661,8 +1661,6 @@ void GCWManagerImplementation::sendSelectTurretToDonate(BuildingObject* building
 }
 
 void GCWManagerImplementation::sendRemoveDefenseConfirmation(BuildingObject* building, CreatureObject* creature, uint64 deedOID){
-	info("deed oid is " + String::valueOf(deedOID),true);
-
 	ZoneServer* zoneServer = zone->getZoneServer();
 	if(zoneServer == NULL)
 		return;
