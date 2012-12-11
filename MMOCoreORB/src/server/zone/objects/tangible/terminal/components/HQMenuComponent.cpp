@@ -138,9 +138,7 @@ int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureOb
 	} else if ( selectedID == 230 ) {
 		gcwMan->scheduleBaseDestruction(building,creature);
 	} else if (selectedID == 231) {
-		//info("abort shutdown",true);
 		gcwMan->abortShutdownSequence(creature,building);
-
 	} else if (selectedID == 226){
 
 		gcwMan->sendSelectDeedToDonate(building,creature,0);

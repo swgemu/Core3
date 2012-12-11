@@ -482,7 +482,6 @@ void GCWManagerImplementation::abortShutdownSequence(CreatureObject* creature, B
 		if(oldDestroyTask != NULL){
 			info("deleting destroy task",true);
 			oldDestroyTask->cancel();
-			//gcwDestroyTasks.drop(building->getObjectID());
 			this->dropDestroyTask(building->getObjectID());
 		}
 
@@ -493,6 +492,7 @@ void GCWManagerImplementation::abortShutdownSequence(CreatureObject* creature, B
 			return;
 		}
 
+		creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:terminal_response07"); // COUNTDOWN ABORTED: FACILITY SHUTTIGN DOWN
 		Locker block(building);
 		baseData->setState(DestructibleBuildingDataComponent::OVERLOADED);
 	}
@@ -627,7 +627,7 @@ void GCWManagerImplementation::performGCWTasks(){
 }
 
 void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool initializeBase){
-	info("Registering base " + String::valueOf(building->getObjectID()),true);
+	info("Registering base " + String::valueOf(building->getObjectID()) + " " + String::valueOf(building->getPositionX()) + ", " + String::valueOf(building->getPositionY()),true);
 
 	if ( !this->hasBase(building)){
 
@@ -873,10 +873,11 @@ void GCWManagerImplementation::sendStatus(BuildingObject* building, CreatureObje
 
 	uint64 dif = 0;
 
-	if( baseData->isVulnerable())
+	if( baseData->isVulnerable()) {
 		dif = baseData->getVulnerabilityEndTime().getTime() - time(0);
-	else
+	} else {
 		dif = baseData->getNextVulnerableTime().getTime() - time(0);
+	}
 
 	int days = floor(dif/86400);
 	dif = dif - (days*86400);
@@ -886,8 +887,10 @@ void GCWManagerImplementation::sendStatus(BuildingObject* building, CreatureObje
 
 	if(baseData->isVulnerable()){
 		creature->sendSystemMessage("Vulnerability ends in " + String::valueOf(hours) + " hours and " + String::valueOf(minutes) + " minutes.");
+		creature->sendSystemMessage("End time " + baseData->getVulnerabilityEndTime().getFormattedTime());
 	} else {
 		creature->sendSystemMessage("Base will be vulnerable in " + String::valueOf(days) + " days, " + String::valueOf(hours) + " hours, and " + String::valueOf(minutes) + " minutes");
+		creature->sendSystemMessage("Start time " + baseData->getNextVulnerableTime().getFormattedTime());
 	}
 }
 
@@ -1125,12 +1128,22 @@ bool GCWManagerImplementation::canStartSlice(CreatureObject* creature, TangibleO
 		if(!isBaseVulnerable(building))
 			return false;
 
+		if(creature->getFaction() == building->getFaction()){
+			creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:no_tamper"); // You are not an enemy of this structure.  Why would you want to tamper
+			return false;
+		}
+
 		if(isTerminalDamaged(tano)){
 			creature->sendSystemMessage("@hq:terminal_disabled");
 			return false;
 		}
 
-		if(isUplinkJammed(building) && !isSecurityTermSliced(building) && creature->getFaction() != building->getFaction())
+		if(!isUplinkJammed(building)){
+			creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:other_objectives"); // Other objectives must be disabled prior to gaining access to this one
+			return false;
+		}
+
+		if(!isSecurityTermSliced(building) && creature->getFaction() != building->getFaction())
 			return true;
 
 		return false;
@@ -1459,7 +1472,7 @@ void GCWManagerImplementation::sendPowerRegulatorControls(CreatureObject* creatu
 	status->setOkButton(true, "OFF");
 	status->setCancelButton(true, "OFF");
 
-	status->setPromptText("Power this bitch down");
+	status->setPromptText("@hq:mnu_set_overload");
 	status->setCallback( new PowerRegulatorSuiCallback(this->zone->getZoneServer()) );
 
 	for(int i =0; i < 8; i++) {
@@ -1509,7 +1522,7 @@ void GCWManagerImplementation::handlePowerRegulatorSwitch(CreatureObject* creatu
 	}
 
 	if(baseData->getOnSwitchCount() == 0) {
-		creature->sendSystemMessage("SUCESSFULLY OVERLOADED POWER REGULATOR");
+		creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:alignment_complete");  // Alignment complete!  The facility may now be set to overload from the primary terminal.
 		baseData->setState(DestructibleBuildingDataComponent::OVERLOADED);
 	}
 	else {
