@@ -117,6 +117,8 @@ object_building_faction_perk_hq_hq_s04_imp_pvp = object_building_faction_perk_hq
 			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=5, z=0, y=28, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- stormtroopertest
 			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=10, z=0, y=38, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- stormtroopertest
 			
+			-- test alarm
+			--{templateFile = "object/tanbible/faction_perk/faction_base_item/alarm_hack.iff", x = .38, z = .25, y = 4.75, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
 		},
 		
 		turretCount = 2,

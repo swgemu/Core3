@@ -47,6 +47,27 @@ object_installation_faction_perk_turret_tower_lg = object_installation_faction_p
 	maxCondition = 300000,
 	zoneComponent = "TurretZoneComponent",
 	dataObjectComponent = "TurretDataComponent",
+			-- Damagetypes in WeaponObject
+	vulnerability = BLAST,
+
+	-- These are default Blue Frog stats
+	healthEncumbrance = 0,
+	actionEncumbrance = 0,
+	mindEncumbrance = 0,
+
+	-- LIGHT, MEDIUM, HEAVY
+	rating = HEAVY,
+
+	kinetic = 90,
+	energy = 90,
+	electricity = 90,
+	stun = 100,
+	blast = 90,
+	heat = 90,
+	cold = 90,
+	acid = 90,
+	lightSaber = 0,
+	
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_turret_tower_lg, "object/installation/faction_perk/turret/tower_lg.iff")
