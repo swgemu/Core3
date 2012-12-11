@@ -9,7 +9,7 @@
 #define TURRETDATACOMPONENT_H_
 #include "server/zone/objects/scene/components/DataObjectComponent.h"
 
-class TurretDataComponent : public DataObjectComponent, public Logger{
+class TurretDataComponent : public DataObjectComponent{
 protected:
 	int maxrange;
 	uint64 nextFireTime;
@@ -19,17 +19,16 @@ protected:
 public:
 	TurretDataComponent()  {
 		maxrange = 65;
-
 		nextFireTime = time(0);
-		this->setLoggingName("TurretDAta");
-		//info("setting nextFireTime to "+ String::valueOf(nextFireTime),true );
 
+	}
+
+	~TurretDataComponent(){
 
 	}
 
 	bool canFire(){
 		uint64 rightnow = time(0);
-
 		//info("now is " + String::valueOf(rightnow) + " nextFire is " + String::valueOf(nextFireTime),true);
 		return (rightnow > nextFireTime);
 	}
@@ -37,12 +36,13 @@ public:
 	void updateCooldown(){
 		nextFireTime = time(0) + fireCooldown;
 		//info("setting nextFireTime to " + String::valueOf(nextFireTime),true);
-
 	}
 
 	bool isTurretData(){
 		return true;
 	}
+
+	int getArmor();
 };
 
 

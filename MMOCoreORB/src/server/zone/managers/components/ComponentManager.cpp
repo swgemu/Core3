@@ -177,7 +177,6 @@ ComponentManager::ComponentManager() {
 	components.put("DiceMenuComponent", new DiceMenuComponent());
 	dataObjectFactory.registerObject<DiceDataComponent>("DiceDataComponent");
 
-	components.put("TurretDataComponent", new TurretDataComponent());
 	dataObjectFactory.registerObject<TurretDataComponent>("TurretDataComponent");
 
 	//components.put("DetectorDataComponent", new DetectorDataComponent());

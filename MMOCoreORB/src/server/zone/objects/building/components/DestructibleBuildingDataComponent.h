@@ -73,6 +73,7 @@ public:
 
 		activeDefenses = true;
 		exposed = false;
+		terminalDamaged = false;
 
 	}
 

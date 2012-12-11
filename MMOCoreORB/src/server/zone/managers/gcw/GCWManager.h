@@ -222,9 +222,7 @@ public:
 
 	void spawnChildrenCreatures(BuildingObject* building);
 
-	void initializeTurrets(BuildingObject* building);
-
-	void notifyTurretDestruction(BuildingObject* building, InstallationObject* turret);
+	void notifyTurretDestruction(InstallationObject* turret);
 
 	void sendSelectTurretToDonate(BuildingObject* building, CreatureObject* creature);
 
@@ -448,10 +446,12 @@ private:
 public:
 	void spawnChildrenCreatures(BuildingObject* building);
 
-	void initializeTurrets(BuildingObject* building);
+	void notifyTurretDestruction(InstallationObject* turret);
 
-	void notifyTurretDestruction(BuildingObject* building, InstallationObject* turret);
+private:
+	void destroyStandaloneTurret(InstallationObject* turret);
 
+public:
 	void sendSelectTurretToDonate(BuildingObject* building, CreatureObject* creature);
 
 	void sendSelectDeedToDonate(BuildingObject* building, CreatureObject* creature, int turretIndex);
@@ -595,9 +595,7 @@ public:
 
 	void spawnChildrenCreatures(BuildingObject* building);
 
-	void initializeTurrets(BuildingObject* building);
-
-	void notifyTurretDestruction(BuildingObject* building, InstallationObject* turret);
+	void notifyTurretDestruction(InstallationObject* turret);
 
 	void sendSelectTurretToDonate(BuildingObject* building, CreatureObject* creature);
 

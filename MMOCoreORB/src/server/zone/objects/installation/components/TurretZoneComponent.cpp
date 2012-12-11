@@ -19,7 +19,7 @@
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/Zone.h"
 #include "server/zone/packets/object/CombatAction.h"
-
+#include "server/zone/objects/installation/components/TurretObserver.h"
 
 void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry){
 
@@ -69,5 +69,13 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 
 }
 
+void TurretZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zne){
 
+	if(zne == NULL)
+		return;
 
+	ManagedReference<TurretObserver*> observer = new TurretObserver();
+	ManagedReference<InstallationObject*> installation = cast<InstallationObject*>(sceneObject);
+	installation->registerObserver(ObserverEventType::OBJECTDESTRUCTION,observer);
+
+}

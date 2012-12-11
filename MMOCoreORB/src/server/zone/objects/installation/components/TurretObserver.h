@@ -54,7 +54,7 @@ namespace installation {
 
 class TurretObserver : public Observer {
 public:
-	TurretObserver(BuildingObject* obj);
+	TurretObserver();
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
@@ -83,11 +83,9 @@ namespace objects {
 namespace installation {
 
 class TurretObserverImplementation : public ObserverImplementation, public Logger {
-protected:
-	ManagedWeakReference<BuildingObject* > building;
 
 public:
-	TurretObserverImplementation(BuildingObject* obj);
+	TurretObserverImplementation();
 
 	TurretObserverImplementation(DummyConstructorParameter* param);
 

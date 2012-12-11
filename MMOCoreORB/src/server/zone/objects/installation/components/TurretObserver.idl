@@ -54,11 +54,9 @@ import engine.util.Observer;
 
 
 class TurretObserver extends Observer implements Logger{
-	@weakReference
-	protected BuildingObject building;
-	public TurretObserver(BuildingObject obj) {
+	
+	public TurretObserver() {
 		Logger.setLoggingName("TurretObserver");
-		building = obj;
 	}
 
 	public abstract native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);

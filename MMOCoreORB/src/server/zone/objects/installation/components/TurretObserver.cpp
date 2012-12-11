@@ -14,8 +14,8 @@
 
 enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6};
 
-TurretObserver::TurretObserver(BuildingObject* obj) : Observer(DummyConstructorParameter::instance()) {
-	TurretObserverImplementation* _implementation = new TurretObserverImplementation(obj);
+TurretObserver::TurretObserver() : Observer(DummyConstructorParameter::instance()) {
+	TurretObserverImplementation* _implementation = new TurretObserverImplementation();
 	_impl = _implementation;
 	_impl->_setStub(this);
 	_setClassName("TurretObserver");
@@ -152,11 +152,6 @@ bool TurretObserverImplementation::readObjectMember(ObjectInputStream* stream, c
 	if (ObserverImplementation::readObjectMember(stream, _name))
 		return true;
 
-	if (_name == "TurretObserver.building") {
-		TypeInfo<ManagedWeakReference<BuildingObject* > >::parseFromBinaryStream(&building, stream);
-		return true;
-	}
-
 
 	return false;
 }
@@ -174,24 +169,14 @@ int TurretObserverImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	String _name;
 	int _offset;
 	uint32 _totalSize;
-	_name = "TurretObserver.building";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<ManagedWeakReference<BuildingObject* > >::toBinaryStream(&building, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
 
-
-	return _count + 1;
+	return _count + 0;
 }
 
-TurretObserverImplementation::TurretObserverImplementation(BuildingObject* obj) {
+TurretObserverImplementation::TurretObserverImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/installation/components/TurretObserver.idl():  		Logger.setLoggingName("TurretObserver");
 	Logger::setLoggingName("TurretObserver");
-	// server/zone/objects/installation/components/TurretObserver.idl():  		building = obj;
-	building = obj;
 }
 
 /*
@@ -244,7 +229,7 @@ DistributedObject* TurretObserverHelper::instantiateObject() {
 }
 
 DistributedObjectServant* TurretObserverHelper::instantiateServant() {
-	return new TurretObserverImplementation(DummyConstructorParameter::instance());
+	return new TurretObserverImplementation();
 }
 
 DistributedObjectAdapter* TurretObserverHelper::createAdapter(DistributedObjectStub* obj) {

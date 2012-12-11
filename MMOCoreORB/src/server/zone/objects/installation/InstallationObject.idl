@@ -271,9 +271,6 @@ class InstallationObject extends StructureObject {
 	*/ 
 	public native boolean isAttackableBy(CreatureObject object);
 
-	
-	//@local
-	//private native void checkZoneComponents();
 
 }	
 	

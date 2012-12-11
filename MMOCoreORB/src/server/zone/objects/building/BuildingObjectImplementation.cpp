@@ -1049,6 +1049,14 @@ void BuildingObjectImplementation::createChildObjects(){
 					gcwMan->addTurret(_this.get(),obj);
 					TangibleObject* tano = cast<TangibleObject*>(obj.get());
 					tano->setFaction(getFaction());
+					InstallationObject* turret = cast<InstallationObject*>(obj.get());
+					if(turret != NULL){
+						turret->setOwnerObjectID(getObjectID());
+						turret->setOwnerName(getObjectNameStringIdFile());
+					}
+
+					tano->setDetailedDescription("DEFAULT BASE TURRET");
+
 				}
 
 				if (getZone())

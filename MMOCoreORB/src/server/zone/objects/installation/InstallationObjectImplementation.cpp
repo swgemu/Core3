@@ -42,12 +42,18 @@
 
 #include "server/zone/objects/building/BuildingObject.h"
 
+#include "components/TurretDataComponent.h"
+
 void InstallationObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	StructureObjectImplementation::loadTemplateData(templateData);
 
 	SharedInstallationObjectTemplate* inso = dynamic_cast<SharedInstallationObjectTemplate*>(templateData);
 
 	installationType = inso->getInstallationType();
+
+	if(isTurret()){
+
+	}
 }
 
 void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -78,6 +84,29 @@ void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* a
 		if(obj != NULL) {
 			alm->insertAttribute("owner", obj->getDisplayedName());
 		}
+	}
+	if(isTurret()){
+		alm->insertAttribute("condition",String::valueOf(getMaxCondition() - getConditionDamage()) + "/" + String::valueOf(this->getMaxCondition()));
+		alm->insertAttribute("armorrating","Heavy");
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_energy","95%");
+		alm->insertAttribute("cat_armor_special_protection.armor_eff_stun","100%");
+
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_kinetic","90%");
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint","90%");
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_heat","90%");
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_cold","90%");
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_acid","90%");
+		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_electrical","90%");
+
+		alm->insertAttribute("cat_armor_vulnerability.armor_eff_blast","-");
+
+		alm->insertAttribute("cat_armor_encumbrance.health","0");
+		alm->insertAttribute("cat_armor_encumbrance.action","0");
+		alm->insertAttribute("cat_armor_encumbrance.mind","0");
+
+		alm->insertAttribute("description",getDetailedDescription());
+
+		alm->insertAttribute("owner",String::valueOf(getOwnerObjectID()));
 	}
 
 }
@@ -679,4 +708,5 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object){
 
 	return true;
 }
+
 

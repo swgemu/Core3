@@ -107,7 +107,6 @@ int DestroyStructureSessionImplementation::destroyStructure() {
 		return cancelSession();
 
 	if(!structureObject->isGCWBase()) {
-		info("not a gcwbase",true);
 		StructureManager::instance()->redeedStructure(creatureObject);
 	} else{
 

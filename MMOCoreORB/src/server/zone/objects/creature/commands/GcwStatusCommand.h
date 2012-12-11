@@ -90,7 +90,6 @@ public:
 		// temporary for testing gcw bases
 		creature->sendSystemMessage(" Rebel Bases: " + String::valueOf(rebelBases) + " Imperial Bases: " + String::valueOf(imperialBases));
 
-
 		return SUCCESS;
 	}
 

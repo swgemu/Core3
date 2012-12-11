@@ -35,7 +35,6 @@
 #include "server/zone/objects/creature/AiAgent.h"
 
 #include "server/zone/objects/installation/InstallationObject.h"
-#include "server/zone/objects/installation/components/TurretObserver.h"
 
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
@@ -663,8 +662,6 @@ void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool in
 			checkVulnerabilityData(building);
 
 		}
-
-		this->initializeTurrets(building);
 
 		//this->spawnChildrenCreatures(building);
 	}else
@@ -1532,64 +1529,59 @@ void GCWManagerImplementation::handlePowerRegulatorSwitch(CreatureObject* creatu
 
 }
 
-// TODO: make sure building is locked
-void GCWManagerImplementation::initializeTurrets(BuildingObject* building){
-	Locker _lock(building);
 
-	SortedVector <ManagedReference<SceneObject* > > *childObjects = building->getChildObjects();
-	for(int i =0; i<childObjects->size();i++){
-		if(childObjects->get(i)->isTurret()) {
-			ManagedReference<SceneObject*> sceno = childObjects->get(i);
-			if(sceno == NULL)
-				continue;
+void GCWManagerImplementation::notifyTurretDestruction(InstallationObject* turret){
+	if(turret == NULL)
+		return;
 
-			ManagedReference<TurretObserver*> observer = new TurretObserver(building);
-			ManagedReference<InstallationObject*> installation = cast<InstallationObject*>(sceno.get());
-			installation->registerObserver(ObserverEventType::OBJECTDESTRUCTION,observer);
+	PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", zone->getZoneName(), turret->getPositionX(), turret->getPositionZ(), turret->getPositionY());
+	turret->broadcastMessage(explodeLoc, false);
 
-		}
-	}
+	uint64 ownerid = turret->getOwnerObjectID();
+	BuildingObject* building = NULL;
 
-	verifyTurrets(building);
-}
+	ZoneServer* server = zone->getZoneServer();
 
-void GCWManagerImplementation::notifyTurretDestruction(BuildingObject* building, InstallationObject* turret){
-
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
-
-	Locker _lock(building);
-
-	Locker clock(turret, building);
-
-	if(baseData == NULL){
-		error("ERROR:  could not get base data for base");
+	if(server == NULL) {
+		info("server is null for the turret",true);
 		return;
 	}
 
-	if(baseData->hasTurret(turret->getObjectID())){
+	SceneObject* ownerObject = server->getObject(ownerid);
 
-		if( building->containsChildObject(cast<SceneObject*>(turret))) {
+	if(ownerObject == NULL){
+		info("owner object for the turret is null",true);
+		PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", zone->getZoneName(), turret->getPositionX(), turret->getPositionZ(), turret->getPositionY());
+		turret->broadcastMessage(explodeLoc, false);
 
+		Locker _lock(turret);
+		turret->destroyObjectFromWorld(true);
+		turret->destroyObjectFromDatabase(true);
 
-			PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", zone->getZoneName(), turret->getPositionX(), turret->getPositionZ(), turret->getPositionY());
-			building->broadcastMessage(explodeLoc, false);
-			//info("building does contain the child",true);
-			//info("removed child",true);
-			building->getChildObjects()->drop(cast<SceneObject*>(turret));
+		return;
+	}
 
+	if(ownerObject->isGCWBase()){
+		building = cast<BuildingObject*>(ownerObject);
+
+		Locker _lock(building);
+		Locker clock(turret,building);
+
+		DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+		if(baseData != NULL){
+			if( building->containsChildObject(cast<SceneObject*>(turret))) {
+				//info("removed child",true);
+				building->getChildObjects()->drop(cast<SceneObject*>(turret));
+			}
 		}
-		else {
-			info("building does not contain child",true);
-		}
+
 
 		if(baseData->hasTurret(turret->getObjectID())){
 			int indx = baseData->getIndexOfTurret(turret->getObjectID());
 
 			//building->getChildObjects()->removeElement(cast<SceneObject*>(turret));
 			baseData->setTurretID(indx,0);
-			turret->destroyObjectFromWorld(true);
-			turret->destroyObjectFromDatabase(true);
-
 
 			// see if all the turrets are destroyed
 			int defensecount = 0;
@@ -1597,26 +1589,36 @@ void GCWManagerImplementation::notifyTurretDestruction(BuildingObject* building,
 			for(int i = 0; i < baseData->getTotalTurretCount();i++){
 				if(baseData->getTurretID(i))
 					defensecount++;
+				}
+
+				info("Base " + String::valueOf(building->getObjectID()) + " turret destroyed.  Remaining turrets: " + String::valueOf(defensecount),true);
+
+				if(!defensecount)
+					baseData->setDefense(false);
+
 			}
 
-			info("Base " + String::valueOf(building->getObjectID()) + " turret destroyed.  Remaining turrets: " + String::valueOf(defensecount),true);
 
-			if(!defensecount)
-				baseData->setDefense(false);
+		turret->destroyObjectFromWorld(true);
+		turret->destroyObjectFromDatabase(true);
 
-		} else{
-			info("Base " + String::valueOf(building->getObjectID()) + " does not contain turret " + String::valueOf(turret->getObjectID()),true);
-		}
+		if(building != NULL)
+			verifyTurrets(building);
 
-
-	} else {
-		info("base no contain turret",true);
-		// destroy the turret from the world anyway
-
+	} else if ( ownerObject->isCreatureObject()){
+		info("owner is a creature... need to remvoe the lots",true);
+		Locker plock(ownerObject);
+		Locker tlock(turret, ownerObject);
+		StructureManager::instance()->destroyStructure(turret);
+		tlock.release();
+		plock.release();
 	}
 
-	verifyTurrets(building);
+
+
 }
+
+
 void GCWManagerImplementation::spawnChildrenCreatures(BuildingObject* building){
 	//info("spawning children NPCs",true);
 
@@ -1799,9 +1801,13 @@ void GCWManagerImplementation::removeDefense(BuildingObject* building, CreatureO
 	if(defense == NULL || !defense->isTurret())
 		return;
 
-	Locker clock(defense,creature);
-	TangibleObject* tano = cast<TangibleObject*>(defense.get());
-	tano->inflictDamage(creature,0,999999,true,true);
+
+	InstallationObject* turret = cast<InstallationObject*>(defense.get());
+
+	this->notifyTurretDestruction(turret);
+	//Locker clock(defense,creature);
+	//TangibleObject* tano = cast<TangibleObject*>(defense.get());
+	//tano->inflictDamage(creature,0,999999,true,true);
 
 }
 
@@ -1913,17 +1919,21 @@ void GCWManagerImplementation::performDefenseDontation(BuildingObject* building,
 	if(!obj->isTangibleObject())
 		return;
 
+
 	TangibleObject* tano = cast<TangibleObject*>(obj.get());
+
 	if(tano != NULL)
 		tano->setFaction(building->getFaction());
 
 	tano->setDetailedDescription("Donated Turret");
+
+	if(tano->isInstallationObject()){
+		InstallationObject* turret = cast<InstallationObject*>(tano);
+		if(turret != NULL)
+			turret->setOwnerObjectID(building->getObjectID());
+	}
+
 	zone->transferObject(obj, -1, false);
-
-	building->getChildObjects()->put(obj);
-
-	ManagedReference<TurretObserver*> observer = new TurretObserver(building);
-	obj->registerObserver(ObserverEventType::OBJECTDESTRUCTION,observer);
 
 	baseData->setTurretID(currentTurretIndex,obj->getObjectID());
 
