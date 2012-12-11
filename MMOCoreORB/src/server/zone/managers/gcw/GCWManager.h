@@ -126,7 +126,7 @@ namespace gcw {
 
 class GCWManager : public ManagedService {
 public:
-	static const int GCWCHECKTIMER = 120;
+	static const int GCWCHECKTIMER = 7200;
 
 	static const int VULNERABILITYDURATION = 1800;
 
@@ -270,7 +270,7 @@ namespace gcw {
 
 class GCWManagerImplementation : public ManagedServiceImplementation, public Logger {
 public:
-	static const int GCWCHECKTIMER = 120;
+	static const int GCWCHECKTIMER = 7200;
 
 	static const int VULNERABILITYDURATION = 1800;
 

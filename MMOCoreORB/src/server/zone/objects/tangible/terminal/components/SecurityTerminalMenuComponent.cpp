@@ -13,15 +13,9 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/structure/StructureObject.h"
-//#include "server/zone/objects/tangible/terminal/Terminal.h"
-//#include "server/zone/managers/structure/StructureManager.h"
-//#include "server/zone/objects/player/sessions/StructureSetAccessFeeSession.h"
 #include "server/zone/objects/building/BuildingObject.h"
-//#include "server/chat/StringIdChatParameter.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
-//#include "server/zone/objects/cell/CellObject.h"
-
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 
 void SecurityTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -39,10 +33,10 @@ void SecurityTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObj
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
-	//info("terminal damaged is " + String::valueOf(gcwMan->isTerminalDamaged(cast<TangibleObject*>(sceneObject) )),true);
-
 	if( gcwMan->isUplinkJammed(building) && !gcwMan->isSecurityTermSliced(building) && player->getFaction() != building->getFaction() ) {
 		// if it's not damaged, give the slicing menu
+
+		info("terminal damaged is " + String::valueOf(gcwMan->isTerminalDamaged(cast<TangibleObject*>(sceneObject))),true);
 
 		if (gcwMan->isTerminalDamaged(cast<TangibleObject*>(sceneObject)))
 			menuResponse->addRadialMenuItem(229, 3, "@ui:repair");

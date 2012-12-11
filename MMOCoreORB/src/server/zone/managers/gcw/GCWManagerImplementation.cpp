@@ -201,7 +201,6 @@ void GCWManagerImplementation::initializeNewVulnerability(DestructibleBuildingDa
 	baseData->setSliceRepairTime(Time(0));
 	baseData->setTerminalDamaged(false);
 	baseData->setSampleMatches(0);
-	baseData->setTerminalDamaged(false);
 	baseData->setState(DestructibleBuildingDataComponent::VULNERABLE);
 	baseData->setSystemDNAString("");
 	baseData->turnAllSwitchesOn();
@@ -927,7 +926,7 @@ void GCWManagerImplementation::sendBaseDefenseStatus(CreatureObject* creature, B
 	//status->addMenuItem("X troops in reserve.");
 	//status->addMenuItem("X resources in reserve");
 	//status->addMenuItem("X turrets in reserve");
-	//status->addMenuItem("Child Objects: " + String::valueOf(building->getChildObjects()->size()));
+	status->addMenuItem("Child Objects: " + String::valueOf(building->getChildObjects()->size()));
 	ghost->addSuiBox(status);
 	creature->sendMessage(status->generateMessage());
 }
@@ -1123,6 +1122,14 @@ bool GCWManagerImplementation::canStartSlice(CreatureObject* creature, TangibleO
 
 		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(tano->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 
+		if(!isBaseVulnerable(building))
+			return false;
+
+		if(isTerminalDamaged(tano)){
+			creature->sendSystemMessage("@hq:terminal_disabled");
+			return false;
+		}
+
 		if(isUplinkJammed(building) && !isSecurityTermSliced(building) && creature->getFaction() != building->getFaction())
 			return true;
 
@@ -1160,7 +1167,7 @@ bool GCWManagerImplementation::isTerminalDamaged(TangibleObject* securityTermina
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
 
 	if(baseData == NULL){
-		error("ERROR:  could not get base data for base");
+		info("ERROR:  could not get base data for base",true);
 		return true;
 	}
 
@@ -1206,7 +1213,6 @@ void GCWManagerImplementation::repairTerminal(CreatureObject* creature, Tangible
 	Time repairFinishTime = baseData->getSliceRepairTime();
 	repairFinishTime.addMiliTime(this->SLICECOOLDOWN*1000);
 
-	//info("Repair finish time is " + repairFinishTime.getFormattedTime());
 
 	if(baseData->isTerminalDamanged()) {
 
@@ -1224,7 +1230,6 @@ void GCWManagerImplementation::repairTerminal(CreatureObject* creature, Tangible
 	}
 }
 void GCWManagerImplementation::failSecuritySlice(TangibleObject* securityTerminal){
-
 	if(securityTerminal == NULL)
 		return;
 
@@ -1242,7 +1247,7 @@ void GCWManagerImplementation::failSecuritySlice(TangibleObject* securityTermina
 
 	Locker block(building);
 
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
 	if(baseData == NULL){
 		error("ERROR:  could not get base data for base");
@@ -1593,6 +1598,8 @@ void GCWManagerImplementation::notifyTurretDestruction(BuildingObject* building,
 
 	} else {
 		info("base no contain turret",true);
+		// destroy the turret from the world anyway
+
 	}
 
 	verifyTurrets(building);
@@ -1897,6 +1904,7 @@ void GCWManagerImplementation::performDefenseDontation(BuildingObject* building,
 	if(tano != NULL)
 		tano->setFaction(building->getFaction());
 
+	tano->setDetailedDescription("Donated Turret");
 	zone->transferObject(obj, -1, false);
 
 	building->getChildObjects()->put(obj);
