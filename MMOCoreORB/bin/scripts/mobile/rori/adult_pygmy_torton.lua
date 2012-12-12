@@ -27,6 +27,7 @@ adult_pygmy_torton = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/torton_hue.iff"},
+	scale = .55,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

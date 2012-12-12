@@ -27,6 +27,7 @@ pygmy_torton_protector = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/torton_hue.iff"},
+	scale = .55,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
