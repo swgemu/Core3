@@ -51,6 +51,7 @@ which carries forward this exception.
 
 #include "../../objects/creature/CreatureObject.h"
 #include "../../objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 #include "../../objects/group/GroupObject.h"
 #include "server/chat/StringIdChatParameter.h"
@@ -76,6 +77,12 @@ void GroupManager::inviteToGroup(CreatureObject* leader, CreatureObject* player)
 
 		if (group->getLeader() != leader) {
 			leader->sendSystemMessage("@group:must_be_leader");
+			return;
+		}
+
+		// can't invite if the group is full
+		if (group->getGroupSize() >= 20) {
+			leader->sendSystemMessage("@group:full");
 			return;
 		}
 	}
@@ -150,12 +157,12 @@ void GroupManager::joinGroup(CreatureObject* player) {
 
 	Locker clocker2(group, player);
 
-	if (group->getGroupSize() == 20) {
+	if (group->getGroupSize() >= 20) {
 		clocker.release();
 
 		player->updateGroupInviterID(0);
 
-		player->sendSystemMessage("@group:full");
+		player->sendSystemMessage("The group is full.");
 		return;
 	}
 
@@ -175,6 +182,11 @@ void GroupManager::joinGroup(CreatureObject* player) {
 	group->addMember(player);
 	player->updateGroup(group);
 	player->sendSystemMessage("@group:joined_self");
+
+	// clear invitee's LFG setting once a group is joined
+	PlayerObject* ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
+	if (ghost != NULL)
+		ghost->clearCharacterBit(PlayerObject::LFG, true);
 
 	ManagedReference<ChatRoom*> groupChannel = group->getGroupChannel();
 
@@ -205,6 +217,11 @@ GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 
 	leader->updateGroup(group);
 	leader->sendSystemMessage("@group:formed_self");
+
+	// clear inviter's LFG setting once a group is created
+	PlayerObject* ghost = cast<PlayerObject*>(leader->getSlottedObject("ghost"));
+	if (ghost != NULL)
+		ghost->clearCharacterBit(PlayerObject::LFG, true);
 
 	if (leader->getGroupInviterID() != 0)
 		leader->updateGroupInviterID(0);
