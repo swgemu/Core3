@@ -113,6 +113,42 @@ naboo_world_creatures = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
+		},
+		{
+			lairTemplateName = "naboo_gualama_small_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 11,
+			maxDifficulty = 15,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "tusk_cat",
+			spawnLimit = -1,
+			minDifficulty = 14,
+			maxDifficulty = 18,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "naboo_nightspider_lair_neutral_small",
+			spawnLimit = -1,
+			minDifficulty = 6,
+			maxDifficulty = 8,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "naboo_mountain_ikopi_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 15,
+			maxDifficulty = 19,
+			numberToSpawn = 0,
+			weighting = 0,
+			size = 0
 		}
 	}
 }
