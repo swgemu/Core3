@@ -54,7 +54,7 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 			return;
 		}
 
-		if(tano->getFaction() != player->getFaction() && playerObject->getFactionStatus() == FactionStatus::OVERT ){
+		if(tano->getFaction() != player->getFaction() && playerObject->getFactionStatus() == FactionStatus::OVERT && tano->getFaction() != 0){
 			// TODO: call combat manager here to fire actual attack
 			CombatAction* combatAction = NULL;
 			uint32 animationCRC = String("fire_turret_medium").hashCode();

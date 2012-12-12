@@ -43,6 +43,8 @@
 #include "server/zone/objects/building/BuildingObject.h"
 
 #include "components/TurretDataComponent.h"
+#include "server/zone/objects/player/FactionStatus.h"
+
 
 void InstallationObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	StructureObjectImplementation::loadTemplateData(templateData);
@@ -703,8 +705,15 @@ void InstallationObjectImplementation::updateStructureStatus() {
 }
 
 bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object){
-	if(object->getFaction() == getFaction())
+
+	if(object->getFaction() == getFaction() || object->getFaction() == 0 )
 		return false;
+
+	if(object->isPlayerCreature()){
+		ManagedReference<PlayerObject*> ghost = object->getPlayerObject();
+		if(ghost != NULL && ghost->getFactionStatus() != FactionStatus::OVERT)
+			return false;
+	}
 
 	return true;
 }

@@ -142,7 +142,7 @@ public:
 
 	static const int DESTRUCTIONTIMER = 300;
 
-	static const int MAXBASES = 5;
+	static const int MAXBASES = 15;
 
 	static const int OVERTCOOLDOWN = 60;
 
@@ -288,7 +288,7 @@ public:
 
 	static const int DESTRUCTIONTIMER = 300;
 
-	static const int MAXBASES = 5;
+	static const int MAXBASES = 15;
 
 	static const int OVERTCOOLDOWN = 60;
 
