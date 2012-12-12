@@ -118,17 +118,14 @@ function ris_armor_quest_handler:runScreenHandlers(conversationTemplate, convers
 	
 	local playerCreo = LuaCreatureObject(conversingPlayer)
 		
-	if (screenID == "quest_1_start_yes") then
-		local credits = playerCreo:getCashCredits()
-		
-		if (credits >= 50000) then
-			self:payNPC(playerCreo)
-		else
-			playerCreo:sendSystemMessage("You have insufficient funds")
-		end
+	if (screenID == "quest_1_start") then
+		conversationScreen = screen:cloneScreen()
+		screen = LuaConversationScreen(conversationScreen)
+		screen:setDialogTextDI("50000")
 	
 	elseif (screenID == "quest_1_description") then
 		self:startQuest1(playerCreo)
+		self:payNPC(playerCreo)
 	
 	elseif (screenID == "quest_2_query") then
 		conversationScreen = screen:cloneScreen()
@@ -298,8 +295,20 @@ function ris_armor_quest_handler:getNextConversationScreen(pConversationTemplate
 		if (optionLink == "quest_2_complete") then
 			
 			local playerSceo = LuaSceneObject(pPlayer)
-			inventory = playerSceo:getSlottedObject("inventory")
-			armorSegmentPointer = getContainerObjectByTemplate(inventory, "object/tangible/component/armor/armor_segment_ris.iff", true)
+			local pInventory = playerSceo:getSlottedObject("inventory")
+			local armorSegmentPointer = getContainerObjectByTemplate(pInventory, "object/tangible/component/armor/armor_segment_ris.iff", true)
+			
+			if (armorSegmentPointer == nil) then
+				return conversationTemplate:getScreen("illegal_response")	
+			end
+			
+		end	
+		
+		if (optionLink == "quest_3_start") then
+			
+			local playerSceo = LuaSceneObject(pPlayer)
+			local pInventory = playerSceo:getSlottedObject("inventory")
+			local armorSegmentPointer = getContainerObjectByTemplate(pInventory, "object/tangible/component/armor/armor_segment_ris.iff", true)
 			
 			if (armorSegmentPointer == nil) then
 				return conversationTemplate:getScreen("illegal_response")	
@@ -309,14 +318,26 @@ function ris_armor_quest_handler:getNextConversationScreen(pConversationTemplate
 				armorSegmentObject:destroyObjectFromDatabase()
 				ris_armor_quest_screenplay:setState(player, ris_armor_quest_screenplay.states.quest2.complete)
 			end
-			
+	
 		end
 		
 		if (optionLink == "quest_4_complete") then
 			
 			local playerSceo = LuaSceneObject(pPlayer)
-			inventory = playerSceo:getSlottedObject("inventory")
-			armorLayerPointer = getContainerObjectByTemplate(inventory, "object/tangible/component/armor/armor_layer_ris.iff", true)
+			local pInventory = playerSceo:getSlottedObject("inventory")
+			local armorLayerPointer = getContainerObjectByTemplate(pInventory, "object/tangible/component/armor/armor_layer_ris.iff", true)
+			
+			if (armorLayerPointer == nil) then
+				return conversationTemplate:getScreen("illegal_response")	
+			end
+			
+		end
+		
+		if (optionLink == "quest_5_start") then
+			
+			local playerSceo = LuaSceneObject(pPlayer)
+			local pInventory = playerSceo:getSlottedObject("inventory")
+			local armorLayerPointer = getContainerObjectByTemplate(pInventory, "object/tangible/component/armor/armor_layer_ris.iff", true)
 			
 			if (armorLayerPointer == nil) then
 				return conversationTemplate:getScreen("illegal_response")	
@@ -327,13 +348,13 @@ function ris_armor_quest_handler:getNextConversationScreen(pConversationTemplate
 				ris_armor_quest_screenplay:setState(player, ris_armor_quest_screenplay.states.quest4.complete)
 			end
 			
-		end
+		end		
 		
 		if (optionLink == "quest_6_complete") then
 			
 			local playerSceo = LuaSceneObject(pPlayer)
-			inventory = playerSceo:getSlottedObject("inventory")
-			armorBootsPointer = getContainerObjectByTemplate(inventory, "object/tangible/wearables/armor/ris/armor_ris_boots.iff", true)
+			local pInventory = playerSceo:getSlottedObject("inventory")
+			local armorBootsPointer = getContainerObjectByTemplate(pInventory, "object/tangible/wearables/armor/ris/armor_ris_boots.iff", true)
 			
 			if (armorBootsPointer == nil) then
 				return conversationTemplate:getScreen("illegal_response")	
