@@ -27,9 +27,13 @@ void UplinkTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 	ManagedReference<PlayerObject*> thisPlayer = player->getPlayerObject();
 
-	if ( thisPlayer == NULL || building == NULL)
+
+	if ( thisPlayer == NULL || building == NULL || player->isDead() || player->isIncapacitated())
 		return;
 
+
+	if(player->getFaction() == 0)
+		player->sendSystemMessage("@faction_recruiter:must_be_declared_use"); // Your faction affiliation must be delcared in order to use that item.
 
 	Zone* zone = building->getZone();
 
