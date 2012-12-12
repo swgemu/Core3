@@ -44,6 +44,7 @@
 object_building_faction_perk_hq_hq_s04_imp_pvp = object_building_faction_perk_hq_shared_hq_s04_imp_pvp:new {
 		lotSize = 0,
 		containerComponent = "GCWBaseContainerComponent",
+		zoneComponent = "StructureZoneComponent",
 		maintenanceCost = 0,
 		baseMaintenanceRate = 0,
 		faction = "imperial",
@@ -53,7 +54,8 @@ object_building_faction_perk_hq_hq_s04_imp_pvp = object_building_faction_perk_hq
 		constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
 		length = 7,
 		width = 6,
-			childObjects = {
+		planetMapCategory = "imperial_hq",
+		childObjects = {
 			
 			
 			{templateFile = "object/static/structure/military/military_wall_med_imperial_style_01.iff", x=7, z=0, y=27.5, ox=0, oy=.4, oz=0, ow=.9, cellid=-1, containmentType=-1}, -- Front right
@@ -104,9 +106,9 @@ object_building_faction_perk_hq_hq_s04_imp_pvp = object_building_faction_perk_hq
 			 {templateFile = "object/tangible/hq_destructible/security_terminal.iff", x = -5.5, z = -13.75, y = 7.5, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 7, containmentType = -1 },
 			 {templateFile = "object/tangible/hq_destructible/uplink_terminal.iff", x = 1, z = -6.75, y = -5.75, ow = .7, ox =0, oz = 0, oy = .7, cellid = 5, containmentType = -1},
 			 
-			 -- NPCs
-			  {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=0, z=0, y= 25, ow = .7, ox =0, oz = 0, oy = .7, cellid = -1, containmentType = -1},
-			  
+			 -- Recruiter
+			  {templateFile = "bin/scripts/mobile/faction/imperial/imperial_recruiter.iff", mobile="imperial_recruiter", x=0, z=0, y= 25, ow = .7, ox =0, oz = 0, oy = .7, cellid = -1, containmentType = -1},
+			  --[[
 			  -- left outside
 			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=-18, z=0, y=22, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, 
 			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=-5, z=0, y=28, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- stormtroopertest
@@ -119,6 +121,8 @@ object_building_faction_perk_hq_hq_s04_imp_pvp = object_building_faction_perk_hq
 			
 			-- test alarm
 			--{templateFile = "object/tanbible/faction_perk/faction_base_item/alarm_hack.iff", x = .38, z = .25, y = 4.75, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
+		
+			]]--
 		},
 		
 		turretCount = 2,

@@ -424,7 +424,7 @@ void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building,
 		}
 
 		if(!baseData->getRebootFinishTime().isPast()){
-			creature->sendSystemMessage("You must wait for the facility to finish rebootin before activating the overload again");
+			creature->sendSystemMessage("You must wait for the facility to finish rebooting before activating the overload again");
 			return;
 		}
 
@@ -436,7 +436,7 @@ void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building,
 		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 		Zone* zone = creature->getZone();
 
-		if (creature->getCloseObjects() == NULL) {
+		if (building->getCloseObjects() == NULL) {
 			zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
 		} else {
 			CloseObjectsVector* closeVector = (CloseObjectsVector*) creature->getCloseObjects();
@@ -502,12 +502,37 @@ void GCWManagerImplementation::abortShutdownSequence(CreatureObject* creature, B
 			return;
 		}
 
-		creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:terminal_response07"); // COUNTDOWN ABORTED: FACILITY SHUTTIGN DOWN
-		Locker block(building);
+		Locker block(building, creature);
+
 		baseData->setState(DestructibleBuildingDataComponent::OVERLOADED);
 		Time finishTime = Time();
 		finishTime.addMiliTime(OVERTCOOLDOWN * 1000);
 		baseData->setRebootFinishTime(finishTime);
+
+		//Default range of broadcast
+		float range = 64;
+
+		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+		Zone* zone = creature->getZone();
+
+		if (building->getCloseObjects() == NULL) {
+			zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
+		} else {
+			CloseObjectsVector* closeVector = (CloseObjectsVector*) creature->getCloseObjects();
+			closeVector->safeCopyTo(closeObjects);
+
+		}
+		// send message to all the players in range
+		for (int i = 0; i < closeObjects.size(); i++) {
+			SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
+
+			if (targetObject->isPlayerCreature() && creature->isInRange(targetObject, range)) {
+				CreatureObject* targetPlayer = cast<CreatureObject*>(targetObject);
+
+				if (targetPlayer != NULL)
+					targetPlayer->sendSystemMessage("@faction/faction_hq/faction_hq_response:terminal_response07"); // COUNTDOWN ABORTED: FACILITY SHUTTIGN DOWN
+			}
+		}
 	}
 }
 

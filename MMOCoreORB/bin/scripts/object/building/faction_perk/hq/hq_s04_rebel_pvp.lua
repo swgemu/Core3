@@ -48,12 +48,13 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 		maintenanceCost = 0,
 		baseMaintenanceRate = 0,
 		dataObjectComponent = "DestructibleBuildingDataComponent",
+		zoneComponent = "StructureZoneComponent",
 		allowedZones = {"dantooine", "naboo", "rori","tatooine", "corellia", "lok", "talus"},
 		constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
 		length = 7,
 		width = 6,
 		containerComponent = {"cpp", "GCWBaseContainerComponent"},
-		
+		planetMapCategory = "rebel_hq",
 		childObjects = {
 
 			{templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = 0, z = 0, y = -6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 3, containmentType = -1 },
