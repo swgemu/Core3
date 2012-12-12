@@ -326,6 +326,10 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 	structureObject->grantPermission("ADMIN", creature->getFirstName());
 	structureObject->setOwnerName(creature->getFirstName());
 
+	if(structureObject->isTurret()){
+		structureObject->setFaction(creature->getFaction());
+	}
+
 	BuildingObject* buildingObject = NULL;
 	if (structureObject->isBuildingObject()) {
 		buildingObject = cast<BuildingObject*>(structureObject);
