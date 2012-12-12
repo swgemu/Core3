@@ -109,6 +109,14 @@ int DestructibleBuildingDataComponent::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "rebootFinishTime";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Time >::toBinaryStream(&rebootFinishTime, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "intCurrentState";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -181,7 +189,7 @@ int DestructibleBuildingDataComponent::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	return 15;
+	return 16;
 
 
 }
@@ -214,6 +222,11 @@ bool DestructibleBuildingDataComponent::readObjectMember(ObjectInputStream* stre
 
 	if(name == "repairTime") {
 		TypeInfo<Time >::parseFromBinaryStream(&repairTime, stream);
+		return true;
+	}
+
+	if(name == "rebootFinishTime") {
+		TypeInfo<Time >::parseFromBinaryStream(&rebootFinishTime, stream);
 		return true;
 	}
 

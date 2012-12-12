@@ -23,13 +23,16 @@ class GCWManager extends ManagedService implements Logger {
 
 	public final static int GCWCHECKTIMER = 7200; // 2 hours
 	public final static int VULNERABILITYDURATION = 1800; //  30 minute test
-	public final static int VULNERABILITYFREQUENCY = 3600; // 1 hour for testing
+	public final static int VULNERABILITYFREQUENCY = 3600; // 2 hour for testing
 	public final static int RESETTIMER = 120; // amount of time before waiting to reset vulnerability	
 	public final static int SLICECOOLDOWN = 30; // test for 30 seconds after a failed slice
 	public final static int TOTALDNASAMPLES = 10;
 	public final static int DNAMATCHESREQUIRED = 10;
-	public final static int DESTRUCTIONTIMER = 120; // 3 minute 
+	public final static int DESTRUCTIONTIMER = 300; // 3 minute 
 	public final static int MAXBASES = 5;  // MAX BASES PER PLANET
+	public final static int OVERTCOOLDOWN = 60;  // time in seconds that a player must be overt before aborting a facility shutdown
+	public final static int REACTIVATIONTIMER = 60; // time in seconds to wait before reactivating the overload after the other 
+							//  faction stopped the destruction
 
 	public final static int IMPERIALHASH = 3679112276;
 	public final static int REBELHASH = 370444368;

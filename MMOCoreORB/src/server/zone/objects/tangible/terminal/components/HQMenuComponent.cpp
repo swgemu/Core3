@@ -31,8 +31,7 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 
 	if (building == NULL)
-			return;
-
+		return;
 
 	Zone* zone = building->getZone();
 
@@ -41,11 +40,10 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
-
-
 	ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
 	if(playerObject == NULL)
 		return;
+
 
 	if(building->getFaction() == player->getFaction()) {
 
@@ -59,19 +57,15 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 		menuResponse->addRadialMenuItem(37, 3, "@hq:mnu_donate"); // Donate
 		//menuResponse->addRadialMenuItemToRadialID(37, 225, 3,  "@hq:mnu_donate_money"); // Donate MOney
 		menuResponse->addRadialMenuItemToRadialID(37, 226, 3, "@hq:mnu_donate_deed"); // donate defense
-		//menuResponse->addRadialMenuItemToRadialID(37, 227, 3, "@hq:mnu_donate_resource"); // donate resource
 
 		if(building->getOwnerCreatureObject() == player){
 			menuResponse->addRadialMenuItem(38, 3, "@hq:mnu_reset_vulnerability"); // Reset Vulnerability
 		}
 
-
 	} else {
 
-		if(playerObject->getFactionStatus() == FactionStatus::OVERT) {
-			if(gcwMan->isPowerOverloaded(building) && !gcwMan->isShutdownSequenceStarted(building)){
-				menuResponse->addRadialMenuItem(230, 3, "@hq:mnu_overload");  // activate overload
-			}
+		if(gcwMan->isPowerOverloaded(building) && !gcwMan->isShutdownSequenceStarted(building)){
+			menuResponse->addRadialMenuItem(230, 3, "@hq:mnu_overload");  // activate overload
 		}
 	}
 
@@ -93,11 +87,14 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 
 int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) {
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
 	if (ghost == NULL)
 		return 1;
 
-
-
+	if(ghost->getFactionStatus() != FactionStatus::OVERT ){
+		creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:declared_personnel_only"); // Only Special Forces personnel may access this terminal
+		return 1;
+	}
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 	if(building == NULL)
@@ -123,12 +120,6 @@ int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureOb
 			gcwMan->sendStatus(building,creature);
 	}
 	else if( selectedID == 228 || selectedID == 20){
-
-		if(ghost->getFactionStatus() != FactionStatus::OVERT && creature->getFaction() != building->getFaction()){
-				creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:declared_personnel_only"); // Only Special Forces personnel may access this terminal
-				return 1;
-		}
-
 		gcwMan->sendBaseDefenseStatus(creature, building);
 	} else if ( selectedID == 38) {
 		gcwMan->sendResetVerification(creature, building);

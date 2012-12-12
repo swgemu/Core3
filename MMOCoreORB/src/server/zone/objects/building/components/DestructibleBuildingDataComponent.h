@@ -36,9 +36,11 @@ private:
 	Time placementTime; // serialized
 	Time lastResetTime; // serialized
 	Time repairTime; // serialized
+	Time rebootFinishTime; // serialized
 	int uplinkBand; // secret code used to jam the uplink
 	bool activeDefenses;
 	bool exposed;
+
 public:
 	const static int INVULNERABLE = 0;
 	const static int VULNERABLE = 1;
@@ -74,7 +76,7 @@ public:
 		activeDefenses = true;
 		exposed = false;
 		terminalDamaged = false;
-
+		rebootFinishTime = Time(0);
 	}
 
 	virtual ~DestructibleBuildingDataComponent(){
@@ -307,6 +309,13 @@ public:
 		activeDefenses = value;
 	}
 
+	void setRebootFinishTime(Time val){
+		rebootFinishTime = val;
+	}
+
+	Time getRebootFinishTime(){
+		return rebootFinishTime;
+	}
 
 private:
 

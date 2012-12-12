@@ -203,6 +203,7 @@ void GCWManagerImplementation::initializeNewVulnerability(DestructibleBuildingDa
 	baseData->setState(DestructibleBuildingDataComponent::VULNERABLE);
 	baseData->setSystemDNAString("");
 	baseData->turnAllSwitchesOn();
+	baseData->setRebootFinishTime(Time(0));
 }
 
 // PRE: nothing needs to be locked!
@@ -414,13 +415,18 @@ void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building,
 
 	if(this->isBaseVulnerable(building) && !this->hasDestroyTask(building->getObjectID()) ){
 
+
 		DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
 
 		if(baseData == NULL){
 			error("ERROR:  could not get base data for base");
 			return;
 		}
-		//info("setting state of the building to SHUTDOWN",true);
+
+		if(!baseData->getRebootFinishTime().isPast()){
+			creature->sendSystemMessage("You must wait for the facility to finish rebootin before activating the overload again");
+			return;
+		}
 
 		Locker block(building,creature);
 
@@ -441,6 +447,7 @@ void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building,
 		int minutesRemaining = ceil(this->DESTRUCTIONTIMER/60);
 		destroyMessage.setDI(minutesRemaining);
 
+		// send message to all the players in range
 		for (int i = 0; i < closeObjects.size(); i++) {
 			SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
 
@@ -465,15 +472,19 @@ void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building,
 
 		this->addDestroyTask(building->getObjectID(),newTask);
 
-
-
-
-
-		//creature->sendSystemMessage(destroyMessage);
 	}
 }
 
 void GCWManagerImplementation::abortShutdownSequence(CreatureObject* creature, BuildingObject* building){
+
+
+	if(!creature->checkCooldownRecovery("declare_overt_cooldown")){
+		StringIdChatParameter params("@faction/faction_hq/faction_hq_response:terminal_response42"); // Before issuing the shutdown, you must have been in special forces for at least %TO
+		int timer = OVERTCOOLDOWN / 60;
+		params.setTO(String::valueOf(timer) + " minutes");
+		creature->sendSystemMessage(params); // Before issuing the shutdown, you must hve beenin Special forces for at least %TO
+		return;
+	}
 
 	if(this->isBaseVulnerable(building) && this->hasDestroyTask(building->getObjectID())){
 		//Reference<Task*> oldDestroyTask = gcwDestroyTasks.get(building->getObjectID());
@@ -494,6 +505,9 @@ void GCWManagerImplementation::abortShutdownSequence(CreatureObject* creature, B
 		creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:terminal_response07"); // COUNTDOWN ABORTED: FACILITY SHUTTIGN DOWN
 		Locker block(building);
 		baseData->setState(DestructibleBuildingDataComponent::OVERLOADED);
+		Time finishTime = Time();
+		finishTime.addMiliTime(OVERTCOOLDOWN * 1000);
+		baseData->setRebootFinishTime(finishTime);
 	}
 }
 

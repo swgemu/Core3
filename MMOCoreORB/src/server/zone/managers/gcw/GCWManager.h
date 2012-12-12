@@ -140,9 +140,13 @@ public:
 
 	static const int DNAMATCHESREQUIRED = 10;
 
-	static const int DESTRUCTIONTIMER = 120;
+	static const int DESTRUCTIONTIMER = 300;
 
 	static const int MAXBASES = 5;
+
+	static const int OVERTCOOLDOWN = 60;
+
+	static const int REACTIVATIONTIMER = 60;
 
 	static const int IMPERIALHASH = 3679112276;
 
@@ -282,9 +286,13 @@ public:
 
 	static const int DNAMATCHESREQUIRED = 10;
 
-	static const int DESTRUCTIONTIMER = 120;
+	static const int DESTRUCTIONTIMER = 300;
 
 	static const int MAXBASES = 5;
+
+	static const int OVERTCOOLDOWN = 60;
+
+	static const int REACTIVATIONTIMER = 60;
 
 	static const int IMPERIALHASH = 3679112276;
 

@@ -112,7 +112,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/sessions/TradeSession.h"
 #include "server/zone/objects/player/events/BountyHunterTefRemovalTask.h"
 #include "server/zone/managers/visibility/VisibilityManager.h"
-
+#include "server/zone/managers/gcw/GCWManager.h"
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
 
@@ -437,6 +437,10 @@ void PlayerObjectImplementation::setFactionStatus(int status) {
 	} else if (factionStatus == FactionStatus::CHANGINGSTATUS) {
 		creature->setPvpStatusBitmask(pvpStatusBitmask | CreatureFlag::CHANGEFACTIONSTATUS);
 	} else if (factionStatus == FactionStatus::OVERT) {
+
+		if(!(pvpStatusBitmask & CreatureFlag::OVERT))
+			creature->addCooldown("declare_overt_cooldown",GCWManager::OVERTCOOLDOWN*1000);
+
 		if (!(pvpStatusBitmask & CreatureFlag::OVERT))
 			pvpStatusBitmask |= CreatureFlag::OVERT;
 
