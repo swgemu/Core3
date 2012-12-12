@@ -122,6 +122,7 @@ includeFile("caves/dantooine_force_crystal_hunter_cave.lua")
 includeFile("caves/lok_droid_engineer_cave.lua")
 includeFile("caves/dathomir_rancor_cave.lua")
 includeFile("caves/dathomir_spider_clan_cave.lua")
+includeFile("caves/rori_giant_bark_mite_cave.lua")
 
 --POIs
 includeFile("poi/tatooine_fort_tusken.lua")

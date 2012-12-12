@@ -14,7 +14,7 @@ mutant_bark_mite_soldier = Creature:new {
 	resists = {30,30,-1,20,20,-1,-1,-1,-1},
 	meatType = "meat_insect",
 	meatAmount = 25,
-	hideType = "hide_bristley",
+	hideType = "hide_scaley",
 	hideAmount = 20,
 	boneType = "",
 	boneAmount = 0,
@@ -27,6 +27,7 @@ mutant_bark_mite_soldier = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bark_mite.iff"},
+	scale = 2.5,
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
