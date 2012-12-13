@@ -363,6 +363,9 @@ void CityRegionImplementation::cleanupCitizens() {
 	for (int i = 0; i < removeIds.size(); ++i) {
 		removeCitizen(removeIds.get(i));
 	}
+
+	if(!isCitizen(getMayorID()))
+		citizenList.put(getMayorID());
 }
 
 void CityRegionImplementation::setRegionName(const StringId& name) {
