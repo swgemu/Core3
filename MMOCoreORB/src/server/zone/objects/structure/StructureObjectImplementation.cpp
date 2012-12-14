@@ -126,24 +126,35 @@ void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 		return;
 	}
 
-	updateStructureStatus();
+	int timeRemaining;
 
-	int timeRemaining = (int) (surplusMaintenance * 3600.f / getMaintenanceRate());
+	if (structureMaintenanceTask != NULL) {
+		updateStructureStatus();
 
-	if (timeRemaining <= 0) {
-		//Decaying structures should be scheduled as soon as possible. Maintenance task will handle
-		//any further rescheduling.
-		timeRemaining = 1;
+		int timeRemaining = (int) (surplusMaintenance * 3600.f / getMaintenanceRate());
+
+		if (timeRemaining <= 0) {
+			//Decaying structures should be scheduled as soon as possible. Maintenance task will handle
+			//any further rescheduling.
+			timeRemaining = 1;
+		} else if (timeRemaining > 24 * 60 * 60 * 1000) {
+			//Run maintenance task at least one time every day but randomized to spread it out.
+			timeRemaining = 12 * 60 * 60 * 1000 + System::random(12 * 60 * 60 * 1000);
+		}
+
+		maintenanceExpires.updateToCurrentTime();
+		maintenanceExpires.addMiliTime(timeRemaining * 1000);
 	}
-
-	maintenanceExpires.updateToCurrentTime();
-	maintenanceExpires.addMiliTime(timeRemaining * 1000);
+	else
+	{
+		//Randomize maintenance tasks over the first hour after server restart.
+		timeRemaining = System::random(60 * 60 * 1000);
+	}
 
 	scheduleMaintenanceTask(timeRemaining);
 }
 
 void StructureObjectImplementation::scheduleMaintenanceTask(int timeFromNow) {
-
 	if(getBaseMaintenanceRate() == 0) {
 		return;
 	}
