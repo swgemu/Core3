@@ -69,6 +69,8 @@ void CityManagementMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	menuResponse->addRadialMenuItemToRadialID(216, 221, 3, "@city/city:treasury_withdraw"); //Treasury Withdraw
 
 	menuResponse->addRadialMenuItemToRadialID(216, 225, 3, "@city/city:city_specializations"); //City Specialization
+
+	menuResponse->addRadialMenuItemToRadialID(216, 232, 3, "@city/city:fix_mayor"); // Restore Mayor Citizenship
 }
 
 int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectID) {
@@ -124,6 +126,9 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		break;
 	case 226: //Toggle Zoning Enabled
 		cityManager->toggleZoningEnabled(city, player);
+		break;
+	case 232: // Restore Mayor Citizenship
+		cityManager->fixMayor(city, player);
 		break;
 
 #ifdef CITY_DEBUG

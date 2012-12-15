@@ -236,6 +236,8 @@ public:
 
 	void sendStructureReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
+	void fixMayor(CityRegion* city, CreatureObject* mayor);
+
 	CitySpecialization* getCitySpecialization(const String& cityspec);
 
 	CityTax* getCityTax(int idx);
@@ -404,6 +406,8 @@ public:
 
 	void sendStructureReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
+	void fixMayor(CityRegion* city, CreatureObject* mayor);
+
 	CitySpecialization* getCitySpecialization(const String& cityspec);
 
 	CityTax* getCityTax(int idx);
@@ -542,6 +546,8 @@ public:
 	void castMayoralVote(CityRegion* city, CreatureObject* creature, unsigned long long oid);
 
 	void sendStructureReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
+
+	void fixMayor(CityRegion* city, CreatureObject* mayor);
 
 };
 

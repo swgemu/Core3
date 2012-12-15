@@ -1607,3 +1607,22 @@ void CityManagerImplementation::sendMail(CityRegion* city, const String& sender,
 		chat->sendMail(sender, subject, params, creo->getFirstName(), waypoint);
 	}
 }
+
+void CityManagerImplementation::fixMayor(CityRegion* city, CreatureObject* mayor){
+
+	if(mayor == NULL && !mayor->isPlayerCreature())
+		return;
+
+	ManagedReference<PlayerObject*> ghost = mayor->getPlayerObject();
+
+	if(ghost == NULL)
+		return;
+	uint64 mayorid = mayor->getObjectID();
+
+	if(city->isMayor(mayorid) && !city->isCitizen(mayorid)){
+		registerCitizen(city, mayor);
+	} else {
+		mayor->sendSystemMessage("Mayor is already a citizen.");
+	}
+
+}
