@@ -666,14 +666,62 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city) {
 		}
 	}
 
+	ManagedReference<SceneObject*> obj = zoneServer->getObject(topCandidate);
+	CreatureObject* mayor = NULL;
+	if (obj != NULL && obj->isCreatureObject()) {
+		mayor = cast<CreatureObject*>(obj.get());
+
+	}
+
+	String winnerName;
+	if(mayor != NULL)
+		winnerName = mayor->getFirstName();
+
+	StringIdChatParameter emailbody;
+	String subject;
+
+	// send email to the incumbent
+	if(topCandidate == city->getMayorID()) {
+		emailbody.setStringId("@city/city:election_incumbent_win_body"); //"Congratulations, Mayor %TT!The populace of %TO has elected to retain you for another term.
+		emailbody.setTO(city->getRegionName());
+		emailbody.setTT(winnerName);
+		subject = "@city/city:election_incumbent_win_subject"; // "Election Won"
+	}
+	else{
+		// send a mail to the new mayor
+		emailbody.setStringId("@city/city:election_new_mayor_body"); // Congratulations, Mayor %TT! You have been elected the new mayor of %TO
+		subject = "@city/city:election_new_mayor_subject"; // Congratulations Mayor!
+		sendMail(city,"@city/city:new_city_from", subject, emailbody, NULL );
+
+		emailbody.setStringId("@city/city:election_incumbent_lost_body"); // Citizen,It is with regret that we inform you that you have lost the position of Mayor of %TO to %TT.
+		emailbody.setTO(city->getRegionName());
+		emailbody.setTT(winnerName);
+		subject = "@city/city:election_incumbent_lost_subject"; // election lost
+
+	}
+
+	sendMail(city, "@city/city:new_city_from", subject, emailbody, NULL);
+
+
+	// send mailto all citizens
+	if(topCandidate == city->getMayorID())
+		emailbody.setStringId("@city/city:public_election_inc_body"); //The city elections for %TT have been held.  The incumbent Mayor is victorious!
+	else
+		emailbody.setStringId("@city/city:public_election_body"); //"The city elections for %TT have been held.  The incumbent Mayor has lost the election!  The new Mayor is citizen %TO
+
+	emailbody.setTT(city->getRegionName());
+	emailbody.setTO(winnerName);
+
+	sendMail(city, "@city/city:new_city_from", "@city/city:public_election_subject", emailbody, NULL);
+
+
 	//Make them the new mayor.
 	city->setMayorID(topCandidate);
-
-	//Send out any emails that are required.
 
 	city->resetMayoralVotes();
 	city->resetCandidates();
 	city->resetVotingPeriod();
+
 
 }
 
