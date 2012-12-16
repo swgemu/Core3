@@ -92,8 +92,12 @@ void ForageManagerImplementation::startForaging(CreatureObject* player, int fora
 	Reference<Task*> foragingEvent = new ForagingEvent(player, forageType, playerX, playerY, zone->getZoneName());
 	player->addPendingTask("foraging", foragingEvent, 8500);
 
-	player->sendSystemMessage("@skl_use:sys_forage_start"); //"You begin to search the area for goods."
-
+	if(forageType == ForageManager::LAIR){
+		player->sendSystemMessage("You begin to search the lair for creatures"); //"You begin to search the lair for creatures."
+	}
+	else{
+		player->sendSystemMessage("@skl_use:sys_forage_start"); //"You begin to search the area for goods."
+	}
 	player->doAnimation("forage");
 
 }
@@ -294,13 +298,12 @@ bool ForageManagerImplementation::forageGiveItems(CreatureObject* player, int fo
 		lootManager->createLoot(inventory, lootGroup, level);
 
 	} else if (forageType == ForageManager::LAIR) { //Lair Search
-		dice = System::random(200);
+		dice = System::random(109);
 		level = 1;
 
 		if (dice >= 0 && dice < 40) { // Live Creatures
 			lootGroup = "forage_live_creatures";
 		}
-
 		else if (dice > 39 && dice < 110) { // Eggs
 			resName = "meat_egg";
 			if(forageGiveResource(player, forageX, forageY, planet, resName)) {
@@ -308,17 +311,6 @@ bool ForageManagerImplementation::forageGiveItems(CreatureObject* player, int fo
 				return true;
 			} else {
 				player->sendSystemMessage("@lair_n:found_nothing");
-				return false;
-			}
-		}
-
-		else  {//if (dice > 109 && dice < 200) // Horn
-			resName = "bone_horn";
-			if(forageGiveResource(player, forageX, forageY, planet, resName)) {
-				player->sendSystemMessage("@skl_use:sys_forage_success");
-				return true;
-			} else {
-				player->sendSystemMessage("@skl_use:sys_forage_fail");
 				return false;
 			}
 		}
