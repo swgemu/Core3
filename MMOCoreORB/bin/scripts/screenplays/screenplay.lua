@@ -124,6 +124,15 @@ includeFile("caves/dathomir_rancor_cave.lua")
 includeFile("caves/dathomir_spider_clan_cave.lua")
 includeFile("caves/rori_pygmy_torton_cave.lua")
 includeFile("caves/rori_giant_bark_mite_cave.lua")
+includeFile("caves/talus_aakuan_cave.lua")
+includeFile("caves/talus_chunker_bunker.lua")
+includeFile("caves/talus_giant_fynock_cave.lua")
+includeFile("caves/talus_lost_aqualish_cave.lua")
+includeFile("caves/talus_weapons_depot.lua")
+includeFile("caves/talus_giant_decay_mite_cave.lua")
+includeFile("caves/talus_erran_sif.lua")
+includeFile("caves/talus_binayre_pirate_bunker.lua")
+includeFile("caves/talus_kahmurra_biogentic_research_station.lua")
 
 --POIs
 includeFile("poi/tatooine_fort_tusken.lua")
@@ -138,6 +147,7 @@ includeFile("poi/rori_rebel_military_base.lua")
 includeFile("poi/rori_garyn_raiders_bunker.lua")
 includeFile("poi/rori_gungans_swamp_town.lua")
 includeFile("caves/talus_aakuan_cave.lua")
+includeFile("poi/talus_lost_village_of_durbin.lua")
 
 --Tests
 --includeFile("tests/options_bitmask_test.lua")

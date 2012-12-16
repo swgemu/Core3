@@ -26,7 +26,7 @@ genetically_enchanced_kahmurra = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/kahmurra_hue.iff"},
+	templates = {"object/mobile/kahmurra.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

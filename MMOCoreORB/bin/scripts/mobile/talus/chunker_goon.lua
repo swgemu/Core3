@@ -25,7 +25,19 @@ chunker_goon = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_mugger.iff", 
+					"object/mobile/dressed_robber_human_male_01.iff", 
+					"object/mobile/dressed_criminal_thug_zabrak_female_01.iff", 
+					"object/mobile/dressed_criminal_thug_aqualish_female_02.iff",
+					"object/mobile/dressed_criminal_thug_aqualish_male_02.iff",
+					"object/mobile/dressed_desperado_bith_female_01.iff",
+					"object/mobile/dressed_criminal_thug_human_female_01.iff",
+					"object/mobile/dressed_goon_twk_female_01.iff",
+					"object/mobile/dressed_criminal_thug_human_male_01.iff",
+					"object/mobile/dressed_robber_twk_female_01.iff",
+					"object/mobile/dressed_villain_trandoshan_male_01.iff",
+					"object/mobile/dressed_desperado_bith_male_01.iff",
+					"object/mobile/dressed_mugger.iff"},
 	lootGroups = {
 	    {
 	        groups = {
