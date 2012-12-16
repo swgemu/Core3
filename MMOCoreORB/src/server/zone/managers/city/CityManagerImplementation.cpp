@@ -632,11 +632,19 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city) {
 		return;
 
 	VectorMap<uint64, int>* candidates = city->getCandidates();
-
+	uint64 incumbentID = city->getMayorID();
+	String incumbentName = "";
 	uint64 topCandidate = city->getMayorID(); //Incumbent mayor defaults as the top candidate.
 	int topVotes = 0;
 
 	//Loop through the candidate votes.
+
+	ManagedReference<SceneObject*> oldmayor = zoneServer->getObject(incumbentID);
+	if(oldmayor != NULL && oldmayor->isPlayerCreature()){
+		CreatureObject* mayorcreature = cast<CreatureObject*>(oldmayor.get());
+		if(mayorcreature != NULL)
+			incumbentName = mayorcreature->getFirstName();
+	}
 
 	for (int i = 0; i < candidates->size(); ++i) {
 		VectorMapEntry<uint64, int> entry = candidates->elementAt(i);
@@ -666,6 +674,18 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city) {
 		}
 	}
 
+	//Make them the new mayor.
+	city->setMayorID(topCandidate);
+
+	city->resetMayoralVotes();
+	city->resetCandidates();
+	city->resetVotingPeriod();
+
+	// transfer structures to new mayor
+	if(incumbentID != topCandidate)
+		city->transferCivicStructuresToMayor();
+
+	// send e-mail to mayors and citizens
 	ManagedReference<SceneObject*> obj = zoneServer->getObject(topCandidate);
 	CreatureObject* mayor = NULL;
 	if (obj != NULL && obj->isCreatureObject()) {
@@ -680,27 +700,30 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city) {
 	StringIdChatParameter emailbody;
 	String subject;
 
+	ChatManager* chatManager = zoneServer->getChatManager();
+
 	// send email to the incumbent
-	if(topCandidate == city->getMayorID()) {
+	if(topCandidate == incumbentID) {
 		emailbody.setStringId("@city/city:election_incumbent_win_body"); //"Congratulations, Mayor %TT!The populace of %TO has elected to retain you for another term.
 		emailbody.setTO(city->getRegionName());
 		emailbody.setTT(winnerName);
 		subject = "@city/city:election_incumbent_win_subject"; // "Election Won"
+		chatManager->sendMail("@city/city:new_city_from", subject, emailbody, incumbentName, NULL);
 	}
 	else{
 		// send a mail to the new mayor
 		emailbody.setStringId("@city/city:election_new_mayor_body"); // Congratulations, Mayor %TT! You have been elected the new mayor of %TO
 		subject = "@city/city:election_new_mayor_subject"; // Congratulations Mayor!
-		sendMail(city,"@city/city:new_city_from", subject, emailbody, NULL );
+		//sendMail(city,"@city/city:new_city_from", subject, emailbody, NULL );
+		chatManager->sendMail("@city/city:new_city_from", subject, emailbody, winnerName, NULL);
 
 		emailbody.setStringId("@city/city:election_incumbent_lost_body"); // Citizen,It is with regret that we inform you that you have lost the position of Mayor of %TO to %TT.
 		emailbody.setTO(city->getRegionName());
 		emailbody.setTT(winnerName);
 		subject = "@city/city:election_incumbent_lost_subject"; // election lost
+		chatManager->sendMail("@city/city:new_city_from", subject, emailbody, incumbentName, NULL);
 
 	}
-
-	sendMail(city, "@city/city:new_city_from", subject, emailbody, NULL);
 
 
 	// send mailto all citizens
@@ -713,15 +736,6 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city) {
 	emailbody.setTO(winnerName);
 
 	sendMail(city, "@city/city:new_city_from", "@city/city:public_election_subject", emailbody, NULL);
-
-
-	//Make them the new mayor.
-	city->setMayorID(topCandidate);
-
-	city->resetMayoralVotes();
-	city->resetCandidates();
-	city->resetVotingPeriod();
-
 
 }
 

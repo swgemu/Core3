@@ -28,6 +28,9 @@
 #include "server/zone/Zone.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 
+#include "server/zone/objects/creature/commands/QueueCommand.h"
+#include "server/zone/objects/creature/commands/TransferstructureCommand.h"
+
 int BoardShuttleCommand::MAXIMUM_PLAYER_COUNT = 3000;
 
 void CityRegionImplementation::initializeTransientMembers() {
@@ -246,7 +249,6 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		completeStructureList.put(structure->getObjectID());
 
 		if (structure->isCivicStructure()) {
-			info("civic structure added : " + structure->getDisplayedName(),true);
 			addStructure(structure);
 		}
 	}
@@ -535,4 +537,76 @@ void CityRegionImplementation::applySpecializationModifiers(CreatureObject* crea
 
 void CityRegionImplementation::removeSpecializationModifiers(CreatureObject* creature) {
 	creature->removeAllSkillModsOfType(SkillModManager::CITY);
+}
+
+void CityRegionImplementation::transferCivicStructuresToMayor(){
+	Locker tlock(&structureListMutex);
+
+	if(zone == NULL)
+		return;
+
+	ZoneServer* server = zone->getZoneServer();
+
+	if(server == NULL)
+		return;
+
+	StructureManager* structureManager = StructureManager::instance();
+
+	if(structureManager == NULL)
+		return;
+
+	ManagedReference<SceneObject*> mayorObject = server->getObject(getMayorID());
+
+	if(mayorObject == NULL)
+		return;
+
+	ManagedReference<CreatureObject*> newMayor = cast<CreatureObject*>(mayorObject.get());
+
+	if(newMayor == NULL)
+		return;
+
+	// transfer civic structures
+	for(int i = 0; i < structures.size(); ++i){
+		ManagedReference<StructureObject*> structure = structures.get(i);
+
+		if(!structure->isCivicStructure()){
+			continue;
+		}
+
+		ManagedReference<CreatureObject*> oldOwner = structure->getOwnerCreatureObject();
+
+		if(oldOwner != NULL && oldOwner != newMayor){
+			TransferstructureCommand::doTransferStructure(oldOwner, newMayor, structure,true);
+		}
+	}
+
+	// transfer decorations
+	for(int i = 0; i < cityDecorations.size(); ++i){
+		ManagedReference<StructureObject*> structure = structures.get(i);
+
+		ManagedReference<CreatureObject*> oldOwner = structure->getOwnerCreatureObject();
+
+		if(oldOwner != NULL && oldOwner != newMayor) {
+			TransferstructureCommand::doTransferStructure(oldOwner, newMayor, structure,true);
+		}
+	}
+
+	// declare new mayor at the city hall
+	ManagedReference<StructureObject* > cityhall = getCityHall();
+	PlayerObject* mayorPlayer = newMayor->getPlayerObject();
+	if(mayorPlayer != NULL && cityhall != NULL && mayorPlayer->getDeclaredResidence() != cityhall->getObjectID()){
+		ManagedReference<CreatureObject*> creature = cityhall->getOwnerCreatureObject();
+		if(creature != NULL){
+			PlayerObject* oldMayor = creature->getPlayerObject();
+			oldMayor->setDeclaredResidence(NULL);
+		}
+
+		BuildingObject* cityBuilding = cast<BuildingObject*>(cityhall.get());
+
+		if(cityBuilding != NULL)
+			mayorPlayer->setDeclaredResidence(cityBuilding);
+	}
+
+
+
 }

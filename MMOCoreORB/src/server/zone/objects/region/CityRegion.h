@@ -378,6 +378,8 @@ public:
 
 	SceneObject* getCitySkillTrainer(int indx);
 
+	void transferCivicStructuresToMayor();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -717,6 +719,8 @@ public:
 
 	SceneObject* getCitySkillTrainer(int indx);
 
+	void transferCivicStructuresToMayor();
+
 	WeakReference<CityRegion*> _this;
 
 	operator const CityRegion*();
@@ -957,6 +961,8 @@ public:
 	int getTax(int tax);
 
 	void setTax(int tax, int value);
+
+	void transferCivicStructuresToMayor();
 
 };
 

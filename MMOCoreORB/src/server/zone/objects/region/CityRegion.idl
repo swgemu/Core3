@@ -641,5 +641,7 @@ class CityRegion extends ManagedObject implements Logger {
 		return citySkillTrainers.get(indx);
 	}
 
+	public native void transferCivicStructuresToMayor();
+
 
 }
