@@ -55,17 +55,18 @@ MindShot1Command = {
 
 	animationCRC = hashCode("fire_1_special_single_medium_face"),
 
-	combatSpam = "headshot",
+	combatSpam = "head",
 	    
-	stateEffects = {
-	  StateEffect( 
-		MINDDEGRADE_EFFECT, 
-		{}, 
-		{}, 
-		{}, 
-		100, 
-		100, 
-		30 
+	dotEffects = {
+	  DotEffect( 
+		BLEEDING, 
+		{ "resistance_bleeding", "bleed_resist" },
+		MIND,
+		true,
+		125,
+		100,
+		60, 
+		60
 	  )
 	},
 

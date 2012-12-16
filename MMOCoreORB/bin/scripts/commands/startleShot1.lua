@@ -67,7 +67,7 @@ StartleShot1Command = {
 
 	animationCRC = hashCode("fire_defender_posture_change_up"),
 
-	combatSpam = "startleshot",
+	combatSpam = "startle",
 
 	range = -1
 }
