@@ -714,7 +714,8 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city) {
 		// send a mail to the new mayor
 		emailbody.setStringId("@city/city:election_new_mayor_body"); // Congratulations, Mayor %TT! You have been elected the new mayor of %TO
 		subject = "@city/city:election_new_mayor_subject"; // Congratulations Mayor!
-		//sendMail(city,"@city/city:new_city_from", subject, emailbody, NULL );
+		emailbody.setTT(winnerName);
+		emailbody.setTO(city->getRegionName());
 		chatManager->sendMail("@city/city:new_city_from", subject, emailbody, winnerName, NULL);
 
 		emailbody.setStringId("@city/city:election_incumbent_lost_body"); // Citizen,It is with regret that we inform you that you have lost the position of Mayor of %TO to %TT.
