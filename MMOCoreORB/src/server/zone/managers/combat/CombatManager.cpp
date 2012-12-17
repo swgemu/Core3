@@ -23,6 +23,8 @@
 #include "server/zone/objects/creature/buffs/StateBuff.h"
 #include "server/zone/managers/visibility/VisibilityManager.h"
 
+#include "server/zone/objects/installation/components/TurretDataComponent.h"
+
 const uint32 CombatManager::defaultAttacks[9] = {
 		0x99476628, 0xF5547B91, 0x3CE273EC, 0x734C00C,
 		0x43C4FFD0, 0x56D7CC78, 0x4B41CAFB, 0x2257D06B,
@@ -141,12 +143,14 @@ void CombatManager::forcePeace(CreatureObject* attacker) {
 	attacker->setState(CreatureState::PEACE);
 }
 
+
+
 int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CombatQueueCommand* command) {
 	return doCombatAction(attacker, defenderObject, CreatureAttackData("",command));
 }
 
 int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data) {
-	//info("entering doCombat action", true);
+	//info("entering doCombat action with data ", true);
 
 	if (!startCombat(attacker, defenderObject))
 		return -1;
@@ -186,6 +190,8 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 
 	return damage;
 }
+
+
 
 int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject* tano, const CreatureAttackData& data) {
 	int damage = 0;
@@ -594,6 +600,8 @@ int CombatManager::getSpeedModifier(CreatureObject* attacker, WeaponObject* weap
 	return speedMods;
 }
 
+
+
 int CombatManager::getArmorObjectReduction(CreatureObject* attacker, ArmorObject* armor) {
 	WeaponObject* weapon = attacker->getWeapon();
 
@@ -682,6 +690,7 @@ ArmorObject* CombatManager::getPSGArmor(CreatureObject* attacker, CreatureObject
 
 	return NULL;
 }
+
 
 int CombatManager::getArmorNpcReduction(CreatureObject* attacker, AiAgent* defender, WeaponObject* weapon) {
 	int damageType = weapon->getDamageType();
@@ -1025,6 +1034,8 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	return HIT;
 }
 
+
+
 float CombatManager::calculateWeaponAttackSpeed(CreatureObject* attacker, WeaponObject* weapon, float skillSpeedRatio) {
 	int speedMod = getSpeedModifier(attacker, weapon);
 	float jediSpeed = attacker->getSkillMod("combat_haste") / 100.0f;
@@ -1272,6 +1283,8 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 		break;
 	}
 
+
+
 	if (poolsToDamage & HEALTH) {
 		healthDamage = getArmorReduction(attacker, defender, damage, HEALTH, data) * damageMultiplier * data.getHealthDamageMultiplier();
 		defender->inflictDamage(attacker, CreatureAttribute::HEALTH, (int)healthDamage, true, xpType);
@@ -1327,6 +1340,10 @@ int CombatManager::applyDamage(CreatureObject* attacker, TangibleObject* defende
 	default:
 		xpType = weapon->getXpType();
 		break;
+	}
+
+	if(defender->isTurret()){
+		damage *= (1.f - (getArmorTurretReduction(attacker, defender, weapon) / 100.f));
 	}
 
 	defender->inflictDamage(attacker, 0, damage, true, xpType);
@@ -1432,6 +1449,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 
 	return damage;
 }
+
 
 void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid) {
 	Zone* zone = attacker->getZone();
@@ -1691,4 +1709,450 @@ uint32 CombatManager::getDefaultAttackAnimation(CreatureObject* creature) {
 		return 0x506E9D4C;
 	else
 		return defaultAttacks[System::random(8)];
+}
+
+int CombatManager::doCombatAction(TangibleObject* attacker, CreatureObject* defender, CombatQueueCommand* command){
+
+	SceneObject* sceneObject = attacker->getSlottedObject("hold_r");
+
+	if(sceneObject == NULL){
+		return 0;
+	}
+	WeaponObject* weapon = cast<WeaponObject*>(sceneObject);
+
+	if(weapon != NULL){
+		if(!command->isAreaAction()){
+			doTargetCombatAction(attacker, weapon, defender, CreatureAttackData("",command));
+		}
+	}
+
+	return 0;
+}
+
+int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defenderObject, const CreatureAttackData& data) {
+
+
+	float minDamage = weapon->getMinDamage(), maxDamage = weapon->getMaxDamage();
+	float diff = maxDamage - minDamage;
+	float damage = 0;
+
+	if (diff >= 0)
+		damage = System::random(diff) + (int)minDamage;
+
+		int finaldamage = getArmorReduction(attacker, defenderObject, damage, CombatManager::HEALTH, data);
+
+		float damageMultiplier = 1.0f;
+		int hitVal = getHitChance(attacker, defenderObject, weapon, damage, data.getAccuracyBonus());
+
+		String combatSpam = data.getCommand()->getCombatSpam();
+
+		// FIXME: probably need to add getCombatSpamBlock(), etc in data and store it in commands explicitly to avoid malformed text
+
+		CombatAction* combatAction = NULL;
+		//uint32 animationCRC = String("fire_turret_medium").hashCode();
+		//uint8 hit = 0x01;
+		uint32 animationCRC = data.getAnimationCRC();
+		combatAction = new CombatAction(attacker, defenderObject, animationCRC, hitVal, CombatManager::DEFAULTTRAIL);
+		attacker->broadcastMessage(combatAction,true);
+
+		switch (hitVal) {
+			case MISS:
+				doMiss(attacker, defenderObject, weapon, damage, combatSpam + "_miss");
+				return 0;
+				break;
+			case HIT:
+				broadcastCombatSpam(attacker, defenderObject, weapon, damage, combatSpam + "_hit");
+				break;
+			case BLOCK:
+				doBlock(attacker, defenderObject, weapon, damage, combatSpam + "_block");
+				damageMultiplier = 0.5f;
+				break;
+			case DODGE:
+				doDodge(attacker, defenderObject, weapon, damage, combatSpam + "_evade");
+				damageMultiplier = 0.0f;
+				break;
+			case COUNTER:
+				doCounterAttack(attacker, defenderObject, weapon, damage, combatSpam + "_counter");
+				damageMultiplier = 0.0f;
+				break;
+			case RICOCHET:
+				doLightsaberBlock(attacker, defenderObject, weapon, damage, combatSpam + "_block");
+				damageMultiplier = 0.0f;
+				break;
+			default:
+				break;
+		}
+
+
+
+		defenderObject->inflictDamage(attacker,CreatureAttribute::HEALTH, finaldamage * damageMultiplier,true);
+		//broadcastCombatSpam(attacker, defender, weapon, finaldamage, command->getCombatSpam() + "_hit");
+
+	return 0;
+}
+int CombatManager::getArmorObjectReduction(WeaponObject* weapon, ArmorObject* armor){
+
+	if(weapon == NULL)
+		return 0;
+
+	int damageType = weapon->getDamageType();
+
+		float resist = 0;
+
+		switch (damageType) {
+		case WeaponObject::KINETIC:
+			resist = armor->getKinetic();
+			break;
+		case WeaponObject::ENERGY:
+			resist = armor->getEnergy();
+			break;
+		case WeaponObject::ELECTRICITY:
+			resist = armor->getElectricity();
+			break;
+		case WeaponObject::STUN:
+			resist = armor->getStun();
+			break;
+		case WeaponObject::BLAST:
+			resist = armor->getBlast();
+			break;
+		case WeaponObject::HEAT:
+			resist = armor->getHeat();
+			break;
+		case WeaponObject::COLD:
+			resist = armor->getCold();
+			break;
+		case WeaponObject::ACID:
+			resist = armor->getAcid();
+			break;
+		case WeaponObject::LIGHTSABER:
+			resist = armor->getLightSaber();
+			break;
+		case WeaponObject::FORCE:
+			resist = 0;
+			break;
+		}
+
+		return MAX(0, (int)resist);
+}
+
+int CombatManager::getArmorReduction(TangibleObject* attacker, CreatureObject* defender, float damage, int poolToDamage, const CreatureAttackData& data){
+	if (poolToDamage == 0)
+			return 0;
+
+	ManagedReference<SceneObject*> sceneObject =  NULL;
+
+	if(attacker->isTurret()){
+		sceneObject = attacker->getSlottedObject("hold_r");
+
+		if(sceneObject == NULL)
+			return 0;
+	}
+
+	WeaponObject* weapon = cast<WeaponObject*>(sceneObject.get());
+
+	if(weapon == NULL)
+		return 0;
+
+	// the easy calculation
+	if (defender->isAiAgent()) {
+		damage *= getArmorPiercing(cast<AiAgent*>(defender), weapon);
+
+		float armorReduction = getArmorNpcReduction(NULL, cast<AiAgent*>(defender), weapon);
+		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
+
+		return damage;
+	}
+
+	// start with PSG reduction
+	ManagedReference<ArmorObject*> psg = getPSGArmor(NULL, defender);
+
+	if (psg != NULL && !psg->isVulnerable(weapon->getDamageType())) {
+		float armorPiercing = getArmorPiercing(psg, weapon);
+		float armorReduction =  getArmorObjectReduction(weapon, psg);
+
+		if (armorPiercing > 1) damage *= armorPiercing;
+		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
+
+		// inflict condition damage
+		// TODO: this formula makes PSG's take more damage than regular armor, but that's how it was on live
+		// it can be fixed by doing condition damage after all damage reductions
+			psg->inflictDamage(psg, 0, damage * 0.1, true, true);
+	}
+
+	if (data.getAttackType() == CombatManager::WEAPONATTACK) {
+		// Force Armor
+		float rawDamage = damage;
+
+		int forceArmor = defender->getSkillMod("force_armor");
+		if (forceArmor > 0)
+			defender->notifyObservers(ObserverEventType::FORCEBUFFHIT, attacker, rawDamage - (damage *= 1.f - (forceArmor / 100.f)));
+	}
+
+	// now apply the rest of the damage to the regular armor
+	ManagedReference<ArmorObject*> armor = NULL;
+
+	if (poolToDamage & CombatManager::HEALTH)
+		armor = getHealthArmor(defender);
+	else if (poolToDamage & CombatManager::ACTION)
+		armor = getActionArmor(defender);
+	else if (poolToDamage & CombatManager::MIND)
+		armor = getMindArmor(defender);
+
+	if (armor != NULL && !armor->isVulnerable(weapon->getDamageType())) {
+		// use only the damage applied to the armor for piercing (after the PSG takes some off)
+		float armorPiercing = getArmorPiercing(armor, weapon);
+		float armorReduction = getArmorObjectReduction(weapon, armor);
+
+		damage *= armorPiercing;
+
+		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
+
+		// inflict condition damage
+		armor->inflictDamage(armor, 0, damage * 0.1, true, true);
+	}
+
+		return damage;
+}
+
+int CombatManager::getArmorTurretReduction(CreatureObject* attacker, TangibleObject* defender, WeaponObject* weapon){
+	int resist = 0;
+
+	if(defender != NULL && defender->isTurret() && weapon != NULL){
+		DataObjectComponentReference* data = defender->getDataObjectComponent();
+		if(data != NULL){
+
+			TurretDataComponent* turretData = cast<TurretDataComponent*>(data->get());
+
+			if(turretData != NULL) {
+
+				int damageType = weapon->getDamageType();
+
+				switch (damageType) {
+					case WeaponObject::KINETIC:
+						resist = turretData->getKinetic();
+						break;
+					case WeaponObject::ENERGY:
+						resist = turretData->getEnergy();
+						break;
+					case WeaponObject::ELECTRICITY:
+						resist = turretData->getElectricity();
+						break;
+					case WeaponObject::STUN:
+						resist = turretData->getStun();
+						break;
+					case WeaponObject::BLAST:
+						resist = turretData->getBlast();
+						break;
+					case WeaponObject::HEAT:
+						resist = turretData->getHeat();
+						break;
+					case WeaponObject::COLD:
+						resist = turretData->getCold();
+						break;
+					case WeaponObject::ACID:
+						resist = turretData->getAcid();
+						break;
+					case WeaponObject::LIGHTSABER:
+						resist = turretData->getLightSaber();
+						break;
+					case WeaponObject::FORCE:
+						resist = 0;
+						break;
+				}
+			}
+		}
+	}
+
+	return resist;
+}
+
+int CombatManager::getHitChance(TangibleObject* tano, CreatureObject* targetCreature, WeaponObject* weapon, int damage, int accuracyBonus) {
+	int hitChance = 0;
+	int attackType = weapon->getAttackType();
+
+	//info("Calculating hit chance", true);
+
+	float weaponAccuracy = 0.0f;
+	// Get the weapon mods for range and add the mods for stance
+	weaponAccuracy = getWeaponRangeModifier(tano->getDistanceTo(targetCreature), weapon);
+
+	int totalBonus = 0;
+	//info("Attacker accuracy bonus is " + String::valueOf(accuracyBonus), true);
+
+	int targetDefense = getDefenderDefenseModifier(targetCreature, weapon);
+
+	if(tano->isTurret()){
+		totalBonus += tano->getHitChance() * 100;
+	}
+	// first (and third) argument is divided by 2, second isn't
+	float accTotal = hitChanceEquation(weaponAccuracy, totalBonus, targetDefense);
+
+	if (accTotal > 100)
+		accTotal = 100.0;
+	else if (accTotal < 0)
+		accTotal = 0;
+
+	if (System::random(100) > accTotal) // miss, just return MISS
+		return MISS;
+
+	// now we have a successful hit, so calculate secondary defenses if there is a damage component
+	if (damage > 0) {
+		targetDefense = getDefenderSecondaryDefenseModifier(targetCreature);
+
+		if (targetDefense <= 0)
+			return HIT; // no secondary defenses
+
+		ManagedReference<WeaponObject*> targetWeapon = targetCreature->getWeapon();
+		Vector<String>* defenseAccMods = targetWeapon->getDefenderSecondaryDefenseModifiers();
+		String def = defenseAccMods->get(0);
+
+		if (def == "saber_block") {
+			if ((weapon->getAttackType() == WeaponObject::RANGEDATTACK) && ((System::random(100)) < targetCreature->getSkillMod(def)))
+				return RICOCHET;
+			else return HIT;
+		}
+
+		accTotal = hitChanceEquation(weaponAccuracy , totalBonus, targetDefense);
+
+		if (accTotal > 100)
+			accTotal = 100.0;
+		else if (accTotal < 0)
+			accTotal = 0;
+
+		int cobMod = targetCreature->getSkillMod("private_center_of_being");
+
+		if (System::random(100) > accTotal || (cobMod > 0 && System::random(100) > hitChanceEquation(weaponAccuracy, totalBonus, cobMod))) { // successful secondary defense, return type of defense
+
+			// this means use defensive acuity, which mean random 1, 2, or 3
+			if (targetWeapon == NULL)
+				return System::random(2) + 1;
+
+			if (def == "block")
+				return BLOCK;
+			else if (def == "dodge")
+				return DODGE;
+			else if (def == "counterattack")
+				return COUNTER;
+			else if (def == "unarmed_passive_defense")
+				return System::random(2) + 1;
+			else // shouldn't get here
+				return HIT; // no secondary defenses available on this weapon
+		}
+	}
+
+	return HIT;
+}
+
+void CombatManager::broadcastCombatSpam(TangibleObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid) {
+	Zone* zone = attacker->getZone();
+
+		if (zone == NULL)
+			return;
+
+		//Locker _locker(zone);
+
+		CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
+
+		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+
+		if (vec != NULL) {
+			closeObjects.removeAll(vec->size(), 10);
+			vec->safeCopyTo(closeObjects);
+		} else {
+			zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
+		}
+
+
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			SceneObject* object = cast<SceneObject*>( closeObjects.get(i).get());
+
+			if (object->isPlayerCreature() && attacker->isInRange(object, 70)) {
+				CreatureObject* player = cast<CreatureObject*>( object);
+
+				CombatSpam* msg = new CombatSpam(attacker, defender, weapon, damage, "cbt_spam", stringid, player);
+				player->sendMessage(msg);
+			}
+		}
+}
+
+ArmorObject* CombatManager::getHealthArmor(CreatureObject* defender) {
+	Vector<ManagedReference<ArmorObject*> > healthArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::CHEST);
+
+	if (System::random(1) == 0)
+		healthArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::ARMS);
+
+	ManagedReference<ArmorObject*> armorToHit = NULL;
+
+	if (!healthArmor.isEmpty())
+		armorToHit = healthArmor.get(System::random(healthArmor.size() - 1));
+
+	return armorToHit;
+}
+
+ArmorObject* CombatManager::getActionArmor(CreatureObject* defender) {
+	Vector<ManagedReference<ArmorObject*> > actionArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::LEGS);
+
+	ManagedReference<ArmorObject*> armorToHit = NULL;
+
+	if (!actionArmor.isEmpty())
+		armorToHit = actionArmor.get(System::random(actionArmor.size() - 1));
+
+	return armorToHit;
+}
+
+ArmorObject* CombatManager::getMindArmor(CreatureObject* defender) {
+	Vector<ManagedReference<ArmorObject*> > mindArmor = defender->getWearablesDeltaVector()->getArmorAtHitLocation(CombatManager::HEAD);
+
+	ManagedReference<ArmorObject*> armorToHit = NULL;
+
+	if (!mindArmor.isEmpty())
+		armorToHit = mindArmor.get(System::random(mindArmor.size() - 1));
+
+	return armorToHit;
+}
+
+ArmorObject* CombatManager::getPSGArmor(CreatureObject* defender) {
+	SceneObject* psg = defender->getSlottedObject("utility_belt");
+
+	if (psg != NULL && psg->isPsgArmorObject())
+		return cast<ArmorObject*>(psg);
+
+	return NULL;
+}
+
+void CombatManager::doMiss(TangibleObject* attacker, CreatureObject* defender, WeaponObject* weapon, int damage, const String& cbtSpam) {
+	defender->showFlyText("combat_effects", "miss", 0xFF, 0xFF, 0xFF);
+
+	broadcastCombatSpam(attacker, defender, weapon, damage, cbtSpam);
+}
+
+void CombatManager::doCounterAttack(TangibleObject* attacker, CreatureObject* defender, WeaponObject* weapon, int damage, const String& cbtSpam) {
+	defender->showFlyText("combat_effects", "counterattack", 0, 0xFF, 0);
+	//defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
+
+	broadcastCombatSpam(attacker, defender,weapon, damage, cbtSpam);
+}
+
+void CombatManager::doBlock(TangibleObject* attacker, CreatureObject* defender, WeaponObject* weapon, int damage, const String& cbtSpam) {
+	defender->showFlyText("combat_effects", "block", 0, 0xFF, 0);
+
+	//defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
+
+	broadcastCombatSpam(attacker, defender, weapon, damage, cbtSpam);
+}
+
+void CombatManager::doLightsaberBlock(TangibleObject* attacker, CreatureObject* defender, WeaponObject* weapon, int damage, const String& cbtSpam) {
+	// No Fly Text.
+
+	//creature->doCombatAnimation(defender, String("test_sword_ricochet").hashCode(), 0);
+
+	broadcastCombatSpam(attacker, defender, weapon, damage, cbtSpam);
+}
+
+void CombatManager::doDodge(TangibleObject* attacker, CreatureObject* defender, WeaponObject* weapon, int damage, const String& cbtSpam) {
+	defender->showFlyText("combat_effects", "dodge", 0, 0xFF, 0);
+
+	//defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
+
+	broadcastCombatSpam(attacker, defender, weapon, damage, cbtSpam);
 }

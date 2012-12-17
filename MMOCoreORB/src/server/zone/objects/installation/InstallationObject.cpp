@@ -26,11 +26,13 @@
 
 #include "server/zone/objects/tangible/TangibleObject.h"
 
+#include "server/zone/objects/tangible/wearables/ArmorObject.h"
+
 /*
  *	InstallationObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_,RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_,RPC_SETOPERATING__BOOL_BOOL_,RPC_ACTIVATEUISYNC__,RPC_UPDATEOPERATORS__,RPC_VERIFYOPERATORS__,RPC_UPDATEINSTALLATIONWORK__,RPC_HANDLESTRUCTUREADDENERGY__CREATUREOBJECT_,RPC_SETACTIVERESOURCE__RESOURCECONTAINER_,RPC_CHANGEACTIVERESOURCEID__LONG_,RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_,RPC_CLEARRESOURCEHOPPER__,RPC_GETHOPPERSIZE__,RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_,RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_,RPC_GETACTIVERESOURCESPAWNID__,RPC_GETACTUALRATE__,RPC_BROADCASTTOOPERATORS__BASEPACKET_,RPC_ADDOPERATOR__CREATUREOBJECT_,RPC_REMOVEOPERATOR__CREATUREOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISINSTALLATIONOBJECT__,RPC_ISOPERATING__,RPC_GETINSTALLATIONTYPE__,RPC_GETEXTRACTIONRATE__,RPC_GETHOPPERSIZEMAX__,RPC_UPDATESTRUCTURESTATUS__,RPC_ISHARVESTEROBJECT__,RPC_ISGENERATOROBJECT__,RPC_ISSHUTTLEINSTALLATION__,RPC_ISATTACKABLEBY__CREATUREOBJECT_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_BROADCASTMESSAGE__BASEPACKET_BOOL_,RPC_UPDATERESOURCECONTAINERQUANTITY__RESOURCECONTAINER_INT_BOOL_,RPC_SETOPERATING__BOOL_BOOL_,RPC_ACTIVATEUISYNC__,RPC_UPDATEOPERATORS__,RPC_VERIFYOPERATORS__,RPC_UPDATEINSTALLATIONWORK__,RPC_HANDLESTRUCTUREADDENERGY__CREATUREOBJECT_,RPC_SETACTIVERESOURCE__RESOURCECONTAINER_,RPC_CHANGEACTIVERESOURCEID__LONG_,RPC_ADDRESOURCETOHOPPER__RESOURCECONTAINER_,RPC_CLEARRESOURCEHOPPER__,RPC_GETHOPPERSIZE__,RPC_GETHOPPERITEMQUANTITY__RESOURCESPAWN_,RPC_GETCONTAINERFROMHOPPER__RESOURCESPAWN_,RPC_GETACTIVERESOURCESPAWNID__,RPC_GETACTUALRATE__,RPC_BROADCASTTOOPERATORS__BASEPACKET_,RPC_ADDOPERATOR__CREATUREOBJECT_,RPC_REMOVEOPERATOR__CREATUREOBJECT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_ISINSTALLATIONOBJECT__,RPC_ISOPERATING__,RPC_GETINSTALLATIONTYPE__,RPC_GETEXTRACTIONRATE__,RPC_GETHOPPERSIZEMAX__,RPC_UPDATESTRUCTURESTATUS__,RPC_ISHARVESTEROBJECT__,RPC_ISGENERATOROBJECT__,RPC_ISSHUTTLEINSTALLATION__,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_CREATECHILDOBJECTS__,RPC_GETHITCHANCE__};
 
 InstallationObject::InstallationObject() : StructureObject(DummyConstructorParameter::instance()) {
 	InstallationObjectImplementation* _implementation = new InstallationObjectImplementation();
@@ -557,6 +559,32 @@ bool InstallationObject::isAttackableBy(CreatureObject* object) {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isAttackableBy(object);
+}
+
+void InstallationObject::createChildObjects() {
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CREATECHILDOBJECTS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->createChildObjects();
+}
+
+float InstallationObject::getHitChance() {
+	InstallationObjectImplementation* _implementation = static_cast<InstallationObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETHITCHANCE__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getHitChance();
 }
 
 DistributedObjectServant* InstallationObject::_getImplementation() {
@@ -1115,6 +1143,16 @@ void InstallationObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 			resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		}
 		break;
+	case RPC_CREATECHILDOBJECTS__:
+		{
+			createChildObjects();
+		}
+		break;
+	case RPC_GETHITCHANCE__:
+		{
+			resp->insertFloat(getHitChance());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -1250,6 +1288,14 @@ bool InstallationObjectAdapter::isShuttleInstallation() {
 
 bool InstallationObjectAdapter::isAttackableBy(CreatureObject* object) {
 	return (static_cast<InstallationObject*>(stub))->isAttackableBy(object);
+}
+
+void InstallationObjectAdapter::createChildObjects() {
+	(static_cast<InstallationObject*>(stub))->createChildObjects();
+}
+
+float InstallationObjectAdapter::getHitChance() {
+	return (static_cast<InstallationObject*>(stub))->getHitChance();
 }
 
 /*

@@ -13,6 +13,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 #include "TurretDataComponent.h"
 //#include "DetectorDataComponent.h"
 
@@ -20,6 +21,11 @@
 #include "server/zone/Zone.h"
 #include "server/zone/packets/object/CombatAction.h"
 #include "server/zone/objects/installation/components/TurretObserver.h"
+
+#include "server/zone/managers/combat/CreatureAttackData.h"
+#include "server/zone/objects/creature/commands/CombatQueueCommand.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
+
 
 void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry){
 
@@ -43,6 +49,7 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 		if(!turretData->canFire())
 			return;
 
+
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(entry);
 		ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
 
@@ -56,13 +63,25 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 
 		if(tano->getFaction() != player->getFaction() && playerObject->getFactionStatus() == FactionStatus::OVERT && tano->getFaction() != 0){
 			// TODO: call combat manager here to fire actual attack
-			CombatAction* combatAction = NULL;
-			uint32 animationCRC = String("fire_turret_medium").hashCode();
-			uint8 hit = 0x01;
-			combatAction = new CombatAction(tano, player, animationCRC, hit, CombatManager::DEFAULTTRAIL);
-			tano->broadcastMessage(combatAction,true);
-			turretData->updateCooldown();
+			if(!CollisionManager::checkLineOfSight(target, sceneObject)){
+				return;
+			}
 
+			if(sceneObject->getZoneServer() != NULL){
+				ManagedReference<ObjectController*> objectController = sceneObject->getZoneServer()->getObjectController();
+				QueueCommand* command = objectController->getQueueCommand(String("defaultattack").hashCode());
+
+				if(command != NULL){
+					CombatQueueCommand* combatCommand = cast<CombatQueueCommand*>(command);
+					if(combatCommand != NULL){
+						combatCommand->setAnimationCRC(String("fire_turret_medium").hashCode());
+						Locker _lock(tano);
+						CombatManager::instance()->doCombatAction(tano, player, combatCommand);
+						turretData->updateCooldown();
+					}
+				}
+
+			}
 		}
 
 	}
@@ -70,7 +89,6 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 }
 
 void TurretZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zne){
-
 	if(zne == NULL)
 		return;
 

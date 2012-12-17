@@ -44,7 +44,8 @@
 
 #include "components/TurretDataComponent.h"
 #include "server/zone/objects/player/FactionStatus.h"
-
+#include "server/zone/objects/tangible/wearables/ArmorObject.h"
+#include "server/zone/templates/tangible/ArmorObjectTemplate.h"
 
 void InstallationObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	StructureObjectImplementation::loadTemplateData(templateData);
@@ -53,9 +54,6 @@ void InstallationObjectImplementation::loadTemplateData(SharedObjectTemplate* te
 
 	installationType = inso->getInstallationType();
 
-	if(isTurret()){
-
-	}
 }
 
 void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
@@ -87,28 +85,13 @@ void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* a
 			alm->insertAttribute("owner", obj->getDisplayedName());
 		}
 	}
-	if(isTurret()){
-		alm->insertAttribute("condition",String::valueOf(getMaxCondition() - getConditionDamage()) + "/" + String::valueOf(this->getMaxCondition()));
-		alm->insertAttribute("armorrating","Heavy");
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_energy","95%");
-		alm->insertAttribute("cat_armor_special_protection.armor_eff_stun","100%");
+	if(isTurret() && dataObjectComponent != NULL){
 
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_kinetic","90%");
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint","90%");
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_heat","90%");
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_cold","90%");
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_acid","90%");
-		alm->insertAttribute("cat_armor_effectiveness.armor_eff_elemental_electrical","90%");
+		TurretDataComponent* turretData = cast<TurretDataComponent*>(dataObjectComponent.get());
+			if(turretData == NULL)
+				return;
 
-		alm->insertAttribute("cat_armor_vulnerability.armor_eff_blast","-");
-
-		alm->insertAttribute("cat_armor_encumbrance.health","0");
-		alm->insertAttribute("cat_armor_encumbrance.action","0");
-		alm->insertAttribute("cat_armor_encumbrance.mind","0");
-
-		alm->insertAttribute("description",getDetailedDescription());
-
-		alm->insertAttribute("owner",String::valueOf(getOwnerObjectID()));
+			turretData->fillAttributeList(alm);
 	}
 
 }
@@ -705,7 +688,6 @@ void InstallationObjectImplementation::updateStructureStatus() {
 }
 
 bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object){
-
 	if(object->getFaction() == getFaction() || object->getFaction() == 0 )
 		return false;
 
@@ -718,4 +700,40 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object){
 	return true;
 }
 
+void InstallationObjectImplementation::createChildObjects(){
+	if( isTurret()) {
 
+		SharedInstallationObjectTemplate* inso = dynamic_cast<SharedInstallationObjectTemplate*>(getObjectTemplate());
+
+		if(inso != NULL){
+
+			uint32 defaultWeaponCRC = inso->getWeapon().hashCode();
+			if(getZoneServer() != NULL) {
+					WeaponObject* defaultWeapon = cast<WeaponObject*>(getZoneServer()->createObject(defaultWeaponCRC, 1));
+
+					if (defaultWeapon == NULL) {
+							return;
+					} else {
+
+						transferObject(defaultWeapon, 4);
+
+						if(dataObjectComponent != NULL){
+							TurretDataComponent* turretData = cast<TurretDataComponent*>(dataObjectComponent.get());
+
+							if(turretData != NULL) {
+								turretData->setWeapon(defaultWeapon);
+							}
+						}
+					}
+			}
+		}
+	} else {
+				StructureObjectImplementation::createChildObjects();
+
+	}
+}
+
+float InstallationObjectImplementation::getHitChance(){
+		SharedInstallationObjectTemplate* inso = dynamic_cast<SharedInstallationObjectTemplate*>(getObjectTemplate());
+		return inso->getChanceHit();
+}

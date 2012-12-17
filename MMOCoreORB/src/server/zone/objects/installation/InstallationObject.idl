@@ -71,6 +71,8 @@ include engine.util.u3d.QuadTreeEntry;
 include engine.util.u3d.CloseObjectsVector;
 include server.zone.objects.scene.components.DataObjectComponentReference;
 
+import server.zone.objects.tangible.wearables.ArmorObject;
+
 class InstallationObject extends StructureObject {
 	protected transient SyncrhonizedUiListenInstallationTask syncUiTask;
 
@@ -271,6 +273,9 @@ class InstallationObject extends StructureObject {
 	*/ 
 	public native boolean isAttackableBy(CreatureObject object);
 
+	public native void createChildObjects();
 
+	public native float getHitChance();
 }	
+
 	

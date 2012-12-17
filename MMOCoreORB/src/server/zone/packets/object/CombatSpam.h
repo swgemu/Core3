@@ -68,6 +68,24 @@ public:
 		insertInt(0);
 	}
 
+	CombatSpam(TangibleObject* attacker, TangibleObject* defender, TangibleObject* item, uint32 damage, const String& file, const String& aux, CreatureObject* reciever)
+			: ObjectControllerMessage(reciever->getObjectID(), 0x1B, 0x134) {
+		insertLong(attacker->getObjectID());
+		insertLong(defender->getObjectID());
+		if (item == NULL)
+			insertLong(0);
+		else
+			insertLong(item->getObjectID());
+
+		insertInt(damage);
+
+		insertAscii(file.toCharArray());
+		insertInt(0);
+		insertAscii(aux.toCharArray());
+		insertByte(1);
+		insertInt(0);
+	}
+
 };
 
 #endif /*COMBATSPAM_H_*/

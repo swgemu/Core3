@@ -356,6 +356,8 @@ public:
 
 	bool isBroken();
 
+	float getHitChance();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -599,6 +601,8 @@ protected:
 	float getConditionReduction(float value);
 
 public:
+	virtual float getHitChance();
+
 	WeakReference<TangibleObject*> _this;
 
 	operator const TangibleObject*();
@@ -795,6 +799,8 @@ public:
 	String repairAttempt(int repairChance);
 
 	bool isBroken();
+
+	float getHitChance();
 
 };
 

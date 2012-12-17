@@ -594,6 +594,11 @@ class TangibleObject extends SceneObject {
 			
 		return reductionPercent * value;
 	}
+
+	@dirty
+	public abstract float getHitChance(){
+		return 0;
+	}
 }
 
 

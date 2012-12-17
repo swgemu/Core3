@@ -163,6 +163,22 @@ class TangibleObject;
 
 using namespace server::zone::objects::tangible;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace wearables {
+
+class ArmorObject;
+
+} // namespace wearables
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::wearables;
+
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 #include "server/zone/objects/installation/HopperList.h"
@@ -277,6 +293,10 @@ public:
 	void setExtractionRate(float rate);
 
 	bool isAttackableBy(CreatureObject* object);
+
+	void createChildObjects();
+
+	float getHitChance();
 
 	DistributedObjectServant* _getImplementation();
 
@@ -415,6 +435,10 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
+	void createChildObjects();
+
+	float getHitChance();
+
 	WeakReference<InstallationObject*> _this;
 
 	operator const InstallationObject*();
@@ -523,6 +547,10 @@ public:
 	bool isShuttleInstallation();
 
 	bool isAttackableBy(CreatureObject* object);
+
+	void createChildObjects();
+
+	float getHitChance();
 
 };
 

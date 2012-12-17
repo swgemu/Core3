@@ -28,20 +28,20 @@
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
 #include "server/zone/objects/scene/components/ContainerComponent.h"
 #include "server/zone/objects/scene/WorldCoordinates.h"
+
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
-
 #include "server/zone/objects/player/sui/callbacks/StructurePayAccessFeeSuiCallback.h"
 #include "server/zone/objects/building/tasks/RevokePaidAccessTask.h"
 #include "server/zone/objects/region/CityRegion.h"
-
 #include "tasks/EjectObjectEvent.h"
 #include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
-
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/objects/player/FactionStatus.h"
+
+#include "server/zone/objects/installation/components/TurretDataComponent.h"
 
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
@@ -617,7 +617,6 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 		if(!checkContainerPermission(player,ContainerPermissions::WALKIN)){
 			ejectObject(player);
 		}
-		return;
 	}
 
 	if (accessFee > 0 && !isOnEntryList(player)) {
@@ -984,7 +983,7 @@ void BuildingObjectImplementation::createChildObjects(){
 
 			SharedObjectTemplate* thisTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
 
-			if(thisTemplate == NULL)
+			if(thisTemplate == NULL || thisTemplate->getGameObjectType() == SceneObjectType::NPCCREATURE)
 				continue;
 
 
@@ -1029,6 +1028,9 @@ void BuildingObjectImplementation::createChildObjects(){
 
 				SharedObjectTemplate* thisTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
 
+				if(thisTemplate == NULL || thisTemplate->getGameObjectType() == SceneObjectType::NPCCREATURE)
+					continue;
+
 				Vector3 childPosition = child->getPosition();
 				float angle = getDirection()->getRadians();
 				float x = (Math::cos(angle) * childPosition.getX()) + (childPosition.getY() * Math::sin(angle));
@@ -1044,20 +1046,8 @@ void BuildingObjectImplementation::createChildObjects(){
 				obj->initializePosition(x, z, y);
 				obj->setDirection(dir.rotate(Vector3(0, 1, 0), degrees));
 
-				if(obj->isTurret()){
-					GCWManager* gcwMan = zone->getGCWManager();
-					gcwMan->addTurret(_this.get(),obj);
-					TangibleObject* tano = cast<TangibleObject*>(obj.get());
-					tano->setFaction(getFaction());
-					InstallationObject* turret = cast<InstallationObject*>(obj.get());
-					if(turret != NULL){
-						turret->setOwnerObjectID(getObjectID());
-						turret->setOwnerName(getObjectNameStringIdFile());
-					}
-
-					tano->setDetailedDescription("DEFAULT BASE TURRET");
-
-				}
+				if(obj->isTurret())
+					obj->createChildObjects();
 
 				if (getZone())
 					getZone()->transferObject(obj, -1, false);
@@ -1068,6 +1058,25 @@ void BuildingObjectImplementation::createChildObjects(){
 			permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
 			permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 			obj->initializeChildObject(_this.get());
+
+			if(obj->isTurret()){
+					GCWManager* gcwMan = zone->getGCWManager();
+					gcwMan->addTurret(_this.get(),obj);
+					TangibleObject* tano = cast<TangibleObject*>(obj.get());
+					tano->setFaction(getFaction());
+					tano->setDetailedDescription("DEFAULT BASE TURRET");
+
+					InstallationObject* turret = cast<InstallationObject*>(obj.get());
+
+					if(turret != NULL){
+						turret->setOwnerObjectID(getObjectID());
+						turret->setOwnerName(this->getObjectNameStringIdName());
+					}
+
+					turret->setDetailedDescription("DEFAULT BASE TURRET");
+
+
+			}
 
 		}
 	} else {

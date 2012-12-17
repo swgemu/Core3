@@ -694,6 +694,7 @@ void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool in
 
 			this->addBase(building);
 			this->startVulnerability(building);
+			this->spawnChildrenCreatures(building);
 
 		} else {
 			//gcwBaseList.put(building);
@@ -702,7 +703,7 @@ void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool in
 
 		}
 
-		//this->spawnChildrenCreatures(building);
+
 	}else
 		error("Building already in gcwBaseList");
 
@@ -1659,7 +1660,6 @@ void GCWManagerImplementation::notifyTurretDestruction(InstallationObject* turre
 
 
 void GCWManagerImplementation::spawnChildrenCreatures(BuildingObject* building){
-	//info("spawning children NPCs",true);
 
 	/*
 	Locker _lock(building);
@@ -1674,45 +1674,42 @@ void GCWManagerImplementation::spawnChildrenCreatures(BuildingObject* building){
 
 	for(int i = 0; i < serverTemplate->getChildObjectsSize();i++){
 		//info("iterating child",true);
-			ChildObject* child = serverTemplate->getChildObject(i);
-			if(child != NULL){
-				//info("child template " + child->getTemplateFile(),true);
+		ChildObject* child = serverTemplate->getChildObject(i);
+		if(child != NULL){
+			//info("child template " + child->getTemplateFile(),true);
 
-				SharedObjectTemplate* thisTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
-				//info(thisTemplate->getClientObjectCRC())
-				//info("child typs is " + String::valueOf(thisTemplate->getGameObjectType()),true);
+			SharedObjectTemplate* thisTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
+			//info(thisTemplate->getClientObjectCRC())
+			//info("child typs is " + String::valueOf(thisTemplate->getGameObjectType()),true);
 
-				if(thisTemplate->getGameObjectType() == SceneObjectType::NPCCREATURE){
-
-
-					Vector3 childPosition = child->getPosition();
-					float angle = building->getDirection()->getRadians();
-
-					float x = (Math::cos(angle) * childPosition.getX()) + (childPosition.getY() * Math::sin(angle));
-					float y = (Math::cos(angle) * childPosition.getY()) - (childPosition.getX() * Math::sin(angle));
-
-					x += position.getX();
-					y += position.getY();
-
-					float z = position.getZ() + childPosition.getZ();
-
-					float degrees = building->getDirection()->getDegrees();
-
-					String mobileName = child->getMobile();
-					CreatureManager* creatureManager = zone->getCreatureManager();
-					CreatureObject* creature = creatureManager->spawnCreature(mobileName.hashCode(),0,x,z,y,0);
-					if(creature->isAiAgent()){
-						AiAgent* ai = cast<AiAgent*>(creature);
-						ai->setRespawnTimer(30);
-					}
+			if(thisTemplate->getGameObjectType() == SceneObjectType::NPCCREATURE){
 
 
+				Vector3 childPosition = child->getPosition();
+				float angle = building->getDirection()->getRadians();
+
+				float x = (Math::cos(angle) * childPosition.getX()) + (childPosition.getY() * Math::sin(angle));
+				float y = (Math::cos(angle) * childPosition.getY()) - (childPosition.getX() * Math::sin(angle));
+
+				x += position.getX();
+				y += position.getY();
+				float z = position.getZ() + childPosition.getZ();
+				float degrees = building->getDirection()->getDegrees();
+				String mobileName = child->getMobile();
+				CreatureManager* creatureManager = zone->getCreatureManager();
+				CreatureObject* creature = creatureManager->spawnCreature(mobileName.hashCode(),0,x,z,y,1);
+				if(creature->isAiAgent()){
+					AiAgent* ai = cast<AiAgent*>(creature);
+					ai->setRespawnTimer(0);
 				}
-			} else {
-				info("child is null",true);
+
+
 			}
+		} else {
+				info("child is null",true);
 		}
-		*/
+	}
+	*/
 
 
 }
@@ -1968,9 +1965,12 @@ void GCWManagerImplementation::performDefenseDontation(BuildingObject* building,
 
 	if(tano->isInstallationObject()){
 		InstallationObject* turret = cast<InstallationObject*>(tano);
-		if(turret != NULL)
+		if(turret != NULL) {
 			turret->setOwnerObjectID(building->getObjectID());
+			turret->createChildObjects();
+		}
 	}
+
 
 	zone->transferObject(obj, -1, false);
 

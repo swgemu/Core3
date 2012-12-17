@@ -249,7 +249,6 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 		const String& structureTemplatePath, float x, float y, int angle) {
 	ManagedReference<Zone*> zone = creature->getZone();
 
-	info("placestructure from manager",true);
 	if (zone == NULL)
 		return NULL;
 

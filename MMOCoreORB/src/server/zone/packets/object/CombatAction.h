@@ -146,6 +146,7 @@ public:
 			insertByte(0);
 	}
 
+
 	CombatAction(CreatureObject* attacker, CreatureObject* defender,
 			uint32 animcrc,uint8 hit, long wpnID) :
 		ObjectControllerMessage(attacker->getObjectID(), 0x1B, 0xCC) {

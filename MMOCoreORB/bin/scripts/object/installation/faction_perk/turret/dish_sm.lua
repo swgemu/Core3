@@ -52,7 +52,7 @@ object_installation_faction_perk_turret_dish_sm = object_installation_faction_pe
 	-- Damagetypes in WeaponObject
 	vulnerability = BLAST,
 
-	-- These are default Blue Frog stats
+		-- These are default Blue Frog stats
 	healthEncumbrance = 0,
 	actionEncumbrance = 0,
 	mindEncumbrance = 0,
@@ -68,7 +68,9 @@ object_installation_faction_perk_turret_dish_sm = object_installation_faction_pe
 	heat = 90,
 	cold = 90,
 	acid = 90,
-	lightSaber = 0,
+	lightSaber =100,
+	chanceHit = .4,
+	weapon = "object/weapon/ranged/turret/turret_block_large.iff",
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_turret_dish_sm, "object/installation/faction_perk/turret/dish_sm.iff")
