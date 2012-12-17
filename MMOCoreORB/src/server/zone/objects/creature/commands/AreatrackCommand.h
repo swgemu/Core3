@@ -93,7 +93,7 @@ public:
 
 		chooseTrackTarget->addMenuItem("@cmd_n:areatrack_animal");
 
-		if(creature->hasSkill("outdoors_ranger_harvest_01"))
+		if(creature->hasSkill("outdoors_ranger_harvest_02"))
 			chooseTrackTarget->addMenuItem("@cmd_n:areatrack_npc");
 
 		if(creature->hasSkill("outdoors_ranger_harvest_04"))
