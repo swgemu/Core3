@@ -149,6 +149,24 @@ tatooine_creatures_world = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
+		},
+		{
+			lairTemplateName = "tatooine_evil_settlement_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 3,
+			maxDifficulty = 6,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "tatooine_moisture_settler_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 3,
+			maxDifficulty = 6,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
 		}
 	}
 }
