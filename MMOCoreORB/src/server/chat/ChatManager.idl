@@ -129,6 +129,7 @@ class ChatManager extends ManagedService implements Logger {
 	
 	public native void handleSpatialChatInternalMessage(CreatureObject player, final unicode args);
 	public native void handleGroupChat(CreatureObject player, final unicode message);
+	public native void handleGuildChat(CreatureObject player, final unicode message);
 	
 	public native ChatRoom createRoomByFullPath(final string path);
 	

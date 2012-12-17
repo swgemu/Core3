@@ -22,6 +22,7 @@
 #include "server/zone/packets/chat/ChatOnDestroyRoom.h"
 #include "server/zone/packets/chat/ChatPersistentMessageToClient.h"
 #include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "PersistentMessage.h"
@@ -736,6 +737,40 @@ void ChatManagerImplementation::handleGroupChat(CreatureObject* sender, const Un
 		group->unlock();
 	} catch (...) {
 		group->unlock();
+
+		throw;
+	}
+
+	sender->wlock();
+}
+
+void ChatManagerImplementation::handleGuildChat(CreatureObject* sender, const UnicodeString& message) {
+	/*if (sender->isChatMuted()) {
+		sender->sendSystemMessage("Your chat abilities are currently disabled by the server administrators.");
+		return;
+	}*/
+
+	String name = sender->getFirstName();
+
+	ManagedReference<GuildObject*> guild = sender->getGuildObject();
+	if (guild == NULL)
+		return;
+
+	sender->unlock();
+
+	try {
+		guild->wlock();
+
+		ManagedReference<ChatRoom*> room = guild->getChatRoom();
+
+		if (room != NULL) {
+			BaseMessage* msg = new ChatRoomMessage(name, message, room->getRoomID());
+			room->broadcastMessage(msg);
+		}
+
+		guild->unlock();
+	} catch (...) {
+		guild->unlock();
 
 		throw;
 	}

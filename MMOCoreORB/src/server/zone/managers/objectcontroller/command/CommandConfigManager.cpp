@@ -871,7 +871,7 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<FullAutoArea2Command>(String("fullAutoArea2").toLowerCase());
 	commandFactory.registerCommand<FullAutoSingle1Command>(String("fullAutoSingle1").toLowerCase());
 	commandFactory.registerCommand<FullAutoSingle2Command>(String("fullAutoSingle2").toLowerCase());
-	commandFactory.registerCommand<GCommand>(String("g").toLowerCase());
+	commandFactory.registerCommand<GroupChatCommand>(String("g").toLowerCase());
 	commandFactory.registerCommand<GallopCommand>(String("gallop").toLowerCase());
 	commandFactory.registerCommand<GallopStopCommand>(String("gallopStop").toLowerCase());
 	commandFactory.registerCommand<GcCommand>(String("gc").toLowerCase());
@@ -909,12 +909,12 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<GrantTitleCommand>(String("grantTitle").toLowerCase());
 	commandFactory.registerCommand<GrantZoningRightsCommand>(String("grantZoningRights").toLowerCase());
 	commandFactory.registerCommand<GroupChatCommand>(String("groupChat").toLowerCase());
-	commandFactory.registerCommand<GroupSayCommand>(String("groupSay").toLowerCase());
-	commandFactory.registerCommand<GsayCommand>(String("gsay").toLowerCase());
-	commandFactory.registerCommand<GtellCommand>(String("gtell").toLowerCase());
+	commandFactory.registerCommand<GroupChatCommand>(String("groupSay").toLowerCase());
+	commandFactory.registerCommand<GroupChatCommand>(String("gsay").toLowerCase());
+	commandFactory.registerCommand<GroupChatCommand>(String("gtell").toLowerCase());
 	commandFactory.registerCommand<GuildCommand>(String("guild").toLowerCase());
 	commandFactory.registerCommand<GuildremoveCommand>(String("guildremove").toLowerCase());
-	commandFactory.registerCommand<GuildsayCommand>(String("guildsay").toLowerCase());
+	commandFactory.registerCommand<GuildCommand>(String("guildsay").toLowerCase());
 	commandFactory.registerCommand<GuildstatusCommand>(String("guildstatus").toLowerCase());
 	commandFactory.registerCommand<HarmfulCommand>(String("harmful").toLowerCase());
 	commandFactory.registerCommand<HarmlessCommand>(String("harmless").toLowerCase());

@@ -46,6 +46,8 @@ which carries forward this exception.
 #define GUILDCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "../../../../chat/ChatManager.h"
+
 
 class GuildCommand : public QueueCommand {
 public:
@@ -62,6 +64,9 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		ChatManager* chatManager = server->getZoneServer()->getChatManager();
+		chatManager->handleGuildChat(creature, arguments);
 
 		return SUCCESS;
 	}
