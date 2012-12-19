@@ -982,6 +982,7 @@ void BuildingObjectImplementation::createChildObjects(){
 				continue;
 
 			SharedObjectTemplate* thisTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
+			//info("tried to get " + child->getTemplateFile(),true);
 
 			if(thisTemplate == NULL || thisTemplate->getGameObjectType() == SceneObjectType::NPCCREATURE)
 				continue;
@@ -989,7 +990,7 @@ void BuildingObjectImplementation::createChildObjects(){
 
 			String dbString = "sceneobjects";
 
-			if( thisTemplate->getGameObjectType() == SceneObjectType::TURRET || thisTemplate->getGameObjectType() == SceneObjectType::STATICOBJECT ){
+			if(thisTemplate->getGameObjectType() == SceneObjectType::MINEFIELD || thisTemplate->getGameObjectType() == SceneObjectType::TURRET || thisTemplate->getGameObjectType() == SceneObjectType::STATICOBJECT ){
 				dbString = "playerstructures";
 			}
 
@@ -1059,24 +1060,32 @@ void BuildingObjectImplementation::createChildObjects(){
 			permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 			obj->initializeChildObject(_this.get());
 
-			if(obj->isTurret()){
-					GCWManager* gcwMan = zone->getGCWManager();
-					gcwMan->addTurret(_this.get(),obj);
-					TangibleObject* tano = cast<TangibleObject*>(obj.get());
-					tano->setFaction(getFaction());
-					tano->setDetailedDescription("DEFAULT BASE TURRET");
+			GCWManager* gcwMan = zone->getGCWManager();
 
-					InstallationObject* turret = cast<InstallationObject*>(obj.get());
+			if(obj->isTurret() || obj->isMinefield() || obj->isDetector()){
+				TangibleObject* tano = cast<TangibleObject*>(obj.get());
+				tano->setFaction(getFaction());
+				tano->setDetailedDescription("DEFAULT BASE TURRET");
 
-					if(turret != NULL){
-						turret->setOwnerObjectID(getObjectID());
-						turret->setOwnerName(this->getObjectNameStringIdName());
-					}
+				InstallationObject* installation = cast<InstallationObject*>(obj.get());
+				if(installation != NULL){
+					installation->setOwnerObjectID(getObjectID());
+					installation->setOwnerName(this->getObjectNameStringIdName());
+				}
 
-					turret->setDetailedDescription("DEFAULT BASE TURRET");
+				if(gcwMan != NULL){
+					if(obj->isTurret())
+						gcwMan->addTurret(_this.get(),obj);
+					else if (obj->isMinefield())
+						gcwMan->addMinefield(_this.get(),obj);
+					else if (obj->isDetector())
+						gcwMan->addScanner(_this.get(),obj);
 
-
+				} else {
+					info("ERROR: Unable to add faction installation to gCWmanager",true);
+				}
 			}
+
 
 		}
 	} else {

@@ -309,6 +309,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/firework/components/FireworkShowMenuComponent.cpp \
 		server/zone/objects/installation/components/InstallationObjectMenuComponent.cpp \
 		server/zone/objects/installation/components/TurretZoneComponent.cpp \
+		server/zone/objects/installation/components/MinefieldZoneComponent.cpp \
+		server/zone/objects/installation/components/DetectorZoneComponent.cpp \
 		server/zone/objects/installation/components/FactoryObjectMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/HQMenuComponent.cpp \
@@ -316,6 +318,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/terminal/components/SecurityTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/OverrideTerminalMenuComponent.cpp \
 		server/zone/objects/tangible/terminal/components/PowerRegulatorMenuComponent.cpp \
+		server/zone/objects/tangible/terminal/components/TurretControlMenuComponent.cpp \
 		server/zone/objects/region/events/CityUpdateEvent.cpp \
 		server/zone/objects/tangible/deed/structure/StructureDeedImplementation.cpp \
 		server/zone/objects/player/sui/callbacks/CityManageMilitiaSuiCallback.cpp \

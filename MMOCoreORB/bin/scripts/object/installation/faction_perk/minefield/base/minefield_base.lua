@@ -42,7 +42,7 @@
 
 
 object_installation_faction_perk_minefield_base_minefield_base = object_installation_faction_perk_minefield_base_shared_minefield_base:new {
-
+	
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_minefield_base_minefield_base, "object/installation/faction_perk/minefield/base/minefield_base.iff")

@@ -81,6 +81,10 @@ public:
 	virtual bool isSecurityTerminalData(){
 		return false;
 	}
+
+	virtual bool isMinefieldData(){
+		return false;
+	}
 };
 
 

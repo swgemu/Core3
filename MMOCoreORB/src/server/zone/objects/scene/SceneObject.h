@@ -594,6 +594,8 @@ public:
 
 	bool isTurret();
 
+	bool isMinefield();
+
 	bool isDetector();
 
 	bool isSecurityTerminal();
@@ -1256,6 +1258,8 @@ public:
 	bool isGCWBase();
 
 	bool isTurret();
+
+	bool isMinefield();
 
 	bool isDetector();
 

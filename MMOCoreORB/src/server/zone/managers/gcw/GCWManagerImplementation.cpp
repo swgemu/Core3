@@ -12,6 +12,7 @@
 #include "CheckGCWTask.h"
 
 #include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
+#include "server/zone/objects/installation/components/MinefieldDataComponent.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "StartVulnerabilityTask.h"
@@ -44,6 +45,7 @@
 #include "server/zone/objects/player/sui/callbacks/DonateDefenseSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/SelectTurretDonationSuiCallback.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
+
 
 #define DEBUG_GCW
 
@@ -1720,10 +1722,12 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 	if(creature ==NULL || baseData == NULL)
 			return;
 
+	/*
 	if(baseData->isVulnerable()) {
 		creature->sendSystemMessage("@hq:under_attack"); // You cannot add defenses while the HQ is under attack.
 		return;
 	}
+	*/
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
@@ -1749,7 +1753,7 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 
 	for(int i =0;i < inv->getContainerObjectsSize(); ++i){
 		ManagedReference<SceneObject*> inventoryObject = inv->getContainerObject(i);
-		if(inventoryObject->isDeedObject()){
+		if(inventoryObject->isDeedObject() || inventoryObject->getGameObjectType() == SceneObjectType::MINE){
 			donate->addMenuItem(inventoryObject->getDisplayedName(),inventoryObject->getObjectID());
 		}
 	}
@@ -1854,17 +1858,23 @@ void GCWManagerImplementation::performDefenseDontation(BuildingObject* building,
 	if(zoneServer == NULL)
 		return;
 
-	ManagedReference<SceneObject*> deedObj = zoneServer->getObject(deedOID);
+	ManagedReference<SceneObject*> defenseObj = zoneServer->getObject(deedOID);
 
-	if(deedObj == NULL)
+	if(defenseObj == NULL)
 		return;
 
-	ManagedReference<StructureDeed*> turretDeed = dynamic_cast<StructureDeed*>(deedObj.get());
+	if(defenseObj->getGameObjectType() == SceneObjectType::MINE) {
+
+		performDonateMine(building, creature, defenseObj);
+		return;
+	}
+
+	ManagedReference<StructureDeed*> turretDeed = dynamic_cast<StructureDeed*>(defenseObj.get());
 
 	// verify it's a deed
 	if(turretDeed == NULL){
 		StringIdChatParameter param("@faction/faction_hq/faction_hq_response:terminal_response43"); // This facility does not accept deeds of type '%TO'. Cancelling donation..."
-		param.setTO(deedObj->getObjectName());
+		param.setTO(defenseObj->getObjectName());
 		creature->sendSystemMessage(param);
 		return;
 	}
@@ -1872,13 +1882,69 @@ void GCWManagerImplementation::performDefenseDontation(BuildingObject* building,
 	// verify that the generated object is a turret
 	Reference<SharedObjectTemplate* > generatedTemplate = TemplateManager::instance()->getTemplate(turretDeed->getGeneratedObjectTemplate().hashCode());
 
-	if(generatedTemplate->getGameObjectType() != SceneObjectType::TURRET) {
-		StringIdChatParameter param("@faction/faction_hq/faction_hq_response:terminal_response43"); // This facility does not accept deeds of type '%TO'. Cancelling donation..."
-		param.setTO(deedObj->getObjectName());
-		creature->sendSystemMessage(param);
+	if(generatedTemplate->getGameObjectType() == SceneObjectType::TURRET) {
+		performDonateTurret(building,creature,turretDeed);
 		return;
 	}
 
+	if(generatedTemplate->getGameObjectType() == SceneObjectType::MINEFIELD) {
+		performDonateMinefield(building,creature,turretDeed);
+		return;
+	}
+
+	StringIdChatParameter param("@faction/faction_hq/faction_hq_response:terminal_response43"); // This facility does not accept deeds of type '%TO'. Cancelling donation..."
+	param.setTO(defenseObj->getObjectName());
+	creature->sendSystemMessage(param);
+	return;
+
+
+}
+
+void GCWManagerImplementation::performDonateMine(BuildingObject* building, CreatureObject* creature, SceneObject* mine){
+// search the building for a minefield that isn't full
+
+	Locker _lock(building, creature);
+
+	for(int i =0; i < building->getChildObjects()->size(); i++){
+		ManagedReference<SceneObject*> obj = building->getChildObjects()->get(i);
+				// check to see if it is full
+			if(obj->isMinefield() && obj->getContainerObjectsSize()< 20 ){
+				_lock.release();
+				Locker clock(obj,creature);
+				obj->transferObject(mine,-1);
+				StringIdChatParameter param("@faction/faction_hq/faction_hq_response:terminal_response46"); // YOu sucessfully donate a %TO
+				param.setTO(mine->getObjectNameStringIdName());
+				creature->sendSystemMessage(param);
+				return;
+			}
+	}
+
+	creature->sendSystemMessage("Unable to donate mines at this time.  Full or no minefields");
+
+}
+
+void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, CreatureObject* creature,  StructureDeed* deed){
+	return;
+
+	String serverTemplatePath = deed->getGeneratedObjectTemplate();
+	TemplateManager* templateManager = TemplateManager::instance();
+	Reference<SharedObjectTemplate*> baseServerTemplate = building->getObjectTemplate();
+	Reference<SharedObjectTemplate*> minefieldTemplate = NULL;
+	ChildObject* child = NULL;
+
+	int currentTurretIndex = 0;
+
+	// search through the baseData to find the first empty turret index
+
+	Locker block(building,creature);
+
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
+
+	if(baseData == NULL)
+		return;
+}
+
+void GCWManagerImplementation::performDonateTurret(BuildingObject* building, CreatureObject* creature,  StructureDeed* turretDeed){
 	String serverTemplatePath = turretDeed->getGeneratedObjectTemplate();
 	TemplateManager* templateManager = TemplateManager::instance();
 	Reference<SharedObjectTemplate*> baseServerTemplate = building->getObjectTemplate();
@@ -1896,6 +1962,8 @@ void GCWManagerImplementation::performDefenseDontation(BuildingObject* building,
 	if(baseData == NULL)
 		return;
 
+
+	// this is turret donation
 	int nextAvailableTurret = 0;
 	for(nextAvailableTurret = 0; nextAvailableTurret < baseData->getTotalTurretCount(); nextAvailableTurret++){
 		if(baseData->getTurretID(nextAvailableTurret) == 0)
@@ -1971,7 +2039,6 @@ void GCWManagerImplementation::performDefenseDontation(BuildingObject* building,
 		}
 	}
 
-
 	zone->transferObject(obj, -1, false);
 
 	baseData->setTurretID(currentTurretIndex,obj->getObjectID());
@@ -1989,7 +2056,32 @@ void GCWManagerImplementation::performDefenseDontation(BuildingObject* building,
 		turretDeed->destroyObjectFromWorld(true);
 	}
 
+}
+void GCWManagerImplementation::addMinefield(BuildingObject* building, SceneObject* minefield){
+	if(building == NULL || minefield == NULL || !minefield->isMinefield())
+			return;
+	//info("adding minefield",true);
 
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
+
+	if(baseData == NULL)
+		return;
+	Locker _lock(building);
+	baseData->addMinefield(baseData->getTotalMinefieldCount(), minefield->getObjectID());
+}
+
+void GCWManagerImplementation::addScanner(BuildingObject* building, SceneObject* scanner){
+	if(building == NULL || scanner == NULL || !scanner->isDetector())
+		return;
+
+	//info("adding scanner",true);
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
+
+	if(baseData == NULL)
+		return;
+	Locker _lock(building);
+
+	baseData->addScanner(baseData->getTotalScannerCount(), scanner->getObjectID());
 
 }
 

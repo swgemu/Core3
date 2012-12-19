@@ -2205,6 +2205,15 @@ bool SceneObject::isTurret() {
 		return _implementation->isTurret();
 }
 
+bool SceneObject::isMinefield() {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->isMinefield();
+}
+
 bool SceneObject::isDetector() {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -4641,6 +4650,11 @@ bool SceneObjectImplementation::isGCWBase() {
 bool SceneObjectImplementation::isTurret() {
 	// server/zone/objects/scene/SceneObject.idl():  		dataObjectComponent.get().isTurretData();
 	return (&dataObjectComponent) != NULL && (&dataObjectComponent)->get() != NULL && (&dataObjectComponent)->get()->isTurretData();
+}
+
+bool SceneObjectImplementation::isMinefield() {
+	// server/zone/objects/scene/SceneObject.idl():  		dataObjectComponent.get().isMinefieldData();
+	return (&dataObjectComponent) != NULL && (&dataObjectComponent)->get() != NULL && (&dataObjectComponent)->get()->isMinefieldData();
 }
 
 bool SceneObjectImplementation::isDetector() {

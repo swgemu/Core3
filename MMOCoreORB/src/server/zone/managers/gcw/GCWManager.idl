@@ -16,6 +16,7 @@ import server.zone.objects.installation.InstallationObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.PlayerObject;
 import system.thread.Mutex;
+import server.zone.objects.tangible.deed.structure.StructureDeed;
 
 include server.zone.objects.building.components.DestructibleBuildingDataComponent;
 
@@ -272,9 +273,19 @@ class GCWManager extends ManagedService implements Logger {
 
 	public native void performDefenseDontation(BuildingObject building, CreatureObject creature, unsigned long deedOID, int turretIndex);
 
+	private native void performDonateMine(BuildingObject building, CreatureObject creature, SceneObject sceneObject);
+
+	private native void performDonateMinefield(BuildingObject building, CreatureObject creature, StructureDeed deed);
+
+	private native void performDonateTurret(BuildingObject building, CreatureObject creature, StructureDeed deed);
+
 	public native void sendStatus(BuildingObject building, CreatureObject creature);
 
+	public native void addMinefield(BuildingObject building, SceneObject minefield);
+
 	public native void addTurret(BuildingObject building, SceneObject turret);
+
+	public native void addScanner(BuildingObject building, SceneObject scanner);
 
 	public native void removeDefense(BuildingObject building, CreatureObject creature, unsigned long deedOID);
 

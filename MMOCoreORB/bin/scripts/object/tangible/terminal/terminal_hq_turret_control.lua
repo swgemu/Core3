@@ -42,7 +42,7 @@
 
 
 object_tangible_terminal_terminal_hq_turret_control = object_tangible_terminal_shared_terminal_hq_turret_control:new {
-
+	objectMenuComponent = "TurretControlMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_terminal_terminal_hq_turret_control, "object/tangible/terminal/terminal_hq_turret_control.iff")

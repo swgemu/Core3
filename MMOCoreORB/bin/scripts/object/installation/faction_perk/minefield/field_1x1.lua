@@ -42,7 +42,8 @@
 
 
 object_installation_faction_perk_minefield_field_1x1 = object_installation_faction_perk_minefield_shared_field_1x1:new {
-
+	dataObjectComponent = "MinefieldDataComponent",
+	zoneComponent = "MinefieldZoneComponent",
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_minefield_field_1x1, "object/installation/faction_perk/minefield/field_1x1.iff")

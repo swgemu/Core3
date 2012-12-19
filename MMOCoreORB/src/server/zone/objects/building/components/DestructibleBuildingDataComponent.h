@@ -29,6 +29,8 @@ private:
 	int  switchesTurnedOn; // serialized
 	Vector<bool> powerSwitchesTester;
 	Vector<uint64> turretSlots;
+	Vector<uint64> minefieldSlots;
+	Vector<uint64> scannerSlots;
 
 	Time lastVulnerableTime; // serialized
 	Time nextVulnerableTime; // serialized
@@ -196,6 +198,11 @@ public:
 	void setActiveTurret(int indx, uint64 turretOID){
 		turretSlots.get(indx) = turretOID;
 	}
+
+	void setActiveMinefield(int indx, uint64 minefieldOID){
+		minefieldSlots.get(indx) == minefieldOID;
+	}
+
 	void modifySampleAt(int indx, String val){
 		if(indx < dnaProfiles.size()) {
 			dnaProfiles.remove(indx);
@@ -268,16 +275,35 @@ public:
 		return turretSlots.size();
 	}
 
+	int getTotalMinefieldCount(){
+		return minefieldSlots.size();
+	}
+
+	int getTotalScannerCount(){
+		return scannerSlots.size();
+	}
 	bool isTurretSlotOccupied(int indx){
 		return (turretSlots.get(indx) > 0);
+	}
+
+	bool isMinefieldSlotOccupied(int indx){
+		return (minefieldSlots.get(indx) > 0);
 	}
 
 	uint64 getTurretID(int indx){
 		return turretSlots.elementAt(indx);
 	}
 
+	uint64 getMinefieldOID(int indx){
+		return minefieldSlots.elementAt(indx);
+	}
+
 	bool hasTurret(uint64 turretID){
 		return turretSlots.contains(turretID);
+	}
+
+	bool hasMinefield(uint64 minefieldOID){
+		return minefieldSlots.contains(minefieldOID);
 	}
 
 	int getIndexOfTurret(uint64 turretID){
@@ -289,11 +315,35 @@ public:
 		return -1;
 	}
 
+	int getIndexOfMinefield(uint64 minefieldOID){
+		for(int i=0; i < minefieldSlots.size(); i++){
+			if(minefieldSlots.elementAt(i) == minefieldOID){
+				return i;
+			}
+		}
+		return -1;
+	}
+
 	void setTurretID(int indx, uint64 turretOID){
 		turretSlots.elementAt(indx) = turretOID;
 	}
+
+	void addScanner(int indx, uint64 scannerOID){
+		scannerSlots.add(indx,scannerOID);
+	}
 	void addTurret(int indx, uint64 turretOID){
 		turretSlots.add(indx, turretOID);
+	}
+
+	void setScannerID(int indx, uint64 scannerOID){
+		scannerSlots.elementAt(indx) = scannerOID;
+	}
+	void setMinefieldID(int indx, uint64 minefieldOID){
+		minefieldSlots.elementAt(indx) = minefieldOID;
+	}
+
+	void addMinefield(int indx, uint64 minefieldOID){
+		minefieldSlots.add(indx, minefieldOID);
 	}
 	void spawnChildCreatures();
 

@@ -20,8 +20,11 @@
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 #include "server/zone/objects/tangible/terminal/components/SecurityTerminalDataComponent.h"
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
-//#include "server/zone/objects/installation/components/DetectorDataComponent.h"
+#include "server/zone/objects/installation/components/MinefieldDataComponent.h"
+#include "server/zone/objects/installation/components/DetectorDataComponent.h"
 #include "server/zone/objects/installation/components/TurretZoneComponent.h"
+#include "server/zone/objects/installation/components/MinefieldZoneComponent.h"
+#include "server/zone/objects/installation/components/DetectorZoneComponent.h"
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
 #include "server/zone/objects/player/components/PlayerZoneComponent.h"
 #include "server/zone/objects/building/components/BuildingDataComponent.h"
@@ -59,6 +62,7 @@
 #include "server/zone/objects/tangible/terminal/components/SecurityTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/terminal/components/OverrideTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/terminal/components/PowerRegulatorMenuComponent.h"
+#include "server/zone/objects/tangible/terminal/components/TurretControlMenuComponent.h"
 #include "server/zone/objects/installation/components/InstallationObjectMenuComponent.h"
 #include "server/zone/objects/installation/components/FactoryObjectMenuComponent.h"
 #include "server/zone/ZoneContainerComponent.h"
@@ -155,6 +159,9 @@ ComponentManager::ComponentManager() {
 	components.put("VendorMenuComponent", new VendorMenuComponent());
 	components.put("VendorZoneComponent", new VendorZoneComponent());
 	components.put("TurretZoneComponent", new TurretZoneComponent());
+	components.put("MinefieldZoneComponent", new MinefieldZoneComponent());
+	components.put("DetectorZoneComponent", new DetectorZoneComponent());
+
 	dataObjectFactory.registerObject<VendorDataComponent>("VendorDataComponent");
 	dataObjectFactory.registerObject<AuctionTerminalDataComponent>("AuctionTerminalDataComponent");
 	dataObjectFactory.registerObject<SecurityTerminalDataComponent>("SecurityTerminalDataComponent");
@@ -178,9 +185,9 @@ ComponentManager::ComponentManager() {
 	dataObjectFactory.registerObject<DiceDataComponent>("DiceDataComponent");
 
 	dataObjectFactory.registerObject<TurretDataComponent>("TurretDataComponent");
+	dataObjectFactory.registerObject<MinefieldDataComponent>("MinefieldDataComponent");
 
-	//components.put("DetectorDataComponent", new DetectorDataComponent());
-	//dataObjectFactory.registerObject<DetectorDataComponent>("DetectorDataComponent");
+	dataObjectFactory.registerObject<DetectorDataComponent>("DetectorDataComponent");
 
 	components.put("CreatureHabitatMenuComponent", new CreatureHabitatMenuComponent());
 	components.put("WearableObjectMenuComponent", new WearableObjectMenuComponent());
@@ -216,6 +223,6 @@ ComponentManager::ComponentManager() {
 	components.put("SecurityTerminalMenuComponent", new SecurityTerminalMenuComponent());
 	components.put("OverrideTerminalMenuComponent", new OverrideTerminalMenuComponent());
 	components.put("PowerRegulatorMenuComponent", new PowerRegulatorMenuComponent());
-
+	components.put("TurretControlMenuComponent", new TurretControlMenuComponent());
 	components.put("GCWBaseContainerComponent", new GCWBaseContainerComponent());
 }

@@ -92,7 +92,6 @@ int DestructibleBuildingDataComponent::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-
 	_name = "vulnerabilityEndTime";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -173,6 +172,22 @@ int DestructibleBuildingDataComponent::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "minefieldSlots";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Vector<uint64>  >::toBinaryStream(&minefieldSlots,stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_name = "scannerSlots";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Vector<uint64>  >::toBinaryStream(&scannerSlots,stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "activeDefenses";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -189,7 +204,7 @@ int DestructibleBuildingDataComponent::writeObjectMembers(ObjectOutputStream* st
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	return 16;
+	return 18;
 
 
 }
@@ -264,6 +279,15 @@ bool DestructibleBuildingDataComponent::readObjectMember(ObjectInputStream* stre
 		return true;
 	}
 
+	if (name == "minefieldSlots"){
+		TypeInfo<Vector<uint64> >::parseFromBinaryStream(&minefieldSlots, stream);
+		return true;
+	}
+
+	if (name == "scannerSlots"){
+		TypeInfo<Vector<uint64> >::parseFromBinaryStream(&scannerSlots, stream);
+		return true;
+	}
 	if(name == "activeDefenses"){
 		TypeInfo<bool>::parseFromBinaryStream(&activeDefenses, stream);
 		return true;

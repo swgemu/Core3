@@ -1317,6 +1317,15 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		dataObjectComponent.get().isTurretData();
 	}
 
+	@local 
+	@read
+	public boolean isMinefield(){
+		return dataObjectComponent != null && 
+		dataObjectComponent.get() != null &&
+		dataObjectComponent.get().isMinefieldData();
+	}
+
+	
 	@local
 	@read
 	public boolean isDetector() {

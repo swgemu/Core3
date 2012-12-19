@@ -105,6 +105,24 @@ class PlayerObject;
 
 using namespace server::zone::objects::player;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+namespace deed {
+namespace structure {
+
+class StructureDeed;
+
+} // namespace structure
+} // namespace deed
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible::deed::structure;
+
 #include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
 
 #include "engine/core/ManagedService.h"
@@ -238,7 +256,11 @@ public:
 
 	void sendStatus(BuildingObject* building, CreatureObject* creature);
 
+	void addMinefield(BuildingObject* building, SceneObject* minefield);
+
 	void addTurret(BuildingObject* building, SceneObject* turret);
+
+	void addScanner(BuildingObject* building, SceneObject* scanner);
 
 	void removeDefense(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID);
 
@@ -468,9 +490,21 @@ public:
 
 	void performDefenseDontation(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID, int turretIndex);
 
+private:
+	void performDonateMine(BuildingObject* building, CreatureObject* creature, SceneObject* sceneObject);
+
+	void performDonateMinefield(BuildingObject* building, CreatureObject* creature, StructureDeed* deed);
+
+	void performDonateTurret(BuildingObject* building, CreatureObject* creature, StructureDeed* deed);
+
+public:
 	void sendStatus(BuildingObject* building, CreatureObject* creature);
 
+	void addMinefield(BuildingObject* building, SceneObject* minefield);
+
 	void addTurret(BuildingObject* building, SceneObject* turret);
+
+	void addScanner(BuildingObject* building, SceneObject* scanner);
 
 	void removeDefense(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID);
 
@@ -615,7 +649,11 @@ public:
 
 	void sendStatus(BuildingObject* building, CreatureObject* creature);
 
+	void addMinefield(BuildingObject* building, SceneObject* minefield);
+
 	void addTurret(BuildingObject* building, SceneObject* turret);
+
+	void addScanner(BuildingObject* building, SceneObject* scanner);
 
 	void removeDefense(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID);
 
