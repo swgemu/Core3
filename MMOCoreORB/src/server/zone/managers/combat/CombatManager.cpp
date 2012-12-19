@@ -1711,37 +1711,56 @@ uint32 CombatManager::getDefaultAttackAnimation(CreatureObject* creature) {
 		return defaultAttacks[System::random(8)];
 }
 
-int CombatManager::doCombatAction(TangibleObject* attacker, CreatureObject* defender, CombatQueueCommand* command){
-
-	SceneObject* sceneObject = attacker->getSlottedObject("hold_r");
-
-	if(sceneObject == NULL){
-		return 0;
-	}
-	WeaponObject* weapon = cast<WeaponObject*>(sceneObject);
+int CombatManager::doCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defender, CombatQueueCommand* command){
 
 	if(weapon != NULL){
 		if(!command->isAreaAction()){
 			doTargetCombatAction(attacker, weapon, defender, CreatureAttackData("",command));
+		} else {
+			doAreaCombatAction(attacker, weapon, defender, CreatureAttackData("",command));
 		}
 	}
 
 	return 0;
 }
 
+int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* tano, const CreatureAttackData& data) {
+
+	int damage = 0;
+
+	Locker clocker(tano, attacker);
+
+	attacker->addDefender(tano);
+	tano->addDefender(attacker);
+
+	if (tano->isCreatureObject()) {
+		CreatureObject* defenderObject = cast<CreatureObject*>( tano);
+		damage = doTargetCombatAction(attacker, weapon, defenderObject, data);
+	} else {
+		// TODO: implement, tano->tano damage
+	}
+
+
+	return damage;
+}
+
+// called for single target attackers
 int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defenderObject, const CreatureAttackData& data) {
 
+	// TODO: find a place to add defenders
+	//attacker->addDefender(defenderObject);
+	//tano->addDefender(attacker);
 
 	float minDamage = weapon->getMinDamage(), maxDamage = weapon->getMaxDamage();
 	float diff = maxDamage - minDamage;
 	float damage = 0;
-
+	float damageMultiplier = 1.0f;
 	if (diff >= 0)
 		damage = System::random(diff) + (int)minDamage;
 
-		int finaldamage = getArmorReduction(attacker, defenderObject, damage, CombatManager::HEALTH, data);
+		damage = getArmorReduction(attacker, weapon, defenderObject, damage, CombatManager::HEALTH, data);
 
-		float damageMultiplier = 1.0f;
+
 		int hitVal = getHitChance(attacker, defenderObject, weapon, damage, data.getAccuracyBonus());
 
 		String combatSpam = data.getCommand()->getCombatSpam();
@@ -1784,12 +1803,26 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 		}
 
 
+		// TODO:  create an apply damage(tano, creature)
+		defenderObject->inflictDamage(attacker,CreatureAttribute::HEALTH, damage * damageMultiplier,true);
 
-		defenderObject->inflictDamage(attacker,CreatureAttribute::HEALTH, finaldamage * damageMultiplier,true);
-		//broadcastCombatSpam(attacker, defender, weapon, finaldamage, command->getCombatSpam() + "_hit");
+
+
+	return damage;
+}
+
+
+
+
+
+int CombatManager::applyDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defenderObject, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data){
+
 
 	return 0;
 }
+
+
+
 int CombatManager::getArmorObjectReduction(WeaponObject* weapon, ArmorObject* armor){
 
 	if(weapon == NULL)
@@ -1835,20 +1868,109 @@ int CombatManager::getArmorObjectReduction(WeaponObject* weapon, ArmorObject* ar
 		return MAX(0, (int)resist);
 }
 
-int CombatManager::getArmorReduction(TangibleObject* attacker, CreatureObject* defender, float damage, int poolToDamage, const CreatureAttackData& data){
+int CombatManager::doAreaCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data){
+		float creatureVectorX = attacker->getPositionX();
+		float creatureVectorY = attacker->getPositionY();
+
+		float directionVectorX = defenderObject->getPositionX() - creatureVectorX;
+		float directionVectorY = defenderObject->getPositionY() - creatureVectorY;
+
+		Zone* zone = attacker->getZone();
+
+		if (zone == NULL)
+			return 0;
+
+		PlayerManager* playerManager = zone->getZoneServer()->getPlayerManager();
+
+		int damage = 0;
+
+		int range = data.getAreaRange();
+
+		if (data.getCommand()->isConeAction()) {
+			range = data.getRange();
+		}
+
+		if (range < 0) {
+			range = weapon->getMaxRange();
+		}
+
+		try {
+			//zone->rlock();
+
+			CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
+
+			SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+
+			if (vec != NULL) {
+				closeObjects.removeAll(vec->size(), 10);
+				vec->safeCopyTo(closeObjects);
+			} else {
+				zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
+			}
+
+			for (int i = 0; i < closeObjects.size(); ++i) {
+				ManagedReference<SceneObject*> object = cast<SceneObject*>(closeObjects.get(i).get());
+
+				if (!object->isTangibleObject()) {
+					//error("object is not tangible");
+					continue;
+				}
+
+				TangibleObject* tano = cast<TangibleObject*>(object.get());
+
+				if (object == attacker) {
+					//error("object is attacker");
+					continue;
+				}
+
+				if (!attacker->isInRange(object, range)) {
+					//error("not in range " + String::valueOf(range));
+					continue;
+				}
+
+				if (tano->isCreatureObject() && (cast<CreatureObject*>(tano))->isIncapacitated()) {
+					//error("object is incapacitated");
+					continue;
+				}
+
+				if (data.getCommand()->isConeAction() && !checkConeAngle(tano, data.getConeAngle(), creatureVectorX, creatureVectorY, directionVectorX, directionVectorY)) {
+					//error("object is not in cone angle");
+					continue;
+				}
+
+	//			zone->runlock();
+
+				try {
+					if (CollisionManager::checkLineOfSight(object, attacker)) {
+						damage += doTargetCombatAction(attacker, weapon, tano, data);
+
+					}
+				} catch (Exception& e) {
+					error(e.getMessage());
+				} catch (...) {
+					zone->rlock();
+
+					throw;
+				}
+
+	//			zone->rlock();
+			}
+
+	//		zone->runlock();
+		} catch (...) {
+	//		zone->runlock();
+
+			throw;
+		}
+
+		return damage;
+	return 0;
+}
+
+
+int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, float damage, int poolToDamage, const CreatureAttackData& data){
 	if (poolToDamage == 0)
 			return 0;
-
-	ManagedReference<SceneObject*> sceneObject =  NULL;
-
-	if(attacker->isTurret()){
-		sceneObject = attacker->getSlottedObject("hold_r");
-
-		if(sceneObject == NULL)
-			return 0;
-	}
-
-	WeaponObject* weapon = cast<WeaponObject*>(sceneObject.get());
 
 	if(weapon == NULL)
 		return 0;

@@ -76,7 +76,10 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 					if(combatCommand != NULL){
 						combatCommand->setAnimationCRC(String("fire_turret_medium").hashCode());
 						Locker _lock(tano);
-						CombatManager::instance()->doCombatAction(tano, player, combatCommand);
+
+						WeaponObject* weapon = cast<WeaponObject*>(sceneObject->getSlottedObject("hold_r"));
+						TangibleObject* defenderObject = cast<TangibleObject*>(entry);
+						CombatManager::instance()->doCombatAction(tano, weapon, defenderObject, combatCommand);
 						turretData->updateCooldown();
 					}
 				}

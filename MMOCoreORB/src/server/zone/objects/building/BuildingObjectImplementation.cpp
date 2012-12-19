@@ -124,7 +124,13 @@ int BuildingObjectImplementation::getCurrentNumberOfPlayerItems() {
 }
 
 void BuildingObjectImplementation::createCellObjects() {
-
+	if(isGCWBase()){
+			this->setContainerInheritPermissionsFromParent(false);
+			this->clearContainerDefaultAllowPermission(ContainerPermissions::WALKIN);
+			this->clearContainerDefaultDenyPermission(ContainerPermissions::WALKIN);
+			this->setContainerAllowPermission("overt",ContainerPermissions::WALKIN);
+			this->setContainerAllowPermission("overt",ContainerPermissions::MOVEIN);
+	}
 	for (int i = 0; i < totalCellNumber; ++i) {
 
 		SceneObject* newCell = getZoneServer()->createObject(0xAD431713, getPersistenceLevel());
@@ -132,6 +138,13 @@ void BuildingObjectImplementation::createCellObjects() {
 		if (!transferObject(newCell, -1))
 			error("could not add cell");
 
+		if(isGCWBase()){
+			newCell->setContainerInheritPermissionsFromParent(false);
+			newCell->clearContainerDefaultAllowPermission(ContainerPermissions::WALKIN);
+			newCell->clearContainerDefaultDenyPermission(ContainerPermissions::WALKIN);
+			newCell->setContainerAllowPermission("overt",ContainerPermissions::WALKIN);
+			newCell->setContainerAllowPermission("overt",ContainerPermissions::MOVEIN);
+		}
 		addCell(cast<CellObject*>(newCell), i + 1);
 	}
 
@@ -150,6 +163,7 @@ void BuildingObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	//info("building sendto..", true);
 
+
 	if (!isStaticBuilding()) { // send Baselines etc..
 		//info("sending building object create");
 
@@ -162,6 +176,7 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	// for some reason client doesnt like when you send cell creatures while sending cells?
 	for (int i = 0; i < cells.size(); ++i) {
 		CellObject* cell = cells.get(i);
+
 
 		ContainerPermissions* perms = cell->getContainerPermissions();
 
@@ -178,8 +193,9 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 			SceneObject* containerObject = cell->getContainerObject(j);
 
 			if ((containerObject->isCreatureObject() && publicStructure) || player == containerObject
-					|| (closeObjects != NULL && closeObjects->contains(containerObject)))
-				containerObject->sendTo(player, true);
+							|| (closeObjects != NULL && closeObjects->contains(containerObject)))
+						containerObject->sendTo(player, true);
+
 		}
 	}
 	//}
@@ -579,6 +595,7 @@ void BuildingObjectImplementation::updateCellPermissionsTo(CreatureObject* creat
 		if (cell == NULL)
 			continue;
 
+		//cell->sendPermissionsTo(creature,false);
 		cell->sendPermissionsTo(creature, allowEntry);
 	}
 }
@@ -613,11 +630,13 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 
 	Locker acessLock(&paidAccessListMutex);
 
+	/*
 	if(isGCWBase()){
 		if(!checkContainerPermission(player,ContainerPermissions::WALKIN)){
 			ejectObject(player);
 		}
 	}
+	*/
 
 	if (accessFee > 0 && !isOnEntryList(player)) {
 		//thread safety issues!

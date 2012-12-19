@@ -114,7 +114,7 @@ public:
 	 * @param poolsToDamage bitmask of what pool to damage (bit 1 health, 2 action, 4 mind, 8 random)
 	 * @return returns -1 on failure to start combat or damage on succesfull combat
 	 */
-	int doCombatAction(TangibleObject* attacker, CreatureObject* defenderObject, CombatQueueCommand* command);
+	int doCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, CombatQueueCommand* command);
 	int doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CombatQueueCommand* command);
 	int doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data);
 
@@ -167,8 +167,9 @@ protected:
 	const static uint32 defaultAttacks[9];
 
 
-	int doTargetCombatAction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defenderObject, const CreatureAttackData& data);
+
 	int doTargetCombatAction(CreatureObject* attacker, CreatureObject* defenderObject, const CreatureAttackData& data);
+	int doAreaCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data);
 	int doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data);
 	int doTargetCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data);
 	void applyDots(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data, int appliedDamage);
@@ -204,13 +205,16 @@ protected:
 	void doDodge(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam);
 	void doLightsaberBlock(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam);
 
+	int applyDamage(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defenderObject, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data);
 	int applyDamage(CreatureObject* attacker, TangibleObject* defender, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data);
 	int applyDamage(CreatureObject* attacker, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data);
 	void applyStates(CreatureObject* creature, CreatureObject* targetCreature, const CreatureAttackData& data);
 
+	int doTargetCombatAction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defenderObject, const CreatureAttackData& data);
+	int doTargetCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* tano, const CreatureAttackData& data);
 	int getArmorObjectReduction(WeaponObject* weapon, ArmorObject* armor);
 	int getArmorObjectReduction(CreatureObject* attacker, ArmorObject* armor);
-	int getArmorReduction(TangibleObject* attacker, CreatureObject* defender, float damage, int poolsToDamage, const CreatureAttackData& data);
+	int getArmorReduction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, float damage, int poolsToDamage, const CreatureAttackData& data);
 	int getArmorReduction(CreatureObject* attacker, CreatureObject* defender, float damage, int poolsToDamage, const CreatureAttackData& data);
 	float getArmorPiercing(ArmorObject* armor, WeaponObject* weapon);
 	float getArmorPiercing(AiAgent* defender, WeaponObject* weapon);

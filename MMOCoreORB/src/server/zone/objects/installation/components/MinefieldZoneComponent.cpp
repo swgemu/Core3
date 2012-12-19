@@ -15,11 +15,12 @@
 #include "server/zone/objects/installation/InstallationObject.h"
 
 #include "MinefieldDataComponent.h"
-//#include "DetectorDataComponent.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/Zone.h"
 
-
+#include "server/zone/managers/combat/CreatureAttackData.h"
+#include "server/zone/objects/creature/commands/CombatQueueCommand.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 
 void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry){
 	Locker _lock(sceneObject);
@@ -60,22 +61,44 @@ void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, Quad
 			return;
 
 
+		Locker _lock(tano);
+
 		if(tano->getFaction() != player->getFaction() && player->getFaction() != 0 && sceneObject->getContainerObjectsSize() > 0){
-					ManagedReference<SceneObject*> obj = sceneObject->getContainerObject(0);
+				ManagedReference<SceneObject*> obj = sceneObject->getContainerObject(0);
 				if(obj == NULL){
 					info("container object isnull",true);
 					return;
 				}
 
-				Locker clock(obj, sceneObject);
+
+				ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(sceneObject->getContainerObject(0));
 
 				if(obj->getGameObjectType() == SceneObjectType::MINE){
 					if(sceneObject->hasObjectInContainer(obj->getObjectID())){
 						sceneObject->removeObject(obj,NULL,true);
 					}
 
+					if(sceneObject->getZoneServer() != NULL){
+						ManagedReference<ObjectController*> objectController = sceneObject->getZoneServer()->getObjectController();
+						QueueCommand* command = objectController->getQueueCommand(String("defaultattack").hashCode());
+
+						if(command != NULL){
+							CombatQueueCommand* combatCommand = cast<CombatQueueCommand*>(command);
+							if(combatCommand != NULL){
+								combatCommand->setAreaAction(true);
+								combatCommand->setAreaRange(weapon->getMaxRange());
+								TangibleObject* defenderObject = cast<TangibleObject*>(entry);
+								CombatManager::instance()->doCombatAction(tano, weapon, defenderObject, combatCommand);
+
+							}
+						}
+
+					}
+
 					PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", tano->getZone()->getZoneName(), tano->getPositionX(), tano->getPositionZ(), tano->getPositionY());
 					tano->broadcastMessage(explodeLoc, false);
+
+					Locker clocker(obj,tano);
 					obj->destroyObjectFromWorld(true);
 					obj->destroyObjectFromDatabase(true);
 
