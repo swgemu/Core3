@@ -44,16 +44,17 @@
 object_weapon_mine_wp_mine_xg = object_weapon_mine_shared_wp_mine_xg:new {
 
 	pointBlankRange = 0,
-	pointBlankAccuracy = 50,
-	idealRange = 0,
-	idealAccuracy = 50,
+	pointBlankAccuracy = 80,
+	idealRange = 1,
+	idealAccuracy = 80,
 	maxRange = 20,
 	maxRangeAccuracy = 30,
-	minDamage = 50,
-	maxDamage = 100,
-	attackSpeed = 6,
+	minDamage = 100,
+	maxDamage = 200,
+	attackSpeed = 3,
 	woundsRatio = 9,
-	
+	damageType = BLAST,
+	armorPiercing = HEAVY,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 1},
 	experimentalProperties = {"XX", "XX", "SR", "UT", "SR", "UT", "SR", "UT", "SR", "UT", "XX"},
