@@ -25,7 +25,7 @@
 #include "MinefieldAttackTask.h"
 
 void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) {
-	Locker _lock(sceneObject);
+//	Locker _lock(sceneObject);
 
 	// just exit if we dont' have any mines
 	if(sceneObject->getContainerObjectsSize() == 0)
