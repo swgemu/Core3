@@ -24,7 +24,9 @@ void BankTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 	if (ghost == NULL)
 		return;
 
-	if (sceneObject->getZone() == NULL)
+	Zone* playerZone = sceneObject->getZone();
+
+	if (playerZone == NULL)
 		return;
 
 	String location = ghost->getBankLocation();
@@ -43,7 +45,7 @@ void BankTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		}
 		 */
 
-		String currentLocation = sceneObject->getZone()->getZoneName();
+		String currentLocation = playerZone->getZoneName();
 		//if (currentLocation == location) {
 			menuResponse->addRadialMenuItemToRadialID(20, 73, 3, "@sui:bank_items"); //Safety Deposit
 		//}
@@ -60,6 +62,11 @@ int BankTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 		return 0;
 
 	if (!creature->isPlayerCreature())
+		return 0;
+
+	Zone* playerZone = creature->getZone();
+
+	if (playerZone == NULL)
 		return 0;
 
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
@@ -90,12 +97,12 @@ int BankTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 
 		if (planet == "") {
 			// JOIN BANK
-			ghost->setBankLocation(creature->getZone()->getZoneName());
+			ghost->setBankLocation(playerZone->getZoneName());
 			//creature->transferObject(bank, 4);
 			SceneObject* bank = creature->getSlottedObject("bank");
 			bank->sendTo(creature, true);
 			creature->sendSystemMessage("@system_msg:succesfully_joined_bank");
-		} else if (planet == creature->getZone()->getZoneName()) {
+		} else if (planet == playerZone->getZoneName()) {
 			// Already joined this bank
 			creature->sendSystemMessage("@system_msg:already_member_of_bank");
 		} else {
@@ -132,7 +139,7 @@ int BankTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 
 	} else if (selectedID == DEPOSIT) {
 
-		if (planet == creature->getZone()->getZoneName() || GLOBALSAFETYDEPOSIT) {
+		if (planet == playerZone->getZoneName() || GLOBALSAFETYDEPOSIT) {
 
 			ManagedReference<SceneObject*> bank = creature->getSlottedObject("bank");
 			bank->openContainerTo(creature);

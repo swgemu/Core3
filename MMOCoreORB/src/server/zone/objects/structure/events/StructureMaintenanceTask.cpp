@@ -19,6 +19,14 @@ void StructureMaintenanceTask::run() {
 	if (strongRef == NULL)
 		return;
 
+	ZoneServer* zoneServer = strongRef->getZoneServer();
+
+	if (zoneServer != NULL && zoneServer->isServerLoading()) {
+		schedule(1000);
+
+		return;
+	}
+
 	if (strongRef->getSurplusMaintenance() > 0) {
 		//Incorrect scheduling, reschedule.
 		Locker locker(strongRef);

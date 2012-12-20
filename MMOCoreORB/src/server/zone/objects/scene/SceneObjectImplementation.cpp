@@ -1130,8 +1130,17 @@ ManagedWeakReference<SceneObject*> SceneObjectImplementation::getRootParent() {
 	if (grandParent == NULL)
 		return NULL;
 
-	while ((tempParent = grandParent->getParent()) != NULL && grandParent != _this.get())
+	SortedVector<ManagedReference<SceneObject*> > parents;
+	parents.setNoDuplicateInsertPlan();
+
+	while ((tempParent = grandParent->getParent()) != NULL && grandParent != _this.get()) {
 		grandParent = tempParent;
+
+		if (parents.contains(grandParent))
+			return NULL;
+		else
+			parents.put(grandParent);
+	}
 
 	if (grandParent == _this.get())
 		return NULL;

@@ -32,8 +32,8 @@
 #include "server/zone/objects/player/sui/callbacks/CitySetTaxSuiCallback.h"
 #include "server/zone/objects/region/CitizenList.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "TaxPayMailTask.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
-
 
 #ifndef CITY_DEBUG
 #define CITY_DEBUG
@@ -581,10 +581,7 @@ void CityManagerImplementation::processIncomeTax(CityRegion* city) {
 
 	CitizenList* citizens = city->getCitizenList();
 
-	int totalIncome = 0;
-
-	StringIdChatParameter params("city/city", "income_tax_paid_body");
-	params.setDI(incomeTax);
+	Reference<TaxPayMailTask*> task = new TaxPayMailTask(incomeTax, mayorName, chatManager, city);
 
 	for (int i = 0; i < citizens->size(); ++i) {
 		uint64 oid = citizens->get(i);
@@ -596,31 +593,10 @@ void CityManagerImplementation::processIncomeTax(CityRegion* city) {
 
 		CreatureObject* citizen = obj.castTo<CreatureObject*>();
 
-		Locker _clock(citizen, city);
-
-		params.setTO(citizen->getDisplayedName());
-
-		int bank = citizen->getBankCredits();
-
-		if (bank < incomeTax) {
-			params.setStringId("city/city", "income_tax_nopay_body");
-			chatManager->sendMail("@city/city:new_city_from", "@city/city:income_tax_nopay_subject", params, citizen->getFirstName(), NULL);
-
-			params.setStringId("city/city", "income_tax_nopay_mayor_body");
-			chatManager->sendMail("@city/city:new_city_from", "@city/city:income_tax_nopay_mayor_subject", params, mayorName, NULL);
-
-			continue;
-		}
-
-		citizen->subtractBankCredits(incomeTax);
-
-		params.setStringId("city/city", "income_tax_paid_body");
-		chatManager->sendMail("@city/city:new_city_from", "@city/city:income_tax_paid_subject", params, citizen->getFirstName(), NULL);
-
-		totalIncome += incomeTax;
+		task->addCitizen(citizen);
 	}
 
-	city->addToCityTreasury(totalIncome);
+	task->execute();
 }
 
 void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
@@ -1129,9 +1105,15 @@ void CityManagerImplementation::unregisterCity(CityRegion* city, CreatureObject*
 
 	if (city->getRegionsCount() != 0) {
 		ManagedReference<Region*> aa = city->getRegion(0);
-		aa->getZone()->unregisterObjectWithPlanetaryMap(aa);
+		Zone* aaZone = aa->getZone();
+
+		if (aaZone != NULL) {
+			aaZone->unregisterObjectWithPlanetaryMap(aa);
+
+			aaZone->getPlanetManager()->dropRegion(city->getRegionName());
+		}
+
 		aa->setPlanetMapCategory(NULL);
-		aa->getZone()->getPlanetManager()->dropRegion(city->getRegionName());
 	}
 
 	mayor->sendSystemMessage("@city/city:unregistered"); //Your city is no longer registered on the planetary map.

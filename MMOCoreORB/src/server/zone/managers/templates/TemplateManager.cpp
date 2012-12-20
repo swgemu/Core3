@@ -292,7 +292,7 @@ PaletteTemplate* TemplateManager::getPaletteTemplate(const String& fileName) {
 	try {
 		palette->readObject(stream);
 	} catch (Exception& e) {
-		error("could not parse palette template: " + String::valueOf(fileName));
+		error("could not parse palette template: " + String(fileName));
 		error(e.getMessage());
 
 		delete palette;

@@ -794,6 +794,7 @@ void AiAgentImplementation::activateAwarenessEvent(CreatureObject *target) {
 #ifdef DEBUG
 	info("Starting activateAwarenessEvent check", true);
 #endif
+	Locker locker(&targetMutex);
 
 	if (awarenessEvent == NULL) {
 		awarenessEvent = new AiAwarenessEvent(_this.get(), target);

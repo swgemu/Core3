@@ -348,6 +348,7 @@ void CityRegionImplementation::cleanupCitizens() {
 
 		if (building != NULL) {
 			uint64 owner = building->getOwnerObjectID();
+			
 			ownerIds.put(owner);
 		}
 	}

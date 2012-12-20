@@ -1265,6 +1265,12 @@ void PlayerObjectImplementation::logout(bool doLock) {
 
 
 void PlayerObjectImplementation::doRecovery() {
+	if (getZoneServer()->isServerLoading()) {
+		activateRecovery();
+
+		return;
+	}
+
 	CreatureObject* creature = dynamic_cast<CreatureObject*>(parent.get().get());
 
 	/*if (!creature->isInQuadTree() && creature->getParent() != NULL && creature->getParent()->isCellObject() && creature->getClient() == NULL) {

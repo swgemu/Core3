@@ -119,6 +119,8 @@ void ManufactureSchematicImplementation::sendTo(SceneObject* player, bool doClos
 }
 
 void ManufactureSchematicImplementation::sendBaselinesTo(SceneObject* player) {
+	ManagedReference<DraftSchematic* > draftSchematic = this->draftSchematic;
+
 	if (!player->isPlayerCreature() || draftSchematic == NULL)
 		return;
 

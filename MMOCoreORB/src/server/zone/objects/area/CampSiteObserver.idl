@@ -60,12 +60,13 @@ class CampSiteObserver extends Observer implements Logger {
 	}
 	
 	public int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2) {
+		CampSiteActiveArea strongRef = campArea;
 
-		if(campArea != null && eventType == ObserverEventType.HEALINGPERFORMED)
-			return campArea.notifyHealEvent(arg2);
+		if(strongRef != null && eventType == ObserverEventType.HEALINGPERFORMED)
+			return strongRef.notifyHealEvent(arg2);
 		
-		if(campArea != null && eventType == ObserverEventType.STARTCOMBAT)
-			return campArea.notifyCombatEvent();
+		if(strongRef != null && eventType == ObserverEventType.STARTCOMBAT)
+			return strongRef.notifyCombatEvent();
 		
 		return 1;
 	}

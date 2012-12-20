@@ -419,19 +419,28 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 		
 		locker.release();
 
-		SortedVector<ManagedReference<QuadTreeEntry*> >* closeobjects = sceneObject->getCloseObjects();
 
-		
+		SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
+
+		CloseObjectsVector* closeobjects = (CloseObjectsVector*) sceneObject->getCloseObjects();
+
 		if (closeobjects != NULL) {
 			try {
-				while (closeobjects->size() > 0) {
-					ManagedReference<QuadTreeEntry*> obj = closeobjects->get(0);
+				closeobjects->safeCopyTo(closeSceneObjects);
 
-					if (obj != sceneObject && obj->getCloseObjects() != NULL)
+				while (closeSceneObjects.size() > 0) {
+					ManagedReference<QuadTreeEntry*> obj = closeSceneObjects.get(0);
+
+					if (obj != NULL && obj != sceneObject && obj->getCloseObjects() != NULL)
 						obj->removeInRangeObject(sceneObject);
 					
 					sceneObject->removeInRangeObject((int) 0);
+
+					closeSceneObjects.remove((int) 0);
 				}
+
+				closeobjects->removeAll();
+
 			} catch (...) {
 			}
 		} else {
