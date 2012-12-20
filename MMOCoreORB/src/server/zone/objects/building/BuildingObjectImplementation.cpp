@@ -124,13 +124,7 @@ int BuildingObjectImplementation::getCurrentNumberOfPlayerItems() {
 }
 
 void BuildingObjectImplementation::createCellObjects() {
-	if(isGCWBase()){
-			this->setContainerInheritPermissionsFromParent(false);
-			this->clearContainerDefaultAllowPermission(ContainerPermissions::WALKIN);
-			this->clearContainerDefaultDenyPermission(ContainerPermissions::WALKIN);
-			this->setContainerAllowPermission("overt",ContainerPermissions::WALKIN);
-			this->setContainerAllowPermission("overt",ContainerPermissions::MOVEIN);
-	}
+
 	for (int i = 0; i < totalCellNumber; ++i) {
 
 		SceneObject* newCell = getZoneServer()->createObject(0xAD431713, getPersistenceLevel());
@@ -138,13 +132,6 @@ void BuildingObjectImplementation::createCellObjects() {
 		if (!transferObject(newCell, -1))
 			error("could not add cell");
 
-		if(isGCWBase()){
-			newCell->setContainerInheritPermissionsFromParent(false);
-			newCell->clearContainerDefaultAllowPermission(ContainerPermissions::WALKIN);
-			newCell->clearContainerDefaultDenyPermission(ContainerPermissions::WALKIN);
-			newCell->setContainerAllowPermission("overt",ContainerPermissions::WALKIN);
-			newCell->setContainerAllowPermission("overt",ContainerPermissions::MOVEIN);
-		}
 		addCell(cast<CellObject*>(newCell), i + 1);
 	}
 
@@ -1003,7 +990,7 @@ void BuildingObjectImplementation::createChildObjects(){
 			SharedObjectTemplate* thisTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
 			//info("tried to get " + child->getTemplateFile(),true);
 
-			if(thisTemplate == NULL || thisTemplate->getGameObjectType() == SceneObjectType::NPCCREATURE)
+			if(thisTemplate == NULL || thisTemplate->getGameObjectType() == SceneObjectType::NPCCREATURE || thisTemplate->getGameObjectType() == SceneObjectType::CREATURE)
 				continue;
 
 
@@ -1014,6 +1001,7 @@ void BuildingObjectImplementation::createChildObjects(){
 			}
 
 			ManagedReference<SceneObject*> obj = server->createObject(child->getTemplateFile().hashCode(),dbString,1);
+
 
 			if (obj == NULL )
 				continue;
