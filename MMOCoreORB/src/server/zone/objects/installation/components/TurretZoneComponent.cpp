@@ -25,7 +25,7 @@
 #include "server/zone/managers/combat/CreatureAttackData.h"
 #include "server/zone/objects/creature/commands/CombatQueueCommand.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
-
+#include "TurretFireTask.h"
 
 void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry){
 
@@ -62,31 +62,9 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 		}
 
 		if(tano->getFaction() != player->getFaction() && playerObject->getFactionStatus() == FactionStatus::OVERT && tano->getFaction() != 0){
-			// TODO: call combat manager here to fire actual attack
-			if(!CollisionManager::checkLineOfSight(target, sceneObject)){
-				return;
-			}
-
-			if(sceneObject->getZoneServer() != NULL){
-				ManagedReference<ObjectController*> objectController = sceneObject->getZoneServer()->getObjectController();
-				QueueCommand* command = objectController->getQueueCommand(String("defaultattack").hashCode());
-
-				if(command != NULL){
-					CombatQueueCommand* combatCommand = cast<CombatQueueCommand*>(command);
-					if(combatCommand != NULL){
-						combatCommand->setAnimationCRC(String("fire_turret_medium").hashCode());
-						Locker _lock(tano);
-
-						WeaponObject* weapon = cast<WeaponObject*>(sceneObject->getSlottedObject("hold_r"));
-						TangibleObject* defenderObject = cast<TangibleObject*>(entry);
-						CombatManager::instance()->doCombatAction(tano, weapon, defenderObject, combatCommand);
-						turretData->updateCooldown();
-					}
-				}
-
-			}
+			Reference<TurretFireTask*> task = new TurretFireTask(tano, player);
+			task->execute();
 		}
-
 	}
 
 }

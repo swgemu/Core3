@@ -56,16 +56,16 @@ using namespace server::zone::objects::creature;
 namespace server {
 namespace zone {
 namespace objects {
-namespace creature {
+namespace tangible {
 
-class CreatureObject;
+class TangibleObject;
 
-} // namespace creature
+} // namespace tangible
 } // namespace objects
 } // namespace zone
 } // namespace server
 
-using namespace server::zone::objects::creature;
+using namespace server::zone::objects::tangible;
 
 namespace server {
 namespace zone {

@@ -10,7 +10,7 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 

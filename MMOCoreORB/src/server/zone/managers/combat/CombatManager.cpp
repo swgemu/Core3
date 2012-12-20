@@ -1,4 +1,4 @@
- /*
+/*
  * CombatManager.cpp
  *
  *  Created on: 24/02/2010
@@ -1041,7 +1041,7 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* attacker, Weapon
 	float jediSpeed = attacker->getSkillMod("combat_haste") / 100.0f;
 
 	float attackSpeed = (1.0f - ((float) speedMod / 100.0f)) * skillSpeedRatio * weapon->getAttackSpeed();
-	
+
 	if (jediSpeed > 0)
 		attackSpeed = attackSpeed * jediSpeed;
 
@@ -1113,7 +1113,7 @@ bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const Creat
 	health -= MIN(health, health * attacker->getHAM(CreatureAttribute::STRENGTH) / 10000.f);
 	action -= MIN(action, action * attacker->getHAM(CreatureAttribute::QUICKNESS) / 10000.f);
 	mind -= MIN(mind, mind * attacker->getHAM(CreatureAttribute::FOCUS) / 10000.f);
-	*/
+	 */
 
 	health = MAX(0, health - (float(attacker->getHAM(CreatureAttribute::STRENGTH)) / 10.f));
 	action = MAX(0, action - (float(attacker->getHAM(CreatureAttribute::QUICKNESS)) / 10.f));
@@ -1176,7 +1176,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 				targetDefense = 95 + defDiff * 0.25 * lRatio;
 
 			if (targetDefense > 0 && System::random(100) < targetDefense)
-							failed = true;
+				failed = true;
 			/*
 			 * old way...
 			uint32 strength = effect.getStateStrength();
@@ -1200,7 +1200,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 					targetDefense = 95 + defDiff * 0.25 * lRatio;
 
 				if (targetDefense > 0 && System::random(100) < targetDefense)
-								failed = true;
+					failed = true;
 				//if (targetDefense > 0 && strength != 0 && System::random(100) > hitChanceEquation(strength, 0.0f, targetDefense))
 				//	failed = true;
 			}
@@ -1351,105 +1351,6 @@ int CombatManager::applyDamage(CreatureObject* attacker, TangibleObject* defende
 
 	return damage;
 }
-
-int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data) {
-	float creatureVectorX = attacker->getPositionX();
-	float creatureVectorY = attacker->getPositionY();
-
-	float directionVectorX = defenderObject->getPositionX() - creatureVectorX;
-	float directionVectorY = defenderObject->getPositionY() - creatureVectorY;
-
-	Zone* zone = attacker->getZone();
-
-	if (zone == NULL)
-		return 0;
-
-	PlayerManager* playerManager = zone->getZoneServer()->getPlayerManager();
-
-	int damage = 0;
-
-	int range = data.getAreaRange();
-
-	if (data.getCommand()->isConeAction()) {
-		range = data.getRange();
-	}
-
-	if (range < 0) {
-		WeaponObject* weapon = attacker->getWeapon();
-		range = weapon->getMaxRange();
-	}
-
-	try {
-		//zone->rlock();
-
-		CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
-
-		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
-
-		if (vec != NULL) {
-			closeObjects.removeAll(vec->size(), 10);
-			vec->safeCopyTo(closeObjects);
-		} else {
-			zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
-		}
-
-		for (int i = 0; i < closeObjects.size(); ++i) {
-			ManagedReference<SceneObject*> object = cast<SceneObject*>(closeObjects.get(i).get());
-
-			if (!object->isTangibleObject()) {
-				//error("object is not tangible");
-				continue;
-			}
-
-			TangibleObject* tano = cast<TangibleObject*>(object.get());
-
-			if (object == attacker) {
-				//error("object is attacker");
-				continue;
-			}
-
-			if (!attacker->isInRange(object, range)) {
-				//error("not in range " + String::valueOf(range));
-				continue;
-			}
-
-			if (tano->isCreatureObject() && (cast<CreatureObject*>(tano))->isIncapacitated()) {
-				//error("object is incapacitated");
-				continue;
-			}
-
-			if (data.getCommand()->isConeAction() && !checkConeAngle(tano, data.getConeAngle(), creatureVectorX, creatureVectorY, directionVectorX, directionVectorY)) {
-				//error("object is not in cone angle");
-				continue;
-			}
-
-//			zone->runlock();
-
-			try {
-				if (CollisionManager::checkLineOfSight(object, attacker)) {
-					damage += doTargetCombatAction(attacker, tano, data);
-				}
-			} catch (Exception& e) {
-				error(e.getMessage());
-			} catch (...) {
-				zone->rlock();
-
-				throw;
-			}
-
-//			zone->rlock();
-		}
-
-//		zone->runlock();
-	} catch (...) {
-//		zone->runlock();
-
-		throw;
-	}
-
-	return damage;
-}
-
 
 void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid) {
 	Zone* zone = attacker->getZone();
@@ -1758,53 +1659,53 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 	if (diff >= 0)
 		damage = System::random(diff) + (int)minDamage;
 
-		damage = getArmorReduction(attacker, weapon, defenderObject, damage, CombatManager::HEALTH, data);
+	damage = getArmorReduction(attacker, weapon, defenderObject, damage, CombatManager::HEALTH, data);
 
 
-		int hitVal = getHitChance(attacker, defenderObject, weapon, damage, data.getAccuracyBonus());
+	int hitVal = getHitChance(attacker, defenderObject, weapon, damage, data.getAccuracyBonus());
 
-		String combatSpam = data.getCommand()->getCombatSpam();
+	String combatSpam = data.getCommand()->getCombatSpam();
 
-		// FIXME: probably need to add getCombatSpamBlock(), etc in data and store it in commands explicitly to avoid malformed text
+	// FIXME: probably need to add getCombatSpamBlock(), etc in data and store it in commands explicitly to avoid malformed text
 
-		CombatAction* combatAction = NULL;
-		//uint32 animationCRC = String("fire_turret_medium").hashCode();
-		//uint8 hit = 0x01;
-		uint32 animationCRC = data.getAnimationCRC();
-		combatAction = new CombatAction(attacker, defenderObject, animationCRC, hitVal, CombatManager::DEFAULTTRAIL);
-		attacker->broadcastMessage(combatAction,true);
+	CombatAction* combatAction = NULL;
+	//uint32 animationCRC = String("fire_turret_medium").hashCode();
+	//uint8 hit = 0x01;
+	uint32 animationCRC = data.getAnimationCRC();
+	combatAction = new CombatAction(attacker, defenderObject, animationCRC, hitVal, CombatManager::DEFAULTTRAIL);
+	attacker->broadcastMessage(combatAction,true);
 
-		switch (hitVal) {
-			case MISS:
-				doMiss(attacker, defenderObject, weapon, damage, combatSpam + "_miss");
-				return 0;
-				break;
-			case HIT:
-				broadcastCombatSpam(attacker, defenderObject, weapon, damage, combatSpam + "_hit");
-				break;
-			case BLOCK:
-				doBlock(attacker, defenderObject, weapon, damage, combatSpam + "_block");
-				damageMultiplier = 0.5f;
-				break;
-			case DODGE:
-				doDodge(attacker, defenderObject, weapon, damage, combatSpam + "_evade");
-				damageMultiplier = 0.0f;
-				break;
-			case COUNTER:
-				doCounterAttack(attacker, defenderObject, weapon, damage, combatSpam + "_counter");
-				damageMultiplier = 0.0f;
-				break;
-			case RICOCHET:
-				doLightsaberBlock(attacker, defenderObject, weapon, damage, combatSpam + "_block");
-				damageMultiplier = 0.0f;
-				break;
-			default:
-				break;
-		}
+	switch (hitVal) {
+	case MISS:
+		doMiss(attacker, defenderObject, weapon, damage, combatSpam + "_miss");
+		return 0;
+		break;
+	case HIT:
+		broadcastCombatSpam(attacker, defenderObject, weapon, damage, combatSpam + "_hit");
+		break;
+	case BLOCK:
+		doBlock(attacker, defenderObject, weapon, damage, combatSpam + "_block");
+		damageMultiplier = 0.5f;
+		break;
+	case DODGE:
+		doDodge(attacker, defenderObject, weapon, damage, combatSpam + "_evade");
+		damageMultiplier = 0.0f;
+		break;
+	case COUNTER:
+		doCounterAttack(attacker, defenderObject, weapon, damage, combatSpam + "_counter");
+		damageMultiplier = 0.0f;
+		break;
+	case RICOCHET:
+		doLightsaberBlock(attacker, defenderObject, weapon, damage, combatSpam + "_block");
+		damageMultiplier = 0.0f;
+		break;
+	default:
+		break;
+	}
 
 
-		// TODO:  create an apply damage(tano, creature)
-		defenderObject->inflictDamage(attacker,CreatureAttribute::HEALTH, damage * damageMultiplier,true);
+	// TODO:  create an apply damage(tano, creature)
+	defenderObject->inflictDamage(attacker,CreatureAttribute::HEALTH, damage * damageMultiplier,true);
 
 
 
@@ -1830,147 +1731,245 @@ int CombatManager::getArmorObjectReduction(WeaponObject* weapon, ArmorObject* ar
 
 	int damageType = weapon->getDamageType();
 
-		float resist = 0;
+	float resist = 0;
 
-		switch (damageType) {
-		case WeaponObject::KINETIC:
-			resist = armor->getKinetic();
-			break;
-		case WeaponObject::ENERGY:
-			resist = armor->getEnergy();
-			break;
-		case WeaponObject::ELECTRICITY:
-			resist = armor->getElectricity();
-			break;
-		case WeaponObject::STUN:
-			resist = armor->getStun();
-			break;
-		case WeaponObject::BLAST:
-			resist = armor->getBlast();
-			break;
-		case WeaponObject::HEAT:
-			resist = armor->getHeat();
-			break;
-		case WeaponObject::COLD:
-			resist = armor->getCold();
-			break;
-		case WeaponObject::ACID:
-			resist = armor->getAcid();
-			break;
-		case WeaponObject::LIGHTSABER:
-			resist = armor->getLightSaber();
-			break;
-		case WeaponObject::FORCE:
-			resist = 0;
-			break;
+	switch (damageType) {
+	case WeaponObject::KINETIC:
+		resist = armor->getKinetic();
+		break;
+	case WeaponObject::ENERGY:
+		resist = armor->getEnergy();
+		break;
+	case WeaponObject::ELECTRICITY:
+		resist = armor->getElectricity();
+		break;
+	case WeaponObject::STUN:
+		resist = armor->getStun();
+		break;
+	case WeaponObject::BLAST:
+		resist = armor->getBlast();
+		break;
+	case WeaponObject::HEAT:
+		resist = armor->getHeat();
+		break;
+	case WeaponObject::COLD:
+		resist = armor->getCold();
+		break;
+	case WeaponObject::ACID:
+		resist = armor->getAcid();
+		break;
+	case WeaponObject::LIGHTSABER:
+		resist = armor->getLightSaber();
+		break;
+	case WeaponObject::FORCE:
+		resist = 0;
+		break;
+	}
+
+	return MAX(0, (int)resist);
+}
+
+int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data) {
+	float creatureVectorX = attacker->getPositionX();
+	float creatureVectorY = attacker->getPositionY();
+
+	float directionVectorX = defenderObject->getPositionX() - creatureVectorX;
+	float directionVectorY = defenderObject->getPositionY() - creatureVectorY;
+
+	Zone* zone = attacker->getZone();
+
+	if (zone == NULL)
+		return 0;
+
+	PlayerManager* playerManager = zone->getZoneServer()->getPlayerManager();
+
+	int damage = 0;
+
+	int range = data.getAreaRange();
+
+	if (data.getCommand()->isConeAction()) {
+		range = data.getRange();
+	}
+
+	if (range < 0) {
+		WeaponObject* weapon = attacker->getWeapon();
+		range = weapon->getMaxRange();
+	}
+
+	try {
+		//zone->rlock();
+
+		CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
+
+		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+
+		if (vec != NULL) {
+			closeObjects.removeAll(vec->size(), 10);
+			vec->safeCopyTo(closeObjects);
+		} else {
+			zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
 		}
 
-		return MAX(0, (int)resist);
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			ManagedReference<SceneObject*> object = cast<SceneObject*>(closeObjects.get(i).get());
+
+			if (!object->isTangibleObject()) {
+				//error("object is not tangible");
+				continue;
+			}
+
+			TangibleObject* tano = cast<TangibleObject*>(object.get());
+
+			if (object == attacker) {
+				//error("object is attacker");
+				continue;
+			}
+
+			if (!attacker->isInRange(object, range)) {
+				//error("not in range " + String::valueOf(range));
+				continue;
+			}
+
+			if (tano->isCreatureObject() && (cast<CreatureObject*>(tano))->isIncapacitated()) {
+				//error("object is incapacitated");
+				continue;
+			}
+
+			if (data.getCommand()->isConeAction() && !checkConeAngle(tano, data.getConeAngle(), creatureVectorX, creatureVectorY, directionVectorX, directionVectorY)) {
+				//error("object is not in cone angle");
+				continue;
+			}
+
+			//			zone->runlock();
+
+			try {
+				if (CollisionManager::checkLineOfSight(object, attacker)) {
+					damage += doTargetCombatAction(attacker, tano, data);
+				}
+			} catch (Exception& e) {
+				error(e.getMessage());
+			} catch (...) {
+				//zone->rlock();
+
+				throw;
+			}
+
+			//			zone->rlock();
+		}
+
+		//		zone->runlock();
+	} catch (...) {
+		//		zone->runlock();
+
+		throw;
+	}
+
+	return damage;
 }
 
 int CombatManager::doAreaCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data){
-		float creatureVectorX = attacker->getPositionX();
-		float creatureVectorY = attacker->getPositionY();
+	float creatureVectorX = attacker->getPositionX();
+	float creatureVectorY = attacker->getPositionY();
 
-		float directionVectorX = defenderObject->getPositionX() - creatureVectorX;
-		float directionVectorY = defenderObject->getPositionY() - creatureVectorY;
+	float directionVectorX = defenderObject->getPositionX() - creatureVectorX;
+	float directionVectorY = defenderObject->getPositionY() - creatureVectorY;
 
-		Zone* zone = attacker->getZone();
+	Zone* zone = attacker->getZone();
 
-		if (zone == NULL)
-			return 0;
+	if (zone == NULL)
+		return 0;
 
-		PlayerManager* playerManager = zone->getZoneServer()->getPlayerManager();
+	PlayerManager* playerManager = zone->getZoneServer()->getPlayerManager();
 
-		int damage = 0;
+	int damage = 0;
 
-		int range = data.getAreaRange();
+	int range = data.getAreaRange();
 
-		if (data.getCommand()->isConeAction()) {
-			range = data.getRange();
+	if (data.getCommand()->isConeAction()) {
+		range = data.getRange();
+	}
+
+	if (range < 0) {
+		range = weapon->getMaxRange();
+	}
+
+	try {
+		//zone->rlock();
+
+		CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
+
+		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+
+		if (vec != NULL) {
+			closeObjects.removeAll(vec->size(), 10);
+			vec->safeCopyTo(closeObjects);
+		} else {
+			zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
 		}
 
-		if (range < 0) {
-			range = weapon->getMaxRange();
-		}
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			ManagedReference<SceneObject*> object = cast<SceneObject*>(closeObjects.get(i).get());
 
-		try {
-			//zone->rlock();
-
-			CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
-
-			SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
-
-			if (vec != NULL) {
-				closeObjects.removeAll(vec->size(), 10);
-				vec->safeCopyTo(closeObjects);
-			} else {
-				zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
+			if (!object->isTangibleObject()) {
+				//error("object is not tangible");
+				continue;
 			}
 
-			for (int i = 0; i < closeObjects.size(); ++i) {
-				ManagedReference<SceneObject*> object = cast<SceneObject*>(closeObjects.get(i).get());
+			TangibleObject* tano = cast<TangibleObject*>(object.get());
 
-				if (!object->isTangibleObject()) {
-					//error("object is not tangible");
-					continue;
-				}
-
-				TangibleObject* tano = cast<TangibleObject*>(object.get());
-
-				if (object == attacker) {
-					//error("object is attacker");
-					continue;
-				}
-
-				if (!attacker->isInRange(object, range)) {
-					//error("not in range " + String::valueOf(range));
-					continue;
-				}
-
-				if (tano->isCreatureObject() && (cast<CreatureObject*>(tano))->isIncapacitated()) {
-					//error("object is incapacitated");
-					continue;
-				}
-
-				if (data.getCommand()->isConeAction() && !checkConeAngle(tano, data.getConeAngle(), creatureVectorX, creatureVectorY, directionVectorX, directionVectorY)) {
-					//error("object is not in cone angle");
-					continue;
-				}
-
-	//			zone->runlock();
-
-				try {
-					if (CollisionManager::checkLineOfSight(object, attacker)) {
-						damage += doTargetCombatAction(attacker, weapon, tano, data);
-
-					}
-				} catch (Exception& e) {
-					error(e.getMessage());
-				} catch (...) {
-					zone->rlock();
-
-					throw;
-				}
-
-	//			zone->rlock();
+			if (object == attacker) {
+				//error("object is attacker");
+				continue;
 			}
 
-	//		zone->runlock();
-		} catch (...) {
-	//		zone->runlock();
+			if (!attacker->isInRange(object, range)) {
+				//error("not in range " + String::valueOf(range));
+				continue;
+			}
 
-			throw;
+			if (tano->isCreatureObject() && (cast<CreatureObject*>(tano))->isIncapacitated()) {
+				//error("object is incapacitated");
+				continue;
+			}
+
+			if (data.getCommand()->isConeAction() && !checkConeAngle(tano, data.getConeAngle(), creatureVectorX, creatureVectorY, directionVectorX, directionVectorY)) {
+				//error("object is not in cone angle");
+				continue;
+			}
+
+			//			zone->runlock();
+
+			try {
+				if (CollisionManager::checkLineOfSight(object, attacker)) {
+					damage += doTargetCombatAction(attacker, weapon, tano, data);
+
+				}
+			} catch (Exception& e) {
+				error(e.getMessage());
+			} catch (...) {
+				//zone->rlock();
+
+				throw;
+			}
+
+			//			zone->rlock();
 		}
 
-		return damage;
+		//		zone->runlock();
+	} catch (...) {
+		//		zone->runlock();
+
+		throw;
+	}
+
+	return damage;
 	return 0;
 }
 
 
 int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, float damage, int poolToDamage, const CreatureAttackData& data){
 	if (poolToDamage == 0)
-			return 0;
+		return 0;
 
 	if(weapon == NULL)
 		return 0;
@@ -1998,7 +1997,7 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 		// inflict condition damage
 		// TODO: this formula makes PSG's take more damage than regular armor, but that's how it was on live
 		// it can be fixed by doing condition damage after all damage reductions
-			psg->inflictDamage(psg, 0, damage * 0.1, true, true);
+		psg->inflictDamage(psg, 0, damage * 0.1, true, true);
 	}
 
 	if (data.getAttackType() == CombatManager::WEAPONATTACK) {
@@ -2033,7 +2032,7 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 		armor->inflictDamage(armor, 0, damage * 0.1, true, true);
 	}
 
-		return damage;
+	return damage;
 }
 
 int CombatManager::getArmorTurretReduction(CreatureObject* attacker, TangibleObject* defender, WeaponObject* weapon){
@@ -2050,36 +2049,36 @@ int CombatManager::getArmorTurretReduction(CreatureObject* attacker, TangibleObj
 				int damageType = weapon->getDamageType();
 
 				switch (damageType) {
-					case WeaponObject::KINETIC:
-						resist = turretData->getKinetic();
-						break;
-					case WeaponObject::ENERGY:
-						resist = turretData->getEnergy();
-						break;
-					case WeaponObject::ELECTRICITY:
-						resist = turretData->getElectricity();
-						break;
-					case WeaponObject::STUN:
-						resist = turretData->getStun();
-						break;
-					case WeaponObject::BLAST:
-						resist = turretData->getBlast();
-						break;
-					case WeaponObject::HEAT:
-						resist = turretData->getHeat();
-						break;
-					case WeaponObject::COLD:
-						resist = turretData->getCold();
-						break;
-					case WeaponObject::ACID:
-						resist = turretData->getAcid();
-						break;
-					case WeaponObject::LIGHTSABER:
-						resist = turretData->getLightSaber();
-						break;
-					case WeaponObject::FORCE:
-						resist = 0;
-						break;
+				case WeaponObject::KINETIC:
+					resist = turretData->getKinetic();
+					break;
+				case WeaponObject::ENERGY:
+					resist = turretData->getEnergy();
+					break;
+				case WeaponObject::ELECTRICITY:
+					resist = turretData->getElectricity();
+					break;
+				case WeaponObject::STUN:
+					resist = turretData->getStun();
+					break;
+				case WeaponObject::BLAST:
+					resist = turretData->getBlast();
+					break;
+				case WeaponObject::HEAT:
+					resist = turretData->getHeat();
+					break;
+				case WeaponObject::COLD:
+					resist = turretData->getCold();
+					break;
+				case WeaponObject::ACID:
+					resist = turretData->getAcid();
+					break;
+				case WeaponObject::LIGHTSABER:
+					resist = turretData->getLightSaber();
+					break;
+				case WeaponObject::FORCE:
+					resist = 0;
+					break;
 				}
 			}
 		}
@@ -2168,33 +2167,33 @@ int CombatManager::getHitChance(TangibleObject* tano, CreatureObject* targetCrea
 void CombatManager::broadcastCombatSpam(TangibleObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid) {
 	Zone* zone = attacker->getZone();
 
-		if (zone == NULL)
-			return;
+	if (zone == NULL)
+		return;
 
-		//Locker _locker(zone);
+	//Locker _locker(zone);
 
-		CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
+	CloseObjectsVector* vec = (CloseObjectsVector*) attacker->getCloseObjects();
 
-		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 
-		if (vec != NULL) {
-			closeObjects.removeAll(vec->size(), 10);
-			vec->safeCopyTo(closeObjects);
-		} else {
-			zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
+	if (vec != NULL) {
+		closeObjects.removeAll(vec->size(), 10);
+		vec->safeCopyTo(closeObjects);
+	} else {
+		zone->getInRangeObjects(attacker->getWorldPositionX(), attacker->getWorldPositionY(), 128, &closeObjects, true);
+	}
+
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* object = cast<SceneObject*>( closeObjects.get(i).get());
+
+		if (object->isPlayerCreature() && attacker->isInRange(object, 70)) {
+			CreatureObject* player = cast<CreatureObject*>( object);
+
+			CombatSpam* msg = new CombatSpam(attacker, defender, weapon, damage, "cbt_spam", stringid, player);
+			player->sendMessage(msg);
 		}
-
-
-		for (int i = 0; i < closeObjects.size(); ++i) {
-			SceneObject* object = cast<SceneObject*>( closeObjects.get(i).get());
-
-			if (object->isPlayerCreature() && attacker->isInRange(object, 70)) {
-				CreatureObject* player = cast<CreatureObject*>( object);
-
-				CombatSpam* msg = new CombatSpam(attacker, defender, weapon, damage, "cbt_spam", stringid, player);
-				player->sendMessage(msg);
-			}
-		}
+	}
 }
 
 ArmorObject* CombatManager::getHealthArmor(CreatureObject* defender) {
