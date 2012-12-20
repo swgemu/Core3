@@ -728,7 +728,7 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city) {
 
 
 	// send mailto all citizens
-	if(topCandidate == city->getMayorID())
+	if(topCandidate == incumbentID)
 		emailbody.setStringId("@city/city:public_election_inc_body"); //The city elections for %TT have been held.  The incumbent Mayor is victorious!
 	else
 		emailbody.setStringId("@city/city:public_election_body"); //"The city elections for %TT have been held.  The incumbent Mayor has lost the election!  The new Mayor is citizen %TO
