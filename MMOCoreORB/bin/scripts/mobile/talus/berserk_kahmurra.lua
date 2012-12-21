@@ -1,5 +1,5 @@
 berserk_kahmurra = Creature:new {
-       objectName = "@mob/creature_names:beserk_kahmurra",
+       objectName = "@mob/creature_names:berserk_kahmurra",
        socialGroup = "kahmurra",
        pvpFaction = "",
        faction = "",
@@ -26,7 +26,7 @@ berserk_kahmurra = Creature:new {
        optionsBitmask = 128,
        diet = CARNIVORE,
  
-       templates = {"object/mobile/kahmurra.iff"},
+       templates = {"object/mobile/kahmurra_hue.iff"},
        lootGroups = {},
        weapons = {},
        conversationTemplate = "",
