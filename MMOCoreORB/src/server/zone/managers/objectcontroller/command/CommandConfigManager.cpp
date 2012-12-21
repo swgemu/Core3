@@ -297,7 +297,8 @@ QueueCommand* CommandConfigManager::createCommand(const String& name) {
 	return command;
 }
 
-void CommandConfigManager::registerSpecialCommands() {
+void CommandConfigManager::registerSpecialCommands(CommandList* sCommands) {
+	slashCommands = sCommands;
 	QueueCommand* admin = new QueueCommand("admin", server);
 	slashCommands->put(admin);
 	// Fri Oct  7 17:09:26 PDT 2011 - Karl Bunch <karlbunch@karlbunch.com>

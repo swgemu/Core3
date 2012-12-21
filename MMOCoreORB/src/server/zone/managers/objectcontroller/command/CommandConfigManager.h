@@ -161,10 +161,10 @@ public:
 	void registerGlobals();
 	void registerCommands();
 
-	void registerSpecialCommands();
+	void registerSpecialCommands(CommandList* sCommands);
 
-	bool loadSlashCommandsFile(CommandList* sCommands) {
-		slashCommands = sCommands;
+	bool loadSlashCommandsFile() {
+
 		info("Loading commands...");
 		loadCommandData("datatables/command/command_tables_shared.iff");
 		loadCommandData("datatables/command/command_tables_shared_ground.iff");

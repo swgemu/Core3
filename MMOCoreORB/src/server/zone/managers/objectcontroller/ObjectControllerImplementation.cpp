@@ -25,8 +25,8 @@ void ObjectControllerImplementation::loadCommands() {
 	queueCommands = new CommandList();
 
 	info("loading queue commands...", true);
-	configManager->loadSlashCommandsFile(queueCommands);
-	configManager->registerSpecialCommands();
+	configManager->registerSpecialCommands(queueCommands);
+	configManager->loadSlashCommandsFile();
 
 	StringBuffer infoMsg;
 	infoMsg << "loaded " << queueCommands->size() << " commands";
