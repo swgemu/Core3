@@ -723,8 +723,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@local
 	public void addPendingTask(final string name, Task task, int miliseconds) {
-		getPendingTasks().put(name, task);
-		task.schedule(miliseconds);
+		synchronized (containerLock) {
+			getPendingTasks().put(name, task);
+			task.schedule(miliseconds);
+		}
 	}
 	
 	/**
@@ -735,21 +737,25 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@local
 	public void removePendingTask(final string name) {
-		if (pendingTasks == null)
-			return;
-		
-		pendingTasks.drop(name);
+		synchronized (containerLock) {
+			if (pendingTasks == null)
+				return;
+
+			pendingTasks.drop(name);
+		}
 	}
 	
 	@local
 	public PendingTasksMap getPendingTasks() {
-		if (pendingTasks == null) {
-			pendingTasks = new PendingTasksMap();
-			pendingTasks.setNoDuplicateInsertPlan();
-			pendingTasks.setNullValue(null);
+		synchronized (containerLock) {
+			if (pendingTasks == null) {
+				pendingTasks = new PendingTasksMap();
+				pendingTasks.setNoDuplicateInsertPlan();
+				pendingTasks.setNullValue(null);
+			}
+
+			return pendingTasks;
 		}
-		
-		return pendingTasks;
 	}
 	
 	/**
@@ -761,18 +767,22 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@local
 	@read
 	public Task getPendingTask(final string name) {
-		if (pendingTasks == null)
-			return null;
-		
-		return pendingTasks.get(name);
+		synchronized (containerLock) {
+			if (pendingTasks == null)
+				return null;
+
+			return pendingTasks.get(name);
+		}
 	}
-	
+
 	@read
 	public boolean containsPendingTask(final string name) {
-		if (pendingTasks == null)
-			return false;
-		
-		return pendingTasks.contains(name);
+		synchronized (containerLock) {
+			if (pendingTasks == null)
+				return false;
+
+			return pendingTasks.contains(name);
+		}
 	}
 	
 	@dirty
