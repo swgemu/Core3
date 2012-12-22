@@ -61,7 +61,7 @@ int SurveyMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* o
 		ResourceSpawn* sampledSpawn = cast<ResourceSpawn*>( arg1);
 
 		int sampledDensity = (int)arg2;
-		if (sampledSpawn->getFamilyName() == spawnFamily && (sampledDensity >= efficiency)) {
+		if (sampledSpawn->getSurveyMissionSpawnFamilyName() == spawnFamily && (sampledDensity >= efficiency)) {
 			Vector3 startPosition;
 			startPosition.setX(mission.get()->getStartPositionX());
 			startPosition.setY(mission.get()->getStartPositionY());

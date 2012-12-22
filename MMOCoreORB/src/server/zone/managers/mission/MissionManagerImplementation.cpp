@@ -728,7 +728,7 @@ void MissionManagerImplementation::randomizeGenericSurveyMission(CreatureObject*
 	if (texts == 0)
 		texts = 1;
 
-	mission->setMissionTargetName(spawn->getFamilyName());
+	mission->setMissionTargetName(spawn->getSurveyMissionSpawnFamilyName());
 	mission->setTargetTemplate(templateObject);
 
 	//Reward depending on mission level.

@@ -16,7 +16,7 @@
  *	ResourceSpawnStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_DECREASECONTAINERREFERENCECOUNT__,RPC_ISRESOURCESPAWN__,RPC_SETNAME__STRING_,RPC_SETTYPE__STRING_,RPC_SETSPAWNPOOL__INT_STRING_,RPC_SETZONERESTRICTION__STRING_,RPC_ADDCLASS__STRING_,RPC_ADDSTFCLASS__STRING_,RPC_ADDATTRIBUTE__STRING_INT_,RPC_ISTYPE__STRING_,RPC_SETSURVEYTOOLTYPE__INT_,RPC_SETISENERGY__BOOL_,RPC_GETNAME__,RPC_GETTYPE__,RPC_GETCLASS__INT_,RPC_GETSTFCLASS__INT_,RPC_GETFINALCLASS__,RPC_GETFAMILYNAME__,RPC_SETSPAWNED__LONG_,RPC_SETDESPAWNED__LONG_,RPC_GETDESPAWNED__,RPC_SETCONTAINERCRC__INT_,RPC_GETCONTAINERCRC__,RPC_GETSPAWNPOOL__,RPC_GETPOOLSLOT__,RPC_ISENERGY__,RPC_GETZONERESTRICTION__,RPC_GETSURVEYTOOLTYPE__,RPC_GETSPAWNMAPSIZE__,RPC_EXTRACTRESOURCE__STRING_INT_,RPC_CREATERESOURCE__INT_,RPC_GETPLANETCRC__,RPC_GETATTRIBUTEVALUE__INT_,RPC_GETVALUEOF__INT_,RPC_ADDSTATSTODEEDLISTBOX__SUILISTBOX_,};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_DECREASECONTAINERREFERENCECOUNT__,RPC_ISRESOURCESPAWN__,RPC_SETNAME__STRING_,RPC_SETTYPE__STRING_,RPC_SETSPAWNPOOL__INT_STRING_,RPC_SETZONERESTRICTION__STRING_,RPC_ADDCLASS__STRING_,RPC_ADDSTFCLASS__STRING_,RPC_ADDATTRIBUTE__STRING_INT_,RPC_ISTYPE__STRING_,RPC_SETSURVEYTOOLTYPE__INT_,RPC_SETISENERGY__BOOL_,RPC_GETNAME__,RPC_GETTYPE__,RPC_GETCLASS__INT_,RPC_GETSTFCLASS__INT_,RPC_GETFINALCLASS__,RPC_GETFAMILYNAME__,RPC_GETSURVEYMISSIONSPAWNFAMILYNAME__,RPC_SETSPAWNED__LONG_,RPC_SETDESPAWNED__LONG_,RPC_GETDESPAWNED__,RPC_SETCONTAINERCRC__INT_,RPC_GETCONTAINERCRC__,RPC_GETSPAWNPOOL__,RPC_GETPOOLSLOT__,RPC_ISENERGY__,RPC_GETZONERESTRICTION__,RPC_GETSURVEYTOOLTYPE__,RPC_GETSPAWNMAPSIZE__,RPC_EXTRACTRESOURCE__STRING_INT_,RPC_CREATERESOURCE__INT_,RPC_GETPLANETCRC__,RPC_GETATTRIBUTEVALUE__INT_,RPC_GETVALUEOF__INT_,RPC_ADDSTATSTODEEDLISTBOX__SUILISTBOX_,};
 
 ResourceSpawn::ResourceSpawn() : SceneObject(DummyConstructorParameter::instance()) {
 	ResourceSpawnImplementation* _implementation = new ResourceSpawnImplementation();
@@ -314,6 +314,21 @@ String ResourceSpawn::getFamilyName() {
 		return _return_getFamilyName;
 	} else
 		return _implementation->getFamilyName();
+}
+
+String ResourceSpawn::getSurveyMissionSpawnFamilyName() {
+	ResourceSpawnImplementation* _implementation = static_cast<ResourceSpawnImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSURVEYMISSIONSPAWNFAMILYNAME__);
+
+		String _return_getSurveyMissionSpawnFamilyName;
+		method.executeWithAsciiReturn(_return_getSurveyMissionSpawnFamilyName);
+		return _return_getSurveyMissionSpawnFamilyName;
+	} else
+		return _implementation->getSurveyMissionSpawnFamilyName();
 }
 
 void ResourceSpawn::setSpawned(unsigned long long t) {
@@ -1317,6 +1332,11 @@ void ResourceSpawnAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertAscii(getFamilyName());
 		}
 		break;
+	case RPC_GETSURVEYMISSIONSPAWNFAMILYNAME__:
+		{
+			resp->insertAscii(getSurveyMissionSpawnFamilyName());
+		}
+		break;
 	case RPC_SETSPAWNED__LONG_:
 		{
 			setSpawned(inv->getUnsignedLongParameter());
@@ -1486,6 +1506,10 @@ String ResourceSpawnAdapter::getFinalClass() {
 
 String ResourceSpawnAdapter::getFamilyName() {
 	return (static_cast<ResourceSpawn*>(stub))->getFamilyName();
+}
+
+String ResourceSpawnAdapter::getSurveyMissionSpawnFamilyName() {
+	return (static_cast<ResourceSpawn*>(stub))->getSurveyMissionSpawnFamilyName();
 }
 
 void ResourceSpawnAdapter::setSpawned(unsigned long long t) {

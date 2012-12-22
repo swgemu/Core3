@@ -236,6 +236,8 @@ class ResourceSpawn extends SceneObject {
     
     public native string getFamilyName();
     
+    public native string getSurveyMissionSpawnFamilyName();
+    
     public void setSpawned(unsigned long t) {
     	spawned = t;
     }

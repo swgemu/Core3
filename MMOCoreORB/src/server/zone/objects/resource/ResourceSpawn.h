@@ -136,6 +136,8 @@ public:
 
 	String getFamilyName();
 
+	String getSurveyMissionSpawnFamilyName();
+
 	void setSpawned(unsigned long long t);
 
 	void setDespawned(unsigned long long t);
@@ -293,6 +295,8 @@ public:
 
 	String getFamilyName();
 
+	String getSurveyMissionSpawnFamilyName();
+
 	void setSpawned(unsigned long long t);
 
 	void setDespawned(unsigned long long t);
@@ -429,6 +433,8 @@ public:
 	String getFinalClass();
 
 	String getFamilyName();
+
+	String getSurveyMissionSpawnFamilyName();
 
 	void setSpawned(unsigned long long t);
 

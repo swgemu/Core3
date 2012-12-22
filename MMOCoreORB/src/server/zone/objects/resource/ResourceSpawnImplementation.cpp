@@ -154,6 +154,18 @@ String ResourceSpawnImplementation::getFamilyName() {
    		return "";
 }
 
+String ResourceSpawnImplementation::getSurveyMissionSpawnFamilyName() {
+   	int offset = 3;
+
+   	if(isUnknownType())
+   		offset = 2;
+
+   	if(spawnClasses.size() > offset)
+   		return spawnClasses.get(spawnClasses.size() - offset);
+   	else
+   		return "";
+}
+
 void ResourceSpawnImplementation::createSpawnMaps(bool jtl, int minpool, int maxpool,
 		const String& zonerestriction, Vector<String>& activeZones) {
 
