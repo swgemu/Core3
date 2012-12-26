@@ -51,6 +51,9 @@ which carries forward this exception.
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/templates/mobile/LairTemplate.h"
+#include "server/zone/managers/creature/CreatureTemplateManager.h"
 
 class CreateSpawningElementCommand : public QueueCommand {
 public:
@@ -173,9 +176,15 @@ public:
 				int maxLevel = args.getIntToken();
 				int level = System::random(maxLevel - minLevel) + minLevel;
 
+				unsigned int lairHashCode = lairTemplate.hashCode();
+
+				LairTemplate* lair = CreatureTemplateManager::instance()->getLairTemplate(lairHashCode);
+
+				unsigned int faction = lair->getFaction();
+
 				CreatureManager* creatureManager = creature->getZone()->getCreatureManager();
 
-				TangibleObject* tano = creatureManager->spawnLair(lairTemplate.hashCode(), level, creature->getPositionX(), creature->getPositionZ(), creature->getPositionY());
+				TangibleObject* tano = creatureManager->spawnLair(lairTemplate.hashCode(), level, creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), faction);
 
 				if (tano != NULL) {
 					creature->sendSystemMessage("lair spawned");

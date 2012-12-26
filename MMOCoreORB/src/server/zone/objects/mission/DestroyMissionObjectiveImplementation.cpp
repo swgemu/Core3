@@ -21,6 +21,8 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/templates/mobile/LairTemplate.h"
+#include "server/zone/managers/creature/CreatureTemplateManager.h"
 
 void DestroyMissionObjectiveImplementation::setLairTemplateToSpawn(const String& sp) {
 	lairTemplate = sp;
@@ -160,10 +162,14 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 	player->sendSystemMessage("Transmission Received: Mission Target has been located.  Mission waypoint has been updated to exact location");
 
+	LairTemplate* lair = CreatureTemplateManager::instance()->getLairTemplate(lairTemplate.hashCode());
+
+	unsigned int faction = lair->getFaction();
+
 	if (lairObject == NULL) {
 		CreatureManager* creatureManager = zone->getCreatureManager();
 
-		lairObject = creatureManager->spawnLair(lairTemplate.hashCode(), difficulty, pos.getX(), pos.getZ(), pos.getY());
+		lairObject = creatureManager->spawnLair(lairTemplate.hashCode(), difficulty, pos.getX(), pos.getZ(), pos.getY(), faction);
 
 		if (lairObject != NULL) {
 			ManagedReference<MissionObserver*> observer = new MissionObserver(_this.get());

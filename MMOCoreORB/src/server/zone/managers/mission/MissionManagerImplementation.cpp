@@ -1382,10 +1382,10 @@ void MissionManagerImplementation::generateRandomFactionalDestroyMissionDescript
 	String difficultyString = faction;
 	int randomMax;
 
-	if (player->getFaction() == MissionObject::FACTIONIMPERIAL) {
+	if (player->getFaction() == MissionObject::FACTIONIMPERIAL || player->getFaction() == MissionObject::FACTIONREBEL) {
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-		if (ghost->getFactionStatus() == FactionStatus::OVERT) {
+		if (ghost->getFactionStatus() == FactionStatus::OVERT || ghost->getFactionStatus() == FactionStatus::COVERT) {
 			difficultyString += "_military";
 			randomMax = 50;
 		} else {
@@ -1472,7 +1472,7 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 		if (player->getFaction() != 0 && player->getFaction() == faction) {
 			ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-			if (ghost->getFactionStatus() == FactionStatus::OVERT) {
+			if (ghost->getFactionStatus() == FactionStatus::OVERT || ghost->getFactionStatus() == FactionStatus::COVERT) {
 				neutralMission = false;
 			}
 		}

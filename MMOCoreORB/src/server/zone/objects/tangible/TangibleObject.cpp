@@ -12,6 +12,8 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
+#include "server/zone/objects/player/PlayerObject.h"
+
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
@@ -1647,7 +1649,23 @@ bool TangibleObjectImplementation::hasDefender(SceneObject* defender) {
 }
 
 bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/tangible/TangibleObject.idl():  		return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
+	// server/zone/objects/tangible/TangibleObject.idl():  			if 
+	if (isImperial() & !(object->isRebel()))	// server/zone/objects/tangible/TangibleObject.idl():  			return false;
+	return false;
+
+	else 	// server/zone/objects/tangible/TangibleObject.idl():  			if 
+	if (isRebel() & !(object->isImperial()))	// server/zone/objects/tangible/TangibleObject.idl():  			return false;
+	return false;
+
+	else 	// server/zone/objects/tangible/TangibleObject.idl():  			if 
+	if (object->isPlayerCreature())	// server/zone/objects/tangible/TangibleObject.idl():  			if 
+	if (isImperial() & (object->getPlayerObject())->getFactionStatus() == 0)	// server/zone/objects/tangible/TangibleObject.idl():  				return false;
+	return false;
+	// server/zone/objects/tangible/TangibleObject.idl():  			return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
+	if (isRebel() & (object->getPlayerObject())->getFactionStatus() == 0)	// server/zone/objects/tangible/TangibleObject.idl():  				return false;
+	return false;
+
+	else 	// server/zone/objects/tangible/TangibleObject.idl():  			return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
 	return pvpStatusBitmask & CreatureFlag::ATTACKABLE;
 }
 

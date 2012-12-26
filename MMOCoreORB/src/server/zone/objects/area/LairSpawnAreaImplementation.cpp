@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "events/RemoveNoSpawnAreaTask.h"
 #include "server/ServerCore.h"
+#include "server/zone/templates/mobile/LairTemplate.h"
 
 void LairSpawnAreaImplementation::notifyEnter(SceneObject* object) {
 	if (!object->isPlayerCreature())
@@ -224,7 +225,11 @@ int LairSpawnAreaImplementation::trySpawnLair(SceneObject* object) {
 
 	int difficulty = System::random(finalSpawn->getMaxDifficulty() - finalSpawn->getMinDifficulty()) + finalSpawn->getMinDifficulty();
 
-	ManagedReference<SceneObject*> obj = creatureManager->spawnLair(lairHashCode, difficulty, randomPosition.getX(), spawnZ, randomPosition.getY());
+	LairTemplate* lair = CreatureTemplateManager::instance()->getLairTemplate(lairHashCode);
+
+	unsigned int faction = lair->getFaction();
+
+	ManagedReference<SceneObject*> obj = creatureManager->spawnLair(lairHashCode, difficulty, randomPosition.getX(), spawnZ, randomPosition.getY(), faction);
 
 	if (obj != NULL) {
 		StringBuffer msg;

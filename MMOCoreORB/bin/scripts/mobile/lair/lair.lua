@@ -7,7 +7,8 @@ Lair = {
 	buildingsEasy = {},
 	buildingsMedium = {},
 	buildingsHard = {},
-	buildingsVeryHard = {}
+	buildingsVeryHard = {},
+	faction = "neutral"
 }
 
 function Lair:new (o)

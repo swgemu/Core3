@@ -1,6 +1,6 @@
 imperial_banner = Lair:new {
 	mobiles = {
-		{"imperial_cadet", 11}
+		{"imperial_sharpshooter", 17}
 		},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/objective_power_generator.iff"},
@@ -8,6 +8,7 @@ imperial_banner = Lair:new {
 	buildingsMedium = {"object/tangible/lair/base/objective_power_generator.iff"},
 	buildingsHard = {"object/tangible/lair/base/objective_power_generator.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/objective_power_generator.iff"},
+	faction = "imperial"
 }
 
 addLairTemplate("imperial_banner", imperial_banner)

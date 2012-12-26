@@ -25,8 +25,25 @@ rebel_resistance_anarchist = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
-	lootGroups = {},
+	templates = {
+		"object/mobile/selonian_female.iff",
+		"object/mobile/selonian_male.iff",
+		"object/mobile/bothan_female.iff",
+		"object/mobile/bothan_male.iff",
+		"object/mobile/aqualish_female.iff",
+		"object/mobile/aqualish_male.iff"},
+	lootGroups = {
+		{
+	        groups = {
+			{group = "junk", chance = 6000000},
+			{group = "rifles", chance = 1000000},
+			{group = "pistols", chance = 1000000},
+			{group = "melee_weapons", chance = 1000000},
+			{group = "carbines", chance = 1000000},
+		},
+			lootChance = 2700000
+		}	
+	},
 	weapons = {"rebel_weapons_light"},
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }

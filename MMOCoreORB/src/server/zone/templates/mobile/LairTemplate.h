@@ -9,6 +9,7 @@
 #define LAIRTEMPLATE_H_
 
 #include "engine/engine.h"
+#include "server/zone/managers/gcw/GCWManager.h"
 
 namespace server {
 namespace zone {
@@ -23,6 +24,8 @@ protected:
 	VectorMap<uint32, Vector<String>* > buildings;
 
 	String name;
+
+	unsigned int faction;
 
 public:
 	enum { VERYEASY = 0, EASY, MEDIUM, HARD, VERYHARD};
@@ -70,6 +73,20 @@ public:
 
 	void readObject(LuaObject* templateData) {
 		spawnLimit = templateData->getIntField("spawnLimit");
+
+		if (templateData->getStringField("faction")) {
+			String factionString = templateData->getStringField("faction");
+
+			if (factionString == "imperial") {
+				faction = GCWManager::IMPERIALHASH;
+			} else if (factionString == "rebel") {
+				faction = GCWManager::REBELHASH;
+			} else {
+				faction = 0;
+			}
+		} else {
+			faction = 0;
+		}
 
 		LuaObject mobs = templateData->getObjectField("mobiles");
 
@@ -178,6 +195,10 @@ public:
 
 	String& getName() {
 		return name;
+	}
+
+	unsigned int getFaction() {
+		return faction;
 	}
 
 };

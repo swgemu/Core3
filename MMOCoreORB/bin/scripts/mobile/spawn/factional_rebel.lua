@@ -10,57 +10,57 @@ factional_rebel = {
 		{
 			lairTemplateName = "imperial_banner",
 			spawnLimit = 0,
-			minDifficulty = 11,
-			maxDifficulty = 11,
+			minDifficulty = 14,
+			maxDifficulty = 20,
 			numberToSpawn = 0,
 			weighting = 5,
-			size = 15
+			size = 15,
 		},	
 		{
 			lairTemplateName = "imperial",
 			spawnLimit = 0,
-			minDifficulty = 25,
-			maxDifficulty = 25,
+			minDifficulty = 22,
+			maxDifficulty = 28,
 			numberToSpawn = 0,
 			weighting = 5,
-			size = 15
+			size = 15,
 		},
 		
 		{
 			lairTemplateName = "global_stormtrooper",
 			spawnLimit = -1,
-			minDifficulty = 7,
-			maxDifficulty = 7,
+			minDifficulty = 22,
+			maxDifficulty = 28,
 			numberToSpawn = 0,
 			weighting = 5,
-			size = 15
+			size = 15,
 		},
 		{
 			lairTemplateName = "global_imperial_cadet_camp_imperial_small_theater",
 			spawnLimit = 0,
-			minDifficulty = 7,
-			maxDifficulty = 7,
+			minDifficulty = 6,
+			maxDifficulty = 8,
 			numberToSpawn = 0,
 			weighting = 5,
-			size = 15
+			size = 15,
 		},
         {
 			lairTemplateName = "global_imperial_cadet_senior_camp_imperial_small_theater",
 			spawnLimit = 0,
-			minDifficulty = 7,
-			maxDifficulty = 7,
+			minDifficulty = 8,
+			maxDifficulty = 12,
 			numberToSpawn = 0,
 			weighting = 5,
-			size = 15
+			size = 15,
 		},
 		{
 			lairTemplateName = "global_imperial_cadet_squadleader_camp_imperial_small_theater",
 			spawnLimit = 0,
-			minDifficulty = 7,
-			maxDifficulty = 7,
+			minDifficulty = 9,
+			maxDifficulty = 13,
 			numberToSpawn = 0,
 			weighting = 5,
-			size = 15
+			size = 15,
 		},
 	
 	

@@ -63,7 +63,7 @@ void CreatureManagerImplementation::spawnRandomCreaturesAround(SceneObject* crea
 	spawnRandomCreature(1, newX, zone->getHeight(newX, newY), newY);
 }
 
-TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y) {
+TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y, unsigned int faction) {
 	LairTemplate* lairTmpl = creatureTemplateManager->getLairTemplate(lairTemplate);
 
 	if (lairTmpl == NULL)
@@ -96,6 +96,7 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
 
  	Locker blocker(building);
 
+ 	building->setFaction(faction);
  	building->setPvpStatusBitmask(CreatureFlag::ATTACKABLE);
  	building->setOptionsBitmask(0, false);
  	building->setMaxCondition(difficulty * 1000);

@@ -66,6 +66,20 @@ using namespace server::zone::objects::creature;
 namespace server {
 namespace zone {
 namespace objects {
+namespace player {
+
+class PlayerObject;
+
+} // namespace player
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::player;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace manufactureschematic {
 
 class ManufactureSchematic;
