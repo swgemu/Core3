@@ -13,7 +13,7 @@ nightspider = Creature:new {
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_insect",
-	meatAmount = 60,
+	meatAmount = 30,
 	hideType = "",
 	hideAmount = 0,
 	boneType = "",
@@ -27,6 +27,7 @@ nightspider = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/nightspider.iff"},
+	scale = .5,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

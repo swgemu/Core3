@@ -165,8 +165,8 @@ naboo_world_creatures = {
 			minDifficulty = 15,
 			maxDifficulty = 19,
 			numberToSpawn = 0,
-			weighting = 0,
-			size = 0
+			weighting = 15,
+			size = 25
 		}
 	}
 }
