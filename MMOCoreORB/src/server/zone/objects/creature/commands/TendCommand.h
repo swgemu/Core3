@@ -269,7 +269,7 @@ public:
 
 			int healedWounds = creatureTarget->healWound(creature, attribute, healPower);
 
-			sendWoundMessage(creature, creatureTarget, attribute, -healedWounds);
+			sendWoundMessage(creature, creatureTarget, attribute, healedWounds);
 
 			if (creatureTarget != creature && healedWounds > 0)
 				awardXp(creature, "medical", round(healedWounds * 0.5f));
