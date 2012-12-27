@@ -227,6 +227,9 @@ int LairSpawnAreaImplementation::trySpawnLair(SceneObject* object) {
 
 	LairTemplate* lair = CreatureTemplateManager::instance()->getLairTemplate(lairHashCode);
 
+	if (lair == NULL)
+		return 12;
+
 	unsigned int faction = lair->getFaction();
 
 	ManagedReference<SceneObject*> obj = creatureManager->spawnLair(lairHashCode, difficulty, randomPosition.getX(), spawnZ, randomPosition.getY(), faction);
