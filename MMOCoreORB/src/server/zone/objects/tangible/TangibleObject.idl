@@ -319,14 +319,14 @@ class TangibleObject extends SceneObject {
 	 * @return returns true if the creature object can attack this 
 	 */
 	public abstract boolean isAttackableBy(CreatureObject object) {
-		if (isImperial() & !(object.isRebel()))
+		if (isImperial() && !(object.isRebel()))
 			return false;
-		else if (isRebel() & !(object.isImperial()))
+		else if (isRebel() && !(object.isImperial()))
 			return false;
-		else if (object.isPlayerCreature())
-			if (isImperial() & (object.getPlayerObject()).getFactionStatus() == 0)
+		else if (object.isPlayerCreature() && object.getPlayerObject())
+			if (isImperial() && (object.getPlayerObject()).getFactionStatus() == 0)
 				return false;
-			if (isRebel() & (object.getPlayerObject()).getFactionStatus() == 0)
+			if (isRebel() && (object.getPlayerObject()).getFactionStatus() == 0)
 				return false;
 		else
 			return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
