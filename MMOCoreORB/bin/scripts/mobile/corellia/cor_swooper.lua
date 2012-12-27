@@ -1,4 +1,4 @@
-swooper = Creature:new {
+cor_swooper = Creature:new {
 	objectName = "@mob/creature_names:swooper",
 	socialGroup = "cor_swoop",
 	pvpFaction = "cor_swoop",
@@ -43,4 +43,4 @@ swooper = Creature:new {
 	attacks = merge(brawlernovice,marksmannovice)
 }
 
-CreatureTemplates:addCreatureTemplate(swooper, "swooper")
+CreatureTemplates:addCreatureTemplate(cor_swooper, "cor_swooper")

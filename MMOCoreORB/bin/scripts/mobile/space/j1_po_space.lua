@@ -1,8 +1,8 @@
-logro_elsin = Creature:new {
-	objectName = "@npc_spawner_n:logro_elsin",
-	socialGroup = "imperial",
-	pvpFaction = "imperial",
-	faction = "imperial",
+j1_po_space = Creature:new {
+	objectName = "@npc_spawner_n:j1_po",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 19,
 	chanceHit = 0.33,
 	damageMin = 180,
@@ -26,7 +26,7 @@ logro_elsin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tie_fighter_m.iff"},
+	templates = {"object/mobile/space_rebel_tier1_naboo_v3fx.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
@@ -34,4 +34,4 @@ logro_elsin = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(logro_elsin, "logro_elsin")
+CreatureTemplates:addCreatureTemplate(j1_po_space, "j1_po_space")

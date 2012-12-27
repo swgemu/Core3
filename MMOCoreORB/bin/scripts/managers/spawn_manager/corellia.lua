@@ -1026,7 +1026,7 @@ corellia_static_spawns = {
 	{"imperial_major",400,4629.71,25,-5770.51,238.638,0, "", ""},
 	{"imperial_noncom",400,-1.38669,0.125265,-2.85349,0,2715916, "", ""},
 	{"imperial_noncom",400,-1.69961,0.125266,-3.22658,0,2715916, "", ""},
-	{"imperial_recruiter",0,-6719,0,-5804,176,0, "", ""},
+	{"imperial_recruiter",60,6718.8,315.0,-5804.6,-174,0, "calm", ""},
 	{"imperial_sergeant_major",400,6908.17,330,-5608.54,27.4568,0, "npc_imperial", ""},
 	{"imperial_staff_sergeant",400,6909.29,330,-5606.48,204.967,0, "npc_imperial", ""},
 	{"imperial_surface_marshall",400,4531.47,30.7809,-5823.83,217.385,0, "", ""},

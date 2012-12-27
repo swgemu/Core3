@@ -1,8 +1,8 @@
 porcellus = Creature:new {
 	objectName = "@mob/creature_names:porcellus",
-	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
-	faction = "townsperson",
+	socialGroup = "jabba",
+	pvpFaction = "jabba",
+	faction = "jabba",
 	level = 10,
 	chanceHit = 0.28,
 	damageMin = 90,

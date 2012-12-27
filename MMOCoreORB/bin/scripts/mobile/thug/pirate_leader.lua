@@ -1,7 +1,7 @@
 pirate_leader = Creature:new {
 	objectName = "@mob/creature_names:pirate_leader",
-	socialGroup = "Pirate",
-	pvpFaction = "Pirate",
+	socialGroup = "pirate",
+	pvpFaction = "pirate",
 	faction = "",
 	level = 17,
 	chanceHit = 0.320000,

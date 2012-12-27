@@ -1,4 +1,3 @@
-includeFile("all/alert_droideka.lua")
 includeFile("all/at_at.lua")
 includeFile("all/at_st.lua")
 includeFile("all/darknovatrooper.lua")

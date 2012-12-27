@@ -377,7 +377,7 @@ PROTECTIVELIQUID = "object/tangible/loot/dungeon/death_watch_bunker/emulsion_pro
 TARGETITEMS = {
 		--Armorsmith Crafting Terminal
 		{ "object/tangible/wearables/armor/mandalorian/armor_mandalorian_chest_plate.iff",
-		  "object/tangible/wearables/armor/mandalorian/armor_mandalorian_boots.iff",
+		  "object/tangible/wearables/armor/mandalorian/armor_mandalorian_shoes.iff",
 		  "object/tangible/wearables/armor/mandalorian/armor_mandalorian_bicep_l.iff",
 		  "object/tangible/wearables/armor/mandalorian/armor_mandalorian_bicep_r.iff" },
 		
