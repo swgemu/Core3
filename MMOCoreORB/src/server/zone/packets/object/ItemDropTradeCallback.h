@@ -33,6 +33,9 @@ public:
 	void run() {
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer().get().get());
 
+		if (player == NULL)
+			return;
+
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(targetToTrade);
 
 		if (targetObject == NULL || !targetObject->isPlayerCreature() || targetObject == player) {
