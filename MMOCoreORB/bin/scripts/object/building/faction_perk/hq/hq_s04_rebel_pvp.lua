@@ -55,6 +55,15 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 		width = 6,
 		containerComponent = {"cpp", "GCWBaseContainerComponent"},
 		planetMapCategory = "rebel_hq",
+		
+		skillMods = {
+			{"private_buff_mind", 100},
+			{"private_med_battle_fatigue", 5},
+			{"private_medical_rating", 100},
+			{"private_med_wound_health", 100},
+			{"private_med_wound_action", 100}
+		},
+		
 		childObjects = {
 
 			
@@ -130,17 +139,22 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 			]]--
 		
 			{templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = .38, z = .25, y = 1.75, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
-			{templateFile = "object/tangible/hq_destructible/power_regulator.iff", x = 12, z = -11.5, y = -21, ox = 0, oy = .69, oz = 0, ow = .68, cellid = 10, containmentType = -1 },
+			{templateFile = "object/tangible/hq_destructible/power_regulator.iff", x = 14, z=-13.8, y=-4, ox = 0, oy =1, oz = 0, ow =0, cellid = 10, containmentType = -1 },
 			{templateFile = "object/tangible/hq_destructible/override_terminal.iff", x = 12.75, z = -13.75, y = 10.2, ox = 0, oy =.7, oz = 0, ow =.7, cellid = 9, containmentType = -1 },
 			{templateFile = "object/tangible/hq_destructible/security_terminal.iff", x = -5.5, z = -13.75, y = 7.5, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 7, containmentType = -1 },
-			{templateFile = "object/tangible/hq_destructible/uplink_terminal.iff", x = 1, z = -6.75, y = -5.75, ow = .7, ox =0, oz = 0, oy = .7, cellid = 5, containmentType = -1},
-			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=18.5, z=-13.75, y=5, ow=.707, ox=0, oz=0, oy=-.7, cellid=9, containmentType=-1},
-			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=18.5, z=-13.75, y=6.4, ow=.707, ox=0, oz=0, oy=-.7, cellid=9, containmentType=-1},
-			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=18.5, z=-13.75, y=7.8, ow=.707, ox=0, oz=0, oy=-.7, cellid=9, containmentType=-1},
-			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=18.5, z=-13.75, y=9.2, ow=.707, ox=0, oz=0, oy=-.7, cellid=9, containmentType=-1},
+			{templateFile = "object/tangible/hq_destructible/uplink_terminal.iff", x = 6.5, z = -6.75, y = -10, ow =1, ox =0, oz = 0, oy =0, cellid = 5, containmentType = -1},
+			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=5, z=.25, y=2, ow=-.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
+			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=5, z=.25, y=.5, ow=-.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
+			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=5, z=.25, y=-1, ow=-.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
+			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=5, z=.25, y=-2.5, ow=-.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
 			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=0, z=0, y=33,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
 			{templateFile = "object/installation/faction_perk/covert_detector/detector_base.iff", x=15, z=0, y=53,  ox=-10, oy=-.3, oz=0, ow=1, cellid=-1, containmentType=-1}, 
 			{templateFile = "object/installation/faction_perk/covert_detector/detector_base.iff", x=-15, z=0, y=53,  ox=10, oy=-.3, oz=0, ow=1, cellid=-1, containmentType=-1}, 
+		
+			{templateFile="object/tangible/terminal/terminal_mission.iff", x=18.25, z=-13.75, y=14.65, ow=-.69, ox=0, oz=0, oy=.71, cellid=9, containmentType=-1},
+			{templateFile="object/tangible/terminal/terminal_bank.iff", x=-7, z=-13.75, y=-7, ow=.7, ox=0, oz=0, oy=.66, cellid=7, containmentType=-1},
+			{templateFile="object/tangible/terminal/terminal_mission_rebel.iff", x=-3, z=.25, y=-5.5, ow=1, ox=0, oz=0, oy=0, cellid=3, containmentType=-1},
+		
 		},
 
 
