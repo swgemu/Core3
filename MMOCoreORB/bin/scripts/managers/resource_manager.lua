@@ -94,7 +94,7 @@ minimumpoolexcludes = jtlresources
 
   -- The random pool must have one of each of the items listed above spawned at all times.
   -- The random pool must never include the items in the excludes
-randompoolincludes = "mineral,gas,chemical,water"
+randompoolincludes = "mineral,gas,chemical"
 randompoolexcludes = jtlresources..",iron,fiberplast"
 randompoolsize = 27
   
