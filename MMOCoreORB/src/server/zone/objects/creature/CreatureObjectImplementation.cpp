@@ -2437,8 +2437,12 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (isDead())
 		return false;
 
-	if (object->isAiAgent())
+	if (object->isAiAgent()) {
+		if ((object->getFaction() == getFaction()) && (getFaction() != 0))
+			return false;
+
 		return true;
+	}
 
 	PlayerObject* ghost = getPlayerObject();
 	PlayerObject* targetGhost = object->getPlayerObject();
