@@ -47,6 +47,8 @@ public:
 	void readObject(LuaObject* templateData) {
 		SharedStructureObjectTemplate::readObject(templateData);
 
+		installationType = templateData->getIntField("installationType");
+
 		kinetic = templateData->getFloatField("kinetic");
 		energy = templateData->getFloatField("energy");
 		electricity = templateData->getFloatField("electricity");
