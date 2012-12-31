@@ -617,13 +617,13 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 
 	Locker acessLock(&paidAccessListMutex);
 
-	/*
+
 	if(isGCWBase()){
 		if(!checkContainerPermission(player,ContainerPermissions::WALKIN)){
 			ejectObject(player);
 		}
 	}
-	*/
+
 
 	if (accessFee > 0 && !isOnEntryList(player)) {
 		//thread safety issues!
