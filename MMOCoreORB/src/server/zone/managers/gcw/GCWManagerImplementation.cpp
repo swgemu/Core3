@@ -45,7 +45,8 @@
 #include "server/zone/objects/player/sui/callbacks/DonateDefenseSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/SelectTurretDonationSuiCallback.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
-
+#include "server/zone/templates/mobile/CreatureTemplate.h"
+#include "server/zone/managers/creature/CreatureTemplateManager.h"
 
 #define DEBUG_GCW
 
@@ -939,7 +940,8 @@ void GCWManagerImplementation::sendBaseDefenseStatus(CreatureObject* creature, B
 	if(ghost==NULL || baseData == NULL)
 		return;
 
-	ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
+	if(ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL))
+		ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
 
 	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
 	status->setPromptTitle("@hq:mnu_defense_status"); //Defense status
@@ -985,6 +987,9 @@ void GCWManagerImplementation::sendJamUplinkMenu(CreatureObject* creature, Build
 		creature->sendSystemMessage("Cannot jam uplink now");
 		return;
 	}
+
+	if(ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL))
+		ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
 
 	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
 
@@ -1062,11 +1067,14 @@ void GCWManagerImplementation::sendResetVerification(CreatureObject* creature, B
 	if(ghost==NULL || baseData == NULL)
 		return;
 
-	if(baseData->isVulnerable())
-		{
+	if(baseData->isVulnerable()){
 		creature->sendSystemMessage("Cannot reset vulnerability while base is vulnerable");
-			return;
-		}
+		return;
+	}
+
+	if(ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL))
+		ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
+
 	ManagedReference<SuiMessageBox*> suiBox = new SuiMessageBox(creature, SuiWindowType::HQ_TERMINAL);
 	suiBox->setCallback(new HQSendResetVerificationSuiCallback(this->zone->getZoneServer()));
 	suiBox->setPromptTitle("@hq:mnu_reset_vulnerability");
@@ -1321,6 +1329,9 @@ void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, Build
 	if(!this->isBaseVulnerable(building))
 		return;
 
+	if(ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL))
+		ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
+
 	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
 	status->setPromptTitle("@hq:mnu_dna"); //Defense status
 
@@ -1502,7 +1513,9 @@ void GCWManagerImplementation::sendPowerRegulatorControls(CreatureObject* creatu
 	if(!this->isBaseVulnerable(building))
 		return;
 
-	// TODO: CHange type
+	if(ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL))
+		ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
+
 	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
 	status->setPromptTitle("@hq:mnu_set_overload"); //Set to Overload
 
@@ -1663,7 +1676,8 @@ void GCWManagerImplementation::notifyTurretDestruction(InstallationObject* turre
 
 void GCWManagerImplementation::spawnChildrenCreatures(BuildingObject* building){
 
-	/*
+	return;
+
 	Locker _lock(building);
 
 	SharedObjectTemplate* serverTemplate = building->getObjectTemplate();
@@ -1674,18 +1688,23 @@ void GCWManagerImplementation::spawnChildrenCreatures(BuildingObject* building){
 	//info("servertemplate is good",true);
 	Vector3 position = building->getPosition();
 
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
+
+		if(baseData == NULL)
+			return;
+
 	for(int i = 0; i < serverTemplate->getChildObjectsSize();i++){
 		//info("iterating child",true);
 		ChildObject* child = serverTemplate->getChildObject(i);
 		if(child != NULL){
-			//info("child template " + child->getTemplateFile(),true);
+
+
+			String mobilename = child->getMobile();
+
 
 			SharedObjectTemplate* thisTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
-			//info(thisTemplate->getClientObjectCRC())
-			//info("child typs is " + String::valueOf(thisTemplate->getGameObjectType()),true);
 
-			if(thisTemplate->getGameObjectType() == SceneObjectType::NPCCREATURE){
-
+			if(thisTemplate->getGameObjectType() == SceneObjectType::NPCCREATURE || thisTemplate->getGameObjectType() == SceneObjectType::CREATURE){
 
 				Vector3 childPosition = child->getPosition();
 				float angle = building->getDirection()->getRadians();
@@ -1697,22 +1716,31 @@ void GCWManagerImplementation::spawnChildrenCreatures(BuildingObject* building){
 				y += position.getY();
 				float z = position.getZ() + childPosition.getZ();
 				float degrees = building->getDirection()->getDegrees();
-				String mobileName = child->getMobile();
+				// testing only
+			//	CreatureTemplate* temp = CreatureTemplateManager::instance()->getTemplate();
+
+
 				CreatureManager* creatureManager = zone->getCreatureManager();
-				CreatureObject* creature = creatureManager->spawnCreature(mobileName.hashCode(),0,x,z,y,1);
-				if(creature->isAiAgent()){
+				CreatureObject* creature = creatureManager->spawnCreature(mobilename.hashCode(),0,x,z,y,0,true);
+
+				if(creature != NULL && creature->isAiAgent()){
+					info("created creature " + String::valueOf(creature->getObjectID()),true);
 					AiAgent* ai = cast<AiAgent*>(creature);
 					ai->setRespawnTimer(0);
+					baseData->addCreature(creature);
+
+				} else{
+					info("creature temp is null",true);
 				}
+				info("total creature count " + String::valueOf(baseData->getCreatureCount()),true);
 
-
+			} else {
+				info("gameobjecttype is " + String::valueOf(thisTemplate->getGameObjectType()),true);
 			}
 		} else {
 				info("child is null",true);
 		}
 	}
-	*/
-
 
 }
 
@@ -1729,17 +1757,22 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 	}
 	*/
 
+
+
+
+
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 	if(ghost == NULL)
 		return;
 
+	if(ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL))
+		ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
+
 	ManagedReference<SceneObject*> inv = creature->getSlottedObject("inventory");
 
 	if(inv == NULL)
 		return;
-
-	ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
 
 	ManagedReference<SuiListBox*> donate = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
 
@@ -1774,9 +1807,10 @@ void GCWManagerImplementation::sendSelectTurretToDonate(BuildingObject* building
 		return;
 
 
-	ManagedReference<SceneObject*> inv = creature->getSlottedObject("inventory");
+	if(ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL))
+		ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
 
-	ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
+	ManagedReference<SceneObject*> inv = creature->getSlottedObject("inventory");
 
 	ManagedReference<SuiListBox*> donate = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
 	donate->setPromptTitle("TURRET SELECT");
@@ -1814,7 +1848,8 @@ void GCWManagerImplementation::sendRemoveDefenseConfirmation(BuildingObject* bui
 	if(ghost==NULL || baseData == NULL)
 		return;
 
-	ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
+	if(ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL))
+		ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
 
 	ManagedReference<SuiListBox*> removeDefense = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
 	removeDefense->setPromptTitle("TURRET SELECT");
@@ -1907,16 +1942,30 @@ void GCWManagerImplementation::performDonateMine(BuildingObject* building, Creat
 
 	for(int i =0; i < building->getChildObjects()->size(); i++){
 		ManagedReference<SceneObject*> obj = building->getChildObjects()->get(i);
-				// check to see if it is full
-			if(obj->isMinefield() && obj->getContainerObjectsSize()< 20 ){
-				_lock.release();
-				Locker clock(obj,creature);
-				obj->transferObject(mine,-1);
+
+		int precount = obj->getContainerObjectsSize();
+
+
+		if(obj->isMinefield() && precount < 20){
+						_lock.release();
+			Locker clock(obj,creature);
+
+			DataObjectComponentReference* ref = obj->getDataObjectComponent();
+			if(ref == NULL){
+				return;
+			}
+
+			obj->transferObject(mine,-1,true);
+
+
+			if(precount < obj->getContainerObjectsSize()){
 				StringIdChatParameter param("@faction/faction_hq/faction_hq_response:terminal_response46"); // YOu sucessfully donate a %TO
 				param.setTO(mine->getObjectNameStringIdName());
+
 				creature->sendSystemMessage(param);
 				return;
 			}
+		}
 	}
 
 	creature->sendSystemMessage("Unable to donate mines at this time.  Full or no minefields");
