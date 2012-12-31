@@ -38,10 +38,6 @@ void SecurityTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObj
 	GCWManager* gcwMan = zone->getGCWManager();
 
 	if( gcwMan->isUplinkJammed(building) && !gcwMan->isSecurityTermSliced(building) && player->getFaction() != building->getFaction() ) {
-		// if it's not damaged, give the slicing menu
-
-		info("terminal damaged is " + String::valueOf(gcwMan->isTerminalDamaged(cast<TangibleObject*>(sceneObject))),true);
-
 		if (gcwMan->isTerminalDamaged(cast<TangibleObject*>(sceneObject)))
 			menuResponse->addRadialMenuItem(229, 3, "@ui:repair");
 	}

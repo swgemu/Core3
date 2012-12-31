@@ -146,9 +146,9 @@ class GCWManager : public ManagedService {
 public:
 	static const int GCWCHECKTIMER = 7200;
 
-	static const int VULNERABILITYDURATION = 1800;
+	static const int VULNERABILITYDURATION = 7200;
 
-	static const int VULNERABILITYFREQUENCY = 3600;
+	static const int VULNERABILITYFREQUENCY = 172800;
 
 	static const int RESETTIMER = 120;
 
@@ -296,9 +296,9 @@ class GCWManagerImplementation : public ManagedServiceImplementation, public Log
 public:
 	static const int GCWCHECKTIMER = 7200;
 
-	static const int VULNERABILITYDURATION = 1800;
+	static const int VULNERABILITYDURATION = 7200;
 
-	static const int VULNERABILITYFREQUENCY = 3600;
+	static const int VULNERABILITYFREQUENCY = 172800;
 
 	static const int RESETTIMER = 120;
 

@@ -1180,6 +1180,19 @@ bool GCWManagerImplementation::canStartSlice(CreatureObject* creature, TangibleO
 			return false;
 		}
 
+		ManagedReference<PlayerObject*> ghost = NULL;
+
+		if(creature->isPlayerCreature())
+			ghost = creature->getPlayerObject();
+
+		if(ghost == NULL)
+			return false;
+
+		if(ghost->getFactionStatus() != FactionStatus::OVERT || creature->getFaction() == 0 ){
+			creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:declared_personnel_only"); // Only Special Forces personnel may access this terminal
+			return false;
+		}
+
 		if(isTerminalDamaged(tano)){
 			creature->sendSystemMessage("@hq:terminal_disabled");
 			return false;
