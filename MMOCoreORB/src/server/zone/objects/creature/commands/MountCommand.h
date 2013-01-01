@@ -99,6 +99,10 @@ public:
 			return GENERALERROR;
 		}
 
+		if (!creature->checkCooldownRecovery("mount_dismount")) {
+			return GENERALERROR;
+		}
+
 		try {
 			Locker clocker(vehicle, creature);
 
@@ -131,6 +135,8 @@ public:
 		} catch (Exception& e) {
 
 		}
+
+		creature->updateCooldownTimer("mount_dismount", 2000);
 
 		return SUCCESS;
 	}

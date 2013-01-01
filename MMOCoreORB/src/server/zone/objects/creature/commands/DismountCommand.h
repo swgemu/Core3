@@ -72,6 +72,10 @@ public:
 			return GENERALERROR;
 		}
 
+		if (!creature->checkCooldownRecovery("mount_dismount")) {
+			return GENERALERROR;
+		}
+
 		CreatureObject* vehicle = cast<CreatureObject*>( mount.get());
 
 		Locker clocker(vehicle, creature);
@@ -115,6 +119,8 @@ public:
 		changeBuffer->add(SpeedModChange(creature->getSpeedMultiplierMod()));
 
 		creature->updateToDatabase();
+
+		creature->updateCooldownTimer("mount_dismount", 2000);
 
 		return SUCCESS;
 	}
