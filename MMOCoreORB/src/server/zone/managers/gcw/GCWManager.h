@@ -162,7 +162,7 @@ public:
 
 	static const int MAXBASES = 25;
 
-	static const int OVERTCOOLDOWN = 60;
+	static const int OVERTCOOLDOWN = 300;
 
 	static const int REACTIVATIONTIMER = 300;
 
@@ -312,7 +312,7 @@ public:
 
 	static const int MAXBASES = 25;
 
-	static const int OVERTCOOLDOWN = 60;
+	static const int OVERTCOOLDOWN = 300;
 
 	static const int REACTIVATIONTIMER = 300;
 
