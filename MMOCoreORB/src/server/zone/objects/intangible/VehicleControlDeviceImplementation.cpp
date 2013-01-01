@@ -144,6 +144,10 @@ void VehicleControlDeviceImplementation::storeObject(CreatureObject* player) {
 		return;*/
 
 	if (player->isRidingMount() && player->getParent() == controlledObject) {
+
+		if (!player->checkCooldownRecovery("mount_dismount"))
+			return;
+
 		player->executeObjectControllerAction(String("dismount").hashCode());
 
 		if (player->isRidingMount())
