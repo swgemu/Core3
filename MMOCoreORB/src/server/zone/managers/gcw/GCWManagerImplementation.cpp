@@ -1690,7 +1690,7 @@ void GCWManagerImplementation::notifyTurretDestruction(InstallationObject* turre
 void GCWManagerImplementation::spawnChildrenCreatures(BuildingObject* building){
 
 	return;
-
+	/*
 	Locker _lock(building);
 
 	SharedObjectTemplate* serverTemplate = building->getObjectTemplate();
@@ -1754,6 +1754,7 @@ void GCWManagerImplementation::spawnChildrenCreatures(BuildingObject* building){
 				info("child is null",true);
 		}
 	}
+	*/
 
 }
 
