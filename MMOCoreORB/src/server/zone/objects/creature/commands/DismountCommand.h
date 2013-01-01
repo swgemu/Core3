@@ -98,9 +98,9 @@ public:
 
 		if (creature->hasBuff(String("burstrun").hashCode())
 				|| creature->hasBuff(String("retreat").hashCode())) {
-
-			creature->setSpeedMultiplierMod(1.822f);
-			creature->setAccelerationMultiplierMod(1.822f);
+			//Clear the active negation of the burst run or retreat buff.
+			creature->setSpeedMultiplierMod(1.f);
+			creature->setAccelerationMultiplierMod(1.f);
 		}
 
 		creature->clearState(CreatureState::RIDINGMOUNT);
