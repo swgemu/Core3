@@ -14,59 +14,67 @@
 class MinefieldAttackTask : public Task {
 	ManagedReference<SceneObject*> sceneObject;
 	ManagedReference<CreatureObject*> player;
-	ManagedReference<WeaponObject*> mine;
+	//ManagedReference<WeaponObject*> mine;
 
 public:
-	MinefieldAttackTask(SceneObject* scene, CreatureObject* player, WeaponObject* mine) {
+	MinefieldAttackTask(SceneObject* scene, CreatureObject* player) {
 		sceneObject = scene;
-		this->mine = mine;
 		this->player = player;
 	}
 
 	void run() {
 		Locker locker(sceneObject);
 
-		Locker clocker(player, sceneObject);
+		if(sceneObject->getContainerObjectsSize() <= 0)
+			return;
 
-		if(sceneObject->hasObjectInContainer(mine->getObjectID())){
-			sceneObject->removeObject(mine, NULL, true);
-
-			PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", sceneObject->getZone()->getZoneName(), sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY());
-			sceneObject->broadcastMessage(explodeLoc, false);
+		DataObjectComponentReference* ref = sceneObject->getDataObjectComponent();
+		if(ref == NULL){
+			return;
 		}
 
-		ManagedReference<WeaponObject*> weapon = NULL;
+		MinefieldDataComponent* mineData = cast<MinefieldDataComponent*>(ref->get());
 
-		if (sceneObject->getContainerObjectsSize() > 0)
-			weapon = cast<WeaponObject*>(sceneObject->getContainerObject(0));
+		if(mineData == NULL || !mineData->canExplode()){
+			return;
+		}
+
+		Locker clocker(player, sceneObject);
+
+		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(sceneObject->getContainerObject(0));;
 
 		if (weapon == NULL)
 			return;
 
+		PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", sceneObject->getZone()->getZoneName(), sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY());
+		sceneObject->broadcastMessage(explodeLoc, false);
+
+		sceneObject->removeObject(weapon,NULL,true);
+
 		locker.release();
 
-		Locker clockerm(mine, player);
+		Locker clockerm(weapon, player);
 
 		if(sceneObject->getZoneServer() != NULL){
 			ManagedReference<ObjectController*> objectController = sceneObject->getZoneServer()->getObjectController();
-			QueueCommand* command = objectController->getQueueCommand(String("defaultattack").hashCode());
+			QueueCommand* command = objectController->getQueueCommand(String("minefieldattack").hashCode());
 
 			if(command != NULL){
 				CombatQueueCommand* combatCommand = cast<CombatQueueCommand*>(command);
 				if(combatCommand != NULL){
-					combatCommand->setAreaAction(true);
-					combatCommand->setAreaRange(mine->getMaxRange());
-					CombatManager::instance()->doCombatAction(mine, weapon, player, combatCommand);
-
+					CombatManager::instance()->doCombatAction(sceneObject.castTo<TangibleObject*>(), weapon, player, combatCommand);
 				}
 			}
 
 		}
 
-		mine->destroyObjectFromWorld(true);
-		mine->destroyObjectFromDatabase(true);
-	}
+		mineData->updateCooldown(weapon->getAttackSpeed());
+		mineData->setMaxRange(weapon->getMaxRange());
 
+		weapon->destroyObjectFromWorld(true);
+		weapon->destroyObjectFromDatabase(true);
+
+	}
 
 };
 

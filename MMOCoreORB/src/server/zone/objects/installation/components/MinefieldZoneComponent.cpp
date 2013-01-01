@@ -17,27 +17,21 @@
 #include "MinefieldDataComponent.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/Zone.h"
-
 #include "server/zone/managers/combat/CreatureAttackData.h"
 #include "server/zone/objects/creature/commands/CombatQueueCommand.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
-
 #include "MinefieldAttackTask.h"
 
 void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) {
-//	Locker _lock(sceneObject);
-
-	// just exit if we dont' have any mines
-	if(sceneObject->getContainerObjectsSize() == 0)
+	// if we don't have any mines, just exit
+	if(sceneObject->getContainerObjectsSize() == 0 )
 		return;
 
 	ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
-	if(!sceneObject->isTangibleObject() || target == NULL){
+
+	if(sceneObject == NULL || !sceneObject->isMinefield() || target == NULL){
 		return;
 	}
-
-	ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(sceneObject);
-
 
 	DataObjectComponentReference* ref = sceneObject->getDataObjectComponent();
 	if(ref == NULL){
@@ -51,8 +45,9 @@ void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, Quad
 		return;
 
 	try {
-		if (sceneObject->isMinefield() && target->isPlayerCreature() && sceneObject->isInRange(target,mineData->getMaxRange())){
+		if (target->isPlayerCreature() && sceneObject->isInRange(target,mineData->getMaxRange())){
 			ManagedReference<CreatureObject*> player = cast<CreatureObject*>(entry);
+
 			if(player == NULL)
 				return;
 
@@ -61,28 +56,17 @@ void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, Quad
 			if(playerObject == NULL)
 				return;
 
+			ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(sceneObject);
 
-			if(tano->getFaction() != player->getFaction() && player->getFaction() != 0 && sceneObject->getContainerObjectsSize() > 0){
-				ManagedReference<SceneObject*> obj = sceneObject->getContainerObject(0);
-				if(obj == NULL){
-					info("container object isnull",true);
-					return;
-				}
+			if(tano == NULL)
+				return;
 
-				ManagedReference<WeaponObject*> weapon = obj.castTo<WeaponObject*>();
 
-				if(obj->getGameObjectType() == SceneObjectType::MINE) {
-					Reference<MinefieldAttackTask*> task = new MinefieldAttackTask(sceneObject, player, weapon);
+			if(tano->getFaction() != player->getFaction() && player->getFaction() != 0 ){
+
+					Reference<MinefieldAttackTask*> task = new MinefieldAttackTask(sceneObject, player);
 					task->execute();
 
-					if(sceneObject->getContainerObjectsSize() > 0){
-						ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(sceneObject->getContainerObject(0));
-						if(weapon != NULL){
-							mineData->updateCooldown(weapon->getAttackSpeed());
-							mineData->setMaxRange(weapon->getMaxRange());
-						}
-					}
-				}
 			}
 
 		}

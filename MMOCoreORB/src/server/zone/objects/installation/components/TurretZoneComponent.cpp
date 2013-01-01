@@ -15,7 +15,6 @@
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "TurretDataComponent.h"
-//#include "DetectorDataComponent.h"
 
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/Zone.h"
@@ -30,25 +29,24 @@
 void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry){
 
 	ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
-	if(!sceneObject->isTangibleObject() || target == NULL){
+
+	if(!sceneObject->isTangibleObject() || !sceneObject->isTurret() || target == NULL){
 		return;
 	}
 
 	ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(sceneObject);
 
-	if(sceneObject->isTurret() && target->isPlayerCreature() && sceneObject->isInRange(target,65)){
+	DataObjectComponentReference* data = sceneObject->getDataObjectComponent();
 
-		DataObjectComponentReference* data = sceneObject->getDataObjectComponent();
-		if(data == NULL)
-			return;
-		TurretDataComponent* turretData = cast<TurretDataComponent*>(data->get());
+	if(data == NULL)
+		return;
 
-		if(turretData == NULL)
-			return;
+	TurretDataComponent* turretData = cast<TurretDataComponent*>(data->get());
 
-		if(!turretData->canFire())
-			return;
+	if(turretData == NULL || !turretData->canFire())
+		return;
 
+	if(target->isPlayerCreature() && sceneObject->isInRange(target,65)){
 
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(entry);
 		ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();

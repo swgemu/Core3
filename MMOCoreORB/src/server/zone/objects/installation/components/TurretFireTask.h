@@ -12,6 +12,7 @@
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/objects/creature/commands/TurretFireCommand.h"
 
 class TurretFireTask : public Task {
 	ManagedReference<TangibleObject*> sceneObject;
@@ -38,16 +39,14 @@ public:
 			return;
 		TurretDataComponent* turretData = cast<TurretDataComponent*>(data->get());
 
-		//TODO: fix overriding global defaultattack data
-		if(sceneObject->getZoneServer() != NULL) {
+		if(sceneObject->getZoneServer() != NULL && turretData->canFire()) {
 			ManagedReference<ObjectController*> objectController = sceneObject->getZoneServer()->getObjectController();
-			QueueCommand* command = objectController->getQueueCommand(String("defaultattack").hashCode());
+			QueueCommand* command = objectController->getQueueCommand(String("turretfire").hashCode());
 
 			if(command != NULL){
+
 				CombatQueueCommand* combatCommand = cast<CombatQueueCommand*>(command);
 				if(combatCommand != NULL){
-					combatCommand->setAnimationCRC(String("fire_turret_medium").hashCode());
-
 					WeaponObject* weapon = cast<WeaponObject*>(sceneObject->getSlottedObject("hold_r"));
 					TangibleObject* defenderObject = cast<TangibleObject*>(target.get());
 
