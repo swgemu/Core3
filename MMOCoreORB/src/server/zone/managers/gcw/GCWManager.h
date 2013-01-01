@@ -152,19 +152,19 @@ public:
 
 	static const int RESETTIMER = 120;
 
-	static const int SLICECOOLDOWN = 30;
+	static const int SLICECOOLDOWN = 120;
 
 	static const int TOTALDNASAMPLES = 10;
 
 	static const int DNAMATCHESREQUIRED = 10;
 
-	static const int DESTRUCTIONTIMER = 300;
+	static const int DESTRUCTIONTIMER = 600;
 
 	static const int MAXBASES = 25;
 
 	static const int OVERTCOOLDOWN = 60;
 
-	static const int REACTIVATIONTIMER = 60;
+	static const int REACTIVATIONTIMER = 300;
 
 	static const int IMPERIALHASH = 3679112276;
 
@@ -302,19 +302,19 @@ public:
 
 	static const int RESETTIMER = 120;
 
-	static const int SLICECOOLDOWN = 30;
+	static const int SLICECOOLDOWN = 120;
 
 	static const int TOTALDNASAMPLES = 10;
 
 	static const int DNAMATCHESREQUIRED = 10;
 
-	static const int DESTRUCTIONTIMER = 300;
+	static const int DESTRUCTIONTIMER = 600;
 
 	static const int MAXBASES = 25;
 
 	static const int OVERTCOOLDOWN = 60;
 
-	static const int REACTIVATIONTIMER = 60;
+	static const int REACTIVATIONTIMER = 300;
 
 	static const int IMPERIALHASH = 3679112276;
 
