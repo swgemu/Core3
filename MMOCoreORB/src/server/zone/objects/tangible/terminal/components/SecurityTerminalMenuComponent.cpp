@@ -23,7 +23,7 @@ void SecurityTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObj
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 	ManagedReference<PlayerObject*> thisPlayer = player->getPlayerObject();
 
-	if ( thisPlayer  == NULL || player->isDead() || player->isIncapacitated())
+	if ( building == NULL || thisPlayer  == NULL || player->isDead() || player->isIncapacitated())
 			return;
 
 
