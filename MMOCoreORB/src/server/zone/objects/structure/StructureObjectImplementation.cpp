@@ -139,7 +139,7 @@ void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 			timeRemaining = 1;
 		} else if (timeRemaining > 24 * 60 * 60 * 1000) {
 			//Run maintenance task at least one time every day but randomized to spread it out.
-			timeRemaining = 12 * 60 * 60 * 1000 + System::random(12 * 60 * 60 * 1000);
+			timeRemaining = 12 * 60 * 60 + System::random(12 * 60 * 60);
 		}
 
 		maintenanceExpires.updateToCurrentTime();
