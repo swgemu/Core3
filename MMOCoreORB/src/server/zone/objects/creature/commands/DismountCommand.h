@@ -93,6 +93,16 @@ public:
 		if (zone == NULL)
 			return GENERALERROR;
 
+		ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+
+		if (planetManager == NULL)
+			return GENERALERROR;
+
+		ManagedReference<TerrainManager*> terrainManager = planetManager->getTerrainManager();
+
+		if (terrainManager == NULL)
+			return GENERALERROR;
+
 		zone->transferObject(creature, -1, false);
 
 		clocker.release();
@@ -117,6 +127,12 @@ public:
 		}
 
 		changeBuffer->add(SpeedModChange(creature->getSpeedMultiplierMod()));
+
+		float waterHeight;
+		terrainManager->getWaterHeight(creature->getPositionX(), creature->getPositionY(), waterHeight);
+		if ((z + creature->getSwimHeight() - waterHeight) < 0.2) {
+			creature->setState(CreatureState::SWIMMING);
+		}
 
 		creature->updateToDatabase();
 
