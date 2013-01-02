@@ -1571,7 +1571,8 @@ Vector3 MissionManagerImplementation::getRandomBountyTargetPosition(CreatureObje
 		position = player->getWorldCoordinate(System::random(radius), System::random(360));
 
 		if (playerZone->isWithinBoundaries(position)) {
-			found = playerZone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL);
+			found = playerZone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL) &&
+					!playerZone->getPlanetManager()->isInWater(position.getX(), position.getY());
 		}
 
 		retries--;
