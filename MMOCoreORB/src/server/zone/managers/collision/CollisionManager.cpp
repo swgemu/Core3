@@ -364,6 +364,55 @@ float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, boo
 	return height;
 }
 
+void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, bool testWater, SortedVector<IntersectionResult>* result)
+{
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+	zone->getInRangeObjects(x, y, 128, &closeObjects, true);
+
+	PlanetManager* planetManager = zone->getPlanetManager();
+
+	if (planetManager == NULL)
+		return;
+
+	float height = 0;
+
+	TerrainManager* terrainManager = planetManager->getTerrainManager();
+
+	//need to include exclude affectors in the terrain calcs
+	height = terrainManager->getHeight(x, y);
+
+	Vector3 rayStart(x, 16384.f, y);
+	Vector3 rayEnd(x, -16384.f, y);
+
+	Triangle* triangle = NULL;
+
+	if (testWater) {
+		float waterHeight;
+
+		if (terrainManager->getWaterHeight(x, y, waterHeight))
+			if (waterHeight > height)
+				height = waterHeight;
+	}
+
+	float intersectionDistance;
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		SceneObject* sceno = dynamic_cast<SceneObject*>(closeObjects.get(i).get());
+
+		if (sceno == NULL)
+			continue;
+
+		AABBTree* aabbTree = getAABBTree(sceno, 255);
+
+		if (aabbTree == NULL)
+			continue;
+
+		Ray ray = convertToModelSpace(rayStart, rayEnd, sceno);
+
+		aabbTree->intersects(ray, 16384 * 2, *result);
+	}
+}
+
 bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* object2) {
 	Zone* zone = object1->getZone();
 

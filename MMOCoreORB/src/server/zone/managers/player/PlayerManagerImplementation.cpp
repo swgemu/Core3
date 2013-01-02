@@ -2385,6 +2385,54 @@ void PlayerManagerImplementation::updatePermissionName(CreatureObject* player, i
 	}
 }
 
+bool PlayerManagerImplementation::hasCorrectZCoordinate(CreatureObject* player) {
+	if (player->getParent() != NULL) {
+		return true;
+	}
+
+	ManagedReference<Zone*> zone = player->getZone();
+
+	if (zone == NULL) {
+		player->info("No zone.", true);
+		return false;
+	}
+
+	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
+
+	if (planetManager == NULL) {
+		player->info("No planet manager.", true);
+		return false;
+	}
+
+	ManagedReference<TerrainManager*> terrainManager = planetManager->getTerrainManager();
+
+	if (terrainManager == NULL) {
+		player->info("No terrain manager.", true);
+		return false;
+	}
+
+	float landHeight = zone->getHeight(player->getPositionX(), player->getPositionY());
+	float waterHeight;
+	terrainManager->getWaterHeight(player->getPositionX(), player->getPositionY(), waterHeight);
+
+	if ((landHeight + player->getSwimHeight() - waterHeight < 0.2) && !player->hasState(CreatureState::SWIMMING)) {
+		SortedVector<IntersectionResult> intersections;
+
+		CollisionManager::getWorldFloorCollisions(player->getPositionX(), player->getPositionY(), zone, true, &intersections);
+
+		for (int i = 0; i < intersections.size(); i++) {
+			if (fabs(16384 - intersections.get(i).getIntersectionDistance() - player->getPositionZ()) < 0.2) {
+				return true;
+			}
+		}
+
+		player->info("No swimming state.", true);
+		return false;
+	}
+
+	return true;
+}
+
 int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier) {
 	float allowedSpeedMod = player->getSpeedMultiplierMod();
 	float allowedSpeedBase = player->getRunSpeed();
@@ -2393,12 +2441,17 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player,
 	Vector3 teleportPoint = teleportPosition.getPosition();
 	uint64 teleportParentID = teleportPosition.getParent();
 
-
 	if (parent != NULL && parent->isVehicleObject()) {
 		VehicleObject* vehicle = cast<VehicleObject*>( parent.get());
 
 		allowedSpeedMod = vehicle->getSpeedMultiplierMod();
 		allowedSpeedBase = vehicle->getRunSpeed();
+	}
+
+	if (!hasCorrectZCoordinate(player)) {
+		player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
+
+		return 1;
 	}
 
 	float maxAllowedSpeed = allowedSpeedMod * allowedSpeedBase;
