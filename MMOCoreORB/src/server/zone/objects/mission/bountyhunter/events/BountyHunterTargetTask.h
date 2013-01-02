@@ -128,8 +128,11 @@ public:
 			playerPosition.setZ(0);
 
 			if (playerPosition.distanceTo(currentPosition) < 500.0f) {
-				move = false;
-				objectiveRef->spawnTarget(zoneName);
+				updateToSpawnableTargetPosition();
+				if (playerPosition.distanceTo(currentPosition) < 500.0f) {
+					move = false;
+					objectiveRef->spawnTarget(zoneName);
+				}
 			}
 		}
 
@@ -202,7 +205,8 @@ private:
 		Zone* zone = playerRef->getZone();
 
 		if (zone->isWithinBoundaries(position)) {
-			if (zone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL)) {
+			if (zone->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL) &&
+					!zone->getPlanetManager()->isInWater(position.getX(), position.getY())) {
 				return true;
 			}
 		}
