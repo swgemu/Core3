@@ -91,11 +91,14 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 		float z = shuttle->getWorldPositionZ();
 
 		Vector3 arrivalVector(x, y, z);
+
 		PlanetTravelPoint* planetTravelPoint = new PlanetTravelPoint(zone->getZoneName(), getRegionName(), arrivalVector, arrivalVector, shuttle);
 		zone->getPlanetManager()->addPlayerCityTravelPoint(planetTravelPoint);
 
-		if (shuttle != NULL)
+		if (shuttle != NULL) {
 			zone->getPlanetManager()->scheduleShuttle(shuttle);
+			zone->registerObjectWithPlanetaryMap(zone->getZoneServer()->getObject(shuttleID, false));
+		}
 	}
 
 }

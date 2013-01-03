@@ -141,8 +141,6 @@ void ZoneImplementation::startManagers() {
 
 	updateCityRegions();
 
-	planetManager->loadShuttleTicketCollectors();
-
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
 

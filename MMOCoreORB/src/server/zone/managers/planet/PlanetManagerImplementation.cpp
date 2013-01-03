@@ -69,24 +69,6 @@ void PlanetManagerImplementation::initialize() {
 	}
 }
 
-void PlanetManagerImplementation::loadShuttleTicketCollectors() {
-	for (int i = 0; i < shuttlesToLoad.size(); ++i) {
-		CreatureObject* shuttle = cast<CreatureObject*>(shuttlesToLoad.get(i).get());
-
-		if (shuttle == NULL || shuttle->getZone() != zone)
-			continue;
-
-		Reference<PlanetTravelPoint*> ptp = getNearestPlanetTravelPoint(shuttle, 128.f);
-
-		if (ptp != NULL) {
-			scheduleShuttle(shuttle);
-			ptp->setShuttle(shuttle);
-		}
-	}
-
-	shuttlesToLoad.removeAll();
-}
-
 void PlanetManagerImplementation::loadLuaConfig() {
 	String planetName = zone->getZoneName();
 

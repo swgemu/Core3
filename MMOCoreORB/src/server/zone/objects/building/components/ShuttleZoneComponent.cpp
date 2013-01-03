@@ -50,8 +50,6 @@ void ShuttleZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zo
 		if (ptp != NULL) {
 			planetManager->scheduleShuttle(shuttle);
 			ptp->setShuttle(shuttle);
-		} else {
-			planetManager->addShuttleToLoad(shuttle);
 		}
 	}
 }
