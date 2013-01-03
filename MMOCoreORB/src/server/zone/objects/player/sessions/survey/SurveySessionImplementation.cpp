@@ -163,6 +163,11 @@ void SurveySessionImplementation::startSample(const String& resname) {
 		return;
 	}
 
+	if (surveyer->isInCombat()) {
+		surveyer->sendSystemMessage("@survey:sample_cancel_attack"); //You can't take samples while under attack!
+		return;
+	}
+
 	if (surveyer->getParent() != NULL && surveyer->getParent().get()->isCellObject()) {
 		surveyer->sendSystemMessage("@error_message:survey_in_structure"); //You cannot perform survey-related actions inside a structure.
 		return;

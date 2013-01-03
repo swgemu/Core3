@@ -58,13 +58,15 @@ public:
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
+			if(creature->isPlayerCreature() && creature->isInCombat()) {
+				creature->sendSystemMessage("@survey:sample_cancel_attack"); //You can't take samples while under attack!
+			}
 			return INVALIDSTATE;
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
 		if (creature->isPlayerCreature()) {
-
 			ManagedReference<SurveySession*> session = cast<SurveySession*>(creature->getActiveSession(SessionFacadeType::SURVEY));
 			if(session == NULL) {
 				creature->sendSystemMessage("@ui:survey_notool");
