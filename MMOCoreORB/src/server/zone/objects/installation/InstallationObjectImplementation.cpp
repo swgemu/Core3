@@ -131,9 +131,6 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 
 	if (value) {
 
-		if(resourceHopper.size() == 0)
-			return;
-
 		if(currentSpawn == NULL)
 			return;
 
@@ -646,7 +643,7 @@ void InstallationObjectImplementation::updateResourceContainerQuantity(ResourceC
 }
 
 uint64 InstallationObjectImplementation::getActiveResourceSpawnID() {
-	if (resourceHopper.size() == 0 || currentSpawn == NULL) {
+	if (currentSpawn == NULL) {
 		return 0;
 	} else {
 
