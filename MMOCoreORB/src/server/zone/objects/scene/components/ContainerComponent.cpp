@@ -91,7 +91,7 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) {
 	ContainerPermissions* permissions = sceneObject->getContainerPermissions();
 
-	if (permissions->getOwnerID() == creature->getObjectID()) {
+	if (permissions->getOwnerID() == creature->getObjectID() || permissions->getOwnerID() == creature->getGroupID()) {
 		return permissions->hasOwnerPermission(permission);
 	}
 

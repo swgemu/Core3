@@ -2624,7 +2624,7 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 	if (creatureInventory == NULL)
 		return;
 
-	if (creatureInventory->getContainerPermissions()->getOwnerID() != player->getObjectID()) {
+	if (creatureInventory->getContainerPermissions()->getOwnerID() != player->getObjectID() && creatureInventory->getContainerPermissions()->getOwnerID() != player->getGroupID()) {
 		player->sendSystemMessage("@group:no_loot_permission");
 
 		return;

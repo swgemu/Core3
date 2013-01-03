@@ -10,6 +10,7 @@
 #include "ThreatMap.h"
 #include "server/zone/objects/tangible/tasks/ClearThreatStateTask.h"
 #include "server/zone/objects/tangible/tasks/RemoveAggroTask.h"
+#include "server/zone/objects/group/GroupObject.h"
 #include "ThreatMapClearObserversTask.h"
 
 void ThreatMapEntry::addDamage(WeaponObject* weapon, uint32 damage) {
@@ -247,7 +248,68 @@ CreatureObject* ThreatMap::getHighestDamagePlayer() {
 		}
 	}
 
+	//getHighestDamageGroup();
 	return player;
+}
+
+CreatureObject* ThreatMap::getHighestDamageGroupLeader(){
+
+	Locker locker(&lockMutex);
+
+	VectorMap<uint64,uint32> groupDamageMap;
+	int64 highestGroupDmg = 0;
+
+	//Logger::Logger tlog("Threat");
+
+	ManagedReference<CreatureObject*> leaderCreature = NULL;
+
+	for (int i = 0; i < size(); ++i) {
+		ThreatMapEntry* entry = &elementAt(i).getValue();
+
+		uint32 totalDamage = 0;
+
+		for (int j = 0; j < entry->size(); ++j) {
+			uint32 damage = entry->elementAt(j).getValue();
+
+			totalDamage += damage;
+		}
+
+		CreatureObject* creature = elementAt(i).getKey();
+		//tlog.info("Group id is " + String::valueOf(creature->getGroupID()),true);
+		if(creature->isGrouped()){
+
+			CreatureObject* thisleader = cast<CreatureObject*>(creature->getGroup()->getLeader());
+			//tlog.info("leader is " + thisleader->getFirstName(),true);
+
+			if(thisleader == NULL)
+				break;
+
+			if(!groupDamageMap.contains(creature->getGroupID())){
+				//tlog.info("first dmg for group " + String::valueOf(creature->getGroupID()) + " dmg: " + String::valueOf(totalDamage), true);
+				groupDamageMap.put(creature->getGroupID(),totalDamage);
+
+			} else {
+				groupDamageMap.get(creature->getGroupID()) += totalDamage;
+				//tlog.info("adding to group " + String::valueOf(creature->getGroupID()) + "  dmg total: " + String::valueOf(groupDamageMap.get(creature->getGroupID())) + " this player dmg: " + String::valueOf(totalDamage),true);
+
+			}
+
+			if(groupDamageMap.get(creature->getGroupID()) > highestGroupDmg){
+				highestGroupDmg = groupDamageMap.get(creature->getGroupID());
+				leaderCreature = thisleader;
+			}
+		} else{
+			//tlog.info("adding single creature damage " + String::valueOf(totalDamage),true);
+			groupDamageMap.put(creature->getObjectID(),totalDamage);
+			if(totalDamage > highestGroupDmg) {
+				highestGroupDmg = totalDamage;
+				leaderCreature = creature;
+			}
+
+		}
+	}
+	//tlog.info("highest group is " + leaderCreature->getFirstName() + " damage of " + String::valueOf(highestGroupDmg),true);
+	return leaderCreature;
 }
 
 CreatureObject* ThreatMap::getHighestThreatCreature() {

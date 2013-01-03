@@ -163,6 +163,7 @@ public:
 	bool isUniqueState(uint64 state);
 
 	CreatureObject* getHighestDamagePlayer();
+	CreatureObject* getHighestDamageGroupLeader();
 
 	CreatureObject* getHighestThreatCreature();
 	uint32 getTotalDamage();

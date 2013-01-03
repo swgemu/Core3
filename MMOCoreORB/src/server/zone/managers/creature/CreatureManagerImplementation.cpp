@@ -404,7 +404,13 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		destructor->unlock();
 
 	try {
-		ManagedReference<CreatureObject*> player = copyThreatMap.getHighestDamagePlayer();
+		ManagedReference<CreatureObject*> player = copyThreatMap.getHighestDamageGroupLeader();
+		uint64 ownerID = 0;
+
+		if(player->isGrouped())
+			ownerID = player->getGroupID();
+		else
+			ownerID = player->getObjectID();
 
 		if (player != NULL) {
 			Locker locker(player, destructedObject);
@@ -430,7 +436,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 				destructedObject->setCashCredits(lootManager->calculateLootCredits(destructedObject->getLevel()));
 
 			if (player != NULL)
-				creatureInventory->setContainerOwnerID(player->getObjectID());
+				creatureInventory->setContainerOwnerID(ownerID);
 
 			lootManager->createLoot(creatureInventory, destructedObject);
 		}
