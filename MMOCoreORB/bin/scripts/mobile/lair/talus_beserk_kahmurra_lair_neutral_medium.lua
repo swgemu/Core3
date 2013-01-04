@@ -1,5 +1,5 @@
 talus_beserk_kahmurra_lair_neutral_medium = Lair:new {
-	mobiles = {{"berserk_kahmurra",0}},
+	mobiles = {{"beserk_kahmurra",0}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/earthmound_dark.iff"},
 	buildingsEasy = {"object/tangible/lair/base/earthmound_dark.iff"},

@@ -7,7 +7,7 @@ talus_world_creatures = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "talus_beserk_kahmurra_lair_neutral_,medium",
+			lairTemplateName = "talus_beserk_kahmurra_lair_neutral_medium",
 			spawnLimit = -1,			
 			minDifficulty = 16,
 			maxDifficulty = 22,
@@ -529,7 +529,7 @@ talus_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "talus_voracious_rasp_lair_neutral_none",
+			lairTemplateName = "talus_voracious_rasp_neutral_none",
 			spawnLimit = -1,			
 			minDifficulty = 35,
 			maxDifficulty = 45,
