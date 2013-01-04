@@ -49,6 +49,7 @@ object_building_tatooine_housing_tatt_style03_med = object_building_tatooine_sha
 	planetMapCategory = "tavern",
 	
 	skillMods = {
+		{"private_medical_rating", 100},
 		{"private_med_wound_mind", 20},
 		{"private_buff_mind", 100},
 		{"private_med_battle_fatigue", 5},
