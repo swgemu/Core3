@@ -303,6 +303,10 @@ public:
 
 	bool isLightningRifle();
 
+	bool isFlameThrower();
+
+	bool isHeavyAcidRifle();
+
 	bool isCarbineWeapon();
 
 	bool isPistolWeapon();
@@ -606,6 +610,10 @@ public:
 
 	bool isLightningRifle();
 
+	bool isFlameThrower();
+
+	bool isHeavyAcidRifle();
+
 	bool isCarbineWeapon();
 
 	bool isPistolWeapon();
@@ -796,6 +804,10 @@ public:
 	bool isSpecialHeavyWeapon();
 
 	bool isLightningRifle();
+
+	bool isFlameThrower();
+
+	bool isHeavyAcidRifle();
 
 	bool isCarbineWeapon();
 

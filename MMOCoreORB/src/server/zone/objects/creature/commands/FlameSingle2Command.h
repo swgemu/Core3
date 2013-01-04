@@ -46,6 +46,7 @@ which carries forward this exception.
 #define FLAMESINGLE2COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
 class FlameSingle2Command : public CombatQueueCommand {
 public:
@@ -62,7 +63,12 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isFlameThrower())
+			return INVALIDWEAPON;
+
+		return doCombatAction(creature, target);
 	}
 
 };

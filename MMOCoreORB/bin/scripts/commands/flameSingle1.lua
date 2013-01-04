@@ -43,7 +43,20 @@
 
 FlameSingle1Command = {
         name = "flamesingle1",
-}
 
+	damageMultiplier = 5,
+	speedMultiplier = 4,
+	healthCostMultiplier = 1.5,
+	actionCostMultiplier = 0.5,
+	mindCostMultiplier = 0.5,
+	accuracyBonus = 0,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	animationCRC = hashCode("fire_flame_thrower_single_1_light"),
+	combatSpam = "flamesingle1",
+	
+	range = 16
+}
 AddCommand(FlameSingle1Command)
 

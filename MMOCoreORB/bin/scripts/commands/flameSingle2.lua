@@ -42,7 +42,21 @@
 --true = 1, false = 0
 
 FlameSingle2Command = {
-        name = "flamesingle2",
+       name = "flamesingle2",
+
+	damageMultiplier = 8,
+	speedMultiplier = 4,
+	healthCostMultiplier = 2.0,
+	actionCostMultiplier = 0.5,
+	mindCostMultiplier = 0.5,
+	accuracyBonus = 0,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	animationCRC = hashCode("fire_flame_thrower_single_2_light"),
+	combatSpam = "flamesingle2",
+	
+	range = 16
 }
 
 AddCommand(FlameSingle2Command)

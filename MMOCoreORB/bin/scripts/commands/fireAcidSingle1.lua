@@ -43,6 +43,20 @@
 
 FireAcidSingle1Command = {
         name = "fireacidsingle1",
+
+	damageMultiplier = 5,
+	speedMultiplier = 4,
+	healthCostMultiplier = 1.5,
+	actionCostMultiplier = 0.5,
+	mindCostMultiplier = 0.5,
+	accuracyBonus = 0,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	animationCRC = hashCode("fire_acid_rifle_single_1_light"),
+
+	combatSpam = "fireacidsingle1",
+	range = 16
 }
 
 AddCommand(FireAcidSingle1Command)

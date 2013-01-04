@@ -46,6 +46,7 @@ which carries forward this exception.
 #define FIREACIDCONE2COMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "CombatQueueCommand.h"
 
 class FireAcidCone2Command : public CombatQueueCommand {
 public:
@@ -62,7 +63,12 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return SUCCESS;
+		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+
+		if (!weapon->isHeavyAcidRifle())
+			return INVALIDWEAPON;
+
+		return doCombatAction(creature, target);
 	}
 
 };

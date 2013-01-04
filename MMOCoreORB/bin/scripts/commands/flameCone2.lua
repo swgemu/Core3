@@ -43,6 +43,22 @@
 
 FlameCone2Command = {
         name = "flamecone2",
+	damageMultiplier = 6,
+	speedMultiplier = 4,
+	healthCostMultiplier = 2.0,
+	actionCostMultiplier = 0.5,
+	mindCostMultiplier = 0.5,
+	accuracyBonus = 0,
+	
+	coneAngle = 45,
+	coneAction = true,
+
+	poolsToDamage = RANDOM_ATTRIBUTE,
+
+	animationCRC = hashCode("fire_flame_thrower_cone_2_light"),
+	combatSpam = "flamecone2",
+	
+	range = 16
 }
 
 AddCommand(FlameCone2Command)
