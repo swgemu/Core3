@@ -43,7 +43,18 @@ thug = Creature:new {
 		"object/mobile/dressed_criminal_thug_trandoshan_female_01.iff",
 		"object/mobile/dressed_criminal_thug_zabrak_male_01.iff",
 		"object/mobile/dressed_criminal_thug_zabrak_female_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+	        groups = {
+			{group = "junk", chance = 6000000},
+			{group = "rifles", chance = 1000000},
+			{group = "pistols", chance = 1000000},
+			{group = "melee_weapons", chance = 1000000},
+			{group = "carbines", chance = 1000000},
+		},
+			lootChance = 2600000
+		}
+	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)

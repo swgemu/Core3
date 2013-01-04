@@ -10,6 +10,7 @@ ThemeParkLogic = ScreenPlay:new {
 	permissionMap = {},
 	className = "ThemeParkLogic",
 	screenPlayState = "theme_park_general",
+	distance = 1000,
 	missionDescriptionStf = "",
 	missionCompletionMessageStf = ""
 }
@@ -480,7 +481,31 @@ function ThemeParkLogic:getMissionDescription(pConversingPlayer)
 		npcNumber = npcNumber * 2
 	end
 	
-	return self.missionDescriptionStf .. missionNumber
+	if self.missionDescriptionStf == "" then
+		local currentMissionType = self:getMissionType(activeNpcNumber, pConversingPlayer)
+		local currentMissionNumber = self:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
+		local mission = self:getMission(activeNpcNumber, currentMissionNumber)
+		local mainNpc = mission.primarySpawns
+		local mainNpcName = self:getNpcName(mainNpc[1].npcName)
+		local missionItem = mission.itemSpawns
+
+
+		if currentMissionType == "deliver" then
+			local missionItemName = missionItem[1].itemName
+			return "Deliver " .. missionItemName
+		elseif currentMissionType == "escort" then
+			return "Escort " .. mainNpcName
+		elseif currentMissionType == "retrieve" then
+			local missionItemName = missionItem[1].itemName
+			return "Retrieve " .. missionItemName
+		elseif currentMissionType == "assassinate" then
+			return "Kill " .. mainNpcName
+		end
+	else
+		return self.missionDescriptionStf .. missionNumber
+	end
+
+
 end
 
 function ThemeParkLogic:removeWaypoint(pConversingPlayer)
@@ -512,7 +537,9 @@ end
 function ThemeParkLogic:getSpawnPoints(numberOfSpawns, x, y, pConversingPlayer)
 	local spawnPoints = {}
 	
-	local firstSpawnPoint = getSpawnPoint(pConversingPlayer, x, y, 1000, 1500)
+	local spawnDistance = self.distance
+
+	local firstSpawnPoint = getSpawnPoint(pConversingPlayer, x, y, spawnDistance, (spawnDistance/2)*3)
 	if firstSpawnPoint ~= nil then
 		table.insert(spawnPoints, firstSpawnPoint)
 		for i = 2, numberOfSpawns, 1 do
