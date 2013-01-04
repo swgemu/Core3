@@ -135,6 +135,7 @@ includeFile("caves/talus_erran_sif.lua")
 includeFile("caves/talus_binayre_pirate_bunker.lua")
 includeFile("caves/talus_kahmurra_biogentic_research_station.lua")
 includeFile("caves/rori_borgle_bat_cave.lua")
+includeFile("caves/talus_detainment_center.lua")
 
 --POIs
 includeFile("poi/tatooine_fort_tusken.lua")
@@ -153,6 +154,7 @@ includeFile("poi/talus_lost_village_of_durbin.lua")
 includeFile("poi/talus_imperial_outpost.lua")
 includeFile("poi/naboo_gungan_temple.lua")
 includeFile("poi/tatooine_krayt_graveyard.lua")
+includeFile("poi/talus_corsec_vs_flail_battle.lua")
 
 --Tests
 --includeFile("tests/options_bitmask_test.lua")

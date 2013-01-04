@@ -21,7 +21,7 @@ corsec_trooper = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -32,11 +32,19 @@ corsec_trooper = Creature:new {
 		"object/mobile/dressed_corsec_pilot_human_male_01.iff",
 		"object/mobile/dressed_corsec_pilot_human_female_01.iff"
 		},
-	lootGroups = {},
-	weapons = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 6000000},
+				{group = "corsec_weapons", chance = 2500000},
+				{group = "tailor_components", chance = 1500000}
+			},
+			lootChance = 2000000
+		}
+	},
+	weapons = {"corsec_police_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(corsec_trooper, "corsec_trooper")
