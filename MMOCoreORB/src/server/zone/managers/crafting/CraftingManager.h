@@ -166,6 +166,8 @@ public:
 
 	String generateSerial();
 
+	String checkBioSkillMods(const String& property);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -242,6 +244,10 @@ public:
 
 	static const short CRITICALFAILURE = 8;
 
+private:
+	SortedVector<String> bioMods;
+
+public:
 	CraftingManagerImplementation();
 
 	CraftingManagerImplementation(DummyConstructorParameter* param);
@@ -275,6 +281,12 @@ public:
 	float getWeightedValue(ManufactureSchematic* manufactureSchematic, int type);
 
 	String generateSerial();
+
+private:
+	bool loadBioSkillMods();
+
+public:
+	String checkBioSkillMods(const String& property);
 
 	WeakReference<CraftingManager*> _this;
 
@@ -340,6 +352,8 @@ public:
 	float getWeightedValue(ManufactureSchematic* manufactureSchematic, int type);
 
 	String generateSerial();
+
+	String checkBioSkillMods(const String& property);
 
 };
 

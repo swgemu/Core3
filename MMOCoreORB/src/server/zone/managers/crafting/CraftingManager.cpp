@@ -16,7 +16,7 @@
  *	CraftingManagerStub
  */
 
-enum {RPC_GETSCHEMATIC__INT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_INT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_INT_,RPC_CALCULATEASSEMBLYSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_,RPC_CALCULATEASSEMBLYVALUEMODIFIER__INT_,RPC_GETASSEMBLYPERCENTAGE__FLOAT_,RPC_CALCULATEEXPERIMENTATIONFAILURERATE__CREATUREOBJECT_MANUFACTURESCHEMATIC_INT_,RPC_CALCULATEEXPERIMENTATIONSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_,RPC_CALCULATEEXPERIMENTATIONVALUEMODIFIER__INT_INT_,RPC_GETWEIGHTEDVALUE__MANUFACTURESCHEMATIC_INT_,RPC_GENERATESERIAL__};
+enum {RPC_GETSCHEMATIC__INT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_INT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_INT_,RPC_CALCULATEASSEMBLYSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_,RPC_CALCULATEASSEMBLYVALUEMODIFIER__INT_,RPC_GETASSEMBLYPERCENTAGE__FLOAT_,RPC_CALCULATEEXPERIMENTATIONFAILURERATE__CREATUREOBJECT_MANUFACTURESCHEMATIC_INT_,RPC_CALCULATEEXPERIMENTATIONSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_,RPC_CALCULATEEXPERIMENTATIONVALUEMODIFIER__INT_INT_,RPC_GETWEIGHTEDVALUE__MANUFACTURESCHEMATIC_INT_,RPC_GENERATESERIAL__,RPC_CHECKBIOSKILLMODS__STRING_};
 
 CraftingManager::CraftingManager() : ZoneManager(DummyConstructorParameter::instance()) {
 	CraftingManagerImplementation* _implementation = new CraftingManagerImplementation();
@@ -235,6 +235,22 @@ String CraftingManager::generateSerial() {
 		return _implementation->generateSerial();
 }
 
+String CraftingManager::checkBioSkillMods(const String& property) {
+	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CHECKBIOSKILLMODS__STRING_);
+		method.addAsciiParameter(property);
+
+		String _return_checkBioSkillMods;
+		method.executeWithAsciiReturn(_return_checkBioSkillMods);
+		return _return_checkBioSkillMods;
+	} else
+		return _implementation->checkBioSkillMods(property);
+}
+
 DistributedObjectServant* CraftingManager::_getImplementation() {
 
 	 if (!_updated) _updated = true;
@@ -440,6 +456,12 @@ void CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 			resp->insertAscii(generateSerial());
 		}
 		break;
+	case RPC_CHECKBIOSKILLMODS__STRING_:
+		{
+			String property; 
+			resp->insertAscii(checkBioSkillMods(inv->getAsciiParameter(property)));
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -487,6 +509,10 @@ float CraftingManagerAdapter::getWeightedValue(ManufactureSchematic* manufacture
 
 String CraftingManagerAdapter::generateSerial() {
 	return (static_cast<CraftingManager*>(stub))->generateSerial();
+}
+
+String CraftingManagerAdapter::checkBioSkillMods(const String& property) {
+	return (static_cast<CraftingManager*>(stub))->checkBioSkillMods(property);
 }
 
 /*

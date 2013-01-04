@@ -71,6 +71,8 @@ which carries forward this exception.
 #include "server/zone/templates/tangible/tool/RepairToolTemplate.h"
 #include "server/zone/objects/tangible/tool/repair/RepairTool.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/tangible/wearables/WearableObject.h"
+#include "engine/engine.h"
 
 
 void TangibleObjectImplementation::initializeTransientMembers() {
@@ -671,71 +673,97 @@ bool TangibleObjectImplementation::applyComponentStats(ManufactureSchematic* man
 
 		ManagedReference<Component*> component = cast<Component*>( tano.get());
 
-		for (int j = 0; j < component->getPropertyCount(); ++j) {
+		if (this->isWearableObject() && !this->isArmorObject()) {
 
-			property = component->getProperty(j); // charges
+			if (component->getObjectTemplate()->getObjectName() == "@craft_clothing_ingredients_n:reinforced_fiber_panels" || component->getObjectTemplate()->getObjectName() == "@craft_clothing_ingredients_n:synthetic_cloth"){
 
-			modified = true;
+				ManagedReference<CraftingManager* > craftingManager = getZoneServer()->getCraftingManager();
 
-			if (craftingValues->hasProperty(property)) {
+				for (int k = 0; k < component->getPropertyCount(); ++k) {
+					const String property = component->getProperty(k);
 
-				max = craftingValues->getMaxValue(property);
+					if (property == "" || property == "null") {
+						continue;
+					}
 
-				min = craftingValues->getMinValue(property);
+					String key = craftingManager->checkBioSkillMods(property);
 
-				hidden = craftingValues->isHidden(property);
-
-				currentvalue = craftingValues->getCurrentValue(property);
-
-				propertyvalue = component->getAttributeValue(property) * draftSlot->getContribution();
-
-				short combineType = craftingValues->getCombineType(property);
-
-				switch(combineType) {
-				case CraftingManager::LINEARCOMBINE:
-					currentvalue += propertyvalue;
-					min += propertyvalue;
-					max += propertyvalue;
-
-					craftingValues->setMinValue(property, min);
-					craftingValues->setMaxValue(property, max);
-
-					craftingValues->setCurrentValue(property, currentvalue);
-					break;
-				case CraftingManager::PERCENTAGECOMBINE:
-					currentvalue += propertyvalue;
-					min += propertyvalue;
-					max += propertyvalue;
-
-					craftingValues->setMinValue(property, min);
-					craftingValues->setMaxValue(property, max);
-
-					craftingValues->setCurrentPercentage(property, currentvalue);
-					break;
-				case CraftingManager::BITSETCOMBINE:
-					currentvalue = (int)currentvalue | (int)propertyvalue;
-
-					craftingValues->setCurrentValue(property , currentvalue);
-					break;
-				case CraftingManager::OVERRIDECOMBINE:
-					// Do nothing because the values should override whatever is
-					// on the component
-					break;
-				default:
-					break;
+					if (key == "") {
+						continue;
+					} else {
+						float value = component->getAttributeValue(property);
+						this->addSkillMod(SkillModManager::WEARABLE, key, value);
+					}
 				}
+			}
+		} else {
 
-			} else {
+			for (int j = 0; j < component->getPropertyCount(); ++j) {
 
-				currentvalue = component->getAttributeValue(property);
-				precision = component->getAttributePrecision(property);
-				experimentalTitle = component->getAttributeTitle(property);
+				property = component->getProperty(j); // charges
 
-				craftingValues->addExperimentalProperty(experimentalTitle, property,
+				modified = true;
+
+				if (craftingValues->hasProperty(property)) {
+
+					max = craftingValues->getMaxValue(property);
+
+					min = craftingValues->getMinValue(property);
+
+					hidden = craftingValues->isHidden(property);
+
+					currentvalue = craftingValues->getCurrentValue(property);
+
+					propertyvalue = component->getAttributeValue(property) * draftSlot->getContribution();
+
+					short combineType = craftingValues->getCombineType(property);
+
+					switch(combineType) {
+					case CraftingManager::LINEARCOMBINE:
+						currentvalue += propertyvalue;
+						min += propertyvalue;
+						max += propertyvalue;
+
+						craftingValues->setMinValue(property, min);
+						craftingValues->setMaxValue(property, max);
+
+						craftingValues->setCurrentValue(property, currentvalue);
+						break;
+					case CraftingManager::PERCENTAGECOMBINE:
+						currentvalue += propertyvalue;
+						min += propertyvalue;
+						max += propertyvalue;
+
+						craftingValues->setMinValue(property, min);
+						craftingValues->setMaxValue(property, max);
+
+						craftingValues->setCurrentPercentage(property, currentvalue);
+						break;
+					case CraftingManager::BITSETCOMBINE:
+						currentvalue = (int)currentvalue | (int)propertyvalue;
+
+						craftingValues->setCurrentValue(property , currentvalue);
+						break;
+					case CraftingManager::OVERRIDECOMBINE:
+						// Do nothing because the values should override whatever is
+						// on the component
+						break;
+					default:
+						break;
+					}
+
+				} else {
+
+					currentvalue = component->getAttributeValue(property);
+					precision = component->getAttributePrecision(property);
+					experimentalTitle = component->getAttributeTitle(property);
+
+					craftingValues->addExperimentalProperty(experimentalTitle, property,
 						currentvalue, currentvalue, precision, component->getAttributeHidden(property), CraftingManager::LINEARCOMBINE);
-				craftingValues->setCurrentPercentage(property, 0);
-				craftingValues->setMaxPercentage(property, 0);
-				craftingValues->setCurrentValue(property, currentvalue);
+					craftingValues->setCurrentPercentage(property, 0);
+					craftingValues->setMaxPercentage(property, 0);
+					craftingValues->setCurrentValue(property, currentvalue);
+				}
 			}
 		}
 	}

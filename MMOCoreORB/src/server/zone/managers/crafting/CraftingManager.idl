@@ -88,6 +88,9 @@ class CraftingManager extends ZoneManager {
 	public static final short BARELYSUCCESSFUL = 7;
 	public static final short CRITICALFAILURE = 8;
 
+	@dereferenced
+	private transient SortedVector<string> bioMods;
+
 	public CraftingManager() {
 		super("CraftingManager");
 	}
@@ -128,4 +131,9 @@ class CraftingManager extends ZoneManager {
 	public native float getWeightedValue(ManufactureSchematic manufactureSchematic, int type);
 	
 	public native string generateSerial();
+
+	private native boolean loadBioSkillMods();
+
+	public native string checkBioSkillMods(final string property);
+
 }
