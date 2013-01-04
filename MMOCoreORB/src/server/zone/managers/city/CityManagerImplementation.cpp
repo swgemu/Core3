@@ -1507,7 +1507,8 @@ void CityManagerImplementation::registerForMayoralRace(CityRegion* city, Creatur
 
 
 	if (city->isCandidate(objectid)) {
-		creature->sendSystemMessage("@city/city:register_dupe"); //You are already registered for the Mayoral race.
+		creature->sendSystemMessage("@city/city:unregistered_race"); //You have unregistered from the mayoral race.
+		city->removeCandidate(objectid);
 		return;
 	}
 
