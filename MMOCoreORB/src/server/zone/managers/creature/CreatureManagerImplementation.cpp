@@ -403,6 +403,8 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 	if (destructedObject != destructor)
 		destructor->unlock();
 
+	bool shouldRescheduleCorpseDestruction = false;
+
 	try {
 		ManagedReference<CreatureObject*> player = copyThreatMap.getHighestDamageGroupLeader();
 		uint64 ownerID = 0;
@@ -443,6 +445,9 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 		CombatManager::instance()->attemptPeace(destructedObject);
 
+		// Check to see if we can expedite the despawn of this corpse
+		// We can expedite the despawn when corpse has no loot, no credits, player cannot harvest, and no group members in range can harvest
+		shouldRescheduleCorpseDestruction = playerManager->shouldRescheduleCorpseDestruction(player, destructedObject);
 	} catch (...) {
 		destructedObject->scheduleDespawn();
 
@@ -454,6 +459,17 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 	}
 
 	destructedObject->scheduleDespawn();
+
+	if (shouldRescheduleCorpseDestruction) {
+
+		Reference<DespawnCreatureTask*> despawn = dynamic_cast<DespawnCreatureTask*>(destructedObject->getPendingTask("despawn"));
+
+		if (despawn != NULL) {
+			despawn->cancel();
+
+			despawn->reschedule(1000);
+		}
+	}
 
 	// now we can safely lock destructor again
 	if (destructedObject != destructor)
@@ -614,7 +630,7 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 
 	creature->addAlreadyHarvested(player);
 
-	if (!player->isGrouped() && !creature->hasLoot()) {
+	if (!creature->hasLoot() && creature->getBankCredits() < 1 && creature->getCashCredits() < 1 && !playerManager->canGroupMemberHarvestCorpse(player, creature)) {
 		Reference<DespawnCreatureTask*> despawn = dynamic_cast<DespawnCreatureTask*>(creature->getPendingTask("despawn"));
 
 		if (despawn != NULL) {
@@ -685,4 +701,5 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 Vector3 CreatureManagerImplementation::getRandomJediTrainer() {
 	return spawnAreaMap.getRandomJediTrainer();
 }
+
 

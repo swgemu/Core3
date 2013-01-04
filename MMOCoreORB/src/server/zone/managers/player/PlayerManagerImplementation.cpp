@@ -99,6 +99,10 @@
 
 #include "server/zone/objects/creature/buffs/PowerBoostBuff.h"
 
+#include "server/zone/objects/creature/Creature.h"
+#include "server/zone/objects/creature/events/DespawnCreatureTask.h"
+#include "server/zone/objects/creature/AiAgent.h"
+
 int PlayerManagerImplementation::MAX_CHAR_ONLINE_COUNT = 2;
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
@@ -2608,7 +2612,6 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 }
 
 void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject* ai) {
-
 	Locker locker(ai, player);
 
 	if (!ai->isDead())
@@ -2650,8 +2653,10 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 
 	int totalItems = creatureInventory->getContainerObjectsSize();
 
-	if (totalItems < 1)
+	if (totalItems < 1) {
+		rescheduleCorpseDestruction(player, ai);
 		return;
+	}
 
 	StringBuffer args;
 	args << playerInventory->getObjectID() << " -1 0 0 0";
@@ -2667,6 +2672,7 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 	if (creatureInventory->getContainerObjectsSize() <= 0)
 		player->sendSystemMessage("@base_player:corpse_looted"); //You have completely looted the corpse of all items.
 
+	rescheduleCorpseDestruction(player, ai);
 }
 
 void PlayerManagerImplementation::generateHologrindSkills(CreatureObject* player) {
@@ -3471,3 +3477,63 @@ int PlayerManagerImplementation::getOnlineCharCount(unsigned int accountId) {
 	return 0;
 }
  */
+
+bool PlayerManagerImplementation::shouldRescheduleCorpseDestruction(CreatureObject* player, CreatureObject* ai) {
+
+	if (ai->isNonPlayerCreatureObject()) {
+		NonPlayerCreatureObject *npc = dynamic_cast<NonPlayerCreatureObject*>(ai);
+
+		if (!npc->hasLoot() && npc->getCashCredits() < 1 && npc->getBankCredits() < 1) {
+			return true;
+		}
+	} else if (ai->isCreature()) {
+		Creature * creature = dynamic_cast<Creature*>(ai);
+
+		if (!creature->canHarvestMe(player) && creature->getCashCredits() < 1 && creature->getBankCredits() < 1 && !player->isGrouped()) {
+			return true;
+		} else if (!creature->canHarvestMe(player) && creature->getCashCredits() < 1 && creature->getBankCredits() < 1 && player->isGrouped()) {
+			return !canGroupMemberHarvestCorpse(player, creature);
+		}
+	}
+
+	return false;
+}
+
+bool PlayerManagerImplementation::canGroupMemberHarvestCorpse(CreatureObject* player, Creature* creature) {
+
+	if (!player->isGrouped())
+		return false;
+
+	ManagedReference<GroupObject*> group = player->getGroup();
+	int groupSize = group->getGroupSize();
+
+	for (int i = 0; i < groupSize; i++) {
+		ManagedReference<SceneObject*> groupMember = group->getGroupMember(i);
+
+		if (player->getObjectID() == groupMember->getObjectID())
+			continue;
+
+		if (groupMember->isInRange(player, 256.0f)) {
+			CreatureObject *groupMemberCreature = dynamic_cast<CreatureObject*>(groupMember.get());
+
+			if (creature->canHarvestMe(groupMemberCreature)) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+void PlayerManagerImplementation::rescheduleCorpseDestruction(CreatureObject* player, CreatureObject* ai) {
+
+	//If the looting player or no group members in the area can harvest then despawn immediately
+	if (shouldRescheduleCorpseDestruction(player, ai)) {
+		Reference<DespawnCreatureTask*> despawn = dynamic_cast<DespawnCreatureTask*>(ai->getPendingTask("despawn"));
+		if (despawn != NULL) {
+			despawn->cancel();
+			despawn->reschedule(1000);
+		}
+
+	}
+}

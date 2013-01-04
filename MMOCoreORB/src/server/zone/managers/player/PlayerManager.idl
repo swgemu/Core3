@@ -64,6 +64,7 @@ import server.zone.objects.player.PlayerObject;
 import server.zone.objects.structure.StructureObject;
 import engine.util.u3d.Vector3;
 import server.zone.objects.creature.AiAgent;
+import server.zone.objects.creature.Creature;
 import server.zone.objects.tangible.tool.CraftingStation;
 include server.zone.managers.player.StartingLocationList;
 include server.zone.managers.player.StartingLocation;
@@ -147,7 +148,13 @@ class PlayerManager extends Observer implements Logger {
 	 * @post { destructor and destructedObject locked }
 	 */
 	public native int notifyDestruction(TangibleObject destructor, TangibleObject destructedObject, int condition); 
-	
+
+	public native boolean shouldRescheduleCorpseDestruction(CreatureObject player, CreatureObject ai);
+
+	public native void rescheduleCorpseDestruction(CreatureObject player, CreatureObject ai);
+
+	public native boolean canGroupMemberHarvestCorpse(CreatureObject player, Creature creature);
+
 	/**
 	 * @pre { attacker and player locked }
 	 * @post { attacker and player locked }
@@ -190,6 +197,7 @@ class PlayerManager extends Observer implements Logger {
 	 * This is primarily used for commands that require a building or installation.
 	 * First checks the passed targetID, then checks if the player is inside a building. Finally searches for an installation in range.
 	 * @pre: creature locked, zone unlocked
+
 	 * @post: creature locked, zone unlocked
 	 * @param targetID The object id of the players target.
 	 */
@@ -315,4 +323,6 @@ class PlayerManager extends Observer implements Logger {
 	public OnlineZoneClientMap getOnlineZoneClientMap() {
 		return onlineZoneClientMap;
 	}
+
+	
 }

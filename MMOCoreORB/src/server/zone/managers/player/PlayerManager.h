@@ -176,6 +176,20 @@ using namespace server::zone::objects::creature;
 namespace server {
 namespace zone {
 namespace objects {
+namespace creature {
+
+class Creature;
+
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature;
+
+namespace server {
+namespace zone {
+namespace objects {
 namespace tangible {
 namespace tool {
 
@@ -281,6 +295,12 @@ public:
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
+
+	bool shouldRescheduleCorpseDestruction(CreatureObject* player, CreatureObject* ai);
+
+	void rescheduleCorpseDestruction(CreatureObject* player, CreatureObject* ai);
+
+	bool canGroupMemberHarvestCorpse(CreatureObject* player, Creature* creature);
 
 	void killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath = 0);
 
@@ -506,6 +526,12 @@ public:
 
 	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
 
+	bool shouldRescheduleCorpseDestruction(CreatureObject* player, CreatureObject* ai);
+
+	void rescheduleCorpseDestruction(CreatureObject* player, CreatureObject* ai);
+
+	bool canGroupMemberHarvestCorpse(CreatureObject* player, Creature* creature);
+
 	void killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath = 0);
 
 	byte calculateIncapacitationTimer(CreatureObject* player, int condition);
@@ -698,6 +724,12 @@ public:
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
 	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
+
+	bool shouldRescheduleCorpseDestruction(CreatureObject* player, CreatureObject* ai);
+
+	void rescheduleCorpseDestruction(CreatureObject* player, CreatureObject* ai);
+
+	bool canGroupMemberHarvestCorpse(CreatureObject* player, Creature* creature);
 
 	void killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath);
 
