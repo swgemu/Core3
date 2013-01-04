@@ -22,20 +22,12 @@ borgle_protector = Creature:new {
 	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
-	creatureBitmask = PACK,
+	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/borgle_hue.iff"},
-	lootGroups = {
-	    {
-	        groups = {
-				{group = "armor_attachments", chance = 5000000},
-				{group = "clothing_attachments", chance = 5000000}
-			},
-			lootChance = 6500000
-		}
-	},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

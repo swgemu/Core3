@@ -134,6 +134,7 @@ includeFile("caves/talus_giant_decay_mite_cave.lua")
 includeFile("caves/talus_erran_sif.lua")
 includeFile("caves/talus_binayre_pirate_bunker.lua")
 includeFile("caves/talus_kahmurra_biogentic_research_station.lua")
+includeFile("caves/rori_borgle_bat_cave.lua")
 
 --POIs
 includeFile("poi/tatooine_fort_tusken.lua")

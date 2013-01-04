@@ -21,21 +21,13 @@ borgle_matriarch = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/borgle_hue.iff"},
-	lootGroups = {
-        {
-	        groups = {
-				{group = "armor_attachments", chance = 5000000},
-				{group = "clothing_attachments", chance = 5000000}
-			},
-			lootChance = 6500000
-		}	
-	},
+	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
