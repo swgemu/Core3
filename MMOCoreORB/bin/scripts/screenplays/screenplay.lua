@@ -152,6 +152,7 @@ includeFile("poi/rori_gungans_swamp_town.lua")
 includeFile("poi/talus_lost_village_of_durbin.lua")
 includeFile("poi/talus_imperial_outpost.lua")
 includeFile("poi/naboo_gungan_temple.lua")
+includeFile("poi/tatooine_krayt_graveyard.lua")
 
 --Tests
 --includeFile("tests/options_bitmask_test.lua")
