@@ -6,6 +6,7 @@ faction_reward_type = {
 	container=5,
 	terminal=6,
 	installation=7,
+	hireling=8,
 }
 
 faction_reward_data = {
@@ -139,7 +140,7 @@ faction_reward_data = {
 		--"turret_tower_med",
 		--"turret_tower_lg",
 		--"covert_detector_32m",
-		"minefield_1x1",
+		--"minefield_1x1",
 	},
 
 	imperial_installations = {
@@ -153,7 +154,7 @@ faction_reward_data = {
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s03_imp_pvp.iff", cost=31500},
 				
 		hq_s04_pvp_imperial = {type=faction_reward_type.installation, display="@deed:hq_s04_pvp_imperial", item="object/tangible/deed/faction_perk/hq/hq_s04_pvp.iff", 
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_imp_pvp.iff", cost=1},
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_imp_pvp.iff", cost=42000},
 		
 		hq_s05_pvp_imperial = {type=faction_reward_type.installation, display="@deed:hq_s05_pvp_imperial", item="object/tangible/deed/faction_perk/hq/hq_s05_pvp.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s05_imp_pvp.iff", cost=1},
@@ -206,8 +207,8 @@ faction_reward_data = {
 		--"turret_dish_lg",
 		--"turret_tower_sm",
 		--"turret_tower_med",
-		"turret_tower_lg",
-		"minefield_1x1",
+		--"turret_tower_lg",
+		--"minefield_1x1",
 	}, 
 	
 	rebel_installations = {
@@ -221,7 +222,7 @@ faction_reward_data = {
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s03_rebel_pvp.iff", cost=45000},
 			
 		hq_s04_pvp_rebel = {type=faction_reward_type.installation, display="@deed:hq_s04_pvp_rebel", item="object/tangible/deed/faction_perk/hq/hq_s04_pvp.iff", 
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_rebel_pvp.iff", cost=1},
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_rebel_pvp.iff", cost=60000},
 		
 		hq_s05_pvp_rebel = {type=faction_reward_type.installation, display="@deed:hq_s05_pvp_rebel", item="object/tangible/deed/faction_perk/hq/hq_s05_pvp.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s05_rebel_pvp.iff", cost=1},
@@ -311,6 +312,25 @@ faction_reward_data = {
 
 	},
 
+	imperial_hireling_list = {
+		"assaulttrooper",
+		"atst",
+	
+	},
+	
+	imperial_hireling = {
+		
+	},
+	
+	rebel_hireling_list = {
+		"Comms Operator",
+		"Senior SpecForce Guerilla",
+		"marine",
+	},
+	
+	rebel_hirelings = {
+	
+	}
 
 
 }
