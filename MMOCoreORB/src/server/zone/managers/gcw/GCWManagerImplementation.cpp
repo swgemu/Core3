@@ -1764,16 +1764,16 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 	if(creature ==NULL || baseData == NULL)
 			return;
 
-
-	if(baseData->isVulnerable()) {
-		creature->sendSystemMessage("@hq:under_attack"); // You cannot add defenses while the HQ is under attack.
-		return;
-	}
-
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 	if(ghost == NULL)
 		return;
+
+	if(baseData->isVulnerable() && !ghost->isPrivileged() ) {
+		creature->sendSystemMessage("@hq:under_attack"); // You cannot add defenses while the HQ is under attack.
+		return;
+	}
+
 
 	if(ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL))
 		ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
