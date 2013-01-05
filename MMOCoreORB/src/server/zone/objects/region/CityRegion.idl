@@ -573,6 +573,8 @@ class CityRegion extends ManagedObject implements Logger {
 	public boolean isVotingPeriod() {
 		return !nextInauguration.isPast();
 	}
+
+	public native boolean isVotingLocked();
 	
 	public native void resetVotingPeriod();
 

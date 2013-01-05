@@ -51,7 +51,8 @@ int CityManagerImplementation::newCityGracePeriod = 0;
 uint64 CityManagerImplementation::citySpecializationCooldown = 0;
 int CityManagerImplementation::cityVotingDuration = 0;
 uint64 CityManagerImplementation::treasuryWithdrawalCooldown = 0;
-
+byte CityManagerImplementation::cityVotingCycles = 0;
+byte CityManagerImplementation::cityVotingCyclesUntilLocked = 0;
 
 
 void CityManagerImplementation::loadLuaConfig() {
@@ -109,6 +110,8 @@ void CityManagerImplementation::loadLuaConfig() {
 	citySpecializationCooldown = lua->getGlobalLong("CitySpecializationCooldown");
 	cityVotingDuration = lua->getGlobalInt("CityVotingDuration");
 	treasuryWithdrawalCooldown = lua->getGlobalLong("TreasuryWithdrawalCooldown");
+	cityVotingCycles = lua->getGlobalByte("CityVotingCycles");
+	cityVotingCyclesUntilLocked = lua->getGlobalByte("CityVotingCyclesUntilLocked");
 
 	luaObject = lua->getGlobalObject("CitizensPerRank");
 
@@ -1491,6 +1494,7 @@ void CityManagerImplementation::registerForMayoralRace(CityRegion* city, Creatur
 	uint64 objectid = creature->getObjectID();
 
 	//TODO: Implement ballot lockout period.
+
 	//registration_locked The ballot is locked during the final week of voting. You may not register or unregister for the race at this time.
 
 	if (!city->isCitizen(objectid)) {
@@ -1505,6 +1509,10 @@ void CityManagerImplementation::registerForMayoralRace(CityRegion* city, Creatur
 	}
 	*/
 
+	if(city->isVotingLocked()){
+		creature->sendSystemMessage("@city/city:registration_locked"); // "The ballot is locked during the final week of voting.You may not register or unregister for the race at this time.");
+		return;
+	}
 
 	if (city->isCandidate(objectid)) {
 		creature->sendSystemMessage("@city/city:unregistered_race"); //You have unregistered from the mayoral race.

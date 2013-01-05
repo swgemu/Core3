@@ -292,6 +292,10 @@ public:
 
 	unsigned static long long treasuryWithdrawalCooldown;
 
+	static byte cityVotingCycles;
+
+	static byte cityVotingCyclesUntilLocked;
+
 private:
 	VectorMap<String, ManagedReference<CityRegion* > > cities;
 

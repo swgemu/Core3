@@ -178,6 +178,7 @@ void CityRegionImplementation::rescheduleUpdateEvent(uint32 seconds) {
 	}
 
 	cityUpdateEvent->schedule(seconds * 1000);
+
 	Core::getTaskManager()->getNextExecutionTime(cityUpdateEvent, nextUpdateTime);
 }
 
@@ -512,9 +513,22 @@ void CityRegionImplementation::removeAllSkillTrainers(){
 	citySkillTrainers.removeAll();
 }
 
+bool CityRegionImplementation::isVotingLocked(){
+	Time rightnow;
+	rightnow.updateToCurrentTime();
+
+	int lockedCycles = CityManagerImplementation::cityVotingCycles - CityManagerImplementation::cityVotingCyclesUntilLocked;
+	int64 minimumDifference = CityManagerImplementation::cityUpdateInterval * lockedCycles * 60000;
+
+	int64 dif = rightnow.miliDifference(nextInauguration);
+	//info("dif is " + String::valueOf(dif) + " minimum is " + String::valueOf(minimumdifference),true);
+	return ( dif < minimumDifference);
+
+}
+
 void CityRegionImplementation::resetVotingPeriod() {
 	nextInauguration.updateToCurrentTime();
-	nextInauguration.addMiliTime(CityManagerImplementation::cityVotingDuration * 60000);
+	nextInauguration.addMiliTime(CityManagerImplementation::cityVotingCycles * CityManagerImplementation::cityUpdateInterval * 60000);
 }
 
 void CityRegionImplementation::applySpecializationModifiers(CreatureObject* creature) {

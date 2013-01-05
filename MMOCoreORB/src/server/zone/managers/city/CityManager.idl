@@ -87,7 +87,8 @@ class CityManager extends ManagedService implements Logger {
 	public transient static unsigned long citySpecializationCooldown;
 	public transient static int cityVotingDuration;
 	public transient static unsigned long treasuryWithdrawalCooldown;
-	
+	public transient static byte cityVotingCycles;
+	public transient static byte cityVotingCyclesUntilLocked;
 	@dereferenced
 	private transient VectorMap<string, CityRegion> cities;
 	

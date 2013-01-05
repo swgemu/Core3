@@ -346,6 +346,8 @@ public:
 
 	bool isVotingPeriod();
 
+	bool isVotingLocked();
+
 	void resetVotingPeriod();
 
 	bool isLoaded();
@@ -687,6 +689,8 @@ public:
 
 	bool isVotingPeriod();
 
+	bool isVotingLocked();
+
 	void resetVotingPeriod();
 
 	bool isLoaded();
@@ -937,6 +941,8 @@ public:
 	bool isVotingPeriodOver();
 
 	bool isVotingPeriod();
+
+	bool isVotingLocked();
 
 	void resetVotingPeriod();
 
