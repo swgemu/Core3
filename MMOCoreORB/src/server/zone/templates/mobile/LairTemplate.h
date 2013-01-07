@@ -74,7 +74,7 @@ public:
 	void readObject(LuaObject* templateData) {
 		spawnLimit = templateData->getIntField("spawnLimit");
 
-		if (templateData->getStringField("faction")) {
+		if (templateData->getStringField("faction").length() > 0) {
 			String factionString = templateData->getStringField("faction");
 
 			if (factionString == "imperial") {
