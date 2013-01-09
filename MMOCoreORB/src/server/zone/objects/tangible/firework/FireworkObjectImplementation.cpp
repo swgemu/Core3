@@ -73,7 +73,7 @@ void FireworkObjectImplementation::launch(CreatureObject* player, int removeDela
 		return;
 	}
 
-	FireworkLaunchEvent* launchEvent = new FireworkLaunchEvent(player, _this.get(), removeDelay);
+	Reference<FireworkLaunchEvent*> launchEvent = new FireworkLaunchEvent(player, _this.get(), removeDelay);
 	launchEvent->schedule(delay * 1000);
 }
 

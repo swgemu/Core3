@@ -4125,49 +4125,69 @@ unsigned long long SceneObjectImplementation::getParentID() {
 }
 
 void SceneObjectImplementation::addPendingTask(const String& name, Task* task, int miliseconds) {
-	// server/zone/objects/scene/SceneObject.idl():  		getPendingTasks().put(name, task);
+	// server/zone/objects/scene/SceneObject.idl():  		}
+{
+	Locker _locker((&containerLock));
+	// server/zone/objects/scene/SceneObject.idl():  			getPendingTasks().put(name, task);
 	getPendingTasks()->put(name, task);
-	// server/zone/objects/scene/SceneObject.idl():  		task.schedule(miliseconds);
+	// server/zone/objects/scene/SceneObject.idl():  			task.schedule(miliseconds);
 	task->schedule(miliseconds);
+}
 }
 
 void SceneObjectImplementation::removePendingTask(const String& name) {
-	// server/zone/objects/scene/SceneObject.idl():  		pendingTasks.
-	if (pendingTasks == NULL)	// server/zone/objects/scene/SceneObject.idl():  			return;
+	// server/zone/objects/scene/SceneObject.idl():  		}
+{
+	Locker _locker((&containerLock));
+	// server/zone/objects/scene/SceneObject.idl():  			pendingTasks.
+	if (pendingTasks == NULL)	// server/zone/objects/scene/SceneObject.idl():  				return;
 	return;
-	// server/zone/objects/scene/SceneObject.idl():  		pendingTasks.drop(name);
+	// server/zone/objects/scene/SceneObject.idl():  			pendingTasks.drop(name);
 	pendingTasks->drop(name);
+}
 }
 
 PendingTasksMap* SceneObjectImplementation::getPendingTasks() {
-	// server/zone/objects/scene/SceneObject.idl():  		return 
+	// server/zone/objects/scene/SceneObject.idl():  		}
+{
+	Locker _locker((&containerLock));
+	// server/zone/objects/scene/SceneObject.idl():  			return 
 	if (pendingTasks == NULL){
 	Reference<PendingTasksMap*> _ref0;
-	// server/zone/objects/scene/SceneObject.idl():  			pendingTasks = new PendingTasksMap();
+	// server/zone/objects/scene/SceneObject.idl():  				pendingTasks = new PendingTasksMap();
 	pendingTasks = _ref0 = new PendingTasksMap();
-	// server/zone/objects/scene/SceneObject.idl():  			pendingTasks.setNoDuplicateInsertPlan();
+	// server/zone/objects/scene/SceneObject.idl():  				pendingTasks.setNoDuplicateInsertPlan();
 	pendingTasks->setNoDuplicateInsertPlan();
-	// server/zone/objects/scene/SceneObject.idl():  			pendingTasks.setNullValue(null);
+	// server/zone/objects/scene/SceneObject.idl():  				pendingTasks.setNullValue(null);
 	pendingTasks->setNullValue(NULL);
 }
-	// server/zone/objects/scene/SceneObject.idl():  		return pendingTasks;
+	// server/zone/objects/scene/SceneObject.idl():  			return pendingTasks;
 	return pendingTasks;
+}
 }
 
 Task* SceneObjectImplementation::getPendingTask(const String& name) {
-	// server/zone/objects/scene/SceneObject.idl():  		return 
-	if (pendingTasks == NULL)	// server/zone/objects/scene/SceneObject.idl():  			return null;
+	// server/zone/objects/scene/SceneObject.idl():  		}
+{
+	Locker _locker((&containerLock));
+	// server/zone/objects/scene/SceneObject.idl():  			return 
+	if (pendingTasks == NULL)	// server/zone/objects/scene/SceneObject.idl():  				return null;
 	return NULL;
-	// server/zone/objects/scene/SceneObject.idl():  		return pendingTasks.get(name);
+	// server/zone/objects/scene/SceneObject.idl():  			return pendingTasks.get(name);
 	return pendingTasks->get(name);
+}
 }
 
 bool SceneObjectImplementation::containsPendingTask(const String& name) {
-	// server/zone/objects/scene/SceneObject.idl():  		return 
-	if (pendingTasks == NULL)	// server/zone/objects/scene/SceneObject.idl():  			return false;
+	// server/zone/objects/scene/SceneObject.idl():  		}
+{
+	Locker _locker((&containerLock));
+	// server/zone/objects/scene/SceneObject.idl():  			return 
+	if (pendingTasks == NULL)	// server/zone/objects/scene/SceneObject.idl():  				return false;
 	return false;
-	// server/zone/objects/scene/SceneObject.idl():  		return pendingTasks.contains(name);
+	// server/zone/objects/scene/SceneObject.idl():  			return pendingTasks.contains(name);
 	return pendingTasks->contains(name);
+}
 }
 
 Facade* SceneObjectImplementation::getActiveSession(unsigned int type) {

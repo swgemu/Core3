@@ -759,7 +759,7 @@ void PlanetManagerImplementation::scheduleShuttle(CreatureObject* shuttle) {
 
 	shuttle->setPosture(CreaturePosture::UPRIGHT);
 
-	ShuttleDepartureTask* task = new ShuttleDepartureTask(shuttle);
+	Reference<ShuttleDepartureTask*> task = new ShuttleDepartureTask(shuttle);
 	task->schedule((ShuttleDepartureTask::LANDEDTIME + ShuttleDepartureTask::LANDINGTIME) * 1000);
 
 	shuttleMap.put(shuttle->getObjectID(), task);

@@ -144,7 +144,7 @@ void AuctionManagerImplementation::checkVendorItems() {
 
 void AuctionManagerImplementation::checkAuctions() {
 
-	CheckAuctionsTask* task = new CheckAuctionsTask(_this.get());
+	Reference<CheckAuctionsTask*> task = new CheckAuctionsTask(_this.get());
 	task->schedule(CHECKEVERY * 60 * 1000);
 
 	TerminalListVector items = auctionMap->getBazaarTerminalData("", "", 0);
