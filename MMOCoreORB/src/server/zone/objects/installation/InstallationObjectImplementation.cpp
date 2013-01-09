@@ -685,16 +685,22 @@ void InstallationObjectImplementation::updateStructureStatus() {
 }
 
 bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object){
-	if(object->getFaction() == getFaction() || object->getFaction() == 0 )
+	if( !(getPvpStatusBitmask() & CreatureFlag::ATTACKABLE) )
 		return false;
 
 	if(object->isPlayerCreature()){
 		ManagedReference<PlayerObject*> ghost = object->getPlayerObject();
-		if(ghost != NULL && ghost->getFactionStatus() != FactionStatus::OVERT)
+		if(ghost == NULL)
 			return false;
+
+		if(getFaction() == 0)
+			return true;
+
+		if ( object->getFaction() != getFaction() && ghost->getFactionStatus() == FactionStatus::OVERT)
+			return true;
 	}
 
-	return true;
+	return false;
 }
 
 void InstallationObjectImplementation::createChildObjects(){
