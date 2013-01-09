@@ -2419,7 +2419,7 @@ bool PlayerManagerImplementation::hasCorrectZCoordinate(CreatureObject* player) 
 	float waterHeight;
 	terrainManager->getWaterHeight(player->getPositionX(), player->getPositionY(), waterHeight);
 
-	if ((landHeight + player->getSwimHeight() - waterHeight < 0.2) && !player->hasState(CreatureState::SWIMMING)) {
+	if ((waterHeight > landHeight) && (landHeight + player->getSwimHeight() - waterHeight < 0.2) && !player->hasState(CreatureState::SWIMMING)) {
 		SortedVector<IntersectionResult> intersections;
 
 		CollisionManager::getWorldFloorCollisions(player->getPositionX(), player->getPositionY(), zone, true, &intersections);
