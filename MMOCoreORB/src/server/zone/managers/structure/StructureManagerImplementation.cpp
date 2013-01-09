@@ -38,14 +38,6 @@ void StructureManager::loadPlayerStructures() {
 				continue;
 			}
 
-			if (zoneName == "dantooine") {
-				if (zoneReference.isEmpty()) {
-					SceneObject* object = server->getZoneServer()->getObject(objectID);
-
-					zone->transferObject(object, -1, true);
-				}
-			}
-
 			if (zoneName != zoneReference) {
 				objectData->clear();
 				continue;
