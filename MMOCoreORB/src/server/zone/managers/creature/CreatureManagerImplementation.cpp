@@ -271,7 +271,7 @@ CreatureObject* CreatureManagerImplementation::createCreature(uint32 templateCRC
 
 	CreatureObject* creature = cast<CreatureObject*>( object.get());
 
-	if (!createCreatureChildrenObjects(creature)) {
+	if (!createCreatureChildrenObjects(creature,creature->isPersistent())) {
 		StringBuffer errMsg;
 		errMsg << "could not create children objects for creature... 0x" << templateCRC;
 		error(errMsg.toString());
