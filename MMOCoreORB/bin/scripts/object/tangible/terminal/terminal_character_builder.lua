@@ -170,39 +170,39 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					},
 					"Master", "crafting_artisan_master"
 				},
-				--"Bio-Engineer",
-				--{
-					--"Novice", "outdoors_bio_engineer_novice",
-					--"Clone Engineering",
-					--{
-						--"Clone Engineering I", "outdoors_bio_engineer_creature_01",
-						--"Clone Engineering II", "outdoors_bio_engineer_creature_02",
-						--"Clone Engineering III", "outdoors_bio_engineer_creature_03",
-						--"Clone Engineering IV", "outdoors_bio_engineer_creature_04"
-					--}, 
-					--"Tissue Engineering",
-					--{
-						--"Tissue Engineering I", "outdoors_bio_engineer_tissue_01",
-						--"Tissue Engineering II", "outdoors_bio_engineer_tissue_02",
-						--"Tissue Engineering III", "outdoors_bio_engineer_tissue_03",
-						--"Tissue Engineering IV", "outdoors_bio_engineer_tissue_04"
-					--},
-					--"DNA Sampling",
-					--{
-						--"DNA Sampling I", "outdoors_bio_engineer_dna_harvesting_01",
-						--"DNA Sampling II", "outdoors_bio_engineer_dna_harvesting_02",
-						--"DNA Sampling III", "outdoors_bio_engineer_dna_harvesting_03",
-						--"DNA Sampling IV", "outdoors_bio_engineer_dna_harvesting_04"
-					--},
-					--"Engineering Techniques",
-					--{
-						--"Engineering Techniques I", "outdoors_bio_engineer_production_01",
-						--"Engineering Techniques II", "outdoors_bio_engineer_production_02",
-						--"Engineering Techniques III", "outdoors_bio_engineer_production_03",
-						--"Engineering Techniques IV", "outdoors_bio_engineer_production_04"
-					--},
-					--"Master", "outdoors_bio_engineer_master"
-				--},
+				"Bio-Engineer",
+				{
+					"Novice", "outdoors_bio_engineer_novice",
+					"Clone Engineering",
+					{
+						"Clone Engineering I", "outdoors_bio_engineer_creature_01",
+						"Clone Engineering II", "outdoors_bio_engineer_creature_02",
+						"Clone Engineering III", "outdoors_bio_engineer_creature_03",
+						"Clone Engineering IV", "outdoors_bio_engineer_creature_04"
+					}, 
+					"Tissue Engineering",
+					{
+						"Tissue Engineering I", "outdoors_bio_engineer_tissue_01",
+						"Tissue Engineering II", "outdoors_bio_engineer_tissue_02",
+						"Tissue Engineering III", "outdoors_bio_engineer_tissue_03",
+						"Tissue Engineering IV", "outdoors_bio_engineer_tissue_04"
+					},
+					"DNA Sampling",
+					{
+						"DNA Sampling I", "outdoors_bio_engineer_dna_harvesting_01",
+						"DNA Sampling II", "outdoors_bio_engineer_dna_harvesting_02",
+						"DNA Sampling III", "outdoors_bio_engineer_dna_harvesting_03",
+						"DNA Sampling IV", "outdoors_bio_engineer_dna_harvesting_04"
+					},
+					"Engineering Techniques",
+					{
+						"Engineering Techniques I", "outdoors_bio_engineer_production_01",
+						"Engineering Techniques II", "outdoors_bio_engineer_production_02",
+						"Engineering Techniques III", "outdoors_bio_engineer_production_03",
+						"Engineering Techniques IV", "outdoors_bio_engineer_production_04"
+					},
+					"Master", "outdoors_bio_engineer_master"
+				},
 				"Bounty Hunter",
 				{
 					"Novice", "combat_bountyhunter_novice",
