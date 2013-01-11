@@ -362,4 +362,8 @@ class BuildingObject extends StructureObject {
 
 	public native void createChildObjects();
 
+	public native void spawnChildCreatures();
+
+	public native boolean hasChildCreatures();
+
 }

@@ -34,7 +34,27 @@ void SharedBuildingObjectTemplate::parseVariableData(const String& varName, LuaO
 		publicStructure = (bool) Lua::getByteParameter(state);
 	} else if (varName == "alwaysPublic") {
 		alwaysPublic = (bool) Lua::getByteParameter(state);
+	} else if ( varName == "childCreatureObjects" ) {
+
+		LuaObject luaItemList(state);
+		int size = luaItemList.getTableSize();
+
+		lua_State* L = luaItemList.getLuaState();
+		for (int i = 0; i < size; ++i){
+			lua_rawgeti(L, -1, i +1);
+			LuaObject a(L);
+
+			ChildCreatureObject object;
+			object.parseFromLua(&a);
+
+			childCreatureObjects.add(object);
+			a.pop();
+		}
+
+		luaItemList.pop();
+
 	} else {
+
 		templateData->pop();
 	}	
 }
@@ -54,6 +74,7 @@ void SharedBuildingObjectTemplate::parseFileData(IffStream* iffStream) {
 			continue;
 
 		String varName;
+
 		iffStream->getString(varName);
 
 		//std::cout << "parsing wtf shit:[" << varName.toStdString() << "]\n";

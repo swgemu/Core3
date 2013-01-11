@@ -240,6 +240,10 @@ public:
 
 	void createChildObjects();
 
+	void spawnChildCreatures();
+
+	bool hasChildCreatures();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -421,6 +425,10 @@ public:
 
 	void createChildObjects();
 
+	void spawnChildCreatures();
+
+	bool hasChildCreatures();
+
 	WeakReference<BuildingObject*> _this;
 
 	operator const BuildingObject*();
@@ -567,6 +575,10 @@ public:
 	void updatePaidAccessList();
 
 	void createChildObjects();
+
+	void spawnChildCreatures();
+
+	bool hasChildCreatures();
 
 };
 

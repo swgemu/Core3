@@ -9,11 +9,13 @@
 #define SHAREDBUILDINGOBJECTTEMPLATE_H_
 
 #include "SharedStructureObjectTemplate.h"
+#include "../ChildCreatureObject.h"
 
 class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
 	StringParam terrainModificationFileName;
 	StringParam interiorLayoutFileName;
 
+	Vector<ChildCreatureObject> childCreatureObjects;
 	int medicalRating;
 
 	ChildObject sign;
@@ -59,6 +61,14 @@ public:
 
 	inline int getMedicalRating() const {
 		return medicalRating;
+	}
+
+	inline int getChildCreatureObjectsSize(){
+		return childCreatureObjects.size();
+	}
+
+	inline ChildCreatureObject* getChildCreatureObject(int indx){
+		return &childCreatureObjects.get(indx);
 	}
 };
 

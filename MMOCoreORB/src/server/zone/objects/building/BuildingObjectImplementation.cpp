@@ -42,6 +42,9 @@
 #include "server/zone/objects/player/FactionStatus.h"
 
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
+#include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/AiAgent.h"
 
 void BuildingObjectImplementation::initializeTransientMembers() {
 	StructureObjectImplementation::initializeTransientMembers();
@@ -277,7 +280,7 @@ void BuildingObjectImplementation::sendDestroyTo(SceneObject* player) {
 
 void BuildingObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	//send buios here
-	info("sending building baselines");
+	//info("sending building baselines",true);
 
 	BaseMessage* buio3 = new TangibleObjectMessage3(_this.get());
 	player->sendMessage(buio3);
@@ -607,7 +610,7 @@ void BuildingObjectImplementation::ejectObject(CreatureObject* creature) {
 }
 
 void BuildingObjectImplementation::onEnter(CreatureObject* player) {
-	if (player == NULL)
+	if (player == NULL || !player->isPlayerCreature())
 		return;
 
 	if (getZone() == NULL)
@@ -617,12 +620,12 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 
 	Locker acessLock(&paidAccessListMutex);
 
-
 	if(isGCWBase()){
 		if(!checkContainerPermission(player,ContainerPermissions::WALKIN)){
 			ejectObject(player);
 		}
 	}
+
 
 
 	if (accessFee > 0 && !isOnEntryList(player)) {
@@ -972,7 +975,6 @@ void BuildingObjectImplementation::createChildObjects(){
 		if(serverTemplate == NULL)
 			return;
 
-		//info("servertemplate is good",true);
 		Vector3 position = getPosition();
 
 		ZoneServer* server = getZoneServer();
@@ -995,13 +997,11 @@ void BuildingObjectImplementation::createChildObjects(){
 
 
 			String dbString = "sceneobjects";
-
 			if(thisTemplate->getGameObjectType() == SceneObjectType::MINEFIELD || thisTemplate->getGameObjectType() == SceneObjectType::TURRET || thisTemplate->getGameObjectType() == SceneObjectType::STATICOBJECT ){
 				dbString = "playerstructures";
 			}
 
 			ManagedReference<SceneObject*> obj = server->createObject(child->getTemplateFile().hashCode(),dbString,1);
-
 
 			if (obj == NULL )
 				continue;
@@ -1016,7 +1016,7 @@ void BuildingObjectImplementation::createChildObjects(){
 
 
 			// if it's inside
-			if(child->getCellId() >= 0){
+			if(child->getCellId() > 0){
 				int totalCells = getTotalCellNumber();
 				try {
 					if (totalCells >= child->getCellId()) {
@@ -1100,6 +1100,88 @@ void BuildingObjectImplementation::createChildObjects(){
 		StructureObjectImplementation::createChildObjects();
 	}
 
-
 }
+
+
+void BuildingObjectImplementation::spawnChildCreatures(){
+	SharedBuildingObjectTemplate* buildingTemplate = cast<SharedBuildingObjectTemplate*>(getObjectTemplate());
+
+	if(buildingTemplate == NULL)
+		return;
+
+	CreatureManager* creatureManager = zone->getCreatureManager();
+	if(creatureManager == NULL)
+		return;
+
+	for(int i = 0; i < buildingTemplate->getChildCreatureObjectsSize();i++){
+
+		ChildCreatureObject* child = buildingTemplate->getChildCreatureObject(i);
+		CreatureObject* creature = NULL;
+		if(child != NULL){
+
+			// if it's inside
+			if(child->getCellId() > 0){
+				int totalCells = getTotalCellNumber();
+				try {
+
+					if (totalCells >= child->getCellId()) {
+
+						ManagedReference<CellObject*> cellObject = getCell(child->getCellId());
+						if (cellObject != NULL) {
+							creature = creatureManager->spawnCreature(child->getMobile().hashCode(),0,child->getPosition().getX(),child->getPosition().getZ(),child->getPosition().getY(),cellObject->getObjectID(),false);
+						} else
+							error("NULL CELL OBJECT");
+					}
+
+				} catch (Exception& e) {
+						error("unreported exception caught in void SceneObjectImplementation::createChildObjects()!");
+						e.printStackTrace();
+				}
+
+			} // create the creature outside
+			else {
+					String mobilename = child->getMobile();
+
+					Vector3 childPosition = child->getPosition();
+					float angle = getDirection()->getRadians();
+
+					float x = (Math::cos(angle) * childPosition.getX()) + (childPosition.getY() * Math::sin(angle));
+					float y = (Math::cos(angle) * childPosition.getY()) - (childPosition.getX() * Math::sin(angle));
+
+					x += getPosition().getX();
+					y += getPosition().getY();
+
+					float z = getPosition().getZ() + childPosition.getZ();
+					float degrees = getDirection()->getDegrees();
+
+					creature = creatureManager->spawnCreature(mobilename.hashCode(),0,x,z,y,0,false);
+
+			}
+
+			if(creature == NULL)
+				continue;
+
+			creature->updateDirection(child->getHeading());
+
+			if(creature->isAiAgent()){
+				AiAgent* ai = cast<AiAgent*>(creature);
+				ai->setRespawnTimer(child->getRespawnTimer());
+			}
+
+			childObjects.put(creature);
+		}
+
+
+	}
+}
+
+bool BuildingObjectImplementation::hasChildCreatures(){
+	SharedBuildingObjectTemplate* buildingTemplate = cast<SharedBuildingObjectTemplate*>(getObjectTemplate());
+
+	if(buildingTemplate == NULL)
+		return false;
+
+	return buildingTemplate->getChildCreatureObjectsSize() > 0;
+}
+
 
