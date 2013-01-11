@@ -55,7 +55,7 @@ object_building_faction_perk_hq_hq_s04_imp_pvp = object_building_faction_perk_hq
 		length = 7,
 		width = 6,
 		planetMapCategory = "imperial_hq",
-		
+		alwaysPublic = 1,
 		skillMods = {
 			{"private_buff_mind", 100},
 			{"private_med_battle_fatigue", 5},
@@ -65,8 +65,7 @@ object_building_faction_perk_hq_hq_s04_imp_pvp = object_building_faction_perk_hq
 		},
 		
 		childObjects = {
-			
-			
+
 			{templateFile = "object/static/structure/military/military_wall_med_imperial_style_01.iff", x=7, z=0, y=27.5, ox=0, oy=.4, oz=0, ow=.9, cellid=-1, containmentType=-1}, -- Front right
 			{templateFile = "object/static/structure/military/military_wall_med_imperial_style_01.iff", x=-7, z=0, y=27.5, ox=0, oy=-.4, oz=0, ow=.9, cellid=-1, containmentType=-1},
 				
@@ -126,35 +125,19 @@ object_building_faction_perk_hq_hq_s04_imp_pvp = object_building_faction_perk_hq
 			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=0, z=0, y=25,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
 			{templateFile = "object/installation/faction_perk/covert_detector/detector_base.iff", x=15, z=0, y=35,  ox=0, oy=-.3, oz=0, ow=1, cellid=-1, containmentType=-1}, 
 			{templateFile = "object/installation/faction_perk/covert_detector/detector_base.iff", x=-15, z=0, y=35,  ox=0, oy=-.3, oz=0, ow=1, cellid=-1, containmentType=-1}, 
-			 
-			 
-			 --NPCsobject/mobile/atst.iff
-			 --[[
-			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=-18, z=0, y=25, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, 
-			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper",  x=18, z=0, y=25, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, 
-			 {templateFile = "object/mobile/atst.iff", mobile="at_st", x=18, z=0, y=30, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, 
-			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=5, z=0, y=28, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- stormtroopertest
-			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=10, z=0, y=38, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- stormtroopertest
-			 {templateFile = "object/mobile/dressed_imperial_officer_f.iff", mobile="imperial_recruiter", x=10, z=0, y=38, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- recruiter test
-			 ]]--
-			
-			 -- Recruiter
-			 -- {templateFile = "bin/scripts/mobile/faction/imperial/imperial_recruiter.iff", mobile="imperial_recruiter", x=0, z=0, y= 25, ow = .7, ox =0, oz = 0, oy = .7, cellid = -1, containmentType = -1},
-			  --[[
-			  -- left outside
-			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=-18, z=0, y=22, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, 
-			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=-15, z=0, y=28, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- stormtroopertest
-			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=-15, z=0, y=38, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- stormtroopertest
+	
 
-			-- right outside
-			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=18, z=0, y=22, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, 
-			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=5, z=0, y=28, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- stormtroopertest
-			 {templateFile = "object/mobile/stormtrooper.iff", mobile="stormtrooper", x=10, z=0, y=38, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- stormtroopertest
-			
-			-- test alarm
-			--{templateFile = "object/tanbible/faction_perk/faction_base_item/alarm_hack.iff", x = .38, z = .25, y = 4.75, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
+		},
 		
-			]]--
+		childCreatureObjects = {
+		 	 { mobile="at_st", x=10, z=0, y=40, cellid=-1, respawn=30, containmentType=-1, heading=0},
+		 	 { mobile="stormtrooper", x=15, z=0, y=40, cellid=-1, respawn=30, containmentType=-1, heading=0},
+			 { mobile="stormtrooper", x=3.5, z=-6.75, y=-3, cellid=5, respawn=30, containmentType=-1, heading=0},
+			 { mobile="dark_trooper", x=5, z=-6.75, y=-3, cellid=5, respawn=30, containmentType=-1, heading=0},
+			 { mobile="stormtrooper", x=14.2, z=-13.75, y=-10, cellid=10, respawn=30, containmentType=-1, heading=0},
+			 { mobile="dark_trooper", x=15, z=-13.75, y=-4,cellid=10, respawn=30, containmentType=-1, heading=0},
+			 { mobile="imperial_recruiter", x=11.5, z=-11.5, y=-21, cellid=10, containmentType=-1, 
+			  	respawn=60, heading=1.59},
 		},
 		
 		turretCount = 2,

@@ -101,7 +101,7 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 			-- wall 3
 			{templateFile = "object/static/structure/military/military_wall_med_rebl_32_style_01.iff", x=-19.5, z=0, y=6.75, ox=0, oy=.711424, oz=0, ow=-.702763, cellid=-1, containmentType=-1}, -- left wall 3
 			{templateFile = "object/static/structure/military/military_wall_med_rebl_32_style_01.iff", x=19.5, z=0, y=6.75, ox=0, oy=-.711424, oz=0, ow=-.702763, cellid=-1, containmentType=-1}, -- right wall 3
-			
+
 			-- back walls
 			{templateFile = "object/static/structure/military/military_wall_med_rebl_16_style_01.iff", x=-11.5, z=0, y=-10, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1},
 			{templateFile = "object/static/structure/military/military_wall_med_rebl_16_style_01.iff", x=11.5, z=0, y=-10, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1},
@@ -112,9 +112,7 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=11.5, z=0, y=33,  ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1}, 
 			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-22, z=0, y=-5.5, ox=0, oy=.7,  oz=0, ow=-.7, cellid=-1, containmentType=-1}, -- back turret front
 			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=22, z=0, y=-5.5,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
-			
-			
-			
+					
 			--[[ DO NOT DELETE
 			TEMP WAlls may need angled walls for turrets
 			-- wall 4
@@ -157,6 +155,15 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 		
 		},
 
+		childCreatureObjects = {
+		 	 { mobile="specforce_marine", x=10, z=0, y=40, cellid=-1, respawn=30, containmentType=-1, heading=0},
+		 	 { mobile="specforce_marine", x=15, z=0, y=40, cellid=-1, respawn=30, containmentType=-1, heading=0},
+			 { mobile="specforce_marine", x=3.5, z=-6.75, y=-3, cellid=5, respawn=30, containmentType=-1, heading=0},
+			 { mobile="specforce_heavy_weapons_specialist", x=5, z=-6.75, y=-3, cellid=5, respawn=30, containmentType=-1, heading=0},
+			 { mobile="specforce_heavy_weapons_specialist", x=14.2, z=-13.75, y=-10, cellid=10, respawn=30, containmentType=-1, heading=0},
+			 { mobile="specforce_marine", x=15, z=-13.75, y=-4, cellid=10, respawn=30, containmentType=-1, heading=0},
+			 { mobile="rebel_recruiter", x=11.5, z=-11.5, y=-21, cellid=10, containmentType=-1, respawn=60, heading=1.59},
+		},
 
 }
 
