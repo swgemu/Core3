@@ -38,14 +38,14 @@ public:
 				return false;
 			}
 
-			if(player->getFactionStatus() == FactionStatus::COVERT){
+			if(player->getFactionStatus() == FactionStatus::COVERT && creature->getFaction() != building->getFaction()){
 				creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:youre_covert_excluded"); // You must be a member of special forces to enter
 				return false;
 			}
 
 			if(creature->getFaction() == building->getFaction()) {
-						return true;
-					}
+				return true;
+			}
 
 			DataObjectComponentReference* data = building->getDataObjectComponent();
 			DestructibleBuildingDataComponent* baseData = NULL;
