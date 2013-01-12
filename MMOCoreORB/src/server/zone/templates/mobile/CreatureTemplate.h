@@ -70,6 +70,7 @@ protected:
 	unsigned int creatureBitmask;
 	unsigned int diet;
 
+
 	Vector<String> templates;
 
 	LootGroupCollection lootgroups;
@@ -86,6 +87,7 @@ protected:
 	String outfit;
 
 	String aiTemplate;
+	String defaultWeapon;
 
 public:
 	CreatureTemplate();
@@ -304,6 +306,10 @@ public:
 
 	inline String getAiTemplate() {
 		return aiTemplate;
+	}
+
+	inline String getDefaultWeapon(){
+		return defaultWeapon;
 	}
 };
 

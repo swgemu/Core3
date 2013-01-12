@@ -222,6 +222,7 @@ String CreatureManagerImplementation::getTemplateToSpawn(uint32 templateCRC) {
 
 CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC, uint32 objectCRC, float x, float z, float y, uint64 parentID, bool persistent) {
 	CreatureTemplate* creoTempl = creatureTemplateManager->getTemplate(templateCRC);
+
 	if (creoTempl == NULL)
 		return spawnCreature(objectCRC, x, z, y, parentID);
 
@@ -234,7 +235,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 		objectCRC = templateToSpawn.hashCode();
 	}
 
-	creature = createCreature(objectCRC, persistent);
+	creature = createCreature(objectCRC, persistent, templateCRC);
 
 	if (creature != NULL && creature->isAiAgent()) {
 		AiAgent* npc = cast<AiAgent*>(creature);
@@ -248,7 +249,7 @@ CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC,
 	return creature;
 }
 
-CreatureObject* CreatureManagerImplementation::createCreature(uint32 templateCRC, bool persistent) {
+CreatureObject* CreatureManagerImplementation::createCreature(uint32 templateCRC,  bool persistent, uint32 mobileTemplateCRC) {
 	ManagedReference<SceneObject*> object = zoneServer->createObject(templateCRC, persistent);
 
 	if (object == NULL) {
@@ -271,7 +272,7 @@ CreatureObject* CreatureManagerImplementation::createCreature(uint32 templateCRC
 
 	CreatureObject* creature = cast<CreatureObject*>( object.get());
 
-	if (!createCreatureChildrenObjects(creature,creature->isPersistent())) {
+	if (!createCreatureChildrenObjects(creature, templateCRC, creature->isPersistent(), mobileTemplateCRC)) {
 		StringBuffer errMsg;
 		errMsg << "could not create children objects for creature... 0x" << templateCRC;
 		error(errMsg.toString());
@@ -320,15 +321,27 @@ SpawnArea* CreatureManagerImplementation::getSpawnArea(const String& areaname) {
 	return spawnAreaMap.get(areaname.hashCode());
 }
 
-bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject* creature, bool persistent) {
+bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject* creature, uint32 templateCRC, bool persistent, uint32 mobileTemplateCRC) {
 	if (creature->hasSlotDescriptor("default_weapon")) {
-		uint32 defaultWeaponCRC = String("object/weapon/creature/creature_default_weapon.iff").hashCode();
 
-		SceneObject* defaultWeapon = zoneServer->createObject(defaultWeaponCRC, persistent);
+		uint32 defaultWeaponCRC = String("object/weapon/creature/creature_default_weapon.iff").hashCode();
+		ManagedReference<SceneObject*> defaultWeapon = zoneServer->createObject(defaultWeaponCRC, persistent);
+		ManagedReference<SceneObject*> otherWeapon;
+
+		if(mobileTemplateCRC != 0) {
+			CreatureTemplate* creoTempl = creatureTemplateManager->getTemplate(mobileTemplateCRC);
+
+			if(creoTempl != NULL && creoTempl->getDefaultWeapon() != ""){
+				uint32 otherWeaponCRC = String(creoTempl->getDefaultWeapon()).hashCode();
+				otherWeapon = zoneServer->createObject(otherWeaponCRC, persistent);
+			}
+		}
+
+		if(otherWeapon != NULL)
+			defaultWeapon = otherWeapon;
 
 		if (defaultWeapon == NULL) {
 			error("could not create creature default weapon");
-
 			return false;
 		}
 
@@ -336,8 +349,6 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 	}
 
 	if (creature->hasSlotDescriptor("inventory")) {
-		//object/tangible/inventory/shared_creature_inventory.iff
-
 		SceneObject* creatureInventory = zoneServer->createObject(String("object/tangible/inventory/creature_inventory.iff").hashCode(), persistent);
 
 		if (creatureInventory == NULL) {

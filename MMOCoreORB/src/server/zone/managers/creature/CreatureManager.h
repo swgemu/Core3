@@ -196,7 +196,7 @@ public:
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long long parentID = 0, bool persistent = false);
 
-	CreatureObject* createCreature(unsigned int templateCRC, bool persistent = false);
+	CreatureObject* createCreature(unsigned int templateCRC, bool persistent = false, unsigned int mobileTemplate = 0);
 
 	void placeCreature(CreatureObject* creature, float x, float z, float y, unsigned long long parentID);
 
@@ -297,7 +297,7 @@ public:
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long long parentID = 0, bool persistent = false);
 
-	CreatureObject* createCreature(unsigned int templateCRC, bool persistent = false);
+	CreatureObject* createCreature(unsigned int templateCRC, bool persistent = false, unsigned int mobileTemplate = 0);
 
 	void placeCreature(CreatureObject* creature, float x, float z, float y, unsigned long long parentID);
 
@@ -318,7 +318,7 @@ public:
 	void loadInformants();
 
 private:
-	bool createCreatureChildrenObjects(CreatureObject* creature, bool persistent = false);
+	bool createCreatureChildrenObjects(CreatureObject* creature, unsigned int templateCRC, bool persistent = false, unsigned int mobileTemplateCRC = 0);
 
 public:
 	void spawnRandomCreaturesAround(SceneObject* creature);
@@ -404,7 +404,7 @@ public:
 
 	CreatureObject* spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long long parentID, bool persistent);
 
-	CreatureObject* createCreature(unsigned int templateCRC, bool persistent);
+	CreatureObject* createCreature(unsigned int templateCRC, bool persistent, unsigned int mobileTemplate);
 
 	void placeCreature(CreatureObject* creature, float x, float z, float y, unsigned long long parentID);
 

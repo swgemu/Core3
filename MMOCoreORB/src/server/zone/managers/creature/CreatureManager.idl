@@ -76,7 +76,7 @@ class CreatureManager extends ZoneManager {
 	public native CreatureObject spawnCreatureWithLevel(unsigned int mobileTemplateCRC, int level, float x, float z, float y, unsigned long parentID = 0);
 	public native CreatureObject spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long parentID = 0);
 	public native CreatureObject spawnCreature(unsigned int templateCRC, unsigned int objectCRC, float x, float z, float y, unsigned long parentID = 0, boolean persistent = false);
-	public native CreatureObject createCreature(unsigned int templateCRC, boolean persistent = false);
+	public native CreatureObject createCreature(unsigned int templateCRC, boolean persistent = false, unsigned int mobileTemplate = 0);
 	public native void placeCreature(CreatureObject creature, float x, float z, float y, unsigned long parentID);
 	
 	@dereferenced
@@ -96,7 +96,7 @@ class CreatureManager extends ZoneManager {
 	public native void loadMissionSpawns();
 	public native void loadInformants();
 	
-	private native boolean createCreatureChildrenObjects(CreatureObject creature, boolean persistent = false);
+	private native boolean createCreatureChildrenObjects(CreatureObject creature, unsigned int templateCRC, boolean persistent = false, unsigned int mobileTemplateCRC = 0);
 	
 	public native void spawnRandomCreaturesAround(SceneObject creature);
 	public native void spawnRandomCreature(int number, float x, float z, float y, unsigned long parentID = 0);

@@ -58,6 +58,7 @@ CreatureTemplate::CreatureTemplate() {
 	attacks = new CreatureAttackMap();
 
 	aiTemplate = "example";
+	defaultWeapon = "";
 }
 
 CreatureTemplate::~CreatureTemplate() {
@@ -102,6 +103,7 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	diet = templateData->getIntField("diet");
 	optionsBitmask = templateData->getIntField("optionsBitmask");
 	patrolPathTemplate = templateData->getStringField("patrolPathTemplate");
+	defaultWeapon = templateData->getStringField("defaultWeapon");
 
 	scale = templateData->getFloatField("scale");
 
@@ -133,9 +135,15 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	lootgroups.readObject(&lootCollections);
 	lootCollections.pop();
 
+	Logger::Logger tlog("ctemplate");
+
+
+
 	LuaObject weps = templateData->getObjectField("weapons");
+
 	if (weps.isValidTable()) {
 		for (int i = 1; i <= weps.getTableSize(); ++i) {
+
 			weapons.add(weps.getStringAt(i).trim());
 		}
 	}
