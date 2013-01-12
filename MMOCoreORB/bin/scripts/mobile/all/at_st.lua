@@ -4,7 +4,7 @@ at_st = Creature:new {
 	pvpFaction = "imperial",
 	faction = "imperial",
 	level = 125,
-	chanceHit = 47.5,
+	chanceHit = 475,
 	damageMin = 770,
 	damageMax = 1250,
 	baseXp = 11859,
@@ -28,10 +28,11 @@ at_st = Creature:new {
 
 	templates = {"object/mobile/atst.iff"},
 	lootGroups = {},
-	weapons = {"vehicle_at_st_ranged"},
+	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-	}
+	},
+	defaultWeapon = "object/weapon/ranged/vehicle/vehicle_atst_ranged.iff",
 }
 
 CreatureTemplates:addCreatureTemplate(at_st, "at_st")
