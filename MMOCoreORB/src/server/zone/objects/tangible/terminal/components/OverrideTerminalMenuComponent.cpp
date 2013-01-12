@@ -29,8 +29,10 @@ void OverrideTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObj
 	if ( player  == NULL || player->isDead() || player->isIncapacitated())
 			return;
 
-	if(player->getFaction() == 0)
+	if(player->getFaction() == 0) {
 		player->sendSystemMessage("@faction_recruiter:must_be_declared_use"); // Your faction affiliation must be delcared in order to use that item.
+		return;
+	}
 
 	Zone* zone = building->getZone();
 

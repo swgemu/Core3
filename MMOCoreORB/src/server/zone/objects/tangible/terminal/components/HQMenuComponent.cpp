@@ -37,8 +37,10 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 		return;
 
 
-	if(player->getFaction() == 0)
+	if(player->getFaction() == 0) {
 		player->sendSystemMessage("@faction_recruiter:must_be_declared_use"); // Your faction affiliation must be delcared in order to use that item.
+		return;
+	}
 
 	Zone* zone = building->getZone();
 
