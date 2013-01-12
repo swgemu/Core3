@@ -46,7 +46,7 @@ void SecurityTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObj
 
 int SecurityTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
 
-	if (sceneObject == NULL || !sceneObject->isTangibleObject() || player == NULL)
+	if (sceneObject == NULL || !sceneObject->isTangibleObject() || player == NULL || player->isDead() || player->isIncapacitated())
 		return 0;
 
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();

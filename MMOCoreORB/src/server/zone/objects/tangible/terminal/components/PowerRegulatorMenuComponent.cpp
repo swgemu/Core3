@@ -49,7 +49,7 @@ void PowerRegulatorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 int PowerRegulatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == NULL || player->isDead() || player->isIncapacitated())
 		return 1;
 
 	if(ghost->getFactionStatus() != FactionStatus::OVERT ){

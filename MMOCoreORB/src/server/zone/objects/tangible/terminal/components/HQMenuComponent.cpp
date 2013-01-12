@@ -95,7 +95,7 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) {
 	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
-	if (ghost == NULL)
+	if (ghost == NULL || creature->isDead() || creature->isIncapacitated())
 		return 1;
 
 	if(ghost->getFactionStatus() != FactionStatus::OVERT ){
