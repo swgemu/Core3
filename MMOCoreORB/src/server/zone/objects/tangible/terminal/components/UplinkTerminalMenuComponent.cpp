@@ -25,6 +25,10 @@
 void UplinkTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+
+	if(building == NULL)
+		return;
+
 	ManagedReference<PlayerObject*> thisPlayer = player->getPlayerObject();
 
 
@@ -61,6 +65,9 @@ int UplinkTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		return 1;
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+
+	if(building == NULL)
+		return 1;
 
 	Zone* zone = building->getZone();
 
