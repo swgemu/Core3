@@ -135,15 +135,10 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	lootgroups.readObject(&lootCollections);
 	lootCollections.pop();
 
-	Logger::Logger tlog("ctemplate");
-
-
-
 	LuaObject weps = templateData->getObjectField("weapons");
 
 	if (weps.isValidTable()) {
 		for (int i = 1; i <= weps.getTableSize(); ++i) {
-
 			weapons.add(weps.getStringAt(i).trim());
 		}
 	}
