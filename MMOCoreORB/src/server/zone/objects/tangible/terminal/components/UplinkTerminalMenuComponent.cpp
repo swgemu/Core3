@@ -64,6 +64,15 @@ int UplinkTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	if (ghost == NULL)
 		return 1;
 
+	// Make sure the player is in the same cell
+	ValidatedPosition* validPosition = ghost->getLastValidatedPosition();
+	uint64 parentid = validPosition->getParent();
+
+	if (parentid != sceneObject->getParentID()) {
+		player->sendSystemMessage("@pvp_rating:ch_terminal_too_far");  // you are too far away from the terminal to use it
+		return 1;
+	}
+
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 
 	if(building == NULL)
