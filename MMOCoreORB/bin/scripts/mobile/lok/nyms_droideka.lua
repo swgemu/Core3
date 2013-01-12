@@ -28,10 +28,11 @@ nyms_droideka = Creature:new {
 
 	templates = {"object/mobile/droideka.iff"},
 	lootGroups = {},
-	weapons = {"droid_droideka_ranged"},
+	--weapons = {"droid_droideka_ranged"},
 	conversationTemplate = "",
 	attacks = {
-	}
+	},
+	--defaultWeapon = "object/weapon/ranged/droid/droid_droideka_ranged.iff",
 }
 
 CreatureTemplates:addCreatureTemplate(nyms_droideka, "nyms_droideka")

@@ -42,7 +42,33 @@
 
 
 object_weapon_ranged_droid_droid_droideka_ranged = object_weapon_ranged_droid_shared_droid_droideka_ranged:new {
+	objectName = "@droideka:droideka",
+	
+	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
+	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
+	attackType = RANGEDATTACK,
 
+	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
+	damageType = ENERGY,
+
+	-- NONE, LIGHT, MEDIUM, HEAVY
+	armorPiercing = HEAVY,
+
+	pointBlankRange = 0,
+	pointBlankAccuracy = -70,
+
+	idealRange = 20,
+	idealAccuracy = 1000,
+
+	maxRange = 64,
+	maxRangeAccuracy = 500,
+
+	minDamage = 100,
+	maxDamage = 200,
+
+	attackSpeed = 4,
+
+	woundsRatio = 10,
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_droid_droid_droideka_ranged, "object/weapon/ranged/droid/droid_droideka_ranged.iff")

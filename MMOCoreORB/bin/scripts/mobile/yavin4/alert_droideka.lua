@@ -39,10 +39,11 @@ alert_droideka = Creature:new {
 			lootChance = 3500000
 	    }	
 	},
-	weapons = {"droid_droideka_ranged"},
+	--weapons = {"droid_droideka_ranged"},
 	conversationTemplate = "",
 	attacks = {
-	}
+	},
+	defaultWeapon = "object/weapon/ranged/droid/droid_droideka_ranged.iff",
 }
 
 CreatureTemplates:addCreatureTemplate(alert_droideka, "alert_droideka")

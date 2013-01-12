@@ -31,7 +31,8 @@ blastromech = Creature:new {
 	weapons = {"droid_astromech_ranged"},
 	conversationTemplate = "",
 	attacks = {
-	}
+	},
+	defaultWeapon = "object/weapon/ranged/droid/droid_astromech_ranged.iff",
 }
 
 CreatureTemplates:addCreatureTemplate(blastromech, "blastromech")
