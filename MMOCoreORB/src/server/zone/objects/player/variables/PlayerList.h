@@ -27,6 +27,8 @@ public:
 	}
 
 	bool addPlayer(const String& player) {
+		Locker locker(getLock());
+
 		String lowerCase = player.toLowerCase();
 
 		if (contains(lowerCase))
@@ -38,6 +40,8 @@ public:
 	}
 
 	bool removePlayer(const String& player) {
+		Locker locker(getLock());
+
 		String lowerCase = player.toLowerCase();
 
 		int idx = find(lowerCase);

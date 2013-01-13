@@ -31,8 +31,7 @@
 
 #include "room/ChatRoom.h"
 #include "room/ChatRoomMap.h"
-
-
+#include "SendMailTask.h"
 
 ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int initsize) : ManagedServiceImplementation() {
 	server = serv;
@@ -820,12 +819,15 @@ void ChatManagerImplementation::sendMail(const String& sendername, const Unicode
 
 	ObjectManager::instance()->persistObject(mail, 1, "mail");
 
-	Locker _locker(player);
+	/*Locker _locker(player);
 
 	ghost->addPersistentMessage(mail->getObjectID());
 
 	if (player->isOnline())
-		mail->sendTo(player, false);
+		mail->sendTo(player, false);*/
+
+	Reference<SendMailTask*> sendMailTask = new SendMailTask(player, mail, sendername);
+	sendMailTask->execute();
 }
 
 int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeString& subject, const UnicodeString& body, const String& recipientName, StringIdChatParameterVector* stringIdParameters, WaypointChatParameterVector* waypointParameters) {
@@ -871,14 +873,17 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 
 	ObjectManager::instance()->persistObject(mail, 1, "mail");
 
-	Locker _locker(receiver);
-
+	/*
 	PlayerObject* ghost = receiver->getPlayerObject();
 
 	ghost->addPersistentMessage(mail->getObjectID());
 
 	if (receiver->isOnline())
 		mail->sendTo(receiver, false);
+	 */
+
+	Reference<SendMailTask*> sendMailTask = new SendMailTask(receiver, mail, sendername);
+	sendMailTask->execute();
 
 	return IM_SUCCESS;
 }
@@ -905,18 +910,22 @@ int ChatManagerImplementation::sendMail(const String& sendername, const UnicodeS
 		WaypointChatParameter waypointParam(waypoint);
 		mail->addWaypointParameter(waypointParam);
 	}
+
 	mail->setReceiverObjectID(receiverObjectID);
 
 	ObjectManager::instance()->persistObject(mail, 1, "mail");
 
-	Locker _locker(receiver);
-
+	Reference<SendMailTask*> sendMailTask = new SendMailTask(receiver, mail, sendername);
+	sendMailTask->execute();
+/*
 	PlayerObject* ghost = receiver->getPlayerObject();
 
 	ghost->addPersistentMessage(mail->getObjectID());
 
 	if (receiver->isOnline())
 		mail->sendTo(receiver, false);
+
+		*/
 
 	return IM_SUCCESS;
 }

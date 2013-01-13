@@ -183,7 +183,7 @@ public:
 		return vector.size();
 	}
 
-private:
+protected:
 	inline ReadWriteLock* getLock() {
 		if (mutex == NULL) {
 			mutex = new ReadWriteLock();
