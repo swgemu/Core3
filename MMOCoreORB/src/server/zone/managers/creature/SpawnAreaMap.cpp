@@ -11,6 +11,7 @@
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/conf/ConfigManager.h"
 #include "server/zone/objects/area/areashapes/CircularAreaShape.h"
+#include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
 
 void SpawnAreaMap::loadMap(Zone* z) {
 	zone = z;
@@ -158,11 +159,30 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	String name = areaObj.getStringAt(1);
 	float x = areaObj.getFloatAt(2);
 	float y = areaObj.getFloatAt(3);
-	float radius = areaObj.getFloatAt(4);
 	int tier = areaObj.getIntAt(5);
 	int constant = areaObj.getIntAt(6);
 
-	if (radius == 0)
+	float radius = 0;
+	float width = 0;
+	float height = 0;
+
+    LuaObject areaShapeObject = areaObj.getObjectAt(4);
+    if (areaShapeObject.isValidTable()) {
+        if (areaShapeObject.getIntAt(1) == 1) {
+            radius = areaShapeObject.getFloatAt(2);
+        } else if (areaShapeObject.getIntAt(1) == 2) {
+            width = areaShapeObject.getFloatAt(2);
+            height = areaShapeObject.getFloatAt(3);
+        }
+        areaShapeObject.pop();
+    } else {
+    	areaShapeObject.pop();
+        radius = areaObj.getFloatAt(4);
+        width = 0;
+        height = 0;
+    }
+
+	if (radius == 0 && width == 0 && height == 0)
 		return;
 
 	uint32 crc = 0;
@@ -194,10 +214,19 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 
 	area->setObjectName(nameID);
 
-	ManagedReference<CircularAreaShape*> circularAreaShape = new CircularAreaShape();
-	circularAreaShape->setAreaCenter(x, y);
-	circularAreaShape->setRadius(radius);
-	area->setAreaShape(circularAreaShape);
+	if (height > 0 && width > 0) {
+		ManagedReference<RectangularAreaShape*> rectangularAreaShape = new RectangularAreaShape();
+		rectangularAreaShape->setAreaCenter(x, y);
+		rectangularAreaShape->setDimensions(height, width);
+		area->setAreaShape(rectangularAreaShape);
+	} else if (radius > 0) {
+		ManagedReference<CircularAreaShape*> circularAreaShape = new CircularAreaShape();
+		circularAreaShape->setAreaCenter(x, y);
+		circularAreaShape->setRadius(radius);
+		area->setAreaShape(circularAreaShape);
+	} else {
+		return;
+	}
 
 	area->setTier(tier);
 
@@ -209,8 +238,6 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	if (radius != -1)
 		zone->transferObject(area, -1, true);
 	else {
-		circularAreaShape->setRadius(zone->getBoundingRadius());
-
 		switch (tier) {
 		case 4:
 			factionalNeutralMissionSpawnAreas.add(area);
