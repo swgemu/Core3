@@ -98,6 +98,7 @@ int LairSpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Obs
 
 		area->setRadius(64);
 		area->setNoSpawnArea(true);
+		area->initializePosition(tano->getPositionX(), tano->getPositionZ(), tano->getPositionZ());
 
 		zone->transferObject(area, -1, true);
 
