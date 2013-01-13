@@ -94,6 +94,7 @@ corellia_regions = {
 	{"northwest_mountain_peak",0,0,{1,0},0,1},
 	{"northwest_mountains",0,0,{1,0},0,1},
 	{"northwest_plains",0,0,{1,0},0,1},
+	{"rebel_hideout",-6530,5967,{1,500},1,1}, 
 	{"rhalers_bastion",0,0,{1,0},0,1},
 	{"rier_let",0,0,{1,0},0,1},
 	{"rier_vem",0,0,{1,0},0,1},
