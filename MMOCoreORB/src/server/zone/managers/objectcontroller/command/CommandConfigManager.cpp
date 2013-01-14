@@ -43,7 +43,6 @@ which carries forward this exception.
 */
 
 #include "CommandConfigManager.h"
-
 #include "server/zone/objects/creature/commands/commands.h"
 #include "server/zone/objects/creature/commands/effect/StateEffect.h"
 #include "server/zone/objects/creature/commands/effect/DotEffect.h"
@@ -320,6 +319,8 @@ void CommandConfigManager::registerSpecialCommands(CommandList* sCommands) {
 	createCommand(String("strongDisease").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("turretFire").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("minefieldAttack").toLowerCase())->setCommandGroup(0xe1c9a54a);
+	createCommand(String("creatureRangedAttack").toLowerCase())->setCommandGroup(0xe1c9a54a);
+	createCommand(String("defaultDroidAttack").toLowerCase())->setCommandGroup(0xe1c9a54a);
 }
 
 void CommandConfigManager::registerFunctions() {
@@ -734,6 +735,7 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<CreatureAreaComboCommand>(String("creatureAreaCombo").toLowerCase());
 	commandFactory.registerCommand<CreatureAreaDiseaseCommand>(String("creatureAreaDisease").toLowerCase());
 	commandFactory.registerCommand<CreatureAreaKnockdownCommand>(String("creatureAreaKnockdown").toLowerCase());
+	commandFactory.registerCommand<CreatureRangedAttackCommand>(String("creatureRangedAttack").toLowerCase());
 	commandFactory.registerCommand<CreatureAreaPoisonCommand>(String("creatureAreaPoison").toLowerCase());
 	commandFactory.registerCommand<CreditsCommand>(String("credits").toLowerCase());
 	commandFactory.registerCommand<CripplingShotCommand>(String("cripplingShot").toLowerCase());
@@ -761,6 +763,7 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<DeclareresidenceCommand>(String("declareresidence").toLowerCase());
 	commandFactory.registerCommand<DeclineCommand>(String("decline").toLowerCase());
 	commandFactory.registerCommand<DefaultAttackCommand>(String("defaultAttack").toLowerCase());
+	commandFactory.registerCommand<DefaultDroidAttackCommand>(String("defaultDroidAttack").toLowerCase());
 	commandFactory.registerCommand<DefuseMinefieldCommand>(String("defuseMinefield").toLowerCase());
 	commandFactory.registerCommand<DelegateFactionPointsCommand>(String("delegateFactionPoints").toLowerCase());
 	commandFactory.registerCommand<DenyServiceCommand>(String("denyService").toLowerCase());
