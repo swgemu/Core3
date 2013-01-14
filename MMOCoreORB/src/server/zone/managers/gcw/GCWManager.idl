@@ -259,8 +259,6 @@ class GCWManager extends ManagedService implements Logger {
 	
 	private native void refreshDNA(DestructibleBuildingDataComponent data);
 
-	public native void spawnChildrenCreatures(BuildingObject building);
-
 	public native void notifyTurretDestruction(InstallationObject turret);
 
 	private native void destroyStandaloneTurret(InstallationObject turret);
@@ -290,6 +288,8 @@ class GCWManager extends ManagedService implements Logger {
 	public native void removeDefense(BuildingObject building, CreatureObject creature, unsigned long deedOID);
 
 	private native void verifyTurrets(BuildingObject building);
+
+	public native boolean canUseTerminals(CreatureObject creature, BuildingObject building, SceneObject terminal);
 
 	public int getImperialBaseCount(){
 		return imperialBases;

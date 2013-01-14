@@ -52,6 +52,17 @@ void BuildingObjectImplementation::initializeTransientMembers() {
 	setLoggingName("BuildingObject");
 	
 	updatePaidAccessList();
+
+	if(isGCWBase()) {
+		SharedBuildingObjectTemplate* buildingTemplateData =
+				dynamic_cast<SharedBuildingObjectTemplate*> (getObjectTemplate());
+
+		// TODO:  remove.  this is just to correct existing bases
+		if(buildingTemplateData != NULL)
+			setPvpStatusBitmask(buildingTemplateData->getPvpStatusBitmask());
+
+	}
+
 }
 
 void BuildingObjectImplementation::loadTemplateData(
@@ -1073,7 +1084,7 @@ void BuildingObjectImplementation::createChildObjects(){
 				TangibleObject* tano = cast<TangibleObject*>(obj.get());
 				tano->setFaction(getFaction());
 				tano->setDetailedDescription("DEFAULT BASE TURRET");
-
+				tano->setPvpStatusBitmask(getPvpStatusBitmask());
 				InstallationObject* installation = cast<InstallationObject*>(obj.get());
 				if(installation != NULL){
 					installation->setOwnerObjectID(getObjectID());

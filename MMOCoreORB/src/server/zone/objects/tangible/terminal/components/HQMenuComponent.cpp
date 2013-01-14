@@ -36,12 +36,6 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 	if ( player  == NULL || player->isDead() || player->isIncapacitated())
 		return;
 
-
-	if(player->getFaction() == 0) {
-		player->sendSystemMessage("@faction_recruiter:must_be_declared_use"); // Your faction affiliation must be delcared in order to use that item.
-		return;
-	}
-
 	Zone* zone = building->getZone();
 
 	if(zone == NULL)
@@ -49,16 +43,14 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
-	ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
-	if(playerObject == NULL)
+	if(!gcwMan->canUseTerminals(player, building, sceneObject))
 		return;
-
 
 	if(building->getFaction() == player->getFaction()) {
 
 		menuResponse->addRadialMenuItem(228, 3, "@hq:mnu_defense_status");
 
-		if(gcwMan->isShutdownSequenceStarted(building)){
+		if(gcwMan->isShutdownSequenceStarted(building) && building->getPvpStatusBitmask() && CreatureFlag::OVERT){
 			menuResponse->addRadialMenuItem(231, 3, "@hq:mnu_shutdown");  // Shutdown facility
 		}
 
@@ -95,32 +87,11 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 }
 
 int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) {
-	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-
-	if (ghost == NULL || creature->isDead() || creature->isIncapacitated())
+	if (creature->isDead() || creature->isIncapacitated())
 		return 1;
-
-	// Make sure the player is in the same cell
-	ValidatedPosition* validPosition = ghost->getLastValidatedPosition();
-	uint64 parentid = validPosition->getParent();
-
-	if (parentid != sceneObject->getParentID()) {
-		creature->sendSystemMessage("@pvp_rating:ch_terminal_too_far");  // you are too far away from the terminal to use it
-		return 1;
-	}
-
-	if(ghost->getFactionStatus() != FactionStatus::OVERT ){
-		creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:declared_personnel_only"); // Only Special Forces personnel may access this terminal
-		return 1;
-	}
-
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+
 	if(building == NULL)
-		return 1;
-
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingDataComponent(building);
-
-	if(baseData == NULL)
 		return 1;
 
 	Zone* zone = building->getZone();
@@ -133,40 +104,26 @@ int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureOb
 	if(gcwMan == NULL)
 		return 1;
 
-	if (selectedID == 20){
-		if(creature->getFaction() == building->getFaction())
-			gcwMan->sendStatus(building,creature);
-	}
-	else if( selectedID == 228 || selectedID == 20){
-		gcwMan->sendBaseDefenseStatus(creature, building);
-	} else if ( selectedID == 38) {
-		gcwMan->sendResetVerification(creature, building);
-	} else if ( selectedID == 229) {
-		//info("Destroy base here",true);
-		gcwMan->doBaseDestruction(building);
-	} else if ( selectedID == 230 ) {
-		gcwMan->scheduleBaseDestruction(building,creature);
-	} else if (selectedID == 231) {
-		gcwMan->abortShutdownSequence(creature,building);
-	} else if (selectedID == 226){
+	if(!gcwMan->canUseTerminals(creature, building, sceneObject))
+		return 1;
 
-		gcwMan->sendSelectDeedToDonate(building,creature,0);
+	if(creature->getFaction() == building->getFaction()) {
+		if (selectedID == 20){
+			if(creature->getFaction() == building->getFaction())
+				gcwMan->sendStatus(building,creature);
+			} else if( selectedID == 228 || selectedID == 20){
+				gcwMan->sendBaseDefenseStatus(creature, building);
+			} else if ( selectedID == 38) {
+				gcwMan->sendResetVerification(creature, building);
+			} else if(selectedID == 231)
+				gcwMan->abortShutdownSequence(creature,building);
+			else if (selectedID == 226)
+				gcwMan->sendSelectDeedToDonate(building,creature,0);
+	} else {
+		if ( selectedID == 230 )
+			gcwMan->scheduleBaseDestruction(building,creature);
 	}
+
 	return 0;
 }
 
-DestructibleBuildingDataComponent* HQMenuComponent::getDestructibleBuildingDataComponent(BuildingObject* building){
-	DestructibleBuildingDataComponent* baseData = NULL;
-
-	if (building != NULL){
-		if(building->isGCWBase()){
-			DataObjectComponentReference* data = building->getDataObjectComponent();
-
-			if(data != NULL)
-				baseData = cast<DestructibleBuildingDataComponent*>(data->get());
-
-		}
-	}
-
-		return baseData;
-}

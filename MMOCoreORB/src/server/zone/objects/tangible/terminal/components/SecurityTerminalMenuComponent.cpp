@@ -21,11 +21,9 @@
 void SecurityTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
-	ManagedReference<PlayerObject*> thisPlayer = player->getPlayerObject();
 
-	if ( building == NULL || thisPlayer  == NULL || player->isDead() || player->isIncapacitated())
+	if ( building == NULL || player->isDead() || player->isIncapacitated())
 			return;
-
 
 	if(player->getFaction() == 0) {
 		player->sendSystemMessage("@faction_recruiter:must_be_declared_use"); // Your faction affiliation must be delcared in order to use that item.
@@ -39,6 +37,9 @@ void SecurityTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObj
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
+	if(!gcwMan->canUseTerminals(player, building, sceneObject))
+		return;
+
 	if( gcwMan->isUplinkJammed(building) && !gcwMan->isSecurityTermSliced(building) && player->getFaction() != building->getFaction() ) {
 		if (gcwMan->isTerminalDamaged(cast<TangibleObject*>(sceneObject)))
 			menuResponse->addRadialMenuItem(229, 3, "@ui:repair");
@@ -47,27 +48,9 @@ void SecurityTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObj
 }
 
 int SecurityTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
-
 	if (sceneObject == NULL || !sceneObject->isTangibleObject() || player == NULL || player->isDead() || player->isIncapacitated())
 		return 0;
 
-	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
-	if (ghost == NULL)
-		return 1;
-
-	// Make sure the player is in the same cell
-	ValidatedPosition* validPosition = ghost->getLastValidatedPosition();
-	uint64 parentid = validPosition->getParent();
-
-	if (parentid != sceneObject->getParentID()) {
-		player->sendSystemMessage("@pvp_rating:ch_terminal_too_far");  // you are too far away from the terminal to use it
-		return 1;
-	}
-
-	if(ghost->getFactionStatus() != FactionStatus::OVERT ){
-		player->sendSystemMessage("@faction/faction_hq/faction_hq_response:declared_personnel_only"); // Only Special Forces personnel may access this terminal
-		return 1;
-	}
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 
 	if(building == NULL)
@@ -81,6 +64,9 @@ int SecurityTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 	ManagedReference<GCWManager*> gcwMan = zone->getGCWManager();
 
 	if(gcwMan == NULL)
+		return 1;
+
+	if(!gcwMan->canUseTerminals(player, building, sceneObject))
 		return 1;
 
 	ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(sceneObject);

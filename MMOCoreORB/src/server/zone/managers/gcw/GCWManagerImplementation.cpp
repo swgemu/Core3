@@ -48,6 +48,8 @@
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 
+#include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
+
 #define DEBUG_GCW
 
 
@@ -697,7 +699,6 @@ void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool in
 
 			this->addBase(building);
 			this->startVulnerability(building);
-			this->spawnChildrenCreatures(building);
 
 		} else {
 			//gcwBaseList.put(building);
@@ -1188,10 +1189,8 @@ bool GCWManagerImplementation::canStartSlice(CreatureObject* creature, TangibleO
 		if(ghost == NULL)
 			return false;
 
-		if(ghost->getFactionStatus() != FactionStatus::OVERT || creature->getFaction() == 0 ){
-			creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:declared_personnel_only"); // Only Special Forces personnel may access this terminal
+		if(!canUseTerminals(creature, building, tano))
 			return false;
-		}
 
 		if(isTerminalDamaged(tano)){
 			creature->sendSystemMessage("@hq:terminal_disabled");
@@ -1207,7 +1206,6 @@ bool GCWManagerImplementation::canStartSlice(CreatureObject* creature, TangibleO
 			return true;
 
 		return false;
-
 }
 
 // @pre: player is locked since called from Slicing session
@@ -1686,78 +1684,6 @@ void GCWManagerImplementation::notifyTurretDestruction(InstallationObject* turre
 
 }
 
-
-void GCWManagerImplementation::spawnChildrenCreatures(BuildingObject* building){
-
-	return;
-	/*
-	Locker _lock(building);
-
-	SharedObjectTemplate* serverTemplate = building->getObjectTemplate();
-
-	if(serverTemplate == NULL)
-		return;
-
-	//info("servertemplate is good",true);
-	Vector3 position = building->getPosition();
-
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
-
-		if(baseData == NULL)
-			return;
-
-	for(int i = 0; i < serverTemplate->getChildObjectsSize();i++){
-		//info("iterating child",true);
-		ChildObject* child = serverTemplate->getChildObject(i);
-		if(child != NULL){
-
-
-			String mobilename = child->getMobile();
-
-
-			SharedObjectTemplate* thisTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
-
-			if(thisTemplate->getGameObjectType() == SceneObjectType::NPCCREATURE || thisTemplate->getGameObjectType() == SceneObjectType::CREATURE){
-
-				Vector3 childPosition = child->getPosition();
-				float angle = building->getDirection()->getRadians();
-
-				float x = (Math::cos(angle) * childPosition.getX()) + (childPosition.getY() * Math::sin(angle));
-				float y = (Math::cos(angle) * childPosition.getY()) - (childPosition.getX() * Math::sin(angle));
-
-				x += position.getX();
-				y += position.getY();
-				float z = position.getZ() + childPosition.getZ();
-				float degrees = building->getDirection()->getDegrees();
-				// testing only
-			//	CreatureTemplate* temp = CreatureTemplateManager::instance()->getTemplate();
-
-
-				CreatureManager* creatureManager = zone->getCreatureManager();
-				CreatureObject* creature = creatureManager->spawnCreature(mobilename.hashCode(),0,x,z,y,0,true);
-
-				if(creature != NULL && creature->isAiAgent()){
-					info("created creature " + String::valueOf(creature->getObjectID()),true);
-					AiAgent* ai = cast<AiAgent*>(creature);
-					ai->setRespawnTimer(0);
-					baseData->addCreature(creature);
-
-				} else{
-					info("creature temp is null",true);
-				}
-				info("total creature count " + String::valueOf(baseData->getCreatureCount()),true);
-
-			} else {
-				info("gameobjecttype is " + String::valueOf(thisTemplate->getGameObjectType()),true);
-			}
-		} else {
-				info("child is null",true);
-		}
-	}
-	*/
-
-}
-
 void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, CreatureObject* creature, int turretIndex){
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
 
@@ -2087,6 +2013,7 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 	if(tano != NULL)
 		tano->setFaction(building->getFaction());
 
+	tano->setPvpStatusBitmask(building->getPvpStatusBitmask());
 	tano->setDetailedDescription("Donated Turret");
 
 	if(tano->isInstallationObject()){
@@ -2177,4 +2104,44 @@ void GCWManagerImplementation::verifyTurrets(BuildingObject* building){
 
 
 	baseData->setDefense(turrets);
+}
+
+bool GCWManagerImplementation::canUseTerminals(CreatureObject* creature, BuildingObject* building, SceneObject* terminal){
+	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+	if(ghost == NULL)
+		return false;
+
+	// Make sure the player is in the same cell
+	ValidatedPosition* validPosition = ghost->getLastValidatedPosition();
+	uint64 parentid = validPosition->getParent();
+
+	if (parentid != terminal->getParentID()) {
+		creature->sendSystemMessage("@pvp_rating:ch_terminal_too_far");  // you are too far away from the terminal to use it
+		return false;
+	}
+
+	if(creature->getFaction() == 0) {
+		creature->sendSystemMessage("@faction_recruiter:must_be_declared_use"); // Your faction affiliation must be delcared in order to use that item.
+		return false;
+	}
+
+	if (ghost == NULL)
+		return false;
+
+	// check for PvP base
+	if (building->getPvpStatusBitmask() & CreatureFlag::OVERT ){
+		if( ghost->getFactionStatus() != FactionStatus::OVERT){
+			creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:declared_personnel_only"); // Only Special Forces personnel may access this terminal
+			return false;
+		}
+	}
+	// check for PvE base
+	else{
+		if(ghost->getFactionStatus() < FactionStatus::COVERT) {
+			creature->sendSystemMessage("YOu must be at least combatant");
+			return false;
+		}
+	}
+	return true;
 }

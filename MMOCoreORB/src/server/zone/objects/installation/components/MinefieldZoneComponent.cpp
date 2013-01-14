@@ -61,13 +61,19 @@ void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, Quad
 			if(tano == NULL)
 				return;
 
+			if(tano->getPvpStatusBitmask() & CreatureFlag::OVERT){
+				if(playerObject->getFactionStatus() < FactionStatus::OVERT )
+					return;
 
-			if(tano->getFaction() != player->getFaction() && player->getFaction() != 0 ){
-
-					Reference<MinefieldAttackTask*> task = new MinefieldAttackTask(sceneObject, player);
-					task->execute();
-
+			} else {
+				if(playerObject->getFactionStatus() < FactionStatus::COVERT)
+					return;
 			}
+
+			Reference<MinefieldAttackTask*> task = new MinefieldAttackTask(sceneObject, player);
+			task->execute();
+
+
 
 		}
 	} catch (Exception& e) {
@@ -77,7 +83,26 @@ void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, Quad
 	return;
 }
 
+void MinefieldZoneComponent::notifyInsertIntoZone(SceneObject* sceneObject, Zone* zne){
+
+	ManagedReference<InstallationObject*> installation = cast<InstallationObject*>(sceneObject);
+	if(installation == NULL)
+		return;
+
+	// TODO: creature mienfield observer to keep track of hte minefield
+
+	// TODO: remove.  this is to get the pvpstatus bitmask correct for existing minefields
+	uint64 oid = installation->getOwnerObjectID();
+	if(oid != 0) {
+		ManagedReference<SceneObject*> sceno = zne->getZoneServer()->getObject(oid);
+		if(sceno != NULL && sceno->isGCWBase()) {
+			ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceno.get());
+			if(building != NULL){
+				installation->setPvpStatusBitmask(building->getPvpStatusBitmask());
+			}
+		}
+	}
 
 
-
+}
 

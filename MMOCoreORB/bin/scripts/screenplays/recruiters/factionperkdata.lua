@@ -129,6 +129,7 @@ faction_reward_data = {
 		--"hq_s02_pvp_imperial",
 		--"hq_s03_pvp_imperial",
 		"hq_s04_pvp_imperial",
+		"hq_s04_imperial",
 		--"hq_s05_pvp_imperial",
 		--"turret_block_lg",
 		--"turret_block_med",
@@ -155,6 +156,10 @@ faction_reward_data = {
 				
 		hq_s04_pvp_imperial = {type=faction_reward_type.installation, display="@deed:hq_s04_pvp_imperial", item="object/tangible/deed/faction_perk/hq/hq_s04_pvp.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_imp_pvp.iff", cost=42000},
+		
+		hq_s04_imperial = {type=faction_reward_type.installation, display="@deed:hq_s04_imperial", item="object/tangible/deed/faction_perk/hq/hq_s04.iff", 
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_imp.iff", cost=42000},
+		
 		
 		hq_s05_pvp_imperial = {type=faction_reward_type.installation, display="@deed:hq_s05_pvp_imperial", item="object/tangible/deed/faction_perk/hq/hq_s05_pvp.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s05_imp_pvp.iff", cost=1},
@@ -198,6 +203,7 @@ faction_reward_data = {
 		--"hq_s02_pvp_rebel",
 		--"hq_s03_pvp_rebel",
 		"hq_s04_pvp_rebel",
+		"hq_s04_rebel",
 		--"hq_s05_pvp_rebel",
 		--"turret_block_lg",
 		--"turret_block_med",
@@ -221,11 +227,14 @@ faction_reward_data = {
 		hq_s03_pvp_rebel = {type=faction_reward_type.installation, display="@deed:hq_s03_pvp_rebel", item="object/tangible/deed/faction_perk/hq/hq_s03_pvp.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s03_rebel_pvp.iff", cost=45000},
 			
+		hq_s04_rebel = {type=faction_reward_type.installation, display="@deed:hq_s04_rebel", item="object/tangible/deed/faction_perk/hq/hq_s04.iff", 
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_rebel.iff", cost=1},
+			
 		hq_s04_pvp_rebel = {type=faction_reward_type.installation, display="@deed:hq_s04_pvp_rebel", item="object/tangible/deed/faction_perk/hq/hq_s04_pvp.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_rebel_pvp.iff", cost=60000},
 		
 		hq_s05_pvp_rebel = {type=faction_reward_type.installation, display="@deed:hq_s05_pvp_rebel", item="object/tangible/deed/faction_perk/hq/hq_s05_pvp.iff", 
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s05_rebel_pvp.iff", cost=1},
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s05_rebel_pvp.iff", cost=60000},
 					
 		turret_block_lg = { type=faction_reward_type.installation, display="@deed:turret_block_lg", item="object/tangible/deed/faction_perk/turret/block_lg_deed.iff",
 			generatedObjectTemplate="object/installation/faction_perk/turret/block_lg.iff", cost=6300 },
@@ -313,8 +322,8 @@ faction_reward_data = {
 	},
 
 	imperial_hireling_list = {
-		"assaulttrooper",
-		"atst",
+		--"assaulttrooper",
+		--"atst",
 	
 	},
 	
@@ -323,9 +332,9 @@ faction_reward_data = {
 	},
 	
 	rebel_hireling_list = {
-		"Comms Operator",
-		"Senior SpecForce Guerilla",
-		"marine",
+		--"Comms Operator",
+		--"Senior SpecForce Guerilla",
+		--"marine",
 	},
 	
 	rebel_hirelings = {

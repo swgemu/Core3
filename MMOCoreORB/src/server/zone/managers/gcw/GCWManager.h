@@ -242,8 +242,6 @@ public:
 
 	void scheduleBaseDestruction(BuildingObject* building, CreatureObject* creature);
 
-	void spawnChildrenCreatures(BuildingObject* building);
-
 	void notifyTurretDestruction(InstallationObject* turret);
 
 	void sendSelectTurretToDonate(BuildingObject* building, CreatureObject* creature);
@@ -263,6 +261,8 @@ public:
 	void addScanner(BuildingObject* building, SceneObject* scanner);
 
 	void removeDefense(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID);
+
+	bool canUseTerminals(CreatureObject* creature, BuildingObject* building, SceneObject* terminal);
 
 	int getImperialBaseCount();
 
@@ -474,8 +474,6 @@ private:
 	void refreshDNA(DestructibleBuildingDataComponent* data);
 
 public:
-	void spawnChildrenCreatures(BuildingObject* building);
-
 	void notifyTurretDestruction(InstallationObject* turret);
 
 private:
@@ -512,6 +510,8 @@ private:
 	void verifyTurrets(BuildingObject* building);
 
 public:
+	bool canUseTerminals(CreatureObject* creature, BuildingObject* building, SceneObject* terminal);
+
 	int getImperialBaseCount();
 
 	int getRebelBaseCount();
@@ -635,8 +635,6 @@ public:
 
 	void scheduleBaseDestruction(BuildingObject* building, CreatureObject* creature);
 
-	void spawnChildrenCreatures(BuildingObject* building);
-
 	void notifyTurretDestruction(InstallationObject* turret);
 
 	void sendSelectTurretToDonate(BuildingObject* building, CreatureObject* creature);
@@ -656,6 +654,8 @@ public:
 	void addScanner(BuildingObject* building, SceneObject* scanner);
 
 	void removeDefense(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID);
+
+	bool canUseTerminals(CreatureObject* creature, BuildingObject* building, SceneObject* terminal);
 
 	int getImperialBaseCount();
 

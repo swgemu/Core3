@@ -38,7 +38,7 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 
 	DataObjectComponentReference* data = sceneObject->getDataObjectComponent();
 
-	if(data == NULL)
+	if(data == NULL || tano == NULL)
 		return;
 
 	TurretDataComponent* turretData = cast<TurretDataComponent*>(data->get());
@@ -47,8 +47,14 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 		return;
 
 	if(target->isPlayerCreature() && sceneObject->isInRange(target,65)){
-
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(entry);
+
+		if(player == NULL)
+			return;
+
+		if(tano->getFaction() == 0 || tano->getFaction() == player->getFaction())
+			return;
+
 		ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
 
 		bool canFire = false;
@@ -59,10 +65,19 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 			return;
 		}
 
-		if(tano->getFaction() != player->getFaction() && playerObject->getFactionStatus() == FactionStatus::OVERT && tano->getFaction() != 0){
-			Reference<TurretFireTask*> task = new TurretFireTask(tano, player);
-			task->execute();
+		if(tano->getPvpStatusBitmask() & CreatureFlag::OVERT){
+
+			if(playerObject->getFactionStatus() < FactionStatus::OVERT )
+				return;
+
+		} else {
+
+			if(playerObject->getFactionStatus() < FactionStatus::COVERT)
+				return;
 		}
+
+		Reference<TurretFireTask*> task = new TurretFireTask(tano, player);
+		task->execute();
 	}
 
 }
@@ -73,6 +88,21 @@ void TurretZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zne
 
 	ManagedReference<TurretObserver*> observer = new TurretObserver();
 	ManagedReference<InstallationObject*> installation = cast<InstallationObject*>(sceneObject);
+	if(installation == NULL)
+		return;
+
 	installation->registerObserver(ObserverEventType::OBJECTDESTRUCTION,observer);
 
+	// TODO: remove.  this is to get the pvpstatus bitmask correct for existing turrets
+	uint64 oid = installation->getOwnerObjectID();
+
+	if(oid != 0) {
+		ManagedReference<SceneObject*> sceno = zne->getZoneServer()->getObject(oid);
+		if(sceno != NULL && sceno->isGCWBase()) {
+			ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceno.get());
+			if(building != NULL ){
+				installation->setPvpStatusBitmask(building->getPvpStatusBitmask());
+			}
+		}
+	}
 }

@@ -46,10 +46,6 @@ public:
 	 * @returns 0 if successfull
 	 */
 	 int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID);
-
-
-private:
-	virtual DestructibleBuildingDataComponent* getDestructibleBuildingDataComponent(BuildingObject* building);
 };
 
 

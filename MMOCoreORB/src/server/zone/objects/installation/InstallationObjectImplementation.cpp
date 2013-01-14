@@ -696,8 +696,13 @@ bool InstallationObjectImplementation::isAttackableBy(CreatureObject* object){
 		if(getFaction() == 0)
 			return true;
 
-		if ( object->getFaction() != getFaction() && ghost->getFactionStatus() == FactionStatus::OVERT)
-			return true;
+		if(getPvpStatusBitmask() & CreatureFlag::OVERT){
+			if ( object->getFaction() != getFaction() && ghost->getFactionStatus() == FactionStatus::OVERT)
+					return true;
+		} else if(object->getFaction() != getFaction() && ghost->getFactionStatus() >= FactionStatus::COVERT)
+				return true;
+
+
 	}
 
 	return false;
