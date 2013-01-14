@@ -32,6 +32,7 @@ blastromech = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 	},
+	defaultAttack = "creaturerangedattack",
 	defaultWeapon = "object/weapon/ranged/droid/droid_astromech_ranged.iff",
 }
 

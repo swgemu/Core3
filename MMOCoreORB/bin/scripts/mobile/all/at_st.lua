@@ -28,10 +28,8 @@ at_st = Creature:new {
 
 	templates = {"object/mobile/atst.iff"},
 	lootGroups = {},
-	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	},
+	defaultAttack = "defaultdroidattack",
 	defaultWeapon = "object/weapon/ranged/vehicle/vehicle_atst_ranged.iff",
 }
 

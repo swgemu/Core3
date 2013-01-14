@@ -28,10 +28,7 @@ nym_droideka = Creature:new {
 
 	templates = {"object/mobile/droideka.iff"},
 	lootGroups = {},
-	--weapons = {"droid_droideka_ranged"},
-	conversationTemplate = "",
-	attacks = {
-	},
+	defaultAttack = "creaturerangedattack",
 	defaultWeapon = "object/weapon/ranged/droid/droid_droideka_ranged.iff",
 }
 

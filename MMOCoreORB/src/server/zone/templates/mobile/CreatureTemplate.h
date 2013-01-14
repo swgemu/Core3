@@ -88,6 +88,8 @@ protected:
 
 	String aiTemplate;
 	String defaultWeapon;
+	String defaultAttack;
+
 
 public:
 	CreatureTemplate();
@@ -310,6 +312,10 @@ public:
 
 	inline String getDefaultWeapon(){
 		return defaultWeapon;
+	}
+
+	inline String getDefaultAttack(){
+		return defaultAttack;
 	}
 };
 

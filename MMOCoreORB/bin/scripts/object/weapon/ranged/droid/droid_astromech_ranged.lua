@@ -50,12 +50,12 @@ object_weapon_ranged_droid_droid_astromech_ranged = object_weapon_ranged_droid_s
 	damageType = ENERGY,
 	
 	-- NONE, LIGHT, MEDIUM, HEAVY
-	armorPiercing = HEAVY,
+	armorPiercing = LIGHT,
 	
 	pointBlankRange = 0,
 	pointBlankAccuracy = -70,
-	idealRange = 20,
-	idealAccuracy = 1000,
+	idealRange = 15,
+	idealAccuracy = 100,
 	maxRange = 50,
 	attackSpeed = 2,
 	woundsRatio = 10,

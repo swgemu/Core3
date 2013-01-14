@@ -404,13 +404,13 @@ void AiAgentImplementation::doAttack() {
 		int attackNum = attackMap->getRandomAttackNumber();
 
 		if (attackNum < 0 || attackNum >= attackMap->size()) {
-			enqueueCommand(String("defaultattack").hashCode(), 0, target->getObjectID(), "");
+			enqueueCommand(npcTemplate->getDefaultAttack().hashCode(), 0, target->getObjectID(), "");
 		} else {
 			String args = attackMap->getArguments(attackNum);
 
 			if (!validateStateAttack(target, args)) {
 				// do default attack
-				enqueueCommand(String("defaultattack").hashCode(), 0, target->getObjectID(), "");
+				enqueueCommand(npcTemplate->getDefaultAttack().hashCode(), 0, target->getObjectID(), "");
 			} else {
 				// queue special attack
 				unsigned int actionCRC = attackMap->getCommand(attackNum).hashCode();
@@ -425,7 +425,7 @@ void AiAgentImplementation::doAttack() {
 						actionCRC = attackMap->getCommand(attackNum).hashCode();
 						enqueueCommand(actionCRC, 0, target->getObjectID(), args);
 					} else {
-						enqueueCommand(String("defaultattack").hashCode(), 0, target->getObjectID(), "");
+						enqueueCommand(npcTemplate->getDefaultAttack().hashCode(), 0, target->getObjectID(), "");
 					}
 				//}
 			}

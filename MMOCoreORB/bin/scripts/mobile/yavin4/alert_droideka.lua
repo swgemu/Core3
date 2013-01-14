@@ -39,10 +39,7 @@ alert_droideka = Creature:new {
 			lootChance = 3500000
 	    }	
 	},
-	--weapons = {"droid_droideka_ranged"},
-	conversationTemplate = "",
-	attacks = {
-	},
+	defaultAttack = "creaturerangedattack",
 	defaultWeapon = "object/weapon/ranged/droid/droid_droideka_ranged.iff",
 }
 

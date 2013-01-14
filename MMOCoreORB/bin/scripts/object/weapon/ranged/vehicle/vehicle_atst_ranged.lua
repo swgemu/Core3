@@ -43,33 +43,32 @@
 
 object_weapon_ranged_vehicle_vehicle_atst_ranged = object_weapon_ranged_vehicle_shared_vehicle_atst_ranged:new {
 	objectName = "@theme_park_name:at_st",
-	
+			
 	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
 	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
 	attackType = RANGEDATTACK,
 
 	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
-	damageType = ENERGY,
+	damageType = KINETIC,
 
 	-- NONE, LIGHT, MEDIUM, HEAVY
 	armorPiercing = HEAVY,
 
 	pointBlankRange = 0,
-	pointBlankAccuracy = -70,
+	pointBlankAccuracy = 10000,
 
 	idealRange = 20,
 	idealAccuracy = 1000,
 
-	maxRange = 64,
+	maxRange = 55,
 	maxRangeAccuracy = 500,
 
 	minDamage = 100,
 	maxDamage = 200,
 
-	attackSpeed = 4,
+	attackSpeed = 2,
 
 	woundsRatio = 10,
-
 
 }
 

@@ -59,6 +59,7 @@ CreatureTemplate::CreatureTemplate() {
 
 	aiTemplate = "example";
 	defaultWeapon = "";
+	defaultAttack = "defaultattack";
 }
 
 CreatureTemplate::~CreatureTemplate() {
@@ -104,6 +105,7 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	optionsBitmask = templateData->getIntField("optionsBitmask");
 	patrolPathTemplate = templateData->getStringField("patrolPathTemplate");
 	defaultWeapon = templateData->getStringField("defaultWeapon");
+	defaultAttack = templateData->getStringField("defaultAttack");
 
 	scale = templateData->getFloatField("scale");
 
