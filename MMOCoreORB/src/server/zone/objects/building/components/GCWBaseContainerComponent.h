@@ -39,8 +39,6 @@ public:
 	}
 
 	bool checkPVPPermission(BuildingObject* building, CreatureObject* creature, uint16 permission){
-		Logger::Logger tlog("cont");
-		tlog.info("checking pvp permissions",true);
 		PlayerObject* player = creature->getPlayerObject();
 
 		if(player == NULL){
