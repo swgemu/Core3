@@ -13,6 +13,7 @@
 class LootContainerComponent: public ContainerComponent {
 public:
 	int notifyObjectRemoved(SceneObject* sceneObject, SceneObject* object, SceneObject* destination);
+	bool checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission);
 };
 
 #endif /* LOOTCONTAINERCOMPONENT_H_ */

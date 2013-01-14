@@ -38,3 +38,15 @@ int LootContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneO
 
 	return 0;
 }
+
+
+bool LootContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) {
+	ContainerPermissions* permissions = sceneObject->getContainerPermissions();
+
+	if (permissions->getOwnerID() == creature->getObjectID() || permissions->getOwnerID() == creature->getGroupID()) {
+		return true;
+	}
+
+	return false;
+}
+
