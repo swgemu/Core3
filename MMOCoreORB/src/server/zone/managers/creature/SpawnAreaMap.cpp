@@ -225,7 +225,10 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 		circularAreaShape->setRadius(radius);
 		area->setAreaShape(circularAreaShape);
 	} else {
-		return;
+		ManagedReference<CircularAreaShape*> circularAreaShape = new CircularAreaShape();
+		circularAreaShape->setAreaCenter(x, y);
+		circularAreaShape->setRadius(zone->getBoundingRadius());
+		area->setAreaShape(circularAreaShape);
 	}
 
 	area->setTier(tier);

@@ -19,18 +19,18 @@ bool CircularAreaShapeImplementation::containsPoint(const Vector3& point) {
 }
 
 Vector3 CircularAreaShapeImplementation::getRandomPosition() {
-	int distance = System::random((int)radius);
-	int angle = System::random(360) * Math::DEG2RAD;
+	float distance = System::random((int)radius);
+	float angle = System::random(360) * Math::DEG2RAD;
 
 	Vector3 position;
-	position.set(distance * Math::cos(angle), 0, distance * Math::sin(angle));
+	position.set(areaCenter.getX() + distance * Math::cos(angle), 0, areaCenter.getY() + distance * Math::sin(angle));
 
 	return position;
 }
 
 Vector3 CircularAreaShapeImplementation::getRandomPosition(const Vector3& origin, float minDistance, float maxDistance) {
-	int distance = System::random((int)(maxDistance - minDistance)) + minDistance;
-	int angle = System::random(360) * Math::DEG2RAD;
+	float distance = System::random((int)(maxDistance - minDistance)) + minDistance;
+	float angle = System::random(360) * Math::DEG2RAD;
 
 	Vector3 position;
 	position.set(origin.getX() + distance * Math::cos(angle), 0, origin.getY() + distance * Math::sin(angle));
