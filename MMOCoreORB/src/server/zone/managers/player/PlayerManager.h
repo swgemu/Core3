@@ -378,7 +378,7 @@ public:
 
 	void createSkippedTutorialBuilding(CreatureObject* player);
 
-	bool hasCorrectZCoordinate(CreatureObject* player);
+	void updateSwimmingState(CreatureObject* player, float newZ);
 
 	int checkSpeedHackFirstTest(CreatureObject* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier = 1);
 
@@ -608,7 +608,7 @@ public:
 
 	void createSkippedTutorialBuilding(CreatureObject* player);
 
-	bool hasCorrectZCoordinate(CreatureObject* player);
+	void updateSwimmingState(CreatureObject* player, float newZ);
 
 	int checkSpeedHackFirstTest(CreatureObject* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier = 1);
 
@@ -801,7 +801,7 @@ public:
 
 	void createSkippedTutorialBuilding(CreatureObject* player);
 
-	bool hasCorrectZCoordinate(CreatureObject* player);
+	void updateSwimmingState(CreatureObject* player, float newZ);
 
 	int checkSpeedHackSecondTest(CreatureObject* player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject* newParent);
 

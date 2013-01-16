@@ -213,6 +213,8 @@ public:
 		if (playerManager->checkSpeedHackSecondTest(object, positionX, positionZ, positionY, movementStamp, NULL) != 0)
 			return;
 
+		playerManager->updateSwimmingState(object, positionZ);
+
 		object->setMovementCounter(movementCounter);
 		//object->setDirection(directionW, directionX, directionY, directionZ);
 		

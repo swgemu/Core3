@@ -132,6 +132,8 @@ public:
 		terrainManager->getWaterHeight(creature->getPositionX(), creature->getPositionY(), waterHeight);
 		if ((z + creature->getSwimHeight() - waterHeight) < 0.2) {
 			creature->setState(CreatureState::SWIMMING);
+		} else {
+			creature->clearState(CreatureState::SWIMMING);
 		}
 
 		creature->updateToDatabase();

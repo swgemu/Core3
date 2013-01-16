@@ -2389,52 +2389,59 @@ void PlayerManagerImplementation::updatePermissionName(CreatureObject* player, i
 	}
 }
 
-bool PlayerManagerImplementation::hasCorrectZCoordinate(CreatureObject* player) {
+void PlayerManagerImplementation::updateSwimmingState(CreatureObject* player, float newZ) {
+	player->notifySelfPositionUpdate();
 	if (player->getParent() != NULL) {
-		return true;
+		return;
 	}
 
 	ManagedReference<Zone*> zone = player->getZone();
 
 	if (zone == NULL) {
 		player->info("No zone.", true);
-		return false;
+		return;
 	}
 
 	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
 
 	if (planetManager == NULL) {
 		player->info("No planet manager.", true);
-		return false;
+		return;
 	}
 
 	ManagedReference<TerrainManager*> terrainManager = planetManager->getTerrainManager();
 
 	if (terrainManager == NULL) {
 		player->info("No terrain manager.", true);
-		return false;
+		return;
 	}
 
 	float landHeight = zone->getHeight(player->getPositionX(), player->getPositionY());
 	float waterHeight;
 	terrainManager->getWaterHeight(player->getPositionX(), player->getPositionY(), waterHeight);
 
-	if ((waterHeight > landHeight) && (landHeight + player->getSwimHeight() - waterHeight < 0.2) && !player->hasState(CreatureState::SWIMMING)) {
+	if ((waterHeight > landHeight) && (landHeight + player->getSwimHeight() - waterHeight < 0.2)) {
+		//Water level is higher than the terrain level and is deep enough for the player to be swimming.
+		//Check if the player is on a bridge or other terrain above the water level.
 		SortedVector<IntersectionResult> intersections;
 
 		CollisionManager::getWorldFloorCollisions(player->getPositionX(), player->getPositionY(), zone, true, &intersections);
 
 		for (int i = 0; i < intersections.size(); i++) {
-			if (fabs(16384 - intersections.get(i).getIntersectionDistance() - player->getPositionZ()) < 0.2) {
-				return true;
+			if (fabs(16384 - intersections.get(i).getIntersectionDistance() - newZ) < 0.2) {
+				//Player is on terrain above the water.
+				player->clearState(CreatureState::SWIMMING, true);
+				return;
 			}
 		}
 
-		player->info("No swimming state.", true);
-		return false;
+		//Player is in the water.
+		player->setState(CreatureState::SWIMMING, true);
+		return;
 	}
 
-	return true;
+	//Terrain is above water level.
+	player->clearState(CreatureState::SWIMMING, true);
 }
 
 int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier) {
@@ -2450,12 +2457,6 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player,
 
 		allowedSpeedMod = vehicle->getSpeedMultiplierMod();
 		allowedSpeedBase = vehicle->getRunSpeed();
-	}
-
-	if (!hasCorrectZCoordinate(player)) {
-		player->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
-
-		return 1;
 	}
 
 	float maxAllowedSpeed = allowedSpeedMod * allowedSpeedBase;

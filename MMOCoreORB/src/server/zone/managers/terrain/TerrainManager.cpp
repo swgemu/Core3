@@ -68,28 +68,13 @@ int TerrainManager::notifyPositionUpdate(CreatureObject* object) {
 	float waterHeight;
 
 	if (creature->getParent() == NULL && getWaterHeight(creature->getPositionX(), creature->getPositionY(), waterHeight)) {
-		//info("detected water height " + String::valueOf(waterHeight), true);
 
-		//float roundingPositionZ = floor(creature->getPositionZ() * 10) / 10;
-
-		float result = waterHeight - creature->getSwimHeight();
-		/*StringBuffer msg;
-				msg << "swimHeight: " << creature->getSwimHeight() << " rounding:" << roundingPositionZ << " positionZ :" << creature->getPositionZ() << " waterHeight - swimHeight:" << result;
-				info(msg.toString(), true);*/
-
-		float err = fabs(creature->getPositionZ() - result);
-
-		if (err < 0.2) {
-			//info("trying to set swimming state", true);
-			creature->setState(CreatureState::SWIMMING);
+		if (creature->getPositionZ() + creature->getSwimHeight()- waterHeight < 0.2) {
 
 			if (creature->hasState(CreatureState::ONFIRE))
 				creature->healDot(CreatureState::ONFIRE, 100);
-		} else {
-			creature->clearState(CreatureState::SWIMMING);
 		}
-	} else
-		creature->clearState(CreatureState::SWIMMING);
+	}
 
 	return 0;
 }

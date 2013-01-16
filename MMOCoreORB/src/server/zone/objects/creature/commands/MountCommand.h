@@ -119,6 +119,7 @@ public:
 			}
 
 			creature->setState(CreatureState::RIDINGMOUNT);
+			creature->clearState(CreatureState::SWIMMING);
 
 			SpeedMultiplierModChanges* changeBuffer = creature->getSpeedMultiplierModChanges();
 			int bufferSize = changeBuffer->size();

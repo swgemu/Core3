@@ -244,7 +244,7 @@ class PlayerManager extends Observer implements Logger {
 	public native void createTutorialBuilding(CreatureObject player);
 	public native void createSkippedTutorialBuilding(CreatureObject player);
 	
-	public native boolean hasCorrectZCoordinate(CreatureObject player);
+	public native void updateSwimmingState(CreatureObject player, float newZ);
 	@local
 	public native int checkSpeedHackFirstTest(CreatureObject player, float parsedSpeed, @dereferenced ValidatedPosition teleportPosition, float errorMultiplier = 1);
 	public native int checkSpeedHackSecondTest(CreatureObject player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject newParent = null);
