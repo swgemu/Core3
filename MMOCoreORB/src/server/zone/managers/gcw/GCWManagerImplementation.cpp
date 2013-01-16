@@ -2013,7 +2013,7 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 	if(tano != NULL)
 		tano->setFaction(building->getFaction());
 
-	tano->setPvpStatusBitmask(building->getPvpStatusBitmask());
+	tano->setPvpStatusBitmask(building->getPvpStatusBitmask() | tano->getPvpStatusBitmask());
 	tano->setDetailedDescription("Donated Turret");
 
 	if(tano->isInstallationObject()){

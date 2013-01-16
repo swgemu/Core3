@@ -1084,7 +1084,8 @@ void BuildingObjectImplementation::createChildObjects(){
 				TangibleObject* tano = cast<TangibleObject*>(obj.get());
 				tano->setFaction(getFaction());
 				tano->setDetailedDescription("DEFAULT BASE TURRET");
-				tano->setPvpStatusBitmask(getPvpStatusBitmask());
+				tano->setPvpStatusBitmask(getPvpStatusBitmask() | tano->getPvpStatusBitmask());
+
 				InstallationObject* installation = cast<InstallationObject*>(obj.get());
 				if(installation != NULL){
 					installation->setOwnerObjectID(getObjectID());
