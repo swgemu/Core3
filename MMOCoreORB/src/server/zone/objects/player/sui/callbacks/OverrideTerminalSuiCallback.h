@@ -26,6 +26,9 @@ public:
 		if (cancelPressed || !suiBox->isListBox() || player == NULL || args->size() <= 0 )
 			return;
 
+		if(player->isDead() || player->isIncapacitated())
+			return;
+
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
 
 		if(obj == NULL || !obj->isBuildingObject())

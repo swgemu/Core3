@@ -23,8 +23,10 @@ public:
 
 
 	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
-
 		if (cancelPressed || !suiBox->isListBox() || player == NULL || args->size() <= 0 )
+			return;
+
+		if(player->isDead() || player->isIncapacitated())
 			return;
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();

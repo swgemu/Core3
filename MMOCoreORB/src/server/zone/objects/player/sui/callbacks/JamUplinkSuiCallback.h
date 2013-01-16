@@ -21,9 +21,11 @@ public:
 
 
 	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
-		Logger::Logger tlog("Callback");
-		tlog.info("jamplinkcallback");
+
 		if (cancelPressed || !suiBox->isListBox() || player == NULL || args->size() <= 0 )
+			return;
+
+		if(player->isDead() || player->isIncapacitated())
 			return;
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
@@ -39,8 +41,6 @@ public:
 			return;
 
 		int index = Integer::valueOf(args->get(0).toString());
-
-		tlog.info("index is " + String::valueOf(index));
 
 		gcwMan->verifyUplinkBand(player, building, index);
 
