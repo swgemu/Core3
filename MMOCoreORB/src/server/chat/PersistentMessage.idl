@@ -80,42 +80,53 @@ class PersistentMessage extends ManagedObject {
 		receiverObjectID = 0;
 	}
 	
+	@read
 	public abstract native void sendTo(CreatureObject player, boolean sendBody = true);
 	
+	@read
 	@local
 	public StringIdChatParameterVector getStringIdParameters() {
 		return stringIdParameters;
 	}
 	
+	@read
 	@local
 	public WaypointChatParameterVector getWaypointParameters() {
 		return waypointParameters;
 	}
 	
+	@read
 	public native int getMailID();
 	
+	@read
 	public native unsigned long getObjectID();
 	
+	@read
 	public string getSenderName() {
 		return senderName;
 	}
 	
+	@read
 	public unsigned long getReceiverObjectID() {
 		return receiverObjectID;
 	}
 	
+	@read
 	public byte getStatus() {
 		return status;
 	}
 	
+	@read
 	public int getTimeStamp() {
 		return timeStamp;
 	}
 	
+	@read
 	public unicode getBody() {
 		return body;
 	}
 	
+	@read
 	public unicode getSubject() {
 		return subject;
 	}
@@ -144,14 +155,17 @@ class PersistentMessage extends ManagedObject {
 		subject = subj;
 	}
 	
+	@read
 	public boolean isNew() {
 		return status == NEW;
 	}
 	
+	@read
 	public boolean isRead() {
 		return status == READ;
 	}
 	
+	@read
 	public boolean isUnread() {
 		return status == UNREAD;
 	}

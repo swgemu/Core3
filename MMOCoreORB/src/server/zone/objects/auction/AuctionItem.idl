@@ -209,30 +209,37 @@ class AuctionItem extends ManagedObject {
 		status = value;
 	}
 
+	@read
 	public boolean isOnBazaar() {
 		return onBazaar;
 	}
 	
+	@read
 	public boolean isAuction() {
 		return auction;
 	}
 
+	@read
 	public int getStatus() {
 		return status;
 	}
 	
+	@read
 	public unsigned long getVendorID() {
 		return vendorID;
 	}
 
+	@read
 	public unsigned long getAuctionedItemObjectID() {
 		return auctionedItemObjectID;
 	}
 	
+	@read
 	public unsigned long getOwnerID() {
 		return ownerID;
 	}
 	
+	@read
 	public unsigned long getOfferToID() {
 		return offerToID;
 	}
@@ -240,59 +247,73 @@ class AuctionItem extends ManagedObject {
 	public void setVendorUID(final string uid) {
 		vuid = uid;
 	}
-	
+
+	@read
 	public final string getVendorUID() {
 		return vuid;
 	}
 	
+	@read
 	public string getOwnerName() {
 		return ownerName;
 	}
 	
+	@read
 	public string getItemName() {
 		return itemName;
 	}
 	
+	@read
 	public int getExpireTime() {
 		return expireTime;
 	}
 	
+	@read
 	public int getPrice() {
 		return price;
 	}
 	
+	@read
 	public int getProxy() {
 		return proxyBid;
 	}
 	
+	@read
 	public int getItemType() {
 		return itemType;
 	}
 	
+	@read
 	public unsigned long getBuyerID() {
 		return buyerID;
 	}
 	
+	@read
 	public string getBidderName() {
 		return bidderName;
 	}
 	
+	@read
 	public string getItemDescription() {
 		return itemDescription;
 	}
 
+	@read
 	public int getAuctionOptions() {
 		return auctionOptions;
 	}
 
+	@read
 	public boolean isPremiumAuction() {
 		return auctionOptions & OPTION_PREMIUM;
 	}
 
+	@read
 	public boolean isOwner(CreatureObject player) {
 		return player.getObjectID() == getOwnerID();
 	}
 
+	@read
 	public boolean isAuctionObject() {
 		return true;
 	}
