@@ -132,13 +132,11 @@ object_building_faction_perk_hq_hq_s04_imp = object_building_faction_perk_hq_sha
 		
 		childCreatureObjects = {
 		 	 { mobile="at_st", x=10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 	 { mobile="stormtrooper", x=15, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
-			
+		 			
 			 { mobile="dark_trooper", x=-0, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
 			
 			{ mobile="at_st", x=-10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 	{ mobile="dark_trooper", x=-15, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 	 
+				 	 
 		 	{ mobile="dark_trooper", x=10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
 		 	{ mobile="dark_trooper", x=-10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
 		

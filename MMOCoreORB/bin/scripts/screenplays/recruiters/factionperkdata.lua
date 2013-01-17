@@ -228,7 +228,7 @@ faction_reward_data = {
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s03_rebel_pvp.iff", cost=45000},
 			
 		hq_s04_rebel = {type=faction_reward_type.installation, display="@deed:hq_s04_rebel", item="object/tangible/deed/faction_perk/hq/hq_s04.iff", 
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_rebel.iff", cost=1},
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_rebel.iff", cost=60000},
 			
 		hq_s04_pvp_rebel = {type=faction_reward_type.installation, display="@deed:hq_s04_pvp_rebel", item="object/tangible/deed/faction_perk/hq/hq_s04_pvp.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_rebel_pvp.iff", cost=60000},
