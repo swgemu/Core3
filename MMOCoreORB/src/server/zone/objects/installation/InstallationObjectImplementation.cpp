@@ -355,6 +355,9 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 
 	Locker locker(_this.get());
 
+	if (getZone() == NULL)
+		return;
+
 	Time timeToWorkTill;
 
 	if (!isOperating()) {
