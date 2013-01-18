@@ -209,7 +209,8 @@ void CampTerminalMenuComponent::showCampStatus(SceneObject* sceneObject,
 		if(area->isCampArea()) {
 			break;
 		}
-		area == NULL;
+
+		area = NULL;
 	}
 
 	if(area == NULL) {
