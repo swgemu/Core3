@@ -71,7 +71,12 @@ int UplinkTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 
 	if ( selectedID == 227 || selectedID == 20) {
 		if(player->getFaction() != building->getFaction()) {
-			gcwMan->sendJamUplinkMenu(player, building);
+
+
+			if(player->hasSkill("combat_bountyhunter_investigation_01"))
+				gcwMan->sendJamUplinkMenu(player, building);
+			else
+				player->sendSystemMessage("Only an experienced Bounty Hunter with Investigation experience could expect to jam the uplink");
 		}
 
 	}

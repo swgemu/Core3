@@ -17,6 +17,7 @@
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
+#include "server/zone/objects/tangible/tool/smuggler/PrecisionLaserKnife.h"
 
 void SecurityTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 
@@ -49,7 +50,7 @@ void SecurityTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObj
 
 int SecurityTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
 	if (sceneObject == NULL || !sceneObject->isTangibleObject() || player == NULL || player->isDead() || player->isIncapacitated())
-		return 0;
+		return 1;
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 
@@ -73,7 +74,10 @@ int SecurityTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 
 	if(player->getFaction() != building->getFaction()) {
 		if ( selectedID == 229){
-			gcwMan->repairTerminal(player, tano);
+			if(player->hasSkill("combat_smuggler_slicing_01"))
+				gcwMan->repairTerminal(player, tano);
+			else
+				player->sendSystemMessage("Only an experienced Smuggler with Slicing experience could expect to repair the Security Terminal");
 		}
 	}
 

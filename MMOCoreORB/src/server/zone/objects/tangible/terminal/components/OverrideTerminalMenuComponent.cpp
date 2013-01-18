@@ -66,7 +66,10 @@ int OverrideTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 
 	if(player->getFaction() != building->getFaction()) {
 		if(selectedID == 228 || selectedID == 20){
-			gcwMan->sendDNASampleMenu(player, building);
+			if(player->hasSkill("crafting_droidengineer_novice"))
+				gcwMan->sendDNASampleMenu(player, building);
+			else
+				player->sendSystemMessage("Only an experience Bio Engineer can be expected to access the Override Terminal");
 		}
 	}
 	return 0;

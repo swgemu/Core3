@@ -109,19 +109,30 @@ int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureOb
 
 	if(creature->getFaction() == building->getFaction()) {
 		if (selectedID == 20){
-			if(creature->getFaction() == building->getFaction())
-				gcwMan->sendStatus(building,creature);
-			} else if( selectedID == 228 || selectedID == 20){
+			gcwMan->sendStatus(building,creature);
+		} else if( selectedID == 228 || selectedID == 20){
 				gcwMan->sendBaseDefenseStatus(creature, building);
-			} else if ( selectedID == 38) {
+		} else if ( selectedID == 38) {
 				gcwMan->sendResetVerification(creature, building);
-			} else if(selectedID == 231)
+		} else if(selectedID == 231)
 				gcwMan->abortShutdownSequence(creature,building);
-			else if (selectedID == 226)
+		else if (selectedID == 226)
 				gcwMan->sendSelectDeedToDonate(building,creature,0);
 	} else {
-		if ( selectedID == 230 )
-			gcwMan->scheduleBaseDestruction(building,creature);
+		if ( selectedID == 230 ) {
+			if(creature->hasSkill("outdoors_squadleader_novice"))
+				gcwMan->scheduleBaseDestruction(building,creature);
+			else
+				creature->sendSystemMessage(("@faction/faction_hq/faction_hq_response:terminal_response03")); // only an experienced squad leader could expect to coordinate a reactor overload
+
+		} else if ( selectedID == 20) {
+
+			if(creature->getFactionRank() >= 9) {
+				gcwMan->sendStatus(building,creature);
+			} else {
+				creature->sendSystemMessage("You must be at least a Warrant Officer in order to use this terminal");
+			}
+		}
 	}
 
 	return 0;

@@ -50,7 +50,7 @@ public:
 			return false;
 		}
 
-		if(player->getFactionStatus() == FactionStatus::COVERT && creature->getFaction() != building->getFaction()){
+		if(player->getFactionStatus() <= FactionStatus::COVERT){
 			creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:youre_covert_excluded"); // You must be a member of special forces to enter
 			return false;
 		}
@@ -70,8 +70,12 @@ public:
 		if(baseData == NULL)
 			return false;
 
+		// if the base is not vulnerable.  allow a warrant officer rank of opposite faction enter the base
+		if(!baseData->isVulnerable() && creature->getFaction() >= 9)
+			return true;
+
 		if(!baseData->isVulnerable()){
-			creature->sendSystemMessage("Base is not vulnerable");
+			creature->sendSystemMessage("Base is not vulnerable.  You must be Warrant Officer I to enter at this time.");
 			return false;
 		}
 
@@ -122,8 +126,12 @@ public:
 		if(baseData == NULL)
 			return false;
 
+		// if the base is not vulnerable.  allow a warrant officer rank of opposite faction enter the base
+		if(!baseData->isVulnerable() && creature->getFaction() >= 9)
+			return true;
+
 		if(!baseData->isVulnerable()){
-			creature->sendSystemMessage("Base is not vulnerable");
+			creature->sendSystemMessage("Base is not vulnerable.  You must be Warrant Officer I to enter at this time.");
 			return false;
 		}
 
