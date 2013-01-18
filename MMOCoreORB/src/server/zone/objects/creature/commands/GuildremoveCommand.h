@@ -70,7 +70,7 @@ public:
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		if (!player->isInGuild()) {
-			player->sendSystemMessage("@guild:guildremove_not_in_guild"); //You are not in a guild.
+			player->sendSystemMessage("@base_player:guildremove_not_in_guild"); //You are not in a guild.
 			return GENERALERROR;
 		}
 
