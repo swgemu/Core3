@@ -640,8 +640,8 @@ talus_static_spawns = {
 }
 
 talus_badges = {
-	{"badge_aqualish_cave",-4425,-1414,10,93},
-	{"badge_creature_village",4133,962,10,90},
-	{"badge_imp_base",-2184,2405,10,91},
-	{"badge_imp_vs_reb_battle",-2452,3846,10,92},
+	{"badge_aqualish_cave",-4425,-1414,30,93},
+	{"badge_creature_village",4300,1020,30,90},
+	{"badge_imp_base",-2185,2383,30,91},
+	{"badge_imp_vs_reb_battle",-2595,3724,30,92},
 }

@@ -82,7 +82,7 @@ yavin4_static_spawns = {
 }
 
 yavin4_badges = {
-	{"badge_temple_exar_kun",5076,5537,10,23},
-	{"badge_temple_woolamander",519,-646,10,21},
-	{"badge_yav_temple_blueleaf",-875,-2047,10,22},
+	{"badge_temple_exar_kun",5097,5537,30,23},
+	{"badge_temple_woolamander",519,-646,30,21},
+	{"badge_yav_temple_blueleaf",-875,-2047,30,22},
 }

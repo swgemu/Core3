@@ -248,8 +248,8 @@ dantooine_static_spawns = {
 }
 
 dantooine_badges = {
-	{"badge_dantari_village1",-3862,-5706,10,84},
-	{"badge_dantari_village2",-7156,-883,10,85},
-	{"badge_jedi_temple",4195,5203,10,30},
-	{"badge_rebel_base",-6836,5520,10,31},
+	{"badge_dantari_village1",-3929,-5632,30,84},
+	{"badge_dantari_village2",-7185,-883,30,85},
+	{"badge_jedi_temple",4195,5203,30,30},
+	{"badge_rebel_base",-6836,5520,30,31},
 }

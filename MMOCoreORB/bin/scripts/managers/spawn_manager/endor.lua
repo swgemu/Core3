@@ -155,8 +155,8 @@ endor_static_spawns = {
 }
 
 endor_badges = {
-	{"badge_dulok_villlage",6051,-2477,10,88},
-	{"badge_ewok_tree_villlage",4596,-2423,10,86},
-	{"badge_imp_outpost",-4628,-2273,10,89},
-	{"badge_lake_villlage",1454,-3272,10,87},
+	{"badge_dulok_villlage",6051,-2477,30,88},
+	{"badge_ewok_tree_villlage",4661,-2425,30,86},
+	{"badge_imp_outpost",-4628,-2273,30,89},
+	{"badge_lake_villlage",1454,-3272,30,87},
 }
