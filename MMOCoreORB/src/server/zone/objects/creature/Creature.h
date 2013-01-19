@@ -128,6 +128,8 @@ public:
 
 	bool canHarvestMe(CreatureObject* player);
 
+	bool hasSkillToHarvestMe(CreatureObject* player);
+
 	void addAlreadyHarvested(CreatureObject* player);
 
 	void notifyDespawn(Zone* zone);
@@ -201,6 +203,8 @@ public:
 	bool hasOrganics();
 
 	bool canHarvestMe(CreatureObject* player);
+
+	bool hasSkillToHarvestMe(CreatureObject* player);
 
 	void addAlreadyHarvested(CreatureObject* player);
 
@@ -284,6 +288,8 @@ public:
 	bool hasOrganics();
 
 	bool canHarvestMe(CreatureObject* player);
+
+	bool hasSkillToHarvestMe(CreatureObject* player);
 
 	void addAlreadyHarvested(CreatureObject* player);
 

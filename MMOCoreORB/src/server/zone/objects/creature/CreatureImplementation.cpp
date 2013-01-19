@@ -251,10 +251,22 @@ bool CreatureImplementation::canHarvestMe(CreatureObject* player) {
 	if (player->getObjectID() == lootOwnerID || (player->isGrouped() && player->getGroupID() == lootOwnerID))
 		return true;
 
-	ManagedReference<GroupObject*> group = player->getGroup();
-
-	if (group != NULL && group->hasMember(lootOwnerID))
-		return true;
-
 	return false;
+}
+
+bool CreatureImplementation::hasSkillToHarvestMe(CreatureObject* player) {
+
+	if(!player->hasSkill("outdoors_scout_novice"))
+		return false;
+
+	if (!hasOrganics())
+		return false;
+
+	if (player->getSkillMod("creature_harvesting") < 1)
+		return false;
+
+	if (alreadyHarvested.contains(player->getObjectID()))
+		return false;
+
+	return true;
 }

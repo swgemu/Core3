@@ -3494,7 +3494,7 @@ bool PlayerManagerImplementation::shouldRescheduleCorpseDestruction(CreatureObje
 			return false;
 
 		if (!player->isGrouped())
-			return !creature->canHarvestMe(player);
+			return !creature->hasSkillToHarvestMe(player);
 		else
 			return !canGroupMemberHarvestCorpse(player, creature);
 
@@ -3520,7 +3520,7 @@ bool PlayerManagerImplementation::canGroupMemberHarvestCorpse(CreatureObject* pl
 		if (groupMember->isInRange(player, 256.0f)) {
 			CreatureObject *groupMemberCreature = dynamic_cast<CreatureObject*>(groupMember.get());
 
-			if (creature->canHarvestMe(groupMemberCreature)) {
+			if (creature->hasSkillToHarvestMe(groupMemberCreature)) {
 				return true;
 			}
 		}

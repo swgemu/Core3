@@ -20,7 +20,7 @@
  *	CreatureStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISCREATURE__,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_RUNAWAY__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SCHEDULEDESPAWN__,RPC_HASORGANICS__,RPC_CANHARVESTME__CREATUREOBJECT_,RPC_ADDALREADYHARVESTED__CREATUREOBJECT_,RPC_NOTIFYDESPAWN__ZONE_,RPC_ISBABY__,RPC_GETTAME__,RPC_GETMEATTYPE__,RPC_GETBONETYPE__,RPC_GETHIDETYPE__,RPC_GETMILK__,RPC_GETHIDEMAX__,RPC_GETBONEMAX__,RPC_GETMEATMAX__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISCREATURE__,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_RUNAWAY__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SCHEDULEDESPAWN__,RPC_HASORGANICS__,RPC_CANHARVESTME__CREATUREOBJECT_,RPC_HASSKILLTOHARVESTME__CREATUREOBJECT_,RPC_ADDALREADYHARVESTED__CREATUREOBJECT_,RPC_NOTIFYDESPAWN__ZONE_,RPC_ISBABY__,RPC_GETTAME__,RPC_GETMEATTYPE__,RPC_GETBONETYPE__,RPC_GETHIDETYPE__,RPC_GETMILK__,RPC_GETHIDEMAX__,RPC_GETBONEMAX__,RPC_GETMEATMAX__};
 
 Creature::Creature() : AiAgent(DummyConstructorParameter::instance()) {
 	CreatureImplementation* _implementation = new CreatureImplementation();
@@ -169,6 +169,20 @@ bool Creature::canHarvestMe(CreatureObject* player) {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->canHarvestMe(player);
+}
+
+bool Creature::hasSkillToHarvestMe(CreatureObject* player) {
+	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HASSKILLTOHARVESTME__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasSkillToHarvestMe(player);
 }
 
 void Creature::addAlreadyHarvested(CreatureObject* player) {
@@ -597,6 +611,11 @@ void CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(canHarvestMe(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		}
 		break;
+	case RPC_HASSKILLTOHARVESTME__CREATUREOBJECT_:
+		{
+			resp->insertBoolean(hasSkillToHarvestMe(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
+		break;
 	case RPC_ADDALREADYHARVESTED__CREATUREOBJECT_:
 		{
 			addAlreadyHarvested(static_cast<CreatureObject*>(inv->getObjectParameter()));
@@ -691,6 +710,10 @@ bool CreatureAdapter::hasOrganics() {
 
 bool CreatureAdapter::canHarvestMe(CreatureObject* player) {
 	return (static_cast<Creature*>(stub))->canHarvestMe(player);
+}
+
+bool CreatureAdapter::hasSkillToHarvestMe(CreatureObject* player) {
+	return (static_cast<Creature*>(stub))->hasSkillToHarvestMe(player);
 }
 
 void CreatureAdapter::addAlreadyHarvested(CreatureObject* player) {
