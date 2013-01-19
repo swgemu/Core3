@@ -1595,6 +1595,15 @@ bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
 	return false;
 }
 
+bool AiAgentImplementation::hasLoot(){
+	SceneObject* inventory = getSlottedObject("inventory");
+
+	if(inventory == NULL)
+		return false;
+
+	return inventory->getContainerObjectsSize() > 0;
+}
+
 void AiAgentImplementation::sendDefaultConversationTo(SceneObject* player) {
 	/*if (!player->isPlayerCreature())
 		return;

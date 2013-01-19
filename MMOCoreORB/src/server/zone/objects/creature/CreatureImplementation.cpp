@@ -248,7 +248,7 @@ bool CreatureImplementation::canHarvestMe(CreatureObject* player) {
 
 	uint64 lootOwnerID = creatureInventory->getContainerPermissions()->getOwnerID();
 
-	if (player->getObjectID() == lootOwnerID)
+	if (player->getObjectID() == lootOwnerID || (player->isGrouped() && player->getGroupID() == lootOwnerID))
 		return true;
 
 	ManagedReference<GroupObject*> group = player->getGroup();

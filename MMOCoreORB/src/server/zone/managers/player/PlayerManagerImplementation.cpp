@@ -3490,11 +3490,14 @@ bool PlayerManagerImplementation::shouldRescheduleCorpseDestruction(CreatureObje
 	} else if (ai->isCreature()) {
 		Creature * creature = dynamic_cast<Creature*>(ai);
 
-		if (!creature->canHarvestMe(player) && creature->getCashCredits() < 1 && creature->getBankCredits() < 1 && !player->isGrouped()) {
-			return true;
-		} else if (!creature->canHarvestMe(player) && creature->getCashCredits() < 1 && creature->getBankCredits() < 1 && player->isGrouped()) {
+		if(creature->hasLoot() || creature->getCashCredits() > 0 || creature->getBankCredits() > 0)
+			return false;
+
+		if (!player->isGrouped())
+			return !creature->canHarvestMe(player);
+		else
 			return !canGroupMemberHarvestCorpse(player, creature);
-		}
+
 	}
 
 	return false;

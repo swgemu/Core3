@@ -2099,10 +2099,6 @@ CreatureTemplate* AiAgentImplementation::getCreatureTemplate() {
 	return (&npcTemplate)->get();
 }
 
-bool AiAgentImplementation::hasLoot() {
-	// server/zone/objects/creature/AiAgent.idl():  		return false;
-	return false;
-}
 
 void AiAgentImplementation::setShowNextPosition(bool val) {
 	// server/zone/objects/creature/AiAgent.idl():  		showNextMovementPosition = val;

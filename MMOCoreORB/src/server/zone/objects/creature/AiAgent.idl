@@ -713,12 +713,7 @@ class AiAgent extends CreatureObject {
 		return npcTemplate.get();
 	}
 	
-	/*
-	 * Place holder for when loot is implemented
-	 */
-	public boolean hasLoot() {
-		return false;
-	}
+	public native boolean hasLoot();
 	
 	public void setShowNextPosition(boolean val) {
 		showNextMovementPosition = val;
