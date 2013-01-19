@@ -28,7 +28,14 @@ masterful_panshee_warrior = Creature:new {
 	templates = {
 		"object/mobile/dressed_ewok_m_09.iff",
 		"object/mobile/dressed_ewok_m_10.iff"},
-	lootGroups = {},
+	lootGroups = {
+		 {
+	        groups = {
+				{group = "ewok", chance = 10000000}
+			},
+			lootChance = 3000000
+		}
+	},
 	weapons = {"ewok_weapons"},
 	attacks = merge(riflemanmaster)
 }

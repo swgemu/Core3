@@ -28,7 +28,14 @@ masterful_ewok_warrior = Creature:new {
 	templates = {
 		"object/mobile/dressed_ewok_m_06.iff",
 		"object/mobile/dressed_ewok_m_08.iff"},
-	lootGroups = {},
+	lootGroups = {
+		 {
+	        groups = {
+				{group = "ewok", chance = 3300000}
+			},
+			lootChance = 1000000
+		}
+	},
 	weapons = {"ewok_weapons"},
 	attacks = merge(riflemanmaster)
 }

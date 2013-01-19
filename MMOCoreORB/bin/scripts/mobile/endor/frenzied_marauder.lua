@@ -21,17 +21,16 @@ frenzied_marauder = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_frenzied_marauder.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(frenzied_marauder, "frenzied_marauder")

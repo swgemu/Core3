@@ -28,7 +28,14 @@ gondula_matriarch = Creature:new {
 
 	templates = {
 		"object/mobile/dressed_ewok_f_05.iff"},
-	lootGroups = {},
+	lootGroups = {
+		 {
+	        groups = {
+				{group = "ewok", chance = 3300000}
+			},
+			lootChance = 1000000
+		}
+	},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster)

@@ -33,7 +33,14 @@ gondula_loremaster = Creature:new {
 		"object/mobile/dressed_ewok_m_05.iff",
 		"object/mobile/dressed_ewok_m_10.iff",
 		"object/mobile/dressed_ewok_m_12.iff"},
-	lootGroups = {},
+	lootGroups = {
+		 {
+	        groups = {
+				{group = "ewok", chance = 3300000}
+			},
+			lootChance = 1000000
+		}
+	},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster)

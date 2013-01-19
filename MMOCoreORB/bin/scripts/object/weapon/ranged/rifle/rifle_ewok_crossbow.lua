@@ -105,19 +105,22 @@ object_weapon_ranged_rifle_rifle_ewok_crossbow = object_weapon_ranged_rifle_shar
 	mindAttackCost = 48,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
+	pointBlankAccuracy = -40,
 	pointBlankRange = 0,
 
-	idealRange = 35,
+	idealRange = 45,
 	idealAccuracy = 0,
 	
 	minDamage = 77,
 	maxDamage = 131,
 
 	maxRange = 65,
-	maxRangeAccuracy = 0,
+	maxRangeAccuracy = -60,
 		
-	attackSpeed = 8
+	attackSpeed = 8,
+
+	woundsRatio = 11
+
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_ewok_crossbow, "object/weapon/ranged/rifle/rifle_ewok_crossbow.iff")

@@ -30,7 +30,14 @@ gondula_shaman = Creature:new {
 		"object/mobile/dressed_ewok_m_03.iff",
 		"object/mobile/dressed_ewok_m_07.iff",
 		"object/mobile/dressed_ewok_m_11.iff"},
-	lootGroups = {},
+	lootGroups = {
+		 {
+	        groups = {
+				{group = "ewok", chance = 3300000}
+			},
+			lootChance = 1000000
+		}
+	},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster)

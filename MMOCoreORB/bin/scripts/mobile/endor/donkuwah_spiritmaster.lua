@@ -21,7 +21,7 @@ donkuwah_spiritmaster = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -29,11 +29,17 @@ donkuwah_spiritmaster = Creature:new {
 	templates = {
 			"object/mobile/dulok_male.iff",
 			"object/mobile/dulok_female.iff"},
-	lootGroups = {},
-	weapons = {},
+	lootGroups = {
+		 {
+	        groups = {
+				{group = "donkuwah_common", chance = 3300000}
+			},
+			lootChance = 7000000
+		}
+	},
+	weapons = {"donkuwah_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(donkuwah_spiritmaster, "donkuwah_spiritmaster")

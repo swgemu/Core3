@@ -21,7 +21,7 @@ shaggy_donkuwah_youth = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -29,7 +29,14 @@ shaggy_donkuwah_youth = Creature:new {
 	templates = {
 			"object/mobile/dulok_male.iff",
 			"object/mobile/dulok_female.iff"},
-	lootGroups = {},
+	lootGroups = {
+		 {
+	        groups = {
+				{group = "donkuwah_common", chance = 3300000}
+			},
+			lootChance = 7000000
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

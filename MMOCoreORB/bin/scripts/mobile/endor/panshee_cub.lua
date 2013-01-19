@@ -27,11 +27,17 @@ panshee_cub = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-		"object/mobile/dressed_ewok_f.iff",
 		"object/mobile/dressed_ewok_f_01.iff",
 		"object/mobile/dressed_ewok_m.iff",
 		"object/mobile/dressed_ewok_m_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+		 {
+	        groups = {
+				{group = "ewok", chance = 10000000}
+			},
+			lootChance = 3000000
+		}
+	},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster)

@@ -31,7 +31,14 @@ competent_panshee_ritualist = Creature:new {
 		"object/mobile/dressed_ewok_f_10.iff",
 		"object/mobile/dressed_ewok_f_11.iff",
 		"object/mobile/dressed_ewok_m_02.iff"},
-	lootGroups = {},
+	lootGroups = {
+		 {
+	        groups = {
+				{group = "ewok", chance = 10000000}
+			},
+			lootChance = 3000000
+		}
+	},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster)

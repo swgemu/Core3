@@ -31,7 +31,14 @@ panshee_veteran = Creature:new {
 		"object/mobile/dressed_ewok_m_09.iff",
 		"object/mobile/dressed_ewok_m_10.iff",
 		"object/mobile/dressed_ewok_m_12.iff"},
-	lootGroups = {},
+	lootGroups = {
+		 {
+	        groups = {
+				{group = "ewok", chance = 10000000}
+			},
+			lootChance = 3000000
+		}
+	},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster)

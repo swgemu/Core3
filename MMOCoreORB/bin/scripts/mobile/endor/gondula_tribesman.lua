@@ -32,7 +32,14 @@ gondula_tribesman = Creature:new {
 		"object/mobile/dressed_ewok_f_08.iff",
 		"object/mobile/dressed_ewok_f_09.iff",
 		"object/mobile/dressed_ewok_m_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+		 {
+	        groups = {
+				{group = "ewok", chance = 3300000}
+			},
+			lootChance = 1000000
+		}
+	},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster)

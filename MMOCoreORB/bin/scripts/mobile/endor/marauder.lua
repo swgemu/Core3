@@ -21,22 +21,17 @@ marauder = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {
-			"object/mobile/dressed_marauder.iff",
-			"object/mobile/dressed_marauder_male.iff",
-			"object/mobile/dressed_marauder_male_02.iff",
-			"object/mobile/dressed_marauder_male_03.iff",
-			"object/mobile/dressed_marauder_female.iff"},
+			"object/mobile/dressed_marauder.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(marauder, "marauder")

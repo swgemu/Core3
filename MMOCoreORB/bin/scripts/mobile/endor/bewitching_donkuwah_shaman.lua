@@ -21,18 +21,24 @@ bewitching_donkuwah_shaman = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER + HEALER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {
 			"object/mobile/dulok_male.iff"},
-	lootGroups = {},
-	weapons = {},
+	lootGroups = {
+		 {
+	        groups = {
+				{group = "donkuwah_common", chance = 3300000}
+			},
+			lootChance = 7000000
+		}
+	},
+	weapons = {"donkuwah_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(bewitching_donkuwah_shaman, "bewitching_donkuwah_shaman")

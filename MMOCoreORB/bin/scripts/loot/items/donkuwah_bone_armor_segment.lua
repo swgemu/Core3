@@ -4,7 +4,7 @@ donkuwah_bone_armor_segment = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	customObjectName = "",
-	directObjectTemplate = "object/tangible/component/armor/armor_segmet_bone_donkuwah.iff",
+	directObjectTemplate = "object/tangible/component/armor/armor_segment_bone_donkuwah.iff",
 	craftingValues = {
 	    {"armor_special_type",0,0,0},
 	    {"armor_effectiveness",1,8,10},
