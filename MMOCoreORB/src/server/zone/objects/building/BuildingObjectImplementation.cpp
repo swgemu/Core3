@@ -172,7 +172,7 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 			ManagedReference<SceneObject*> containerObject = cell->getContainerObject(j);
 
 			if (containerObject != NULL && ((containerObject->isCreatureObject() && publicStructure) || player == containerObject
-					|| (closeObjects != NULL && closeObjects->contains(containerObject))))
+					|| (closeObjects != NULL && closeObjects->contains(containerObject.get()))))
 				containerObject->sendTo(player, true);
 		}
 	}
