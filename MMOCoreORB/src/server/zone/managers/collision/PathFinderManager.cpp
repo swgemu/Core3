@@ -70,6 +70,10 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 
 	//find nearest entrance
 	FloorMesh* exteriorFloorMesh = portalLayout->getFloorMesh(0); // get outside layout
+
+	if (exteriorFloorMesh == NULL)
+		return NULL;
+
 	PathGraph* exteriorPathGraph = exteriorFloorMesh->getPathGraph();
 
 	FloorMesh* targetFloorMesh = portalLayout->getFloorMesh(targetCell->getCellNumber());
