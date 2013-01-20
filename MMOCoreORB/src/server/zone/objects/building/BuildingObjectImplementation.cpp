@@ -169,10 +169,10 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 		}
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-			SceneObject* containerObject = cell->getContainerObject(j);
+			ManagedReference<SceneObject*> containerObject = cell->getContainerObject(j);
 
-			if ((containerObject->isCreatureObject() && publicStructure) || player == containerObject
-					|| (closeObjects != NULL && closeObjects->contains(containerObject)))
+			if (containerObject != NULL && ((containerObject->isCreatureObject() && publicStructure) || player == containerObject
+					|| (closeObjects != NULL && closeObjects->contains(containerObject))))
 				containerObject->sendTo(player, true);
 		}
 	}
