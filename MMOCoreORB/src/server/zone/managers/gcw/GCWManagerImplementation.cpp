@@ -52,7 +52,17 @@
 
 #define DEBUG_GCW
 
-
+int GCWManagerImplementation::gcwCheckTimer = 3600;
+int GCWManagerImplementation::vulnerabilityDuration = 7200;
+int GCWManagerImplementation::vulnerabilityFrequency = 172800;
+int GCWManagerImplementation::resetTimer = 604800;
+int GCWManagerImplementation::sliceCooldown = 120;
+int GCWManagerImplementation::totalDNASamples = 10;
+int GCWManagerImplementation::dnaMatchesRequired = 28;
+int GCWManagerImplementation::destructionTimer = 600;
+int GCWManagerImplementation::maxBases = -1;
+int GCWManagerImplementation::overtCooldown = 300;
+int GCWManagerImplementation::reactvationTimer = 300;
 
 void GCWManagerImplementation::initialize(){
 	// TODO: initialize things
@@ -70,106 +80,32 @@ void GCWManagerImplementation::initialize(){
 void GCWManagerImplementation::start(){
 
 	CheckGCWTask* task = new CheckGCWTask(_this.get());
-	task->schedule(this->GCWCHECKTIMER * 1000);
+	loadLuaConfig();
+	task->schedule(this->gcwCheckTimer * 1000);
 	initialize();
-
 }
 
-void GCWManagerImplementation::loadFactionStructures(const String& zoneName){
-	// load structures
-
-	// faction structures moved to playerstructures DB
-	return;
-
-
-	info("GCWManager Loading FACTION Structures for from factionstructures.db for zone " + zoneName,true);
-
-	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
-	ObjectDatabase* factionStructuresDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("factionstructures", true);
-
-	if (factionStructuresDatabase == NULL ) {
-		error("Could not load the faction structures db");
+void GCWManagerImplementation::loadLuaConfig(){
+	if(maxBases >= 0)
 		return;
-	}
 
-	int i = 0;
+	info("Loading gcw configuration file.", true);
 
-	try {
+	Lua* lua = new Lua();
+	lua->init();
+	lua->runFile("scripts/managers/gcw_manager.lua");
 
-		ObjectDatabaseIterator iterator(factionStructuresDatabase);
-		uint64 objectID;
-		ObjectInputStream* objectData = new ObjectInputStream(2000);
-
-		String zoneReference;
-
-		while(iterator.getNextKeyAndValue(objectID, objectData)){
-
-			if (!Serializable::getVariable<String>("SceneObject.zone", &zoneReference, objectData)) {
-				objectData->clear();
-				info("couldn't get zoneName in loadFactionStructures()");
-				continue;
-			}
-
-			if (zoneName != zoneReference) {
-				objectData->clear();
-				continue;
-			}
-
-			ZoneServer* zoneServer = zone->getZoneServer();
-
-			if(zoneServer==NULL)
-			{
-				error("ZoneServer is null when creating GCWObject in zone " + zone->getZoneName());
-				return;
-			}
-
-			SceneObject* object = zoneServer->getObject(objectID);
-
-
-			if (object != NULL) {
-				++i;
-				if (object->isBuildingObject())
-				{	// does this need to be managed
-					ManagedReference<BuildingObject*> buildingObject = cast<BuildingObject*>(object);
-
-					if ( buildingObject != NULL)
-					{	DestructibleBuildingDataComponent* data = getDestructibleBuildingData(buildingObject);
-						if ( data != NULL) {
-							/*info("Placmenet time from database is " + data->getPlacmenetTime().getFormattedTime(), true);
-							info("Next Vuln time from database is " + data->getNextVulnerableTime().getFormattedTime(), true);
-							info("LastReset from database      is " + data->getLastResetTime().getFormattedTime(),true);
-							info("LastVulnTime from database is " + data->getLastVulnerableTime().getFormattedTime(), true);
-							info("Next Vuln time from database is  " + data->getNextVulnerableTime().getFormattedTime(), true);
-							info("Current tims is                  " + Time().getFormattedTime(),true);
-							info("NextEndTime from the database is " + data->getVulnerabilityEndTime().getFormattedTime(), true);
-							*/
-
-						}
-						else
-						info("error getting datacomponent from DB", true);
-
-						registerGCWBase(buildingObject, false);
-					}
-					else
-						info("Unable to register gcwBuilding",true);
-
-				} else if (object->isTurret()){
-					//ManagedReference<InstallationObject*> installation = cast<InstallationObject*>(object);
-
-				}
-				printf("\r\tLoading gcw structures [%d] / [?]\t", i);
-			} else {
-				error("Failed to deserialize gcw structure with objectID: " + String::valueOf(objectID) + "\r\n");
-			}
-
-			objectData->clear();
-		}
-		info("\r\nGCWMANAGER: Loaded " + String::valueOf(i) + " gcw buildings in " + zoneName,true);
-		info("Registered " + String::valueOf(gcwBaseList.size()) + " bases on " + zoneName,true);
-		delete objectData;
-	} catch ( Exception& err) {
-		error("Database error in gcwManager::loadfactionSTructures: " + err.getMessage());
-	}
+	gcwCheckTimer = lua->getGlobalInt("gcwCheckTimer");
+	vulnerabilityDuration = lua->getGlobalInt("vulnerabilityDuration");
+	vulnerabilityFrequency = lua->getGlobalInt("vulnerabilityFrequency");
+	resetTimer = lua->getGlobalInt("resetTimer");
+	sliceCooldown = lua->getGlobalInt("sliceCooldown");
+	totalDNASamples = lua->getGlobalInt("totalDNASamples");
+	dnaMatchesRequired = lua->getGlobalInt("DNAMatchesRequired");
+	destructionTimer = lua->getGlobalInt("destructionTimer");
+	maxBases = lua->getGlobalInt("maxBases");
+	overtCooldown = lua->getGlobalInt("overtCooldown");
+	reactvationTimer = lua->getGlobalInt("reactvationTimer");
 
 }
 
@@ -260,16 +196,16 @@ void GCWManagerImplementation::endVulnerability(BuildingObject* building){
 	else
 		nextTime = baseData->getLastVulnerableTime();
 
-	int64 intPeriodsPast = (fabs(nextTime.miliDifference())) / (this->VULNERABILITYFREQUENCY*1000);
+	int64 intPeriodsPast = (fabs(nextTime.miliDifference())) / (this->vulnerabilityFrequency*1000);
 
 	// TODO: use periodspast to get the amount of time to add and avoid the loop
 	while(nextTime.isPast()){
 		//info("adding time to nextvuln", true);
-		nextTime.addMiliTime(GCWManager::VULNERABILITYFREQUENCY*1000);
+		nextTime.addMiliTime(vulnerabilityFrequency*1000);
 	}
 
 	baseData->setNextVulnerableTime(nextTime);
-	nextTime.addMiliTime(GCWManager::VULNERABILITYDURATION*1000);
+	nextTime.addMiliTime(vulnerabilityDuration*1000);
 	baseData->setVulnerabilityEndTime(nextTime);
 	baseData->setState(DestructibleBuildingDataComponent::INVULNERABLE);
 	baseData->clearDNAProfiles();
@@ -302,16 +238,16 @@ void GCWManagerImplementation::refreshExpiredVulnerability(BuildingObject* build
 		info("before Refreshed Next end time is " + baseData->getVulnerabilityEndTime().getFormattedTime(),true);
 #endif
 
-	while( (thisStartTime.getTime() + VULNERABILITYFREQUENCY) <= Time().getTime() ){
+	while( (thisStartTime.getTime() + vulnerabilityFrequency) <= Time().getTime() ){
 		//info("looped",true);
-		thisStartTime.addMiliTime(VULNERABILITYFREQUENCY*1000);
+		thisStartTime.addMiliTime(vulnerabilityFrequency*1000);
 	}
 
 	info("Looped starttime to get " + thisStartTime.getFormattedTime(),true);
 
 	// test time is the vulnerability end time for this current period.  it can be past or presetnt.
 	Time testTime(thisStartTime);
-	testTime.addMiliTime(VULNERABILITYDURATION*1000);
+	testTime.addMiliTime(vulnerabilityDuration*1000);
 
 
 	Locker block(building);
@@ -324,12 +260,12 @@ void GCWManagerImplementation::refreshExpiredVulnerability(BuildingObject* build
 
 		// testTime should the same thing as vEnd
 		Time vEnd(thisStartTime);
-		vEnd.addMiliTime((VULNERABILITYDURATION*1000));
+		vEnd.addMiliTime((vulnerabilityDuration*1000));
 		baseData->setVulnerabilityEndTime(vEnd);
 
 
 		Time nStartTime(thisStartTime);
-		nStartTime.addMiliTime(VULNERABILITYFREQUENCY*1000);
+		nStartTime.addMiliTime(vulnerabilityFrequency*1000);
 		baseData->setNextVulnerableTime(nStartTime);
 
 		if(baseData == NULL){
@@ -361,11 +297,11 @@ void GCWManagerImplementation::refreshExpiredVulnerability(BuildingObject* build
 		baseData->setLastVulnerableTime(thisStartTime);
 
 		Time nStartTime(thisStartTime);
-		nStartTime.addMiliTime(VULNERABILITYFREQUENCY*1000);
+		nStartTime.addMiliTime(vulnerabilityFrequency*1000);
 		baseData->setNextVulnerableTime(nStartTime);
 
 		Time vEnd(nStartTime);
-		vEnd.addMiliTime(VULNERABILITYDURATION*1000);
+		vEnd.addMiliTime(vulnerabilityDuration*1000);
 		baseData->setVulnerabilityEndTime(vEnd);
 
 		baseData->setState(DestructibleBuildingDataComponent::INVULNERABLE);
@@ -449,7 +385,7 @@ void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building,
 		}
 
 		StringIdChatParameter destroyMessage("@faction/faction_hq/faction_hq_response:terminal_response40"); // COUNTDOWN INITIATED: estimated time to detonation: %DI minutes.
-		int minutesRemaining = ceil(this->DESTRUCTIONTIMER/60);
+		int minutesRemaining = ceil(this->destructionTimer/60);
 		destroyMessage.setDI(minutesRemaining);
 
 		// send message to all the players in range
@@ -472,7 +408,7 @@ void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building,
 		baseData->setState(DestructibleBuildingDataComponent::SHUTDOWNSEQUENCE);
 
 		Reference<Task*> newTask = new BaseDestructionTask(_this.get(), building);
-		newTask->schedule(this->DESTRUCTIONTIMER*1000);
+		newTask->schedule(this->destructionTimer*1000);
 
 
 		this->addDestroyTask(building->getObjectID(),newTask);
@@ -485,7 +421,7 @@ void GCWManagerImplementation::abortShutdownSequence(CreatureObject* creature, B
 
 	if(!creature->checkCooldownRecovery("declare_overt_cooldown")){
 		StringIdChatParameter params("@faction/faction_hq/faction_hq_response:terminal_response42"); // Before issuing the shutdown, you must have been in special forces for at least %TO
-		int timer = OVERTCOOLDOWN / 60;
+		int timer = overtCooldown / 60;
 		params.setTO(String::valueOf(timer) + " minutes");
 		creature->sendSystemMessage(params); // Before issuing the shutdown, you must hve beenin Special forces for at least %TO
 		return;
@@ -511,7 +447,7 @@ void GCWManagerImplementation::abortShutdownSequence(CreatureObject* creature, B
 
 		baseData->setState(DestructibleBuildingDataComponent::OVERLOADED);
 		Time finishTime = Time();
-		finishTime.addMiliTime(OVERTCOOLDOWN * 1000);
+		finishTime.addMiliTime(reactvationTimer * 1000);
 		baseData->setRebootFinishTime(finishTime);
 
 		//Default range of broadcast
@@ -666,12 +602,12 @@ void GCWManagerImplementation::performGCWTasks(){
 	*/
 
 	CheckGCWTask* task = new CheckGCWTask(_this.get());
-	task->schedule(this->GCWCHECKTIMER * 1000);
+	task->schedule(this->gcwCheckTimer * 1000);
 }
 
 void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool initializeBase){
 	info("Registering base " + String::valueOf(building->getObjectID()) + " " + String::valueOf(building->getPositionX()) + ", " + String::valueOf(building->getPositionY()),true);
-
+	info("CurrentTime is " + Time().getFormattedTime(),true);
 	if ( !this->hasBase(building)){
 
 
@@ -817,11 +753,11 @@ void GCWManagerImplementation::initializeBaseTimers(BuildingObject* building){
 	baseData->setLastVulnerableTime(Time());
 
 	Time endTime(baseData->getPlacmenetTime());
-	endTime.addMiliTime(this->VULNERABILITYDURATION*1000);
+	endTime.addMiliTime(this->vulnerabilityDuration*1000);
 	baseData->setVulnerabilityEndTime(endTime);
 
 	Time nextVuln(baseData->getPlacmenetTime());
-	nextVuln.addMiliTime(this->VULNERABILITYFREQUENCY*1000);
+	nextVuln.addMiliTime(this->vulnerabilityFrequency*1000);
 
 	baseData->setTerminalDamaged(false);
 	baseData->setSliceRepairTime(Time(0));
@@ -862,7 +798,7 @@ void GCWManagerImplementation::resetVulnerability(CreatureObject* creature, Buil
 
 	Time ttime = baseData->getLastResetTime();
 
-	ttime.addMiliTime(this->RESETTIMER*1000);
+	ttime.addMiliTime(resetTimer*1000);
 
 	if(!ttime.isPast())
 	{
@@ -883,10 +819,10 @@ void GCWManagerImplementation::resetVulnerability(CreatureObject* creature, Buil
 	Locker glock(_this.get(),creature);
 	baseData->setLastVulnerableTime(nextTime);
 
-	nextTime.addMiliTime(GCWManager::VULNERABILITYFREQUENCY*1000);
+	nextTime.addMiliTime(vulnerabilityFrequency*1000);
 	baseData->setNextVulnerableTime(nextTime.getTime()); // working()
 
-	nextTime.addMiliTime(GCWManager::VULNERABILITYDURATION*1000);
+	nextTime.addMiliTime(vulnerabilityDuration*1000);
 	baseData->setVulnerabilityEndTime(nextTime.getTime()); // (working)
 
 
@@ -1247,7 +1183,7 @@ bool GCWManagerImplementation::isTerminalDamaged(TangibleObject* securityTermina
 
 	// check to see if it's cooled down
 	Time t = baseData->getSliceRepairTime();
-	t.addMiliTime(this->SLICECOOLDOWN*1000);
+	t.addMiliTime(sliceCooldown*1000);
 
 	// if cooldown hasn't passed since repairing, then it's still damaged
 	if(t.isPast()) {
@@ -1282,7 +1218,7 @@ void GCWManagerImplementation::repairTerminal(CreatureObject* creature, Tangible
 		return;
 
 	Time repairFinishTime = baseData->getSliceRepairTime();
-	repairFinishTime.addMiliTime(this->SLICECOOLDOWN*1000);
+	repairFinishTime.addMiliTime(sliceCooldown*1000);
 
 
 	if(baseData->isTerminalDamanged()) {
@@ -1378,7 +1314,7 @@ void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, Build
 
 		//info("initializing and populating menu",true);
 		// add menu items to suibox
-		for(int i =0; i < TOTALDNASAMPLES; i++) {
+		for(int i =0; i < totalDNASamples; i++) {
 			dnaString << providedSequence[System::random(0x3)];
 			baseData->addDNAProfile(i,dnaString.toString());   // add one of 4 random letters one at a time
 			status->addMenuItem( dnaString.toString(),i);      // add them to the menu
@@ -1389,7 +1325,7 @@ void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, Build
 	} else {
 		// populate the user chains to match
 		//info("populating meneu",true);
-		for(int i =0; i < TOTALDNASAMPLES; i++) {
+		for(int i =0; i < totalDNASamples; i++) {
 			String chain = baseData->getDNAProfile(i);
 			String seq = baseData->getDNAProfile(i);
 
@@ -1493,7 +1429,7 @@ void GCWManagerImplementation::processDNASample(CreatureObject* creature, Buildi
 
 	//info("There are a total of " + String::valueOf(baseData->getSampleMatches()) + " matches",true);
 
-	if ( baseData->getSampleMatches() <  DNAMATCHESREQUIRED)
+	if ( baseData->getSampleMatches() <  dnaMatchesRequired)
 	{
 		this->sendDNASampleMenu(creature, building);
 	}
