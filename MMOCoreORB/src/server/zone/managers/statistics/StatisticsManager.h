@@ -42,65 +42,34 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SERVERCOMMAND_H_
-#define SERVERCOMMAND_H_
+#ifndef STATISTICSMANAGER_H_
+#define STATISTICSMANAGER_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
+#include "engine/engine.h"
 
-#include "WeatherCommand.h"
-#include "VendorInfoCommand.h"
-#include "RevisionInfoCommand.h"
-#include "ServerInfoCommand.h"
-#include "PlayerManagerCommand.h"
-#include "PlayerInfoCommand.h"
-#include "ServerCommandFactory.h"
-#include "DebugCommand.h"
-#include "MarketCommand.h"
-#include "ServerStatisticsCommand.h"
-
-class ServerCommand : public QueueCommand {
-	MethodFactory<String, CreatureObject*, uint64, const String&> methodFactory;
+class StatisticsManager : public Singleton<StatisticsManager>, public Logger, public Object {
+	AtomicLong numberOfCompletedMissions;
+	AtomicLong creditsGeneratedFromMissions;
 
 public:
-
-	ServerCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
-		methodFactory.registerMethod<WeatherCommand>("weather");
-		methodFactory.registerMethod<VendorInfoCommand>("vendorinfo");
-		methodFactory.registerMethod<RevisionInfoCommand>("revision");
-		methodFactory.registerMethod<ServerInfoCommand>("info");
-		methodFactory.registerMethod<PlayerManagerCommand>("PlayerManagerCommand");
-		methodFactory.registerMethod<PlayerInfoCommand>("playerinfo");
-		methodFactory.registerMethod<DebugCommand>("debug");
-		methodFactory.registerMethod<MarketCommand>("market");
-		methodFactory.registerMethod<ServerStatisticsCommand>("statistics");
-}
-
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
-		StringTokenizer tokenizer(arguments.toString());
-
-		if (!tokenizer.hasMoreTokens())
-			return GENERALERROR;
-
-		String commandName;
-		tokenizer.getStringToken(commandName);
-
-		String restOfArguments;
-		if (tokenizer.hasMoreTokens())
-			tokenizer.finalToken(restOfArguments);
-
-		int ret = methodFactory.runMethod(commandName, creature, target, restOfArguments);
-
-		return SUCCESS;
+	StatisticsManager() : Logger("Statistics Manager") {
+		numberOfCompletedMissions = 0;
+		creditsGeneratedFromMissions = 0;
 	}
 
+	void completeMission(int reward) {
+		numberOfCompletedMissions.increment();
+		creditsGeneratedFromMissions.add(reward);
+	}
+
+	String getStatistics() {
+		StringBuffer stats;
+		stats << "Server Statistics" << endl;
+		stats << "=================" << endl;
+		stats << "Number of completed missions: " << numberOfCompletedMissions << endl;
+		stats << "Credits generated from missions: " << creditsGeneratedFromMissions;
+		return stats.toString();
+	}
 };
 
-#endif //SERVERCOMMAND_H_
+#endif /* STATISTICSMANAGER_H_ */

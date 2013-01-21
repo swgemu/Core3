@@ -17,6 +17,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/managers/statistics/StatisticsManager.h"
 #include "server/zone/packets/player/PlayMusicMessage.h"
 #include "server/zone/objects/mission/events/FailMissionAfterCertainTimeTask.h"
 #include "events/CompleteMissionObjectiveTask.h"
@@ -199,6 +200,8 @@ void MissionObjectiveImplementation::awardReward() {
 		Locker lockerPl(player, _this.get());
 		player->addBankCredits(dividedReward, true);
 	}
+
+	StatisticsManager::instance()->completeMission(mission->getRewardCredits());
 }
 
 Vector3 MissionObjectiveImplementation::getEndPosition() {
