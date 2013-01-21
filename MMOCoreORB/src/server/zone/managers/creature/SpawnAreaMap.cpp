@@ -271,6 +271,10 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 			staticArea->spawnCreatures();
 		}
 	}
+	if (area->isDynamicArea()) {
+		DynamicSpawnArea* dynamicArea = cast<DynamicSpawnArea*>(area.get());
+		dynamicArea->addSpawnTask();
+	}
 }
 
 Vector3 SpawnAreaMap::getRandomJediTrainer() {

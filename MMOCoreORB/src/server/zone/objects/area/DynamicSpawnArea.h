@@ -132,17 +132,19 @@ public:
 
 	void registerObservers();
 
-	void spawnCreature(unsigned int templateCRC, CreatureObject* player);
+	void spawnCreature(unsigned int templateCRC);
 
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
 
-	SpawnDynamicAreaCreatureTask* addSpawnTask(CreatureObject* player);
+	void addSpawnTask();
 
-	void doSpawnEvent(CreatureObject* player);
+	void doSpawnEvent();
 
 	void doDespawnEvent();
+
+	Vector3 getRandomPosition();
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
@@ -178,15 +180,13 @@ class DynamicSpawnAreaImplementation : public SpawnAreaImplementation {
 protected:
 	SortedVector<ManagedReference<AiGroup* > > spawnedGroups;
 
-	VectorMap<ManagedReference<CreatureObject* >, SpawnDynamicAreaCreatureTask*> playerOccupants;
-
-	VectorMap<ManagedReference<CreatureObject* >, ManagedReference<DynamicSpawnArea* > > excludedPlayerOccupants;
-
 	SortedVector<ManagedReference<SpawnObserver* > > observers;
 
 	Time lastSpawnTime;
 
 	int maxCreaturesToSpawn;
+
+	Reference<SpawnDynamicAreaCreatureTask* > spawnTask;
 
 public:
 	DynamicSpawnAreaImplementation();
@@ -195,17 +195,23 @@ public:
 
 	void registerObservers();
 
-	void spawnCreature(unsigned int templateCRC, CreatureObject* player);
+	void spawnCreature(unsigned int templateCRC);
 
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
 
-	SpawnDynamicAreaCreatureTask* addSpawnTask(CreatureObject* player);
+	void addSpawnTask();
 
-	void doSpawnEvent(CreatureObject* player);
+	void doSpawnEvent();
 
 	void doDespawnEvent();
+
+private:
+	int getNumberOfSpawnsToGenerate();
+
+public:
+	Vector3 getRandomPosition();
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
@@ -258,13 +264,13 @@ public:
 
 	void registerObservers();
 
-	void spawnCreature(unsigned int templateCRC, CreatureObject* player);
+	void spawnCreature(unsigned int templateCRC);
 
 	void notifyEnter(SceneObject* object);
 
 	void notifyExit(SceneObject* object);
 
-	void doSpawnEvent(CreatureObject* player);
+	void doSpawnEvent();
 
 	void doDespawnEvent();
 

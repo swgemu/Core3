@@ -10,7 +10,7 @@
  *	RectangularAreaShapeStub
  */
 
-enum {RPC_SETDIMENSIONS__FLOAT_FLOAT_ = 6,RPC_GETHEIGHT__,RPC_GETWIDTH__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ISCIRCULARAREASHAPE__,RPC_ISRECTANGULARAREASHAPE__,RPC_INTERSECTSWITH__AREASHAPE_,};
+enum {RPC_SETDIMENSIONS__FLOAT_FLOAT_ = 6,RPC_GETHEIGHT__,RPC_GETWIDTH__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ISCIRCULARAREASHAPE__,RPC_ISRECTANGULARAREASHAPE__,RPC_INTERSECTSWITH__AREASHAPE_,RPC_GETAREA__};
 
 RectangularAreaShape::RectangularAreaShape() : AreaShape(DummyConstructorParameter::instance()) {
 	RectangularAreaShapeImplementation* _implementation = new RectangularAreaShapeImplementation();
@@ -149,6 +149,19 @@ bool RectangularAreaShape::intersectsWith(AreaShape* areaShape) {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->intersectsWith(areaShape);
+}
+
+float RectangularAreaShape::getArea() {
+	RectangularAreaShapeImplementation* _implementation = static_cast<RectangularAreaShapeImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETAREA__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getArea();
 }
 
 DistributedObjectServant* RectangularAreaShape::_getImplementation() {
@@ -338,6 +351,11 @@ bool RectangularAreaShapeImplementation::isRectangularAreaShape() {
 	return true;
 }
 
+float RectangularAreaShapeImplementation::getArea() {
+	// server/zone/objects/area/areashapes/RectangularAreaShape.idl():  		return height * width;
+	return height * width;
+}
+
 /*
  *	RectangularAreaShapeAdapter
  */
@@ -388,6 +406,11 @@ void RectangularAreaShapeAdapter::invokeMethod(uint32 methid, DistributedMethod*
 			resp->insertBoolean(intersectsWith(static_cast<AreaShape*>(inv->getObjectParameter())));
 		}
 		break;
+	case RPC_GETAREA__:
+		{
+			resp->insertFloat(getArea());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -419,6 +442,10 @@ bool RectangularAreaShapeAdapter::isRectangularAreaShape() {
 
 bool RectangularAreaShapeAdapter::intersectsWith(AreaShape* areaShape) {
 	return (static_cast<RectangularAreaShape*>(stub))->intersectsWith(areaShape);
+}
+
+float RectangularAreaShapeAdapter::getArea() {
+	return (static_cast<RectangularAreaShape*>(stub))->getArea();
 }
 
 /*

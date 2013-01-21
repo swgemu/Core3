@@ -43,6 +43,8 @@ public:
 
 	bool intersectsWith(AreaShape* areaShape);
 
+	float getArea();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -104,6 +106,8 @@ private:
 	bool intersectsWithCircle(CircularAreaShape* circle);
 
 public:
+	virtual float getArea();
+
 	WeakReference<CircularAreaShape*> _this;
 
 	operator const CircularAreaShape*();
@@ -160,6 +164,8 @@ public:
 	bool isRectangularAreaShape();
 
 	bool intersectsWith(AreaShape* areaShape);
+
+	float getArea();
 
 };
 

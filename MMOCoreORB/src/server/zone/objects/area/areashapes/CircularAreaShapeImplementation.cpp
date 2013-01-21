@@ -57,3 +57,7 @@ bool CircularAreaShapeImplementation::intersectsWithCircle(CircularAreaShape* ci
 
 	return (squaredCenterDistance <= squaredRadiusSum);
 }
+
+float CircularAreaShapeImplementation::getArea() {
+	return Math::PI * radius2;
+}

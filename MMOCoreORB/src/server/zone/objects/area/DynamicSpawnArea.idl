@@ -64,12 +64,6 @@ class DynamicSpawnArea extends SpawnArea {
 	protected SortedVector<AiGroup> spawnedGroups;
 	
 	@dereferenced
-	protected VectorMap<CreatureObject, SpawnDynamicAreaCreatureTask> playerOccupants;
-	
-	@dereferenced
-	protected VectorMap<CreatureObject, DynamicSpawnArea> excludedPlayerOccupants;
-	
-	@dereferenced
 	protected SortedVector<SpawnObserver> observers;
 	
 	@dereferenced
@@ -77,28 +71,32 @@ class DynamicSpawnArea extends SpawnArea {
 	
 	protected int maxCreaturesToSpawn;
 	
+	protected SpawnDynamicAreaCreatureTask spawnTask;
+	
 	public DynamicSpawnArea() {
 		Logger.setLoggingName("DynamicSpawnArea");
-		maxCreaturesToSpawn = 1;
-		
-		playerOccupants.setNoDuplicateInsertPlan();
-		excludedPlayerOccupants.setAllowDuplicateInsertPlan();
 				
 		registerObservers();
 	}
 	
 	public native void registerObservers();
 	
-	public native void spawnCreature(unsigned int templateCRC, CreatureObject player);
+	public native void spawnCreature(unsigned int templateCRC);
 	
 	public native void notifyEnter(SceneObject object);
 	public native void notifyExit(SceneObject object);
 	
 	@local
-	public native SpawnDynamicAreaCreatureTask addSpawnTask(CreatureObject player);
+	public native void addSpawnTask();
 	
-	public native void doSpawnEvent(CreatureObject player);
+	public native void doSpawnEvent();
 	public native void doDespawnEvent();
+	
+	private native int getNumberOfSpawnsToGenerate();
+
+	@local
+	@dereferenced
+	public native Vector3 getRandomPosition();
 	
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 		

@@ -146,5 +146,13 @@ class AreaShape extends ManagedObject {
 	 */
 	public abstract boolean intersectsWith(AreaShape areaShape) {
 		return false;
-	}	
+	}
+	
+	/**
+	 * Get the area of the areaShape.
+	 * @return the area of the area shape.
+	 */
+	public abstract float getArea() {
+		return 0;
+	}
 }

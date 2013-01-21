@@ -8,7 +8,7 @@
  *	CircularAreaShapeStub
  */
 
-enum {RPC_SETRADIUS__FLOAT_ = 6,RPC_GETRADIUS__,RPC_GETRADIUS2__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ISCIRCULARAREASHAPE__,RPC_ISRECTANGULARAREASHAPE__,RPC_INTERSECTSWITH__AREASHAPE_,};
+enum {RPC_SETRADIUS__FLOAT_ = 6,RPC_GETRADIUS__,RPC_GETRADIUS2__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ISCIRCULARAREASHAPE__,RPC_ISRECTANGULARAREASHAPE__,RPC_INTERSECTSWITH__AREASHAPE_,RPC_GETAREA__};
 
 CircularAreaShape::CircularAreaShape() : AreaShape(DummyConstructorParameter::instance()) {
 	CircularAreaShapeImplementation* _implementation = new CircularAreaShapeImplementation();
@@ -146,6 +146,19 @@ bool CircularAreaShape::intersectsWith(AreaShape* areaShape) {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->intersectsWith(areaShape);
+}
+
+float CircularAreaShape::getArea() {
+	CircularAreaShapeImplementation* _implementation = static_cast<CircularAreaShapeImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETAREA__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getArea();
 }
 
 DistributedObjectServant* CircularAreaShape::_getImplementation() {
@@ -385,6 +398,11 @@ void CircularAreaShapeAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 			resp->insertBoolean(intersectsWith(static_cast<AreaShape*>(inv->getObjectParameter())));
 		}
 		break;
+	case RPC_GETAREA__:
+		{
+			resp->insertFloat(getArea());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -416,6 +434,10 @@ bool CircularAreaShapeAdapter::isRectangularAreaShape() {
 
 bool CircularAreaShapeAdapter::intersectsWith(AreaShape* areaShape) {
 	return (static_cast<CircularAreaShape*>(stub))->intersectsWith(areaShape);
+}
+
+float CircularAreaShapeAdapter::getArea() {
+	return (static_cast<CircularAreaShape*>(stub))->getArea();
 }
 
 /*

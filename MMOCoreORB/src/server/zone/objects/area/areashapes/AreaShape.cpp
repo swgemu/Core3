@@ -8,7 +8,7 @@
  *	AreaShapeStub
  */
 
-enum {RPC_SETAREACENTER__FLOAT_FLOAT_ = 6,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS__,RPC_ISCIRCULARAREASHAPE__,RPC_ISRECTANGULARAREASHAPE__,RPC_INTERSECTSWITH__AREASHAPE_};
+enum {RPC_SETAREACENTER__FLOAT_FLOAT_ = 6,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS__,RPC_ISCIRCULARAREASHAPE__,RPC_ISRECTANGULARAREASHAPE__,RPC_INTERSECTSWITH__AREASHAPE_,RPC_GETAREA__};
 
 AreaShape::AreaShape() : ManagedObject(DummyConstructorParameter::instance()) {
 	AreaShapeImplementation* _implementation = new AreaShapeImplementation();
@@ -143,6 +143,19 @@ bool AreaShape::intersectsWith(AreaShape* areaShape) {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->intersectsWith(areaShape);
+}
+
+float AreaShape::getArea() {
+	AreaShapeImplementation* _implementation = static_cast<AreaShapeImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETAREA__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getArea();
 }
 
 DistributedObjectServant* AreaShape::_getImplementation() {
@@ -325,6 +338,11 @@ bool AreaShapeImplementation::intersectsWith(AreaShape* areaShape) {
 	return false;
 }
 
+float AreaShapeImplementation::getArea() {
+	// server/zone/objects/area/areashapes/AreaShape.idl():  		return 0;
+	return 0;
+}
+
 /*
  *	AreaShapeAdapter
  */
@@ -370,6 +388,11 @@ void AreaShapeAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(intersectsWith(static_cast<AreaShape*>(inv->getObjectParameter())));
 		}
 		break;
+	case RPC_GETAREA__:
+		{
+			resp->insertFloat(getArea());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -397,6 +420,10 @@ bool AreaShapeAdapter::isRectangularAreaShape() {
 
 bool AreaShapeAdapter::intersectsWith(AreaShape* areaShape) {
 	return (static_cast<AreaShape*>(stub))->intersectsWith(areaShape);
+}
+
+float AreaShapeAdapter::getArea() {
+	return (static_cast<AreaShape*>(stub))->getArea();
 }
 
 /*

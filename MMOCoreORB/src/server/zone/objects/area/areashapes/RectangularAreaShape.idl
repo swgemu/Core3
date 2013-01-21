@@ -156,4 +156,12 @@ class RectangularAreaShape extends AreaShape {
 	@dereferenced
 	@local
 	private native Vector3 getClosestPoint(@dereferenced final Vector3 position);
+	
+	/**
+	 * Get the area of the areaShape.
+	 * @return the area of the area shape.
+	 */
+	public abstract float getArea() {
+		return height * width;
+	}
 }

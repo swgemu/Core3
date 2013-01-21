@@ -16,6 +16,7 @@
 #include "server/zone/managers/creature/StaticSpawnGroup.h"
 #include "server/zone/managers/creature/DynamicSpawnGroup.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
 
 void AiGroupImplementation::setPatrolPoints() {
@@ -139,6 +140,46 @@ void AiGroupImplementation::setup(DynamicSpawnGroup* templ) {
 
 	babyTemps = templ->getBabyTemplates();
 	babyWeight = templ->getBabyWeight();
+
+	CreatureManager* cm = getZone()->getCreatureManager();
+
+	if (cm == NULL)
+		return;
+
+	for (int i = 0; i < 5; i++) {
+		uint32 templateCrc = 0;
+
+		float randomValue = System::random(10000) * 1.f / 10000.f;
+
+		if (randomValue < scoutWeight) {
+			templateCrc = scoutTemps.get(System::random(scoutTemps.size() - 1)).hashCode();
+		} else if (randomValue < scoutWeight + protectorWeight) {
+			templateCrc = protectorTemps.get(System::random(protectorTemps.size() - 1)).hashCode();
+		} else {
+			templateCrc = babyTemps.get(System::random(babyTemps.size() - 1)).hashCode();
+		}
+
+		float x;
+		float y;
+		int retries = 20;
+		bool foundSpawnPoint = false;
+		while (retries-- > 0) {
+			x = System::random(50) - 25 + getPositionX();
+			y = System::random(50) - 25 + getPositionY();
+
+			if (!getZone()-> getPlanetManager()->isInObjectsNoBuildZone(x, y, 2)) {
+				foundSpawnPoint = true;
+			}
+		}
+
+		if (foundSpawnPoint) {
+			float z;
+			z = getZone()->getHeight(x, y);
+
+			CreatureObject* creature = cm->spawnCreature(templateCrc, 0, x, z, y, 0);
+			creature->setDirection(System::random(360) * Math::DEG2RAD);
+		}
+	}
 
 	setPatrolPoints();
 }

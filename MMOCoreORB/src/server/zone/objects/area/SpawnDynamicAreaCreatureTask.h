@@ -18,20 +18,22 @@ namespace server {
 
    class SpawnDynamicAreaCreatureTask : public Task {
 	   ManagedReference<DynamicSpawnArea*> area;
-	   ManagedReference<CreatureObject*> player;
+	   int reschedulTime;
 
    public:
-	   SpawnDynamicAreaCreatureTask(DynamicSpawnArea* ar, CreatureObject* play) {
-		   area = ar;
-		   player = play;
+	   SpawnDynamicAreaCreatureTask(DynamicSpawnArea* area, int rescheduleTime) {
+		   this->area = area;
+		   this->reschedulTime = rescheduleTime;
 	   }
 
 	   void run() {
-		   if (area == NULL || player == NULL)
+		   if (area == NULL)
 			   return;
 
 		   Locker locker(area);
-		   area->doSpawnEvent(player);
+		   area->doSpawnEvent();
+
+		   reschedule(reschedulTime);
 	   }
    };
 

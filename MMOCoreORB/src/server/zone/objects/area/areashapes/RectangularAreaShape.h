@@ -59,6 +59,8 @@ public:
 
 	bool intersectsWith(AreaShape* areaShape);
 
+	float getArea();
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -120,6 +122,8 @@ private:
 	Vector3 getClosestPoint(const Vector3& position);
 
 public:
+	virtual float getArea();
+
 	WeakReference<RectangularAreaShape*> _this;
 
 	operator const RectangularAreaShape*();
@@ -176,6 +180,8 @@ public:
 	bool isRectangularAreaShape();
 
 	bool intersectsWith(AreaShape* areaShape);
+
+	float getArea();
 
 };
 

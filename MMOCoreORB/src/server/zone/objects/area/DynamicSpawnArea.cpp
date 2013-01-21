@@ -22,7 +22,7 @@
  *	DynamicSpawnAreaStub
  */
 
-enum {RPC_REGISTEROBSERVERS__ = 6,RPC_SPAWNCREATURE__INT_CREATUREOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_DOSPAWNEVENT__CREATUREOBJECT_,RPC_DODESPAWNEVENT__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SETMAXCREATURESTOSPAWN__INT_,RPC_ISDYNAMICAREA__};
+enum {RPC_REGISTEROBSERVERS__ = 6,RPC_SPAWNCREATURE__INT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_DOSPAWNEVENT__,RPC_DODESPAWNEVENT__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SETMAXCREATURESTOSPAWN__INT_,RPC_ISDYNAMICAREA__};
 
 DynamicSpawnArea::DynamicSpawnArea() : SpawnArea(DummyConstructorParameter::instance()) {
 	DynamicSpawnAreaImplementation* _implementation = new DynamicSpawnAreaImplementation();
@@ -53,19 +53,18 @@ void DynamicSpawnArea::registerObservers() {
 		_implementation->registerObservers();
 }
 
-void DynamicSpawnArea::spawnCreature(unsigned int templateCRC, CreatureObject* player) {
+void DynamicSpawnArea::spawnCreature(unsigned int templateCRC) {
 	DynamicSpawnAreaImplementation* _implementation = static_cast<DynamicSpawnAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SPAWNCREATURE__INT_CREATUREOBJECT_);
+		DistributedMethod method(this, RPC_SPAWNCREATURE__INT_);
 		method.addUnsignedIntParameter(templateCRC);
-		method.addObjectParameter(player);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->spawnCreature(templateCRC, player);
+		_implementation->spawnCreature(templateCRC);
 }
 
 void DynamicSpawnArea::notifyEnter(SceneObject* object) {
@@ -96,27 +95,26 @@ void DynamicSpawnArea::notifyExit(SceneObject* object) {
 		_implementation->notifyExit(object);
 }
 
-SpawnDynamicAreaCreatureTask* DynamicSpawnArea::addSpawnTask(CreatureObject* player) {
+void DynamicSpawnArea::addSpawnTask() {
 	DynamicSpawnAreaImplementation* _implementation = static_cast<DynamicSpawnAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->addSpawnTask(player);
+		_implementation->addSpawnTask();
 }
 
-void DynamicSpawnArea::doSpawnEvent(CreatureObject* player) {
+void DynamicSpawnArea::doSpawnEvent() {
 	DynamicSpawnAreaImplementation* _implementation = static_cast<DynamicSpawnAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_DOSPAWNEVENT__CREATUREOBJECT_);
-		method.addObjectParameter(player);
+		DistributedMethod method(this, RPC_DOSPAWNEVENT__);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->doSpawnEvent(player);
+		_implementation->doSpawnEvent();
 }
 
 void DynamicSpawnArea::doDespawnEvent() {
@@ -130,6 +128,15 @@ void DynamicSpawnArea::doDespawnEvent() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->doDespawnEvent();
+}
+
+Vector3 DynamicSpawnArea::getRandomPosition() {
+	DynamicSpawnAreaImplementation* _implementation = static_cast<DynamicSpawnAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getRandomPosition();
 }
 
 int DynamicSpawnArea::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
@@ -286,16 +293,6 @@ bool DynamicSpawnAreaImplementation::readObjectMember(ObjectInputStream* stream,
 		return true;
 	}
 
-	if (_name == "DynamicSpawnArea.playerOccupants") {
-		TypeInfo<VectorMap<ManagedReference<CreatureObject* >, SpawnDynamicAreaCreatureTask*> >::parseFromBinaryStream(&playerOccupants, stream);
-		return true;
-	}
-
-	if (_name == "DynamicSpawnArea.excludedPlayerOccupants") {
-		TypeInfo<VectorMap<ManagedReference<CreatureObject* >, ManagedReference<DynamicSpawnArea* > > >::parseFromBinaryStream(&excludedPlayerOccupants, stream);
-		return true;
-	}
-
 	if (_name == "DynamicSpawnArea.observers") {
 		TypeInfo<SortedVector<ManagedReference<SpawnObserver* > > >::parseFromBinaryStream(&observers, stream);
 		return true;
@@ -308,6 +305,11 @@ bool DynamicSpawnAreaImplementation::readObjectMember(ObjectInputStream* stream,
 
 	if (_name == "DynamicSpawnArea.maxCreaturesToSpawn") {
 		TypeInfo<int >::parseFromBinaryStream(&maxCreaturesToSpawn, stream);
+		return true;
+	}
+
+	if (_name == "DynamicSpawnArea.spawnTask") {
+		TypeInfo<Reference<SpawnDynamicAreaCreatureTask* > >::parseFromBinaryStream(&spawnTask, stream);
 		return true;
 	}
 
@@ -336,22 +338,6 @@ int DynamicSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DynamicSpawnArea.playerOccupants";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<VectorMap<ManagedReference<CreatureObject* >, SpawnDynamicAreaCreatureTask*> >::toBinaryStream(&playerOccupants, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_name = "DynamicSpawnArea.excludedPlayerOccupants";
-	_name.toBinaryStream(stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<VectorMap<ManagedReference<CreatureObject* >, ManagedReference<DynamicSpawnArea* > > >::toBinaryStream(&excludedPlayerOccupants, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
 	_name = "DynamicSpawnArea.observers";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -376,20 +362,22 @@ int DynamicSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* strea
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "DynamicSpawnArea.spawnTask";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Reference<SpawnDynamicAreaCreatureTask* > >::toBinaryStream(&spawnTask, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 6;
+
+	return _count + 5;
 }
 
 DynamicSpawnAreaImplementation::DynamicSpawnAreaImplementation() {
 	_initializeImplementation();
 	// server/zone/objects/area/DynamicSpawnArea.idl():  		Logger.setLoggingName("DynamicSpawnArea");
 	Logger::setLoggingName("DynamicSpawnArea");
-	// server/zone/objects/area/DynamicSpawnArea.idl():  		maxCreaturesToSpawn = 1;
-	maxCreaturesToSpawn = 1;
-	// server/zone/objects/area/DynamicSpawnArea.idl():  		playerOccupants.setNoDuplicateInsertPlan();
-	(&playerOccupants)->setNoDuplicateInsertPlan();
-	// server/zone/objects/area/DynamicSpawnArea.idl():  		excludedPlayerOccupants.setAllowDuplicateInsertPlan();
-	(&excludedPlayerOccupants)->setAllowDuplicateInsertPlan();
 	// server/zone/objects/area/DynamicSpawnArea.idl():  		registerObservers();
 	registerObservers();
 }
@@ -424,9 +412,9 @@ void DynamicSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 			registerObservers();
 		}
 		break;
-	case RPC_SPAWNCREATURE__INT_CREATUREOBJECT_:
+	case RPC_SPAWNCREATURE__INT_:
 		{
-			spawnCreature(inv->getUnsignedIntParameter(), static_cast<CreatureObject*>(inv->getObjectParameter()));
+			spawnCreature(inv->getUnsignedIntParameter());
 		}
 		break;
 	case RPC_NOTIFYENTER__SCENEOBJECT_:
@@ -439,9 +427,9 @@ void DynamicSpawnAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv
 			notifyExit(static_cast<SceneObject*>(inv->getObjectParameter()));
 		}
 		break;
-	case RPC_DOSPAWNEVENT__CREATUREOBJECT_:
+	case RPC_DOSPAWNEVENT__:
 		{
-			doSpawnEvent(static_cast<CreatureObject*>(inv->getObjectParameter()));
+			doSpawnEvent();
 		}
 		break;
 	case RPC_DODESPAWNEVENT__:
@@ -473,8 +461,8 @@ void DynamicSpawnAreaAdapter::registerObservers() {
 	(static_cast<DynamicSpawnArea*>(stub))->registerObservers();
 }
 
-void DynamicSpawnAreaAdapter::spawnCreature(unsigned int templateCRC, CreatureObject* player) {
-	(static_cast<DynamicSpawnArea*>(stub))->spawnCreature(templateCRC, player);
+void DynamicSpawnAreaAdapter::spawnCreature(unsigned int templateCRC) {
+	(static_cast<DynamicSpawnArea*>(stub))->spawnCreature(templateCRC);
 }
 
 void DynamicSpawnAreaAdapter::notifyEnter(SceneObject* object) {
@@ -485,8 +473,8 @@ void DynamicSpawnAreaAdapter::notifyExit(SceneObject* object) {
 	(static_cast<DynamicSpawnArea*>(stub))->notifyExit(object);
 }
 
-void DynamicSpawnAreaAdapter::doSpawnEvent(CreatureObject* player) {
-	(static_cast<DynamicSpawnArea*>(stub))->doSpawnEvent(player);
+void DynamicSpawnAreaAdapter::doSpawnEvent() {
+	(static_cast<DynamicSpawnArea*>(stub))->doSpawnEvent();
 }
 
 void DynamicSpawnAreaAdapter::doDespawnEvent() {

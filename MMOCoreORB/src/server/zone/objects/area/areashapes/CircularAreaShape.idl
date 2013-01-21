@@ -151,4 +151,10 @@ class CircularAreaShape extends AreaShape {
 	 * @return true if the circles intersects with each other.
 	 */
 	private native boolean intersectsWithCircle(CircularAreaShape circle);
+	
+	/**
+	 * Get the area of the areaShape.
+	 * @return the area of the area shape.
+	 */
+	public native abstract float getArea();
 }
