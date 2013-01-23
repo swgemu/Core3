@@ -197,7 +197,9 @@ WaypointObject* MissionObjectImplementation::createWaypoint() {
 void MissionObjectImplementation::updateMissionLocation() {
 	ManagedReference<SceneObject*> player = getParentRecursively(SceneObjectType::PLAYERCREATURE);
 
-	if (player != NULL) {
+	ManagedReference<WaypointObject* > waypointToMission = this->waypointToMission;
+
+	if (player != NULL && waypointToMission != NULL) {
 		MissionObjectDeltaMessage3* dmiso3 = new MissionObjectDeltaMessage3(_this.get());
 		dmiso3->updateWaypoint(waypointToMission);
 		dmiso3->close();

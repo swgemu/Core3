@@ -50,7 +50,7 @@ void ReconMissionObjectiveImplementation::activate() {
 		}
 	}
 
-	WaypointObject* waypoint = mission->getWaypointToMission();
+	ManagedReference<WaypointObject*> waypoint = mission->getWaypointToMission();
 
 	if (waypoint == NULL)
 		waypoint = mission->createWaypoint();
