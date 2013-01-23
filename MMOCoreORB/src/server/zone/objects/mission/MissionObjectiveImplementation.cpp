@@ -201,7 +201,7 @@ void MissionObjectiveImplementation::awardReward() {
 		player->addBankCredits(dividedReward, true);
 	}
 
-	StatisticsManager::instance()->completeMission(mission->getRewardCredits());
+	StatisticsManager::instance()->completeMission(mission->getTypeCRC() ,mission->getRewardCredits());
 }
 
 Vector3 MissionObjectiveImplementation::getEndPosition() {

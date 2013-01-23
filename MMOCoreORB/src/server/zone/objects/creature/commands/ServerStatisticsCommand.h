@@ -20,7 +20,19 @@ public:
 		if (ghost == NULL || !ghost->isPrivileged())
 			return 1;
 
-		creature->sendSystemMessage(StatisticsManager::instance()->getStatistics());
+		StringTokenizer args(arguments.toString());
+
+		if (args.hasMoreTokens()) {
+			String command;
+			args.getStringToken(command);
+
+			if (command.toLowerCase() == "reset") {
+				StatisticsManager::instance()->reset();
+				creature->sendSystemMessage("Statistics have been reset.");
+			}
+		} else {
+			creature->sendSystemMessage(StatisticsManager::instance()->getStatistics());
+		}
 
 		return 0;
 	}
