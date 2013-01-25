@@ -1664,11 +1664,10 @@ void PlayerObjectImplementation::addPermissionGroup(const String& group, bool up
 	if (zone == NULL)
 		return;
 
-	Locker locker(zone);
+	CloseObjectsVector* vec = (CloseObjectsVector*) parent->getCloseObjects();
 
-	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects = *parent->getCloseObjects();
-
-	locker.release();
+	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
+	vec->safeCopyTo(closeObjects);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		BuildingObject* building = closeObjects.get(i).castTo<BuildingObject*>();
@@ -1692,11 +1691,10 @@ void PlayerObjectImplementation::removePermissionGroup(const String& group, bool
 	if (zone == NULL)
 		return;
 
-	Locker locker(zone);
+	CloseObjectsVector* vec = (CloseObjectsVector*) parent->getCloseObjects();
 
-	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects = *parent->getCloseObjects();
-
-	locker.release();
+	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
+	vec->safeCopyTo(closeObjects);
 
 	for (int i = 0; i < closeObjects.size(); ++i) {
 		BuildingObject* building = closeObjects.get(i).castTo<BuildingObject*>();
