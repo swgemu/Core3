@@ -64,6 +64,11 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		TangibleObject* targetObject = cast<TangibleObject*> (server->getZoneServer()->getObject(target));
+
+		if (targetObject == NULL || !targetObject->isCreatureObject())
+			return INVALIDTARGET;
+
 		int res = doCombatAction(creature, target);
 
 		if (res == TOOFAR)
