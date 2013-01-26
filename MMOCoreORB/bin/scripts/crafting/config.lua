@@ -1348,6 +1348,7 @@ schematics = {
 {path="object/draft_schematic/spices/spice_yarrock.iff"},
 {path="object/draft_schematic/spices/spice_giggledust.iff"},
 {path="object/draft_schematic/spices/spice_sweetblossom.iff"},
+
 {path="object/draft_schematic/spices/spice_droid_lube.iff"},
 {path="object/draft_schematic/spices/spice_pyrepenol.iff"},
 {path="object/draft_schematic/spices/spice_sedative_h4b.iff"},
@@ -1693,6 +1694,7 @@ schematics = {
 {path="object/draft_schematic/space/weapon/missile/wpn_spacebomb_missile_mk2.iff"},
 {path="object/draft_schematic/armor/armor_segment_ris.iff"},
 {path="object/draft_schematic/armor/armor_segment_ris_acklay.iff"},
+{path="object/draft_schematic/armor/armor_segment_bone_acklay.iff"},
 {path="object/draft_schematic/armor/component/armor_layer_ris.iff"},
 {path="object/draft_schematic/clothing/clothing_armor_ris_bicep_l.iff"},
 {path="object/draft_schematic/clothing/clothing_armor_ris_bicep_r.iff"},
