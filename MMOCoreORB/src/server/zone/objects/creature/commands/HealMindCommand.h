@@ -160,7 +160,7 @@ public:
 			return GENERALERROR;
 		}
 
-		if (creatureTarget->getHAM(CreatureAttribute::MIND) == 0) {
+		if (creatureTarget->getHAM(CreatureAttribute::MIND) == 0 || !(creatureTarget->hasDamage(CreatureAttribute::MIND))) {
 			if (creatureTarget) {
 				StringIdChatParameter stringId("healing", "no_mind_to_heal_target");
 				stringId.setTT(creatureTarget->getObjectID());
@@ -181,7 +181,9 @@ public:
 		}
 
 		float modSkill = (float) creature->getSkillMod("combat_medic_effectiveness");
-		int healPower = (int) round((100.0f + modSkill) / 100.0f * creatureTarget->getMaxHAM(CreatureAttribute::MIND) / 2);
+		int healPower = (int) (System::random(300)+700) * modSkill / 100; // 700-1000 heal
+		// Check BF
+		healPower = (int) (healPower * (1 - creature->calculateBFRatio()) * (1 - creatureTarget->calculateBFRatio()));
 
 		int healedMind = creatureTarget->healDamage(creature, CreatureAttribute::MIND, healPower);
 
@@ -190,7 +192,7 @@ public:
 		}
 
 		sendHealMessage(creature, creatureTarget, healedMind);
-		int mindWound = (int) round(500.0f * healedMind / healPower) ;
+		int mindWound = (int) healedMind * .05; // 5% of mind healed in wounds
 
 		creature->addWounds(CreatureAttribute::MIND, mindWound);
 		creature->addWounds(CreatureAttribute::FOCUS, mindWound);
@@ -199,7 +201,7 @@ public:
 		creature->changeFocusWoundsBar(calculateWound(mindWound,creature->getFocusWounds(),creature->getBaseFocus()));
 		creature->changeWillpowerWoundsBar(calculateWound(mindWound,creature->getWillpowerWounds(),creature->getBaseWillpower()));*/
 
-		creature->addShockWounds(25);
+		creature->addShockWounds(mindWound); // 5% of mind healed in bf
 
 		doAnimations(creature, creatureTarget);
 
