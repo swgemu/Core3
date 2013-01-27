@@ -75,6 +75,9 @@ public:
 			return ret;
 
 		creature->setPosture(CreaturePosture::UPRIGHT, false);
+		
+		if (creature->isDizzied())
+			creature->queueDizzyFallEvent();		
 
 		CreatureObjectDeltaMessage3* pmsg = new CreatureObjectDeltaMessage3(creature);
 		pmsg->updatePosture();

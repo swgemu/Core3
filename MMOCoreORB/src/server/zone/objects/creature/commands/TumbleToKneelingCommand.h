@@ -73,6 +73,10 @@ public:
 		creature->inflictDamage(creature, CreatureAttribute::ACTION, 100, true);
 
 		creature->setPosture(CreaturePosture::CROUCHED, false);
+
+		if (creature->isDizzied())
+			creature->queueDizzyFallEvent();
+		
 		Reference<CreatureObject*> defender = cast<CreatureObject*>(server->getZoneServer()->getObject(target));
 		if (defender == NULL)
 			creature->doCombatAnimation(creature,String("tumble").hashCode(),0,0xFF);
