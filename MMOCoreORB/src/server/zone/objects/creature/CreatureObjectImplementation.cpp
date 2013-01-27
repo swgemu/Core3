@@ -2469,8 +2469,8 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 }
 
 bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
-	PlayerObject* ghost = getPlayerObject();
-	PlayerObject* targetGhost = object->getPlayerObject();
+	PlayerObject* ghost = object->getPlayerObject(); // ghost is the healer
+	PlayerObject* targetGhost = getPlayerObject();
 
 	if (ghost == NULL)
 		return false;
@@ -2486,13 +2486,13 @@ bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
 	uint32 targetFactionStatus = targetGhost->getFactionStatus();
 	uint32 currentFactionStatus = ghost->getFactionStatus();
 
-	if (getFaction() != object->getFaction() && !(targetFactionStatus & FactionStatus::ONLEAVE))
+	if (getFaction() != object->getFaction() && !(targetFactionStatus == FactionStatus::ONLEAVE))
 		return false;
 
-	if ((targetFactionStatus & FactionStatus::OVERT) && !(currentFactionStatus & FactionStatus::OVERT))
+	if ((targetFactionStatus == FactionStatus::OVERT) && !(currentFactionStatus == FactionStatus::OVERT))
 		return false;
 
-	if (!(targetFactionStatus & FactionStatus::ONLEAVE) && (currentFactionStatus & FactionStatus::ONLEAVE))
+	if (!(targetFactionStatus == FactionStatus::ONLEAVE) && (currentFactionStatus == FactionStatus::ONLEAVE))
 		return false;
 
 	return true;
