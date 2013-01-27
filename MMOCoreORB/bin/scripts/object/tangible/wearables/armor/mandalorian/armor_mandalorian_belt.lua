@@ -95,26 +95,7 @@ object_tangible_wearables_armor_mandalorian_armor_mandalorian_belt = object_tang
 				"object/mobile/vendor/zabrak_female.iff",
 				"object/mobile/vendor/zabrak_male.iff" },
 	
-	-- Damage types in WeaponObject
-	vulnerability = COLD + ELECTRICITY + STUN + LIGHTSABER,
 
-	-- These are default Blue Frog stats, These are also used as temporary DWB crafting stats. Needs to be adjusted to random color and stats vary in between 40 - 60%
-	healthEncumbrance = 15,
-	actionEncumbrance = 13,
-	mindEncumbrance = 15,
-
-	-- LIGHT, MEDIUM, HEAVY
-	rating = LIGHT,
-
-	kinetic = 55,
-	energy = 55,
-	electricity = 55,
-	stun = 40,
-	blast = 55,
-	heat = 55,
-	cold = 55,
-	acid = 55,
-	lightSaber = 0
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_armor_mandalorian_armor_mandalorian_belt, "object/tangible/wearables/armor/mandalorian/armor_mandalorian_belt.iff")
