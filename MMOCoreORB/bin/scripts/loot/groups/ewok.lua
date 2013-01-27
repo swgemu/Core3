@@ -5,9 +5,8 @@ ewok = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "rifle_ewok_crossbow", weight = 10000},
 		{itemTemplate = "polearm_staff_wood_reinforced", weight = 3000000},
-		{itemTemplate = "knife_stone", weight = 6990000}
+		{itemTemplate = "knife_stone", weight = 7000000}
 	}
 }
 

@@ -40,7 +40,7 @@ weathered_panshee_shaman = Creature:new {
 	},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster)
+	attacks = merge(riflemanmaster,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(weathered_panshee_shaman, "weathered_panshee_shaman")

@@ -38,8 +38,7 @@ revered_panshee_matriarch = Creature:new {
 	},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(revered_panshee_matriarch, "revered_panshee_matriarch")

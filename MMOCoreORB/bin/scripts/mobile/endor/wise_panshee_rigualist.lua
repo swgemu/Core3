@@ -41,7 +41,7 @@ wise_panshee_ritualist = Creature:new {
 	},
 	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster)
+	attacks = merge(riflemanmaster,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(wise_panshee_ritualist, "wise_panshee_ritualist")

@@ -35,9 +35,9 @@ gondula_tribesman = Creature:new {
 	lootGroups = {
 		 {
 	        groups = {
-				{group = "ewok", chance = 3300000}
+				{group = "ewok", chance = 10000000}
 			},
-			lootChance = 1000000
+			lootChance = 3000000
 		}
 	},
 	weapons = {"ewok_weapons"},
