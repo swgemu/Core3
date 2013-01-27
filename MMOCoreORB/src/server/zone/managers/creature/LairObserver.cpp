@@ -257,6 +257,11 @@ bool LairObserverImplementation::readObjectMember(ObjectInputStream* stream, con
 		return true;
 	}
 
+	if (_name == "LairObserver.spawnNumber") {
+		TypeInfo<int >::parseFromBinaryStream(&spawnNumber, stream);
+		return true;
+	}
+
 	if (_name == "LairObserver.difficulty") {
 		TypeInfo<int >::parseFromBinaryStream(&difficulty, stream);
 		return true;
@@ -287,6 +292,14 @@ int LairObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "LairObserver.spawnNumber";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&spawnNumber, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_name = "LairObserver.difficulty";
 	_name.toBinaryStream(stream);
 	_offset = stream->getOffset();
@@ -296,7 +309,7 @@ int LairObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 2;
+	return _count + 3;
 }
 
 LairObserverImplementation::LairObserverImplementation() : ObserverImplementation() {
@@ -309,6 +322,8 @@ LairObserverImplementation::LairObserverImplementation() : ObserverImplementatio
 	lairTemplate = NULL;
 	// server/zone/managers/creature/LairObserver.idl():  		healLairEvent = null;
 	healLairEvent = NULL;
+	// server/zone/managers/creature/LairObserver.idl():  		spawnNumber = 0;
+	spawnNumber = 0;
 }
 
 void LairObserverImplementation::setLairTemplate(LairTemplate* tmpl) {

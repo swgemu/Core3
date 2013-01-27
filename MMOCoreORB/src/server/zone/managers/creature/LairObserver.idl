@@ -56,6 +56,8 @@ class LairObserver extends Observer implements Logger {
 	@dereferenced
 	protected Vector<CreatureObject> spawnedCreatures;
 	
+	protected int spawnNumber;
+
 	protected transient HealLairObserverEvent healLairEvent;
 	
 	protected int difficulty;
@@ -69,6 +71,8 @@ class LairObserver extends Observer implements Logger {
 		
 		lairTemplate = null;
 		healLairEvent = null;
+
+		spawnNumber = 0;
 	}
 	
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);

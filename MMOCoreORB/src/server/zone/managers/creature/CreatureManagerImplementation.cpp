@@ -115,10 +115,7 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
 
  	zone->transferObject(building, -1, false);
 
- 	int count = 1 + System::random(4);
-
- 	for (int i = 0; i < count; ++i)
- 		lairObserver->checkForNewSpawns(building, true);
+	lairObserver->checkForNewSpawns(building, true);
 
  	return building;
 }

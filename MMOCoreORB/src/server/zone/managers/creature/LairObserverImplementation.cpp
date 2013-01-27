@@ -180,40 +180,74 @@ void LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 	if (spawnedCreatures.size() >= lairTemplate->getSpawnLimit())
 		return;
 
-	if (!forceSpawn && System::random(3) == 1)
-		return;
+	if (forceSpawn) {
+		spawnNumber++;
+	} else {
+		int conditionDamage = lair->getConditionDamage();
+		int maxCondition = lair->getMaxCondition();
 
+		switch (spawnNumber) {
+		case 0:
+			spawnNumber++;
+			break;
+		case 1:
+			if (conditionDamage > (maxCondition / 3)) {
+				spawnNumber++;
+			} else {
+				return;
+			}
+			break;
+		case 2:
+			if (conditionDamage > (maxCondition * 2 / 3)) {
+				spawnNumber++;
+			} else {
+				return;
+			}
+			break;
+		case 3:
+			return;
+			break;
+		}
+	}
 	//SortedVector<uint32>* objectsToSpawn = getObjectsToSpawn();
 
 	VectorMap<String, int>* objectsToSpawn = lairTemplate->getMobiles();
 
-	String templateToSpawn = objectsToSpawn->elementAt((int)System::random(objectsToSpawn->size() - 1)).getKey();
+	int amountToSpawn = System::random(3) + ((lairTemplate->getSpawnLimit() / 3) - 2);
 
-	CreatureManager* creatureManager = lair->getZone()->getCreatureManager();
+	if (amountToSpawn < 1)
+		amountToSpawn = 1;
 
-	float x = lair->getPositionX() + (20.0f - System::random(400) / 10.0f);
-	float y = lair->getPositionY() + (20.0f - System::random(400) / 10.0f);
-	float z = lair->getZone()->getHeight(x, y);
+	for(int i = 0; i < amountToSpawn; ++i) {
 
-	int levelDiff = objectsToSpawn->get(templateToSpawn);
+		String templateToSpawn = objectsToSpawn->elementAt((int)System::random(objectsToSpawn->size() - 1)).getKey();
 
-	ManagedReference<CreatureObject*> creature = creatureManager->spawnCreatureWithLevel(templateToSpawn.hashCode(), difficulty + levelDiff, x, z, y);
+		CreatureManager* creatureManager = lair->getZone()->getCreatureManager();
 
-	if (creature == NULL)
-		return;
+		float x = lair->getPositionX() + (20.0f - System::random(400) / 10.0f);
+		float y = lair->getPositionY() + (20.0f - System::random(400) / 10.0f);
+		float z = lair->getZone()->getHeight(x, y);
 
-	if (!creature->isAiAgent()) {
-		error("spawned non player creature with template " + templateToSpawn);
-	} else {
-		AiAgent* npc = cast<AiAgent*>( creature.get());
+		int levelDiff = objectsToSpawn->get(templateToSpawn);
 
-		//Locker clocker(npc, lair);
+		ManagedReference<CreatureObject*> creature = creatureManager->spawnCreatureWithLevel(templateToSpawn.hashCode(), difficulty + levelDiff, x, z, y);
 
-		npc->setDespawnOnNoPlayerInRange(false);
-		npc->setHomeLocation(x, z, y);
-		npc->setRespawnTimer(0);
+		if (creature == NULL)
+			return;
 
-		spawnedCreatures.add(creature);
+		if (!creature->isAiAgent()) {
+			error("spawned non player creature with template " + templateToSpawn);
+		} else {
+			AiAgent* npc = cast<AiAgent*>( creature.get());
+
+			//Locker clocker(npc, lair);
+
+			npc->setDespawnOnNoPlayerInRange(false);
+			npc->setHomeLocation(x, z, y);
+			npc->setRespawnTimer(0);
+
+			spawnedCreatures.add(creature);
+		}
 	}
 }
 

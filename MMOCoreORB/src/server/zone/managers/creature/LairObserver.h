@@ -116,6 +116,8 @@ protected:
 
 	Vector<ManagedReference<CreatureObject* > > spawnedCreatures;
 
+	int spawnNumber;
+
 	Reference<HealLairObserverEvent* > healLairEvent;
 
 	int difficulty;
