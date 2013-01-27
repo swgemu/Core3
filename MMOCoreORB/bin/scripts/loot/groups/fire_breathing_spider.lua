@@ -6,7 +6,9 @@ fire_breathing_spider = {
 	maximumLevel = 0,
 	lootItems = {
 		{itemTemplate = "geo_spider_fang", weight = 7500000},
-		{itemTemplate = "geo_spider_venom", weight = 2500000}
+		{itemTemplate = "geo_spider_venom", weight = 1500000},
+		{itemTemplate = "geo_spider_venom_base", weight = 500000},
+		{itemTemplate = "geo_spider_venom_rare", weight = 500000}
 	}
 }
 
