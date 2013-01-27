@@ -133,6 +133,8 @@ void GCWManagerImplementation::startVulnerability(BuildingObject* building){
 		info("No starttask found to drop while starting vulnerability");
 
 	this->scheduleVulnerabilityEnd(building);
+	building->broadcastCellPermissions();
+
 
 }
 
@@ -218,6 +220,8 @@ void GCWManagerImplementation::endVulnerability(BuildingObject* building){
 
 	// schedule
 	this->scheduleVulnerabilityStart(building);
+
+	building->broadcastCellPermissions();
 
 }
 
@@ -1595,8 +1599,10 @@ void GCWManagerImplementation::notifyTurretDestruction(InstallationObject* turre
 
 				info("Base " + String::valueOf(building->getObjectID()) + " turret destroyed.  Remaining turrets: " + String::valueOf(defensecount),true);
 
-				if(!defensecount)
+				if(!defensecount) {
 					baseData->setDefense(false);
+					building->broadcastCellPermissions();
+				}
 
 			}
 

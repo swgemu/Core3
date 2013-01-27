@@ -468,6 +468,27 @@ void PlayerObjectImplementation::setFactionStatus(int status) {
 
 		creature->setPvpStatusBitmask(pvpStatusBitmask);
 	}
+
+	ManagedReference<SceneObject*> parent = getParent();
+
+		Zone* zone = parent->getZone();
+
+		if (zone == NULL)
+			return;
+
+		CloseObjectsVector* vec = (CloseObjectsVector*) parent->getCloseObjects();
+
+		SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
+		vec->safeCopyTo(closeObjects);
+
+		for (int i = 0; i < closeObjects.size(); ++i) {
+			BuildingObject* building = closeObjects.get(i).castTo<BuildingObject*>();
+
+			if (building != NULL) {
+				building->updateCellPermissionsTo(creature);
+			}
+		}
+
 }
 
 int PlayerObjectImplementation::addExperience(const String& xpType, int xp, bool notifyClient) {

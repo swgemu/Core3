@@ -383,6 +383,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/building/components/ShuttleZoneComponent.cpp \
 		server/zone/objects/installation/components/ShuttleInstallationZoneComponent.cpp \
 		server/zone/objects/structure/components/StructureContainerComponent.cpp \
+		server/zone/objects/building/components/GCWBaseContainerComponent.cpp \
 		server/zone/objects/scene/components/ZoneComponent.cpp \
 		server/zone/managers/player/creation/PlayerCreationManager.cpp \
 		tre3/TreeFile.cpp \

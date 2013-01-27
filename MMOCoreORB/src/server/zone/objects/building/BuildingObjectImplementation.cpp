@@ -316,6 +316,10 @@ bool BuildingObjectImplementation::isCityBanned(CreatureObject* player){
 
 bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
 
+	if(isGCWBase()){
+		return checkContainerPermission(player,ContainerPermissions::WALKIN);
+	}
+
 	if (getOwnerObjectID() == player->getObjectID())
 		return true;
 
@@ -490,7 +494,7 @@ void BuildingObjectImplementation::addCell(CellObject* cell, uint32 cellNumber) 
 }
 
 void BuildingObjectImplementation::destroyObjectFromDatabase(
-		bool destroyContainedObjects) {
+	bool destroyContainedObjects) {
 
 	float x = getPositionX();
 	float y = getPositionY();
@@ -596,7 +600,6 @@ void BuildingObjectImplementation::updateCellPermissionsTo(CreatureObject* creat
 		if (cell == NULL)
 			continue;
 
-		//cell->sendPermissionsTo(creature,false);
 		cell->sendPermissionsTo(creature, allowEntry);
 	}
 }
@@ -632,9 +635,10 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 	Locker acessLock(&paidAccessListMutex);
 
 	if(isGCWBase()){
-		if(!checkContainerPermission(player,ContainerPermissions::WALKIN)){
+
+		if(!isAllowedEntry(player))
 			ejectObject(player);
-		}
+
 	}
 
 
