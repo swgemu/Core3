@@ -59,7 +59,8 @@ object_building_player_city_cloning_tatooine = object_building_player_city_share
 	childObjects = {
 			{templateFile = "object/tangible/sign/player/house_address_tatooine.iff", x = 9.75, z = 2, y = -3, ox = 0, oy = 0.707107, oz = 0, ow = -0.707107, cellid = -1, containmentType = -1},
 			{templateFile = "object/tangible/terminal/terminal_player_structure.iff", x = -13.28604, z = -2.110639, y = -6.443224, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = 4, containmentType = -1},
-			{templateFile = "object/tangible/terminal/terminal_cloning.iff", x = -13.57625, z = -2.5, y = 3.1, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = 4, containmentType = -1}
+			{templateFile = "object/tangible/terminal/terminal_cloning.iff", x = -13.57625, z = -2.5, y = 3.1, ox = 0, oy = 0.707107, oz = 0, ow = 0.707107, cellid = 4, containmentType = -1},
+			{templateFile = "object/tangible/terminal/terminal_insurance.iff", x = 6.3812, z = 0.7, y = -6.61366, ox = 0, oy = 0.751335, oz = 0, ow = -0.659921, cellid = 4, containmentType = -1}
 	}
 }
 
