@@ -53,7 +53,7 @@ CreatureAreaDiseaseCommand = {
 		125,
 		50,
 		50, 
-		10
+		300
 	  )
 	},
 
