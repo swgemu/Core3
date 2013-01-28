@@ -1655,9 +1655,11 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 	float minDamage = weapon->getMinDamage(), maxDamage = weapon->getMaxDamage();
 	float diff = maxDamage - minDamage;
 	float damage = 0;
-	float damageMultiplier = 1.0f;
+	float damageMultiplier = data.getDamageMultiplier();
 	if (diff >= 0)
 		damage = System::random(diff) + (int)minDamage;
+
+	damage *= damageMultiplier;
 
 	damage = getArmorReduction(attacker, weapon, defenderObject, damage, CombatManager::HEALTH, data);
 
