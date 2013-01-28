@@ -922,13 +922,57 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 			targetPosition->setPositionZ(zone->getHeight(targetPosition->getPositionX(), targetPosition->getPositionY()));
 		}
 
-		Vector<WorldCoordinates>* path = pathFinder->findPath(_this.get().get(), targetPosition->getCoordinates());
+		SceneObject* targetCoordinateCell = targetPosition->getCell();
+
+		Reference<Vector<WorldCoordinates>* > path;
+
+		if (targetCoordinateCell != NULL && dynamic_cast<CellObject*>(targetCoordinateCell)) {
+			if (targetCellObject == targetCoordinateCell && currentFoundPath != NULL) {
+				Vector<Triangle*>* nodes = NULL;
+
+				if (targetCellObject == parent.get()) {
+					CellObject* cell = dynamic_cast<CellObject*>(targetCoordinateCell);
+
+					FloorMesh* floor = PathFinderManager::getFloorMesh(cell);
+
+					pathFinder->getFloorPath(getPosition(), targetPosition->getCoordinates().getPoint(), floor, nodes);
+				}
+
+				if (nodes == NULL) {
+					WorldCoordinates curr(_this.get().get());
+					path = currentFoundPath;
+
+					path->set(0, curr);
+				} else {
+					delete nodes;
+
+					if (currentFoundPath->get(currentFoundPath->size() - 1).getWorldPosition().distanceTo(targetPosition->getCoordinates().getWorldPosition()) > 3) {
+						path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(_this.get().get(), targetPosition->getCoordinates()));
+						targetCellObject = targetCoordinateCell;
+					} else {
+						WorldCoordinates curr(_this.get().get());
+						path = currentFoundPath;
+
+						path->set(0, curr);
+					}
+				}
+			} else {
+				path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(_this.get().get(), targetPosition->getCoordinates()));
+				targetCellObject = targetCoordinateCell;
+			}
+		} else {
+			path = pathFinder->findPath(_this.get().get(), targetPosition->getCoordinates());
+			targetCellObject = NULL;
+			currentFoundPath = NULL;
+		}
 
 		if (path == NULL) {
 			patrolPoints.remove(0);
 
 			continue;
 		}
+
+		pathFinder->filterPastPoints(path, _this.get().get());
 
 		WorldCoordinates* oldCoord = NULL;
 		float pathDistance = 0;
@@ -940,8 +984,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 		if (targetDistance > maxDistance)
 			maxDist = MIN(newSpeed, targetDistance - maxDistance);
 		else {
-			delete path;
-
 			return false;
 		}
 
@@ -1085,8 +1127,6 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 		if (!found && remove) {
 			patrolPoints.remove(0);
 		}
-
-		delete path;
 	}
 
 #ifdef SHOW_WALK_PATH

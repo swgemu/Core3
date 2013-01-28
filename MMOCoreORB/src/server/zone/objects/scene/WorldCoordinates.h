@@ -36,6 +36,10 @@ public:
 
 	WorldCoordinates& operator=(const WorldCoordinates& c);
 
+	bool operator==(const WorldCoordinates& c) {
+		return (point == c.point) && (cell == c.cell);
+	}
+
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 

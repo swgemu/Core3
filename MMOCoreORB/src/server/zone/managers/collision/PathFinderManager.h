@@ -15,14 +15,19 @@
 namespace server {
  namespace zone {
   namespace objects {
+   namespace cell {
+   	   class CellObject;
+   }
+
    namespace creature {
-    class AiAgent;
+    	class AiAgent;
    }
   }
  }
 }
 
 using namespace server::zone::objects::creature;
+using namespace server::zone::objects::cell;
 
 class FloorMesh;
 
@@ -35,8 +40,17 @@ public:
 
 	Vector<WorldCoordinates>* findPath(const WorldCoordinates& pointA, const WorldCoordinates& pointB);
 
-	static Vector3 transformToModelSpace(const Vector3& point, SceneObject* building);
+	void filterPastPoints(Vector<WorldCoordinates>* path, SceneObject* object);
 
+	static Vector3 transformToModelSpace(const Vector3& point, SceneObject* building);
+	static FloorMesh* getFloorMesh(CellObject* cell);
+
+	/**
+	 * @returns -1 when points are in the same triangle
+	 * @returns 0 when a successful path is found, the path is in nodes
+	 * @returns 1 when no successful path is found
+	 */
+	int getFloorPath(const Vector3& pointA, const Vector3& pointB, FloorMesh* floor, Vector<Triangle*>*& nodes);
 
 protected:
 	Vector<WorldCoordinates>* findPathFromWorldToWorld(const WorldCoordinates& pointA, const WorldCoordinates& pointB);
@@ -46,13 +60,6 @@ protected:
 	Vector<WorldCoordinates>* findPathFromCellToCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB);
 
 	Vector<WorldCoordinates>* findPathFromCellToDifferentCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB);
-
-	/**
-	 * @returns -1 when points are in the same triangle
-	 * @returns 0 when a successful path is found, the path is in nodes
-	 * @returns 1 when no successful path is found
-	 */
-	int getFloorPath(const Vector3& pointA, const Vector3& pointB, FloorMesh* floor, Vector<Triangle*>*& nodes);
 
 	void addTriangleNodeEdges(const Vector3& source, const Vector3& goal, Vector<Triangle*>* trianglePath, Vector<WorldCoordinates>* path, SceneObject* cell);
 };

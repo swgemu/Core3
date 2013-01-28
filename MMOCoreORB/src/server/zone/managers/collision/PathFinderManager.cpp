@@ -15,6 +15,7 @@
 #include "CollisionManager.h"
 #include "engine/util/u3d/Funnel.h"
 #include "server/zone/objects/area/ActiveArea.h"
+#include "engine/util/u3d/Segment.h"
 
 Vector<WorldCoordinates>* PathFinderManager::findPath(const WorldCoordinates& pointA, const WorldCoordinates& pointB) {
 	if (isnan(pointA.getX()) || isnan(pointA.getY()) || isnan(pointA.getZ()))
@@ -37,6 +38,49 @@ Vector<WorldCoordinates>* PathFinderManager::findPath(const WorldCoordinates& po
 	}
 
 	return NULL;
+}
+
+void PathFinderManager::filterPastPoints(Vector<WorldCoordinates>* path, SceneObject* object) {
+    Vector3 thisWorldPosition = object->getWorldPosition();
+    Vector3 thiswP = thisWorldPosition;
+    thiswP.setZ(0);
+
+    if (path->size() > 2 && path->get(0) == path->get(1))
+        path->remove(1);
+
+    for (int i = 2; i < path->size(); ++i) {
+        WorldCoordinates coord1 = path->get(i);
+        WorldCoordinates coord2 = path->get(i - 1);
+
+        Vector3 end = coord1.getWorldPosition();
+        Vector3 start = coord2.getWorldPosition();
+
+        if (coord1.getCell() != coord2.getCell()) {
+            Vector3 coord1WorldPosition = end;
+            Vector3 coord2WorldPosition = start;
+
+            if (coord1WorldPosition == coord2WorldPosition && thisWorldPosition == coord1WorldPosition) {
+                path->remove(i - 1);
+                break;
+            }
+
+            continue;
+        }
+
+        end.setZ(0);
+        start.setZ(0);
+        Segment sgm(start, end);
+
+        Vector3 closestP = sgm.getClosestPointTo(thiswP);
+
+        if (closestP.distanceTo(thiswP) <= FLT_EPSILON) {
+            for (int j = i - 1; j > 0; --j) {
+                path->remove(j);
+            }
+
+            break;
+        }
+    }
 }
 
 Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const WorldCoordinates& pointA, const WorldCoordinates& pointB) {
@@ -159,6 +203,26 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const World
 	return path;
 }
 
+FloorMesh* PathFinderManager::getFloorMesh(CellObject* cell) {
+    ManagedReference<BuildingObject*> building1 = (cell->getParent().castTo<BuildingObject*>());
+
+    SharedObjectTemplate* templateObject = building1->getObjectTemplate();
+
+    if (templateObject == NULL) {
+    	return NULL;
+    }
+
+    PortalLayout* portalLayout = templateObject->getPortalLayout();
+
+    if (portalLayout == NULL) {
+    	return NULL;
+    }
+
+    FloorMesh* floorMesh1 = portalLayout->getFloorMesh(cell->getCellNumber());
+
+    return floorMesh1;
+}
+
 int PathFinderManager::getFloorPath(const Vector3& pointA, const Vector3& pointB, FloorMesh* floor, Vector<Triangle*>*& nodes) {
 	/*Vector3 objectPos = pointA;
 	Vector3 targetPos = pointB;
@@ -242,13 +306,17 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToWorld(const World
 	int ourCellID = ourCell->getCellNumber();
 	SharedObjectTemplate* templateObject = ourCell->getParent().get()->getObjectTemplate();
 
-	if (templateObject == NULL)
+	if (templateObject == NULL) {
+		delete path;
 		return NULL;
+	}
 
 	PortalLayout* portalLayout = templateObject->getPortalLayout();
 
-	if (portalLayout == NULL)
+	if (portalLayout == NULL) {
+		delete path;
 		return NULL;
+	}
 
 	FloorMesh* sourceFloorMesh = portalLayout->getFloorMesh(ourCellID);
 	PathGraph* sourcePathGraph = sourceFloorMesh->getPathGraph();
@@ -469,10 +537,10 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	// path from our position to path node
 	Vector<Triangle*>* trianglePath = NULL;
 
-	int res = getFloorPath(pointA.getPoint(), source->getPosition(), floorMesh1, trianglePath);
+	int res = getFloorPath(pointA.getPoint(), nodes->get(1)->getPosition(), floorMesh1, trianglePath);
 
 	if (res != -1 && trianglePath != NULL)
-		addTriangleNodeEdges(pointA.getPoint(), source->getPosition(), trianglePath, path, ourCell);
+		addTriangleNodeEdges(pointA.getPoint(), nodes->get(1)->getPosition(), trianglePath, path, ourCell);
 
 	if (trianglePath != NULL) {
 		delete trianglePath;
@@ -482,7 +550,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToDifferentCell(con
 	path->add(WorldCoordinates(source->getPosition(), ourCell));
 
 	//traversing cells
-	for (int i = 0; i < nodes->size(); ++i) {
+	for (int i = 1; i < nodes->size(); ++i) {
 		PathNode* pathNode = nodes->get(i);
 		PathGraph* pathGraph = pathNode->getPathGraph();
 
@@ -582,7 +650,7 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromCellToCell(const WorldC
 		//error("path NULL");
 		delete path;
 
-		return NULL;
+		return findPathFromCellToDifferentCell(pointA, pointB);
 	} else {
 		//info("path found", true);
 

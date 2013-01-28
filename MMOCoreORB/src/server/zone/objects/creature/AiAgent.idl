@@ -78,6 +78,7 @@ include server.zone.managers.loot.lootgroup.LootGroupCollection;
 include server.zone.objects.scene.components.AiInterfaceComponent;
 include server.zone.objects.creature.variables.CreatureTemplateReference;
 include system.thread.ReadWriteLock;
+include server.zone.objects.creature.variables.CurrentFoundPath;
 
 class AiAgent extends CreatureObject {
 	protected transient AiThinkEvent thinkEvent;
@@ -105,6 +106,9 @@ class AiAgent extends CreatureObject {
 	
 	@dereferenced
 	protected PatrolPoint nextStepPosition;
+	
+	protected transient CurrentFoundPath currentFoundPath;
+	protected transient SceneObject targetCellObject;
 		
 	@dereferenced
 	protected Vector<WeaponObject> weapons;
