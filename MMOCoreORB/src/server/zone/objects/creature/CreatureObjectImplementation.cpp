@@ -2430,6 +2430,36 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	return false;
 }
 
+bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object){
+	if(object->isCreatureObject())
+		return isAttackableBy(cast<CreatureObject*>(object));
+
+	if (isDead() || isIncapacitated())
+		return false;
+
+	if(object->getFaction() == 0 )
+		return true;
+
+	if(object->getFaction() == getFaction())
+		return false;
+
+	PlayerObject* ghost = getPlayerObject();
+
+	if(ghost == NULL)
+		return false;
+
+	// if player is on leave, then faction object cannot attack it
+	if (ghost->getFactionStatus() == FactionStatus::ONLEAVE)
+		return false;
+
+	// if the creature is overt but the tano is not, then it can't be attacked
+	if(getPvpStatusBitmask() & CreatureFlag::OVERT && !(object->getPvpStatusBitmask() & CreatureFlag::OVERT))
+		false;
+
+	// the other options are overt/overt and covert/covert both are attackable
+	return true;
+
+}
 bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (object == _this.get())
 		return false;

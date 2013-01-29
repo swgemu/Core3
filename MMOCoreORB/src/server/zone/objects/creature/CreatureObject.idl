@@ -933,6 +933,8 @@ class CreatureObject extends TangibleObject {
 	 * @return returns true if the creature object can attack this 
 	 */
 	public native boolean isAttackableBy(CreatureObject object);
+
+	public native boolean isAttackableBy(TangibleObject attacker);
 	
 	public native boolean isHealableBy(CreatureObject object);
 	

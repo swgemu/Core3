@@ -554,6 +554,8 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
+	bool isAttackableBy(TangibleObject* attacker);
+
 	bool isHealableBy(CreatureObject* object);
 
 	bool isInBountyMission(CreatureObject* bountyHunter, CreatureObject* target);
@@ -1333,6 +1335,8 @@ public:
 
 	bool isAttackableBy(CreatureObject* object);
 
+	bool isAttackableBy(TangibleObject* attacker);
+
 	bool isHealableBy(CreatureObject* object);
 
 	bool isInBountyMission(CreatureObject* bountyHunter, CreatureObject* target);
@@ -1945,6 +1949,8 @@ public:
 	void executeObjectControllerAction(unsigned int actionCRC, unsigned long long targetID, const UnicodeString& args);
 
 	bool isAttackableBy(CreatureObject* object);
+
+	bool isAttackableBy(TangibleObject* attacker);
 
 	bool isHealableBy(CreatureObject* object);
 
