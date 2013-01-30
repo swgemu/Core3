@@ -8,9 +8,9 @@
 #include "TurretDataComponent.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
+#include "server/zone/objects/installation/components/TurretFireManualTask.h"
 
 void TurretDataComponent::initializeTransientMembers() {
-	Logger::Logger tlog("turretdata");
 	if(getParent() != NULL){
 		templateData = dynamic_cast<SharedInstallationObjectTemplate*>(getParent()->getObjectTemplate());
 
@@ -25,12 +25,28 @@ void TurretDataComponent::initializeTransientMembers() {
 		if(weapon != NULL){
 			attackSpeed = weapon->getAttackSpeed();
 			maxrange = weapon->getMaxRange();
-		} else {
-			tlog.info("weapon was null",true);
 		}
 	}
 }
+void TurretDataComponent::rescheduleManualFireTask(float secondsToWait){
+	if(getParent() == NULL)
+		return;
 
+	CreatureObject* attacker = getController();
+	CreatureObject* target = getManualTarget();
+
+	if(target != NULL){
+		Reference<TurretFireManualTask*> fireTask = new TurretFireManualTask(cast<TangibleObject*>(getParent()), getController(), getManualTarget());
+		fireTask->schedule(secondsToWait*1000);
+		setManualFireTask(fireTask);
+
+	} else {
+		setController(NULL);
+		setManualFireTask(NULL);
+		setManualTarget(NULL);
+	}
+
+}
 void TurretDataComponent::setWeapon(WeaponObject* weapon){
 	if(weapon != NULL){
 		attackSpeed = weapon->getAttackSpeed();
@@ -67,9 +83,18 @@ void TurretDataComponent::fillAttributeList(AttributeListMessage* alm){
 	alm->insertAttribute("owner",String::valueOf(turret->getOwnerObjectID()));
 
 }
-void TurretDataComponent::updateCooldown(){
-	nextFireTime = time(0) + attackSpeed;
+void TurretDataComponent::updateAutoCooldown(float secondsToAdd){
+	int milisecondsToAdd = secondsToAdd*1000;
+	nextFireTime = Time();
+	nextFireTime.addMiliTime(milisecondsToAdd);
 }
+
+void TurretDataComponent::updateManualCooldown(float secondsToAdd){
+	int milisecondsToAdd = secondsToAdd*1000;
+	nextManualFireTime = Time();
+	nextManualFireTime.addMiliTime(milisecondsToAdd);
+}
+
 
 float TurretDataComponent::getKinetic(){
 	if(templateData != NULL)

@@ -1616,9 +1616,9 @@ int CombatManager::doCombatAction(TangibleObject* attacker, WeaponObject* weapon
 
 	if(weapon != NULL){
 		if(!command->isAreaAction()){
-			doTargetCombatAction(attacker, weapon, defender, CreatureAttackData("",command));
+			return doTargetCombatAction(attacker, weapon, defender, CreatureAttackData("",command));
 		} else {
-			doAreaCombatAction(attacker, weapon, defender, CreatureAttackData("",command));
+			return doAreaCombatAction(attacker, weapon, defender, CreatureAttackData("",command));
 		}
 	}
 
@@ -1640,7 +1640,6 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 	} else {
 		// TODO: implement, tano->tano damage
 	}
-
 
 	return damage;
 }

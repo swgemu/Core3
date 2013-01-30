@@ -318,6 +318,7 @@ void CommandConfigManager::registerSpecialCommands(CommandList* sCommands) {
 	createCommand(String("mildDisease").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("strongDisease").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("turretFire").toLowerCase())->setCommandGroup(0xe1c9a54a);
+	createCommand(String("turretFireManual").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("minefieldAttack").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("creatureRangedAttack").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("defaultDroidAttack").toLowerCase())->setCommandGroup(0xe1c9a54a);
@@ -1373,6 +1374,7 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<TumbleToProneCommand>(String("tumbleToProne").toLowerCase());
 	commandFactory.registerCommand<TumbleToStandingCommand>(String("tumbleToStanding").toLowerCase());
 	commandFactory.registerCommand<TurretFireCommand>(String("turretFire").toLowerCase());
+	commandFactory.registerCommand<TurretFireManualCommand>(String("turretFireManual").toLowerCase());
 	commandFactory.registerCommand<UnarmedBlind1Command>(String("unarmedBlind1").toLowerCase());
 	commandFactory.registerCommand<UnarmedBodyHit1Command>(String("unarmedBodyHit1").toLowerCase());
 	commandFactory.registerCommand<UnarmedCombo1Command>(String("unarmedCombo1").toLowerCase());

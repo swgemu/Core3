@@ -12,50 +12,31 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/templates/tangible/SharedInstallationObjectTemplate.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 class TurretDataComponent : public DataObjectComponent {
 
 protected:
 	int maxrange;
-	uint64 nextFireTime;
+	Time nextFireTime;
+	Time nextManualFireTime;
+	Time controlTimeout;  // when the controller times out from inactivity and someone else can control it
 	int attackSpeed;
 	SharedInstallationObjectTemplate* templateData;
-
-	float kinetic;
-	/*
-	float energy;
-	float electricity;
-	float stun;
-	float blast;
-	float heat;
-	float cold;
-	float acid;
-	float lightSaber;
-	float chanceHit;
-	String weaponString;
-	*/
-
-
+	ManagedReference<CreatureObject*> controller;
+	ManagedReference<CreatureObject*> manualTarget;
+	Task* manualFireTask;
 
 public:
 	TurretDataComponent() {
 		maxrange = 80;
-		nextFireTime = time(0);
+		nextFireTime = Time();
+		nextManualFireTime = Time();
+		controlTimeout = Time();
 		attackSpeed = 5;
 		templateData = NULL;
-		/*
-		kinetic = 0;
-		energy = 0;
-		electricity = 0;
-		stun = 0;
-		blast = 0;
-		heat = 0;
-		cold = 0;
-		acid = 0;
-		lightSaber = 0;
-		chanceHit = .5;
-		weaponString = "object/weapon/ranged/rifle/rifle_dlt20.iff";
-		*/
-		//addSerializableVariables();
+		controller = NULL;
+		manualTarget = NULL;
+		manualFireTask = NULL;
 
 	}
 
@@ -65,16 +46,60 @@ public:
 
 	void initializeTransientMembers();
 
-	bool canFire(){
-		return (attackSpeed > 0 && time(0) > nextFireTime);
+	bool canAutoFire(){
+		// if controller is ull then we're good
+		// if controller is not null, then check to verify that the control timeout has passed
+
+		return (attackSpeed > 0 && nextFireTime.isPast());
 	}
 
-	void updateCooldown();
+	bool canManualFire(){
+		return (attackSpeed > 0 && nextManualFireTime.isPast());
+	}
+
+
+	void refreshControlTimer(int seconds){
+		controlTimeout = Time();
+		controlTimeout.addMiliTime(seconds * 1000);
+	}
+
+	bool hasControlTimedOut(){
+		return controlTimeout.isPast();
+	}
+
+	void updateAutoCooldown(float secondsToAdd);
+	void updateManualCooldown(float secondsToAdd);
 
 	bool isTurretData(){
 		return true;
 	}
 
+
+	void setController(CreatureObject* creature){
+		controller = creature;
+	}
+
+	CreatureObject* getController(){
+		return controller;
+	}
+
+	void setManualTarget(CreatureObject* creature){
+		manualTarget = creature;
+	}
+
+	CreatureObject* getManualTarget(){
+		return manualTarget;
+	}
+
+	void setManualFireTask(Task* newTask){
+		manualFireTask = newTask;
+	}
+
+	Task* getManualFireTask(){
+		return manualFireTask;
+	}
+
+	void rescheduleManualFireTask(float secondsToWait);
 	void setWeapon(WeaponObject* weapon);
 	float getKinetic();
 	float getEnergy();
@@ -90,25 +115,8 @@ public:
 	void fillAttributeList(AttributeListMessage* alm);
 
 
-
 private:
 	void addSerializableVariables(){
-
-		//addSerializableVariable("maxrange",&maxrange);
-		/*
-		addSerializableVariable("kinetic",&kinetic);
-		addSerializableVariable("energy",&energy);
-		addSerializableVariable("acid",&acid);
-		addSerializableVariable("listSaber",&lightSaber);
-		addSerializableVariable("cold",&cold);
-		addSerializableVariable("blast",&blast);
-		addSerializableVariable("stun",&stun);
-		addSerializableVariable("heat",&heat);
-		addSerializableVariable("electricity",&electricity);
-		addSerializableVariable("weaponString",&weaponString);
-		addSerializableVariable("chanceHit",&chanceHit);
-		*/
-
 	}
 };
 

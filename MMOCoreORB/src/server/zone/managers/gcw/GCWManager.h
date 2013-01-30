@@ -125,6 +125,10 @@ using namespace server::zone::objects::tangible::deed::structure;
 
 #include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
 
+#include "server/zone/objects/installation/components/TurretDataComponent.h"
+
+#include "server/zone/objects/tangible/terminal/components/TurretControlTerminalDataComponent.h"
+
 #include "engine/core/ManagedService.h"
 
 #include "engine/core/Task.h"
@@ -242,6 +246,8 @@ public:
 
 	bool canUseTerminals(CreatureObject* creature, BuildingObject* building, SceneObject* terminal);
 
+	void sendTurretAttackListTo(CreatureObject* creature, SceneObject* turretControlTerminal);
+
 	int getImperialBaseCount();
 
 	int getRebelBaseCount();
@@ -319,6 +325,8 @@ public:
 	static int overtCooldown;
 
 	static int reactvationTimer;
+
+	static int turretAutoFireTimeout;
 
 	GCWManagerImplementation(Zone* zne);
 
@@ -490,6 +498,18 @@ private:
 public:
 	bool canUseTerminals(CreatureObject* creature, BuildingObject* building, SceneObject* terminal);
 
+	void sendTurretAttackListTo(CreatureObject* creature, SceneObject* turretControlTerminal);
+
+private:
+	TurretControlTerminalDataComponent* getTurretControlDataComponent(SceneObject* terminal);
+
+	TurretDataComponent* getTurretDataComponent(SceneObject* turret);
+
+	void generateTurretControlBoxTo(CreatureObject* creature, TangibleObject* turret, SceneObject* terminal);
+
+	bool canUseTurret(TurretDataComponent* turretData, TurretControlTerminalDataComponent* controlData, CreatureObject* creature);
+
+public:
 	int getImperialBaseCount();
 
 	int getRebelBaseCount();
@@ -634,6 +654,8 @@ public:
 	void removeDefense(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID);
 
 	bool canUseTerminals(CreatureObject* creature, BuildingObject* building, SceneObject* terminal);
+
+	void sendTurretAttackListTo(CreatureObject* creature, SceneObject* turretControlTerminal);
 
 	int getImperialBaseCount();
 

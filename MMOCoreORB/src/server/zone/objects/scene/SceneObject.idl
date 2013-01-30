@@ -1344,6 +1344,13 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@local
 	@read
+	public boolean isTurretControlTerminal(){
+		return dataObjectComponent != null && 
+		dataObjectComponent.get() != null &&
+		dataObjectComponent.get().isTurretControlTerminalData();
+	}
+	@local
+	@read
 	public ZoneComponent getZoneComponent() {
 		return zoneComponent;
 	}
@@ -1427,6 +1434,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@read
 	public boolean isGarage() {
+
 		return gameObjectType == SceneObjectType.GARAGEBUILDING || gameObjectType == SceneObjectType.GARAGEINSTALLATION;
 	}
 

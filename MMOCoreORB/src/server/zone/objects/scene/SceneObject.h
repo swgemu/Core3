@@ -600,6 +600,8 @@ public:
 
 	bool isSecurityTerminal();
 
+	bool isTurretControlTerminal();
+
 	ZoneComponent* getZoneComponent();
 
 	ObjectMenuComponent* getObjectMenuComponent();
@@ -1264,6 +1266,8 @@ public:
 	bool isDetector();
 
 	bool isSecurityTerminal();
+
+	bool isTurretControlTerminal();
 
 	ZoneComponent* getZoneComponent();
 

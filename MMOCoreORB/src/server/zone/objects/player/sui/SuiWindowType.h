@@ -213,6 +213,7 @@ public:
 	//static const uint16 HQ_DEFENSE_STATUS = 420;
 	//static const uint16 HQ_RESET_VULNERABILITY = 421;
 	static const uint16 HQ_TERMINAL = 420;
+	static const uint16 HQ_TURRET_TERMINAL = 421;
 
 
 	//Miscellaneous 1000+

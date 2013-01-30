@@ -19,6 +19,10 @@ import system.thread.Mutex;
 import server.zone.objects.tangible.deed.structure.StructureDeed;
 
 include server.zone.objects.building.components.DestructibleBuildingDataComponent;
+include server.zone.objects.installation.components.TurretDataComponent;
+include server.zone.objects.tangible.terminal.components.TurretControlTerminalDataComponent;
+
+
 
 class GCWManager extends ManagedService implements Logger {
 
@@ -61,7 +65,7 @@ class GCWManager extends ManagedService implements Logger {
 	public transient static int maxBases;
 	public transient static int overtCooldown;
 	public transient static int reactvationTimer;
-
+	public transient static int turretAutoFireTimeout;
 
 
 	public GCWManager(Zone zne){
@@ -291,6 +295,16 @@ class GCWManager extends ManagedService implements Logger {
 	private native void verifyTurrets(BuildingObject building);
 
 	public native boolean canUseTerminals(CreatureObject creature, BuildingObject building, SceneObject terminal);
+
+	public native void sendTurretAttackListTo(CreatureObject creature, SceneObject turretControlTerminal);
+	
+	private native TurretControlTerminalDataComponent getTurretControlDataComponent(SceneObject terminal);
+
+	private native TurretDataComponent getTurretDataComponent(SceneObject turret);
+
+	private native void generateTurretControlBoxTo(CreatureObject creature, TangibleObject turret, SceneObject terminal);
+
+	private native boolean canUseTurret(TurretDataComponent turretData, TurretControlTerminalDataComponent controlData, CreatureObject creature);
 
 	public int getImperialBaseCount(){
 		return imperialBases;

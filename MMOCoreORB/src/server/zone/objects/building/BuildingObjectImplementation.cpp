@@ -41,6 +41,7 @@
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/objects/player/FactionStatus.h"
 
+#include "server/zone/objects/tangible/terminal/components/TurretControlTerminalDataComponent.h"
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -985,6 +986,9 @@ void BuildingObjectImplementation::updatePaidAccessList() {
 void BuildingObjectImplementation::createChildObjects(){
 	if(isGCWBase()){
 
+
+		int controlIndex = 0;
+
 		SharedObjectTemplate* serverTemplate = getObjectTemplate();
 
 		if(serverTemplate == NULL)
@@ -1072,8 +1076,23 @@ void BuildingObjectImplementation::createChildObjects(){
 				if(obj->isTurret())
 					obj->createChildObjects();
 
+
 				if (getZone())
 					getZone()->transferObject(obj, -1, false);
+			}
+
+			if(obj->isTurretControlTerminal()){
+				info("turret control terminal",true);
+				DataObjectComponentReference* data  = obj->getDataObjectComponent();
+				if(data != NULL){
+					TurretControlTerminalDataComponent* controlData = cast<TurretControlTerminalDataComponent*>(data->get());
+					if(controlData != NULL){
+						controlData->setTurretIndex(controlIndex);
+						controlIndex++;
+					}
+
+				}
+
 			}
 			ContainerPermissions* permissions = obj->getContainerPermissions();
 			permissions->setOwner(getObjectID());

@@ -17,6 +17,7 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
+#include "TurretControlTerminalDataComponent.h"
 
 
 void TurretControlMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -39,15 +40,11 @@ void TurretControlMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
-	// if the base is vulnerable and the uplink hasn't been jammed
-	//info("Building faction = " + String::valueOf(building->getFaction()) + " player = " + String::valueOf(player->getFaction()),true);
 	if(building->getFaction() == player->getFaction() && player->getFaction() != 0) {
-		if( gcwMan->isBaseVulnerable(building)) {
-			menuResponse->addRadialMenuItem(222, 3, "Turret");
-		}
+		menuResponse->addRadialMenuItem(222, 3, "@hq:mnu_turret_control"); // "Turret Control"
 	}
 
-	menuResponse->addRadialMenuItem(222, 3, "OH YEA");
+	//menuResponse->addRadialMenuItem(222, 3, "OH YEA");
 }
 
 int TurretControlMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
@@ -67,6 +64,9 @@ int TurretControlMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 	ManagedReference<GCWManager*> gcwMan = zone->getGCWManager();
 
+	if(selectedID == 222){
+		gcwMan->sendTurretAttackListTo(player,sceneObject);
+	}
 
 	return 0;
 }

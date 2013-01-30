@@ -30,7 +30,7 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 
 	ManagedReference<SceneObject*> target = cast<SceneObject*>(entry);
 
-	if(!sceneObject->isTangibleObject() || !sceneObject->isTurret() || target == NULL){
+	if(!sceneObject->isTangibleObject() || !sceneObject->isTurret() || target == NULL || !target->isCreatureObject() || target->isAiAgent()){
 		return;
 	}
 
@@ -43,7 +43,7 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 
 	TurretDataComponent* turretData = cast<TurretDataComponent*>(data->get());
 
-	if(turretData == NULL || !turretData->canFire())
+	if(turretData == NULL || !turretData->canAutoFire())
 		return;
 
 	if(target->isPlayerCreature() && sceneObject->isInRange(target,65)){

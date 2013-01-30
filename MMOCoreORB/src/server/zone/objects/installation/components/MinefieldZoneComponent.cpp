@@ -98,6 +98,7 @@ void MinefieldZoneComponent::notifyInsertIntoZone(SceneObject* sceneObject, Zone
 		if(sceno != NULL && sceno->isGCWBase()) {
 			ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceno.get());
 			if(building != NULL){
+
 				installation->setPvpStatusBitmask(building->getPvpStatusBitmask());
 			}
 		}

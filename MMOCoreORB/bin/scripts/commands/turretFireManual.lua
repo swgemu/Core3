@@ -40,9 +40,9 @@
 --which carries forward this exception.
 --true = 1, false = 0
 
-TurretFireCommand = {
-    name = "turretfire",
-	damageMultiplier = 1,
+TurretFireManualCommand = {
+    name = "turretfiremanual",
+	damageMultiplier = 2,
 	speedMultiplier = 1,
 	combatSpam = "attack",
 	healthCostMultiplier = 0,
@@ -57,4 +57,4 @@ TurretFireCommand = {
 	poolsToDamage = RANDOM_ATTRIBUTE
 }
 
-AddCommand(TurretFireCommand)
+AddCommand(TurretFireManualCommand)

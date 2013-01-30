@@ -12,6 +12,7 @@
 #include "CheckGCWTask.h"
 
 #include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
+#include "server/zone/objects/tangible/terminal/components/TurretControlTerminalDataComponent.h"
 #include "server/zone/objects/installation/components/MinefieldDataComponent.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -44,6 +45,7 @@
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 #include "server/zone/objects/player/sui/callbacks/DonateDefenseSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/SelectTurretDonationSuiCallback.h"
+#include "server/zone/objects/player/sui/callbacks/TurretControlSuiCallback.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
@@ -63,6 +65,7 @@ int GCWManagerImplementation::destructionTimer = 600;
 int GCWManagerImplementation::maxBases = -1;
 int GCWManagerImplementation::overtCooldown = 300;
 int GCWManagerImplementation::reactvationTimer = 300;
+int GCWManagerImplementation::turretAutoFireTimeout = 120;
 
 void GCWManagerImplementation::initialize(){
 	// TODO: initialize things
@@ -106,7 +109,7 @@ void GCWManagerImplementation::loadLuaConfig(){
 	maxBases = lua->getGlobalInt("maxBases");
 	overtCooldown = lua->getGlobalInt("overtCooldown");
 	reactvationTimer = lua->getGlobalInt("reactvationTimer");
-
+	turretAutoFireTimeout = lua->getGlobalInt("turretAutoFireTimeout");
 }
 
 // PRE: Nothing needs to be locked
@@ -839,13 +842,199 @@ void GCWManagerImplementation::resetVulnerability(CreatureObject* creature, Buil
 		this->dropStartTask(building->getObjectID());
 	}
 
-
 	this->scheduleVulnerabilityStart(building);
 
 	if(creature != NULL)
 		creature->sendSystemMessage("@hq:vulnerability_reset"); // the vulnerability of this structure has been reset
 
 }
+
+void GCWManagerImplementation::sendTurretAttackListTo(CreatureObject* creature, SceneObject* turretControlTerminal){
+
+	if(turretControlTerminal == NULL || creature == NULL || creature->isInCombat() )
+		return;
+
+	PlayerObject* ghost = creature->getPlayerObject();
+
+	if(ghost == NULL)
+		return;
+
+	if(ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TURRET_TERMINAL))
+		ghost->closeSuiWindowType(SuiWindowType::HQ_TURRET_TERMINAL);
+
+	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(turretControlTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+
+	if(building == NULL)
+		return;
+
+	// get the base data component
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if(baseData == NULL)
+		return;
+
+	TurretControlTerminalDataComponent* controlData = getTurretControlDataComponent(turretControlTerminal);
+
+	if(controlData == NULL)
+		return;
+
+	uint64 tindex = baseData->getTurretID(controlData->getTurrteIndex());
+
+	if(tindex == 0) {
+		creature->sendSystemMessage("@hq:none_active");  //  There are no available turrets to control using this terminal.
+		return;
+	}
+	ZoneServer* server = zone->getZoneServer();
+
+	if(server == NULL)
+		return;
+
+	SceneObject* turret = server->getObject(tindex);
+
+	if(turret == NULL || !turret->isTurret()) {
+		creature->sendSystemMessage("@hq:none_active"); // There are no available turrets to control using this terminal.
+		return;
+	}
+
+	TangibleObject* turretObject = cast<TangibleObject*>(turret);
+	if(turretObject == NULL)
+		return;
+
+	TurretDataComponent* turretData = this->getTurretDataComponent(turret);
+
+	if(turretData == NULL)
+		return;
+
+	if(!canUseTurret(turretData, controlData, creature)){
+		creature->sendSystemMessage("@hq:in_use");  //  This turret control terminal is already in use."
+		return;
+	}
+
+	this->generateTurretControlBoxTo(creature, turretObject, turretControlTerminal);
+
+}
+
+TurretDataComponent* GCWManagerImplementation::getTurretDataComponent(SceneObject* turret){
+	DataObjectComponentReference* turretComponent = turret->getDataObjectComponent();
+
+	if(turretComponent == NULL)
+		return NULL;
+
+	return cast<TurretDataComponent*>(turretComponent->get());
+}
+
+TurretControlTerminalDataComponent* GCWManagerImplementation::getTurretControlDataComponent(SceneObject* terminal){
+	DataObjectComponentReference* terminalData  = terminal->getDataObjectComponent();
+
+	if(terminalData == NULL)
+		return NULL;
+
+	return cast<TurretControlTerminalDataComponent*>(terminalData->get());
+}
+
+void GCWManagerImplementation::generateTurretControlBoxTo(CreatureObject* creature, TangibleObject* turret, SceneObject* terminal){
+	TurretControlTerminalDataComponent* controlData = getTurretControlDataComponent(terminal);
+	if(controlData == NULL)
+		return;
+
+	TurretDataComponent* turretData = this->getTurretDataComponent(turret);
+	if(turretData == NULL)
+		return;
+
+	PlayerObject* ghost = creature->getPlayerObject();
+	if(ghost == NULL)
+		return;
+
+	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::HQ_TURRET_TERMINAL);
+	status->setPromptTitle("@hq:control_title"); //"Turret Control Consule"
+	status->setCancelButton(true, "@cancel");
+	status->setCallback(new TurretControlSuiCallback(zone->getZoneServer(), turret,terminal));
+	status->setOtherButton(true,"@ui:refresh"); // refresh
+	status->setOkButton(true,"@hq:btn_attack"); // Attack
+
+	StringIdChatParameter params;
+	params.setStringId(("@hq:attack_targets")); // Turret is now attacking %TO.");
+	StringBuffer msg;
+	msg << "Turret is now targeting: ";
+
+	if(turretData->getManualTarget() != NULL){
+		msg << turretData->getManualTarget()->getFirstName();
+	}
+
+	status->setPromptText(msg.toString());
+
+	CloseObjectsVector* vec = (CloseObjectsVector*)turret->getCloseObjects();
+
+	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
+
+	vec->safeCopyTo(closeObjects);
+	WeaponObject* weapon = cast<WeaponObject*>(turret->getSlottedObject("hold_r"));
+
+	if(weapon == NULL)
+		return;
+
+	for(int i = 0; i < 10; ++i){
+		CreatureObject* creo = closeObjects.get(i).castTo<CreatureObject*>();
+
+		if(creo != NULL && creo->isAttackableBy(turret)){
+			if(!CollisionManager::checkLineOfSight(creo, turret)){
+				continue;
+			}
+
+			if(creo->isPlayerCreature() && turret->getDistanceTo(creo) <= weapon->getMaxRange()) {
+				status->addMenuItem(creo->getFirstName() + " - " + String::valueOf((int)turret->getDistanceTo(creo)) + "m",creo->getObjectID());
+			}
+		}
+
+	}
+
+	if( status->getMenuSize() > 0 ) {
+		ghost->addSuiBox(status);
+		creature->sendMessage(status->generateMessage());
+
+		Locker _lock(terminal, creature);
+		controlData->setSuiBoxID(status->getBoxID());
+		_lock.release();
+
+		Locker tlock(turret, creature);
+		turretData->setController(creature);
+		turretData->updateAutoCooldown(turretAutoFireTimeout);
+
+	} else
+		creature->sendSystemMessage("@hq:no_targets"); // This turret has no valid targets.
+}
+
+
+bool GCWManagerImplementation::canUseTurret(TurretDataComponent* turretData, TurretControlTerminalDataComponent* controlData, CreatureObject* creature){
+
+	if(turretData->getController() != NULL && turretData->getController() != creature){
+
+		CreatureObject* controllerCreature = turretData->getController();
+		PlayerObject* controllerGhost = controllerCreature->getPlayerObject();
+
+		// if there is no manual target, give it to the new guy, close it from the old guy
+		if(turretData->getManualTarget() == NULL) {
+			// try to close it from the old controller if it's still up
+			controllerGhost->closeSuiWindowType(SuiWindowType::HQ_TURRET_TERMINAL);
+		}else if(controllerGhost != NULL){
+
+			// if the controller creatures has the same window up
+			if(turretData->getManualTarget() != NULL) {
+				int controllingSuiBoxID = controlData->getSuiBoxID();
+
+				if(controllingSuiBoxID >= 0){
+					// get the sui from the controllerGhost to see if it's still up
+					if(controllerGhost->hasSuiBox(controllingSuiBoxID)){
+						return false;
+					}
+				}
+			}
+		}
+	}
+
+	return true;
+}
+
 void GCWManagerImplementation::sendStatus(BuildingObject* building, CreatureObject* creature){
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
 
@@ -2041,9 +2230,6 @@ void GCWManagerImplementation::verifyTurrets(BuildingObject* building){
 				turrets++;
 		}
 	}
-
-	//info("Remaining turrets = " + String::valueOf(turrets),true);
-
 
 	baseData->setDefense(turrets);
 }

@@ -39,7 +39,7 @@ public:
 			return;
 		TurretDataComponent* turretData = cast<TurretDataComponent*>(data->get());
 
-		if(sceneObject->getZoneServer() != NULL && turretData->canFire()) {
+		if(sceneObject->getZoneServer() != NULL && turretData->canAutoFire()) {
 			ManagedReference<ObjectController*> objectController = sceneObject->getZoneServer()->getObjectController();
 			QueueCommand* command = objectController->getQueueCommand(String("turretfire").hashCode());
 
@@ -51,7 +51,15 @@ public:
 					TangibleObject* defenderObject = cast<TangibleObject*>(target.get());
 
 					CombatManager::instance()->doCombatAction(sceneObject, weapon, defenderObject, combatCommand);
-					turretData->updateCooldown();
+					turretData->updateAutoCooldown(weapon->getAttackSpeed());
+					turretData->updateManualCooldown(weapon->getAttackSpeed());
+
+					if(turretData->getController() != NULL){
+						PlayerObject* ghost = turretData->getController()->getPlayerObject();
+						if(ghost != NULL)
+							ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
+
+					}
 				}
 			}
 
