@@ -82,12 +82,24 @@ public:
 		uint32 pvpStatus = tano->getPvpStatusBitmask();
 		uint32 optionsBitmask = tano->getOptionsBitmask();
 		uint32 intFaction = tano->getFaction();
-		info("PvPStatus = " + String::valueOf(pvpStatus) + "   Options = " + String::valueOf(optionsBitmask) + "  Faction = " + String::valueOf(intFaction),true);
 
-		// for testing
-		UpdatePVPStatusMessage* upvpsms = new UpdatePVPStatusMessage(tano);
-		tano->broadcastMessage(upvpsms, true, true);
+		ManagedReference<CreatureObject*> pobj = cast<CreatureObject*>( obj.get());
+		ManagedReference<PlayerObject*> targetPlayerObject = NULL;
 
+
+
+		if (pobj != NULL)
+			targetPlayerObject = pobj->getPlayerObject();
+
+		StringBuffer msg;
+		msg << "PvPStatus = " << String::valueOf(pvpStatus) << endl;
+		msg << "Options = " << String::valueOf(optionsBitmask) << endl;
+		msg <<  "Faction = " << String::valueOf(intFaction) << endl;
+
+		if(targetPlayerObject != NULL)
+			msg << "Faction Status: " << String::valueOf(targetPlayerObject->getFactionStatus());
+
+		creature->sendSystemMessage(msg.toString());
 
 		//First, check if they passed a name with the command.
 		UnicodeTokenizer tokenizer(arguments);
@@ -99,6 +111,7 @@ public:
 		String faction;
 		tokenizer.getStringToken(faction);
 
+		Locker _lock(tano,creature);
 
 		if (faction == "neutral")
 			tano->setFaction(0);
@@ -106,18 +119,16 @@ public:
 		if (faction == "imperial" || faction == "rebel" || faction == "hutt")
 			tano->setFaction(faction.hashCode());
 
+
 		if (tokenizer.hasMoreTokens()) {
 			//The next argument should be whether they are overt, onleave, or covert
 			String status;
 			tokenizer.getStringToken(status);
 
-			ManagedReference<CreatureObject*> pobj = cast<CreatureObject*>( obj.get());
-			ManagedReference<PlayerObject*> targetPlayerObject = NULL;
 
-			if (pobj != NULL)
-				targetPlayerObject = pobj->getPlayerObject();;
 
 			if (targetPlayerObject != NULL) {
+
 				if ( status == "overt") {
 					targetPlayerObject->setFactionStatus(FactionStatus::OVERT);
 				} else  if (status == "covert"){
@@ -133,12 +144,10 @@ public:
 				if (status == "covert")
 					pvpStatus &= ~CreatureFlag::OVERT;
 
-				//if (status == "onleave")
-				//Do something
-				
 				tano->setPvpStatusBitmask(pvpStatus);
 			}
 		}
+
 		UpdatePVPStatusMessage* upvpsm = new UpdatePVPStatusMessage(tano);
 		tano->broadcastMessage(upvpsm, true, true);
 		return SUCCESS;
