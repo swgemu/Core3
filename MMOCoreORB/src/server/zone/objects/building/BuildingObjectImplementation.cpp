@@ -1205,8 +1205,6 @@ void BuildingObjectImplementation::spawnChildCreatures(){
 
 			childObjects.put(creature);
 		}
-
-
 	}
 }
 

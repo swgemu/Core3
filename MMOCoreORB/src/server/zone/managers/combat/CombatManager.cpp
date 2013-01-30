@@ -1646,10 +1646,12 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 
 // called for single target attackers
 int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defenderObject, const CreatureAttackData& data) {
-
 	// TODO: find a place to add defenders
 	//attacker->addDefender(defenderObject);
 	//tano->addDefender(attacker);
+
+	if(defenderObject == NULL || !defenderObject->isAttackableBy(attacker))
+		return 0;
 
 	float minDamage = weapon->getMinDamage(), maxDamage = weapon->getMaxDamage();
 	float diff = maxDamage - minDamage;
@@ -1670,8 +1672,7 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 	// FIXME: probably need to add getCombatSpamBlock(), etc in data and store it in commands explicitly to avoid malformed text
 
 	CombatAction* combatAction = NULL;
-	//uint32 animationCRC = String("fire_turret_medium").hashCode();
-	//uint8 hit = 0x01;
+
 	uint32 animationCRC = data.getAnimationCRC();
 	combatAction = new CombatAction(attacker, defenderObject, animationCRC, hitVal, CombatManager::DEFAULTTRAIL);
 	attacker->broadcastMessage(combatAction,true);

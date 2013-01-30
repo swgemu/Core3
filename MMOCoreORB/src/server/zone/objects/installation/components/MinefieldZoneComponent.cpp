@@ -51,24 +51,14 @@ void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, Quad
 			if(player == NULL)
 				return;
 
-			ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
-
-			if(playerObject == NULL)
-				return;
-
 			ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(sceneObject);
 
 			if(tano == NULL)
 				return;
 
-			if(tano->getPvpStatusBitmask() & CreatureFlag::OVERT){
-				if(playerObject->getFactionStatus() < FactionStatus::OVERT )
-					return;
+			if(!player->isAttackableBy(tano))
+				return;
 
-			} else {
-				if(playerObject->getFactionStatus() < FactionStatus::COVERT)
-					return;
-			}
 
 			Reference<MinefieldAttackTask*> task = new MinefieldAttackTask(sceneObject, player);
 			task->execute();

@@ -49,32 +49,8 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 	if(target->isPlayerCreature() && sceneObject->isInRange(target,65)){
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(entry);
 
-		if(player == NULL)
+		if(player == NULL || !player->isAttackableBy(tano))
 			return;
-
-		if(tano->getFaction() == 0 || tano->getFaction() == player->getFaction())
-			return;
-
-		ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
-
-		bool canFire = false;
-
-		DataObjectComponentReference* ref = sceneObject->getDataObjectComponent();
-		if(ref == NULL){
-			info("data is null",true);
-			return;
-		}
-
-		if(tano->getPvpStatusBitmask() & CreatureFlag::OVERT){
-
-			if(playerObject->getFactionStatus() < FactionStatus::OVERT )
-				return;
-
-		} else {
-
-			if(playerObject->getFactionStatus() < FactionStatus::COVERT)
-				return;
-		}
 
 		Reference<TurretFireTask*> task = new TurretFireTask(tano, player);
 		task->execute();

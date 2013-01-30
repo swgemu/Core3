@@ -2452,7 +2452,7 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object){
 	if (ghost->getFactionStatus() == FactionStatus::ONLEAVE)
 		return false;
 
-	// if the creature is overt, any faction creature can attack
+
 	if(getPvpStatusBitmask() & CreatureFlag::OVERT && !(object->getPvpStatusBitmask() & CreatureFlag::OVERT))
 		false;
 
