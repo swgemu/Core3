@@ -65,6 +65,14 @@ public:
 		if (campSite == NULL)
 			return;
 
+		ZoneServer* zoneServer = campSite->getZoneServer();
+
+		if (zoneServer != NULL && zoneServer->isServerLoading()) {
+			schedule(1000);
+
+			return;
+		}
+
 		Locker locker(campSite);
 		campSite->despawnCamp();
 	}
