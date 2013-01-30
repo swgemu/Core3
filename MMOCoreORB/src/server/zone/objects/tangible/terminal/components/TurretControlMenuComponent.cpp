@@ -40,6 +40,10 @@ void TurretControlMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject
 
 	GCWManager* gcwMan = zone->getGCWManager();
 
+
+	if(!gcwMan->canUseTerminals(player, building, sceneObject))
+		return;
+
 	if(building->getFaction() == player->getFaction() && player->getFaction() != 0) {
 		menuResponse->addRadialMenuItem(222, 3, "@hq:mnu_turret_control"); // "Turret Control"
 	}
@@ -57,12 +61,21 @@ int TurretControlMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
 
+	if(building == NULL)
+		return 1;
+
 	Zone* zone = building->getZone();
 
 	if(zone == NULL)
 		return 1;
 
 	ManagedReference<GCWManager*> gcwMan = zone->getGCWManager();
+
+	if(gcwMan == NULL)
+		return 1;
+
+	if(!gcwMan->canUseTerminals(player, building, sceneObject))
+		return 1;
 
 	if(selectedID == 222){
 		gcwMan->sendTurretAttackListTo(player,sceneObject);
