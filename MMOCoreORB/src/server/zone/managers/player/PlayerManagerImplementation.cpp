@@ -3493,10 +3493,7 @@ bool PlayerManagerImplementation::shouldRescheduleCorpseDestruction(CreatureObje
 		if(creature->hasLoot() || creature->getCashCredits() > 0 || creature->getBankCredits() > 0)
 			return false;
 
-		if (!player->isGrouped())
-			return !creature->hasSkillToHarvestMe(player);
-		else
-			return !canGroupMemberHarvestCorpse(player, creature);
+		return !(creature->hasSkillToHarvestMe(player) || canGroupMemberHarvestCorpse(player, creature));
 
 	}
 
