@@ -46,6 +46,7 @@ which carries forward this exception.
 #define CAMPDESPAWNTASK_H_
 
 #include "server/zone/objects/area/CampSiteActiveArea.h"
+#include "server/zone/ZoneServer.h"
 
 namespace server {
 namespace zone {
