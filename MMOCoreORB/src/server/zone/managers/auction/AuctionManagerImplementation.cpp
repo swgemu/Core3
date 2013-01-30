@@ -639,6 +639,8 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 
 	/// Use previous proxy
 	if(priorBidder != NULL && proxyBid < item->getProxy()) {
+		Locker locker(item);
+		Locker plocker(priorBidder);
 
 		int increase = price1 - item->getPrice();
 
@@ -668,6 +670,13 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 
 	Locker locker(item);
 	Locker plocker(player);
+
+	if (player->getBankCredits() < item->getPrice()) {
+		BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), BidAuctionResponseMessage::NOTENOUGHCREDITS);
+		player->sendMessage(msg);
+
+		return;
+	}
 
 	item->setProxy(proxyBid);
 
