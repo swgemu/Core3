@@ -18,7 +18,7 @@ class MinefieldZoneComponent : public ZoneComponent {
 
 public:
 	void notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry);
-	void notifyInsertIntoZone(SceneObject* sceneObject, Zone* zne);
+	void notifyInsertToZone(SceneObject* sceneObject, Zone* zne);
 };
 
 

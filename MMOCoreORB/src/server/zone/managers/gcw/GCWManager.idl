@@ -17,11 +17,12 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.player.PlayerObject;
 import system.thread.Mutex;
 import server.zone.objects.tangible.deed.structure.StructureDeed;
+import server.zone.objects.tangible.deed.Deed;
 
 include server.zone.objects.building.components.DestructibleBuildingDataComponent;
 include server.zone.objects.installation.components.TurretDataComponent;
 include server.zone.objects.tangible.terminal.components.TurretControlTerminalDataComponent;
-
+include server.zone.templates.ChildObject;
 
 
 class GCWManager extends ManagedService implements Logger {
@@ -264,7 +265,11 @@ class GCWManager extends ManagedService implements Logger {
 	
 	private native void refreshDNA(DestructibleBuildingDataComponent data);
 
-	public native void notifyTurretDestruction(InstallationObject turret);
+	public native void notifyInstallationDestruction(InstallationObject installation);
+
+	public native void notifyTurretDestruction(BuildingObject building, InstallationObject turret);
+
+	public native void notifyMinefieldDestruction(BuildingObject building, InstallationObject turret);
 
 	private native void destroyStandaloneTurret(InstallationObject turret);
 
@@ -278,9 +283,11 @@ class GCWManager extends ManagedService implements Logger {
 
 	private native void performDonateMine(BuildingObject building, CreatureObject creature, SceneObject sceneObject);
 
-	private native void performDonateMinefield(BuildingObject building, CreatureObject creature, StructureDeed deed);
+	private native void performDonateMinefield(BuildingObject building, CreatureObject creature, Deed deed);
 
-	private native void performDonateTurret(BuildingObject building, CreatureObject creature, StructureDeed deed);
+	private native void performDonateTurret(BuildingObject building, CreatureObject creature, Deed deed);
+
+	private native unsigned long addChildInstallationFromDeed(BuildingObject building, ChildObject child, CreatureObject creature, Deed deed);
 
 	public native void sendStatus(BuildingObject building, CreatureObject creature);
 

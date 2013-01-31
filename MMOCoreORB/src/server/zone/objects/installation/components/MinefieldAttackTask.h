@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-
+#include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 class MinefieldAttackTask : public Task {
 	ManagedReference<SceneObject*> sceneObject;
 	ManagedReference<CreatureObject*> player;
@@ -74,6 +74,16 @@ public:
 		weapon->destroyObjectFromWorld(true);
 		weapon->destroyObjectFromDatabase(true);
 
+
+		if(sceneObject->getContainerObjectsSize() <= 0){
+			TangibleObject* tano = sceneObject.castTo<TangibleObject*>();
+			if(tano == NULL)
+				return;
+
+			tano->setPvpStatusBitmask(tano->getPvpStatusBitmask() | CreatureFlag::ATTACKABLE);
+			UpdatePVPStatusMessage* upvpsm = new UpdatePVPStatusMessage(tano,tano->getPvpStatusBitmask());
+			sceneObject->broadcastMessage(upvpsm, true, true);
+		}
 	}
 
 };

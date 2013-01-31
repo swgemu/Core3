@@ -42,6 +42,7 @@
 
 
 object_tangible_deed_faction_perk_minefield_field_1x1_deed = object_tangible_deed_faction_perk_minefield_shared_field_1x1_deed:new {
+	generatedObjectTemplate="object/installation/faction_perk/minefield/field_1x1.iff",
 
 }
 

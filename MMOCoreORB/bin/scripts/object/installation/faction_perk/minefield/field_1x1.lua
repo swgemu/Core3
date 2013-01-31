@@ -35,15 +35,20 @@
 --and as the GNU LGPL requires distribution of source code.
 
 --Note that people who make modified versions of Engine3 are not obligated 
---to grant this special exception for their modified versions; 
+--to grant this special exception for theirmodified versions; 
 --it is their choice whether to do so. The GNU Lesser General Public License 
 --gives permission to release a modified version without this exception; 
 --this exception also makes it possible to release a modified version 
 
 
 object_installation_faction_perk_minefield_field_1x1 = object_installation_faction_perk_minefield_shared_field_1x1:new {
+	lotSize = 1,
+	pvpStatusBitmask = 1,
+	optionsBitmask = 0,
 	dataObjectComponent = "MinefieldDataComponent",
 	zoneComponent = "MinefieldZoneComponent",
+	maxCondition = 6500,
+	
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_minefield_field_1x1, "object/installation/faction_perk/minefield/field_1x1.iff")

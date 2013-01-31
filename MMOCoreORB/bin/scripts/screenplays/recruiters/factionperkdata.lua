@@ -141,7 +141,7 @@ faction_reward_data = {
 		--"turret_tower_med",
 		--"turret_tower_lg",
 		--"covert_detector_32m",
-		--"minefield_1x1",
+		"minefield_1x1",
 	},
 
 	imperial_installations = {
@@ -214,7 +214,7 @@ faction_reward_data = {
 		--"turret_tower_sm",
 		--"turret_tower_med",
 		--"turret_tower_lg",
-		--"minefield_1x1",
+		"minefield_1x1",
 	}, 
 	
 	rebel_installations = {

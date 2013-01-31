@@ -1212,7 +1212,7 @@ void StructureObjectImplementation::notifyInsertToZone(Zone* zone) {
 	// server/zone/objects/structure/StructureObject.idl():  		super.notifyInsertToZone(zone);
 	TangibleObjectImplementation::notifyInsertToZone(zone);
 	// server/zone/objects/structure/StructureObject.idl():  	}
-	if (!TangibleObjectImplementation::staticObject && !isTurret()){
+	if (!TangibleObjectImplementation::staticObject && baseMaintenanceRate != 0 && !isTurret() && !isMinefield()){
 	// server/zone/objects/structure/StructureObject.idl():  			super.maxCondition = baseMaintenanceRate * 24 * 7 * 4;
 	TangibleObjectImplementation::maxCondition = baseMaintenanceRate * 24 * 7 * 4;
 	// server/zone/objects/structure/StructureObject.idl():  			scheduleMaintenanceExpirationEvent();

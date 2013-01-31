@@ -124,7 +124,7 @@ class StructureObject extends TangibleObject {
 	public void notifyInsertToZone(Zone zone) {
 		super.notifyInsertToZone(zone);
 		
-		if (!super.staticObject && !isTurret() ) {
+		if (!super.staticObject && baseMaintenanceRate != 0 && !isTurret() && !isMinefield()) {
 			//Decay is 4 weeks.
 			super.maxCondition = baseMaintenanceRate * 24 * 7 * 4;
 			
@@ -311,7 +311,7 @@ class StructureObject extends TangibleObject {
 	public native float getMaintenanceRate();
 
 	public native string getMaintenanceMods();
-	
+
 	public int getBaseMaintenanceRate() { //TODO: Move to template
 		return baseMaintenanceRate;
 	}
@@ -396,7 +396,7 @@ class StructureObject extends TangibleObject {
 	public abstract void setPublicStructure(boolean privacy) {
 		
 	}
-	
+
 	public boolean isStructureObject() {
 		return true;
 	}

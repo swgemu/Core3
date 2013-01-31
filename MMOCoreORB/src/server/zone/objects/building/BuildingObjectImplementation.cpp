@@ -1073,7 +1073,7 @@ void BuildingObjectImplementation::createChildObjects(){
 				obj->initializePosition(x, z, y);
 				obj->setDirection(dir.rotate(Vector3(0, 1, 0), degrees));
 
-				if(obj->isTurret())
+				if(obj->isTurret() || obj->isMinefield())
 					obj->createChildObjects();
 
 
@@ -1082,7 +1082,6 @@ void BuildingObjectImplementation::createChildObjects(){
 			}
 
 			if(obj->isTurretControlTerminal()){
-				info("turret control terminal",true);
 				DataObjectComponentReference* data  = obj->getDataObjectComponent();
 				if(data != NULL){
 					TurretControlTerminalDataComponent* controlData = cast<TurretControlTerminalDataComponent*>(data->get());

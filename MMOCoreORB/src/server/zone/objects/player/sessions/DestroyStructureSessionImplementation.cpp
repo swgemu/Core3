@@ -17,6 +17,7 @@
 #include "server/zone/Zone.h"
 
 #include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/managers/gcw/DestroyFactionInstallationTask.h"
 int DestroyStructureSessionImplementation::initializeSession() {
 	//TODO: Temporary until CreatureObject* dependency removed.
 	if (!creatureObject->isPlayerCreature())
@@ -106,10 +107,7 @@ int DestroyStructureSessionImplementation::destroyStructure() {
 	if (structureObject == NULL || structureObject->getZone() == NULL)
 		return cancelSession();
 
-	if(!structureObject->isGCWBase()) {
-		StructureManager::instance()->redeedStructure(creatureObject);
-	} else{
-
+	if(structureObject->isGCWBase()) {
 		Zone* zone = structureObject->getZone();
 		if(zone == NULL)
 			return cancelSession();
@@ -120,6 +118,16 @@ int DestroyStructureSessionImplementation::destroyStructure() {
 
 		gcwMan->doBaseDestruction(structureObject);
 		return cancelSession();
+
+	} else if(structureObject->isTurret() || structureObject->isMinefield()){
+
+		Reference<DestroyFactionInstallationTask*> destroyTask = new DestroyFactionInstallationTask(cast<InstallationObject*>(structureObject.get()));
+		destroyTask->execute();
+
+		return cancelSession();
+
+	} else {
+		StructureManager::instance()->redeedStructure(creatureObject);
 	}
 	return 0;
 }

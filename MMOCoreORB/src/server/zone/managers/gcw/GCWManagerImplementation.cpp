@@ -51,6 +51,7 @@
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 
 #include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
+#include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 
 #define DEBUG_GCW
 
@@ -613,7 +614,7 @@ void GCWManagerImplementation::performGCWTasks(){
 }
 
 void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool initializeBase){
-	info("Registering base " + String::valueOf(building->getObjectID()) + " " + String::valueOf(building->getPositionX()) + ", " + String::valueOf(building->getPositionY()),true);
+	info("Registering base on " + zone->getZoneName() +  " " + String::valueOf(building->getObjectID()) + " " + String::valueOf(building->getPositionX()) + ", " + String::valueOf(building->getPositionY()),true);
 	info("CurrentTime is " + Time().getFormattedTime(),true);
 	if ( !this->hasBase(building)){
 
@@ -880,7 +881,7 @@ void GCWManagerImplementation::sendTurretAttackListTo(CreatureObject* creature, 
 
 	uint64 tindex = baseData->getTurretID(controlData->getTurrteIndex());
 
-	if(tindex == 0) {
+	if(tindex == 0 || controlData->getTurrteIndex() < 0) {
 		creature->sendSystemMessage("@hq:none_active");  //  There are no available turrets to control using this terminal.
 		return;
 	}
@@ -1724,21 +1725,20 @@ void GCWManagerImplementation::handlePowerRegulatorSwitch(CreatureObject* creatu
 
 }
 
-
-void GCWManagerImplementation::notifyTurretDestruction(InstallationObject* turret){
-	if(turret == NULL)
+void GCWManagerImplementation::notifyInstallationDestruction(InstallationObject* installation){
+	if(installation == NULL)
 		return;
 
-	PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", zone->getZoneName(), turret->getPositionX(), turret->getPositionZ(), turret->getPositionY());
-	turret->broadcastMessage(explodeLoc, false);
+	PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", zone->getZoneName(), installation->getPositionX(), installation->getPositionZ(), installation->getPositionY());
+	installation->broadcastMessage(explodeLoc, false);
 
-	uint64 ownerid = turret->getOwnerObjectID();
+	uint64 ownerid = installation->getOwnerObjectID();
 	BuildingObject* building = NULL;
 
 	ZoneServer* server = zone->getZoneServer();
 
 	if(server == NULL) {
-		info("server is null for the turret",true);
+		info("server is null for the installation",true);
 		return;
 	}
 
@@ -1746,73 +1746,125 @@ void GCWManagerImplementation::notifyTurretDestruction(InstallationObject* turre
 
 	if(ownerObject == NULL){
 		info("owner object for the turret is null",true);
-		PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", zone->getZoneName(), turret->getPositionX(), turret->getPositionZ(), turret->getPositionY());
-		turret->broadcastMessage(explodeLoc, false);
+		PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", zone->getZoneName(), installation->getPositionX(), installation->getPositionZ(), installation->getPositionY());
+		installation->broadcastMessage(explodeLoc, false);
 
-		Locker _lock(turret);
-		turret->destroyObjectFromWorld(true);
-		turret->destroyObjectFromDatabase(true);
+		Locker _lock(installation);
+		installation->destroyObjectFromWorld(true);
+		installation->destroyObjectFromDatabase(true);
 
 		return;
 	}
+	/// confirmed
 
+	//info("object type of the owner is " + ownerObject->getObjectNameStringIdName(),true);
 	if(ownerObject->isGCWBase()){
 		building = cast<BuildingObject*>(ownerObject);
 
 		Locker _lock(building);
-		Locker clock(turret,building);
+		Locker clock(installation,building);
 
 		DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
 		if(baseData != NULL){
-			if( building->containsChildObject(cast<SceneObject*>(turret))) {
+			if(building->containsChildObject(installation)){
 				//info("removed child",true);
-				building->getChildObjects()->drop(cast<SceneObject*>(turret));
+				building->getChildObjects()->removeElement(installation);
 			}
 		}
 
+		if( baseData->hasTurret(installation->getObjectID())){
+			if(installation->isTurret())
+				notifyTurretDestruction(building, installation);
 
-		if(baseData->hasTurret(turret->getObjectID())){
-			int indx = baseData->getIndexOfTurret(turret->getObjectID());
+		} else if (baseData->hasMinefield(installation->getObjectID())){
 
-			//building->getChildObjects()->removeElement(cast<SceneObject*>(turret));
-			baseData->setTurretID(indx,0);
-
-			// see if all the turrets are destroyed
-			int defensecount = 0;
-
-			for(int i = 0; i < baseData->getTotalTurretCount();i++){
-				if(baseData->getTurretID(i))
-					defensecount++;
-				}
-
-				info("Base " + String::valueOf(building->getObjectID()) + " turret destroyed.  Remaining turrets: " + String::valueOf(defensecount),true);
-
-				if(!defensecount) {
-					baseData->setDefense(false);
-					building->broadcastCellPermissions();
-				}
-
-			}
+			if (installation->isMinefield())
+				notifyMinefieldDestruction(building, installation);
 
 
-		turret->destroyObjectFromWorld(true);
-		turret->destroyObjectFromDatabase(true);
+		} else {
 
-		if(building != NULL)
-			verifyTurrets(building);
+			//info("owner is a creature... need to remvoe the lots",true);
+			Locker plock(ownerObject);
+			Locker tlock(installation, ownerObject);
+			StructureManager::instance()->destroyStructure(installation);
+			tlock.release();
+			plock.release();
+		}
 
-	} else if ( ownerObject->isCreatureObject()){
-		info("owner is a creature... need to remvoe the lots",true);
-		Locker plock(ownerObject);
-		Locker tlock(turret, ownerObject);
-		StructureManager::instance()->destroyStructure(turret);
-		tlock.release();
-		plock.release();
+
 	}
 
+}
 
 
+void GCWManagerImplementation::notifyTurretDestruction(BuildingObject* building, InstallationObject* turret){
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+
+	if(baseData == NULL)
+		return;
+
+	int indx = baseData->getIndexOfTurret(turret->getObjectID());
+
+	if(indx < 0)
+		return;
+
+	baseData->setTurretID(indx,0);
+
+	// see if all the turrets are destroyed
+	int defensecount = 0;
+
+	for(int i = 0; i < baseData->getTotalTurretCount();i++){
+		if(baseData->getTurretID(i))
+			defensecount++;
+	}
+
+	info("Base " + String::valueOf(building->getObjectID()) + " turret destroyed.  Remaining turrets: " + String::valueOf(defensecount),true);
+
+	if(!defensecount) {
+		baseData->setDefense(false);
+		building->broadcastCellPermissions();
+	}
+
+	turret->destroyObjectFromWorld(true);
+	turret->destroyObjectFromDatabase(true);
+
+	if(building != NULL)
+		verifyTurrets(building);
+
+}
+
+
+void GCWManagerImplementation::notifyMinefieldDestruction(BuildingObject* building, InstallationObject* minefield){
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
+	if(baseData == NULL)
+		return;
+
+	int indx = baseData->getIndexOfMinefield(minefield->getObjectID());
+
+	if(indx < 0 )
+		return;
+
+	baseData->setMinefieldID(indx,0);
+
+	// see if all the turrets are destroyed
+	int defensecount = 0;
+
+	for(int i = 0; i < baseData->getTotalMinefieldCount();i++){
+		if(baseData->getMinefieldOID(i))
+			defensecount++;
+	}
+
+	info("Base " + String::valueOf(building->getObjectID()) + " minefield destroyed.  Remaining minefields: " + String::valueOf(defensecount),true);
+
+	if(!defensecount) {
+		//baseData->setDefense(false);
+		//building->broadcastCellPermissions();
+	}
+
+	minefield->destroyObjectFromWorld(true);
+	minefield->destroyObjectFromDatabase(true);
 }
 
 void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, CreatureObject* creature, int turretIndex){
@@ -1945,7 +1997,7 @@ void GCWManagerImplementation::removeDefense(BuildingObject* building, CreatureO
 
 	InstallationObject* turret = cast<InstallationObject*>(defense.get());
 
-	this->notifyTurretDestruction(turret);
+	this->notifyInstallationDestruction(turret);
 	//Locker clock(defense,creature);
 	//TangibleObject* tano = cast<TangibleObject*>(defense.get());
 	//tano->inflictDamage(creature,0,999999,true,true);
@@ -1970,27 +2022,25 @@ void GCWManagerImplementation::performDefenseDontation(BuildingObject* building,
 		return;
 	}
 
-	ManagedReference<StructureDeed*> turretDeed = dynamic_cast<StructureDeed*>(defenseObj.get());
+	if(defenseObj->isDeedObject()){
 
-	// verify it's a deed
-	if(turretDeed == NULL){
-		StringIdChatParameter param("@faction/faction_hq/faction_hq_response:terminal_response43"); // This facility does not accept deeds of type '%TO'. Cancelling donation..."
-		param.setTO(defenseObj->getObjectName());
-		creature->sendSystemMessage(param);
-		return;
-	}
 
-	// verify that the generated object is a turret
-	Reference<SharedObjectTemplate* > generatedTemplate = TemplateManager::instance()->getTemplate(turretDeed->getGeneratedObjectTemplate().hashCode());
+		ManagedReference<Deed*> deed = dynamic_cast<Deed*>(defenseObj.get());
+		if(deed != NULL){
 
-	if(generatedTemplate->getGameObjectType() == SceneObjectType::TURRET) {
-		performDonateTurret(building,creature,turretDeed);
-		return;
-	}
-
-	if(generatedTemplate->getGameObjectType() == SceneObjectType::MINEFIELD) {
-		performDonateMinefield(building,creature,turretDeed);
-		return;
+			Reference<SharedObjectTemplate* > generatedTemplate = TemplateManager::instance()->getTemplate(deed->getGeneratedObjectTemplate().hashCode());
+			if(generatedTemplate == NULL){
+				info("Generated template is null",true);
+				return;
+			}
+			if(generatedTemplate->getGameObjectType() == SceneObjectType::MINEFIELD) {
+				performDonateMinefield(building,creature,deed);
+				return;
+			} else if (generatedTemplate->getGameObjectType() == SceneObjectType::TURRET){
+				performDonateTurret(building,creature,deed);
+				return;
+			}
+		}
 	}
 
 	StringIdChatParameter param("@faction/faction_hq/faction_hq_response:terminal_response43"); // This facility does not accept deeds of type '%TO'. Cancelling donation..."
@@ -2013,7 +2063,7 @@ void GCWManagerImplementation::performDonateMine(BuildingObject* building, Creat
 
 
 		if(obj->isMinefield() && precount < 20){
-						_lock.release();
+			_lock.release();
 			Locker clock(obj,creature);
 
 			DataObjectComponentReference* ref = obj->getDataObjectComponent();
@@ -2024,11 +2074,22 @@ void GCWManagerImplementation::performDonateMine(BuildingObject* building, Creat
 			obj->transferObject(mine,-1,true);
 
 
+
 			if(precount < obj->getContainerObjectsSize()){
 				StringIdChatParameter param("@faction/faction_hq/faction_hq_response:terminal_response46"); // YOu sucessfully donate a %TO
 				param.setTO(mine->getObjectNameStringIdName());
 
 				creature->sendSystemMessage(param);
+				// broadcast the fact that the minefield is no longer attackable since it just donated
+				TangibleObject* tano = cast<TangibleObject*>(obj.get());
+				if(tano == NULL)
+					return;
+
+				int newbitmask = tano->getPvpStatusBitmask() & (255 - CreatureFlag::ATTACKABLE);
+				tano->setPvpStatusBitmask(newbitmask);
+
+				//UpdatePVPStatusMessage* upvpsm = new UpdatePVPStatusMessage(tano);
+				//tano->broadcastMessage(upvpsm, true, true);
 				return;
 			}
 		}
@@ -2038,8 +2099,7 @@ void GCWManagerImplementation::performDonateMine(BuildingObject* building, Creat
 
 }
 
-void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, CreatureObject* creature,  StructureDeed* deed){
-	return;
+void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, CreatureObject* creature,  Deed* deed){
 
 	String serverTemplatePath = deed->getGeneratedObjectTemplate();
 	TemplateManager* templateManager = TemplateManager::instance();
@@ -2047,9 +2107,7 @@ void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, 
 	Reference<SharedObjectTemplate*> minefieldTemplate = NULL;
 	ChildObject* child = NULL;
 
-	int currentTurretIndex = 0;
-
-	// search through the baseData to find the first empty turret index
+	int currentMinefieldIndex = 0;
 
 	Locker block(building,creature);
 
@@ -2057,9 +2115,68 @@ void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, 
 
 	if(baseData == NULL)
 		return;
+
+	// go through it and inf the first available mine
+	int minefieldIndex = 0;
+	for(minefieldIndex = 0; minefieldIndex < baseData->getTotalMinefieldCount(); minefieldIndex++){
+		if(baseData->getMinefieldOID(minefieldIndex) == 0 )
+			break;
+	}
+
+	creature->sendSystemMessage("Minefield open at postiion " + String::valueOf(minefieldIndex));
+
+	// this is turret donation
+	int nextAvailableMinefield = 0;
+	for(nextAvailableMinefield = 0; nextAvailableMinefield < baseData->getTotalTurretCount(); nextAvailableMinefield++){
+		if(baseData->getMinefieldOID(nextAvailableMinefield) == 0)
+			break;
+	}
+
+	if ( nextAvailableMinefield >= baseData->getTotalMinefieldCount() ){
+		return;
+	}
+
+	// now find the coords of the nth turret
+
+	for (int i = 0; i < baseServerTemplate->getChildObjectsSize(); ++i) {
+		 child = baseServerTemplate->getChildObject(i);
+		 minefieldTemplate = NULL;
+		if(child != NULL){
+
+			minefieldTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
+			if(minefieldTemplate->getGameObjectType() == SceneObjectType::MINEFIELD){
+				if(currentMinefieldIndex == nextAvailableMinefield){
+					break;
+				} else{
+					currentMinefieldIndex++;
+				}
+			}
+		}
+	}
+
+	if(child == NULL || minefieldTemplate == NULL || minefieldTemplate->getGameObjectType() != SceneObjectType::MINEFIELD)
+		return;
+
+	uint64 minefieldID = addChildInstallationFromDeed(building, child, creature, deed);
+	if(minefieldID > 0) {
+		baseData->setMinefieldID(currentMinefieldIndex,minefieldID);
+
+		StringIdChatParameter params;
+		params.setStringId("@faction/faction_hq/faction_hq_response:terminal_response45");  // you successfully donate deed
+		params.setTO(deed->getDisplayedName());
+		creature->sendSystemMessage(params);
+		// TODO: Implement .. verify minefields
+
+		block.release();
+
+		if(deed != NULL) {
+			Locker clock(deed, creature);
+			deed->destroyObjectFromWorld(true);
+		}
+	}
 }
 
-void GCWManagerImplementation::performDonateTurret(BuildingObject* building, CreatureObject* creature,  StructureDeed* turretDeed){
+void GCWManagerImplementation::performDonateTurret(BuildingObject* building, CreatureObject* creature,  Deed* turretDeed){
 	String serverTemplatePath = turretDeed->getGeneratedObjectTemplate();
 	TemplateManager* templateManager = TemplateManager::instance();
 	Reference<SharedObjectTemplate*> baseServerTemplate = building->getObjectTemplate();
@@ -2110,7 +2227,27 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 	if(child == NULL || turretTemplate == NULL || turretTemplate->getGameObjectType() != SceneObjectType::TURRET)
 		return;
 
+	uint64 turretID= addChildInstallationFromDeed(building, child, creature, turretDeed);
 
+	if(turretID > 0) {
+		baseData->setTurretID(currentTurretIndex,turretID);
+
+		StringIdChatParameter params;
+		params.setStringId("@faction/faction_hq/faction_hq_response:terminal_response45");  // you successfully donate deed
+		params.setTO(turretDeed->getDisplayedName());
+		creature->sendSystemMessage(params);
+
+		verifyTurrets(building);
+		block.release();
+
+		if(turretDeed != NULL) {
+			Locker clock(turretDeed, creature);
+			turretDeed->destroyObjectFromWorld(true);
+		}
+	}
+}
+
+uint64 GCWManagerImplementation::addChildInstallationFromDeed(BuildingObject* building, ChildObject* child, CreatureObject* creature, Deed* deed){
 	Vector3 position = building->getPosition();
 
 	Quaternion* direction = building->getDirection();
@@ -2126,18 +2263,14 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 	float z = position.getZ() + childPosition.getZ();
 
 	float degrees = direction->getDegrees();
-
 	Quaternion dir = child->getDirection();
-	//info("templatestring is " + turretDeed->getGeneratedObjectTemplate(),true);
-	// TODO: do we need to create this in factionsructures db?
-	//ManagedReference<SceneObject*> obj = ObjectManager::instance()->createObject(serverTemplatePath.hashCode(),1,"playerstructures");
-	ManagedReference<SceneObject*> obj = zone->getZoneServer()->createObject(turretDeed->getGeneratedObjectTemplate().hashCode(), 1);
+
+	ManagedReference<SceneObject*> obj = zone->getZoneServer()->createObject(deed->getGeneratedObjectTemplate().hashCode(), 1);
 	obj->initializePosition(x, z, y);
 	obj->setDirection(dir.rotate(Vector3(0, 1, 0), degrees));
 
 	if(!obj->isTangibleObject())
-		return;
-
+		return 0;
 
 	TangibleObject* tano = cast<TangibleObject*>(obj.get());
 
@@ -2145,7 +2278,9 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 		tano->setFaction(building->getFaction());
 
 	tano->setPvpStatusBitmask(building->getPvpStatusBitmask() | tano->getPvpStatusBitmask());
-	tano->setDetailedDescription("Donated Turret");
+
+	if(tano->isTurret())
+		tano->setDetailedDescription("Donated Turret");
 
 	if(tano->isInstallationObject()){
 		InstallationObject* turret = cast<InstallationObject*>(tano);
@@ -2156,23 +2291,10 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 	}
 
 	zone->transferObject(obj, -1, false);
-
-	baseData->setTurretID(currentTurretIndex,obj->getObjectID());
-
-	StringIdChatParameter params;
-	params.setStringId("@faction/faction_hq/faction_hq_response:terminal_response45");  // you successfully donate deed
-	params.setTO(turretDeed->getDisplayedName());
-	creature->sendSystemMessage(params);
-
-	verifyTurrets(building);
-	block.release();
-
-	if(turretDeed != NULL) {
-		Locker clock(turretDeed, creature);
-		turretDeed->destroyObjectFromWorld(true);
-	}
-
+	building->getChildObjects()->put(obj);
+	return obj->getObjectID();
 }
+
 void GCWManagerImplementation::addMinefield(BuildingObject* building, SceneObject* minefield){
 	if(building == NULL || minefield == NULL || !minefield->isMinefield())
 			return;
@@ -2235,7 +2357,7 @@ void GCWManagerImplementation::verifyTurrets(BuildingObject* building){
 }
 
 bool GCWManagerImplementation::canUseTerminals(CreatureObject* creature, BuildingObject* building, SceneObject* terminal){
-	ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
 	if(ghost == NULL)
 		return false;

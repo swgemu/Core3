@@ -21,6 +21,7 @@
 #include "server/zone/objects/creature/commands/CombatQueueCommand.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "MinefieldAttackTask.h"
+#include "server/zone/objects/installation/components/TurretObserver.h"
 
 void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTreeEntry* entry) {
 	// if we don't have any mines, just exit
@@ -59,12 +60,8 @@ void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, Quad
 			if(!player->isAttackableBy(tano))
 				return;
 
-
 			Reference<MinefieldAttackTask*> task = new MinefieldAttackTask(sceneObject, player);
 			task->execute();
-
-
-
 		}
 	} catch (Exception& e) {
 
@@ -73,13 +70,16 @@ void MinefieldZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, Quad
 	return;
 }
 
-void MinefieldZoneComponent::notifyInsertIntoZone(SceneObject* sceneObject, Zone* zne){
+void MinefieldZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zne){
+	if(zne == NULL)
+		return;
 
 	ManagedReference<InstallationObject*> installation = cast<InstallationObject*>(sceneObject);
 	if(installation == NULL)
 		return;
 
-	// TODO: creature mienfield observer to keep track of hte minefield
+	ManagedReference<TurretObserver*> observer = new TurretObserver();
+	installation->registerObserver(ObserverEventType::OBJECTDESTRUCTION,observer);
 
 	// TODO: remove.  this is to get the pvpstatus bitmask correct for existing minefields
 	uint64 oid = installation->getOwnerObjectID();
@@ -89,10 +89,11 @@ void MinefieldZoneComponent::notifyInsertIntoZone(SceneObject* sceneObject, Zone
 			ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceno.get());
 			if(building != NULL){
 
-				installation->setPvpStatusBitmask(building->getPvpStatusBitmask());
+				installation->setPvpStatusBitmask(building->getPvpStatusBitmask() | 1);
 			}
 		}
 	}
+
 
 
 }

@@ -25,7 +25,7 @@ int TurretObserverImplementation::notifyObserverEvent(uint32 eventType, Observab
 			if(gcwMan == NULL)
 				return 1;
 
-			zone->getGCWManager()->notifyTurretDestruction(installation);
+			zone->getGCWManager()->notifyInstallationDestruction(installation);
 		}
 	}
 
