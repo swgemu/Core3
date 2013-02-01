@@ -230,6 +230,7 @@ public:
 	static const uint16 VENDOR_MOODS = 1010;
 	static const uint16 VENDOR_CUSTOM_PHRASE = 1011;
 	static const uint16 VENDOR_ANIMATION = 1012;
+	static const uint16 COLOR_GOGGLES = 1013;
 };
 
 #endif /*SuiWindowType_H_*/

@@ -100,6 +100,7 @@
 #include "server/zone/objects/creature/ai/components/SpawnStateComponent.h"
 #include "server/zone/objects/creature/ai/components/StandingStateComponent.h"
 #include "server/zone/objects/creature/ai/components/WanderingStateComponent.h"
+#include "server/zone/objects/tangible/components/GogglesColorMenuComponent.h"
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
@@ -227,4 +228,7 @@ ComponentManager::ComponentManager() {
 	components.put("PowerRegulatorMenuComponent", new PowerRegulatorMenuComponent());
 	components.put("TurretControlMenuComponent", new TurretControlMenuComponent());
 	components.put("GCWBaseContainerComponent", new GCWBaseContainerComponent());
+
+	// SE Goggles.
+	components.put("GogglesColorMenuComponent", new GogglesColorMenuComponent());
 }

@@ -163,6 +163,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp \
 				server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.cpp \
 				server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
+				server/zone/objects/player/sui/colorbox/SuiColorBox.cpp \
 				server/zone/objects/waypoint/WaypointObject.cpp \
 				server/zone/objects/player/sessions/CitySpecializationSession.cpp \
 				server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.cpp \
@@ -541,6 +542,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/vendor/VendorContainerComponent.cpp \
 		server/zone/objects/tangible/components/vendor/VendorDataComponent.cpp \
 		server/zone/objects/tangible/components/vendor/VendorMenuComponent.cpp \
+		server/zone/objects/tangible/components/GogglesColorMenuComponent.cpp \
 		server/zone/objects/installation/components/TurretDataComponent.cpp \
 		server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp \
 		server/zone/objects/creature/variables/CommandQueueAction.cpp \
@@ -611,6 +613,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/badges/Badge.cpp \
 		server/zone/objects/player/sui/banktransferbox/SuiBankTransferBoxImplementation.cpp \
 		server/zone/objects/player/sui/transferbox/SuiTransferBoxImplementation.cpp \
+		server/zone/objects/player/sui/colorbox/SuiColorBoxImplementation.cpp \
 		server/zone/packets/charcreation/ClientCreateCharacterCallback.cpp \
 		server/zone/packets/object/ObjectControllerMessageCallback.cpp \
 		server/chat/room/ChatRoomImplementation.cpp \
