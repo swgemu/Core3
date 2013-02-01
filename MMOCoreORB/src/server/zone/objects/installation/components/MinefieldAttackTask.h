@@ -39,7 +39,7 @@ public:
 			return;
 		}
 
-		Locker clocker(player, sceneObject);
+		//Locker clocker(player, sceneObject);
 
 		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(sceneObject->getContainerObject(0));;
 
@@ -77,7 +77,7 @@ public:
 			sceneObject->broadcastMessage(upvpsm, true, true);
 		}
 
-		clocker.release();
+		//clocker.release();
 		locker.release();
 
 		Locker lockerw(weapon);
