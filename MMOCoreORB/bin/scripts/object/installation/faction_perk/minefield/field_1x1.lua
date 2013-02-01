@@ -47,7 +47,7 @@ object_installation_faction_perk_minefield_field_1x1 = object_installation_facti
 	optionsBitmask = 0,
 	dataObjectComponent = "MinefieldDataComponent",
 	zoneComponent = "MinefieldZoneComponent",
-	objectMenuComponent = "MinefieldMenuComponent",
+	--objectMenuComponent = "MinefieldMenuComponent",
 	maxCondition = 6500,
 	
 }
