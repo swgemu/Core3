@@ -13,9 +13,9 @@ resetTimer = 604800
 -- amount of time in seconds to wait when a slice fails
 sliceCooldown = 120
 
-totalDNASamples = 10
+totalDNASamples = 44
 
-DNAMatchesRequired = 10
+DNAMatchesRequired = 22
 
 -- Amount of time that a base destructino takes after the countdown is initiated
 destructionTimer = 600

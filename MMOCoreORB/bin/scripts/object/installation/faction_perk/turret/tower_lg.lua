@@ -67,8 +67,9 @@ object_installation_faction_perk_turret_tower_lg = object_installation_faction_p
 	cold = 90,
 	acid = 90,
 	lightSaber =100,
-	chanceHit = .4,
+	chanceHit = 400,
 	weapon = "object/weapon/ranged/turret/turret_block_large.iff",
+
 }
 
 ObjectTemplates:addTemplate(object_installation_faction_perk_turret_tower_lg, "object/installation/faction_perk/turret/tower_lg.iff")
