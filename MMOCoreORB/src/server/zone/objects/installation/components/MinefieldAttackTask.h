@@ -80,7 +80,7 @@ public:
 		clocker.release();
 		locker.release();
 
-		Locker locker(weapon);
+		Locker lockerw(weapon);
 
 		weapon->destroyObjectFromWorld(true);
 		weapon->destroyObjectFromDatabase(true);
