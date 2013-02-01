@@ -50,11 +50,6 @@ object_installation_faction_perk_turret_dish_lg = object_installation_faction_pe
 		-- Damagetypes in WeaponObject
 	vulnerability = BLAST,
 
-	-- These are default Blue Frog stats
-	healthEncumbrance = 0,
-	actionEncumbrance = 0,
-	mindEncumbrance = 0,
-
 	-- LIGHT, MEDIUM, HEAVY
 	rating = HEAVY,
 

@@ -43,10 +43,11 @@
 
 object_installation_faction_perk_minefield_field_1x1 = object_installation_faction_perk_minefield_shared_field_1x1:new {
 	lotSize = 1,
-	pvpStatusBitmask = 1,
+	pvpStatusBitmask = ATTACKABLE,
 	optionsBitmask = 0,
 	dataObjectComponent = "MinefieldDataComponent",
 	zoneComponent = "MinefieldZoneComponent",
+	objectMenuComponent = "MinefieldMenuComponent",
 	maxCondition = 6500,
 	
 }

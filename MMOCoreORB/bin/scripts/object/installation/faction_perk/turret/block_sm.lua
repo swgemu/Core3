@@ -42,19 +42,14 @@
 
 
 object_installation_faction_perk_turret_block_sm = object_installation_faction_perk_turret_shared_block_sm:new {
-	pvpStatusBitmask = 1,
+	lotSize = 1,
+	pvpStatusBitmask = ATTACKABLE,
 	optionsBitmask = 0,
 	maxCondition = 75000,
 	zoneComponent = "TurretZoneComponent",
 	dataObjectComponent = "TurretDataComponent",
 	-- Damagetypes in WeaponObject
 	vulnerability = BLAST,
-
-	-- These are default Blue Frog stats
-	healthEncumbrance = 0,
-	actionEncumbrance = 0,
-	mindEncumbrance = 0,
-
 	-- LIGHT, MEDIUM, HEAVY
 	rating = HEAVY,
 
@@ -67,7 +62,7 @@ object_installation_faction_perk_turret_block_sm = object_installation_faction_p
 	cold = 90,
 	acid = 90,
 	lightSaber =100,
-	chanceHit = .4,
+	chanceHit = 400,
 	weapon = "object/weapon/ranged/turret/turret_block_large.iff",
 }
 

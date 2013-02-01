@@ -66,7 +66,7 @@ void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	player->sendMessage(buio6);
 
 
-	if(this->isTurret()){
+	if(this->isTurret() || isMinefield()){
 			UpdatePVPStatusMessage* upvpsms = new UpdatePVPStatusMessage(_this.get());
 			player->sendMessage(upvpsms);
 	}
