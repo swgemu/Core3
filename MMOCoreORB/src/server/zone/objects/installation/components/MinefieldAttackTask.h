@@ -51,10 +51,6 @@ public:
 
 		sceneObject->removeObject(weapon,NULL,true);
 
-		locker.release();
-
-		Locker clockerm(weapon, player);
-
 		if(sceneObject->getZoneServer() != NULL){
 			ManagedReference<ObjectController*> objectController = sceneObject->getZoneServer()->getObjectController();
 			QueueCommand* command = objectController->getQueueCommand(String("minefieldattack").hashCode());
@@ -71,10 +67,6 @@ public:
 		mineData->updateCooldown(weapon->getAttackSpeed());
 		mineData->setMaxRange(weapon->getMaxRange());
 
-		weapon->destroyObjectFromWorld(true);
-		weapon->destroyObjectFromDatabase(true);
-
-
 		if(sceneObject->getContainerObjectsSize() <= 0){
 			TangibleObject* tano = sceneObject.castTo<TangibleObject*>();
 			if(tano == NULL)
@@ -84,6 +76,15 @@ public:
 			UpdatePVPStatusMessage* upvpsm = new UpdatePVPStatusMessage(tano,tano->getPvpStatusBitmask());
 			sceneObject->broadcastMessage(upvpsm, true, true);
 		}
+
+		clocker.release();
+		locker.release();
+
+		Locker locker(weapon);
+
+		weapon->destroyObjectFromWorld(true);
+		weapon->destroyObjectFromDatabase(true);
+
 	}
 
 };
