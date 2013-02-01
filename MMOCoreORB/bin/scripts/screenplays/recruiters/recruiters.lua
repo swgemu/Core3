@@ -83,8 +83,7 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 			playerObject:setFactionStatus(3)
 		end
 		
-		--createEvent(30000, "recruiter_convo_handler", "handleGoOvert", conversingPlayer)
-		createEvent(30000, "recruiter_convo_handler", "handleGoOvert", conversingPlayer)
+		createEvent(300000, "recruiter_convo_handler", "handleGoOvert", conversingPlayer)
 	elseif (screenID == "accepted_go_covert") then
 		if (playerObjectPointer ~= nil) then
 			local playerObject = LuaPlayerObject(playerObjectPointer)
@@ -470,7 +469,7 @@ function recruiter_convo_handler:getInitialScreen(play, npc, conversationTemplat
 	
 	local factionStanding = playerObject:getFactionStanding(self:getRecruiterFactionString())
 	
-	if (faction == self:getEnemyFactionHashCode()) then
+	if (faction == self:getEnemyFactionHashCode() or (faction == self:getRecruiterFactionHashCode() and playerObject:getFactionStanding(self:getRecruiterFactionString()) < 200 )) then
 		return convoTemplate:getScreen("greet_enemy")
 	end
 	
