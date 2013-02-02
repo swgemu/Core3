@@ -168,6 +168,9 @@ void MissionManagerImplementation::handleMissionAccept(MissionTerminal* missionT
 
 	SceneObject* datapad = player->getSlottedObject("datapad");
 
+	if (mission->getParent().get() == datapad)
+		return;
+
 	int missionCount = 0;
 	bool hasBountyMission = false;
 
