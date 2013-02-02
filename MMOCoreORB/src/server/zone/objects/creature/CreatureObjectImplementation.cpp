@@ -2449,18 +2449,14 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object){
 		return false;
 
 	// if player is on leave, then faction object cannot attack it
-	if (ghost->getFactionStatus() == FactionStatus::ONLEAVE)
+	if (ghost->getFactionStatus() == FactionStatus::ONLEAVE || getFaction() == 0)
 		return false;
 
-
-	if(getPvpStatusBitmask() & CreatureFlag::OVERT && !(object->getPvpStatusBitmask() & CreatureFlag::OVERT))
-		false;
-
-	// if creature is covert, can't be attacked by overt
-	if(!(getPvpStatusBitmask() & CreatureFlag::OVERT) && (object->getPvpStatusBitmask() & CreatureFlag::OVERT))
+	// if tano is overt, creature must be overt
+	if((object->getPvpStatusBitmask() & CreatureFlag::OVERT) && !(getPvpStatusBitmask() & CreatureFlag::OVERT))
 		return false;
 
-	// the other options are overt/overt and covert/covert both are attackable
+	// the other options are overt creature / overt tano  and covert/covert, covert tano, overt creature..  all are attackable
 	return true;
 
 }
