@@ -120,6 +120,9 @@ public:
 				ManagedReference<SceneObject*> par = NULL;
 				ManagedReference<SceneObject*> obj = objectToTransfer;
 
+				if (rootParent->containsChildObject(objectToTransfer))
+					return INVALIDTARGET;
+
 				while ((par = obj->getParent()) != NULL) {
 					if (par->isCellObject()) {
 						if (obj->getDistanceTo(creature) > maxDistance)

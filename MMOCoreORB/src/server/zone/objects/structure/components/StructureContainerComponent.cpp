@@ -25,9 +25,6 @@ bool StructureContainerComponent::checkContainerPermission(SceneObject* sceneObj
 		}
 	}
 
-	if (permission != ContainerPermissions::OPEN && building->containsChildObject(sceneObject))
-		return false;
-
 	if (building->isOwnerOf(creature) || building->isOnAdminList(creature))
 		return true;
 
