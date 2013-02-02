@@ -266,21 +266,18 @@ uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim) {
 
 float DamageOverTime::reduceTick(float reduction) {
 	//System::out << "reducing tick with reduction " << reduction << endl;
-	//System::out << "reducing tick with reduction " << reduction << endl;
 	if (reduction < 0)
 		return reduction;
 
-	float effReduction = (potency - (float)reduction);
-	float reductionLeft = (float)reduction - potency;
+	float effReduction = (strength - (float)reduction);
+	float reductionLeft = (float)reduction - strength;
 
 	if (reductionLeft >= 0.0f) {
 		expires.updateToCurrentTime();
 	} else {
-		float dotReduction = effReduction / potency;
 		//System::out << "strength before dotRed " << strength << endl;
-		strength *= (int)dotReduction;
+		strength = effReduction;
 		//System::out << "strength after dotRed " << strength << endl;
-		potency -= reduction;
 	}
 
 	return reductionLeft;
