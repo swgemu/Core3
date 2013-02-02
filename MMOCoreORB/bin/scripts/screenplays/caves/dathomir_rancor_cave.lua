@@ -18,7 +18,7 @@ RancorCaveScreenPlay = ScreenPlay:new {
 		{
 			groups = {
 				{group = "color_crystals", chance = 160000},
-				{group = "junk", chance = 8600000},
+				{group = "junk", chance = 8240000},
 				{group = "rifles", chance = 500000},
 				{group = "pistols", chance = 500000},
 				{group = "clothing_attachments", chance = 300000},
@@ -28,13 +28,14 @@ RancorCaveScreenPlay = ScreenPlay:new {
 		}					
 	},
 	
-	lootContainerRespawn = 5 -- 30 minutes
+	lootContainerRespawn = 1800 -- 30 minutes
 } 
  
 registerScreenPlay("RancorCaveScreenPlay", true) 
  
 function RancorCaveScreenPlay:start() 
         self:spawnMobiles() 
+	self:initializeLootContainers()
 end 
  
 function RancorCaveScreenPlay:spawnMobiles() 

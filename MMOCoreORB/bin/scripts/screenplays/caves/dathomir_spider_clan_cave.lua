@@ -11,7 +11,9 @@ SpiderClanCaveScreenPlay = ScreenPlay:new {
          5165586,
          5165587,
          5165588,
-         5165591
+         5165591,
+	 5165592,
+	 5165593
 	},
 	
 	lootLevel = 26,	
@@ -19,7 +21,7 @@ SpiderClanCaveScreenPlay = ScreenPlay:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "color_crystals", chance = 100000},
+				{group = "color_crystals", chance = 1000000},
 				{group = "junk", chance = 5000000},
 				{group = "rifles", chance = 500000},
 				{group = "pistols", chance = 500000},
@@ -38,6 +40,7 @@ registerScreenPlay("SpiderClanCaveScreenPlay", true)
 function SpiderClanCaveScreenPlay:start()
 	if (isZoneEnabled("dathomir")) then
 		self:spawnMobiles()
+		self:initializeLootContainers()
 	end
 end
 
