@@ -73,7 +73,7 @@ class InstallationObject extends StructureObject {
 	protected boolean operating;
 	
 	@dereferenced
-	protected SortedVector<CreatureObject> operatorList;
+	protected transient SortedVector<CreatureObject> operatorList;
 	
 	protected int installationType;
 	
