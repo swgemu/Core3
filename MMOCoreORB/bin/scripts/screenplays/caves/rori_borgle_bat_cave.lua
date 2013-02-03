@@ -1,11 +1,45 @@
 BorgleBatCaveScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
+	screenplayName = "BorgleBatCaveScreenPlay",
+
+lootContainers = {
+           8795683,
+	   8795684,
+	   8795685,
+	   8795686,
+	   8795687,
+	   8795688,
+	   8795689
+        },
+        
+        lootLevel = 13, 
+ 
+        lootGroups = {
+                {
+                        groups = {
+                                {group = "junk", chance = 4800000},
+                                {group = "melee_weapons", chance = 600000},
+				{group = "pistols", chance = 200000},
+				{group = "carbines", chance = 200000},
+				{group = "rifles", chance = 200000},
+                                {group = "clothing_attachments", chance = 2000000},
+                                {group = "armor_attachments", chance = 2000000}
+                        },
+                        lootChance = 8000000
+                }                                       
+        },
+        
+        lootContainerRespawn = 1800 -- 30 minutes
 }
 
 registerScreenPlay("BorgleBatCaveScreenPlay", true)
 
 function BorgleBatCaveScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("rori")) then
+                self:spawnMobiles()
+                self:initializeLootContainers()
+        end
 end
 
 function BorgleBatCaveScreenPlay:spawnMobiles()

@@ -1,11 +1,45 @@
 GarynRaidersBunkerScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
+	screenplayName = "GarynRaidersBunkerScreenPlay",
+
+lootContainers = {
+           5555918,
+	   5555917,
+	   5555916,
+	   5555915,
+	   5555912,
+	   5555914
+        },
+        
+        lootLevel = 15, 
+ 
+        lootGroups = {
+                {
+                        groups = {
+                                {group = "color_crystals", chance = 100000},
+                                {group = "junk", chance = 6100000},
+                                {group = "melee_weapons", chance = 1500000},
+				{group = "pistols", chance = 500000},
+				{group = "carbines", chance = 500000},
+				{group = "rifles", chance = 500000},
+                                {group = "clothing_attachments", chance = 400000},
+                                {group = "armor_attachments", chance = 400000}
+                        },
+                        lootChance = 8000000
+                }                                       
+        },
+        
+        lootContainerRespawn = 1800 -- 30 minutes
 }
 
 registerScreenPlay("GarynRaidersBunkerScreenPlay", true)
 
 function GarynRaidersBunkerScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("rori")) then
+                self:spawnMobiles()
+                self:initializeLootContainers()
+        end
 end
 
 function GarynRaidersBunkerScreenPlay:spawnMobiles()

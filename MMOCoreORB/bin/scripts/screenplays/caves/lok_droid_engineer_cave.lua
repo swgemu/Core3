@@ -6,7 +6,8 @@ DroidEngineerCaveScreenPlay = ScreenPlay:new {
 	lootContainers = {
 		568995,
 		871800,
-		871802
+		871802,
+		871812
 	},
 	
 	lootLevel = 45,	

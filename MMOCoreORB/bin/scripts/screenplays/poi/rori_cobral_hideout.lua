@@ -1,11 +1,45 @@
 CobralHideoutScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
+	screenplayName = "CobralHideoutScreenPlay",
+
+lootContainers = {
+           6475949,
+	   6475950,
+	   6475951,
+	   6475952,
+	   6475953,
+	   6475954
+        },
+        
+        lootLevel = 13, 
+ 
+        lootGroups = {
+                {
+                        groups = {
+                                {group = "color_crystals", chance = 100000},
+                                {group = "junk", chance = 6300000},
+                                {group = "melee_weapons", chance = 1500000},
+				{group = "pistols", chance = 500000},
+				{group = "carbines", chance = 500000},
+				{group = "rifles", chance = 500000},
+                                {group = "clothing_attachments", chance = 300000},
+                                {group = "armor_attachments", chance = 300000}
+                        },
+                        lootChance = 8000000
+                }                                       
+        },
+        
+        lootContainerRespawn = 1800 -- 30 minutes
 }
 
 registerScreenPlay("CobralHideoutScreenPlay", true)
 
 function CobralHideoutScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("rori")) then
+                self:spawnMobiles()
+                self:initializeLootContainers()
+        end
 end
 
 function CobralHideoutScreenPlay:spawnMobiles()

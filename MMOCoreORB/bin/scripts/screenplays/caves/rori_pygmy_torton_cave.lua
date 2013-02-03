@@ -1,11 +1,46 @@
 TortonCaveScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
+	screenplayName = "TortonCaveScreenPlay",
+
+lootContainers = {
+           5365467,
+	   5365470,
+	   5365474,
+	   5365477,
+	   5365482,
+	   5365486,
+	   5555807
+        },
+        
+        lootLevel = 17, 
+ 
+        lootGroups = {
+                {
+                        groups = {
+                                {group = "color_crystals", chance = 100000},
+                                {group = "junk", chance = 6900000},
+                                {group = "melee_weapons", chance = 900000},
+				{group = "pistols", chance = 300000},
+				{group = "carbines", chance = 300000},
+				{group = "rifles", chance = 300000},
+                                {group = "clothing_attachments", chance = 600000},
+                                {group = "armor_attachments", chance = 600000}
+                        },
+                        lootChance = 8000000
+                }                                       
+        },
+        
+        lootContainerRespawn = 1800 -- 30 minutes
 }
 
 registerScreenPlay("TortonCaveScreenPlay", true)
 
 function TortonCaveScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("rori")) then
+                self:spawnMobiles()
+                self:initializeLootContainers()
+        end
 end
 
 function TortonCaveScreenPlay:spawnMobiles()
