@@ -489,6 +489,8 @@ function recruiter_convo_handler:getInitialScreen(play, npc, conversationTemplat
 		else
 			return self:greetMemberOvert(play, conversationTemplate)
 		end
+	elseif (playerObject:getFactionStanding(self:getRecruiterFactionString()) < 200 ) then
+		return convoTemplate:getScreen("greet_enemy")
 	else
 		return self:sendNeutralStart(play, conversationTemplate)
 	end
