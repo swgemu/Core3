@@ -1,6 +1,6 @@
-garyn_sykes = Creature:new {
+gavyn_sykes = Creature:new {
 	objectName = "",
-	customName = "Gavyn Sykes",
+	customName = "Captain Gavyn Sykes",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -24,15 +24,15 @@ garyn_sykes = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_gavyn_sykes.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "gavyn_sykes_mission_giver_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(garyn_sykes, "garyn_sykes")
+CreatureTemplates:addCreatureTemplate(gavyn_sykes, "gavyn_sykes")

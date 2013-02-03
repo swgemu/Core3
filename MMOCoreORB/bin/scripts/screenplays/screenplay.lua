@@ -107,6 +107,9 @@ includeFile("dungeon/geonosian_lab.lua")
 includeFile("dungeon/warren/warren.lua")
 includeFile("dungeon/death_watch_bunker_conv_handles.lua")
 
+--Tasks
+includeFile("tasks/captain_gavyn_sykes.lua")
+
 --Caves
 includeFile("caves/corellia_afarathu_cave.lua")
 includeFile("caves/corellia_lord_nyax_cult.lua")
