@@ -56,6 +56,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/callbacks/TicketSelectionSuiCallback.h"
+#include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
 
@@ -199,12 +200,40 @@ public:
 			}
 		}
 
-		// Randomize the arrival a bit to try and avoid everyone zoning on top of each other
+		// calculate arrival position
 		Coordinate p;
-		p.initializePosition(arrivalPoint->getArrivalPosition());
-		p.randomizePosition(5);
+		float x;
+		float y;
 
-		creature->switchZone(arrivalZone->getZoneName(), p.getPositionX(), p.getPositionZ(), p.getPreviousPositionY(), 0);
+		p.initializePosition(arrivalPoint->getArrivalPosition());
+
+		ManagedReference<CityRegion*> region = targetShuttleObject->getCityRegion();
+
+		// Randomize the arrival a bit to try and avoid everyone zoning on top of each other
+		// For NPC cities, use the generic method
+		if (region->isClientRegion()) {
+			p.randomizePosition(5);
+
+			x = p.getPositionX();
+			y = p.getPositionY();
+
+		} else {
+
+			// relative orientation of the shuttle
+			float oy = targetShuttleObject->getDirection()->getY();
+			float dirDegrees = (acos(oy) * 180 / M_PI) * 2;
+
+			// the proper location for arrival is along a 36 degree arc centered on the shuttle's facing axis, between 13 and 16 meters out
+			dirDegrees = dirDegrees - 18 + System::random(36);
+			float dirRadians = dirDegrees * M_PI / 180;
+			float distance = 13 + System::random(3);
+
+			// update the X & Y positions accordingly
+			x = p.getPositionX() + sin(dirRadians) * distance;
+			y = p.getPositionY() + cos(dirRadians) * distance;
+		}
+
+		creature->switchZone(arrivalZone->getZoneName(), x, p.getPositionZ(), y, 0);
 
 		//remove the ticket from inventory and destory it.
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
