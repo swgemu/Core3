@@ -46,7 +46,7 @@ public:
 
 		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(sceneObject->getContainerObject(0));;
 
-		if (weapon == NULL || sceneObject->getZone())
+		if (weapon == NULL || sceneObject->getZone() == NULL)
 			return;
 
 		PlayClientEffectLoc* explodeLoc = new PlayClientEffectLoc("clienteffect/lair_damage_heavy.cef", sceneObject->getZone()->getZoneName(), sceneObject->getPositionX(), sceneObject->getPositionZ(), sceneObject->getPositionY());
