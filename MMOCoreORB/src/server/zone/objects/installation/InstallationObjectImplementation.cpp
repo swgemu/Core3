@@ -735,8 +735,14 @@ void InstallationObjectImplementation::createChildObjects(){
 					}
 			}
 		}
+	} else if (isMinefield()){
+		this->setContainerDefaultAllowPermission(ContainerPermissions::MOVEIN);
+		this->setContainerDefaultDenyPermission(ContainerPermissions::MOVEOUT);
+		this->setContainerDefaultAllowPermission(ContainerPermissions::OPEN);
+
+
 	} else {
-				StructureObjectImplementation::createChildObjects();
+		StructureObjectImplementation::createChildObjects();
 
 	}
 }

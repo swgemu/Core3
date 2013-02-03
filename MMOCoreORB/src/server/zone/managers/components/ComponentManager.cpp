@@ -25,6 +25,7 @@
 #include "server/zone/objects/installation/components/DetectorDataComponent.h"
 #include "server/zone/objects/installation/components/TurretZoneComponent.h"
 #include "server/zone/objects/installation/components/MinefieldZoneComponent.h"
+#include "server/zone/objects/installation/components/MinefieldContainerComponent.h"
 #include "server/zone/objects/installation/components/DetectorZoneComponent.h"
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
 #include "server/zone/objects/player/components/PlayerZoneComponent.h"
@@ -66,6 +67,7 @@
 #include "server/zone/objects/tangible/terminal/components/TurretControlMenuComponent.h"
 #include "server/zone/objects/installation/components/InstallationObjectMenuComponent.h"
 #include "server/zone/objects/installation/components/FactoryObjectMenuComponent.h"
+#include "server/zone/objects/installation/components/MinefieldMenuComponent.h"
 #include "server/zone/ZoneContainerComponent.h"
 #include "server/zone/objects/structure/components/StructureContainerComponent.h"
 #include "server/zone/objects/tangible/components/ElevatorMenuComponent.h"
@@ -150,6 +152,7 @@ ComponentManager::ComponentManager() {
 	components.put("PlaceGCWBaseComponent", new PlaceGCWBaseComponent());
 	components.put("StructureTerminalMenuComponent", new StructureTerminalMenuComponent());
 	components.put("FactoryObjectMenuComponent", new FactoryObjectMenuComponent());
+	components.put("MinefieldMenuComponent", new MinefieldMenuComponent());
 	components.put("InstallationObjectMenuComponent", new InstallationObjectMenuComponent());
 
 
@@ -162,6 +165,7 @@ ComponentManager::ComponentManager() {
 	components.put("VendorZoneComponent", new VendorZoneComponent());
 	components.put("TurretZoneComponent", new TurretZoneComponent());
 	components.put("MinefieldZoneComponent", new MinefieldZoneComponent());
+	components.put("MinefieldContainerComponent", new MinefieldContainerComponent());
 	components.put("DetectorZoneComponent", new DetectorZoneComponent());
 
 	dataObjectFactory.registerObject<VendorDataComponent>("VendorDataComponent");

@@ -129,8 +129,7 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature,
 
 	String serverTemplatePath = deed->getGeneratedObjectTemplate();
 
-	if (deed->getFaction() != 0
-			&& creature->getFaction() != deed->getFaction()) {
+	if (deed->getFaction() != 0 && creature->getFaction() != deed->getFaction()) {
 		creature->sendSystemMessage("You are not the correct faction");
 		return 1;
 	}
@@ -325,7 +324,7 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 	structureObject->grantPermission("ADMIN", creature->getFirstName());
 	structureObject->setOwnerName(creature->getFirstName());
 
-	if(structureObject->isTurret()){
+	if(structureObject->isTurret() || structureObject->isMinefield()){
 		structureObject->setFaction(creature->getFaction());
 	}
 

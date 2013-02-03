@@ -471,23 +471,23 @@ void PlayerObjectImplementation::setFactionStatus(int status) {
 
 	ManagedReference<SceneObject*> parent = getParent();
 
-		Zone* zone = parent->getZone();
+	Zone* zone = parent->getZone();
 
-		if (zone == NULL)
-			return;
+	if (zone == NULL)
+		return;
 
-		CloseObjectsVector* vec = (CloseObjectsVector*) parent->getCloseObjects();
+	CloseObjectsVector* vec = (CloseObjectsVector*) parent->getCloseObjects();
 
-		SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
-		vec->safeCopyTo(closeObjects);
+	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
+	vec->safeCopyTo(closeObjects);
 
-		for (int i = 0; i < closeObjects.size(); ++i) {
-			BuildingObject* building = closeObjects.get(i).castTo<BuildingObject*>();
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		BuildingObject* building = closeObjects.get(i).castTo<BuildingObject*>();
 
-			if (building != NULL) {
-				building->updateCellPermissionsTo(creature);
-			}
+		if (building != NULL) {
+			building->updateCellPermissionsTo(creature);
 		}
+	}
 
 }
 

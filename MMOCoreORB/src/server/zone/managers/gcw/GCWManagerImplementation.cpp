@@ -1794,6 +1794,13 @@ void GCWManagerImplementation::notifyInstallationDestruction(InstallationObject*
 		}
 
 
+	} else if (ownerObject->isCreatureObject()){
+		info("Destroying faction installation not part of a base",true);
+		Locker plock(ownerObject);
+		Locker tlock(installation, ownerObject);
+		StructureManager::instance()->destroyStructure(installation);
+		tlock.release();
+		plock.release();
 	}
 
 }
@@ -2066,18 +2073,12 @@ void GCWManagerImplementation::performDonateMine(BuildingObject* building, Creat
 			_lock.release();
 			Locker clock(obj,creature);
 
-			DataObjectComponentReference* ref = obj->getDataObjectComponent();
-			if(ref == NULL){
-				return;
-			}
-
 			obj->transferObject(mine,-1,true);
-
 
 
 			if(precount < obj->getContainerObjectsSize()){
 				StringIdChatParameter param("@faction/faction_hq/faction_hq_response:terminal_response46"); // YOu sucessfully donate a %TO
-				param.setTO(mine->getObjectNameStringIdName());
+				param.setTO(mine->getObjectNameStringIdFile(),mine->getObjectNameStringIdName());
 
 				creature->sendSystemMessage(param);
 				// broadcast the fact that the minefield is no longer attackable since it just donated
@@ -2162,8 +2163,8 @@ void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, 
 		baseData->setMinefieldID(currentMinefieldIndex,minefieldID);
 
 		StringIdChatParameter params;
-		params.setStringId("@faction/faction_hq/faction_hq_response:terminal_response45");  // you successfully donate deed
-		params.setTO(deed->getDisplayedName());
+		params.setStringId("@faction/faction_hq/faction_hq_response:terminal_response45");  //"You successfully donate a %TO deed to the current facility."
+		params.setTO(deed->getObjectNameStringIdFile(),deed->getObjectNameStringIdName());
 		creature->sendSystemMessage(params);
 		// TODO: Implement .. verify minefields
 
@@ -2233,8 +2234,8 @@ void GCWManagerImplementation::performDonateTurret(BuildingObject* building, Cre
 		baseData->setTurretID(currentTurretIndex,turretID);
 
 		StringIdChatParameter params;
-		params.setStringId("@faction/faction_hq/faction_hq_response:terminal_response45");  // you successfully donate deed
-		params.setTO(turretDeed->getDisplayedName());
+		params.setStringId("@faction/faction_hq/faction_hq_response:terminal_response45");  // "You successfully donate a %TO deed to the current facility."
+		params.setTO(turretDeed->getObjectNameStringIdFile(),turretDeed->getObjectNameStringIdName());
 		creature->sendSystemMessage(params);
 
 		verifyTurrets(building);
