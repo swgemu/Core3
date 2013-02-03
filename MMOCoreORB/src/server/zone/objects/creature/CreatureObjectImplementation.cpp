@@ -2434,6 +2434,11 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object){
 	if(object->isCreatureObject())
 		return isAttackableBy(cast<CreatureObject*>(object));
 
+	// if you want to allow minefields to attack NPC
+	if(this->isAiAgent()){
+		return false;
+	}
+
 	PlayerObject* ghost = getPlayerObject();
 
 	if(ghost == NULL)
@@ -2467,8 +2472,13 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (isDead())
 		return false;
 
-	if (object->isAiAgent())
+	if (object->isAiAgent()){
+
+		if(object->getFaction() != 0 && getFaction() == 0)
+			return false;
+
 		return true;
+	}
 
 	PlayerObject* ghost = getPlayerObject();
 	PlayerObject* targetGhost = object->getPlayerObject();
