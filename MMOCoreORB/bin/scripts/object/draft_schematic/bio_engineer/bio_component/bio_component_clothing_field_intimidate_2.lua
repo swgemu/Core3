@@ -64,7 +64,7 @@ object_draft_schematic_bio_engineer_bio_component_bio_component_clothing_field_i
 
    ingredientTemplateNames = {"craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n", "craft_tissue_ingredients_n"},
    ingredientTitleNames = {"protein_base", "hormone_reactive_solution", "psychoactive_solution", "pheromone_enhancers"},
-   ingredientSlotType = {1, 0, 0, 0},
+   ingredientSlotType = {0, 0, 0, 0},
    resourceTypes = {"creature_food", "meat_herbivore", "vegetable_fungi", "meat_egg"},
    resourceQuantities = {25, 25, 15, 15},
    contribution = {100, 100, 100, 100},
