@@ -2615,7 +2615,7 @@ int PlayerManagerImplementation::checkSpeedHackSecondTest(CreatureObject* player
 void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject* ai) {
 	Locker locker(ai, player);
 
-	if (!ai->isDead())
+	if (!ai->isDead() || player->isDead())
 		return;
 
 	if (ai->getDistanceTo(player) > 6) {
