@@ -2474,8 +2474,16 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 
 	if (object->isAiAgent()){
 
-		if(object->getFaction() != 0 && getFaction() == 0)
+		if(!object->isRebel() && !object->isImperial())
+			return true;
+
+		if(getFaction() == 0 || getFaction() == object->getFaction())
 			return false;
+		else if (isPlayerCreature()){
+
+			if(getPlayerObject() == NULL || getPlayerObject()->getFactionStatus() == FactionStatus::ONLEAVE)
+				return false;
+		}
 
 		return true;
 	}
