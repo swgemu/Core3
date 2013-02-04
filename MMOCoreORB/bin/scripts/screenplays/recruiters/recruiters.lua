@@ -83,7 +83,7 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 			playerObject:setFactionStatus(3)
 		end
 		
-		createEvent(300000, "recruiter_convo_handler", "handleGoOvert", conversingPlayer)
+		createEvent(30000, "recruiter_convo_handler", "handleGoOvert", conversingPlayer)
 	elseif (screenID == "accepted_go_covert") then
 		if (playerObjectPointer ~= nil) then
 			local playerObject = LuaPlayerObject(playerObjectPointer)
