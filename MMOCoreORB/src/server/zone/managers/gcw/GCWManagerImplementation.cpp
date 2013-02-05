@@ -67,6 +67,7 @@ int GCWManagerImplementation::maxBases = -1;
 int GCWManagerImplementation::overtCooldown = 300;
 int GCWManagerImplementation::reactvationTimer = 300;
 int GCWManagerImplementation::turretAutoFireTimeout = 120;
+int GCWManagerImplementation::maxBasesPerPlayer = 3;
 
 void GCWManagerImplementation::initialize(){
 	// TODO: initialize things
@@ -111,6 +112,7 @@ void GCWManagerImplementation::loadLuaConfig(){
 	overtCooldown = lua->getGlobalInt("overtCooldown");
 	reactvationTimer = lua->getGlobalInt("reactvationTimer");
 	turretAutoFireTimeout = lua->getGlobalInt("turretAutoFireTimeout");
+	maxBasesPerPlayer = lua->getGlobalInt("maxBasesPerPlayer");
 }
 
 // PRE: Nothing needs to be locked
@@ -2357,6 +2359,33 @@ void GCWManagerImplementation::verifyTurrets(BuildingObject* building){
 	baseData->setDefense(turrets);
 }
 
+bool GCWManagerImplementation::canPlaceMoreBases(CreatureObject* creature){
+	if(creature == NULL || !creature->isPlayerCreature())
+		return false;
+
+	PlayerObject* ghost = creature->getPlayerObject();
+	if(ghost == NULL)
+		return false;
+	if(zone == NULL || zone->getZoneServer() == NULL)
+		return false;
+
+	ZoneServer* server = zone->getZoneServer();
+	int baseCount = 0;
+	for(int i =0; i < ghost->getTotalOwnedStructureCount(); ++i){
+		ManagedReference<SceneObject*> structure = server->getObject(ghost->getOwnedStructure(i));
+		if(structure != NULL && structure->isGCWBase())
+			baseCount++;
+
+	}
+
+	if(baseCount >= maxBasesPerPlayer){
+		creature->sendSystemMessage("You own " + String::valueOf(baseCount) + " bases.  The maximum amount is " + String::valueOf(maxBasesPerPlayer));
+		return false;
+	}
+
+	return true;
+
+}
 bool GCWManagerImplementation::canUseTerminals(CreatureObject* creature, BuildingObject* building, SceneObject* terminal){
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
@@ -2390,7 +2419,7 @@ bool GCWManagerImplementation::canUseTerminals(CreatureObject* creature, Buildin
 	// check for PvE base
 	else{
 		if(ghost->getFactionStatus() < FactionStatus::COVERT) {
-			creature->sendSystemMessage("YOu must be at least combatant");
+			creature->sendSystemMessage("You must be at least combatant");
 			return false;
 		}
 	}

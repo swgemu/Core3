@@ -67,6 +67,7 @@ class GCWManager extends ManagedService implements Logger {
 	public transient static int overtCooldown;
 	public transient static int reactvationTimer;
 	public transient static int turretAutoFireTimeout;
+	public transient static int maxBasesPerPlayer;
 
 
 	public GCWManager(Zone zne){
@@ -312,6 +313,8 @@ class GCWManager extends ManagedService implements Logger {
 	private native void generateTurretControlBoxTo(CreatureObject creature, TangibleObject turret, SceneObject terminal);
 
 	private native boolean canUseTurret(TurretDataComponent turretData, TurretControlTerminalDataComponent controlData, CreatureObject creature);
+
+	public native boolean canPlaceMoreBases(CreatureObject creature);
 
 	public int getImperialBaseCount(){
 		return imperialBases;

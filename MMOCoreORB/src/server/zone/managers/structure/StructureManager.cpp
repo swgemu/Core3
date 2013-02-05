@@ -195,9 +195,24 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature,
 			creature->sendSystemMessage("@player_structure:cant_place_unique"); //This city can only support a single structure of this type.
 			return 1;
 		}
+
 	}
 
 	Locker _lock(deed, creature);
+
+
+	if(serverTemplate->isDerivedFrom("object/building/faction_perk/base/shared_factional_building_base.iff")){
+		Zone* zone = creature->getZone();
+		if(zone == NULL)
+			return 1;
+
+		GCWManager* gcwMan = zone->getGCWManager();
+		if(gcwMan == NULL)
+			return 1;
+
+		if(!gcwMan->canPlaceMoreBases(creature))
+			return 1;
+	}
 
 	//Ensure that it is the correct deed, and that it is in a container in the creature's inventory.
 	if (deed == NULL || !deed->isASubChildOf(creature)) {

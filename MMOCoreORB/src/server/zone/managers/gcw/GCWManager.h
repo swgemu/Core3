@@ -270,6 +270,8 @@ public:
 
 	void sendTurretAttackListTo(CreatureObject* creature, SceneObject* turretControlTerminal);
 
+	bool canPlaceMoreBases(CreatureObject* creature);
+
 	int getImperialBaseCount();
 
 	int getRebelBaseCount();
@@ -349,6 +351,8 @@ public:
 	static int reactvationTimer;
 
 	static int turretAutoFireTimeout;
+
+	static int maxBasesPerPlayer;
 
 	GCWManagerImplementation(Zone* zne);
 
@@ -538,6 +542,8 @@ private:
 	bool canUseTurret(TurretDataComponent* turretData, TurretControlTerminalDataComponent* controlData, CreatureObject* creature);
 
 public:
+	bool canPlaceMoreBases(CreatureObject* creature);
+
 	int getImperialBaseCount();
 
 	int getRebelBaseCount();
@@ -688,6 +694,8 @@ public:
 	bool canUseTerminals(CreatureObject* creature, BuildingObject* building, SceneObject* terminal);
 
 	void sendTurretAttackListTo(CreatureObject* creature, SceneObject* turretControlTerminal);
+
+	bool canPlaceMoreBases(CreatureObject* creature);
 
 	int getImperialBaseCount();
 
