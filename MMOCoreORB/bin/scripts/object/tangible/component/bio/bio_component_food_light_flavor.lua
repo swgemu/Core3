@@ -46,7 +46,7 @@ object_tangible_component_bio_bio_component_food_light_flavor = object_tangible_
 
 	numberExperimentalProperties = {1, 1, 1, 3},
 	experimentalProperties = {"XX", "XX", "XX", "FL", "OQ", "PE"},
-	experimentalWeights = {1, 1, 1, 1, 2, 2},
+	experimentalWeights = {1, 1, 1, 2, 5, 3},
 	experimentalGroupTitles = {"null", "null", "null", "exp_flavor"},
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "add_flavor"},
 	experimentalMin = {0, 0, 1000, 10},

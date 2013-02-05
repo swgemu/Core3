@@ -46,7 +46,7 @@ object_tangible_component_bio_bio_component_food_medium_nutrition = object_tangi
 
 	numberExperimentalProperties = {1, 1, 1, 3},
 	experimentalProperties = {"XX", "XX", "XX", "FL", "OQ", "PE"},
-	experimentalWeights = {1, 1, 1, 1, 2, 2},
+	experimentalWeights = {1, 1, 1, 2, 5, 3},
 	experimentalGroupTitles = {"null", "null", "null", "exp_nutrition"},
 	experimentalSubGroupTitles = {"null", "null", "hitpoints", "add_nutrition"},
 	experimentalMin = {0, 0, 1000, 60},
