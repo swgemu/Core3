@@ -129,7 +129,7 @@ object_weapon_melee_2h_sword_2h_sword_cleaver = object_weapon_melee_2h_sword_sha
 	experimentalMin = {0, 0, 35, 105, 5.3, 19, 750, -20, -20, 3, -20, 4, 49, 46, 26},
 	experimentalMax = {0, 0, 65, 195, 3.7, 35, 1500, -10, -10, 3, -10, 4, 27, 25, 14},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_2h_sword_cleaver, "object/weapon/melee/2h_sword/2h_sword_cleaver.iff")

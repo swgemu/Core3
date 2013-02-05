@@ -129,7 +129,7 @@ object_weapon_ranged_rifle_rifle_laser = object_weapon_ranged_rifle_shared_rifle
 	experimentalMin = {0, 0, 7, 203, 8.8, 7, 30, 750, -80, -50, 60, 14, 16, 26, 68},
 	experimentalMax = {0, 0, 13, 377, 6.1, 13, 65, 1500, -80, -50, 60, 26, 8, 14, 36},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_laser, "object/weapon/ranged/rifle/rifle_laser.iff")

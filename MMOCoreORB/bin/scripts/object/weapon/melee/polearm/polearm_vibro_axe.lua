@@ -129,7 +129,7 @@ object_weapon_melee_polearm_polearm_vibro_axe = object_weapon_melee_polearm_shar
 	experimentalMin = {0, 0, 49, 196, 6.5, 23, 750, -45, -40, 3, -45, 7, 78, 65, 29},
 	experimentalMax = {0, 0, 91, 364, 4.5, 43, 1500, -20, -20, 3, -20, 7, 45, 35, 15},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_polearm_vibro_axe, "object/weapon/melee/polearm/polearm_vibro_axe.iff")

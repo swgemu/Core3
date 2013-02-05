@@ -127,7 +127,7 @@ object_weapon_ranged_rifle_rifle_lightning = object_weapon_ranged_rifle_shared_r
 	experimentalMin = {0, 0, 276, 592, 6.3, 8, 30, 750, -10, 30, -5, 43, 62, 36},
 	experimentalMax = {0, 0, 410, 730, 4.7, 16, 65, 1500, 20, 30, 15, 28, 38, 24},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_lightning, "object/weapon/ranged/rifle/rifle_lightning.iff")

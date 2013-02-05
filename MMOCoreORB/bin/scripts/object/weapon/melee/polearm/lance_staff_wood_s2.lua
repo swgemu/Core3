@@ -129,7 +129,7 @@ object_weapon_melee_polearm_lance_staff_wood_s2 = object_weapon_melee_polearm_sh
 	experimentalMin = {0, 0, 41, 86, 5.8, 7, 750, 7, 7, 3, 7, 5, 20, 38, 15},
 	experimentalMax = {0, 0, 52, 111, 4, 7, 1500, 17, 17, 3, 17, 5, 14, 27, 11},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_lance_staff_wood_s2, "object/weapon/melee/polearm/lance_staff_wood_s2.iff")

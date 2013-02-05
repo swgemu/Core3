@@ -128,7 +128,7 @@ object_weapon_melee_2h_sword_2h_sword_blacksun_hack = object_weapon_melee_2h_swo
 	experimentalMin = {0, 0, 58, 178, 5.2, 12, 750, -22, -18, 3, -28, 6, 78, 48, 12},
 	experimentalMax = {0, 0, 112, 246, 3.8, 24, 1500, 8, 12, 3, 2, 6, 46, 32, 4},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_2h_sword_blacksun_hack, "object/weapon/melee/2h_sword/2h_sword_blacksun_hack.iff")

@@ -129,7 +129,7 @@ object_weapon_ranged_pistol_pistol_tangle = object_weapon_ranged_pistol_shared_p
 	experimentalMin = {0, 0, 32, 51, 4.8, 2, 1, 750, -5, -80, 10, -10, 16, 33, 26},
 	experimentalMax = {0, 0, 50, 72, 3.3, 4, 8, 1500, 5, -80, 10, -10, 8, 18, 14},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_pistol_pistol_tangle, "object/weapon/ranged/pistol/pistol_tangle.iff")

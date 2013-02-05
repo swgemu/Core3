@@ -131,7 +131,7 @@ object_weapon_melee_baton_baton_gaderiffi = object_weapon_melee_baton_shared_bat
 	experimentalMin = {0, 0, 49, 98, 5.9, 11, 750, -15, -15, 3, -15, 4, 58, 31, 10},
 	experimentalMax = {0, 0, 91, 182, 4, 21, 1500, -5, -5, 3, -5, 4, 30, 15, 4},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_baton_baton_gaderiffi, "object/weapon/melee/baton/baton_gaderiffi.iff")

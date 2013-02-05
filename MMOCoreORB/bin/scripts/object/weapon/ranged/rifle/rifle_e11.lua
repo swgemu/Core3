@@ -129,7 +129,7 @@ object_weapon_ranged_rifle_rifle_e11 = object_weapon_ranged_rifle_shared_rifle_e
 	experimentalMin = {0, 0, 42, 84, 6.8, 7, 15, 750, -70, -50, 50, 21, 16, 26, 43},
 	experimentalMax = {0, 0, 78, 156, 4.7, 13, 45, 1500, -70, -50, 50, 39, 8, 14, 23},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_e11, "object/weapon/ranged/rifle/rifle_e11.iff")

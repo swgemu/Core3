@@ -110,7 +110,7 @@ object_weapon_ranged_rifle_rifle_bowcaster = object_weapon_ranged_rifle_shared_r
 	experimentalMin = {0, 0, 77, 131, 8, 9, 30, 750, -30, -80, 45, -5, 34, 34, 48},
 	experimentalMax = {0, 0, 130, 234, 5, 17, 65, 1500, -30, -80, 45, 5, 18, 18, 26},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_ranged_rifle_rifle_bowcaster, "object/weapon/ranged/rifle/rifle_bowcaster.iff")
