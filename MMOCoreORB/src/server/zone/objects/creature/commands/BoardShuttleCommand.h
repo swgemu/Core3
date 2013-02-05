@@ -211,7 +211,7 @@ public:
 
 		// Randomize the arrival a bit to try and avoid everyone zoning on top of each other
 		// For NPC cities, use the generic method
-		if (region->isClientRegion()) {
+		if (region != NULL && region->isClientRegion()) {
 			p.randomizePosition(5);
 
 			x = p.getPositionX();
