@@ -27,7 +27,14 @@ enhanced_kliknik = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kliknik.iff"},
-	lootGroups = {},
+	lootGroups = {
+	 {
+	        groups = {
+				{group = "geo_kliknik", chance = 10000000}
+			},
+			lootChance = 3000000
+		}
+	},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
 	attacks = {

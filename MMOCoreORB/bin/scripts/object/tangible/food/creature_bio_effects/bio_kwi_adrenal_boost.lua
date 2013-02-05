@@ -41,8 +41,41 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_tangible_food_creature_bio_effects_bio_kwi_adrenal_boost = object_tangible_food_creature_bio_effects_shared_bio_kwi_adrenal_boost:new {
 
+object_tangible_food_creature_bio_effects_bio_kwi_adrenal_boost = object_tangible_food_creature_bio_effects_shared_bio_kwi_adrenal_boost:new  {
+	templateType = CONSUMABLE,
+
+	duration = 60,
+	filling = 0,
+	nutrition = 0,
+
+	effectType = 5,
+
+	fillingMin = 0,
+	fillingMax = 0,
+	flavorMin = 0,
+	flavorMax = 0,
+	nutritionMin = 0,
+	nutritionMax = 0,
+	quantityMin = 0,
+	quantityMax = 0,
+
+	modifiers = { "health" , 100, "constitution" , 900, "action", 100, "stamina", 900, "mind", 100, "willpower", 900 },
+
+	buffName = "kwi_boost",
+	buffCRC = 0,
+	speciesRestriction = "",
+
+	numberExperimentalProperties = {1, 1, 3},
+	experimentalProperties = {"XX", "XX", "DR", "OQ", "UT"},
+	experimentalWeights = {1, 1, 4, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_nutrition"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+	experimentalMin = {0, 0, 1000},
+	experimentalMax = {0, 0, 1000},
+	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 4},
 }
+
 
 ObjectTemplates:addTemplate(object_tangible_food_creature_bio_effects_bio_kwi_adrenal_boost, "object/tangible/food/creature_bio_effects/bio_kwi_adrenal_boost.iff")

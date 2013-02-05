@@ -41,8 +41,41 @@
 --this exception also makes it possible to release a modified version 
 
 
-object_tangible_food_creature_bio_effects_bio_kliknik_fortitude_boost = object_tangible_food_creature_bio_effects_shared_bio_kliknik_fortitude_boost:new {
 
+object_tangible_food_creature_bio_effects_bio_kliknik_fortitude_boost = object_tangible_food_creature_bio_effects_shared_bio_kliknik_fortitude_boost:new  {
+	templateType = CONSUMABLE,
+
+	duration = 240,
+	filling = 0,
+	nutrition = 0,
+
+	effectType = 5,
+
+	fillingMin = 0,
+	fillingMax = 0,
+	flavorMin = 0,
+	flavorMax = 0,
+	nutritionMin = 0,
+	nutritionMax = 0,
+	quantityMin = 0,
+	quantityMax = 0,
+
+	modifiers = { "strength" , 500, "action" , 100, "quickness", 700, "stamina", 100, "focus", 500},
+
+	buffName = "kliknik_boost",
+	buffCRC = 0,
+	speciesRestriction = "",
+
+	numberExperimentalProperties = {1, 1, 3},
+	experimentalProperties = {"XX", "XX", "DR", "OQ", "UT"},
+	experimentalWeights = {1, 1, 4, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_nutrition"},
+	experimentalSubGroupTitles = {"null", "null", "hitpoints"},
+	experimentalMin = {0, 0, 1000},
+	experimentalMax = {0, 0, 1000},
+	experimentalPrecision = {0, 0, 0},
+	experimentalCombineType = {0, 0, 4},
 }
+
 
 ObjectTemplates:addTemplate(object_tangible_food_creature_bio_effects_bio_kliknik_fortitude_boost, "object/tangible/food/creature_bio_effects/bio_kliknik_fortitude_boost.iff")
