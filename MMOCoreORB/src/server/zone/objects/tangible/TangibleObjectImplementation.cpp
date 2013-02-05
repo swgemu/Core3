@@ -692,7 +692,24 @@ bool TangibleObjectImplementation::applyComponentStats(ManufactureSchematic* man
 						continue;
 					} else {
 						float value = component->getAttributeValue(property);
-						this->addSkillMod(SkillModManager::WEARABLE, key, value);
+
+						WearableObjectImplementation* clothing = cast<WearableObjectImplementation*>(this);
+
+
+						VectorMap<String, int>* clothingMods = clothing->getWearableSkillMods();
+
+						int existingValue = 0;
+
+						if(clothingMods->contains(key)) {
+							existingValue = clothingMods->get(key);
+						}
+
+						value += existingValue;
+
+						if (value > 25)
+							value = 25;
+
+						clothing->addSkillMod(SkillModManager::WEARABLE, key, value);
 					}
 				}
 			}
