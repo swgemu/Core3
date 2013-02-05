@@ -105,7 +105,10 @@ void SurveySessionImplementation::startSurvey(const String& resname) {
 		}
 	}
 
-	if (surveyer->getHAM(CreatureAttribute::MIND) < 100) {
+	//Get actual cost based upon player's Focus
+	int mindCost = surveyer->calculateCostAdjustment(CreatureAttribute::FOCUS, 100);
+
+	if (surveyer->getHAM(CreatureAttribute::MIND) < mindCost) {
 		surveyer->setPosture(CreaturePosture::UPRIGHT, true);
 		surveyer->sendSystemMessage("@error_message:survey_mind"); //You are exhausted. You nee to clear your head before you can survey again.
 		return;
@@ -183,7 +186,10 @@ void SurveySessionImplementation::startSample(const String& resname) {
 		return;
 	}
 
-	if (surveyer->getHAM(CreatureAttribute::ACTION) < 200) {
+	//Get actual cost based upon player's Quickness
+	int actionCost = surveyer->calculateCostAdjustment(CreatureAttribute::QUICKNESS, 200);
+
+	if (surveyer->getHAM(CreatureAttribute::ACTION) < actionCost) {
 		surveyer->setPosture(CreaturePosture::UPRIGHT, true);
 		surveyer->sendSystemMessage("@error_message:sample_mind"); //You are exhausted. You nee to clear your head before you can sample again.
 		return;

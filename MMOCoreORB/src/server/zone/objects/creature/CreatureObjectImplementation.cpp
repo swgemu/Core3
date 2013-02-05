@@ -2690,3 +2690,12 @@ int CreatureObjectImplementation::handleObjectMenuSelect(CreatureObject* player,
 
 	return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }
+
+float CreatureObjectImplementation::calculateCostAdjustment(uint8 stat, float baseCost) {
+	float cost = baseCost - ((this->getHAM(stat) - 300) * .0005 * baseCost);
+
+	if(cost < 0)
+		cost = 0;
+
+	return cost;
+}

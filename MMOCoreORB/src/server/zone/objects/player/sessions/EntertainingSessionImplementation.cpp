@@ -273,6 +273,9 @@ void EntertainingSessionImplementation::doPerformanceAction() {
 
 	int actionDrain = performance->getActionPointsPerLoop();
 
+	//Adjust cost based upon player's quickness
+	actionDrain = entertainer->calculateCostAdjustment(CreatureAttribute::QUICKNESS, actionDrain);
+
 	if (entertainer->getHAM(CreatureAttribute::ACTION) <= actionDrain) {
 		if (isDancing()) {
 			stopDancing();
@@ -547,6 +550,9 @@ void EntertainingSessionImplementation::doFlourish(int flourishNumber) {
 	float flourishActionDrain = baseActionDrain / 2.0;
 
 	int actionDrain = (int)round((flourishActionDrain * 10 + 0.5) / 10.0); // Round to nearest dec for actual int cost
+
+	//Adjust cost based upon player's quickness
+	actionDrain = entertainer->calculateCostAdjustment(CreatureAttribute::QUICKNESS, actionDrain);
 
 	if (entertainer->getHAM(CreatureAttribute::ACTION) <= actionDrain) {
 		entertainer->sendSystemMessage("@performance:flourish_too_tired");

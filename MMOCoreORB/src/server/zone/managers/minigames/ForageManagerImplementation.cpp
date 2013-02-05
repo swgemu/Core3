@@ -20,7 +20,7 @@ void ForageManagerImplementation::startForaging(CreatureObject* player, int fora
 
 	Locker playerLocker(player);
 
-	int actionCost = 50;
+	int actionCostForage = 50;
 	int mindCostShellfish = 100;
 	int actionCostShellfish =  100;
 
@@ -59,14 +59,21 @@ void ForageManagerImplementation::startForaging(CreatureObject* player, int fora
 
 	if (forageType == ForageManager::SHELLFISH){
 
-		if (player->getHAM(CreatureAttribute::MIND) < mindCostShellfish + 1 || player->getHAM(CreatureAttribute::ACTION) < actionCostShellfish + 1)
+		//Adjust costs based upon player's Focus and Quickness
+		int mindCost = player->calculateCostAdjustment(CreatureAttribute::FOCUS, mindCostShellfish);
+		int actionCost = player->calculateCostAdjustment(CreatureAttribute::QUICKNESS, actionCostShellfish);
+
+		if (player->getHAM(CreatureAttribute::MIND) < mindCost + 1 || player->getHAM(CreatureAttribute::ACTION) < actionCost + 1)
 			return;
 		else {
-			player->inflictDamage(player, CreatureAttribute::MIND, mindCostShellfish, false, true);
-			player->inflictDamage(player, CreatureAttribute::ACTION, actionCostShellfish, false, true);
+			player->inflictDamage(player, CreatureAttribute::MIND, mindCost, false, true);
+			player->inflictDamage(player, CreatureAttribute::ACTION, actionCost, false, true);
 		}
 	}
 	else {
+
+		//Adjust action cost based upon a player's Quickness
+		int actionCost = player->calculateCostAdjustment(CreatureAttribute::QUICKNESS, actionCostForage);
 
 		if (player->getHAM(CreatureAttribute::ACTION) >= actionCost + 1)
 			player->inflictDamage(player, CreatureAttribute::ACTION, actionCost, false, true);

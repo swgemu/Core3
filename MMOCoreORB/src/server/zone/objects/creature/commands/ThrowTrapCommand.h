@@ -214,9 +214,14 @@ public:
 			Reference<ThrowTrapTask*> trapTask = new ThrowTrapTask(creature, targetCreature, buff, message, trapData->getPoolToDamage(), damage, hit);
 			creature->addPendingTask("throwtrap", trapTask, 2300);
 
-			creature->inflictDamage(creature, CreatureAttribute::HEALTH, trapData->getHealthCost(), false);
-			creature->inflictDamage(creature, CreatureAttribute::ACTION, trapData->getActionCost(), false);
-			creature->inflictDamage(creature, CreatureAttribute::MIND, trapData->getMindCost(), false);
+			//Reduce cost based upon player's strength, quickness, and focus if any are over 300
+			int healthCost = creature->calculateCostAdjustment(CreatureAttribute::STRENGTH, trapData->getHealthCost());
+			int actionCost = creature->calculateCostAdjustment(CreatureAttribute::QUICKNESS, trapData->getActionCost());
+			int mindCost = creature->calculateCostAdjustment(CreatureAttribute::FOCUS, trapData->getMindCost());
+
+			creature->inflictDamage(creature, CreatureAttribute::HEALTH, healthCost, false);
+			creature->inflictDamage(creature, CreatureAttribute::ACTION, actionCost, false);
+			creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
 
 			return SUCCESS;
 

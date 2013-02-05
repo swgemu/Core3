@@ -1713,4 +1713,6 @@ class CreatureObject extends TangibleObject {
 	public Mutex getSkillModMutex() {
 		return skillModMutex;
 	}
+
+	public native float calculateCostAdjustment(byte stat, float baseCost);
 }

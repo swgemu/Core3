@@ -93,6 +93,7 @@ public:
 
 
 		int actionCost = 30 * actionModifier;
+		actionCost = creature->calculateCostAdjustment(CreatureAttribute::QUICKNESS, actionCost);
 		if (creature->getHAM(CreatureAttribute::ACTION) <= actionCost) {
 			creature->sendSystemMessage("@performance:effect_too_tired");
 			return GENERALERROR;

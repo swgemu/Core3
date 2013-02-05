@@ -928,6 +928,8 @@ public:
 
 	Mutex* getSkillModMutex();
 
+	float calculateCostAdjustment(byte stat, float baseCost);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -1709,6 +1711,8 @@ public:
 
 	Mutex* getSkillModMutex();
 
+	float calculateCostAdjustment(byte stat, float baseCost);
+
 	WeakReference<CreatureObject*> _this;
 
 	operator const CreatureObject*();
@@ -2299,6 +2303,8 @@ public:
 	bool isInvisible();
 
 	void setInvisible(bool invis);
+
+	float calculateCostAdjustment(byte stat, float baseCost);
 
 };
 
