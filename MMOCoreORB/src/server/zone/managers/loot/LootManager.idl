@@ -118,6 +118,9 @@ class LootManager extends ManagedService implements Logger {
 	
 	@local
 	private native void setSockets(TangibleObject object, CraftingValues craftingValues);
+
+	@local
+	private native void addConditionDamage(TangibleObject loot, CraftingValues craftingValues);
 	
 	@local
 	public native TangibleObject createLootObject(LootItemTemplate templateObject, int level);

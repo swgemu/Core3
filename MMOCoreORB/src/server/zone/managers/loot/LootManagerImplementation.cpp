@@ -197,8 +197,11 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	for (int i = 0; i < craftingValues.getExperimentalPropertySubtitleSize(); ++i) {
 		subtitle = craftingValues.getExperimentalPropertySubtitle(i);
 
-		if (subtitle == "hitpoints")
-			continue;
+		if (subtitle == "hitpoints" || subtitle == "armor_integrity") {
+			if(!(prototype->isComponent())) {
+				continue;
+			}
+		}
 
 		float min = craftingValues.getMinValue(subtitle);
 		float max = craftingValues.getMaxValue(subtitle);
@@ -248,7 +251,27 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	// Update the Tano with new values
 	prototype->updateCraftingValues(&craftingValues, true);
 
+	//add some condition damage where appropriate
+	addConditionDamage(prototype, &craftingValues);
+
 	return prototype;
+}
+
+void LootManagerImplementation::addConditionDamage(TangibleObject* loot, CraftingValues* craftingValues) {
+	if (!loot->isWeaponObject() && !loot->isArmorObject())
+		return;
+
+	float min = 0;
+
+	if(loot->isWeaponObject())
+		min = craftingValues->getMinValue("hitpoints");
+
+	if(loot->isArmorObject())
+		min = craftingValues->getMinValue("armor_integrity");
+
+	float damage = (float) System::random(min / 3);
+
+	loot->setConditionDamage(damage);
 }
 
 void LootManagerImplementation::setSkillMods(TangibleObject* object, LootItemTemplate* templateObject) {

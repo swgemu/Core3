@@ -213,6 +213,8 @@ private:
 
 	void setSockets(TangibleObject* object, CraftingValues* craftingValues);
 
+	void addConditionDamage(TangibleObject* loot, CraftingValues* craftingValues);
+
 public:
 	TangibleObject* createLootObject(LootItemTemplate* templateObject, int level);
 
