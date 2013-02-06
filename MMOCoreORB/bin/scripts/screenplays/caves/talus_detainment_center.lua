@@ -5,8 +5,9 @@ TalusDetainmentCenterScreenPlay = ScreenPlay:new {
 registerScreenPlay("TalusDetainmentCenterScreenPlay", true)
 
 function TalusDetainmentCenterScreenPlay:start()
-	self:spawnMobiles()
-
+	if (isZoneEnabled("talus")) then
+		self:spawnMobiles()
+	end
 	
 end
 

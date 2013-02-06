@@ -1,11 +1,15 @@
 TalusWeaponsDepotScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
+	screenplayName = "TalusWeaponsDepotScreenPlay",
 }
 
 registerScreenPlay("TalusWeaponsDepotScreenPlay", true)
 
 function TalusWeaponsDepotScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("talus")) then
+		self:spawnMobiles()
+	end
 end
 
 function TalusWeaponsDepotScreenPlay:spawnMobiles()

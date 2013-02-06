@@ -15,7 +15,7 @@ TalusAakuanCaveScreenPlay = ScreenPlay:new {
                 {
                         groups = {
                                 {group = "color_crystals", chance = 160000},
-                                {group = "junk", chance = 8600000},
+                                {group = "junk", chance = 8240000},
                                 {group = "melee_weapons", chance = 1000000},
                                 {group = "clothing_attachments", chance = 300000},
                                 {group = "armor_attachments", chance = 300000}

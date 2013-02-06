@@ -1,11 +1,42 @@
 NarglatchCaveScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
+	screenplayName = "NarglatchCaveScreenPlay",
+
+ 	lootContainers = {
+		6336292,
+		6336293,
+        	6336295,
+        	6336297,
+        	6336298
+	},
+	
+	lootLevel = 16,	
+
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 160000},
+				{group = "junk", chance = 8240000},
+				{group = "rifles", chance = 500000},
+				{group = "pistols", chance = 500000},
+				{group = "clothing_attachments", chance = 300000},
+				{group = "armor_attachments", chance = 300000}
+			},
+			lootChance = 8000000
+		}					
+	},
+	
+	lootContainerRespawn = 1800 
 }
 
 registerScreenPlay("NarglatchCaveScreenPlay", true)
 
 function NarglatchCaveScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("naboo")) then
+		self:spawnMobiles()
+		self:initializeLootContainers()
+	end
 end
 
 function NarglatchCaveScreenPlay:spawnMobiles()

@@ -1,11 +1,16 @@
 SquillCaveScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
+	screenplayName = "SquillCaveScreenPlay",
+
 }
 
 registerScreenPlay("SquillCaveScreenPlay", true)
 
 function SquillCaveScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("tatooine")) then
+		self:spawnMobiles()
+	end
 end
 
 function SquillCaveScreenPlay:spawnMobiles()

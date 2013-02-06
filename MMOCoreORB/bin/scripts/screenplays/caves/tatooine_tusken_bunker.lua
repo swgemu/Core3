@@ -1,11 +1,40 @@
 TuskenBunkerScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
+	screenplayName = "TuskenBunkerScreenPlay",
+
+ 	lootContainers = {
+		5995601,
+        	5995605,
+        	5995608
+	},
+	
+	lootLevel = 24,	
+
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 160000},
+				{group = "junk", chance = 8240000},
+				{group = "rifles", chance = 500000},
+				{group = "pistols", chance = 500000},
+				{group = "clothing_attachments", chance = 300000},
+				{group = "armor_attachments", chance = 300000}
+			},
+			lootChance = 8000000
+		}					
+	},
+	
+	lootContainerRespawn = 1800 
 }
 
 registerScreenPlay("TuskenBunkerScreenPlay", true)
 
 function TuskenBunkerScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("tatooine")) then
+		self:spawnMobiles()
+		self:initializeLootContainers()
+	end
 end
 
 function TuskenBunkerScreenPlay:spawnMobiles()

@@ -1,11 +1,42 @@
 JantaCaveScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
+	screenplayName = "JantaCaveScreenPlay",
+
+	lootContainers = {
+		529346,
+        	529349,
+        	529353,
+        	529363,
+        	529368
+	},
+	
+	lootLevel = 26,	
+
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 160000},
+				{group = "junk", chance = 8240000},
+				{group = "rifles", chance = 500000},
+				{group = "pistols", chance = 500000},
+				{group = "clothing_attachments", chance = 300000},
+				{group = "armor_attachments", chance = 300000}
+			},
+			lootChance = 8000000
+		}					
+	},
+	
+	lootContainerRespawn = 1800 
 }
 
 registerScreenPlay("JantaCaveScreenPlay", true)
 
 function JantaCaveScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("dantooine")) then
+		self:spawnMobiles()
+		self:initializeLootContainers()
+	end
 end
 
 function JantaCaveScreenPlay:spawnMobiles()

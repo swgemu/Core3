@@ -17,7 +17,7 @@ SennexCaveScreenPlay = ScreenPlay:new {
 		{
 			groups = {
 				{group = "color_crystals", chance = 160000},
-				{group = "junk", chance = 8600000},
+				{group = "junk", chance = 8240000},
 				{group = "rifles", chance = 500000},
 				{group = "pistols", chance = 500000},
 				{group = "clothing_attachments", chance = 300000},

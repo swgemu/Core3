@@ -34,7 +34,10 @@ RancorCaveScreenPlay = ScreenPlay:new {
 registerScreenPlay("RancorCaveScreenPlay", true) 
  
 function RancorCaveScreenPlay:start() 
-        self:spawnMobiles() 
+	if (isZoneEnabled("dathomir")) then
+       		self:spawnMobiles() 
+		self:initializeLootContainers()
+	end
 	self:initializeLootContainers()
 end 
  

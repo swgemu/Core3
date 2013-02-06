@@ -1,11 +1,41 @@
 KungaStrongholdScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
+	screenplayName = "KungaStrongholdScreenPlay",
+
+ 	lootContainers = {
+		529418,
+        	529425,
+        	529451,
+        	529435
+	},
+	
+	lootLevel = 26,	
+
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 160000},
+				{group = "junk", chance = 8240000},
+				{group = "rifles", chance = 500000},
+				{group = "pistols", chance = 500000},
+				{group = "clothing_attachments", chance = 300000},
+				{group = "armor_attachments", chance = 300000}
+			},
+			lootChance = 8000000
+		}					
+	},
+	
+	lootContainerRespawn = 1800 
 }
 
 registerScreenPlay("KungaStrongholdScreenPlay", true)
 
 function KungaStrongholdScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("dantooine")) then
+		self:spawnMobiles()
+		self:initializeLootContainers()
+	end
 end
 
 function KungaStrongholdScreenPlay:spawnMobiles()
