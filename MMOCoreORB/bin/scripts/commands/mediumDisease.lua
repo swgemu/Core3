@@ -53,7 +53,7 @@ MediumDiseaseCommand = {
 		125,
 		80,
 		50, 
-		30
+		205
 	  )
 	},
 }

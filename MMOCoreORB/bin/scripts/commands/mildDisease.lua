@@ -53,7 +53,7 @@ MildDiseaseCommand = {
 		125,
 		50,
 		30, 
-		10
+		125
 	  )
 	}
 }

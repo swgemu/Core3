@@ -46,14 +46,14 @@ StrongPoisonCommand = {
         combatSpam = "attack",
 	dotEffects = {
 	  DotEffect( 
-		POISONED_EFFECT, 
+		POISONED, 
 		{ "resistance_poison", "poison_disease_resist" },
 		HEALTH,
 		true,
-		125,
-		80,
+		125, 
+		80,  
 		80, 
-		20
+		60  
 	  )
 	}
 }
