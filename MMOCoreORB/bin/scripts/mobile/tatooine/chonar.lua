@@ -1,0 +1,37 @@
+chonar = Creature:new {
+	objectName = "",
+	customName = "Brother Chonar",	
+	socialGroup = "dim_u",
+	pvpFaction = "",
+	faction = "",
+	level = 6,
+	chanceHit = 0.25,
+	damageMin = 50,
+	damageMax = 55,
+	baseXp = 113,
+	baseHAM = 180,
+	baseHAMmax = 220,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = NONE,
+	creatureBitmask = HERD,
+	optionsBitmask = 136,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_tatooine_dim_u_monk.iff"},
+	lootGroups = {},
+	weapons = {},
+	conversationTemplate = "vardias_tyne_mission_target_convotemplate",
+	attacks = merge(brawlermaster)
+}
+
+CreatureTemplates:addCreatureTemplate(chonar, "chonar")

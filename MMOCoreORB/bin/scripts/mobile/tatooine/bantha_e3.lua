@@ -1,28 +1,28 @@
-Dim_U_bantha = Creature:new {
-	objectName = "@mob/creature_names:dim_u_bantha",
-	socialGroup = "dim_u",
+bantha_e3 = Creature:new {
+	objectName = "@mob/creature_names:Bantha_E3",
+	socialGroup = "bantha",
 	pvpFaction = "",
 	faction = "",
-	level = 15,
-	chanceHit = 0.3,
-	damageMin = 150,
-	damageMax = 160,
-	baseXp = 831,
-	baseHAM = 2000,
-	baseHAMmax = 2400,
+	level = 10,
+	chanceHit = 0.28,
+	damageMin = 90,
+	damageMax = 110,
+	baseXp = 292,
+	baseHAM = 900,
+	baseHAMmax = 900,
 	armor = 0,
-	resists = {0,5,0,20,0,0,0,-1,-1},
+	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "meat_herbivore",
 	meatAmount = 450,
 	hideType = "hide_wooly",
 	hideAmount = 325,
 	boneType = "bone_mammal",
 	boneAmount = 250,
-	milk = 1,
-	tamingChance = 0,
+	milk = 0,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + HERD,
+	creatureBitmask = HERD,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
@@ -35,4 +35,4 @@ Dim_U_bantha = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(Dim_U_bantha, "Dim_U_bantha")
+CreatureTemplates:addCreatureTemplate(bantha_e3, "bantha_e3")
