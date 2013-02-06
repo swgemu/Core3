@@ -30,7 +30,7 @@ mat_rags = Creature:new {
 	templates = {"object/mobile/dressed_tatooine_mat_rags.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "mat_rags_convotemplate",
+	conversationTemplate = "mat_rags_mission_giver_convotemplate",
 	attacks = {
 	}
 }
