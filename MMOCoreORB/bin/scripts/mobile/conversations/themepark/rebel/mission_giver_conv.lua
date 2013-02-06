@@ -166,10 +166,16 @@ function createMissionGiverConvoTemplate(templateName, convoHandler)
 	addConversationTemplate(templateName, mission_giver_convotemplate);
 end
 
---themeparks
+-- Themeparks
 createMissionGiverConvoTemplate("theme_park_rebel_mission_giver_convotemplate", "theme_park_rebel_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("theme_park_jabba_mission_giver_convotemplate", "theme_park_jabba_mission_giver_conv_handler")
 
---tasks
-createMissionGiverConvoTemplate("gavyn_sykes_mission_giver_convotemplate", "gavyn_sykes_mission_giver_conv_handler")
+-- Tatooine
 createMissionGiverConvoTemplate("rakir_banai_mission_giver_convotemplate", "rakir_banai_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("vardias_tyne_mission_giver_convotemplate", "vardias_tyne_mission_giver_conv_handler")
+
+-- Naboo
+createMissionGiverConvoTemplate("gavyn_sykes_mission_giver_convotemplate", "gavyn_sykes_mission_giver_conv_handler")
+
+-- Dantooine
+createMissionGiverConvoTemplate("luthik_uwyr_mission_giver_convotemplate","luthik_uwyr_mission_giver_conv_handler")

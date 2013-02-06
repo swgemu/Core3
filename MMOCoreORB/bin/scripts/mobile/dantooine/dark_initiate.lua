@@ -1,6 +1,6 @@
-luthik_uwyr = Creature:new {
+dark_initiate = Creature:new {
 	objectName = "",
-	customName = "Luthik Uwyr",
+	customName = "Dark Initiate",
 	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
@@ -27,12 +27,12 @@ luthik_uwyr = Creature:new {
 	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_luthik_uwyr.iff"},
+	templates = {"object/mobile/dressed_feral_force_wielder.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "luthik_uwyr_mission_giver_convotemplate",
+	conversationTemplate = "luthik_uwyr_mission_target_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(luthik_uwyr, "luthik_uwyr")
+CreatureTemplates:addCreatureTemplate(dark_initiate, "dark_initiate")
