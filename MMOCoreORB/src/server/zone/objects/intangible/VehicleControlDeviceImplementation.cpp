@@ -101,11 +101,15 @@ void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 		return;
 
 	controlledObject->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
-
-	//TODO: Refactor
-	if (controlledObject->isCreatureObject()) {
-		cast<CreatureObject*>(controlledObject.get())->setCreatureLink(player);
-		cast<CreatureObject*>(controlledObject.get())->setControlDevice(_this.get());
+	ManagedReference<CreatureObject*> vehicle = NULL;
+	
+	if (controlledObject->isCreatureObject())
+	{
+	
+		vehicle = cast<CreatureObject*>(controlledObject.get());
+		vehicle->setCreatureLink(player);
+		vehicle->setControlDevice(_this.get());
+		
 	}
 	
 	Zone* zone = player->getZone();
@@ -116,6 +120,14 @@ void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	//controlledObject->insertToZone(player->getZone());
 	zone->transferObject(controlledObject, -1, true);
 	controlledObject->inflictDamage(player, 0, System::random(50), true);
+	
+	if (vehicle != NULL && controlledObject->getServerObjectCRC() == 0x32F87A54) // Jetpack
+	{
+	
+		controlledObject->setCustomizationVariable("/private/index_hover_height", 40, true); // Illusion of flying.
+		player->executeObjectControllerAction(String("mount").hashCode(), controlledObject->getObjectID(), ""); // Auto mount.
+		
+	}
 
 	updateStatus(1);
 

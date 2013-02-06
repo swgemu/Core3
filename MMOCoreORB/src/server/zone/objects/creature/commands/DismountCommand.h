@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/VehicleObject.h"
+#include "server/zone/objects/intangible/ControlDevice.h"
 
 class DismountCommand : public QueueCommand {
 public:
@@ -136,6 +137,11 @@ public:
 			creature->clearState(CreatureState::SWIMMING);
 		}
 
+		ManagedReference<ControlDevice*> device = vehicle->getControlDevice();
+		
+		if (device != NULL && vehicle->getServerObjectCRC() == 0x32F87A54) // Auto-store jetpack on dismount.
+			device->storeObject(creature);
+		
 		creature->updateToDatabase();
 
 		creature->updateCooldownTimer("mount_dismount", 2000);
