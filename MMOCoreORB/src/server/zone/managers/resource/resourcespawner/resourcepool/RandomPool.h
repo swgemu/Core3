@@ -86,7 +86,7 @@ public:
 	 * \param excludes Comma delimited list of resources to exclude
 	 * \param size The size of the pool
 	 */
-	void initialize(const String& includes, const String& excludes, int size);
+	void initialize(LuaObject includes, const String& excludes, int size);
 
 	/**
 	 * The minimum pool likes to extract resource from

@@ -82,7 +82,7 @@ public:
 	 * \param includes Comma delimited list of resources to include
 	 * \param excludes Comma delimited list of resources to exclude
 	 */
-	void initialize(const String& includes, const String& excludes);
+	void initialize(LuaObject includes, const String& excludes);
 
 	String healthCheck();
 

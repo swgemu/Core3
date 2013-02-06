@@ -59,8 +59,8 @@ RandomPool::~RandomPool() {
 
 }
 
-void RandomPool::initialize(const String& includes, const String& excludes, int size) {
-	ResourcePool::initialize(includes, excludes);
+void RandomPool::initialize(LuaObject includes, const String& excludes, int size) {
+	ResourcePool::initializeByTable(includes, excludes);
 
 	for(int i = 0; i < size; ++i)
 		pool.add(NULL);
@@ -118,7 +118,7 @@ bool RandomPool::update() {
 
 				pool.setElementAt(i, newSpawn);
 			} else {
-				warning("Couldn't spawn resource type in FixedPool: " + resourceType);
+				warning("Couldn't spawn resource type in RandomPool: " + resourceType);
 			}
 		}
 	}

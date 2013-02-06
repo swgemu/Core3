@@ -84,25 +84,42 @@ maxSpawnQuantity = 0
   -- but it is an option for admins to have more control over resources.
   -- Set to 0 for standard SOE behavior
 
+--A function used to insert the JTL resources into a lua table.
+function InsertJtlIntoTable(jtlString, tab)
+	local jtlTable = { {} }
+
+	for k in string.gmatch(jtlString, "[%a_]+") do
+		table.insert(jtlTable, k)
+	end
+
+	for i = 2, #jtlTable do
+		table.insert(tab, {jtlTable[i], 1})
+	end
+	return tab
+end
+
 --  Resources included in the JTL update
 jtlresources = "steel_bicorbantium,steel_arveshian,aluminum_perovskitic,copper_borocarbitic,fiberplast_gravitonic,gas_reactive_organometallic,ore_siliclastic_fermionic,radioactive_polymetric"
 
-  -- The minimum pool must have one of each of the items listed above spawned at all times.
-  -- The minimum pool must never include the items in the excludes
-minimumpoolincludes = "steel,copper,aluminum,ore_extrusive,ore_intrusive,ore_carbonate,gemstone_crystalline,gemstone_armophous,radioactive_known,fuel_petrochem_solid,fuel_petrochem_liquid,petrochem_inert_polymer,petrochem_inert_polymer,petrochem_inert_lubricating_oil,petrochem_inert_lubricating_oil"
+  -- The minimum pool includes is a table of resources and occurrences. A resource will always be in spawn a number of times equal to it's occurrence.
+  -- The minimum pool will never include the items in the excludes
+minimumpoolincludes = { {"steel", 1}, {"copper", 1}, {"aluminum", 1}, {"ore_extrusive", 1}, {"ore_intrusive", 1}, {"ore_carbonate", 1}, {"gemstone_crystalline", 1}, {"gemstone_armophous", 1}, {"radioactive_known", 1}, {"fuel_petrochem_solid", 1}, {"fuel_petrochem_liquid", 1}, {"petrochem_inert_polymer", 2}, {"petrochem_inert_lubricating_oil", 2} }
 minimumpoolexcludes = jtlresources
 
-  -- The random pool must have one of each of the items listed above spawned at all times.
-  -- The random pool must never include the items in the excludes
-randompoolincludes = "mineral,gas,chemical"
+-- The random pool includes is a table of resources and weights. The higher the weight, the more likely the resource is to be chosen when a random pool resource shifts.
+  -- The random pool will never include the items in the excludes
+  -- The random pool spawns a total number of resources equal to the size
+randompoolincludes = { {"metal", 32}, {"ore", 13}, {"fuel_petrochem_solid", 6}, {"radioactive", 4}, {"gemstone", 12}, {"gas", 16}, {"water", 2}, {"fuel_petrochem_liquid", 7}, {"petrochem_inert", 8} }
 randompoolexcludes = jtlresources..",iron,fiberplast"
 randompoolsize = 27
-  
-  -- The fixed pool must have one of each of the items listed above spawned at all times.
-fixedpoolincludes = jtlresources..",iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron,iron"
+
+  -- The fixed pool is a table of resources and occurrences. A resource will always be in spawn a number of times equal to it's occurrence. The function call inserts each JTL resource into the table with an occurrence of 1.
+fixedpoolincludes = InsertJtlIntoTable(jtlresources, { {"iron", 14} })
 fixedpoolexcludes = ""
 
-  -- The native pool must have one of each of the items listed above spawned at all times, but planet restricted.
+  -- The native pool will have one of each of the items listed in the includes spawned on each planet at all times, but planet restricted.
 nativepoolincludes = "milk_domesticated,milk_wild,meat_domesticated,meat_wild,meat_herbivore,meat_carnivore,meat_reptilian,meat_avian,meat_egg,meat_insect,seafood_fish,seafood_crustacean,seafood_mollusk,bone_mammal,bone_avian,bone_horn,hide_wooly,hide_bristley,hide_leathery,hide_scaley,corn_domesticated,corn_wild,rice_domesticated,rice_wild,oats_domesticated,oats_wild,wheat_domesticated,wheat_wild,vegetable_greens,vegetable_beans,vegetable_tubers,vegetable_fungi,fruit_fruits,fruit_berries,fruit_flowers,wood_deciduous,softwood_conifer,softwood_evergreen,energy_renewable_unlimited_solar,energy_renewable_unlimited_wind,fiberplast,water_vapor"
 nativepoolexcludes = ""
+
+
 

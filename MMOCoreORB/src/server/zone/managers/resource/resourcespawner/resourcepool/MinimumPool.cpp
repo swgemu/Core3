@@ -59,8 +59,8 @@ MinimumPool::~MinimumPool() {
 
 }
 
-void MinimumPool::initialize(const String& includes, const String& excludes) {
-	ResourcePool::initialize(includes, excludes);
+void MinimumPool::initialize(LuaObject includes, const String& excludes) {
+	ResourcePool::initializeByTable(includes, excludes);
 }
 
 void MinimumPool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn, const String& poolSlot) {

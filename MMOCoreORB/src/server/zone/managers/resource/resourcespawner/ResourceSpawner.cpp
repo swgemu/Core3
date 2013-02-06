@@ -98,17 +98,17 @@ void ResourceSpawner::init() {
 	resourceMap = new ResourceMap();
 }
 
-void ResourceSpawner::initializeMinimumPool(const String& includes,
+void ResourceSpawner::initializeMinimumPool(LuaObject includes,
 		const String& excludes) {
 	minimumPool->initialize(includes, excludes);
 }
 
-void ResourceSpawner::initializeFixedPool(const String& includes,
+void ResourceSpawner::initializeFixedPool(LuaObject includes,
 		const String& excludes) {
 	fixedPool->initialize(includes, excludes);
 }
 
-void ResourceSpawner::initializeRandomPool(const String& includes,
+void ResourceSpawner::initializeRandomPool(LuaObject includes,
 		const String& excludes, const int size) {
 	randomPool->initialize(includes, excludes, size);
 }

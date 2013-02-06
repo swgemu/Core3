@@ -59,9 +59,9 @@ FixedPool::~FixedPool() {
 
 }
 
-void FixedPool::initialize(const String& includes, const String& excludes) {
+void FixedPool::initialize(LuaObject includes, const String& excludes) {
 	includedResources.setAllowDuplicateInsertPlan();
-	ResourcePool::initialize(includes, excludes);
+	ResourcePool::initializeByTable(includes, excludes);
 }
 
 void FixedPool::addResource(ManagedReference<ResourceSpawn*> resourceSpawn, const String& poolSlot) {

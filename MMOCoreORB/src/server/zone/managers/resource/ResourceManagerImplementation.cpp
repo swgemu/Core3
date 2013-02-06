@@ -134,16 +134,16 @@ bool ResourceManagerImplementation::loadConfigData() {
 		resourceSpawner->addJtlResource(token);
 	}
 
-	String minpoolinc = lua->getGlobalString("minimumpoolincludes");
+	LuaObject minpoolinc = lua->getGlobalObject("minimumpoolincludes");
 	String minpoolexc = lua->getGlobalString("minimumpoolexcludes");
 	resourceSpawner->initializeMinimumPool(minpoolinc, minpoolexc);
 
-	String randpoolinc = lua->getGlobalString("randompoolincludes");
+	LuaObject randpoolinc = lua->getGlobalObject("randompoolincludes");
 	String randpoolexc = lua->getGlobalString("randompoolexcludes");
 	int randpoolsize = lua->getGlobalInt("randompoolsize");
 	resourceSpawner->initializeRandomPool(randpoolinc, randpoolexc, randpoolsize);
 
-	String fixedpoolinc = lua->getGlobalString("fixedpoolincludes");
+	LuaObject fixedpoolinc = lua->getGlobalObject("fixedpoolincludes");
 	String fixedpoolexc = lua->getGlobalString("fixedpoolexcludes");
 	resourceSpawner->initializeFixedPool(fixedpoolinc, fixedpoolexc);
 

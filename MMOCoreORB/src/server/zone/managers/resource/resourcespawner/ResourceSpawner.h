@@ -122,9 +122,9 @@ public:
 
 	void init();
 
-	void initializeMinimumPool(const String& includes, const String& excludes);
-	void initializeFixedPool(const String& includes, const String& excludes);
-	void initializeRandomPool(const String& includes, const String& excludes, const int size);
+	void initializeMinimumPool(LuaObject includes, const String& excludes);
+	void initializeFixedPool(LuaObject includes, const String& excludes);
+	void initializeRandomPool(LuaObject includes, const String& excludes, const int size);
 	void initializeNativePool(const String& includes, const String& excludes);
 
 	void addZone(const String& zoneName);
