@@ -91,17 +91,42 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint64 objectID, uint3
 	if (strength == 0) return 0;
 	int oldStrength = getStrength(pool, dotType);
 	float dotReductionMod = 1.0f;
+	int redStrength;
+	float redPotency;
 
-	if (defense > 0)
-		dotReductionMod -= (float) defense / 125.0f;
+	if (!(dotType == CreatureState::DISEASED || dotType == CreatureState::POISONED)) { // Calculate hit for non poison & disease dots
+		if (defense > 0)
+			dotReductionMod -= (float) defense / 125.0f;
 
-	int redStrength = (int)(strength * dotReductionMod);
-	float redPotency = potency * dotReductionMod;
+		redStrength = (int)(strength * dotReductionMod);
+		redPotency = potency * dotReductionMod;
+		if (!(redPotency > System::random(125) || redPotency > System::random(125)))
+			return 0;
 
-	// hitChance may need modification when poison resist packs are added, include 5% hit and 5% miss
-	if (!(redPotency > System::random(125) || redPotency > System::random(125))) {
-		return 0;
+	} else {
+
+		int missChance = System::random(100); // find out 5% miss and 5% hit
+
+		if (missChance <= 5) // 5% miss chance
+			return 0;
+
+		else if (missChance >5 && missChance <=95){ // Over 95 is 5% hit
+
+			int dotChance = 50;   // If potency and resist are equal, then 50% chance to land
+
+			if (potency >= defense)
+				dotChance += (int)((potency - defense)*.5); // For every point of difference, increase chance by .5%
+			else
+				dotChance -= (int)((defense - potency)*.5); // For every point of difference, decrease chance by .5%
+
+			if (dotChance < System::random(100))
+				return 0;
+
+		}
+		redStrength = strength;
+		redPotency = potency;
 	}
+
 	//only 1 disease per bar allowed
 	if(dotType == CreatureState::DISEASED)
 	{

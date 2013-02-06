@@ -1901,8 +1901,14 @@ int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureO
 	}
 
 	Reference<Buff*> buff = new Buff(patient, buffname.hashCode(), duration, BuffType::MEDICAL);
-	buff->setAttributeModifier(attribute, buffvalue);
-	buff->setFillAttributesOnBuff(true);
+
+	if(BuffAttribute::isProtection(attribute))
+			buff->setSkillModifier(BuffAttribute::getProtectionString(attribute), buffvalue);
+	else{
+			buff->setAttributeModifier(attribute, buffvalue);
+			buff->setFillAttributesOnBuff(true);
+	}
+
 	patient->addBuff(buff);
 
 	enhancer->notifyObservers(ObserverEventType::ENHANCINGPERFORMED, patient, buffdiff);

@@ -220,6 +220,9 @@ public:
 		String patientName = patient->getFirstName();
 		String attributeName = BuffAttribute::getName(attribute, true);
 
+		if (BuffAttribute::isProtection(attribute))
+			attributeName += " Resistance";
+
 		StringBuffer msgPlayer, msgTarget, msgBuff;
 
 		if (buffApplied == 0) {
@@ -338,12 +341,22 @@ public:
 		if (patient->hasBuff(buffcrc)) {
 			Buff* existingbuff = patient->getBuff(buffcrc);
 
-			if (existingbuff != NULL)
-				currentBuff = existingbuff->getAttributeModifierValue(buffcrc);
+			if (existingbuff != NULL){
+
+				if (BuffAttribute::isProtection(attribute))
+					currentBuff = existingbuff->getSkillModifierValue(BuffAttribute::getProtectionString(attribute));
+				else
+					currentBuff = existingbuff->getAttributeModifierValue(attribute);
+			}
 		}
 
 		//Applies battle fatigue
-		uint32 buffPower = enhancePack->calculatePower(enhancer, patient);
+		uint32 buffPower = 0;
+		if (BuffAttribute::isProtection(attribute)) {  // If it's a protection enhancement, wound treatment has no effect
+			buffPower = enhancePack->getEffectiveness();
+			buffPower = buffPower * (1 - patient->calculateBFRatio()) * (1 - enhancer->calculateBFRatio());
+		} else
+			buffPower = enhancePack->calculatePower(enhancer, patient);
 
 		if (buffPower < currentBuff) {
 			if (patient == enhancer)
