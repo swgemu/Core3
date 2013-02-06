@@ -172,7 +172,7 @@ public:
 
 		if (!patient->isHealableBy(enhancer)) {
 			enhancer->sendSystemMessage("@healing:pvp_no_help");
-			return GENERALERROR;
+			return false;
 		}
 
 		if (enhancer->getHAM(CreatureAttribute::MIND) < mindCost) {

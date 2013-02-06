@@ -166,7 +166,7 @@ public:
 
 		if (!creatureTarget->isHealableBy(creature)) {
 			creature->sendSystemMessage("@healing:pvp_no_help");
-			return GENERALERROR;
+			return false;
 		}
 
 		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
