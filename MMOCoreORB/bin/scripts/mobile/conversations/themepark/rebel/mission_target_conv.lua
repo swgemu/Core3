@@ -88,6 +88,7 @@ createMissionTargetConvoTemplate("theme_park_jabba_mission_target_convotemplate"
 -- Tatooine
 createMissionTargetConvoTemplate("rakir_banai_mission_target_convotemplate","rakir_banai_mission_target_conv_handler")
 createMissionTargetConvoTemplate("vardias_tyne_mission_target_convotemplate","vardias_tyne_mission_target_conv_handler")
+createMissionTargetConvoTemplate("pfilbee_jhorn_mission_target_convotemplate","pfilbee_jhorn_mission_target_conv_handler")
 
 -- Naboo
 createMissionTargetConvoTemplate("gavyn_sykes_mission_target_convotemplate","gavyn_sykes_mission_target_conv_handler")

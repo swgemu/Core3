@@ -30,7 +30,7 @@ pfilbee_jhorn = Creature:new {
 	templates = {"object/mobile/dressed_tatooine_pfilbee_jhorn.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "pfilbee_jhorn_mission_giver_convotemplate",
 	attacks = {
 	}
 }
