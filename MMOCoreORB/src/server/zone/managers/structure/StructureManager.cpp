@@ -925,4 +925,12 @@ void StructureManager::payMaintenance(StructureObject* structure,
 
 	creature->subtractCashCredits(amount);
 	structure->addMaintenance(amount);
+
+	PlayerObject* ghost = creature->getPlayerObject();
+
+	if (ghost->hasAbility("maintenance_fees_1")){
+		structure->setMaintenanceReduced(true);
+	}else{
+		structure->setMaintenanceReduced(false);
+	}
 }

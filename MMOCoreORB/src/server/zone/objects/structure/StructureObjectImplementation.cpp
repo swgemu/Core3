@@ -270,14 +270,6 @@ void StructureObjectImplementation::payMaintenance(int maintenance, CreatureObje
 		}
 	}
 	addMaintenance(maintenance);
-
-	//Update maintenance reduced.
-	ManagedReference<PlayerObject* > ghost = payer->getPlayerObject();
-	if (ghost != NULL) {
-		setMaintenanceReduced(ghost->hasAbility("maintenance_fees_1"));
-	} else {
-		setMaintenanceReduced(false);
-	}
 }
 
 bool StructureObjectImplementation::isCampStructure() {
