@@ -43,6 +43,8 @@ protected:
 
 	float attackSpeed;
 
+	String combatSpam;
+
 	Vector<String> damageModifiers;
 	Vector<String> speedModifiers;
 	Vector<String> creatureAccuracyModifiers;
@@ -297,6 +299,10 @@ public:
 
 	void setWeaponEffectIndex(int weaponEffectIndex) {
 		this->weaponEffectIndex = weaponEffectIndex;
+	}
+
+	String getCombatSpam() {
+		return combatSpam;
 	}
 
 };

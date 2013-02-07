@@ -47,11 +47,11 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 
-class ThrowGrenadeCommand : public QueueCommand {
+class ThrowGrenadeCommand : public CombatQueueCommand {
 public:
 
 	ThrowGrenadeCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
 	}
 

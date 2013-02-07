@@ -174,6 +174,8 @@ String WeaponObjectImplementation::getWeaponType() {
 		weaponType = "polearm";
 		break;
 	case SceneObjectType::THROWNWEAPON:
+		weaponType = "thrownweapon";
+		break;
 	case SceneObjectType::MINE:
 	case SceneObjectType::SPECIALHEAVYWEAPON:
 	case SceneObjectType::HEAVYWEAPON:

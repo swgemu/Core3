@@ -1619,6 +1619,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	@read
+	public boolean isThrownWeaponObject() {
+		return gameObjectType == SceneObjectType.THROWNWEAPON;
+	}
+
+	@read
 	public boolean isRepairTool() {
 		return gameObjectType == SceneObjectType.REPAIRTOOL;
 	}
