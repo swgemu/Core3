@@ -124,7 +124,7 @@ public:
 	}
 
 	
-	float getCommandDuration(CreatureObject* object) {
+	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) {
 		return defaultTime * 3.0;
 	}
 };

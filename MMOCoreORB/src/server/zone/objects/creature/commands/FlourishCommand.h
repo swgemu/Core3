@@ -101,7 +101,7 @@ public:
 		return SUCCESS;
 	}
 
-	float getCommandDuration(CreatureObject* object) {
+	float getCommandDuration(CreatureObject* object, const UnicodeString& arguments) {
 		ManagedReference<Facade*> facade = object->getActiveSession(
 				SessionFacadeType::ENTERTAINING);
 		ManagedReference<EntertainingSession*> session =

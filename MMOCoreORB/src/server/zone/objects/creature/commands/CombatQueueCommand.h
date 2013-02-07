@@ -192,7 +192,7 @@ public:
 		return SUCCESS;
 	}
 
-	float getCommandDuration(CreatureObject *object) {
+	float getCommandDuration(CreatureObject *object, const UnicodeString& arguments) {
 		return CombatManager::instance()->calculateWeaponAttackSpeed(object, object->getWeapon(), speedMultiplier);
 	}
 
