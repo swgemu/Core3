@@ -102,6 +102,7 @@
 #include "server/zone/objects/creature/Creature.h"
 #include "server/zone/objects/creature/events/DespawnCreatureTask.h"
 #include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/managers/gcw/GCWManager.h"
 
 int PlayerManagerImplementation::MAX_CHAR_ONLINE_COUNT = 2;
 
@@ -1119,8 +1120,23 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 	slExperience.setAllowOverwriteInsertPlan();
 	slExperience.setNullValue(0);
 
+
+	float gcwBonus = 1.0f;
+	uint32 winningFaction = -1;
+
+	Zone* zone = destructedObject->getZone();
+	if(zone != NULL){
+		GCWManager* gcwMan = zone->getGCWManager();
+		gcwBonus += (gcwMan->getGCWXPBonus() / 100.0f);
+		winningFaction = gcwMan->getWinningFaction();
+	}
+
+
+	if(zone != NULL)
 	for (int i = 0; i < threatMap->size(); ++i) {
+
 		CreatureObject* player = threatMap->elementAt(i).getKey();
+
 
 		if (!player->isPlayerCreature())
 			continue;
@@ -1157,13 +1173,16 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 			if (xpType != "jedi_general")
 				combatXp += xpAmount;
 
+			if( winningFaction == player->getFaction()){
+				xpAmount *= gcwBonus;
+				combatXp *= gcwBonus;
+			}
 			//Award individual weapon exp.
 			awardExperience(player, xpType, xpAmount);
 		}
 
 		combatXp /= 10.f;
 
-		//Award combat xp
 		awardExperience(player, "combat_general", combatXp);
 
 		//Check if the group leader is a squad leader

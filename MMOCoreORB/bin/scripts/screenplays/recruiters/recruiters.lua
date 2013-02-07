@@ -194,9 +194,9 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 		conversationScreen = screen:cloneScreen()
 		
 		local clonedConversation = LuaConversationScreen(conversationScreen)
-				
+
 		if (clonedConversation ~= nil) then
-				self:addWeaponsArmor(clonedConversation)
+				self:addWeaponsArmor(clonedConversation, getGCWDiscount(conversingPlayer))
 		end
 	elseif ( screenID == "fp_uniforms" ) then
 		conversationScreen = screen:cloneScreen()
@@ -204,15 +204,15 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 		local clonedConversation = LuaConversationScreen(conversationScreen)
 		
 		if ( clonedConversation ~= nil ) then
-			self:addUniforms(clonedConversation)
+			self:addUniforms(clonedConversation, getGCWDiscount(conversingPlayer))
 		end
 	elseif ( screenID == "fp_furniture" ) then
 		conversationScreen = screen:cloneScreen()
 		
 		local clonedConversation = LuaConversationScreen(conversationScreen)
-		
+			
 		if ( clonedConversation ~= nil ) then
-			self:addFurniture(clonedConversation)
+			self:addFurniture(clonedConversation, getGCWDiscount(conversingPlayer))
 		end
 		
 	elseif (screenID == "purchased") then
@@ -221,9 +221,9 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 		conversationScreen = screen:cloneScreen()
 		
 		local clonedConversation = LuaConversationScreen(conversationScreen)
-		
+			
 		if (clonedConversation ~= nil) then
-			self:addInstallations(clonedConversation)
+			self:addInstallations(clonedConversation, getGCWDiscount(conversingPlayer))
 		end
 	end
 	
@@ -439,20 +439,20 @@ function recruiter_convo_handler:getEnemyFactionString()
 	return ""
 end
 
-function recruiter_convo_handler:addUniforms(thisConversation)
+function recruiter_convo_handler:addUniforms(thisConversation, gcwDiscount)
 	printf("pure recruiter_convo_handler:addUniforms(thisConversation)")
 end
 
-function recruiter_convo_handler:addFurniture(thisConversation)
+function recruiter_convo_handler:addFurniture(thisConversation, gcwDiscount)
 	printf("pure recruiter_convo_handler:addFurniture(thisConversation)")
 end
 
-function recruiter_convo_handler:addWeaponsArmor(thisConversation)
-	printf("pure recruiter_convo_handler:addWeaponsArmor(thisConversation)")
+function recruiter_convo_handler:addWeaponsArmor(thisConversation, gcwDiscount)
+	printf("pure recruiter_convo_handler:addWeaponsArmor(thisConversation, gcwDiscount)")
 end
 
-function recruiter_convo_handler:addInstallations(thisConversation)
-	printf("pure recruiter_convo_handler:addInstallations(thisConversation)")
+function recruiter_convo_handler:addInstallations(thisConversation, gcwDiscount)
+	printf("pure recruiter_convo_handler:addInstallations(thisConversation, gcwDiscount)")
 end
 
 function recruiter_convo_handler:getInitialScreen(play, npc, conversationTemplate)
@@ -607,8 +607,6 @@ function recruiter_convo_handler:awarditem(player, itemstring)
 		
 	local itemcost = self:getItemCost(itemstring)
 
-	
-	
 	-- additional error message
 	if ( itemcost == nil ) then
 		return self.ITEMCOST
@@ -618,6 +616,8 @@ function recruiter_convo_handler:awarditem(player, itemstring)
 		--print("give a 25% discount")
 		itemcost = itemcost * .75
 	end
+	
+	itemcost  = itemcost * (1 - (getGCWDiscount(player)/100))
 	
 	if ( pInventory ~= nil and playerObject ~= nil and itemcost ~= nil ) then 
 		--print("itemcost is " .. itemcost)

@@ -106,27 +106,32 @@ function rebel_recruiter_handler:getItemCost(itemstring)
 end
 
 
-function rebel_recruiter_handler:addWeaponsArmor(screen)
+function rebel_recruiter_handler:addWeaponsArmor(screen, gcwDiscount)
+	local discountMultiplier = 1 - (gcwDiscount/100)
+	
 	for k,v in pairs(faction_reward_data.rebel_weapons_armor_list) do
 		if ( faction_reward_data.rebel_weapons_armor[v] ~= nill and 	faction_reward_data.rebel_weapons_armor[v].display ~= nil and faction_reward_data.rebel_weapons_armor[v].cost ~= nil ) then
-				screen:addOption(faction_reward_data.rebel_weapons_armor[v].display .. " - " .. faction_reward_data.rebel_weapons_armor[v].cost, v)
+				screen:addOption(faction_reward_data.rebel_weapons_armor[v].display .. " - " .. (faction_reward_data.rebel_weapons_armor[v].cost * discountMultiplier), v)
 		end
 	end
 end
 
-function rebel_recruiter_handler:addFurniture(screen) 
+function rebel_recruiter_handler:addFurniture(screen, gcwDiscount) 
+	local discountMultiplier = 1 - (gcwDiscount/100)
+	
 	for k,v in pairs(faction_reward_data.rebel_furniture_list) do
 		if ( faction_reward_data.rebel_furniture[v] ~= nil and faction_reward_data.rebel_furniture[v].display ~= nil and faction_reward_data.rebel_furniture[v].cost ~= nil ) then
-			screen:addOption(faction_reward_data.rebel_furniture[v].display .. " - " .. faction_reward_data.rebel_furniture[v].cost, v)
+			screen:addOption(faction_reward_data.rebel_furniture[v].display .. " - " .. (faction_reward_data.rebel_furniture[v].cost * discountMultiplier), v)
 		end
 	end
 end
 
-function rebel_recruiter_handler:addInstallations(screen)
-	--print("addInstallations()")
+function rebel_recruiter_handler:addInstallations(screen, gcwDiscount)
+	local discountMultiplier = 1 - (gcwDiscount/100)
+	
 	for k,v in pairs(faction_reward_data.rebel_installations_list) do
 		if ( faction_reward_data.rebel_installations[v] ~= nil and faction_reward_data.rebel_installations[v].display ~= nil and faction_reward_data.rebel_installations[v].cost ~= nil ) then
-			screen:addOption(faction_reward_data.rebel_installations[v].display .. " - " .. faction_reward_data.rebel_installations[v].cost, v)
+			screen:addOption(faction_reward_data.rebel_installations[v].display .. " - " .. (faction_reward_data.rebel_installations[v].cost * discountMultiplier), v)
 		else
 			--print("not in table")
 		end

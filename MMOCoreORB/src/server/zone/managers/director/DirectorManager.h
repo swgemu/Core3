@@ -118,6 +118,7 @@ namespace server {
 		static int getTimestamp(lua_State* L);
 		static int getSpawnPoint(lua_State* L);
 		static int makeCreatureName(lua_State* L);
+		static int getGCWDiscount(lua_State* L);
 
 	private:
 		void initializeLuaEngine(Lua* lua);

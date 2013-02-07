@@ -50,11 +50,10 @@ class GCWManager extends ManagedService implements Logger {
 	@dereferenced
 	protected transient Mutex baseMutex;
 
-	private int rebelBases;
+	private transient int rebelBases;
 
-	private int imperialBases;
-
-
+	private transient int imperialBases;
+	
 	public transient static int gcwCheckTimer;
 	public transient static int vulnerabilityDuration; 
 	public transient static int vulnerabilityFrequency; 
@@ -68,7 +67,8 @@ class GCWManager extends ManagedService implements Logger {
 	public transient static int reactvationTimer;
 	public transient static int turretAutoFireTimeout;
 	public transient static int maxBasesPerPlayer;
-
+	public transient static int bonusXP;
+	public transient static int bonusDiscount;
 
 	public GCWManager(Zone zne){
 		imperialBases = 0;
@@ -334,5 +334,29 @@ class GCWManager extends ManagedService implements Logger {
 		imperialBases = val;
 	}
 
+	@local 
+	public unsigned int getWinningFaction(){
+
+		if(getRebelBaseCount() > getImperialBaseCount())
+			return REBELHASH;
+		else if ( getImperialBaseCount() > getRebelBaseCount() )
+			return IMPERIALHASH;
+		else
+			return 1;
+	}
+
+	@local
+	public int getGCWDiscount(CreatureObject creature){
+		if(getWinningFaction() != creature.getFaction() && creature.getFaction() != 0)
+			return bonusDiscount;
+		
+		return 0;
+	}
+	
+	@local
+	@read
+	public int getGCWXPBonus(){
+		return bonusXP;
+	}
 }
 

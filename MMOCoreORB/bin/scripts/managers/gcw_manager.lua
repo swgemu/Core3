@@ -38,3 +38,8 @@ turretAutoFireTimeout = 20
 
 maxBasesPerPlayer = 3
 
+-- xp bonus for faction controlling a planet
+bonusXP = 15
+
+-- discount for side losing the gcw
+bonusDiscount = 30

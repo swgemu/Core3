@@ -68,6 +68,8 @@ int GCWManagerImplementation::overtCooldown = 300;
 int GCWManagerImplementation::reactvationTimer = 300;
 int GCWManagerImplementation::turretAutoFireTimeout = 120;
 int GCWManagerImplementation::maxBasesPerPlayer = 3;
+int GCWManagerImplementation::bonusXP = 15;
+int GCWManagerImplementation::bonusDiscount = 30;
 
 void GCWManagerImplementation::initialize(){
 	// TODO: initialize things
@@ -113,6 +115,10 @@ void GCWManagerImplementation::loadLuaConfig(){
 	reactvationTimer = lua->getGlobalInt("reactvationTimer");
 	turretAutoFireTimeout = lua->getGlobalInt("turretAutoFireTimeout");
 	maxBasesPerPlayer = lua->getGlobalInt("maxBasesPerPlayer");
+	bonusXP = lua->getGlobalInt("bonusXP");
+	bonusDiscount = lua->getGlobalInt("bonusDiscount");
+
+
 }
 
 // PRE: Nothing needs to be locked
@@ -2425,3 +2431,5 @@ bool GCWManagerImplementation::canUseTerminals(CreatureObject* creature, Buildin
 	}
 	return true;
 }
+
+

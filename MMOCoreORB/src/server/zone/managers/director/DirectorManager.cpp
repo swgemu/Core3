@@ -47,6 +47,7 @@
 #include "server/zone/objects/scene/components/LuaObjectMenuResponse.h"
 #include "server/zone/objects/scene/variables/ContainerPermissions.h"
 #include "server/zone/objects/tangible/deed/Deed.h"
+#include "server/zone/managers/gcw/GCWManager.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 
@@ -137,6 +138,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getTimestamp", getTimestamp);
 	lua_register(luaEngine->getLuaState(), "getSpawnPoint", getSpawnPoint);
 	lua_register(luaEngine->getLuaState(), "makeCreatureName", makeCreatureName);
+	lua_register(luaEngine->getLuaState(), "getGCWDiscount", getGCWDiscount);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -1181,5 +1183,20 @@ int DirectorManager::makeCreatureName(lua_State* L) {
 	String name = nameManager->makeCreatureName(surname);
 
 	lua_pushstring(L, name.toCharArray());
+	return 1;
+}
+
+int DirectorManager::getGCWDiscount(lua_State* L){
+	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -1);
+
+	if(creature == NULL || creature->getZone() == NULL)
+		return 0;
+
+	GCWManager* gcwMan = creature->getZone()->getGCWManager();
+
+	if(gcwMan == 0)
+		return 0;
+
+	lua_pushinteger(L, gcwMan->getGCWDiscount(creature));
 	return 1;
 }
