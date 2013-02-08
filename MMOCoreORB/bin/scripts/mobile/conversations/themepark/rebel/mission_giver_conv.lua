@@ -181,4 +181,4 @@ createMissionGiverConvoTemplate("gavyn_sykes_mission_giver_convotemplate", "gavy
 
 -- Dantooine
 createMissionGiverConvoTemplate("luthik_uwyr_mission_giver_convotemplate","luthik_uwyr_mission_giver_conv_handler")
-createMissionGiverConvoTemplate("xaan_talmaron_mission_giver_convotemplate","xaan_talmaron_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("kelvus_naria_mission_giver_convotemplate", "kelvus_naria_mission_giver_conv_handler")createMissionGiverConvoTemplate("xaan_talmaron_mission_giver_convotemplate","xaan_talmaron_mission_giver_conv_handler")

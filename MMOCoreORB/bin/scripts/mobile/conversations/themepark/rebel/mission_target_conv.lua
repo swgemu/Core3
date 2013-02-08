@@ -80,7 +80,6 @@ function createMissionTargetConvoTemplate(templateName, convoHandler)
 	addConversationTemplate(templateName, mission_target_convotemplate);
 end
 
-
 --Themeparks
 createMissionTargetConvoTemplate("theme_park_rebel_mission_target_convotemplate","theme_park_rebel_mission_target_conv_handler")
 createMissionTargetConvoTemplate("theme_park_jabba_mission_target_convotemplate","theme_park_jabba_mission_target_conv_handler")
@@ -95,4 +94,4 @@ createMissionTargetConvoTemplate("gavyn_sykes_mission_target_convotemplate","gav
 
 -- Dantooine
 createMissionTargetConvoTemplate("luthik_uwyr_mission_target_convotemplate","luthik_uwyr_mission_target_conv_handler")
-createMissionTargetConvoTemplate("xaan_talmaron_mission_target_convotemplate","xaan_talmaron_mission_target_conv_handler")
+createMissionTargetConvoTemplate("kelvus_naria_mission_target_convotemplate","kelvus_naria_mission_target_conv_handler")createMissionTargetConvoTemplate("xaan_talmaron_mission_target_convotemplate","xaan_talmaron_mission_target_conv_handler")
