@@ -148,9 +148,9 @@ public:
 
 	static const int ITEMSPERPAGE = 100;
 
-	static const int VENDOREXPIREPERIOD = 900;
+	static const int VENDOREXPIREPERIOD = 2592000;
 
-	static const int COMMODITYEXPIREPERIOD = 180;
+	static const int COMMODITYEXPIREPERIOD = 604800;
 
 	AuctionManager(ZoneServer* server);
 
@@ -261,9 +261,9 @@ public:
 
 	static const int ITEMSPERPAGE = 100;
 
-	static const int VENDOREXPIREPERIOD = 900;
+	static const int VENDOREXPIREPERIOD = 2592000;
 
-	static const int COMMODITYEXPIREPERIOD = 180;
+	static const int COMMODITYEXPIREPERIOD = 604800;
 
 private:
 	bool marketEnabled;
