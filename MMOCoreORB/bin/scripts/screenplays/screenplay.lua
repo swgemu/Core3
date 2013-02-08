@@ -83,7 +83,6 @@ Act = Object:new {
 		
 }
 
-
 -- Theme parks
 includeFile("themepark/themeParkLogic.lua")
 includeFile("themepark/conversations/mission_giver_conv_handler.lua")
@@ -106,6 +105,7 @@ includeFile("dungeon/death_watch_bunker_conv_handles.lua")
 -- Task/Quest
 includeFile("tasks/captain_gavyn_sykes.lua")
 includeFile("tasks/dolac_legasi.lua")
+includeFile("tasks/drakka_judarrl.lua")
 includeFile("tasks/hedon_istee.lua")
 includeFile("tasks/jatrian_lytus.lua")
 includeFile("tasks/kelvus_naria.lua")

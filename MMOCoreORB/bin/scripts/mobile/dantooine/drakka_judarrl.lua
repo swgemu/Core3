@@ -24,13 +24,13 @@ drakka_judarrl = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_drakka_judarrl.iff"},
 	lootGroups = {},
 	weapons = {"light_jedi_weapons"},
-	conversationTemplate = "",
+	conversationTemplate = "drakka_judarrl_mission_giver_convotemplate",
 	attacks = merge(lightsabermaster)
 }
 
