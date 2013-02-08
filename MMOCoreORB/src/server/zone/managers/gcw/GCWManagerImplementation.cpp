@@ -1500,33 +1500,33 @@ void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, Build
 	char providedSequence[] = "CGAT";
 	//info("The existing system data string is " + baseData->getSystemDNAString(),true);
 
-	if(baseData->getSystemDNAString() == "") {
-		this->refreshDNA(baseData);
-	}
+	int chainLength = 3;
+	if(creature->hasSkill("outdoors_bio_engineer_master"))
+		chainLength = 8;
+
+	String newSampledChain = this->refreshDNA(baseData, chainLength);
+
+	status->setCallback( new OverrideTerminalSuiCallback(this->zone->getZoneServer(), newSampledChain) );
 
 
-	status->setCallback( new OverrideTerminalSuiCallback(this->zone->getZoneServer(), baseData->getSystemDNAString()) );
 
-
-	StringBuffer dnaString;
-
-	String controlSequence = ""; // display string for full 23 characters
+	String controlSequence = ""; // display string for full sample chain - configurable length
 
 	if(!baseData->isDNAInitialized()){
 
-		//info("initializing and populating menu",true);
-		// add menu items to suibox
+		// temporary buffer for generating random letters
+		StringBuffer dnaString;
+
 		for(int i =0; i < totalDNASamples; i++) {
 			dnaString << providedSequence[System::random(0x3)];
 			baseData->addDNAProfile(i,dnaString.toString());   // add one of 4 random letters one at a time
-			status->addMenuItem( dnaString.toString(),i);      // add them to the menu
+			status->addMenuItem(dnaString.toString(),i);      // add them to the menu
 			controlSequence = controlSequence + dnaString.toString();
 			dnaString.deleteAll();
 		}
 
 	} else {
-		// populate the user chains to match
-		//info("populating meneu",true);
+		// populate the user chains to display colored matches match
 		for(int i =0; i < totalDNASamples; i++) {
 			String chain = baseData->getDNAProfile(i);
 			String seq = baseData->getDNAProfile(i);
@@ -1539,19 +1539,17 @@ void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, Build
 				seq = tstring.toString();
 			}
 			status->addMenuItem( chain,i);
-
 			controlSequence = controlSequence + seq;
+
 			chain = "";
 			seq = "";
-			dnaString.deleteAll();
 		}
 	}
 
 	String pairString = "\\#FFFFFFSuitable Pairs: AT,TA,GC,CG	\r\n";
 	String completed = "Matched Pairs: " + String::valueOf(baseData->getSampleMatches()) + "\r\n";
-	String sampleChain = "Sampled Chain: " + baseData->getSystemDNAString() + "\r\n";
 	controlSequence = "Control Sequence: " + controlSequence + "\r\n";
-
+	String sampleChain = "Sampled Chain: " + newSampledChain + "\r\n";
 
 	String instructionString = "\r\nSelect a DNA marker in the control sequence as the starting point for where the sampled chain will be sliced onto it.\r\n";
     String dashes = "--------------------\r\n";
@@ -1570,8 +1568,7 @@ void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, Build
 	creature->sendMessage(status->generateMessage());
 
 }
-void GCWManagerImplementation::processDNASample(CreatureObject* creature, BuildingObject* building, const  int indx){
-	//info("processing DNA sample",true);
+void GCWManagerImplementation::processDNASample(CreatureObject* creature, BuildingObject* building, const String& sampleChain, const int indx){
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
 
 	if(creature==NULL || baseData == NULL)
@@ -1585,51 +1582,40 @@ void GCWManagerImplementation::processDNASample(CreatureObject* creature, Buildi
 	if(!this->isBaseVulnerable(building))
 		return;
 
-	String dnaString = baseData->getSystemDNAString();
-
 	Locker block(building, creature);
 
 	int currentMatchCount = 0;
 	int j = -1;
 
 	// don't enter loop if user didn't select anything
-	for(int i = indx; i < indx+3 && i >= 0;i++){
+	for(int i = indx; i < indx+sampleChain.length() && i >= 0;i++){
 		j++;
 
+		// this is the individual letters from the control sequence
 		String userProvidedSample = baseData->getDNAProfile(i);
 
 		if(userProvidedSample.length() == 1){
 
+
 			String transLatedUserString = this->getDNAHash(userProvidedSample);
-			char systemLetter = dnaString.charAt(j);
+			char currentPlayerLetter = sampleChain.charAt(j);
+
 			StringBuffer newstring;
-			newstring << systemLetter;
+			newstring << currentPlayerLetter;
 
-			//info("SELCECTED : TRANSLATED : SYSTEM : " + userProvidedSample + " : " +  transLatedUserString + " : " + newstring.toString(), true);
-
-			if(systemLetter == transLatedUserString.charAt(0)){
+			if(currentPlayerLetter == transLatedUserString.charAt(0)){
 				baseData->modifySampleAt(i,userProvidedSample + transLatedUserString);
 				baseData->incrementSampleMatches();
 				currentMatchCount++;
-			} else {
-				//no match exit the loop
-				//break;
 			}
 
 		} else {
-			// selected one with two values.  going to change th system string
-			this->refreshDNA(baseData);
+			// selected one with two values.  going to change the system string
+			this->refreshDNA(baseData, 3);
 			break;
 		}
 
 	}
-
-	if(currentMatchCount || indx == -1){
-		this->refreshDNA(baseData);
-	}
-	//info("New Matches: " + String::valueOf(currentMatchCount));
-
-	//info("There are a total of " + String::valueOf(baseData->getSampleMatches()) + " matches",true);
 
 	if ( baseData->getSampleMatches() <  dnaMatchesRequired)
 	{
@@ -1644,12 +1630,15 @@ void GCWManagerImplementation::processDNASample(CreatureObject* creature, Buildi
 }
 
 // PRE: basedata /building is locked
-void GCWManagerImplementation::refreshDNA(DestructibleBuildingDataComponent* baseData){
+String GCWManagerImplementation::refreshDNA(DestructibleBuildingDataComponent* baseData, int chainLength){
 	//info("Refreshing the string given by the system");
 	char providedSequence[] = "CGAT";
 	StringBuffer tstring;
-	tstring << providedSequence[System::random(0x3)] << providedSequence[System::random(0x3)] << providedSequence[System::random(0x3)];
+	for(int i = 0; i < chainLength; i++)
+		tstring << providedSequence[System::random(0x3)];
+
 	baseData->setSystemDNAString(tstring.toString());
+	return tstring.toString();
 }
 
 void GCWManagerImplementation::sendPowerRegulatorControls(CreatureObject* creature, BuildingObject* building){

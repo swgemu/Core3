@@ -43,7 +43,7 @@ public:
 
 		int index = Integer::valueOf(args->get(0).toString());
 
-		gcwMan->processDNASample(player, building, index);
+		gcwMan->processDNASample(player, building, dnaString, index);
 
 
 	}

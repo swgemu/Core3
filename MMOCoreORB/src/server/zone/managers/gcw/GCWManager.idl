@@ -148,7 +148,7 @@ class GCWManager extends ManagedService implements Logger {
 	
 	public native void abortShutdownSequence(CreatureObject creature, BuildingObject building);
 	
-	public native void processDNASample(CreatureObject creature, BuildingObject building, int indx);
+	public native void processDNASample(CreatureObject creature, BuildingObject building, final string sampleChain, int indx);
 	
 	//public native void processDNASample(CreatureObject creature, BuildingObject building, final string dnaString, int indx);
 	
@@ -264,7 +264,7 @@ class GCWManager extends ManagedService implements Logger {
 	
 	private native void initializeNewVulnerability(DestructibleBuildingDataComponent data);
 	
-	private native void refreshDNA(DestructibleBuildingDataComponent data);
+	private native string refreshDNA(DestructibleBuildingDataComponent data, int chainLength);
 
 	public native void notifyInstallationDestruction(InstallationObject installation);
 
