@@ -416,17 +416,15 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 	try {
 		ManagedReference<CreatureObject*> player = copyThreatMap.getHighestDamageGroupLeader();
 
-		if(player == NULL)
-			return 0;
-
 		uint64 ownerID = 0;
 
-		if(player->isGrouped())
-			ownerID = player->getGroupID();
-		else
-			ownerID = player->getObjectID();
-
 		if (player != NULL) {
+
+			if(player->isGrouped())
+				ownerID = player->getGroupID();
+			else
+				ownerID = player->getObjectID();
+
 			Locker locker(player, destructedObject);
 
 			player->notifyObservers(ObserverEventType::KILLEDCREATURE, destructedObject);

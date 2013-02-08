@@ -3506,6 +3506,9 @@ int PlayerManagerImplementation::getOnlineCharCount(unsigned int accountId) {
 
 bool PlayerManagerImplementation::shouldRescheduleCorpseDestruction(CreatureObject* player, CreatureObject* ai) {
 
+	if(player == NULL || ai == NULL)
+		return false;
+
 	if (ai->isNonPlayerCreatureObject()) {
 		NonPlayerCreatureObject *npc = dynamic_cast<NonPlayerCreatureObject*>(ai);
 
