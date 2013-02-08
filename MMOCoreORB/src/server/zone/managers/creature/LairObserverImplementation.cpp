@@ -182,6 +182,8 @@ void LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 
 	if (forceSpawn) {
 		spawnNumber++;
+	} else if (lairTemplate->getLairType() == LairTemplate::NPC) {
+		return;
 	} else {
 		int conditionDamage = lair->getConditionDamage();
 		int maxCondition = lair->getMaxCondition();
@@ -212,13 +214,21 @@ void LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 	//SortedVector<uint32>* objectsToSpawn = getObjectsToSpawn();
 
 	VectorMap<String, int>* objectsToSpawn = lairTemplate->getMobiles();
+	int amountToSpawn = 0;
 
-	int amountToSpawn = System::random(3) + ((lairTemplate->getSpawnLimit() / 3) - 2);
+	if (lairTemplate->getLairType() == LairTemplate::CREATURE) {
+		amountToSpawn = System::random(3) + ((lairTemplate->getSpawnLimit() / 3) - 2);
+	} else {
+		amountToSpawn = System::random(lairTemplate->getSpawnLimit() / 2) + (lairTemplate->getSpawnLimit() / 2);
+	}
 
 	if (amountToSpawn < 1)
 		amountToSpawn = 1;
 
 	for(int i = 0; i < amountToSpawn; ++i) {
+
+		if (spawnedCreatures.size() >= lairTemplate->getSpawnLimit())
+			return;
 
 		String templateToSpawn = objectsToSpawn->elementAt((int)System::random(objectsToSpawn->size() - 1)).getKey();
 

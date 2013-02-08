@@ -17,6 +17,9 @@ namespace templates {
 namespace mobile {
 
 class LairTemplate : public Object {
+public:
+	enum LairType {CREATURE, NPC};
+
 protected:
 	VectorMap<String, int> mobiles;
 	int spawnLimit;
@@ -26,6 +29,8 @@ protected:
 	String name;
 
 	unsigned int faction;
+
+	LairType lairType;
 
 public:
 	enum { VERYEASY = 0, EASY, MEDIUM, HARD, VERYHARD};
@@ -86,6 +91,15 @@ public:
 			}
 		} else {
 			faction = 0;
+		}
+
+		if (templateData->getStringField("lairType").length() > 0) {
+			if (templateData->getStringField("lairType") == "npc")
+				lairType = NPC;
+			else
+				lairType = CREATURE;
+		} else {
+			lairType = CREATURE;
 		}
 
 		LuaObject mobs = templateData->getObjectField("mobiles");
@@ -199,6 +213,10 @@ public:
 
 	unsigned int getFaction() {
 		return faction;
+	}
+
+	LairType getLairType() {
+		return lairType;
 	}
 
 };
