@@ -211,7 +211,7 @@ ComponentManager::ComponentManager() {
 	components.put("TrainerMenuComponent", new TrainerMenuComponent());
 
 	components.put("FireHeavyWeaponMenuComponent", new FireHeavyWeaponMenuComponent());
-	components.put("ThrowGrenadeMenuComponent", new TrainerMenuComponent());
+	components.put("ThrowGrenadeMenuComponent", new ThrowGrenadeMenuComponent());
 
 	components.put("AiStateComponent", new AiStateComponent());
 	components.put("AlertStateComponent", new AlertStateComponent());

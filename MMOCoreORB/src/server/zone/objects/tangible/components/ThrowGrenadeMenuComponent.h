@@ -8,10 +8,12 @@
 #ifndef THROWGRENADEMENUCOMPONENT_H_
 #define THROWGRENADEMENUCOMPONENT_H_
 
-#include "TangibleObjectMenuComponent.h"
+#include "WeaponObjectMenuComponent.h"
 
-class ThrowGrenadeMenuComponent : public TangibleObjectMenuComponent {
+class ThrowGrenadeMenuComponent : public WeaponObjectMenuComponent {
 public:
+	virtual void fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
+
 	virtual int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID);
 };
 
