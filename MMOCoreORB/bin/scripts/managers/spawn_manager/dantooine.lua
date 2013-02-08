@@ -209,7 +209,6 @@ dantooine_static_spawns = {
 	{"imperial_recruiter",0,-4196.99,0,-2411.57,-81,0, "", ""},
 	{"imperial_recruiter",60,-4198.63,3,-2412.89,323.59,0, "npc_imperial", ""},
 	{"insurgent",60,0.0282143,0.125265,-5.72625,344.54,1365878, "npc_imperial", ""},
-	{"jatrian_lytus",60,3.1801,0.125266,3.64218,209.67,1365879, "calm", "Cmdr. Jatrian Lytus"},
 	{"juntah_herm",60,-4221.97,3,-2386.5,258.021,0, "neutral", ""},
 	{"kess_yarrow",60,-623.484,3,2481.77,149.192,0, "neutral", ""},
 	{"lx_466",60,-4181.94,3,-2385.99,345.343,0, "calm", "LX-466"},

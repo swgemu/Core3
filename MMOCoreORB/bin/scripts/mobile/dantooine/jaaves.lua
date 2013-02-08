@@ -1,6 +1,6 @@
-jatrian_lytus = Creature:new {
-	objectName = "@npc_name:human_base_male",
-	customName = "Cmdr. Jatrian Lytus",
+jaaves = Creature:new {
+	objectName = "",
+	customName = "Jaaves",
 	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
@@ -27,12 +27,12 @@ jatrian_lytus = Creature:new {
 	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_jatrian_lytus.iff"},
+	templates = {"object/mobile/dressed_feral_force_wielder.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "jatrian_lytus_mission_giver_convotemplate",
+	conversationTemplate = "jatrian_lytus_mission_target_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(jatrian_lytus, "jatrian_lytus")
+CreatureTemplates:addCreatureTemplate(jaaves, "jaaves")
