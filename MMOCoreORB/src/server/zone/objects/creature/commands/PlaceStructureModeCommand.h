@@ -63,16 +63,22 @@ public:
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		if (ghost == NULL)
+			return GENERALERROR;
+
+		if (creature->isRidingCreature() || creature->isRidingMount()) {
+			creature->sendSystemMessage("@player_structure:cant_place_mounted");
+			return INVALIDLOCOMOTION;
+		}
+
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
-
-		if (ghost == NULL)
-			return GENERALERROR;
 
 		if (creature->getParent() != NULL) {
 			creature->sendSystemMessage("@player_structure:not_inside"); //You can not place a structure while you are inside a building.
