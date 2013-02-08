@@ -115,6 +115,16 @@ object_tangible_component_armor_shield_generator_personal_imperial_test = object
 	cold = 10,
 	acid = 0,
 	lightSaber = 0,
+
+	numberExperimentalProperties = {1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 1},
+	experimentalProperties = {"XX", "XX", "XX", "CD", "OQ", "OQ", "UT", "MA", "OQ", "MA", "OQ", "MA", "OQ", "XX", "XX", "OQ", "SR", "XX"},
+	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "exp_durability", "exp_quality", "exp_durability", "null", "null", "null", "null", "null", "exp_resistance", "null"},
+	experimentalSubGroupTitles = {"null", "null", "hit_points", "armor_effectiveness", "armor_integrity", "armor_health_encumbrance", "armor_action_encumbrance", "armor_mind_encumbrance", "armor_rating", "armor_special_type", "armor_special_effectiveness", "armor_special_integrity"},
+	experimentalMin = {0, 0, 1000, 1, 2500, 0, 0, 0, 1, 2, 1, 2500},
+	experimentalMax = {0, 0, 1000, 48, 3400, 0, 0, 0, 1, 2, 60, 3400},
+	experimentalPrecision = {0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 4, 4, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_armor_shield_generator_personal_imperial_test, "object/tangible/component/armor/shield_generator_personal_imperial_test.iff")

@@ -114,6 +114,7 @@ includeFile("tasks/pfilbee_jhorn.lua")
 includeFile("tasks/rakir_banai.lua")
 includeFile("tasks/ris_armor_quest.lua")
 includeFile("tasks/vardias_tyne.lua")
+includeFile("tasks/xaan_talmaron.lua")
 
 -- Caves
 includeFile("caves/corellia_afarathu_cave.lua")

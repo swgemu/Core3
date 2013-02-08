@@ -95,3 +95,4 @@ createMissionTargetConvoTemplate("gavyn_sykes_mission_target_convotemplate","gav
 
 -- Dantooine
 createMissionTargetConvoTemplate("luthik_uwyr_mission_target_convotemplate","luthik_uwyr_mission_target_conv_handler")
+createMissionTargetConvoTemplate("xaan_talmaron_mission_target_convotemplate","xaan_talmaron_mission_target_conv_handler")

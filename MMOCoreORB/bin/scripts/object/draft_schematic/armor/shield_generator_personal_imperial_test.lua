@@ -43,6 +43,37 @@
 
 object_draft_schematic_armor_shield_generator_personal_imperial_test = object_draft_schematic_armor_shared_shield_generator_personal_imperial_test:new {
 
-}
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Imperial Personal Shield Generator",
+
+   craftingToolTab = 2, -- (See DraftSchemticImplementation.h)
+   complexity = 60, 
+   size = 14, 
+
+   xpType = "crafting_clothing_armor", 
+   xp = 280, 
+
+   assemblySkill = "armor_assembly", 
+   experimentingSkill = "armor_experimentation", 
+   customizationSkill = "armor_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n", "craft_armor_ingredients_n"},
+   ingredientTitleNames = {"assembly_containment_module", "charge_insulator_shield", "personal_mounting_clip", "feed_power_regulator_unit", "field_transmission_substrate_assembly", "ray_shielding_generator", "particle_shielding_generators", "shield_unit_energy_distributor", "field_emitter_matrix"},
+   ingredientSlotType = {0, 0, 0, 1, 1, 1, 1, 1, 1},
+   resourceTypes = {"iron", "ore", "steel_ditanium", "object/tangible/component/item/shared_electronic_power_conditioner.iff", "object/tangible/component/armor/shared_deflector_shield_projector_plate.iff", "object/tangible/component/armor/shared_deflector_shield_generator_energy_ray.iff", "object/tangible/component/armor/shared_deflector_shield_generator_particle.iff", "object/tangible/component/item/shared_electronic_energy_distributor.iff", "object/tangible/component/armor/shared_deflector_shield_emitter_assembly.iff"},
+   resourceQuantities = {80, 30, 30, 1, 1, 1, 3, 1, 1},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/component/armor/shield_generator_personal_imperial_test.iff",
+
+   additionalTemplates = {
+             }
+
+}
 ObjectTemplates:addTemplate(object_draft_schematic_armor_shield_generator_personal_imperial_test, "object/draft_schematic/armor/shield_generator_personal_imperial_test.iff")

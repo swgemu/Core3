@@ -254,7 +254,6 @@ dantooine_static_spawns = {
 	{"stormtrooper",450,-4243.7,3,-2400.93,114.53,0, "npc_imperial", ""},
 	{"stranded_imperial_soldier",60,-604.016,3,2538.15,200.426,0, "npc_imperial", "Lt Nilsson (a Planet record keeper)"},
 	{"ussox",60,1635.07,4,-6402.37,321.844,0, "calm", "Ussox"},
-	{"xaan_talmaron",60,0.923707,0.125264,-4.46262,160.225,1380125, "calm", "Xaan Talmaron"},
 	{"yras_shen_jen",60,1572.26,4,-6417.06,75.0582,0, "neutral", ""},
 	{"ytzosh",60,1636.98,4,-6402.56,321.838,0, "calm", "Ytzosh"},
 }
