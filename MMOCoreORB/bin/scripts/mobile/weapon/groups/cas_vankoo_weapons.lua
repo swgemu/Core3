@@ -1,5 +1,6 @@
 cas_vankoo_weapons = {
-	"object/weapon/ranged/pistol/pistol_launcher.iff"
+	"object/weapon/ranged/pistol/pistol_launcher.iff",
+	"object/weapon/melee/polearm/lance_vibrolance.iff"
 }
 
 addWeapon("cas_vankoo_weapons", cas_vankoo_weapons)
