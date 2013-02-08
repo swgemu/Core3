@@ -79,14 +79,16 @@ public:
 			return GENERALERROR;
 		}
 
-		if (creature->getHAM(CreatureAttribute::ACTION) <= 50) {
+		int actionCost = creature->calculateCostAdjustment(CreatureAttribute::QUICKNESS, 50);
+
+		if (creature->getHAM(CreatureAttribute::ACTION) <= actionCost) {
 			if (creature->isPlayerCreature())
 				(cast<CreatureObject*>(creature))->sendSystemMessage("@cbt_spam:berserk_fail_single");
 
 			return GENERALERROR;
 		}
 
-		creature->inflictDamage(creature, CreatureAttribute::ACTION, -50, true);
+		creature->inflictDamage(creature, CreatureAttribute::ACTION, actionCost, true);
 
 		creature->setBerserkedState(40);
 		//creature->setBerserkDamage(25);

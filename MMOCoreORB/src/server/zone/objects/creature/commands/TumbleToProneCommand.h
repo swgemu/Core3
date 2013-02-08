@@ -65,10 +65,11 @@ public:
 			return INVALIDLOCOMOTION;
 
 		//Check for and deduct HAM cost.
-		if (creature->getHAM(CreatureAttribute::ACTION) <= 100)
+		int actionCost = creature->calculateCostAdjustment(CreatureAttribute::QUICKNESS, 100);
+		if (creature->getHAM(CreatureAttribute::ACTION) <= actionCost)
 			return INSUFFICIENTHAM;
 
-		creature->inflictDamage(creature, CreatureAttribute::ACTION, 100, true);
+		creature->inflictDamage(creature, CreatureAttribute::ACTION, actionCost, true);
 
 		creature->setPosture(CreaturePosture::PRONE, false);
 

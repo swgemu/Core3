@@ -74,7 +74,11 @@ public:
 
 		int hamCost = (int) (100.0f * calculateGroupModifier(group));
 
-		if (!inflictHAM(player, hamCost, hamCost, hamCost))
+		int healthCost = creature->calculateCostAdjustment(CreatureAttribute::STRENGTH, hamCost);
+		int actionCost = creature->calculateCostAdjustment(CreatureAttribute::QUICKNESS, hamCost);
+		int mindCost = creature->calculateCostAdjustment(CreatureAttribute::FOCUS, hamCost);
+
+		if (!inflictHAM(player, healthCost, actionCost, mindCost))
 			return GENERALERROR;
 
 		int chance = 30;

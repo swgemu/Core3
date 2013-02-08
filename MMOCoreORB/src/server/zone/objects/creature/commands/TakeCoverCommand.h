@@ -71,8 +71,8 @@ public:
 			return INVALIDWEAPON;
 		}
 
-		int actioncost = 50;	
-		if (creature->getHAM(CreatureAttribute::ACTION)  < actioncost) {
+		int actionCost = creature->calculateCostAdjustment(CreatureAttribute::QUICKNESS, 50);
+		if (creature->getHAM(CreatureAttribute::ACTION)  < actionCost) {
 
 			if (creature->isPlayerCreature())
 				(creature)->sendSystemMessage("@cbt_spam:cover_fail_single");
@@ -104,7 +104,7 @@ public:
 
 		creature->addBuff(buff);
 
-		creature->inflictDamage(creature, CreatureAttribute::ACTION, actioncost, false);
+		creature->inflictDamage(creature, CreatureAttribute::ACTION, actionCost, false);
 
 		return SUCCESS;
 	}

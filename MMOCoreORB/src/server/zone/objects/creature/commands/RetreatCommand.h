@@ -75,7 +75,10 @@ public:
 		float burstRunMod = (float) player->getSkillMod("group_burst_run");
 		int hamCost = (int) (100.0f * (1.0f - (burstRunMod / 100.0f))) * calculateGroupModifier(group);
 
-		if (!inflictHAM(player, 0, hamCost, hamCost))
+		int actionCost = creature->calculateCostAdjustment(CreatureAttribute::QUICKNESS, hamCost);
+		int mindCost = creature->calculateCostAdjustment(CreatureAttribute::FOCUS, hamCost);
+
+		if (!inflictHAM(player, 0, actionCost, mindCost))
 			return GENERALERROR;
 
 		shoutCommand(player, group);
