@@ -46,7 +46,7 @@ object_building_player_city_hospital_tatooine = object_building_player_city_shar
 		{"private_medical_rating", 100}
 	},
 	lotSize = 3,
-	baseMaintenanceRate = 0,
+	baseMaintenanceRate = 50,
 	allowedZones = {"dantooine", "lok", "tatooine"},
 	length = 5,
 	width = 5,

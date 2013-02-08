@@ -43,7 +43,7 @@
 
 object_building_player_city_cantina_corellia = object_building_player_city_shared_cantina_corellia:new {
 	lotSize = 5,
-	baseMaintenanceRate = 0,
+	baseMaintenanceRate = 50,
 	planetMapCategory = "cantina",
 	allowedZones = {"corellia", "talus"},
 	length = 7,
