@@ -67,10 +67,23 @@ function geonosian_lab_screenplay:spawnActiveAreas()
 	if (pPoisonCloudBB ~= nil) then
 		local activeArea = LuaActiveArea(pPoisonCloudBB)
 		activeArea:setCellObjectID(1627822)
-		activeArea:setRadius(10)
+		activeArea:setRadius(4)
 		createObserver(ENTEREDAREA, "geonosian_lab_screenplay", "notifyEnteredPoisonGasStrong", pPoisonCloudBB)
 	end
+
+
+--electric shock area
+
+	local pElectroShock = spawnSceneObject("yavin4", "object/active_area.iff", -6168.7, 48.3, -380.9, 0, 0, 0, 0, 0)
+	
+	if (pElectroShock ~= nil) then
+		local activeArea = LuaActiveArea(pElectroShock)
+		activeArea:setCellObjectID(1627813)
+		activeArea:setRadius(3)
+		createObserver(ENTEREDAREA, "geonosian_lab_screenplay", "notifyElectroShock", pElectroShock)
+	end
 end
+
 
 
 
@@ -331,7 +344,7 @@ function geonosian_lab_screenplay:notifyEnteredPoisonGas(pActiveArea, pMovingObj
 				else
 					local activeArea = LuaSceneObject(pActiveArea)
 
-					player:addDotState(POISONED, math.random(20) + 80, HEALTH, 1000, 200.0, activeArea:getObjectID(), 0)
+					player:addDotState(POISONED, math.random(20) + 80, HEALTH, 1000, 2000, activeArea:getObjectID(), 0)
 
 					player:sendSystemMessage("@dungeon/geonosian_madbio:toxic_fumes") --You breathe in toxic fumes!
 				end
@@ -360,7 +373,7 @@ function geonosian_lab_screenplay:notifyEnteredPoisonGasStrong(pActiveArea, pMov
 				else
 					local activeArea = LuaSceneObject(pActiveArea)
 
-					player:addDotState(POISONED, math.random(100) + 400, HEALTH, 1000, 200.0, activeArea:getObjectID(), 0)
+					player:addDotState(POISONED, math.random(100) + 200, HEALTH, 1000, 2000, activeArea:getObjectID(), 0)
 					player:sendSystemMessage("@dungeon/geonosian_madbio:toxic_fumes") --You breathe in toxic fumes!
 				end
 			end
@@ -369,6 +382,21 @@ function geonosian_lab_screenplay:notifyEnteredPoisonGasStrong(pActiveArea, pMov
 	
 	return 0
 end
+
+
+function geonosian_lab_screenplay:notifyElectroShock(pActiveArea, pMovingObject)
+	local movingObject = LuaSceneObject(pMovingObject)
+	
+	if (movingObject:isCreatureObject()) then
+		local player = LuaCreatureObject(pMovingObject)
+		local objectID = player:getObjectID()
+		local activeArea = LuaSceneObject(pActiveArea)
+		player:inflictDamage(activeArea:getObjectID(), 0, 1000, 0)
+		player:sendSystemMessage("@dungeon/geonosian_madbio:shock") --You feel electricity coursing through your body! 
+	end
+
+end
+
 
 function geonosian_lab_screenplay:hasRebreather(scno)
 	--TODO: Change this to be a skill mod check for private_poison_rebreather
