@@ -131,7 +131,7 @@ void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 	if (structureMaintenanceTask != NULL) {
 		updateStructureStatus();
 
-		int timeRemaining = (int) (surplusMaintenance * 3600.f / getMaintenanceRate());
+		timeRemaining = (int) (surplusMaintenance * 3600.f / getMaintenanceRate());
 
 		if (timeRemaining <= 0) {
 			//Decaying structures should be scheduled as soon as possible. Maintenance task will handle
