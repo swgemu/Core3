@@ -79,26 +79,46 @@ public:
 
 		String name = arguments.toString().toLowerCase();
 
-		if (!ghost->hasFriend(name))
+		if (!ghost->hasFriend(name)) {
+			ManagedReference<StringIdChatParameter*> message = new StringIdChatParameter("@ui_cmnty:friend_invalid"); // Invalid friend name specified: %TU
+			message->setTU(name);
+
+			player->sendSystemMessage(*message);
 			return GENERALERROR;
+		}
 
 		ChatManager* chatManager = server->getChatManager();
 
 		ManagedReference<CreatureObject*> targetPlayer = chatManager->getPlayer(name);
 
-		if (targetPlayer == NULL)
+		if (targetPlayer == NULL) {
+			ManagedReference<StringIdChatParameter*> message = new StringIdChatParameter("@ui_cmnty:friend_location_failed"); // Unable to locate %TU
+			message->setTU(name);
+
+			player->sendSystemMessage(*message);
 			return GENERALERROR;
+		}
 
 		PlayerObject* targetGhost = targetPlayer->getPlayerObject();
 		String myFirstName = player->getFirstName().toLowerCase();
 
-		if (!targetGhost->hasFriend(myFirstName))
+		if (!targetGhost->hasFriend(myFirstName)) {
+			ManagedReference<StringIdChatParameter*> message = new StringIdChatParameter("@ui_cmnty:friend_location_failed"); // Unable to locate %TU
+			message->setTU(name);
+
+			player->sendSystemMessage(*message);
 			return GENERALERROR;
+		}
 
 		Zone* zone = targetPlayer->getZone();
 
-		if (zone == NULL)
+		if (zone == NULL) {
+			ManagedReference<StringIdChatParameter*> message = new StringIdChatParameter("@ui_cmnty:friend_location_failed"); // Unable to locate %TU
+			message->setTU(name);
+
+			player->sendSystemMessage(*message);
 			return GENERALERROR;
+		}
 
 		String planet = zone->getZoneName();
 
@@ -124,6 +144,11 @@ public:
 		obj->setActive(true);
 
 		ghost->addWaypoint(obj, true, true);
+
+		ManagedReference<StringIdChatParameter*> message = new StringIdChatParameter("@ui_cmnty:friend_location"); // The friend waypoint has been updated to the location of %TU.
+		message->setTU(name);
+
+		player->sendSystemMessage(*message);
 
 		return SUCCESS;
 	}
