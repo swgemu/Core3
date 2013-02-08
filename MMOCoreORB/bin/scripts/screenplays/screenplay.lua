@@ -177,6 +177,7 @@ includeFile("poi/yavin4_blueleaf_temple.lua")
 includeFile("poi/yavin4_woolamander_temple.lua")
 includeFile("poi/lok_kimogila_town.lua")
 includeFile("poi/dathomir_nightsister_stronghold.lua")
+includeFile("poi/dathomir_nightsister_labor_camp.lua")
 
 
 --Tests
