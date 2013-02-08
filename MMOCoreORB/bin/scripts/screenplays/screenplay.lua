@@ -176,6 +176,7 @@ includeFile("poi/tatooine_krayt_graveyard.lua")
 includeFile("poi/yavin4_blueleaf_temple.lua")
 includeFile("poi/yavin4_woolamander_temple.lua")
 includeFile("poi/lok_kimogila_town.lua")
+includeFile("poi/dathomir_nightsister_stronghold.lua")
 
 
 --Tests
