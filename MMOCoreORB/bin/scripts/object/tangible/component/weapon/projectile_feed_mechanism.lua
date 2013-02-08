@@ -52,7 +52,7 @@ object_tangible_component_weapon_projectile_feed_mechanism = object_tangible_com
 	experimentalMin = {0, 0, 1, 1, 0, 10},
 	experimentalMax = {0, 0, 10, 20, -0.5, 100},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 4},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_projectile_feed_mechanism, "object/tangible/component/weapon/projectile_feed_mechanism.iff")

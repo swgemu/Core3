@@ -52,7 +52,7 @@ object_tangible_component_weapon_stock_advanced = object_tangible_component_weap
 	experimentalMin = {0, 0, 1, 1, 1, 0, 10, 0, 35, 35, 35},
 	experimentalMax = {0, 0, 40, 40, 0, 15, 100, 60, 0, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 4, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_stock_advanced, "object/tangible/component/weapon/stock_advanced.iff")

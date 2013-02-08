@@ -52,7 +52,7 @@ object_tangible_component_weapon_blaster_pistol_barrel_advanced = object_tangibl
 	experimentalMin = {0, 0, 1, 1, 0, 0, 10, 0, 0, 0, 0},
 	experimentalMax = {0, 0, 25, 25, -1.2, 15, 100, 0, 0, 0, 30},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 4, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_blaster_pistol_barrel_advanced, "object/tangible/component/weapon/blaster_pistol_barrel_advanced.iff")

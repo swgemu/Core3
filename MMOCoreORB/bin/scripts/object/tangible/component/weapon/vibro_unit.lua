@@ -52,7 +52,7 @@ object_tangible_component_weapon_vibro_unit = object_tangible_component_weapon_s
 	experimentalMin = {0, 0, 1, 1, 0, 0, 10, 0, 0, 0, 10, 10, 10},
 	experimentalMax = {0, 0, 20, 30, -0.5, 10, 100, 10, 10, 10, 0, 0, 0},
 	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_weapon_vibro_unit, "object/tangible/component/weapon/vibro_unit.iff")
