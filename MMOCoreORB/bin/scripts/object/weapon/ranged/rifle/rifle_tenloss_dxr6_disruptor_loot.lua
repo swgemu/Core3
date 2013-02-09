@@ -81,7 +81,7 @@ object_weapon_ranged_rifle_rifle_tenloss_dxr6_disruptor_loot = object_weapon_ran
 
 	-- See http://www.ocdsoft.com/files/certifications.xls
 	-- Unsure of certification to use
-	certificationsRequired = { "cert_rifle_t21" },
+	certificationsRequired = { "startleshot1" },
 	-- See http://www.ocdsoft.com/files/accuracy.xls
 	creatureAccuracyModifiers = { "rifle_accuracy" },
 
