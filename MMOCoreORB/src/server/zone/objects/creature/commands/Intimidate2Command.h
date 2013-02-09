@@ -45,6 +45,8 @@ which carries forward this exception.
 #ifndef INTIMIDATE2COMMAND_H_
 #define INTIMIDATE2COMMAND_H_
 
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
 #include "CombatQueueCommand.h"
 
 class Intimidate2Command : public CombatQueueCommand {
@@ -69,9 +71,9 @@ public:
 
 		int res = doCombatAction(creature, target);
 
-		if (res == TOOFAR)
+		if (res == TOOFAR && creature->isPlayerCreature()) 
 			CombatManager::instance()->broadcastCombatSpam(creature, cast<TangibleObject*>(server->getZoneServer()->getObject(target)), creature->getWeapon(), 0, "intim_out_of_range");
-
+		
 		if (res == GENERALERROR)
 			creature->sendSystemMessage("@combat_effects:intimidated_miss");
 
