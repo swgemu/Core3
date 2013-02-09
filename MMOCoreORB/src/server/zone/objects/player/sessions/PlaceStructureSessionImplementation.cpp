@@ -20,7 +20,7 @@
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 #include "server/zone/packets/player/EnterStructurePlacementModeMessage.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
-#include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
+#include "server/zone/objects/area/areashapes/CircularAreaShape.h"
 #include "server/zone/Zone.h"
 
 
@@ -66,8 +66,10 @@ void PlaceStructureSessionImplementation::placeTemporaryNoBuildZone(SharedStruct
 
 	float temporaryNoBuildZoneWidth = structureFootprint->getLength() + structureFootprint->getWidth();
 
-	ManagedReference<RectangularAreaShape*> areaShape = new RectangularAreaShape();
-	areaShape->setDimensions(temporaryNoBuildZoneWidth, temporaryNoBuildZoneWidth);
+	ManagedReference<CircularAreaShape*> areaShape = new CircularAreaShape();
+	// Guild halls are approximately 55 m long, 64 m radius will surely cover that in all directions.
+	// Even if the placement coordinate aren't in the center of the building.
+	areaShape->setRadius(64);
 	areaShape->setAreaCenter(positionX, positionY);
 
 	temporaryNoBuildZone = cast<ActiveArea*>(zone->getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0));
