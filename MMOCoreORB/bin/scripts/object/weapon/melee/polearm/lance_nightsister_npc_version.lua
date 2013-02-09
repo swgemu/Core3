@@ -106,12 +106,12 @@ object_weapon_melee_polearm_lance_nightsister_npc_version = object_weapon_melee_
 	forceCost = 0,
 
 	pointBlankAccuracy = 0,
-	pointBlankRange = -1,
+	pointBlankRange = 6,
 
-	idealRange = 27,
-	idealAccuracy = 6,
+	idealRange = 6,
+	idealAccuracy = 3,
 
-	maxRange = -1,
+	maxRange = 6,
 	maxRangeAccuracy = 5,
 
 
