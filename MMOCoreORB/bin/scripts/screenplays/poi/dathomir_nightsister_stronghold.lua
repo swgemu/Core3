@@ -7,17 +7,17 @@ NightSisterStrongholdScreenPlay = ScreenPlay:new {
 		5035775
 	},
 	
-	lootLevel = 26,	
+	lootLevel = 38,	
 
 	lootGroups = {
 		{
 			groups = {
-				{group = "color_crystals", chance = 160000},
-				{group = "junk", chance = 8600000},
-				{group = "rifles", chance = 500000},
-				{group = "pistols", chance = 500000},
-				{group = "clothing_attachments", chance = 300000},
-				{group = "armor_attachments", chance = 300000}
+				{group = "color_crystals", chance = 3500000},
+				{group = "junk", chance = 3500000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "clothing_attachments", chance = 500000},
+				{group = "armor_attachments", chance = 500000}
 			},
 			lootChance = 8000000
 		}					

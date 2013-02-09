@@ -4,7 +4,7 @@ RancorCaveScreenPlay = ScreenPlay:new {
     screenplayName = "RancorCaveScreenPlay",
     
     lootContainers = {
-		9815402,
+	9815402,
         9815403,
         9815404,
         9815405,
@@ -38,7 +38,6 @@ function RancorCaveScreenPlay:start()
        		self:spawnMobiles() 
 		self:initializeLootContainers()
 	end
-	self:initializeLootContainers()
 end 
  
 function RancorCaveScreenPlay:spawnMobiles() 

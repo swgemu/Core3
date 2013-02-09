@@ -1,5 +1,6 @@
 EndorGondulaTreeVillageScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
 }
 
 registerScreenPlay("EndorGondulaTreeVillageScreenPlay", true)
@@ -8,8 +9,7 @@ function EndorGondulaTreeVillageScreenPlay:start()
 	self:spawnMobiles()
 end
 
-function EndorGondulaTreeVillageScreenPlay:spawnMobiles()
-    
+function EndorGondulaTreeVillageScreenPlay:spawnMobiles()   
     	spawnMobile("endor", "gondula_loremaster",300, -473.5, 2.1, -5051.7, 147, 0)
 	spawnMobile("endor", "gondula_veteran",300, -479.0, 1.0, -5040.9, -26, 0)
 	spawnMobile("endor", "gondula_tribesman",300, -498.5, 0.5, -5009.5, -99, 0)
@@ -63,5 +63,4 @@ function EndorGondulaTreeVillageScreenPlay:spawnMobiles()
 	spawnMobile("endor", "gondula_worker",300, -638.4, 0.5, -5028.9, 82, 0)
 	spawnMobile("endor", "gondula_worker",300, -632.9, 0.5, -5023.5, -169, 0)
 	spawnMobile("endor", "gondula_worker",300, -620.9, 1.0, -5055.4, -170, 0)
-
 end

@@ -3,14 +3,14 @@ TortonCaveScreenPlay = ScreenPlay:new {
 
 	screenplayName = "TortonCaveScreenPlay",
 
-lootContainers = {
-           5365467,
-	   5365470,
-	   5365474,
-	   5365477,
-	   5365482,
-	   5365486,
-	   5555807
+	lootContainers = {
+		5365467,
+		5365470,
+		5365474,
+		5365477,
+		5365482,
+		5365486,
+		5555807
         },
         
         lootLevel = 17, 

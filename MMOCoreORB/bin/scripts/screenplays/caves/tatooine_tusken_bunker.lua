@@ -9,7 +9,7 @@ TuskenBunkerScreenPlay = ScreenPlay:new {
         	5995608
 	},
 	
-	lootLevel = 24,	
+	lootLevel = 26,	
 
 	lootGroups = {
 		{
@@ -52,7 +52,6 @@ function TuskenBunkerScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "tusken_guard",300,-0.26899,-20.7332,4.75359,0,4235605)
 	
 	spawnMobile("tatooine", "tusken_king",300,1.5864,-20.75,32.0004,0,4235606)
-	spawnMobile("tatooine", "tusken_king",300,1.5864,-20.75,32.0004,0,4235606)
 	
 	spawnMobile("tatooine", "tusken_savage",300,3.74075,0.25,-4.07544,318.495,4235599)
 	spawnMobile("tatooine", "tusken_savage",300,-8,0.25,7,7.99216,4235603)
@@ -68,5 +67,4 @@ function TuskenBunkerScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "tusken_warrior",300,-5.2,-20.7,17.23,184.378,4235606)
 	spawnMobile("tatooine", "tusken_warrior",300,-1482.53,41,-193.195,148.977,0)
 	spawnMobile("tatooine", "tusken_warrior",300,-1478.25,41,-199.32,315.009,0)
-
 end

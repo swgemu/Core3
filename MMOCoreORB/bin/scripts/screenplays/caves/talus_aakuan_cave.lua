@@ -1,12 +1,14 @@
 TalusAakuanCaveScreenPlay = ScreenPlay:new {
-       numberOfActs = 1, screenplayName = "TalusAakuanCaveScreenPlay",
+       numberOfActs = 1, 
 
-        lootContainers = {
-           6075899,
-           6075900,
-           6075901,
-           6075902,
-	   6075903
+	screenplayName = "TalusAakuanCaveScreenPlay",
+
+	lootContainers = {
+		6075899,
+		6075900,
+		6075901,
+		6075902,
+		6075903
         },
         
         lootLevel = 25, 
@@ -36,7 +38,6 @@ function TalusAakuanCaveScreenPlay:start()
         end
 end
 
- 
 function TalusAakuanCaveScreenPlay:spawnMobiles()    
        spawnMobile("talus", "aakuan_follower", 300, 5932.6, 39.2, 4646.6, -73, 0)
        spawnMobile("talus", "aakuan_follower", 300, 5926.5, 40.0, 4647.9, 89, 0)
@@ -77,7 +78,4 @@ function TalusAakuanCaveScreenPlay:spawnMobiles()
        spawnMobile("talus", "aakuan_champion", 300, 189.3, -66.1, -105.5, -72, 4255660)
        spawnMobile("talus", "aakuari_assassin", 300, 190.0, -66.3, -97.9, -93, 4255660)
        spawnMobile("talus", "aakuan_warder", 300, 165.0, -66.7, -98.0, -96, 4255660)
-
-
-
 end

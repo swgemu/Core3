@@ -1,11 +1,40 @@
 ForceCrystalCaveScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
+	screenplayName = "ForceCrystalCaveScreenPlay",
+
+	lootContainers = {
+		200335,
+		200336,		
+		8535511			
+	},
+	
+	lootLevel = 36,	
+
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 3500000},
+				{group = "junk", chance = 3500000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "clothing_attachments", chance = 500000},
+				{group = "armor_attachments", chance = 500000}
+			},
+			lootChance = 8000000
+		}					
+	},
+	
+	lootContainerRespawn = 1800 -- 30 minutes
 }
 
 registerScreenPlay("ForceCrystalCaveScreenPlay", true)
 
 function ForceCrystalCaveScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("dantooine")) then
+		self:spawnMobiles()
+		self:initializeLootContainers()
+	end
 end
 
 function ForceCrystalCaveScreenPlay:spawnMobiles()   

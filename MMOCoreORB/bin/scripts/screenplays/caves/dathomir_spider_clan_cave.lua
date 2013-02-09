@@ -4,19 +4,19 @@ SpiderClanCaveScreenPlay = ScreenPlay:new {
 	screenplayName = "SpiderClanCaveScreenPlay",
 
 	lootContainers = {
-	     5165581,
-         5165583,
-         5165584,
-         5165585,
-         5165586,
-         5165587,
-         5165588,
-         5165591,
-	 5165592,
-	 5165593
+		5165581,
+		5165583,
+		5165584,
+		5165585,
+		5165586,
+		5165587,
+		5165588,
+		5165591,
+		5165592,
+		5165593
 	},
 	
-	lootLevel = 26,	
+	lootLevel = 36,	
 
 	lootGroups = {
 		{
@@ -130,10 +130,7 @@ function SpiderClanCaveScreenPlay:spawnMobiles()
         
         spawnMobile("dathomir", "reclusive_cavern_spider", 900, -35.5, -80.4, -139.8, 129, 3695711)
         spawnMobile("dathomir", "reclusive_cavern_spider", 900, -27.3, -77.9, -132.0, 172, 3695711)
-        spawnMobile("dathomir", "reclusive_cavern_spider", 900, -17.3, -77.4, -132.3, -144, 3695711)
-            
-
-
+        spawnMobile("dathomir", "reclusive_cavern_spider", 900, -17.3, -77.4, -132.3, -144, 3695711)            
 end
 
 function SpiderClanCaveScreenPlay:notifyQueenDead(pQueen, pKiller)

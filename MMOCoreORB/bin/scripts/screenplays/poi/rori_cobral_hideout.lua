@@ -3,13 +3,13 @@ CobralHideoutScreenPlay = ScreenPlay:new {
 
 	screenplayName = "CobralHideoutScreenPlay",
 
-lootContainers = {
-           6475949,
-	   6475950,
-	   6475951,
-	   6475952,
-	   6475953,
-	   6475954
+	lootContainers = {
+		6475949,
+		6475950,
+		6475951,
+		6475952,
+		6475953,
+		6475954
         },
         
         lootLevel = 13, 

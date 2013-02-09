@@ -1,13 +1,14 @@
 TalusLostAqualishScreenPlay = ScreenPlay:new {
-	numberOfActs = 1, screenplayName = "TalusLostAqualishScreenPlay",
+	numberOfActs = 1, 
 
+	screenplayName = "TalusLostAqualishScreenPlay",
 
-lootContainers = {
-           178362,
-	   6075911,
-	   6075912,
-	   6075913,
-	   6075914
+	lootContainers = {
+		178362,
+		6075911,
+		6075912,
+		6075913,
+		6075914
         },
         
         lootLevel = 25, 
@@ -39,7 +40,6 @@ function TalusLostAqualishScreenPlay:start()
 end
 
 function TalusLostAqualishScreenPlay:spawnMobiles()
-
 	spawnMobile("talus", "lost_aqualish_warchief", 300, -94.5, -100.8, -101.9, 171, 4255650)
 	spawnMobile("talus", "lost_aqualish_commando", 300, -101.6, -99.1, -106.2, 148, 4255650)
 	spawnMobile("talus", "lost_aqualish_commando", 300, -85.6, -101.7, -111.7, -177, 4255650)
@@ -89,5 +89,4 @@ function TalusLostAqualishScreenPlay:spawnMobiles()
 	spawnMobile("talus", "lost_aqualish_lookout", 300, -4330.4, 35.1, -1415.0, 82, 0)
 	spawnMobile("talus", "lost_aqualish_lookout", 300, -4346.2, 32.4, -1447.3, 157, 0)
 	spawnMobile("talus", "lost_aqualish_lookout", 300, -4348.2, 32.4, -1448.2, 178, 0)
-
 end

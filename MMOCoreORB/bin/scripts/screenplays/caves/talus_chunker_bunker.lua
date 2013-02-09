@@ -1,10 +1,12 @@
 TalusChunkerBunkerScreenPlay = ScreenPlay:new {
-	numberOfActs = 1, screenplayName = "TalusChunkerBunkerScreenPlay",
+	numberOfActs = 1, 
+
+	screenplayName = "TalusChunkerBunkerScreenPlay",
 
 
 	lootContainers = {
-           7955606,
-	   7955613
+		7955606,
+		7955613
         },
         
         lootLevel = 15, 
@@ -36,7 +38,6 @@ function TalusChunkerBunkerScreenPlay:start()
 end
 
 function TalusChunkerBunkerScreenPlay:spawnMobiles()
-
 	spawnMobile("talus", "chunker_nitwit", 300, 1382.5, 29.0, 1465.2, 119,  0)
 	spawnMobile("talus", "chunker_punk", 300, 1370.0, 29.0, 1456.8, -177, 0)
    	spawnMobile("talus", "chunker_nitwit", 300, 1366.9, 29.0, 1468.9, -83, 0)
@@ -78,6 +79,4 @@ function TalusChunkerBunkerScreenPlay:spawnMobiles()
 	spawnMobile("talus", "chunker_bully", 300, 67.0, -16.0, 80.9, -110, 7955574)
 	spawnMobile("talus", "chunker_nitwit", 300, 55.0, -16.0, 75.9, -164, 7955574)
 	spawnMobile("talus", "chunker_nitwit", 300, 45.9, -16.0, 85.8, -38, 7955574)
-	
-
 end

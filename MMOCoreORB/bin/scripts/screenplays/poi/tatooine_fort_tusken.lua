@@ -1,11 +1,40 @@
 FortTuskenScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
+	screenplayName = "FortTuskenScreenPlay",
+
+	lootContainers = {
+		7875788,
+		7875790,		
+		7875789
+	},
+	
+	lootLevel = 26,	
+
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 3500000},
+				{group = "junk", chance = 3500000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "clothing_attachments", chance = 500000},
+				{group = "armor_attachments", chance = 500000}
+			},
+			lootChance = 8000000
+		}					
+	},
+	
+	lootContainerRespawn = 1800 -- 30 minutes
 }
 
 registerScreenPlay("FortTuskenScreenPlay", true)
 
 function FortTuskenScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("tatooine")) then
+		self:spawnMobiles()
+		self:initializeLootContainers()
+	end
 end
 
 function FortTuskenScreenPlay:spawnMobiles()

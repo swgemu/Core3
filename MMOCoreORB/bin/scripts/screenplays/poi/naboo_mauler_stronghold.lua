@@ -4,8 +4,9 @@ MaulerStrongholdScreenPlay = ScreenPlay:new {
 	screenplayName = "MaulerStrongholdScreenPlay",
 	
 	lootContainers = {
+		625317,
 		625318,
-		2705435
+		8825382
 	},
 	
 	lootLevel = 26,	
@@ -13,12 +14,12 @@ MaulerStrongholdScreenPlay = ScreenPlay:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "color_crystals", chance = 160000},
+				{group = "color_crystals", chance = 100000},
 				{group = "junk", chance = 8600000},
 				{group = "rifles", chance = 500000},
 				{group = "pistols", chance = 500000},
-				{group = "clothing_attachments", chance = 300000},
-				{group = "armor_attachments", chance = 300000}
+				{group = "clothing_attachments", chance = 100000},
+				{group = "armor_attachments", chance = 200000}
 			},
 			lootChance = 8000000
 		}					

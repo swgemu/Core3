@@ -1,13 +1,15 @@
 TalusGiantFynockCaveScreenPlay = ScreenPlay:new {
-       numberOfActs = 1, screenplayName = "TalusGiantFynockCaveScreenPlay",
+       numberOfActs = 1, 
 
-        lootContainers = {
-           7955671,
-	   7955670,
-	   7955663,
-           7955708,
-           7955728,
-	   7955686
+	screenplayName = "TalusGiantFynockCaveScreenPlay",
+
+	lootContainers = {
+		7955671,
+		7955670,
+		7955663,
+		7955708,
+		7955728,
+		7955686
         },
         
         lootLevel = 25, 
@@ -37,7 +39,6 @@ function TalusGiantFynockCaveScreenPlay:start()
         end
 end
 
- 
 function TalusGiantFynockCaveScreenPlay:spawnMobiles()    
         spawnMobile("talus", "fearful_fynock_youth", 300, 1550.4, 43.9, -912.0, -55, 0)
         spawnMobile("talus", "fearful_fynock_youth", 300, 1551.5, 43.2, -904.0, -150, 0)

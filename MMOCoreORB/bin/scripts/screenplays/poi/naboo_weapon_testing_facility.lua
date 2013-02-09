@@ -1,5 +1,6 @@
 WeaponFacilityScreenPlay = ScreenPlay:new { 
         numberOfActs = 1, 
+
 } 
  
 registerScreenPlay("WeaponFacilityScreenPlay", true) 
@@ -126,8 +127,7 @@ function WeaponFacilityScreenPlay:spawnMobiles()
         spawnMobile("naboo", "imperial_officer", 300, 49.8, -12.0, 9.7, 19, 6335652) 
         spawnMobile("naboo", "stormtrooper", 300, 41.3, -12.0, 22.8, 112, 6335652) 
         spawnMobile("naboo", "dark_trooper", 300, 45.0, -12.0, 19.5, -15, 6335652) 
- 
- 
+  
     --Cell [6335654] 
         spawnMobile("naboo", "dark_trooper", 300, -22.5, -20.0, -1.8, 5, 6335654) 
         spawnMobile("naboo", "imperial_second_lieutenant", 300, -20.4, -20.0, -1.8, 0, 6335654) 
@@ -155,7 +155,6 @@ function WeaponFacilityScreenPlay:spawnMobiles()
         spawnMobile("naboo", "imperial_officer", 300, -8.9, -20.0, 95.1, -54, 6335657) 
         spawnMobile("naboo", "stormtrooper", 300, -13.2, -20.0, 101.1, 138, 6335657) 
         spawnMobile("naboo", "stormtrooper", 300, -13.2, -20.0, 96.5, 48, 6335657) 
- 
  
     --Cell [6335659] 
         spawnMobile("naboo", "imperial_warrant_officer_i", 300, -7.4, -20.0, 67.0, 19, 6335659) 

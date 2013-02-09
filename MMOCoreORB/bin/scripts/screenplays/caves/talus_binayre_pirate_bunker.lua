@@ -1,13 +1,14 @@
 TalusBinayrePirateBunkerScreenPlay = ScreenPlay:new {
-	numberOfActs = 1, screenplayName = "TalusBinayrePirateBunkerScreenPlay",
+	numberOfActs = 1, 
 
+	screenplayName = "TalusBinayrePirateBunkerScreenPlay",
 
-lootContainers = {
-           8095746,
-	   8095745,
-	   8095744,
-	   178364,
-	   8095603,
+	lootContainers = {
+		8095746,
+		8095745,
+		8095744,
+		178364,
+		8095603,
 	   
 	  
         },
@@ -41,7 +42,6 @@ function TalusBinayrePirateBunkerScreenPlay:start()
 end
 
 function TalusBinayrePirateBunkerScreenPlay:spawnMobiles()
-
 	spawnMobile("talus", "binayre_chief", 300, 12.6, -11.5, -20.7, 162, 6075880)
 	spawnMobile("talus", "binayre_ruffian", 300, 19.2, -11.5, -20.3, -27, 6075880)
 	spawnMobile("talus", "binayre_smuggler", 300, 12.8, -13.8, -15.7, 179, 6075880)
@@ -64,5 +64,4 @@ function TalusBinayrePirateBunkerScreenPlay:spawnMobiles()
 	spawnMobile("talus", "binayre_pirate", 300, 0.5, 0.3, 3.5, -16, 6075872)
 	spawnMobile("talus", "binayre_hooligan", 300, 5567.8, 102.0, -4073.0, -128, 0)
 	spawnMobile("talus", "binayre_hooligan", 300, 5567.1, 102.0, -4085.6, -51, 0)
-
 end

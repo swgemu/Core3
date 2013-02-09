@@ -1,5 +1,6 @@
 RebelHideoutScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
 }
 
 registerScreenPlay("RebelHideoutScreenPlay", true)
@@ -58,8 +59,7 @@ function RebelHideoutScreenPlay:spawnMobiles()
 	--spawnCreature("rebel_trooper", 0, -6455.01, 5924.57)
 	--spawnCreature("rebel_trooper", 0, -6487.14, 5966.7)
 	--spawnCreature("rebel_trooper", 0, -6484.12, 5971.35)
-	
-	
+		
 	spawnMobile("corellia", "rebel_colonel", 300, 5.9, 7.01, 9.92, 0, 8555482)
 	spawnMobile("corellia", "rebel_trooper", 300, -12.94, 7.00974, 9.54, 0, 8555481)
 	spawnMobile("corellia", "rebel_trooper", 300, -6.44793, 7.00977, 6.53793, 0, 8555481)

@@ -1,5 +1,6 @@
 EndorDonkuwahStaticScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
 }
 
 registerScreenPlay("EndorDonkuwahStaticScreenPlay", true)
@@ -8,8 +9,7 @@ function EndorDonkuwahStaticScreenPlay:start()
 	self:spawnMobiles()
 end
 
-function EndorDonkuwahStaticScreenPlay:spawnMobiles()
-    
+function EndorDonkuwahStaticScreenPlay:spawnMobiles()    
     	spawnMobile("endor", "donkuwah_chieftain",300, -1194.2, 25.0, 2988.4, 26, 0)
 	spawnMobile("endor", "enraged_donkuwah",300, -1199.9, 25.0, 2981.6, 175, 0)
 	spawnMobile("endor", "enraged_donkuwah",300, -1198.1, 25.0, 2980.0, -104, 0)

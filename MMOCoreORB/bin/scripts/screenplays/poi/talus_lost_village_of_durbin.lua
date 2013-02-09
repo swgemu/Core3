@@ -1,5 +1,6 @@
 LostVillageofDurbinScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
 }
 
 registerScreenPlay("LostVillageofDurbinScreenPlay", true)
@@ -8,8 +9,7 @@ function LostVillageofDurbinScreenPlay:start()
 	self:spawnMobiles()
 end
 
-function LostVillageofDurbinScreenPlay:spawnMobiles()
-   
+function LostVillageofDurbinScreenPlay:spawnMobiles()   
 	spawnMobile("talus", "famished_sludge_panther", 300, 4355.3, 6.0, 990.9, -54, 0)
 	spawnMobile("talus", "greater_sludge_panther", 300, 4328.3, 6.0, 1009.1, -76, 0)
 	spawnMobile("talus", "sludge_panther", 300, 4307.9, 6.0, 1037.9, -48, 0)
@@ -29,7 +29,5 @@ function LostVillageofDurbinScreenPlay:spawnMobiles()
 	spawnMobile("talus", "famished_sludge_panther", 300, 4140, 6.0, 943.0, 104, 0)
 	spawnMobile("talus", "greater_sludge_panther", 300, 4186.6, 6.0, 948.3, 123, 0)
 	spawnMobile("talus", "minor_sludge_panther", 300, 4195.2, 18.2, 876.9, -176, 0)
-	spawnMobile("talus", "greater_sludge_panther", 300, 4229.6, 45.7, 881.6, -60, 0)
-
-	
+	spawnMobile("talus", "greater_sludge_panther", 300, 4229.6, 45.7, 881.6, -60, 0)	
 end

@@ -1,17 +1,18 @@
 TalusKahmurraBiogenticResearchStationScreenPlay = ScreenPlay:new {
-	numberOfActs = 1, screenplayName = "TalusKahmurraBiogenticResearchStationScreenPlay",
+	numberOfActs = 1, 
 
+	screenplayName = "TalusKahmurraBiogenticResearchStationScreenPlay",
 
 	lootContainers = {
-           6075909,
-	   6075908,
-	   6075907,
-	   6075906,
-	   6075905,
-	   6075904
+		6075909,
+		6075908,
+		6075907,
+		6075906,
+		6075905,
+		6075904
 	 },
         
-        lootLevel = 40, 
+        lootLevel = 26, 
  
         lootGroups = {
                 {
@@ -39,7 +40,6 @@ function TalusKahmurraBiogenticResearchStationScreenPlay:start()
 end
 
 function TalusKahmurraBiogenticResearchStationScreenPlay:spawnMobiles()
-
 	spawnMobile("talus", "rabid_mutant_kahmurra", 300, -5.1, -13.8, -14.9, 80, 4795365)
 	spawnMobile("talus", "mutated_kahmurra", 300, 0.6, -13.8, -9.6, -7, 4795365)
 	spawnMobile("talus", "mutated_kahmurra", 300, 3.7, -13.8, -2.2, 12, 4795365)

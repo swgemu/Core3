@@ -1,5 +1,7 @@
 EndorOrphanedMarauderCaveScreenPlay = ScreenPlay:new {
-	numberOfActs = 1, screenplayName = "EndorOrphanedMarauderCaveScreenPlay",
+	numberOfActs = 1, 
+
+	screenplayName = "EndorOrphanedMarauderCaveScreenPlay",
 
 
 	lootContainers = {
@@ -8,7 +10,7 @@ EndorOrphanedMarauderCaveScreenPlay = ScreenPlay:new {
 		733422
         },
         
-        lootLevel = 50, 
+        lootLevel = 26, 
  
         lootGroups = {
                 {
@@ -37,7 +39,6 @@ function EndorOrphanedMarauderCaveScreenPlay:start()
 end
 
 function EndorOrphanedMarauderCaveScreenPlay:spawnMobiles()
-
 	spawnMobile("endor", "berserk_marauder", 300, 191.7, -66.7, -101.7, 105, 733405)
 	spawnMobile("endor", "berserk_marauder", 300, 188.0, -66.1, -103.1, -78, 733405)
 	spawnMobile("endor", "berserk_marauder", 300, 188.2, -66.1, -98.6, -101, 733405)
@@ -77,5 +78,4 @@ function EndorOrphanedMarauderCaveScreenPlay:spawnMobiles()
 	spawnMobile("endor", "feral_marauder", 300, -6906.2, 10.6, 687.4, 131, 0)
 	spawnMobile("endor", "feral_marauder", 300, -6906.8, 10.8, 681.8, 85, 0)
 	spawnMobile("endor", "feral_marauder", 300, -6899.9, 10.2, 685.5, -102, 0)
-
 end

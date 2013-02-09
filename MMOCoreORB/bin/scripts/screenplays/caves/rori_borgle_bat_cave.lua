@@ -3,14 +3,14 @@ BorgleBatCaveScreenPlay = ScreenPlay:new {
 
 	screenplayName = "BorgleBatCaveScreenPlay",
 
-lootContainers = {
-           8795683,
-	   8795684,
-	   8795685,
-	   8795686,
-	   8795687,
-	   8795688,
-	   8795689
+	lootContainers = {
+		8795683,
+		8795684,
+		8795685,
+		8795686,
+		8795687,
+		8795688,
+		8795689
         },
         
         lootLevel = 13, 
@@ -110,5 +110,4 @@ function BorgleBatCaveScreenPlay:spawnMobiles()
 	spawnMobile("rori", "borgle_matriarch", 360,  -91.4, -101.0, -106.0, 175, 5407173)
 	spawnMobile("rori", "borgle_protector", 360,  -88.5, -100.9, -103.3, 178, 5407173)
 	spawnMobile("rori", "borgle_protector", 360,  -94.6, -100.9, -103.8, 167, 5407173)
-
 end

@@ -1,5 +1,6 @@
 RoriGungansSwampTownScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
 }
 
 registerScreenPlay("RoriGungansSwampTownScreenPlay", true)

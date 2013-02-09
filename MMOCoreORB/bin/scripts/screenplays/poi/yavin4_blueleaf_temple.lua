@@ -2,14 +2,31 @@ BlueleafTempleScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 	
 	screenplayName = "BlueleafTempleScreenPlay",
-	
-	lootContainers = {},
-	
-	lootLevel = 0,	
 
-	lootGroups = {},
+	lootContainers = {
+		9145383,
+		9145384,
+		9765486,		
+		9765485
+	},
 	
-	lootContainerRespawn = 0
+	lootLevel = 26,	
+
+	lootGroups = {
+		{
+			groups = {
+				{group = "color_crystals", chance = 3500000},
+				{group = "junk", chance = 3500000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "clothing_attachments", chance = 500000},
+				{group = "armor_attachments", chance = 500000}
+			},
+			lootChance = 8000000
+		}					
+	},
+	
+	lootContainerRespawn = 1800 -- 30 minutes
 }
 
 registerScreenPlay("BlueleafTempleScreenPlay", true)
@@ -17,7 +34,7 @@ registerScreenPlay("BlueleafTempleScreenPlay", true)
 function BlueleafTempleScreenPlay:start()
 	if (isZoneEnabled("yavin4")) then
 		self:spawnMobiles()
-		--self:initializeLootContainers()
+		self:initializeLootContainers()
 	end
 end
 

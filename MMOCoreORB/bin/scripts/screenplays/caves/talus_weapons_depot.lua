@@ -13,8 +13,7 @@ function TalusWeaponsDepotScreenPlay:start()
 end
 
 function TalusWeaponsDepotScreenPlay:spawnMobiles()
-   
-	spawnMobile("talus", "rebel_trooper", 300, 15.5, -12.0, 28.3, -92, 9686140)
+   	spawnMobile("talus", "rebel_trooper", 300, 15.5, -12.0, 28.3, -92, 9686140)
 	spawnMobile("talus", "rebel_major", 300, 55.0, -12.0, 55.9, -7, 9686143)
 	spawnMobile("talus", "rebel_staff_sergeant", 300, 54.9, -12.0, 62.5, -179, 9686143)
 	spawnMobile("talus", "rebel_trooper", 300, 39.2, -12.0, 60.6, -96, 9686143)
@@ -35,5 +34,4 @@ function TalusWeaponsDepotScreenPlay:spawnMobiles()
 	spawnMobile("talus", "rebel_medic", 300, 10.1, -12.0, 53.6, -29, 9686144)
 	spawnMobile("talus", "rebel_corporal", 300, -2.4, -12.0, 62.0, -90, 9686144)
 	spawnMobile("talus", "rebel_warrant_officer_i", 300, -3.5, -12.0, 73.6, 90, 9686144)
-
 end

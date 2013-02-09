@@ -4,22 +4,22 @@ WoolamanderTempleScreenPlay = ScreenPlay:new {
 	screenplayName = "WoolamanderTempleScreenPlay",
 	
 	lootContainers = {
-	   568340,
-	   468343,
-	   468334,
-	   468338
+		568340,
+		468343,
+		468334,
+		468338
 	},
 	
-	lootLevel = 45,	
+	lootLevel = 26,	
 
 	lootGroups = {
 		{
 			groups = {
-				{group = "color_crystals", chance = 160000},
+				{group = "color_crystals", chance = 100000},
 				{group = "junk", chance = 8600000},
 				{group = "melee_weapons", chance = 1000000},
-				{group = "clothing_attachments", chance = 300000},
-				{group = "armor_attachments", chance = 300000}
+				{group = "clothing_attachments", chance = 100000},
+				{group = "armor_attachments", chance = 200000}
 			},
 			lootChance = 8000000
 		}					

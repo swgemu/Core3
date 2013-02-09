@@ -1,5 +1,6 @@
 MokkStrongholdScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
 }
 
 registerScreenPlay("MokkStrongholdScreenPlay", true)

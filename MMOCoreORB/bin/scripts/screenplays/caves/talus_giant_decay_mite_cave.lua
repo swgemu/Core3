@@ -1,16 +1,17 @@
 TalusGiantDecayMiteCaveScreenPlay = ScreenPlay:new {
-	numberOfActs = 1, screenplayName = "TalusGiantDecayMiteCaveScreenPlay",
+	numberOfActs = 1, 
 
+	screenplayName = "TalusGiantDecayMiteCaveScreenPlay",
 
 	lootContainers = {
-           5625575,
-	   5625569,
-	   5625579,
-	   5625591,
-	   5995655,
-	   5995666,
-	   5995665,
-	   5995664
+		5625575,
+		5625569,
+		5625579,
+		5625591,
+		5995655,
+		5995666,
+		5995665,
+		5995664
         },
         
         lootLevel = 25, 
@@ -41,7 +42,6 @@ function TalusGiantDecayMiteCaveScreenPlay:start()
 end
 
 function TalusGiantDecayMiteCaveScreenPlay:spawnMobiles()
-
 	spawnMobile("talus", "giant_decay_mite_queen", 300, -95.4, -92.4, -108.9, -170, 5625547)
 	spawnMobile("talus", "giant_decay_mite_guardian", 300, -99.0, -93.2, -121.0, 161, 5625547)
 	spawnMobile("talus", "giant_decay_mite_guardian", 300, -86.3, -94.9, -127.3, -174, 5625547)
@@ -104,6 +104,4 @@ function TalusGiantDecayMiteCaveScreenPlay:spawnMobiles()
 	spawnMobile("talus", "giant_decay_mite_harvester", 300, 5.6, -32.9, -77.5, -79, 5625539)
 	spawnMobile("talus", "giant_decay_mite_harvester", 300, -9.3, -32.4, -72.3, -7, 5625539)
 	spawnMobile("talus", "giant_decay_mite_soldier", 300, -5.8, -31.7, -56.9, -21, 5625539)
-
-
 end

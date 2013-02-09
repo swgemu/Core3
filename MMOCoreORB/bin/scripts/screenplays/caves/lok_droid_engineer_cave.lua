@@ -10,7 +10,7 @@ DroidEngineerCaveScreenPlay = ScreenPlay:new {
 		871812
 	},
 	
-	lootLevel = 45,	
+	lootLevel = 26,	
 
 	lootGroups = {
 		{

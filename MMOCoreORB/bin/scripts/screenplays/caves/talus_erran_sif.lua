@@ -1,18 +1,19 @@
 TalusErranSifScreenPlay = ScreenPlay:new {
-	numberOfActs = 1, screenplayName = "TalusErranSifScreenPlay",
+	numberOfActs = 1, 
 
+	screenplayName = "TalusErranSifScreenPlay",
 
 	lootContainers = {
-           134417,
-	   134416,
-	   134414,
-	   134415,
-	   134413,
-	   134412,
-           9815510
+		134417,
+		134416,
+		134414,
+		134415,
+		134413,
+		134412,
+		9815510
 	 },
         
-        lootLevel = 40, 
+        lootLevel = 26, 
  
         lootGroups = {
                 {
@@ -41,7 +42,6 @@ function TalusErranSifScreenPlay:start()
 end
 
 function TalusErranSifScreenPlay:spawnMobiles()
-
 	spawnMobile("talus", "erran_sif", 300, -4.9, -13.8, -16.5, 14, 9815433)
 	spawnMobile("talus", "hirsch_sif", 300, -8.0, -13.8, -12.5, 63, 9815433)
 	spawnMobile("talus", "doak_sif", 300, 1.9, -13.8, -12.9, -38, 9815433)
@@ -55,5 +55,4 @@ function TalusErranSifScreenPlay:spawnMobiles()
 	spawnMobile("talus", "rodian_sif_02", 300, -3.7, 0.3, -2.2, -9, 9815426)
 	spawnMobile("talus", "sif_mercenary", 300, 2143.4, 122.0, -5610.2, -44, 0)
 	spawnMobile("talus", "trandoshan_sif_02", 300, 2152.0, 122.0, -5611.0, 68, 0)
-
 end

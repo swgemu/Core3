@@ -1,5 +1,6 @@
 DantariVillageScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
 }
 
 registerScreenPlay("DantariVillageScreenPlay", true)

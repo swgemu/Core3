@@ -3,13 +3,13 @@ GarynRaidersBunkerScreenPlay = ScreenPlay:new {
 
 	screenplayName = "GarynRaidersBunkerScreenPlay",
 
-lootContainers = {
-           5555918,
-	   5555917,
-	   5555916,
-	   5555915,
-	   5555912,
-	   5555914
+	lootContainers = {
+		5555918,
+		5555917,
+		5555916,
+		5555915,
+		5555912,
+		5555914
         },
         
         lootLevel = 15, 

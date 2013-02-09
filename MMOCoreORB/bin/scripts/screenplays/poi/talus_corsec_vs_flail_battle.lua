@@ -1,5 +1,6 @@
 TalusCorsecVsFlailBattleScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
 }
 
 registerScreenPlay("TalusCorsecVsFlailBattleScreenPlay", true)
@@ -8,8 +9,7 @@ function TalusCorsecVsFlailBattleScreenPlay:start()
 	self:spawnMobiles()
 end
 
-function TalusCorsecVsFlailBattleScreenPlay:spawnMobiles()
-   
+function TalusCorsecVsFlailBattleScreenPlay:spawnMobiles()   
 	spawnMobile("talus", "flail_boss", 300, 3085.8, 35.0, 6151.3, -148, 0)
 	spawnMobile("talus", "flail_cutthroat", 300, 3073.9, 35.0, 6148.4, 48,  0)
 	spawnMobile("talus", "flail_enforcer", 300, 3083.8, 35.0, 6144.0, 101, 0)
@@ -21,6 +21,5 @@ function TalusCorsecVsFlailBattleScreenPlay:spawnMobiles()
 	spawnMobile("talus", "corsec_trooper", 300, 3038.3, 30.6, 6104.7, 38, 0)
 	spawnMobile("talus", "corsec_trooper", 300, 3045.9, 30.0, 6102.3, 30, 0)
 	spawnMobile("talus", "corsec_trooper", 300, 3051.9, 29.8, 6099.3, 22, 0)
-	spawnMobile("talus", "corsec_trooper", 300, 3053.1, 31.1, 6108.8, 38, 0)
-	
+	spawnMobile("talus", "corsec_trooper", 300, 3053.1, 31.1, 6108.8, 38, 0)	
 end

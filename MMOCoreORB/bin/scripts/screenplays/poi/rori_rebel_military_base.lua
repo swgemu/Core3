@@ -1,14 +1,16 @@
 RoriRebelMilitaryBaseScreenPlay = ScreenPlay:new {
         numberOfActs = 1,
+
         screenplayName = "RoriRebelMilitaryBaseScreenPlay",
 }
 
 registerScreenPlay("RoriRebelMilitaryBaseScreenPlay", true)
 
 function RoriRebelMilitaryBaseScreenPlay:start()
-        if (true == isZoneEnabled("rori")) then
-                self:spawnMobiles()
-        end
+	if (isZoneEnabled("rori")) then
+		self:spawnMobiles()
+		self:initializeLootContainers()
+	end
 end
 
 function RoriRebelMilitaryBaseScreenPlay:spawnMobiles()

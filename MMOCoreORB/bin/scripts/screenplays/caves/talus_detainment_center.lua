@@ -12,7 +12,6 @@ function TalusDetainmentCenterScreenPlay:start()
 end
 
 function TalusDetainmentCenterScreenPlay:spawnMobiles()
-
 	spawnMobile("talus", "imperial_staff_corporal", 300, 3.5, -9.0, 32.6, 179, 9686212)
    	spawnMobile("talus", "command_security_guard", 300, 4.4, -9.0, 35.5, 179, 9686212)
 	spawnMobile("talus", "command_security_guard", 300, 2.5, -9.0, 35.5, 179, 9686212)

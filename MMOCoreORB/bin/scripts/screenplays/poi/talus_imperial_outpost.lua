@@ -1,17 +1,15 @@
 TalusImperialOutpostScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
 }
 
 registerScreenPlay("TalusImperialOutpostScreenPlay", true)
 
 function TalusImperialOutpostScreenPlay:start()
-	self:spawnMobiles()
-
-	
+	self:spawnMobiles()	
 end
 
 function TalusImperialOutpostScreenPlay:spawnMobiles()
-
 	spawnMobile("talus", "at_st", 300, -2167.8, 20.0, 2411.1, -8, 0)
 	spawnMobile("talus", "stormtrooper", 300, -2194.6, 20.0, 2344.9, 179, 0)
 	spawnMobile("talus", "stormtrooper", 300, -2187.9, 20.0, 2344.9, 179, 0)
@@ -29,7 +27,6 @@ function TalusImperialOutpostScreenPlay:spawnMobiles()
 	spawnMobile("talus", "stormtrooper", 300, -2195.5, 20.0, 2248.0, 120, 0)
 	spawnMobile("talus", "stormtrooper", 300, -2197.5, 20.0, 2249.0, 120, 0)
 	spawnMobile("talus", "stormtrooper", 300, -2199.5, 20.0, 2250.0, 120, 0)
-
 	spawnMobile("talus", "stormtrooper", 300, -2196.5, 20.0, 2246.0, 120, 0)
 	spawnMobile("talus", "stormtrooper", 300, -2198.5, 20.0, 2247.0, 120, 0)
 	spawnMobile("talus", "stormtrooper", 300, -2200.5, 20.0, 2248.0, 120, 0)
@@ -41,5 +38,4 @@ function TalusImperialOutpostScreenPlay:spawnMobiles()
 	spawnMobile("talus", "at_st", 300, -2198.2, 20.0, 2299.8, 0, 0)
 	spawnMobile("talus", "stormtrooper_bombardier", 300, -2195.2, 20.0, 2295.2, 0, 0)
 	spawnMobile("talus", "stormtrooper_bombardier", 300, -2201.2, 20.0, 2295.2, 0, 0)
-
 end

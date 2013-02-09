@@ -3,12 +3,12 @@ GiantBarkMiteCaveScreenPlay = ScreenPlay:new {
 
 	screenplayName = "GiantBarkMiteCaveScreenPlay",
 
-lootContainers = {
-           5096066,
-	   5096043,
-	   5096047,
-	   5096065,
-	   5096064
+	lootContainers = {
+		5096066,
+		5096043,
+		5096047,
+		5096065,
+		5096064
         },
         
         lootLevel = 17, 
