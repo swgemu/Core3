@@ -148,14 +148,13 @@ public:
 							creatureTarget->sendSystemMessage("Bleed reduced");
 			 */
 		} else {
-			creature->error("Failed clearing bleeding state on player for unknown reason.");
-		}
-
-		if (creatureTarget != creature) {
-			StringIdChatParameter stringId("healing_response", "healing_response_80");
-			stringId.setTT(creatureTarget->getObjectID());
-		} else {
-			creature->sendSystemMessage("@healing_response:healing_response_78"); //You are not bleeding.
+			if (creatureTarget != creature) {
+				StringIdChatParameter stringId("healing_response", "healing_response_80"); // %NT is not bleeding.
+				stringId.setTT(creatureTarget->getObjectID());
+				creature->sendSystemMessage(stringId);
+			} else {
+				creature->sendSystemMessage("@healing_response:healing_response_78"); //You are not bleeding.
+			}
 		}
 
 
