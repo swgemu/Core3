@@ -1,6 +1,6 @@
-sg_567 = Creature:new {
+sg_619 = Creature:new {
 	objectName = "@npc_name:human_base_male",
-	customName = "SG-567",
+	customName = "sg_619",
 	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
@@ -30,9 +30,9 @@ sg_567 = Creature:new {
 	templates = {"object/mobile/dressed_sg_567.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "sg_567_mission_giver_convotemplate",
+	conversationTemplate = "sg_567_mission_target_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(sg_567, "sg_567")
+CreatureTemplates:addCreatureTemplate(sg_619, "sg_619")
