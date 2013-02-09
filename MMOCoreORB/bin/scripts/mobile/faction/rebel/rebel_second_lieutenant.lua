@@ -37,20 +37,20 @@ rebel_second_lieutenant = Creature:new {
 		{
 	        groups = {
 				{group = "color_crystals", chance = 100000},
-				{group = "junk", chance = 5700000},
+				{group = "junk", chance = 5600000},
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
-                {group = "melee_weapons", chance = 1000000},
-                {group = "carbines", chance = 1000000},
-				{group = "clothing_attachments", chance = 100000},
-				{group = "armor_attachments", chance = 100000}
+				{group = "melee_weapons", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+				{group = "clothing_attachments", chance = 150000},
+				{group = "armor_attachments", chance = 150000}
 			},
-			lootChance = 3000000
+			lootChance = 2600000
 		}	
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_second_lieutenant, "rebel_second_lieutenant")

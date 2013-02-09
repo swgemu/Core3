@@ -1,9 +1,10 @@
-pirate_weapons_light = {
+st_bombardier_weapons = {
 	"object/weapon/melee/unarmed/unarmed_default.iff",
-	"object/weapon/ranged/pistol/pistol_dl44.iff"
+	"object/weapon/ranged/rifle/rifle_acid_beam.iff",
+	"object/weapon/ranged/rifle/rifle_flame_thrower.iff"	
 }
 
-addWeapon("pirate_weapons_light", pirate_weapons_light)
+addWeapon("st_bombardier_weapons", st_bombardier_weapons)
 --To facilitate the correctness to Weapons groups 
 --please include comments under here that point to your source
 --such as links to screenshots from wiki's that show pre-cu creature holding specific weapons

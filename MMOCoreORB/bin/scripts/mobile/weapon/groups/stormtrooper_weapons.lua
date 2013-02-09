@@ -1,4 +1,5 @@
 stormtrooper_weapons = {
+	"object/weapon/melee/unarmed/unarmed_default.iff",
 	"object/weapon/ranged/rifle/rifle_e11.iff",
 	"object/weapon/ranged/carbine/carbine_e11.iff"
 }

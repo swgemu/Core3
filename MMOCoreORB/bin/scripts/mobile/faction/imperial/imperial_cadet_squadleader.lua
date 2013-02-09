@@ -31,20 +31,20 @@ imperial_cadet_squadleader = Creature:new {
 		{
 			groups = {
 				{group = "color_crystals", chance = 100000},
-				{group = "junk", chance = 7650000},
-				{group = "rifles", chance = 550000},
-				{group = "pistols", chance = 550000},
-                {group = "melee_weapons", chance = 550000},
-                {group = "carbines", chance = 550000},
-				{group = "clothing_attachments", chance = 25000},
-				{group = "armor_attachments", chance = 25000}
+				{group = "junk", chance = 5800000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+				{group = "clothing_attachments", chance = 50000},
+				{group = "armor_attachments", chance = 50000}
 			},
-			lootChance = 2800000
+			lootChance = 2200000
 		}						
 	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(marksmanmaster,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_cadet_squadleader, "imperial_cadet_squadleader")

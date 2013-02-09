@@ -44,6 +44,7 @@ brawlermaster = { {"intimidate1",""},{"unarmedlunge1",""},{"unarmedhit1",""},{"u
 --tkatech = { {"unarmedcombo2",""},{"unarmedhit2",""},{"unarmedspinattack2",""} }
 --tkastriking = { {"unarmedbodyhit1",""},{"unarmedheadhit1",""},{"unarmedhit2",""},{"unarmedleghit1",""} }
 --creature level 30 and above use combinations of base profesion masterery and these
+commandomaster = { {"flamecone1"},{"flamecone2"},{"flamesingle1"},{"flamesingle2"},{"fireacidcone1"},{"fireacidcone2"},{"fireacidsingle1"},{"fireacidsingle2"} }
 carbineermaster = { {"actionshot2",""},{"fullautosingle2",""},{"wildshot2",""},{"scattershot2",""},{"legshot2",""},{"cripplingshot",""},{"burstshot2",""},{"suppressionfire2",""} }
 pistoleermaster = { {"healthshot2",""},{"pointblanksingle2",""},{"bodyshot3",""},{"pistolmeleedefense2",""},{"disarmingshot1",""},{"doubletap",""},{"stoppingshot",""},{"fanshot",""} }
 riflemanmaster = { {"strafeshot2",""},{"mindshot2",""},{"surpriseshot",""},{"snipershot",""},{"concealshot",""},{"flushingshot2",""},{"startleshot2",""},{"flurryshot2",""} }

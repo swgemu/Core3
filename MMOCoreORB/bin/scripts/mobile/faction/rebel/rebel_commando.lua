@@ -36,21 +36,21 @@ rebel_commando = Creature:new {
 	lootGroups = {
 		{
 	        groups = {
-				{group = "color_crystals", chance = 500000},
-				{group = "junk", chance = 4500000},
-				{group = "rifles", chance = 1000000},
-				{group = "pistols", chance = 1000000},
-                {group = "melee_weapons", chance = 1000000},
-                {group = "carbines", chance = 1000000},
-				{group = "clothing_attachments", chance = 500000},
-				{group = "armor_attachments", chance = 500000}
+				{group = "color_crystals", chance = 100000},
+				{group = "junk", chance = 4600000},
+				{group = "rifles", chance = 1200000},
+				{group = "pistols", chance = 1200000},
+				{group = "melee_weapons", chance = 1200000},
+				{group = "carbines", chance = 1200000},
+				{group = "clothing_attachments", chance = 250000},
+				{group = "armor_attachments", chance = 250000}
 			},
-			lootChance = 6000000
+			lootChance = 2800000
 		}	
 	},
 	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(commandomaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_commando, "rebel_commando")

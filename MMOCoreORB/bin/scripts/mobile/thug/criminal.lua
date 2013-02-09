@@ -40,7 +40,8 @@ criminal = Creature:new {
 		{
 			groups = {
 				{group = "junk", chance = 6000000},
-				{group = "tailor_components", chance = 5500000},
+				{group = "pistols", chance = 1000000},
+				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000}
 			},
 			lootChance = 2200000
@@ -48,7 +49,7 @@ criminal = Creature:new {
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmanmaster,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(criminal, "criminal")

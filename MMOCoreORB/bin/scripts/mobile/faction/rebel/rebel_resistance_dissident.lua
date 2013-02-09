@@ -41,11 +41,11 @@ rebel_resistance_dissident = Creature:new {
 			{group = "melee_weapons", chance = 1000000},
 			{group = "carbines", chance = 1000000},
 		},
-			lootChance = 2500000
+			lootChance = 2100000
 		}	
 	},
 	weapons = {"rebel_weapons_light"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmannovice,brawlernovice)
 }
 
 CreatureTemplates:addCreatureTemplate(rebel_resistance_dissident, "rebel_resistance_dissident")
