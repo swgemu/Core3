@@ -64,7 +64,7 @@ object_draft_schematic_bio_engineer_dna_template_dna_template_generic = object_d
 
    ingredientTemplateNames = {"craft_creature_ingredients_n", "craft_creature_ingredients_n", "craft_creature_ingredients_n", "craft_creature_ingredients_n", "craft_creature_ingredients_n"},
    ingredientTitleNames = {"physique_profile", "prowess_profile", "mental_profile", "psychological_profile", "aggression_profile"},
-   ingredientSlotType = {0, 0, 0, 0, 0},
+   ingredientSlotType = {2, 2, 2, 2, 2},
    resourceTypes = {"object/tangible/component/base/shared_base_dna_sample.iff", "object/tangible/component/base/shared_base_dna_sample.iff", "object/tangible/component/base/shared_base_dna_sample.iff", "object/tangible/component/base/shared_base_dna_sample.iff", "object/tangible/component/base/shared_base_dna_sample.iff"},
    resourceQuantities = {1, 1, 1, 1, 1},
    contribution = {100, 100, 100, 100, 100},

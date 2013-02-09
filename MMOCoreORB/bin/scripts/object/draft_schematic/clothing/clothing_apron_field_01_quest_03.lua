@@ -63,8 +63,8 @@ object_draft_schematic_clothing_clothing_apron_field_01_quest_03 = object_draft_
    customizationDefaults = {},
    
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
-   ingredientTitleNames = {"body", "binding_and_reinforcement", "binding_and_hardware", "colorizable_cloth_panel", "lining", "Item_1", "Item_2"},
-   ingredientSlotType = {1, 0, 0, 1, 0, 1, 3},
+   ingredientTitleNames = {"body", "binding_and_reinforcement", "binding_and_hardware", "colorizable_cloth_panel", "lining", "cutting_tools", "sewing_kit"},
+   ingredientSlotType = {1, 0, 0, 2, 0, 0, 2},
    resourceTypes = {"object/tangible/component/clothing/shared_leather_heavy_duty.iff", "chemical", "chemical", "object/tangible/component/clothing/shared_synthetic_cloth.iff", "hide", "object/weapon/melee/knife/shared_knife_dagger.iff", "object/tangible/crafting/station/shared_clothing_tool.iff"},
    resourceQuantities = {2, 8, 3, 1, 50, 1, 1},
    contribution = {100, 100, 100, 100, 100, 100, 100},

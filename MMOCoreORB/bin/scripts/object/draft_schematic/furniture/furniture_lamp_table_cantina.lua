@@ -65,8 +65,8 @@ object_draft_schematic_furniture_furniture_lamp_table_cantina = object_draft_sch
    ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
    ingredientTitleNames = {"lamp_body", "lamp_assembly", "shade"},
    ingredientSlotType = {0, 0, 0},
-   resourceTypes = {"", "", ""},
-   resourceQuantities = {0, 0, 0},
+   resourceTypes = {"metal", "metal", "mineral"},
+   resourceQuantities = {35, 15, 20},
    contribution = {100, 100, 100},
 
 
