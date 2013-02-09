@@ -97,6 +97,8 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/objects/scene/SessionFacadeType.h"
 
+#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
+
 #include "engine/util/Facade.h"
 
 namespace server {
@@ -110,6 +112,10 @@ public:
 	PlaceStructureSession(CreatureObject* creature, StructureDeed* deed);
 
 	int initializeSession();
+
+	void placeTemporaryNoBuildZone(SharedStructureObjectTemplate* serverTemplate);
+
+	void removeTemporaryNoBuildZone();
 
 	int constructStructure(float x, float y, int angle);
 
@@ -161,12 +167,18 @@ protected:
 
 	ManagedReference<Zone* > zone;
 
+	ManagedReference<ActiveArea* > temporaryNoBuildZone;
+
 public:
 	PlaceStructureSessionImplementation(CreatureObject* creature, StructureDeed* deed);
 
 	PlaceStructureSessionImplementation(DummyConstructorParameter* param);
 
 	int initializeSession();
+
+	void placeTemporaryNoBuildZone(SharedStructureObjectTemplate* serverTemplate);
+
+	void removeTemporaryNoBuildZone();
 
 	int constructStructure(float x, float y, int angle);
 
@@ -220,6 +232,8 @@ public:
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	int initializeSession();
+
+	void removeTemporaryNoBuildZone();
 
 	int constructStructure(float x, float y, int angle);
 

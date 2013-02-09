@@ -20,6 +20,7 @@
 #include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 #include "server/zone/packets/player/EnterStructurePlacementModeMessage.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
+#include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
 #include "server/zone/Zone.h"
 
 
@@ -33,8 +34,10 @@ int PlaceStructureSessionImplementation::constructStructure(float x, float y, in
 	String serverTemplatePath = deedObject->getGeneratedObjectTemplate();
 	Reference<SharedStructureObjectTemplate*> serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(templateManager->getTemplate(serverTemplatePath.hashCode()));
 
-	if (serverTemplate == NULL)
-		return cancelSession(); //Something happened, the server template is not a structure template.
+	if (serverTemplate == NULL || temporaryNoBuildZone != NULL)
+		return cancelSession(); //Something happened, the server template is not a structure template or temporaryNoBuildZone already set.
+
+	placeTemporaryNoBuildZone(serverTemplate);
 
 	String barricadeServerTemplatePath = serverTemplate->getConstructionMarkerTemplate();
 	int constructionDuration = 100; //Set the duration for 100ms as a fall back if it doesn't have a barricade template.
@@ -58,6 +61,29 @@ int PlaceStructureSessionImplementation::constructStructure(float x, float y, in
 	return 0;
 }
 
+void PlaceStructureSessionImplementation::placeTemporaryNoBuildZone(SharedStructureObjectTemplate* serverTemplate) {
+	Reference<StructureFootprint*> structureFootprint =	serverTemplate->getStructureFootprint();
+
+	float temporaryNoBuildZoneWidth = structureFootprint->getLength() + structureFootprint->getWidth();
+
+	ManagedReference<RectangularAreaShape*> areaShape = new RectangularAreaShape();
+	areaShape->setDimensions(temporaryNoBuildZoneWidth, temporaryNoBuildZoneWidth);
+	areaShape->setAreaCenter(positionX, positionY);
+
+	temporaryNoBuildZone = cast<ActiveArea*>(zone->getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0));
+	temporaryNoBuildZone->initializePosition(positionX, 0, positionY);
+	temporaryNoBuildZone->setAreaShape(areaShape);
+	temporaryNoBuildZone->setNoBuildArea(true);
+
+	zone->transferObject(temporaryNoBuildZone, -1, true);
+}
+
+void PlaceStructureSessionImplementation::removeTemporaryNoBuildZone() {
+	if (temporaryNoBuildZone != NULL) {
+		temporaryNoBuildZone->destroyObjectFromWorld(true);
+	}
+}
+
 int PlaceStructureSessionImplementation::completeSession() {
 	if (constructionBarricade != NULL)
 		constructionBarricade->destroyObjectFromWorld(true);
@@ -66,6 +92,8 @@ int PlaceStructureSessionImplementation::completeSession() {
 
 	StructureManager* structureManager = StructureManager::instance();
 	ManagedReference<StructureObject*> structureObject = structureManager->placeStructure(creatureObject, serverTemplatePath, positionX, positionY, directionAngle);
+
+	removeTemporaryNoBuildZone();
 
 	if (structureObject == NULL) {
 		ManagedReference<SceneObject*> inventory = creatureObject->getSlottedObject("inventory");

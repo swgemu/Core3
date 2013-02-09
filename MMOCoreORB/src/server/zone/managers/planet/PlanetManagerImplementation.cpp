@@ -35,6 +35,8 @@
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 
+#include "server/zone/objects/area/areashapes/CircularAreaShape.h"
+
 #include "server/conf/ConfigManager.h"
 
 #include "PlanetTravelPoint.h"
@@ -473,6 +475,10 @@ void PlanetManagerImplementation::loadClientRegions() {
 
 		ManagedReference<ActiveArea*> noBuild = cast<ActiveArea*>(zone->getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0));
 		noBuild->initializePosition(x, 0, y);
+		ManagedReference<CircularAreaShape*> areaShape = new CircularAreaShape();
+		areaShape->setRadius(radius * 2);
+		areaShape->setAreaCenter(x, y);
+		noBuild->setAreaShape(areaShape);
 		noBuild->setRadius(radius * 2);
 		noBuild->setNoBuildArea(true);
 		zone->transferObject(noBuild, -1, true);

@@ -20,7 +20,7 @@
  *	PlaceStructureSessionStub
  */
 
-enum {RPC_INITIALIZESESSION__ = 6,RPC_CONSTRUCTSTRUCTURE__FLOAT_FLOAT_INT_,RPC_COMPLETESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__};
+enum {RPC_INITIALIZESESSION__ = 6,RPC_REMOVETEMPORARYNOBUILDZONE__,RPC_CONSTRUCTSTRUCTURE__FLOAT_FLOAT_INT_,RPC_COMPLETESESSION__,RPC_CANCELSESSION__,RPC_CLEARSESSION__};
 
 PlaceStructureSession::PlaceStructureSession(CreatureObject* creature, StructureDeed* deed) : Facade(DummyConstructorParameter::instance()) {
 	PlaceStructureSessionImplementation* _implementation = new PlaceStructureSessionImplementation(creature, deed);
@@ -49,6 +49,28 @@ int PlaceStructureSession::initializeSession() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->initializeSession();
+}
+
+void PlaceStructureSession::placeTemporaryNoBuildZone(SharedStructureObjectTemplate* serverTemplate) {
+	PlaceStructureSessionImplementation* _implementation = static_cast<PlaceStructureSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->placeTemporaryNoBuildZone(serverTemplate);
+}
+
+void PlaceStructureSession::removeTemporaryNoBuildZone() {
+	PlaceStructureSessionImplementation* _implementation = static_cast<PlaceStructureSessionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVETEMPORARYNOBUILDZONE__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeTemporaryNoBuildZone();
 }
 
 int PlaceStructureSession::constructStructure(float x, float y, int angle) {
@@ -246,6 +268,11 @@ bool PlaceStructureSessionImplementation::readObjectMember(ObjectInputStream* st
 		return true;
 	}
 
+	if (_name == "PlaceStructureSession.temporaryNoBuildZone") {
+		TypeInfo<ManagedReference<ActiveArea* > >::parseFromBinaryStream(&temporaryNoBuildZone, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -319,8 +346,16 @@ int PlaceStructureSessionImplementation::writeObjectMembers(ObjectOutputStream* 
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "PlaceStructureSession.temporaryNoBuildZone";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<ManagedReference<ActiveArea* > >::toBinaryStream(&temporaryNoBuildZone, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 7;
+
+	return _count + 8;
 }
 
 PlaceStructureSessionImplementation::PlaceStructureSessionImplementation(CreatureObject* creature, StructureDeed* deed) {
@@ -343,6 +378,8 @@ PlaceStructureSessionImplementation::PlaceStructureSessionImplementation(Creatur
 	directionAngle = 0;
 	// server/zone/objects/player/sessions/PlaceStructureSession.idl():  		constructionBarricade = null;
 	constructionBarricade = NULL;
+	// server/zone/objects/player/sessions/PlaceStructureSession.idl():  		temporaryNoBuildZone = null;
+	temporaryNoBuildZone = NULL;
 }
 
 int PlaceStructureSessionImplementation::initializeSession() {
@@ -382,6 +419,11 @@ void PlaceStructureSessionAdapter::invokeMethod(uint32 methid, DistributedMethod
 			resp->insertSignedInt(initializeSession());
 		}
 		break;
+	case RPC_REMOVETEMPORARYNOBUILDZONE__:
+		{
+			removeTemporaryNoBuildZone();
+		}
+		break;
 	case RPC_CONSTRUCTSTRUCTURE__FLOAT_FLOAT_INT_:
 		{
 			resp->insertSignedInt(constructStructure(inv->getFloatParameter(), inv->getFloatParameter(), inv->getSignedIntParameter()));
@@ -409,6 +451,10 @@ void PlaceStructureSessionAdapter::invokeMethod(uint32 methid, DistributedMethod
 
 int PlaceStructureSessionAdapter::initializeSession() {
 	return (static_cast<PlaceStructureSession*>(stub))->initializeSession();
+}
+
+void PlaceStructureSessionAdapter::removeTemporaryNoBuildZone() {
+	(static_cast<PlaceStructureSession*>(stub))->removeTemporaryNoBuildZone();
 }
 
 int PlaceStructureSessionAdapter::constructStructure(float x, float y, int angle) {

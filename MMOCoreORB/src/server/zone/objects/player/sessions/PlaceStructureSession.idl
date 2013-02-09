@@ -52,6 +52,7 @@ import server.zone.managers.planet.PlanetManager;
 import server.zone.Zone;
 import server.zone.objects.area.ActiveArea;
 include server.zone.objects.scene.SessionFacadeType;
+include server.zone.templates.tangible.SharedStructureObjectTemplate;
 
 class PlaceStructureSession extends Facade {
 	protected CreatureObject creatureObject;
@@ -65,6 +66,8 @@ class PlaceStructureSession extends Facade {
 	protected SceneObject constructionBarricade;
 	
 	protected Zone zone;
+	
+	protected ActiveArea temporaryNoBuildZone;
 	
 	public PlaceStructureSession(CreatureObject creature, StructureDeed deed) {
 		Logger.setLoggingName("PlaceStructureSession");
@@ -81,11 +84,17 @@ class PlaceStructureSession extends Facade {
 		directionAngle = 0;
 		
 		constructionBarricade = null;
+		
+		temporaryNoBuildZone = null;
 	}
 
 	public int initializeSession() {
 		return 0;
 	}
+	
+	@local
+	public native void placeTemporaryNoBuildZone(SharedStructureObjectTemplate serverTemplate);
+	public native void removeTemporaryNoBuildZone();
 	
 	public native int constructStructure(float x, float y, int angle);
 	
