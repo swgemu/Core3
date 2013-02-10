@@ -718,8 +718,16 @@ void ChatManagerImplementation::handleGroupChat(CreatureObject* sender, const Un
 	String name = sender->getFirstName();
 
 	ManagedReference<GroupObject*> group = sender->getGroup();
-	if (group == NULL)
+	if (group == NULL) {
+		sender->sendSystemMessage("@combat_effects:not_in_group"); // You must be in a group to perform this command.
 		return;
+	}
+
+	StringTokenizer args(message.toString());
+	if (!args.hasMoreTokens()) {
+		sender->sendSystemMessage("@ui:im_no_message"); // You need to include a message!
+		return;
+	}
 
 	sender->unlock();
 
@@ -752,8 +760,16 @@ void ChatManagerImplementation::handleGuildChat(CreatureObject* sender, const Un
 	String name = sender->getFirstName();
 
 	ManagedReference<GuildObject*> guild = sender->getGuildObject();
-	if (guild == NULL)
+	if (guild == NULL) {
+		sender->sendSystemMessage("@error_message:not_in_guild"); // You are not in a guild.
 		return;
+	}
+
+	StringTokenizer args(message.toString());
+	if (!args.hasMoreTokens()) {
+		sender->sendSystemMessage("@ui:im_no_message"); // You need to include a message!
+		return;
+	}
 
 	sender->unlock();
 

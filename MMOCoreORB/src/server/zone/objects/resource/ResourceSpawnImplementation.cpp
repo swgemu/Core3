@@ -157,7 +157,7 @@ String ResourceSpawnImplementation::getFamilyName() {
 String ResourceSpawnImplementation::getSurveyMissionSpawnFamilyName() {
    	int offset = 3;
 
-   	if(isUnknownType())
+   	if(isUnknownType() || isType("chemical"))
    		offset = 2;
 
    	if(spawnClasses.size() > offset)
