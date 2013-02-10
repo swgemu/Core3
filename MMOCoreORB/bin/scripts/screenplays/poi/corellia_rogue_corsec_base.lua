@@ -4,7 +4,8 @@ CorsecBaseScreenPlay = ScreenPlay:new {
 	screenplayName = "CorsecBaseScreenPlay",
 	
 	lootContainers = {
-		6575944
+		6575944,
+		6575945
 		
 	},
 	
