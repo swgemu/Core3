@@ -6,7 +6,9 @@ EndorPansheeStaticScreenPlay = ScreenPlay:new {
 registerScreenPlay("EndorPansheeStaticScreenPlay", true)
 
 function EndorPansheeStaticScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("endor")) then
+		self:spawnMobiles()
+	end
 end
 
 function EndorPansheeStaticScreenPlay:spawnMobiles()  

@@ -96,7 +96,6 @@ dathomir_regions = {
 
 dathomir_static_spawns = {
 	{"arnecio_ulvaw_op",60,4.06465,0.624999,2.34456,30.9406,2835570, "neutral", ""},
-	{"axkva_min",6400,-90.5,-101,-102.2,172,4115629, "", ""},
 	{"businessman",60,590.176,6,3058.45,264.528,0, "calm", ""},
 	{"businessman",60,594.44,6,3087.13,181.146,0, "calm", ""},
 	{"businessman",60,614.681,6,3081.65,80.4705,0, "calm", ""},
@@ -146,20 +145,6 @@ dathomir_static_spawns = {
 	{"scientist",60,-136.034,18,-1592.07,62.5196,0, "calm", ""},
 	{"shaki_hamachil",60,-101.049,18,-1542.62,293.515,0, "calm", "Shaki Hamachil"},
 	{"shibb_nisshil",60,-71.1537,18,-1639.84,66.4233,0, "", "Shibb Nisshil"},
-	{"singing_mountain_clan_arch_witch",900,-2541,130.5,1581,179,0, "", ""},
-	{"singing_mountain_clan_arch_witch",0,-2500.6,123.6,1581,179,0, "", ""},
-	{"singing_mountain_clan_councilwoman",3600,-2520.4,130,1598.8,179,0, "", ""},
-	{"singing_mountain_clan_dragoon",900,-2520.4,124.2,1566.9,179,0, "", ""},
-	{"singing_mountain_clan_guardian",1800,-2520.4,127.9,1586.9,179,0, "", ""},
-	{"singing_mountain_clan_initiate",900,-2539.3,125.6,1548.7,179,0, "", ""},
-	{"singing_mountain_clan_initiate",900,-2503.1,120.6,1548.7,179,0, "", ""},
-	{"singing_mountain_clan_rancor",900,-2550.2,129.6,1566.9,179,0, "", ""},
-	{"singing_mountain_clan_rancor",900,-2491.9,120.2,1566.9,179,0, "", ""},
-	{"singing_mountain_clan_rancor_tamer",900,-2538.1,127.6,1566.9,179,0, "", ""},
-	{"singing_mountain_clan_rancor_tamer",900,-2504.4,121.6,1566.9,179,0, "", ""},
-	{"singing_mountain_clan_scout",900,-2551,127.1,1548.7,179,0, "", ""},
-	{"singing_mountain_clan_scout",900,-2490.6,119.4,1548.7,179,0, "", ""},
-	{"singing_mountain_clan_sentry",0,-2520.4,122.9,1548.7,179,0, "", ""},
 	{"singular_nak",60,571.41,6.00339,3091.62,138.627,0, "calm", "Singular Nak"},
 	{"wallow_loowobbli",60,1.19457,0.624999,6.04704,232.283,6955367, "calm", "Wallaw Loowobbli"},
 }

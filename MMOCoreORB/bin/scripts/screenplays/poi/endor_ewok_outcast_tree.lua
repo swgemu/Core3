@@ -6,7 +6,9 @@ EndorEwokOutcastTreeScreenPlay = ScreenPlay:new {
 registerScreenPlay("EndorEwokOutcastTreeScreenPlay", true)
 
 function EndorEwokOutcastTreeScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("endor")) then
+		self:spawnMobiles()
+	end
 end
 
 function EndorEwokOutcastTreeScreenPlay:spawnMobiles()

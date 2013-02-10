@@ -6,7 +6,9 @@ LostVillageofDurbinScreenPlay = ScreenPlay:new {
 registerScreenPlay("LostVillageofDurbinScreenPlay", true)
 
 function LostVillageofDurbinScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("talus")) then
+		self:spawnMobiles()
+	end
 end
 
 function LostVillageofDurbinScreenPlay:spawnMobiles()   

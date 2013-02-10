@@ -6,7 +6,9 @@ EndorGondulaTreeVillageScreenPlay = ScreenPlay:new {
 registerScreenPlay("EndorGondulaTreeVillageScreenPlay", true)
 
 function EndorGondulaTreeVillageScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("endor")) then
+		self:spawnMobiles()
+	end
 end
 
 function EndorGondulaTreeVillageScreenPlay:spawnMobiles()   

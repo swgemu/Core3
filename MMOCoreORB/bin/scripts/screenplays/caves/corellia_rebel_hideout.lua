@@ -6,7 +6,9 @@ RebelHideoutScreenPlay = ScreenPlay:new {
 registerScreenPlay("RebelHideoutScreenPlay", true)
 
 function RebelHideoutScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("corellia")) then
+		self:spawnMobiles()
+	end
 end
 
 function RebelHideoutScreenPlay:spawnMobiles()

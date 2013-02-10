@@ -6,7 +6,9 @@ MokkStrongholdScreenPlay = ScreenPlay:new {
 registerScreenPlay("MokkStrongholdScreenPlay", true)
 
 function MokkStrongholdScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("dantooine")) then
+		self:spawnMobiles()
+	end
 end
 
 function MokkStrongholdScreenPlay:spawnMobiles()

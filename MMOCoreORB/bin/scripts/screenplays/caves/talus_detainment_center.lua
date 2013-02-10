@@ -8,7 +8,6 @@ function TalusDetainmentCenterScreenPlay:start()
 	if (isZoneEnabled("talus")) then
 		self:spawnMobiles()
 	end
-	
 end
 
 function TalusDetainmentCenterScreenPlay:spawnMobiles()

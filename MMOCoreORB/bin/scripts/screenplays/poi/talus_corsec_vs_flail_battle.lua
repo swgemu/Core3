@@ -6,7 +6,9 @@ TalusCorsecVsFlailBattleScreenPlay = ScreenPlay:new {
 registerScreenPlay("TalusCorsecVsFlailBattleScreenPlay", true)
 
 function TalusCorsecVsFlailBattleScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("talus")) then
+		self:spawnMobiles()
+	end
 end
 
 function TalusCorsecVsFlailBattleScreenPlay:spawnMobiles()   

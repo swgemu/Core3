@@ -180,6 +180,7 @@ includeFile("poi/lok_kimogila_town.lua")
 includeFile("poi/dathomir_nightsister_stronghold.lua")
 includeFile("poi/dathomir_nightsister_labor_camp.lua")
 includeFile("poi/dathomir_nightsister_vs_singing_mountain.lua")
+includeFile("poi/dathomir_singing_mountain_clan.lua")
 
 
 --Tests

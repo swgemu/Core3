@@ -6,7 +6,9 @@ RoriGungansSwampTownScreenPlay = ScreenPlay:new {
 registerScreenPlay("RoriGungansSwampTownScreenPlay", true)
 
 function RoriGungansSwampTownScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("rori")) then
+		self:spawnMobiles()
+	end
 end
 
 function RoriGungansSwampTownScreenPlay:spawnMobiles()

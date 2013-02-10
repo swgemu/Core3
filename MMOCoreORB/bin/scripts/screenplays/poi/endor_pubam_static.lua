@@ -6,7 +6,9 @@ EndorPubamStaticScreenPlay = ScreenPlay:new {
 registerScreenPlay("EndorPubamStaticScreenPlay", true)
 
 function EndorPubamStaticScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("endor")) then
+		self:spawnMobiles()
+	end
 end
 
 function EndorPubamStaticScreenPlay:spawnMobiles()    

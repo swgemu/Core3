@@ -6,8 +6,10 @@ WeaponFacilityScreenPlay = ScreenPlay:new {
 registerScreenPlay("WeaponFacilityScreenPlay", true) 
  
 function WeaponFacilityScreenPlay:start() 
-        self:spawnMobiles() 
-end 
+	if (isZoneEnabled("naboo")) then
+		self:spawnMobiles()
+	end
+end
  
 function WeaponFacilityScreenPlay:spawnMobiles() 
     --Cell [0] 

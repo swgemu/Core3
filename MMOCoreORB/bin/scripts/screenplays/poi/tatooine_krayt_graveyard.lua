@@ -6,7 +6,9 @@ KraytGraveyardScreenPlay = ScreenPlay:new {
 registerScreenPlay("KraytGraveyardScreenPlay", true)
 
 function KraytGraveyardScreenPlay:start()
-	self:spawnMobiles()
+	if (isZoneEnabled("tatooine")) then
+		self:spawnMobiles()
+	end
 end
 
 function KraytGraveyardScreenPlay:spawnMobiles()

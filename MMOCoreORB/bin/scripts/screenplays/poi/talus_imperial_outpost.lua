@@ -6,7 +6,9 @@ TalusImperialOutpostScreenPlay = ScreenPlay:new {
 registerScreenPlay("TalusImperialOutpostScreenPlay", true)
 
 function TalusImperialOutpostScreenPlay:start()
-	self:spawnMobiles()	
+	if (isZoneEnabled("talus")) then
+		self:spawnMobiles()
+	end
 end
 
 function TalusImperialOutpostScreenPlay:spawnMobiles()
