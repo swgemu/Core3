@@ -42,7 +42,9 @@
 
 
 object_tangible_deed_faction_perk_hq_hq_s01 = object_tangible_deed_faction_perk_hq_shared_hq_s01:new {
-
+	templateType = STRUCTUREDEED,
+	placeStructureComponent = "PlaceGCWBaseComponent",
+	gameObjectType = 8388609,
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s01, "object/tangible/deed/faction_perk/hq/hq_s01.iff")

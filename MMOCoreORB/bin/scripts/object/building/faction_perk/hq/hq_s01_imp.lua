@@ -42,10 +42,77 @@
 
 
 object_building_faction_perk_hq_hq_s01_imp = object_building_faction_perk_hq_shared_hq_s01_imp:new {
-		lotSize = 1,
-		maintenanceCost = 1337,
-		allowedZones = {0,1,4,5,6,7,8}
+		lotSize = 0,
+		containerComponent = "GCWBaseContainerComponent",
+		zoneComponent = "StructureZoneComponent",
+		maintenanceCost = 0,
+		baseMaintenanceRate = 0,
+		faction = "imperial",
+		pvpFaction = "imperial",
+		pvpStatusBitmask = 0,
+		dataObjectComponent = "DestructibleBuildingDataComponent",
+		allowedZones = {"dantooine", "naboo", "rori","tatooine", "corellia", "lok", "talus"},
+		constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
+		length = 7,
+		width = 6,
+		planetMapCategory = "imperial_hq",
+		alwaysPublic = 1,
 
+		childObjects = {
+		
+			-- wall 1
+			{templateFile = "object/static/structure/military/military_wall_med_imperial_style_01.iff", x=-9.5, z=0, y=14, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left wall 1
+			{templateFile = "object/static/structure/military/military_wall_med_imperial_style_01.iff", x=9.5, z=0, y=14, ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1}, 
+						
+			-- Wall 2
+			{templateFile = "object/static/structure/military/military_wall_med_imperial_style_01.iff", x=-13, z=0, y=10, ox=0, oy=-.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, -- left wall 2
+			{templateFile = "object/static/structure/military/military_wall_med_imperial_style_01.iff", x=13, z=0, y=10, ox=0, oy=-.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
+			
+			-- Wall 3
+			{templateFile = "object/static/structure/military/military_wall_med_imperial_style_01.iff", x=-17, z=0, y=5, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left wall 3
+			{templateFile = "object/static/structure/military/military_wall_med_imperial_style_01.iff", x=17, z=0, y=5, ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1}, 
+			
+			-- wall 4
+			{templateFile = "object/static/structure/military/military_wall_med_imperial_16_style_01.iff", x=-21.5, z=0, y=-2, ox=0, oy=-.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, -- left wall 2
+			{templateFile = "object/static/structure/military/military_wall_med_imperial_16_style_01.iff", x=21.5, z=0, y=-2, ox=0, oy=-.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
+						
+			-- outside back walls
+			{templateFile = "object/static/structure/military/military_wall_med_imperial_16_style_01.iff", x=13, z=0, y=-11, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left wall 3
+			{templateFile = "object/static/structure/military/military_wall_med_imperial_style_01.iff", x=0, z=0, y=-11, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left wall 3
+			{templateFile = "object/static/structure/military/military_wall_med_imperial_16_style_01.iff", x=-13, z=0, y=-11, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left wall 3
+			
+			-- back columns
+			{templateFile = "object/static/structure/military/military_column_med_imperial_style_01.iff", x=4, z=0, y=-11, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column
+			{templateFile = "object/static/structure/military/military_column_med_imperial_style_01.iff", x=-4, z=0, y=-11, ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1}, 
+					
+				-- turret
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-17, z=0, y=9, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- left turret front
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=17, z=0, y=9,  ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1}, 
+			
+			--minefield
+			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=0, z=0, y=17,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
+			
+			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-1.5, z=0, y=-1.8, ow=.7, ox=0, oz=0, oy=.7, cellid=3, containmentType=-1},
+			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-1.5, z=0, y=-.5, ow=.7, ox=0, oz=0, oy=.7, cellid=3, containmentType=-1},
+			
+			{templateFile="object/tangible/terminal/terminal_mission_imperial.iff", x=-1, z=0, y=3, ow=1, ox=0, oz=0, oy=0, cellid=1, containmentType=-1},
+			
+			
+			 {templateFile = "object/tangible/terminal/terminal_hq_imperial.iff", x = 0, z = 0, y = -6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 3, containmentType = -1 },
+			 {templateFile = "object/tangible/hq_destructible/uplink_terminal.iff", x = 4, z = 0, y = -5.5, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 5, containmentType = -1 },
+			 {templateFile = "object/tangible/hq_destructible/security_terminal.iff", x = -4, z = 0, y = -6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 6, containmentType = -1 },
+			  {templateFile = "object/tangible/hq_destructible/power_regulator.iff", x = -4, z = 0, y = -.5, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 6, containmentType = -1 },
+			  {templateFile = "object/tangible/hq_destructible/override_terminal.iff", x = 1, z = 0, y = -1, ow =-.685, ox =0, oz = 0, oy =.728, cellid = 3, containmentType = -1},
+		},
+		
+			
+		childCreatureObjects = {
+		 	 { mobile="at_st", x=10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+		 	 { mobile="dark_trooper", x=15, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+			  { mobile="at_st", x=-10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+		 	 { mobile="dark_trooper", x=-15, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+			{ mobile="imperial_recruiter", x=-1, z=0, y=-5.5, cellid=3, containmentType=-1, respawn=60, heading=0},
+		},
 
 }
 

@@ -23,7 +23,7 @@ faction_reward_data = {
 		"carbine_laser",
 		"pistol_scout_blaster",
 		"lance_staff_metal",
-		--"heavy_rocket_launcher",
+		"rocket_launcher",
 		"mine_drx",
 		"mine_xg",
 	},
@@ -42,7 +42,7 @@ faction_reward_data = {
 		carbine_laser = { index=7, type=faction_reward_type.weapon, display="@weapon_name:carbine_laser", item="object/weapon/ranged/carbine/carbine_laser.iff", cost=1500},
 		pistol_scout_blaster = { index=8, type=faction_reward_type.weapon, display="@weapon_name:pistol_scout_blaster", item="object/weapon/ranged/pistol/pistol_scout_blaster.iff", cost=1000},
 		metal_staff = { index=9, type=faction_reward_type.weapon, display="@weapon_name:sword_02", item="object/weapon/ranged/melee/sword/sword_02.iff", cost=1000},
-		rocket_launcher = { index=10, type=faction_reward_type.weapon, display="@weapon_name:heavy_rocket_launcher", item="object/weapon/ranged/heavy/heavy_rocket_launcher.iff", cost=5000},
+		rocket_launcher = { index=10, type=faction_reward_type.weapon, display="@weapon_name:rocket_launcher", item="object/weapon/ranged/heavy/heavy_rocket_launcher.iff", cost=5000},
 		lance_staff_metal = { index=11, type=faction_reward_type.weapon, display="@weapon_name:lance_staff_metal", item="object/weapon/melee/polearm/lance_staff_metal.iff", cost=1000},
 		mine_drx = { type=faction_reward_type.weapon, display="@weapon_name:mine_drx", item="object/weapon/mine/wp_mine_drx55.iff", cost=350},
 		mine_xg = { type=faction_reward_type.weapon, display="@weapon_name:mine_xg", item="object/weapon/mine/wp_mine_xg.iff", cost=350},
@@ -88,7 +88,7 @@ faction_reward_data = {
 		pistol_power5 = { type=faction_reward_type.weapon, display="@weapon_name:pistol_power5", item="object/weapon/ranged/pistol/pistol_power5.iff", cost=700},
 		carbine_e11 = { type=faction_reward_type.weapon, display="@weapon_name:carbine_e11", item="object/weapon/ranged/carbine/carbine_e11.iff", cost=1050},
 		sword_02 = { type=faction_reward_type.weapon, display="@weapon_name:sword_02", item="object/weapon/melee/sword/sword_02.iff", cost=600},
-		rocket_launcher = { type=faction_reward_type.weapon, display="@weapon_name:heavy_rocket_launcher", item="object/weapon/ranged/heavy/heavy_rocket_launcher.iff", cost=3500},
+		rocket_launcher = { type=faction_reward_type.weapon, display="@weapon_name:rocket_launcher", item="object/weapon/ranged/heavy/heavy_rocket_launcher.iff", cost=3500},
 		mine_drx = { type=faction_reward_type.weapon, display="@weapon_name:mine_drx", item="object/weapon/mine/wp_mine_drx55.iff", cost=350},
 		mine_xg = { type=faction_reward_type.weapon, display="@weapon_name:mine_xg", item="object/weapon/mine/wp_mine_xg.iff", cost=350},
 		
@@ -125,8 +125,10 @@ faction_reward_data = {
 
 
 	imperial_installations_list = {
-		--"hq_s01_pvp_imperial",
-		--"hq_s02_pvp_imperial",
+		"hq_s01_pvp_imperial",
+		"hq_s01_imperial",
+		"hq_s02_pvp_imperial",
+		"hq_s02_imperial",
 		--"hq_s03_pvp_imperial",
 		"hq_s04_pvp_imperial",
 		"hq_s04_imperial",
@@ -148,8 +150,14 @@ faction_reward_data = {
 		hq_s01_pvp_imperial = {type=faction_reward_type.installation, display="@deed:hq_s01_pvp_imperial", item="object/tangible/deed/faction_perk/hq/hq_s01_pvp.iff",
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s01_imp_pvp.iff", cost=14000},
 		
+		hq_s01_imperial = {type=faction_reward_type.installation, display="@deed:hq_s01_imperial", item="object/tangible/deed/faction_perk/hq/hq_s01.iff",
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s01_imp.iff", cost=14000},
+					
 		hq_s02_pvp_imperial = {type=faction_reward_type.installation, display="@deed:hq_s02_pvp_imperial", item="object/tangible/deed/faction_perk/hq/hq_s02_pvp.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s02_imp_pvp.iff", cost=28000},
+			
+		hq_s02_imperial = {type=faction_reward_type.installation, display="@deed:hq_s02_imperial", item="object/tangible/deed/faction_perk/hq/hq_s02.iff", 
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s02_imp.iff", cost=28000},
 			
 		hq_s03_pvp_imperial = {type=faction_reward_type.installation, display="@deed:hq_s03_pvp_imperial", item="object/tangible/deed/faction_perk/hq/hq_s03_pvp.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s03_imp_pvp.iff", cost=31500},
@@ -159,8 +167,7 @@ faction_reward_data = {
 		
 		hq_s04_imperial = {type=faction_reward_type.installation, display="@deed:hq_s04_imperial", item="object/tangible/deed/faction_perk/hq/hq_s04.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_imp.iff", cost=42000},
-		
-		
+				
 		hq_s05_pvp_imperial = {type=faction_reward_type.installation, display="@deed:hq_s05_pvp_imperial", item="object/tangible/deed/faction_perk/hq/hq_s05_pvp.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s05_imp_pvp.iff", cost=1},
 			
@@ -199,8 +206,10 @@ faction_reward_data = {
 	},
 	
 	rebel_installations_list = {
-		--"hq_s01_pvp_rebel",
-		--"hq_s02_pvp_rebel",
+		"hq_s01_pvp_rebel",
+		"hq_s01_rebel",
+		"hq_s02_pvp_rebel",
+		"hq_s02_rebel",
 		--"hq_s03_pvp_rebel",
 		"hq_s04_pvp_rebel",
 		"hq_s04_rebel",
@@ -221,9 +230,15 @@ faction_reward_data = {
 		hq_s01_pvp_rebel = {type=faction_reward_type.installation, display="@deed:hq_s01_pvp_rebel", item="object/tangible/deed/faction_perk/hq/hq_s01_pvp.iff",
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s01_rebel_pvp.iff", cost=20000},
 		
+		hq_s01_rebel = {type=faction_reward_type.installation, display="@deed:hq_s01_rebel", item="object/tangible/deed/faction_perk/hq/hq_s01.iff",
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s01_rebel.iff", cost=20000},
+		
 		hq_s02_pvp_rebel = {type=faction_reward_type.installation, display="@deed:hq_s02_pvp_rebel", item="object/tangible/deed/faction_perk/hq/hq_s02_pvp.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s02_rebel_pvp.iff", cost=40000},
-			
+		
+		hq_s02_rebel = {type=faction_reward_type.installation, display="@deed:hq_s02_rebel", item="object/tangible/deed/faction_perk/hq/hq_s02.iff", 
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s02_rebel.iff", cost=40000},
+					
 		hq_s03_pvp_rebel = {type=faction_reward_type.installation, display="@deed:hq_s03_pvp_rebel", item="object/tangible/deed/faction_perk/hq/hq_s03_pvp.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s03_rebel_pvp.iff", cost=45000},
 			

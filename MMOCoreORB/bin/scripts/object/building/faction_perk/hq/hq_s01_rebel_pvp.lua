@@ -42,19 +42,20 @@
 
 
 object_building_faction_perk_hq_hq_s01_rebel_pvp = object_building_faction_perk_hq_shared_hq_s01_rebel_pvp:new {
-			lotSize = 0,
-		maintenanceCost = 5,
-		baseMaintenanceRate = 5,
+		lotSize = 0,
+		faction = "rebel",
+		pvpFaction = "rebel",
+		pvpStatusBitmask = OVERT,
+		maintenanceCost = 0,
+		baseMaintenanceRate = 0,
 		dataObjectComponent = "DestructibleBuildingDataComponent",
+		zoneComponent = "StructureZoneComponent",
 		allowedZones = {"dantooine", "naboo", "rori","tatooine", "corellia", "lok", "talus"},
 		constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
 		length = 7,
 		width = 6,
-		
-		faction = "rebel",
-		pvpFaction = "rebel",
-		
-		
+		containerComponent = {"cpp", "GCWBaseContainerComponent"},
+		planetMapCategory = "rebel_hq",
 			childObjects = {
 
 		
@@ -93,6 +94,20 @@ object_building_faction_perk_hq_hq_s01_rebel_pvp = object_building_faction_perk_
 			{templateFile = "object/static/structure/military/military_wall_weak_rebl_style_01.iff", x=10.2, z=0, y=2.12, ox=0, oy=-.38, oz=0, ow=.922, cellid=-1, containmentType=-1}, -- left wall 3
 			{templateFile = "object/static/structure/military/military_wall_weak_rebl_style_01.iff", x=-10.2, z=0, y=2.12, ox=0, oy=.38, oz=0, ow=.9222, cellid=-1, containmentType=-1},   --right
 		
+			-- turret
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-17, z=0, y=9, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- left turret front
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=17, z=0, y=9,  ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1}, 
+			
+			--minefield
+			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=0, z=0, y=17,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
+			
+			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-1.5, z=0, y=-1.8, ow=.7, ox=0, oz=0, oy=.7, cellid=3, containmentType=-1},
+			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-1.5, z=0, y=-.5, ow=.7, ox=0, oz=0, oy=.7, cellid=3, containmentType=-1},
+			
+			{templateFile="object/tangible/terminal/terminal_mission_rebel.iff", x=-1, z=0, y=3, ow=1, ox=0, oz=0, oy=0, cellid=1, containmentType=-1},
+			
+		
+		
 			 {templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = 0, z = 0, y = -6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 3, containmentType = -1 },
 						 
 			{templateFile = "object/tangible/hq_destructible/uplink_terminal.iff", x = 4, z = 0, y = -5.5, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 5, containmentType = -1 },
@@ -102,7 +117,14 @@ object_building_faction_perk_hq_hq_s01_rebel_pvp = object_building_faction_perk_
 			{templateFile = "object/tangible/hq_destructible/override_terminal.iff", x = 1, z = 0, y = -1, ow =-.685, ox =0, oz = 0, oy =.728, cellid = 3, containmentType = -1},
 			},
 
-
+		childCreatureObjects = {
+		 	 { mobile="specforce_marine", x=10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+		 	 { mobile="specforce_heavy_weapons_specialist", x=15, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+			  { mobile="specforce_marine", x=-10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+		 	 { mobile="specforce_heavy_weapons_specialist", x=-15, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_recruiter", x=-1, z=0, y=-5.5, cellid=3, containmentType=-1, respawn=60, heading=0},
+		},
+		
 }
 
 ObjectTemplates:addTemplate(object_building_faction_perk_hq_hq_s01_rebel_pvp, "object/building/faction_perk/hq/hq_s01_rebel_pvp.iff")
