@@ -832,6 +832,15 @@ int GCWManager::getGCWXPBonus() {
 		return _implementation->getGCWXPBonus();
 }
 
+void GCWManager::broadcastBuilding(BuildingObject* building, StringIdChatParameter& params) {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->broadcastBuilding(building, params);
+}
+
 DistributedObjectServant* GCWManager::_getImplementation() {
 
 	 if (!_updated) _updated = true;

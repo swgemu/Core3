@@ -147,6 +147,8 @@ using namespace server::zone::objects::tangible::deed;
 
 #include "server/zone/templates/ChildObject.h"
 
+#include "server/chat/StringIdChatParameter.h"
+
 #include "engine/core/ManagedService.h"
 
 #include "engine/core/Task.h"
@@ -281,6 +283,8 @@ public:
 	int getGCWDiscount(CreatureObject* creature);
 
 	int getGCWXPBonus();
+
+	void broadcastBuilding(BuildingObject* building, StringIdChatParameter& params);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -569,6 +573,8 @@ public:
 	int getGCWDiscount(CreatureObject* creature);
 
 	int getGCWXPBonus();
+
+	void broadcastBuilding(BuildingObject* building, StringIdChatParameter& params);
 
 	WeakReference<GCWManager*> _this;
 

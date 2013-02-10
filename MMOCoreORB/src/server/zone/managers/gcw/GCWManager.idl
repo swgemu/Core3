@@ -23,7 +23,7 @@ include server.zone.objects.building.components.DestructibleBuildingDataComponen
 include server.zone.objects.installation.components.TurretDataComponent;
 include server.zone.objects.tangible.terminal.components.TurretControlTerminalDataComponent;
 include server.zone.templates.ChildObject;
-
+include server.chat.StringIdChatParameter;
 
 class GCWManager extends ManagedService implements Logger {
 
@@ -155,7 +155,7 @@ class GCWManager extends ManagedService implements Logger {
 	public native void handlePowerRegulatorSwitch(CreatureObject creature, BuildingObject building, int indx);
 	
 	public native void sendPowerRegulatorControls(CreatureObject creature, BuildingObject building);
-	
+
 	public synchronized string getDNAHash(final string usersample){
 		return dnaHash.get(usersample); 
 	}
@@ -358,5 +358,8 @@ class GCWManager extends ManagedService implements Logger {
 	public int getGCWXPBonus(){
 		return bonusXP;
 	}
+
+	@local
+	public native void broadcastBuilding(BuildingObject building, @dereferenced StringIdChatParameter params);
 }
 

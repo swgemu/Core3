@@ -387,45 +387,18 @@ void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building,
 
 		Locker block(building,creature);
 
-		//Default range of broadcast
-		float range = 64;
-
-		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
-		Zone* zone = creature->getZone();
-
-		if (building->getCloseObjects() == NULL) {
-			zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
-		} else {
-			CloseObjectsVector* closeVector = (CloseObjectsVector*) creature->getCloseObjects();
-			closeVector->safeCopyTo(closeObjects);
-		}
-
 		StringIdChatParameter destroyMessage("@faction/faction_hq/faction_hq_response:terminal_response40"); // COUNTDOWN INITIATED: estimated time to detonation: %DI minutes.
 		int minutesRemaining = ceil(this->destructionTimer/60);
 		destroyMessage.setDI(minutesRemaining);
-
-		// send message to all the players in range
-		for (int i = 0; i < closeObjects.size(); i++) {
-			SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
-
-			if (targetObject->isPlayerCreature() && creature->isInRange(targetObject, range)) {
-				CreatureObject* targetPlayer = cast<CreatureObject*>(targetObject);
-
-				if (targetPlayer != NULL)
-					targetPlayer->sendSystemMessage(destroyMessage);
-			}
-		}
-
+		broadcastBuilding(building, destroyMessage);
+		baseData->setState(DestructibleBuildingDataComponent::SHUTDOWNSEQUENCE);
 		block.release();
+
 
 		Locker _lock(_this.get(),creature);
 
-
-		baseData->setState(DestructibleBuildingDataComponent::SHUTDOWNSEQUENCE);
-
 		Reference<Task*> newTask = new BaseDestructionTask(_this.get(), building);
 		newTask->schedule(this->destructionTimer*1000);
-
 
 		this->addDestroyTask(building->getObjectID(),newTask);
 
@@ -433,7 +406,6 @@ void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building,
 }
 
 void GCWManagerImplementation::abortShutdownSequence(CreatureObject* creature, BuildingObject* building){
-
 
 	if(!creature->checkCooldownRecovery("declare_overt_cooldown")){
 		StringIdChatParameter params("@faction/faction_hq/faction_hq_response:terminal_response42"); // Before issuing the shutdown, you must have been in special forces for at least %TO
@@ -466,30 +438,9 @@ void GCWManagerImplementation::abortShutdownSequence(CreatureObject* creature, B
 		finishTime.addMiliTime(reactvationTimer * 1000);
 		baseData->setRebootFinishTime(finishTime);
 
-		//Default range of broadcast
-		float range = 64;
-
-		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
-		Zone* zone = creature->getZone();
-
-		if (building->getCloseObjects() == NULL) {
-			zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
-		} else {
-			CloseObjectsVector* closeVector = (CloseObjectsVector*) creature->getCloseObjects();
-			closeVector->safeCopyTo(closeObjects);
-
-		}
-		// send message to all the players in range
-		for (int i = 0; i < closeObjects.size(); i++) {
-			SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
-
-			if (targetObject->isPlayerCreature() && creature->isInRange(targetObject, range)) {
-				CreatureObject* targetPlayer = cast<CreatureObject*>(targetObject);
-
-				if (targetPlayer != NULL)
-					targetPlayer->sendSystemMessage("@faction/faction_hq/faction_hq_response:terminal_response07"); // COUNTDOWN ABORTED: FACILITY SHUTTIGN DOWN
-			}
-		}
+		StringIdChatParameter reloadMessage;
+		reloadMessage.setStringId("@faction/faction_hq/faction_hq_response:terminal_response07"); // COUNTDOWN ABORTED: FACILITY SHUTTIGN DOWN
+		broadcastBuilding(building, reloadMessage);
 	}
 }
 
@@ -1361,6 +1312,7 @@ void GCWManagerImplementation::completeSecuritySlice(CreatureObject* creature, T
 		return;
 	}
 
+	creature->sendSystemMessage("@slicing/slicing:hq_security_success"); // YOu have managed to slice into the temrina.  The security protocl for the override terminal has been relaxed
 	Locker block(building);
 	baseData->setState(DestructibleBuildingDataComponent::SLICED);
 
@@ -1468,6 +1420,7 @@ void GCWManagerImplementation::failSecuritySlice(TangibleObject* securityTermina
 	baseData->setTerminalDamaged(true);
 
 }
+
 void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, BuildingObject* building){
 	ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
@@ -1568,6 +1521,7 @@ void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, Build
 	creature->sendMessage(status->generateMessage());
 
 }
+
 void GCWManagerImplementation::processDNASample(CreatureObject* creature, BuildingObject* building, const String& sampleChain, const int indx){
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
 
@@ -1679,8 +1633,6 @@ void GCWManagerImplementation::sendPowerRegulatorControls(CreatureObject* creatu
 }
 
 void GCWManagerImplementation::handlePowerRegulatorSwitch(CreatureObject* creature, BuildingObject* building, int indx){
-
-	//ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
 
 	if(baseData == NULL)
@@ -1700,19 +1652,17 @@ void GCWManagerImplementation::handlePowerRegulatorSwitch(CreatureObject* creatu
 		if(change){
 			int impactedSwitch = System::random(0x7);
 			if(impactedSwitch != indx) {
-				//info("Move switch " + String::valueOf(impactedSwitch) + " back",true);
-				//info("The value of that switch is " + String::valueOf(baseData->getPowerPosition(indx)),true);
 				if(!baseData->getPowerPosition(impactedSwitch)){
 					baseData->turnSwitchOn(impactedSwitch);
 				}
 			}
-			//else
-			//	info("random came up with the same switch so ignore it");
 		}
 	}
 
+
 	if(baseData->getOnSwitchCount() == 0) {
-		creature->sendSystemMessage("@faction/faction_hq/faction_hq_response:alignment_complete");  // Alignment complete!  The facility may now be set to overload from the primary terminal.
+		StringIdChatParameter msg("@faction/faction_hq/faction_hq_response:alignment_complete");  // Alignment complete!  The facility may now be set to overload from the primary terminal.
+		broadcastBuilding(building, msg);
 		baseData->setState(DestructibleBuildingDataComponent::OVERLOADED);
 	}
 	else {
@@ -1802,7 +1752,6 @@ void GCWManagerImplementation::notifyInstallationDestruction(InstallationObject*
 
 }
 
-
 void GCWManagerImplementation::notifyTurretDestruction(BuildingObject* building, InstallationObject* turret){
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
@@ -1838,7 +1787,6 @@ void GCWManagerImplementation::notifyTurretDestruction(BuildingObject* building,
 		verifyTurrets(building);
 
 }
-
 
 void GCWManagerImplementation::notifyMinefieldDestruction(BuildingObject* building, InstallationObject* minefield){
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
@@ -2421,4 +2369,32 @@ bool GCWManagerImplementation::canUseTerminals(CreatureObject* creature, Buildin
 	return true;
 }
 
+
+void GCWManagerImplementation::broadcastBuilding(BuildingObject* building, StringIdChatParameter& params){
+	//Default range of broadcast
+	float range = 64;
+
+	if(zone == NULL)
+		return;
+
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+	if (building->getCloseObjects() == NULL) {
+		zone->getInRangeObjects(building->getPositionX(), building->getPositionY(), range, &closeObjects, true);
+	} else {
+		CloseObjectsVector* closeVector = (CloseObjectsVector*) building->getCloseObjects();
+		closeVector->safeCopyTo(closeObjects);
+	}
+
+	// send message to all the players in range
+	for (int i = 0; i < closeObjects.size(); i++) {
+		SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
+
+		if (targetObject->isPlayerCreature() && building->isInRange(targetObject, range)) {
+			CreatureObject* targetPlayer = cast<CreatureObject*>(targetObject);
+
+			if (targetPlayer != NULL)
+				targetPlayer->sendSystemMessage(params);
+		}
+	}
+}
 
