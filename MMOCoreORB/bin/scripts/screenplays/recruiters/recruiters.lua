@@ -621,7 +621,7 @@ function recruiter_convo_handler:awarditem(player, itemstring)
 	
 	if ( pInventory ~= nil and playerObject ~= nil and itemcost ~= nil ) then 
 		--print("itemcost is " .. itemcost)
-		if (factionstanding  >= itemcost) then
+		if (factionstanding  >= (itemcost + 200)) then
 			--print("faction is good")
 			local pItem
 			
