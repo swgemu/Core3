@@ -70,6 +70,7 @@ int GCWManagerImplementation::turretAutoFireTimeout = 120;
 int GCWManagerImplementation::maxBasesPerPlayer = 3;
 int GCWManagerImplementation::bonusXP = 15;
 int GCWManagerImplementation::bonusDiscount = 30;
+VectorMap<String, int> GCWManagerImplementation::baseValue;
 
 void GCWManagerImplementation::initialize(){
 	// TODO: initialize things
@@ -117,6 +118,25 @@ void GCWManagerImplementation::loadLuaConfig(){
 	maxBasesPerPlayer = lua->getGlobalInt("maxBasesPerPlayer");
 	bonusXP = lua->getGlobalInt("bonusXP");
 	bonusDiscount = lua->getGlobalInt("bonusDiscount");
+
+	LuaObject pointsObject = lua->getGlobalObject("HQValues");
+
+	if(pointsObject.isValidTable()){
+
+		for(int i = 1; i <= pointsObject.getTableSize(); ++i){
+			LuaObject baseObject = pointsObject.getObjectAt(i);
+			if(baseObject.isValidTable()){
+				String templateString = baseObject.getStringAt(1);
+				int pointsValue = baseObject.getIntAt(2);
+				//info("Template: " + templateString + " point value = " + String::valueOf(pointsValue),true);
+				addPointValue(templateString, pointsValue);
+			}
+			baseObject.pop();
+
+		}
+	}
+
+	info("Loaded " + String::valueOf(baseValue.size()) + " GCW base scoring values.",true);
 
 
 }
@@ -484,6 +504,20 @@ void GCWManagerImplementation::unregisterGCWBase(BuildingObject* building){
 
 		else if (building->getFaction() == REBELHASH)
 			rebelBases--;
+
+		String templateString = building->getObjectTemplate()->getFullTemplateString();
+
+		int pointsValue = getPointValue(templateString);
+
+		if(pointsValue > -1){
+			if(building->getFaction() == REBELHASH)
+				setRebelScore(getRebelScore() - pointsValue);
+			else if (building->getFaction() == IMPERIALHASH)
+				setImperialScore(getImperialScore() - pointsValue);
+
+		} else
+			info("ERROR looking up value for GCW Base: " + templateString, true);
+
 	}
 	Reference<Task*> oldStartTask = this->getStartTask(building->getObjectID());
 
@@ -574,19 +608,16 @@ void GCWManagerImplementation::performGCWTasks(){
 
 void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool initializeBase){
 	info("Registering base on " + zone->getZoneName() +  " " + String::valueOf(building->getObjectID()) + " " + String::valueOf(building->getPositionX()) + ", " + String::valueOf(building->getPositionY()),true);
-	info("CurrentTime is " + Time().getFormattedTime(),true);
+	//info("CurrentTime is " + Time().getFormattedTime(),true);
 	if ( !this->hasBase(building)){
 
 
 		if(building->getFaction() == IMPERIALHASH)
 			imperialBases++;
-
 		else if (building->getFaction() == REBELHASH)
 			rebelBases++;
 
-		// initializebase should be for a first plant.
 		if(initializeBase){
-
 
 			DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
@@ -603,12 +634,26 @@ void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool in
 			this->addBase(building);
 			this->startVulnerability(building);
 
+
 		} else {
-			//gcwBaseList.put(building);
 			this->addBase(building);
 			checkVulnerabilityData(building);
 
 		}
+		//info("contains " + String::valueOf(baseValue.contains(templateString)),true);
+
+		String templateString = building->getObjectTemplate()->getFullTemplateString();
+
+		int pointsValue = getPointValue(templateString);
+		info("point value is " + String::valueOf(pointsValue),true);
+		if(pointsValue > -1){
+			if(building->getFaction() == REBELHASH)
+				setRebelScore(getRebelScore() + pointsValue);
+			else if (building->getFaction() == IMPERIALHASH)
+				setImperialScore(getImperialScore() + pointsValue);
+
+		} else
+			info("ERROR looking up value for GCW Base: " + templateString, true);
 
 
 	}else

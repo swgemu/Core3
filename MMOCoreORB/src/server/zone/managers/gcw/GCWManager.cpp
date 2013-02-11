@@ -805,6 +805,42 @@ int GCWManager::getRebelBaseCount() {
 		return _implementation->getRebelBaseCount();
 }
 
+int GCWManager::getRebelScore() {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getRebelScore();
+}
+
+int GCWManager::getImperialScore() {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getImperialScore();
+}
+
+void GCWManager::setRebelScore(int val) {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->setRebelScore(val);
+}
+
+void GCWManager::setImperialScore(int val) {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->setImperialScore(val);
+}
+
 unsigned int GCWManager::getWinningFaction() {
 	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -839,6 +875,24 @@ void GCWManager::broadcastBuilding(BuildingObject* building, StringIdChatParamet
 
 	} else
 		_implementation->broadcastBuilding(building, params);
+}
+
+int GCWManager::getPointValue(const String& templateString) {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getPointValue(templateString);
+}
+
+void GCWManager::addPointValue(const String& templateString, int val) {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->addPointValue(templateString, val);
 }
 
 DistributedObjectServant* GCWManager::_getImplementation() {
@@ -984,8 +1038,12 @@ GCWManagerImplementation::GCWManagerImplementation(Zone* zne) {
 	_initializeImplementation();
 	// server/zone/managers/gcw/GCWManager.idl():  		imperialBases = 0;
 	imperialBases = 0;
+	// server/zone/managers/gcw/GCWManager.idl():  		imperialScore = 0;
+	imperialScore = 0;
 	// server/zone/managers/gcw/GCWManager.idl():  		rebelBases = 0;
 	rebelBases = 0;
+	// server/zone/managers/gcw/GCWManager.idl():  		rebelScore = 0;
+	rebelScore = 0;
 	// server/zone/managers/gcw/GCWManager.idl():  		Logger.setLoggingName("GCWManager");
 	Logger::setLoggingName("GCWManager");
 	// server/zone/managers/gcw/GCWManager.idl():  		Logger.info("GCWManager instantiated for " + zne.getZoneName(),true);
@@ -1006,6 +1064,8 @@ GCWManagerImplementation::GCWManagerImplementation(Zone* zne) {
 	(&gcwDestroyTasks)->setNoDuplicateInsertPlan();
 	// server/zone/managers/gcw/GCWManager.idl():  		gcwDestroyTasks.setNullValue(null);
 	(&gcwDestroyTasks)->setNullValue(NULL);
+	// server/zone/managers/gcw/GCWManager.idl():  		baseValue.setNoDuplicateInsertPlan();
+	(&baseValue)->setNoDuplicateInsertPlan();
 }
 
 String GCWManagerImplementation::getDNAHash(const String& usersample) {
@@ -1147,6 +1207,26 @@ int GCWManagerImplementation::getRebelBaseCount() {
 	return rebelBases;
 }
 
+int GCWManagerImplementation::getRebelScore() {
+	// server/zone/managers/gcw/GCWManager.idl():  		return rebelScore;
+	return rebelScore;
+}
+
+int GCWManagerImplementation::getImperialScore() {
+	// server/zone/managers/gcw/GCWManager.idl():  		return imperialScore;
+	return imperialScore;
+}
+
+void GCWManagerImplementation::setRebelScore(int val) {
+	// server/zone/managers/gcw/GCWManager.idl():  		rebelScore = val;
+	rebelScore = val;
+}
+
+void GCWManagerImplementation::setImperialScore(int val) {
+	// server/zone/managers/gcw/GCWManager.idl():  		imperialScore = val;
+	imperialScore = val;
+}
+
 void GCWManagerImplementation::setRebelBaseCount(int val) {
 	// server/zone/managers/gcw/GCWManager.idl():  		rebelBases = val;
 	rebelBases = val;
@@ -1159,11 +1239,11 @@ void GCWManagerImplementation::setImperialBaseCount(int val) {
 
 unsigned int GCWManagerImplementation::getWinningFaction() {
 	// server/zone/managers/gcw/GCWManager.idl():  			return 1;
-	if (getRebelBaseCount() > getImperialBaseCount())	// server/zone/managers/gcw/GCWManager.idl():  			return REBELHASH;
+	if (getRebelScore() > getImperialScore())	// server/zone/managers/gcw/GCWManager.idl():  			return REBELHASH;
 	return REBELHASH;
 
 	else 	// server/zone/managers/gcw/GCWManager.idl():  			return 1;
-	if (getImperialBaseCount() > getRebelBaseCount())	// server/zone/managers/gcw/GCWManager.idl():  			return IMPERIALHASH;
+	if (getImperialScore() > getRebelScore())	// server/zone/managers/gcw/GCWManager.idl():  			return IMPERIALHASH;
 	return IMPERIALHASH;
 
 	else 	// server/zone/managers/gcw/GCWManager.idl():  			return 1;
@@ -1181,6 +1261,18 @@ int GCWManagerImplementation::getGCWDiscount(CreatureObject* creature) {
 int GCWManagerImplementation::getGCWXPBonus() {
 	// server/zone/managers/gcw/GCWManager.idl():  		return bonusXP;
 	return bonusXP;
+}
+
+int GCWManagerImplementation::getPointValue(const String& templateString) {
+	Locker _locker(_this.get());
+	// server/zone/managers/gcw/GCWManager.idl():  		return baseValue.get(templateString);
+	return (&baseValue)->get(templateString);
+}
+
+void GCWManagerImplementation::addPointValue(const String& templateString, int val) {
+	Locker _locker(_this.get());
+	// server/zone/managers/gcw/GCWManager.idl():  		baseValue.put(templateString, val);
+	(&baseValue)->put(templateString, val);
 }
 
 /*

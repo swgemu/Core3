@@ -36,10 +36,30 @@ reactvationTimer = 300
 -- X seconds after the last manual activity the turret will be able to auto fire
 turretAutoFireTimeout = 20
 
-maxBasesPerPlayer = 3
+maxBasesPerPlayer = 20
 
 -- xp bonus for faction controlling a planet
 bonusXP = 15
 
 -- discount for side losing the gcw
 bonusDiscount = 30
+
+HQValues = {
+	{"object/building/faction_perk/hq/hq_s01_imp_pvp.iff", 2},
+	{"object/building/faction_perk/hq/hq_s01_imp.iff", 1},
+	{"object/building/faction_perk/hq/hq_s02_imp_pvp.iff", 6},
+	{"object/building/faction_perk/hq/hq_s02_imp.iff" , 3},
+	{"object/building/faction_perk/hq/hq_s03_imp_pvp.iff" , 8},
+	{"object/building/faction_perk/hq/hq_s03_imp.iff", 4},
+	{"object/building/faction_perk/hq/hq_s04_imp_pvp.iff", 20},
+	{"object/building/faction_perk/hq/hq_s04_imp.iff", 10},
+	{"object/building/faction_perk/hq/hq_s01_rebel_pvp.iff", 2},
+	{"object/building/faction_perk/hq/hq_s01_rebel.iff", 1},
+	{"object/building/faction_perk/hq/hq_s02_rebel_pvp.iff", 6},
+	{"object/building/faction_perk/hq/hq_s02_rebel.iff" , 3},
+	{"object/building/faction_perk/hq/hq_s03_rebel_pvp.iff" , 8},
+	{"object/building/faction_perk/hq/hq_s03_rebel.iff", 4},
+	{"object/building/faction_perk/hq/hq_s04_rebel_pvp.iff", 20},
+	{"object/building/faction_perk/hq/hq_s04_rebel.iff", 10},
+
+}

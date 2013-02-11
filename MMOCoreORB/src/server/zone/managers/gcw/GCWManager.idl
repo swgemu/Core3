@@ -50,9 +50,13 @@ class GCWManager extends ManagedService implements Logger {
 	@dereferenced
 	protected transient Mutex baseMutex;
 
-	private transient int rebelBases;
+	@dereferenced
+	protected transient static VectorMap<string, int> baseValue;
 
+	private transient int rebelBases;
+	private transient int rebelScore;
 	private transient int imperialBases;
+	private transient int imperialScore;
 	
 	public transient static int gcwCheckTimer;
 	public transient static int vulnerabilityDuration; 
@@ -72,7 +76,10 @@ class GCWManager extends ManagedService implements Logger {
 
 	public GCWManager(Zone zne){
 		imperialBases = 0;
+		imperialScore = 0;
 		rebelBases = 0;
+		rebelScore = 0;
+
 		Logger.setLoggingName("GCWManager");
 		Logger.info("GCWManager instantiated for " + zne.getZoneName(),true);
 		gcwBaseList.setNoDuplicateInsertPlan();
@@ -86,6 +93,8 @@ class GCWManager extends ManagedService implements Logger {
 
 		gcwDestroyTasks.setNoDuplicateInsertPlan();
 		gcwDestroyTasks.setNullValue(null);
+
+		baseValue.setNoDuplicateInsertPlan();
 		
 	}
 
@@ -324,6 +333,28 @@ class GCWManager extends ManagedService implements Logger {
 		return rebelBases;
 	}
 
+	@local
+	@read
+	public int getRebelScore(){
+		return rebelScore;
+	}
+
+	@local
+	@read
+	public int getImperialScore(){
+		return imperialScore;
+	}
+
+	@local 
+	public void setRebelScore(int val){
+		rebelScore = val;
+	}
+	
+	@local
+	public void setImperialScore(int val){
+		imperialScore = val;
+	}
+
 	@local 
 	private void setRebelBaseCount(int val){
 		rebelBases = val;
@@ -337,9 +368,9 @@ class GCWManager extends ManagedService implements Logger {
 	@local 
 	public unsigned int getWinningFaction(){
 
-		if(getRebelBaseCount() > getImperialBaseCount())
+		if(getRebelScore() > getImperialScore())
 			return REBELHASH;
-		else if ( getImperialBaseCount() > getRebelBaseCount() )
+		else if ( getImperialScore() > getRebelScore() )
 			return IMPERIALHASH;
 		else
 			return 1;
@@ -361,5 +392,15 @@ class GCWManager extends ManagedService implements Logger {
 
 	@local
 	public native void broadcastBuilding(BuildingObject building, @dereferenced StringIdChatParameter params);
+
+	@local
+	public synchronized int getPointValue(final string templateString){
+		return baseValue.get(templateString); 
+	}
+
+	@local
+	public synchronized void addPointValue(final string templateString, int val){
+		baseValue.put(templateString, val); 
+	}
 }
 

@@ -78,18 +78,30 @@ public:
 		int rebelBases = gcwMan->getRebelBaseCount();
 		int imperialBases = gcwMan->getImperialBaseCount();
 
+		int rebelScore = gcwMan->getRebelScore();
+		int imperialScore = gcwMan->getImperialScore();
+
+
+
 		String results = "@faction_perk:gcw_tied";  // Neither the rebellion or the Empire has teh advantage
 
-		if(rebelBases > imperialBases)
+		if(rebelScore > imperialScore)
 			results = "@faction_perk:gcw_rebel_ahead"; // the rebellion has the advantage over the empire
-		else if (imperialBases > rebelBases)
+		else if (imperialScore > rebelScore)
 			results = "@faction_perk:gcw_imperial_ahead";  // the empire has the advantage over the rebellion
 
 		creature->sendSystemMessage(results);
 
 		// temporary for testing gcw bases
-		creature->sendSystemMessage(" Rebel Bases: " + String::valueOf(rebelBases) + " Imperial Bases: " + String::valueOf(imperialBases));
-
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+		if(ghost != NULL && ghost->isPrivileged()){
+			StringBuffer msg;
+			msg << "Rebel Score: " + String::valueOf(rebelScore) << endl;
+			msg << "Imperial Score " + String::valueOf(imperialScore) << endl;
+			msg << "Rebel Bases: " + String::valueOf(rebelBases) << endl;
+			msg << "Imperial Bases: " + String::valueOf(imperialBases);
+			creature->sendSystemMessage(msg.toString());
+		}
 		return SUCCESS;
 	}
 

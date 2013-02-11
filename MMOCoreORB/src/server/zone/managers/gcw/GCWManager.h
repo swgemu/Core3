@@ -278,6 +278,14 @@ public:
 
 	int getRebelBaseCount();
 
+	int getRebelScore();
+
+	int getImperialScore();
+
+	void setRebelScore(int val);
+
+	void setImperialScore(int val);
+
 	unsigned int getWinningFaction();
 
 	int getGCWDiscount(CreatureObject* creature);
@@ -285,6 +293,10 @@ public:
 	int getGCWXPBonus();
 
 	void broadcastBuilding(BuildingObject* building, StringIdChatParameter& params);
+
+	int getPointValue(const String& templateString);
+
+	void addPointValue(const String& templateString, int val);
 
 	DistributedObjectServant* _getImplementation();
 
@@ -332,10 +344,16 @@ protected:
 
 	Mutex baseMutex;
 
+	static VectorMap<String, int> baseValue;
+
 private:
 	int rebelBases;
 
+	int rebelScore;
+
 	int imperialBases;
+
+	int imperialScore;
 
 public:
 	static int gcwCheckTimer;
@@ -562,6 +580,14 @@ public:
 
 	int getRebelBaseCount();
 
+	int getRebelScore();
+
+	int getImperialScore();
+
+	void setRebelScore(int val);
+
+	void setImperialScore(int val);
+
 private:
 	void setRebelBaseCount(int val);
 
@@ -575,6 +601,10 @@ public:
 	int getGCWXPBonus();
 
 	void broadcastBuilding(BuildingObject* building, StringIdChatParameter& params);
+
+	int getPointValue(const String& templateString);
+
+	void addPointValue(const String& templateString, int val);
 
 	WeakReference<GCWManager*> _this;
 
