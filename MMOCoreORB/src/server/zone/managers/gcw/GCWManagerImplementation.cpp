@@ -978,7 +978,9 @@ void GCWManagerImplementation::generateTurretControlBoxTo(CreatureObject* creatu
 	if(weapon == NULL)
 		return;
 
-	for(int i = 0; i < 10; ++i){
+	int targetTotal = 0;
+
+	for(int i = 0; i < closeObjects.size(); ++i){
 		CreatureObject* creo = closeObjects.get(i).castTo<CreatureObject*>();
 
 		if(creo != NULL && creo->isAttackableBy(turret)){
@@ -988,9 +990,12 @@ void GCWManagerImplementation::generateTurretControlBoxTo(CreatureObject* creatu
 
 			if(creo->isPlayerCreature() && turret->getDistanceTo(creo) <= weapon->getMaxRange()) {
 				status->addMenuItem(creo->getFirstName() + " - " + String::valueOf((int)turret->getDistanceTo(creo)) + "m",creo->getObjectID());
+				targetTotal++;
 			}
 		}
 
+		if(targetTotal > 20)
+			break;
 	}
 
 	if( status->getMenuSize() > 0 ) {
