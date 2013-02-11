@@ -2442,10 +2442,10 @@ void PlayerManagerImplementation::updateSwimmingState(CreatureObject* player, fl
 	}
 
 	float landHeight = zone->getHeight(player->getPositionX(), player->getPositionY());
-	float waterHeight;
-	terrainManager->getWaterHeight(player->getPositionX(), player->getPositionY(), waterHeight);
+	float waterHeight = landHeight;
+	bool waterIsDefined = terrainManager->getWaterHeight(player->getPositionX(), player->getPositionY(), waterHeight);
 
-	if ((waterHeight > landHeight) && (landHeight + player->getSwimHeight() - waterHeight < 0.2)) {
+	if (waterIsDefined && (waterHeight > landHeight) && (landHeight + player->getSwimHeight() - waterHeight < 0.2)) {
 		//Water level is higher than the terrain level and is deep enough for the player to be swimming.
 		//Check if the player is on a bridge or other terrain above the water level.
 		SortedVector<IntersectionResult> intersections;
