@@ -42,17 +42,31 @@
 
 
 object_building_faction_perk_hq_hq_s03_rebel_pvp = object_building_faction_perk_hq_shared_hq_s03_rebel_pvp:new {
-				lotSize = 0,
-		maintenanceCost = 5,
-		baseMaintenanceRate = 5,
+	
+		lotSize = 0,
+		containerComponent = "GCWBaseContainerComponent",
+		zoneComponent = "StructureZoneComponent",
+		maintenanceCost = 0,
+		baseMaintenanceRate = 0,
+		faction = "rebel",
+		pvpFaction = "rebel",
+		pvpStatusBitmask = OVERT,
 		dataObjectComponent = "DestructibleBuildingDataComponent",
 		allowedZones = {"dantooine", "naboo", "rori","tatooine", "corellia", "lok", "talus"},
 		constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
 		length = 7,
 		width = 6,
+		planetMapCategory = "imperial_hq",
+		alwaysPublic = 1,
+		skillMods = {
+			{"private_buff_mind", 100},
+			{"private_med_battle_fatigue", 5},
+			{"private_medical_rating", 100},
+
+		},
 			childObjects = {
 		{templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = 0, z = 0, y = -6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 3, containmentType = -1 },
-			
+
 			-- left side columns
 			
 			{templateFile = "object/static/structure/military/military_column_med_rebel_style_01.iff", x=-5.5, z=0, y=30.75, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 1
@@ -88,7 +102,27 @@ object_building_faction_perk_hq_hq_s03_rebel_pvp = object_building_faction_perk_
 			{templateFile = "object/static/structure/military/military_wall_med_rebl_16_style_01.iff", x=-11.5, z=0, y=-9.25, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1},
 			{templateFile = "object/static/structure/military/military_wall_med_rebl_16_style_01.iff", x=11.5, z=0, y=-9.25, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1},
 			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=0, z=0, y=-9.25, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1},
+			
+			
+			-- turret
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-14, z=0, y=31, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- left turret front
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=14, z=0, y=31,  ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1}, 
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-16, z=0, y=-13, ox=0, oy=.7,  oz=0, ow=-.7, cellid=-1, containmentType=-1}, -- back turret front
+			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=16, z=0, y=-13,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
+			
+			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=5, z=0, y=23,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
+			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=-5, z=0, y=23,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
+			
+			{templateFile = "object/installation/faction_perk/covert_detector/detector_base.iff", x=15, z=0, y=45,  ox=0, oy=-.3, oz=0, ow=1, cellid=-1, containmentType=-1}, 
+			{templateFile = "object/installation/faction_perk/covert_detector/detector_base.iff", x=-15, z=0, y=45,  ox=0, oy=-.3, oz=0, ow=1, cellid=-1, containmentType=-1}, 
+				
+			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-5, z=.25, y=1.5, ow=.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
+			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-5, z=.25, y=0, ow=.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
+			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-5, z=.25, y=-1.5, ow=.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
+			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-5, z=.25, y=-3, ow=.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
 		
+			
+			
 			{templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = .38, z = .25, y = 1.75, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
 			
 			{templateFile = "object/tangible/hq_destructible/uplink_terminal.iff", x =5, z =.25, y =-4, ow =-.662, ox =0, oz = 0, oy =.749, cellid = 3, containmentType = -1},
@@ -96,9 +130,35 @@ object_building_faction_perk_hq_hq_s03_rebel_pvp = object_building_faction_perk_
 			{templateFile = "object/tangible/hq_destructible/override_terminal.iff", x =-3.5, z =-21, y =6.7, ox = 0, oy =1, oz = 0, ow =0, cellid = 9, containmentType = -1 },
 			{templateFile = "object/tangible/hq_destructible/power_regulator.iff", x = 4.25, z =-20.75, y =36, ox = 0, oy =1, oz = 0, ow =0, cellid = 10, containmentType = -1 },
 			
+			{templateFile="object/tangible/terminal/terminal_mission.iff", x=-11, z=-13.75, y=7, ow=.7, ox=0, oz=0, oy=.7, cellid=7, containmentType=-1},
+			{templateFile="object/tangible/terminal/terminal_bank.iff", x=6, z=-13.75, y=10, ow=0, ox=0, oz=0, oy=1, cellid=7, containmentType=-1},
+			{templateFile="object/tangible/terminal/terminal_insurance.iff", x=-9, z=-13.75, y=10, ow=0, ox=0, oz=0, oy=1, cellid=7, containmentType=-1},
+			{templateFile="object/tangible/terminal/terminal_mission_imperial.iff", x=8, z=-13.75, y=7, ow=-.7, ox=0, oz=0, oy=.7, cellid=7, containmentType=-1},
 			
 		},
+	childCreatureObjects = {
+		 	{ mobile="specforce_marine", x=10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+		 	{ mobile="specforce_marine", x=15, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+		 	{ mobile="specforce_marine", x=-10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+		 	{ mobile="specforce_marine", x=-15, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
 
+		
+			{ mobile="specforce_marine", x=4, z=-3.25, y=5, cellid=4, respawn=300, containmentType=-1, heading=1.57},
+		 
+		 	{ mobile="specforce_marine", x=-5, z=-10.25, y=-6, cellid=5, respawn=300, containmentType=-1, heading=1.57},
+		 	
+			{ mobile="specforce_marine", x=-2.7, z=-13.75, y=7, cellid=7, respawn=300, containmentType=-1, heading=1.57},
+			 { mobile="specforce_marine", x=-5, z=-13.75, y=7, cellid=7, respawn=300, containmentType=-1, heading=1.57},
+
+
+			{ mobile="specforce_marine", x=-1, z=-20.75, y=16, cellid=10, containmentType=-1, respawn=60, heading=1.57},
+ 			{ mobile="specforce_marine", x=-3.5, z=-20.75, y=23, cellid=10, containmentType=-1, respawn=60, heading=1.57},
+			
+			{ mobile="specforce_marine", x=5, z=-20.75, y=16, cellid=10, containmentType=-1, respawn=60, heading=4.71},
+ 			{ mobile="specforce_marine", x=6.5, z=-20.75, y=23, cellid=10, containmentType=-1, respawn=60, heading=4.71},
+			
+			{ mobile="rebel_recruiter", x=-2, z=-20.75, y=34, cellid=10, containmentType=-1, respawn=60, heading=3.14},
+		},
 
 }
 

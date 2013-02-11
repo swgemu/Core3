@@ -43,9 +43,8 @@
 
 object_tangible_deed_faction_perk_hq_hq_s03_pvp = object_tangible_deed_faction_perk_hq_shared_hq_s03_pvp:new {
 	templateType = STRUCTUREDEED,
-	placeStructureComponent = "PlaceStructureComponent",
+	placeStructureComponent = "PlaceGCWBaseComponent",
 	gameObjectType = 8388609,
-	
 }
 
 ObjectTemplates:addTemplate(object_tangible_deed_faction_perk_hq_hq_s03_pvp, "object/tangible/deed/faction_perk/hq/hq_s03_pvp.iff")

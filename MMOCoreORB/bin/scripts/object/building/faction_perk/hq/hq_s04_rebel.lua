@@ -61,8 +61,7 @@ object_building_faction_perk_hq_hq_s04_rebel = object_building_faction_perk_hq_s
 			{"private_buff_mind", 100},
 			{"private_med_battle_fatigue", 5},
 			{"private_medical_rating", 100},
-			{"private_med_wound_health", 100},
-			{"private_med_wound_action", 100}
+
 		},
 		
 		childObjects = {
@@ -113,30 +112,7 @@ object_building_faction_perk_hq_hq_s04_rebel = object_building_faction_perk_hq_s
 			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=11.5, z=0, y=33,  ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1}, 
 			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-22, z=0, y=-5.5, ox=0, oy=.7,  oz=0, ow=-.7, cellid=-1, containmentType=-1}, -- back turret front
 			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=22, z=0, y=-5.5,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
-					
-			--[[ DO NOT DELETE
-			TEMP WAlls may need angled walls for turrets
-			-- wall 4
-			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=-19.5, z=0, y=10.75, ox=0, oy=-.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, -- left wall 4
-			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=19.5, z=0, y=10.75, ox=0, oy=-.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, -- right wall 4
-										
-			-- wall 4
-			{templateFile = "object/static/structure/military/military_wall_med_rebl_16_style_01.iff", x=-18, z=0, y=8.75, ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, -- left wall 4
-			{templateFile = "object/static/structure/military/military_wall_med_rebl_16_style_01.iff", x=18, z=0, y=8.75, ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
-		
-			-- wall 5
-			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=15, z=0, y=-2, oy=-.4, oz=0, ow=.9, cellid=-1, containmentType=-1},-- right wall 5	
-			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=-15, z=0, y=-2, ox=0, oy=.4, oz=0, ow=.9, cellid=-1, containmentType=-1}, -- left wall 5
-			
-			-- wall 6
-			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=15, z=0, y=-8.5, ox=0, oy=.4, oz=0, ow=.9, cellid=-1, containmentType=-1}, -- right wall 6
-			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=-15, z=0, y=-8.5, ox=0, oy=-.4, oz=0, ow=.9, cellid=-1, containmentType=-1}, -- left wall 6
-			
-			-- wall 7 changed
-			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=15, z=0, y=-14.5, oy=-.4, oz=0, ow=.9, cellid=-1, containmentType=-1},-- right wall 7	
-			{templateFile = "object/static/structure/military/military_wall_med_rebl_style_01.iff", x=-15, z=0, y=-14.5, ox=0, oy=.4, oz=0, ow=.9, cellid=-1, containmentType=-1}, -- left wall 7
-			]]--
-		
+	
 			{templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = .38, z = .25, y = 1.75, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 2, containmentType = -1 },
 			{templateFile = "object/tangible/hq_destructible/power_regulator.iff", x = 14, z=-13.8, y=-4, ox = 0, oy =1, oz = 0, ow =0, cellid = 10, containmentType = -1 },
 			{templateFile = "object/tangible/hq_destructible/override_terminal.iff", x = 12.75, z = -13.75, y = 10.2, ox = 0, oy =.7, oz = 0, ow =.7, cellid = 9, containmentType = -1 },
@@ -146,12 +122,18 @@ object_building_faction_perk_hq_hq_s04_rebel = object_building_faction_perk_hq_s
 			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=5, z=.25, y=.5, ow=-.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
 			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=5, z=.25, y=-1, ow=-.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
 			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=5, z=.25, y=-2.5, ow=-.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
-			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=0, z=0, y=33,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
+			
+			
+			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=7, z=0, y=45,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
+			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=-7, z=0, y=45,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
+			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=0, z=0, y=25,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
+			
 			{templateFile = "object/installation/faction_perk/covert_detector/detector_base.iff", x=15, z=0, y=53,  ox=-10, oy=-.3, oz=0, ow=1, cellid=-1, containmentType=-1}, 
 			{templateFile = "object/installation/faction_perk/covert_detector/detector_base.iff", x=-15, z=0, y=53,  ox=10, oy=-.3, oz=0, ow=1, cellid=-1, containmentType=-1}, 
 		
 			{templateFile="object/tangible/terminal/terminal_mission.iff", x=18.25, z=-13.75, y=14.65, ow=-.69, ox=0, oz=0, oy=.71, cellid=9, containmentType=-1},
 			{templateFile="object/tangible/terminal/terminal_bank.iff", x=-7, z=-13.75, y=-7, ow=.7, ox=0, oz=0, oy=.66, cellid=7, containmentType=-1},
+			{templateFile="object/tangible/terminal/terminal_insurance.iff", x=-7, z=-13.75, y=-4, ow=.7, ox=0, oz=0, oy=.66, cellid=7, containmentType=-1},
 			{templateFile="object/tangible/terminal/terminal_mission_rebel.iff", x=-3, z=.25, y=-5.5, ow=1, ox=0, oz=0, oy=0, cellid=3, containmentType=-1},
 		
 		},

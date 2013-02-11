@@ -129,7 +129,8 @@ faction_reward_data = {
 		"hq_s01_imperial",
 		"hq_s02_pvp_imperial",
 		"hq_s02_imperial",
-		--"hq_s03_pvp_imperial",
+		"hq_s03_pvp_imperial",
+		"hq_s03_imperial",
 		"hq_s04_pvp_imperial",
 		"hq_s04_imperial",
 		--"hq_s05_pvp_imperial",
@@ -161,7 +162,10 @@ faction_reward_data = {
 			
 		hq_s03_pvp_imperial = {type=faction_reward_type.installation, display="@deed:hq_s03_pvp_imperial", item="object/tangible/deed/faction_perk/hq/hq_s03_pvp.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s03_imp_pvp.iff", cost=31500},
-				
+
+		hq_s03_imperial = {type=faction_reward_type.installation, display="@deed:hq_s03_imperial", item="object/tangible/deed/faction_perk/hq/hq_s03.iff", 
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s03_imp.iff", cost=31500},
+								
 		hq_s04_pvp_imperial = {type=faction_reward_type.installation, display="@deed:hq_s04_pvp_imperial", item="object/tangible/deed/faction_perk/hq/hq_s04_pvp.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_imp_pvp.iff", cost=42000},
 		
@@ -210,7 +214,8 @@ faction_reward_data = {
 		"hq_s01_rebel",
 		"hq_s02_pvp_rebel",
 		"hq_s02_rebel",
-		--"hq_s03_pvp_rebel",
+		"hq_s03_pvp_rebel",
+		"hq_s03_rebel",
 		"hq_s04_pvp_rebel",
 		"hq_s04_rebel",
 		--"hq_s05_pvp_rebel",
@@ -241,7 +246,10 @@ faction_reward_data = {
 					
 		hq_s03_pvp_rebel = {type=faction_reward_type.installation, display="@deed:hq_s03_pvp_rebel", item="object/tangible/deed/faction_perk/hq/hq_s03_pvp.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s03_rebel_pvp.iff", cost=45000},
-			
+	
+		hq_s03_rebel = {type=faction_reward_type.installation, display="@deed:hq_s03_rebel", item="object/tangible/deed/faction_perk/hq/hq_s03.iff", 
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s03_rebel.iff", cost=45000},
+						
 		hq_s04_rebel = {type=faction_reward_type.installation, display="@deed:hq_s04_rebel", item="object/tangible/deed/faction_perk/hq/hq_s04.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_rebel.iff", cost=60000},
 			
