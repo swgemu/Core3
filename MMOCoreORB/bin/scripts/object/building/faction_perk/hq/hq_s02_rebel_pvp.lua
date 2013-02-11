@@ -57,7 +57,10 @@ object_building_faction_perk_hq_hq_s02_rebel_pvp = object_building_faction_perk_
 		containerComponent = {"cpp", "GCWBaseContainerComponent"},
 		planetMapCategory = "rebel_hq",
 		childObjects = {
-
+		skillMods = {
+			{"private_medical_rating", 100},
+		},
+		
 		{templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = 0, z = 0, y = -6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 3, containmentType = -1 },
 			
 			-- left side columns
