@@ -418,8 +418,8 @@ void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building,
 		Locker _lock(_this.get(),creature);
 
 		Reference<Task*> newTask = new BaseDestructionTask(_this.get(), building);
-		newTask->schedule(this->destructionTimer*1000);
-
+		//newTask->schedule(this->destructionTimer*1000);
+		newTask->schedule(60000);
 		this->addDestroyTask(building->getObjectID(),newTask);
 
 	}
@@ -477,6 +477,20 @@ void GCWManagerImplementation::doBaseDestruction(BuildingObject* building){
 	if(building == NULL)
 		return;
 
+	Reference<Task*> oldEndTask = this->getDestroyTask(building->getObjectID());
+
+	if(oldEndTask != NULL){
+			BaseDestructionTask* dTask = cast<BaseDestructionTask*>(oldEndTask.get());
+			if(dTask != NULL && dTask->getCountdown() > 0){
+				oldEndTask->reschedule(60000);
+				StringIdChatParameter msg("@faction/faction_hq/faction_hq_response:terminal_response39"); // Countdown: Estimated time to detonation: %DI minutes
+				int minutesRemaining = dTask->getCountdown();
+				msg.setDI(minutesRemaining);
+				broadcastBuilding(building, msg);
+				return;
+			}
+
+	}
 	info("Destroying Base " + String::valueOf(building->getObjectID()),true);
 
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );

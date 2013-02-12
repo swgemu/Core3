@@ -14,15 +14,18 @@
 class BaseDestructionTask : public Task {
 	ManagedWeakReference<GCWManager*> gcwManager;
 	ManagedWeakReference<BuildingObject*> buildingObject;
+	int countDown;
 public:
 	BaseDestructionTask(GCWManager* manager, BuildingObject* building){
 		gcwManager = manager;
 		buildingObject = building;
+		countDown = GCWManagerImplementation::destructionTimer / 60;
 	}
 
 	void run() {
 		Logger::Logger tlog("DTASK");
 		tlog.info("BaseDestruction task execution", true);
+		countDown--;
 		ManagedReference<GCWManager*> strongRef = gcwManager.get();
 		ManagedReference<BuildingObject*> building = buildingObject.get();
 		if (strongRef == NULL){
@@ -31,6 +34,10 @@ public:
 
 		strongRef->doBaseDestruction(building);
 
+	}
+
+	int getCountdown(){
+		return countDown;
 	}
 };
 
