@@ -1631,9 +1631,6 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 
 	Locker clocker(tano, attacker);
 
-	attacker->addDefender(tano);
-	tano->addDefender(attacker);
-
 	if (tano->isCreatureObject()) {
 		CreatureObject* defenderObject = cast<CreatureObject*>( tano);
 		damage = doTargetCombatAction(attacker, weapon, defenderObject, data);
@@ -1646,12 +1643,11 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 
 // called for single target attackers
 int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defenderObject, const CreatureAttackData& data) {
-	// TODO: find a place to add defenders
-	//attacker->addDefender(defenderObject);
-	//tano->addDefender(attacker);
-
 	if(defenderObject == NULL || !defenderObject->isAttackableBy(attacker))
 		return 0;
+
+	attacker->addDefender(defenderObject);
+	defenderObject->addDefender(attacker);
 
 	float minDamage = weapon->getMinDamage(), maxDamage = weapon->getMaxDamage();
 	float diff = maxDamage - minDamage;
