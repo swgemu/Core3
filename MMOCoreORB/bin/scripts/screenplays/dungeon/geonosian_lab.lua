@@ -391,7 +391,7 @@ function geonosian_lab_screenplay:notifyElectroShock(pActiveArea, pMovingObject)
 		local player = LuaCreatureObject(pMovingObject)
 		local objectID = player:getObjectID()
 		local activeArea = LuaSceneObject(pActiveArea)
-		player:inflictDamage(activeArea:getObjectID(), 0, 1000, 0)
+		player:inflictDamage(pMovingObject, 0, 1000, 0)
 		player:sendSystemMessage("@dungeon/geonosian_madbio:shock") --You feel electricity coursing through your body! 
 	end
 
