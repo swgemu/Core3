@@ -103,6 +103,7 @@
 #include "server/zone/objects/creature/ai/components/StandingStateComponent.h"
 #include "server/zone/objects/creature/ai/components/WanderingStateComponent.h"
 #include "server/zone/objects/tangible/components/GogglesColorMenuComponent.h"
+#include "server/zone/objects/tangible/components/ArmorColorMenuComponent.h"
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
@@ -152,7 +153,7 @@ ComponentManager::ComponentManager() {
 	components.put("PlaceGCWBaseComponent", new PlaceGCWBaseComponent());
 	components.put("StructureTerminalMenuComponent", new StructureTerminalMenuComponent());
 	components.put("FactoryObjectMenuComponent", new FactoryObjectMenuComponent());
-	components.put("MinefieldMenuComponent", new MinefieldMenuComponent());
+	components.put("MinefieldMenuComponent", new MinefieldMenuComponent());	
 	components.put("InstallationObjectMenuComponent", new InstallationObjectMenuComponent());
 
 
@@ -198,6 +199,7 @@ ComponentManager::ComponentManager() {
 
 	components.put("CreatureHabitatMenuComponent", new CreatureHabitatMenuComponent());
 	components.put("WearableObjectMenuComponent", new WearableObjectMenuComponent());
+	components.put("ArmorColorMenuComponent", new ArmorColorMenuComponent());	
 
 	components.put("CityHallZoneComponent", new CityHallZoneComponent());
 

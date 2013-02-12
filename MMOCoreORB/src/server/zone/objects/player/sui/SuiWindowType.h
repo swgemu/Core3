@@ -231,6 +231,7 @@ public:
 	static const uint16 VENDOR_CUSTOM_PHRASE = 1011;
 	static const uint16 VENDOR_ANIMATION = 1012;
 	static const uint16 COLOR_GOGGLES = 1013;
+	static const uint16 COLOR_ARMOR = 1014;	
 };
 
 #endif /*SuiWindowType_H_*/

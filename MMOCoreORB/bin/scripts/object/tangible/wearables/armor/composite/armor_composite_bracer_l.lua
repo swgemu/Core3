@@ -42,7 +42,10 @@
 
 
 object_tangible_wearables_armor_composite_armor_composite_bracer_l = object_tangible_wearables_armor_composite_shared_armor_composite_bracer_l:new {
+
 	templateType = ARMOROBJECT,
+
+	objectMenuComponent = {"cpp", "ArmorColorMenuComponent"}, 
 
 	playerRaces = { "object/creature/player/bothan_male.iff",
 				"object/creature/player/bothan_female.iff",

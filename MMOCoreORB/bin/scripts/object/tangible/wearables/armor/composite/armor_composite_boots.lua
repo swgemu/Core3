@@ -42,7 +42,10 @@
 
 
 object_tangible_wearables_armor_composite_armor_composite_boots = object_tangible_wearables_armor_composite_shared_armor_composite_boots:new {
+
 	templateType = ARMOROBJECT,
+
+	objectMenuComponent = {"cpp", "ArmorColorMenuComponent"}, 
 
 	playerRaces = { "object/creature/player/bothan_male.iff",
 				"object/creature/player/bothan_female.iff",
