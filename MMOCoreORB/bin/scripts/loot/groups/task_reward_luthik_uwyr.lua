@@ -5,7 +5,7 @@ task_reward_luthik_uwyr = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "no_drop_holocron", weight = 10000000}
+		{itemTemplate = "no_drop_holocron_dark", weight = 10000000}
 	}
 }
 

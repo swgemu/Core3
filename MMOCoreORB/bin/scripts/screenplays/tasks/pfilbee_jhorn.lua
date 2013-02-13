@@ -48,9 +48,9 @@ pfilbee_jhorn_missions =
 		}, 
 		secondarySpawns = 
 		{
-				{ npcTemplate = "duneLizards", planetName = "tatooine", npcName = "a dune lizard" },
-				{ npcTemplate = "duneLizards", planetName = "tatooine", npcName = "a dune lizard" },
-				{ npcTemplate = "duneLizards", planetName = "tatooine", npcName = "a dune lizard" }				
+				{ npcTemplate = "dune_lizard", planetName = "tatooine", npcName = "a dune lizard" },
+				{ npcTemplate = "dune_lizard", planetName = "tatooine", npcName = "a dune lizard" },
+				{ npcTemplate = "dune_lizard", planetName = "tatooine", npcName = "a dune lizard" }				
 		},
 		itemSpawns = {}, 
 		rewards = 
