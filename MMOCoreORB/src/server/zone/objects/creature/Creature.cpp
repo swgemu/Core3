@@ -20,7 +20,7 @@
  *	CreatureStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISCREATURE__,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_RUNAWAY__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SCHEDULEDESPAWN__,RPC_HASORGANICS__,RPC_CANHARVESTME__CREATUREOBJECT_,RPC_HASSKILLTOHARVESTME__CREATUREOBJECT_,RPC_ADDALREADYHARVESTED__CREATUREOBJECT_,RPC_NOTIFYDESPAWN__ZONE_,RPC_ISBABY__,RPC_GETTAME__,RPC_GETMEATTYPE__,RPC_GETBONETYPE__,RPC_GETHIDETYPE__,RPC_GETMILK__,RPC_GETHIDEMAX__,RPC_GETBONEMAX__,RPC_GETMEATMAX__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISCREATURE__,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_RUNAWAY__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SCHEDULEDESPAWN__,RPC_HASORGANICS__,RPC_HASMILK__,RPC_CANHARVESTME__CREATUREOBJECT_,RPC_HASSKILLTOHARVESTME__CREATUREOBJECT_,RPC_CANMILKME__CREATUREOBJECT_,RPC_ADDALREADYHARVESTED__CREATUREOBJECT_,RPC_SETALREADYMILKED__BOOL_,RPC_NOTIFYDESPAWN__ZONE_,RPC_ISBABY__,RPC_GETTAME__,RPC_GETMEATTYPE__,RPC_GETBONETYPE__,RPC_GETHIDETYPE__,RPC_GETMILKTYPE__,RPC_GETMILK__,RPC_GETHIDEMAX__,RPC_GETBONEMAX__,RPC_GETMEATMAX__};
 
 Creature::Creature() : AiAgent(DummyConstructorParameter::instance()) {
 	CreatureImplementation* _implementation = new CreatureImplementation();
@@ -157,6 +157,19 @@ bool Creature::hasOrganics() {
 		return _implementation->hasOrganics();
 }
 
+bool Creature::hasMilk() {
+	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HASMILK__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasMilk();
+}
+
 bool Creature::canHarvestMe(CreatureObject* player) {
 	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -185,6 +198,20 @@ bool Creature::hasSkillToHarvestMe(CreatureObject* player) {
 		return _implementation->hasSkillToHarvestMe(player);
 }
 
+bool Creature::canMilkMe(CreatureObject* player) {
+	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CANMILKME__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->canMilkMe(player);
+}
+
 void Creature::addAlreadyHarvested(CreatureObject* player) {
 	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -197,6 +224,20 @@ void Creature::addAlreadyHarvested(CreatureObject* player) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->addAlreadyHarvested(player);
+}
+
+void Creature::setAlreadyMilked(bool milked) {
+	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETALREADYMILKED__BOOL_);
+		method.addBooleanParameter(milked);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setAlreadyMilked(milked);
 }
 
 void Creature::notifyDespawn(Zone* zone) {
@@ -282,6 +323,21 @@ String Creature::getHideType() {
 		return _return_getHideType;
 	} else
 		return _implementation->getHideType();
+}
+
+String Creature::getMilkType() {
+	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETMILKTYPE__);
+
+		String _return_getMilkType;
+		method.executeWithAsciiReturn(_return_getMilkType);
+		return _return_getMilkType;
+	} else
+		return _implementation->getMilkType();
 }
 
 float Creature::getMilk() {
@@ -441,6 +497,11 @@ bool CreatureImplementation::readObjectMember(ObjectInputStream* stream, const S
 	if (AiAgentImplementation::readObjectMember(stream, _name))
 		return true;
 
+	if (_name == "Creature.alreadyMilked") {
+		TypeInfo<bool >::parseFromBinaryStream(&alreadyMilked, stream);
+		return true;
+	}
+
 
 	return false;
 }
@@ -458,8 +519,16 @@ int CreatureImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	String _name;
 	int _offset;
 	uint32 _totalSize;
+	_name = "Creature.alreadyMilked";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<bool >::toBinaryStream(&alreadyMilked, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 0;
+
+	return _count + 1;
 }
 
 CreatureImplementation::CreatureImplementation() {
@@ -517,6 +586,14 @@ String CreatureImplementation::getHideType() {
 	return "";
 	// server/zone/objects/creature/Creature.idl():  		return super.npcTemplate.getHideType();
 	return AiAgentImplementation::npcTemplate->getHideType();
+}
+
+String CreatureImplementation::getMilkType() {
+	// server/zone/objects/creature/Creature.idl():  		return 
+	if (AiAgentImplementation::npcTemplate == NULL)	// server/zone/objects/creature/Creature.idl():  			return "";
+	return "";
+	// server/zone/objects/creature/Creature.idl():  		return super.npcTemplate.getMilkType();
+	return AiAgentImplementation::npcTemplate->getMilkType();
 }
 
 float CreatureImplementation::getMilk() {
@@ -606,6 +683,11 @@ void CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(hasOrganics());
 		}
 		break;
+	case RPC_HASMILK__:
+		{
+			resp->insertBoolean(hasMilk());
+		}
+		break;
 	case RPC_CANHARVESTME__CREATUREOBJECT_:
 		{
 			resp->insertBoolean(canHarvestMe(static_cast<CreatureObject*>(inv->getObjectParameter())));
@@ -616,9 +698,19 @@ void CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(hasSkillToHarvestMe(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		}
 		break;
+	case RPC_CANMILKME__CREATUREOBJECT_:
+		{
+			resp->insertBoolean(canMilkMe(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
+		break;
 	case RPC_ADDALREADYHARVESTED__CREATUREOBJECT_:
 		{
 			addAlreadyHarvested(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_SETALREADYMILKED__BOOL_:
+		{
+			setAlreadyMilked(inv->getBooleanParameter());
 		}
 		break;
 	case RPC_NOTIFYDESPAWN__ZONE_:
@@ -649,6 +741,11 @@ void CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETHIDETYPE__:
 		{
 			resp->insertAscii(getHideType());
+		}
+		break;
+	case RPC_GETMILKTYPE__:
+		{
+			resp->insertAscii(getMilkType());
 		}
 		break;
 	case RPC_GETMILK__:
@@ -708,6 +805,10 @@ bool CreatureAdapter::hasOrganics() {
 	return (static_cast<Creature*>(stub))->hasOrganics();
 }
 
+bool CreatureAdapter::hasMilk() {
+	return (static_cast<Creature*>(stub))->hasMilk();
+}
+
 bool CreatureAdapter::canHarvestMe(CreatureObject* player) {
 	return (static_cast<Creature*>(stub))->canHarvestMe(player);
 }
@@ -716,8 +817,16 @@ bool CreatureAdapter::hasSkillToHarvestMe(CreatureObject* player) {
 	return (static_cast<Creature*>(stub))->hasSkillToHarvestMe(player);
 }
 
+bool CreatureAdapter::canMilkMe(CreatureObject* player) {
+	return (static_cast<Creature*>(stub))->canMilkMe(player);
+}
+
 void CreatureAdapter::addAlreadyHarvested(CreatureObject* player) {
 	(static_cast<Creature*>(stub))->addAlreadyHarvested(player);
+}
+
+void CreatureAdapter::setAlreadyMilked(bool milked) {
+	(static_cast<Creature*>(stub))->setAlreadyMilked(milked);
 }
 
 void CreatureAdapter::notifyDespawn(Zone* zone) {
@@ -742,6 +851,10 @@ String CreatureAdapter::getBoneType() {
 
 String CreatureAdapter::getHideType() {
 	return (static_cast<Creature*>(stub))->getHideType();
+}
+
+String CreatureAdapter::getMilkType() {
+	return (static_cast<Creature*>(stub))->getMilkType();
 }
 
 float CreatureAdapter::getMilk() {

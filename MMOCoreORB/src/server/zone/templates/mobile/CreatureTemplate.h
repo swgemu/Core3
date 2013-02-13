@@ -42,6 +42,7 @@ protected:
 	String meatType;
 	String boneType;
 	String hideType;
+	String milkType;
 
 	int milk;
 	int hideAmount;
@@ -168,6 +169,10 @@ public:
 
 	inline String& getHideType() {
 		return hideType;
+	}
+
+	inline String& getMilkType() {
+		return milkType;
 	}
 
 	inline String& getCustomName() {

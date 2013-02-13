@@ -126,11 +126,17 @@ public:
 
 	bool hasOrganics();
 
+	bool hasMilk();
+
 	bool canHarvestMe(CreatureObject* player);
 
 	bool hasSkillToHarvestMe(CreatureObject* player);
 
+	bool canMilkMe(CreatureObject* player);
+
 	void addAlreadyHarvested(CreatureObject* player);
+
+	void setAlreadyMilked(bool milked);
 
 	void notifyDespawn(Zone* zone);
 
@@ -143,6 +149,8 @@ public:
 	String getBoneType();
 
 	String getHideType();
+
+	String getMilkType();
 
 	float getMilk();
 
@@ -179,6 +187,8 @@ namespace creature {
 class CreatureImplementation : public AiAgentImplementation {
 	SortedVector<unsigned long long> alreadyHarvested;
 
+	bool alreadyMilked;
+
 public:
 	CreatureImplementation();
 
@@ -202,11 +212,17 @@ public:
 
 	bool hasOrganics();
 
+	bool hasMilk();
+
 	bool canHarvestMe(CreatureObject* player);
 
 	bool hasSkillToHarvestMe(CreatureObject* player);
 
+	bool canMilkMe(CreatureObject* player);
+
 	void addAlreadyHarvested(CreatureObject* player);
+
+	void setAlreadyMilked(bool milked);
 
 	void notifyDespawn(Zone* zone);
 
@@ -219,6 +235,8 @@ public:
 	String getBoneType();
 
 	String getHideType();
+
+	String getMilkType();
 
 	float getMilk();
 
@@ -287,11 +305,17 @@ public:
 
 	bool hasOrganics();
 
+	bool hasMilk();
+
 	bool canHarvestMe(CreatureObject* player);
 
 	bool hasSkillToHarvestMe(CreatureObject* player);
 
+	bool canMilkMe(CreatureObject* player);
+
 	void addAlreadyHarvested(CreatureObject* player);
+
+	void setAlreadyMilked(bool milked);
 
 	void notifyDespawn(Zone* zone);
 
@@ -304,6 +328,8 @@ public:
 	String getBoneType();
 
 	String getHideType();
+
+	String getMilkType();
 
 	float getMilk();
 

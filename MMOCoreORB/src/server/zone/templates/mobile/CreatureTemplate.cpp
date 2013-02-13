@@ -21,9 +21,6 @@ CreatureTemplate::CreatureTemplate() {
 
 	scale = 1.f;
 
-	meatType = "";
-	boneType = "";
-	hideType = "";
 	objectName = "";
 	customName = "";
 	socialGroup = "";
@@ -43,6 +40,7 @@ CreatureTemplate::CreatureTemplate() {
 	hideAmount = 0;
 	boneType = "";
 	boneAmount = 0;
+	milkType = "";
 	milk = 0.f;
 	tamingChance = 0.f;
 	ferocity = 0;
@@ -73,9 +71,6 @@ CreatureTemplate::~CreatureTemplate() {
 
 void CreatureTemplate::readObject(LuaObject* templateData) {
 	conversationTemplate = String(templateData->getStringField("conversationTemplate").trim()).hashCode();
-	meatType = templateData->getStringField("meatType").trim();
-	boneType = templateData->getStringField("boneType").trim();
-	hideType = templateData->getStringField("hideType").trim();
 	objectName = templateData->getStringField("objectName").trim();
 	customName = templateData->getStringField("customName").trim();
 	socialGroup = templateData->getStringField("socialGroup").trim();
@@ -108,6 +103,10 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	defaultAttack = templateData->getStringField("defaultAttack");
 
 	scale = templateData->getFloatField("scale");
+
+	if (templateData->getStringField("milkType").length() > 0) {
+		milkType = templateData->getStringField("milkType").trim();
+	}
 
 	LuaObject res = templateData->getObjectField("resists");
 	if (res.getTableSize() == 9) {

@@ -26,6 +26,7 @@
 //#define DEBUG
 
 void CreatureImplementation::initializeTransientMembers() {
+	alreadyMilked = false;
 	AiAgentImplementation::initializeTransientMembers();
 	aiInterfaceComponents.add(ComponentManager::instance()->getComponent<AiCreatureComponent*>("AiCreatureComponent"));
 }
@@ -67,7 +68,11 @@ void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResp
 	if (checkInRangeGarage() && !isDestroyed())
 		menuResponse->addRadialMenuItem(62, 3, "Repair");*/
 
-	if (canHarvestMe(player)) {
+	if (canMilkMe(player)) {
+
+		menuResponse->addRadialMenuItem(112, 3, "@pet/pet_menu:milk_me");
+
+	} else if (canHarvestMe(player)) {
 
 		menuResponse->addRadialMenuItem(112, 3, "@sui:harvest_corpse");
 
@@ -91,11 +96,17 @@ int CreatureImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 	if (getZone() == NULL)
 		return 0;
 
-	if ((selectedID == 112 || selectedID == 234 || selectedID == 235 || selectedID == 236)) {
+	if (!(_this.get()->isDead())) {
+		if (selectedID == 112) {
+			//getZone()->getCreatureManager()->milk(_this.get(), player);
+		}
+	} else {
+		if ((selectedID == 112 || selectedID == 234 || selectedID == 235 || selectedID == 236)) {
 
-		getZone()->getCreatureManager()->harvest(_this.get(), player, selectedID);
+			getZone()->getCreatureManager()->harvest(_this.get(), player, selectedID);
 
-		return 0;
+			return 0;
+		}
 	}
 
 	return AiAgentImplementation::handleObjectMenuSelect(player, selectedID);
@@ -215,8 +226,16 @@ bool CreatureImplementation::hasOrganics() {
 	return ((getHideMax() + getBoneMax() + getMeatMax()) > 0);
 }
 
+bool CreatureImplementation::hasMilk() {
+	return (getMilk() > 0);
+}
+
 void CreatureImplementation::addAlreadyHarvested(CreatureObject* player) {
 	alreadyHarvested.put(player->getObjectID());
+}
+
+void CreatureImplementation::setAlreadyMilked(bool milked) {
+	alreadyMilked = milked;
 }
 
 void CreatureImplementation::notifyDespawn(Zone* zone) {
@@ -266,6 +285,17 @@ bool CreatureImplementation::hasSkillToHarvestMe(CreatureObject* player) {
 		return false;
 
 	if (alreadyHarvested.contains(player->getObjectID()))
+		return false;
+
+	return true;
+}
+
+bool CreatureImplementation::canMilkMe(CreatureObject* player) {
+
+	if (!hasMilk() || alreadyMilked || _this.get()->isInCombat() || _this.get()->isDead())
+		return false;
+
+	if(!player->isInRange(_this.get(), 5.0f) || player->isInCombat() || player->isDead() || player->isIncapacitated() || !(player->hasState(CreatureState::MASKSCENT)))
 		return false;
 
 	return true;

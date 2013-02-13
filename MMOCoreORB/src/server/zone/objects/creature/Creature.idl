@@ -60,6 +60,8 @@ class Creature extends AiAgent {
 	@dereferenced
 	private transient SortedVector<unsigned long> alreadyHarvested;
 
+	private boolean alreadyMilked;
+
 	public Creature() {
 		Logger.setLoggingName("Creature");
 		Logger.setLogging(false);
@@ -100,12 +102,18 @@ class Creature extends AiAgent {
 	public native void scheduleDespawn(); 
 		
 	public native boolean hasOrganics();
+
+	public native boolean hasMilk();
 	
 	public native boolean canHarvestMe(CreatureObject player);
 
 	public native boolean hasSkillToHarvestMe(CreatureObject player);
+
+	public native boolean canMilkMe(CreatureObject player);
 	
 	public native void addAlreadyHarvested(CreatureObject player);
+
+	public native void setAlreadyMilked(boolean milked);
 	
 	public native void notifyDespawn(Zone zone);
 	
@@ -139,6 +147,13 @@ class Creature extends AiAgent {
 			return "";
 		
 		return super.npcTemplate.getHideType();
+	}
+	
+	public string getMilkType() {
+		if (super.npcTemplate == null)
+			return "";
+		
+		return super.npcTemplate.getMilkType();
 	}
 	
 	public float getMilk() {
