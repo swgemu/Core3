@@ -21,7 +21,7 @@ lord_nyax = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -29,16 +29,14 @@ lord_nyax = Creature:new {
 	templates = {"object/mobile/dressed_lord_nyax.iff"},
 	lootGroups = {
 		{
-			groups = {
-				{group = "junk", chance = 4000000},
-				{group = "nyax", chance = 1000000},
-				{group = "melee_weapons", chance = 1500000},
-				{group = "rifles", chance = 1500000},
-                {group = "pistols", chance = 1500000},
-                {group = "armor_attachments", chance = 250000},
-                {group = "clothing_attachments", chance = 250000}
+		groups = {
+				{group = "junk", chance = 5000000},
+				{group = "nyax", chance = 2000000},
+				{group = "rifles", chance = 1000000},
+				{group = "armor_attachments", chance = 1000000},
+				{group = "clothing_attachments", chance = 1000000}
 			},
-			lootChance = 3300000
+			lootChance = 6500000
 		}
 	},
 	weapons = {"nyaxs_weapons"},
