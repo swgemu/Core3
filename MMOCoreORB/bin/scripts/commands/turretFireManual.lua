@@ -42,8 +42,8 @@
 
 TurretFireManualCommand = {
     name = "turretfiremanual",
-	damageMultiplier = 2,
-	speedMultiplier = 1,
+	damageMultiplier = 4,
+	speedMultiplier = 2,
 	combatSpam = "attack",
 	healthCostMultiplier = 0,
 	actionCostMultiplier = 0,
@@ -54,7 +54,7 @@ TurretFireManualCommand = {
 
 	trails = NOTRAIL,
 
-	poolsToDamage = RANDOM_ATTRIBUTE
+	poolsToDamage = random_attribute
 }
 
 AddCommand(TurretFireManualCommand)
