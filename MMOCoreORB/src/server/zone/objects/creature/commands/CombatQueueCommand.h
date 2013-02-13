@@ -139,7 +139,24 @@ public:
 
 		float checkRange = range;
 
-		ManagedReference<WeaponObject*> weapon = creature->getWeapon();
+		StringTokenizer tokenizer(arguments.toString());
+		uint64 argId = 0;
+
+		if (!(creature->isAiAgent())) {
+			if (tokenizer.hasMoreTokens()) {
+				argId = tokenizer.getLongToken();
+			}
+		}
+
+		ManagedReference<WeaponObject*> weapon;
+
+		if (!argId == 0) {
+			SceneObject* argo = server->getZoneServer()->getObject(argId);
+			if (argo->isWeaponObject())
+				weapon = cast<WeaponObject*>(argo);
+		} else {
+			weapon = creature->getWeapon();
+		}
 
 		if (weapon == NULL)
 			return GENERALERROR;
@@ -168,7 +185,7 @@ public:
 		CombatManager* combatManager = CombatManager::instance();
 
 		try {
-			int res = combatManager->doCombatAction(creature, cast<TangibleObject*>(targetObject.get()), CreatureAttackData(arguments, this));
+			int res = combatManager->doCombatAction(creature, weapon, cast<TangibleObject*>(targetObject.get()), CreatureAttackData(arguments, this));
 
 			switch (res) {
 			case -1:

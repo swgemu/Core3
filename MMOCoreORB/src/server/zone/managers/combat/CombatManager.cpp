@@ -145,11 +145,11 @@ void CombatManager::forcePeace(CreatureObject* attacker) {
 
 
 
-int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, CombatQueueCommand* command) {
-	return doCombatAction(attacker, defenderObject, CreatureAttackData("",command));
+int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, CombatQueueCommand* command) {
+	return doCombatAction(attacker, weapon, defenderObject, CreatureAttackData("",command));
 }
 
-int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data) {
+int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data) {
 	//info("entering doCombat action with data ", true);
 
 	if (!startCombat(attacker, defenderObject))
@@ -167,7 +167,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 
 	//info("past berserk", true);
 
-	if (!applySpecialAttackCost(attacker, data))
+	if (!applySpecialAttackCost(attacker, weapon, data))
 		return -2;
 
 	//info("past special attack cost", true);
@@ -175,9 +175,9 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 	int damage = 0;
 
 	if (data.getCommand()->isAreaAction() || data.getCommand()->isConeAction())
-		damage = doAreaCombatAction(attacker, defenderObject, data);
+		damage = doAreaCombatAction(attacker, weapon, defenderObject, data);
 	else
-		damage = doTargetCombatAction(attacker, defenderObject, data);
+		damage = doTargetCombatAction(attacker, weapon, defenderObject, data);
 
 	if (damage > 0) {
 		attacker->updateLastSuccessfulCombatAction();
@@ -193,7 +193,7 @@ int CombatManager::doCombatAction(CreatureObject* attacker, TangibleObject* defe
 
 
 
-int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject* tano, const CreatureAttackData& data) {
+int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* tano, const CreatureAttackData& data) {
 	int damage = 0;
 
 	Locker clocker(tano, attacker);
@@ -207,20 +207,20 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, TangibleObject
 	if (tano->isCreatureObject()) {
 		CreatureObject* defender = cast<CreatureObject*>( tano);
 
-		damage = doTargetCombatAction(attacker, defender, data);
+		damage = doTargetCombatAction(attacker, weapon, defender, data);
 	} else {
 		int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
 
-		damage = applyDamage(attacker, tano, damage, poolsToDamage, data);
+		damage = applyDamage(attacker, weapon, tano, damage, poolsToDamage, data);
 
 		broadcastCombatAction(attacker, tano, data, 0x01);
-		broadcastCombatSpam(attacker, tano, attacker->getWeapon(), damage, data.getCommand()->getCombatSpam() + "_hit");
+		broadcastCombatSpam(attacker, tano, weapon, damage, data.getCommand()->getCombatSpam() + "_hit");
 	}
 
 	return damage;
 }
 
-int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data) {
+int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data) {
 	if (defender->isEntertaining())
 		defender->stopEntertaining();
 
@@ -231,10 +231,10 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 	int damage = 0;
 
 	if (damageMultiplier != 0)
-		damage = calculateDamage(attacker, defender, data) * damageMultiplier;
+		damage = calculateDamage(attacker, weapon, defender, data) * damageMultiplier;
 
 	damageMultiplier = 1.0f;
-	hitVal = getHitChance(attacker, defender, attacker->getWeapon(), damage, data.getAccuracyBonus() + attacker->getSkillMod(data.getCommand()->getAccuracySkillMod()));
+	hitVal = getHitChance(attacker, defender, weapon, damage, data.getAccuracyBonus() + attacker->getSkillMod(data.getCommand()->getAccuracySkillMod()));
 
 	broadcastCombatAction(attacker, defender, data, hitVal);
 	String combatSpam = data.getCommand()->getCombatSpam();
@@ -242,26 +242,26 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 
 	switch (hitVal) {
 	case MISS:
-		doMiss(attacker, defender, damage, combatSpam + "_miss");
+		doMiss(attacker, weapon, defender, damage, combatSpam + "_miss");
 		return 0;
 		break;
 	case HIT:
-		broadcastCombatSpam(attacker, defender, attacker->getWeapon(), damage, combatSpam + "_hit");
+		broadcastCombatSpam(attacker, defender, weapon, damage, combatSpam + "_hit");
 		break;
 	case BLOCK:
-		doBlock(attacker, defender, damage, combatSpam + "_block");
+		doBlock(attacker, weapon, defender, damage, combatSpam + "_block");
 		damageMultiplier = 0.5f;
 		break;
 	case DODGE:
-		doDodge(attacker, defender, damage, combatSpam + "_evade");
+		doDodge(attacker, weapon, defender, damage, combatSpam + "_evade");
 		damageMultiplier = 0.0f;
 		break;
 	case COUNTER:
-		doCounterAttack(attacker, defender, damage, combatSpam + "_counter");
+		doCounterAttack(attacker, weapon, defender, damage, combatSpam + "_counter");
 		damageMultiplier = 0.0f;
 		break;
 	case RICOCHET:
-		doLightsaberBlock(attacker, defender, damage, combatSpam + "_block");
+		doLightsaberBlock(attacker, weapon, defender, damage, combatSpam + "_block");
 		damageMultiplier = 0.0f;
 		break;
 	default:
@@ -271,7 +271,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, CreatureObject
 	int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
 	// TODO: animations are probably determined by which pools are damaged (high, mid, low, combos, etc)
 	if (damage != 0 && damageMultiplier != 0 && poolsToDamage != 0)
-		damage = applyDamage(attacker, defender, damage, damageMultiplier, poolsToDamage, data);
+		damage = applyDamage(attacker, weapon, defender, damage, damageMultiplier, poolsToDamage, data);
 
 	if (defender->hasAttackDelay())
 		defender->removeAttackDelay();
@@ -888,10 +888,8 @@ float CombatManager::calculateDamage(CreatureObject* attacker, TangibleObject* d
 	return damage * 10;
 }
 
-float CombatManager::calculateDamage(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data) {
+float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data) {
 	float damage = 0;
-
-	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
 
 	if (data.getDamage() > 0) { // this is a special attack (force, heavy weapon, etc)
 		damage = data.getDamage();
@@ -1048,48 +1046,46 @@ float CombatManager::calculateWeaponAttackSpeed(CreatureObject* attacker, Weapon
 	return MAX(attackSpeed, 1.0f);
 }
 
-void CombatManager::doMiss(CreatureObject* attacker, CreatureObject* defender, int damage, const String& cbtSpam) {
+void CombatManager::doMiss(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam) {
 	defender->showFlyText("combat_effects", "miss", 0xFF, 0xFF, 0xFF);
 
-	broadcastCombatSpam(attacker, defender, attacker->getWeapon(), damage, cbtSpam);
+	broadcastCombatSpam(attacker, defender, weapon, damage, cbtSpam);
 }
 
-void CombatManager::doCounterAttack(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam) {
+void CombatManager::doCounterAttack(CreatureObject* creature, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam) {
 	defender->showFlyText("combat_effects", "counterattack", 0, 0xFF, 0);
 	//defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
 
-	broadcastCombatSpam(creature, defender, creature->getWeapon(), damage, cbtSpam);
+	broadcastCombatSpam(creature, defender, weapon, damage, cbtSpam);
 }
 
-void CombatManager::doBlock(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam) {
+void CombatManager::doBlock(CreatureObject* creature, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam) {
 	defender->showFlyText("combat_effects", "block", 0, 0xFF, 0);
 
 	//defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
 
-	broadcastCombatSpam(creature, defender, creature->getWeapon(), damage, cbtSpam);
+	broadcastCombatSpam(creature, defender, weapon, damage, cbtSpam);
 }
 
-void CombatManager::doLightsaberBlock(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam) {
+void CombatManager::doLightsaberBlock(CreatureObject* creature, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam) {
 	// No Fly Text.
 
 	//creature->doCombatAnimation(defender, String("test_sword_ricochet").hashCode(), 0);
 
-	broadcastCombatSpam(creature, defender, creature->getWeapon(), damage, cbtSpam);
+	broadcastCombatSpam(creature, defender, weapon, damage, cbtSpam);
 }
 
-void CombatManager::doDodge(CreatureObject* creature, CreatureObject* defender, int damage, const String& cbtSpam) {
+void CombatManager::doDodge(CreatureObject* creature, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam) {
 	defender->showFlyText("combat_effects", "dodge", 0, 0xFF, 0);
 
 	//defender->doCombatAnimation(defender, String("dodge").hashCode(), 0);
 
-	broadcastCombatSpam(creature, defender, creature->getWeapon(), damage, cbtSpam);
+	broadcastCombatSpam(creature, defender, weapon, damage, cbtSpam);
 }
 
-bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, const CreatureAttackData& data) {
+bool CombatManager::applySpecialAttackCost(CreatureObject* attacker, WeaponObject* weapon, const CreatureAttackData& data) {
 	if (attacker->isAiAgent())
 		return true;
-
-	ManagedReference<WeaponObject*> weapon = attacker->getWeapon();
 
 	float force = weapon->getForceCost() * data.getForceCostMultiplier();
 
@@ -1259,19 +1255,17 @@ int CombatManager::calculatePoolsToDamage(int poolsToDamage) {
 	return poolsToDamage;
 }
 
-int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data) {
+int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data) {
 	if (poolsToDamage == 0 || damageMultiplier == 0)
 		return 0;
 
-	float ratio = attacker->getWeapon()->getWoundsRatio();
+	float ratio = weapon->getWoundsRatio();
 	float healthDamage = 0.f, actionDamage = 0.f, mindDamage = 0.f;
 	bool wounded = false;
 
 	if (defender->isPlayerCreature() && defender->getPvpStatusBitmask() == CreatureFlag::NONE) {
 		return 0;
 	}
-
-	WeaponObject* weapon = attacker->getWeapon();
 
 	String xpType;
 	switch (data.getAttackType()) {
@@ -1320,7 +1314,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, CreatureObject* defende
 	return (int) (healthDamage + actionDamage + mindDamage);
 }
 
-int CombatManager::applyDamage(CreatureObject* attacker, TangibleObject* defender, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data) {
+int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defender, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data) {
 	if (poolsToDamage == 0)
 		return 0;
 
@@ -1331,7 +1325,6 @@ int CombatManager::applyDamage(CreatureObject* attacker, TangibleObject* defende
 	// TODO: take into account special attack data when calculating damage
 	int damage = calculateDamage(attacker, defender);
 
-	WeaponObject* weapon = attacker->getWeapon();
 	String xpType;
 	switch (data.getAttackType()) {
 	case CombatManager::FORCEATTACK:
@@ -1767,7 +1760,7 @@ int CombatManager::getArmorObjectReduction(WeaponObject* weapon, ArmorObject* ar
 	return MAX(0, (int)resist);
 }
 
-int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data) {
+int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data) {
 	float creatureVectorX = attacker->getPositionX();
 	float creatureVectorY = attacker->getPositionY();
 
@@ -1790,7 +1783,6 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 	}
 
 	if (range < 0) {
-		WeaponObject* weapon = attacker->getWeapon();
 		range = weapon->getMaxRange();
 	}
 
@@ -1842,7 +1834,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, TangibleObject* 
 
 			try {
 				if (CollisionManager::checkLineOfSight(object, attacker)) {
-					damage += doTargetCombatAction(attacker, tano, data);
+					damage += doTargetCombatAction(attacker, weapon, tano, data);
 				}
 			} catch (Exception& e) {
 				error(e.getMessage());
