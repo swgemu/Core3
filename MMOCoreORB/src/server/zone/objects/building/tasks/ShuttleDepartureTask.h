@@ -44,7 +44,7 @@ public:
 	}
 
 	int getSecondsRemaining() {
-		int seconds = (int) getNextExecutionTime().miliDifference() / 1000.f * -1;
+		int seconds = (int) (getNextExecutionTime().miliDifference() / 1000.f * -1) + 1;
 
 		return seconds;
 	}
