@@ -118,6 +118,8 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_gen1 = objec
 	attackSpeed = 4.5,
 	
 	defenderToughnessModifiers = { "lightsaber_toughness" },
+
+	noTrade = 1,
 	
 	childObjects = {
 		{templateFile = "object/tangible/inventory/lightsaber_inventory_1.iff", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = 4}

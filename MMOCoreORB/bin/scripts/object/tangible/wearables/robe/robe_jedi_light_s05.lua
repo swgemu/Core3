@@ -67,6 +67,10 @@ object_tangible_wearables_robe_robe_jedi_light_s05 = object_tangible_wearables_r
 				    {"jedi_force_power_max", 250},
 				    {"jedi_force_power_regen", 10}
 				},
+
+
+				noTrade = 1,
+
 				templateType = ROBEOBJECT,
 				objectMenuComponent = {"cpp", "RobeObjectMenuComponent"},
 				skillRequired = "force_rank_light_rank_10",

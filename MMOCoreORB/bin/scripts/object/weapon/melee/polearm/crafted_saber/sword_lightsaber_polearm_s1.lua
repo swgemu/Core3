@@ -96,6 +96,8 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_s1 = object_w
 	damageModifiers = { },
 	
 	defenderToughnessModifiers = { "lightsaber_toughness" },
+
+	noTrade = 1,
 	
 	objectMenuComponent = {"cpp", "LightsaberObjectMenuComponent"},
 
