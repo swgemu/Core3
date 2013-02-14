@@ -2,7 +2,7 @@
 gcwCheckTimer = 7200
 
 --Amount of time in seconds that a base will be vulnerable
-vulnerabilityDuration = 7200  
+vulnerabilityDuration = 10800  
 
 -- Amount of time in seconds between base vulnerabilities.  
 vulnerabilityFrequency = 172800
@@ -17,7 +17,7 @@ totalDNASamples = 44
 
 DNAMatchesRequired = 22
 
--- Amount of time that a base destructino takes after the countdown is initiated
+-- Amount of time in seconds that a base destructino takes after the countdown is initiated
 destructionTimer = 600
 
 -- maximum bases per planet

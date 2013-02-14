@@ -149,28 +149,28 @@ faction_reward_data = {
 
 	imperial_installations = {
 		hq_s01_pvp_imperial = {type=faction_reward_type.installation, display="@deed:hq_s01_pvp_imperial", item="object/tangible/deed/faction_perk/hq/hq_s01_pvp.iff",
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s01_imp_pvp.iff", cost=14000},
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s01_imp_pvp.iff", cost=14000, bonus={"hq_s01_imperial","hq_s01_imperial"} },
 		
 		hq_s01_imperial = {type=faction_reward_type.installation, display="@deed:hq_s01_imperial", item="object/tangible/deed/faction_perk/hq/hq_s01.iff",
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s01_imp.iff", cost=14000},
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s01_imp.iff", cost=7000},
 					
 		hq_s02_pvp_imperial = {type=faction_reward_type.installation, display="@deed:hq_s02_pvp_imperial", item="object/tangible/deed/faction_perk/hq/hq_s02_pvp.iff", 
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s02_imp_pvp.iff", cost=28000},
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s02_imp_pvp.iff", cost=28000, bonus={"hq_s02_imperial","hq_s02_imperial"}},
 			
 		hq_s02_imperial = {type=faction_reward_type.installation, display="@deed:hq_s02_imperial", item="object/tangible/deed/faction_perk/hq/hq_s02.iff", 
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s02_imp.iff", cost=28000},
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s02_imp.iff", cost=14000},
 			
 		hq_s03_pvp_imperial = {type=faction_reward_type.installation, display="@deed:hq_s03_pvp_imperial", item="object/tangible/deed/faction_perk/hq/hq_s03_pvp.iff", 
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s03_imp_pvp.iff", cost=31500},
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s03_imp_pvp.iff", cost=31500, bonus={"hq_s03_imperial","hq_s03_imperial"}},
 
 		hq_s03_imperial = {type=faction_reward_type.installation, display="@deed:hq_s03_imperial", item="object/tangible/deed/faction_perk/hq/hq_s03.iff", 
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s03_imp.iff", cost=31500},
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s03_imp.iff", cost=15750},
 								
 		hq_s04_pvp_imperial = {type=faction_reward_type.installation, display="@deed:hq_s04_pvp_imperial", item="object/tangible/deed/faction_perk/hq/hq_s04_pvp.iff", 
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_imp_pvp.iff", cost=42000},
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_imp_pvp.iff", cost=42000, bonus={"hq_s04_imperial","hq_s04_imperial"}},
 		
 		hq_s04_imperial = {type=faction_reward_type.installation, display="@deed:hq_s04_imperial", item="object/tangible/deed/faction_perk/hq/hq_s04.iff", 
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_imp.iff", cost=42000},
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_imp.iff", cost=21000 },
 				
 		hq_s05_pvp_imperial = {type=faction_reward_type.installation, display="@deed:hq_s05_pvp_imperial", item="object/tangible/deed/faction_perk/hq/hq_s05_pvp.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s05_imp_pvp.iff", cost=1},
@@ -233,28 +233,29 @@ faction_reward_data = {
 	
 	rebel_installations = {
 		hq_s01_pvp_rebel = {type=faction_reward_type.installation, display="@deed:hq_s01_pvp_rebel", item="object/tangible/deed/faction_perk/hq/hq_s01_pvp.iff",
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s01_rebel_pvp.iff", cost=20000},
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s01_rebel_pvp.iff", cost=20000, bonus={"hq_s01_rebel","hq_s01_rebel"} },
 		
 		hq_s01_rebel = {type=faction_reward_type.installation, display="@deed:hq_s01_rebel", item="object/tangible/deed/faction_perk/hq/hq_s01.iff",
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s01_rebel.iff", cost=20000},
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s01_rebel.iff", cost=10000},
 		
 		hq_s02_pvp_rebel = {type=faction_reward_type.installation, display="@deed:hq_s02_pvp_rebel", item="object/tangible/deed/faction_perk/hq/hq_s02_pvp.iff", 
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s02_rebel_pvp.iff", cost=40000},
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s02_rebel_pvp.iff", cost=40000, bonus={"hq_s02_rebel","hq_s02_rebel"} },
 		
 		hq_s02_rebel = {type=faction_reward_type.installation, display="@deed:hq_s02_rebel", item="object/tangible/deed/faction_perk/hq/hq_s02.iff", 
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s02_rebel.iff", cost=40000},
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s02_rebel.iff", cost=20000},
 					
 		hq_s03_pvp_rebel = {type=faction_reward_type.installation, display="@deed:hq_s03_pvp_rebel", item="object/tangible/deed/faction_perk/hq/hq_s03_pvp.iff", 
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s03_rebel_pvp.iff", cost=45000},
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s03_rebel_pvp.iff", cost=45000, bonus={"hq_s03_rebel","hq_s03_rebel"} },
 	
 		hq_s03_rebel = {type=faction_reward_type.installation, display="@deed:hq_s03_rebel", item="object/tangible/deed/faction_perk/hq/hq_s03.iff", 
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s03_rebel.iff", cost=45000},
-						
-		hq_s04_rebel = {type=faction_reward_type.installation, display="@deed:hq_s04_rebel", item="object/tangible/deed/faction_perk/hq/hq_s04.iff", 
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_rebel.iff", cost=60000},
-			
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s03_rebel.iff", cost=22500},
+					
 		hq_s04_pvp_rebel = {type=faction_reward_type.installation, display="@deed:hq_s04_pvp_rebel", item="object/tangible/deed/faction_perk/hq/hq_s04_pvp.iff", 
-			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_rebel_pvp.iff", cost=60000},
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_rebel_pvp.iff", cost=60000, bonus={"hq_s04_rebel","hq_s04_rebel"} },
+							
+		hq_s04_rebel = {type=faction_reward_type.installation, display="@deed:hq_s04_rebel", item="object/tangible/deed/faction_perk/hq/hq_s04.iff", 
+			generatedObjectTemplate="object/building/faction_perk/hq/hq_s04_rebel.iff", cost=30000},
+		
 		
 		hq_s05_pvp_rebel = {type=faction_reward_type.installation, display="@deed:hq_s05_pvp_rebel", item="object/tangible/deed/faction_perk/hq/hq_s05_pvp.iff", 
 			generatedObjectTemplate="object/building/faction_perk/hq/hq_s05_rebel_pvp.iff", cost=60000},

@@ -169,3 +169,24 @@ function rebel_recruiter_handler:getGeneratedObjectTemplate(itemstring)
  	end
  	return nil
 end
+
+function rebel_recruiter_handler:getBonusItems(itemstring)
+	if(self:isInstallation(itemstring)) then
+		if(faction_reward_data.rebel_installations[itemstring].bonus ~= nil) then
+			return faction_reward_data.rebel_installations[itemstring].bonus
+		end
+	end
+	
+	return nil
+end
+
+
+function rebel_recruiter_handler:getBonusItemCount(itemstring)
+	if(self:isInstallation(itemstring)) then
+		if(faction_reward_data.rebel_installations[itemstring].bonus ~= nil) then
+			return #faction_reward_data.rebel_installations[itemstring].bonus
+		end
+	end
+	
+	return 0
+end

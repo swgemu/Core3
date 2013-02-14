@@ -629,47 +629,41 @@ function recruiter_convo_handler:awarditem(player, itemstring)
 			
 				local inventory = LuaSceneObject(pInventory)
 				
-				if (inventory:hasFullContainerObjects()) then
-					--print("inventory is full in awarditem()")
+				local slotsremaining = inventory:getContainerVolumeLimit() - inventory:getContainerObjectsSize()
+				
+				local bonusItemCount = self:getBonusItemCount(itemstring)
+				
+				if (slotsremaining < (1 + bonusItemCount)) then
 					return self.INVENTORYFULL
-				end
-			
+				end	
+				
 				local strTemplatePath = self:getTemplatePath(itemstring)
-				--print("template path is " .. strTemplatePath)
+			
 				if ( strTemplatePath ~= nil ) then
-					pItem = giveItem(pInventory, strTemplatePath, -1)
+					local res =  self:transferItem(player, pInventory, strTemplatePath)
+					if(res ~= self.SUCCESS) then
+						return res
+					end
 				else 
 					return self.TEMPLATEPATHERROR
 				end
+					
+				playerObject:decreaseFactionStanding(self:getRecruiterFactionString(),itemcost)
 				
-				if (pItem ~= nil) then
-				
-					if (self:isInstallation(itemstring)) then
-										
-						local deed = LuaDeed(pItem)
-						local genPath = self:getGeneratedObjectTemplate(itemstring)
-						
-						if (genPath == nil ) then
-							return self.TEMPLATEPATHERROR
-						end
-						
-						deed:setGeneratedObjectTemplate(genPath)
-								
-						local tano = LuaTangibleObject(pItem)
-						if (tano == nil )  then
-							print("unable to get tano.  can't set faction")
-						else
-							tano:setFaction(self:getRecruiterFactionHashCode())
+				if(bonusItemCount) then
+					local bonusItems = self:getBonusItems(itemstring)
+					if(bonusItems ~= nil) then
+						for k, v in pairs(bonusItems) do
+							strTemplate = self:getTemplatePath(v)
+							res = self:transferItem(player, pInventory, strTemplate)
+							if(res ~= self.SUCCESS) then
+								return res
+							end
 						end
 					end
-					
-					local item = LuaSceneObject(pItem)
-					
-					item:sendTo(player)
-					playerObject:decreaseFactionStanding(self:getRecruiterFactionString(),itemcost)
-				else
-					return self.GIVEERROR
-				end
+				end	
+
+				
 			else
 				-- temp message for additional item requisition failure
 				creatureObject:sendSystemMessage("unable to get inventory")
@@ -687,6 +681,42 @@ function recruiter_convo_handler:awarditem(player, itemstring)
 	
 	return self.SUCCESS
 
+end
+
+
+function recruiter_convo_handler:transferItem(player, pInventory, itemstring)
+	--print("giving " .. itemstring)
+	local inventoryObject = LuaSceneObject(pInventory)
+	pItem = giveItem(pInventory, itemstring, -1)
+
+	if (pItem ~= nil) then
+		if (self:isInstallation(itemstring)) then
+										
+			local deed = LuaDeed(pItem)
+			local genPath = self:getGeneratedObjectTemplate(itemstring)
+			
+			if (genPath == nil ) then
+				return self.TEMPLATEPATHERROR
+			end
+						
+			deed:setGeneratedObjectTemplate(genPath)
+			
+			local tano = LuaTangibleObject(pItem)
+			if (tano == nil )  then
+				print("unable to get tano.  can't set faction")
+				else
+				tano:setFaction(self:getRecruiterFactionHashCode())
+			end
+		end
+		
+		local item = LuaSceneObject(pItem)
+		item:sendTo(player)
+
+	else
+		return self.GIVEERROR
+	end
+	
+	return self.SUCCESS
 end
 
 function recruiter_convo_handler:getItemCost(itemstring)
@@ -721,4 +751,12 @@ end
 
 function recruiter_convo_handler:isTerminal(strItem)
 	printf("pure recruiter_convo_handler:isTerminal(strItem)")
+end
+
+function recruiter_convo_handler:getBonusItems(strItem)
+	printf("pure recruiter_convo_handler:getBonusItems(strItem)")
+end
+
+function recruiter_convo_handler:getBonusItemCount(strItem)
+	printf("pure recruiter_convo_handler:getBonusItemCount(strItem)")
 end
