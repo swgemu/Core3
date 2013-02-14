@@ -271,6 +271,8 @@ class GCWManager extends ManagedService implements Logger {
 	
 	private native void refreshExpiredVulnerability(BuildingObject building);
 	
+	public native void initializeNewVulnerability(BuildingObject building);
+
 	private native void initializeNewVulnerability(DestructibleBuildingDataComponent data);
 	
 	private native string refreshDNA(DestructibleBuildingDataComponent data, int chainLength);

@@ -149,17 +149,6 @@ bool GCWBaseContainerComponent::checkPVEPermission(BuildingObject* building, Cre
 	if(baseData == NULL)
 		return false;
 
-	// if the base is not vulnerable.  allow a warrant officer rank of opposite faction enter the base
-	if(!baseData->isVulnerable() && creature->getFaction() >= 9)
-		return true;
-
-	if(!baseData->isVulnerable()){
-		if(sendMessage)
-			creature->sendSystemMessage("Base is not vulnerable.  You must be Warrant Officer I to enter at this time.");
-
-		return false;
-	}
-
 	if(!baseData->hasDefense()){
 		return true;
 	} else{

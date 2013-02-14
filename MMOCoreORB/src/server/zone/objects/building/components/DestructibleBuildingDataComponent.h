@@ -22,7 +22,6 @@ private:
 	String lastDNAString;
 
 	int  intCurrentState; // serialized
-	bool bIsVulnerable;
 	bool terminalDamaged; //serialized
 	bool inRepair; // serialized
 	int  sampleMatches; // serialized
@@ -54,13 +53,11 @@ public:
 	const static int ALIGNED = 7;
 	const static int SHUTDOWNSEQUENCE = 8;
 
-
 	const static int POWERSWITCHCOUNT = 8;
 
 	DestructibleBuildingDataComponent(){
 		this->setLoggingName("DESTOBJ");
 		intCurrentState = INVULNERABLE;
-		bIsVulnerable = false;
 		repairTime = 0;
 		sampleMatches = 0;
 		lastDNAString = "";
@@ -79,6 +76,7 @@ public:
 		exposed = false;
 		terminalDamaged = false;
 		rebootFinishTime = Time(0);
+		dnaProfiles.removeAll();
 	}
 
 	virtual ~DestructibleBuildingDataComponent(){
@@ -99,10 +97,6 @@ public:
 
 	int getState(){
 		return intCurrentState;
-	}
-
-	bool getVulnerability(){
-		return bIsVulnerable;
 	}
 
 	Time getLastVulnerableTime(){
@@ -169,10 +163,6 @@ public:
 
 	void setLastResetTime(Time time){
 		lastResetTime = time;
-	}
-
-	void setVulnerability(bool value){
-		bIsVulnerable = value;
 	}
 
 	void setUplinkBand(int band){

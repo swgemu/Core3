@@ -155,10 +155,8 @@ void GCWManagerImplementation::startVulnerability(BuildingObject* building){
 	}
 
 	Locker block(building);
-
 	baseData->setLastVulnerableTime(baseData->getNextVulnerableTime());
-	this->initializeNewVulnerability(baseData);
-
+	//this->initializeNewVulnerability(baseData);
 	block.release();
 
 	if(!this->dropStartTask(building->getObjectID()))
@@ -168,6 +166,16 @@ void GCWManagerImplementation::startVulnerability(BuildingObject* building){
 	building->broadcastCellPermissions();
 
 
+}
+
+void GCWManagerImplementation::initializeNewVulnerability(BuildingObject* building){
+	Locker _lock(building);
+	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
+	if(baseData == NULL)
+		return;
+
+	initializeNewVulnerability(baseData);
+	_lock.release();
 }
 
 // PRE:  building / objectdatacomponent are locked
@@ -309,12 +317,8 @@ void GCWManagerImplementation::refreshExpiredVulnerability(BuildingObject* build
 			return;
 		}
 
-		baseData->setState(DestructibleBuildingDataComponent::VULNERABLE);
 		this->initializeNewVulnerability(baseData);
-
 		bool wasDropped = gcwStartTasks.drop(building->getObjectID());
-
-		baseData->setState(DestructibleBuildingDataComponent::VULNERABLE);
 
 		/*
 		info("after Chaging data lastStart to      " + baseData->getLastVulnerableTime().getFormattedTime(),true);
@@ -331,7 +335,6 @@ void GCWManagerImplementation::refreshExpiredVulnerability(BuildingObject* build
 	} else{
 		info("Loaded " + String::valueOf(building->getObjectID()) + " while invulnerable between vuln and the next start",true);
 		baseData->setLastVulnerableTime(thisStartTime);
-
 		Time nStartTime(thisStartTime);
 		nStartTime.addMiliTime(vulnerabilityFrequency*1000);
 		baseData->setNextVulnerableTime(nStartTime);
@@ -642,9 +645,8 @@ void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool in
 
 			Locker block(building);
 			this->initializeBaseTimers(building);
-
+			this->initializeNewVulnerability(baseData);
 			block.release();
-
 			this->addBase(building);
 			this->startVulnerability(building);
 
@@ -815,7 +817,7 @@ void GCWManagerImplementation::resetVulnerability(CreatureObject* creature, Buil
 	if(baseData == NULL)
 		return;
 
-	if ( baseData->isVulnerable()){
+	if (isBaseVulnerable(building)){
 		if(creature != NULL)
 			creature->sendSystemMessage("Cannot reset vulnerability while base is vulnerable");
 
@@ -1067,7 +1069,7 @@ void GCWManagerImplementation::sendStatus(BuildingObject* building, CreatureObje
 
 	uint64 dif = 0;
 
-	if( baseData->isVulnerable()) {
+	if(isBaseVulnerable(building)) {
 		dif = baseData->getVulnerabilityEndTime().getTime() - time(0);
 	} else {
 		dif = baseData->getNextVulnerableTime().getTime() - time(0);
@@ -1079,7 +1081,10 @@ void GCWManagerImplementation::sendStatus(BuildingObject* building, CreatureObje
 	dif = dif - (hours*3600);
 	int minutes = ceil(dif/60);
 
-	if(baseData->isVulnerable()){
+	if(!(building->getPvpStatusBitmask() & CreatureFlag::OVERT)) {
+		creature->sendSystemMessage("PvE base is always vulnerable");
+
+	} else if(isBaseVulnerable(building)){
 		creature->sendSystemMessage("Vulnerability ends in " + String::valueOf(hours) + " hours and " + String::valueOf(minutes) + " minutes.");
 		creature->sendSystemMessage("End time " + baseData->getVulnerabilityEndTime().getFormattedTime());
 	} else {
@@ -1136,7 +1141,7 @@ void GCWManagerImplementation::sendJamUplinkMenu(CreatureObject* creature, Build
 	if(ghost==NULL || baseData == NULL)
 		return;
 
-	if(!baseData->isVulnerable())
+	if(!isBaseVulnerable(building))
 	{
 		creature->sendSystemMessage("Cannot jam uplink now");
 		return;
@@ -1221,7 +1226,7 @@ void GCWManagerImplementation::sendResetVerification(CreatureObject* creature, B
 	if(ghost==NULL || baseData == NULL)
 		return;
 
-	if(baseData->isVulnerable()){
+	if(isBaseVulnerable(building)){
 		creature->sendSystemMessage("Cannot reset vulnerability while base is vulnerable");
 		return;
 	}
@@ -1249,7 +1254,7 @@ bool GCWManagerImplementation::isBaseVulnerable(BuildingObject* building){
 		return false;
 	}
 
-	return (baseData->getState() > DestructibleBuildingDataComponent::INVULNERABLE);
+	return (baseData->getState() > DestructibleBuildingDataComponent::INVULNERABLE || !(building->getPvpStatusBitmask() & CreatureFlag::OVERT));
 }
 
 bool GCWManagerImplementation::isBandIdentified(BuildingObject* building) {
@@ -1894,7 +1899,7 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 	if(ghost == NULL)
 		return;
 
-	if(baseData->isVulnerable() && !ghost->isPrivileged() ) {
+	if(isBaseVulnerable(building) && !ghost->isPrivileged() ) {
 		creature->sendSystemMessage("@hq:under_attack"); // You cannot add defenses while the HQ is under attack.
 		return;
 	}

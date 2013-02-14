@@ -10,14 +10,7 @@
 void DestructibleBuildingDataComponent::setState(int state) {
 
 	if ( state >= INVULNERABLE && state <= SHUTDOWNSEQUENCE )
-	{	intCurrentState = state;
-
-		if(state > INVULNERABLE)
-			bIsVulnerable = true;
-		else
-			bIsVulnerable = false;
-
-	}
+		intCurrentState = state;
 }
 
 void DestructibleBuildingDataComponent::initializeTransientMembers(){

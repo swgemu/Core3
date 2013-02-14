@@ -244,6 +244,8 @@ public:
 
 	void scheduleBaseDestruction(BuildingObject* building, CreatureObject* creature);
 
+	void initializeNewVulnerability(BuildingObject* building);
+
 	void notifyInstallationDestruction(InstallationObject* installation);
 
 	void notifyTurretDestruction(BuildingObject* building, InstallationObject* turret);
@@ -513,6 +515,10 @@ private:
 
 	void refreshExpiredVulnerability(BuildingObject* building);
 
+public:
+	void initializeNewVulnerability(BuildingObject* building);
+
+private:
 	void initializeNewVulnerability(DestructibleBuildingDataComponent* data);
 
 	String refreshDNA(DestructibleBuildingDataComponent* data, int chainLength);
@@ -718,6 +724,8 @@ public:
 	bool isPlanetCapped();
 
 	void scheduleBaseDestruction(BuildingObject* building, CreatureObject* creature);
+
+	void initializeNewVulnerability(BuildingObject* building);
 
 	void notifyInstallationDestruction(InstallationObject* installation);
 
