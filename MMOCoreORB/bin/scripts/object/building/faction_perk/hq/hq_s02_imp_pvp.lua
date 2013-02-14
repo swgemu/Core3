@@ -59,6 +59,8 @@ object_building_faction_perk_hq_hq_s02_imp_pvp = object_building_faction_perk_hq
 		alwaysPublic = 1,
 		skillMods = {
 			{"private_medical_rating", 100},
+			{"private_med_wound_health", 100},
+		    {"private_med_wound_action", 100},
 		},
 			childObjects = {
 		
