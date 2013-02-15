@@ -71,6 +71,7 @@ int GCWManagerImplementation::maxBasesPerPlayer = 3;
 int GCWManagerImplementation::bonusXP = 15;
 int GCWManagerImplementation::bonusDiscount = 30;
 VectorMap<String, int> GCWManagerImplementation::baseValue;
+Mutex GCWManagerImplementation::baseMutex;
 
 void GCWManagerImplementation::initialize(){
 	// TODO: initialize things

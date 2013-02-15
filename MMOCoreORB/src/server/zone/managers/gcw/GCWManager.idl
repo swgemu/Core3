@@ -48,7 +48,7 @@ class GCWManager extends ManagedService implements Logger {
 	protected transient VectorMap<unsigned long, Reference<Task> > gcwDestroyTasks;
 	
 	@dereferenced
-	protected transient Mutex baseMutex;
+	protected transient static Mutex baseMutex;
 
 	@dereferenced
 	protected transient static VectorMap<string, int> baseValue;
@@ -396,13 +396,17 @@ class GCWManager extends ManagedService implements Logger {
 	public native void broadcastBuilding(BuildingObject building, @dereferenced StringIdChatParameter params);
 
 	@local
-	public synchronized int getPointValue(final string templateString){
-		return baseValue.get(templateString); 
+	public int getPointValue(final string templateString){
+		synchronized (baseMutex) {
+			return baseValue.get(templateString);
+		}
 	}
 
 	@local
-	public synchronized void addPointValue(final string templateString, int val){
-		baseValue.put(templateString, val); 
+	public void addPointValue(final string templateString, int val){
+		synchronized (baseMutex) {
+			baseValue.put(templateString, val);
+		}
 	}
 }
 
