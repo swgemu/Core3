@@ -74,7 +74,7 @@ public:
 		for (int i = 0; i < 3; i++)
 			mods[System::random(2)] += 0.34f;
 			
-		UnicodeString args = arguments + "healthDamageMultiplier=" + String::valueOf(mods[0]) + ";actionDamageMultiplier=" + String::valueOf(mods[1]) + ";mindDamageMultiplier=" + String::valueOf(mods[2]) + ";";
+		UnicodeString args = "healthDamageMultiplier=" + String::valueOf(mods[0]) + ";actionDamageMultiplier=" + String::valueOf(mods[1]) + ";mindDamageMultiplier=" + String::valueOf(mods[2]) + ";";
 
 		return doCombatAction(creature, target, args);
 	}

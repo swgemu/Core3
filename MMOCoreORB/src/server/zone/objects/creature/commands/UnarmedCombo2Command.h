@@ -79,7 +79,7 @@ public:
 		actionmod /= total;
 		mindmod /= total;
 
-		UnicodeString args = arguments + "healthDamageMultiplier=" + String::valueOf(healthmod) + ";actionDamageMultiplier=" + String::valueOf(actionmod) + ";mindDamageMultiplier=" + String::valueOf(mindmod) + ";";
+		UnicodeString args = "healthDamageMultiplier=" + String::valueOf(healthmod) + ";actionDamageMultiplier=" + String::valueOf(actionmod) + ";mindDamageMultiplier=" + String::valueOf(mindmod) + ";";
 
 		return doCombatAction(creature, target, args);
 	}

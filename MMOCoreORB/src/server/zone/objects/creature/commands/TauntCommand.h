@@ -73,7 +73,7 @@ public:
 		if (targetCreature == NULL)
 			return INVALIDTARGET;
 
-		int res = doCombatAction(creature, target, arguments);
+		int res = doCombatAction(creature, target);
 
 		CombatManager* combatManager = CombatManager::instance();
 

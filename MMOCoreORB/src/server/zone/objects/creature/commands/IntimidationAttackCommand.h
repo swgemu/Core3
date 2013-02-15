@@ -62,6 +62,9 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (!creature->isAiAgent())
+			return GENERALERROR;
+
 		return doCombatAction(creature, target, arguments);
 	}
 
