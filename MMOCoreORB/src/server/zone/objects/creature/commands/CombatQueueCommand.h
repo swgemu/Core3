@@ -130,7 +130,7 @@ public:
 		trails = CombatManager::DEFAULTTRAIL;
 	}
 
-	int doCombatAction(CreatureObject* creature, const uint64& target, const UnicodeString& arguments = "") {
+	int doCombatAction(CreatureObject* creature, const uint64& target, const UnicodeString& arguments = "", ManagedReference<WeaponObject*> weapon = NULL) {
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 		PlayerManager* playerManager = server->getPlayerManager();
 
@@ -139,27 +139,14 @@ public:
 
 		float checkRange = range;
 
-		StringTokenizer tokenizer(arguments.toString());
-		uint64 argId = 0;
-
-		if (!(creature->isAiAgent())) {
-			if (tokenizer.hasMoreTokens()) {
-				argId = tokenizer.getLongToken();
+		if (weapon == NULL) {
+			if(creature->getWeapon() == NULL) {
+				return GENERALERROR;
+			}
+			else {
+				weapon = creature->getWeapon();
 			}
 		}
-
-		ManagedReference<WeaponObject*> weapon;
-
-		if (!argId == 0) {
-			SceneObject* argo = server->getZoneServer()->getObject(argId);
-			if (argo->isWeaponObject())
-				weapon = cast<WeaponObject*>(argo);
-		} else {
-			weapon = creature->getWeapon();
-		}
-
-		if (weapon == NULL)
-			return GENERALERROR;
 
 		if (checkRange == -1) {
 			checkRange = weapon->getMaxRange();
