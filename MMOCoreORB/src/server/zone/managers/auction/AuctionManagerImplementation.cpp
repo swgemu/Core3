@@ -1371,6 +1371,12 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 		// Someone won the auction
 		ManagedReference<CreatureObject*> buyer = pman->getPlayer(item->getBidderName());
 
+		if (buyer == NULL) {
+			locker.release();
+			expireBidAuction(item);
+			return;
+		}
+
 		item->setStatus(AuctionItem::SOLD);
 		updateAuctionOwner(item, buyer);
 
