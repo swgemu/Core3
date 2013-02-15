@@ -46,6 +46,7 @@ namespace scene {
 		int getDistanceTo(lua_State* L);
 		int getContainerObject(lua_State* L);
 		int getContainerObjectsSize(lua_State* L);
+		int getContainerVolumeLimit(lua_State* L);
 		int getSlottedObject(lua_State* L);
 		int transferObject(lua_State* L);
 		//int removeObject(lua_State* L);

@@ -34,6 +34,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "getContainerObject", &LuaSceneObject::getContainerObject },
 		{ "hasFullContainerObjects", &LuaSceneObject::hasFullContainerObjects },
 		{ "getContainerObjectsSize", &LuaSceneObject::getContainerObjectsSize },
+		{ "getContainerVolumeLimit", &LuaSceneObject::getContainerVolumeLimit },
 		{ "getSlottedObject", &LuaSceneObject::getSlottedObject },
 		{ "transferObject", &LuaSceneObject::transferObject },
 //		{ "removeObject", &LuaSceneObject::removeObject },
@@ -354,6 +355,15 @@ int LuaSceneObject::getContainerObjectsSize(lua_State* L) {
 
 	return 1;
 }
+
+int LuaSceneObject::getContainerVolumeLimit(lua_State* L) {
+	int num = realObject->getContainerVolumeLimit();
+
+	lua_pushnumber(L, num);
+
+	return 1;
+}
+
 
 int LuaSceneObject::hasFullContainerObjects(lua_State* L) {
 	bool full = realObject->hasFullContainerObjects();
