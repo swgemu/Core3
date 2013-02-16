@@ -100,7 +100,7 @@ object_building_faction_perk_hq_hq_s01_rebel = object_building_faction_perk_hq_s
 			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=17, z=0, y=9,  ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1}, 
 			
 			--minefield
-			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=0, z=0, y=17,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
+			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=0, z=0, y=12,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 
 			
 			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-1.5, z=0, y=-1.8, ow=.7, ox=0, oz=0, oy=.7, cellid=3, containmentType=-1},
 			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-1.5, z=0, y=-.5, ow=.7, ox=0, oz=0, oy=.7, cellid=3, containmentType=-1},
@@ -110,19 +110,33 @@ object_building_faction_perk_hq_hq_s01_rebel = object_building_faction_perk_hq_s
 		
 		
 			 {templateFile = "object/tangible/terminal/terminal_hq_rebel.iff", x = 0, z = 0, y = -6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 3, containmentType = -1 },
-						 
-			{templateFile = "object/tangible/hq_destructible/uplink_terminal.iff", x = 4, z = 0, y = -5.5, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 5, containmentType = -1 },
- 			{templateFile = "object/tangible/hq_destructible/uplink_terminal.iff", x = 4, z = 0, y = -5.5, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 5, containmentType = -1 },
-			{templateFile = "object/tangible/hq_destructible/security_terminal.iff", x = -4, z = 0, y = -6, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 6, containmentType = -1 },
+ 			{templateFile = "object/tangible/hq_destructible/uplink_terminal.iff", x = 4, z = 0, y = -5.8, ox = 0, oy = 0, oz = 0, ow = 1, cellid = 5, containmentType = -1 },
+			{templateFile = "object/tangible/hq_destructible/security_terminal.iff", x = 3.8, z = 0, y = -0.8, ox = 0, oy = 1, oz = 0, ow = 1, cellid = 4, containmentType = -1 },
 			{templateFile = "object/tangible/hq_destructible/power_regulator.iff", x = -4, z = 0, y = -.5, ox = 0, oy = 1, oz = 0, ow = 0, cellid = 6, containmentType = -1 },
 			{templateFile = "object/tangible/hq_destructible/override_terminal.iff", x = 1, z = 0, y = -1, ow =-.685, ox =0, oz = 0, oy =.728, cellid = 3, containmentType = -1},
 			},
 
 		childCreatureObjects = {
-		 	 { mobile="specforce_marine", x=10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 	 { mobile="specforce_heavy_weapons_specialist", x=15, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
-			  { mobile="specforce_marine", x=-10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 	 { mobile="specforce_heavy_weapons_specialist", x=-15, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+		 	{ mobile="specforce_marine", x=10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+		 	{ mobile="specforce_heavy_weapons_specialist", x=15, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_sergeant", x=20, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_medic", x=10, z=0, y=36, cellid=-1, respawn=300, containmentType=-1, heading=0},
+		 	{ mobile="rebel_commando", x=15, z=0, y=36, cellid=-1, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_trooper", x=20, z=0, y=36, cellid=-1, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_trooper", x=10, z=0, y=32, cellid=-1, respawn=300, containmentType=-1, heading=0},
+		 	{ mobile="rebel_trooper", x=15, z=0, y=32, cellid=-1, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_trooper", x=20, z=0, y=32, cellid=-1, respawn=300, containmentType=-1, heading=0},
+			{ mobile="specforce_marine", x=-10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+		 	{ mobile="specforce_heavy_weapons_specialist", x=-15, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_sergeant", x=-20, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_medic", x=-10, z=0, y=36, cellid=-1, respawn=300, containmentType=-1, heading=0},
+		 	{ mobile="rebel_commando", x=-15, z=0, y=36, cellid=-1, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_trooper", x=-20, z=0, y=36, cellid=-1, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_trooper", x=-10, z=0, y=32, cellid=-1, respawn=300, containmentType=-1, heading=0},
+		 	{ mobile="rebel_trooper", x=-15, z=0, y=32, cellid=-1, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_trooper", x=-20, z=0, y=32, cellid=-1, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_first_lieutenant", x=3.6, z=0, y=1.8, cellid=4, respawn=300, containmentType=-1, heading=0}, 
+			{ mobile="rebel_medic", x=-3.8, z=0, y=-2.3, cellid=6, respawn=300, containmentType=-1, heading=0},
 			{ mobile="rebel_recruiter", x=-1, z=0, y=-5.5, cellid=3, containmentType=-1, respawn=60, heading=0},
 		},
 
