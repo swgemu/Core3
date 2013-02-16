@@ -12,6 +12,7 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 class PlayerInfoCommand {
 public:
@@ -19,10 +20,19 @@ public:
 		if (!creature->getPlayerObject()->isPrivileged())
 			return 1;
 
-		CreatureObject* targetObject = cast<CreatureObject*>(creature->getZoneServer()->getObject(creature->getTargetID()));
+		ManagedReference<CreatureObject*> targetObject;
 
-		if (targetObject == NULL || !targetObject->isPlayerCreature())
+		if (!arguments.isEmpty()) {
+			ManagedReference<PlayerManager*> playerManager = creature->getZoneServer()->getPlayerManager();
+
+			targetObject = playerManager->getPlayer(arguments.toString());
+		} else {
+			targetObject = cast<CreatureObject*>(creature->getZoneServer()->getObject(creature->getTargetID()));
+		}
+
+		if (targetObject == NULL || !targetObject->isPlayerCreature()) {
 			targetObject = creature;
+		}
 
 		Locker locker(targetObject, creature);
 
@@ -81,6 +91,18 @@ public:
 			}
 		}
 
+		ManagedReference<SceneObject*> inventory = targetObject->getSlottedObject("inventory");
+		ManagedReference<SceneObject*> bank = targetObject->getSlottedObject("bank");
+		ManagedReference<SceneObject*> datapad = targetObject->getSlottedObject("datapad");
+
+		promptText << "Inventory: " << (inventory == NULL ? "NULL" : inventory->getObjectID());
+		promptText << endl;
+
+		promptText << "Bank: " << (bank == NULL ? "NULL" : bank->getObjectID());
+		promptText << endl;
+
+		promptText << "Datapad: " << (datapad == NULL ? "NULL" : datapad->getObjectID());
+		promptText << endl;
 
 
 		box->setPromptText(promptText.toString());
