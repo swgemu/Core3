@@ -220,9 +220,12 @@ private:
 
 		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 
+		if (inventory == NULL)
+			return tickets;
+
 		int totalObjects = inventory->getContainerObjectsSize();
 
-		if (inventory == NULL || totalObjects <= 0)
+		if (totalObjects <= 0)
 			return tickets;
 
 		for (int i = 0; i < totalObjects; ++i) {

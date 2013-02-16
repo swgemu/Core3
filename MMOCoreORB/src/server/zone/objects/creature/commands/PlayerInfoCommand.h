@@ -24,6 +24,8 @@ public:
 		if (targetObject == NULL || !targetObject->isPlayerCreature())
 			targetObject = creature;
 
+		Locker locker(targetObject, creature);
+
 		PlayerObject* ghost = targetObject->getPlayerObject();
 
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, 0);
@@ -78,6 +80,8 @@ public:
 				promptText << "@skl_n:" + stringKey << endl;
 			}
 		}
+
+
 
 		box->setPromptText(promptText.toString());
 

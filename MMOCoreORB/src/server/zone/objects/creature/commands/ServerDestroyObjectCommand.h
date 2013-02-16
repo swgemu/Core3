@@ -101,23 +101,13 @@ public:
 		if (objectParent != NULL && !objectParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT))
 			return GENERALERROR;
 
-		/*SceneObject* inventory = creature->getSlottedObject("inventory");
-		SceneObject* datapad = creature->getSlottedObject("datapad");
-		SceneObject* bank = creature->getSlottedObject("bank");
+		for (int i = 0; i < object->getArrangementDescriptorSize(); ++i) {
+			String descriptor = object->getArrangementDescriptor(i);
 
-		if (object->isASubChildOf(inventory) || object->isASubChildOf(datapad) || object->isASubChildOf(bank)) {
-			destroyObject(object, creature);
-		} else if (object->isASubChildOf(creature)) {
-			for (int i = 0; i < object->getArrangementDescriptorSize(); ++i) {
-				String descriptor = object->getArrangementDescriptor(i);
-
-				if (descriptor == "inventory" || descriptor == "datapad" || descriptor == "default_weapon"
-						|| descriptor == "mission_bag" || descriptor == "ghost" || descriptor == "bank" || descriptor == "hair")
-					return GENERALERROR;
-			}
-
-			destroyObject(object, creature);
-		} */
+			if (descriptor == "inventory" || descriptor == "datapad" || descriptor == "default_weapon"
+					|| descriptor == "mission_bag" || descriptor == "ghost" || descriptor == "bank" || descriptor == "hair")
+				return GENERALERROR;
+		}
 
 		if (object->isASubChildOf(creature))
 			destroyObject(object, creature);

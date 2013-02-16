@@ -106,6 +106,14 @@ public:
 		if (!objectToTransfer->isVendor() && !objectsParent->checkContainerPermission(creature, ContainerPermissions::MOVEOUT))
 			return GENERALERROR;
 
+		for (int i = 0; i < objectToTransfer->getArrangementDescriptorSize(); ++i) {
+			String descriptor = objectToTransfer->getArrangementDescriptor(i);
+
+			if (descriptor == "inventory" || descriptor == "datapad" || descriptor == "default_weapon"
+					|| descriptor == "mission_bag" || descriptor == "ghost" || descriptor == "bank" || descriptor == "hair")
+				return GENERALERROR;
+		}
+
 		Zone* zoneObject = objectToTransfer->getZone();
 
 		if (zoneObject != NULL) {
