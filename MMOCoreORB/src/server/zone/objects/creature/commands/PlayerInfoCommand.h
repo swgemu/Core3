@@ -46,6 +46,7 @@ public:
 		SkillModList* skillModList = targetObject->getSkillModList();
 
 		StringBuffer promptText;
+		promptText << "ObjectID: " << targetObject->getObjectID() << endl;
 		promptText << "SkillMods:" << endl;
 		promptText << skillModList->getPrintableSkillModList() << endl;
 
