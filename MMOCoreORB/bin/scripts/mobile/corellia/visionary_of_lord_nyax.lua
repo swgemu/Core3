@@ -21,7 +21,7 @@ visionary_of_lord_nyax = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -35,7 +35,7 @@ visionary_of_lord_nyax = Creature:new {
 				{group = "junk", chance = 7000000},
 				{group = "pistols", chance = 1000000},
 				{group = "rifles", chance = 1000000},
-                {group = "carbines", chance = 1000000}
+               			{group = "carbines", chance = 1000000}
 			},
 			lootChance = 3200000
 		}	
