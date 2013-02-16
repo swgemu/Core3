@@ -96,13 +96,13 @@ public:
 		ManagedReference<SceneObject*> bank = targetObject->getSlottedObject("bank");
 		ManagedReference<SceneObject*> datapad = targetObject->getSlottedObject("datapad");
 
-		promptText << "Inventory: " << (inventory == NULL ? "NULL" : inventory->getObjectID());
+		promptText << "Inventory: " << (inventory == NULL ? String("NULL") : String::valueOf(inventory->getObjectID()));
 		promptText << endl;
 
-		promptText << "Bank: " << (bank == NULL ? "NULL" : bank->getObjectID());
+		promptText << "Bank: " << (bank == NULL ? String("NULL") : String::valueOf(bank->getObjectID()));
 		promptText << endl;
 
-		promptText << "Datapad: " << (datapad == NULL ? "NULL" : datapad->getObjectID());
+		promptText << "Datapad: " << (datapad == NULL ? String("NULL") : String::valueOf(datapad->getObjectID()));
 		promptText << endl;
 
 
