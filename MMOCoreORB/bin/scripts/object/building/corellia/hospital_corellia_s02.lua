@@ -48,7 +48,8 @@ object_building_corellia_hospital_corellia_s02 = object_building_corellia_shared
 		{"private_med_wound_action", 100}
 	},
 
-	planetMapCateogry = "medicalcenter"
+	planetMapCategory = "medicalcenter"
+	
 }
 
 ObjectTemplates:addTemplate(object_building_corellia_hospital_corellia_s02, "object/building/corellia/hospital_corellia_s02.iff")
