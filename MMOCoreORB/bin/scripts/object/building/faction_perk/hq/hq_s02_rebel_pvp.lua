@@ -125,10 +125,6 @@ object_building_faction_perk_hq_hq_s02_rebel_pvp = object_building_faction_perk_
 
 		
 		childCreatureObjects = {
-		 	{ mobile="specforce_marine", x=10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 	{ mobile="specforce_marine", x=15, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 	{ mobile="specforce_marine", x=-10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 	{ mobile="specforce_marine", x=-15, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
 			{ mobile="specforce_heavy_weapons_specialist", x=2.5, z=-6.75, y=-16.5, cellid=6, respawn=300, containmentType=-1, heading=0},
 			{ mobile="specforce_heavy_weapons_specialist", x=8, z=-6.75, y=-6, cellid=7, respawn=300, containmentType=-1, heading=0},
 			{ mobile="specforce_heavy_weapons_specialist", x=-6, z=-13.75, y=-3, cellid=10, respawn=300, containmentType=-1, heading=0},
