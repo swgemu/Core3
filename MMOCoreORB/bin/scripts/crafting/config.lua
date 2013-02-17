@@ -1348,6 +1348,7 @@ schematics = {
 {path="object/draft_schematic/spices/spice_yarrock.iff"},
 {path="object/draft_schematic/spices/spice_giggledust.iff"},
 {path="object/draft_schematic/spices/spice_sweetblossom.iff"},
+
 {path="object/draft_schematic/spices/spice_droid_lube.iff"},
 {path="object/draft_schematic/spices/spice_pyrepenol.iff"},
 {path="object/draft_schematic/spices/spice_sedative_h4b.iff"},
@@ -1753,4 +1754,5 @@ schematics = {
 {path="object/draft_schematic/weapon/component/reinforcement_core_geo.iff"},
 {path="object/draft_schematic/weapon/component/sword_core_geo.iff"},
 {path="object/draft_schematic/armor/shield_generator_personal_imperial_test.iff"},
+{path="object/draft_schematic/weapon/component/chemical_dispersion_mechanism_advanced.iff"},
 };
