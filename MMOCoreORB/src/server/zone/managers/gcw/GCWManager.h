@@ -252,8 +252,6 @@ public:
 
 	void notifyMinefieldDestruction(BuildingObject* building, InstallationObject* turret);
 
-	void sendSelectTurretToDonate(BuildingObject* building, CreatureObject* creature);
-
 	void sendSelectDeedToDonate(BuildingObject* building, CreatureObject* creature, int turretIndex);
 
 	void sendRemoveDefenseConfirmation(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID);
@@ -344,7 +342,7 @@ protected:
 
 	VectorMap<unsigned long long, Reference<Task*> > gcwDestroyTasks;
 
-	Mutex baseMutex;
+	static Mutex baseMutex;
 
 	static VectorMap<String, int> baseValue;
 
@@ -534,8 +532,6 @@ private:
 	void destroyStandaloneTurret(InstallationObject* turret);
 
 public:
-	void sendSelectTurretToDonate(BuildingObject* building, CreatureObject* creature);
-
 	void sendSelectDeedToDonate(BuildingObject* building, CreatureObject* creature, int turretIndex);
 
 	void sendRemoveDefenseConfirmation(BuildingObject* building, CreatureObject* creature, unsigned long long deedOID);
@@ -732,8 +728,6 @@ public:
 	void notifyTurretDestruction(BuildingObject* building, InstallationObject* turret);
 
 	void notifyMinefieldDestruction(BuildingObject* building, InstallationObject* turret);
-
-	void sendSelectTurretToDonate(BuildingObject* building, CreatureObject* creature);
 
 	void sendSelectDeedToDonate(BuildingObject* building, CreatureObject* creature, int turretIndex);
 

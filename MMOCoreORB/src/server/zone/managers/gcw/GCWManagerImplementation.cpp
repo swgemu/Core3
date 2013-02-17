@@ -973,7 +973,8 @@ void GCWManagerImplementation::generateTurretControlBoxTo(CreatureObject* creatu
 	status->setCallback(new TurretControlSuiCallback(zone->getZoneServer(), turret,terminal));
 	status->setOtherButton(true,"@ui:refresh"); // refresh
 	status->setOkButton(true,"@hq:btn_attack"); // Attack
-
+	status->setUsingObject(terminal);
+	status->setForceCloseDistance(5);
 	StringIdChatParameter params;
 	params.setStringId(("@hq:attack_targets")); // Turret is now attacking %TO.");
 	StringBuffer msg;
@@ -1934,47 +1935,6 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 	ghost->addSuiBox(donate);
 	creature->sendMessage(donate->generateMessage());
 
-}
-
-void GCWManagerImplementation::sendSelectTurretToDonate(BuildingObject* building, CreatureObject* creature){
-	if(creature == NULL)
-		return;
-
-	ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
-	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
-
-	if(ghost==NULL || baseData == NULL)
-		return;
-
-
-	if(ghost->hasSuiBoxWindowType(SuiWindowType::HQ_TERMINAL))
-		ghost->closeSuiWindowType(SuiWindowType::HQ_TERMINAL);
-
-	ManagedReference<SceneObject*> inv = creature->getSlottedObject("inventory");
-
-	ManagedReference<SuiListBox*> donate = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
-	donate->setPromptTitle("TURRET SELECT");
-	donate->setPromptText("SELECT TURRET");
-	donate->setUsingObject(building);
-	donate->setOkButton(true, "@select");
-	donate->setCancelButton(true, "@cancel");
-	donate->setCallback( new SelectTurretDonationSuiCallback(zone->getZoneServer()));
-
-	ZoneServer* zoneServer = zone->getZoneServer();
-	if(zoneServer != NULL){
-
-		for(int i = 0; i < baseData->getTotalTurretCount();++i){
-			ManagedReference<SceneObject*> sceno = zoneServer->getObject(baseData->getTurretID(i));
-			if(sceno != NULL && sceno->isTurret()) {
-				donate->addMenuItem("Turret " + String::valueOf(i+1) + " : " + sceno->getDisplayedName());
-			} else {
-				donate->addMenuItem("Turret " + String::valueOf(i+1) + ": EMPTY");
-			}
-
-		}
-	}
-	ghost->addSuiBox(donate);
-	creature->sendMessage(donate->generateMessage());
 }
 
 void GCWManagerImplementation::sendRemoveDefenseConfirmation(BuildingObject* building, CreatureObject* creature, uint64 deedOID){
