@@ -24,7 +24,7 @@ protected:
 	SharedInstallationObjectTemplate* templateData;
 	ManagedReference<CreatureObject*> controller;
 	ManagedReference<CreatureObject*> manualTarget;
-	Task* manualFireTask;
+	Reference<Task*> manualFireTask;
 
 public:
 	TurretDataComponent() {

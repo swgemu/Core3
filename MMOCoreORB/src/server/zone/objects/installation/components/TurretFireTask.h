@@ -48,11 +48,16 @@ public:
 				CombatQueueCommand* combatCommand = cast<CombatQueueCommand*>(command);
 				if(combatCommand != NULL){
 					WeaponObject* weapon = cast<WeaponObject*>(sceneObject->getSlottedObject("hold_r"));
-					TangibleObject* defenderObject = cast<TangibleObject*>(target.get());
 
-					CombatManager::instance()->doCombatAction(sceneObject, weapon, defenderObject, combatCommand);
-					turretData->updateAutoCooldown(weapon->getAttackSpeed());
-					turretData->updateManualCooldown(weapon->getAttackSpeed());
+					if (weapon != NULL) {
+						TangibleObject* defenderObject = cast<TangibleObject*>(target.get());
+
+						CombatManager::instance()->doCombatAction(sceneObject, weapon, defenderObject, combatCommand);
+						turretData->updateAutoCooldown(weapon->getAttackSpeed());
+						turretData->updateManualCooldown(weapon->getAttackSpeed());
+					} else {
+						sceneObject->error("null weapon in TurretFireTask for " + sceneObject->getObjectTemplate()->getTemplateFileName());
+					}
 
 					if(turretData->getController() != NULL){
 						PlayerObject* ghost = turretData->getController()->getPlayerObject();
