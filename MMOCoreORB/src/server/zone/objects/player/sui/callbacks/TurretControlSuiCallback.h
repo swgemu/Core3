@@ -70,7 +70,7 @@ public:
 
 		uint64 targetID = listBox->getMenuObjectID(index);
 		ManagedReference<SceneObject*> target = server->getObject(targetID);
-		if(!target->isCreatureObject())
+		if(target == NULL || !target->isCreatureObject())
 			return;
 
 		CreatureObject* targetCreature = cast<CreatureObject*>(target.get());
