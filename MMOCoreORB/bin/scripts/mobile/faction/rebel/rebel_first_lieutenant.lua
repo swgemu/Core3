@@ -40,8 +40,8 @@ rebel_first_lieutenant = Creature:new {
 				{group = "junk", chance = 5700000},
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
-                {group = "melee_weapons", chance = 1000000},
-                {group = "carbines", chance = 1000000},
+                		{group = "melee_weapons", chance = 1000000},
+                		{group = "carbines", chance = 1000000},
 				{group = "clothing_attachments", chance = 100000},
 				{group = "armor_attachments", chance = 100000}
 			},

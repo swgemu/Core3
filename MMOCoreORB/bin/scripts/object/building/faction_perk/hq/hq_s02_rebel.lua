@@ -105,7 +105,7 @@ object_building_faction_perk_hq_hq_s02_rebel = object_building_faction_perk_hq_s
 			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=11, z=0, y=33, ox=0, oy=-0,  oz=0, ow=1, cellid=-1, containmentType=-1}, -- left turret front
 			{templateFile = "object/installation/faction_perk/turret/tower_lg.iff", x=-11, z=0, y=33,  ox=0, oy=0, oz=0, ow=1, cellid=-1, containmentType=-1}, 
 
-			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=0, z=0, y=20,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 	
+			{templateFile = "object/installation/faction_perk/minefield/field_1x1.iff", x=0, z=0, y=26,  ox=0, oy=.7, oz=0, ow=.7, cellid=-1, containmentType=-1}, 	
 			
 			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-4.75, z=.25, y=1, ow=.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
 			{templateFile = "object/tangible/terminal/terminal_hq_turret_control.iff", x=-4.75, z=.25, y=-.5, ow=.7, ox=0, oz=0, oy=.7, cellid=2, containmentType=-1},
@@ -126,14 +126,47 @@ object_building_faction_perk_hq_hq_s02_rebel = object_building_faction_perk_hq_s
 
 		
 		childCreatureObjects = {
-		 	{ mobile="specforce_marine", x=10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 	{ mobile="specforce_marine", x=15, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 	{ mobile="specforce_marine", x=-10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 	{ mobile="specforce_marine", x=-15, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
-			{ mobile="specforce_heavy_weapons_specialist", x=2.5, z=-6.75, y=-16.5, cellid=6, respawn=300, containmentType=-1, heading=0},
+			{ mobile="specforce_marine", x=0, z=0, y=64, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="rebel_specforce_pathfinder", x=5, z=0, y=64, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="specforce_heavy_weapons_specialist", x=-5, z=0, y=64, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="specforce_heavy_weapons_specialist", x=0, z=0, y=60, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="specforce_marine", x=5, z=0, y=60, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="specforce_heavy_weapons_specialist", x=-5, z=0, y=60, cellid=-1, respawn=360, containmentType=-1, heading=0},
+					 	
+			{ mobile="rebel_trooper", x=-20, z=0, y=50, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="rebel_trooper", x=-25, z=0, y=50, cellid=-1, respawn=360, containmentType=-1, heading=0},
+		 	{ mobile="rebel_trooper", x=-30, z=0, y=50, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="rebel_commando", x=-20, z=0, y=46, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="rebel_medic", x=-25, z=0, y=46, cellid=-1, respawn=360, containmentType=-1, heading=0},
+		 	{ mobile="rebel_sergeant", x=-30, z=0, y=46, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="rebel_trooper", x=-20, z=0, y=42, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="rebel_trooper", x=-25, z=0, y=42, cellid=-1, respawn=360, containmentType=-1, heading=0},
+		 	{ mobile="rebel_trooper", x=-30, z=0, y=42, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			
+			{ mobile="rebel_trooper", x=20, z=0, y=50, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="rebel_trooper", x=25, z=0, y=50, cellid=-1, respawn=360, containmentType=-1, heading=0},
+		 	{ mobile="rebel_trooper", x=30, z=0, y=50, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="rebel_commando", x=20, z=0, y=46, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="rebel_medic", x=25, z=0, y=46, cellid=-1, respawn=360, containmentType=-1, heading=0},
+		 	{ mobile="rebel_sergeant", x=30, z=0, y=46, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="rebel_trooper", x=20, z=0, y=42, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="rebel_trooper", x=25, z=0, y=42, cellid=-1, respawn=360, containmentType=-1, heading=0},
+		 	{ mobile="rebel_trooper", x=30, z=0, y=42, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			
+			{ mobile="rebel_specforce_pathfinder", x=-3.5, z=0, y=-3.9, cellid=2, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_sergeant", x=2.9, z=0, y=-4.1, cellid=3, respawn=300, containmentType=-1, heading=0},
+			{ mobile="specforce_heavy_weapons_specialist", x=-1, z=-6.75, y=-6.5, cellid=5, respawn=300, containmentType=-1, heading=0},
+			{ mobile="specforce_marine", x=-4.5, z=-6.75, y=-3.4, cellid=5, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_medic", x=-2.3, z=-6.75, y=-16.5, cellid=6, respawn=300, containmentType=-1, heading=0},
+			{ mobile="specforce_heavy_weapons_specialist", x=7.2, z=-6.75, y=-14.5, cellid=6, respawn=300, containmentType=-1, heading=0},
+			{ mobile="specforce_marine", x=2.5, z=-6.75, y=-16.5, cellid=6, respawn=300, containmentType=-1, heading=0},
 			{ mobile="specforce_heavy_weapons_specialist", x=8, z=-6.75, y=-6, cellid=7, respawn=300, containmentType=-1, heading=0},
-			{ mobile="specforce_heavy_weapons_specialist", x=-6, z=-13.75, y=-3, cellid=10, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_first_lieutenant", x=3, z=-6.75, y=-1.8, cellid=7, respawn=300, containmentType=-1, heading=0},
+			{ mobile="specforce_marine", x=-5.5, z=-13.75, y=-3, cellid=9, respawn=300, containmentType=-1, heading=0},
 			{ mobile="specforce_heavy_weapons_specialist", x=.5, z=-13.75, y=-3 ,cellid=9, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_medic", x=.5, z=-13.75, y=-7.2, cellid=9, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_medic", x=-5.5, z=-13.75, y=-7.2 ,cellid=9, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_army_captain", x=-4.1, z=-13.75, y=-17.3 ,cellid=9, respawn=300, containmentType=-1, heading=0},
 			{ mobile="rebel_recruiter", x=0, z=-13.75, y=-17, cellid=9, containmentType=-1, respawn=60, heading=0},
 		},
 
