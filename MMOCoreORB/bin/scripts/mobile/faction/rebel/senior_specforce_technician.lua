@@ -26,7 +26,12 @@ senior_specforce_technician = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_rebel_specforce_guerilla_human_male_01.iff",
+	             "object/mobile/dressed_rebel_specforce_guerilla_moncal_male_01.iff",
+	             "object/mobile/dressed_rebel_specforce_guerrilla_human_female_01.iff",
+	             "object/mobile/dressed_rebel_specforce_guerrilla_rodian_female_01.iff",
+	             "object/mobile/dressed_rebel_specforce_guerrilla_rodian_male_01.iff",
+	             "object/mobile/dressed_rebel_specforce_guerrilla_zabrak_female_01.iff",},
 	lootGroups = {
 		{
 	        groups = {
@@ -44,7 +49,7 @@ senior_specforce_technician = Creature:new {
 	},
 	weapons = {"imperial_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(senior_specforce_technician, "senior_specforce_technician")

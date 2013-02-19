@@ -46,8 +46,8 @@ senior_specforce_heavy_weapons_specialist = Creature:new {
 			lootChance = 3000000
 		}	
 	},
-	weapons = {"imperial_weapons_medium"},
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	weapons = {"rebel_weapons_heavy"},
+	attacks = merge(commandomaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(senior_specforce_heavy_weapons_specialist, "senior_specforce_heavy_weapons_specialist")

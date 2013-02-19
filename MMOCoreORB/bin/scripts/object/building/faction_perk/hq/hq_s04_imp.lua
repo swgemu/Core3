@@ -136,34 +136,70 @@ object_building_faction_perk_hq_hq_s04_imp = object_building_faction_perk_hq_sha
 		},
 		
 		childCreatureObjects = {
-		 	 { mobile="at_st", x=10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 			
-			 { mobile="dark_trooper", x=-0, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
-			
-			{ mobile="at_st", x=-10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+		 	{ mobile="at_st", x=30, z=0, y=18, cellid=-1, respawn=720, containmentType=-1, heading=3.14},			
+			{ mobile="at_st", x=-30, z=0, y=18, cellid=-1, respawn=720, containmentType=-1, heading=0},
+			{ mobile="at_st", x=0, z=0, y=44, cellid=-1, respawn=720, containmentType=-1, heading=0},
 				 	 
-		 	{ mobile="dark_trooper", x=10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 	{ mobile="dark_trooper", x=-10, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		
+		 	{ mobile="dark_trooper", x=22, z=0, y=2, cellid=-1, respawn=360, containmentType=-1, heading=0},
+		 	{ mobile="dark_trooper", x=22, z=0, y=6, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="dark_trooper", x=24, z=0, y=4, cellid=-1, respawn=360, containmentType=-1, heading=0},		 	
+		 	{ mobile="dark_trooper", x=26, z=0, y=2, cellid=-1, respawn=360, containmentType=-1, heading=0},
+		 	{ mobile="dark_trooper", x=26, z=0, y=6, cellid=-1, respawn=360, containmentType=-1, heading=0},
+
+			{ mobile="dark_trooper", x=-22, z=0, y=2, cellid=-1, respawn=360, containmentType=-1, heading=0},
+		 	{ mobile="dark_trooper", x=-22, z=0, y=6, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="dark_trooper", x=-24, z=0, y=4, cellid=-1, respawn=360, containmentType=-1, heading=0},		 	
+		 	{ mobile="dark_trooper", x=-26, z=0, y=2, cellid=-1, respawn=360, containmentType=-1, heading=0},
+		 	{ mobile="dark_trooper", x=-26, z=0, y=6, cellid=-1, respawn=360, containmentType=-1, heading=0},
 		 	
-		 	{ mobile="dark_trooper", x=15, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 	{ mobile="dark_trooper", x=-15, z=0, y=40, cellid=-1, respawn=300, containmentType=-1, heading=0},
+			{ mobile="dark_trooper", x=-2, z=0, y=16, cellid=-1, respawn=360, containmentType=-1, heading=0},
+		 	{ mobile="dark_trooper", x=2, z=0, y=16, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="dark_trooper", x=0, z=0, y=18, cellid=-1, respawn=360, containmentType=-1, heading=0},		 	
+		 	{ mobile="dark_trooper", x=-2, z=0, y=20, cellid=-1, respawn=360, containmentType=-1, heading=0},
+		 	{ mobile="dark_trooper", x=2, z=0, y=20, cellid=-1, respawn=360, containmentType=-1, heading=0},
+
+		 	{ mobile="stormtrooper", x=10, z=0, y=50, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="stormtrooper", x=14, z=0, y=50, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="stormtrooper", x=10, z=0, y=46, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="stormtrooper", x=14, z=0, y=46, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="stormtrooper", x=10, z=0, y=42, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="stormtrooper", x=14, z=0, y=42, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="stormtrooper", x=10, z=0, y=38, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="stormtrooper", x=14, z=0, y=38, cellid=-1, respawn=360, containmentType=-1, heading=0},
+
+		 	{ mobile="stormtrooper", x=-10, z=0, y=50, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="stormtrooper", x=-14, z=0, y=50, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="stormtrooper", x=-10, z=0, y=46, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="stormtrooper", x=-14, z=0, y=46, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="stormtrooper", x=-10, z=0, y=42, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="stormtrooper", x=-14, z=0, y=42, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="stormtrooper", x=-10, z=0, y=38, cellid=-1, respawn=360, containmentType=-1, heading=0},
+			{ mobile="stormtrooper", x=-14, z=0, y=38, cellid=-1, respawn=360, containmentType=-1, heading=0},
 		 	
-		 	{ mobile="stormtrooper", x=10, z=0, y=50, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 	{ mobile="dark_trooper", x=-10, z=0, y=50, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 	
-		 	 { mobile="stormtrooper", x=20, z=0, y=30, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 	{ mobile="dark_trooper", x=-20, z=0, y=30, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 	
-		 	{ mobile="dark_trooper", x=20, z=0, y=25, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 	{ mobile="dark_trooper", x=-20, z=0, y=25, cellid=-1, respawn=300, containmentType=-1, heading=0},
-		 	
-		
-			 { mobile="stormtrooper", x=3.5, z=-6.75, y=-3, cellid=5, respawn=300, containmentType=-1, heading=0},
-			 { mobile="dark_trooper", x=5, z=-6.75, y=-3, cellid=5, respawn=300, containmentType=-1, heading=0},
-			 { mobile="stormtrooper", x=14.2, z=-13.75, y=-10, cellid=10, respawn=300, containmentType=-1, heading=0},
-			 { mobile="dark_trooper", x=15, z=-13.75, y=-4,cellid=10, respawn=300, containmentType=-1, heading=0},
-			 { mobile="imperial_recruiter", x=11.5, z=-11.5, y=-21, cellid=10, containmentType=-1, 
+			{ mobile="imperial_warrant_officer_i", x=4.1, z=0, y=0.8, cellid=2, respawn=300, containmentType=-1, heading=1.57},
+			{ mobile="imperial_warrant_officer_i", x=4.1, z=0, y=-1.8, cellid=2, respawn=300, containmentType=-1, heading=1.57},
+	
+			{ mobile="dark_trooper", x=-3.5, z=0, y=-4.2, cellid=3, respawn=300, containmentType=-1, heading=1.57},
+
+			{ mobile="dark_trooper", x=4.4, z=-6.75, y=4.9, cellid=4, respawn=300, containmentType=-1, heading=4.71},
+
+			{ mobile="dark_trooper", x=3.5, z=-6.75, y=-3, cellid=5, respawn=300, containmentType=-1, heading=0},
+			{ mobile="dark_trooper", x=5, z=-6.75, y=-3, cellid=5, respawn=300, containmentType=-1, heading=0},
+			{ mobile="dark_trooper", x=3.5, z=-6.75, y=-5, cellid=5, respawn=300, containmentType=-1, heading=0},
+			{ mobile="dark_trooper", x=5, z=-6.75, y=-5, cellid=5, respawn=300, containmentType=-1, heading=0},
+
+			{ mobile="imperial_commander", x=-0.35, z=-13.75, y=-3.65, cellid=7, respawn=300, containmentType=-1, heading=4.71},
+			{ mobile="dark_trooper", x=-6.5, z=-13.75, y=5.5,cellid=7, respawn=300, containmentType=-1, heading=3.14},
+			{ mobile="dark_trooper", x=-3.4, z=-13.75, y=3,cellid=7, respawn=300, containmentType=-1, heading=3.14},
+
+			{ mobile="imperial_medic", x=-5.6, z=-13.75, y=13.6, cellid=8, respawn=300, containmentType=-1, heading=0},
+			{ mobile="imperial_medic", x=7.3, z=-13.75, y=14.3, cellid=8, respawn=300, containmentType=-1, heading=3.14},
+
+			{ mobile="stormtrooper", x=14.2, z=-13.75, y=-10, cellid=10, respawn=300, containmentType=-1, heading=0},
+			{ mobile="dark_trooper", x=15, z=-13.75, y=-4,cellid=10, respawn=300, containmentType=-1, heading=0},
+			{ mobile="imperial_commander", x=15.9, z=-13.75, y=-17.25,cellid=10, respawn=300, containmentType=-1, heading=0},
+
+			{ mobile="imperial_recruiter", x=11.5, z=-11.5, y=-21, cellid=10, containmentType=-1, 
 			  	respawn=60, heading=1.59},
 		},
 		

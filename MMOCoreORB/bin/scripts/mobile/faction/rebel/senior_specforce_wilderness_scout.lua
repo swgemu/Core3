@@ -26,7 +26,13 @@ senior_specforce_wilderness_scout = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_rebel_specforce_guerilla_human_male_01.iff",
+	             "object/mobile/dressed_rebel_specforce_guerilla_moncal_male_01.iff",
+	             "object/mobile/dressed_rebel_specforce_guerrilla_human_female_01.iff",
+	             "object/mobile/dressed_rebel_specforce_guerrilla_rodian_female_01.iff",
+	             "object/mobile/dressed_rebel_specforce_guerrilla_rodian_male_01.iff",
+	             "object/mobile/dressed_rebel_specforce_guerrilla_zabrak_female_01.iff",},
+
 	lootGroups = {
 		{
 	        groups = {

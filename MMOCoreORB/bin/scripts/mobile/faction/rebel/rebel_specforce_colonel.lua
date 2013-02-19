@@ -48,7 +48,7 @@ rebel_specforce_colonel = Creature:new {
 			lootChance = 3000000
 		}	
 	},
-	weapons = {"rebel_weapons_heavy"},
+	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
