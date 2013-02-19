@@ -42,7 +42,7 @@
 
 TurretFireManualCommand = {
     name = "turretfiremanual",
-	damageMultiplier = 4,
+	damageMultiplier = 2,
 	speedMultiplier = 2,
 	combatSpam = "attack",
 	healthCostMultiplier = 0,
