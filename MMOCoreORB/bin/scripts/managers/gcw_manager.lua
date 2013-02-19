@@ -21,7 +21,7 @@ DNAMatchesRequired = 22
 destructionTimer = 600
 
 -- maximum bases per planet
-maxBases = 25
+maxBases = 3
 
 -- time in seconds that a player must be overt before aborting a facility shutdown
 overtCooldown = 300
@@ -41,8 +41,8 @@ maxBasesPerPlayer = 3
 -- xp bonus for faction controlling a planet
 bonusXP = 15
 
--- discount for side losing the gcw
-bonusDiscount = 30
+-- discount percentage for side losing the gcw.  negative value of increase in price.  positive for a decrease
+bonusDiscount = -30
 
 HQValues = {
 	{"object/building/faction_perk/hq/hq_s01_imp_pvp.iff", 2},
