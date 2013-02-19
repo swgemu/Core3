@@ -687,10 +687,17 @@ function recruiter_convo_handler:transferItem(player, pInventory, itemstring)
 	
 	local inventoryObject = LuaSceneObject(pInventory)
 	pItem = giveItem(pInventory, templatePath, -1)
-
+	
 	if (pItem ~= nil) then
+	
+		local item = LuaSceneObject(pItem)
+	
+		if ( item == nil ) then
+			return self.GIVEERROR
+		end
+		
 		if (self:isInstallation(itemstring)) then
-										
+			item:setObjectName("deed", itemstring)				
 			local deed = LuaDeed(pItem)
 			local genPath = self:getGeneratedObjectTemplate(itemstring)
 			
@@ -708,7 +715,7 @@ function recruiter_convo_handler:transferItem(player, pInventory, itemstring)
 			end
 		end
 		
-		local item = LuaSceneObject(pItem)
+		
 		item:sendTo(player)
 
 	else

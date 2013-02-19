@@ -21,7 +21,7 @@ DNAMatchesRequired = 22
 destructionTimer = 600
 
 -- maximum bases per planet
-maxBases = 3
+maxBases = 25
 
 -- time in seconds that a player must be overt before aborting a facility shutdown
 overtCooldown = 300
