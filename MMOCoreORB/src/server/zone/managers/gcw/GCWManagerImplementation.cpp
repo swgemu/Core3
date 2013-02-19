@@ -477,6 +477,7 @@ void GCWManagerImplementation::doBaseDestruction(StructureObject* structure){
 	if(building != NULL)
 		doBaseDestruction(building);
 }
+
 void GCWManagerImplementation::doBaseDestruction(BuildingObject* building){
 	if(building == NULL)
 		return;
@@ -625,10 +626,7 @@ void GCWManagerImplementation::performGCWTasks(){
 }
 
 void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool initializeBase){
-	info("Registering base on " + zone->getZoneName() +  " " + String::valueOf(building->getObjectID()) + " " + String::valueOf(building->getPositionX()) + ", " + String::valueOf(building->getPositionY()),true);
-	//info("CurrentTime is " + Time().getFormattedTime(),true);
 	if ( !this->hasBase(building)){
-
 
 		if(building->getFaction() == IMPERIALHASH)
 			imperialBases++;
@@ -662,7 +660,7 @@ void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool in
 		String templateString = building->getObjectTemplate()->getFullTemplateString();
 
 		int pointsValue = getPointValue(templateString);
-		info("point value is " + String::valueOf(pointsValue),true);
+
 		if(pointsValue > -1){
 			if(building->getFaction() == REBELHASH)
 				setRebelScore(getRebelScore() + pointsValue);
@@ -1006,8 +1004,13 @@ void GCWManagerImplementation::generateTurretControlBoxTo(CreatureObject* creatu
 				continue;
 			}
 
-			if(creo->isPlayerCreature() && turret->getDistanceTo(creo) <= weapon->getMaxRange()) {
-				status->addMenuItem(creo->getFirstName() + " - " + String::valueOf((int)turret->getDistanceTo(creo)) + "m",creo->getObjectID());
+			if(turret->getDistanceTo(creo) <= weapon->getMaxRange()) {
+
+				if(creo->isPlayerCreature())
+					status->addMenuItem(creo->getFirstName() + " - " + String::valueOf((int)turret->getDistanceTo(creo)) + "m",creo->getObjectID());
+				else
+					status->addMenuItem(creo->getObjectNameStringIdName() + " - " + String::valueOf((int)turret->getDistanceTo(creo)) + "m",creo->getObjectID());
+
 				targetTotal++;
 			}
 		}
@@ -1773,14 +1776,12 @@ void GCWManagerImplementation::notifyInstallationDestruction(InstallationObject*
 
 		return;
 	}
-	/// confirmed
 
-	//info("object type of the owner is " + ownerObject->getObjectNameStringIdName(),true);
 	if(ownerObject->isGCWBase()){
 		building = cast<BuildingObject*>(ownerObject);
 
-		Locker _lock(building);
-		Locker clock(installation,building);
+		Locker _lock(installation);
+		Locker clock(building, installation);
 
 		DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData(building);
 
@@ -1800,15 +1801,13 @@ void GCWManagerImplementation::notifyInstallationDestruction(InstallationObject*
 			if (installation->isMinefield())
 				notifyMinefieldDestruction(building, installation);
 
-
 		} else {
 
-			//info("owner is a creature... need to remvoe the lots",true);
-			Locker plock(ownerObject);
-			Locker tlock(installation, ownerObject);
+			clock.release();
+			Locker tlock(ownerObject, installation);
 			StructureManager::instance()->destroyStructure(installation);
 			tlock.release();
-			plock.release();
+
 		}
 
 
@@ -1912,11 +1911,11 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 
 	ManagedReference<SceneObject*> inv = creature->getSlottedObject("inventory");
 
+
 	if(inv == NULL)
 		return;
 
 	ManagedReference<SuiListBox*> donate = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
-
 
 	donate->setPromptTitle("@hq:mnu_defense_status");
 	donate->setPromptText("Donate a deed");
@@ -1927,6 +1926,7 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 
 	for(int i =0;i < inv->getContainerObjectsSize(); ++i){
 		ManagedReference<SceneObject*> inventoryObject = inv->getContainerObject(i);
+
 		if(inventoryObject->isDeedObject() || inventoryObject->getGameObjectType() == SceneObjectType::MINE){
 			donate->addMenuItem(inventoryObject->getDisplayedName(),inventoryObject->getObjectID());
 		}
@@ -2359,6 +2359,7 @@ bool GCWManagerImplementation::canPlaceMoreBases(CreatureObject* creature){
 	return true;
 
 }
+
 bool GCWManagerImplementation::canUseTerminals(CreatureObject* creature, BuildingObject* building, SceneObject* terminal){
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
 
@@ -2398,7 +2399,6 @@ bool GCWManagerImplementation::canUseTerminals(CreatureObject* creature, Buildin
 	}
 	return true;
 }
-
 
 void GCWManagerImplementation::broadcastBuilding(BuildingObject* building, StringIdChatParameter& params){
 	//Default range of broadcast
