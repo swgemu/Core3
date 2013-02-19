@@ -37,7 +37,7 @@ tusken_executioner = Creature:new {
 				{group = "color_crystals", chance = 500000},
 				{group = "crystals_premium", chance = 500000}
 			},
-			lootChance = 3500000
+			lootChance = 6000000
 		}		
 	},
 	weapons = {"tusken_weapons"},

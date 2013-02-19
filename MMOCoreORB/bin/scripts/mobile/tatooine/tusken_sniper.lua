@@ -37,7 +37,7 @@ tusken_sniper = Creature:new {
 				{group = "color_crystals", chance = 500000},
 				{group = "crystals_good", chance = 500000}
 			},
-			lootChance = 3500000
+			lootChance = 4500000
 		}	
 	},
 	weapons = {"tusken_weapons"},

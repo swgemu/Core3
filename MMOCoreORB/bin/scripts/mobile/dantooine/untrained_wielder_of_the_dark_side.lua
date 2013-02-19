@@ -30,9 +30,11 @@ untrained_wielder_of_the_dark_side = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 2000000},
+				{group = "junk", chance = 5000000},
 				{group = "crystals_poor", chance = 500000},
 				{group = "color_crystals", chance = 500000},
+				{group = "holocron_dark", chance = 500000},
+				{group = "holocron_light", chance = 500000},
 				{group = "melee_weapons", chance = 1000000},
 				{group = "armor_attachments", chance = 1000000},
 				{group = "clothing_attachments", chance = 1000000}

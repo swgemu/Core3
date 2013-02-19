@@ -37,7 +37,7 @@ tusken_king = Creature:new {
 				{group = "color_crystals", chance = 500000},
 				{group = "crystals_quality", chance = 500000}
 			},
-			lootChance = 3500000
+			lootChance = 5000000
 		}			
 	},
 	weapons = {"tusken_weapons"},

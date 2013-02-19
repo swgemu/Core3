@@ -35,8 +35,8 @@ singing_mountain_clan_outcast = Creature:new {
 				{group = "melee_weapons", chance = 2500000},
 				{group = "armor_attachments", chance = 550000},
 				{group = "clothing_attachments", chance = 550000},
-				{group = "pistols", chance = 2750000},
-				{group = "rifles", chance = 2750000}
+				{group = "pistols", chance = 2700000},
+				{group = "rifles", chance = 2700000}
 			},
 			lootChance = 4800000
 		}			
