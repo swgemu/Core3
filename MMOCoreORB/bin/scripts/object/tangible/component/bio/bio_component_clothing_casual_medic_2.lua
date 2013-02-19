@@ -46,7 +46,7 @@ object_tangible_component_bio_bio_component_clothing_casual_medic_2 = object_tan
 
 	numberExperimentalProperties = {1, 1, 1, 1, 1, 3, 1, 3},
 	experimentalProperties = {"XX", "XX", "XX", "XX", "XX", "FL", "OQ", "PE", "XX", "FL", "OQ", "PE"},
-	experimentalWeights = {1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2},
+	experimentalWeights = {1, 1, 1, 1, 1, 2, 5, 3, 1, 2, 5, 3},
 	experimentalGroupTitles = {"null", "null", "null", "null", "null", "exp_effectiveness", "null", "exp_effectiveness"},
 	experimentalSubGroupTitles = {"null", "null", "decayrate", "hitpoints", "@obj_attr_n:bio_comp_healing_injury_treatment", "cat_skill_mod_bonus.@stat_n:healing_injury_treatment", "@obj_attr_n:bio_comp_healing_wound_treatment", "cat_skill_mod_bonus.@stat_n:healing_wound_treatment"},
 	experimentalMin = {0, 0, 30, 1000, 102, 3, 103, 3},
