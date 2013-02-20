@@ -47,7 +47,7 @@ object_building_player_player_house_corellia_small_style_02_floorplan_02 = objec
 	allowedZones = {"corellia", "talus"},
 	publicStructure = 0,
 	skillMods = {
-		{"private_medical_rating", 65},
+		{"private_medical_rating", 100},
 		{"private_buff_mind", 100},
 		{"private_med_battle_fatigue", 5}
 	},
