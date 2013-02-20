@@ -138,19 +138,27 @@ object_building_faction_perk_hq_hq_s03_rebel_pvp = object_building_faction_perk_
 		},
 	childCreatureObjects = {
 		
-			{ mobile="specforce_marine", x=4, z=-3.25, y=5, cellid=4, respawn=300, containmentType=-1, heading=1.57},
+			{ mobile="rebel_corporal", x=-4.5, z=0, y=-2, cellid=2, respawn=300, containmentType=-1, heading=4.71},
+			{ mobile="rebel_corporal", x=-4.5, z=0, y=0.9, cellid=2, respawn=300, containmentType=-1, heading=4.71},
+			
+			{ mobile="specforce_marine", x=4, z=-3.25, y=5, cellid=4, respawn=300, containmentType=-1, heading=3.14},
 		 
-		 	{ mobile="specforce_marine", x=-5, z=-10.25, y=-6, cellid=5, respawn=300, containmentType=-1, heading=1.57},
+		 	{ mobile="specforce_marine", x=-5, z=-10.25, y=-6, cellid=5, respawn=300, containmentType=-1, heading=0},
 		 	
 			{ mobile="specforce_marine", x=-2.7, z=-13.75, y=7, cellid=7, respawn=300, containmentType=-1, heading=1.57},
-			 { mobile="specforce_marine", x=-5, z=-13.75, y=7, cellid=7, respawn=300, containmentType=-1, heading=1.57},
-
-
-			{ mobile="specforce_marine", x=-1, z=-20.75, y=16, cellid=10, containmentType=-1, respawn=60, heading=1.57},
- 			{ mobile="specforce_marine", x=-3.5, z=-20.75, y=23, cellid=10, containmentType=-1, respawn=60, heading=1.57},
+			{ mobile="specforce_marine", x=-5, z=-13.75, y=7, cellid=7, respawn=300, containmentType=-1, heading=1.57},
 			
-			{ mobile="specforce_marine", x=5, z=-20.75, y=16, cellid=10, containmentType=-1, respawn=60, heading=4.71},
- 			{ mobile="specforce_marine", x=6.5, z=-20.75, y=23, cellid=10, containmentType=-1, respawn=60, heading=4.71},
+			{ mobile="rebel_first_lieutenant", x=-1.85, z=-20.75, y=5.1, cellid=9, respawn=300, containmentType=-1, heading=4.71},
+			{ mobile="specforce_lieutenant", x=4.6, z=-20.75, y=5.1, cellid=9, respawn=300, containmentType=-1, heading=1.57},
+
+			{ mobile="specforce_marine", x=-1, z=-20.75, y=16, cellid=10, containmentType=-1, respawn=300, heading=1.57},
+ 			{ mobile="specforce_marine", x=-3.5, z=-20.75, y=23, cellid=10, containmentType=-1, respawn=300, heading=1.57},
+			{ mobile="specforce_marine", x=5, z=-20.75, y=16, cellid=10, containmentType=-1, respawn=300, heading=4.71},
+ 			{ mobile="specforce_marine", x=6.5, z=-20.75, y=23, cellid=10, containmentType=-1, respawn=300, heading=4.71},
+			{ mobile="specops_agent", x=2.6, z=-20.75, y=29.9, cellid=10, containmentType=-1, respawn=300, heading=3.14},
+			{ mobile="rebel_coordinator", x=0.6, z=-20.75, y=29.9, cellid=10, containmentType=-1, respawn=300, heading=3.14},
+			{ mobile="specforce_major", x=5.8, z=-20.75, y=29.9, cellid=10, containmentType=-1, respawn=300, heading=4.71},
+			{ mobile="rebel_commander", x=5.5, z=-20.75, y=35, cellid=10, containmentType=-1, respawn=600, heading=3.14},
 			
 			{ mobile="rebel_recruiter", x=-2, z=-20.75, y=34, cellid=10, containmentType=-1, respawn=60, heading=3.14},
 		},

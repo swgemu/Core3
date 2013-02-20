@@ -161,10 +161,35 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 		},
 
 		childCreatureObjects = {
-			 { mobile="specforce_marine", x=3.5, z=-6.75, y=-3, cellid=5, respawn=300, containmentType=-1, heading=0},
-			 { mobile="specforce_heavy_weapons_specialist", x=5, z=-6.75, y=-3, cellid=5, respawn=300, containmentType=-1, heading=0},
-			 { mobile="specforce_heavy_weapons_specialist", x=14.2, z=-13.75, y=-10, cellid=10, respawn=300, containmentType=-1, heading=0},
-			 { mobile="specforce_marine", x=15, z=-13.75, y=-4, cellid=10, respawn=300, containmentType=-1, heading=0},
+			{ mobile="specforce_technician", x=4.25, z=0, y=1.1, cellid=2, respawn=300, containmentType=-1, heading=1.57},
+		 	{ mobile="senior_specforce_technician", x=4.25, z=0, y=-1.8, cellid=2, respawn=300, containmentType=-1, heading=1.57},
+			
+		 	{ mobile="senior_specforce_lieutenant", x=-3.25, z=0, y=-3.7, cellid=3, respawn=300, containmentType=-1, heading=1.57},
+			
+			{ mobile="senior_specforce_heavy_weapons_specialist", x=4.75, z=-6.75, y=5.2, cellid=4, respawn=300, containmentType=-1, heading=4.71},
+			
+			{ mobile="senior_specforce_marine", x=3.5, z=-6.75, y=-3, cellid=5, respawn=300, containmentType=-1, heading=0},
+			{ mobile="senior_specforce_heavy_weapons_specialist", x=5, z=-6.75, y=-3, cellid=5, respawn=300, containmentType=-1, heading=0},
+			{ mobile="senior_specforce_marine", x=7, z=-6.75, y=-1, cellid=5, respawn=300, containmentType=-1, heading=1.57},
+			{ mobile="senior_specforce_heavy_weapons_specialist", x=1.75, z=-6.75, y=-1, cellid=5, respawn=300, containmentType=-1, heading=4.71},
+			{ mobile="specforce_major", x=6.4, z=-6.75, y=-8.25, cellid=5, respawn=300, containmentType=-1, heading=0},
+
+			{ mobile="senior_specforce_marine", x=-0.1, z=-13.75, y=5.6, cellid=7, respawn=300, containmentType=-1, heading=3.14},
+			{ mobile="senior_specforce_heavy_weapons_specialist", x=-3.5, z=-13.75, y=4.6, cellid=7, respawn=300, containmentType=-1, heading=3.14},
+			{ mobile="senior_specforce_technician", x=-2.3, z=-13.75, y=-3.5, cellid=7, respawn=300, containmentType=-1, heading=1.57},
+			{ mobile="senior_specforce_heavy_weapons_specialist", x=-0.35, z=-13.75, y=-13.35, cellid=7, respawn=300, containmentType=-1, heading=4.71},
+			{ mobile="specforce_major", x=-1, z=-13.75, y=0.35, cellid=7, respawn=300, containmentType=-1, heading=4.71},
+	
+			{ mobile="rebel_medic", x=5.25, z=-13.75, y=9.9, cellid=8, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_specforce_colonel", x=-5.25, z=-13.75, y=14.25, cellid=8, respawn=300, containmentType=-1, heading=3.14},
+
+			{ mobile="senior_specforce_marine", x=17.9, z=-13.75, y=-0.8, cellid=9, respawn=300, containmentType=-1, heading=0},
+			{ mobile="senior_specforce_marine", x=12.7, z=-13.75, y=-0.8, cellid=9, respawn=300, containmentType=-1, heading=0},
+
+			{ mobile="rebel_commander", x=16.1, z=-13.75, y=-16.8, cellid=10, respawn=300, containmentType=-1, heading=0},
+			{ mobile="senior_specforce_heavy_weapons_specialist", x=14.2, z=-13.75, y=-10, cellid=10, respawn=300, containmentType=-1, heading=0},
+			{ mobile="senior_specforce_marine", x=15, z=-13.75, y=-4, cellid=10, respawn=300, containmentType=-1, heading=0},
+
 			 { mobile="rebel_recruiter", x=11.5, z=-11.5, y=-21, cellid=10, containmentType=-1, respawn=60, heading=1.59},
 		},
 

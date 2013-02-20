@@ -137,10 +137,29 @@ object_building_faction_perk_hq_hq_s04_imp_pvp = object_building_faction_perk_hq
 		
 		childCreatureObjects = {
 
-			 { mobile="stormtrooper", x=3.5, z=-6.75, y=-3, cellid=5, respawn=300, containmentType=-1, heading=0},
-			 { mobile="dark_trooper", x=5, z=-6.75, y=-3, cellid=5, respawn=300, containmentType=-1, heading=0},
-			 { mobile="stormtrooper", x=14.2, z=-13.75, y=-10, cellid=10, respawn=300, containmentType=-1, heading=0},
-			 { mobile="dark_trooper", x=15, z=-13.75, y=-4,cellid=10, respawn=300, containmentType=-1, heading=0},
+			{ mobile="imperial_warrant_officer_i", x=4.1, z=0, y=0.8, cellid=2, respawn=300, containmentType=-1, heading=1.57},
+			{ mobile="imperial_warrant_officer_i", x=4.1, z=0, y=-1.8, cellid=2, respawn=300, containmentType=-1, heading=1.57},
+	
+			{ mobile="dark_trooper", x=-3.5, z=0, y=-4.2, cellid=3, respawn=300, containmentType=-1, heading=1.57},
+
+			{ mobile="dark_trooper", x=4.4, z=-6.75, y=4.9, cellid=4, respawn=300, containmentType=-1, heading=4.71},
+
+			{ mobile="dark_trooper", x=3.5, z=-6.75, y=-3, cellid=5, respawn=300, containmentType=-1, heading=0},
+			{ mobile="dark_trooper", x=5, z=-6.75, y=-3, cellid=5, respawn=300, containmentType=-1, heading=0},
+			{ mobile="dark_trooper", x=3.5, z=-6.75, y=-5, cellid=5, respawn=300, containmentType=-1, heading=0},
+			{ mobile="dark_trooper", x=5, z=-6.75, y=-5, cellid=5, respawn=300, containmentType=-1, heading=0},
+
+			{ mobile="imperial_commander", x=-0.35, z=-13.75, y=-3.65, cellid=7, respawn=300, containmentType=-1, heading=4.71},
+			{ mobile="dark_trooper", x=-6.5, z=-13.75, y=5.5,cellid=7, respawn=300, containmentType=-1, heading=3.14},
+			{ mobile="dark_trooper", x=-3.4, z=-13.75, y=3,cellid=7, respawn=300, containmentType=-1, heading=3.14},
+
+			{ mobile="imperial_medic", x=-5.6, z=-13.75, y=13.6, cellid=8, respawn=300, containmentType=-1, heading=0},
+			{ mobile="imperial_medic", x=7.3, z=-13.75, y=14.3, cellid=8, respawn=300, containmentType=-1, heading=3.14},
+
+			{ mobile="stormtrooper", x=14.2, z=-13.75, y=-10, cellid=10, respawn=300, containmentType=-1, heading=0},
+			{ mobile="dark_trooper", x=15, z=-13.75, y=-4,cellid=10, respawn=300, containmentType=-1, heading=0},
+			{ mobile="imperial_commander", x=15.9, z=-13.75, y=-17.25,cellid=10, respawn=300, containmentType=-1, heading=0},
+
 			 { mobile="imperial_recruiter", x=11.5, z=-11.5, y=-21, cellid=10, containmentType=-1, 
 			  	respawn=60, heading=1.59},
 		},

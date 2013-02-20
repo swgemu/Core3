@@ -125,10 +125,21 @@ object_building_faction_perk_hq_hq_s02_rebel_pvp = object_building_faction_perk_
 
 		
 		childCreatureObjects = {
-			{ mobile="specforce_heavy_weapons_specialist", x=2.5, z=-6.75, y=-16.5, cellid=6, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_specforce_pathfinder", x=-3.5, z=0, y=-3.9, cellid=2, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_sergeant", x=2.9, z=0, y=-4.1, cellid=3, respawn=300, containmentType=-1, heading=0},
+			{ mobile="specforce_heavy_weapons_specialist", x=-1, z=-6.75, y=-6.5, cellid=5, respawn=300, containmentType=-1, heading=0},
+			{ mobile="specforce_marine", x=-4.5, z=-6.75, y=-3.4, cellid=5, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_medic", x=-2.3, z=-6.75, y=-16.5, cellid=6, respawn=300, containmentType=-1, heading=0},
+			{ mobile="specforce_heavy_weapons_specialist", x=7.2, z=-6.75, y=-14.5, cellid=6, respawn=300, containmentType=-1, heading=0},
+			{ mobile="specforce_marine", x=2.5, z=-6.75, y=-16.5, cellid=6, respawn=300, containmentType=-1, heading=0},
 			{ mobile="specforce_heavy_weapons_specialist", x=8, z=-6.75, y=-6, cellid=7, respawn=300, containmentType=-1, heading=0},
-			{ mobile="specforce_heavy_weapons_specialist", x=-6, z=-13.75, y=-3, cellid=10, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_first_lieutenant", x=3, z=-6.75, y=-1.8, cellid=7, respawn=300, containmentType=-1, heading=0},
+			{ mobile="specforce_marine", x=-5.5, z=-13.75, y=-3, cellid=9, respawn=300, containmentType=-1, heading=0},
 			{ mobile="specforce_heavy_weapons_specialist", x=.5, z=-13.75, y=-3 ,cellid=9, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_medic", x=.5, z=-13.75, y=-7.2, cellid=9, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_medic", x=-5.5, z=-13.75, y=-7.2 ,cellid=9, respawn=300, containmentType=-1, heading=0},
+			{ mobile="rebel_army_captain", x=-4.1, z=-13.75, y=-17.3 ,cellid=9, respawn=300, containmentType=-1, heading=0},
+			
 			{ mobile="rebel_recruiter", x=0, z=-13.75, y=-17, cellid=9, containmentType=-1, 	respawn=60, heading=0},
 		},
 }
