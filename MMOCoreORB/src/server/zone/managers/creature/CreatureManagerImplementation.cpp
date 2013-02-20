@@ -480,8 +480,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 		if (despawn != NULL) {
 			despawn->cancel();
-
-			despawn->reschedule(1000);
+			despawn->reschedule(10000);
 		}
 	}
 
