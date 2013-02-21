@@ -26,6 +26,7 @@
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 
 #include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/managers/gcw/ShutdownSequenceTask.h"
 
 void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
@@ -59,7 +60,7 @@ void HQMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMen
 		//menuResponse->addRadialMenuItemToRadialID(37, 225, 3,  "@hq:mnu_donate_money"); // Donate MOney
 		menuResponse->addRadialMenuItemToRadialID(37, 226, 3, "@hq:mnu_donate_deed"); // donate defense
 
-		if(building->getOwnerCreatureObject() == player){
+		if(building->getOwnerCreatureObject() == player && building->getPvpStatusBitmask() & CreatureFlag::OVERT){
 			menuResponse->addRadialMenuItem(38, 3, "@hq:mnu_reset_vulnerability"); // Reset Vulnerability
 		}
 
@@ -114,15 +115,17 @@ int HQMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureOb
 				gcwMan->sendBaseDefenseStatus(creature, building);
 		} else if ( selectedID == 38) {
 				gcwMan->sendResetVerification(creature, building);
-		} else if(selectedID == 231)
-				gcwMan->abortShutdownSequence(creature,building);
-		else if (selectedID == 226)
+		} else if(selectedID == 231) {
+			ShutdownSequenceTask* task = new ShutdownSequenceTask(gcwMan, building, creature, false);
+			task->execute();
+		} else if (selectedID == 226)
 				gcwMan->sendSelectDeedToDonate(building,creature,0);
 	} else {
 		if ( selectedID == 230 ) {
-			if(creature->hasSkill("outdoors_squadleader_novice"))
-				gcwMan->scheduleBaseDestruction(building,creature);
-			else
+			if(creature->hasSkill("outdoors_squadleader_novice")) {
+				ShutdownSequenceTask* task = new ShutdownSequenceTask(gcwMan, building, creature, true);
+				task->execute();
+			} else
 				creature->sendSystemMessage(("@faction/faction_hq/faction_hq_response:terminal_response03")); // only an experienced squad leader could expect to coordinate a reactor overload
 
 		} else if ( selectedID == 20) {

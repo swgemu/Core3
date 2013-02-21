@@ -23,8 +23,6 @@ public:
 	}
 
 	void run() {
-		Logger::Logger tlog("DTASK");
-		tlog.info("BaseDestruction task execution", true);
 		countDown--;
 		ManagedReference<GCWManager*> strongRef = gcwManager.get();
 		ManagedReference<BuildingObject*> building = buildingObject.get();

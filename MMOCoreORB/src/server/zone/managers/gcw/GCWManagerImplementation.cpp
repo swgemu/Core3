@@ -390,13 +390,9 @@ void GCWManagerImplementation::scheduleVulnerabilityEnd(BuildingObject* building
 	this->addEndTask(building->getObjectID(),newTask);
 }
 
-// no locks needed
+
 void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building, CreatureObject* creature){
-	info("Scheduling destruction",true);
-
 	if(this->isBaseVulnerable(building) && !this->hasDestroyTask(building->getObjectID()) ){
-
-
 		DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
 
 		if(baseData == NULL){
@@ -405,11 +401,13 @@ void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building,
 		}
 
 		if(!baseData->getRebootFinishTime().isPast()){
-			creature->sendSystemMessage("You must wait for the facility to finish rebooting before activating the overload again");
+			if(creature != NULL)
+				creature->sendSystemMessage("You must wait for the facility to finish rebooting before activating the overload again");
+
 			return;
 		}
 
-		Locker block(building,creature);
+		Locker block(building);
 
 		StringIdChatParameter destroyMessage("@faction/faction_hq/faction_hq_response:terminal_response40"); // COUNTDOWN INITIATED: estimated time to detonation: %DI minutes.
 		int minutesRemaining = ceil(this->destructionTimer/60);
@@ -418,20 +416,16 @@ void GCWManagerImplementation::scheduleBaseDestruction(BuildingObject* building,
 		baseData->setState(DestructibleBuildingDataComponent::SHUTDOWNSEQUENCE);
 		block.release();
 
-
-		Locker _lock(_this.get(),creature);
-
 		Reference<Task*> newTask = new BaseDestructionTask(_this.get(), building);
-		//newTask->schedule(this->destructionTimer*1000);
 		newTask->schedule(60000);
 		this->addDestroyTask(building->getObjectID(),newTask);
 
 	}
 }
 
-void GCWManagerImplementation::abortShutdownSequence(CreatureObject* creature, BuildingObject* building){
+void GCWManagerImplementation::abortShutdownSequence(BuildingObject* building, CreatureObject* creature){
 
-	if(!creature->checkCooldownRecovery("declare_overt_cooldown")){
+	if(creature != NULL && !creature->checkCooldownRecovery("declare_overt_cooldown")){
 		StringIdChatParameter params("@faction/faction_hq/faction_hq_response:terminal_response42"); // Before issuing the shutdown, you must have been in special forces for at least %TO
 		int timer = overtCooldown / 60;
 		params.setTO(String::valueOf(timer) + " minutes");
@@ -440,10 +434,9 @@ void GCWManagerImplementation::abortShutdownSequence(CreatureObject* creature, B
 	}
 
 	if(this->isBaseVulnerable(building) && this->hasDestroyTask(building->getObjectID())){
-		//Reference<Task*> oldDestroyTask = gcwDestroyTasks.get(building->getObjectID());
 		Reference<Task*> oldDestroyTask = this->getDestroyTask(building->getObjectID());
 		if(oldDestroyTask != NULL){
-			info("deleting destroy task",true);
+
 			oldDestroyTask->cancel();
 			this->dropDestroyTask(building->getObjectID());
 		}
@@ -455,7 +448,7 @@ void GCWManagerImplementation::abortShutdownSequence(CreatureObject* creature, B
 			return;
 		}
 
-		Locker block(building, creature);
+		Locker block(building);
 
 		baseData->setState(DestructibleBuildingDataComponent::OVERLOADED);
 		Time finishTime = Time();
@@ -615,11 +608,6 @@ void GCWManagerImplementation::performGCWTasks(){
 	setRebelBaseCount(rebelCheck);
 	setImperialBaseCount(imperialCheck);
 
-	/*
-	for(int i = gcwBaseList.size() -1; i >= 0; i--){
-		// TODO Sanity check on the task lists etc.
-	}
-	*/
 
 	CheckGCWTask* task = new CheckGCWTask(_this.get());
 	task->schedule(this->gcwCheckTimer * 1000);
@@ -701,20 +689,16 @@ void GCWManagerImplementation::checkVulnerabilityData(BuildingObject* building){
 		this->scheduleVulnerabilityStart(building);
 	} else if (vulnTime.isPast() && !nextEnd.isPast()) {
 		info(zone->getZoneName() + " loading vulnerable base " + String::valueOf(building->getObjectID()) + " with vulnerability in progress");
-
-		// TODO: use old state from the DB im the event of server restart during vuln.
-		renewUplinkBand(building);
 		this->startVulnerability(building);
-
 	} else if (nextEnd.isPast()) {
 
 		info(zone->getZoneName() + " base " + String::valueOf(building->getObjectID()) + " vuln end time has already passed... need to refresh next vuln times " + String::valueOf(vulnDif));
 		this->refreshExpiredVulnerability(building);
 
 	}
-
-
-
+	if(baseData->getState() == DestructibleBuildingDataComponent::SHUTDOWNSEQUENCE){
+		scheduleBaseDestruction(building, NULL);
+	}
 }
 
 // PRE: no locks or only lock on building

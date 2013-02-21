@@ -155,7 +155,7 @@ class GCWManager extends ManagedService implements Logger {
 	
 	public native void repairTerminal(CreatureObject creature, TangibleObject securityTerminal);
 	
-	public native void abortShutdownSequence(CreatureObject creature, BuildingObject building);
+	public native void abortShutdownSequence(BuildingObject building, CreatureObject creature);
 	
 	public native void processDNASample(CreatureObject creature, BuildingObject building, final string sampleChain, int indx);
 	

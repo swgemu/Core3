@@ -230,7 +230,7 @@ public:
 
 	void repairTerminal(CreatureObject* creature, TangibleObject* securityTerminal);
 
-	void abortShutdownSequence(CreatureObject* creature, BuildingObject* building);
+	void abortShutdownSequence(BuildingObject* building, CreatureObject* creature);
 
 	void processDNASample(CreatureObject* creature, BuildingObject* building, const String& sampleChain, int indx);
 
@@ -446,7 +446,7 @@ public:
 
 	void repairTerminal(CreatureObject* creature, TangibleObject* securityTerminal);
 
-	void abortShutdownSequence(CreatureObject* creature, BuildingObject* building);
+	void abortShutdownSequence(BuildingObject* building, CreatureObject* creature);
 
 	void processDNASample(CreatureObject* creature, BuildingObject* building, const String& sampleChain, int indx);
 
@@ -707,7 +707,7 @@ public:
 
 	void repairTerminal(CreatureObject* creature, TangibleObject* securityTerminal);
 
-	void abortShutdownSequence(CreatureObject* creature, BuildingObject* building);
+	void abortShutdownSequence(BuildingObject* building, CreatureObject* creature);
 
 	void processDNASample(CreatureObject* creature, BuildingObject* building, const String& sampleChain, int indx);
 
