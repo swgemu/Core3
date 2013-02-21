@@ -14,7 +14,7 @@ void DestructibleBuildingDataComponent::setState(int state) {
 }
 
 void DestructibleBuildingDataComponent::initializeTransientMembers(){
-
+	uplinkBand = System::random(0x9);
 }
 
 bool DestructibleBuildingDataComponent::parseFromBinaryStream(ObjectInputStream* stream){
@@ -39,10 +39,10 @@ bool DestructibleBuildingDataComponent::parseFromBinaryStream(ObjectInputStream*
 
 bool DestructibleBuildingDataComponent::toBinaryStream(ObjectOutputStream* stream){
 
-			int _currentOffset = stream->getOffset();
-			stream->writeShort(0);
-			int _varCount = writeObjectMembers(stream);
-			stream->writeShort(_currentOffset, _varCount);
+	int _currentOffset = stream->getOffset();
+	stream->writeShort(0);
+	int _varCount = writeObjectMembers(stream);
+	stream->writeShort(_currentOffset, _varCount);
 
 	return true;
 }
@@ -289,7 +289,6 @@ bool DestructibleBuildingDataComponent::readObjectMember(ObjectInputStream* stre
 		TypeInfo<bool>::parseFromBinaryStream(&exposed, stream);
 		return true;
 	}
-
 
 	return false;
 }
