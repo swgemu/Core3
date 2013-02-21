@@ -8,13 +8,13 @@
 #ifndef DESTROYFACTIONINSTALLATIONTASK_H_
 #define DESTROYFACTIONINSTALLATIONTASK_H_
 #include "engine/engine.h"
+#include "server/zone/Zone.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 
 
 class DestroyFactionInstallationTask : public Task {
 	ManagedReference<InstallationObject*> installation;
-
 
 public:
 	DestroyFactionInstallationTask(InstallationObject* inst) {
@@ -33,9 +33,5 @@ public:
 	}
 
 };
-
-
-
-
 
 #endif /* DESTROYFACTIONINSTALLATIONTASK_H_ */

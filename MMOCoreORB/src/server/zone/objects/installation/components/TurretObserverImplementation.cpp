@@ -7,7 +7,7 @@
 #include "TurretObserver.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/managers/gcw/GCWManager.h"
-#include "server/zone/managers/gcw/InstallationDestructionTask.h"
+#include "server/zone/managers/gcw/DestroyFactionInstallationTask.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 
 
@@ -17,7 +17,7 @@ int TurretObserverImplementation::notifyObserverEvent(uint32 eventType, Observab
 		ManagedReference<InstallationObject*> installation = cast<InstallationObject*>(observable);
 
 		if(installation != NULL){
-			InstallationDestructionTask* task = new InstallationDestructionTask(installation);
+			DestroyFactionInstallationTask* task = new DestroyFactionInstallationTask(installation);
 			task->execute();
 		}
 	}

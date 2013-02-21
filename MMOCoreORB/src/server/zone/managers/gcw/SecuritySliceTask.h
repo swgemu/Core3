@@ -16,7 +16,6 @@ class SecuritySliceTask : public Task {
 	ManagedReference<TangibleObject*> terminal;
 	ManagedReference<GCWManager*> gcwManager;
 	ManagedReference<CreatureObject*> creature;
-	bool bDestruction;
 
 public:
 
