@@ -13,7 +13,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/loot/LootManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
-
+#include "server/zone/managers/gcw/SecuritySliceTask.h"
 #include "server/zone/objects/tangible/Container.h"
 #include "server/zone/objects/tangible/RelockLootContainerEvent.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
@@ -492,8 +492,10 @@ void SlicingSessionImplementation::handleSlice(SuiListBox* suiBox) {
 		if(zone != NULL){
 			GCWManager* gcwMan = zone->getGCWManager();
 
-		if(gcwMan != NULL)
-			gcwMan->completeSecuritySlice(player, this->tangibleObject.get());
+			if(gcwMan != NULL){
+				SecuritySliceTask* task = new SecuritySliceTask(gcwMan, tangibleObject.get(), player);
+				task->execute();
+			}
 		}
 
 	}
