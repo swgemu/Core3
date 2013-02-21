@@ -183,11 +183,6 @@ int CombatManager::doCombatAction(CreatureObject* attacker, WeaponObject* weapon
 		attacker->updateLastSuccessfulCombatAction();
 	}
 
-	/// Always do this if it is a hit, even if it is 0 damage
-	Locker clocker(defenderObject, attacker);
-
-	defenderObject->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, damage);	
-
 	return damage;
 }
 
@@ -217,6 +212,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		broadcastCombatSpam(attacker, tano, weapon, damage, data.getCommand()->getCombatSpam() + "_hit");
 	}
 
+	tano->notifyObservers(ObserverEventType::DAMAGERECEIVED, attacker, damage);
 	return damage;
 }
 
@@ -1834,7 +1830,10 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 
 			try {
 				if (CollisionManager::checkLineOfSight(object, attacker)) {
+					info("attacker locked is " + String::valueOf(attacker->isLockedByCurrentThread()) + " target is locked is " + String::valueOf(tano->isLockedByCurrentThread()),true);
 					damage += doTargetCombatAction(attacker, weapon, tano, data);
+					info("after attaker is locked " + String::valueOf(attacker->isLockedByCurrentThread()) + " tano is locked is " + String::valueOf(tano->isLockedByCurrentThread()),true);
+
 				}
 			} catch (Exception& e) {
 				error(e.getMessage());
