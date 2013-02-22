@@ -101,12 +101,12 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	patrolPathTemplate = templateData->getStringField("patrolPathTemplate");
 	defaultWeapon = templateData->getStringField("defaultWeapon");
 
-	if(templateData->getStringField("defaultAttack").length() > 0)
+	if(!templateData->getStringField("defaultAttack").isEmpty())
 		defaultAttack = templateData->getStringField("defaultAttack");
 
 	scale = templateData->getFloatField("scale");
 
-	if (templateData->getStringField("milkType").length() > 0) {
+	if (!templateData->getStringField("milkType").isEmpty()) {
 		milkType = templateData->getStringField("milkType").trim();
 	}
 

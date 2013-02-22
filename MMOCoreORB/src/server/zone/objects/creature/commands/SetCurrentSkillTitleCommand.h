@@ -70,7 +70,7 @@ public:
 
 		String titleSkill = arguments.toString();
 
-		if (titleSkill.isEmpty() || !creature->hasSkill(titleSkill))
+		if (!titleSkill.isEmpty() && !creature->hasSkill(titleSkill))
 			return GENERALERROR;
 
 		ghost->setTitle(titleSkill, true);
