@@ -100,7 +100,9 @@ void CreatureTemplate::readObject(LuaObject* templateData) {
 	optionsBitmask = templateData->getIntField("optionsBitmask");
 	patrolPathTemplate = templateData->getStringField("patrolPathTemplate");
 	defaultWeapon = templateData->getStringField("defaultWeapon");
-	defaultAttack = templateData->getStringField("defaultAttack");
+
+	if(templateData->getStringField("defaultAttack").length() > 0)
+		defaultAttack = templateData->getStringField("defaultAttack");
 
 	scale = templateData->getFloatField("scale");
 
