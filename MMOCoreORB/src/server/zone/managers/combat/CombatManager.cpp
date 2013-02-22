@@ -1830,10 +1830,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 
 			try {
 				if (CollisionManager::checkLineOfSight(object, attacker)) {
-					info("attacker locked is " + String::valueOf(attacker->isLockedByCurrentThread()) + " target is locked is " + String::valueOf(tano->isLockedByCurrentThread()),true);
 					damage += doTargetCombatAction(attacker, weapon, tano, data);
-					info("after attaker is locked " + String::valueOf(attacker->isLockedByCurrentThread()) + " tano is locked is " + String::valueOf(tano->isLockedByCurrentThread()),true);
-
 				}
 			} catch (Exception& e) {
 				error(e.getMessage());
