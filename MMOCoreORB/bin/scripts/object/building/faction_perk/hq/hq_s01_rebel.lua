@@ -55,7 +55,7 @@ object_building_faction_perk_hq_hq_s01_rebel = object_building_faction_perk_hq_s
 		constructionMarker = "object/building/player/construction/construction_player_house_generic_medium_style_01.iff",
 		length = 7,
 		width = 6,
-		planetMapCategory = "imperial_hq",
+		planetMapCategory = "rebel_hq",
 		alwaysPublic = 1,
 			childObjects = {
 
