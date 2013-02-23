@@ -42,6 +42,8 @@
 
 
 object_weapon_ranged_heavy_heavy_rocket_launcher = object_weapon_ranged_heavy_shared_heavy_rocket_launcher:new {
+
+	templateType = SPECIALHEAVYWEAPON,
 	objectMenuComponent = {"cpp", "FireHeavyWeaponMenuComponent"},
 	
 	playerRaces = { "object/creature/player/bothan_male.iff",
@@ -67,7 +69,7 @@ object_weapon_ranged_heavy_heavy_rocket_launcher = object_weapon_ranged_heavy_sh
 
 	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
 	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
-	attackType = RANGEDATTACK,
+	attackType = HEAVYROCKETLAUNCHERATTACK,
 
 	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
 	damageType = BLAST,
@@ -97,6 +99,8 @@ object_weapon_ranged_heavy_heavy_rocket_launcher = object_weapon_ranged_heavy_sh
 	speedModifiers = { "heavy_rocket_launcher_speed" },
 
 	useCount = 40,
+
+	combatSpam = "rocket_launcher",
 
 	healthAttackCost = 95,
 	actionAttackCost = 42,

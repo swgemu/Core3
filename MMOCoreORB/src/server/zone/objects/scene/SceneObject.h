@@ -712,6 +712,8 @@ public:
 
 	bool isThrownWeaponObject();
 
+	bool isSpecialHeavyWeapon();
+
 	bool isRepairTool();
 
 	bool isCamoKit();
@@ -1381,6 +1383,8 @@ public:
 
 	bool isThrownWeaponObject();
 
+	bool isSpecialHeavyWeapon();
+
 	bool isRepairTool();
 
 	bool isCamoKit();
@@ -1909,6 +1913,8 @@ public:
 	bool isTrapObject();
 
 	bool isThrownWeaponObject();
+
+	bool isSpecialHeavyWeapon();
 
 	bool isRepairTool();
 

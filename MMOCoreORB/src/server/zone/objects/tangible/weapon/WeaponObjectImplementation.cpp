@@ -178,6 +178,8 @@ String WeaponObjectImplementation::getWeaponType() {
 		break;
 	case SceneObjectType::MINE:
 	case SceneObjectType::SPECIALHEAVYWEAPON:
+		weaponType = "specialheavyweapon";
+		break;
 	case SceneObjectType::HEAVYWEAPON:
 		weaponType = "heavyweapon";
 		break;

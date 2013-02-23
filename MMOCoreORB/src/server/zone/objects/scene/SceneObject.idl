@@ -1422,6 +1422,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return false;
 	}
 
+
 	@dirty
 	public abstract boolean isBuildingObject() {
 		return false;
@@ -1621,6 +1622,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@read
 	public boolean isThrownWeaponObject() {
 		return gameObjectType == SceneObjectType.THROWNWEAPON;
+	}
+
+	@read
+	public boolean isSpecialHeavyWeapon() {
+		return gameObjectType == SceneObjectType.SPECIALHEAVYWEAPON;
 	}
 
 	@read

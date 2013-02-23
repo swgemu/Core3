@@ -42,7 +42,10 @@
 
 
 object_weapon_ranged_heavy_heavy_particle_beam = object_weapon_ranged_heavy_shared_heavy_particle_beam:new {
+
+	templateType = SPECIALHEAVYWEAPON,
 	objectMenuComponent = {"cpp", "FireHeavyWeaponMenuComponent"},
+
 	playerRaces = { "object/creature/player/bothan_male.iff",
 				"object/creature/player/bothan_female.iff",
 				"object/creature/player/human_male.iff",
@@ -66,7 +69,7 @@ object_weapon_ranged_heavy_heavy_particle_beam = object_weapon_ranged_heavy_shar
 
 	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
 	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
-	attackType = RANGEDATTACK,
+	attackType = HEAVYPARTICLEBEAMATTACK,
 
 	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
 	damageType = ENERGY,
@@ -96,6 +99,8 @@ object_weapon_ranged_heavy_heavy_particle_beam = object_weapon_ranged_heavy_shar
 	speedModifiers = { "heavy_particle_beam_speed" },
 
 	useCount = 40,
+
+	combatSpam = "particle_beam",
 
 	healthAttackCost = 25,
 	actionAttackCost = 85,

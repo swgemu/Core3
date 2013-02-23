@@ -42,7 +42,10 @@
 
 
 object_weapon_ranged_heavy_heavy_acid_beam = object_weapon_ranged_heavy_shared_heavy_acid_beam:new {
+
+	templateType = SPECIALHEAVYWEAPON,
 	objectMenuComponent = {"cpp", "FireHeavyWeaponMenuComponent"},
+
 	playerRaces = { "object/creature/player/bothan_male.iff",
 				"object/creature/player/bothan_female.iff",
 				"object/creature/player/human_male.iff",
@@ -66,7 +69,7 @@ object_weapon_ranged_heavy_heavy_acid_beam = object_weapon_ranged_heavy_shared_h
 
 	-- RANGEDATTACK, MELEEATTACK, FORCEATTACK, TRAPATTACK, GRENADEATTACK, HEAVYACIDBEAMATTACK,
 	-- HEAVYLIGHTNINGBEAMATTACK, HEAVYPARTICLEBEAMATTACK, HEAVYROCKETLAUNCHERATTACK, HEAVYLAUNCHERATTACK
-	attackType = RANGEDATTACK,
+	attackType = HEAVYACIDBEAMATTACK,
 
 	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
 	damageType = ACID,
@@ -96,6 +99,8 @@ object_weapon_ranged_heavy_heavy_acid_beam = object_weapon_ranged_heavy_shared_h
 	speedModifiers = { "heavy_acid_beam_speed" },
 
 	useCount = 40,
+
+	combatSpam = "acid_beam",
 
 	-- Leave blank for now
 	damageModifiers = { },
