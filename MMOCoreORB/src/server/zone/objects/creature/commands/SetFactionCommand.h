@@ -91,26 +91,35 @@ public:
 		if (pobj != NULL)
 			targetPlayerObject = pobj->getPlayerObject();
 
-		StringBuffer msg;
-		msg << "PvPStatus = " << String::valueOf(pvpStatus) << endl;
-		msg << "Options = " << String::valueOf(optionsBitmask) << endl;
-		msg <<  "Faction = " << String::valueOf(intFaction) << endl;
 
-		if(targetPlayerObject != NULL)
-			msg << "Faction Status: " << String::valueOf(targetPlayerObject->getFactionStatus());
-
-		creature->sendSystemMessage(msg.toString());
 
 		//First, check if they passed a name with the command.
 		UnicodeTokenizer tokenizer(arguments);
 		tokenizer.setDelimeter(" ");
 
-		if (!tokenizer.hasMoreTokens())
-			return INVALIDPARAMETERS;
+		// if no parameters are given, just send the flags
+		if (!tokenizer.hasMoreTokens()){
+			StringBuffer msg;
+			msg << "PvPStatusbitmask = " << String::valueOf(pvpStatus) << endl;
+			msg << "Optionsbitmask = " << String::valueOf(optionsBitmask) << endl;
+			msg <<  "Faction = " << String::valueOf(intFaction) << endl;
+
+
+			if(targetPlayerObject != NULL)
+				msg << "Faction Status: " << String::valueOf(targetPlayerObject->getFactionStatus());
+
+			creature->sendSystemMessage(msg.toString());
+			return SUCCESS;
+		}
+
 
 		String faction;
 		tokenizer.getStringToken(faction);
 
+		if(!tokenizer.hasMoreTokens()){
+			creature->sendSystemMessage("SYNTAX: /setfaction <name> [imperial | rebel | neutral] [onleave | covert | overt ]");
+			return INVALIDPARAMETERS;
+		}
 		Locker _lock(tano,creature);
 
 		if (faction == "neutral")
@@ -146,10 +155,12 @@ public:
 
 				tano->setPvpStatusBitmask(pvpStatus);
 			}
+		} else {
+			UpdatePVPStatusMessage* upvpsm = new UpdatePVPStatusMessage(tano);
+			tano->broadcastMessage(upvpsm, true, true);
 		}
 
-		UpdatePVPStatusMessage* upvpsm = new UpdatePVPStatusMessage(tano);
-		tano->broadcastMessage(upvpsm, true, true);
+
 		return SUCCESS;
 	}
 };
