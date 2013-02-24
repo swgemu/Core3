@@ -298,6 +298,8 @@ public:
 
 	void addPointValue(const String& templateString, int val);
 
+	void awardSlicingXP(CreatureObject* creature, const String& xpType, int value);
+
 	DistributedObjectServant* _getImplementation();
 
 	void _setImplementation(DistributedObjectServant* servant);
@@ -608,6 +610,8 @@ public:
 
 	void addPointValue(const String& templateString, int val);
 
+	void awardSlicingXP(CreatureObject* creature, const String& xpType, int value);
+
 	WeakReference<GCWManager*> _this;
 
 	operator const GCWManager*();
@@ -754,6 +758,8 @@ public:
 	int getImperialBaseCount();
 
 	int getRebelBaseCount();
+
+	void awardSlicingXP(CreatureObject* creature, const String& xpType, int value);
 
 };
 

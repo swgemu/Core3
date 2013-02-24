@@ -1182,14 +1182,19 @@ void GCWManagerImplementation::verifyUplinkBand(CreatureObject* creature, Buildi
 	if( band == baseData->getUplinkBand()){
 
 		Locker block(building,creature);
+		creature->sendSystemMessage("SUCCESS");
+		if(this->isBandIdentified(building)) {
 
-		if(this->isBandIdentified(building))
 			baseData->setState(DestructibleBuildingDataComponent::JAMMED);
+			awardSlicingXP(creature, "bountyhunter", 1000);
+
+
+		}
 		else
 			baseData->setState(DestructibleBuildingDataComponent::BAND);
 
 		this->renewUplinkBand(building);
-		creature->sendSystemMessage("SUCCESS");
+
 		block.release();
 
 
@@ -1637,6 +1642,7 @@ void GCWManagerImplementation::processDNASample(CreatureObject* creature, Buildi
 	{
 		creature->sendSystemMessage("DNA Profiles complete");
 		baseData->setState(DestructibleBuildingDataComponent::DNA);
+		awardSlicingXP(creature, "bio_engineer_dna_harvesting", 1000);
 	}
 
 }
@@ -1722,6 +1728,7 @@ void GCWManagerImplementation::handlePowerRegulatorSwitch(CreatureObject* creatu
 		StringIdChatParameter msg("@faction/faction_hq/faction_hq_response:alignment_complete");  // Alignment complete!  The facility may now be set to overload from the primary terminal.
 		broadcastBuilding(building, msg);
 		baseData->setState(DestructibleBuildingDataComponent::OVERLOADED);
+		awardSlicingXP(creature, "combat_rangedspecialize_heavy", 1000);
 	}
 	else {
 		block.release();
@@ -2410,5 +2417,17 @@ void GCWManagerImplementation::broadcastBuilding(BuildingObject* building, Strin
 				targetPlayer->sendSystemMessage(params);
 		}
 	}
+}
+
+void GCWManagerImplementation::awardSlicingXP(CreatureObject* creature,  const String& xpType, int val){
+	if(creature->getZoneServer() == NULL)
+		return;
+
+	PlayerManager* playerManager = creature->getZoneServer()->getPlayerManager();
+
+	if(playerManager == NULL)
+		return;
+
+	playerManager->awardExperience(creature, xpType, val, true);
 }
 

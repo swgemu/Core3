@@ -406,5 +406,9 @@ class GCWManager extends ManagedService implements Logger {
 			baseValue.put(templateString, val);
 		}
 	}
+
+
+	public native void awardSlicingXP(CreatureObject creature, final string xpType, int value);
+
 }
 
