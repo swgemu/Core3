@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "ObjectControllerMessage.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "ObjectControllerMessageCallback.h"
