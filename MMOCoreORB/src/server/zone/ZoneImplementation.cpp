@@ -430,10 +430,6 @@ SceneObject* ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, 
 
 	SortedVector<MapLocationEntry>& sortedVector = mapLocations->getLocation(mapObjectLocationType);
 
-#ifndef WITH_STM
-	mapLocations->runlock();
-#endif
-
 	float distance = 16000.f;
 
 	for (int i = 0; i < sortedVector.size(); ++i) {
@@ -446,6 +442,11 @@ SceneObject* ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, 
 			distance = objDistance;
 		}
 	}
+
+#ifndef WITH_STM
+	mapLocations->runlock();
+#endif
+
 	return planetaryObject.get();
 }
 
