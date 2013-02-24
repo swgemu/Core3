@@ -203,6 +203,11 @@ public:
 		if (!newParent->isCellObject() || newParent->getParent() == NULL)
 			return;
 
+		ManagedReference<BuildingObject*> building = newParent->getParent().castTo<BuildingObject*>();
+
+		if (building == NULL)
+			return;
+
 		ManagedReference<SceneObject*> par = object->getParent();
 
 		if (par != NULL && par->isShipObject())
@@ -220,7 +225,7 @@ public:
 		ValidatedPosition pos;
 		pos.update(object);
 
-		if (object->isFrozen()) {
+		if (object->isFrozen() || !building->isAllowedEntry(object)) {
 			bounceBack(object, pos);
 			return;
 		}
