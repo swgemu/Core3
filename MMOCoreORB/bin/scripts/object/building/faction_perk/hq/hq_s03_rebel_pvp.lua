@@ -133,7 +133,7 @@ object_building_faction_perk_hq_hq_s03_rebel_pvp = object_building_faction_perk_
 			{templateFile="object/tangible/terminal/terminal_mission.iff", x=-11, z=-13.75, y=7, ow=.7, ox=0, oz=0, oy=.7, cellid=7, containmentType=-1},
 			{templateFile="object/tangible/terminal/terminal_bank.iff", x=6, z=-13.75, y=10, ow=0, ox=0, oz=0, oy=1, cellid=7, containmentType=-1},
 			{templateFile="object/tangible/terminal/terminal_insurance.iff", x=-9, z=-13.75, y=10, ow=0, ox=0, oz=0, oy=1, cellid=7, containmentType=-1},
-			{templateFile="object/tangible/terminal/terminal_mission_imperial.iff", x=8, z=-13.75, y=7, ow=-.7, ox=0, oz=0, oy=.7, cellid=7, containmentType=-1},
+			{templateFile="object/tangible/terminal/terminal_mission_rebel.iff", x=8, z=-13.75, y=7, ow=-.7, ox=0, oz=0, oy=.7, cellid=7, containmentType=-1},
 			
 		},
 	childCreatureObjects = {
