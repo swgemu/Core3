@@ -199,7 +199,7 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 
 		zone = parent->getRootParent().get()->getZone();
 
-		zone->transferObject(sceneObject, -1, false);
+		zone->transferObject(sceneObject, -2, false);
 
 		zone->unlock();
 	} else {

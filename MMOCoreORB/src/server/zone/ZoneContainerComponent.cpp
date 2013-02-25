@@ -139,7 +139,11 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 
 	if (parent != NULL/* && parent->isCellObject()*/) {
 		uint64 parentID = object->getParentID();
-		parent->removeObject(object, sceneObject, true);
+
+		if (containmentType == -2)
+			parent->removeObject(object, sceneObject, false);
+		else
+			parent->removeObject(object, sceneObject, true);
 
 		if (object->getParent() != NULL && parent->containsChildObject(object))
 			return false;
