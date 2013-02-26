@@ -76,10 +76,14 @@ void BlueprintEntry::addSerializableVariables() {
 
 void BlueprintEntry::insertSchematicAttribute(AttributeListMessage* alm) {
 
-	String name = "cat_manf_schem_ing_resource.\""
-			+ displayedName + " " + serialNumber;
+	String name = "cat_manf_schem_ing_resource.\"" + displayedName;
+	StringBuffer value;
+	value << quantity;
 
-	alm->insertAttribute(name, quantity);
+	if(type == "component")
+		value << "\n" << serialNumber;
+
+	alm->insertAttribute(name, value);
 }
 
 void BlueprintEntry::insertFactoryIngredient(SuiListBox* ingredientList) {
@@ -88,7 +92,7 @@ void BlueprintEntry::insertFactoryIngredient(SuiListBox* ingredientList) {
 	sendstring << displayedName;
 
 	if(type == "component")
-		sendstring  << serialNumber ;
+		sendstring  << " " << serialNumber;
 
 	sendstring << ":\\>200" << quantity;
 
