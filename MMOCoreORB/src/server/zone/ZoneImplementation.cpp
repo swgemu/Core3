@@ -306,7 +306,11 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, SortedVector<Man
 void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 	//Locker locker(_this.get());
 
+	Locker _alocker(object->getContainerLock());
+
 	SortedVector<ManagedReference<ActiveArea* > > areas = *dynamic_cast<SortedVector<ManagedReference<ActiveArea* > >* >(object->getActiveAreas());
+
+	_alocker.release();
 
 	Vector3 worldPos = object->getWorldPosition();
 

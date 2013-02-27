@@ -463,8 +463,12 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 		Vector<ManagedReference<ActiveArea*> >* activeAreas =  sceneObject->getActiveAreas();
 
 		while (activeAreas->size() > 0) {
+			Locker _alocker(sceneObject->getContainerLock());
+
 			ManagedReference<ActiveArea*> area = activeAreas->get(0);
 			activeAreas->remove(0);
+
+			_alocker.release();
 
 			area->enqueueExitEvent(sceneObject);
 		}

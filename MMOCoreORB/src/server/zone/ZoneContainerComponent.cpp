@@ -251,8 +251,12 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 		zoneLocker.release();
 
 		while (activeAreas->size() > 0) {
+			Locker _alocker(object->getContainerLock());
+
 			ManagedReference<ActiveArea*> area = activeAreas->get(0);
 			activeAreas->remove(0);
+
+			_alocker.release();
 
 			area->enqueueExitEvent(object);
 		}
