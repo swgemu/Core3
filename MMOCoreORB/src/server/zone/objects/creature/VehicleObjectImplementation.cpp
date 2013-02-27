@@ -16,6 +16,7 @@
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/creature/sui/RepairVehicleSuiCallback.h"
 
 void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -73,19 +74,22 @@ int VehicleObjectImplementation::handleObjectMenuSelect(CreatureObject* player, 
 void VehicleObjectImplementation::repairVehicle(CreatureObject* player) {
 	if (!player->getPlayerObject()->isPrivileged()) {
 		//Need to check if they are city banned.
-		/*
+		
 		ManagedReference<ActiveArea*> activeArea = getActiveRegion();
 
 		if (activeArea != NULL && activeArea->isRegion()) {
 			Region* region = cast<Region*>( activeArea.get());
 
-			ManagedReference<CityHallObject*> cityHall = region->getCityHall();
+			ManagedReference<CityRegion*> gb = region->getCityRegion();
+			
+			if (gb == NULL)
+				return;
 
-			if (cityHall != NULL && cityHall->isBanned(player->getObjectID())) {
+			if (gb->isBanned(player->getObjectID()))  {
 				player->sendSystemMessage("@city/city:garage_banned"); //You are city banned and cannot use this garage.
 				return;
 			}
-		}*/
+		
 
 		if (getConditionDamage() == 0) {
 			player->sendSystemMessage("@pet/pet_menu:undamaged_vehicle"); //The targeted vehicle does not require any repairs at the moment.
@@ -100,15 +104,15 @@ void VehicleObjectImplementation::repairVehicle(CreatureObject* player) {
 		if (!checkInRangeGarage()) {
 			player->sendSystemMessage("@pet/pet_menu:repair_unrecognized_garages"); //Your vehicle does not recognize any local garages. Try again in a garage repair zone.
 			return;
+			}
 		}
-	}
-
+	}	
 	sendRepairConfirmTo(player);
 }
 
 void VehicleObjectImplementation::sendRepairConfirmTo(CreatureObject* player) {
 	ManagedReference<SuiListBox*> listbox = new SuiListBox(player, SuiWindowType::GARAGE_REPAIR);
-        listbox->setCallback(new RepairVehicleSuiCallback(server->getZoneServer()));
+    listbox->setCallback(new RepairVehicleSuiCallback(server->getZoneServer()));
 	listbox->setPromptTitle("@pet/pet_menu:confirm_repairs_t"); //Confirm Vehicle Repairs
 	listbox->setPromptText("@pet/pet_menu:vehicle_repair_d"); //You have chosen to repair your vehicle. Please review the listed details and confirm your selection.
 	listbox->setUsingObject(_this.get());
