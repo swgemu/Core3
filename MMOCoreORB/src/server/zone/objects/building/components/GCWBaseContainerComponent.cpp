@@ -19,7 +19,7 @@ bool GCWBaseContainerComponent::checkContainerPermission(SceneObject* sceneObjec
 
 }
 bool GCWBaseContainerComponent::checkContainerPermission(BuildingObject* building, CreatureObject* creature, uint16 permission, bool sendMessage){
-	if(ContainerPermissions::WALKIN){
+	if(permission == ContainerPermissions::WALKIN){
 
 		if(building == NULL){
 			return false;
