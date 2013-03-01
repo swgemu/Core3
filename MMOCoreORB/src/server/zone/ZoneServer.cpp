@@ -984,6 +984,10 @@ DistributedObjectServant* ZoneServer::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ZoneServer::_getImplementationForRead() {
+	return _impl;
+}
+
 void ZoneServer::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -1035,14 +1039,14 @@ void ZoneServerImplementation::_serializationHelperMethod() {
 void ZoneServerImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ZoneServerImplementation::readObjectMember(stream, _name)) {
+		if(ZoneServerImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -1051,125 +1055,104 @@ void ZoneServerImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ZoneServerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedServiceImplementation::readObjectMember(stream, _name))
+bool ZoneServerImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedServiceImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "ZoneServer.zones") {
+	switch(nameHashCode) {
+	case 0x1e2bcb2d: //ZoneServer.zones
 		TypeInfo<Reference<VectorMap<String, ManagedReference<Zone* > >* > >::parseFromBinaryStream(&zones, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.playerManager") {
+	case 0xc3a16682: //ZoneServer.playerManager
 		TypeInfo<ManagedReference<PlayerManager* > >::parseFromBinaryStream(&playerManager, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.chatManager") {
+	case 0x2b99de0: //ZoneServer.chatManager
 		TypeInfo<ManagedReference<ChatManager* > >::parseFromBinaryStream(&chatManager, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.radialManager") {
+	case 0x6dfdd7e9: //ZoneServer.radialManager
 		TypeInfo<ManagedReference<RadialManager* > >::parseFromBinaryStream(&radialManager, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.cityManager") {
+	case 0x48466c16: //ZoneServer.cityManager
 		TypeInfo<ManagedReference<CityManager* > >::parseFromBinaryStream(&cityManager, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.resourceManager") {
+	case 0x24901fc3: //ZoneServer.resourceManager
 		TypeInfo<ManagedReference<ResourceManager* > >::parseFromBinaryStream(&resourceManager, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.craftingManager") {
+	case 0xb6ce71f5: //ZoneServer.craftingManager
 		TypeInfo<ManagedReference<CraftingManager* > >::parseFromBinaryStream(&craftingManager, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.lootManager") {
+	case 0x112cdc92: //ZoneServer.lootManager
 		TypeInfo<ManagedReference<LootManager* > >::parseFromBinaryStream(&lootManager, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.auctionManager") {
+	case 0x33e2b96: //ZoneServer.auctionManager
 		TypeInfo<ManagedReference<AuctionManager* > >::parseFromBinaryStream(&auctionManager, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.missionManager") {
+	case 0xf6cb827d: //ZoneServer.missionManager
 		TypeInfo<ManagedReference<MissionManager* > >::parseFromBinaryStream(&missionManager, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.guildManager") {
+	case 0x81f494f1: //ZoneServer.guildManager
 		TypeInfo<ManagedReference<GuildManager* > >::parseFromBinaryStream(&guildManager, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.totalSentPackets") {
+	case 0x3b69de8: //ZoneServer.totalSentPackets
 		TypeInfo<int >::parseFromBinaryStream(&totalSentPackets, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.serverCap") {
+	case 0x1d75880a: //ZoneServer.serverCap
 		TypeInfo<int >::parseFromBinaryStream(&serverCap, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.totalResentPackets") {
+	case 0xfc1cc451: //ZoneServer.totalResentPackets
 		TypeInfo<int >::parseFromBinaryStream(&totalResentPackets, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.currentPlayers") {
+	case 0x1124da92: //ZoneServer.currentPlayers
 		TypeInfo<AtomicInteger >::parseFromBinaryStream(&currentPlayers, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.maximumPlayers") {
+	case 0x54895ded: //ZoneServer.maximumPlayers
 		TypeInfo<AtomicInteger >::parseFromBinaryStream(&maximumPlayers, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.totalPlayers") {
+	case 0x77b372b6: //ZoneServer.totalPlayers
 		TypeInfo<AtomicInteger >::parseFromBinaryStream(&totalPlayers, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.totalDeletedPlayers") {
+	case 0x8a02b5fd: //ZoneServer.totalDeletedPlayers
 		TypeInfo<AtomicInteger >::parseFromBinaryStream(&totalDeletedPlayers, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.serverState") {
+	case 0xcaeb09fc: //ZoneServer.serverState
 		TypeInfo<int >::parseFromBinaryStream(&serverState, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.galaxyName") {
+	case 0x9f277bef: //ZoneServer.galaxyName
 		TypeInfo<String >::parseFromBinaryStream(&galaxyName, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.loginMessage") {
+	case 0x750e79c: //ZoneServer.loginMessage
 		TypeInfo<String >::parseFromBinaryStream(&loginMessage, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.galaxyID") {
+	case 0xae7b80fc: //ZoneServer.galaxyID
 		TypeInfo<int >::parseFromBinaryStream(&galaxyID, stream);
 		return true;
-	}
 
-	if (_name == "ZoneServer.startTimestamp") {
+	case 0x45609618: //ZoneServer.startTimestamp
 		TypeInfo<Time >::parseFromBinaryStream(&startTimestamp, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -1184,187 +1167,187 @@ void ZoneServerImplementation::writeObject(ObjectOutputStream* stream) {
 int ZoneServerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "ZoneServer.zones";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1e2bcb2d; //ZoneServer.zones
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Reference<VectorMap<String, ManagedReference<Zone* > >* > >::toBinaryStream(&zones, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.playerManager";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc3a16682; //ZoneServer.playerManager
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<PlayerManager* > >::toBinaryStream(&playerManager, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.chatManager";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2b99de0; //ZoneServer.chatManager
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<ChatManager* > >::toBinaryStream(&chatManager, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.radialManager";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6dfdd7e9; //ZoneServer.radialManager
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<RadialManager* > >::toBinaryStream(&radialManager, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.cityManager";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x48466c16; //ZoneServer.cityManager
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<CityManager* > >::toBinaryStream(&cityManager, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.resourceManager";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x24901fc3; //ZoneServer.resourceManager
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<ResourceManager* > >::toBinaryStream(&resourceManager, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.craftingManager";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb6ce71f5; //ZoneServer.craftingManager
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<CraftingManager* > >::toBinaryStream(&craftingManager, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.lootManager";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x112cdc92; //ZoneServer.lootManager
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<LootManager* > >::toBinaryStream(&lootManager, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.auctionManager";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x33e2b96; //ZoneServer.auctionManager
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<AuctionManager* > >::toBinaryStream(&auctionManager, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.missionManager";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf6cb827d; //ZoneServer.missionManager
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<MissionManager* > >::toBinaryStream(&missionManager, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.guildManager";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x81f494f1; //ZoneServer.guildManager
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<GuildManager* > >::toBinaryStream(&guildManager, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.totalSentPackets";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3b69de8; //ZoneServer.totalSentPackets
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&totalSentPackets, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.serverCap";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1d75880a; //ZoneServer.serverCap
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&serverCap, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.totalResentPackets";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfc1cc451; //ZoneServer.totalResentPackets
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&totalResentPackets, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.currentPlayers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1124da92; //ZoneServer.currentPlayers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<AtomicInteger >::toBinaryStream(&currentPlayers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.maximumPlayers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x54895ded; //ZoneServer.maximumPlayers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<AtomicInteger >::toBinaryStream(&maximumPlayers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.totalPlayers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x77b372b6; //ZoneServer.totalPlayers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<AtomicInteger >::toBinaryStream(&totalPlayers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.totalDeletedPlayers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8a02b5fd; //ZoneServer.totalDeletedPlayers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<AtomicInteger >::toBinaryStream(&totalDeletedPlayers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.serverState";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xcaeb09fc; //ZoneServer.serverState
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&serverState, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.galaxyName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9f277bef; //ZoneServer.galaxyName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&galaxyName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.loginMessage";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x750e79c; //ZoneServer.loginMessage
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&loginMessage, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.galaxyID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xae7b80fc; //ZoneServer.galaxyID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&galaxyID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneServer.startTimestamp";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x45609618; //ZoneServer.startTimestamp
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&startTimestamp, stream);

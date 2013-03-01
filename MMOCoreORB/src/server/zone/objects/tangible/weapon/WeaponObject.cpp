@@ -1179,6 +1179,10 @@ DistributedObjectServant* WeaponObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* WeaponObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void WeaponObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -1258,14 +1262,14 @@ void WeaponObjectImplementation::_serializationHelperMethod() {
 void WeaponObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(WeaponObjectImplementation::readObjectMember(stream, _name)) {
+		if(WeaponObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -1274,140 +1278,116 @@ void WeaponObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool WeaponObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool WeaponObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "WeaponObject.attackType") {
+	switch(nameHashCode) {
+	case 0xaf7c0a4b: //WeaponObject.attackType
 		TypeInfo<int >::parseFromBinaryStream(&attackType, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.weaponEffect") {
+	case 0xce821459: //WeaponObject.weaponEffect
 		TypeInfo<String >::parseFromBinaryStream(&weaponEffect, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.weaponEffectIndex") {
+	case 0x3f0d10bc: //WeaponObject.weaponEffectIndex
 		TypeInfo<int >::parseFromBinaryStream(&weaponEffectIndex, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.certified") {
+	case 0x3115d69d: //WeaponObject.certified
 		TypeInfo<bool >::parseFromBinaryStream(&certified, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.armorPiercing") {
+	case 0x6b12d54f: //WeaponObject.armorPiercing
 		TypeInfo<int >::parseFromBinaryStream(&armorPiercing, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.pointBlankAccuracy") {
+	case 0x152e5f75: //WeaponObject.pointBlankAccuracy
 		TypeInfo<int >::parseFromBinaryStream(&pointBlankAccuracy, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.pointBlankRange") {
+	case 0x670ae4ff: //WeaponObject.pointBlankRange
 		TypeInfo<int >::parseFromBinaryStream(&pointBlankRange, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.idealRange") {
+	case 0xc470ee9f: //WeaponObject.idealRange
 		TypeInfo<int >::parseFromBinaryStream(&idealRange, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.idealAccuracy") {
+	case 0xd480b36e: //WeaponObject.idealAccuracy
 		TypeInfo<int >::parseFromBinaryStream(&idealAccuracy, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.maxRange") {
+	case 0x9890e346: //WeaponObject.maxRange
 		TypeInfo<int >::parseFromBinaryStream(&maxRange, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.maxRangeAccuracy") {
+	case 0x2613027b: //WeaponObject.maxRangeAccuracy
 		TypeInfo<int >::parseFromBinaryStream(&maxRangeAccuracy, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.damageType") {
+	case 0xb67af664: //WeaponObject.damageType
 		TypeInfo<int >::parseFromBinaryStream(&damageType, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.attackSpeed") {
+	case 0x7e68aff1: //WeaponObject.attackSpeed
 		TypeInfo<float >::parseFromBinaryStream(&attackSpeed, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.minDamage") {
+	case 0x244a18e6: //WeaponObject.minDamage
 		TypeInfo<float >::parseFromBinaryStream(&minDamage, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.maxDamage") {
+	case 0xb1865fc5: //WeaponObject.maxDamage
 		TypeInfo<float >::parseFromBinaryStream(&maxDamage, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.damageRadius") {
+	case 0x80491112: //WeaponObject.damageRadius
 		TypeInfo<float >::parseFromBinaryStream(&damageRadius, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.woundsRatio") {
+	case 0xc038e1ce: //WeaponObject.woundsRatio
 		TypeInfo<float >::parseFromBinaryStream(&woundsRatio, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.healthAttackCost") {
+	case 0x2b72cd02: //WeaponObject.healthAttackCost
 		TypeInfo<int >::parseFromBinaryStream(&healthAttackCost, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.actionAttackCost") {
+	case 0x9957963b: //WeaponObject.actionAttackCost
 		TypeInfo<int >::parseFromBinaryStream(&actionAttackCost, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.mindAttackCost") {
+	case 0x987636de: //WeaponObject.mindAttackCost
 		TypeInfo<int >::parseFromBinaryStream(&mindAttackCost, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.forceCost") {
+	case 0x42b7f5e: //WeaponObject.forceCost
 		TypeInfo<int >::parseFromBinaryStream(&forceCost, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.bladeColor") {
+	case 0x2e53bceb: //WeaponObject.bladeColor
 		TypeInfo<int >::parseFromBinaryStream(&bladeColor, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.powerupObject") {
+	case 0x39d8ea3d: //WeaponObject.powerupObject
 		TypeInfo<ManagedReference<PowerupObject* > >::parseFromBinaryStream(&powerupObject, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.damageSlice") {
+	case 0x8cf72617: //WeaponObject.damageSlice
 		TypeInfo<float >::parseFromBinaryStream(&damageSlice, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.speedSlice") {
+	case 0x949b206c: //WeaponObject.speedSlice
 		TypeInfo<float >::parseFromBinaryStream(&speedSlice, stream);
 		return true;
-	}
 
-	if (_name == "WeaponObject.wearableSkillMods") {
+	case 0xdeec3bb7: //WeaponObject.wearableSkillMods
 		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&wearableSkillMods, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -1422,211 +1402,211 @@ void WeaponObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int WeaponObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "WeaponObject.attackType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xaf7c0a4b; //WeaponObject.attackType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&attackType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.weaponEffect";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xce821459; //WeaponObject.weaponEffect
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&weaponEffect, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.weaponEffectIndex";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3f0d10bc; //WeaponObject.weaponEffectIndex
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&weaponEffectIndex, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.certified";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3115d69d; //WeaponObject.certified
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&certified, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.armorPiercing";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6b12d54f; //WeaponObject.armorPiercing
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&armorPiercing, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.pointBlankAccuracy";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x152e5f75; //WeaponObject.pointBlankAccuracy
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&pointBlankAccuracy, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.pointBlankRange";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x670ae4ff; //WeaponObject.pointBlankRange
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&pointBlankRange, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.idealRange";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc470ee9f; //WeaponObject.idealRange
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&idealRange, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.idealAccuracy";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd480b36e; //WeaponObject.idealAccuracy
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&idealAccuracy, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.maxRange";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9890e346; //WeaponObject.maxRange
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&maxRange, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.maxRangeAccuracy";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2613027b; //WeaponObject.maxRangeAccuracy
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&maxRangeAccuracy, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.damageType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb67af664; //WeaponObject.damageType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&damageType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.attackSpeed";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7e68aff1; //WeaponObject.attackSpeed
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&attackSpeed, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.minDamage";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x244a18e6; //WeaponObject.minDamage
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&minDamage, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.maxDamage";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb1865fc5; //WeaponObject.maxDamage
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&maxDamage, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.damageRadius";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x80491112; //WeaponObject.damageRadius
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&damageRadius, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.woundsRatio";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc038e1ce; //WeaponObject.woundsRatio
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&woundsRatio, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.healthAttackCost";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2b72cd02; //WeaponObject.healthAttackCost
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&healthAttackCost, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.actionAttackCost";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9957963b; //WeaponObject.actionAttackCost
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&actionAttackCost, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.mindAttackCost";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x987636de; //WeaponObject.mindAttackCost
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&mindAttackCost, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.forceCost";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x42b7f5e; //WeaponObject.forceCost
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&forceCost, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.bladeColor";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2e53bceb; //WeaponObject.bladeColor
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&bladeColor, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.powerupObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x39d8ea3d; //WeaponObject.powerupObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<PowerupObject* > >::toBinaryStream(&powerupObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.damageSlice";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8cf72617; //WeaponObject.damageSlice
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&damageSlice, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.speedSlice";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x949b206c; //WeaponObject.speedSlice
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&speedSlice, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WeaponObject.wearableSkillMods";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xdeec3bb7; //WeaponObject.wearableSkillMods
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<String, int> >::toBinaryStream(&wearableSkillMods, stream);

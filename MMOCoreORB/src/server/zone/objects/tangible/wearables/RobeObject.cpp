@@ -84,6 +84,10 @@ DistributedObjectServant* RobeObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* RobeObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void RobeObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -163,14 +167,14 @@ void RobeObjectImplementation::_serializationHelperMethod() {
 void RobeObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(RobeObjectImplementation::readObjectMember(stream, _name)) {
+		if(RobeObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -179,15 +183,16 @@ void RobeObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool RobeObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (WearableObjectImplementation::readObjectMember(stream, _name))
+bool RobeObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (WearableObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "RobeObject.skillRequired") {
+	switch(nameHashCode) {
+	case 0xa0fa63e3: //RobeObject.skillRequired
 		TypeInfo<String >::parseFromBinaryStream(&skillRequired, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -202,11 +207,11 @@ void RobeObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int RobeObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = WearableObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "RobeObject.skillRequired";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa0fa63e3; //RobeObject.skillRequired
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&skillRequired, stream);

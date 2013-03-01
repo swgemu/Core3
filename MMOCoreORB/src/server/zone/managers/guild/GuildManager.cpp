@@ -817,6 +817,10 @@ DistributedObjectServant* GuildManager::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* GuildManager::_getImplementationForRead() {
+	return _impl;
+}
+
 void GuildManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -896,14 +900,14 @@ void GuildManagerImplementation::_serializationHelperMethod() {
 void GuildManagerImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(GuildManagerImplementation::readObjectMember(stream, _name)) {
+		if(GuildManagerImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -912,30 +916,28 @@ void GuildManagerImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool GuildManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedServiceImplementation::readObjectMember(stream, _name))
+bool GuildManagerImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedServiceImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "GuildManager.guildList") {
+	switch(nameHashCode) {
+	case 0xdec1a904: //GuildManager.guildList
 		TypeInfo<DeltaSet<String, ManagedReference<GuildObject* > > >::parseFromBinaryStream(&guildList, stream);
 		return true;
-	}
 
-	if (_name == "GuildManager.requiredMembers") {
+	case 0xe380d077: //GuildManager.requiredMembers
 		TypeInfo<int >::parseFromBinaryStream(&requiredMembers, stream);
 		return true;
-	}
 
-	if (_name == "GuildManager.maximumMembers") {
+	case 0x1c0d34c5: //GuildManager.maximumMembers
 		TypeInfo<int >::parseFromBinaryStream(&maximumMembers, stream);
 		return true;
-	}
 
-	if (_name == "GuildManager.guildUpdateInterval") {
+	case 0x8097075f: //GuildManager.guildUpdateInterval
 		TypeInfo<int >::parseFromBinaryStream(&guildUpdateInterval, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -950,35 +952,35 @@ void GuildManagerImplementation::writeObject(ObjectOutputStream* stream) {
 int GuildManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "GuildManager.guildList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xdec1a904; //GuildManager.guildList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<DeltaSet<String, ManagedReference<GuildObject* > > >::toBinaryStream(&guildList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "GuildManager.requiredMembers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe380d077; //GuildManager.requiredMembers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&requiredMembers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "GuildManager.maximumMembers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1c0d34c5; //GuildManager.maximumMembers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&maximumMembers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "GuildManager.guildUpdateInterval";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8097075f; //GuildManager.guildUpdateInterval
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&guildUpdateInterval, stream);

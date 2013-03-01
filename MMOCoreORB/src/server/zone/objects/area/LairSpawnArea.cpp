@@ -144,6 +144,10 @@ DistributedObjectServant* LairSpawnArea::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* LairSpawnArea::_getImplementationForRead() {
+	return _impl;
+}
+
 void LairSpawnArea::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -223,14 +227,14 @@ void LairSpawnAreaImplementation::_serializationHelperMethod() {
 void LairSpawnAreaImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(LairSpawnAreaImplementation::readObjectMember(stream, _name)) {
+		if(LairSpawnAreaImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -239,35 +243,32 @@ void LairSpawnAreaImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool LairSpawnAreaImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (SpawnAreaImplementation::readObjectMember(stream, _name))
+bool LairSpawnAreaImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (SpawnAreaImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "LairSpawnArea.currentlySpawnedLairs") {
+	switch(nameHashCode) {
+	case 0xa7b96281: //LairSpawnArea.currentlySpawnedLairs
 		TypeInfo<int >::parseFromBinaryStream(&currentlySpawnedLairs, stream);
 		return true;
-	}
 
-	if (_name == "LairSpawnArea.exitObserver") {
+	case 0xc0e38d93: //LairSpawnArea.exitObserver
 		TypeInfo<ManagedReference<SpawnObserver* > >::parseFromBinaryStream(&exitObserver, stream);
 		return true;
-	}
 
-	if (_name == "LairSpawnArea.spawnedGroupsCount") {
+	case 0xfe9083a2: //LairSpawnArea.spawnedGroupsCount
 		TypeInfo<HashTable<unsigned int, int> >::parseFromBinaryStream(&spawnedGroupsCount, stream);
 		return true;
-	}
 
-	if (_name == "LairSpawnArea.lairTypes") {
+	case 0x2639a6c: //LairSpawnArea.lairTypes
 		TypeInfo<HashTable<unsigned long long, unsigned int> >::parseFromBinaryStream(&lairTypes, stream);
 		return true;
-	}
 
-	if (_name == "LairSpawnArea.lastSpawn") {
+	case 0x5c3ffc95: //LairSpawnArea.lastSpawn
 		TypeInfo<Time >::parseFromBinaryStream(&lastSpawn, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -282,43 +283,43 @@ void LairSpawnAreaImplementation::writeObject(ObjectOutputStream* stream) {
 int LairSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = SpawnAreaImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "LairSpawnArea.currentlySpawnedLairs";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa7b96281; //LairSpawnArea.currentlySpawnedLairs
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&currentlySpawnedLairs, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LairSpawnArea.exitObserver";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc0e38d93; //LairSpawnArea.exitObserver
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SpawnObserver* > >::toBinaryStream(&exitObserver, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LairSpawnArea.spawnedGroupsCount";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfe9083a2; //LairSpawnArea.spawnedGroupsCount
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<HashTable<unsigned int, int> >::toBinaryStream(&spawnedGroupsCount, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LairSpawnArea.lairTypes";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2639a6c; //LairSpawnArea.lairTypes
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<HashTable<unsigned long long, unsigned int> >::toBinaryStream(&lairTypes, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LairSpawnArea.lastSpawn";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5c3ffc95; //LairSpawnArea.lastSpawn
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&lastSpawn, stream);

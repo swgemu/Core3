@@ -67,6 +67,10 @@ DistributedObjectServant* ConversationObserver::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ConversationObserver::_getImplementationForRead() {
+	return _impl;
+}
+
 void ConversationObserver::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -146,14 +150,14 @@ void ConversationObserverImplementation::_serializationHelperMethod() {
 void ConversationObserverImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ConversationObserverImplementation::readObjectMember(stream, _name)) {
+		if(ConversationObserverImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -162,20 +166,20 @@ void ConversationObserverImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ConversationObserverImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ObserverImplementation::readObjectMember(stream, _name))
+bool ConversationObserverImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ObserverImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "ConversationObserver.conversationTemplate") {
+	switch(nameHashCode) {
+	case 0xa11121f9: //ConversationObserver.conversationTemplate
 		TypeInfo<Reference<ConversationTemplate* > >::parseFromBinaryStream(&conversationTemplate, stream);
 		return true;
-	}
 
-	if (_name == "ConversationObserver.screenHandlers") {
+	case 0x746b2868: //ConversationObserver.screenHandlers
 		TypeInfo<VectorMap<String, ScreenHandler*> >::parseFromBinaryStream(&screenHandlers, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -190,19 +194,19 @@ void ConversationObserverImplementation::writeObject(ObjectOutputStream* stream)
 int ConversationObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ObserverImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "ConversationObserver.conversationTemplate";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa11121f9; //ConversationObserver.conversationTemplate
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Reference<ConversationTemplate* > >::toBinaryStream(&conversationTemplate, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ConversationObserver.screenHandlers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x746b2868; //ConversationObserver.screenHandlers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<String, ScreenHandler*> >::toBinaryStream(&screenHandlers, stream);

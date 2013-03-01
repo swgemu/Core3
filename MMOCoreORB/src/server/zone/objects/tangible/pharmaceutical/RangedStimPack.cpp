@@ -187,6 +187,10 @@ DistributedObjectServant* RangedStimPack::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* RangedStimPack::_getImplementationForRead() {
+	return _impl;
+}
+
 void RangedStimPack::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -266,14 +270,14 @@ void RangedStimPackImplementation::_serializationHelperMethod() {
 void RangedStimPackImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(RangedStimPackImplementation::readObjectMember(stream, _name)) {
+		if(RangedStimPackImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -282,25 +286,24 @@ void RangedStimPackImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool RangedStimPackImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (StimPackImplementation::readObjectMember(stream, _name))
+bool RangedStimPackImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (StimPackImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "RangedStimPack.range") {
+	switch(nameHashCode) {
+	case 0xddfb8e4d: //RangedStimPack.range
 		TypeInfo<float >::parseFromBinaryStream(&range, stream);
 		return true;
-	}
 
-	if (_name == "RangedStimPack.area") {
+	case 0xf6628ec4: //RangedStimPack.area
 		TypeInfo<float >::parseFromBinaryStream(&area, stream);
 		return true;
-	}
 
-	if (_name == "RangedStimPack.rangeMod") {
+	case 0xc99d9b82: //RangedStimPack.rangeMod
 		TypeInfo<float >::parseFromBinaryStream(&rangeMod, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -315,27 +318,27 @@ void RangedStimPackImplementation::writeObject(ObjectOutputStream* stream) {
 int RangedStimPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = StimPackImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "RangedStimPack.range";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xddfb8e4d; //RangedStimPack.range
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&range, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "RangedStimPack.area";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf6628ec4; //RangedStimPack.area
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&area, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "RangedStimPack.rangeMod";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc99d9b82; //RangedStimPack.rangeMod
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&rangeMod, stream);

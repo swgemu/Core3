@@ -52,6 +52,10 @@ DistributedObjectServant* ZoneManager::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ZoneManager::_getImplementationForRead() {
+	return _impl;
+}
+
 void ZoneManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -131,14 +135,14 @@ void ZoneManagerImplementation::_serializationHelperMethod() {
 void ZoneManagerImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ZoneManagerImplementation::readObjectMember(stream, _name)) {
+		if(ZoneManagerImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -147,10 +151,12 @@ void ZoneManagerImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ZoneManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedServiceImplementation::readObjectMember(stream, _name))
+bool ZoneManagerImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedServiceImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -165,7 +171,7 @@ void ZoneManagerImplementation::writeObject(ObjectOutputStream* stream) {
 int ZoneManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

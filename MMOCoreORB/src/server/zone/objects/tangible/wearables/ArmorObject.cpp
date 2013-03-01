@@ -553,6 +553,10 @@ DistributedObjectServant* ArmorObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ArmorObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void ArmorObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -632,14 +636,14 @@ void ArmorObjectImplementation::_serializationHelperMethod() {
 void ArmorObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ArmorObjectImplementation::readObjectMember(stream, _name)) {
+		if(ArmorObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -648,110 +652,92 @@ void ArmorObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ArmorObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (WearableObjectImplementation::readObjectMember(stream, _name))
+bool ArmorObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (WearableObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "ArmorObject.healthEncumbrance") {
+	switch(nameHashCode) {
+	case 0xeeb40659: //ArmorObject.healthEncumbrance
 		TypeInfo<int >::parseFromBinaryStream(&healthEncumbrance, stream);
 		return true;
-	}
 
-	if (_name == "ArmorObject.actionEncumbrance") {
+	case 0x7f538949: //ArmorObject.actionEncumbrance
 		TypeInfo<int >::parseFromBinaryStream(&actionEncumbrance, stream);
 		return true;
-	}
 
-	if (_name == "ArmorObject.mindEncumbrance") {
+	case 0xaecc083b: //ArmorObject.mindEncumbrance
 		TypeInfo<int >::parseFromBinaryStream(&mindEncumbrance, stream);
 		return true;
-	}
 
-	if (_name == "ArmorObject.rating") {
+	case 0x8d21b747: //ArmorObject.rating
 		TypeInfo<int >::parseFromBinaryStream(&rating, stream);
 		return true;
-	}
 
-	if (_name == "ArmorObject.kinetic") {
+	case 0xc065156e: //ArmorObject.kinetic
 		TypeInfo<float >::parseFromBinaryStream(&kinetic, stream);
 		return true;
-	}
 
-	if (_name == "ArmorObject.energy") {
+	case 0xd223642b: //ArmorObject.energy
 		TypeInfo<float >::parseFromBinaryStream(&energy, stream);
 		return true;
-	}
 
-	if (_name == "ArmorObject.electricity") {
+	case 0x68993a4b: //ArmorObject.electricity
 		TypeInfo<float >::parseFromBinaryStream(&electricity, stream);
 		return true;
-	}
 
-	if (_name == "ArmorObject.stun") {
+	case 0x7e45dbfc: //ArmorObject.stun
 		TypeInfo<float >::parseFromBinaryStream(&stun, stream);
 		return true;
-	}
 
-	if (_name == "ArmorObject.blast") {
+	case 0x84bf4ed: //ArmorObject.blast
 		TypeInfo<float >::parseFromBinaryStream(&blast, stream);
 		return true;
-	}
 
-	if (_name == "ArmorObject.heat") {
+	case 0x3a700fd0: //ArmorObject.heat
 		TypeInfo<float >::parseFromBinaryStream(&heat, stream);
 		return true;
-	}
 
-	if (_name == "ArmorObject.cold") {
+	case 0xfffd60d5: //ArmorObject.cold
 		TypeInfo<float >::parseFromBinaryStream(&cold, stream);
 		return true;
-	}
 
-	if (_name == "ArmorObject.acid") {
+	case 0xdd7d7e5d: //ArmorObject.acid
 		TypeInfo<float >::parseFromBinaryStream(&acid, stream);
 		return true;
-	}
 
-	if (_name == "ArmorObject.lightSaber") {
+	case 0xabba9979: //ArmorObject.lightSaber
 		TypeInfo<float >::parseFromBinaryStream(&lightSaber, stream);
 		return true;
-	}
 
-	if (_name == "ArmorObject.specialResists") {
+	case 0x10bcfe9d: //ArmorObject.specialResists
 		TypeInfo<int >::parseFromBinaryStream(&specialResists, stream);
 		return true;
-	}
 
-	if (_name == "ArmorObject.vulnerabilites") {
+	case 0x649e28d1: //ArmorObject.vulnerabilites
 		TypeInfo<int >::parseFromBinaryStream(&vulnerabilites, stream);
 		return true;
-	}
 
-	if (_name == "ArmorObject.hitLocation") {
+	case 0x3caaef3e: //ArmorObject.hitLocation
 		TypeInfo<byte >::parseFromBinaryStream(&hitLocation, stream);
 		return true;
-	}
 
-	if (_name == "ArmorObject.baseProtection") {
+	case 0xd16ec46a: //ArmorObject.baseProtection
 		TypeInfo<float >::parseFromBinaryStream(&baseProtection, stream);
 		return true;
-	}
 
-	if (_name == "ArmorObject.specialProtection") {
+	case 0xbceb2194: //ArmorObject.specialProtection
 		TypeInfo<float >::parseFromBinaryStream(&specialProtection, stream);
 		return true;
-	}
 
-	if (_name == "ArmorObject.effectivenessSlice") {
+	case 0xf3165a3d: //ArmorObject.effectivenessSlice
 		TypeInfo<float >::parseFromBinaryStream(&effectivenessSlice, stream);
 		return true;
-	}
 
-	if (_name == "ArmorObject.encumbranceSlice") {
+	case 0xc5431498: //ArmorObject.encumbranceSlice
 		TypeInfo<float >::parseFromBinaryStream(&encumbranceSlice, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -766,163 +752,163 @@ void ArmorObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int ArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = WearableObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "ArmorObject.healthEncumbrance";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xeeb40659; //ArmorObject.healthEncumbrance
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&healthEncumbrance, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.actionEncumbrance";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7f538949; //ArmorObject.actionEncumbrance
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&actionEncumbrance, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.mindEncumbrance";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xaecc083b; //ArmorObject.mindEncumbrance
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&mindEncumbrance, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.rating";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8d21b747; //ArmorObject.rating
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&rating, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.kinetic";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc065156e; //ArmorObject.kinetic
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&kinetic, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.energy";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd223642b; //ArmorObject.energy
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&energy, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.electricity";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x68993a4b; //ArmorObject.electricity
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&electricity, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.stun";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7e45dbfc; //ArmorObject.stun
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&stun, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.blast";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x84bf4ed; //ArmorObject.blast
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&blast, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.heat";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3a700fd0; //ArmorObject.heat
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&heat, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.cold";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfffd60d5; //ArmorObject.cold
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&cold, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.acid";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xdd7d7e5d; //ArmorObject.acid
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&acid, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.lightSaber";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xabba9979; //ArmorObject.lightSaber
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&lightSaber, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.specialResists";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x10bcfe9d; //ArmorObject.specialResists
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&specialResists, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.vulnerabilites";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x649e28d1; //ArmorObject.vulnerabilites
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&vulnerabilites, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.hitLocation";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3caaef3e; //ArmorObject.hitLocation
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&hitLocation, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.baseProtection";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd16ec46a; //ArmorObject.baseProtection
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&baseProtection, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.specialProtection";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbceb2194; //ArmorObject.specialProtection
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&specialProtection, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.effectivenessSlice";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf3165a3d; //ArmorObject.effectivenessSlice
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&effectivenessSlice, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorObject.encumbranceSlice";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc5431498; //ArmorObject.encumbranceSlice
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&encumbranceSlice, stream);

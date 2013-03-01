@@ -321,6 +321,10 @@ DistributedObjectServant* MissionObjective::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* MissionObjective::_getImplementationForRead() {
+	return _impl;
+}
+
 void MissionObjective::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -400,14 +404,14 @@ void MissionObjectiveImplementation::_serializationHelperMethod() {
 void MissionObjectiveImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(MissionObjectiveImplementation::readObjectMember(stream, _name)) {
+		if(MissionObjectiveImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -416,40 +420,36 @@ void MissionObjectiveImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool MissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+bool MissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "MissionObjective.observers") {
+	switch(nameHashCode) {
+	case 0x44338d23: //MissionObjective.observers
 		TypeInfo<SortedVector<ManagedReference<MissionObserver* > > >::parseFromBinaryStream(&observers, stream);
 		return true;
-	}
 
-	if (_name == "MissionObjective.mission") {
+	case 0xc4598e9: //MissionObjective.mission
 		TypeInfo<ManagedWeakReference<MissionObject* > >::parseFromBinaryStream(&mission, stream);
 		return true;
-	}
 
-	if (_name == "MissionObjective.objectiveType") {
+	case 0xb6ca065b: //MissionObjective.objectiveType
 		TypeInfo<unsigned int >::parseFromBinaryStream(&objectiveType, stream);
 		return true;
-	}
 
-	if (_name == "MissionObjective.missionStartTime") {
+	case 0xc9c97c10: //MissionObjective.missionStartTime
 		TypeInfo<Time >::parseFromBinaryStream(&missionStartTime, stream);
 		return true;
-	}
 
-	if (_name == "MissionObjective.failTask") {
+	case 0x2eeef7b2: //MissionObjective.failTask
 		TypeInfo<Reference<FailMissionAfterCertainTimeTask* > >::parseFromBinaryStream(&failTask, stream);
 		return true;
-	}
 
-	if (_name == "MissionObjective.timeRemaining") {
+	case 0x444331b: //MissionObjective.timeRemaining
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&timeRemaining, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -464,51 +464,51 @@ void MissionObjectiveImplementation::writeObject(ObjectOutputStream* stream) {
 int MissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "MissionObjective.observers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x44338d23; //MissionObjective.observers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<MissionObserver* > > >::toBinaryStream(&observers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObjective.mission";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc4598e9; //MissionObjective.mission
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<MissionObject* > >::toBinaryStream(&mission, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObjective.objectiveType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb6ca065b; //MissionObjective.objectiveType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&objectiveType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObjective.missionStartTime";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc9c97c10; //MissionObjective.missionStartTime
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&missionStartTime, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObjective.failTask";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2eeef7b2; //MissionObjective.failTask
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Reference<FailMissionAfterCertainTimeTask* > >::toBinaryStream(&failTask, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObjective.timeRemaining";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x444331b; //MissionObjective.timeRemaining
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&timeRemaining, stream);

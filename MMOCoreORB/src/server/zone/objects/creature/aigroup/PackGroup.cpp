@@ -45,6 +45,10 @@ DistributedObjectServant* PackGroup::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* PackGroup::_getImplementationForRead() {
+	return _impl;
+}
+
 void PackGroup::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -124,14 +128,14 @@ void PackGroupImplementation::_serializationHelperMethod() {
 void PackGroupImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(PackGroupImplementation::readObjectMember(stream, _name)) {
+		if(PackGroupImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -140,10 +144,12 @@ void PackGroupImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool PackGroupImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (AiGroupImplementation::readObjectMember(stream, _name))
+bool PackGroupImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (AiGroupImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -158,7 +164,7 @@ void PackGroupImplementation::writeObject(ObjectOutputStream* stream) {
 int PackGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = AiGroupImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

@@ -49,6 +49,10 @@ DistributedObjectServant* CampSiteObserver::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* CampSiteObserver::_getImplementationForRead() {
+	return _impl;
+}
+
 void CampSiteObserver::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -128,14 +132,14 @@ void CampSiteObserverImplementation::_serializationHelperMethod() {
 void CampSiteObserverImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(CampSiteObserverImplementation::readObjectMember(stream, _name)) {
+		if(CampSiteObserverImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -144,15 +148,16 @@ void CampSiteObserverImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool CampSiteObserverImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ObserverImplementation::readObjectMember(stream, _name))
+bool CampSiteObserverImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ObserverImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "CampSiteObserver.campArea") {
+	switch(nameHashCode) {
+	case 0xf88c5c20: //CampSiteObserver.campArea
 		TypeInfo<ManagedWeakReference<CampSiteActiveArea* > >::parseFromBinaryStream(&campArea, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -167,11 +172,11 @@ void CampSiteObserverImplementation::writeObject(ObjectOutputStream* stream) {
 int CampSiteObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ObserverImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "CampSiteObserver.campArea";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf88c5c20; //CampSiteObserver.campArea
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<CampSiteActiveArea* > >::toBinaryStream(&campArea, stream);

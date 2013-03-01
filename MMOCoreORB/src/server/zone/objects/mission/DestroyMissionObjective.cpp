@@ -185,6 +185,10 @@ DistributedObjectServant* DestroyMissionObjective::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* DestroyMissionObjective::_getImplementationForRead() {
+	return _impl;
+}
+
 void DestroyMissionObjective::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -262,14 +266,14 @@ void DestroyMissionObjectiveImplementation::_serializationHelperMethod() {
 void DestroyMissionObjectiveImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(DestroyMissionObjectiveImplementation::readObjectMember(stream, _name)) {
+		if(DestroyMissionObjectiveImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -278,30 +282,28 @@ void DestroyMissionObjectiveImplementation::readObject(ObjectInputStream* stream
 	initializeTransientMembers();
 }
 
-bool DestroyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
+bool DestroyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (MissionObjectiveImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "DestroyMissionObjective.lairTemplate") {
+	switch(nameHashCode) {
+	case 0xbc469e16: //DestroyMissionObjective.lairTemplate
 		TypeInfo<String >::parseFromBinaryStream(&lairTemplate, stream);
 		return true;
-	}
 
-	if (_name == "DestroyMissionObjective.spawnActiveArea") {
+	case 0xc2cc6a7f: //DestroyMissionObjective.spawnActiveArea
 		TypeInfo<ManagedReference<MissionSpawnActiveArea* > >::parseFromBinaryStream(&spawnActiveArea, stream);
 		return true;
-	}
 
-	if (_name == "DestroyMissionObjective.lairObject") {
+	case 0xbca57f7e: //DestroyMissionObjective.lairObject
 		TypeInfo<ManagedReference<TangibleObject* > >::parseFromBinaryStream(&lairObject, stream);
 		return true;
-	}
 
-	if (_name == "DestroyMissionObjective.difficulty") {
+	case 0xd82db4ec: //DestroyMissionObjective.difficulty
 		TypeInfo<int >::parseFromBinaryStream(&difficulty, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -316,35 +318,35 @@ void DestroyMissionObjectiveImplementation::writeObject(ObjectOutputStream* stre
 int DestroyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = MissionObjectiveImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "DestroyMissionObjective.lairTemplate";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbc469e16; //DestroyMissionObjective.lairTemplate
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&lairTemplate, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DestroyMissionObjective.spawnActiveArea";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc2cc6a7f; //DestroyMissionObjective.spawnActiveArea
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<MissionSpawnActiveArea* > >::toBinaryStream(&spawnActiveArea, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DestroyMissionObjective.lairObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbca57f7e; //DestroyMissionObjective.lairObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<TangibleObject* > >::toBinaryStream(&lairObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DestroyMissionObjective.difficulty";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd82db4ec; //DestroyMissionObjective.difficulty
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&difficulty, stream);

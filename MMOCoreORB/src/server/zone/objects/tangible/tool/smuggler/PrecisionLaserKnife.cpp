@@ -122,6 +122,10 @@ DistributedObjectServant* PrecisionLaserKnife::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* PrecisionLaserKnife::_getImplementationForRead() {
+	return _impl;
+}
+
 void PrecisionLaserKnife::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -201,14 +205,14 @@ void PrecisionLaserKnifeImplementation::_serializationHelperMethod() {
 void PrecisionLaserKnifeImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(PrecisionLaserKnifeImplementation::readObjectMember(stream, _name)) {
+		if(PrecisionLaserKnifeImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -217,15 +221,16 @@ void PrecisionLaserKnifeImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool PrecisionLaserKnifeImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (SlicingToolImplementation::readObjectMember(stream, _name))
+bool PrecisionLaserKnifeImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (SlicingToolImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "PrecisionLaserKnife.charges") {
+	switch(nameHashCode) {
+	case 0x3f461f2f: //PrecisionLaserKnife.charges
 		TypeInfo<int >::parseFromBinaryStream(&charges, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -240,11 +245,11 @@ void PrecisionLaserKnifeImplementation::writeObject(ObjectOutputStream* stream) 
 int PrecisionLaserKnifeImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = SlicingToolImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "PrecisionLaserKnife.charges";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3f461f2f; //PrecisionLaserKnife.charges
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&charges, stream);

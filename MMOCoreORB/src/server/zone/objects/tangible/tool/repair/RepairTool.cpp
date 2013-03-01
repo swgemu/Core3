@@ -84,6 +84,10 @@ DistributedObjectServant* RepairTool::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* RepairTool::_getImplementationForRead() {
+	return _impl;
+}
+
 void RepairTool::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -163,14 +167,14 @@ void RepairToolImplementation::_serializationHelperMethod() {
 void RepairToolImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(RepairToolImplementation::readObjectMember(stream, _name)) {
+		if(RepairToolImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -179,15 +183,16 @@ void RepairToolImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool RepairToolImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool RepairToolImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "RepairTool.quality") {
+	switch(nameHashCode) {
+	case 0xeebde27: //RepairTool.quality
 		TypeInfo<float >::parseFromBinaryStream(&quality, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -202,11 +207,11 @@ void RepairToolImplementation::writeObject(ObjectOutputStream* stream) {
 int RepairToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "RepairTool.quality";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xeebde27; //RepairTool.quality
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&quality, stream);

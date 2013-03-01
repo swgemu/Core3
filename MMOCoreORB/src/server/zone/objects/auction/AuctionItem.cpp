@@ -31,7 +31,7 @@ AuctionItem::~AuctionItem() {
 
 
 int AuctionItem::compareTo(AuctionItem* obj) {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -308,7 +308,7 @@ void AuctionItem::setStatus(int value) {
 }
 
 bool AuctionItem::isOnBazaar() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -321,7 +321,7 @@ bool AuctionItem::isOnBazaar() {
 }
 
 bool AuctionItem::isAuction() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -334,7 +334,7 @@ bool AuctionItem::isAuction() {
 }
 
 int AuctionItem::getStatus() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -347,7 +347,7 @@ int AuctionItem::getStatus() {
 }
 
 unsigned long long AuctionItem::getVendorID() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -360,7 +360,7 @@ unsigned long long AuctionItem::getVendorID() {
 }
 
 unsigned long long AuctionItem::getAuctionedItemObjectID() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -373,7 +373,7 @@ unsigned long long AuctionItem::getAuctionedItemObjectID() {
 }
 
 unsigned long long AuctionItem::getOwnerID() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -386,7 +386,7 @@ unsigned long long AuctionItem::getOwnerID() {
 }
 
 unsigned long long AuctionItem::getOfferToID() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -413,7 +413,7 @@ void AuctionItem::setVendorUID(const String& uid) {
 }
 
 const String AuctionItem::getVendorUID() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -428,7 +428,7 @@ const String AuctionItem::getVendorUID() {
 }
 
 String AuctionItem::getOwnerName() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -443,7 +443,7 @@ String AuctionItem::getOwnerName() {
 }
 
 String AuctionItem::getItemName() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -458,7 +458,7 @@ String AuctionItem::getItemName() {
 }
 
 int AuctionItem::getExpireTime() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -471,7 +471,7 @@ int AuctionItem::getExpireTime() {
 }
 
 int AuctionItem::getPrice() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -484,7 +484,7 @@ int AuctionItem::getPrice() {
 }
 
 int AuctionItem::getProxy() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -497,7 +497,7 @@ int AuctionItem::getProxy() {
 }
 
 int AuctionItem::getItemType() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -510,7 +510,7 @@ int AuctionItem::getItemType() {
 }
 
 unsigned long long AuctionItem::getBuyerID() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -523,7 +523,7 @@ unsigned long long AuctionItem::getBuyerID() {
 }
 
 String AuctionItem::getBidderName() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -538,7 +538,7 @@ String AuctionItem::getBidderName() {
 }
 
 String AuctionItem::getItemDescription() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -553,7 +553,7 @@ String AuctionItem::getItemDescription() {
 }
 
 int AuctionItem::getAuctionOptions() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -566,7 +566,7 @@ int AuctionItem::getAuctionOptions() {
 }
 
 bool AuctionItem::isPremiumAuction() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -579,7 +579,7 @@ bool AuctionItem::isPremiumAuction() {
 }
 
 bool AuctionItem::isOwner(CreatureObject* player) {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -593,7 +593,7 @@ bool AuctionItem::isOwner(CreatureObject* player) {
 }
 
 bool AuctionItem::isAuctionObject() {
-	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementation());
+	AuctionItemImplementation* _implementation = static_cast<AuctionItemImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -608,6 +608,10 @@ bool AuctionItem::isAuctionObject() {
 DistributedObjectServant* AuctionItem::_getImplementation() {
 
 	 if (!_updated) _updated = true;
+	return _impl;
+}
+
+DistributedObjectServant* AuctionItem::_getImplementationForRead() {
 	return _impl;
 }
 
@@ -690,14 +694,14 @@ void AuctionItemImplementation::_serializationHelperMethod() {
 void AuctionItemImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(AuctionItemImplementation::readObjectMember(stream, _name)) {
+		if(AuctionItemImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -706,105 +710,88 @@ void AuctionItemImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool AuctionItemImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+bool AuctionItemImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "AuctionItem.vendorID") {
+	switch(nameHashCode) {
+	case 0xd3721eb7: //AuctionItem.vendorID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&vendorID, stream);
 		return true;
-	}
 
-	if (_name == "AuctionItem.auctionedItemObjectID") {
+	case 0xc1c9c55b: //AuctionItem.auctionedItemObjectID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&auctionedItemObjectID, stream);
 		return true;
-	}
 
-	if (_name == "AuctionItem.itemType") {
+	case 0x5f6b8f6: //AuctionItem.itemType
 		TypeInfo<int >::parseFromBinaryStream(&itemType, stream);
 		return true;
-	}
 
-	if (_name == "AuctionItem.ownerID") {
+	case 0x4bd0ce0c: //AuctionItem.ownerID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&ownerID, stream);
 		return true;
-	}
 
-	if (_name == "AuctionItem.ownerName") {
+	case 0x7fe78407: //AuctionItem.ownerName
 		TypeInfo<String >::parseFromBinaryStream(&ownerName, stream);
 		return true;
-	}
 
-	if (_name == "AuctionItem.bidderName") {
+	case 0xac7a216a: //AuctionItem.bidderName
 		TypeInfo<String >::parseFromBinaryStream(&bidderName, stream);
 		return true;
-	}
 
-	if (_name == "AuctionItem.offerToID") {
+	case 0xbb302a62: //AuctionItem.offerToID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&offerToID, stream);
 		return true;
-	}
 
-	if (_name == "AuctionItem.vuid") {
+	case 0x553415e6: //AuctionItem.vuid
 		TypeInfo<String >::parseFromBinaryStream(&vuid, stream);
 		return true;
-	}
 
-	if (_name == "AuctionItem.itemName") {
+	case 0xa979b1fa: //AuctionItem.itemName
 		TypeInfo<String >::parseFromBinaryStream(&itemName, stream);
 		return true;
-	}
 
-	if (_name == "AuctionItem.itemDescription") {
+	case 0xa772caca: //AuctionItem.itemDescription
 		TypeInfo<String >::parseFromBinaryStream(&itemDescription, stream);
 		return true;
-	}
 
-	if (_name == "AuctionItem.price") {
+	case 0xc8730753: //AuctionItem.price
 		TypeInfo<int >::parseFromBinaryStream(&price, stream);
 		return true;
-	}
 
-	if (_name == "AuctionItem.proxyBid") {
+	case 0x50632d68: //AuctionItem.proxyBid
 		TypeInfo<int >::parseFromBinaryStream(&proxyBid, stream);
 		return true;
-	}
 
-	if (_name == "AuctionItem.auction") {
+	case 0xc91826a0: //AuctionItem.auction
 		TypeInfo<bool >::parseFromBinaryStream(&auction, stream);
 		return true;
-	}
 
-	if (_name == "AuctionItem.status") {
+	case 0x3a2982b9: //AuctionItem.status
 		TypeInfo<int >::parseFromBinaryStream(&status, stream);
 		return true;
-	}
 
-	if (_name == "AuctionItem.onBazaar") {
+	case 0xcb2cdb14: //AuctionItem.onBazaar
 		TypeInfo<bool >::parseFromBinaryStream(&onBazaar, stream);
 		return true;
-	}
 
-	if (_name == "AuctionItem.buyerID") {
+	case 0x435fe0: //AuctionItem.buyerID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&buyerID, stream);
 		return true;
-	}
 
-	if (_name == "AuctionItem.expireTime") {
+	case 0x396a8462: //AuctionItem.expireTime
 		TypeInfo<unsigned int >::parseFromBinaryStream(&expireTime, stream);
 		return true;
-	}
 
-	if (_name == "AuctionItem.updated") {
+	case 0xddd43d5a: //AuctionItem.updated
 		TypeInfo<bool >::parseFromBinaryStream(&updated, stream);
 		return true;
-	}
 
-	if (_name == "AuctionItem.auctionOptions") {
+	case 0x75922636: //AuctionItem.auctionOptions
 		TypeInfo<int >::parseFromBinaryStream(&auctionOptions, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -819,155 +806,155 @@ void AuctionItemImplementation::writeObject(ObjectOutputStream* stream) {
 int AuctionItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "AuctionItem.vendorID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd3721eb7; //AuctionItem.vendorID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&vendorID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.auctionedItemObjectID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc1c9c55b; //AuctionItem.auctionedItemObjectID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&auctionedItemObjectID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.itemType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5f6b8f6; //AuctionItem.itemType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&itemType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.ownerID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4bd0ce0c; //AuctionItem.ownerID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&ownerID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.ownerName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7fe78407; //AuctionItem.ownerName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&ownerName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.bidderName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xac7a216a; //AuctionItem.bidderName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&bidderName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.offerToID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbb302a62; //AuctionItem.offerToID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&offerToID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.vuid";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x553415e6; //AuctionItem.vuid
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&vuid, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.itemName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa979b1fa; //AuctionItem.itemName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&itemName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.itemDescription";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa772caca; //AuctionItem.itemDescription
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&itemDescription, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.price";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc8730753; //AuctionItem.price
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&price, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.proxyBid";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x50632d68; //AuctionItem.proxyBid
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&proxyBid, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.auction";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc91826a0; //AuctionItem.auction
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&auction, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.status";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3a2982b9; //AuctionItem.status
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&status, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.onBazaar";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xcb2cdb14; //AuctionItem.onBazaar
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&onBazaar, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.buyerID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x435fe0; //AuctionItem.buyerID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&buyerID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.expireTime";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x396a8462; //AuctionItem.expireTime
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&expireTime, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.updated";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xddd43d5a; //AuctionItem.updated
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&updated, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionItem.auctionOptions";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x75922636; //AuctionItem.auctionOptions
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&auctionOptions, stream);

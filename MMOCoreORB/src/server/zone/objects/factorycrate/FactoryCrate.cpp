@@ -265,6 +265,10 @@ DistributedObjectServant* FactoryCrate::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* FactoryCrate::_getImplementationForRead() {
+	return _impl;
+}
+
 void FactoryCrate::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -344,14 +348,14 @@ void FactoryCrateImplementation::_serializationHelperMethod() {
 void FactoryCrateImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(FactoryCrateImplementation::readObjectMember(stream, _name)) {
+		if(FactoryCrateImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -360,15 +364,16 @@ void FactoryCrateImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool FactoryCrateImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool FactoryCrateImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "FactoryCrate.maxCapacity") {
+	switch(nameHashCode) {
+	case 0x106911b0: //FactoryCrate.maxCapacity
 		TypeInfo<int >::parseFromBinaryStream(&maxCapacity, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -383,11 +388,11 @@ void FactoryCrateImplementation::writeObject(ObjectOutputStream* stream) {
 int FactoryCrateImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "FactoryCrate.maxCapacity";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x106911b0; //FactoryCrate.maxCapacity
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&maxCapacity, stream);

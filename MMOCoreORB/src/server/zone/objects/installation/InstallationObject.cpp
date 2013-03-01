@@ -593,6 +593,10 @@ DistributedObjectServant* InstallationObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* InstallationObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void InstallationObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -672,14 +676,14 @@ void InstallationObjectImplementation::_serializationHelperMethod() {
 void InstallationObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(InstallationObjectImplementation::readObjectMember(stream, _name)) {
+		if(InstallationObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -688,70 +692,60 @@ void InstallationObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool InstallationObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (StructureObjectImplementation::readObjectMember(stream, _name))
+bool InstallationObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (StructureObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "InstallationObject.operating") {
+	switch(nameHashCode) {
+	case 0xea532c73: //InstallationObject.operating
 		TypeInfo<bool >::parseFromBinaryStream(&operating, stream);
 		return true;
-	}
 
-	if (_name == "InstallationObject.operatorList") {
+	case 0x60d38d63: //InstallationObject.operatorList
 		TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::parseFromBinaryStream(&operatorList, stream);
 		return true;
-	}
 
-	if (_name == "InstallationObject.installationType") {
+	case 0x4bf10856: //InstallationObject.installationType
 		TypeInfo<int >::parseFromBinaryStream(&installationType, stream);
 		return true;
-	}
 
-	if (_name == "InstallationObject.resourceHopperTimestamp") {
+	case 0x97115dee: //InstallationObject.resourceHopperTimestamp
 		TypeInfo<Time >::parseFromBinaryStream(&resourceHopperTimestamp, stream);
 		return true;
-	}
 
-	if (_name == "InstallationObject.lastStartTime") {
+	case 0x41efc19d: //InstallationObject.lastStartTime
 		TypeInfo<Time >::parseFromBinaryStream(&lastStartTime, stream);
 		return true;
-	}
 
-	if (_name == "InstallationObject.lastStopTime") {
+	case 0xd950b14e: //InstallationObject.lastStopTime
 		TypeInfo<Time >::parseFromBinaryStream(&lastStopTime, stream);
 		return true;
-	}
 
-	if (_name == "InstallationObject.resourceHopper") {
+	case 0xe38c2071: //InstallationObject.resourceHopper
 		TypeInfo<HopperList >::parseFromBinaryStream(&resourceHopper, stream);
 		return true;
-	}
 
-	if (_name == "InstallationObject.hopperSizeMax") {
+	case 0x5ad23b35: //InstallationObject.hopperSizeMax
 		TypeInfo<float >::parseFromBinaryStream(&hopperSizeMax, stream);
 		return true;
-	}
 
-	if (_name == "InstallationObject.extractionRate") {
+	case 0x9765e180: //InstallationObject.extractionRate
 		TypeInfo<float >::parseFromBinaryStream(&extractionRate, stream);
 		return true;
-	}
 
-	if (_name == "InstallationObject.extractionRemainder") {
+	case 0xf2e88988: //InstallationObject.extractionRemainder
 		TypeInfo<float >::parseFromBinaryStream(&extractionRemainder, stream);
 		return true;
-	}
 
-	if (_name == "InstallationObject.spawnDensity") {
+	case 0x8c666bc1: //InstallationObject.spawnDensity
 		TypeInfo<float >::parseFromBinaryStream(&spawnDensity, stream);
 		return true;
-	}
 
-	if (_name == "InstallationObject.currentSpawn") {
+	case 0x2a7a1e40: //InstallationObject.currentSpawn
 		TypeInfo<ManagedReference<ResourceSpawn* > >::parseFromBinaryStream(&currentSpawn, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -766,99 +760,99 @@ void InstallationObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = StructureObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "InstallationObject.operating";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xea532c73; //InstallationObject.operating
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&operating, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "InstallationObject.operatorList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x60d38d63; //InstallationObject.operatorList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::toBinaryStream(&operatorList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "InstallationObject.installationType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4bf10856; //InstallationObject.installationType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&installationType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "InstallationObject.resourceHopperTimestamp";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x97115dee; //InstallationObject.resourceHopperTimestamp
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&resourceHopperTimestamp, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "InstallationObject.lastStartTime";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x41efc19d; //InstallationObject.lastStartTime
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&lastStartTime, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "InstallationObject.lastStopTime";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd950b14e; //InstallationObject.lastStopTime
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&lastStopTime, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "InstallationObject.resourceHopper";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe38c2071; //InstallationObject.resourceHopper
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<HopperList >::toBinaryStream(&resourceHopper, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "InstallationObject.hopperSizeMax";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5ad23b35; //InstallationObject.hopperSizeMax
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&hopperSizeMax, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "InstallationObject.extractionRate";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9765e180; //InstallationObject.extractionRate
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&extractionRate, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "InstallationObject.extractionRemainder";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf2e88988; //InstallationObject.extractionRemainder
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&extractionRemainder, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "InstallationObject.spawnDensity";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8c666bc1; //InstallationObject.spawnDensity
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&spawnDensity, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "InstallationObject.currentSpawn";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2a7a1e40; //InstallationObject.currentSpawn
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<ResourceSpawn* > >::toBinaryStream(&currentSpawn, stream);

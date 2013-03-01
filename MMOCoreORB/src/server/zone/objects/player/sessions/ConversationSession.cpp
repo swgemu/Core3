@@ -67,6 +67,10 @@ DistributedObjectServant* ConversationSession::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ConversationSession::_getImplementationForRead() {
+	return _impl;
+}
+
 void ConversationSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -146,14 +150,14 @@ void ConversationSessionImplementation::_serializationHelperMethod() {
 void ConversationSessionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ConversationSessionImplementation::readObjectMember(stream, _name)) {
+		if(ConversationSessionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -162,20 +166,20 @@ void ConversationSessionImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ConversationSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (FacadeImplementation::readObjectMember(stream, _name))
+bool ConversationSessionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (FacadeImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "ConversationSession.lastConversationScreen") {
+	switch(nameHashCode) {
+	case 0xec59cf82: //ConversationSession.lastConversationScreen
 		TypeInfo<Reference<ConversationScreen* > >::parseFromBinaryStream(&lastConversationScreen, stream);
 		return true;
-	}
 
-	if (_name == "ConversationSession.npc") {
+	case 0x8bed8028: //ConversationSession.npc
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&npc, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -190,19 +194,19 @@ void ConversationSessionImplementation::writeObject(ObjectOutputStream* stream) 
 int ConversationSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = FacadeImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "ConversationSession.lastConversationScreen";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xec59cf82; //ConversationSession.lastConversationScreen
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Reference<ConversationScreen* > >::toBinaryStream(&lastConversationScreen, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ConversationSession.npc";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8bed8028; //ConversationSession.npc
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&npc, stream);

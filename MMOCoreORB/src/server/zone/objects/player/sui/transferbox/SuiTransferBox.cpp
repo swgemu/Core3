@@ -98,6 +98,10 @@ DistributedObjectServant* SuiTransferBox::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* SuiTransferBox::_getImplementationForRead() {
+	return _impl;
+}
+
 void SuiTransferBox::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -177,14 +181,14 @@ void SuiTransferBoxImplementation::_serializationHelperMethod() {
 void SuiTransferBoxImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(SuiTransferBoxImplementation::readObjectMember(stream, _name)) {
+		if(SuiTransferBoxImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -193,50 +197,44 @@ void SuiTransferBoxImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool SuiTransferBoxImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (SuiBoxImplementation::readObjectMember(stream, _name))
+bool SuiTransferBoxImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (SuiBoxImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "SuiTransferBox.lblFrom") {
+	switch(nameHashCode) {
+	case 0x92e61ad: //SuiTransferBox.lblFrom
 		TypeInfo<String >::parseFromBinaryStream(&lblFrom, stream);
 		return true;
-	}
 
-	if (_name == "SuiTransferBox.lblStartingFrom") {
+	case 0x23fe6364: //SuiTransferBox.lblStartingFrom
 		TypeInfo<String >::parseFromBinaryStream(&lblStartingFrom, stream);
 		return true;
-	}
 
-	if (_name == "SuiTransferBox.lblInputFrom") {
+	case 0x6ddfe140: //SuiTransferBox.lblInputFrom
 		TypeInfo<String >::parseFromBinaryStream(&lblInputFrom, stream);
 		return true;
-	}
 
-	if (_name == "SuiTransferBox.lblTo") {
+	case 0xf82d3909: //SuiTransferBox.lblTo
 		TypeInfo<String >::parseFromBinaryStream(&lblTo, stream);
 		return true;
-	}
 
-	if (_name == "SuiTransferBox.lblStartingTo") {
+	case 0x9f2e48b0: //SuiTransferBox.lblStartingTo
 		TypeInfo<String >::parseFromBinaryStream(&lblStartingTo, stream);
 		return true;
-	}
 
-	if (_name == "SuiTransferBox.lblInputTo") {
+	case 0x750b40a4: //SuiTransferBox.lblInputTo
 		TypeInfo<String >::parseFromBinaryStream(&lblInputTo, stream);
 		return true;
-	}
 
-	if (_name == "SuiTransferBox.convertRatioFrom") {
+	case 0x4bf43d03: //SuiTransferBox.convertRatioFrom
 		TypeInfo<String >::parseFromBinaryStream(&convertRatioFrom, stream);
 		return true;
-	}
 
-	if (_name == "SuiTransferBox.convertRatioTo") {
+	case 0xf652ccb6: //SuiTransferBox.convertRatioTo
 		TypeInfo<String >::parseFromBinaryStream(&convertRatioTo, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -251,67 +249,67 @@ void SuiTransferBoxImplementation::writeObject(ObjectOutputStream* stream) {
 int SuiTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = SuiBoxImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "SuiTransferBox.lblFrom";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x92e61ad; //SuiTransferBox.lblFrom
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&lblFrom, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiTransferBox.lblStartingFrom";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x23fe6364; //SuiTransferBox.lblStartingFrom
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&lblStartingFrom, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiTransferBox.lblInputFrom";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6ddfe140; //SuiTransferBox.lblInputFrom
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&lblInputFrom, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiTransferBox.lblTo";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf82d3909; //SuiTransferBox.lblTo
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&lblTo, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiTransferBox.lblStartingTo";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9f2e48b0; //SuiTransferBox.lblStartingTo
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&lblStartingTo, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiTransferBox.lblInputTo";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x750b40a4; //SuiTransferBox.lblInputTo
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&lblInputTo, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiTransferBox.convertRatioFrom";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4bf43d03; //SuiTransferBox.convertRatioFrom
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&convertRatioFrom, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiTransferBox.convertRatioTo";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf652ccb6; //SuiTransferBox.convertRatioTo
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&convertRatioTo, stream);

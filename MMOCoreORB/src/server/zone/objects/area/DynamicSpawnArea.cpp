@@ -189,6 +189,10 @@ DistributedObjectServant* DynamicSpawnArea::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* DynamicSpawnArea::_getImplementationForRead() {
+	return _impl;
+}
+
 void DynamicSpawnArea::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -268,14 +272,14 @@ void DynamicSpawnAreaImplementation::_serializationHelperMethod() {
 void DynamicSpawnAreaImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(DynamicSpawnAreaImplementation::readObjectMember(stream, _name)) {
+		if(DynamicSpawnAreaImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -284,35 +288,32 @@ void DynamicSpawnAreaImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool DynamicSpawnAreaImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (SpawnAreaImplementation::readObjectMember(stream, _name))
+bool DynamicSpawnAreaImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (SpawnAreaImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "DynamicSpawnArea.spawnedGroups") {
+	switch(nameHashCode) {
+	case 0x30a42268: //DynamicSpawnArea.spawnedGroups
 		TypeInfo<SortedVector<ManagedReference<AiGroup* > > >::parseFromBinaryStream(&spawnedGroups, stream);
 		return true;
-	}
 
-	if (_name == "DynamicSpawnArea.observers") {
+	case 0xd71f4e11: //DynamicSpawnArea.observers
 		TypeInfo<SortedVector<ManagedReference<SpawnObserver* > > >::parseFromBinaryStream(&observers, stream);
 		return true;
-	}
 
-	if (_name == "DynamicSpawnArea.lastSpawnTime") {
+	case 0x6b0896de: //DynamicSpawnArea.lastSpawnTime
 		TypeInfo<Time >::parseFromBinaryStream(&lastSpawnTime, stream);
 		return true;
-	}
 
-	if (_name == "DynamicSpawnArea.maxCreaturesToSpawn") {
+	case 0x2f985fa4: //DynamicSpawnArea.maxCreaturesToSpawn
 		TypeInfo<int >::parseFromBinaryStream(&maxCreaturesToSpawn, stream);
 		return true;
-	}
 
-	if (_name == "DynamicSpawnArea.spawnTask") {
+	case 0x6d519167: //DynamicSpawnArea.spawnTask
 		TypeInfo<Reference<SpawnDynamicAreaCreatureTask* > >::parseFromBinaryStream(&spawnTask, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -327,43 +328,43 @@ void DynamicSpawnAreaImplementation::writeObject(ObjectOutputStream* stream) {
 int DynamicSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = SpawnAreaImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "DynamicSpawnArea.spawnedGroups";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x30a42268; //DynamicSpawnArea.spawnedGroups
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<AiGroup* > > >::toBinaryStream(&spawnedGroups, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DynamicSpawnArea.observers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd71f4e11; //DynamicSpawnArea.observers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<SpawnObserver* > > >::toBinaryStream(&observers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DynamicSpawnArea.lastSpawnTime";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6b0896de; //DynamicSpawnArea.lastSpawnTime
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&lastSpawnTime, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DynamicSpawnArea.maxCreaturesToSpawn";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2f985fa4; //DynamicSpawnArea.maxCreaturesToSpawn
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&maxCreaturesToSpawn, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DynamicSpawnArea.spawnTask";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6d519167; //DynamicSpawnArea.spawnTask
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Reference<SpawnDynamicAreaCreatureTask* > >::toBinaryStream(&spawnTask, stream);

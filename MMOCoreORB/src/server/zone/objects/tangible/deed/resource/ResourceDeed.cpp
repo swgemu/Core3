@@ -106,6 +106,10 @@ DistributedObjectServant* ResourceDeed::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ResourceDeed::_getImplementationForRead() {
+	return _impl;
+}
+
 void ResourceDeed::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -185,14 +189,14 @@ void ResourceDeedImplementation::_serializationHelperMethod() {
 void ResourceDeedImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ResourceDeedImplementation::readObjectMember(stream, _name)) {
+		if(ResourceDeedImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -201,10 +205,12 @@ void ResourceDeedImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ResourceDeedImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (DeedImplementation::readObjectMember(stream, _name))
+bool ResourceDeedImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (DeedImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -219,7 +225,7 @@ void ResourceDeedImplementation::writeObject(ObjectOutputStream* stream) {
 int ResourceDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = DeedImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

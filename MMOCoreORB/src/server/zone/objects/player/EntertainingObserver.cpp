@@ -51,6 +51,10 @@ DistributedObjectServant* EntertainingObserver::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* EntertainingObserver::_getImplementationForRead() {
+	return _impl;
+}
+
 void EntertainingObserver::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -130,14 +134,14 @@ void EntertainingObserverImplementation::_serializationHelperMethod() {
 void EntertainingObserverImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(EntertainingObserverImplementation::readObjectMember(stream, _name)) {
+		if(EntertainingObserverImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -146,10 +150,12 @@ void EntertainingObserverImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool EntertainingObserverImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ObserverImplementation::readObjectMember(stream, _name))
+bool EntertainingObserverImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ObserverImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -164,7 +170,7 @@ void EntertainingObserverImplementation::writeObject(ObjectOutputStream* stream)
 int EntertainingObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ObserverImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

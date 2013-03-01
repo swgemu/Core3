@@ -137,6 +137,10 @@ DistributedObjectServant* LootManager::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* LootManager::_getImplementationForRead() {
+	return _impl;
+}
+
 void LootManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -216,14 +220,14 @@ void LootManagerImplementation::_serializationHelperMethod() {
 void LootManagerImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(LootManagerImplementation::readObjectMember(stream, _name)) {
+		if(LootManagerImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -232,10 +236,12 @@ void LootManagerImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool LootManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedServiceImplementation::readObjectMember(stream, _name))
+bool LootManagerImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedServiceImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -250,7 +256,7 @@ void LootManagerImplementation::writeObject(ObjectOutputStream* stream) {
 int LootManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

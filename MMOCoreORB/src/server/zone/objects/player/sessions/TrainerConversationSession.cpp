@@ -247,6 +247,10 @@ DistributedObjectServant* TrainerConversationSession::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* TrainerConversationSession::_getImplementationForRead() {
+	return _impl;
+}
+
 void TrainerConversationSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -326,14 +330,14 @@ void TrainerConversationSessionImplementation::_serializationHelperMethod() {
 void TrainerConversationSessionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(TrainerConversationSessionImplementation::readObjectMember(stream, _name)) {
+		if(TrainerConversationSessionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -342,35 +346,32 @@ void TrainerConversationSessionImplementation::readObject(ObjectInputStream* str
 	initializeTransientMembers();
 }
 
-bool TrainerConversationSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ConversationSessionImplementation::readObjectMember(stream, _name))
+bool TrainerConversationSessionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ConversationSessionImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "TrainerConversationSession.trainableSkills") {
+	switch(nameHashCode) {
+	case 0xc39c35c8: //TrainerConversationSession.trainableSkills
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&trainableSkills, stream);
 		return true;
-	}
 
-	if (_name == "TrainerConversationSession.nextSkills") {
+	case 0xe3ef3d0c: //TrainerConversationSession.nextSkills
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&nextSkills, stream);
 		return true;
-	}
 
-	if (_name == "TrainerConversationSession.masterSkill") {
+	case 0x8f189b8e: //TrainerConversationSession.masterSkill
 		TypeInfo<String >::parseFromBinaryStream(&masterSkill, stream);
 		return true;
-	}
 
-	if (_name == "TrainerConversationSession.additionalMasterSkills") {
+	case 0xb66d0b7c: //TrainerConversationSession.additionalMasterSkills
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&additionalMasterSkills, stream);
 		return true;
-	}
 
-	if (_name == "TrainerConversationSession.selectedSkill") {
+	case 0x152d1200: //TrainerConversationSession.selectedSkill
 		TypeInfo<String >::parseFromBinaryStream(&selectedSkill, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -385,43 +386,43 @@ void TrainerConversationSessionImplementation::writeObject(ObjectOutputStream* s
 int TrainerConversationSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ConversationSessionImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "TrainerConversationSession.trainableSkills";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc39c35c8; //TrainerConversationSession.trainableSkills
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&trainableSkills, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TrainerConversationSession.nextSkills";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe3ef3d0c; //TrainerConversationSession.nextSkills
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&nextSkills, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TrainerConversationSession.masterSkill";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8f189b8e; //TrainerConversationSession.masterSkill
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&masterSkill, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TrainerConversationSession.additionalMasterSkills";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb66d0b7c; //TrainerConversationSession.additionalMasterSkills
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&additionalMasterSkills, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TrainerConversationSession.selectedSkill";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x152d1200; //TrainerConversationSession.selectedSkill
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&selectedSkill, stream);

@@ -253,6 +253,10 @@ DistributedObjectServant* AuctionsMap::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* AuctionsMap::_getImplementationForRead() {
+	return _impl;
+}
+
 void AuctionsMap::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -332,14 +336,14 @@ void AuctionsMapImplementation::_serializationHelperMethod() {
 void AuctionsMapImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(AuctionsMapImplementation::readObjectMember(stream, _name)) {
+		if(AuctionsMapImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -348,15 +352,16 @@ void AuctionsMapImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool AuctionsMapImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+bool AuctionsMapImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "AuctionsMap.commoditiesLimit") {
+	switch(nameHashCode) {
+	case 0xbb9b7ce5: //AuctionsMap.commoditiesLimit
 		TypeInfo<CommoditiesLimit >::parseFromBinaryStream(&commoditiesLimit, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -371,11 +376,11 @@ void AuctionsMapImplementation::writeObject(ObjectOutputStream* stream) {
 int AuctionsMapImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "AuctionsMap.commoditiesLimit";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbb9b7ce5; //AuctionsMap.commoditiesLimit
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<CommoditiesLimit >::toBinaryStream(&commoditiesLimit, stream);

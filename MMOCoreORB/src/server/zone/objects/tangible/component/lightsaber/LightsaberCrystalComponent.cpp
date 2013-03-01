@@ -450,6 +450,10 @@ DistributedObjectServant* LightsaberCrystalComponent::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* LightsaberCrystalComponent::_getImplementationForRead() {
+	return _impl;
+}
+
 void LightsaberCrystalComponent::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -529,14 +533,14 @@ void LightsaberCrystalComponentImplementation::_serializationHelperMethod() {
 void LightsaberCrystalComponentImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(LightsaberCrystalComponentImplementation::readObjectMember(stream, _name)) {
+		if(LightsaberCrystalComponentImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -545,75 +549,64 @@ void LightsaberCrystalComponentImplementation::readObject(ObjectInputStream* str
 	initializeTransientMembers();
 }
 
-bool LightsaberCrystalComponentImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ComponentImplementation::readObjectMember(stream, _name))
+bool LightsaberCrystalComponentImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ComponentImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "LightsaberCrystalComponent.postTuneName") {
+	switch(nameHashCode) {
+	case 0x717984bc: //LightsaberCrystalComponent.postTuneName
 		TypeInfo<String >::parseFromBinaryStream(&postTuneName, stream);
 		return true;
-	}
 
-	if (_name == "LightsaberCrystalComponent.color") {
+	case 0x8338b3e0: //LightsaberCrystalComponent.color
 		TypeInfo<int >::parseFromBinaryStream(&color, stream);
 		return true;
-	}
 
-	if (_name == "LightsaberCrystalComponent.quality") {
+	case 0xc0d40597: //LightsaberCrystalComponent.quality
 		TypeInfo<int >::parseFromBinaryStream(&quality, stream);
 		return true;
-	}
 
-	if (_name == "LightsaberCrystalComponent.owner") {
+	case 0xc5d0069f: //LightsaberCrystalComponent.owner
 		TypeInfo<String >::parseFromBinaryStream(&owner, stream);
 		return true;
-	}
 
-	if (_name == "LightsaberCrystalComponent.attackSpeed") {
+	case 0x564f91a5: //LightsaberCrystalComponent.attackSpeed
 		TypeInfo<float >::parseFromBinaryStream(&attackSpeed, stream);
 		return true;
-	}
 
-	if (_name == "LightsaberCrystalComponent.minimumDamage") {
+	case 0x9e998d6d: //LightsaberCrystalComponent.minimumDamage
 		TypeInfo<int >::parseFromBinaryStream(&minimumDamage, stream);
 		return true;
-	}
 
-	if (_name == "LightsaberCrystalComponent.maximumDamage") {
+	case 0x1fc07d0a: //LightsaberCrystalComponent.maximumDamage
 		TypeInfo<int >::parseFromBinaryStream(&maximumDamage, stream);
 		return true;
-	}
 
-	if (_name == "LightsaberCrystalComponent.forceCost") {
+	case 0x1c9e679b: //LightsaberCrystalComponent.forceCost
 		TypeInfo<int >::parseFromBinaryStream(&forceCost, stream);
 		return true;
-	}
 
-	if (_name == "LightsaberCrystalComponent.sacHealth") {
+	case 0x15049cd7: //LightsaberCrystalComponent.sacHealth
 		TypeInfo<int >::parseFromBinaryStream(&sacHealth, stream);
 		return true;
-	}
 
-	if (_name == "LightsaberCrystalComponent.sacAction") {
+	case 0xc6c0995c: //LightsaberCrystalComponent.sacAction
 		TypeInfo<int >::parseFromBinaryStream(&sacAction, stream);
 		return true;
-	}
 
-	if (_name == "LightsaberCrystalComponent.sacMind") {
+	case 0x673222d3: //LightsaberCrystalComponent.sacMind
 		TypeInfo<int >::parseFromBinaryStream(&sacMind, stream);
 		return true;
-	}
 
-	if (_name == "LightsaberCrystalComponent.woundChance") {
+	case 0x7096a506: //LightsaberCrystalComponent.woundChance
 		TypeInfo<int >::parseFromBinaryStream(&woundChance, stream);
 		return true;
-	}
 
-	if (_name == "LightsaberCrystalComponent.crystalType") {
+	case 0xd6498ef4: //LightsaberCrystalComponent.crystalType
 		TypeInfo<String >::parseFromBinaryStream(&crystalType, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -628,107 +621,107 @@ void LightsaberCrystalComponentImplementation::writeObject(ObjectOutputStream* s
 int LightsaberCrystalComponentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ComponentImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "LightsaberCrystalComponent.postTuneName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x717984bc; //LightsaberCrystalComponent.postTuneName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&postTuneName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LightsaberCrystalComponent.color";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8338b3e0; //LightsaberCrystalComponent.color
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&color, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LightsaberCrystalComponent.quality";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc0d40597; //LightsaberCrystalComponent.quality
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&quality, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LightsaberCrystalComponent.owner";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc5d0069f; //LightsaberCrystalComponent.owner
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&owner, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LightsaberCrystalComponent.attackSpeed";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x564f91a5; //LightsaberCrystalComponent.attackSpeed
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&attackSpeed, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LightsaberCrystalComponent.minimumDamage";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9e998d6d; //LightsaberCrystalComponent.minimumDamage
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&minimumDamage, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LightsaberCrystalComponent.maximumDamage";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1fc07d0a; //LightsaberCrystalComponent.maximumDamage
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&maximumDamage, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LightsaberCrystalComponent.forceCost";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1c9e679b; //LightsaberCrystalComponent.forceCost
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&forceCost, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LightsaberCrystalComponent.sacHealth";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x15049cd7; //LightsaberCrystalComponent.sacHealth
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&sacHealth, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LightsaberCrystalComponent.sacAction";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc6c0995c; //LightsaberCrystalComponent.sacAction
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&sacAction, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LightsaberCrystalComponent.sacMind";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x673222d3; //LightsaberCrystalComponent.sacMind
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&sacMind, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LightsaberCrystalComponent.woundChance";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7096a506; //LightsaberCrystalComponent.woundChance
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&woundChance, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LightsaberCrystalComponent.crystalType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd6498ef4; //LightsaberCrystalComponent.crystalType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&crystalType, stream);

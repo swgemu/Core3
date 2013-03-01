@@ -410,6 +410,10 @@ DistributedObjectServant* GroupObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* GroupObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void GroupObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -489,14 +493,14 @@ void GroupObjectImplementation::_serializationHelperMethod() {
 void GroupObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(GroupObjectImplementation::readObjectMember(stream, _name)) {
+		if(GroupObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -505,25 +509,24 @@ void GroupObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool GroupObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (SceneObjectImplementation::readObjectMember(stream, _name))
+bool GroupObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (SceneObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "GroupObject.groupMembers") {
+	switch(nameHashCode) {
+	case 0x485e2f44: //GroupObject.groupMembers
 		TypeInfo<GroupList >::parseFromBinaryStream(&groupMembers, stream);
 		return true;
-	}
 
-	if (_name == "GroupObject.chatRoom") {
+	case 0x3586cfbc: //GroupObject.chatRoom
 		TypeInfo<ManagedReference<ChatRoom* > >::parseFromBinaryStream(&chatRoom, stream);
 		return true;
-	}
 
-	if (_name == "GroupObject.groupLevel") {
+	case 0x62afc634: //GroupObject.groupLevel
 		TypeInfo<int >::parseFromBinaryStream(&groupLevel, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -538,27 +541,27 @@ void GroupObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int GroupObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = SceneObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "GroupObject.groupMembers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x485e2f44; //GroupObject.groupMembers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<GroupList >::toBinaryStream(&groupMembers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "GroupObject.chatRoom";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3586cfbc; //GroupObject.chatRoom
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<ChatRoom* > >::toBinaryStream(&chatRoom, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "GroupObject.groupLevel";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x62afc634; //GroupObject.groupLevel
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&groupLevel, stream);

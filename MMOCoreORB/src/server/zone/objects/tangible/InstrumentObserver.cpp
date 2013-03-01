@@ -53,6 +53,10 @@ DistributedObjectServant* InstrumentObserver::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* InstrumentObserver::_getImplementationForRead() {
+	return _impl;
+}
+
 void InstrumentObserver::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -132,14 +136,14 @@ void InstrumentObserverImplementation::_serializationHelperMethod() {
 void InstrumentObserverImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(InstrumentObserverImplementation::readObjectMember(stream, _name)) {
+		if(InstrumentObserverImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -148,15 +152,16 @@ void InstrumentObserverImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool InstrumentObserverImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ObserverImplementation::readObjectMember(stream, _name))
+bool InstrumentObserverImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ObserverImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "InstrumentObserver.instrument") {
+	switch(nameHashCode) {
+	case 0x7680d59c: //InstrumentObserver.instrument
 		TypeInfo<ManagedWeakReference<Instrument* > >::parseFromBinaryStream(&instrument, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -171,11 +176,11 @@ void InstrumentObserverImplementation::writeObject(ObjectOutputStream* stream) {
 int InstrumentObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ObserverImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "InstrumentObserver.instrument";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7680d59c; //InstrumentObserver.instrument
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<Instrument* > >::toBinaryStream(&instrument, stream);

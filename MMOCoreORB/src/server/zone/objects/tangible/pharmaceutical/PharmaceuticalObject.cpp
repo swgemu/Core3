@@ -203,6 +203,10 @@ DistributedObjectServant* PharmaceuticalObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* PharmaceuticalObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void PharmaceuticalObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -282,14 +286,14 @@ void PharmaceuticalObjectImplementation::_serializationHelperMethod() {
 void PharmaceuticalObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(PharmaceuticalObjectImplementation::readObjectMember(stream, _name)) {
+		if(PharmaceuticalObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -298,15 +302,16 @@ void PharmaceuticalObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool PharmaceuticalObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool PharmaceuticalObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "PharmaceuticalObject.medicineUseRequired") {
+	switch(nameHashCode) {
+	case 0x274d1fc4: //PharmaceuticalObject.medicineUseRequired
 		TypeInfo<int >::parseFromBinaryStream(&medicineUseRequired, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -321,11 +326,11 @@ void PharmaceuticalObjectImplementation::writeObject(ObjectOutputStream* stream)
 int PharmaceuticalObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "PharmaceuticalObject.medicineUseRequired";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x274d1fc4; //PharmaceuticalObject.medicineUseRequired
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&medicineUseRequired, stream);

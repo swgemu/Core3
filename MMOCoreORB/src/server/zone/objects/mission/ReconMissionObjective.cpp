@@ -103,6 +103,10 @@ DistributedObjectServant* ReconMissionObjective::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ReconMissionObjective::_getImplementationForRead() {
+	return _impl;
+}
+
 void ReconMissionObjective::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -180,14 +184,14 @@ void ReconMissionObjectiveImplementation::_serializationHelperMethod() {
 void ReconMissionObjectiveImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ReconMissionObjectiveImplementation::readObjectMember(stream, _name)) {
+		if(ReconMissionObjectiveImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -196,15 +200,16 @@ void ReconMissionObjectiveImplementation::readObject(ObjectInputStream* stream) 
 	initializeTransientMembers();
 }
 
-bool ReconMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
+bool ReconMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (MissionObjectiveImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "ReconMissionObjective.locationActiveArea") {
+	switch(nameHashCode) {
+	case 0x938a0110: //ReconMissionObjective.locationActiveArea
 		TypeInfo<ManagedReference<MissionReconActiveArea* > >::parseFromBinaryStream(&locationActiveArea, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -219,11 +224,11 @@ void ReconMissionObjectiveImplementation::writeObject(ObjectOutputStream* stream
 int ReconMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = MissionObjectiveImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "ReconMissionObjective.locationActiveArea";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x938a0110; //ReconMissionObjective.locationActiveArea
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<MissionReconActiveArea* > >::toBinaryStream(&locationActiveArea, stream);

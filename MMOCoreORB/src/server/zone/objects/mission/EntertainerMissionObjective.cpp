@@ -165,6 +165,10 @@ DistributedObjectServant* EntertainerMissionObjective::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* EntertainerMissionObjective::_getImplementationForRead() {
+	return _impl;
+}
+
 void EntertainerMissionObjective::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -242,14 +246,14 @@ void EntertainerMissionObjectiveImplementation::_serializationHelperMethod() {
 void EntertainerMissionObjectiveImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(EntertainerMissionObjectiveImplementation::readObjectMember(stream, _name)) {
+		if(EntertainerMissionObjectiveImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -258,30 +262,28 @@ void EntertainerMissionObjectiveImplementation::readObject(ObjectInputStream* st
 	initializeTransientMembers();
 }
 
-bool EntertainerMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
+bool EntertainerMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (MissionObjectiveImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "EntertainerMissionObjective.inMissionArea") {
+	switch(nameHashCode) {
+	case 0xc21898c6: //EntertainerMissionObjective.inMissionArea
 		TypeInfo<bool >::parseFromBinaryStream(&inMissionArea, stream);
 		return true;
-	}
 
-	if (_name == "EntertainerMissionObjective.isEntertaining") {
+	case 0x4160eb5d: //EntertainerMissionObjective.isEntertaining
 		TypeInfo<bool >::parseFromBinaryStream(&isEntertaining, stream);
 		return true;
-	}
 
-	if (_name == "EntertainerMissionObjective.locationActiveArea") {
+	case 0xfe92104c: //EntertainerMissionObjective.locationActiveArea
 		TypeInfo<ManagedReference<ActiveArea* > >::parseFromBinaryStream(&locationActiveArea, stream);
 		return true;
-	}
 
-	if (_name == "EntertainerMissionObjective.completeTask") {
+	case 0xb6e6d429: //EntertainerMissionObjective.completeTask
 		TypeInfo<Reference<CompleteMissionAfterCertainTimeTask* > >::parseFromBinaryStream(&completeTask, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -296,35 +298,35 @@ void EntertainerMissionObjectiveImplementation::writeObject(ObjectOutputStream* 
 int EntertainerMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = MissionObjectiveImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "EntertainerMissionObjective.inMissionArea";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc21898c6; //EntertainerMissionObjective.inMissionArea
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&inMissionArea, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "EntertainerMissionObjective.isEntertaining";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4160eb5d; //EntertainerMissionObjective.isEntertaining
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&isEntertaining, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "EntertainerMissionObjective.locationActiveArea";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfe92104c; //EntertainerMissionObjective.locationActiveArea
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<ActiveArea* > >::toBinaryStream(&locationActiveArea, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "EntertainerMissionObjective.completeTask";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb6e6d429; //EntertainerMissionObjective.completeTask
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Reference<CompleteMissionAfterCertainTimeTask* > >::toBinaryStream(&completeTask, stream);

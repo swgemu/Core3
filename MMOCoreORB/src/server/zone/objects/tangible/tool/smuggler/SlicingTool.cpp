@@ -114,6 +114,10 @@ DistributedObjectServant* SlicingTool::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* SlicingTool::_getImplementationForRead() {
+	return _impl;
+}
+
 void SlicingTool::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -193,14 +197,14 @@ void SlicingToolImplementation::_serializationHelperMethod() {
 void SlicingToolImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(SlicingToolImplementation::readObjectMember(stream, _name)) {
+		if(SlicingToolImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -209,15 +213,16 @@ void SlicingToolImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool SlicingToolImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool SlicingToolImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "SlicingTool.effectiveness") {
+	switch(nameHashCode) {
+	case 0x630aeba1: //SlicingTool.effectiveness
 		TypeInfo<float >::parseFromBinaryStream(&effectiveness, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -232,11 +237,11 @@ void SlicingToolImplementation::writeObject(ObjectOutputStream* stream) {
 int SlicingToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "SlicingTool.effectiveness";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x630aeba1; //SlicingTool.effectiveness
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&effectiveness, stream);

@@ -30,6 +30,10 @@ DistributedObjectServant* SpaceStationObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* SpaceStationObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void SpaceStationObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -109,14 +113,14 @@ void SpaceStationObjectImplementation::_serializationHelperMethod() {
 void SpaceStationObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(SpaceStationObjectImplementation::readObjectMember(stream, _name)) {
+		if(SpaceStationObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -125,10 +129,12 @@ void SpaceStationObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool SpaceStationObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ShipObjectImplementation::readObjectMember(stream, _name))
+bool SpaceStationObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ShipObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -143,7 +149,7 @@ void SpaceStationObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int SpaceStationObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ShipObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

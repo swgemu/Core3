@@ -289,6 +289,10 @@ DistributedObjectServant* Component::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* Component::_getImplementationForRead() {
+	return _impl;
+}
+
 void Component::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -368,14 +372,14 @@ void ComponentImplementation::_serializationHelperMethod() {
 void ComponentImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ComponentImplementation::readObjectMember(stream, _name)) {
+		if(ComponentImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -384,35 +388,32 @@ void ComponentImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ComponentImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool ComponentImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "Component.attributeMap") {
+	switch(nameHashCode) {
+	case 0xc24a10f4: //Component.attributeMap
 		TypeInfo<VectorMap<String, float> >::parseFromBinaryStream(&attributeMap, stream);
 		return true;
-	}
 
-	if (_name == "Component.precisionMap") {
+	case 0xc95992bf: //Component.precisionMap
 		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&precisionMap, stream);
 		return true;
-	}
 
-	if (_name == "Component.titleMap") {
+	case 0xf7854fbd: //Component.titleMap
 		TypeInfo<VectorMap<String, String> >::parseFromBinaryStream(&titleMap, stream);
 		return true;
-	}
 
-	if (_name == "Component.hiddenMap") {
+	case 0x55e3ae91: //Component.hiddenMap
 		TypeInfo<VectorMap<String, bool> >::parseFromBinaryStream(&hiddenMap, stream);
 		return true;
-	}
 
-	if (_name == "Component.keyList") {
+	case 0x1ce9d9cf: //Component.keyList
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&keyList, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -427,43 +428,43 @@ void ComponentImplementation::writeObject(ObjectOutputStream* stream) {
 int ComponentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "Component.attributeMap";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc24a10f4; //Component.attributeMap
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<String, float> >::toBinaryStream(&attributeMap, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Component.precisionMap";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc95992bf; //Component.precisionMap
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<String, int> >::toBinaryStream(&precisionMap, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Component.titleMap";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf7854fbd; //Component.titleMap
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<String, String> >::toBinaryStream(&titleMap, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Component.hiddenMap";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x55e3ae91; //Component.hiddenMap
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<String, bool> >::toBinaryStream(&hiddenMap, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Component.keyList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1ce9d9cf; //Component.keyList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&keyList, stream);

@@ -252,6 +252,10 @@ DistributedObjectServant* FishingSession::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* FishingSession::_getImplementationForRead() {
+	return _impl;
+}
+
 void FishingSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -331,14 +335,14 @@ void FishingSessionImplementation::_serializationHelperMethod() {
 void FishingSessionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(FishingSessionImplementation::readObjectMember(stream, _name)) {
+		if(FishingSessionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -347,45 +351,40 @@ void FishingSessionImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool FishingSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (FacadeImplementation::readObjectMember(stream, _name))
+bool FishingSessionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (FacadeImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "FishingSession.player") {
+	switch(nameHashCode) {
+	case 0xea0c8f4f: //FishingSession.player
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
-	}
 
-	if (_name == "FishingSession.marker") {
+	case 0x53cdfb9b: //FishingSession.marker
 		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&marker, stream);
 		return true;
-	}
 
-	if (_name == "FishingSession.nextAction") {
+	case 0xc7d84585: //FishingSession.nextAction
 		TypeInfo<int >::parseFromBinaryStream(&nextAction, stream);
 		return true;
-	}
 
-	if (_name == "FishingSession.fish") {
+	case 0xeb753405: //FishingSession.fish
 		TypeInfo<int >::parseFromBinaryStream(&fish, stream);
 		return true;
-	}
 
-	if (_name == "FishingSession.boxID") {
+	case 0x13ae2fec: //FishingSession.boxID
 		TypeInfo<unsigned int >::parseFromBinaryStream(&boxID, stream);
 		return true;
-	}
 
-	if (_name == "FishingSession.fishingState") {
+	case 0x134df457: //FishingSession.fishingState
 		TypeInfo<int >::parseFromBinaryStream(&fishingState, stream);
 		return true;
-	}
 
-	if (_name == "FishingSession.mood") {
+	case 0x9c0a97ff: //FishingSession.mood
 		TypeInfo<String >::parseFromBinaryStream(&mood, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -400,59 +399,59 @@ void FishingSessionImplementation::writeObject(ObjectOutputStream* stream) {
 int FishingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = FacadeImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "FishingSession.player";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xea0c8f4f; //FishingSession.player
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&player, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FishingSession.marker";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x53cdfb9b; //FishingSession.marker
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&marker, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FishingSession.nextAction";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc7d84585; //FishingSession.nextAction
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&nextAction, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FishingSession.fish";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xeb753405; //FishingSession.fish
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&fish, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FishingSession.boxID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x13ae2fec; //FishingSession.boxID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&boxID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FishingSession.fishingState";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x134df457; //FishingSession.fishingState
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&fishingState, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FishingSession.mood";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9c0a97ff; //FishingSession.mood
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&mood, stream);

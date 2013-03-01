@@ -445,6 +445,10 @@ DistributedObjectServant* AuctionManager::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* AuctionManager::_getImplementationForRead() {
+	return _impl;
+}
+
 void AuctionManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -524,14 +528,14 @@ void AuctionManagerImplementation::_serializationHelperMethod() {
 void AuctionManagerImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(AuctionManagerImplementation::readObjectMember(stream, _name)) {
+		if(AuctionManagerImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -540,40 +544,36 @@ void AuctionManagerImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool AuctionManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedServiceImplementation::readObjectMember(stream, _name))
+bool AuctionManagerImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedServiceImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "AuctionManager.auctionMap") {
+	switch(nameHashCode) {
+	case 0x6447c3cf: //AuctionManager.auctionMap
 		TypeInfo<ManagedReference<AuctionsMap* > >::parseFromBinaryStream(&auctionMap, stream);
 		return true;
-	}
 
-	if (_name == "AuctionManager.zoneServer") {
+	case 0x1543d150: //AuctionManager.zoneServer
 		TypeInfo<ManagedReference<ZoneServer* > >::parseFromBinaryStream(&zoneServer, stream);
 		return true;
-	}
 
-	if (_name == "AuctionManager.auctionEvents") {
+	case 0x83357598: //AuctionManager.auctionEvents
 		TypeInfo<AuctionEventsMap >::parseFromBinaryStream(&auctionEvents, stream);
 		return true;
-	}
 
-	if (_name == "AuctionManager.pendingUIDUpdates") {
+	case 0xd9368eaf: //AuctionManager.pendingUIDUpdates
 		TypeInfo<VectorMap<ManagedReference<SceneObject* >, String> >::parseFromBinaryStream(&pendingUIDUpdates, stream);
 		return true;
-	}
 
-	if (_name == "AuctionManager.pendingOldUIDUpdates") {
+	case 0x4ea2c561: //AuctionManager.pendingOldUIDUpdates
 		TypeInfo<VectorMap<ManagedReference<SceneObject* >, String> >::parseFromBinaryStream(&pendingOldUIDUpdates, stream);
 		return true;
-	}
 
-	if (_name == "AuctionManager.marketEnabled") {
+	case 0x2518ce00: //AuctionManager.marketEnabled
 		TypeInfo<bool >::parseFromBinaryStream(&marketEnabled, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -588,51 +588,51 @@ void AuctionManagerImplementation::writeObject(ObjectOutputStream* stream) {
 int AuctionManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "AuctionManager.auctionMap";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6447c3cf; //AuctionManager.auctionMap
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<AuctionsMap* > >::toBinaryStream(&auctionMap, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionManager.zoneServer";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1543d150; //AuctionManager.zoneServer
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<ZoneServer* > >::toBinaryStream(&zoneServer, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionManager.auctionEvents";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x83357598; //AuctionManager.auctionEvents
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<AuctionEventsMap >::toBinaryStream(&auctionEvents, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionManager.pendingUIDUpdates";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd9368eaf; //AuctionManager.pendingUIDUpdates
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<ManagedReference<SceneObject* >, String> >::toBinaryStream(&pendingUIDUpdates, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionManager.pendingOldUIDUpdates";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4ea2c561; //AuctionManager.pendingOldUIDUpdates
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<ManagedReference<SceneObject* >, String> >::toBinaryStream(&pendingOldUIDUpdates, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AuctionManager.marketEnabled";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2518ce00; //AuctionManager.marketEnabled
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&marketEnabled, stream);

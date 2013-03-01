@@ -51,6 +51,10 @@ DistributedObjectServant* ImageDesignPositionObserver::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ImageDesignPositionObserver::_getImplementationForRead() {
+	return _impl;
+}
+
 void ImageDesignPositionObserver::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -130,14 +134,14 @@ void ImageDesignPositionObserverImplementation::_serializationHelperMethod() {
 void ImageDesignPositionObserverImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ImageDesignPositionObserverImplementation::readObjectMember(stream, _name)) {
+		if(ImageDesignPositionObserverImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -146,15 +150,16 @@ void ImageDesignPositionObserverImplementation::readObject(ObjectInputStream* st
 	initializeTransientMembers();
 }
 
-bool ImageDesignPositionObserverImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ObserverImplementation::readObjectMember(stream, _name))
+bool ImageDesignPositionObserverImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ObserverImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "ImageDesignPositionObserver.session") {
+	switch(nameHashCode) {
+	case 0xf660fa8d: //ImageDesignPositionObserver.session
 		TypeInfo<ManagedWeakReference<ImageDesignSession* > >::parseFromBinaryStream(&session, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -169,11 +174,11 @@ void ImageDesignPositionObserverImplementation::writeObject(ObjectOutputStream* 
 int ImageDesignPositionObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ObserverImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "ImageDesignPositionObserver.session";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf660fa8d; //ImageDesignPositionObserver.session
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<ImageDesignSession* > >::toBinaryStream(&session, stream);

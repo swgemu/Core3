@@ -171,7 +171,7 @@ int SceneObject::inRangeObjects(unsigned int gameObjectType, float range) {
 }
 
 bool SceneObject::isInRange(SceneObject* obj, float range) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -232,7 +232,7 @@ void SceneObject::destroyObjectFromWorld(bool sendSelfDestroy) {
 }
 
 int SceneObject::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -406,7 +406,7 @@ BaseMessage* SceneObject::link(unsigned long long objectID, unsigned int contain
 }
 
 void SceneObject::sendTo(SceneObject* player, bool doClose) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -421,7 +421,7 @@ void SceneObject::sendTo(SceneObject* player, bool doClose) {
 }
 
 void SceneObject::sendWithoutParentTo(SceneObject* player) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -435,7 +435,7 @@ void SceneObject::sendWithoutParentTo(SceneObject* player) {
 }
 
 void SceneObject::sendWithoutContainerObjectsTo(SceneObject* player) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -519,7 +519,7 @@ void SceneObject::sendToOwner(bool doClose) {
 }
 
 void SceneObject::sendAttributeListTo(CreatureObject* object) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -557,7 +557,7 @@ void SceneObject::setCustomObjectName(const UnicodeString& name, bool notifyClie
 }
 
 void SceneObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -746,7 +746,7 @@ void SceneObject::updateZoneWithParent(SceneObject* newParent, bool lightUpdate,
 }
 
 void SceneObject::broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -762,7 +762,7 @@ void SceneObject::broadcastMessage(BasePacket* message, bool sendSelf, bool lock
 }
 
 void SceneObject::broadcastMessagePrivate(BasePacket* message, SceneObject* selfObject, bool lockZone) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -778,7 +778,7 @@ void SceneObject::broadcastMessagePrivate(BasePacket* message, SceneObject* self
 }
 
 void SceneObject::broadcastObject(SceneObject* object, bool sendSelf) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -793,7 +793,7 @@ void SceneObject::broadcastObject(SceneObject* object, bool sendSelf) {
 }
 
 void SceneObject::broadcastObjectPrivate(SceneObject* object, SceneObject* selfObject) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -808,7 +808,7 @@ void SceneObject::broadcastObjectPrivate(SceneObject* object, SceneObject* selfO
 }
 
 void SceneObject::broadcastDestroy(SceneObject* object, bool sendSelf) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -823,7 +823,7 @@ void SceneObject::broadcastDestroy(SceneObject* object, bool sendSelf) {
 }
 
 void SceneObject::broadcastDestroyPrivate(SceneObject* object, SceneObject* selfObject) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -838,7 +838,7 @@ void SceneObject::broadcastDestroyPrivate(SceneObject* object, SceneObject* self
 }
 
 void SceneObject::broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -847,7 +847,7 @@ void SceneObject::broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf
 }
 
 void SceneObject::broadcastMessagesPrivate(Vector<BasePacket*>* messages, SceneObject* selfObject) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -870,7 +870,7 @@ void SceneObject::sendMessage(BasePacket* msg) {
 }
 
 int SceneObject::compareTo(SceneObject* obj) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -884,7 +884,7 @@ int SceneObject::compareTo(SceneObject* obj) {
 }
 
 void SceneObject::getSlottedObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -893,7 +893,7 @@ void SceneObject::getSlottedObjects(VectorMap<String, ManagedReference<SceneObje
 }
 
 unsigned long long SceneObject::getParentID() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -933,7 +933,7 @@ PendingTasksMap* SceneObject::getPendingTasks() {
 }
 
 Task* SceneObject::getPendingTask(const String& name) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -942,7 +942,7 @@ Task* SceneObject::getPendingTask(const String& name) {
 }
 
 bool SceneObject::containsPendingTask(const String& name) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1000,7 +1000,7 @@ int SceneObject::getCountableObjectsRecursive() {
 }
 
 Facade* SceneObject::getActiveSession(unsigned int type) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1029,7 +1029,7 @@ void SceneObject::addActiveSession(unsigned int type, Facade* session) {
 }
 
 bool SceneObject::containsActiveSession(unsigned int type) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1057,7 +1057,7 @@ bool SceneObject::dropActiveSession(unsigned int type) {
 }
 
 int SceneObject::getActiveSessionsCount() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1070,7 +1070,7 @@ int SceneObject::getActiveSessionsCount() {
 }
 
 VectorMap<unsigned int, ManagedReference<Facade* > >* SceneObject::getObjectActiveSessions() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1094,7 +1094,7 @@ int SceneObject::handleObjectMenuSelect(CreatureObject* player, byte selectedID)
 }
 
 float SceneObject::getDistanceTo(SceneObject* object) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1108,7 +1108,7 @@ float SceneObject::getDistanceTo(SceneObject* object) {
 }
 
 float SceneObject::getDistanceTo(Coordinate* coordinate) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1187,7 +1187,7 @@ void SceneObject::dropActiveArea(ActiveArea* area) {
 }
 
 bool SceneObject::hasActiveArea(ActiveArea* area) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1201,7 +1201,7 @@ bool SceneObject::hasActiveArea(ActiveArea* area) {
 }
 
 bool SceneObject::hasActiveArea(unsigned long long objectid) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1215,7 +1215,7 @@ bool SceneObject::hasActiveArea(unsigned long long objectid) {
 }
 
 Vector<ManagedReference<ActiveArea* > >* SceneObject::getActiveAreas() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1224,7 +1224,7 @@ Vector<ManagedReference<ActiveArea* > >* SceneObject::getActiveAreas() {
 }
 
 int SceneObject::getActiveAreasSize() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1237,7 +1237,7 @@ int SceneObject::getActiveAreasSize() {
 }
 
 ActiveArea* SceneObject::getActiveRegion() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1250,7 +1250,7 @@ ActiveArea* SceneObject::getActiveRegion() {
 }
 
 ManagedWeakReference<CityRegion* > SceneObject::getCityRegion() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1268,7 +1268,7 @@ void SceneObject::setCityRegion(CityRegion* region) {
 }
 
 Zone* SceneObject::getZone() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1281,7 +1281,7 @@ Zone* SceneObject::getZone() {
 }
 
 Zone* SceneObject::getLocalZone() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1325,7 +1325,7 @@ Vector3 SceneObject::getWorldCoordinate(float distance, float angleDegrees) {
 }
 
 float SceneObject::getWorldPositionX() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1338,7 +1338,7 @@ float SceneObject::getWorldPositionX() {
 }
 
 float SceneObject::getWorldPositionY() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1351,7 +1351,7 @@ float SceneObject::getWorldPositionY() {
 }
 
 float SceneObject::getWorldPositionZ() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1364,7 +1364,7 @@ float SceneObject::getWorldPositionZ() {
 }
 
 Vector3 SceneObject::getWorldPosition() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1373,7 +1373,7 @@ Vector3 SceneObject::getWorldPosition() {
 }
 
 float SceneObject::getDirectionX() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1386,7 +1386,7 @@ float SceneObject::getDirectionX() {
 }
 
 float SceneObject::getDirectionZ() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1399,7 +1399,7 @@ float SceneObject::getDirectionZ() {
 }
 
 float SceneObject::getDirectionY() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1412,7 +1412,7 @@ float SceneObject::getDirectionY() {
 }
 
 float SceneObject::getDirectionW() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1425,7 +1425,7 @@ float SceneObject::getDirectionW() {
 }
 
 Quaternion* SceneObject::getDirection() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1434,7 +1434,7 @@ Quaternion* SceneObject::getDirection() {
 }
 
 unsigned int SceneObject::getClientObjectCRC() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1447,7 +1447,7 @@ unsigned int SceneObject::getClientObjectCRC() {
 }
 
 unsigned int SceneObject::getServerObjectCRC() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1460,7 +1460,7 @@ unsigned int SceneObject::getServerObjectCRC() {
 }
 
 bool SceneObject::isWaypointObject() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1473,7 +1473,7 @@ bool SceneObject::isWaypointObject() {
 }
 
 StringId* SceneObject::getObjectName() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1482,7 +1482,7 @@ StringId* SceneObject::getObjectName() {
 }
 
 String SceneObject::getObjectNameStringIdFile() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1497,7 +1497,7 @@ String SceneObject::getObjectNameStringIdFile() {
 }
 
 String SceneObject::getObjectNameStringIdName() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1512,7 +1512,7 @@ String SceneObject::getObjectNameStringIdName() {
 }
 
 String SceneObject::getDetailedDescription() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -1535,7 +1535,7 @@ void SceneObject::setDetailedDescription(const String& detail) {
 }
 
 int SceneObject::getArrangementDescriptorSize() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1548,7 +1548,7 @@ int SceneObject::getArrangementDescriptorSize() {
 }
 
 String SceneObject::getArrangementDescriptor(int idx) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1564,7 +1564,7 @@ String SceneObject::getArrangementDescriptor(int idx) {
 }
 
 String SceneObject::getSlotDescriptor(int idx) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1580,7 +1580,7 @@ String SceneObject::getSlotDescriptor(int idx) {
 }
 
 bool SceneObject::hasSlotDescriptor(const String& descr) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1594,7 +1594,7 @@ bool SceneObject::hasSlotDescriptor(const String& descr) {
 }
 
 bool SceneObject::hasArrangementDescriptor(const String& descr) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1617,7 +1617,7 @@ VectorMap<String, ManagedReference<SceneObject* > >* SceneObject::getSlottedObje
 }
 
 SceneObject* SceneObject::getSlottedObject(const String& slot) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1631,7 +1631,7 @@ SceneObject* SceneObject::getSlottedObject(const String& slot) {
 }
 
 int SceneObject::getSlotDescriptorSize() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1644,7 +1644,7 @@ int SceneObject::getSlotDescriptorSize() {
 }
 
 SceneObject* SceneObject::getSlottedObject(int idx) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1686,7 +1686,7 @@ void SceneObject::removeSlottedObject(int index) {
 }
 
 int SceneObject::getContainerObjectsSize() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1699,7 +1699,7 @@ int SceneObject::getContainerObjectsSize() {
 }
 
 int SceneObject::getSlottedObjectsSize() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1712,7 +1712,7 @@ int SceneObject::getSlottedObjectsSize() {
 }
 
 bool SceneObject::hasFullContainerObjects() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1725,7 +1725,7 @@ bool SceneObject::hasFullContainerObjects() {
 }
 
 unsigned int SceneObject::getContainerVolumeLimit() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1738,7 +1738,7 @@ unsigned int SceneObject::getContainerVolumeLimit() {
 }
 
 SceneObject* SceneObject::getContainerObject(int idx) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1761,7 +1761,7 @@ VectorMap<unsigned long long, ManagedReference<SceneObject* > >* SceneObject::ge
 }
 
 bool SceneObject::hasObjectInContainer(unsigned long long objectID) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1775,7 +1775,7 @@ bool SceneObject::hasObjectInContainer(unsigned long long objectID) {
 }
 
 bool SceneObject::hasObjectInSlottedContainer(SceneObject* object) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1789,7 +1789,7 @@ bool SceneObject::hasObjectInSlottedContainer(SceneObject* object) {
 }
 
 SceneObject* SceneObject::getContainerObject(unsigned long long objectID) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1873,7 +1873,7 @@ void SceneObject::setContainerType(int type) {
 }
 
 unsigned int SceneObject::getContainerType() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1899,7 +1899,7 @@ ZoneClientSession* SceneObject::getClient() {
 }
 
 unsigned int SceneObject::getGameObjectType() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1912,7 +1912,7 @@ unsigned int SceneObject::getGameObjectType() {
 }
 
 unsigned int SceneObject::getClientGameObjectType() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1925,7 +1925,7 @@ unsigned int SceneObject::getClientGameObjectType() {
 }
 
 unsigned int SceneObject::getContainmentType() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1938,7 +1938,7 @@ unsigned int SceneObject::getContainmentType() {
 }
 
 float SceneObject::getDirectionAngle() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -1951,7 +1951,7 @@ float SceneObject::getDirectionAngle() {
 }
 
 float SceneObject::getSpecialDirectionAngle() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2033,7 +2033,7 @@ void SceneObject::notifyCloseContainer(CreatureObject* player) {
 }
 
 unsigned int SceneObject::getMovementCounter() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2046,7 +2046,7 @@ unsigned int SceneObject::getMovementCounter() {
 }
 
 ManagedWeakReference<SceneObject* > SceneObject::getParent() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2073,7 +2073,7 @@ void SceneObject::setParent(QuadTreeEntry* entry) {
 }
 
 ZoneServer* SceneObject::getZoneServer() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2086,7 +2086,7 @@ ZoneServer* SceneObject::getZoneServer() {
 }
 
 ManagedWeakReference<SceneObject* > SceneObject::getRootParent() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2099,7 +2099,7 @@ ManagedWeakReference<SceneObject* > SceneObject::getRootParent() {
 }
 
 ManagedWeakReference<SceneObject* > SceneObject::getParentRecursively(unsigned int gameObjectType) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2113,7 +2113,7 @@ ManagedWeakReference<SceneObject* > SceneObject::getParentRecursively(unsigned i
 }
 
 bool SceneObject::isASubChildOf(SceneObject* object) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2136,7 +2136,7 @@ ReadWriteLock* SceneObject::getContainerLock() {
 }
 
 UnicodeString SceneObject::getCustomObjectName() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2151,7 +2151,7 @@ UnicodeString SceneObject::getCustomObjectName() {
 }
 
 String SceneObject::getLoggingName() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2179,7 +2179,7 @@ bool SceneObject::isPlayerCreature() {
 }
 
 bool SceneObject::isVendor() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2188,7 +2188,7 @@ bool SceneObject::isVendor() {
 }
 
 bool SceneObject::isGCWBase() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2197,7 +2197,7 @@ bool SceneObject::isGCWBase() {
 }
 
 bool SceneObject::isTurret() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2206,7 +2206,7 @@ bool SceneObject::isTurret() {
 }
 
 bool SceneObject::isMinefield() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2215,7 +2215,7 @@ bool SceneObject::isMinefield() {
 }
 
 bool SceneObject::isDetector() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2224,7 +2224,7 @@ bool SceneObject::isDetector() {
 }
 
 bool SceneObject::isSecurityTerminal() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2233,7 +2233,7 @@ bool SceneObject::isSecurityTerminal() {
 }
 
 bool SceneObject::isTurretControlTerminal() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2242,7 +2242,7 @@ bool SceneObject::isTurretControlTerminal() {
 }
 
 ZoneComponent* SceneObject::getZoneComponent() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2251,7 +2251,7 @@ ZoneComponent* SceneObject::getZoneComponent() {
 }
 
 ObjectMenuComponent* SceneObject::getObjectMenuComponent() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2260,7 +2260,7 @@ ObjectMenuComponent* SceneObject::getObjectMenuComponent() {
 }
 
 DataObjectComponentReference* SceneObject::getDataObjectComponent() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -2300,7 +2300,7 @@ bool SceneObject::isNoTrade() {
 }
 
 bool SceneObject::isContainerFull() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2313,7 +2313,7 @@ bool SceneObject::isContainerFull() {
 }
 
 bool SceneObject::isShuttleInstallation() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2326,7 +2326,7 @@ bool SceneObject::isShuttleInstallation() {
 }
 
 bool SceneObject::isPlayerObject() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2443,7 +2443,7 @@ bool SceneObject::isCloningBuildingObject() {
 }
 
 bool SceneObject::isGarage() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2625,7 +2625,7 @@ bool SceneObject::isIntangibleObject() {
 }
 
 bool SceneObject::isInstrument() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2638,7 +2638,7 @@ bool SceneObject::isInstrument() {
 }
 
 bool SceneObject::isBazaarTerminal() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2651,7 +2651,7 @@ bool SceneObject::isBazaarTerminal() {
 }
 
 bool SceneObject::isLiveSample() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2755,7 +2755,7 @@ bool SceneObject::isFactoryCrate() {
 }
 
 bool SceneObject::isFishingPoleObject() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2898,7 +2898,7 @@ bool SceneObject::isAuctionObject() {
 }
 
 bool SceneObject::isFishingBait() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2911,7 +2911,7 @@ bool SceneObject::isFishingBait() {
 }
 
 bool SceneObject::isTrapObject() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2924,7 +2924,7 @@ bool SceneObject::isTrapObject() {
 }
 
 bool SceneObject::isThrownWeaponObject() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2937,7 +2937,7 @@ bool SceneObject::isThrownWeaponObject() {
 }
 
 bool SceneObject::isSpecialHeavyWeapon() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -2950,7 +2950,7 @@ bool SceneObject::isSpecialHeavyWeapon() {
 }
 
 bool SceneObject::isRepairTool() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3015,7 +3015,7 @@ bool SceneObject::isCreatureHabitat() {
 }
 
 bool SceneObject::isCampKit() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3356,7 +3356,7 @@ void SceneObject::setClientObject(bool val) {
 }
 
 unsigned int SceneObject::getPlanetCRC() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3369,7 +3369,7 @@ unsigned int SceneObject::getPlanetCRC() {
 }
 
 bool SceneObject::isStaticObject() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3486,7 +3486,7 @@ bool SceneObject::isActorObject() {
 }
 
 int SceneObject::getPlanetMapCategoryCRC() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3499,7 +3499,7 @@ int SceneObject::getPlanetMapCategoryCRC() {
 }
 
 int SceneObject::getPlanetMapSubCategoryCRC() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3530,7 +3530,7 @@ void SceneObject::setPlanetMapSubCategory(PlanetMapCategory* pmc) {
 }
 
 PlanetMapCategory* SceneObject::getPlanetMapCategory() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -3539,7 +3539,7 @@ PlanetMapCategory* SceneObject::getPlanetMapCategory() {
 }
 
 PlanetMapCategory* SceneObject::getPlanetMapSubCategory() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -3557,7 +3557,7 @@ SortedVector<ManagedReference<SceneObject* > >* SceneObject::getChildObjects() {
 }
 
 bool SceneObject::containsChildObject(SceneObject* obj) {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3571,7 +3571,7 @@ bool SceneObject::containsChildObject(SceneObject* obj) {
 }
 
 SharedObjectTemplate* SceneObject::getObjectTemplate() {
-	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -3694,6 +3694,10 @@ DistributedObjectServant* SceneObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* SceneObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void SceneObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -3771,14 +3775,14 @@ void SceneObjectImplementation::_serializationHelperMethod() {
 void SceneObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(SceneObjectImplementation::readObjectMember(stream, _name)) {
+		if(SceneObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -3787,120 +3791,100 @@ void SceneObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool SceneObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (QuadTreeEntryImplementation::readObjectMember(stream, _name))
+bool SceneObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (QuadTreeEntryImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "SceneObject.sendToClient") {
+	switch(nameHashCode) {
+	case 0xdf730a27: //SceneObject.sendToClient
 		TypeInfo<bool >::parseFromBinaryStream(&sendToClient, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.zone") {
+	case 0xaec18859: //SceneObject.zone
 		TypeInfo<ZoneReference >::parseFromBinaryStream(&zone, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.dataObjectComponent") {
+	case 0x6d6b5595: //SceneObject.dataObjectComponent
 		TypeInfo<DataObjectComponentReference >::parseFromBinaryStream(&dataObjectComponent, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.containerType") {
+	case 0xb1f6d3a1: //SceneObject.containerType
 		TypeInfo<unsigned int >::parseFromBinaryStream(&containerType, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.containerVolumeLimit") {
+	case 0x48b4b076: //SceneObject.containerVolumeLimit
 		TypeInfo<unsigned int >::parseFromBinaryStream(&containerVolumeLimit, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.containerPermissions") {
+	case 0x49c71bd2: //SceneObject.containerPermissions
 		TypeInfo<ContainerPermissions >::parseFromBinaryStream(&containerPermissions, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.serverObjectCRC") {
+	case 0x53bf8602: //SceneObject.serverObjectCRC
 		TypeInfo<unsigned int >::parseFromBinaryStream(&serverObjectCRC, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.clientObjectCRC") {
+	case 0xb7865b88: //SceneObject.clientObjectCRC
 		TypeInfo<unsigned int >::parseFromBinaryStream(&clientObjectCRC, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.direction") {
+	case 0xa7c9305d: //SceneObject.direction
 		TypeInfo<Quaternion >::parseFromBinaryStream(&direction, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.movementCounter") {
+	case 0x4abd4bff: //SceneObject.movementCounter
 		TypeInfo<unsigned int >::parseFromBinaryStream(&movementCounter, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.objectName") {
+	case 0xd57eccf8: //SceneObject.objectName
 		TypeInfo<StringId >::parseFromBinaryStream(&objectName, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.staticObject") {
+	case 0x63af3f23: //SceneObject.staticObject
 		TypeInfo<bool >::parseFromBinaryStream(&staticObject, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.objectActiveSessions") {
+	case 0x8f097c02: //SceneObject.objectActiveSessions
 		TypeInfo<VectorMap<unsigned int, ManagedReference<Facade* > > >::parseFromBinaryStream(&objectActiveSessions, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.gameObjectType") {
+	case 0x82d0211: //SceneObject.gameObjectType
 		TypeInfo<unsigned int >::parseFromBinaryStream(&gameObjectType, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.containmentType") {
+	case 0x54cd1989: //SceneObject.containmentType
 		TypeInfo<unsigned int >::parseFromBinaryStream(&containmentType, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.planetMapCategory") {
+	case 0x4c7ad679: //SceneObject.planetMapCategory
 		TypeInfo<int >::parseFromBinaryStream(&planetMapCategory, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.planetMapSubCategory") {
+	case 0x2150aa1e: //SceneObject.planetMapSubCategory
 		TypeInfo<int >::parseFromBinaryStream(&planetMapSubCategory, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.customName") {
+	case 0xb3fd7d2a: //SceneObject.customName
 		TypeInfo<UnicodeString >::parseFromBinaryStream(&customName, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.activeAreas") {
+	case 0x3d5c39b3: //SceneObject.activeAreas
 		TypeInfo<SortedVector<ManagedReference<ActiveArea* > > >::parseFromBinaryStream(&activeAreas, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.childObjects") {
+	case 0x3ff949cf: //SceneObject.childObjects
 		TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&childObjects, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.slottedObjects") {
+	case 0x86f38437: //SceneObject.slottedObjects
 		TypeInfo<VectorMap<String, ManagedReference<SceneObject* > > >::parseFromBinaryStream(&slottedObjects, stream);
 		return true;
-	}
 
-	if (_name == "SceneObject.containerObjects") {
+	case 0xe866252e: //SceneObject.containerObjects
 		TypeInfo<ContainerObjectsMap >::parseFromBinaryStream(&containerObjects, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -3915,179 +3899,179 @@ void SceneObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int SceneObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = QuadTreeEntryImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "SceneObject.sendToClient";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xdf730a27; //SceneObject.sendToClient
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&sendToClient, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.zone";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xaec18859; //SceneObject.zone
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ZoneReference >::toBinaryStream(&zone, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.dataObjectComponent";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6d6b5595; //SceneObject.dataObjectComponent
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<DataObjectComponentReference >::toBinaryStream(&dataObjectComponent, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.containerType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb1f6d3a1; //SceneObject.containerType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&containerType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.containerVolumeLimit";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x48b4b076; //SceneObject.containerVolumeLimit
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&containerVolumeLimit, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.containerPermissions";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x49c71bd2; //SceneObject.containerPermissions
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ContainerPermissions >::toBinaryStream(&containerPermissions, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.serverObjectCRC";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x53bf8602; //SceneObject.serverObjectCRC
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&serverObjectCRC, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.clientObjectCRC";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb7865b88; //SceneObject.clientObjectCRC
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&clientObjectCRC, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.direction";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa7c9305d; //SceneObject.direction
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Quaternion >::toBinaryStream(&direction, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.movementCounter";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4abd4bff; //SceneObject.movementCounter
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&movementCounter, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.objectName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd57eccf8; //SceneObject.objectName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<StringId >::toBinaryStream(&objectName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.staticObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x63af3f23; //SceneObject.staticObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&staticObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.objectActiveSessions";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8f097c02; //SceneObject.objectActiveSessions
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<unsigned int, ManagedReference<Facade* > > >::toBinaryStream(&objectActiveSessions, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.gameObjectType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x82d0211; //SceneObject.gameObjectType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&gameObjectType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.containmentType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x54cd1989; //SceneObject.containmentType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&containmentType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.planetMapCategory";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4c7ad679; //SceneObject.planetMapCategory
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&planetMapCategory, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.planetMapSubCategory";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2150aa1e; //SceneObject.planetMapSubCategory
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&planetMapSubCategory, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.customName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb3fd7d2a; //SceneObject.customName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<UnicodeString >::toBinaryStream(&customName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.activeAreas";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3d5c39b3; //SceneObject.activeAreas
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<ActiveArea* > > >::toBinaryStream(&activeAreas, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.childObjects";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3ff949cf; //SceneObject.childObjects
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::toBinaryStream(&childObjects, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.slottedObjects";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x86f38437; //SceneObject.slottedObjects
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<String, ManagedReference<SceneObject* > > >::toBinaryStream(&slottedObjects, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SceneObject.containerObjects";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe866252e; //SceneObject.containerObjects
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ContainerObjectsMap >::toBinaryStream(&containerObjects, stream);

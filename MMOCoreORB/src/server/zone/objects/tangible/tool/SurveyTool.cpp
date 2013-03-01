@@ -247,6 +247,10 @@ DistributedObjectServant* SurveyTool::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* SurveyTool::_getImplementationForRead() {
+	return _impl;
+}
+
 void SurveyTool::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -326,14 +330,14 @@ void SurveyToolImplementation::_serializationHelperMethod() {
 void SurveyToolImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(SurveyToolImplementation::readObjectMember(stream, _name)) {
+		if(SurveyToolImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -342,45 +346,40 @@ void SurveyToolImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool SurveyToolImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ToolTangibleObjectImplementation::readObjectMember(stream, _name))
+bool SurveyToolImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ToolTangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "SurveyTool.range") {
+	switch(nameHashCode) {
+	case 0xcf84352d: //SurveyTool.range
 		TypeInfo<int >::parseFromBinaryStream(&range, stream);
 		return true;
-	}
 
-	if (_name == "SurveyTool.points") {
+	case 0xa9704625: //SurveyTool.points
 		TypeInfo<int >::parseFromBinaryStream(&points, stream);
 		return true;
-	}
 
-	if (_name == "SurveyTool.type") {
+	case 0x9bc03b08: //SurveyTool.type
 		TypeInfo<int >::parseFromBinaryStream(&type, stream);
 		return true;
-	}
 
-	if (_name == "SurveyTool.surveyType") {
+	case 0x68ee3022: //SurveyTool.surveyType
 		TypeInfo<String >::parseFromBinaryStream(&surveyType, stream);
 		return true;
-	}
 
-	if (_name == "SurveyTool.surveyAnimation") {
+	case 0xb891177: //SurveyTool.surveyAnimation
 		TypeInfo<String >::parseFromBinaryStream(&surveyAnimation, stream);
 		return true;
-	}
 
-	if (_name == "SurveyTool.sampleAnimation") {
+	case 0xa44925b: //SurveyTool.sampleAnimation
 		TypeInfo<String >::parseFromBinaryStream(&sampleAnimation, stream);
 		return true;
-	}
 
-	if (_name == "SurveyTool.radioactiveOk") {
+	case 0xa2bafe38: //SurveyTool.radioactiveOk
 		TypeInfo<bool >::parseFromBinaryStream(&radioactiveOk, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -395,59 +394,59 @@ void SurveyToolImplementation::writeObject(ObjectOutputStream* stream) {
 int SurveyToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ToolTangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "SurveyTool.range";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xcf84352d; //SurveyTool.range
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&range, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SurveyTool.points";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa9704625; //SurveyTool.points
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&points, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SurveyTool.type";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9bc03b08; //SurveyTool.type
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&type, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SurveyTool.surveyType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x68ee3022; //SurveyTool.surveyType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&surveyType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SurveyTool.surveyAnimation";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb891177; //SurveyTool.surveyAnimation
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&surveyAnimation, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SurveyTool.sampleAnimation";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa44925b; //SurveyTool.sampleAnimation
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&sampleAnimation, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SurveyTool.radioactiveOk";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa2bafe38; //SurveyTool.radioactiveOk
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&radioactiveOk, stream);

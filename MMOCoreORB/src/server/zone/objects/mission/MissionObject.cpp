@@ -938,6 +938,10 @@ DistributedObjectServant* MissionObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* MissionObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void MissionObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -1017,14 +1021,14 @@ void MissionObjectImplementation::_serializationHelperMethod() {
 void MissionObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(MissionObjectImplementation::readObjectMember(stream, _name)) {
+		if(MissionObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -1033,155 +1037,128 @@ void MissionObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool MissionObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (IntangibleObjectImplementation::readObjectMember(stream, _name))
+bool MissionObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (IntangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "MissionObject.waypointToMission") {
+	switch(nameHashCode) {
+	case 0x6d931577: //MissionObject.waypointToMission
 		TypeInfo<ManagedReference<WaypointObject* > >::parseFromBinaryStream(&waypointToMission, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.missionObjective") {
+	case 0xe51f6ba1: //MissionObject.missionObjective
 		TypeInfo<ManagedReference<MissionObjective* > >::parseFromBinaryStream(&missionObjective, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.typeCRC") {
+	case 0x5102d7c: //MissionObject.typeCRC
 		TypeInfo<unsigned int >::parseFromBinaryStream(&typeCRC, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.difficultyLevel") {
+	case 0x67bd2214: //MissionObject.difficultyLevel
 		TypeInfo<int >::parseFromBinaryStream(&difficultyLevel, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.difficultyDisplay") {
+	case 0x8ea8f8b8: //MissionObject.difficultyDisplay
 		TypeInfo<int >::parseFromBinaryStream(&difficultyDisplay, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.creatorName") {
+	case 0xe134c5cc: //MissionObject.creatorName
 		TypeInfo<UnicodeString >::parseFromBinaryStream(&creatorName, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.rewardCredits") {
+	case 0x6da29f69: //MissionObject.rewardCredits
 		TypeInfo<int >::parseFromBinaryStream(&rewardCredits, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.rewardFactionPointsRebel") {
+	case 0x284a0cca: //MissionObject.rewardFactionPointsRebel
 		TypeInfo<int >::parseFromBinaryStream(&rewardFactionPointsRebel, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.rewardFactionPointsImperial") {
+	case 0x29428677: //MissionObject.rewardFactionPointsImperial
 		TypeInfo<int >::parseFromBinaryStream(&rewardFactionPointsImperial, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.missionNumber") {
+	case 0x8560e59b: //MissionObject.missionNumber
 		TypeInfo<int >::parseFromBinaryStream(&missionNumber, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.faction") {
+	case 0xd379291d: //MissionObject.faction
 		TypeInfo<int >::parseFromBinaryStream(&faction, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.missionLevel") {
+	case 0xe09e5973: //MissionObject.missionLevel
 		TypeInfo<int >::parseFromBinaryStream(&missionLevel, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.startPositionX") {
+	case 0x6d9fa767: //MissionObject.startPositionX
 		TypeInfo<float >::parseFromBinaryStream(&startPositionX, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.startPositionY") {
+	case 0x695ebad0: //MissionObject.startPositionY
 		TypeInfo<float >::parseFromBinaryStream(&startPositionY, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.startPlanet") {
+	case 0x397165b3: //MissionObject.startPlanet
 		TypeInfo<String >::parseFromBinaryStream(&startPlanet, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.endPositionX") {
+	case 0xe05d8a36: //MissionObject.endPositionX
 		TypeInfo<float >::parseFromBinaryStream(&endPositionX, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.endPositionY") {
+	case 0xe49c9781: //MissionObject.endPositionY
 		TypeInfo<float >::parseFromBinaryStream(&endPositionY, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.endPlanet") {
+	case 0x4ca34399: //MissionObject.endPlanet
 		TypeInfo<String >::parseFromBinaryStream(&endPlanet, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.targetObjectId") {
+	case 0x61a445a6: //MissionObject.targetObjectId
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&targetObjectId, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.missionDescription") {
+	case 0xbd28d046: //MissionObject.missionDescription
 		TypeInfo<StringId >::parseFromBinaryStream(&missionDescription, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.missionTitle") {
+	case 0xde93aff9: //MissionObject.missionTitle
 		TypeInfo<StringId >::parseFromBinaryStream(&missionTitle, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.refreshCounter") {
+	case 0x17be5441: //MissionObject.refreshCounter
 		TypeInfo<unsigned int >::parseFromBinaryStream(&refreshCounter, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.targetName") {
+	case 0x6529aa4b: //MissionObject.targetName
 		TypeInfo<String >::parseFromBinaryStream(&targetName, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.missionTarget") {
+	case 0x7157cbf8: //MissionObject.missionTarget
 		TypeInfo<Reference<NpcSpawnPoint* > >::parseFromBinaryStream(&missionTarget, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.missionTargetDest") {
+	case 0xc486d38f: //MissionObject.missionTargetDest
 		TypeInfo<Reference<NpcSpawnPoint* > >::parseFromBinaryStream(&missionTargetDest, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.templateString1") {
+	case 0x4aedc6a0: //MissionObject.templateString1
 		TypeInfo<String >::parseFromBinaryStream(&templateString1, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.templateString2") {
+	case 0x47aee079: //MissionObject.templateString2
 		TypeInfo<String >::parseFromBinaryStream(&templateString2, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.targetTemplate") {
+	case 0x609a3488: //MissionObject.targetTemplate
 		TypeInfo<TemplateReference<SharedObjectTemplate*> >::parseFromBinaryStream(&targetTemplate, stream);
 		return true;
-	}
 
-	if (_name == "MissionObject.targetOptionalTemplate") {
+	case 0x5151bc3b: //MissionObject.targetOptionalTemplate
 		TypeInfo<String >::parseFromBinaryStream(&targetOptionalTemplate, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -1196,235 +1173,235 @@ void MissionObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int MissionObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = IntangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "MissionObject.waypointToMission";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6d931577; //MissionObject.waypointToMission
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<WaypointObject* > >::toBinaryStream(&waypointToMission, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.missionObjective";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe51f6ba1; //MissionObject.missionObjective
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<MissionObjective* > >::toBinaryStream(&missionObjective, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.typeCRC";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5102d7c; //MissionObject.typeCRC
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&typeCRC, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.difficultyLevel";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x67bd2214; //MissionObject.difficultyLevel
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&difficultyLevel, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.difficultyDisplay";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8ea8f8b8; //MissionObject.difficultyDisplay
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&difficultyDisplay, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.creatorName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe134c5cc; //MissionObject.creatorName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<UnicodeString >::toBinaryStream(&creatorName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.rewardCredits";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6da29f69; //MissionObject.rewardCredits
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&rewardCredits, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.rewardFactionPointsRebel";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x284a0cca; //MissionObject.rewardFactionPointsRebel
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&rewardFactionPointsRebel, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.rewardFactionPointsImperial";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x29428677; //MissionObject.rewardFactionPointsImperial
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&rewardFactionPointsImperial, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.missionNumber";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8560e59b; //MissionObject.missionNumber
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&missionNumber, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.faction";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd379291d; //MissionObject.faction
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&faction, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.missionLevel";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe09e5973; //MissionObject.missionLevel
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&missionLevel, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.startPositionX";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6d9fa767; //MissionObject.startPositionX
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&startPositionX, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.startPositionY";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x695ebad0; //MissionObject.startPositionY
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&startPositionY, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.startPlanet";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x397165b3; //MissionObject.startPlanet
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&startPlanet, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.endPositionX";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe05d8a36; //MissionObject.endPositionX
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&endPositionX, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.endPositionY";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe49c9781; //MissionObject.endPositionY
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&endPositionY, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.endPlanet";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4ca34399; //MissionObject.endPlanet
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&endPlanet, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.targetObjectId";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x61a445a6; //MissionObject.targetObjectId
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&targetObjectId, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.missionDescription";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbd28d046; //MissionObject.missionDescription
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<StringId >::toBinaryStream(&missionDescription, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.missionTitle";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xde93aff9; //MissionObject.missionTitle
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<StringId >::toBinaryStream(&missionTitle, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.refreshCounter";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x17be5441; //MissionObject.refreshCounter
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&refreshCounter, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.targetName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6529aa4b; //MissionObject.targetName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&targetName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.missionTarget";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7157cbf8; //MissionObject.missionTarget
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Reference<NpcSpawnPoint* > >::toBinaryStream(&missionTarget, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.missionTargetDest";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc486d38f; //MissionObject.missionTargetDest
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Reference<NpcSpawnPoint* > >::toBinaryStream(&missionTargetDest, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.templateString1";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4aedc6a0; //MissionObject.templateString1
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&templateString1, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.templateString2";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x47aee079; //MissionObject.templateString2
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&templateString2, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.targetTemplate";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x609a3488; //MissionObject.targetTemplate
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<TemplateReference<SharedObjectTemplate*> >::toBinaryStream(&targetTemplate, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionObject.targetOptionalTemplate";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5151bc3b; //MissionObject.targetOptionalTemplate
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&targetOptionalTemplate, stream);

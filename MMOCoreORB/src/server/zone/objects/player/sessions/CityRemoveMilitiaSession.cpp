@@ -92,6 +92,10 @@ DistributedObjectServant* CityRemoveMilitiaSession::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* CityRemoveMilitiaSession::_getImplementationForRead() {
+	return _impl;
+}
+
 void CityRemoveMilitiaSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -171,14 +175,14 @@ void CityRemoveMilitiaSessionImplementation::_serializationHelperMethod() {
 void CityRemoveMilitiaSessionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(CityRemoveMilitiaSessionImplementation::readObjectMember(stream, _name)) {
+		if(CityRemoveMilitiaSessionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -187,30 +191,28 @@ void CityRemoveMilitiaSessionImplementation::readObject(ObjectInputStream* strea
 	initializeTransientMembers();
 }
 
-bool CityRemoveMilitiaSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (FacadeImplementation::readObjectMember(stream, _name))
+bool CityRemoveMilitiaSessionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (FacadeImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "CityRemoveMilitiaSession.creatureObject") {
+	switch(nameHashCode) {
+	case 0xeef906b7: //CityRemoveMilitiaSession.creatureObject
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&creatureObject, stream);
 		return true;
-	}
 
-	if (_name == "CityRemoveMilitiaSession.cityRegion") {
+	case 0x3f728ac4: //CityRemoveMilitiaSession.cityRegion
 		TypeInfo<ManagedWeakReference<CityRegion* > >::parseFromBinaryStream(&cityRegion, stream);
 		return true;
-	}
 
-	if (_name == "CityRemoveMilitiaSession.terminalObject") {
+	case 0x6f8fd1ec: //CityRemoveMilitiaSession.terminalObject
 		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&terminalObject, stream);
 		return true;
-	}
 
-	if (_name == "CityRemoveMilitiaSession.militiaID") {
+	case 0xce89787f: //CityRemoveMilitiaSession.militiaID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&militiaID, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -225,35 +227,35 @@ void CityRemoveMilitiaSessionImplementation::writeObject(ObjectOutputStream* str
 int CityRemoveMilitiaSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = FacadeImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "CityRemoveMilitiaSession.creatureObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xeef906b7; //CityRemoveMilitiaSession.creatureObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&creatureObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRemoveMilitiaSession.cityRegion";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3f728ac4; //CityRemoveMilitiaSession.cityRegion
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<CityRegion* > >::toBinaryStream(&cityRegion, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRemoveMilitiaSession.terminalObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6f8fd1ec; //CityRemoveMilitiaSession.terminalObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<SceneObject* > >::toBinaryStream(&terminalObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRemoveMilitiaSession.militiaID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xce89787f; //CityRemoveMilitiaSession.militiaID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&militiaID, stream);

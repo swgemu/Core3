@@ -219,6 +219,10 @@ DistributedObjectServant* DeliverMissionObjective::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* DeliverMissionObjective::_getImplementationForRead() {
+	return _impl;
+}
+
 void DeliverMissionObjective::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -296,14 +300,14 @@ void DeliverMissionObjectiveImplementation::_serializationHelperMethod() {
 void DeliverMissionObjectiveImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(DeliverMissionObjectiveImplementation::readObjectMember(stream, _name)) {
+		if(DeliverMissionObjectiveImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -312,30 +316,28 @@ void DeliverMissionObjectiveImplementation::readObject(ObjectInputStream* stream
 	initializeTransientMembers();
 }
 
-bool DeliverMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
+bool DeliverMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (MissionObjectiveImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "DeliverMissionObjective.item") {
+	switch(nameHashCode) {
+	case 0x4bfea925: //DeliverMissionObjective.item
 		TypeInfo<ManagedReference<TangibleObject* > >::parseFromBinaryStream(&item, stream);
 		return true;
-	}
 
-	if (_name == "DeliverMissionObjective.targetSpawnPoint") {
+	case 0xb4743a09: //DeliverMissionObjective.targetSpawnPoint
 		TypeInfo<Reference<NpcSpawnPoint* > >::parseFromBinaryStream(&targetSpawnPoint, stream);
 		return true;
-	}
 
-	if (_name == "DeliverMissionObjective.destinationSpawnPoint") {
+	case 0xe870acb: //DeliverMissionObjective.destinationSpawnPoint
 		TypeInfo<Reference<NpcSpawnPoint* > >::parseFromBinaryStream(&destinationSpawnPoint, stream);
 		return true;
-	}
 
-	if (_name == "DeliverMissionObjective.objectiveStatus") {
+	case 0x225a9762: //DeliverMissionObjective.objectiveStatus
 		TypeInfo<int >::parseFromBinaryStream(&objectiveStatus, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -350,35 +352,35 @@ void DeliverMissionObjectiveImplementation::writeObject(ObjectOutputStream* stre
 int DeliverMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = MissionObjectiveImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "DeliverMissionObjective.item";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4bfea925; //DeliverMissionObjective.item
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<TangibleObject* > >::toBinaryStream(&item, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DeliverMissionObjective.targetSpawnPoint";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb4743a09; //DeliverMissionObjective.targetSpawnPoint
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Reference<NpcSpawnPoint* > >::toBinaryStream(&targetSpawnPoint, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DeliverMissionObjective.destinationSpawnPoint";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe870acb; //DeliverMissionObjective.destinationSpawnPoint
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Reference<NpcSpawnPoint* > >::toBinaryStream(&destinationSpawnPoint, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DeliverMissionObjective.objectiveStatus";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x225a9762; //DeliverMissionObjective.objectiveStatus
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&objectiveStatus, stream);

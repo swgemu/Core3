@@ -625,6 +625,10 @@ DistributedObjectServant* GuildObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* GuildObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void GuildObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -704,14 +708,14 @@ void GuildObjectImplementation::_serializationHelperMethod() {
 void GuildObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(GuildObjectImplementation::readObjectMember(stream, _name)) {
+		if(GuildObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -720,50 +724,44 @@ void GuildObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool GuildObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (SceneObjectImplementation::readObjectMember(stream, _name))
+bool GuildObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (SceneObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "GuildObject.chatRoom") {
+	switch(nameHashCode) {
+	case 0x95482220: //GuildObject.chatRoom
 		TypeInfo<ManagedReference<ChatRoom* > >::parseFromBinaryStream(&chatRoom, stream);
 		return true;
-	}
 
-	if (_name == "GuildObject.guildMembers") {
+	case 0x324b0858: //GuildObject.guildMembers
 		TypeInfo<GuildMemberList >::parseFromBinaryStream(&guildMembers, stream);
 		return true;
-	}
 
-	if (_name == "GuildObject.sponsoredPlayers") {
+	case 0x50956ded: //GuildObject.sponsoredPlayers
 		TypeInfo<SortedVector<unsigned long long> >::parseFromBinaryStream(&sponsoredPlayers, stream);
 		return true;
-	}
 
-	if (_name == "GuildObject.waringGuilds") {
+	case 0x37b3e51d: //GuildObject.waringGuilds
 		TypeInfo<VectorMap<unsigned long long, byte> >::parseFromBinaryStream(&waringGuilds, stream);
 		return true;
-	}
 
-	if (_name == "GuildObject.guildID") {
+	case 0x5260abb9: //GuildObject.guildID
 		TypeInfo<unsigned int >::parseFromBinaryStream(&guildID, stream);
 		return true;
-	}
 
-	if (_name == "GuildObject.guildName") {
+	case 0xef6c10e4: //GuildObject.guildName
 		TypeInfo<String >::parseFromBinaryStream(&guildName, stream);
 		return true;
-	}
 
-	if (_name == "GuildObject.guildAbbrev") {
+	case 0x9a679b5a: //GuildObject.guildAbbrev
 		TypeInfo<String >::parseFromBinaryStream(&guildAbbrev, stream);
 		return true;
-	}
 
-	if (_name == "GuildObject.guildLeaderID") {
+	case 0x462af605: //GuildObject.guildLeaderID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&guildLeaderID, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -778,67 +776,67 @@ void GuildObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int GuildObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = SceneObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "GuildObject.chatRoom";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x95482220; //GuildObject.chatRoom
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<ChatRoom* > >::toBinaryStream(&chatRoom, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "GuildObject.guildMembers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x324b0858; //GuildObject.guildMembers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<GuildMemberList >::toBinaryStream(&guildMembers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "GuildObject.sponsoredPlayers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x50956ded; //GuildObject.sponsoredPlayers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<unsigned long long> >::toBinaryStream(&sponsoredPlayers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "GuildObject.waringGuilds";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x37b3e51d; //GuildObject.waringGuilds
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<unsigned long long, byte> >::toBinaryStream(&waringGuilds, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "GuildObject.guildID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5260abb9; //GuildObject.guildID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&guildID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "GuildObject.guildName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xef6c10e4; //GuildObject.guildName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&guildName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "GuildObject.guildAbbrev";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9a679b5a; //GuildObject.guildAbbrev
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&guildAbbrev, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "GuildObject.guildLeaderID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x462af605; //GuildObject.guildLeaderID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&guildLeaderID, stream);

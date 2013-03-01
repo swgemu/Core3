@@ -313,6 +313,10 @@ DistributedObjectServant* VehicleObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* VehicleObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void VehicleObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -392,14 +396,14 @@ void VehicleObjectImplementation::_serializationHelperMethod() {
 void VehicleObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(VehicleObjectImplementation::readObjectMember(stream, _name)) {
+		if(VehicleObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -408,15 +412,16 @@ void VehicleObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool VehicleObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (CreatureObjectImplementation::readObjectMember(stream, _name))
+bool VehicleObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (CreatureObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "VehicleObject.vehicleType") {
+	switch(nameHashCode) {
+	case 0xd6735f4e: //VehicleObject.vehicleType
 		TypeInfo<int >::parseFromBinaryStream(&vehicleType, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -431,11 +436,11 @@ void VehicleObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int VehicleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = CreatureObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "VehicleObject.vehicleType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd6735f4e; //VehicleObject.vehicleType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&vehicleType, stream);

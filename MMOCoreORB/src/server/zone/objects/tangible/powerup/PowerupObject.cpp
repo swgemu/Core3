@@ -153,6 +153,10 @@ DistributedObjectServant* PowerupObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* PowerupObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void PowerupObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -232,14 +236,14 @@ void PowerupObjectImplementation::_serializationHelperMethod() {
 void PowerupObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(PowerupObjectImplementation::readObjectMember(stream, _name)) {
+		if(PowerupObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -248,25 +252,24 @@ void PowerupObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool PowerupObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool PowerupObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "PowerupObject.modifiers") {
+	switch(nameHashCode) {
+	case 0x6b5d773e: //PowerupObject.modifiers
 		TypeInfo<PowerupStatVector >::parseFromBinaryStream(&modifiers, stream);
 		return true;
-	}
 
-	if (_name == "PowerupObject.uses") {
+	case 0x418f9524: //PowerupObject.uses
 		TypeInfo<int >::parseFromBinaryStream(&uses, stream);
 		return true;
-	}
 
-	if (_name == "PowerupObject.type") {
+	case 0x416ddf01: //PowerupObject.type
 		TypeInfo<String >::parseFromBinaryStream(&type, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -281,27 +284,27 @@ void PowerupObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int PowerupObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "PowerupObject.modifiers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6b5d773e; //PowerupObject.modifiers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<PowerupStatVector >::toBinaryStream(&modifiers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PowerupObject.uses";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x418f9524; //PowerupObject.uses
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&uses, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PowerupObject.type";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x416ddf01; //PowerupObject.type
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&type, stream);

@@ -68,6 +68,10 @@ DistributedObjectServant* DurationBuff::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* DurationBuff::_getImplementationForRead() {
+	return _impl;
+}
+
 void DurationBuff::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -147,14 +151,14 @@ void DurationBuffImplementation::_serializationHelperMethod() {
 void DurationBuffImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(DurationBuffImplementation::readObjectMember(stream, _name)) {
+		if(DurationBuffImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -163,10 +167,12 @@ void DurationBuffImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool DurationBuffImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (BuffImplementation::readObjectMember(stream, _name))
+bool DurationBuffImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (BuffImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -181,7 +187,7 @@ void DurationBuffImplementation::writeObject(ObjectOutputStream* stream) {
 int DurationBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = BuffImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

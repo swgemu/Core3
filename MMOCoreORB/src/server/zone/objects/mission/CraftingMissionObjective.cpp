@@ -76,6 +76,10 @@ DistributedObjectServant* CraftingMissionObjective::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* CraftingMissionObjective::_getImplementationForRead() {
+	return _impl;
+}
+
 void CraftingMissionObjective::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -153,14 +157,14 @@ void CraftingMissionObjectiveImplementation::_serializationHelperMethod() {
 void CraftingMissionObjectiveImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(CraftingMissionObjectiveImplementation::readObjectMember(stream, _name)) {
+		if(CraftingMissionObjectiveImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -169,10 +173,12 @@ void CraftingMissionObjectiveImplementation::readObject(ObjectInputStream* strea
 	initializeTransientMembers();
 }
 
-bool CraftingMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (DeliverMissionObjectiveImplementation::readObjectMember(stream, _name))
+bool CraftingMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (DeliverMissionObjectiveImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -187,7 +193,7 @@ void CraftingMissionObjectiveImplementation::writeObject(ObjectOutputStream* str
 int CraftingMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = DeliverMissionObjectiveImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

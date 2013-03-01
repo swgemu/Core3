@@ -121,6 +121,10 @@ DistributedObjectServant* FishingBaitObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* FishingBaitObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void FishingBaitObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -200,14 +204,14 @@ void FishingBaitObjectImplementation::_serializationHelperMethod() {
 void FishingBaitObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(FishingBaitObjectImplementation::readObjectMember(stream, _name)) {
+		if(FishingBaitObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -216,15 +220,16 @@ void FishingBaitObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool FishingBaitObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool FishingBaitObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "FishingBaitObject.freshness") {
+	switch(nameHashCode) {
+	case 0xe0f2fb8: //FishingBaitObject.freshness
 		TypeInfo<int >::parseFromBinaryStream(&freshness, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -239,11 +244,11 @@ void FishingBaitObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int FishingBaitObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "FishingBaitObject.freshness";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe0f2fb8; //FishingBaitObject.freshness
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&freshness, stream);

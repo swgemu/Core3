@@ -172,6 +172,10 @@ DistributedObjectServant* SpawnArea::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* SpawnArea::_getImplementationForRead() {
+	return _impl;
+}
+
 void SpawnArea::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -251,14 +255,14 @@ void SpawnAreaImplementation::_serializationHelperMethod() {
 void SpawnAreaImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(SpawnAreaImplementation::readObjectMember(stream, _name)) {
+		if(SpawnAreaImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -267,35 +271,32 @@ void SpawnAreaImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool SpawnAreaImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ActiveAreaImplementation::readObjectMember(stream, _name))
+bool SpawnAreaImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ActiveAreaImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "SpawnArea.spawnCreatureTemplates") {
+	switch(nameHashCode) {
+	case 0x289505dc: //SpawnArea.spawnCreatureTemplates
 		TypeInfo<SortedVector<unsigned int> >::parseFromBinaryStream(&spawnCreatureTemplates, stream);
 		return true;
-	}
 
-	if (_name == "SpawnArea.observers") {
+	case 0xed034bb6: //SpawnArea.observers
 		TypeInfo<SortedVector<ManagedReference<SpawnObserver* > > >::parseFromBinaryStream(&observers, stream);
 		return true;
-	}
 
-	if (_name == "SpawnArea.noSpawnAreas") {
+	case 0xe534d1d3: //SpawnArea.noSpawnAreas
 		TypeInfo<Vector<ManagedReference<SpawnArea* > > >::parseFromBinaryStream(&noSpawnAreas, stream);
 		return true;
-	}
 
-	if (_name == "SpawnArea.tier") {
+	case 0x7d230e7e: //SpawnArea.tier
 		TypeInfo<int >::parseFromBinaryStream(&tier, stream);
 		return true;
-	}
 
-	if (_name == "SpawnArea.spawnConstant") {
+	case 0xd2aa8599: //SpawnArea.spawnConstant
 		TypeInfo<int >::parseFromBinaryStream(&spawnConstant, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -310,43 +311,43 @@ void SpawnAreaImplementation::writeObject(ObjectOutputStream* stream) {
 int SpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ActiveAreaImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "SpawnArea.spawnCreatureTemplates";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x289505dc; //SpawnArea.spawnCreatureTemplates
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<unsigned int> >::toBinaryStream(&spawnCreatureTemplates, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SpawnArea.observers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xed034bb6; //SpawnArea.observers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<SpawnObserver* > > >::toBinaryStream(&observers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SpawnArea.noSpawnAreas";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe534d1d3; //SpawnArea.noSpawnAreas
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<ManagedReference<SpawnArea* > > >::toBinaryStream(&noSpawnAreas, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SpawnArea.tier";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7d230e7e; //SpawnArea.tier
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&tier, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SpawnArea.spawnConstant";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd2aa8599; //SpawnArea.spawnConstant
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&spawnConstant, stream);

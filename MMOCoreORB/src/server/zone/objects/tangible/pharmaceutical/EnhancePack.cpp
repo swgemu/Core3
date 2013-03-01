@@ -164,6 +164,10 @@ DistributedObjectServant* EnhancePack::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* EnhancePack::_getImplementationForRead() {
+	return _impl;
+}
+
 void EnhancePack::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -243,14 +247,14 @@ void EnhancePackImplementation::_serializationHelperMethod() {
 void EnhancePackImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(EnhancePackImplementation::readObjectMember(stream, _name)) {
+		if(EnhancePackImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -259,25 +263,24 @@ void EnhancePackImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool EnhancePackImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (PharmaceuticalObjectImplementation::readObjectMember(stream, _name))
+bool EnhancePackImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (PharmaceuticalObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "EnhancePack.effectiveness") {
+	switch(nameHashCode) {
+	case 0x789bcb30: //EnhancePack.effectiveness
 		TypeInfo<float >::parseFromBinaryStream(&effectiveness, stream);
 		return true;
-	}
 
-	if (_name == "EnhancePack.duration") {
+	case 0x126b2d49: //EnhancePack.duration
 		TypeInfo<float >::parseFromBinaryStream(&duration, stream);
 		return true;
-	}
 
-	if (_name == "EnhancePack.attribute") {
+	case 0x6c887942: //EnhancePack.attribute
 		TypeInfo<byte >::parseFromBinaryStream(&attribute, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -292,27 +295,27 @@ void EnhancePackImplementation::writeObject(ObjectOutputStream* stream) {
 int EnhancePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = PharmaceuticalObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "EnhancePack.effectiveness";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x789bcb30; //EnhancePack.effectiveness
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&effectiveness, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "EnhancePack.duration";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x126b2d49; //EnhancePack.duration
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&duration, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "EnhancePack.attribute";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6c887942; //EnhancePack.attribute
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&attribute, stream);

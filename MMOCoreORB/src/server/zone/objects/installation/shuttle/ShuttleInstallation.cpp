@@ -77,6 +77,10 @@ DistributedObjectServant* ShuttleInstallation::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ShuttleInstallation::_getImplementationForRead() {
+	return _impl;
+}
+
 void ShuttleInstallation::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -156,14 +160,14 @@ void ShuttleInstallationImplementation::_serializationHelperMethod() {
 void ShuttleInstallationImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ShuttleInstallationImplementation::readObjectMember(stream, _name)) {
+		if(ShuttleInstallationImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -172,10 +176,12 @@ void ShuttleInstallationImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ShuttleInstallationImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (InstallationObjectImplementation::readObjectMember(stream, _name))
+bool ShuttleInstallationImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (InstallationObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -190,7 +196,7 @@ void ShuttleInstallationImplementation::writeObject(ObjectOutputStream* stream) 
 int ShuttleInstallationImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = InstallationObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

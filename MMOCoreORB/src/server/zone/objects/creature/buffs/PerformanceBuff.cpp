@@ -79,6 +79,10 @@ DistributedObjectServant* PerformanceBuff::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* PerformanceBuff::_getImplementationForRead() {
+	return _impl;
+}
+
 void PerformanceBuff::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -158,14 +162,14 @@ void PerformanceBuffImplementation::_serializationHelperMethod() {
 void PerformanceBuffImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(PerformanceBuffImplementation::readObjectMember(stream, _name)) {
+		if(PerformanceBuffImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -174,20 +178,20 @@ void PerformanceBuffImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool PerformanceBuffImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (BuffImplementation::readObjectMember(stream, _name))
+bool PerformanceBuffImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (BuffImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "PerformanceBuff.strength") {
+	switch(nameHashCode) {
+	case 0xffc5b90b: //PerformanceBuff.strength
 		TypeInfo<float >::parseFromBinaryStream(&strength, stream);
 		return true;
-	}
 
-	if (_name == "PerformanceBuff.type") {
+	case 0xb981cb36: //PerformanceBuff.type
 		TypeInfo<int >::parseFromBinaryStream(&type, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -202,19 +206,19 @@ void PerformanceBuffImplementation::writeObject(ObjectOutputStream* stream) {
 int PerformanceBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = BuffImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "PerformanceBuff.strength";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xffc5b90b; //PerformanceBuff.strength
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&strength, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PerformanceBuff.type";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb981cb36; //PerformanceBuff.type
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&type, stream);

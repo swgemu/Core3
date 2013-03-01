@@ -158,6 +158,10 @@ DistributedObjectServant* FireworkObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* FireworkObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void FireworkObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -237,14 +241,14 @@ void FireworkObjectImplementation::_serializationHelperMethod() {
 void FireworkObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(FireworkObjectImplementation::readObjectMember(stream, _name)) {
+		if(FireworkObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -253,30 +257,28 @@ void FireworkObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool FireworkObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool FireworkObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "FireworkObject.fireworkObject") {
+	switch(nameHashCode) {
+	case 0x836465ab: //FireworkObject.fireworkObject
 		TypeInfo<String >::parseFromBinaryStream(&fireworkObject, stream);
 		return true;
-	}
 
-	if (_name == "FireworkObject.delay") {
+	case 0x16edb81d: //FireworkObject.delay
 		TypeInfo<int >::parseFromBinaryStream(&delay, stream);
 		return true;
-	}
 
-	if (_name == "FireworkObject.isShow") {
+	case 0x69d0769f: //FireworkObject.isShow
 		TypeInfo<bool >::parseFromBinaryStream(&isShow, stream);
 		return true;
-	}
 
-	if (_name == "FireworkObject.capacity") {
+	case 0x935b2b7c: //FireworkObject.capacity
 		TypeInfo<int >::parseFromBinaryStream(&capacity, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -291,35 +293,35 @@ void FireworkObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int FireworkObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "FireworkObject.fireworkObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x836465ab; //FireworkObject.fireworkObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&fireworkObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FireworkObject.delay";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x16edb81d; //FireworkObject.delay
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&delay, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FireworkObject.isShow";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x69d0769f; //FireworkObject.isShow
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&isShow, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FireworkObject.capacity";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x935b2b7c; //FireworkObject.capacity
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&capacity, stream);

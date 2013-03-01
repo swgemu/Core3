@@ -167,6 +167,10 @@ DistributedObjectServant* CircularAreaShape::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* CircularAreaShape::_getImplementationForRead() {
+	return _impl;
+}
+
 void CircularAreaShape::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -246,14 +250,14 @@ void CircularAreaShapeImplementation::_serializationHelperMethod() {
 void CircularAreaShapeImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(CircularAreaShapeImplementation::readObjectMember(stream, _name)) {
+		if(CircularAreaShapeImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -262,20 +266,20 @@ void CircularAreaShapeImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool CircularAreaShapeImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (AreaShapeImplementation::readObjectMember(stream, _name))
+bool CircularAreaShapeImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (AreaShapeImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "CircularAreaShape.radius") {
+	switch(nameHashCode) {
+	case 0xe30f4a86: //CircularAreaShape.radius
 		TypeInfo<float >::parseFromBinaryStream(&radius, stream);
 		return true;
-	}
 
-	if (_name == "CircularAreaShape.radius2") {
+	case 0xabe79015: //CircularAreaShape.radius2
 		TypeInfo<float >::parseFromBinaryStream(&radius2, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -290,19 +294,19 @@ void CircularAreaShapeImplementation::writeObject(ObjectOutputStream* stream) {
 int CircularAreaShapeImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = AreaShapeImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "CircularAreaShape.radius";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe30f4a86; //CircularAreaShape.radius
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&radius, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CircularAreaShape.radius2";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xabe79015; //CircularAreaShape.radius2
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&radius2, stream);

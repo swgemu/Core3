@@ -202,6 +202,10 @@ DistributedObjectServant* CraftingStation::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* CraftingStation::_getImplementationForRead() {
+	return _impl;
+}
+
 void CraftingStation::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -281,14 +285,14 @@ void CraftingStationImplementation::_serializationHelperMethod() {
 void CraftingStationImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(CraftingStationImplementation::readObjectMember(stream, _name)) {
+		if(CraftingStationImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -297,25 +301,24 @@ void CraftingStationImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool CraftingStationImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ToolTangibleObjectImplementation::readObjectMember(stream, _name))
+bool CraftingStationImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ToolTangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "CraftingStation.type") {
+	switch(nameHashCode) {
+	case 0xa0d6bdcb: //CraftingStation.type
 		TypeInfo<int >::parseFromBinaryStream(&type, stream);
 		return true;
-	}
 
-	if (_name == "CraftingStation.effectiveness") {
+	case 0x9a4c325e: //CraftingStation.effectiveness
 		TypeInfo<float >::parseFromBinaryStream(&effectiveness, stream);
 		return true;
-	}
 
-	if (_name == "CraftingStation.complexityLevel") {
+	case 0x4455a756: //CraftingStation.complexityLevel
 		TypeInfo<int >::parseFromBinaryStream(&complexityLevel, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -330,27 +333,27 @@ void CraftingStationImplementation::writeObject(ObjectOutputStream* stream) {
 int CraftingStationImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ToolTangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "CraftingStation.type";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa0d6bdcb; //CraftingStation.type
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&type, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CraftingStation.effectiveness";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9a4c325e; //CraftingStation.effectiveness
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&effectiveness, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CraftingStation.complexityLevel";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4455a756; //CraftingStation.complexityLevel
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&complexityLevel, stream);

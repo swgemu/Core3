@@ -1532,6 +1532,10 @@ DistributedObjectServant* CityRegion::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* CityRegion::_getImplementationForRead() {
+	return _impl;
+}
+
 void CityRegion::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -1611,14 +1615,14 @@ void CityRegionImplementation::_serializationHelperMethod() {
 void CityRegionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(CityRegionImplementation::readObjectMember(stream, _name)) {
+		if(CityRegionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -1627,145 +1631,120 @@ void CityRegionImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "CityRegion.cityHall") {
+	switch(nameHashCode) {
+	case 0x5d900a99: //CityRegion.cityHall
 		TypeInfo<ManagedReference<StructureObject* > >::parseFromBinaryStream(&cityHall, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.regionName") {
+	case 0xd59bc17f: //CityRegion.regionName
 		TypeInfo<StringId >::parseFromBinaryStream(&regionName, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.candidates") {
+	case 0x74fa6e86: //CityRegion.candidates
 		TypeInfo<VectorMap<unsigned long long, int> >::parseFromBinaryStream(&candidates, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.mayoralVotes") {
+	case 0x96c36f66: //CityRegion.mayoralVotes
 		TypeInfo<VectorMap<unsigned long long, unsigned long long> >::parseFromBinaryStream(&mayoralVotes, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.currentPlayers") {
+	case 0xeeca21d7: //CityRegion.currentPlayers
 		TypeInfo<AtomicInteger >::parseFromBinaryStream(&currentPlayers, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.customRegionName") {
+	case 0x1030233a: //CityRegion.customRegionName
 		TypeInfo<String >::parseFromBinaryStream(&customRegionName, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.zone") {
+	case 0xd2834f08: //CityRegion.zone
 		TypeInfo<ZoneReference >::parseFromBinaryStream(&zone, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.regions") {
+	case 0x8cdd8a3f: //CityRegion.regions
 		TypeInfo<SortedVector<ManagedReference<Region* > > >::parseFromBinaryStream(&regions, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.zoningRights") {
+	case 0x49b559d0: //CityRegion.zoningRights
 		TypeInfo<VectorMap<unsigned long long, unsigned int> >::parseFromBinaryStream(&zoningRights, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.militiaMembers") {
+	case 0xeb545c8c: //CityRegion.militiaMembers
 		TypeInfo<CitizenList >::parseFromBinaryStream(&militiaMembers, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.citizenList") {
+	case 0xb4adc6be: //CityRegion.citizenList
 		TypeInfo<CitizenList >::parseFromBinaryStream(&citizenList, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.bannedList") {
+	case 0xe1b3f52f: //CityRegion.bannedList
 		TypeInfo<CitizenList >::parseFromBinaryStream(&bannedList, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.structures") {
+	case 0x2d3bc58b: //CityRegion.structures
 		TypeInfo<SortedVector<ManagedReference<StructureObject* > > >::parseFromBinaryStream(&structures, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.cityMissionTerminals") {
+	case 0xb9951777: //CityRegion.cityMissionTerminals
 		TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&cityMissionTerminals, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.cityDecorations") {
+	case 0xa1dbb5c3: //CityRegion.cityDecorations
 		TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&cityDecorations, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.citySkillTrainers") {
+	case 0x33ae2bac: //CityRegion.citySkillTrainers
 		TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&citySkillTrainers, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.cityRank") {
+	case 0x51c159e3: //CityRegion.cityRank
 		TypeInfo<byte >::parseFromBinaryStream(&cityRank, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.cityTreasury") {
+	case 0xbc710eef: //CityRegion.cityTreasury
 		TypeInfo<int >::parseFromBinaryStream(&cityTreasury, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.mayorID") {
+	case 0xe585d060: //CityRegion.mayorID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&mayorID, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.zoningEnabled") {
+	case 0xf35904ab: //CityRegion.zoningEnabled
 		TypeInfo<bool >::parseFromBinaryStream(&zoningEnabled, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.registered") {
+	case 0x64059cf1: //CityRegion.registered
 		TypeInfo<bool >::parseFromBinaryStream(&registered, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.hasShuttle") {
+	case 0xe036a55b: //CityRegion.hasShuttle
 		TypeInfo<bool >::parseFromBinaryStream(&hasShuttle, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.shuttleID") {
+	case 0xed05d518: //CityRegion.shuttleID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&shuttleID, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.taxes") {
+	case 0x140d97d9: //CityRegion.taxes
 		TypeInfo<Vector<int> >::parseFromBinaryStream(&taxes, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.nextUpdateTime") {
+	case 0x1e3755fc: //CityRegion.nextUpdateTime
 		TypeInfo<Time >::parseFromBinaryStream(&nextUpdateTime, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.nextInauguration") {
+	case 0x38fb00e0: //CityRegion.nextInauguration
 		TypeInfo<Time >::parseFromBinaryStream(&nextInauguration, stream);
 		return true;
-	}
 
-	if (_name == "CityRegion.citySpecialization") {
+	case 0x176872b4: //CityRegion.citySpecialization
 		TypeInfo<String >::parseFromBinaryStream(&citySpecialization, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -1780,219 +1759,219 @@ void CityRegionImplementation::writeObject(ObjectOutputStream* stream) {
 int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "CityRegion.cityHall";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5d900a99; //CityRegion.cityHall
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<StructureObject* > >::toBinaryStream(&cityHall, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.regionName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd59bc17f; //CityRegion.regionName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<StringId >::toBinaryStream(&regionName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.candidates";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x74fa6e86; //CityRegion.candidates
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<unsigned long long, int> >::toBinaryStream(&candidates, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.mayoralVotes";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x96c36f66; //CityRegion.mayoralVotes
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<unsigned long long, unsigned long long> >::toBinaryStream(&mayoralVotes, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.currentPlayers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xeeca21d7; //CityRegion.currentPlayers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<AtomicInteger >::toBinaryStream(&currentPlayers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.customRegionName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1030233a; //CityRegion.customRegionName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&customRegionName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.zone";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd2834f08; //CityRegion.zone
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ZoneReference >::toBinaryStream(&zone, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.regions";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8cdd8a3f; //CityRegion.regions
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<Region* > > >::toBinaryStream(&regions, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.zoningRights";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x49b559d0; //CityRegion.zoningRights
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<unsigned long long, unsigned int> >::toBinaryStream(&zoningRights, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.militiaMembers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xeb545c8c; //CityRegion.militiaMembers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<CitizenList >::toBinaryStream(&militiaMembers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.citizenList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb4adc6be; //CityRegion.citizenList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<CitizenList >::toBinaryStream(&citizenList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.bannedList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe1b3f52f; //CityRegion.bannedList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<CitizenList >::toBinaryStream(&bannedList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.structures";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2d3bc58b; //CityRegion.structures
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<StructureObject* > > >::toBinaryStream(&structures, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.cityMissionTerminals";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb9951777; //CityRegion.cityMissionTerminals
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::toBinaryStream(&cityMissionTerminals, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.cityDecorations";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa1dbb5c3; //CityRegion.cityDecorations
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::toBinaryStream(&cityDecorations, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.citySkillTrainers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x33ae2bac; //CityRegion.citySkillTrainers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::toBinaryStream(&citySkillTrainers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.cityRank";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x51c159e3; //CityRegion.cityRank
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&cityRank, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.cityTreasury";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbc710eef; //CityRegion.cityTreasury
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&cityTreasury, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.mayorID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe585d060; //CityRegion.mayorID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&mayorID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.zoningEnabled";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf35904ab; //CityRegion.zoningEnabled
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&zoningEnabled, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.registered";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x64059cf1; //CityRegion.registered
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&registered, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.hasShuttle";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe036a55b; //CityRegion.hasShuttle
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&hasShuttle, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.shuttleID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xed05d518; //CityRegion.shuttleID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&shuttleID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.taxes";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x140d97d9; //CityRegion.taxes
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<int> >::toBinaryStream(&taxes, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.nextUpdateTime";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1e3755fc; //CityRegion.nextUpdateTime
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&nextUpdateTime, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.nextInauguration";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x38fb00e0; //CityRegion.nextInauguration
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&nextInauguration, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityRegion.citySpecialization";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x176872b4; //CityRegion.citySpecialization
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&citySpecialization, stream);

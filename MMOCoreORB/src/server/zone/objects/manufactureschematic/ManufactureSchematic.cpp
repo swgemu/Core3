@@ -545,6 +545,10 @@ DistributedObjectServant* ManufactureSchematic::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ManufactureSchematic::_getImplementationForRead() {
+	return _impl;
+}
+
 void ManufactureSchematic::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -624,14 +628,14 @@ void ManufactureSchematicImplementation::_serializationHelperMethod() {
 void ManufactureSchematicImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ManufactureSchematicImplementation::readObjectMember(stream, _name)) {
+		if(ManufactureSchematicImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -640,55 +644,48 @@ void ManufactureSchematicImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ManufactureSchematicImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (IntangibleObjectImplementation::readObjectMember(stream, _name))
+bool ManufactureSchematicImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (IntangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "ManufactureSchematic.draftSchematic") {
+	switch(nameHashCode) {
+	case 0x4b5af35: //ManufactureSchematic.draftSchematic
 		TypeInfo<ManagedReference<DraftSchematic* > >::parseFromBinaryStream(&draftSchematic, stream);
 		return true;
-	}
 
-	if (_name == "ManufactureSchematic.prototype") {
+	case 0xcb5711a2: //ManufactureSchematic.prototype
 		TypeInfo<ManagedReference<TangibleObject* > >::parseFromBinaryStream(&prototype, stream);
 		return true;
-	}
 
-	if (_name == "ManufactureSchematic.dataSize") {
+	case 0x4904038a: //ManufactureSchematic.dataSize
 		TypeInfo<float >::parseFromBinaryStream(&dataSize, stream);
 		return true;
-	}
 
-	if (_name == "ManufactureSchematic.manufactureLimit") {
+	case 0x8f59b3aa: //ManufactureSchematic.manufactureLimit
 		TypeInfo<int >::parseFromBinaryStream(&manufactureLimit, stream);
 		return true;
-	}
 
-	if (_name == "ManufactureSchematic.complexity") {
+	case 0x3ca4c59b: //ManufactureSchematic.complexity
 		TypeInfo<float >::parseFromBinaryStream(&complexity, stream);
 		return true;
-	}
 
-	if (_name == "ManufactureSchematic.crafter") {
+	case 0xdf94c6a8: //ManufactureSchematic.crafter
 		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&crafter, stream);
 		return true;
-	}
 
-	if (_name == "ManufactureSchematic.factoryBlueprint") {
+	case 0xd54d020c: //ManufactureSchematic.factoryBlueprint
 		TypeInfo<FactoryBlueprint >::parseFromBinaryStream(&factoryBlueprint, stream);
 		return true;
-	}
 
-	if (_name == "ManufactureSchematic.customizationOptions") {
+	case 0x3e614c3b: //ManufactureSchematic.customizationOptions
 		TypeInfo<Vector<byte> >::parseFromBinaryStream(&customizationOptions, stream);
 		return true;
-	}
 
-	if (_name == "ManufactureSchematic.customizationDefaultValues") {
+	case 0x438dcae2: //ManufactureSchematic.customizationDefaultValues
 		TypeInfo<Vector<byte> >::parseFromBinaryStream(&customizationDefaultValues, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -703,75 +700,75 @@ void ManufactureSchematicImplementation::writeObject(ObjectOutputStream* stream)
 int ManufactureSchematicImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = IntangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "ManufactureSchematic.draftSchematic";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4b5af35; //ManufactureSchematic.draftSchematic
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<DraftSchematic* > >::toBinaryStream(&draftSchematic, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ManufactureSchematic.prototype";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xcb5711a2; //ManufactureSchematic.prototype
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<TangibleObject* > >::toBinaryStream(&prototype, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ManufactureSchematic.dataSize";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4904038a; //ManufactureSchematic.dataSize
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&dataSize, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ManufactureSchematic.manufactureLimit";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8f59b3aa; //ManufactureSchematic.manufactureLimit
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&manufactureLimit, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ManufactureSchematic.complexity";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3ca4c59b; //ManufactureSchematic.complexity
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&complexity, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ManufactureSchematic.crafter";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xdf94c6a8; //ManufactureSchematic.crafter
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&crafter, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ManufactureSchematic.factoryBlueprint";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd54d020c; //ManufactureSchematic.factoryBlueprint
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<FactoryBlueprint >::toBinaryStream(&factoryBlueprint, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ManufactureSchematic.customizationOptions";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3e614c3b; //ManufactureSchematic.customizationOptions
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<byte> >::toBinaryStream(&customizationOptions, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ManufactureSchematic.customizationDefaultValues";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x438dcae2; //ManufactureSchematic.customizationDefaultValues
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<byte> >::toBinaryStream(&customizationDefaultValues, stream);

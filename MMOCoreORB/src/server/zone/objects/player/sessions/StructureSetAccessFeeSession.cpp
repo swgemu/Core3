@@ -131,6 +131,10 @@ DistributedObjectServant* StructureSetAccessFeeSession::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* StructureSetAccessFeeSession::_getImplementationForRead() {
+	return _impl;
+}
+
 void StructureSetAccessFeeSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -210,14 +214,14 @@ void StructureSetAccessFeeSessionImplementation::_serializationHelperMethod() {
 void StructureSetAccessFeeSessionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(StructureSetAccessFeeSessionImplementation::readObjectMember(stream, _name)) {
+		if(StructureSetAccessFeeSessionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -226,40 +230,36 @@ void StructureSetAccessFeeSessionImplementation::readObject(ObjectInputStream* s
 	initializeTransientMembers();
 }
 
-bool StructureSetAccessFeeSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (FacadeImplementation::readObjectMember(stream, _name))
+bool StructureSetAccessFeeSessionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (FacadeImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "StructureSetAccessFeeSession.playerGhost") {
+	switch(nameHashCode) {
+	case 0xad8ab12e: //StructureSetAccessFeeSession.playerGhost
 		TypeInfo<ManagedReference<PlayerObject* > >::parseFromBinaryStream(&playerGhost, stream);
 		return true;
-	}
 
-	if (_name == "StructureSetAccessFeeSession.player") {
+	case 0x44ef65f: //StructureSetAccessFeeSession.player
 		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
-	}
 
-	if (_name == "StructureSetAccessFeeSession.structure") {
+	case 0xac925d3: //StructureSetAccessFeeSession.structure
 		TypeInfo<ManagedReference<BuildingObject* > >::parseFromBinaryStream(&structure, stream);
 		return true;
-	}
 
-	if (_name == "StructureSetAccessFeeSession.feeAmountBox") {
+	case 0x190facb5: //StructureSetAccessFeeSession.feeAmountBox
 		TypeInfo<ManagedReference<SuiInputBox* > >::parseFromBinaryStream(&feeAmountBox, stream);
 		return true;
-	}
 
-	if (_name == "StructureSetAccessFeeSession.durationBox") {
+	case 0x9f5a3474: //StructureSetAccessFeeSession.durationBox
 		TypeInfo<ManagedReference<SuiInputBox* > >::parseFromBinaryStream(&durationBox, stream);
 		return true;
-	}
 
-	if (_name == "StructureSetAccessFeeSession.accessFee") {
+	case 0x5a6c3682: //StructureSetAccessFeeSession.accessFee
 		TypeInfo<int >::parseFromBinaryStream(&accessFee, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -274,51 +274,51 @@ void StructureSetAccessFeeSessionImplementation::writeObject(ObjectOutputStream*
 int StructureSetAccessFeeSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = FacadeImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "StructureSetAccessFeeSession.playerGhost";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xad8ab12e; //StructureSetAccessFeeSession.playerGhost
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<PlayerObject* > >::toBinaryStream(&playerGhost, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "StructureSetAccessFeeSession.player";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x44ef65f; //StructureSetAccessFeeSession.player
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&player, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "StructureSetAccessFeeSession.structure";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xac925d3; //StructureSetAccessFeeSession.structure
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<BuildingObject* > >::toBinaryStream(&structure, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "StructureSetAccessFeeSession.feeAmountBox";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x190facb5; //StructureSetAccessFeeSession.feeAmountBox
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SuiInputBox* > >::toBinaryStream(&feeAmountBox, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "StructureSetAccessFeeSession.durationBox";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9f5a3474; //StructureSetAccessFeeSession.durationBox
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SuiInputBox* > >::toBinaryStream(&durationBox, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "StructureSetAccessFeeSession.accessFee";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5a6c3682; //StructureSetAccessFeeSession.accessFee
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&accessFee, stream);

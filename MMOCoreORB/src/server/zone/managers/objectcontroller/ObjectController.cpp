@@ -121,6 +121,10 @@ DistributedObjectServant* ObjectController::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ObjectController::_getImplementationForRead() {
+	return _impl;
+}
+
 void ObjectController::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -198,14 +202,14 @@ void ObjectControllerImplementation::_serializationHelperMethod() {
 void ObjectControllerImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ObjectControllerImplementation::readObjectMember(stream, _name)) {
+		if(ObjectControllerImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -214,10 +218,12 @@ void ObjectControllerImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ObjectControllerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedServiceImplementation::readObjectMember(stream, _name))
+bool ObjectControllerImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedServiceImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -232,7 +238,7 @@ void ObjectControllerImplementation::writeObject(ObjectOutputStream* stream) {
 int ObjectControllerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

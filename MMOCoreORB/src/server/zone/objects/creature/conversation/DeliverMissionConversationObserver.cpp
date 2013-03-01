@@ -30,6 +30,10 @@ DistributedObjectServant* DeliverMissionConversationObserver::_getImplementation
 	return _impl;
 }
 
+DistributedObjectServant* DeliverMissionConversationObserver::_getImplementationForRead() {
+	return _impl;
+}
+
 void DeliverMissionConversationObserver::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -109,14 +113,14 @@ void DeliverMissionConversationObserverImplementation::_serializationHelperMetho
 void DeliverMissionConversationObserverImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(DeliverMissionConversationObserverImplementation::readObjectMember(stream, _name)) {
+		if(DeliverMissionConversationObserverImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -125,15 +129,16 @@ void DeliverMissionConversationObserverImplementation::readObject(ObjectInputStr
 	initializeTransientMembers();
 }
 
-bool DeliverMissionConversationObserverImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ConversationObserverImplementation::readObjectMember(stream, _name))
+bool DeliverMissionConversationObserverImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ConversationObserverImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "DeliverMissionConversationObserver.deliverMissionScreenHandler") {
+	switch(nameHashCode) {
+	case 0x23c6a06c: //DeliverMissionConversationObserver.deliverMissionScreenHandler
 		TypeInfo<DeliverMissionScreenHandler >::parseFromBinaryStream(&deliverMissionScreenHandler, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -148,11 +153,11 @@ void DeliverMissionConversationObserverImplementation::writeObject(ObjectOutputS
 int DeliverMissionConversationObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ConversationObserverImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "DeliverMissionConversationObserver.deliverMissionScreenHandler";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x23c6a06c; //DeliverMissionConversationObserver.deliverMissionScreenHandler
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<DeliverMissionScreenHandler >::toBinaryStream(&deliverMissionScreenHandler, stream);

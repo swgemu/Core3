@@ -29,7 +29,7 @@ PersistentMessage::~PersistentMessage() {
 
 
 void PersistentMessage::sendTo(CreatureObject* player, bool sendBody) {
-	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -44,7 +44,7 @@ void PersistentMessage::sendTo(CreatureObject* player, bool sendBody) {
 }
 
 StringIdChatParameterVector* PersistentMessage::getStringIdParameters() {
-	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -53,7 +53,7 @@ StringIdChatParameterVector* PersistentMessage::getStringIdParameters() {
 }
 
 WaypointChatParameterVector* PersistentMessage::getWaypointParameters() {
-	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
@@ -62,7 +62,7 @@ WaypointChatParameterVector* PersistentMessage::getWaypointParameters() {
 }
 
 int PersistentMessage::getMailID() {
-	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -75,7 +75,7 @@ int PersistentMessage::getMailID() {
 }
 
 unsigned long long PersistentMessage::getObjectID() {
-	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -88,7 +88,7 @@ unsigned long long PersistentMessage::getObjectID() {
 }
 
 String PersistentMessage::getSenderName() {
-	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -103,7 +103,7 @@ String PersistentMessage::getSenderName() {
 }
 
 unsigned long long PersistentMessage::getReceiverObjectID() {
-	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -116,7 +116,7 @@ unsigned long long PersistentMessage::getReceiverObjectID() {
 }
 
 byte PersistentMessage::getStatus() {
-	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -129,7 +129,7 @@ byte PersistentMessage::getStatus() {
 }
 
 int PersistentMessage::getTimeStamp() {
-	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -142,7 +142,7 @@ int PersistentMessage::getTimeStamp() {
 }
 
 UnicodeString PersistentMessage::getBody() {
-	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -157,7 +157,7 @@ UnicodeString PersistentMessage::getBody() {
 }
 
 UnicodeString PersistentMessage::getSubject() {
-	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -256,7 +256,7 @@ void PersistentMessage::setSubject(const UnicodeString& subj) {
 }
 
 bool PersistentMessage::isNew() {
-	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -269,7 +269,7 @@ bool PersistentMessage::isNew() {
 }
 
 bool PersistentMessage::isRead() {
-	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -282,7 +282,7 @@ bool PersistentMessage::isRead() {
 }
 
 bool PersistentMessage::isUnread() {
-	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementation());
+	PersistentMessageImplementation* _implementation = static_cast<PersistentMessageImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -315,6 +315,10 @@ void PersistentMessage::addWaypointParameter(WaypointChatParameter& param) {
 DistributedObjectServant* PersistentMessage::_getImplementation() {
 
 	 if (!_updated) _updated = true;
+	return _impl;
+}
+
+DistributedObjectServant* PersistentMessage::_getImplementationForRead() {
 	return _impl;
 }
 
@@ -397,14 +401,14 @@ void PersistentMessageImplementation::_serializationHelperMethod() {
 void PersistentMessageImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(PersistentMessageImplementation::readObjectMember(stream, _name)) {
+		if(PersistentMessageImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -413,50 +417,44 @@ void PersistentMessageImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool PersistentMessageImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+bool PersistentMessageImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "PersistentMessage.senderName") {
+	switch(nameHashCode) {
+	case 0xa6c6ceb5: //PersistentMessage.senderName
 		TypeInfo<String >::parseFromBinaryStream(&senderName, stream);
 		return true;
-	}
 
-	if (_name == "PersistentMessage.subject") {
+	case 0xe9fbfb82: //PersistentMessage.subject
 		TypeInfo<UnicodeString >::parseFromBinaryStream(&subject, stream);
 		return true;
-	}
 
-	if (_name == "PersistentMessage.body") {
+	case 0xcdb90e9b: //PersistentMessage.body
 		TypeInfo<UnicodeString >::parseFromBinaryStream(&body, stream);
 		return true;
-	}
 
-	if (_name == "PersistentMessage.timeStamp") {
+	case 0x848d409d: //PersistentMessage.timeStamp
 		TypeInfo<unsigned int >::parseFromBinaryStream(&timeStamp, stream);
 		return true;
-	}
 
-	if (_name == "PersistentMessage.status") {
+	case 0xa74721f1: //PersistentMessage.status
 		TypeInfo<byte >::parseFromBinaryStream(&status, stream);
 		return true;
-	}
 
-	if (_name == "PersistentMessage.receiverObjectID") {
+	case 0xc0fc200f: //PersistentMessage.receiverObjectID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&receiverObjectID, stream);
 		return true;
-	}
 
-	if (_name == "PersistentMessage.stringIdParameters") {
+	case 0x1b2466ec: //PersistentMessage.stringIdParameters
 		TypeInfo<StringIdChatParameterVector >::parseFromBinaryStream(&stringIdParameters, stream);
 		return true;
-	}
 
-	if (_name == "PersistentMessage.waypointParameters") {
+	case 0xcc670081: //PersistentMessage.waypointParameters
 		TypeInfo<WaypointChatParameterVector >::parseFromBinaryStream(&waypointParameters, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -471,67 +469,67 @@ void PersistentMessageImplementation::writeObject(ObjectOutputStream* stream) {
 int PersistentMessageImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "PersistentMessage.senderName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa6c6ceb5; //PersistentMessage.senderName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&senderName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PersistentMessage.subject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe9fbfb82; //PersistentMessage.subject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<UnicodeString >::toBinaryStream(&subject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PersistentMessage.body";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xcdb90e9b; //PersistentMessage.body
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<UnicodeString >::toBinaryStream(&body, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PersistentMessage.timeStamp";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x848d409d; //PersistentMessage.timeStamp
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&timeStamp, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PersistentMessage.status";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa74721f1; //PersistentMessage.status
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&status, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PersistentMessage.receiverObjectID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc0fc200f; //PersistentMessage.receiverObjectID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&receiverObjectID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PersistentMessage.stringIdParameters";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1b2466ec; //PersistentMessage.stringIdParameters
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<StringIdChatParameterVector >::toBinaryStream(&stringIdParameters, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PersistentMessage.waypointParameters";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xcc670081; //PersistentMessage.waypointParameters
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<WaypointChatParameterVector >::toBinaryStream(&waypointParameters, stream);

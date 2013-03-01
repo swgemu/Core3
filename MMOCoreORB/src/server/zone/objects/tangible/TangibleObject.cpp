@@ -1236,6 +1236,10 @@ DistributedObjectServant* TangibleObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* TangibleObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void TangibleObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -1315,14 +1319,14 @@ void TangibleObjectImplementation::_serializationHelperMethod() {
 void TangibleObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(TangibleObjectImplementation::readObjectMember(stream, _name)) {
+		if(TangibleObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -1331,95 +1335,80 @@ void TangibleObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool TangibleObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (SceneObjectImplementation::readObjectMember(stream, _name))
+bool TangibleObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (SceneObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "TangibleObject.targetable") {
+	switch(nameHashCode) {
+	case 0x44d211d4: //TangibleObject.targetable
 		TypeInfo<bool >::parseFromBinaryStream(&targetable, stream);
 		return true;
-	}
 
-	if (_name == "TangibleObject.complexity") {
+	case 0x8ac8d204: //TangibleObject.complexity
 		TypeInfo<float >::parseFromBinaryStream(&complexity, stream);
 		return true;
-	}
 
-	if (_name == "TangibleObject.volume") {
+	case 0x1e059da5: //TangibleObject.volume
 		TypeInfo<int >::parseFromBinaryStream(&volume, stream);
 		return true;
-	}
 
-	if (_name == "TangibleObject.faction") {
+	case 0x7aa39254: //TangibleObject.faction
 		TypeInfo<unsigned int >::parseFromBinaryStream(&faction, stream);
 		return true;
-	}
 
-	if (_name == "TangibleObject.customizationVariables") {
+	case 0xb56f0247: //TangibleObject.customizationVariables
 		TypeInfo<CustomizationVariables >::parseFromBinaryStream(&customizationVariables, stream);
 		return true;
-	}
 
-	if (_name == "TangibleObject.conditionDamage") {
+	case 0xa4a80d3: //TangibleObject.conditionDamage
 		TypeInfo<float >::parseFromBinaryStream(&conditionDamage, stream);
 		return true;
-	}
 
-	if (_name == "TangibleObject.maxCondition") {
+	case 0x9c2e3029: //TangibleObject.maxCondition
 		TypeInfo<int >::parseFromBinaryStream(&maxCondition, stream);
 		return true;
-	}
 
-	if (_name == "TangibleObject.useCount") {
+	case 0xe6b8cb07: //TangibleObject.useCount
 		TypeInfo<int >::parseFromBinaryStream(&useCount, stream);
 		return true;
-	}
 
-	if (_name == "TangibleObject.level") {
+	case 0xf479fb1c: //TangibleObject.level
 		TypeInfo<short >::parseFromBinaryStream(&level, stream);
 		return true;
-	}
 
-	if (_name == "TangibleObject.optionsBitmask") {
+	case 0x6352a44d: //TangibleObject.optionsBitmask
 		TypeInfo<unsigned int >::parseFromBinaryStream(&optionsBitmask, stream);
 		return true;
-	}
 
-	if (_name == "TangibleObject.pvpStatusBitmask") {
+	case 0x78a68bd7: //TangibleObject.pvpStatusBitmask
 		TypeInfo<unsigned int >::parseFromBinaryStream(&pvpStatusBitmask, stream);
 		return true;
-	}
 
-	if (_name == "TangibleObject.unknownByte") {
+	case 0x3dc7630b: //TangibleObject.unknownByte
 		TypeInfo<byte >::parseFromBinaryStream(&unknownByte, stream);
 		return true;
-	}
 
-	if (_name == "TangibleObject.craftersName") {
+	case 0xf6530d9d: //TangibleObject.craftersName
 		TypeInfo<String >::parseFromBinaryStream(&craftersName, stream);
 		return true;
-	}
 
-	if (_name == "TangibleObject.objectSerial") {
+	case 0x4f048d7d: //TangibleObject.objectSerial
 		TypeInfo<String >::parseFromBinaryStream(&objectSerial, stream);
 		return true;
-	}
 
-	if (_name == "TangibleObject.defenderList") {
+	case 0x80b5a6a4: //TangibleObject.defenderList
 		TypeInfo<DeltaVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&defenderList, stream);
 		return true;
-	}
 
-	if (_name == "TangibleObject.sliceable") {
+	case 0x5e49de61: //TangibleObject.sliceable
 		TypeInfo<bool >::parseFromBinaryStream(&sliceable, stream);
 		return true;
-	}
 
-	if (_name == "TangibleObject.sliced") {
+	case 0x85d2a69f: //TangibleObject.sliced
 		TypeInfo<bool >::parseFromBinaryStream(&sliced, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -1434,139 +1423,139 @@ void TangibleObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = SceneObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "TangibleObject.targetable";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x44d211d4; //TangibleObject.targetable
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&targetable, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TangibleObject.complexity";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8ac8d204; //TangibleObject.complexity
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&complexity, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TangibleObject.volume";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1e059da5; //TangibleObject.volume
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&volume, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TangibleObject.faction";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7aa39254; //TangibleObject.faction
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&faction, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TangibleObject.customizationVariables";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb56f0247; //TangibleObject.customizationVariables
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<CustomizationVariables >::toBinaryStream(&customizationVariables, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TangibleObject.conditionDamage";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa4a80d3; //TangibleObject.conditionDamage
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&conditionDamage, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TangibleObject.maxCondition";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9c2e3029; //TangibleObject.maxCondition
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&maxCondition, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TangibleObject.useCount";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe6b8cb07; //TangibleObject.useCount
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&useCount, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TangibleObject.level";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf479fb1c; //TangibleObject.level
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<short >::toBinaryStream(&level, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TangibleObject.optionsBitmask";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6352a44d; //TangibleObject.optionsBitmask
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&optionsBitmask, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TangibleObject.pvpStatusBitmask";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x78a68bd7; //TangibleObject.pvpStatusBitmask
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&pvpStatusBitmask, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TangibleObject.unknownByte";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3dc7630b; //TangibleObject.unknownByte
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&unknownByte, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TangibleObject.craftersName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf6530d9d; //TangibleObject.craftersName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&craftersName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TangibleObject.objectSerial";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4f048d7d; //TangibleObject.objectSerial
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&objectSerial, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TangibleObject.defenderList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x80b5a6a4; //TangibleObject.defenderList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<DeltaVector<ManagedReference<SceneObject* > > >::toBinaryStream(&defenderList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TangibleObject.sliceable";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5e49de61; //TangibleObject.sliceable
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&sliceable, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TangibleObject.sliced";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x85d2a69f; //TangibleObject.sliced
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&sliced, stream);

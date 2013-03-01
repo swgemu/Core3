@@ -111,6 +111,10 @@ DistributedObjectServant* TutorialBuildingObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* TutorialBuildingObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void TutorialBuildingObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -190,14 +194,14 @@ void TutorialBuildingObjectImplementation::_serializationHelperMethod() {
 void TutorialBuildingObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(TutorialBuildingObjectImplementation::readObjectMember(stream, _name)) {
+		if(TutorialBuildingObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -206,10 +210,12 @@ void TutorialBuildingObjectImplementation::readObject(ObjectInputStream* stream)
 	initializeTransientMembers();
 }
 
-bool TutorialBuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (BuildingObjectImplementation::readObjectMember(stream, _name))
+bool TutorialBuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (BuildingObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -224,7 +230,7 @@ void TutorialBuildingObjectImplementation::writeObject(ObjectOutputStream* strea
 int TutorialBuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = BuildingObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

@@ -125,6 +125,10 @@ DistributedObjectServant* GuildTerminal::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* GuildTerminal::_getImplementationForRead() {
+	return _impl;
+}
+
 void GuildTerminal::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -204,14 +208,14 @@ void GuildTerminalImplementation::_serializationHelperMethod() {
 void GuildTerminalImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(GuildTerminalImplementation::readObjectMember(stream, _name)) {
+		if(GuildTerminalImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -220,15 +224,16 @@ void GuildTerminalImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool GuildTerminalImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TerminalImplementation::readObjectMember(stream, _name))
+bool GuildTerminalImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TerminalImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "GuildTerminal.guildObject") {
+	switch(nameHashCode) {
+	case 0xfb4920ab: //GuildTerminal.guildObject
 		TypeInfo<ManagedReference<GuildObject* > >::parseFromBinaryStream(&guildObject, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -243,11 +248,11 @@ void GuildTerminalImplementation::writeObject(ObjectOutputStream* stream) {
 int GuildTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TerminalImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "GuildTerminal.guildObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfb4920ab; //GuildTerminal.guildObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<GuildObject* > >::toBinaryStream(&guildObject, stream);

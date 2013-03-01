@@ -352,6 +352,10 @@ DistributedObjectServant* ActiveArea::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ActiveArea::_getImplementationForRead() {
+	return _impl;
+}
+
 void ActiveArea::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -431,14 +435,14 @@ void ActiveAreaImplementation::_serializationHelperMethod() {
 void ActiveAreaImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ActiveAreaImplementation::readObjectMember(stream, _name)) {
+		if(ActiveAreaImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -447,35 +451,32 @@ void ActiveAreaImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (SceneObjectImplementation::readObjectMember(stream, _name))
+bool ActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (SceneObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "ActiveArea.noBuildArea") {
+	switch(nameHashCode) {
+	case 0x331902db: //ActiveArea.noBuildArea
 		TypeInfo<bool >::parseFromBinaryStream(&noBuildArea, stream);
 		return true;
-	}
 
-	if (_name == "ActiveArea.municipalZone") {
+	case 0x3690552d: //ActiveArea.municipalZone
 		TypeInfo<bool >::parseFromBinaryStream(&municipalZone, stream);
 		return true;
-	}
 
-	if (_name == "ActiveArea.cellObjectID") {
+	case 0x1d1bd89e: //ActiveArea.cellObjectID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&cellObjectID, stream);
 		return true;
-	}
 
-	if (_name == "ActiveArea.noSpawnArea") {
+	case 0xa0804b0: //ActiveArea.noSpawnArea
 		TypeInfo<bool >::parseFromBinaryStream(&noSpawnArea, stream);
 		return true;
-	}
 
-	if (_name == "ActiveArea.areaShape") {
+	case 0x1bb3704b: //ActiveArea.areaShape
 		TypeInfo<ManagedReference<AreaShape* > >::parseFromBinaryStream(&areaShape, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -490,43 +491,43 @@ void ActiveAreaImplementation::writeObject(ObjectOutputStream* stream) {
 int ActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = SceneObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "ActiveArea.noBuildArea";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x331902db; //ActiveArea.noBuildArea
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&noBuildArea, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ActiveArea.municipalZone";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3690552d; //ActiveArea.municipalZone
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&municipalZone, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ActiveArea.cellObjectID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1d1bd89e; //ActiveArea.cellObjectID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&cellObjectID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ActiveArea.noSpawnArea";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa0804b0; //ActiveArea.noSpawnArea
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&noSpawnArea, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ActiveArea.areaShape";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1bb3704b; //ActiveArea.areaShape
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<AreaShape* > >::toBinaryStream(&areaShape, stream);

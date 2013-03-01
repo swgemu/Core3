@@ -62,6 +62,10 @@ DistributedObjectServant* Drink::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* Drink::_getImplementationForRead() {
+	return _impl;
+}
+
 void Drink::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -141,14 +145,14 @@ void DrinkImplementation::_serializationHelperMethod() {
 void DrinkImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(DrinkImplementation::readObjectMember(stream, _name)) {
+		if(DrinkImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -157,10 +161,12 @@ void DrinkImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool DrinkImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ConsumableImplementation::readObjectMember(stream, _name))
+bool DrinkImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ConsumableImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -175,7 +181,7 @@ void DrinkImplementation::writeObject(ObjectOutputStream* stream) {
 int DrinkImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ConsumableImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

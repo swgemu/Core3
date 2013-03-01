@@ -237,6 +237,8 @@ using namespace server::zone::objects::player;
 
 #include "system/thread/ReadWriteLock.h"
 
+#include "server/zone/objects/creature/variables/CurrentFoundPath.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "system/util/Vector.h"
@@ -473,6 +475,7 @@ public:
 	void setShowNextPosition(bool val);
 
 	DistributedObjectServant* _getImplementation();
+	DistributedObjectServant* _getImplementationForRead();
 
 	void _setImplementation(DistributedObjectServant* servant);
 
@@ -517,6 +520,10 @@ protected:
 	PatrolPoint homeLocation;
 
 	PatrolPoint nextStepPosition;
+
+	Reference<CurrentFoundPath* > currentFoundPath;
+
+	ManagedReference<SceneObject* > targetCellObject;
 
 	Vector<ManagedReference<WeaponObject* > > weapons;
 
@@ -796,7 +803,7 @@ protected:
 	void runlock(bool doLock = true);
 
 	void _serializationHelperMethod();
-	bool readObjectMember(ObjectInputStream* stream, const String& name);
+	bool readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode);
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class AiAgent;

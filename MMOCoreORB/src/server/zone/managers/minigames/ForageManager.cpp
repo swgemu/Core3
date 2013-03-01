@@ -121,6 +121,10 @@ DistributedObjectServant* ForageManager::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ForageManager::_getImplementationForRead() {
+	return _impl;
+}
+
 void ForageManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -200,14 +204,14 @@ void ForageManagerImplementation::_serializationHelperMethod() {
 void ForageManagerImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ForageManagerImplementation::readObjectMember(stream, _name)) {
+		if(ForageManagerImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -216,15 +220,16 @@ void ForageManagerImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ForageManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ObserverImplementation::readObjectMember(stream, _name))
+bool ForageManagerImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ObserverImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "ForageManager.forageAreas") {
+	switch(nameHashCode) {
+	case 0xc496aaa8: //ForageManager.forageAreas
 		TypeInfo<ForageMap >::parseFromBinaryStream(&forageAreas, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -239,11 +244,11 @@ void ForageManagerImplementation::writeObject(ObjectOutputStream* stream) {
 int ForageManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ObserverImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "ForageManager.forageAreas";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc496aaa8; //ForageManager.forageAreas
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ForageMap >::toBinaryStream(&forageAreas, stream);

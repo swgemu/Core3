@@ -164,6 +164,10 @@ DistributedObjectServant* AreaShape::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* AreaShape::_getImplementationForRead() {
+	return _impl;
+}
+
 void AreaShape::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -243,14 +247,14 @@ void AreaShapeImplementation::_serializationHelperMethod() {
 void AreaShapeImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(AreaShapeImplementation::readObjectMember(stream, _name)) {
+		if(AreaShapeImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -259,15 +263,16 @@ void AreaShapeImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool AreaShapeImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+bool AreaShapeImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "AreaShape.areaCenter") {
+	switch(nameHashCode) {
+	case 0x7eb8f7c7: //AreaShape.areaCenter
 		TypeInfo<Vector3 >::parseFromBinaryStream(&areaCenter, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -282,11 +287,11 @@ void AreaShapeImplementation::writeObject(ObjectOutputStream* stream) {
 int AreaShapeImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "AreaShape.areaCenter";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7eb8f7c7; //AreaShape.areaCenter
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector3 >::toBinaryStream(&areaCenter, stream);

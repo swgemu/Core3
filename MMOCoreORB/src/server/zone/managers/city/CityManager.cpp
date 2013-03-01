@@ -796,6 +796,10 @@ DistributedObjectServant* CityManager::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* CityManager::_getImplementationForRead() {
+	return _impl;
+}
+
 void CityManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -875,14 +879,14 @@ void CityManagerImplementation::_serializationHelperMethod() {
 void CityManagerImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(CityManagerImplementation::readObjectMember(stream, _name)) {
+		if(CityManagerImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -891,10 +895,12 @@ void CityManagerImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool CityManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedServiceImplementation::readObjectMember(stream, _name))
+bool CityManagerImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedServiceImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -909,7 +915,7 @@ void CityManagerImplementation::writeObject(ObjectOutputStream* stream) {
 int CityManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

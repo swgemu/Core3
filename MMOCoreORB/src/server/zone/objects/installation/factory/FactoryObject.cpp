@@ -269,6 +269,10 @@ DistributedObjectServant* FactoryObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* FactoryObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void FactoryObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -348,14 +352,14 @@ void FactoryObjectImplementation::_serializationHelperMethod() {
 void FactoryObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(FactoryObjectImplementation::readObjectMember(stream, _name)) {
+		if(FactoryObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -364,30 +368,28 @@ void FactoryObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool FactoryObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (InstallationObjectImplementation::readObjectMember(stream, _name))
+bool FactoryObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (InstallationObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "FactoryObject.craftingTabsSupported") {
+	switch(nameHashCode) {
+	case 0x85f4338c: //FactoryObject.craftingTabsSupported
 		TypeInfo<Vector<int> >::parseFromBinaryStream(&craftingTabsSupported, stream);
 		return true;
-	}
 
-	if (_name == "FactoryObject.timer") {
+	case 0x44fedb2a: //FactoryObject.timer
 		TypeInfo<int >::parseFromBinaryStream(&timer, stream);
 		return true;
-	}
 
-	if (_name == "FactoryObject.currentUserName") {
+	case 0xe2948e2a: //FactoryObject.currentUserName
 		TypeInfo<String >::parseFromBinaryStream(&currentUserName, stream);
 		return true;
-	}
 
-	if (_name == "FactoryObject.currentRunCount") {
+	case 0xe8d7c362: //FactoryObject.currentRunCount
 		TypeInfo<int >::parseFromBinaryStream(&currentRunCount, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -402,35 +404,35 @@ void FactoryObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int FactoryObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = InstallationObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "FactoryObject.craftingTabsSupported";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x85f4338c; //FactoryObject.craftingTabsSupported
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<int> >::toBinaryStream(&craftingTabsSupported, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FactoryObject.timer";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x44fedb2a; //FactoryObject.timer
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&timer, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FactoryObject.currentUserName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe2948e2a; //FactoryObject.currentUserName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&currentUserName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FactoryObject.currentRunCount";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe8d7c362; //FactoryObject.currentRunCount
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&currentRunCount, stream);

@@ -119,6 +119,10 @@ DistributedObjectServant* CharacterBuilderTerminal::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* CharacterBuilderTerminal::_getImplementationForRead() {
+	return _impl;
+}
+
 void CharacterBuilderTerminal::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -198,14 +202,14 @@ void CharacterBuilderTerminalImplementation::_serializationHelperMethod() {
 void CharacterBuilderTerminalImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(CharacterBuilderTerminalImplementation::readObjectMember(stream, _name)) {
+		if(CharacterBuilderTerminalImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -214,10 +218,12 @@ void CharacterBuilderTerminalImplementation::readObject(ObjectInputStream* strea
 	initializeTransientMembers();
 }
 
-bool CharacterBuilderTerminalImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TerminalImplementation::readObjectMember(stream, _name))
+bool CharacterBuilderTerminalImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TerminalImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -232,7 +238,7 @@ void CharacterBuilderTerminalImplementation::writeObject(ObjectOutputStream* str
 int CharacterBuilderTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TerminalImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

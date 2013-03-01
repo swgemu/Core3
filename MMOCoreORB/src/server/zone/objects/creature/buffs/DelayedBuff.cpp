@@ -102,6 +102,10 @@ DistributedObjectServant* DelayedBuff::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* DelayedBuff::_getImplementationForRead() {
+	return _impl;
+}
+
 void DelayedBuff::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -181,14 +185,14 @@ void DelayedBuffImplementation::_serializationHelperMethod() {
 void DelayedBuffImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(DelayedBuffImplementation::readObjectMember(stream, _name)) {
+		if(DelayedBuffImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -197,30 +201,28 @@ void DelayedBuffImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool DelayedBuffImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (BuffImplementation::readObjectMember(stream, _name))
+bool DelayedBuffImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (BuffImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "DelayedBuff.usesRemaining") {
+	switch(nameHashCode) {
+	case 0x97822e2c: //DelayedBuff.usesRemaining
 		TypeInfo<int >::parseFromBinaryStream(&usesRemaining, stream);
 		return true;
-	}
 
-	if (_name == "DelayedBuff.player") {
+	case 0x6ad0c24f: //DelayedBuff.player
 		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
-	}
 
-	if (_name == "DelayedBuff.observer") {
+	case 0xddfc9753: //DelayedBuff.observer
 		TypeInfo<ManagedReference<DelayedBuffObserver* > >::parseFromBinaryStream(&observer, stream);
 		return true;
-	}
 
-	if (_name == "DelayedBuff.eventTypes") {
+	case 0xa623be3d: //DelayedBuff.eventTypes
 		TypeInfo<Vector<int> >::parseFromBinaryStream(&eventTypes, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -235,35 +237,35 @@ void DelayedBuffImplementation::writeObject(ObjectOutputStream* stream) {
 int DelayedBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = BuffImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "DelayedBuff.usesRemaining";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x97822e2c; //DelayedBuff.usesRemaining
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&usesRemaining, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DelayedBuff.player";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6ad0c24f; //DelayedBuff.player
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&player, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DelayedBuff.observer";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xddfc9753; //DelayedBuff.observer
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<DelayedBuffObserver* > >::toBinaryStream(&observer, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DelayedBuff.eventTypes";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa623be3d; //DelayedBuff.eventTypes
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<int> >::toBinaryStream(&eventTypes, stream);

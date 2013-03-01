@@ -202,6 +202,10 @@ DistributedObjectServant* SuiListBox::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* SuiListBox::_getImplementationForRead() {
+	return _impl;
+}
+
 void SuiListBox::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -281,14 +285,14 @@ void SuiListBoxImplementation::_serializationHelperMethod() {
 void SuiListBoxImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(SuiListBoxImplementation::readObjectMember(stream, _name)) {
+		if(SuiListBoxImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -297,30 +301,28 @@ void SuiListBoxImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool SuiListBoxImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (SuiBoxImplementation::readObjectMember(stream, _name))
+bool SuiListBoxImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (SuiBoxImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "SuiListBox.menuItems") {
+	switch(nameHashCode) {
+	case 0x376a33bd: //SuiListBox.menuItems
 		TypeInfo<Vector<ManagedReference<SuiListBoxMenuItem* > > >::parseFromBinaryStream(&menuItems, stream);
 		return true;
-	}
 
-	if (_name == "SuiListBox.type") {
+	case 0x8068f9f5: //SuiListBox.type
 		TypeInfo<int >::parseFromBinaryStream(&type, stream);
 		return true;
-	}
 
-	if (_name == "SuiListBox.next") {
+	case 0xe439ff44: //SuiListBox.next
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&next, stream);
 		return true;
-	}
 
-	if (_name == "SuiListBox.previous") {
+	case 0xea8b6254: //SuiListBox.previous
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&previous, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -335,35 +337,35 @@ void SuiListBoxImplementation::writeObject(ObjectOutputStream* stream) {
 int SuiListBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = SuiBoxImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "SuiListBox.menuItems";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x376a33bd; //SuiListBox.menuItems
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<ManagedReference<SuiListBoxMenuItem* > > >::toBinaryStream(&menuItems, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiListBox.type";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8068f9f5; //SuiListBox.type
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&type, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiListBox.next";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe439ff44; //SuiListBox.next
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&next, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiListBox.previous";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xea8b6254; //SuiListBox.previous
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&previous, stream);

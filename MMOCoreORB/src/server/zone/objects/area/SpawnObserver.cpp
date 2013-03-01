@@ -51,6 +51,10 @@ DistributedObjectServant* SpawnObserver::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* SpawnObserver::_getImplementationForRead() {
+	return _impl;
+}
+
 void SpawnObserver::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -130,14 +134,14 @@ void SpawnObserverImplementation::_serializationHelperMethod() {
 void SpawnObserverImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(SpawnObserverImplementation::readObjectMember(stream, _name)) {
+		if(SpawnObserverImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -146,15 +150,16 @@ void SpawnObserverImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool SpawnObserverImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ObserverImplementation::readObjectMember(stream, _name))
+bool SpawnObserverImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ObserverImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "SpawnObserver.spawnArea") {
+	switch(nameHashCode) {
+	case 0x1abf93f1: //SpawnObserver.spawnArea
 		TypeInfo<ManagedWeakReference<SpawnArea* > >::parseFromBinaryStream(&spawnArea, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -169,11 +174,11 @@ void SpawnObserverImplementation::writeObject(ObjectOutputStream* stream) {
 int SpawnObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ObserverImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "SpawnObserver.spawnArea";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1abf93f1; //SpawnObserver.spawnArea
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<SpawnArea* > >::toBinaryStream(&spawnArea, stream);

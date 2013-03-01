@@ -62,6 +62,10 @@ DistributedObjectServant* SuiListBoxMenuItem::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* SuiListBoxMenuItem::_getImplementationForRead() {
+	return _impl;
+}
+
 void SuiListBoxMenuItem::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -141,14 +145,14 @@ void SuiListBoxMenuItemImplementation::_serializationHelperMethod() {
 void SuiListBoxMenuItemImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(SuiListBoxMenuItemImplementation::readObjectMember(stream, _name)) {
+		if(SuiListBoxMenuItemImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -157,20 +161,20 @@ void SuiListBoxMenuItemImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool SuiListBoxMenuItemImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+bool SuiListBoxMenuItemImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "SuiListBoxMenuItem.optionName") {
+	switch(nameHashCode) {
+	case 0x867f153c: //SuiListBoxMenuItem.optionName
 		TypeInfo<String >::parseFromBinaryStream(&optionName, stream);
 		return true;
-	}
 
-	if (_name == "SuiListBoxMenuItem.objectID") {
+	case 0x6e65d941: //SuiListBoxMenuItem.objectID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&objectID, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -185,19 +189,19 @@ void SuiListBoxMenuItemImplementation::writeObject(ObjectOutputStream* stream) {
 int SuiListBoxMenuItemImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "SuiListBoxMenuItem.optionName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x867f153c; //SuiListBoxMenuItem.optionName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&optionName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiListBoxMenuItem.objectID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6e65d941; //SuiListBoxMenuItem.objectID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&objectID, stream);

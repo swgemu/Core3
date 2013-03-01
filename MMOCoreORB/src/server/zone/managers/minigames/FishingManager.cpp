@@ -758,6 +758,10 @@ DistributedObjectServant* FishingManager::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* FishingManager::_getImplementationForRead() {
+	return _impl;
+}
+
 void FishingManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -837,14 +841,14 @@ void FishingManagerImplementation::_serializationHelperMethod() {
 void FishingManagerImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(FishingManagerImplementation::readObjectMember(stream, _name)) {
+		if(FishingManagerImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -853,55 +857,48 @@ void FishingManagerImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool FishingManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ObserverImplementation::readObjectMember(stream, _name))
+bool FishingManagerImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ObserverImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "FishingManager.miscLoot") {
+	switch(nameHashCode) {
+	case 0xd907e6c5: //FishingManager.miscLoot
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&miscLoot, stream);
 		return true;
-	}
 
-	if (_name == "FishingManager.rareLoot") {
+	case 0xfc08adf6: //FishingManager.rareLoot
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&rareLoot, stream);
 		return true;
-	}
 
-	if (_name == "FishingManager.color") {
+	case 0xee64ccda: //FishingManager.color
 		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&color, stream);
 		return true;
-	}
 
-	if (_name == "FishingManager.fishLength") {
+	case 0x1271894c: //FishingManager.fishLength
 		TypeInfo<Vector<int> >::parseFromBinaryStream(&fishLength, stream);
 		return true;
-	}
 
-	if (_name == "FishingManager.fishType") {
+	case 0x89360703: //FishingManager.fishType
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&fishType, stream);
 		return true;
-	}
 
-	if (_name == "FishingManager.state") {
+	case 0xb1e4b355: //FishingManager.state
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&state, stream);
 		return true;
-	}
 
-	if (_name == "FishingManager.action") {
+	case 0xec73825f: //FishingManager.action
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&action, stream);
 		return true;
-	}
 
-	if (_name == "FishingManager.property") {
+	case 0x8dc6df2e: //FishingManager.property
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&property, stream);
 		return true;
-	}
 
-	if (_name == "FishingManager.baitStatus") {
+	case 0x5efda278: //FishingManager.baitStatus
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&baitStatus, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -916,75 +913,75 @@ void FishingManagerImplementation::writeObject(ObjectOutputStream* stream) {
 int FishingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ObserverImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "FishingManager.miscLoot";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd907e6c5; //FishingManager.miscLoot
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&miscLoot, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FishingManager.rareLoot";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfc08adf6; //FishingManager.rareLoot
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&rareLoot, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FishingManager.color";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xee64ccda; //FishingManager.color
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<String, int> >::toBinaryStream(&color, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FishingManager.fishLength";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1271894c; //FishingManager.fishLength
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<int> >::toBinaryStream(&fishLength, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FishingManager.fishType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x89360703; //FishingManager.fishType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&fishType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FishingManager.state";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb1e4b355; //FishingManager.state
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&state, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FishingManager.action";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xec73825f; //FishingManager.action
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&action, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FishingManager.property";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8dc6df2e; //FishingManager.property
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&property, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FishingManager.baitStatus";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5efda278; //FishingManager.baitStatus
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&baitStatus, stream);

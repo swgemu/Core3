@@ -228,6 +228,10 @@ DistributedObjectServant* CellObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* CellObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void CellObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -307,14 +311,14 @@ void CellObjectImplementation::_serializationHelperMethod() {
 void CellObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(CellObjectImplementation::readObjectMember(stream, _name)) {
+		if(CellObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -323,20 +327,20 @@ void CellObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool CellObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (SceneObjectImplementation::readObjectMember(stream, _name))
+bool CellObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (SceneObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "CellObject.cellNumber") {
+	switch(nameHashCode) {
+	case 0xb76efa57: //CellObject.cellNumber
 		TypeInfo<int >::parseFromBinaryStream(&cellNumber, stream);
 		return true;
-	}
 
-	if (_name == "CellObject.currentNumberOfItems") {
+	case 0xef88f25a: //CellObject.currentNumberOfItems
 		TypeInfo<int >::parseFromBinaryStream(&currentNumberOfItems, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -351,19 +355,19 @@ void CellObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int CellObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = SceneObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "CellObject.cellNumber";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb76efa57; //CellObject.cellNumber
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&cellNumber, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CellObject.currentNumberOfItems";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xef88f25a; //CellObject.currentNumberOfItems
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&currentNumberOfItems, stream);

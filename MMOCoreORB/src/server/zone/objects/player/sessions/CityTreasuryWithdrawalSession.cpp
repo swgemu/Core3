@@ -121,6 +121,10 @@ DistributedObjectServant* CityTreasuryWithdrawalSession::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* CityTreasuryWithdrawalSession::_getImplementationForRead() {
+	return _impl;
+}
+
 void CityTreasuryWithdrawalSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -200,14 +204,14 @@ void CityTreasuryWithdrawalSessionImplementation::_serializationHelperMethod() {
 void CityTreasuryWithdrawalSessionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(CityTreasuryWithdrawalSessionImplementation::readObjectMember(stream, _name)) {
+		if(CityTreasuryWithdrawalSessionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -216,30 +220,28 @@ void CityTreasuryWithdrawalSessionImplementation::readObject(ObjectInputStream* 
 	initializeTransientMembers();
 }
 
-bool CityTreasuryWithdrawalSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (FacadeImplementation::readObjectMember(stream, _name))
+bool CityTreasuryWithdrawalSessionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (FacadeImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "CityTreasuryWithdrawalSession.creatureObject") {
+	switch(nameHashCode) {
+	case 0xa1ffbdcc: //CityTreasuryWithdrawalSession.creatureObject
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&creatureObject, stream);
 		return true;
-	}
 
-	if (_name == "CityTreasuryWithdrawalSession.cityRegion") {
+	case 0xd62e2783: //CityTreasuryWithdrawalSession.cityRegion
 		TypeInfo<ManagedWeakReference<CityRegion* > >::parseFromBinaryStream(&cityRegion, stream);
 		return true;
-	}
 
-	if (_name == "CityTreasuryWithdrawalSession.terminalObject") {
+	case 0x20896a97: //CityTreasuryWithdrawalSession.terminalObject
 		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&terminalObject, stream);
 		return true;
-	}
 
-	if (_name == "CityTreasuryWithdrawalSession.reason") {
+	case 0xbb349f6f: //CityTreasuryWithdrawalSession.reason
 		TypeInfo<String >::parseFromBinaryStream(&reason, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -254,35 +256,35 @@ void CityTreasuryWithdrawalSessionImplementation::writeObject(ObjectOutputStream
 int CityTreasuryWithdrawalSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = FacadeImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "CityTreasuryWithdrawalSession.creatureObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa1ffbdcc; //CityTreasuryWithdrawalSession.creatureObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&creatureObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityTreasuryWithdrawalSession.cityRegion";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd62e2783; //CityTreasuryWithdrawalSession.cityRegion
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<CityRegion* > >::toBinaryStream(&cityRegion, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityTreasuryWithdrawalSession.terminalObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x20896a97; //CityTreasuryWithdrawalSession.terminalObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<SceneObject* > >::toBinaryStream(&terminalObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CityTreasuryWithdrawalSession.reason";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbb349f6f; //CityTreasuryWithdrawalSession.reason
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&reason, stream);

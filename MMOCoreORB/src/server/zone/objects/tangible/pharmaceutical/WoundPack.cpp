@@ -147,6 +147,10 @@ DistributedObjectServant* WoundPack::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* WoundPack::_getImplementationForRead() {
+	return _impl;
+}
+
 void WoundPack::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -226,14 +230,14 @@ void WoundPackImplementation::_serializationHelperMethod() {
 void WoundPackImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(WoundPackImplementation::readObjectMember(stream, _name)) {
+		if(WoundPackImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -242,20 +246,20 @@ void WoundPackImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool WoundPackImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (PharmaceuticalObjectImplementation::readObjectMember(stream, _name))
+bool WoundPackImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (PharmaceuticalObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "WoundPack.effectiveness") {
+	switch(nameHashCode) {
+	case 0xd5c96812: //WoundPack.effectiveness
 		TypeInfo<float >::parseFromBinaryStream(&effectiveness, stream);
 		return true;
-	}
 
-	if (_name == "WoundPack.attribute") {
+	case 0xc4fddab7: //WoundPack.attribute
 		TypeInfo<byte >::parseFromBinaryStream(&attribute, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -270,19 +274,19 @@ void WoundPackImplementation::writeObject(ObjectOutputStream* stream) {
 int WoundPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = PharmaceuticalObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "WoundPack.effectiveness";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd5c96812; //WoundPack.effectiveness
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&effectiveness, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WoundPack.attribute";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc4fddab7; //WoundPack.attribute
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&attribute, stream);

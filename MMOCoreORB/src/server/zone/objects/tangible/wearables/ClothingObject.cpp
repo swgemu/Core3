@@ -58,6 +58,10 @@ DistributedObjectServant* ClothingObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ClothingObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void ClothingObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -137,14 +141,14 @@ void ClothingObjectImplementation::_serializationHelperMethod() {
 void ClothingObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ClothingObjectImplementation::readObjectMember(stream, _name)) {
+		if(ClothingObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -153,10 +157,12 @@ void ClothingObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ClothingObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (WearableObjectImplementation::readObjectMember(stream, _name))
+bool ClothingObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (WearableObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -171,7 +177,7 @@ void ClothingObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int ClothingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = WearableObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

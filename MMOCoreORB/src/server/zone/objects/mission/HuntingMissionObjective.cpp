@@ -121,6 +121,10 @@ DistributedObjectServant* HuntingMissionObjective::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* HuntingMissionObjective::_getImplementationForRead() {
+	return _impl;
+}
+
 void HuntingMissionObjective::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -198,14 +202,14 @@ void HuntingMissionObjectiveImplementation::_serializationHelperMethod() {
 void HuntingMissionObjectiveImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(HuntingMissionObjectiveImplementation::readObjectMember(stream, _name)) {
+		if(HuntingMissionObjectiveImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -214,15 +218,16 @@ void HuntingMissionObjectiveImplementation::readObject(ObjectInputStream* stream
 	initializeTransientMembers();
 }
 
-bool HuntingMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
+bool HuntingMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (MissionObjectiveImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "HuntingMissionObjective.targetsKilled") {
+	switch(nameHashCode) {
+	case 0x557682a3: //HuntingMissionObjective.targetsKilled
 		TypeInfo<int >::parseFromBinaryStream(&targetsKilled, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -237,11 +242,11 @@ void HuntingMissionObjectiveImplementation::writeObject(ObjectOutputStream* stre
 int HuntingMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = MissionObjectiveImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "HuntingMissionObjective.targetsKilled";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x557682a3; //HuntingMissionObjective.targetsKilled
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&targetsKilled, stream);

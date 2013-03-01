@@ -229,6 +229,10 @@ DistributedObjectServant* Instrument::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* Instrument::_getImplementationForRead() {
+	return _impl;
+}
+
 void Instrument::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -308,14 +312,14 @@ void InstrumentImplementation::_serializationHelperMethod() {
 void InstrumentImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(InstrumentImplementation::readObjectMember(stream, _name)) {
+		if(InstrumentImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -324,30 +328,28 @@ void InstrumentImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool InstrumentImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool InstrumentImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "Instrument.instrumentType") {
+	switch(nameHashCode) {
+	case 0xa0c10ed0: //Instrument.instrumentType
 		TypeInfo<int >::parseFromBinaryStream(&instrumentType, stream);
 		return true;
-	}
 
-	if (_name == "Instrument.beingUsed") {
+	case 0x52e83fd3: //Instrument.beingUsed
 		TypeInfo<bool >::parseFromBinaryStream(&beingUsed, stream);
 		return true;
-	}
 
-	if (_name == "Instrument.spawnedObject") {
+	case 0xae8bf98a: //Instrument.spawnedObject
 		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&spawnedObject, stream);
 		return true;
-	}
 
-	if (_name == "Instrument.spawnerPlayer") {
+	case 0x40f56db3: //Instrument.spawnerPlayer
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&spawnerPlayer, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -362,35 +364,35 @@ void InstrumentImplementation::writeObject(ObjectOutputStream* stream) {
 int InstrumentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "Instrument.instrumentType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa0c10ed0; //Instrument.instrumentType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&instrumentType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Instrument.beingUsed";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x52e83fd3; //Instrument.beingUsed
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&beingUsed, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Instrument.spawnedObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xae8bf98a; //Instrument.spawnedObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&spawnedObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Instrument.spawnerPlayer";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x40f56db3; //Instrument.spawnerPlayer
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&spawnerPlayer, stream);

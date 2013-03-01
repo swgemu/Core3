@@ -53,6 +53,10 @@ DistributedObjectServant* VehicleControlObserver::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* VehicleControlObserver::_getImplementationForRead() {
+	return _impl;
+}
+
 void VehicleControlObserver::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -132,14 +136,14 @@ void VehicleControlObserverImplementation::_serializationHelperMethod() {
 void VehicleControlObserverImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(VehicleControlObserverImplementation::readObjectMember(stream, _name)) {
+		if(VehicleControlObserverImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -148,15 +152,16 @@ void VehicleControlObserverImplementation::readObject(ObjectInputStream* stream)
 	initializeTransientMembers();
 }
 
-bool VehicleControlObserverImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ObserverImplementation::readObjectMember(stream, _name))
+bool VehicleControlObserverImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ObserverImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "VehicleControlObserver.vehicleControlDevice") {
+	switch(nameHashCode) {
+	case 0x215ae115: //VehicleControlObserver.vehicleControlDevice
 		TypeInfo<ManagedWeakReference<VehicleControlDevice* > >::parseFromBinaryStream(&vehicleControlDevice, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -171,11 +176,11 @@ void VehicleControlObserverImplementation::writeObject(ObjectOutputStream* strea
 int VehicleControlObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ObserverImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "VehicleControlObserver.vehicleControlDevice";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x215ae115; //VehicleControlObserver.vehicleControlDevice
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<VehicleControlDevice* > >::toBinaryStream(&vehicleControlDevice, stream);

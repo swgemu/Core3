@@ -94,6 +94,10 @@ DistributedObjectServant* SignObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* SignObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void SignObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -173,14 +177,14 @@ void SignObjectImplementation::_serializationHelperMethod() {
 void SignObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(SignObjectImplementation::readObjectMember(stream, _name)) {
+		if(SignObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -189,15 +193,16 @@ void SignObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool SignObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool SignObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "SignObject.attachedObject") {
+	switch(nameHashCode) {
+	case 0x229a361f: //SignObject.attachedObject
 		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&attachedObject, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -212,11 +217,11 @@ void SignObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int SignObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "SignObject.attachedObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x229a361f; //SignObject.attachedObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<SceneObject* > >::toBinaryStream(&attachedObject, stream);

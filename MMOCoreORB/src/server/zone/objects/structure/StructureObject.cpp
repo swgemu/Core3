@@ -923,6 +923,10 @@ DistributedObjectServant* StructureObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* StructureObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void StructureObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -1000,14 +1004,14 @@ void StructureObjectImplementation::_serializationHelperMethod() {
 void StructureObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(StructureObjectImplementation::readObjectMember(stream, _name)) {
+		if(StructureObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -1016,65 +1020,56 @@ void StructureObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool StructureObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool StructureObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "StructureObject.structurePermissionList") {
+	switch(nameHashCode) {
+	case 0xfb75ba1b: //StructureObject.structurePermissionList
 		TypeInfo<StructurePermissionList >::parseFromBinaryStream(&structurePermissionList, stream);
 		return true;
-	}
 
-	if (_name == "StructureObject.lastMaintenanceTime") {
+	case 0xbc3681c6: //StructureObject.lastMaintenanceTime
 		TypeInfo<Time >::parseFromBinaryStream(&lastMaintenanceTime, stream);
 		return true;
-	}
 
-	if (_name == "StructureObject.maintenanceExpires") {
+	case 0x6a6ce595: //StructureObject.maintenanceExpires
 		TypeInfo<Time >::parseFromBinaryStream(&maintenanceExpires, stream);
 		return true;
-	}
 
-	if (_name == "StructureObject.powerExpires") {
+	case 0xacd9b94b: //StructureObject.powerExpires
 		TypeInfo<Time >::parseFromBinaryStream(&powerExpires, stream);
 		return true;
-	}
 
-	if (_name == "StructureObject.ownerObjectID") {
+	case 0x416adeb5: //StructureObject.ownerObjectID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&ownerObjectID, stream);
 		return true;
-	}
 
-	if (_name == "StructureObject.deedObjectID") {
+	case 0x91401d8: //StructureObject.deedObjectID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&deedObjectID, stream);
 		return true;
-	}
 
-	if (_name == "StructureObject.baseMaintenanceRate") {
+	case 0x8bd79c55: //StructureObject.baseMaintenanceRate
 		TypeInfo<int >::parseFromBinaryStream(&baseMaintenanceRate, stream);
 		return true;
-	}
 
-	if (_name == "StructureObject.basePowerRate") {
+	case 0xc5379eb6: //StructureObject.basePowerRate
 		TypeInfo<int >::parseFromBinaryStream(&basePowerRate, stream);
 		return true;
-	}
 
-	if (_name == "StructureObject.surplusMaintenance") {
+	case 0x14dab13c: //StructureObject.surplusMaintenance
 		TypeInfo<float >::parseFromBinaryStream(&surplusMaintenance, stream);
 		return true;
-	}
 
-	if (_name == "StructureObject.surplusPower") {
+	case 0x3964b467: //StructureObject.surplusPower
 		TypeInfo<float >::parseFromBinaryStream(&surplusPower, stream);
 		return true;
-	}
 
-	if (_name == "StructureObject.maintenanceReduced") {
+	case 0xe3db1557: //StructureObject.maintenanceReduced
 		TypeInfo<bool >::parseFromBinaryStream(&maintenanceReduced, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -1089,91 +1084,91 @@ void StructureObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int StructureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "StructureObject.structurePermissionList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfb75ba1b; //StructureObject.structurePermissionList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<StructurePermissionList >::toBinaryStream(&structurePermissionList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "StructureObject.lastMaintenanceTime";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbc3681c6; //StructureObject.lastMaintenanceTime
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&lastMaintenanceTime, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "StructureObject.maintenanceExpires";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6a6ce595; //StructureObject.maintenanceExpires
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&maintenanceExpires, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "StructureObject.powerExpires";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xacd9b94b; //StructureObject.powerExpires
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&powerExpires, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "StructureObject.ownerObjectID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x416adeb5; //StructureObject.ownerObjectID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&ownerObjectID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "StructureObject.deedObjectID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x91401d8; //StructureObject.deedObjectID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&deedObjectID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "StructureObject.baseMaintenanceRate";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8bd79c55; //StructureObject.baseMaintenanceRate
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&baseMaintenanceRate, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "StructureObject.basePowerRate";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc5379eb6; //StructureObject.basePowerRate
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&basePowerRate, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "StructureObject.surplusMaintenance";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x14dab13c; //StructureObject.surplusMaintenance
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&surplusMaintenance, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "StructureObject.surplusPower";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3964b467; //StructureObject.surplusPower
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&surplusPower, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "StructureObject.maintenanceReduced";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe3db1557; //StructureObject.maintenanceReduced
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&maintenanceReduced, stream);

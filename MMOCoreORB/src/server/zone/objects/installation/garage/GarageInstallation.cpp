@@ -74,6 +74,10 @@ DistributedObjectServant* GarageInstallation::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* GarageInstallation::_getImplementationForRead() {
+	return _impl;
+}
+
 void GarageInstallation::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -153,14 +157,14 @@ void GarageInstallationImplementation::_serializationHelperMethod() {
 void GarageInstallationImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(GarageInstallationImplementation::readObjectMember(stream, _name)) {
+		if(GarageInstallationImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -169,15 +173,16 @@ void GarageInstallationImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool GarageInstallationImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (InstallationObjectImplementation::readObjectMember(stream, _name))
+bool GarageInstallationImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (InstallationObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "GarageInstallation.garageArea") {
+	switch(nameHashCode) {
+	case 0x62988547: //GarageInstallation.garageArea
 		TypeInfo<ManagedReference<ActiveArea* > >::parseFromBinaryStream(&garageArea, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -192,11 +197,11 @@ void GarageInstallationImplementation::writeObject(ObjectOutputStream* stream) {
 int GarageInstallationImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = InstallationObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "GarageInstallation.garageArea";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x62988547; //GarageInstallation.garageArea
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<ActiveArea* > >::toBinaryStream(&garageArea, stream);

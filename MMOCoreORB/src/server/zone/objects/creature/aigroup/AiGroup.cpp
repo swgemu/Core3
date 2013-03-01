@@ -143,6 +143,10 @@ DistributedObjectServant* AiGroup::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* AiGroup::_getImplementationForRead() {
+	return _impl;
+}
+
 void AiGroup::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -222,14 +226,14 @@ void AiGroupImplementation::_serializationHelperMethod() {
 void AiGroupImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(AiGroupImplementation::readObjectMember(stream, _name)) {
+		if(AiGroupImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -238,90 +242,76 @@ void AiGroupImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool AiGroupImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (SceneObjectImplementation::readObjectMember(stream, _name))
+bool AiGroupImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (SceneObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "AiGroup.leader") {
+	switch(nameHashCode) {
+	case 0xe61315d5: //AiGroup.leader
 		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&leader, stream);
 		return true;
-	}
 
-	if (_name == "AiGroup.scouts") {
+	case 0x99fa058a: //AiGroup.scouts
 		TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::parseFromBinaryStream(&scouts, stream);
 		return true;
-	}
 
-	if (_name == "AiGroup.scoutTemps") {
+	case 0x9645fa45: //AiGroup.scoutTemps
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&scoutTemps, stream);
 		return true;
-	}
 
-	if (_name == "AiGroup.protectors") {
+	case 0xe8204d1c: //AiGroup.protectors
 		TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::parseFromBinaryStream(&protectors, stream);
 		return true;
-	}
 
-	if (_name == "AiGroup.protectorTemps") {
+	case 0xf8d055c1: //AiGroup.protectorTemps
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&protectorTemps, stream);
 		return true;
-	}
 
-	if (_name == "AiGroup.babies") {
+	case 0x299e07fc: //AiGroup.babies
 		TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::parseFromBinaryStream(&babies, stream);
 		return true;
-	}
 
-	if (_name == "AiGroup.babyTemps") {
+	case 0xf295ef78: //AiGroup.babyTemps
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&babyTemps, stream);
 		return true;
-	}
 
-	if (_name == "AiGroup.subgroups") {
+	case 0xd8b48dd: //AiGroup.subgroups
 		TypeInfo<SortedVector<ManagedReference<AiGroup* > > >::parseFromBinaryStream(&subgroups, stream);
 		return true;
-	}
 
-	if (_name == "AiGroup.observers") {
+	case 0x852f8f32: //AiGroup.observers
 		TypeInfo<SortedVector<ManagedReference<AiGroupObserver* > > >::parseFromBinaryStream(&observers, stream);
 		return true;
-	}
 
-	if (_name == "AiGroup.commandLevel") {
+	case 0xb5e78dd3: //AiGroup.commandLevel
 		TypeInfo<int >::parseFromBinaryStream(&commandLevel, stream);
 		return true;
-	}
 
-	if (_name == "AiGroup.wanderRadius") {
+	case 0x241b7c32: //AiGroup.wanderRadius
 		TypeInfo<float >::parseFromBinaryStream(&wanderRadius, stream);
 		return true;
-	}
 
-	if (_name == "AiGroup.size") {
+	case 0xf40da1f1: //AiGroup.size
 		TypeInfo<int >::parseFromBinaryStream(&size, stream);
 		return true;
-	}
 
-	if (_name == "AiGroup.scoutWeight") {
+	case 0x99d84ba6: //AiGroup.scoutWeight
 		TypeInfo<float >::parseFromBinaryStream(&scoutWeight, stream);
 		return true;
-	}
 
-	if (_name == "AiGroup.protectorWeight") {
+	case 0x9c5ca93b: //AiGroup.protectorWeight
 		TypeInfo<float >::parseFromBinaryStream(&protectorWeight, stream);
 		return true;
-	}
 
-	if (_name == "AiGroup.babyWeight") {
+	case 0xf66cc6ed: //AiGroup.babyWeight
 		TypeInfo<float >::parseFromBinaryStream(&babyWeight, stream);
 		return true;
-	}
 
-	if (_name == "AiGroup.isStatic") {
+	case 0x5622bb98: //AiGroup.isStatic
 		TypeInfo<bool >::parseFromBinaryStream(&isStatic, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -336,131 +326,131 @@ void AiGroupImplementation::writeObject(ObjectOutputStream* stream) {
 int AiGroupImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = SceneObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "AiGroup.leader";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe61315d5; //AiGroup.leader
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&leader, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiGroup.scouts";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x99fa058a; //AiGroup.scouts
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::toBinaryStream(&scouts, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiGroup.scoutTemps";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9645fa45; //AiGroup.scoutTemps
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&scoutTemps, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiGroup.protectors";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe8204d1c; //AiGroup.protectors
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::toBinaryStream(&protectors, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiGroup.protectorTemps";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf8d055c1; //AiGroup.protectorTemps
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&protectorTemps, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiGroup.babies";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x299e07fc; //AiGroup.babies
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::toBinaryStream(&babies, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiGroup.babyTemps";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf295ef78; //AiGroup.babyTemps
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&babyTemps, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiGroup.subgroups";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd8b48dd; //AiGroup.subgroups
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<AiGroup* > > >::toBinaryStream(&subgroups, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiGroup.observers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x852f8f32; //AiGroup.observers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<AiGroupObserver* > > >::toBinaryStream(&observers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiGroup.commandLevel";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb5e78dd3; //AiGroup.commandLevel
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&commandLevel, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiGroup.wanderRadius";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x241b7c32; //AiGroup.wanderRadius
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&wanderRadius, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiGroup.size";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf40da1f1; //AiGroup.size
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&size, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiGroup.scoutWeight";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x99d84ba6; //AiGroup.scoutWeight
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&scoutWeight, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiGroup.protectorWeight";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9c5ca93b; //AiGroup.protectorWeight
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&protectorWeight, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiGroup.babyWeight";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf66cc6ed; //AiGroup.babyWeight
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&babyWeight, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiGroup.isStatic";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5622bb98; //AiGroup.isStatic
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&isStatic, stream);

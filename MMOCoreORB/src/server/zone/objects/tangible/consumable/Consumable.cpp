@@ -185,6 +185,10 @@ DistributedObjectServant* Consumable::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* Consumable::_getImplementationForRead() {
+	return _impl;
+}
+
 void Consumable::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -264,14 +268,14 @@ void ConsumableImplementation::_serializationHelperMethod() {
 void ConsumableImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ConsumableImplementation::readObjectMember(stream, _name)) {
+		if(ConsumableImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -280,105 +284,88 @@ void ConsumableImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ConsumableImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool ConsumableImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "Consumable.duration") {
+	switch(nameHashCode) {
+	case 0xfdae01b0: //Consumable.duration
 		TypeInfo<int >::parseFromBinaryStream(&duration, stream);
 		return true;
-	}
 
-	if (_name == "Consumable.filling") {
+	case 0xeb15c048: //Consumable.filling
 		TypeInfo<int >::parseFromBinaryStream(&filling, stream);
 		return true;
-	}
 
-	if (_name == "Consumable.nutrition") {
+	case 0xb64fb3fd: //Consumable.nutrition
 		TypeInfo<int >::parseFromBinaryStream(&nutrition, stream);
 		return true;
-	}
 
-	if (_name == "Consumable.effectType") {
+	case 0xa36d5c4d: //Consumable.effectType
 		TypeInfo<int >::parseFromBinaryStream(&effectType, stream);
 		return true;
-	}
 
-	if (_name == "Consumable.eventTypes") {
+	case 0x6c8b25b9: //Consumable.eventTypes
 		TypeInfo<Vector<int> >::parseFromBinaryStream(&eventTypes, stream);
 		return true;
-	}
 
-	if (_name == "Consumable.fillingMin") {
+	case 0xa072ef0b: //Consumable.fillingMin
 		TypeInfo<int >::parseFromBinaryStream(&fillingMin, stream);
 		return true;
-	}
 
-	if (_name == "Consumable.fillingMax") {
+	case 0x7cad3a9b: //Consumable.fillingMax
 		TypeInfo<int >::parseFromBinaryStream(&fillingMax, stream);
 		return true;
-	}
 
-	if (_name == "Consumable.flavorMin") {
+	case 0x4d41b426: //Consumable.flavorMin
 		TypeInfo<int >::parseFromBinaryStream(&flavorMin, stream);
 		return true;
-	}
 
-	if (_name == "Consumable.flavorMax") {
+	case 0x919e61b6: //Consumable.flavorMax
 		TypeInfo<int >::parseFromBinaryStream(&flavorMax, stream);
 		return true;
-	}
 
-	if (_name == "Consumable.nutritionMin") {
+	case 0xe0f66d24: //Consumable.nutritionMin
 		TypeInfo<int >::parseFromBinaryStream(&nutritionMin, stream);
 		return true;
-	}
 
-	if (_name == "Consumable.nutritionMax") {
+	case 0x3c29b8b4: //Consumable.nutritionMax
 		TypeInfo<int >::parseFromBinaryStream(&nutritionMax, stream);
 		return true;
-	}
 
-	if (_name == "Consumable.quantityMin") {
+	case 0x487009d3: //Consumable.quantityMin
 		TypeInfo<int >::parseFromBinaryStream(&quantityMin, stream);
 		return true;
-	}
 
-	if (_name == "Consumable.quantityMax") {
+	case 0x94afdc43: //Consumable.quantityMax
 		TypeInfo<int >::parseFromBinaryStream(&quantityMax, stream);
 		return true;
-	}
 
-	if (_name == "Consumable.modifiers") {
+	case 0xa3a02e88: //Consumable.modifiers
 		TypeInfo<VectorMap<String, float> >::parseFromBinaryStream(&modifiers, stream);
 		return true;
-	}
 
-	if (_name == "Consumable.buffName") {
+	case 0xdcd8e8af: //Consumable.buffName
 		TypeInfo<String >::parseFromBinaryStream(&buffName, stream);
 		return true;
-	}
 
-	if (_name == "Consumable.buffCRC") {
+	case 0x5f33347: //Consumable.buffCRC
 		TypeInfo<unsigned int >::parseFromBinaryStream(&buffCRC, stream);
 		return true;
-	}
 
-	if (_name == "Consumable.consumableType") {
+	case 0x626dcb1e: //Consumable.consumableType
 		TypeInfo<int >::parseFromBinaryStream(&consumableType, stream);
 		return true;
-	}
 
-	if (_name == "Consumable.foragedFood") {
+	case 0x6128397e: //Consumable.foragedFood
 		TypeInfo<int >::parseFromBinaryStream(&foragedFood, stream);
 		return true;
-	}
 
-	if (_name == "Consumable.speciesRestriction") {
+	case 0x6f3ae7b7: //Consumable.speciesRestriction
 		TypeInfo<String >::parseFromBinaryStream(&speciesRestriction, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -393,155 +380,155 @@ void ConsumableImplementation::writeObject(ObjectOutputStream* stream) {
 int ConsumableImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "Consumable.duration";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfdae01b0; //Consumable.duration
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&duration, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Consumable.filling";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xeb15c048; //Consumable.filling
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&filling, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Consumable.nutrition";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb64fb3fd; //Consumable.nutrition
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&nutrition, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Consumable.effectType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa36d5c4d; //Consumable.effectType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&effectType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Consumable.eventTypes";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6c8b25b9; //Consumable.eventTypes
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<int> >::toBinaryStream(&eventTypes, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Consumable.fillingMin";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa072ef0b; //Consumable.fillingMin
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&fillingMin, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Consumable.fillingMax";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7cad3a9b; //Consumable.fillingMax
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&fillingMax, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Consumable.flavorMin";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4d41b426; //Consumable.flavorMin
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&flavorMin, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Consumable.flavorMax";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x919e61b6; //Consumable.flavorMax
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&flavorMax, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Consumable.nutritionMin";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe0f66d24; //Consumable.nutritionMin
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&nutritionMin, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Consumable.nutritionMax";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3c29b8b4; //Consumable.nutritionMax
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&nutritionMax, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Consumable.quantityMin";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x487009d3; //Consumable.quantityMin
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&quantityMin, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Consumable.quantityMax";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x94afdc43; //Consumable.quantityMax
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&quantityMax, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Consumable.modifiers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa3a02e88; //Consumable.modifiers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<String, float> >::toBinaryStream(&modifiers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Consumable.buffName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xdcd8e8af; //Consumable.buffName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&buffName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Consumable.buffCRC";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5f33347; //Consumable.buffCRC
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&buffCRC, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Consumable.consumableType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x626dcb1e; //Consumable.consumableType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&consumableType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Consumable.foragedFood";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6128397e; //Consumable.foragedFood
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&foragedFood, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Consumable.speciesRestriction";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6f3ae7b7; //Consumable.speciesRestriction
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&speciesRestriction, stream);

@@ -66,6 +66,10 @@ DistributedObjectServant* StaticSpawnArea::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* StaticSpawnArea::_getImplementationForRead() {
+	return _impl;
+}
+
 void StaticSpawnArea::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -145,14 +149,14 @@ void StaticSpawnAreaImplementation::_serializationHelperMethod() {
 void StaticSpawnAreaImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(StaticSpawnAreaImplementation::readObjectMember(stream, _name)) {
+		if(StaticSpawnAreaImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -161,15 +165,16 @@ void StaticSpawnAreaImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool StaticSpawnAreaImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (SpawnAreaImplementation::readObjectMember(stream, _name))
+bool StaticSpawnAreaImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (SpawnAreaImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "StaticSpawnArea.groups") {
+	switch(nameHashCode) {
+	case 0x32053a47: //StaticSpawnArea.groups
 		TypeInfo<SortedVector<ManagedReference<AiGroup* > > >::parseFromBinaryStream(&groups, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -184,11 +189,11 @@ void StaticSpawnAreaImplementation::writeObject(ObjectOutputStream* stream) {
 int StaticSpawnAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = SpawnAreaImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "StaticSpawnArea.groups";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x32053a47; //StaticSpawnArea.groups
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<AiGroup* > > >::toBinaryStream(&groups, stream);

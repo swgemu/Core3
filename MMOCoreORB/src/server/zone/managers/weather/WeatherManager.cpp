@@ -164,6 +164,10 @@ DistributedObjectServant* WeatherManager::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* WeatherManager::_getImplementationForRead() {
+	return _impl;
+}
+
 void WeatherManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -243,14 +247,14 @@ void WeatherManagerImplementation::_serializationHelperMethod() {
 void WeatherManagerImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(WeatherManagerImplementation::readObjectMember(stream, _name)) {
+		if(WeatherManagerImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -259,10 +263,12 @@ void WeatherManagerImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool WeatherManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedServiceImplementation::readObjectMember(stream, _name))
+bool WeatherManagerImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedServiceImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -277,7 +283,7 @@ void WeatherManagerImplementation::writeObject(ObjectOutputStream* stream) {
 int WeatherManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

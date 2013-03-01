@@ -88,6 +88,10 @@ DistributedObjectServant* ShipControlDevice::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ShipControlDevice::_getImplementationForRead() {
+	return _impl;
+}
+
 void ShipControlDevice::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -167,14 +171,14 @@ void ShipControlDeviceImplementation::_serializationHelperMethod() {
 void ShipControlDeviceImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ShipControlDeviceImplementation::readObjectMember(stream, _name)) {
+		if(ShipControlDeviceImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -183,10 +187,12 @@ void ShipControlDeviceImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ShipControlDeviceImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ControlDeviceImplementation::readObjectMember(stream, _name))
+bool ShipControlDeviceImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ControlDeviceImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -201,7 +207,7 @@ void ShipControlDeviceImplementation::writeObject(ObjectOutputStream* stream) {
 int ShipControlDeviceImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ControlDeviceImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

@@ -34,6 +34,10 @@ DistributedObjectServant* TravelBuildingObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* TravelBuildingObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void TravelBuildingObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -113,14 +117,14 @@ void TravelBuildingObjectImplementation::_serializationHelperMethod() {
 void TravelBuildingObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(TravelBuildingObjectImplementation::readObjectMember(stream, _name)) {
+		if(TravelBuildingObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -129,10 +133,12 @@ void TravelBuildingObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool TravelBuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (BuildingObjectImplementation::readObjectMember(stream, _name))
+bool TravelBuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (BuildingObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -147,7 +153,7 @@ void TravelBuildingObjectImplementation::writeObject(ObjectOutputStream* stream)
 int TravelBuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = BuildingObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

@@ -107,6 +107,10 @@ DistributedObjectServant* CreateVendorSession::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* CreateVendorSession::_getImplementationForRead() {
+	return _impl;
+}
+
 void CreateVendorSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -186,14 +190,14 @@ void CreateVendorSessionImplementation::_serializationHelperMethod() {
 void CreateVendorSessionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(CreateVendorSessionImplementation::readObjectMember(stream, _name)) {
+		if(CreateVendorSessionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -202,35 +206,32 @@ void CreateVendorSessionImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool CreateVendorSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (FacadeImplementation::readObjectMember(stream, _name))
+bool CreateVendorSessionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (FacadeImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "CreateVendorSession.player") {
+	switch(nameHashCode) {
+	case 0x497009ac: //CreateVendorSession.player
 		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
-	}
 
-	if (_name == "CreateVendorSession.currentNode") {
+	case 0xaa558320: //CreateVendorSession.currentNode
 		TypeInfo<Reference<VendorSelectionNode* > >::parseFromBinaryStream(&currentNode, stream);
 		return true;
-	}
 
-	if (_name == "CreateVendorSession.suiSelectVendor") {
+	case 0x78692ecb: //CreateVendorSession.suiSelectVendor
 		TypeInfo<ManagedReference<SuiListBox* > >::parseFromBinaryStream(&suiSelectVendor, stream);
 		return true;
-	}
 
-	if (_name == "CreateVendorSession.suiNameVendor") {
+	case 0x72ba2302: //CreateVendorSession.suiNameVendor
 		TypeInfo<ManagedReference<SuiInputBox* > >::parseFromBinaryStream(&suiNameVendor, stream);
 		return true;
-	}
 
-	if (_name == "CreateVendorSession.templatePath") {
+	case 0x9d2b99a3: //CreateVendorSession.templatePath
 		TypeInfo<String >::parseFromBinaryStream(&templatePath, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -245,43 +246,43 @@ void CreateVendorSessionImplementation::writeObject(ObjectOutputStream* stream) 
 int CreateVendorSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = FacadeImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "CreateVendorSession.player";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x497009ac; //CreateVendorSession.player
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&player, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreateVendorSession.currentNode";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xaa558320; //CreateVendorSession.currentNode
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Reference<VendorSelectionNode* > >::toBinaryStream(&currentNode, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreateVendorSession.suiSelectVendor";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x78692ecb; //CreateVendorSession.suiSelectVendor
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SuiListBox* > >::toBinaryStream(&suiSelectVendor, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreateVendorSession.suiNameVendor";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x72ba2302; //CreateVendorSession.suiNameVendor
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SuiInputBox* > >::toBinaryStream(&suiNameVendor, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreateVendorSession.templatePath";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9d2b99a3; //CreateVendorSession.templatePath
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&templatePath, stream);

@@ -167,6 +167,10 @@ DistributedObjectServant* CurePack::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* CurePack::_getImplementationForRead() {
+	return _impl;
+}
+
 void CurePack::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -246,14 +250,14 @@ void CurePackImplementation::_serializationHelperMethod() {
 void CurePackImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(CurePackImplementation::readObjectMember(stream, _name)) {
+		if(CurePackImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -262,30 +266,28 @@ void CurePackImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool CurePackImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (PharmaceuticalObjectImplementation::readObjectMember(stream, _name))
+bool CurePackImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (PharmaceuticalObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "CurePack.effectiveness") {
+	switch(nameHashCode) {
+	case 0x62f04ccf: //CurePack.effectiveness
 		TypeInfo<float >::parseFromBinaryStream(&effectiveness, stream);
 		return true;
-	}
 
-	if (_name == "CurePack.area") {
+	case 0x28904257: //CurePack.area
 		TypeInfo<float >::parseFromBinaryStream(&area, stream);
 		return true;
-	}
 
-	if (_name == "CurePack.state") {
+	case 0x75d78d5f: //CurePack.state
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&state, stream);
 		return true;
-	}
 
-	if (_name == "CurePack.commandToExecute") {
+	case 0x9b9ea3f6: //CurePack.commandToExecute
 		TypeInfo<String >::parseFromBinaryStream(&commandToExecute, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -300,35 +302,35 @@ void CurePackImplementation::writeObject(ObjectOutputStream* stream) {
 int CurePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = PharmaceuticalObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "CurePack.effectiveness";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x62f04ccf; //CurePack.effectiveness
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&effectiveness, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CurePack.area";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x28904257; //CurePack.area
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&area, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CurePack.state";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x75d78d5f; //CurePack.state
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&state, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CurePack.commandToExecute";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9b9ea3f6; //CurePack.commandToExecute
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&commandToExecute, stream);

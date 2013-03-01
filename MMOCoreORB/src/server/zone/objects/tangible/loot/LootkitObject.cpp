@@ -122,6 +122,10 @@ DistributedObjectServant* LootkitObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* LootkitObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void LootkitObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -201,14 +205,14 @@ void LootkitObjectImplementation::_serializationHelperMethod() {
 void LootkitObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(LootkitObjectImplementation::readObjectMember(stream, _name)) {
+		if(LootkitObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -217,35 +221,32 @@ void LootkitObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool LootkitObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool LootkitObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "LootkitObject.components") {
+	switch(nameHashCode) {
+	case 0x6e690365: //LootkitObject.components
 		TypeInfo<VectorMap<unsigned int, bool> >::parseFromBinaryStream(&components, stream);
 		return true;
-	}
 
-	if (_name == "LootkitObject.attributes") {
+	case 0x4d5afa4b: //LootkitObject.attributes
 		TypeInfo<VectorMap<unsigned int, String> >::parseFromBinaryStream(&attributes, stream);
 		return true;
-	}
 
-	if (_name == "LootkitObject.comps") {
+	case 0x3fa91857: //LootkitObject.comps
 		TypeInfo<Vector<unsigned int> >::parseFromBinaryStream(&comps, stream);
 		return true;
-	}
 
-	if (_name == "LootkitObject.reward") {
+	case 0x49064025: //LootkitObject.reward
 		TypeInfo<Vector<unsigned int> >::parseFromBinaryStream(&reward, stream);
 		return true;
-	}
 
-	if (_name == "LootkitObject.deleteComponents") {
+	case 0xfb076c99: //LootkitObject.deleteComponents
 		TypeInfo<bool >::parseFromBinaryStream(&deleteComponents, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -260,43 +261,43 @@ void LootkitObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int LootkitObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "LootkitObject.components";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6e690365; //LootkitObject.components
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<unsigned int, bool> >::toBinaryStream(&components, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LootkitObject.attributes";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4d5afa4b; //LootkitObject.attributes
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<unsigned int, String> >::toBinaryStream(&attributes, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LootkitObject.comps";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3fa91857; //LootkitObject.comps
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<unsigned int> >::toBinaryStream(&comps, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LootkitObject.reward";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x49064025; //LootkitObject.reward
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<unsigned int> >::toBinaryStream(&reward, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LootkitObject.deleteComponents";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfb076c99; //LootkitObject.deleteComponents
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&deleteComponents, stream);

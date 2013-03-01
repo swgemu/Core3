@@ -200,6 +200,10 @@ DistributedObjectServant* FishingPoleObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* FishingPoleObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void FishingPoleObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -279,14 +283,14 @@ void FishingPoleObjectImplementation::_serializationHelperMethod() {
 void FishingPoleObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(FishingPoleObjectImplementation::readObjectMember(stream, _name)) {
+		if(FishingPoleObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -295,15 +299,16 @@ void FishingPoleObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool FishingPoleObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool FishingPoleObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "FishingPoleObject.quality") {
+	switch(nameHashCode) {
+	case 0xf95fef0f: //FishingPoleObject.quality
 		TypeInfo<int >::parseFromBinaryStream(&quality, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -318,11 +323,11 @@ void FishingPoleObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int FishingPoleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "FishingPoleObject.quality";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf95fef0f; //FishingPoleObject.quality
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&quality, stream);

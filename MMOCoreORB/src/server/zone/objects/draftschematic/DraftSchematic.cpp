@@ -391,6 +391,10 @@ DistributedObjectServant* DraftSchematic::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* DraftSchematic::_getImplementationForRead() {
+	return _impl;
+}
+
 void DraftSchematic::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -470,14 +474,14 @@ void DraftSchematicImplementation::_serializationHelperMethod() {
 void DraftSchematicImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(DraftSchematicImplementation::readObjectMember(stream, _name)) {
+		if(DraftSchematicImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -486,10 +490,12 @@ void DraftSchematicImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool DraftSchematicImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (IntangibleObjectImplementation::readObjectMember(stream, _name))
+bool DraftSchematicImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (IntangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -504,7 +510,7 @@ void DraftSchematicImplementation::writeObject(ObjectOutputStream* stream) {
 int DraftSchematicImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = IntangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

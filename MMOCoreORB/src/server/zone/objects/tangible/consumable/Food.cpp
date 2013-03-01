@@ -62,6 +62,10 @@ DistributedObjectServant* Food::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* Food::_getImplementationForRead() {
+	return _impl;
+}
+
 void Food::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -141,14 +145,14 @@ void FoodImplementation::_serializationHelperMethod() {
 void FoodImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(FoodImplementation::readObjectMember(stream, _name)) {
+		if(FoodImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -157,10 +161,12 @@ void FoodImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool FoodImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ConsumableImplementation::readObjectMember(stream, _name))
+bool FoodImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ConsumableImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -175,7 +181,7 @@ void FoodImplementation::writeObject(ObjectOutputStream* stream) {
 int FoodImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ConsumableImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

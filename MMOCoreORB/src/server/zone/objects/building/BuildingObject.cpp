@@ -856,6 +856,10 @@ DistributedObjectServant* BuildingObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* BuildingObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void BuildingObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -935,14 +939,14 @@ void BuildingObjectImplementation::_serializationHelperMethod() {
 void BuildingObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(BuildingObjectImplementation::readObjectMember(stream, _name)) {
+		if(BuildingObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -951,55 +955,48 @@ void BuildingObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool BuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (StructureObjectImplementation::readObjectMember(stream, _name))
+bool BuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (StructureObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "BuildingObject.cells") {
+	switch(nameHashCode) {
+	case 0x20f3b6a6: //BuildingObject.cells
 		TypeInfo<VectorMap<unsigned int, ManagedReference<CellObject* > > >::parseFromBinaryStream(&cells, stream);
 		return true;
-	}
 
-	if (_name == "BuildingObject.totalCellNumber") {
+	case 0x38fc81b9: //BuildingObject.totalCellNumber
 		TypeInfo<int >::parseFromBinaryStream(&totalCellNumber, stream);
 		return true;
-	}
 
-	if (_name == "BuildingObject.signObject") {
+	case 0xd3b1e837: //BuildingObject.signObject
 		TypeInfo<ManagedReference<SignObject* > >::parseFromBinaryStream(&signObject, stream);
 		return true;
-	}
 
-	if (_name == "BuildingObject.deedObjectID") {
+	case 0xa7b4b67: //BuildingObject.deedObjectID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&deedObjectID, stream);
 		return true;
-	}
 
-	if (_name == "BuildingObject.accessFee") {
+	case 0x27b0682d: //BuildingObject.accessFee
 		TypeInfo<int >::parseFromBinaryStream(&accessFee, stream);
 		return true;
-	}
 
-	if (_name == "BuildingObject.accessDuration") {
+	case 0xd12474b7: //BuildingObject.accessDuration
 		TypeInfo<int >::parseFromBinaryStream(&accessDuration, stream);
 		return true;
-	}
 
-	if (_name == "BuildingObject.paidAccessList") {
+	case 0xe781d77d: //BuildingObject.paidAccessList
 		TypeInfo<VectorMap<unsigned long long, unsigned int> >::parseFromBinaryStream(&paidAccessList, stream);
 		return true;
-	}
 
-	if (_name == "BuildingObject.publicStructure") {
+	case 0xd1c7bb1c: //BuildingObject.publicStructure
 		TypeInfo<bool >::parseFromBinaryStream(&publicStructure, stream);
 		return true;
-	}
 
-	if (_name == "BuildingObject.signName") {
+	case 0xbd232a91: //BuildingObject.signName
 		TypeInfo<UnicodeString >::parseFromBinaryStream(&signName, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -1014,75 +1011,75 @@ void BuildingObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = StructureObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "BuildingObject.cells";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x20f3b6a6; //BuildingObject.cells
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<unsigned int, ManagedReference<CellObject* > > >::toBinaryStream(&cells, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "BuildingObject.totalCellNumber";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x38fc81b9; //BuildingObject.totalCellNumber
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&totalCellNumber, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "BuildingObject.signObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd3b1e837; //BuildingObject.signObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SignObject* > >::toBinaryStream(&signObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "BuildingObject.deedObjectID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa7b4b67; //BuildingObject.deedObjectID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&deedObjectID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "BuildingObject.accessFee";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x27b0682d; //BuildingObject.accessFee
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&accessFee, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "BuildingObject.accessDuration";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd12474b7; //BuildingObject.accessDuration
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&accessDuration, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "BuildingObject.paidAccessList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe781d77d; //BuildingObject.paidAccessList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<unsigned long long, unsigned int> >::toBinaryStream(&paidAccessList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "BuildingObject.publicStructure";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd1c7bb1c; //BuildingObject.publicStructure
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&publicStructure, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "BuildingObject.signName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbd232a91; //BuildingObject.signName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<UnicodeString >::toBinaryStream(&signName, stream);

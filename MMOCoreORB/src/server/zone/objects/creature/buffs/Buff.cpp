@@ -640,6 +640,10 @@ DistributedObjectServant* Buff::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* Buff::_getImplementationForRead() {
+	return _impl;
+}
+
 void Buff::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -719,14 +723,14 @@ void BuffImplementation::_serializationHelperMethod() {
 void BuffImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(BuffImplementation::readObjectMember(stream, _name)) {
+		if(BuffImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -735,120 +739,100 @@ void BuffImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool BuffImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+bool BuffImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "Buff.creature") {
+	switch(nameHashCode) {
+	case 0xa921f788: //Buff.creature
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&creature, stream);
 		return true;
-	}
 
-	if (_name == "Buff.attributeModifiers") {
+	case 0x7006427e: //Buff.attributeModifiers
 		TypeInfo<VectorMap<byte, int> >::parseFromBinaryStream(&attributeModifiers, stream);
 		return true;
-	}
 
-	if (_name == "Buff.skillModifiers") {
+	case 0xa139fa26: //Buff.skillModifiers
 		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&skillModifiers, stream);
 		return true;
-	}
 
-	if (_name == "Buff.states") {
+	case 0x7f68d91a: //Buff.states
 		TypeInfo<Vector<unsigned long long> >::parseFromBinaryStream(&states, stream);
 		return true;
-	}
 
-	if (_name == "Buff.buffName") {
+	case 0x234d15c8: //Buff.buffName
 		TypeInfo<String >::parseFromBinaryStream(&buffName, stream);
 		return true;
-	}
 
-	if (_name == "Buff.buffDuration") {
+	case 0x3ca26af4: //Buff.buffDuration
 		TypeInfo<float >::parseFromBinaryStream(&buffDuration, stream);
 		return true;
-	}
 
-	if (_name == "Buff.buffCRC") {
+	case 0xf78c9c7c: //Buff.buffCRC
 		TypeInfo<unsigned int >::parseFromBinaryStream(&buffCRC, stream);
 		return true;
-	}
 
-	if (_name == "Buff.buffType") {
+	case 0x8fc21cc4: //Buff.buffType
 		TypeInfo<int >::parseFromBinaryStream(&buffType, stream);
 		return true;
-	}
 
-	if (_name == "Buff.fillAttributesOnBuff") {
+	case 0x4ac65add: //Buff.fillAttributesOnBuff
 		TypeInfo<bool >::parseFromBinaryStream(&fillAttributesOnBuff, stream);
 		return true;
-	}
 
-	if (_name == "Buff.startMessage") {
+	case 0x14f05dca: //Buff.startMessage
 		TypeInfo<StringIdChatParameter >::parseFromBinaryStream(&startMessage, stream);
 		return true;
-	}
 
-	if (_name == "Buff.endMessage") {
+	case 0xc3d8eea6: //Buff.endMessage
 		TypeInfo<StringIdChatParameter >::parseFromBinaryStream(&endMessage, stream);
 		return true;
-	}
 
-	if (_name == "Buff.startFlyFile") {
+	case 0xeca8f5e2: //Buff.startFlyFile
 		TypeInfo<String >::parseFromBinaryStream(&startFlyFile, stream);
 		return true;
-	}
 
-	if (_name == "Buff.startFlyAux") {
+	case 0xf33f1e99: //Buff.startFlyAux
 		TypeInfo<String >::parseFromBinaryStream(&startFlyAux, stream);
 		return true;
-	}
 
-	if (_name == "Buff.startFlyRed") {
+	case 0x8590f867: //Buff.startFlyRed
 		TypeInfo<byte >::parseFromBinaryStream(&startFlyRed, stream);
 		return true;
-	}
 
-	if (_name == "Buff.startFlyGreen") {
+	case 0x5115d13e: //Buff.startFlyGreen
 		TypeInfo<byte >::parseFromBinaryStream(&startFlyGreen, stream);
 		return true;
-	}
 
-	if (_name == "Buff.startFlyBlue") {
+	case 0xdee7bee1: //Buff.startFlyBlue
 		TypeInfo<byte >::parseFromBinaryStream(&startFlyBlue, stream);
 		return true;
-	}
 
-	if (_name == "Buff.endFlyFile") {
+	case 0x3b80468e: //Buff.endFlyFile
 		TypeInfo<String >::parseFromBinaryStream(&endFlyFile, stream);
 		return true;
-	}
 
-	if (_name == "Buff.endFlyAux") {
+	case 0xa68764ea: //Buff.endFlyAux
 		TypeInfo<String >::parseFromBinaryStream(&endFlyAux, stream);
 		return true;
-	}
 
-	if (_name == "Buff.endFlyRed") {
+	case 0xd0288214: //Buff.endFlyRed
 		TypeInfo<byte >::parseFromBinaryStream(&endFlyRed, stream);
 		return true;
-	}
 
-	if (_name == "Buff.endFlyGreen") {
+	case 0x767aa6d2: //Buff.endFlyGreen
 		TypeInfo<byte >::parseFromBinaryStream(&endFlyGreen, stream);
 		return true;
-	}
 
-	if (_name == "Buff.endFlyBlue") {
+	case 0x9cf0d8d: //Buff.endFlyBlue
 		TypeInfo<byte >::parseFromBinaryStream(&endFlyBlue, stream);
 		return true;
-	}
 
-	if (_name == "Buff.nextExecutionTime") {
+	case 0xd9698796: //Buff.nextExecutionTime
 		TypeInfo<Time >::parseFromBinaryStream(&nextExecutionTime, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -863,179 +847,179 @@ void BuffImplementation::writeObject(ObjectOutputStream* stream) {
 int BuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "Buff.creature";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa921f788; //Buff.creature
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&creature, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.attributeModifiers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7006427e; //Buff.attributeModifiers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<byte, int> >::toBinaryStream(&attributeModifiers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.skillModifiers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa139fa26; //Buff.skillModifiers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<String, int> >::toBinaryStream(&skillModifiers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.states";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7f68d91a; //Buff.states
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<unsigned long long> >::toBinaryStream(&states, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.buffName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x234d15c8; //Buff.buffName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&buffName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.buffDuration";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3ca26af4; //Buff.buffDuration
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&buffDuration, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.buffCRC";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf78c9c7c; //Buff.buffCRC
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&buffCRC, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.buffType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8fc21cc4; //Buff.buffType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&buffType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.fillAttributesOnBuff";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4ac65add; //Buff.fillAttributesOnBuff
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&fillAttributesOnBuff, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.startMessage";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x14f05dca; //Buff.startMessage
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<StringIdChatParameter >::toBinaryStream(&startMessage, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.endMessage";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc3d8eea6; //Buff.endMessage
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<StringIdChatParameter >::toBinaryStream(&endMessage, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.startFlyFile";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xeca8f5e2; //Buff.startFlyFile
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&startFlyFile, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.startFlyAux";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf33f1e99; //Buff.startFlyAux
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&startFlyAux, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.startFlyRed";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8590f867; //Buff.startFlyRed
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&startFlyRed, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.startFlyGreen";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5115d13e; //Buff.startFlyGreen
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&startFlyGreen, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.startFlyBlue";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xdee7bee1; //Buff.startFlyBlue
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&startFlyBlue, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.endFlyFile";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3b80468e; //Buff.endFlyFile
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&endFlyFile, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.endFlyAux";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa68764ea; //Buff.endFlyAux
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&endFlyAux, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.endFlyRed";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd0288214; //Buff.endFlyRed
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&endFlyRed, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.endFlyGreen";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x767aa6d2; //Buff.endFlyGreen
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&endFlyGreen, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.endFlyBlue";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9cf0d8d; //Buff.endFlyBlue
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&endFlyBlue, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Buff.nextExecutionTime";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd9698796; //Buff.nextExecutionTime
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&nextExecutionTime, stream);

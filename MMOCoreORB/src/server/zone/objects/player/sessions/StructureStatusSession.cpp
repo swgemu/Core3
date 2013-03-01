@@ -84,6 +84,10 @@ DistributedObjectServant* StructureStatusSession::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* StructureStatusSession::_getImplementationForRead() {
+	return _impl;
+}
+
 void StructureStatusSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -163,14 +167,14 @@ void StructureStatusSessionImplementation::_serializationHelperMethod() {
 void StructureStatusSessionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(StructureStatusSessionImplementation::readObjectMember(stream, _name)) {
+		if(StructureStatusSessionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -179,15 +183,16 @@ void StructureStatusSessionImplementation::readObject(ObjectInputStream* stream)
 	initializeTransientMembers();
 }
 
-bool StructureStatusSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (FacadeImplementation::readObjectMember(stream, _name))
+bool StructureStatusSessionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (FacadeImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "StructureStatusSession.structureObject") {
+	switch(nameHashCode) {
+	case 0x74344505: //StructureStatusSession.structureObject
 		TypeInfo<ManagedWeakReference<StructureObject* > >::parseFromBinaryStream(&structureObject, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -202,11 +207,11 @@ void StructureStatusSessionImplementation::writeObject(ObjectOutputStream* strea
 int StructureStatusSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = FacadeImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "StructureStatusSession.structureObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x74344505; //StructureStatusSession.structureObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<StructureObject* > >::toBinaryStream(&structureObject, stream);

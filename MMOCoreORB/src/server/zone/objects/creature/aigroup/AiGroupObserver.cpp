@@ -53,6 +53,10 @@ DistributedObjectServant* AiGroupObserver::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* AiGroupObserver::_getImplementationForRead() {
+	return _impl;
+}
+
 void AiGroupObserver::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -132,14 +136,14 @@ void AiGroupObserverImplementation::_serializationHelperMethod() {
 void AiGroupObserverImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(AiGroupObserverImplementation::readObjectMember(stream, _name)) {
+		if(AiGroupObserverImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -148,15 +152,16 @@ void AiGroupObserverImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool AiGroupObserverImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ObserverImplementation::readObjectMember(stream, _name))
+bool AiGroupObserverImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ObserverImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "AiGroupObserver.aiGroup") {
+	switch(nameHashCode) {
+	case 0xf5c5a0ac: //AiGroupObserver.aiGroup
 		TypeInfo<ManagedReference<AiGroup* > >::parseFromBinaryStream(&aiGroup, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -171,11 +176,11 @@ void AiGroupObserverImplementation::writeObject(ObjectOutputStream* stream) {
 int AiGroupObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ObserverImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "AiGroupObserver.aiGroup";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf5c5a0ac; //AiGroupObserver.aiGroup
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<AiGroup* > >::toBinaryStream(&aiGroup, stream);

@@ -113,6 +113,10 @@ DistributedObjectServant* IntangibleObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* IntangibleObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void IntangibleObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -190,14 +194,14 @@ void IntangibleObjectImplementation::_serializationHelperMethod() {
 void IntangibleObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(IntangibleObjectImplementation::readObjectMember(stream, _name)) {
+		if(IntangibleObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -206,15 +210,16 @@ void IntangibleObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool IntangibleObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (SceneObjectImplementation::readObjectMember(stream, _name))
+bool IntangibleObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (SceneObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "IntangibleObject.status") {
+	switch(nameHashCode) {
+	case 0xca41f7e6: //IntangibleObject.status
 		TypeInfo<unsigned int >::parseFromBinaryStream(&status, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -229,11 +234,11 @@ void IntangibleObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int IntangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = SceneObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "IntangibleObject.status";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xca41f7e6; //IntangibleObject.status
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&status, stream);

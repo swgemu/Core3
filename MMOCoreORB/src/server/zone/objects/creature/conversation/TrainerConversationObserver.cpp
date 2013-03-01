@@ -30,6 +30,10 @@ DistributedObjectServant* TrainerConversationObserver::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* TrainerConversationObserver::_getImplementationForRead() {
+	return _impl;
+}
+
 void TrainerConversationObserver::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -109,14 +113,14 @@ void TrainerConversationObserverImplementation::_serializationHelperMethod() {
 void TrainerConversationObserverImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(TrainerConversationObserverImplementation::readObjectMember(stream, _name)) {
+		if(TrainerConversationObserverImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -125,15 +129,16 @@ void TrainerConversationObserverImplementation::readObject(ObjectInputStream* st
 	initializeTransientMembers();
 }
 
-bool TrainerConversationObserverImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ConversationObserverImplementation::readObjectMember(stream, _name))
+bool TrainerConversationObserverImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ConversationObserverImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "TrainerConversationObserver.trainerScreenHandlers") {
+	switch(nameHashCode) {
+	case 0x1d0ce417: //TrainerConversationObserver.trainerScreenHandlers
 		TypeInfo<TrainerScreenHandlers >::parseFromBinaryStream(&trainerScreenHandlers, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -148,11 +153,11 @@ void TrainerConversationObserverImplementation::writeObject(ObjectOutputStream* 
 int TrainerConversationObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ConversationObserverImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "TrainerConversationObserver.trainerScreenHandlers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1d0ce417; //TrainerConversationObserver.trainerScreenHandlers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<TrainerScreenHandlers >::toBinaryStream(&trainerScreenHandlers, stream);

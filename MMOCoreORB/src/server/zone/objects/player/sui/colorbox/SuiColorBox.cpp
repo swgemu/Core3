@@ -91,6 +91,10 @@ DistributedObjectServant* SuiColorBox::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* SuiColorBox::_getImplementationForRead() {
+	return _impl;
+}
+
 void SuiColorBox::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -170,14 +174,14 @@ void SuiColorBoxImplementation::_serializationHelperMethod() {
 void SuiColorBoxImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(SuiColorBoxImplementation::readObjectMember(stream, _name)) {
+		if(SuiColorBoxImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -186,15 +190,16 @@ void SuiColorBoxImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool SuiColorBoxImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (SuiBoxImplementation::readObjectMember(stream, _name))
+bool SuiColorBoxImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (SuiBoxImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "SuiColorBox.variable") {
+	switch(nameHashCode) {
+	case 0x75f61db8: //SuiColorBox.variable
 		TypeInfo<String >::parseFromBinaryStream(&variable, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -209,11 +214,11 @@ void SuiColorBoxImplementation::writeObject(ObjectOutputStream* stream) {
 int SuiColorBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = SuiBoxImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "SuiColorBox.variable";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x75f61db8; //SuiColorBox.variable
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&variable, stream);

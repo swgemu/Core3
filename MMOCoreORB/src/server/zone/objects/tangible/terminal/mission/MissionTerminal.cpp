@@ -279,6 +279,10 @@ DistributedObjectServant* MissionTerminal::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* MissionTerminal::_getImplementationForRead() {
+	return _impl;
+}
+
 void MissionTerminal::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -358,14 +362,14 @@ void MissionTerminalImplementation::_serializationHelperMethod() {
 void MissionTerminalImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(MissionTerminalImplementation::readObjectMember(stream, _name)) {
+		if(MissionTerminalImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -374,15 +378,16 @@ void MissionTerminalImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool MissionTerminalImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TerminalImplementation::readObjectMember(stream, _name))
+bool MissionTerminalImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TerminalImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "MissionTerminal.terminalType") {
+	switch(nameHashCode) {
+	case 0x12e9a7e: //MissionTerminal.terminalType
 		TypeInfo<String >::parseFromBinaryStream(&terminalType, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -397,11 +402,11 @@ void MissionTerminalImplementation::writeObject(ObjectOutputStream* stream) {
 int MissionTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TerminalImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "MissionTerminal.terminalType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x12e9a7e; //MissionTerminal.terminalType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&terminalType, stream);

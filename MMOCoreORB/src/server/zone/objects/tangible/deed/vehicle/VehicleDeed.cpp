@@ -119,6 +119,10 @@ DistributedObjectServant* VehicleDeed::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* VehicleDeed::_getImplementationForRead() {
+	return _impl;
+}
+
 void VehicleDeed::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -198,14 +202,14 @@ void VehicleDeedImplementation::_serializationHelperMethod() {
 void VehicleDeedImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(VehicleDeedImplementation::readObjectMember(stream, _name)) {
+		if(VehicleDeedImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -214,20 +218,20 @@ void VehicleDeedImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool VehicleDeedImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (DeedImplementation::readObjectMember(stream, _name))
+bool VehicleDeedImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (DeedImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "VehicleDeed.hitPoints") {
+	switch(nameHashCode) {
+	case 0x11c2fd9f: //VehicleDeed.hitPoints
 		TypeInfo<int >::parseFromBinaryStream(&hitPoints, stream);
 		return true;
-	}
 
-	if (_name == "VehicleDeed.controlDeviceObjectTemplate") {
+	case 0x2470429b: //VehicleDeed.controlDeviceObjectTemplate
 		TypeInfo<String >::parseFromBinaryStream(&controlDeviceObjectTemplate, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -242,19 +246,19 @@ void VehicleDeedImplementation::writeObject(ObjectOutputStream* stream) {
 int VehicleDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = DeedImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "VehicleDeed.hitPoints";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x11c2fd9f; //VehicleDeed.hitPoints
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&hitPoints, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "VehicleDeed.controlDeviceObjectTemplate";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2470429b; //VehicleDeed.controlDeviceObjectTemplate
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&controlDeviceObjectTemplate, stream);

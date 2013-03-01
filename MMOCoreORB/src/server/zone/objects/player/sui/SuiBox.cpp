@@ -552,6 +552,10 @@ DistributedObjectServant* SuiBox::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* SuiBox::_getImplementationForRead() {
+	return _impl;
+}
+
 void SuiBox::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -629,14 +633,14 @@ void SuiBoxImplementation::_serializationHelperMethod() {
 void SuiBoxImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(SuiBoxImplementation::readObjectMember(stream, _name)) {
+		if(SuiBoxImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -645,110 +649,92 @@ void SuiBoxImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool SuiBoxImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+bool SuiBoxImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "SuiBox.player") {
+	switch(nameHashCode) {
+	case 0x68aa8f23: //SuiBox.player
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
-	}
 
-	if (_name == "SuiBox.suiCallback") {
+	case 0xdebde43d: //SuiBox.suiCallback
 		TypeInfo<Reference<SuiCallback* > >::parseFromBinaryStream(&suiCallback, stream);
 		return true;
-	}
 
-	if (_name == "SuiBox.boxID") {
+	case 0x4643db2c: //SuiBox.boxID
 		TypeInfo<unsigned int >::parseFromBinaryStream(&boxID, stream);
 		return true;
-	}
 
-	if (_name == "SuiBox.usingObject") {
+	case 0xed36e132: //SuiBox.usingObject
 		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&usingObject, stream);
 		return true;
-	}
 
-	if (_name == "SuiBox.handlerStr") {
+	case 0xc45c8ae2: //SuiBox.handlerStr
 		TypeInfo<String >::parseFromBinaryStream(&handlerStr, stream);
 		return true;
-	}
 
-	if (_name == "SuiBox.cancelButtonText") {
+	case 0xfcc7d2b6: //SuiBox.cancelButtonText
 		TypeInfo<String >::parseFromBinaryStream(&cancelButtonText, stream);
 		return true;
-	}
 
-	if (_name == "SuiBox.cancelButton") {
+	case 0xcaa399ec: //SuiBox.cancelButton
 		TypeInfo<bool >::parseFromBinaryStream(&cancelButton, stream);
 		return true;
-	}
 
-	if (_name == "SuiBox.okButtonText") {
+	case 0xbfdef345: //SuiBox.okButtonText
 		TypeInfo<String >::parseFromBinaryStream(&okButtonText, stream);
 		return true;
-	}
 
-	if (_name == "SuiBox.okButton") {
+	case 0x1532319b: //SuiBox.okButton
 		TypeInfo<bool >::parseFromBinaryStream(&okButton, stream);
 		return true;
-	}
 
-	if (_name == "SuiBox.otherButtonText") {
+	case 0x81434ff3: //SuiBox.otherButtonText
 		TypeInfo<String >::parseFromBinaryStream(&otherButtonText, stream);
 		return true;
-	}
 
-	if (_name == "SuiBox.otherButton") {
+	case 0x1720842a: //SuiBox.otherButton
 		TypeInfo<bool >::parseFromBinaryStream(&otherButton, stream);
 		return true;
-	}
 
-	if (_name == "SuiBox.promptTitle") {
+	case 0x299fff58: //SuiBox.promptTitle
 		TypeInfo<String >::parseFromBinaryStream(&promptTitle, stream);
 		return true;
-	}
 
-	if (_name == "SuiBox.promptText") {
+	case 0x854b6043: //SuiBox.promptText
 		TypeInfo<String >::parseFromBinaryStream(&promptText, stream);
 		return true;
-	}
 
-	if (_name == "SuiBox.boxType") {
+	case 0xf363336b: //SuiBox.boxType
 		TypeInfo<int >::parseFromBinaryStream(&boxType, stream);
 		return true;
-	}
 
-	if (_name == "SuiBox.windowType") {
+	case 0xcb88a3ae: //SuiBox.windowType
 		TypeInfo<unsigned int >::parseFromBinaryStream(&windowType, stream);
 		return true;
-	}
 
-	if (_name == "SuiBox.forceCloseDistance") {
+	case 0xb150a8ab: //SuiBox.forceCloseDistance
 		TypeInfo<float >::parseFromBinaryStream(&forceCloseDistance, stream);
 		return true;
-	}
 
-	if (_name == "SuiBox.headerSets") {
+	case 0xf965e28f: //SuiBox.headerSets
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&headerSets, stream);
 		return true;
-	}
 
-	if (_name == "SuiBox.optionSets") {
+	case 0xccc3dbba: //SuiBox.optionSets
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&optionSets, stream);
 		return true;
-	}
 
-	if (_name == "SuiBox.hdrOptCount") {
+	case 0x61483cc2: //SuiBox.hdrOptCount
 		TypeInfo<int >::parseFromBinaryStream(&hdrOptCount, stream);
 		return true;
-	}
 
-	if (_name == "SuiBox.hasGenerated") {
+	case 0xa57c3889: //SuiBox.hasGenerated
 		TypeInfo<bool >::parseFromBinaryStream(&hasGenerated, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -763,163 +749,163 @@ void SuiBoxImplementation::writeObject(ObjectOutputStream* stream) {
 int SuiBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "SuiBox.player";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x68aa8f23; //SuiBox.player
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&player, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBox.suiCallback";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xdebde43d; //SuiBox.suiCallback
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Reference<SuiCallback* > >::toBinaryStream(&suiCallback, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBox.boxID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4643db2c; //SuiBox.boxID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&boxID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBox.usingObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xed36e132; //SuiBox.usingObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<SceneObject* > >::toBinaryStream(&usingObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBox.handlerStr";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc45c8ae2; //SuiBox.handlerStr
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&handlerStr, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBox.cancelButtonText";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfcc7d2b6; //SuiBox.cancelButtonText
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&cancelButtonText, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBox.cancelButton";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xcaa399ec; //SuiBox.cancelButton
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&cancelButton, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBox.okButtonText";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbfdef345; //SuiBox.okButtonText
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&okButtonText, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBox.okButton";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1532319b; //SuiBox.okButton
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&okButton, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBox.otherButtonText";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x81434ff3; //SuiBox.otherButtonText
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&otherButtonText, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBox.otherButton";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1720842a; //SuiBox.otherButton
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&otherButton, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBox.promptTitle";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x299fff58; //SuiBox.promptTitle
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&promptTitle, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBox.promptText";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x854b6043; //SuiBox.promptText
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&promptText, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBox.boxType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf363336b; //SuiBox.boxType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&boxType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBox.windowType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xcb88a3ae; //SuiBox.windowType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&windowType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBox.forceCloseDistance";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb150a8ab; //SuiBox.forceCloseDistance
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&forceCloseDistance, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBox.headerSets";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf965e28f; //SuiBox.headerSets
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&headerSets, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBox.optionSets";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xccc3dbba; //SuiBox.optionSets
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&optionSets, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBox.hdrOptCount";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x61483cc2; //SuiBox.hdrOptCount
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&hdrOptCount, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBox.hasGenerated";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa57c3889; //SuiBox.hasGenerated
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&hasGenerated, stream);

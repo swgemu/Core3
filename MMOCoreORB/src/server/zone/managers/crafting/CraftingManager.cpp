@@ -257,6 +257,10 @@ DistributedObjectServant* CraftingManager::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* CraftingManager::_getImplementationForRead() {
+	return _impl;
+}
+
 void CraftingManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -336,14 +340,14 @@ void CraftingManagerImplementation::_serializationHelperMethod() {
 void CraftingManagerImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(CraftingManagerImplementation::readObjectMember(stream, _name)) {
+		if(CraftingManagerImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -352,10 +356,12 @@ void CraftingManagerImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool CraftingManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ZoneManagerImplementation::readObjectMember(stream, _name))
+bool CraftingManagerImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ZoneManagerImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -370,7 +376,7 @@ void CraftingManagerImplementation::writeObject(ObjectOutputStream* stream) {
 int CraftingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ZoneManagerImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

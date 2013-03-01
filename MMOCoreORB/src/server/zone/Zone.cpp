@@ -512,6 +512,10 @@ DistributedObjectServant* Zone::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* Zone::_getImplementationForRead() {
+	return _impl;
+}
+
 void Zone::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -589,14 +593,14 @@ void ZoneImplementation::_serializationHelperMethod() {
 void ZoneImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ZoneImplementation::readObjectMember(stream, _name)) {
+		if(ZoneImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -605,30 +609,28 @@ void ZoneImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ZoneImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (SceneObjectImplementation::readObjectMember(stream, _name))
+bool ZoneImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (SceneObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "Zone.zoneName") {
+	switch(nameHashCode) {
+	case 0xa762ac22: //Zone.zoneName
 		TypeInfo<String >::parseFromBinaryStream(&zoneName, stream);
 		return true;
-	}
 
-	if (_name == "Zone.zoneCRC") {
+	case 0xd9ac1ed3: //Zone.zoneCRC
 		TypeInfo<unsigned int >::parseFromBinaryStream(&zoneCRC, stream);
 		return true;
-	}
 
-	if (_name == "Zone.regionTree") {
+	case 0x7b0557ae: //Zone.regionTree
 		TypeInfo<QuadTreeReference >::parseFromBinaryStream(&regionTree, stream);
 		return true;
-	}
 
-	if (_name == "Zone.quadTree") {
+	case 0x623385b4: //Zone.quadTree
 		TypeInfo<QuadTreeReference >::parseFromBinaryStream(&quadTree, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -643,35 +645,35 @@ void ZoneImplementation::writeObject(ObjectOutputStream* stream) {
 int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = SceneObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "Zone.zoneName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa762ac22; //Zone.zoneName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&zoneName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Zone.zoneCRC";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd9ac1ed3; //Zone.zoneCRC
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&zoneCRC, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Zone.regionTree";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7b0557ae; //Zone.regionTree
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<QuadTreeReference >::toBinaryStream(&regionTree, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Zone.quadTree";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x623385b4; //Zone.quadTree
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<QuadTreeReference >::toBinaryStream(&quadTree, stream);

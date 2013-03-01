@@ -134,6 +134,10 @@ DistributedObjectServant* PlaceStructureSession::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* PlaceStructureSession::_getImplementationForRead() {
+	return _impl;
+}
+
 void PlaceStructureSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -213,14 +217,14 @@ void PlaceStructureSessionImplementation::_serializationHelperMethod() {
 void PlaceStructureSessionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(PlaceStructureSessionImplementation::readObjectMember(stream, _name)) {
+		if(PlaceStructureSessionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -229,50 +233,44 @@ void PlaceStructureSessionImplementation::readObject(ObjectInputStream* stream) 
 	initializeTransientMembers();
 }
 
-bool PlaceStructureSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (FacadeImplementation::readObjectMember(stream, _name))
+bool PlaceStructureSessionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (FacadeImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "PlaceStructureSession.creatureObject") {
+	switch(nameHashCode) {
+	case 0xac923358: //PlaceStructureSession.creatureObject
 		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&creatureObject, stream);
 		return true;
-	}
 
-	if (_name == "PlaceStructureSession.deedObject") {
+	case 0x4ea10045: //PlaceStructureSession.deedObject
 		TypeInfo<ManagedReference<StructureDeed* > >::parseFromBinaryStream(&deedObject, stream);
 		return true;
-	}
 
-	if (_name == "PlaceStructureSession.positionX") {
+	case 0x7f96ed8: //PlaceStructureSession.positionX
 		TypeInfo<float >::parseFromBinaryStream(&positionX, stream);
 		return true;
-	}
 
-	if (_name == "PlaceStructureSession.positionY") {
+	case 0x338736f: //PlaceStructureSession.positionY
 		TypeInfo<float >::parseFromBinaryStream(&positionY, stream);
 		return true;
-	}
 
-	if (_name == "PlaceStructureSession.directionAngle") {
+	case 0x26d05024: //PlaceStructureSession.directionAngle
 		TypeInfo<int >::parseFromBinaryStream(&directionAngle, stream);
 		return true;
-	}
 
-	if (_name == "PlaceStructureSession.constructionBarricade") {
+	case 0x8c1d0456: //PlaceStructureSession.constructionBarricade
 		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&constructionBarricade, stream);
 		return true;
-	}
 
-	if (_name == "PlaceStructureSession.zone") {
+	case 0x35b982c3: //PlaceStructureSession.zone
 		TypeInfo<ManagedReference<Zone* > >::parseFromBinaryStream(&zone, stream);
 		return true;
-	}
 
-	if (_name == "PlaceStructureSession.temporaryNoBuildZone") {
+	case 0x57830721: //PlaceStructureSession.temporaryNoBuildZone
 		TypeInfo<ManagedReference<ActiveArea* > >::parseFromBinaryStream(&temporaryNoBuildZone, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -287,67 +285,67 @@ void PlaceStructureSessionImplementation::writeObject(ObjectOutputStream* stream
 int PlaceStructureSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = FacadeImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "PlaceStructureSession.creatureObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xac923358; //PlaceStructureSession.creatureObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&creatureObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlaceStructureSession.deedObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4ea10045; //PlaceStructureSession.deedObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<StructureDeed* > >::toBinaryStream(&deedObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlaceStructureSession.positionX";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7f96ed8; //PlaceStructureSession.positionX
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&positionX, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlaceStructureSession.positionY";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x338736f; //PlaceStructureSession.positionY
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&positionY, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlaceStructureSession.directionAngle";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x26d05024; //PlaceStructureSession.directionAngle
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&directionAngle, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlaceStructureSession.constructionBarricade";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8c1d0456; //PlaceStructureSession.constructionBarricade
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&constructionBarricade, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlaceStructureSession.zone";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x35b982c3; //PlaceStructureSession.zone
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<Zone* > >::toBinaryStream(&zone, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlaceStructureSession.temporaryNoBuildZone";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x57830721; //PlaceStructureSession.temporaryNoBuildZone
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<ActiveArea* > >::toBinaryStream(&temporaryNoBuildZone, stream);

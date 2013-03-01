@@ -307,6 +307,10 @@ DistributedObjectServant* CraftingTool::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* CraftingTool::_getImplementationForRead() {
+	return _impl;
+}
+
 void CraftingTool::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -386,14 +390,14 @@ void CraftingToolImplementation::_serializationHelperMethod() {
 void CraftingToolImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(CraftingToolImplementation::readObjectMember(stream, _name)) {
+		if(CraftingToolImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -402,35 +406,32 @@ void CraftingToolImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool CraftingToolImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ToolTangibleObjectImplementation::readObjectMember(stream, _name))
+bool CraftingToolImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ToolTangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "CraftingTool.status") {
+	switch(nameHashCode) {
+	case 0xb4e9c332: //CraftingTool.status
 		TypeInfo<String >::parseFromBinaryStream(&status, stream);
 		return true;
-	}
 
-	if (_name == "CraftingTool.type") {
+	case 0x6b2e23d7: //CraftingTool.type
 		TypeInfo<int >::parseFromBinaryStream(&type, stream);
 		return true;
-	}
 
-	if (_name == "CraftingTool.effectiveness") {
+	case 0x583e21c6: //CraftingTool.effectiveness
 		TypeInfo<float >::parseFromBinaryStream(&effectiveness, stream);
 		return true;
-	}
 
-	if (_name == "CraftingTool.complexityLevel") {
+	case 0xddc3ab04: //CraftingTool.complexityLevel
 		TypeInfo<int >::parseFromBinaryStream(&complexityLevel, stream);
 		return true;
-	}
 
-	if (_name == "CraftingTool.enabledTabs") {
+	case 0x7fe54bab: //CraftingTool.enabledTabs
 		TypeInfo<Vector<unsigned int> >::parseFromBinaryStream(&enabledTabs, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -445,43 +446,43 @@ void CraftingToolImplementation::writeObject(ObjectOutputStream* stream) {
 int CraftingToolImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ToolTangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "CraftingTool.status";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb4e9c332; //CraftingTool.status
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&status, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CraftingTool.type";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6b2e23d7; //CraftingTool.type
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&type, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CraftingTool.effectiveness";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x583e21c6; //CraftingTool.effectiveness
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&effectiveness, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CraftingTool.complexityLevel";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xddc3ab04; //CraftingTool.complexityLevel
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&complexityLevel, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CraftingTool.enabledTabs";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7fe54bab; //CraftingTool.enabledTabs
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<unsigned int> >::toBinaryStream(&enabledTabs, stream);

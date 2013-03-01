@@ -3067,6 +3067,10 @@ DistributedObjectServant* PlayerObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* PlayerObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void PlayerObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -3144,14 +3148,14 @@ void PlayerObjectImplementation::_serializationHelperMethod() {
 void PlayerObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(PlayerObjectImplementation::readObjectMember(stream, _name)) {
+		if(PlayerObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -3160,325 +3164,264 @@ void PlayerObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool PlayerObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (IntangibleObjectImplementation::readObjectMember(stream, _name))
+bool PlayerObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (IntangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "PlayerObject.characterBitmask") {
+	switch(nameHashCode) {
+	case 0x38125d4f: //PlayerObject.characterBitmask
 		TypeInfo<unsigned int >::parseFromBinaryStream(&characterBitmask, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.title") {
+	case 0x3f59dd69: //PlayerObject.title
 		TypeInfo<String >::parseFromBinaryStream(&title, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.savedTerrainName") {
+	case 0x80839c38: //PlayerObject.savedTerrainName
 		TypeInfo<String >::parseFromBinaryStream(&savedTerrainName, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.savedParentID") {
+	case 0x185d8184: //PlayerObject.savedParentID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&savedParentID, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.badges") {
+	case 0xbf409c6b: //PlayerObject.badges
 		TypeInfo<Badges >::parseFromBinaryStream(&badges, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.forcePower") {
+	case 0x6f0f168c: //PlayerObject.forcePower
 		TypeInfo<int >::parseFromBinaryStream(&forcePower, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.forcePowerMax") {
+	case 0x626f8b12: //PlayerObject.forcePowerMax
 		TypeInfo<int >::parseFromBinaryStream(&forcePowerMax, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.forcePowerRegen") {
+	case 0x143d7d89: //PlayerObject.forcePowerRegen
 		TypeInfo<int >::parseFromBinaryStream(&forcePowerRegen, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.foodFilling") {
+	case 0xd9b9f82b: //PlayerObject.foodFilling
 		TypeInfo<int >::parseFromBinaryStream(&foodFilling, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.foodFillingMax") {
+	case 0xa5fa3768: //PlayerObject.foodFillingMax
 		TypeInfo<int >::parseFromBinaryStream(&foodFillingMax, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.drinkFilling") {
+	case 0xe620a523: //PlayerObject.drinkFilling
 		TypeInfo<int >::parseFromBinaryStream(&drinkFilling, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.drinkFillingMax") {
+	case 0x37da084: //PlayerObject.drinkFillingMax
 		TypeInfo<int >::parseFromBinaryStream(&drinkFillingMax, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.starterProfession") {
+	case 0x68888ebc: //PlayerObject.starterProfession
 		TypeInfo<String >::parseFromBinaryStream(&starterProfession, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.bankLocation") {
+	case 0xf7e4755e: //PlayerObject.bankLocation
 		TypeInfo<String >::parseFromBinaryStream(&bankLocation, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.teleporting") {
+	case 0x7a19894f: //PlayerObject.teleporting
 		TypeInfo<bool >::parseFromBinaryStream(&teleporting, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.ownedStructures") {
+	case 0x9151f1d3: //PlayerObject.ownedStructures
 		TypeInfo<SortedVector<unsigned long long> >::parseFromBinaryStream(&ownedStructures, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.ownedVendors") {
+	case 0x3f521607: //PlayerObject.ownedVendors
 		TypeInfo<SortedVector<unsigned long long> >::parseFromBinaryStream(&ownedVendors, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.maximumLots") {
+	case 0x9c2c0c3f: //PlayerObject.maximumLots
 		TypeInfo<byte >::parseFromBinaryStream(&maximumLots, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.jediState") {
+	case 0x39b2b254: //PlayerObject.jediState
 		TypeInfo<int >::parseFromBinaryStream(&jediState, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.adminLevel") {
+	case 0x4d1afa57: //PlayerObject.adminLevel
 		TypeInfo<unsigned int >::parseFromBinaryStream(&adminLevel, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.languageID") {
+	case 0x45728d15: //PlayerObject.languageID
 		TypeInfo<byte >::parseFromBinaryStream(&languageID, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.xpTypeCapList") {
+	case 0x3737ff5f: //PlayerObject.xpTypeCapList
 		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&xpTypeCapList, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.commandMessageStrings") {
+	case 0x890785df: //PlayerObject.commandMessageStrings
 		TypeInfo<VectorMap<unsigned int, String> >::parseFromBinaryStream(&commandMessageStrings, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.experienceList") {
+	case 0x33656264: //PlayerObject.experienceList
 		TypeInfo<DeltaVectorMap<String, int> >::parseFromBinaryStream(&experienceList, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.waypointList") {
+	case 0xbd209913: //PlayerObject.waypointList
 		TypeInfo<WaypointList >::parseFromBinaryStream(&waypointList, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.abilityList") {
+	case 0x56e55cb2: //PlayerObject.abilityList
 		TypeInfo<AbilityList >::parseFromBinaryStream(&abilityList, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.friendList") {
+	case 0xdab57393: //PlayerObject.friendList
 		TypeInfo<FriendList >::parseFromBinaryStream(&friendList, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.ignoreList") {
+	case 0x4d1f2cfe: //PlayerObject.ignoreList
 		TypeInfo<IgnoreList >::parseFromBinaryStream(&ignoreList, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.factionStandingList") {
+	case 0x2ebfed5f: //PlayerObject.factionStandingList
 		TypeInfo<FactionStandingList >::parseFromBinaryStream(&factionStandingList, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.schematicList") {
+	case 0x42645912: //PlayerObject.schematicList
 		TypeInfo<SchematicList >::parseFromBinaryStream(&schematicList, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.incapacitationCounter") {
+	case 0xe067f090: //PlayerObject.incapacitationCounter
 		TypeInfo<byte >::parseFromBinaryStream(&incapacitationCounter, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.suiBoxNextID") {
+	case 0xbdbf961a: //PlayerObject.suiBoxNextID
 		TypeInfo<unsigned int >::parseFromBinaryStream(&suiBoxNextID, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.suiBoxes") {
+	case 0xe7ec84f4: //PlayerObject.suiBoxes
 		TypeInfo<VectorMap<unsigned int, ManagedReference<SuiBox* > > >::parseFromBinaryStream(&suiBoxes, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.chatRooms") {
+	case 0xfddc58de: //PlayerObject.chatRooms
 		TypeInfo<SortedVector<ManagedReference<ChatRoom* > > >::parseFromBinaryStream(&chatRooms, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.bountyLockList") {
+	case 0x7b055758: //PlayerObject.bountyLockList
 		TypeInfo<BountyHunterTefRemovalTaskMap >::parseFromBinaryStream(&bountyLockList, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.declaredResidence") {
+	case 0xa70ae1f1: //PlayerObject.declaredResidence
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&declaredResidence, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.cloningFacility") {
+	case 0xb31847ad: //PlayerObject.cloningFacility
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&cloningFacility, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.persistentMessages") {
+	case 0x1c4c135a: //PlayerObject.persistentMessages
 		TypeInfo<SortedVector<unsigned long long> >::parseFromBinaryStream(&persistentMessages, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.biography") {
+	case 0x8fdcc5fd: //PlayerObject.biography
 		TypeInfo<UnicodeString >::parseFromBinaryStream(&biography, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.consentList") {
+	case 0x2e39a2da: //PlayerObject.consentList
 		TypeInfo<SortedVector<String> >::parseFromBinaryStream(&consentList, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.lastNpcConvoMessage") {
+	case 0x20094ebc: //PlayerObject.lastNpcConvoMessage
 		TypeInfo<String >::parseFromBinaryStream(&lastNpcConvoMessage, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.lastNpcConvo") {
+	case 0x56616dc4: //PlayerObject.lastNpcConvo
 		TypeInfo<String >::parseFromBinaryStream(&lastNpcConvo, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.lastNpcConvoOptions") {
+	case 0x32b94133: //PlayerObject.lastNpcConvoOptions
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&lastNpcConvoOptions, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.conversatingCreature") {
+	case 0x5cd36e0f: //PlayerObject.conversatingCreature
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&conversatingCreature, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.trainerCoordinates") {
+	case 0x755815b3: //PlayerObject.trainerCoordinates
 		TypeInfo<Vector3 >::parseFromBinaryStream(&trainerCoordinates, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.trainerZoneName") {
+	case 0x891a3d47: //PlayerObject.trainerZoneName
 		TypeInfo<String >::parseFromBinaryStream(&trainerZoneName, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.logoutTimeStamp") {
+	case 0x7645c7d6: //PlayerObject.logoutTimeStamp
 		TypeInfo<Time >::parseFromBinaryStream(&logoutTimeStamp, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.onlineStatus") {
+	case 0x377a6e51: //PlayerObject.onlineStatus
 		TypeInfo<int >::parseFromBinaryStream(&onlineStatus, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.skillPoints") {
+	case 0xb10c8ae0: //PlayerObject.skillPoints
 		TypeInfo<int >::parseFromBinaryStream(&skillPoints, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.pvpRating") {
+	case 0xd49b8d6a: //PlayerObject.pvpRating
 		TypeInfo<int >::parseFromBinaryStream(&pvpRating, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.factionStatus") {
+	case 0x1d415d50: //PlayerObject.factionStatus
 		TypeInfo<int >::parseFromBinaryStream(&factionStatus, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.hologrindProfessions") {
+	case 0x908bba87: //PlayerObject.hologrindProfessions
 		TypeInfo<Vector<byte> >::parseFromBinaryStream(&hologrindProfessions, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.clientLastMovementStamp") {
+	case 0x3166ef65: //PlayerObject.clientLastMovementStamp
 		TypeInfo<unsigned int >::parseFromBinaryStream(&clientLastMovementStamp, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.serverLastMovementStamp") {
+	case 0x62284a10: //PlayerObject.serverLastMovementStamp
 		TypeInfo<Time >::parseFromBinaryStream(&serverLastMovementStamp, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.lastValidatedPosition") {
+	case 0x3b3fbd40: //PlayerObject.lastValidatedPosition
 		TypeInfo<ValidatedPosition >::parseFromBinaryStream(&lastValidatedPosition, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.accountID") {
+	case 0x639a0c4f: //PlayerObject.accountID
 		TypeInfo<unsigned int >::parseFromBinaryStream(&accountID, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.raceID") {
+	case 0x33889871: //PlayerObject.raceID
 		TypeInfo<byte >::parseFromBinaryStream(&raceID, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.screenPlayData") {
+	case 0x70fbb795: //PlayerObject.screenPlayData
 		TypeInfo<VectorMap<String, String> >::parseFromBinaryStream(&screenPlayData, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.permissionGroups") {
+	case 0x42257652: //PlayerObject.permissionGroups
 		TypeInfo<SortedVector<String> >::parseFromBinaryStream(&permissionGroups, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.performanceBuffTarget") {
+	case 0xc7d518a7: //PlayerObject.performanceBuffTarget
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&performanceBuffTarget, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.debugOutput") {
+	case 0xf80402e3: //PlayerObject.debugOutput
 		TypeInfo<bool >::parseFromBinaryStream(&debugOutput, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.visibility") {
+	case 0x84d965aa: //PlayerObject.visibility
 		TypeInfo<float >::parseFromBinaryStream(&visibility, stream);
 		return true;
-	}
 
-	if (_name == "PlayerObject.lastVisibilityUpdateTimestamp") {
+	case 0xf2ff7f01: //PlayerObject.lastVisibilityUpdateTimestamp
 		TypeInfo<Time >::parseFromBinaryStream(&lastVisibilityUpdateTimestamp, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -3493,507 +3436,507 @@ void PlayerObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int PlayerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = IntangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "PlayerObject.characterBitmask";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x38125d4f; //PlayerObject.characterBitmask
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&characterBitmask, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.title";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3f59dd69; //PlayerObject.title
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&title, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.savedTerrainName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x80839c38; //PlayerObject.savedTerrainName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&savedTerrainName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.savedParentID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x185d8184; //PlayerObject.savedParentID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&savedParentID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.badges";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbf409c6b; //PlayerObject.badges
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Badges >::toBinaryStream(&badges, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.forcePower";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6f0f168c; //PlayerObject.forcePower
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&forcePower, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.forcePowerMax";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x626f8b12; //PlayerObject.forcePowerMax
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&forcePowerMax, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.forcePowerRegen";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x143d7d89; //PlayerObject.forcePowerRegen
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&forcePowerRegen, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.foodFilling";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd9b9f82b; //PlayerObject.foodFilling
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&foodFilling, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.foodFillingMax";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa5fa3768; //PlayerObject.foodFillingMax
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&foodFillingMax, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.drinkFilling";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe620a523; //PlayerObject.drinkFilling
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&drinkFilling, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.drinkFillingMax";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x37da084; //PlayerObject.drinkFillingMax
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&drinkFillingMax, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.starterProfession";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x68888ebc; //PlayerObject.starterProfession
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&starterProfession, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.bankLocation";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf7e4755e; //PlayerObject.bankLocation
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&bankLocation, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.teleporting";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7a19894f; //PlayerObject.teleporting
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&teleporting, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.ownedStructures";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9151f1d3; //PlayerObject.ownedStructures
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<unsigned long long> >::toBinaryStream(&ownedStructures, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.ownedVendors";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3f521607; //PlayerObject.ownedVendors
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<unsigned long long> >::toBinaryStream(&ownedVendors, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.maximumLots";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9c2c0c3f; //PlayerObject.maximumLots
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&maximumLots, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.jediState";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x39b2b254; //PlayerObject.jediState
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&jediState, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.adminLevel";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4d1afa57; //PlayerObject.adminLevel
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&adminLevel, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.languageID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x45728d15; //PlayerObject.languageID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&languageID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.xpTypeCapList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3737ff5f; //PlayerObject.xpTypeCapList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<String, int> >::toBinaryStream(&xpTypeCapList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.commandMessageStrings";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x890785df; //PlayerObject.commandMessageStrings
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<unsigned int, String> >::toBinaryStream(&commandMessageStrings, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.experienceList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x33656264; //PlayerObject.experienceList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<DeltaVectorMap<String, int> >::toBinaryStream(&experienceList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.waypointList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbd209913; //PlayerObject.waypointList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<WaypointList >::toBinaryStream(&waypointList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.abilityList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x56e55cb2; //PlayerObject.abilityList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<AbilityList >::toBinaryStream(&abilityList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.friendList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xdab57393; //PlayerObject.friendList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<FriendList >::toBinaryStream(&friendList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.ignoreList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4d1f2cfe; //PlayerObject.ignoreList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<IgnoreList >::toBinaryStream(&ignoreList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.factionStandingList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2ebfed5f; //PlayerObject.factionStandingList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<FactionStandingList >::toBinaryStream(&factionStandingList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.schematicList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x42645912; //PlayerObject.schematicList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SchematicList >::toBinaryStream(&schematicList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.incapacitationCounter";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe067f090; //PlayerObject.incapacitationCounter
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&incapacitationCounter, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.suiBoxNextID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbdbf961a; //PlayerObject.suiBoxNextID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&suiBoxNextID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.suiBoxes";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe7ec84f4; //PlayerObject.suiBoxes
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<unsigned int, ManagedReference<SuiBox* > > >::toBinaryStream(&suiBoxes, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.chatRooms";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfddc58de; //PlayerObject.chatRooms
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<ChatRoom* > > >::toBinaryStream(&chatRooms, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.bountyLockList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7b055758; //PlayerObject.bountyLockList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<BountyHunterTefRemovalTaskMap >::toBinaryStream(&bountyLockList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.declaredResidence";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa70ae1f1; //PlayerObject.declaredResidence
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&declaredResidence, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.cloningFacility";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb31847ad; //PlayerObject.cloningFacility
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&cloningFacility, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.persistentMessages";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1c4c135a; //PlayerObject.persistentMessages
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<unsigned long long> >::toBinaryStream(&persistentMessages, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.biography";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8fdcc5fd; //PlayerObject.biography
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<UnicodeString >::toBinaryStream(&biography, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.consentList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2e39a2da; //PlayerObject.consentList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<String> >::toBinaryStream(&consentList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.lastNpcConvoMessage";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x20094ebc; //PlayerObject.lastNpcConvoMessage
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&lastNpcConvoMessage, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.lastNpcConvo";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x56616dc4; //PlayerObject.lastNpcConvo
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&lastNpcConvo, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.lastNpcConvoOptions";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x32b94133; //PlayerObject.lastNpcConvoOptions
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&lastNpcConvoOptions, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.conversatingCreature";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5cd36e0f; //PlayerObject.conversatingCreature
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&conversatingCreature, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.trainerCoordinates";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x755815b3; //PlayerObject.trainerCoordinates
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector3 >::toBinaryStream(&trainerCoordinates, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.trainerZoneName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x891a3d47; //PlayerObject.trainerZoneName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&trainerZoneName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.logoutTimeStamp";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7645c7d6; //PlayerObject.logoutTimeStamp
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&logoutTimeStamp, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.onlineStatus";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x377a6e51; //PlayerObject.onlineStatus
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&onlineStatus, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.skillPoints";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb10c8ae0; //PlayerObject.skillPoints
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&skillPoints, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.pvpRating";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd49b8d6a; //PlayerObject.pvpRating
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&pvpRating, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.factionStatus";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1d415d50; //PlayerObject.factionStatus
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&factionStatus, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.hologrindProfessions";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x908bba87; //PlayerObject.hologrindProfessions
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<byte> >::toBinaryStream(&hologrindProfessions, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.clientLastMovementStamp";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3166ef65; //PlayerObject.clientLastMovementStamp
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&clientLastMovementStamp, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.serverLastMovementStamp";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x62284a10; //PlayerObject.serverLastMovementStamp
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&serverLastMovementStamp, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.lastValidatedPosition";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3b3fbd40; //PlayerObject.lastValidatedPosition
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ValidatedPosition >::toBinaryStream(&lastValidatedPosition, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.accountID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x639a0c4f; //PlayerObject.accountID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&accountID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.raceID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x33889871; //PlayerObject.raceID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&raceID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.screenPlayData";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x70fbb795; //PlayerObject.screenPlayData
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<String, String> >::toBinaryStream(&screenPlayData, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.permissionGroups";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x42257652; //PlayerObject.permissionGroups
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<String> >::toBinaryStream(&permissionGroups, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.performanceBuffTarget";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc7d518a7; //PlayerObject.performanceBuffTarget
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&performanceBuffTarget, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.debugOutput";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf80402e3; //PlayerObject.debugOutput
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&debugOutput, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.visibility";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x84d965aa; //PlayerObject.visibility
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&visibility, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerObject.lastVisibilityUpdateTimestamp";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf2ff7f01; //PlayerObject.lastVisibilityUpdateTimestamp
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&lastVisibilityUpdateTimestamp, stream);

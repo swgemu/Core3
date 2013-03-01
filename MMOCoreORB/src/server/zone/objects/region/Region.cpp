@@ -151,6 +151,10 @@ DistributedObjectServant* Region::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* Region::_getImplementationForRead() {
+	return _impl;
+}
+
 void Region::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -230,14 +234,14 @@ void RegionImplementation::_serializationHelperMethod() {
 void RegionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(RegionImplementation::readObjectMember(stream, _name)) {
+		if(RegionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -246,15 +250,16 @@ void RegionImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool RegionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ActiveAreaImplementation::readObjectMember(stream, _name))
+bool RegionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ActiveAreaImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "Region.cityRegion") {
+	switch(nameHashCode) {
+	case 0xdcbf57b1: //Region.cityRegion
 		TypeInfo<ManagedWeakReference<CityRegion* > >::parseFromBinaryStream(&cityRegion, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -269,11 +274,11 @@ void RegionImplementation::writeObject(ObjectOutputStream* stream) {
 int RegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ActiveAreaImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "Region.cityRegion";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xdcbf57b1; //Region.cityRegion
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<CityRegion* > >::toBinaryStream(&cityRegion, stream);

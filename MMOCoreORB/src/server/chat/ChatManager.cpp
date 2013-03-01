@@ -612,6 +612,10 @@ DistributedObjectServant* ChatManager::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ChatManager::_getImplementationForRead() {
+	return _impl;
+}
+
 void ChatManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -689,14 +693,14 @@ void ChatManagerImplementation::_serializationHelperMethod() {
 void ChatManagerImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ChatManagerImplementation::readObjectMember(stream, _name)) {
+		if(ChatManagerImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -705,45 +709,40 @@ void ChatManagerImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ChatManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedServiceImplementation::readObjectMember(stream, _name))
+bool ChatManagerImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedServiceImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "ChatManager.server") {
+	switch(nameHashCode) {
+	case 0x839fbd3c: //ChatManager.server
 		TypeInfo<ManagedReference<ZoneServer* > >::parseFromBinaryStream(&server, stream);
 		return true;
-	}
 
-	if (_name == "ChatManager.playerManager") {
+	case 0x708e5b17: //ChatManager.playerManager
 		TypeInfo<ManagedReference<PlayerManager* > >::parseFromBinaryStream(&playerManager, stream);
 		return true;
-	}
 
-	if (_name == "ChatManager.gameRooms") {
+	case 0x6afdf8fc: //ChatManager.gameRooms
 		TypeInfo<VectorMap<String, ManagedReference<ChatRoom* > > >::parseFromBinaryStream(&gameRooms, stream);
 		return true;
-	}
 
-	if (_name == "ChatManager.groupRoom") {
+	case 0x6b52e56: //ChatManager.groupRoom
 		TypeInfo<ManagedReference<ChatRoom* > >::parseFromBinaryStream(&groupRoom, stream);
 		return true;
-	}
 
-	if (_name == "ChatManager.guildRoom") {
+	case 0xf02c6946: //ChatManager.guildRoom
 		TypeInfo<ManagedReference<ChatRoom* > >::parseFromBinaryStream(&guildRoom, stream);
 		return true;
-	}
 
-	if (_name == "ChatManager.roomID") {
+	case 0xd57f367d: //ChatManager.roomID
 		TypeInfo<unsigned int >::parseFromBinaryStream(&roomID, stream);
 		return true;
-	}
 
-	if (_name == "ChatManager.mute") {
+	case 0xaa079cc4: //ChatManager.mute
 		TypeInfo<bool >::parseFromBinaryStream(&mute, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -758,59 +757,59 @@ void ChatManagerImplementation::writeObject(ObjectOutputStream* stream) {
 int ChatManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "ChatManager.server";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x839fbd3c; //ChatManager.server
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<ZoneServer* > >::toBinaryStream(&server, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ChatManager.playerManager";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x708e5b17; //ChatManager.playerManager
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<PlayerManager* > >::toBinaryStream(&playerManager, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ChatManager.gameRooms";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6afdf8fc; //ChatManager.gameRooms
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<String, ManagedReference<ChatRoom* > > >::toBinaryStream(&gameRooms, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ChatManager.groupRoom";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6b52e56; //ChatManager.groupRoom
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<ChatRoom* > >::toBinaryStream(&groupRoom, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ChatManager.guildRoom";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf02c6946; //ChatManager.guildRoom
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<ChatRoom* > >::toBinaryStream(&guildRoom, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ChatManager.roomID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd57f367d; //ChatManager.roomID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&roomID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ChatManager.mute";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xaa079cc4; //ChatManager.mute
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&mute, stream);

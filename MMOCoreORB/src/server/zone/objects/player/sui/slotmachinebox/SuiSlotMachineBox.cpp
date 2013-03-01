@@ -53,6 +53,10 @@ DistributedObjectServant* SuiSlotMachineBox::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* SuiSlotMachineBox::_getImplementationForRead() {
+	return _impl;
+}
+
 void SuiSlotMachineBox::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -132,14 +136,14 @@ void SuiSlotMachineBoxImplementation::_serializationHelperMethod() {
 void SuiSlotMachineBoxImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(SuiSlotMachineBoxImplementation::readObjectMember(stream, _name)) {
+		if(SuiSlotMachineBoxImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -148,15 +152,16 @@ void SuiSlotMachineBoxImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool SuiSlotMachineBoxImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (SuiListBoxImplementation::readObjectMember(stream, _name))
+bool SuiSlotMachineBoxImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (SuiListBoxImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "SuiSlotMachineBox.payoutBoxID") {
+	switch(nameHashCode) {
+	case 0xb660d76c: //SuiSlotMachineBox.payoutBoxID
 		TypeInfo<unsigned int >::parseFromBinaryStream(&payoutBoxID, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -171,11 +176,11 @@ void SuiSlotMachineBoxImplementation::writeObject(ObjectOutputStream* stream) {
 int SuiSlotMachineBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = SuiListBoxImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "SuiSlotMachineBox.payoutBoxID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb660d76c; //SuiSlotMachineBox.payoutBoxID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&payoutBoxID, stream);

@@ -208,6 +208,10 @@ DistributedObjectServant* TicketObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* TicketObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void TicketObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -287,14 +291,14 @@ void TicketObjectImplementation::_serializationHelperMethod() {
 void TicketObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(TicketObjectImplementation::readObjectMember(stream, _name)) {
+		if(TicketObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -303,30 +307,28 @@ void TicketObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool TicketObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool TicketObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "TicketObject.departurePlanet") {
+	switch(nameHashCode) {
+	case 0x84d97799: //TicketObject.departurePlanet
 		TypeInfo<String >::parseFromBinaryStream(&departurePlanet, stream);
 		return true;
-	}
 
-	if (_name == "TicketObject.departurePoint") {
+	case 0xf6b51586: //TicketObject.departurePoint
 		TypeInfo<String >::parseFromBinaryStream(&departurePoint, stream);
 		return true;
-	}
 
-	if (_name == "TicketObject.arrivalPlanet") {
+	case 0x1dd9757f: //TicketObject.arrivalPlanet
 		TypeInfo<String >::parseFromBinaryStream(&arrivalPlanet, stream);
 		return true;
-	}
 
-	if (_name == "TicketObject.arrivalPoint") {
+	case 0x2f1f473f: //TicketObject.arrivalPoint
 		TypeInfo<String >::parseFromBinaryStream(&arrivalPoint, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -341,35 +343,35 @@ void TicketObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int TicketObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "TicketObject.departurePlanet";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x84d97799; //TicketObject.departurePlanet
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&departurePlanet, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TicketObject.departurePoint";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf6b51586; //TicketObject.departurePoint
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&departurePoint, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TicketObject.arrivalPlanet";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1dd9757f; //TicketObject.arrivalPlanet
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&arrivalPlanet, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TicketObject.arrivalPoint";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2f1f473f; //TicketObject.arrivalPoint
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&arrivalPoint, stream);

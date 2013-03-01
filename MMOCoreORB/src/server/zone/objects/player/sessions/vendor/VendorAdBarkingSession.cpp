@@ -169,6 +169,10 @@ DistributedObjectServant* VendorAdBarkingSession::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* VendorAdBarkingSession::_getImplementationForRead() {
+	return _impl;
+}
+
 void VendorAdBarkingSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -248,14 +252,14 @@ void VendorAdBarkingSessionImplementation::_serializationHelperMethod() {
 void VendorAdBarkingSessionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(VendorAdBarkingSessionImplementation::readObjectMember(stream, _name)) {
+		if(VendorAdBarkingSessionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -264,25 +268,24 @@ void VendorAdBarkingSessionImplementation::readObject(ObjectInputStream* stream)
 	initializeTransientMembers();
 }
 
-bool VendorAdBarkingSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (FacadeImplementation::readObjectMember(stream, _name))
+bool VendorAdBarkingSessionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (FacadeImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "VendorAdBarkingSession.owner") {
+	switch(nameHashCode) {
+	case 0x15d0741d: //VendorAdBarkingSession.owner
 		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&owner, stream);
 		return true;
-	}
 
-	if (_name == "VendorAdBarkingSession.vendor") {
+	case 0xba7c32f3: //VendorAdBarkingSession.vendor
 		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&vendor, stream);
 		return true;
-	}
 
-	if (_name == "VendorAdBarkingSession.advertisingMod") {
+	case 0xfdc5b7b0: //VendorAdBarkingSession.advertisingMod
 		TypeInfo<int >::parseFromBinaryStream(&advertisingMod, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -297,27 +300,27 @@ void VendorAdBarkingSessionImplementation::writeObject(ObjectOutputStream* strea
 int VendorAdBarkingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = FacadeImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "VendorAdBarkingSession.owner";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x15d0741d; //VendorAdBarkingSession.owner
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&owner, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "VendorAdBarkingSession.vendor";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xba7c32f3; //VendorAdBarkingSession.vendor
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&vendor, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "VendorAdBarkingSession.advertisingMod";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfdc5b7b0; //VendorAdBarkingSession.advertisingMod
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&advertisingMod, stream);

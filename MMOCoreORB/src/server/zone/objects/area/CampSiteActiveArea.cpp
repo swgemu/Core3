@@ -348,6 +348,10 @@ DistributedObjectServant* CampSiteActiveArea::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* CampSiteActiveArea::_getImplementationForRead() {
+	return _impl;
+}
+
 void CampSiteActiveArea::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -427,14 +431,14 @@ void CampSiteActiveAreaImplementation::_serializationHelperMethod() {
 void CampSiteActiveAreaImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(CampSiteActiveAreaImplementation::readObjectMember(stream, _name)) {
+		if(CampSiteActiveAreaImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -443,45 +447,40 @@ void CampSiteActiveAreaImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool CampSiteActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ActiveAreaImplementation::readObjectMember(stream, _name))
+bool CampSiteActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ActiveAreaImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "CampSiteActiveArea.camp") {
+	switch(nameHashCode) {
+	case 0x4aeb189c: //CampSiteActiveArea.camp
 		TypeInfo<ManagedReference<StructureObject* > >::parseFromBinaryStream(&camp, stream);
 		return true;
-	}
 
-	if (_name == "CampSiteActiveArea.terminal") {
+	case 0x6f2f4a9c: //CampSiteActiveArea.terminal
 		TypeInfo<ManagedReference<Terminal* > >::parseFromBinaryStream(&terminal, stream);
 		return true;
-	}
 
-	if (_name == "CampSiteActiveArea.campObserver") {
+	case 0x422d5a82: //CampSiteActiveArea.campObserver
 		TypeInfo<ManagedReference<CampSiteObserver* > >::parseFromBinaryStream(&campObserver, stream);
 		return true;
-	}
 
-	if (_name == "CampSiteActiveArea.abandonTask") {
+	case 0x44dee8b0: //CampSiteActiveArea.abandonTask
 		TypeInfo<Reference<CampAbandonTask* > >::parseFromBinaryStream(&abandonTask, stream);
 		return true;
-	}
 
-	if (_name == "CampSiteActiveArea.despawnTask") {
+	case 0x9d2d9a9e: //CampSiteActiveArea.despawnTask
 		TypeInfo<Reference<CampDespawnTask* > >::parseFromBinaryStream(&despawnTask, stream);
 		return true;
-	}
 
-	if (_name == "CampSiteActiveArea.campOwner") {
+	case 0x13c34b78: //CampSiteActiveArea.campOwner
 		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&campOwner, stream);
 		return true;
-	}
 
-	if (_name == "CampSiteActiveArea.campStructureData") {
+	case 0x8a53b98c: //CampSiteActiveArea.campStructureData
 		TypeInfo<TemplateReference<CampStructureTemplate*> >::parseFromBinaryStream(&campStructureData, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -496,59 +495,59 @@ void CampSiteActiveAreaImplementation::writeObject(ObjectOutputStream* stream) {
 int CampSiteActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ActiveAreaImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "CampSiteActiveArea.camp";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4aeb189c; //CampSiteActiveArea.camp
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<StructureObject* > >::toBinaryStream(&camp, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CampSiteActiveArea.terminal";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6f2f4a9c; //CampSiteActiveArea.terminal
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<Terminal* > >::toBinaryStream(&terminal, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CampSiteActiveArea.campObserver";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x422d5a82; //CampSiteActiveArea.campObserver
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<CampSiteObserver* > >::toBinaryStream(&campObserver, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CampSiteActiveArea.abandonTask";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x44dee8b0; //CampSiteActiveArea.abandonTask
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Reference<CampAbandonTask* > >::toBinaryStream(&abandonTask, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CampSiteActiveArea.despawnTask";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9d2d9a9e; //CampSiteActiveArea.despawnTask
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Reference<CampDespawnTask* > >::toBinaryStream(&despawnTask, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CampSiteActiveArea.campOwner";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x13c34b78; //CampSiteActiveArea.campOwner
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&campOwner, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CampSiteActiveArea.campStructureData";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8a53b98c; //CampSiteActiveArea.campStructureData
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<TemplateReference<CampStructureTemplate*> >::toBinaryStream(&campStructureData, stream);

@@ -1340,6 +1340,10 @@ DistributedObjectServant* AiAgent::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* AiAgent::_getImplementationForRead() {
+	return _impl;
+}
+
 void AiAgent::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -1417,14 +1421,14 @@ void AiAgentImplementation::_serializationHelperMethod() {
 void AiAgentImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(AiAgentImplementation::readObjectMember(stream, _name)) {
+		if(AiAgentImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -1433,95 +1437,80 @@ void AiAgentImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool AiAgentImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (CreatureObjectImplementation::readObjectMember(stream, _name))
+bool AiAgentImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (CreatureObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "AiAgent.skillCommands") {
+	switch(nameHashCode) {
+	case 0xbf666870: //AiAgent.skillCommands
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&skillCommands, stream);
 		return true;
-	}
 
-	if (_name == "AiAgent.patrolPoints") {
+	case 0x5f95ada4: //AiAgent.patrolPoints
 		TypeInfo<PatrolPointsVector >::parseFromBinaryStream(&patrolPoints, stream);
 		return true;
-	}
 
-	if (_name == "AiAgent.homeLocation") {
+	case 0xfb85e64b: //AiAgent.homeLocation
 		TypeInfo<PatrolPoint >::parseFromBinaryStream(&homeLocation, stream);
 		return true;
-	}
 
-	if (_name == "AiAgent.nextStepPosition") {
+	case 0xe343255e: //AiAgent.nextStepPosition
 		TypeInfo<PatrolPoint >::parseFromBinaryStream(&nextStepPosition, stream);
 		return true;
-	}
 
-	if (_name == "AiAgent.weapons") {
+	case 0xcc3155bc: //AiAgent.weapons
 		TypeInfo<Vector<ManagedReference<WeaponObject* > > >::parseFromBinaryStream(&weapons, stream);
 		return true;
-	}
 
-	if (_name == "AiAgent.camouflagedObjects") {
+	case 0x91efd8c5: //AiAgent.camouflagedObjects
 		TypeInfo<Vector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&camouflagedObjects, stream);
 		return true;
-	}
 
-	if (_name == "AiAgent.npcTemplate") {
+	case 0x3ce94741: //AiAgent.npcTemplate
 		TypeInfo<CreatureTemplateReference >::parseFromBinaryStream(&npcTemplate, stream);
 		return true;
-	}
 
-	if (_name == "AiAgent.baby") {
+	case 0x584c56aa: //AiAgent.baby
 		TypeInfo<bool >::parseFromBinaryStream(&baby, stream);
 		return true;
-	}
 
-	if (_name == "AiAgent.showNextMovementPosition") {
+	case 0x903a02dc: //AiAgent.showNextMovementPosition
 		TypeInfo<bool >::parseFromBinaryStream(&showNextMovementPosition, stream);
 		return true;
-	}
 
-	if (_name == "AiAgent.movementMarkers") {
+	case 0x35937577: //AiAgent.movementMarkers
 		TypeInfo<Vector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&movementMarkers, stream);
 		return true;
-	}
 
-	if (_name == "AiAgent.despawnOnNoPlayerInRange") {
+	case 0x9ad20484: //AiAgent.despawnOnNoPlayerInRange
 		TypeInfo<bool >::parseFromBinaryStream(&despawnOnNoPlayerInRange, stream);
 		return true;
-	}
 
-	if (_name == "AiAgent.followObject") {
+	case 0x63fb116c: //AiAgent.followObject
 		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&followObject, stream);
 		return true;
-	}
 
-	if (_name == "AiAgent.followState") {
+	case 0x4454ba1b: //AiAgent.followState
 		TypeInfo<unsigned int >::parseFromBinaryStream(&followState, stream);
 		return true;
-	}
 
-	if (_name == "AiAgent.fleeing") {
+	case 0x8bc292f5: //AiAgent.fleeing
 		TypeInfo<bool >::parseFromBinaryStream(&fleeing, stream);
 		return true;
-	}
 
-	if (_name == "AiAgent.respawnTimer") {
+	case 0x1bd8778f: //AiAgent.respawnTimer
 		TypeInfo<float >::parseFromBinaryStream(&respawnTimer, stream);
 		return true;
-	}
 
-	if (_name == "AiAgent.numberOfPlayersInRange") {
+	case 0x4804fb0: //AiAgent.numberOfPlayersInRange
 		TypeInfo<int >::parseFromBinaryStream(&numberOfPlayersInRange, stream);
 		return true;
-	}
 
-	if (_name == "AiAgent.loadedOutfit") {
+	case 0x8b8554f8: //AiAgent.loadedOutfit
 		TypeInfo<bool >::parseFromBinaryStream(&loadedOutfit, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -1536,139 +1525,139 @@ void AiAgentImplementation::writeObject(ObjectOutputStream* stream) {
 int AiAgentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = CreatureObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "AiAgent.skillCommands";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbf666870; //AiAgent.skillCommands
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&skillCommands, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiAgent.patrolPoints";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5f95ada4; //AiAgent.patrolPoints
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<PatrolPointsVector >::toBinaryStream(&patrolPoints, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiAgent.homeLocation";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfb85e64b; //AiAgent.homeLocation
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<PatrolPoint >::toBinaryStream(&homeLocation, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiAgent.nextStepPosition";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe343255e; //AiAgent.nextStepPosition
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<PatrolPoint >::toBinaryStream(&nextStepPosition, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiAgent.weapons";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xcc3155bc; //AiAgent.weapons
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<ManagedReference<WeaponObject* > > >::toBinaryStream(&weapons, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiAgent.camouflagedObjects";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x91efd8c5; //AiAgent.camouflagedObjects
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<ManagedReference<SceneObject* > > >::toBinaryStream(&camouflagedObjects, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiAgent.npcTemplate";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3ce94741; //AiAgent.npcTemplate
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<CreatureTemplateReference >::toBinaryStream(&npcTemplate, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiAgent.baby";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x584c56aa; //AiAgent.baby
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&baby, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiAgent.showNextMovementPosition";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x903a02dc; //AiAgent.showNextMovementPosition
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&showNextMovementPosition, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiAgent.movementMarkers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x35937577; //AiAgent.movementMarkers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<ManagedReference<SceneObject* > > >::toBinaryStream(&movementMarkers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiAgent.despawnOnNoPlayerInRange";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9ad20484; //AiAgent.despawnOnNoPlayerInRange
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&despawnOnNoPlayerInRange, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiAgent.followObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x63fb116c; //AiAgent.followObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&followObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiAgent.followState";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4454ba1b; //AiAgent.followState
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&followState, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiAgent.fleeing";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8bc292f5; //AiAgent.fleeing
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&fleeing, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiAgent.respawnTimer";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1bd8778f; //AiAgent.respawnTimer
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&respawnTimer, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiAgent.numberOfPlayersInRange";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4804fb0; //AiAgent.numberOfPlayersInRange
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&numberOfPlayersInRange, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "AiAgent.loadedOutfit";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8b8554f8; //AiAgent.loadedOutfit
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&loadedOutfit, stream);
@@ -2098,7 +2087,6 @@ CreatureTemplate* AiAgentImplementation::getCreatureTemplate() {
 	// server/zone/objects/creature/AiAgent.idl():  		return npcTemplate.get();
 	return (&npcTemplate)->get();
 }
-
 
 void AiAgentImplementation::setShowNextPosition(bool val) {
 	// server/zone/objects/creature/AiAgent.idl():  		showNextMovementPosition = val;

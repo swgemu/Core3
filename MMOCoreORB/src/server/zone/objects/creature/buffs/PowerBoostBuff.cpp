@@ -120,6 +120,10 @@ DistributedObjectServant* PowerBoostBuff::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* PowerBoostBuff::_getImplementationForRead() {
+	return _impl;
+}
+
 void PowerBoostBuff::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -199,14 +203,14 @@ void PowerBoostBuffImplementation::_serializationHelperMethod() {
 void PowerBoostBuffImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(PowerBoostBuffImplementation::readObjectMember(stream, _name)) {
+		if(PowerBoostBuffImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -215,35 +219,32 @@ void PowerBoostBuffImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool PowerBoostBuffImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (BuffImplementation::readObjectMember(stream, _name))
+bool PowerBoostBuffImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (BuffImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "PowerBoostBuff.pbBonus") {
+	switch(nameHashCode) {
+	case 0xfce517f3: //PowerBoostBuff.pbBonus
 		TypeInfo<int >::parseFromBinaryStream(&pbBonus, stream);
 		return true;
-	}
 
-	if (_name == "PowerBoostBuff.pbTick") {
+	case 0x25a9608a: //PowerBoostBuff.pbTick
 		TypeInfo<int >::parseFromBinaryStream(&pbTick, stream);
 		return true;
-	}
 
-	if (_name == "PowerBoostBuff.time") {
+	case 0xad0c03d4: //PowerBoostBuff.time
 		TypeInfo<int >::parseFromBinaryStream(&time, stream);
 		return true;
-	}
 
-	if (_name == "PowerBoostBuff.counter") {
+	case 0xc6f1c6b6: //PowerBoostBuff.counter
 		TypeInfo<int >::parseFromBinaryStream(&counter, stream);
 		return true;
-	}
 
-	if (_name == "PowerBoostBuff.nextTickTime") {
+	case 0x6fc704f8: //PowerBoostBuff.nextTickTime
 		TypeInfo<Time >::parseFromBinaryStream(&nextTickTime, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -258,43 +259,43 @@ void PowerBoostBuffImplementation::writeObject(ObjectOutputStream* stream) {
 int PowerBoostBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = BuffImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "PowerBoostBuff.pbBonus";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfce517f3; //PowerBoostBuff.pbBonus
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&pbBonus, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PowerBoostBuff.pbTick";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x25a9608a; //PowerBoostBuff.pbTick
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&pbTick, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PowerBoostBuff.time";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xad0c03d4; //PowerBoostBuff.time
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&time, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PowerBoostBuff.counter";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc6f1c6b6; //PowerBoostBuff.counter
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&counter, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PowerBoostBuff.nextTickTime";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6fc704f8; //PowerBoostBuff.nextTickTime
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&nextTickTime, stream);

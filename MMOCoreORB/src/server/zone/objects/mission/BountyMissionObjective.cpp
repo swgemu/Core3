@@ -282,6 +282,10 @@ DistributedObjectServant* BountyMissionObjective::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* BountyMissionObjective::_getImplementationForRead() {
+	return _impl;
+}
+
 void BountyMissionObjective::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -359,14 +363,14 @@ void BountyMissionObjectiveImplementation::_serializationHelperMethod() {
 void BountyMissionObjectiveImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(BountyMissionObjectiveImplementation::readObjectMember(stream, _name)) {
+		if(BountyMissionObjectiveImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -375,45 +379,40 @@ void BountyMissionObjectiveImplementation::readObject(ObjectInputStream* stream)
 	initializeTransientMembers();
 }
 
-bool BountyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (MissionObjectiveImplementation::readObjectMember(stream, _name))
+bool BountyMissionObjectiveImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (MissionObjectiveImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "BountyMissionObjective.npcTemplateToSpawn") {
+	switch(nameHashCode) {
+	case 0x4bf81bbc: //BountyMissionObjective.npcTemplateToSpawn
 		TypeInfo<TemplateReference<SharedObjectTemplate*> >::parseFromBinaryStream(&npcTemplateToSpawn, stream);
 		return true;
-	}
 
-	if (_name == "BountyMissionObjective.npcTarget") {
+	case 0x2517f072: //BountyMissionObjective.npcTarget
 		TypeInfo<ManagedReference<AiAgent* > >::parseFromBinaryStream(&npcTarget, stream);
 		return true;
-	}
 
-	if (_name == "BountyMissionObjective.objectiveStatus") {
+	case 0x7c00639b: //BountyMissionObjective.objectiveStatus
 		TypeInfo<int >::parseFromBinaryStream(&objectiveStatus, stream);
 		return true;
-	}
 
-	if (_name == "BountyMissionObjective.activeDroid") {
+	case 0xf338af2e: //BountyMissionObjective.activeDroid
 		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&activeDroid, stream);
 		return true;
-	}
 
-	if (_name == "BountyMissionObjective.droid") {
+	case 0xc6b4c70: //BountyMissionObjective.droid
 		TypeInfo<Reference<BountyHunterDroid* > >::parseFromBinaryStream(&droid, stream);
 		return true;
-	}
 
-	if (_name == "BountyMissionObjective.droidTasks") {
+	case 0x11ba3975: //BountyMissionObjective.droidTasks
 		TypeInfo<FindTargetTaskList >::parseFromBinaryStream(&droidTasks, stream);
 		return true;
-	}
 
-	if (_name == "BountyMissionObjective.targetTask") {
+	case 0xe3963a2a: //BountyMissionObjective.targetTask
 		TypeInfo<Reference<BountyHunterTargetTask* > >::parseFromBinaryStream(&targetTask, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -428,59 +427,59 @@ void BountyMissionObjectiveImplementation::writeObject(ObjectOutputStream* strea
 int BountyMissionObjectiveImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = MissionObjectiveImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "BountyMissionObjective.npcTemplateToSpawn";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4bf81bbc; //BountyMissionObjective.npcTemplateToSpawn
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<TemplateReference<SharedObjectTemplate*> >::toBinaryStream(&npcTemplateToSpawn, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "BountyMissionObjective.npcTarget";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2517f072; //BountyMissionObjective.npcTarget
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<AiAgent* > >::toBinaryStream(&npcTarget, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "BountyMissionObjective.objectiveStatus";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7c00639b; //BountyMissionObjective.objectiveStatus
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&objectiveStatus, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "BountyMissionObjective.activeDroid";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf338af2e; //BountyMissionObjective.activeDroid
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&activeDroid, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "BountyMissionObjective.droid";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc6b4c70; //BountyMissionObjective.droid
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Reference<BountyHunterDroid* > >::toBinaryStream(&droid, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "BountyMissionObjective.droidTasks";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x11ba3975; //BountyMissionObjective.droidTasks
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<FindTargetTaskList >::toBinaryStream(&droidTasks, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "BountyMissionObjective.targetTask";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe3963a2a; //BountyMissionObjective.targetTask
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Reference<BountyHunterTargetTask* > >::toBinaryStream(&targetTask, stream);

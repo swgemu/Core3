@@ -133,6 +133,10 @@ DistributedObjectServant* FishObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* FishObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void FishObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -212,14 +216,14 @@ void FishObjectImplementation::_serializationHelperMethod() {
 void FishObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(FishObjectImplementation::readObjectMember(stream, _name)) {
+		if(FishObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -228,30 +232,28 @@ void FishObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool FishObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool FishObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "FishObject.player") {
+	switch(nameHashCode) {
+	case 0xe1441c39: //FishObject.player
 		TypeInfo<String >::parseFromBinaryStream(&player, stream);
 		return true;
-	}
 
-	if (_name == "FishObject.zoneName") {
+	case 0x9685c462: //FishObject.zoneName
 		TypeInfo<String >::parseFromBinaryStream(&zoneName, stream);
 		return true;
-	}
 
-	if (_name == "FishObject.timeCaught") {
+	case 0x59b010dd: //FishObject.timeCaught
 		TypeInfo<String >::parseFromBinaryStream(&timeCaught, stream);
 		return true;
-	}
 
-	if (_name == "FishObject.length") {
+	case 0xb9269ef7: //FishObject.length
 		TypeInfo<float >::parseFromBinaryStream(&length, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -266,35 +268,35 @@ void FishObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int FishObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "FishObject.player";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe1441c39; //FishObject.player
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&player, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FishObject.zoneName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9685c462; //FishObject.zoneName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&zoneName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FishObject.timeCaught";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x59b010dd; //FishObject.timeCaught
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&timeCaught, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FishObject.length";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb9269ef7; //FishObject.length
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&length, stream);

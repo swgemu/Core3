@@ -101,6 +101,10 @@ DistributedObjectServant* GeneratorObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* GeneratorObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void GeneratorObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -180,14 +184,14 @@ void GeneratorObjectImplementation::_serializationHelperMethod() {
 void GeneratorObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(GeneratorObjectImplementation::readObjectMember(stream, _name)) {
+		if(GeneratorObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -196,10 +200,12 @@ void GeneratorObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool GeneratorObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (InstallationObjectImplementation::readObjectMember(stream, _name))
+bool GeneratorObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (InstallationObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -214,7 +220,7 @@ void GeneratorObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int GeneratorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = InstallationObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

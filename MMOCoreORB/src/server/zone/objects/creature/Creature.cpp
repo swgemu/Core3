@@ -398,6 +398,10 @@ DistributedObjectServant* Creature::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* Creature::_getImplementationForRead() {
+	return _impl;
+}
+
 void Creature::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -477,14 +481,14 @@ void CreatureImplementation::_serializationHelperMethod() {
 void CreatureImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(CreatureImplementation::readObjectMember(stream, _name)) {
+		if(CreatureImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -493,15 +497,16 @@ void CreatureImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool CreatureImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (AiAgentImplementation::readObjectMember(stream, _name))
+bool CreatureImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (AiAgentImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "Creature.alreadyMilked") {
+	switch(nameHashCode) {
+	case 0x5f6547f6: //Creature.alreadyMilked
 		TypeInfo<bool >::parseFromBinaryStream(&alreadyMilked, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -516,11 +521,11 @@ void CreatureImplementation::writeObject(ObjectOutputStream* stream) {
 int CreatureImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = AiAgentImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "Creature.alreadyMilked";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5f6547f6; //Creature.alreadyMilked
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&alreadyMilked, stream);

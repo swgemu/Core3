@@ -49,6 +49,10 @@ DistributedObjectServant* SpaceshipTerminal::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* SpaceshipTerminal::_getImplementationForRead() {
+	return _impl;
+}
+
 void SpaceshipTerminal::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -128,14 +132,14 @@ void SpaceshipTerminalImplementation::_serializationHelperMethod() {
 void SpaceshipTerminalImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(SpaceshipTerminalImplementation::readObjectMember(stream, _name)) {
+		if(SpaceshipTerminalImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -144,10 +148,12 @@ void SpaceshipTerminalImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool SpaceshipTerminalImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TerminalImplementation::readObjectMember(stream, _name))
+bool SpaceshipTerminalImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TerminalImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -162,7 +168,7 @@ void SpaceshipTerminalImplementation::writeObject(ObjectOutputStream* stream) {
 int SpaceshipTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TerminalImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

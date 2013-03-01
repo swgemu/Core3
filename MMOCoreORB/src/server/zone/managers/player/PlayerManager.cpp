@@ -1217,6 +1217,10 @@ DistributedObjectServant* PlayerManager::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* PlayerManager::_getImplementationForRead() {
+	return _impl;
+}
+
 void PlayerManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -1294,14 +1298,14 @@ void PlayerManagerImplementation::_serializationHelperMethod() {
 void PlayerManagerImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(PlayerManagerImplementation::readObjectMember(stream, _name)) {
+		if(PlayerManagerImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -1310,25 +1314,24 @@ void PlayerManagerImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool PlayerManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ObserverImplementation::readObjectMember(stream, _name))
+bool PlayerManagerImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ObserverImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "PlayerManager.highestBadgeIndex") {
+	switch(nameHashCode) {
+	case 0x77a5365b: //PlayerManager.highestBadgeIndex
 		TypeInfo<int >::parseFromBinaryStream(&highestBadgeIndex, stream);
 		return true;
-	}
 
-	if (_name == "PlayerManager.server") {
+	case 0x3d6a23c8: //PlayerManager.server
 		TypeInfo<ManagedReference<ZoneServer* > >::parseFromBinaryStream(&server, stream);
 		return true;
-	}
 
-	if (_name == "PlayerManager.globalExpMultiplier") {
+	case 0x66f52932: //PlayerManager.globalExpMultiplier
 		TypeInfo<float >::parseFromBinaryStream(&globalExpMultiplier, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -1343,27 +1346,27 @@ void PlayerManagerImplementation::writeObject(ObjectOutputStream* stream) {
 int PlayerManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ObserverImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "PlayerManager.highestBadgeIndex";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x77a5365b; //PlayerManager.highestBadgeIndex
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&highestBadgeIndex, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerManager.server";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3d6a23c8; //PlayerManager.server
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<ZoneServer* > >::toBinaryStream(&server, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerManager.globalExpMultiplier";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x66f52932; //PlayerManager.globalExpMultiplier
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&globalExpMultiplier, stream);

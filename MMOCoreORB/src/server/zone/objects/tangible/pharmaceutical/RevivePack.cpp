@@ -172,6 +172,10 @@ DistributedObjectServant* RevivePack::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* RevivePack::_getImplementationForRead() {
+	return _impl;
+}
+
 void RevivePack::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -251,14 +255,14 @@ void RevivePackImplementation::_serializationHelperMethod() {
 void RevivePackImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(RevivePackImplementation::readObjectMember(stream, _name)) {
+		if(RevivePackImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -267,40 +271,36 @@ void RevivePackImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool RevivePackImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (PharmaceuticalObjectImplementation::readObjectMember(stream, _name))
+bool RevivePackImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (PharmaceuticalObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "RevivePack.healthWoundHealed") {
+	switch(nameHashCode) {
+	case 0x6bea834f: //RevivePack.healthWoundHealed
 		TypeInfo<float >::parseFromBinaryStream(&healthWoundHealed, stream);
 		return true;
-	}
 
-	if (_name == "RevivePack.healthHealed") {
+	case 0x44c4ee1f: //RevivePack.healthHealed
 		TypeInfo<float >::parseFromBinaryStream(&healthHealed, stream);
 		return true;
-	}
 
-	if (_name == "RevivePack.actionWoundHealed") {
+	case 0xfa0d0c5f: //RevivePack.actionWoundHealed
 		TypeInfo<float >::parseFromBinaryStream(&actionWoundHealed, stream);
 		return true;
-	}
 
-	if (_name == "RevivePack.actionHealed") {
+	case 0xc17b9823: //RevivePack.actionHealed
 		TypeInfo<float >::parseFromBinaryStream(&actionHealed, stream);
 		return true;
-	}
 
-	if (_name == "RevivePack.mindWoundHealed") {
+	case 0x91de63bb: //RevivePack.mindWoundHealed
 		TypeInfo<float >::parseFromBinaryStream(&mindWoundHealed, stream);
 		return true;
-	}
 
-	if (_name == "RevivePack.mindHealed") {
+	case 0x28e52490: //RevivePack.mindHealed
 		TypeInfo<float >::parseFromBinaryStream(&mindHealed, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -315,51 +315,51 @@ void RevivePackImplementation::writeObject(ObjectOutputStream* stream) {
 int RevivePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = PharmaceuticalObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "RevivePack.healthWoundHealed";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6bea834f; //RevivePack.healthWoundHealed
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&healthWoundHealed, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "RevivePack.healthHealed";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x44c4ee1f; //RevivePack.healthHealed
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&healthHealed, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "RevivePack.actionWoundHealed";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfa0d0c5f; //RevivePack.actionWoundHealed
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&actionWoundHealed, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "RevivePack.actionHealed";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc17b9823; //RevivePack.actionHealed
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&actionHealed, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "RevivePack.mindWoundHealed";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x91de63bb; //RevivePack.mindWoundHealed
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&mindWoundHealed, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "RevivePack.mindHealed";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x28e52490; //RevivePack.mindHealed
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&mindHealed, stream);

@@ -51,6 +51,10 @@ DistributedObjectServant* ThreatMapObserver::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ThreatMapObserver::_getImplementationForRead() {
+	return _impl;
+}
+
 void ThreatMapObserver::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -130,14 +134,14 @@ void ThreatMapObserverImplementation::_serializationHelperMethod() {
 void ThreatMapObserverImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ThreatMapObserverImplementation::readObjectMember(stream, _name)) {
+		if(ThreatMapObserverImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -146,15 +150,16 @@ void ThreatMapObserverImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ThreatMapObserverImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ObserverImplementation::readObjectMember(stream, _name))
+bool ThreatMapObserverImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ObserverImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "ThreatMapObserver.self") {
+	switch(nameHashCode) {
+	case 0x6f6cc7f8: //ThreatMapObserver.self
 		TypeInfo<ManagedWeakReference<TangibleObject* > >::parseFromBinaryStream(&self, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -169,11 +174,11 @@ void ThreatMapObserverImplementation::writeObject(ObjectOutputStream* stream) {
 int ThreatMapObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ObserverImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "ThreatMapObserver.self";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6f6cc7f8; //ThreatMapObserver.self
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<TangibleObject* > >::toBinaryStream(&self, stream);

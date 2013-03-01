@@ -80,6 +80,10 @@ DistributedObjectServant* WearableContainerObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* WearableContainerObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void WearableContainerObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -159,14 +163,14 @@ void WearableContainerObjectImplementation::_serializationHelperMethod() {
 void WearableContainerObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(WearableContainerObjectImplementation::readObjectMember(stream, _name)) {
+		if(WearableContainerObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -175,15 +179,16 @@ void WearableContainerObjectImplementation::readObject(ObjectInputStream* stream
 	initializeTransientMembers();
 }
 
-bool WearableContainerObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ContainerImplementation::readObjectMember(stream, _name))
+bool WearableContainerObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ContainerImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "WearableContainerObject.wearableSkillMods") {
+	switch(nameHashCode) {
+	case 0x4e6d3f82: //WearableContainerObject.wearableSkillMods
 		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&wearableSkillMods, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -198,11 +203,11 @@ void WearableContainerObjectImplementation::writeObject(ObjectOutputStream* stre
 int WearableContainerObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ContainerImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "WearableContainerObject.wearableSkillMods";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4e6d3f82; //WearableContainerObject.wearableSkillMods
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<String, int> >::toBinaryStream(&wearableSkillMods, stream);

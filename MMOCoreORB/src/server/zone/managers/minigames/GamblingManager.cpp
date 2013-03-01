@@ -469,6 +469,10 @@ DistributedObjectServant* GamblingManager::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* GamblingManager::_getImplementationForRead() {
+	return _impl;
+}
+
 void GamblingManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -548,14 +552,14 @@ void GamblingManagerImplementation::_serializationHelperMethod() {
 void GamblingManagerImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(GamblingManagerImplementation::readObjectMember(stream, _name)) {
+		if(GamblingManagerImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -564,45 +568,40 @@ void GamblingManagerImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool GamblingManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ObserverImplementation::readObjectMember(stream, _name))
+bool GamblingManagerImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ObserverImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "GamblingManager.slotGames") {
+	switch(nameHashCode) {
+	case 0x5b7d0ed3: //GamblingManager.slotGames
 		TypeInfo<VectorMap<ManagedReference<CreatureObject* >, ManagedReference<GamblingTerminal* > > >::parseFromBinaryStream(&slotGames, stream);
 		return true;
-	}
 
-	if (_name == "GamblingManager.rouletteGames") {
+	case 0x7d3f71b4: //GamblingManager.rouletteGames
 		TypeInfo<VectorMap<ManagedReference<CreatureObject* >, ManagedReference<GamblingTerminal* > > >::parseFromBinaryStream(&rouletteGames, stream);
 		return true;
-	}
 
-	if (_name == "GamblingManager.roulette") {
+	case 0xe9591d2: //GamblingManager.roulette
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&roulette, stream);
 		return true;
-	}
 
-	if (_name == "GamblingManager.red") {
+	case 0x658e5977: //GamblingManager.red
 		TypeInfo<Vector<String> >::parseFromBinaryStream(&red, stream);
 		return true;
-	}
 
-	if (_name == "GamblingManager.slot") {
+	case 0x5cadbf05: //GamblingManager.slot
 		TypeInfo<Vector<int> >::parseFromBinaryStream(&slot, stream);
 		return true;
-	}
 
-	if (_name == "GamblingManager.slotTimer") {
+	case 0xfe932df5: //GamblingManager.slotTimer
 		TypeInfo<Vector<int> >::parseFromBinaryStream(&slotTimer, stream);
 		return true;
-	}
 
-	if (_name == "GamblingManager.rouletteTimer") {
+	case 0xd8d15292: //GamblingManager.rouletteTimer
 		TypeInfo<Vector<int> >::parseFromBinaryStream(&rouletteTimer, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -617,59 +616,59 @@ void GamblingManagerImplementation::writeObject(ObjectOutputStream* stream) {
 int GamblingManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ObserverImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "GamblingManager.slotGames";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5b7d0ed3; //GamblingManager.slotGames
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<ManagedReference<CreatureObject* >, ManagedReference<GamblingTerminal* > > >::toBinaryStream(&slotGames, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "GamblingManager.rouletteGames";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7d3f71b4; //GamblingManager.rouletteGames
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<ManagedReference<CreatureObject* >, ManagedReference<GamblingTerminal* > > >::toBinaryStream(&rouletteGames, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "GamblingManager.roulette";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe9591d2; //GamblingManager.roulette
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&roulette, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "GamblingManager.red";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x658e5977; //GamblingManager.red
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<String> >::toBinaryStream(&red, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "GamblingManager.slot";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5cadbf05; //GamblingManager.slot
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<int> >::toBinaryStream(&slot, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "GamblingManager.slotTimer";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfe932df5; //GamblingManager.slotTimer
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<int> >::toBinaryStream(&slotTimer, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "GamblingManager.rouletteTimer";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd8d15292; //GamblingManager.rouletteTimer
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<int> >::toBinaryStream(&rouletteTimer, stream);

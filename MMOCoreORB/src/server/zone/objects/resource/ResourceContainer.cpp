@@ -271,6 +271,10 @@ DistributedObjectServant* ResourceContainer::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ResourceContainer::_getImplementationForRead() {
+	return _impl;
+}
+
 void ResourceContainer::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -350,14 +354,14 @@ void ResourceContainerImplementation::_serializationHelperMethod() {
 void ResourceContainerImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ResourceContainerImplementation::readObjectMember(stream, _name)) {
+		if(ResourceContainerImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -366,20 +370,20 @@ void ResourceContainerImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ResourceContainerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool ResourceContainerImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "ResourceContainer.spawnObject") {
+	switch(nameHashCode) {
+	case 0xabc6c0c3: //ResourceContainer.spawnObject
 		TypeInfo<ManagedReference<ResourceSpawn* > >::parseFromBinaryStream(&spawnObject, stream);
 		return true;
-	}
 
-	if (_name == "ResourceContainer.stackQuantity") {
+	case 0xe25dac9b: //ResourceContainer.stackQuantity
 		TypeInfo<int >::parseFromBinaryStream(&stackQuantity, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -394,19 +398,19 @@ void ResourceContainerImplementation::writeObject(ObjectOutputStream* stream) {
 int ResourceContainerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "ResourceContainer.spawnObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xabc6c0c3; //ResourceContainer.spawnObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<ResourceSpawn* > >::toBinaryStream(&spawnObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ResourceContainer.stackQuantity";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe25dac9b; //ResourceContainer.stackQuantity
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&stackQuantity, stream);

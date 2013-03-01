@@ -50,6 +50,10 @@ DistributedObjectServant* LuaConversationObserver::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* LuaConversationObserver::_getImplementationForRead() {
+	return _impl;
+}
+
 void LuaConversationObserver::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -129,14 +133,14 @@ void LuaConversationObserverImplementation::_serializationHelperMethod() {
 void LuaConversationObserverImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(LuaConversationObserverImplementation::readObjectMember(stream, _name)) {
+		if(LuaConversationObserverImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -145,10 +149,12 @@ void LuaConversationObserverImplementation::readObject(ObjectInputStream* stream
 	initializeTransientMembers();
 }
 
-bool LuaConversationObserverImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ConversationObserverImplementation::readObjectMember(stream, _name))
+bool LuaConversationObserverImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ConversationObserverImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -163,7 +169,7 @@ void LuaConversationObserverImplementation::writeObject(ObjectOutputStream* stre
 int LuaConversationObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ConversationObserverImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

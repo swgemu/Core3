@@ -201,6 +201,10 @@ DistributedObjectServant* SlicingSession::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* SlicingSession::_getImplementationForRead() {
+	return _impl;
+}
+
 void SlicingSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -280,14 +284,14 @@ void SlicingSessionImplementation::_serializationHelperMethod() {
 void SlicingSessionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(SlicingSessionImplementation::readObjectMember(stream, _name)) {
+		if(SlicingSessionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -296,55 +300,48 @@ void SlicingSessionImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool SlicingSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (FacadeImplementation::readObjectMember(stream, _name))
+bool SlicingSessionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (FacadeImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "SlicingSession.player") {
+	switch(nameHashCode) {
+	case 0xc489db76: //SlicingSession.player
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
-	}
 
-	if (_name == "SlicingSession.slicingSuiBox") {
+	case 0x6d5b3bbd: //SlicingSession.slicingSuiBox
 		TypeInfo<ManagedReference<SuiListBox* > >::parseFromBinaryStream(&slicingSuiBox, stream);
 		return true;
-	}
 
-	if (_name == "SlicingSession.firstCable") {
+	case 0x6356f5e1: //SlicingSession.firstCable
 		TypeInfo<byte >::parseFromBinaryStream(&firstCable, stream);
 		return true;
-	}
 
-	if (_name == "SlicingSession.nodeCable") {
+	case 0x1409ddfc: //SlicingSession.nodeCable
 		TypeInfo<byte >::parseFromBinaryStream(&nodeCable, stream);
 		return true;
-	}
 
-	if (_name == "SlicingSession.cableBlue") {
+	case 0xb8dad5ac: //SlicingSession.cableBlue
 		TypeInfo<bool >::parseFromBinaryStream(&cableBlue, stream);
 		return true;
-	}
 
-	if (_name == "SlicingSession.cableRed") {
+	case 0x18e215b1: //SlicingSession.cableRed
 		TypeInfo<bool >::parseFromBinaryStream(&cableRed, stream);
 		return true;
-	}
 
-	if (_name == "SlicingSession.usedNode") {
+	case 0x9b9ef53c: //SlicingSession.usedNode
 		TypeInfo<bool >::parseFromBinaryStream(&usedNode, stream);
 		return true;
-	}
 
-	if (_name == "SlicingSession.usedClamp") {
+	case 0x5759dfc: //SlicingSession.usedClamp
 		TypeInfo<bool >::parseFromBinaryStream(&usedClamp, stream);
 		return true;
-	}
 
-	if (_name == "SlicingSession.baseSlice") {
+	case 0x331f459c: //SlicingSession.baseSlice
 		TypeInfo<bool >::parseFromBinaryStream(&baseSlice, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -359,75 +356,75 @@ void SlicingSessionImplementation::writeObject(ObjectOutputStream* stream) {
 int SlicingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = FacadeImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "SlicingSession.player";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc489db76; //SlicingSession.player
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&player, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SlicingSession.slicingSuiBox";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6d5b3bbd; //SlicingSession.slicingSuiBox
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SuiListBox* > >::toBinaryStream(&slicingSuiBox, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SlicingSession.firstCable";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6356f5e1; //SlicingSession.firstCable
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&firstCable, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SlicingSession.nodeCable";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1409ddfc; //SlicingSession.nodeCable
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&nodeCable, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SlicingSession.cableBlue";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb8dad5ac; //SlicingSession.cableBlue
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&cableBlue, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SlicingSession.cableRed";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x18e215b1; //SlicingSession.cableRed
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&cableRed, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SlicingSession.usedNode";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9b9ef53c; //SlicingSession.usedNode
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&usedNode, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SlicingSession.usedClamp";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5759dfc; //SlicingSession.usedClamp
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&usedClamp, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SlicingSession.baseSlice";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x331f459c; //SlicingSession.baseSlice
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&baseSlice, stream);

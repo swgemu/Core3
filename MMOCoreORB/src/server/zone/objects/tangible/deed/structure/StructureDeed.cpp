@@ -237,6 +237,10 @@ DistributedObjectServant* StructureDeed::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* StructureDeed::_getImplementationForRead() {
+	return _impl;
+}
+
 void StructureDeed::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -316,14 +320,14 @@ void StructureDeedImplementation::_serializationHelperMethod() {
 void StructureDeedImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(StructureDeedImplementation::readObjectMember(stream, _name)) {
+		if(StructureDeedImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -332,30 +336,28 @@ void StructureDeedImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool StructureDeedImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (DeedImplementation::readObjectMember(stream, _name))
+bool StructureDeedImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (DeedImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "StructureDeed.surplusMaintenance") {
+	switch(nameHashCode) {
+	case 0xa7cd55c1: //StructureDeed.surplusMaintenance
 		TypeInfo<unsigned int >::parseFromBinaryStream(&surplusMaintenance, stream);
 		return true;
-	}
 
-	if (_name == "StructureDeed.surplusPower") {
+	case 0x46b21969: //StructureDeed.surplusPower
 		TypeInfo<unsigned int >::parseFromBinaryStream(&surplusPower, stream);
 		return true;
-	}
 
-	if (_name == "StructureDeed.extractionRate") {
+	case 0xdaea6b37: //StructureDeed.extractionRate
 		TypeInfo<float >::parseFromBinaryStream(&extractionRate, stream);
 		return true;
-	}
 
-	if (_name == "StructureDeed.hopperSizeMax") {
+	case 0x5b9b75a2: //StructureDeed.hopperSizeMax
 		TypeInfo<float >::parseFromBinaryStream(&hopperSizeMax, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -370,35 +372,35 @@ void StructureDeedImplementation::writeObject(ObjectOutputStream* stream) {
 int StructureDeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = DeedImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "StructureDeed.surplusMaintenance";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa7cd55c1; //StructureDeed.surplusMaintenance
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&surplusMaintenance, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "StructureDeed.surplusPower";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x46b21969; //StructureDeed.surplusPower
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&surplusPower, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "StructureDeed.extractionRate";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xdaea6b37; //StructureDeed.extractionRate
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&extractionRate, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "StructureDeed.hopperSizeMax";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5b9b75a2; //StructureDeed.hopperSizeMax
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&hopperSizeMax, stream);

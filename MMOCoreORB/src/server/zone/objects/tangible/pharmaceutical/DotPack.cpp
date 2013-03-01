@@ -247,6 +247,10 @@ DistributedObjectServant* DotPack::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* DotPack::_getImplementationForRead() {
+	return _impl;
+}
+
 void DotPack::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -326,14 +330,14 @@ void DotPackImplementation::_serializationHelperMethod() {
 void DotPackImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(DotPackImplementation::readObjectMember(stream, _name)) {
+		if(DotPackImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -342,60 +346,52 @@ void DotPackImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool DotPackImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (PharmaceuticalObjectImplementation::readObjectMember(stream, _name))
+bool DotPackImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (PharmaceuticalObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "DotPack.effectiveness") {
+	switch(nameHashCode) {
+	case 0x75172fd4: //DotPack.effectiveness
 		TypeInfo<float >::parseFromBinaryStream(&effectiveness, stream);
 		return true;
-	}
 
-	if (_name == "DotPack.range") {
+	case 0xe90328b0: //DotPack.range
 		TypeInfo<float >::parseFromBinaryStream(&range, stream);
 		return true;
-	}
 
-	if (_name == "DotPack.area") {
+	case 0x3a3ef069: //DotPack.area
 		TypeInfo<float >::parseFromBinaryStream(&area, stream);
 		return true;
-	}
 
-	if (_name == "DotPack.hasArea") {
+	case 0xad9fc0dc: //DotPack.hasArea
 		TypeInfo<bool >::parseFromBinaryStream(&hasArea, stream);
 		return true;
-	}
 
-	if (_name == "DotPack.rangeMod") {
+	case 0x87b93001: //DotPack.rangeMod
 		TypeInfo<float >::parseFromBinaryStream(&rangeMod, stream);
 		return true;
-	}
 
-	if (_name == "DotPack.potency") {
+	case 0x4d79befc: //DotPack.potency
 		TypeInfo<float >::parseFromBinaryStream(&potency, stream);
 		return true;
-	}
 
-	if (_name == "DotPack.commandToExecute") {
+	case 0xed5f30d5: //DotPack.commandToExecute
 		TypeInfo<String >::parseFromBinaryStream(&commandToExecute, stream);
 		return true;
-	}
 
-	if (_name == "DotPack.duration") {
+	case 0xa141914e: //DotPack.duration
 		TypeInfo<unsigned int >::parseFromBinaryStream(&duration, stream);
 		return true;
-	}
 
-	if (_name == "DotPack.pool") {
+	case 0x1fc5ae20: //DotPack.pool
 		TypeInfo<unsigned int >::parseFromBinaryStream(&pool, stream);
 		return true;
-	}
 
-	if (_name == "DotPack.dotType") {
+	case 0x50210e17: //DotPack.dotType
 		TypeInfo<unsigned int >::parseFromBinaryStream(&dotType, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -410,83 +406,83 @@ void DotPackImplementation::writeObject(ObjectOutputStream* stream) {
 int DotPackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = PharmaceuticalObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "DotPack.effectiveness";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x75172fd4; //DotPack.effectiveness
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&effectiveness, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DotPack.range";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe90328b0; //DotPack.range
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&range, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DotPack.area";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3a3ef069; //DotPack.area
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&area, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DotPack.hasArea";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xad9fc0dc; //DotPack.hasArea
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&hasArea, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DotPack.rangeMod";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x87b93001; //DotPack.rangeMod
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&rangeMod, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DotPack.potency";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4d79befc; //DotPack.potency
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&potency, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DotPack.commandToExecute";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xed5f30d5; //DotPack.commandToExecute
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&commandToExecute, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DotPack.duration";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa141914e; //DotPack.duration
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&duration, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DotPack.pool";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1fc5ae20; //DotPack.pool
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&pool, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DotPack.dotType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x50210e17; //DotPack.dotType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&dotType, stream);

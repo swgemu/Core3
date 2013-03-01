@@ -99,6 +99,10 @@ DistributedObjectServant* SingleUseBuff::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* SingleUseBuff::_getImplementationForRead() {
+	return _impl;
+}
+
 void SingleUseBuff::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -178,14 +182,14 @@ void SingleUseBuffImplementation::_serializationHelperMethod() {
 void SingleUseBuffImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(SingleUseBuffImplementation::readObjectMember(stream, _name)) {
+		if(SingleUseBuffImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -194,30 +198,28 @@ void SingleUseBuffImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool SingleUseBuffImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (BuffImplementation::readObjectMember(stream, _name))
+bool SingleUseBuffImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (BuffImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "SingleUseBuff.observer") {
+	switch(nameHashCode) {
+	case 0xb1c25ac4: //SingleUseBuff.observer
 		TypeInfo<ManagedReference<SingleUseBuffObserver* > >::parseFromBinaryStream(&observer, stream);
 		return true;
-	}
 
-	if (_name == "SingleUseBuff.player") {
+	case 0xcd5f6ad2: //SingleUseBuff.player
 		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
-	}
 
-	if (_name == "SingleUseBuff.commandCRC") {
+	case 0x89c13ef3: //SingleUseBuff.commandCRC
 		TypeInfo<unsigned int >::parseFromBinaryStream(&commandCRC, stream);
 		return true;
-	}
 
-	if (_name == "SingleUseBuff.eventTypes") {
+	case 0x2d814b36: //SingleUseBuff.eventTypes
 		TypeInfo<Vector<unsigned int> >::parseFromBinaryStream(&eventTypes, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -232,35 +234,35 @@ void SingleUseBuffImplementation::writeObject(ObjectOutputStream* stream) {
 int SingleUseBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = BuffImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "SingleUseBuff.observer";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb1c25ac4; //SingleUseBuff.observer
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SingleUseBuffObserver* > >::toBinaryStream(&observer, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SingleUseBuff.player";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xcd5f6ad2; //SingleUseBuff.player
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&player, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SingleUseBuff.commandCRC";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x89c13ef3; //SingleUseBuff.commandCRC
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&commandCRC, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SingleUseBuff.eventTypes";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2d814b36; //SingleUseBuff.eventTypes
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<unsigned int> >::toBinaryStream(&eventTypes, stream);

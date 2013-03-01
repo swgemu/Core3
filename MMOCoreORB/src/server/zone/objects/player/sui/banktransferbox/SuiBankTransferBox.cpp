@@ -105,6 +105,10 @@ DistributedObjectServant* SuiBankTransferBox::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* SuiBankTransferBox::_getImplementationForRead() {
+	return _impl;
+}
+
 void SuiBankTransferBox::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -184,14 +188,14 @@ void SuiBankTransferBoxImplementation::_serializationHelperMethod() {
 void SuiBankTransferBoxImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(SuiBankTransferBoxImplementation::readObjectMember(stream, _name)) {
+		if(SuiBankTransferBoxImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -200,55 +204,48 @@ void SuiBankTransferBoxImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool SuiBankTransferBoxImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (SuiBoxImplementation::readObjectMember(stream, _name))
+bool SuiBankTransferBoxImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (SuiBoxImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "SuiBankTransferBox.lblFrom") {
+	switch(nameHashCode) {
+	case 0x30bb1267: //SuiBankTransferBox.lblFrom
 		TypeInfo<String >::parseFromBinaryStream(&lblFrom, stream);
 		return true;
-	}
 
-	if (_name == "SuiBankTransferBox.lblStartingFrom") {
+	case 0x1841d11b: //SuiBankTransferBox.lblStartingFrom
 		TypeInfo<String >::parseFromBinaryStream(&lblStartingFrom, stream);
 		return true;
-	}
 
-	if (_name == "SuiBankTransferBox.lblInputFrom") {
+	case 0xaf4bad34: //SuiBankTransferBox.lblInputFrom
 		TypeInfo<String >::parseFromBinaryStream(&lblInputFrom, stream);
 		return true;
-	}
 
-	if (_name == "SuiBankTransferBox.lblTo") {
+	case 0x9ef75b5: //SuiBankTransferBox.lblTo
 		TypeInfo<String >::parseFromBinaryStream(&lblTo, stream);
 		return true;
-	}
 
-	if (_name == "SuiBankTransferBox.lblStartingTo") {
+	case 0x5f6a9747: //SuiBankTransferBox.lblStartingTo
 		TypeInfo<String >::parseFromBinaryStream(&lblStartingTo, stream);
 		return true;
-	}
 
-	if (_name == "SuiBankTransferBox.lblInputTo") {
+	case 0x7e9e484b: //SuiBankTransferBox.lblInputTo
 		TypeInfo<String >::parseFromBinaryStream(&lblInputTo, stream);
 		return true;
-	}
 
-	if (_name == "SuiBankTransferBox.convertRatioFrom") {
+	case 0xb3fe4f2: //SuiBankTransferBox.convertRatioFrom
 		TypeInfo<String >::parseFromBinaryStream(&convertRatioFrom, stream);
 		return true;
-	}
 
-	if (_name == "SuiBankTransferBox.convertRatioTo") {
+	case 0xef07ab2f: //SuiBankTransferBox.convertRatioTo
 		TypeInfo<String >::parseFromBinaryStream(&convertRatioTo, stream);
 		return true;
-	}
 
-	if (_name == "SuiBankTransferBox.bank") {
+	case 0x2a86ef1e: //SuiBankTransferBox.bank
 		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&bank, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -263,75 +260,75 @@ void SuiBankTransferBoxImplementation::writeObject(ObjectOutputStream* stream) {
 int SuiBankTransferBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = SuiBoxImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "SuiBankTransferBox.lblFrom";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x30bb1267; //SuiBankTransferBox.lblFrom
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&lblFrom, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBankTransferBox.lblStartingFrom";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1841d11b; //SuiBankTransferBox.lblStartingFrom
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&lblStartingFrom, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBankTransferBox.lblInputFrom";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xaf4bad34; //SuiBankTransferBox.lblInputFrom
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&lblInputFrom, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBankTransferBox.lblTo";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9ef75b5; //SuiBankTransferBox.lblTo
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&lblTo, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBankTransferBox.lblStartingTo";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5f6a9747; //SuiBankTransferBox.lblStartingTo
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&lblStartingTo, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBankTransferBox.lblInputTo";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7e9e484b; //SuiBankTransferBox.lblInputTo
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&lblInputTo, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBankTransferBox.convertRatioFrom";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb3fe4f2; //SuiBankTransferBox.convertRatioFrom
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&convertRatioFrom, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBankTransferBox.convertRatioTo";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xef07ab2f; //SuiBankTransferBox.convertRatioTo
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&convertRatioTo, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "SuiBankTransferBox.bank";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2a86ef1e; //SuiBankTransferBox.bank
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&bank, stream);

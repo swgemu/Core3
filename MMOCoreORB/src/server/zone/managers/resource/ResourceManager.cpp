@@ -374,6 +374,10 @@ DistributedObjectServant* ResourceManager::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ResourceManager::_getImplementationForRead() {
+	return _impl;
+}
+
 void ResourceManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -453,14 +457,14 @@ void ResourceManagerImplementation::_serializationHelperMethod() {
 void ResourceManagerImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ResourceManagerImplementation::readObjectMember(stream, _name)) {
+		if(ResourceManagerImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -469,15 +473,16 @@ void ResourceManagerImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ResourceManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ObserverImplementation::readObjectMember(stream, _name))
+bool ResourceManagerImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ObserverImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "ResourceManager.zoneServer") {
+	switch(nameHashCode) {
+	case 0x41e1eb81: //ResourceManager.zoneServer
 		TypeInfo<ManagedWeakReference<ZoneServer* > >::parseFromBinaryStream(&zoneServer, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -492,11 +497,11 @@ void ResourceManagerImplementation::writeObject(ObjectOutputStream* stream) {
 int ResourceManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ObserverImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "ResourceManager.zoneServer";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x41e1eb81; //ResourceManager.zoneServer
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<ZoneServer* > >::toBinaryStream(&zoneServer, stream);

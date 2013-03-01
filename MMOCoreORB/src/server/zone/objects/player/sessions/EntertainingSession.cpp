@@ -710,6 +710,10 @@ DistributedObjectServant* EntertainingSession::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* EntertainingSession::_getImplementationForRead() {
+	return _impl;
+}
+
 void EntertainingSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -787,14 +791,14 @@ void EntertainingSessionImplementation::_serializationHelperMethod() {
 void EntertainingSessionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(EntertainingSessionImplementation::readObjectMember(stream, _name)) {
+		if(EntertainingSessionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -803,85 +807,72 @@ void EntertainingSessionImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool EntertainingSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (FacadeImplementation::readObjectMember(stream, _name))
+bool EntertainingSessionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (FacadeImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "EntertainingSession.entertainer") {
+	switch(nameHashCode) {
+	case 0x98639124: //EntertainingSession.entertainer
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&entertainer, stream);
 		return true;
-	}
 
-	if (_name == "EntertainingSession.observer") {
+	case 0x561d7ab2: //EntertainingSession.observer
 		TypeInfo<ManagedReference<EntertainingObserver* > >::parseFromBinaryStream(&observer, stream);
 		return true;
-	}
 
-	if (_name == "EntertainingSession.watchers") {
+	case 0x83de8ed2: //EntertainingSession.watchers
 		TypeInfo<EntertainingDataMap >::parseFromBinaryStream(&watchers, stream);
 		return true;
-	}
 
-	if (_name == "EntertainingSession.listeners") {
+	case 0xd2632343: //EntertainingSession.listeners
 		TypeInfo<EntertainingDataMap >::parseFromBinaryStream(&listeners, stream);
 		return true;
-	}
 
-	if (_name == "EntertainingSession.denyServiceList") {
+	case 0x9eb87f03: //EntertainingSession.denyServiceList
 		TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::parseFromBinaryStream(&denyServiceList, stream);
 		return true;
-	}
 
-	if (_name == "EntertainingSession.nextTick") {
+	case 0x6c72eb58: //EntertainingSession.nextTick
 		TypeInfo<Time >::parseFromBinaryStream(&nextTick, stream);
 		return true;
-	}
 
-	if (_name == "EntertainingSession.performanceName") {
+	case 0x6ee400c6: //EntertainingSession.performanceName
 		TypeInfo<String >::parseFromBinaryStream(&performanceName, stream);
 		return true;
-	}
 
-	if (_name == "EntertainingSession.dancing") {
+	case 0x766a2aac: //EntertainingSession.dancing
 		TypeInfo<bool >::parseFromBinaryStream(&dancing, stream);
 		return true;
-	}
 
-	if (_name == "EntertainingSession.playingMusic") {
+	case 0x6f4a346a: //EntertainingSession.playingMusic
 		TypeInfo<bool >::parseFromBinaryStream(&playingMusic, stream);
 		return true;
-	}
 
-	if (_name == "EntertainingSession.flourishXp") {
+	case 0xa0634a3f: //EntertainingSession.flourishXp
 		TypeInfo<int >::parseFromBinaryStream(&flourishXp, stream);
 		return true;
-	}
 
-	if (_name == "EntertainingSession.healingXp") {
+	case 0xdbc38993: //EntertainingSession.healingXp
 		TypeInfo<int >::parseFromBinaryStream(&healingXp, stream);
 		return true;
-	}
 
-	if (_name == "EntertainingSession.flourishCount") {
+	case 0x84fb2b6: //EntertainingSession.flourishCount
 		TypeInfo<int >::parseFromBinaryStream(&flourishCount, stream);
 		return true;
-	}
 
-	if (_name == "EntertainingSession.acceptingBandFlourishes") {
+	case 0xe2f4031e: //EntertainingSession.acceptingBandFlourishes
 		TypeInfo<bool >::parseFromBinaryStream(&acceptingBandFlourishes, stream);
 		return true;
-	}
 
-	if (_name == "EntertainingSession.targetInstrument") {
+	case 0xe152ab5b: //EntertainingSession.targetInstrument
 		TypeInfo<bool >::parseFromBinaryStream(&targetInstrument, stream);
 		return true;
-	}
 
-	if (_name == "EntertainingSession.externalInstrument") {
+	case 0xb6ab890a: //EntertainingSession.externalInstrument
 		TypeInfo<ManagedReference<Instrument* > >::parseFromBinaryStream(&externalInstrument, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -896,123 +887,123 @@ void EntertainingSessionImplementation::writeObject(ObjectOutputStream* stream) 
 int EntertainingSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = FacadeImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "EntertainingSession.entertainer";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x98639124; //EntertainingSession.entertainer
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&entertainer, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "EntertainingSession.observer";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x561d7ab2; //EntertainingSession.observer
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<EntertainingObserver* > >::toBinaryStream(&observer, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "EntertainingSession.watchers";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x83de8ed2; //EntertainingSession.watchers
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<EntertainingDataMap >::toBinaryStream(&watchers, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "EntertainingSession.listeners";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd2632343; //EntertainingSession.listeners
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<EntertainingDataMap >::toBinaryStream(&listeners, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "EntertainingSession.denyServiceList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9eb87f03; //EntertainingSession.denyServiceList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::toBinaryStream(&denyServiceList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "EntertainingSession.nextTick";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6c72eb58; //EntertainingSession.nextTick
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&nextTick, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "EntertainingSession.performanceName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6ee400c6; //EntertainingSession.performanceName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&performanceName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "EntertainingSession.dancing";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x766a2aac; //EntertainingSession.dancing
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&dancing, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "EntertainingSession.playingMusic";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6f4a346a; //EntertainingSession.playingMusic
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&playingMusic, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "EntertainingSession.flourishXp";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa0634a3f; //EntertainingSession.flourishXp
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&flourishXp, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "EntertainingSession.healingXp";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xdbc38993; //EntertainingSession.healingXp
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&healingXp, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "EntertainingSession.flourishCount";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x84fb2b6; //EntertainingSession.flourishCount
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&flourishCount, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "EntertainingSession.acceptingBandFlourishes";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe2f4031e; //EntertainingSession.acceptingBandFlourishes
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&acceptingBandFlourishes, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "EntertainingSession.targetInstrument";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe152ab5b; //EntertainingSession.targetInstrument
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&targetInstrument, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "EntertainingSession.externalInstrument";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb6ab890a; //EntertainingSession.externalInstrument
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<Instrument* > >::toBinaryStream(&externalInstrument, stream);

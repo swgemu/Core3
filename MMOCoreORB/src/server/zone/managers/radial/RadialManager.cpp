@@ -72,6 +72,10 @@ DistributedObjectServant* RadialManager::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* RadialManager::_getImplementationForRead() {
+	return _impl;
+}
+
 void RadialManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -151,14 +155,14 @@ void RadialManagerImplementation::_serializationHelperMethod() {
 void RadialManagerImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(RadialManagerImplementation::readObjectMember(stream, _name)) {
+		if(RadialManagerImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -167,15 +171,16 @@ void RadialManagerImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool RadialManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+bool RadialManagerImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "RadialManager.zoneServer") {
+	switch(nameHashCode) {
+	case 0xcc6ffcfd: //RadialManager.zoneServer
 		TypeInfo<ManagedReference<ZoneServer* > >::parseFromBinaryStream(&zoneServer, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -190,11 +195,11 @@ void RadialManagerImplementation::writeObject(ObjectOutputStream* stream) {
 int RadialManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "RadialManager.zoneServer";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xcc6ffcfd; //RadialManager.zoneServer
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<ZoneServer* > >::toBinaryStream(&zoneServer, stream);

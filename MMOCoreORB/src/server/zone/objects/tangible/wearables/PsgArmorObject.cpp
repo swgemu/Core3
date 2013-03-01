@@ -78,6 +78,10 @@ DistributedObjectServant* PsgArmorObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* PsgArmorObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void PsgArmorObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -157,14 +161,14 @@ void PsgArmorObjectImplementation::_serializationHelperMethod() {
 void PsgArmorObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(PsgArmorObjectImplementation::readObjectMember(stream, _name)) {
+		if(PsgArmorObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -173,10 +177,12 @@ void PsgArmorObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool PsgArmorObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ArmorObjectImplementation::readObjectMember(stream, _name))
+bool PsgArmorObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ArmorObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -191,7 +197,7 @@ void PsgArmorObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int PsgArmorObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ArmorObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

@@ -96,6 +96,7 @@ public:
 	void clearBuffEvent();
 
 	DistributedObjectServant* _getImplementation();
+	DistributedObjectServant* _getImplementationForRead();
 
 	void _setImplementation(DistributedObjectServant* servant);
 
@@ -183,7 +184,7 @@ protected:
 	void runlock(bool doLock = true);
 
 	void _serializationHelperMethod();
-	bool readObjectMember(ObjectInputStream* stream, const String& name);
+	bool readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode);
 	int writeObjectMembers(ObjectOutputStream* stream);
 
 	friend class PowerBoostBuff;

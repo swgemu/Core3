@@ -140,6 +140,10 @@ DistributedObjectServant* ControlDevice::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ControlDevice::_getImplementationForRead() {
+	return _impl;
+}
+
 void ControlDevice::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -219,14 +223,14 @@ void ControlDeviceImplementation::_serializationHelperMethod() {
 void ControlDeviceImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ControlDeviceImplementation::readObjectMember(stream, _name)) {
+		if(ControlDeviceImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -235,15 +239,16 @@ void ControlDeviceImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ControlDeviceImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (IntangibleObjectImplementation::readObjectMember(stream, _name))
+bool ControlDeviceImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (IntangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "ControlDevice.controlledObject") {
+	switch(nameHashCode) {
+	case 0xebeb9376: //ControlDevice.controlledObject
 		TypeInfo<ManagedWeakReference<TangibleObject* > >::parseFromBinaryStream(&controlledObject, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -258,11 +263,11 @@ void ControlDeviceImplementation::writeObject(ObjectOutputStream* stream) {
 int ControlDeviceImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = IntangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "ControlDevice.controlledObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xebeb9376; //ControlDevice.controlledObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<TangibleObject* > >::toBinaryStream(&controlledObject, stream);

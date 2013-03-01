@@ -122,6 +122,10 @@ DistributedObjectServant* Deed::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* Deed::_getImplementationForRead() {
+	return _impl;
+}
+
 void Deed::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -201,14 +205,14 @@ void DeedImplementation::_serializationHelperMethod() {
 void DeedImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(DeedImplementation::readObjectMember(stream, _name)) {
+		if(DeedImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -217,20 +221,20 @@ void DeedImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool DeedImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool DeedImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "Deed.generatedObjectTemplate") {
+	switch(nameHashCode) {
+	case 0x31849f3a: //Deed.generatedObjectTemplate
 		TypeInfo<String >::parseFromBinaryStream(&generatedObjectTemplate, stream);
 		return true;
-	}
 
-	if (_name == "Deed.generated") {
+	case 0x3c7f8158: //Deed.generated
 		TypeInfo<bool >::parseFromBinaryStream(&generated, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -245,19 +249,19 @@ void DeedImplementation::writeObject(ObjectOutputStream* stream) {
 int DeedImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "Deed.generatedObjectTemplate";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x31849f3a; //Deed.generatedObjectTemplate
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&generatedObjectTemplate, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Deed.generated";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3c7f8158; //Deed.generated
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&generated, stream);

@@ -116,6 +116,10 @@ DistributedObjectServant* StatePack::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* StatePack::_getImplementationForRead() {
+	return _impl;
+}
+
 void StatePack::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -195,14 +199,14 @@ void StatePackImplementation::_serializationHelperMethod() {
 void StatePackImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(StatePackImplementation::readObjectMember(stream, _name)) {
+		if(StatePackImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -211,15 +215,16 @@ void StatePackImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool StatePackImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (PharmaceuticalObjectImplementation::readObjectMember(stream, _name))
+bool StatePackImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (PharmaceuticalObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "StatePack.state") {
+	switch(nameHashCode) {
+	case 0x14467bdf: //StatePack.state
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&state, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -234,11 +239,11 @@ void StatePackImplementation::writeObject(ObjectOutputStream* stream) {
 int StatePackImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = PharmaceuticalObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "StatePack.state";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x14467bdf; //StatePack.state
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&state, stream);

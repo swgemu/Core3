@@ -232,6 +232,10 @@ DistributedObjectServant* WaypointObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* WaypointObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void WaypointObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -311,14 +315,14 @@ void WaypointObjectImplementation::_serializationHelperMethod() {
 void WaypointObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(WaypointObjectImplementation::readObjectMember(stream, _name)) {
+		if(WaypointObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -327,45 +331,40 @@ void WaypointObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool WaypointObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (IntangibleObjectImplementation::readObjectMember(stream, _name))
+bool WaypointObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (IntangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "WaypointObject.cellID") {
+	switch(nameHashCode) {
+	case 0x6d22ebbe: //WaypointObject.cellID
 		TypeInfo<unsigned int >::parseFromBinaryStream(&cellID, stream);
 		return true;
-	}
 
-	if (_name == "WaypointObject.unknown") {
+	case 0x1101b41e: //WaypointObject.unknown
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&unknown, stream);
 		return true;
-	}
 
-	if (_name == "WaypointObject.planetCRC") {
+	case 0xa8844442: //WaypointObject.planetCRC
 		TypeInfo<unsigned int >::parseFromBinaryStream(&planetCRC, stream);
 		return true;
-	}
 
-	if (_name == "WaypointObject.detailedDescription") {
+	case 0xfb580469: //WaypointObject.detailedDescription
 		TypeInfo<String >::parseFromBinaryStream(&detailedDescription, stream);
 		return true;
-	}
 
-	if (_name == "WaypointObject.color") {
+	case 0x198c440a: //WaypointObject.color
 		TypeInfo<byte >::parseFromBinaryStream(&color, stream);
 		return true;
-	}
 
-	if (_name == "WaypointObject.active") {
+	case 0xf04f2daf: //WaypointObject.active
 		TypeInfo<byte >::parseFromBinaryStream(&active, stream);
 		return true;
-	}
 
-	if (_name == "WaypointObject.specialTypeID") {
+	case 0x7e4c627b: //WaypointObject.specialTypeID
 		TypeInfo<int >::parseFromBinaryStream(&specialTypeID, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -380,59 +379,59 @@ void WaypointObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int WaypointObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = IntangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "WaypointObject.cellID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x6d22ebbe; //WaypointObject.cellID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&cellID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WaypointObject.unknown";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1101b41e; //WaypointObject.unknown
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&unknown, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WaypointObject.planetCRC";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa8844442; //WaypointObject.planetCRC
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&planetCRC, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WaypointObject.detailedDescription";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfb580469; //WaypointObject.detailedDescription
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&detailedDescription, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WaypointObject.color";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x198c440a; //WaypointObject.color
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&color, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WaypointObject.active";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf04f2daf; //WaypointObject.active
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&active, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WaypointObject.specialTypeID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7e4c627b; //WaypointObject.specialTypeID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&specialTypeID, stream);

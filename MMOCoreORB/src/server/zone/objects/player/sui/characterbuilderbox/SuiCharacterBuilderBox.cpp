@@ -80,6 +80,10 @@ DistributedObjectServant* SuiCharacterBuilderBox::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* SuiCharacterBuilderBox::_getImplementationForRead() {
+	return _impl;
+}
+
 void SuiCharacterBuilderBox::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -159,14 +163,14 @@ void SuiCharacterBuilderBoxImplementation::_serializationHelperMethod() {
 void SuiCharacterBuilderBoxImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(SuiCharacterBuilderBoxImplementation::readObjectMember(stream, _name)) {
+		if(SuiCharacterBuilderBoxImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -175,10 +179,12 @@ void SuiCharacterBuilderBoxImplementation::readObject(ObjectInputStream* stream)
 	initializeTransientMembers();
 }
 
-bool SuiCharacterBuilderBoxImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (SuiListBoxImplementation::readObjectMember(stream, _name))
+bool SuiCharacterBuilderBoxImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (SuiListBoxImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -193,7 +199,7 @@ void SuiCharacterBuilderBoxImplementation::writeObject(ObjectOutputStream* strea
 int SuiCharacterBuilderBoxImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = SuiListBoxImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

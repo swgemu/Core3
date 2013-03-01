@@ -145,6 +145,10 @@ DistributedObjectServant* Attachment::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* Attachment::_getImplementationForRead() {
+	return _impl;
+}
+
 void Attachment::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -224,14 +228,14 @@ void AttachmentImplementation::_serializationHelperMethod() {
 void AttachmentImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(AttachmentImplementation::readObjectMember(stream, _name)) {
+		if(AttachmentImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -240,20 +244,20 @@ void AttachmentImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool AttachmentImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool AttachmentImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "Attachment.attachmentType") {
+	switch(nameHashCode) {
+	case 0x98b91e81: //Attachment.attachmentType
 		TypeInfo<int >::parseFromBinaryStream(&attachmentType, stream);
 		return true;
-	}
 
-	if (_name == "Attachment.skillModMap") {
+	case 0xd62b5331: //Attachment.skillModMap
 		TypeInfo<HashTable<String, int> >::parseFromBinaryStream(&skillModMap, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -268,19 +272,19 @@ void AttachmentImplementation::writeObject(ObjectOutputStream* stream) {
 int AttachmentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "Attachment.attachmentType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x98b91e81; //Attachment.attachmentType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&attachmentType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "Attachment.skillModMap";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd62b5331; //Attachment.skillModMap
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<HashTable<String, int> >::toBinaryStream(&skillModMap, stream);

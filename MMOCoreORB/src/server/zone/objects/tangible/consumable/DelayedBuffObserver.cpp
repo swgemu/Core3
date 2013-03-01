@@ -55,6 +55,10 @@ DistributedObjectServant* DelayedBuffObserver::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* DelayedBuffObserver::_getImplementationForRead() {
+	return _impl;
+}
+
 void DelayedBuffObserver::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -134,14 +138,14 @@ void DelayedBuffObserverImplementation::_serializationHelperMethod() {
 void DelayedBuffObserverImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(DelayedBuffObserverImplementation::readObjectMember(stream, _name)) {
+		if(DelayedBuffObserverImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -150,15 +154,16 @@ void DelayedBuffObserverImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool DelayedBuffObserverImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ObserverImplementation::readObjectMember(stream, _name))
+bool DelayedBuffObserverImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ObserverImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "DelayedBuffObserver.buff") {
+	switch(nameHashCode) {
+	case 0xe84cbee4: //DelayedBuffObserver.buff
 		TypeInfo<ManagedWeakReference<DelayedBuff* > >::parseFromBinaryStream(&buff, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -173,11 +178,11 @@ void DelayedBuffObserverImplementation::writeObject(ObjectOutputStream* stream) 
 int DelayedBuffObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ObserverImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "DelayedBuffObserver.buff";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe84cbee4; //DelayedBuffObserver.buff
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<DelayedBuff* > >::toBinaryStream(&buff, stream);

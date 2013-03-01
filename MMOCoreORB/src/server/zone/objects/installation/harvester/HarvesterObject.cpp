@@ -151,6 +151,10 @@ DistributedObjectServant* HarvesterObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* HarvesterObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void HarvesterObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -230,14 +234,14 @@ void HarvesterObjectImplementation::_serializationHelperMethod() {
 void HarvesterObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(HarvesterObjectImplementation::readObjectMember(stream, _name)) {
+		if(HarvesterObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -246,10 +250,12 @@ void HarvesterObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool HarvesterObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (InstallationObjectImplementation::readObjectMember(stream, _name))
+bool HarvesterObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (InstallationObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -264,7 +270,7 @@ void HarvesterObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int HarvesterObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = InstallationObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

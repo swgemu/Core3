@@ -49,6 +49,10 @@ DistributedObjectServant* RecreationBuildingObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* RecreationBuildingObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void RecreationBuildingObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -128,14 +132,14 @@ void RecreationBuildingObjectImplementation::_serializationHelperMethod() {
 void RecreationBuildingObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(RecreationBuildingObjectImplementation::readObjectMember(stream, _name)) {
+		if(RecreationBuildingObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -144,10 +148,12 @@ void RecreationBuildingObjectImplementation::readObject(ObjectInputStream* strea
 	initializeTransientMembers();
 }
 
-bool RecreationBuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (BuildingObjectImplementation::readObjectMember(stream, _name))
+bool RecreationBuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (BuildingObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -162,7 +168,7 @@ void RecreationBuildingObjectImplementation::writeObject(ObjectOutputStream* str
 int RecreationBuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = BuildingObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

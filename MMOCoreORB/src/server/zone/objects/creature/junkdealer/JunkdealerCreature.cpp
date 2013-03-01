@@ -172,6 +172,10 @@ DistributedObjectServant* JunkdealerCreature::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* JunkdealerCreature::_getImplementationForRead() {
+	return _impl;
+}
+
 void JunkdealerCreature::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -251,14 +255,14 @@ void JunkdealerCreatureImplementation::_serializationHelperMethod() {
 void JunkdealerCreatureImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(JunkdealerCreatureImplementation::readObjectMember(stream, _name)) {
+		if(JunkdealerCreatureImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -267,15 +271,16 @@ void JunkdealerCreatureImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool JunkdealerCreatureImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (CreatureObjectImplementation::readObjectMember(stream, _name))
+bool JunkdealerCreatureImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (CreatureObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "JunkdealerCreature.location") {
+	switch(nameHashCode) {
+	case 0x13e1ff5e: //JunkdealerCreature.location
 		TypeInfo<String >::parseFromBinaryStream(&location, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -290,11 +295,11 @@ void JunkdealerCreatureImplementation::writeObject(ObjectOutputStream* stream) {
 int JunkdealerCreatureImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = CreatureObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "JunkdealerCreature.location";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x13e1ff5e; //JunkdealerCreature.location
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&location, stream);

@@ -574,6 +574,10 @@ DistributedObjectServant* PlanetManager::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* PlanetManager::_getImplementationForRead() {
+	return _impl;
+}
+
 void PlanetManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -651,14 +655,14 @@ void PlanetManagerImplementation::_serializationHelperMethod() {
 void PlanetManagerImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(PlanetManagerImplementation::readObjectMember(stream, _name)) {
+		if(PlanetManagerImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -667,50 +671,44 @@ void PlanetManagerImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool PlanetManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedServiceImplementation::readObjectMember(stream, _name))
+bool PlanetManagerImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedServiceImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "PlanetManager.zone") {
+	switch(nameHashCode) {
+	case 0x11df934a: //PlanetManager.zone
 		TypeInfo<ManagedReference<Zone* > >::parseFromBinaryStream(&zone, stream);
 		return true;
-	}
 
-	if (_name == "PlanetManager.regionMap") {
+	case 0x7bb5f7eb: //PlanetManager.regionMap
 		TypeInfo<RegionMap >::parseFromBinaryStream(&regionMap, stream);
 		return true;
-	}
 
-	if (_name == "PlanetManager.travelFares") {
+	case 0x154256c5: //PlanetManager.travelFares
 		TypeInfo<TravelFare >::parseFromBinaryStream(&travelFares, stream);
 		return true;
-	}
 
-	if (_name == "PlanetManager.planetTravelPointList") {
+	case 0x354b472c: //PlanetManager.planetTravelPointList
 		TypeInfo<Reference<PlanetTravelPointList* > >::parseFromBinaryStream(&planetTravelPointList, stream);
 		return true;
-	}
 
-	if (_name == "PlanetManager.shuttleLandingDelay") {
+	case 0xe865ec20: //PlanetManager.shuttleLandingDelay
 		TypeInfo<int >::parseFromBinaryStream(&shuttleLandingDelay, stream);
 		return true;
-	}
 
-	if (_name == "PlanetManager.shuttleTakeoffDelay") {
+	case 0x64f8d516: //PlanetManager.shuttleTakeoffDelay
 		TypeInfo<int >::parseFromBinaryStream(&shuttleTakeoffDelay, stream);
 		return true;
-	}
 
-	if (_name == "PlanetManager.weatherManager") {
+	case 0xe9542cff: //PlanetManager.weatherManager
 		TypeInfo<ManagedReference<WeatherManager* > >::parseFromBinaryStream(&weatherManager, stream);
 		return true;
-	}
 
-	if (_name == "PlanetManager.numberOfCities") {
+	case 0xe36eb8b: //PlanetManager.numberOfCities
 		TypeInfo<int >::parseFromBinaryStream(&numberOfCities, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -725,67 +723,67 @@ void PlanetManagerImplementation::writeObject(ObjectOutputStream* stream) {
 int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedServiceImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "PlanetManager.zone";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x11df934a; //PlanetManager.zone
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<Zone* > >::toBinaryStream(&zone, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlanetManager.regionMap";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7bb5f7eb; //PlanetManager.regionMap
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<RegionMap >::toBinaryStream(&regionMap, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlanetManager.travelFares";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x154256c5; //PlanetManager.travelFares
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<TravelFare >::toBinaryStream(&travelFares, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlanetManager.planetTravelPointList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x354b472c; //PlanetManager.planetTravelPointList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Reference<PlanetTravelPointList* > >::toBinaryStream(&planetTravelPointList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlanetManager.shuttleLandingDelay";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe865ec20; //PlanetManager.shuttleLandingDelay
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&shuttleLandingDelay, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlanetManager.shuttleTakeoffDelay";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x64f8d516; //PlanetManager.shuttleTakeoffDelay
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&shuttleTakeoffDelay, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlanetManager.weatherManager";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe9542cff; //PlanetManager.weatherManager
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<WeatherManager* > >::toBinaryStream(&weatherManager, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlanetManager.numberOfCities";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe36eb8b; //PlanetManager.numberOfCities
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&numberOfCities, stream);

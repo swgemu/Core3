@@ -50,6 +50,10 @@ DistributedObjectServant* GarageArea::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* GarageArea::_getImplementationForRead() {
+	return _impl;
+}
+
 void GarageArea::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -129,14 +133,14 @@ void GarageAreaImplementation::_serializationHelperMethod() {
 void GarageAreaImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(GarageAreaImplementation::readObjectMember(stream, _name)) {
+		if(GarageAreaImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -145,10 +149,12 @@ void GarageAreaImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool GarageAreaImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ActiveAreaImplementation::readObjectMember(stream, _name))
+bool GarageAreaImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ActiveAreaImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -163,7 +169,7 @@ void GarageAreaImplementation::writeObject(ObjectOutputStream* stream) {
 int GarageAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ActiveAreaImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

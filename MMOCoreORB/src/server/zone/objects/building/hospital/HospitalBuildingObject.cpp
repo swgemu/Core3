@@ -49,6 +49,10 @@ DistributedObjectServant* HospitalBuildingObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* HospitalBuildingObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void HospitalBuildingObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -128,14 +132,14 @@ void HospitalBuildingObjectImplementation::_serializationHelperMethod() {
 void HospitalBuildingObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(HospitalBuildingObjectImplementation::readObjectMember(stream, _name)) {
+		if(HospitalBuildingObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -144,10 +148,12 @@ void HospitalBuildingObjectImplementation::readObject(ObjectInputStream* stream)
 	initializeTransientMembers();
 }
 
-bool HospitalBuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (BuildingObjectImplementation::readObjectMember(stream, _name))
+bool HospitalBuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (BuildingObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
+	switch(nameHashCode) {
+	}
 
 	return false;
 }
@@ -162,7 +168,7 @@ void HospitalBuildingObjectImplementation::writeObject(ObjectOutputStream* strea
 int HospitalBuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = BuildingObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
 

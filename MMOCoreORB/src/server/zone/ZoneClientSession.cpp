@@ -385,6 +385,10 @@ DistributedObjectServant* ZoneClientSession::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ZoneClientSession::_getImplementationForRead() {
+	return _impl;
+}
+
 void ZoneClientSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -464,14 +468,14 @@ void ZoneClientSessionImplementation::_serializationHelperMethod() {
 void ZoneClientSessionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ZoneClientSessionImplementation::readObjectMember(stream, _name)) {
+		if(ZoneClientSessionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -480,50 +484,44 @@ void ZoneClientSessionImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ZoneClientSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ManagedObjectImplementation::readObjectMember(stream, _name))
+bool ZoneClientSessionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ManagedObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "ZoneClientSession.characters") {
+	switch(nameHashCode) {
+	case 0xa95d2c6e: //ZoneClientSession.characters
 		TypeInfo<VectorMap<unsigned int, unsigned long long> >::parseFromBinaryStream(&characters, stream);
 		return true;
-	}
 
-	if (_name == "ZoneClientSession.bannedCharacters") {
+	case 0xe00b3c8d: //ZoneClientSession.bannedCharacters
 		TypeInfo<VectorMap<unsigned int, unsigned long long> >::parseFromBinaryStream(&bannedCharacters, stream);
 		return true;
-	}
 
-	if (_name == "ZoneClientSession.player") {
+	case 0x9b46d0c2: //ZoneClientSession.player
 		TypeInfo<ManagedWeakReference<SceneObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
-	}
 
-	if (_name == "ZoneClientSession.sessionID") {
+	case 0x7e078577: //ZoneClientSession.sessionID
 		TypeInfo<unsigned int >::parseFromBinaryStream(&sessionID, stream);
 		return true;
-	}
 
-	if (_name == "ZoneClientSession.accountID") {
+	case 0x90088679: //ZoneClientSession.accountID
 		TypeInfo<unsigned int >::parseFromBinaryStream(&accountID, stream);
 		return true;
-	}
 
-	if (_name == "ZoneClientSession.disconnecting") {
+	case 0x1da62823: //ZoneClientSession.disconnecting
 		TypeInfo<bool >::parseFromBinaryStream(&disconnecting, stream);
 		return true;
-	}
 
-	if (_name == "ZoneClientSession.commandSpamCooldown") {
+	case 0xe5829801: //ZoneClientSession.commandSpamCooldown
 		TypeInfo<Time >::parseFromBinaryStream(&commandSpamCooldown, stream);
 		return true;
-	}
 
-	if (_name == "ZoneClientSession.commandCount") {
+	case 0x8d46a189: //ZoneClientSession.commandCount
 		TypeInfo<int >::parseFromBinaryStream(&commandCount, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -538,67 +536,67 @@ void ZoneClientSessionImplementation::writeObject(ObjectOutputStream* stream) {
 int ZoneClientSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ManagedObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "ZoneClientSession.characters";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa95d2c6e; //ZoneClientSession.characters
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<unsigned int, unsigned long long> >::toBinaryStream(&characters, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneClientSession.bannedCharacters";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe00b3c8d; //ZoneClientSession.bannedCharacters
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<unsigned int, unsigned long long> >::toBinaryStream(&bannedCharacters, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneClientSession.player";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x9b46d0c2; //ZoneClientSession.player
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<SceneObject* > >::toBinaryStream(&player, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneClientSession.sessionID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7e078577; //ZoneClientSession.sessionID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&sessionID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneClientSession.accountID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x90088679; //ZoneClientSession.accountID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&accountID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneClientSession.disconnecting";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1da62823; //ZoneClientSession.disconnecting
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&disconnecting, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneClientSession.commandSpamCooldown";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe5829801; //ZoneClientSession.commandSpamCooldown
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&commandSpamCooldown, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ZoneClientSession.commandCount";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8d46a189; //ZoneClientSession.commandCount
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&commandCount, stream);

@@ -106,6 +106,10 @@ DistributedObjectServant* CitySpecializationSession::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* CitySpecializationSession::_getImplementationForRead() {
+	return _impl;
+}
+
 void CitySpecializationSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -185,14 +189,14 @@ void CitySpecializationSessionImplementation::_serializationHelperMethod() {
 void CitySpecializationSessionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(CitySpecializationSessionImplementation::readObjectMember(stream, _name)) {
+		if(CitySpecializationSessionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -201,30 +205,28 @@ void CitySpecializationSessionImplementation::readObject(ObjectInputStream* stre
 	initializeTransientMembers();
 }
 
-bool CitySpecializationSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (FacadeImplementation::readObjectMember(stream, _name))
+bool CitySpecializationSessionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (FacadeImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "CitySpecializationSession.creatureObject") {
+	switch(nameHashCode) {
+	case 0xa5d70f3f: //CitySpecializationSession.creatureObject
 		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&creatureObject, stream);
 		return true;
-	}
 
-	if (_name == "CitySpecializationSession.cityRegion") {
+	case 0x2e90f695: //CitySpecializationSession.cityRegion
 		TypeInfo<ManagedReference<CityRegion* > >::parseFromBinaryStream(&cityRegion, stream);
 		return true;
-	}
 
-	if (_name == "CitySpecializationSession.terminalObject") {
+	case 0x24a1d864: //CitySpecializationSession.terminalObject
 		TypeInfo<ManagedReference<SceneObject* > >::parseFromBinaryStream(&terminalObject, stream);
 		return true;
-	}
 
-	if (_name == "CitySpecializationSession.specialization") {
+	case 0x7240f606: //CitySpecializationSession.specialization
 		TypeInfo<String >::parseFromBinaryStream(&specialization, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -239,35 +241,35 @@ void CitySpecializationSessionImplementation::writeObject(ObjectOutputStream* st
 int CitySpecializationSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = FacadeImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "CitySpecializationSession.creatureObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa5d70f3f; //CitySpecializationSession.creatureObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&creatureObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CitySpecializationSession.cityRegion";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2e90f695; //CitySpecializationSession.cityRegion
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<CityRegion* > >::toBinaryStream(&cityRegion, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CitySpecializationSession.terminalObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x24a1d864; //CitySpecializationSession.terminalObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SceneObject* > >::toBinaryStream(&terminalObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CitySpecializationSession.specialization";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7240f606; //CitySpecializationSession.specialization
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&specialization, stream);

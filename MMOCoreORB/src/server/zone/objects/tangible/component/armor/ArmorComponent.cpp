@@ -184,6 +184,10 @@ DistributedObjectServant* ArmorComponent::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ArmorComponent::_getImplementationForRead() {
+	return _impl;
+}
+
 void ArmorComponent::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -263,14 +267,14 @@ void ArmorComponentImplementation::_serializationHelperMethod() {
 void ArmorComponentImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ArmorComponentImplementation::readObjectMember(stream, _name)) {
+		if(ArmorComponentImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -279,55 +283,48 @@ void ArmorComponentImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ArmorComponentImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ComponentImplementation::readObjectMember(stream, _name))
+bool ArmorComponentImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ComponentImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "ArmorComponent.kinetic") {
+	switch(nameHashCode) {
+	case 0x7be3e124: //ArmorComponent.kinetic
 		TypeInfo<float >::parseFromBinaryStream(&kinetic, stream);
 		return true;
-	}
 
-	if (_name == "ArmorComponent.energy") {
+	case 0x1ff4a5c9: //ArmorComponent.energy
 		TypeInfo<float >::parseFromBinaryStream(&energy, stream);
 		return true;
-	}
 
-	if (_name == "ArmorComponent.electricity") {
+	case 0xf8a701b: //ArmorComponent.electricity
 		TypeInfo<float >::parseFromBinaryStream(&electricity, stream);
 		return true;
-	}
 
-	if (_name == "ArmorComponent.stun") {
+	case 0xbc599ae: //ArmorComponent.stun
 		TypeInfo<float >::parseFromBinaryStream(&stun, stream);
 		return true;
-	}
 
-	if (_name == "ArmorComponent.blast") {
+	case 0x7f78d061: //ArmorComponent.blast
 		TypeInfo<float >::parseFromBinaryStream(&blast, stream);
 		return true;
-	}
 
-	if (_name == "ArmorComponent.heat") {
+	case 0x4ff04d82: //ArmorComponent.heat
 		TypeInfo<float >::parseFromBinaryStream(&heat, stream);
 		return true;
-	}
 
-	if (_name == "ArmorComponent.cold") {
+	case 0x8a7d2287: //ArmorComponent.cold
 		TypeInfo<float >::parseFromBinaryStream(&cold, stream);
 		return true;
-	}
 
-	if (_name == "ArmorComponent.acid") {
+	case 0xa8fd3c0f: //ArmorComponent.acid
 		TypeInfo<float >::parseFromBinaryStream(&acid, stream);
 		return true;
-	}
 
-	if (_name == "ArmorComponent.lightSaber") {
+	case 0xda39ff33: //ArmorComponent.lightSaber
 		TypeInfo<float >::parseFromBinaryStream(&lightSaber, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -342,75 +339,75 @@ void ArmorComponentImplementation::writeObject(ObjectOutputStream* stream) {
 int ArmorComponentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ComponentImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "ArmorComponent.kinetic";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7be3e124; //ArmorComponent.kinetic
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&kinetic, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorComponent.energy";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1ff4a5c9; //ArmorComponent.energy
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&energy, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorComponent.electricity";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf8a701b; //ArmorComponent.electricity
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&electricity, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorComponent.stun";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbc599ae; //ArmorComponent.stun
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&stun, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorComponent.blast";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7f78d061; //ArmorComponent.blast
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&blast, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorComponent.heat";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4ff04d82; //ArmorComponent.heat
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&heat, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorComponent.cold";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8a7d2287; //ArmorComponent.cold
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&cold, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorComponent.acid";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa8fd3c0f; //ArmorComponent.acid
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&acid, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ArmorComponent.lightSaber";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xda39ff33; //ArmorComponent.lightSaber
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&lightSaber, stream);

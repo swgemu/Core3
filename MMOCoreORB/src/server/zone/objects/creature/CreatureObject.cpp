@@ -156,7 +156,7 @@ void CreatureObject::sendToOwner(bool doClose) {
 }
 
 void CreatureObject::sendTo(SceneObject* player, bool doClose) {
-	CreatureObjectImplementation* _implementation = static_cast<CreatureObjectImplementation*>(_getImplementation());
+	CreatureObjectImplementation* _implementation = static_cast<CreatureObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3861,7 +3861,7 @@ bool CreatureObject::isCreature() {
 }
 
 bool CreatureObject::isPlayerCreature() {
-	CreatureObjectImplementation* _implementation = static_cast<CreatureObjectImplementation*>(_getImplementation());
+	CreatureObjectImplementation* _implementation = static_cast<CreatureObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -3874,7 +3874,7 @@ bool CreatureObject::isPlayerCreature() {
 }
 
 bool CreatureObject::isAiActor() {
-	CreatureObjectImplementation* _implementation = static_cast<CreatureObjectImplementation*>(_getImplementation());
+	CreatureObjectImplementation* _implementation = static_cast<CreatureObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
@@ -4067,6 +4067,10 @@ DistributedObjectServant* CreatureObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* CreatureObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void CreatureObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -4144,14 +4148,14 @@ void CreatureObjectImplementation::_serializationHelperMethod() {
 void CreatureObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(CreatureObjectImplementation::readObjectMember(stream, _name)) {
+		if(CreatureObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -4160,300 +4164,244 @@ void CreatureObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool CreatureObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool CreatureObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "CreatureObject.bankCredits") {
+	switch(nameHashCode) {
+	case 0x4efbe84d: //CreatureObject.bankCredits
 		TypeInfo<int >::parseFromBinaryStream(&bankCredits, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.cashCredits") {
+	case 0xfaf33732: //CreatureObject.cashCredits
 		TypeInfo<int >::parseFromBinaryStream(&cashCredits, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.gender") {
+	case 0x151a6a8b: //CreatureObject.gender
 		TypeInfo<int >::parseFromBinaryStream(&gender, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.species") {
+	case 0xabdc9a49: //CreatureObject.species
 		TypeInfo<int >::parseFromBinaryStream(&species, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.baseHAM") {
+	case 0xe9b502e0: //CreatureObject.baseHAM
 		TypeInfo<DeltaVector<int> >::parseFromBinaryStream(&baseHAM, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.posture") {
+	case 0xeb725d47: //CreatureObject.posture
 		TypeInfo<byte >::parseFromBinaryStream(&posture, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.locomotion") {
+	case 0x1baa7e7: //CreatureObject.locomotion
 		TypeInfo<byte >::parseFromBinaryStream(&locomotion, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.factionRank") {
+	case 0xc718f22f: //CreatureObject.factionRank
 		TypeInfo<byte >::parseFromBinaryStream(&factionRank, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.invisible") {
+	case 0xcd929817: //CreatureObject.invisible
 		TypeInfo<bool >::parseFromBinaryStream(&invisible, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.linkedCreature") {
+	case 0xb981d90d: //CreatureObject.linkedCreature
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&linkedCreature, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.controlDevice") {
+	case 0x49ffc563: //CreatureObject.controlDevice
 		TypeInfo<ManagedWeakReference<ControlDevice* > >::parseFromBinaryStream(&controlDevice, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.shockWounds") {
+	case 0xed4a9523: //CreatureObject.shockWounds
 		TypeInfo<float >::parseFromBinaryStream(&shockWounds, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.wounds") {
+	case 0xc58d8e3a: //CreatureObject.wounds
 		TypeInfo<DeltaVector<int> >::parseFromBinaryStream(&wounds, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.stateBitmask") {
+	case 0x28d872c3: //CreatureObject.stateBitmask
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&stateBitmask, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.encumbrances") {
+	case 0x7efecb9a: //CreatureObject.encumbrances
 		TypeInfo<DeltaVector<int> >::parseFromBinaryStream(&encumbrances, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.wearablesVector") {
+	case 0x3f51e181: //CreatureObject.wearablesVector
 		TypeInfo<WearablesDeltaVector >::parseFromBinaryStream(&wearablesVector, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.accelerationMultiplierBase") {
+	case 0xed98f6f1: //CreatureObject.accelerationMultiplierBase
 		TypeInfo<float >::parseFromBinaryStream(&accelerationMultiplierBase, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.accelerationMultiplierMod") {
+	case 0xc1ae38c: //CreatureObject.accelerationMultiplierMod
 		TypeInfo<float >::parseFromBinaryStream(&accelerationMultiplierMod, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.speedMultiplierBase") {
+	case 0x4114cdb5: //CreatureObject.speedMultiplierBase
 		TypeInfo<float >::parseFromBinaryStream(&speedMultiplierBase, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.speedMultiplierModChanges") {
+	case 0x45a23b71: //CreatureObject.speedMultiplierModChanges
 		TypeInfo<SpeedMultiplierModChanges >::parseFromBinaryStream(&speedMultiplierModChanges, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.speedMultiplierMod") {
+	case 0x612b07f7: //CreatureObject.speedMultiplierMod
 		TypeInfo<float >::parseFromBinaryStream(&speedMultiplierMod, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.turnScale") {
+	case 0xc5da611d: //CreatureObject.turnScale
 		TypeInfo<float >::parseFromBinaryStream(&turnScale, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.runSpeed") {
+	case 0x76595507: //CreatureObject.runSpeed
 		TypeInfo<float >::parseFromBinaryStream(&runSpeed, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.walkSpeed") {
+	case 0x99e420df: //CreatureObject.walkSpeed
 		TypeInfo<float >::parseFromBinaryStream(&walkSpeed, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.currentSpeed") {
+	case 0x27abda40: //CreatureObject.currentSpeed
 		TypeInfo<float >::parseFromBinaryStream(&currentSpeed, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.terrainNegotiation") {
+	case 0xe5a6e8cb: //CreatureObject.terrainNegotiation
 		TypeInfo<float >::parseFromBinaryStream(&terrainNegotiation, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.runAcceleration") {
+	case 0xd126abdf: //CreatureObject.runAcceleration
 		TypeInfo<float >::parseFromBinaryStream(&runAcceleration, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.walkAcceleration") {
+	case 0x7889ea2d: //CreatureObject.walkAcceleration
 		TypeInfo<float >::parseFromBinaryStream(&walkAcceleration, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.height") {
+	case 0x949ac654: //CreatureObject.height
 		TypeInfo<float >::parseFromBinaryStream(&height, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.swimHeight") {
+	case 0xe0f234f7: //CreatureObject.swimHeight
 		TypeInfo<float >::parseFromBinaryStream(&swimHeight, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.slopeModPercent") {
+	case 0x3acb18b3: //CreatureObject.slopeModPercent
 		TypeInfo<float >::parseFromBinaryStream(&slopeModPercent, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.slopeModAngle") {
+	case 0x1f13576: //CreatureObject.slopeModAngle
 		TypeInfo<float >::parseFromBinaryStream(&slopeModAngle, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.listenToID") {
+	case 0xc1faba17: //CreatureObject.listenToID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&listenToID, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.watchToID") {
+	case 0x2322b2f8: //CreatureObject.watchToID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&watchToID, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.performanceAnimation") {
+	case 0xc8ec9744: //CreatureObject.performanceAnimation
 		TypeInfo<String >::parseFromBinaryStream(&performanceAnimation, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.moodString") {
+	case 0xe9808458: //CreatureObject.moodString
 		TypeInfo<String >::parseFromBinaryStream(&moodString, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.weapon") {
+	case 0xf7c21f8: //CreatureObject.weapon
 		TypeInfo<ManagedReference<WeaponObject* > >::parseFromBinaryStream(&weapon, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.group") {
+	case 0x40463fdc: //CreatureObject.group
 		TypeInfo<ManagedReference<GroupObject* > >::parseFromBinaryStream(&group, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.groupInviterID") {
+	case 0x764b5acf: //CreatureObject.groupInviterID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&groupInviterID, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.groupInviteCounter") {
+	case 0x80dbd4b5: //CreatureObject.groupInviteCounter
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&groupInviteCounter, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.guild") {
+	case 0x4f029e94: //CreatureObject.guild
 		TypeInfo<ManagedReference<GuildObject* > >::parseFromBinaryStream(&guild, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.targetID") {
+	case 0xeb62addf: //CreatureObject.targetID
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&targetID, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.moodID") {
+	case 0xd4ef3def: //CreatureObject.moodID
 		TypeInfo<byte >::parseFromBinaryStream(&moodID, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.performanceCounter") {
+	case 0x83a587da: //CreatureObject.performanceCounter
 		TypeInfo<int >::parseFromBinaryStream(&performanceCounter, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.instrumentID") {
+	case 0x41617b95: //CreatureObject.instrumentID
 		TypeInfo<int >::parseFromBinaryStream(&instrumentID, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.hamList") {
+	case 0xe7af3a39: //CreatureObject.hamList
 		TypeInfo<DeltaVector<int> >::parseFromBinaryStream(&hamList, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.maxHamList") {
+	case 0xe055bce7: //CreatureObject.maxHamList
 		TypeInfo<DeltaVector<int> >::parseFromBinaryStream(&maxHamList, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.frozen") {
+	case 0xc4efdf12: //CreatureObject.frozen
 		TypeInfo<byte >::parseFromBinaryStream(&frozen, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.templateString") {
+	case 0xd6174e91: //CreatureObject.templateString
 		TypeInfo<String >::parseFromBinaryStream(&templateString, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.skillList") {
+	case 0x1a1789b3: //CreatureObject.skillList
 		TypeInfo<SkillList >::parseFromBinaryStream(&skillList, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.skillModList") {
+	case 0xbc739f7e: //CreatureObject.skillModList
 		TypeInfo<SkillModList >::parseFromBinaryStream(&skillModList, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.nextAction") {
+	case 0x763c81e: //CreatureObject.nextAction
 		TypeInfo<Time >::parseFromBinaryStream(&nextAction, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.cooldownTimerMap") {
+	case 0xbc44e9f6: //CreatureObject.cooldownTimerMap
 		TypeInfo<Reference<CooldownTimerMap* > >::parseFromBinaryStream(&cooldownTimerMap, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.creatureBuffs") {
+	case 0x905e244e: //CreatureObject.creatureBuffs
 		TypeInfo<BuffList >::parseFromBinaryStream(&creatureBuffs, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.damageOverTimeList") {
+	case 0xf65f1375: //CreatureObject.damageOverTimeList
 		TypeInfo<DamageOverTimeList >::parseFromBinaryStream(&damageOverTimeList, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.lastSuccessfulCombatAction") {
+	case 0xe0c29f16: //CreatureObject.lastSuccessfulCombatAction
 		TypeInfo<Time >::parseFromBinaryStream(&lastSuccessfulCombatAction, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.timeOfDeath") {
+	case 0x93032da8: //CreatureObject.timeOfDeath
 		TypeInfo<Time >::parseFromBinaryStream(&timeOfDeath, stream);
 		return true;
-	}
 
-	if (_name == "CreatureObject.screenPlayStates") {
+	case 0xfaac264a: //CreatureObject.screenPlayStates
 		TypeInfo<VectorMap<String, unsigned long long> >::parseFromBinaryStream(&screenPlayStates, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -4468,467 +4416,467 @@ void CreatureObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int CreatureObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "CreatureObject.bankCredits";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4efbe84d; //CreatureObject.bankCredits
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&bankCredits, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.cashCredits";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfaf33732; //CreatureObject.cashCredits
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&cashCredits, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.gender";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x151a6a8b; //CreatureObject.gender
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&gender, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.species";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xabdc9a49; //CreatureObject.species
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&species, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.baseHAM";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe9b502e0; //CreatureObject.baseHAM
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<DeltaVector<int> >::toBinaryStream(&baseHAM, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.posture";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xeb725d47; //CreatureObject.posture
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&posture, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.locomotion";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1baa7e7; //CreatureObject.locomotion
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&locomotion, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.factionRank";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc718f22f; //CreatureObject.factionRank
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&factionRank, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.invisible";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xcd929817; //CreatureObject.invisible
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&invisible, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.linkedCreature";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb981d90d; //CreatureObject.linkedCreature
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&linkedCreature, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.controlDevice";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x49ffc563; //CreatureObject.controlDevice
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<ControlDevice* > >::toBinaryStream(&controlDevice, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.shockWounds";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xed4a9523; //CreatureObject.shockWounds
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&shockWounds, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.wounds";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc58d8e3a; //CreatureObject.wounds
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<DeltaVector<int> >::toBinaryStream(&wounds, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.stateBitmask";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x28d872c3; //CreatureObject.stateBitmask
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&stateBitmask, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.encumbrances";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7efecb9a; //CreatureObject.encumbrances
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<DeltaVector<int> >::toBinaryStream(&encumbrances, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.wearablesVector";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3f51e181; //CreatureObject.wearablesVector
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<WearablesDeltaVector >::toBinaryStream(&wearablesVector, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.accelerationMultiplierBase";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xed98f6f1; //CreatureObject.accelerationMultiplierBase
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&accelerationMultiplierBase, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.accelerationMultiplierMod";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc1ae38c; //CreatureObject.accelerationMultiplierMod
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&accelerationMultiplierMod, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.speedMultiplierBase";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4114cdb5; //CreatureObject.speedMultiplierBase
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&speedMultiplierBase, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.speedMultiplierModChanges";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x45a23b71; //CreatureObject.speedMultiplierModChanges
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SpeedMultiplierModChanges >::toBinaryStream(&speedMultiplierModChanges, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.speedMultiplierMod";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x612b07f7; //CreatureObject.speedMultiplierMod
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&speedMultiplierMod, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.turnScale";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc5da611d; //CreatureObject.turnScale
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&turnScale, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.runSpeed";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x76595507; //CreatureObject.runSpeed
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&runSpeed, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.walkSpeed";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x99e420df; //CreatureObject.walkSpeed
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&walkSpeed, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.currentSpeed";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x27abda40; //CreatureObject.currentSpeed
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&currentSpeed, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.terrainNegotiation";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe5a6e8cb; //CreatureObject.terrainNegotiation
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&terrainNegotiation, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.runAcceleration";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd126abdf; //CreatureObject.runAcceleration
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&runAcceleration, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.walkAcceleration";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7889ea2d; //CreatureObject.walkAcceleration
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&walkAcceleration, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.height";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x949ac654; //CreatureObject.height
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&height, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.swimHeight";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe0f234f7; //CreatureObject.swimHeight
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&swimHeight, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.slopeModPercent";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3acb18b3; //CreatureObject.slopeModPercent
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&slopeModPercent, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.slopeModAngle";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1f13576; //CreatureObject.slopeModAngle
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&slopeModAngle, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.listenToID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc1faba17; //CreatureObject.listenToID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&listenToID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.watchToID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2322b2f8; //CreatureObject.watchToID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&watchToID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.performanceAnimation";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc8ec9744; //CreatureObject.performanceAnimation
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&performanceAnimation, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.moodString";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe9808458; //CreatureObject.moodString
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&moodString, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.weapon";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf7c21f8; //CreatureObject.weapon
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<WeaponObject* > >::toBinaryStream(&weapon, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.group";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x40463fdc; //CreatureObject.group
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<GroupObject* > >::toBinaryStream(&group, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.groupInviterID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x764b5acf; //CreatureObject.groupInviterID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&groupInviterID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.groupInviteCounter";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x80dbd4b5; //CreatureObject.groupInviteCounter
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&groupInviteCounter, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.guild";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4f029e94; //CreatureObject.guild
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<GuildObject* > >::toBinaryStream(&guild, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.targetID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xeb62addf; //CreatureObject.targetID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&targetID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.moodID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd4ef3def; //CreatureObject.moodID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&moodID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.performanceCounter";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x83a587da; //CreatureObject.performanceCounter
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&performanceCounter, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.instrumentID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x41617b95; //CreatureObject.instrumentID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&instrumentID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.hamList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe7af3a39; //CreatureObject.hamList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<DeltaVector<int> >::toBinaryStream(&hamList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.maxHamList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe055bce7; //CreatureObject.maxHamList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<DeltaVector<int> >::toBinaryStream(&maxHamList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.frozen";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc4efdf12; //CreatureObject.frozen
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<byte >::toBinaryStream(&frozen, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.templateString";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd6174e91; //CreatureObject.templateString
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&templateString, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.skillList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1a1789b3; //CreatureObject.skillList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SkillList >::toBinaryStream(&skillList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.skillModList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbc739f7e; //CreatureObject.skillModList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SkillModList >::toBinaryStream(&skillModList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.nextAction";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x763c81e; //CreatureObject.nextAction
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&nextAction, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.cooldownTimerMap";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbc44e9f6; //CreatureObject.cooldownTimerMap
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Reference<CooldownTimerMap* > >::toBinaryStream(&cooldownTimerMap, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.creatureBuffs";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x905e244e; //CreatureObject.creatureBuffs
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<BuffList >::toBinaryStream(&creatureBuffs, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.damageOverTimeList";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf65f1375; //CreatureObject.damageOverTimeList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<DamageOverTimeList >::toBinaryStream(&damageOverTimeList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.lastSuccessfulCombatAction";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe0c29f16; //CreatureObject.lastSuccessfulCombatAction
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&lastSuccessfulCombatAction, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.timeOfDeath";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x93032da8; //CreatureObject.timeOfDeath
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Time >::toBinaryStream(&timeOfDeath, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureObject.screenPlayStates";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfaac264a; //CreatureObject.screenPlayStates
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<String, unsigned long long> >::toBinaryStream(&screenPlayStates, stream);

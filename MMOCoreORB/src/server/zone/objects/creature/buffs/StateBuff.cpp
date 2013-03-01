@@ -62,6 +62,10 @@ DistributedObjectServant* StateBuff::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* StateBuff::_getImplementationForRead() {
+	return _impl;
+}
+
 void StateBuff::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -141,14 +145,14 @@ void StateBuffImplementation::_serializationHelperMethod() {
 void StateBuffImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(StateBuffImplementation::readObjectMember(stream, _name)) {
+		if(StateBuffImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -157,15 +161,16 @@ void StateBuffImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool StateBuffImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (BuffImplementation::readObjectMember(stream, _name))
+bool StateBuffImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (BuffImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "StateBuff.stateApplied") {
+	switch(nameHashCode) {
+	case 0x60240077: //StateBuff.stateApplied
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&stateApplied, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -180,11 +185,11 @@ void StateBuffImplementation::writeObject(ObjectOutputStream* stream) {
 int StateBuffImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = BuffImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "StateBuff.stateApplied";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x60240077; //StateBuff.stateApplied
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&stateApplied, stream);

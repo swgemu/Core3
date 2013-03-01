@@ -130,6 +130,10 @@ DistributedObjectServant* DestroyStructureSession::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* DestroyStructureSession::_getImplementationForRead() {
+	return _impl;
+}
+
 void DestroyStructureSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -209,14 +213,14 @@ void DestroyStructureSessionImplementation::_serializationHelperMethod() {
 void DestroyStructureSessionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(DestroyStructureSessionImplementation::readObjectMember(stream, _name)) {
+		if(DestroyStructureSessionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -225,25 +229,24 @@ void DestroyStructureSessionImplementation::readObject(ObjectInputStream* stream
 	initializeTransientMembers();
 }
 
-bool DestroyStructureSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (FacadeImplementation::readObjectMember(stream, _name))
+bool DestroyStructureSessionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (FacadeImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "DestroyStructureSession.creatureObject") {
+	switch(nameHashCode) {
+	case 0x71e3c432: //DestroyStructureSession.creatureObject
 		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&creatureObject, stream);
 		return true;
-	}
 
-	if (_name == "DestroyStructureSession.structureObject") {
+	case 0x2b6f354b: //DestroyStructureSession.structureObject
 		TypeInfo<ManagedReference<StructureObject* > >::parseFromBinaryStream(&structureObject, stream);
 		return true;
-	}
 
-	if (_name == "DestroyStructureSession.destroyCode") {
+	case 0xe4f1440a: //DestroyStructureSession.destroyCode
 		TypeInfo<unsigned int >::parseFromBinaryStream(&destroyCode, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -258,27 +261,27 @@ void DestroyStructureSessionImplementation::writeObject(ObjectOutputStream* stre
 int DestroyStructureSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = FacadeImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "DestroyStructureSession.creatureObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x71e3c432; //DestroyStructureSession.creatureObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&creatureObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DestroyStructureSession.structureObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2b6f354b; //DestroyStructureSession.structureObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<StructureObject* > >::toBinaryStream(&structureObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "DestroyStructureSession.destroyCode";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe4f1440a; //DestroyStructureSession.destroyCode
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&destroyCode, stream);

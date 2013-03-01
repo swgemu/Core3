@@ -153,6 +153,10 @@ DistributedObjectServant* LairObserver::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* LairObserver::_getImplementationForRead() {
+	return _impl;
+}
+
 void LairObserver::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -232,14 +236,14 @@ void LairObserverImplementation::_serializationHelperMethod() {
 void LairObserverImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(LairObserverImplementation::readObjectMember(stream, _name)) {
+		if(LairObserverImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -248,25 +252,24 @@ void LairObserverImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool LairObserverImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ObserverImplementation::readObjectMember(stream, _name))
+bool LairObserverImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ObserverImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "LairObserver.spawnedCreatures") {
+	switch(nameHashCode) {
+	case 0x2f99c58b: //LairObserver.spawnedCreatures
 		TypeInfo<Vector<ManagedReference<CreatureObject* > > >::parseFromBinaryStream(&spawnedCreatures, stream);
 		return true;
-	}
 
-	if (_name == "LairObserver.spawnNumber") {
+	case 0x21ede828: //LairObserver.spawnNumber
 		TypeInfo<int >::parseFromBinaryStream(&spawnNumber, stream);
 		return true;
-	}
 
-	if (_name == "LairObserver.difficulty") {
+	case 0x230603c7: //LairObserver.difficulty
 		TypeInfo<int >::parseFromBinaryStream(&difficulty, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -281,27 +284,27 @@ void LairObserverImplementation::writeObject(ObjectOutputStream* stream) {
 int LairObserverImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ObserverImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "LairObserver.spawnedCreatures";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x2f99c58b; //LairObserver.spawnedCreatures
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Vector<ManagedReference<CreatureObject* > > >::toBinaryStream(&spawnedCreatures, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LairObserver.spawnNumber";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x21ede828; //LairObserver.spawnNumber
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&spawnNumber, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "LairObserver.difficulty";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x230603c7; //LairObserver.difficulty
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&difficulty, stream);

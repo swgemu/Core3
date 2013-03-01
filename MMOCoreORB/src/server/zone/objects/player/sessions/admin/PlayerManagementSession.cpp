@@ -250,6 +250,10 @@ DistributedObjectServant* PlayerManagementSession::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* PlayerManagementSession::_getImplementationForRead() {
+	return _impl;
+}
+
 void PlayerManagementSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -329,14 +333,14 @@ void PlayerManagementSessionImplementation::_serializationHelperMethod() {
 void PlayerManagementSessionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(PlayerManagementSessionImplementation::readObjectMember(stream, _name)) {
+		if(PlayerManagementSessionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -345,90 +349,76 @@ void PlayerManagementSessionImplementation::readObject(ObjectInputStream* stream
 	initializeTransientMembers();
 }
 
-bool PlayerManagementSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (FacadeImplementation::readObjectMember(stream, _name))
+bool PlayerManagementSessionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (FacadeImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "PlayerManagementSession.adminGhost") {
+	switch(nameHashCode) {
+	case 0x1f055bcc: //PlayerManagementSession.adminGhost
 		TypeInfo<ManagedReference<PlayerObject* > >::parseFromBinaryStream(&adminGhost, stream);
 		return true;
-	}
 
-	if (_name == "PlayerManagementSession.admin") {
+	case 0xf2b7e88f: //PlayerManagementSession.admin
 		TypeInfo<ManagedReference<CreatureObject* > >::parseFromBinaryStream(&admin, stream);
 		return true;
-	}
 
-	if (_name == "PlayerManagementSession.accountBox") {
+	case 0x8497f64c: //PlayerManagementSession.accountBox
 		TypeInfo<ManagedReference<SuiListBox* > >::parseFromBinaryStream(&accountBox, stream);
 		return true;
-	}
 
-	if (_name == "PlayerManagementSession.durationBox") {
+	case 0x26a71554: //PlayerManagementSession.durationBox
 		TypeInfo<ManagedReference<SuiInputBox* > >::parseFromBinaryStream(&durationBox, stream);
 		return true;
-	}
 
-	if (_name == "PlayerManagementSession.reasonBox") {
+	case 0x7f2ff705: //PlayerManagementSession.reasonBox
 		TypeInfo<ManagedReference<SuiInputBox* > >::parseFromBinaryStream(&reasonBox, stream);
 		return true;
-	}
 
-	if (_name == "PlayerManagementSession.summaryBox") {
+	case 0x65ca7ceb: //PlayerManagementSession.summaryBox
 		TypeInfo<ManagedReference<SuiListBox* > >::parseFromBinaryStream(&summaryBox, stream);
 		return true;
-	}
 
-	if (_name == "PlayerManagementSession.unbanSummaryBox") {
+	case 0xce888e34: //PlayerManagementSession.unbanSummaryBox
 		TypeInfo<ManagedReference<SuiMessageBox* > >::parseFromBinaryStream(&unbanSummaryBox, stream);
 		return true;
-	}
 
-	if (_name == "PlayerManagementSession.playerManager") {
+	case 0xe931623e: //PlayerManagementSession.playerManager
 		TypeInfo<ManagedReference<PlayerManager* > >::parseFromBinaryStream(&playerManager, stream);
 		return true;
-	}
 
-	if (_name == "PlayerManagementSession.banType") {
+	case 0xcc82fa1: //PlayerManagementSession.banType
 		TypeInfo<int >::parseFromBinaryStream(&banType, stream);
 		return true;
-	}
 
-	if (_name == "PlayerManagementSession.banMode") {
+	case 0x92779967: //PlayerManagementSession.banMode
 		TypeInfo<int >::parseFromBinaryStream(&banMode, stream);
 		return true;
-	}
 
-	if (_name == "PlayerManagementSession.targetAccount") {
+	case 0xb79290df: //PlayerManagementSession.targetAccount
 		TypeInfo<ManagedReference<Account* > >::parseFromBinaryStream(&targetAccount, stream);
 		return true;
-	}
 
-	if (_name == "PlayerManagementSession.galaxyID") {
+	case 0xb9103959: //PlayerManagementSession.galaxyID
 		TypeInfo<unsigned int >::parseFromBinaryStream(&galaxyID, stream);
 		return true;
-	}
 
-	if (_name == "PlayerManagementSession.galaxyName") {
+	case 0x86f29370: //PlayerManagementSession.galaxyName
 		TypeInfo<String >::parseFromBinaryStream(&galaxyName, stream);
 		return true;
-	}
 
-	if (_name == "PlayerManagementSession.banExpiration") {
+	case 0x3efa8770: //PlayerManagementSession.banExpiration
 		TypeInfo<unsigned int >::parseFromBinaryStream(&banExpiration, stream);
 		return true;
-	}
 
-	if (_name == "PlayerManagementSession.banReason") {
+	case 0xa251b468: //PlayerManagementSession.banReason
 		TypeInfo<String >::parseFromBinaryStream(&banReason, stream);
 		return true;
-	}
 
-	if (_name == "PlayerManagementSession.targetName") {
+	case 0x1f7a3fee: //PlayerManagementSession.targetName
 		TypeInfo<String >::parseFromBinaryStream(&targetName, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -443,131 +433,131 @@ void PlayerManagementSessionImplementation::writeObject(ObjectOutputStream* stre
 int PlayerManagementSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = FacadeImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "PlayerManagementSession.adminGhost";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1f055bcc; //PlayerManagementSession.adminGhost
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<PlayerObject* > >::toBinaryStream(&adminGhost, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerManagementSession.admin";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf2b7e88f; //PlayerManagementSession.admin
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<CreatureObject* > >::toBinaryStream(&admin, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerManagementSession.accountBox";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x8497f64c; //PlayerManagementSession.accountBox
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SuiListBox* > >::toBinaryStream(&accountBox, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerManagementSession.durationBox";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x26a71554; //PlayerManagementSession.durationBox
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SuiInputBox* > >::toBinaryStream(&durationBox, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerManagementSession.reasonBox";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7f2ff705; //PlayerManagementSession.reasonBox
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SuiInputBox* > >::toBinaryStream(&reasonBox, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerManagementSession.summaryBox";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x65ca7ceb; //PlayerManagementSession.summaryBox
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SuiListBox* > >::toBinaryStream(&summaryBox, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerManagementSession.unbanSummaryBox";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xce888e34; //PlayerManagementSession.unbanSummaryBox
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SuiMessageBox* > >::toBinaryStream(&unbanSummaryBox, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerManagementSession.playerManager";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe931623e; //PlayerManagementSession.playerManager
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<PlayerManager* > >::toBinaryStream(&playerManager, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerManagementSession.banType";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xcc82fa1; //PlayerManagementSession.banType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&banType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerManagementSession.banMode";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x92779967; //PlayerManagementSession.banMode
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&banMode, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerManagementSession.targetAccount";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb79290df; //PlayerManagementSession.targetAccount
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<Account* > >::toBinaryStream(&targetAccount, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerManagementSession.galaxyID";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xb9103959; //PlayerManagementSession.galaxyID
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&galaxyID, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerManagementSession.galaxyName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x86f29370; //PlayerManagementSession.galaxyName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&galaxyName, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerManagementSession.banExpiration";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3efa8770; //PlayerManagementSession.banExpiration
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned int >::toBinaryStream(&banExpiration, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerManagementSession.banReason";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xa251b468; //PlayerManagementSession.banReason
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&banReason, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "PlayerManagementSession.targetName";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x1f7a3fee; //PlayerManagementSession.targetName
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<String >::toBinaryStream(&targetName, stream);

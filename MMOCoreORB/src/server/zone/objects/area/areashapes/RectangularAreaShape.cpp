@@ -170,6 +170,10 @@ DistributedObjectServant* RectangularAreaShape::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* RectangularAreaShape::_getImplementationForRead() {
+	return _impl;
+}
+
 void RectangularAreaShape::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -249,14 +253,14 @@ void RectangularAreaShapeImplementation::_serializationHelperMethod() {
 void RectangularAreaShapeImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(RectangularAreaShapeImplementation::readObjectMember(stream, _name)) {
+		if(RectangularAreaShapeImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -265,20 +269,20 @@ void RectangularAreaShapeImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool RectangularAreaShapeImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (AreaShapeImplementation::readObjectMember(stream, _name))
+bool RectangularAreaShapeImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (AreaShapeImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "RectangularAreaShape.height") {
+	switch(nameHashCode) {
+	case 0x36d0467c: //RectangularAreaShape.height
 		TypeInfo<float >::parseFromBinaryStream(&height, stream);
 		return true;
-	}
 
-	if (_name == "RectangularAreaShape.width") {
+	case 0x21e120b2: //RectangularAreaShape.width
 		TypeInfo<float >::parseFromBinaryStream(&width, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -293,19 +297,19 @@ void RectangularAreaShapeImplementation::writeObject(ObjectOutputStream* stream)
 int RectangularAreaShapeImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = AreaShapeImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "RectangularAreaShape.height";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x36d0467c; //RectangularAreaShape.height
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&height, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "RectangularAreaShape.width";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x21e120b2; //RectangularAreaShape.width
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<float >::toBinaryStream(&width, stream);

@@ -207,6 +207,10 @@ DistributedObjectServant* TradeSession::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* TradeSession::_getImplementationForRead() {
+	return _impl;
+}
+
 void TradeSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -286,14 +290,14 @@ void TradeSessionImplementation::_serializationHelperMethod() {
 void TradeSessionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(TradeSessionImplementation::readObjectMember(stream, _name)) {
+		if(TradeSessionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -302,35 +306,32 @@ void TradeSessionImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool TradeSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (FacadeImplementation::readObjectMember(stream, _name))
+bool TradeSessionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (FacadeImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "TradeSession.tradeTargetPlayer") {
+	switch(nameHashCode) {
+	case 0x4b59ee3a: //TradeSession.tradeTargetPlayer
 		TypeInfo<unsigned long long >::parseFromBinaryStream(&tradeTargetPlayer, stream);
 		return true;
-	}
 
-	if (_name == "TradeSession.itemsToTrade") {
+	case 0x445df906: //TradeSession.itemsToTrade
 		TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&itemsToTrade, stream);
 		return true;
-	}
 
-	if (_name == "TradeSession.verifiedTrade") {
+	case 0xc2bf13de: //TradeSession.verifiedTrade
 		TypeInfo<bool >::parseFromBinaryStream(&verifiedTrade, stream);
 		return true;
-	}
 
-	if (_name == "TradeSession.acceptedTrade") {
+	case 0xc4a09e07: //TradeSession.acceptedTrade
 		TypeInfo<bool >::parseFromBinaryStream(&acceptedTrade, stream);
 		return true;
-	}
 
-	if (_name == "TradeSession.moneyToTrade") {
+	case 0x5b6aa3d6: //TradeSession.moneyToTrade
 		TypeInfo<int >::parseFromBinaryStream(&moneyToTrade, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -345,43 +346,43 @@ void TradeSessionImplementation::writeObject(ObjectOutputStream* stream) {
 int TradeSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = FacadeImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "TradeSession.tradeTargetPlayer";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4b59ee3a; //TradeSession.tradeTargetPlayer
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<unsigned long long >::toBinaryStream(&tradeTargetPlayer, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TradeSession.itemsToTrade";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x445df906; //TradeSession.itemsToTrade
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::toBinaryStream(&itemsToTrade, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TradeSession.verifiedTrade";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc2bf13de; //TradeSession.verifiedTrade
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&verifiedTrade, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TradeSession.acceptedTrade";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc4a09e07; //TradeSession.acceptedTrade
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&acceptedTrade, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "TradeSession.moneyToTrade";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5b6aa3d6; //TradeSession.moneyToTrade
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&moneyToTrade, stream);

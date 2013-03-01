@@ -234,6 +234,10 @@ DistributedObjectServant* WearableObject::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* WearableObject::_getImplementationForRead() {
+	return _impl;
+}
+
 void WearableObject::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -313,14 +317,14 @@ void WearableObjectImplementation::_serializationHelperMethod() {
 void WearableObjectImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(WearableObjectImplementation::readObjectMember(stream, _name)) {
+		if(WearableObjectImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -329,40 +333,36 @@ void WearableObjectImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool WearableObjectImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TangibleObjectImplementation::readObjectMember(stream, _name))
+bool WearableObjectImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TangibleObjectImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "WearableObject.socketCount") {
+	switch(nameHashCode) {
+	case 0xc21c323f: //WearableObject.socketCount
 		TypeInfo<int >::parseFromBinaryStream(&socketCount, stream);
 		return true;
-	}
 
-	if (_name == "WearableObject.socketsGenerated") {
+	case 0xd9dac00b: //WearableObject.socketsGenerated
 		TypeInfo<bool >::parseFromBinaryStream(&socketsGenerated, stream);
 		return true;
-	}
 
-	if (_name == "WearableObject.objectCreatedPreUsedSocketCountFix") {
+	case 0xf1b2f6f0: //WearableObject.objectCreatedPreUsedSocketCountFix
 		TypeInfo<bool >::parseFromBinaryStream(&objectCreatedPreUsedSocketCountFix, stream);
 		return true;
-	}
 
-	if (_name == "WearableObject.usedSocketCount") {
+	case 0xe6af92c5: //WearableObject.usedSocketCount
 		TypeInfo<int >::parseFromBinaryStream(&usedSocketCount, stream);
 		return true;
-	}
 
-	if (_name == "WearableObject.modsNotInSockets") {
+	case 0xe16cd3a5: //WearableObject.modsNotInSockets
 		TypeInfo<int >::parseFromBinaryStream(&modsNotInSockets, stream);
 		return true;
-	}
 
-	if (_name == "WearableObject.wearableSkillMods") {
+	case 0x3e4d7b7b: //WearableObject.wearableSkillMods
 		TypeInfo<VectorMap<String, int> >::parseFromBinaryStream(&wearableSkillMods, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -377,51 +377,51 @@ void WearableObjectImplementation::writeObject(ObjectOutputStream* stream) {
 int WearableObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TangibleObjectImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "WearableObject.socketCount";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc21c323f; //WearableObject.socketCount
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&socketCount, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WearableObject.socketsGenerated";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd9dac00b; //WearableObject.socketsGenerated
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&socketsGenerated, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WearableObject.objectCreatedPreUsedSocketCountFix";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf1b2f6f0; //WearableObject.objectCreatedPreUsedSocketCountFix
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&objectCreatedPreUsedSocketCountFix, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WearableObject.usedSocketCount";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe6af92c5; //WearableObject.usedSocketCount
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&usedSocketCount, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WearableObject.modsNotInSockets";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe16cd3a5; //WearableObject.modsNotInSockets
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&modsNotInSockets, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "WearableObject.wearableSkillMods";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x3e4d7b7b; //WearableObject.wearableSkillMods
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<VectorMap<String, int> >::toBinaryStream(&wearableSkillMods, stream);

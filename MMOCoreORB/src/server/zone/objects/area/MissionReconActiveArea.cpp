@@ -82,6 +82,10 @@ DistributedObjectServant* MissionReconActiveArea::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* MissionReconActiveArea::_getImplementationForRead() {
+	return _impl;
+}
+
 void MissionReconActiveArea::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -161,14 +165,14 @@ void MissionReconActiveAreaImplementation::_serializationHelperMethod() {
 void MissionReconActiveAreaImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(MissionReconActiveAreaImplementation::readObjectMember(stream, _name)) {
+		if(MissionReconActiveAreaImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -177,20 +181,20 @@ void MissionReconActiveAreaImplementation::readObject(ObjectInputStream* stream)
 	initializeTransientMembers();
 }
 
-bool MissionReconActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ActiveAreaImplementation::readObjectMember(stream, _name))
+bool MissionReconActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ActiveAreaImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "MissionReconActiveArea.missionObjective") {
+	switch(nameHashCode) {
+	case 0xbc7e36f0: //MissionReconActiveArea.missionObjective
 		TypeInfo<ManagedWeakReference<ReconMissionObjective* > >::parseFromBinaryStream(&missionObjective, stream);
 		return true;
-	}
 
-	if (_name == "MissionReconActiveArea.completeTask") {
+	case 0xe082c35d: //MissionReconActiveArea.completeTask
 		TypeInfo<Reference<CompleteMissionAfterCertainTimeTask* > >::parseFromBinaryStream(&completeTask, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -205,19 +209,19 @@ void MissionReconActiveAreaImplementation::writeObject(ObjectOutputStream* strea
 int MissionReconActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ActiveAreaImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "MissionReconActiveArea.missionObjective";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbc7e36f0; //MissionReconActiveArea.missionObjective
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<ReconMissionObjective* > >::toBinaryStream(&missionObjective, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "MissionReconActiveArea.completeTask";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xe082c35d; //MissionReconActiveArea.completeTask
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<Reference<CompleteMissionAfterCertainTimeTask* > >::toBinaryStream(&completeTask, stream);

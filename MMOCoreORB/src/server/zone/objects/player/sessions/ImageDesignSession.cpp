@@ -197,6 +197,10 @@ DistributedObjectServant* ImageDesignSession::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* ImageDesignSession::_getImplementationForRead() {
+	return _impl;
+}
+
 void ImageDesignSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -276,14 +280,14 @@ void ImageDesignSessionImplementation::_serializationHelperMethod() {
 void ImageDesignSessionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(ImageDesignSessionImplementation::readObjectMember(stream, _name)) {
+		if(ImageDesignSessionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -292,35 +296,32 @@ void ImageDesignSessionImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool ImageDesignSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (FacadeImplementation::readObjectMember(stream, _name))
+bool ImageDesignSessionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (FacadeImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "ImageDesignSession.designerCreature") {
+	switch(nameHashCode) {
+	case 0xd24d077b: //ImageDesignSession.designerCreature
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&designerCreature, stream);
 		return true;
-	}
 
-	if (_name == "ImageDesignSession.targetCreature") {
+	case 0x7149a0ad: //ImageDesignSession.targetCreature
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&targetCreature, stream);
 		return true;
-	}
 
-	if (_name == "ImageDesignSession.imageDesignData") {
+	case 0xc6d9476a: //ImageDesignSession.imageDesignData
 		TypeInfo<ImageDesignData >::parseFromBinaryStream(&imageDesignData, stream);
 		return true;
-	}
 
-	if (_name == "ImageDesignSession.hairObject") {
+	case 0x28792d48: //ImageDesignSession.hairObject
 		TypeInfo<ManagedReference<TangibleObject* > >::parseFromBinaryStream(&hairObject, stream);
 		return true;
-	}
 
-	if (_name == "ImageDesignSession.positionObserver") {
+	case 0x22697116: //ImageDesignSession.positionObserver
 		TypeInfo<ManagedReference<ImageDesignPositionObserver* > >::parseFromBinaryStream(&positionObserver, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -335,43 +336,43 @@ void ImageDesignSessionImplementation::writeObject(ObjectOutputStream* stream) {
 int ImageDesignSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = FacadeImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "ImageDesignSession.designerCreature";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd24d077b; //ImageDesignSession.designerCreature
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&designerCreature, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ImageDesignSession.targetCreature";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x7149a0ad; //ImageDesignSession.targetCreature
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&targetCreature, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ImageDesignSession.imageDesignData";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xc6d9476a; //ImageDesignSession.imageDesignData
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ImageDesignData >::toBinaryStream(&imageDesignData, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ImageDesignSession.hairObject";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x28792d48; //ImageDesignSession.hairObject
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<TangibleObject* > >::toBinaryStream(&hairObject, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "ImageDesignSession.positionObserver";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x22697116; //ImageDesignSession.positionObserver
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<ImageDesignPositionObserver* > >::toBinaryStream(&positionObserver, stream);

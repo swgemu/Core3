@@ -80,6 +80,10 @@ DistributedObjectServant* StartingLocationTerminal::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* StartingLocationTerminal::_getImplementationForRead() {
+	return _impl;
+}
+
 void StartingLocationTerminal::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -159,14 +163,14 @@ void StartingLocationTerminalImplementation::_serializationHelperMethod() {
 void StartingLocationTerminalImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(StartingLocationTerminalImplementation::readObjectMember(stream, _name)) {
+		if(StartingLocationTerminalImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -175,15 +179,16 @@ void StartingLocationTerminalImplementation::readObject(ObjectInputStream* strea
 	initializeTransientMembers();
 }
 
-bool StartingLocationTerminalImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (TerminalImplementation::readObjectMember(stream, _name))
+bool StartingLocationTerminalImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (TerminalImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "StartingLocationTerminal.authorizationState") {
+	switch(nameHashCode) {
+	case 0x5e87bdca: //StartingLocationTerminal.authorizationState
 		TypeInfo<bool >::parseFromBinaryStream(&authorizationState, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -198,11 +203,11 @@ void StartingLocationTerminalImplementation::writeObject(ObjectOutputStream* str
 int StartingLocationTerminalImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = TerminalImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "StartingLocationTerminal.authorizationState";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x5e87bdca; //StartingLocationTerminal.authorizationState
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&authorizationState, stream);

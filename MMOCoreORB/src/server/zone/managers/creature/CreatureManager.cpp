@@ -448,6 +448,10 @@ DistributedObjectServant* CreatureManager::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* CreatureManager::_getImplementationForRead() {
+	return _impl;
+}
+
 void CreatureManager::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -527,14 +531,14 @@ void CreatureManagerImplementation::_serializationHelperMethod() {
 void CreatureManagerImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(CreatureManagerImplementation::readObjectMember(stream, _name)) {
+		if(CreatureManagerImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -543,30 +547,28 @@ void CreatureManagerImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool CreatureManagerImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (ZoneManagerImplementation::readObjectMember(stream, _name))
+bool CreatureManagerImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (ZoneManagerImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "CreatureManager.zone") {
+	switch(nameHashCode) {
+	case 0xdbbbe357: //CreatureManager.zone
 		TypeInfo<ManagedReference<Zone* > >::parseFromBinaryStream(&zone, stream);
 		return true;
-	}
 
-	if (_name == "CreatureManager.spawnAreaMap") {
+	case 0x4b3dd8d1: //CreatureManager.spawnAreaMap
 		TypeInfo<SpawnAreaMap >::parseFromBinaryStream(&spawnAreaMap, stream);
 		return true;
-	}
 
-	if (_name == "CreatureManager.reservePool") {
+	case 0xbc202568: //CreatureManager.reservePool
 		TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::parseFromBinaryStream(&reservePool, stream);
 		return true;
-	}
 
-	if (_name == "CreatureManager.spawnedRandomCreatures") {
+	case 0xd85bfeb9: //CreatureManager.spawnedRandomCreatures
 		TypeInfo<int >::parseFromBinaryStream(&spawnedRandomCreatures, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -581,35 +583,35 @@ void CreatureManagerImplementation::writeObject(ObjectOutputStream* stream) {
 int CreatureManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = ZoneManagerImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "CreatureManager.zone";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xdbbbe357; //CreatureManager.zone
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<Zone* > >::toBinaryStream(&zone, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureManager.spawnAreaMap";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0x4b3dd8d1; //CreatureManager.spawnAreaMap
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SpawnAreaMap >::toBinaryStream(&spawnAreaMap, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureManager.reservePool";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xbc202568; //CreatureManager.reservePool
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<AiAgent* > > >::toBinaryStream(&reservePool, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "CreatureManager.spawnedRandomCreatures";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xd85bfeb9; //CreatureManager.spawnedRandomCreatures
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&spawnedRandomCreatures, stream);

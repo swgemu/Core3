@@ -120,6 +120,10 @@ DistributedObjectServant* FindSession::_getImplementation() {
 	return _impl;
 }
 
+DistributedObjectServant* FindSession::_getImplementationForRead() {
+	return _impl;
+}
+
 void FindSession::_setImplementation(DistributedObjectServant* servant) {
 	_impl = servant;
 }
@@ -199,14 +203,14 @@ void FindSessionImplementation::_serializationHelperMethod() {
 void FindSessionImplementation::readObject(ObjectInputStream* stream) {
 	uint16 _varCount = stream->readShort();
 	for (int i = 0; i < _varCount; ++i) {
-		String _name;
-		_name.parseFromBinaryStream(stream);
+		uint32 _nameHashCode;
+		TypeInfo<uint32>::parseFromBinaryStream(&_nameHashCode, stream);
 
 		uint32 _varSize = stream->readInt();
 
 		int _currentOffset = stream->getOffset();
 
-		if(FindSessionImplementation::readObjectMember(stream, _name)) {
+		if(FindSessionImplementation::readObjectMember(stream, _nameHashCode)) {
 		}
 
 		stream->setOffset(_currentOffset + _varSize);
@@ -215,20 +219,20 @@ void FindSessionImplementation::readObject(ObjectInputStream* stream) {
 	initializeTransientMembers();
 }
 
-bool FindSessionImplementation::readObjectMember(ObjectInputStream* stream, const String& _name) {
-	if (FacadeImplementation::readObjectMember(stream, _name))
+bool FindSessionImplementation::readObjectMember(ObjectInputStream* stream, const uint32& nameHashCode) {
+	if (FacadeImplementation::readObjectMember(stream, nameHashCode))
 		return true;
 
-	if (_name == "FindSession.player") {
+	switch(nameHashCode) {
+	case 0xfef3f39a: //FindSession.player
 		TypeInfo<ManagedWeakReference<CreatureObject* > >::parseFromBinaryStream(&player, stream);
 		return true;
-	}
 
-	if (_name == "FindSession.findSuiBox") {
+	case 0xf7dba618: //FindSession.findSuiBox
 		TypeInfo<ManagedReference<SuiListBox* > >::parseFromBinaryStream(&findSuiBox, stream);
 		return true;
-	}
 
+	}
 
 	return false;
 }
@@ -243,19 +247,19 @@ void FindSessionImplementation::writeObject(ObjectOutputStream* stream) {
 int FindSessionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	int _count = FacadeImplementation::writeObjectMembers(stream);
 
-	String _name;
+	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_name = "FindSession.player";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xfef3f39a; //FindSession.player
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedWeakReference<CreatureObject* > >::toBinaryStream(&player, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_name = "FindSession.findSuiBox";
-	_name.toBinaryStream(stream);
+	_nameHashCode = 0xf7dba618; //FindSession.findSuiBox
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<SuiListBox* > >::toBinaryStream(&findSuiBox, stream);
