@@ -53,6 +53,9 @@ class GCWManager extends ManagedService implements Logger {
 	@dereferenced
 	protected transient static VectorMap<string, int> baseValue;
 
+	@dereferenced
+	protected transient static HashTable<int, int> racialPenaltyMap;
+
 	private transient int rebelBases;
 	private transient int rebelScore;
 	private transient int imperialBases;
@@ -73,6 +76,8 @@ class GCWManager extends ManagedService implements Logger {
 	public transient static int maxBasesPerPlayer;
 	public transient static int bonusXP;
 	public transient static int bonusDiscount;
+	
+	public transient static boolean racialPenaltyEnabled;
 
 	public GCWManager(Zone zne){
 		imperialBases = 0;
@@ -95,7 +100,6 @@ class GCWManager extends ManagedService implements Logger {
 		gcwDestroyTasks.setNullValue(null);
 
 		baseValue.setNoDuplicateInsertPlan();
-		
 	}
 
 	public native void loadLuaConfig();
@@ -376,14 +380,8 @@ class GCWManager extends ManagedService implements Logger {
 			return 1;
 	}
 
-	@local
-	public int getGCWDiscount(CreatureObject creature){
-		if(getWinningFaction() != creature.getFaction() && creature.getFaction() != 0)
-			return bonusDiscount;
-		
-		return 0;
-	}
-	
+	public native float getGCWDiscount(CreatureObject creature);
+
 	@local
 	@read
 	public int getGCWXPBonus(){
@@ -407,7 +405,26 @@ class GCWManager extends ManagedService implements Logger {
 		}
 	}
 
+	@local
+	public void addRacialPenalty(int race, int val){
+		synchronized (baseMutex) {
+			racialPenaltyMap.put(race, val);
+		}
+	}
 
+	@local
+	public float getRacialPenalty(int race){
+		synchronized (baseMutex) {
+			return racialPenaltyMap.get(race);
+		}
+	}
+
+	@local
+	@read
+	public boolean isRacialPenaltyEnabled(){
+		return racialPenaltyEnabled;
+	}
+ 
 	public native void awardSlicingXP(CreatureObject creature, final string xpType, int value);
 
 }

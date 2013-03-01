@@ -345,6 +345,12 @@ faction_reward_data = {
 
 	},
 
+imperial_racial_penalty = {
+		human = 0,
+		wookie = 3,
+		
+	},
+
 	imperial_hireling_list = {
 		--"assaulttrooper",
 		--"atst",

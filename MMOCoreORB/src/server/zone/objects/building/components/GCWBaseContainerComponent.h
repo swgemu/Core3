@@ -15,7 +15,8 @@
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/building/components/DestructibleBuildingDataComponent.h"
 #include "server/zone/objects/player/FactionStatus.h"
-class GCWBaseContainerComponent : public ContainerComponent {
+#include "server/zone/objects/structure/components/StructureContainerComponent.h"
+class GCWBaseContainerComponent : public StructureContainerComponent {
 public:
 	bool checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission);
 

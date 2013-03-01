@@ -83,7 +83,7 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 			playerObject:setFactionStatus(3)
 		end
 		
-		createEvent(30000, "recruiter_convo_handler", "handleGoOvert", conversingPlayer)
+		createEvent(15000, "recruiter_convo_handler", "handleGoOvert", conversingPlayer)
 	elseif (screenID == "accepted_go_covert") then
 		if (playerObjectPointer ~= nil) then
 			local playerObject = LuaPlayerObject(playerObjectPointer)
@@ -203,7 +203,7 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 		
 		local clonedConversation = LuaConversationScreen(conversationScreen)
 		
-		if ( clonedConversation ~= nil ) then
+		if ( clonedConversation ~= nil ) then	
 			self:addUniforms(clonedConversation, getGCWDiscount(conversingPlayer))
 		end
 	elseif ( screenID == "fp_furniture" ) then
@@ -617,7 +617,7 @@ function recruiter_convo_handler:awarditem(player, itemstring)
 		itemcost = itemcost * .75
 	end
 	
-	itemcost  = itemcost * (1 - (getGCWDiscount(player)/100))
+	itemcost  = math.ceil(itemcost *  getGCWDiscount(player))
 	
 	if ( pInventory ~= nil and playerObject ~= nil and itemcost ~= nil ) then 
 		--print("itemcost is " .. itemcost)

@@ -1186,6 +1186,7 @@ int DirectorManager::makeCreatureName(lua_State* L) {
 	return 1;
 }
 
+
 int DirectorManager::getGCWDiscount(lua_State* L){
 	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -1);
 
@@ -1197,6 +1198,8 @@ int DirectorManager::getGCWDiscount(lua_State* L){
 	if(gcwMan == 0)
 		return 0;
 
-	lua_pushinteger(L, gcwMan->getGCWDiscount(creature));
+	lua_pushnumber(L, gcwMan->getGCWDiscount(creature));
 	return 1;
 }
+
+

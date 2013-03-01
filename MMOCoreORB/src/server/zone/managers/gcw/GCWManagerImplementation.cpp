@@ -70,7 +70,9 @@ int GCWManagerImplementation::turretAutoFireTimeout = 120;
 int GCWManagerImplementation::maxBasesPerPlayer = 3;
 int GCWManagerImplementation::bonusXP = 15;
 int GCWManagerImplementation::bonusDiscount = 30;
+bool GCWManagerImplementation::racialPenaltyEnabled = true;
 VectorMap<String, int> GCWManagerImplementation::baseValue;
+HashTable<int, int> GCWManagerImplementation::racialPenaltyMap;
 Mutex GCWManagerImplementation::baseMutex;
 
 void GCWManagerImplementation::initialize(){
@@ -119,6 +121,7 @@ void GCWManagerImplementation::loadLuaConfig(){
 	maxBasesPerPlayer = lua->getGlobalInt("maxBasesPerPlayer");
 	bonusXP = lua->getGlobalInt("bonusXP");
 	bonusDiscount = lua->getGlobalInt("bonusDiscount");
+	racialPenaltyEnabled = lua->getGlobalInt("racialPenaltyEnabled");
 
 	LuaObject pointsObject = lua->getGlobalObject("HQValues");
 
@@ -136,6 +139,23 @@ void GCWManagerImplementation::loadLuaConfig(){
 
 		}
 	}
+
+
+
+	LuaObject penaltyObject = lua->getGlobalObject("imperial_racial_penalty");
+	if(penaltyObject.isValidTable()){
+		for(int i = 1; i <= pointsObject.getTableSize(); ++i){
+			LuaObject raceObject = penaltyObject.getObjectAt(i);
+			if(raceObject.isValidTable()){
+				int race = raceObject.getIntAt(1);
+				int penalty = raceObject.getIntAt(2);
+				info("RACE: " + String::valueOf(race) + " has penalty of " + String::valueOf(penalty),true);
+				addRacialPenalty(race, penalty);
+			}
+			raceObject.pop();
+		}
+	}
+
 
 	info("Loaded " + String::valueOf(baseValue.size()) + " GCW base scoring values.",true);
 
@@ -284,8 +304,8 @@ void GCWManagerImplementation::refreshExpiredVulnerability(BuildingObject* build
 #endif
 
 	while( (thisStartTime.getTime() + vulnerabilityFrequency) <= Time().getTime() ){
-		//info("looped",true);
-		thisStartTime.addMiliTime(vulnerabilityFrequency*1000);
+		int amountToAdd = vulnerabilityFrequency*1000;
+		thisStartTime.addMiliTime(amountToAdd);
 	}
 
 	info("Looped starttime to get " + thisStartTime.getFormattedTime(),true);
@@ -2431,3 +2451,18 @@ void GCWManagerImplementation::awardSlicingXP(CreatureObject* creature,  const S
 	playerManager->awardExperience(creature, xpType, val, true);
 }
 
+
+// returns a cost multiplier for faction items
+// includes racial penalty and gcwdiscount
+float GCWManagerImplementation::getGCWDiscount(CreatureObject* creature){
+
+	float discount = 1.0f;
+
+	if(getWinningFaction() != creature->getFaction() && creature->getFaction() != 0)
+		 discount -= bonusDiscount/100.f;
+
+	if(creature->getFaction() == IMPERIALHASH && racialPenaltyEnabled && getRacialPenalty(creature->getSpecies()) > 0)
+		discount *= getRacialPenalty(creature->getSpecies());
+
+	return discount;
+}

@@ -6,7 +6,6 @@
  */
 
 #include "GCWBaseContainerComponent.h"
-
 bool GCWBaseContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission){
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject);
@@ -32,7 +31,7 @@ bool GCWBaseContainerComponent::checkContainerPermission(BuildingObject* buildin
 		}
 	}
 
-	return ContainerComponent::checkContainerPermission(building, creature, permission);
+	return StructureContainerComponent::checkContainerPermission(building, creature, permission);
 }
 
 
