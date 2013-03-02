@@ -148,7 +148,7 @@ void GCWManagerImplementation::loadLuaConfig(){
 			LuaObject raceObject = penaltyObject.getObjectAt(i);
 			if(raceObject.isValidTable()){
 				int race = raceObject.getIntAt(1);
-				int penalty = raceObject.getIntAt(2);
+				float penalty = raceObject.getFloatAt(2);
 				info("RACE: " + String::valueOf(race) + " has penalty of " + String::valueOf(penalty),true);
 				addRacialPenalty(race, penalty);
 			}

@@ -5,7 +5,7 @@ gcwCheckTimer = 7200
 vulnerabilityDuration = 10800  
 
 -- Amount of time in seconds between base vulnerabilities.  
-vulnerabilityFrequency = 259200
+vulnerabilityFrequency = 172800
 
 -- amount of time before waiting to reset vulnerability
 resetTimer = 604800	
@@ -36,7 +36,7 @@ reactvationTimer = 300
 -- X seconds after the last manual activity the turret will be able to auto fire
 turretAutoFireTimeout = 20
 
-maxBasesPerPlayer = 25
+maxBasesPerPlayer = 3
 
 -- xp bonus for faction controlling a planet
 bonusXP = 15
@@ -76,11 +76,11 @@ imperial_racial_penalty = {
 		{1, 3}, --rodian
 		{2, 2}, -- trando
 		{3, 3}, -- moncal
-		{4, 3},
-		{5, 2},
-		{6, 1.5},
-		{7, 2},
-		{33, 2},
-		{49, 2},
+		{4, 3}, -- wookie
+		{5, 2},  -- bothan
+		{6, 1.5}, -- twilek
+		{7, 2},  -- zabrack
+		{33, 2}, --ithorian
+		{49, 2}, -- sullustan
 	
 }
