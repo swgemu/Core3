@@ -42,11 +42,22 @@ int LootContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, SceneO
 
 bool LootContainerComponent::checkContainerPermission(SceneObject* sceneObject, CreatureObject* creature, uint16 permission) {
 	ContainerPermissions* permissions = sceneObject->getContainerPermissions();
-
-	if (permissions->getOwnerID() == creature->getObjectID() || permissions->getOwnerID() == creature->getGroupID()) {
-		return true;
+	if(permission == ContainerPermissions::MOVEIN)
+		return false;
+	else if (permission == ContainerPermissions::MOVEOUT ){
+		return (permissions->getOwnerID() == creature->getObjectID() || permissions->getOwnerID() == creature->getGroupID());
 	}
 
 	return false;
+}
+
+int LootContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) {
+
+	if(sceneObject->getContainerObjectsSize() >= 0){
+		errorDescription = "@event_perk:chest_can_not_add"; //You do not have permission to add items to this container.
+		 return TransferErrorCode::INVALIDTYPE;
+	}
+	
+	return 1;
 }
 
