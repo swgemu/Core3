@@ -54,8 +54,8 @@ object_building_poi_scout_camp_s3 = object_building_poi_shared_scout_camp_s3:new
 	
 	duration = 3600,
 	radius = 20,
-	experience = 1200,
-	skillRequired = 55,
+	experience = 1000,
+	skillRequired = 50,
 
 	childObjects = {
 		{templateFile = "object/tangible/camp/camp_control_panel.iff", 

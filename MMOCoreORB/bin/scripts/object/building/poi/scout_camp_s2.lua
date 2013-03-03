@@ -53,8 +53,8 @@ object_building_poi_scout_camp_s2 = object_building_poi_shared_scout_camp_s2:new
 	aggroMod = 20,
 	duration = 3600,
 	radius = 18,
-	experience = 840,
-	skillRequired = 40,
+	experience = 800,
+	skillRequired = 30,
 
 	childObjects = {
 		{templateFile = "object/tangible/camp/camp_control_panel.iff", 
