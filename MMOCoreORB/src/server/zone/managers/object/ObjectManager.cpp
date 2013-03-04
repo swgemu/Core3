@@ -32,6 +32,9 @@ using namespace engine::db;
 
 // http://tinyurl.com/2g9mqh
 
+uint32 ObjectManager::serverObjectCrcHashCode = String("SceneObject.serverObjectCRC").hashCode();
+uint32 ObjectManager::_classNameHashCode = String("_className").hashCode();
+
 ObjectManager::ObjectManager() : DOBObjectManager() {
 	server = NULL;
 
@@ -414,7 +417,7 @@ void ObjectManager::loadStaticObjects() {
 		if (object != NULL)
 			continue;
 
-		if (!Serializable::getVariable<uint32>("SceneObject.serverObjectCRC", &serverObjectCRC, &objectData)) {
+		if (!Serializable::getVariable<uint32>(serverObjectCrcHashCode, &serverObjectCRC, &objectData)) {
 			error("unknown scene object in static database");
 			continue;
 		}
@@ -638,7 +641,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	String className;
 
 	try {
-		if (Serializable::getVariable<uint32>("SceneObject.serverObjectCRC", &serverObjectCRC, &objectData)) {
+		if (Serializable::getVariable<uint32>(serverObjectCrcHashCode, &serverObjectCRC, &objectData)) {
 			object = instantiateSceneObject(serverObjectCRC, objectID, true);
 
 			if (object == NULL) {
@@ -661,7 +664,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 
 			(cast<SceneObject*>(object))->info("loaded from db");
 
-		} else if (Serializable::getVariable<String>("_className", &className, &objectData)) {
+		} else if (Serializable::getVariable<String>(_classNameHashCode, &className, &objectData)) {
 			object = createObject(className, false, "", objectID, false);
 
 			if (object == NULL) {

@@ -55,8 +55,10 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 
 		String zoneReference;
 
+		uint32 zoneMemberHashCode = String("SceneObject.zone").hashCode();
+
 		while (iterator.getNextKeyAndValue(objectID, objectData)) {
-			if (!Serializable::getVariable<String>("SceneObject.zone", &zoneReference, objectData)) {
+			if (!Serializable::getVariable<String>(zoneMemberHashCode, &zoneReference, objectData)) {
 				objectData->clear();
 				continue;
 			}
