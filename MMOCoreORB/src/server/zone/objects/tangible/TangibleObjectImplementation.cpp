@@ -323,11 +323,11 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 
 	alm->insertAttribute("volume", volume);
 
-	if (craftersName != "") {
+	if (!craftersName.isEmpty()) {
 
 		alm->insertAttribute("crafter", craftersName);
 	}
-	if (objectSerial != "") {
+	if (!objectSerial.isEmpty()) {
 
 		alm->insertAttribute("serial_number", objectSerial);
 	}
