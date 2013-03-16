@@ -42,7 +42,7 @@
 
 
 object_tangible_container_loot_placable_loot_crate_trashpile = object_tangible_container_loot_shared_placable_loot_crate_trashpile:new {
-
+	containerComponent = "PlaceableLootContainerComponent"
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_loot_placable_loot_crate_trashpile, "object/tangible/container/loot/placable_loot_crate_trashpile.iff")

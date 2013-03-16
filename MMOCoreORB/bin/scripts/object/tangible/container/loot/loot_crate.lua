@@ -42,7 +42,7 @@
 
 
 object_tangible_container_loot_loot_crate = object_tangible_container_loot_shared_loot_crate:new {
-
+	containerComponent = "PlaceableLootContainerComponent"
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_loot_loot_crate, "object/tangible/container/loot/loot_crate.iff")

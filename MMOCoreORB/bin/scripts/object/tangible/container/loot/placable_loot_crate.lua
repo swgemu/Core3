@@ -46,6 +46,7 @@ object_tangible_container_loot_placable_loot_crate = object_tangible_container_l
 	gameObjectType = 8244,
 	locked = 0,
 	sliceable = 1,
+	containerComponent = "PlaceableLootContainerComponent"
 
 }
 

@@ -104,6 +104,7 @@
 #include "server/zone/objects/creature/ai/components/WanderingStateComponent.h"
 #include "server/zone/objects/tangible/components/GogglesColorMenuComponent.h"
 #include "server/zone/objects/tangible/components/ArmorColorMenuComponent.h"
+#include "server/zone/objects/tangible/components/PlaceableLootContainerComponent.h"
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
@@ -237,4 +238,5 @@ ComponentManager::ComponentManager() {
 
 	// SE Goggles.
 	components.put("GogglesColorMenuComponent", new GogglesColorMenuComponent());
+	components.put("PlaceableLootContainerComponent", new PlaceableLootContainerComponent());
 }

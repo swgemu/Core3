@@ -42,7 +42,7 @@
 
 
 object_tangible_container_loot_astromech_container = object_tangible_container_loot_shared_astromech_container:new {
-
+	containerComponent = "PlaceableLootContainerComponent"
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_loot_astromech_container, "object/tangible/container/loot/astromech_container.iff")

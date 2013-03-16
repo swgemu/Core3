@@ -348,6 +348,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/deed/components/PlaceGCWBaseComponent.cpp \
 		server/zone/objects/player/components/PlayerContainerComponent.cpp \
 		server/zone/objects/tangible/components/LootContainerComponent.cpp \
+		server/zone/objects/tangible/components/PlaceableLootContainerComponent.cpp \
 		server/zone/objects/scene/components/ContainerComponent.cpp \
 		server/zone/objects/scene/components/DataObjectComponentReference.cpp \
 		server/zone/objects/scene/components/DataObjectComponent.cpp \
@@ -545,7 +546,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/vendor/VendorDataComponent.cpp \
 		server/zone/objects/tangible/components/vendor/VendorMenuComponent.cpp \
 		server/zone/objects/tangible/components/GogglesColorMenuComponent.cpp \
-		server/zone/objects/tangible/components/ArmorColorMenuComponent.cpp \		
+		server/zone/objects/tangible/components/ArmorColorMenuComponent.cpp \
 		server/zone/objects/installation/components/TurretDataComponent.cpp \
 		server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp \
 		server/zone/objects/creature/variables/CommandQueueAction.cpp \

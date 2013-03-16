@@ -42,7 +42,7 @@
 
 
 object_tangible_container_loot_placable_loot_crate_tech_chest = object_tangible_container_loot_shared_placable_loot_crate_tech_chest:new {
-
+	containerComponent = "PlaceableLootContainerComponent"
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_loot_placable_loot_crate_tech_chest, "object/tangible/container/loot/placable_loot_crate_tech_chest.iff")

@@ -42,7 +42,7 @@
 
 
 object_tangible_container_loot_placable_loot_crate_skeleton_ithorian = object_tangible_container_loot_shared_placable_loot_crate_skeleton_ithorian:new {
-
+	containerComponent = "PlaceableLootContainerComponent"
 }
 
 ObjectTemplates:addTemplate(object_tangible_container_loot_placable_loot_crate_skeleton_ithorian, "object/tangible/container/loot/placable_loot_crate_skeleton_ithorian.iff")
