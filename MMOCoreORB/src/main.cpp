@@ -45,17 +45,6 @@ which carries forward this exception.
 #include "server/ServerCore.h"
 #include "server/zone/managers/director/DirectorManager.h"
 
-/*#include "system/mm/AllocationTracker.h"
-
-	AllocationTracker* tracker;
-
-	void initializeTracker() {
-	        printf("malloc initialization Hook installed\n");
-
-	        tracker = AllocationTracker::getInstance();
-	        tracker->install();
-}*/
-
 int main(int argc, char* argv[]) {
 	try {
 		SortedVector<String> arguments;
