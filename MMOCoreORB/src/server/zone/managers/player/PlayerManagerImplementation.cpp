@@ -2654,7 +2654,7 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 		return;
 
 	if (creatureInventory->getContainerPermissions()->getOwnerID() != player->getObjectID() && creatureInventory->getContainerPermissions()->getOwnerID() != player->getGroupID()) {
-		player->sendSystemMessage("@group:no_loot_permission");
+		player->sendSystemMessage("@error_message:no_corpse_permission"); //You do not have permission to access this corpse.
 
 		return;
 	}
