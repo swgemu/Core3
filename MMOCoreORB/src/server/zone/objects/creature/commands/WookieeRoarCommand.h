@@ -46,12 +46,14 @@ which carries forward this exception.
 #define WOOKIEEROARCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/combat/CombatManager.h"
+#include "CombatQueueCommand.h"
 
-class WookieeRoarCommand : public QueueCommand {
+class WookieeRoarCommand : public CombatQueueCommand {
 public:
 
 	WookieeRoarCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
+		: CombatQueueCommand(name, server) {
 
 	}
 
@@ -63,7 +65,44 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return SUCCESS;
+		if (creature->getSpecies() != CreatureObject::WOOKIE)
+			return GENERALERROR;
+			
+		CreatureObject* player = cast<CreatureObject*>(creature);
+
+		// Check to see if "innate_roar" Cooldown isPast();
+		if (!player->checkCooldownRecovery("innate_roar")) {
+
+			Time* cdTime = player->getCooldownTime("innate_roar");
+
+			// Returns -time. Multiple by -1 to return positive.
+			int timeLeft = floor((float)cdTime->miliDifference() / 1000) * -1;
+
+			StringIdChatParameter stringId;			
+			stringId.setStringId("@innate:roar_wait"); // You are still recovering from your last roar. Command available in %DI seconds.
+			stringId.setDI(timeLeft);
+			player->sendSystemMessage(stringId);
+			return GENERALERROR;
+		}
+		
+		player->sendSystemMessage("@innate:roar_active"); // You let out a mighty roar.			
+		player->addCooldown("innate_roar", 300 * 1000); // 5min reuse time.					
+		
+		TangibleObject* targetObject = cast<TangibleObject*> (server->getZoneServer()->getObject(target));
+
+		if (targetObject == NULL || !targetObject->isCreatureObject())
+			return INVALIDTARGET;				
+
+		int res = doCombatAction(creature, target);
+
+		if (res == TOOFAR) 
+			CombatManager::instance()->broadcastCombatSpam(creature, cast<TangibleObject*>(server->getZoneServer()->getObject(target)), creature->getWeapon(), 0, "wookiee_roar_out_of_range");
+		
+		if (res == GENERALERROR)
+			creature->sendSystemMessage("@combat_effects:wookiee_roar_miss");	
+
+		return res;		
+
 	}
 
 };
