@@ -134,7 +134,7 @@ ZonesEnabled = {
 
 
 -- directory of tres with live.cfg
-TrePath = "/home/swgemu/Desktop/SWGEmu"
+TrePath = "/home/swgemu/workspace/emu"
 
 TreFiles = {
 	"default_patch.tre",
