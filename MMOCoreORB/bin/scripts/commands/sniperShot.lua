@@ -44,8 +44,8 @@
 SniperShotCommand = {
         name = "snipershot",
 
-	damageMultiplier = 0.75,
-	speedMultiplier = 2.0,
+    	damage = 200,
+	speed = 1.0,
 	healthCostMultiplier = 0.5,
 	actionCostMultiplier = 0.5,
 	mindCostMultiplier = 2.0,
