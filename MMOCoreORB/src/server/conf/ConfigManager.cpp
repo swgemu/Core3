@@ -213,7 +213,10 @@ void ConfigManager::loadRevision() {
 		file = new File("conf/rev.txt");
 		reader = new FileReader(file);
 
-		reader->readLine(revision);
+		String line;
+
+		while (reader->readLine(line))
+			revision += line;
 
 		reader->close();
 	} catch (FileNotFoundException& e) {
@@ -224,7 +227,7 @@ void ConfigManager::loadRevision() {
 		reader = NULL;
 	}
 
-	revision = revision.replaceAll("\n", "");
+	//revision = revision.replaceAll("\n", "");
 
 	delete reader;
 	delete file;

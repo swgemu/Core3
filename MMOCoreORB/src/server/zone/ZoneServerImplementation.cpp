@@ -737,7 +737,7 @@ void ZoneServerImplementation::loadLoginMessage() {
 		reader = NULL;
 	}
 
-	loginMessage += "\nRevision=";
+	loginMessage += "\nLatest Commits:\n";
 	loginMessage += ConfigManager::instance()->getRevision();
 }
 
