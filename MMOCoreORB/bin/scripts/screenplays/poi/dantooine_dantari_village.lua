@@ -6,7 +6,7 @@ DantariVillageScreenPlay = ScreenPlay:new {
 registerScreenPlay("DantariVillageScreenPlay", true)
 
 function DantariVillageScreenPlay:start()
-	if (isZoneEnabled("danotooine")) then
+	if (isZoneEnabled("dantooine")) then
 		self:spawnMobiles()
 	end
 end
