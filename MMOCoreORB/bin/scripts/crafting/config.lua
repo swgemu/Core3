@@ -784,6 +784,7 @@ schematics = {
 {path="object/draft_schematic/droid/component/diagnostic_circuit_advanced.iff"},
 {path="object/draft_schematic/droid/component/capacitor_high_discharge.iff"},
 {path="object/draft_schematic/droid/droid_wound_repair_kit_a.iff"},
+{path="object/draft_schematic/droid/droid_wound_repair_kit_b.iff"},
 {path="object/draft_schematic/droid/droid_wound_repair_kit_c.iff"},
 {path="object/draft_schematic/droid/droid_wound_repair_kit_d.iff"},
 {path="object/draft_schematic/droid/droid_damage_repair_kit_a.iff"},
@@ -1348,6 +1349,7 @@ schematics = {
 {path="object/draft_schematic/spices/spice_yarrock.iff"},
 {path="object/draft_schematic/spices/spice_giggledust.iff"},
 {path="object/draft_schematic/spices/spice_sweetblossom.iff"},
+
 
 {path="object/draft_schematic/spices/spice_droid_lube.iff"},
 {path="object/draft_schematic/spices/spice_pyrepenol.iff"},
