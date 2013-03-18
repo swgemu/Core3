@@ -55,7 +55,7 @@ build: idl
 	cp build/unix/src/client/core3* bin
 	cp build/unix/src/core3* bin
 	#cd bin/conf && svnversion > rev.txt
-	cd bin/conf && git log --pretty=format:'%h was %an, %ar, message: %s' -p -5 > rev.txt
+	cd bin/conf && git log --pretty=format:'%h was %an, %ar, message: %s' -10 > rev.txt
 	rm build/unix/src/core3
 	#done
 
