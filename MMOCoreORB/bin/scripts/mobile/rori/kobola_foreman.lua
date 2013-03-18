@@ -39,9 +39,9 @@ kobola_foreman = Creature:new {
 			lootChance = 3200000
 		}					
 	},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlernovice,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(kobola_foreman, "kobola_foreman")

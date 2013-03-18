@@ -39,9 +39,9 @@ kobola_underboss = Creature:new {
 			lootChance = 3200000
 		}				
 	},
-	weapons = {"pirate_weapons_heavy"},
+	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(kobola_underboss, "kobola_underboss")

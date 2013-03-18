@@ -39,7 +39,7 @@ kobola_miner = Creature:new {
 			lootChance = 3200000
 		}					
 	},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = merge(brawlernovice,marksmannovice)
 }

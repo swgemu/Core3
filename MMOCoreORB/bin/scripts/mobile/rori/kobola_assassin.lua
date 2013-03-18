@@ -8,8 +8,8 @@ kobola_assassin = Creature:new {
 	damageMin = 200,
 	damageMax = 210,
 	baseXp = 1426,
-	baseHAM = 1500,
-	baseHAMmax = 1900,
+	baseHAM = 2500,
+	baseHAMmax = 3200,
 	armor = 0,
 	resists = {20,10,0,0,0,0,0,-1,-1},
 	meatType = "",
@@ -39,9 +39,9 @@ kobola_assassin = Creature:new {
 			lootChance = 3200000
 		}					
 	},
-	weapons = {"pirate_weapons_heavy"},
+	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlermaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(kobola_assassin, "kobola_assassin")
