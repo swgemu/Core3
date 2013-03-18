@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABH///8Q\u003d",
+        "filename": "MMOCoreORB/bin/scripts/commands/sniperShot.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-03-18T21:13:33Z",
+      "side": 1,
+      "message": "so low?",
+      "revId": "0cb1185b2e02777a365f80353f6b9702b8221474",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
