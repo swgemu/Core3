@@ -71,7 +71,7 @@ public:
 
 		if (!checkGroupLeader(player, group))
 			return GENERALERROR;
-
+			
 		int hamCost = (int) (50.0f * calculateGroupModifier(group));
 
 		int healthCost = creature->calculateCostAdjustment(CreatureAttribute::STRENGTH, hamCost);
@@ -83,7 +83,7 @@ public:
 
 		shoutCommand(player, group);
 
-		int chance = 30;
+		int chance = 70;
 
 		if (!doFormUp(player, group, chance))
 			return GENERALERROR;
@@ -110,6 +110,7 @@ public:
 			if (memberPlayer->isDizzied())
 				if (System::random(99) < chance)
 					memberPlayer->removeStateBuff(CreatureState::DIZZY);
+					
 
 			if (memberPlayer->isStunned())
 				if (System::random(99) < chance)
