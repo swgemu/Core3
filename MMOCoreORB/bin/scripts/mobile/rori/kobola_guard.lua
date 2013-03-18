@@ -39,9 +39,9 @@ kobola_guard = Creature:new {
 			lootChance = 3200000
 		}					
 	},
-	weapons = {"pirate_weapons_medium"},
+	weapons = {"novice_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlernovice,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(kobola_guard, "kobola_guard")
