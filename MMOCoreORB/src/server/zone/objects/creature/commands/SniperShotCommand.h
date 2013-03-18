@@ -84,22 +84,25 @@ public:
 		PlayerManager* playerManager = server->getPlayerManager();
 
 		if (!CollisionManager::checkLineOfSight(creature, player)) {
-			creature->sendSystemMessage("@container_error_message:container18");
+			creature->sendSystemMessage("@container_error_message:container18"); //You can't see that object.  You may have to move closer to it.
 			return GENERALERROR;
 		}
 
-		if (!player->isIncapacitated()){
-			creature->sendSystemMessage("@error_message:target_not_incapacitated");
-			return GENERALERROR;
-		}
-		
+
 		int maxRange = weapon->getMaxRange();
-				
-		if (player->isAttackableBy(creature) && player->isInRange(creature, maxRange)) {
-			playerManager->killPlayer(creature, player, 1);			
-		}	
 
-		return SUCCESS;
+		if (!player->isInRange(creature, maxRange))
+			return TOOFAR;
+				
+		if (player->isAttackableBy(creature) && player->isIncapacitated()) {
+			playerManager->killPlayer(creature, player, 1);			
+		}  else if (!player->isIncapacitated()) {
+			creature->sendSystemMessage("@error_message:target_not_incapacitated");  //You cannot perform the death blow. Your target is not incapacitated.
+		}  else if (player->isDead()) {
+			return GENERALERROR;
+		}
+
+ 		return doCombatAction(creature, target);
 
 	}
 
