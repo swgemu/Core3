@@ -42,7 +42,36 @@
 --true = 1, false = 0
 
 WookieeRoarCommand = {
-        name = "wookieeroar",
+    name = "wookieeroar",
+
+	damageMultiplier = 0,
+	speedMultiplier = 1,
+	healthCostMultiplier = 0,
+	actionCostMultiplier = 0,
+	mindCostMultiplier = 0,
+	coneAngle = 90,
+	coneAction = true,
+	
+	accuracySkillMod = "intimidate",
+
+	stateEffects = {
+	  StateEffect( 
+		INTIMIDATE_EFFECT, 
+		{}, 
+		{ "intimidate_defense", "resistance_states" }, 
+		{ "jedi_state_defense" }, 
+		100, 
+		0, 
+		60 
+	  )
+	},
+
+	combatSpam = "intim",
+	animationCRC = hashCode("intimidate"),
+	effectString = "clienteffect/combat_special_attacker_intimidate.cef",
+	range = 15,
+
+	poolsToDamage = 0
 }
 
 AddCommand(WookieeRoarCommand)
