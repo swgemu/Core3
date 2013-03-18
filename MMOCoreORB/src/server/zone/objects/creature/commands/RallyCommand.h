@@ -64,8 +64,8 @@ public:
 			return INVALIDLOCOMOTION;
 
 		if (!creature->isPlayerCreature())
-			return GENERALERROR;
-
+			return GENERALERROR;			
+	
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 		ManagedReference<GroupObject*> group = player->getGroup();
 
@@ -81,7 +81,7 @@ public:
 		if (!inflictHAM(player, healthCost, actionCost, mindCost))
 			return GENERALERROR;
 
-		int chance = 30;
+		int chance = 75;
 
 		if (System::random(100) > chance)
 			player->sendSystemMessage("@cbt_spam:rally_fail_single");
@@ -131,7 +131,8 @@ public:
 			memberPlayer->setRalliedState(duration);
 		}
 
-		leader->updateCooldownTimer("rally", (duration + 30) * 1000);
+//		What is this used for?		
+//		leader->updateCooldownTimer("rally", (duration + 30) * 1000);
 
 		return true;
 	}

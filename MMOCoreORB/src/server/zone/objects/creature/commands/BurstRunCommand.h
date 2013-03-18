@@ -57,6 +57,39 @@ public:
 		: QueueCommand(name, server) {
 
 	}
+	
+	bool checkBurstRun(CreatureObject* creature) {
+		if (creature->isRidingCreature()) {
+			creature->sendSystemMessage("@cbt_spam:no_burst"); //"You cannot burst-run while mounted on a creature or vehicle."
+			return false;
+		}
+
+		Zone* zone = creature->getZone();
+
+		if (creature->getZone() == NULL) {
+			return false;
+		}
+
+		if (zone->getZoneName() == "dungeon1") {
+			creature->sendSystemMessage("@cbt_spam:burst_run_space_dungeon"); //"The artificial gravity makes burst running impossible here."
+			return false;
+		}
+
+		uint32 retreatCRC = String("retreat").hashCode();
+
+		if (creature->hasBuff(retreatCRC)) {
+			creature->sendSystemMessage("@combat_effects:burst_run_no");
+			return false;
+		}
+
+		if (!creature->checkCooldownRecovery("burstrun")) {
+			creature->sendSystemMessage("@combat_effects:burst_run_wait"); //You are too tired to Burst Run.
+			return false;
+		}
+
+		return true;
+
+	}	
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
@@ -89,13 +122,9 @@ public:
 		int newHamCost = (int) hamCost;
 
 		//Check for and deduct HAM cost.
-		if (creature->getHAM(CreatureAttribute::HEALTH) <= newHamCost
-				|| creature->getHAM(CreatureAttribute::ACTION) <= newHamCost
-				|| creature->getHAM(CreatureAttribute::MIND) <= newHamCost) {
+		if (creature->getHAM(CreatureAttribute::HEALTH) <= newHamCost || creature->getHAM(CreatureAttribute::ACTION) <= newHamCost || creature->getHAM(CreatureAttribute::MIND) <= newHamCost) {
 			creature->sendSystemMessage("@combat_effects:burst_run_wait"); //"You are too tired to Burst Run."
-
 			return GENERALERROR;
-
 		}
 
 		creature->inflictDamage(creature, CreatureAttribute::HEALTH, newHamCost, true);
@@ -121,46 +150,6 @@ public:
 		creature->addPendingTask("burst_run_notify", task, (300 + duration) * 1000);
 
 		return SUCCESS;
-	}
-
-	bool checkBurstRun(CreatureObject* creature) {
-		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("@cbt_spam:no_burst"); //"You cannot burst-run while mounted on a creature or vehicle."
-			return false;
-		}
-
-		Zone* zone = creature->getZone();
-
-		if (creature->getZone() == NULL) {
-			return false;
-		}
-
-		if (zone->getZoneName() == "dungeon1") {
-			creature->sendSystemMessage("@cbt_spam:burst_run_space_dungeon"); //"The artificial gravity makes burst running impossible here."
-
-			return false;
-		}
-
-		uint32 retreatCRC = String("retreat").hashCode();
-
-		if (creature->getRunSpeed() > CreatureObjectImplementation::DEFAULTRUNSPEED) {
-
-			if (!creature->hasBuff(retreatCRC)) {
-
-				creature->sendSystemMessage("@combat_effects:burst_run_no");
-
-				return false;
-			}
-		}
-
-		if (!creature->checkCooldownRecovery("burstrun")) {
-			creature->sendSystemMessage("@combat_effects:burst_run_wait"); //You are too tired to Burst Run.
-
-			return false;
-		}
-
-		return true;
-
 	}
 
 };

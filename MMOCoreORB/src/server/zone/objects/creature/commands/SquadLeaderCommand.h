@@ -82,13 +82,12 @@ public:
 			return 0;
 
 		float modifier = (float)(group->getGroupSize()) / 10.0f;
-        if(modifier < 1.0)
-            modifier += 1.0f;
+			if(modifier < 1.0)
+				modifier += 1.0f;
 
-        return modifier;
+			return modifier;
     }
-    bool inflictHAM(CreatureObject *player, int health, int action, int mind)
-    {
+    bool inflictHAM(CreatureObject *player, int health, int action, int mind){
         if (player == NULL)
 			return false;
         if(health < 0 || action < 0 || mind < 0)
@@ -108,8 +107,8 @@ public:
 
         return true;
     }
-    void sendCombatSpam(CreatureObject *player)
-    {
+	
+    void sendCombatSpam(CreatureObject *player){
         if (player == NULL)
 			return;
         if(combatSpam == "")
@@ -117,8 +116,8 @@ public:
 
         player->sendSystemMessage("@cbt_spam:" + combatSpam);
     }
-    bool setCommandMessage(CreatureObject *creature, String message)
-    {
+	
+    bool setCommandMessage(CreatureObject *creature, String message){
         if(!creature->isPlayerCreature())
             return false;
 
@@ -126,14 +125,13 @@ public:
         ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
         if(message.isEmpty())
             playerObject->removeCommandMessageString(actionCRC);
-
         else
             playerObject->setCommandMessageString(actionCRC, message);
 
         return true;
     }
-    bool isSquadLeaderCommand()
-    {
+	
+    bool isSquadLeaderCommand(){
         return true;
     }
 
@@ -145,7 +143,5 @@ public:
         this->action = action;
     }
 };
-
-
 
 #endif /* SQUADLEADERCOMMAND_H_ */
