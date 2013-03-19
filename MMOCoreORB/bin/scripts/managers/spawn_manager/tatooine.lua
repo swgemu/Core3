@@ -18,7 +18,7 @@ tatooine_regions = {
 	{"anchorhead",0,0,{1,0},UNDEFINEDAREA,1},
 	{"anchorhead_easy_newbie",0,0,{1,0},UNDEFINEDAREA,1},
 	{"anchorhead_medium_newbie",0,0,{1,0},UNDEFINEDAREA,1},
-	{"ancient_skeleton",0,0,{1,0},UNDEFINEDAREA,1},
+	{"ancient_skeleton",-4650,-4362,{1,300},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"arch_mesa",0,0,{1,0},UNDEFINEDAREA,1},
 	{"benzin_plateau_1",0,0,{1,0},UNDEFINEDAREA,1},
 	{"benzin_plateau_2",0,0,{1,0},UNDEFINEDAREA,1},
