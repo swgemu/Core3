@@ -46,7 +46,12 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 	if(turretData == NULL || !turretData->canAutoFire())
 		return;
 
-	if(target->isPlayerCreature() && sceneObject->isInRange(target,65)){
+	WeaponObject* weapon = cast<WeaponObject*>(sceneObject->getSlottedObject("hold_r"));
+
+	if(weapon == NULL)
+		return;
+
+	if(target->isPlayerCreature() && sceneObject->isInRange(target,weapon->getMaxRange(false))){
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(entry);
 
 		if(player == NULL || !player->isAttackableBy(tano))
