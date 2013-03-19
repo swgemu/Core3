@@ -39,6 +39,10 @@ class CreatureManager extends ZoneManager {
 
 	@dereferenced
 	protected static transient Mutex loadMutex;
+
+	public static final short NOTMILKED = 0x00;
+	public static final short BEINGMILKED = 0x01;
+	public static final short ALREADYMILKED = 0x02;
 	
 	public CreatureManager(Zone planet) {
 		super("CreatureManager");
@@ -112,6 +116,8 @@ class CreatureManager extends ZoneManager {
 	private native void setCreatureTemplateManager();
 	
 	public native void harvest(Creature creature, CreatureObject player, int selectedID);
+
+	public native void milk(Creature creature, CreatureObject player);
 	
 	public synchronized void addToReservePool(AiAgent agent) {
 		if (spawnedRandomCreatures > 0) {
