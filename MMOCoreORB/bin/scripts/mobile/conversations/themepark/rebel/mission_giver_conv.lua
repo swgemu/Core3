@@ -172,6 +172,7 @@ createMissionGiverConvoTemplate("theme_park_jabba_mission_giver_convotemplate", 
 
 -- Tatooine
 createMissionGiverConvoTemplate("rakir_banai_mission_giver_convotemplate", "rakir_banai_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("tekil_barje_mission_giver_convotemplate", "tekil_barje_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("vardias_tyne_mission_giver_convotemplate", "vardias_tyne_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("pfilbee_jhorn_mission_giver_convotemplate", "pfilbee_jhorn_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("mat_rags_mission_giver_convotemplate", "mat_rags_mission_giver_conv_handler")
