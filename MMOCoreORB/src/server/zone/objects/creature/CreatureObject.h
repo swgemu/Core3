@@ -380,6 +380,8 @@ public:
 
 	void setPosture(int newPosture, bool notifyClient = true);
 
+	float calculateSpeed();
+
 	void updateLocomotion();
 
 	void setHeight(float heigh, bool notifyClient = true);
@@ -1091,6 +1093,10 @@ protected:
 
 	byte currentWind;
 
+	Time lastCombatActionTime;
+
+	Vector3 lastCombatPosition;
+
 public:
 	static const int HUMAN = 0;
 
@@ -1163,6 +1169,8 @@ public:
 	void clearCombatState(bool clearDefenders = true);
 
 	virtual void setPosture(int newPosture, bool notifyClient = true);
+
+	float calculateSpeed();
 
 	virtual void updateLocomotion();
 
@@ -1790,6 +1798,8 @@ public:
 	void clearCombatState(bool clearDefenders);
 
 	void setPosture(int newPosture, bool notifyClient);
+
+	float calculateSpeed();
 
 	void updateLocomotion();
 
