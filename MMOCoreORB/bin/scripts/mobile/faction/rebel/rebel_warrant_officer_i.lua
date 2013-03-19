@@ -23,7 +23,7 @@ rebel_warrant_officer_i = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {
@@ -49,7 +49,7 @@ rebel_warrant_officer_i = Creature:new {
 		}	
 	},
 	weapons = {"rebel_weapons_medium"},
-	conversationTemplate = "",
+	conversationTemplate = "rebel_recruiter_convotemplate",
 	attacks = {
 	}
 }

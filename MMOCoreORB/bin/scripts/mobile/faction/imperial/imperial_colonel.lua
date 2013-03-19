@@ -23,7 +23,7 @@ imperial_colonel = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_colonel_m.iff"},
@@ -43,7 +43,7 @@ imperial_colonel = Creature:new {
 		}						
 	},
 	weapons = {"imperial_weapons_medium"},
-	conversationTemplate = "",
+	conversationTemplate = "imperial_recruiter_convotemplate",
 	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
 }
 

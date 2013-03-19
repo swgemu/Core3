@@ -23,7 +23,7 @@ imperial_warrant_officer_i = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {
@@ -50,7 +50,7 @@ imperial_warrant_officer_i = Creature:new {
 		}						
 	},
 	weapons = {"imperial_weapons_medium"},
-	conversationTemplate = "",
+	conversationTemplate = "imperial_recruiter_convotemplate",
 	attacks = merge(riflemanmaster,carbineermaster)
 }
 

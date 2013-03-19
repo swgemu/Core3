@@ -23,6 +23,7 @@ imperial_sergeant_major = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {
@@ -49,6 +50,7 @@ imperial_sergeant_major = Creature:new {
 		}						
 	},
 	weapons = {"imperial_weapons_medium"},
+	conversationTemplate = "imperial_recruiter_convotemplate",
 	attacks = merge(riflemanmaster,carbineermaster)
 }
 

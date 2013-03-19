@@ -23,6 +23,7 @@ specforce_major = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_rebel_specforce_guerilla_human_male_01.iff",
@@ -48,6 +49,7 @@ lootGroups = {
 		}	
 	},
 	weapons = {"imperial_weapons_medium"},
+	conversationTemplate = "rebel_recruiter_convotemplate",
 	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
 }
 

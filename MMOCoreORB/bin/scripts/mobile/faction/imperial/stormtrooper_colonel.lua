@@ -23,7 +23,7 @@ stormtrooper_colonel = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_stormtrooper_groupleader_m.iff"},
@@ -43,7 +43,7 @@ stormtrooper_colonel = Creature:new {
 		}						
 	},
 	weapons = {"stormtrooper_weapons"},
-	conversationTemplate = "",
+	conversationTemplate = "imperial_recruiter_convotemplate",
 	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
 }
 
