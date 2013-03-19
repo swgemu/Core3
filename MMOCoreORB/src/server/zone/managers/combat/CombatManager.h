@@ -185,7 +185,7 @@ protected:
 	int getHitChance(TangibleObject* creature, CreatureObject* targetCreature, WeaponObject* weapon, int damage, int accuracyBonus);
 
 	int calculatePostureModifier(CreatureObject* creature, WeaponObject* weapon);
-	int calculateTargetPostureModifier(CreatureObject* creature, CreatureObject* targetCreature);
+	int calculateTargetPostureModifier(WeaponObject* weapon, CreatureObject* targetCreature);
 
 	int getAttackerAccuracyModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int getAttackerAccuracyBonus(CreatureObject* attacker, WeaponObject* weapon);
@@ -196,7 +196,7 @@ protected:
 	int getDamageModifier(CreatureObject* attacker, WeaponObject* weapon);
 	int getSpeedModifier(CreatureObject* attacker, WeaponObject* weapon);
 	float calculateDamage(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data);
-	float calculateDamage(CreatureObject* attacker, TangibleObject* defender);
+	float calculateDamage(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defender);
 	bool checkConeAngle(SceneObject* targetCreature, float angle, float creatureVectorX, float creatureVectorY, float directionVectorX, float directionVectorY);
 
 	void doMiss(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, int damage, const String& cbtSpam);
@@ -213,17 +213,12 @@ protected:
 	int doTargetCombatAction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defenderObject, const CreatureAttackData& data);
 	int doTargetCombatAction(TangibleObject* attacker, WeaponObject* weapon, TangibleObject* tano, const CreatureAttackData& data);
 	int getArmorObjectReduction(WeaponObject* weapon, ArmorObject* armor);
-	int getArmorObjectReduction(CreatureObject* attacker, ArmorObject* armor);
 	int getArmorReduction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, float damage, int poolsToDamage, const CreatureAttackData& data);
-	int getArmorReduction(CreatureObject* attacker, CreatureObject* defender, float damage, int poolsToDamage, const CreatureAttackData& data);
+	int getArmorReduction(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, float damage, int poolsToDamage, const CreatureAttackData& data);
 	float getArmorPiercing(ArmorObject* armor, WeaponObject* weapon);
 	float getArmorPiercing(AiAgent* defender, WeaponObject* weapon);
 	int getArmorNpcReduction(CreatureObject* attacker, AiAgent* defender, WeaponObject* weapon);
 	int getArmorTurretReduction(CreatureObject* attacker, TangibleObject* defender, WeaponObject* weapon);
-	ArmorObject* getHealthArmor(CreatureObject* attacker, CreatureObject* defender);
-	ArmorObject* getActionArmor(CreatureObject* attacker, CreatureObject* defender);
-	ArmorObject* getMindArmor(CreatureObject* attacker, CreatureObject* defender);
-	ArmorObject* getPSGArmor(CreatureObject* attacker, CreatureObject* defender);
 
 	ArmorObject* getHealthArmor( CreatureObject* defender);
 	ArmorObject* getActionArmor(CreatureObject* defender);

@@ -111,7 +111,7 @@ object_weapon_ranged_grenade_grenade_glop = object_weapon_ranged_grenade_shared_
 	idealRange = 20,
 	idealAccuracy = 15,
 
-	maxRange = 32,
+	maxRange = 64,
 	maxRangeAccuracy = -30,
 
 	minDamage = 100,
