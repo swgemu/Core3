@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABX///9A\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-03-19T13:37:17Z",
+      "side": 1,
+      "message": "both should be transient",
+      "revId": "d05fc1fccbf8a8d42337cb8864495a46ba7f610e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
