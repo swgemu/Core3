@@ -214,6 +214,12 @@ class CreatureObject extends TangibleObject {
 	protected transient byte currentWeather;
 	protected transient byte currentWind;
 	
+	@dereferenced
+	protected Time lastCombatActionTime;
+
+	@dereferenced
+	protected Vector3 lastCombatPosition;
+
 	public static final int HUMAN = 0;
 	public static final int RODIAN = 1;
 	public static final int TRANDOSHAN = 2;
@@ -391,6 +397,8 @@ class CreatureObject extends TangibleObject {
 	 * @pre { this object is locked }
 	 * @post {this object is locked, this object has the new locomotion set, if appropriate }
 	 */
+	public native float calculateSpeed();
+	
 	public native abstract void updateLocomotion();
 	
 	public native void setHeight(float heigh, boolean notifyClient = true);

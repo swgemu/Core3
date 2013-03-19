@@ -345,11 +345,13 @@ int CombatManager::calculatePostureModifier(CreatureObject* creature, WeaponObje
 	if (weapon->getAttackType() != WeaponObject::RANGEDATTACK)
 		accuracy *= -1;
 
+	creature->setCurrentSpeed(creature->calculateSpeed());
 	creature->updateLocomotion();
 
 	switch (CreaturePosture::instance()->getSpeed(creature->getPosture(), creature->getLocomotion())) {
 	case CreatureLocomotion::FAST:
-		accuracy -= 40;
+		accuracy -= 50;
+		break;
 	case CreatureLocomotion::SLOW:
 		accuracy -= 10;
 		break;
@@ -956,6 +958,9 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	// need to also add in general attack accuracy (mostly gotten from foods and states)
 	int totalBonus = getAttackerAccuracyBonus(creature, weapon);
 	totalBonus += calculateTargetPostureModifier(creature, targetCreature);
+
+	if (creature->isBlinded())
+		totalBonus -= 50;
 
 	//info("Attacker accuracy bonus is " + String::valueOf(accuracyBonus), true);
 
