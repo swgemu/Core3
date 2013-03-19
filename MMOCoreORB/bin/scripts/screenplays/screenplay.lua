@@ -117,6 +117,7 @@ includeFile("tasks/pfilbee_jhorn.lua")
 includeFile("tasks/rakir_banai.lua")
 includeFile("tasks/ris_armor_quest.lua")
 includeFile("tasks/sg_567.lua")
+includeFile("tasks/tekil_barje.lua")
 includeFile("tasks/vardias_tyne.lua")
 includeFile("tasks/xaan_talmaron.lua")
 
