@@ -269,11 +269,11 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 
 	int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
 	// TODO: animations are probably determined by which pools are damaged (high, mid, low, combos, etc)
-	if (damage != 0 && damageMultiplier != 0 && poolsToDamage != 0)
+	if (damage != 0 && damageMultiplier != 0 && poolsToDamage != 0) {
 		damage = applyDamage(attacker, weapon, defender, damage, damageMultiplier, poolsToDamage, data);
-
-	if (defender->hasAttackDelay())
-		defender->removeAttackDelay();
+		if (defender->hasAttackDelay())
+			defender->removeAttackDelay();
+	}
 
 	applyStates(attacker, defender, data);
 	applyDots(attacker, defender, data, damage);
