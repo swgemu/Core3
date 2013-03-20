@@ -105,11 +105,13 @@
 #include "server/zone/objects/tangible/components/GogglesColorMenuComponent.h"
 #include "server/zone/objects/tangible/components/ArmorColorMenuComponent.h"
 #include "server/zone/objects/tangible/components/PlaceableLootContainerComponent.h"
+#include "server/zone/objects/tangible/tool/recycle/RecycleToolContainerComponent.h"
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
 	components.put("PlayerContainerComponent", new PlayerContainerComponent());
 	components.put("LootContainerComponent", new LootContainerComponent());
+	components.put("RecycleToolContainerComponent", new RecycleToolContainerComponent());
 
 	components.put("ZoneComponent", new ZoneComponent());
 	components.put("PlayerZoneComponent", new PlayerZoneComponent());

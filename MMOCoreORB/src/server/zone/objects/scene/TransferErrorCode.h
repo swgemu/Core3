@@ -22,6 +22,7 @@ public:
 	const static int UNKNOWNCONTAIMENTTYPE = 9;
 	const static int CONTAINERFULL = 10;
 	const static int NOLOOTPERMISSION = 11;
+	const static int MUSTBEINPLAYERINVENTORY = 12;
 };
 
 

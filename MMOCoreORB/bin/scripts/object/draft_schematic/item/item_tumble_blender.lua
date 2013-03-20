@@ -43,6 +43,38 @@
 
 object_draft_schematic_item_item_tumble_blender = object_draft_schematic_item_shared_item_tumble_blender:new {
 
+   templateType = DRAFTSCHEMATIC,
+
+   customObjectName = "Tumble Blender",
+
+   craftingToolTab = 524288, -- (See DraftSchemticImplementation.h)
+   complexity = 12, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 36, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+   customizationSkill = "general_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
+   ingredientTitleNames = {"wiring_blue", "battery_cheap_copper", "interior_gears", "agitator_motor", "inert_atmosphere_lining"},
+   ingredientSlotType = {2, 2, 0, 1, 0},
+   resourceTypes = {"object/tangible/loot/simple_kit/shared_wiring_blue.iff", "object/tangible/loot/simple_kit/shared_battery_cheap_copper.iff", "metal_ferrous", "object/tangible/loot/simple_kit/shared_motor_small_red.iff", "fiberplast"},
+   resourceQuantities = {3, 2, 40, 1, 40},
+   contribution = {100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/loot/simple_kit/tumble_blender.iff",
+
+   additionalTemplates = {
+             }
+
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_item_item_tumble_blender, "object/draft_schematic/item/item_tumble_blender.iff")
