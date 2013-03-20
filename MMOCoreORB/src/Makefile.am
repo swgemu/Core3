@@ -545,8 +545,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/vendor/VendorContainerComponent.cpp \
 		server/zone/objects/tangible/components/vendor/VendorDataComponent.cpp \
 		server/zone/objects/tangible/components/vendor/VendorMenuComponent.cpp \
-		server/zone/objects/tangible/components/GogglesColorMenuComponent.cpp \
-		server/zone/objects/tangible/components/ArmorColorMenuComponent.cpp \
+		server/zone/objects/tangible/components/GogglesObjectMenuComponent.cpp \
+		server/zone/objects/tangible/components/ArmorObjectMenuComponent.cpp \
 		server/zone/objects/installation/components/TurretDataComponent.cpp \
 		server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp \
 		server/zone/objects/creature/variables/CommandQueueAction.cpp \

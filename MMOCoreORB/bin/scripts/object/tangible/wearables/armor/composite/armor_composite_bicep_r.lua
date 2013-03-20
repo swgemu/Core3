@@ -45,7 +45,7 @@ object_tangible_wearables_armor_composite_armor_composite_bicep_r = object_tangi
 
 	templateType = ARMOROBJECT,
 
-	objectMenuComponent = {"cpp", "ArmorColorMenuComponent"}, 
+	objectMenuComponent = {"cpp", "ArmorObjectMenuComponent"}, 
 
 	playerRaces = { "object/creature/player/bothan_male.iff",
 				"object/creature/player/bothan_female.iff",

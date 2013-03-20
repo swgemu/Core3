@@ -1,16 +1,16 @@
 /*
- * GogglesColorMenuComponent.h
+ * GogglesObjectMenuComponent.h
  *
  *  Created on: 3/11/2012
  *      Author: Valkyra
  */
 
-#ifndef GOGGLESCOLORMENUCOMPONENT_H_
-#define GOGGLESCOLORMENUCOMPONENT_H_
+#ifndef GOGGLESOJECTMENUCOMPONENT_H_
+#define GOGGLESOJECTMENUCOMPONENT_H_
 
 #include "TangibleObjectMenuComponent.h"
 
-class GogglesColorMenuComponent : public TangibleObjectMenuComponent {
+class GogglesObjectMenuComponent : public TangibleObjectMenuComponent {
 public:
 
 	/**
@@ -34,4 +34,4 @@ public:
 };
 
 
-#endif /* GogglesColorMENUCOMPONENT_H_ */
+#endif /* GOGGLESOJECTMENUCOMPONENT_H_ */

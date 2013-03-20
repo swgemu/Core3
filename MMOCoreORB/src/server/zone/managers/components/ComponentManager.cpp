@@ -102,8 +102,8 @@
 #include "server/zone/objects/creature/ai/components/SpawnStateComponent.h"
 #include "server/zone/objects/creature/ai/components/StandingStateComponent.h"
 #include "server/zone/objects/creature/ai/components/WanderingStateComponent.h"
-#include "server/zone/objects/tangible/components/GogglesColorMenuComponent.h"
-#include "server/zone/objects/tangible/components/ArmorColorMenuComponent.h"
+#include "server/zone/objects/tangible/components/GogglesObjectMenuComponent.h"
+#include "server/zone/objects/tangible/components/ArmorObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/PlaceableLootContainerComponent.h"
 
 ComponentManager::ComponentManager() {
@@ -200,7 +200,7 @@ ComponentManager::ComponentManager() {
 
 	components.put("CreatureHabitatMenuComponent", new CreatureHabitatMenuComponent());
 	components.put("WearableObjectMenuComponent", new WearableObjectMenuComponent());
-	components.put("ArmorColorMenuComponent", new ArmorColorMenuComponent());	
+	components.put("ArmorObjectMenuComponent", new ArmorObjectMenuComponent());	
 
 	components.put("CityHallZoneComponent", new CityHallZoneComponent());
 
@@ -237,6 +237,6 @@ ComponentManager::ComponentManager() {
 	components.put("GCWBaseContainerComponent", new GCWBaseContainerComponent());
 
 	// SE Goggles.
-	components.put("GogglesColorMenuComponent", new GogglesColorMenuComponent());
+	components.put("GogglesObjectMenuComponent", new GogglesObjectMenuComponent());
 	components.put("PlaceableLootContainerComponent", new PlaceableLootContainerComponent());
 }
