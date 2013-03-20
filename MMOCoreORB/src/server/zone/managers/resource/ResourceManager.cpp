@@ -24,7 +24,7 @@
  *	ResourceManagerStub
  */
 
-enum {RPC_STOP__ = 6,RPC_INITIALIZE__,RPC_SHIFTRESOURCES__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_SENDRESOURCELISTFORSURVEY__CREATUREOBJECT_INT_STRING_,RPC_SENDSURVEY__CREATUREOBJECT_STRING_,RPC_SENDSAMPLE__CREATUREOBJECT_STRING_STRING_,RPC_HARVESTRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_HARVESTRESOURCETOPLAYER__CREATUREOBJECT_RESOURCESPAWN_INT_,RPC_GETAVAILABLEPOWERFROMPLAYER__CREATUREOBJECT_,RPC_REMOVEPOWERFROMPLAYER__CREATUREOBJECT_INT_,RPC_CREATERESOURCESPAWN__CREATUREOBJECT_STRING_,RPC_GIVEPLAYERRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_GETCURRENTSPAWN__STRING_STRING_,RPC_GETRESOURCESPAWN__STRING_,RPC_ADDNODETOLISTBOX__SUILISTBOX_STRING_,RPC_ADDPARENTNODETOLISTBOX__SUILISTBOX_STRING_,RPC_LISTRESOURCESFORPLANETONSCREEN__CREATUREOBJECT_STRING_,RPC_HEALTHCHECK__,RPC_DUMPRESOURCES__,RPC_DESPAWNRESOURCE__STRING_};
+enum {RPC_STOP__ = 6,RPC_INITIALIZE__,RPC_SHIFTRESOURCES__,RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_GETRESOURCERECYCLETYPE__RESOURCESPAWN_,RPC_SENDRESOURCELISTFORSURVEY__CREATUREOBJECT_INT_STRING_,RPC_SENDSURVEY__CREATUREOBJECT_STRING_,RPC_SENDSAMPLE__CREATUREOBJECT_STRING_STRING_,RPC_HARVESTRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_HARVESTRESOURCETOPLAYER__CREATUREOBJECT_RESOURCESPAWN_INT_,RPC_GETAVAILABLEPOWERFROMPLAYER__CREATUREOBJECT_,RPC_REMOVEPOWERFROMPLAYER__CREATUREOBJECT_INT_,RPC_CREATERESOURCESPAWN__CREATUREOBJECT_STRING_,RPC_GIVEPLAYERRESOURCE__CREATUREOBJECT_STRING_INT_,RPC_GETCURRENTSPAWN__STRING_STRING_,RPC_GETRESOURCESPAWN__STRING_,RPC_ISRECYCLEDRESOURCE__RESOURCESPAWN_,RPC_GETRECYCLEDVERSION__RESOURCESPAWN_,RPC_ADDNODETOLISTBOX__SUILISTBOX_STRING_,RPC_ADDPARENTNODETOLISTBOX__SUILISTBOX_STRING_,RPC_LISTRESOURCESFORPLANETONSCREEN__CREATUREOBJECT_STRING_,RPC_HEALTHCHECK__,RPC_DUMPRESOURCES__,RPC_DESPAWNRESOURCE__STRING_};
 
 ResourceManager::ResourceManager(ZoneServer* server, ZoneProcessServer* impl, ObjectManager* objectMan) : Observer(DummyConstructorParameter::instance()) {
 	ResourceManagerImplementation* _implementation = new ResourceManagerImplementation(server, impl, objectMan);
@@ -96,6 +96,20 @@ int ResourceManager::notifyObserverEvent(unsigned int eventType, Observable* obs
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->notifyObserverEvent(eventType, observable, arg1, arg2);
+}
+
+int ResourceManager::getResourceRecycleType(ResourceSpawn* resource) {
+	ResourceManagerImplementation* _implementation = static_cast<ResourceManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETRESOURCERECYCLETYPE__RESOURCESPAWN_);
+		method.addObjectParameter(resource);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getResourceRecycleType(resource);
 }
 
 void ResourceManager::sendResourceListForSurvey(CreatureObject* playerCreature, const int toolType, const String& surveyType) {
@@ -273,6 +287,34 @@ ResourceSpawn* ResourceManager::getResourceSpawn(const String& spawnName) {
 		return static_cast<ResourceSpawn*>(method.executeWithObjectReturn());
 	} else
 		return _implementation->getResourceSpawn(spawnName);
+}
+
+bool ResourceManager::isRecycledResource(ResourceSpawn* resource) {
+	ResourceManagerImplementation* _implementation = static_cast<ResourceManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISRECYCLEDRESOURCE__RESOURCESPAWN_);
+		method.addObjectParameter(resource);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isRecycledResource(resource);
+}
+
+ResourceSpawn* ResourceManager::getRecycledVersion(ResourceSpawn* resource) {
+	ResourceManagerImplementation* _implementation = static_cast<ResourceManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETRECYCLEDVERSION__RESOURCESPAWN_);
+		method.addObjectParameter(resource);
+
+		return static_cast<ResourceSpawn*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getRecycledVersion(resource);
 }
 
 void ResourceManager::addNodeToListBox(SuiListBox* sui, const String& nodeName) {
@@ -568,6 +610,11 @@ void ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 			resp->insertSignedInt(notifyObserverEvent(inv->getUnsignedIntParameter(), static_cast<Observable*>(inv->getObjectParameter()), static_cast<ManagedObject*>(inv->getObjectParameter()), inv->getSignedLongParameter()));
 		}
 		break;
+	case RPC_GETRESOURCERECYCLETYPE__RESOURCESPAWN_:
+		{
+			resp->insertSignedInt(getResourceRecycleType(static_cast<ResourceSpawn*>(inv->getObjectParameter())));
+		}
+		break;
 	case RPC_SENDRESOURCELISTFORSURVEY__CREATUREOBJECT_INT_STRING_:
 		{
 			String surveyType; 
@@ -631,6 +678,16 @@ void ResourceManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 			resp->insertLong(getResourceSpawn(inv->getAsciiParameter(spawnName))->_getObjectID());
 		}
 		break;
+	case RPC_ISRECYCLEDRESOURCE__RESOURCESPAWN_:
+		{
+			resp->insertBoolean(isRecycledResource(static_cast<ResourceSpawn*>(inv->getObjectParameter())));
+		}
+		break;
+	case RPC_GETRECYCLEDVERSION__RESOURCESPAWN_:
+		{
+			resp->insertLong(getRecycledVersion(static_cast<ResourceSpawn*>(inv->getObjectParameter()))->_getObjectID());
+		}
+		break;
 	case RPC_ADDNODETOLISTBOX__SUILISTBOX_STRING_:
 		{
 			String nodeName; 
@@ -686,6 +743,10 @@ int ResourceManagerAdapter::notifyObserverEvent(unsigned int eventType, Observab
 	return (static_cast<ResourceManager*>(stub))->notifyObserverEvent(eventType, observable, arg1, arg2);
 }
 
+int ResourceManagerAdapter::getResourceRecycleType(ResourceSpawn* resource) {
+	return (static_cast<ResourceManager*>(stub))->getResourceRecycleType(resource);
+}
+
 void ResourceManagerAdapter::sendResourceListForSurvey(CreatureObject* playerCreature, const int toolType, const String& surveyType) {
 	(static_cast<ResourceManager*>(stub))->sendResourceListForSurvey(playerCreature, toolType, surveyType);
 }
@@ -728,6 +789,14 @@ ResourceSpawn* ResourceManagerAdapter::getCurrentSpawn(const String& restype, co
 
 ResourceSpawn* ResourceManagerAdapter::getResourceSpawn(const String& spawnName) {
 	return (static_cast<ResourceManager*>(stub))->getResourceSpawn(spawnName);
+}
+
+bool ResourceManagerAdapter::isRecycledResource(ResourceSpawn* resource) {
+	return (static_cast<ResourceManager*>(stub))->isRecycledResource(resource);
+}
+
+ResourceSpawn* ResourceManagerAdapter::getRecycledVersion(ResourceSpawn* resource) {
+	return (static_cast<ResourceManager*>(stub))->getRecycledVersion(resource);
 }
 
 void ResourceManagerAdapter::addNodeToListBox(SuiListBox* sui, const String& nodeName) {

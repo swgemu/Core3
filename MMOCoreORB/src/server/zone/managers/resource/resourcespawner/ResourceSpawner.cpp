@@ -46,6 +46,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
+#include "server/zone/objects/tangible/tool/recycle/RecycleTool.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/packets/resource/ResourceListForSurveyMessage.h"
@@ -130,6 +131,10 @@ void ResourceSpawner::removeZone(const String& zoneName) {
 
 void ResourceSpawner::addJtlResource(const String& resourceName) {
 	jtlResources.add(resourceName);
+}
+
+void ResourceSpawner::addRecycledResource(const String& resourceName) {
+	recycledResources.add(resourceName);
 }
 
 void ResourceSpawner::setSpawningParameters(bool loadFromScript, const int dur, const float throt,
@@ -378,6 +383,47 @@ void ResourceSpawner::shiftResources() {
 	dumpResources();
 }
 
+ResourceSpawn* ResourceSpawner::createRecycledResourceSpawn(ResourceTreeEntry* entry) {
+	ResourceSpawn* newSpawn = dynamic_cast<ResourceSpawn*> (objectManager->createObject(0xb2825c5a, 1, "resourcespawns"));
+
+	if (newSpawn == NULL) {
+		error("createResourceSpawn is trying to create a resourcespawn with the wrong type");
+		return NULL;
+	}
+
+	newSpawn->setType(entry->getType());
+	newSpawn->setName(entry->getFinalClass());
+
+	for (int i = 0; i < entry->getClassCount(); ++i) {
+		String resClass = entry->getClass(i);
+		newSpawn->addClass(resClass);
+
+	}
+
+	for (int i = 0; i < entry->getStfClassCount(); ++i) {
+		String resClass = entry->getStfClass(i);
+		newSpawn->addStfClass(resClass);
+	}
+
+	for (int i = 0; i < entry->getAttributeCount(); ++i) {
+		ResourceAttribute* attrib = entry->getAttribute(i);
+		newSpawn->addAttribute(attrib->getName(), 200);
+	}
+
+	newSpawn->setZoneRestriction(entry->getZoneRestriction());
+
+	newSpawn->setSurveyToolType(entry->getSurveyToolType());
+
+	newSpawn->setContainerCRC(entry->getContainerCRC());
+
+	if (newSpawn->isType("energy") || newSpawn->isType("radioactive"))
+		newSpawn->setIsEnergy(true);
+
+	resourceMap->add(newSpawn->getName(), newSpawn);
+
+	return newSpawn;
+}
+
 ResourceSpawn* ResourceSpawner::manualCreateResourceSpawn(const String& type) {
 	ResourceSpawn* resourceSpawn = createResourceSpawn(type);
 
@@ -552,6 +598,113 @@ Vector<String>& ResourceSpawner::getActiveResourceZones() {
 
 Vector<String>& ResourceSpawner::getJtlResources() {
 	return jtlResources;
+}
+
+Vector<String>& ResourceSpawner::getRecycledResources() {
+	return recycledResources;
+}
+
+bool ResourceSpawner::isRecycledResource(ResourceSpawn* resource) {
+	String type = resource->getType();
+	if (recycledResources.contains(type)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+ResourceSpawn* ResourceSpawner::getRecycledVersion(ResourceSpawn* resource) {
+	ResourceTreeEntry* startingEntry = resourceTree->getEntry(resource->getType());
+	int recycleType = startingEntry->getRecycleToolType();
+
+	ResourceTreeEntry* recycledEntry;
+	ManagedReference<ResourceSpawn*> recycledVersion;
+
+	switch(recycleType) {
+	case RecycleTool::NOTYPE:
+		return NULL;
+		break;
+	case RecycleTool::CHEMICALS:
+		recycledEntry = resourceTree->getEntry("chemical_compound");
+		break;
+	case RecycleTool::WATER:
+		recycledEntry = resourceTree->getEntry("water_solution");
+		break;
+	case RecycleTool::RADIOACTIVE:
+		recycledEntry = resourceTree->getEntry("combined_radioactive_isotpopes");
+		break;
+	case RecycleTool::SOLIDFUEL:
+		recycledEntry = resourceTree->getEntry("degraded_fuel_petrochem_solid");
+		break;
+	case RecycleTool::HIDE:
+		recycledEntry = resourceTree->getEntry("synthesized_hides");
+		break;
+	case RecycleTool::MEAT:
+		recycledEntry = resourceTree->getEntry("processed_meat");
+		break;
+	case RecycleTool::BONE:
+		recycledEntry = resourceTree->getEntry("ground_bones");
+		break;
+	case RecycleTool::HORN:
+		recycledEntry = resourceTree->getEntry("bone_horn_ground");
+		break;
+	case RecycleTool::SEAFOOD:
+		recycledEntry = resourceTree->getEntry("processed_seafood");
+		break;
+	case RecycleTool::MILK:
+		recycledEntry = resourceTree->getEntry("milk_homogenized");
+		break;
+	case RecycleTool::CEREAL:
+		recycledEntry = resourceTree->getEntry("processed_cereal");
+		break;
+	case RecycleTool::FRUIT:
+		recycledEntry = resourceTree->getEntry("mixed_fruits");
+		break;
+	case RecycleTool::VEGETABLE:
+		recycledEntry = resourceTree->getEntry("mixed_vegetables");
+		break;
+	case RecycleTool::WOOD:
+		recycledEntry = resourceTree->getEntry("processed_wood");
+		break;
+	case RecycleTool::FERROUS:
+		if (resource->isUnknownType())
+			recycledEntry = resourceTree->getEntry("smelted_metal_ferrous_unknown");
+		else if (resource->isType("iron"))
+			recycledEntry = resourceTree->getEntry("iron_smelted");
+		else if (resource->isType("steel"))
+			recycledEntry = resourceTree->getEntry("steel_smelted");
+		break;
+	case RecycleTool::NONFERROUS:
+		if (resource->isUnknownType())
+			recycledEntry = resourceTree->getEntry("smelted_metal_nonferrous_unknown");
+		else if (resource->isType("aluminum"))
+			recycledEntry = resourceTree->getEntry("aluminum_smelted");
+		else if (resource->isType("copper"))
+			recycledEntry = resourceTree->getEntry("copper_smelted");
+		break;
+	case RecycleTool::IGNEOUS:
+		recycledEntry = resourceTree->getEntry("ore_extrusive_low_grade");
+		break;
+	case RecycleTool::SEDIMENTARY:
+		recycledEntry = resourceTree->getEntry("ore_carbonate_low_grade");
+		break;
+	case RecycleTool::GEMSTONE:
+		recycledEntry = resourceTree->getEntry("gemstone_mixed_low_quality");
+		break;
+	}
+
+	if (resourceMap->containsType(recycledEntry->getFinalClass())) {
+		recycledVersion = resourceMap->get(recycledEntry->getFinalClass().toLowerCase());
+	} else {
+		recycledVersion = createRecycledResourceSpawn(recycledEntry);
+	}
+
+	return recycledVersion;
+}
+
+int ResourceSpawner::sendResourceRecycleType(ResourceSpawn* resource) {
+	ResourceTreeEntry* entry = resourceTree->getBaseNode()->find(resource->getType(), NULL);
+	return entry->getRecycleToolType();
 }
 
 void ResourceSpawner::sendResourceListForSurvey(CreatureObject* player,

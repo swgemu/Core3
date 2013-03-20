@@ -111,6 +111,9 @@ private:
 	/// The type of survey tool that can survey this
 	int surveyToolType;
 
+	/// The recyler setting that can recycle this
+	int recycleToolType;
+
 	/// CRC of resourceContainerType
 	uint32 containerCRC;
 
@@ -137,6 +140,8 @@ public:
 		zoneRestriction = "";
 
 		surveyToolType = -1;
+
+		recycleToolType = -1;
 
 		containerCRC = 0;
 
@@ -497,6 +502,22 @@ public:
      */
     int getSurveyToolType() {
     	return surveyToolType;
+    }
+
+    /**
+     * Sets recycleToolType
+     * \param type
+     */
+    void setRecycleToolType(int type) {
+    	recycleToolType = type;
+    }
+
+    /**
+     * Gets recycleToolType
+     * \return recycleToolType
+     */
+    int getRecycleToolType() {
+    	return recycleToolType;
     }
 
     /**

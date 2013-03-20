@@ -100,6 +100,7 @@ private:
 	ResourceMap* resourceMap;
 
 	Vector<String> jtlResources;
+	Vector<String> recycledResources;
 	Vector<String> activeResourceZones;
 
 	MinimumPool* minimumPool;
@@ -130,6 +131,7 @@ public:
 	void addZone(const String& zoneName);
 	void removeZone(const String& zoneName);
 	void addJtlResource(const String& resourceName);
+	void addRecycledResource(const String& resourceName);
 	void setSpawningParameters(bool loadFromScript, const int dur, const float throt,
 			const int override, const int spawnquantity);
 
@@ -146,6 +148,14 @@ public:
 	void despawn(ResourceSpawn* spawn);
 
 	ResourceSpawn* manualCreateResourceSpawn(const String& type);
+
+	ResourceSpawn* createRecycledResourceSpawn(ResourceTreeEntry* entry);
+
+	ResourceSpawn* getRecycledVersion(ResourceSpawn* resource);
+
+	bool isRecycledResource(ResourceSpawn* resource);
+
+	int sendResourceRecycleType(ResourceSpawn* resource);
 
 	void sendResourceListForSurvey(CreatureObject* player, const int toolType, const String& surveyType);
 
@@ -188,6 +198,7 @@ private:
 	long getRandomUnixTimestamp(int min, int max);
 
 	Vector<String>& getJtlResources();
+	Vector<String>& getRecycledResources();
 	Vector<String>& getActiveResourceZones();
 
 	friend class ResourceTree;
