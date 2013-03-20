@@ -26,7 +26,7 @@
 //#define DEBUG
 
 void CreatureImplementation::initializeTransientMembers() {
-	alreadyMilked = false;
+	milkState = CreatureManager::NOTMILKED;
 	AiAgentImplementation::initializeTransientMembers();
 	aiInterfaceComponents.add(ComponentManager::instance()->getComponent<AiCreatureComponent*>("AiCreatureComponent"));
 }
@@ -62,12 +62,6 @@ void CreatureImplementation::runAway(CreatureObject* target) {
 
 void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 
-	/*menuResponse->addRadialMenuItem(205, 1, "@pet/pet_menu:menu_enter_exit");
-	menuResponse->addRadialMenuItem(61, 3, "");
-
-	if (checkInRangeGarage() && !isDestroyed())
-		menuResponse->addRadialMenuItem(62, 3, "Repair");*/
-
 	if (canMilkMe(player)) {
 
 		menuResponse->addRadialMenuItem(112, 3, "@pet/pet_menu:milk_me");
@@ -86,10 +80,6 @@ void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResp
 			menuResponse->addRadialMenuItemToRadialID(112, 236, 3, "@sui:harvest_bone");
 	}
 
-	/*if (player->isInRange(getPositionX(), getPositionY(), 10.0f) && player->hasBiologicalSignature()
-			&& getObjectCRC() == 0x78E5C3B5 && getCreatureLinkID() == player->getObjectID()){
-		omr->addRadialParent(137, 3, "Transfer Bio-Signature");
-	}*/
 }
 
 int CreatureImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
@@ -98,7 +88,7 @@ int CreatureImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 
 	if (!(_this.get()->isDead())) {
 		if (selectedID == 112) {
-			//getZone()->getCreatureManager()->milk(_this.get(), player);
+			getZone()->getCreatureManager()->milk(_this.get(), player);
 		}
 	} else {
 		if ((selectedID == 112 || selectedID == 234 || selectedID == 235 || selectedID == 236)) {
@@ -234,8 +224,8 @@ void CreatureImplementation::addAlreadyHarvested(CreatureObject* player) {
 	alreadyHarvested.put(player->getObjectID());
 }
 
-void CreatureImplementation::setAlreadyMilked(bool milked) {
-	alreadyMilked = milked;
+void CreatureImplementation::setMilkState(short milk) {
+	milkState = milk;
 }
 
 void CreatureImplementation::notifyDespawn(Zone* zone) {
@@ -292,7 +282,7 @@ bool CreatureImplementation::hasSkillToHarvestMe(CreatureObject* player) {
 
 bool CreatureImplementation::canMilkMe(CreatureObject* player) {
 
-	if (!hasMilk() || alreadyMilked || _this.get()->isInCombat() || _this.get()->isDead())
+	if (!hasMilk() || milkState != CreatureManager::NOTMILKED  || _this.get()->isInCombat() || _this.get()->isDead())
 		return false;
 
 	if(!player->isInRange(_this.get(), 5.0f) || player->isInCombat() || player->isDead() || player->isIncapacitated() || !(player->hasState(CreatureState::MASKSCENT)))

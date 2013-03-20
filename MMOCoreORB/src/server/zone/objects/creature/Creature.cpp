@@ -20,7 +20,7 @@
  *	CreatureStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISCREATURE__,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_RUNAWAY__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SCHEDULEDESPAWN__,RPC_HASORGANICS__,RPC_HASMILK__,RPC_CANHARVESTME__CREATUREOBJECT_,RPC_HASSKILLTOHARVESTME__CREATUREOBJECT_,RPC_CANMILKME__CREATUREOBJECT_,RPC_ADDALREADYHARVESTED__CREATUREOBJECT_,RPC_SETALREADYMILKED__BOOL_,RPC_NOTIFYDESPAWN__ZONE_,RPC_ISBABY__,RPC_GETTAME__,RPC_GETMEATTYPE__,RPC_GETBONETYPE__,RPC_GETHIDETYPE__,RPC_GETMILKTYPE__,RPC_GETMILK__,RPC_GETHIDEMAX__,RPC_GETBONEMAX__,RPC_GETMEATMAX__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISCREATURE__,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_RUNAWAY__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SCHEDULEDESPAWN__,RPC_HASORGANICS__,RPC_HASMILK__,RPC_CANHARVESTME__CREATUREOBJECT_,RPC_HASSKILLTOHARVESTME__CREATUREOBJECT_,RPC_CANMILKME__CREATUREOBJECT_,RPC_ADDALREADYHARVESTED__CREATUREOBJECT_,RPC_SETMILKSTATE__SHORT_,RPC_NOTIFYDESPAWN__ZONE_,RPC_ISBABY__,RPC_GETTAME__,RPC_GETMEATTYPE__,RPC_GETBONETYPE__,RPC_GETHIDETYPE__,RPC_GETMILKTYPE__,RPC_GETMILK__,RPC_GETHIDEMAX__,RPC_GETBONEMAX__,RPC_GETMEATMAX__};
 
 Creature::Creature() : AiAgent(DummyConstructorParameter::instance()) {
 	CreatureImplementation* _implementation = new CreatureImplementation();
@@ -226,18 +226,18 @@ void Creature::addAlreadyHarvested(CreatureObject* player) {
 		_implementation->addAlreadyHarvested(player);
 }
 
-void Creature::setAlreadyMilked(bool milked) {
+void Creature::setMilkState(short milkState) {
 	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETALREADYMILKED__BOOL_);
-		method.addBooleanParameter(milked);
+		DistributedMethod method(this, RPC_SETMILKSTATE__SHORT_);
+		method.addSignedShortParameter(milkState);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setAlreadyMilked(milked);
+		_implementation->setMilkState(milkState);
 }
 
 void Creature::notifyDespawn(Zone* zone) {
@@ -502,8 +502,8 @@ bool CreatureImplementation::readObjectMember(ObjectInputStream* stream, const u
 		return true;
 
 	switch(nameHashCode) {
-	case 0x5f6547f6: //Creature.alreadyMilked
-		TypeInfo<bool >::parseFromBinaryStream(&alreadyMilked, stream);
+	case 0xd784ea84: //Creature.milkState
+		TypeInfo<short >::parseFromBinaryStream(&milkState, stream);
 		return true;
 
 	}
@@ -524,11 +524,11 @@ int CreatureImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_nameHashCode = 0x5f6547f6; //Creature.alreadyMilked
+	_nameHashCode = 0xd784ea84; //Creature.milkState
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<bool >::toBinaryStream(&alreadyMilked, stream);
+	TypeInfo<short >::toBinaryStream(&milkState, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -713,9 +713,9 @@ void CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			addAlreadyHarvested(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		}
 		break;
-	case RPC_SETALREADYMILKED__BOOL_:
+	case RPC_SETMILKSTATE__SHORT_:
 		{
-			setAlreadyMilked(inv->getBooleanParameter());
+			setMilkState(inv->getSignedShortParameter());
 		}
 		break;
 	case RPC_NOTIFYDESPAWN__ZONE_:
@@ -830,8 +830,8 @@ void CreatureAdapter::addAlreadyHarvested(CreatureObject* player) {
 	(static_cast<Creature*>(stub))->addAlreadyHarvested(player);
 }
 
-void CreatureAdapter::setAlreadyMilked(bool milked) {
-	(static_cast<Creature*>(stub))->setAlreadyMilked(milked);
+void CreatureAdapter::setMilkState(short milkState) {
+	(static_cast<Creature*>(stub))->setMilkState(milkState);
 }
 
 void CreatureAdapter::notifyDespawn(Zone* zone) {

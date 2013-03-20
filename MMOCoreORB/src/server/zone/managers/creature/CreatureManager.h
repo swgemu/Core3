@@ -182,6 +182,12 @@ namespace creature {
 
 class CreatureManager : public ZoneManager {
 public:
+	static const short NOTMILKED = 0x00;
+
+	static const short BEINGMILKED = 0x01;
+
+	static const short ALREADYMILKED = 0x02;
+
 	CreatureManager(Zone* planet);
 
 	void initialize();
@@ -221,6 +227,8 @@ public:
 	void spawnRandomCreature(int number, float x, float z, float y, unsigned long long parentID = 0);
 
 	void harvest(Creature* creature, CreatureObject* player, int selectedID);
+
+	void milk(Creature* creature, CreatureObject* player);
 
 	void addToReservePool(AiAgent* agent);
 
@@ -282,6 +290,12 @@ protected:
 	static Mutex loadMutex;
 
 public:
+	static const short NOTMILKED = 0x00;
+
+	static const short BEINGMILKED = 0x01;
+
+	static const short ALREADYMILKED = 0x02;
+
 	CreatureManagerImplementation(Zone* planet);
 
 	CreatureManagerImplementation(DummyConstructorParameter* param);
@@ -331,6 +345,8 @@ private:
 
 public:
 	void harvest(Creature* creature, CreatureObject* player, int selectedID);
+
+	void milk(Creature* creature, CreatureObject* player);
 
 	void addToReservePool(AiAgent* agent);
 
@@ -428,6 +444,8 @@ public:
 	void spawnRandomCreature(int number, float x, float z, float y, unsigned long long parentID);
 
 	void harvest(Creature* creature, CreatureObject* player, int selectedID);
+
+	void milk(Creature* creature, CreatureObject* player);
 
 	void addToReservePool(AiAgent* agent);
 

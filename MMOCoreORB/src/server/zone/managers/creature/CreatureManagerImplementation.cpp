@@ -22,6 +22,7 @@
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/objects/creature/Creature.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/events/MilkCreatureTask.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
@@ -652,6 +653,31 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 			despawn->reschedule(1000);
 		}
 	}
+}
+
+void CreatureManagerImplementation::milk(Creature* creature, CreatureObject* player) {
+	Zone* zone = creature->getZone();
+
+	if (zone == NULL || !creature->isCreature())
+		return;
+
+	if (!creature->canMilkMe(player))
+		return;
+
+	if (player->isMounted()) {
+		player->sendSystemMessage("@skl_use:skl_use"); //You cannot milk while mounted.
+		return;
+	}
+
+	player->sendSystemMessage("@skl_use:milk_begin"); //You relax the creature and begin to milk it.
+
+	Locker clocker(creature);
+
+	creature->setMilkState(BEINGMILKED);
+
+	ManagedReference<MilkCreatureTask*> task = new MilkCreatureTask(creature, player);
+
+	task->schedule(10000);
 }
 
 bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, TangibleObject* clothing) {
