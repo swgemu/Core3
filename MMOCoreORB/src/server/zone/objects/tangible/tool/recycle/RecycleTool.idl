@@ -1,0 +1,137 @@
+
+package server.zone.objects.tangible.tool.recycle;
+
+import engine.log.Logger;
+import engine.core.ManagedReference;
+import system.lang.ref.Reference;
+import server.zone.objects.tangible.tool.ToolTangibleObject;
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.tangible.Container;
+import server.zone.objects.creature.CreatureObject;
+import engine.lua.LuaObject;
+import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.Zone;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+
+
+class RecycleTool extends Container {
+
+	@dereferenced
+	protected Vector<string> resourceTypes;
+
+	protected int toolType;
+
+	protected int selectedResource;
+
+	protected string selectedTypeName;
+
+	//can't be recycled
+	public static final int NOTYPE = -1;
+
+	//recycle tool type / resource type groups
+	//chemical tool
+	public static final int CHEMICAL = 1;
+	public static final int WATER = 2;
+	public static final int CHEMICALS = 3;
+	public static final int SOLIDFUEL = 4;
+	public static final int RADIOACTIVE = 5;
+
+	//creature tool
+	public static final int CREATURE = 6;
+	public static final int HIDE = 7;
+	public static final int MEAT = 8;
+	public static final int BONE = 9;
+	public static final int HORN = 10;
+	public static final int SEAFOOD = 11;
+	public static final int MILK = 12;
+
+	//flora tool
+	public static final int FLORA = 13;
+	public static final int CEREAL = 14;
+	public static final int FRUIT = 15;
+	public static final int VEGETABLE = 16;
+	public static final int WOOD = 17;
+
+	//metal tool
+	public static final int METAL = 18;
+	public static final int FERROUS = 19;
+	public static final int NONFERROUS = 20;
+
+	//ore tool
+	public static final int ORE = 21;
+	public static final int IGNEOUS = 22;
+	public static final int SEDIMENTARY = 23;
+	public static final int GEMSTONE = 24;
+
+
+	public RecycleTool() {
+		Logger.setLoggingName("RecycleTool");
+		
+		resourceTypes.add("");
+		resourceTypes.add("");
+		resourceTypes.add("");
+		resourceTypes.add("");
+		resourceTypes.add("");
+		resourceTypes.add("");
+
+		selectedResource = -1;
+		selectedTypeName = "";
+	}
+	
+	public native void initializeTransientMembers();
+
+	@local
+	public native void loadTemplateData(SharedObjectTemplate templateData);
+	
+	@local
+	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+	
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+
+
+	@local
+	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
+		
+	}
+
+	public int getToolType() {
+		return toolType;
+	}
+	
+	public int getSelectedResource() {
+		return selectedResource;
+	}
+
+	public void setSelectedResource(int res) {
+		selectedResource = res;
+	}
+	
+	public string getSelectedTypeName() {
+		return selectedTypeName;
+	}
+
+	public void setSelectedTypeName(string res) {
+		selectedTypeName = res;
+	}
+
+	@local
+	public native void getChemical(Vector<string> chemical);
+
+	@local
+	public native void getCreature(Vector<string> creature);
+
+	@local
+	public native void getFlora(Vector<string> flora);
+
+	@local
+	public native void getMetal(Vector<string> metal);
+
+	@local
+	public native void getOre(Vector<string> ore);
+}

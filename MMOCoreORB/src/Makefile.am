@@ -253,6 +253,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/tangible/tool/ToolTangibleObject.cpp \
 				server/zone/objects/tangible/tool/smuggler/SlicingTool.cpp \
 				server/zone/objects/tangible/tool/smuggler/PrecisionLaserKnife.cpp \
+				server/zone/objects/tangible/tool/recycle/RecycleTool.cpp \
 				server/zone/objects/tangible/tool/repair/RepairTool.cpp \
 				server/zone/objects/tangible/tool/SurveyTool.cpp \
 				server/zone/objects/tangible/wearables/WearableObject.cpp \
@@ -524,6 +525,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/tool/CraftingStationImplementation.cpp \
 		server/zone/objects/tangible/tool/smuggler/SlicingToolImplementation.cpp \
 		server/zone/objects/tangible/tool/smuggler/PrecisionLaserKnifeImplementation.cpp \
+		server/zone/objects/tangible/tool/recycle/RecycleToolImplementation.cpp \
 		server/zone/objects/tangible/tool/repair/RepairToolImplementation.cpp \
 		server/zone/objects/group/GroupObjectImplementation.cpp \
 		server/zone/objects/guild/GuildObjectImplementation.cpp \

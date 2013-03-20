@@ -60,6 +60,7 @@
 #include "server/zone/templates/SharedTangibleObjectTemplate.h"
 #include "server/zone/templates/SharedUniverseObjectTemplate.h"
 #include "server/zone/templates/tangible/tool/SurveyToolTemplate.h"
+#include "server/zone/templates/tangible/tool/RecycleToolTemplate.h"
 #include "server/zone/templates/tangible/tool/CraftingToolTemplate.h"
 #include "server/zone/templates/tangible/tool/CraftingStationTemplate.h"
 #include "server/zone/templates/tangible/tool/SlicingToolTemplate.h"
@@ -473,6 +474,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<GamblingTerminalTemplate>(SharedObjectTemplate::GAMBLINGTERMINAL);
 	templateFactory.registerObject<FireworkObjectTemplate>(SharedObjectTemplate::FIREWORK);
 	templateFactory.registerObject<SurveyToolTemplate>(SharedObjectTemplate::SURVEYTOOL);
+	templateFactory.registerObject<RecycleToolTemplate>(SharedObjectTemplate::RECYCLETOOL);
 	templateFactory.registerObject<CraftingToolTemplate>(SharedObjectTemplate::CRAFTINGTOOL);
 	templateFactory.registerObject<CraftingStationTemplate>(SharedObjectTemplate::CRAFTINGSTATION);
 	templateFactory.registerObject<ResourceSpawnTemplate>(SharedObjectTemplate::RESOURCESPAWN);
@@ -618,6 +620,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("GAMBLINGTERMINAL", SharedObjectTemplate::GAMBLINGTERMINAL);
 	luaTemplatesInstance->setGlobalInt("FIREWORK", SharedObjectTemplate::FIREWORK);
 	luaTemplatesInstance->setGlobalInt("SURVEYTOOL", SharedObjectTemplate::SURVEYTOOL);
+	luaTemplatesInstance->setGlobalInt("RECYCLETOOL", SharedObjectTemplate::RECYCLETOOL);
 	luaTemplatesInstance->setGlobalInt("CRAFTINGTOOL", SharedObjectTemplate::CRAFTINGTOOL);
 	luaTemplatesInstance->setGlobalInt("CRAFTINGSTATION", SharedObjectTemplate::CRAFTINGSTATION);
 	luaTemplatesInstance->setGlobalInt("RESOURCESPAWN", SharedObjectTemplate::RESOURCESPAWN);

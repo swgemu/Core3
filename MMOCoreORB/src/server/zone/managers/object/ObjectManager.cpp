@@ -121,6 +121,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<RepairTool>(SceneObjectType::REPAIRTOOL);
 	objectFactory.registerObject<CraftingTool>(SceneObjectType::CRAFTINGTOOL);
 	objectFactory.registerObject<SurveyTool>(SceneObjectType::SURVEYTOOL);
+	objectFactory.registerObject<RecycleTool>(SceneObjectType::RECYCLETOOL);
 
 	objectFactory.registerObject<CraftingStation>(SceneObjectType::CRAFTINGSTATION);
 

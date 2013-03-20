@@ -1423,6 +1423,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 
+
 	@dirty
 	public abstract boolean isBuildingObject() {
 		return false;
@@ -1664,6 +1665,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return false;
 	}
 	
+	@read
+	public abstract boolean isRecycleToolObject() {
+		return gameObjectType == SceneObjectType.RECYCLETOOL;
+	}
+	
 	@local
 	public ContainerPermissions getContainerPermissions() {
 		return containerPermissions;
@@ -1771,7 +1777,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isContainerObject() {
 		return false;
 	}
-	
+
 	@dirty
 	public abstract boolean isTerminal() {
 		return false;

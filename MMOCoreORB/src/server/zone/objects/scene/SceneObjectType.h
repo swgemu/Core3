@@ -192,6 +192,7 @@ public:
 	const static int LASERKNIFE = 0x8009;
 	const static int WEAPONUPGRADEKIT = 0x800A;
 	const static int ARMORUPGRADEKIT = 0x800B;
+	const static int RECYCLETOOL = 0x800C;
 	// End Not in client *****************
 
 	const static int VEHICLE = 0x10000;
