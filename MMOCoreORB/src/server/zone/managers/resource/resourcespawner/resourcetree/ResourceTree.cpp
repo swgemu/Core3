@@ -54,6 +54,7 @@ which carries forward this exception.
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "../ResourceSpawner.h"
 #include "server/zone/objects/tangible/tool/SurveyTool.h"
+#include "server/zone/objects/tangible/tool/recycle/RecycleTool.h"
 
 ResourceTree::ResourceTree(ResourceSpawner* spawn) : Logger() {
 
@@ -158,7 +159,9 @@ bool ResourceTree::buildTreeFromClient() {
 
 		setZoneRestriction(entry);
 		setJtl(entry);
+		setRecycled(entry);
 		setSurveyToolType(entry);
+		setRecycleToolType(entry);
 
 		/// Add entry to the tree
 		baseNode->add(entry);
@@ -203,6 +206,21 @@ void ResourceTree::setJtl(ResourceTreeEntry* entry) {
 	}
 }
 
+void ResourceTree::setRecycled(ResourceTreeEntry* entry) {
+	String name = entry->getType();
+
+	Vector<String>& recycledResources = spawner->getRecycledResources();
+
+	for(int i = 0; i < recycledResources.size(); ++i) {
+		String recycledresource = recycledResources.get(i);
+
+		if(name == recycledresource) {
+			entry->setRecycled(true);
+			return;
+		}
+	}
+}
+
 void ResourceTree::setSurveyToolType(ResourceTreeEntry* entry) {
 
 	if(entry->isType("energy")) {
@@ -235,6 +253,62 @@ void ResourceTree::setSurveyToolType(ResourceTreeEntry* entry) {
 
 	else
 		entry->setSurveyToolType(SurveyTool::NOTYPE);
+}
+
+void ResourceTree::setRecycleToolType(ResourceTreeEntry* entry) {
+
+	if(entry->isType("chemical")) {
+		entry->setRecycleToolType(RecycleTool::CHEMICALS);
+	} else if(entry->isType("water")) {
+		entry->setRecycleToolType(RecycleTool::WATER);
+	} else if(entry->isType("radioactive")) {
+		entry->setRecycleToolType(RecycleTool::RADIOACTIVE);
+	} else if(entry->isType("fuel_petrochem_solid")) {
+		entry->setRecycleToolType(RecycleTool::SOLIDFUEL);
+	}
+
+	else if(entry->isType("hide")) {
+		entry->setRecycleToolType(RecycleTool::HIDE);
+	} else if(entry->isType("meat")) {
+		entry->setRecycleToolType(RecycleTool::MEAT);
+	} else if(entry->isType("bone")) {
+		entry->setRecycleToolType(RecycleTool::BONE);
+	} else if(entry->isType("horn")) {
+		entry->setRecycleToolType(RecycleTool::HORN);
+	} else if(entry->isType("seafood")) {
+		entry->setRecycleToolType(RecycleTool::SEAFOOD);
+	} else if(entry->isType("milk")) {
+		entry->setRecycleToolType(RecycleTool::MILK);
+	}
+
+	else if(entry->isType("cereal")) {
+		entry->setRecycleToolType(RecycleTool::CEREAL);
+	} else if(entry->isType("fruit")) {
+		entry->setRecycleToolType(RecycleTool::FRUIT);
+	} else if(entry->isType("vegetable")) {
+		entry->setRecycleToolType(RecycleTool::VEGETABLE);
+	} else if(entry->isType("wood")) {
+		entry->setRecycleToolType(RecycleTool::WOOD);
+	}
+
+	else if(entry->isType("metal_ferrous")) {
+		entry->setRecycleToolType(RecycleTool::FERROUS);
+	} else if(entry->isType("metal_nonferrous")) {
+		entry->setRecycleToolType(RecycleTool::NONFERROUS);
+	}
+
+	else if(entry->isType("ore_igneous")) {
+		entry->setRecycleToolType(RecycleTool::IGNEOUS);
+	} else if(entry->isType("ore_sedimentary")) {
+		entry->setRecycleToolType(RecycleTool::SEDIMENTARY);
+	} else if (entry->isType("gemstone")) {
+		entry->setRecycleToolType(RecycleTool::GEMSTONE);
+	}
+
+	else {
+		entry->setRecycleToolType(RecycleTool::NOTYPE);
+	}
+
 }
 
 void ResourceTree::toString() {

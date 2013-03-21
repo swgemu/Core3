@@ -151,6 +151,17 @@ bool ResourceManagerImplementation::loadConfigData() {
 	String natpoolexc = lua->getGlobalString("nativepoolexcludes");
 	resourceSpawner->initializeNativePool(natpoolinc, natpoolexc);
 
+	String recycledResources = lua->getGlobalString("recycledresources");
+
+	StringTokenizer recycledTokens(recycledResources);
+	recycledTokens.setDelimeter(",");
+
+	while(recycledTokens.hasMoreTokens()) {
+		String token;
+		recycledTokens.getStringToken(token);
+		resourceSpawner->addRecycledResource(token);
+	}
+
 	return true;
 }
 
@@ -192,6 +203,10 @@ void ResourceManagerImplementation::shiftResources() {
 
 	ResourceShiftTask* resourceShift = new ResourceShiftTask(_this.get().get());
 	resourceShift->schedule(shiftInterval);
+}
+
+int ResourceManagerImplementation::getResourceRecycleType(ResourceSpawn* resource) {
+	return resourceSpawner->sendResourceRecycleType(resource);
 }
 
 void ResourceManagerImplementation::sendResourceListForSurvey(CreatureObject* playerCreature, const int toolType, const String& surveyType) {
@@ -396,6 +411,14 @@ void ResourceManagerImplementation::givePlayerResource(CreatureObject* playerCre
 			inventory->transferObject(newResource, -1, true);
 		}
 	}
+}
+
+bool ResourceManagerImplementation::isRecycledResource(ResourceSpawn* resource) {
+	return resourceSpawner->isRecycledResource(resource);
+}
+
+ResourceSpawn* ResourceManagerImplementation::getRecycledVersion(ResourceSpawn* resource) {
+	return resourceSpawner->getRecycledVersion(resource);
 }
 
 /// Resource Deed Methods

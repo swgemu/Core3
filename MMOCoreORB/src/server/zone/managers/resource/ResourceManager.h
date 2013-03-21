@@ -117,6 +117,8 @@ using namespace server::zone::objects::player::sui::listbox;
 
 #include "server/zone/managers/resource/resourcespawner/ResourceSpawner.h"
 
+#include "server/zone/managers/resource/resourcespawner/resourcetree/ResourceTree.h"
+
 #include "server/zone/packets/resource/ResourceListForSurveyMessage.h"
 
 #include "server/zone/objects/resource/ResourceSpawn.h"
@@ -152,6 +154,8 @@ public:
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
+	int getResourceRecycleType(ResourceSpawn* resource);
+
 	void sendResourceListForSurvey(CreatureObject* playerCreature, const int toolType, const String& surveyType);
 
 	void sendSurvey(CreatureObject* playerCreature, const String& resname);
@@ -175,6 +179,10 @@ public:
 	ResourceSpawn* getCurrentSpawn(const String& restype, const String& zoneName);
 
 	ResourceSpawn* getResourceSpawn(const String& spawnName);
+
+	bool isRecycledResource(ResourceSpawn* resource);
+
+	ResourceSpawn* getRecycledVersion(ResourceSpawn* resource);
 
 	void addNodeToListBox(SuiListBox* sui, const String& nodeName);
 
@@ -241,6 +249,8 @@ public:
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
+	int getResourceRecycleType(ResourceSpawn* resource);
+
 	void sendResourceListForSurvey(CreatureObject* playerCreature, const int toolType, const String& surveyType);
 
 	void sendSurvey(CreatureObject* playerCreature, const String& resname);
@@ -275,6 +285,10 @@ private:
 	void startResourceSpawner();
 
 public:
+	bool isRecycledResource(ResourceSpawn* resource);
+
+	ResourceSpawn* getRecycledVersion(ResourceSpawn* resource);
+
 	void addNodeToListBox(SuiListBox* sui, const String& nodeName);
 
 	String addParentNodeToListBox(SuiListBox* sui, const String& currentNode);
@@ -338,6 +352,8 @@ public:
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
+	int getResourceRecycleType(ResourceSpawn* resource);
+
 	void sendResourceListForSurvey(CreatureObject* playerCreature, const int toolType, const String& surveyType);
 
 	void sendSurvey(CreatureObject* playerCreature, const String& resname);
@@ -359,6 +375,10 @@ public:
 	ResourceSpawn* getCurrentSpawn(const String& restype, const String& zoneName);
 
 	ResourceSpawn* getResourceSpawn(const String& spawnName);
+
+	bool isRecycledResource(ResourceSpawn* resource);
+
+	ResourceSpawn* getRecycledVersion(ResourceSpawn* resource);
 
 	void addNodeToListBox(SuiListBox* sui, const String& nodeName);
 

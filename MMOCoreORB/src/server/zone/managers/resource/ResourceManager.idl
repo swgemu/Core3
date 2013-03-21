@@ -60,6 +60,7 @@ import engine.util.Observable;
 import server.zone.objects.player.sui.listbox.SuiListBox;
 
 include server.zone.managers.resource.resourcespawner.ResourceSpawner;
+include server.zone.managers.resource.resourcespawner.resourcetree.ResourceTree;
 include server.zone.packets.resource.ResourceListForSurveyMessage;
 include server.zone.objects.resource.ResourceSpawn;
 
@@ -102,6 +103,8 @@ class ResourceManager extends Observer implements Logger {
 	
 	public native int notifyObserverEvent(unsigned int eventType, Observable observable, ManagedObject arg1, long arg2);
 	
+	public native int getResourceRecycleType(ResourceSpawn resource);	
+
 	public native void sendResourceListForSurvey(CreatureObject playerCreature, final int toolType, final string surveyType);
 	public native void sendSurvey(CreatureObject playerCreature, final string resname);
 	public native void sendSample(CreatureObject playerCreature, final string resname, final string sampleAnimation);
@@ -126,6 +129,10 @@ class ResourceManager extends Observer implements Logger {
 	private native void loadDefaultConfig();
 	
 	private native void startResourceSpawner();
+
+	public native boolean isRecycledResource(ResourceSpawn resource);
+
+	public native ResourceSpawn getRecycledVersion(ResourceSpawn resource);
 	
 	/// Resource Deed Methods
 	public native void addNodeToListBox(SuiListBox sui, final string nodeName);
