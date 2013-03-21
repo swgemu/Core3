@@ -43,7 +43,6 @@
 
 object_weapon_ranged_grenade_grenade_cryoban = object_weapon_ranged_grenade_shared_grenade_cryoban:new {
 
-	templateType = THROWNWEAPON,
 	objectMenuComponent = {"cpp", "ThrowGrenadeMenuComponent"},
 
 	playerRaces = { "object/creature/player/bothan_male.iff",
@@ -100,6 +99,7 @@ object_weapon_ranged_grenade_grenade_cryoban = object_weapon_ranged_grenade_shar
 	useCount = 5,
 
 	combatSpam = "grenade_cryoban",
+	animationType = "cryoban",
 
 	healthAttackCost = 40,
 	actionAttackCost = 100,

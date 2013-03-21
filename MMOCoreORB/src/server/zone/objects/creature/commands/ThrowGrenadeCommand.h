@@ -97,7 +97,19 @@ public:
 			if (grenadeData == NULL)
 				return GENERALERROR;
 
-			UnicodeString args = "combatSpam=" + grenadeData->getCombatSpam() + ";";
+			SceneObject* tarOb = server->getZoneServer()->getObject(target);
+
+			String range;
+			int distance = creature->getDistanceTo(tarOb);
+
+			if (distance < 15)
+				range = "_near_";
+			else if (distance < 45)
+				range = "_medium_";
+			else
+				range = "_far_";
+
+			UnicodeString args = "combatSpam=" + grenadeData->getCombatSpam() + ";animationCRC=" + String::valueOf(this->getAnimationCRC()) + range + grenadeData->getAnimationType() + ";";
 
 			int result = doCombatAction(creature, target, args, grenade);
 

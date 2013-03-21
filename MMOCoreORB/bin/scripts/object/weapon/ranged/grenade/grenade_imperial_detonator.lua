@@ -43,7 +43,6 @@
 
 object_weapon_ranged_grenade_grenade_imperial_detonator = object_weapon_ranged_grenade_shared_grenade_imperial_detonator:new {
 
-	templateType = THROWNWEAPON,
 	objectMenuComponent = {"cpp", "ThrowGrenadeMenuComponent"},
 
 	playerRaces = { "object/creature/player/bothan_male.iff",
@@ -100,6 +99,7 @@ object_weapon_ranged_grenade_grenade_imperial_detonator = object_weapon_ranged_g
 	useCount = 5,
 
 	combatSpam = "grenade_imp",
+	animationType = "imperial_detonator",
 
 	healthAttackCost = 125,
 	actionAttackCost = 125,

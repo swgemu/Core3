@@ -43,7 +43,6 @@
 
 object_weapon_ranged_grenade_grenade_proton = object_weapon_ranged_grenade_shared_grenade_proton:new {
 
-	templateType = THROWNWEAPON,
 	objectMenuComponent = {"cpp", "ThrowGrenadeMenuComponent"},
 
 	playerRaces = { "object/creature/player/bothan_male.iff",
@@ -100,6 +99,7 @@ object_weapon_ranged_grenade_grenade_proton = object_weapon_ranged_grenade_share
 	useCount = 5,
 
 	combatSpam = "grenade_proton",
+	animationType = "proton",
 
 	healthAttackCost = 30,
 	actionAttackCost = 75,

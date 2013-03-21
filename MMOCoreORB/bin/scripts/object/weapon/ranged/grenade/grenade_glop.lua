@@ -43,7 +43,6 @@
 
 object_weapon_ranged_grenade_grenade_glop = object_weapon_ranged_grenade_shared_grenade_glop:new {
 
-	templateType = THROWNWEAPON,
 	objectMenuComponent = {"cpp", "ThrowGrenadeMenuComponent"},
 
 	playerRaces = { "object/creature/player/bothan_male.iff",
@@ -100,6 +99,7 @@ object_weapon_ranged_grenade_grenade_glop = object_weapon_ranged_grenade_shared_
 	useCount = 5,
 
 	combatSpam = "grenade_glop",
+	animationType = "glop",
 
 	healthAttackCost = 100,
 	actionAttackCost = 40,

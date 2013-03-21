@@ -210,7 +210,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 
 		String combatSpam = data.getCombatSpam();
 
-		broadcastCombatAction(attacker, tano, data, 0x01);
+		broadcastCombatAction(attacker, tano, weapon, data, 0x01);
 		broadcastCombatSpam(attacker, tano, weapon, damage, combatSpam + "_hit");
 	}
 
@@ -234,7 +234,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	damageMultiplier = 1.0f;
 	hitVal = getHitChance(attacker, defender, weapon, damage, data.getAccuracyBonus() + attacker->getSkillMod(data.getCommand()->getAccuracySkillMod()));
 
-	broadcastCombatAction(attacker, defender, data, hitVal);
+	broadcastCombatAction(attacker, defender, weapon, data, hitVal);
 	String combatSpam = data.getCombatSpam();
 
 	// FIXME: probably need to add getCombatSpamBlock(), etc in data and store it in commands explicitly to avoid malformed text
@@ -1372,7 +1372,7 @@ void CombatManager::broadcastCombatSpam(CreatureObject* attacker, TangibleObject
 	}
 }
 
-void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObject * defenderObject, const CreatureAttackData & data, uint8 hit) {
+void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObject * defenderObject, WeaponObject* weapon, const CreatureAttackData & data, uint8 hit) {
 	CombatAction* combatAction = NULL;
 
 	uint32 animationCRC = data.getAnimationCRC();
@@ -1391,9 +1391,9 @@ void CombatManager::broadcastCombatAction(CreatureObject * attacker, TangibleObj
 	}
 
 	if (defenderObject->isCreatureObject())
-		combatAction = new CombatAction(attacker, cast<CreatureObject*>(defenderObject), animationCRC, hit, data.getTrails());
+		combatAction = new CombatAction(attacker, cast<CreatureObject*>(defenderObject), animationCRC, hit, data.getTrails(), weapon->getObjectID());
 	else
-		combatAction = new CombatAction(attacker, defenderObject, animationCRC, hit, data.getTrails());
+		combatAction = new CombatAction(attacker, defenderObject, animationCRC, hit, data.getTrails(), weapon->getObjectID());
 
 	attacker->broadcastMessage(combatAction, true);
 
