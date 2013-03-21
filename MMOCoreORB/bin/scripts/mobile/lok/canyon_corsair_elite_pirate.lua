@@ -21,7 +21,7 @@ canyon_corsair_elite_pirate = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -33,10 +33,26 @@ canyon_corsair_elite_pirate = Creature:new {
 		"object/mobile/dressed_corsair_pirate_elite_wee_m.iff",
 		"object/mobile/dressed_corsair_pirate_elite_zab_m.iff"
 		},
-	lootGroups = {},
-	weapons = {"pirate_weapons_heavy"},
+	
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 5500000},
+				{group = "tailor_components", chance = 1000000},
+				{group = "color_crystals", chance = 400000},
+				{group = "crystals_good", chance = 400000},
+				{group = "melee_two_handed", chance = 600000},
+				{group = "carbines", chance = 600000},
+				{group = "pistols", chance = 600000},
+				{group = "clothing_attachments", chance = 450000},
+				{group = "armor_attachments", chance = 450000}
+			},
+			lootChance = 4000000
+		}
+	},
+	weapons = {"canyon_corsair_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(swordsmanmaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(canyon_corsair_elite_pirate, "canyon_corsair_elite_pirate")
