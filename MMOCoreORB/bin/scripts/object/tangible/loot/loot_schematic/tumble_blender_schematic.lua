@@ -42,7 +42,12 @@
 
 
 object_tangible_loot_loot_schematic_tumble_blender_schematic = object_tangible_loot_loot_schematic_shared_tumble_blender_schematic:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "crafting_artisan_engineering_01",
+	targetDraftSchematic = "object/draft_schematic/item/item_tumble_blender.iff",
+	targetUseCount = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_tumble_blender_schematic, "object/tangible/loot/loot_schematic/tumble_blender_schematic.iff")
