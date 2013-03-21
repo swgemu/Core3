@@ -21,7 +21,7 @@ blood_razor_guard = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -32,10 +32,26 @@ blood_razor_guard = Creature:new {
 		"object/mobile/dressed_blood_razor_pirate_guard_nikto_m.iff",
 		"object/mobile/dressed_blood_razor_pirate_guard_rod_m.iff"
 		},
-	lootGroups = {},
-	weapons = {"pirate_weapons_heavy"},
+
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 5800000},
+				{group = "tailor_components", chance = 1000000},
+				{group = "color_crystals", chance = 400000},
+				{group = "crystals_okay", chance = 400000},
+				{group = "melee_unarmed", chance = 600000},
+				{group = "melee_polearm", chance = 600000},
+				{group = "pistols", chance = 600000},
+				{group = "clothing_attachments", chance = 300000},
+				{group = "armor_attachments", chance = 300000}
+			},
+			lootChance = 3500000
+		}
+	},
+	weapons = {"blood_razer_weapons"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(pistoleermaster,pikemanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(blood_razor_guard, "blood_razor_guard")

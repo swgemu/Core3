@@ -104,6 +104,15 @@ lok_world_creatures = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
+		},
+		{
+			lairTemplateName = "lok_blood_razor_camp_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 30,
+			maxDifficulty = 40,
+			numberToSpawn = 0,
+			weighting = 0,
+			size = 25
 		}
 	}
 }
