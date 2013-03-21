@@ -824,15 +824,21 @@ void PlayerObjectImplementation::removeSchematics(Vector<ManagedReference<DraftS
 	schematicList.addRewardedSchematics(_this.get());
 }
 
-void PlayerObjectImplementation::doDigest() {
+void PlayerObjectImplementation::doDigest(int fillingReduction) {
 	if (!isDigesting())
 		return;
 
-	if (foodFilling > 0)
-		setFoodFilling(foodFilling - 1);
+	if (foodFilling > 0) {
+		setFoodFilling(foodFilling - fillingReduction);
+		if (foodFilling < 0)
+			foodFilling = 0;
+	}
 
-	if (drinkFilling > 0)
-		setDrinkFilling(drinkFilling - 1);
+	if (drinkFilling > 0) {
+		setDrinkFilling(drinkFilling - fillingReduction);
+		if (drinkFilling < 0)
+			drinkFilling = 0;
+	}
 }
 
 Vector<ManagedReference<DraftSchematic* > > PlayerObjectImplementation::filterSchematicList(
@@ -1328,7 +1334,14 @@ void PlayerObjectImplementation::doRecovery() {
 	CooldownTimerMap* cooldownTimerMap = creature->getCooldownTimerMap();
 
 	if (cooldownTimerMap->isPast("digestEvent")) {
-		doDigest();
+		Time* currentTime = new Time();
+
+		int timeDelta = currentTime->getMiliTime() - lastDigestion.getMiliTime();
+		int fillingReduction = timeDelta / 18000;
+
+		doDigest(fillingReduction);
+
+		lastDigestion.updateToCurrentTime();
 		cooldownTimerMap->updateToCurrentAndAddMili("digestEvent", 18000);
 	}
 

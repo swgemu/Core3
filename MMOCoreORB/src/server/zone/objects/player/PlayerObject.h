@@ -484,7 +484,7 @@ public:
 
 	void notifyOnline();
 
-	void doDigest();
+	void doDigest(int fillingReduction);
 
 	bool isDigesting();
 
@@ -925,6 +925,8 @@ protected:
 
 	Time lastVisibilityUpdateTimestamp;
 
+	Time lastDigestion;
+
 public:
 	static const int LFG = 1;
 
@@ -1140,7 +1142,7 @@ public:
 
 	void notifyOnline();
 
-	void doDigest();
+	void doDigest(int fillingReduction);
 
 	bool isDigesting();
 
@@ -1609,7 +1611,7 @@ public:
 
 	void notifyOnline();
 
-	void doDigest();
+	void doDigest(int fillingReduction);
 
 	bool isDigesting();
 
