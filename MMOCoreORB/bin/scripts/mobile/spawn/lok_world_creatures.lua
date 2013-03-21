@@ -113,7 +113,25 @@ lok_world_creatures = {
 			numberToSpawn = 0,
 			weighting = 0,
 			size = 25
-		}
+		},
+		{
+			lairTemplateName = "lok_canyon_corsair_camp_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 26,
+			maxDifficulty = 34,
+			numberToSpawn = 0,
+			weighting = 0,
+			size = 25
+		},
+		{
+			lairTemplateName = "lok_canyon_corsair_camp2_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 36,
+			maxDifficulty = 50,
+			numberToSpawn = 0,
+			weighting = 0,
+			size = 25
+		},
 	}
 }
 
