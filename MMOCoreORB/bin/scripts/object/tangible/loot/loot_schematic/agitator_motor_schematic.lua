@@ -45,6 +45,7 @@ object_tangible_loot_loot_schematic_agitator_motor_schematic = object_tangible_l
 	templateType = LOOTSCHEMATIC,
 	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
 	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "crafting_artisan_engineering_01",
 	targetDraftSchematic = "object/draft_schematic/item/item_agitator_motor.iff",
 	targetUseCount = 1,
 }
