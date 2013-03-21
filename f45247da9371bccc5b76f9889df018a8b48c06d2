@@ -16,6 +16,24 @@
       "revId": "f45247da9371bccc5b76f9889df018a8b48c06d2",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABX///44\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 14
+      },
+      "writtenOn": "2013-03-21T02:33:23Z",
+      "side": 1,
+      "message": "It is used in CreatureObjectImplementation::setCombatState() so I didn\u0027t know if modifying it\u0027s value in the method I created would mess anything up. I believe I tried using it and it was successful, but if I didn\u0027t modify it at the end of the method to update again, the times would be off.",
+      "parentUuid": "AAAABX///5s\u003d",
+      "revId": "f45247da9371bccc5b76f9889df018a8b48c06d2",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
