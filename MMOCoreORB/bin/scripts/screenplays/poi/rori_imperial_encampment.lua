@@ -48,7 +48,7 @@ function RoriImperialEncampmentScreenPlay:spawnMobiles()
 
 	spawnMobile("rori", "stormtrooper_sniper", 300, -5508.7, 82.9, -5630.7, 90, 0)
 	spawnMobile("rori", "stormtrooper_rifleman", 300, -5509.3, 82.9, -5623.6, 45, 0)
-	spawnMobile("rori", "stormtrooper_squad_leader", 300, -5514.7, 82.9, -5622.7, 0, 0)
+	spawnMobile("rori", "stormtrooper_colonel", 300, -5514.7, 82.9, -5622.7, 0, 0)
 
 	spawnMobile("rori", "stormtrooper_sniper", 300, -5612.8, 83.0, -5623.3, 0, 0)
 	spawnMobile("rori", "stormtrooper_squad_leader", 300, -5618.4, 83.0, -5623.7, -45, 0)
