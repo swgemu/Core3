@@ -104,7 +104,7 @@ void ContainerImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRes
 	TangibleObjectImplementation::fillObjectMenuResponse(menuResponse, player);
 
 	if (checkContainerPermission(player, ContainerPermissions::MOVECONTAINER && getParent().get() != NULL &&
-			getParent().get()->checkContainerPermission(player, ContainerPermissions::MOVEOUT)))
+			getParent().get()->checkContainerPermission(player, ContainerPermissions::MOVEOUT) && !(_this.get()->isRecycleToolObject())))
 
 		menuResponse->addRadialMenuItem(50, 3, "@base_player:set_name"); //Set Name
 

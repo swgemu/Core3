@@ -176,6 +176,7 @@ public:
 	const static int LIGHTSABERCRYSTAL = 0x4000035;
 	const static int SHIPCHASSIS = 0x4000036;
 	const static int SHIPDEED = 0x4000037;
+	const static int RECYCLETOOL = 0x4000038;
 
 public:
 	SharedObjectTemplate();
@@ -659,6 +660,10 @@ public:
 	virtual bool isShipDeedTemplate() {
     	return false;
     }
+
+	virtual bool isRecycleToolTemplate() {
+	    	return false;
+	    }
 };
 
 
