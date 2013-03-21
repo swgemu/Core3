@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABX///5k\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/recycle/RecycleTool.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-03-21T00:16:00Z",
+      "side": 1,
+      "message": "This vector never changes after object creation.\n\nI would move this to the template object and load the data from the lua form each template.\nThen use it from there instead of creating an instance of this vector for every object.",
+      "revId": "6484bd4f5b4db1c01fe99c3eb1c37855c372496d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
