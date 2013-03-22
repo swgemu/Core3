@@ -99,7 +99,6 @@ object_weapon_ranged_grenade_grenade_imperial_detonator = object_weapon_ranged_g
 	useCount = 5,
 
 	combatSpam = "grenade_imp",
-	animationType = "imperial_detonator",
 
 	healthAttackCost = 125,
 	actionAttackCost = 125,

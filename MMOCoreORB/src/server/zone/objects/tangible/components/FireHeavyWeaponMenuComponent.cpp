@@ -6,21 +6,29 @@
  */
 
 #include "FireHeavyWeaponMenuComponent.h"
-#include "TangibleObjectMenuComponent.h"
+#include "WeaponObjectMenuComponent.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
+void FireHeavyWeaponMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+	if (sceneObject == NULL || !sceneObject->isWeaponObject() || player == NULL)
+		return;
+
+	WeaponObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
+}
+
 int FireHeavyWeaponMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
-	if (!sceneObject->isASubChildOf(player))
+	if (!sceneObject->isWeaponObject() || !player->isPlayerCreature() || !sceneObject->isASubChildOf(player))
 		return 0;
 
-	switch (selectedID) {
-	case 20:
-		player->sendExecuteConsoleCommand("fireheavyweapon");
-		break;
-	default:
-		TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
-		break;
+	if (selectedID == 20) {
+		String args = String::valueOf(sceneObject->getObjectID());
+		String action = "/fireheavyweapon ";
+		String command = action + args;
+
+		player->sendExecuteConsoleCommand(command);
+
+		return 1;
 	}
-	return 0;
+	return WeaponObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
 }

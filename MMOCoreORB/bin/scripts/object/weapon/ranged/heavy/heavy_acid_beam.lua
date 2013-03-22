@@ -43,7 +43,6 @@
 
 object_weapon_ranged_heavy_heavy_acid_beam = object_weapon_ranged_heavy_shared_heavy_acid_beam:new {
 
-	templateType = SPECIALHEAVYWEAPON,
 	objectMenuComponent = {"cpp", "FireHeavyWeaponMenuComponent"},
 
 	playerRaces = { "object/creature/player/bothan_male.iff",
@@ -101,6 +100,7 @@ object_weapon_ranged_heavy_heavy_acid_beam = object_weapon_ranged_heavy_shared_h
 	useCount = 40,
 
 	combatSpam = "acid_beam",
+	animationType = "acid_beam",
 
 	-- Leave blank for now
 	damageModifiers = { },

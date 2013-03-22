@@ -1734,7 +1734,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 		range = weapon->getMaxRange();
 	}
 
-	if (weapon->isThrownWeaponObject())
+	if (weapon->isThrownWeapon() || weapon->isHeavyWeapon())
 		range = weapon->getMaxRange() + data.getAreaRange();
 
 	try {
@@ -1771,7 +1771,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 				continue;
 			}
 
-			if (weapon->isThrownWeaponObject()) {
+			if (weapon->isThrownWeapon() || weapon->isHeavyWeapon()) {
 				if (!(tano == defenderObject) && !(tano->isInRange(defenderObject, data.getAreaRange())))
 					continue;
 			}
@@ -1789,7 +1789,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 			//			zone->runlock();
 
 			try {
-				if (tano == defenderObject || !(weapon->isThrownWeaponObject())) {
+				if (tano == defenderObject || (!(weapon->isThrownWeapon()) && !(weapon->isHeavyWeapon()))) {
 					if (CollisionManager::checkLineOfSight(object, attacker)) {
 						damage += doTargetCombatAction(attacker, weapon, tano, data);
 					}

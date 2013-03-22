@@ -8,11 +8,13 @@
 #ifndef FIREHEAVYWEAPONMENUCOMPONENT_H_
 #define FIREHEAVYWEAPONMENUCOMPONENT_H_
 
-#include "TangibleObjectMenuComponent.h"
+#include "WeaponObjectMenuComponent.h"
 #include "engine/engine.h"
 
-class FireHeavyWeaponMenuComponent : public TangibleObjectMenuComponent {
+class FireHeavyWeaponMenuComponent : public WeaponObjectMenuComponent {
 public:
+	virtual void fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
+
 	virtual int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID);
 };
 

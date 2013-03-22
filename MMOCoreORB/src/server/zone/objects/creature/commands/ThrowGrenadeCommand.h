@@ -74,7 +74,7 @@ public:
 			if (grenade == NULL)
 				return INVALIDPARAMETERS;
 
-			if (!grenade->isThrownWeaponObject())
+			if (!grenade->isThrownWeapon())
 				return INVALIDPARAMETERS;
 
 			if (!grenade->isASubChildOf(creature))
@@ -97,19 +97,7 @@ public:
 			if (grenadeData == NULL)
 				return GENERALERROR;
 
-			SceneObject* tarOb = server->getZoneServer()->getObject(target);
-
-			String range;
-			int distance = creature->getDistanceTo(tarOb);
-
-			if (distance < 15)
-				range = "_near_";
-			else if (distance < 45)
-				range = "_medium_";
-			else
-				range = "_far_";
-
-			UnicodeString args = "combatSpam=" + grenadeData->getCombatSpam() + ";animationCRC=" + String::valueOf(this->getAnimationCRC()) + range + grenadeData->getAnimationType() + ";";
+			UnicodeString args = "combatSpam=" + grenadeData->getCombatSpam() + ";";
 
 			int result = doCombatAction(creature, target, args, grenade);
 

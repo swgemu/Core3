@@ -62,9 +62,51 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		System::out << "Firing heavy weapon" << endl;
+		StringTokenizer tokenizer(arguments.toString());
+		if (!tokenizer.hasMoreTokens())
+			return INVALIDPARAMETERS;
 
-		return SUCCESS;
+		try {
+
+			uint64 weaponID = tokenizer.getLongToken();
+			WeaponObject* weapon = cast<WeaponObject*> (server->getZoneServer()->getObject(weaponID));
+			if (weapon == NULL || !weapon->isHeavyWeapon())
+				return INVALIDPARAMETERS;
+
+			if (!weapon->isASubChildOf(creature))
+				return GENERALERROR;
+
+			ManagedReference<TangibleObject*> targetObject = cast<TangibleObject*> (server->getZoneServer()->getObject(target));
+			if (targetObject == NULL)
+				return GENERALERROR;
+
+			if (!(targetObject->isAttackableBy(creature)))
+				return GENERALERROR;
+
+			SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(weapon->getServerObjectCRC());
+
+			if (templateData == NULL)
+				return GENERALERROR;
+
+			SharedWeaponObjectTemplate* weaponData = cast<SharedWeaponObjectTemplate*>(templateData);
+
+			if (weaponData == NULL)
+				return GENERALERROR;
+
+			UnicodeString args = "combatSpam=" + weaponData->getCombatSpam() + ";animationCRC=fire_heavy_" + weaponData->getAnimationType() + "medium;";
+
+			int result = doCombatAction(creature, target, args, weapon);
+
+			if (result == SUCCESS)
+				weapon->decreaseUseCount();
+
+			return result;
+
+		} catch (Exception& e) {
+
+		}
+
+		return GENERALERROR;
 	}
 
 };

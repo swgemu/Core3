@@ -43,7 +43,6 @@
 
 object_weapon_ranged_heavy_heavy_lightning_beam = object_weapon_ranged_heavy_shared_heavy_lightning_beam:new {
 
-	templateType = SPECIALHEAVYWEAPON,
 	objectMenuComponent = {"cpp", "FireHeavyWeaponMenuComponent"},
 
 	playerRaces = { "object/creature/player/bothan_male.iff",
@@ -101,6 +100,7 @@ object_weapon_ranged_heavy_heavy_lightning_beam = object_weapon_ranged_heavy_sha
 	useCount = 40,
 
 	combatSpam = "lightning_beam",
+	animationType = "lightning_beam",
 
 	healthAttackCost = 35,
 	actionAttackCost = 75,

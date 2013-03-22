@@ -99,7 +99,6 @@ object_weapon_ranged_grenade_grenade_thermal_detonator = object_weapon_ranged_gr
 	useCount = 5,
 
 	combatSpam = "grenade_thermal",
-	animationType = "thermal_detonator",
 
 	healthAttackCost = 75,
 	actionAttackCost = 75,

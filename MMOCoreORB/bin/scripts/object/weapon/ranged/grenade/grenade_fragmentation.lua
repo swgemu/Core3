@@ -99,7 +99,6 @@ object_weapon_ranged_grenade_grenade_fragmentation = object_weapon_ranged_grenad
 	useCount = 5,
 
 	combatSpam = "grenade_frag",
-	animationType = "fragmentation",
 
 	healthAttackCost = 80,
 	actionAttackCost = 80,
