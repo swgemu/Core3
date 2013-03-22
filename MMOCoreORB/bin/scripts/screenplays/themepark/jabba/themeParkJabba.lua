@@ -4,7 +4,8 @@ THEME_PARK_JABBA_BADGE = 105
 reelo_missions =
 {
    { 
-		missionType = "assassinate", 
+		missionType = "assassinate",
+		silentTarget = "yes",
 		primarySpawns = 
 		{
 			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "Tusken Leader" } 
@@ -188,6 +189,7 @@ porcellus_missions =
 {
     {
 		missionType = "assassinate",
+		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "theme_park_jabba_kaadu", planetName = "tatooine", npcName = "Kaadu" } 
@@ -226,6 +228,7 @@ porcellus_missions =
 	},
 	    {
 		missionType = "assassinate",
+		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "dewback", planetName = "tatooine", npcName = "Dewback" } 

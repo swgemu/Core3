@@ -2,6 +2,7 @@ luthik_uwyr_missions =
 {
 	{ 
 		missionType = "assassinate",
+		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "ancient_reptillian", planetName = "dantooine", npcName = "Ancient Reptillian" } 
