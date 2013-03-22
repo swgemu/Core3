@@ -71,9 +71,13 @@ public:
 
 		int res = doCombatAction(creature, target);
 
+		if (creature->isAiAgent()) { // If they are NPC, don't get past here.
+			return SUCCESS;
+		}
+
 		if (res == SUCCESS) {
 
-			// Setup task, if choke attack was successful (5 tick amount.)
+			// Setup task, if choke attack was successful (5 tick amount.), AND if they don't already have one.
 
 			SceneObject* object = server->getZoneServer()->getObject(target);
 			ManagedReference<CreatureObject*> creatureTarget = cast<CreatureObject*>( object);
@@ -81,10 +85,14 @@ public:
 			if (creatureTarget == NULL)
 				return GENERALERROR;
 
+			Reference<ForceChokeTickTask*> chokeCheck = dynamic_cast<ForceChokeTickTask*>(creatureTarget->getPendingTask("forceChokeTickTask"));
 
-			Reference<ForceChokeTickTask*> fctTask = new ForceChokeTickTask(creatureTarget);
+			if (chokeCheck != NULL) {
+				return SUCCESS;
+			}
+
+			Reference<ForceChokeTickTask*> fctTask = new ForceChokeTickTask(creature, creatureTarget);
 			creatureTarget->addPendingTask("forceChokeTickTask", fctTask, 6000);
-			creatureTarget->playEffect("clienteffect/pl_force_choke.cef", "");
 		}
 
 		return SUCCESS;

@@ -56,5 +56,5 @@ tkamaster = { {"unarmedleghit1",""},{"unarmedbodyhit1",""},{"unarmedheadhit1",""
 lightsabermaster = { {"saber1hheadhit1",""},{"saber1hhit1",""},{"saber1hcombohit1",""},{"saber1hflurry1",""},{"saber2hbodyhit1",""},{"saber2hfrenzy",""},{"saber2hhit1",""},{"saber2hphantom",""},{"saber2hsweep1",""},{"saberpolearmdervish1",""},{"saberpolearmhit1",""},{"saberpolearmleghit1",""},{"saberpolearmspinattack1",""},{"saberslash1",""},{"saberthrow1",""} }
 forcepowermaster = { {"forcelightningsingle2",""},{"forcelightingcone2",""},{"forceintimidate2",""},{"forceknockdown2",""},{"forcethrow2",""},{"forcechoke",""} }
 -- npc force wielders use standard profession mastery with the addition of this command
-forcewielder ={ {"forcelightningsingle1",""},{"forcechoke",""},{"forcelightingcone1",""} }
+forcewielder ={ {"forcelightningsingle1",""},{"forcelightingcone1",""} }
 --Server Administrator NPC skill trees place below
