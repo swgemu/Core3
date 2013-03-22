@@ -40,6 +40,7 @@ tekil_barje_missions =
 	},
 	{ 
 		missionType = "assassinate",
+		silentTarget = "yes",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "Tusken Raider" },
