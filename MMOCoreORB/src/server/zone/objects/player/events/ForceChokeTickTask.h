@@ -13,30 +13,28 @@
 
 class ForceChokeTickTask : public Task {
 	ManagedReference<CreatureObject*> creature;
+	ManagedReference<CreatureObject*> creatureTarget;
 	int counter;
 public:
 
-	ForceChokeTickTask(CreatureObject* creo) {
+	ForceChokeTickTask(CreatureObject* creo, CreatureObject* creoTarget) {
 		creature = creo;
+		creatureTarget = creoTarget;
 		counter = 0;
 	}
 
 	void run() {
 		Locker locker(creature);
 
-		if(creature != NULL) {
+		if(creature != NULL && creatureTarget != NULL) {
 			int amountOfTicks = 5;
-			int damage = System::random(2000) + 1000;
-
-			if (creature->isPlayerCreature())
-				damage *= 0.25; // Player reduction.
-
+			int damage = 500;
 
 			if (counter < amountOfTicks && !creature->isIncapacitated() && !creature->isDead() && (creature->getPvpStatusBitmask() != CreatureFlag::NONE)) {
 
-				creature->inflictDamage(creature, CreatureAttribute::HEALTH, damage, true);
-				creature->inflictDamage(creature, CreatureAttribute::ACTION, damage, true);
-				creature->inflictDamage(creature, CreatureAttribute::MIND, damage, true);
+				creature->inflictDamage(creatureTarget, CreatureAttribute::HEALTH, (damage + System::random(200)), true);
+				creature->inflictDamage(creatureTarget, CreatureAttribute::ACTION, (damage + System::random(200)), true);
+				creature->inflictDamage(creatureTarget, CreatureAttribute::MIND, (damage + System::random(200)), true);
 
 				this->reschedule(6000); // Reschedule in 6 seconds...
 
