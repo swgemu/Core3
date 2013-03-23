@@ -1,5 +1,6 @@
 green_laser = Creature:new {
-	objectName = "@mob/creature_names:Green Laser",
+	objectName = "",
+	customName = "Green Laser",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

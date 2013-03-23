@@ -1,6 +1,6 @@
 imperial_moff = Creature:new {
 	objectName = "",
-	costumName = "Imperial Moff",
+	customName = "Imperial Moff",
 	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
@@ -41,7 +41,7 @@ imperial_moff = Creature:new {
 				{group = "armor_attachments", chance = 25000}
 			},
 			lootChance = 2800000
-		}						
+		}
 	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",

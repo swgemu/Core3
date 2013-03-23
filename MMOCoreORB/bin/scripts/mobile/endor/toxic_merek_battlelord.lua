@@ -26,7 +26,7 @@ toxic_merek_battlelord = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/merek_hue.iff"},
+	templates = {"object/mobile/merek.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

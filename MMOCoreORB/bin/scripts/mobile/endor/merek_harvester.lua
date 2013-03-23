@@ -26,7 +26,7 @@ merek_harvester = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/merek_hue.iff"},
+	templates = {"object/mobile/merek.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

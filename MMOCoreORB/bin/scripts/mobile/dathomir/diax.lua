@@ -1,5 +1,6 @@
 diax = Creature:new {
 	objectName = "@mob/creature_names:diax",
+	customName = "Diax",
 	socialGroup = "nightsister",
 	pvpFaction = "nightsister",
 	faction = "nightsister",

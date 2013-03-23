@@ -23,7 +23,6 @@ includeFile("weapon/creature_spit_spray_yellow.lua")
 -- npc weapons
 includeFile("weapon/groups/dark_trooper_weapons.lua")
 includeFile("weapon/groups/darth_vader_weapons.lua")
-includeFile("weapon/groups/battle_droid.lua")
 includeFile("weapon/groups/blood_razer_weapons.lua")
 includeFile("weapon/groups/canyon_corsair_weapons.lua")
 includeFile("weapon/groups/death_watch_commander_weapons.lua")
@@ -47,7 +46,7 @@ includeFile("weapon/groups/novice_weapons.lua")
 includeFile("weapon/groups/corsec_police_weapons.lua")
 
 
--- Groups gotten from swgemu 
+-- Groups gotten from swgemu
 includeFile("weapon/groups/battle_droid_weapons.lua")
 includeFile("weapon/groups/boba_fett_weapons.lua")
 includeFile("weapon/groups/captain_hassk_weapons.lua")
@@ -56,9 +55,6 @@ includeFile("weapon/groups/chewbacca_weapons.lua")
 includeFile("weapon/groups/dark_jedi_weapons_gen2.lua")
 includeFile("weapon/groups/dark_jedi_weapons_gen3.lua")
 includeFile("weapon/groups/dark_jedi_weapons_gen4.lua")
-includeFile("weapon/groups/droid_astromech_ranged.lua")
-includeFile("weapon/groups/droid_droideka_ranged.lua")
-includeFile("weapon/groups/droid_probot_ranged.lua")
 includeFile("weapon/groups/ewok_weapons.lua")
 includeFile("weapon/groups/geonosian_weapons.lua")
 includeFile("weapon/groups/han_solo_weapons.lua")
@@ -77,10 +73,7 @@ includeFile("weapon/groups/st_bombardier_weapons.lua")
 includeFile("weapon/groups/st_rifleman_weapons.lua")
 includeFile("weapon/groups/st_sniper_weapons.lua")
 includeFile("weapon/groups/stormtrooper_weapons.lua")
-includeFile("weapon/groups/super_battle_droid_weapons.lua")
-includeFile("weapon/groups/turret_block_large.lua")
 includeFile("weapon/groups/tusken_weapons.lua")
-includeFile("weapon/groups/vehicle_at_st_ranged.lua")
 
 -- tutorial
 includeFile("weapon/groups/tutorial_bandit.lua")

@@ -31,9 +31,9 @@ death_watch_s_battle_droid_alt = Creature:new {
 		"object/mobile/death_watch_s_battle_droid_02.iff",
 		"object/mobile/death_watch_s_battle_droid_03.iff"},
 	lootGroups = {},
-	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	defaultWeapon = "object/weapon/ranged/droid/droid_droideka_ranged.iff",
+	defaultAttack = "creaturerangedattack"
 }
 
 CreatureTemplates:addCreatureTemplate(death_watch_s_battle_droid_alt, "death_watch_s_battle_droid_alt")
