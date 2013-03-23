@@ -12,7 +12,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/scene/SceneObjectType.h"
 #include "server/zone/managers/gcw/GCWManager.h"
-#include "server/zone/objects/installation/components/TurretFireManualTask.h"
+#include "server/zone/objects/installation/components/TurretFireTask.h"
 
 class TurretControlSuiCallback : public SuiCallback {
 	ManagedReference<TangibleObject*> turretObject;
@@ -49,7 +49,6 @@ public:
 		bool otherPressed = Bool::valueOf(args->get(0).toString());
 		int index = Integer::valueOf(args->get(1).toString());
 
-
 		if(player->getZone() == NULL)
 			return;
 
@@ -57,7 +56,6 @@ public:
 
 		if(gcwMan == NULL)
 			return;
-
 
 		if(index == -1 || otherPressed){
 			gcwMan->sendTurretAttackListTo(player,turretControl);
@@ -78,22 +76,37 @@ public:
 		if(targetCreature == NULL)
 			return;
 
+		Reference<TurretFireTask*> fireTask = cast<TurretFireTask*>(turretData->getFireTask());
+
+		Locker clock(turretControl, player);
 
 		StringIdChatParameter param;
-		if(targetCreature == turretData->getManualTarget()){
-			param.setStringId("hq","already_attacking"); //Your selected target is already being attacked by this turret.
-		} else {
+		if(fireTask){
+			// if there's a task need to
+			// 1.  exit out if we're already manually attacking the target
+			// 2.  otherwise, set the target and set the task to manual attack
+			if(targetCreature == turretData->getTarget()){
+				if(fireTask->isManualFireTask()){
+					param.setStringId("hq","already_attacking"); //Your selected target is already being attacked by this turret.
+					player->sendSystemMessage(param);
+					gcwMan->sendTurretAttackListTo(player,turretControl);
+					return;
+				}
+			}
+
+			fireTask->setManualTask(true);
+			turretData->setTarget(targetCreature);
 			param.setStringId("hq","attack_targets"); // "Turret is now attacking %TO.");
 			param.setTO(targetCreature);
-		}
 
+		} else {
+			fireTask = new TurretFireTask(turretObject.castTo<TangibleObject*>(), targetCreature,true);
+			turretData->setFireTask(fireTask);
+			fireTask->execute();
+			return;
+		}
 
 		player->sendSystemMessage(param);
-		if(turretData->getManualFireTask() == NULL) {
-			Reference<TurretFireManualTask*> task = new TurretFireManualTask(turretObject.castTo<TangibleObject*>(), player, targetCreature);
-			task->execute();
-		}
-		turretData->setManualTarget(targetCreature);
 		gcwMan->sendTurretAttackListTo(player,turretControl);
 
 	}

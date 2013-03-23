@@ -27,11 +27,9 @@ at_at = Creature:new {
 	diet = NONE,
 
 	templates = {"object/mobile/atat.iff"},
-	lootGroups = {},
-	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	defaultAttack = "defaultdroidattack",
+	defaultWeapon = "object/weapon/ranged/vehicle/vehicle_atst_ranged.iff",
 }
 
 CreatureTemplates:addCreatureTemplate(at_at, "at_at")

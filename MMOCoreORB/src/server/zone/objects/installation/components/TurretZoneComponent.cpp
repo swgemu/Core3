@@ -43,8 +43,9 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 
 	TurretDataComponent* turretData = cast<TurretDataComponent*>(data->get());
 
-	if(turretData == NULL || !turretData->canAutoFire())
+	if(turretData == NULL || !turretData->canAutoFire()){
 		return;
+	}
 
 	WeaponObject* weapon = cast<WeaponObject*>(sceneObject->getSlottedObject("hold_r"));
 
@@ -57,7 +58,7 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 		if(player == NULL || !player->isAttackableBy(tano))
 			return;
 
-		Reference<TurretFireTask*> task = new TurretFireTask(tano, player);
+		Reference<TurretFireTask*> task = new TurretFireTask(tano, player,false);
 		task->execute();
 	}
 

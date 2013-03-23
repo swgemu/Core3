@@ -13,6 +13,7 @@
 #include "server/zone/templates/tangible/SharedInstallationObjectTemplate.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+
 class TurretDataComponent : public DataObjectComponent {
 
 protected:
@@ -23,8 +24,8 @@ protected:
 	int attackSpeed;
 	SharedInstallationObjectTemplate* templateData;
 	ManagedReference<CreatureObject*> controller;
-	ManagedReference<CreatureObject*> manualTarget;
-	Reference<Task*> manualFireTask;
+	ManagedReference<CreatureObject*> target;
+	Reference<Task*> turretFireTask;
 
 public:
 	TurretDataComponent() {
@@ -35,9 +36,8 @@ public:
 		attackSpeed = 5;
 		templateData = NULL;
 		controller = NULL;
-		manualTarget = NULL;
-		manualFireTask = NULL;
-
+		target = NULL;
+		turretFireTask = NULL;
 	}
 
 	~TurretDataComponent(){
@@ -47,16 +47,12 @@ public:
 	void initializeTransientMembers();
 
 	bool canAutoFire(){
-		// if controller is ull then we're good
-		// if controller is not null, then check to verify that the control timeout has passed
-
-		return (attackSpeed > 0 && nextFireTime.isPast());
+		return (attackSpeed > 0 && nextFireTime.isPast()) ;
 	}
 
 	bool canManualFire(){
 		return (attackSpeed > 0 && nextManualFireTime.isPast());
 	}
-
 
 	void refreshControlTimer(int seconds){
 		controlTimeout = Time();
@@ -83,23 +79,24 @@ public:
 		return controller;
 	}
 
-	void setManualTarget(CreatureObject* creature){
-		manualTarget = creature;
+	void setTarget(CreatureObject* creature){
+		target = creature;
 	}
 
-	CreatureObject* getManualTarget(){
-		return manualTarget;
+	CreatureObject* getTarget(){
+		return target;
 	}
 
-	void setManualFireTask(Task* newTask){
-		manualFireTask = newTask;
+	void setFireTask(Task* newTask){
+		turretFireTask = newTask;
 	}
 
-	Task* getManualFireTask(){
-		return manualFireTask;
+	Task* getFireTask(){
+		return turretFireTask;
 	}
 
 	void rescheduleManualFireTask(float secondsToWait);
+	void rescheduleFireTask(float secondsToWait, bool manual);
 	void setWeapon(WeaponObject* weapon);
 	float getKinetic();
 	float getEnergy();
@@ -111,7 +108,9 @@ public:
 	float getAcid();
 	float getLightSaber();
 	float getChanceHit();
+
 	String getWeaponString();
+
 	void fillAttributeList(AttributeListMessage* alm);
 
 

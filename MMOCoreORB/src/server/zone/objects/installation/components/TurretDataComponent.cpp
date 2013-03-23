@@ -8,7 +8,7 @@
 #include "TurretDataComponent.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
-#include "server/zone/objects/installation/components/TurretFireManualTask.h"
+#include "server/zone/objects/installation/components/TurretFireTask.h"
 
 void TurretDataComponent::initializeTransientMembers() {
 	if(getParent() != NULL){
@@ -28,25 +28,30 @@ void TurretDataComponent::initializeTransientMembers() {
 		}
 	}
 }
-void TurretDataComponent::rescheduleManualFireTask(float secondsToWait){
+
+void TurretDataComponent::rescheduleFireTask(float secondsToWait, bool manual){
 	if(getParent() == NULL)
 		return;
 
 	CreatureObject* attacker = getController();
-	CreatureObject* target = getManualTarget();
+	CreatureObject* target = getTarget();
 
+	Logger::Logger tlog("reschedule");
 	if(target != NULL){
-		Reference<TurretFireManualTask*> fireTask = new TurretFireManualTask(cast<TangibleObject*>(getParent()), getController(), getManualTarget());
-		fireTask->schedule(secondsToWait*1000);
-		setManualFireTask(fireTask);
+
+		Reference<TurretFireTask*> fireTask = new TurretFireTask(cast<TangibleObject*>(getParent()), getTarget(),manual);
+		this->setFireTask(fireTask);
+		getFireTask()->schedule(secondsToWait * 1000);
 
 	} else {
+		tlog.info("target is null",true);
 		setController(NULL);
-		setManualFireTask(NULL);
-		setManualTarget(NULL);
+		setFireTask(NULL);
+		setTarget(NULL);
 	}
 
 }
+
 void TurretDataComponent::setWeapon(WeaponObject* weapon){
 	if(weapon != NULL){
 		attackSpeed = weapon->getAttackSpeed();
