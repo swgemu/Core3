@@ -19,11 +19,11 @@ pfilbee_jhorn_missions =
 		silentTarget = "yes",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "tatooine_mynock", planetName = "tatooine", npcName = "a Tatooine mynock" } 
+			{ npcTemplate = "tatooine_mynock", planetName = "tatooine", npcName = "a tatooine mynock" } 
 		}, 
 		secondarySpawns = 
 		{
-				{ npcTemplate = "tatooine_mynock", planetName = "tatooine", npcName = "a Tatooine mynock" }
+				{ npcTemplate = "tatooine_mynock", planetName = "tatooine", npcName = "a tatooine mynock" }
 		},
 		itemSpawns = {}, 
 		rewards = {}
@@ -33,12 +33,12 @@ pfilbee_jhorn_missions =
 		silentTarget = "yes",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "dragonet", planetName = "tatooine", npcName = "a  dragonet" } 
+			{ npcTemplate = "dragonet", planetName = "tatooine", npcName = "a dragonet" } 
 		}, 
 		secondarySpawns = 
 		{
-				{ npcTemplate = "dragonet", planetName = "tatooine", npcName = "a  dragonet" },
-				{ npcTemplate = "dragonet", planetName = "tatooine", npcName = "a  dragonet" }
+				{ npcTemplate = "dragonet", planetName = "tatooine", npcName = "a dragonet" },
+				{ npcTemplate = "dragonet", planetName = "tatooine", npcName = "a dragonet" }
 		},
 		itemSpawns = {}, 
 		rewards = {}
@@ -48,7 +48,7 @@ pfilbee_jhorn_missions =
 		silentTarget = "yes",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "duneLizards", planetName = "tatooine", npcName = "a dune lizard" } 
+			{ npcTemplate = "dune_lizard", planetName = "tatooine", npcName = "a dune lizard" } 
 		}, 
 		secondarySpawns = 
 		{
