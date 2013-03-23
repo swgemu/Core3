@@ -121,6 +121,9 @@ public:
 			return GENERALERROR;
 		}
 
+		// lordkator: Hot fix for house bug Manits 3871
+		creature->setPosture(CreaturePosture::CROUCHED, true);
+
 		String clientTemplatePath = templateManager->getTemplateFile(serverTemplate->getClientObjectCRC());
 
 		EnterStructurePlacementModeMessage* espmm = new EnterStructurePlacementModeMessage(deed->getObjectID(), clientTemplatePath);
