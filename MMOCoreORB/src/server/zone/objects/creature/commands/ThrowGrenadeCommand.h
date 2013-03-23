@@ -63,9 +63,61 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		System::out << "Throwing grenade" << endl;
+		StringTokenizer tokenizer(arguments.toString());
+		if (!tokenizer.hasMoreTokens())
+			return INVALIDPARAMETERS;
 
-		return SUCCESS;
+		try {
+
+			uint64 weaponID = tokenizer.getLongToken();
+			WeaponObject* grenade = cast<WeaponObject*> (server->getZoneServer()->getObject(weaponID));
+			if (grenade == NULL)
+				return INVALIDPARAMETERS;
+
+			if (!grenade->isThrownWeapon())
+				return INVALIDPARAMETERS;
+
+			if (!grenade->isASubChildOf(creature))
+				return GENERALERROR;
+
+			ManagedReference<TangibleObject*> targetObject = cast<TangibleObject*> (server->getZoneServer()->getObject(target));
+			if (targetObject == NULL)
+				return GENERALERROR;
+
+			if (!(targetObject->isAttackableBy(creature)))
+				return GENERALERROR;
+
+			SharedObjectTemplate* templateData = TemplateManager::instance()->getTemplate(grenade->getServerObjectCRC());
+
+			if (templateData == NULL)
+				return GENERALERROR;
+
+			SharedWeaponObjectTemplate* grenadeData = cast<SharedWeaponObjectTemplate*>(templateData);
+
+			if (grenadeData == NULL)
+				return GENERALERROR;
+
+			UnicodeString args = "combatSpam=" + grenadeData->getCombatSpam() + ";";
+
+			int result = doCombatAction(creature, target, args, grenade);
+
+			if (result == SUCCESS)
+				grenade->decreaseUseCount();
+
+			return result;
+
+		} catch (Exception& e) {
+
+		}
+
+		return GENERALERROR;
+	}
+
+	float getCommandDuration(CreatureObject *object, const UnicodeString& arguments) {
+		StringTokenizer tokenizer(arguments.toString());
+		uint64 weaponID = tokenizer.getLongToken();
+		WeaponObject* grenade = cast<WeaponObject*> (server->getZoneServer()->getObject(weaponID));
+		return CombatManager::instance()->calculateWeaponAttackSpeed(object, grenade, speedMultiplier);
 	}
 
 };

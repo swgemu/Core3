@@ -84,6 +84,8 @@ object_tangible_wearables_goggles_goggles_s06 = object_tangible_wearables_goggle
 				"object/mobile/vendor/wookiee_male.iff",
 				"object/mobile/vendor/zabrak_female.iff",
 				"object/mobile/vendor/zabrak_male.iff" },
+
+			objectMenuComponent = {"cpp", "GogglesObjectMenuComponent"},
 }
 
 ObjectTemplates:addTemplate(object_tangible_wearables_goggles_goggles_s06, "object/tangible/wearables/goggles/goggles_s06.iff")

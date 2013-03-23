@@ -88,6 +88,7 @@ rori_regions = {
 	{"restuss",0,0,{1,0},UNDEFINEDAREA,1},
 	{"restuss_easy_newbie",0,0,{1,0},UNDEFINEDAREA,1},
 	{"restuss_medium_newbie",0,0,{1,0},UNDEFINEDAREA,1},
+	{"rori_imperial_encampment",-5565,-5661,{1,150},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"sdungeon_rebel_outpost",0,0,{1,0},UNDEFINEDAREA,1},
 	{"southeast_jungle_peak",0,0,{1,0},UNDEFINEDAREA,1},
 	{"southern_forest_1",0,0,{1,0},UNDEFINEDAREA,1},

@@ -53,13 +53,16 @@ class CombatAction : public ObjectControllerMessage {
 
 public:
 	// set the new posture of attacker and defender BEFORE constructing a CombatAction
-	CombatAction(CreatureObject* attacker, CreatureObject* defender, uint32 animcrc, uint8 hit, uint8 trails) :
+	CombatAction(CreatureObject* attacker, CreatureObject* defender, uint32 animcrc, uint8 hit, uint8 trails, long weaponID = 0) :
 		ObjectControllerMessage(attacker->getObjectID(), 0x1B, 0xCC) {
 
 		insertInt(animcrc);
 
 		insertLong(attacker->getObjectID());
-		insertLong(attacker->getWeaponID());
+		if (weaponID == 0)
+			insertLong(attacker->getWeaponID());
+		else
+			insertLong(weaponID);
 
 		insertByte(attacker->getPosture()); // AttackerEndPosture: 0x0-Standing 0x1-Kneeling 0x2-Prone 0xD-Incapacitated
 		insertByte(trails); // Trails: 0x01-left_foot 0x02-right_foot 0x04-left_hand 0x08-right_hand 0x10-weapon
@@ -74,13 +77,16 @@ public:
 		insertByte(0x00); // DefenderSpecialMoveEffect: disabled in the client
 	}
 
-	CombatAction(CreatureObject* attacker, TangibleObject* defender, uint32 animcrc, uint8 hit, uint8 trails) :
+	CombatAction(CreatureObject* attacker, TangibleObject* defender, uint32 animcrc, uint8 hit, uint8 trails, long weaponID = 0) :
 				ObjectControllerMessage(attacker->getObjectID(), 0x1B, 0xCC) {
 
 		insertInt(animcrc);
 
 		insertLong(attacker->getObjectID());
-		insertLong(attacker->getWeaponID());
+		if (weaponID == 0)
+			insertLong(attacker->getWeaponID());
+		else
+			insertLong(weaponID);
 
 		insertByte(attacker->getPosture());
 		insertByte(trails);

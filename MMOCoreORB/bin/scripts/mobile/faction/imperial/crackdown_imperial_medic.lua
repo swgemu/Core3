@@ -23,7 +23,7 @@ crackdown_imperial_medic = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + HEALER,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_medic3_human_male_01.iff",
@@ -45,7 +45,7 @@ crackdown_imperial_medic = Creature:new {
 		}						
 	},
 	weapons = {"imperial_weapons_heavy"},
-	conversationTemplate = "",
+	conversationTemplate = "imperial_recruiter_convotemplate",
 	attacks = merge(riflemanmaster,carbineermaster)
 }
 

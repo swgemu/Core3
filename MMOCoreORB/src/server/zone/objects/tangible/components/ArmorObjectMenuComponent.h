@@ -6,12 +6,12 @@
  *		Credits: TA & Valk
  */
 
-#ifndef ARMORCOLORMENUCOMPONENT_H_
-#define ARMORCOLORMENUCOMPONENT_H_
+#ifndef ARMOROBJECTMENUCOMPONENT_H_
+#define ARMOROBJECTMENUCOMPONENT_H_
+ 
+#include "WearableObjectMenuComponent.h"
 
-#include "TangibleObjectMenuComponent.h"
-
-class ArmorColorMenuComponent : public TangibleObjectMenuComponent {
+class ArmorObjectMenuComponent : public WearableObjectMenuComponent {
 public:
 
 	/**
@@ -34,5 +34,5 @@ public:
 
 };
 
+#endif /* ARMOROBJECTMENUCOMPONENT_H_ */
 
-#endif /* ARMORCOLORMENUCOMPONENT_H_ */

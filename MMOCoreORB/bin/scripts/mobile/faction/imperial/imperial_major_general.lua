@@ -23,6 +23,7 @@ imperial_major_general = Creature:new {
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_imperial_general_m.iff"},
@@ -42,6 +43,7 @@ imperial_major_general = Creature:new {
 		}						
 	},
 	weapons = {"imperial_weapons_heavy"},
+	conversationTemplate = "imperial_recruiter_convotemplate",
 	attacks = merge(riflemanmaster,carbineermaster)
 }
 

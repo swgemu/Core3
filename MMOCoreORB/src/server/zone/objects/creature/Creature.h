@@ -136,7 +136,7 @@ public:
 
 	void addAlreadyHarvested(CreatureObject* player);
 
-	void setAlreadyMilked(bool milked);
+	void setMilkState(short milkState);
 
 	void notifyDespawn(Zone* zone);
 
@@ -188,7 +188,7 @@ namespace creature {
 class CreatureImplementation : public AiAgentImplementation {
 	SortedVector<unsigned long long> alreadyHarvested;
 
-	bool alreadyMilked;
+	short milkState;
 
 public:
 	CreatureImplementation();
@@ -223,7 +223,7 @@ public:
 
 	void addAlreadyHarvested(CreatureObject* player);
 
-	void setAlreadyMilked(bool milked);
+	void setMilkState(short milkState);
 
 	void notifyDespawn(Zone* zone);
 
@@ -316,7 +316,7 @@ public:
 
 	void addAlreadyHarvested(CreatureObject* player);
 
-	void setAlreadyMilked(bool milked);
+	void setMilkState(short milkState);
 
 	void notifyDespawn(Zone* zone);
 

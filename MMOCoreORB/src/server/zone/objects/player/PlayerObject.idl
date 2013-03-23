@@ -242,6 +242,9 @@ class PlayerObject extends IntangibleObject {
 	
 	@dereferenced
 	protected Time lastVisibilityUpdateTimestamp;
+
+	@dereferenced
+	protected Time lastDigestion;
 	
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
@@ -312,6 +315,8 @@ class PlayerObject extends IntangibleObject {
 		
 		visibility = 0;
 		lastVisibilityUpdateTimestamp.updateToCurrentTime();
+
+		lastDigestion.updateToCurrentTime();
 		
 		Logger.setLoggingName("PlayerObject");
 	}
@@ -757,7 +762,7 @@ class PlayerObject extends IntangibleObject {
 	 */
 	public native void notifyOnline();
 	
-	public native void doDigest();
+	public native void doDigest(int fillingReduction);
 	
 	public boolean isDigesting() {
 		if (getDrinkFilling() > 0 || getFoodFilling() > 0) {

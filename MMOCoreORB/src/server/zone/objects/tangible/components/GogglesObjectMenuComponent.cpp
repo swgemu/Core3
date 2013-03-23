@@ -8,7 +8,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/colorbox/SuiColorBox.h"
-#include "GogglesColorMenuComponent.h"
+#include "GogglesObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
@@ -18,7 +18,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
 
-void GogglesColorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+void GogglesObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 
 	if (!sceneObject->isTangibleObject())
 		return;
@@ -28,26 +28,27 @@ void GogglesColorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 	// Coloring the goggles...
 
 	String text = "Color Change";
-	menuResponse->addRadialMenuItem(89, 3, text);
+	menuResponse->addRadialMenuItem(81, 3, text);
 
 }
 
-int GogglesColorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+int GogglesObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
 	if (!sceneObject->isTangibleObject())
 		return 0;
 
 	if (!sceneObject->isASubChildOf(player))
 		return 0;
+		
+	if (selectedID == 81) {		
 
-	ManagedReference<SceneObject*> parent = sceneObject->getParent();
-	if (parent != NULL && parent->isPlayerCreature()) {
-		player->sendSystemMessage("@error_message:equipped_goggles");
-		return 0;
-	}
+		ManagedReference<SceneObject*> parent = sceneObject->getParent();
+		if (parent != NULL && parent->isPlayerCreature()) {
+			player->sendSystemMessage("@error_message:equipped_goggles");
+			return 0;
+		}
 
-	// Handle color change.
+		// Handle color change.
 
-	if (selectedID == 89) {
 		ZoneServer* server = player->getZoneServer();
 
 		if (server != NULL) {

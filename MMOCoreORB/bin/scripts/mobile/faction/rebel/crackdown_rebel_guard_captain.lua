@@ -23,7 +23,7 @@ crackdown_rebel_guard_captain = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {
@@ -46,7 +46,7 @@ crackdown_rebel_guard_captain = Creature:new {
 		}	
 	},
 	weapons = {"rebel_weapons_heavy"},
-	conversationTemplate = "",
+	conversationTemplate = "rebel_recruiter_convotemplate",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 

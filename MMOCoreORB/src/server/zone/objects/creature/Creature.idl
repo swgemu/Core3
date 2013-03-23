@@ -60,7 +60,7 @@ class Creature extends AiAgent {
 	@dereferenced
 	private transient SortedVector<unsigned long> alreadyHarvested;
 
-	private boolean alreadyMilked;
+	private short milkState;
 
 	public Creature() {
 		Logger.setLoggingName("Creature");
@@ -113,7 +113,7 @@ class Creature extends AiAgent {
 	
 	public native void addAlreadyHarvested(CreatureObject player);
 
-	public native void setAlreadyMilked(boolean milked);
+	public native void setMilkState(short milkState);
 	
 	public native void notifyDespawn(Zone zone);
 	

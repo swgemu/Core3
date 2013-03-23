@@ -211,6 +211,8 @@ uint32 DamageOverTime::doBleedingTick(CreatureObject* victim) {
 	}
 
 	victim->inflictDamage(victim, attribute, strengthToApply, false);
+	if (victim->hasAttackDelay())
+		victim->removeAttackDelay();
 
 	victim->playEffect("clienteffect/dot_bleeding.cef","");
 
@@ -228,6 +230,8 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim) {
 		strengthToApply = attr - 1;
 
 	victim->inflictDamage(victim, attribute, strengthToApply, true);
+	if (victim->hasAttackDelay())
+		victim->removeAttackDelay();
 
 	victim->playEffect("clienteffect/dot_fire.cef","");
 
@@ -242,6 +246,8 @@ uint32 DamageOverTime::doPoisonTick(CreatureObject* victim) {
 		strengthToApply = attr - 1;
 
 	victim->inflictDamage(victim, attribute, strengthToApply, false);
+	if (victim->hasAttackDelay())
+		victim->removeAttackDelay();
 
 	victim->playEffect("clienteffect/dot_poisoned.cef","");
 
@@ -252,8 +258,11 @@ uint32 DamageOverTime::doDiseaseTick(CreatureObject* victim) {
 	uint32 shockWounds = (uint32) victim->getShockWounds();
 	uint32 power = strength + (shockWounds * strength / 500);
 
-	if ((int)power > 0)
+	if ((int)power > 0) {
 		victim->addWounds(attribute, power);
+		if (victim->hasAttackDelay())
+			victim->removeAttackDelay();
+	}
 
 	//victim->addDamage(attacker,power);
 

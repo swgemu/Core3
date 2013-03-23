@@ -43,7 +43,6 @@
 
 object_weapon_ranged_grenade_grenade_imperial_detonator = object_weapon_ranged_grenade_shared_grenade_imperial_detonator:new {
 
-	templateType = THROWNWEAPON,
 	objectMenuComponent = {"cpp", "ThrowGrenadeMenuComponent"},
 
 	playerRaces = { "object/creature/player/bothan_male.iff",
@@ -111,7 +110,7 @@ object_weapon_ranged_grenade_grenade_imperial_detonator = object_weapon_ranged_g
 	idealRange = 20,
 	idealAccuracy = 15,
 
-	maxRange = 32,
+	maxRange = 64,
 	maxRangeAccuracy = -30,
 
 	minDamage = 100,

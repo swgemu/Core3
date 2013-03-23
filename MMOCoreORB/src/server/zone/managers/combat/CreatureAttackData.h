@@ -53,6 +53,8 @@ protected:
 	uint8 attackType;
 	uint8 trails;
 
+	String combatSpam;
+
 public:
     CreatureAttackData(const UnicodeString & dataString, CombatQueueCommand *base);
     CreatureAttackData(const CreatureAttackData& data);
@@ -198,6 +200,14 @@ public:
 
 	void setTrails(uint8 trails) {
 		this->trails = trails;
+	}
+
+	String getCombatSpam() const {
+		return combatSpam;
+	}
+
+	void setCombatSpam(String spam) {
+		this->combatSpam = spam;
 	}
 };
 

@@ -67,6 +67,8 @@ CreatureAttackData::CreatureAttackData(const CreatureAttackData& data) {
 
 	attackType= data.attackType;
 	trails = data.trails;
+
+	combatSpam = data.combatSpam;
 }
 
 void CreatureAttackData::fillFromBase() {
@@ -94,6 +96,7 @@ void CreatureAttackData::fillFromBase() {
 	animationCRC = baseCommand->getAnimationCRC();
 	attackType = baseCommand->getAttackType();
 	trails = baseCommand->getTrails();
+	combatSpam = baseCommand->getCombatSpam();
 
 	healthDamageMultiplier = 1.f;
 	actionDamageMultiplier = 1.f;
@@ -177,6 +180,9 @@ void CreatureAttackData::setVariable(const String& var, const String& val) {
 		break;
 	case 0x550ED3F5: // String("trails").hashCode()
 		trails = Integer::valueOf(val);
+		break;
+	case 0xFAFA1475: // String("combatSpam").hashCode()
+		combatSpam = val;
 		break;
 	default:
 		break;
