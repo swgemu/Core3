@@ -235,5 +235,4 @@ void SharedWeaponObjectTemplate::readObject(LuaObject* templateData) {
 	attackSpeed = templateData->getFloatField("attackSpeed");
 
 	combatSpam = templateData->getStringField("combatSpam");
-	animationType = templateData->getStringField("animationType");
 }

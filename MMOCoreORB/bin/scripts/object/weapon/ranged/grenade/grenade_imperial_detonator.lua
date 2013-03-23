@@ -43,6 +43,7 @@
 
 object_weapon_ranged_grenade_grenade_imperial_detonator = object_weapon_ranged_grenade_shared_grenade_imperial_detonator:new {
 
+	templateType = THROWNWEAPON,
 	objectMenuComponent = {"cpp", "ThrowGrenadeMenuComponent"},
 
 	playerRaces = { "object/creature/player/bothan_male.iff",

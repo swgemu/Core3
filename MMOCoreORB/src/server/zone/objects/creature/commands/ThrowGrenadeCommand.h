@@ -74,7 +74,7 @@ public:
 			if (grenade == NULL)
 				return INVALIDPARAMETERS;
 
-			if (!grenade->isThrownWeapon())
+			if (!grenade->isThrownWeaponObject())
 				return INVALIDPARAMETERS;
 
 			if (!grenade->isASubChildOf(creature))

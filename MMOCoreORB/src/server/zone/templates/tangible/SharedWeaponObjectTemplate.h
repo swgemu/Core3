@@ -44,7 +44,6 @@ protected:
 	float attackSpeed;
 
 	String combatSpam;
-	String animationType;
 
 	Vector<String> damageModifiers;
 	Vector<String> speedModifiers;
@@ -304,10 +303,6 @@ public:
 
 	String getCombatSpam() {
 		return combatSpam;
-	}
-
-	String getAnimationType() {
-		return animationType;
 	}
 
 };

@@ -157,7 +157,7 @@ public:
 
 	void broadcastCombatSpam(TangibleObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid);
 	void broadcastCombatSpam(CreatureObject* attacker, TangibleObject* defender, TangibleObject* weapon, uint32 damage, const String& stringid);
-	void broadcastCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, WeaponObject* weapon, const CreatureAttackData& data, uint8 hit);
+	void broadcastCombatAction(CreatureObject* attacker, TangibleObject* defenderObject, const CreatureAttackData& data, uint8 hit);
 
 	float hitChanceEquation(float attackerAccuracy, float accuracyBonus, float targetDefense);
 
