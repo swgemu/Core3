@@ -527,44 +527,51 @@ g5po_missions =
 npcMapJabba = 
 { 
 	{ 
-		spawnData = { planetName = "tatooine", npcTemplate = "reelo_baruk", x = -2, z = 0.199999, y = 113.01, direction = 53.9956, cellID = 1177466, position = STAND }, 
-		npcNumber = 1,   
+		spawnData = { planetName = "tatooine", npcTemplate = "reelo_baruk", x = -2, z = 0.199999, y = 113.01, direction = 53.9956, cellID = 1177466, position = STAND },
+		worldPosition = { x = -5899.5, y = -6226.7 },
+		npcNumber = 1,
 		stfFile = "@theme_park_jabba/reelo_baruk",
 		missions = reelo_missions
 	},
 	{ 
-		spawnData = { planetName = "tatooine", npcTemplate = "ree_yees", x = 5.97, z = 0.299998, y = 116.1, direction = 248.813, cellID = 1177466, position = STAND }, 
-		npcNumber = 2,   
+		spawnData = { planetName = "tatooine", npcTemplate = "ree_yees", x = 5.97, z = 0.299998, y = 116.1, direction = 248.813, cellID = 1177466, position = STAND },
+		worldPosition = { x = -5892.3, y = -6230.8 },
+		npcNumber = 2,
 		stfFile = "@theme_park_jabba/ree_yees",
 		missions = ree_yees_missions
 	},
 	{ 
-		spawnData = { planetName = "tatooine", npcTemplate = "ephant_mon", x = -6, z = 5.85, y = 84, direction = 277.481, cellID = 1177469, position = STAND }, 
-		npcNumber = 4,   
+		spawnData = { planetName = "tatooine", npcTemplate = "ephant_mon", x = -6, z = 5.85, y = 84, direction = 277.481, cellID = 1177469, position = STAND },
+		worldPosition = { x = -5924.4, y = -6242.4 },
+		npcNumber = 4,
 		stfFile = "@theme_park_jabba/ephant_mon",
 		missions = ephant_mon_missions
 	},
 	{ 
-		spawnData = { planetName = "tatooine", npcTemplate = "porcellus", x = -43, z = 3, y = 64, direction = 306.623, cellID = 1177477, position = STAND }, 
-		npcNumber = 8,   
+		spawnData = { planetName = "tatooine", npcTemplate = "porcellus", x = -43, z = 3, y = 64, direction = 306.623, cellID = 1177477, position = STAND },
+		worldPosition = { x = -5963.5, y = -6226.9 },
+		npcNumber = 8,
 		stfFile = "@theme_park_jabba/porcellus",
 		missions = porcellus_missions
 	},
 	{ 
-		spawnData = { planetName = "tatooine", npcTemplate = "barada", x = 30.57, z = 0.199999, y = -1.05, direction = 164.173, cellID = 1177499, position = STAND }, 
-		npcNumber = 16,   
+		spawnData = { planetName = "tatooine", npcTemplate = "barada", x = 30.57, z = 0.199999, y = -1.05, direction = 164.173, cellID = 1177499, position = STAND },
+		worldPosition = { x = -5965.8, y = -6325.1 },
+		npcNumber = 16,
 		stfFile = "@theme_park_jabba/barada",
 		missions = barada_missions
 	},
 	{ 
-		spawnData = { planetName = "tatooine", npcTemplate = "bib_fortuna", x = -12.09, z = 2, y = 49.41, direction = 176.373, cellID = 1177487, position = STAND }, 
-		npcNumber = 32,   
+		spawnData = { planetName = "tatooine", npcTemplate = "bib_fortuna", x = -12.09, z = 2, y = 49.41, direction = 176.373, cellID = 1177487, position = STAND },
+		worldPosition = { x = -5954.9, y = -6260.0 },
+		npcNumber = 32,
 		stfFile = "@theme_park_jabba/bib_fortuna",
 		missions = bib_missions
 	},
 	{ 
-		spawnData = { planetName = "tatooine", npcTemplate = "g_5po", x = -15.07, z = 2, y = 45.9, direction = 119.771, cellID = 1177487, position = STAND }, 
-		npcNumber = 64,   
+		spawnData = { planetName = "tatooine", npcTemplate = "g_5po", x = -15.07, z = 2, y = 45.9, direction = 119.771, cellID = 1177487, position = STAND },
+		worldPosition = { x = -5959.4, y = -6259.9 },
+		npcNumber = 64,
 		stfFile = "@theme_park_jabba/g5po",
 		missions = g5po_missions
 	}

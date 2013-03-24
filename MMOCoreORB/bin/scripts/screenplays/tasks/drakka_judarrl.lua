@@ -63,6 +63,7 @@ npcMapDrakkaJudarrl =
 { 
 	{ 
 		spawnData = { planetName = "dantooine", npcTemplate = "drakka_judarrl", x = 73.1, z = -46, y = -141, direction = 97, cellID = 8535548, position = STAND }, 
+		worldPosition = { x = 4221.2, y = 4959.3 }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/dantooine/dantooine_remotehaven_drakka_judarrl", 
 		missions = drakka_judarrl_missions 
@@ -77,7 +78,7 @@ DrakkaJudarrl = ThemeParkLogic:new {
 	screenPlayState = "drakka_judarrl_quest",
 	distance = 1000,
 	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message"
+	missionCompletionMessageStf = ""
 }
 
 registerScreenPlay("DrakkaJudarrl", true)

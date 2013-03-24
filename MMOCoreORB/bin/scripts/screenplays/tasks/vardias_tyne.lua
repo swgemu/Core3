@@ -34,9 +34,10 @@ vardias_tyne_missions =
 npcMapVardiasTyne = 
 { 
 	{ 
-		spawnData = { planetName = "tatooine", npcTemplate = "vardias_tyne", x = 104, z = 44.1, y = -5382, direction = 96, cellID = 0, position = STAND }, 
-		npcNumber = 1,   
-		stfFile = "@static_npc/tatooine/vardias_tyne", 
+		spawnData = { planetName = "tatooine", npcTemplate = "vardias_tyne", x = 104, z = 44.1, y = -5382, direction = 96, cellID = 0, position = STAND },
+		npcNumber = 1,
+		stfFile = "@static_npc/tatooine/vardias_tyne",
+		hasWaypointNames = "no",
 		missions = vardias_tyne_missions 
 	},
 }
