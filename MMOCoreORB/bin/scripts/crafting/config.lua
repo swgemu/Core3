@@ -1736,6 +1736,7 @@ schematics = {
 {path="object/draft_schematic/item/item_recycler_flora.iff"},
 {path="object/draft_schematic/item/item_recycler_metal.iff"},
 {path="object/draft_schematic/item/item_recycler_ore.iff"},
+{path="object/draft_schematic/item/item_tumble_blender.iff"},
 {path="object/draft_schematic/item/item_shellfish_harvester.iff"},
 {path="object/draft_schematic/item/quest_item/attunement_grid.iff"},
 {path="object/draft_schematic/item/quest_item/current_alternator.iff"},

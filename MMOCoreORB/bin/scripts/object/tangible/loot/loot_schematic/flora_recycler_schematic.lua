@@ -42,7 +42,12 @@
 
 
 object_tangible_loot_loot_schematic_flora_recycler_schematic = object_tangible_loot_loot_schematic_shared_flora_recycler_schematic:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "crafting_artisan_engineering_01",
+	targetDraftSchematic = "object/draft_schematic/item/item_recycler_flora.iff",
+	targetUseCount = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_flora_recycler_schematic, "object/tangible/loot/loot_schematic/flora_recycler_schematic.iff")
