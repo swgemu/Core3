@@ -49,8 +49,8 @@ object_tangible_ship_crafted_armor_mass_reduction_kit_mk3 = object_tangible_ship
 	experimentalWeights = {1, 1, 1, 3, 1, 3, 1, 3},
 	experimentalGroupTitles = {"null", "null", "exp_hitpointsmax", "exp_armorhpmax", "exp_mass"},
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "armorhpmax", "mass"},
-	experimentalMin = {0, 0, -195, -195, -575},
-	experimentalMax = {0, 0, -144, -144, -425},
+	experimentalMin = {0, 0, -195, -195, -425},
+	experimentalMax = {0, 0, -144, -144, -575},
 	experimentalPrecision = {0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1},
 }

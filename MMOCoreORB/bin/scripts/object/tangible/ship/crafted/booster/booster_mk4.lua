@@ -49,8 +49,8 @@ object_tangible_ship_crafted_booster_booster_mk4 = object_tangible_ship_crafted_
 	experimentalWeights = {1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2},
 	experimentalGroupTitles = {"null", "null", "exp_hp", "null", "exp_mass", "exp_armorhpmax", "null", "exp_maintenance", "exp_booster_energy", "exp_booster_recharge", "booster_consumption", "exp_booster_speed", "exp_booster_acceleration"},
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "booster_energy", "booster_recharge", "booster_consumption", "booster_speed", "booster_acceleration"},
-	experimentalMin = {0, 0, 654, 1, 7644, 327, 1, 403, 932, 23, 93, 14, 19},
-	experimentalMax = {0, 0, 1215, 1, 14196, 607, 1, 748, 1730, 43, 173, 27, 35},
+	experimentalMin = {0, 0, 654, 1, 14196, 327, 1, 748, 932, 23, 93, 14, 19},
+	experimentalMax = {0, 0, 1215, 1, 7644, 607, 1, 403, 1730, 43, 173, 27, 35},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }

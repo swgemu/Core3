@@ -49,8 +49,8 @@ object_tangible_ship_crafted_weapon_wpn_light_blaster_green = object_tangible_sh
 	experimentalWeights = {1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_hp_max", "null", "exp_mass", "exp_armorhpmax", "null", "exp_energy_maintenance", "exp_damage_max", "exp_damage_min", "exp_shield_effectiveness", "exp_armor_effectiveness", "exp_energy_per_shot", "exp_refire"},
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "damage_max", "damage_min", "effective_shields", "effective_armor", "energy_per_shot", "refire_rate"},
-	experimentalMin = {0, 0, 139, 1, 833, 69, 1, 1850, 361, 268, 463, 463, 16, 315},
-	experimentalMax = {0, 0, 161, 1, 968, 81, 1, 2150, 419, 312, 538, 538, 18, 366},
+	experimentalMin = {0, 0, 139, 1, 968, 69, 1, 2150, 361, 268, 463, 463, 16, 315},
+	experimentalMax = {0, 0, 161, 1, 833, 81, 1, 1850, 419, 312, 538, 538, 18, 366},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }

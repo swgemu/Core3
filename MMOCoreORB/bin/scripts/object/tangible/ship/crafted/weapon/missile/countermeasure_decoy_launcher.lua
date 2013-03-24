@@ -49,8 +49,8 @@ object_tangible_ship_crafted_weapon_missile_countermeasure_decoy_launcher = obje
 	experimentalWeights = {1, 1, 1, 2, 1, 2, 1, 2, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_hp", "exp_mass", "exp_armor", "null", "exp_energy_maintenance", "null"},
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "energy_per_shot"},
-	experimentalMin = {0, 0, 293, 2125, 147, 1, 893, 0},
-	experimentalMax = {0, 0, 397, 2875, 198, 1, 1208, 0},
+	experimentalMin = {0, 0, 293, 2875, 147, 1, 1208, 0},
+	experimentalMax = {0, 0, 397, 2125, 198, 1, 893, 0},
 	experimentalPrecision = {0, 0, 10, 10, 10, 0, 10, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1},
 }

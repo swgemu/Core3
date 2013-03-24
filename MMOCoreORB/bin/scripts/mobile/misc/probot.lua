@@ -28,10 +28,9 @@ probot = Creature:new {
 
 	templates = {"object/creature/npc/droid/crafted/imperial_probot.iff"},
 	lootGroups = {},
-	weapons = {},
 	conversationTemplate = "",
-	attacks = {
-	}
+	defaultWeapon = "object/weapon/ranged/droid/droid_droideka_ranged.iff",
+	defaultAttack = "creaturerangedattack"
 }
 
 CreatureTemplates:addCreatureTemplate(probot, "probot")

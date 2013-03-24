@@ -2,6 +2,13 @@ TalusWeaponsDepotScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 
 	screenplayName = "TalusWeaponsDepotScreenPlay",
+
+--9686134 bunker rebel weapon depot
+--9686309 security terminal
+--9686329 power regulator
+--9645673 uplink terminal
+--9645698 terminal hq
+--9645714 override terminal
 }
 
 registerScreenPlay("TalusWeaponsDepotScreenPlay", true)

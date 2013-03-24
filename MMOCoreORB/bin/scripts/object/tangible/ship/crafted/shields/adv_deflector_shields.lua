@@ -49,8 +49,8 @@ object_tangible_ship_crafted_shields_adv_deflector_shields = object_tangible_shi
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_hp", "null", "exp_mass", "exp_armorhpmax", "null", "exp_energy_maintenance", "exp_shield_max_front_hp", "exp_shield_max_back_hp", "exp_shield_recharge"},
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "shield_max_front_hp", "shield_max_back_hp", "shield_recharge"},
-	experimentalMin = {0, 0, 794, 1, 13260, 397, 1, 2444, 1324, 1324, 10591},
-	experimentalMax = {0, 0, 1075, 1, 17940, 537, 1, 3306, 1791, 1791, 14329},
+	experimentalMin = {0, 0, 794, 1, 17940, 397, 1, 3306, 1324, 1324, 10591},
+	experimentalMax = {0, 0, 1075, 1, 13260, 537, 1, 2444, 1791, 1791, 14329},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }

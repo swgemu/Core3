@@ -49,8 +49,8 @@ object_tangible_ship_crafted_engine_eng_mk2 = object_tangible_ship_crafted_engin
 	experimentalWeights = {1, 1, 1, 3, 1, 1, 3, 1, 3, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_hp", "null", "exp_mass", "exp_armorhpmax", "null", "exp_energy_maintenance", "exp_pitch", "exp_yaw", "exp_roll", "exp_speed"},
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "engine_pitch", "engine_yaw", "engine_roll", "engine_speed"},
-	experimentalMin = {0, 0, 293, 1, 1700, 147, 1, 1339, 41, 41, 41, 42},
-	experimentalMax = {0, 0, 397, 1, 2300, 198, 1, 1811, 55, 55, 55, 57},
+	experimentalMin = {0, 0, 293, 1, 2300, 147, 1, 1811, 41, 41, 41, 42},
+	experimentalMax = {0, 0, 397, 1, 1700, 198, 1, 1339, 55, 55, 55, 57},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 }

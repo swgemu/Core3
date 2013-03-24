@@ -49,8 +49,8 @@ object_tangible_ship_crafted_capacitor_heavy_battery_mk4 = object_tangible_ship_
 	experimentalWeights = {1, 1, 3, 1, 3, 1},
 	experimentalGroupTitles = {"null", "null", "exp_cap_max_energy", "exp_energy_maintenance"},
 	experimentalSubGroupTitles = {"null", "null", "cap_max_energy", "energy_maintenance"},
-	experimentalMin = {0, 0, 113, 213},
-	experimentalMax = {0, 0, 153, 288},
+	experimentalMin = {0, 0, 113, 288},
+	experimentalMax = {0, 0, 153, 213},
 	experimentalPrecision = {0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1},
 }

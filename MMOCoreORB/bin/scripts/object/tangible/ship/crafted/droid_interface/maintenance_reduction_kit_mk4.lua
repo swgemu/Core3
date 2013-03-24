@@ -49,8 +49,8 @@ object_tangible_ship_crafted_droid_interface_maintenance_reduction_kit_mk4 = obj
 	experimentalWeights = {1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_droid_command_speed", "exp_energy_maintenance"},
 	experimentalSubGroupTitles = {"null", "null", "droid_command_speed", "energy_maintenance"},
-	experimentalMin = {0, 0, 1, -116},
-	experimentalMax = {0, 0, 2, -74},
+	experimentalMin = {0, 0, 1, -74},
+	experimentalMax = {0, 0, 2, -116},
 	experimentalPrecision = {0, 0, 2, 0},
 	experimentalCombineType = {0, 0, 1, 1},
 }

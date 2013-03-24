@@ -1,5 +1,14 @@
 TalusDetainmentCenterScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
+
+	screenplayName = "TalusDetainmentCenterScreenPlay",
+
+--9686208 bunker imperial detainment center
+--9686346 terminal hq
+--9686357 override terminal
+--9686389 power regulator
+--9686393 security terminal
+--9686398 uplink terminal
 }
 
 registerScreenPlay("TalusDetainmentCenterScreenPlay", true)
@@ -22,7 +31,7 @@ function TalusDetainmentCenterScreenPlay:spawnMobiles()
 	spawnMobile("talus", "imperial_noncom", 300, -53.2, -9.0, 59.0, 90, 9686214)
 	spawnMobile("talus", "imperial_noncom", 300, -57.0, -9.0, 60.9, -120, 9686214)
 	spawnMobile("talus", "command_security_guard", 300, -24.9, -9.0, 28.5, 90, 9686213)
-	spawnMobile("talus", "command_security_guard", 300, -24.8, -9.0, 26.0, 90, 9686213)	
+	spawnMobile("talus", "command_security_guard", 300, -24.8, -9.0, 26.0, 90, 9686213)
 	spawnMobile("talus", "command_security_guard", 300, 12.1, -17.0, 65.0, 179, 9686215)
 	spawnMobile("talus", "command_security_guard", 300, 12.1, -17.0, 62.0, -1, 9686215)
 	spawnMobile("talus", "stormtrooper", 300, 30.4, -17.0, 60.7, 1, 9686215)

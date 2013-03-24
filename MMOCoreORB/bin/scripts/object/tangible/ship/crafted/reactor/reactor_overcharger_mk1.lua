@@ -49,8 +49,8 @@ object_tangible_ship_crafted_reactor_reactor_overcharger_mk1 = object_tangible_s
 	experimentalWeights = {1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_energy_gen_rate", "exp_mass"},
 	experimentalSubGroupTitles = {"null", "null", "energy_gen_rate", "mass"},
-	experimentalMin = {0, 0, 350, 140},
-	experimentalMax = {0, 0, 650, 260},
+	experimentalMin = {0, 0, 350, 260},
+	experimentalMax = {0, 0, 650, 140},
 	experimentalPrecision = {0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1},
 }

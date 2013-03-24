@@ -108,7 +108,7 @@ object_weapon_melee_2h_sword_2h_sword_maul = object_weapon_melee_2h_sword_shared
 	pointBlankRange = 0,
 	pointBlankAccuracy = -35,
 
-	idealRange = 5,
+	idealRange = 3,
 	idealAccuracy = -35,
 
 	maxRange = 5,

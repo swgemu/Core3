@@ -105,14 +105,14 @@ object_weapon_melee_polearm_lance_lightsaber_02 = object_weapon_melee_polearm_sh
 	mindAttackCost = 20,
 	forceCost = 12,
 
-	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
+	pointBlankAccuracy = 20,
 
-	idealRange = 0,
-	idealAccuracy = 0,
+	idealRange = 5,
+	idealAccuracy = 15,
 
-	maxRange = 0,
-	maxRangeAccuracy = 0,
+	maxRange = 7,
+	maxRangeAccuracy = 5,
 
 	minDamage = 105,
 	maxDamage = 195,

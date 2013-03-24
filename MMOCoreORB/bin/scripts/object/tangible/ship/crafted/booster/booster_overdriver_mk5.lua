@@ -49,8 +49,8 @@ object_tangible_ship_crafted_booster_booster_overdriver_mk5 = object_tangible_sh
 	experimentalWeights = {1, 1, 1, 2, 1, 2, 2, 1},
 	experimentalGroupTitles = {"null", "null", "exp_booster_acceleration", "exp_booster_speed", "exp_mass"},
 	experimentalSubGroupTitles = {"null", "null", "booster_acceleration", "booster_speed", "mass"},
-	experimentalMin = {0, 0, 18, 11, 2940},
-	experimentalMax = {0, 0, 34, 21, 5460},
+	experimentalMin = {0, 0, 18, 11, 5460},
+	experimentalMax = {0, 0, 34, 21, 2940},
 	experimentalPrecision = {0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1},
 }

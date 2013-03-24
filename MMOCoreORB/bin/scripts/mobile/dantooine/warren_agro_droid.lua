@@ -26,11 +26,15 @@ warren_agro_droid = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/warren_agro_droid_s01.iff", "object/mobile/warren_agro_droid_s02.iff", "object/mobile/warren_agro_droid_s03.iff", "object/mobile/warren_agro_droid_s04.iff"},
+	templates = {	"object/mobile/warren_agro_droid_s01.iff", --droideka
+					"object/mobile/warren_agro_droid_s02.iff", --probot
+					"object/mobile/warren_agro_droid_s03.iff", --ig assassin
+					"object/mobile/warren_agro_droid_s04.iff"  --dz70 fugitive tracker droid
+				},
 	lootGroups = {},
-	weapons = {},
 	conversationTemplate = "",
-	attacks = {}
+	defaultAttack = "creaturerangedattack",
+	defaultWeapon = "object/weapon/ranged/droid/droid_droideka_ranged.iff"
 }
 
 CreatureTemplates:addCreatureTemplate(warren_agro_droid, "warren_agro_droid")

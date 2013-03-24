@@ -28,9 +28,9 @@ warren_altered_atst = Creature:new {
 
 	templates = {"object/mobile/atst.iff"},
 	lootGroups = {},
-	weapons = {"vehicle_atst_ranged"},
 	conversationTemplate = "",
-	attacks = {}
+	defaultAttack = "defaultdroidattack",
+	defaultWeapon = "object/weapon/ranged/vehicle/vehicle_atst_ranged.iff"
 }
 
 CreatureTemplates:addCreatureTemplate(warren_altered_atst, "warren_altered_atst")

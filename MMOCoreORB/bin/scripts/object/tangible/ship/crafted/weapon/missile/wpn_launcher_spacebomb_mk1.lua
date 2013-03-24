@@ -49,8 +49,8 @@ object_tangible_ship_crafted_weapon_missile_wpn_launcher_spacebomb_mk1 = object_
 	experimentalWeights = {1, 1, 1, 2, 1, 2, 1, 2, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_hp", "exp_mass", "exp_armor", "null", "exp_energy_maintenance"},
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance"},
-	experimentalMin = {0, 0, 540, 5313, 270, 1, 1105},
-	experimentalMax = {0, 0, 730, 7188, 365, 1, 1495},
+	experimentalMin = {0, 0, 540, 7188, 270, 1, 1495},
+	experimentalMax = {0, 0, 730, 5313, 365, 1, 1105},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1},
 }

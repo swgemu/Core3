@@ -106,14 +106,14 @@ object_weapon_ranged_rifle_rifle_tenloss_dxr6_disruptor_loot = object_weapon_ran
 	mindAttackCost = 48,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
+	pointBlankAccuracy = -69,
 	pointBlankRange = 0,
 
-	idealRange = 35,
-	idealAccuracy = 0,
+	idealRange = 54,
+	idealAccuracy = 90,
 
-	maxRange = 65,
-	maxRangeAccuracy = 0,
+	maxRange = 64,
+	maxRangeAccuracy = 15,
 
 	minDamage = 70,
 	maxDamage = 115,

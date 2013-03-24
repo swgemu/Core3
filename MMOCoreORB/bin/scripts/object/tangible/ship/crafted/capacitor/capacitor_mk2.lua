@@ -49,8 +49,8 @@ object_tangible_ship_crafted_capacitor_capacitor_mk2 = object_tangible_ship_craf
 	experimentalWeights = {1, 1, 1, 2, 1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1},
 	experimentalGroupTitles = {"null", "null", "exp_hp", "null", "exp_mass", "exp_armorhpmax", "null", "exp_energy_maintenance", "exp_cap_max_energy", "exp_recharge"},
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "cap_max_energy", "cap_recharge_rate"},
-	experimentalMin = {0, 0, 293, 1, 1913, 147, 1, 893, 468, 19},
-	experimentalMax = {0, 0, 397, 1, 2588, 198, 1, 1208, 633, 25},
+	experimentalMin = {0, 0, 293, 1, 2588, 147, 1, 1208, 468, 19},
+	experimentalMax = {0, 0, 397, 1, 1913, 198, 1, 893, 633, 25},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1},
 }
