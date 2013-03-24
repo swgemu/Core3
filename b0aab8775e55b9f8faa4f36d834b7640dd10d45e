@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABX///x4\u003d",
+        "filename": "MMOCoreORB/bin/scripts/mobile/lok/langlatch_destroyer.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2013-03-24T06:48:03Z",
+      "side": 1,
+      "message": "curious why this was changed.\n\nthese were set to use the _hue model so we can color them later on",
+      "revId": "b0aab8775e55b9f8faa4f36d834b7640dd10d45e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
