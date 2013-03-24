@@ -1655,6 +1655,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isCampStructure() {
 		return false;
 	}
+
+	@read
+	public abstract boolean isRecycleToolObject() {
+		return gameObjectType == SceneObjectType.RECYCLETOOL;
+	}
 	
 	@local
 	public ContainerPermissions getContainerPermissions() {

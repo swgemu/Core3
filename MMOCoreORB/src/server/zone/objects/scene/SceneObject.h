@@ -724,6 +724,8 @@ public:
 
 	bool isCampStructure();
 
+	bool isRecycleToolObject();
+
 	ContainerPermissions* getContainerPermissions();
 
 	void setContainerDefaultAllowPermission(unsigned short perm);
@@ -1392,6 +1394,8 @@ public:
 
 	virtual bool isCampStructure();
 
+	virtual bool isRecycleToolObject();
+
 	ContainerPermissions* getContainerPermissions();
 
 	void setContainerDefaultAllowPermission(unsigned short perm);
@@ -1918,6 +1922,8 @@ public:
 	bool isCampKit();
 
 	bool isCampStructure();
+
+	bool isRecycleToolObject();
 
 	void setContainerDefaultAllowPermission(unsigned short perm);
 
