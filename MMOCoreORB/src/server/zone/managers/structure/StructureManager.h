@@ -199,6 +199,8 @@ public:
 	 * @param amount The amount to pay maintenance.
 	 */
 	void payMaintenance(StructureObject* structure, CreatureObject* creature, int amount);
+
+	int getStructureFootprint(SharedObjectTemplate* object, int angle, float& l, float& w);
 };
 
 #endif /*STRUCTUREMANAGER_H_*/
