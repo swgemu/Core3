@@ -63,6 +63,7 @@ npcMapXaanTalmaron =
 { 
 	{ 
 		spawnData = { planetName = "dantooine", npcTemplate = "xaan_talmaron", x = 0.923707, z = 0.125264, y = -4.46262, direction = 160.225, cellID = 1380125, position = STAND }, 
+		worldPosition = { x = -4184.4, y = -2407.1 }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/dantooine/dantooine_imperialgarrison_xaan_talmaron", 
 		missions = xaan_talmaron_missions 
@@ -77,7 +78,7 @@ XaanTalmaron = ThemeParkLogic:new {
 	screenPlayState = "xaan_talmaron_quest",
 	distance = 1000,
 	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message"
+	missionCompletionMessageStf = ""
 }
 
 registerScreenPlay("XaanTalmaron", true)

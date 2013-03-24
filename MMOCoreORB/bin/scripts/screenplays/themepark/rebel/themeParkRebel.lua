@@ -828,6 +828,7 @@ npcMapRebel =
 { 
 	{ 
 		spawnData = { planetName = "corellia", npcTemplate = "c_3po", x = -2.3, z = 2.0, y = 4.0, direction = 150, cellID = 8555472, position = STAND }, 
+		worldPosition = { x = -6507.5, y = 5985.7 }, 
 		npcNumber = 1,   
 		stfFile = "@theme_park_rebel/c3po",
 		missions = c3po_missions
@@ -840,24 +841,28 @@ npcMapRebel =
 	},
 	{ 
 		spawnData = { planetName = "corellia", npcTemplate = "qualdo_herm", x = 14.91, z = 1.01, y = -6.68, direction = 0, cellID = 8555475, position = STAND }, 
+		worldPosition = { x = -6512.3, y = 6005.2 }, 
 		npcNumber = 2,   
 		stfFile = "@theme_park_rebel/qualdo_herm",    
 		missions = qualdo_missions 
 	},
 	{ 
 		spawnData = { planetName = "corellia", npcTemplate = "wedge_antilles", x = 0.01, z = 1.01, y = -22.01, direction = 0, cellID = 8555477, position = SIT }, 
+		worldPosition = { x = -6491.1, y = 6005.6 }, 
 		npcNumber = 4,   
 		stfFile = "@theme_park_rebel/wedge_antilles", 
 		missions = wedge_missions 
 	},
 	{ 
 		spawnData = { planetName = "corellia", npcTemplate = "leia_organa", x = -11.13, z = 7.00971, y = 11.31, direction = 175, cellID = 8555481, position = STAND }, 
+		worldPosition = { x = -6506.3, y = 5974.2 }, 
 		npcNumber = 8,   
 		stfFile = "@theme_park_rebel/princess_leia",  
 		missions = leia_missions 
 	},
 	{ 
 		spawnData = { planetName = "lok", npcTemplate = "nien_nunb", x = -12.12, z = -0.894992, y = 23.08, direction = 80.0024, cellID = 8145384, position = SIT }, 
+		worldPosition = { x = 476.2, y = 5075.7 }, 
 		npcNumber = 16,  
 		stfFile = "@theme_park_rebel/nien_nunb",      
 		missions = nien_missions 
@@ -870,30 +875,35 @@ npcMapRebel =
 	},
 	{ 
 		spawnData = { planetName = "lok", npcTemplate = "han_solo", x = -30.2, z = -0.519991, y = 7.24, direction = 45.0013, cellID = 8145388, position = STAND }, 
+		worldPosition = { x = 417.5, y = 5052.1 }, 
 		npcNumber = 32,  
 		stfFile = "@theme_park_rebel/han_solo",       
 		missions = han_missions 
 	},
 	{ 
 		spawnData = { planetName = "dantooine", npcTemplate = "ackbar", x = -14.4, z = 1.0, y = -21.7, direction = 0, cellID = 6555566, position = STAND }, 
+		worldPosition = { x = -6812.5, y = 5560.7 }, 
 		npcNumber = 64,  
 		stfFile = "@theme_park_rebel/captain_ackbar", 
 		missions = ackbar_missions 
 	},
 	{ 
 		spawnData = { planetName = "dantooine", npcTemplate = "mon_mothma", x = -3.4, z = 7.0, y = -12.2, direction = -34, cellID = 6555568, position = STAND }, 
+		worldPosition = { x = -6823.6, y = 5551.2 }, 
 		npcNumber = 128, 
 		stfFile = "@theme_park_rebel/mon_mothma",     
 		missions = mon_missions 
 	},
 	{ 
 		spawnData = { planetName = "yavin4", npcTemplate = "jan_dodonna", x = 0, z = 0, y = -41.9, direction = 0, cellID = 3465388, position = STAND }, 
+		worldPosition = { x = 5014.8, y = 5537.8 }, 
 		npcNumber = 256, 
 		stfFile = "@theme_park_rebel/jan_dodonna",    
 		missions = jan_missions 
 	},
 	{ 
 		spawnData = { planetName = "yavin4", npcTemplate = "luke_skywalker", x = 1.2, z = -6.0, y = -26.8, direction = 180, cellID = 3465390, position = STAND }, 
+		worldPosition = { x = 5029.9, y = 5536.6 }, 
 		npcNumber = 512, 
 		stfFile = "@theme_park_rebel/luke_skywalker", 
 		missions = luke_missions 

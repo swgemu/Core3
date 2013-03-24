@@ -64,6 +64,7 @@ npcMapTekilBarje =
 		spawnData = { planetName = "tatooine", npcTemplate = "tekil_barje", x = -5269.8, z = 75, y = -6567.61, direction = 237.663, cellID = 0, position = STAND }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/tatooine/tekil_barje", 
+		hasWaypointNames = "no", 
 		missions = tekil_barje_missions 
 	},
 }

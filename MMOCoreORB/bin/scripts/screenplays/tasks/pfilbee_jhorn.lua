@@ -68,7 +68,8 @@ npcMapPfilbeeJhorn =
 { 
 	{ 
 		spawnData = { planetName = "tatooine", npcTemplate = "pfilbee_jhorn", x = 4.9, z = 0.1, y = -3.9, direction = -90, cellID = 1279923, position = STAND }, 
-		npcNumber = 1,   
+		worldPosition = { x = -1129.4, y = -3914.4 }, 
+		npcNumber = 1, 
 		stfFile = "@static_npc/tatooine/pfilbee_jhorn", 
 		missions = pfilbee_jhorn_missions 
 	},
@@ -82,7 +83,7 @@ PfilbeeJhorn = ThemeParkLogic:new {
 	screenPlayState = "pfilbee_jhorn_quest",
 	distance = 1000,
 	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message"
+	missionCompletionMessageStf = ""
 }
 
 registerScreenPlay("PfilbeeJhorn", true)

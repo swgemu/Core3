@@ -64,9 +64,10 @@ mat_rags_missions =
 npcMapMatRags = 
 { 
 	{ 
-		spawnData = { planetName = "tatooine", npcTemplate = "mat_rags", x = -2977, z = 5, y = 2458, direction = -65, cellID = 0, position = STAND }, 
-		npcNumber = 1,   
-		stfFile = "@static_npc/tatooine/mat_rags", 
+		spawnData = { planetName = "tatooine", npcTemplate = "mat_rags", x = -2977, z = 5, y = 2458, direction = -65, cellID = 0, position = STAND },
+		npcNumber = 1,
+		stfFile = "@static_npc/tatooine/mat_rags",
+		hasWaypointNames = "no",
 		missions = mat_rags_missions
 	},
 }

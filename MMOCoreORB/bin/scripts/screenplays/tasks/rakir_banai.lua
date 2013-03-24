@@ -73,10 +73,11 @@ rakir_banai_missions =
 npcMapRakirBanai = 
 { 
 	{ 
-		spawnData = { planetName = "tatooine", npcTemplate = "rakir_banai", x = -5043, z = 75, y = -6600.3, direction = 214, cellID = 0, position = SIT }, 
-		npcNumber = 1,   
-		stfFile = "@static_npc/tatooine/rakir_banai", 
-		missions = rakir_banai_missions 
+		spawnData = { planetName = "tatooine", npcTemplate = "rakir_banai", x = -5043, z = 75, y = -6600.3, direction = 214, cellID = 0, position = SIT },
+		npcNumber = 1,
+		stfFile = "@static_npc/tatooine/rakir_banai",
+		hasWaypointNames = "no",
+		missions = rakir_banai_missions
 	},
 }
 

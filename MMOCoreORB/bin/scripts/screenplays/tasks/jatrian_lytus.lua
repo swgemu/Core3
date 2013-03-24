@@ -68,6 +68,7 @@ npcMapJatrianLytus =
 { 
 	{ 
 		spawnData = { planetName = "dantooine", npcTemplate = "jatrian_lytus", x = 3.1801, z = 0.125266, y = 3.64218, direction = 209.67, cellID = 1365879, position = STAND }, 
+		worldPosition = { x = -4203.8, y = -2426.5 }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/dantooine/dantooine_imperialgarrison_jatrian_lytus", 
 		missions = jatrian_lytus_missions 
@@ -82,7 +83,7 @@ JatrianLytus = ThemeParkLogic:new {
 	screenPlayState = "jatrian_lytus_quest",
 	distance = 1000,
 	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message"
+	missionCompletionMessageStf = ""
 }
 
 registerScreenPlay("JatrianLytus", true)
