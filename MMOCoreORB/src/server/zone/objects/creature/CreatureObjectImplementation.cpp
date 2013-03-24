@@ -1334,6 +1334,21 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 	notifyPostureChange(newPosture);
 }
 
+float CreatureObjectImplementation::calculateSpeed() {
+	Time currentTime;
+	uint32 deltaTime = currentTime.getMiliTime() - lastCombatActionTime.getMiliTime();
+	Vector3 newPosition = getPosition();
+
+	float dist = newPosition.distanceTo(lastCombatPosition);
+	float speed = dist / (float) deltaTime * 1000;
+
+	//update position and time
+	lastCombatActionTime.updateToCurrentTime();
+	lastCombatPosition = newPosition;
+
+	return speed;
+}
+
 void CreatureObjectImplementation::updateLocomotion() {
 	// 0: stationary, 0-walk: slow, walk-run+; fast
 	// the movement table does not seem to want scaling factors...
