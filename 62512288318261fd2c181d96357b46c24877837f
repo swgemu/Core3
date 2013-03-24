@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABX///vI\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/recycle/RecycleResourceTask.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-03-24T14:39:08Z",
+      "side": 1,
+      "message": "ManagedReference\u003c\u003e for all the pointers",
+      "revId": "62512288318261fd2c181d96357b46c24877837f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABX///vA\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/recycle/RecycleResourceTask.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-03-24T14:39:08Z",
+      "side": 1,
+      "message": "Locker locker(player);",
+      "revId": "62512288318261fd2c181d96357b46c24877837f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABX///vE\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/tool/recycle/RecycleResourceTask.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-03-24T14:39:08Z",
+      "side": 1,
+      "message": "Locker locker(player);",
+      "revId": "62512288318261fd2c181d96357b46c24877837f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
