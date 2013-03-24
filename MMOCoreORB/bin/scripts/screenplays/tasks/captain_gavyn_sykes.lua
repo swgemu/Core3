@@ -68,8 +68,10 @@ npcMapGavynSykes =
 { 
 	{ 
 		spawnData = { planetName = "naboo", npcTemplate = "gavyn_sykes", x = 8.5, z = 0.6, y = 66.7, direction = 110, cellID = 2125382, position = STAND }, 
+		worldPosition = { x = 1419.1, y = 2761.7 }, 
 		npcNumber = 1,   
 		stfFile = "@static_npc/naboo/gavyn_sykes", 
+		hasWaypointNames = "no", 
 		missions = gavyn_sykes_missions 
 	},
 }

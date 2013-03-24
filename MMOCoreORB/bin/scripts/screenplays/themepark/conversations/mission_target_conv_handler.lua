@@ -132,14 +132,37 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 	local npcNumber = self.themePark:getActiveNpcNumber(pConversingPlayer)
 	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 	local mission = self.themePark:getMission(npcNumber, missionNumber)
-	
+
+	local npcSpawnData = nil
+	local npcWorldPosition = nil
+	for i = 1, # self.themePark.npcMap do
+		local npcSpawnNumber = self.themePark.npcMap[i].npcNumber
+		if npcNumber == npcSpawnNumber then
+			npcSpawnData = self.themePark.npcMap[i].spawnData
+			if npcSpawnData.cellID ~= 0 then
+				npcWorldPosition = self.themePark.npcMap[i].worldPosition
+			end
+		end
+	end
+
+	local npcX = 0
+	local npcY = 0
+
+	if npcWorldPosition == nil then
+		npcX = npcSpawnData.x
+		npcY = npcSpawnData.y
+	else
+		npcX = npcWorldPosition.x
+		npcY = npcWorldPosition.y
+	end
+
 	local nextScreenID
 	if mission.missionType == "deliver" then
 		if correctNpc == true then
 			if self.themePark:hasRequiredItem(pConversingPlayer) == true then
 			 	self.themePark:removeDeliverItem(pConversingPlayer)
 				self.themePark:completeMission(pConversingPlayer)
-				self.themePark:removeWaypoint(pConversingPlayer)
+				
 				nextScreenID = "npc_smuggle_n"
 			else
 				nextScreenID = "notit_n"
@@ -150,7 +173,7 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 	elseif mission.missionType == "escort" then
 		if correctNpc == true then
 			self.themePark:followPlayer(pConversingNpc, pConversingPlayer)
-			self.themePark:removeWaypoint(pConversingPlayer)
+			self.themePark:updateWaypoint(pConversingPlayer, npcSpawnData.planetName, npcX, npcY, 1)
 			nextScreenID = "npc_takeme_n"
 		else
 			nextScreenID = "otherescort_n"
@@ -158,7 +181,7 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 	elseif mission.missionType == "retrieve" then
 		if correctNpc == true then
 			self.themePark:giveMissionItems(mission, pConversingPlayer)
-			self.themePark:removeWaypoint(pConversingPlayer)
+			self.themePark:updateWaypoint(pConversingPlayer, npcSpawnData.planetName, npcX, npcY, 1)
 			nextScreenID = "npc_smuggle_n"
 		else
 			nextScreenID = "dontknowyou_n"
