@@ -106,14 +106,14 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_s10_gen3 = o
 	mindAttackCost = 85,
 	forceCost = 36,
 
-	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
+	pointBlankAccuracy = 20,
 
-	idealRange = 0,
-	idealAccuracy = 0,
+	idealRange = 3,
+	idealAccuracy = 15,
 
-	maxRange = 0,
-	maxRangeAccuracy = 0,
+	maxRange = 5,
+	maxRangeAccuracy = 5,
 
 	minDamage = 130,
 	maxDamage = 220,

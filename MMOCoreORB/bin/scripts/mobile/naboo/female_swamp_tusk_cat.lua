@@ -26,7 +26,7 @@ female_swamp_tusk_cat = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/tusk_cat_hue.iff"},
+	templates = {"object/mobile/female_swamp_tusk_cat.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

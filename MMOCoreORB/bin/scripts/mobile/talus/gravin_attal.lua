@@ -1,5 +1,6 @@
 gravin_attal = Creature:new {
-	objectName = "@mob/creature_names:Gravin Attal",
+	objectName = "",
+	customName = "Gravin Attal",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

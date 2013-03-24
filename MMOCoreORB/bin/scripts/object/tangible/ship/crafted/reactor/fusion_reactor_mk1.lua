@@ -49,8 +49,8 @@ object_tangible_ship_crafted_reactor_fusion_reactor_mk1 = object_tangible_ship_c
 	experimentalWeights = {1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_hpmax", "null", "exp_mass", "exp_armorhpmax", "null", "null", "exp_energy_gen_rate"},
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "energy_gen_rate"},
-	experimentalMin = {0, 0, 128, 1, 850, 64, 1, 0, 8925},
-	experimentalMax = {0, 0, 173, 1, 1150, 86, 1, 0, 12075},
+	experimentalMin = {0, 0, 128, 1, 1150, 64, 1, 0, 8925},
+	experimentalMax = {0, 0, 173, 1, 850, 86, 1, 0, 12075},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1},
 }

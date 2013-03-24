@@ -49,8 +49,8 @@ object_tangible_ship_crafted_shields_shield_intensifier_mk2 = object_tangible_sh
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_shield_max_front_hp", "exp_shield_max_back_hp", "exp_energy_maintenance"},
 	experimentalSubGroupTitles = {"null", "null", "shield_max_front_hp", "shield_max_back_hp", "energy_maintenance"},
-	experimentalMin = {0, 0, 98, 98, 276},
-	experimentalMax = {0, 0, 132, 132, 374},
+	experimentalMin = {0, 0, 98, 98, 374},
+	experimentalMax = {0, 0, 132, 132, 276},
 	experimentalPrecision = {0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1},
 }

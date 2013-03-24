@@ -105,14 +105,14 @@ object_weapon_melee_2h_sword_2h_sword_blacksun_hack = object_weapon_melee_2h_swo
 	mindAttackCost = 42,
 	forceCost = 0,
 	
-	pointBlankAccuracy = 0,
-	pointBlankRange = -8,
+	pointBlankAccuracy = -3,
+	pointBlankRange = 0,
 	
-	idealRange = 11,
-	idealAccuracy = 6,
+	idealRange = 3,
+	idealAccuracy = -9,
 	
-	maxRange = -8,
-	maxRangeAccuracy = 5,
+	maxRange = 5,
+	maxRangeAccuracy = 0,
 
 	minDamage = 171,
         maxDamage = 300,

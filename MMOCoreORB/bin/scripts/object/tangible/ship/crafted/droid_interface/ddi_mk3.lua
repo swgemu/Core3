@@ -49,8 +49,8 @@ object_tangible_ship_crafted_droid_interface_ddi_mk3 = object_tangible_ship_craf
 	experimentalWeights = {1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_hp", "null", "exp_mass", "exp_armorhpmax", "null", "exp_energy_maintenance", "exp_droid_speed"},
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "efficiency", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "droid_command_speed"},
-	experimentalMin = {0, 0, 540, 1, 2125, 270, 1, 468, 19},
-	experimentalMax = {0, 0, 730, 1, 2875, 365, 1, 633, 26},
+	experimentalMin = {0, 0, 540, 1, 2875, 270, 1, 633, 19},
+	experimentalMax = {0, 0, 730, 1, 2125, 365, 1, 468, 26},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0, 2},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1},
 }

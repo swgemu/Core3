@@ -24,7 +24,7 @@ function readStringData(key)
 	return readStringSharedMemory(string.format(key))
 end
 
-Object = { 
+Object = {
 }
 
 -- for creation of new instances
@@ -39,7 +39,7 @@ ScreenPlay = Object:new {
 	screenplayName = "",
 	numerOfActs = 0,
 	startingEvent = nil,
-	
+
 	lootContainers = {},
 	lootLevel = 0,
 	lootGroups = {},
@@ -52,7 +52,7 @@ function ScreenPlay:initializeLootContainers()
 		if (pContainer ~= nil) then
 			createObserver(OPENCONTAINER, self.screenplayName, "spawnContainerLoot", pContainer)
 			self:spawnContainerLoot(pContainer)
-			
+
 			local container = LuaSceneObject(pContainer)
 			container:setContainerDefaultAllowPermission(MOVEOUT + OPEN)
 		end
@@ -62,25 +62,25 @@ end
 function ScreenPlay:spawnContainerLoot(pContainer)
 	local container = LuaSceneObject(pContainer)
 	local time = getTimestamp()
-	
+
 	if (readData(container:getObjectID()) > time) then
 		return
 	end
-	
+
 	--If it has loot already, then exit.
 	if (container:getContainerObjectsSize() > 0) then
 		return
 	end
 
 	createLootFromCollection(pContainer, self.lootGroups, self.lootLevel)
-	
+
 	writeData(container:getObjectID(), time + self.lootContainerRespawn)
 end
 
 
 
 Act = Object:new {
-		
+
 }
 
 -- Theme parks
@@ -134,6 +134,8 @@ includeFile("caves/dathomir_spider_clan_cave.lua")
 includeFile("caves/endor_orphaned_marauder_cave.lua")
 includeFile("caves/lok_droid_engineer_cave.lua")
 includeFile("caves/naboo_narglatch_cave.lua")
+includeFile("caves/naboo_pirate_bunker.lua")
+includeFile("caves/naboo_veermok_cave.lua")
 includeFile("caves/rori_borgle_bat_cave.lua")
 includeFile("caves/rori_giant_bark_mite_cave.lua")
 includeFile("caves/rori_kobola_bunker.lua")
@@ -152,6 +154,16 @@ includeFile("caves/tatooine_hutt_hideout.lua")
 includeFile("caves/tatooine_sennex_cave.lua")
 includeFile("caves/tatooine_squill_cave.lua")
 includeFile("caves/tatooine_tusken_bunker.lua")
+
+-- Cities
+includeFile("cities/dantooine_imperial_outpost.lua")
+includeFile("cities/lok_imperial_outpost.lua")
+includeFile("cities/lok_nym_stronghold.lua")
+includeFile("cities/rori_narmle.lua")
+includeFile("cities/rori_rebel_outpost")
+includeFile("cities/rori_restuss.lua")
+includeFile("cities/talus_dearic.lua")
+includeFile("cities/talus_nashal.lua")
 
 -- POIs
 includeFile("poi/corellia_rogue_corsec_base.lua")

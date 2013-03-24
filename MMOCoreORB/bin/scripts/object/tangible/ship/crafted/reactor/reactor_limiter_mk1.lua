@@ -49,8 +49,8 @@ object_tangible_ship_crafted_reactor_reactor_limiter_mk1 = object_tangible_ship_
 	experimentalWeights = {1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_energy_gen_rate", "exp_mass"},
 	experimentalSubGroupTitles = {"null", "null", "energy_gen_rate", "mass"},
-	experimentalMin = {0, 0, -650, -260},
-	experimentalMax = {0, 0, -350, -140},
+	experimentalMin = {0, 0, -650, -140},
+	experimentalMax = {0, 0, -350, -260},
 	experimentalPrecision = {0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1},
 }

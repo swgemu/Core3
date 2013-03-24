@@ -26,7 +26,7 @@ young_mountain_squill = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/squill.iff"},
+	templates = {"object/mobile/mountain_squill.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

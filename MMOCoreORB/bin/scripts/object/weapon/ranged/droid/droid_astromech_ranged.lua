@@ -47,7 +47,7 @@ object_weapon_ranged_droid_droid_astromech_ranged = object_weapon_ranged_droid_s
 	attackType = RANGEDATTACK,
 	
 	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
-	damageType = ENERGY,
+	damageType = ELECTRICITY,
 	
 	-- NONE, LIGHT, MEDIUM, HEAVY
 	armorPiercing = LIGHT,
@@ -57,6 +57,7 @@ object_weapon_ranged_droid_droid_astromech_ranged = object_weapon_ranged_droid_s
 	idealRange = 15,
 	idealAccuracy = 100,
 	maxRange = 50,
+	maxRangeAccuracy = -50,
 	attackSpeed = 2,
 	woundsRatio = 10,
 }

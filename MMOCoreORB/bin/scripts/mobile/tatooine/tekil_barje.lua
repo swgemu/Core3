@@ -31,6 +31,7 @@ tekil_barje = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "tekil_barje_mission_giver_convotemplate",
+	outfit = "tekil_barje_outfit",
 	attacks = {
 	}
 }

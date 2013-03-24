@@ -105,20 +105,17 @@ object_weapon_melee_polearm_lance_nightsister = object_weapon_melee_polearm_shar
 	mindAttackCost = 56,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
-	pointBlankRange = -1,
+	pointBlankRange = 0,
+	pointBlankAccuracy = 7,
 
-	idealRange = 27,
-	idealAccuracy = 6,
+	idealRange = 5,
+	idealAccuracy = 7,
 
-	maxRange = -1,
-	maxRangeAccuracy = 5,
-
+	maxRange = 6,
+	maxRangeAccuracy = 7,
 
 	minDamage = 11,
-	
 	maxDamage = 214,
-
 
 	attackSpeed = 3.0,
 

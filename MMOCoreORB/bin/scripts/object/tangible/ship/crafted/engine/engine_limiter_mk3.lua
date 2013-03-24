@@ -49,8 +49,8 @@ object_tangible_ship_crafted_engine_engine_limiter_mk3 = object_tangible_ship_cr
 	experimentalWeights = {1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_energy_maintenance", "exp_engine_speed"},
 	experimentalSubGroupTitles = {"null", "null", "energy_maintenance", "engine_speed"},
-	experimentalMin = {0, 0, -276, -12},
-	experimentalMax = {0, 0, -204, -9},
+	experimentalMin = {0, 0, -204, -12},
+	experimentalMax = {0, 0, -276, -9},
 	experimentalPrecision = {0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1},
 }

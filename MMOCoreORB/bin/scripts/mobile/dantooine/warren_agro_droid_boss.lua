@@ -28,9 +28,9 @@ warren_agro_droid_boss = Creature:new {
 
 	templates = {"object/mobile/warren_agro_droid_boss.iff"},
 	lootGroups = {},
-	weapons = {"vehicle_atst_ranged"},
 	conversationTemplate = "",
-	attacks = {}
+	defaultAttack = "creaturerangedattack",
+	defaultWeapon = "object/weapon/ranged/droid/droid_droideka_ranged.iff"
 }
 
 CreatureTemplates:addCreatureTemplate(warren_agro_droid_boss, "warren_agro_droid_boss")

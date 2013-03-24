@@ -49,8 +49,8 @@ object_tangible_ship_crafted_weapon_missile_countermeasure_chaff_launcher = obje
 	experimentalWeights = {1, 1, 1, 2, 1, 2, 1, 2, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_hp", "exp_mass", "exp_armor", "null", "exp_energy_maintenance", "null"},
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance", "energy_per_shot"},
-	experimentalMin = {0, 0, 128, 850, 64, 1, 850, 0},
-	experimentalMax = {0, 0, 173, 1150, 86, 1, 1150, 0},
+	experimentalMin = {0, 0, 128, 1150, 64, 1, 1150, 0},
+	experimentalMax = {0, 0, 173, 850, 86, 1, 850, 0},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1},
 }

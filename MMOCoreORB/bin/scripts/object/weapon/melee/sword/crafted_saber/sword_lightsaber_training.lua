@@ -105,15 +105,14 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_training = object_weapo
 	mindAttackCost = 40,
 	forceCost = 15,
 
-	pointBlankAccuracy = 3,
-	pointBlankRange = 5,
+	pointBlankRange = 0,
+	pointBlankAccuracy = 20,
 
-	idealRange = 10,
-	idealAccuracy = 3,
+	idealRange = 3,
+	idealAccuracy = 15,
 
-	maxRange = 15,
-	maxRangeAccuracy = 0,
-	
+	maxRange = 5,
+	maxRangeAccuracy = 5,
 
 	minDamage = 50,
 	maxDamage = 130,

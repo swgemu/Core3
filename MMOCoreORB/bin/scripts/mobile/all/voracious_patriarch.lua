@@ -1,5 +1,5 @@
 voracious_patriarch = Creature:new {
-	objectName = "@mob/creature_names:voracious_rasp",
+	objectName = "@mob/creature_names:torton_voracious_patriarch",
 	socialGroup = "torton",
 	pvpFaction = "",
 	faction = "",

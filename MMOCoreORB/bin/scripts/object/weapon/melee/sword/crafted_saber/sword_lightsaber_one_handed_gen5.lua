@@ -106,16 +106,16 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_gen5 = objec
 	mindAttackCost = 0,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
+	pointBlankAccuracy = 20,
 
-	idealRange = 0,
-	idealAccuracy = 0,
+	idealRange = 3,
+	idealAccuracy = 15,
 
-	maxRange = 0,
-	maxRangeAccuracy = 0,
+	maxRange = 5,
+	maxRangeAccuracy = 5,
 
-	attackSpeed = 0
+	attackSpeed = 4.5
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_gen5, "object/weapon/melee/sword/crafted_saber/sword_lightsaber_one_handed_gen5.iff")

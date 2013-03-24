@@ -111,7 +111,7 @@ object_weapon_melee_2h_sword_2h_sword_scythe = object_weapon_melee_2h_sword_shar
 	idealRange = 5,
 	idealAccuracy = 10,
 
-	maxRange = 5,
+	maxRange = 6,
 	maxRangeAccuracy = 10,
 
 	minDamage = 40,

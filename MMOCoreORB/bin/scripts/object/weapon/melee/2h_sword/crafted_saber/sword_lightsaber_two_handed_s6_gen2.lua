@@ -106,11 +106,11 @@ object_weapon_melee_2h_sword_crafted_saber_sword_lightsaber_two_handed_s6_gen2 =
 	mindAttackCost = 25,
 	forceCost = 24,
 
-	pointBlankAccuracy = 0,
-	pointBlankRange = 20,
+	pointBlankRange = 0,
+	pointBlankAccuracy = 20,
 
-	idealRange = 15,
-	idealAccuracy = 3,
+	idealRange = 3,
+	idealAccuracy = 15,
 
 	maxRange = 5,
 	maxRangeAccuracy = 5,

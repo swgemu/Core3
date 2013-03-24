@@ -103,14 +103,14 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_gen2 = object
 	mindAttackCost = 25,
 	forceCost = 24,
 
-	pointBlankAccuracy = 3,
-	pointBlankRange = 5,
+	pointBlankRange = 0,
+	pointBlankAccuracy = 20,
 
-	idealRange = 10,
-	idealAccuracy = 3,
+	idealRange = 3,
+	idealAccuracy = 15,
 
-	maxRange = 15,
-	maxRangeAccuracy = 0,
+	maxRange = 5,
+	maxRangeAccuracy = 5,
 	
 
 	minDamage = 125,

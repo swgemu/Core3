@@ -26,7 +26,7 @@ narglatch_matriarch = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/narglatch_hue.iff"},
+	templates = {"object/mobile/narglatch_female_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

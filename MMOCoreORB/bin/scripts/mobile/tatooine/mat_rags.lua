@@ -1,9 +1,9 @@
 mat_rags = Creature:new {
 	objectName = "@npc_name:human_base_male",
-	customName = "Mat Rags", 
-	socialGroup = "townsperson", 
+	customName = "Mat Rags",
+	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
-	faction = "townsperson", 
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -31,6 +31,7 @@ mat_rags = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "mat_rags_mission_giver_convotemplate",
+	outfit = "mat_rags_outfit",
 	attacks = {
 	}
 }

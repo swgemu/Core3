@@ -49,10 +49,10 @@ object_weapon_ranged_droid_droid_droideka_ranged = object_weapon_ranged_droid_sh
 	attackType = RANGEDATTACK,
 
 	-- ENERGY, KINETIC, ELECTRICITY, STUN, BLAST, HEAT, COLD, ACID, FORCE, LIGHTSABER
-	damageType = KINETIC,
+	damageType = ENERGY,
 
 	-- NONE, LIGHT, MEDIUM, HEAVY
-	armorPiercing = HEAVY,
+	armorPiercing = LIGHT,
 
 	pointBlankRange = 0,
 	pointBlankAccuracy = 10000,

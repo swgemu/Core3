@@ -108,11 +108,11 @@ object_weapon_ranged_pistol_pistol_de_10 = object_weapon_ranged_pistol_shared_pi
 	pointBlankAccuracy = 0,
 	pointBlankRange = 0,
 
-	idealRange = 15,
-	idealAccuracy = 15,
+	idealRange = 20,
+	idealAccuracy = 40,
 
-	maxRange = 45,
-	maxRangeAccuracy = 5,
+	maxRange = 64,
+	maxRangeAccuracy = -80,
 
 	minDamage = 18,
 	maxDamage = 88,

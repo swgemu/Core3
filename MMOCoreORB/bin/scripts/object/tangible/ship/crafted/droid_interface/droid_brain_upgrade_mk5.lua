@@ -49,8 +49,8 @@ object_tangible_ship_crafted_droid_interface_droid_brain_upgrade_mk5 = object_ta
 	experimentalWeights = {1, 1, 1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_droid_command_speed", "exp_energy_maintenance"},
 	experimentalSubGroupTitles = {"null", "null", "droid_command_speed", "energy_maintenance"},
-	experimentalMin = {0, 0, -2, 81},
-	experimentalMax = {0, 0, -1, 129},
+	experimentalMin = {0, 0, -2, 129},
+	experimentalMax = {0, 0, -1, 81},
 	experimentalPrecision = {0, 0, 2, 0},
 	experimentalCombineType = {0, 0, 1, 1},
 }

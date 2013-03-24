@@ -103,13 +103,13 @@ object_weapon_ranged_rifle_rifle_flame_thrower = object_weapon_ranged_rifle_shar
 	mindAttackCost = 20,
 	forceCost = 0,
 
-	pointBlankAccuracy = 0,
+	pointBlankAccuracy = 15,
 	pointBlankRange = 0,
 
-	idealRange = 35,
-	idealAccuracy = 0,
+	idealRange = 50,
+	idealAccuracy = -50,
 
-	maxRange = 65,
+	maxRange = 64,
 	maxRangeAccuracy = 0,
 
 	minDamage = 240,

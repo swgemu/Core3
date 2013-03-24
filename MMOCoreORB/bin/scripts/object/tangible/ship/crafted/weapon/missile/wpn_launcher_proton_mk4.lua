@@ -49,8 +49,8 @@ object_tangible_ship_crafted_weapon_missile_wpn_launcher_proton_mk4 = object_tan
 	experimentalWeights = {1, 1, 1, 2, 1, 2, 1, 2, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "exp_hp", "exp_mass", "exp_armor", "null", "exp_energy_maintenance"},
 	experimentalSubGroupTitles = {"null", "null", "hitpointsmax", "mass", "armorhpmax", "energy_efficiency", "energy_maintenance"},
-	experimentalMin = {0, 0, 935, 13260, 468, 1, 1020},
-	experimentalMax = {0, 0, 1265, 17940, 633, 1, 1380},
+	experimentalMin = {0, 0, 935, 17940, 468, 1, 1380},
+	experimentalMax = {0, 0, 1265, 13260, 633, 1, 1020},
 	experimentalPrecision = {0, 0, 0, 0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1},
 }
