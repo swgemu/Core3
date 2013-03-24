@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/objects/terrain/layer/boundaries/BoundaryRectangle.h"
 
 class DumpZoneInformationCommand : public QueueCommand {
 public:
@@ -83,11 +84,14 @@ public:
 
 		int cellid = 0;
 		uint32 buildingTemplate = 0;
+		SharedStructureObjectTemplate* buildingTemplateObject = NULL;
+		ManagedReference<SceneObject*> building;
 
 		if (cell != NULL && cell->isCellObject()) {
 			cellid = (cast<CellObject*>(cell.get()))->getCellNumber();
-			ManagedReference<SceneObject*> building = cell->getParent();
+			building = cell->getParent();
 			buildingTemplate = building->getServerObjectCRC();
+			buildingTemplateObject = dynamic_cast<SharedStructureObjectTemplate*>(building->getObjectTemplate());
 		}
 
 		StringBuffer msg;
@@ -101,6 +105,24 @@ public:
 
 		if (buildingTemplate != 0)
 			msg << endl << TemplateManager::instance()->getTemplateFile(buildingTemplate);
+
+		if (buildingTemplateObject != NULL) {
+			StructureFootprint* structureFootprint = buildingTemplateObject->getStructureFootprint();
+			int angle = building->getDirectionAngle() / 90;
+			float l = 5; //Along the x axis.
+			float w = 5; //Along the y axis.
+
+			if (structureFootprint != NULL) {
+				//If the angle is odd, then swap them.
+				l = (angle & 1) ? structureFootprint->getWidth() :
+						structureFootprint->getLength();
+				w = (angle & 1) ? structureFootprint->getLength() :
+						structureFootprint->getWidth();
+
+				msg << endl << "Building:" << endl;
+				msg << "Angle: " << angle << " l: " << l << " w: " << w << " ";
+			}
+		}
 
 		if (cityPlayerCount != 0)
 			msg << endl << "current players in the city:" << cityPlayerCount;

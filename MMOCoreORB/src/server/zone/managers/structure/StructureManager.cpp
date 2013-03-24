@@ -34,6 +34,7 @@
 #include "server/zone/objects/player/sui/callbacks/NameStructureSuiCallback.h"
 #include "server/zone/objects/player/sui/callbacks/StructurePayMaintenanceSuiCallback.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/objects/terrain/layer/boundaries/BoundaryRectangle.h"
 
 #include "server/zone/managers/gcw/GCWManager.h"
 
@@ -115,6 +116,32 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 
 }
 
+int StructureManager::getStructureFootprint(SharedObjectTemplate* objectTemplate, int angle, float& l, float& w) {
+	SharedStructureObjectTemplate* serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(objectTemplate);
+
+	if (serverTemplate == NULL)
+		return 1;
+
+	StructureFootprint* structureFootprint = serverTemplate->getStructureFootprint();
+	l = 5; //Along the x axis.
+	w = 5; //Along the y axis.
+
+	if (structureFootprint != NULL) {
+		//If the angle is odd, then swap them.
+		int res = angle / 90;
+		l = (res & 1) ? structureFootprint->getWidth() :
+				structureFootprint->getLength();
+		w = (res & 1) ? structureFootprint->getLength() :
+				structureFootprint->getWidth();
+
+		//Half the dimensions since we are starting from the center point and going outward.
+		l /= 2;
+		w /= 2;
+	}
+
+	return 0;
+}
+
 int StructureManager::placeStructureFromDeed(CreatureObject* creature,
 		StructureDeed* deed, float x, float y, int angle) {
 	ManagedReference<Zone*> zone = creature->getZone();
@@ -164,6 +191,56 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature,
 
 		if (city != NULL)
 			break;
+	}
+
+
+	SortedVector<ManagedReference<QuadTreeEntry*> > inRangeObjects;
+	zone->getInRangeObjects(x, y, 128, &inRangeObjects, true);
+
+	float placingFootprintLength, placingFootprintWidth;
+
+	if (!getStructureFootprint(serverTemplate, angle, placingFootprintLength, placingFootprintWidth)) {
+		float x0 = x - placingFootprintWidth;
+		float y0 = y - placingFootprintLength;
+		float x1 = x + placingFootprintWidth;
+		float y1 = y + placingFootprintLength;
+
+		BoundaryRectangle placingFootprint(x0, y0, x1, y1);
+
+		for (int i = 0; i < inRangeObjects.size(); ++i) {
+			SceneObject* scene = inRangeObjects.get(i).castTo<SceneObject*>();
+
+			if (scene == NULL)
+				continue;
+
+			float l = 5; //Along the x axis.
+			float w = 5; //Along the y axis.
+
+			if (getStructureFootprint(scene->getObjectTemplate(), scene->getDirectionAngle(), l, w))
+				continue;
+
+			float xx0 = scene->getPositionX() - w;
+			float yy0 = scene->getPositionY() - l;
+			float xx1 = scene->getPositionX() + w;
+			float yy1 = scene->getPositionY() + l;
+
+			BoundaryRectangle rect(xx0, yy0, xx1, yy1);
+
+			// check 4 points of the current rect
+			if (rect.containsPoint(x0, y0)
+					|| rect.containsPoint(x0, y1)
+					|| rect.containsPoint(x1, y0)
+					|| rect.containsPoint(x1, y1)
+					|| placingFootprint.containsPoint(xx0, yy0)
+					|| placingFootprint.containsPoint(xx0, yy1)
+					|| placingFootprint.containsPoint(xx1, yy0)
+					|| placingFootprint.containsPoint(xx1, yy1)
+					|| (xx0 == x0 && yy0 == y0 && xx1 == x1 && yy1 == y1)) {
+				creature->sendSystemMessage("@player_structure:not_permitted"); //Building is not permitted here.
+
+				return 1;
+			}
+		}
 	}
 
 	int rankRequired = serverTemplate->getCityRankRequired();
@@ -291,9 +368,9 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 
 	if (structureFootprint != NULL) {
 		//If the angle is odd, then swap them.
-		l = (angle & 1) ? structureFootprint->getWidth() :
+		l = ((angle / 90) & 1) ? structureFootprint->getWidth() :
 				structureFootprint->getLength();
-		w = (angle & 1) ? structureFootprint->getLength() :
+		w = ((angle / 90) & 1) ? structureFootprint->getLength() :
 				structureFootprint->getWidth();
 	} else {
 		if (!serverTemplate->isCampStructureTemplate())
