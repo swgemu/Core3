@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABX///rA\u003d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-03-25T23:48:45Z",
+      "side": 1,
+      "message": "Please extract a method of this piece of code as well. This function has become to long and it would be easier if you just called a method to get the waypoint name.",
+      "revId": "48f99d84eb04d9e8a412865fce7ea9b5036ae81f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
