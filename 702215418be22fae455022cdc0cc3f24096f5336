@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABX///rM\u003d",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/bone_armor_bicep_left.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-03-25T23:44:53Z",
+      "side": 1,
+      "message": "Can you add color customization as well? Check how it is done in the tantel and ubese armor that are reward in the Rebel Theme park.",
+      "revId": "702215418be22fae455022cdc0cc3f24096f5336",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
