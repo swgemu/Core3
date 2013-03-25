@@ -70,6 +70,15 @@ public:
 			
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
+		TangibleObject* targetObject = cast<TangibleObject*> (server->getZoneServer()->getObject(target));
+
+		if (targetObject == NULL || !targetObject->isCreatureObject())
+			return INVALIDTARGET;
+
+		if (!targetObject->isAttackableBy(creature)) {
+			return GENERALERROR;
+			}
+
 		// Check to see if "innate_roar" Cooldown isPast();
 		if (!player->checkCooldownRecovery("innate_roar")) {
 
@@ -88,10 +97,6 @@ public:
 		player->sendSystemMessage("@innate:roar_active"); // You let out a mighty roar.			
 		player->addCooldown("innate_roar", 300 * 1000); // 5min reuse time.					
 		
-		TangibleObject* targetObject = cast<TangibleObject*> (server->getZoneServer()->getObject(target));
-
-		if (targetObject == NULL || !targetObject->isCreatureObject())
-			return INVALIDTARGET;				
 
 		int res = doCombatAction(creature, target);
 
