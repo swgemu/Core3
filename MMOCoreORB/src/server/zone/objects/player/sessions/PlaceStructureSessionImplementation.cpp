@@ -47,7 +47,14 @@ int PlaceStructureSessionImplementation::constructStructure(float x, float y, in
 
 		if (constructionBarricade != NULL) {
 			constructionBarricade->initializePosition(x, 0, y); //The construction barricades are always at the terrain height.
-			constructionBarricade->rotate(angle + 180); //All construction barricades need to be rotated 180 degrees for some reason.
+
+			StructureFootprint* structureFootprint = serverTemplate->getStructureFootprint();
+
+			if (structureFootprint != NULL && (structureFootprint->getRowSize() > structureFootprint->getColSize())) {
+				angle = angle + 180;
+			}
+
+			constructionBarricade->rotate(angle); //All construction barricades need to be rotated 180 degrees for some reason.
 			//constructionBarricade->insertToZone(zone);
 			zone->transferObject(constructionBarricade, -1, true);
 
@@ -64,7 +71,7 @@ int PlaceStructureSessionImplementation::constructStructure(float x, float y, in
 void PlaceStructureSessionImplementation::placeTemporaryNoBuildZone(SharedStructureObjectTemplate* serverTemplate) {
 	Reference<StructureFootprint*> structureFootprint =	serverTemplate->getStructureFootprint();
 
-	float temporaryNoBuildZoneWidth = structureFootprint->getLength() + structureFootprint->getWidth();
+	//float temporaryNoBuildZoneWidth = structureFootprint->getLength() + structureFootprint->getWidth();
 
 	ManagedReference<CircularAreaShape*> areaShape = new CircularAreaShape();
 	// Guild halls are approximately 55 m long, 64 m radius will surely cover that in all directions.

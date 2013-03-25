@@ -116,27 +116,71 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 
 }
 
-int StructureManager::getStructureFootprint(SharedObjectTemplate* objectTemplate, int angle, float& l, float& w) {
+int StructureManager::getStructureFootprint(SharedObjectTemplate* objectTemplate, int angle, float& l0, float& w0, float& l1, float& w1) {
 	SharedStructureObjectTemplate* serverTemplate = dynamic_cast<SharedStructureObjectTemplate*>(objectTemplate);
 
 	if (serverTemplate == NULL)
 		return 1;
 
 	StructureFootprint* structureFootprint = serverTemplate->getStructureFootprint();
-	l = 5; //Along the x axis.
-	w = 5; //Along the y axis.
+	//float l = 5; //Along the x axis.
+	//float w = 5; //Along the y axis.
 
 	if (structureFootprint != NULL) {
-		//If the angle is odd, then swap them.
-		int res = angle / 90;
-		l = (res & 1) ? structureFootprint->getWidth() :
-				structureFootprint->getLength();
-		w = (res & 1) ? structureFootprint->getLength() :
-				structureFootprint->getWidth();
+		if (structureFootprint->getRowSize() > structureFootprint->getColSize())
+			angle = angle + 180;
 
-		//Half the dimensions since we are starting from the center point and going outward.
-		l /= 2;
-		w /= 2;
+		float centerX = (structureFootprint->getCenterX() * structureFootprint->getColChunkSize()) + (structureFootprint->getColChunkSize() / 2);
+		float centerY = (structureFootprint->getCenterY() * structureFootprint->getRowChunkSize()) + (structureFootprint->getRowChunkSize() / 2);
+
+		//info ("centerX:" + String::valueOf(centerX) + " centerY:" + String::valueOf(centerY), true);
+
+		float topLeftX = -centerX;
+		float topLeftY = centerY;
+
+		float bottomRightX = (structureFootprint->getColChunkSize() * structureFootprint->getColSize() - centerX);
+		float bottomRightY = - (structureFootprint->getRowChunkSize() * structureFootprint->getRowSize() - centerY);
+
+		w0 = MIN(topLeftX, bottomRightX);
+		l0 = MIN(topLeftY, bottomRightY);
+
+		w1 = MAX(topLeftX, bottomRightX);
+		l1 = MAX(topLeftY, bottomRightY);
+
+		Matrix4 translationMatrix;
+		translationMatrix.setTranslation(0, 0, 0);
+
+		float rad = (float)(angle) * Math::DEG2RAD;
+
+		float cosRad = cos(rad);
+		float sinRad = sin(rad);
+
+		Matrix3 rot;
+		rot[0][0] = cosRad;
+		rot[0][2] = -sinRad;
+		rot[1][1] = 1;
+		rot[2][0] = sinRad;
+		rot[2][2] = cosRad;
+
+		Matrix4 rotateMatrix;
+		rotateMatrix.setRotationMatrix(rot);
+
+		Matrix4 moveAndRotate = (translationMatrix * rotateMatrix);
+
+		Vector3 pointBottom(w0, 0, l0);
+		Vector3 pointTop(w1, 0, l1);
+
+		Vector3 resultBottom = pointBottom * moveAndRotate;
+		Vector3 resultTop = pointTop * moveAndRotate;
+
+		w0 = MIN(resultBottom.getX(), resultTop.getX());
+		l0 = MIN(resultBottom.getZ(), resultTop.getZ());
+
+		w1 = MAX(resultTop.getX(), resultBottom.getX());
+		l1 = MAX(resultTop.getZ(), resultBottom.getZ());
+
+		//info("objectTemplate:" + objectTemplate->getFullTemplateString() + " :" + structureFootprint->toString(), true);
+		//info("angle:" + String::valueOf(angle) + " w0:" + String::valueOf(w0) + " l0:" + String::valueOf(l0) + " w1:" + String::valueOf(w1) + " l1:" + String::valueOf(l1), true);
 	}
 
 	return 0;
@@ -197,15 +241,18 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature,
 	SortedVector<ManagedReference<QuadTreeEntry*> > inRangeObjects;
 	zone->getInRangeObjects(x, y, 128, &inRangeObjects, true);
 
-	float placingFootprintLength, placingFootprintWidth;
+	float placingFootprintLength0, placingFootprintWidth0, placingFootprintLength1, placingFootprintWidth1;
 
-	if (!getStructureFootprint(serverTemplate, angle, placingFootprintLength, placingFootprintWidth)) {
-		float x0 = x - placingFootprintWidth;
-		float y0 = y - placingFootprintLength;
-		float x1 = x + placingFootprintWidth;
-		float y1 = y + placingFootprintLength;
+	if (!getStructureFootprint(serverTemplate, angle, placingFootprintLength0, placingFootprintWidth0, placingFootprintLength1, placingFootprintWidth1)) {
+		float x0 = x + placingFootprintWidth0;
+		float y0 = y + placingFootprintLength0;
+		float x1 = x + placingFootprintWidth1;
+		float y1 = y + placingFootprintLength1;
 
 		BoundaryRectangle placingFootprint(x0, y0, x1, y1);
+
+		//info("placing center x:" + String::valueOf(x) + " y:" + String::valueOf(y), true);
+		//info("placingFootprint x0:" + String::valueOf(x0) + " y0:" + String::valueOf(y0) + " x1:" + String::valueOf(x1) + " y1:" + String::valueOf(y1), true);
 
 		for (int i = 0; i < inRangeObjects.size(); ++i) {
 			SceneObject* scene = inRangeObjects.get(i).castTo<SceneObject*>();
@@ -213,29 +260,43 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature,
 			if (scene == NULL)
 				continue;
 
-			float l = 5; //Along the x axis.
-			float w = 5; //Along the y axis.
+			float l0 = -5; //Along the x axis.
+			float w0 = -5; //Along the y axis.
+			float l1 = 5;
+			float w1 = 5;
 
-			if (getStructureFootprint(scene->getObjectTemplate(), scene->getDirectionAngle(), l, w))
+			if (getStructureFootprint(scene->getObjectTemplate(), scene->getDirectionAngle(), l0, w0, l1, w1))
 				continue;
 
-			float xx0 = scene->getPositionX() - w;
-			float yy0 = scene->getPositionY() - l;
-			float xx1 = scene->getPositionX() + w;
-			float yy1 = scene->getPositionY() + l;
+			float xx0 = scene->getPositionX() + (w0 + 0.1);
+			float yy0 = scene->getPositionY() + (l0 + 0.1);
+			float xx1 = scene->getPositionX() + (w1 - 0.1);
+			float yy1 = scene->getPositionY() + (l1 - 0.1);
 
 			BoundaryRectangle rect(xx0, yy0, xx1, yy1);
+
+			//info("existing footprint xx0:" + String::valueOf(xx0) + " yy0:" + String::valueOf(yy0) + " xx1:" + String::valueOf(xx1) + " yy1:" + String::valueOf(yy1), true);
 
 			// check 4 points of the current rect
 			if (rect.containsPoint(x0, y0)
 					|| rect.containsPoint(x0, y1)
 					|| rect.containsPoint(x1, y0)
-					|| rect.containsPoint(x1, y1)
-					|| placingFootprint.containsPoint(xx0, yy0)
+					|| rect.containsPoint(x1, y1) ) {
+
+				//info("existing footprint contains placing point", true);
+
+				creature->sendSystemMessage("@player_structure:not_permitted"); //Building is not permitted here.
+
+				return 1;
+			}
+
+			if (placingFootprint.containsPoint(xx0, yy0)
 					|| placingFootprint.containsPoint(xx0, yy1)
 					|| placingFootprint.containsPoint(xx1, yy0)
 					|| placingFootprint.containsPoint(xx1, yy1)
 					|| (xx0 == x0 && yy0 == y0 && xx1 == x1 && yy1 == y1)) {
+				//info("placing footprint contains existing point", true);
+
 				creature->sendSystemMessage("@player_structure:not_permitted"); //Building is not permitted here.
 
 				return 1;
@@ -362,16 +423,16 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 	Reference<StructureFootprint*> structureFootprint =
 			serverTemplate->getStructureFootprint();
 
-	float l = 5; //Along the x axis.
-	float w = 5; //Along the y axis.
+	float w0 = -5; //Along the x axis.
+	float l0 = -5; //Along the y axis.
+
+	float l1 = 5;
+	float w1 = 5;
 	float zIncreaseWhenNoAvailableFootprint = 0.f; //TODO: remove this when it has been verified that all buildings have astructure footprint.
 
 	if (structureFootprint != NULL) {
 		//If the angle is odd, then swap them.
-		l = ((angle / 90) & 1) ? structureFootprint->getWidth() :
-				structureFootprint->getLength();
-		w = ((angle / 90) & 1) ? structureFootprint->getLength() :
-				structureFootprint->getWidth();
+		getStructureFootprint(serverTemplate, angle, l0, w0, l1, w1);
 	} else {
 		if (!serverTemplate->isCampStructureTemplate())
 			warning(
@@ -380,12 +441,8 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 		zIncreaseWhenNoAvailableFootprint = 5.f;
 	}
 
-	//Half the dimensions since we are starting from the center point and going outward.
-	l /= 2;
-	w /= 2;
-
 	if (floraRadius > 0 && !snapToTerrain)
-		z = terrainManager->getHighestHeight(x - w, y - l, x + w, y + l, 1)
+		z = terrainManager->getHighestHeight(x + w0, y + l0, x + w1, y + l1, 1)
 				+ zIncreaseWhenNoAvailableFootprint;
 
 	String strDatabase = "playerstructures";

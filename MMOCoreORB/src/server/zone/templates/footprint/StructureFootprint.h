@@ -72,12 +72,12 @@ public:
 			case '0000':
 			{
 				Chunk* info = iffStream->openChunk('INFO');
-				rowSize = info->readInt();
 				colSize = info->readInt();
+				rowSize = info->readInt();
 				centerX = info->readInt();
 				centerY = info->readInt();
-				rowChunkSize = info->readFloat();
 				colChunkSize = info->readFloat();
+				rowChunkSize = info->readFloat();
 				iffStream->closeChunk('INFO');
 
 				//TODO: Parse chunk PRNT
@@ -91,27 +91,33 @@ public:
 
 	String toString() const {
 		StringBuffer str;
-		str << "{rowSize=" << rowSize << ";colSize=" << colSize << ";rowChunkSize=" << rowChunkSize << ";colChunkSize=" << colChunkSize << "}";
+		str << "{rowSize=" << rowSize << ";colSize=" << colSize << ";centerX=" << centerX << ";centerY=" << centerY << ";rowChunkSize=" << rowChunkSize << ";colChunkSize=" << colChunkSize << "}";
 
 		return str.toString();
 	}
 
-	/**
-	 * Gets the length of the StructureFootprint rectangle.
-	 * Length is along the x axis in geometry.
-	 * @return Returns the length as a float.
-	 */
-	inline float getLength() {
-		return rowSize * rowChunkSize;
+	inline float getRowSize() {
+		return rowSize;
 	}
 
-	/**
-	 * Gets the width of the StructureFootprint rectangle.
-	 * Width is along the y axis in geometry.
-	 * @return Returns the width as a float.
-	 */
-	inline float getWidth() {
-		return colSize * colChunkSize;
+	inline float getColSize() {
+		return colSize;
+	}
+
+	inline float getCenterX() {
+		return centerX;
+	}
+
+	inline float getCenterY() {
+		return centerY;
+	}
+
+	inline float getRowChunkSize() {
+		return rowChunkSize;
+	}
+
+	inline float getColChunkSize() {
+		return colChunkSize;
 	}
 };
 
