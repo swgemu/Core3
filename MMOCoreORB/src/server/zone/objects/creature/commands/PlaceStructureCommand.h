@@ -85,6 +85,37 @@ public:
 			x = tokenizer.getFloatToken();
 			y = tokenizer.getFloatToken();
 			angle = tokenizer.getIntToken() * 90;
+
+			// Validate player position -vs- attemped placement
+			Zone* zone = creature->getZone();
+
+			if (zone == NULL)
+				return GENERALERROR;
+
+			Vector3 position(x, y, zone->getHeight(x, y));
+			Vector3 playerPosition = creature->getPosition();
+			float distance = position.distanceTo(playerPosition);
+
+			// Client will only scoll about 100m from the placement start position
+			if (distance > 100.0f) {
+				CreatureObject* player = cast<CreatureObject*>(creature);
+
+				player->sendSystemMessage("@system_msg:out_of_range");
+
+				player->error(player->getFirstName()
+					+ " attemped invalid placeStructure on "
+					+ zone->getZoneName()
+					+ " @ x: " + String::valueOf(x)
+					+ ", y: " + String::valueOf(y)
+					+ ", z: " + String::valueOf(zone->getHeight(x, y))
+					+ " while player @ x: " + String::valueOf(playerPosition.getX())
+					+ ", y: " + String::valueOf(playerPosition.getY())
+					+ ", z: " + String::valueOf(playerPosition.getZ())
+					+ " range: " + String::valueOf(position.distanceTo(playerPosition)) + "m"
+				);
+
+				return GENERALERROR;
+			}
 		} catch (Exception& e) {
 			info(e.getMessage());
 			return INVALIDPARAMETERS;
