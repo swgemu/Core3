@@ -315,7 +315,7 @@ int NameManager::validateName(const String& name, int species) {
 	//If the name has a hyphen or apostrophe, make sure they are the proper species.
 	if (name.indexOf("'") != -1 || name.indexOf("-") != -1) {
 		//Must be a human, twilek, or moncal to have a hyphen or apostrophe.
-		if (species != CreatureObjectImplementation::HUMAN && species != CreatureObjectImplementation::TWILEK && species != CreatureObjectImplementation::MONCAL)
+		if (species != CreatureObjectImplementation::HUMAN && species != CreatureObjectImplementation::TWILEK && species != CreatureObjectImplementation::MONCAL && species != CreatureObjectImplementation::ZABRAK)
 			return NameManagerResult::DECLINED_RACE_INAPP;
 
 		//Moncal's aren't allowed to have apostrophes.
