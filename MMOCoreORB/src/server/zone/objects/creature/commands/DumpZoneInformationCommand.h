@@ -106,24 +106,6 @@ public:
 		if (buildingTemplate != 0)
 			msg << endl << TemplateManager::instance()->getTemplateFile(buildingTemplate);
 
-		if (buildingTemplateObject != NULL) {
-			StructureFootprint* structureFootprint = buildingTemplateObject->getStructureFootprint();
-			int angle = building->getDirectionAngle() / 90;
-			float l = 5; //Along the x axis.
-			float w = 5; //Along the y axis.
-
-			if (structureFootprint != NULL) {
-				//If the angle is odd, then swap them.
-				l = (angle & 1) ? structureFootprint->getWidth() :
-						structureFootprint->getLength();
-				w = (angle & 1) ? structureFootprint->getLength() :
-						structureFootprint->getWidth();
-
-				msg << endl << "Building:" << endl;
-				msg << "Angle: " << angle << " l: " << l << " w: " << w << " ";
-			}
-		}
-
 		if (cityPlayerCount != 0)
 			msg << endl << "current players in the city:" << cityPlayerCount;
 			
