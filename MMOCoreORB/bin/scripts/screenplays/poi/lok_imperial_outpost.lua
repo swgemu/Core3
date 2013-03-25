@@ -31,7 +31,8 @@ registerScreenPlay("LokImperialOutpostScreenPlay", true)
 
 function LokImperialOutpostScreenPlay:start()
 	if (isZoneEnabled("lok")) then
-		self:spawnMobiles()		
+		self:spawnMobiles()
+		self:initializeLootContainers()		
 	end
 end
 

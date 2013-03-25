@@ -1,6 +1,6 @@
 pirate_privateer = Creature:new {
 	objectName = "",
-	customName = "a Pirate Privateer",
+	customName = "a Privateer Pirate",
 	socialGroup = "Pirate",
 	pvpFaction = "",
 	faction = "",
@@ -27,8 +27,22 @@ pirate_privateer = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
-	lootGroups = {},
+	templates = {
+		"object/mobile/dressed_criminal_assassin_human_female_01.iff",
+		"object/mobile/dressed_criminal_smuggler_human_male_01.iff"
+	},
+	lootGroups = {
+		{
+	        groups = {
+			{group = "junk", chance = 6000000},
+			{group = "rifles", chance = 1000000},
+			{group = "pistols", chance = 1000000},
+			{group = "melee_weapons", chance = 1000000},
+			{group = "carbines", chance = 1000000},
+		},
+			lootChance = 2600000
+		}
+	},
 	weapons = {"ranged_weapons"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
