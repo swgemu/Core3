@@ -47,7 +47,7 @@ object_tangible_loot_loot_schematic_death_watch_executioners_hack_schematic = ob
 	attributeListComponent = "LootSchematicAttributeListComponent",
 	requiredSkill = "crafting_weaponsmith_master",
 	targetDraftSchematic = "object/draft_schematic/weapon/executioners_hack.iff",
-	targetUseCount = 8
+	targetUseCount = 1
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_death_watch_executioners_hack_schematic, "object/tangible/loot/loot_schematic/death_watch_executioners_hack_schematic.iff")

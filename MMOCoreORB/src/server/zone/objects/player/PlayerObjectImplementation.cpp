@@ -740,17 +740,26 @@ bool PlayerObjectImplementation::addSchematics(Vector<ManagedReference<DraftSche
 	return true;
 }
 
-bool PlayerObjectImplementation::addRewardedSchematic(DraftSchematic* schematic, int quantity, bool notifyClient) {
+bool PlayerObjectImplementation::addRewardedSchematic(DraftSchematic* schematic, short type, int quantity, bool notifyClient) {
 	Vector<ManagedReference<DraftSchematic*> > schematics;
 
 	schematics.add(schematic);
-	if(!schematicList.addRewardedSchematic(schematic, quantity))
+
+	CreatureObject* parent = cast<CreatureObject*>(_this.get()->getParent().get().get());
+
+	if (parent == NULL)
+		return false;
+
+	if (type == SchematicList::LOOT && schematicList.contains(schematic)) {
+		parent->sendSystemMessage("@loot_schematic:already_have_schematic"); // You already have this schematic.
+		return false;
+	}
+
+	if(!schematicList.addRewardedSchematic(schematic, type, quantity))
 		return true;
 
 	if(addSchematics(schematics, notifyClient)) {
-		CreatureObject* parent = cast<CreatureObject*>(_this.get()->getParent().get().get());
-
-		if(notifyClient && parent != NULL) {
+		if(notifyClient) {
 			schematic->sendDraftSlotsTo(parent);
 			schematic->sendResourceWeightsTo(parent);
 		}
