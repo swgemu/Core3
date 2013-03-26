@@ -64,7 +64,6 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-
 			ManagedReference<AiAgent*> ai = dynamic_cast<AiAgent*>(server->getZoneServer()->getObject(target));
 
 			if (ai == NULL)
@@ -84,6 +83,11 @@ public:
 
 				if (creatureInventory == NULL)
 					return GENERALERROR;
+
+					if (creatureInventory->getContainerPermissions()->getOwnerID() != creature->getObjectID() && creatureInventory->getContainerPermissions()->getOwnerID() != creature->getGroupID()) {
+						creature->sendSystemMessage("@error_message:no_corpse_permission"); //You do not have permission to access this corpse.
+						return GENERALERROR;
+						}
 
 				creatureInventory->openContainerTo(creature);
 			}
