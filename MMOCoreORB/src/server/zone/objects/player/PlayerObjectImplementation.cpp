@@ -744,13 +744,21 @@ bool PlayerObjectImplementation::addRewardedSchematic(DraftSchematic* schematic,
 	Vector<ManagedReference<DraftSchematic*> > schematics;
 
 	schematics.add(schematic);
-	if(!schematicList.addRewardedSchematic(schematic, quantity))
-		return true;
+
+	CreatureObject* parent = cast<CreatureObject*>(_this.get()->getParent().get().get());
+
+	if (parent == NULL)
+		return false;
+
+	if (schematicList.contains(schematic)) {
+		parent->sendSystemMessage("@loot_schematic:already_have_schematic"); // You already have this schematic.
+		return false;
+	}
+
+	schematicList.addRewardedSchematic(schematic, quantity);
 
 	if(addSchematics(schematics, notifyClient)) {
-		CreatureObject* parent = cast<CreatureObject*>(_this.get()->getParent().get().get());
-
-		if(notifyClient && parent != NULL) {
+		if(notifyClient) {
 			schematic->sendDraftSlotsTo(parent);
 			schematic->sendResourceWeightsTo(parent);
 		}

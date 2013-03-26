@@ -31,7 +31,7 @@ public:
 
 	bool add(DraftSchematic* schematic, DeltaMessage* message = NULL, int updates = 1);
 
-	bool addRewardedSchematic(DraftSchematic* schematic, int quantity);
+	void addRewardedSchematic(DraftSchematic* schematic, int quantity);
 
 	void addRewardedSchematics(SceneObject* player);
 	void removeRewardedSchematic(DraftSchematic* schematic);
