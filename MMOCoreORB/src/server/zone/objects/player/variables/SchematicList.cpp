@@ -45,17 +45,17 @@ void SchematicList::addRewardedSchematics(SceneObject* player) {
 
 }
 
-bool SchematicList::addRewardedSchematic(DraftSchematic* schematic, int quantity) {
-
-	for(int i = 0; i < rewardedSchematics.size(); ++i) {
-		if(rewardedSchematics.elementAt(i).getKey() == schematic) {
+bool SchematicList::addRewardedSchematic(DraftSchematic* schematic, short type, int quantity) {
+	if (type == MISSION) {
+		for(int i = 0; i < rewardedSchematics.size(); ++i) {
+			if(rewardedSchematics.elementAt(i).getKey() == schematic) {
 			int newQuantity = rewardedSchematics.get(i) + quantity;
 			rewardedSchematics.drop(schematic);
 			rewardedSchematics.put(schematic, newQuantity);
 			return false;
+			}
 		}
 	}
-
 	rewardedSchematics.put(schematic, quantity);
 	return true;
 }

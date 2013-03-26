@@ -362,7 +362,7 @@ public:
 
 	void removeSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient = true);
 
-	bool addRewardedSchematic(DraftSchematic* schematic, int quantity = 1, bool notifyClient = true);
+	bool addRewardedSchematic(DraftSchematic* schematic, short type, int quantity = 1, bool notifyClient = true);
 
 	void removeRewardedSchematic(DraftSchematic* schematic, bool notifyClient = true);
 
@@ -1020,7 +1020,7 @@ public:
 
 	void removeSchematics(Vector<ManagedReference<DraftSchematic* > >& schematics, bool notifyClient = true);
 
-	bool addRewardedSchematic(DraftSchematic* schematic, int quantity = 1, bool notifyClient = true);
+	bool addRewardedSchematic(DraftSchematic* schematic, short type, int quantity = 1, bool notifyClient = true);
 
 	void removeRewardedSchematic(DraftSchematic* schematic, bool notifyClient = true);
 

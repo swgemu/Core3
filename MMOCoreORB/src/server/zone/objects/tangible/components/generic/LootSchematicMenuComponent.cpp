@@ -48,10 +48,12 @@ int LootSchematicMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 	if (!player->isPlayerCreature())
 		return 0;
 
-	if (!sceneObject->isASubChildOf(player))
-		return 0;
-
 	if(selectedID == 50) {
+		if (!sceneObject->isASubChildOf(player)) {
+			player->sendSystemMessage("@loot_schematic:must_be_holding"); // You must be holding that in order to use it.
+			return 0;
+		}
+
 		PlayerObject* ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
 
 		LootSchematicTemplate* schematicData = cast<LootSchematicTemplate*>(sceneObject->getObjectTemplate());
@@ -64,6 +66,10 @@ int LootSchematicMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		String skillNeeded = schematicData->getRequiredSkill();
 
 		if((!skillNeeded.isEmpty() && !player->hasSkill(skillNeeded))) {
+			StringIdChatParameter* noSkill = NULL;
+			noSkill = new StringIdChatParameter("@loot_schematic:not_enough_skill"); // You must have %TO skill in order to understand this.
+			noSkill->setTO(skillNeeded);
+			player->sendSystemMessage(*noSkill);
 			return 0;
 		}
 
@@ -75,11 +81,12 @@ int LootSchematicMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			return 0;
 		}
 
-		if(ghost->addRewardedSchematic(schematic, schematicData->getTargetUseCount(), true)) {
+		if(ghost->addRewardedSchematic(schematic, SchematicList::LOOT, schematicData->getTargetUseCount(), true)) {
 
 			TangibleObject* tano = cast<TangibleObject*>(sceneObject);
 			if(tano != NULL)
 				tano->decreaseUseCount();
+			player->sendSystemMessage("@loot_schematic:schematic_learned"); // You acquire a new crafting schematic!
 		}
 
 		return 0;

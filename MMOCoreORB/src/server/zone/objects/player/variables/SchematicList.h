@@ -20,6 +20,8 @@ protected:
 	VectorMap<ManagedReference<DraftSchematic* >, int > rewardedSchematics;
 
 public:
+	enum {MISSION = 0, LOOT};
+
 	SchematicList() {
 		rewardedSchematics.setNoDuplicateInsertPlan();
 	}
@@ -31,7 +33,7 @@ public:
 
 	bool add(DraftSchematic* schematic, DeltaMessage* message = NULL, int updates = 1);
 
-	bool addRewardedSchematic(DraftSchematic* schematic, int quantity);
+	bool addRewardedSchematic(DraftSchematic* schematic, short type, int quantity);
 
 	void addRewardedSchematics(SceneObject* player);
 	void removeRewardedSchematic(DraftSchematic* schematic);
