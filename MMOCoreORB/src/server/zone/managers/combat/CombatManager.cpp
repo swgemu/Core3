@@ -348,7 +348,9 @@ int CombatManager::calculatePostureModifier(CreatureObject* creature, WeaponObje
 	if (weapon->getAttackType() != WeaponObject::RANGEDATTACK)
 		accuracy *= -1;
 
-	creature->setCurrentSpeed(creature->calculateSpeed());
+	if (!creature->isAiAgent())
+		creature->setCurrentSpeed(creature->calculateSpeed());
+
 	creature->updateLocomotion();
 
 	switch (CreaturePosture::instance()->getSpeed(creature->getPosture(), creature->getLocomotion())) {
