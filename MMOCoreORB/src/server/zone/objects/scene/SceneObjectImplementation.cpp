@@ -607,7 +607,7 @@ void SceneObjectImplementation::broadcastObjectPrivate(SceneObject* object, Scen
 		return;
 
 	if (parent != NULL) {
-		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParentUnsafe());
+		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParent());
 
 		if (grandParent != NULL) {
 			grandParent->broadcastObjectPrivate(object, selfObject);
@@ -677,7 +677,7 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 
 void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, SceneObject* selfObject) {
 	if (parent != NULL) {
-		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParentUnsafe());
+		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParent());
 
 		if (grandParent != NULL) {
 			grandParent->broadcastDestroyPrivate(object, selfObject);
@@ -751,7 +751,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 		return;
 
 	if (parent != NULL) {
-		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParentUnsafe());
+		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParent());
 
 		if (grandParent != NULL) {
 			grandParent->broadcastMessagePrivate(message, selfObject, lockZone);
@@ -868,7 +868,7 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 
 void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* messages, SceneObject* selfObject) {
 	if (parent != NULL) {
-		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParentUnsafe());
+		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParent());
 
 		if (grandParent != NULL) {
 			grandParent->broadcastMessagesPrivate(messages, selfObject);
