@@ -42,7 +42,45 @@
 
 
 object_draft_schematic_clothing_clothing_backpack_field_03_quest = object_draft_schematic_clothing_shared_clothing_backpack_field_03_quest:new {
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Lightweight Military Backpack",
+
+   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 1, 
+
+   xpType = "crafting_clothing_general", 
+   xp = 60, 
+
+   assemblySkill = "clothing_assembly", 
+   experimentingSkill = "clothing_experimentation", 
+   customizationSkill = "clothing_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"primary_pocket", "secondary_pocket", "strap_pad", "strap_adjustment"},
+   ingredientSlotType = {0, 0, 0, 0},
+   resourceTypes = {"fiberplast", "hide", "hide", "metal"},
+   resourceQuantities = {20, 10, 10, 5},
+   contribution = {100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/wearables/backpack/backpack_s03_quest.iff",
+
+   additionalTemplates = {
+             },
+		
+	skillMods = {	    
+		{"aim", 5},
+	    {"cover", 5},
+	    {"melee_defense", 3},
+	    {"ranged_defense", 3}
+
+	}
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_backpack_field_03_quest, "object/draft_schematic/clothing/clothing_backpack_field_03_quest.iff")

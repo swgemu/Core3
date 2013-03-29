@@ -23,14 +23,14 @@ mara_jade = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/mara_jade.iff"},
 	lootGroups = {},
 	weapons = {},
 	outfit = "mara_jade_outfit",
-	conversationTemplate = "",
+	conversationTemplate = "theme_park_imperial_mission_target_convotemplate",
 	attacks = {
 	}
 }

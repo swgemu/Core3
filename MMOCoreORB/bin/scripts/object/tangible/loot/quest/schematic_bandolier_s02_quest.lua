@@ -42,6 +42,12 @@
 
 
 object_tangible_loot_quest_schematic_bandolier_s02_quest = object_tangible_loot_quest_shared_schematic_bandolier_s02_quest:new {
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "crafting_tailor_field_03",
+	targetDraftSchematic = "object/draft_schematic/clothing/clothing_bandolier_field_02_quest.iff",
+	targetUseCount = 3
 
 }
 
