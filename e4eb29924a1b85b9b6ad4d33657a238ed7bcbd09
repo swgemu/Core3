@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABX///n4\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/WookieeRoarCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-03-29T21:08:06Z",
+      "side": 1,
+      "message": "Locker locker(targetObject, creature);",
+      "revId": "e4eb29924a1b85b9b6ad4d33657a238ed7bcbd09",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABX///n0\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/WookieeRoarCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-03-29T21:08:06Z",
+      "side": 1,
+      "message": "locker.release();",
+      "revId": "e4eb29924a1b85b9b6ad4d33657a238ed7bcbd09",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
