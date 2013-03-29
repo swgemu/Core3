@@ -108,7 +108,7 @@ public:
 
 		clocker.release();
 
-		float z = zone->getHeight(creature->getPositionX(), creature->getPositionY());
+		float z = vehicle->getPositionZ();
 		creature->teleport(creature->getPositionX(), z, creature->getPositionY(), 0);
 
 		if (creature->hasBuff(String("burstrun").hashCode())
