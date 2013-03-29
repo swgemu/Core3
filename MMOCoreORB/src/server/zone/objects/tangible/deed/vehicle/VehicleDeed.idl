@@ -61,7 +61,7 @@ class VehicleDeed extends Deed {
 	
 	public VehicleDeed() {
 		Logger.setLoggingName("VehicleDeed");
-		hitPoints = 8000;
+		hitPoints = 1500;
 	}
 	
 	public native void initializeTransientMembers();
