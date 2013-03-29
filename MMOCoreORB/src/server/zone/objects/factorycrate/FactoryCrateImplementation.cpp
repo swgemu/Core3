@@ -243,15 +243,14 @@ void FactoryCrateImplementation::split(int newStackSize) {
 	protoclone->setParent(NULL);
 
 	newCrate->transferObject(protoclone, -1, false);
-
 	newCrate->setUseCount(newStackSize, false);
-	setUseCount(getUseCount() - newStackSize, true);
-
 	newCrate->setCustomObjectName(getCustomObjectName(), false);
 
 	if (parent != NULL) {
-		getParent().get()->transferObject(newCrate, -1, false);
-		getParent().get()->broadcastObject(newCrate, true);
+		if(	getParent().get()->transferObject(newCrate, -1, false)) {
+			getParent().get()->broadcastObject(newCrate, true);
+			setUseCount(getUseCount() - newStackSize, true);
+		}
 	}
 }
 

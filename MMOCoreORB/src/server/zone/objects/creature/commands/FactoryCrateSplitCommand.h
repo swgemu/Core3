@@ -83,13 +83,22 @@ public:
 
 		ManagedReference<SceneObject*> objectsParent = factoryCrate->getParent();
 
-		if (objectsParent != NULL && objectsParent->isCellObject()) {
+
+		if(objectsParent == NULL)
+			return GENERALERROR;
+
+		if (objectsParent->isCellObject()) {
 
 			ManagedReference<BuildingObject*> building = cast<BuildingObject*>( objectsParent->getParent().get().get());
 
 			if (!building->isOnAdminList(creature)) {
 				return GENERALERROR;
 			}
+		}
+
+		if(objectsParent->getContainerVolumeLimit() - objectsParent->getContainerObjectsSize() < 1){
+			creature->sendSystemMessage("@treasure_map/treasure_map:sys_inventory_full");
+			return GENERALERROR;
 		}
 
 		factoryCrate->split(newStackSize);
