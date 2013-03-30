@@ -108,7 +108,17 @@ public:
 
 		clocker.release();
 
+		SortedVector<IntersectionResult> intersections;
+
+		CollisionManager::getWorldFloorCollisions(creature->getPositionX(), creature->getPositionY(), zone, true, &intersections);
+
 		float z = zone->getHeight(creature->getPositionX(), creature->getPositionY());
+
+		for (int i = 0; i < intersections.size(); i++) {
+			if (intersections.get(i).getIntersectionDistance() > z)
+				z = intersections.get(i).getIntersectionDistance();
+		}
+
 		creature->teleport(creature->getPositionX(), z, creature->getPositionY(), 0);
 
 		if (creature->hasBuff(String("burstrun").hashCode())
