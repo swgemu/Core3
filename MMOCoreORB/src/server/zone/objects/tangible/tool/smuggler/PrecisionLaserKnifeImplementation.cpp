@@ -77,7 +77,7 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* pl
 
 	session->initalizeSlicingMenu(player, target);
 
-	useCharge(player);
+	//useCharge(player);
 
 	return 0;
 }
