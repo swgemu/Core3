@@ -395,13 +395,13 @@ void PlayerObject::removeSchematics(Vector<ManagedReference<DraftSchematic* > >&
 		_implementation->removeSchematics(schematics, notifyClient);
 }
 
-bool PlayerObject::addRewardedSchematic(DraftSchematic* schematic, int quantity, bool notifyClient) {
+bool PlayerObject::addRewardedSchematic(DraftSchematic* schematic, short type, int quantity, bool notifyClient) {
 	PlayerObjectImplementation* _implementation = static_cast<PlayerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->addRewardedSchematic(schematic, quantity, notifyClient);
+		return _implementation->addRewardedSchematic(schematic, type, quantity, notifyClient);
 }
 
 void PlayerObject::removeRewardedSchematic(DraftSchematic* schematic, bool notifyClient) {

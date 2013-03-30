@@ -33,7 +33,7 @@ void CraftingMissionObjectiveImplementation::updateMissionStatus(CreatureObject*
 	switch (objectiveStatus) {
 	case 0:
 		//Award schematic and resources needed for it.
-		ghost->addRewardedSchematic(schematic, 1, true);
+		ghost->addRewardedSchematic(schematic, SchematicList::MISSION, 1, true);
 
 		//Create components for schematic and give them to the player.
 		for (int i = 0; i < schematic->getDraftSlotCount(); i++) {
