@@ -30,10 +30,6 @@ public:
 
 		ManagedReference<SurveySession*> session = cast<SurveySession*>(player->getActiveSession(SessionFacadeType::SURVEY));
 
-		if(!player->isStanding()){
-
-		}
-
 		if(session == NULL) {
 			return;
 		}
