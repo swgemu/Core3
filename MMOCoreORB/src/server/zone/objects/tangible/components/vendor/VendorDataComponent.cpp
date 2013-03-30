@@ -276,20 +276,22 @@ void VendorDataComponent::handleWithdrawMaintanence(int value) {
 		return;
 
 	if(value > maintAmount) {
-		owner->sendSystemMessage("@player_structure:vendor_withdraw_fail");
+		StringIdChatParameter message("@player_structure:vendor_withdraw_fail"); // The vendor maintenance pool doesn't have %DI credits!
+		message.setDI(value);
+		owner->sendSystemMessage(message);
 		return;
 	}
 
 	if(value <= 0) {
-		owner->sendSystemMessage("@player_structure:amt_greater_than_zero");
+		owner->sendSystemMessage("@player_structure:amt_greater_than_zero"); // The amount must be greater than zero.
 		return;
 	}
 
 	maintAmount -= value;
 	owner->addBankCredits(value, true);
 
-	StringIdChatParameter message("@player_stucture:vendor_withdraw");
-	message.setDI(maintAmount);
+	StringIdChatParameter message("@player_structure:vendor_withdraw"); // You successfully withdraw %DI credits from the maintenance pool.
+	message.setDI(value);
 	owner->sendSystemMessage(message);
 }
 
