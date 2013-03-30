@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABX///nc\u003d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/imperial/themeParkImperial.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-03-30T03:54:22Z",
+      "side": 1,
+      "message": "You may not have seen, but I recently added return waypoint functionality into the themepark logic. In order for it to work with mission givers that have a cellID other than zero, you\u0027ll need to add a worldPosition property to each. You can see http://76.73.75.106:8080/#/c/67/3/MMOCoreORB/bin/scripts/screenplays/themepark/rebel/themeParkRebel.lua for the format.",
+      "revId": "a078af874cdebb59b430210db648f71ce4387a4c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
