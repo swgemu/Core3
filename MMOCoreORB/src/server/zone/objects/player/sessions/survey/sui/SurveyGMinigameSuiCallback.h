@@ -23,6 +23,11 @@ public:
 		if (cancelPressed)
 			return;
 
+		if(player->getPosture() > CreaturePosture::CROUCHED){
+				player->sendSystemMessage("@error_message:survey_standing");  // "You must be standing to take a survey or samples.");
+				return;
+		}
+
 		ManagedReference<SurveySession*> session = cast<SurveySession*>(player->getActiveSession(SessionFacadeType::SURVEY));
 		if(session == NULL) {
 			return;
