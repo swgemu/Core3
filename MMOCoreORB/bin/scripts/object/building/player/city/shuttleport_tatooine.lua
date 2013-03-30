@@ -42,6 +42,7 @@
 
 
 object_building_player_city_shuttleport_tatooine = object_building_player_city_shared_shuttleport_tatooine:new {
+	planetMapCategory = "shuttleport",
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {"dantooine", "lok", "tatooine"},

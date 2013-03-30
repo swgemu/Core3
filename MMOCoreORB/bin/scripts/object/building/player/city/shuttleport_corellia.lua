@@ -42,6 +42,7 @@
 
 
 object_building_player_city_shuttleport_corellia = object_building_player_city_shared_shuttleport_corellia:new {
+	planetMapCategory = "shuttleport",
 	lotSize = 0,
 	baseMaintenanceRate = 0,
 	allowedZones = {"corellia", "talus"},
