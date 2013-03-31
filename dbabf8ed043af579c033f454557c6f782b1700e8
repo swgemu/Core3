@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABX///k0\u003d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/imperial/smuggle_convo_handler.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2013-03-31T20:48:06Z",
+      "side": 1,
+      "message": "This can be removed, I had created a conversation handler but forgot to delete it.",
+      "revId": "dbabf8ed043af579c033f454557c6f782b1700e8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
