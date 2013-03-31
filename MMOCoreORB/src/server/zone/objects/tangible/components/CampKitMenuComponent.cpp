@@ -185,10 +185,10 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		}
 
 		/// No Builds
-		//if (!planetManager->isBuildingPermittedAt(player->getPositionX(), player->getPositionY(), player)) {
-		//	player->sendSystemMessage("@camp:error_nobuild");
-		//	return 0;
-		//}
+		if (!planetManager->isBuildingPermittedAt(player->getPositionX(), player->getPositionY(), player)) {
+			player->sendSystemMessage("@camp:error_nobuild");
+			return 0;
+		}
 
 		player->sendSystemMessage("@camp:starting_camp");
 
