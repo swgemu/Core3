@@ -42,6 +42,42 @@
 
 
 object_draft_schematic_clothing_clothing_bandolier_field_02_quest = object_draft_schematic_clothing_shared_clothing_bandolier_field_02_quest:new {
+   templateType = DRAFTSCHEMATIC,
+
+   customObjectName = "Droidsmith\'s Tool Set",
+
+   craftingToolTab = 8, -- (See DraftSchemticImplementation.h)
+   complexity = 30, 
+   size = 1, 
+
+   xpType = "crafting_clothing_general", 
+   xp = 110, 
+
+   assemblySkill = "clothing_assembly", 
+   experimentingSkill = "clothing_experimentation", 
+   customizationSkill = "clothing_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"utility_pocket", "load_bearing_harness", "steel_interstructure", "steel_crossframe", "reinforcement"},
+   ingredientSlotType = {1, 0, 0, 0, 1},
+   resourceTypes = {"object/tangible/component/clothing/shared_cargo_pocket.iff", "fiberplast", "metal", "metal", "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff"},
+   resourceQuantities = {1, 20, 15, 10, 1},
+   contribution = {100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/wearables/bandolier/bandolier_s02_quest.iff",
+				
+	skillMods = {
+	    {"droid_assembly", 5},
+	    {"droid_experimentation", 5}
+	},
+
+   additionalTemplates = {
+             }
 
 }
 
