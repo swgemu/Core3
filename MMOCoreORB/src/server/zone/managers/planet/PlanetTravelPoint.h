@@ -23,12 +23,14 @@ class PlanetTravelPoint : public Object {
 	Vector3 arrivalVector;
 	Vector3 departureVector;
 	bool interplanetaryTravelAllowed;
+	bool incomingTravelAllowed;
 
 public:
 	PlanetTravelPoint(const String& zoneName) {
 		pointZone = zoneName;
 		arrivalVector.set(0.f, 0.f, 0.f);
 		interplanetaryTravelAllowed = false;
+		incomingTravelAllowed = true;
 		shuttleObject = NULL;
 	}
 
@@ -38,6 +40,7 @@ public:
 			arrivalVector = arrVector;
 			departureVector = departVector;
 			interplanetaryTravelAllowed = false;
+			incomingTravelAllowed = true;
 			shuttleObject = shuttle;
 	}
 
@@ -47,6 +50,7 @@ public:
 		arrivalVector = ptp.arrivalVector;
 		departureVector = ptp.departureVector;
 		interplanetaryTravelAllowed = ptp.interplanetaryTravelAllowed;
+		incomingTravelAllowed = ptp.incomingTravelAllowed;
 		shuttleObject = ptp.shuttleObject;
 	}
 
@@ -59,6 +63,7 @@ public:
 		arrivalVector = ptp.arrivalVector;
 		departureVector = ptp.departureVector;
 		interplanetaryTravelAllowed = ptp.interplanetaryTravelAllowed;
+		incomingTravelAllowed = ptp.incomingTravelAllowed;
 		shuttleObject = ptp.shuttleObject;
 
 		return *this;
@@ -74,6 +79,7 @@ public:
 		departureVector = arrivalVector;
 
 		interplanetaryTravelAllowed = (bool) luaObject->getByteField("interplanetaryTravelAllowed");
+		incomingTravelAllowed = (bool) luaObject->getByteField("incomingTravelAllowed");
 	}
 
 	// Called by the shuttles and transports to set the shuttle object for the nearest travel point
@@ -139,14 +145,21 @@ public:
 	}
 
 	/**
+	 * Returns true if this location allows incoming travel
+	 */
+	inline bool isIncomingAllowed() {
+		return incomingTravelAllowed;
+	}
+
+	/**
 	 * Returns true if travel between this point and the passed in point is permitted.
 	 * @param arrivalPoint The destination point.
 	 */
 	bool canTravelTo(PlanetTravelPoint* arrivalPoint) {
-		if (arrivalPoint->getPointZone() == pointZone)
+		if (arrivalPoint->getPointZone() == pointZone && arrivalPoint->isIncomingAllowed())
 			return true;
 
-		return (interplanetaryTravelAllowed);
+		return (interplanetaryTravelAllowed && arrivalPoint->isIncomingAllowed());
 	}
 
 	ManagedReference<CreatureObject*> getShuttle() {

@@ -281,7 +281,21 @@ class PlanetManager extends ManagedService implements Logger {
 		
 		return ptp.isInterplanetary();
 	}
-	
+		
+	/**
+	 * Checks to see if incoming travel is allowed to the specified point.
+	 * @param pointName The point name representing a travel point belonging to this planet.
+	 * @return Returns true if incoming travel is allowed.
+	 */
+	public boolean isIncomingTravelAllowed(final string pointName) {
+		PlanetTravelPoint ptp = planetTravelPointList.get(pointName);
+		
+		if (ptp == null)
+			return false;
+		
+		return ptp.isIncomingAllowed();
+	}
+
 	/**
 	 * Gets the PlanetTravelPoint that corresponds to the point name. If the point doesn't exist
 	 * then it will return NULL.
