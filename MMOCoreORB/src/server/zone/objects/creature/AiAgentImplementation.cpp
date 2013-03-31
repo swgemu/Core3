@@ -919,7 +919,21 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 		PatrolPoint* targetPosition = &patrolPoints.get(0);
 		
 		if (targetPosition->getCell() == NULL && zone != NULL) {
-			targetPosition->setPositionZ(zone->getHeight(targetPosition->getPositionX(), targetPosition->getPositionY()));
+			SortedVector<IntersectionResult> intersections;
+			CollisionManager::getWorldFloorCollisions(targetPosition->getPositionX(), targetPosition->getPositionY(), zone, true, &intersections);
+
+			float z = zone->getHeight(targetPosition->getPositionX(), targetPosition->getPositionY());
+			float diff = fabs(thisWorldPos.getZ() - z);
+
+			for (int i = 0; i < intersections.size(); i++) {
+				float newDiff = fabs(16384 - intersections.get(i).getIntersectionDistance() - thisWorldPos.getZ());
+				if ( newDiff < diff) {
+					diff = newDiff;
+					z = 16384 - intersections.get(i).getIntersectionDistance();
+				}
+			}
+
+			targetPosition->setPositionZ(z);
 		}
 
 		SceneObject* targetCoordinateCell = targetPosition->getCell();
@@ -1008,10 +1022,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 			if (i == path->size() - 1 || pathDistance >= maxDist || coord->getCell() != parent.get()) { //last waypoint
 				cellObject = coord->getCell();
 
-				//TODO: calculate height
-				Vector3 noHeightWorldPos(thisWorldPos.getX(), thisWorldPos.getY(), 0);
-				Vector3 noHeightNextWorldPos(nextWorldPos.getX(), nextWorldPos.getY(), 0);
-				dist = noHeightNextWorldPos.distanceTo(noHeightWorldPos);
+				dist = nextWorldPos.distanceTo(thisWorldPos);
 
 				*nextPosition = *coord;
 				found = true;
@@ -1067,8 +1078,24 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 						if (nextPosition->getCell() == NULL) {
 							
 
-							if (zone != NULL)
-								newPositionZ = zone->getHeight(newPositionX, newPositionY);
+							if (zone != NULL) {
+								SortedVector<IntersectionResult> intersections;
+
+								CollisionManager::getWorldFloorCollisions(newPositionX, newPositionY, zone, true, &intersections);
+
+								float z = zone->getHeight(newPositionX, newPositionY);
+								float diff = fabs(oldCoordinates.getZ() - z);
+
+								for (int i = 0; i < intersections.size(); i++) {
+									float newDiff = fabs(16384 - intersections.get(i).getIntersectionDistance() - oldCoordinates.getZ());
+									if ( newDiff < diff) {
+										diff = newDiff;
+										z = 16384 - intersections.get(i).getIntersectionDistance();
+									}
+								}
+
+								newPositionZ = z;
+							}
 							//newPositionZ = nextPosition.getZ();
 						} else {
 							newPositionZ = nextPosition->getZ();
