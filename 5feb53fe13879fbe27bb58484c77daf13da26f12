@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABX///lE\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/collision/CollisionManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-03-31T15:08:08Z",
+      "side": 1,
+      "message": "They are switched on purpose, the client has y/z switched.",
+      "revId": "5feb53fe13879fbe27bb58484c77daf13da26f12",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
