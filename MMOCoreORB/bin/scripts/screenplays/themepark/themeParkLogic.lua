@@ -334,7 +334,7 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 		local pNpc = self:spawnNpc(mainNpcs[i], spawnPoints[i], pConversingPlayer, i)
 		if pNpc ~= nil then
 			if i == 1 then
-				self:updateWaypoint(pConversingPlayer, mainNpcs[i].planetName, spawnPoints[i][1], spawnPoints[i][3], 0)
+				self:updateWaypoint(pConversingPlayer, mainNpcs[i].planetName, spawnPoints[i][1], spawnPoints[i][3], "target")
 			end
 			if mission.missionType == "assassinate" then
 				createObserver(OBJECTDESTRUCTION, self.className, "notifyDefeatedTarget", pNpc)
@@ -492,30 +492,10 @@ function ThemeParkLogic:getMissionDescription(pConversingPlayer, direction)
 		local currentMissionNumber = self:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
 
 		if wpNames == "no" then
-			if direction == 0 then
-				local currentMissionType = self:getMissionType(activeNpcNumber, pConversingPlayer)
-				local mission = self:getMission(activeNpcNumber, currentMissionNumber)
-				local mainNpc = mission.primarySpawns
-				local mainNpcName = self:getNpcName(mainNpc[1].npcName)
-				local missionItem = mission.itemSpawns
-
-				if currentMissionType == "deliver" then
-					local missionItemName = missionItem[1].itemName
-					return "Deliver " .. missionItemName
-				elseif currentMissionType == "escort" then
-					return "Escort " .. mainNpcName
-				elseif currentMissionType == "retrieve" then
-					local missionItemName = missionItem[1].itemName
-					return "Retrieve " .. missionItemName
-				elseif currentMissionType == "assassinate" then
-					return "Kill " .. mainNpcName
-				end
-			else
-				return "Return to the mission giver."
-			end
+			return self:getDefaultWaypointName(pConversingPlayer, direction)
 		else
 			local stfFile = self:getStfFile(activeNpcNumber)
-			if direction == 0 then
+			if direction == "target" then
 				creature:sendSystemMessage(stfFile .. ":waypoint_description_" .. currentMissionNumber)
 				return stfFile .. ":waypoint_name_" .. currentMissionNumber
 			else
@@ -523,7 +503,7 @@ function ThemeParkLogic:getMissionDescription(pConversingPlayer, direction)
 			end
 		end
 	else
-		if direction == 0 then
+		if direction == "target" then
 			local message = self.missionDescriptionStf .. missionNumber
 			creature:sendSystemMessage(message)
 			return message
@@ -531,8 +511,32 @@ function ThemeParkLogic:getMissionDescription(pConversingPlayer, direction)
 			return self.missionDescriptionStf .. "return"
 		end
 	end
+end
 
+function ThemeParkLogic:getDefaultWaypointName(pConversingPlayer, direction)
+	if direction == "target" then
+		local activeNpcNumber = self:getActiveNpcNumber(pConversingPlayer)
+		local currentMissionType = self:getMissionType(activeNpcNumber, pConversingPlayer)
+		local currentMissionNumber = self:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
+		local mission = self:getMission(activeNpcNumber, currentMissionNumber)
+		local mainNpc = mission.primarySpawns
+		local mainNpcName = self:getNpcName(mainNpc[1].npcName)
+		local missionItem = mission.itemSpawns
 
+		if currentMissionType == "deliver" then
+			local missionItemName = missionItem[1].itemName
+			return "Deliver " .. missionItemName
+		elseif currentMissionType == "escort" then
+			return "Escort " .. mainNpcName
+		elseif currentMissionType == "retrieve" then
+			local missionItemName = missionItem[1].itemName
+			return "Retrieve " .. missionItemName
+		elseif currentMissionType == "assassinate" then
+			return "Kill " .. mainNpcName
+		end
+	else
+		return "Return to the mission giver."
+	end
 end
 
 function ThemeParkLogic:removeWaypoint(pConversingPlayer)
@@ -658,6 +662,25 @@ function ThemeParkLogic:getRequiredItem(activeNpcNumber, pConversingPlayer)
 	return mission.itemSpawns
 end
 
+function ThemeParkLogic:getNpcWorldPosition(npcNumber)
+	local worldPosition = { x = 0, y = 0 }
+
+	for i = 1, # self.npcMap do
+		local npcSpawnNumber = self.npcMap[i].npcNumber
+		if npcNumber == npcSpawnNumber then
+			if self.npcMap[i].spawnData.cellID == 0 then
+				worldPosition.x = self.npcMap[i].spawnData.x
+				worldPosition.y = self.npcMap[i].spawnData.y
+			else
+				worldPosition.x = self.npcMap[i].worldPosition.x
+				worldPosition.y = self.npcMap[i].worldPosition.y
+			end
+		end
+	end
+
+	return worldPosition
+end
+
 function ThemeParkLogic:completeMission(pConversingPlayer)
 	if pConversingPlayer == nil then
 		return
@@ -675,30 +698,11 @@ function ThemeParkLogic:completeMission(pConversingPlayer)
 		creature:sendSystemMessage(self.missionCompletionMessageStf)
 	end
 
-	local npcSpawnData = nil
-	local npcWorldPosition = nil
-	for i = 1, # self.npcMap do
-		local npcSpawnNumber = self.npcMap[i].npcNumber
-		if npcNumber == npcSpawnNumber then
-			npcSpawnData = self.npcMap[i].spawnData
-			if npcSpawnData.cellID ~= 0 then
-				npcWorldPosition = self.npcMap[i].worldPosition
-			end
-		end
-	end
+	local worldPosition = self:getNpcWorldPosition(npcNumber)
 
-	local npcX = 0
-	local npcY = 0
+	local npcData = self:getNpcData(npcNumber)
 
-	if npcWorldPosition == nil then
-		npcX = npcSpawnData.x
-		npcY = npcSpawnData.y
-	else
-		npcX = npcWorldPosition.x
-		npcY = npcWorldPosition.y
-	end
-
-	self:updateWaypoint(pConversingPlayer, npcSpawnData.planetName, npcX, npcY, 1)
+	self:updateWaypoint(pConversingPlayer, npcData.spawnData.planetName, worldPosition.x, worldPosition.y, "return")
 
 	writeData(creature:getObjectID() .. ":activeMission", 2)
 end

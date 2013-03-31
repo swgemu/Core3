@@ -133,28 +133,9 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 	local missionNumber = self.themePark:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 	local mission = self.themePark:getMission(npcNumber, missionNumber)
 
-	local npcSpawnData = nil
-	local npcWorldPosition = nil
-	for i = 1, # self.themePark.npcMap do
-		local npcSpawnNumber = self.themePark.npcMap[i].npcNumber
-		if npcNumber == npcSpawnNumber then
-			npcSpawnData = self.themePark.npcMap[i].spawnData
-			if npcSpawnData.cellID ~= 0 then
-				npcWorldPosition = self.themePark.npcMap[i].worldPosition
-			end
-		end
-	end
+	local worldPosition = self.themePark:getNpcWorldPosition(npcNumber)
 
-	local npcX = 0
-	local npcY = 0
-
-	if npcWorldPosition == nil then
-		npcX = npcSpawnData.x
-		npcY = npcSpawnData.y
-	else
-		npcX = npcWorldPosition.x
-		npcY = npcWorldPosition.y
-	end
+	local npcData = self.themePark:getNpcData(npcNumber)
 
 	local nextScreenID
 	if mission.missionType == "deliver" then
@@ -173,7 +154,7 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 	elseif mission.missionType == "escort" then
 		if correctNpc == true then
 			self.themePark:followPlayer(pConversingNpc, pConversingPlayer)
-			self.themePark:updateWaypoint(pConversingPlayer, npcSpawnData.planetName, npcX, npcY, 1)
+			self.themePark:updateWaypoint(pConversingPlayer, npcData.spawnData.planetName, worldPosition.x, worldPosition.y, "return")
 			nextScreenID = "npc_takeme_n"
 		else
 			nextScreenID = "otherescort_n"
@@ -181,7 +162,7 @@ function mission_target_conv_handler:handleScreenMissionType(pConversationTempla
 	elseif mission.missionType == "retrieve" then
 		if correctNpc == true then
 			self.themePark:giveMissionItems(mission, pConversingPlayer)
-			self.themePark:updateWaypoint(pConversingPlayer, npcSpawnData.planetName, npcX, npcY, 1)
+			self.themePark:updateWaypoint(pConversingPlayer, npcData.spawnData.planetName, worldPosition.x, worldPosition.y, "return")
 			nextScreenID = "npc_smuggle_n"
 		else
 			nextScreenID = "dontknowyou_n"
