@@ -466,10 +466,10 @@ bool CollisionManager::checkLineOfSight(SceneObject* object1, SceneObject* objec
 	if (object2->isCreatureObject())
 		heightEnd = getRayOriginPoint(cast<CreatureObject*>(object2));
 
-	rayOrigin.set(rayOrigin.getX(), rayOrigin.getY(), rayOrigin.getZ() + heightOrigin);
+	rayOrigin.set(rayOrigin.getX(), rayOrigin.getZ() + heightOrigin, rayOrigin.getY());
 
 	Vector3 rayEnd = object2->getWorldPosition();
-	rayEnd.set(rayEnd.getX(), rayEnd.getY(), rayEnd.getZ() + heightEnd);
+	rayEnd.set(rayEnd.getX(), rayEnd.getZ() + heightEnd, rayEnd.getY());
 
 	float dist = rayEnd.distanceTo(rayOrigin);
 	float intersectionDistance;
