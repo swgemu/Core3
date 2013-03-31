@@ -15,7 +15,7 @@ NOSPAWNAREA       = 0x0100
 NOBUILDZONEAREA   = 0x1000
 
 dathomir_regions = {
-	{"a_restricted_area",0,0,{1,0},UNDEFINEDAREA,1},
+	{"a_restricted_area",-6358,930,{1,280},UNDEFINEDAREA,1},
         {"abandoned_camp",2871,-2531,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"an_outpost",0,0,{1,0},UNDEFINEDAREA,1},
 	{"asou_dankal_1",0,0,{1,0},UNDEFINEDAREA,1},
@@ -97,7 +97,7 @@ dathomir_regions = {
 	{"rhoa_sammir_2",0,0,{1,0},UNDEFINEDAREA,1},
 	{"rhoa_sammir_3",0,0,{1,0},UNDEFINEDAREA,1},
 	{"rhoa_yenth",0,0,{1,0},UNDEFINEDAREA,1},
-	{"science_outpost",0,0,{1,0},UNDEFINEDAREA,1},
+	{"science_outpost",-85,-1600,{1,125},UNDEFINEDAREA,1},
         {"shrine",1123,-1025,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"singing_mountain",536,4200,{1,160},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"singing_mountain_1",521,4716,{1,260},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
@@ -115,7 +115,7 @@ dathomir_regions = {
 	{"takal_nax",0,0,{1,0},UNDEFINEDAREA,1},
 	{"the_great_canyon",0,0,{1,0},UNDEFINEDAREA,1},
         {"tower_and_stones",-441,-1152,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
-	{"trade_outpost",0,0,{1,0},UNDEFINEDAREA,1},
+	{"trade_outpost",599,3046,{1,110},UNDEFINEDAREA,1},
         {"two_huts",7203,5560,{1,50},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"twilight_forest",0,0,{1,0},UNDEFINEDAREA,1},
 	{"vass_meindras_1",0,0,{1,0},UNDEFINEDAREA,1},

@@ -1,5 +1,5 @@
 lok_herald_02 = Creature:new {
-	objectName = "@npc_name:lok_herald_02",
+	objectName = "@npc_name:lok_herald_02", --Andria E`liyha
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

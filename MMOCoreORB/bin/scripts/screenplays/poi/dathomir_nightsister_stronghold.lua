@@ -142,6 +142,6 @@ function NightSisterStrongholdScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "diax",3600,-20.5,7.2,-27.4,100,189384)
 	spawnMobile("dathomir", "fath_hray",3600,-12,7.2,-36.7,330,189384)
 	spawnMobile("dathomir", "gethzerion",3600,-2,7.2,-1,180,189383)
-	spawnMobile("dathomir", "herald_dathomir_leandra",3600,-4082,132.7,-210,330,0)
+	spawnMobile("dathomir", "leandra",3600,-4082,132.7,-210,330,0)
 	spawnMobile("dathomir", "kais",3600,14.2,7.2,-15,230,189382)
 end

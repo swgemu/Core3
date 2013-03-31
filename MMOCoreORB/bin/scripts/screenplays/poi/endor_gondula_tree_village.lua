@@ -12,7 +12,7 @@ function EndorGondulaTreeVillageScreenPlay:start()
 end
 
 function EndorGondulaTreeVillageScreenPlay:spawnMobiles()   
-    	spawnMobile("endor", "gondula_loremaster",300, -473.5, 2.1, -5051.7, 147, 0)
+    spawnMobile("endor", "gondula_loremaster",300, -473.5, 2.1, -5051.7, 147, 0)
 	spawnMobile("endor", "gondula_veteran",300, -479.0, 1.0, -5040.9, -26, 0)
 	spawnMobile("endor", "gondula_tribesman",300, -498.5, 0.5, -5009.5, -99, 0)
 	spawnMobile("endor", "gondula_tribesman",300, -498.5, 0.5, -5011.6, -99, 0)

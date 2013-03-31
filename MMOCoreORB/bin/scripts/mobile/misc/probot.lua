@@ -1,5 +1,5 @@
 probot = Creature:new {
-	objectName = "@droid_name:imperial_probot_base",
+	objectName = "@mob/creature_names:probot",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",

@@ -12,7 +12,7 @@ function EndorDonkuwahStaticScreenPlay:start()
 end
 
 function EndorDonkuwahStaticScreenPlay:spawnMobiles()    
-    	spawnMobile("endor", "donkuwah_chieftain",300, -1194.2, 25.0, 2988.4, 26, 0)
+    spawnMobile("endor", "donkuwah_chieftain",300, -1194.2, 25.0, 2988.4, 26, 0)
 	spawnMobile("endor", "enraged_donkuwah",300, -1199.9, 25.0, 2981.6, 175, 0)
 	spawnMobile("endor", "enraged_donkuwah",300, -1198.1, 25.0, 2980.0, -104, 0)
 	spawnMobile("endor", "eerie_donkuwah_spiritmaster",300, -1178.1, 17.0, 2964.4, -142, 0)
