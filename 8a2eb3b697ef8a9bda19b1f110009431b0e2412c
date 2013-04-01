@@ -16,6 +16,24 @@
       "revId": "8a2eb3b697ef8a9bda19b1f110009431b0e2412c",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABX///jw\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/CampKitMenuComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-04-01T10:58:50Z",
+      "side": 1,
+      "message": "It is commented out since the normal structures has a wider area around cities where they cannot be built compared to camps. The isBuildingPermittedAt method checks for normal structures and thus has the wider area around the cities.\n\nIf I remember correctly you could build camps as soon as you left the city, i.e. when you got the message \u0027You have left Coronet\u0027 but building other structures were limited another city radius.",
+      "parentUuid": "AAAABX///kI\u003d",
+      "revId": "8a2eb3b697ef8a9bda19b1f110009431b0e2412c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
