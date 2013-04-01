@@ -89,6 +89,8 @@ includeFile("themepark/conversations/mission_giver_conv_handler.lua")
 includeFile("themepark/conversations/mission_target_conv_handler.lua")
 includeFile("themepark/rebel/themeParkRebel.lua")
 includeFile("themepark/jabba/themeParkJabba.lua")
+includeFile("themepark/imperial/themeParkImperial.lua")
+includeFile("themepark/imperial/emperors_retreat.lua")
 includeFile("themepark/tutorial.lua")
 
 -- Recruiters
