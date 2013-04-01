@@ -88,6 +88,9 @@ public:
 			return INVALIDTARGET;
 		}
 
+		if (structure->isCampStructure())
+			return GENERALERROR;
+
 		String message = structure->getRedeedMessage();
 		if(!message.isEmpty()) {
 			creature->sendSystemMessage("@player_structure:" + message);
