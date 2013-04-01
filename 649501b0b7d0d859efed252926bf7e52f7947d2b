@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABX///jQ\u003d",
+        "filename": "MMOCoreORB/bin/scripts/managers/planet_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-04-01T11:18:20Z",
+      "side": 1,
+      "message": "Duplication.",
+      "revId": "649501b0b7d0d859efed252926bf7e52f7947d2b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABX///jM\u003d",
+        "filename": "MMOCoreORB/bin/scripts/managers/planet_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-04-01T11:18:20Z",
+      "side": 1,
+      "message": "Duplication.",
+      "revId": "649501b0b7d0d859efed252926bf7e52f7947d2b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
