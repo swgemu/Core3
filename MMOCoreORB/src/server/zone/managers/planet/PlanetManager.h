@@ -258,6 +258,8 @@ public:
 
 	bool isInterplanetaryTravelAllowed(const String& pointName);
 
+	bool isIncomingTravelAllowed(const String& pointName);
+
 	PlanetTravelPoint* getPlanetTravelPoint(const String& pointName);
 
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
@@ -414,6 +416,8 @@ public:
 
 	bool isInterplanetaryTravelAllowed(const String& pointName);
 
+	bool isIncomingTravelAllowed(const String& pointName);
+
 	PlanetTravelPoint* getPlanetTravelPoint(const String& pointName);
 
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
@@ -526,6 +530,8 @@ public:
 	bool isExistingPlanetTravelPoint(const String& pointName);
 
 	bool isInterplanetaryTravelAllowed(const String& pointName);
+
+	bool isIncomingTravelAllowed(const String& pointName);
 
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
 

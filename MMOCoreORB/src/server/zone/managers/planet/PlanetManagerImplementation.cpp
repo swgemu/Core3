@@ -339,6 +339,10 @@ bool PlanetManagerImplementation::isTravelToLocationPermitted(const String& depa
 	if (!arrivalPlanetManager->isExistingPlanetTravelPoint(arrivalPoint))
 		return false;
 
+	//Check to see if incoming Travel is allowed
+	if (!arrivalPlanetManager->isIncomingTravelAllowed(arrivalPoint))
+		return false;
+
 	//If both zones are the same, then intraplanetary travel is allowed.
 	if (arrivalZone == zone)
 		return true;

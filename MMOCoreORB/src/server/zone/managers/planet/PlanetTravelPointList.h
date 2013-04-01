@@ -24,45 +24,61 @@ public:
 		rlock();
 
 		int totalPoints = size();
-
-		message->insertInt(totalPoints);
-
-		for (int i = 0; i < totalPoints; ++i)
-			message->insertAscii(get(i)->getPointName());
-
-		message->insertInt(totalPoints);
+		bool incomingAllowed[totalPoints];
+		int insertionPoints = totalPoints;
 
 		for (int i = 0; i < totalPoints; ++i) {
 			Reference<PlanetTravelPoint*> ptp = get(i);
-			message->insertFloat(ptp->getArrivalPositionX());
-			message->insertFloat(ptp->getArrivalPositionZ());
-			message->insertFloat(ptp->getArrivalPositionY());
+			incomingAllowed[i] = ptp->isIncomingAllowed();
+			if (!incomingAllowed[i])
+				insertionPoints--;
 		}
 
-		message->insertInt(totalPoints);
+		message->insertInt(insertionPoints);
+
+		for (int i = 0; i < totalPoints; ++i) {
+			if (incomingAllowed[i])
+				message->insertAscii(get(i)->getPointName());
+		}
+
+		message->insertInt(insertionPoints);
+
+		for (int i = 0; i < totalPoints; ++i) {
+			if (incomingAllowed[i]) {
+				Reference<PlanetTravelPoint*> ptp = get(i);
+				message->insertFloat(ptp->getArrivalPositionX());
+				message->insertFloat(ptp->getArrivalPositionZ());
+				message->insertFloat(ptp->getArrivalPositionY());
+			}
+		}
+
+		message->insertInt(insertionPoints);
 
 		for (int i = 0; i < totalPoints; ++i){
-			Reference<PlanetTravelPoint*> ptp = get(i);
-			ManagedReference<CreatureObject*> shuttle = ptp->getShuttle();
-			if(shuttle == NULL){
-				message->insertInt(0);
-				continue;
+			if (incomingAllowed[i]) {
+				Reference<PlanetTravelPoint*> ptp = get(i);
+				ManagedReference<CreatureObject*> shuttle = ptp->getShuttle();
+				if(shuttle == NULL){
+					message->insertInt(0);
+					continue;
+				}
+
+				if(shuttle->getCityRegion() == NULL){
+					message->insertInt(0);
+					continue;
+				}
+				ManagedReference<CityRegion*> city = shuttle->getCityRegion().get();
+
+				message->insertInt(city->getTax(CityRegion::TAX_TRAVEL));
 			}
-
-			if(shuttle->getCityRegion() == NULL){
-				message->insertInt(0);
-				continue;
-			}
-			ManagedReference<CityRegion*> city = shuttle->getCityRegion().get();
-
-			message->insertInt(city->getTax(CityRegion::TAX_TRAVEL));
-
 		}
 
-		message->insertInt(totalPoints);
+		message->insertInt(insertionPoints);
 
-		for (int i = 0; i < totalPoints; ++i)
-			message->insertByte((byte) get(i)->isInterplanetary());
+		for (int i = 0; i < totalPoints; ++i) {
+			if (incomingAllowed[i])
+				message->insertByte((byte) get(i)->isInterplanetary());
+		}
 
 		runlock();
 	}
