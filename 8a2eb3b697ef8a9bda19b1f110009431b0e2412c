@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABX///kI\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/CampKitMenuComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2013-04-01T05:19:17Z",
+      "side": 1,
+      "message": "No idea why this was commented out, we tested on a bunch of sites and works as expected.  Ufye found a ton of places camps should not be able to be built so she flagged this to me and I found this...",
+      "revId": "8a2eb3b697ef8a9bda19b1f110009431b0e2412c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
