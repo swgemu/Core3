@@ -145,11 +145,9 @@ void TangibleObjectImplementation::sendPvpStatusTo(CreatureObject* player) {
 	player->sendMessage(pvp);
 }
 
-void TangibleObjectImplementation::setPvpStatusBitmask(int bitmask, bool notifyClient) {
-	pvpStatusBitmask = bitmask;
-
+void TangibleObjectImplementation::broadcastPvpStatusBitmask(){
 	if (getZone() == NULL)
-		return;
+			return;
 
 	if (closeobjects != NULL) {
 		Zone* zone = getZone();
@@ -157,9 +155,9 @@ void TangibleObjectImplementation::setPvpStatusBitmask(int bitmask, bool notifyC
 		//Locker locker(zone);
 
 		CreatureObject* thisCreo = cast<CreatureObject*>(_this.get().get());
-		
+
 		SortedVector<QuadTreeEntry*> closeObjects(closeobjects->size(), 10);
-		
+
 		closeobjects->safeCopyTo(closeObjects);
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
@@ -176,6 +174,13 @@ void TangibleObjectImplementation::setPvpStatusBitmask(int bitmask, bool notifyC
 
 		}
 	}
+}
+
+void TangibleObjectImplementation::setPvpStatusBitmask(int bitmask, bool notifyClient) {
+	pvpStatusBitmask = bitmask;
+
+	broadcastPvpStatusBitmask();
+
 }
 
 void TangibleObjectImplementation::synchronizedUIListen(SceneObject* player, int value) {

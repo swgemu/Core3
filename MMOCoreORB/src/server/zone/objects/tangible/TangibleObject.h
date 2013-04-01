@@ -372,6 +372,8 @@ public:
 
 	float getHitChance();
 
+	void broadcastPvpStatusBitmask();
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -618,6 +620,8 @@ protected:
 public:
 	virtual float getHitChance();
 
+	void broadcastPvpStatusBitmask();
+
 	WeakReference<TangibleObject*> _this;
 
 	operator const TangibleObject*();
@@ -816,6 +820,8 @@ public:
 	bool isBroken();
 
 	float getHitChance();
+
+	void broadcastPvpStatusBitmask();
 
 };
 

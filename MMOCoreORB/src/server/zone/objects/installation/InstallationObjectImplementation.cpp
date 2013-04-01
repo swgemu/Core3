@@ -28,20 +28,11 @@
 #include "server/zone/objects/resource/ResourceSpawn.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
 #include "server/zone/Zone.h"
-
 #include "server/zone/templates/tangible/SharedInstallationObjectTemplate.h"
-
 #include "SyncrhonizedUiListenInstallationTask.h"
 #include "server/zone/objects/installation/components/TurretObserver.h"
-#include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
-
-//#include "server/zone/objects/tangible/threat/ThreatMap.h"
-
-
 #include "server/zone/objects/tangible/TangibleObject.h"
-
 #include "server/zone/objects/building/BuildingObject.h"
-
 #include "components/TurretDataComponent.h"
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
@@ -66,9 +57,8 @@ void InstallationObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	player->sendMessage(buio6);
 
 
-	if(this->isTurret() || isMinefield()){
-			UpdatePVPStatusMessage* upvpsms = new UpdatePVPStatusMessage(_this.get());
-			player->sendMessage(upvpsms);
+	if((this->isTurret() || isMinefield()) && player->isCreatureObject()){
+			sendPvpStatusTo(cast<CreatureObject*>(player));
 	}
 
 }

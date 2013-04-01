@@ -114,6 +114,8 @@ public:
 
 			player->setPosture(CreaturePosture::UPRIGHT);
 
+			player->broadcastPvpStatusBitmask();
+
 			player->sendSystemMessage("You have been restored.");
 
 			creature->sendSystemMessage(player->getFirstName() + " has been restored.");

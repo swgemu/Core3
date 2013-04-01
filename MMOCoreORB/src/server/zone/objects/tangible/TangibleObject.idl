@@ -610,6 +610,8 @@ class TangibleObject extends SceneObject {
 	public abstract float getHitChance(){
 		return 0;
 	}
+
+	public native void broadcastPvpStatusBitmask();
 }
 
 

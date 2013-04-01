@@ -76,8 +76,6 @@ public:
 				return;
 
 			tano->setPvpStatusBitmask(tano->getPvpStatusBitmask() | CreatureFlag::ATTACKABLE);
-			UpdatePVPStatusMessage* upvpsm = new UpdatePVPStatusMessage(tano,tano->getPvpStatusBitmask());
-			sceneObject->broadcastMessage(upvpsm, true, true);
 		}
 
 		//clocker.release();

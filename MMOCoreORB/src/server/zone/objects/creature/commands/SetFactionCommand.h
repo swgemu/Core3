@@ -47,7 +47,6 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
-#include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/FactionStatus.h"
 
@@ -156,8 +155,7 @@ public:
 				tano->setPvpStatusBitmask(pvpStatus);
 			}
 		} else {
-			UpdatePVPStatusMessage* upvpsm = new UpdatePVPStatusMessage(tano);
-			tano->broadcastMessage(upvpsm, true, true);
+			tano->broadcastPvpStatusBitmask();
 		}
 
 
