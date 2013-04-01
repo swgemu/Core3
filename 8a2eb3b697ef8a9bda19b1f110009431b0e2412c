@@ -34,6 +34,24 @@
       "revId": "8a2eb3b697ef8a9bda19b1f110009431b0e2412c",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABX///iw\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/CampKitMenuComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 2
+      },
+      "writtenOn": "2013-04-01T14:37:10Z",
+      "side": 1,
+      "message": "Loshult: I\u0027ve found many references to not being able to build a camp in no-build zones.  Additionally this is related to Mantis 3516 where there are literally they have 400+ entries they\u0027re adding and mostly because you can build a camp on top of them.\n\nAdditionally all the searches I find say you have to be 1000m outside of major cities etc.  I also never recall being able to build a camp near player cities etc.  Do have a reference somewhere that says this should be different?  Either way if we had a isCampPermittedAt how would we populate that?  I guess we could stub it but I can tell you the QA team wants to add a bunch of no-builds that could easily be avoided with this change.",
+      "parentUuid": "AAAABX///jw\u003d",
+      "revId": "8a2eb3b697ef8a9bda19b1f110009431b0e2412c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
