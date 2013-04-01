@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABX///jg\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/AiAgentImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-04-01T11:03:21Z",
+      "side": 1,
+      "message": "Break out this method and place it in the planet manager. Check the rest of the code for other uses of this type of method as well. I know that it is used in the position verification methods of the data sent by the client as well.",
+      "revId": "907b476f9b803f167ca32384575306390c5c3a68",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
