@@ -270,6 +270,8 @@ public:
 
 	bool isInWater(float x, float y);
 
+	float findClosestWorldFloor(float x, float y, float z);
+
 	void addPlayerCityTravelPoint(PlanetTravelPoint* ptp);
 
 	void removePlayerCityTravelPoint(const String& cityName);
@@ -426,6 +428,8 @@ public:
 
 	bool isInWater(float x, float y);
 
+	float findClosestWorldFloor(float x, float y, float z);
+
 	void addPlayerCityTravelPoint(PlanetTravelPoint* ptp);
 
 	void removePlayerCityTravelPoint(const String& cityName);
@@ -536,6 +540,8 @@ public:
 	bool checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle);
 
 	bool isInWater(float x, float y);
+
+	float findClosestWorldFloor(float x, float y, float z);
 
 	void removePlayerCityTravelPoint(const String& cityName);
 
