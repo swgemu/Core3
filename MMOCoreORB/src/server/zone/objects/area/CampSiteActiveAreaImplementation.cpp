@@ -85,7 +85,7 @@ void CampSiteActiveAreaImplementation::notifyEnter(SceneObject* object) {
 		stringID.setTO(terminal->getDisplayedName());
 		player->sendSystemMessage(stringID);
 
-		player->sendSystemMessage("@camp:sys_camp_heal");
+		player->sendSystemMessage("@camp:sys_camp_heal"); // While in the camp, medics and entertainers can heal your wounds.
 
 	}
 
@@ -134,7 +134,7 @@ void CampSiteActiveAreaImplementation::notifyExit(SceneObject* object) {
 
 int CampSiteActiveAreaImplementation::notifyHealEvent(int64 quantity) {
 	// Increase XP Pool for heals
-	currentXp += 5;
+	currentXp += (campStructureData->getExperience() / 180);
 	return 1;
 }
 
@@ -148,7 +148,7 @@ int CampSiteActiveAreaImplementation::notifyCombatEvent() {
 			abandonTask->cancel();
 
 	if(campOwner != NULL)
-		campOwner->sendSystemMessage("@camp:sys_abandoned_camp");
+		campOwner->sendSystemMessage("@camp:sys_abandoned_camp"); // Your camp has been abandoned.
 
 	return 1;
 }
@@ -173,7 +173,7 @@ void CampSiteActiveAreaImplementation::abandonCamp() {
 
 	if(campOwner != NULL) {
 		campOwner->dropObserver(ObserverEventType::STARTCOMBAT, campObserver);
-		campOwner->sendSystemMessage("@camp:sys_abandoned_camp");
+		campOwner->sendSystemMessage("@camp:sys_abandoned_camp"); // Your camp has been abandoned.
 	}
 }
 
@@ -191,13 +191,16 @@ bool CampSiteActiveAreaImplementation::despawnCamp() {
 		float durationUsed = ((float)(System::getTime() - timeCreated)) / (campStructureData->getDuration() / 4);
 
 		int amount = 0;
-		amount += (int)(campStructureData->getExperience() * durationUsed);
-		amount += ((visitors.size() -1) * 15);
+		int campXp = campStructureData->getExperience();
+		amount = (int)(campXp * durationUsed);
+
+		if (amount > campXp)
+			amount = campXp;
+
+		amount += (int)((visitors.size() -1) * (campXp / 30));
 		amount += currentXp;
 
-		int awarded = (amount > campStructureData->getExperience() ? campStructureData->getExperience() : amount);
-
-		playerManager->awardExperience(campOwner, "camp", awarded, true);
+		playerManager->awardExperience(campOwner, "camp", amount, true);
 	}
 
 	Locker tlocker(&taskMutex);
@@ -245,13 +248,38 @@ void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 		ghost->removeOwnedStructure(camp);
 	}
 
+	if (player->getSkillMod("camp") < campStructureData->getSkillRequired()) {
+		player->sendSystemMessage("@camp:error_too_big"); // You cannot assume ownership of this camp. You lack the skill to maintain a camp of this size.
+		return;
+	}
+
+	ghost = player->getPlayerObject();
+
+	for (int i = 0; i < ghost->getTotalOwnedStructureCount(); ++i) {
+		uint64 oid = ghost->getOwnedStructure(i);
+
+		ManagedReference<StructureObject*> structure = cast<StructureObject*>(ghost->getZoneServer()->getObject(oid));
+
+		if (structure->isCampStructure()) {
+			player->sendSystemMessage("@camp:sys_already_camping"); // But you already have a camp established elsewhere!
+			return;
+		}
+	}
+
 	setOwner(player);
 
 	abandoned = false;
 	currentXp = 0;
+	visitors.removeAll();
 
-	/// Get Ghost
-	ghost = campOwner->getPlayerObject();
+	Reference<SortedVector<ManagedReference<QuadTreeEntry*> >*> closeObjects = new SortedVector<ManagedReference<QuadTreeEntry*> >();
+	zone->getInRangeObjects(camp->getWorldPositionX(), camp->getWorldPositionY(), campStructureData->getRadius(), closeObjects, true);
+
+	for (int i = 0; i < closeObjects->size(); ++i) {
+		SceneObject* scno = cast<SceneObject*>(closeObjects->get(i).get());
+		if (scno->isPlayerCreature())
+			visitors.add(scno->getObjectID());
+	}
 
 	if (ghost != NULL) {
 		ghost->addOwnedStructure(camp);
@@ -264,6 +292,12 @@ void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 	if(abandonTask != NULL && abandonTask->isScheduled())
 		abandonTask->cancel();
 
+	if(despawnTask != NULL && despawnTask->isScheduled())
+		despawnTask->cancel();
+
+	timeCreated = System::getTime();
+	despawnTask->schedule(CampSiteActiveArea::DESPAWNTIME);
+
 	if(terminal != NULL) {
 		String campName = campOwner->getFirstName();
 		if(!campOwner->getLastName().isEmpty())
@@ -271,4 +305,6 @@ void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 		campName += "'s Camp";
 		terminal->setCustomObjectName(campName, true);
 	}
+
+	player->sendSystemMessage("@camp:assuming_ownership"); //You assume ownership of the camp.
 }
