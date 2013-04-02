@@ -27,7 +27,18 @@ common_thief = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_plasma_thief.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+	        groups = {
+			{group = "junk", chance = 6000000},
+			{group = "rifles", chance = 1000000},
+			{group = "pistols", chance = 1000000},
+			{group = "melee_weapons", chance = 1000000},
+			{group = "carbines", chance = 1000000},
+		},
+			lootChance = 2600000
+		}
+	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)

@@ -8,8 +8,8 @@ cas_vankoo = Creature:new {
 	damageMin = 725,
 	damageMax = 1160,
 	baseXp = 11109,
-	baseHAM = 40000,
-	baseHAMmax = 49000,
+	baseHAM = 50000,
+	baseHAMmax = 59000,
 	armor = 2,
 	resists = {75,75,0,10,10,10,10,0,0},
 	meatType = "",
@@ -27,7 +27,20 @@ cas_vankoo = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lok_cas_vankoo.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 6200000},
+				{group = "color_crystals", chance = 600000},
+				{group = "crystals_good", chance = 400000},
+				{group = "melee_polearm", chance = 600000},
+				{group = "pistols", chance = 600000},
+				{group = "clothing_attachments", chance = 800000},
+				{group = "armor_attachments", chance = 800000}
+			},
+			lootChance = 6500000
+		}
+	},
 	weapons = {"cas_vankoo_weapons"},
 	conversationTemplate = "",
 	attacks = merge(pistoleermaster,pikemanmaster)

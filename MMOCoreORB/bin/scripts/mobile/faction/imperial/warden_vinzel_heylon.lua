@@ -1,5 +1,6 @@
-imperial_inquisitor = Creature:new {
-	objectName = "@mob/creature_names:imperial_inquisitor",
+warden_vinzel_heylon = Creature:new {
+	objectName = "",
+	customName = "Warden Vinzel Heylon",
 	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
@@ -26,25 +27,25 @@ imperial_inquisitor = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_imperial_inquisitor_human_male_01.iff"},
+	templates = {"object/mobile/dressed_imperial_general_m.iff"},
 	lootGroups = {
 		{
 			groups = {
 				{group = "color_crystals", chance = 100000},
-				{group = "junk", chance = 7650000},
+				{group = "junk", chance = 7000000},
 				{group = "rifles", chance = 550000},
 				{group = "pistols", chance = 550000},
 				{group = "melee_weapons", chance = 550000},
 				{group = "carbines", chance = 550000},
-				{group = "clothing_attachments", chance = 25000},
-				{group = "armor_attachments", chance = 25000}
+				{group = "clothing_attachments", chance = 350000},
+				{group = "armor_attachments", chance = 350000}
 			},
-			lootChance = 2800000
+			lootChance = 4800000
 		}
 	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,carbineermaster)
+	attacks = merge(riflemanmaster,carbineermaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(imperial_inquisitor, "imperial_inquisitor")
+CreatureTemplates:addCreatureTemplate(warden_vinzel_heylon, "warden_vinzel_heylon")

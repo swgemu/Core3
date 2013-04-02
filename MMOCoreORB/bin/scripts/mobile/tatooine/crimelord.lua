@@ -27,7 +27,20 @@ crimelord = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_crimelord.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+	        groups = {
+				{group = "junk", chance = 5800000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+                		{group = "melee_weapons", chance = 1000000},
+                		{group = "carbines", chance = 1000000},
+				{group = "clothing_attachments", chance = 100000},
+				{group = "armor_attachments", chance = 100000}
+			},
+			lootChance = 3000000
+		}
+	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = merge(brawlernovice,marksmanmaster)
