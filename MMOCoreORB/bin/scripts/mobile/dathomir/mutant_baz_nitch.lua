@@ -28,9 +28,11 @@ mutant_baz_nitch = Creature:new {
 
 	templates = {"object/mobile/mutant_baz_nitch.iff"},
 	lootGroups = {},
-	weapons = {},
+	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
 	attacks = {
+		{"posturedownattack","postureDownChance=50"},
+		{"mediumpoison",""}
 	}
 }
 
