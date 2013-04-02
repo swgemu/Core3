@@ -312,6 +312,8 @@ class PlanetManager extends ManagedService implements Logger {
 
 	public native boolean isInWater(float x, float y);
 
+	public native float findClosestWorldFloor(float x, float y, float z);
+
 	@local
 	public native void addPlayerCityTravelPoint(PlanetTravelPoint ptp);
 	
