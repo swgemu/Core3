@@ -790,6 +790,9 @@ void StructureManager::moveFirstItemTo(CreatureObject* creature,
 			ManagedReference<SceneObject*> childObject =
 					cell->getContainerObject(j);
 
+			if (childObject->isVendor())
+				continue;
+
 			//if (!building->containsChildObject(childObject) && !childObject->isCreatureObject()) {
 			if (creature->getParent() != NULL
 					&& !building->containsChildObject(childObject)
