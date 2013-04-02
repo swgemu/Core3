@@ -23,13 +23,13 @@ lord_hethrir = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/lord_hethrir.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "theme_park_imperial_mission_giver_convotemplate",
 	outfit = "lord_hethrir_outfit",
 	attacks = {
 	}
