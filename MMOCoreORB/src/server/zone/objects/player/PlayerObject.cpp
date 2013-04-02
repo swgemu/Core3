@@ -4043,6 +4043,9 @@ void PlayerObjectImplementation::removeOwnedStructure(StructureObject* obj) {
 	return;
 	// server/zone/objects/player/PlayerObject.idl():  		ownedStructures.drop(obj.getObjectID());
 	(&ownedStructures)->drop(obj->getObjectID());
+	// server/zone/objects/player/PlayerObject.idl():  	}
+	if (obj->getObjectID() == getDeclaredResidence())	// server/zone/objects/player/PlayerObject.idl():  			setDeclaredResidence(null);
+	setDeclaredResidence(NULL);
 }
 
 int PlayerObjectImplementation::getTotalOwnedStructureCount() {

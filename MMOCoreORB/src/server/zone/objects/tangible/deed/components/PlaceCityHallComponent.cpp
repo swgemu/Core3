@@ -67,13 +67,12 @@ int PlaceCityHallComponent::notifyStructurePlaced(StructureDeed* deed, CreatureO
 	PlayerObject* ghost = creature->getPlayerObject();
 
 	if (ghost != NULL && structure->isBuildingObject()) {
-		ghost->setDeclaredResidence((cast<BuildingObject*>(structure)));
-
 		ManagedReference<CityRegion*> city = structure->getCityRegion();
 
 		if (city != NULL && city->isMayor(creature->getObjectID())) {
-			city->addCitizen(creature->getObjectID());
 			city->setCityHall(structure);
+			city->setLoaded();
+			StructureManager::instance()->declareResidence(creature, structure);
 		}
 	}
 

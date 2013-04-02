@@ -643,7 +643,7 @@ int StructureManager::declareResidence(CreatureObject* player,
 	if (cityRegion != NULL) {
 		Locker lock(cityRegion, player);
 
-		if (cityRegion->isMayor(objectid)) {
+		if (cityRegion->isMayor(objectid) && structureObject != cityRegion->getCityHall()) {
 			player->sendSystemMessage("@city/city:mayor_residence_change"); //As a city Mayor, your residence is always the city hall of the city in which you are mayor.  You cannot declare a new residence.
 			return 1;
 		}

@@ -354,6 +354,9 @@ class PlayerObject extends IntangibleObject {
 			return;
 		
 		ownedStructures.drop(obj.getObjectID());
+		if(obj.getObjectID() == getDeclaredResidence())
+			setDeclaredResidence(null);
+			
 	}
 	
 	public synchronized int getTotalOwnedStructureCount() {
