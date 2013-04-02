@@ -57,6 +57,7 @@ naboo_regions = {
 	{"hard_mauler_nw",0,0,{1,0},UNDEFINEDAREA,1},
 	{"hard_peko_peko_nw",-1856,6112,{1,2500},LAIRSPAWNAREA,1,"peko_albatross"},
 	{"hard_veermok_ne",0,0,{1,0},UNDEFINEDAREA,1},
+	{"imperial_vs_gungan_poi",4760,3875,{1,125},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"jungle_1",0,0,{1,0},UNDEFINEDAREA,1},
 	{"jungle_2",0,0,{1,0},UNDEFINEDAREA,1},
 	{"kaadara",0,0,{1,0},UNDEFINEDAREA,1},
