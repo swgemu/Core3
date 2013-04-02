@@ -37,9 +37,9 @@ gungan_bomber = Creature:new {
 			lootChance = 3200000
 		}					
 	},
-	weapons = {"rebel_weapons_medium"},
+	weapons = {"rebel_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlernovice,marksmannovice,commandomaster)
 }
 
 CreatureTemplates:addCreatureTemplate(gungan_bomber, "gungan_bomber")

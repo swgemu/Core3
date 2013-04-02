@@ -63,6 +63,8 @@ dathomir_regions = {
 	{"imperial_prison_2",-6358,930,{1,400},STATICSPAWNAREA + NOSPAWNAREA,1},
         {"imperial_tent",-4627,5395,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
         {"large_floating_rocks",2989,-5145,{1,50},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
+	{"lesser_sarlacc_1",-2080,3143,{1,250},STATICSPAWNAREA + NOBUILDZONEAREA,1},
+	{"lesser_sarlacc_2",-2080,3143,{1,40},STATICSPAWNAREA + NOSPAWNAREA,1},
 	{"lhon_kinad_1",0,0,{1,0},UNDEFINEDAREA,1},
 	{"lhon_kinad_2",0,0,{1,0},UNDEFINEDAREA,1},
 	{"lhon_kinad_3",0,0,{1,0},UNDEFINEDAREA,1},
