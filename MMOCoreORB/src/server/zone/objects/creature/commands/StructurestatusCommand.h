@@ -64,7 +64,8 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<SceneObject*> obj = server->getZoneServer()->getObject(target);
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, creature->getTargetID());
 
 		if (obj == NULL || !obj->isStructureObject() || obj->getZone() == NULL) {
 			creature->sendSystemMessage("@player_structure:no_building"); //you must be in a building, be near an installation, or have one targeted to do that.
