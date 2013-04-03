@@ -63,6 +63,77 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if ( creature == NULL)
+			return GENERALERROR;
+
+		UnicodeTokenizer tokenizer(arguments);
+		tokenizer.setDelimeter(" ");
+
+		String arg0 = "";
+		String arg1 = "";
+		uint64 objectID;
+
+		if (!tokenizer.hasMoreTokens())
+			return INVALIDPARAMETERS;
+
+		tokenizer.getStringToken(arg0);
+
+		try {
+
+			if(!tokenizer.hasMoreTokens())
+				return INVALIDPARAMETERS;
+
+			objectID = tokenizer.getLongToken();
+
+		} catch ( Exception err) {
+			creature->sendSystemMessage("Error parsing objectID: " +  err.getMessage());
+			return INVALIDPARAMETERS;
+
+		}
+
+		String strResource;
+		if (! ( arg0 == "cityregions" || arg0 == "factionstructures" || arg0 == "playerstructures" || arg0 == "sceneobjects" || arg0 == "clientobjects" || arg0 == "resourcespawns"  ) ){
+			creature->sendSystemMessage("Command format is database  < playerstructures | cityregions  | sceneobjects | clientobjects >  <objectid>");
+			return INVALIDPARAMETERS;
+		}
+
+		try {
+
+			ObjectDatabaseManager* dManager = ObjectDatabaseManager::instance();
+			uint16 id = ObjectDatabaseManager::instance()->getDatabaseID(arg0);
+
+			if(id == 0)
+				return GENERALERROR;
+
+			ObjectDatabase* thisDatabase = cast<ObjectDatabase*>(ObjectDatabaseManager::instance()->getDatabase(id));
+			if(thisDatabase == NULL || !thisDatabase->isObjectDatabase()) {
+				creature->sendSystemMessage("Error retrieving " + arg0 + " database.");
+				return GENERALERROR;
+			}
+			ObjectInputStream objectData(2000);
+
+			if ( !(thisDatabase->getData(objectID,&objectData) ) ) {
+				uint32 serverObjectCRC;
+				String className;
+
+				if (Serializable::getVariable<uint32>(String("SceneObject.serverObjectCRC").hashCode(), &serverObjectCRC, &objectData)) {
+
+					Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData);
+					StringBuffer msg;
+					msg << endl << "OID: " + String::valueOf(objectID) << endl;
+					msg << "Database: " << arg0 << endl;
+					msg << "ClassName: " << className << endl;
+					creature->sendSystemMessage(msg.toString());
+				}
+
+
+			} else {
+				creature->sendSystemMessage("Object " + String::valueOf(objectID) + " was not found in " + arg0 + " database.");
+			}
+
+		} catch ( Exception& err) {
+			creature->sendSystemMessage("Error in database lookup: " + err.getMessage());
+		}
 		return SUCCESS;
 	}
 
