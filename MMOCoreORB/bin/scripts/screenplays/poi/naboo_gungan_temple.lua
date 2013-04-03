@@ -14,11 +14,12 @@ GunganTempleScreenPlay = ScreenPlay:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 8600000},
-				{group = "rifles", chance = 500000},
-				{group = "pistols", chance = 500000},
-				{group = "clothing_attachments", chance = 100000},
-				{group = "armor_attachments", chance = 100000}
+				{group = "color_crystals", chance = 3500000},
+				{group = "junk", chance = 3500000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "clothing_attachments", chance = 500000},
+				{group = "armor_attachments", chance = 500000}
 			},
 			lootChance = 8000000
 		}					
