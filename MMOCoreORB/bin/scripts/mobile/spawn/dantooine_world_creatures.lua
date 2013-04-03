@@ -54,8 +54,17 @@ dantooine_world_creatures = {
 		{
 			lairTemplateName = "dantooine_bol_lair_neutral_medium",
 			spawnLimit = -1,
-			minDifficulty = 26,
+			minDifficulty = 24,
 			maxDifficulty = 32,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "dantooine_bol_lair_neutral_medium_boss_01",
+			spawnLimit = -1,
+			minDifficulty = 26,
+			maxDifficulty = 34,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
@@ -70,6 +79,7 @@ dantooine_world_creatures = {
 			size = 25
 		},
 		{
+			--piket_plains_walker level = 32
 			lairTemplateName = "dantooine_piket_plains_walker_herd_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 28,
@@ -106,19 +116,71 @@ dantooine_world_creatures = {
 			size = 25
 		},
 		{
+			--hurton_matron level = 26
 			lairTemplateName = "dantooine_huurton_matron_lair_neutral_medium",
 			spawnLimit = -1,
-			minDifficulty = 40,
-			maxDifficulty = 50,
+			minDifficulty = 20,
+			maxDifficulty = 32,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
 		},
 		{
+			--picket_longhorn_female level = 30, picket_longhorn level = 37
+			lairTemplateName = "dantooine_piket_longhorn_herd_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 28,
+			maxDifficulty = 40,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			--picket_longhorn_female level = 30, picket_longhorn level = 37
 			lairTemplateName = "dantooine_picket_longhorn_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 30,
 			maxDifficulty = 45,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			--fierce_picket_protector level = 45
+			lairTemplateName = "dantooine_piket_protector_herd_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 34,
+			maxDifficulty = 48,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			--fierce_picket_protector level = 45
+			lairTemplateName = "dantooine_picket_protector_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 42,
+			maxDifficulty = 54,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			--seething_bol_crusher level = 44
+			lairTemplateName = "dantooine_bol_seething_herd_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 34,
+			maxDifficulty = 46,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			--seething_bol_crusher level = 44
+			lairTemplateName = "dantooine_bol_seething_lair_neutral_medium",
+			spawnLimit = -1,
+			minDifficulty = 42,
+			maxDifficulty = 54,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
