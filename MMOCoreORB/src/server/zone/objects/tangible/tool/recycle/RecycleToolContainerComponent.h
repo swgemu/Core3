@@ -38,7 +38,7 @@ public:
 		if (parent == NULL)
 			return TransferErrorCode::MUSTBEINPLAYERINVENTORY;
 
-		int containerObjects = parent.get()->getSlottedObject("inventory")->getContainedObjectsRecursive();
+		int containerObjects = parent.get()->getSlottedObject("inventory")->getContainerObjectsSize();
 
 		if (containerObjects >= parent->getSlottedObject("inventory")->getContainerVolumeLimit()) {
 			errorDescription = "@error_message:inv_full"; // Your inventory is full.
