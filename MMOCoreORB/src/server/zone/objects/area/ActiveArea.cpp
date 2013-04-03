@@ -14,7 +14,7 @@
  *	ActiveAreaStub
  */
 
-enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCITYREGION__,RPC_ISNOBUILDAREA__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS2__,RPC_SETNOBUILDAREA__BOOL_,RPC_SETMUNICIPALZONE__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_ISCAMPAREA__,RPC_SETNOSPAWNAREA__BOOL_,RPC_ISNOSPAWNAREA__,RPC_ISMUNICIPALZONE__,RPC_GETCELLOBJECTID__,RPC_SETCELLOBJECTID__LONG_,RPC_SETAREASHAPE__AREASHAPE_,RPC_GETAREASHAPE__,RPC_INTERSECTSWITH__ACTIVEAREA_};
+enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCITYREGION__,RPC_ISNOBUILDAREA__,RPC_ISCAMPINGPERMITTED__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS2__,RPC_SETNOBUILDAREA__BOOL_,RPC_SETCAMPINGPERMITTED__BOOL_,RPC_SETMUNICIPALZONE__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_ISCAMPAREA__,RPC_SETNOSPAWNAREA__BOOL_,RPC_ISNOSPAWNAREA__,RPC_ISMUNICIPALZONE__,RPC_GETCELLOBJECTID__,RPC_SETCELLOBJECTID__LONG_,RPC_SETAREASHAPE__AREASHAPE_,RPC_GETAREASHAPE__,RPC_INTERSECTSWITH__ACTIVEAREA_};
 
 ActiveArea::ActiveArea() : SceneObject(DummyConstructorParameter::instance()) {
 	ActiveAreaImplementation* _implementation = new ActiveAreaImplementation();
@@ -155,6 +155,19 @@ bool ActiveArea::isNoBuildArea() {
 		return _implementation->isNoBuildArea();
 }
 
+bool ActiveArea::isCampingPermitted() {
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISCAMPINGPERMITTED__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isCampingPermitted();
+}
+
 bool ActiveArea::containsPoint(float x, float y) {
 	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -195,6 +208,20 @@ void ActiveArea::setNoBuildArea(bool val) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setNoBuildArea(val);
+}
+
+void ActiveArea::setCampingPermitted(bool val) {
+	ActiveAreaImplementation* _implementation = static_cast<ActiveAreaImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETCAMPINGPERMITTED__BOOL_);
+		method.addBooleanParameter(val);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setCampingPermitted(val);
 }
 
 void ActiveArea::setMunicipalZone(bool val) {
@@ -460,6 +487,10 @@ bool ActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, const
 		TypeInfo<bool >::parseFromBinaryStream(&noBuildArea, stream);
 		return true;
 
+	case 0x157f549a: //ActiveArea.campingPermitted
+		TypeInfo<bool >::parseFromBinaryStream(&campingPermitted, stream);
+		return true;
+
 	case 0x3690552d: //ActiveArea.municipalZone
 		TypeInfo<bool >::parseFromBinaryStream(&municipalZone, stream);
 		return true;
@@ -502,6 +533,14 @@ int ActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_nameHashCode = 0x157f549a; //ActiveArea.campingPermitted
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<bool >::toBinaryStream(&campingPermitted, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_nameHashCode = 0x3690552d; //ActiveArea.municipalZone
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
@@ -535,7 +574,7 @@ int ActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 5;
+	return _count + 6;
 }
 
 ActiveAreaImplementation::ActiveAreaImplementation() {
@@ -544,6 +583,8 @@ ActiveAreaImplementation::ActiveAreaImplementation() {
 	cellObjectID = 0;
 	// server/zone/objects/area/ActiveArea.idl():  		noBuildArea = false;
 	noBuildArea = false;
+	// server/zone/objects/area/ActiveArea.idl():  		campingPermitted = false;
+	campingPermitted = false;
 	// server/zone/objects/area/ActiveArea.idl():  		municipalZone = false;
 	municipalZone = false;
 	// server/zone/objects/area/ActiveArea.idl():  		noSpawnArea = false;
@@ -577,6 +618,11 @@ bool ActiveAreaImplementation::isNoBuildArea() {
 	return noBuildArea;
 }
 
+bool ActiveAreaImplementation::isCampingPermitted() {
+	// server/zone/objects/area/ActiveArea.idl():  		return campingPermitted;
+	return campingPermitted;
+}
+
 float ActiveAreaImplementation::getRadius2() {
 	// server/zone/objects/area/ActiveArea.idl():  		}
 	if (areaShape != NULL){
@@ -593,6 +639,11 @@ float ActiveAreaImplementation::getRadius2() {
 void ActiveAreaImplementation::setNoBuildArea(bool val) {
 	// server/zone/objects/area/ActiveArea.idl():  		noBuildArea = val;
 	noBuildArea = val;
+}
+
+void ActiveAreaImplementation::setCampingPermitted(bool val) {
+	// server/zone/objects/area/ActiveArea.idl():  		campingPermitted = val;
+	campingPermitted = val;
 }
 
 void ActiveAreaImplementation::setMunicipalZone(bool val) {
@@ -715,6 +766,11 @@ void ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(isNoBuildArea());
 		}
 		break;
+	case RPC_ISCAMPINGPERMITTED__:
+		{
+			resp->insertBoolean(isCampingPermitted());
+		}
+		break;
 	case RPC_CONTAINSPOINT__FLOAT_FLOAT_:
 		{
 			resp->insertBoolean(containsPoint(inv->getFloatParameter(), inv->getFloatParameter()));
@@ -728,6 +784,11 @@ void ActiveAreaAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETNOBUILDAREA__BOOL_:
 		{
 			setNoBuildArea(inv->getBooleanParameter());
+		}
+		break;
+	case RPC_SETCAMPINGPERMITTED__BOOL_:
+		{
+			setCampingPermitted(inv->getBooleanParameter());
 		}
 		break;
 	case RPC_SETMUNICIPALZONE__BOOL_:
@@ -826,6 +887,10 @@ bool ActiveAreaAdapter::isNoBuildArea() {
 	return (static_cast<ActiveArea*>(stub))->isNoBuildArea();
 }
 
+bool ActiveAreaAdapter::isCampingPermitted() {
+	return (static_cast<ActiveArea*>(stub))->isCampingPermitted();
+}
+
 bool ActiveAreaAdapter::containsPoint(float x, float y) {
 	return (static_cast<ActiveArea*>(stub))->containsPoint(x, y);
 }
@@ -836,6 +901,10 @@ float ActiveAreaAdapter::getRadius2() {
 
 void ActiveAreaAdapter::setNoBuildArea(bool val) {
 	(static_cast<ActiveArea*>(stub))->setNoBuildArea(val);
+}
+
+void ActiveAreaAdapter::setCampingPermitted(bool val) {
+	(static_cast<ActiveArea*>(stub))->setCampingPermitted(val);
 }
 
 void ActiveAreaAdapter::setMunicipalZone(bool val) {

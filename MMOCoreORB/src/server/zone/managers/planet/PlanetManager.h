@@ -214,6 +214,8 @@ public:
 
 	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild = NULL);
 
+	bool isCampingPermittedAt(float x, float y, float margin);
+
 	bool isInRangeWithPoi(float x, float y, float range);
 
 	bool isInObjectsNoBuildZone(float x, float y, float extraMargin);
@@ -370,6 +372,8 @@ public:
 
 	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild = NULL);
 
+	bool isCampingPermittedAt(float x, float y, float margin);
+
 	bool isInRangeWithPoi(float x, float y, float range);
 
 	bool isInObjectsNoBuildZone(float x, float y, float extraMargin);
@@ -486,6 +490,8 @@ public:
 	void loadPerformanceLocations();
 
 	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild);
+
+	bool isCampingPermittedAt(float x, float y, float margin);
 
 	bool isInRangeWithPoi(float x, float y, float range);
 
