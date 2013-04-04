@@ -25,6 +25,7 @@
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/loot/LootManager.h"
 #include "server/zone/managers/collision/PathFinderManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
@@ -917,9 +918,10 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 	while (!found && patrolPoints.size() != 0) {
 		PatrolPoint* targetPosition = &patrolPoints.get(0);
+		PlanetManager* planetManager = zone->getPlanetManager();
 		
 		if (targetPosition->getCell() == NULL && zone != NULL) {
-			targetPosition->setPositionZ(zone->getHeight(targetPosition->getPositionX(), targetPosition->getPositionY()));
+			targetPosition->setPositionZ(planetManager->findClosestWorldFloor(targetPosition->getPositionX(), targetPosition->getPositionY(), thisWorldPos.getZ()));
 		}
 
 		SceneObject* targetCoordinateCell = targetPosition->getCell();
@@ -1008,10 +1010,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 			if (i == path->size() - 1 || pathDistance >= maxDist || coord->getCell() != parent.get()) { //last waypoint
 				cellObject = coord->getCell();
 
-				//TODO: calculate height
-				Vector3 noHeightWorldPos(thisWorldPos.getX(), thisWorldPos.getY(), 0);
-				Vector3 noHeightNextWorldPos(nextWorldPos.getX(), nextWorldPos.getY(), 0);
-				dist = noHeightNextWorldPos.distanceTo(noHeightWorldPos);
+				dist = nextWorldPos.distanceTo(thisWorldPos);
 
 				*nextPosition = *coord;
 				found = true;
@@ -1067,8 +1066,9 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 						if (nextPosition->getCell() == NULL) {
 							
 
-							if (zone != NULL)
-								newPositionZ = zone->getHeight(newPositionX, newPositionY);
+							if (zone != NULL) {
+								newPositionZ = planetManager->findClosestWorldFloor(newPositionX, newPositionY, oldCoordinates.getZ());
+							}
 							//newPositionZ = nextPosition.getZ();
 						} else {
 							newPositionZ = nextPosition->getZ();

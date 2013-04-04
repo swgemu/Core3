@@ -47,10 +47,10 @@ which carries forward this exception.
 
 #include "ObjectControllerMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "ObjectControllerMessageCallback.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/Zone.h"
 
@@ -166,6 +166,17 @@ public:
 		/*float floorHeight = CollisionManager::instance()->getWorldFloorCollision(positionX, positionY, object->getZone(), true);
 
 		printf("received height: %f calculated height: %f\n", positionZ, floorHeight); */
+
+		ManagedReference<PlanetManager*> planetManager = object->getZone()->getPlanetManager();
+
+		if (planetManager == NULL)
+			return;
+
+		float z = planetManager->findClosestWorldFloor(positionX, positionY, positionZ);
+
+		if (z != positionZ) {
+			positionZ = z;
+		}
 
 		ValidatedPosition pos;
 		pos.update(object);
