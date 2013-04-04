@@ -54,6 +54,8 @@ object_tangible_mission_mission_bounty_droid_seeker = object_tangible_mission_sh
 	experimentalMax = {0, 0, 15, 100},
 	experimentalPrecision = {0, 0, 0, 0},
 	experimentalCombineType = {0, 0, 1, 1},
+	
+	useCount = 10,
 }
 
 ObjectTemplates:addTemplate(object_tangible_mission_mission_bounty_droid_seeker, "object/tangible/mission/mission_bounty_droid_seeker.iff")

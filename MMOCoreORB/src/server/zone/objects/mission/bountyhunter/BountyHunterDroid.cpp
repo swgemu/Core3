@@ -68,7 +68,12 @@ Reference<FindTargetTask*> BountyHunterDroid::findTarget(SceneObject* droidObjec
 
 	Locker locker(droidObject);
 
-	droidObject->destroyObjectFromWorld(true);
+	TangibleObject* tano = cast<TangibleObject*>(droidObject);
+	if(tano != NULL){
+		tano->setUseCount(tano->getUseCount() - 1, true);
+	} else {
+		droidObject->destroyObjectFromWorld(true);
+	}
 
 	return findTargetTask;
 }
@@ -114,7 +119,13 @@ Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droid
 
 	Locker locker(droidObject);
 
-	droidObject->destroyObjectFromWorld(true);
+	TangibleObject* tano = cast<TangibleObject*>(droidObject);
+
+	if(tano != NULL){
+		tano->setUseCount(tano->getUseCount() - 1, true);
+	} else {
+		droidObject->destroyObjectFromWorld(true);
+	}
 
 	return task;
 }
