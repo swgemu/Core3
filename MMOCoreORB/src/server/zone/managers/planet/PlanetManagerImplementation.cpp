@@ -481,6 +481,8 @@ void PlanetManagerImplementation::loadClientRegions() {
 		noBuild->setAreaShape(areaShape);
 		noBuild->setRadius(radius * 2);
 		noBuild->setNoBuildArea(true);
+		// Cities already have "Municipal" protection so the structure no-build should not apply to camps
+		noBuild->setCampingPermitted(true);
 		zone->transferObject(noBuild, -1, true);
 	}
 
@@ -615,9 +617,13 @@ bool PlanetManagerImplementation::isInObjectsNoBuildZone(float x, float y, float
 		SharedObjectTemplate* objectTemplate = obj->getObjectTemplate();
 
 		if (objectTemplate != NULL) {
-			float radius = objectTemplate->getNoBuildRadius() + extraMargin;
+			float radius = objectTemplate->getNoBuildRadius();
 
+			// Only check objects with an actual NoBuildRadius
 			if (radius > 0) {
+				// Add margin to check
+				radius += extraMargin;
+
 				Vector3 objWorldPos = obj->getWorldPosition();
 
 				if (objWorldPos.squaredDistanceTo(targetPos) < radius * radius) {
@@ -655,6 +661,43 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 
 	if (isInRangeWithPoi(targetPos.getX(), targetPos.getY(), 512))
 		return false;
+
+	return true;
+}
+
+bool PlanetManagerImplementation::isCampingPermittedAt(float x, float y, float margin) {
+	SortedVector<ManagedReference<ActiveArea* > > activeAreas;
+
+	Vector3 targetPos(x, y, zone->getHeight(x, y));
+
+	zone->getInRangeActiveAreas(x, y, &activeAreas, true);
+
+	for (int i = 0; i < activeAreas.size(); ++i) {
+		ActiveArea* area = activeAreas.get(i);
+
+		// Skip areas explicitly marked as camping allowed
+		if (area->isCampingPermitted()) {
+			continue;
+		}
+
+		// Honor no-build after checking for areas that camping is explicitly allowed
+		if (area->isNoBuildArea()) {
+			return false;
+		}
+	}
+
+	if (isInObjectsNoBuildZone(x, y, margin)) {
+		return false;
+	}
+
+	if (isInWater(targetPos.getX(), targetPos.getY())) {
+		return false;
+	}
+
+	// TODO: Need to determine how close to POI a camp could be made
+	if (isInRangeWithPoi(targetPos.getX(), targetPos.getY(), 512)) {
+		return false;
+	}
 
 	return true;
 }

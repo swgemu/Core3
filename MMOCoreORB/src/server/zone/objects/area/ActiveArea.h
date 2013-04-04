@@ -82,11 +82,15 @@ public:
 
 	bool isNoBuildArea();
 
+	bool isCampingPermitted();
+
 	bool containsPoint(float x, float y);
 
 	float getRadius2();
 
 	void setNoBuildArea(bool val);
+
+	void setCampingPermitted(bool val);
 
 	void setMunicipalZone(bool val);
 
@@ -139,6 +143,8 @@ class ActiveAreaImplementation : public SceneObjectImplementation {
 protected:
 	bool noBuildArea;
 
+	bool campingPermitted;
+
 	bool municipalZone;
 
 	unsigned long long cellObjectID;
@@ -170,11 +176,15 @@ public:
 
 	bool isNoBuildArea();
 
+	bool isCampingPermitted();
+
 	bool containsPoint(float x, float y);
 
 	float getRadius2();
 
 	void setNoBuildArea(bool val);
+
+	void setCampingPermitted(bool val);
 
 	void setMunicipalZone(bool val);
 
@@ -259,11 +269,15 @@ public:
 
 	bool isNoBuildArea();
 
+	bool isCampingPermitted();
+
 	bool containsPoint(float x, float y);
 
 	float getRadius2();
 
 	void setNoBuildArea(bool val);
+
+	void setCampingPermitted(bool val);
 
 	void setMunicipalZone(bool val);
 

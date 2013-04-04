@@ -184,11 +184,11 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			}
 		}
 
-		/// No Builds
-		//if (!planetManager->isBuildingPermittedAt(player->getPositionX(), player->getPositionY(), player)) {
-		//	player->sendSystemMessage("@camp:error_nobuild");
-		//	return 0;
-		//}
+		/// Check to see if you can camp here (Allows building in city no-build zone but not within city limits which are checked above)
+		if (!planetManager->isCampingPermittedAt(player->getPositionX(), player->getPositionY(), campStructureData->getNoBuildRadius())) {
+			player->sendSystemMessage("@camp:error_nobuild");
+			return 0;
+		}
 
 		player->sendSystemMessage("@camp:starting_camp");
 

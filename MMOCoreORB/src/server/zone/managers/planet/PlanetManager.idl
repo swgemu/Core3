@@ -178,6 +178,8 @@ class PlanetManager extends ManagedService implements Logger {
 	public native PlanetTravelPoint getNearestPlanetTravelPoint(@dereferenced final Vector3 position, float range = 16000.0);
 	
 	public native boolean isBuildingPermittedAt(float x, float y, SceneObject objectTryingToBuild = null);
+
+	public native boolean isCampingPermittedAt(float x, float y, float margin);
 	
 	public native boolean isInRangeWithPoi(float x, float y, float range);
 	
