@@ -70,7 +70,12 @@ public:
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 
-		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, target);
+		uint64 targetid = target;
+		if(targetid <= 0)
+			targetid = creature->getTargetID();
+
+		ManagedReference<SceneObject*> obj = playerManager->getInRangeStructureWithAdminRights(creature, targetid);
+
 
 		if (obj == NULL || !obj->isStructureObject())
 			return INVALIDTARGET;
