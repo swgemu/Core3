@@ -55,6 +55,7 @@ function ScreenPlay:initializeLootContainers()
 
 			local container = LuaSceneObject(pContainer)
 			container:setContainerDefaultAllowPermission(MOVEOUT + OPEN)
+			container:setContainerComponent("PlaceableLootContainerComponent")
 		end
 	end
 end
