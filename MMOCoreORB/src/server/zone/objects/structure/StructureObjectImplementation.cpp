@@ -26,7 +26,7 @@
 #include "server/zone/templates/appearance/MeshAppearanceTemplate.h"
 #include "server/zone/templates/appearance/PortalLayout.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
-
+#define DEBUG_MAINTENANCE
 void StructureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
 
@@ -327,6 +327,10 @@ bool StructureObjectImplementation::isCivicStructure() {
 }
 
 int StructureObjectImplementation::getBaseMaintenanceRate(){
+#ifdef DEBUG_MAINTENANCE
+	return baseMaintenanceRate;
+#endif
+
 	Reference<SharedStructureObjectTemplate*> tmpl = cast<SharedStructureObjectTemplate*>(getObjectTemplate());
 
 	if(tmpl == NULL)
