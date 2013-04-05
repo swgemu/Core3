@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABX///aw\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/AiAgentImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-04-05T15:38:10Z",
+      "side": 1,
+      "message": "what about water?",
+      "revId": "a11fe6ab1cc1d1baf18ae43a322e470177286744",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABX///ao\u003d",
+        "filename": "MMOCoreORB/src/server/zone/packets/object/DataTransform.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-04-05T15:38:10Z",
+      "side": 1,
+      "message": "you are ignoring water (swimming height)",
+      "revId": "a11fe6ab1cc1d1baf18ae43a322e470177286744",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
