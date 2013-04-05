@@ -12,6 +12,7 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/ZoneServer.h"
+#define DEBUG_MAINTENANCE
 
 void StructureMaintenanceTask::run() {
 	ManagedReference<StructureObject*> strongRef = structureObject.get();
@@ -92,16 +93,19 @@ void StructureMaintenanceTask::run() {
 
 void StructureMaintenanceTask::sendMailMaintenanceWithdrawnFromBank(CreatureObject* owner, StructureObject* structure) {
 	ManagedReference<ChatManager*> chatManager = structure->getZoneServer()->getChatManager();
-
 	if (chatManager != NULL) {
 		UnicodeString subject = "@player_structure:structure_maintenance_empty_subject";
 
 		//Your %TT %TO has an empty maintenance pool. It will start deducting from your bank account automatically.
+
 		StringIdChatParameter emailBody("@player_structure:structure_maintenance_empty_body");
 		emailBody.setTT(structure->getObjectName());
-		emailBody.setTO("(" + String::valueOf((int)structure->getPositionX()) + ", " + String::valueOf((int)structure->getPositionY()) + ")");
+			emailBody.setTO("(" + String::valueOf((int)structure->getPositionX()) + ", " + String::valueOf((int)structure->getPositionY()) + ")");
 
 		chatManager->sendMail("@player_structure:your_structure_prefix", subject, emailBody, owner->getFirstName());
+#ifdef DEBUG_MAINTENANCE
+		sendStructureID(owner, structure);
+#endif
 	}
 }
 
@@ -124,6 +128,9 @@ void StructureMaintenanceTask::sendMailDecay(CreatureObject* owner, StructureObj
 		emailBody.setDI(structure->getDecayPercentage());
 
 		chatManager->sendMail("@player_structure:your_structure_prefix", subject, emailBody, owner->getFirstName());
+#ifdef DEBUG_MAINTENANCE
+		sendStructureID(owner, structure);
+#endif
 	}
 }
 
@@ -141,6 +148,9 @@ void StructureMaintenanceTask::sendMailCondemned(CreatureObject* owner, Structur
 		emailBody.setDI(-structure->getSurplusMaintenance());
 		chatManager->sendMail("@player_structure:your_structure_prefix", subject, emailBody, owner->getFirstName());
 	}
+#ifdef DEBUG_MAINTENANCE
+		sendStructureID(owner, structure);
+#endif
 }
 
 bool StructureMaintenanceTask::shouldBuildingBeDestroyed(StructureObject* structure) {
@@ -150,5 +160,13 @@ bool StructureMaintenanceTask::shouldBuildingBeDestroyed(StructureObject* struct
 		return true;
 	} else {
 		return false;
+	}
+}
+
+void StructureMaintenanceTask::sendStructureID(CreatureObject* owner, StructureObject* structure){
+	ManagedReference<ChatManager*> chatManager = structure->getZoneServer()->getChatManager();
+
+	if (chatManager != NULL) {
+		chatManager->sendMail("@player_structure:your_structure_prefix", "MAINT DEBUG:", String::valueOf(structure->getObjectID()), owner->getFirstName());
 	}
 }
