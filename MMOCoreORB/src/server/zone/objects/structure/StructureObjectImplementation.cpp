@@ -71,10 +71,10 @@ CreatureObject* StructureObjectImplementation::getOwnerCreatureObject() {
 
 float StructureObjectImplementation::getMaintenanceRate() {
 	if (maintenanceReduced) {
-		return (int)((float)baseMaintenanceRate * 0.8f);
+		return (int)((float)getBaseMaintenanceRate() * 0.8f);
 	}
 
-	return baseMaintenanceRate;
+	return getBaseMaintenanceRate();
 }
 
 String StructureObjectImplementation::getMaintenanceMods() {
@@ -324,4 +324,22 @@ bool StructureObjectImplementation::isCivicStructure() {
 
 
 	return ssot->isCivicStructure();
+}
+
+int StructureObjectImplementation::getBaseMaintenanceRate(){
+	Reference<SharedStructureObjectTemplate*> tmpl = cast<SharedStructureObjectTemplate*>(getObjectTemplate());
+
+	if(tmpl == NULL)
+		return 0;
+
+	return tmpl->getBaseMaintenanceRate();
+}
+
+int StructureObjectImplementation::getBasePowerRate(){
+	Reference<SharedStructureObjectTemplate*> tmpl = cast<SharedStructureObjectTemplate*>(getObjectTemplate());
+
+	if(tmpl == NULL)
+		return 0;
+
+	return tmpl->getBasePowerRate();
 }

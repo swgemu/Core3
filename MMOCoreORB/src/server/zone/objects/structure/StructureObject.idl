@@ -289,7 +289,7 @@ class StructureObject extends TangibleObject {
 	 * @return int The cost to redeed this building.
 	 */
 	public int getRedeedCost() {
-		return (baseMaintenanceRate * 50);
+		return (getBaseMaintenanceRate() * 50);
 	}
 
 	public native CreatureObject getOwnerCreatureObject(); 
@@ -312,13 +312,9 @@ class StructureObject extends TangibleObject {
 
 	public native string getMaintenanceMods();
 
-	public int getBaseMaintenanceRate() { //TODO: Move to template
-		return baseMaintenanceRate;
-	}
+	public native int getBaseMaintenanceRate();
 	
-	public int getBasePowerRate() { //TODO: Move to template
-		return basePowerRate;
-	}
+	public native int getBasePowerRate();
 	
 	public int getSurplusMaintenance() {
 		return surplusMaintenance;

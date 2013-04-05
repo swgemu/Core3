@@ -1316,8 +1316,8 @@ void StructureObjectImplementation::setOwnerName(const String& ownerName) {
 }
 
 int StructureObjectImplementation::getRedeedCost() {
-	// server/zone/objects/structure/StructureObject.idl():  		return (baseMaintenanceRate * 50);
-	return (baseMaintenanceRate * 50);
+	// server/zone/objects/structure/StructureObject.idl():  		return (getBaseMaintenanceRate() * 50);
+	return (getBaseMaintenanceRate() * 50);
 }
 
 unsigned long long StructureObjectImplementation::getOwnerObjectID() {
@@ -1333,16 +1333,6 @@ unsigned long long StructureObjectImplementation::getDeedObjectID() {
 void StructureObjectImplementation::setMaintenanceReduced(bool value) {
 	// server/zone/objects/structure/StructureObject.idl():  		maintenanceReduced = value;
 	maintenanceReduced = value;
-}
-
-int StructureObjectImplementation::getBaseMaintenanceRate() {
-	// server/zone/objects/structure/StructureObject.idl():  		return baseMaintenanceRate;
-	return baseMaintenanceRate;
-}
-
-int StructureObjectImplementation::getBasePowerRate() {
-	// server/zone/objects/structure/StructureObject.idl():  		return basePowerRate;
-	return basePowerRate;
 }
 
 int StructureObjectImplementation::getSurplusMaintenance() {
