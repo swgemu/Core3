@@ -14,13 +14,6 @@ includeFile("conversations/themepark/tutorial/stormtrooper_filler_conv.lua")
 includeFile("conversations/themepark/tutorial/panic_npc_1_conv.lua")
 includeFile("conversations/themepark/tutorial/protocol_droid_3po_silver_conv.lua")
 
--- Jabba's Themepark
-includeFile("conversations/themepark/jabba/reelo_baruk_conv.lua")
-
--- Imperial Retreat Themepark
-includeFile("conversations/themepark/imperial/imperial_retreat_kaja_orzee_conv.lua")
-includeFile("conversations/themepark/imperial/imperial_retreat_governor_grayed_wintozzen_conv.lua")
-
 -- Rebel Themepark
 includeFile("conversations/themepark/rebel/mission_giver_conv.lua")
 includeFile("conversations/themepark/rebel/mission_target_conv.lua")

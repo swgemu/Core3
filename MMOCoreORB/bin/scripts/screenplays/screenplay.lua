@@ -89,6 +89,8 @@ includeFile("themepark/conversations/mission_giver_conv_handler.lua")
 includeFile("themepark/conversations/mission_target_conv_handler.lua")
 includeFile("themepark/rebel/themeParkRebel.lua")
 includeFile("themepark/jabba/themeParkJabba.lua")
+includeFile("themepark/imperial/themeParkImperial.lua")
+includeFile("themepark/imperial/emperors_retreat.lua")
 includeFile("themepark/tutorial.lua")
 
 -- Recruiters
@@ -157,7 +159,7 @@ includeFile("caves/tatooine_tusken_bunker.lua")
 
 -- Cities
 includeFile("cities/dantooine_imperial_outpost.lua")
---includeFile("cities/lok_imperial_outpost.lua") this is a duplicate screenplay should be deleted.
+includeFile("cities/lok_imperial_outpost.lua")
 includeFile("cities/lok_nym_stronghold.lua")
 includeFile("cities/rori_narmle.lua")
 includeFile("cities/rori_rebel_outpost.lua")
@@ -169,7 +171,6 @@ includeFile("cities/talus_nashal.lua")
 includeFile("poi/corellia_rogue_corsec_base.lua")
 includeFile("poi/dantooine_dantari_village.lua")
 includeFile("poi/dantooine_mokk_stronghold.lua")
-includeFile("poi/dathomir_imperial_prison.lua")
 includeFile("poi/dathomir_nightsister_stronghold.lua")
 includeFile("poi/dathomir_nightsister_labor_camp.lua")
 includeFile("poi/dathomir_nightsister_vs_singing_mountain.lua")

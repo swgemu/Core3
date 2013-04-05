@@ -83,6 +83,7 @@ end
 --Themeparks
 createMissionTargetConvoTemplate("theme_park_rebel_mission_target_convotemplate","theme_park_rebel_mission_target_conv_handler")
 createMissionTargetConvoTemplate("theme_park_jabba_mission_target_convotemplate","theme_park_jabba_mission_target_conv_handler")
+createMissionTargetConvoTemplate("theme_park_imperial_mission_target_convotemplate","theme_park_imperial_mission_target_conv_handler")
 
 -- Tatooine
 createMissionTargetConvoTemplate("rakir_banai_mission_target_convotemplate","rakir_banai_mission_target_conv_handler")
