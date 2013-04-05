@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
-
+#define DEBUG_MAINTENANCE
 class StructureTerminalMenuComponent : public ObjectMenuComponent {
 public:
 	void fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* creature);

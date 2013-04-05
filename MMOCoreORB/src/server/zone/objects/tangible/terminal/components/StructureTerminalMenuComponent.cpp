@@ -16,6 +16,7 @@
 #include "server/zone/objects/player/sessions/StructureSetAccessFeeSession.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/chat/StringIdChatParameter.h"
+#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
 
 void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* creature) {
 
@@ -69,12 +70,25 @@ void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneOb
 			menuResponse->addRadialMenuItemToRadialID(117, 120, 3, "@player_structure:permission_banned"); //Ban List
 			menuResponse->addRadialMenuItemToRadialID(117, 122, 3, "@player_structure:permission_vendor"); //Vendor List
 		}
+
+
 	} else if(structureObject->isOnPermissionList("VENDOR", creature)) {
 		if (creature->hasSkill("crafting_artisan_business_03")) {
 			menuResponse->addRadialMenuItem(118, 3, "@player_structure:management"); //Structure Management
 			menuResponse->addRadialMenuItemToRadialID(118, 130, 3, "@player_structure:create_vendor"); //Create Vendor
 		}
 	}
+
+#ifdef DEBUG_MAINTENANCE
+	PlayerObject* ghost = creature->getPlayerObject();
+	if(ghost != NULL && ghost->isPrivileged()) {
+		menuResponse->addRadialMenuItem(130, 3, "MAINT DEBUG"); //
+		menuResponse->addRadialMenuItemToRadialID(130, 131, 3, "Maximize Maintenance");
+		menuResponse->addRadialMenuItemToRadialID(130, 132, 3, "Normalize Maintenance");
+		menuResponse->addRadialMenuItemToRadialID(130, 133, 3, "Force Maintenance Update");
+	}
+
+#endif
 }
 
 int StructureTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) {
@@ -97,7 +111,7 @@ int StructureTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 		StructureManager* structureManager = StructureManager::instance();
 
 		Locker structureLocker(structureObject, creature);
-
+		Logger::Logger term("term");
 		switch (selectedID) {
 		case 201:
 			structureManager->promptDeleteAllItems(creature, structureObject);
@@ -132,6 +146,27 @@ int StructureTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 		case 125:
 			creature->executeObjectControllerAction(0x786CC38E, structureObject->getObjectID(), ""); //setPrivacy
 			break;
+#ifdef DEBUG_MAINTENANCE
+		case 131:
+			structureObject->setBaseMaintenanceRate(10000000);
+			creature->sendSystemMessage("Maximized structure maintenance.  Verify in structure maintenance report");
+			break;
+		case 132:
+		{
+			SharedStructureObjectTemplate* templ = cast<SharedStructureObjectTemplate*>(structureObject->getObjectTemplate());
+			if(templ != NULL){
+				structureObject->setBaseMaintenanceRate( templ->getBaseMaintenanceRate());
+				creature->sendSystemMessage("Normalized structure maintenance to " + String::valueOf(templ->getBaseMaintenanceRate()));
+			}
+
+			break;
+		}
+		case 133:
+
+			structureObject->scheduleMaintenanceTask(1);
+			creature->sendSystemMessage("Forcing maintenance update");
+			break;
+#endif
 		case 68:
 			if(structureObject->isBuildingObject()) {
 				BuildingObject* building = cast<BuildingObject*>(structureObject.get());
