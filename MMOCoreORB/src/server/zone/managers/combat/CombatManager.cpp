@@ -275,8 +275,10 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 			defender->removeAttackDelay();
 	}
 
-	applyStates(attacker, defender, data);
-	applyDots(attacker, defender, data, damage);
+	if (!defender->isDead()) {
+		applyStates(attacker, defender, data);
+		applyDots(attacker, defender, data, damage);
+	}
 
 	return damage;
 }
