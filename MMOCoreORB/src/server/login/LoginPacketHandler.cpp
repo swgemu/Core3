@@ -134,16 +134,42 @@ void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Messa
 
     try {
 
-		ServerDatabase::instance()->executeStatement(moveStatement);
-		ServerDatabase::instance()->executeStatement(deleteStatement);
+    	Reference<ResultSet*> moveResults = ServerDatabase::instance()->executeQuery(moveStatement.toString());
 
-		dbDelete = 0;
+    	if(moveResults == NULL || moveResults.get()->getRowsAffected() == 0){
+    		StringBuffer errMsg;
+    		errMsg << "ERROR: Could not move character to deleted_characters table. " << endl;
+    		errMsg << "QUERY: " << moveStatement.toString();
+    		info(errMsg.toString(),true);
+    		dbDelete = 1;
+    	}
+
     } catch (DatabaseException& e) {
     	System::out << e.getMessage();
-   		dbDelete = 1;
-   	} catch (Exception& e) {
-   		System::out << e.getMessage();
-   	}
+    	dbDelete = 1;
+    } catch (Exception& e) {
+    	System::out << e.getMessage();
+    	dbDelete = 1;
+    }
+
+    if(!dbDelete){
+    	try {
+    		Reference<ResultSet*> deleteResults = ServerDatabase::instance()->executeQuery(deleteStatement);
+
+    		if(deleteResults == NULL || deleteResults.get()->getRowsAffected() == 0){
+    			StringBuffer errMsg;
+    			errMsg << "ERROR: Unable to delete character from character table. " << endl;
+    			errMsg << "QUERY: " << deleteStatement.toString();
+    			dbDelete = 1;
+    		}
+    	} catch (DatabaseException& e) {
+    		System::out << e.getMessage();
+    		dbDelete = 1;
+    	} catch (Exception& e) {
+    		System::out << e.getMessage();
+    		dbDelete = 1;
+    	}
+    }
 
    	Message* msg = new DeleteCharacterReplyMessage(dbDelete);
 	client->sendMessage(msg);
