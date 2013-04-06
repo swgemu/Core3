@@ -27,11 +27,19 @@ escaped_singing_mountain_clan_slave = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_dathomir_sing_mt_clan_escaped_slave.iff"},
-	lootGroups = {},
-	weapons = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 6000000},
+				{group = "tailor_components", chance = 2500000},
+				{group = "loot_kit_parts", chance = 1500000}
+			},
+			lootChance = 1200000
+		}
+	},
+	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(escaped_singing_mountain_clan_slave, "escaped_singing_mountain_clan_slave")

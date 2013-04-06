@@ -25,7 +25,7 @@ dathomir_regions = {
         {"campsite",-2594,4948,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"canyon",0,0,{1,0},UNDEFINEDAREA,1},
         {"ceremonial_site",1083,-4484,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
-        {"crashed_spaceship",5684,1898,{1,50},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
+        {"crashed_spaceship",5684,1898,{1,150},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"dathomir_survey_outpost",0,0,{1,0},UNDEFINEDAREA,1},
 	{"dathomir_trade_outpost",0,0,{1,0},UNDEFINEDAREA,1},
 	{"desert",0,0,{1,0},UNDEFINEDAREA,1},
