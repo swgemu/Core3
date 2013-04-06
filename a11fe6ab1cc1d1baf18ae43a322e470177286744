@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAABX///YM\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/planet/PlanetManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-04-06T02:34:26Z",
+      "side": 1,
+      "message": "Looking closer, it doesn\u0027t look like CollisionManager::getWorldFloorCollisions() is doing anything with the water heights. It calculates it, compares it to terrain height, then doesn\u0027t do anything else with it. It looks to be a bit of excess code that was copied over from CollisionManager::getWorldFloorCollision() when CollisionManager::getWorldFloorCollisions() was first written. That, or something else was planned and never fully fleshed out.\n\nRegardless, I think the simple solution is to modify this method (PlanetManagerImplementation::findClosestWorldFloor() ) to get the water height and check to see if it\u0027s closer than terrain height or any of the collisions and return it if it is.",
+      "parentUuid": "AAAABX///Zo\u003d",
+      "revId": "a11fe6ab1cc1d1baf18ae43a322e470177286744",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAABX///aw\u003d",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/AiAgentImplementation.cpp",
         "patchSetId": 4
