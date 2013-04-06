@@ -898,19 +898,48 @@ npcMapRebel =
 		spawnData = { planetName = "yavin4", npcTemplate = "jan_dodonna", x = 0, z = 0, y = -41.9, direction = 0, cellID = 3465388, position = STAND }, 
 		worldPosition = { x = 5014.8, y = 5537.8 }, 
 		npcNumber = 256, 
-		stfFile = "@theme_park_rebel/jan_dodonna",    
-		missions = jan_missions 
+		stfFile = "@theme_park_rebel/jan_dodonna",  
+		missions = jan_missions,
+		permissionWarpNumber = 2
 	},
 	{ 
 		spawnData = { planetName = "yavin4", npcTemplate = "luke_skywalker", x = 1.2, z = -6.0, y = -26.8, direction = 180, cellID = 3465390, position = STAND }, 
 		worldPosition = { x = 5029.9, y = 5536.6 }, 
 		npcNumber = 512, 
 		stfFile = "@theme_park_rebel/luke_skywalker", 
-		missions = luke_missions 
+		missions = luke_missions,
+		permissionWarpNumber = 3
 	}
 }
 
-permissionMapRebel = {
+permissionMapRebelWarp = {
+		{ planetName = "corellia",  radius = 20,
+			cells = {8555472},
+				conditions = 
+				{
+					{ permissionType = "faction", faction = FACTIONREBEL }
+				},
+				stfWarning = "foyer1"
+		},
+		{ planetName = "yavin4", radius = 5,
+			cells = {3465381},
+				conditions = 
+				{
+					{ permissionType = "missionState", mission = "theme_park_rebel", missionState = 128 },
+				},
+				stfWarning = "dodonna"
+		},
+		{ planetName = "yavin4",  radius = 6,
+			cells = {3465391},
+				conditions = 
+				{
+					{ permissionType = "missionState", mission = "theme_park_rebel", missionState = 256 }
+				},
+				stfWarning = "luke"
+		}
+}
+
+permissionMapRebelRedWall = {
 	{
 		planetName = "corellia", 
 		regionName = "rebel_hideout",		
@@ -967,11 +996,12 @@ permissionMapRebel = {
 ThemeParkRebel = ThemeParkLogic:new {
 	numberOfActs = 1,
 	npcMap = npcMapRebel,
-	permissionMap = permissionMapRebel,
+	permissionMap = permissionMapRebelWarp, -- Switch between cell permission groups depending on what type of deny method (see logic script.)
 	className = "ThemeParkRebel",
 	screenPlayState = "rebel_theme_park",
 	missionDescriptionStf = "@theme_park_rebel/quest_details:rebel_hideout_",
-	missionCompletionMessageStf = "@theme_park/messages:rebel_completion_message"
+	missionCompletionMessageStf = "@theme_park/messages:rebel_completion_message",
+	warningMessageStf = "@theme_park_rebel/warning:"
 }
 
 registerScreenPlay("ThemeParkRebel", true)

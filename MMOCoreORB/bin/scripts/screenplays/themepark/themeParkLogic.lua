@@ -3,6 +3,7 @@ SIT = 1
 STAND = 0
 FACTIONIMPERIAL = 0xDB4ACC54
 FACTIONREBEL = 0x16148850
+permissionDenyMethod = "Warp" -- Options: Warp, RedWall.
 
 ThemeParkLogic = ScreenPlay:new {
 	numberOfActs = 1,
@@ -12,12 +13,13 @@ ThemeParkLogic = ScreenPlay:new {
 	screenPlayState = "theme_park_general",
 	distance = 1000,
 	missionDescriptionStf = "",
-	missionCompletionMessageStf = ""
+	missionCompletionMessageStf = "",
+	warningMessageStf = "",
 }
 
 function ThemeParkLogic:start()
 	self:spawnNpcs()
-	self:permissionObservers()
+	self:permissionObservers()	
 end
 
 function ThemeParkLogic:spawnNpcs()
@@ -36,33 +38,77 @@ end
 function ThemeParkLogic:permissionObservers()
 	for i = 1, # self.permissionMap, 1 do
 		local permission = self.permissionMap[i]
-		self:setupPermissionGroups(permission)
-		local pRegion = getRegion(permission.planetName, permission.regionName)
 		
-		if pRegion ~= nil then
-			createObserver(ENTEREDAREA, self.className, "cellPermissionsObserver", pRegion)
-		end 
-	end
-end
-
-function ThemeParkLogic:setupPermissionGroups(permission)
-	for i = 1, #permission.permissions, 1 do
-		local thisPermission = permission.permissions[i]
-		for j = 1, #thisPermission.cells, 1 do
-			local pCell = getSceneObject(thisPermission.cells[j])
-			if pCell ~= nil then
-				local cell = LuaSceneObject(pCell)
-				cell:setContainerInheritPermissionsFromParent(false)
-				cell:clearContainerDefaultDenyPermission(WALKIN)
-				cell:clearContainerDefaultAllowPermission(WALKIN)
-				cell:setContainerAllowPermission(permission.regionName .. i, WALKIN)
-				cell:setContainerDenyPermission(permission.regionName .. i, MOVEIN)
-			end
+		if permissionDenyMethod == "Warp" then
+			self:setupPermissionGroupsWarp(permission)
+		elseif permissionDenyMethod == "RedWall" then
+			self:setupPermissionGroupsRedWall(permission)
+			local pRegion = getRegion(permission.planetName, permission.regionName)
+		
+			if (pRegion ~= nil) then
+				createObserver(ENTEREDAREA, self.className, "cellPermissionsObserver", pRegion)
+			end 
 		end
 	end
 end
 
+function ThemeParkLogic:setupPermissionGroupsWarp(permission)
+		for j = 1, #permission.cells, 1 do
+			if (isZoneEnabled(permission.planetName)) then
+				local pCell = getSceneObject(permission.cells[j])
+					if pCell ~= nil then
+						local cell = LuaSceneObject(pCell)
+						printf("DEBUG - Cell not null - trying to spawn active area.\n")
+						local pActiveArea = spawnSceneObject(permission.planetName, "object/active_area.iff", cell:getWorldPositionX(), cell:getWorldPositionZ(), cell:getWorldPositionY(), 0, 0, 0, 0, 0)
+								if pActiveArea ~= nil then
+									printf("DEBUG - Active Area setup successfully... Location" .. cell:getWorldPositionX() .. " by " .. cell:getWorldPositionY() .. " with a radius of " .. permission.radius .. " \n")
+									local activeArea = LuaActiveArea(pActiveArea)
+									activeArea:setRadius(permission.radius)
+									createObserver(ENTEREDAREA, "ThemeParkLogic", "setCellPermissionsWarp", pActiveArea)
+									activeArea:setCellObjectID(cell:getObjectID())
+								end
+					end
+			end	
+		end
+end
+
+function ThemeParkLogic:setupPermissionGroupsRedWall(permission)
+		for i = 1, #permission.permissions, 1 do
+			local thisPermission = permission.permissions[i]
+			for j = 1, #thisPermission.cells, 1 do
+				local pCell = getSceneObject(thisPermission.cells[j])
+				if pCell ~= nil then
+					local cell = LuaSceneObject(pCell)
+			    	cell:setContainerInheritPermissionsFromParent(false)
+                	cell:clearContainerDefaultDenyPermission(WALKIN)
+                	cell:clearContainerDefaultAllowPermission(WALKIN)
+               		cell:setContainerAllowPermission(permission.regionName .. i, WALKIN)
+               		cell:setContainerDenyPermission(permission.regionName .. i, MOVEIN)
+				end
+			end
+		end
+end
+
 function ThemeParkLogic:cellPermissionsObserver(pRegion, pCreature)
+        if pRegion == nil or pCreature == nil then
+                return 0
+         end
+ 
+         local creatureSceneObject = LuaSceneObject(pCreature)
+         
+         if creatureSceneObject:isCreatureObject() then
+                 local region = LuaSceneObject(pRegion)
+                 for i = 1, # self.permissionMap, 1 do
+                           if self.permissionMap[i].regionName == region:getObjectName() then
+                                   self:setCellPermissions(self.permissionMap[i], pCreature)
+                          end
+                 end
+         end     
+         
+       	 return 0
+end
+
+function ThemeParkLogic:setCellPermissionsWarp(pRegion, pCreature)
 	if pRegion == nil or pCreature == nil then
 		return 0
 	end
@@ -70,15 +116,40 @@ function ThemeParkLogic:cellPermissionsObserver(pRegion, pCreature)
 	local creatureSceneObject = LuaSceneObject(pCreature)
 	
 	if creatureSceneObject:isCreatureObject() then
-		local region = LuaSceneObject(pRegion)
-		for i = 1, # self.permissionMap, 1 do
-			if self.permissionMap[i].regionName == region:getObjectName() then
-				self:setCellPermissions(self.permissionMap[i], pCreature)
-			end
+		printf("DEBUG - Player entered area.\n")
+		local creatureObject = LuaCreatureObject(pCreature)
+		
+		local state = self:getActiveNpcNumber(pCreature)
+		local number = 1
+		local npcNumber = 1
+		
+		while (npcNumber < state) do
+			number = table.getn(self:getNpcData(npcNumber).permissionWarpNumber)
+			npcNumber = npcNumber * 2
 		end
-	end	
-	
+				for i = 1, # self.permissionMap, 1 do
+						if self:hasPermission(self.permissionMap[i].conditions[number], pCreature) == false then
+							local stfWarning = self.permissionMap[i].stfWarning[number]
+								if stfWarning ~= nil then
+									creatureObject:sendSystemMessage(warningMessageStf .. stfWarning)
+								end
+								local activeArea = LuaActiveArea(pRegion)
+				
+								local objID = activeArea:getCellObjectID()
+								local cell = getSceneObject(objID - 1) -- Get the prior cell.
+				
+								local x = cell:getPositionX()
+								local y = cell:getPositionY()
+								local z = cell:getPositionZ()
+
+								local parentId = creatureObject:getParentID()
+								creatureObject:teleport(x, z, y, parentId)
+						end
+				end
+	end
+
 	return 0
+	
 end
 
 function ThemeParkLogic:setCellPermissions(permissions, pCreature)
@@ -242,6 +313,12 @@ function ThemeParkLogic:getStfFile(npcNumber)
 	return npcData.stfFile
 end
 
+function ThemeParkLogic:getStfWarning(npcNumber)	
+	local npcData = self:getNpcData(npcNumber)
+
+	return npcData.stfWarning
+end
+
 function ThemeParkLogic:getHasWaypointNames(npcNumber)	
 	local npcData = self:getNpcData(npcNumber)
 
@@ -334,7 +411,7 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 		local pNpc = self:spawnNpc(mainNpcs[i], spawnPoints[i], pConversingPlayer, i)
 		if pNpc ~= nil then
 			if i == 1 then
-				self:updateWaypoint(pConversingPlayer, mainNpcs[i].planetName, spawnPoints[i][1], spawnPoints[i][3], "target")
+				self:updateWaypoint(pConversingPlayer, mainNpcs[i].planetName, spawnPoints[i][1], spawnPoints[i][3], 0)
 			end
 			if mission.missionType == "assassinate" then
 				createObserver(OBJECTDESTRUCTION, self.className, "notifyDefeatedTarget", pNpc)
@@ -492,10 +569,30 @@ function ThemeParkLogic:getMissionDescription(pConversingPlayer, direction)
 		local currentMissionNumber = self:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
 
 		if wpNames == "no" then
-			return self:getDefaultWaypointName(pConversingPlayer, direction)
+			if direction == 0 then
+				local currentMissionType = self:getMissionType(activeNpcNumber, pConversingPlayer)
+				local mission = self:getMission(activeNpcNumber, currentMissionNumber)
+				local mainNpc = mission.primarySpawns
+				local mainNpcName = self:getNpcName(mainNpc[1].npcName)
+				local missionItem = mission.itemSpawns
+
+				if currentMissionType == "deliver" then
+					local missionItemName = missionItem[1].itemName
+					return "Deliver " .. missionItemName
+				elseif currentMissionType == "escort" then
+					return "Escort " .. mainNpcName
+				elseif currentMissionType == "retrieve" then
+					local missionItemName = missionItem[1].itemName
+					return "Retrieve " .. missionItemName
+				elseif currentMissionType == "assassinate" then
+					return "Kill " .. mainNpcName
+				end
+			else
+				return "Return to the mission giver."
+			end
 		else
 			local stfFile = self:getStfFile(activeNpcNumber)
-			if direction == "target" then
+			if direction == 0 then
 				creature:sendSystemMessage(stfFile .. ":waypoint_description_" .. currentMissionNumber)
 				return stfFile .. ":waypoint_name_" .. currentMissionNumber
 			else
@@ -503,7 +600,7 @@ function ThemeParkLogic:getMissionDescription(pConversingPlayer, direction)
 			end
 		end
 	else
-		if direction == "target" then
+		if direction == 0 then
 			local message = self.missionDescriptionStf .. missionNumber
 			creature:sendSystemMessage(message)
 			return message
@@ -511,32 +608,8 @@ function ThemeParkLogic:getMissionDescription(pConversingPlayer, direction)
 			return self.missionDescriptionStf .. "return"
 		end
 	end
-end
 
-function ThemeParkLogic:getDefaultWaypointName(pConversingPlayer, direction)
-	if direction == "target" then
-		local activeNpcNumber = self:getActiveNpcNumber(pConversingPlayer)
-		local currentMissionType = self:getMissionType(activeNpcNumber, pConversingPlayer)
-		local currentMissionNumber = self:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
-		local mission = self:getMission(activeNpcNumber, currentMissionNumber)
-		local mainNpc = mission.primarySpawns
-		local mainNpcName = self:getNpcName(mainNpc[1].npcName)
-		local missionItem = mission.itemSpawns
 
-		if currentMissionType == "deliver" then
-			local missionItemName = missionItem[1].itemName
-			return "Deliver " .. missionItemName
-		elseif currentMissionType == "escort" then
-			return "Escort " .. mainNpcName
-		elseif currentMissionType == "retrieve" then
-			local missionItemName = missionItem[1].itemName
-			return "Retrieve " .. missionItemName
-		elseif currentMissionType == "assassinate" then
-			return "Kill " .. mainNpcName
-		end
-	else
-		return "Return to the mission giver."
-	end
 end
 
 function ThemeParkLogic:removeWaypoint(pConversingPlayer)
@@ -662,25 +735,6 @@ function ThemeParkLogic:getRequiredItem(activeNpcNumber, pConversingPlayer)
 	return mission.itemSpawns
 end
 
-function ThemeParkLogic:getNpcWorldPosition(npcNumber)
-	local worldPosition = { x = 0, y = 0 }
-
-	for i = 1, # self.npcMap do
-		local npcSpawnNumber = self.npcMap[i].npcNumber
-		if npcNumber == npcSpawnNumber then
-			if self.npcMap[i].spawnData.cellID == 0 then
-				worldPosition.x = self.npcMap[i].spawnData.x
-				worldPosition.y = self.npcMap[i].spawnData.y
-			else
-				worldPosition.x = self.npcMap[i].worldPosition.x
-				worldPosition.y = self.npcMap[i].worldPosition.y
-			end
-		end
-	end
-
-	return worldPosition
-end
-
 function ThemeParkLogic:completeMission(pConversingPlayer)
 	if pConversingPlayer == nil then
 		return
@@ -698,11 +752,30 @@ function ThemeParkLogic:completeMission(pConversingPlayer)
 		creature:sendSystemMessage(self.missionCompletionMessageStf)
 	end
 
-	local worldPosition = self:getNpcWorldPosition(npcNumber)
+	local npcSpawnData = nil
+	local npcWorldPosition = nil
+	for i = 1, # self.npcMap do
+		local npcSpawnNumber = self.npcMap[i].npcNumber
+		if npcNumber == npcSpawnNumber then
+			npcSpawnData = self.npcMap[i].spawnData
+			if npcSpawnData.cellID ~= 0 then
+				npcWorldPosition = self.npcMap[i].worldPosition
+			end
+		end
+	end
 
-	local npcData = self:getNpcData(npcNumber)
+	local npcX = 0
+	local npcY = 0
 
-	self:updateWaypoint(pConversingPlayer, npcData.spawnData.planetName, worldPosition.x, worldPosition.y, "return")
+	if npcWorldPosition == nil then
+		npcX = npcSpawnData.x
+		npcY = npcSpawnData.y
+	else
+		npcX = npcWorldPosition.x
+		npcY = npcWorldPosition.y
+	end
+
+	self:updateWaypoint(pConversingPlayer, npcSpawnData.planetName, npcX, npcY, 1)
 
 	writeData(creature:getObjectID() .. ":activeMission", 2)
 end
