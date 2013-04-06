@@ -13,6 +13,7 @@
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/weather/WeatherManager.h"
 #include "server/zone/managers/resource/ResourceManager.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 
 #include "engine/util/iffstream/IffStream.h"
 #include "server/zone/templates/snapshot/WorldSnapshotIff.h"
@@ -775,6 +776,33 @@ bool PlanetManagerImplementation::isInWater(float x, float y) {
 			return true;
 
 	return false;
+}
+
+float PlanetManagerImplementation::findClosestWorldFloor(float x, float y, float z, float swimHeight) {
+	SortedVector<IntersectionResult> intersections;
+
+	CollisionManager::getWorldFloorCollisions(x, y, zone, true, &intersections);
+
+	float terrainHeight = zone->getHeight(x, y);
+	float diff = fabs(z - terrainHeight);
+	float closestHeight = 0;
+
+	for (int i = 0; i < intersections.size(); i++) {
+		float newDiff = fabs(16384 - intersections.get(i).getIntersectionDistance() - z);
+		if ( newDiff < diff) {
+			diff = newDiff;
+			closestHeight = 16384 - intersections.get(i).getIntersectionDistance();
+		}
+	}
+
+	float waterHeight;
+	getTerrainManager()->getWaterHeight(x, y, waterHeight);
+
+	if (waterHeight > (closestHeight + swimHeight)) {
+		closestHeight = waterHeight - swimHeight;
+	}
+
+	return closestHeight;
 }
 
 void PlanetManagerImplementation::addPlayerCityTravelPoint(PlanetTravelPoint* planetTravelPoint){
