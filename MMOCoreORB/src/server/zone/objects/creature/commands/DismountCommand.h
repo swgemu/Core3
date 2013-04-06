@@ -108,7 +108,8 @@ public:
 
 		clocker.release();
 
-		float z = zone->getHeight(creature->getPositionX(), creature->getPositionY());
+		float z = planetManager->findClosestWorldFloor(creature->getPositionX(), creature->getPositionY(), creature->getPositionZ(), creature->getSwimHeight());
+
 		creature->teleport(creature->getPositionX(), z, creature->getPositionY(), 0);
 
 		if (creature->hasBuff(String("burstrun").hashCode())
@@ -129,13 +130,9 @@ public:
 
 		changeBuffer->add(SpeedModChange(creature->getSpeedMultiplierMod()));
 
-		float waterHeight;
-		terrainManager->getWaterHeight(creature->getPositionX(), creature->getPositionY(), waterHeight);
-		if ((z + creature->getSwimHeight() - waterHeight) < 0.2) {
-			creature->setState(CreatureState::SWIMMING);
-		} else {
-			creature->clearState(CreatureState::SWIMMING);
-		}
+		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
+
+		playerManager->updateSwimmingState(creature, z);
 
 		ManagedReference<ControlDevice*> device = vehicle->getControlDevice();
 		
