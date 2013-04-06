@@ -21,7 +21,10 @@ polearm_staff_janta = {
 		{"attackmindcost",15,11,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("polearm_staff_janta", polearm_staff_janta)

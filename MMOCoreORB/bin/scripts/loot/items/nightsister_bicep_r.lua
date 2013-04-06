@@ -8,7 +8,10 @@ nightsister_bicep_r = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("nightsister_bicep_r", nightsister_bicep_r)

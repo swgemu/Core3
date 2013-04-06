@@ -10,7 +10,10 @@ foraged_resilience_compound = {
 		{"duration",1,45,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("foraged_resilience_compound", foraged_resilience_compound)

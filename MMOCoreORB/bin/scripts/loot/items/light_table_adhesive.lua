@@ -8,7 +8,10 @@ light_table_adhesive = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("light_table_adhesive", light_table_adhesive)

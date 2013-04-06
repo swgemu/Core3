@@ -9,7 +9,10 @@ foraged_infection_amplifier = {
 		{"power",1,25,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("foraged_infection_amplifier", foraged_infection_amplifier)

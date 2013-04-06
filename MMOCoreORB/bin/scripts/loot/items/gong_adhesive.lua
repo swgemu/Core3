@@ -8,7 +8,10 @@ gong_adhesive = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("gong_adhesive", gong_adhesive)

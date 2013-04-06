@@ -15,7 +15,10 @@ voritor_lizard_hide_segment = {
 		{"useCount",1,10,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("voritor_lizard_hide_segment", voritor_lizard_hide_segment)

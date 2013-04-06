@@ -21,7 +21,10 @@ carbine_dh17_snubnose = {
 		{"attackmindcost",16,8,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("carbine_dh17_snubnose", carbine_dh17_snubnose)

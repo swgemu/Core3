@@ -21,7 +21,10 @@ knife_dagger = {
 		{"attackmindcost",8,4,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("knife_dagger", knife_dagger)

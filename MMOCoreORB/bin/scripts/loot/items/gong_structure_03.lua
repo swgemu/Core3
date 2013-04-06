@@ -8,7 +8,10 @@ gong_structure_03 = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("gong_structure_03", gong_structure_03)

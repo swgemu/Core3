@@ -21,7 +21,10 @@ pistol_scout_trooper = {
 		{"midrangemod",0,0,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("pistol_scout_trooper", pistol_scout_trooper)

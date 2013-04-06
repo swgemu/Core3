@@ -21,7 +21,10 @@ axe_heavy_duty = {
 		{"attackmindcost",13,7,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("axe_heavy_duty", axe_heavy_duty)

@@ -21,7 +21,10 @@ rifle_spraystick = {
 		{"midrangemod",-5,5,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("rifle_spraystick", rifle_spraystick)

@@ -8,7 +8,10 @@ foraged_maroj_melon = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("foraged_maroj_melon", foraged_maroj_melon)

@@ -12,7 +12,10 @@ rancor_bile = {
 		{"useCount",1,5,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("rancor_bile", rancor_bile)

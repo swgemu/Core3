@@ -9,7 +9,10 @@ foraged_release_mechanism_duration = {
 		{"power",1,20,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("foraged_release_mechanism_duration", foraged_release_mechanism_duration)

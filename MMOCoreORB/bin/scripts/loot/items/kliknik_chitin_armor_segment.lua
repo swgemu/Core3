@@ -14,7 +14,10 @@ kliknik_chitin_armor_segment = {
 		{"useCount",1,10,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("kliknik_chitin_armor_segment", kliknik_chitin_armor_segment)

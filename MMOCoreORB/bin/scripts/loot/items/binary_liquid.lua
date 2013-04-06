@@ -8,7 +8,10 @@ binary_liquid = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("binary_liquid", binary_liquid)

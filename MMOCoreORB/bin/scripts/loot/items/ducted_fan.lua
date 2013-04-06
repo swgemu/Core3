@@ -8,7 +8,10 @@ ducted_fan = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("ducted_fan", ducted_fan)

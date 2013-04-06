@@ -16,7 +16,10 @@ geo_sonic_blaster = {
 		{"attackmindcost",21,11,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("geo_sonic_blaster", geo_sonic_blaster)

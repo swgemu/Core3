@@ -8,7 +8,10 @@ decorative_bowl = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("decorative_bowl", decorative_bowl)

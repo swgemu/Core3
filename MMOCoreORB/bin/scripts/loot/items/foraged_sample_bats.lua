@@ -8,7 +8,10 @@ foraged_sample_bats = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("foraged_sample_bats", foraged_sample_bats)

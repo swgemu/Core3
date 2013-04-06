@@ -16,7 +16,10 @@ rifle_tusken = {
 		{"attackmindcost",61,36,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("rifle_tusken", rifle_tusken)

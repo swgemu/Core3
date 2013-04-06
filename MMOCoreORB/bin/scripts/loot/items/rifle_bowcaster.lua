@@ -16,7 +16,10 @@ rifle_bowcaster = {
 		{"attackmindcost",57,35,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("rifle_bowcaster", rifle_bowcaster)

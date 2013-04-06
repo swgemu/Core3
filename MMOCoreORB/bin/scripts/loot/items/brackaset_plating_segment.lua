@@ -14,7 +14,10 @@ brackaset_plating_segment = {
 		{"useCount",1,7,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("brackaset_plating_segment", brackaset_plating_segment)

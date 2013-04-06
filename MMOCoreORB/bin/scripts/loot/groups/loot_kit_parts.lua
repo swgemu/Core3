@@ -5,8 +5,8 @@ loot_kit_parts = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "blue_rug_dye", weight = 202080},
 		{itemTemplate = "blue_rug_adhesive", weight = 104080},
+		{itemTemplate = "blue_rug_dye", weight = 202080},
 		{itemTemplate = "blue_rug_patches", weight = 204080},
 		{itemTemplate = "blue_rug_thread_1", weight = 104082},
 		{itemTemplate = "blue_rug_thread_2", weight = 204082},

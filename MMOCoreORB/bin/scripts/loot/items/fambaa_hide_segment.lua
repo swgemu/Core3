@@ -15,7 +15,10 @@ fambaa_hide_segment = {
 		{"useCount",1,10,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("fambaa_hide_segment", fambaa_hide_segment)

@@ -8,7 +8,10 @@ foraged_sample_glowzees = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("foraged_sample_glowzees", foraged_sample_glowzees)

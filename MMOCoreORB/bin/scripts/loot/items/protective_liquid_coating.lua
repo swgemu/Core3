@@ -8,7 +8,10 @@ protective_liquid_coating = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("protective_liquid_coating", protective_liquid_coating)

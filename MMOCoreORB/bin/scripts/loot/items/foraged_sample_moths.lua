@@ -8,7 +8,10 @@ foraged_sample_moths = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("foraged_sample_moths", foraged_sample_moths)

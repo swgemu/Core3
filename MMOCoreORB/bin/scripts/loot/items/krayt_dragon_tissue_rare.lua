@@ -11,7 +11,10 @@ krayt_dragon_tissue_rare = {
 		{"useCount",1,13,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("krayt_dragon_tissue_rare", krayt_dragon_tissue_rare)

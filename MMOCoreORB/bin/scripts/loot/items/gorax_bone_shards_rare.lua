@@ -11,7 +11,10 @@ gorax_bone_shards_rare = {
 		{"useCount",1,6,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("gorax_bone_shards_rare", gorax_bone_shards_rare)

@@ -21,7 +21,10 @@ melee_vibroknuckler = {
 		{"attackmindcost",36,18,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("melee_vibroknuckler", melee_vibroknuckler)

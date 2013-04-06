@@ -12,7 +12,10 @@ nightsister_layer = {
 		{"useCount",1,10,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("nightsister_layer", nightsister_layer)

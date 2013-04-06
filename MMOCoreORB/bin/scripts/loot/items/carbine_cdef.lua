@@ -21,7 +21,10 @@ carbine_cdef = {
 		{"attackmindcost",10,7,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("carbine_cdef", carbine_cdef)

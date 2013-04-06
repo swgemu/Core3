@@ -9,7 +9,10 @@ foraged_solid_delivery_shell = {
 		{"power",1,20,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("foraged_solid_delivery_shell", foraged_solid_delivery_shell)

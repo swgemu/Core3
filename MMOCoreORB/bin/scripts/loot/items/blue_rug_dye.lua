@@ -8,7 +8,10 @@ blue_rug_dye = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("blue_rug_dye", blue_rug_dye)

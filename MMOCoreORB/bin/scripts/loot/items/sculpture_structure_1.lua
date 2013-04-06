@@ -8,7 +8,10 @@ sculpture_structure_1 = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("sculpture_structure_1", sculpture_structure_1)

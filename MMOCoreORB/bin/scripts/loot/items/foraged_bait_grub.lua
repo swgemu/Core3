@@ -6,10 +6,13 @@ foraged_bait_grub = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/fishing/bait/bait_grub.iff",
 	craftingValues = {
-		{"quantity",1,6},
+		{"quantity",1,6,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("foraged_bait_grub", foraged_bait_grub)

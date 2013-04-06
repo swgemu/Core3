@@ -18,10 +18,13 @@ corsec_cdef_carbine = {
 		{"midrangemod",35,65,0},
 		{"attackhealthcost",10,7,0},
 		{"attackactioncost",22,15,0},
-		{"attackmindcost",10,7,0},	
+		{"attackmindcost",10,7,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("corsec_cdef_carbine", corsec_cdef_carbine)

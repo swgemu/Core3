@@ -11,11 +11,14 @@ acklay_hide = {
 		{"armor_integrity",15000,25000,0},
 		{"heateffectiveness",5,17,10},
 		{"energyeffectiveness",5,17,10},
-		{"hitpoints",0,0,0,0},
+		{"hitpoints",0,0,0},
 		{"useCount",1,10,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("acklay_hide", acklay_hide)

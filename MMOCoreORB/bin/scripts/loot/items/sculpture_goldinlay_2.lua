@@ -8,7 +8,10 @@ sculpture_goldinlay_2 = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("sculpture_goldinlay_2", sculpture_goldinlay_2)

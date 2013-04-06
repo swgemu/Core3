@@ -21,7 +21,10 @@ two_handed_sword_battleaxe = {
 		{"attackmindcost",10,4,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("two_handed_sword_battleaxe", two_handed_sword_battleaxe)

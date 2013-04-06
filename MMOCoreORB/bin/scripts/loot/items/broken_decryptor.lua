@@ -8,7 +8,10 @@ broken_decryptor = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("broken_decryptor", broken_decryptor)

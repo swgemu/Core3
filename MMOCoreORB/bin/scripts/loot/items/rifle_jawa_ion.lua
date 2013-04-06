@@ -21,7 +21,10 @@ rifle_jawa_ion = {
 		{"midrangemod",-5,5,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("rifle_jawa_ion", rifle_jawa_ion)

@@ -19,7 +19,10 @@ krayt_dragon_pearl_flawless = {
 		{"quality",6,6,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("krayt_dragon_pearl_flawless", krayt_dragon_pearl_flawless)

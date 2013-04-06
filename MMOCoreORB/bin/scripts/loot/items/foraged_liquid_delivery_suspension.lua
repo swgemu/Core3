@@ -9,7 +9,10 @@ foraged_liquid_delivery_suspension = {
 		{"power",1,45,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("foraged_liquid_delivery_suspension", foraged_liquid_delivery_suspension)

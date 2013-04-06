@@ -8,7 +8,10 @@ geo_relic_ration_kit = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("geo_relic_ration_kit", geo_relic_ration_kit)

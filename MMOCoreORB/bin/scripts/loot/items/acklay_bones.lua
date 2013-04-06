@@ -6,21 +6,24 @@ acklay_bones = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/acklay_bone_reinforcement_core.iff",
 	craftingValues = {
-		{"mindamage",54,100},
-		{"maxdamage",54,100},
+		{"mindamage",54,100,0},
+		{"maxdamage",54,100,0},
 		{"useCount",1,6,0},
-		{"attackspeed",0,0,0,0},
-		{"woundchance",0,0,0,0},
-		{"hitpoints",0,0,0,0},
-		{"zerorangemod",0,0,0,0},
-		{"maxrangemod",0,0,0,0},
-		{"midrangemod",0,0,0,0},
-		{"attackhealthcost",0,0,0,0},
-		{"attackactioncost",0,0,0,0},
-		{"attackmindcost",0,0,0,0},
+		{"attackspeed",0,0,0},
+		{"woundchance",0,0,0},
+		{"hitpoints",0,0,0},
+		{"zerorangemod",0,0,0},
+		{"maxrangemod",0,0,0},
+		{"midrangemod",0,0,0},
+		{"attackhealthcost",0,0,0},
+		{"attackactioncost",0,0,0},
+		{"attackmindcost",0,0,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("acklay_bones", acklay_bones)

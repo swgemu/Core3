@@ -21,7 +21,10 @@ knife_donkuwah = {
 		{"attackmindcost",8,4,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("knife_donkuwah", knife_donkuwah)

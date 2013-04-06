@@ -8,7 +8,10 @@ attachment_armor = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("attachment_armor", attachment_armor)

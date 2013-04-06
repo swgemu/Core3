@@ -21,7 +21,10 @@ baton_gaderiffi = {
 		{"attackmindcost",10,4,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("baton_gaderiffi", baton_gaderiffi)

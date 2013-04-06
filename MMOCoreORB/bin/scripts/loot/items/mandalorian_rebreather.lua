@@ -8,7 +8,10 @@ mandalorian_rebreather = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("mandalorian_rebreather", mandalorian_rebreather)

@@ -8,7 +8,10 @@ loudspeaker = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("loudspeaker", loudspeaker)

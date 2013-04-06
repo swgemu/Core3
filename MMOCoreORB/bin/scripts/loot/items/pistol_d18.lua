@@ -21,7 +21,10 @@ pistol_d18 = {
 		{"midrangemod",25,46,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("pistol_d18", pistol_d18)

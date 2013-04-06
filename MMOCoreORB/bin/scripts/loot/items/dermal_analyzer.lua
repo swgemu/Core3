@@ -8,7 +8,10 @@ dermal_analyzer = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("dermal_analyzer", dermal_analyzer)

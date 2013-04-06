@@ -21,7 +21,10 @@ pistol_fwg5 = {
 		{"midrangemod",14,30,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("pistol_fwg5", pistol_fwg5)

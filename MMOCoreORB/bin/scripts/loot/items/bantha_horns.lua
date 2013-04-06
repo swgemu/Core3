@@ -5,9 +5,13 @@ bantha_horns = {
 	maximumLevel = 0,
 	customObjectName = "Bantha Horns",
 	directObjectTemplate = "object/tangible/mission/quest_item/mat_rags_q3_needed.iff",
-	craftingValues = {},
+	craftingValues = {
+	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("bantha_horns", bantha_horns)

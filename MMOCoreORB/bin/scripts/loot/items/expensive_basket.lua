@@ -8,7 +8,10 @@ expensive_basket = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("expensive_basket", expensive_basket)

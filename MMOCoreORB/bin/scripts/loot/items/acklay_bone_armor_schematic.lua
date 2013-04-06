@@ -8,7 +8,10 @@ acklay_bone_armor_schematic = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("acklay_bone_armor_schematic", acklay_bone_armor_schematic)

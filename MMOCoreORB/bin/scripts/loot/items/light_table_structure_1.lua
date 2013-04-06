@@ -8,7 +8,10 @@ light_table_structure_1 = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("light_table_structure_1", light_table_structure_1)

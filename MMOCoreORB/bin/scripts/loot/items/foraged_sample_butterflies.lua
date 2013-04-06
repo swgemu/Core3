@@ -8,7 +8,10 @@ foraged_sample_butterflies = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("foraged_sample_butterflies", foraged_sample_butterflies)

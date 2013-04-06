@@ -16,7 +16,10 @@ kimogila_bone_segment = {
 		{"useCount",1,10,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("kimogila_bone_segment", kimogila_bone_segment)

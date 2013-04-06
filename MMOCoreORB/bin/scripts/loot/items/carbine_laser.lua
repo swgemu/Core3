@@ -21,7 +21,10 @@ carbine_laser = {
 		{"attackmindcost",26,14,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("carbine_laser", carbine_laser)

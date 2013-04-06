@@ -8,7 +8,10 @@ acklay_ris_armor_schematic = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("acklay_ris_armor_schematic", acklay_ris_armor_schematic)

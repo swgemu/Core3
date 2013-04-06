@@ -8,7 +8,10 @@ light_table_glasstop_2 = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("light_table_glasstop_2", light_table_glasstop_2)

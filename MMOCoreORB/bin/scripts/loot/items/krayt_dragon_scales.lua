@@ -16,7 +16,10 @@ krayt_dragon_scales = {
 		{"useCount",1,10,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("krayt_dragon_scales", krayt_dragon_scales)

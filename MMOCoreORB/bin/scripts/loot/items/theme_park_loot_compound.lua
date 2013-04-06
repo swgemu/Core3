@@ -8,7 +8,10 @@ theme_park_loot_compound = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("theme_park_loot_compound", theme_park_loot_compound)

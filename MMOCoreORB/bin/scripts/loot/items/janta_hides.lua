@@ -8,11 +8,14 @@ janta_hides = {
 	craftingValues = {
 		{"armor_special_type",0,0,0},
 		{"armor_effectiveness",3,8,10},
-		{"hitpoints",0,0,0,0},
+		{"hitpoints",0,0,0},
 		{"useCount",1,7,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("janta_hides", janta_hides)

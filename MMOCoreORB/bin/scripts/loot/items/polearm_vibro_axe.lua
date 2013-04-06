@@ -21,7 +21,10 @@ polearm_vibro_axe = {
 		{"attackmindcost",29,15,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("polearm_vibro_axe", polearm_vibro_axe)

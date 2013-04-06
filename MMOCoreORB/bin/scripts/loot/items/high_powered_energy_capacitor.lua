@@ -10,7 +10,10 @@ high_powered_energy_capacitor = {
 		{"useCount",1,5,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("high_powered_energy_capacitor", high_powered_energy_capacitor)

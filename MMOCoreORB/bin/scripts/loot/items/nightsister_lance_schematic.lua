@@ -8,7 +8,10 @@ nightsister_lance_schematic = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("nightsister_lance_schematic", nightsister_lance_schematic)

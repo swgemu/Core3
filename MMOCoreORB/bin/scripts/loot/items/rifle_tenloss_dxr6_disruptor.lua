@@ -21,7 +21,10 @@ rifle_tenloss_dxr6_disruptor = {
 		{"midrangemod",45,70,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("rifle_tenloss_dxr6_disruptor", rifle_tenloss_dxr6_disruptor)

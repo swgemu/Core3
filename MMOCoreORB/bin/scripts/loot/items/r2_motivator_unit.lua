@@ -8,7 +8,10 @@ r2_motivator_unit = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("r2_motivator_unit", r2_motivator_unit)

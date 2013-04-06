@@ -11,7 +11,10 @@ geo_spider_fang = {
 		{"useCount",1,5,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("geo_spider_fang", geo_spider_fang)

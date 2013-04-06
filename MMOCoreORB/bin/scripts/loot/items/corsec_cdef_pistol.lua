@@ -18,10 +18,13 @@ corsec_cdef_pistol = {
 		{"zerorangemod",0,0,0},
 		{"maxrangemod",-80,-80,0},
 		{"midrange",15,15,0},
-		{"midrangemod",35,65,0},	
+		{"midrangemod",35,65,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("corsec_cdef_pistol", corsec_cdef_pistol)

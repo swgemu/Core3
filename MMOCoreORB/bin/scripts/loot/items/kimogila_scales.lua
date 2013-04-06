@@ -14,7 +14,10 @@ kimogila_scales = {
 		{"useCount",1,10,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("kimogila_scales", kimogila_scales)

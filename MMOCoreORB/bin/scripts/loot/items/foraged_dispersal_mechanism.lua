@@ -11,7 +11,10 @@ foraged_dispersal_mechanism = {
 		{"range",1,10,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("foraged_dispersal_mechanism", foraged_dispersal_mechanism)

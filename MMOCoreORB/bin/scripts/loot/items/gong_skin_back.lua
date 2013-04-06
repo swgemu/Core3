@@ -8,7 +8,10 @@ gong_skin_back = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("gong_skin_back", gong_skin_back)

@@ -8,7 +8,10 @@ geo_reinforcement_core_schematic = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("geo_reinforcement_core_schematic", geo_reinforcement_core_schematic)

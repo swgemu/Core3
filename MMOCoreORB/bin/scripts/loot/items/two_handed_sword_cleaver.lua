@@ -21,7 +21,10 @@ two_handed_sword_cleaver = {
 		{"attackmindcost",26,14,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("two_handed_sword_cleaver", two_handed_sword_cleaver)

@@ -20,7 +20,10 @@ rancor_tooth = {
 		{"useCount",1,5,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("rancor_tooth", rancor_tooth)

@@ -8,7 +8,10 @@ petrified_avian_egg = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("petrified_avian_egg", petrified_avian_egg)

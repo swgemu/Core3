@@ -17,7 +17,10 @@ pistol_republic_blaster = {
 		{"midrangemod",-52,-28,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("pistol_republic_blaster", pistol_republic_blaster)

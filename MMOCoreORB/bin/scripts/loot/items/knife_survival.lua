@@ -21,7 +21,10 @@ knife_survival = {
 		{"attackmindcost",7,4,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("knife_survival", knife_survival)

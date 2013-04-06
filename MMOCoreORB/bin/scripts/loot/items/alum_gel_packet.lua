@@ -8,7 +8,10 @@ alum_gel_packet = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("alum_gel_packet", alum_gel_packet)

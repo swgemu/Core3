@@ -8,7 +8,10 @@ orange_rug_thread_7 = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("orange_rug_thread_7", orange_rug_thread_7)

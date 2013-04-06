@@ -22,7 +22,10 @@ nyax_sword = {
 		{"maxrange",4,4,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("nyax_sword", nyax_sword)

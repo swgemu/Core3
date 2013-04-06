@@ -9,17 +9,20 @@ force_crystal_good = {
 		{"mindamage",3,8,0},
 		{"maxdamage",9,16,0},
 		{"attackspeed",1.8,0,5},
-		{"hitpoints",650,750,0},		
+		{"hitpoints",650,750,0},
 		{"woundchance",2,4,5},
 		{"attackhealthcost",0,3,0},
 		{"attackactioncost",0,3,0},
 		{"attackmindcost",0,3,0},
 		{"forcecost",0,6,0},
-	    {"color",31,31,0},
+		{"color",31,31,0},
 		{"quality",1,1,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("force_crystal_good", force_crystal_good)

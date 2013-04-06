@@ -8,7 +8,10 @@ blue_rug_adhesive = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("blue_rug_adhesive", blue_rug_adhesive)

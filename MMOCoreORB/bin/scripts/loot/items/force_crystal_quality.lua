@@ -8,7 +8,7 @@ force_crystal_quality = {
 	craftingValues = {
 		{"mindamage",10,16,0},
 		{"maxdamage",15,25,0},
-		{"attackspeed",1.4,0,5},		
+		{"attackspeed",1.4,0,5},
 		{"hitpoints",750,850,0},
 		{"woundchance",1,6,5},
 		{"attackhealthcost",0,6,0},
@@ -19,7 +19,10 @@ force_crystal_quality = {
 		{"quality",3,3,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("force_crystal_quality", force_crystal_quality)

@@ -8,7 +8,10 @@ dud_firework_red = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("dud_firework_red", dud_firework_red)

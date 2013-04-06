@@ -12,7 +12,10 @@ krayt_composite_segment = {
 		{"useCount",1,10,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("krayt_composite_segment", krayt_composite_segment)

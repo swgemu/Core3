@@ -10,7 +10,10 @@ geo_spider_venom_rare = {
 		{"useCount",1,11,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("geo_spider_venom_rare", geo_spider_venom_rare)

@@ -3,12 +3,15 @@
 geo_relic_honey_carafe = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Royal Jelly Carafe",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/loot/dungeon/geonosian_mad_bunker/relic_gbb_honey_carafe.iff",
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("geo_relic_honey_carafe", geo_relic_honey_carafe)

@@ -21,7 +21,10 @@ polearm_staff_metal = {
 		{"attackmindcost",39,21,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("polearm_staff_metal", polearm_staff_metal)

@@ -21,7 +21,10 @@ pistol_scatter = {
 		{"midrangemod",18,35,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("pistol_scatter", pistol_scatter)

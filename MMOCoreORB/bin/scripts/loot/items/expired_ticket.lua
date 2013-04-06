@@ -8,7 +8,10 @@ expired_ticket = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("expired_ticket", expired_ticket)

@@ -11,7 +11,10 @@ janta_blood = {
 		{"useCount",1,4,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("janta_blood", janta_blood)

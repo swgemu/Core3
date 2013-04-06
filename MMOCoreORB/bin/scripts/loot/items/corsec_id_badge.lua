@@ -8,7 +8,10 @@ corsec_id_badge = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("corsec_id_badge", corsec_id_badge)

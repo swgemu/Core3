@@ -8,7 +8,10 @@ damaged_datapad = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("damaged_datapad", damaged_datapad)

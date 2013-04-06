@@ -3,12 +3,15 @@
 schematic_weaponsmiths_tool_set = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Schematic: Weaponsmith's Tool Set",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/loot/quest/schematic_bandolier_s04_quest.iff",
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("schematic_weaponsmiths_tool_set", schematic_weaponsmiths_tool_set)

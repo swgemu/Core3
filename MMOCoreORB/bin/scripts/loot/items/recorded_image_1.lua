@@ -8,7 +8,10 @@ recorded_image_1 = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("recorded_image_1", recorded_image_1)

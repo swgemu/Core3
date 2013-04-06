@@ -8,7 +8,10 @@ hyperdrive_part = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("hyperdrive_part", hyperdrive_part)

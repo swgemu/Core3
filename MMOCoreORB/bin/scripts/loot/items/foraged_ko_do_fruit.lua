@@ -3,12 +3,15 @@
 foraged_ko_do_fruit = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Ko-Do Fruit",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_fruit_s4.iff",
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("foraged_ko_do_fruit", foraged_ko_do_fruit)

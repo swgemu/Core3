@@ -3,7 +3,7 @@
 theme_park_loot_rantok = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Rantok",
+	customObjectName = "",
 	directObjectTemplate = "object/weapon/melee/sword/sword_rantok.iff",
 	craftingValues = {
 		{"mindamage",25,46,0},
@@ -21,7 +21,10 @@ theme_park_loot_rantok = {
 		{"attackmindcost",13,7,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("theme_park_loot_rantok", theme_park_loot_rantok)

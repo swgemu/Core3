@@ -16,7 +16,10 @@ rifle_ewok_crossbow = {
 		{"attackmindcost",57,35,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("rifle_ewok_crossbow", rifle_ewok_crossbow)

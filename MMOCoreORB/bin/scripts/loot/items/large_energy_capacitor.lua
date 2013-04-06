@@ -10,7 +10,10 @@ large_energy_capacitor = {
 		{"useCount",1,5,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("large_energy_capacitor", large_energy_capacitor)

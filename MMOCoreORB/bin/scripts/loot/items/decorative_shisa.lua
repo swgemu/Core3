@@ -8,7 +8,10 @@ decorative_shisa = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("decorative_shisa", decorative_shisa)

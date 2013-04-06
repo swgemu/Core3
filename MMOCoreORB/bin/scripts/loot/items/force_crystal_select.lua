@@ -8,9 +8,9 @@ force_crystal_select = {
 	craftingValues = {
 		{"mindamage",10,25,0},
 		{"maxdamage",26,45,0},
-		{"attackspeed",1.2,-1,5},		
+		{"attackspeed",1.2,-1,5},
 		{"woundchance",2,7,5},
-		{"hitpoints",800,900,0},		
+		{"hitpoints",800,900,0},
 		{"attackhealthcost",0,7,0},
 		{"attackactioncost",0,7,0},
 		{"attackmindcost",0,7,0},
@@ -19,7 +19,10 @@ force_crystal_select = {
 		{"quality",4,4,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("force_crystal_select", force_crystal_select)

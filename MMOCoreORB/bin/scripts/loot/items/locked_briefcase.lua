@@ -8,7 +8,10 @@ locked_briefcase = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("locked_briefcase", locked_briefcase)

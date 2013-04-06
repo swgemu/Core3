@@ -21,7 +21,10 @@ nightsister_controllerfp_lance = {
 		{"attackmindcost",29,15,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("nightsister_controllerfp_lance", nightsister_controllerfp_lance)

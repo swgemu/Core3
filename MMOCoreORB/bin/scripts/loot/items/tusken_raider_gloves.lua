@@ -8,7 +8,10 @@ tusken_raider_gloves = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("tusken_raider_gloves", tusken_raider_gloves)

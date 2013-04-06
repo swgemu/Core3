@@ -21,7 +21,10 @@ baton_stun = {
 		{"attackmindcost",39,19,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("baton_stun", baton_stun)

@@ -20,7 +20,10 @@ nightsister_vibro_unit = {
 		{"useCount",1,5,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("nightsister_vibro_unit", nightsister_vibro_unit)

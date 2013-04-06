@@ -8,7 +8,10 @@ jetpack_base = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("jetpack_base", jetpack_base)

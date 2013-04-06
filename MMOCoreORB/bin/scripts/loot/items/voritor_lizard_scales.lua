@@ -14,7 +14,10 @@ voritor_lizard_scales = {
 		{"useCount",1,10,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("voritor_lizard_scales", voritor_lizard_scales)

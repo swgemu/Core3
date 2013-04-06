@@ -21,7 +21,10 @@ axe_vibroaxe = {
 		{"attackmindcost",20,11,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("axe_vibroaxe", axe_vibroaxe)

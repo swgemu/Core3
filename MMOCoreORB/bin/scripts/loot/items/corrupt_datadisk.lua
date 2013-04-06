@@ -8,7 +8,10 @@ corrupt_datadisk = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("corrupt_datadisk", corrupt_datadisk)

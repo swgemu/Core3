@@ -14,7 +14,10 @@ fambaa_plates = {
 		{"useCount",1,10,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("fambaa_plates", fambaa_plates)

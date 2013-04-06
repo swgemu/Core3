@@ -11,7 +11,10 @@ donkuwah_poison = {
 		{"useCount",1,4,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("donkuwah_poison", donkuwah_poison)

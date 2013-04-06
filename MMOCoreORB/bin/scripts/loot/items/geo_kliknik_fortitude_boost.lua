@@ -8,7 +8,10 @@ geo_kliknik_fortitude_boost = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("geo_kliknik_fortitude_boost", geo_kliknik_fortitude_boost)

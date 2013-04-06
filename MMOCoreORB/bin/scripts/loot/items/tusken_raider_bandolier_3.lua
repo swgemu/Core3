@@ -8,7 +8,10 @@ tusken_raider_bandolier_3 = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("tusken_raider_bandolier_3", tusken_raider_bandolier_3)
