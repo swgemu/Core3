@@ -30,8 +30,8 @@ tusken_war_master = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 5000000},
-				{group = "tusken", chance = 3000000},
+				{group = "junk", chance = 4300000},
+				{group = "tusken_common", chance = 3700000},
 				{group = "armor_attachments", chance = 500000},
 				{group = "clothing_attachments", chance = 500000},
 				{group = "color_crystals", chance = 500000},
