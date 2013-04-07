@@ -7,11 +7,14 @@ giant_dune_kimogila_scale = {
 	directObjectTemplate = "object/tangible/component/armor/scale_giant_dune_kimogila.iff",
 	craftingValues = {
 		{"useCount",1,10,0},
-		{"armor_special_type",0,0,0,0},
-		{"armor_special_effectiveness",0,0,0,0},
+		{"armor_special_type",0,0,0},
+		{"armor_special_effectiveness",0,0,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("giant_dune_kimogila_scale", giant_dune_kimogila_scale)

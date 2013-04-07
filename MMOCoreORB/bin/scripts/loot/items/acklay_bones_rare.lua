@@ -9,18 +9,21 @@ acklay_bones_rare = {
 		{"mindamage",100,225,0},
 		{"maxdamage",100,225,0},
 		{"useCount",1,6,0},
-		{"attackspeed",0,0,0,0},
-		{"woundchance",0,0,0,0},
-		{"hitpoints",0,0,0,0},
-		{"zerorangemod",0,0,0,0},
-		{"maxrangemod",0,0,0,0},
-		{"midrangemod",0,0,0,0},
-		{"attackhealthcost",0,0,0,0},
-		{"attackactioncost",0,0,0,0},
-		{"attackmindcost",0,0,0,0},
+		{"attackspeed",0,0,0},
+		{"woundchance",0,0,0},
+		{"hitpoints",0,0,0},
+		{"zerorangemod",0,0,0},
+		{"maxrangemod",0,0,0},
+		{"midrangemod",0,0,0},
+		{"attackhealthcost",0,0,0},
+		{"attackactioncost",0,0,0},
+		{"attackmindcost",0,0,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("acklay_bones_rare", acklay_bones_rare)

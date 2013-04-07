@@ -3,12 +3,15 @@
 rebel_banner = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Rebel Banner",
-	directObjectTemplate = "object/tangible/event_perk/banner_rebel_style_01.iff",
+	customObjectName = "",
+	directObjectTemplate = "object/tangible/furniture/all/frn_all_banner_rebel.iff",
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("rebel_banner", rebel_banner)

@@ -3,11 +3,15 @@
 grizzled_dewback_hide = {
 	minimumLevel = 0,
 	maximumLevel = 0,
-	customObjectName = "Grizzled Dewback Hide",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/mission/quest_item/mat_rags_q4_needed.iff",
-	craftingValues = {},
+	craftingValues = {
+	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("grizzled_dewback_hide", grizzled_dewback_hide)

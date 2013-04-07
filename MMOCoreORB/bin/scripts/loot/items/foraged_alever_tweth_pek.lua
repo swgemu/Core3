@@ -3,12 +3,15 @@
 foraged_alever_tweth_pek = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Alever Tweth Pek",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_fruit_s3.iff",
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {
+
+	}
 }
 
 addLootItemTemplate("foraged_alever_tweth_pek", foraged_alever_tweth_pek)
