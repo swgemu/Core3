@@ -21,7 +21,7 @@ woolamander_harrower = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + HERD + KILLER,
 	optionsBitmask = 0,
 	diet = HERBIVORE,
@@ -30,9 +30,9 @@ woolamander_harrower = Creature:new {
 	lootGroups = {
 	 {
 	        groups = {
-				{group = "harrower_bone", chance = 5000000}
+				{group = "harrower_bone", chance = 10000000}
 			},
-			lootChance = 9300000
+			lootChance = 4650000
 		}
 	},
 	weapons = {},
