@@ -16,6 +16,24 @@
       "revId": "7aa06c83ebcf4890dacd3de8d2d468c6b93751d5",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABX///UQ\u003d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-04-07T09:32:54Z",
+      "side": 1,
+      "message": "The following should work:\n\nlocal npcData \u003d self:getNpcData(npcNumber)\n\nnumber \u003d npcData.permissionWarpNumber",
+      "parentUuid": "AAAABX///V8\u003d",
+      "revId": "7aa06c83ebcf4890dacd3de8d2d468c6b93751d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
