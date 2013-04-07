@@ -49,8 +49,8 @@ which carries forward this exception.
 #include "LoginClient.h"
 #include "LoginServer.h"
 #include "LoginProcessServerImplementation.h"
-
 #include "account/AccountManager.h"
+
 
 LoginPacketHandler::LoginPacketHandler(const String& s, LoginProcessServerImplementation* serv)
 		: Logger(s) {
@@ -126,6 +126,10 @@ void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Messa
     moveStatement << "INSERT INTO deleted_characters SELECT *, 0 as db_deleted FROM characters WHERE character_oid = " << charId;
     moveStatement << " AND account_id = " << accountId << " AND galaxy_id = " << ServerId << ";";
 
+    StringBuffer verifyStatement;
+    verifyStatement << "SELECT * from deleted_characters WHERE character_oid = " << charId;
+    verifyStatement << " AND account_id = " << accountId << " AND galaxy_id = " << ServerId << ";";
+
     StringBuffer deleteStatement;
     deleteStatement << "DELETE FROM characters WHERE character_oid = " << charId;
     deleteStatement << " AND account_id = " << accountId << " AND galaxy_id = " << ServerId << ";";
@@ -137,19 +141,30 @@ void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Messa
     	Reference<ResultSet*> moveResults = ServerDatabase::instance()->executeQuery(moveStatement.toString());
 
     	if(moveResults == NULL || moveResults.get()->getRowsAffected() == 0){
+    		dbDelete = 1;
     		StringBuffer errMsg;
     		errMsg << "ERROR: Could not move character to deleted_characters table. " << endl;
     		errMsg << "QUERY: " << moveStatement.toString();
     		info(errMsg.toString(),true);
+
+    	}
+
+    	Reference<ResultSet*> verifyResults  = ServerDatabase::instance()->executeQuery(verifyStatement.toString());
+
+    	if(verifyResults == NULL || verifyResults.get()->getRowsAffected() == 0){
     		dbDelete = 1;
+    		StringBuffer errMsg;
+        	errMsg << "ERROR: Could not verify character was moved to deleted_characters " << endl;
+        	errMsg << "QUERY: " << moveStatement.toString();
+
     	}
 
     } catch (DatabaseException& e) {
-    	System::out << e.getMessage();
     	dbDelete = 1;
+    	System::out << e.getMessage();
     } catch (Exception& e) {
-    	System::out << e.getMessage();
     	dbDelete = 1;
+       	System::out << e.getMessage();
     }
 
     if(!dbDelete){
@@ -162,6 +177,8 @@ void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Messa
     			errMsg << "QUERY: " << deleteStatement.toString();
     			dbDelete = 1;
     		}
+
+
     	} catch (DatabaseException& e) {
     		System::out << e.getMessage();
     		dbDelete = 1;
