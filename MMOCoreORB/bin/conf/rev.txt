@@ -1,1 +1,10 @@
-4173M
+ce2d7ad was Ivojedi, 8 hours ago, message: [Added] Method to PlanetManager to find the closest world floor [Fixed] AI in the open world to not always fall to terrain height when moving - mantis 3694, 3837 [Fixed] Player characters to not always be set at terrain height when dismounting - mantis 3521 and 3752 [added] Open world Z coordinate verification
+ab66298 was Victor Popovici, 11 hours ago, message: Merge "[added] No build zones for tatooine. Referemce Mantis 3516. " into unstable
+253dae5 was Victor Popovici, 11 hours ago, message: Merge "[fixed] Characters will no longer be deleted from the characters table if there is a problem adding character to the deleted_characters table" into unstable
+4cbba28 was lordkator, 13 hours ago, message: Merge "[Added] ability to set a travel point to outbound only" into unstable
+a574947 was lordkator, 13 hours ago, message: Merge "[Added] Loot items for resource recycler schematics and parts. They will be added to groups and hooked up to mobs in another patch." into unstable
+14f8325 was lordkator, 13 hours ago, message: Merge "[Fixed] Camping xp bonus amounts from visitors and healing to be based on the camp type rather than a static amount for all camps [Fixed] Camping xp bonuses are now added on top of the duration based xp (and can take you over the normal duration cap) [Fixed] Assuming camp ownership to check a player's skill, whether they already have a camp placed, and to send a system message upon success [Changed] When ownership is assumed in a camp the duration, accrued bonus xp, and visitor list are reset" into unstable
+9f7bd1c was Ivojedi, 30 hours ago, message: [Added] ability to set a travel point to outbound only
+ebdc087 was Naikoi, 30 hours ago, message: [added] No build zones for tatooine. Referemce Mantis 3516.
+c5a1d23 was Victor Popovici, 31 hours ago, message: Merge "[Fixed] loot containers in dathomir imperial prison. this should allow any type of lootable container to be used in a screenplay." into unstable
+75b3838 was Pete, 31 hours ago, message: [fixed] Characters will no longer be deleted from the characters table if there is a problem adding character to the deleted_characters table

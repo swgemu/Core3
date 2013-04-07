@@ -49,6 +49,7 @@ private:
 	void sendMailMaintenanceWithdrawnFromBank(CreatureObject* owner, StructureObject* structure);
 	void sendMailDecay(CreatureObject* owner, StructureObject* structure);
 	void sendMailCondemned(CreatureObject* owner, StructureObject* structure);
+	void sendStructureID(CreatureObject* owner, StructureObject* structure);
 
 	bool shouldBuildingBeDestroyed(StructureObject* structure);
 };
