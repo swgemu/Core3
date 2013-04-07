@@ -785,13 +785,13 @@ float PlanetManagerImplementation::findClosestWorldFloor(float x, float y, float
 
 	float terrainHeight = zone->getHeight(x, y);
 	float diff = fabs(z - terrainHeight);
-	float closestHeight = 0;
+	float closestHeight = terrainHeight;
 
 	for (int i = 0; i < intersections.size(); i++) {
-		float newDiff = fabs(16384 - intersections.get(i).getIntersectionDistance() - z);
+		float newDiff = fabs(16384.f - intersections.get(i).getIntersectionDistance() - z);
 		if ( newDiff < diff) {
 			diff = newDiff;
-			closestHeight = 16384 - intersections.get(i).getIntersectionDistance();
+			closestHeight = 16384.f - intersections.get(i).getIntersectionDistance();
 		}
 	}
 
