@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABX///V8\u003d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2013-04-07T02:41:39Z",
+      "side": 1,
+      "message": "What is the best way to get the Permission Number listed in the npcMap? I\u0027m not aware of the LUA syntax for this, this way currently does not work.",
+      "revId": "7aa06c83ebcf4890dacd3de8d2d468c6b93751d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
