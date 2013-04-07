@@ -51,8 +51,10 @@ void StructureMaintenanceTask::run() {
 	Locker _ownerLock(owner);
 	Locker _lock(strongRef, owner);
 
-	//Check if owner got money in the bank and structure not decaying.
-	if (owner->getBankCredits() >= oneWeekMaintenance && !strongRef->isDecaying()) {
+	//Structure not decaying.
+	if (!strongRef->isDecaying()) {
+		//Check if owner got money in the bank
+		if (owner->getBankCredits() >= oneWeekMaintenance) {
 		//Withdraw 1 week maintenance from owner bank account and add to the structure
 		//maintenance pool.
 		strongRef->payMaintenance(oneWeekMaintenance, owner, false);
@@ -62,13 +64,14 @@ void StructureMaintenanceTask::run() {
 
 		//Reschedule task in 1 week.
 		strongRef->scheduleMaintenanceExpirationEvent();
-	} else {
+		}
+
 		//Start decay process.
-
-		//Notify owner about decay.
-		sendMailDecay(owner, strongRef);
-
+	} else {
 		if (!strongRef->isDecayed()) {
+			//Notify owner about decay.
+			sendMailDecay(owner, strongRef);
+
 			//Reschedule task in 1 day.
 			reschedule(oneDayTime);
 		} else {
