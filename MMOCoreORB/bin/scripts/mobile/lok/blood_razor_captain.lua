@@ -35,7 +35,7 @@ blood_razor_captain = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 5700000},
+				{group = "junk", chance = 5310000},
 				{group = "tailor_components", chance = 1000000},
 				{group = "color_crystals", chance = 400000},
 				{group = "crystals_okay", chance = 400000},
@@ -43,7 +43,8 @@ blood_razor_captain = Creature:new {
 				{group = "melee_polearm", chance = 600000},
 				{group = "pistols", chance = 600000},
 				{group = "clothing_attachments", chance = 400000},
-				{group = "armor_attachments", chance = 400000}
+				{group = "armor_attachments", chance = 400000},
+				{group = "bloodrazor_common", chance = 290000}
 			},
 			lootChance = 3500000
 		}
