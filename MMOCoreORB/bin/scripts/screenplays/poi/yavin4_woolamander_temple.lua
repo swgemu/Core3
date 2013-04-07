@@ -58,4 +58,15 @@ function WoolamanderTempleScreenPlay:spawnMobiles()
 	spawnMobile("yavin4", "woolamander_harvester",480,-46,2,23.2,175,3705359)
 	spawnMobile("yavin4", "woolamander_harvester",480,76.2,2,-9,0,3705362)
 	spawnMobile("yavin4", "woolamander_harvester",480,76.2,2,17.3,179,3705362)
+
+	spawnMobile("yavin4", "woolamander_gatherer",240,431.4,81.0,-684.6,143,0)
+	spawnMobile("yavin4", "woolamander_gatherer",240,435.1,81.0,-693.3,48,0)
+	spawnMobile("yavin4", "woolamander_gatherer",240,438.0,81.0,-688.6,-69,0)
+	spawnMobile("yavin4", "woolamander_gatherer",240,484.0,81.0,-607.5,-108,0)
+	spawnMobile("yavin4", "woolamander_gatherer",240,487.8,81.0,-624.7,131,0)
+	spawnMobile("yavin4", "woolamander_gatherer",240,534.2,81.0,-660.7,-143,0)
+	spawnMobile("yavin4", "woolamander_gatherer",240,540.0,81.0,-665.9,-173,0)
+	spawnMobile("yavin4", "woolamander_harvester",240,537.6,81.0,-680.1,135,0)
+	spawnMobile("yavin4", "woolamander_harvester",240,545.2,81.0,-686.9,-45,0)
+
 end
