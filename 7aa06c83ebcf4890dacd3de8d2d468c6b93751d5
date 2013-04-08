@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAABX///Ps\u003d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-04-08T22:54:36Z",
+      "side": 1,
+      "message": "Break out this to a setting for each individual theme park.",
+      "revId": "7aa06c83ebcf4890dacd3de8d2d468c6b93751d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABX///QA\u003d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-04-08T22:54:36Z",
+      "side": 1,
+      "message": "Please check your indentation settings.",
+      "revId": "7aa06c83ebcf4890dacd3de8d2d468c6b93751d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAABX///V8\u003d",
         "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
         "patchSetId": 1
@@ -31,6 +65,74 @@
       "side": 1,
       "message": "The following should work:\n\nlocal npcData \u003d self:getNpcData(npcNumber)\n\nnumber \u003d npcData.permissionWarpNumber",
       "parentUuid": "AAAABX///V8\u003d",
+      "revId": "7aa06c83ebcf4890dacd3de8d2d468c6b93751d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABX///Po\u003d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-04-08T22:54:36Z",
+      "side": 1,
+      "message": "Please extract a function here to handle each individual permission. This is to avoid to long functions.",
+      "revId": "7aa06c83ebcf4890dacd3de8d2d468c6b93751d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABX///P4\u003d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-04-08T22:54:36Z",
+      "side": 1,
+      "message": "It would be better to store the destination cell number in the map. Otherwise we would always have to relay on the previous cell being the one you should teleport to. We could even store the exact coordinates in that case to get a smoother teleport than to the middle of the cell.",
+      "revId": "7aa06c83ebcf4890dacd3de8d2d468c6b93751d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABX///P0\u003d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-04-08T22:54:36Z",
+      "side": 1,
+      "message": "Skip these variables and call the functions directly in the teleport command below.",
+      "revId": "7aa06c83ebcf4890dacd3de8d2d468c6b93751d5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABX///Pw\u003d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/themeParkLogic.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-04-08T22:54:36Z",
+      "side": 1,
+      "message": "Please rebase your local version on latest origin/unstable so that you do not revert changes.",
       "revId": "7aa06c83ebcf4890dacd3de8d2d468c6b93751d5",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
