@@ -43,6 +43,8 @@ public:
 
 	void removeSkillModsFrom(CreatureObject* creature);
 
+	bool isEquipped();
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -84,6 +86,8 @@ public:
 	virtual void applySkillModsTo(CreatureObject* creature, bool doCheck = true);
 
 	virtual void removeSkillModsFrom(CreatureObject* creature);
+
+	bool isEquipped();
 
 	WeakReference<WearableContainerObject*> _this;
 
@@ -133,6 +137,8 @@ public:
 	void applySkillModsTo(CreatureObject* creature, bool doCheck);
 
 	void removeSkillModsFrom(CreatureObject* creature);
+
+	bool isEquipped();
 
 };
 

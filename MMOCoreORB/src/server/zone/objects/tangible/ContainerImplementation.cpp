@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
+#include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
 #include "server/zone/templates/tangible/ContainerTemplate.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/creature/AiAgent.h"
@@ -158,22 +159,103 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 
 	if ((object->isIntangibleObject() && getContainerType() != 3)
 			|| (getContainerType() == 3 && !object->isIntangibleObject())) {
-		errorDescription = "@container_error_message:container07";
+		errorDescription = "@container_error_message:container07"; // You cannot put that kind of item in that kind of container.
 
 		return TransferErrorCode::INVALIDTYPE;
 	}
 
 	if (containmentType == -1) {
 		if ((gameObjectType == SceneObjectType::WEARABLECONTAINER && object->getGameObjectType() == SceneObjectType::WEARABLECONTAINER)) {
-			errorDescription = "@container_error_message:container12";
+			errorDescription = "@container_error_message:container12"; // This item is too bulky to fit inside this container.
 
 			return TransferErrorCode::CANTNESTOBJECT;
 		}
 
 		if (object->isContainerObject() && getArrangementDescriptorSize() == 0) {
-			errorDescription = "@container_error_message:container12";
+			errorDescription = "@container_error_message:container12"; // This item is too bulky to fit inside this container.
 
 			return TransferErrorCode::CANTNESTOBJECT;
+		}
+
+		// Find out how much room we need
+		int objectSize;
+
+		if (object->isContainerObject())
+			objectSize = object->getContainerObjectsSize() + 1;
+		else
+			objectSize = 1;
+
+		// Return if there's not enough room in the container
+		if (getContainerVolumeLimit() < getCountableObjectsRecursive() + objectSize) {
+			errorDescription = "@container_error_message:container03"; // This container is full.
+
+			return TransferErrorCode::CONTAINERFULL;
+		}
+
+		ManagedReference<SceneObject*> wearableParent = getParentRecursively(SceneObjectType::WEARABLECONTAINER);
+		ManagedReference<SceneObject*> playerParent = getParentRecursively(SceneObjectType::PLAYERCREATURE);
+
+		// If there's a wearable container parent, return if it doesn't have enough room
+		if (wearableParent != NULL) {
+			if (wearableParent->getContainerVolumeLimit() < wearableParent->getCountableObjectsRecursive() + objectSize) {
+				errorDescription = "@container_error_message:container03"; // This container is full.
+
+				return TransferErrorCode::CONTAINERFULL;
+			}
+
+			// It has room. Return if it's not equipped and is in a player inventory which doesn't have room
+			ManagedReference<WearableContainerObject*> wearable = cast<WearableContainerObject*>(wearableParent.get());
+			if (!wearable->isEquipped() && playerParent != NULL) {
+				SceneObject* inventory = playerParent->getSlottedObject("inventory");
+
+				if (inventory->getContainerVolumeLimit() < inventory->getCountableObjectsRecursive() + objectSize) {
+					errorDescription = "@error_message:inv_full"; // Your inventory is full.
+
+					return TransferErrorCode::CONTAINERFULL;
+				}
+			}
+		} else {
+			// There's no parent that's a wearable container. Check if this is
+			if (gameObjectType == SceneObjectType::WEARABLECONTAINER) {
+				WearableContainerObject* pack = cast<WearableContainerObject*>(_this.get().get());
+
+				if (pack != NULL && !pack->isEquipped()) {
+				// This is a wearable container, and it's not equipped. Return if the container is in a player inventory without room
+					if (playerParent != NULL ) {
+						SceneObject* inventory = playerParent->getSlottedObject("inventory");
+						if (inventory->getContainerVolumeLimit() < inventory->getCountableObjectsRecursive() + objectSize) {
+							errorDescription = "@error_message:inv_full"; // Your inventory is full.
+
+							return TransferErrorCode::CONTAINERFULL;
+						}
+					}
+				}
+			} else {
+				// This is a non-wearable container. Check if it's in a player inventory with room
+				if (playerParent != NULL ) {
+					SceneObject* inventory = playerParent->getSlottedObject("inventory");
+					if (inventory->getContainerVolumeLimit() < inventory->getCountableObjectsRecursive() + objectSize) {
+						errorDescription = "@error_message:inv_full"; // Your inventory is full.
+
+						return TransferErrorCode::CONTAINERFULL;
+					}
+				}
+			}
+		}
+
+		// Check if the container is in a building
+		if (playerParent == NULL) {
+			ManagedReference<SceneObject*> rootParent = getRootParent();
+
+			if (rootParent != NULL && rootParent->isBuildingObject()) {
+				BuildingObject* building = rootParent.castTo<BuildingObject*>();
+
+				if (!building->isStaticBuilding() && (building->getCurrentNumberOfPlayerItems() + objectSize > building->getMaximumNumberOfPlayerItems())) {
+					errorDescription = "@container_error_message:container13"; // This house has too many items in it
+
+					return TransferErrorCode::TOOMANYITEMSINHOUSE;
+				}
+			}
 		}
 
 		ManagedReference<SceneObject*> myParent = getParent();
@@ -200,19 +282,6 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 			}
 		}
 
-		if (getParentRecursively(SceneObjectType::PLAYERCREATURE) == NULL) {
-			ManagedReference<SceneObject*> rootParent = getRootParent();
-
-			if (rootParent != NULL && rootParent->isBuildingObject()) {
-				BuildingObject* building = rootParent.castTo<BuildingObject*>();
-
-				if (!building->isStaticBuilding() && (building->getCurrentNumberOfPlayerItems() + 1 > building->getMaximumNumberOfPlayerItems())) {
-					errorDescription = "@container_error_message:container13";
-
-					return TransferErrorCode::TOOMANYITEMSINHOUSE;
-				}
-			}
-		}
 	}
 
 	return TangibleObjectImplementation::canAddObject(object, containmentType, errorDescription);
