@@ -67,10 +67,40 @@ class StatisticsManager : public Singleton<StatisticsManager>, public Logger, pu
 	AtomicLong creditsGeneratedFromMissionsMusician;
 	AtomicLong creditsGeneratedFromMissionsRecon;
 	AtomicLong creditsGeneratedFromMissionsSurvey;
+	AtomicLong charactersDeletedByUser;
+
+	//stats for character deletion in packet handler
+	AtomicLong charactersMovedToDeletedTable;  // chracters moved to teh characters_deleted table
+	AtomicLong characterMoveErrors;  // errors moving character from char to delted_char table
+	AtomicLong deleteTasksRun;
+	AtomicLong characterUpdateCount;
+	AtomicLong characterInsertErrors;
+	AtomicLong characterMoveExceptions;
+
+	// from delete character task
+	AtomicLong charactersDestroyedFromWorld;   // characters destroybojectfromworld
+	AtomicLong charactersDestroyedFromDatabase; // characters destroyobjectfromdatabase
+	AtomicLong deleteCharacterTaskErrors;
+	AtomicLong deleteCharacterTaskExceptions;
 
 public:
+	const static int CHARACTERDELETEDBYUSER = 0;
+	const static int CHARACTERMOVED = 1;
+	const static int CHARACTERDESTROYEDFROMWORLD = 2;
+	const static int CHARACTERDESTROYEDFROMDATABASE = 3;
+	const static int TASKERRORS = 4;
+	const static int TASKEXCEPTIONS = 5;
+	const static int TASKRUN = 6;
+
+	const static int CHARACTERMOVEEXCEPTION = 7;
+	const static int CHARACTERMOVEERROR = 8;
+	const static int CHARACTUREUPDATES = 9;
+	const static int CHARACTERINSERTERROR = 10;
+
+
 	StatisticsManager() : Logger("Statistics Manager") {
 		reset();
+		resetCharacterStatistics();
 	}
 
 	void completeMission(unsigned int missionType, int reward) {
@@ -114,6 +144,48 @@ public:
 		}
 	}
 
+
+	void IncrementCharacterStat(int statType) {
+		switch ( statType) {
+		case CHARACTERDELETEDBYUSER:
+			charactersDeletedByUser.increment();
+			break;
+		case CHARACTERMOVED:
+			charactersMovedToDeletedTable.increment();
+			break;
+		case CHARACTERDESTROYEDFROMWORLD:
+			charactersDestroyedFromWorld.increment();
+			break;
+		case CHARACTERDESTROYEDFROMDATABASE:
+			charactersDestroyedFromDatabase.increment();
+			break;
+		case TASKERRORS:
+			deleteCharacterTaskErrors.increment();
+			break;
+		case TASKEXCEPTIONS:
+			deleteCharacterTaskExceptions.increment();
+			break;
+		case TASKRUN:
+			deleteTasksRun.increment();
+			break;
+		case CHARACTERMOVEERROR:
+			characterMoveErrors.increment();
+			break;
+		case CHARACTUREUPDATES:
+			characterUpdateCount.increment();
+			break;
+		case CHARACTERINSERTERROR:
+			characterInsertErrors.increment();
+			break;
+		case CHARACTERMOVEEXCEPTION:
+			characterMoveExceptions.increment();
+			break;
+		}
+
+
+	}
+
+
 	String getStatistics() {
 		StringBuffer stats;
 		stats << "Server Statistics" << endl;
@@ -124,8 +196,16 @@ public:
 		return stats.toString();
 	}
 
+	String getCharacterStats(){
+		StringBuffer stats;
+		getCharacterStatistics(stats);
+
+		return stats.toString();
+	}
+
 	void reset() {
 		resetMissionStatistics();
+		resetCharacterStatistics();
 	}
 
 private:
@@ -187,6 +267,40 @@ private:
 		creditsGeneratedFromMissionsMusician = 0;
 		creditsGeneratedFromMissionsRecon = 0;
 		creditsGeneratedFromMissionsSurvey = 0;
+	}
+
+	void resetCharacterStatistics(){
+		charactersDeletedByUser = 0;
+		characterMoveErrors = 0;
+		characterInsertErrors = 0;
+		charactersMovedToDeletedTable = 0;
+		characterMoveExceptions = 0;
+
+		deleteTasksRun = 0;
+		charactersDestroyedFromWorld = 0;
+		charactersDestroyedFromDatabase = 0;
+		deleteCharacterTaskErrors = 0;
+		deleteCharacterTaskExceptions = 0;
+		characterUpdateCount = 0;
+
+	}
+
+	void getCharacterStatistics(StringBuffer& stats){
+		stats << endl << "======= CHARACTER STATS ==========" << endl << endl;
+		stats << "CHARS DELETED BY USERS: " << String::valueOf(charactersDeletedByUser) << endl;
+		stats << "CHARS MOVED TO DELETED TABLE: " << String::valueOf(charactersMovedToDeletedTable) << endl;
+		stats << "CHAR INSERT ERRORS: " << String::valueOf(characterInsertErrors) << endl;
+		stats << "CHAR MOVE VERICIATION FAILURES: " << String::valueOf(characterMoveErrors) << endl;
+		stats << "CHAR MOVE EXCEPTIONS: " << String::valueOf(characterMoveExceptions) << endl;
+
+		stats << endl << endl;
+		stats << "DELETE TASK RUN: " << String::valueOf(deleteTasksRun) << endl;
+		stats << "CHARS DELETED FROM WORLD: " << String::valueOf(charactersDestroyedFromWorld) << endl;
+		stats << "CHARS DELETED FROM DB: " << String::valueOf(charactersDestroyedFromDatabase) << endl;
+		stats << "DELETE TASK ERRORS: " << String::valueOf(deleteCharacterTaskErrors) << endl;
+		stats << "DELTE TASK EXCEPTIONS: " << String::valueOf(deleteCharacterTaskExceptions) << endl;
+		stats << "CHAR UPDATE RUN: " << String::valueOf(characterUpdateCount) << endl;
+
 	}
 };
 

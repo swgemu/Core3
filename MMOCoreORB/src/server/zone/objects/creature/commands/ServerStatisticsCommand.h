@@ -29,7 +29,11 @@ public:
 			if (command.toLowerCase() == "reset") {
 				StatisticsManager::instance()->reset();
 				creature->sendSystemMessage("Statistics have been reset.");
+			} else if ( command.toLowerCase() == "character") {
+				creature->sendSystemMessage(StatisticsManager::instance()->getCharacterStats());
 			}
+
+
 		} else {
 			creature->sendSystemMessage(StatisticsManager::instance()->getStatistics());
 		}

@@ -50,7 +50,7 @@ which carries forward this exception.
 #include "LoginServer.h"
 #include "LoginProcessServerImplementation.h"
 #include "account/AccountManager.h"
-
+#include "server/zone/managers/statistics/StatisticsManager.h"
 
 LoginPacketHandler::LoginPacketHandler(const String& s, LoginProcessServerImplementation* serv)
 		: Logger(s) {
@@ -114,6 +114,7 @@ void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Messa
 		client->sendMessage(msg);
 		return;
 	}
+	StatisticsManager::instance()->IncrementCharacterStat(StatisticsManager::CHARACTERDELETEDBYUSER);
 
 	uint32 accountId = client->getAccountID();
 
@@ -142,6 +143,7 @@ void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Messa
 
     	if(moveResults == NULL || moveResults.get()->getRowsAffected() == 0){
     		dbDelete = 1;
+    		StatisticsManager::instance()->IncrementCharacterStat(StatisticsManager::CHARACTERINSERTERROR);
     		StringBuffer errMsg;
     		errMsg << "ERROR: Could not move character to deleted_characters table. " << endl;
     		errMsg << "QUERY: " << moveStatement.toString();
@@ -153,17 +155,23 @@ void LoginPacketHandler::handleDeleteCharacterMessage(LoginClient* client, Messa
 
     	if(verifyResults == NULL || verifyResults.get()->getRowsAffected() == 0){
     		dbDelete = 1;
+    		StatisticsManager::instance()->IncrementCharacterStat(StatisticsManager::CHARACTERMOVEERROR);
     		StringBuffer errMsg;
         	errMsg << "ERROR: Could not verify character was moved to deleted_characters " << endl;
         	errMsg << "QUERY: " << moveStatement.toString();
 
+    	} else {
+
+    		StatisticsManager::instance()->IncrementCharacterStat(StatisticsManager::CHARACTERMOVED);
     	}
 
     } catch (DatabaseException& e) {
     	dbDelete = 1;
+    	StatisticsManager::instance()->IncrementCharacterStat(StatisticsManager::CHARACTERMOVEEXCEPTION);
     	System::out << e.getMessage();
     } catch (Exception& e) {
     	dbDelete = 1;
+    	StatisticsManager::instance()->IncrementCharacterStat(StatisticsManager::CHARACTERMOVEEXCEPTION);
        	System::out << e.getMessage();
     }
 
