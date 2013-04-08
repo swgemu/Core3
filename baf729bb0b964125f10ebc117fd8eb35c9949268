@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABX///QQ\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/installation/factory/FactoryObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-04-08T22:11:28Z",
+      "side": 0,
+      "message": "Is there a particular reason the hoppers were being sent without container objects?",
+      "revId": "baf729bb0b964125f10ebc117fd8eb35c9949268",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
