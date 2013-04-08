@@ -27,19 +27,16 @@ function SingingMountainClanScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "singing_mountain_clan_slave", 900, -11.3, 2.3, 5.38, 0, 2665880)
 	spawnMobile("dathomir", "singing_mountain_clan_slave", 900, -12.7, 2.3, 6.3, 0, 2665880)
 
-	spawnMobile("dathomir", "singing_mountain_clan_huntress", 900, -22.3, 2.0, 5.05, 0, 2665881)
+	spawnMobile("dathomir", "singing_mountain_clan_huntress", 900, -28.1, 2.0, 4.9, 63, 2665881)
 	spawnMobile("dathomir", "singing_mountain_clan_huntress", 900, -27.3, 2.0, 9.0, 66, 2665881)
 
 	spawnMobile("dathomir", "singing_mountain_clan_rancor_tamer", 900, -17.8, 2.0, -6.1, -97, 2665882)
 	spawnMobile("dathomir", "singing_mountain_clan_arch_witch", 900, -25.9, 2.0, -7.4, -153, 2665882)
 
-	spawnMobile("dathomir", "singing_mountain_clan_initiate", 900, -14.2, 1.9, -21.0, 0, 2665883)
-
-	spawnMobile("dathomir", "singing_mountain_clan_councilwoman", 1800, 3.0, 3.0, -5.2, 176, 2665884)
+	spawnMobile("dathomir", "singing_mountain_clan_councilwoman", 1800, -1.7, 3.0, -5.2, 140, 2665884)
 	spawnMobile("dathomir", "singing_mountain_clan_guardian", 900, 3.0, 2.0, -16.5, -138, 2665884)
 	spawnMobile("dathomir", "singing_mountain_clan_sentry", 900, 8.5, 2.0, -26.4, -45, 2665884)
 	spawnMobile("dathomir", "singing_mountain_clan_sentry", 900, 8.6, 2.0, -21.2, -150, 2665884)
-
 
 	spawnMobile("dathomir", "singing_mountain_clan_sentry", 900, 16.4, 2.01, -10.8, -174, 2665885)
 	spawnMobile("dathomir", "singing_mountain_clan_sentry", 900, 16.5, 2.0, -24.4, -82, 2665885)
