@@ -24,14 +24,14 @@ bool StructureContainerComponent::checkContainerPermission(SceneObject* sceneObj
 			return false;
 		}
 	}
+	Logger::Logger tlog("container");
+
+	tlog.info("checking for child with sceneobject " + String::valueOf(sceneObject->getObjectID()),true);
 
 	if(permission != ContainerPermissions::OPEN && building->containsChildObject(sceneObject))
 		return false;
 
 	if (building->isOwnerOf(creature) || building->isOnAdminList(creature))
-		return true;
-
-	if ((permission == ContainerPermissions::OPEN)  && building->isStaticObject())
 		return true;
 
 	if (building->isBuildingObject()) {
