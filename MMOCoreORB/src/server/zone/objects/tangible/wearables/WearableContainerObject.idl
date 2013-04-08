@@ -65,4 +65,6 @@ class WearableContainerObject extends Container {
 	public abstract native void applySkillModsTo(CreatureObject creature, boolean doCheck = true);
 	
 	public abstract native void removeSkillModsFrom(CreatureObject creature);
+
+	public native boolean isEquipped();
 }

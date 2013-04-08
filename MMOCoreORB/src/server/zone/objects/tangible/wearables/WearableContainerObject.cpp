@@ -10,7 +10,7 @@
  *	WearableContainerObjectStub
  */
 
-enum {RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_ = 6,RPC_APPLYSKILLMODSTO__CREATUREOBJECT_BOOL_,RPC_REMOVESKILLMODSFROM__CREATUREOBJECT_};
+enum {RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_ = 6,RPC_APPLYSKILLMODSTO__CREATUREOBJECT_BOOL_,RPC_REMOVESKILLMODSFROM__CREATUREOBJECT_,RPC_ISEQUIPPED__};
 
 WearableContainerObject::WearableContainerObject() : Container(DummyConstructorParameter::instance()) {
 	WearableContainerObjectImplementation* _implementation = new WearableContainerObjectImplementation();
@@ -72,6 +72,19 @@ void WearableContainerObject::removeSkillModsFrom(CreatureObject* creature) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->removeSkillModsFrom(creature);
+}
+
+bool WearableContainerObject::isEquipped() {
+	WearableContainerObjectImplementation* _implementation = static_cast<WearableContainerObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISEQUIPPED__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isEquipped();
 }
 
 DistributedObjectServant* WearableContainerObject::_getImplementation() {
@@ -262,6 +275,11 @@ void WearableContainerObjectAdapter::invokeMethod(uint32 methid, DistributedMeth
 			removeSkillModsFrom(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		}
 		break;
+	case RPC_ISEQUIPPED__:
+		{
+			resp->insertBoolean(isEquipped());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -277,6 +295,10 @@ void WearableContainerObjectAdapter::applySkillModsTo(CreatureObject* creature, 
 
 void WearableContainerObjectAdapter::removeSkillModsFrom(CreatureObject* creature) {
 	(static_cast<WearableContainerObject*>(stub))->removeSkillModsFrom(creature);
+}
+
+bool WearableContainerObjectAdapter::isEquipped() {
+	return (static_cast<WearableContainerObject*>(stub))->isEquipped();
 }
 
 /*
