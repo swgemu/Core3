@@ -251,7 +251,7 @@ void FactoryObjectImplementation::sendOutputHopper(CreatureObject* player) {
 		return;
 	}
 
-	outputHopper->sendWithoutContainerObjectsTo(player);
+	outputHopper->sendTo(player, true);
 	outputHopper->openContainerTo(player);
 	outputHopper->notifyObservers(ObserverEventType::OPENCONTAINER, player);
 }
