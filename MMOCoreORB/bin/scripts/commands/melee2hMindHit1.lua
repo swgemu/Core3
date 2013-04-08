@@ -67,7 +67,7 @@ Melee2hMindHit1Command = {
 
 	animationCRC = hashCode("combo_2b_medium"),
 
-	combatSpam = "melee2hsweep1",
+	combatSpam = "mindstrike",
 
 	range = -1
 }

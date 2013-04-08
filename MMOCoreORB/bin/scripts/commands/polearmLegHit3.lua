@@ -53,7 +53,7 @@ PolearmLegHit3Command = {
 
 	animationCRC = hashCode("combo_3b_medium"),
 
-	combatSpam = "melee",
+	combatSpam = "legbreaker",
 
 	poolsToDamage = ACTION_ATTRIBUTE,
 

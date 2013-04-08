@@ -54,7 +54,7 @@ PolearmHit1Command = {
 
 	animationCRC = hashCode("combo_2b_light"),
 
-	combatSpam = "polearm",
+	combatSpam = "bonebruiser",
 
 	range = -1
 

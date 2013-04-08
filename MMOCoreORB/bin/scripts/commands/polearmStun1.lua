@@ -53,7 +53,7 @@ PolearmStun1Command = {
 
 	animationCRC = hashCode("combo_4a_light"),
 
-	combatSpam = "breathstealer",
+	combatSpam = "breathtaker",
 
 	stateEffects = {
 	  StateEffect( 

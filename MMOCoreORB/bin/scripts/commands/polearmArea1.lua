@@ -56,7 +56,7 @@ PolearmArea1Command = {
 
 	animationCRC = hashCode("combo_2c_medium"),
 
-	combatSpam = "melee",
+	combatSpam = "whirlwind",
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
