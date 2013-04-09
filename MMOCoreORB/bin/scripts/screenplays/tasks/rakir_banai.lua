@@ -28,7 +28,7 @@ rakir_banai_missions =
 }, 
 		itemSpawns = 
 		{
-			{ itemTemplate = "object/tangible/loot/misc/datadisk_corrupt.iff", itemName = "Datadisc" }
+			{ itemTemplate = "object/tangible/mission/quest_item/rakir_banai_q2_needed.iff", itemName = "" }
 		}, 
 		rewards = 
 		{ 
@@ -45,7 +45,8 @@ rakir_banai_missions =
 			{ npcTemplate = "jabba_thug", planetName = "tatooine", npcName = "Jabba's Thug" },
 			{ npcTemplate = "jabba_thug", planetName = "tatooine", npcName = "Jabba's Thug" }
 }, 
-		itemSpawns = {}, 
+		itemSpawns = {
+		}, 
 		rewards = 
 		{ 
 			{ rewardType = "credits", amount = 3000 } 
@@ -61,7 +62,10 @@ rakir_banai_missions =
 			{ npcTemplate = "mercenary_aggro", planetName = "tatooine", npcName = "Mercenary" }, 
 			{ npcTemplate = "mercenary_aggro", planetName = "tatooine", npcName = "Mercenary" }
 		},
-		itemSpawns = {}, 
+		itemSpawns = 
+		{
+			{ itemTemplate = "object/tangible/mission/quest_item/rakir_banai_q4_needed.iff", itemName = "" }
+		}, 
 		rewards = 
 		{ 
 			{ rewardType = "loot",  lootGroup = "task_reward_rakir_banai" },
