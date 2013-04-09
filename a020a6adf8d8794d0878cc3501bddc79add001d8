@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAABX///PM\u003d",
+        "filename": "MMOCoreORB/bin/scripts/commands/melee2hSweep1.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 14
+      },
+      "writtenOn": "2013-04-09T09:52:41Z",
+      "side": 1,
+      "message": "sword2sweep makes it say Domination in the spam which is 2harea3, so I swapped it to just melee since I don\u0027t know which one it really is.",
+      "parentUuid": "AAAABX///PY\u003d",
+      "revId": "a020a6adf8d8794d0878cc3501bddc79add001d8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAABX///PU\u003d",
         "filename": "MMOCoreORB/bin/scripts/commands/melee2hSweep2.lua",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-04-09T09:04:58Z",
       "side": 1,
       "message": "melee?",
+      "revId": "a020a6adf8d8794d0878cc3501bddc79add001d8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABX///PI\u003d",
+        "filename": "MMOCoreORB/bin/scripts/commands/melee2hSweep2.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 14
+      },
+      "writtenOn": "2013-04-09T09:52:41Z",
+      "side": 1,
+      "message": "melee2hsweep1 doesn\u0027t exist so I swapped it to melee so that the spam works.  Again I couldn\u0027t find out which one this actually was.",
+      "parentUuid": "AAAABX///PU\u003d",
       "revId": "a020a6adf8d8794d0878cc3501bddc79add001d8",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
