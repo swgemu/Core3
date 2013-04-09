@@ -89,6 +89,10 @@ public:
 	virtual bool isTurretControlTerminalData(){
 		return false;
 	}
+
+	virtual bool isDecoration(){
+		return false;
+	}
 };
 
 
