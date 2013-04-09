@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABX///PY\u003d",
+        "filename": "MMOCoreORB/bin/scripts/commands/melee2hSweep1.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2013-04-09T09:04:58Z",
+      "side": 1,
+      "message": "melee?",
+      "revId": "a020a6adf8d8794d0878cc3501bddc79add001d8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABX///PU\u003d",
+        "filename": "MMOCoreORB/bin/scripts/commands/melee2hSweep2.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 8
+      },
+      "writtenOn": "2013-04-09T09:04:58Z",
+      "side": 1,
+      "message": "melee?",
+      "revId": "a020a6adf8d8794d0878cc3501bddc79add001d8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
