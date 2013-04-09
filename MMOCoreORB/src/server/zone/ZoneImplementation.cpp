@@ -403,6 +403,7 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 
 void ZoneImplementation::addSceneObject(SceneObject* object) {
 	objectMap->put(object->getObjectID(), object);
+
 	registerObjectWithPlanetaryMap(object);
 }
 
@@ -519,8 +520,14 @@ void ZoneImplementation::updateCityRegions() {
 
 		city->rescheduleUpdateEvent(seconds);
 
-		if (!city->isRegistered())
+		if (!city->isRegistered()) {
+			//TODO: Find a way to make commercial structures only register if their city is registered.
+			for(int i = 0; i < city->getStructuresCount(); i++){
+				ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
+				unregisterObjectWithPlanetaryMap(structure);
+			}
 			continue;
+		}
 
 		if (city->getRegionsCount() == 0)
 			continue;

@@ -1097,10 +1097,12 @@ void CityManagerImplementation::registerCity(CityRegion* city, CreatureObject* m
 	aa->getZone()->getPlanetManager()->addRegion(city);
 	aa->getZone()->registerObjectWithPlanetaryMap(aa);
 
+	for(int i = 0; i < city->getStructuresCount(); i++){
+		ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
+		aa->getZone()->registerObjectWithPlanetaryMap(structure);
+	}
 
 	mayor->sendSystemMessage("@city/city:registered"); //Your city is now registered on the planetary map. All civic and major commercial structures in the city are also registered and can be found with the /find command.
-
-	//TODO: Register all city structures in city.
 }
 
 void CityManagerImplementation::unregisterCity(CityRegion* city, CreatureObject* mayor) {
@@ -1114,14 +1116,17 @@ void CityManagerImplementation::unregisterCity(CityRegion* city, CreatureObject*
 			aaZone->unregisterObjectWithPlanetaryMap(aa);
 
 			aaZone->getPlanetManager()->dropRegion(city->getRegionName());
+
+			for(int i = 0; i < city->getStructuresCount(); i++){
+				ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
+				aaZone->unregisterObjectWithPlanetaryMap(structure);
+			}
 		}
 
 		aa->setPlanetMapCategory(NULL);
 	}
 
 	mayor->sendSystemMessage("@city/city:unregistered"); //Your city is no longer registered on the planetary map.
-
-	//TODO: Unregister all city structures in city.
 }
 
 void CityManagerImplementation::promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
