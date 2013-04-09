@@ -167,6 +167,15 @@ tatooine_creatures_world = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
+		},
+		{
+			lairTemplateName = "tatooine_alkhara_bandit_patrol_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 11,
+			maxDifficulty = 15,
+			numberToSpawn = 0,
+			weighting = 0,
+			size = 25
 		}
 	}
 }

@@ -33,8 +33,8 @@ aakuan_spice_guard = Creature:new {
 	lootGroups = {
 	    {
 		    groups = {
-				{group = "junk", chance = 7000000},
-				{group = "aakuan_common", chance = 1900000},
+				{group = "junk", chance = 6600000},
+				{group = "aakuan_common", chance = 2300000},
 				{group = "armor_attachments", chance = 200000},
 				{group = "rifles", chance = 300000},
 				{group = "carbines", chance = 300000},
