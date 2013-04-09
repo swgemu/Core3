@@ -1309,6 +1309,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isGCWBaseData();
 	}
+
 	@local
 	@read
 	public boolean isTurret() {
@@ -1349,6 +1350,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isTurretControlTerminalData();
 	}
+
 	@local
 	@read
 	public ZoneComponent getZoneComponent() {
@@ -1367,6 +1369,14 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return dataObjectComponent;
 	}
 	
+	@local 
+	@read
+	public boolean isDecoration(){
+		return dataObjectComponent != null &&
+		dataObjectComponent.get() != null &&
+		dataObjectComponent.get().isDecoration();
+	}
+
 	@local
 	public native void setObjectMenuComponent(final string name);
 	
@@ -1421,6 +1431,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isVehicleObject() {
 		return false;
 	}
+
 
 
 
@@ -1803,6 +1814,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isActorObject() {
 		return false;
 	}
+
 
 	@read
 	public int getPlanetMapCategoryCRC() {

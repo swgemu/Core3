@@ -2268,6 +2268,15 @@ DataObjectComponentReference* SceneObject::getDataObjectComponent() {
 		return _implementation->getDataObjectComponent();
 }
 
+bool SceneObject::isDecoration() {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->isDecoration();
+}
+
 void SceneObject::setObjectMenuComponent(const String& name) {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -4691,6 +4700,11 @@ ObjectMenuComponent* SceneObjectImplementation::getObjectMenuComponent() {
 DataObjectComponentReference* SceneObjectImplementation::getDataObjectComponent() {
 	// server/zone/objects/scene/SceneObject.idl():  		return dataObjectComponent;
 	return (&dataObjectComponent);
+}
+
+bool SceneObjectImplementation::isDecoration() {
+	// server/zone/objects/scene/SceneObject.idl():  		dataObjectComponent.get().isDecoration();
+	return (&dataObjectComponent) != NULL && (&dataObjectComponent)->get() != NULL && (&dataObjectComponent)->get()->isDecoration();
 }
 
 bool SceneObjectImplementation::isNoTrade() {
