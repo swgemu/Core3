@@ -608,6 +608,8 @@ public:
 
 	DataObjectComponentReference* getDataObjectComponent();
 
+	bool isDecoration();
+
 	void setObjectMenuComponent(const String& name);
 
 	void setContainerComponent(const String& name);
@@ -1277,6 +1279,8 @@ public:
 	ObjectMenuComponent* getObjectMenuComponent();
 
 	DataObjectComponentReference* getDataObjectComponent();
+
+	bool isDecoration();
 
 	void setObjectMenuComponent(const String& name);
 

@@ -106,6 +106,7 @@
 #include "server/zone/objects/tangible/components/ArmorObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/PlaceableLootContainerComponent.h"
 #include "server/zone/objects/tangible/tool/recycle/RecycleToolContainerComponent.h"
+#include "server/zone/objects/structure/components/DecorationDataComponent.h"
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
@@ -241,4 +242,7 @@ ComponentManager::ComponentManager() {
 	// SE Goggles.
 	components.put("GogglesObjectMenuComponent", new GogglesObjectMenuComponent());
 	components.put("PlaceableLootContainerComponent", new PlaceableLootContainerComponent());
+
+	components.put("DecorationDataComponent", new DecorationDataComponent() );
+	dataObjectFactory.registerObject<DecorationDataComponent>("DecorationDataComponent");
 }
