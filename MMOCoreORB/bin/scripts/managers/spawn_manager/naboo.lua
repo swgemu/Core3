@@ -288,7 +288,6 @@ naboo_static_spawns = {
 	{"commoner_technician",60,-5041.71,6,4193.94,180.005,0, "", ""},
 	{"commoner_technician",60,-1.60874,0.999962,6.25947,360.011,1697377, "", ""},
 	{"commoner_technician",60,-22.5486,1.61223,33.2294,354.768,5475485, "conversation", ""},
-	{"corellian_butterfly_defender",0,0,0,0,0,0, "", ""},
 	{"entertainer",60,19.6394,0.664388,43.5491,180.018,5475485, "conversation", ""},
 	{"etheli_drenel",60,12.4716,2.31216,25.6024,180.001,5475485, "conversation", ""},
 	{"event_perk_vendor",0,-24,1.6,-4,240.351,1677400, "calm", "Pex (a storyteller vendor)"},
