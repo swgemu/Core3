@@ -921,7 +921,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 		PlanetManager* planetManager = zone->getPlanetManager();
 		
 		if (targetPosition->getCell() == NULL && zone != NULL) {
-			targetPosition->setPositionZ(planetManager->findClosestWorldFloor(targetPosition->getPositionX(), targetPosition->getPositionY(), followObject->getPositionZ(), this->getSwimHeight()));
+			targetPosition->setPositionZ(planetManager->findClosestWorldFloor(targetPosition->getPositionX(), targetPosition->getPositionY(), targetPosition->getPositionZ(), this->getSwimHeight()));
 		}
 
 		SceneObject* targetCoordinateCell = targetPosition->getCell();
