@@ -403,7 +403,7 @@ int CombatManager::getAttackerAccuracyBonus(CreatureObject* attacker, WeaponObje
 	int bonus = 0;
 
 	bonus += attacker->getSkillMod("attack_accuracy");
-
+	bonus += attacker->getSkillMod("private_attack_accuracy");
 	bonus += attacker->getSkillMod("private_accuracy_bonus");
 
 	if (weapon->getAttackType() == WeaponObject::MELEEATTACK)
@@ -960,9 +960,6 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 	// need to also add in general attack accuracy (mostly gotten from foods and states)
 	int totalBonus = getAttackerAccuracyBonus(creature, weapon);
 	totalBonus += calculateTargetPostureModifier(weapon, targetCreature);
-
-	if (creature->isBlinded())
-		totalBonus -= 50;
 
 	//info("Attacker accuracy bonus is " + String::valueOf(accuracyBonus), true);
 
