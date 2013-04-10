@@ -78,7 +78,7 @@ public:
 		objective = cast<BountyMissionObjective*> (mission->getMissionObjective());
 
 		currentPosition.setX(mission->getEndPositionX());
-		currentPosition.setY(mission->getEndPositionX());
+		currentPosition.setY(mission->getEndPositionY());
 		currentPosition.setZ(0);
 		nextPosition = player->getZoneServer()->getMissionManager()->getRandomBountyTargetPosition(player);
 		nextPosition.setZ(0);
