@@ -48,6 +48,11 @@ object_building_military_small_imperial_cloning_facility_s02 = object_building_m
 		{"private_medical_rating", 100}
 	},
 
+        childObjects = {
+                {templateFile = "object/tangible/terminal/terminal_insurance.iff", x = -5.44277, z = 0.125266, y = -3.60645, ox = 0, oy = 0.709055, oz = 0, ow = 0.705153, cellid = 6, containmentType = -1},
+                {templateFile = "object/tangible/terminal/terminal_cloning.iff", x = -0.0543332, z = 0.125265, y = -5.83956, ox = 0, oy = -0.0252584, oz = 0, ow = 0.999681, cellid = 3, containmentType = -1}
+        },
+
 	spawningPoints = {                     
 		{ x = 3.61815, z = 0.125266, y = -3.75189, ow = -0.705876, ox = 0, oz = 0, oy = 0.708336, cellid = 5 },
 		{ x = 3.21398, z = 0.125266, y = 1.75308, ow = 0.717618, ox = 0, oz = 0, oy = -0.696437, cellid = 4 }
