@@ -12,7 +12,10 @@ mat_rags_missions =
 		{
 			{ itemTemplate = "object/tangible/mission/quest_item/mat_rags_q1_needed.iff", itemName = "Squill Carcass" }
 		}, 
-		rewards = {}
+		rewards = 
+		{ 
+			{ rewardType = "credits", amount = 2000 },
+		}
 	},
 	{
 		missionType = "assassinate",
@@ -26,7 +29,10 @@ mat_rags_missions =
 		{
 			{ itemTemplate = "object/tangible/mission/quest_item/mat_rags_q2_needed.iff", itemName = "Womp Rat Hide" }
 		},  
-		rewards = {}
+		rewards = 
+		{ 
+			{ rewardType = "credits", amount = 4000 },
+		}
 	},
 	{
 		missionType = "assassinate",
@@ -40,7 +46,10 @@ mat_rags_missions =
 		{
 			{ itemTemplate = "object/tangible/mission/quest_item/mat_rags_q3_needed.iff", itemName = "Bantha Horns" }
 		}, 
-		rewards = {}
+		rewards = 
+		{ 
+			{ rewardType = "credits", amount = 6000 },
+		}
 	},	
 	{
 		missionType = "assassinate",
@@ -57,6 +66,7 @@ mat_rags_missions =
 		rewards = 
 		{ 
 			{ rewardType = "loot", lootGroup = "task_reward_mat_rags" },
+			{ rewardType = "credits", amount = 6000 },			
 		}
 	}	
 }
