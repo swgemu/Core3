@@ -48,6 +48,11 @@ object_building_military_outpost_cloning_facility_s03 = object_building_military
 		{"private_medical_rating", 100}
 	},
 
+        childObjects = {
+                {templateFile = "object/tangible/terminal/terminal_insurance.iff", x = -5.45835, z = 0.125266, y = -3.52311, ox = 0, oy = 0.705861, oz = 0, ow = 0.708351, cellid = 6, containmentType = -1},
+                {templateFile = "object/tangible/terminal/terminal_cloning.iff", x = -0.134662, z = 0.125265, y = -5.80915, ox = 0, oy = -0.0238176, oz = 0, ow = 0.999716, cellid = 3, containmentType = -1}
+        },
+
 	spawningPoints = {                     
 		{ x = 4.42891, z = 0.125266, y = -3.717, ow = -0.701643, ox = 0, oz = 0, oy = 0.712528, cellid = 5 },
 		{ x = 4.45469, z = 0.125266, y = 1.18026, ow = -0.68668, ox = 0, oz = 0, oy = 0.72696, cellid = 4 },
