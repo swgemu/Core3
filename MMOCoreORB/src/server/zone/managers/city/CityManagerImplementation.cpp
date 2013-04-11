@@ -53,7 +53,7 @@ int CityManagerImplementation::cityVotingDuration = 0;
 uint64 CityManagerImplementation::treasuryWithdrawalCooldown = 0;
 byte CityManagerImplementation::cityVotingCycles = 0;
 byte CityManagerImplementation::cityVotingCyclesUntilLocked = 0;
-
+int CityManagerImplementation::decorationsPerRank = 10;
 
 void CityManagerImplementation::loadLuaConfig() {
 	info("Loading configuration file.", true);
@@ -112,7 +112,7 @@ void CityManagerImplementation::loadLuaConfig() {
 	treasuryWithdrawalCooldown = lua->getGlobalLong("TreasuryWithdrawalCooldown");
 	cityVotingCycles = lua->getGlobalByte("CityVotingCycles");
 	cityVotingCyclesUntilLocked = lua->getGlobalByte("CityVotingCyclesUntilLocked");
-
+	decorationsPerRank = lua->getGlobalInt("DecorationsPerRank");
 	luaObject = lua->getGlobalObject("CitizensPerRank");
 
 	if (luaObject.isValidTable()) {
@@ -322,6 +322,7 @@ void CityManagerImplementation::sendStatusReport(CityRegion* city, CreatureObjec
 	list->addMenuItem("@city/city:radius_prompt " + String::valueOf(city->getRadius())); //Radius:
 	list->addMenuItem("@city/city:reg_citizen_prompt " + String::valueOf(city->getCitizenCount())); //Registered Citizens:
 	list->addMenuItem("@city/city:structures_prompt " + String::valueOf(city->getStructuresCount())); //Structures:
+	list->addMenuItem("@city/city:decorations " + String::valueOf(city->getDecorationCount())); // Decorations
 	list->addMenuItem("@city/city:specialization_prompt " + city->getCitySpecialization()); //Specialization:
 
 	for (int i = 0; i < cityTaxes.size(); ++i) {
@@ -1097,12 +1098,10 @@ void CityManagerImplementation::registerCity(CityRegion* city, CreatureObject* m
 	aa->getZone()->getPlanetManager()->addRegion(city);
 	aa->getZone()->registerObjectWithPlanetaryMap(aa);
 
-	for(int i = 0; i < city->getStructuresCount(); i++){
-		ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
-		aa->getZone()->registerObjectWithPlanetaryMap(structure);
-	}
 
 	mayor->sendSystemMessage("@city/city:registered"); //Your city is now registered on the planetary map. All civic and major commercial structures in the city are also registered and can be found with the /find command.
+
+	//TODO: Register all city structures in city.
 }
 
 void CityManagerImplementation::unregisterCity(CityRegion* city, CreatureObject* mayor) {
@@ -1116,17 +1115,14 @@ void CityManagerImplementation::unregisterCity(CityRegion* city, CreatureObject*
 			aaZone->unregisterObjectWithPlanetaryMap(aa);
 
 			aaZone->getPlanetManager()->dropRegion(city->getRegionName());
-
-			for(int i = 0; i < city->getStructuresCount(); i++){
-				ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
-				aaZone->unregisterObjectWithPlanetaryMap(structure);
-			}
 		}
 
 		aa->setPlanetMapCategory(NULL);
 	}
 
 	mayor->sendSystemMessage("@city/city:unregistered"); //Your city is no longer registered on the planetary map.
+
+	//TODO: Unregister all city structures in city.
 }
 
 void CityManagerImplementation::promptAdjustTaxes(CityRegion* city, CreatureObject* mayor, SceneObject* terminal) {
@@ -1635,5 +1631,13 @@ void CityManagerImplementation::fixMayor(CityRegion* city, CreatureObject* mayor
 	} else {
 		mayor->sendSystemMessage("Mayor is already a citizen.");
 	}
+
+}
+
+bool CityManagerImplementation::canSupportMoreDecorations(CityRegion* city){
+	if(city == NULL)
+		return false;
+
+	return city->getDecorationCount() < ( decorationsPerRank * city->getCityRank());
 
 }

@@ -2333,8 +2333,12 @@ void CityRegionImplementation::addMissionTerminal(SceneObject* mt) {
 }
 
 void CityRegionImplementation::addDecoration(SceneObject* deco) {
-	// server/zone/objects/region/CityRegion.idl():  		cityDecorations.put(deco);
+	// server/zone/objects/region/CityRegion.idl():  		}
+{
+	Locker _locker((&structureListMutex));
+	// server/zone/objects/region/CityRegion.idl():  			cityDecorations.put(deco);
 	(&cityDecorations)->put(deco);
+}
 }
 
 void CityRegionImplementation::addSkillTrainer(SceneObject* trainer) {
@@ -2348,8 +2352,12 @@ void CityRegionImplementation::removeMissionTerminal(SceneObject* mt) {
 }
 
 void CityRegionImplementation::removeDecoration(SceneObject* deco) {
-	// server/zone/objects/region/CityRegion.idl():  		cityDecorations.drop(deco);
+	// server/zone/objects/region/CityRegion.idl():  		}
+{
+	Locker _locker((&structureListMutex));
+	// server/zone/objects/region/CityRegion.idl():  			cityDecorations.drop(deco);
 	(&cityDecorations)->drop(deco);
+}
 }
 
 void CityRegionImplementation::removeSkillTrainers(SceneObject* trainer) {
