@@ -158,7 +158,6 @@ includeFile("caves/tatooine_tusken_bunker.lua")
 
 -- Cities
 includeFile("cities/dantooine_imperial_outpost.lua")
---includeFile("cities/lok_imperial_outpost.lua") this is a duplicate screenplay should be deleted.
 includeFile("cities/lok_nym_stronghold.lua")
 includeFile("cities/rori_narmle.lua")
 includeFile("cities/rori_rebel_outpost.lua")
