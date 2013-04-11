@@ -52,6 +52,7 @@ object_building_player_city_garden_endor_med_01 = object_building_player_city_sh
 	cityMaintenanceBase = 20000,
 	abilityRequired = "place_exotic_garden",
 	zoneComponent = "StructureZoneComponent",
+	dataObjectComponent = "DecorationDataComponent",
 	childObjects = {
 		{templateFile = "object/tangible/terminal/terminal_player_structure_nosnap_mini.iff", x = 8.25, z = 1.3, y = -8.25, ox = 0, oy = 1, oz = 0, ow = 0, cellid = -1, containmentType = -1}
 	}
