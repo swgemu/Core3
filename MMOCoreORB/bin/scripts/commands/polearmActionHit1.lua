@@ -53,7 +53,7 @@ PolearmActionHit1Command = {
 
 	animationCRC = hashCode("attack_low_right_medium_0"),
 
-	combatSpam = "melee",
+	combatSpam = "kneecracker",
 
 	dotEffects = {
 	  DotEffect( 

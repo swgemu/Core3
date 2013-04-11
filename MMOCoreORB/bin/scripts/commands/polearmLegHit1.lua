@@ -54,7 +54,7 @@ PolearmLegHit1Command = {
 
 	animationCRC = hashCode("attack_low_left_medium_0"),
 
-	combatSpam = "polearm_limbs",
+	combatSpam = "legbruiser",
 
 	poolsToDamage = ACTION_ATTRIBUTE,
 

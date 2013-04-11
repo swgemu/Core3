@@ -53,7 +53,7 @@ PolearmActionHit2Command = {
 
 	animationCRC = hashCode("lower_posture_2hmelee_2"),
 
-	combatSpam = "melee",
+	combatSpam = "kneesmasher",
 
 	dotEffects = {
 	  DotEffect( 

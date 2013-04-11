@@ -77,7 +77,7 @@ Melee2hArea2Command = {
 
 	animationCRC = hashCode("combo_4b_medium"),
 
-	combatSpam = "melee",
+	combatSpam = "descendingslam",
 
 	range = -1
 }

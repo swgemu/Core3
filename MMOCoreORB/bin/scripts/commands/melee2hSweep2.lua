@@ -55,7 +55,7 @@ Melee2hSweep2Command = {
 
 	animationCRC = hashCode("lower_posture_2hmelee_6"),
 
-	combatSpam = "melee2hsweep1",
+	combatSpam = "sword2_knockdown",
 
 	stateEffects = {
 	  StateEffect( 

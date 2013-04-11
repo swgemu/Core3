@@ -57,7 +57,7 @@ PolearmSpinAttack1Command = {
 
 	animationCRC = hashCode("attack_high_left_light_2"),
 
-	combatSpam = "melee",
+	combatSpam = "limbsmasher",
 
 	range = -1
 
