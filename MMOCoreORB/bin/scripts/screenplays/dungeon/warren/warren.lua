@@ -180,7 +180,7 @@ function WarrenScreenPlay:spawnMobiles()
 	spawnMobile("dantooine", "teraud_loyalist", 180, -23, -54, -153.2, -9, 8575716)
 	
 	--Evidence Room 1
-	spawnMobile("dantooine", "teraud_loyalist_cyborg", 180, 75.6, -68, 19.1, -2, 8578736)
+	spawnMobile("dantooine", "teraud_loyalist_cyborg", 180, 75.6, -68, 19.1, -2, 8575736)
 	spawnMobile("dantooine", "doctor_knag", 180, 95.7, -68, 38.8, 90, 8575737)
 	
 	--Evidence Room 2
