@@ -1631,10 +1631,12 @@ void GCWManagerImplementation::processDNASample(CreatureObject* creature, Buildi
 		// this is the individual letters from the control sequence
 		String userProvidedSample = baseData->getDNAProfile(i);
 
+		// if the letter has never been matched on
 		if(userProvidedSample.length() == 1){
 
-
+			// translate the control sequence letter
 			String transLatedUserString = this->getDNAHash(userProvidedSample);
+
 			char currentPlayerLetter = sampleChain.charAt(j);
 
 			StringBuffer newstring;
@@ -1646,10 +1648,6 @@ void GCWManagerImplementation::processDNASample(CreatureObject* creature, Buildi
 				currentMatchCount++;
 			}
 
-		} else {
-			// selected one with two values.  going to change the system string
-			this->refreshDNA(baseData, 3);
-			break;
 		}
 
 	}
