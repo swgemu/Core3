@@ -57,7 +57,7 @@ Melee2hSpinAttack1Command = {
 
 	animationCRC = hashCode("attack_high_right_light_2"),
 
-	combatSpam = "spinslam",
+	combatSpam = "spinstrike",
 
 	range = -1
 

@@ -43,6 +43,7 @@
 
 KnockdownAttackCommand = {
         name = "knockdownattack",
+	combatSpam = "attack",
 
 	stateEffects = {
 	  StateEffect( 

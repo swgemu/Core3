@@ -43,6 +43,8 @@
 
 BlindAttackCommand = {
 	name = "blindattack",
+	combatSpam = "attack",
+
 	stateEffects = {
 	  StateEffect( 
 		BLIND_EFFECT, 

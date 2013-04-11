@@ -67,7 +67,7 @@ PolearmSweep2Command = {
 
 	animationCRC = hashCode("combo_3d_medium"),
 
-	combatSpam = "melee",
+	combatSpam = "backbreaker",
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 

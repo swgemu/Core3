@@ -65,7 +65,7 @@ PolearmHit2Command = {
 
 	animationCRC = hashCode("combo_3a_medium"),
 
-	combatSpam = "bonebreaker",
+	combatSpam = "bonesmasher",
 
 	range = -1
 }

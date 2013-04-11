@@ -77,7 +77,7 @@ PolearmArea2Command = {
 
 	animationCRC = hashCode("lower_posture_2hmelee_6"),
 
-	combatSpam = "melee",
+	combatSpam = "tornado",
 
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
