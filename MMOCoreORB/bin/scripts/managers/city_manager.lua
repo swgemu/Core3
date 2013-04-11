@@ -79,6 +79,9 @@ CitizensPerRank = {2, 3, 4, 5, 6}
 --The radius in meters of the city at each city rank. (Outpost, Village, Township, City, Metropolis)
 RadiusPerRank = {150, 200, 300, 400, 450}
 
+-- Maximum for each rank.  rank 1 = decorationsperrank * 1, rank 5 = decorationsperrank * 5
+DecorationsPerRank = 10
+
 
 
 --[[

@@ -253,8 +253,12 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		completeStructureList.put(structure->getObjectID());
 
 		if (structure->isCivicStructure()) {
-			addStructure(structure);
+			if(structure->isDecoration())
+				addDecoration(structure);
+			else
+				addStructure(structure);
 		}
+
 	}
 }
 
@@ -333,7 +337,9 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 
 		completeStructureList.drop(structure->getObjectID());
 
-		if (structure->isCivicStructure())
+		if ( structure->isDecoration())
+			removeDecoration(structure);
+		else if (structure->isCivicStructure())
 			removeStructure(structure);
 	}
 }

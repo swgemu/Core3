@@ -238,6 +238,8 @@ public:
 
 	void fixMayor(CityRegion* city, CreatureObject* mayor);
 
+	bool canSupportMoreDecorations(CityRegion* city);
+
 	CitySpecialization* getCitySpecialization(const String& cityspec);
 
 	CityTax* getCityTax(int idx);
@@ -296,6 +298,8 @@ public:
 	static byte cityVotingCycles;
 
 	static byte cityVotingCyclesUntilLocked;
+
+	static int decorationsPerRank;
 
 private:
 	VectorMap<String, ManagedReference<CityRegion* > > cities;
@@ -412,6 +416,8 @@ public:
 	void sendStructureReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
 	void fixMayor(CityRegion* city, CreatureObject* mayor);
+
+	bool canSupportMoreDecorations(CityRegion* city);
 
 	CitySpecialization* getCitySpecialization(const String& cityspec);
 
@@ -553,6 +559,8 @@ public:
 	void sendStructureReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
 
 	void fixMayor(CityRegion* city, CreatureObject* mayor);
+
+	bool canSupportMoreDecorations(CityRegion* city);
 
 };
 

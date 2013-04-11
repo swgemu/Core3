@@ -347,6 +347,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/deed/components/PlaceStructureComponent.cpp \
 		server/zone/objects/tangible/deed/components/PlaceCityHallComponent.cpp \
 		server/zone/objects/tangible/deed/components/PlaceGCWBaseComponent.cpp \
+		server/zone/objects/tangible/deed/components/PlaceDecorationComponent.cpp \
 		server/zone/objects/player/components/PlayerContainerComponent.cpp \
 		server/zone/objects/tangible/components/LootContainerComponent.cpp \
 		server/zone/objects/tangible/components/PlaceableLootContainerComponent.cpp \
