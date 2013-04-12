@@ -55,9 +55,13 @@ object_mobile_vendor_zabrak_male = object_mobile_vendor_shared_zabrak_male:new {
 
 	noTrade = 1,
 
-	hair = {"object/tangible/hair/zabrak/hair_twilek_male_s01.iff","object/tangible/hair/zabrak/hair_twilek_male_s02.iff","object/tangible/hair/zabrak/hair_twilek_male_s03.iff",
-		"object/tangible/hair/zabrak/hair_twilek_male_s04.iff","object/tangible/hair/zabrak/hair_twilek_male_s05.iff","object/tangible/hair/zabrak/hair_twilek_male_s06.iff",
-		"object/tangible/hair/zabrak/hair_twilek_male_s07.iff","object/tangible/hair/zabrak/hair_twilek_male_s08.iff"},
+	hair = {"object/tangible/hair/zabrak/hair_zabrak_male_s01.iff","object/tangible/hair/zabrak/hair_zabrak_male_s02.iff","object/tangible/hair/zabrak/hair_zabrak_male_s03.iff",
+		"object/tangible/hair/zabrak/hair_zabrak_male_s04.iff","object/tangible/hair/zabrak/hair_zabrak_male_s05.iff","object/tangible/hair/zabrak/hair_zabrak_male_s06.iff",
+		"object/tangible/hair/zabrak/hair_zabrak_male_s07.iff","object/tangible/hair/zabrak/hair_zabrak_male_s08.iff","object/tangible/hair/zabrak/hair_zabrak_male_s09.iff",
+		"object/tangible/hair/zabrak/hair_zabrak_male_s10.iff","object/tangible/hair/zabrak/hair_zabrak_male_s11.iff","object/tangible/hair/zabrak/hair_zabrak_male_s12.iff",
+		"object/tangible/hair/zabrak/hair_zabrak_male_s13.iff","object/tangible/hair/zabrak/hair_zabrak_male_s14.iff","object/tangible/hair/zabrak/hair_zabrak_male_s15.iff",
+		"object/tangible/hair/zabrak/hair_zabrak_male_s16.iff","object/tangible/hair/zabrak/hair_zabrak_male_s17.iff","object/tangible/hair/zabrak/hair_zabrak_male_s18.iff",
+		"object/tangible/hair/zabrak/hair_zabrak_male_s19.iff","object/tangible/hair/zabrak/hair_zabrak_male_s20.iff"},
 
 
 	clothing = {"Humanoid1","Humanoid2","Humanoid3","Humanoid4","Humanoid5","Humanoid6","Humanoid7","Humanoid8","Humanoid9","Humanoid10",
