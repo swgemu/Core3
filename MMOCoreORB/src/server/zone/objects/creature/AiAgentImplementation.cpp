@@ -1067,7 +1067,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 							
 
 							if (zone != NULL) {
-								newPositionZ = planetManager->findClosestWorldFloor(newPositionX, newPositionY, followObject->getPositionZ(), this->getSwimHeight());
+								newPositionZ = planetManager->findClosestWorldFloor(newPositionX, newPositionY, targetPosition->getPositionZ(), this->getSwimHeight());
 							}
 							//newPositionZ = nextPosition.getZ();
 						} else {
