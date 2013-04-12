@@ -25,8 +25,20 @@ sleemo_scamp = Creature:new {
 	creatureBitmask = PACK + HERD,
 	diet = HERBIVORE,
 
-	templates = {},
-	lootGroups = {},
+	templates = {"object/mobile/dressed_hoodlum_zabrak_male_01.iff"},
+	lootGroups = {
+	    {
+	        groups = {
+				{group = "junk", chance = 7200000},
+				{group = "rifles", chance = 700000},
+				{group = "melee_knife", chance = 700000},
+				{group = "pistols", chance = 700000},
+				{group = "carbines", chance = 700000},
+				
+	    	},
+			lootChance = 3500000
+		}
+	},
 	weapons = {"pirate_weapons_light"},
 	attacks = merge(brawlermaster,marksmanmaster)
 }

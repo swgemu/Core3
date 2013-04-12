@@ -3,31 +3,7 @@ StrongholdScreenPlay = ScreenPlay:new {
 
 	screenplayName = "StrongholdScreenPlay",
 
-	lootContainers = {
-		2716055,
-		2716056,
-		2716064,
-		2716061
 
-	},
-
-	lootLevel = 26,
-
-	lootGroups = {
-		{
-			groups = {
-				{group = "color_crystals", chance = 700000},
-				{group = "junk", chance = 7500000},
-				{group = "rifles", chance = 600000},
-				{group = "pistols", chance = 600000},
-				{group = "clothing_attachments", chance = 300000},
-				{group = "armor_attachments", chance = 300000}
-			},
-			lootChance = 8000000
-		}
-	},
-
-	lootContainerRespawn = 1800 -- 30 minutes
 }
 
 registerScreenPlay("StrongholdScreenPlay", true)
@@ -35,7 +11,7 @@ registerScreenPlay("StrongholdScreenPlay", true)
 function StrongholdScreenPlay:start()
 	if (isZoneEnabled("corellia")) then
 		self:spawnMobiles()
-		self:initializeLootContainers()
+
 	end
 end
 

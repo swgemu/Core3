@@ -171,6 +171,7 @@ includeFile("poi/corellia_rogue_corsec_base.lua")
 includeFile("poi/corellia_stronghold.lua")
 includeFile("poi/dantooine_dantari_village.lua")
 includeFile("poi/dantooine_mokk_stronghold.lua")
+includeFile("poi/dathomir_crash_site.lua")
 includeFile("poi/dathomir_imperial_prison.lua")
 includeFile("poi/dathomir_nightsister_stronghold.lua")
 includeFile("poi/dathomir_nightsister_labor_camp.lua")
@@ -208,6 +209,15 @@ includeFile("poi/tatooine_sandcrawler_ne.lua")
 includeFile("poi/yavin4_blueleaf_temple.lua")
 includeFile("poi/yavin4_imperial_base.lua")
 includeFile("poi/yavin4_woolamander_temple.lua")
+
+--Static Spawns
+
+includeFile("static_spawns/dathomir_static_spawns_ne.lua")
+includeFile("static_spawns/dathomir_static_spawns_nw.lua")
+includeFile("static_spawns/dathomir_static_spawns_se.lua")
+includeFile("static_spawns/dathomir_static_spawns_sw.lua")
+
+includeFile("static_spawns/talus_static_spawns_south.lua")
 
 
 --Tests

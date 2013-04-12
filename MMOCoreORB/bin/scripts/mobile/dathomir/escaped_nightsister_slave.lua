@@ -27,11 +27,20 @@ escaped_nightsister_slave = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_dathomir_nightsister_escaped_slave.iff"},
-	lootGroups = {},
-	weapons = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "nightsister_common", chance = 500000},
+				{group = "junk", chance = 6000000},
+				{group = "tailor_components", chance = 2000000},
+				{group = "loot_kit_parts", chance = 1500000}
+			},
+			lootChance = 1200000
+		}
+	},
+	weapons = {"primitive_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlermaster,pikemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(escaped_nightsister_slave, "escaped_nightsister_slave")
