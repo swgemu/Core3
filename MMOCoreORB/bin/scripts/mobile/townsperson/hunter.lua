@@ -21,7 +21,7 @@ hunter = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER + STALKER,
 	diet = HERBIVORE,
 
@@ -31,7 +31,16 @@ hunter = Creature:new {
                         "object/mobile/dressed_commoner_naboo_twilek_male_01.iff",
                         "object/mobile/dressed_commoner_naboo_moncal_male_01.iff"
         },
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 7000000},
+				{group = "tailor_components", chance = 1500000},
+				{group = "loot_kit_parts", chance = 1500000}
+			},
+			lootChance = 2200000
+		}				
+	},
 	weapons = {"rebel_weapons_light"},
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
