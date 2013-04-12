@@ -58,6 +58,7 @@
 #include "server/zone/objects/tangible/deed/components/PlaceStructureComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceCityHallComponent.h"
 #include "server/zone/objects/tangible/deed/components/PlaceGCWBaseComponent.h"
+#include "server/zone/objects/tangible/deed/components/PlaceDecorationComponent.h"
 #include "server/zone/objects/tangible/terminal/components/StructureTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/terminal/components/HQMenuComponent.h"
 #include "server/zone/objects/tangible/terminal/components/UplinkTerminalMenuComponent.h"
@@ -238,6 +239,7 @@ ComponentManager::ComponentManager() {
 	components.put("PowerRegulatorMenuComponent", new PowerRegulatorMenuComponent());
 	components.put("TurretControlMenuComponent", new TurretControlMenuComponent());
 	components.put("GCWBaseContainerComponent", new GCWBaseContainerComponent());
+	components.put("PlaceDecorationComponent", new PlaceDecorationComponent());
 
 	// SE Goggles.
 	components.put("GogglesObjectMenuComponent", new GogglesObjectMenuComponent());

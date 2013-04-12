@@ -89,6 +89,8 @@ class CityManager extends ManagedService implements Logger {
 	public transient static unsigned long treasuryWithdrawalCooldown;
 	public transient static byte cityVotingCycles;
 	public transient static byte cityVotingCyclesUntilLocked;
+	public transient static int decorationsPerRank;
+
 	@dereferenced
 	private transient VectorMap<string, CityRegion> cities;
 	
@@ -248,6 +250,8 @@ class CityManager extends ManagedService implements Logger {
 
 	public native void fixMayor(CityRegion city, CreatureObject mayor);
 		
+	public native boolean canSupportMoreDecorations(CityRegion city);
+
 	@local
 	public native CitySpecialization getCitySpecialization(final string cityspec); 
 	
