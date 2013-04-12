@@ -446,7 +446,9 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 	
 	public void addDecoration(SceneObject deco){
-		cityDecorations.put(deco);
+		 synchronized (structureListMutex) {
+			cityDecorations.put(deco);
+		}
 	}
 	
 	public void addSkillTrainer(SceneObject trainer){
@@ -458,7 +460,9 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 	
 	public void removeDecoration(SceneObject deco){
-		cityDecorations.drop(deco);
+		synchronized (structureListMutex) {
+			cityDecorations.drop(deco);
+		}
 	}
 	
 	public void removeSkillTrainers(SceneObject trainer){
