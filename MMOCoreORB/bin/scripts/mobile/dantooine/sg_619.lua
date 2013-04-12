@@ -1,6 +1,6 @@
 sg_619 = Creature:new {
 	objectName = "@npc_name:human_base_male",
-	customName = "sg_619",
+	customName = "SG-619",
 	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
