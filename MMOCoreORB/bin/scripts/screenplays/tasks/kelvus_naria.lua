@@ -9,7 +9,7 @@ kelvus_naria_missions =
 		secondarySpawns = {},
 		itemSpawns = 
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/kelvus_naria_q1_needed.iff", itemName = "Mining records" }
+			{ itemTemplate = "object/tangible/mission/quest_item/kelvus_naria_q1_needed.iff", itemName = "" }
 		}, 
 		rewards = 
 		{ 

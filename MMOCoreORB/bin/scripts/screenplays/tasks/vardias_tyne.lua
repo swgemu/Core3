@@ -22,7 +22,7 @@ vardias_tyne_missions =
 		secondarySpawns = {}, 
 		itemSpawns = 
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/vardias_tyne_q2_needed.iff", itemName = "Bantha Statue" }
+			{ itemTemplate = "object/tangible/mission/quest_item/vardias_tyne_q2_needed.iff", itemName = "" }
 		}, 
 		rewards = 
 		{ 
