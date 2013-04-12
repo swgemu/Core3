@@ -7,13 +7,13 @@ tekil_barje_missions =
 			{ npcTemplate = "digger_dimms", planetName = "tatooine", npcName = "Dagonel \"Digger\" Dimms" } 
 		}, 
 		secondarySpawns = {
-			{ npcTemplate = "womprat", planetName = "tatooine", npcName = "Womprat" },
-			{ npcTemplate = "womprat", planetName = "tatooine", npcName = "Womprat" },
-			{ npcTemplate = "womprat", planetName = "tatooine", npcName = "Womprat" }
+			{ npcTemplate = "womprat", planetName = "tatooine", npcName = "" },
+			{ npcTemplate = "womprat", planetName = "tatooine", npcName = "" },
+			{ npcTemplate = "womprat", planetName = "tatooine", npcName = "" }
 		},
 		itemSpawns =
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/tekil_barje_q1_needed.iff", itemName = "Vaccine" }
+			{ itemTemplate = "object/tangible/mission/quest_item/tekil_barje_q1_needed.iff", itemName = "" }
 		},
 		rewards = 
 		{ 
@@ -28,8 +28,8 @@ tekil_barje_missions =
 			{ npcTemplate = "digger_dimms", planetName = "tatooine", npcName = "Dagonel \"Digger\" Dimms" } 
 		}, 
 		secondarySpawns = {
-			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "Tusken Raider" },
-			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "Tusken Raider" }
+			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "" },
+			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "" }
 		}, 
 		itemSpawns = {}, 
 		rewards = 
@@ -43,10 +43,10 @@ tekil_barje_missions =
 		silentTarget = "yes",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "Tusken Raider" },
-			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "Tusken Raider" },
-			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "Tusken Raider" },
-			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "Tusken Raider" }
+			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "" },
+			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "" },
+			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "" },
+			{ npcTemplate = "tusken_raider", planetName = "tatooine", npcName = "" }
 		}, 
 		secondarySpawns = {},
 		itemSpawns = {}, 

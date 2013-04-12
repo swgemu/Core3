@@ -12,7 +12,7 @@ xaan_talmaron_missions =
 		},
 		itemSpawns = 
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/xaan_talmaron_q1_needed.iff", itemName = "Fragment of Alderaan" }
+			{ itemTemplate = "object/tangible/mission/quest_item/xaan_talmaron_q1_needed.iff", itemName = "" }
 		}, 		
 		rewards = 
 		{ 
@@ -50,7 +50,7 @@ xaan_talmaron_missions =
 		},
 		itemSpawns = 
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/xaan_talmaron_q3_needed.iff", itemName = "Death Star Transmission" }
+			{ itemTemplate = "object/tangible/mission/quest_item/xaan_talmaron_q3_needed.iff", itemName = "" }
 		}, 
 		rewards = 
 		{ 

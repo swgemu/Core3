@@ -26,12 +26,12 @@ lx_466_missions =
 		}, 
 		secondarySpawns = 
 		{
-				{ npcTemplate = "huurton_huntress", planetName = "dantooine", npcName = "(a huurton huntress)" },
-				{ npcTemplate = "huurton_bloodhunter", planetName = "dantooine", npcName = "(a huurton bloodhunter)" }
+				{ npcTemplate = "huurton_huntress", planetName = "dantooine", npcName = "" },
+				{ npcTemplate = "huurton_bloodhunter", planetName = "dantooine", npcName = "" }
 		},
 		itemSpawns = 
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/lx466_q2_needed.iff", itemName = "Rations" }
+			{ itemTemplate = "object/tangible/mission/quest_item/lx466_q2_needed.iff", itemName = "" }
 		}, 
 		rewards = 
 		{ 
@@ -53,7 +53,7 @@ lx_466_missions =
 		},
 		itemSpawns = 
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/lx466_q3_needed.iff", itemName = "recording rod" }
+			{ itemTemplate = "object/tangible/mission/quest_item/lx466_q3_needed.iff", itemName = "" }
 		}, 
 		rewards = 
 		{ 
