@@ -27,6 +27,7 @@ giant_veermok = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_veermok.iff"},
+	scale = 1.2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

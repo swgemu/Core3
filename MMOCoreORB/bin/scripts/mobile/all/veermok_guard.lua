@@ -21,9 +21,9 @@ veermok_guard = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 9,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
-	optionsBitmask = 0,
+	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/alpha_veermok.iff"},
