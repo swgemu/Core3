@@ -237,32 +237,34 @@ bool CampSiteActiveAreaImplementation::despawnCamp() {
 }
 
 void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
-	if (camp == NULL)
+	if (camp == NULL || player == NULL)
 		return;
-
-	/// Get Ghost
-	PlayerObject* ghost = campOwner->getPlayerObject();
-
-	if (ghost != NULL && camp != NULL) {
-		ghost->removeOwnedStructure(camp);
-	}
 
 	if (player->getSkillMod("camp") < campStructureData->getSkillRequired()) {
 		player->sendSystemMessage("@camp:error_too_big"); // You cannot assume ownership of this camp. You lack the skill to maintain a camp of this size.
 		return;
 	}
 
-	ghost = player->getPlayerObject();
+	PlayerObject* playerGhost = player->getPlayerObject();
 
-	for (int i = 0; i < ghost->getTotalOwnedStructureCount(); ++i) {
-		uint64 oid = ghost->getOwnedStructure(i);
+	if (playerGhost == NULL)
+		return;
 
-		ManagedReference<StructureObject*> structure = cast<StructureObject*>(ghost->getZoneServer()->getObject(oid));
+	for (int i = 0; i < playerGhost->getTotalOwnedStructureCount(); ++i) {
+		uint64 oid = playerGhost->getOwnedStructure(i);
+
+		ManagedReference<StructureObject*> structure = cast<StructureObject*>(playerGhost->getZoneServer()->getObject(oid));
 
 		if (structure->isCampStructure()) {
 			player->sendSystemMessage("@camp:sys_already_camping"); // But you already have a camp established elsewhere!
 			return;
 		}
+	}
+
+	PlayerObject* ownerGhost = campOwner->getPlayerObject();
+
+	if (ownerGhost != NULL) {
+		ownerGhost->removeOwnedStructure(camp);
 	}
 
 	setOwner(player);
@@ -280,9 +282,7 @@ void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 			visitors.add(scno->getObjectID());
 	}
 
-	if (ghost != NULL) {
-		ghost->addOwnedStructure(camp);
-	}
+	playerGhost->addOwnedStructure(camp);
 
 	campOwner->registerObserver(ObserverEventType::STARTCOMBAT, campObserver);
 
