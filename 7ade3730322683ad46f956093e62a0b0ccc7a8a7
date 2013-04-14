@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAABX//+/8\u003d",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/tie_helmet.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2013-04-14T02:29:03Z",
+      "side": 1,
+      "message": "Nice catch.",
+      "parentUuid": "AAAABX///JY\u003d",
+      "revId": "7ade3730322683ad46f956093e62a0b0ccc7a8a7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAABX///JU\u003d",
         "filename": "MMOCoreORB/bin/scripts/loot/items/two_hand_katana_quest.lua",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAABX///AA\u003d",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/two_hand_katana_quest.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2013-04-14T02:29:03Z",
+      "side": 1,
+      "message": "Thanks for the tip.",
+      "parentUuid": "AAAABX///JU\u003d",
+      "revId": "7ade3730322683ad46f956093e62a0b0ccc7a8a7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAABX///JI\u003d",
         "filename": "MMOCoreORB/bin/scripts/mobile/misc/darth_vader.lua",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2013-04-11T21:58:04Z",
       "side": 1,
       "message": "I don\u0027t know if it matters but I think the quotes are removed if the field is empty for weapons",
+      "revId": "7ade3730322683ad46f956093e62a0b0ccc7a8a7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABX///AE\u003d",
+        "filename": "MMOCoreORB/bin/scripts/mobile/misc/darth_vader.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2013-04-14T02:29:03Z",
+      "side": 1,
+      "message": "Vader didn\u0027t have any weapons in his themepark version in live.",
+      "parentUuid": "AAAABX///JI\u003d",
       "revId": "7ade3730322683ad46f956093e62a0b0ccc7a8a7",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
