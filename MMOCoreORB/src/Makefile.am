@@ -185,7 +185,6 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/region/Region.cpp \
 				server/zone/objects/installation/InstallationObject.cpp \
 				server/zone/objects/installation/shuttle/ShuttleInstallation.cpp \
-				server/zone/objects/installation/garage/GarageInstallation.cpp \
 				server/zone/objects/installation/factory/FactoryObject.cpp \
 				server/zone/objects/installation/factory/FactoryHopperObserver.cpp \
 				server/zone/objects/installation/generator/GeneratorObject.cpp \
@@ -304,6 +303,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/building/components/CityHallZoneComponent.cpp \
 		server/zone/objects/building/components/DestructibleBuildingDataComponent.cpp \
 		server/zone/objects/structure/components/StructureZoneComponent.cpp \
+		server/zone/objects/structure/components/GarageDataComponent.cpp \
 		server/zone/objects/tangible/components/FireHeavyWeaponMenuComponent.cpp \
 		server/zone/objects/tangible/components/ThrowGrenadeMenuComponent.cpp \
 		server/zone/objects/tangible/powerup/PowerupObjectImplementation.cpp \
@@ -515,7 +515,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/sign/SignObjectImplementation.cpp \
 		server/zone/objects/installation/factory/FactoryObjectImplementation.cpp \
 		server/zone/objects/installation/shuttle/ShuttleInstallationImplementation.cpp \
-		server/zone/objects/installation/garage/GarageInstallationImplementation.cpp \
 		server/zone/objects/installation/harvester/HarvesterObjectImplementation.cpp \
 		server/zone/objects/installation/generator/GeneratorObjectImplementation.cpp \
 		server/zone/objects/tangible/component/ComponentImplementation.cpp \

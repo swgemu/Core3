@@ -108,6 +108,7 @@
 #include "server/zone/objects/tangible/components/PlaceableLootContainerComponent.h"
 #include "server/zone/objects/tangible/tool/recycle/RecycleToolContainerComponent.h"
 #include "server/zone/objects/structure/components/DecorationDataComponent.h"
+#include "server/zone/objects/structure/components/GarageDataComponent.h"
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
@@ -247,4 +248,6 @@ ComponentManager::ComponentManager() {
 
 	components.put("DecorationDataComponent", new DecorationDataComponent() );
 	dataObjectFactory.registerObject<DecorationDataComponent>("DecorationDataComponent");
+	components.put("GarageDataComponent", new GarageDataComponent() );
+	dataObjectFactory.registerObject<GarageDataComponent>("GarageDataComponent");
 }
