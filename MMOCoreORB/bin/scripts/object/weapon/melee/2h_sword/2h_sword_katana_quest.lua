@@ -100,25 +100,26 @@ object_weapon_melee_2h_sword_2h_sword_katana_quest = object_weapon_melee_2h_swor
 	       
 	
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	healthAttackCost = 23,
-	actionAttackCost = 52,
-	mindAttackCost = 32,
+	healthAttackCost = 18,
+	actionAttackCost = 43,
+	mindAttackCost = 22,
 	forceCost = 0,
 	
-	pointBlankAccuracy = 0,
-	pointBlankRange = 3,
+	pointBlankAccuracy = 3,
+	pointBlankRange = 0,
 	
-	idealRange = 3,
+	idealRange = 5,
 	idealAccuracy = 3,
 	
-	maxRange = 3,
-	maxRangeAccuracy = 4,
+	maxRange = 5,
+	maxRangeAccuracy = 3,
 
 	minDamage = 17,
-        maxDamage = 78,
+	maxDamage = 184,
 	
-	attackSpeed = 4.0
+	attackSpeed = 3.5,
 
+	woundsRatio = 24
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_2h_sword_2h_sword_katana_quest, "object/weapon/melee/2h_sword/2h_sword_katana_quest.iff")

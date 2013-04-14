@@ -3,27 +3,22 @@
 padded_tantel_armor_helmet = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Padded Tantel Armor Helmet",
-	directObjectTemplate = "object/tangible/wearables/armor/tantel/armor_tantel_skreej_helmet.iff",
+	customObjectName = "",
+	directObjectTemplate = "object/tangible/wearables/armor/tantel/armor_tantel_skreej_helmet_quest.iff",
 	craftingValues = {
-		{"energyeffectiveness",15,15,0},
-		{"heateffectiveness",15,15,0},
-		{"coldeffectiveness",15,15,0},
-		{"acideffectiveness",15,15,0},
-		{"kineticeffectiveness",10,10,0},
-		{"electricaleffectiveness",10,10,0},
-		{"stuneffectiveness",10,10,0},
-		{"blasteffectiveness",10,10,0},
-		{"sockets",-1,-1,0},
-		{"armor_integrity",15000,15000,0},
-		{"healthencumbrance",7,7,0},
-		{"actionencumbrance",9,9,0},
-		{"mindencumbrance",82,82,0},
-		{"armor_rating",1,1,0}
+		{"armor_rating",0,0,0},
+		{"armor_integrity",100,100,0},
+		{"armor_effectiveness",-1,-1,0},
+		{"armor_health_encumbrance",0,0,0},
+		{"armor_action_encumbrance",0,0,0},
+		{"armor_mind_encumbrance",0,0,0},
 	},
-	skillMods = {{"melee_defense", 3}, {"resistance_poison", 3}},
-	customizationStringNames = {"/private/index_color_1", "/private/index_color_2", "/private/index_color_3"},
-	customizationValues = {{22, 23},{29},{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28}}
+	customizationStringNames = {},
+	customizationValues = {},
+	skillMods = {
+		{"melee_defense",3},
+		{"resistance_poison",3}
+	}
 }
 
 addLootItemTemplate("padded_tantel_armor_helmet", padded_tantel_armor_helmet)

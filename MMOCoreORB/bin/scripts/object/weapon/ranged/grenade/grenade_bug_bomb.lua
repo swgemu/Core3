@@ -43,7 +43,6 @@
 
 object_weapon_ranged_grenade_grenade_bug_bomb = object_weapon_ranged_grenade_shared_grenade_bug_bomb:new {
 	objectMenuComponent = {"cpp", "ThrowGrenadeMenuComponent"},
-		objectMenuComponent = {"cpp", "ThrowGrenadeMenuComponent"},
 
 	playerRaces = { "object/creature/player/bothan_male.iff",
 			"object/creature/player/bothan_female.iff",
