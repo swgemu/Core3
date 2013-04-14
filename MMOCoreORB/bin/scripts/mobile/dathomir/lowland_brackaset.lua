@@ -18,7 +18,8 @@ lowland_brackaset = Creature:new {
 	hideAmount = 65,
 	boneType = "bone_mammal",
 	boneAmount = 60,
-	milk = 0,
+	milk = "milk_wild",
+	milkAmount = 65,
 	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
@@ -30,9 +31,9 @@ lowland_brackaset = Creature:new {
 	lootGroups = {
 	 {
 	        groups = {
-				{group = "brackaset_common", chance = 3300000}
+				{group = "brackaset_common", chance = 10000000}
 			},
-			lootChance = 7000000
+			lootChance = 2300000
 		}
 	},
 	weapons = {},

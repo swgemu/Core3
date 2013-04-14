@@ -27,6 +27,7 @@ giant_baz_nitch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_baz_nitch.iff"},
+	scale = 1.4,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
