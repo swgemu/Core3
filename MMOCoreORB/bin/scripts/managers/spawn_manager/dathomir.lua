@@ -64,7 +64,7 @@ dathomir_regions = {
         {"imperial_tent",-4627,5395,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
         {"large_floating_rocks",2989,-5145,{1,50},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"lesser_sarlacc_1",-2080,3143,{1,250},STATICSPAWNAREA + NOBUILDZONEAREA,1},
-	{"lesser_sarlacc_2",-2080,3143,{1,40},STATICSPAWNAREA + NOSPAWNAREA,1},
+	{"lesser_sarlacc_2",-2080,3143,{1,80},STATICSPAWNAREA + NOSPAWNAREA,1},
 	{"lhon_kinad_1",0,0,{1,0},UNDEFINEDAREA,1},
 	{"lhon_kinad_2",0,0,{1,0},UNDEFINEDAREA,1},
 	{"lhon_kinad_3",0,0,{1,0},UNDEFINEDAREA,1},
@@ -134,6 +134,8 @@ dathomir_regions = {
 	{"world_factional_neutral",0,0,{1,-1},LAIRSPAWNAREA + NEUTRALSPAWNAREA,1,"factional_neutral"},
 	{"world_factional_rebel",0,0,{1,-1},LAIRSPAWNAREA + REBELSPAWNAREA,1,"factional_rebel"},
 	{"world_spawner",0,0,{1,-1},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"dathomir_world_creatures"},
+	{"sarlacc_spawner",-2075,3135,{1,1250},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"dathomir_sarlacc_mutant"},
+	{"tarpits_spawner",645,-4890,{1,1250},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"dathomir_sarlacc_mutant"},
         {"worship_shrine",-6949,-3034,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"yumaou_risoath",0,0,{1,0},UNDEFINEDAREA,1},
 }
