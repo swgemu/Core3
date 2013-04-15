@@ -30,9 +30,9 @@ surefoot_brackaset = Creature:new {
 	lootGroups = {
 		 {
 	        groups = {
-				{group = "brackaset_common", chance = 3300000}
+				{group = "brackaset_common", chance = 10000000}
 			},
-			lootChance = 4300000
+			lootChance = 2300000
 		}
 	},
 	weapons = {},
