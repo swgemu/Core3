@@ -104,6 +104,23 @@
       "revId": "7ade3730322683ad46f956093e62a0b0ccc7a8a7",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABX//++4\u003d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/imperial/themeParkImperial.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 5
+      },
+      "writtenOn": "2013-04-15T03:49:19Z",
+      "side": 1,
+      "message": "Amount should be 525 according to the scrapbook",
+      "revId": "7ade3730322683ad46f956093e62a0b0ccc7a8a7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
