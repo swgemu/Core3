@@ -3,7 +3,7 @@ dathomir_sarlacc_mutant = {
 	commandLevel = 0,
 
 	type = LAIR,
-	maxSpawnLimit = 512,
+	maxSpawnLimit = 256,
 
 	lairSpawns = {
 		{
