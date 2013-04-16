@@ -295,8 +295,7 @@ void BuffImplementation::applySkillModifiers() {
 
 	// if there was a speed or acceleration mod change, this will take care of immediately setting them.
 	// the checks for if they haven't changed are in these methods
-	creature.get()->setSpeedMultiplierMod(creature.get()->getSpeedMultiplierBase());
-	creature.get()->setAccelerationMultiplierMod(creature.get()->getAccelerationMultiplierBase());
+	creature.get()->updateSpeedAndAccelerationMods();
 }
 
 void BuffImplementation::applyStates() {
@@ -376,8 +375,7 @@ void BuffImplementation::removeSkillModifiers() {
 
 	// if there was a speed or acceleration mod change, this will take care of immediately setting them.
 	// the checks for if they haven't changed are in these methods
-	creature.get()->setSpeedMultiplierMod(creature.get()->getSpeedMultiplierBase());
-	creature.get()->setAccelerationMultiplierMod(creature.get()->getAccelerationMultiplierBase());
+	creature.get()->updateSpeedAndAccelerationMods();
 }
 
 void BuffImplementation::removeStates() {

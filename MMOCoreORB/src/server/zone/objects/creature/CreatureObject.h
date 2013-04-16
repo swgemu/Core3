@@ -932,6 +932,8 @@ public:
 
 	float calculateCostAdjustment(byte stat, float baseCost);
 
+	void updateSpeedAndAccelerationMods();
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -1722,6 +1724,8 @@ public:
 
 	float calculateCostAdjustment(byte stat, float baseCost);
 
+	void updateSpeedAndAccelerationMods();
+
 	WeakReference<CreatureObject*> _this;
 
 	operator const CreatureObject*();
@@ -2316,6 +2320,8 @@ public:
 	void setInvisible(bool invis);
 
 	float calculateCostAdjustment(byte stat, float baseCost);
+
+	void updateSpeedAndAccelerationMods();
 
 };
 

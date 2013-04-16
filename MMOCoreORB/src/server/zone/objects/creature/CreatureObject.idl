@@ -1723,4 +1723,6 @@ class CreatureObject extends TangibleObject {
 	}
 
 	public native float calculateCostAdjustment(byte stat, float baseCost);
+
+	public native void updateSpeedAndAccelerationMods();
 }

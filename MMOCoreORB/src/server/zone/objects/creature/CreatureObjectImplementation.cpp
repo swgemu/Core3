@@ -1286,28 +1286,17 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 	if (posture == newPosture)
 		return;
 
-	float speedboost = 0;
-
-	if(newPosture == CreaturePosture::PRONE) {
-		speedboost = getSkillMod("slope_move") >= 50
-				? ((getSkillMod("slope_move") - 50.0f) / 100.0f) / 2 : 0;
-	}
-
-	setSpeedMultiplierMod(CreaturePosture::instance()->getMovementScale((uint8) newPosture) + speedboost, true);
-
-	setAccelerationMultiplierMod(CreaturePosture::instance()->getAccelerationScale((uint8) newPosture), true);
-
-	setTurnScale(CreaturePosture::instance()->getTurnScale((uint8) newPosture), true);
-
-	// TODO: these two seem to be as of yet unused (maybe only necessary in client)
-	//CreaturePosture::instance()->getTurnScale((uint8)newPosture);
-	//CreaturePosture::instance()->getCanSeeHeightMod((uint8)newPosture);
-
 	if (posture == CreaturePosture::PRONE && isInCover()) {
 		clearState(CreatureState::COVER);
 	}
 
 	posture = newPosture;
+
+	updateSpeedAndAccelerationMods();
+
+	// TODO: these two seem to be as of yet unused (maybe only necessary in client)
+	//CreaturePosture::instance()->getTurnScale((uint8)newPosture);
+	//CreaturePosture::instance()->getCanSeeHeightMod((uint8)newPosture);
 
 	if (posture != CreaturePosture::SITTING && hasState(
 			CreatureState::SITTINGONCHAIR))
@@ -1332,6 +1321,21 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 
 	updateLocomotion();
 	notifyPostureChange(newPosture);
+}
+
+void CreatureObjectImplementation::updateSpeedAndAccelerationMods() {
+	float speedboost = 0;
+
+	if(posture == CreaturePosture::PRONE) {
+		speedboost = getSkillMod("slope_move") >= 50
+				? ((getSkillMod("slope_move") - 50.0f) / 100.0f) / 2 : 0;
+	}
+
+	setSpeedMultiplierMod(CreaturePosture::instance()->getMovementScale((uint8) posture) + speedboost, true);
+
+	setAccelerationMultiplierMod(CreaturePosture::instance()->getAccelerationScale((uint8) posture), true);
+
+	setTurnScale(CreaturePosture::instance()->getTurnScale((uint8) posture), true);
 }
 
 float CreatureObjectImplementation::calculateSpeed() {
@@ -1491,13 +1495,19 @@ void CreatureObjectImplementation::setFactionRank(int rank, bool notifyClient) {
 
 void CreatureObjectImplementation::setSpeedMultiplierMod(float newMultiplierMod, bool notifyClient) {
 
-	float buffMod = getSkillMod("private_speed_multiplier") > 0 ? (float)getSkillMod("private_speed_multiplier") / 100.f : 1.f;
+	if (posture == CreaturePosture::UPRIGHT) {
+		float buffMod = getSkillMod("private_speed_multiplier") > 0 ? (float)getSkillMod("private_speed_multiplier") / 100.f : 1.f;
 
-	if (speedMultiplierMod == newMultiplierMod * buffMod)
-		return;
+		if (speedMultiplierMod == newMultiplierMod * buffMod)
+			return;
 
-	speedMultiplierMod = newMultiplierMod * buffMod;
+		speedMultiplierMod = newMultiplierMod * buffMod;
+	} else {
+		if (speedMultiplierMod == newMultiplierMod)
+			return;
 
+		speedMultiplierMod = newMultiplierMod;
+	}
 	int bufferSize = speedMultiplierModChanges.size();
 
 	if (bufferSize > 5) {
