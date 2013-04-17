@@ -107,8 +107,10 @@ tatooine_regions = {
 	{"jundland_wastes_2",0,0,{1,0},UNDEFINEDAREA,1},
 	{"junk_heap",0,0,{1,0},UNDEFINEDAREA,1},
 	{"krayt_buried_alive",0,0,{1,0},UNDEFINEDAREA,1},
-	{"krayt_graveyard",7508,4535,{1,500},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
-	{"krayt_graveyard_1",6717,4290,{1,500},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
+	{"krayt_graveyard_1a",7508,4535,{1,500},STATICSPAWNAREA + NOBUILDZONEAREA,1},
+	{"krayt_graveyard_1b",7508,4535,{1,80},STATICSPAWNAREA + NOSPAWNAREA,1},
+	{"krayt_graveyard_2a",6717,4290,{1,500},STATICSPAWNAREA + NOBUILDZONEAREA,1},
+	{"krayt_graveyard_2b",6717,4290,{1,200},STATICSPAWNAREA + NOSPAWNAREA,1},
 	{"krayt_remains",0,0,{1,0},UNDEFINEDAREA,1},
 	{"krayt_skeleton",0,0,{1,0},UNDEFINEDAREA,1},
 	{"krayt_skeleton_1",0,0,{1,0},UNDEFINEDAREA,1},
@@ -237,6 +239,8 @@ tatooine_regions = {
 	{"world_factional_neutral",0,0,{1,-1},LAIRSPAWNAREA + NEUTRALSPAWNAREA,1,"factional_neutral"},
 	{"world_factional_rebel",0,0,{1,-1},LAIRSPAWNAREA + REBELSPAWNAREA,1,"factional_rebel"},
 	{"world_spawner",0,0,{1,-1},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"tatooine_creatures_world"},
+	{"krayt_graveyard_spawner",7110,4415,{1,1250},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"tatooine_krayt"},
+	{"ancient_krayt_skeleton_spawner",-4650,-4365,{1,1000},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"tatooine_krayt"},
 }
 
 tatooine_static_spawns = {
