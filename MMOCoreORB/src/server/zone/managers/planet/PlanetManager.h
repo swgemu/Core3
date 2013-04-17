@@ -266,7 +266,7 @@ public:
 
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
 
-	void scheduleShuttle(CreatureObject* shuttle);
+	void scheduleShuttle(CreatureObject* shuttle, int shuttleType);
 
 	void removeShuttle(CreatureObject* shuttle);
 
@@ -428,7 +428,7 @@ public:
 
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
 
-	void scheduleShuttle(CreatureObject* shuttle);
+	void scheduleShuttle(CreatureObject* shuttle, int shuttleType);
 
 	void removeShuttle(CreatureObject* shuttle);
 
@@ -545,7 +545,7 @@ public:
 
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
 
-	void scheduleShuttle(CreatureObject* shuttle);
+	void scheduleShuttle(CreatureObject* shuttle, int shuttleType);
 
 	void removeShuttle(CreatureObject* shuttle);
 

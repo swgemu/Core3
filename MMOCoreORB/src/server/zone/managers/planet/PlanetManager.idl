@@ -318,7 +318,7 @@ class PlanetManager extends ManagedService implements Logger {
 	 */
 	public native boolean isTravelToLocationPermitted(final string destinationPoint, final string arrivalPlanet, final string arrivalPoint);
 	
-	public native void scheduleShuttle(CreatureObject shuttle);
+	public native void scheduleShuttle(CreatureObject shuttle, int shuttleType);
 	
 	public synchronized void removeShuttle(CreatureObject shuttle){
 		shuttleMap.drop(shuttle.getObjectID());
