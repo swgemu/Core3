@@ -176,6 +176,7 @@ createMissionGiverConvoTemplate("tekil_barje_mission_giver_convotemplate", "teki
 createMissionGiverConvoTemplate("vardias_tyne_mission_giver_convotemplate", "vardias_tyne_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("pfilbee_jhorn_mission_giver_convotemplate", "pfilbee_jhorn_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("mat_rags_mission_giver_convotemplate", "mat_rags_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("kitster_banai_mission_giver_convotemplate", "kitster_banai_mission_giver_conv_handler")
 
 -- Naboo
 createMissionGiverConvoTemplate("gavyn_sykes_mission_giver_convotemplate", "gavyn_sykes_mission_giver_conv_handler")
