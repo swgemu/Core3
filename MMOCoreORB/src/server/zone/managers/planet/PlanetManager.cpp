@@ -28,7 +28,7 @@
  *	PlanetManagerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADCLIENTPOIDATA__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_,RPC_ISCAMPINGPERMITTEDAT__FLOAT_FLOAT_FLOAT_,RPC_ISINRANGEWITHPOI__FLOAT_FLOAT_FLOAT_,RPC_ISINOBJECTSNOBUILDZONE__FLOAT_FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_VALIDATEREGIONNAME__STRING_,RPC_VALIDATECLIENTCITYINRANGE__CREATUREOBJECT_FLOAT_FLOAT_,RPC_GETWEATHERMANAGER__,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_GETREGION__STRING_,RPC_GETREGIONAT__FLOAT_FLOAT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISINCOMINGTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_,RPC_SCHEDULESHUTTLE__CREATUREOBJECT_,RPC_REMOVESHUTTLE__CREATUREOBJECT_,RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_,RPC_ISINWATER__FLOAT_FLOAT_,RPC_FINDCLOSESTWORLDFLOOR__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_REMOVEPLAYERCITYTRAVELPOINT__STRING_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADCLIENTPOIDATA__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_,RPC_ISCAMPINGPERMITTEDAT__FLOAT_FLOAT_FLOAT_,RPC_ISINRANGEWITHPOI__FLOAT_FLOAT_FLOAT_,RPC_ISINOBJECTSNOBUILDZONE__FLOAT_FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_VALIDATEREGIONNAME__STRING_,RPC_VALIDATECLIENTCITYINRANGE__CREATUREOBJECT_FLOAT_FLOAT_,RPC_GETWEATHERMANAGER__,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_GETREGION__STRING_,RPC_GETREGIONAT__FLOAT_FLOAT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISINCOMINGTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_,RPC_SCHEDULESHUTTLE__CREATUREOBJECT_INT_,RPC_REMOVESHUTTLE__CREATUREOBJECT_,RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_,RPC_ISINWATER__FLOAT_FLOAT_,RPC_FINDCLOSESTWORLDFLOOR__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_REMOVEPLAYERCITYTRAVELPOINT__STRING_};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -517,18 +517,19 @@ bool PlanetManager::isTravelToLocationPermitted(const String& destinationPoint, 
 		return _implementation->isTravelToLocationPermitted(destinationPoint, arrivalPlanet, arrivalPoint);
 }
 
-void PlanetManager::scheduleShuttle(CreatureObject* shuttle) {
+void PlanetManager::scheduleShuttle(CreatureObject* shuttle, int shuttleType) {
 	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SCHEDULESHUTTLE__CREATUREOBJECT_);
+		DistributedMethod method(this, RPC_SCHEDULESHUTTLE__CREATUREOBJECT_INT_);
 		method.addObjectParameter(shuttle);
+		method.addSignedIntParameter(shuttleType);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->scheduleShuttle(shuttle);
+		_implementation->scheduleShuttle(shuttle, shuttleType);
 }
 
 void PlanetManager::removeShuttle(CreatureObject* shuttle) {
@@ -739,12 +740,28 @@ bool PlanetManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 		TypeInfo<Reference<PlanetTravelPointList* > >::parseFromBinaryStream(&planetTravelPointList, stream);
 		return true;
 
-	case 0xe865ec20: //PlanetManager.shuttleLandingDelay
-		TypeInfo<int >::parseFromBinaryStream(&shuttleLandingDelay, stream);
+	case 0x7f1b36da: //PlanetManager.shuttleportAwayTime
+		TypeInfo<int >::parseFromBinaryStream(&shuttleportAwayTime, stream);
 		return true;
 
-	case 0x64f8d516: //PlanetManager.shuttleTakeoffDelay
-		TypeInfo<int >::parseFromBinaryStream(&shuttleTakeoffDelay, stream);
+	case 0x69500c87: //PlanetManager.shuttleportLandedTime
+		TypeInfo<int >::parseFromBinaryStream(&shuttleportLandedTime, stream);
+		return true;
+
+	case 0xe347989a: //PlanetManager.shuttleportLandingTime
+		TypeInfo<int >::parseFromBinaryStream(&shuttleportLandingTime, stream);
+		return true;
+
+	case 0x29b5da5a: //PlanetManager.starportAwayTime
+		TypeInfo<int >::parseFromBinaryStream(&starportAwayTime, stream);
+		return true;
+
+	case 0xfcb0b27a: //PlanetManager.starportLandedTime
+		TypeInfo<int >::parseFromBinaryStream(&starportLandedTime, stream);
+		return true;
+
+	case 0x3121356f: //PlanetManager.starportLandingTime
+		TypeInfo<int >::parseFromBinaryStream(&starportLandingTime, stream);
 		return true;
 
 	case 0xe9542cff: //PlanetManager.weatherManager
@@ -805,19 +822,51 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_nameHashCode = 0xe865ec20; //PlanetManager.shuttleLandingDelay
+	_nameHashCode = 0x7f1b36da; //PlanetManager.shuttleportAwayTime
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<int >::toBinaryStream(&shuttleLandingDelay, stream);
+	TypeInfo<int >::toBinaryStream(&shuttleportAwayTime, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_nameHashCode = 0x64f8d516; //PlanetManager.shuttleTakeoffDelay
+	_nameHashCode = 0x69500c87; //PlanetManager.shuttleportLandedTime
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<int >::toBinaryStream(&shuttleTakeoffDelay, stream);
+	TypeInfo<int >::toBinaryStream(&shuttleportLandedTime, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_nameHashCode = 0xe347989a; //PlanetManager.shuttleportLandingTime
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&shuttleportLandingTime, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_nameHashCode = 0x29b5da5a; //PlanetManager.starportAwayTime
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&starportAwayTime, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_nameHashCode = 0xfcb0b27a; //PlanetManager.starportLandedTime
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&starportLandedTime, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_nameHashCode = 0x3121356f; //PlanetManager.starportLandingTime
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&starportLandingTime, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -838,7 +887,7 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 8;
+	return _count + 12;
 }
 
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv) {
@@ -869,10 +918,18 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 }
 	// server/zone/managers/planet/PlanetManager.idl():  		numberOfCities = 0;
 	numberOfCities = 0;
-	// server/zone/managers/planet/PlanetManager.idl():  		shuttleLandingDelay = 300000;
-	shuttleLandingDelay = 300000;
-	// server/zone/managers/planet/PlanetManager.idl():  		shuttleTakeoffDelay = 90000;
-	shuttleTakeoffDelay = 90000;
+	// server/zone/managers/planet/PlanetManager.idl():  		shuttleportAwayTime = 300;
+	shuttleportAwayTime = 300;
+	// server/zone/managers/planet/PlanetManager.idl():  		shuttleportLandedTime = 120;
+	shuttleportLandedTime = 120;
+	// server/zone/managers/planet/PlanetManager.idl():  		shuttleportLandingTime = 11;
+	shuttleportLandingTime = 11;
+	// server/zone/managers/planet/PlanetManager.idl():  		starportAwayTime = 60;
+	starportAwayTime = 60;
+	// server/zone/managers/planet/PlanetManager.idl():  		starportLandedTime = 120;
+	starportLandedTime = 120;
+	// server/zone/managers/planet/PlanetManager.idl():  		starportLandingTime = 14;
+	starportLandingTime = 14;
 	// server/zone/managers/planet/PlanetManager.idl():  		weatherManager = null;
 	weatherManager = NULL;
 	// server/zone/managers/planet/PlanetManager.idl():  		travelFares.setNoDuplicateInsertPlan();
@@ -1164,9 +1221,9 @@ void PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(isTravelToLocationPermitted(inv->getAsciiParameter(destinationPoint), inv->getAsciiParameter(arrivalPlanet), inv->getAsciiParameter(arrivalPoint)));
 		}
 		break;
-	case RPC_SCHEDULESHUTTLE__CREATUREOBJECT_:
+	case RPC_SCHEDULESHUTTLE__CREATUREOBJECT_INT_:
 		{
-			scheduleShuttle(static_cast<CreatureObject*>(inv->getObjectParameter()));
+			scheduleShuttle(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		}
 		break;
 	case RPC_REMOVESHUTTLE__CREATUREOBJECT_:
@@ -1324,8 +1381,8 @@ bool PlanetManagerAdapter::isTravelToLocationPermitted(const String& destination
 	return (static_cast<PlanetManager*>(stub))->isTravelToLocationPermitted(destinationPoint, arrivalPlanet, arrivalPoint);
 }
 
-void PlanetManagerAdapter::scheduleShuttle(CreatureObject* shuttle) {
-	(static_cast<PlanetManager*>(stub))->scheduleShuttle(shuttle);
+void PlanetManagerAdapter::scheduleShuttle(CreatureObject* shuttle, int shuttleType) {
+	(static_cast<PlanetManager*>(stub))->scheduleShuttle(shuttle, shuttleType);
 }
 
 void PlanetManagerAdapter::removeShuttle(CreatureObject* shuttle) {

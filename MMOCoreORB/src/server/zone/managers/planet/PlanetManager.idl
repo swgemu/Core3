@@ -90,9 +90,17 @@ class PlanetManager extends ManagedService implements Logger {
 	
 	protected PlanetTravelPointList planetTravelPointList;
 	
-	//In miliseconds.
-	protected int shuttleLandingDelay;
-	protected int shuttleTakeoffDelay;
+	//In seconds.
+	protected int shuttleportAwayTime;
+	protected int shuttleportLandedTime;
+	protected int shuttleportLandingTime;
+
+	protected int starportAwayTime;
+	protected int starportLandedTime;
+	protected int starportLandingTime;
+
+	public static final int SHUTTLEPORT = 0;
+	public static final int STARPORT = 1;
 
 	protected WeatherManager weatherManager;
 	
@@ -128,8 +136,13 @@ class PlanetManager extends ManagedService implements Logger {
 		
 		numberOfCities = 0;
 		
-		shuttleLandingDelay = 300000;
-		shuttleTakeoffDelay = 90000;
+		shuttleportAwayTime = 300;
+		shuttleportLandedTime = 120;
+		shuttleportLandingTime = 11;
+
+		starportAwayTime = 60;
+		starportLandedTime = 120;
+		starportLandingTime = 14;
 
 		weatherManager = null;
 		
@@ -318,7 +331,7 @@ class PlanetManager extends ManagedService implements Logger {
 	 */
 	public native boolean isTravelToLocationPermitted(final string destinationPoint, final string arrivalPlanet, final string arrivalPoint);
 	
-	public native void scheduleShuttle(CreatureObject shuttle);
+	public native void scheduleShuttle(CreatureObject shuttle, int shuttleType);
 	
 	public synchronized void removeShuttle(CreatureObject shuttle){
 		shuttleMap.drop(shuttle.getObjectID());
