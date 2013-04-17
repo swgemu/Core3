@@ -317,10 +317,8 @@ CreatureObject* ThreatMap::getHighestThreatCreature() {
 
 	ManagedReference<CreatureObject*> currentThreat = this->currentThreat.get();
 
-	if(currentThreat != NULL
-			&& !currentThreat->isDead()
-			&& !currentThreat->isIncapacitated()
-			&& !cooldownTimerMap.isPast("doEvaluation"))
+	if(currentThreat != NULL && !currentThreat->isDead() && !currentThreat->isIncapacitated()
+			&& !currentThreat->isDestroyed() && !cooldownTimerMap.isPast("doEvaluation"))
 		return currentThreat;
 
 	threatMatrix.clear();
