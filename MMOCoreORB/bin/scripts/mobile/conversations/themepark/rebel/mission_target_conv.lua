@@ -102,3 +102,6 @@ createMissionTargetConvoTemplate("luthik_uwyr_mission_target_convotemplate","lut
 createMissionTargetConvoTemplate("lx_466_mission_target_convotemplate","lx_466_mission_target_conv_handler")
 createMissionTargetConvoTemplate("sg_567_mission_target_convotemplate","sg_567_mission_target_conv_handler")
 createMissionTargetConvoTemplate("xaan_talmaron_mission_target_convotemplate","xaan_talmaron_mission_target_conv_handler")
+
+--Rori
+createMissionTargetConvoTemplate("booto_lubble_mission_target_convotemplate","booto_lubble_mission_target_conv_handler")

@@ -1,9 +1,9 @@
 booto_lubble = Creature:new {
 	objectName = "",
-	customName = "Booto Luble",
-	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
-	faction = "townsperson",
+	customName = "Booto Lubble",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -24,13 +24,13 @@ booto_lubble = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gungan_s04_male.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "booto_lubble_mission_giver_convotemplate",
 	attacks = {
 	}
 }

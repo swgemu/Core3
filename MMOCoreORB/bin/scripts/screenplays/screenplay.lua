@@ -104,6 +104,7 @@ includeFile("dungeon/warren/warren.lua")
 includeFile("dungeon/death_watch_bunker_conv_handles.lua")
 
 -- Task/Quest
+includeFile("tasks/booto_lubble.lua")
 includeFile("tasks/captain_gavyn_sykes.lua")
 includeFile("tasks/dolac_legasi.lua")
 includeFile("tasks/drakka_judarrl.lua")

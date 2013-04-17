@@ -189,3 +189,6 @@ createMissionGiverConvoTemplate("luthik_uwyr_mission_giver_convotemplate","luthi
 createMissionGiverConvoTemplate("lx_466_mission_giver_convotemplate", "lx_466_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("sg_567_mission_giver_convotemplate", "sg_567_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("xaan_talmaron_mission_giver_convotemplate","xaan_talmaron_mission_giver_conv_handler")
+
+--Rori
+createMissionGiverConvoTemplate("booto_lubble_mission_giver_convotemplate","booto_lubble_mission_giver_conv_handler")
