@@ -194,6 +194,10 @@ namespace planet {
 
 class PlanetManager : public ManagedService {
 public:
+	static const int SHUTTLEPORT = 0;
+
+	static const int STARPORT = 1;
+
 	PlanetManager(Zone* planet, ZoneProcessServer* srv);
 
 	void initializeTransientMembers();
@@ -266,7 +270,7 @@ public:
 
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
 
-	void scheduleShuttle(CreatureObject* shuttle);
+	void scheduleShuttle(CreatureObject* shuttle, int shuttleType);
 
 	void removeShuttle(CreatureObject* shuttle);
 
@@ -279,6 +283,18 @@ public:
 	void addPlayerCityTravelPoint(PlanetTravelPoint* ptp);
 
 	void removePlayerCityTravelPoint(const String& cityName);
+
+	int getShuttleportAwayTime();
+
+	int getShuttleportLandedTime();
+
+	int getShuttleportLandingTime();
+
+	int getStarportAwayTime();
+
+	int getStarportLandedTime();
+
+	int getStarportLandingTime();
 
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
@@ -317,10 +333,24 @@ protected:
 
 	Reference<PlanetTravelPointList* > planetTravelPointList;
 
-	int shuttleLandingDelay;
+	int shuttleportAwayTime;
 
-	int shuttleTakeoffDelay;
+	int shuttleportLandedTime;
 
+	int shuttleportLandingTime;
+
+	int starportAwayTime;
+
+	int starportLandedTime;
+
+	int starportLandingTime;
+
+public:
+	static const int SHUTTLEPORT = 0;
+
+	static const int STARPORT = 1;
+
+protected:
 	ManagedReference<WeatherManager* > weatherManager;
 
 	int numberOfCities;
@@ -428,7 +458,7 @@ public:
 
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
 
-	void scheduleShuttle(CreatureObject* shuttle);
+	void scheduleShuttle(CreatureObject* shuttle, int shuttleType);
 
 	void removeShuttle(CreatureObject* shuttle);
 
@@ -441,6 +471,18 @@ public:
 	void addPlayerCityTravelPoint(PlanetTravelPoint* ptp);
 
 	void removePlayerCityTravelPoint(const String& cityName);
+
+	int getShuttleportAwayTime();
+
+	int getShuttleportLandedTime();
+
+	int getShuttleportLandingTime();
+
+	int getStarportAwayTime();
+
+	int getStarportLandedTime();
+
+	int getStarportLandingTime();
 
 	WeakReference<PlanetManager*> _this;
 
@@ -545,7 +587,7 @@ public:
 
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
 
-	void scheduleShuttle(CreatureObject* shuttle);
+	void scheduleShuttle(CreatureObject* shuttle, int shuttleType);
 
 	void removeShuttle(CreatureObject* shuttle);
 
@@ -556,6 +598,18 @@ public:
 	float findClosestWorldFloor(float x, float y, float z, float swimHeight);
 
 	void removePlayerCityTravelPoint(const String& cityName);
+
+	int getShuttleportAwayTime();
+
+	int getShuttleportLandedTime();
+
+	int getShuttleportLandingTime();
+
+	int getStarportAwayTime();
+
+	int getStarportLandedTime();
+
+	int getStarportLandingTime();
 
 };
 

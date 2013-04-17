@@ -15,14 +15,17 @@
 class ShuttleDepartureTask : public Task {
 	ManagedWeakReference<CreatureObject*> shuttleObject;
 
-public:
-	static const int LANDINGTIME = 15; //How long the landing animation takes to complete in seconds.
-	static const int LANDEDTIME = 120; //In seconds
-	static const int DEPARTEDTIME = 300; //In seconds
+protected:
+	int landedTime; //In seconds
+	int landingTime; //How long the landing animation takes to complete in seconds.
+	int departedTime; //In seconds
 
 public:
 	ShuttleDepartureTask(CreatureObject* shuttle) : Task() {
 		shuttleObject = shuttle;
+		departedTime = 300;
+		landingTime = 11;
+		landedTime = 120;
 	}
 
 	void run() {
@@ -36,10 +39,10 @@ public:
 
 		if (strongReference->isStanding()) {
 			strongReference->setPosture(CreaturePosture::PRONE);
-			reschedule(DEPARTEDTIME * 1000);
+			reschedule(departedTime * 1000);
 		} else {
 			strongReference->setPosture(CreaturePosture::UPRIGHT);
-			reschedule((LANDEDTIME + LANDINGTIME) * 1000);
+			reschedule((landedTime + landingTime) * 1000);
 		}
 	}
 
@@ -60,7 +63,7 @@ public:
 			return false;
 
 		//Make sure the shuttle isn't still landing
-		if ((LANDEDTIME - getSecondsRemaining()) <= LANDINGTIME)
+		if ((landedTime - getSecondsRemaining()) <= landingTime)
 			return false;
 
 		return true;
@@ -73,10 +76,34 @@ public:
 			return false;
 		}
 
-		if (strongReference->isStanding() && (LANDEDTIME - getSecondsRemaining()) <= LANDINGTIME)
+		if (strongReference->isStanding() && (landedTime - getSecondsRemaining()) <= landingTime)
 			return true;
 
 		return false;
+	}
+
+	int getLandingTime() {
+		return landingTime;
+	}
+
+	int getLandedTime() {
+		return landedTime;
+	}
+
+	int getDepartedTime() {
+		return departedTime;
+	}
+
+	void setLandingTime(int landing) {
+		landingTime = landing;
+	}
+
+	void setLandedTime(int landed) {
+		landedTime = landed;
+	}
+
+	void setDepartedTime(int departed) {
+		departedTime = departed;
 	}
 };
 

@@ -96,7 +96,7 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 		zone->getPlanetManager()->addPlayerCityTravelPoint(planetTravelPoint);
 
 		if (shuttle != NULL) {
-			zone->getPlanetManager()->scheduleShuttle(shuttle);
+			zone->getPlanetManager()->scheduleShuttle(shuttle, PlanetManager::SHUTTLEPORT);
 			zone->registerObjectWithPlanetaryMap(zone->getZoneServer()->getObject(shuttleID, false));
 		}
 	}
