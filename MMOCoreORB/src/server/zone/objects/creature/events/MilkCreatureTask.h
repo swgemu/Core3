@@ -36,7 +36,7 @@ public:
 		}
 
 		float failureChance = 5 + (5 * creature->getFerocity());
-		int skill = 100;
+		float skill = 100;
 		bool success = true;
 
 		skill += (player->getSkillMod("mask_scent") + player->getSkillMod("camouflage"));
