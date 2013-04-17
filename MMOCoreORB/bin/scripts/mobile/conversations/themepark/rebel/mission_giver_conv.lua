@@ -192,3 +192,6 @@ createMissionGiverConvoTemplate("xaan_talmaron_mission_giver_convotemplate","xaa
 
 --Rori
 createMissionGiverConvoTemplate("booto_lubble_mission_giver_convotemplate","booto_lubble_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("draya_korbinari_mission_giver_convotemplate","draya_korbinari_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("magur_torigai_mission_giver_convotemplate","magur_torigai_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("sloan_rusper_mission_giver_convotemplate","sloan_rusper_mission_giver_conv_handler")

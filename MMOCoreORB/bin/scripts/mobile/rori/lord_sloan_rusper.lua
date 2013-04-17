@@ -24,13 +24,13 @@ lord_sloan_rusper = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lord_sloan_rusper.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "sloan_rusper_mission_giver_convotemplate",
 	attacks = {
 	}
 }

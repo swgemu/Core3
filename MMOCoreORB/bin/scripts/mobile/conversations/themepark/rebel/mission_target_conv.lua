@@ -105,3 +105,5 @@ createMissionTargetConvoTemplate("xaan_talmaron_mission_target_convotemplate","x
 
 --Rori
 createMissionTargetConvoTemplate("booto_lubble_mission_target_convotemplate","booto_lubble_mission_target_conv_handler")
+createMissionTargetConvoTemplate("draya_korbinari_mission_target_convotemplate","draya_korbinari_mission_target_conv_handler")
+createMissionTargetConvoTemplate("sloan_rusper_mission_target_convotemplate","sloan_rusper_mission_target_conv_handler")
