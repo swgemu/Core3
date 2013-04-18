@@ -25,6 +25,15 @@ rori_world_creatures = {
 			size = 25
 		},
 		{
+			lairTemplateName = "rori_capper_spineflap_hive_neutral_large",
+			spawnLimit = -1,
+			minDifficulty = 5,
+			maxDifficulty = 7,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
 			lairTemplateName = "rori_ikopi_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 6,
