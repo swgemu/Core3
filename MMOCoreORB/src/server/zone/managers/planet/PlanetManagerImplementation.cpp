@@ -108,6 +108,14 @@ void PlanetManagerImplementation::loadLuaConfig() {
 
 	luaObject.pop();
 
+	shuttleportAwayTime = lua->getGlobalInt("shuttleportAwayTime");
+	shuttleportLandedTime = lua->getGlobalInt("shuttleportLandedTime");
+	shuttleportLandingTime = lua->getGlobalInt("shuttleportLandingTime");
+
+	starportAwayTime = lua->getGlobalInt("starportAwayTime");
+	starportLandedTime = lua->getGlobalInt("starportLandedTime");
+	starportLandingTime = lua->getGlobalInt("starportLandingTime");
+
 	lua->runFile("scripts/managers/spawn_manager/" + zone->getZoneName() + ".lua");
 
 	LuaObject badges = lua->getGlobalObject(zone->getZoneName() + "_badges");
@@ -817,13 +825,27 @@ void PlanetManagerImplementation::removePlayerCityTravelPoint(const String& city
 
 }
 
-void PlanetManagerImplementation::scheduleShuttle(CreatureObject* shuttle) {
+void PlanetManagerImplementation::scheduleShuttle(CreatureObject* shuttle, int shuttleType) {
 	Locker locket(_this.get());
 
 	shuttle->setPosture(CreaturePosture::UPRIGHT);
 
 	ShuttleDepartureTask* task = new ShuttleDepartureTask(shuttle);
-	task->schedule((ShuttleDepartureTask::LANDEDTIME + ShuttleDepartureTask::LANDINGTIME) * 1000);
+
+	switch (shuttleType) {
+	case SHUTTLEPORT:
+		task->setLandedTime(shuttleportLandedTime);
+		task->setLandingTime(shuttleportLandingTime);
+		task->setDepartedTime(shuttleportAwayTime);
+		break;
+	case STARPORT:
+		task->setLandedTime(starportLandedTime);
+		task->setLandingTime(starportLandingTime);
+		task->setDepartedTime(starportAwayTime);
+		break;
+	}
+
+	task->schedule((task->getLandedTime() + task->getLandingTime()) * 1000);
 
 	shuttleMap.put(shuttle->getObjectID(), task);
 }

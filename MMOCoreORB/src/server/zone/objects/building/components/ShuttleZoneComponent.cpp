@@ -37,7 +37,7 @@ void ShuttleZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zo
 			PlanetTravelPoint* planetTravelPoint = new PlanetTravelPoint(zoneName, cityRegion->getRegionName(), arrivalVector, arrivalVector, shuttle);
 			zone->getPlanetManager()->addPlayerCityTravelPoint(planetTravelPoint);
 			cityRegion->setShuttleID(shuttle->getObjectID());
-			zone->getPlanetManager()->scheduleShuttle(shuttle);
+			zone->getPlanetManager()->scheduleShuttle(shuttle, PlanetManager::SHUTTLEPORT);
 		}
 	}
 
@@ -48,7 +48,11 @@ void ShuttleZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* zo
 		Reference<PlanetTravelPoint*> ptp = planetManager->getNearestPlanetTravelPoint(shuttle, 128.f);
 
 		if (ptp != NULL) {
-			planetManager->scheduleShuttle(shuttle);
+			if (ptp->isInterplanetary())
+				planetManager->scheduleShuttle(shuttle, PlanetManager::STARPORT);
+			else
+				planetManager->scheduleShuttle(shuttle, PlanetManager::SHUTTLEPORT);
+
 			ptp->setShuttle(shuttle);
 		}
 	}

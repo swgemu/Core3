@@ -194,6 +194,10 @@ namespace planet {
 
 class PlanetManager : public ManagedService {
 public:
+	static const int SHUTTLEPORT = 0;
+
+	static const int STARPORT = 1;
+
 	PlanetManager(Zone* planet, ZoneProcessServer* srv);
 
 	void initializeTransientMembers();
@@ -266,7 +270,7 @@ public:
 
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
 
-	void scheduleShuttle(CreatureObject* shuttle);
+	void scheduleShuttle(CreatureObject* shuttle, int shuttleType);
 
 	void removeShuttle(CreatureObject* shuttle);
 
@@ -317,10 +321,24 @@ protected:
 
 	Reference<PlanetTravelPointList* > planetTravelPointList;
 
-	int shuttleLandingDelay;
+	int shuttleportAwayTime;
 
-	int shuttleTakeoffDelay;
+	int shuttleportLandedTime;
 
+	int shuttleportLandingTime;
+
+	int starportAwayTime;
+
+	int starportLandedTime;
+
+	int starportLandingTime;
+
+public:
+	static const int SHUTTLEPORT = 0;
+
+	static const int STARPORT = 1;
+
+protected:
 	ManagedReference<WeatherManager* > weatherManager;
 
 	int numberOfCities;
@@ -428,7 +446,7 @@ public:
 
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
 
-	void scheduleShuttle(CreatureObject* shuttle);
+	void scheduleShuttle(CreatureObject* shuttle, int shuttleType);
 
 	void removeShuttle(CreatureObject* shuttle);
 
@@ -545,7 +563,7 @@ public:
 
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
 
-	void scheduleShuttle(CreatureObject* shuttle);
+	void scheduleShuttle(CreatureObject* shuttle, int shuttleType);
 
 	void removeShuttle(CreatureObject* shuttle);
 
