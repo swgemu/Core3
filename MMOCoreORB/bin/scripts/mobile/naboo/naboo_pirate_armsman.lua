@@ -21,11 +21,19 @@ naboo_pirate_armsman = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_criminal_assassin_human_female_01.iff",
+		"object/mobile/dressed_criminal_slicer_human_male_01.iff",
+		"object/mobile/dressed_criminal_smuggler_human_male_01.iff",
+		"object/mobile/dressed_criminal_smuggler_human_female_01.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_female_02.iff",
+		"object/mobile/dressed_criminal_thug_aqualish_male_01.iff",
+		"object/mobile/dressed_robber_twk_female_01.iff"
+	},
 	lootGroups = {
 	    {
 			groups = {
