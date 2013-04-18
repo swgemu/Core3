@@ -28,6 +28,7 @@ enhanced_gaping_spider = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gaping_spider.iff"},
+	scale = 2.5,
 	lootGroups = {
 		{
 			groups = {
