@@ -183,6 +183,11 @@ void GCWManagerImplementation::startVulnerability(BuildingObject* building){
 	if(!this->dropStartTask(building->getObjectID()))
 		info("No starttask found to drop while starting vulnerability");
 
+	Locker block2(building);
+
+	if (building->getZone() == NULL)
+		return;
+
 	this->scheduleVulnerabilityEnd(building);
 	building->broadcastCellPermissions();
 
