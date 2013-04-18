@@ -21,7 +21,7 @@ imperial_observer = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = ATTACKABLE,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -33,7 +33,18 @@ imperial_observer = Creature:new {
 		"object/mobile/dressed_imperial_officer_m_4.iff",
 		"object/mobile/dressed_imperial_officer_m_5.iff",
 		"object/mobile/dressed_imperial_officer_m_6.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "clothing_attachments", chance = 500000},
+				{group = "armor_attachments", chance = 500000},
+				{group = "geonosian_hard", chance = 1000000},
+				{group = "geonosian_common", chance = 5000000},
+				{group = "geonosian_relic", chance = 3000000}
+			},
+			lootChance = 5500000
+		}
+	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = merge(brawlermaster,marksmanmaster)
