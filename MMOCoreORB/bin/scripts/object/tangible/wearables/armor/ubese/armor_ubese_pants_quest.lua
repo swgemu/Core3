@@ -91,20 +91,22 @@ object_tangible_wearables_armor_ubese_armor_ubese_pants_quest = object_tangible_
 	vulnerability = HEAT + COLD + STUN + LIGHTSABER,
 
 	-- These are default Blue Frog stats
-	healthEncumbrance = 1,
-	actionEncumbrance = 1,
-	mindEncumbrance = 1,
+	healthEncumbrance = 26,
+	actionEncumbrance = 90,
+	mindEncumbrance = 15,
 
 	-- LIGHT, MEDIUM, HEAVY
 	rating = LIGHT,
 
-	kinetic = 15,
+	maxCondition = 20000,
+
+	kinetic = 20,
 	energy = 15,
 	electricity = 15,
-	stun = 15,
+	stun = 0,
 	blast = 15,
-	heat = 15,
-	cold = 15,
+	heat = 0,
+	cold = 0,
 	acid = 15,
 	lightSaber = 0
 }

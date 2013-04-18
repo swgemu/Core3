@@ -105,19 +105,21 @@ object_weapon_melee_knife_knife_vibroblade_quest = object_weapon_melee_knife_sha
 	mindAttackCost = 5,
 	forceCost = 0,
 	
-	pointBlankAccuracy = 0,
-	pointBlankRange = 5,
+	pointBlankAccuracy = 5,
+	pointBlankRange = 0,
 	
-	idealRange = 5,
-	idealAccuracy = 3,
+	idealRange = 3,
+	idealAccuracy = 5,
 	
-	maxRange = 5,
-	maxRangeAccuracy = 4,
+	maxRange = 4,
+	maxRangeAccuracy = 5,
 
 	minDamage = 15,
 	maxDamage = 90,
 	
-	attackSpeed = 3.2
+	attackSpeed = 3.2,
+
+	woundsRatio = 8
 
 }
 
