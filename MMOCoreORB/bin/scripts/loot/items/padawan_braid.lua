@@ -3,7 +3,7 @@
 padawan_braid = {
 	minimumLevel = 0,
 	maximumLevel = 0,
-	customObjectName = "Padawan braid",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/mission/quest_item/luthik_uwyr_q3_needed.iff",
 	craftingValues = {
 	},

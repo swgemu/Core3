@@ -3,7 +3,7 @@
 two_handed_sword_katana = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "2h curved sword",
+	customObjectName = "",
 	directObjectTemplate = "object/weapon/melee/2h_sword/2h_sword_katana.iff",
 	craftingValues = {
 		{"mindamage",11,20,0},

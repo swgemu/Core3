@@ -3,7 +3,7 @@
 schematic_pistol_republic_blaster_quest = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Schematic: Modified Republic Blaster",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/loot/quest/schematic_republic_blaster_quest.iff",
 	craftingValues = {
 		{"",0,0,0},

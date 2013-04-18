@@ -3,7 +3,7 @@
 projectile_pistol_barrel_quest = {
 	minimumLevel = 0,
 	maximumLevel = 0,
-	customObjectName = "Enhanced Projectile Pistol Barrel",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/projectile_pistol_barrel_quest.iff",
 	craftingValues = {
 		{"mindamage",20,25,0},

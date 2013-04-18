@@ -3,7 +3,7 @@
 foraged_sosi_hodor = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Sosi Hodor",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_vegetable_s5.iff",
 	craftingValues = {
 	},

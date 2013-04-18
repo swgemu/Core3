@@ -3,7 +3,7 @@
 foraged_flurr_clie_onion = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Flurr-Cle Onion",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_vegetable_s3.iff",
 	craftingValues = {
 	},

@@ -3,7 +3,7 @@
 foraged_wild_snaff = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Wild Snaff",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_fruit_s2.iff",
 	craftingValues = {
 	},

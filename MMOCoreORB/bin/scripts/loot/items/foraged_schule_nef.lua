@@ -3,7 +3,7 @@
 foraged_schule_nef = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Schule Nef",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_vegetable_s2.iff",
 	craftingValues = {
 	},

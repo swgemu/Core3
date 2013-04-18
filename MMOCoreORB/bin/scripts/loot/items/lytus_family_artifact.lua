@@ -2,10 +2,9 @@ lytus_family_artifact = {
 
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Lytus Family Artifact",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/item/lytus_family_artefact.iff",
 	craftingValues = {
-		{"",0,0,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

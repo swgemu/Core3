@@ -3,7 +3,7 @@
 foraged_etost_ew_zann = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Etost Ew Zann",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/food/foraged/foraged_vegetable_s4.iff",
 	craftingValues = {
 	},
