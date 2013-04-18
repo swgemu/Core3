@@ -3,7 +3,7 @@
 squill_carcass = {
 	minimumLevel = 0,
 	maximumLevel = 0,
-	customObjectName = "Squill Carcass",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/mission/quest_item/mat_rags_q1_needed.iff",
 	craftingValues = {},
 	customizationStringNames = {},

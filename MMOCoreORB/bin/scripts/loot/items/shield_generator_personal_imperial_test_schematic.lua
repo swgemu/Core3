@@ -2,10 +2,9 @@ shield_generator_personal_imperial_test_schematic = {
 
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Schematic: Imperial Personal Shield Generator",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/loot/quest/shield_generator_personal_imperial_test_schematic.iff",
 	craftingValues = {
-		{"",0,0,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

@@ -3,7 +3,7 @@
 bantha_horns = {
 	minimumLevel = 0,
 	maximumLevel = 0,
-	customObjectName = "Bantha Horns",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/mission/quest_item/mat_rags_q3_needed.iff",
 	craftingValues = {},
 	customizationStringNames = {},

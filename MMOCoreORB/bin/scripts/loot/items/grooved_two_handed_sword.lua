@@ -3,8 +3,8 @@
 grooved_two_handed_sword = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Grooved Two-Handed Sword",
-	directObjectTemplate = "object/weapon/melee/2h_sword/2h_sword_cleaver.iff",
+	customObjectName = "",
+	directObjectTemplate = "object/weapon/melee/2h_sword/2h_sword_katana_quest.iff",
 	craftingValues = {
 		{"mindamage",17,17,0},
 		{"maxdamage",184,184,0},

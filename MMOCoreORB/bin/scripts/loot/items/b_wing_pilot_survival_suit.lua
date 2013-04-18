@@ -3,8 +3,8 @@
 b_wing_pilot_survival_suit = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "B-Wing Pilot Survival Suit",
-	directObjectTemplate = "object/tangible/wearables/bodysuit/bodysuit_bwing.iff",
+	customObjectName = "",
+	directObjectTemplate = "object/tangible/wearables/bodysuit/bodysuit_bwing_quest.iff",
 	craftingValues = {
 	},
 	skillMods = {{"rifle_hit_while_moving", 5}, {"slope_move", 5}},

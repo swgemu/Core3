@@ -3,7 +3,7 @@
 womp_rat_hide = {
 	minimumLevel = 0,
 	maximumLevel = 0,
-	customObjectName = "Womp Rat Hide",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/mission/quest_item/mat_rags_q2_needed.iff",
 	craftingValues = {},
 	customizationStringNames = {},

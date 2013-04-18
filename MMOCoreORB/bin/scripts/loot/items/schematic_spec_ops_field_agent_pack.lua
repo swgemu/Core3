@@ -3,7 +3,7 @@
 schematic_spec_ops_field_agent_pack = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Schematic: Spec Ops Field Agent Pack",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/loot/quest/schematic_backpack_s06_quest.iff",
 	craftingValues = {
 	},

@@ -3,8 +3,8 @@
 high_velocity_blaster_pistol_barrel = {
 	minimumLevel = 0,
 	maximumLevel = 0,
-	customObjectName = "High Velocity Blaster Pistol Barrel",
-	directObjectTemplate = "object/tangible/component/weapon/blaster_pistol_barrel_advanced.iff",
+	customObjectName = "",
+	directObjectTemplate = "object/tangible/component/weapon/blaster_pistol_barrel_quest.iff",
 	craftingValues = {
 		{"mindamage",20,25,0},
 		{"maxdamage",25,25,0},
