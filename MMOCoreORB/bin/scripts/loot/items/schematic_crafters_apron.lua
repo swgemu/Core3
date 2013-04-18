@@ -1,7 +1,7 @@
 schematic_crafters_apron = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Schematic: Crafters Apron",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/loot/quest/schematic_apron_s01_quest.iff",
 	craftingValues = {
 	},

@@ -3,8 +3,8 @@
 light_weight_vibro_unit = {
 	minimumLevel = 0,
 	maximumLevel = 0,
-	customObjectName = "Light Weight Vibro Unit",
-	directObjectTemplate = "object/tangible/component/weapon/vibro_unit_advanced.iff",
+	customObjectName = "",
+	directObjectTemplate = "object/tangible/component/weapon/vibro_unit_quest.iff",
 	craftingValues = {
 		{"mindamage",25,25,0},
 		{"maxdamage",30,30,0},

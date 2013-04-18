@@ -3,7 +3,7 @@
 big_creature_cage = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "An Empty Cage",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/loot/misc/cage_s01.iff",
 	craftingValues = {
 	},

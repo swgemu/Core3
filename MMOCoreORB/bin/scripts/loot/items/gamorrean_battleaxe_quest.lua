@@ -2,8 +2,8 @@
 gamorrean_battleaxe_quest = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Gamorrean Battle Axe",
-	directObjectTemplate = "object/weapon/melee/2h_sword/2h_sword_battleaxe.iff",
+	customObjectName = "",
+	directObjectTemplate = "object/weapon/melee/2h_sword/2h_sword_battleaxe_quest.iff",
 	craftingValues = {
 		{"mindamage",53,98,0},
 		{"maxdamage",123,228,0},

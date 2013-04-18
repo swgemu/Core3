@@ -3,7 +3,7 @@
 no_drop_holocron_light = {
 	minimumLevel = 0,
 	maximumLevel = 0,
-	customObjectName = "Holocron",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/jedi/no_drop_jedi_holocron_light.iff",
 	craftingValues = {
 	},

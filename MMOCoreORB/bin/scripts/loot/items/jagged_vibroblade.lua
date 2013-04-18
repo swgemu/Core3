@@ -3,8 +3,8 @@
 jagged_vibroblade = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Jagged Vibroblade",
-	directObjectTemplate = "object/weapon/melee/knife/knife_vibroblade.iff",
+	customObjectName = "",
+	directObjectTemplate = "object/weapon/melee/knife/knife_vibroblade_quest.iff",
 	craftingValues = {
 		{"mindamage",15,15,0},
 		{"maxdamage",90,90,0},

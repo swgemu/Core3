@@ -3,7 +3,7 @@
 bile_soaked_rancor_tooth = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Bile Soaked Rancor Tooth",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/rancor_tooth_quest.iff",
 	craftingValues = {
 		{"mindamage",15,15,0},

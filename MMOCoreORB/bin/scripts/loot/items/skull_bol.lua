@@ -4,7 +4,7 @@ skull_bol = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	customObjectName = "",
-	directObjectTemplate = "object/tangible/loot/misc/loot_skull_bol.iff",
+	directObjectTemplate = "object/tangible/loot/quest/frn_quest_dant_skull_bol_01.iff",
 	craftingValues = {
 	},
 	customizationStringNames = {},

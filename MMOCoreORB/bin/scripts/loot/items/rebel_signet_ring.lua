@@ -3,7 +3,7 @@
 rebel_signet_ring = {
 	minimumLevel = 0,
 	maximumLevel = 0,
-	customObjectName = "Rebel Signet Ring",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/wearables/ring/ring_s03_quest.iff",
 	craftingValues = {
 	},
