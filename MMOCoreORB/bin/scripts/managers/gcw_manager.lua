@@ -15,7 +15,7 @@ sliceCooldown = 120
 
 totalDNASamples = 44
 
-DNAMatchesRequired = 22
+DNAMatchesRequired = 23
 
 -- Amount of time in seconds that a base destructino takes after the countdown is initiated
 destructionTimer = 600
