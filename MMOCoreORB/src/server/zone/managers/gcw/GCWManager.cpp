@@ -899,7 +899,7 @@ void GCWManager::addPointValue(const String& templateString, int val) {
 		_implementation->addPointValue(templateString, val);
 }
 
-void GCWManager::addRacialPenalty(int race, int val) {
+void GCWManager::addRacialPenalty(int race, float val) {
 	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -1325,7 +1325,7 @@ void GCWManagerImplementation::addPointValue(const String& templateString, int v
 }
 }
 
-void GCWManagerImplementation::addRacialPenalty(int race, int val) {
+void GCWManagerImplementation::addRacialPenalty(int race, float val) {
 	// server/zone/managers/gcw/GCWManager.idl():  		}
 {
 	Locker _locker((&baseMutex));
