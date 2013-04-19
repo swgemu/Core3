@@ -72,7 +72,7 @@ int GCWManagerImplementation::bonusXP = 15;
 int GCWManagerImplementation::bonusDiscount = 30;
 bool GCWManagerImplementation::racialPenaltyEnabled = true;
 VectorMap<String, int> GCWManagerImplementation::baseValue;
-HashTable<int, int> GCWManagerImplementation::racialPenaltyMap;
+HashTable<int, float> GCWManagerImplementation::racialPenaltyMap;
 Mutex GCWManagerImplementation::baseMutex;
 
 void GCWManagerImplementation::initialize(){

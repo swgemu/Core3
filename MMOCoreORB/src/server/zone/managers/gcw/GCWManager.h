@@ -298,7 +298,7 @@ public:
 
 	void addPointValue(const String& templateString, int val);
 
-	void addRacialPenalty(int race, int val);
+	void addRacialPenalty(int race, float val);
 
 	float getRacialPenalty(int race);
 
@@ -355,7 +355,7 @@ protected:
 
 	static VectorMap<String, int> baseValue;
 
-	static HashTable<int, int> racialPenaltyMap;
+	static HashTable<int, float> racialPenaltyMap;
 
 private:
 	int rebelBases;
@@ -621,7 +621,7 @@ public:
 
 	void addPointValue(const String& templateString, int val);
 
-	void addRacialPenalty(int race, int val);
+	void addRacialPenalty(int race, float val);
 
 	float getRacialPenalty(int race);
 
