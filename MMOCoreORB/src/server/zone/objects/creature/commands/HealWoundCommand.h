@@ -63,9 +63,9 @@ public:
 
 	HealWoundCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
+		
 		mindCost = 50;
 		range = 6;
-		//defaultTime = 0;
 	}
 
 	void deactivateWoundTreatment(CreatureObject* creature) {
@@ -163,23 +163,13 @@ public:
 			return false;
 		}
 
-		if (creature->isProne()) {
-			creature->sendSystemMessage("You cannot do that while prone.");
+		if (creature->isProne() || creature->isMeditating()) {
+			creature->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.
 			return false;
 		}
 
-		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot do that while Meditating.");
-			return false;
-		}
-
-		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
-			return false;
-		}
-
-		if (creature->isMounted()) {
-			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
+		if (creature->isRidingCreature() || creature->isMounted()) {
+			creature->sendSystemMessage("@error_message:survey_on_mount"); //You cannot perform that action while mounted on a creature or driving a vehicle.
 			return false;
 		}
 
@@ -194,7 +184,7 @@ public:
 		}
 
 		if (!creatureTarget->isHealableBy(creature)) {
-			creature->sendSystemMessage("@healing:pvp_no_help");
+			creature->sendSystemMessage("@healing:pvp_no_help");  //It would be unwise to help such a patient.
 			return false;
 		}
 
@@ -281,9 +271,17 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object != NULL && !object->isCreatureObject()) {
-			return INVALIDTARGET;
-		} else if (object == NULL)
+		if (object != NULL) {
+			if (!object->isCreatureObject()) {
+				TangibleObject* tangibleObject = dynamic_cast<TangibleObject*>(object.get());
+
+				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
+					object = creature;
+				} else 
+					creature->sendSystemMessage("Target must be a player or a creature pet in order to heal wound."); 
+					return GENERALERROR;
+			}
+		} else
 			object = creature;
 
 		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
@@ -317,7 +315,6 @@ public:
 				searchAttribute = findAttribute(creatureTarget, searchAttribute);
 
 				if (searchAttribute == CreatureAttribute::UNKNOWN) {
-					//creature->sendSystemMessage("@healing_response:healing_response_61");
 					creature->sendSystemMessage("@healing_response:healing_response_60"); //No valid medicine found.
 					return GENERALERROR;
 				}
@@ -333,7 +330,7 @@ public:
 
 		if (creatureTarget->getWounds(attribute) == 0) {
 			if (creatureTarget == creature) {
-				creature->sendSystemMessage("@healing_response:healing_response_67");
+				creature->sendSystemMessage("@healing_response:healing_response_67"); //You have no wounds of that type to heal.
 			} else {
 				//TODO: Patch the tre later to include a %NT.
 				if (creatureTarget->isPlayerCreature()) {

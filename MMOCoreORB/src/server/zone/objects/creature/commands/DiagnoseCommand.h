@@ -54,8 +54,8 @@ public:
 
 	DiagnoseCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
+		
 		range = 6;
-		//defaultTime = 0;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
@@ -77,7 +77,7 @@ public:
 		if (object == NULL || !object->isPlayerCreature()) {
 			creature->sendSystemMessage("@healing_response:healing_response_b6"); //You cannot diagnose that.
 			return GENERALERROR;
-		}
+		}	
 
 		CreatureObject* creatureTarget = cast<CreatureObject*>(object.get());
 
@@ -85,12 +85,11 @@ public:
 
 		if (!creatureTarget->isInRange(creature, range))
 			return TOOFAR;
-
-		/* TODO: Couldn't find documentation stating this, but it seems a bit pointless.
-		if (creatureTarget == creature) {
-			creature->sendSystemMessage("You can't diagnose yourself.");
+			
+		if (!creatureTarget->isHealableBy(creature)) {
+			creature->sendSystemMessage("@healing:pvp_no_help"); //It would be unwise to help such a patient.
 			return GENERALERROR;
-		}*/
+		}				
 
 		//TODO: Close already opened Sui Box.
 		ghost->closeSuiWindowType(SuiWindowType::MEDIC_DIAGNOSE);

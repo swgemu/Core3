@@ -62,11 +62,10 @@ class HealDamageCommand : public QueueCommand {
 
 public:
 	HealDamageCommand(const String& name, ZoneProcessServer* server)
-	: QueueCommand(name, server) {
+		: QueueCommand(name, server) {
 
 		range = 5;
 		mindCost = 50;
-		//defaultTime = 0;
 	}
 
 	void deactivateInjuryTreatment(CreatureObject* creature, bool isRangedStim) {
@@ -92,7 +91,7 @@ public:
 		//Force the delay to be at least 3 seconds.
 		delay = (delay < 3) ? 3 : delay;
 
-		StringIdChatParameter message("healing_response", "healing_response_58");
+		StringIdChatParameter message("healing_response", "healing_response_58"); //You are now ready to heal more damage.
 		Reference<InjuryTreatmentTask*> task = new InjuryTreatmentTask(creature, message, "injuryTreatment");
 		creature->addPendingTask("injuryTreatment", task, delay * 1000);
 	}
@@ -112,7 +111,7 @@ public:
 		if (range < 10.0f) {
 			crc = "throw_grenade_near_healing";
 		}
-		else if (10.0f <= range && range < 20.f) {
+		else if (10.0f <= range && range < 20.0f) {
 			crc = "throw_grenade_medium_healing";
 		}
 		else {
@@ -166,14 +165,6 @@ public:
 
 	bool checkTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
 		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION)) {
-			/*if (creatureTarget == creature) {
-				creature->sendSystemMessage("@healing_response:healing_response_61"); //You have no damage to heal.
-			} else {
-				StringIdChatParameter stringId("healing_response", "healing_response_63");
-				stringId.setTO(creatureTarget->getObjectID());
-				//creature->sendSystemMessage("healing_response", "healing_response_63", creatureTarget->getObjectID()); //%NT has no damage to heal.
-				creature->sendSystemMessage(stringId);
-			}*/
 			return false;
 		}
 
@@ -200,23 +191,13 @@ public:
 			return false;
 		}
 
-		if (creature->isProne()) {
-			creature->sendSystemMessage("You cannot do that while prone.");
+		if (creature->isProne() || creature->isMeditating()) {
+			creature->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.
 			return false;
 		}
 
-		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot do that while meditating.");
-			return false;
-		}
-
-		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
-			return false;
-		}
-
-		if (creature->isMounted()) {
-			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
+		if (creature->isRidingCreature() || creature->isMounted()) {
+			creature->sendSystemMessage("@error_message:survey_on_mount"); //You cannot perform that action while mounted on a creature or driving a vehicle.
 			return false;
 		}
 
@@ -226,7 +207,7 @@ public:
 		}
 
 		if (!creatureTarget->isHealableBy(creature)) {
-			creature->sendSystemMessage("@healing:pvp_no_help");
+			creature->sendSystemMessage("@healing:pvp_no_help"); //It would be unwise to help such a patient.
 			return false;
 		}
 
@@ -234,9 +215,8 @@ public:
 			if (creatureTarget == creature) {
 				creature->sendSystemMessage("@healing_response:healing_response_61"); //You have no damage to heal.
 			} else {
-				StringIdChatParameter stringId("healing_response", "healing_response_63");
+				StringIdChatParameter stringId("healing_response", "healing_response_63"); //%NT has no damage to heal.
 				stringId.setTT(creatureTarget->getObjectID());
-				//creature->sendSystemMessage("healing_response", "healing_response_63", creatureTarget->getObjectID()); //%NT has no damage to heal.
 				creature->sendSystemMessage(stringId);
 			}
 
@@ -361,9 +341,6 @@ public:
 				if (creatureTarget->isAttackableBy(creature))
 					continue;
 
-				/*if (creatureTarget->isDead() || creatureTarget->isIncapacitated())
-					continue;*/
-
 				zone->runlock();
 
 				try {
@@ -405,7 +382,8 @@ public:
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
 				} else
-					return INVALIDTARGET;
+					creature->sendSystemMessage("@healing_response:healing_response_62"); //Target must be a player or a creature pet in order to heal damage. 
+					return GENERALERROR;
 			}
 		} else
 			object = creature;
@@ -445,9 +423,6 @@ public:
 
 		if (stimPack->isRangedStimPack())
 			rangeToCheck = (cast<RangedStimPack*>(stimPack.get()))->getRange();
-		/*} else {
-
-		}*/
 
 		if (!creature->isInRange(targetCreature, rangeToCheck))
 			return TOOFAR;

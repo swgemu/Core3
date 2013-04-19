@@ -63,6 +63,7 @@ public:
 
 	HealStateCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
+		
 		mindCost = 20;
 		range = 6;
 	}
@@ -74,7 +75,7 @@ public:
 		//Force the delay to be at least 3 seconds.
 		delay = (delay < 3) ? 3 : delay;
 
-		StringIdChatParameter message("healing_response", "healing_response_59");
+		StringIdChatParameter message("healing_response", "healing_response_59"); //You are now ready to heal more wounds or apply more enhancements.
 		Reference<InjuryTreatmentTask*> task = new InjuryTreatmentTask(creature, message, "stateTreatment");
 		creature->addPendingTask("stateTreatment", task, delay * 1000);
 	}
@@ -144,28 +145,18 @@ public:
 			return false;
 		}
 
-		if (creature->isProne()) {
-			creature->sendSystemMessage("You cannot Heal States while prone.");
+		if (creature->isProne() || creature->isMeditating()) {
+			creature->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.
 			return false;
 		}
 
-		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot Heal States while Meditating.");
-			return false;
-		}
-
-		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
-			return false;
-		}
-
-		if (creature->isMounted()) {
-			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
+		if (creature->isRidingCreature() || creature->isMounted()) {
+			creature->sendSystemMessage("@error_message:survey_on_mount"); //You cannot perform that action while mounted on a creature or driving a vehicle.
 			return false;
 		}
 
 		if (!creatureTarget->isHealableBy(creature)) {
-			creature->sendSystemMessage("@healing:pvp_no_help");
+			creature->sendSystemMessage("@healing:pvp_no_help");  //It would be unwise to help such a patient.
 			return false;
 		}
 
@@ -242,8 +233,9 @@ public:
 
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
-				} else
-					return INVALIDTARGET;
+				} else 
+					creature->sendSystemMessage("@healing_response:healing_response_73"); //Target must be a player or a creature pet in order to heal a state.
+					return GENERALERROR;
 			}
 		} else
 			object = creature;
@@ -294,9 +286,9 @@ public:
 			if (creature == creatureTarget)
 				creature->sendSystemMessage("@healing_response:healing_response_72"); //You have no state of that type to heal.
 			else {
-				StringIdChatParameter msg("healing_response", "healing_response_74");
+				StringIdChatParameter msg("healing_response", "healing_response_74"); //%NT has no state of that type to heal.
 				msg.setTT(creatureTarget->getObjectID());
-				creature->sendSystemMessage(msg); //%NT has no state of that type to heal.
+				creature->sendSystemMessage(msg); 
 			}
 
 			return GENERALERROR;

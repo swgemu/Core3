@@ -78,7 +78,6 @@ public:
 		mindCost = 800;
 		mindWoundCost = 10;
 
-		//defaultTime = 3.5;
 		range = 6;
 	}
 
@@ -134,51 +133,51 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object != NULL && !object->isCreatureObject()) {
-			return INVALIDTARGET;
-		} else if (object == NULL)
+		if (object != NULL) {
+			if (!object->isCreatureObject()) {
+				TangibleObject* tangibleObject = dynamic_cast<TangibleObject*>(object.get());
+
+				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
+					object = creature;
+				} else 
+					creature->sendSystemMessage("@healing_response:healing_response_99"); //Target must be a player or a creature pet in order to quick heal.
+					return GENERALERROR;
+			}
+		} else
 			object = creature;
 
 		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
 
 		Locker clocker(creatureTarget, creature);
+		
+		if (!creature->isInRange(creatureTarget, range))
+			return TOOFAR;		
 
 		if (creatureTarget->isAiAgent() || creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted() || creatureTarget->isAttackableBy(creature))
 			creatureTarget = creature;
 
-		/*if (!target->isPlayer() && !target->isNonPlayerCreature()) {
-			creature->sendSystemMessage("@healing_response:healing_response_99"); //Target must be a player or a creature pet in order to quickheal .
+		if (creature->isProne() || creature->isMeditating()) {
+			creature->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.
 			return GENERALERROR;
 		}
 
-		CreatureObject* creatureTarget = cast<CreatureObject*>( target);
-
-		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted())
-			creatureTarget = creature;	//If our target is dead, riding a creature, or mounted, then we make ourself target.
-		*/
-
-		if (creature->isProne()) {
-			creature->sendSystemMessage("You cannot Quick Heal while prone.");
+		if (creature->isRidingCreature() || creature->isMounted()) {
+			creature->sendSystemMessage("@error_message:survey_on_mount"); //You cannot perform that action while mounted on a creature or driving a vehicle.
 			return GENERALERROR;
 		}
 
-		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot Quick Heal while meditating.");
+		if (creature->isInCombat()) {
+			creature->sendSystemMessage("You cannot do that while in Combat.");
 			return GENERALERROR;
 		}
 
-		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
-			return GENERALERROR;
-		}
-
-		if (creature->isMounted()) {
-			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
+		if (creatureTarget->isInCombat()) {
+			creature->sendSystemMessage("You cannot do that while your target is in Combat.");
 			return GENERALERROR;
 		}
 
 		if (!creatureTarget->isHealableBy(creature)) {
-			creature->sendSystemMessage("@healing:pvp_no_help");
+			creature->sendSystemMessage("@healing:pvp_no_help");  //It would be unwise to help such a patient.
 			return GENERALERROR;
 		}
 
@@ -192,9 +191,9 @@ public:
 			if (creatureTarget == creature)
 				creature->sendSystemMessage("@healing_response:healing_response_61"); //You have no damage to heal.
 			else {
-				StringIdChatParameter stringId("healing_response", "healing_response_63");
+				StringIdChatParameter stringId("healing_response", "healing_response_63"); //%NT has no damage to heal.
 				stringId.setTT(creatureTarget->getObjectID());
-				creature->sendSystemMessage(stringId); //%NT has no damage to heal.
+				creature->sendSystemMessage(stringId); 
 			}
 
 			return GENERALERROR;
@@ -212,15 +211,9 @@ public:
 
 		sendHealMessage(creature, creatureTarget, healedHealth, healedAction);
 
-		/*creature->changeMindBar(-mindCost);
-		creature->changeFocusWoundsBar(mindWoundCost);
-		creature->changeWillpowerWoundsBar(mindWoundCost);
-		creature->changeShockWounds(2);*/
-
 		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
 		creature->addWounds(CreatureAttribute::FOCUS, mindWoundCost, true);
 		creature->addWounds(CreatureAttribute::WILLPOWER, mindWoundCost, true);
-		//creature->changeWillpowerWoundsBar(mindWoundCost);
 		creature->addShockWounds(2);
 
 		doAnimations(creature, creatureTarget);

@@ -62,6 +62,7 @@ public:
 
 	RevivePlayerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
+		
 		mindCost = 200;
 		range = 7;
 	}
@@ -82,25 +83,20 @@ public:
 			return false;
 		}
 
-		if (creature->isProne()) {
-			creature->sendSystemMessage("You cannot do that while Prone.");
+		if (creature->isProne() || creature->isMeditating()) {
+			creature->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.
 			return false;
 		}
 
-		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot do that while Meditating.");
+		if (creature->isRidingCreature() || creature->isMounted()) {
+			creature->sendSystemMessage("@error_message:survey_on_mount"); //You cannot perform that action while mounted on a creature or driving a vehicle.
 			return false;
 		}
-
-		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
+		
+		if (!creatureTarget->isHealableBy(creature)) {
+			creature->sendSystemMessage("@healing:pvp_no_help");  //It would be unwise to help such a patient.
 			return false;
-		}
-
-		if (creature->isMounted()) {
-			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
-			return false;
-		}
+		}		
 
 		ManagedReference<GroupObject*> group = creature->getGroup();
 
@@ -206,9 +202,17 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object != NULL && !object->isCreatureObject()) {
-			return INVALIDTARGET;
-		} else if (object == NULL)
+		if (object != NULL) {
+			if (!object->isCreatureObject()) {
+				TangibleObject* tangibleObject = dynamic_cast<TangibleObject*>(object.get());
+
+				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
+					object = creature;
+				} else 
+					creature->sendSystemMessage("@healing_response:cannot_resuscitate_kit");//You cannot resuscitate someone without a resuscitation kit!
+					return GENERALERROR;
+			}
+		} else
 			object = creature;
 
 		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
@@ -216,13 +220,13 @@ public:
 		Locker clocker(creatureTarget, creature);
 
 		if (!creatureTarget->isPlayerCreature()) {
-			creature->sendSystemMessage("@healing_response:healing_response_a2");	//You cannot apply resuscitation medication without a valid target!
+			creature->sendSystemMessage("@healing_response:healing_response_a2"); //You cannot apply resuscitation medication without a valid target!
 			return GENERALERROR;
 		}
 
 		if (creatureTarget == creature) {
-			creature->sendSystemMessage("You cannot resuscitate yourself.");
-			return 0;
+			creature->sendSystemMessage("@error_message:target_self_disallowed"); //You cannot target yourself with this command.
+			return GENERALERROR;
 		}
 
 		if (!creatureTarget->isInRange(creature, range))
@@ -260,14 +264,13 @@ public:
 		int healedActionWounds = creatureTarget->addWounds(CreatureAttribute::ACTION, - (int) (round(revivePack->getActionWoundHealed())));
 		int healedMindWounds = creatureTarget->addWounds(CreatureAttribute::MIND, - (int) (round(revivePack->getMindWoundHealed())));
 
-		//creature->resuscitate(creatureTarget);
-
 		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
 
 		if (revivePack != NULL)
 			revivePack->decreaseUseCount();
 
 		int xpAmount = healedHealth + healedAction + healedMind + healedHealthWounds + healedActionWounds + healedMindWounds + 250;
+		
 		awardXp(creature, "medical", xpAmount);
 
 		doAnimations(creature, creatureTarget);

@@ -54,9 +54,9 @@ public:
 
 	FirstAidCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
+		
 		mindCost = 0;
 		range = 6;
-		//defaultTime = 3;
 	}
 
 	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
@@ -67,7 +67,54 @@ public:
 		else
 			creature->doAnimation("heal_other");
 	}
+	
+	void sendCureMessage(CreatureObject* object, CreatureObject* target) {
+		if (!object->isPlayerCreature())
+			return;
 
+		if (!target->isPlayerCreature())
+			return;
+
+		CreatureObject* creature = cast<CreatureObject*>( object);
+		CreatureObject* creatureTarget = cast<CreatureObject*>( target);
+		
+		if (creatureTarget != creature) {
+			if (creatureTarget->isPlayerCreature()) {
+				StringBuffer msgTarget, msgPlayer;
+				msgTarget << creature->getFirstName() << " applies first aid to you.";
+				creatureTarget->sendSystemMessage(msgTarget.toString());
+
+				msgPlayer << "You apply first aid to " << creatureTarget->getFirstName() << ".";
+				creature->sendSystemMessage(msgPlayer.toString());
+			}
+		} else {
+			creature->sendSystemMessage("@healing_response:first_aid_self"); //You apply first aid to yourself.
+		}		
+	}				
+		
+	
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget) {
+		if (!creatureTarget->isBleeding()) {
+			if (creature == creatureTarget)
+				creature->sendSystemMessage("@healing_response:healing_response_78"); //You are not bleeding.
+			else {
+				StringIdChatParameter stringId("healing_response", "healing_response_80"); //%NT is not bleeding.
+				stringId.setTT(creatureTarget->getObjectID());
+				creature->sendSystemMessage(stringId); 
+			}
+			return false;
+		}	
+
+		PlayerManager* playerManager = server->getPlayerManager();
+
+		if (creature != creatureTarget && !CollisionManager::checkLineOfSight(creature, creatureTarget)) {
+			creature->sendSystemMessage("@container_error_message:container18");
+			return false;
+		}
+
+		return true;
+	}	
+		
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
@@ -78,9 +125,17 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object != NULL && !object->isCreatureObject()) {
-			return INVALIDTARGET;
-		} else if (object == NULL)
+		if (object != NULL) {
+			if (!object->isCreatureObject()) {
+				TangibleObject* tangibleObject = dynamic_cast<TangibleObject*>(object.get());
+
+				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
+					object = creature;
+				} else
+					creature->sendSystemMessage("@healing_response:healing_response_79"); //Target must be a player or a creature pet in order to apply first aid.					
+					return GENERALERROR;
+			}
+		} else
 			object = creature;
 
 		CreatureObject* creatureTarget = cast<CreatureObject*>( object.get());
@@ -93,28 +148,18 @@ public:
 		if (!creatureTarget->isInRange(creature, range))
 			return TOOFAR;
 
-		if (creature->isProne()) {
-			creature->sendSystemMessage("You cannot apply First Aid while prone.");
+		if (creature->isProne() || creature->isMeditating()) {
+			creature->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.
 			return GENERALERROR;
 		}
 
-		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot apply First Aid while Meditating.");
-			return GENERALERROR;
-		}
-
-		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
-			return GENERALERROR;
-		}
-
-		if (creature->isMounted()) {
-			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
+		if (creature->isRidingCreature() || creature->isMounted()) {
+			creature->sendSystemMessage("@error_message:survey_on_mount"); //You cannot perform that action while mounted on a creature or driving a vehicle.
 			return GENERALERROR;
 		}
 
 		if (!creatureTarget->isHealableBy(creature)) {
-			creature->sendSystemMessage("@healing:pvp_no_help");
+			creature->sendSystemMessage("@healing:pvp_no_help"); //It would be unwise to help such a patient.
 			return GENERALERROR;
 		}
 
@@ -123,40 +168,19 @@ public:
 			return GENERALERROR;
 		}
 
-
-		if (creatureTarget->isBleeding()) {
-
-			if (creatureTarget != creature) {
-				if (creatureTarget->isPlayerCreature()) {
-					StringBuffer message;
-					message << "You apply first aid to " << (cast<CreatureObject*>(creatureTarget))->getFirstName() << ".";
-					creature->sendSystemMessage(message.toString());
-				}
-			} else {
-				creature->sendSystemMessage("@healing_response:first_aid_self"); //You apply first aid to yourself.
-			}
-
-			creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
-
-			doAnimations(creature, creatureTarget);
-
-			uint32 skillMod = creature->getSkillMod("healing_injury_treatment");
-			creatureTarget->healDot(CreatureState::BLEEDING, skillMod);
-			/*if (creatureTarget->healDot(CreatureState::BLEEDING,skillMod))
-							creatureTarget->sendSystemMessage("Bleed stop");
-						else
-							creatureTarget->sendSystemMessage("Bleed reduced");
-			 */
-		} else {
-			if (creatureTarget != creature) {
-				StringIdChatParameter stringId("healing_response", "healing_response_80"); // %NT is not bleeding.
-				stringId.setTT(creatureTarget->getObjectID());
-				creature->sendSystemMessage(stringId);
-			} else {
-				creature->sendSystemMessage("@healing_response:healing_response_78"); //You are not bleeding.
-			}
-		}
-
+		if (!canPerformSkill(creature, creatureTarget))
+			return GENERALERROR;		
+					
+			
+		uint32 skillMod = creature->getSkillMod("healing_injury_treatment");
+			
+		creatureTarget->healDot(CreatureState::BLEEDING, skillMod);
+			
+		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
+		
+		sendCureMessage(creature, creatureTarget);
+ 
+		doAnimations(creature, creatureTarget);		
 
 		return SUCCESS;
 	}
