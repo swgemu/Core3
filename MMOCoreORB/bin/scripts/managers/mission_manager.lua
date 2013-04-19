@@ -23,7 +23,10 @@ bh_target_zones = {
 bh_targets_at_mission_level = {
 	level1 = {
 		"bodyguard",
-		"bodyguard_zabrak_female"
+		"bodyguard_zabrak_female",
+		"assassin_twilek_mate",
+		"pirate_privateer",
+		"naboo_pirate_lieutenant"
 	},
 	level2 = {
 		"dune_stalker_brawler",
