@@ -160,7 +160,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		for(int i = 0; i < nearbyObjects.size(); ++i) {
 			SceneObject* scno = cast<SceneObject*>(nearbyObjects.get(i).get());
 			if (scno != NULL && scno->isCampStructure() && scno->getDistanceTo(
-					player) <= scno->getObjectTemplate()->getNoBuildRadius()) {
+					player) <= scno->getObjectTemplate()->getNoBuildRadius() + campStructureData->getRadius()) {
 				player->sendSystemMessage("@camp:error_camp_too_close");
 				return 0;
 			}
@@ -172,7 +172,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			}
 
 			if(scno != NULL && scno->getObserverCount(ObserverEventType::OBJECTDESTRUCTION) > 0 &&
-					scno->getDistanceTo(player) <= scno->getObjectTemplate()->getNoBuildRadius()) {
+					scno->getDistanceTo(player) <= scno->getObjectTemplate()->getNoBuildRadius() + campStructureData->getRadius()) {
 
 				SortedVector<ManagedReference<Observer* > >* observers = scno->getObservers(ObserverEventType::OBJECTDESTRUCTION);
 				for(int j = 0; j < observers->size(); ++j) {
@@ -185,7 +185,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		}
 
 		/// Check to see if you can camp here (Allows building in city no-build zone but not within city limits which are checked above)
-		if (!planetManager->isCampingPermittedAt(player->getPositionX(), player->getPositionY(), campStructureData->getNoBuildRadius())) {
+		if (!planetManager->isCampingPermittedAt(player->getPositionX(), player->getPositionY(), campStructureData->getRadius())) {
 			player->sendSystemMessage("@camp:error_nobuild");
 			return 0;
 		}
