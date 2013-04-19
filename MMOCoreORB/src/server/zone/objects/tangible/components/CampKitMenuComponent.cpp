@@ -138,7 +138,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 			ManagedReference<StructureObject*> structure = cast<StructureObject*>(ghost->getZoneServer()->getObject(oid));
 
-			if (structure->isCampStructure()) {
+			if (structure != NULL && structure->isCampStructure()) {
 				player->sendSystemMessage("@camp:sys_already_camping");
 				return 0;
 			}
