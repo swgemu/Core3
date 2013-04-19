@@ -26,7 +26,8 @@ hooded_crystal_snake = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/crystal_snake_hue.iff"},
+	templates = {"object/mobile/crystal_snake.iff"},
+	scale = 0.9,
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",
