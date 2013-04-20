@@ -236,6 +236,8 @@ public:
 
 	int getStructuresCount();
 
+	int getCommercialStructuresCount();
+
 	String getCitySpecialization();
 
 	int getCityTreasury();
@@ -318,7 +320,11 @@ public:
 
 	void addStructure(StructureObject* structure);
 
+	void addCommercialStructure(StructureObject* structure);
+
 	void removeStructure(StructureObject* structure);
+
+	void removeCommercialStructure(StructureObject* structure);
 
 	bool hasUniqueStructure(unsigned int crc);
 
@@ -373,6 +379,8 @@ public:
 	void setTax(int tax, int value);
 
 	StructureObject* getCivicStructure(int indx);
+
+	StructureObject* getCommercialStructure(int indx);
 
 	SceneObject* getCityDecoration(int indx);
 
@@ -434,6 +442,8 @@ protected:
 	CitizenList bannedList;
 
 	SortedVector<ManagedReference<StructureObject* > > structures;
+
+	SortedVector<ManagedReference<StructureObject* > > commercialStructures;
 
 	SortedVector<unsigned long long> completeStructureList;
 
@@ -580,6 +590,8 @@ public:
 
 	int getStructuresCount();
 
+	int getCommercialStructuresCount();
+
 	String getCitySpecialization();
 
 	int getCityTreasury();
@@ -662,7 +674,11 @@ public:
 
 	void addStructure(StructureObject* structure);
 
+	void addCommercialStructure(StructureObject* structure);
+
 	void removeStructure(StructureObject* structure);
+
+	void removeCommercialStructure(StructureObject* structure);
 
 	bool hasUniqueStructure(unsigned int crc);
 
@@ -717,6 +733,8 @@ public:
 	void setTax(int tax, int value);
 
 	StructureObject* getCivicStructure(int indx);
+
+	StructureObject* getCommercialStructure(int indx);
 
 	SceneObject* getCityDecoration(int indx);
 
@@ -841,6 +859,8 @@ public:
 
 	int getStructuresCount();
 
+	int getCommercialStructuresCount();
+
 	String getCitySpecialization();
 
 	int getCityTreasury();
@@ -919,7 +939,11 @@ public:
 
 	void addStructure(StructureObject* structure);
 
+	void addCommercialStructure(StructureObject* structure);
+
 	void removeStructure(StructureObject* structure);
+
+	void removeCommercialStructure(StructureObject* structure);
 
 	bool hasUniqueStructure(unsigned int crc);
 

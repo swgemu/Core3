@@ -60,10 +60,13 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	@dereferenced
 	protected CitizenList bannedList;
-	
+
 	@dereferenced
 	protected SortedVector<StructureObject> structures;
-	
+
+	@dereferenced
+	protected SortedVector<StructureObject> commercialStructures;
+
 	@dereferenced
 	protected transient SortedVector<unsigned long> completeStructureList;
 	
@@ -321,6 +324,10 @@ class CityRegion extends ManagedObject implements Logger {
 		return structures.size();
 	}
 	
+	public int getCommercialStructuresCount() {
+		return commercialStructures.size();
+	}
+
 	public string getCitySpecialization() {
 		return citySpecialization;
 	}
@@ -493,12 +500,24 @@ class CityRegion extends ManagedObject implements Logger {
 		}
 	}
 	
+	public void addCommercialStructure(StructureObject structure) {
+		synchronized (structureListMutex) {
+			commercialStructures.put(structure);
+		}
+	}
+
 	public void removeStructure(StructureObject structure) {
 		synchronized (structureListMutex) {
 			structures.drop(structure);
 		}
 	}
-	
+
+	public void removeCommercialStructure(StructureObject structure) {
+		synchronized (structureListMutex) {
+			commercialStructures.drop(structure);
+		}
+	}
+
 	/**
 	 * Checks if the city has a structure in it's structures list of a particular template type.
 	 * @param crc The crc of the template of the structure to search for.
@@ -630,6 +649,11 @@ class CityRegion extends ManagedObject implements Logger {
 	@local
 	public StructureObject getCivicStructure(int indx){
 		return structures.get(indx);
+	}
+
+	@local
+	public StructureObject getCommercialStructure(int indx){
+		return commercialStructures.get(indx);
 	}
 
 	@local

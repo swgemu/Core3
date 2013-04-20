@@ -256,6 +256,8 @@ public:
 
 	bool isCivicStructure();
 
+	bool isCommercialStructure();
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -444,6 +446,8 @@ public:
 
 	bool isCivicStructure();
 
+	bool isCommercialStructure();
+
 	WeakReference<StructureObject*> _this;
 
 	operator const StructureObject*();
@@ -608,6 +612,8 @@ public:
 	String getRedeedMessage();
 
 	bool isCivicStructure();
+
+	bool isCommercialStructure();
 
 };
 
