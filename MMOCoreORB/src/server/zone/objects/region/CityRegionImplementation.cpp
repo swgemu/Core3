@@ -233,22 +233,21 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 	if (object->isStructureObject()){
 		StructureObject* structure = cast<StructureObject*>(object);
 
-		/*uint64 creatureID = structure->getOwnerObjectID();
+		Locker slocker(&structureListMutex);
 
-		if (structure->isBuildingObject() && !citizenList.contains(creatureID)) {
-			BuildingObject* building = cast<BuildingObject*>(object);
-			CreatureObject* owner = building->getOwnerCreatureObject();
+		uint64 creatureID = structure->getOwnerObjectID();
+
+		if (structure->isBuildingObject() && !isCitizen(creatureID)) {
+			CreatureObject* owner = structure->getOwnerCreatureObject();
 
 			if (owner != NULL) {
 				PlayerObject* playerObject = owner->getPlayerObject();
 
-				if (playerObject != NULL && playerObject->getDeclaredResidence() == building) {
+				if (playerObject != NULL && playerObject->getDeclaredResidence() == structure->getObjectID()) {
 					addCitizen(creatureID);
 				}
 			}
-		}*/
-
-		Locker slocker(&structureListMutex);
+		}
 
 		completeStructureList.put(structure->getObjectID());
 
@@ -263,6 +262,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 		if (registered) {
 			zone->registerObjectWithPlanetaryMap(structure);
 		}
+
 	}
 }
 
@@ -317,27 +317,25 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 		float x = object->getWorldPositionX();
 		float y = object->getWorldPositionY();
 
-		//StructureObject* structure = cast<StructureObject*>(object);
-
 		StructureObject* structure = cast<StructureObject*>(object);
 
-		/*uint64 creatureID = structure->getOwnerObjectID();
+		Locker slocker(&structureListMutex);
+
+		/*
+		uint64 creatureID = structure->getOwnerObjectID();
 
 		if (structure->isBuildingObject() && citizenList.contains(creatureID)) {
-			BuildingObject* building = cast<BuildingObject*>(object);
 
-			CreatureObject* owner = building->getOwnerCreatureObject();
+			CreatureObject* owner = structure->getOwnerCreatureObject();
 
 			if (owner != NULL) {
 				PlayerObject* playerObject = owner->getPlayerObject();
 
-				if (playerObject != NULL && playerObject->getDeclaredResidence() == building){
+				if (playerObject != NULL && playerObject->getDeclaredResidence() == structure->getObjectID()){
 					removeCitizen(creatureID);
 				}
 			}
 		}*/
-
-		Locker slocker(&structureListMutex);
 
 		completeStructureList.drop(structure->getObjectID());
 
@@ -348,6 +346,7 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 		} else if (structure->isCommercialStructure()) {
 			removeCommercialStructure(structure);
 		}
+
 	}
 }
 
