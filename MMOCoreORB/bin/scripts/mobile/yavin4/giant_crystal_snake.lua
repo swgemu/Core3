@@ -27,6 +27,7 @@ giant_crystal_snake = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_crystal_snake.iff"},
+	scale = 1.5,
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",

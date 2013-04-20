@@ -2,11 +2,11 @@
 yavin4_whisper_bird_lair_neutral_medium = Lair:new {
 	mobiles = {{"whisper_bird_male", 0}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/whisper_bird/lair_whisper_bird.iff"},
-	buildingsEasy = {"object/tangible/lair/whisper_bird/lair_whisper_bird.iff"},
-	buildingsMedium = {"object/tangible/lair/whisper_bird/lair_whisper_bird.iff"},
-	buildingsHard = {"object/tangible/lair/whisper_bird/lair_whisper_bird.iff"},
-	buildingsVeryHard = {"object/tangible/lair/whisper_bird/lair_whisper_bird.iff"}
+	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_nest_large.iff"},
+	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_nest_large.iff"},
+	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_nest_large.iff"},
+	buildingsHard = {"object/tangible/lair/base/poi_all_lair_nest_large.iff"},
+	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_nest_large.iff"}
 }
 
 addLairTemplate("yavin4_whisper_bird_lair_neutral_medium", yavin4_whisper_bird_lair_neutral_medium)
