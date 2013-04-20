@@ -695,7 +695,7 @@ bool PlanetManagerImplementation::isCampingPermittedAt(float x, float y, float m
 
 		// Honor no-build after checking for areas that camping is explicitly allowed
 		if (area->isNoBuildArea()) {
-			return false;
+				return false;
 		}
 	}
 
@@ -704,11 +704,6 @@ bool PlanetManagerImplementation::isCampingPermittedAt(float x, float y, float m
 	}
 
 	if (isInWater(targetPos.getX(), targetPos.getY())) {
-		return false;
-	}
-
-	// TODO: Need to determine how close to POI a camp could be made
-	if (isInRangeWithPoi(targetPos.getX(), targetPos.getY(), 512)) {
 		return false;
 	}
 
