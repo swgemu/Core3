@@ -404,6 +404,14 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 void ZoneImplementation::addSceneObject(SceneObject* object) {
 	objectMap->put(object->getObjectID(), object);
 
+	//Civic and commercial structures map registration will be handled by their city
+	if (object->isStructureObject()) {
+		StructureObject* structure = cast<StructureObject*>(object);
+		if (structure->isCivicStructure() || structure->isCommercialStructure()) {
+			return;
+		}
+	}
+
 	registerObjectWithPlanetaryMap(object);
 }
 
@@ -521,11 +529,6 @@ void ZoneImplementation::updateCityRegions() {
 		city->rescheduleUpdateEvent(seconds);
 
 		if (!city->isRegistered()) {
-			//TODO: Find a way to make commercial structures only register if their city is registered.
-			for(int i = 0; i < city->getStructuresCount(); i++){
-				ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
-				unregisterObjectWithPlanetaryMap(structure);
-			}
 			continue;
 		}
 
@@ -536,6 +539,18 @@ void ZoneImplementation::updateCityRegions() {
 
 		unregisterObjectWithPlanetaryMap(region);
 		registerObjectWithPlanetaryMap(region);
+
+		for(int i = 0; i < city->getStructuresCount(); i++){
+			ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
+			unregisterObjectWithPlanetaryMap(structure);
+			registerObjectWithPlanetaryMap(structure);
+		}
+
+		for(int i = 0; i < city->getCommercialStructuresCount(); i++){
+			ManagedReference<StructureObject*> structure = city->getCommercialStructure(i);
+			unregisterObjectWithPlanetaryMap(structure);
+			registerObjectWithPlanetaryMap(structure);
+		}
 	}
 
 	cityRegionUpdateVector.removeAll();

@@ -425,4 +425,6 @@ class StructureObject extends TangibleObject {
 	}
 	
 	public native boolean isCivicStructure();
+
+	public native boolean isCommercialStructure();
 }

@@ -52,6 +52,10 @@ public:
 		return (cityMaintenanceBase > 0);
 	}
 
+	inline bool isCommercialStructure() {
+		return (baseMaintenanceRate > 0 && cityRankRequired > 0);
+	}
+
 	inline bool isUniqueStructure() {
 		return uniqueStructure;
 	}

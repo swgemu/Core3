@@ -326,6 +326,16 @@ bool StructureObjectImplementation::isCivicStructure() {
 	return ssot->isCivicStructure();
 }
 
+bool StructureObjectImplementation::isCommercialStructure() {
+	SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(templateObject.get());
+
+	if (ssot == NULL)
+		return false;
+
+
+	return ssot->isCommercialStructure();
+}
+
 int StructureObjectImplementation::getBaseMaintenanceRate(){
 	Reference<SharedStructureObjectTemplate*> tmpl = cast<SharedStructureObjectTemplate*>(getObjectTemplate());
 

@@ -256,6 +256,12 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 			addDecoration(structure);
 		} else if (structure->isCivicStructure()) {
 			addStructure(structure);
+		} else if (structure->isCommercialStructure()) {
+			addCommercialStructure(structure);
+		}
+
+		if (registered) {
+			zone->registerObjectWithPlanetaryMap(structure);
 		}
 	}
 }
@@ -339,6 +345,8 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 			removeDecoration(structure);
 		} else if (structure->isCivicStructure()) {
 			removeStructure(structure);
+		} else if (structure->isCommercialStructure()) {
+			removeCommercialStructure(structure);
 		}
 	}
 }
@@ -633,3 +641,4 @@ void CityRegionImplementation::transferCivicStructuresToMayor(){
 
 
 }
+

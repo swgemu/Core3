@@ -22,7 +22,7 @@
  *	CityRegionStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_CLEANUPCITIZENS__,RPC_GETCURRENTPLAYERCOUNT__,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_,RPC_REMOVESHUTTLEINSTALLATION__,RPC_HASSHUTTLEINSTALLATION__,RPC_SETSHUTTLEID__LONG_,RPC_GETMISSIONTERMINALCOUNT__,RPC_GETDECORATIONCOUNT__,RPC_GETSKILLTRAINERCOUNT__,RPC_ADDMISSIONTERMINAL__SCENEOBJECT_,RPC_ADDDECORATION__SCENEOBJECT_,RPC_ADDSKILLTRAINER__SCENEOBJECT_,RPC_REMOVEMISSIONTERMINAL__SCENEOBJECT_,RPC_REMOVEDECORATION__SCENEOBJECT_,RPC_REMOVESKILLTRAINERS__SCENEOBJECT_,RPC_ADDBAZAAR__TANGIBLEOBJECT_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_REMOVEALLSKILLTRAINERS__,RPC_REMOVEALLTERMINALS__,RPC_UPDATEMILITIA__,RPC_ADDSTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVESTRUCTURE__STRUCTUREOBJECT_,RPC_HASUNIQUESTRUCTURE__INT_,RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_,RPC_ADDCANDIDATE__LONG_,RPC_SETMAYORALVOTE__LONG_LONG_,RPC_GETCANDIDATEVOTES__LONG_,RPC_RESETCANDIDATES__,RPC_RESETMAYORALVOTES__,RPC_REMOVECANDIDATE__LONG_,RPC_ISCANDIDATE__LONG_,RPC_ISVOTINGPERIODOVER__,RPC_ISVOTINGPERIOD__,RPC_ISVOTINGLOCKED__,RPC_RESETVOTINGPERIOD__,RPC_ISLOADED__,RPC_SETLOADED__,RPC_APPLYSPECIALIZATIONMODIFIERS__CREATUREOBJECT_,RPC_REMOVESPECIALIZATIONMODIFIERS__CREATUREOBJECT_,RPC_GETPROPERTYTAX__,RPC_GETINCOMETAX__,RPC_GETSALESTAX__,RPC_GETTRAVELTAX__,RPC_GETGARAGETAX__,RPC_GETTAX__INT_,RPC_SETTAX__INT_INT_,RPC_TRANSFERCIVICSTRUCTURESTOMAYOR__};
+enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_CLEANUPCITIZENS__,RPC_GETCURRENTPLAYERCOUNT__,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCOMMERCIALSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_,RPC_REMOVESHUTTLEINSTALLATION__,RPC_HASSHUTTLEINSTALLATION__,RPC_SETSHUTTLEID__LONG_,RPC_GETMISSIONTERMINALCOUNT__,RPC_GETDECORATIONCOUNT__,RPC_GETSKILLTRAINERCOUNT__,RPC_ADDMISSIONTERMINAL__SCENEOBJECT_,RPC_ADDDECORATION__SCENEOBJECT_,RPC_ADDSKILLTRAINER__SCENEOBJECT_,RPC_REMOVEMISSIONTERMINAL__SCENEOBJECT_,RPC_REMOVEDECORATION__SCENEOBJECT_,RPC_REMOVESKILLTRAINERS__SCENEOBJECT_,RPC_ADDBAZAAR__TANGIBLEOBJECT_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_REMOVEALLSKILLTRAINERS__,RPC_REMOVEALLTERMINALS__,RPC_UPDATEMILITIA__,RPC_ADDSTRUCTURE__STRUCTUREOBJECT_,RPC_ADDCOMMERCIALSTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVESTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVECOMMERCIALSTRUCTURE__STRUCTUREOBJECT_,RPC_HASUNIQUESTRUCTURE__INT_,RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_,RPC_ADDCANDIDATE__LONG_,RPC_SETMAYORALVOTE__LONG_LONG_,RPC_GETCANDIDATEVOTES__LONG_,RPC_RESETCANDIDATES__,RPC_RESETMAYORALVOTES__,RPC_REMOVECANDIDATE__LONG_,RPC_ISCANDIDATE__LONG_,RPC_ISVOTINGPERIODOVER__,RPC_ISVOTINGPERIOD__,RPC_ISVOTINGLOCKED__,RPC_RESETVOTINGPERIOD__,RPC_ISLOADED__,RPC_SETLOADED__,RPC_APPLYSPECIALIZATIONMODIFIERS__CREATUREOBJECT_,RPC_REMOVESPECIALIZATIONMODIFIERS__CREATUREOBJECT_,RPC_GETPROPERTYTAX__,RPC_GETINCOMETAX__,RPC_GETSALESTAX__,RPC_GETTRAVELTAX__,RPC_GETGARAGETAX__,RPC_GETTAX__INT_,RPC_SETTAX__INT_INT_,RPC_TRANSFERCIVICSTRUCTURESTOMAYOR__};
 
 CityRegion::CityRegion() : ManagedObject(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation();
@@ -567,6 +567,19 @@ int CityRegion::getStructuresCount() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getStructuresCount();
+}
+
+int CityRegion::getCommercialStructuresCount() {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCOMMERCIALSTRUCTURESCOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getCommercialStructuresCount();
 }
 
 String CityRegion::getCitySpecialization() {
@@ -1120,6 +1133,20 @@ void CityRegion::addStructure(StructureObject* structure) {
 		_implementation->addStructure(structure);
 }
 
+void CityRegion::addCommercialStructure(StructureObject* structure) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDCOMMERCIALSTRUCTURE__STRUCTUREOBJECT_);
+		method.addObjectParameter(structure);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->addCommercialStructure(structure);
+}
+
 void CityRegion::removeStructure(StructureObject* structure) {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1132,6 +1159,20 @@ void CityRegion::removeStructure(StructureObject* structure) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->removeStructure(structure);
+}
+
+void CityRegion::removeCommercialStructure(StructureObject* structure) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVECOMMERCIALSTRUCTURE__STRUCTUREOBJECT_);
+		method.addObjectParameter(structure);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeCommercialStructure(structure);
 }
 
 bool CityRegion::hasUniqueStructure(unsigned int crc) {
@@ -1486,6 +1527,15 @@ StructureObject* CityRegion::getCivicStructure(int indx) {
 		return _implementation->getCivicStructure(indx);
 }
 
+StructureObject* CityRegion::getCommercialStructure(int indx) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getCommercialStructure(indx);
+}
+
 SceneObject* CityRegion::getCityDecoration(int indx) {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1688,6 +1738,10 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 		TypeInfo<SortedVector<ManagedReference<StructureObject* > > >::parseFromBinaryStream(&structures, stream);
 		return true;
 
+	case 0x98dfa969: //CityRegion.commercialStructures
+		TypeInfo<SortedVector<ManagedReference<StructureObject* > > >::parseFromBinaryStream(&commercialStructures, stream);
+		return true;
+
 	case 0xb9951777: //CityRegion.cityMissionTerminals
 		TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&cityMissionTerminals, stream);
 		return true;
@@ -1866,6 +1920,14 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_nameHashCode = 0x98dfa969; //CityRegion.commercialStructures
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<SortedVector<ManagedReference<StructureObject* > > >::toBinaryStream(&commercialStructures, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_nameHashCode = 0xb9951777; //CityRegion.cityMissionTerminals
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
@@ -1979,7 +2041,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 27;
+	return _count + 28;
 }
 
 CityRegionImplementation::CityRegionImplementation() {
@@ -2189,6 +2251,11 @@ int CityRegionImplementation::getStructuresCount() {
 	return (&structures)->size();
 }
 
+int CityRegionImplementation::getCommercialStructuresCount() {
+	// server/zone/objects/region/CityRegion.idl():  		return commercialStructures.size();
+	return (&commercialStructures)->size();
+}
+
 String CityRegionImplementation::getCitySpecialization() {
 	// server/zone/objects/region/CityRegion.idl():  		return citySpecialization;
 	return citySpecialization;
@@ -2389,12 +2456,30 @@ void CityRegionImplementation::addStructure(StructureObject* structure) {
 }
 }
 
+void CityRegionImplementation::addCommercialStructure(StructureObject* structure) {
+	// server/zone/objects/region/CityRegion.idl():  		}
+{
+	Locker _locker((&structureListMutex));
+	// server/zone/objects/region/CityRegion.idl():  			commercialStructures.put(structure);
+	(&commercialStructures)->put(structure);
+}
+}
+
 void CityRegionImplementation::removeStructure(StructureObject* structure) {
 	// server/zone/objects/region/CityRegion.idl():  		}
 {
 	Locker _locker((&structureListMutex));
 	// server/zone/objects/region/CityRegion.idl():  			structures.drop(structure);
 	(&structures)->drop(structure);
+}
+}
+
+void CityRegionImplementation::removeCommercialStructure(StructureObject* structure) {
+	// server/zone/objects/region/CityRegion.idl():  		}
+{
+	Locker _locker((&structureListMutex));
+	// server/zone/objects/region/CityRegion.idl():  			commercialStructures.drop(structure);
+	(&commercialStructures)->drop(structure);
 }
 }
 
@@ -2517,6 +2602,11 @@ void CityRegionImplementation::setTax(int tax, int value) {
 StructureObject* CityRegionImplementation::getCivicStructure(int indx) {
 	// server/zone/objects/region/CityRegion.idl():  		return structures.get(indx);
 	return (&structures)->get(indx);
+}
+
+StructureObject* CityRegionImplementation::getCommercialStructure(int indx) {
+	// server/zone/objects/region/CityRegion.idl():  		return commercialStructures.get(indx);
+	return (&commercialStructures)->get(indx);
 }
 
 SceneObject* CityRegionImplementation::getCityDecoration(int indx) {
@@ -2729,6 +2819,11 @@ void CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertSignedInt(getStructuresCount());
 		}
 		break;
+	case RPC_GETCOMMERCIALSTRUCTURESCOUNT__:
+		{
+			resp->insertSignedInt(getCommercialStructuresCount());
+		}
+		break;
 	case RPC_GETCITYSPECIALIZATION__:
 		{
 			resp->insertAscii(getCitySpecialization());
@@ -2927,9 +3022,19 @@ void CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			addStructure(static_cast<StructureObject*>(inv->getObjectParameter()));
 		}
 		break;
+	case RPC_ADDCOMMERCIALSTRUCTURE__STRUCTUREOBJECT_:
+		{
+			addCommercialStructure(static_cast<StructureObject*>(inv->getObjectParameter()));
+		}
+		break;
 	case RPC_REMOVESTRUCTURE__STRUCTUREOBJECT_:
 		{
 			removeStructure(static_cast<StructureObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_REMOVECOMMERCIALSTRUCTURE__STRUCTUREOBJECT_:
+		{
+			removeCommercialStructure(static_cast<StructureObject*>(inv->getObjectParameter()));
 		}
 		break;
 	case RPC_HASUNIQUESTRUCTURE__INT_:
@@ -3206,6 +3311,10 @@ int CityRegionAdapter::getStructuresCount() {
 	return (static_cast<CityRegion*>(stub))->getStructuresCount();
 }
 
+int CityRegionAdapter::getCommercialStructuresCount() {
+	return (static_cast<CityRegion*>(stub))->getCommercialStructuresCount();
+}
+
 String CityRegionAdapter::getCitySpecialization() {
 	return (static_cast<CityRegion*>(stub))->getCitySpecialization();
 }
@@ -3362,8 +3471,16 @@ void CityRegionAdapter::addStructure(StructureObject* structure) {
 	(static_cast<CityRegion*>(stub))->addStructure(structure);
 }
 
+void CityRegionAdapter::addCommercialStructure(StructureObject* structure) {
+	(static_cast<CityRegion*>(stub))->addCommercialStructure(structure);
+}
+
 void CityRegionAdapter::removeStructure(StructureObject* structure) {
 	(static_cast<CityRegion*>(stub))->removeStructure(structure);
+}
+
+void CityRegionAdapter::removeCommercialStructure(StructureObject* structure) {
+	(static_cast<CityRegion*>(stub))->removeCommercialStructure(structure);
 }
 
 bool CityRegionAdapter::hasUniqueStructure(unsigned int crc) {
