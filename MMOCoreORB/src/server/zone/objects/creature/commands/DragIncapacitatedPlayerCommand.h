@@ -54,7 +54,7 @@ public:
 
 	DragIncapacitatedPlayerCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
-		//defaultTime = 0;
+		
 		maxRange = 31.0;
 		maxMovement = 5.0;
 		needsConsent = true;
@@ -103,9 +103,9 @@ public:
 
 		//Check maximum range.
 		if (!player->isInRange(targetPlayer, maxRange)) {
-			StringIdChatParameter stringId("healing_response", "healing_response_b1");
+			StringIdChatParameter stringId("healing_response", "healing_response_b1"); //"Your maximum drag range is %DI meters! Try getting closer."
 			stringId.setDI(maxRange);
-			player->sendSystemMessage(stringId); //"Your maximum drag range is %DI meters! Try getting closer."
+			player->sendSystemMessage(stringId); 
 			return;
 		}
 
@@ -156,7 +156,6 @@ public:
 		float dy = dragger.getY() - target.getY();
 		float directionangle = atan2(dy, dx);
 		float radangle = M_PI / 2 - directionangle;
-		//targetPlayer->setDirection()
 		targetPlayer->setDirection(radangle);
 
 		//Set the new location of the target player.
@@ -164,7 +163,6 @@ public:
 		targetPlayer->setPosition(newPosition.getX(), newPosition.getZ(), newPosition.getY());
 		targetPlayer->incrementMovementCounter();
 		ManagedReference<SceneObject*> parent = player->getParent();
-		//targetPlayer->updatePlayerPosition(false); //Updates everyone except targetPlayer of their movement.
 		if (parent != NULL && parent->isCellObject()) {
 			targetPlayer->updateZoneWithParent(parent, false);
 		} else {
@@ -176,7 +174,7 @@ public:
 		//Visuals.
 		targetPlayer->showFlyText("base_player", "fly_drag", 255, 0, 0);
 
-		StringIdChatParameter stringId("healing_response", "healing_response_b5");
+		StringIdChatParameter stringId("healing_response", "healing_response_b5"); //"Attempting to drag %TT to your location..."
 		stringId.setTT(targetPlayer->getObjectID());
 		player->sendSystemMessage(stringId);
 	}
@@ -215,28 +213,11 @@ public:
 			player->sendSystemMessage("@healing_response:healing_response_a9"); //"You lack the ability to drag incapacitated players!"
 			return GENERALERROR;
 		}
-
-
-		/*if (target->isPlayer()) {
-			targetPlayer = cast<Player*>(target);
-		} else {
-			player->sendSystemMessage("@healing_response:healing_response_a6"); //"You may only drag players!"
+		
+		if (!targetPlayer->isHealableBy(creature)) {
+			player->sendSystemMessage("@healing:pvp_no_help"); //It would be unwise to help such a patient.
 			return GENERALERROR;
-		}
-
-		if (targetPlayer == player) {
-			player->sendSystemMessage("@healing_response:healing_response_a5"); //"You must first have a valid target to drag before you can perform this command."
-			return GENERALERROR;
-		}*/
-
-		//Determine the maximum drag range.
-		/*int skillMod = player->getSkillMod("healing_injury_speed");
-
-		float actualRange = (float)skillMod / 3.75f;
-
-		if (actualRange > maxRange) {
-			actualRange = maxRange;
-		}*/
+		}		
 
 		//Attempt to drag the target player.
 		drag(player, targetPlayer, maxRange, maxMovement, needsConsent, false);

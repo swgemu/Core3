@@ -63,9 +63,9 @@ public:
 
 	HealEnhanceCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
+		
 		mindCost = 150;
 		range = 7;
-		//defaultTime = 0;
 	}
 
 	void deactivateWoundTreatment(CreatureObject* creature) {
@@ -86,7 +86,7 @@ public:
 		//Force the delay to be at least 3 seconds.
 		delay = (delay < 3) ? 3 : delay;
 
-		StringIdChatParameter message("healing_response", "healing_response_59");
+		StringIdChatParameter message("healing_response", "healing_response_59"); //You are now ready to heal more wounds or apply more enhancements.
 		Reference<InjuryTreatmentTask*> task = new InjuryTreatmentTask(creature, message, "woundTreatment");
 		creature->addPendingTask("woundTreatment", task, delay * 1000);
 	}
@@ -140,23 +140,13 @@ public:
 			return false;
 		}
 
-		if (enhancer->isProne()) {
-			enhancer->sendSystemMessage("You cannot Heal Enhance while prone.");
+		if (enhancer->isProne() || enhancer->isMeditating()) {
+			enhancer->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.
 			return false;
 		}
 
-		if (enhancer->isMeditating()) {
-			enhancer->sendSystemMessage("You cannot Heal Enhance while Meditating.");
-			return false;
-		}
-
-		if (enhancer->isRidingCreature()) {
-			enhancer->sendSystemMessage("You cannot do that while Riding a Creature.");
-			return false;
-		}
-
-		if (enhancer->isMounted()) {
-			enhancer->sendSystemMessage("You cannot do that while Driving a Vehicle.");
+		if (enhancer->isRidingCreature() || enhancer->isMounted()) {
+			enhancer->sendSystemMessage("@error_message:survey_on_mount"); //You cannot perform that action while mounted on a creature or driving a vehicle.
 			return false;
 		}
 
@@ -171,7 +161,7 @@ public:
 		}
 
 		if (!patient->isHealableBy(enhancer)) {
-			enhancer->sendSystemMessage("@healing:pvp_no_help");
+			enhancer->sendSystemMessage("@healing:pvp_no_help"); //It would be unwise to help such a patient.
 			return false;
 		}
 
@@ -288,15 +278,18 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL) {
-			creature->sendSystemMessage("@healing_response:healing_response_77"); //Target must be a player or a creature pet in order to apply enhancements.
-			return INVALIDTARGET;
-		}
-
-		if (!object->isPlayerCreature()) {
-			creature->sendSystemMessage("@healing_response:healing_response_77"); //Target must be a player or a creature pet in order to apply enhancements.
-			return INVALIDTARGET;
-		}
+		if (object != NULL) {
+			if (!object->isCreatureObject()) {
+				TangibleObject* tangibleObject = dynamic_cast<TangibleObject*>(object.get());
+ 
+				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
+					object = creature;
+				} else
+					creature->sendSystemMessage("@healing_response:healing_response_77"); //Target must be a player or a creature pet in order to apply enhancements.				
+					return GENERALERROR;
+			}
+		} else
+			object = creature;		
 
 		CreatureObject* targetCreature = cast<CreatureObject*>( object.get());
 

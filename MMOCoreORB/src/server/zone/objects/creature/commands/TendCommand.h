@@ -41,7 +41,8 @@ protected:
 
 public:
 	TendCommand(const String& name, ZoneProcessServer* server)
-	: QueueCommand(name, server) {
+		: QueueCommand(name, server) {
+	
 		mindCost = 0;
 		mindWoundCost = 0;
 
@@ -177,18 +178,14 @@ public:
 
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
-				} else
-					return INVALIDTARGET;
+				} else 
+					creature->sendSystemMessage("@healing_response:healing_response_a1"); //Target must be a player or a creature pet in order to tend damage
+					return GENERALERROR;
 			}
 		} else
 			object = creature;
 
 		CreatureObject* creatureTarget = cast<CreatureObject*>(object.get());
-
-		if (creatureTarget == NULL /*|| (!creatureTarget->isPlayer() && !creatureTarget->isNonPlayerCreature())*/) {
-			creature->sendSystemMessage("@healing_response:healing_response_a1"); //Target must be a player or a creature pet in order to tend damage.
-			return INVALIDTARGET;
-		}
 
 		Locker clocker(creatureTarget, creature);
 
@@ -200,34 +197,24 @@ public:
 
 		uint8 attribute = findAttribute(creatureTarget);
 
-		if (creature->isProne()) {
-			creature->sendSystemMessage("You cannot do that while prone.");
-			return INVALIDLOCOMOTION;
+		if (creature->isProne() || creature->isMeditating()) {
+			creature->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.
+			return GENERALERROR;
 		}
 
-		if (creature->isMeditating()) {
-			creature->sendSystemMessage("You cannot do that while Meditating.");
-			return INVALIDSTATE;
+		if (creature->isRidingCreature() || creature->isMounted()) {
+			creature->sendSystemMessage("@error_message:survey_on_mount"); //You cannot perform that action while mounted on a creature or driving a vehicle.
+			return GENERALERROR;
 		}
-
-		if (creature->isRidingCreature()) {
-			creature->sendSystemMessage("You cannot do that while Riding a Creature.");
-			return INVALIDLOCOMOTION;
-		}
-
-		if (creature->isMounted()) {
-			creature->sendSystemMessage("You cannot do that while Driving a Vehicle.");
-			return INVALIDLOCOMOTION;
-		}
-
+		
 		if (!creatureTarget->isHealableBy(creature)) {
-			creature->sendSystemMessage("@healing:pvp_no_help");
-			return INVALIDTARGET;
+			creature->sendSystemMessage("@healing:pvp_no_help");  //It would be unwise to help such a patient.
+			return GENERALERROR;
 		}
 
 		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
 			creature->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
-			return INSUFFICIENTHAM;
+			return GENERALERROR;
 		}
 
 		float bfScale = 1 - creatureTarget->calculateBFRatio();
@@ -241,7 +228,6 @@ public:
 					stringId.setTT(creatureTarget->getObjectID());
 					creature->sendSystemMessage(stringId);
 				}
-
 				return GENERALERROR;
 			}
 
@@ -257,7 +243,7 @@ public:
 
 			if (attribute == CreatureAttribute::UNKNOWN || creatureTarget->getWounds(attribute) == 0) {
 				if (creatureTarget == creature)
-					creature->sendSystemMessage("@healing_response:healing_response_67");
+					creature->sendSystemMessage("@healing_response:healing_response_67"); //You have no wounds of that type to heal.
 				else if (creatureTarget->isPlayerCreature()){
 					creature->sendSystemMessage(creatureTarget->getFirstName() + " has no wounds of that type to heal.");
 				}

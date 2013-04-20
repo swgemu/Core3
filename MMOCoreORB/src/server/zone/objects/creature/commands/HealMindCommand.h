@@ -56,9 +56,9 @@ public:
 
 	HealMindCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
+		
 		mindCost = 250;
 		mindWoundCost = 250;
-		//defaultTime = 6;
 		range = 5;
 	}
 
@@ -121,10 +121,9 @@ public:
 
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
-				} else {
-					creature->sendSystemMessage("@healing:heal_mind_invalid_target");
-					return INVALIDTARGET;
-				}
+				} else 
+					creature->sendSystemMessage("@healing:heal_mind_invalid_target"); //Target must be a player or a creature pet in order to heal mind.
+					return GENERALERROR;
 			}
 		} else
 			object = creature;
@@ -136,22 +135,26 @@ public:
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		if (creatureTarget == creature) {
-			creature->sendSystemMessage("@healing:no_heal_mind_self");
+			creature->sendSystemMessage("@healing:no_heal_mind_self"); //You can not heal your own mind.
+			return GENERALERROR;
+		}		
+
+		if (creatureTarget->isDead() || creatureTarget->isAiAgent()) {
+			return GENERALERROR;
+		}
+		
+		if (creature->isProne() || creature->isMeditating()) {
+			creature->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.
 			return GENERALERROR;
 		}
 
-		if (creatureTarget->isAiAgent()) {
-			creature->sendSystemMessage("@healing:heal_mind_invalid_target");
+		if (creature->isRidingCreature() || creature->isMounted()) {
+			creature->sendSystemMessage("@error_message:survey_on_mount"); //You cannot perform that action while mounted on a creature or driving a vehicle.
 			return GENERALERROR;
 		}
-			
-
-		if (creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted()) {
-			return GENERALERROR;
-		}
-
+	
 		if (!creatureTarget->isHealableBy(creature)) {
-			creature->sendSystemMessage("@healing:pvp_no_help");
+			creature->sendSystemMessage("@healing:pvp_no_help"); //It would be unwise to help such a patient.
 			return GENERALERROR;
 		}
 
@@ -162,11 +165,10 @@ public:
 
 		if (creatureTarget->getHAM(CreatureAttribute::MIND) == 0 || !(creatureTarget->hasDamage(CreatureAttribute::MIND))) {
 			if (creatureTarget) {
-				StringIdChatParameter stringId("healing", "no_mind_to_heal_target");
+				StringIdChatParameter stringId("healing", "no_mind_to_heal_target"); //%NT has no mind to heal.
 				stringId.setTT(creatureTarget->getObjectID());
-				creature->sendSystemMessage(stringId); //%NT has no mind to heal.
+				creature->sendSystemMessage(stringId); 
 			}
-
 			return GENERALERROR;
 		}
 
@@ -182,6 +184,7 @@ public:
 
 		float modSkill = (float) creature->getSkillMod("combat_medic_effectiveness");
 		int healPower = (int) (System::random(300)+700) * modSkill / 100; // 700-1000 heal
+		
 		// Check BF
 		healPower = (int) (healPower * (1 - creature->calculateBFRatio()) * (1 - creatureTarget->calculateBFRatio()));
 
@@ -197,9 +200,6 @@ public:
 		creature->addWounds(CreatureAttribute::MIND, mindWound);
 		creature->addWounds(CreatureAttribute::FOCUS, mindWound);
 		creature->addWounds(CreatureAttribute::WILLPOWER, mindWound);
-		/*creature->changeMindWoundsBar(calculateWound(mindWound,creature->getMindWounds(),creature->getBaseMind()));
-		creature->changeFocusWoundsBar(calculateWound(mindWound,creature->getFocusWounds(),creature->getBaseFocus()));
-		creature->changeWillpowerWoundsBar(calculateWound(mindWound,creature->getWillpowerWounds(),creature->getBaseWillpower()));*/
 
 		creature->addShockWounds(mindWound); // 5% of mind healed in bf
 
