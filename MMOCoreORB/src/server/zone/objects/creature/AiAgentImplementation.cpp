@@ -918,9 +918,9 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 	while (!found && patrolPoints.size() != 0) {
 		PatrolPoint* targetPosition = &patrolPoints.get(0);
-		PlanetManager* planetManager = zone->getPlanetManager();
-		
+
 		if (targetPosition->getCell() == NULL && zone != NULL) {
+			PlanetManager* planetManager = zone->getPlanetManager();
 			targetPosition->setPositionZ(planetManager->findClosestWorldFloor(targetPosition->getPositionX(), targetPosition->getPositionY(), targetPosition->getPositionZ(), this->getSwimHeight()));
 		}
 
@@ -1067,7 +1067,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 							
 
 							if (zone != NULL) {
-								newPositionZ = planetManager->findClosestWorldFloor(newPositionX, newPositionY, targetPosition->getPositionZ(), this->getSwimHeight());
+								newPositionZ = zone->getPlanetManager()->findClosestWorldFloor(newPositionX, newPositionY, targetPosition->getPositionZ(), this->getSwimHeight());
 							}
 							//newPositionZ = nextPosition.getZ();
 						} else {
