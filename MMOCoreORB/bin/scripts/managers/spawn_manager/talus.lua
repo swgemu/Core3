@@ -46,7 +46,7 @@ talus_regions = {
         {"circle_of_rocks_2",-5100,4720,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
         {"dath_tree",-60,980,{1,15},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"dearic",0,0,{1,0},UNDEFINEDAREA,1},
-	{"dearic_easy_newbie",0,0,{1,0},UNDEFINEDAREA,1},
+	{"dearic_easy_newbie",432,-3008,{1,2048},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"talus_starter_creatures"},
 	{"dearic_medium_newbie",0,0,{1,0},UNDEFINEDAREA,1},
         {"debris",1709,784,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
         {"debris_2",-1735,-2890,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
@@ -111,7 +111,7 @@ talus_regions = {
 	{"mudflats_1",0,0,{1,0},UNDEFINEDAREA,1},
 	{"mudflats_2",0,0,{1,0},UNDEFINEDAREA,1},
 	{"nashal",0,0,{1,0},UNDEFINEDAREA,1},
-	{"nashal_easy_newbie",0,0,{1,0},UNDEFINEDAREA,1},
+	{"nashal_easy_newbie",4352,5209,{1,2048},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"talus_starter_creatures"},
 	{"nashal_medium_newbie",0,0,{1,0},UNDEFINEDAREA,1},
 	{"north_crimson_flats_1",0,0,{1,0},UNDEFINEDAREA,1},
 	{"north_crimson_flats_2",0,0,{1,0},UNDEFINEDAREA,1},
@@ -162,6 +162,7 @@ talus_regions = {
 	{"swamp",0,0,{1,0},UNDEFINEDAREA,1},
         {"table",5415,2655,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"talus_imperial_outpost",0,0,{1,0},UNDEFINEDAREA,1},
+	{"talus_imperial_outpost_easy_newbie",-2186,2300,{1,1024},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"talus_starter_creatures"},
 	{"tendin_vale",0,0,{1,0},UNDEFINEDAREA,1},
         {"three_pillars",-5697,4010,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
         {"three_spikes",-3920,4125,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
@@ -368,6 +369,7 @@ talus_static_spawns = {
 	{"commoner",60,4346.26,2,5064.99,353.461,0, "calm", ""},
 	{"commoner",60,4363.41,2,5087.4,343.951,0, "calm", ""},
 	{"commoner",60,4388.77,2,5031.19,96.9441,0, "calm", ""},
+
 	{"commoner",60,4373.33,2,5019.99,60.2531,0, "calm", ""},
 	{"commoner",60,4385.1,2,5049.53,303.879,0, "calm", ""},
 	{"commoner",60,4390.82,2,5421.7,352.903,0, "calm", ""},
@@ -493,6 +495,7 @@ talus_static_spawns = {
 	{"scoundrel",60,0.904988,0.639421,54.983,360.011,3175356, "conversation", ""},
 	{"scoundrel",60,12.85,-0.894992,2.30077,180.005,3175391, "conversation", ""},
 	{"scoundrel",60,-17.2742,1.00015,-2.98488,180,4265424, "conversation", ""},
+
 
 	{"scoundrel",60,4397.73,2,5290.48,0,0, "conversation", ""},
 	{"slicer",60,18.5617,-0.894992,17.5882,360.011,3175393, "conversation", ""},

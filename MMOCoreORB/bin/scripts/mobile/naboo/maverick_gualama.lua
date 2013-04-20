@@ -27,6 +27,7 @@ maverick_gualama = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gualama_hue.iff"},
+	scale = 1.1,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
