@@ -321,7 +321,6 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 
 		Locker slocker(&structureListMutex);
 
-		/*
 		uint64 creatureID = structure->getOwnerObjectID();
 
 		if (structure->isBuildingObject() && citizenList.contains(creatureID)) {
@@ -331,11 +330,11 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 			if (owner != NULL) {
 				PlayerObject* playerObject = owner->getPlayerObject();
 
-				if (playerObject != NULL && playerObject->getDeclaredResidence() == structure->getObjectID()){
+				if (playerObject != NULL && playerObject->getDeclaredResidence() == 0){
 					removeCitizen(creatureID);
 				}
 			}
-		}*/
+		}
 
 		completeStructureList.drop(structure->getObjectID());
 
