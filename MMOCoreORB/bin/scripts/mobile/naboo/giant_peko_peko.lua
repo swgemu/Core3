@@ -25,9 +25,9 @@ giant_peko_peko = Creature:new {
 	creatureBitmask = PACK + HERD,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
-	scale = 1.4,
 
 	templates = {"object/mobile/giant_peko_peko.iff"},
+	scale = 2,
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -21,7 +21,7 @@ furious_devastator = Creature:new {
 	milk = 0,
 	tamingChance = 0.05,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + HERD + KILLER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
@@ -30,9 +30,9 @@ furious_devastator = Creature:new {
 	lootGroups = {
 	 {
 	        groups = {
-				{group = "fambaa_common", chance = 3300000}
+				{group = "fambaa_common", chance = 10000000}
 			},
-			lootChance = 7000000
+			lootChance = 2700000
 		}
 	},
 	weapons = {},
