@@ -7,8 +7,8 @@ rakir_banai_missions =
 			{ npcTemplate = "triggo_binz", planetName = "tatooine", npcName = "Triggo Binz" } 
 		}, 
 		secondarySpawns = {
-			{ npcTemplate = "thug", planetName = "tatooine", npcName = "Thug" }, 
-			{ npcTemplate = "thug", planetName = "tatooine", npcName = "Thug" }
+			{ npcTemplate = "thug", planetName = "tatooine", npcName = "" }, 
+			{ npcTemplate = "thug", planetName = "tatooine", npcName = "" }
 		},
 		itemSpawns = {}, 
 		rewards = 
@@ -23,8 +23,8 @@ rakir_banai_missions =
 			{ npcTemplate = "silman_voueen", planetName = "tatooine", npcName = "Silm'an Voueen" } 
 		}, 
 		secondarySpawns = {
-			{ npcTemplate = "thug", planetName = "tatooine", npcName = "Thug" },
-			{ npcTemplate = "jabba_thug", planetName = "tatooine", npcName = "Jabba's Thug" }
+			{ npcTemplate = "thug", planetName = "tatooine", npcName = "" },
+			{ npcTemplate = "jabba_thug", planetName = "tatooine", npcName = "" }
 }, 
 		itemSpawns = 
 		{
@@ -42,8 +42,8 @@ rakir_banai_missions =
 			{ npcTemplate = "deela_quellor", planetName = "tatooine", npcName = "Deela Quellor" } 
 		}, 
 		secondarySpawns = {
-			{ npcTemplate = "jabba_thug", planetName = "tatooine", npcName = "Jabba's Thug" },
-			{ npcTemplate = "jabba_thug", planetName = "tatooine", npcName = "Jabba's Thug" }
+			{ npcTemplate = "jabba_thug", planetName = "tatooine", npcName = "" },
+			{ npcTemplate = "jabba_thug", planetName = "tatooine", npcName = "" }
 }, 
 		itemSpawns = {
 		}, 

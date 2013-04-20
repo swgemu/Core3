@@ -1,3 +1,7 @@
+includeFile("tatooine/deeng.lua")
+includeFile("tatooine/krin_vel.lua")
+includeFile("tatooine/sont_toipo.lua")
+includeFile("tatooine/thermal_det.lua")
 includeFile("tatooine/naeton_baykurr.lua")
 includeFile("tatooine/sliv_jurek.lua")
 includeFile("tatooine/tiem_rutnar.lua")

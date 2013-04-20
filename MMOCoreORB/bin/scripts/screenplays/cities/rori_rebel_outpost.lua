@@ -54,16 +54,15 @@ function RoriRebelOutpostScreenPlay:spawnMobiles()
 	spawnMobile("rori", "rebel_colonel", 360, 0, 0.1, -6.0, 0, 4505608)
 
 	--misc
-	spawnMobile("rori", "rebel_recruiter", 0, 3683, 0, -6460, -101, 0)
-
-	--quest
-	spawnMobile("rori", "booto_lubble", 60, 4.0, 0.7, 0.5, 170, 4505791)
+	spawnMobile("rori", "rebel_recruiter", 0, 3683, 96, -6460, -101, 0)
 
 	--trainer
-	spawnMobile("rori", "trainer_armorsmith", 0, 3676, 94.2, -6419, 57, 0)
-	spawnMobile("rori", "trainer_carbine", 0, 3627, 104, -6433, 89, 0)
-	spawnMobile("rori", "trainer_commando", 0, -1.6, 0.7, 2.7, 180, 4505792)
-	spawnMobile("rori", "trainer_marksman", 0, 3684.5, 104, -6488.5, 260, 0)
-	spawnMobile("rori", "trainer_rifleman", 0, 3649, 104, -6491.5, 315, 0)
-	spawnMobile("rori", "trainer_weaponsmith", 0, 3681, 0, -6420, 180, 0)
+	spawnMobile("rori", "trainer_architect", 60, 3677, 96, -6418, 90, 0)
+	spawnMobile("rori", "trainer_armorsmith", 60, 3676, 96, -6432, 90, 0)
+	spawnMobile("rori", "trainer_carbine", 60, 3627, 104, -6433, 90, 0)
+	spawnMobile("rori", "trainer_chef", 60, 3681, 96, -6426, 180, 0)
+	spawnMobile("rori", "trainer_commando", 60, -1.6, 0.7, 2.7, 180, 4505792)
+	spawnMobile("rori", "trainer_marksman", 60, 3684.5, 104, -6488.5, 260, 0)
+	spawnMobile("rori", "trainer_rifleman", 60, 3649, 104, -6491.5, 315, 0)
+	spawnMobile("rori", "trainer_weaponsmith", 60, 3681, 96, -6420, 0, 0)
 end

@@ -30,20 +30,13 @@ wizzel = Creature:new {
 	lootGroups = {
 		{
 	        groups = {
-				{group = "color_crystals", chance = 100000},
-				{group = "junk", chance = 5700000},
-				{group = "rifles", chance = 1000000},
-				{group = "pistols", chance = 1000000},
-                		{group = "melee_weapons", chance = 1000000},
-               			{group = "carbines", chance = 1000000},
-				{group = "clothing_attachments", chance = 100000},
-				{group = "armor_attachments", chance = 100000}
+				{group = "task_loot_rakir_banai_contract", chance = 10000000}
 			},
-			lootChance = 3000000
+			lootChance = 10000000
 		}
 	},
 	weapons = {"rebel_weapons_heavy"},
-	conversationTemplate = "rakir_banai_mission_target_convotemplate",
+	conversationTemplate = "",
 	attacks = merge(marksmannovice,brawlernovice)
 }
 

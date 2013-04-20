@@ -1,0 +1,37 @@
+sont_toipo = Creature:new {
+	objectName = "",
+	customName = "Sont Toipo",
+	socialGroup = "",
+	pvpFaction = "",
+	faction = "",
+	level = 13,
+	chanceHit = 0.3,
+	damageMin = 140,
+	damageMax = 150,
+	baseXp = 714,
+	baseHAM = 1500,
+	baseHAMmax = 1900,
+	armor = 0,
+	resists = {0,0,0,0,10,0,0,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = ATTACKABLE,
+	creatureBitmask = PACK,
+	optionsBitmask = 128,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_criminal_thug_aqualish_male_01.iff"},
+	lootGroups = {},
+	weapons = {"rebel_weapons_medium"},
+	conversationTemplate = "",
+	attacks = merge(marksmannovice,brawlernovice)
+}
+
+CreatureTemplates:addCreatureTemplate(sont_toipo, "sont_toipo")

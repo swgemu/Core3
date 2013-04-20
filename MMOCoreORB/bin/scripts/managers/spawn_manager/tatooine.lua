@@ -988,7 +988,6 @@ tatooine_static_spawns = {
 	{"kavas_urdano",60,-13.7911,7.01,-3.96167,12.0127,1076943, "calm", "Kavas"},
 	{"keanna_likyna",60,-18.8886,3.22324,20.608,214.006,926480, "neutral", "Keanna Li`kyna"},
 	{"kiosait_eetwaka",60,-3.78237,2.27819,-25.8455,324.158,926475, "neutral", "Kiosait Eetwaka"},
-	{"kitster_banai",60,-2887.15,5,2494.08,331.684,0, "", "Kitster Banai"},
 	{"klepa_laeel",60,-2769.5,5,2111.1,104,0, "npc_sitting_chair", ""},
 	{"kolka_zteht",60,1521.78,7,3259.81,184.256,0, "neutral", ""},
 	{"kormund_thrylle",60,-1043.98,10,-3530.5,221.746,0, "", "Kormund Thrylle"},

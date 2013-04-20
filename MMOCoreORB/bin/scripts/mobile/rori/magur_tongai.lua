@@ -1,6 +1,6 @@
-magur_tongai = Creature:new {
+magur_torigai = Creature:new {
 	objectName = "",
-	customName = "Magur Tongai",
+	customName = "Magur Torigai",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -24,15 +24,15 @@ magur_tongai = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_magur_torigai.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "magur_torigai_mission_giver_convotemplate",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(magur_tongai, "magur_tongai")
+CreatureTemplates:addCreatureTemplate(magur_torigai, "magur_torigai")

@@ -24,13 +24,13 @@ indintra_imbru_yerevan = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_indintra_imbru_yerevan.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "indintra_imbru_yerevan_mission_giver_convotemplate",
 	attacks = {
 	}
 }
