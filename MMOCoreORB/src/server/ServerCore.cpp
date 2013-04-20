@@ -232,6 +232,15 @@ void ServerCore::initialize() {
 #endif
 
 		info("initialized", true);
+
+		if(arguments.contains("playercleanup")){
+			zoneServer->getPlayerManager()->cleanupCharacters(true);
+		}
+
+		if(arguments.contains("playercleanupstats")){
+			zoneServer->getPlayerManager()->cleanupCharacters(false);
+		}
+
 	} catch (ServiceException& e) {
 		shutdown();
 	} catch (DatabaseException& e) {
@@ -431,7 +440,17 @@ void ServerCore::handleCommands() {
 			} else if (command == "broadcast") {
 				ChatManager* chatManager = zoneServer->getChatManager();
 				chatManager->broadcastGalaxy(NULL, arguments);
+			} else if ( command == "playercleanupstats") {
+
+				this->zoneServerRef->getPlayerManager()->cleanupCharacters(false);
+
+			} else if ( command == "playercleanup" ) {
+
+				this->zoneServerRef->getPlayerManager()->cleanupCharacters(true);
+
 			} else if (command == "shutdown") {
+
+
 				int minutes = 1;
 
 				try {

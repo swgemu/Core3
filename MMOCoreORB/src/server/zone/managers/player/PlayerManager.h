@@ -438,6 +438,10 @@ public:
 
 	OnlineZoneClientMap* getOnlineZoneClientMap();
 
+	void cleanupCharacters(bool deleteCharacter = false);
+
+	bool shouldDeleteCharacter(unsigned long long characterID);
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -673,6 +677,10 @@ public:
 
 	OnlineZoneClientMap* getOnlineZoneClientMap();
 
+	void cleanupCharacters(bool deleteCharacter = false);
+
+	bool shouldDeleteCharacter(unsigned long long characterID);
+
 	WeakReference<PlayerManager*> _this;
 
 	operator const PlayerManager*();
@@ -851,6 +859,10 @@ public:
 	bool increaseOnlineCharCountIfPossible(ZoneClientSession* client);
 
 	void fixHAM(CreatureObject* player);
+
+	void cleanupCharacters(bool deleteCharacter);
+
+	bool shouldDeleteCharacter(unsigned long long characterID);
 
 };
 

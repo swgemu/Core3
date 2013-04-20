@@ -3566,3 +3566,102 @@ void PlayerManagerImplementation::rescheduleCorpseDestruction(CreatureObject* pl
 
 	}
 }
+
+void PlayerManagerImplementation::cleanupCharacters(bool deleteCharacter){
+
+	if(deleteCharacter)
+		info("**** PERFORMING CHARACTER CLEANUP ***",true);
+	else
+		info("**** GETTING CHARACTER CLEANUP INFORMATION ***",true);
+
+	ObjectDatabase* thisDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("sceneobjects", true, 0xFFFF, false);
+
+	if(thisDatabase == NULL)
+		return;
+
+	ObjectInputStream objectData(2000);
+	ObjectDatabaseIterator iterator(thisDatabase);
+
+	uint64 objectID;
+	ObjectInputStream* myobjectData = new ObjectInputStream(2000);
+
+	String className;
+	uint64 deletedCount = 0;
+	uint64 playerCount = 0;
+
+
+	while(iterator.getNextKeyAndValue(objectID, myobjectData)){
+		if(Serializable::getVariable<String>(String("_className").hashCode(), &className, myobjectData)){
+			if(className == "CreatureObject"){
+				playerCount++;
+
+				bool removeChar = shouldDeleteCharacter(objectID);
+				if(removeChar){
+					ZoneServer* server = ServerCore::getZoneServer();
+
+					//ManagedReference<CreatureObject*> object = cast<CreatureObject*>(server->getObject(objectID));
+					ManagedReference<CreatureObject*> object = dynamic_cast<CreatureObject*>(Core::getObjectBroker()->lookUp(objectID));
+					if(object == NULL){
+						info("OBJECT NULL when getting object " + String::valueOf(objectID),true);
+					}else if (object->isPlayerCreature()){
+						deletedCount++;
+						Locker _lock(object);
+						info("DELETE CHARACTER: " + String::valueOf(objectID) + " NAME: " +  object->getFirstName() + " " + object->getLastName() ,true);
+						ManagedReference<ZoneClientSession*> client = object->getClient();
+
+						if (client != NULL)
+							client->disconnect();
+
+						if(deleteCharacter) {
+							object->destroyObjectFromWorld(false); //Don't need to send destroy to the player - they are being disconnected.
+							object->destroyPlayerCreatureFromDatabase(true);
+						}
+
+					}
+
+				}
+
+			}
+		}
+
+	}
+
+
+
+	StringBuffer deletedMessage;
+	deletedMessage << "TOTAL CHARACTERS";
+
+	if(!deleteCharacter)
+		deletedMessage << " TO BE";
+
+	deletedMessage << " DELETED FROM OBJECTDB: " << String::valueOf(deletedCount);
+
+	info("TOTAL CHARACTERS IN OBJECT DB: " + String::valueOf(playerCount),true);
+	info(deletedMessage.toString(),true);
+
+}
+
+bool PlayerManagerImplementation::shouldDeleteCharacter(uint64 characterID){
+	String query = "SELECT * FROM characters WHERE character_oid = " + String::valueOf(characterID);
+
+	try {
+		Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
+
+		if(result == NULL) {
+			error("ERROR WHILE LOOKING UP CHARACTER IN SQL TABLE");
+		} else if (result.get()->getRowsAffected() > 0 ) {
+			return false;
+		} else if ( result.get()->getRowsAffected() == 0) {
+			return true;
+		}
+
+		return false;
+
+	} catch ( DatabaseException &err){
+		info("database error " + err.getMessage(),true);
+		return false;
+	}
+
+}
+
+

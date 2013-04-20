@@ -324,5 +324,8 @@ class PlayerManager extends Observer implements Logger {
 		return onlineZoneClientMap;
 	}
 
+	public native void cleanupCharacters(boolean deleteCharacter = false);
+
 	
+	public native boolean shouldDeleteCharacter(unsigned long characterID);
 }
