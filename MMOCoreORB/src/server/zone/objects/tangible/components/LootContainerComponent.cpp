@@ -54,7 +54,7 @@ bool LootContainerComponent::checkContainerPermission(SceneObject* sceneObject, 
 int LootContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) {
 
 	if(sceneObject->getContainerObjectsSize() >= 0){
-		errorDescription = "@event_perk:chest_can_not_add"; //You do not have permission to add items to this container.
+		errorDescription = "@error_message:remove_only_corpse"; //You cannot place items into a corpse.
 		 return TransferErrorCode::INVALIDTYPE;
 	}
 	
