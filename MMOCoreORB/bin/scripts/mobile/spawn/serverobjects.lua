@@ -1,6 +1,8 @@
 -- spawn groups
 includeFile("spawn/dantooine_hard_graul.lua")
 includeFile("spawn/tatooine_creatures_world.lua")
+includeFile("spawn/tatooine_starter_creatures.lua")
+includeFile("spawn/corellia_starter_creatures.lua")
 includeFile("spawn/corellia_world_creatures.lua")
 includeFile("spawn/naboo_starter_creatures.lua")
 includeFile("spawn/naboo_world_creatures.lua")
