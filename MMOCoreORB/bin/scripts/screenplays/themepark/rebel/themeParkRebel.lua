@@ -400,7 +400,7 @@ han_missions =
 		secondarySpawns = {}, 
 		itemSpawns = 
 		{
-			{ itemTemplate = "object/tangible/loot/misc/holocron_splinters_sith_s01.iff", itemName = "Holocron Splinters" }
+			{ itemTemplate = "object/tangible/loot/misc/holocron_splinters_sith_s01.iff", itemName = "" }
 		}, 
 		rewards = 
 		{ 
@@ -796,7 +796,7 @@ luke_missions =
 		secondarySpawns = {}, 
 		itemSpawns = 
 		{
-	 		{ itemTemplate = "object/tangible/loot/misc/cage_s01.iff", itemName = "An Empty Cage" }
+	 		{ itemTemplate = "object/tangible/loot/misc/cage_s01.iff", itemName = "" }
 		}, 
 		rewards = 
 		{ 

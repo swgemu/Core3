@@ -514,7 +514,7 @@ g5po_missions =
 		}, 
 		itemSpawns = 
 		{ 
-			{ itemTemplate = "object/weapon/melee/sword/sword_rantok.iff", itemName = "Rantok" }
+			{ itemTemplate = "object/weapon/melee/sword/sword_rantok.iff", itemName = "" }
 		}, 
 		rewards = 
 		{ 

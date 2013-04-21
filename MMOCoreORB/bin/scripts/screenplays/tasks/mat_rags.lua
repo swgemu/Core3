@@ -10,7 +10,7 @@ mat_rags_missions =
 		secondarySpawns = {},
 		itemSpawns = 
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/mat_rags_q1_needed.iff", itemName = "Squill Carcass" }
+			{ itemTemplate = "object/tangible/mission/quest_item/mat_rags_q1_needed.iff", itemName = "" }
 		}, 
 		rewards = 
 		{ 
@@ -27,7 +27,7 @@ mat_rags_missions =
 		secondarySpawns = {},
 		itemSpawns = 
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/mat_rags_q2_needed.iff", itemName = "Womp Rat Hide" }
+			{ itemTemplate = "object/tangible/mission/quest_item/mat_rags_q2_needed.iff", itemName = "" }
 		},  
 		rewards = 
 		{ 
@@ -44,7 +44,7 @@ mat_rags_missions =
 		secondarySpawns = {},
 		itemSpawns = 
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/mat_rags_q3_needed.iff", itemName = "Bantha Horns" }
+			{ itemTemplate = "object/tangible/mission/quest_item/mat_rags_q3_needed.iff", itemName = "" }
 		}, 
 		rewards = 
 		{ 
@@ -61,7 +61,7 @@ mat_rags_missions =
 		secondarySpawns = {},
 		itemSpawns = 
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/mat_rags_q4_needed.iff", itemName = "Grizzled Dewback Hide" }
+			{ itemTemplate = "object/tangible/mission/quest_item/mat_rags_q4_needed.iff", itemName = "" }
 		}, 
 		rewards = 
 		{ 

@@ -33,7 +33,7 @@ luthik_uwyr_missions =
 		secondarySpawns = {}, 
 		itemSpawns = 
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/luthik_uwyr_q3_needed.iff", itemName = "Padawan braid" }
+			{ itemTemplate = "object/tangible/mission/quest_item/luthik_uwyr_q3_needed.iff", itemName = "" }
 		}, 
 		rewards = 
 		{ 
