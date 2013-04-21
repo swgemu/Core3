@@ -672,7 +672,7 @@ bool PlanetManagerImplementation::isBuildingPermittedAt(float x, float y, SceneO
 		return false;
 	}
 
-	if (isInRangeWithPoi(targetPos.getX(), targetPos.getY(), 512))
+	if (isInRangeWithPoi(targetPos.getX(), targetPos.getY(), 150))
 		return false;
 
 	return true;
@@ -706,6 +706,9 @@ bool PlanetManagerImplementation::isCampingPermittedAt(float x, float y, float m
 	if (isInWater(targetPos.getX(), targetPos.getY())) {
 		return false;
 	}
+
+	if (isInRangeWithPoi(targetPos.getX(), targetPos.getY(), 150))
+		return false;
 
 	return true;
 }
