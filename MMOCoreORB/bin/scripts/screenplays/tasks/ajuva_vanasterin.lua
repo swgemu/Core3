@@ -60,7 +60,7 @@ AjuvaVanasterin = ThemeParkLogic:new {
 	screenPlayState = "ajuva_vanasterin_quest",
 	distance = 600,
 	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message"
+	missionCompletionMessageStf = ""
 }
 
 registerScreenPlay("AjuvaVanasterin", true)
