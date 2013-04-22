@@ -5,7 +5,7 @@ draya_korbinari_missions =
 		silentTarget = "yes",
 		primarySpawns =
 		{ 
-			{ npcTemplate = "tusk_cat", planetName = "rori", npcName = "" }
+			{ npcTemplate = "tusk_cat", planetName = "rori", npcName = "a Tusk Cat" }
 		},
 		secondarySpawns =
 		{
@@ -25,7 +25,7 @@ draya_korbinari_missions =
 		missionType = "escort",
 		primarySpawns =
 		{
-			{ npcTemplate = "draya_korbinari_thief", planetName = "rori", npcName = "" }
+			{ npcTemplate = "draya_korbinari_thief", planetName = "rori", npcName = "a Thief" }
 		},
 		secondarySpawns =
 		{
@@ -45,7 +45,7 @@ draya_korbinari_missions =
 		missionType = "assassinate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "draya_korbinari_smuggler", planetName = "rori", npcName = "" }	
+			{ npcTemplate = "draya_korbinari_smuggler", planetName = "rori", npcName = "a Smuggler" }	
 		},
 		secondarySpawns =
 		{
@@ -65,7 +65,7 @@ draya_korbinari_missions =
 		missionType = "assassinate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "draya_korbinari_bounty_hunter", planetName = "rori", npcName = "" }	
+			{ npcTemplate = "draya_korbinari_bounty_hunter", planetName = "rori", npcName = "a Bounty Hunter" }	
 		}, 
 		secondarySpawns =
 		{
@@ -90,6 +90,7 @@ npcMapDrayaKorbinari =
 		worldPosition = { x = 5305, y = 5859 }, 
 		npcNumber = 1,
 		stfFile = "@static_npc/rori/rori_restuss_draya_korbinari",
+		hasWaypointNames = "no",
 		missions = draya_korbinari_missions
 	},
 }

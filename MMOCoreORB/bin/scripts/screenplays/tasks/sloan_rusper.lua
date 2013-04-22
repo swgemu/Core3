@@ -62,7 +62,7 @@ SloanRusper = ThemeParkLogic:new {
 	screenPlayState = "sloan_rusper_quest",
 	distance = 600,
 	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message"
+	missionCompletionMessageStf = ""
 }
 
 registerScreenPlay("SloanRusper", true)

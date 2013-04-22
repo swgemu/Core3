@@ -60,7 +60,7 @@ MagurTorigai = ThemeParkLogic:new {
 	screenPlayState = "magur_torigai_quest",
 	distance = 800,
 	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message"
+	missionCompletionMessageStf = ""
 }
 
 registerScreenPlay("MagurTorigai", true)
