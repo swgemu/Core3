@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABX//+wI\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3628,
+      "author": {
+        "id": 15
+      },
+      "writtenOn": "2013-04-22T07:32:58Z",
+      "side": 1,
+      "message": "limit to 400 characters per cleanup.",
+      "revId": "b60fba988ef55b4332436a7e6b62716fe228d480",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
