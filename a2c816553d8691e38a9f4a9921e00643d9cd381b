@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABX//+vo\u003d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/draya_korbinari.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 36
+      },
+      "writtenOn": "2013-04-22T13:55:13Z",
+      "side": 1,
+      "message": "The first mission is missing the waypoint names but the rest have them. Is it possible to only disable the first mission waypoint from trying to pull from strings?",
+      "revId": "a2c816553d8691e38a9f4a9921e00643d9cd381b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
