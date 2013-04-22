@@ -232,6 +232,15 @@ void ServerCore::initialize() {
 #endif
 
 		info("initialized", true);
+
+		if(arguments.contains("playercleanup")){
+			zoneServer->getPlayerManager()->cleanupCharacters();
+		}
+
+		if(arguments.contains("playercleanupstats")){
+			zoneServer->getPlayerManager()->getCleanupCharacterCount();
+		}
+
 	} catch (ServiceException& e) {
 		shutdown();
 	} catch (DatabaseException& e) {
@@ -451,8 +460,28 @@ void ServerCore::handleCommands() {
 				}
 
 				return;
+			} else if ( command == "playercleanup" ) {
+
+				if(zoneServerRef != NULL){
+					ZoneServer* server = zoneServerRef.get();
+
+					if(server != NULL)
+						server->getPlayerManager()->cleanupCharacters();
+				}
+
+			} else if ( command == "playercleanupstats" ) {
+
+				if(zoneServerRef != NULL){
+
+					ZoneServer* server = zoneServerRef.get();
+
+					if(server != NULL)
+						server->getPlayerManager()->getCleanupCharacterCount();
+				}
+
 			} else
 				System::out << "unknown command (" << command << ")\n";
+
 		} catch (SocketException& e) {
 			System::out << "[ServerCore] " << e.getMessage();
 		} catch (ArrayIndexOutOfBoundsException& e) {
