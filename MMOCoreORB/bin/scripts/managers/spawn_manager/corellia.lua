@@ -42,7 +42,7 @@ corellia_regions = {
 	{"corellia_mountain_fortress",0,0,{1,0},UNDEFINEDAREA,1},
 	{"corellia_pvp",0,0,{1,0},UNDEFINEDAREA,1},
 	{"corellia_rebel_riverside_fort",0,0,{1,0},UNDEFINEDAREA,1},
-	{"coronest_easy_newbie",-230,-4460,{1,2560},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"corellia_starter_creatures"},
+	{"coronet_easy_newbie",-230,-4460,{1,2560},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"corellia_starter_creatures"},
 	{"coronet",0,0,{1,0},UNDEFINEDAREA,1},
 	{"coronet_medium_newbie",58,-4392,{1,512},LAIRSPAWNAREA,1,"coro_newbie"},
         {"crystal_arch_hall",-6831,2200,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},

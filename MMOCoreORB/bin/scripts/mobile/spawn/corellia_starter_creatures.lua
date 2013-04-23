@@ -3,7 +3,7 @@ corellia_starter_creatures = {
 	commandLevel = 0,
 
 	type = LAIR,
-	maxSpawnLimit = 2048,
+	maxSpawnLimit = 1280,
 
 	lairSpawns = {
 		{
@@ -131,7 +131,7 @@ corellia_starter_creatures = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
-		},	
+		},
 		{
 			lairTemplateName = "corellia_murra_lair_neutral_none",
 			spawnLimit = -1,

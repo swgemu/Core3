@@ -3,7 +3,7 @@ naboo_starter_creatures = {
 	commandLevel = 0,
 
 	type = LAIR,
-	maxSpawnLimit = 1536,	--256 per city (512 for theed)
+	maxSpawnLimit = 1280,
 
 	lairSpawns = {
 		{
