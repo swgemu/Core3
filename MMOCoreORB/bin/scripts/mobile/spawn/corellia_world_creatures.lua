@@ -205,15 +205,6 @@ corellia_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "spined_puc",
-			spawnLimit = -1,
-			minDifficulty = 12,
-			maxDifficulty = 16,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "corellia_dire_cat_pack_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 12,

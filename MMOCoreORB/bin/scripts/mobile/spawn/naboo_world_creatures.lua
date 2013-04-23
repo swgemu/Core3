@@ -268,6 +268,15 @@ naboo_world_creatures = {
 			size = 25
 		},
 		{
+			lairTemplateName = "naboo_peko_peko_giant_pair_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 20,
+			maxDifficulty = 26,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
 			lairTemplateName = "naboo_fanned_rawl_hunter_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 20,
