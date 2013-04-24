@@ -1,5 +1,5 @@
 crider_trant = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_male",
 	customName = "Crider Trant",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",

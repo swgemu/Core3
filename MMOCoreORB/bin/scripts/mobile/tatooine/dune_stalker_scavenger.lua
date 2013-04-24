@@ -1,4 +1,4 @@
-dune_stalker_scavenger = Creature:new {
+dune_stalker_avenger = Creature:new {
 	objectName = "@mob/creature_names:dune_stalker_avenger",
 	socialGroup = "dune_stalker",
 	pvpFaction = "",
@@ -42,4 +42,4 @@ dune_stalker_scavenger = Creature:new {
 	attacks = merge(brawlermaster,marksmanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(dune_stalker_scavenger, "dune_stalker_scavenger")
+CreatureTemplates:addCreatureTemplate(dune_stalker_avenger, "dune_stalker_avenger")

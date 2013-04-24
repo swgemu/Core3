@@ -26,7 +26,7 @@ whisper_bird_female = Creature:new {
 	optionsBitmask = 0,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/whisper_bird.iff"},
+	templates = {"object/mobile/whisper_bird_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -1,5 +1,5 @@
 borvos_bruiser = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:trandoshan_base_male",
 	customName = "Borvo's Bruiser",
 	socialGroup = "borvo",
 	pvpFaction = "borvo",

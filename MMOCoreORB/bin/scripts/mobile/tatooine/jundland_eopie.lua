@@ -27,7 +27,7 @@ jundland_eopie = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/eopie.iff"},
+	templates = {"object/mobile/eopie_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

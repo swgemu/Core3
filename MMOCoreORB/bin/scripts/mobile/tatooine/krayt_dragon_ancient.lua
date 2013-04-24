@@ -1,6 +1,6 @@
 krayt_dragon_ancient = Creature:new {
 	objectName = "@mob/creature_names:krayt_dragon_ancient",
-	socialGroup = "Krayt",
+	socialGroup = "krayt",
 	pvpFaction = "",
 	faction = "",
 	level = 336,
@@ -26,7 +26,7 @@ krayt_dragon_ancient = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/krayt_dragon.iff"},
+	templates = {"object/mobile/krayt_dragon_hue.iff"},
 	lootGroups = {
 	 {
 	        groups = {

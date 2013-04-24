@@ -1,6 +1,6 @@
 herald_biogenic_gardo = Creature:new {
 	objectName = "",
-	customName = "Gardo",
+	customName = "Gardo Valdell",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -27,7 +27,7 @@ herald_biogenic_gardo = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_herald_biogenic_03.iff"},
+	templates = {"object/mobile/dressed_herald_biogenic_01.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

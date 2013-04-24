@@ -1,4 +1,4 @@
-adept_panshe_shaman = Creature:new {
+adept_panshee_shaman = Creature:new {
 	objectName = "@mob/creature_names:adept_panshee_shaman",
 	socialGroup = "panshee_tribe",
 	pvpFaction = "panshee_tribe",
@@ -40,4 +40,4 @@ adept_panshe_shaman = Creature:new {
 	attacks = merge(riflemanmaster)
 }
 
-CreatureTemplates:addCreatureTemplate(adept_panshe_shaman, "adept_panshe_shaman")
+CreatureTemplates:addCreatureTemplate(adept_panshee_shaman, "adept_panshee_shaman")

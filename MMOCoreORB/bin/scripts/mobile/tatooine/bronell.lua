@@ -1,7 +1,7 @@
 bronell = Creature:new {
 	objectName = "@npc_name:moncal_base_male",
 	customName = "Bronell",
-	socialGroup = "Townsperson",
+	socialGroup = "townsperson",
 	pvpFaction = "",
 	faction = "",
 	level = 10,

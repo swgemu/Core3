@@ -31,7 +31,7 @@ jowir_arlensa = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = merge(marksmannovice,brawlernovice)
+	attacks = {}
 }
 
 CreatureTemplates:addCreatureTemplate(jowir_arlensa, "jowir_arlensa")

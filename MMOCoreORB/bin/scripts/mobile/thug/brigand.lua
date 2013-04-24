@@ -26,12 +26,19 @@ brigand = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/human_male.iff"},
+	templates =
+		{
+			"object/mobile/dressed_brigade_gunner_bith_female_01.iff",
+			"object/mobile/dressed_brigade_gunner_bith_male_01.iff",
+			"object/mobile/dressed_brigade_marine_trandoshan_female_01.iff",
+			"object/mobile/dressed_brigade_marine_trandoshan_male_01.iff",
+			"object/mobile/dressed_brigade_trooper_bith_female_01.iff",
+			"object/mobile/dressed_brigade_trooper_bith_male_01.iff"
+		},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
-	--outfit = "testoutfit"
 }
 
 CreatureTemplates:addCreatureTemplate(brigand, "brigand")

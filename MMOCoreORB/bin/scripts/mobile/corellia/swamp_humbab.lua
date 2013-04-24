@@ -27,7 +27,7 @@ swamp_humbab = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/savage_humbaba.iff"},
+	templates = {"object/mobile/falumpaset_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

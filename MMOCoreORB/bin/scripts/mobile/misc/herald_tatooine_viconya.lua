@@ -26,7 +26,7 @@ herald_tatooine_viconya = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_herald_tatooine_02.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

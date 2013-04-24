@@ -1,6 +1,6 @@
 explorer = Creature:new {
 	objectName = "@mob/creature_names:explorer",
-	socialGroup = "Mercenary",
+	socialGroup = "mercenary",
 	pvpFaction = "",
 	faction = "townsperson",
 	level = 7,

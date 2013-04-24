@@ -26,7 +26,7 @@ sean_questn_university = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_sean_questn_university.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

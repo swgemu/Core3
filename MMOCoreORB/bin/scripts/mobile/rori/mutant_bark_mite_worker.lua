@@ -26,7 +26,7 @@ mutant_bark_mite_worker = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/bark_mite.iff"},
+	templates = {"object/mobile/bark_mite_hue.iff"},
 	scale = 2,
 	lootGroups = {},
 	weapons = {},

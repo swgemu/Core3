@@ -26,7 +26,7 @@ armodragon = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/dune_lizard.iff"},
+	templates = {"object/mobile/dune_lizard_hue.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

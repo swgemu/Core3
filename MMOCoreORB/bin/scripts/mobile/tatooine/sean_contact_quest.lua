@@ -26,7 +26,7 @@ sean_contact_quest = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_sean_contact_quest.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

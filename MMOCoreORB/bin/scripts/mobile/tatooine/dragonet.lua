@@ -25,8 +25,9 @@ dragonet = Creature:new {
 	creatureBitmask = PACK + STALKER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
+	size = 0.15,
 
-	templates = {"object/mobile/dune_lizard.iff"},
+	templates = {"object/mobile/dragonet.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

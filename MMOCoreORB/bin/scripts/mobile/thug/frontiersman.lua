@@ -1,7 +1,7 @@
 frontiersman = Creature:new {
 	objectName = "",
 	customName = "Frontiersman",
-	socialGroup = "Wilder",
+	socialGroup = "wilder",
 	pvpFaction = "",
 	faction = "townsperson",
 	level = 17,

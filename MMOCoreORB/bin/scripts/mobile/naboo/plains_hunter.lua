@@ -26,7 +26,7 @@ plains_hunter = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {},
+	templates = {"object/mobile/tusk_cat_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

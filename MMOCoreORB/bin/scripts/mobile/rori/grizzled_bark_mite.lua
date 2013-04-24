@@ -26,7 +26,7 @@ grizzled_bark_mite = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/bark_mite.iff"},
+	templates = {"object/mobile/bark_mite_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -26,7 +26,7 @@ sentry_hermit_spider = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/hermit_spider.iff"},
+	templates = {"object/mobile/hermit_spider_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

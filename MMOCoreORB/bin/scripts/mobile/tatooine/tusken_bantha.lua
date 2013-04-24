@@ -27,7 +27,7 @@ tusken_bantha = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/bantha.iff"},
+	templates = {"object/mobile/bantha_saddle_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

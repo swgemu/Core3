@@ -26,7 +26,7 @@ womprat = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/womp_rat_hue.iff"},
+	templates = {"object/mobile/womp_rat.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

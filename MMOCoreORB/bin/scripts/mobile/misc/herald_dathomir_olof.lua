@@ -1,6 +1,6 @@
 herald_dathomir_olof = Creature:new {
-	objectName = "",
-	customName = "Olof",
+	objectName = "@npc_name:human_base_male",
+	customName = "Inquisitor Olof",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
