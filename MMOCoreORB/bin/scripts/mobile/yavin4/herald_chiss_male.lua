@@ -1,8 +1,8 @@
-herald_lok_talia = Creature:new {
-	objectName = "@npc_name:lok_herald_01",
-	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
-	faction = "townsperson",
+herald_chiss_male = Creature:new {
+	objectName = "@npc_name:chiss_base_male",
+	socialGroup = "",
+	pvpFaction = "",
+	faction = "",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -26,7 +26,7 @@ herald_lok_talia = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_herald_lok_01.iff"},
+	templates = {"object/mobile/dressed_jedi_trainer_chiss_male_01.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
@@ -34,4 +34,4 @@ herald_lok_talia = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(herald_lok_talia, "herald_lok_talia")
+CreatureTemplates:addCreatureTemplate(herald_chiss_male, "herald_chiss_male")

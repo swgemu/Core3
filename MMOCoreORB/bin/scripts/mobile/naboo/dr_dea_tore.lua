@@ -1,5 +1,6 @@
 dr_dea_tore = Creature:new {
-	objectName = "@mob/creature_names:dr_dea_tore",
+	objectName = "@npc_name:human_base_female",
+	customName = "@mob/creature_names:dr_dea_tore",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

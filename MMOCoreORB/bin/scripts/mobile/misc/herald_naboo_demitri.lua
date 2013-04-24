@@ -1,6 +1,6 @@
 herald_naboo_demitri = Creature:new {
-	objectName = "",
-	customName = "Demitri",
+	objectName = "@npc_name:human_base_male",
+	customName = "Demitri Firewatcher",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -27,7 +27,7 @@ herald_naboo_demitri = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_herald_servant_naboo_human_male.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

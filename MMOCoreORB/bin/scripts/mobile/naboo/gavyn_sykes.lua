@@ -1,5 +1,5 @@
 gavyn_sykes = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_male",
 	customName = "Captain Gavyn Sykes",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",

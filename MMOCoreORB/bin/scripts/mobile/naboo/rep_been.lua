@@ -27,7 +27,7 @@ rep_been = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/gungan_s03_male.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

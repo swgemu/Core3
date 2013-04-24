@@ -26,7 +26,7 @@ singing_mountain_clan_rancor = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/rancor.iff"},
+	templates = {"object/mobile/rancor_hue.iff"},
 	lootGroups = {
 		{
 			groups = {

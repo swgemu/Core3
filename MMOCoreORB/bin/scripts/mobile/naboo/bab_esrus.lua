@@ -1,5 +1,5 @@
 bab_esrus = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_female",
 	customName = "Bab Esrus",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",

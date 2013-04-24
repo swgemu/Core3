@@ -26,7 +26,7 @@ arachne_widow = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/angler.iff"},
+	templates = {"object/mobile/angler_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

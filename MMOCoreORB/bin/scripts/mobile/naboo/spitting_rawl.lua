@@ -26,7 +26,7 @@ spitting_rawl = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/fanned_rawl.iff"},
+	templates = {"object/mobile/fanned_rawl_hue.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",

@@ -1,5 +1,5 @@
 borvos_soldier = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:rodian_base_male",
 	customName = "Borvo's Soldier",
 	socialGroup = "borvo",
 	pvpFaction = "borvo",

@@ -1,5 +1,5 @@
 ayn_eckener = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_female",
 	customName = "Ayn Eckener",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
