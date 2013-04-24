@@ -1,6 +1,6 @@
 herald_corellia_lock = Creature:new {
 	objectName = "@npc_name:corellia_herald_01",
-	customName = "Lock",
+	customName = "",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -27,7 +27,7 @@ herald_corellia_lock = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_herald_corellia_01.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

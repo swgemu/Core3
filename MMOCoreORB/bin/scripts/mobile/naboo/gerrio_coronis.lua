@@ -1,5 +1,5 @@
 gerrio_coronis = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:human_base_male",
 	customName = "Gerrio Coronis",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",

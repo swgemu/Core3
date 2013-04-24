@@ -1,6 +1,6 @@
 herald_biogenic_harmon = Creature:new {
 	objectName = "",
-	customName = "Harmon",
+	customName = "Harmon Vintollo",
 	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
@@ -27,7 +27,7 @@ herald_biogenic_harmon = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_herald_biogenic_03.iff"},
+	templates = {"object/mobile/dressed_herald_biogenic_02.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

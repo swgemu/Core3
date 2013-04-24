@@ -26,7 +26,7 @@ herald_naboo_vaikanna = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_herald_naboo_01.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -26,7 +26,7 @@ herald_naboo_ronin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_herald_naboo_02.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

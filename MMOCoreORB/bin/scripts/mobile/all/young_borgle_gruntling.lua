@@ -26,7 +26,7 @@ young_borgle_gruntling = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/borgle.iff"},
+	templates = {"object/mobile/borgle_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

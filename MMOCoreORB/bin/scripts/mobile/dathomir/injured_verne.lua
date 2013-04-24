@@ -26,7 +26,7 @@ injured_verne = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/verne.iff"},
+	templates = {"object/mobile/verne_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

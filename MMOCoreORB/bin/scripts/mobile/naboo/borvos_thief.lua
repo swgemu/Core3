@@ -1,5 +1,5 @@
 borvos_thief = Creature:new {
-	objectName = "",
+	objectName = "@npc_name:bothan_base_male",
 	customName = "Borvo's Thief",
 	socialGroup = "borvo",
 	pvpFaction = "borvo",

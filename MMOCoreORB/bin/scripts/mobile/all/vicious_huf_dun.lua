@@ -26,7 +26,7 @@ vicious_huf_dun = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/huf_dun.iff"},
+	templates = {"object/mobile/huf_dun_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -1,6 +1,6 @@
-reggi_tirver = Creature:new {
-	objectName = "@npc_name:gran_base_male",
-	customName = "Reggi Tirver",
+hacker = Creature:new {
+	objectName = "@npc_name:human_base_female",
+	customName = "Hacker",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -26,10 +26,10 @@ reggi_tirver = Creature:new {
 	creatureBitmask = HERD,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/junk_reggi.iff"},
+	templates = {"object/mobile/dressed_herald_emperors_retreat.iff"},
 	lootGroups = {},
 	weapons = {},
 	attacks = {}
 }
 
-CreatureTemplates:addCreatureTemplate(reggi_tirver, "reggi_tirver")
+CreatureTemplates:addCreatureTemplate(hacker, "hacker")
