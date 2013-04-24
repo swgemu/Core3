@@ -361,9 +361,11 @@ void CityManagerImplementation::sendStructureReport(CityRegion* city, CreatureOb
 	}
 
 	for(int i = 0; i < city->getDecorationCount(); i++){
-		ManagedReference<SceneObject*> sceno = city->getCityDecoration(i);
-		if(sceno != NULL)
-			maintList->addMenuItem(sceno->getDisplayedName() );
+		ManagedReference<StructureObject*> deco = cast<StructureObject*>(city->getCityDecoration(i));
+
+		if(deco != NULL)
+			maintList->addMenuItem(deco->getDisplayedName() + " - Condition : " +
+					String::valueOf(deco->getDecayPercentage()) + "%", i);
 	}
 
 	ghost->addSuiBox(maintList);
