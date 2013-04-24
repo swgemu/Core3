@@ -43,7 +43,7 @@
 
 object_tangible_deed_city_deed_garden_endor_sml_01_deed = object_tangible_deed_city_deed_shared_garden_endor_sml_01_deed:new {
 	templateType = STRUCTUREDEED,
-	placeStructureComponent = "PlaceStructureComponent",
+	placeStructureComponent = "PlaceDecorationComponent",
 	gameObjectType = 8388609,
 	generatedObjectTemplate = "object/building/player/city/garden_endor_sml_01.iff"
 }
