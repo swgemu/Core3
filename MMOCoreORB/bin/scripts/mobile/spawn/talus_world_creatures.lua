@@ -133,15 +133,6 @@ talus_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "talus_hilltop_kima_lair_neutral_medium",
-			spawnLimit = -1,
-			minDifficulty = 19,
-			maxDifficulty = 25,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "talus_huf_dun_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 19,
