@@ -21,6 +21,7 @@ corellia_regions = {
 	{"agrilat_swamp",0,0,{1,0},UNDEFINEDAREA,1},
 	{"agrilat_swamp_1",0,0,{1,0},UNDEFINEDAREA,1},
         {"archway",4853,-2663,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
+        {"archway_2",4827,-2637,{1,75},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"beach1",0,0,{1,0},UNDEFINEDAREA,1},
 	{"beach2",0,0,{1,0},UNDEFINEDAREA,1},
 	{"beach3",0,0,{1,0},UNDEFINEDAREA,1},
