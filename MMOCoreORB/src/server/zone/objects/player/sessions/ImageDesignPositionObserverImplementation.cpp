@@ -67,7 +67,7 @@ int ImageDesignPositionObserverImplementation::notifyObserverEvent(uint32 eventT
 		strong->queueIdTimeoutEvent();
 	} else {
 		//cancel the timeout
-		strong->checkDequeueEvent();
+		strong->checkDequeueEvent(scene);
 	}
 
 	return 0;

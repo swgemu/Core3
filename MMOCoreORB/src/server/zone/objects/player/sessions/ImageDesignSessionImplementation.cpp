@@ -254,18 +254,24 @@ int ImageDesignSessionImplementation::doPayment() {
 
 }
 
-void ImageDesignSessionImplementation::checkDequeueEvent() {
+void ImageDesignSessionImplementation::checkDequeueEvent(SceneObject* scene) {
 	ManagedReference<CreatureObject*> designerCreature = this->designerCreature.get();
 	ManagedReference<CreatureObject*> targetCreature = this->targetCreature.get();
 
 	if (targetCreature == NULL || designerCreature == NULL)
 		return;
 
-	Locker locker(designerCreature);
-	Locker clocker(targetCreature, designerCreature);
+	if (scene == designerCreature) {
+		Locker clocker(targetCreature, designerCreature);
 
-	if (targetCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL || designerCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL)
-		return;
+		if (targetCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL || designerCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL)
+			return;
+	} else if (scene == targetCreature) {
+		Locker clocker(designerCreature, targetCreature);
+
+		if (targetCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL || designerCreature->getParentRecursively(SceneObjectType::SALONBUILDING) == NULL)
+			return;
+	}
 
 	dequeueIdTimeoutEvent();
 }

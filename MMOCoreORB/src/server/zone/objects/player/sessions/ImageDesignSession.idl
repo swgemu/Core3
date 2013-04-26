@@ -59,6 +59,7 @@ import server.zone.objects.player.events.ImageDesignTimeoutEvent;
 include server.zone.objects.scene.variables.CustomizationVariables;
 include server.zone.objects.player.sessions.ImageDesignData;
 import server.zone.objects.player.sessions.ImageDesignPositionObserver;
+import system.thread.ReadWriteLock;
 
 class ImageDesignSession extends Facade {
 	@weakReference
@@ -75,6 +76,9 @@ class ImageDesignSession extends Facade {
 	protected ImageDesignPositionObserver positionObserver;
 
 	protected transient ImageDesignTimeoutEvent idTimeoutEvent;
+	
+	@dereferenced
+	protected transient ReadWriteLock idTimeoutLock; 
 	
 	public ImageDesignSession(CreatureObject parent) {
 		Logger.setLoggingName("ImageDesignSession");
@@ -128,26 +132,35 @@ class ImageDesignSession extends Facade {
 	}
 
 	public void clearIdTimeoutEvent() {
-		idTimeoutEvent = null;
+		synchronized (idTimeoutLock) {
+			idTimeoutEvent = null;
+		}
 	}
 	
-	public native void checkDequeueEvent();
+	public native void checkDequeueEvent(SceneObject scene);
 	
 	public void queueIdTimeoutEvent() {
-		if (idTimeoutEvent == null)
-			idTimeoutEvent = new ImageDesignTimeoutEvent(this);
-		
-		if (!idTimeoutEvent.isScheduled())
-			idTimeoutEvent.schedule(30000);
+		synchronized (idTimeoutLock) {
+			if (idTimeoutEvent == null) {
+				ImageDesignTimeoutEvent ev = new ImageDesignTimeoutEvent(this);
+			
+				idTimeoutEvent = ev;
+			}
+			
+			if (!idTimeoutEvent.isScheduled())
+				idTimeoutEvent.schedule(30000);
+		}
 	}
 
 	public void dequeueIdTimeoutEvent() {
-		if (idTimeoutEvent != null) {
+		synchronized (idTimeoutLock) {
+			if (idTimeoutEvent != null) {
 			
-			if (idTimeoutEvent.isScheduled())
-				idTimeoutEvent.cancel();
-			
-			idTimeoutEvent = null;
+				if (idTimeoutEvent.isScheduled())
+					idTimeoutEvent.cancel();
+				
+				idTimeoutEvent = null;
+			}
 		}
 	}
 
