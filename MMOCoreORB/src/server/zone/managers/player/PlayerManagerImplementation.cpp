@@ -3585,20 +3585,28 @@ void PlayerManagerImplementation::getCleanupCharacterCount(){
 	uint64 deletedCount = 0;
 	uint64 playerCount = 0;
 
+	ZoneServer* server = ServerCore::getZoneServer();
+
+	if(server == NULL){
+		error("NULL ZoneServer in character cleanup");
+		return;
+	}
+
+	int galaxyID = server->getGalaxyID();
 
 	while(iterator.getNextKeyAndValue(objectID, &objectData)){
 		if(Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData)){
 			if(className == "CreatureObject"){
 				playerCount++;
 
-				if(shouldDeleteCharacter(objectID)){
+				if(shouldDeleteCharacter(objectID, galaxyID)){
 					deletedCount++;
 					info("DELETE CHARACTER " + String::valueOf(objectID),true);
 				}
 
 			}
 		}
-
+		objectData.reset();
 	}
 
 	StringBuffer deletedMessage;
@@ -3625,14 +3633,21 @@ void PlayerManagerImplementation::cleanupCharacters(){
 	uint64 deletedCount = 0;
 	uint64 playerCount = 0;
 
+	ZoneServer* server = ServerCore::getZoneServer();
+
+	if(server == NULL){
+		error("NULL ZoneServer in character cleanup");
+		return;
+	}
+
+	int galaxyID = server->getGalaxyID();
+
 	while(iterator.getNextKeyAndValue(objectID, &objectData) && deletedCount < 400 ){
 		if(Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData)){
 			if(className == "CreatureObject"){
 				playerCount++;
 
-				if(shouldDeleteCharacter(objectID)){
-
-					ZoneServer* server = ServerCore::getZoneServer();
+				if(shouldDeleteCharacter(objectID, galaxyID)){
 
 					ManagedReference<CreatureObject*> object = dynamic_cast<CreatureObject*>(Core::getObjectBroker()->lookUp(objectID));
 
@@ -3657,8 +3672,10 @@ void PlayerManagerImplementation::cleanupCharacters(){
 				}
 
 			}
+
 		}
 
+		objectData.reset();
 	}
 
 	StringBuffer deletedMessage;
@@ -3668,8 +3685,8 @@ void PlayerManagerImplementation::cleanupCharacters(){
 
 }
 
-bool PlayerManagerImplementation::shouldDeleteCharacter(uint64 characterID){
-	String query = "SELECT * FROM characters WHERE character_oid = " + String::valueOf(characterID);
+bool PlayerManagerImplementation::shouldDeleteCharacter(uint64 characterID, int galaxyID){
+	String query = "SELECT * FROM characters WHERE character_oid = " + String::valueOf(characterID) + " AND galaxy_id = " + String::valueOf(galaxyID);
 
 	try {
 		Reference<ResultSet*> result = ServerDatabase::instance()->executeQuery(query);
@@ -3677,7 +3694,10 @@ bool PlayerManagerImplementation::shouldDeleteCharacter(uint64 characterID){
 		if(result == NULL) {
 			error("ERROR WHILE LOOKING UP CHARACTER IN SQL TABLE");
 		} else if (result.get()->getRowsAffected() > 0 ) {
+
+			error("More than one character with oid = " + String::valueOf(characterID) + " in galaxy " + String::valueOf(galaxyID));
 			return false;
+
 		} else if ( result.get()->getRowsAffected() == 0) {
 			return true;
 		}
