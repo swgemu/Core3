@@ -442,7 +442,7 @@ public:
 
 	void cleanupCharacters();
 
-	bool shouldDeleteCharacter(unsigned long long characterID);
+	bool shouldDeleteCharacter(unsigned long long characterID, int galaxyID);
 
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
@@ -683,7 +683,7 @@ public:
 
 	void cleanupCharacters();
 
-	bool shouldDeleteCharacter(unsigned long long characterID);
+	bool shouldDeleteCharacter(unsigned long long characterID, int galaxyID);
 
 	WeakReference<PlayerManager*> _this;
 
@@ -868,7 +868,7 @@ public:
 
 	void cleanupCharacters();
 
-	bool shouldDeleteCharacter(unsigned long long characterID);
+	bool shouldDeleteCharacter(unsigned long long characterID, int galaxyID);
 
 };
 
