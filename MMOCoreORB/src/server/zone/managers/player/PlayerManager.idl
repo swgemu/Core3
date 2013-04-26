@@ -329,6 +329,6 @@ class PlayerManager extends Observer implements Logger {
 
 	public native void cleanupCharacters();
 
-	public native boolean shouldDeleteCharacter(unsigned long characterID);
+	public native boolean shouldDeleteCharacter(unsigned long characterID, int galaxyID);
 	
 }
