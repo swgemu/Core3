@@ -51,7 +51,7 @@ object_draft_schematic_slicing_slicing_molecular_clamp = object_draft_schematic_
    complexity = 7, 
    size = 1, 
 
-   xpType = "crafting_spice", 
+   xpType = "crafting_general", 
    xp = 180, 
 
    assemblySkill = "general_assembly", 

@@ -51,7 +51,7 @@ object_draft_schematic_slicing_slicing_laser_knife = object_draft_schematic_slic
    complexity = 7, 
    size = 1, 
 
-   xpType = "crafting_spice", 
+   xpType = "crafting_general", 
    xp = 32, 
 
    assemblySkill = "general_assembly", 

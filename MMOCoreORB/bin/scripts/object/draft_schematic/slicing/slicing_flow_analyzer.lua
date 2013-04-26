@@ -51,10 +51,10 @@ object_draft_schematic_slicing_slicing_flow_analyzer = object_draft_schematic_sl
    complexity = 7, 
    size = 1, 
 
-   xpType = "crafting_spice", 
+   xpType = "crafting_general", 
    xp = 80, 
 
-   assemblySkill = "spice_assembly", 
+   assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
    customizationSkill = "spice_customization", 
 
