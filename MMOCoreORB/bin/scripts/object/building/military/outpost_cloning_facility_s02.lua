@@ -49,7 +49,7 @@ object_building_military_outpost_cloning_facility_s02 = object_building_military
 	},
 
        childObjects = {
-                {templateFile = "object/tangible/terminal/terminal_insurance.iff", x = 4.00776, z = 0.125266, y = 4.54808, ox = 0, oy = 0.991779, oz = 0, ow = 0.127961, cellid = 4, containmentType = -1},
+                {templateFile = "object/tangible/terminal/terminal_insurance.iff", x = 3.97085, z = 0.125266, y = 4.5759, ox = 0, oy = 0.999999, oz = 0, ow = 0.00150851, cellid = 4, containmentType = -1},
                 {templateFile = "object/tangible/terminal/terminal_cloning.iff", x = -5.5, z = 0.125266, y = -3.43841, ox = 0, oy = 0.699512, oz = 0, ow = 0.714621, cellid = 6, containmentType = -1}
         },
 
