@@ -4,13 +4,9 @@
 
 #include "GarageInstallation.h"
 
-#include "server/zone/objects/area/ActiveArea.h"
-
 /*
  *	GarageInstallationStub
  */
-
-enum {RPC_CREATECHILDOBJECTS__ = 6,RPC_NOTIFYREMOVEFROMZONE__,RPC_DESTROYOBJECTFROMDATABASE__BOOL_};
 
 GarageInstallation::GarageInstallation() : InstallationObject(DummyConstructorParameter::instance()) {
 	GarageInstallationImplementation* _implementation = new GarageInstallationImplementation();
@@ -27,46 +23,6 @@ GarageInstallation::~GarageInstallation() {
 }
 
 
-
-void GarageInstallation::createChildObjects() {
-	GarageInstallationImplementation* _implementation = static_cast<GarageInstallationImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CREATECHILDOBJECTS__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->createChildObjects();
-}
-
-void GarageInstallation::notifyRemoveFromZone() {
-	GarageInstallationImplementation* _implementation = static_cast<GarageInstallationImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_NOTIFYREMOVEFROMZONE__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->notifyRemoveFromZone();
-}
-
-void GarageInstallation::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	GarageInstallationImplementation* _implementation = static_cast<GarageInstallationImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_DESTROYOBJECTFROMDATABASE__BOOL_);
-		method.addBooleanParameter(destroyContainedObjects);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->destroyObjectFromDatabase(destroyContainedObjects);
-}
 
 DistributedObjectServant* GarageInstallation::_getImplementation() {
 
@@ -178,10 +134,6 @@ bool GarageInstallationImplementation::readObjectMember(ObjectInputStream* strea
 		return true;
 
 	switch(nameHashCode) {
-	case 0x62988547: //GarageInstallation.garageArea
-		TypeInfo<ManagedReference<ActiveArea* > >::parseFromBinaryStream(&garageArea, stream);
-		return true;
-
 	}
 
 	return false;
@@ -200,22 +152,14 @@ int GarageInstallationImplementation::writeObjectMembers(ObjectOutputStream* str
 	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
-	_nameHashCode = 0x62988547; //GarageInstallation.garageArea
-	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<ManagedReference<ActiveArea* > >::toBinaryStream(&garageArea, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
 
-
-	return _count + 1;
+	return _count + 0;
 }
 
 GarageInstallationImplementation::GarageInstallationImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/garage/GarageInstallation.idl():  		setLoggingName("ShuttleInstallation");
-	setLoggingName("ShuttleInstallation");
+	// server/zone/objects/installation/garage/GarageInstallation.idl():  		setLoggingName("GarageInstallation");
+	setLoggingName("GarageInstallation");
 }
 
 /*
@@ -233,36 +177,9 @@ void GarageInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
-	case RPC_CREATECHILDOBJECTS__:
-		{
-			createChildObjects();
-		}
-		break;
-	case RPC_NOTIFYREMOVEFROMZONE__:
-		{
-			notifyRemoveFromZone();
-		}
-		break;
-	case RPC_DESTROYOBJECTFROMDATABASE__BOOL_:
-		{
-			destroyObjectFromDatabase(inv->getBooleanParameter());
-		}
-		break;
 	default:
 		throw Exception("Method does not exists");
 	}
-}
-
-void GarageInstallationAdapter::createChildObjects() {
-	(static_cast<GarageInstallation*>(stub))->createChildObjects();
-}
-
-void GarageInstallationAdapter::notifyRemoveFromZone() {
-	(static_cast<GarageInstallation*>(stub))->notifyRemoveFromZone();
-}
-
-void GarageInstallationAdapter::destroyObjectFromDatabase(bool destroyContainedObjects) {
-	(static_cast<GarageInstallation*>(stub))->destroyObjectFromDatabase(destroyContainedObjects);
 }
 
 /*

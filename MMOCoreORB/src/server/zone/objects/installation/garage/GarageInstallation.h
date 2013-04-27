@@ -11,20 +11,6 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace area {
-
-class ActiveArea;
-
-} // namespace area
-} // namespace objects
-} // namespace zone
-} // namespace server
-
-using namespace server::zone::objects::area;
-
 #include "server/zone/objects/installation/InstallationObject.h"
 
 namespace server {
@@ -36,12 +22,6 @@ namespace garage {
 class GarageInstallation : public InstallationObject {
 public:
 	GarageInstallation();
-
-	void createChildObjects();
-
-	void notifyRemoveFromZone();
-
-	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
@@ -71,19 +51,11 @@ namespace installation {
 namespace garage {
 
 class GarageInstallationImplementation : public InstallationObjectImplementation {
-protected:
-	ManagedReference<ActiveArea* > garageArea;
 
 public:
 	GarageInstallationImplementation();
 
 	GarageInstallationImplementation(DummyConstructorParameter* param);
-
-	void createChildObjects();
-
-	void notifyRemoveFromZone();
-
-	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
 	WeakReference<GarageInstallation*> _this;
 
@@ -127,12 +99,6 @@ public:
 	GarageInstallationAdapter(GarageInstallation* impl);
 
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void createChildObjects();
-
-	void notifyRemoveFromZone();
-
-	void destroyObjectFromDatabase(bool destroyContainedObjects);
 
 };
 

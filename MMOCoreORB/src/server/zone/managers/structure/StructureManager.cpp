@@ -35,6 +35,7 @@
 #include "server/zone/objects/player/sui/callbacks/StructurePayMaintenanceSuiCallback.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/objects/terrain/layer/boundaries/BoundaryRectangle.h"
+#include "server/zone/objects/structure/components/GarageDataComponent.h"
 
 #include "server/zone/managers/gcw/GCWManager.h"
 
@@ -545,6 +546,12 @@ int StructureManager::destroyStructure(StructureObject* structureObject) {
 			PlayerObject* playerObject = cast<PlayerObject*>(ghost.get());
 			playerObject->removeOwnedStructure(structureObject);
 		}
+	}
+
+	if (structureObject->isGarage()) {
+		GarageDataComponent* garageData = cast<GarageDataComponent*>(structureObject->getDataObjectComponent()->get());
+		if (garageData != NULL)
+			garageData->getGarageArea()->destroyObjectFromWorld(false);
 	}
 
 	structureObject->destroyObjectFromWorld(true);
