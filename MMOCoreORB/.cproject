@@ -13,7 +13,6 @@
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 			<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 			<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
-			<storageModule moduleId="org.eclipse.cdt.core.pathentry"/>
 			<storageModule moduleId="scannerConfiguration"/>
 			<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
 				<buildTargets>
@@ -54,6 +53,10 @@
 						<runAllBuilders>true</runAllBuilders>
 					</target>
 				</buildTargets>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.pathentry">
+				<pathentry kind="src" path=""/>
+				<pathentry kind="out" path=""/>
 			</storageModule>
 		</cconfiguration>
 	</storageModule>

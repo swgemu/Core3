@@ -60,7 +60,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.environment</key>
-					<value>CLASSPATH=/home/swgemu/workspace/Core3/MMOEngine/bin/idlc.jar|</value>
+					<value></value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.stopOnError</key>
