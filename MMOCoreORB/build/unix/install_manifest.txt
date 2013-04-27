@@ -1,0 +1,1 @@
+/home/oru/git/Core3/MMOCoreORB/bin/core3

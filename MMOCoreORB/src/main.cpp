@@ -46,6 +46,8 @@ which carries forward this exception.
 #include "server/zone/managers/director/DirectorManager.h"
 
 int main(int argc, char* argv[]) {
+	setbuf(stdout, 0);
+
 	try {
 		SortedVector<String> arguments;
 		for (int i = 1; i < argc; ++i) {

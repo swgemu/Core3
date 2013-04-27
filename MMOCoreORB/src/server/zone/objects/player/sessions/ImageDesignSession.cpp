@@ -16,7 +16,7 @@
  *	ImageDesignSessionStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZESESSION__,RPC_DOPAYMENT__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_CLEARIDTIMEOUTEVENT__,RPC_CHECKDEQUEUEEVENT__,RPC_QUEUEIDTIMEOUTEVENT__,RPC_DEQUEUEIDTIMEOUTEVENT__,RPC_SESSIONTIMEOUT__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_INITIALIZESESSION__,RPC_DOPAYMENT__,RPC_CANCELSESSION__,RPC_CLEARSESSION__,RPC_CLEARIDTIMEOUTEVENT__,RPC_CHECKDEQUEUEEVENT__SCENEOBJECT_,RPC_QUEUEIDTIMEOUTEVENT__,RPC_DEQUEUEIDTIMEOUTEVENT__,RPC_SESSIONTIMEOUT__};
 
 ImageDesignSession::ImageDesignSession(CreatureObject* parent) : Facade(DummyConstructorParameter::instance()) {
 	ImageDesignSessionImplementation* _implementation = new ImageDesignSessionImplementation(parent);
@@ -139,17 +139,18 @@ void ImageDesignSession::clearIdTimeoutEvent() {
 		_implementation->clearIdTimeoutEvent();
 }
 
-void ImageDesignSession::checkDequeueEvent() {
+void ImageDesignSession::checkDequeueEvent(SceneObject* scene) {
 	ImageDesignSessionImplementation* _implementation = static_cast<ImageDesignSessionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CHECKDEQUEUEEVENT__);
+		DistributedMethod method(this, RPC_CHECKDEQUEUEEVENT__SCENEOBJECT_);
+		method.addObjectParameter(scene);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->checkDequeueEvent();
+		_implementation->checkDequeueEvent(scene);
 }
 
 void ImageDesignSession::queueIdTimeoutEvent() {
@@ -412,28 +413,44 @@ int ImageDesignSessionImplementation::clearSession() {
 }
 
 void ImageDesignSessionImplementation::clearIdTimeoutEvent() {
-	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		idTimeoutEvent = null;
+	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		}
+{
+	Locker _locker((&idTimeoutLock));
+	// server/zone/objects/player/sessions/ImageDesignSession.idl():  			idTimeoutEvent = null;
 	idTimeoutEvent = NULL;
+}
 }
 
 void ImageDesignSessionImplementation::queueIdTimeoutEvent() {
+	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		}
+{
+	Locker _locker((&idTimeoutLock));
+	// server/zone/objects/player/sessions/ImageDesignSession.idl():  			if 
+	if (idTimeoutEvent == NULL){
 	Reference<ImageDesignTimeoutEvent*> _ref0;
-	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		if 
-	if (idTimeoutEvent == NULL)	// server/zone/objects/player/sessions/ImageDesignSession.idl():  			idTimeoutEvent = new ImageDesignTimeoutEvent(this);
-	idTimeoutEvent = _ref0 = new ImageDesignTimeoutEvent(_this.get());
-	// server/zone/objects/player/sessions/ImageDesignSession.idl():  	}
-	if (!idTimeoutEvent->isScheduled())	// server/zone/objects/player/sessions/ImageDesignSession.idl():  			idTimeoutEvent.schedule(30000);
+	// server/zone/objects/player/sessions/ImageDesignSession.idl():  				ImageDesignTimeoutEvent ev = new ImageDesignTimeoutEvent(this);
+	ImageDesignTimeoutEvent* ev = _ref0 = new ImageDesignTimeoutEvent(_this.get());
+	// server/zone/objects/player/sessions/ImageDesignSession.idl():  				idTimeoutEvent = ev;
+	idTimeoutEvent = ev;
+}
+	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		}
+	if (!idTimeoutEvent->isScheduled())	// server/zone/objects/player/sessions/ImageDesignSession.idl():  				idTimeoutEvent.schedule(30000);
 	idTimeoutEvent->schedule(30000);
+}
 }
 
 void ImageDesignSessionImplementation::dequeueIdTimeoutEvent() {
-	// server/zone/objects/player/sessions/ImageDesignSession.idl():  	}
+	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		}
+{
+	Locker _locker((&idTimeoutLock));
+	// server/zone/objects/player/sessions/ImageDesignSession.idl():  		}
 	if (idTimeoutEvent != NULL){
-	// server/zone/objects/player/sessions/ImageDesignSession.idl():  			idTimeoutEvent 
-	if (idTimeoutEvent->isScheduled())	// server/zone/objects/player/sessions/ImageDesignSession.idl():  				idTimeoutEvent.cancel();
+	// server/zone/objects/player/sessions/ImageDesignSession.idl():  				idTimeoutEvent 
+	if (idTimeoutEvent->isScheduled())	// server/zone/objects/player/sessions/ImageDesignSession.idl():  					idTimeoutEvent.cancel();
 	idTimeoutEvent->cancel();
-	// server/zone/objects/player/sessions/ImageDesignSession.idl():  			idTimeoutEvent = null;
+	// server/zone/objects/player/sessions/ImageDesignSession.idl():  				idTimeoutEvent = null;
 	idTimeoutEvent = NULL;
+}
 }
 }
 
@@ -482,9 +499,9 @@ void ImageDesignSessionAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 			clearIdTimeoutEvent();
 		}
 		break;
-	case RPC_CHECKDEQUEUEEVENT__:
+	case RPC_CHECKDEQUEUEEVENT__SCENEOBJECT_:
 		{
-			checkDequeueEvent();
+			checkDequeueEvent(static_cast<SceneObject*>(inv->getObjectParameter()));
 		}
 		break;
 	case RPC_QUEUEIDTIMEOUTEVENT__:
@@ -531,8 +548,8 @@ void ImageDesignSessionAdapter::clearIdTimeoutEvent() {
 	(static_cast<ImageDesignSession*>(stub))->clearIdTimeoutEvent();
 }
 
-void ImageDesignSessionAdapter::checkDequeueEvent() {
-	(static_cast<ImageDesignSession*>(stub))->checkDequeueEvent();
+void ImageDesignSessionAdapter::checkDequeueEvent(SceneObject* scene) {
+	(static_cast<ImageDesignSession*>(stub))->checkDequeueEvent(scene);
 }
 
 void ImageDesignSessionAdapter::queueIdTimeoutEvent() {

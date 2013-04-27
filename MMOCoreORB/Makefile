@@ -85,6 +85,24 @@ cleanidl:
 cleardb:
 	cd bin/databases && rm -rf *.*
 	#done
-	
-update:
+
+CPU_CORES:=$(shell grep -c processor /proc/cpuinfo)
+
+build-cmake: idl-cmake
+	cd build/unix && cmake -DCMAKE_INSTALL_PREFIX=`pwd`/../.. ../.. && make -j$(CPU_CORES)
+	cd build/unix && make install
+
+clean-cmake: cleanidl-cmake
+	cd build/unix && make clean
+	#done
+
+ENGINE3_DIR:=$(shell find /opt -name engine3* | head -n 1)
+IDLC_BIN:=$(ENGINE3_DIR)/bin/idlc
+
+idl-cmake:
+	$(IDLC_BIN) -cp $(ENGINE3_DIR)/include -sd src *.idl
+
+cleanidl-cmake:
+	$(IDLC_BIN) -rb -cp $(ENGINE3_DIR)/include -sd src *.idl
+	#done
 	

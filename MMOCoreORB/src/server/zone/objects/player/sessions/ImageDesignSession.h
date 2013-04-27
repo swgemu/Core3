@@ -91,6 +91,8 @@ using namespace server::zone::objects::player::sessions;
 
 #include "system/lang/ref/Reference.h"
 
+#include "system/thread/ReadWriteLock.h"
+
 namespace server {
 namespace zone {
 namespace objects {
@@ -119,7 +121,7 @@ public:
 
 	void clearIdTimeoutEvent();
 
-	void checkDequeueEvent();
+	void checkDequeueEvent(SceneObject* scene);
 
 	void queueIdTimeoutEvent();
 
@@ -168,6 +170,8 @@ protected:
 
 	Reference<ImageDesignTimeoutEvent* > idTimeoutEvent;
 
+	ReadWriteLock idTimeoutLock;
+
 public:
 	ImageDesignSessionImplementation(CreatureObject* parent);
 
@@ -191,7 +195,7 @@ public:
 
 	void clearIdTimeoutEvent();
 
-	void checkDequeueEvent();
+	void checkDequeueEvent(SceneObject* scene);
 
 	void queueIdTimeoutEvent();
 
@@ -254,7 +258,7 @@ public:
 
 	void clearIdTimeoutEvent();
 
-	void checkDequeueEvent();
+	void checkDequeueEvent(SceneObject* scene);
 
 	void queueIdTimeoutEvent();
 

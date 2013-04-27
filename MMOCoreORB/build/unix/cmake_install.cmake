@@ -1,8 +1,8 @@
-# Install script for directory: /home/oru/workspace/MMOCoreORB
+# Install script for directory: /home/oru/git/Core3/MMOCoreORB
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/usr/local")
+  SET(CMAKE_INSTALL_PREFIX "/home/oru/git/Core3/MMOCoreORB")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,7 +34,15 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/home/oru/workspace/MMOCoreORB/build/unix/src/cmake_install.cmake")
+  INCLUDE("/home/oru/git/Core3/MMOCoreORB/build/unix/src/cmake_install.cmake")
+  INCLUDE("/home/oru/git/Core3/MMOCoreORB/build/unix/src/server/conf/cmake_install.cmake")
+  INCLUDE("/home/oru/git/Core3/MMOCoreORB/build/unix/src/server/db/cmake_install.cmake")
+  INCLUDE("/home/oru/git/Core3/MMOCoreORB/build/unix/src/server/status/cmake_install.cmake")
+  INCLUDE("/home/oru/git/Core3/MMOCoreORB/build/unix/src/server/web/cmake_install.cmake")
+  INCLUDE("/home/oru/git/Core3/MMOCoreORB/build/unix/src/server/ping/cmake_install.cmake")
+  INCLUDE("/home/oru/git/Core3/MMOCoreORB/build/unix/src/server/login/cmake_install.cmake")
+  INCLUDE("/home/oru/git/Core3/MMOCoreORB/build/unix/src/server/zone/cmake_install.cmake")
+  INCLUDE("/home/oru/git/Core3/MMOCoreORB/build/unix/src/server/chat/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 
@@ -44,7 +52,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/home/oru/workspace/MMOCoreORB/build/unix/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/oru/git/Core3/MMOCoreORB/build/unix/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/home/oru/workspace/MMOCoreORB/build/unix/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/oru/git/Core3/MMOCoreORB/build/unix/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

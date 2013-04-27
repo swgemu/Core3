@@ -1,34 +1,34 @@
 # Copyright (C) 2007 <SWGEmu>. All rights reserved.
 # Distribution of this file for usage outside of Core3 is prohibited.
 
-# set cmake find moudles path
-SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/build/unix/cmake/Modules/")
+# Compile idl sources
+#add_custom_target(idl ${IDLC_BIN_DIR}/idlc -cp ${ENGINE3_INCLUDE_DIR} -sd ${CMAKE_CURRENT_SOURCE_DIR} *.idl
+#	COMMENT "Compiling IDL sources:")  
 
-# add lua includes and libraries
-INCLUDE_DIRECTORIES(/usr/include/lua5.1)
-LINK_DIRECTORIES(/usr/local/lib/lua)
+# Add core3 includes
+include_directories(.)
 
-# find mysql includes and libraries
-find_package(MySql REQUIRED)
-INCLUDE_DIRECTORIES(${MYSQL_INCLUDE_DIR})
-LINK_DIRECTORIES(${MYSQL_LIBRARY})
+# Add shared core3 libraries
+link_directories(${CMAKE_BINARY_DIR}/src/server/db)
+link_directories(${CMAKE_BINARY_DIR}/src/server/conf)
+link_directories(${CMAKE_BINARY_DIR}/src/server/web)
+link_directories(${CMAKE_BINARY_DIR}/src/server/status)
+link_directories(${CMAKE_BINARY_DIR}/src/server/ping)
+link_directories(${CMAKE_BINARY_DIR}/src/server/login)
+link_directories(${CMAKE_BINARY_DIR}/src/server/zone)
+link_directories(${CMAKE_BINARY_DIR}/src/server/chat)
 
-# find berkeley includes and libraries
-find_package(Berkeley REQUIRED)
-INCLUDE_DIRECTORIES(${DB_INCLUDE_DIR})
-LINK_DIRECTORIES(${DB_LIBRARIES})
+# Create core3 binary
+add_executable(core3 main.cpp server/ServerCore.cpp tre3/TreeFile.cpp)
+add_dependencies(core3 zone3)
 
-# add core3 includes
-INCLUDE_DIRECTORIES(.)
+# Add libraries
+target_link_libraries(core3 
+	z rt dl pthread crypto 
+	lua db-5.0 ${MYSQL_LIBRARIES} 
+	${ENGINE3_LIBRARIES} 
+	db3 conf3 web3 status3 ping3 login3 zone3 chat3)
 
-# add core3 sources
-FILE(GLOB_RECURSE core3_sources "server/*.cpp") 
-
-# add engine3 includes
-INCLUDE_DIRECTORIES(../../MMOEngine/src)
-LINK_DIRECTORIES(/home/oru/workspace/MMOEngine/lib/unix)
-
-# create core3 binary
-SET(CMAKE_CXX_FLAGS "-ggdb -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar")
-ADD_EXECUTABLE(core3 main.cpp ${core3_sources} tre3/TreeFile.cpp server/web/mongoose/mongoose.c)
-TARGET_LINK_LIBRARIES(core3 engine3 z rt dl pthread db-5.0 lua mysqlclient)
+# Install core3 binary
+install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/core3 DESTINATION bin)
+	
