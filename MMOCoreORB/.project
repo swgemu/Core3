@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>MMOCoreORB</name>
+	<name>MMOCoreORB-Unstable</name>
 	<comment></comment>
 	<projects>
 		<project>MMOEngine</project>
@@ -60,7 +60,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.environment</key>
-					<value></value>
+					<value>CLASSPATH=/home/swgemu/workspace/Core3/MMOEngine/bin/idlc.jar|</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.stopOnError</key>
