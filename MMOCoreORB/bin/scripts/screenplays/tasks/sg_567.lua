@@ -53,7 +53,8 @@ SG567 = ThemeParkLogic:new {
 	screenPlayState = "sg_567_quest",
 	distance = 1000,
 	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message"
+	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
+	faction = FACTIONIMPERIAL
 }
 
 registerScreenPlay("SG567", true)

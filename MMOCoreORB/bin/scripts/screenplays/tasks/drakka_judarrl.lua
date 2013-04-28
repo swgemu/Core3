@@ -78,7 +78,8 @@ DrakkaJudarrl = ThemeParkLogic:new {
 	screenPlayState = "drakka_judarrl_quest",
 	distance = 1000,
 	missionDescriptionStf = "",
-	missionCompletionMessageStf = ""
+	missionCompletionMessageStf = "",
+	faction = FACTIONREBEL
 }
 
 registerScreenPlay("DrakkaJudarrl", true)
