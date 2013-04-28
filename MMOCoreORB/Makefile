@@ -86,7 +86,15 @@ cleardb:
 	cd bin/databases && rm -rf *.*
 	#done
 
-CPU_CORES:=$(shell grep -c processor /proc/cpuinfo)
+PLATFORM:=$(shell uname -s)
+
+ifeq ($(PLATFORM),Linux)
+	CPU_CORES:=$(shell grep -c processor /proc/cpuinfo)
+else 
+ifeq ($(PLATFORM),Darwin)
+  	CPU_CORES:=$(shell system_profiler | awk '/Number Of CPUs/{print $4}{next;}'}
+endif
+endif
 
 build-cmake: idl-cmake
 	cd build/unix && cmake -DCMAKE_INSTALL_PREFIX=`pwd`/../.. ../.. && make -j$(CPU_CORES)
