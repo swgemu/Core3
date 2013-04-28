@@ -65,7 +65,8 @@ BootoLubble = ThemeParkLogic:new {
 	screenPlayState = "booto_lubble_quest",
 	distance = 1200,
 	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message"
+	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
+	faction = FACTIONREBEL
 }
 
 registerScreenPlay("BootoLubble", true)

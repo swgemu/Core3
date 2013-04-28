@@ -920,7 +920,7 @@ permissionMapRebel = {
 				cells = { 8555471, 8555472, 8555473, 8555474, 8555475, 8555476, 8555477, 8555478, 8555479, 8555480, 8555481, 8555482 },
 				conditions = 
 				{
-					{ permissionType = "faction", faction = FACTIONREBEL }
+					{ permissionType = "faction" }
 				}
 			}
 		}
@@ -934,7 +934,7 @@ permissionMapRebel = {
 				cells = { 6555559, 6555560, 6555561, 6555562, 6555563, 6555564, 6555565, 6555566, 6555567, 6555568, 6555569, 6555570 },
 				conditions = 
 				{
-					{ permissionType = "faction", faction = FACTIONREBEL }
+					{ permissionType = "faction" }
 				}
 			}
 		}
@@ -949,7 +949,7 @@ permissionMapRebel = {
 				conditions = 
 				{
 					{ permissionType = "missionState", mission = "theme_park_rebel", missionState = 128 },
-					{ permissionType = "faction", faction = FACTIONREBEL }
+					{ permissionType = "faction" }
 				}
 			},
 			{
@@ -957,7 +957,7 @@ permissionMapRebel = {
 				conditions = 
 				{
 					{ permissionType = "missionState", mission = "theme_park_rebel", missionState = 256 },
-					{ permissionType = "faction", faction = FACTIONREBEL }
+					{ permissionType = "faction" }
 				}
 			}
 		}
@@ -971,7 +971,8 @@ ThemeParkRebel = ThemeParkLogic:new {
 	className = "ThemeParkRebel",
 	screenPlayState = "rebel_theme_park",
 	missionDescriptionStf = "@theme_park_rebel/quest_details:rebel_hideout_",
-	missionCompletionMessageStf = "@theme_park/messages:rebel_completion_message"
+	missionCompletionMessageStf = "@theme_park/messages:rebel_completion_message",
+	faction = FACTIONREBEL
 }
 
 registerScreenPlay("ThemeParkRebel", true)

@@ -60,7 +60,8 @@ LuthikUwyr = ThemeParkLogic:new {
 	screenPlayState = "luthik_uwyr_quest",
 	distance = 1000,
 	missionDescriptionStf = "",
-	missionCompletionMessageStf = ""
+	missionCompletionMessageStf = "",
+	faction = FACTIONIMPERIAL
 }
 
 registerScreenPlay("LuthikUwyr", true)

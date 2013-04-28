@@ -81,7 +81,8 @@ LX466 = ThemeParkLogic:new {
 	screenPlayState = "lx_466_quest",
 	distance = 1000,
 	missionDescriptionStf = "",
-	missionCompletionMessageStf = "@theme_park/messages:static_completion_message"
+	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
+	faction = FACTIONIMPERIAL
 }
 
 registerScreenPlay("LX466", true)

@@ -54,7 +54,8 @@ KelvusNaria = ThemeParkLogic:new {
 	screenPlayState = "kelvus_naria_quest",
 	distance = 1000,
 	missionDescriptionStf = "",
-	missionCompletionMessageStf = ""
+	missionCompletionMessageStf = "",
+	faction = FACTIONIMPERIAL
 }
 
 registerScreenPlay("KelvusNaria", true)

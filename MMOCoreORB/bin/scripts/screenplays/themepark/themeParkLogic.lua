@@ -12,7 +12,8 @@ ThemeParkLogic = ScreenPlay:new {
 	screenPlayState = "theme_park_general",
 	distance = 1000,
 	missionDescriptionStf = "",
-	missionCompletionMessageStf = ""
+	missionCompletionMessageStf = "",
+	faction = 0
 }
 
 function ThemeParkLogic:start()
@@ -102,7 +103,7 @@ function ThemeParkLogic:hasPermission(conditions, pCreature)
 	local hasPermission = true
 	for i = 1, # conditions, 1 do
 		if conditions[i].permissionType == "faction" then
-			if self:isInFaction(conditions[i].faction, pCreature) == false then
+			if self:isInFaction(pCreature) == false then
 				hasPermission = false
 			end
 		elseif conditions[i].permissionType == "missionState" then
@@ -114,14 +115,14 @@ function ThemeParkLogic:hasPermission(conditions, pCreature)
 	return hasPermission
 end
 
-function ThemeParkLogic:isInFaction(faction, pCreature)
+function ThemeParkLogic:isInFaction(pCreature)
 	if pCreature == nil then
 		return false
 	end
-	
+
 	local creature = LuaCreatureObject(pCreature)
 	
-	if creature:getFaction() == faction then
+	if creature:getFaction() == self.faction then
 		return true
 	else
 		return false
