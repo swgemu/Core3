@@ -1,9 +1,9 @@
-rogue_marauder = Creature:new {
-	objectName = "",
-	customName = "a Rogue Marauder",
+theme_park_marauder_indar = Creature:new {
+	objectName = "@npc_name:marauder_base_male",
+	customName = "Indar",
 	socialGroup = "self",
-	pvpFaction = "endor_marauder",
-	faction = "endor_marauder",
+	pvpFaction = "",
+	faction = "",
 	level = 44,
 	chanceHit = 0.47,
 	damageMin = 345,
@@ -12,7 +12,7 @@ rogue_marauder = Creature:new {
 	baseHAM = 12000,
 	baseHAMmax = 12000,
 	armor = 0,
-	resists = {0,0,0,-1,0,0,-1,0,-1},
+	resists = {40,40,40,40,40,40,40,40,-1},
 	meatType = "",
 	meatAmount = 0,
 	hideType = "",
@@ -27,16 +27,11 @@ rogue_marauder = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {
-			"object/mobile/dressed_marauder.iff",
-			"object/mobile/marauder_male.iff",
-			"object/mobile/marauder_male_02.iff",
-			"object/mobile/marauder_male_03.iff",
-			"object/mobile/marauder_female.iff"},
+	templates = {"object/mobile/dressed_marauder.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(rogue_marauder, "rogue_marauder")
+CreatureTemplates:addCreatureTemplate(theme_park_marauder_indar, "theme_park_marauder_indar")
