@@ -94,7 +94,7 @@ ifeq ($(PLATFORM),Linux)
 	ENGINE3_DIR:=$(shell find /opt -name engine3* -print -quit)
 else 
 ifeq ($(PLATFORM),Darwin)
-  	CPU_CORES:=$(shell system_profiler | awk '/Number Of CPUs/{print $4}{next;}'}
+  	CPU_CORES:=$(shell system_profiler | awk '/Number Of CPUs/{print $4}{next;}')
 
 	ENGINE3_DIR:=$(shell find /opt -name engine3* -depth 0)
 endif

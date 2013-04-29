@@ -42,8 +42,25 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
  */
 
+#include "system/thread/ChildProcess.h"
+
 #include "server/ServerCore.h"
 #include "server/zone/managers/director/DirectorManager.h"
+
+class CoreProcess : public ChildProcess {
+	SortedVector<String>& arguments;
+
+public:
+	CoreProcess(SortedVector<String>& args) : arguments(args) {
+	}
+
+	void run() {
+		bool truncateData = arguments.contains("clean");
+
+		ServerCore core(truncateData, arguments);
+		core.start();
+	}
+};
 
 int main(int argc, char* argv[]) {
 	setbuf(stdout, 0);
@@ -61,15 +78,12 @@ int main(int argc, char* argv[]) {
 			DirectorManager::instance()->getLuaInstance();
 
 			printf("Done\n");
+		} else {
+			CoreProcess core(arguments);
+			core.start();
 
-			return 0;
+			core.wait();
 		}
-
-		bool truncateData = arguments.contains("clean");
-
-		ServerCore core(truncateData, arguments);
-
-		core.start();
 
 	} catch (Exception& e) {
 		System::out << e.getMessage() << "\n";

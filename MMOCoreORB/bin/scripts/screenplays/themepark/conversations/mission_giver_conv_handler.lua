@@ -16,11 +16,11 @@ function mission_giver_conv_handler:getNextConversationScreen(pConversationTempl
 		local session = LuaConversationSession(convosession)
 		lastConversationScreen = session:getLastConversationScreen()
 	end
-	
+
 	local conversation = LuaConversationTemplate(pConversationTemplate)
-		
+
 	local nextConversationScreen
-	
+
 	if (lastConversationScreen ~= nil) then
 		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
 		
@@ -69,6 +69,8 @@ function mission_giver_conv_handler:runScreenHandlers(pConversationTemplate, pCo
 		pConversationScreen = self:handleScreenNext(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "notyet" then	
 		pConversationScreen = self:handleScreenNotYet(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+	elseif screenID == "no_faction" then	
+		pConversationScreen = self:handleScreenNoFaction(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "npc_backtowork_n" then	
 		pConversationScreen = self:handleScreenBackToWork(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	end
@@ -78,12 +80,22 @@ end
 function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
 	local nextScreenName
+
 	if 1 == 1 then -- TODO: check if player can run this theme park. I.e. no other theme park is active.
 		local thisNpcNumber = self.themePark:getNpcNumber(pConversingNpc)
 		local activeNpcNumber = self.themePark:getActiveNpcNumber(pConversingPlayer)
 		local npcCompare = thisNpcNumber - activeNpcNumber
-		
-		if npcCompare == 0 then
+		local globalFaction = self.themePark:getGlobalFaction()
+		local currentMissionNumber = self.themePark:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
+		local missionFaction = self.themePark:getMissionFaction(activeNpcNumber, currentMissionNumber)
+
+		if missionFaction ~= 0 and self.themePark:isInFaction(missionFaction, pConversingPlayer) ~= true then
+			nextScreenName = "no_faction"
+
+		elseif globalFaction ~= 0 and self.themePark:isInFaction(globalFaction, pConversingPlayer) ~= true then
+			nextScreenName = "no_faction"
+
+		elseif npcCompare == 0 then
 			if self.themePark:missionStatus(pConversingPlayer) == 1 then
 				if self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "escort" and self.themePark:escortedNpcCloseEnough(pConversingPlayer) == true then
 					nextScreenName = "npc_reward_n"
@@ -300,6 +312,16 @@ function mission_giver_conv_handler:handleScreenNotYet(pConversationTemplate, pC
 	local stfFile = self.themePark:getStfFile(npcNumber)
 	
 	clonedScreen:setDialogTextStringId(stfFile .. ":notyet")
+	
+	return pConversationScreen
+end
+
+function mission_giver_conv_handler:handleScreenNoFaction(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+	local screen = LuaConversationScreen(pConversationScreen)
+	pConversationScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConversationScreen)
+	
+	clonedScreen:setDialogTextStringId("@theme_park/messages:no_faction")
 	
 	return pConversationScreen
 end
