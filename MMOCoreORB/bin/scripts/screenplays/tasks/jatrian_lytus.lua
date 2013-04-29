@@ -83,7 +83,8 @@ JatrianLytus = ThemeParkLogic:new {
 	screenPlayState = "jatrian_lytus_quest",
 	distance = 1000,
 	missionDescriptionStf = "",
-	missionCompletionMessageStf = ""
+	missionCompletionMessageStf = "",
+	faction = FACTIONIMPERIAL
 }
 
 registerScreenPlay("JatrianLytus", true)
