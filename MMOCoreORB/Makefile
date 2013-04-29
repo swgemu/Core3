@@ -90,9 +90,13 @@ PLATFORM:=$(shell uname -s)
 
 ifeq ($(PLATFORM),Linux)
 	CPU_CORES:=$(shell grep -c processor /proc/cpuinfo)
+
+	ENGINE3_DIR:=$(shell find /opt -name engine3* -print -quit)
 else 
 ifeq ($(PLATFORM),Darwin)
   	CPU_CORES:=$(shell system_profiler | awk '/Number Of CPUs/{print $4}{next;}'}
+
+	ENGINE3_DIR:=$(shell find /opt -name engine3* -depth 0)
 endif
 endif
 
@@ -104,7 +108,6 @@ clean-cmake: cleanidl-cmake
 	cd build/unix && make clean
 	#done
 
-ENGINE3_DIR:=$(shell find /opt -name engine3* | head -n 1)
 IDLC_BIN:=$(ENGINE3_DIR)/bin/idlc
 
 idl-cmake:
