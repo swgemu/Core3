@@ -73,6 +73,12 @@ object_draft_schematic_furniture_city_furniture_fountain = object_draft_schemati
    targetTemplate = "object/tangible/furniture/city/fountain_generic.iff",
 
    additionalTemplates = {
+            "object/tangible/furniture/city/shared_fountain_brazier_round.iff",
+             "object/tangible/furniture/city/shared_fountain_brazier_square.iff",
+            "object/tangible/furniture/city/shared_fountain_circle.iff",
+            "object/tangible/furniture/city/shared_fountain_contemplate.iff",
+            "object/tangible/furniture/city/shared_fountain_heroic.iff",
+            "object/tangible/furniture/city/shared_shared_fountain_rectangle.iff",
              }
 
 }

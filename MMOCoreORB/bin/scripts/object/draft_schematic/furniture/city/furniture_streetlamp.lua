@@ -73,6 +73,21 @@ object_draft_schematic_furniture_city_furniture_streetlamp = object_draft_schema
    targetTemplate = "object/tangible/furniture/city/streetlamp_large_01.iff",
 
    additionalTemplates = {
+            "object/tangible/furniture/city/shared_streetlamp_large_02.iff",
+            "object/tangible/furniture/city/shared_streetlamp_large_blue_01.iff",
+            "object/tangible/furniture/city/shared_streetlamp_large_blue_02.iff",
+            "object/tangible/furniture/city/shared_streetlamp_large_green_01.iff",
+            "object/tangible/furniture/city/shared_streetlamp_large_green_02.iff",
+            "object/tangible/furniture/city/shared_streetlamp_large_red_01.iff",
+            "object/tangible/furniture/city/shared_streetlamp_large_red_02.iff",
+            "object/tangible/furniture/city/shared_streetlamp_med_01.iff",
+            "object/tangible/furniture/city/shared_streetlamp_med_02.iff",
+            "object/tangible/furniture/city/shared_streetlamp_med_blue_01.iff",
+            "object/tangible/furniture/city/shared_streetlamp_med_blue_02.iff",
+            "object/tangible/furniture/city/shared_streetlamp_med_green_01.iff",
+            "object/tangible/furniture/city/shared_streetlamp_med_green_02.iff",
+            "object/tangible/furniture/city/shared_streetlamp_med_red_01.iff",
+            "object/tangible/furniture/city/shared_streetlamp_med_red_02.iff",
              }
 
 }
