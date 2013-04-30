@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABn////I\u003d",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/armor_marauder_chest_plate.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-04-30T04:27:29Z",
+      "side": 1,
+      "message": "This is generating with 39% kinetic because it\u0027s adding the base and kinetic for some reason. I\u0027m not sure why it\u0027s doing that in this instance, but you could drop the kinetic to 10 and it should end up 25% when generated.",
+      "revId": "338cc4934c6faf63fd2b84c34f15fee94cecf787",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABn////M\u003d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/marauder/themeParkMarauder.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-04-30T04:27:29Z",
+      "side": 1,
+      "message": "To reward both biceps here, you\u0027ll need to create a separate group for each and have two loot reward types here, one for each.",
+      "revId": "338cc4934c6faf63fd2b84c34f15fee94cecf787",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABn////Q\u003d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/themepark/marauder/themeParkMarauder.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-04-30T04:27:29Z",
+      "side": 1,
+      "message": "Your npc numbers need to be in a powers of 2 progression. 1, 2, 4, 8, 16, etc. This is why Charal and Terak aren\u0027t working.",
+      "revId": "338cc4934c6faf63fd2b84c34f15fee94cecf787",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
