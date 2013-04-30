@@ -598,7 +598,7 @@ void CraftingSessionImplementation::nextCraftingStage(int clientCounter) {
 	}
 
 	// Make sure all the require resources are there, if not, return them to inventory and close tool
-	if (!manufactureSchematic->isAssembled() && !manufactureSchematic->isReadyForAssembly()) {
+	if (!manufactureSchematic->isReadyForAssembly()) {
 
 		sendSlotMessage(clientCounter, IngredientSlot::PARTIALASSEMBLE);
 		return;
@@ -616,7 +616,6 @@ void CraftingSessionImplementation::nextCraftingStage(int clientCounter) {
 		craftingComponents->setSendToClient(false);
 	}
 	manufactureSchematic->setAssembled();
-
 	if (state == 2) {
 
 		// Flag to get the experimenting window
@@ -647,6 +646,7 @@ void CraftingSessionImplementation::nextCraftingStage(int clientCounter) {
 	} else if (state == 6) {
 
 		finishStage2(clientCounter);
+
 	}
 }
 
@@ -1107,13 +1107,13 @@ void CraftingSessionImplementation::finishStage1(int clientCounter) {
 void CraftingSessionImplementation::finishStage2(int clientCounter) {
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
 
-	state = 0;
+	//state = 6;
 
 	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(
 			crafter->getPlayerObject());
 	dplay9->insertShort(5);
 	dplay9->insertInt(0xFFFFFFFF);
-	dplay9->setCraftingState(0);
+	dplay9->setCraftingState(state);
 
 	dplay9->close();
 	crafter->sendMessage(dplay9);
@@ -1146,8 +1146,7 @@ void CraftingSessionImplementation::createPrototype(int clientCounter, bool crea
 	Locker locker2(manufactureSchematic);
 
 
-	if (manufactureSchematic->isAssembled()
-			&& !manufactureSchematic->isCompleted()) {
+	if (manufactureSchematic->isAssembled()	&& !manufactureSchematic->isCompleted()) {
 
 		closeCraftingWindow(clientCounter);
 
