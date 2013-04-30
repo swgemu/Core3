@@ -3,8 +3,8 @@ scholar_szingo = Creature:new {
 	socialGroup = "endor_marauder",
 	pvpFaction = "endor_marauder",
 	faction = "endor_marauder",
-	level = 21,
-	chanceHit = 0.330000,
+	level = 100,
+	chanceHit = 0.33,
 	damageMin = 210,
 	damageMax = 220,
 	baseXp = 1609,
@@ -19,15 +19,17 @@ scholar_szingo = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = NONE,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_scholar_szingo.iff"},
 	lootGroups = {},
 	weapons = {},
+	conversationTemplate = "theme_park_marauder_mission_giver_convotemplate",
 	attacks = {}
 }
 
