@@ -42,29 +42,21 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
  */
 
-#include "system/thread/ChildProcess.h"
-
 #include "server/ServerCore.h"
 #include "server/zone/managers/director/DirectorManager.h"
 
-class CoreProcess : public ChildProcess {
-	SortedVector<String>& arguments;
+/*#include "system/mm/AllocationTracker.h"
 
-public:
-	CoreProcess(SortedVector<String>& args) : arguments(args) {
-	}
+	AllocationTracker* tracker;
 
-	void run() {
-		bool truncateData = arguments.contains("clean");
+	void initializeTracker() {
+	        printf("malloc initialization Hook installed\n");
 
-		ServerCore core(truncateData, arguments);
-		core.start();
-	}
-};
+	        tracker = AllocationTracker::getInstance();
+	        tracker->install();
+}*/
 
 int main(int argc, char* argv[]) {
-	setbuf(stdout, 0);
-
 	try {
 		SortedVector<String> arguments;
 		for (int i = 1; i < argc; ++i) {
@@ -78,12 +70,15 @@ int main(int argc, char* argv[]) {
 			DirectorManager::instance()->getLuaInstance();
 
 			printf("Done\n");
-		} else {
-			CoreProcess core(arguments);
-			core.start();
 
-			core.wait();
+			return 0;
 		}
+
+		bool truncateData = arguments.contains("clean");
+
+		ServerCore core(truncateData, arguments);
+
+		core.start();
 
 	} catch (Exception& e) {
 		System::out << e.getMessage() << "\n";
