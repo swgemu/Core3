@@ -1,3 +1,4 @@
-/CMakeFiles
-/src
-/CMakeCache.txt
+CMakeFiles
+src
+CMakeCache.txt
+config.log
