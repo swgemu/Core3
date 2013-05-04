@@ -108,13 +108,25 @@ void PlanetManagerImplementation::loadLuaConfig() {
 
 	luaObject.pop();
 
-	shuttleportAwayTime = lua->getGlobalInt("shuttleportAwayTime");
-	shuttleportLandedTime = lua->getGlobalInt("shuttleportLandedTime");
-	shuttleportLandingTime = lua->getGlobalInt("shuttleportLandingTime");
+	// Configure shuttleport timing
+	if ((shuttleportAwayTime = lua->getGlobalInt("shuttleportAwayTime")) <= 0)
+	  shuttleportAwayTime = 300;
 
-	starportAwayTime = lua->getGlobalInt("starportAwayTime");
-	starportLandedTime = lua->getGlobalInt("starportLandedTime");
-	starportLandingTime = lua->getGlobalInt("starportLandingTime");
+	if ((shuttleportLandedTime = lua->getGlobalInt("shuttleportLandedTime")) <= 0)
+	  shuttleportLandedTime = 120;
+
+	if ((shuttleportLandingTime = lua->getGlobalInt("shuttleportLandingTime")) <= 0)
+	  shuttleportLandingTime = 11;
+
+	// Configure starport timing
+	if ((starportAwayTime = lua->getGlobalInt("starportAwayTime")) <= 0)
+	  starportAwayTime = 60;
+
+	if ((starportLandedTime = lua->getGlobalInt("starportLandedTime")) <= 0)
+	  starportLandedTime = 120;
+
+	if ((starportLandingTime = lua->getGlobalInt("starportLandingTime")) <= 0)
+	  starportLandingTime = 120;
 
 	lua->runFile("scripts/managers/spawn_manager/" + zone->getZoneName() + ".lua");
 
