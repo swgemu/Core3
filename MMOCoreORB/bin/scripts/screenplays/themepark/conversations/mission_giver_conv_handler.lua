@@ -69,6 +69,8 @@ function mission_giver_conv_handler:runScreenHandlers(pConversationTemplate, pCo
 		pConversationScreen = self:handleScreenNext(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "notyet" then	
 		pConversationScreen = self:handleScreenNotYet(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+	elseif screenID == "cant_work" then	
+		pConversationScreen = self:handleScreenCantWork(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "no_faction" then	
 		pConversationScreen = self:handleScreenNoFaction(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "npc_backtowork_n" then	
@@ -80,10 +82,12 @@ end
 function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
 	local nextScreenName
+	local creature = LuaCreatureObject(pConversingPlayer)
+	local activeScreenPlay = readStringData(creature:getObjectID() .. ":activeScreenPlay")
 
-	if 1 == 1 then -- TODO: check if player can run this theme park. I.e. no other theme park is active.
-		local thisNpcNumber = self.themePark:getNpcNumber(pConversingNpc)
+	if activeScreenPlay == self.themePark.className or activeScreenPlay == "" then
 		local activeNpcNumber = self.themePark:getActiveNpcNumber(pConversingPlayer)
+		local thisNpcNumber = self.themePark:getNpcNumber(pConversingNpc)
 		local npcCompare = thisNpcNumber - activeNpcNumber
 		local globalFaction = self.themePark:getGlobalFaction()
 		local currentMissionNumber = self.themePark:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
@@ -120,7 +124,7 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 			nextScreenName = "notyet"
 		end
 	else
-		nextScreenName = "cantwork"
+		nextScreenName = "cant_work"
 	end
 
 	return self:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, conversationTemplate:getScreen(nextScreenName))
@@ -312,6 +316,19 @@ function mission_giver_conv_handler:handleScreenNotYet(pConversationTemplate, pC
 	local stfFile = self.themePark:getStfFile(npcNumber)
 	
 	clonedScreen:setDialogTextStringId(stfFile .. ":notyet")
+	
+	return pConversationScreen
+end
+
+function mission_giver_conv_handler:handleScreenCantWork(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
+	local screen = LuaConversationScreen(pConversationScreen)
+	pConversationScreen = screen:cloneScreen()
+	local clonedScreen = LuaConversationScreen(pConversationScreen)
+	
+	local npcNumber = self.themePark:getNpcNumber(pConversingNpc)
+	local stfFile = self.themePark:getStfFile(npcNumber)
+	
+	clonedScreen:setDialogTextStringId(stfFile .. ":cant_work")
 	
 	return pConversationScreen
 end
