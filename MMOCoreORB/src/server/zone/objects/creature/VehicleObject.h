@@ -108,6 +108,8 @@ namespace creature {
 
 class VehicleObject : public CreatureObject {
 public:
+	static const int PAINTCHARGES = 999;
+
 	VehicleObject();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
@@ -146,6 +148,8 @@ public:
 
 	void sendRepairConfirmTo(CreatureObject* player);
 
+	void refreshPaint();
+
 	bool isVehicleObject();
 
 	DistributedObjectServant* _getImplementation();
@@ -177,7 +181,11 @@ class VehicleObjectImplementation : public CreatureObjectImplementation {
 protected:
 	int vehicleType;
 
+	int paintCount;
+
 public:
+	static const int PAINTCHARGES = 999;
+
 	VehicleObjectImplementation();
 
 	VehicleObjectImplementation(DummyConstructorParameter* param);
@@ -217,6 +225,8 @@ public:
 	int calculateRepairCost(CreatureObject* player);
 
 	void sendRepairConfirmTo(CreatureObject* player);
+
+	void refreshPaint();
 
 	bool isVehicleObject();
 
@@ -294,6 +304,8 @@ public:
 	int calculateRepairCost(CreatureObject* player);
 
 	void sendRepairConfirmTo(CreatureObject* player);
+
+	void refreshPaint();
 
 	bool isVehicleObject();
 

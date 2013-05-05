@@ -177,6 +177,7 @@ public:
 	const static int SHIPCHASSIS = 0x4000036;
 	const static int SHIPDEED = 0x4000037;
 	const static int RECYCLETOOL = 0x4000038;
+	const static int VEHICLECUSTOMKIT = 0x4000039;
 
 public:
 	SharedObjectTemplate();
@@ -662,8 +663,14 @@ public:
     }
 
 	virtual bool isRecycleToolTemplate() {
-	    	return false;
-	    }
+	return false;
+    }
+
+	virtual bool isVehicleCustomKitTemplate() {
+	return false;
+    }
+    
+
 };
 
 

@@ -714,6 +714,8 @@ public:
 
 	bool isRepairTool();
 
+	bool isVehicleCustomKit();
+
 	bool isCamoKit();
 
 	bool isAttachment();
@@ -1386,6 +1388,8 @@ public:
 
 	bool isRepairTool();
 
+	bool isVehicleCustomKit();
+
 	bool isCamoKit();
 
 	virtual bool isAttachment();
@@ -1914,6 +1918,8 @@ public:
 	bool isTrapObject();
 
 	bool isRepairTool();
+
+	bool isVehicleCustomKit();
 
 	bool isCamoKit();
 

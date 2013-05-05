@@ -42,63 +42,34 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef HAVECONSENTCOMMAND_H_
-#define HAVECONSENTCOMMAND_H_
+package server.zone.objects.tangible.tool.customize;
 
-#include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
-#include "server/zone/objects/player/sui/callbacks/RevokeConsentSuiCallback.h"
+import server.zone.objects.tangible.TangibleObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.Zone;
+import engine.lua.LuaObject;
+import server.zone.packets.scene.AttributeListMessage;
+import server.zone.packets.object.ObjectMenuResponse;
+include server.zone.objects.player.PlayerObject;
+import server.zone.objects.creature.CreatureObject;
+import server.zone.ZoneServer;
+import server.zone.objects.manufactureschematic.ManufactureSchematic;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
-class HaveconsentCommand : public QueueCommand {
-public:
+class VehicleCustomKit extends TangibleObject {
 
-	HaveconsentCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	public VehicleCustomKit() {
+		setLoggingName("VehicleCustomKit");
 	}
-
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
-
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
-
-		if (!creature->isPlayerCreature())
-			return GENERALERROR;
-
-		CreatureObject* player = cast<CreatureObject*>(creature);
-
-		PlayerObject* ghost = player->getPlayerObject();
-
-		ghost->closeSuiWindowType(SuiWindowType::CLONE_REQUEST);
-
-		if (ghost->getConsentListSize() <= 0) {
-			player->sendSystemMessage("@error_message:consent_to_empty"); //You have not granted consent to anyone.
-			return GENERALERROR;
-		}
-
-		Reference<SuiListBox*> consentBox = new SuiListBox(player, SuiWindowType::MEDIC_CONSENT);
-		ZoneServer* server = player->getZoneServer();
-		consentBox->setCallback(new RevokeConsentSuiCallback(server));
-		consentBox->setPromptTitle("@ui:consent_title");
-		consentBox->setPromptText("All players whom you have given your consent to are listed below.\n\nHighlight a player's name and click OK to revoke consent.");
-		consentBox->setCancelButton(true, "");
-
-		for (int i = 0; i < ghost->getConsentListSize(); ++i) {
-			String entryName = ghost->getConsentName(i);
-
-			if (!entryName.isEmpty())
-				consentBox->addMenuItem(entryName);
-		}
-
-		player->getPlayerObject()->addSuiBox(consentBox);
-		player->sendMessage(consentBox->generateMessage());
-
-		return SUCCESS;
-	}
-
-};
-
-#endif //HAVECONSENTCOMMAND_H_
+	
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
+	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
+	
+}
