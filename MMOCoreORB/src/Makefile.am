@@ -493,6 +493,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/terrain/layer/filters/FilterFractal.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
 		server/zone/objects/intangible/LuaIntangibleObject.cpp \
+		server/zone/objects/intangible/LuaControlDevice.cpp \
 		server/zone/objects/staticobject/StaticObjectImplementation.cpp \
 		server/zone/objects/intangible/VehicleControlDeviceImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
