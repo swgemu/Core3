@@ -465,3 +465,156 @@ DistributedObjectAdapter* ControlDeviceHelper::createAdapter(DistributedObjectSt
 	return adapter;
 }
 
+const char LuaControlDevice::className[] = "LuaControlDevice";
+
+Luna<LuaControlDevice>::RegType LuaControlDevice::Register[] = {
+	{ "_setObject", &LuaControlDevice::_setObject },
+	{ "_getObject", &LuaControlDevice::_getObject },
+	{ "updateToDatabaseAllObjects", &LuaControlDevice::updateToDatabaseAllObjects },
+	{ "storeObject", &LuaControlDevice::storeObject },
+	{ "generateObject", &LuaControlDevice::generateObject },
+	{ "callObject", &LuaControlDevice::callObject },
+	{ "setControlledObject", &LuaControlDevice::setControlledObject },
+	{ "getControlledObject", &LuaControlDevice::getControlledObject },
+	{ "isControlDevice", &LuaControlDevice::isControlDevice },
+	{ 0, 0 }
+};
+
+LuaControlDevice::LuaControlDevice(lua_State *L) {
+	realObject = static_cast<ControlDevice*>(lua_touserdata(L, 1));
+}
+
+LuaControlDevice::~LuaControlDevice() {
+}
+
+int LuaControlDevice::_setObject(lua_State* L) {
+	realObject = static_cast<ControlDevice*>(lua_touserdata(L, -1));
+
+	return 0;
+}
+
+int LuaControlDevice::_getObject(lua_State* L) {
+	lua_pushlightuserdata(L, realObject.get());
+
+	return 1;
+}
+
+int LuaControlDevice::updateToDatabaseAllObjects(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (lua_isboolean(L, -1)) {
+		if (parameterCount == 1) {
+			bool startTask = lua_toboolean(L, -1);
+
+			realObject->updateToDatabaseAllObjects(startTask);
+
+			return 0;
+		} else {
+			throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'ControlDevice:updateToDatabaseAllObjects(boolean)'");
+		}
+	} else {
+		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'ControlDevice:updateToDatabaseAllObjects(boolean)'");
+	}
+}
+
+int LuaControlDevice::storeObject(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (lua_isuserdata(L, -1)) {
+		if (parameterCount == 1) {
+			CreatureObject* player = static_cast<CreatureObject*>(lua_touserdata(L, -1));
+
+			realObject->storeObject(player);
+
+			return 0;
+		} else {
+			throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'ControlDevice:storeObject(userdata)'");
+		}
+	} else {
+		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'ControlDevice:storeObject(userdata)'");
+	}
+}
+
+int LuaControlDevice::generateObject(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (lua_isuserdata(L, -1)) {
+		if (parameterCount == 1) {
+			CreatureObject* player = static_cast<CreatureObject*>(lua_touserdata(L, -1));
+
+			realObject->generateObject(player);
+
+			return 0;
+		} else {
+			throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'ControlDevice:generateObject(userdata)'");
+		}
+	} else {
+		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'ControlDevice:generateObject(userdata)'");
+	}
+}
+
+int LuaControlDevice::callObject(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (lua_isuserdata(L, -1)) {
+		if (parameterCount == 1) {
+			CreatureObject* player = static_cast<CreatureObject*>(lua_touserdata(L, -1));
+
+			realObject->callObject(player);
+
+			return 0;
+		} else {
+			throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'ControlDevice:callObject(userdata)'");
+		}
+	} else {
+		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'ControlDevice:callObject(userdata)'");
+	}
+}
+
+int LuaControlDevice::setControlledObject(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (lua_isuserdata(L, -1)) {
+		if (parameterCount == 1) {
+			TangibleObject* object = static_cast<TangibleObject*>(lua_touserdata(L, -1));
+
+			realObject->setControlledObject(object);
+
+			return 0;
+		} else {
+			throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'ControlDevice:setControlledObject(userdata)'");
+		}
+	} else {
+		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'ControlDevice:setControlledObject(userdata)'");
+	}
+}
+
+int LuaControlDevice::getControlledObject(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (parameterCount == 0) {
+		TangibleObject* result = realObject->getControlledObject();
+
+		if (result != NULL)
+			lua_pushlightuserdata(L, result);
+		else
+			lua_pushnil(L);
+		return 1;
+	} else {
+		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'ControlDevice:getControlledObject()'");
+	}
+}
+
+int LuaControlDevice::isControlDevice(lua_State *L) {
+	int parameterCount = lua_gettop(L) - 1;
+	
+	if (parameterCount == 0) {
+		bool result = realObject->isControlDevice();
+
+		lua_pushboolean(L, result);
+		return 1;
+	} else {
+		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'ControlDevice:isControlDevice()'");
+	}
+}
+

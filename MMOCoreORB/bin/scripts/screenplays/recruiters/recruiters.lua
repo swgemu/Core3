@@ -13,7 +13,8 @@ recruiter_convo_handler = Object:new {
 	INVENTORYERROR = 5,
 	TEMPLATEPATHERROR = 6,
 	GIVEERROR = 7,
-
+	DATAPADFULL = 8,
+	DATAPADERROR = 9,
 }
 
 	
@@ -40,8 +41,10 @@ function recruiter_convo_handler:getNextConversationScreen(conversationTemplate,
 		local luaLastConversationScreen = LuaConversationScreen(lastConversationScreen)
 		local optionLink = luaLastConversationScreen:getOptionLink(selectedOption)
 		--print("optionlink is " .. optionLink)
-		if ( self:isWeapon(optionLink) or self:isArmor(optionLink) or self:isUniform(optionLink) or self:isFurniture(optionLink)  or self:isInstallation(optionLink) )then
-			nextConversationScreen = conversation:getScreen("purchased")
+		if ( self:isWeapon(optionLink) or self:isArmor(optionLink) or self:isUniform(optionLink) or self:isFurniture(optionLink)  or self:isInstallation(optionLink))then
+			nextConversationScreen = conversation:getScreen("purchased_item")
+		elseif ( self:isHireling(optionLink) ) then
+			nextConversationScreen = conversation:getScreen("purchased_hireling")
 		else
 		
 			--print("Handling next screen normally")
@@ -215,7 +218,7 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 			self:addFurniture(clonedConversation, getGCWDiscount(conversingPlayer))
 		end
 		
-	elseif (screenID == "purchased") then
+	elseif (screenID == "purchased_item" or screenID == "purchased_hireling") then
 		conversationScreen = self:processPurchase(conversingPlayer, conversationTemplate, selectedOption, conversingNPC)
 	elseif (screenID == "fp_installations") then
 		conversationScreen = screen:cloneScreen()
@@ -224,6 +227,14 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 			
 		if (clonedConversation ~= nil) then
 			self:addInstallations(clonedConversation, getGCWDiscount(conversingPlayer))
+		end
+	elseif (screenID == "fp_hirelings") then
+		conversationScreen = screen:cloneScreen()
+		
+		local clonedConversation = LuaConversationScreen(conversationScreen)
+			
+		if (clonedConversation ~= nil) then
+			self:addHirelings(clonedConversation, getGCWDiscount(conversingPlayer))
 		end
 	end
 	
@@ -455,6 +466,10 @@ function recruiter_convo_handler:addInstallations(thisConversation, gcwDiscount)
 	printf("pure recruiter_convo_handler:addInstallations(thisConversation, gcwDiscount)")
 end
 
+function recruiter_convo_handler:addHirelings(thisConversation, gcwDiscount)
+	printf("pure recruiter_convo_handler:addHirelings(thisConversation, gcwDiscount)")
+end
+
 function recruiter_convo_handler:getInitialScreen(play, npc, conversationTemplate)
 	local convoTemplate = LuaConversationTemplate(conversationTemplate)
 	local conversingPlayer = LuaCreatureObject(play)
@@ -525,12 +540,25 @@ function recruiter_convo_handler:processPurchase(conversingPlayer, conversationT
 		local convoTemplate = LuaConversationTemplate(conversationTemplate)
 		
 		itemname = luaLastConversationScreen:getOptionLink(selectedOption)
-	
-		local awardresult = self:awarditem(conversingPlayer, itemname) 
-		
+
+		local awardresult = nil
+
+		if (self:isHireling(itemname)) then
+			awardresult = self:awardData(conversingPlayer, itemname)
+		else
+			awardresult = self:awardItem(conversingPlayer, itemname)
+		end
+
 		if (awardresult == self.SUCCESS) then
-		
-			local purchasedScreen = convoTemplate:getScreen("purchased")  -- Your requisition of the %TT order is complete.
+
+			local purchasedScreen = nil
+
+			if (self:isHireling(itemname)) then
+				purchasedScreen = convoTemplate:getScreen("purchased_hireling")
+			else
+				purchasedScreen = convoTemplate:getScreen("purchased_item")
+			end
+
 			local screenObject = LuaConversationScreen(purchasedScreen)
 			conversationScreen = screenObject:cloneScreen()
 			
@@ -553,6 +581,8 @@ function recruiter_convo_handler:processPurchase(conversingPlayer, conversationT
 				end
 			elseif ( self:isInstallation(itemname)) then
 				screenObject:setDialogTextTT("deed",itemname)
+			elseif ( self:isHireling(itemname)) then
+				screenObject:setDialogTextTT("mob/creature_names",itemname)
 			else
 				spatialChat(conversingNPC, "I'm sorry.  We were unable to determine the TYPE of item you are requesting")
 			end
@@ -570,9 +600,11 @@ function recruiter_convo_handler:processPurchase(conversingPlayer, conversationT
 		elseif (awardresult == self.INVENTORYFULL) then
 		
 			conversationScreen = convoTemplate:getScreen("inventory_full") -- Your inventory is full.  YOu must make some room before you can purchase.
+		elseif (awardresult == self.DATAPADFULL) then
+			conversationScreen = convoTemplate:getScreen("datapad_full") -- Your datapad is full. You must first free some space.
 		elseif ( awardresult == self.ITEMCOST ) then
 			spatialChat(conversingNPC, "I'm sorry.  We were unable to price this item " .. selectedOption)
-		elseif ( awardresult == self.INVENTORYERROR) then
+		elseif ( awardresult == self.INVENTORYERROR or awardresult == self.DATAPADERROR) then
 			spatialChat(conversingNPC, "I don't see where you can put this item.")
 		elseif (awardresult == self.TEMPLATEPATHERROR) then
 			spatialChat(conversingNPC, "Sorry.  I was unable to locate the item ERROR: " .. selectedOption)
@@ -587,7 +619,7 @@ function recruiter_convo_handler:processPurchase(conversingPlayer, conversationT
 
 end
 
-function recruiter_convo_handler:awarditem(player, itemstring)
+function recruiter_convo_handler:awardItem(player, itemstring)
 	local obj = LuaSceneObject(player)
 	
 	--print("awarding item " .. itemstring)
@@ -676,6 +708,94 @@ function recruiter_convo_handler:awarditem(player, itemstring)
 
 end
 
+function recruiter_convo_handler:awardData(player, itemstring)
+	local obj = LuaSceneObject(player)
+	
+	--print("awarding item " .. itemstring)
+	local creatureObject = LuaCreatureObject(player)
+	
+	if ( creatureObject == nil or obj == nil ) then
+		return self.GENERALERROR
+	end
+	
+	local pPlayer = creatureObject:getPlayerObject()
+	
+	local playerObject = LuaPlayerObject(pPlayer)
+	
+	local pDatapad = obj:getSlottedObject("datapad")
+	
+	local factionstanding = playerObject:getFactionStanding(self:getRecruiterFactionString())
+		
+	local itemcost = self:getItemCost(itemstring)
+
+	-- additional error message
+	if ( itemcost == nil ) then
+		return self.ITEMCOST
+	end
+	
+	if(itemcost > 4 and creatureObject:hasSkill("combat_smuggler_master") ) then
+		--print("give a 25% discount")
+		itemcost = itemcost * .75
+	end
+	
+	itemcost  = math.ceil(itemcost *  getGCWDiscount(player))
+	
+	if ( pDatapad ~= nil and playerObject ~= nil and itemcost ~= nil ) then 
+		--print("itemcost is " .. itemcost)
+		if (factionstanding  >= (itemcost + 200)) then
+			--print("faction is good")
+			local pItem
+			
+			if (pDatapad ~= nil) then
+			
+				local datapad = LuaSceneObject(pDatapad)
+				
+				local slotsremaining = datapad:getContainerVolumeLimit() - datapad:getContainerObjectsSize()
+				
+				local bonusItemCount = self:getBonusItemCount(itemstring)
+				
+				if (slotsremaining < (1 + bonusItemCount)) then
+					return self.DATAPADFULL
+				end	
+			
+				local res =  self:transferData(player, pDatapad, itemstring)
+				if(res ~= self.SUCCESS) then
+					return res
+				end
+							
+				playerObject:decreaseFactionStanding(self:getRecruiterFactionString(),itemcost)
+				
+				if(bonusItemCount) then
+					local bonusItems = self:getBonusItems(itemstring)
+					if(bonusItems ~= nil) then
+						for k, v in pairs(bonusItems) do
+							res = self:transferData(player, pDatapad, v)
+							if(res ~= self.SUCCESS) then
+								return res
+							end
+						end
+					end
+				end	
+
+				
+			else
+				-- temp message for additional item requisition failure
+				creatureObject:sendSystemMessage("unable to get datapad")
+				return self.DATAPADERROR
+			end
+		
+		else
+			
+			return self.NOTENOUGHFACTION
+		end
+	
+	else
+		return self.GENERALERROR
+	end
+	
+	return self.SUCCESS
+
+end
 
 function recruiter_convo_handler:transferItem(player, pInventory, itemstring)
 	--print("giving " .. itemstring)
@@ -725,6 +845,39 @@ function recruiter_convo_handler:transferItem(player, pInventory, itemstring)
 	return self.SUCCESS
 end
 
+function recruiter_convo_handler:transferData(player, pDatapad, itemstring)
+	--print("giving " .. itemstring)
+	local templatePath = self:getTemplatePath(itemstring)
+	
+	if(templatePath == nil ) then
+		return self.TEMPLATEPATHERROR
+	end
+	
+	local genPath = self:getControlledObjectTemplate(itemstring)
+
+	if (genPath == nil ) then
+		return self.TEMPLATEPATHERROR
+	end
+
+	pItem = giveControlDevice(pDatapad, templatePath, genPath, -1)
+	
+	if (pItem ~= nil) then
+	
+		local item = LuaSceneObject(pItem)
+	
+		if ( item == nil ) then
+			return self.GIVEERROR
+		end
+
+		item:sendTo(player)
+
+	else
+		return self.GIVEERROR
+	end
+	
+	return self.SUCCESS
+end
+
 function recruiter_convo_handler:getItemCost(itemstring)
 	printf("pure recruiter_convo_handler:getItemCost(itemstring)")
 end
@@ -732,10 +885,9 @@ end
 function recruiter_convo_handler:getTemplatePath(strItem)
 	printf("pure recruiter_convo_handler:getTemplatePath(strItem)")
 end
+
 function recruiter_convo_handler:isWeapon(strItem)
-
 	printf("pure recruiter_convo_handler:isWeapon(strItem)")
-
 end
 
 function recruiter_convo_handler:isArmor(strItem)
@@ -744,7 +896,6 @@ end
 
 function recruiter_convo_handler:isUniform(strItem)
 	printf("pure recruiter_convo_handler:isUniform(strItem)")
-	
 end
 
 function recruiter_convo_handler:isFurniture(strItem)
@@ -757,6 +908,10 @@ end
 
 function recruiter_convo_handler:isTerminal(strItem)
 	printf("pure recruiter_convo_handler:isTerminal(strItem)")
+end
+
+function recruiter_convo_handler:isHireling(strItem)
+	printf("pure recruiter_convo_handler:isHireling(strItem)")
 end
 
 function recruiter_convo_handler:getBonusItems(strItem)
