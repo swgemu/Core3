@@ -55,6 +55,7 @@ include server.zone.managers.radial.RadialOptions;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.objects.scene.variables.ContainerPermissions;
 
+@lua
 class ControlDevice extends IntangibleObject {
 	@weakReference
 	protected TangibleObject controlledObject;
