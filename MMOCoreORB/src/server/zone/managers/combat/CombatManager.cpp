@@ -48,6 +48,8 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 	if (defender->isCreatureObject() && (cast<CreatureObject*>(defender))->isIncapacitated())
 		return false;
 
+	if (attacker->isPlayerCreature() && attacker->getPlayerObject()->isAFK())
+		return false;
 	// this is redundant (happens again in set/addDefender)
 	//attacker->clearState(CreatureState::PEACE);
 

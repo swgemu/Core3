@@ -387,7 +387,9 @@ bool PlayerObjectImplementation::setCharacterBit(uint32 bit, bool notifyClient) 
 	} else
 		return false;
 }
-
+bool PlayerObjectImplementation::isAFK()  {
+	return (characterBitmask & ((uint32)AFK)) != 0;
+}
 bool PlayerObjectImplementation::clearCharacterBit(uint32 bit, bool notifyClient) {
 	if (characterBitmask & bit) {
 		characterBitmask &= ~bit;

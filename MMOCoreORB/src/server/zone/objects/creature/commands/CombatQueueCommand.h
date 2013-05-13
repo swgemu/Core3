@@ -12,6 +12,7 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/combat/CreatureAttackData.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
@@ -155,6 +156,11 @@ public:
 		if (creature->isDead())
 			return INVALIDLOCOMOTION;
 
+		if (creature->isPlayerCreature()){
+			if (creature->getPlayerObject() && creature->getPlayerObject()->isAFK()) {
+				return GENERALERROR;
+			}
+		}
 		if (creature->isKneeling() && weapon->isMeleeWeapon() && !weapon->isJediWeapon())
 			return NOKNEELING;
 
