@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABn///7c\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/crafting/CraftingSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 53
+      },
+      "writtenOn": "2013-05-13T04:56:29Z",
+      "side": 1,
+      "message": "only check if we are ready for assembly. checking to see if it was assmebled already causes the /nextCraftingStage command to fail in a macro with the missing resource messages.",
+      "revId": "9aad94e4432cdea59fabe062d539ef80c8692548",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABn///7Y\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/crafting/CraftingSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1116,
+      "author": {
+        "id": 53
+      },
+      "writtenOn": "2013-05-13T04:56:29Z",
+      "side": 1,
+      "message": "Dont force the stage to 0, let the previous state machine check do its job. When you set this to 0, if there happens to be an extra call to nextCraftingstage it locks the tool completly as it believes its in state 0 and not moving the assembly stages forward/",
+      "revId": "9aad94e4432cdea59fabe062d539ef80c8692548",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABn///7U\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/crafting/CraftingSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1149,
+      "author": {
+        "id": 53
+      },
+      "writtenOn": "2013-05-13T04:56:29Z",
+      "side": 1,
+      "message": "Just a line formatting change",
+      "revId": "9aad94e4432cdea59fabe062d539ef80c8692548",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
