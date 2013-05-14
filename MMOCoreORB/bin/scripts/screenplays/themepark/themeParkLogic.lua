@@ -275,6 +275,9 @@ end
 
 function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversingPlayer)
 	local mission = self:getMission(npcNumber, missionNumber)
+	local creature = LuaCreatureObject(pConversingPlayer)
+
+	writeStringData(creature:getObjectID() .. ":activeScreenPlay", self.className)
 	
 	if mission.missionType == "deliver" then
 		return self:handleDeliverMissionAccept(mission, pConversingPlayer, missionNumber)
@@ -905,6 +908,7 @@ function ThemeParkLogic:goToNextMission(pConversingPlayer)
 	
 	local creature = LuaCreatureObject(pConversingPlayer)
 	writeData(creature:getObjectID() .. ":activeMission", 0)
+	writeStringData(creature:getObjectID() .. ":activeScreenPlay", "")
 	creature:setScreenPlayState(math.pow(2, missionNumber - 1), self.screenPlayState .. "_mission_" .. npcName)
 	
 	if missionNumber == table.getn(npcData.missions) then
@@ -958,6 +962,7 @@ function ThemeParkLogic:resetCurrentMission(pConversingPlayer)
 	
 	local creature = LuaCreatureObject(pConversingPlayer)
 	writeData(creature:getObjectID() .. ":activeMission", 0)
+	writeStringData(creature:getObjectID() .. ":activeScreenPlay", "")
 	
 	self:cleanUpMission(pConversingPlayer)
 end
