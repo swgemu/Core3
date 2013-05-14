@@ -610,6 +610,8 @@ public:
 
 	void toggleCharacterBit(unsigned int bit);
 
+	bool isAFK();
+
 	VectorMap<String, int>* getXpTypeCapList();
 
 	DeltaVectorMap<String, int>* getExperienceList();
@@ -1268,6 +1270,8 @@ public:
 
 	void toggleCharacterBit(unsigned int bit);
 
+	bool isAFK();
+
 	VectorMap<String, int>* getXpTypeCapList();
 
 	DeltaVectorMap<String, int>* getExperienceList();
@@ -1732,6 +1736,8 @@ public:
 	bool clearCharacterBit(unsigned int bit, bool notifyClient);
 
 	void toggleCharacterBit(unsigned int bit);
+
+	bool isAFK();
 
 	int getForcePower();
 
