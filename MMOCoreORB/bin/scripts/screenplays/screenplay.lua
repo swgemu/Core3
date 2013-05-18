@@ -219,13 +219,17 @@ includeFile("poi/yavin4_woolamander_temple.lua")
 
 --Static Spawns
 
+--Dathomir
 includeFile("static_spawns/dathomir_static_spawns_ne.lua")
 includeFile("static_spawns/dathomir_static_spawns_nw.lua")
 includeFile("static_spawns/dathomir_static_spawns_se.lua")
 includeFile("static_spawns/dathomir_static_spawns_sw.lua")
 
+--Talus
 includeFile("static_spawns/talus_static_spawns_south.lua")
 
+--Yavin4
+includeFile("static_spawns/yavin4_static_spawns.lua")
 
 --Tests
 --includeFile("tests/options_bitmask_test.lua")
