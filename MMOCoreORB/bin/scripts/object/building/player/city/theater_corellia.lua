@@ -44,7 +44,6 @@
 object_building_player_city_theater_corellia = object_building_player_city_shared_theater_corellia:new {
 	lotSize = 3,
 	baseMaintenanceRate = 50,
-	gameObjectType = 524,
 	planetMapCategory = "theater",
 	allowedZones = {"corellia", "talus"},
 	length = 5,

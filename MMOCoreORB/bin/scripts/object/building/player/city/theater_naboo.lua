@@ -47,7 +47,6 @@ object_building_player_city_theater_naboo = object_building_player_city_shared_t
 	allowedZones = {"dantooine", "naboo", "rori"},
 	length = 5,
 	width = 6,
-	gameObjectType = 524,
 	planetMapCategory = "theater",
 	abilityRequired = "place_theater",
 	skillMods = {

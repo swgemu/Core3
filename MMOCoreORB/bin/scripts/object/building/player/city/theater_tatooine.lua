@@ -47,7 +47,6 @@ object_building_player_city_theater_tatooine = object_building_player_city_share
 	allowedZones = {"dantooine", "lok", "tatooine"},
 	length = 5,
 	width = 6,
-	gameObjectType = 524,
 	planetMapCategory = "theater",
 	abilityRequired = "place_theater",
 	skillMods = {
