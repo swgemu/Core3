@@ -921,7 +921,12 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 		if (targetPosition->getCell() == NULL && zone != NULL) {
 			PlanetManager* planetManager = zone->getPlanetManager();
+
+			targetMutex.unlock();
+
 			targetPosition->setPositionZ(planetManager->findClosestWorldFloor(targetPosition->getPositionX(), targetPosition->getPositionY(), targetPosition->getPositionZ(), this->getSwimHeight()));
+
+			targetMutex.lock();
 		}
 
 		SceneObject* targetCoordinateCell = targetPosition->getCell();
@@ -1067,7 +1072,11 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 							
 
 							if (zone != NULL) {
+								targetMutex.unlock();
+
 								newPositionZ = zone->getPlanetManager()->findClosestWorldFloor(newPositionX, newPositionY, targetPosition->getPositionZ(), this->getSwimHeight());
+
+								targetMutex.unlock();
 							}
 							//newPositionZ = nextPosition.getZ();
 						} else {
