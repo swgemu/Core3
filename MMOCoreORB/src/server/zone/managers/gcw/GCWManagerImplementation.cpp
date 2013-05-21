@@ -373,7 +373,11 @@ void GCWManagerImplementation::refreshExpiredVulnerability(BuildingObject* build
 
 
 	} else{
+
+#ifdef GCW_DEBUG
 		info("Loaded " + String::valueOf(building->getObjectID()) + " while invulnerable between vuln and the next start",true);
+#endif
+
 		baseData->setLastVulnerableTime(thisStartTime);
 		Time nStartTime(thisStartTime);
 		nStartTime.addMiliTime(vulnerabilityFrequency*1000);
