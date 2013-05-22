@@ -1422,10 +1422,10 @@ void SceneObjectImplementation::createChildObjects() {
 }
 
 void SceneObjectImplementation::faceObject(SceneObject* obj) {
-	Vector3 thisWorldPos = getWorldPosition();
-	Vector3 targetWorldPos = obj->getWorldPosition();
+	Vector3 thisPos = getPosition();
+	Vector3 targetPos = obj->getPosition();
 
-	float directionangle = atan2(targetWorldPos.getX() - thisWorldPos.getX(), targetWorldPos.getY() - thisWorldPos.getY());
+	float directionangle = atan2(targetPos.getX() - thisPos.getX(), targetPos.getY() - thisPos.getY());
 
 	if (directionangle < 0) {
 		float a = M_PI + directionangle;
