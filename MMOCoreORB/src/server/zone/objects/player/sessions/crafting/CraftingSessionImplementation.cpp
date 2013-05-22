@@ -1107,13 +1107,11 @@ void CraftingSessionImplementation::finishStage1(int clientCounter) {
 void CraftingSessionImplementation::finishStage2(int clientCounter) {
 	ManagedReference<CreatureObject*> crafter = this->crafter.get();
 
-	state = 0;
-
 	PlayerObjectDeltaMessage9* dplay9 = new PlayerObjectDeltaMessage9(
 			crafter->getPlayerObject());
 	dplay9->insertShort(5);
 	dplay9->insertInt(0xFFFFFFFF);
-	dplay9->setCraftingState(0);
+	dplay9->setCraftingState(state);
 
 	dplay9->close();
 	crafter->sendMessage(dplay9);
