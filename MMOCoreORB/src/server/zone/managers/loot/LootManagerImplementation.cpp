@@ -36,6 +36,7 @@ void LootManagerImplementation::initialize() {
 	lootGroupMap->initialize();
 
 	info("Loaded " + String::valueOf(lootableMods.size()) + " lootable stat mods.", true);
+	info("Loaded " + String::valueOf(lootableDots.size()) + " possible lootable DoT weapon templates.", true);
 	info("Loaded " + String::valueOf(lootGroupMap->countLootItemTemplates()) + " loot items.", true);
 	info("Loaded " + String::valueOf(lootGroupMap->countLootGroupTemplates()) + " loot groups.", true);
 
@@ -54,6 +55,18 @@ bool LootManagerImplementation::loadConfigData() {
 	exceptionalModifier = lua->getGlobalFloat("exceptionalModifier");
 	legendaryChance = lua->getGlobalFloat("legendaryChance");
 	legendaryModifier = lua->getGlobalFloat("legendaryModifier");
+
+	LuaObject lootableDotsTable = lua->getGlobalObject("weaponDotTemplates");
+
+	if (!lootableDotsTable.isValidTable())
+		return false;
+
+	for (int i = 1; i <= lootableDotsTable.getTableSize(); ++i) {
+		String mod = lootableDotsTable.getStringAt(i);
+		lootableDots.put(mod);
+	}
+
+	lootableDotsTable.pop();
 
 	LuaObject lootableModsTable = lua->getGlobalObject("lootableStatMods");
 
@@ -244,6 +257,8 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 		craftingValues.setCurrentPercentage(subtitle, percentage + deviation);
 	}
 
+	addDots(prototype, level);
+
 	// Use percentages to recalculate the values
 	craftingValues.recalculateValues(false);
 
@@ -379,4 +394,46 @@ bool LootManagerImplementation::createLoot(SceneObject* container, const String&
 
 
 	return true;
+}
+
+void LootManagerImplementation::addDots(TangibleObject* object, int creatureLevel) {
+
+	if (object == NULL)
+		return;
+
+	if (object->isWeaponObject()) {
+		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(object);
+
+		bool shouldGenerateDots = false;
+
+		int roll = System::random(100);
+
+		// Only apply dot if it's in the weapon table.
+		for (int i = 0; i < lootableDots.size(); i++ )
+			if (weapon->getWeaponType() == lootableDots.get(i)) {
+				if (roll > 90) { // 10% chance to drop a DoT in weapon.
+					shouldGenerateDots = true;
+				}
+			}
+
+		if (shouldGenerateDots) {
+			// Lets generate some stats based on creature level. TODO: Needs possibility of additional dots added depending on chance/loot level.
+			int level = creatureLevel;
+
+			int type = System::random(2) + 1; // Types are: Disease, Poison, Fire (3).
+			int attribute = System::random(8) + 1; // Types are the corresponding pools, 1-9. (Health, action, etc.)
+			int strength = MIN((System::random(100) + level) + 50, 300); // Strength is USUALLY from 50-300.
+			int duration = MIN((level - System::random(level)) + 10, 200); // Duration is USUALLY from 10-200 (seconds).
+			int potency = MIN(level - System::random(50) + 1, 100); // Potency is anywhere from 1 to 100%.
+			int uses = System::random(5000) + 1000; // Uses range is 1000-6000 (decreases every attack. Not sure if based off creature level or completely random.)
+
+			weapon->setDotType(type);
+			weapon->setDotAttribute(attribute);
+			weapon->setDotStrength(strength);
+			weapon->setDotDuration(duration);
+			weapon->setDotPotency(potency);
+			weapon->setDotUses(uses);
+		}
+	}
+
 }

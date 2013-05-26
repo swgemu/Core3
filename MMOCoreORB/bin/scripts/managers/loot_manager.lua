@@ -46,6 +46,13 @@ legendaryChance = 1000000 --1 in 1,000,000
 --exceptionalChance = 100 --1 in 100 for testing
 --legendaryChance = 1000 --1 in 1000 for testing
 
+-- Determines what weapon templates will drop with DoTs on them. See Weapon Object for names.
+weaponDotTemplates = {
+	"onehandmelee",
+	"pistol",
+	"polearm"
+}
+
 --Determines how much of an increase in the base stats will be applied to the object.
 exceptionalModifier = 2.5
 legendaryModifier = 5.0

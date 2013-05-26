@@ -58,6 +58,7 @@ include server.zone.managers.loot.LootGroupMap;
 include server.zone.managers.loot.lootgroup.LootGroupCollection;
 include server.zone.templates.LootItemTemplate;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.objects.tangible.weapon.WeaponObject;
 
 class LootManager extends ManagedService implements Logger {
 	private transient CraftingManager craftingManager;
@@ -75,6 +76,9 @@ class LootManager extends ManagedService implements Logger {
 	
 	@dereferenced
 	private transient SortedVector<string> lootableMods;
+
+	@dereferenced
+	private transient SortedVector<string> lootableDots;
 	
 	public LootManager(CraftingManager craftman, ObjectManager objMan, ZoneServer server) {
 		craftingManager = craftman;
@@ -84,6 +88,7 @@ class LootManager extends ManagedService implements Logger {
 		lootGroupMap = null;
 		
 		lootableMods.setNoDuplicateInsertPlan();
+		lootableDots.setNoDuplicateInsertPlan();
 		
 		exceptionalChance = 0.0;
 		exceptionalModifier = 0.0;
@@ -118,6 +123,9 @@ class LootManager extends ManagedService implements Logger {
 	
 	@local
 	private native void setSockets(TangibleObject object, CraftingValues craftingValues);
+
+	@local
+	private native void addDots(TangibleObject object, int creatureLevel);
 
 	@local
 	private native void addConditionDamage(TangibleObject loot, CraftingValues craftingValues);

@@ -285,6 +285,30 @@ public:
 
 	String getXpType();
 
+	int getDotType();
+
+	int getDotAttribute();
+
+	int getDotStrength();
+
+	int getDotDuration();
+
+	int getDotPotency();
+
+	int getDotUses();
+
+	void setDotType(int t);
+
+	void setDotAttribute(int a);
+
+	void setDotStrength(int s);
+
+	void setDotDuration(int du);
+
+	void setDotPotency(int po);
+
+	void setDotUses(int u);
+
 	String getWeaponType();
 
 	bool isUnarmedWeapon();
@@ -429,6 +453,18 @@ protected:
 	float damageSlice;
 
 	float speedSlice;
+
+	int dotType;
+
+	int dotAttribute;
+
+	int dotStrength;
+
+	int dotDuration;
+
+	int dotPotency;
+
+	int dotUses;
 
 	Reference<SharedWeaponObjectTemplate* > weaponTemplate;
 
@@ -592,6 +628,30 @@ public:
 	int getDamageType();
 
 	String getXpType();
+
+	int getDotType();
+
+	int getDotAttribute();
+
+	int getDotStrength();
+
+	int getDotDuration();
+
+	int getDotPotency();
+
+	int getDotUses();
+
+	void setDotType(int t);
+
+	void setDotAttribute(int a);
+
+	void setDotStrength(int s);
+
+	void setDotDuration(int du);
+
+	void setDotPotency(int po);
+
+	void setDotUses(int u);
 
 	String getWeaponType();
 
@@ -787,6 +847,30 @@ public:
 	int getDamageType();
 
 	String getXpType();
+
+	int getDotType();
+
+	int getDotAttribute();
+
+	int getDotStrength();
+
+	int getDotDuration();
+
+	int getDotPotency();
+
+	int getDotUses();
+
+	void setDotType(int t);
+
+	void setDotAttribute(int a);
+
+	void setDotStrength(int s);
+
+	void setDotDuration(int du);
+
+	void setDotPotency(int po);
+
+	void setDotUses(int u);
 
 	String getWeaponType();
 
