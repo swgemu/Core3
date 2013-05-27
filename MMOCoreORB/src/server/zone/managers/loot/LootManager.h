@@ -113,6 +113,8 @@ using namespace server::zone::objects::tangible;
 
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+
 #include "system/util/VectorMap.h"
 
 #include "engine/core/ManagedService.h"
@@ -186,7 +188,17 @@ class LootManagerImplementation : public ManagedServiceImplementation, public Lo
 
 	float legendaryModifier;
 
+	float dotChance;
+
+	float dotPotencyMax;
+
+	float dotStrengthMax;
+
+	float dotDurationMax;
+
 	SortedVector<String> lootableMods;
+
+	SortedVector<String> lootableDots;
 
 public:
 	LootManagerImplementation(CraftingManager* craftman, ObjectManager* objMan, ZoneServer* server);
@@ -213,6 +225,8 @@ private:
 	void setCustomObjectName(TangibleObject* object, LootItemTemplate* templateObject);
 
 	void setSockets(TangibleObject* object, CraftingValues* craftingValues);
+
+	void addDots(TangibleObject* object, int creatureLevel);
 
 	void addConditionDamage(TangibleObject* loot, CraftingValues* craftingValues);
 
