@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAABn///3E\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/combat/CombatManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2013-05-27T03:32:26Z",
+      "side": 1,
+      "message": "I was going to do that at first but wasn\u0027t sure. I will change that next push.",
+      "parentUuid": "AAAABn///3c\u003d",
+      "revId": "258b2b2e57370d03fe056a69ba71e513a7789e8b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAABn///30\u003d",
         "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
         "patchSetId": 1
