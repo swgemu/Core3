@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAABn///30\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-05-27T02:04:06Z",
+      "side": 1,
+      "message": "I\u0027d recommend adding the option to set this drop chance in the .lua. That would make it easy for server admins to adjust or disable completely if they choose.",
+      "revId": "258b2b2e57370d03fe056a69ba71e513a7789e8b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABn///38\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-05-27T02:04:06Z",
+      "side": 1,
+      "message": "The possible attributes should depend on the dot type, should it not? For example, I believe that diseases should have all 9 attributes possible but that poisons and fires should only have the three primary attributes possible. You probably need to add some logic to only choose appropriate attributes based upon which dot type is selected.",
+      "revId": "258b2b2e57370d03fe056a69ba71e513a7789e8b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAABn///34\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-05-27T02:04:06Z",
+      "side": 1,
+      "message": "The strength and duration should also be dependent on the dot type, should it not? Some research may be needed.\n\nAdditionally, you may want to allow the ranges for duration and strength to be set in the .lua so that server admins can easily alter them.",
+      "revId": "258b2b2e57370d03fe056a69ba71e513a7789e8b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
