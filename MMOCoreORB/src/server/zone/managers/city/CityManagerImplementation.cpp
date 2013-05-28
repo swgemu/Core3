@@ -1622,9 +1622,10 @@ void CityManagerImplementation::sendMail(CityRegion* city, const String& sender,
 
 	for (int i = 0; i < citizenList->size(); ++i) {
 		uint64 citizenID = citizenList->get(i);
+
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(citizenID);
 
-		if (!obj->isPlayerCreature())
+		if (obj == NULL || !obj->isPlayerCreature())
 			continue;
 
 		CreatureObject* creo = obj.castTo<CreatureObject*>();
