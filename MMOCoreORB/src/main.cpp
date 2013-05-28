@@ -42,21 +42,42 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
  */
 
+#include "system/thread/ChildProcess.h"
+
 #include "server/ServerCore.h"
 #include "server/zone/managers/director/DirectorManager.h"
 
-/*#include "system/mm/AllocationTracker.h"
+class CoreProcess : public ChildProcess {
+	SortedVector<String>& arguments;
 
-	AllocationTracker* tracker;
+public:
+	CoreProcess(SortedVector<String>& args) : arguments(args) {
+	}
 
-	void initializeTracker() {
-	        printf("malloc initialization Hook installed\n");
+	void run() {
+		bool truncateData = arguments.contains("clean");
 
-	        tracker = AllocationTracker::getInstance();
-	        tracker->install();
-}*/
+		ServerCore core(truncateData, arguments);
+		core.start();
+	}
+
+	void handleCrash() {
+		//TODO: implement
+	}
+
+	bool isDeadlocked() {
+		//TODO: implement
+		return false;
+	}
+
+	void handleDeadlock() {
+		//TODO: implement
+	}
+};
 
 int main(int argc, char* argv[]) {
+	setbuf(stdout, 0);
+
 	try {
 		SortedVector<String> arguments;
 		for (int i = 1; i < argc; ++i) {
@@ -70,15 +91,19 @@ int main(int argc, char* argv[]) {
 			DirectorManager::instance()->getLuaInstance();
 
 			printf("Done\n");
+		} else if (arguments.contains("service")) {
+			while (true) {
+				CoreProcess core(arguments);
+				core.start();
 
-			return 0;
+				core.wait();
+			}
+		} else {
+			bool truncateData = arguments.contains("clean");
+
+			ServerCore core(truncateData, arguments);
+			core.start();
 		}
-
-		bool truncateData = arguments.contains("clean");
-
-		ServerCore core(truncateData, arguments);
-
-		core.start();
 
 	} catch (Exception& e) {
 		System::out << e.getMessage() << "\n";
