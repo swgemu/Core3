@@ -167,7 +167,7 @@ function ris_armor_quest_handler:startQuest1(playerCreo)
 	local pPlayerObject = playerCreo:getPlayerObject()
 	local playerObject = LuaPlayerObject(pPlayerObject)
 	
-	playerObject:addRewardedSchematic("object/draft_schematic/armor/armor_segment_ris.iff", -1, true)
+	playerObject:addRewardedSchematic("object/draft_schematic/armor/armor_segment_ris.iff", 2, -1, true)
 	ris_armor_quest_screenplay:setState(playerCreo, ris_armor_quest_screenplay.states.quest1.started)
 
 end
@@ -176,7 +176,7 @@ function ris_armor_quest_handler:startQuest3(playerCreo)
 	local pPlayerObject = playerCreo:getPlayerObject()
 	local playerObject = LuaPlayerObject(pPlayerObject)
 	
-	playerObject:addRewardedSchematic("object/draft_schematic/armor/component/armor_layer_ris.iff", -1, true)
+	playerObject:addRewardedSchematic("object/draft_schematic/armor/component/armor_layer_ris.iff", 2, -1, true)
 	ris_armor_quest_screenplay:setState(playerCreo, ris_armor_quest_screenplay.states.quest3.started)
 
 end
@@ -185,7 +185,7 @@ function ris_armor_quest_handler:startQuest5(playerCreo)
 	local pPlayerObject = playerCreo:getPlayerObject()
 	local playerObject = LuaPlayerObject(pPlayerObject)
 	
-	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_boots.iff", -1, true)
+	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_boots.iff", 2, -1, true)
 	ris_armor_quest_screenplay:setState(playerCreo, ris_armor_quest_screenplay.states.quest5.started)
 
 end
@@ -194,14 +194,14 @@ function ris_armor_quest_handler:completeQuest6(playerCreo)
 	local pPlayerObject = playerCreo:getPlayerObject()
 	local playerObject = LuaPlayerObject(pPlayerObject)
 	
-	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_bicep_l.iff", -1, true)
-	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_bicep_r.iff", -1, true)
-	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_bracer_l.iff", -1, true)
-	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_bracer_r.iff", -1, true)
-	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_chest_plate.iff", -1, true)
-	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_gloves.iff", -1, true)
-	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_helmet.iff", -1, true)
-	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_leggings.iff", -1, true)
+	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_bicep_l.iff", 2, -1, true)
+	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_bicep_r.iff", 2, -1, true)
+	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_bracer_l.iff", 2, -1, true)
+	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_bracer_r.iff", 2, -1, true)
+	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_chest_plate.iff", 2, -1, true)
+	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_gloves.iff", 2, -1, true)
+	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_helmet.iff", 2, -1, true)
+	playerObject:addRewardedSchematic("object/draft_schematic/clothing/clothing_armor_ris_leggings.iff", 2, -1, true)
 	ris_armor_quest_screenplay:setState(playerCreo, ris_armor_quest_screenplay.states.quest6.complete)
 
 end
