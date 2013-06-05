@@ -560,9 +560,9 @@ void BuildingObjectImplementation::broadcastCellPermissions() {
 }
 
 void BuildingObjectImplementation::broadcastCellPermissions(uint64 objectid) {
-	ManagedReference<SceneObject*> obj = containerObjects.get(objectid);
+	ManagedReference<SceneObject*> obj = getZoneServer()->getObject(objectid);
 
-	if (obj == NULL || !obj->isCellObject())
+	if (obj == NULL || !obj->isCellObject() || obj->getParent() != _this.get())
 		return;
 
 	CellObject* cell = obj.castTo<CellObject*>();
