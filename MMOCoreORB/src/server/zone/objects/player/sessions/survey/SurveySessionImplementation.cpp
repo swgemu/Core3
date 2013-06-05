@@ -225,6 +225,14 @@ void SurveySessionImplementation::startSample(const String& resname) {
 
 	if (!doGamble && richSampleLocation == NULL && System::random(50) == 7) {
 
+		if (surveyerGhost->hasSuiBoxWindowType(SuiWindowType::SURVEY_TOOL_CONCENTRATED_MINIGAME)) {
+			surveyerGhost->removeSuiBoxType(SuiWindowType::SURVEY_TOOL_CONCENTRATED_MINIGAME);
+		}
+
+		if (surveyerGhost->hasSuiBoxWindowType(SuiWindowType::SURVEY_TOOL_CONCENTRATED_MINIGAME2)) {
+			surveyerGhost->removeSuiBoxType(SuiWindowType::SURVEY_TOOL_CONCENTRATED_MINIGAME2);
+		}
+
 		if(System::random(1) == 1)
 			surveyCnodeMinigameSui();
 		else
