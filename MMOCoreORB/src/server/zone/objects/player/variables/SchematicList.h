@@ -20,7 +20,7 @@ protected:
 	VectorMap<ManagedReference<DraftSchematic* >, int > rewardedSchematics;
 
 public:
-	enum {MISSION = 0, LOOT};
+	enum {MISSION = 0, LOOT, QUEST};
 
 	SchematicList() {
 		rewardedSchematics.setNoDuplicateInsertPlan();

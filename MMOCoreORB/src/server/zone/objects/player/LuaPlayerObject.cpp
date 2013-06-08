@@ -147,14 +147,15 @@ int LuaPlayerObject::removeWaypoint(lua_State* L) {
 }
 
 int LuaPlayerObject::addRewardedSchematic(lua_State* L){
-	String templateString = lua_tostring(L, -3);
+	String templateString = lua_tostring(L, -4);
+	short type = lua_tointeger(L, -3);
 	int quantity = lua_tointeger(L, -2);
 	bool notifyClient = lua_toboolean(L, -1);
 
 	DraftSchematic* schematic = SchematicMap::instance()->get(templateString.hashCode());
 
 	if (schematic != NULL)
-		realObject->addRewardedSchematic(schematic, quantity, notifyClient);
+		realObject->addRewardedSchematic(schematic, type, quantity, notifyClient);
 
 	return 0;
 }

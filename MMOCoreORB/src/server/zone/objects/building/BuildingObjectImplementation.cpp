@@ -539,12 +539,13 @@ void BuildingObjectImplementation::destroyObjectFromDatabase(
 }
 
 void BuildingObjectImplementation::broadcastCellPermissions() {
-	Locker _lock(zone);
+	CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) getCloseObjects();
 
-	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = getCloseObjects();
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+	closeObjectsVector->safeCopyTo(closeObjects);
 
-	for (int i = 0; i < closeObjects->size(); ++i) {
-		ManagedReference<SceneObject*> obj = cast<SceneObject*>( closeObjects->get(i).get());
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		ManagedReference<SceneObject*> obj = cast<SceneObject*>( closeObjects.get(i).get());
 
 		if (obj->isPlayerCreature())
 			updateCellPermissionsTo(cast<CreatureObject*>(obj.get()));
@@ -559,19 +560,20 @@ void BuildingObjectImplementation::broadcastCellPermissions() {
 }
 
 void BuildingObjectImplementation::broadcastCellPermissions(uint64 objectid) {
-	ManagedReference<SceneObject*> obj = containerObjects.get(objectid);
+	ManagedReference<SceneObject*> obj = getZoneServer()->getObject(objectid);
 
-	if (obj == NULL || !obj->isCellObject())
+	if (obj == NULL || !obj->isCellObject() || obj->getParent() != _this.get())
 		return;
 
 	CellObject* cell = obj.castTo<CellObject*>();
 
-	Locker _lock(zone);
+	CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) getCloseObjects();
 
-	SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = getCloseObjects();
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+	closeObjectsVector->safeCopyTo(closeObjects);
 
-	for (int i = 0; i < closeObjects->size(); ++i) {
-		ManagedReference<SceneObject*> obj = cast<SceneObject*>( closeObjects->get(i).get());
+	for (int i = 0; i < closeObjects.size(); ++i) {
+		ManagedReference<SceneObject*> obj = cast<SceneObject*>( closeObjects.get(i).get());
 
 		if (obj->isPlayerCreature()) {
 			CreatureObject* creo = obj.castTo<CreatureObject*>();
