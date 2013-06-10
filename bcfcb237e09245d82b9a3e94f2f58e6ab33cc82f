@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAB3////k\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/SpawnAreaMap.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-06-10T09:14:00Z",
+      "side": 1,
+      "message": "I\u0027m not sure that adding a new spawn area type like this was the best way since it won\u0027t be comparing the same bit as the other types. I didn\u0027t, however, want to have to rewrite the whole system. Other ideas are certainly welcome.",
+      "revId": "bcfcb237e09245d82b9a3e94f2f58e6ab33cc82f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAB3////c\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/mission/MissionManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-06-10T09:14:00Z",
+      "side": 1,
+      "message": "Hunting missions will still pull their list from the world spawners.",
+      "revId": "bcfcb237e09245d82b9a3e94f2f58e6ab33cc82f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
