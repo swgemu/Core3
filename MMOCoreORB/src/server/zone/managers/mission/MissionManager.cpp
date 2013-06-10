@@ -684,13 +684,13 @@ void MissionManager::createSpawnPoint(CreatureObject* player, const String& spaw
 		_implementation->createSpawnPoint(player, spawnTypes);
 }
 
-LairSpawn* MissionManager::getRandomLairSpawn(CreatureObject* player, const int faction) {
+LairSpawn* MissionManager::getRandomLairSpawn(CreatureObject* player, const int faction, unsigned int type) {
 	MissionManagerImplementation* _implementation = static_cast<MissionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		return _implementation->getRandomLairSpawn(player, faction);
+		return _implementation->getRandomLairSpawn(player, faction, type);
 }
 
 Vector3 MissionManager::getRandomBountyTargetPosition(CreatureObject* player) {

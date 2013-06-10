@@ -428,6 +428,15 @@ Vector<ManagedReference<SpawnArea* > >* CreatureManager::getFactionalImperialMis
 		return _implementation->getFactionalImperialMissionSpawnAreas();
 }
 
+Vector<ManagedReference<SpawnArea* > >* CreatureManager::getNonfactionalMissionSpawnAreas() {
+	CreatureManagerImplementation* _implementation = static_cast<CreatureManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getNonfactionalMissionSpawnAreas();
+}
+
 SpawnArea* CreatureManager::getSpawnArea(const String& areaname) {
 	CreatureManagerImplementation* _implementation = static_cast<CreatureManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -699,6 +708,11 @@ Vector<ManagedReference<SpawnArea* > >* CreatureManagerImplementation::getFactio
 Vector<ManagedReference<SpawnArea* > >* CreatureManagerImplementation::getFactionalImperialMissionSpawnAreas() {
 	// server/zone/managers/creature/CreatureManager.idl():  		return spawnAreaMap.getFactionalImperialMissionSpawnAreas();
 	return (&spawnAreaMap)->getFactionalImperialMissionSpawnAreas();
+}
+
+Vector<ManagedReference<SpawnArea* > >* CreatureManagerImplementation::getNonfactionalMissionSpawnAreas() {
+	// server/zone/managers/creature/CreatureManager.idl():  		return spawnAreaMap.getNonfactionalMissionSpawnAreas();
+	return (&spawnAreaMap)->getNonfactionalMissionSpawnAreas();
 }
 
 /*

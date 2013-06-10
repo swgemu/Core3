@@ -157,6 +157,11 @@ class CreatureManager extends ZoneManager {
 		return spawnAreaMap.getFactionalImperialMissionSpawnAreas();
 	}
 	
+	@local
+	public Vector<SpawnArea> getNonfactionalMissionSpawnAreas() {
+		return spawnAreaMap.getNonfactionalMissionSpawnAreas();
+	}
+
 	public native SpawnArea getSpawnArea(final string areaname);
 	
 	public native boolean addWearableItem(CreatureObject creature, TangibleObject clothing);
