@@ -21,6 +21,7 @@
 #include "server/zone/managers/name/NameManager.h"
 #include "ScreenPlayTask.h"
 #include "ScreenPlayObserver.h"
+#include "PersistentEvent.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/player/creation/PlayerCreationManager.h"
@@ -48,6 +49,7 @@
 #include "server/zone/objects/scene/variables/ContainerPermissions.h"
 #include "server/zone/objects/tangible/deed/Deed.h"
 #include "server/zone/managers/gcw/GCWManager.h"
+
 
 int DirectorManager::DEBUG_MODE = 0;
 
@@ -478,11 +480,26 @@ int DirectorManager::createEvent(lua_State* L) {
 	String key = lua_tostring(L, -2);
 	String play = lua_tostring(L, -3);
 	uint32 mili = lua_tonumber(L, -4);
+	bool save = lua_toboolean(L, -5);
 
 	//System::out << "scheduling task with mili:" << mili << endl;
 
 	Reference<Task*> task = new ScreenPlayTask(obj, key, play);
 	task->schedule(mili);
+
+	if (save) {
+		Time expireTime;
+		uint64 currentTime = expireTime.getMiliTime() / 1000;
+
+		Reference<PersistentEvent*> event = new PersistentEvent();
+		event->setObject(obj);
+		event->setKey(key);
+		event->setScreenplay(play);
+		event->setTimeStamp(mili);
+		event->setCurTime(currentTime);
+
+		ObjectManager::instance()->persistObject(event, 1, "events");
+	}
 
 	return 0;
 }
