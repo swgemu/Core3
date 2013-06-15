@@ -92,6 +92,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/area/LairSpawnArea.cpp \
 				server/zone/managers/creature/LairObserver.cpp \
 				server/zone/managers/director/ScreenPlayObserver.cpp \
+				server/zone/managers/director/PersistentEvent.cpp \
 				server/zone/objects/ship/SpaceStationObject.cpp \
 				server/zone/objects/ship/FighterShipObject.cpp \
 				server/zone/objects/ship/ShipObject.cpp \
@@ -289,6 +290,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp \
 				server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.cpp \
 				server/zone/objects/tangible/ticket/TicketObject.cpp \
+				server/zone/objects/tangible/ticket/dungeon/DungeonTicketObject.cpp \
 				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp \
 				server/zone/objects/creature/ai/AiActor.cpp
 				
@@ -339,6 +341,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/creature/LairObserverImplementation.cpp \
 		server/zone/managers/customization/CustomizationIdManager.cpp \
 		server/zone/managers/director/ScreenPlayObserverImplementation.cpp \
+		server/zone/managers/director/PersistentEventImplementation.cpp \
 		server/zone/objects/ship/SpaceStationObjectImplementation.cpp \
 		server/zone/objects/ship/FighterShipObjectImplementation.cpp \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
@@ -654,6 +657,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/terminal/ticketcollector/TicketCollectorImplementation.cpp \
 		server/zone/objects/tangible/terminal/travel/TravelTerminalImplementation.cpp \
 		server/zone/objects/tangible/ticket/TicketObjectImplementation.cpp \
+		server/zone/objects/tangible/ticket/dungeon/DungeonTicketObjectImplementation.cpp \
 		server/zone/managers/radial/RadialManagerImplementation.cpp \
 		server/zone/managers/resource/ResourceManagerImplementation.cpp \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
