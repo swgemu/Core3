@@ -215,7 +215,7 @@ tatooine_regions = {
 	{"stone_monument",-2666,-408,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"stone_teepee",0,0,{1,0},UNDEFINEDAREA,1},
 	{"storage_tent",-2601,-2286,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
-	{"strange_arches_lined_up",358,6565,{1,30},UNDEFINEDAREA,1},
+	{"strange_arches_lined_up",358,6565,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"strange_brick",0,0,{1,0},UNDEFINEDAREA,1},
 	{"three_short_archways_lined_up_in_a_row",0,0,{1,0},UNDEFINEDAREA,1},
 	{"trifecta_of_stones",-3734,-6813,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
