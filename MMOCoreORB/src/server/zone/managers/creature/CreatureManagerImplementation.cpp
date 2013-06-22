@@ -589,10 +589,10 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 		creatureHealth = "creature_quality_medium";
 	} else if (density > 0.40f) {
 		quantityExtracted = int(quantityExtracted * 0.75f);
-		creatureHealth = "creature_quality_skinny";
+		creatureHealth = "creature_quality_scrawny";
 	} else {
 		quantityExtracted = int(quantityExtracted * 0.50f);
-		creatureHealth = "creature_quality_scrawny";
+		creatureHealth = "creature_quality_skinny";
 	}
 
 	float modifier = 1;
