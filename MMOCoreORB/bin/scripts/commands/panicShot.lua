@@ -59,7 +59,7 @@ PanicShotCommand = {
 		{}, 
 		100, 
 		100, 
-		30 
+		10 
 	  )
 	},
 
