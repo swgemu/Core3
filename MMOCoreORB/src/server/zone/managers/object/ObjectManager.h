@@ -84,6 +84,9 @@ namespace zone {
 		AtomicInteger saveCounter;
 
 		Reference<DeleteCharactersTask*> deleteCharactersTask;
+		
+		static uint32 serverObjectCrcHashCode;
+		static uint32 _classNameHashCode;
 
 	public:
 		SceneObjectFactory<SceneObject* (), uint32> objectFactory;

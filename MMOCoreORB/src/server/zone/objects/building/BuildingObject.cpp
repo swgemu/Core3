@@ -20,7 +20,15 @@
  *	BuildingObjectStub
  */
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_BROADCASTCELLPERMISSIONS__LONG_,RPC_ISALLOWEDENTRY__CREATUREOBJECT_,RPC_ISCITYBANNED__CREATUREOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__CREATUREOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_LONG_,RPC_ISBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__,RPC_GETREDEEDMESSAGE__,RPC_HASACCESSFEE__,RPC_GETACCESSFEE__,RPC_CANCHANGEACCESSFEE__,RPC_SETACCESSFEE__INT_INT_,RPC_REMOVEACCESSFEE__,RPC_GETACCESSFEEDELAY__,RPC_PAYACCESSFEE__CREATUREOBJECT_,RPC_UPDATEPAIDACCESSLIST__,RPC_CREATECHILDOBJECTS__};
+=======
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_BROADCASTCELLPERMISSIONS__LONG_,RPC_ISALLOWEDENTRY__CREATUREOBJECT_,RPC_ISCITYBANNED__CREATUREOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__CREATUREOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_LONG_,RPC_ISBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__,RPC_GETREDEEDMESSAGE__,RPC_HASACCESSFEE__,RPC_GETACCESSFEE__,RPC_CANCHANGEACCESSFEE__,RPC_SETACCESSFEE__INT_INT_,RPC_REMOVEACCESSFEE__,RPC_GETACCESSFEEDELAY__,RPC_PAYACCESSFEE__CREATUREOBJECT_,RPC_UPDATEPAIDACCESSLIST__};
+>>>>>>> origin/stable
+=======
 enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_BROADCASTCELLPERMISSIONS__LONG_,RPC_ISALLOWEDENTRY__CREATUREOBJECT_,RPC_ISCITYBANNED__CREATUREOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__CREATUREOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_LONG_,RPC_ISBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__,RPC_GETREDEEDMESSAGE__,RPC_HASACCESSFEE__,RPC_GETACCESSFEE__,RPC_CANCHANGEACCESSFEE__,RPC_SETACCESSFEE__INT_INT_,RPC_REMOVEACCESSFEE__,RPC_GETACCESSFEEDELAY__,RPC_PAYACCESSFEE__CREATUREOBJECT_,RPC_UPDATEPAIDACCESSLIST__,RPC_CREATECHILDOBJECTS__,RPC_SPAWNCHILDCREATURES__,RPC_HASCHILDCREATURES__};
+>>>>>>> refs/remotes/origin/unstable
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
@@ -571,6 +579,7 @@ bool BuildingObject::isBuildingObject() {
 }
 
 void BuildingObject::setSignObject(SignObject* sign) {
+<<<<<<< HEAD
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -598,51 +607,88 @@ SignObject* BuildingObject::getSignObject() {
 }
 
 bool BuildingObject::isPublicStructure() {
+=======
+>>>>>>> origin/stable
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
+<<<<<<< HEAD
 		DistributedMethod method(this, RPC_ISPUBLICSTRUCTURE__);
+=======
+		DistributedMethod method(this, RPC_SETSIGNOBJECT__SIGNOBJECT_);
+		method.addObjectParameter(sign);
+>>>>>>> origin/stable
 
-		return method.executeWithBooleanReturn();
+		method.executeWithVoidReturn();
 	} else
+<<<<<<< HEAD
 		return _implementation->isPublicStructure();
 }
 
 bool BuildingObject::isPrivateStructure() {
+=======
+		_implementation->setSignObject(sign);
+}
+
+SignObject* BuildingObject::getSignObject() {
+>>>>>>> origin/stable
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
+<<<<<<< HEAD
 		DistributedMethod method(this, RPC_ISPRIVATESTRUCTURE__);
+=======
+		DistributedMethod method(this, RPC_GETSIGNOBJECT__);
+>>>>>>> origin/stable
 
-		return method.executeWithBooleanReturn();
+		return static_cast<SignObject*>(method.executeWithObjectReturn());
 	} else
+<<<<<<< HEAD
 		return _implementation->isPrivateStructure();
 }
 
 void BuildingObject::setPublicStructure(bool privacy) {
+=======
+		return _implementation->getSignObject();
+}
+
+bool BuildingObject::isPublicStructure() {
+>>>>>>> origin/stable
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
+<<<<<<< HEAD
 		DistributedMethod method(this, RPC_SETPUBLICSTRUCTURE__BOOL_);
 		method.addBooleanParameter(privacy);
+=======
+		DistributedMethod method(this, RPC_ISPUBLICSTRUCTURE__);
+>>>>>>> origin/stable
 
-		method.executeWithVoidReturn();
+		return method.executeWithBooleanReturn();
 	} else
+<<<<<<< HEAD
 		_implementation->setPublicStructure(privacy);
 }
 
 bool BuildingObject::isCondemned() {
+=======
+		return _implementation->isPublicStructure();
+}
+
+bool BuildingObject::isPrivateStructure() {
+>>>>>>> origin/stable
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
+<<<<<<< HEAD
 		DistributedMethod method(this, RPC_ISCONDEMNED__);
 
 		return method.executeWithBooleanReturn();
@@ -651,11 +697,22 @@ bool BuildingObject::isCondemned() {
 }
 
 int BuildingObject::getMapCellSize() {
+=======
+		DistributedMethod method(this, RPC_ISPRIVATESTRUCTURE__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isPrivateStructure();
+}
+
+void BuildingObject::setPublicStructure(bool privacy) {
+>>>>>>> origin/stable
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
+<<<<<<< HEAD
 		DistributedMethod method(this, RPC_GETMAPCELLSIZE__);
 
 		return method.executeWithSignedIntReturn();
@@ -670,18 +727,30 @@ bool BuildingObject::togglePrivacy() {
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_TOGGLEPRIVACY__);
+=======
+		DistributedMethod method(this, RPC_SETPUBLICSTRUCTURE__BOOL_);
+		method.addBooleanParameter(privacy);
+>>>>>>> origin/stable
 
-		return method.executeWithBooleanReturn();
+		method.executeWithVoidReturn();
 	} else
+<<<<<<< HEAD
 		return _implementation->togglePrivacy();
 }
 
 unsigned int BuildingObject::getMaximumNumberOfPlayerItems() {
+=======
+		_implementation->setPublicStructure(privacy);
+}
+
+bool BuildingObject::isCondemned() {
+>>>>>>> origin/stable
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
+<<<<<<< HEAD
 		DistributedMethod method(this, RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__);
 
 		return method.executeWithUnsignedIntReturn();
@@ -690,26 +759,48 @@ unsigned int BuildingObject::getMaximumNumberOfPlayerItems() {
 }
 
 String BuildingObject::getRedeedMessage() {
+=======
+		DistributedMethod method(this, RPC_ISCONDEMNED__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isCondemned();
+}
+
+int BuildingObject::getMapCellSize() {
+>>>>>>> origin/stable
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
+<<<<<<< HEAD
 		DistributedMethod method(this, RPC_GETREDEEDMESSAGE__);
+=======
+		DistributedMethod method(this, RPC_GETMAPCELLSIZE__);
+>>>>>>> origin/stable
 
 		String _return_getRedeedMessage;
 		method.executeWithAsciiReturn(_return_getRedeedMessage);
 		return _return_getRedeedMessage;
 	} else
+<<<<<<< HEAD
 		return _implementation->getRedeedMessage();
 }
 
 bool BuildingObject::hasAccessFee() {
+=======
+		return _implementation->getMapCellSize();
+}
+
+bool BuildingObject::togglePrivacy() {
+>>>>>>> origin/stable
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
+<<<<<<< HEAD
 		DistributedMethod method(this, RPC_HASACCESSFEE__);
 
 		return method.executeWithBooleanReturn();
@@ -718,11 +809,22 @@ bool BuildingObject::hasAccessFee() {
 }
 
 int BuildingObject::getAccessFee() {
+=======
+		DistributedMethod method(this, RPC_TOGGLEPRIVACY__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->togglePrivacy();
+}
+
+unsigned int BuildingObject::getMaximumNumberOfPlayerItems() {
+>>>>>>> origin/stable
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
+<<<<<<< HEAD
 		DistributedMethod method(this, RPC_GETACCESSFEE__);
 
 		return method.executeWithSignedIntReturn();
@@ -737,18 +839,139 @@ bool BuildingObject::canChangeAccessFee() {
 			throw ObjectNotDeployedException(this);
 
 		DistributedMethod method(this, RPC_CANCHANGEACCESSFEE__);
+=======
+		DistributedMethod method(this, RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__);
+>>>>>>> origin/stable
 
-		return method.executeWithBooleanReturn();
+		return method.executeWithUnsignedIntReturn();
 	} else
+<<<<<<< HEAD
 		return _implementation->canChangeAccessFee();
 }
 
 void BuildingObject::setAccessFee(int fee, int duration) {
+=======
+		return _implementation->getMaximumNumberOfPlayerItems();
+}
+
+String BuildingObject::getRedeedMessage() {
+>>>>>>> origin/stable
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
+<<<<<<< HEAD
+		DistributedMethod method(this, RPC_SETACCESSFEE__INT_INT_);
+		method.addSignedIntParameter(fee);
+		method.addSignedIntParameter(duration);
+=======
+		DistributedMethod method(this, RPC_GETREDEEDMESSAGE__);
+>>>>>>> origin/stable
+
+		String _return_getRedeedMessage;
+		method.executeWithAsciiReturn(_return_getRedeedMessage);
+		return _return_getRedeedMessage;
+	} else
+<<<<<<< HEAD
+		_implementation->setAccessFee(fee, duration);
+}
+
+void BuildingObject::removeAccessFee() {
+=======
+		return _implementation->getRedeedMessage();
+}
+
+bool BuildingObject::hasAccessFee() {
+>>>>>>> origin/stable
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+<<<<<<< HEAD
+		DistributedMethod method(this, RPC_REMOVEACCESSFEE__);
+=======
+		DistributedMethod method(this, RPC_HASACCESSFEE__);
+>>>>>>> origin/stable
+
+		method.executeWithVoidReturn();
+	} else
+<<<<<<< HEAD
+		_implementation->removeAccessFee();
+}
+
+int BuildingObject::getAccessFeeDelay() {
+=======
+		return _implementation->hasAccessFee();
+}
+
+int BuildingObject::getAccessFee() {
+>>>>>>> origin/stable
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+<<<<<<< HEAD
+		DistributedMethod method(this, RPC_GETACCESSFEEDELAY__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getAccessFeeDelay();
+}
+
+void BuildingObject::payAccessFee(CreatureObject* player) {
+=======
+		DistributedMethod method(this, RPC_GETACCESSFEE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getAccessFee();
+}
+
+bool BuildingObject::canChangeAccessFee() {
+>>>>>>> origin/stable
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+<<<<<<< HEAD
+		DistributedMethod method(this, RPC_PAYACCESSFEE__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+=======
+		DistributedMethod method(this, RPC_CANCHANGEACCESSFEE__);
+>>>>>>> origin/stable
+
+		method.executeWithVoidReturn();
+	} else
+<<<<<<< HEAD
+		_implementation->payAccessFee(player);
+}
+
+void BuildingObject::updatePaidAccessList() {
+=======
+		return _implementation->canChangeAccessFee();
+}
+
+void BuildingObject::setAccessFee(int fee, int duration) {
+>>>>>>> origin/stable
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+<<<<<<< HEAD
+		DistributedMethod method(this, RPC_UPDATEPAIDACCESSLIST__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->updatePaidAccessList();
+}
+
+void BuildingObject::createChildObjects() {
+=======
 		DistributedMethod method(this, RPC_SETACCESSFEE__INT_INT_);
 		method.addSignedIntParameter(fee);
 		method.addSignedIntParameter(duration);
@@ -759,11 +982,19 @@ void BuildingObject::setAccessFee(int fee, int duration) {
 }
 
 void BuildingObject::removeAccessFee() {
+>>>>>>> origin/stable
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
+<<<<<<< HEAD
+		DistributedMethod method(this, RPC_CREATECHILDOBJECTS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->createChildObjects();
+=======
 		DistributedMethod method(this, RPC_REMOVEACCESSFEE__);
 
 		method.executeWithVoidReturn();
@@ -809,19 +1040,7 @@ void BuildingObject::updatePaidAccessList() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->updatePaidAccessList();
-}
-
-void BuildingObject::createChildObjects() {
-	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CREATECHILDOBJECTS__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->createChildObjects();
+>>>>>>> origin/stable
 }
 
 void BuildingObject::spawnChildCreatures() {
@@ -1500,11 +1719,16 @@ void BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			updatePaidAccessList();
 		}
 		break;
+<<<<<<< HEAD
 	case RPC_CREATECHILDOBJECTS__:
 		{
 			createChildObjects();
 		}
 		break;
+<<<<<<< HEAD
+=======
+>>>>>>> origin/stable
+=======
 	case RPC_SPAWNCHILDCREATURES__:
 		{
 			spawnChildCreatures();
@@ -1515,6 +1739,7 @@ void BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			resp->insertBoolean(hasChildCreatures());
 		}
 		break;
+>>>>>>> refs/remotes/origin/unstable
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -1724,10 +1949,15 @@ void BuildingObjectAdapter::updatePaidAccessList() {
 	(static_cast<BuildingObject*>(stub))->updatePaidAccessList();
 }
 
+<<<<<<< HEAD
 void BuildingObjectAdapter::createChildObjects() {
 	(static_cast<BuildingObject*>(stub))->createChildObjects();
 }
 
+<<<<<<< HEAD
+=======
+>>>>>>> origin/stable
+=======
 void BuildingObjectAdapter::spawnChildCreatures() {
 	(static_cast<BuildingObject*>(stub))->spawnChildCreatures();
 }
@@ -1736,6 +1966,7 @@ bool BuildingObjectAdapter::hasChildCreatures() {
 	return (static_cast<BuildingObject*>(stub))->hasChildCreatures();
 }
 
+>>>>>>> refs/remotes/origin/unstable
 /*
  *	BuildingObjectHelper
  */

@@ -46,6 +46,7 @@ which carries forward this exception.
 #define CAMPDESPAWNTASK_H_
 
 #include "server/zone/objects/area/CampSiteActiveArea.h"
+#include "server/zone/ZoneServer.h"
 
 namespace server {
 namespace zone {
@@ -64,6 +65,14 @@ public:
 	void run() {
 		if (campSite == NULL)
 			return;
+
+		ZoneServer* zoneServer = campSite->getZoneServer();
+
+		if (zoneServer != NULL && zoneServer->isServerLoading()) {
+			schedule(1000);
+
+			return;
+		}
 
 		Locker locker(campSite);
 		campSite->despawnCamp();

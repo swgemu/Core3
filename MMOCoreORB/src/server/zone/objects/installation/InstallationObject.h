@@ -163,6 +163,7 @@ class TangibleObject;
 
 using namespace server::zone::objects::tangible;
 
+<<<<<<< HEAD
 namespace server {
 namespace zone {
 namespace objects {
@@ -179,6 +180,8 @@ class ArmorObject;
 
 using namespace server::zone::objects::tangible::wearables;
 
+=======
+>>>>>>> origin/stable
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 
 #include "server/zone/objects/installation/HopperList.h"

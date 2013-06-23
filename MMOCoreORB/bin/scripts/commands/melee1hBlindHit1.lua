@@ -51,6 +51,9 @@ Melee1hBlindHit1Command = {
 	mindCostMultiplier = 0.625,
         accuracyBonus = 25,
 
+	areaRange = 7,
+	areaAction = true,
+
 	stateEffects = {
 	  StateEffect( 
 		BLIND_EFFECT, 
