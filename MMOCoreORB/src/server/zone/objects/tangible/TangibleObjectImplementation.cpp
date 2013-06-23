@@ -156,7 +156,7 @@ void TangibleObjectImplementation::broadcastPvpStatusBitmask(){
 
 		CreatureObject* thisCreo = cast<CreatureObject*>(_this.get().get());
 
-		SortedVector<QuadTreeEntry*> closeObjects(closeobjects->size(), 10);
+		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects(closeobjects->size(), 10);
 
 		closeobjects->safeCopyTo(closeObjects);
 
@@ -330,11 +330,11 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 
 	alm->insertAttribute("volume", volume);
 
-	if (craftersName != "") {
+	if (!craftersName.isEmpty()) {
 
 		alm->insertAttribute("crafter", craftersName);
 	}
-	if (objectSerial != "") {
+	if (!objectSerial.isEmpty()) {
 
 		alm->insertAttribute("serial_number", objectSerial);
 	}

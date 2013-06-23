@@ -49,8 +49,8 @@ which carries forward this exception.
 #include "LoginClient.h"
 #include "LoginServer.h"
 #include "LoginProcessServerImplementation.h"
-#include "account/AccountManager.h"
 
+#include "account/AccountManager.h"
 
 LoginPacketHandler::LoginPacketHandler(const String& s, LoginProcessServerImplementation* serv)
 		: Logger(s) {

@@ -1291,9 +1291,9 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 	}
 
 	posture = newPosture;
-
+	
 	updateSpeedAndAccelerationMods();
-
+	
 	// TODO: these two seem to be as of yet unused (maybe only necessary in client)
 	//CreaturePosture::instance()->getTurnScale((uint8)newPosture);
 	//CreaturePosture::instance()->getCanSeeHeightMod((uint8)newPosture);
@@ -1336,21 +1336,6 @@ void CreatureObjectImplementation::updateSpeedAndAccelerationMods() {
 	setAccelerationMultiplierMod(CreaturePosture::instance()->getAccelerationScale((uint8) posture), true);
 
 	setTurnScale(CreaturePosture::instance()->getTurnScale((uint8) posture), true);
-}
-
-float CreatureObjectImplementation::calculateSpeed() {
-	Time currentTime;
-	uint32 deltaTime = currentTime.getMiliTime() - lastCombatActionTime.getMiliTime();
-	Vector3 newPosition = getPosition();
-
-	float dist = newPosition.distanceTo(lastCombatPosition);
-	float speed = dist / (float) deltaTime * 1000;
-
-	//update position and time
-	lastCombatActionTime.updateToCurrentTime();
-	lastCombatPosition = newPosition;
-
-	return speed;
 }
 
 void CreatureObjectImplementation::updateLocomotion() {
@@ -2455,41 +2440,6 @@ bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
 	return false;
 }
 
-bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object){
-	if(object->isCreatureObject())
-		return isAttackableBy(cast<CreatureObject*>(object));
-
-	// if you want to allow minefields to attack NPC
-	if(this->isAiAgent()){
-		return false;
-	}
-
-	PlayerObject* ghost = getPlayerObject();
-
-	if(ghost == NULL)
-		return false;
-
-	if (isDead() || isIncapacitated())
-		return false;
-
-	if(object->getFaction() == 0 )
-		return true;
-
-	if(object->getFaction() == getFaction())
-		return false;
-
-	// if player is on leave, then faction object cannot attack it
-	if (ghost->getFactionStatus() == FactionStatus::ONLEAVE || getFaction() == 0)
-		return false;
-
-	// if tano is overt, creature must be overt
-	if((object->getPvpStatusBitmask() & CreatureFlag::OVERT) && !(getPvpStatusBitmask() & CreatureFlag::OVERT))
-		return false;
-
-	// the other options are overt creature / overt tano  and covert/covert, covert tano, overt creature..  all are attackable
-	return true;
-
-}
 bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (object == _this.get())
 		return false;
