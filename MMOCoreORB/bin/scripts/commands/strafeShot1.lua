@@ -51,9 +51,6 @@ StrafeShot1Command = {
 	mindCostMultiplier = 1.5,
 	accuracyBonus = 5,
 
-	coneAngle = 60,
-	coneAction = true,
-
 	poolsToDamage = RANDOM_ATTRIBUTE,
 
 	animationCRC = hashCode("fire_5_special_single_medium"),
