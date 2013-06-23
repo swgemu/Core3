@@ -232,7 +232,7 @@ void ServerCore::initialize() {
 #endif
 
 		info("initialized", true);
-
+		
 		if(arguments.contains("playercleanup")){
 			zoneServer->getPlayerManager()->cleanupCharacters();
 		}
@@ -240,7 +240,7 @@ void ServerCore::initialize() {
 		if(arguments.contains("playercleanupstats")){
 			zoneServer->getPlayerManager()->getCleanupCharacterCount();
 		}
-
+		
 	} catch (ServiceException& e) {
 		shutdown();
 	} catch (DatabaseException& e) {
@@ -481,7 +481,6 @@ void ServerCore::handleCommands() {
 
 			} else
 				System::out << "unknown command (" << command << ")\n";
-
 		} catch (SocketException& e) {
 			System::out << "[ServerCore] " << e.getMessage();
 		} catch (ArrayIndexOutOfBoundsException& e) {

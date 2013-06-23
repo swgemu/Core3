@@ -676,6 +676,11 @@ void SceneObjectImplementation::broadcastObject(SceneObject* object, bool sendSe
 }
 
 void SceneObjectImplementation::broadcastDestroyPrivate(SceneObject* object, SceneObject* selfObject) {
+	ZoneServer* zoneServer = getZoneServer();
+
+	if (zoneServer != NULL && zoneServer->isServerLoading())
+		return;
+		
 	if (parent != NULL) {
 		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParent().get().get());
 
@@ -777,7 +782,7 @@ void SceneObjectImplementation::broadcastMessagePrivate(BasePacket* message, Sce
 //	bool readlock = lockZone && !zone->isLockedByCurrentThread();
 
 	SortedVector<ManagedReference<QuadTreeEntry*> >* closeSceneObjects = NULL;
-	SortedVector<QuadTreeEntry*>* closeNoneReference = NULL;
+	SortedVector<ManagedReference<QuadTreeEntry*> >* closeNoneReference = NULL;
 	int maxInRangeObjectCount = 0;
 	bool deleteVector = true;
 
@@ -867,6 +872,11 @@ void SceneObjectImplementation::broadcastMessage(BasePacket* message, bool sendS
 }
 
 void SceneObjectImplementation::broadcastMessagesPrivate(Vector<BasePacket*>* messages, SceneObject* selfObject) {
+	ZoneServer* zoneServer = getZoneServer();
+
+	if (zoneServer != NULL && zoneServer->isServerLoading())
+		return;
+		
 	if (parent != NULL) {
 		ManagedReference<SceneObject*> grandParent = cast<SceneObject*>(getRootParent().get().get());
 

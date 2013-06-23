@@ -40,9 +40,9 @@
 # this exception also makes it possible to release a modified version 
 # which carries forward this exception.
 
-IDLC = /usr/local/bin/idlc 
+IDLC = F:\workspaceMerge\PublicEngine\MMOEngine\bin\idlc.bat
 				
-IDL_CLASSPATH = ../MMOEngine/include
+IDL_CLASSPATH = F:\workspaceMerge\PublicEngine\MMOEngine\include\include
 
 IDL_DIRECTIVES = -cp $(IDL_CLASSPATH)
 

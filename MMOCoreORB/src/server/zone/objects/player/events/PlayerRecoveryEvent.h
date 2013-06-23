@@ -70,7 +70,7 @@ public:
 
 	void run() {
 		ManagedReference<SceneObject*> strongParent = player->getParent();
-
+		
 		if (strongParent == NULL)
 			return;
 
