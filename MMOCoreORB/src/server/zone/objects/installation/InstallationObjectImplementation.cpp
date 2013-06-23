@@ -370,6 +370,9 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shutdownAfterUpdate) {
 
 	Locker locker(_this.get());
+	
+	if (getZone() == NULL)
+		return;
 
 	Time timeToWorkTill;
 

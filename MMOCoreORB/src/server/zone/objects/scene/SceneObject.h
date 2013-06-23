@@ -1261,6 +1261,7 @@ public:
 	virtual bool isPlayerCreature();
 
 	bool isVendor();
+<<<<<<< HEAD
 
 	bool isGCWBase();
 
@@ -1271,6 +1272,8 @@ public:
 	bool isDetector();
 
 	bool isSecurityTerminal();
+=======
+>>>>>>> origin/stable
 
 	bool isTurretControlTerminal();
 

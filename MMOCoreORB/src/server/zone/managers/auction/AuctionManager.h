@@ -148,9 +148,23 @@ public:
 
 	static const int ITEMSPERPAGE = 100;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	static const int VENDOREXPIREPERIOD = 900;
+=======
+	static const int VENDOREXPIREPERIOD = 2592000;
+>>>>>>> refs/remotes/origin/unstable
+
+<<<<<<< HEAD
+	static const int COMMODITYEXPIREPERIOD = 180;
+=======
 	static const int VENDOREXPIREPERIOD = 2592000;
 
+	static const int COMMODITYEXPIREPERIOD = 2592000;
+>>>>>>> origin/stable
+=======
 	static const int COMMODITYEXPIREPERIOD = 604800;
+>>>>>>> refs/remotes/origin/unstable
 
 	AuctionManager(ZoneServer* server);
 
@@ -262,9 +276,23 @@ public:
 
 	static const int ITEMSPERPAGE = 100;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+	static const int VENDOREXPIREPERIOD = 900;
+=======
+	static const int VENDOREXPIREPERIOD = 2592000;
+>>>>>>> refs/remotes/origin/unstable
+
+<<<<<<< HEAD
+	static const int COMMODITYEXPIREPERIOD = 180;
+=======
 	static const int VENDOREXPIREPERIOD = 2592000;
 
+	static const int COMMODITYEXPIREPERIOD = 2592000;
+>>>>>>> origin/stable
+=======
 	static const int COMMODITYEXPIREPERIOD = 604800;
+>>>>>>> refs/remotes/origin/unstable
 
 private:
 	bool marketEnabled;

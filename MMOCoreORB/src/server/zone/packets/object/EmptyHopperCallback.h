@@ -41,16 +41,24 @@ public:
 
 	void run() {
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer().get().get());
+		
+		if (player == NULL)
+			return;
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(harvesterId);
 
-		if (object == NULL || !object->isInstallationObject())
-			player->error("not parsing right");
+		if (object == NULL || !object->isInstallationObject()) {
+			//player->error("not parsing right");
+			return;
+		}
 
 		GenericResponse* gr = new GenericResponse(player, 0xED, 1, byte2);
 		player->sendMessage(gr);
 
 		InstallationObject* inso = cast<InstallationObject*>( object.get());
+		
+		if (inso == NULL)
+			return;
 
 		/*if (!inso->isHarvesterObject())
 			return;

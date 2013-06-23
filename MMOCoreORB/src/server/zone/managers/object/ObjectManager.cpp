@@ -32,6 +32,9 @@ using namespace engine::db;
 
 // http://tinyurl.com/2g9mqh
 
+uint32 ObjectManager::serverObjectCrcHashCode = String("SceneObject.serverObjectCRC").hashCode();
+uint32 ObjectManager::_classNameHashCode = String("_className").hashCode();
+
 ObjectManager::ObjectManager() : DOBObjectManager() {
 	server = NULL;
 
@@ -58,7 +61,6 @@ ObjectManager::ObjectManager() : DOBObjectManager() {
 	databaseManager->loadObjectDatabase("aiobservers", true);
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
-	databaseManager->setLogLevel(databaseManager->DEBUG);
 
 
 	loadLastUsedObjectID();
@@ -420,7 +422,7 @@ void ObjectManager::loadStaticObjects() {
 		if (object != NULL)
 			continue;
 
-		if (!Serializable::getVariable<uint32>(String("SceneObject.serverObjectCRC").hashCode(), &serverObjectCRC, &objectData)) {
+		if (!Serializable::getVariable<uint32>(serverObjectCrcHashCode, &serverObjectCRC, &objectData)) {
 			error("unknown scene object in static database");
 			continue;
 		}
@@ -644,7 +646,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 	String className;
 
 	try {
-		if (Serializable::getVariable<uint32>(String("SceneObject.serverObjectCRC").hashCode(), &serverObjectCRC, &objectData)) {
+		if (Serializable::getVariable<uint32>(serverObjectCrcHashCode, &serverObjectCRC, &objectData)) {
 			object = instantiateSceneObject(serverObjectCRC, objectID, true);
 
 			if (object == NULL) {
@@ -667,7 +669,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 
 			(cast<SceneObject*>(object))->info("loaded from db");
 
-		} else if (Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData)) {
+		} else if (Serializable::getVariable<String>(_classNameHashCode, &className, &objectData)) {
 			object = createObject(className, false, "", objectID, false);
 
 			if (object == NULL) {
@@ -760,7 +762,6 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, int persistenceLevel,
 
 	object = instantiateSceneObject(objectCRC, oid, true);
 
-
 	if (object == NULL) {
 		StringBuffer msg;
 		msg << "could not create object CRC = 0x" << hex << objectCRC << " template:" << templateManager->getTemplateFile(objectCRC);
@@ -777,7 +778,6 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, int persistenceLevel,
 
 		object->queueUpdateToDatabaseTask();
 	}
-
 
 	return object;
 }
