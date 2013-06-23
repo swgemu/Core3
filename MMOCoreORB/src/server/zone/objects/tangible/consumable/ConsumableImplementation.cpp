@@ -312,11 +312,11 @@ void ConsumableImplementation::fillAttributeList(AttributeListMessage* alm, Crea
 			alm->insertAttribute("quantity", useCount);
 	}
 
-	if (craftersName != ""){
+	if (!craftersName.isEmpty()){
 		alm->insertAttribute("crafter", craftersName);
 	}
 
-	if (objectSerial != ""){
+	if (!objectSerial.isEmpty()){
 		alm->insertAttribute("serial_number", objectSerial);
 	}
 

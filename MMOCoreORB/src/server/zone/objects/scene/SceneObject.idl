@@ -723,8 +723,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@local
 	public void addPendingTask(final string name, Task task, int miliseconds) {
-		getPendingTasks().put(name, task);
-		task.schedule(miliseconds);
+		synchronized (containerLock) {
+			getPendingTasks().put(name, task);
+			task.schedule(miliseconds);
+		}
 	}
 	
 	/**
@@ -735,18 +737,24 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@local
 	public void removePendingTask(final string name) {
-		if (pendingTasks == null)
-			return;
-		
-		pendingTasks.drop(name);
+		synchronized (containerLock) {
+			if (pendingTasks == null)
+				return;
+
+			pendingTasks.drop(name);
+		}
 	}
 	
 	@local
 	public PendingTasksMap getPendingTasks() {
-		if (pendingTasks == null) {
-			pendingTasks = new PendingTasksMap();
-			pendingTasks.setNoDuplicateInsertPlan();
-			pendingTasks.setNullValue(null);
+		synchronized (containerLock) {
+			if (pendingTasks == null) {
+				pendingTasks = new PendingTasksMap();
+				pendingTasks.setNoDuplicateInsertPlan();
+				pendingTasks.setNullValue(null);
+			}
+
+			return pendingTasks;
 		}
 		
 		return pendingTasks;
@@ -761,18 +769,22 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@local
 	@read
 	public Task getPendingTask(final string name) {
-		if (pendingTasks == null)
-			return null;
-		
-		return pendingTasks.get(name);
+		synchronized (containerLock) {
+			if (pendingTasks == null)
+				return null;
+
+			return pendingTasks.get(name);
+		}
 	}
 	
 	@read
 	public boolean containsPendingTask(final string name) {
-		if (pendingTasks == null)
-			return false;
-		
-		return pendingTasks.contains(name);
+		synchronized (containerLock) {
+			if (pendingTasks == null)
+				return false;
+
+			return pendingTasks.contains(name);
+		}
 	}
 	
 	@dirty
@@ -1309,7 +1321,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isGCWBaseData();
 	}
-
+	
 	@local
 	@read
 	public boolean isTurret() {
@@ -1350,7 +1362,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isTurretControlTerminalData();
 	}
-
+	
 	@local
 	@read
 	public ZoneComponent getZoneComponent() {
@@ -1376,7 +1388,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		dataObjectComponent.get() != null &&
 		dataObjectComponent.get().isDecoration();
 	}
-
+	
 	@local
 	public native void setObjectMenuComponent(final string name);
 	
@@ -1432,10 +1444,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return false;
 	}
 
-
-
-
-
 	@dirty
 	public abstract boolean isBuildingObject() {
 		return false;
@@ -1448,7 +1456,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@read
 	public boolean isGarage() {
-
 		return gameObjectType == SceneObjectType.GARAGEBUILDING || gameObjectType == SceneObjectType.GARAGEINSTALLATION;
 	}
 
@@ -1631,7 +1638,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public boolean isTrapObject() {
 		return gameObjectType == SceneObjectType.TRAP;
 	}
-
+	
 	@read
 	public boolean isRepairTool() {
 		return gameObjectType == SceneObjectType.REPAIRTOOL;
@@ -1666,7 +1673,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isCampStructure() {
 		return false;
 	}
-
+	
 	@read
 	public abstract boolean isRecycleToolObject() {
 		return gameObjectType == SceneObjectType.RECYCLETOOL;
@@ -1779,7 +1786,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isContainerObject() {
 		return false;
 	}
-
+	
 	@dirty
 	public abstract boolean isTerminal() {
 		return false;
@@ -1814,7 +1821,6 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isActorObject() {
 		return false;
 	}
-
 
 	@read
 	public int getPlanetMapCategoryCRC() {

@@ -117,15 +117,22 @@ function ris_armor_quest_handler:runScreenHandlers(conversationTemplate, convers
 	local screenID = screen:getScreenID()
 	
 	local playerCreo = LuaCreatureObject(conversingPlayer)
+	
+	if (screenID == "quest_1_start_yes") then
+		local credits = playerCreo:getCashCredits()
 		
-	if (screenID == "quest_1_start") then
+		if (credits >= 50000) then
+			self:payNPC(playerCreo)
+		else
+			playerCreo:sendSystemMessage("You have insufficient funds")
+		end
+	elseif (screenID == "quest_1_start") then
 		conversationScreen = screen:cloneScreen()
 		screen = LuaConversationScreen(conversationScreen)
 		screen:setDialogTextDI("50000")
 	
 	elseif (screenID == "quest_1_description") then
 		self:startQuest1(playerCreo)
-		self:payNPC(playerCreo)
 	
 	elseif (screenID == "quest_2_query") then
 		conversationScreen = screen:cloneScreen()

@@ -155,7 +155,7 @@ bool ThreatMap::setThreatState(CreatureObject* target, uint64 state, uint64 dura
 	}
 
 	if(duration > 0) {
-		ClearThreatStateTask* clearThreat = new ClearThreatStateTask(self.get(), target, state);
+		Reference<ClearThreatStateTask*> clearThreat = new ClearThreatStateTask(self.get(), target, state);
 		clearThreat->schedule(duration);
 	}
 
@@ -356,7 +356,7 @@ void ThreatMap::addAggro(CreatureObject* target, int value, uint64 duration) {
 	}
 
 	if(duration > 0) {
-		RemoveAggroTask* removeAggroTask = new RemoveAggroTask(self.get(), target, value);
+		Reference<RemoveAggroTask*> removeAggroTask = new RemoveAggroTask(self.get(), target, value);
 		removeAggroTask->schedule(duration);
 	}
 }

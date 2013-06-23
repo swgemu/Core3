@@ -53,7 +53,7 @@ void BuildingObjectImplementation::initializeTransientMembers() {
 	setLoggingName("BuildingObject");
 	
 	updatePaidAccessList();
-
+	
 	if(isGCWBase()) {
 		SharedBuildingObjectTemplate* buildingTemplateData =
 				dynamic_cast<SharedBuildingObjectTemplate*> (getObjectTemplate());
@@ -63,7 +63,7 @@ void BuildingObjectImplementation::initializeTransientMembers() {
 			setPvpStatusBitmask(buildingTemplateData->getPvpStatusBitmask());
 
 	}
-
+	
 }
 
 void BuildingObjectImplementation::loadTemplateData(
@@ -192,10 +192,10 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 		}
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-			SceneObject* containerObject = cell->getContainerObject(j);
+			ManagedReference<SceneObject*> containerObject = cell->getContainerObject(j);
 
-			if ((containerObject->isCreatureObject() && publicStructure) || player == containerObject
-							|| (closeObjects != NULL && closeObjects->contains(containerObject)))
+			if (containerObject != NULL && ((containerObject->isCreatureObject() && publicStructure) || player == containerObject
+							|| (closeObjects != NULL && closeObjects->contains(containerObject.get()))))
 						containerObject->sendTo(player, true);
 
 		}
@@ -320,7 +320,7 @@ bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
 	if(isGCWBase()){
 		return checkContainerPermission(player,ContainerPermissions::WALKIN);
 	}
-
+	
 	if (getOwnerObjectID() == player->getObjectID())
 		return true;
 
@@ -603,6 +603,7 @@ void BuildingObjectImplementation::updateCellPermissionsTo(CreatureObject* creat
 		if (cell == NULL)
 			continue;
 
+		//cell->sendPermissionsTo(creature,false);
 		cell->sendPermissionsTo(creature, allowEntry);
 	}
 }
@@ -637,14 +638,13 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 
 	Locker acessLock(&paidAccessListMutex);
 
+	
 	if(isGCWBase()){
-
-		if(!isAllowedEntry(player))
+		if(!checkContainerPermission(player,ContainerPermissions::WALKIN)){
 			ejectObject(player);
-
+		}
 	}
-
-
+	
 
 	if (accessFee > 0 && !isOnEntryList(player)) {
 		//thread safety issues!
@@ -1136,8 +1136,8 @@ void BuildingObjectImplementation::createChildObjects(){
 		StructureObjectImplementation::createChildObjects();
 	}
 
-}
 
+}
 
 void BuildingObjectImplementation::spawnChildCreatures(){
 	SharedBuildingObjectTemplate* buildingTemplate = cast<SharedBuildingObjectTemplate*>(getObjectTemplate());
@@ -1217,5 +1217,4 @@ bool BuildingObjectImplementation::hasChildCreatures(){
 
 	return buildingTemplate->getChildCreatureObjectsSize() > 0;
 }
-
 

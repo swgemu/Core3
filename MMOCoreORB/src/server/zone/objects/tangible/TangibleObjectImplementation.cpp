@@ -156,12 +156,12 @@ void TangibleObjectImplementation::broadcastPvpStatusBitmask(){
 
 		CreatureObject* thisCreo = cast<CreatureObject*>(_this.get().get());
 
-		SortedVector<QuadTreeEntry*> closeObjects(closeobjects->size(), 10);
+		SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects(closeobjects->size(), 10);
 
 		closeobjects->safeCopyTo(closeObjects);
 
 		for (int i = 0; i < closeObjects.size(); ++i) {
-			SceneObject* obj = cast<SceneObject*>(closeObjects.get(i));
+			SceneObject* obj = cast<SceneObject*>(closeObjects.get(i).get());
 
 			if (obj != NULL && obj->isCreatureObject()) {
 				CreatureObject* creo = cast<CreatureObject*>(obj);
@@ -330,11 +330,11 @@ void TangibleObjectImplementation::fillAttributeList(AttributeListMessage* alm, 
 
 	alm->insertAttribute("volume", volume);
 
-	if (craftersName != "") {
+	if (!craftersName.isEmpty()) {
 
 		alm->insertAttribute("crafter", craftersName);
 	}
-	if (objectSerial != "") {
+	if (!objectSerial.isEmpty()) {
 
 		alm->insertAttribute("serial_number", objectSerial);
 	}
