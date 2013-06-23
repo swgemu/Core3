@@ -243,6 +243,7 @@ void FactoryCrateImplementation::split(int newStackSize) {
 	protoclone->setParent(NULL);
 
 	newCrate->transferObject(protoclone, -1, false);
+
 	newCrate->setUseCount(newStackSize, false);
 	newCrate->setCustomObjectName(getCustomObjectName(), false);
 

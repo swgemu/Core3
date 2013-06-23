@@ -53,6 +53,7 @@ which carries forward this exception.
 #include "server/zone/templates/SharedObjectTemplate.h"
 #include "server/zone/packets/player/GetMapLocationsResponseMessage.h"
 #include "server/zone/managers/gcw/GCWManager.h"
+
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/region/Region.h"
 #include "server/zone/objects/building/BuildingObject.h"
@@ -316,7 +317,11 @@ int ZoneImplementation::getInRangeActiveAreas(float x, float y, SortedVector<Man
 void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 	//Locker locker(_this.get());
 
+	Locker _alocker(object->getContainerLock());
+
 	SortedVector<ManagedReference<ActiveArea* > > areas = *dynamic_cast<SortedVector<ManagedReference<ActiveArea* > >* >(object->getActiveAreas());
+
+	_alocker.release();
 
 	Vector3 worldPos = object->getWorldPosition();
 
@@ -403,7 +408,7 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 
 void ZoneImplementation::addSceneObject(SceneObject* object) {
 	objectMap->put(object->getObjectID(), object);
-
+	
 	//Civic and commercial structures map registration will be handled by their city
 	if (object->isStructureObject()) {
 		StructureObject* structure = cast<StructureObject*>(object);
@@ -411,7 +416,7 @@ void ZoneImplementation::addSceneObject(SceneObject* object) {
 			return;
 		}
 	}
-
+	
 	registerObjectWithPlanetaryMap(object);
 }
 
@@ -465,6 +470,7 @@ SceneObject* ZoneImplementation::getNearestPlanetaryObject(SceneObject* object, 
 			distance = objDistance;
 		}
 	}
+
 	return planetaryObject.get();
 }
 
@@ -528,9 +534,8 @@ void ZoneImplementation::updateCityRegions() {
 
 		city->rescheduleUpdateEvent(seconds);
 
-		if (!city->isRegistered()) {
+		if (!city->isRegistered())
 			continue;
-		}
 
 		if (city->getRegionsCount() == 0)
 			continue;
@@ -539,7 +544,7 @@ void ZoneImplementation::updateCityRegions() {
 
 		unregisterObjectWithPlanetaryMap(region);
 		registerObjectWithPlanetaryMap(region);
-
+		
 		for(int i = 0; i < city->getStructuresCount(); i++){
 			ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
 			unregisterObjectWithPlanetaryMap(structure);

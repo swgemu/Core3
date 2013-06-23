@@ -1077,8 +1077,7 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<MindBlast1Command>(String("mindBlast1").toLowerCase());
 	commandFactory.registerCommand<MindBlast2Command>(String("mindBlast2").toLowerCase());
 	commandFactory.registerCommand<MindShot1Command>(String("mindShot1").toLowerCase());
-	commandFactory.registerCommand<MindShot2Command>(String("mindShot2").toLowerCase());
-	commandFactory.registerCommand<MinefieldAttackCommand>(String("minefieldAttack").toLowerCase());
+	commandFactory.registerCommand<MindShot2Command>(String("mindShot2").toLowerCase());		commandFactory.registerCommand<MinefieldAttackCommand>(String("minefieldAttack").toLowerCase());
 	commandFactory.registerCommand<MoneyCommand>(String("money").toLowerCase());
 	commandFactory.registerCommand<MountCommand>(String("mount").toLowerCase());
 	commandFactory.registerCommand<MoveFurnitureCommand>(String("moveFurniture").toLowerCase());

@@ -158,5 +158,5 @@ includeFile("tangible/ship/components/reactor/rct_unknown_distressed_aluminum.lu
 includeFile("tangible/ship/components/reactor/rct_unknown_multicore.lua")
 includeFile("tangible/ship/components/reactor/rct_unknown_proton_chamber.lua")
 includeFile("tangible/ship/components/reactor/rct_watto_sunray_2.lua")
-includeFile("tangible/ship/components/reactor/rct_watto_sunray_3.lua")
+includeFile("tangible/ship/components/reactor/rct_watto_sunray_3.lua")
 includeFile("tangible/ship/components/reactor/reactor_test.lua")
