@@ -154,8 +154,6 @@ void EntertainerMissionObjectiveImplementation::startCompleteTask() {
 }
 
 int EntertainerMissionObjectiveImplementation::notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	Locker _lock(_this.get());
-
 	if (eventType != ObserverEventType::ENTEREDAREA && eventType != ObserverEventType::EXITEDAREA) {
 		return 0;
 	}
@@ -167,6 +165,8 @@ int EntertainerMissionObjectiveImplementation::notifyObserverEvent(MissionObserv
 	if (cast<CreatureObject*>(arg1) != getPlayerOwner().get()) {
 		return 0;
 	}
+
+	Locker _lock(_this.get());
 
 	if (eventType == ObserverEventType::ENTEREDAREA) {
 		inMissionArea = true;
