@@ -346,12 +346,7 @@ bool WearableObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		TypeInfo<bool >::parseFromBinaryStream(&socketsGenerated, stream);
 		return true;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	if (_name == "WearableObject.objectCreatedPreUsedSocketCountFix") {
-=======
 	case 0xf1b2f6f0: //WearableObject.objectCreatedPreUsedSocketCountFix
->>>>>>> refs/remotes/origin/unstable
 		TypeInfo<bool >::parseFromBinaryStream(&objectCreatedPreUsedSocketCountFix, stream);
 		return true;
 
@@ -359,13 +354,7 @@ bool WearableObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		TypeInfo<int >::parseFromBinaryStream(&usedSocketCount, stream);
 		return true;
 
-<<<<<<< HEAD
-=======
->>>>>>> origin/stable
-	if (_name == "WearableObject.modsNotInSockets") {
-=======
 	case 0xe16cd3a5: //WearableObject.modsNotInSockets
->>>>>>> refs/remotes/origin/unstable
 		TypeInfo<int >::parseFromBinaryStream(&modsNotInSockets, stream);
 		return true;
 
@@ -407,14 +396,8 @@ int WearableObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	_name = "WearableObject.objectCreatedPreUsedSocketCountFix";
-	_name.toBinaryStream(stream);
-=======
 	_nameHashCode = 0xf1b2f6f0; //WearableObject.objectCreatedPreUsedSocketCountFix
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
->>>>>>> refs/remotes/origin/unstable
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&objectCreatedPreUsedSocketCountFix, stream);
@@ -429,15 +412,8 @@ int WearableObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-<<<<<<< HEAD
-=======
->>>>>>> origin/stable
-	_name = "WearableObject.modsNotInSockets";
-	_name.toBinaryStream(stream);
-=======
 	_nameHashCode = 0xe16cd3a5; //WearableObject.modsNotInSockets
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
->>>>>>> refs/remotes/origin/unstable
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<int >::toBinaryStream(&modsNotInSockets, stream);
@@ -453,11 +429,7 @@ int WearableObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeInt(_offset, _totalSize);
 
 
-<<<<<<< HEAD
 	return _count + 6;
-=======
-	return _count + 4;
->>>>>>> origin/stable
 }
 
 WearableObjectImplementation::WearableObjectImplementation() {
@@ -466,13 +438,10 @@ WearableObjectImplementation::WearableObjectImplementation() {
 	socketsGenerated = false;
 	// server/zone/objects/tangible/wearables/WearableObject.idl():  		socketCount = 0;
 	socketCount = 0;
-<<<<<<< HEAD
 	// server/zone/objects/tangible/wearables/WearableObject.idl():  		objectCreatedPreUsedSocketCountFix = true;
 	objectCreatedPreUsedSocketCountFix = true;
 	// server/zone/objects/tangible/wearables/WearableObject.idl():  		usedSocketCount = 0;
 	usedSocketCount = 0;
-=======
->>>>>>> origin/stable
 	// server/zone/objects/tangible/wearables/WearableObject.idl():  		modsNotInSockets = 0;
 	modsNotInSockets = 0;
 	// server/zone/objects/tangible/wearables/WearableObject.idl():  		wearableSkillMods.setAllowOverwriteInsertPlan();
@@ -502,7 +471,6 @@ VectorMap<String, int>* WearableObjectImplementation::getWearableSkillMods() {
 }
 
 void WearableObjectImplementation::addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient) {
-<<<<<<< HEAD
 	// server/zone/objects/tangible/wearables/WearableObject.idl():  	}
 	if ((&wearableSkillMods)->size() <= 6){
 	// server/zone/objects/tangible/wearables/WearableObject.idl():  			wearableSkillMods.put(skillMod, value);
@@ -511,13 +479,6 @@ void WearableObjectImplementation::addSkillMod(const int skillType, const String
 	modsNotInSockets ++;
 }
 }
-=======
-	// server/zone/objects/tangible/wearables/WearableObject.idl():  		wearableSkillMods.put(skillMod, value);
-	(&wearableSkillMods)->put(skillMod, value);
-	// server/zone/objects/tangible/wearables/WearableObject.idl():  		modsNotInSockets++;
-	modsNotInSockets ++;
-}
->>>>>>> origin/stable
 
 void WearableObjectImplementation::setMaxSockets(int maxSockets) {
 	// server/zone/objects/tangible/wearables/WearableObject.idl():  		socketCount 

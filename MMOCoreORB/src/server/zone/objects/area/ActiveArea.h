@@ -151,11 +151,8 @@ protected:
 
 	bool noSpawnArea;
 
-<<<<<<< HEAD
 	ManagedReference<AreaShape* > areaShape;
 
-=======
->>>>>>> origin/stable
 public:
 	ActiveAreaImplementation();
 

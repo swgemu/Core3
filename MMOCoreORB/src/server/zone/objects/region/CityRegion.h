@@ -319,7 +319,6 @@ public:
 	void updateMilitia();
 
 	void addStructure(StructureObject* structure);
-<<<<<<< HEAD
 
 	void addCommercialStructure(StructureObject* structure);
 
@@ -335,19 +334,6 @@ public:
 
 	void setMayoralVote(unsigned long long voteroid, unsigned long long candidateoid);
 
-=======
-
-	void removeStructure(StructureObject* structure);
-
-	bool hasUniqueStructure(unsigned int crc);
-
-	void destroyAllStructuresForRank(byte rank);
-
-	void addCandidate(unsigned long long candidateoid);
-
-	void setMayoralVote(unsigned long long voteroid, unsigned long long candidateoid);
-
->>>>>>> origin/stable
 	int getCandidateVotes(unsigned long long candidateoid);
 
 	VectorMap<unsigned long long, int>* getCandidates();
@@ -391,7 +377,6 @@ public:
 	int getTax(int tax);
 
 	void setTax(int tax, int value);
-<<<<<<< HEAD
 
 	StructureObject* getCivicStructure(int indx);
 
@@ -404,8 +389,6 @@ public:
 	SceneObject* getCitySkillTrainer(int indx);
 
 	void transferCivicStructuresToMayor();
-=======
->>>>>>> origin/stable
 
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
@@ -690,7 +673,6 @@ public:
 	void updateMilitia();
 
 	void addStructure(StructureObject* structure);
-<<<<<<< HEAD
 
 	void addCommercialStructure(StructureObject* structure);
 
@@ -706,19 +688,6 @@ public:
 
 	void setMayoralVote(unsigned long long voteroid, unsigned long long candidateoid);
 
-=======
-
-	void removeStructure(StructureObject* structure);
-
-	bool hasUniqueStructure(unsigned int crc);
-
-	void destroyAllStructuresForRank(byte rank);
-
-	void addCandidate(unsigned long long candidateoid);
-
-	void setMayoralVote(unsigned long long voteroid, unsigned long long candidateoid);
-
->>>>>>> origin/stable
 	int getCandidateVotes(unsigned long long candidateoid);
 
 	VectorMap<unsigned long long, int>* getCandidates();
@@ -762,7 +731,6 @@ public:
 	int getTax(int tax);
 
 	void setTax(int tax, int value);
-<<<<<<< HEAD
 
 	StructureObject* getCivicStructure(int indx);
 
@@ -775,8 +743,6 @@ public:
 	SceneObject* getCitySkillTrainer(int indx);
 
 	void transferCivicStructuresToMayor();
-=======
->>>>>>> origin/stable
 
 	WeakReference<CityRegion*> _this;
 
@@ -972,7 +938,6 @@ public:
 	void updateMilitia();
 
 	void addStructure(StructureObject* structure);
-<<<<<<< HEAD
 
 	void addCommercialStructure(StructureObject* structure);
 
@@ -988,19 +953,6 @@ public:
 
 	void setMayoralVote(unsigned long long voteroid, unsigned long long candidateoid);
 
-=======
-
-	void removeStructure(StructureObject* structure);
-
-	bool hasUniqueStructure(unsigned int crc);
-
-	void destroyAllStructuresForRank(byte rank);
-
-	void addCandidate(unsigned long long candidateoid);
-
-	void setMayoralVote(unsigned long long voteroid, unsigned long long candidateoid);
-
->>>>>>> origin/stable
 	int getCandidateVotes(unsigned long long candidateoid);
 
 	void resetCandidates();
@@ -1040,11 +992,8 @@ public:
 	int getTax(int tax);
 
 	void setTax(int tax, int value);
-<<<<<<< HEAD
 
 	void transferCivicStructuresToMayor();
-=======
->>>>>>> origin/stable
 
 };
 

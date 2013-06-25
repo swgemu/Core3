@@ -545,6 +545,8 @@ protected:
 
 	Mutex targetMutex;
 
+	Mutex awernessEventMutex;
+
 	bool fleeing;
 
 	Time lastDamageReceived;

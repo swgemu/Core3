@@ -14,15 +14,7 @@
  *	ActiveAreaStub
  */
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCITYREGION__,RPC_ISNOBUILDAREA__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS2__,RPC_SETNOBUILDAREA__BOOL_,RPC_SETMUNICIPALZONE__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_ISCAMPAREA__,RPC_SETNOSPAWNAREA__BOOL_,RPC_ISNOSPAWNAREA__,RPC_ISMUNICIPALZONE__,RPC_GETCELLOBJECTID__,RPC_SETCELLOBJECTID__LONG_,RPC_SETAREASHAPE__AREASHAPE_,RPC_GETAREASHAPE__,RPC_INTERSECTSWITH__ACTIVEAREA_};
-=======
-enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCITYREGION__,RPC_ISNOBUILDAREA__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS2__,RPC_SETNOBUILDAREA__BOOL_,RPC_SETMUNICIPALZONE__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_ISCAMPAREA__,RPC_SETNOSPAWNAREA__BOOL_,RPC_ISNOSPAWNAREA__,RPC_ISMUNICIPALZONE__,RPC_GETCELLOBJECTID__,RPC_SETCELLOBJECTID__LONG_};
->>>>>>> origin/stable
-=======
 enum {RPC_SENDTO__SCENEOBJECT_BOOL_ = 6,RPC_ENQUEUEENTEREVENT__SCENEOBJECT_,RPC_ENQUEUEEXITEVENT__SCENEOBJECT_,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ISACTIVEAREA__,RPC_ISREGION__,RPC_ISCITYREGION__,RPC_ISNOBUILDAREA__,RPC_ISCAMPINGPERMITTED__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_GETRADIUS2__,RPC_SETNOBUILDAREA__BOOL_,RPC_SETCAMPINGPERMITTED__BOOL_,RPC_SETMUNICIPALZONE__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_ISCAMPAREA__,RPC_SETNOSPAWNAREA__BOOL_,RPC_ISNOSPAWNAREA__,RPC_ISMUNICIPALZONE__,RPC_GETCELLOBJECTID__,RPC_SETCELLOBJECTID__LONG_,RPC_SETAREASHAPE__AREASHAPE_,RPC_GETAREASHAPE__,RPC_INTERSECTSWITH__ACTIVEAREA_};
->>>>>>> refs/remotes/origin/unstable
 
 ActiveArea::ActiveArea() : SceneObject(DummyConstructorParameter::instance()) {
 	ActiveAreaImplementation* _implementation = new ActiveAreaImplementation();
@@ -511,21 +503,11 @@ bool ActiveAreaImplementation::readObjectMember(ObjectInputStream* stream, const
 		TypeInfo<bool >::parseFromBinaryStream(&noSpawnArea, stream);
 		return true;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	if (_name == "ActiveArea.areaShape") {
-=======
 	case 0x1bb3704b: //ActiveArea.areaShape
->>>>>>> refs/remotes/origin/unstable
 		TypeInfo<ManagedReference<AreaShape* > >::parseFromBinaryStream(&areaShape, stream);
 		return true;
 
-<<<<<<< HEAD
-=======
->>>>>>> origin/stable
-=======
 	}
->>>>>>> refs/remotes/origin/unstable
 
 	return false;
 }
@@ -583,22 +565,14 @@ int ActiveAreaImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	_name = "ActiveArea.areaShape";
-	_name.toBinaryStream(stream);
-=======
 	_nameHashCode = 0x1bb3704b; //ActiveArea.areaShape
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
->>>>>>> refs/remotes/origin/unstable
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<ManagedReference<AreaShape* > >::toBinaryStream(&areaShape, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-=======
->>>>>>> origin/stable
 
 	return _count + 6;
 }
@@ -615,11 +589,8 @@ ActiveAreaImplementation::ActiveAreaImplementation() {
 	municipalZone = false;
 	// server/zone/objects/area/ActiveArea.idl():  		noSpawnArea = false;
 	noSpawnArea = false;
-<<<<<<< HEAD
 	// server/zone/objects/area/ActiveArea.idl():  		areaShape = null;
 	areaShape = NULL;
-=======
->>>>>>> origin/stable
 	// server/zone/objects/area/ActiveArea.idl():  		Logger.setLoggingName("ActiveArea");
 	Logger::setLoggingName("ActiveArea");
 }

@@ -22,15 +22,7 @@
  *	CityRegionStub
  */
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_CLEANUPCITIZENS__,RPC_GETCURRENTPLAYERCOUNT__,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_,RPC_REMOVESHUTTLEINSTALLATION__,RPC_HASSHUTTLEINSTALLATION__,RPC_SETSHUTTLEID__LONG_,RPC_GETMISSIONTERMINALCOUNT__,RPC_GETDECORATIONCOUNT__,RPC_GETSKILLTRAINERCOUNT__,RPC_ADDMISSIONTERMINAL__SCENEOBJECT_,RPC_ADDDECORATION__SCENEOBJECT_,RPC_ADDSKILLTRAINER__SCENEOBJECT_,RPC_REMOVEMISSIONTERMINAL__SCENEOBJECT_,RPC_REMOVEDECORATION__SCENEOBJECT_,RPC_REMOVESKILLTRAINERS__SCENEOBJECT_,RPC_ADDBAZAAR__TANGIBLEOBJECT_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_REMOVEALLSKILLTRAINERS__,RPC_REMOVEALLTERMINALS__,RPC_UPDATEMILITIA__,RPC_ADDSTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVESTRUCTURE__STRUCTUREOBJECT_,RPC_HASUNIQUESTRUCTURE__INT_,RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_,RPC_ADDCANDIDATE__LONG_,RPC_SETMAYORALVOTE__LONG_LONG_,RPC_GETCANDIDATEVOTES__LONG_,RPC_RESETCANDIDATES__,RPC_RESETMAYORALVOTES__,RPC_REMOVECANDIDATE__LONG_,RPC_ISCANDIDATE__LONG_,RPC_ISVOTINGPERIODOVER__,RPC_ISVOTINGPERIOD__,RPC_RESETVOTINGPERIOD__,RPC_ISLOADED__,RPC_SETLOADED__,RPC_APPLYSPECIALIZATIONMODIFIERS__CREATUREOBJECT_,RPC_REMOVESPECIALIZATIONMODIFIERS__CREATUREOBJECT_,RPC_GETPROPERTYTAX__,RPC_GETINCOMETAX__,RPC_GETSALESTAX__,RPC_GETTRAVELTAX__,RPC_GETGARAGETAX__,RPC_GETTAX__INT_,RPC_SETTAX__INT_INT_,RPC_TRANSFERCIVICSTRUCTURESTOMAYOR__};
-=======
-enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_CLEANUPCITIZENS__,RPC_GETCURRENTPLAYERCOUNT__,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_,RPC_REMOVESHUTTLEINSTALLATION__,RPC_HASSHUTTLEINSTALLATION__,RPC_SETSHUTTLEID__LONG_,RPC_GETMISSIONTERMINALCOUNT__,RPC_GETDECORATIONCOUNT__,RPC_GETSKILLTRAINERCOUNT__,RPC_ADDMISSIONTERMINAL__SCENEOBJECT_,RPC_ADDDECORATION__SCENEOBJECT_,RPC_ADDSKILLTRAINER__SCENEOBJECT_,RPC_REMOVEMISSIONTERMINAL__SCENEOBJECT_,RPC_REMOVEDECORATION__SCENEOBJECT_,RPC_REMOVESKILLTRAINERS__SCENEOBJECT_,RPC_ADDBAZAAR__TANGIBLEOBJECT_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_REMOVEALLSKILLTRAINERS__,RPC_REMOVEALLTERMINALS__,RPC_UPDATEMILITIA__,RPC_ADDSTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVESTRUCTURE__STRUCTUREOBJECT_,RPC_HASUNIQUESTRUCTURE__INT_,RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_,RPC_ADDCANDIDATE__LONG_,RPC_SETMAYORALVOTE__LONG_LONG_,RPC_GETCANDIDATEVOTES__LONG_,RPC_RESETCANDIDATES__,RPC_RESETMAYORALVOTES__,RPC_REMOVECANDIDATE__LONG_,RPC_ISCANDIDATE__LONG_,RPC_ISVOTINGPERIODOVER__,RPC_ISVOTINGPERIOD__,RPC_RESETVOTINGPERIOD__,RPC_ISLOADED__,RPC_SETLOADED__,RPC_APPLYSPECIALIZATIONMODIFIERS__CREATUREOBJECT_,RPC_REMOVESPECIALIZATIONMODIFIERS__CREATUREOBJECT_,RPC_GETPROPERTYTAX__,RPC_GETINCOMETAX__,RPC_GETSALESTAX__,RPC_GETTRAVELTAX__,RPC_GETGARAGETAX__,RPC_GETTAX__INT_,RPC_SETTAX__INT_INT_};
->>>>>>> origin/stable
-=======
 enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_CLEANUPCITIZENS__,RPC_GETCURRENTPLAYERCOUNT__,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCOMMERCIALSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__INT_,RPC_ADDTOCITYTREASURY__INT_,RPC_SUBTRACTFROMCITYTREASURY__INT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_,RPC_REMOVESHUTTLEINSTALLATION__,RPC_HASSHUTTLEINSTALLATION__,RPC_SETSHUTTLEID__LONG_,RPC_GETMISSIONTERMINALCOUNT__,RPC_GETDECORATIONCOUNT__,RPC_GETSKILLTRAINERCOUNT__,RPC_ADDMISSIONTERMINAL__SCENEOBJECT_,RPC_ADDDECORATION__SCENEOBJECT_,RPC_ADDSKILLTRAINER__SCENEOBJECT_,RPC_REMOVEMISSIONTERMINAL__SCENEOBJECT_,RPC_REMOVEDECORATION__SCENEOBJECT_,RPC_REMOVESKILLTRAINERS__SCENEOBJECT_,RPC_ADDBAZAAR__TANGIBLEOBJECT_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_REMOVEALLSKILLTRAINERS__,RPC_REMOVEALLTERMINALS__,RPC_UPDATEMILITIA__,RPC_ADDSTRUCTURE__STRUCTUREOBJECT_,RPC_ADDCOMMERCIALSTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVESTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVECOMMERCIALSTRUCTURE__STRUCTUREOBJECT_,RPC_HASUNIQUESTRUCTURE__INT_,RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_,RPC_ADDCANDIDATE__LONG_,RPC_SETMAYORALVOTE__LONG_LONG_,RPC_GETCANDIDATEVOTES__LONG_,RPC_RESETCANDIDATES__,RPC_RESETMAYORALVOTES__,RPC_REMOVECANDIDATE__LONG_,RPC_ISCANDIDATE__LONG_,RPC_ISVOTINGPERIODOVER__,RPC_ISVOTINGPERIOD__,RPC_ISVOTINGLOCKED__,RPC_RESETVOTINGPERIOD__,RPC_ISLOADED__,RPC_SETLOADED__,RPC_APPLYSPECIALIZATIONMODIFIERS__CREATUREOBJECT_,RPC_REMOVESPECIALIZATIONMODIFIERS__CREATUREOBJECT_,RPC_GETPROPERTYTAX__,RPC_GETINCOMETAX__,RPC_GETSALESTAX__,RPC_GETTRAVELTAX__,RPC_GETGARAGETAX__,RPC_GETTAX__INT_,RPC_SETTAX__INT_INT_,RPC_TRANSFERCIVICSTRUCTURESTOMAYOR__};
->>>>>>> refs/remotes/origin/unstable
 
 CityRegion::CityRegion() : ManagedObject(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation();
@@ -1167,9 +1159,6 @@ void CityRegion::removeStructure(StructureObject* structure) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->removeStructure(structure);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 }
 
 void CityRegion::removeCommercialStructure(StructureObject* structure) {
@@ -1184,7 +1173,6 @@ void CityRegion::removeCommercialStructure(StructureObject* structure) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->removeCommercialStructure(structure);
->>>>>>> refs/remotes/origin/unstable
 }
 
 bool CityRegion::hasUniqueStructure(unsigned int crc) {
@@ -1331,167 +1319,6 @@ bool CityRegion::isCandidate(unsigned long long candidateoid) {
 }
 
 bool CityRegion::isVotingPeriodOver() {
-=======
-}
-
-bool CityRegion::hasUniqueStructure(unsigned int crc) {
->>>>>>> origin/stable
-	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-<<<<<<< HEAD
-		DistributedMethod method(this, RPC_ISVOTINGPERIODOVER__);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->isVotingPeriodOver();
-}
-
-bool CityRegion::isVotingPeriod() {
-=======
-		DistributedMethod method(this, RPC_HASUNIQUESTRUCTURE__INT_);
-		method.addUnsignedIntParameter(crc);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->hasUniqueStructure(crc);
-}
-
-void CityRegion::destroyAllStructuresForRank(byte rank) {
-	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_);
-		method.addByteParameter(rank);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->destroyAllStructuresForRank(rank);
-}
-
-void CityRegion::addCandidate(unsigned long long candidateoid) {
-	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ADDCANDIDATE__LONG_);
-		method.addUnsignedLongParameter(candidateoid);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->addCandidate(candidateoid);
-}
-
-void CityRegion::setMayoralVote(unsigned long long voteroid, unsigned long long candidateoid) {
-	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETMAYORALVOTE__LONG_LONG_);
-		method.addUnsignedLongParameter(voteroid);
-		method.addUnsignedLongParameter(candidateoid);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setMayoralVote(voteroid, candidateoid);
-}
-
-int CityRegion::getCandidateVotes(unsigned long long candidateoid) {
-	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETCANDIDATEVOTES__LONG_);
-		method.addUnsignedLongParameter(candidateoid);
-
-		return method.executeWithSignedIntReturn();
-	} else
-		return _implementation->getCandidateVotes(candidateoid);
-}
-
-VectorMap<unsigned long long, int>* CityRegion::getCandidates() {
-	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getCandidates();
-}
-
-VectorMap<unsigned long long, unsigned long long>* CityRegion::getMayoralVotes() {
-	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		throw ObjectNotLocalException(this);
-
-	} else
-		return _implementation->getMayoralVotes();
-}
-
-void CityRegion::resetCandidates() {
-	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_RESETCANDIDATES__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->resetCandidates();
-}
-
-void CityRegion::resetMayoralVotes() {
->>>>>>> origin/stable
-	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-<<<<<<< HEAD
-=======
-		DistributedMethod method(this, RPC_RESETMAYORALVOTES__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->resetMayoralVotes();
-}
-
-void CityRegion::removeCandidate(unsigned long long candidateoid) {
-	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_REMOVECANDIDATE__LONG_);
-		method.addUnsignedLongParameter(candidateoid);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->removeCandidate(candidateoid);
-}
-
-bool CityRegion::isCandidate(unsigned long long candidateoid) {
-	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_ISCANDIDATE__LONG_);
-		method.addUnsignedLongParameter(candidateoid);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->isCandidate(candidateoid);
-}
-
-bool CityRegion::isVotingPeriodOver() {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -1510,7 +1337,6 @@ bool CityRegion::isVotingPeriod() {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
->>>>>>> origin/stable
 		DistributedMethod method(this, RPC_ISVOTINGPERIOD__);
 
 		return method.executeWithBooleanReturn();
@@ -1690,7 +1516,6 @@ void CityRegion::setTax(int tax, int value) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setTax(tax, value);
-<<<<<<< HEAD
 }
 
 StructureObject* CityRegion::getCivicStructure(int indx) {
@@ -1749,8 +1574,6 @@ void CityRegion::transferCivicStructuresToMayor() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->transferCivicStructuresToMayor();
-=======
->>>>>>> origin/stable
 }
 
 DistributedObjectServant* CityRegion::_getImplementation() {
@@ -1869,21 +1692,6 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 
 	case 0xd59bc17f: //CityRegion.regionName
 		TypeInfo<StringId >::parseFromBinaryStream(&regionName, stream);
-		return true;
-	}
-
-	if (_name == "CityRegion.candidates") {
-		TypeInfo<VectorMap<unsigned long long, int> >::parseFromBinaryStream(&candidates, stream);
-		return true;
-	}
-
-	if (_name == "CityRegion.mayoralVotes") {
-		TypeInfo<VectorMap<unsigned long long, unsigned long long> >::parseFromBinaryStream(&mayoralVotes, stream);
-		return true;
-	}
-
-	if (_name == "CityRegion.currentPlayers") {
-		TypeInfo<AtomicInteger >::parseFromBinaryStream(&currentPlayers, stream);
 		return true;
 
 	case 0x74fa6e86: //CityRegion.candidates
@@ -2791,7 +2599,6 @@ void CityRegionImplementation::setTax(int tax, int value) {
 	(&taxes)->set(tax, value);
 }
 
-<<<<<<< HEAD
 StructureObject* CityRegionImplementation::getCivicStructure(int indx) {
 	// server/zone/objects/region/CityRegion.idl():  		return structures.get(indx);
 	return (&structures)->get(indx);
@@ -2817,8 +2624,6 @@ SceneObject* CityRegionImplementation::getCitySkillTrainer(int indx) {
 	return (&citySkillTrainers)->get(indx);
 }
 
-=======
->>>>>>> origin/stable
 /*
  *	CityRegionAdapter
  */
@@ -3213,7 +3018,6 @@ void CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		}
 		break;
 	case RPC_ADDSTRUCTURE__STRUCTUREOBJECT_:
-<<<<<<< HEAD
 		{
 			addStructure(static_cast<StructureObject*>(inv->getObjectParameter()));
 		}
@@ -3255,39 +3059,6 @@ void CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_GETCANDIDATEVOTES__LONG_:
 		{
-=======
-		{
-			addStructure(static_cast<StructureObject*>(inv->getObjectParameter()));
-		}
-		break;
-	case RPC_REMOVESTRUCTURE__STRUCTUREOBJECT_:
-		{
-			removeStructure(static_cast<StructureObject*>(inv->getObjectParameter()));
-		}
-		break;
-	case RPC_HASUNIQUESTRUCTURE__INT_:
-		{
-			resp->insertBoolean(hasUniqueStructure(inv->getUnsignedIntParameter()));
-		}
-		break;
-	case RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_:
-		{
-			destroyAllStructuresForRank(inv->getByteParameter());
-		}
-		break;
-	case RPC_ADDCANDIDATE__LONG_:
-		{
-			addCandidate(inv->getUnsignedLongParameter());
-		}
-		break;
-	case RPC_SETMAYORALVOTE__LONG_LONG_:
-		{
-			setMayoralVote(inv->getUnsignedLongParameter(), inv->getUnsignedLongParameter());
-		}
-		break;
-	case RPC_GETCANDIDATEVOTES__LONG_:
-		{
->>>>>>> origin/stable
 			resp->insertSignedInt(getCandidateVotes(inv->getUnsignedLongParameter()));
 		}
 		break;
@@ -3384,14 +3155,11 @@ void CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETTAX__INT_INT_:
 		{
 			setTax(inv->getSignedIntParameter(), inv->getSignedIntParameter());
-<<<<<<< HEAD
 		}
 		break;
 	case RPC_TRANSFERCIVICSTRUCTURESTOMAYOR__:
 		{
 			transferCivicStructuresToMayor();
-=======
->>>>>>> origin/stable
 		}
 		break;
 	default:
@@ -3809,13 +3577,10 @@ int CityRegionAdapter::getTax(int tax) {
 
 void CityRegionAdapter::setTax(int tax, int value) {
 	(static_cast<CityRegion*>(stub))->setTax(tax, value);
-<<<<<<< HEAD
 }
 
 void CityRegionAdapter::transferCivicStructuresToMayor() {
 	(static_cast<CityRegion*>(stub))->transferCivicStructuresToMayor();
-=======
->>>>>>> origin/stable
 }
 
 /*

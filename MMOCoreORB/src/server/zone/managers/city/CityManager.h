@@ -234,18 +234,12 @@ public:
 
 	void castMayoralVote(CityRegion* city, CreatureObject* creature, unsigned long long oid);
 
-<<<<<<< HEAD
 	void sendStructureReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
 	void fixMayor(CityRegion* city, CreatureObject* mayor);
 
-<<<<<<< HEAD
-=======
->>>>>>> origin/stable
-=======
 	bool canSupportMoreDecorations(CityRegion* city);
 
->>>>>>> refs/remotes/origin/unstable
 	CitySpecialization* getCitySpecialization(const String& cityspec);
 
 	CityTax* getCityTax(int idx);
@@ -419,18 +413,12 @@ public:
 
 	void castMayoralVote(CityRegion* city, CreatureObject* creature, unsigned long long oid);
 
-<<<<<<< HEAD
 	void sendStructureReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
 	void fixMayor(CityRegion* city, CreatureObject* mayor);
 
-<<<<<<< HEAD
-=======
->>>>>>> origin/stable
-=======
 	bool canSupportMoreDecorations(CityRegion* city);
 
->>>>>>> refs/remotes/origin/unstable
 	CitySpecialization* getCitySpecialization(const String& cityspec);
 
 	CityTax* getCityTax(int idx);
@@ -568,18 +556,12 @@ public:
 
 	void castMayoralVote(CityRegion* city, CreatureObject* creature, unsigned long long oid);
 
-<<<<<<< HEAD
 	void sendStructureReport(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
 
 	void fixMayor(CityRegion* city, CreatureObject* mayor);
 
-<<<<<<< HEAD
-=======
->>>>>>> origin/stable
-=======
 	bool canSupportMoreDecorations(CityRegion* city);
 
->>>>>>> refs/remotes/origin/unstable
 };
 
 class CityManagerHelper : public DistributedObjectClassHelper, public Singleton<CityManagerHelper> {

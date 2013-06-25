@@ -238,18 +238,12 @@ public:
 
 	void updatePaidAccessList();
 
-<<<<<<< HEAD
 	void createChildObjects();
 
-<<<<<<< HEAD
-=======
->>>>>>> origin/stable
-=======
 	void spawnChildCreatures();
 
 	bool hasChildCreatures();
 
->>>>>>> refs/remotes/origin/unstable
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -430,18 +424,12 @@ public:
 
 	void updatePaidAccessList();
 
-<<<<<<< HEAD
 	void createChildObjects();
 
-<<<<<<< HEAD
-=======
->>>>>>> origin/stable
-=======
 	void spawnChildCreatures();
 
 	bool hasChildCreatures();
 
->>>>>>> refs/remotes/origin/unstable
 	WeakReference<BuildingObject*> _this;
 
 	operator const BuildingObject*();
@@ -587,18 +575,12 @@ public:
 
 	void updatePaidAccessList();
 
-<<<<<<< HEAD
 	void createChildObjects();
 
-<<<<<<< HEAD
-=======
->>>>>>> origin/stable
-=======
 	void spawnChildCreatures();
 
 	bool hasChildCreatures();
 
->>>>>>> refs/remotes/origin/unstable
 };
 
 class BuildingObjectHelper : public DistributedObjectClassHelper, public Singleton<BuildingObjectHelper> {

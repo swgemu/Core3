@@ -121,7 +121,6 @@ using namespace server::zone::managers::minigames;
 
 namespace server {
 namespace zone {
-<<<<<<< HEAD
 namespace managers {
 namespace minigames {
 
@@ -136,8 +135,6 @@ using namespace server::zone::managers::minigames;
 
 namespace server {
 namespace zone {
-=======
->>>>>>> origin/stable
 namespace objects {
 namespace creature {
 
