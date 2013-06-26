@@ -64,8 +64,8 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	spawnMobile("lok", "nym_surveyer",60,-2.13049,-0.894991,6.9956,360.011,8145378)
 
 	--misc
-	spawnMobile("lok", "informant_npc_lvl_3",60,369,0,5087,90,0)
-	spawnMobile("lok", "informant_npc_lvl_3",60,540,0,5072,180,0)
+	spawnMobile("lok", "informant_npc_lvl_3",60,369,11.89,5087,90,0)
+	spawnMobile("lok", "informant_npc_lvl_3",60,540,11.92,5072,180,0)
 	spawnMobile("lok", "junk_dealer",60,367,12,5202.8,-178,0)
 	spawnMobile("lok", "reggi_tirver",60,443.925,12,4879.41,69.9891,0)
 
