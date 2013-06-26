@@ -737,13 +737,6 @@ void AuctionManagerImplementation::doAuctionBid(CreatureObject* player, AuctionI
 
 	Locker locker(item);
 	Locker plocker(player);
-	
-	if (player->getBankCredits() < item->getPrice()) {
-		BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), BidAuctionResponseMessage::NOTENOUGHCREDITS);
-		player->sendMessage(msg);
-
-		return;
-	}
 
 	if (player->getBankCredits() < item->getPrice()) {
 		BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), BidAuctionResponseMessage::NOTENOUGHCREDITS);
