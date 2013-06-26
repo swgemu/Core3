@@ -51,7 +51,7 @@ void AuctionManagerImplementation::initialize() {
 	ManagedReference<SceneObject*> defaultBazaar = NULL;
 
 	while (iterator.getNextKey(objectID)) {
-		ManagedReference<AuctionItem*> auctionItem = cast<AuctionItem*>(Core::getObjectBroker()->lookUp(objectID));
+		Reference<AuctionItem*> auctionItem = Core::getObjectBroker()->lookUp(objectID).castTo<AuctionItem*>();
 		ObjectDatabaseManager::instance()->commitLocalTransaction();
 
 		if(auctionItem == NULL) {
