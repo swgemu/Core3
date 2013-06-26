@@ -47,6 +47,8 @@ which carries forward this exception.
 #include "server/ServerCore.h"
 #include "server/zone/managers/director/DirectorManager.h"
 
+asd
+
 class CoreProcess : public ChildProcess {
 	SortedVector<String>& arguments;
 
