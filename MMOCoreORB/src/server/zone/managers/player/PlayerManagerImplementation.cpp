@@ -3654,7 +3654,7 @@ void PlayerManagerImplementation::cleanupCharacters(){
 
 				if(shouldDeleteCharacter(objectID, galaxyID)){
 
-					ManagedReference<CreatureObject*> object = dynamic_cast<CreatureObject*>(Core::getObjectBroker()->lookUp(objectID));
+					ManagedReference<CreatureObject*> object = Core::getObjectBroker()->lookUp(objectID).castTo<CreatureObject*>();
 
 					if(object == NULL){
 						info("OBJECT NULL when getting object " + String::valueOf(objectID),true);

@@ -98,7 +98,7 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
 	// FIXME: temp hack
-	server = Core::lookupObject<ZoneProcessServer>("ZoneProcessServer");
+	server = Core::lookupObject<ZoneProcessServer>("ZoneProcessServer").get();
 
 	templateObject = TemplateManager::instance()->getTemplate(serverObjectCRC);
 

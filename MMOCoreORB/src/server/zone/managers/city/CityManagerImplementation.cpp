@@ -158,7 +158,7 @@ void CityManagerImplementation::loadCityRegions() {
 		uint64 objectID;
 
 		while (iterator.getNextKeyAndValue(objectID, objectData)) {
-			CityRegion* object = dynamic_cast<CityRegion*>(Core::getObjectBroker()->lookUp(objectID));
+			Reference<CityRegion*> object = Core::getObjectBroker()->lookUp(objectID).castTo<CityRegion*>();
 
 			if (object != NULL && object->getZone() != NULL) {
 				++i;
