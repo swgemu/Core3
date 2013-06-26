@@ -137,7 +137,7 @@ namespace zone {
 		void printInfo();
 		String getInfo();
 
-		DistributedObjectStub* loadPersistentObject(uint64 objectID);
+		Reference<DistributedObjectStub*> loadPersistentObject(uint64 objectID);
 		int updatePersistentObject(DistributedObject* object);
 		int destroyObjectFromDatabase(uint64 objectID);
 
