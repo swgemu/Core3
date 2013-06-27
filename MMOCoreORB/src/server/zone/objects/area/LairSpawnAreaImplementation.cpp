@@ -94,7 +94,7 @@ int LairSpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Obs
 		
 		locker.release();
 
-		ManagedReference<ActiveArea*> area = cast<ActiveArea*>(ServerCore::getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0));
+		ManagedReference<ActiveArea*> area = (ServerCore::getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0)).castTo<ActiveArea*>();
 
 		area->setRadius(64);
 		area->setNoSpawnArea(true);

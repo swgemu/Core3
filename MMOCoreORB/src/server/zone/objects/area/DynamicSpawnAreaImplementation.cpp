@@ -138,7 +138,7 @@ void DynamicSpawnAreaImplementation::spawnCreature(uint32 templateCRC) {
 		Vector3 rOuter = getRandomPosition();
 
 		if (rOuter.getX() != 0 || rOuter.getY() != 0) {
-			ManagedReference<AiGroup*> group = dynamic_cast<AiGroup*>(getZone()->getZoneServer()->createObject(crc, 0));
+			ManagedReference<AiGroup*> group = getZone()->getZoneServer()->createObject(crc, 0).castTo<AiGroup*>();
 			if (group == NULL)
 				return;
 

@@ -36,7 +36,7 @@ void EntertainerMissionObjectiveImplementation::activate() {
 	ManagedReference<ZoneServer*> zoneServer = Core::lookupObject<ZoneServer>("ZoneServer");
 
 	if (locationActiveArea == NULL) {
-		locationActiveArea = cast<ActiveArea*>( zoneServer->createObject(String("object/active_area.iff").hashCode(), 1));
+		locationActiveArea = ( zoneServer->createObject(String("object/active_area.iff").hashCode(), 1)).castTo<ActiveArea*>();
 	}
 
 	if (!locationActiveArea->isInQuadTree()) {

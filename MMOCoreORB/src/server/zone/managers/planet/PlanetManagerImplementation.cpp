@@ -65,7 +65,7 @@ void PlanetManagerImplementation::initialize() {
 	loadStaticTangibleObjects();
 
 	if (zone->getZoneName() == "dathomir") {
-		ActiveArea* area = dynamic_cast<ActiveArea*>(zone->getZoneServer()->createObject(String("object/fs_village_area.iff").hashCode(), 0));
+		Reference<ActiveArea*> area = zone->getZoneServer()->createObject(String("object/fs_village_area.iff").hashCode(), 0).castTo<ActiveArea*>();
 		area->setRadius(512.f);
 		area->initializePosition(5306, 0, -4145);
 		zone->transferObject(area, -1, true);
@@ -146,7 +146,7 @@ void PlanetManagerImplementation::loadLuaConfig() {
 			float radius = badge.getFloatAt(4);
 			int badgeID = badge.getIntAt(5);
 
-			ManagedReference<BadgeActiveArea*> obj = cast<BadgeActiveArea*>(server->getZoneServer()->createObject(hashCode, 0));
+			ManagedReference<BadgeActiveArea*> obj = server->getZoneServer()->createObject(hashCode, 0).castTo<BadgeActiveArea*>();
 			obj->setRadius(radius);
 			obj->setBadge(badgeID);
 			obj->initializePosition(x, 0, y);
@@ -175,7 +175,7 @@ void PlanetManagerImplementation::loadPlanetObjects(LuaObject* luaObject) {
 
 		String templateFile = planetObject.getStringField("templateFile");
 
-		ManagedReference<SceneObject*> obj = cast<SceneObject*>( ObjectManager::instance()->createObject(templateFile.hashCode(), 0, ""));
+		ManagedReference<SceneObject*> obj = ObjectManager::instance()->createObject(templateFile.hashCode(), 0, "");
 
 		if (obj != NULL) {
 			float x = planetObject.getFloatField("x");
@@ -254,7 +254,7 @@ SceneObject* PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* 
 
 	ZoneServer* zoneServer = server->getZoneServer();
 
-	SceneObject* object = zoneServer->getObject(objectID);
+	Reference<SceneObject*> object = zoneServer->getObject(objectID);
 
 	++totalObjects;
 
@@ -265,7 +265,7 @@ SceneObject* PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* 
 	if (object != NULL)
 		return NULL;
 
-	SceneObject* parentObject = zoneServer->getObject(node->getParentID());
+	Reference<SceneObject*> parentObject = zoneServer->getObject(node->getParentID());
 
 	String serverTemplate = templateName.replaceFirst("shared_", "");
 	Vector3 position = node->getPosition();
@@ -276,8 +276,8 @@ SceneObject* PlanetManagerImplementation::loadSnapshotObject(WorldSnapshotNode* 
 	object->setDirection(node->getDirection());
 
 	if (parentObject != NULL && parentObject->isBuildingObject() && object->isCellObject()) {
-		CellObject* cell = cast<CellObject*>(object);
-		BuildingObject* building = cast<BuildingObject*>(parentObject);
+		CellObject* cell = cast<CellObject*>(object.get());
+		BuildingObject* building = cast<BuildingObject*>(parentObject.get());
 		building->addCell(cell, node->getCellID());
 	}
 
@@ -498,7 +498,7 @@ void PlanetManagerImplementation::loadClientRegions() {
 			region->setMunicipalZone(true);
 		}
 
-		ManagedReference<ActiveArea*> noBuild = cast<ActiveArea*>(zone->getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0));
+		ManagedReference<ActiveArea*> noBuild = zone->getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0).castTo<ActiveArea*>();
 		noBuild->initializePosition(x, 0, y);
 		ManagedReference<CircularAreaShape*> areaShape = new CircularAreaShape();
 		areaShape->setRadius(radius * 2);

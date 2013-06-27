@@ -360,7 +360,7 @@ public:
 
 	bool applyComponentStats(ManufactureSchematic* manufactureSchematic);
 
-	FactoryCrate* createFactoryCrate(bool insertSelf = false);
+	Reference<FactoryCrate* > createFactoryCrate(bool insertSelf = false);
 
 	bool canRepair(CreatureObject* player);
 
@@ -604,7 +604,7 @@ public:
 
 	bool applyComponentStats(ManufactureSchematic* manufactureSchematic);
 
-	FactoryCrate* createFactoryCrate(bool insertSelf = false);
+	Reference<FactoryCrate* > createFactoryCrate(bool insertSelf = false);
 
 	bool canRepair(CreatureObject* player);
 
@@ -809,7 +809,7 @@ public:
 
 	bool applyComponentStats(ManufactureSchematic* manufactureSchematic);
 
-	FactoryCrate* createFactoryCrate(bool insertSelf);
+	Reference<FactoryCrate* > createFactoryCrate(bool insertSelf);
 
 	bool canRepair(CreatureObject* player);
 

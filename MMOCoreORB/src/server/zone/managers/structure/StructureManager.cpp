@@ -74,7 +74,7 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 				continue;
 			}
 
-			SceneObject* object = server->getObject(objectID);
+			Reference<SceneObject*> object = server->getObject(objectID);
 
 			if (object != NULL) {
 				++i;
@@ -89,7 +89,7 @@ void StructureManager::loadPlayerStructures(const String& zoneName) {
 					if(gcwMan == NULL)
 						return;
 
-					gcwMan->registerGCWBase(cast<BuildingObject*>(object),false);
+					gcwMan->registerGCWBase(cast<BuildingObject*>(object.get()),false);
 
 				}
 
@@ -610,7 +610,7 @@ int StructureManager::declareResidence(CreatureObject* player,
 	uint64 declaredOidResidence = ghost->getDeclaredResidence();
 
 	ManagedReference<BuildingObject*> declaredResidence =
-			cast<BuildingObject*>(server->getObject(declaredOidResidence));
+			server->getObject(declaredOidResidence).castTo<BuildingObject*>();
 	ManagedReference<CityRegion*> cityRegion = buildingObject->getCityRegion();
 
 	CityManager* cityManager = server->getCityManager();
@@ -701,8 +701,8 @@ int StructureManager::redeedStructure(CreatureObject* creature) {
 	Locker _locker(structureObject);
 
 	ManagedReference<StructureDeed*> deed =
-			dynamic_cast<StructureDeed*>(server->getObject(
-					structureObject->getDeedObjectID()));
+			server->getObject(
+					structureObject->getDeedObjectID()).castTo<StructureDeed*>();
 
 	int maint = structureObject->getSurplusMaintenance();
 	int redeedCost = structureObject->getRedeedCost();
@@ -846,7 +846,7 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 	uint64 declaredOidResidence = ghost->getDeclaredResidence();
 
 	ManagedReference<BuildingObject*> declaredResidence =
-			cast<BuildingObject*>(server->getObject(declaredOidResidence));
+			server->getObject(declaredOidResidence).castTo<BuildingObject*>();
 
 	if (declaredResidence == structure) {
 		status->addMenuItem("@player_structure:declared_residency"); //You have declared your residency here.
