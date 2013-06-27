@@ -26,7 +26,7 @@ int PrecisionLaserKnifeImplementation::handleObjectMenuSelect(CreatureObject* pl
 
 	uint64 targetID = player->getTargetID();
 	ZoneServer* zs = player->getZoneServer();
-	ManagedReference<TangibleObject*> target = dynamic_cast<TangibleObject*>(zs->getObject(targetID, true));
+	ManagedReference<TangibleObject*> target = zs->getObject(targetID, true).castTo<TangibleObject*>();
 
 	if (target == NULL || (!target->isSliceable() && !target->isSecurityTerminal())) {
 		player->sendSystemMessage("You cannot slice that.");

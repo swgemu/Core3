@@ -136,7 +136,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		for (int i = 0; i < ghost->getTotalOwnedStructureCount(); ++i) {
 			uint64 oid = ghost->getOwnedStructure(i);
 
-			ManagedReference<StructureObject*> structure = cast<StructureObject*>(ghost->getZoneServer()->getObject(oid));
+			ManagedReference<StructureObject*> structure = ghost->getZoneServer()->getObject(oid).castTo<StructureObject*>();
 
 			if (structure != NULL && structure->isCampStructure()) {
 				player->sendSystemMessage("@camp:sys_already_camping");
@@ -228,8 +228,8 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 		/// Create active area
 		String areaPath = "object/camp_area.iff";
-		ManagedReference<CampSiteActiveArea*> campArea = cast< CampSiteActiveArea*>
-			(zoneServer->createObject( areaPath.hashCode(), 1));
+		ManagedReference<CampSiteActiveArea*> campArea =
+			(zoneServer->createObject( areaPath.hashCode(), 1)).castTo< CampSiteActiveArea*>();
 		campArea->init(campStructureData);
 		campArea->setTerminal(campTerminal);
 		campArea->setCamp(structureObject);

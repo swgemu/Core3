@@ -78,7 +78,7 @@ void AiActorImplementation::loadTemplateData(CreatureTemplate* templateData) {
 			for (int i = 0; i < weptemps.size(); ++i) {
 				uint32 crc = weptemps.get(i).hashCode();
 
-				ManagedReference<WeaponObject*> weao = dynamic_cast<WeaponObject*>(server->getZoneServer()->createObject(crc, 0));
+				ManagedReference<WeaponObject*> weao = (server->getZoneServer()->createObject(crc, 0)).castTo<WeaponObject*>();
 
 				if (weao != NULL) {
 					weapons.add(weao);
@@ -135,7 +135,7 @@ void AiActorImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 						String templ = obj->getObjectTemplate();
 
-						ManagedReference<TangibleObject*> tano = dynamic_cast<TangibleObject*>(server->getZoneServer()->createObject(templ.hashCode(), 0));
+						ManagedReference<TangibleObject*> tano = (server->getZoneServer()->createObject(templ.hashCode(), 0)).castTo<TangibleObject*>();
 
 						if (tano != NULL) {
 							VectorMap<String, uint8>* cust = obj->getCustomizationVariables();

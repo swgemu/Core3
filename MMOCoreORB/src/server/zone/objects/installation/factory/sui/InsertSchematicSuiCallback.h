@@ -49,7 +49,7 @@ public:
 		Locker locker(player);
 		Locker clocker(factory, player);
 
-		ManagedReference<ManufactureSchematic*> schematic = cast<ManufactureSchematic*>(server->getObject(listBox->getMenuObjectID(index)));
+		ManagedReference<ManufactureSchematic*> schematic = server->getObject(listBox->getMenuObjectID(index)).castTo<ManufactureSchematic*>();
 		factory->handleInsertFactorySchem(player, schematic);
 	}
 
@@ -78,7 +78,7 @@ public:
 		factory->handleRemoveFactorySchem(player);
 
 		if (!otherPressed) {
-			ManagedReference<ManufactureSchematic*> schematic = cast<ManufactureSchematic*>(server->getObject(listBox->getMenuObjectID(index)));
+			ManagedReference<ManufactureSchematic*> schematic = server->getObject(listBox->getMenuObjectID(index)).castTo<ManufactureSchematic*>();
 			factory->handleInsertFactorySchem(player, schematic);
 		}
 	}

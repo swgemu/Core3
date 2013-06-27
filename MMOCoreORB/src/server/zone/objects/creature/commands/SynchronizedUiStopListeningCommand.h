@@ -63,7 +63,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<SceneObject*> object = cast<SceneObject*>(creature->getZoneServer()->getObject(target));
+		ManagedReference<SceneObject*> object = (creature->getZoneServer()->getObject(target)).castTo<SceneObject*>();
 		int value = 0;
 
 		StringTokenizer tokenizer(arguments.toString());

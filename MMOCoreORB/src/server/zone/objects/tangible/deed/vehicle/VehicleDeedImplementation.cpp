@@ -72,8 +72,8 @@ int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, by
 		return 1;
 	}
 
-	VehicleControlDevice* vehicleControlDevice = dynamic_cast<VehicleControlDevice*>(server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1));
-	VehicleObject* vehicle = dynamic_cast<VehicleObject*>(server->getZoneServer()->createObject(generatedObjectTemplate.hashCode(), 1));
+	Reference<VehicleControlDevice*> vehicleControlDevice = (server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1)).castTo<VehicleControlDevice*>();
+	Reference<VehicleObject*> vehicle = (server->getZoneServer()->createObject(generatedObjectTemplate.hashCode(), 1)).castTo<VehicleObject*>();
 
 	if (vehicle == NULL) {
 		player->sendSystemMessage("wrong vehicle object template " + generatedObjectTemplate);

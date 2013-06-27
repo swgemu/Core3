@@ -82,7 +82,7 @@ public:
 		effect << "clienteffect/entertainer_ventriloquism_level_" << dec << actionModifier << ".cef";
 
 		uint64 selectedTarget = creature->getTargetID();
- 		ManagedReference<CreatureObject*> targetCreature = cast<CreatureObject*>(server->getZoneServer()->getObject(selectedTarget));
+ 		ManagedReference<CreatureObject*> targetCreature = server->getZoneServer()->getObject(selectedTarget).castTo<CreatureObject*>();;
 
  		if(targetCreature == NULL) {
 			creature->sendSystemMessage("@performance:effect_need_target");

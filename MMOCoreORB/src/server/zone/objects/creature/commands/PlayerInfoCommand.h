@@ -27,7 +27,7 @@ public:
 
 			targetObject = playerManager->getPlayer(arguments.toString());
 		} else {
-			targetObject = cast<CreatureObject*>(creature->getZoneServer()->getObject(creature->getTargetID()));
+			targetObject = creature->getZoneServer()->getObject(creature->getTargetID()).castTo<CreatureObject*>();
 		}
 
 		if (targetObject == NULL || !targetObject->isPlayerCreature()) {

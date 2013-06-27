@@ -1146,7 +1146,7 @@ bool TangibleObject::applyComponentStats(ManufactureSchematic* manufactureSchema
 		return _implementation->applyComponentStats(manufactureSchematic);
 }
 
-FactoryCrate* TangibleObject::createFactoryCrate(bool insertSelf) {
+Reference<FactoryCrate* > TangibleObject::createFactoryCrate(bool insertSelf) {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -2631,7 +2631,7 @@ bool TangibleObjectAdapter::applyComponentStats(ManufactureSchematic* manufactur
 	return (static_cast<TangibleObject*>(stub))->applyComponentStats(manufactureSchematic);
 }
 
-FactoryCrate* TangibleObjectAdapter::createFactoryCrate(bool insertSelf) {
+Reference<FactoryCrate* > TangibleObjectAdapter::createFactoryCrate(bool insertSelf) {
 	return (static_cast<TangibleObject*>(stub))->createFactoryCrate(insertSelf);
 }
 
