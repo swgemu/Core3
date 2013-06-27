@@ -284,6 +284,7 @@ class ResourceSpawn extends SceneObject {
     
     public native void extractResource(final string zoneName, int units);
     
+    @reference
     public native ResourceContainer createResource(int units);
 
     @local

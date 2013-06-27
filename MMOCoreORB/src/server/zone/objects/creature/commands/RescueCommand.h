@@ -69,7 +69,7 @@ public:
 			return INVALIDTARGET;
 
 		ManagedReference<CreatureObject* > targetCreature =
-				cast<CreatureObject*>(server->getZoneServer()->getObject(target));
+				server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
 
 		if(targetCreature == NULL || !targetCreature->isInCombat())
 			return INVALIDTARGET;
@@ -79,7 +79,7 @@ public:
 
 		uint64 rescuedPlayerId = targetCreature->getMainDefender()->getObjectID();
 		ManagedReference<CreatureObject* > rescuedPlayer =
-				cast<CreatureObject*>(server->getZoneServer()->getObject(rescuedPlayerId));
+				server->getZoneServer()->getObject(rescuedPlayerId).castTo<CreatureObject*>();
 
 		if(rescuedPlayer == NULL)
 			return INVALIDTARGET;

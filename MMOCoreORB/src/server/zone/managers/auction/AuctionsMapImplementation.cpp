@@ -219,7 +219,7 @@ void AuctionsMapImplementation::sendVendorUpdateMail(SceneObject* vendor, bool i
 		return;
 
 	ManagedReference<ChatManager*> cman = vendor->getZoneServer()->getChatManager();
-	ManagedReference<CreatureObject*> owner = cast<CreatureObject*>(vendor->getZoneServer()->getObject(vendorData->getOwnerId()));
+	ManagedReference<CreatureObject*> owner = vendor->getZoneServer()->getObject(vendorData->getOwnerId()).castTo<CreatureObject*>();
 
 	String sender = vendor->getDisplayedName();
 	UnicodeString subject("@auction:vendor_status_subject");

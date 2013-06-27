@@ -275,7 +275,7 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 			ghost->addLastNpcConvOptions(choice);
 			player->sendMessage(skillmsg);
 
-			ManagedReference<LootkitObject*> lootkit = cast<LootkitObject*>(server->getZoneServer()->createObject(CRC, 2));
+			ManagedReference<LootkitObject*> lootkit = (server->getZoneServer()->createObject(CRC, 2)).castTo<LootkitObject*>();
 
 			lootkit->sendTo(player, true);
 			if (!inventory->transferObject(lootkit, -1, true))

@@ -626,7 +626,7 @@ void PlayerObjectImplementation::removeWaypoint(uint64 waypointID, bool notifyCl
 
 
 WaypointObject* PlayerObjectImplementation::addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient) {
-	ManagedReference<WaypointObject*> obj = cast<WaypointObject*>( getZoneServer()->createObject(0xc456e788, 1));
+	ManagedReference<WaypointObject*> obj = getZoneServer()->createObject(0xc456e788, 1).castTo<WaypointObject*>();
 	obj->setPlanetCRC(planet.hashCode());
 	obj->setPosition(positionX, 0, positionY);
 	obj->setActive(true);
@@ -869,7 +869,7 @@ void PlayerObjectImplementation::addFriend(const String& name, bool notifyClient
 
 	ZoneServer* zoneServer = server->getZoneServer();
 	ManagedReference<CreatureObject*> playerToAdd;
-	playerToAdd = dynamic_cast<CreatureObject*>(zoneServer->getObject(objID));
+	playerToAdd = zoneServer->getObject(objID).castTo<CreatureObject*>();
 
 	if (playerToAdd == NULL || playerToAdd == parent.get().get()) {
 		if (notifyClient) {
@@ -938,7 +938,7 @@ void PlayerObjectImplementation::removeFriend(const String& name, bool notifyCli
 
 	ZoneServer* zoneServer = server->getZoneServer();
 	ManagedReference<CreatureObject*> playerToRemove;
-	playerToRemove = dynamic_cast<CreatureObject*>(zoneServer->getObject(objID));
+	playerToRemove = zoneServer->getObject(objID).castTo<CreatureObject*>();
 
 	if (playerToRemove == NULL) {
 		if (notifyClient) {
@@ -1666,7 +1666,7 @@ void PlayerObjectImplementation::updateBountyPvpStatus(uint64 playerId) {
 		return;
 	}
 
-	ManagedReference<CreatureObject*> target = cast<CreatureObject*>(zoneServer->getObject(playerId));
+	ManagedReference<CreatureObject*> target = zoneServer->getObject(playerId).castTo<CreatureObject*>();
 
 	if (target == NULL) {
 		return;
@@ -1762,7 +1762,7 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 
 		uint64 oid = ownedStructures.get(i);
 
-		ManagedReference<StructureObject*> structure = cast<StructureObject*>(getZoneServer()->getObject(oid));
+		ManagedReference<StructureObject*> structure = getZoneServer()->getObject(oid).castTo<StructureObject*>();
 
 		if (structure != NULL) {
 			Zone* zone = structure->getZone();
@@ -1773,4 +1773,22 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 			structure->destroyObjectFromDatabase(true);
 		}
 	}
+}
+
+int PlayerObjectImplementation::getLotsRemaining() {
+	Locker locker(_this.get());
+
+	int lotsRemaining = maximumLots;
+
+	for (int i = 0; i < ownedStructures.size(); ++i) {
+		unsigned long oid = ownedStructures.get(i);
+
+		Reference<StructureObject*> structure = getZoneServer()->getObject(oid).castTo<StructureObject*>();
+
+		if (structure != NULL) {
+			lotsRemaining = lotsRemaining - structure->getLotSize();
+		}
+	}
+
+	return lotsRemaining;
 }

@@ -69,7 +69,7 @@ void AiGroupImplementation::setup(StaticSpawnGroup* templ) {
 	uint64 cellID = templ->getCellID();
 
 	if (cellID != 0) {
-		SceneObject* cellParent = getZone()->getZoneServer()->getObject(cellID);
+		Reference<SceneObject*> cellParent = getZone()->getZoneServer()->getObject(cellID);
 
 		if (cellParent != NULL) {
 			if (!cellParent->isCellObject())

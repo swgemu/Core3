@@ -65,7 +65,7 @@ public:
 
 		ZoneServer* zoneServer = server->getZoneServer();
 
-		SceneObject* targetObj = zoneServer->getObject(target);
+		Reference<SceneObject*> targetObj = zoneServer->getObject(target);
 
 		if(targetObj == NULL)
 			return GENERALERROR;
@@ -76,7 +76,7 @@ public:
 		String oldName = targetObj->getCustomObjectName().toString();
 
 		if (targetObj->isPlayerCreature()) {
-			CreatureObject* targetCreature = cast<CreatureObject*>(targetObj);
+			CreatureObject* targetCreature = cast<CreatureObject*>(targetObj.get());
 			ManagedReference<PlayerObject*> targetPlayer = targetCreature->getPlayerObject();
 
 			String oldFirstName = targetCreature->getFirstName();
@@ -96,7 +96,7 @@ public:
 			for(int i = 0; i < targetPlayer->getTotalOwnedStructureCount(); ++i) {
 				uint64 oid = targetPlayer->getOwnedStructure(i);
 
-				ManagedReference<StructureObject*> structure = cast<StructureObject*>(targetPlayer->getZoneServer()->getObject(oid));
+				ManagedReference<StructureObject*> structure = (targetPlayer->getZoneServer()->getObject(oid)).castTo<StructureObject*>();
 				structure->revokePermission("ADMIN", oldName);
 				structure->grantPermission("ADMIN", newName);
 			}

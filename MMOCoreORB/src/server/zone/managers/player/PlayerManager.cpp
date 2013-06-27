@@ -698,7 +698,7 @@ bool PlayerManager::checkExistentNameInDatabase(const String& firstName) {
 		return _implementation->checkExistentNameInDatabase(firstName);
 }
 
-TangibleObject* PlayerManager::createHairObject(const String& hairObjectFile, const String& hairCustomization) {
+Reference<TangibleObject* > PlayerManager::createHairObject(const String& hairObjectFile, const String& hairCustomization) {
 	PlayerManagerImplementation* _implementation = static_cast<PlayerManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -842,7 +842,7 @@ unsigned long long PlayerManager::getObjectID(const String& name) {
 		return _implementation->getObjectID(name);
 }
 
-CreatureObject* PlayerManager::getPlayer(const String& name) {
+Reference<CreatureObject* > PlayerManager::getPlayer(const String& name) {
 	PlayerManagerImplementation* _implementation = static_cast<PlayerManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -1990,7 +1990,7 @@ bool PlayerManagerAdapter::checkExistentNameInDatabase(const String& firstName) 
 	return (static_cast<PlayerManager*>(stub))->checkExistentNameInDatabase(firstName);
 }
 
-TangibleObject* PlayerManagerAdapter::createHairObject(const String& hairObjectFile, const String& hairCustomization) {
+Reference<TangibleObject* > PlayerManagerAdapter::createHairObject(const String& hairObjectFile, const String& hairCustomization) {
 	return (static_cast<PlayerManager*>(stub))->createHairObject(hairObjectFile, hairCustomization);
 }
 
@@ -2026,7 +2026,7 @@ unsigned long long PlayerManagerAdapter::getObjectID(const String& name) {
 	return (static_cast<PlayerManager*>(stub))->getObjectID(name);
 }
 
-CreatureObject* PlayerManagerAdapter::getPlayer(const String& name) {
+Reference<CreatureObject* > PlayerManagerAdapter::getPlayer(const String& name) {
 	return (static_cast<PlayerManager*>(stub))->getPlayer(name);
 }
 

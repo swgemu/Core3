@@ -86,7 +86,7 @@ public:
 		} else {
 
 			targetCreature =
-					cast<CreatureObject*>(server->getZoneServer()->getObject(target));
+					server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
 		}
 
 		if(targetCreature == NULL || !targetCreature->isPlayerCreature())

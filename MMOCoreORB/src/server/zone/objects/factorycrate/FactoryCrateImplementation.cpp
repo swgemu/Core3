@@ -235,7 +235,7 @@ void FactoryCrateImplementation::split(int newStackSize) {
 	ManagedReference<TangibleObject*> protoclone = cast<TangibleObject*>( objectManager->cloneObject(prototype));
 
 	ManagedReference<FactoryCrate*> newCrate =
-			dynamic_cast<FactoryCrate*>(server->getZoneServer()->createObject(getServerObjectCRC(), 2));
+			(server->getZoneServer()->createObject(getServerObjectCRC(), 2)).castTo<FactoryCrate*>();
 
 	if(parent == NULL || newCrate == NULL || protoclone == NULL)
 		return;

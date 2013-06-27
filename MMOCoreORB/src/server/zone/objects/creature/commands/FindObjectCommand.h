@@ -98,7 +98,7 @@ public:
 
 			//msg->addCoordinate(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
 
-			ManagedReference<WaypointObject*> obj = cast<WaypointObject*>( server->getZoneServer()->createObject(0xc456e788, 1));
+			ManagedReference<WaypointObject*> obj = server->getZoneServer()->createObject(0xc456e788, 1).castTo<WaypointObject*>();
 			obj->setPlanetCRC(targetObject->getPlanetCRC());
 			obj->setPosition(worldPosition.getX(), 0, worldPosition.getY());
 

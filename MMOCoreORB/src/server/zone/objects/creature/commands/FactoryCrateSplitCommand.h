@@ -69,7 +69,7 @@ public:
 		if (newStackSize < 1)
 			return GENERALERROR;
 
-		ManagedReference<FactoryCrate* > factoryCrate = dynamic_cast<FactoryCrate*>(server->getZoneServer()->getObject(target));
+		ManagedReference<FactoryCrate* > factoryCrate = server->getZoneServer()->getObject(target).castTo<FactoryCrate*>();
 
 		if (factoryCrate == NULL || !creature->isPlayerCreature())
 			return INVALIDTARGET;

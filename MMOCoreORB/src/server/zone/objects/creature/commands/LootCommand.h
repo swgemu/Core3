@@ -64,7 +64,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-			ManagedReference<AiAgent*> ai = dynamic_cast<AiAgent*>(server->getZoneServer()->getObject(target));
+			ManagedReference<AiAgent*> ai = server->getZoneServer()->getObject(target).castTo<AiAgent*>();
 
 			if (ai == NULL)
 				return INVALIDTARGET;

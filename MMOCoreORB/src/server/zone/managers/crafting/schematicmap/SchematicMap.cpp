@@ -121,7 +121,7 @@ void SchematicMap::loadDraftSchematicDatabase() {
 
 	while (iterator.getNextKey(objectID)) {
 
-		ManagedReference<DraftSchematic* > draftSchematic = dynamic_cast<DraftSchematic*> (zoneServer->getObject(objectID));
+		ManagedReference<DraftSchematic* > draftSchematic = zoneServer->getObject(objectID).castTo<DraftSchematic*>();
 
 		if(draftSchematic != NULL) {
 
@@ -159,7 +159,7 @@ void SchematicMap::loadDraftSchematicFile() {
 		String path = luaObject.getStringField("path");
 		uint32 servercrc = path.hashCode();
 
-		DraftSchematic* schematic = schematicCrcMap.get(servercrc);
+		Reference<DraftSchematic*> schematic = schematicCrcMap.get(servercrc);
 
 		luaObject.pop();
 

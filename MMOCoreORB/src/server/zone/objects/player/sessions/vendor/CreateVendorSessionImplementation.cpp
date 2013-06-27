@@ -126,7 +126,7 @@ void CreateVendorSessionImplementation::createVendor(String& name) {
 	ManagedReference<TangibleObject*> vendor;
 
 	try {
-		vendor = cast<TangibleObject*>(player->getZoneServer()->createObject(templatePath.hashCode()));
+		vendor = (player->getZoneServer()->createObject(templatePath.hashCode())).castTo<TangibleObject*>();
 	} catch (Exception& e) {
 		error(e.getMessage());
 	}

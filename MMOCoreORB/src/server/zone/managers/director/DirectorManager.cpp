@@ -604,12 +604,12 @@ int DirectorManager::spatialMoodChat(lua_State* L) {
 int DirectorManager::getSceneObject(lua_State* L) {
 	uint64 objectID = lua_tointeger(L, -1);
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
-	SceneObject* object = zoneServer->getObject(objectID);
+	Reference<SceneObject*> object = zoneServer->getObject(objectID);
 
 	if (object == NULL) {
 		lua_pushnil(L);
 	} else {
-		lua_pushlightuserdata(L, object);
+		lua_pushlightuserdata(L, object.get());
 	}
 
 	return 1;
@@ -641,10 +641,10 @@ int DirectorManager::getRegion(lua_State* L) {
 int DirectorManager::getCreatureObject(lua_State* L) {
 	uint64 objectID = lua_tointeger(L, -1);
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
-	SceneObject* object = zoneServer->getObject(objectID);
+	Reference<SceneObject*> object = zoneServer->getObject(objectID);
 
 	if (object != NULL && object->isCreatureObject()) {
-		lua_pushlightuserdata(L, object);
+		lua_pushlightuserdata(L, object.get());
 	} else {
 		lua_pushnil(L);
 	}
@@ -934,7 +934,7 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 		object->initializePosition(x, z, y);
 		object->setDirection(dw, dx, dy, dz);
 
-		SceneObject* cellParent = NULL;
+		Reference<SceneObject*> cellParent = NULL;
 
 		if (parentID != 0) {
 			cellParent = zoneServer->getObject(parentID);

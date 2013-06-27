@@ -265,16 +265,16 @@ void ResourceSpawnImplementation::extractResource(const String& zoneName, int un
 
 }
 
-ResourceContainer* ResourceSpawnImplementation::createResource(int units) {
-   	ResourceContainer* newResource = NULL;
+Reference<ResourceContainer*> ResourceSpawnImplementation::createResource(int units) {
+   	Reference<ResourceContainer*> newResource = NULL;
 
-   	newResource = dynamic_cast<ResourceContainer*>(getZoneServer()->createObject(containerCRC, 2));
+   	newResource = (getZoneServer()->createObject(containerCRC, 2)).castTo<ResourceContainer*>();
 
    	if(newResource == NULL) {
    		error("Unable to create resource container, using generic.  CRC attempted was: " + String::valueOf(containerCRC));
    		print();
    		String genericContainer = "object/resource_container/organic_food.iff";
-   		newResource = dynamic_cast<ResourceContainer*>(getZoneServer()->createObject(genericContainer.hashCode(), 2));
+   		newResource = (getZoneServer()->createObject(genericContainer.hashCode(), 2)).castTo<ResourceContainer*>();
    	}
 
    	newResource->setSpawnObject(_this.get());
