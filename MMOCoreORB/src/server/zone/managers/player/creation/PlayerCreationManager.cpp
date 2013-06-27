@@ -442,8 +442,8 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 	//bool doTutorial = false;
 
 	ManagedReference<CreatureObject*> playerCreature =
-			dynamic_cast<CreatureObject*>(zoneServer.get()->createObject(
-					serverObjectCRC, 2));
+			zoneServer.get()->createObject(
+					serverObjectCRC, 2).castTo<CreatureObject*>();
 
 	if (playerCreature == NULL) {
 		error("Could not create player with template: " + raceFile);

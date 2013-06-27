@@ -80,8 +80,8 @@ public:
 		try {
 
 			uint64 trapId = tokenizer.getLongToken();
-			ManagedReference<TangibleObject*> trap = cast<TangibleObject*> (
-					server->getZoneServer()->getObject(trapId));
+			ManagedReference<TangibleObject*> trap =
+					server->getZoneServer()->getObject(trapId).castTo<TangibleObject*>();
 
 			if (trap == NULL)
 				return INVALIDPARAMETERS;
@@ -92,9 +92,8 @@ public:
 			if (!trap->isASubChildOf(creature))
 				return GENERALERROR;
 
-			ManagedReference<CreatureObject*> targetCreature = cast<
-					CreatureObject*> (
-					server->getZoneServer()->getObject(target));
+			ManagedReference<CreatureObject*> targetCreature =
+					server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
 
 			if (targetCreature == NULL || !targetCreature->isCreature()) {
 				creature->sendSystemMessage("@trap/trap:sys_creatures_only");

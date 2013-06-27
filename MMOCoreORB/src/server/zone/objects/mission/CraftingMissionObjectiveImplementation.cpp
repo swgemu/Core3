@@ -37,7 +37,7 @@ void CraftingMissionObjectiveImplementation::updateMissionStatus(CreatureObject*
 
 		//Create components for schematic and give them to the player.
 		for (int i = 0; i < schematic->getDraftSlotCount(); i++) {
-			ManagedReference<TangibleObject*> item = cast<TangibleObject*>( player->getZoneServer()->createObject(schematic->getDraftSlot(i)->getResourceType().replaceFirst("/shared_", "/").hashCode(), 2));
+			ManagedReference<TangibleObject*> item = ( player->getZoneServer()->createObject(schematic->getDraftSlot(i)->getResourceType().replaceFirst("/shared_", "/").hashCode(), 2)).castTo<TangibleObject*>();
 			if (item != NULL) {
 				item->sendTo(player, true);
 				inventory->transferObject(item, -1, true);

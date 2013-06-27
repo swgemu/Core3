@@ -253,7 +253,7 @@ void CampSiteActiveAreaImplementation::assumeOwnership(CreatureObject* player) {
 	for (int i = 0; i < playerGhost->getTotalOwnedStructureCount(); ++i) {
 		uint64 oid = playerGhost->getOwnedStructure(i);
 
-		ManagedReference<StructureObject*> structure = cast<StructureObject*>(playerGhost->getZoneServer()->getObject(oid));
+		ManagedReference<StructureObject*> structure = playerGhost->getZoneServer()->getObject(oid).castTo<StructureObject*>();
 
 		if (structure->isCampStructure()) {
 			player->sendSystemMessage("@camp:sys_already_camping"); // But you already have a camp established elsewhere!

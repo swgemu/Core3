@@ -85,7 +85,7 @@ public:
 				ZoneServer* zserv = server->getZoneServer();
 
 				String blueFrogTemplate = "object/tangible/terminal/terminal_character_builder.iff";
-				ManagedReference<CharacterBuilderTerminal*> blueFrog = cast<CharacterBuilderTerminal*>( zserv->createObject(blueFrogTemplate.hashCode(), 0));
+				ManagedReference<CharacterBuilderTerminal*> blueFrog = ( zserv->createObject(blueFrogTemplate.hashCode(), 0)).castTo<CharacterBuilderTerminal*>();
 
 				if (blueFrog == NULL)
 					return GENERALERROR;

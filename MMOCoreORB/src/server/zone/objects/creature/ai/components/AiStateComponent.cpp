@@ -252,7 +252,7 @@ bool AiStateComponent::findNextPosition(Observable* obs, float maxDistance, floa
 
 						actor->dropAllMovemementMarkers();
 
-						SceneObject* movementMarker = host->getZoneServer()->createObject(String("object/path_waypoint/path_waypoint.iff").hashCode(), 0);
+						Reference<SceneObject*> movementMarker = host->getZoneServer()->createObject(String("object/path_waypoint/path_waypoint.iff").hashCode(), 0);
 
 						movementMarker->initializePosition(newPositionX, newPositionZ, newPositionY);
 						StringBuffer msg;

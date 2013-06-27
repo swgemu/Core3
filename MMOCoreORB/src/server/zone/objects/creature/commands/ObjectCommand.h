@@ -102,7 +102,7 @@ public:
 					return INVALIDPARAMETERS;
 				}
 
-				ManagedReference<TangibleObject*> object = cast<TangibleObject*>(server->getZoneServer()->createObject(shot->getServerObjectCRC(), 1));
+				ManagedReference<TangibleObject*> object = (server->getZoneServer()->createObject(shot->getServerObjectCRC(), 1)).castTo<TangibleObject*>();
 
 				if (object == NULL) {
 					creature->sendSystemMessage("The object '" + commandType + "' could not be created because the template could not be found.");

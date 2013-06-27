@@ -44,8 +44,8 @@ public:
 	}
 
 	void run() {
-		ManagedReference<CreatureObject*> player = cast<CreatureObject*>( client->getPlayer().get().get());
-		ManagedReference<TangibleObject*> vendor = cast<TangibleObject*>(server->getZoneServer()->getObject(vendorID));
+		ManagedReference<CreatureObject*> player = client->getPlayer().get().castTo<CreatureObject*>();
+		ManagedReference<TangibleObject*> vendor = server->getZoneServer()->getObject(vendorID).castTo<TangibleObject*>();
 
 		if (player == NULL || vendor == NULL)
 			return;
