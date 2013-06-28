@@ -1,7 +1,7 @@
 cc = {
-	level = 8,
+	level = 7,
 	name = "cc",
-	tag = "SWGEmu-CC",
+	tag = "SWGEmu-CCC",
 	skills = {
 		"admin_base",
 		"admin_debug_01",
