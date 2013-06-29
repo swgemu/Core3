@@ -44,6 +44,8 @@
 includeFile("levels/admin.lua")
 includeFile("levels/dev.lua")
 includeFile("levels/qa.lua")
+includeFile("levels/cc.lua")
+includeFile("levels/ct.lua")
 includeFile("levels/csr.lua")
 includeFile("levels/ec.lua")
 --includeFile("levels/tester.lua")
