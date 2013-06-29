@@ -7,7 +7,7 @@ factional_neutral = {
 
 	lairSpawns = {
 		{
-			lairTemplateName = "criminal_base",
+			lairTemplateName = "global_criminal_neutral_none",
 			spawnLimit = 0,
 			minDifficulty = 7,
 			maxDifficulty = 7,
