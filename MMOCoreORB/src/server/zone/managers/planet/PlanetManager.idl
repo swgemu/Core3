@@ -75,6 +75,7 @@ include server.zone.managers.planet.ClientPoiDataTable;
 include server.zone.managers.planet.TravelFare;
 import server.zone.objects.area.ActiveArea;
 import system.thread.Mutex;
+import engine.util.u3d.CloseObjectsVector;
 
 class PlanetManager extends ManagedService implements Logger {
 	protected Zone zone;
@@ -341,7 +342,8 @@ class PlanetManager extends ManagedService implements Logger {
 
 	public native boolean isInWater(float x, float y);
 
-	public native float findClosestWorldFloor(float x, float y, float z, float swimHeight);
+	@local
+	public native float findClosestWorldFloor(float x, float y, float z, float swimHeight, CloseObjectsVector closeObjects = null);
 
 	@local
 	public native void addPlayerCityTravelPoint(PlanetTravelPoint ptp);

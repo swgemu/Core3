@@ -79,6 +79,7 @@ import server.login.account.Account;
 include server.zone.objects.creature.variables.Skill;
 include server.zone.managers.player.OnlineZoneClientMap;
 import system.thread.ReadWriteLock;
+import engine.util.u3d.CloseObjectsVector;
 
 class PlayerManager extends Observer implements Logger {
 	transient ZoneProcessServer processor;
@@ -244,7 +245,8 @@ class PlayerManager extends Observer implements Logger {
 	public native void createTutorialBuilding(CreatureObject player);
 	public native void createSkippedTutorialBuilding(CreatureObject player);
 	
-	public native void updateSwimmingState(CreatureObject player, float newZ);
+	@local
+	public native void updateSwimmingState(CreatureObject player, float newZ, CloseObjectsVector closeObjects = null);
 	@local
 	public native int checkSpeedHackFirstTest(CreatureObject player, float parsedSpeed, @dereferenced ValidatedPosition teleportPosition, float errorMultiplier = 1);
 	public native int checkSpeedHackSecondTest(CreatureObject player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject newParent = null);

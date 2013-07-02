@@ -796,10 +796,10 @@ bool PlanetManagerImplementation::isInWater(float x, float y) {
 	return false;
 }
 
-float PlanetManagerImplementation::findClosestWorldFloor(float x, float y, float z, float swimHeight) {
+float PlanetManagerImplementation::findClosestWorldFloor(float x, float y, float z, float swimHeight, CloseObjectsVector* closeObjects) {
 	SortedVector<IntersectionResult> intersections;
 
-	CollisionManager::getWorldFloorCollisions(x, y, zone, true, &intersections);
+	CollisionManager::getWorldFloorCollisions(x, y, zone, true, &intersections, closeObjects);
 
 	float terrainHeight = zone->getHeight(x, y);
 	float diff = fabs(z - terrainHeight);
