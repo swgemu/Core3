@@ -29,6 +29,14 @@ public:
 		if (zone == NULL)
 			return;
 
+		ZoneServer* zoneServer = structureObject->getZoneServer();
+
+		if (zoneServer != NULL && zoneServer->isServerLoading()) {
+			schedule(1000);
+
+			return;
+		}
+
 		float x = structureObject->getPositionX();
 		float y = structureObject->getPositionY();
 		float z = zone->getHeight(x, y);
