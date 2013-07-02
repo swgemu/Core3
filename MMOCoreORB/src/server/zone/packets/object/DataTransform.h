@@ -172,7 +172,7 @@ public:
 		if (planetManager == NULL)
 			return;
 
-		float z = planetManager->findClosestWorldFloor(positionX, positionY, positionZ, object->getSwimHeight());
+		float z = planetManager->findClosestWorldFloor(positionX, positionY, positionZ, object->getSwimHeight(), (CloseObjectsVector*) object->getCloseObjects());
 
 		if (z != positionZ) {
 			positionZ = z;
@@ -224,7 +224,7 @@ public:
 		if (playerManager->checkSpeedHackSecondTest(object, positionX, positionZ, positionY, movementStamp, NULL) != 0)
 			return;
 
-		playerManager->updateSwimmingState(object, positionZ);
+		playerManager->updateSwimmingState(object, positionZ, (CloseObjectsVector*) object->getCloseObjects());
 
 		object->setMovementCounter(movementCounter);
 		//object->setDirection(directionW, directionX, directionY, directionZ);
