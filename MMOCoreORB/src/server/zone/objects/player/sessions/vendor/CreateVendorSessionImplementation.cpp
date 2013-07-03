@@ -94,7 +94,10 @@ void CreateVendorSessionImplementation::handleVendorSelection(byte menuID) {
 			return;
 		}
 
-		templatePath = templatePath + node->getRandomTemplate(hiringMod) + (System::random(1) == 0 ? "male.iff" : "female.iff");
+		templatePath = templatePath + node->getRandomTemplate(hiringMod);
+		const char* path = templatePath.toCharArray();
+		if (path[strlen(path) - 1] == '_')
+			templatePath = templatePath + (System::random(1) == 0 ? "male.iff" : "female.iff");
 	}
 	SuiInputBox* input = new SuiInputBox(player, SuiWindowType::STRUCTURE_NAME_VENDOR);
 	input->setCallback(new NameVendorSuiCallback(player->getZoneServer()));
