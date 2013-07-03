@@ -270,6 +270,9 @@ public:
 		else
 			object->updateZone(true);
 
+		object->setCurrentSpeed(parsedSpeed);
+
+		object->updateLocomotion();
 	}
 };
 

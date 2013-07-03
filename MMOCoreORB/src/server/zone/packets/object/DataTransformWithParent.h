@@ -284,6 +284,9 @@ public:
 		else
 			object->updateZoneWithParent(newParent, true);
 
+		object->setCurrentSpeed(parsedSpeed);
+
+		object->updateLocomotion();
 	}
 };
 
