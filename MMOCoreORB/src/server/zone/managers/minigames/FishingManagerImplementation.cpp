@@ -551,11 +551,11 @@ uint32 FishingManagerImplementation::createWindow(CreatureObject* player, uint32
 	if (nextAct >= action.size())
 		nextAct = 0;
 
-	String prompt = "STATUS : " + state.get(getFishingState(player)) + "\nBAIT STATUS : "
-			+ baitStatus.get(freshness) + "\nLINE RANGE : "
+	String prompt = "STATUS : " + state.get(getFishingState(player) % 7) + "\nBAIT STATUS : "
+			+ baitStatus.get(freshness % 3) + "\nLINE RANGE : "
 			+ String::valueOf( ceil( player->getDistanceTo(marker) * 100 ) / 100)
-			+ "\nFISH DENSITY : "+ property.get(den)
-			+ "\nVEGETATION : " + property.get(veg)
+			+ "\nFISH DENSITY : "+ property.get(den % 6)
+			+ "\nVEGETATION : " + property.get(veg % 6)
 			+ "\nNEXT ACTION : "
 			+ action.get( nextAct );
 
