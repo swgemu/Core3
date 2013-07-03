@@ -352,10 +352,8 @@ int CombatManager::calculatePostureModifier(CreatureObject* creature, WeaponObje
 	if (weapon->getAttackType() != WeaponObject::RANGEDATTACK)
 		accuracy *= -1;
 
-	if (creature->isPlayerCreature())
-		creature->setCurrentSpeed(creature->calculateSpeed());
-
-	creature->updateLocomotion();
+	if (creature->isPlayerCreature()) // moving the setter to DataTransform, leaving calculateSpeed to set the last combat pos
+		creature->calculateSpeed();
 
 	switch (CreaturePosture::instance()->getSpeed(creature->getPosture(), creature->getLocomotion())) {
 	case CreatureLocomotion::FAST:
