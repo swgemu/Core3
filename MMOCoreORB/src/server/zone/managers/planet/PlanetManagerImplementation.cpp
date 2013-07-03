@@ -796,20 +796,26 @@ bool PlanetManagerImplementation::isInWater(float x, float y) {
 	return false;
 }
 
-float PlanetManagerImplementation::findClosestWorldFloor(float x, float y, float z, float swimHeight, CloseObjectsVector* closeObjects) {
-	SortedVector<IntersectionResult> intersections;
+float PlanetManagerImplementation::findClosestWorldFloor(float x, float y, float z, float swimHeight, IntersectionResults* intersections, CloseObjectsVector* closeObjects) {
 
-	CollisionManager::getWorldFloorCollisions(x, y, zone, true, &intersections, closeObjects);
+	//SortedVector<IntersectionResult> intersections;
+
+	Reference<IntersectionResults*> ref;
+
+    if (intersections == NULL) {
+    	ref = intersections = new IntersectionResults();
+    	CollisionManager::getWorldFloorCollisions(x, y, zone, true, intersections, closeObjects);
+    }
 
 	float terrainHeight = zone->getHeight(x, y);
 	float diff = fabs(z - terrainHeight);
 	float closestHeight = terrainHeight;
 
-	for (int i = 0; i < intersections.size(); i++) {
-		float newDiff = fabs(16384.f - intersections.get(i).getIntersectionDistance() - z);
+	for (int i = 0; i < intersections->size(); i++) {
+		float newDiff = fabs(16384.f - intersections->get(i).getIntersectionDistance() - z);
 		if ( newDiff < diff) {
 			diff = newDiff;
-			closestHeight = 16384.f - intersections.get(i).getIntersectionDistance();
+			closestHeight = 16384.f - intersections->get(i).getIntersectionDistance();
 		}
 	}
 
