@@ -52,6 +52,7 @@ which carries forward this exception.
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
+#include "server/zone/managers/collision/IntersectionResults.h"
 #include "server/zone/Zone.h"
 
 class DataTransform : public ObjectControllerMessage {
@@ -172,7 +173,11 @@ public:
 		if (planetManager == NULL)
 			return;
 
-		float z = planetManager->findClosestWorldFloor(positionX, positionY, positionZ, object->getSwimHeight(), (CloseObjectsVector*) object->getCloseObjects());
+		IntersectionResults intersections;
+
+		CollisionManager::getWorldFloorCollisions(positionX, positionY, object->getZone(), true, &intersections, (CloseObjectsVector*) object->getCloseObjects());
+
+		float z = planetManager->findClosestWorldFloor(positionX, positionY, positionZ, object->getSwimHeight(), &intersections, (CloseObjectsVector*) object->getCloseObjects());
 
 		if (z != positionZ) {
 			positionZ = z;
@@ -224,7 +229,7 @@ public:
 		if (playerManager->checkSpeedHackSecondTest(object, positionX, positionZ, positionY, movementStamp, NULL) != 0)
 			return;
 
-		playerManager->updateSwimmingState(object, positionZ, (CloseObjectsVector*) object->getCloseObjects());
+		playerManager->updateSwimmingState(object, positionZ, &intersections, (CloseObjectsVector*) object->getCloseObjects());
 
 		object->setMovementCounter(movementCounter);
 		//object->setDirection(directionW, directionX, directionY, directionZ);
