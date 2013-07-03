@@ -148,7 +148,7 @@ void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 	else
 	{
 		//Randomize maintenance tasks over the first hour after server restart.
-		timeRemaining = System::random(60 * 60 * 1000);
+		timeRemaining = System::random(60 * 60);
 	}
 
 	scheduleMaintenanceTask(timeRemaining);
