@@ -91,7 +91,13 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 		local npcCompare = thisNpcNumber - activeNpcNumber
 		local globalFaction = self.themePark:getGlobalFaction()
 		local currentMissionNumber = self.themePark:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
-		local missionFaction = self.themePark:getMissionFaction(activeNpcNumber, currentMissionNumber)
+		local missionFaction
+
+		if currentMissionNumber > 0 then
+			missionFaction = self.themePark:getMissionFaction(activeNpcNumber, currentMissionNumber)
+		else
+			missionFaction = 0
+		end
 
 		if missionFaction ~= 0 and self.themePark:isInFaction(missionFaction, pConversingPlayer) ~= true then
 			nextScreenName = "no_faction"
