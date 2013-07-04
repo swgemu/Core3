@@ -613,8 +613,6 @@ void ObjectManager::persistObject(ManagedObject* object, int persistenceLevel, c
 Reference<DistributedObjectStub*> ObjectManager::loadPersistentObject(uint64 objectID) {
 	Reference<DistributedObjectStub*> object = NULL;
 
-	Locker _locker(this);
-
 	uint16 tableID = (uint16)(objectID >> 48);
 
 	/*StringBuffer infoMsg;
@@ -629,12 +627,6 @@ Reference<DistributedObjectStub*> ObjectManager::loadPersistentObject(uint64 obj
 	ObjectDatabase* database = cast<ObjectDatabase*>( db);
 
 	// only for debugging proposes
-	DistributedObject* dobject = getObject(objectID);
-
-	if (dobject != NULL) {
-		//error("different object already in database");
-		return cast<DistributedObjectStub*>( dobject);
-	}
 
 	ObjectInputStream objectData(500);
 
@@ -644,6 +636,15 @@ Reference<DistributedObjectStub*> ObjectManager::loadPersistentObject(uint64 obj
 
 	uint32 serverObjectCRC = 0;
 	String className;
+
+	Locker _locker(this);
+
+	DistributedObject* dobject = getObject(objectID);
+
+	if (dobject != NULL) {
+		//error("different object already in database");
+		return cast<DistributedObjectStub*>( dobject);
+	}
 
 	try {
 		if (Serializable::getVariable<uint32>(serverObjectCrcHashCode, &serverObjectCRC, &objectData)) {

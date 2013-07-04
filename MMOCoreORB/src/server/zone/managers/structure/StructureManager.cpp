@@ -35,8 +35,8 @@
 #include "server/zone/objects/player/sui/callbacks/StructurePayMaintenanceSuiCallback.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/objects/terrain/layer/boundaries/BoundaryRectangle.h"
-
 #include "server/zone/managers/gcw/GCWManager.h"
+#include "tasks/DestroyStructureTask.h"
 
 void StructureManager::loadPlayerStructures(const String& zoneName) {
 
@@ -496,7 +496,11 @@ StructureObject* StructureManager::placeStructure(CreatureObject* creature,
 }
 
 int StructureManager::destroyStructure(StructureObject* structureObject) {
-	ManagedReference<Zone*> zone = structureObject->getZone();
+	Reference<DestroyStructureTask*> task = new DestroyStructureTask(structureObject);
+	task->execute();
+
+	return 0;
+	/*ManagedReference<Zone*> zone = structureObject->getZone();
 
 	if (zone == NULL)
 		return 0;
@@ -550,7 +554,7 @@ int StructureManager::destroyStructure(StructureObject* structureObject) {
 	structureObject->destroyObjectFromWorld(true);
 	structureObject->destroyObjectFromDatabase(true);
 	structureObject->notifyObservers(ObserverEventType::OBJECTDESTRUCTION, structureObject, 0);
-	return 0;
+	return 0;*/
 }
 
 String StructureManager::getTimeString(uint32 timestamp) {

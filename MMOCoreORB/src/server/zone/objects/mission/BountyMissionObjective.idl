@@ -102,7 +102,7 @@ class BountyMissionObjective extends MissionObjective {
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
 		
-		Logger.setLoggingName("MissionObject");
+		Logger.setLoggingName("BountyMissionObjective");
 	}
 	
 	public native void activate();

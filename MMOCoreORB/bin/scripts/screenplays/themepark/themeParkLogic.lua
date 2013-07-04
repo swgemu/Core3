@@ -301,6 +301,11 @@ end
 
 function ThemeParkLogic:getMission(npcNumber, missionNumber)
 	local npcData = self:getNpcData(npcNumber)
+	
+	if (npcData == nil) then
+		printf("null npcData in ThemeParkLogic:getMission for %s", self.className);
+	end
+	
 	local missions = npcData.missions
 	
 	return missions[missionNumber]

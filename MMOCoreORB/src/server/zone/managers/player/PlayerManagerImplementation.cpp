@@ -2414,7 +2414,7 @@ void PlayerManagerImplementation::updatePermissionName(CreatureObject* player, i
 	}
 }
 
-void PlayerManagerImplementation::updateSwimmingState(CreatureObject* player, float newZ) {
+void PlayerManagerImplementation::updateSwimmingState(CreatureObject* player, float newZ, IntersectionResults* intersections, CloseObjectsVector* closeObjectsVector) {
 	player->notifySelfPositionUpdate();
 	if (player->getParent() != NULL) {
 		return;
@@ -2448,12 +2448,17 @@ void PlayerManagerImplementation::updateSwimmingState(CreatureObject* player, fl
 	if (waterIsDefined && (waterHeight > landHeight) && (landHeight + player->getSwimHeight() - waterHeight < 0.2)) {
 		//Water level is higher than the terrain level and is deep enough for the player to be swimming.
 		//Check if the player is on a bridge or other terrain above the water level.
-		SortedVector<IntersectionResult> intersections;
+		//SortedVector<IntersectionResult> intersections;
+		Reference<IntersectionResults*> ref;
 
-		CollisionManager::getWorldFloorCollisions(player->getPositionX(), player->getPositionY(), zone, true, &intersections);
+		if (intersections == NULL) {
+			ref = intersections = new IntersectionResults();
 
-		for (int i = 0; i < intersections.size(); i++) {
-			if (fabs(16384 - intersections.get(i).getIntersectionDistance() - newZ) < 0.2) {
+			CollisionManager::getWorldFloorCollisions(player->getPositionX(), player->getPositionY(), zone, true, intersections, closeObjectsVector);
+		}
+
+		for (int i = 0; i < intersections->size(); i++) {
+			if (fabs(16384 - intersections->get(i).getIntersectionDistance() - newZ) < 0.2) {
 				//Player is on terrain above the water.
 				player->clearState(CreatureState::SWIMMING, true);
 				return;
