@@ -48,7 +48,7 @@ which carries forward this exception.
 #include "ObjectControllerMessage.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "ObjectControllerMessageCallback.h"
@@ -203,6 +203,11 @@ public:
 		if (!newParent->isCellObject() || newParent->getParent() == NULL)
 			return;
 
+		ManagedReference<BuildingObject*> building = newParent->getParent().castTo<BuildingObject*>();
+
+		if (building == NULL)
+			return;
+
 		ManagedReference<SceneObject*> par = object->getParent();
 
 		if (par != NULL && par->isShipObject())
@@ -220,7 +225,7 @@ public:
 		ValidatedPosition pos;
 		pos.update(object);
 
-		if (object->isFrozen()) {
+		if (object->isFrozen() || !building->isAllowedEntry(object)) {
 			bounceBack(object, pos);
 			return;
 		}
@@ -279,6 +284,9 @@ public:
 		else
 			object->updateZoneWithParent(newParent, true);
 
+		object->setCurrentSpeed(parsedSpeed);
+
+		object->updateLocomotion();
 	}
 };
 

@@ -12,12 +12,22 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/ZoneServer.h"
+#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
 
 void StructureMaintenanceTask::run() {
 	ManagedReference<StructureObject*> strongRef = structureObject.get();
 
 	if (strongRef == NULL)
 		return;
+
+	SharedStructureObjectTemplate* templ = dynamic_cast<SharedStructureObjectTemplate*>(strongRef->getObjectTemplate());
+
+	if (templ != NULL) {
+		String ability = templ->getAbilityRequired();
+
+		if (ability == "place_cantina" || ability == "place_hospital" || ability == "place_theater")
+			return;
+	}
 
 	ZoneServer* zoneServer = strongRef->getZoneServer();
 

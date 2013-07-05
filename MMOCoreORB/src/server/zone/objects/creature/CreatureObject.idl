@@ -213,7 +213,7 @@ class CreatureObject extends TangibleObject {
 	
 	protected transient byte currentWeather;
 	protected transient byte currentWind;
-
+	
 	@dereferenced
 	protected transient Time lastCombatActionTime;
 
@@ -397,8 +397,8 @@ class CreatureObject extends TangibleObject {
 	 * @pre { this object is locked }
 	 * @post {this object is locked, this object has the new locomotion set, if appropriate }
 	 */
-	public native float calculateSpeed();	
-
+	public native float calculateSpeed();
+	 
 	public native abstract void updateLocomotion();
 	
 	public native void setHeight(float heigh, boolean notifyClient = true);
@@ -941,7 +941,7 @@ class CreatureObject extends TangibleObject {
 	 * @return returns true if the creature object can attack this 
 	 */
 	public native boolean isAttackableBy(CreatureObject object);
-
+	
 	public native boolean isAttackableBy(TangibleObject attacker);
 	
 	public native boolean isHealableBy(CreatureObject object);
@@ -1721,7 +1721,7 @@ class CreatureObject extends TangibleObject {
 	public Mutex getSkillModMutex() {
 		return skillModMutex;
 	}
-
+	
 	public native float calculateCostAdjustment(byte stat, float baseCost);
 
 	public native void updateSpeedAndAccelerationMods();

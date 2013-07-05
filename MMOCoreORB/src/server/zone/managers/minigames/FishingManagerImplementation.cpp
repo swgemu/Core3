@@ -546,13 +546,18 @@ uint32 FishingManagerImplementation::createWindow(CreatureObject* player, uint32
 		freshness = 0;
 	}
 
-	String prompt = "STATUS : " + state.get(getFishingState(player)) + "\nBAIT STATUS : "
-			+ baitStatus.get(freshness) + "\nLINE RANGE : "
+	int nextAct = getNextAction(player);
+
+	if (nextAct >= action.size())
+		nextAct = 0;
+
+	String prompt = "STATUS : " + state.get(getFishingState(player) % 7) + "\nBAIT STATUS : "
+			+ baitStatus.get(freshness % 3) + "\nLINE RANGE : "
 			+ String::valueOf( ceil( player->getDistanceTo(marker) * 100 ) / 100)
-			+ "\nFISH DENSITY : "+ property.get(den)
-			+ "\nVEGETATION : " + property.get(veg)
+			+ "\nFISH DENSITY : "+ property.get(den % 6)
+			+ "\nVEGETATION : " + property.get(veg % 6)
 			+ "\nNEXT ACTION : "
-			+ action.get( getNextAction(player) );
+			+ action.get( nextAct );
 
 	// create new window
 	ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::FISHING, 0);

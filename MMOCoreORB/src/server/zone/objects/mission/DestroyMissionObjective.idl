@@ -82,7 +82,7 @@ class DestroyMissionObjective extends MissionObjective {
 	public void initializeTransientMembers() {
 		super.initializeTransientMembers();
 		
-		Logger.setLoggingName("MissionObject");
+		Logger.setLoggingName("DestroyMissionObjective");
 	}
 	
 	public native void activate();

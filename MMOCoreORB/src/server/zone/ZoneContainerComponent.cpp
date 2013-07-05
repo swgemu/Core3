@@ -139,7 +139,16 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 
 	if (parent != NULL/* && parent->isCellObject()*/) {
 		uint64 parentID = object->getParentID();
-		parent->removeObject(object, sceneObject, true);
+
+		if (containmentType == -2)
+			parent->removeObject(object, sceneObject, false);
+		else
+			parent->removeObject(object, sceneObject, true);
+
+		if (object->getParent() != NULL && parent->containsChildObject(object))
+			return false;
+		else
+			object->setParent(NULL);
 
 		if (object->getParent() != NULL && parent->containsChildObject(object))
 			return false;
@@ -247,8 +256,12 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 		zoneLocker.release();
 
 		while (activeAreas->size() > 0) {
+			Locker _alocker(object->getContainerLock());
+
 			ManagedReference<ActiveArea*> area = activeAreas->get(0);
 			activeAreas->remove(0);
+
+			_alocker.release();
 
 			area->enqueueExitEvent(object);
 		}

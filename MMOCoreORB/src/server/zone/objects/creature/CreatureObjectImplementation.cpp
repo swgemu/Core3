@@ -1291,9 +1291,9 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 	}
 
 	posture = newPosture;
-
+	
 	updateSpeedAndAccelerationMods();
-
+	
 	// TODO: these two seem to be as of yet unused (maybe only necessary in client)
 	//CreaturePosture::instance()->getTurnScale((uint8)newPosture);
 	//CreaturePosture::instance()->getCanSeeHeightMod((uint8)newPosture);

@@ -364,10 +364,15 @@ float CollisionManager::getWorldFloorCollision(float x, float y, Zone* zone, boo
 	return height;
 }
 
-void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, bool testWater, SortedVector<IntersectionResult>* result)
+void CollisionManager::getWorldFloorCollisions(float x, float y, Zone* zone, bool testWater, SortedVector<IntersectionResult>* result, CloseObjectsVector* closeObjectsVector)
 {
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
-	zone->getInRangeObjects(x, y, 128, &closeObjects, true);
+
+	if (closeObjectsVector != NULL) {
+		closeObjectsVector->safeCopyTo(closeObjects);
+	} else {
+		zone->getInRangeObjects(x, y, 128, &closeObjects, true);
+	}
 
 	PlanetManager* planetManager = zone->getPlanetManager();
 

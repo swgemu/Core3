@@ -164,7 +164,7 @@ void CraftingToolImplementation::fillAttributeList(AttributeListMessage* alm,
 
 
 	Reference<CraftingSession*> session = cast<CraftingSession*>(object->getActiveSession(SessionFacadeType::CRAFTING));
-	if(session == NULL) {
+	if(session == NULL && getParent() != NULL) {
 		disperseItems();
 	}
 }

@@ -144,7 +144,7 @@ void AuctionManagerImplementation::checkVendorItems() {
 
 void AuctionManagerImplementation::checkAuctions() {
 
-	CheckAuctionsTask* task = new CheckAuctionsTask(_this.get());
+	Reference<CheckAuctionsTask*> task = new CheckAuctionsTask(_this.get());
 	task->schedule(CHECKEVERY * 60 * 1000);
 
 	TerminalListVector items = auctionMap->getBazaarTerminalData("", "", 0);
@@ -1445,6 +1445,12 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 	} else {
 		// Someone won the auction
 		ManagedReference<CreatureObject*> buyer = pman->getPlayer(item->getBidderName());
+		
+		if (buyer == NULL) {
+			locker.release();
+			expireBidAuction(item);
+			return;
+		}
 
 		item->setStatus(AuctionItem::SOLD);
 		updateAuctionOwner(item, buyer);

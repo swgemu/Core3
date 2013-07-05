@@ -701,10 +701,6 @@ bool InstallationObjectImplementation::readObjectMember(ObjectInputStream* strea
 		TypeInfo<bool >::parseFromBinaryStream(&operating, stream);
 		return true;
 
-	case 0x60d38d63: //InstallationObject.operatorList
-		TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::parseFromBinaryStream(&operatorList, stream);
-		return true;
-
 	case 0x4bf10856: //InstallationObject.installationType
 		TypeInfo<int >::parseFromBinaryStream(&installationType, stream);
 		return true;
@@ -768,14 +764,6 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<bool >::toBinaryStream(&operating, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_nameHashCode = 0x60d38d63; //InstallationObject.operatorList
-	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::toBinaryStream(&operatorList, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -860,7 +848,7 @@ int InstallationObjectImplementation::writeObjectMembers(ObjectOutputStream* str
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 12;
+	return _count + 11;
 }
 
 InstallationObjectImplementation::InstallationObjectImplementation() {

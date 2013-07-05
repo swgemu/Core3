@@ -161,6 +161,11 @@ public:
 
 		int fare = pmDeparture->getTravelFare(departurePlanet, arrivalPlanet);
 
+		if (fare == 0) { // Make sure that the travel route is valid
+			creature->sendSystemMessage("Invalid travel route specified.");
+			return GENERALERROR;
+		}
+
 		fare = fare + arrivalTax + departureTax;
 
 		if (roundTrip)

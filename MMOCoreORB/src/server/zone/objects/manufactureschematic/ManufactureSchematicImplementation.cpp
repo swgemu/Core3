@@ -376,6 +376,8 @@ void ManufactureSchematicImplementation::initializeIngredientSlots() {
 }
 
 int ManufactureSchematicImplementation::addIngredientToSlot(CreatureObject* player, SceneObject* satchel, TangibleObject* tano, int slot) {
+	if (slot >= ingredientSlots.size())
+		return IngredientSlot::INVALID;
 
 	Reference<IngredientSlot*> ingredientSlot = ingredientSlots.get(slot);
 

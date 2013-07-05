@@ -105,13 +105,7 @@ class ArmorObject extends WearableObject {
 		
 		baseProtection = 0;
 		specialProtection = 0;
-		baseProtection = 0;
-		specialProtection = 0;
-		baseProtection = 0;
-		specialProtection = 0;
 		specialResists = 0;
-		vulnerabilites = 0;
-		vulnerabilites = 0;
 		vulnerabilites = 0;
 		hitLocation = 0;
 
