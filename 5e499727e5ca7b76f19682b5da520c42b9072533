@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAC3///6g\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/LairObserverImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-07-05T00:04:03Z",
+      "side": 1,
+      "message": "Tweaks the threshold for mobs to aggo/heal from 2/3 lair condition to 1/2 lair condition.",
+      "revId": "5e499727e5ca7b76f19682b5da520c42b9072533",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAC3///6c\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/LairObserverImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-07-05T00:04:03Z",
+      "side": 1,
+      "message": "Adjusts when the first wave pops out of a lair from 2/3 condition to 3/4 condition.",
+      "revId": "5e499727e5ca7b76f19682b5da520c42b9072533",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
