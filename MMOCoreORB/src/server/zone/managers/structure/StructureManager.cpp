@@ -127,19 +127,19 @@ int StructureManager::getStructureFootprint(SharedObjectTemplate* objectTemplate
 	//float w = 5; //Along the y axis.
 
 	if (structureFootprint != NULL) {
-		if (structureFootprint->getRowSize() > structureFootprint->getColSize())
-			angle = angle + 180;
+		//if (structureFootprint->getRowSize() > structureFootprint->getColSize())
+		//	angle = angle + 180;
 
-		float centerX = (structureFootprint->getCenterX() * structureFootprint->getColChunkSize()) + (structureFootprint->getColChunkSize() / 2);
-		float centerY = (structureFootprint->getCenterY() * structureFootprint->getRowChunkSize()) + (structureFootprint->getRowChunkSize() / 2);
+		float centerX = (structureFootprint->getCenterX() * 8) + 4;
+		float centerY = (structureFootprint->getCenterY() * 8) + 4;
 
 		//info ("centerX:" + String::valueOf(centerX) + " centerY:" + String::valueOf(centerY), true);
 
 		float topLeftX = -centerX;
-		float topLeftY = centerY;
+		float topLeftY = (structureFootprint->getRowSize() * 8 ) - centerY;
 
-		float bottomRightX = (structureFootprint->getColChunkSize() * structureFootprint->getColSize() - centerX);
-		float bottomRightY = - (structureFootprint->getRowChunkSize() * structureFootprint->getRowSize() - centerY);
+		float bottomRightX = (8 * structureFootprint->getColSize() - centerX);
+		float bottomRightY = -centerY;
 
 		w0 = MIN(topLeftX, bottomRightX);
 		l0 = MIN(topLeftY, bottomRightY);
@@ -285,7 +285,7 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature,
 
 				//info("existing footprint contains placing point", true);
 
-				creature->sendSystemMessage("@player_structure:not_permitted"); //Building is not permitted here.
+				creature->sendSystemMessage("@player_structure:no_room"); //there is no room to place the structure here..
 
 				return 1;
 			}
@@ -297,7 +297,7 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature,
 					|| (xx0 == x0 && yy0 == y0 && xx1 == x1 && yy1 == y1)) {
 				//info("placing footprint contains existing point", true);
 
-				creature->sendSystemMessage("@player_structure:not_permitted"); //Building is not permitted here.
+				creature->sendSystemMessage("@player_structure:no_room"); //there is no room to place the structure here.
 
 				return 1;
 			}
