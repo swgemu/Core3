@@ -146,6 +146,10 @@ function mission_giver_conv_handler:handleScreenAccept(pConversationTemplate, pC
 	local nextScreenName = "npc_noloc_n"
 	if self.themePark:handleMissionAccept(npcNumber, missionNumber, pConversingPlayer) == true then
 		nextScreenName = "npc_2_n"
+	else
+		self.themePark:resetCurrentMission(pConversingPlayer)
+		local creature = LuaCreatureObject(pConversingPlayer)
+		creature:sendSystemMessage("Unable to accept quest. Please try again later.")
 	end
 	
 	return self:runScreenHandlers(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, conversationTemplate:getScreen(nextScreenName))
