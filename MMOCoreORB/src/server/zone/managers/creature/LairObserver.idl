@@ -71,7 +71,6 @@ class LairObserver extends Observer implements Logger {
 		
 		lairTemplate = null;
 		healLairEvent = null;
-
 		spawnNumber = 0;
 	}
 	
@@ -79,10 +78,10 @@ class LairObserver extends Observer implements Logger {
 	
 	public native void notifyDestruction(TangibleObject lair, TangibleObject attacker, int condition);
 	
-	public native void checkForNewSpawns(TangibleObject lair, boolean forceSpawn = false);
+	public native boolean checkForNewSpawns(TangibleObject lair, boolean forceSpawn = false);
 	public native void healLair(TangibleObject lair, TangibleObject attacker);
 	public native void checkForHeal(TangibleObject lair, TangibleObject attacker, boolean forceNewUpdate = false);
-	
+	public native void doAggro(TangibleObject lair, TangibleObject attacker);
 	@local
 	public void setLairTemplate(LairTemplate tmpl) {
 		lairTemplate = tmpl;
@@ -94,5 +93,15 @@ class LairObserver extends Observer implements Logger {
 	
 	public boolean isLairObserver() {
 		return true;
+	}
+
+	public int getLivingCreatureCount(){
+		int alive = 0;		
+		for(int i = 0; i < spawnedCreatures.size(); i++){
+			CreatureObject cr = spawnedCreatures.get(i);
+			if(!cr.isDead() && cr.getZone() != null)
+				alive++;
+		}
+		return alive;
 	}
 }

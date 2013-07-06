@@ -14,7 +14,7 @@
  *	LairObserverStub
  */
 
-enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_BOOL_,RPC_HEALLAIR__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_CHECKFORHEAL__TANGIBLEOBJECT_TANGIBLEOBJECT_BOOL_,RPC_SETDIFFICULTY__INT_,RPC_ISLAIROBSERVER__};
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_BOOL_,RPC_HEALLAIR__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_CHECKFORHEAL__TANGIBLEOBJECT_TANGIBLEOBJECT_BOOL_,RPC_DOAGGRO__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_SETDIFFICULTY__INT_,RPC_ISLAIROBSERVER__,RPC_GETLIVINGCREATURECOUNT__};
 
 LairObserver::LairObserver() : Observer(DummyConstructorParameter::instance()) {
 	LairObserverImplementation* _implementation = new LairObserverImplementation();
@@ -65,7 +65,7 @@ void LairObserver::notifyDestruction(TangibleObject* lair, TangibleObject* attac
 		_implementation->notifyDestruction(lair, attacker, condition);
 }
 
-void LairObserver::checkForNewSpawns(TangibleObject* lair, bool forceSpawn) {
+bool LairObserver::checkForNewSpawns(TangibleObject* lair, bool forceSpawn) {
 	LairObserverImplementation* _implementation = static_cast<LairObserverImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -75,9 +75,9 @@ void LairObserver::checkForNewSpawns(TangibleObject* lair, bool forceSpawn) {
 		method.addObjectParameter(lair);
 		method.addBooleanParameter(forceSpawn);
 
-		method.executeWithVoidReturn();
+		return method.executeWithBooleanReturn();
 	} else
-		_implementation->checkForNewSpawns(lair, forceSpawn);
+		return _implementation->checkForNewSpawns(lair, forceSpawn);
 }
 
 void LairObserver::healLair(TangibleObject* lair, TangibleObject* attacker) {
@@ -109,6 +109,21 @@ void LairObserver::checkForHeal(TangibleObject* lair, TangibleObject* attacker, 
 		method.executeWithVoidReturn();
 	} else
 		_implementation->checkForHeal(lair, attacker, forceNewUpdate);
+}
+
+void LairObserver::doAggro(TangibleObject* lair, TangibleObject* attacker) {
+	LairObserverImplementation* _implementation = static_cast<LairObserverImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DOAGGRO__TANGIBLEOBJECT_TANGIBLEOBJECT_);
+		method.addObjectParameter(lair);
+		method.addObjectParameter(attacker);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->doAggro(lair, attacker);
 }
 
 void LairObserver::setLairTemplate(LairTemplate* tmpl) {
@@ -145,6 +160,19 @@ bool LairObserver::isLairObserver() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isLairObserver();
+}
+
+int LairObserver::getLivingCreatureCount() {
+	LairObserverImplementation* _implementation = static_cast<LairObserverImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETLIVINGCREATURECOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getLivingCreatureCount();
 }
 
 DistributedObjectServant* LairObserver::_getImplementation() {
@@ -344,6 +372,24 @@ bool LairObserverImplementation::isLairObserver() {
 	return true;
 }
 
+int LairObserverImplementation::getLivingCreatureCount() {
+	// server/zone/managers/creature/LairObserver.idl():  		int alive = 0;
+	int alive = 0;
+	// server/zone/managers/creature/LairObserver.idl():  		}
+	for (	// server/zone/managers/creature/LairObserver.idl():  		for(int i = 0;
+	int i = 0;
+	i < (&spawnedCreatures)->size();
+i ++) {
+	// server/zone/managers/creature/LairObserver.idl():  			CreatureObject cr = spawnedCreatures.get(i);
+	ManagedReference<CreatureObject* > cr = (&spawnedCreatures)->get(i);
+	// server/zone/managers/creature/LairObserver.idl():  		}
+	if (!cr->isDead() && cr->getZone() != NULL)	// server/zone/managers/creature/LairObserver.idl():  				alive++;
+	alive ++;
+}
+	// server/zone/managers/creature/LairObserver.idl():  		return alive;
+	return alive;
+}
+
 /*
  *	LairObserverAdapter
  */
@@ -371,7 +417,7 @@ void LairObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_BOOL_:
 		{
-			checkForNewSpawns(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
+			resp->insertBoolean(checkForNewSpawns(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getBooleanParameter()));
 		}
 		break;
 	case RPC_HEALLAIR__TANGIBLEOBJECT_TANGIBLEOBJECT_:
@@ -384,6 +430,11 @@ void LairObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			checkForHeal(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getBooleanParameter());
 		}
 		break;
+	case RPC_DOAGGRO__TANGIBLEOBJECT_TANGIBLEOBJECT_:
+		{
+			doAggro(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()));
+		}
+		break;
 	case RPC_SETDIFFICULTY__INT_:
 		{
 			setDifficulty(inv->getSignedIntParameter());
@@ -392,6 +443,11 @@ void LairObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ISLAIROBSERVER__:
 		{
 			resp->insertBoolean(isLairObserver());
+		}
+		break;
+	case RPC_GETLIVINGCREATURECOUNT__:
+		{
+			resp->insertSignedInt(getLivingCreatureCount());
 		}
 		break;
 	default:
@@ -407,8 +463,8 @@ void LairObserverAdapter::notifyDestruction(TangibleObject* lair, TangibleObject
 	(static_cast<LairObserver*>(stub))->notifyDestruction(lair, attacker, condition);
 }
 
-void LairObserverAdapter::checkForNewSpawns(TangibleObject* lair, bool forceSpawn) {
-	(static_cast<LairObserver*>(stub))->checkForNewSpawns(lair, forceSpawn);
+bool LairObserverAdapter::checkForNewSpawns(TangibleObject* lair, bool forceSpawn) {
+	return (static_cast<LairObserver*>(stub))->checkForNewSpawns(lair, forceSpawn);
 }
 
 void LairObserverAdapter::healLair(TangibleObject* lair, TangibleObject* attacker) {
@@ -419,12 +475,20 @@ void LairObserverAdapter::checkForHeal(TangibleObject* lair, TangibleObject* att
 	(static_cast<LairObserver*>(stub))->checkForHeal(lair, attacker, forceNewUpdate);
 }
 
+void LairObserverAdapter::doAggro(TangibleObject* lair, TangibleObject* attacker) {
+	(static_cast<LairObserver*>(stub))->doAggro(lair, attacker);
+}
+
 void LairObserverAdapter::setDifficulty(int diff) {
 	(static_cast<LairObserver*>(stub))->setDifficulty(diff);
 }
 
 bool LairObserverAdapter::isLairObserver() {
 	return (static_cast<LairObserver*>(stub))->isLairObserver();
+}
+
+int LairObserverAdapter::getLivingCreatureCount() {
+	return (static_cast<LairObserver*>(stub))->getLivingCreatureCount();
 }
 
 /*

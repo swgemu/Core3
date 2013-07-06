@@ -74,17 +74,21 @@ public:
 
 	void notifyDestruction(TangibleObject* lair, TangibleObject* attacker, int condition);
 
-	void checkForNewSpawns(TangibleObject* lair, bool forceSpawn = false);
+	bool checkForNewSpawns(TangibleObject* lair, bool forceSpawn = false);
 
 	void healLair(TangibleObject* lair, TangibleObject* attacker);
 
 	void checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate = false);
+
+	void doAggro(TangibleObject* lair, TangibleObject* attacker);
 
 	void setLairTemplate(LairTemplate* tmpl);
 
 	void setDifficulty(int diff);
 
 	bool isLairObserver();
+
+	int getLivingCreatureCount();
 
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
@@ -132,17 +136,21 @@ public:
 
 	void notifyDestruction(TangibleObject* lair, TangibleObject* attacker, int condition);
 
-	void checkForNewSpawns(TangibleObject* lair, bool forceSpawn = false);
+	bool checkForNewSpawns(TangibleObject* lair, bool forceSpawn = false);
 
 	void healLair(TangibleObject* lair, TangibleObject* attacker);
 
 	void checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate = false);
+
+	void doAggro(TangibleObject* lair, TangibleObject* attacker);
 
 	void setLairTemplate(LairTemplate* tmpl);
 
 	void setDifficulty(int diff);
 
 	bool isLairObserver();
+
+	int getLivingCreatureCount();
 
 	WeakReference<LairObserver*> _this;
 
@@ -191,15 +199,19 @@ public:
 
 	void notifyDestruction(TangibleObject* lair, TangibleObject* attacker, int condition);
 
-	void checkForNewSpawns(TangibleObject* lair, bool forceSpawn);
+	bool checkForNewSpawns(TangibleObject* lair, bool forceSpawn);
 
 	void healLair(TangibleObject* lair, TangibleObject* attacker);
 
 	void checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate);
 
+	void doAggro(TangibleObject* lair, TangibleObject* attacker);
+
 	void setDifficulty(int diff);
 
 	bool isLairObserver();
+
+	int getLivingCreatureCount();
 
 };
 

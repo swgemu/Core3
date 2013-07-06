@@ -42,8 +42,6 @@ namespace server {
 
 		   Locker locker(strongRef);
 
-		  // Locker clocker(attacker, lair);
-
 		   strongObserver->healLair(strongRef, strongAttackerRef);
 
 		   if (strongRef->getConditionDamage() > 0)

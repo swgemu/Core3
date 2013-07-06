@@ -53,6 +53,7 @@ which carries forward this exception.
 #include "HealLairObserverEvent.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
+#include "LairAggroTask.h"
 
 int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	switch (eventType) {
@@ -62,8 +63,17 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 		break;
 	case ObserverEventType::DAMAGERECEIVED:
 
-		checkForNewSpawns(cast<TangibleObject*>(observable));
-		checkForHeal(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1));
+		int livingCreatureCount = getLivingCreatureCount();
+
+		// if there are living creatures, make them aggro
+		if(livingCreatureCount > 0 ){
+			Reference<LairAggroTask*> task = new LairAggroTask(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1), _this.get());
+			task->execute();
+		}
+
+		// if new creatures have spawned or there are live creatures near the lair
+		if( checkForNewSpawns(cast<TangibleObject*>(observable)) || livingCreatureCount > 0 )
+			checkForHeal(cast<TangibleObject*>(observable), cast<TangibleObject*>(arg1));
 
 		break;
 	}
@@ -80,7 +90,6 @@ void LairObserverImplementation::notifyDestruction(TangibleObject* lair, Tangibl
 
 	if (lair->getZone() == NULL) {
 		spawnedCreatures.removeAll();
-
 		return;
 	}
 
@@ -105,24 +114,36 @@ void LairObserverImplementation::notifyDestruction(TangibleObject* lair, Tangibl
 	playerManager->disseminateExperience(lair, &copyThreatMap);
 }
 
+void LairObserverImplementation::doAggro(TangibleObject* lair, TangibleObject* attacker){
+
+	for (int i = 0; i < spawnedCreatures.size() ; ++i) {
+			CreatureObject* creo = spawnedCreatures.get(i);
+
+			if (creo->isDead() || creo->getZone() == NULL)
+				continue;
+
+			if (creo->isAiAgent() && (System::random(1) == 1) && attacker != NULL) {
+				// TODO: only set defender if needed
+				AiAgent* ai = cast<AiAgent*>( creo);
+				Locker clocker(creo, lair);
+				creo->setDefender(attacker);
+
+			}
+	}
+
+
+
+}
+
 void LairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate) {
 	if (lair->isDestroyed())
 		return;
 
-	bool doUpdate = forceNewUpdate;
-
-	int conditionDamage = lair->getConditionDamage();
-	int maxCondition = lair->getMaxCondition();
-
-	if (!doUpdate)
-		doUpdate = (conditionDamage >= maxCondition / 2);
-
-	if (!doUpdate)
+	if (!(getLivingCreatureCount() > 0 && lair->getConditionDamage() > 0))
 		return;
 
 	if (healLairEvent == NULL) {
 		healLairEvent = new HealLairObserverEvent(lair, attacker, _this.get());
-
 		healLairEvent->schedule(1000);
 	} else if (!healLairEvent->isScheduled()) {
 		healLairEvent->schedule(1000);
@@ -130,7 +151,7 @@ void LairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObje
 		healLairEvent->setAttacker(attacker);
 }
 
-void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* attacker) {
+void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* attacker){
 	Locker locker(lair);
 
 	if (lair->getZone() == NULL)
@@ -138,21 +159,15 @@ void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* 
 
 	int damageToHeal = 0;
 
-	for (int i = 0; i < spawnedCreatures.size(); ++i) {
+	for (int i = 0; i < spawnedCreatures.size() ; ++i) {
 		CreatureObject* creo = spawnedCreatures.get(i);
 
 		if (creo->isDead() || creo->getZone() == NULL)
 			continue;
 
+		//  TODO: Range check
 		damageToHeal += 100;
 
-		if (creo->isAiAgent() && System::random(1) == 1 && attacker != NULL) {
-			AiAgent* ai = cast<AiAgent*>( creo);
-
-			Locker clocker(creo, lair);
-
-			creo->setDefender(attacker);
-		}
 	}
 
 	if (damageToHeal == 0)
@@ -173,17 +188,17 @@ void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* 
 	lair->broadcastMessage(healLoc, false);
 }
 
-void LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool forceSpawn) {
+bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool forceSpawn) {
 	if (lair->getZone() == NULL)
-		return;
+		return false;
 
 	if (spawnedCreatures.size() >= lairTemplate->getSpawnLimit())
-		return;
+		return false;
 
 	if (forceSpawn) {
 		spawnNumber++;
 	} else if (lairTemplate->getLairType() == LairTemplate::NPC) {
-		return;
+		return false;
 	} else {
 		int conditionDamage = lair->getConditionDamage();
 		int maxCondition = lair->getMaxCondition();
@@ -196,18 +211,18 @@ void LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 			if (conditionDamage > (maxCondition / 4)) {
 				spawnNumber++;
 			} else {
-				return;
+				return false;
 			}
 			break;
 		case 2:
 			if (conditionDamage > (maxCondition * 2 / 3)) {
 				spawnNumber++;
 			} else {
-				return;
+				return false;
 			}
 			break;
 		case 3:
-			return;
+			return false;
 			break;
 		}
 	}
@@ -225,10 +240,11 @@ void LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 	if (amountToSpawn < 1)
 		amountToSpawn = 1;
 
+
 	for(int i = 0; i < amountToSpawn; ++i) {
 
 		if (spawnedCreatures.size() >= lairTemplate->getSpawnLimit())
-			return;
+			return true;
 
 		String templateToSpawn = objectsToSpawn->elementAt((int)System::random(objectsToSpawn->size() - 1)).getKey();
 
@@ -243,7 +259,7 @@ void LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 		ManagedReference<CreatureObject*> creature = creatureManager->spawnCreatureWithLevel(templateToSpawn.hashCode(), difficulty + levelDiff, x, z, y);
 
 		if (creature == NULL)
-			return;
+			return true;
 
 		if (!creature->isAiAgent()) {
 			error("spawned non player creature with template " + templateToSpawn);
@@ -259,5 +275,7 @@ void LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 			spawnedCreatures.add(creature);
 		}
 	}
+
+	return amountToSpawn > 0;
 }
 
