@@ -3,7 +3,7 @@ tatooine_starter_creatures = {
 	commandLevel = 0,
 
 	type = LAIR,
-	maxSpawnLimit = 1280,
+	maxSpawnLimit = 512,
 
 	lairSpawns = {
 		{

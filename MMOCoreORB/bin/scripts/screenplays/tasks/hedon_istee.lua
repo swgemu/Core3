@@ -8,7 +8,7 @@ hedon_istee_screenplay = ScreenPlay:new {
 	},
 
 	loc = {
-		hedon	= {x = 1390, z = 0, y = 3195},
+		hedon	= {x = 1390, z = 7, y = 3195},
 		drog	= {x = 1553, z = 15, y = 3488},
 		rath	= {x = 1800, z = 7, y = 3128},
 		monk	= {x = 1560, z = 7, y = 2970},

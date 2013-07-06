@@ -115,7 +115,7 @@ void LairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObje
 	int maxCondition = lair->getMaxCondition();
 
 	if (!doUpdate)
-		doUpdate = (conditionDamage >= maxCondition / 3);
+		doUpdate = (conditionDamage >= maxCondition / 2);
 
 	if (!doUpdate)
 		return;
@@ -193,7 +193,7 @@ void LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 			spawnNumber++;
 			break;
 		case 1:
-			if (conditionDamage > (maxCondition / 3)) {
+			if (conditionDamage > (maxCondition / 4)) {
 				spawnNumber++;
 			} else {
 				return;

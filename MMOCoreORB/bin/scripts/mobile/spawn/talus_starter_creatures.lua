@@ -3,7 +3,7 @@ talus_starter_creatures = {
 	commandLevel = 0,
 
 	type = LAIR,
-	maxSpawnLimit = 768,
+	maxSpawnLimit = 512,
 
 	lairSpawns = {
 		{
