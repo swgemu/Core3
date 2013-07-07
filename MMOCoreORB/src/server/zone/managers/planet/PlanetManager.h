@@ -171,6 +171,8 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/managers/planet/TravelFare.h"
 
+#include "server/zone/managers/collision/IntersectionResults.h"
+
 #include "engine/core/ManagedService.h"
 
 #include "engine/log/Logger.h"
@@ -186,6 +188,8 @@ using namespace server::zone::objects::area;
 #include "system/util/Vector.h"
 
 #include "system/thread/Mutex.h"
+
+#include "engine/util/u3d/CloseObjectsVector.h"
 
 namespace server {
 namespace zone {
@@ -278,7 +282,7 @@ public:
 
 	bool isInWater(float x, float y);
 
-	float findClosestWorldFloor(float x, float y, float z, float swimHeight);
+	float findClosestWorldFloor(float x, float y, float z, float swimHeight, IntersectionResults* intersections = NULL, CloseObjectsVector* closeObjects = NULL);
 
 	void addPlayerCityTravelPoint(PlanetTravelPoint* ptp);
 
@@ -454,7 +458,7 @@ public:
 
 	bool isInWater(float x, float y);
 
-	float findClosestWorldFloor(float x, float y, float z, float swimHeight);
+	float findClosestWorldFloor(float x, float y, float z, float swimHeight, IntersectionResults* intersections = NULL, CloseObjectsVector* closeObjects = NULL);
 
 	void addPlayerCityTravelPoint(PlanetTravelPoint* ptp);
 
@@ -570,8 +574,6 @@ public:
 	bool checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle);
 
 	bool isInWater(float x, float y);
-
-	float findClosestWorldFloor(float x, float y, float z, float swimHeight);
 
 	void removePlayerCityTravelPoint(const String& cityName);
 
