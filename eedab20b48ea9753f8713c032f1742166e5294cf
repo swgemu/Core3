@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAC3///4g\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/LairObserverImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-07-07T08:52:24Z",
+      "side": 1,
+      "message": "The lair heals itself to full at times.  As a result, the checkforheal kept getting called and almost all of the new spawns would end up aggroing.  The workaround was to split the aggro and heal into two.  We may want to considering modifying the heals sometime in the future.",
+      "revId": "eedab20b48ea9753f8713c032f1742166e5294cf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
