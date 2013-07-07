@@ -2497,6 +2497,9 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (isDead())
 		return false;
 
+	if (object->getZone() != _this.get()->getZone())
+		return false;
+
 	if (object->isAiAgent()){
 
 		if(!object->isRebel() && !object->isImperial())
