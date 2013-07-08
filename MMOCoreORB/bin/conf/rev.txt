@@ -1,1 +1,10 @@
-4173M
+9ba69b8 was Ivojedi, 3 hours ago, message: [Fixed] SpawnGroup error
+3c084d2 was Ivojedi, 5 hours ago, message: [Added] Zone check to VehicleObject's isAttackableBy()
+41f6c03 was Victor Popovici, 8 hours ago, message: Merge "[Added] zone check to isAttackableBy()" into unstable
+2b26b22 was Victor Popovici, 8 hours ago, message: Merge "[Adjusted] further the lair spawn density around small towns on Tatooine" into unstable
+db6a06c was Ivojedi, 8 hours ago, message: [Added] zone check to isAttackableBy()
+ff893a4 was Pete, 8 hours ago, message: [fixed] Compile issue
+6d9c980 was Ivojedi, 9 hours ago, message: [Adjusted] further the lair spawn density around small towns on Tatooine
+eedab20 was ElPete, 24 hours ago, message: [changed] Creatures can now aggro anytime lair is tapped [changed] New waves of spawns don't aggro immediatly
+8098ab8 was Ivojedi, 32 hours ago, message: [Diasbled] Hedon Istee once again until his quest can be fixed properly
+a56b186 was Ivojedi, 2 days ago, message: [Adjusted] Lair spawn limits around npc cities

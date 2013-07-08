@@ -337,7 +337,7 @@ void AiAgentImplementation::doAttack() {
 
 	if (target != NULL && !defenderList.contains(target) && (!target->isDead() && !target->isIncapacitated()) && target->getDistanceTo(_this.get()) < 128.f && target->isAttackableBy(_this.get()) && lastDamageReceived.miliDifference() < 20000)
 		addDefender(target);
-	else if (target != NULL && defenderList.contains(target) && (target->isDead() || target->isIncapacitated() || !target->isInRange(_this.get(), 128) || !target->isAttackableBy(_this.get()))) {
+	else if (target != NULL && defenderList.contains(target) && ((target->isDead() || target->isIncapacitated() || !target->isInRange(_this.get(), 128) || !target->isAttackableBy(_this.get())))) {
 		removeDefender(target);
 		target = NULL;
 	}
@@ -353,6 +353,9 @@ void AiAgentImplementation::doAttack() {
 					target = targetCreature;
 
 					break;
+				} else {
+					// if the object on the defender list is no longer attackable, remove it
+					removeDefender(targetCreature);
 				}
 			}
 		}
