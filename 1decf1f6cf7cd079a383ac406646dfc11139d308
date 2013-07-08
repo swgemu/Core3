@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAC3///2Y\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/AiAgentImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-07-08T10:56:51Z",
+      "side": 1,
+      "message": "Objects added to the defneder list through AOE attacks have the potential to never be removed from the defneder list.  This will remove any defnder that dies.",
+      "revId": "1decf1f6cf7cd079a383ac406646dfc11139d308",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
