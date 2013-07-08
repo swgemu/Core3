@@ -1,4 +1,4 @@
-tatooine_starter_creatures = {
+tatooine_starter_small_town = {
 	wanderRadius = 10,
 	commandLevel = 0,
 
@@ -126,4 +126,4 @@ tatooine_starter_creatures = {
 	}
 }
 
-addLairGroup("tatooine_starter_creatures", tatooine_starter_creatures);
+addLairGroup("tatooine_starter_small_town", tatooine_starter_small_town);
