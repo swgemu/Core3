@@ -353,6 +353,9 @@ void AiAgentImplementation::doAttack() {
 					target = targetCreature;
 
 					break;
+				} else {
+					// if the object on the defender list is no longer attackable, remove it
+					removeDefender(targetCreature);
 				}
 			}
 		}
