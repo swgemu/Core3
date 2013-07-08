@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAC3///4E\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2502,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-07-08T00:59:09Z",
+      "side": 1,
+      "message": "you dont need to call _this.get() to run methods from your class, just call getZone()",
+      "revId": "a226a14a053a22b24f4c9524a6507c9652bec25a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
