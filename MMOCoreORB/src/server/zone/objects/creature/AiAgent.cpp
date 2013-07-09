@@ -1726,8 +1726,8 @@ void AiAgentImplementation::destroyObjectFromWorld(bool sendSelfDestroy) {
 }
 
 void AiAgentImplementation::scheduleDespawn() {
-	// server/zone/objects/creature/AiAgent.idl():  		scheduleDespawn(45);
-	scheduleDespawn(45);
+	// server/zone/objects/creature/AiAgent.idl():  		scheduleDespawn(300);
+	scheduleDespawn(300);
 }
 
 void AiAgentImplementation::addPatrolPoint(PatrolPoint& point) {
