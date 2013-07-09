@@ -1494,7 +1494,7 @@ corellia_static_spawns = {
 }
 
 corellia_badges = {
-	{"badge_agrilat_swap",1084,4176,30,20},
+	{"badge_agrilat_swap",1387,3749,30,20},
 	{"badge_bela_vistal_fountain",6767,-5617,30,81},
 	{"badge_rebel_hideout",-6530,5967,30,78},
 	{"badge_rogue_corsec_base",5291,1494,30,79},

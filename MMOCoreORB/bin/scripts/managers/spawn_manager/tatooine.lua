@@ -1865,7 +1865,7 @@ tatooine_static_spawns = {
 tatooine_badges = {
 	{"badge_bens_hut",-4512,-2270,10,12},
 	{"badge_escape_pod",-3930,-4425,10,15},
-	{"badge_krayt_graveyard",7428,4563,10,18},
+	{"badge_krayt_graveyard",7396,4478,10,18},
 	{"badge_krayt_skeleton",-4650,-4363,10,14},
 	{"badge_lars_homestead",-2579,-5500,10,17},
 	{"badge_sarlacc_pit",-6176,-3372,10,16},

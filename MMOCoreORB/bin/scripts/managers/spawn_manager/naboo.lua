@@ -587,7 +587,7 @@ naboo_static_spawns = {
 
 naboo_badges = {
 	{"badge_amidalas_sandy_beach",-5828,-93,10,77},
-	{"badge_deeja_falls_top",5157,-1646,10,76},
-	{"badge_gungan_sacred_place",-2066,-5426,10,19},
+	{"badge_deeja_falls_top",5161,-1627,10,76},
+	{"badge_gungan_sacred_place",-2000,-5429,10,19},
 	{"badge_theed_falls_bottom",-4614,4261,10,75},
 }
