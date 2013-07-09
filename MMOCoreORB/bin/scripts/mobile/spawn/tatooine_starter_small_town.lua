@@ -3,7 +3,7 @@ tatooine_starter_small_town = {
 	commandLevel = 0,
 
 	type = LAIR,
-	maxSpawnLimit = 256,
+	maxSpawnLimit = 75,
 
 	lairSpawns = {
 		{
