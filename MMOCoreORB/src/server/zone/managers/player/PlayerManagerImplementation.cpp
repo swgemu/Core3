@@ -2700,10 +2700,11 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 		player->executeObjectControllerAction(String("transferitemmisc").hashCode(), object->getObjectID(), stringArgs);
 	}
 
-	if (creatureInventory->getContainerObjectsSize() <= 0)
+	if (creatureInventory->getContainerObjectsSize() <= 0) {
 		player->sendSystemMessage("@base_player:corpse_looted"); //You have completely looted the corpse of all items.
 
-	rescheduleCorpseDestruction(player, ai);
+		rescheduleCorpseDestruction(player, ai);
+	}
 }
 
 void PlayerManagerImplementation::generateHologrindSkills(CreatureObject* player) {
