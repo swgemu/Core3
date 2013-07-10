@@ -1525,12 +1525,14 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 
 	LairSpawn* lairSpawn = NULL;
 
+	//Ensure that the minimum is low enough to get missions on any planet
+	int minLevel = MIN(playerLevel - 5, 20);
+
 	//Try to pick random lair within playerLevel +-5;
 	while (counter > 0 && !foundLair) {
 		LairSpawn* randomLairSpawn = availableLairList->get(System::random(availableLairList->size() - 1));
 		if (randomLairSpawn != NULL) {
-			//if (randomLairSpawn->getMinDifficulty() <= (playerLevel + 5) && randomLairSpawn->getMaxDifficulty() >= (playerLevel - 5)) {
-			if (randomLairSpawn->getMinDifficulty() <= (playerLevel + 5)) {
+			if (randomLairSpawn->getMinDifficulty() <= (playerLevel + 5) && randomLairSpawn->getMaxDifficulty() >= minLevel) {
 				lairSpawn = randomLairSpawn;
 				foundLair = true;
 			}
@@ -1543,8 +1545,7 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 		//No random lair found, iterate through all lairs and find the first within playerLevel +-5;
 		for (int i = 0; i < availableLairList->size(); i++) {
 			LairSpawn* randomLairSpawn = availableLairList->get(i);
-			//if (randomLairSpawn->getMinDifficulty() <= (playerLevel + 5) && randomLairSpawn->getMaxDifficulty() >= (playerLevel - 5)) {
-			if (randomLairSpawn->getMinDifficulty() <= (playerLevel + 5)) {
+			if (randomLairSpawn->getMinDifficulty() <= (playerLevel + 5) && randomLairSpawn->getMaxDifficulty() >= minLevel) {
 				lairSpawn = randomLairSpawn;
 				break;
 			}
