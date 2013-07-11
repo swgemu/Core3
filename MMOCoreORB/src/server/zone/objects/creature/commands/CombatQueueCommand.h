@@ -556,8 +556,10 @@ public:
 				break;
 			}
 
-			if (creature->isMounted())
+			if (creature->isMounted()) {
+				creature->updateCooldownTimer("mount_dismount", 0);
 				creature->dismount();
+			}
 
 			creature->setPosture(CreaturePosture::KNOCKEDDOWN);
 			creature->updateKnockdownRecovery();
@@ -566,8 +568,10 @@ public:
 
 			break;
 		case CommandEffect::POSTUREUP:
-			if (creature->isMounted())
+			if (creature->isMounted()) {
+				creature->updateCooldownTimer("mount_dismount", 0);
 				creature->dismount();
+			}
 
 			if (creature->getPosture() == CreaturePosture::PRONE) {
 				creature->setPosture(CreaturePosture::CROUCHED);
@@ -581,8 +585,10 @@ public:
 
 			break;
 		case CommandEffect::POSTUREDOWN:
-			if (creature->isMounted())
+			if (creature->isMounted()) {
+				creature->updateCooldownTimer("mount_dismount", 0);
 				creature->dismount();
+			}
 
 			if (creature->getPosture() == CreaturePosture::UPRIGHT) {
 				creature->setPosture(CreaturePosture::CROUCHED);
