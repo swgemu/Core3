@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAC3///v8\u003d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/endor_jinda_ritualist_cave.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-07-13T12:01:31Z",
+      "side": 1,
+      "message": "I wouldn\u0027t put the loot level this low. Even though there\u0027s some mobs in here that low, most are not. Looking at some of the mob\u0027s files I see that they are not aggressive, so you do what to be on the low side. I\u0027d probably go somewhere in the 15-20 range here.",
+      "revId": "b2b69a82c1f9f63729107c52e862f21cf4dc077b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAC3///v4\u003d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/endor_jinda_ritualist_cave.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-07-13T12:01:31Z",
+      "side": 1,
+      "message": "Put more than just attachments in here. Even with a low loot level, we don\u0027t want attachments to be too common. You can look at other caves to gauge how they are populated. Add junk as the bulk of the chance but also add some weapons and anything else that may be appropriate for the locale.",
+      "revId": "b2b69a82c1f9f63729107c52e862f21cf4dc077b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAC3///wA\u003d",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/endor_jinda_ritualist_cave.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-07-13T12:01:31Z",
+      "side": 1,
+      "message": "Don\u0027t set the loot chance to 100%. I think most other caves are set to 80%, so I would do the same here.",
+      "revId": "b2b69a82c1f9f63729107c52e862f21cf4dc077b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
