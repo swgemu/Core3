@@ -103,6 +103,9 @@ includeFile("dungeon/geonosian_lab.lua")
 includeFile("dungeon/warren/warren.lua")
 includeFile("dungeon/death_watch_bunker_conv_handles.lua")
 
+-- Instances
+includeFile("instance/corvette/corvette.lua")
+
 -- Task/Quest
 includeFile("tasks/ajuva_vanasterin.lua")
 includeFile("tasks/booto_lubble.lua")
