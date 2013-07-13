@@ -1345,9 +1345,9 @@ void PlayerObjectImplementation::doRecovery() {
 	CooldownTimerMap* cooldownTimerMap = creature->getCooldownTimerMap();
 
 	if (cooldownTimerMap->isPast("digestEvent")) {
-		Time* currentTime = new Time();
+		Time currentTime;
 
-		int timeDelta = currentTime->getMiliTime() - lastDigestion.getMiliTime();
+		int timeDelta = currentTime.getMiliTime() - lastDigestion.getMiliTime();
 		int fillingReduction = timeDelta / 18000;
 
 		doDigest(fillingReduction);
