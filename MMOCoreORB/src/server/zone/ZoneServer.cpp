@@ -50,6 +50,8 @@
 
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 
+#include "server/zone/managers/creature/DnaManager.h"
+
 #include "server/zone/managers/guild/GuildManager.h"
 
 #include "server/zone/managers/city/CityManager.h"

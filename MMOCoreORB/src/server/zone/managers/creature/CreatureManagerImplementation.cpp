@@ -8,6 +8,7 @@
 #include "CreatureManager.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "CreatureTemplateManager.h"
+#include "DnaManager.h"
 #include "SpawnAreaMap.h"
 #include "AiMap.h"
 #include "server/zone/ZoneServer.h"
@@ -45,6 +46,11 @@ void CreatureManagerImplementation::setCreatureTemplateManager() {
 	CreatureState::instance()->loadStateData();
 	CreaturePosture::instance()->loadMovementData();
 }
+
+void CreatureManagerImplementation::setDnaManager() {
+	dnaManager = DnaManager::instance();
+}
+
 
 CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC, float x, float z, float y, uint64 parentID) {
 	CreatureObject* creature = createCreature(templateCRC);
@@ -680,6 +686,9 @@ void CreatureManagerImplementation::milk(Creature* creature, CreatureObject* pla
 	task->schedule(10000);
 }
 
+void CreatureManagerImplementation::sample(Creature* creature, CreatureObject* player) {
+
+}
 bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, TangibleObject* clothing) {
 
 	if (!clothing->isWearableObject() && !clothing->isWeaponObject())

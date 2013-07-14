@@ -149,6 +149,20 @@ using namespace server::zone::managers::creature;
 
 namespace server {
 namespace zone {
+namespace managers {
+namespace creature {
+
+class DnaManager;
+
+} // namespace creature
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::creature;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace area {
 
@@ -230,6 +244,8 @@ public:
 
 	void milk(Creature* creature, CreatureObject* player);
 
+	void sample(Creature* creature, CreatureObject* player);
+
 	void addToReservePool(AiAgent* agent);
 
 	int getSpawnedRandomCreatures();
@@ -282,6 +298,8 @@ protected:
 	Reference<AiMap* > aiMap;
 
 	Reference<CreatureTemplateManager* > creatureTemplateManager;
+
+	Reference<DnaManager* > dnaManager;
 
 	SortedVector<ManagedReference<AiAgent* > > reservePool;
 
@@ -343,10 +361,14 @@ public:
 private:
 	void setCreatureTemplateManager();
 
+	void setDnaManager();
+
 public:
 	void harvest(Creature* creature, CreatureObject* player, int selectedID);
 
 	void milk(Creature* creature, CreatureObject* player);
+
+	void sample(Creature* creature, CreatureObject* player);
 
 	void addToReservePool(AiAgent* agent);
 
@@ -446,6 +468,8 @@ public:
 	void harvest(Creature* creature, CreatureObject* player, int selectedID);
 
 	void milk(Creature* creature, CreatureObject* player);
+
+	void sample(Creature* creature, CreatureObject* player);
 
 	void addToReservePool(AiAgent* agent);
 

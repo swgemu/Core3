@@ -11,6 +11,7 @@ import server.zone.objects.creature.ai.AiActor;
 import server.zone.managers.ZoneManager;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.managers.creature.CreatureTemplateManager;
+import server.zone.managers.creature.DnaManager;
 import server.zone.objects.area.SpawnArea;
 import system.util.Vector;
 include server.zone.managers.creature.CreatureMap;
@@ -32,6 +33,9 @@ class CreatureManager extends ZoneManager {
 	
 	protected transient CreatureTemplateManager creatureTemplateManager;
 	
+	// DNA manager
+	protected transient DnaManager dnaManager;
+
 	@dereferenced
 	protected SortedVector<AiAgent> reservePool;
 	
@@ -50,7 +54,7 @@ class CreatureManager extends ZoneManager {
 		zone = planet;
 		
 		setCreatureTemplateManager();
-		
+		setDnaManager();
 		spawnedRandomCreatures = 0;
 		//reservePool.setAllowDuplicateInsertPlan();
 	}
@@ -114,11 +118,16 @@ class CreatureManager extends ZoneManager {
 	}*/
 	
 	private native void setCreatureTemplateManager();
+
+	private native void setDnaManager();
 	
 	public native void harvest(Creature creature, CreatureObject player, int selectedID);
 
 	public native void milk(Creature creature, CreatureObject player);
 	
+	/** Gather a DNA sample from the given creature*/
+	public native void sample(Creature creature, CreatureObject player);
+
 	public synchronized void addToReservePool(AiAgent agent) {
 		if (spawnedRandomCreatures > 0) {
 			spawnedRandomCreatures = spawnedRandomCreatures - 1;
