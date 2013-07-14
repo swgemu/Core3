@@ -1547,6 +1547,18 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 			LairSpawn* randomLairSpawn = availableLairList->get(i);
 			if (randomLairSpawn->getMinDifficulty() <= (playerLevel + 5) && randomLairSpawn->getMaxDifficulty() >= minLevel) {
 				lairSpawn = randomLairSpawn;
+				foundLair = true;
+				break;
+			}
+		}
+	}
+
+	if (!foundLair) {
+		//There are no lairs within playerLevel +-5, pick the first lair below playerLevel +5
+		for (int i = 0; i < availableLairList->size(); i++) {
+			LairSpawn* randomLairSpawn = availableLairList->get(i);
+			if (randomLairSpawn->getMinDifficulty() <= (playerLevel + 5)) {
+				lairSpawn = randomLairSpawn;
 				break;
 			}
 		}
