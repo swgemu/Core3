@@ -103,7 +103,7 @@ int CellObjectImplementation::canAddObject(SceneObject* object, int containmentT
 		int count = 1;
 
 		if (object->isContainerObject())
-			count += object->getContainedObjectsRecursive();
+			count += object->getCountableObjectsRecursive();
 
 		if (building->getCurrentNumberOfPlayerItems() + count > building->getMaximumNumberOfPlayerItems()) {
 			errorDescription = "@container_error_message:container13";
