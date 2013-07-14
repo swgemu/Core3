@@ -541,7 +541,7 @@ String ResourceSpawner::makeResourceName(bool isOrganic) {
 	while (true) {
 		randname = nameManager->makeResourceName(isOrganic);
 
-		if (!resourceMap->contains(randname.toLowerCase()))
+		if (!resourceMap->contains(randname.toLowerCase()) && resourceTree->getEntry(randname) == NULL)
 			break;
 	}
 
