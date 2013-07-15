@@ -50,6 +50,7 @@ object_building_player_player_guildhall_tatooine_style_02 = object_building_play
 	length = 5,
 	width = 9,
 	skillMods = {
+                {"private_medical_rating", 100},
 		{"private_buff_mind", 100},
 		{"private_med_battle_fatigue", 5}
 	},
