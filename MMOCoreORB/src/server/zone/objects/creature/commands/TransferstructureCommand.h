@@ -228,7 +228,9 @@ public:
 		structure->setOwnerObjectID(targetCreature->getObjectID());
 
 		//Setup permissions.
-		structure->grantPermission("ADMIN", targetCreature->getFirstName());
+		if (!structure->isOnPermissionList("ADMIN", targetCreature))
+			structure->grantPermission("ADMIN", targetCreature->getFirstName());
+
 		structure->setOwnerName(targetCreature->getFirstName());
 		structure->revokePermission("ADMIN", creature->getFirstName());
 

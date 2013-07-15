@@ -102,17 +102,25 @@ public:
 			return INVALIDPARAMETERS;
 		}
 
-		if (structureObject->isPermissionListFull(listName)) {
-			creature->sendSystemMessage("@player_structure:too_many_entries"); //You have too many entries on that list. You must remove some before adding more.
-			return INVALIDPARAMETERS;
-		}
-
 		if (targetName.length() > 40) {
 			creature->sendSystemMessage("@player_structure:permission_40_char"); //Permission list entries cannot be longer than 40 characters.
 			return INVALIDPARAMETERS;
 		}
 
+		if (structureObject->isPermissionListFull(listName)) {
+			if (action == "add" || (action == "toggle" && !structureObject->isOnPermissionList(listName, targetName))) {
+				creature->sendSystemMessage("@player_structure:too_many_entries"); //You have too many entries on that list. You must remove some before adding more.
+				return INVALIDPARAMETERS;
+			}
+		}
+
+		if (action == "add" && structureObject->isOnPermissionList(listName, targetName)) {
+			creature->sendSystemMessage("That name is already on that list.");
+			return INVALIDPARAMETERS;
+		}
+
 		bool isOwner = structureObject->isOwnerOf(creature->getObjectID());
+		bool isTargetOwner = structureObject->isOwnerOf(playerManager->getObjectID(targetName));
 
 		if (structureObject->isOnBanList(targetName)) {
 			if (listName == "ENTRY" || listName == "ADMIN") {
@@ -126,8 +134,10 @@ public:
 			}
 
 		} else if (structureObject->isOnAdminList(targetName)) {
-			if (listName == "BAN" && isOwner)
+			if (listName == "BAN" && isTargetOwner) {
+				creature->sendSystemMessage("You cannot ban the owner.");
 				return INVALIDPARAMETERS; //Can't ban the owner.
+			}
 
 			if (creature->getFirstName().toLowerCase() == targetName) {
 				creature->sendSystemMessage("@player_structure:cannot_remove_self"); //You cannot remove yourself from the admin list.
@@ -139,7 +149,7 @@ public:
 				return INVALIDPARAMETERS;
 			}
 
-			if (listName == "ADMIN" && structureObject->isOwnerOf(playerManager->getObjectID(targetName))) {
+			if (listName == "ADMIN" && isTargetOwner) {
 				creature->sendSystemMessage("@player_structure:cannot_remove_owner"); //You cannot remove the owner from the admin list.
 				return INVALIDPARAMETERS;
 			}
