@@ -115,7 +115,7 @@ int CellObjectImplementation::canAddObject(SceneObject* object, int containmentT
 	return SceneObjectImplementation::canAddObject(object, containmentType, errorDescription);
 }
 
-bool CellObjectImplementation::transferObject(SceneObject* object, int containmentType, bool notifyClient) {
+bool CellObjectImplementation::transferObject(SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow) {
 	//Locker locker(_this);
 
 	Zone* zone = getZone();
@@ -131,7 +131,7 @@ bool CellObjectImplementation::transferObject(SceneObject* object, int containme
 	ManagedReference<SceneObject*> oldParent = object->getParent();
 
 	try {
-		ret = SceneObjectImplementation::transferObject(object, containmentType, notifyClient);
+		ret = SceneObjectImplementation::transferObject(object, containmentType, notifyClient, allowOverflow);
 
 		if (zone != NULL)
 			zone->updateActiveAreas(object);

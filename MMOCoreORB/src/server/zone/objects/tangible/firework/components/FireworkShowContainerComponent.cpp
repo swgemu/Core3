@@ -57,7 +57,7 @@ int FireworkShowContainerComponent::canAddObject(SceneObject* sceneObject, Scene
 	return ContainerComponent::canAddObject(sceneObject, object, containmentType, errorDescription);
 }
 
-bool FireworkShowContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient) {
+bool FireworkShowContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow) {
 
 	if(object == NULL || !object->isFireworkObject())
 		return false;
@@ -77,11 +77,11 @@ bool FireworkShowContainerComponent::transferObject(SceneObject* sceneObject, Sc
 		tano->decreaseUseCount();
 		object->broadcastObject(clone, true);
 
-		return ContainerComponent::transferObject(sceneObject, clone, containmentType, notifyClient);
+		return ContainerComponent::transferObject(sceneObject, clone, containmentType, notifyClient, allowOverflow);
 
 	} else {
 
-		return ContainerComponent::transferObject(sceneObject, object, containmentType, notifyClient);
+		return ContainerComponent::transferObject(sceneObject, object, containmentType, notifyClient, allowOverflow);
 	}
 }
 

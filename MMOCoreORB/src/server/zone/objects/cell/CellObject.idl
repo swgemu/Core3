@@ -111,7 +111,7 @@ class CellObject extends SceneObject {
 	 * @param notifyClient if true in range objects will be updated with the change
 	 * @return returns true if the object has been successfully added
 	 */
-	public native boolean transferObject(SceneObject object, int containmentType, boolean notifyClient = false);
+	public native boolean transferObject(SceneObject object, int containmentType, boolean notifyClient = false, boolean allowOverflow = false);
 	
 	/**
 	 * Sends the necessary messages to player in order to create this object
