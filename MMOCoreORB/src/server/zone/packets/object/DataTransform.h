@@ -133,6 +133,13 @@ public:
 		//info("datatransform", true);
 	}
 
+	void bounceBack(SceneObject* object, ValidatedPosition& pos) {
+		Vector3 teleportPoint = pos.getPosition();
+		uint64 teleportParentID = pos.getParent();
+
+		object->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
+	}
+
 	void run() {
 		ManagedReference<CreatureObject*> object = cast<CreatureObject*>(client->getPlayer().get().get());
 		
@@ -186,12 +193,14 @@ public:
 		ValidatedPosition pos;
 		pos.update(object);
 
-		if (object->isFrozen()) {
-			Vector3 teleportPoint = pos.getPosition();
-			uint64 teleportParentID = pos.getParent();
+		SceneObject* inventory = object->getSlottedObject("inventory");
 
-			object->teleport(teleportPoint.getX(), teleportPoint.getZ(), teleportPoint.getY(), teleportParentID);
-
+		if (inventory->getCountableObjectsRecursive() > inventory->getContainerVolumeLimit() + 1) {
+			object->sendSystemMessage("Inventory Overloaded - Cannot Move");
+			bounceBack(object, pos);
+			return;
+		} else if (object->isFrozen()) {
+			bounceBack(object, pos);
 			return;
 		}
 

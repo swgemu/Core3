@@ -286,7 +286,7 @@ public:
 
 	bool isInRange(SceneObject* obj, float range);
 
-	bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false);
+	bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false, bool allowOverflow = false);
 
 	bool removeObject(SceneObject* object, SceneObject* destination, bool notifyClient = false);
 
@@ -952,7 +952,7 @@ public:
 
 	bool isInRange(SceneObject* obj, float range);
 
-	virtual bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false);
+	virtual bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false, bool allowOverflow = false);
 
 	virtual bool removeObject(SceneObject* object, SceneObject* destination, bool notifyClient = false);
 
@@ -1565,7 +1565,7 @@ public:
 
 	bool isInRange(SceneObject* obj, float range);
 
-	bool transferObject(SceneObject* object, int containmentType, bool notifyClient);
+	bool transferObject(SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow);
 
 	bool removeObject(SceneObject* object, SceneObject* destination, bool notifyClient);
 

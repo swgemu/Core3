@@ -127,7 +127,7 @@ bool ContainerComponent::checkContainerPermission(SceneObject* sceneObject, Crea
 	return permission & (allowPermissions & ~denyPermissions);
 }
 
-bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient) {
+bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow) {
 	if (sceneObject == object)
 		return false;
 
@@ -181,7 +181,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 	} else if (containmentType == -1) { /* else if (containerType == 2 || containerType == 3) {*/
 		Locker contLocker(sceneObject->getContainerLock());
 
-		if (containerObjects->size() >= sceneObject->getContainerVolumeLimit())
+		if (!allowOverflow && containerObjects->size() >= sceneObject->getContainerVolumeLimit())
 			return false;
 
 		/*if (containerObjects.contains(object->getObjectID()))
