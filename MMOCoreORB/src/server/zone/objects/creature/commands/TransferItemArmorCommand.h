@@ -47,7 +47,8 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
-
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/player/sessions/TradeSession.h"
 
 class TransferItemArmorCommand : public QueueCommand {
 public:
@@ -78,6 +79,12 @@ public:
 		float unknown1 = tokenizer.getFloatToken();
 		float unknown2 = tokenizer.getFloatToken();
 		float unknown3 = tokenizer.getFloatToken();
+
+		ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(creature->getActiveSession(SessionFacadeType::TRADE));
+
+		if (tradeContainer != NULL) {
+			server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(creature);
+		}
 
 		ManagedReference<SceneObject*> objectToTransfer = server->getZoneServer()->getObject(target);
 
@@ -116,6 +123,8 @@ public:
 			creature->error("destinationObject is not player in transferitemarmor command");
 			return GENERALERROR;
 		}
+
+
 
 		if (transferType == 4) {
 			ManagedReference<SceneObject*> parent = objectToTransfer->getParent();
