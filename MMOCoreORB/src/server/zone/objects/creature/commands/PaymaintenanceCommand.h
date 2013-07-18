@@ -87,6 +87,11 @@ public:
 		if (zone == NULL)
 			return INVALIDPARAMETERS;
 
+		if (structure->isCivicStructure()) {
+			creature->sendSystemMessage("@player_structure:civic_structure_alert"); // Civic structure: Maintenance handled by city.
+			return INVALIDTARGET;
+		}
+
 		StructureManager* structureManager = StructureManager::instance();
 
 		try {
