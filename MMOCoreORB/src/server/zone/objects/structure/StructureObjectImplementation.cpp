@@ -12,6 +12,7 @@
 #include "server/zone/objects/structure/events/StructureMaintenanceTask.h"
 #include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/building/components/CityHallZoneComponent.h"
 #include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
@@ -339,6 +340,10 @@ bool StructureObjectImplementation::isCivicStructure() {
 
 
 	return ssot->isCivicStructure();
+}
+
+bool StructureObjectImplementation::isCityHall() {
+	return dynamic_cast<CityHallZoneComponent*>(getZoneComponent()) != NULL;
 }
 
 bool StructureObjectImplementation::isCommercialStructure() {
