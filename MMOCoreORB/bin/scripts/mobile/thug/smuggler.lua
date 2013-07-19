@@ -26,7 +26,18 @@ smuggler = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_slicer_human_male_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+	        groups = {
+			{group = "junk", chance = 6000000},
+			{group = "rifles", chance = 1000000},
+			{group = "pistols", chance = 1000000},
+			{group = "melee_weapons", chance = 1000000},
+			{group = "carbines", chance = 1000000},
+		},
+			lootChance = 2100000
+		}
+	},
 	weapons = {"pirate_weapons_medium"},
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
