@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAC3///ok\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/SpawnAreaMap.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-07-20T23:18:23Z",
+      "side": 1,
+      "message": "My thinking with these bit fields when I introduce them was to have 4 bit representing property of the area (maximum number of property values was 4 then). I think we should change this so that the lsb byte represents the spawn area type, so make the new spawn area have value 0x00000010 instead and left shift the rest of the values 4 bits.",
+      "parentUuid": "AAAAB3////k\u003d",
+      "revId": "bcfcb237e09245d82b9a3e94f2f58e6ab33cc82f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAB3////c\u003d",
         "filename": "MMOCoreORB/src/server/zone/managers/mission/MissionManagerImplementation.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-06-10T09:14:00Z",
       "side": 1,
       "message": "Hunting missions will still pull their list from the world spawners.",
+      "revId": "bcfcb237e09245d82b9a3e94f2f58e6ab33cc82f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAC3///og\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/mission/MissionManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-07-20T23:18:23Z",
+      "side": 1,
+      "message": "That is ok.",
+      "parentUuid": "AAAAB3////c\u003d",
       "revId": "bcfcb237e09245d82b9a3e94f2f58e6ab33cc82f",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
