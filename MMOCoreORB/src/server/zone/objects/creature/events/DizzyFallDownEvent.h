@@ -22,6 +22,10 @@ public:
 		Locker locker(creature);
 
 		if (creature->isDizzied()) {
+			if (creature->isMounted()) {
+				creature->updateCooldownTimer("mount_dismount", 0);
+				creature->dismount();
+			}
 			creature->setPosture(CreaturePosture::KNOCKEDDOWN);
 			creature->updateKnockdownRecovery();
 			creature->updateLastKnockdown();
