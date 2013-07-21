@@ -310,6 +310,20 @@ using namespace server::zone::managers::creature;
 namespace server {
 namespace zone {
 namespace managers {
+namespace creature {
+
+class DnaManager;
+
+} // namespace creature
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::creature;
+
+namespace server {
+namespace zone {
+namespace managers {
 namespace guild {
 
 class GuildManager;
@@ -581,6 +595,8 @@ class ZoneServerImplementation : public ManagedServiceImplementation, public Log
 	Reference<StringIdManager* > stringIdManager;
 
 	Reference<CreatureTemplateManager* > creatureTemplateManager;
+
+	Reference<DnaManager* > dnaManager;
 
 	int totalSentPackets;
 

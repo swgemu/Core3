@@ -8,6 +8,7 @@
 #include "CreatureManager.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "CreatureTemplateManager.h"
+#include "DnaManager.h"
 #include "SpawnAreaMap.h"
 #include "AiMap.h"
 #include "server/zone/ZoneServer.h"
@@ -23,6 +24,7 @@
 #include "server/zone/objects/creature/Creature.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/events/MilkCreatureTask.h"
+#include "server/zone/objects/creature/events/SampleDnaTask.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
@@ -45,6 +47,11 @@ void CreatureManagerImplementation::setCreatureTemplateManager() {
 	CreatureState::instance()->loadStateData();
 	CreaturePosture::instance()->loadMovementData();
 }
+
+void CreatureManagerImplementation::setDnaManager() {
+	dnaManager = DnaManager::instance();
+}
+
 
 CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC, float x, float z, float y, uint64 parentID) {
 	CreatureObject* creature = createCreature(templateCRC);
@@ -680,6 +687,38 @@ void CreatureManagerImplementation::milk(Creature* creature, CreatureObject* pla
 	task->schedule(10000);
 }
 
+void CreatureManagerImplementation::sample(Creature* creature, CreatureObject* player) {
+	Zone* zone = creature->getZone();
+
+	if (zone == NULL || !creature->isCreature() || creature->isNonPlayerCreatureObject()) {
+		return;
+	}
+
+	if (!creature->canCollectDna(player)){
+		player->sendSystemMessage("@bio_engineer:harvest_dna_cant_harvest");
+		return;
+	}
+
+	if (player->isMounted()) {
+		player->sendSystemMessage("You cant sampledna while mounted");
+		return;
+	}
+
+	if(player->getPendingTask("sampledna") != NULL) {
+		player->sendSystemMessage("@bio_engineer:harvest_dna_already_harvesting");
+		return;
+	}
+	if (!creature->hasSkillToSampleMe(player)){
+		player->sendSystemMessage("@bio_engineer:harvest_dna_skill_to_low");
+		return;
+	}
+
+	Locker clocker(creature);
+
+	ManagedReference<SampleDnaTask*> task = new SampleDnaTask(creature, player);
+	player->addPendingTask("sampledna",task,0);
+
+}
 bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, TangibleObject* clothing) {
 
 	if (!clothing->isWearableObject() && !clothing->isWeaponObject())
