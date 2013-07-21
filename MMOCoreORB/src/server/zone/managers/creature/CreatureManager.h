@@ -149,6 +149,20 @@ using namespace server::zone::managers::creature;
 
 namespace server {
 namespace zone {
+namespace managers {
+namespace creature {
+
+class DnaManager;
+
+} // namespace creature
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::creature;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace area {
 
@@ -187,6 +201,10 @@ public:
 	static const short BEINGMILKED = 0x01;
 
 	static const short ALREADYMILKED = 0x02;
+
+	static const short HASDNA = 0x00;
+
+	static const short SAMPLED = 0x01;
 
 	CreatureManager(Zone* planet);
 
@@ -229,6 +247,8 @@ public:
 	void harvest(Creature* creature, CreatureObject* player, int selectedID);
 
 	void milk(Creature* creature, CreatureObject* player);
+
+	void sample(Creature* creature, CreatureObject* player);
 
 	void addToReservePool(AiAgent* agent);
 
@@ -283,6 +303,8 @@ protected:
 
 	Reference<CreatureTemplateManager* > creatureTemplateManager;
 
+	Reference<DnaManager* > dnaManager;
+
 	SortedVector<ManagedReference<AiAgent* > > reservePool;
 
 	int spawnedRandomCreatures;
@@ -295,6 +317,10 @@ public:
 	static const short BEINGMILKED = 0x01;
 
 	static const short ALREADYMILKED = 0x02;
+
+	static const short HASDNA = 0x00;
+
+	static const short SAMPLED = 0x01;
 
 	CreatureManagerImplementation(Zone* planet);
 
@@ -343,10 +369,14 @@ public:
 private:
 	void setCreatureTemplateManager();
 
+	void setDnaManager();
+
 public:
 	void harvest(Creature* creature, CreatureObject* player, int selectedID);
 
 	void milk(Creature* creature, CreatureObject* player);
+
+	void sample(Creature* creature, CreatureObject* player);
 
 	void addToReservePool(AiAgent* agent);
 
@@ -446,6 +476,8 @@ public:
 	void harvest(Creature* creature, CreatureObject* player, int selectedID);
 
 	void milk(Creature* creature, CreatureObject* player);
+
+	void sample(Creature* creature, CreatureObject* player);
 
 	void addToReservePool(AiAgent* agent);
 
