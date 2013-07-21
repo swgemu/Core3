@@ -269,8 +269,8 @@ void HuntingMissionObjectiveImplementation::finalize() {
 void HuntingMissionObjectiveImplementation::initializeTransientMembers() {
 	// server/zone/objects/mission/HuntingMissionObjective.idl():  		super.initializeTransientMembers();
 	MissionObjectiveImplementation::initializeTransientMembers();
-	// server/zone/objects/mission/HuntingMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
-	Logger::setLoggingName("MissionObject");
+	// server/zone/objects/mission/HuntingMissionObjective.idl():  		Logger.setLoggingName("HuntingMissionObjective");
+	Logger::setLoggingName("HuntingMissionObjective");
 }
 
 /*
