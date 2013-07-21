@@ -193,15 +193,17 @@ public:
 		ValidatedPosition pos;
 		pos.update(object);
 
-		SceneObject* inventory = object->getSlottedObject("inventory");
+		if (!ghost->isPrivileged()) {
+			SceneObject* inventory = object->getSlottedObject("inventory");
 
-		if (inventory->getCountableObjectsRecursive() > inventory->getContainerVolumeLimit() + 1) {
-			object->sendSystemMessage("Inventory Overloaded - Cannot Move");
-			bounceBack(object, pos);
-			return;
-		} else if (object->isFrozen()) {
-			bounceBack(object, pos);
-			return;
+			if (inventory->getCountableObjectsRecursive() > inventory->getContainerVolumeLimit() + 1) {
+				object->sendSystemMessage("Inventory Overloaded - Cannot Move");
+				bounceBack(object, pos);
+				return;
+			} else if (object->isFrozen()) {
+				bounceBack(object, pos);
+				return;
+			}
 		}
 
 		/*
