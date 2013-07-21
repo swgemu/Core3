@@ -304,15 +304,13 @@ SurveyMissionObjectiveImplementation::SurveyMissionObjectiveImplementation(Missi
 }
 
 void SurveyMissionObjectiveImplementation::finalize() {
-	// server/zone/objects/mission/SurveyMissionObjective.idl():  		Logger.info("deleting from memory", true);
-	Logger::info("deleting from memory", true);
 }
 
 void SurveyMissionObjectiveImplementation::initializeTransientMembers() {
 	// server/zone/objects/mission/SurveyMissionObjective.idl():  		super.initializeTransientMembers();
 	MissionObjectiveImplementation::initializeTransientMembers();
-	// server/zone/objects/mission/SurveyMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
-	Logger::setLoggingName("MissionObject");
+	// server/zone/objects/mission/SurveyMissionObjective.idl():  		Logger.setLoggingName("SurveyMissionObjective");
+	Logger::setLoggingName("SurveyMissionObjective");
 }
 
 void SurveyMissionObjectiveImplementation::setSpawnFamily(String& spf) {

@@ -212,8 +212,8 @@ void CraftingMissionObjectiveImplementation::finalize() {
 void CraftingMissionObjectiveImplementation::initializeTransientMembers() {
 	// server/zone/objects/mission/CraftingMissionObjective.idl():  		super.initializeTransientMembers();
 	DeliverMissionObjectiveImplementation::initializeTransientMembers();
-	// server/zone/objects/mission/CraftingMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
-	Logger::setLoggingName("MissionObject");
+	// server/zone/objects/mission/CraftingMissionObjective.idl():  		Logger.setLoggingName("CraftingMissionObjective");
+	Logger::setLoggingName("CraftingMissionObjective");
 }
 
 /*

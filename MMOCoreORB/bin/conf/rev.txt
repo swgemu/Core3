@@ -1,1 +1,10 @@
-4173M
+12372cd was Victor Popovici, 23 hours ago, message: Merge branch 'unstable' of ssh://TheAnswer@review.swgemu.com:29418/Core3.git into unstable
+4b56c48 was Victor Popovici, 23 hours ago, message: [fixed] stability issue
+4529784 was Ivojedi, 3 days ago, message: [Fixed] another cause of getting stuck on a speeder while knocked down
+a6d3d6f was ElPete, 3 days ago, message: [removed] debug message for donating minefields to base
+f19a356 was Victor Popovici, 3 days ago, message: [fixed] moving items around while trading #2
+e541cb6 was Victor Popovici, 3 days ago, message: Merge "[fixed] trade will now cancel if you move objects around" into unstable
+513a7f6 was Victor Popovici, 3 days ago, message: [fixed] trade will now cancel if you move objects around
+ba53f86 was Ivojedi, 4 days ago, message: [Added] server side inventory overload check [Fixed] quest/themepark rewards to still be granted when inventory is full
+08a82df was Ivojedi, 6 days ago, message: [Fixed] transferring a structure to one on the admin list no longer adds their name to the admin list again - mantis 4160 [Fixed] being able to add a name mutiple times to a structure permission list [Fixed] not being able to remove a name from a structure permission list that is full - mantis 3208
+6f6bc13 was Ivojedi, 7 days ago, message: [Changed] resources can no longer be given a name that is a resource type
