@@ -189,9 +189,10 @@ void FishingManagerImplementation::fishingStep(CreatureObject* player) {
 	ManagedReference<FishingPoleObject*> pole = getPole(player);
 
 	int event = System::random(50);
+	int poleMod = 0;
 	if (pole != NULL) {
 		if (pole->getQuality() != 0)
-			event += (int)ceil((float)pole->getQuality() / 20);
+			poleMod = (int)ceil((float)pole->getQuality() / 20);
 	}
 
 
@@ -228,7 +229,7 @@ void FishingManagerImplementation::fishingStep(CreatureObject* player) {
 		// CALCULATING FISH
 		int newFish = getFish(player);
 
-		if (event >= MISHAP) {
+		if (event - poleMod >= MISHAP) { // Pole decreases chance of MISHAP
 			fishingProceed(player, nextAction, marker, newFish, boxID, SNAGGED, true, moodString);
 		} else {
 			if (nextAction == REEL) {
@@ -237,7 +238,7 @@ void FishingManagerImplementation::fishingStep(CreatureObject* player) {
 				if (newMarker != NULL)
 					fishingProceed(player, nextAction, newMarker, newFish, boxID, WAITING, false, moodString);
 
-			} else if (event >=  (vegetation(marker) * 5)) {
+			} else if (event + poleMod >=  (vegetation(marker) * 5)) { // Pole increases chance of NIBBLE
 				fishingProceed(player, nextAction, marker, newFish, boxID, NIBBLE, true, moodString);
 			} else {
 				fishingProceed(player, nextAction, marker, newFish, boxID, WAITING, false, moodString);
@@ -247,7 +248,7 @@ void FishingManagerImplementation::fishingStep(CreatureObject* player) {
 	}
 	case SNAGGED:
 	{
-		if (event >= PROCEED) {
+		if (event + poleMod >= PROCEED) { // Pole increases chance to leave SNAGGED
 			fishingProceed(player, nextAction, marker, fish, boxID, NIBBLE, true, moodString);
 
 		} else {
@@ -258,7 +259,7 @@ void FishingManagerImplementation::fishingStep(CreatureObject* player) {
 	}
 	case NIBBLE:
 	{
-		if (event >= MISHAP) {
+		if (event - poleMod >= MISHAP) { // Pole decreases chance of MISHAP
 
 			if (mishap == 0) { // Line snapped, losing bait
 				mishapEvent("@fishing:line_snap", player, boxID, true, moodString);
@@ -268,7 +269,7 @@ void FishingManagerImplementation::fishingStep(CreatureObject* player) {
 
 			}
 
-		} else if ((event >= (PROCEED + 10 - (density(marker) * 2))) && (nextAction >= TUGUP && nextAction <= TUGLEFT)) {
+		} else if ((event + poleMod >= (PROCEED + 10 - (density(marker) * 2))) && (nextAction >= TUGUP && nextAction <= TUGLEFT)) { // Pole increases chance to BITE
 			fishingProceed(player, nextAction, marker, fish, boxID, BITE, true, moodString);
 
 		} else if (nextAction == REEL) {
@@ -284,7 +285,7 @@ void FishingManagerImplementation::fishingStep(CreatureObject* player) {
 	}
 	case BITE:
 	{
-		if (event >= MISHAP) {
+		if (event - poleMod >= MISHAP) { // Pole decreases chance of MISHAP
 
 			if (mishap == 0) { // Lost Bait
 				mishapEvent("@fishing:lost_bait", player, boxID, true, moodString);
@@ -293,7 +294,7 @@ void FishingManagerImplementation::fishingStep(CreatureObject* player) {
 				mishapEvent("@fishing:line_spooled", player, boxID, false, moodString);
 
 			}
-		} else if ((event >= PROCEED) && (nextAction >= TUGUP && nextAction <= TUGLEFT)) {
+		} else if ((event + poleMod >= PROCEED) && (nextAction >= TUGUP && nextAction <= TUGLEFT)) { // Pole increases chance of CATCH
 			fishingProceed(player, nextAction, marker, fish, boxID, CATCH, true, moodString);
 
 		} else if (nextAction == REEL) {
@@ -347,7 +348,7 @@ void FishingManagerImplementation::fishingStep(CreatureObject* player) {
 			success(player, fish, marker, boxID);
 
 		} else {
-			if (event >= MISHAP) {
+			if (event - poleMod >= MISHAP) { // Pole decreases chance of MISHAP
 				mishapEvent("@fishing:tore_bait", player, boxID, true, moodString);
 			} else {
 
