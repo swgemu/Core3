@@ -11,6 +11,7 @@
 #include "engine/engine.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 
 class DestroyStructureTask : public Task {
 protected:
@@ -74,6 +75,29 @@ public:
 						}
 
 						structureObject->wlock();
+					} else if (obj->isVendor()) {
+						Reference<VendorDataComponent*> vendorData = cast<VendorDataComponent*>(obj->getDataObjectComponent());
+						ManagedReference<SceneObject*> vendorOwner = zone->getZoneServer()->getObject(vendorData->getOwnerId());
+
+						if (vendorOwner != NULL) {
+							ManagedReference<SceneObject*> vendorOwnersGhost = vendorOwner->getSlottedObject("ghost");
+
+							if (vendorOwnersGhost != NULL && vendorOwnersGhost->isPlayerObject()) {
+								PlayerObject* playo = cast<PlayerObject*>(vendorOwnersGhost.get());
+
+								structureObject->unlock();
+
+								try {
+									Locker plocker(vendorOwner);
+
+									playo->removeVendor(obj);
+								} catch (...) {
+									vendorOwner->error("unreported exception caught while removing vendor");
+								}
+
+								structureObject->wlock();
+							}
+						}
 					}
 				}
 			}
