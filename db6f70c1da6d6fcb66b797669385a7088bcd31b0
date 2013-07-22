@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAC3///mc\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SampleDNACommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-07-22T03:12:56Z",
+      "side": 1,
+      "message": "Locker crosslocker(creo, creature);",
+      "revId": "db6f70c1da6d6fcb66b797669385a7088bcd31b0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAC3///mg\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/SampleDnaTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-07-22T03:12:56Z",
+      "side": 1,
+      "message": "Locker locker(player);\nLocker crosslocker(creature, player);",
+      "revId": "db6f70c1da6d6fcb66b797669385a7088bcd31b0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
