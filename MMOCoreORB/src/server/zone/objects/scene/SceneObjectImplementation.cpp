@@ -1110,8 +1110,8 @@ int SceneObjectImplementation::canAddObject(SceneObject* object, int containment
 	return containerComponent->canAddObject(_this.get(), object, containmentType, errorDescription);
 }
 
-bool SceneObjectImplementation::transferObject(SceneObject* object, int containmentType, bool notifyClient) {
-	return containerComponent->transferObject(_this.get(), object, containmentType, notifyClient);
+bool SceneObjectImplementation::transferObject(SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow) {
+	return containerComponent->transferObject(_this.get(), object, containmentType, notifyClient, allowOverflow);
 }
 
 bool SceneObjectImplementation::removeObject(SceneObject* object, SceneObject* destination, bool notifyClient) {

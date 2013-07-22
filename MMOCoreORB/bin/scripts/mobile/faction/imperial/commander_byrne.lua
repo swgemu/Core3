@@ -26,7 +26,7 @@ commander_byrne = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_stormtrooper_m.iff"},
+	templates = {"object/mobile/dressed_lian_byrne.iff"},
 	lootGroups = {
 		{
 			groups = {

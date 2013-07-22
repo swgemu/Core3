@@ -14,7 +14,7 @@
  *	CellObjectStub
  */
 
-enum {RPC_SETALLOWENTRYPERMISSIONGROUP__STRING_,RPC_NOTIFYLOADFROMDATABASE__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDPERMISSIONSTO__CREATUREOBJECT_BOOL_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_GETCELLNUMBER__,RPC_SETCELLNUMBER__INT_,RPC_ISCELLOBJECT__};
+enum {RPC_SETALLOWENTRYPERMISSIONGROUP__STRING_,RPC_NOTIFYLOADFROMDATABASE__,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_SENDPERMISSIONSTO__CREATUREOBJECT_BOOL_,RPC_CANADDOBJECT__SCENEOBJECT_INT_STRING_,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_GETCELLNUMBER__,RPC_SETCELLNUMBER__INT_,RPC_ISCELLOBJECT__};
 
 CellObject::CellObject() : SceneObject(DummyConstructorParameter::instance()) {
 	CellObjectImplementation* _implementation = new CellObjectImplementation();
@@ -113,20 +113,21 @@ int CellObject::canAddObject(SceneObject* object, int containmentType, String& e
 		return _implementation->canAddObject(object, containmentType, errorDescription);
 }
 
-bool CellObject::transferObject(SceneObject* object, int containmentType, bool notifyClient) {
+bool CellObject::transferObject(SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow) {
 	CellObjectImplementation* _implementation = static_cast<CellObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_);
+		DistributedMethod method(this, RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_BOOL_);
 		method.addObjectParameter(object);
 		method.addSignedIntParameter(containmentType);
 		method.addBooleanParameter(notifyClient);
+		method.addBooleanParameter(allowOverflow);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->transferObject(object, containmentType, notifyClient);
+		return _implementation->transferObject(object, containmentType, notifyClient, allowOverflow);
 }
 
 void CellObject::initializeTransientMembers() {
@@ -454,9 +455,9 @@ void CellObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertSignedInt(canAddObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getAsciiParameter(errorDescription)));
 		}
 		break;
-	case RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_:
+	case RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_BOOL_:
 		{
-			resp->insertBoolean(transferObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter()));
+			resp->insertBoolean(transferObject(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter(), inv->getBooleanParameter(), inv->getBooleanParameter()));
 		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -519,8 +520,8 @@ int CellObjectAdapter::canAddObject(SceneObject* object, int containmentType, St
 	return (static_cast<CellObject*>(stub))->canAddObject(object, containmentType, errorDescription);
 }
 
-bool CellObjectAdapter::transferObject(SceneObject* object, int containmentType, bool notifyClient) {
-	return (static_cast<CellObject*>(stub))->transferObject(object, containmentType, notifyClient);
+bool CellObjectAdapter::transferObject(SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow) {
+	return (static_cast<CellObject*>(stub))->transferObject(object, containmentType, notifyClient, allowOverflow);
 }
 
 void CellObjectAdapter::initializeTransientMembers() {
@@ -749,28 +750,33 @@ int LuaCellObject::transferObject(lua_State *L) {
 	int parameterCount = lua_gettop(L) - 1;
 	
 	if (lua_isboolean(L, -1)) {
-		if (lua_isnumber(L, -2)) {
-			if (lua_isuserdata(L, -3)) {
-				if (parameterCount == 3) {
-					SceneObject* object = static_cast<SceneObject*>(lua_touserdata(L, -3));
-					int containmentType = lua_tointeger(L, -2);
-					bool notifyClient = lua_toboolean(L, -1);
+		if (lua_isboolean(L, -2)) {
+			if (lua_isnumber(L, -3)) {
+				if (lua_isuserdata(L, -4)) {
+					if (parameterCount == 4) {
+						SceneObject* object = static_cast<SceneObject*>(lua_touserdata(L, -4));
+						int containmentType = lua_tointeger(L, -3);
+						bool notifyClient = lua_toboolean(L, -2);
+						bool allowOverflow = lua_toboolean(L, -1);
 
-					bool result = realObject->transferObject(object, containmentType, notifyClient);
+						bool result = realObject->transferObject(object, containmentType, notifyClient, allowOverflow);
 
-					lua_pushboolean(L, result);
-					return 1;
+						lua_pushboolean(L, result);
+						return 1;
+					} else {
+						throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:transferObject(userdata, integer, boolean, boolean)'");
+					}
 				} else {
-					throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:transferObject(userdata, integer, boolean)'");
+					throw LuaCallbackException(L, "invalid argument at 3 for lua method 'CellObject:transferObject(userdata, integer, boolean, boolean)'");
 				}
 			} else {
-				throw LuaCallbackException(L, "invalid argument at 2 for lua method 'CellObject:transferObject(userdata, integer, boolean)'");
+				throw LuaCallbackException(L, "invalid argument at 2 for lua method 'CellObject:transferObject(userdata, integer, boolean, boolean)'");
 			}
 		} else {
-			throw LuaCallbackException(L, "invalid argument at 1 for lua method 'CellObject:transferObject(userdata, integer, boolean)'");
+			throw LuaCallbackException(L, "invalid argument at 1 for lua method 'CellObject:transferObject(userdata, integer, boolean, boolean)'");
 		}
 	} else {
-		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'CellObject:transferObject(userdata, integer, boolean)'");
+		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'CellObject:transferObject(userdata, integer, boolean, boolean)'");
 	}
 }
 

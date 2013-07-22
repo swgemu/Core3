@@ -8,6 +8,7 @@
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/player/sui/colorbox/SuiColorBox.h"
 #include "ArmorObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
@@ -23,6 +24,19 @@ void ArmorObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, 
 
 	if (!sceneObject->isWearableObject())
 		return;
+
+	ManagedReference<SceneObject*> parent = sceneObject->getParent();
+
+	if (parent != NULL && parent->isCellObject()) {
+		ManagedReference<SceneObject*> obj = parent->getParent();
+
+		if (obj != NULL && obj->isBuildingObject()) {
+			ManagedReference<BuildingObject*> buio = cast<BuildingObject*>(obj.get());
+
+			if (!buio->isOnAdminList(player))
+				return;
+		}
+	}
 
 	String text = "Color Change";
 	menuResponse->addRadialMenuItem(81, 3, text);
@@ -43,6 +57,18 @@ int ArmorObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, C
 			player->sendSystemMessage("@armor_rehue:equipped");
 			return 0;
 		}	
+
+		if (parent->isCellObject()) {
+			ManagedReference<SceneObject*> obj = parent->getParent();
+
+			if (obj != NULL && obj->isBuildingObject()) {
+				ManagedReference<BuildingObject*> buio = cast<BuildingObject*>(obj.get());
+
+				if (!buio->isOnAdminList(player))
+					return 0;
+			}
+		}
+
 		
 		ZoneServer* server = player->getZoneServer();
 

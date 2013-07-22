@@ -2700,10 +2700,11 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 		player->executeObjectControllerAction(String("transferitemmisc").hashCode(), object->getObjectID(), stringArgs);
 	}
 
-	if (creatureInventory->getContainerObjectsSize() <= 0)
+	if (creatureInventory->getContainerObjectsSize() <= 0) {
 		player->sendSystemMessage("@base_player:corpse_looted"); //You have completely looted the corpse of all items.
 
-	rescheduleCorpseDestruction(player, ai);
+		rescheduleCorpseDestruction(player, ai);
+	}
 }
 
 void PlayerManagerImplementation::generateHologrindSkills(CreatureObject* player) {
@@ -3536,7 +3537,7 @@ bool PlayerManagerImplementation::shouldRescheduleCorpseDestruction(CreatureObje
 bool PlayerManagerImplementation::canGroupMemberHarvestCorpse(CreatureObject* player, Creature* creature) {
 
 	if (!player->isGrouped())
-		return false;
+			return false;
 
 	ManagedReference<GroupObject*> group = player->getGroup();
 	int groupSize = group->getGroupSize();
@@ -3547,8 +3548,9 @@ bool PlayerManagerImplementation::canGroupMemberHarvestCorpse(CreatureObject* pl
 		if (player->getObjectID() == groupMember->getObjectID())
 			continue;
 
-		if (groupMember->isInRange(player, 256.0f)) {
-			CreatureObject *groupMemberCreature = dynamic_cast<CreatureObject*>(groupMember.get());
+		if (creature->isInRange(groupMember, 256.0f)) {
+
+			CreatureObject* groupMemberCreature = dynamic_cast<CreatureObject*>(groupMember.get());
 
 			if (creature->hasSkillToHarvestMe(groupMemberCreature)) {
 				return true;

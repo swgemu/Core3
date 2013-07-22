@@ -154,7 +154,7 @@ void StructureMaintenanceTask::sendMailCondemned(CreatureObject* owner, Structur
 }
 
 bool StructureMaintenanceTask::shouldBuildingBeDestroyed(StructureObject* structure) {
-	int threeMonthsOfMaintenance = 3 * 30 * 24 * structure->getMaintenanceRate();
+	int threeMonthsOfMaintenance = 30 * 24 * structure->getMaintenanceRate();
 
 	if (threeMonthsOfMaintenance + structure->getSurplusMaintenance() < 0) {
 		return true;

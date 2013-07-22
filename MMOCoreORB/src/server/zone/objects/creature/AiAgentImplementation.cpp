@@ -353,6 +353,9 @@ void AiAgentImplementation::doAttack() {
 					target = targetCreature;
 
 					break;
+				} else {
+					// if the object on the defender list is no longer attackable, remove it
+					removeDefender(targetCreature);
 				}
 			}
 		}
@@ -892,7 +895,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 		newSpeed = 0.01f;
 
 	float updateTicks = float(UPDATEMOVEMENTINTERVAL) / 1000.f;
-	currentSpeed = newSpeed;
+	//currentSpeed = newSpeed;
 
 	newSpeed *= updateTicks;
 
@@ -1236,6 +1239,8 @@ void AiAgentImplementation::doMovement() {
 		currentSpeed = 0;
 		//info("not found in doMovement", true);
 
+		updateLocomotion();
+
 		if (isRetreating())
 			homeLocation.setReached(true);
 
@@ -1270,6 +1275,10 @@ void AiAgentImplementation::doMovement() {
 	nextStepPosition.setReached(false);
 
 	broadcastNextPositionUpdate(&nextStepPosition);
+
+	currentSpeed = MAX(0.1, nextStepPosition.getWorldPosition().distanceTo(getWorldPosition()) / ((float)UPDATEMOVEMENTINTERVAL / 1000.f));
+
+	updateLocomotion();
 
 	activateMovementEvent();
 }

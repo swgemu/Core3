@@ -33,6 +33,7 @@
 #include "server/zone/managers/vendor/VendorManager.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
 #include "server/zone/objects/tangible/components/vendor/AuctionTerminalDataComponent.h"
+#include "server/zone/objects/player/sessions/TradeSession.h"
 
 void AuctionManagerImplementation::initialize() {
 
@@ -203,6 +204,12 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::VENDORNOTWORKING);
 		player->sendMessage(soldMessage);
 		return;
+	}
+
+	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
+
+	if (tradeContainer != NULL) {
+		zoneServer->getPlayerManager()->handleAbortTradeMessage(player);
 	}
 
 	ManagedReference<AuctionItem*> oldItem = auctionMap->getItem(objectid);

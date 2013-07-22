@@ -49,9 +49,9 @@ public:
 		return ContainerComponent::canAddObject(sceneObject, object, containmentType, errorDescription);
 	}
 
-	bool transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient) {
+	bool transferObject(SceneObject* sceneObject, SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow = false) {
 
-		return ContainerComponent::transferObject(sceneObject, object, containmentType, notifyClient);
+		return ContainerComponent::transferObject(sceneObject, object, containmentType, notifyClient, allowOverflow);
 	}
 };
 

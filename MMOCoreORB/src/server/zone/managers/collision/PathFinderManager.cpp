@@ -97,6 +97,10 @@ Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToWorld(const Worl
 
 Vector<WorldCoordinates>* PathFinderManager::findPathFromWorldToCell(const WorldCoordinates& pointA, const WorldCoordinates& pointB) {
 	CellObject* targetCell = cast<CellObject*>( pointB.getCell());
+
+	if (targetCell == NULL)
+		return NULL;
+
 	ManagedReference<BuildingObject*> building = dynamic_cast<BuildingObject*>(targetCell->getParent().get().get());
 
 	if (building == NULL) {
