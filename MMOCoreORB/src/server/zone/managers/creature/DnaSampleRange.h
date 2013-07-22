@@ -43,7 +43,7 @@ public:
 	static const int BA  = 5;
 	static const int LQ  = 6;
 	static const int VLQ = 7;
-	int generateValue(int series);
+	int generateValue(int quality);
 };
 
 }

@@ -24,6 +24,7 @@
 #include "server/zone/objects/creature/Creature.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/events/MilkCreatureTask.h"
+#include "server/zone/objects/creature/events/SampleDnaTask.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
@@ -687,6 +688,35 @@ void CreatureManagerImplementation::milk(Creature* creature, CreatureObject* pla
 }
 
 void CreatureManagerImplementation::sample(Creature* creature, CreatureObject* player) {
+	Zone* zone = creature->getZone();
+
+	if (zone == NULL || !creature->isCreature() || creature->isNonPlayerCreatureObject()) {
+		return;
+	}
+
+	if (!creature->canCollectDna(player)){
+		player->sendSystemMessage("@bio_engineer:harvest_dna_cant_harvest");
+		return;
+	}
+
+	if (player->isMounted()) {
+		player->sendSystemMessage("You cant sampledna while mounted");
+		return;
+	}
+
+	if(player->getPendingTask("sampledna") != NULL) {
+		player->sendSystemMessage("@bio_engineer:harvest_dna_already_harvesting");
+		return;
+	}
+	if (!creature->hasSkillToSampleMe(player)){
+		player->sendSystemMessage("@bio_engineer:harvest_dna_skill_to_low");
+		return;
+	}
+
+	Locker clocker(creature);
+
+	ManagedReference<SampleDnaTask*> task = new SampleDnaTask(creature, player);
+	player->addPendingTask("sampledna",task,0);
 
 }
 bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, TangibleObject* clothing) {

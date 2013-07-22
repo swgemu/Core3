@@ -202,6 +202,10 @@ public:
 
 	static const short ALREADYMILKED = 0x02;
 
+	static const short HASDNA = 0x00;
+
+	static const short SAMPLED = 0x01;
+
 	CreatureManager(Zone* planet);
 
 	void initialize();
@@ -313,6 +317,10 @@ public:
 	static const short BEINGMILKED = 0x01;
 
 	static const short ALREADYMILKED = 0x02;
+
+	static const short HASDNA = 0x00;
+
+	static const short SAMPLED = 0x01;
 
 	CreatureManagerImplementation(Zone* planet);
 

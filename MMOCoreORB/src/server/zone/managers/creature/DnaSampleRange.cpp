@@ -28,6 +28,47 @@ DnaSampleRange::DnaSampleRange(LuaObject& obj) {
 
 DnaSampleRange::~DnaSampleRange() {
 }
-int DnaSampleRange::generateValue(int series){
-	return 0;
+int DnaSampleRange::generateValue(int quality){
+	uint32 max,min;
+	switch(quality) {
+		case VHQ: {
+			max = vhqMax;
+			min = vhqMin;
+			break;
+		}
+		case HQ: {
+			max = hqMax;
+			min = hqMin;
+			break;
+		}
+		case AA: {
+			max = aaMax;
+			min = aaMin;
+			break;
+		}
+		case A: {
+			max = aMax;
+			min = aMin;
+			break;
+		}
+		case BA: {
+			max = baMax;
+			min = baMin;
+			break;
+		}
+		case LQ: {
+			max = lqMax;
+			min = lqMin;
+			break;
+		}
+		case VLQ: {
+			max = vlqMax;
+			min = vlqMin;
+			break;
+		}
+		default:{
+			return 0;
+		}
+		return (int)(System::random(max-min) + min);
+	}
 }

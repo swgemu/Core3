@@ -47,6 +47,8 @@ class CreatureManager extends ZoneManager {
 	public static final short NOTMILKED = 0x00;
 	public static final short BEINGMILKED = 0x01;
 	public static final short ALREADYMILKED = 0x02;
+	public static final short HASDNA     = 0x00;
+	public static final short SAMPLED    = 0x01;
 	
 	public CreatureManager(Zone planet) {
 		super("CreatureManager");
@@ -171,3 +173,4 @@ class CreatureManager extends ZoneManager {
 	public native boolean addWearableItem(CreatureObject creature, TangibleObject clothing);
 
 }
+
