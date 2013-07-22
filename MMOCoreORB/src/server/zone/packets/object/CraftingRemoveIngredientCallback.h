@@ -12,7 +12,8 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "ObjectControllerMessageCallback.h"
 #include "server/zone/objects/player/sessions/crafting/CraftingSession.h"
-
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/player/sessions/TradeSession.h"
 
 class CraftingRemoveIngredientCallback : public MessageCallback {
 	uint64 objectID;
@@ -49,6 +50,12 @@ public:
 		if(session == NULL) {
 			warning("Trying to add an ingredient when no session exists");
 			return;
+		}
+
+		ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
+
+		if (tradeContainer != NULL) {
+			server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
 		}
 
 		ManagedReference<SceneObject* > object = player->getZoneServer()->getObject(objectID);
