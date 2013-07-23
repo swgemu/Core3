@@ -77,25 +77,28 @@ public:
 						structureObject->wlock();
 					} else if (obj->isVendor()) {
 						Reference<VendorDataComponent*> vendorData = cast<VendorDataComponent*>(obj->getDataObjectComponent());
-						ManagedReference<SceneObject*> vendorOwner = zone->getZoneServer()->getObject(vendorData->getOwnerId());
 
-						if (vendorOwner != NULL) {
-							ManagedReference<SceneObject*> vendorOwnersGhost = vendorOwner->getSlottedObject("ghost");
+						if (vendorData != NULL) {
+							ManagedReference<SceneObject*> vendorOwner = zone->getZoneServer()->getObject(vendorData->getOwnerId());
 
-							if (vendorOwnersGhost != NULL && vendorOwnersGhost->isPlayerObject()) {
-								PlayerObject* playo = cast<PlayerObject*>(vendorOwnersGhost.get());
+							if (vendorOwner != NULL) {
+								ManagedReference<SceneObject*> vendorOwnersGhost = vendorOwner->getSlottedObject("ghost");
 
-								structureObject->unlock();
+								if (vendorOwnersGhost != NULL && vendorOwnersGhost->isPlayerObject()) {
+									PlayerObject* playo = cast<PlayerObject*>(vendorOwnersGhost.get());
 
-								try {
-									Locker plocker(vendorOwner);
+									structureObject->unlock();
 
-									playo->removeVendor(obj);
-								} catch (...) {
-									vendorOwner->error("unreported exception caught while removing vendor");
+									try {
+										Locker plocker(vendorOwner);
+
+										playo->removeVendor(obj);
+									} catch (...) {
+										vendorOwner->error("unreported exception caught while removing vendor");
+									}
+
+									structureObject->wlock();
 								}
-
-								structureObject->wlock();
 							}
 						}
 					}
