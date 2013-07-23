@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAC3///kE\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/tasks/DestroyStructureTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-07-23T01:24:49Z",
+      "side": 1,
+      "message": "gotta lock it now in the same way as the teleport player with a try catch and unlocking the structure",
+      "revId": "a968f1400f0b6b889e3cfdf0fac3f81291d3fc69",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
