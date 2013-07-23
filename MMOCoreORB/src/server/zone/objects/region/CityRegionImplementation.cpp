@@ -629,7 +629,9 @@ void CityRegionImplementation::transferCivicStructuresToMayor(){
 		ManagedReference<CreatureObject*> creature = cityhall->getOwnerCreatureObject();
 		if(creature != NULL){
 			PlayerObject* oldMayor = creature->getPlayerObject();
-			oldMayor->setDeclaredResidence(NULL);
+
+			if (oldMayor != NULL)
+				oldMayor->setDeclaredResidence(NULL);
 		}
 
 		BuildingObject* cityBuilding = cast<BuildingObject*>(cityhall.get());

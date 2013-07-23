@@ -116,7 +116,7 @@ public:
 
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 
-		if (targetObject == NULL || !targetObject->isCreatureObject()) {
+		if (targetObject == NULL || !targetObject->isCreatureObject() || !targetObject->isPlayerCreature()) {
 			creature->sendSystemMessage("@player_structure:no_transfer_target"); //You must specify a player with whom to transfer ownership.
 			return INVALIDTARGET;
 		}
