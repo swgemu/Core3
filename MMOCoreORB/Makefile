@@ -50,7 +50,7 @@ all: #build
 	#cd build/unix && cmake ../.. && make
 	#cp build/unix/src/core3 bin
 
-build: idl
+build: idl gtest
 	cd build/unix && make -j4
 	cp build/unix/src/client/core3* bin
 	cp build/unix/src/core3* bin
@@ -64,6 +64,9 @@ rebuild: clean build
 idl:
 	$(IDLC) $(IDL_DIRECTIVES) -sd src anyadEclipse
 	#done
+	
+gtest:
+	cd utils/gtest-1.6.0 && make
 
 config:
 	aclocal
