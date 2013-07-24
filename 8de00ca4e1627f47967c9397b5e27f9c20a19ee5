@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAC3///iU\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/FireHeavyWeaponCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-07-24T01:31:45Z",
+      "side": 1,
+      "message": "Store it in a managed reference please and check for null",
+      "revId": "8de00ca4e1627f47967c9397b5e27f9c20a19ee5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
