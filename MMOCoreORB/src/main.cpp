@@ -47,6 +47,8 @@ which carries forward this exception.
 #include "server/ServerCore.h"
 #include "server/zone/managers/director/DirectorManager.h"
 
+#include "gtest/gtest.h"
+
 class CoreProcess : public ChildProcess {
 	SortedVector<String>& arguments;
 
@@ -98,6 +100,11 @@ int main(int argc, char* argv[]) {
 
 				core.wait();
 			}
+		} else if (arguments.contains("runUnitTests")) {
+			printf("Running unit tests...\n");
+			testing::InitGoogleTest(&argc, argv);
+
+			return RUN_ALL_TESTS();
 		} else {
 			bool truncateData = arguments.contains("clean");
 
