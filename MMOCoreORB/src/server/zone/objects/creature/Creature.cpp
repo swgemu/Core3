@@ -20,7 +20,7 @@
  *	CreatureStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISCREATURE__,RPC_GETDNASAMPLECOUNT__,RPC_INCDNASAMPLECOUNT__,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_RUNAWAY__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SCHEDULEDESPAWN__,RPC_HASORGANICS__,RPC_HASMILK__,RPC_HASDNA__,RPC_CANHARVESTME__CREATUREOBJECT_,RPC_HASSKILLTOHARVESTME__CREATUREOBJECT_,RPC_CANMILKME__CREATUREOBJECT_,RPC_CANCOLLECTDNA__CREATUREOBJECT_,RPC_HASSKILLTOSAMPLEME__CREATUREOBJECT_,RPC_ADDALREADYHARVESTED__CREATUREOBJECT_,RPC_SETMILKSTATE__SHORT_,RPC_SETDNASTATE__SHORT_,RPC_NOTIFYDESPAWN__ZONE_,RPC_ISBABY__,RPC_GETTAME__,RPC_GETMEATTYPE__,RPC_GETBONETYPE__,RPC_GETHIDETYPE__,RPC_GETMILKTYPE__,RPC_GETMILK__,RPC_GETHIDEMAX__,RPC_GETBONEMAX__,RPC_GETMEATMAX__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISCREATURE__,RPC_GETDNASTATE__,RPC_GETDNASAMPLECOUNT__,RPC_INCDNASAMPLECOUNT__,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_RUNAWAY__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SCHEDULEDESPAWN__,RPC_HASORGANICS__,RPC_HASMILK__,RPC_HASDNA__,RPC_CANHARVESTME__CREATUREOBJECT_,RPC_HASSKILLTOHARVESTME__CREATUREOBJECT_,RPC_CANMILKME__CREATUREOBJECT_,RPC_CANCOLLECTDNA__CREATUREOBJECT_,RPC_HASSKILLTOSAMPLEME__CREATUREOBJECT_,RPC_ADDALREADYHARVESTED__CREATUREOBJECT_,RPC_SETMILKSTATE__SHORT_,RPC_SETDNASTATE__SHORT_,RPC_NOTIFYDESPAWN__ZONE_,RPC_ISBABY__,RPC_GETTAME__,RPC_GETMEATTYPE__,RPC_GETBONETYPE__,RPC_GETHIDETYPE__,RPC_GETMILKTYPE__,RPC_GETMILK__,RPC_GETHIDEMAX__,RPC_GETBONEMAX__,RPC_GETMEATMAX__};
 
 Creature::Creature() : AiAgent(DummyConstructorParameter::instance()) {
 	CreatureImplementation* _implementation = new CreatureImplementation();
@@ -62,6 +62,19 @@ bool Creature::isCreature() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isCreature();
+}
+
+short Creature::getDnaState() {
+	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDNASTATE__);
+
+		return method.executeWithSignedShortReturn();
+	} else
+		return _implementation->getDnaState();
 }
 
 short Creature::getDnaSampleCount() {
@@ -656,6 +669,11 @@ bool CreatureImplementation::isCreature() {
 	return true;
 }
 
+short CreatureImplementation::getDnaState() {
+	// server/zone/objects/creature/Creature.idl():  		return dnaState;
+	return dnaState;
+}
+
 short CreatureImplementation::getDnaSampleCount() {
 	// server/zone/objects/creature/Creature.idl():  		return dnaSampleCount;
 	return dnaSampleCount;
@@ -771,6 +789,11 @@ void CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_ISCREATURE__:
 		{
 			resp->insertBoolean(isCreature());
+		}
+		break;
+	case RPC_GETDNASTATE__:
+		{
+			resp->insertSignedShort(getDnaState());
 		}
 		break;
 	case RPC_GETDNASAMPLECOUNT__:
@@ -929,6 +952,10 @@ void CreatureAdapter::initializeTransientMembers() {
 
 bool CreatureAdapter::isCreature() {
 	return (static_cast<Creature*>(stub))->isCreature();
+}
+
+short CreatureAdapter::getDnaState() {
+	return (static_cast<Creature*>(stub))->getDnaState();
 }
 
 short CreatureAdapter::getDnaSampleCount() {

@@ -44,13 +44,39 @@ void DnaManager::loadSampleData() {
 	lua = NULL;
 }
 
-int generateXp(int creatureLevel) {
+int DnaManager::generateXp(int creatureLevel) {
 	float x1 = 0.00001896378 * (creatureLevel * 4);
 	float x2 = 0.0025801845 * (creatureLevel * 3);
 	float x3 = 0.1673150401 * (creatureLevel * 2);
 	float x4 = 6.757844921 * creatureLevel;
 	float x5 = 46.75746899;
 	return (int)ceil(x1-x2+x3+x4+x5);
+}
+int DnaManager::generateScoreFor(int stat, int cl, int quality) {
+	switch(stat){
+		case DnaManager::CLEVERNESS:
+			return cleverness.get(cl)->generateValue(quality);
+		case DnaManager::COURAGE:
+			return courage.get(cl)->generateValue(quality);
+		case DnaManager::DEPENDABILITY:
+			return dependency.get(cl)->generateValue(quality);
+		case DnaManager::DEXTERITY:
+			return dexerity.get(cl)->generateValue(quality);
+		case DnaManager::ENDURANCE:
+			return endurance.get(cl)->generateValue(quality);
+		case DnaManager::FIERCENESS:
+			return fierceness.get(cl)->generateValue(quality);
+		case DnaManager::FORTITUDE:
+			return fortitude.get(cl)->generateValue(quality);
+		case DnaManager::HARDINESS:
+			return hardiness.get(cl)->generateValue(quality);
+		case DnaManager::INTELLIGENCE:
+			return intelligence.get(cl)->generateValue(quality);
+		case DnaManager::POWER:
+			return power.get(cl)->generateValue(quality);
+		default:
+			return 0;
+	}
 }
 int DnaManager::addRange(lua_State* L) {
 	int stat = lua_tointeger(L,-3);
