@@ -2331,8 +2331,8 @@ int CityRegionImplementation::subtractFromCityTreasury(int val) {
 }
 
 int CityRegionImplementation::getMaxWithdrawal() {
-	// server/zone/objects/region/CityRegion.idl():  		return 10000 * cityRank;
-	return 10000 * cityRank;
+	// server/zone/objects/region/CityRegion.idl():  		return 50000;
+	return 50000;
 }
 
 void CityRegionImplementation::setCityRank(byte rank) {
