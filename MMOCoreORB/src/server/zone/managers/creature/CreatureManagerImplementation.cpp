@@ -48,10 +48,6 @@ void CreatureManagerImplementation::setCreatureTemplateManager() {
 	CreaturePosture::instance()->loadMovementData();
 }
 
-void CreatureManagerImplementation::setDnaManager() {
-	dnaManager = DnaManager::instance();
-}
-
 
 CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC, float x, float z, float y, uint64 parentID) {
 	CreatureObject* creature = createCreature(templateCRC);
@@ -700,7 +696,7 @@ void CreatureManagerImplementation::sample(Creature* creature, CreatureObject* p
 	}
 
 	if (player->isMounted()) {
-		player->sendSystemMessage("You cant sampledna while mounted");
+		player->sendSystemMessage("You cannot sample DNA while mounted");
 		return;
 	}
 
@@ -709,7 +705,7 @@ void CreatureManagerImplementation::sample(Creature* creature, CreatureObject* p
 		return;
 	}
 	if (!creature->hasSkillToSampleMe(player)){
-		player->sendSystemMessage("@bio_engineer:harvest_dna_skill_to_low");
+		player->sendSystemMessage("@bio_engineer:harvest_dna_skill_too_low");
 		return;
 	}
 

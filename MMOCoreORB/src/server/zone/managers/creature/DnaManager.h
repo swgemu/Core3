@@ -47,6 +47,7 @@ public:
 	static const int COURAGE       = 8;
 	static const int POWER         = 9;
 	static const int FIERCENESS    = 10;
+	int generateScoreFor(int stat, int cl,int quality);
 };
 
 }
