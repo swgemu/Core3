@@ -697,6 +697,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@local
 	@read
 	public native void getSlottedObjects(@dereferenced VectorMap<string, SceneObject> objects);
+	
+	@local
+	@read
+	public native void getContainerObjects(@dereferenced VectorMap<unsigned long, SceneObject> objects);
 
 	/**
 	 * Returns the object id of the parent of this object
