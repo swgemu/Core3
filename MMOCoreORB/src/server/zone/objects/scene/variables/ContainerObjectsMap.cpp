@@ -61,6 +61,8 @@ void ContainerObjectsMap::loadObjects() {
 
 	Locker locker(&loadMutex);
 
+	WMB();
+
 	if (oids == NULL)
 		return;
 

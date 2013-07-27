@@ -531,11 +531,14 @@ void SceneObjectImplementation::setContainerComponent(const String& name) {
 
 void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 	//sending all slotted objects by default
-	SortedVector<SceneObject*> objects(getSlottedObjectsSize(), getSlottedObjectsSize());
+	VectorMap<String, ManagedReference<SceneObject* > > slotted;
+	getSlottedObjects(slotted);
+
+	SortedVector<SceneObject*> objects(slotted.size(), slotted.size());
 	objects.setNoDuplicateInsertPlan();
 
-	for (int i = 0; i < getSlottedObjectsSize(); ++i) {
-		SceneObject* object = getSlottedObject(i);
+	for (int i = 0; i < slotted.size(); ++i) {
+		SceneObject* object = slotted.get(i);
 
 		if (objects.put(object) != -1) {
 			if (object->isInQuadTree()) {
@@ -549,8 +552,11 @@ void SceneObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 
 void SceneObjectImplementation::sendContainerObjectsTo(SceneObject* player) {
 	//sending all objects by default
-	for (int j = 0; j < getContainerObjectsSize(); ++j) {
-		SceneObject* containerObject = getContainerObject(j);
+	VectorMap<uint64, ManagedReference<SceneObject* > > objects;
+	getContainerObjects(objects);
+
+	for (int j = 0; j < objects.size(); ++j) {
+		SceneObject* containerObject = objects.get(j);
 
 		if (containerObject == NULL)
 			continue;
@@ -1458,6 +1464,16 @@ void SceneObjectImplementation::getSlottedObjects(VectorMap<String, ManagedRefer
 	containerLock.rlock(lock);
 
 	objects = slottedObjects;
+
+	containerLock.runlock(lock);
+}
+
+void SceneObjectImplementation::getContainerObjects(VectorMap<uint64, ManagedReference<SceneObject*> >& objects) {
+	bool lock = !containerLock.isLockedByCurrentThread();
+
+	containerLock.rlock(lock);
+
+	objects = *containerObjects.getContainerObjects();
 
 	containerLock.runlock(lock);
 }
