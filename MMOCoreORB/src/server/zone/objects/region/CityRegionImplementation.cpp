@@ -613,7 +613,15 @@ void CityRegionImplementation::transferCivicStructuresToMayor(){
 
 	// transfer decorations
 	for(int i = 0; i < cityDecorations.size(); ++i){
-		ManagedReference<StructureObject*> structure = structures.get(i);
+		ManagedReference<SceneObject*> str = cityDecorations.get(i);
+
+		if(str == NULL || !str->isStructureObject())
+			continue;
+
+		StructureObject* structure = cast<StructureObject*>(str.get());
+
+		if(structure == NULL)
+			continue;
 
 		ManagedReference<CreatureObject*> oldOwner = structure->getOwnerCreatureObject();
 
