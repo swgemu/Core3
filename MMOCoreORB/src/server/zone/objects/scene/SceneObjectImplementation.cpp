@@ -1471,9 +1471,9 @@ void SceneObjectImplementation::getSlottedObjects(VectorMap<String, ManagedRefer
 void SceneObjectImplementation::getContainerObjects(VectorMap<uint64, ManagedReference<SceneObject*> >& objects) {
 	bool lock = !containerLock.isLockedByCurrentThread();
 
-	containerLock.rlock(lock);
-
 	containerObjects.loadObjects();
+
+	containerLock.rlock(lock);
 
 	objects = *containerObjects.getContainerObjects();
 
