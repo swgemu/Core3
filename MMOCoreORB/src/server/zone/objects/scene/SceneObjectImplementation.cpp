@@ -1473,6 +1473,8 @@ void SceneObjectImplementation::getContainerObjects(VectorMap<uint64, ManagedRef
 
 	containerLock.rlock(lock);
 
+	containerObjects.loadObjects();
+
 	objects = *containerObjects.getContainerObjects();
 
 	containerLock.runlock(lock);
