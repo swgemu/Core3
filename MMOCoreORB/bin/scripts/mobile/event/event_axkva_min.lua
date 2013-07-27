@@ -1,0 +1,37 @@
+event_axkva_min = Creature:new {
+	objectName = "@mob/creature_names:axkva_min",
+	customName = "Axkva Min (event)",
+	socialGroup = "nightsister",
+	pvpFaction = "nightsister",
+	faction = "nightsister",
+	level = 302,
+	chanceHit = 300,
+	damageMin = 1645,
+	damageMax = 3000,
+	baseXp = 0,
+	baseHAM = 385000,
+	baseHAMmax = 471000,
+	armor = 3,
+	resists = {100,95,95,100,100,100,100,100,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	creatureBitmask = PACK + KILLER + HEALER,
+	optionsBitmask = 128,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_dathomir_nightsister_axkva.iff"},
+	lootGroups = {},
+	weapons = {"mixed_force_weapons"},
+	conversationTemplate = "",
+	attacks = merge(tkamaster,forcepowermaster)
+}
+
+CreatureTemplates:addCreatureTemplate(event_axkva_min, "event_axkva_min")

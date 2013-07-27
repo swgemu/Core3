@@ -1824,3 +1824,12 @@ void AiAgentImplementation::selectConversationOption(int option, SceneObject* ob
 	StringList* slist = new StringList(player);
 	player->sendMessage(slist);*/
 }
+
+bool AiAgentImplementation::isEventMob() {
+	String templateName = npcTemplate.get()->getTemplateName();
+
+	if (templateName.toLowerCase().beginsWith("event_"))
+		return true;
+
+	return false;
+}
