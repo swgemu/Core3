@@ -1,0 +1,37 @@
+event_tusken_witch_doctor = Creature:new {
+	objectName = "@mob/creature_names:tusken_witch_doctor",
+	customName = "a Tusken Witch Doctor (event)",
+	socialGroup = "tusken_raider",
+	pvpFaction = "tusken_raider",
+	faction = "tusken_raider",
+	level = 202,
+	chanceHit = 160,
+	damageMin = 1145,
+	damageMax = 2000,
+	baseXp = 0,
+	baseHAM = 160000,
+	baseHAMmax = 195000,
+	armor = 3,
+	resists = {65,95,35,100,0,30,45,80,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	creatureBitmask = PACK + KILLER + HEALER,
+	optionsBitmask = 128,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/tusken_raider.iff"},
+	lootGroups = {},
+	weapons = {"tusken_weapons"},
+	conversationTemplate = "",
+	attacks = merge(brawlernovice,marksmannovice)
+}
+
+CreatureTemplates:addCreatureTemplate(event_tusken_witch_doctor, "event_tusken_witch_doctor")

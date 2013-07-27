@@ -474,6 +474,8 @@ public:
 
 	void setShowNextPosition(bool val);
 
+	bool isEventMob();
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -776,6 +778,8 @@ public:
 
 	void setShowNextPosition(bool val);
 
+	bool isEventMob();
+
 	WeakReference<AiAgent*> _this;
 
 	operator const AiAgent*();
@@ -988,6 +992,8 @@ public:
 	bool hasLoot();
 
 	void setShowNextPosition(bool val);
+
+	bool isEventMob();
 
 };
 
