@@ -1,0 +1,37 @@
+event_singing_mountain_clan_guardian = Creature:new {
+	objectName = "@mob/creature_names:singing_mtn_clan_guardian",
+	customName = "a Singing Mountain clan guardian (event)",
+	socialGroup = "mtn_clan",
+	pvpFaction = "mtn_clan",
+	faction = "mtn_clan",
+	level = 156,
+	chanceHit = 85,
+	damageMin = 895,
+	damageMax = 1500,
+	baseXp = 0,
+	baseHAM = 81000,
+	baseHAMmax = 99000,
+	armor = 1,
+	resists = {100,20,20,100,100,100,100,100,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	creatureBitmask = PACK + KILLER,
+	optionsBitmask = 128,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_dathomir_sing_mt_clan_guardian.iff"},
+	lootGroups = {},
+	weapons = {"mixed_force_weapons"},
+	conversationTemplate = "",
+	attacks = merge(brawlermaster,pikemanmaster,forcewielder)
+}
+
+CreatureTemplates:addCreatureTemplate(event_singing_mountain_clan_guardian, "event_singing_mountain_clan_guardian")

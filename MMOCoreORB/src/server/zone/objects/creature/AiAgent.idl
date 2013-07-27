@@ -724,4 +724,6 @@ class AiAgent extends CreatureObject {
 	public void setShowNextPosition(boolean val) {
 		showNextMovementPosition = val;
 	}
+
+	public native boolean isEventMob();
 }
