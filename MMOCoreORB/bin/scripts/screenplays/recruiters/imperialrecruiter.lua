@@ -64,6 +64,14 @@ function imperial_recruiter_handler:isUniform(strItem)
 	return false
 end
 
+function imperial_recruiter_handler:isHireling(strItem)
+	if ( faction_reward_data.imperial_hireling[strItem] ~= nil ) then
+		return true
+	end
+
+	return false
+end
+
 function imperial_recruiter_handler:isFurniture(strItem)
 	if ( faction_reward_data.imperial_furniture[strItem] ~= nil ) then
 		return true
@@ -124,11 +132,19 @@ function imperial_recruiter_handler:addFurniture(screen, gcwDiscount)
 end
 
 function imperial_recruiter_handler:addInstallations(screen, gcwDiscount)
-		for k,v in pairs(faction_reward_data.imperial_installations_list) do
+	for k,v in pairs(faction_reward_data.imperial_installations_list) do
 		if ( faction_reward_data.imperial_installations[v] ~= nil and faction_reward_data.imperial_installations[v].display ~= nil and faction_reward_data.imperial_installations[v].cost ~= nil ) then
 			screen:addOption(faction_reward_data.imperial_installations[v].display .. " - " .. math.ceil((faction_reward_data.imperial_installations[v].cost * gcwDiscount)), v)
 		else
 			--print("not in table")
+		end
+	end
+end
+
+function imperial_recruiter_handler:addHirelings(screen, gcwDiscount)
+	for k,v in pairs(faction_reward_data.imperial_hireling_list) do
+		if ( faction_reward_data.imperial_hireling[v] ~= nil and faction_reward_data.imperial_hireling[v].display ~= nil and faction_reward_data.imperial_hireling[v].cost ~= nil ) then
+			screen:addOption(faction_reward_data.imperial_hireling[v].display .. " - " .. math.ceil((faction_reward_data.imperial_hireling[v].cost * gcwDiscount)), v)
 		end
 	end
 end
@@ -152,6 +168,10 @@ function imperial_recruiter_handler:getItemCost(itemstring)
 		if(faction_reward_data.imperial_installations[itemstring].cost ~= nil) then
 			return faction_reward_data.imperial_installations[itemstring].cost
 		end
+	elseif (self:isHireling(itemstring)) then
+		if(faction_reward_data.imperial_hireling[itemstring].cost ~= nil) then
+			return faction_reward_data.imperial_hireling[itemstring].cost
+		end
 	end
 
 	return itemcost
@@ -166,6 +186,8 @@ function imperial_recruiter_handler:getTemplatePath(itemstring)
 		return faction_reward_data.imperial_furniture[itemstring].item
 	elseif (self:isInstallation(itemstring)) then
 		return faction_reward_data.imperial_installations[itemstring].item
+	elseif (self:isHireling(itemstring)) then
+		return faction_reward_data.imperial_hireling[itemstring].item
 	end
 	return nil
 end
@@ -175,6 +197,16 @@ function imperial_recruiter_handler:getGeneratedObjectTemplate(itemstring)
   	if( self:isInstallation(itemstring)) then
  		if ( faction_reward_data.imperial_installations[itemstring].generatedObjectTemplate ~= nil ) then
  			return faction_reward_data.imperial_installations[itemstring].generatedObjectTemplate
+ 		end
+ 		
+ 	end
+ 	return nil
+end
+
+function imperial_recruiter_handler:getControlledObjectTemplate(itemstring)
+  	if( self:isHireling(itemstring)) then
+ 		if ( faction_reward_data.imperial_hireling[itemstring].controlledObjectTemplate ~= nil ) then
+ 			return faction_reward_data.imperial_hireling[itemstring].controlledObjectTemplate
  		end
  		
  	end
