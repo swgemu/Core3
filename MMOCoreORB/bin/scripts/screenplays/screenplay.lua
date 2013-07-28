@@ -224,6 +224,7 @@ includeFile("static_spawns/dathomir_static_spawns_nw.lua")
 includeFile("static_spawns/dathomir_static_spawns_se.lua")
 includeFile("static_spawns/dathomir_static_spawns_sw.lua")
 
+includeFile("static_spawns/talus_static_spawns_north.lua")
 includeFile("static_spawns/talus_static_spawns_south.lua")
 
 
