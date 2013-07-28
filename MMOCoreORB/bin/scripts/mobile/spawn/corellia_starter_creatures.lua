@@ -158,15 +158,6 @@ corellia_starter_creatures = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
-		},
-		{
-			lairTemplateName = "corellia_hidden_daggers_camp_neutral_medium_theater",
-			spawnLimit = -1,
-			minDifficulty = 7,
-			maxDifficulty = 10,
-			numberToSpawn = 0,
-			weighting = 5,
-			size = 25
 		}
 	}
 }

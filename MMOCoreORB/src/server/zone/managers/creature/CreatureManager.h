@@ -244,6 +244,8 @@ public:
 
 	Vector<ManagedReference<SpawnArea* > >* getFactionalImperialMissionSpawnAreas();
 
+	Vector<ManagedReference<SpawnArea* > >* getNonfactionalMissionSpawnAreas();
+
 	SpawnArea* getSpawnArea(const String& areaname);
 
 	bool addWearableItem(CreatureObject* creature, TangibleObject* clothing);
@@ -361,6 +363,8 @@ public:
 	Vector<ManagedReference<SpawnArea* > >* getFactionalRebelMissionSpawnAreas();
 
 	Vector<ManagedReference<SpawnArea* > >* getFactionalImperialMissionSpawnAreas();
+
+	Vector<ManagedReference<SpawnArea* > >* getNonfactionalMissionSpawnAreas();
 
 	SpawnArea* getSpawnArea(const String& areaname);
 
