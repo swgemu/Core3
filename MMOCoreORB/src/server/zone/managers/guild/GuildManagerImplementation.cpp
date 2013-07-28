@@ -133,6 +133,11 @@ bool GuildManagerImplementation::validateGuildName(CreatureObject* player, const
 		return false;
 	}
 
+	if (guildName.contains("\\") || guildName.contains("\n") || guildName.contains("\r") || guildName.contains("#")) {
+		player->sendSystemMessage("@guild:create_fail_name_not_allowed"); //That guild name is not allowed sinc it contains special characters
+		return false;
+	}
+
 	NameManager* nameManager = processor->getNameManager();
 
 	if (!nameManager->validateName(guildName, 0)) {
@@ -197,7 +202,10 @@ bool GuildManagerImplementation::validateGuildAbbrev(CreatureObject* player, con
 		player->sendSystemMessage("@guild:create_fail_abbrev_bad_length"); //Guild abbreviations must be 1-5 characters in length.
 		return false;
 	}
-
+	if (guildAbbrev.contains("\\") || guildAbbrev.contains("\n") || guildAbbrev.contains("\r") || guildAbbrev.contains("#")) {
+		player->sendSystemMessage("@guild:create_fail_abbrev_not_allowed"); //That guild name is not allowed sinc it contains special characters
+		return false;
+	}
 	NameManager* nameManager = processor->getNameManager();
 
 	if (!nameManager->validateName(guildAbbrev, 0)) {
@@ -641,12 +649,15 @@ GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, Gui
 
 	if (isCreatingGuild(playerID))
 		removePendingGuild(playerID);
+	// Strip out any errant escaped newlines from the guild name and tags and any errant color code starts
+	String tmp = guildName.replaceAll("\n|\r|#","");
+	String tabbrev = guildAbbrev.replaceAll("\n|\r|#","");
 
 	ManagedReference<GuildObject*> guild = cast<GuildObject*>( ObjectManager::instance()->createObject(0xD6888614, 1, "guilds")); //object/guild/guild_object.iff
 	guild->setGuildLeaderID(playerID);
 	guild->setGuildID(Long::hashCode(guild->getObjectID()));
-	guild->setGuildName(guildName);
-	guild->setGuildAbbrev(guildAbbrev);
+	guild->setGuildName(tmp);
+	guild->setGuildAbbrev(tabbrev);
 	guild->addMember(playerID);
 
 	ManagedReference<ChatRoom*> guildChat = createGuildChannels(guild);
@@ -677,7 +688,7 @@ GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, Gui
 	creod6->close();
 	player->broadcastMessage(creod6, true);
 
-	info("Guild " + guildName + " <" + guildAbbrev + "> created.", true);
+	info("Guild " + tmp + " <" + tabbrev + "> created.", true);
 
 	return guild;
 }
@@ -716,6 +727,21 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObjec
 	if (memberList == NULL)
 		return false;
 
+	// Remove at war references
+	for (int i = 0; i < guildList.size(); ++i) {
+		ManagedReference<GuildObject*> oguild = guildList.get(guildList.getKeyAt(i));
+
+		if (oguild == NULL)
+			continue;
+
+		byte status = oguild->getWarStatus(guild->getObjectID());
+
+		if (status != NULL) {
+			oguild->wlock();
+			oguild->setWarStatus(guild->getObjectID(), GuildObject::WAR_NONE);
+			oguild->unlock();
+		}
+	}
 	_lock.release();
 
 	//TODO: This could probably be moved to the GuildObject destructor!
