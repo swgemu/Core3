@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAC3///bM\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/ChangeMusicCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-07-28T14:58:54Z",
+      "side": 1,
+      "message": "ManagedReference",
+      "revId": "0edcb1429fceea627adb66ffc4db3b773a692fcf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAC3///bU\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/EntertainingSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-07-28T14:58:54Z",
+      "side": 1,
+      "message": "ManagedReference",
+      "revId": "0edcb1429fceea627adb66ffc4db3b773a692fcf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAC3///bQ\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/EntertainingSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-07-28T14:58:54Z",
+      "side": 1,
+      "message": "ManagedReference",
+      "revId": "0edcb1429fceea627adb66ffc4db3b773a692fcf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
