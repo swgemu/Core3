@@ -30,12 +30,12 @@ bull_rancor = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "rancor_common", chance = 2800000},
-				{group = "pistols", chance = 2800000},
-				{group = "rifles", chance = 2800000},
-				{group = "unarmed_melee", chance = 1600000}
+				{group = "rancor_common", chance = 5000000},
+				{group = "pistols", chance = 2000000},
+				{group = "rifles", chance = 2000000},
+				{group = "unarmed_melee", chance = 1000000}
 			},
-			lootChance = 3950000
+			lootChance = 2600000
 		}
 	},
 	weapons = {},
