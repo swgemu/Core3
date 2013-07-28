@@ -83,6 +83,10 @@ class Creature extends AiAgent {
 		return true;
 	}
 	
+	public short getDnaState() {
+		return dnaState;
+	}
+
 	public short getDnaSampleCount(){
 		return dnaSampleCount;	
 	}
@@ -116,7 +120,7 @@ class Creature extends AiAgent {
 	public native boolean hasMilk();
 	
 	public native boolean hasDNA();
-
+	
 	public native boolean canHarvestMe(CreatureObject player);
 
 	public native boolean hasSkillToHarvestMe(CreatureObject player);

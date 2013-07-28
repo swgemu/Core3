@@ -50,6 +50,7 @@
 #include "server/zone/templates/tangible/CampStructureTemplate.h"
 #include "server/zone/templates/tangible/TrapTemplate.h"
 #include "server/zone/templates/tangible/DiceTemplate.h"
+#include "server/zone/templates/tangible/DnaSampleTemplate.h"
 #include "server/zone/templates/tangible/CamoKitTemplate.h"
 #include "server/zone/templates/universe/SharedGroupObjectTemplate.h"
 #include "server/zone/templates/universe/SharedGuildObjectTemplate.h"
@@ -514,6 +515,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<CreatureHabitatTemplate>(SharedObjectTemplate::CREATUREHABITAT);
 	templateFactory.registerObject<RepairToolTemplate>(SharedObjectTemplate::REPAIRTOOL);
 	templateFactory.registerObject<LightsaberCrystalObjectTemplate>(SharedObjectTemplate::LIGHTSABERCRYSTAL);
+	templateFactory.registerObject<DnaSampleTemplate>(SharedObjectTemplate::DNASAMPLE);
 }
 
 void TemplateManager::registerFunctions() {
@@ -661,6 +663,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("LIVESAMPLE", SharedObjectTemplate::LIVESAMPLE);
 	luaTemplatesInstance->setGlobalInt("CREATUREHABITAT", SharedObjectTemplate::CREATUREHABITAT);
 	luaTemplatesInstance->setGlobalInt("REPAIRTOOL", SharedObjectTemplate::REPAIRTOOL);
+	luaTemplatesInstance->setGlobalInt("DNASAMPLE", SharedObjectTemplate::DNASAMPLE);
 
 	luaTemplatesInstance->setGlobalInt("NO_HITLOCATION", CombatManager::NOLOCATION);
 	luaTemplatesInstance->setGlobalInt("CHEST_HITLOCATION", CombatManager::CHEST);

@@ -372,3 +372,10 @@ for i=80,84 do
 		vlqMin = min,vlqMax = max,		
 	})
 end
+addQualityTemplate(1,"object/tangible/component/dna/dna_sample_very_high.iff")
+addQualityTemplate(2,"object/tangible/component/dna/dna_sample_high.iff")
+addQualityTemplate(3,"object/tangible/component/dna/dna_sample_above_average.iff")
+addQualityTemplate(4,"object/tangible/component/dna/dna_sample_average.iff")
+addQualityTemplate(5,"object/tangible/component/dna/dna_sample_below_average.iff")
+addQualityTemplate(6,"object/tangible/component/dna/dna_sample_low.iff")
+addQualityTemplate(7,"object/tangible/component/dna/dna_sample_very_low.iff")
