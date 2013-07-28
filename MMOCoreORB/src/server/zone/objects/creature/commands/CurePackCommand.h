@@ -173,6 +173,10 @@ public:
 			return false;
 		}
 
+		if (!creatureTarget->isHealableBy(creature)) {
+			return false;
+		}
+
 
 		/*if (creatureTarget->isOvert() && creatureTarget->getFaction() != creature->getFaction()) {
 			return false;
@@ -189,12 +193,12 @@ public:
 			return;
 
 		try {
-			zone->rlock();
+			SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+			CloseObjectsVector* vec = (CloseObjectsVector*) areaCenter->getCloseObjects();
+			vec->safeCopyTo(closeObjects);
 
-			SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = areaCenter->getCloseObjects();
-
-			for (int i = 0; i < closeObjects->size(); i++) {
-				SceneObject* object = cast<SceneObject*>( closeObjects->get(i).get());
+			for (int i = 0; i < closeObjects.size(); i++) {
+				SceneObject* object = cast<SceneObject*>( closeObjects.get(i).get());
 
 				if (!object->isPlayerCreature())
 					continue;
@@ -210,8 +214,6 @@ public:
 				if (creatureTarget->isAttackableBy(creature))
 					continue;
 
-				zone->runlock();
-
 				try {
 					Locker crossLocker(creatureTarget, creature);
 
@@ -220,18 +222,12 @@ public:
 					}
 
 				} catch (Exception& e) {
-					zone->rlock();
-
 					throw;
 				}
 
-				zone->rlock();
 			}
 
-			zone->runlock();
 		} catch (Exception& e) {
-			zone->runlock();
-
 			throw;
 		}
 	}
