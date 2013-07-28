@@ -211,11 +211,11 @@ public:
 
 				CreatureObject* creatureTarget = cast<CreatureObject*>( object);
 
-				if (creatureTarget->isAttackableBy(creature))
-					continue;
-
 				try {
 					Locker crossLocker(creatureTarget, creature);
+
+					if (creatureTarget->isAttackableBy(creature))
+						continue;
 
 					if (checkTarget(creature, creatureTarget)) {
 						doAreaMedicActionTarget(creature, creatureTarget, pharma);

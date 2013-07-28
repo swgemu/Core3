@@ -921,6 +921,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 	while (!found && patrolPoints.size() != 0) {
 		PatrolPoint* targetPosition = &patrolPoints.get(0);
+		Reference<SceneObject*> targetCoordinateCell = targetPosition->getCell();
 
 		if (targetPosition->getCell() == NULL && zone != NULL) {
 			PlanetManager* planetManager = zone->getPlanetManager();
@@ -932,16 +933,14 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 			targetMutex.lock();
 		}
 
-		SceneObject* targetCoordinateCell = targetPosition->getCell();
-
 		Reference<Vector<WorldCoordinates>* > path;
 
-		if (targetCoordinateCell != NULL && dynamic_cast<CellObject*>(targetCoordinateCell)) {
+		if (targetCoordinateCell != NULL && dynamic_cast<CellObject*>(targetCoordinateCell.get())) {
 			if (targetCellObject == targetCoordinateCell && currentFoundPath != NULL) {
 				Vector<Triangle*>* nodes = NULL;
 
 				if (targetCellObject == parent.get()) {
-					CellObject* cell = dynamic_cast<CellObject*>(targetCoordinateCell);
+					CellObject* cell = dynamic_cast<CellObject*>(targetCoordinateCell.get());
 
 					FloorMesh* floor = PathFinderManager::getFloorMesh(cell);
 
@@ -958,7 +957,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 					if (currentFoundPath->get(currentFoundPath->size() - 1).getWorldPosition().distanceTo(targetPosition->getCoordinates().getWorldPosition()) > 3) {
 						path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(_this.get().get(), targetPosition->getCoordinates()));
-						targetCellObject = targetCoordinateCell;
+						targetCellObject = targetCoordinateCell.get();
 					} else {
 						WorldCoordinates curr(_this.get().get());
 						path = currentFoundPath;
@@ -968,7 +967,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 				}
 			} else {
 				path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(_this.get().get(), targetPosition->getCoordinates()));
-				targetCellObject = targetCoordinateCell;
+				targetCellObject = targetCoordinateCell.get();
 			}
 		} else {
 			path = pathFinder->findPath(_this.get().get(), targetPosition->getCoordinates());
