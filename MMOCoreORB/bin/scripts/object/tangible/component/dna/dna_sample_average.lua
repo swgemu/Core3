@@ -42,6 +42,9 @@
 
 
 object_tangible_component_dna_dna_sample_average = object_tangible_component_dna_shared_dna_sample_average:new {
+	quality = "Average",
+	templateType = DNASAMPLE,
+	gameObjectType = 262158
 
 }
 

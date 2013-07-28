@@ -204,7 +204,9 @@ public:
 
 	static const short HASDNA = 0x00;
 
-	static const short SAMPLED = 0x01;
+	static const short DNASAMPLED = 0x01;
+
+	static const short DNADEATH = 0x03;
 
 	CreatureManager(Zone* planet);
 
@@ -320,7 +322,9 @@ public:
 
 	static const short HASDNA = 0x00;
 
-	static const short SAMPLED = 0x01;
+	static const short DNASAMPLED = 0x01;
+
+	static const short DNADEATH = 0x03;
 
 	CreatureManagerImplementation(Zone* planet);
 
@@ -368,8 +372,6 @@ public:
 
 private:
 	void setCreatureTemplateManager();
-
-	void setDnaManager();
 
 public:
 	void harvest(Creature* creature, CreatureObject* player, int selectedID);

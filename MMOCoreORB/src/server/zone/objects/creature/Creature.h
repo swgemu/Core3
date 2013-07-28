@@ -112,6 +112,8 @@ public:
 
 	bool isCreature();
 
+	short getDnaState();
+
 	short getDnaSampleCount();
 
 	void incDnaSampleCount();
@@ -214,6 +216,8 @@ public:
 	void initializeTransientMembers();
 
 	bool isCreature();
+
+	short getDnaState();
 
 	short getDnaSampleCount();
 
@@ -321,6 +325,8 @@ public:
 	void initializeTransientMembers();
 
 	bool isCreature();
+
+	short getDnaState();
 
 	short getDnaSampleCount();
 

@@ -177,6 +177,7 @@ public:
 	const static int SHIPCHASSIS = 0x4000036;
 	const static int SHIPDEED = 0x4000037;
 	const static int RECYCLETOOL = 0x4000038;
+	const static int DNASAMPLE = 0x4000039;
 
 public:
 	SharedObjectTemplate();
@@ -663,7 +664,10 @@ public:
 
 	virtual bool isRecycleToolTemplate() {
 	    	return false;
-	    }
+	}
+	virtual bool isDnaSampleTemplate() {
+	    	return false;
+	}
 };
 
 

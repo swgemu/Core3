@@ -11,7 +11,8 @@
 
 #include "engine/engine.h"
 #include "DnaSampleRange.h"
-
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/Creature.h"
 namespace server {
 namespace zone {
 namespace managers {
@@ -29,6 +30,7 @@ protected:
 	HashTable<uint32, Reference<DnaSampleRange*> > courage;
 	HashTable<uint32, Reference<DnaSampleRange*> > dependency;
 	HashTable<uint32, Reference<DnaSampleRange*> > fierceness;
+	HashTable<int,uint32> qualityTemplates;
 	Lua* lua;
 	static AtomicInteger loadedDnaData;
 public:
@@ -37,6 +39,7 @@ public:
 	void loadSampleData();
 	int generateXp(int creatureLevel);
 	static int addRange(lua_State* L);
+	static int addQualityTemplate(lua_State* L);
 	static const int FORTITUDE     = 1;
 	static const int ENDURANCE     = 2;
 	static const int CLEVERNESS    = 3;
@@ -47,6 +50,8 @@ public:
 	static const int COURAGE       = 8;
 	static const int POWER         = 9;
 	static const int FIERCENESS    = 10;
+	int generateScoreFor(int stat, int cl,int quality);
+	void generateSample(Creature* creature, CreatureObject* player, int quality);
 };
 
 }
