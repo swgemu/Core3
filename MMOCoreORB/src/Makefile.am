@@ -80,6 +80,8 @@ bin_PROGRAMS = core3 #odb3
 #server/zone/objects/scene/SceneObject.h.gch:
 #	$(CXX) $(INCLUDES) -I../../../src ../../../src/server/zone/objects/scene/SceneObject.h
 
+core3_TESTS = server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.cpp
+
 core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp \
 				server/zone/objects/area/FsVillageArea.cpp \
 				server/zone/objects/player/sessions/TradeSession.cpp \
@@ -298,6 +300,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/creature/ai/AiActor.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		$(core3_TESTS) \
 		server/zone/objects/structure/events/StructureMaintenanceTask.cpp \
 		server/zone/objects/tangible/components/ElevatorMenuComponent.cpp \
 		server/zone/objects/tangible/components/ElevatorUpMenuComponent.cpp \
