@@ -66,7 +66,7 @@ idl:
 	#done
 	
 gtest:
-	cd utils/gtest-1.6.0 && make
+	cd utils/gtest-1.6.0 && make all
 
 config:
 	aclocal
