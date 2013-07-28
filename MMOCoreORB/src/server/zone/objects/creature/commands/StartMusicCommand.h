@@ -82,8 +82,8 @@ public:
 
 	static void sendAvailableSongs(CreatureObject* player, PlayerObject* ghost, uint32 suiType = SuiWindowType::MUSIC_START) {
 			Reference<SuiListBox*> sui = new SuiListBox(player, suiType);
-			sui->setPromptTitle("@performance:available_songs");
-			sui->setPromptText("@performance:select_song");
+			sui->setPromptTitle("@performance:available_songs"); // Available Songs
+			sui->setPromptText("@performance:select_song"); // Select a song to play.
 
 			AbilityList* list = ghost->getAbilityList();
 
@@ -123,10 +123,8 @@ public:
 
 		CreatureObject* player = cast<CreatureObject*> (creature);
 
-		ManagedReference<Facade*> facade = creature->getActiveSession(
-				SessionFacadeType::ENTERTAINING);
-		ManagedReference<EntertainingSession*> session =
-				dynamic_cast<EntertainingSession*> (facade.get());
+		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
+		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*> (facade.get());
 
 		if (session != NULL) {
 			if (session->isDancing()) {
@@ -134,8 +132,7 @@ public:
 			}
 
 			if (session->isPlayingMusic()) {
-				creature->sendSystemMessage(
-						"@performance:already_performing_self");
+				creature->sendSystemMessage("@performance:already_performing_self"); // You are already performing.
 
 				return GENERALERROR;
 			}
@@ -157,22 +154,20 @@ public:
 				if (creature->getDistanceTo(nala) >= 3 || nala->getZone()
 						== NULL || (creatureParent == NULL && NULL
 						!= nala->getParent().get())) {
-					creature->sendSystemMessage("@elevator_text:too_far");
+					creature->sendSystemMessage("@elevator_text:too_far"); // You are too far away to use that.
 
 					return GENERALERROR;
 				}
 
 				if (instrument->getSpawnerPlayer() != NULL
 						&& instrument->getSpawnerPlayer() != creature) {
-					creature->sendSystemMessage(
-							"You must be the owner of the instrument");
+					creature->sendSystemMessage("You must be the owner of the instrument");
 
 					return GENERALERROR;
 				}
 
 				if (instrument->isBeingUsed()) {
-					creature->sendSystemMessage(
-							"Someone else is using this instrument");
+					creature->sendSystemMessage("Someone else is using this instrument");
 
 					return GENERALERROR;
 				}
@@ -182,7 +177,7 @@ public:
 						creature->getPositionZ(), creature->getPositionY(),
 						creature->getParentID());
 			} else {
-				creature->sendSystemMessage("@performance:music_no_instrument");
+				creature->sendSystemMessage("@performance:music_no_instrument"); // You must have an instrument equipped to play music.
 
 				return GENERALERROR;
 			}
@@ -194,30 +189,55 @@ public:
 				instrument->getInstrumentType());
 
 		if (!ghost->hasAbility(instr)) {
-			creature->sendSystemMessage(
-					"@performance:music_lack_skill_instrument");
+			creature->sendSystemMessage("@performance:music_lack_skill_instrument"); // You do not have the skill to use the currently equipped instrument.
 
 			return GENERALERROR;
 		}
+
 		String args = arguments.toString();
 
-		if (args.length() < 2) {
-			sendAvailableSongs(player, ghost);
+		ManagedReference<GroupObject*> group = creature->getGroup();
 
-			return SUCCESS;
+		if (group != NULL) {
+			String bandSong = group->getBandSong();
+
+			if (args.length() < 2) {
+				if (bandSong == "") {
+					sendAvailableSongs(player, ghost);
+
+					return SUCCESS;
+				} else {
+					args = bandSong;
+
+					String fullString = String("startMusic") + "+" + args;
+					if (!ghost->hasAbility(fullString)) {
+						creature->sendSystemMessage("@performance:music_lack_skill_song_band"); // You do not have the skill to perform the song the band is performing.
+						return GENERALERROR;
+					}
+				}
+			} else {
+				if (bandSong != "" && args != bandSong) {
+					creature->sendSystemMessage("@performance:music_join_band_stop"); // You must play the same song as the band.
+					return GENERALERROR;
+				}
+			}
+		} else {
+			if (args.length() < 2) {
+				sendAvailableSongs(player, ghost);
+
+				return SUCCESS;
+			}
+		}
+
+		if (!performanceManager->hasInstrumentId(args)) {
+			creature->sendSystemMessage("@performance:music_invalid_song"); // That is not a valid song name.
+			return GENERALERROR;
 		}
 
 		String fullString = String("startMusic") + "+" + args;
 
 		if (!ghost->hasAbility(fullString)) {
-			creature->sendSystemMessage(
-					"@performance:music_lack_skill_song_self");
-			return GENERALERROR;
-		}
-
-		if (!performanceManager->hasInstrumentId(args)) {
-			creature->sendSystemMessage(
-					"@performance:music_lack_skill_song_self");
+			creature->sendSystemMessage("@performance:music_lack_skill_song_self"); // You do not have the skill to perform that song.
 			return GENERALERROR;
 		}
 
