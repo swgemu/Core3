@@ -1,0 +1,5 @@
+build-aux/
+lib/
+*.o
+*.vcproj
+*.a

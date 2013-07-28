@@ -1,1 +1,10 @@
-4173M
+68c361b was Loshult, 12 minutes ago, message: Added Google Mock 1.6.0
+01049c6 was Loshult, 35 minutes ago, message: Added two more unit tests to CircularAreaShape to test Jenkins verification.
+39d3c31 was Victor Popovici, 5 hours ago, message: Merge "[fixed] mantis 4145 max treasury withdrawal" into unstable
+17aaad2 was Victor Popovici, 9 hours ago, message: Merge "[fixed] Mantis 3456: Faction mission descriptions" into unstable
+08fcf0f was Victor Popovici, 9 hours ago, message: Merge "[Added] LuaControlDevice class [Added] giveControlDevice method to DirectorManager [Added] Conversation screens and logic to recruiters for the purchase of faction pets (currently disabled)." into unstable
+58cb2c3 was Victor Popovici, 10 hours ago, message: Merge "[fixed] Mantis 3076: Eopie lair type" into unstable
+a7e2d6d was Bert, 4 weeks ago, message: [fixed] Mantis 3456: Faction mission descriptions
+0ea7052 was Ivojedi, 3 months ago, message: [Added] LuaControlDevice class [Added] giveControlDevice method to DirectorManager [Added] Conversation screens and logic to recruiters for the purchase of faction pets (currently disabled).
+6abedf4 was Victor Popovici, 10 hours ago, message: Merge "[fixed] Matis Bug #3220 " into unstable
+1187656 was Victor Popovici, 10 hours ago, message: Merge "Added unit test example in objects/area/areashapes/test/CircularAreaShapeTest.cpp." into unstable

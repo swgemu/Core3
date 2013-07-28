@@ -388,6 +388,8 @@ public:
 
 	void getSlottedObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects);
 
+	void getContainerObjects(VectorMap<unsigned long long, ManagedReference<SceneObject* > >& objects);
+
 	unsigned long long getParentID();
 
 	void addPendingTask(const String& name, Task* task, int miliseconds);
@@ -1059,6 +1061,8 @@ public:
 	int compareTo(SceneObject* obj);
 
 	void getSlottedObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects);
+
+	void getContainerObjects(VectorMap<unsigned long long, ManagedReference<SceneObject* > >& objects);
 
 	unsigned long long getParentID();
 
