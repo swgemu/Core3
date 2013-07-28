@@ -1,0 +1,6 @@
+build-aux/
+lib/
+*.o
+sample1_unittest
+*.vcproj
+*.a
