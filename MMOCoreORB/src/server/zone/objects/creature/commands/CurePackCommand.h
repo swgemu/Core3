@@ -173,6 +173,10 @@ public:
 			return false;
 		}
 
+		if (!creatureTarget->isHealableBy(creature)) {
+			return false;
+		}
+
 
 		/*if (creatureTarget->isOvert() && creatureTarget->getFaction() != creature->getFaction()) {
 			return false;
