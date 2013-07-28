@@ -411,7 +411,11 @@ class StructureObject extends TangibleObject {
 	public native boolean isCampStructure();
 	
 	public boolean isRedeedable() {
-		return (getRedeedCost() < surplusMaintenance);
+		if (isCivicStructure()) {
+			return (super.conditionDamage == 0 && !isCityHall());
+		} else {
+			return (getRedeedCost() < surplusMaintenance);
+		}
 	}
 	
 	@local
@@ -436,6 +440,8 @@ class StructureObject extends TangibleObject {
 	}
 	
 	public native boolean isCivicStructure();
+
+	public native boolean isCityHall();
 
 	public native boolean isCommercialStructure();
 }
