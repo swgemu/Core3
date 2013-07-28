@@ -856,7 +856,7 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 		status->addMenuItem("@player_structure:declared_residency"); //You have declared your residency here.
 	}
 
-	if (structure->isPrivateStructure()) {
+	if (structure->isPrivateStructure() && !structure->isCivicStructure()) {
 		status->addMenuItem("@player_structure:structure_private"); //This structure is private
 	} else {
 		status->addMenuItem("@player_structure:structure_public"); //This structure is public
@@ -865,35 +865,38 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 	status->addMenuItem(
 			"@player_structure:condition_prompt "
 					+ String::valueOf(structure->getDecayPercentage()) + "%");
-	//TODO: Calculate how much time is remaining on the current maintenance pool.
-	status->addMenuItem(
+
+	if (!structure->isCivicStructure()) {
+		//TODO: Calculate how much time is remaining on the current maintenance pool.
+		status->addMenuItem(
 			"@player_structure:maintenance_pool_prompt "
 					+ String::valueOf(
 							(int) floor(
 									(float) structure->getSurplusMaintenance())));
-	status->addMenuItem(
+		status->addMenuItem(
 			"@player_structure:maintenance_rate_prompt "
 					+ String::valueOf(structure->getMaintenanceRate())
 					+ " cr/hr");
 
-	// property tax
-	if(!structure->isCivicStructure() && structure->getCityRegion() != NULL){
-		ManagedReference<CityRegion*> city = structure->getCityRegion().get();
-		if(city != NULL){
-			float propertytax = city->getPropertyTax();
-			status->addMenuItem(
+		// property tax
+		if(!structure->isCivicStructure() && structure->getCityRegion() != NULL){
+			ManagedReference<CityRegion*> city = structure->getCityRegion().get();
+			if(city != NULL){
+				float propertytax = city->getPropertyTax();
+				status->addMenuItem(
 							"@city/city:property_tax_prompt : "
 									+ String::valueOf(ceil( propertytax / 100.f * structure->getMaintenanceRate()))
 									+  " cr/hr");
+			}
 		}
-	}
 
-	status->addMenuItem(
+		status->addMenuItem(
 			"@player_structure:maintenance_mods_prompt "
 					+ structure->getMaintenanceMods());
+	}
 
 
-	if (structure->isInstallationObject() && !structure->isGeneratorObject()) {
+	if (structure->isInstallationObject() && !structure->isGeneratorObject() && !structure->isCivicStructure()) {
 		InstallationObject* installation = cast<InstallationObject*>(structure);
 
 		status->addMenuItem(

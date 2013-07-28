@@ -225,9 +225,17 @@ public:
 		ValidatedPosition pos;
 		pos.update(object);
 
-		if (object->isFrozen() || !building->isAllowedEntry(object)) {
-			bounceBack(object, pos);
-			return;
+		if (!ghost->isPrivileged()) {
+			SceneObject* inventory = object->getSlottedObject("inventory");
+
+			if (inventory->getCountableObjectsRecursive() > inventory->getContainerVolumeLimit() + 1) {
+				object->sendSystemMessage("Inventory Overloaded - Cannot Move");
+				bounceBack(object, pos);
+				return;
+			} else if (object->isFrozen() || !building->isAllowedEntry(object)) {
+				bounceBack(object, pos);
+				return;
+			}
 		}
 
 		Reference<Vector<float>* > collisionPoints = CollisionManager::getCellFloorCollision(positionX, positionY, cast<CellObject*>(newParent.get()));

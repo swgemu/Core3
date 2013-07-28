@@ -353,6 +353,9 @@ void AiAgentImplementation::doAttack() {
 					target = targetCreature;
 
 					break;
+				} else {
+					// if the object on the defender list is no longer attackable, remove it
+					removeDefender(targetCreature);
 				}
 			}
 		}
@@ -892,7 +895,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 		newSpeed = 0.01f;
 
 	float updateTicks = float(UPDATEMOVEMENTINTERVAL) / 1000.f;
-	currentSpeed = newSpeed;
+	//currentSpeed = newSpeed;
 
 	newSpeed *= updateTicks;
 
@@ -918,6 +921,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 	while (!found && patrolPoints.size() != 0) {
 		PatrolPoint* targetPosition = &patrolPoints.get(0);
+		Reference<SceneObject*> targetCoordinateCell = targetPosition->getCell();
 
 		if (targetPosition->getCell() == NULL && zone != NULL) {
 			PlanetManager* planetManager = zone->getPlanetManager();
@@ -929,16 +933,14 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 			targetMutex.lock();
 		}
 
-		SceneObject* targetCoordinateCell = targetPosition->getCell();
-
 		Reference<Vector<WorldCoordinates>* > path;
 
-		if (targetCoordinateCell != NULL && dynamic_cast<CellObject*>(targetCoordinateCell)) {
+		if (targetCoordinateCell != NULL && dynamic_cast<CellObject*>(targetCoordinateCell.get())) {
 			if (targetCellObject == targetCoordinateCell && currentFoundPath != NULL) {
 				Vector<Triangle*>* nodes = NULL;
 
 				if (targetCellObject == parent.get()) {
-					CellObject* cell = dynamic_cast<CellObject*>(targetCoordinateCell);
+					CellObject* cell = dynamic_cast<CellObject*>(targetCoordinateCell.get());
 
 					FloorMesh* floor = PathFinderManager::getFloorMesh(cell);
 
@@ -955,7 +957,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 					if (currentFoundPath->get(currentFoundPath->size() - 1).getWorldPosition().distanceTo(targetPosition->getCoordinates().getWorldPosition()) > 3) {
 						path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(_this.get().get(), targetPosition->getCoordinates()));
-						targetCellObject = targetCoordinateCell;
+						targetCellObject = targetCoordinateCell.get();
 					} else {
 						WorldCoordinates curr(_this.get().get());
 						path = currentFoundPath;
@@ -965,7 +967,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 				}
 			} else {
 				path = currentFoundPath = static_cast<CurrentFoundPath*>(pathFinder->findPath(_this.get().get(), targetPosition->getCoordinates()));
-				targetCellObject = targetCoordinateCell;
+				targetCellObject = targetCoordinateCell.get();
 			}
 		} else {
 			path = pathFinder->findPath(_this.get().get(), targetPosition->getCoordinates());
@@ -1236,6 +1238,8 @@ void AiAgentImplementation::doMovement() {
 		currentSpeed = 0;
 		//info("not found in doMovement", true);
 
+		updateLocomotion();
+
 		if (isRetreating())
 			homeLocation.setReached(true);
 
@@ -1270,6 +1274,10 @@ void AiAgentImplementation::doMovement() {
 	nextStepPosition.setReached(false);
 
 	broadcastNextPositionUpdate(&nextStepPosition);
+
+	currentSpeed = MAX(0.1, nextStepPosition.getWorldPosition().distanceTo(getWorldPosition()) / ((float)UPDATEMOVEMENTINTERVAL / 1000.f));
+
+	updateLocomotion();
 
 	activateMovementEvent();
 }
@@ -1814,4 +1822,13 @@ void AiAgentImplementation::selectConversationOption(int option, SceneObject* ob
 	// Parse and send the options:
 	StringList* slist = new StringList(player);
 	player->sendMessage(slist);*/
+}
+
+bool AiAgentImplementation::isEventMob() {
+	String templateName = npcTemplate.get()->getTemplateName();
+
+	if (templateName.toLowerCase().beginsWith("event_"))
+		return true;
+
+	return false;
 }

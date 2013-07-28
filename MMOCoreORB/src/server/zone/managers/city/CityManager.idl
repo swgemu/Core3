@@ -140,7 +140,7 @@ class CityManager extends ManagedService implements Logger {
 	 * @pre city locked
 	 * @post city locked
 	 */
-	public native void updateCityVoting(CityRegion city);
+	public native void updateCityVoting(CityRegion city, boolean override = false);
 	
 	public native void deductCityMaintenance(CityRegion city);
 	

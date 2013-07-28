@@ -323,12 +323,14 @@ class TangibleObject extends SceneObject {
 			return false;
 		else if (isRebel() && !(object.isImperial()))
 			return false;
-		else if (object.isPlayerCreature() && object.getPlayerObject())
+		else if (object.isPlayerCreature() && object.getPlayerObject()) {
 			if (isImperial() && (object.getPlayerObject()).getFactionStatus() == 0)
 				return false;
 			if (isRebel() && (object.getPlayerObject()).getFactionStatus() == 0)
 				return false;
-		else
+			
+			return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
+		} else
 			return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
 	}
 	

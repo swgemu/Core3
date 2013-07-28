@@ -46,11 +46,11 @@ which carries forward this exception.
 #define REQUESTCRAFTINGSESSIONCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../tangible/tool/CraftingTool.h"
-#include "../../tangible/tool/CraftingStation.h"
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "server/zone/objects/tangible/tool/CraftingStation.h"
 #include "server/zone/objects/player/sessions/crafting/CraftingSession.h"
 #include "server/zone/managers/player/PlayerManager.h"
-
+#include "server/zone/objects/player/sessions/TradeSession.h"
 
 class RequestCraftingSessionCommand : public QueueCommand {
 public:
@@ -70,6 +70,12 @@ public:
 
 		if(object == NULL || !creature->isPlayerCreature())
 			return INVALIDTARGET;
+
+		ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(creature->getActiveSession(SessionFacadeType::TRADE));
+
+		if (tradeContainer != NULL) {
+			server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(creature);
+		}
 
 		ManagedReference<CraftingTool*> craftingTool = NULL;
 		ManagedReference<CraftingStation*> craftingStation = NULL;

@@ -2156,7 +2156,7 @@ void GCWManagerImplementation::performDonateMinefield(BuildingObject* building, 
 			break;
 	}
 
-	creature->sendSystemMessage("Minefield open at postiion " + String::valueOf(minefieldIndex));
+	//creature->sendSystemMessage("Minefield open at postiion " + String::valueOf(minefieldIndex));
 
 	// this is turret donation
 	int nextAvailableMinefield = 0;

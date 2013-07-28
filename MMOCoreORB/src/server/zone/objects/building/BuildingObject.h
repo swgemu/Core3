@@ -186,7 +186,7 @@ public:
 
 	int getTotalCellNumber();
 
-	bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false);
+	bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false, bool allowOverflow = false);
 
 	int notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent);
 
@@ -368,7 +368,7 @@ public:
 
 	int getTotalCellNumber();
 
-	virtual bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false);
+	virtual bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false, bool allowOverflow = false);
 
 	int notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent);
 
@@ -523,7 +523,7 @@ public:
 
 	int getTotalCellNumber();
 
-	bool transferObject(SceneObject* object, int containmentType, bool notifyClient);
+	bool transferObject(SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow);
 
 	int notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent);
 

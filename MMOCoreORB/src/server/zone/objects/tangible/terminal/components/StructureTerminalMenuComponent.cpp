@@ -31,6 +31,22 @@ void StructureTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneOb
 	if (structureObject == NULL)
 		return;
 
+	if (structureObject->isCivicStructure()) {
+		if (structureObject->isOnAdminList(creature)) {
+			menuResponse->addRadialMenuItem(118, 3, "@player_structure:management"); //Structure Management
+			menuResponse->addRadialMenuItemToRadialID(118, 128, 3, "@player_structure:permission_destroy"); //Destroy Structure
+			menuResponse->addRadialMenuItemToRadialID(118, 124, 3, "@player_structure:management_status"); //Status
+
+			if (structureObject->isBuildingObject()) {
+				menuResponse->addRadialMenuItemToRadialID(118, 50, 3, "@player_structure:management_name_structure"); //Name Structure
+				menuResponse->addRadialMenuItemToRadialID(118, 201, 3, "@player_structure:delete_all_items"); //Delete all items
+				menuResponse->addRadialMenuItemToRadialID(118, 202, 3, "@player_structure:move_first_item"); //Find Lost Items
+			}
+		}
+
+		return;
+	}
+
 	if (structureObject->isOnAdminList(creature)) {
 		menuResponse->addRadialMenuItem(118, 3, "@player_structure:management"); //Structure Management
 		menuResponse->addRadialMenuItemToRadialID(118, 128, 3, "@player_structure:permission_destroy"); //Destroy Structure
@@ -91,6 +107,34 @@ int StructureTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 
 	if (zone == NULL)
 		return 1;
+
+	if (structureObject->isCivicStructure()) {
+		if (structureObject->isOnAdminList(creature)) {
+			StructureManager* structureManager = StructureManager::instance();
+
+			Locker structureLocker(structureObject, creature);
+
+			switch (selectedID) {
+			case 201:
+				structureManager->promptDeleteAllItems(creature, structureObject);
+				break;
+			case 202:
+				structureManager->promptFindLostItems(creature, structureObject);
+				break;
+			case 128:
+				creature->executeObjectControllerAction(0x18FC1726, structureObject->getObjectID(), ""); //destroyStructure
+				break;
+			case 50:
+				structureManager->promptNameStructure(creature, structureObject, NULL);
+				break;
+			case 124:
+				creature->executeObjectControllerAction(0x13F7E585, structureObject->getObjectID(), ""); //structureStatus
+				break;
+			}
+		}
+
+		return 0;
+	}
 
 	if (structureObject->isOnAdminList(creature)) {
 

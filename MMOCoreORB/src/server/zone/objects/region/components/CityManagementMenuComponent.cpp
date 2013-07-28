@@ -142,7 +142,7 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		cityManager->processCityUpdate(city);
 		break;
 	case 231:
-		cityManager->updateCityVoting(city);
+		cityManager->updateCityVoting(city,true);
 		break;
 #endif
 

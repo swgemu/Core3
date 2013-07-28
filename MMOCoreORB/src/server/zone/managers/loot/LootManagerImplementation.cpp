@@ -349,9 +349,6 @@ bool LootManagerImplementation::createLootFromCollection(SceneObject* container,
 }
 
 bool LootManagerImplementation::createLoot(SceneObject* container, const String& lootGroup, int level) {
-	if (container->hasFullContainerObjects())
-		return false;
-
 	Reference<LootGroupTemplate*> group = lootGroupMap->getLootGroupTemplate(lootGroup);
 
 	if (group == NULL) {
@@ -374,7 +371,7 @@ bool LootManagerImplementation::createLoot(SceneObject* container, const String&
 	if (obj == NULL)
 		return false;
 
-	if (container->transferObject(obj, -1, false))
+	if (container->transferObject(obj, -1, false, true))
 		container->broadcastObject(obj, true);
 
 

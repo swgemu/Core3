@@ -2,11 +2,11 @@
 tatooine_eopie_lair_neutral_small = Lair:new {
 	mobiles = {{"eopie", 0}},
 	spawnLimit = 15,
-	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_insecthill_small.iff"},
-	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_insecthill_small.iff"},
-	buildingsMedium = {"object/tangible/lair/base/poi_all_lair_insecthill_small.iff"},
-	buildingsHard = {"object/tangible/lair/base/poi_all_lair_insecthill_small.iff"},
-	buildingsVeryHard = {"object/tangible/lair/base/poi_all_lair_insecthill_small.iff"}
+	buildingsVeryEasy = {"object/tangible/lair/eopie/lair_eopie.iff"},
+	buildingsEasy = {"object/tangible/lair/eopie/lair_eopie.iff"},
+	buildingsMedium = {"object/tangible/lair/eopie/lair_eopie.iff"},
+	buildingsHard = {"object/tangible/lair/eopie/lair_eopie.iff"},
+	buildingsVeryHard = {"object/tangible/lair/eopie/lair_eopie.iff"}
 }
 
 addLairTemplate("tatooine_eopie_lair_neutral_small", tatooine_eopie_lair_neutral_small)

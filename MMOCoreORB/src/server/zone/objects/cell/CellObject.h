@@ -78,7 +78,7 @@ public:
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
-	bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false);
+	bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false, bool allowOverflow = false);
 
 	void initializeTransientMembers();
 
@@ -142,7 +142,7 @@ public:
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
-	bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false);
+	bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false, bool allowOverflow = false);
 
 	void initializeTransientMembers();
 
@@ -211,7 +211,7 @@ public:
 
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
-	bool transferObject(SceneObject* object, int containmentType, bool notifyClient);
+	bool transferObject(SceneObject* object, int containmentType, bool notifyClient, bool allowOverflow);
 
 	void initializeTransientMembers();
 

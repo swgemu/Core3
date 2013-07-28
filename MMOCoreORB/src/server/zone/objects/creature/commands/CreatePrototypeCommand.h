@@ -46,6 +46,8 @@ which carries forward this exception.
 #define CREATEPROTOTYPECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/player/sessions/TradeSession.h"
 
 class CreatePrototypeCommand : public QueueCommand {
 public:
@@ -73,6 +75,12 @@ public:
 
 		if (!creature->isPlayerCreature())
 			return INVALIDTARGET;
+
+		ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(creature->getActiveSession(SessionFacadeType::TRADE));
+
+		if (tradeContainer != NULL) {
+			server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(creature);
+		}
 
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 

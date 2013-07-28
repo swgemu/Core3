@@ -28,7 +28,7 @@
  *	PlanetManagerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADCLIENTPOIDATA__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_,RPC_ISCAMPINGPERMITTEDAT__FLOAT_FLOAT_FLOAT_,RPC_ISINRANGEWITHPOI__FLOAT_FLOAT_FLOAT_,RPC_ISINOBJECTSNOBUILDZONE__FLOAT_FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_VALIDATEREGIONNAME__STRING_,RPC_VALIDATECLIENTCITYINRANGE__CREATUREOBJECT_FLOAT_FLOAT_,RPC_GETWEATHERMANAGER__,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_GETREGION__STRING_,RPC_GETREGIONAT__FLOAT_FLOAT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISINCOMINGTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_,RPC_SCHEDULESHUTTLE__CREATUREOBJECT_INT_,RPC_REMOVESHUTTLE__CREATUREOBJECT_,RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_,RPC_ISINWATER__FLOAT_FLOAT_,RPC_FINDCLOSESTWORLDFLOOR__FLOAT_FLOAT_FLOAT_FLOAT_,RPC_REMOVEPLAYERCITYTRAVELPOINT__STRING_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADCLIENTPOIDATA__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_,RPC_ISCAMPINGPERMITTEDAT__FLOAT_FLOAT_FLOAT_,RPC_ISINRANGEWITHPOI__FLOAT_FLOAT_FLOAT_,RPC_ISINOBJECTSNOBUILDZONE__FLOAT_FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_VALIDATEREGIONNAME__STRING_,RPC_VALIDATECLIENTCITYINRANGE__CREATUREOBJECT_FLOAT_FLOAT_,RPC_GETWEATHERMANAGER__,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_GETREGION__STRING_,RPC_GETREGIONAT__FLOAT_FLOAT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISINCOMINGTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_,RPC_SCHEDULESHUTTLE__CREATUREOBJECT_INT_,RPC_REMOVESHUTTLE__CREATUREOBJECT_,RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_,RPC_ISINWATER__FLOAT_FLOAT_,RPC_REMOVEPLAYERCITYTRAVELPOINT__STRING_};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -576,21 +576,13 @@ bool PlanetManager::isInWater(float x, float y) {
 		return _implementation->isInWater(x, y);
 }
 
-float PlanetManager::findClosestWorldFloor(float x, float y, float z, float swimHeight) {
+float PlanetManager::findClosestWorldFloor(float x, float y, float z, float swimHeight, IntersectionResults* intersections, CloseObjectsVector* closeObjects) {
 	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
+		throw ObjectNotLocalException(this);
 
-		DistributedMethod method(this, RPC_FINDCLOSESTWORLDFLOOR__FLOAT_FLOAT_FLOAT_FLOAT_);
-		method.addFloatParameter(x);
-		method.addFloatParameter(y);
-		method.addFloatParameter(z);
-		method.addFloatParameter(swimHeight);
-
-		return method.executeWithFloatReturn();
 	} else
-		return _implementation->findClosestWorldFloor(x, y, z, swimHeight);
+		return _implementation->findClosestWorldFloor(x, y, z, swimHeight, intersections, closeObjects);
 }
 
 void PlanetManager::addPlayerCityTravelPoint(PlanetTravelPoint* ptp) {
@@ -1241,11 +1233,6 @@ void PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(isInWater(inv->getFloatParameter(), inv->getFloatParameter()));
 		}
 		break;
-	case RPC_FINDCLOSESTWORLDFLOOR__FLOAT_FLOAT_FLOAT_FLOAT_:
-		{
-			resp->insertFloat(findClosestWorldFloor(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter()));
-		}
-		break;
 	case RPC_REMOVEPLAYERCITYTRAVELPOINT__STRING_:
 		{
 			String cityName; 
@@ -1395,10 +1382,6 @@ bool PlanetManagerAdapter::checkShuttleStatus(CreatureObject* creature, Creature
 
 bool PlanetManagerAdapter::isInWater(float x, float y) {
 	return (static_cast<PlanetManager*>(stub))->isInWater(x, y);
-}
-
-float PlanetManagerAdapter::findClosestWorldFloor(float x, float y, float z, float swimHeight) {
-	return (static_cast<PlanetManager*>(stub))->findClosestWorldFloor(x, y, z, swimHeight);
 }
 
 void PlanetManagerAdapter::removePlayerCityTravelPoint(const String& cityName) {

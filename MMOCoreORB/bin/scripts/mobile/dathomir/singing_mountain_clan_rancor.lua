@@ -30,11 +30,12 @@ singing_mountain_clan_rancor = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "rancor_common", chance = 3300000},
-				{group = "pistols", chance = 3300000},
-				{group = "rifles", chance = 3400000}
+				{group = "rancor_common", chance = 5000000},
+				{group = "pistols", chance = 2000000},
+				{group = "rifles", chance = 2000000},
+				{group = "unarmed_melee", chance = 1000000}
 			},
-			lootChance = 4200000
+			lootChance = 2500000
 		}
 	},
 	weapons = {},

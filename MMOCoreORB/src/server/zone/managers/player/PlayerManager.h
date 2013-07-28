@@ -251,6 +251,8 @@ using namespace server::login::account;
 
 #include "server/zone/managers/player/OnlineZoneClientMap.h"
 
+#include "server/zone/managers/collision/IntersectionResults.h"
+
 #include "engine/log/Logger.h"
 
 #include "engine/lua/Lua.h"
@@ -268,6 +270,8 @@ using namespace server::login::account;
 #include "engine/util/u3d/Vector3.h"
 
 #include "system/thread/ReadWriteLock.h"
+
+#include "engine/util/u3d/CloseObjectsVector.h"
 
 namespace server {
 namespace zone {
@@ -378,7 +382,7 @@ public:
 
 	void createSkippedTutorialBuilding(CreatureObject* player);
 
-	void updateSwimmingState(CreatureObject* player, float newZ);
+	void updateSwimmingState(CreatureObject* player, float newZ, IntersectionResults* intersections = NULL, CloseObjectsVector* closeObjects = NULL);
 
 	int checkSpeedHackFirstTest(CreatureObject* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier = 1);
 
@@ -615,7 +619,7 @@ public:
 
 	void createSkippedTutorialBuilding(CreatureObject* player);
 
-	void updateSwimmingState(CreatureObject* player, float newZ);
+	void updateSwimmingState(CreatureObject* player, float newZ, IntersectionResults* intersections = NULL, CloseObjectsVector* closeObjects = NULL);
 
 	int checkSpeedHackFirstTest(CreatureObject* player, float parsedSpeed, ValidatedPosition& teleportPosition, float errorMultiplier = 1);
 
@@ -813,8 +817,6 @@ public:
 	void createTutorialBuilding(CreatureObject* player);
 
 	void createSkippedTutorialBuilding(CreatureObject* player);
-
-	void updateSwimmingState(CreatureObject* player, float newZ);
 
 	int checkSpeedHackSecondTest(CreatureObject* player, float newX, float newZ, float newY, unsigned int newStamp, SceneObject* newParent);
 

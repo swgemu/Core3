@@ -91,6 +91,8 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
+#include "engine/lua/Luna.h"
+
 #include "server/zone/managers/radial/RadialOptions.h"
 
 #include "server/zone/objects/scene/variables/ContainerPermissions.h"
@@ -244,6 +246,27 @@ public:
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class Singleton<ControlDeviceHelper>;
+};
+
+class LuaControlDevice {
+public:
+	static const char className[];
+	static Luna<LuaControlDevice>::RegType Register[];
+
+	LuaControlDevice(lua_State *L);
+	virtual ~LuaControlDevice();
+
+	int _setObject(lua_State *L);
+	int _getObject(lua_State *L);
+	int updateToDatabaseAllObjects(lua_State *L);
+	int storeObject(lua_State *L);
+	int generateObject(lua_State *L);
+	int callObject(lua_State *L);
+	int setControlledObject(lua_State *L);
+	int getControlledObject(lua_State *L);
+	int isControlDevice(lua_State *L);
+
+	Reference<ControlDevice*> realObject;
 };
 
 } // namespace intangible

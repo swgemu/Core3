@@ -160,6 +160,8 @@ public:
 
 	bool isOnPermissionList(const String& listName, CreatureObject* player);
 
+	bool isOnPermissionList(const String& listName, const String& firstName);
+
 	bool isOwnerOf(SceneObject* obj);
 
 	bool isOwnerOf(unsigned long long oid);
@@ -256,6 +258,8 @@ public:
 
 	bool isCivicStructure();
 
+	bool isCityHall();
+
 	bool isCommercialStructure();
 
 	DistributedObjectServant* _getImplementation();
@@ -349,6 +353,8 @@ public:
 	bool isOnHopperList(CreatureObject* player);
 
 	bool isOnPermissionList(const String& listName, CreatureObject* player);
+
+	bool isOnPermissionList(const String& listName, const String& firstName);
 
 	bool isOwnerOf(SceneObject* obj);
 
@@ -446,6 +452,8 @@ public:
 
 	bool isCivicStructure();
 
+	bool isCityHall();
+
 	bool isCommercialStructure();
 
 	WeakReference<StructureObject*> _this;
@@ -522,6 +530,8 @@ public:
 	bool isOnHopperList(CreatureObject* player);
 
 	bool isOnPermissionList(const String& listName, CreatureObject* player);
+
+	bool isOnPermissionList(const String& listName, const String& firstName);
 
 	bool isOwnerOf(SceneObject* obj);
 
@@ -612,6 +622,8 @@ public:
 	String getRedeedMessage();
 
 	bool isCivicStructure();
+
+	bool isCityHall();
 
 	bool isCommercialStructure();
 

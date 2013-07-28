@@ -639,21 +639,6 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 		factionPointsReward = 32;
 	}
 
-	switch (faction) {
-	case MissionObject::FACTIONIMPERIAL:
-		mission->setRewardFactionPointsImperial(factionPointsReward * 2);
-		mission->setRewardFactionPointsRebel(-factionPointsReward);
-		break;
-	case MissionObject::FACTIONREBEL:
-		mission->setRewardFactionPointsImperial(-factionPointsReward);
-		mission->setRewardFactionPointsRebel(factionPointsReward * 2);
-		break;
-	default:
-		mission->setRewardFactionPointsImperial(0);
-		mission->setRewardFactionPointsRebel(0);
-		break;
-	}
-
 	String messageDifficulty;
 
 	if (difficulty <= 20)
@@ -665,6 +650,23 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 
 	mission->setMissionTitle("mission/mission_destroy_neutral" + messageDifficulty + "_creature", "m" + String::valueOf(randTexts) + "t");
 	mission->setMissionDescription("mission/mission_destroy_neutral" +  messageDifficulty + "_creature", "m" + String::valueOf(randTexts) + "d");
+
+	switch (faction) {
+		case MissionObject::FACTIONIMPERIAL:
+			mission->setRewardFactionPointsImperial(factionPointsReward * 2);
+			mission->setRewardFactionPointsRebel(-factionPointsReward);
+			generateRandomFactionalDestroyMissionDescription(player, mission, "imperial");
+			break;
+		case MissionObject::FACTIONREBEL:
+			mission->setRewardFactionPointsImperial(-factionPointsReward);
+			mission->setRewardFactionPointsRebel(factionPointsReward * 2);
+			generateRandomFactionalDestroyMissionDescription(player, mission, "rebel");
+			break;
+		default:
+			mission->setRewardFactionPointsImperial(0);
+			mission->setRewardFactionPointsRebel(0);
+			break;
+		}
 
 	mission->setTypeCRC(MissionObject::DESTROY);
 }
@@ -1349,7 +1351,6 @@ void MissionManagerImplementation::randomizeReconMission(CreatureObject* player,
 
 void MissionManagerImplementation::randomizeImperialDestroyMission(CreatureObject* player, MissionObject* mission) {
 	randomizeGenericDestroyMission(player, mission, MissionObject::FACTIONIMPERIAL);
-	generateRandomFactionalDestroyMissionDescription(player, mission, "imperial");
 }
 
 void MissionManagerImplementation::randomizeImperialDeliverMission(CreatureObject* player, MissionObject* mission) {
@@ -1366,7 +1367,6 @@ void MissionManagerImplementation::randomizeImperialReconMission(CreatureObject*
 
 void MissionManagerImplementation::randomizeRebelDestroyMission(CreatureObject* player, MissionObject* mission) {
 	randomizeGenericDestroyMission(player, mission, MissionObject::FACTIONREBEL);
-	generateRandomFactionalDestroyMissionDescription(player, mission, "rebel");
 }
 
 void MissionManagerImplementation::randomizeRebelDeliverMission(CreatureObject* player, MissionObject* mission) {
@@ -1390,14 +1390,14 @@ void MissionManagerImplementation::generateRandomFactionalDestroyMissionDescript
 
 		if (ghost->getFactionStatus() == FactionStatus::OVERT || ghost->getFactionStatus() == FactionStatus::COVERT) {
 			difficultyString += "_military";
-			randomMax = 50;
+			randomMax = 49;
 		} else {
 			difficultyString += "_non_military";
-			randomMax = 13;
+			randomMax = 12;
 		}
 	} else {
 		difficultyString += "_non_military";
-		randomMax = 13;
+		randomMax = 12;
 	}
 
 	int difficulty = mission->getDifficultyLevel();
@@ -1406,7 +1406,7 @@ void MissionManagerImplementation::generateRandomFactionalDestroyMissionDescript
 		difficultyString += "_easy";
 	} else if (difficulty < 40) {
 		difficultyString += "_medium";
-		randomMax = 50;
+		randomMax = 49;
 	} else {
 		difficultyString += "_hard";
 		randomMax = (randomMax < 50) ? 25 : 50;
@@ -1416,7 +1416,6 @@ void MissionManagerImplementation::generateRandomFactionalDestroyMissionDescript
 
 	mission->setMissionTitle("mission/mission_destroy_" + difficultyString, "m" + String::valueOf(randomNumber) + "t");
 	mission->setMissionDescription("mission/mission_destroy_" +  difficultyString, "m" + String::valueOf(randomNumber) + "d");
-	mission->setMissionTargetName("@mission/mission_destroy_" +  difficultyString + ":[m" + String::valueOf(randomNumber) + "t]");
 }
 
 void MissionManagerImplementation::createSpawnPoint(CreatureObject* player, const String& spawnTypes) {
@@ -1525,12 +1524,14 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 
 	LairSpawn* lairSpawn = NULL;
 
+	//Ensure that the minimum is low enough to get missions on any planet
+	int minLevel = MIN(playerLevel - 5, 20);
+
 	//Try to pick random lair within playerLevel +-5;
 	while (counter > 0 && !foundLair) {
 		LairSpawn* randomLairSpawn = availableLairList->get(System::random(availableLairList->size() - 1));
 		if (randomLairSpawn != NULL) {
-			//if (randomLairSpawn->getMinDifficulty() <= (playerLevel + 5) && randomLairSpawn->getMaxDifficulty() >= (playerLevel - 5)) {
-			if (randomLairSpawn->getMinDifficulty() <= (playerLevel + 5)) {
+			if (randomLairSpawn->getMinDifficulty() <= (playerLevel + 5) && randomLairSpawn->getMaxDifficulty() >= minLevel) {
 				lairSpawn = randomLairSpawn;
 				foundLair = true;
 			}
@@ -1543,7 +1544,18 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 		//No random lair found, iterate through all lairs and find the first within playerLevel +-5;
 		for (int i = 0; i < availableLairList->size(); i++) {
 			LairSpawn* randomLairSpawn = availableLairList->get(i);
-			//if (randomLairSpawn->getMinDifficulty() <= (playerLevel + 5) && randomLairSpawn->getMaxDifficulty() >= (playerLevel - 5)) {
+			if (randomLairSpawn->getMinDifficulty() <= (playerLevel + 5) && randomLairSpawn->getMaxDifficulty() >= minLevel) {
+				lairSpawn = randomLairSpawn;
+				foundLair = true;
+				break;
+			}
+		}
+	}
+
+	if (!foundLair) {
+		//There are no lairs within playerLevel +-5, pick the first lair below playerLevel +5
+		for (int i = 0; i < availableLairList->size(); i++) {
+			LairSpawn* randomLairSpawn = availableLairList->get(i);
 			if (randomLairSpawn->getMinDifficulty() <= (playerLevel + 5)) {
 				lairSpawn = randomLairSpawn;
 				break;

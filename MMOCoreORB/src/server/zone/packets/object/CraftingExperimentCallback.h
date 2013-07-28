@@ -61,6 +61,12 @@ public:
 			return;
 		}
 
+		ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
+
+		if (tradeContainer != NULL) {
+			server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
+		}
+
 		if(session->getState() != 3)
 			return;
 

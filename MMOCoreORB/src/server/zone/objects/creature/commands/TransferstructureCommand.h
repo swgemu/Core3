@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
 
 class TransferstructureCommand : public QueueCommand {
 public:
@@ -115,7 +116,7 @@ public:
 
 		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target);
 
-		if (targetObject == NULL || !targetObject->isCreatureObject()) {
+		if (targetObject == NULL || !targetObject->isCreatureObject() || !targetObject->isPlayerCreature()) {
 			creature->sendSystemMessage("@player_structure:no_transfer_target"); //You must specify a player with whom to transfer ownership.
 			return INVALIDTARGET;
 		}
@@ -131,6 +132,20 @@ public:
 			creature->sendSystemMessage("@player_structure:no_banned_player"); //You cannot transfer ownership to a banend player.
 			return GENERALERROR;
 		}
+
+		Reference<SharedStructureObjectTemplate*> tmpl = cast<SharedStructureObjectTemplate*>(obj->getObjectTemplate());
+
+		PlayerObject* ghost = targetCreature->getPlayerObject();
+
+		String& abilityRequired = tmpl->getAbilityRequired();
+
+		if (abilityRequired != "" && !ghost->hasAbility(abilityRequired)) {
+			StringIdChatParameter params("@player_structure:not_able_to_own"); //%NT is not able to own this structure.
+			params.setTT(targetCreature);
+			creature->sendSystemMessage(params);
+			return GENERALERROR;
+		}
+
 
 		Locker _lock(targetCreature, creature);
 
@@ -213,7 +228,9 @@ public:
 		structure->setOwnerObjectID(targetCreature->getObjectID());
 
 		//Setup permissions.
-		structure->grantPermission("ADMIN", targetCreature->getFirstName());
+		if (!structure->isOnPermissionList("ADMIN", targetCreature))
+			structure->grantPermission("ADMIN", targetCreature->getFirstName());
+
 		structure->setOwnerName(targetCreature->getFirstName());
 		structure->revokePermission("ADMIN", creature->getFirstName());
 

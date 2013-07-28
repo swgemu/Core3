@@ -46,6 +46,7 @@ which carries forward this exception.
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
+#include "server/zone/objects/installation/factory/FactoryObject.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 #include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
@@ -203,15 +204,27 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 				return TransferErrorCode::CONTAINERFULL;
 			}
 
-			// It has room. Return if it's not equipped and is in a player inventory which doesn't have room
+			// It has room. Check if it's not equipped and on a player.
 			ManagedReference<WearableContainerObject*> wearable = cast<WearableContainerObject*>(wearableParent.get());
 			if (!wearable->isEquipped() && playerParent != NULL) {
 				SceneObject* inventory = playerParent->getSlottedObject("inventory");
+				SceneObject* bank = playerParent->getSlottedObject("bank");
+				SceneObject* parentOfWearableParent = wearable->getParent().get();
 
-				if (inventory->getContainerVolumeLimit() < inventory->getCountableObjectsRecursive() + objectSize) {
-					errorDescription = "@error_message:inv_full"; // Your inventory is full.
+				// Return if it's in a player inventory which doesn't have room
+				if (parentOfWearableParent == inventory) {
+					if (inventory->getContainerVolumeLimit() < inventory->getCountableObjectsRecursive() + objectSize) {
+						errorDescription = "@error_message:inv_full"; // Your inventory is full.
 
-					return TransferErrorCode::CONTAINERFULL;
+						return TransferErrorCode::CONTAINERFULL;
+					}
+				// Return if it's in a player bank that doesn't have room
+				} else if (parentOfWearableParent == bank) {
+					if (bank->getContainerVolumeLimit() < bank->getCountableObjectsRecursive() + objectSize) {
+						errorDescription = "@container_error_message:container03"; // This container is full.
+
+						return TransferErrorCode::CONTAINERFULL;
+					}
 				}
 			}
 		} else {
@@ -220,40 +233,75 @@ int ContainerImplementation::canAddObject(SceneObject* object, int containmentTy
 				WearableContainerObject* pack = cast<WearableContainerObject*>(_this.get().get());
 
 				if (pack != NULL && !pack->isEquipped()) {
-				// This is a wearable container, and it's not equipped. Return if the container is in a player inventory without room
+				// This is a wearable container, and it's not equipped.
 					if (playerParent != NULL ) {
 						SceneObject* inventory = playerParent->getSlottedObject("inventory");
+						SceneObject* bank = playerParent->getSlottedObject("bank");
+						SceneObject* thisParent = getParent().get();
+
+						// Return if the container is in a player inventory without room
+						if (thisParent == inventory) {
+							if (inventory->getContainerVolumeLimit() < inventory->getCountableObjectsRecursive() + objectSize) {
+								errorDescription = "@error_message:inv_full"; // Your inventory is full.
+
+								return TransferErrorCode::CONTAINERFULL;
+							}
+						// Return if it's in a player bank that doesn't have room
+						} else if (thisParent == bank) {
+							if (bank->getContainerVolumeLimit() < bank->getCountableObjectsRecursive() + objectSize) {
+								errorDescription = "@container_error_message:container03"; // This container is full.
+
+								return TransferErrorCode::CONTAINERFULL;
+							}
+						}
+					}
+				}
+			} else {
+				// This is a non-wearable container.
+				if (playerParent != NULL ) {
+					SceneObject* inventory = playerParent->getSlottedObject("inventory");
+					SceneObject* bank = playerParent->getSlottedObject("bank");
+					SceneObject* thisParent = getParent().get();
+
+					// Return if the container is in a player inventory without room
+					if (thisParent == inventory) {
 						if (inventory->getContainerVolumeLimit() < inventory->getCountableObjectsRecursive() + objectSize) {
 							errorDescription = "@error_message:inv_full"; // Your inventory is full.
 
 							return TransferErrorCode::CONTAINERFULL;
 						}
-					}
-				}
-			} else {
-				// This is a non-wearable container. Check if it's in a player inventory with room
-				if (playerParent != NULL ) {
-					SceneObject* inventory = playerParent->getSlottedObject("inventory");
-					if (inventory->getContainerVolumeLimit() < inventory->getCountableObjectsRecursive() + objectSize) {
-						errorDescription = "@error_message:inv_full"; // Your inventory is full.
-
-						return TransferErrorCode::CONTAINERFULL;
+					// Return if it's in a player bank that doesn't have room
+					} else if (thisParent == bank) {
+						if (bank->getContainerVolumeLimit() < bank->getCountableObjectsRecursive() + objectSize) {
+							errorDescription = "@container_error_message:container03"; // This container is full.
+								return TransferErrorCode::CONTAINERFULL;
+						}
 					}
 				}
 			}
 		}
 
-		// Check if the container is in a building
+		// Check if the container is in a building or factory ingredient hopper
 		if (playerParent == NULL) {
 			ManagedReference<SceneObject*> rootParent = getRootParent();
 
-			if (rootParent != NULL && rootParent->isBuildingObject()) {
-				BuildingObject* building = rootParent.castTo<BuildingObject*>();
+			if (rootParent != NULL) {
+				if (rootParent->isBuildingObject()) {
+					BuildingObject* building = rootParent.castTo<BuildingObject*>();
 
-				if (!building->isStaticBuilding() && (building->getCurrentNumberOfPlayerItems() + objectSize > building->getMaximumNumberOfPlayerItems())) {
-					errorDescription = "@container_error_message:container13"; // This house has too many items in it
+					if (!building->isStaticBuilding() && (building->getCurrentNumberOfPlayerItems() + objectSize > building->getMaximumNumberOfPlayerItems())) {
+						errorDescription = "@container_error_message:container13"; // This house has too many items in it
 
-					return TransferErrorCode::TOOMANYITEMSINHOUSE;
+						return TransferErrorCode::TOOMANYITEMSINHOUSE;
+					}
+				} else if (rootParent->isFactory()) {
+					FactoryObject* factory = rootParent.castTo<FactoryObject*>();
+					SceneObject* hopper = factory->getSlottedObject("ingredient_hopper");
+
+					if (hopper->getContainerVolumeLimit() < hopper->getCountableObjectsRecursive() + objectSize) {
+						errorDescription = "@container_error_message:container03"; // This container is full.
+							return TransferErrorCode::CONTAINERFULL;
+					}
 				}
 			}
 		}

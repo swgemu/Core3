@@ -11,6 +11,7 @@
 #include "server/zone/objects/scene/LuaSceneObject.h"
 #include "server/zone/objects/building/LuaBuildingObject.h"
 #include "server/zone/objects/intangible/LuaIntangibleObject.h"
+#include "server/zone/objects/intangible/ControlDevice.h"
 #include "server/zone/objects/player/LuaPlayerObject.h"
 #include "server/zone/objects/tangible/LuaTangibleObject.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
@@ -112,6 +113,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "addStartingWeaponsInto", addStartingWeaponsInto);
 	lua_register(luaEngine->getLuaState(), "setAuthorizationState", setAuthorizationState);
 	lua_register(luaEngine->getLuaState(), "giveItem", giveItem);
+	lua_register(luaEngine->getLuaState(), "giveControlDevice", giveControlDevice);
 	lua_register(luaEngine->getLuaState(), "checkInt64Lua", checkInt64Lua);
 	lua_register(luaEngine->getLuaState(), "getChatMessage", getChatMessage);
 	lua_register(luaEngine->getLuaState(), "getRankName", getRankName);
@@ -218,6 +220,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaConversationSession>::Register(luaEngine->getLuaState());
 	Luna<LuaConversationTemplate>::Register(luaEngine->getLuaState());
 	Luna<LuaIntangibleObject>::Register(luaEngine->getLuaState());
+	Luna<LuaControlDevice>::Register(luaEngine->getLuaState());
 	Luna<LuaPlayerObject>::Register(luaEngine->getLuaState());
 	Luna<LuaAiAgent>::Register(luaEngine->getLuaState());
 	Luna<LuaActiveArea>::Register(luaEngine->getLuaState());
@@ -832,6 +835,33 @@ int DirectorManager::giveItem(lua_State* L) {
 		obj->transferObject(item, slot, true);
 
 		lua_pushlightuserdata(L, item.get());
+	} else {
+		lua_pushnil(L);
+	}
+
+	return 1;
+}
+
+int DirectorManager::giveControlDevice(lua_State* L) {
+	SceneObject* obj = (SceneObject*) lua_touserdata(L, -4);
+	String objectString = lua_tostring(L, -3);
+	String controlledObjectPath = lua_tostring(L, -2);
+	int slot = lua_tointeger(L, -1);
+
+	if (obj == NULL)
+		return 0;
+
+	ZoneServer* zoneServer = obj->getZoneServer();
+
+	ManagedReference<ControlDevice*> controlDevice = dynamic_cast<ControlDevice*>(zoneServer->createObject(objectString.hashCode(), 1));
+
+	TangibleObject* controlledObject = dynamic_cast<TangibleObject*>(zoneServer->createObject(controlledObjectPath.hashCode(), 1));
+
+	if (controlDevice != NULL && obj != NULL) {
+		controlDevice->setControlledObject(controlledObject);
+		obj->transferObject(controlDevice, slot, true);
+
+		lua_pushlightuserdata(L, controlDevice.get());
 	} else {
 		lua_pushnil(L);
 	}

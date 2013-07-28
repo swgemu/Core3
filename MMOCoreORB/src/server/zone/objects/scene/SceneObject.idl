@@ -270,7 +270,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * @param notifyClient if true in range objects will be updated with the change
 	 * @return returns true if the object has been successfully added
 	 */
-	public native abstract boolean transferObject(SceneObject object, int containmentType, boolean notifyClient = false);
+	public native abstract boolean transferObject(SceneObject object, int containmentType, boolean notifyClient = false, boolean allowOverflow = false);
 
 	/**
 	 * Tries to remove/unlink object
@@ -697,6 +697,10 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@local
 	@read
 	public native void getSlottedObjects(@dereferenced VectorMap<string, SceneObject> objects);
+	
+	@local
+	@read
+	public native void getContainerObjects(@dereferenced VectorMap<unsigned long, SceneObject> objects);
 
 	/**
 	 * Returns the object id of the parent of this object
