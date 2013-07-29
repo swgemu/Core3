@@ -36,6 +36,7 @@ void LootManagerImplementation::initialize() {
 	lootGroupMap->initialize();
 
 	info("Loaded " + String::valueOf(lootableMods.size()) + " lootable stat mods.", true);
+	info("Loaded " + String::valueOf(lootableDots.size()) + " possible lootable DoT weapon templates.", true);
 	info("Loaded " + String::valueOf(lootGroupMap->countLootItemTemplates()) + " loot items.", true);
 	info("Loaded " + String::valueOf(lootGroupMap->countLootGroupTemplates()) + " loot groups.", true);
 
@@ -54,6 +55,22 @@ bool LootManagerImplementation::loadConfigData() {
 	exceptionalModifier = lua->getGlobalFloat("exceptionalModifier");
 	legendaryChance = lua->getGlobalFloat("legendaryChance");
 	legendaryModifier = lua->getGlobalFloat("legendaryModifier");
+	dotChance = lua->getGlobalFloat("dotChance");
+	dotPotencyMax = lua->getGlobalFloat("dotPotencyMax");
+	dotStrengthMax = lua->getGlobalFloat("dotStrengthMax");
+	dotDurationMax = lua->getGlobalFloat("dotDurationMax");
+
+	LuaObject lootableDotsTable = lua->getGlobalObject("weaponDotTemplates");
+
+	if (!lootableDotsTable.isValidTable())
+		return false;
+
+	for (int i = 1; i <= lootableDotsTable.getTableSize(); ++i) {
+		String mod = lootableDotsTable.getStringAt(i);
+		lootableDots.put(mod);
+	}
+
+	lootableDotsTable.pop();
 
 	LuaObject lootableModsTable = lua->getGlobalObject("lootableStatMods");
 
@@ -244,6 +261,8 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 		craftingValues.setCurrentPercentage(subtitle, percentage + deviation);
 	}
 
+	addDots(prototype, level);
+
 	// Use percentages to recalculate the values
 	craftingValues.recalculateValues(false);
 
@@ -376,4 +395,73 @@ bool LootManagerImplementation::createLoot(SceneObject* container, const String&
 
 
 	return true;
+}
+
+void LootManagerImplementation::addDots(TangibleObject* object, int creatureLevel) {
+
+	if (object == NULL)
+		return;
+
+	if (object->isWeaponObject()) {
+		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(object);
+
+		bool shouldGenerateDots = false;
+
+		// Only apply dot if it's in the weapon table.
+		for (int i = 0; i < lootableDots.size(); i++ )
+			if (weapon->getWeaponType() == lootableDots.get(i)) {
+				if (System::random(dotChance) == dotChance) { // Defined in scripts.
+					shouldGenerateDots = true;
+				}
+			}
+
+		if (shouldGenerateDots) {
+			// Lets generate some stats based on creature level. TODO: Needs possibility of additional dots added depending on chance/loot level.
+			int level = creatureLevel;
+
+			int type = System::random(2) + 1; // Types are: Disease, Poison, Fire (3).
+
+			int attribute = 0;
+			int strength = 0;
+			int duration = 0;
+			int potency = 0;
+			int numbers[] = {  1, 4, 7 }; // The main pool attributes.
+			int modifier = 1.5;
+			int chooseAttribute = System::random(2); // Types are the corresponding pools, main ones for this.
+
+			switch (type) {
+			case 1: // Poison, only does the main 3 pools.
+				attribute = numbers[chooseAttribute];
+				strength = round(MIN(((level - System::random(level)) * modifier) + 50, dotStrengthMax)); // Poisons apparently have higher strength.
+				duration = round(MIN(((level - System::random(level)) / modifier) + 10, dotDurationMax)); // Lower duration.
+				potency = round(MIN((level - System::random(50)) + 1, dotPotencyMax)); // Potency is anywhere from 1 to 100%.
+				break;
+			case 2: // Disease, drops on all 9 pools.
+				attribute = System::random(8) + 1;
+				strength = round(MIN(((level - System::random(level)) / modifier) + 50, dotStrengthMax)); // Diseases apparently have lower strength.
+				duration = round(MIN(((level - System::random(level)) * modifier) + 10, dotDurationMax)); // Higher duration.
+				potency = round(MIN((level - System::random(50)) + 1, dotPotencyMax)); // Potency is anywhere from 1 to 100%.
+				break;
+			case 3: // Fire, same as Poison.
+				attribute = numbers[chooseAttribute];
+				strength = round(MIN(((level - System::random(level)) * modifier) + 50, dotStrengthMax)); // Fires apparently have higher strength.
+				duration = round(MIN(((level - System::random(level)) / modifier) + 10, dotDurationMax)); // Lower duration.
+				potency = round(MIN((level - System::random(50)) + 1, dotPotencyMax)); // Potency is anywhere from 1 to 100%.
+				break;
+			default:
+				break;
+
+			}
+
+			int uses = level * 10 + System::random(3000); // Uses are global, and not dependent on type like other stats.
+
+			weapon->setDotType(type);
+			weapon->setDotAttribute(attribute);
+			weapon->setDotStrength(strength);
+			weapon->setDotDuration(duration);
+			weapon->setDotPotency(potency);
+			weapon->setDotUses(uses);
+		}
+	}
+
 }
