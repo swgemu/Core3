@@ -658,6 +658,15 @@ int StructureManager::declareResidence(CreatureObject* player,
 	//Set the characters home location to this structure.
 	ghost->setDeclaredResidence(buildingObject);
 
+	if(declaredResidence != NULL){
+		Locker oldLock(declaredResidence, player);
+		declaredResidence->setResidence(false);
+
+	}
+
+	Locker newLock(buildingObject,player);
+	buildingObject->setResidence(true);
+
 	player->addCooldown("declare_residence", 24 * 3600 * 1000); //1 day
 
 	return 0;
