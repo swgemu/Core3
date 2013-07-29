@@ -256,7 +256,7 @@ public:
 
 	void createSpawnPoint(CreatureObject* player, const String& spawnTypes);
 
-	LairSpawn* getRandomLairSpawn(CreatureObject* player, const int faction);
+	LairSpawn* getRandomLairSpawn(CreatureObject* player, const int faction, unsigned int type);
 
 	Vector3 getRandomBountyTargetPosition(CreatureObject* player);
 
@@ -436,7 +436,7 @@ public:
 
 	void createSpawnPoint(CreatureObject* player, const String& spawnTypes);
 
-	LairSpawn* getRandomLairSpawn(CreatureObject* player, const int faction);
+	LairSpawn* getRandomLairSpawn(CreatureObject* player, const int faction, unsigned int type);
 
 	Vector3 getRandomBountyTargetPosition(CreatureObject* player);
 

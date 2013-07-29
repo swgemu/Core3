@@ -149,16 +149,7 @@ naboo_starter_creatures = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
-		},
-		{
- 			lairTemplateName = "naboo_gungan_hermit_neutral_small_theater",
- 			spawnLimit = -1,
- 			minDifficulty = 3,
- 			maxDifficulty = 10,
- 			numberToSpawn = 0,
- 			weighting = 15,
- 			size = 25
- 		},
+		}
 	}
 }
 
