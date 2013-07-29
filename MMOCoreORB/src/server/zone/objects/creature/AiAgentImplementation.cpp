@@ -1825,6 +1825,9 @@ void AiAgentImplementation::selectConversationOption(int option, SceneObject* ob
 }
 
 bool AiAgentImplementation::isEventMob() {
+	if (npcTemplate.get() == NULL)
+		return false;
+
 	String templateName = npcTemplate.get()->getTemplateName();
 
 	if (templateName.toLowerCase().beginsWith("event_"))
