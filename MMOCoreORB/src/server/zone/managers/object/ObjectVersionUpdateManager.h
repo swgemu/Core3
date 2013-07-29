@@ -23,7 +23,20 @@ public:
 	int updateToVersion2();
 	int updateToVersion3();
 
+	ObjectOutputStream* addVariable(String variableName, ObjectInputStream* object, Stream* newVariableData);
+	int getVariableDataOffset(const uint32& variableHashCode, ObjectInputStream* stream);
+	ObjectOutputStream* changeVariableData(const uint32& variableHashCode, ObjectInputStream* object, Stream* newVariableData);
+
+
+	void updateResidences();
+	void setResidence(uint64 buildingID, bool isResidence);
+	void verifyResidenceVariables();
+
 	int run();
+
+
+
+
 };
 
 
