@@ -1,0 +1,37 @@
+event_singing_mountain_clan_councilwoman = Creature:new {
+	objectName = "@mob/creature_names:singing_mtn_clan_councilwoman",
+	customName = "a Singing Mountain clan councilwoman (event)",
+	socialGroup = "mtn_clan",
+	pvpFaction = "mtn_clan",
+	faction = "mtn_clan",
+	level = 253,
+	chanceHit = 235,
+	damageMin = 1395,
+	damageMax = 2500,
+	baseXp = 0,
+	baseHAM = 261000,
+	baseHAMmax = 320000,
+	armor = 3,
+	resists = {100,35,35,100,100,100,100,100,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	creatureBitmask = PACK + KILLER + HEALER,
+	optionsBitmask = 128,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_dathomir_sing_mt_clan_councilwoman.iff"},
+	lootGroups = {},
+	weapons = {"mixed_force_weapons"},
+	conversationTemplate = "",
+	attacks = merge(brawlermaster,pikemanmaster,forcewielder)
+}
+
+CreatureTemplates:addCreatureTemplate(event_singing_mountain_clan_councilwoman, "event_singing_mountain_clan_councilwoman")

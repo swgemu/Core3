@@ -1,0 +1,37 @@
+event_cas_vankoo = Creature:new {
+	objectName = "@mob/creature_names:cas_vankoo",
+	customName = "Cas Vankoo (event)",
+	socialGroup = "kimogila",
+	pvpFaction = "bandit",
+	faction = "bandit",
+	level = 117,
+	chanceHit = 34,
+	damageMin = 725,
+	damageMax = 1160,
+	baseXp = 0,
+	baseHAM = 50000,
+	baseHAMmax = 59000,
+	armor = 2,
+	resists = {75,75,0,10,10,10,10,0,0},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	creatureBitmask = PACK + KILLER + STALKER,
+	optionsBitmask = 128,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_lok_cas_vankoo.iff"},
+	lootGroups = {},
+	weapons = {"cas_vankoo_weapons"},
+	conversationTemplate = "",
+	attacks = merge(pistoleermaster,pikemanmaster)
+}
+
+CreatureTemplates:addCreatureTemplate(event_cas_vankoo, "event_cas_vankoo")

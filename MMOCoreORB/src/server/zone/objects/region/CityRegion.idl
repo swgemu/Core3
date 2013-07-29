@@ -392,7 +392,7 @@ class CityRegion extends ManagedObject implements Logger {
 	}
 	
 	public int getMaxWithdrawal() {
-		return 10000 * cityRank;
+		return 50000;
 	}
 	
 	@local

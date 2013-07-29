@@ -144,6 +144,9 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		return 0;
 	}
 
+	if (player->isDead() || player->isIncapacitated())
+		return 0;
+
 	int availfill = 0;
 
 	if (ghost == NULL)

@@ -610,8 +610,8 @@ void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 
 }
 
-void CityManagerImplementation::updateCityVoting(CityRegion* city) {
-	if (!city->isVotingPeriodOver())
+void CityManagerImplementation::updateCityVoting(CityRegion* city, bool override) {
+	if (!city->isVotingPeriodOver() && !override)
 		return;
 
 	VectorMap<uint64, int>* candidates = city->getCandidates();

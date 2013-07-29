@@ -20,14 +20,14 @@ void StructureMaintenanceTask::run() {
 	if (strongRef == NULL)
 		return;
 
-	SharedStructureObjectTemplate* templ = dynamic_cast<SharedStructureObjectTemplate*>(strongRef->getObjectTemplate());
+	/*SharedStructureObjectTemplate* templ = dynamic_cast<SharedStructureObjectTemplate*>(strongRef->getObjectTemplate());
 
 	if (templ != NULL) {
 		String ability = templ->getAbilityRequired();
 
 		if (ability == "place_cantina" || ability == "place_hospital" || ability == "place_theater")
 			return;
-	}
+	}*/
 
 	ZoneServer* zoneServer = strongRef->getZoneServer();
 

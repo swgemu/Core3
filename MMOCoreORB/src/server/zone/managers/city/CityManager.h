@@ -156,7 +156,7 @@ public:
 
 	void processIncomeTax(CityRegion* city);
 
-	void updateCityVoting(CityRegion* city);
+	void updateCityVoting(CityRegion* city, bool override = false);
 
 	void deductCityMaintenance(CityRegion* city);
 
@@ -335,7 +335,7 @@ public:
 
 	void processIncomeTax(CityRegion* city);
 
-	void updateCityVoting(CityRegion* city);
+	void updateCityVoting(CityRegion* city, bool override = false);
 
 	void deductCityMaintenance(CityRegion* city);
 
@@ -480,7 +480,7 @@ public:
 
 	void processIncomeTax(CityRegion* city);
 
-	void updateCityVoting(CityRegion* city);
+	void updateCityVoting(CityRegion* city, bool override);
 
 	void deductCityMaintenance(CityRegion* city);
 

@@ -109,6 +109,17 @@ public:
 		return GENERALERROR;
 	}
 
+	float getCommandDuration(CreatureObject *object, const UnicodeString& arguments) {
+		StringTokenizer tokenizer(arguments.toString());
+		uint64 weaponID = tokenizer.getLongToken();
+		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*> (server->getZoneServer()->getObject(weaponID));
+
+		if (weapon != NULL)
+			return CombatManager::instance()->calculateWeaponAttackSpeed(object, weapon, speedMultiplier);
+		else
+			return defaultTime * speedMultiplier;
+	}
+
 };
 
 #endif //FIREHEAVYWEAPONCOMMAND_H_

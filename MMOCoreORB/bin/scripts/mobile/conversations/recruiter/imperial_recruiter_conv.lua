@@ -370,9 +370,10 @@ imp_recruiter_faction_purchase = ConvoScreen:new {
 	stopConversation = "false",
 	options = {
 			{ "@faction_recruiter:option_purchase_weapons_armor", "fp_weapons_armor" }, --I'm interested in weapons and armor
-		    { "@faction_recruiter:option_purchase_uniforms", "fp_uniforms" }, -- I'm interested in uniforms
-		    { "@faction_recruiter:option_purchase_furniture", "fp_furniture"}, -- I'm interested in furniture.
-		    { "@faction_recruiter:option_purchase_installation", "fp_installations" }, -- I'm interested in installations.
+			{ "@faction_recruiter:option_purchase_uniforms", "fp_uniforms" }, -- I'm interested in uniforms
+			{ "@faction_recruiter:option_purchase_furniture", "fp_furniture"}, -- I'm interested in furniture.
+			{ "@faction_recruiter:option_purchase_installation", "fp_installations" }, -- I'm interested in installations.
+			--{ "@faction_recruiter:option_hirelings", "fp_hirelings" }, -- I would like some personnel support.
 	},
 }
 
@@ -394,7 +395,7 @@ imperial_recruiter_convotemplate:addScreen(imp_recruiter_fp_furniture);
 -- selected option to view weapoins and armor
 imp_recruiter_fp_weapons_armor = ConvoScreen:new {
 	id = "fp_weapons_armor",
-	leftDialog = "@faction_recruiter:select_item_purchase",
+	leftDialog = "@faction_recruiter:select_item_purchase", -- select the item you wish to request.  All costs are in faction standing poitns.
 	stopConversation = "false",
 	options = {
 
@@ -416,18 +417,29 @@ imp_recruiter_fp_installations = ConvoScreen:new {
 }
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_fp_installations);
 
-
+-- selected option to view uniforms
 imp_recruiter_fp_uniforms = ConvoScreen:new {
 	id = "fp_uniforms",
-	leftDialog = "@faction_recruiter:select_item_purchase",
+	leftDialog = "@faction_recruiter:select_item_purchase", -- select the item you wish to request.  All costs are in faction standing poitns.
 	stopConversation = "false",
 	options = {
 
 		},
 	
 }
-
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_fp_uniforms);
+
+-- selected option to view hirelings
+imp_recruiter_fp_hirelings = ConvoScreen:new {
+	id = "fp_hirelings",
+	leftDialog = "@faction_recruiter:select_item_purchase", -- select the item you wish to request.  All costs are in faction standing poitns.
+	stopConversation = "false",
+	options = {
+
+		},
+	
+}
+imperial_recruiter_convotemplate:addScreen(imp_recruiter_fp_hirelings);
 
 -- purchase failed
 imp_recruiter_purchased_not_enough= ConvoScreen:new {
@@ -453,19 +465,41 @@ imp_recruiter_inventory_full= ConvoScreen:new {
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_inventory_full);
 
--- finish purchase screen
-imp_recruiter_purchased= ConvoScreen:new {
-	id = "purchased",
-	leftDialog = "@faction_recruiter:order_purchase_complete",
+-- datapad is full screen
+imp_recruiter_datapad_full= ConvoScreen:new {
+	id = "datapad_full",
+	leftDialog = "@faction_recruiter:datapad_full", -- Your datapad is full. You must first free some space.
 	stopConversation = "true",
 	options = {
 	
 	}
 }
 
-imperial_recruiter_convotemplate:addScreen(imp_recruiter_purchased);
+imperial_recruiter_convotemplate:addScreen(imp_recruiter_datapad_full);
 
+-- item purchase screen
+imp_recruiter_purchased_item = ConvoScreen:new {
+	id = "purchased_item",
+	leftDialog = "@faction_recruiter:item_purchase_complete", -- Your requisition of %TT is complete.
+	stopConversation = "true",
+	options = {
+	
+	}
+}
 
+imperial_recruiter_convotemplate:addScreen(imp_recruiter_purchased_item);
+
+-- hireling purchase screen
+imp_recruiter_purchased_hireling = ConvoScreen:new {
+	id = "purchased_hireling",
+	leftDialog = "@faction_recruiter:hireling_purchase_complete", -- The %TT is now under your command.
+	stopConversation = "true",
+	options = {
+	
+	}
+}
+
+imperial_recruiter_convotemplate:addScreen(imp_recruiter_purchased_hireling);
 
 
 addConversationTemplate("imperial_recruiter_convotemplate", imperial_recruiter_convotemplate);

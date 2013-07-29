@@ -258,6 +258,8 @@ public:
 
 	bool isCivicStructure();
 
+	bool isCityHall();
+
 	bool isCommercialStructure();
 
 	DistributedObjectServant* _getImplementation();
@@ -450,6 +452,8 @@ public:
 
 	bool isCivicStructure();
 
+	bool isCityHall();
+
 	bool isCommercialStructure();
 
 	WeakReference<StructureObject*> _this;
@@ -618,6 +622,8 @@ public:
 	String getRedeedMessage();
 
 	bool isCivicStructure();
+
+	bool isCityHall();
 
 	bool isCommercialStructure();
 

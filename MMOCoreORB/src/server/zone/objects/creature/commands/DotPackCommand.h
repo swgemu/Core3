@@ -110,12 +110,12 @@ public:
 			return;
 
 		try {
-			zone->rlock();
+			SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+			CloseObjectsVector* vec = (CloseObjectsVector*) areaCenter->getCloseObjects();
+			vec->safeCopyTo(closeObjects);
 
-			SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = areaCenter->getCloseObjects();
-
-			for (int i = 0; i < closeObjects->size(); i++) {
-				SceneObject* object = cast<SceneObject*>( closeObjects->get(i).get());
+			for (int i = 0; i < closeObjects.size(); i++) {
+				SceneObject* object = cast<SceneObject*>( closeObjects.get(i).get());
 
 				if (!object->isCreatureObject())
 					continue;
@@ -128,30 +128,20 @@ public:
 
 				CreatureObject* creatureTarget = cast<CreatureObject*>( object);
 
-				if (!creatureTarget->isAttackableBy(creature))
-					continue;
-
-				zone->runlock();
-
 				try {
-
 					Locker crossLocker(creatureTarget, creature);
+
+					if (!creatureTarget->isAttackableBy(creature))
+						continue;
 
 					if (checkTarget(creature, creatureTarget)) {
 						doAreaMedicActionTarget(creature, creatureTarget, pharma);
 					}
 
 				} catch (Exception& e) {
-
 				}
-
-				zone->rlock();
-
 			}
-
-			zone->runlock();
 		} catch (Exception& e) {
-			zone->runlock();
 		}
 	}
 

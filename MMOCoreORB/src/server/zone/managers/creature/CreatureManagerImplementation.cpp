@@ -452,7 +452,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		if (creatureInventory != NULL) {
 			LootManager* lootManager = zoneServer->getLootManager();
 
-			if (destructedObject->isNonPlayerCreatureObject())
+			if (destructedObject->isNonPlayerCreatureObject() && !destructedObject->isEventMob())
 				destructedObject->setCashCredits(lootManager->calculateLootCredits(destructedObject->getLevel()));
 
 			if (player != NULL)

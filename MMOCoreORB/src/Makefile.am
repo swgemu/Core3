@@ -45,6 +45,10 @@ AM_CXXFLAGS= -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -D
 #ENGINE3_PATH=/Users/victor/Documents/workspacePublic/MMOEnginePrivate
 ENGINE3_PATH=../../../../MMOEngine
 
+GTEST_PATH=../../../utils/gtest-1.6.0
+
+
+
 #CC = clang
 #CXX = clang++
 
@@ -52,7 +56,8 @@ INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
 	    -I$(ENGINE3_PATH)/include -I$(ENGINE3_PATH)/src -I/usr/include/lua5.1 -I/usr/include/mysql \
 	    -I/usr/local/BerkeleyDB.5.0/include \
-	    -I/usr/include/db5.0
+	    -I/usr/include/db5.0 \
+	    -I$(GTEST_PATH)/include
 			
 LIBS =	$(SYSTEM_LIBS)  \
 	$(USER_LD_FLAGS) \
@@ -61,19 +66,21 @@ LIBS =	$(SYSTEM_LIBS)  \
 	-L$(USER_LIBS_PATH)/ -L$(USER_LIBS_PATH)/mysql -L$(USER_LIBS_PATH)/mysql5/mysql -L$(USER_LIBS_PATH)/lua \
 	-L$(ENGINE3_PATH)/lib/unix \
 	-L/usr/local/lib \
-	-lmysqlclient -lz -lengine3 -llua -ldb-5.0 -lssl -lcrypto
+	-L$(GTEST_PATH)/lib \
+	-lmysqlclient -lz -lengine3 -llua -ldb-5.0 -lssl -lcrypto -lgtest
 	
 #AM_LDFLAGS = -pagezero_size 10000 -image_base 100000000
 #AM_LDFLAGS = --enable-stdcall-fixup
 
 bin_PROGRAMS = core3 #odb3
 
-
 #engine/engine.h.gch:
 #	$(CXX) $(INCLUDES) $(ENGINE3_PATH)/src/engine/engine.h
 
 #server/zone/objects/scene/SceneObject.h.gch:
 #	$(CXX) $(INCLUDES) -I../../../src ../../../src/server/zone/objects/scene/SceneObject.h
+
+core3_TESTS = server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.cpp
 
 core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp \
 				server/zone/objects/area/FsVillageArea.cpp \
@@ -295,6 +302,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/creature/ai/AiActor.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
+		$(core3_TESTS) \
 		server/zone/objects/structure/events/StructureMaintenanceTask.cpp \
 		server/zone/objects/tangible/components/ElevatorMenuComponent.cpp \
 		server/zone/objects/tangible/components/ElevatorUpMenuComponent.cpp \

@@ -26,8 +26,20 @@ scavenger = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_scavenger.iff"},
-	lootGroups = {},
-	weapons = {"rebel_weapons_light"},
+	lootGroups = {
+	    {
+	        groups = {
+				{group = "junk", chance = 6500000},
+				{group = "rifles", chance = 700000},
+				{group = "melee_knife", chance = 700000},
+				{group = "pistols", chance = 700000},
+				{group = "carbines", chance = 700000},
+				{group = "wanted_poster", chance = 700000},
+	    	},
+			lootChance = 3500000
+		}
+	},
+	weapons = {"pirate_weapons_medium"},
 	attacks = merge(marksmannovice,brawlernovice)
 }
 
