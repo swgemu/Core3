@@ -736,7 +736,7 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObjec
 
 		byte status = oguild->getWarStatus(guild->getObjectID());
 
-		if (status != NULL) {
+		if (status != 0) {
 			oguild->wlock();
 			oguild->setWarStatus(guild->getObjectID(), GuildObject::WAR_NONE);
 			oguild->unlock();
