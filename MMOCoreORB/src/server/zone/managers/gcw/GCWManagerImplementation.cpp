@@ -71,6 +71,9 @@ int GCWManagerImplementation::maxBasesPerPlayer = 3;
 int GCWManagerImplementation::bonusXP = 15;
 int GCWManagerImplementation::bonusDiscount = 30;
 bool GCWManagerImplementation::racialPenaltyEnabled = true;
+bool GCWManagerImplementation::spawnDefenses = true;
+int GCWManagerImplementation::initialVulnerabilityDelay = 0;
+
 VectorMap<String, int> GCWManagerImplementation::baseValue;
 HashTable<int, float> GCWManagerImplementation::racialPenaltyMap;
 Mutex GCWManagerImplementation::baseMutex;
@@ -122,6 +125,8 @@ void GCWManagerImplementation::loadLuaConfig(){
 	bonusXP = lua->getGlobalInt("bonusXP");
 	bonusDiscount = lua->getGlobalInt("bonusDiscount");
 	racialPenaltyEnabled = lua->getGlobalInt("racialPenaltyEnabled");
+	initialVulnerabilityDelay = lua->getGlobalInt("initialVulnerabilityDelay");
+	spawnDefenses = lua->getGlobalInt("spawnDefenses");
 
 	LuaObject pointsObject = lua->getGlobalObject("HQValues");
 
@@ -688,12 +693,39 @@ void GCWManagerImplementation::registerGCWBase(BuildingObject* building, bool in
 				return;
 			}
 
-			Locker block(building);
+
+			ManagedReference<CreatureObject*> ownerCreature = building->getOwnerCreatureObject();
+
+			if(ownerCreature == NULL){
+				error("No owner when initializing a gcw base");
+				return;
+			}
+
+			int delay = getInitialVulnerabilityDelay();
+
+			Locker bLock(building, ownerCreature);
+
 			this->initializeBaseTimers(building);
-			this->initializeNewVulnerability(baseData);
-			block.release();
-			this->addBase(building);
-			this->startVulnerability(building);
+
+			if(delay == 0)
+				this->initializeNewVulnerability(baseData);
+
+			bLock.release();
+
+			if( delay == 0) {
+
+				Locker gLock(_this.get(), ownerCreature);
+				this->addBase(building);
+				this->startVulnerability(building);
+
+			} 	else {
+
+				Locker cLock(_this.get(), ownerCreature);
+				Reference<Task*> newTask = new StartVulnerabilityTask(_this.get(), building);
+				newTask->schedule(delay * 1000);
+				this->addStartTask(building->getObjectID(),newTask);
+
+			}
 
 
 		} else {
@@ -826,15 +858,27 @@ void GCWManagerImplementation::initializeBaseTimers(BuildingObject* building){
 		return;
 	}
 
+
 	baseData->setPlacementTime(Time());
 	baseData->setLastVulnerableTime(Time());
 
 	Time endTime(baseData->getPlacmenetTime());
-	endTime.addMiliTime(this->vulnerabilityDuration*1000);
+	endTime.addMiliTime(this->vulnerabilityDuration*1000 + getInitialVulnerabilityDelay()*1000);
 	baseData->setVulnerabilityEndTime(endTime);
 
-	Time nextVuln(baseData->getPlacmenetTime());
-	nextVuln.addMiliTime(this->vulnerabilityFrequency*1000);
+	if( getInitialVulnerabilityDelay() == 0) {
+
+
+		Time nextVuln(baseData->getPlacmenetTime());
+		nextVuln.addMiliTime(this->vulnerabilityFrequency*1000);
+		baseData->setNextVulnerableTime(nextVuln);
+
+	} else {
+
+		Time nextVuln(baseData->getPlacmenetTime());
+		nextVuln.addMiliTime(getInitialVulnerabilityDelay()*1000);
+		baseData->setNextVulnerableTime(nextVuln);
+	}
 
 	baseData->setTerminalDamaged(false);
 	baseData->setSliceRepairTime(Time(0));
@@ -2329,7 +2373,7 @@ uint64 GCWManagerImplementation::addChildInstallationFromDeed(BuildingObject* bu
 }
 
 void GCWManagerImplementation::addMinefield(BuildingObject* building, SceneObject* minefield){
-	if(building == NULL || minefield == NULL || !minefield->isMinefield())
+	if(building == NULL)
 			return;
 	//info("adding minefield",true);
 
@@ -2338,11 +2382,16 @@ void GCWManagerImplementation::addMinefield(BuildingObject* building, SceneObjec
 	if(baseData == NULL)
 		return;
 	Locker _lock(building);
-	baseData->addMinefield(baseData->getTotalMinefieldCount(), minefield->getObjectID());
+	if(minefield != NULL)
+		baseData->addMinefield(baseData->getTotalMinefieldCount(), minefield->getObjectID());
+	else
+		baseData->addMinefield(baseData->getTotalMinefieldCount(), 0);
+
+
 }
 
 void GCWManagerImplementation::addScanner(BuildingObject* building, SceneObject* scanner){
-	if(building == NULL || scanner == NULL || !scanner->isDetector())
+	if(building == NULL)
 		return;
 
 	//info("adding scanner",true);
@@ -2352,12 +2401,15 @@ void GCWManagerImplementation::addScanner(BuildingObject* building, SceneObject*
 		return;
 	Locker _lock(building);
 
-	baseData->addScanner(baseData->getTotalScannerCount(), scanner->getObjectID());
+	if(scanner != NULL)
+		baseData->addScanner(baseData->getTotalScannerCount(), scanner->getObjectID());
+	else
+		baseData->addScanner(baseData->getTotalScannerCount(), 0);
 
 }
 
 void GCWManagerImplementation::addTurret(BuildingObject* building, SceneObject* turret){
-	if(building == NULL || turret == NULL)
+	if(building == NULL)
 		return;
 
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
@@ -2366,7 +2418,13 @@ void GCWManagerImplementation::addTurret(BuildingObject* building, SceneObject* 
 		return;
 	Locker _lock(building);
 
-	baseData->addTurret(baseData->getTotalTurretCount(), turret->getObjectID());
+	if(turret != NULL)
+		baseData->addTurret(baseData->getTotalTurretCount(), turret->getObjectID());
+	else {
+		// create empty turret slot
+		baseData->addTurret(baseData->getTotalTurretCount(),0);
+	}
+
 	this->verifyTurrets(building);
 }
 
