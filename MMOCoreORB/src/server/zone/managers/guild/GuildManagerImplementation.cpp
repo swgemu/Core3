@@ -736,10 +736,10 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObjec
 
 		byte status = oguild->getWarStatus(guild->getObjectID());
 
-		if (status != NULL) {
-			oguild->wlock();
+		if (status != 0) {
+			Locker clocker(oguild, _this.get());
 			oguild->setWarStatus(guild->getObjectID(), GuildObject::WAR_NONE);
-			oguild->unlock();
+
 		}
 	}
 	_lock.release();
