@@ -99,6 +99,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/area/LairSpawnArea.cpp \
 				server/zone/managers/creature/LairObserver.cpp \
 				server/zone/managers/director/ScreenPlayObserver.cpp \
+				server/zone/managers/director/PersistentEvent.cpp \
 				server/zone/objects/ship/SpaceStationObject.cpp \
 				server/zone/objects/ship/FighterShipObject.cpp \
 				server/zone/objects/ship/ShipObject.cpp \
@@ -349,6 +350,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/creature/LairObserverImplementation.cpp \
 		server/zone/managers/customization/CustomizationIdManager.cpp \
 		server/zone/managers/director/ScreenPlayObserverImplementation.cpp \
+		server/zone/managers/director/PersistentEventImplementation.cpp \
 		server/zone/objects/ship/SpaceStationObjectImplementation.cpp \
 		server/zone/objects/ship/FighterShipObjectImplementation.cpp \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
