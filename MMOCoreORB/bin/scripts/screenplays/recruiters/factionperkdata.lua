@@ -367,7 +367,7 @@ imperial_racial_penalty = {
 		--"marine",
 	},
 	
-	rebel_hirelings = {
+	rebel_hireling = {
 	
 	}
 
