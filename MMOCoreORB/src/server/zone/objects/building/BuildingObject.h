@@ -244,6 +244,10 @@ public:
 
 	bool hasChildCreatures();
 
+	bool isResidence();
+
+	void setResidence(bool isResidence);
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -296,6 +300,8 @@ public:
 
 protected:
 	UnicodeString signName;
+
+	bool isOwnerResidence;
 
 public:
 	BuildingObjectImplementation();
@@ -429,6 +435,10 @@ public:
 	void spawnChildCreatures();
 
 	bool hasChildCreatures();
+
+	bool isResidence();
+
+	void setResidence(bool isResidence);
 
 	WeakReference<BuildingObject*> _this;
 
@@ -580,6 +590,10 @@ public:
 	void spawnChildCreatures();
 
 	bool hasChildCreatures();
+
+	bool isResidence();
+
+	void setResidence(bool isResidence);
 
 };
 

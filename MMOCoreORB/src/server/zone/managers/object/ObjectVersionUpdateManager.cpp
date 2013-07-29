@@ -20,9 +20,16 @@ ObjectVersionUpdateManager::ObjectVersionUpdateManager() : Logger("ObjectVersion
 int ObjectVersionUpdateManager::run() {
 	int version = ObjectDatabaseManager::instance()->getCurrentVersion();
 
-	info("database on latest version", true);
+	if (version == 0){
+		updateResidences();
+		ObjectDatabaseManager::instance()->updateCurrentVersion(1);
+		return 0;
+	} else {
 
-	return 1;
+		info("database on latest version : " + String::valueOf(version), true);
+
+		return 1;
+	}
 /*
 
 	ObjectDatabase* database = ObjectDatabaseManager::instance()->loadObjectDatabase("sceneobjects", true);
@@ -160,6 +167,7 @@ void ObjectVersionUpdateManager::updateResidences(){
 	info("---------------Setting residences---------------------",true);
 	info("Setting residence values for all active player residences ", true);
 
+	int count = 0;
 	try {
 
 		while (iterator.getNextKeyAndValue(objectID, &objectData)) {
@@ -183,7 +191,8 @@ void ObjectVersionUpdateManager::updateResidences(){
 			//	info("we found a Player " + String::valueOf(objectID) + " with residence " + String::valueOf(residence),true);
 				SortedVector<unsigned long long> structureList;
 				uint64 residence = 0;
-
+				count++;
+				printf("\r\tUpdating player residence [%d] / [?]\t", count);
 				if( Serializable::getVariable< SortedVector<unsigned long long> >(String("PlayerObject.ownedStructures").hashCode(), &structureList, &objectData) &&
 						Serializable::getVariable<uint64>(String("PlayerObject.declaredResidence").hashCode(), &residence, &objectData)){
 
@@ -204,6 +213,7 @@ void ObjectVersionUpdateManager::updateResidences(){
 		error(e.getMessage());
 		e.printStackTrace();
 	}
+	info("\n",true);
 
 }
 
