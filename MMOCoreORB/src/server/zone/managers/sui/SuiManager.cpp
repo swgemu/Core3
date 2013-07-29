@@ -233,8 +233,6 @@ void SuiManager::handleStartMusic(CreatureObject* player, SuiBox* suiBox, uint32
 
 	uint32 id = suiBox->getBoxID();
 
-	bool change = (uint16)id == SuiWindowType::MUSIC_CHANGE;
-
 	SuiListBox* listBox = cast<SuiListBox*>( suiBox);
 
 	if (index == -1)
@@ -242,10 +240,17 @@ void SuiManager::handleStartMusic(CreatureObject* player, SuiBox* suiBox, uint32
 
 	String dance = listBox->getMenuItemName(index);
 
-	if (!change)
+	switch ((uint16)id) {
+	case SuiWindowType::MUSIC_START:
 		player->executeObjectControllerAction(String("startmusic").hashCode(), player->getTargetID(), dance);
-	else
+		break;
+	case SuiWindowType::MUSIC_CHANGE:
 		player->executeObjectControllerAction(String("changemusic").hashCode(), player->getTargetID(), dance);
+		break;
+	case SuiWindowType::BAND_CHANGE:
+		player->executeObjectControllerAction(String("changebandmusic").hashCode(), player->getTargetID(), dance);
+		break;
+	}
 }
 
 /*

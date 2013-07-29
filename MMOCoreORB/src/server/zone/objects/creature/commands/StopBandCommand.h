@@ -63,6 +63,62 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		ManagedReference<GroupObject*> group = creature->getGroup();
+
+		if (group == NULL) {
+			creature->sendSystemMessage("You must be the leader of a band to use that command.");
+			return GENERALERROR;
+		}
+
+		ManagedReference<CreatureObject*> leader = cast<CreatureObject*>(group->getLeader());
+
+		if (leader == NULL || creature != leader) {
+			creature->sendSystemMessage("You must be the band leader to stop the band's song.");
+			return GENERALERROR;
+		}
+
+		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
+		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
+
+		if (session == NULL)
+			return GENERALERROR;
+
+		if (!session->isPlayingMusic())
+			return GENERALERROR;
+
+		SortedVector<ManagedReference<CreatureObject*> > bandMembers;
+		bandMembers.add(leader);
+
+		for (int i = 0; i < group->getGroupSize(); ++i) {
+			ManagedReference<CreatureObject*> groupMember = cast<CreatureObject*>(group->getGroupMember(i));
+
+			if (groupMember == NULL || groupMember == leader || !groupMember->isPlayingMusic())
+				continue;
+
+			bandMembers.add(groupMember);
+		}
+
+		for (int j = 0; j < bandMembers.size(); ++j) {
+			ManagedReference<CreatureObject*> bandMember = bandMembers.get(j);
+
+			ManagedReference<EntertainingSession*> bandMemberSession = dynamic_cast<EntertainingSession*>(bandMember->getActiveSession(SessionFacadeType::ENTERTAINING));
+
+			if (bandMemberSession == NULL || !bandMemberSession->isPlayingMusic())
+				continue;
+
+			if (bandMember == leader) {
+				bandMember->sendSystemMessage("@performance:music_stop_band_self"); // You stop the band.
+			} else {
+				StringIdChatParameter stringID;
+
+				stringID.setTU(leader->getCustomObjectName());
+				stringID.setStringId("performance", "music_stop_band_members"); // %TU stops your band.
+				bandMember->sendSystemMessage(stringID);
+			}
+
+			bandMemberSession->stopPlayingMusic();
+		}
+
 		return SUCCESS;
 	}
 
