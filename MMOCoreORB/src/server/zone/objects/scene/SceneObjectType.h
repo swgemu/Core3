@@ -226,6 +226,7 @@ public:
 	const static int GENETICCOMPONENT = 0x4000B;
 	const static int LIGHTSABERCRYSTAL = 0x4000C;
 	const static int COMMUNITYCRAFTINGCOMPONENT = 0x4000D;
+	const static int DNACOMPONENT = 0x4000E;
 
 	const static int WEAPONPOWERUP = 0x80000;
 	const static int MELEEWEAPONPOWERUP = 0x80001;

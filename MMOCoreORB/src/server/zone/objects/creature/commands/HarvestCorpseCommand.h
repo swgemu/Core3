@@ -130,6 +130,10 @@ public:
 			if (cr->getZone() == NULL)
 				return GENERALERROR;
 
+			if (cr->getDnaState() == CreatureManager::DNADEATH) {
+				player->sendSystemMessage("@skl_use:nothing_to_harvest");
+				return GENERALERROR;
+			}
 
 			ManagedReference<CreatureManager*> manager = cr->getZone()->getCreatureManager();
 			manager->harvest(cr, player, type);

@@ -660,8 +660,6 @@ CreatureManagerImplementation::CreatureManagerImplementation(Zone* planet) : Zon
 	zone = planet;
 	// server/zone/managers/creature/CreatureManager.idl():  		setCreatureTemplateManager();
 	setCreatureTemplateManager();
-	// server/zone/managers/creature/CreatureManager.idl():  		setDnaManager();
-	setDnaManager();
 	// server/zone/managers/creature/CreatureManager.idl():  		spawnedRandomCreatures = 0;
 	spawnedRandomCreatures = 0;
 }

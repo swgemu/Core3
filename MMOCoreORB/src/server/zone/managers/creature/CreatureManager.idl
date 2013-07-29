@@ -47,8 +47,9 @@ class CreatureManager extends ZoneManager {
 	public static final short NOTMILKED = 0x00;
 	public static final short BEINGMILKED = 0x01;
 	public static final short ALREADYMILKED = 0x02;
-	public static final short HASDNA     = 0x00;
-	public static final short SAMPLED    = 0x01;
+	public static final short HASDNA = 0x00;
+	public static final short DNASAMPLED = 0x01;
+	public static final short DNADEATH = 0x03;
 	
 	public CreatureManager(Zone planet) {
 		super("CreatureManager");
@@ -56,7 +57,6 @@ class CreatureManager extends ZoneManager {
 		zone = planet;
 		
 		setCreatureTemplateManager();
-		setDnaManager();
 		spawnedRandomCreatures = 0;
 		//reservePool.setAllowDuplicateInsertPlan();
 	}
@@ -120,8 +120,6 @@ class CreatureManager extends ZoneManager {
 	}*/
 	
 	private native void setCreatureTemplateManager();
-
-	private native void setDnaManager();
 	
 	public native void harvest(Creature creature, CreatureObject player, int selectedID);
 
