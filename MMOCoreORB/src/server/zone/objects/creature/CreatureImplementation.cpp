@@ -27,6 +27,8 @@
 
 void CreatureImplementation::initializeTransientMembers() {
 	milkState = CreatureManager::NOTMILKED;
+	dnaState = CreatureManager::HASDNA;
+	dnaSampleCount = 0;
 	AiAgentImplementation::initializeTransientMembers();
 	aiInterfaceComponents.add(ComponentManager::instance()->getComponent<AiCreatureComponent*>("AiCreatureComponent"));
 }
@@ -216,6 +218,11 @@ bool CreatureImplementation::hasOrganics() {
 	return ((getHideMax() + getBoneMax() + getMeatMax()) > 0);
 }
 
+bool CreatureImplementation::hasDNA() {
+	return (dnaState == CreatureManager::HASDNA);
+}
+
+
 bool CreatureImplementation::hasMilk() {
 	return (getMilk() > 0);
 }
@@ -227,7 +234,9 @@ void CreatureImplementation::addAlreadyHarvested(CreatureObject* player) {
 void CreatureImplementation::setMilkState(short milk) {
 	milkState = milk;
 }
-
+void CreatureImplementation::setDnaState(short dna){
+	dnaState = dna;
+}
 void CreatureImplementation::notifyDespawn(Zone* zone) {
 	alreadyHarvested.removeAll();
 
@@ -277,6 +286,8 @@ bool CreatureImplementation::hasSkillToHarvestMe(CreatureObject* player) {
 	if (alreadyHarvested.contains(player->getObjectID()))
 		return false;
 
+	if (dnaState == CreatureManager::DNADEATH)
+		return false;
 	return true;
 }
 
@@ -287,6 +298,42 @@ bool CreatureImplementation::canMilkMe(CreatureObject* player) {
 
 	if(!player->isInRange(_this.get(), 5.0f) || player->isInCombat() || player->isDead() || player->isIncapacitated() || !(player->hasState(CreatureState::MASKSCENT)))
 		return false;
+
+	return true;
+}
+bool CreatureImplementation::hasSkillToSampleMe(CreatureObject* player) {
+
+	if(!player->hasSkill("outdoors_bio_engineer_novice"))
+		return false;
+
+	if (!hasDNA())
+		return false;
+
+	int skillMod = player->getSkillMod("dna_harvesting");
+	int cl = _this.get()->getLevel();
+	// Skill Mod Check, you need atleast x skill points to be able to sample x level unless creature > 13k ham or CL 75 (we only generated values to 75)
+	if (skillMod < 1 || cl > skillMod + 15)
+		return false;
+
+	if (dnaState == CreatureManager::DNASAMPLED)
+		return false;
+
+	return true;
+}
+
+bool CreatureImplementation::canCollectDna(CreatureObject* player) {
+	if (!hasDNA() ||  _this.get()->isInCombat() || _this.get()->isDead() || !player->hasSkill("outdoors_bio_engineer_novice")){
+		return false;
+	}
+	if (player->getSkillMod("dna_harvesting") < 1)
+		return false;
+
+	if (_this.get()->isNonPlayerCreatureObject()) {
+		return false;
+	}
+	if(!player->isInRange(_this.get(), 16.0f) || player->isInCombat() || player->isDead() || player->isIncapacitated() ){
+		return false;
+	}
 
 	return true;
 }

@@ -254,6 +254,8 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/resource/ResourceContainer.cpp \
 				server/zone/objects/tangible/component/Component.cpp \
 				server/zone/objects/tangible/component/armor/ArmorComponent.cpp \
+				server/zone/objects/tangible/component/genetic/GeneticComponent.cpp \
+				server/zone/objects/tangible/component/dna/DnaComponent.cpp \
 				server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.cpp \
 				server/zone/objects/tangible/tool/CraftingTool.cpp \
 				server/zone/objects/tangible/tool/CraftingStation.cpp \
@@ -527,6 +529,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/installation/harvester/HarvesterObjectImplementation.cpp \
 		server/zone/objects/installation/generator/GeneratorObjectImplementation.cpp \
 		server/zone/objects/tangible/component/ComponentImplementation.cpp \
+		server/zone/objects/tangible/component/genetic/GeneticComponentImplementation.cpp \
+		server/zone/objects/tangible/component/dna/DnaComponentImplementation.cpp \
 		server/zone/objects/tangible/component/armor/ArmorComponentImplementation.cpp \
 		server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponentImplementation.cpp \
 		server/zone/objects/tangible/tool/SurveyToolImplementation.cpp \
@@ -667,6 +671,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/creature/SpawnAreaMap.cpp \
 		server/zone/managers/creature/CreatureTemplateManager.cpp \
+		server/zone/managers/creature/DnaSampleRange.cpp \
+		server/zone/managers/creature/DnaManager.cpp \
 		server/zone/managers/combat/CombatManager.cpp \
 		server/zone/managers/combat/CreatureAttackData.cpp \
 		server/zone/objects/mission/MissionObjectImplementation.cpp \

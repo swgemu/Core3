@@ -20,7 +20,7 @@
  *	CreatureStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISCREATURE__,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_RUNAWAY__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SCHEDULEDESPAWN__,RPC_HASORGANICS__,RPC_HASMILK__,RPC_CANHARVESTME__CREATUREOBJECT_,RPC_HASSKILLTOHARVESTME__CREATUREOBJECT_,RPC_CANMILKME__CREATUREOBJECT_,RPC_ADDALREADYHARVESTED__CREATUREOBJECT_,RPC_SETMILKSTATE__SHORT_,RPC_NOTIFYDESPAWN__ZONE_,RPC_ISBABY__,RPC_GETTAME__,RPC_GETMEATTYPE__,RPC_GETBONETYPE__,RPC_GETHIDETYPE__,RPC_GETMILKTYPE__,RPC_GETMILK__,RPC_GETHIDEMAX__,RPC_GETBONEMAX__,RPC_GETMEATMAX__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ISCREATURE__,RPC_GETDNASTATE__,RPC_GETDNASAMPLECOUNT__,RPC_INCDNASAMPLECOUNT__,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_RUNAWAY__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SCHEDULEDESPAWN__,RPC_HASORGANICS__,RPC_HASMILK__,RPC_HASDNA__,RPC_CANHARVESTME__CREATUREOBJECT_,RPC_HASSKILLTOHARVESTME__CREATUREOBJECT_,RPC_CANMILKME__CREATUREOBJECT_,RPC_CANCOLLECTDNA__CREATUREOBJECT_,RPC_HASSKILLTOSAMPLEME__CREATUREOBJECT_,RPC_ADDALREADYHARVESTED__CREATUREOBJECT_,RPC_SETMILKSTATE__SHORT_,RPC_SETDNASTATE__SHORT_,RPC_NOTIFYDESPAWN__ZONE_,RPC_ISBABY__,RPC_GETTAME__,RPC_GETMEATTYPE__,RPC_GETBONETYPE__,RPC_GETHIDETYPE__,RPC_GETMILKTYPE__,RPC_GETMILK__,RPC_GETHIDEMAX__,RPC_GETBONEMAX__,RPC_GETMEATMAX__};
 
 Creature::Creature() : AiAgent(DummyConstructorParameter::instance()) {
 	CreatureImplementation* _implementation = new CreatureImplementation();
@@ -62,6 +62,45 @@ bool Creature::isCreature() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isCreature();
+}
+
+short Creature::getDnaState() {
+	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDNASTATE__);
+
+		return method.executeWithSignedShortReturn();
+	} else
+		return _implementation->getDnaState();
+}
+
+short Creature::getDnaSampleCount() {
+	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDNASAMPLECOUNT__);
+
+		return method.executeWithSignedShortReturn();
+	} else
+		return _implementation->getDnaSampleCount();
+}
+
+void Creature::incDnaSampleCount() {
+	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INCDNASAMPLECOUNT__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->incDnaSampleCount();
 }
 
 bool Creature::isCamouflaged(CreatureObject* target) {
@@ -170,6 +209,19 @@ bool Creature::hasMilk() {
 		return _implementation->hasMilk();
 }
 
+bool Creature::hasDNA() {
+	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HASDNA__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasDNA();
+}
+
 bool Creature::canHarvestMe(CreatureObject* player) {
 	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -212,6 +264,34 @@ bool Creature::canMilkMe(CreatureObject* player) {
 		return _implementation->canMilkMe(player);
 }
 
+bool Creature::canCollectDna(CreatureObject* player) {
+	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CANCOLLECTDNA__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->canCollectDna(player);
+}
+
+bool Creature::hasSkillToSampleMe(CreatureObject* player) {
+	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_HASSKILLTOSAMPLEME__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->hasSkillToSampleMe(player);
+}
+
 void Creature::addAlreadyHarvested(CreatureObject* player) {
 	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -238,6 +318,20 @@ void Creature::setMilkState(short milkState) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setMilkState(milkState);
+}
+
+void Creature::setDnaState(short dnaState) {
+	CreatureImplementation* _implementation = static_cast<CreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETDNASTATE__SHORT_);
+		method.addSignedShortParameter(dnaState);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setDnaState(dnaState);
 }
 
 void Creature::notifyDespawn(Zone* zone) {
@@ -506,6 +600,14 @@ bool CreatureImplementation::readObjectMember(ObjectInputStream* stream, const u
 		TypeInfo<short >::parseFromBinaryStream(&milkState, stream);
 		return true;
 
+	case 0x74d712e: //Creature.dnaState
+		TypeInfo<short >::parseFromBinaryStream(&dnaState, stream);
+		return true;
+
+	case 0x55bbec19: //Creature.dnaSampleCount
+		TypeInfo<short >::parseFromBinaryStream(&dnaSampleCount, stream);
+		return true;
+
 	}
 
 	return false;
@@ -532,8 +634,24 @@ int CreatureImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_nameHashCode = 0x74d712e; //Creature.dnaState
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<short >::toBinaryStream(&dnaState, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 1;
+	_nameHashCode = 0x55bbec19; //Creature.dnaSampleCount
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<short >::toBinaryStream(&dnaSampleCount, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+
+	return _count + 3;
 }
 
 CreatureImplementation::CreatureImplementation() {
@@ -549,6 +667,21 @@ CreatureImplementation::CreatureImplementation() {
 bool CreatureImplementation::isCreature() {
 	// server/zone/objects/creature/Creature.idl():  		return true;
 	return true;
+}
+
+short CreatureImplementation::getDnaState() {
+	// server/zone/objects/creature/Creature.idl():  		return dnaState;
+	return dnaState;
+}
+
+short CreatureImplementation::getDnaSampleCount() {
+	// server/zone/objects/creature/Creature.idl():  		return dnaSampleCount;
+	return dnaSampleCount;
+}
+
+void CreatureImplementation::incDnaSampleCount() {
+	// server/zone/objects/creature/Creature.idl():  		dnaSampleCount++;
+	dnaSampleCount ++;
 }
 
 bool CreatureImplementation::isCamouflaged(CreatureObject* target) {
@@ -658,6 +791,21 @@ void CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(isCreature());
 		}
 		break;
+	case RPC_GETDNASTATE__:
+		{
+			resp->insertSignedShort(getDnaState());
+		}
+		break;
+	case RPC_GETDNASAMPLECOUNT__:
+		{
+			resp->insertSignedShort(getDnaSampleCount());
+		}
+		break;
+	case RPC_INCDNASAMPLECOUNT__:
+		{
+			incDnaSampleCount();
+		}
+		break;
 	case RPC_ISCAMOUFLAGED__CREATUREOBJECT_:
 		{
 			resp->insertBoolean(isCamouflaged(static_cast<CreatureObject*>(inv->getObjectParameter())));
@@ -693,6 +841,11 @@ void CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(hasMilk());
 		}
 		break;
+	case RPC_HASDNA__:
+		{
+			resp->insertBoolean(hasDNA());
+		}
+		break;
 	case RPC_CANHARVESTME__CREATUREOBJECT_:
 		{
 			resp->insertBoolean(canHarvestMe(static_cast<CreatureObject*>(inv->getObjectParameter())));
@@ -708,6 +861,16 @@ void CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(canMilkMe(static_cast<CreatureObject*>(inv->getObjectParameter())));
 		}
 		break;
+	case RPC_CANCOLLECTDNA__CREATUREOBJECT_:
+		{
+			resp->insertBoolean(canCollectDna(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
+		break;
+	case RPC_HASSKILLTOSAMPLEME__CREATUREOBJECT_:
+		{
+			resp->insertBoolean(hasSkillToSampleMe(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
+		break;
 	case RPC_ADDALREADYHARVESTED__CREATUREOBJECT_:
 		{
 			addAlreadyHarvested(static_cast<CreatureObject*>(inv->getObjectParameter()));
@@ -716,6 +879,11 @@ void CreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETMILKSTATE__SHORT_:
 		{
 			setMilkState(inv->getSignedShortParameter());
+		}
+		break;
+	case RPC_SETDNASTATE__SHORT_:
+		{
+			setDnaState(inv->getSignedShortParameter());
 		}
 		break;
 	case RPC_NOTIFYDESPAWN__ZONE_:
@@ -786,6 +954,18 @@ bool CreatureAdapter::isCreature() {
 	return (static_cast<Creature*>(stub))->isCreature();
 }
 
+short CreatureAdapter::getDnaState() {
+	return (static_cast<Creature*>(stub))->getDnaState();
+}
+
+short CreatureAdapter::getDnaSampleCount() {
+	return (static_cast<Creature*>(stub))->getDnaSampleCount();
+}
+
+void CreatureAdapter::incDnaSampleCount() {
+	(static_cast<Creature*>(stub))->incDnaSampleCount();
+}
+
 bool CreatureAdapter::isCamouflaged(CreatureObject* target) {
 	return (static_cast<Creature*>(stub))->isCamouflaged(target);
 }
@@ -814,6 +994,10 @@ bool CreatureAdapter::hasMilk() {
 	return (static_cast<Creature*>(stub))->hasMilk();
 }
 
+bool CreatureAdapter::hasDNA() {
+	return (static_cast<Creature*>(stub))->hasDNA();
+}
+
 bool CreatureAdapter::canHarvestMe(CreatureObject* player) {
 	return (static_cast<Creature*>(stub))->canHarvestMe(player);
 }
@@ -826,12 +1010,24 @@ bool CreatureAdapter::canMilkMe(CreatureObject* player) {
 	return (static_cast<Creature*>(stub))->canMilkMe(player);
 }
 
+bool CreatureAdapter::canCollectDna(CreatureObject* player) {
+	return (static_cast<Creature*>(stub))->canCollectDna(player);
+}
+
+bool CreatureAdapter::hasSkillToSampleMe(CreatureObject* player) {
+	return (static_cast<Creature*>(stub))->hasSkillToSampleMe(player);
+}
+
 void CreatureAdapter::addAlreadyHarvested(CreatureObject* player) {
 	(static_cast<Creature*>(stub))->addAlreadyHarvested(player);
 }
 
 void CreatureAdapter::setMilkState(short milkState) {
 	(static_cast<Creature*>(stub))->setMilkState(milkState);
+}
+
+void CreatureAdapter::setDnaState(short dnaState) {
+	(static_cast<Creature*>(stub))->setDnaState(dnaState);
 }
 
 void CreatureAdapter::notifyDespawn(Zone* zone) {

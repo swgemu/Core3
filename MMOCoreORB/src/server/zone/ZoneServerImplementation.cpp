@@ -70,6 +70,7 @@ which carries forward this exception.
 #include "managers/minigames/ForageManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
 #include "managers/creature/CreatureTemplateManager.h"
+#include "managers/creature/DnaManager.h"
 #include "managers/guild/GuildManager.h"
 #include "managers/creature/CreatureManager.h"
 #include "managers/faction/FactionManager.h"
@@ -180,6 +181,9 @@ void ZoneServerImplementation::initialize() {
 
 	creatureTemplateManager = CreatureTemplateManager::instance();
 	creatureTemplateManager->loadTemplates();
+
+	dnaManager = DnaManager::instance();
+	dnaManager->loadSampleData();
 
 	phandler = new BasePacketHandler("ZoneServer", zoneHandler);
 	phandler->setLogging(false);

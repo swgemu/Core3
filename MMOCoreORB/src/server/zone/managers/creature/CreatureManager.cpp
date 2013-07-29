@@ -24,13 +24,15 @@
 
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 
+#include "server/zone/managers/creature/DnaManager.h"
+
 #include "server/zone/objects/area/SpawnArea.h"
 
 /*
  *	CreatureManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_SPAWNLAIR__INT_INT_FLOAT_FLOAT_FLOAT_INT_,RPC_SPAWNCREATUREWITHAI__INT_FLOAT_FLOAT_FLOAT_SCENEOBJECT_BOOL_,RPC_SPAWNCREATUREWITHLEVEL__INT_INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_BOOL_,RPC_CREATECREATURE__INT_BOOL_INT_,RPC_PLACECREATURE__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_LONG_,RPC_GETTEMPLATETOSPAWN__INT_,RPC_LOADSPAWNAREAS__,RPC_LOADAITEMPLATES__,RPC_LOADSINGLESPAWNS__,RPC_LOADTRAINERS__,RPC_LOADMISSIONSPAWNS__,RPC_LOADINFORMANTS__,RPC_SPAWNRANDOMCREATURESAROUND__SCENEOBJECT_,RPC_SPAWNRANDOMCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_HARVEST__CREATURE_CREATUREOBJECT_INT_,RPC_MILK__CREATURE_CREATUREOBJECT_,RPC_ADDTORESERVEPOOL__AIAGENT_,RPC_GETSPAWNEDRANDOMCREATURES__,RPC_GETSPAWNAREA__STRING_,RPC_ADDWEARABLEITEM__CREATUREOBJECT_TANGIBLEOBJECT_};
+enum {RPC_INITIALIZE__ = 6,RPC_SPAWNLAIR__INT_INT_FLOAT_FLOAT_FLOAT_INT_,RPC_SPAWNCREATUREWITHAI__INT_FLOAT_FLOAT_FLOAT_SCENEOBJECT_BOOL_,RPC_SPAWNCREATUREWITHLEVEL__INT_INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_SPAWNCREATURE__INT_INT_FLOAT_FLOAT_FLOAT_LONG_BOOL_,RPC_CREATECREATURE__INT_BOOL_INT_,RPC_PLACECREATURE__CREATUREOBJECT_FLOAT_FLOAT_FLOAT_LONG_,RPC_GETTEMPLATETOSPAWN__INT_,RPC_LOADSPAWNAREAS__,RPC_LOADAITEMPLATES__,RPC_LOADSINGLESPAWNS__,RPC_LOADTRAINERS__,RPC_LOADMISSIONSPAWNS__,RPC_LOADINFORMANTS__,RPC_SPAWNRANDOMCREATURESAROUND__SCENEOBJECT_,RPC_SPAWNRANDOMCREATURE__INT_FLOAT_FLOAT_FLOAT_LONG_,RPC_HARVEST__CREATURE_CREATUREOBJECT_INT_,RPC_MILK__CREATURE_CREATUREOBJECT_,RPC_SAMPLE__CREATURE_CREATUREOBJECT_,RPC_ADDTORESERVEPOOL__AIAGENT_,RPC_GETSPAWNEDRANDOMCREATURES__,RPC_GETSPAWNAREA__STRING_,RPC_ADDWEARABLEITEM__CREATUREOBJECT_TANGIBLEOBJECT_};
 
 CreatureManager::CreatureManager(Zone* planet) : ZoneManager(DummyConstructorParameter::instance()) {
 	CreatureManagerImplementation* _implementation = new CreatureManagerImplementation(planet);
@@ -354,6 +356,21 @@ void CreatureManager::milk(Creature* creature, CreatureObject* player) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->milk(creature, player);
+}
+
+void CreatureManager::sample(Creature* creature, CreatureObject* player) {
+	CreatureManagerImplementation* _implementation = static_cast<CreatureManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SAMPLE__CREATURE_CREATUREOBJECT_);
+		method.addObjectParameter(creature);
+		method.addObjectParameter(player);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sample(creature, player);
 }
 
 void CreatureManager::addToReservePool(AiAgent* agent) {
@@ -825,6 +842,11 @@ void CreatureManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 			milk(static_cast<Creature*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		}
 		break;
+	case RPC_SAMPLE__CREATURE_CREATUREOBJECT_:
+		{
+			sample(static_cast<Creature*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
+		break;
 	case RPC_ADDTORESERVEPOOL__AIAGENT_:
 		{
 			addToReservePool(static_cast<AiAgent*>(inv->getObjectParameter()));
@@ -925,6 +947,10 @@ void CreatureManagerAdapter::harvest(Creature* creature, CreatureObject* player,
 
 void CreatureManagerAdapter::milk(Creature* creature, CreatureObject* player) {
 	(static_cast<CreatureManager*>(stub))->milk(creature, player);
+}
+
+void CreatureManagerAdapter::sample(Creature* creature, CreatureObject* player) {
+	(static_cast<CreatureManager*>(stub))->sample(creature, player);
 }
 
 void CreatureManagerAdapter::addToReservePool(AiAgent* agent) {
