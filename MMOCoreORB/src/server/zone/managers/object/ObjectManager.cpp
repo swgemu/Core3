@@ -59,6 +59,7 @@ ObjectManager::ObjectManager() : DOBObjectManager() {
 	databaseManager->loadObjectDatabase("spawnareas", true);
 	databaseManager->loadObjectDatabase("spawnobservers", true);
 	databaseManager->loadObjectDatabase("aiobservers", true);
+	databaseManager->loadObjectDatabase("events", true);
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
