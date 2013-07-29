@@ -696,10 +696,13 @@ bool TangibleObjectImplementation::applyComponentStats(ManufactureSchematic* man
 					if (key == "") {
 						continue;
 					} else {
-						float value = component->getAttributeValue(property);
+						currentvalue = component->getAttributeValue(property);
+
+						precision = component->getAttributePrecision(property);
+
+						int preciseValue = Math::getPrecision(currentvalue, precision);
 
 						WearableObjectImplementation* clothing = cast<WearableObjectImplementation*>(this);
-
 
 						VectorMap<String, int>* clothingMods = clothing->getWearableSkillMods();
 
@@ -709,12 +712,12 @@ bool TangibleObjectImplementation::applyComponentStats(ManufactureSchematic* man
 							existingValue = clothingMods->get(key);
 						}
 
-						value += existingValue;
+						preciseValue += existingValue;
 
-						if (value > 25)
-							value = 25;
+						if (preciseValue > 25)
+							preciseValue = 25;
 
-						clothing->addSkillMod(SkillModManager::WEARABLE, key, value);
+						clothing->addSkillMod(SkillModManager::WEARABLE, key, preciseValue);
 					}
 				}
 			}
