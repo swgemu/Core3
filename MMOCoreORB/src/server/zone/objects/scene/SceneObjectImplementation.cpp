@@ -88,6 +88,7 @@ which carries forward this exception.
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/ContainerComponent.h"
 #include "server/zone/objects/scene/components/AiDummyComponent.h"
+#include "server/zone/objects/structure/components/GarageDataComponent.h"
 #include "PositionUpdateTask.h"
 
 #include "server/zone/objects/tangible/sign/SignObject.h"
@@ -1434,6 +1435,13 @@ void SceneObjectImplementation::createChildObjects() {
 		permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 
 		obj->initializeChildObject(_this.get());
+	}
+
+	if (isGarage()) {
+		GarageDataComponent* garageData = cast<GarageDataComponent*>(dataObjectComponent.get());
+
+		if (garageData != NULL)
+			garageData->createGarageArea();
 	}
 }
 

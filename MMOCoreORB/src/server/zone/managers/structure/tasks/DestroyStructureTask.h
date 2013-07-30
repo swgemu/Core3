@@ -12,6 +12,7 @@
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "server/zone/objects/structure/components/GarageDataComponent.h"
 
 class DestroyStructureTask : public Task {
 protected:
@@ -117,6 +118,16 @@ public:
 			if (ghost != NULL && ghost->isPlayerObject()) {
 				PlayerObject* playerObject = cast<PlayerObject*>(ghost.get());
 				playerObject->removeOwnedStructure(structureObject);
+			}
+		}
+
+		if (structureObject->isGarage()) {
+			GarageDataComponent* garageData = cast<GarageDataComponent*>(structureObject->getDataObjectComponent()->get());
+			if (garageData != NULL) {
+				ManagedReference<ActiveArea*> area = garageData->getGarageArea();
+
+				if (area != NULL)
+					area->destroyObjectFromWorld(false);
 			}
 		}
 
