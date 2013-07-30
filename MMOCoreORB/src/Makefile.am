@@ -318,6 +318,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/building/components/CityHallZoneComponent.cpp \
 		server/zone/objects/building/components/DestructibleBuildingDataComponent.cpp \
 		server/zone/objects/structure/components/StructureZoneComponent.cpp \
+		server/zone/objects/structure/components/GarageDataComponent.cpp \
 		server/zone/objects/tangible/components/FireHeavyWeaponMenuComponent.cpp \
 		server/zone/objects/tangible/components/ThrowGrenadeMenuComponent.cpp \
 		server/zone/objects/tangible/powerup/PowerupObjectImplementation.cpp \

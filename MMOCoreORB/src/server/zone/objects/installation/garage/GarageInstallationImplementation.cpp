@@ -12,7 +12,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
 
-void GarageInstallationImplementation::createChildObjects() {
+/*void GarageInstallationImplementation::createChildObjects() {
 	float positionX = coordinates.getPositionX();
 	float positionY = coordinates.getPositionY();
 	float positionZ = coordinates.getPositionZ();
@@ -33,14 +33,14 @@ void GarageInstallationImplementation::createChildObjects() {
 	garageArea = activeArea;
 
 	TangibleObjectImplementation::createChildObjects();
-}
+}*/
 
 void GarageInstallationImplementation::notifyRemoveFromZone() {
 	InstallationObjectImplementation::notifyRemoveFromZone();
 
-	if (garageArea != NULL) {
+	if (garageArea != NULL)
 		garageArea->destroyObjectFromWorld(false);
-	}
+
 }
 
 void GarageInstallationImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
@@ -51,4 +51,5 @@ void GarageInstallationImplementation::destroyObjectFromDatabase(bool destroyCon
 
 	if (garageArea != NULL)
 		garageArea->destroyObjectFromDatabase(true);
+
 }

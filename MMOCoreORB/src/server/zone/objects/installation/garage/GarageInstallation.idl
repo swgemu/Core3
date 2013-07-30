@@ -51,10 +51,10 @@ class GarageInstallation extends InstallationObject {
 	protected ActiveArea garageArea;
 	
 	public GarageInstallation() {
-		setLoggingName("ShuttleInstallation");
+		setLoggingName("GarageInstallation");
 	}
 	
-	public native void createChildObjects();
+	//public native void createChildObjects();
 	
 	public native void notifyRemoveFromZone();
 	
