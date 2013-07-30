@@ -10,7 +10,7 @@
  *	GarageInstallationStub
  */
 
-enum {RPC_CREATECHILDOBJECTS__ = 6,RPC_NOTIFYREMOVEFROMZONE__,RPC_DESTROYOBJECTFROMDATABASE__BOOL_};
+enum {RPC_NOTIFYREMOVEFROMZONE__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_};
 
 GarageInstallation::GarageInstallation() : InstallationObject(DummyConstructorParameter::instance()) {
 	GarageInstallationImplementation* _implementation = new GarageInstallationImplementation();
@@ -27,19 +27,6 @@ GarageInstallation::~GarageInstallation() {
 }
 
 
-
-void GarageInstallation::createChildObjects() {
-	GarageInstallationImplementation* _implementation = static_cast<GarageInstallationImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CREATECHILDOBJECTS__);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->createChildObjects();
-}
 
 void GarageInstallation::notifyRemoveFromZone() {
 	GarageInstallationImplementation* _implementation = static_cast<GarageInstallationImplementation*>(_getImplementation());
@@ -214,8 +201,8 @@ int GarageInstallationImplementation::writeObjectMembers(ObjectOutputStream* str
 
 GarageInstallationImplementation::GarageInstallationImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/installation/garage/GarageInstallation.idl():  		setLoggingName("ShuttleInstallation");
-	setLoggingName("ShuttleInstallation");
+	// server/zone/objects/installation/garage/GarageInstallation.idl():  		setLoggingName("GarageInstallation");
+	setLoggingName("GarageInstallation");
 }
 
 /*
@@ -233,11 +220,6 @@ void GarageInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
-	case RPC_CREATECHILDOBJECTS__:
-		{
-			createChildObjects();
-		}
-		break;
 	case RPC_NOTIFYREMOVEFROMZONE__:
 		{
 			notifyRemoveFromZone();
@@ -251,10 +233,6 @@ void GarageInstallationAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	default:
 		throw Exception("Method does not exists");
 	}
-}
-
-void GarageInstallationAdapter::createChildObjects() {
-	(static_cast<GarageInstallation*>(stub))->createChildObjects();
 }
 
 void GarageInstallationAdapter::notifyRemoveFromZone() {

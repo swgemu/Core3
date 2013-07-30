@@ -37,8 +37,6 @@ class GarageInstallation : public InstallationObject {
 public:
 	GarageInstallation();
 
-	void createChildObjects();
-
 	void notifyRemoveFromZone();
 
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
@@ -78,8 +76,6 @@ public:
 	GarageInstallationImplementation();
 
 	GarageInstallationImplementation(DummyConstructorParameter* param);
-
-	void createChildObjects();
 
 	void notifyRemoveFromZone();
 
@@ -127,8 +123,6 @@ public:
 	GarageInstallationAdapter(GarageInstallation* impl);
 
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
-
-	void createChildObjects();
 
 	void notifyRemoveFromZone();
 
