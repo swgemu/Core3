@@ -16,6 +16,24 @@
       "revId": "b502dd8fa26f9113e4e173bb3be510c700b51a30",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAC3///S8\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2013-07-30T04:06:32Z",
+      "side": 1,
+      "message": "Ok thanks, didn\u0027t know about that.",
+      "parentUuid": "AAAAC3///TY\u003d",
+      "revId": "b502dd8fa26f9113e4e173bb3be510c700b51a30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
