@@ -173,6 +173,7 @@ protected:
 	int doAreaCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data);
 	int doTargetCombatAction(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defenderObject, const CreatureAttackData& data);
 	void applyDots(CreatureObject* attacker, CreatureObject* defender, const CreatureAttackData& data, int appliedDamage);
+	void applyWeaponDots(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon);
 
 	float getWeaponRangeModifier(float currentRange, WeaponObject* weapon);
 
