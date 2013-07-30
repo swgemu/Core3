@@ -30,8 +30,9 @@ jawa_avenger = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 7000000},
-				{group = "tailor_components", chance = 1300000},
+				{group = "junk", chance = 6500000},
+				{group = "armor_looted", chance = 800000},
+				{group = "tailor_components", chance = 1000000},
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "color_crystals", chance = 200000}
 			},
