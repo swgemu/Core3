@@ -330,8 +330,76 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 	if (getForceCost() > 0)
 		alm->insertAttribute("forcecost", getForceCost());
 
-	/*if (getDotCount() > 0)
-		generateDotAttributes(alm);*/
+	if (getDotType() > 0) {
+
+			String dt;
+
+			switch (dotType) {
+			case 1:
+				dt = "Poison";
+				break;
+			case 2:
+				dt = "Disease";
+				break;
+			case 3:
+				dt = "Fire";
+				break;
+			default:
+				dt = "Unknown";
+				break;
+			}
+
+			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_type", dt);
+
+			String da;
+
+			switch (dotAttribute) {
+			case 1:
+				da = "Health";
+				break;
+			case 2:
+				da = "Strength";
+				break;
+			case 3:
+				da = "Constitution";
+				break;
+			case 4:
+				da = "Action";
+				break;
+			case 5:
+				da = "Quickness";
+				break;
+			case 6:
+				da = "Stamina";
+				break;
+			case 7:
+				da = "Mind";
+				break;
+			case 8:
+				da = "Focus";
+				break;
+			case 9:
+				da = "Willpower";
+				break;
+			default:
+				da = "Unknown";
+				break;
+			}
+
+			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", da);
+
+			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_strength", getDotStrength());
+
+			StringBuffer dotDur;
+			dotDur << getDotDuration() << "s";
+			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_duration", dotDur);
+
+			StringBuffer dotPot;
+			dotPot << getDotPotency() << "%";
+			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_potency", dotPot);
+
+			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_uses", getDotUses());
+		}
 
 	if(hasPowerup())
 		powerupObject->fillWeaponAttributeList(alm, _this.get());
