@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAC3///TY\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-07-30T03:57:17Z",
+      "side": 1,
+      "message": "int parameterCount \u003d lua_gettop(L) - 1;\n\nyou get the parameter count and can use it to know if to check for the save parameter, otherwise it will corupt the stack",
+      "revId": "b502dd8fa26f9113e4e173bb3be510c700b51a30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
