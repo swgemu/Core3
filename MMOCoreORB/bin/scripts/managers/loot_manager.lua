@@ -46,6 +46,22 @@ legendaryChance = 1000000 --1 in 1,000,000
 --exceptionalChance = 100 --1 in 100 for testing
 --legendaryChance = 1000 --1 in 1000 for testing
 
+-- Determines what weapon templates will drop with DoTs on them. See Weapon Object for names.
+weaponDotTemplates = {
+	"onehandmelee",
+	"pistol",
+	"polearm",
+	"twohandmelee"
+}
+
+-- Determines how often a Dot can drop off a weapon.
+dotChance = 350 --1 in 350
+
+-- Determines the maximum stats a DoT weapon can have.
+dotPotencyMax = 100 --Percentage of potency (default 100%)
+dotStrengthMax = 500 -- Amount of Strength max for the DoT.
+dotDurationMax = 200 -- Max amount of duration in seconds possible to drop.
+
 --Determines how much of an increase in the base stats will be applied to the object.
 exceptionalModifier = 2.5
 legendaryModifier = 5.0
