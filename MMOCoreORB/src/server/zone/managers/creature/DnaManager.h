@@ -20,16 +20,16 @@ namespace creature {
 
 class DnaManager : public Singleton<DnaManager>, public Object, public Logger {
 protected:
-	HashTable<uint32, Reference<DnaSampleRange*> > dexerity;
-	HashTable<uint32, Reference<DnaSampleRange*> > fortitude;
-	HashTable<uint32, Reference<DnaSampleRange*> > endurance;
-	HashTable<uint32, Reference<DnaSampleRange*> > intelligence;
-	HashTable<uint32, Reference<DnaSampleRange*> > hardiness;
-	HashTable<uint32, Reference<DnaSampleRange*> > power;
-	HashTable<uint32, Reference<DnaSampleRange*> > cleverness;
-	HashTable<uint32, Reference<DnaSampleRange*> > courage;
-	HashTable<uint32, Reference<DnaSampleRange*> > dependency;
-	HashTable<uint32, Reference<DnaSampleRange*> > fierceness;
+	HashTable<uint32, DnaSampleRange* > dexerity;
+	HashTable<uint32, DnaSampleRange* > fortitude;
+	HashTable<uint32, DnaSampleRange* > endurance;
+	HashTable<uint32, DnaSampleRange* > intelligence;
+	HashTable<uint32, DnaSampleRange* > hardiness;
+	HashTable<uint32, DnaSampleRange* > power;
+	HashTable<uint32, DnaSampleRange* > cleverness;
+	HashTable<uint32, DnaSampleRange* > courage;
+	HashTable<uint32, DnaSampleRange* > dependency;
+	HashTable<uint32, DnaSampleRange* > fierceness;
 	HashTable<int,uint32> qualityTemplates;
 	Lua* lua;
 	static AtomicInteger loadedDnaData;

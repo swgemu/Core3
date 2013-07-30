@@ -44,6 +44,7 @@ public:
 	static const int LQ  = 6;
 	static const int VLQ = 7;
 	int generateValue(int quality);
+	String toString();
 };
 
 }

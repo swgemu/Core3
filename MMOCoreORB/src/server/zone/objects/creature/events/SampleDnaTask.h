@@ -114,12 +114,16 @@ public:
 					int aggroChance = System::random(100) + (creature->getDnaSampleCount() * 15);
 					if (aggroChance > sampleRoll)  // aggro
 						result = 3;
-					else if (creature->getDnaSampleCount() > maxSamples ) // shock the creature
-						result = 4;
-					else // it didnt care
-						// no op for now, but int he future it will pop the alert state up
+					else if (creature->getDnaSampleCount() > maxSamples ) {// shock the creature
+						if (result == 3)
+							creature->setDnaState(CreatureManager::DNASAMPLED);
+						else
+							result = 4;
+					}
+					else { // it didnt care
 						creature->activateAwarenessEvent(player);
 						result = 5;
+					}
 				}
 				switch(result) {
 					case 1:

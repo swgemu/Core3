@@ -23,10 +23,20 @@ DnaSampleRange::DnaSampleRange(LuaObject& obj) {
 	lqMin  = obj.getIntField("lqMin");
 	vlqMax = obj.getIntField("vlqMax");
 	vlqMin = obj.getIntField("vlqMin");
-
 }
 
 DnaSampleRange::~DnaSampleRange() {
+}
+String DnaSampleRange::toString() {
+	StringBuffer buffer;
+	buffer.append("VHQ ").append("[").append(vhqMax).append("-").append(vhqMin).append("],");
+	buffer.append("HQ ").append("[").append(hqMax).append("-").append(hqMin).append("],");
+	buffer.append("AA ").append("[").append(aaMax).append("-").append(aaMin).append("],");
+	buffer.append("A ").append("[").append(aMax).append("-").append(aMin).append("],");
+	buffer.append("BA ").append("[").append(baMax).append("-").append(baMin).append("],");
+	buffer.append("LQ ").append("[").append(lqMax).append("-").append(lqMin).append("],");
+	buffer.append("VLQ ").append("[").append(vlqMax).append("-").append(vlqMin).append("]\n");
+	return buffer.toString();
 }
 int DnaSampleRange::generateValue(int quality){
 	uint32 max,min;
@@ -69,6 +79,6 @@ int DnaSampleRange::generateValue(int quality){
 		default:{
 			return 0;
 		}
-		return (int)(System::random(max-min) + min);
 	}
+	return (int)(System::random(max-min) + min);
 }
