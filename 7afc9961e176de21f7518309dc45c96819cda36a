@@ -52,6 +52,24 @@
       "revId": "7afc9961e176de21f7518309dc45c96819cda36a",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAC3///VA\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/gcw/GCWManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-07-30T02:47:40Z",
+      "side": 1,
+      "message": "initializeBase is false when called form loadPlayerStructures() so it shouldn\u0027t hit this.",
+      "parentUuid": "AAAAC3///VI\u003d",
+      "revId": "7afc9961e176de21f7518309dc45c96819cda36a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
