@@ -119,6 +119,7 @@ class DnaComponent extends Component {
 		dependency = dep;
 		fortitude = frt;
 		hardiness = har;
+		dexterity = dex;
 	}
 	public void setCleverness(unsigned int value) {
 		cleverness = value;

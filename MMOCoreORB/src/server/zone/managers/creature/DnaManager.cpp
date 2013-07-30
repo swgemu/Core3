@@ -64,25 +64,25 @@ int DnaManager::generateXp(int creatureLevel) {
 int DnaManager::generateScoreFor(int stat, int cl, int quality) {
 	switch(stat){
 		case DnaManager::CLEVERNESS:
-			return cleverness.get(cl)->generateValue(quality);
+			return instance()->cleverness.get(cl)->generateValue(quality);
 		case DnaManager::COURAGE:
-			return courage.get(cl)->generateValue(quality);
+			return instance()->courage.get(cl)->generateValue(quality);
 		case DnaManager::DEPENDABILITY:
-			return dependency.get(cl)->generateValue(quality);
+			return instance()->dependency.get(cl)->generateValue(quality);
 		case DnaManager::DEXTERITY:
-			return dexerity.get(cl)->generateValue(quality);
+			return instance()->dexerity.get(cl)->generateValue(quality);
 		case DnaManager::ENDURANCE:
-			return endurance.get(cl)->generateValue(quality);
+			return instance()->endurance.get(cl)->generateValue(quality);
 		case DnaManager::FIERCENESS:
-			return fierceness.get(cl)->generateValue(quality);
+			return instance()->fierceness.get(cl)->generateValue(quality);
 		case DnaManager::FORTITUDE:
-			return fortitude.get(cl)->generateValue(quality);
+			return instance()->fortitude.get(cl)->generateValue(quality);
 		case DnaManager::HARDINESS:
-			return hardiness.get(cl)->generateValue(quality);
+			return instance()->hardiness.get(cl)->generateValue(quality);
 		case DnaManager::INTELLIGENCE:
-			return intelligence.get(cl)->generateValue(quality);
+			return instance()->intelligence.get(cl)->generateValue(quality);
 		case DnaManager::POWER:
-			return power.get(cl)->generateValue(quality);
+			return instance()->power.get(cl)->generateValue(quality);
 		default:
 			return 0;
 	}
@@ -98,53 +98,54 @@ int DnaManager::addRange(lua_State* L) {
 	int stat = lua_tointeger(L,-3);
 	int level = lua_tointeger(L,-2);
 	LuaObject obj(L);
-	Reference<DnaSampleRange*> range = new DnaSampleRange(obj);
+	System::out << "Adding Level " <<level << " for stat " << stat << "\n";
 	// Find the right Range
 	switch(stat) {
 		case DnaManager::CLEVERNESS: {
-			DnaManager::instance()->cleverness.put(level,range);
+			DnaManager::instance()->cleverness.put(level,new DnaSampleRange(obj));
 			break;
 		}
 		case DnaManager::COURAGE: {
-			DnaManager::instance()->courage.put(level,range);
+			DnaManager::instance()->courage.put(level,new DnaSampleRange(obj));
 			break;
 		}
 		case DnaManager::DEPENDABILITY: {
-			DnaManager::instance()->dependency.put(level,range);
+			DnaManager::instance()->dependency.put(level,new DnaSampleRange(obj));
 			break;
 		}
 		case DnaManager::DEXTERITY: {
-			DnaManager::instance()->dexerity.put(level,range);
+			DnaManager::instance()->dexerity.put(level,new DnaSampleRange(obj));
 			break;
 		}
 		case DnaManager::ENDURANCE: {
-			DnaManager::instance()->endurance.put(level,range);
+			DnaManager::instance()->endurance.put(level,new DnaSampleRange(obj));
 			break;
 		}
 		case DnaManager::FIERCENESS: {
-			DnaManager::instance()->fierceness.put(level,range);
+			DnaManager::instance()->fierceness.put(level,new DnaSampleRange(obj));
 			break;
 		}
 		case DnaManager::FORTITUDE: {
-			DnaManager::instance()->fortitude.put(level,range);
+			DnaManager::instance()->fortitude.put(level,new DnaSampleRange(obj));
 			break;
 		}
 		case DnaManager::HARDINESS: {
-			DnaManager::instance()->hardiness.put(level,range);
+			DnaManager::instance()->hardiness.put(level,new DnaSampleRange(obj));
 			break;
 		}
 		case DnaManager::INTELLIGENCE: {
-			DnaManager::instance()->intelligence.put(level,range);
+			DnaManager::instance()->intelligence.put(level,new DnaSampleRange(obj));
 			break;
 		}
 		case DnaManager::POWER: {
-			DnaManager::instance()->power.put(level,range);
+			DnaManager::instance()->power.put(level,new DnaSampleRange(obj));
 			break;
 		}
 		default: {
 			DnaManager::instance()->info("Unknown stat provided "+stat);
 		}
 	}
+	obj.pop();
 	int count = loadedDnaData.increment();
 	if (ConfigManager::instance()->isProgressMonitorActivated())
 		printf("\r\tLoading dna range: [%d] / [745]\t", count);
@@ -161,16 +162,16 @@ void DnaManager::generateSample(Creature* creature, CreatureObject* player,int q
 
 	int ferocity = creatureTemplate->getFerocity();
 	int cl = creature->getLevel();
-	int cle = generateScoreFor(DnaManager::CLEVERNESS,cl,quality);
-	int cou = generateScoreFor(DnaManager::COURAGE,cl,quality);
-	int dep = generateScoreFor(DnaManager::DEPENDABILITY,cl,quality);
-	int dex = generateScoreFor(DnaManager::DEXTERITY,cl,quality);
-	int end = generateScoreFor(DnaManager::ENDURANCE,cl,quality);
-	int fie = generateScoreFor(DnaManager::FIERCENESS,ferocity,quality);
-	int frt = generateScoreFor(DnaManager::FORTITUDE,cl,quality);
-	int har = generateScoreFor(DnaManager::HARDINESS,cl,quality);
-	int ite = generateScoreFor(DnaManager::INTELLIGENCE,cl,quality);
-	int pow = generateScoreFor(DnaManager::POWER,cl,quality);
+	int cle = instance()->generateScoreFor(DnaManager::CLEVERNESS,cl,quality);
+	int cou = instance()->generateScoreFor(DnaManager::COURAGE,cl,quality);
+	int dep = instance()->generateScoreFor(DnaManager::DEPENDABILITY,cl,quality);
+	int dex = instance()->generateScoreFor(DnaManager::DEXTERITY,cl,quality);
+	int end = instance()->generateScoreFor(DnaManager::ENDURANCE,cl,quality);
+	int fie = instance()->generateScoreFor(DnaManager::FIERCENESS,ferocity,quality);
+	int frt = instance()->generateScoreFor(DnaManager::FORTITUDE,cl,quality);
+	int har = instance()->generateScoreFor(DnaManager::HARDINESS,cl,quality);
+	int ite = instance()->generateScoreFor(DnaManager::INTELLIGENCE,cl,quality);
+	int pow = instance()->generateScoreFor(DnaManager::POWER,cl,quality);
 	// We should now have enough to generate a sample
 	ManagedReference<DnaComponent*> prototype = dynamic_cast<DnaComponent*>(player->getZoneServer()->createObject(qualityTemplates.get(quality), 1));
 	if (prototype == NULL) {
