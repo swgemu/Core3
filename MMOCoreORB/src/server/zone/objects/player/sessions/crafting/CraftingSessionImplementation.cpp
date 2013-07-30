@@ -1008,9 +1008,14 @@ void CraftingSessionImplementation::customization(const String& name, byte templ
 
 		if (draftSchematic != NULL) {
 			if (draftSchematic->getTemplateListSize() >= (int) templateChoice) {
-				uint32 clientCRC = draftSchematic->getTemplate(
-						(int) templateChoice).hashCode();
+				String chosenTemplate = draftSchematic->getTemplate((int) templateChoice);
+				uint32 clientCRC = chosenTemplate.hashCode();
 				prototype->setClientObjectCRC(clientCRC);
+
+				String minusShared = chosenTemplate.replaceAll("shared_","");
+				SharedObjectTemplate* newTemplate = TemplateManager::instance()->getTemplate(minusShared.hashCode());
+
+				prototype->loadTemplateData(newTemplate);
 
 				prototype->sendDestroyTo(crafter);
 				prototype->sendTo(crafter, true);
