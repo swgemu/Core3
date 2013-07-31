@@ -1,4 +1,4 @@
---My first code for SWGEmu!!!
+--My first code for SWGEmu!
 --Coded By: NickWill86
 --This is only a sample of this POI, if you like where the Ewoks are placed, i will added more to the other trees around it.
 
@@ -104,7 +104,7 @@ function EndorEwokTreeVillage01ScreenPlay:spawnMobiles()
 	spawnMobile("endor", "panshee_warrior",300,94.6,9,48.3,-9,0)--GuardNearFire(2/2)
 	spawnMobile("endor", "panshee_warrior",300,97.3,9,51,-78,0)--GuardNearFire(1/2)
 	spawnMobile("endor", "panshee_warrior",300,112.5,9.3,39.5,126,0)--GuardingStairs
---First Floor
+	--First Floor
 	spawnMobile("endor", "panshee_warrior",300,93.7,19.3,40.1,50,0)--Guard
 	spawnMobile("endor", "panshee_shaman",300,100,19.0,36.7,-124,0)--Hut
 	spawnMobile("endor", "panshee_tribesman",300,105.1,19.3,29.1,-35,0)--OverLook#1
