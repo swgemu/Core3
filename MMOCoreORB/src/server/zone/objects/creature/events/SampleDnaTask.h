@@ -65,11 +65,11 @@ public:
 					player->sendSystemMessage("@bio_engineer:harvest_dna_begin_harvest");
 					currentPhase = SAMPLING;
 					player->addPendingTask("sampledna",this,1000);
+					player->doAnimation("heal_other");
+					originalMask = creature->getPvpStatusBitmask();
+					// Turn off attackable flag while sampling (publish 3)
+					creature->clearState(CreatureFlag::ATTACKABLE,true);
 				}
-				player->doAnimation("heal_other");
-				originalMask = creature->getPvpStatusBitmask();
-				// Turn off attackable flag while sampling (publish 3)
-				creature->setPvpStatusBitmask(originalMask & ~CreatureFlag::ATTACKABLE,true);
 				break;
 			case SAMPLING:
 				if (waitCount == 9) {
@@ -110,19 +110,20 @@ public:
 					result = 2;
 				} else { // success
 					int maxSamples = ceil(skillMod/25);
-					// did we aggro?
-					int aggroChance = System::random(100) + (creature->getDnaSampleCount() * 15);
-					if (aggroChance > sampleRoll)  // aggro
-						result = 3;
-					else if (creature->getDnaSampleCount() > maxSamples ) {// shock the creature
-						if (result == 3)
-							creature->setDnaState(CreatureManager::DNASAMPLED);
-						else
-							result = 4;
-					}
-					else { // it didnt care
-						creature->activateAwarenessEvent(player);
-						result = 5;
+					if (creature->getDnaSampleCount() > maxSamples ){
+						creature->setDnaState(CreatureManager::DNASAMPLED);
+						// We took the max samples the shock it too much and kils the creature.
+						result = 4;
+					} else {
+						// did we aggro?
+						int aggroChance = System::random(100);
+						int aggroMod = (creature->getDnaSampleCount() * 5);
+						if ( (aggroChance+aggroMod) > (sampleRoll+rollMod) || aggroChance <= 5)  // aggro
+							result = 3;
+						else { // it didnt care and we didnt kill it
+							creature->activateAwarenessEvent(player);
+							result = 5;
+						}
 					}
 				}
 				switch(result) {
@@ -168,13 +169,14 @@ public:
 		return;
 	}
 	void killCreature() {
-		creature->setDnaState(CreatureManager::DNADEATH);
 		int dam = 9999999;
 		creature->inflictDamage(creature, 0, dam, true, false);
 		creature->inflictDamage(creature, 3, dam, true, false);
 		creature->inflictDamage(creature, 6, dam, true, false);
 		StringIdChatParameter str("@bio_engineer:harvest_dna_creature_killed");
 		str.setTT(creature->getObjectID());
+		creature->addAlreadyHarvested(player);
+		creature->setDnaState(CreatureManager::DNADEATH);
 		player->sendSystemMessage(str);
 	}
 	void award(int cl, float rollMod) {

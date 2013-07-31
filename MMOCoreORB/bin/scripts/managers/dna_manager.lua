@@ -101,6 +101,7 @@ end
 dex_coefs = {7,6,6,15,14,16,17,16,15,14,13,13,11,11,10,10,10}
 for i=1,80 do
 	mean = dex_coefs[ floor((i/5) + 1)]
+	mean = mean * i
 	dev = 30
 	addRange(DEXTERITY,i,{
 		vhqMin = getMin(mean+5,dev), vhqMax = getMax(mean+5,dev),
@@ -117,6 +118,7 @@ end
 int_coefs = {6, 5, 8, 12,15,16,16,14,15,14,13,12,11,11,10,10,9}
 for i=1,80 do
 	mean = int_coefs[ floor((i/5) + 1)]
+	mean = mean * i
 	dev = 20
 	addRange(INTELLIGENCE,i,{
 		vhqMin = getMin(mean+5,dev), vhqMax = getMax(mean+5,dev),
@@ -133,6 +135,7 @@ end
 hard_coefs = {6, 5, 7, 13,16,22,18,17,17,15,13,13,12,11,11,10,10}
 for i=1,80 do
 	mean = hard_coefs[ floor((i/5) + 1)]
+	mean = mean * i
 	dev = 6
 	addRange(HARDINESS,i,{
 		vhqMin = getMin(mean+5,dev), vhqMax = getMax(mean+5,dev),
