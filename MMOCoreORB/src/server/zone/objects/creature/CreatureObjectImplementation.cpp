@@ -812,14 +812,9 @@ bool CreatureObjectImplementation::clearState(uint64 state, bool notifyClient) {
 		case CreatureState::AIMING:
 			break;
 		case CreatureState::COVER: {
-
-			// TODO: use the state buff system with this
-			uint32 undercover = String("undercover").hashCode();
-			if (hasBuff(undercover)) {
-				removeBuff(undercover);
+			if (hasBuff(CreatureState::COVER)) {
+				removeBuff(CreatureState::COVER);
 			}
-
-			setSpeedMultiplierMod(1.f);
 			break;
 		}
 		default:
@@ -1326,7 +1321,7 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 void CreatureObjectImplementation::updateSpeedAndAccelerationMods() {
 	float speedboost = 0;
 
-	if(posture == CreaturePosture::PRONE) {
+	if(posture == CreaturePosture::PRONE && !hasBuff(CreatureState::COVER)) {
 		speedboost = getSkillMod("slope_move") >= 50
 				? ((getSkillMod("slope_move") - 50.0f) / 100.0f) / 2 : 0;
 	}
@@ -1494,20 +1489,23 @@ void CreatureObjectImplementation::setFactionRank(int rank, bool notifyClient) {
 }
 
 void CreatureObjectImplementation::setSpeedMultiplierMod(float newMultiplierMod, bool notifyClient) {
+	float buffMod = 1;
 
 	if (posture == CreaturePosture::UPRIGHT) {
-		float buffMod = getSkillMod("private_speed_multiplier") > 0 ? (float)getSkillMod("private_speed_multiplier") / 100.f : 1.f;
-
-		if (speedMultiplierMod == newMultiplierMod * buffMod)
-			return;
-
-		speedMultiplierMod = newMultiplierMod * buffMod;
-	} else {
-		if (speedMultiplierMod == newMultiplierMod)
-			return;
-
-		speedMultiplierMod = newMultiplierMod;
+		buffMod = getSkillMod("private_speed_multiplier") > 0 ? (float)getSkillMod("private_speed_multiplier") / 100.f : 1.f;
+	} else if(posture == CreaturePosture::PRONE && hasBuff(CreatureState::COVER)) {
+		if (hasSkill("combat_rifleman_speed_03")) {
+			buffMod = 0.5f;
+		} else {
+			buffMod = 0.f;
+		}
 	}
+
+	if (speedMultiplierMod == newMultiplierMod * buffMod)
+		return;
+
+	speedMultiplierMod = newMultiplierMod * buffMod;
+
 	int bufferSize = speedMultiplierModChanges.size();
 
 	if (bufferSize > 5) {
@@ -1996,13 +1994,8 @@ void CreatureObjectImplementation::setCoverState(int durationSeconds) {
 		buff->setStartFlyText("combat_effects", "go_cover", 0, 0xFF, 0);
 		buff->setEndFlyText("combat_effects", "no_cover", 0xFF, 0, 0);
 
-		if (hasSkill("combat_rifleman_speed_03")) {
-			buff->setSpeedMultiplierMod(0.5f);
-		} else {
-			buff->setSpeedMultiplierMod(0.f);
-		}
-
 		buff->setSkillModifier("private_defense", 10);
+		buff->setSkillModifier("ranged_defense", 25);
 
 		addBuff(buff);
 	}
