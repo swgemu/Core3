@@ -98,7 +98,6 @@ int DnaManager::addRange(lua_State* L) {
 	int stat = lua_tointeger(L,-3);
 	int level = lua_tointeger(L,-2);
 	LuaObject obj(L);
-	System::out << "Adding Level " <<level << " for stat " << stat << "\n";
 	// Find the right Range
 	switch(stat) {
 		case DnaManager::CLEVERNESS: {
