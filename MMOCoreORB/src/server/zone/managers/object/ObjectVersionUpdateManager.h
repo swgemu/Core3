@@ -32,6 +32,7 @@ public:
 	void setResidence(uint64 buildingID, bool isResidence);
 	void verifyResidenceVariables();
 
+	void updateCityTreasury();
 	int run();
 
 

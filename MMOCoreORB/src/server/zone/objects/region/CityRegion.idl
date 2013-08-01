@@ -87,7 +87,7 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	protected byte cityRank;
 	
-	protected int cityTreasury;
+	protected float cityTreasury;
 	
 	protected unsigned long mayorID;
 	
@@ -332,7 +332,7 @@ class CityRegion extends ManagedObject implements Logger {
 		return citySpecialization;
 	}
 	
-	public int getCityTreasury() {
+	public float getCityTreasury() {
 		return cityTreasury;
 	}
 	
@@ -367,11 +367,11 @@ class CityRegion extends ManagedObject implements Logger {
 		regionName.setStringId(fullPath);
 	}
 	
-	public void setCityTreasury(int val) {
+	public void setCityTreasury(float val) {
 		cityTreasury = val;
 	}
 	
-	public int addToCityTreasury(int val) {
+	public float addToCityTreasury(float val) {
 		cityTreasury = cityTreasury + val;
 		
 		if (cityTreasury < 0) {
@@ -381,7 +381,7 @@ class CityRegion extends ManagedObject implements Logger {
 		return cityTreasury;
 	}
 	
-	public int subtractFromCityTreasury(int val) {
+	public float subtractFromCityTreasury(float val) {
 		cityTreasury = cityTreasury - val;
 		
 		if (cityTreasury < 0) {

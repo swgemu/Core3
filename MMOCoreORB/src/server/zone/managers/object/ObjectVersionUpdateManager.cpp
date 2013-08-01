@@ -20,14 +20,18 @@ ObjectVersionUpdateManager::ObjectVersionUpdateManager() : Logger("ObjectVersion
 int ObjectVersionUpdateManager::run() {
 	int version = ObjectDatabaseManager::instance()->getCurrentVersion();
 
-	if (version == 0){
+	if (version == 0 ){
 		updateResidences();
 		ObjectDatabaseManager::instance()->updateCurrentVersion(1);
+		return 0;
+	} else if ( version == 1) {
+		updateCityTreasury();
+		ObjectDatabaseManager::instance()->updateCurrentVersion(2);
 		return 0;
 	} else {
 
 		info("database on latest version : " + String::valueOf(version), true);
-
+		//verifyResidenceVariables();
 		return 1;
 	}
 /*
@@ -78,6 +82,7 @@ int ObjectVersionUpdateManager::run() {
 	return 0;
 	*/
 }
+
 
 
 ObjectOutputStream* ObjectVersionUpdateManager::addVariable(String variableName, ObjectInputStream* object, Stream* newVariableData){
@@ -256,47 +261,63 @@ void ObjectVersionUpdateManager::setResidence(uint64 buildingID, bool isResidenc
 	}
 }
 
-void ObjectVersionUpdateManager::verifyResidenceVariables(){
-	ObjectDatabase* database = ObjectDatabaseManager::instance()->loadObjectDatabase("playerstructures", true);
+
+void ObjectVersionUpdateManager::updateCityTreasury(){
+
+	info("---------------MOdifying City Treasury---------------------",true);
+	info("Converting treasury to float for all cities ", true);
+	ObjectDatabase* database = ObjectDatabaseManager::instance()->loadObjectDatabase("cityregions", true);
 	ObjectInputStream objectData(2000);
 
 	String className;
 	ObjectDatabaseIterator iterator(database);
 
 	uint64 objectID = 0;
-	bool isResidence = false;
+	int count = 0;
+	try {
+		while (iterator.getNextKeyAndValue(objectID, &objectData)) {
 
-		try {
+			String className;
+			try {
 
-				while (iterator.getNextKeyAndValue(objectID, &objectData)) {
-
-					String className;
-					uint64 residence = 0;
-
-					try {
-						if (!Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData)) {
-
-							objectData.clear();
-							continue;
-						}
-					} catch (...) {
-						objectData.clear();
-						continue;
-					}
-
-					if (className == "BuildingObject") {
-						if ( Serializable::getVariable<bool>(String("BuildingObject.isOwnerResidence").hashCode(), &isResidence, &objectData)){
-							//info("Good.... building " + String::valueOf(objectID) + " has the variable " + String::valueOf(isResidence),true);
-						} else {
-							info("Error... building " + String::valueOf(objectID) + " doesn't have isOwnerResidence variable",true);
-						}
-					}
+				if (!Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData)) {
 
 					objectData.clear();
+					continue;
 				}
-			} catch (Exception& e) {
-				error(e.getMessage());
-				e.printStackTrace();
+			} catch (...) {
+				objectData.clear();
+				continue;
 			}
+			int funds;
+			float floatFunds = 5;
+
+			if (className == "CityRegion") {
+				count++;
+				printf("\r\tUpdating city treasury [%d] / [?]\t", count);
+				if ( Serializable::getVariable<int>(String("CityRegion.cityTreasury").hashCode(), &funds, &objectData)){
+
+					floatFunds = funds;
+					ObjectOutputStream newFunds;
+					TypeInfo<float>::toBinaryStream(&floatFunds, &newFunds );
+					ObjectOutputStream* test = changeVariableData(String("CityRegion.cityTreasury").hashCode(), &objectData, &newFunds);
+					test->reset();
+					database->putData(objectID, test, NULL);
+
+
+				} else {
+					info("Error... city " + String::valueOf(objectID) + " doesn't have regionname variable",true);
+				}
+			}
+
+			objectData.clear();
+
+
+		}
+
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+	}
 
 }
