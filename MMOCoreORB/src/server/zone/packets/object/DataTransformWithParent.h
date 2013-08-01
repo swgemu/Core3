@@ -153,6 +153,16 @@ public:
 		if (object == NULL)
 			return;
 
+		int posture = object->getPosture();
+		if(posture == CreaturePosture::UPRIGHT || posture == CreaturePosture::PRONE || posture == CreaturePosture::DRIVINGVEHICLE
+			|| posture == CreaturePosture::RIDINGCREATURE || posture == CreaturePosture::SKILLANIMATING ) {
+
+			updatePosition(object);
+		}
+
+	}
+
+	void updatePosition(CreatureObject* object){
 		PlayerObject* ghost = object->getPlayerObject();
 
 		if (isnan(positionX) || isnan(positionY) || isnan(positionZ))
@@ -286,16 +296,17 @@ public:
 		object->setPosition(positionX, positionZ, positionY);
 		ghost->setClientLastMovementStamp(movementStamp);
 
-
 		if (objectControllerMain->getPriority() == 0x23)
 			object->updateZoneWithParent(newParent, false);
 		else
 			object->updateZoneWithParent(newParent, true);
 
-		object->setCurrentSpeed(parsedSpeed);
 
-		object->updateLocomotion();
+			object->setCurrentSpeed(parsedSpeed);
+
+			object->updateLocomotion();
 	}
+
 };
 
 

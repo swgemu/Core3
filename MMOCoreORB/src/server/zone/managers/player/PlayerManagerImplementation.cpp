@@ -838,7 +838,9 @@ int PlayerManagerImplementation::notifyDestruction(TangibleObject* destructor, T
 	destructor->removeDefender(destructedObject);
 
 	if (!destructor->isKiller() && ghost->getIncapacitationCounter() < 3) {
+		playerCreature->setCurrentSpeed(0);
 		playerCreature->setPosture(CreaturePosture::INCAPACITATED, true);
+		playerCreature->updateLocomotion();
 
 		uint32 incapTime = calculateIncapacitationTimer(playerCreature, condition);
 		playerCreature->setCountdownTimer(incapTime, true);
@@ -886,7 +888,9 @@ void PlayerManagerImplementation::killPlayer(TangibleObject* attacker, CreatureO
 		player->executeObjectControllerAction(String("dismount").hashCode());
 	}
 
+	player->setCurrentSpeed(0);
 	player->setPosture(CreaturePosture::DEAD, true);
+	player->updateLocomotion();
 
 	sendActivateCloneRequest(player, typeofdeath);
 
