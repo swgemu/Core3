@@ -61,7 +61,7 @@ for i=1,80 do
 		aaMin  = 485, aaMax  = 485,
 		aMin   = 485, aMax   = 485,
 		baMin  = 485, baMax  = 485,
-		lqMin  = 485, vlqMax = 485,
+		lqMin  = 485, lqMax = 485,
 		vlqMin = 485, vlqMax = 485,
 	})
 	addRange(DEPENDABILITY,i,{
@@ -70,7 +70,7 @@ for i=1,80 do
 		aaMin  = 500,  aaMax = 780,
 		aMin   = 500,   aMax = 780,
 		baMin  = 500,  baMax = 780,
-		lqMin  = 500, vlqMax = 780,
+		lqMin  = 500, lqMax = 780,
 		vlqMin = 500, vlqMax = 780,
 	})
 	addRange(ENDURANCE,i,{
@@ -79,7 +79,7 @@ for i=1,80 do
 		aaMin  = 495,  aaMax = 515,
 		aMin   = 490,   aMax = 510,
 		baMin  = 485,  baMax = 505,
-		lqMin  = 480, vlqMax = 500,
+		lqMin  = 480, lqMax = 500,
 		vlqMin = 470, vlqMax = 490,
 	})
 end
@@ -93,7 +93,7 @@ for i=0,20 do
 		aaMin  = getMin(mean,3),     aaMax = getMax(mean,3),
 		aMin   = getMin(mean-5,3),    aMax = getMax(mean-5,3),
 		baMin  = getMin(mean-10,3),  baMax = getMax(mean-10,3),
-		lqMin  = getMin(mean-15,3), vlqMax = getMax(mean-15,3),
+		lqMin  = getMin(mean-15,3), lqMax = getMax(mean-15,3),
 		vlqMin = getMin(mean-20,3), vlqMax = getMax(mean-20,3),		
 	})
 end
@@ -109,7 +109,7 @@ for i=1,80 do
 		aaMin  = getMin(mean-10,dev), aaMax = getMax(mean-10,dev),
 		aMin   = getMin(mean-15,dev),  aMax = getMax(mean-15,dev),
 		baMin  = getMin(mean-20,dev), baMax = getMax(mean-20,dev),
-		lqMin  = getMin(mean-25,dev),vlqMax = getMax(mean-25,dev),
+		lqMin  = getMin(mean-25,dev),lqMax = getMax(mean-25,dev),
 		vlqMin = getMin(mean-30,dev),vlqMax = getMax(mean-30,dev),		
 	})
 	
@@ -126,7 +126,7 @@ for i=1,80 do
 		aaMin  = getMin(mean-10,dev), aaMax = getMax(mean-10,dev),
 		aMin   = getMin(mean-15,dev),  aMax = getMax(mean-15,dev),
 		baMin  = getMin(mean-20,dev), baMax = getMax(mean-20,dev),
-		lqMin  = getMin(mean-25,dev),vlqMax = getMax(mean-25,dev),
+		lqMin  = getMin(mean-25,dev),lqMax = getMax(mean-25,dev),
 		vlqMin = getMin(mean-30,dev),vlqMax = getMax(mean-30,dev),		
 	})
 	
@@ -143,7 +143,7 @@ for i=1,80 do
 		aaMin  = getMin(mean-10,dev), aaMax = getMax(mean-10,dev),
 		aMin   = getMin(mean-15,dev),  aMax = getMax(mean-15,dev),
 		baMin  = getMin(mean-20,dev), baMax = getMax(mean-20,dev),
-		lqMin  = getMin(mean-25,dev),vlqMax = getMax(mean-25,dev),
+		lqMin  = getMin(mean-25,dev),lqMax = getMax(mean-25,dev),
 		vlqMin = getMin(mean-30,dev),vlqMax = getMax(mean-30,dev),		
 	})
 	
@@ -161,7 +161,7 @@ for i=1,80 do
 		aaMin  = getMin(mean,dev),    aaMax = getMax(mean,dev),
 		aMin   = getMin(mean-5,dev),   aMax = getMax(mean-5,dev),
 		baMin  = getMin(mean-10,dev), baMax = getMax(mean-10,dev),
-		lqMin  = getMin(mean-15,dev),vlqMax = getMax(mean-15,dev),
+		lqMin  = getMin(mean-15,dev),lqMax = getMax(mean-15,dev),
 		vlqMin = getMin(mean-20,dev),vlqMax = getMax(mean-20,dev),		
 	})
 	pmean = 11 * i
@@ -174,7 +174,7 @@ for i=1,80 do
 		aaMin  = getMin(pmean,dev),    aaMax = getMax(pmean,dev),
 		aMin   = getMin(pmean-5,dev),   aMax = getMax(pmean-5,dev),
 		baMin  = getMin(pmean-10,dev), baMax = getMax(pmean-10,dev),
-		lqMin  = getMin(pmean-15,dev),vlqMax = getMax(pmean-15,dev),
+		lqMin  = getMin(pmean-15,dev),lqMax = getMax(pmean-15,dev),
 		vlqMin = getMin(pmean-20,dev),vlqMax = getMax(pmean-20,dev),		
 	})
 	
@@ -187,7 +187,7 @@ for i=1,15 do
 		aaMin  = 0, aaMax = 20,
 		aMin   = 0,  aMax = 20,
 		baMin  = 0, baMax = 20,
-		lqMin  = 0,vlqMax = 20,
+		lqMin  = 0,lqMax = 20,
 		vlqMin = 0,vlqMax = 20,		
 	})
 
@@ -201,7 +201,7 @@ for i=16,19 do
 		aaMin  = min, aaMax = max,
 		aMin   = min,  aMax = max,
 		baMin  = min, baMax = max,
-		lqMin  = min,vlqMax = max,
+		lqMin  = min,lqMax = max,
 		vlqMin = min,vlqMax = max,		
 	})
 
@@ -215,7 +215,7 @@ for i=20,24 do
 		aaMin  = min, aaMax = max,
 		aMin   = min,  aMax = max,
 		baMin  = min, baMax = max,
-		lqMin  = min,vlqMax = max,
+		lqMin  = min,lqMax = max,
 		vlqMin = min,vlqMax = max,		
 	})
 end
@@ -228,7 +228,7 @@ for i=25,29 do
 		aaMin  = min, aaMax = max,
 		aMin   = min,  aMax = max,
 		baMin  = min, baMax = max,
-		lqMin  = min,vlqMax = max,
+		lqMin  = min,lqMax = max,
 		vlqMin = min,vlqMax = max,		
 	})
 end
@@ -241,7 +241,7 @@ for i=30,34 do
 		aaMin  = min, aaMax = max,
 		aMin   = min,  aMax = max,
 		baMin  = min, baMax = max,
-		lqMin  = min,vlqMax = max,
+		lqMin  = min,lqMax = max,
 		vlqMin = min,vlqMax = max,		
 	})
 end
@@ -254,7 +254,7 @@ for i=35,39 do
 		aaMin  = min, aaMax = max,
 		aMin   = min,  aMax = max,
 		baMin  = min, baMax = max,
-		lqMin  = min,vlqMax = max,
+		lqMin  = min,lqMax = max,
 		vlqMin = min,vlqMax = max,		
 	})
 end
@@ -267,7 +267,7 @@ for i=40,44 do
 		aaMin  = min, aaMax = max,
 		aMin   = min,  aMax = max,
 		baMin  = min, baMax = max,
-		lqMin  = min,vlqMax = max,
+		lqMin  = min,lqMax = max,
 		vlqMin = min,vlqMax = max,		
 	})
 end
@@ -280,7 +280,7 @@ for i=45,49 do
 		aaMin  = min, aaMax = max,
 		aMin   = min,  aMax = max,
 		baMin  = min, baMax = max,
-		lqMin  = min,vlqMax = max,
+		lqMin  = min,lqMax = max,
 		vlqMin = min,vlqMax = max,		
 	})
 end
@@ -293,7 +293,7 @@ for i=50,54 do
 		aaMin  = min, aaMax = max,
 		aMin   = min,  aMax = max,
 		baMin  = min, baMax = max,
-		lqMin  = min,vlqMax = max,
+		lqMin  = min,lqMax = max,
 		vlqMin = min,vlqMax = max,		
 	})
 end
@@ -306,7 +306,7 @@ for i=55,59 do
 		aaMin  = min, aaMax = max,
 		aMin   = min,  aMax = max,
 		baMin  = min, baMax = max,
-		lqMin  = min,vlqMax = max,
+		lqMin  = min,lqMax = max,
 		vlqMin = min,vlqMax = max,		
 	})
 end
@@ -319,7 +319,7 @@ for i=60,64 do
 		aaMin  = min, aaMax = max,
 		aMin   = min,  aMax = max,
 		baMin  = min, baMax = max,
-		lqMin  = min,vlqMax = max,
+		lqMin  = min,lqMax = max,
 		vlqMin = min,vlqMax = max,		
 	})
 end
@@ -332,7 +332,7 @@ for i=65,69 do
 		aaMin  = min, aaMax = max,
 		aMin   = min,  aMax = max,
 		baMin  = min, baMax = max,
-		lqMin  = min,vlqMax = max,
+		lqMin  = min,lqMax = max,
 		vlqMin = min,vlqMax = max,		
 	})
 end
@@ -345,7 +345,7 @@ for i=70,74 do
 		aaMin  = min, aaMax = max,
 		aMin   = min,  aMax = max,
 		baMin  = min, baMax = max,
-		lqMin  = min,vlqMax = max,
+		lqMin  = min,lqMax = max,
 		vlqMin = min,vlqMax = max,		
 	})
 end
@@ -358,7 +358,7 @@ for i=75,79 do
 		aaMin  = min, aaMax = max,
 		aMin   = min,  aMax = max,
 		baMin  = min, baMax = max,
-		lqMin  = min,vlqMax = max,
+		lqMin  = min,lqMax = max,
 		vlqMin = min,vlqMax = max,		
 	})
 end
@@ -371,7 +371,7 @@ for i=80,84 do
 		aaMin  = min, aaMax = max,
 		aMin   = min,  aMax = max,
 		baMin  = min, baMax = max,
-		lqMin  = min,vlqMax = max,
+		lqMin  = min,lqMax = max,
 		vlqMin = min,vlqMax = max,		
 	})
 end
