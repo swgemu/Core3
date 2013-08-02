@@ -205,7 +205,7 @@ dathomir_static_spawns = {
 dathomir_badges = {
 	{"badge_crashed_ship",5676,1901,30,82},
 	{"badge_escape_pod",-4427,586,30,27},
-	{"badge_imperial_prison",-6304,753,30,83},
+	{"badge_imperial_prison",-6141,973,30,83},
 	{"badge_misty_falls_1",3558,1554,30,28},
 	{"badge_misty_falls_2",3021,1289,30,29},
 	{"badge_sarlacc",-2101,3165,30,26},
