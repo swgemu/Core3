@@ -49,11 +49,11 @@ public:
 	 * @param playerName The name of the player.
 	 * @return Returns either GRANTED or REVOKED depending on the operation that is performed.
 	 */
-	int togglePermission(const String& listName, const String& playerName);
+	int togglePermission(const String& listName, const String& playerName, bool caseSensitive = false);
 
-	int grantPermission(const String& listName, const String& playerName);
-	int revokePermission(const String& listName, const String& playerName);
-	int revokeAllPermissions(const String& playerName);
+	int grantPermission(const String& listName, const String& playerName, bool caseSensitive = false);
+	int revokePermission(const String& listName, const String& playerName, bool caseSensitive = false);
+	int revokeAllPermissions(const String& playerName, bool caseSensitive = false);
 
 	void setOwnerName(const String& name) {
 		ownerName = name;
@@ -65,7 +65,7 @@ public:
 	 * @param playerName The player name to check.
 	 * @return Returns false if the permission list does not exist, or the player name is not found in the list.
 	 */
-	inline bool isOnPermissionList(const String& listName, const String& playerName) {
+	inline bool isOnPermissionList(const String& listName, const String& playerName, bool caseSensitive = false) {
 		ReadLocker locker(&lock);
 
 		if (!permissionLists.contains(listName))
@@ -73,7 +73,10 @@ public:
 
 		SortedVector<String>* list = &permissionLists.get(listName);
 
-		return list->contains(playerName.toLowerCase());
+		if (caseSensitive)
+			return list->contains(playerName);
+		else
+			return list->contains(playerName.toLowerCase());
 	}
 
 	/**
