@@ -1426,3 +1426,21 @@ void GuildManagerImplementation::updateWarStatusToWaringGuild(GuildObject* guild
 	Reference<UpdateWarStatusTask*> task = new UpdateWarStatusTask(server, guild, waringGuild);
 	task->schedule(10);
 }
+
+GuildObject* GuildManagerImplementation::getGuildFromAbbrev(const String& guildAbbrev) {
+	Locker _lock(_this.get());
+
+	for (int i = 0; i < guildList.size(); ++i) {
+		ManagedReference<GuildObject*> guild = guildList.getValueAt(i);
+
+		if (guild == NULL)
+			continue;
+
+		Locker clocker(guild, _this.get());
+
+		if (guild->getGuildAbbrev() == guildAbbrev)
+			return guild;
+	}
+
+	return NULL;
+}

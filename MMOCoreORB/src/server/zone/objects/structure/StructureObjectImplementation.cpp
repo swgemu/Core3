@@ -17,6 +17,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/guild/GuildObject.h"
 
 #include "server/zone/objects/player/sessions/vendor/CreateVendorSession.h"
 
@@ -372,4 +373,88 @@ int StructureObjectImplementation::getBasePowerRate(){
 		return 0;
 
 	return tmpl->getBasePowerRate();
+}
+
+bool StructureObjectImplementation::isOnAdminList(CreatureObject* player) {
+	if (player->isPlayerCreature() && player->getPlayerObject()->isPrivileged())
+		return true;
+	else if (structurePermissionList.isOnPermissionList("ADMIN", player->getFirstName()))
+		return true;
+	else {
+		GuildObject* guild = player->getGuildObject();
+
+		if (guild != NULL && structurePermissionList.isOnPermissionList("ADMIN", "guild:" + guild->getGuildAbbrev(), true))
+			return true;
+	}
+
+	return false;
+}
+
+bool StructureObjectImplementation::isOnEntryList(CreatureObject* player) {
+	if (player->isPlayerCreature() && player->getPlayerObject()->isPrivileged())
+		return true;
+	else if (structurePermissionList.isOnPermissionList("ADMIN", player->getFirstName())
+			|| structurePermissionList.isOnPermissionList("ENTRY", player->getFirstName())
+			|| structurePermissionList.isOnPermissionList("VENDOR", player->getFirstName()))
+		return true;
+	else {
+		GuildObject* guild = player->getGuildObject();
+
+		if (guild != NULL && (structurePermissionList.isOnPermissionList("ADMIN", "guild:" + guild->getGuildAbbrev(), true)
+				|| structurePermissionList.isOnPermissionList("ENTRY", "guild:" + guild->getGuildAbbrev(), true)
+				|| structurePermissionList.isOnPermissionList("VENDOR", "guild:" + guild->getGuildAbbrev(), true)))
+			return true;
+	}
+
+	return false;
+}
+
+bool StructureObjectImplementation::isOnBanList(CreatureObject* player) {
+	if (player->isPlayerCreature() && player->getPlayerObject()->isPrivileged())
+		return false;
+	else if (structurePermissionList.isOnPermissionList("BAN", player->getFirstName()))
+		return true;
+	else {
+		GuildObject* guild = player->getGuildObject();
+
+		if (guild != NULL && structurePermissionList.isOnPermissionList("BAN", "guild:" + guild->getGuildAbbrev(), true))
+			return true;
+	}
+
+	return false;
+}
+
+bool StructureObjectImplementation::isOnHopperList(CreatureObject* player) {
+	if (player->isPlayerCreature() && player->getPlayerObject()->isPrivileged())
+		return true;
+	else if (structurePermissionList.isOnPermissionList("HOPPER", player->getFirstName())
+			|| structurePermissionList.isOnPermissionList("ADMIN", player->getFirstName()))
+		return true;
+	else {
+		GuildObject* guild = player->getGuildObject();
+
+		if (guild != NULL && (structurePermissionList.isOnPermissionList("HOPPER", "guild:" + guild->getGuildAbbrev(), true)
+				|| structurePermissionList.isOnPermissionList("ADMIN", "guild:" + guild->getGuildAbbrev(), true)))
+			return true;
+	}
+
+	return false;
+}
+
+bool StructureObjectImplementation::isOnPermissionList(const String& listName, CreatureObject* player) {
+	if (player->isPlayerCreature() && player->getPlayerObject()->isPrivileged()) {
+		if (listName == "BAN")
+			return false;
+		else
+			return true;
+	} else if (structurePermissionList.isOnPermissionList(listName, player->getFirstName()))
+		return true;
+	else {
+		GuildObject* guild = player->getGuildObject();
+
+		if (guild != NULL && structurePermissionList.isOnPermissionList(listName, "guild:" + guild->getGuildAbbrev(), true))
+			return true;
+	}
+
+	return false;
 }

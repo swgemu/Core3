@@ -148,19 +148,19 @@ public:
 
 	bool isOnAdminList(CreatureObject* player);
 
-	bool isOnAdminList(const String& firstName);
+	bool isOnAdminList(const String& firstName, bool caseSensitive = false);
 
 	bool isOnEntryList(CreatureObject* player);
 
 	bool isOnBanList(CreatureObject* player);
 
-	bool isOnBanList(const String& firstName);
+	bool isOnBanList(const String& firstName, bool caseSensitive = false);
 
 	bool isOnHopperList(CreatureObject* player);
 
 	bool isOnPermissionList(const String& listName, CreatureObject* player);
 
-	bool isOnPermissionList(const String& listName, const String& firstName);
+	bool isOnPermissionList(const String& listName, const String& firstName, bool caseSensitive = false);
 
 	bool isOwnerOf(SceneObject* obj);
 
@@ -176,13 +176,13 @@ public:
 
 	bool isPermissionListFull(const String& listName);
 
-	int togglePermission(const String& listName, const String& targetName);
+	int togglePermission(const String& listName, const String& targetName, bool caseSensitive = false);
 
-	int grantPermission(const String& listName, const String& targetName);
+	int grantPermission(const String& listName, const String& targetName, bool caseSensitive = false);
 
-	int revokePermission(const String& listName, const String& targetName);
+	int revokePermission(const String& listName, const String& targetName, bool caseSensitive = false);
 
-	int revokeAllPermissions(const String& targetName);
+	int revokeAllPermissions(const String& targetName, bool caseSensitive = false);
 
 	void setOwnerName(const String& ownerName);
 
@@ -342,19 +342,19 @@ public:
 
 	bool isOnAdminList(CreatureObject* player);
 
-	bool isOnAdminList(const String& firstName);
+	bool isOnAdminList(const String& firstName, bool caseSensitive = false);
 
 	bool isOnEntryList(CreatureObject* player);
 
 	bool isOnBanList(CreatureObject* player);
 
-	bool isOnBanList(const String& firstName);
+	bool isOnBanList(const String& firstName, bool caseSensitive = false);
 
 	bool isOnHopperList(CreatureObject* player);
 
 	bool isOnPermissionList(const String& listName, CreatureObject* player);
 
-	bool isOnPermissionList(const String& listName, const String& firstName);
+	bool isOnPermissionList(const String& listName, const String& firstName, bool caseSensitive = false);
 
 	bool isOwnerOf(SceneObject* obj);
 
@@ -370,13 +370,13 @@ public:
 
 	bool isPermissionListFull(const String& listName);
 
-	int togglePermission(const String& listName, const String& targetName);
+	int togglePermission(const String& listName, const String& targetName, bool caseSensitive = false);
 
-	int grantPermission(const String& listName, const String& targetName);
+	int grantPermission(const String& listName, const String& targetName, bool caseSensitive = false);
 
-	int revokePermission(const String& listName, const String& targetName);
+	int revokePermission(const String& listName, const String& targetName, bool caseSensitive = false);
 
-	int revokeAllPermissions(const String& targetName);
+	int revokeAllPermissions(const String& targetName, bool caseSensitive = false);
 
 	void setOwnerName(const String& ownerName);
 
@@ -519,19 +519,19 @@ public:
 
 	bool isOnAdminList(CreatureObject* player);
 
-	bool isOnAdminList(const String& firstName);
+	bool isOnAdminList(const String& firstName, bool caseSensitive);
 
 	bool isOnEntryList(CreatureObject* player);
 
 	bool isOnBanList(CreatureObject* player);
 
-	bool isOnBanList(const String& firstName);
+	bool isOnBanList(const String& firstName, bool caseSensitive);
 
 	bool isOnHopperList(CreatureObject* player);
 
 	bool isOnPermissionList(const String& listName, CreatureObject* player);
 
-	bool isOnPermissionList(const String& listName, const String& firstName);
+	bool isOnPermissionList(const String& listName, const String& firstName, bool caseSensitive);
 
 	bool isOwnerOf(SceneObject* obj);
 
@@ -547,13 +547,13 @@ public:
 
 	bool isPermissionListFull(const String& listName);
 
-	int togglePermission(const String& listName, const String& targetName);
+	int togglePermission(const String& listName, const String& targetName, bool caseSensitive);
 
-	int grantPermission(const String& listName, const String& targetName);
+	int grantPermission(const String& listName, const String& targetName, bool caseSensitive);
 
-	int revokePermission(const String& listName, const String& targetName);
+	int revokePermission(const String& listName, const String& targetName, bool caseSensitive);
 
-	int revokeAllPermissions(const String& targetName);
+	int revokeAllPermissions(const String& targetName, bool caseSensitive);
 
 	void setOwnerName(const String& ownerName);
 

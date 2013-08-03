@@ -220,6 +220,8 @@ public:
 
 	void sendGuildMail(const String& subject, StringIdChatParameter& body, GuildObject* guild);
 
+	GuildObject* getGuildFromAbbrev(const String& guildAbbrev);
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -371,6 +373,8 @@ public:
 
 	void sendGuildMail(const String& subject, StringIdChatParameter& body, GuildObject* guild);
 
+	GuildObject* getGuildFromAbbrev(const String& guildAbbrev);
+
 	WeakReference<GuildManager*> _this;
 
 	operator const GuildManager*();
@@ -513,6 +517,8 @@ public:
 	void sendAcceptLotsTo(CreatureObject* newOwner, GuildTerminal* guildTerminal);
 
 	void transferGuildHall(CreatureObject* newOwner, SceneObject* guildTerminal);
+
+	GuildObject* getGuildFromAbbrev(const String& guildAbbrev);
 
 };
 
