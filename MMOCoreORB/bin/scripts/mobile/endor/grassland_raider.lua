@@ -33,11 +33,33 @@ grassland_raider = Creature:new {
 			"object/mobile/dressed_marauder_male_02.iff",
 			"object/mobile/dressed_marauder_male_03.iff",
 			"object/mobile/dressed_marauder_female.iff"},
-	lootGroups = {},
-	weapons = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "pistols", chance = 2000000},
+				{group = "carbines", chance = 2000000},
+				{group = "rifles", chance = 2000000},
+				{group = "melee_baton", chance = 2000000},
+				{group = "loot_kit_parts", chance = 1000000},
+				{group = "armor_attachments", chance = 500000},
+				{group = "clothing_attachments", chance = 500000}
+			},
+			lootChance = 2000000
+		},
+		{
+			groups = {
+				{group = "bone_armor_looted", chance = 2000000},
+				{group = "chitin_armor_looted", chance = 2000000},
+				{group = "mabari_armor_looted", chance = 2000000},
+				{group = "tantel_armor_looted", chance = 2000000},
+				{group = "ubese_armor_looted", chance = 2000000},
+			},
+			lootChance = 2400000
+		}
+	},
+	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(grassland_raider, "grassland_raider")
