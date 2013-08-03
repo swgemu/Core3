@@ -701,7 +701,7 @@ void SlicingSessionImplementation::handleContainerSlice() {
 
 		Locker clocker(container, player);
 
-		lootManager->createLoot(container, "lootedContainer");
+		lootManager->createLoot(container, "looted_container");
 
 		inventory->transferObject(container, -1);
 		container->sendTo(player, true);
