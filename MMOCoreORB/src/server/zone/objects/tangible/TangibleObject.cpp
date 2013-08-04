@@ -1651,21 +1651,25 @@ bool TangibleObjectImplementation::hasDefender(SceneObject* defender) {
 }
 
 bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/tangible/TangibleObject.idl():  			if 
+	// server/zone/objects/tangible/TangibleObject.idl():  			return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
 	if (isImperial() && !(object->isRebel()))	// server/zone/objects/tangible/TangibleObject.idl():  			return false;
 	return false;
 
-	else 	// server/zone/objects/tangible/TangibleObject.idl():  			if 
+	else 	// server/zone/objects/tangible/TangibleObject.idl():  			return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
 	if (isRebel() && !(object->isImperial()))	// server/zone/objects/tangible/TangibleObject.idl():  			return false;
 	return false;
 
-	else 	// server/zone/objects/tangible/TangibleObject.idl():  			if 
-	if (object->isPlayerCreature() && object->getPlayerObject())	// server/zone/objects/tangible/TangibleObject.idl():  			if 
+	else 	// server/zone/objects/tangible/TangibleObject.idl():  			return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
+	if (object->isPlayerCreature() && object->getPlayerObject()){
+	// server/zone/objects/tangible/TangibleObject.idl():  			if 
 	if (isImperial() && (object->getPlayerObject())->getFactionStatus() == 0)	// server/zone/objects/tangible/TangibleObject.idl():  				return false;
 	return false;
-	// server/zone/objects/tangible/TangibleObject.idl():  			return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
+	// server/zone/objects/tangible/TangibleObject.idl():  			return 
 	if (isRebel() && (object->getPlayerObject())->getFactionStatus() == 0)	// server/zone/objects/tangible/TangibleObject.idl():  				return false;
 	return false;
+	// server/zone/objects/tangible/TangibleObject.idl():  			return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
+	return pvpStatusBitmask & CreatureFlag::ATTACKABLE;
+}
 
 	else 	// server/zone/objects/tangible/TangibleObject.idl():  			return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
 	return pvpStatusBitmask & CreatureFlag::ATTACKABLE;
@@ -1713,7 +1717,7 @@ int TangibleObjectImplementation::getUseCount() {
 
 int TangibleObjectImplementation::getDisplayedUseCount() {
 	// server/zone/objects/tangible/TangibleObject.idl():  		return 
-	if (useCount == 1)	// server/zone/objects/tangible/TangibleObject.idl():  			return 0;
+	if (useCount == 1 && SceneObjectImplementation::gameObjectType != SceneObjectType::TRAP)	// server/zone/objects/tangible/TangibleObject.idl():  			return 0;
 	return 0;
 	// server/zone/objects/tangible/TangibleObject.idl():  		return useCount;
 	return useCount;
