@@ -360,6 +360,18 @@ void EntertainingSessionImplementation::stopPlayingMusic() {
 
 	entertainer->dropObserver(ObserverEventType::POSTURECHANGED, observer);
 
+	ManagedReference<GroupObject*> group = entertainer->getGroup();
+
+	if (group != NULL) {
+		bool otherPlaying = group->isOtherMemberPlayingMusic(entertainer);
+
+		if (!otherPlaying) {
+			Locker locker(group);
+
+			group->setBandSong("");
+		}
+	}
+
 	if (!dancing && !playingMusic) {
 		entertainer->dropActiveSession(SessionFacadeType::ENTERTAINING);
 	}
@@ -385,6 +397,16 @@ void EntertainingSessionImplementation::startPlayingMusic(const String& song, co
 	ManagedReference<CreatureObject*> entertainer = this->entertainer.get();
 
 	Locker locker(entertainer);
+
+	ManagedReference<GroupObject*> group = entertainer->getGroup();
+
+	if (group != NULL) {
+		if (group->getBandSong() != song)
+
+			Locker locker(group);
+
+			group->setBandSong(song);
+	}
 
 	sendEntertainingUpdate(entertainer, 0.0125, instrumentAnimation, 0x07352BAC, instrid);
 	performanceName = song;

@@ -189,6 +189,10 @@ class EntertainingSession extends Facade {
 	public native void activateEntertainerBuff(CreatureObject creature, int performanceType);
 	
 	public native Instrument getInstrument(CreatureObject creature);
+
+	public string getPerformanceName() {
+		return performanceName;
+	}
 	
 	public native void addWatcher(CreatureObject creature);
 	public native void addListener(CreatureObject listener);
