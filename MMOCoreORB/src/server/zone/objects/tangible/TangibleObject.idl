@@ -423,7 +423,7 @@ class TangibleObject extends SceneObject {
 	}
 	
 	public abstract int getDisplayedUseCount() {
-		if(useCount == 1)
+		if(useCount == 1 && super.gameObjectType != SceneObjectType.TRAP)
 			return 0;
 		
 		return useCount;
