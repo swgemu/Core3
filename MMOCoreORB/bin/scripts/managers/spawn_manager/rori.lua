@@ -165,11 +165,6 @@ rori_regions = {
 }
 
 rori_static_spawns = {
-	{"kobola_assassin",360,5514.9,77.3,1009.3,-97,0, "angry", ""},
-	{"kobola_assassin",360,5506.4,75.6,1003.4,-97,0, "annoyed", ""},
-	{"kobola_thief",360,5510.2,76.2,1009.3,83,0, "angry", ""},
-	{"narmle_militia_commander",720,5212.9,76.4,1019.6,112,0, "worried", ""},
-	{"narmle_militia_ensign",720,5206.6,76.4,1022.2,112,0, "worried", ""},
 
 	--Rebel Outpost
 	{"raxa_binn", 60, -4.0, 0.1, -4.2, 140, 4505669, "npc_sitting_chair", ""},
