@@ -173,13 +173,22 @@ public:
 					targetedInstrument = true;
 				}
 
+				if (instrument == NULL)
+					continue;
+
 				Locker lockerInstr(instrument);
 
 				if (instrument->isBeingUsed()) {
 					groupMember->sendSystemMessage("Someone else is using this instrument");
 					continue;
-				} else
+				} else {
 					instrument->setBeingUsed(true);
+				}
+
+				if (targetedInstrument) {
+					instrument->setDirection(*creature->getDirection());
+					instrument->teleport(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), creature->getParentID());
+				}
 
 				String instrumentAnimation;
 				int instrid = performanceManager->getInstrumentId(args);
@@ -228,13 +237,11 @@ public:
 		PlayerObject* ghost = dynamic_cast<PlayerObject*> (creature->getSlottedObject("ghost"));
 
 		ManagedReference<Instrument*> instrument = dynamic_cast<Instrument*> (creature->getSlottedObject("hold_r"));
-		bool targetedInstrument = false;
 
 		if (instrument == NULL) {
 			ManagedReference<SceneObject*> nala = server->getZoneServer()->getObject(target);
 
 			if (nala != NULL && dynamic_cast<Instrument*> (nala.get())) {
-				targetedInstrument = true;
 				instrument = cast<Instrument*> (nala.get());
 				ManagedReference<SceneObject*> creatureParent = creature->getParent();
 
@@ -258,11 +265,6 @@ public:
 
 					return false;
 				}
-
-				instrument->setDirection(*creature->getDirection());
-				instrument->teleport(creature->getPositionX(),
-						creature->getPositionZ(), creature->getPositionY(),
-						creature->getParentID());
 			} else {
 				creature->sendSystemMessage("@performance:music_no_instrument"); // You must have an instrument equipped to play music.
 
