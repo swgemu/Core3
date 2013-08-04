@@ -1309,7 +1309,11 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, C
 	if (wounded)
 		defender->addShockWounds(1, true);
 
-	weapon->decreasePowerupUses(attacker);
+	// This method can be called multiple times for area attacks.  Let the calling method
+	// decrease the powerup once
+	if (!data.getCommand()->isAreaAction() && !data.getCommand()->isConeAction())
+		weapon->decreasePowerupUses(attacker);
+
 
 	return (int) (healthDamage + actionDamage + mindDamage);
 }
@@ -1340,7 +1344,11 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, T
 	}
 
 	defender->inflictDamage(attacker, 0, damage, true, xpType);
-	weapon->decreasePowerupUses(attacker);
+
+	// This method can be called multiple times for area attacks.  Let the calling method
+	// decrease the powerup once
+	if (!data.getCommand()->isAreaAction() && !data.getCommand()->isConeAction())
+		weapon->decreasePowerupUses(attacker);
 
 	return damage;
 }
@@ -1821,6 +1829,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 		throw;
 	}
 
+	weapon->decreasePowerupUses(attacker);
 	return damage;
 }
 
