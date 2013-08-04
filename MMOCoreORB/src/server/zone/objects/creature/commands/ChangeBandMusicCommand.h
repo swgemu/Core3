@@ -188,15 +188,17 @@ public:
 				if (groupMember == NULL || !groupMember->isPlayingMusic())
 					continue;
 
-				if (!canPlaySong(groupMember, fullString)) {
-					creature->sendSystemMessage("@performance:music_lack_skill_band_member"); // One of the band members lacked the skill to perform that song.
-					return GENERALERROR;
-				}
-
 				ManagedReference<EntertainingSession*> bandMemberSession = dynamic_cast<EntertainingSession*>(groupMember->getActiveSession(SessionFacadeType::ENTERTAINING));
 
 				if (bandMemberSession == NULL || !bandMemberSession->isPlayingMusic())
 					continue;
+
+				if (!canPlaySong(groupMember, fullString)) {
+					creature->sendSystemMessage("@performance:music_lack_skill_band_member"); // One of the band members lacked the skill to perform that song.
+					groupMember->sendSystemMessage("@performance:music_lack_skill_song_band"); // You do not have the skill to perform the song the band is performing.
+					bandMemberSession->stopPlayingMusic();
+					continue;
+				}
 
 				ManagedReference<Instrument*> bandMemberInstrument = bandMemberSession->getInstrument(groupMember);
 				String instrumentAnimation;
