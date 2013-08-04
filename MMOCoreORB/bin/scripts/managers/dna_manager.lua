@@ -56,13 +56,13 @@ local floor = math.floor
 --[[ Courage, Dependability and Endurance ]]
 for i=1,80 do
 	addRange(COURAGE,i,{
-		vhqMin = 485, vhqMax = 485,
-		hqMin  = 485, hqMax  = 485,
-		aaMin  = 485, aaMax  = 485,
-		aMin   = 485, aMax   = 485,
-		baMin  = 485, baMax  = 485,
-		lqMin  = 485, lqMax = 485,
-		vlqMin = 485, vlqMax = 485,
+		vhqMin = 485, vhqMax = 545,
+		hqMin  = 485, hqMax  = 545,
+		aaMin  = 485, aaMax  = 545,
+		aMin   = 485, aMax   = 545,
+		baMin  = 485, baMax  = 545,
+		lqMin  = 485, lqMax = 545,
+		vlqMin = 485, vlqMax = 545,
 	})
 	addRange(DEPENDABILITY,i,{
 		vhqMin = 500, vhqMax = 780,
