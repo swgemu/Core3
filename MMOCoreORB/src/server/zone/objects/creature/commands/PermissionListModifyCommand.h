@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/guild/GuildManager.h"
 
 class PermissionListModifyCommand : public QueueCommand {
 public:
@@ -84,7 +85,9 @@ public:
 			tokenizer.getStringToken(listName);
 			tokenizer.getStringToken(action);
 
-			targetName = targetName.toLowerCase();
+			if (!targetName.beginsWith("guild:"))
+				targetName = targetName.toLowerCase();
+
 			listName = listName.toUpperCase();
 			action = action.toLowerCase();
 
@@ -108,13 +111,13 @@ public:
 		}
 
 		if (structureObject->isPermissionListFull(listName)) {
-			if (action == "add" || (action == "toggle" && !structureObject->isOnPermissionList(listName, targetName))) {
+			if (action == "add" || (action == "toggle" && !structureObject->isOnPermissionList(listName, targetName, true))) {
 				creature->sendSystemMessage("@player_structure:too_many_entries"); //You have too many entries on that list. You must remove some before adding more.
 				return INVALIDPARAMETERS;
 			}
 		}
 
-		if (action == "add" && structureObject->isOnPermissionList(listName, targetName)) {
+		if (action == "add" && structureObject->isOnPermissionList(listName, targetName, true)) {
 			creature->sendSystemMessage("That name is already on that list.");
 			return INVALIDPARAMETERS;
 		}
@@ -122,7 +125,7 @@ public:
 		bool isOwner = structureObject->isOwnerOf(creature->getObjectID());
 		bool isTargetOwner = structureObject->isOwnerOf(playerManager->getObjectID(targetName));
 
-		if (structureObject->isOnBanList(targetName)) {
+		if (structureObject->isOnBanList(targetName, true)) {
 			if (listName == "ENTRY" || listName == "ADMIN") {
 				creature->sendSystemMessage("@player_structure:no_banned"); //You cannot add a banned player to the entry list.
 				return INVALIDPARAMETERS;
@@ -133,7 +136,7 @@ public:
 				return INVALIDPARAMETERS;
 			}
 
-		} else if (structureObject->isOnAdminList(targetName)) {
+		} else if (structureObject->isOnAdminList(targetName, true)) {
 			if (listName == "BAN" && isTargetOwner) {
 				creature->sendSystemMessage("You cannot ban the owner.");
 				return INVALIDPARAMETERS; //Can't ban the owner.
@@ -158,6 +161,20 @@ public:
 				creature->sendSystemMessage("@player_structure:hopper_cannot_remove_admin"); //You cannot remove an admin from the hopper list.
 				return INVALIDPARAMETERS;
 			}
+		}
+
+		ManagedReference<GuildManager*> guildManager = server->getZoneServer()->getGuildManager();
+
+		String abbrev = "";
+		if (targetName.beginsWith("guild:")) {
+			abbrev = targetName.replaceAll("guild:","");
+		}
+
+		if (abbrev != "") {
+			if (!guildManager->guildAbbrevExists(abbrev)) {
+				creature->sendSystemMessage("That guild does not exist.");
+				return INVALIDPARAMETERS;
+			}
 		} else {
 			if (!playerManager->existsName(targetName)) {
 				StringIdChatParameter params("@player_structure:modify_list_invalid_player"); //%NO is an invalid player name.
@@ -168,8 +185,8 @@ public:
 			}
 		}
 
-		if (listName == "BAN" && !structureObject->isOnBanList(targetName))
-			structureObject->revokeAllPermissions(targetName); //Remove all existing permissions
+		if (listName == "BAN" && !structureObject->isOnBanList(targetName, true))
+			structureObject->revokeAllPermissions(targetName, true); //Remove all existing permissions
 
 		StringIdChatParameter params;
 		params.setTO(targetName);
@@ -177,11 +194,11 @@ public:
 		int returnCode = StructurePermissionList::LISTNOTFOUND;
 
 		if (action == "add")
-			returnCode = structureObject->grantPermission(listName, targetName);
+			returnCode = structureObject->grantPermission(listName, targetName, true);
 		else if (action == "remove")
-			returnCode = structureObject->revokePermission(listName, targetName);
+			returnCode = structureObject->revokePermission(listName, targetName, true);
 		else
-			returnCode = structureObject->togglePermission(listName, targetName);
+			returnCode = structureObject->togglePermission(listName, targetName, true);
 
 		switch (returnCode) {
 		case StructurePermissionList::GRANTED:
@@ -196,12 +213,29 @@ public:
 
 		creature->sendSystemMessage(params);
 
-		ManagedReference<CreatureObject*> targetPlayer = playerManager->getPlayer(targetName);
+		if (abbrev == "") {
+			ManagedReference<CreatureObject*> targetPlayer = playerManager->getPlayer(targetName);
 
-		//Update the cell permissions in case the player is in the building currently.
-		if (targetPlayer != NULL && structureObject->isBuildingObject()) {
-			BuildingObject* buildingObject = cast<BuildingObject*>( structureObject);
-			buildingObject->updateCellPermissionsTo(targetPlayer);
+			//Update the cell permissions in case the player is in the building currently.
+			if (targetPlayer != NULL && structureObject->isBuildingObject()) {
+				BuildingObject* buildingObject = cast<BuildingObject*>( structureObject);
+				buildingObject->updateCellPermissionsTo(targetPlayer);
+			}
+		} else {
+			ManagedReference<GuildObject*> targetGuild = guildManager->getGuildFromAbbrev(abbrev);
+
+			//Update the cell permissions to guild members.
+			if (targetGuild != NULL && structureObject->isBuildingObject()) {
+				ManagedReference<BuildingObject*> buildingObject = cast<BuildingObject*>( structureObject);
+
+				for (int i = 0; i < targetGuild->getTotalMembers(); ++i) {
+					uint64 memberID = targetGuild->getMember(i);
+					ManagedReference<CreatureObject*> guildMember = cast<CreatureObject*>(server->getZoneServer()->getObject(memberID));
+
+					if (guildMember != NULL)
+						buildingObject->updateCellPermissionsTo(guildMember);
+				}
+			}
 		}
 
 		return SUCCESS;
