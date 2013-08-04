@@ -287,12 +287,6 @@ LootManagerImplementation::LootManagerImplementation(CraftingManager* craftman, 
 	legendaryModifier = 0.0;
 	// server/zone/managers/loot/LootManager.idl():  		dotChance = 0.0;
 	dotChance = 0.0;
-	// server/zone/managers/loot/LootManager.idl():  		dotPotencyMax = 0.0;
-	dotPotencyMax = 0.0;
-	// server/zone/managers/loot/LootManager.idl():  		dotStrengthMax = 0.0;
-	dotStrengthMax = 0.0;
-	// server/zone/managers/loot/LootManager.idl():  		dotDurationMax = 0.0;
-	dotDurationMax = 0.0;
 	// server/zone/managers/loot/LootManager.idl():  		Logger.setLoggingName("LootManager");
 	Logger::setLoggingName("LootManager");
 	// server/zone/managers/loot/LootManager.idl():  		Logger.setLogging(true);
