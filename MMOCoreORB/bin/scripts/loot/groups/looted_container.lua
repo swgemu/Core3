@@ -122,8 +122,8 @@ looted_container = {
 		{itemTemplate = "ubese_armor_bracer_r", weight = 80000},
 		{itemTemplate = "ubese_armor_bandolier", weight = 80000},
 		{itemTemplate = "force_color_crystal", weight = 80000},
-		{itemTemplate = "force_crystal_poor", weight = 80000}
-		{itemTemplate = "force_crystal_okay", weight = 80000}
+		{itemTemplate = "force_crystal_poor", weight = 80000},
+		{itemTemplate = "force_crystal_okay", weight = 80000},
 		{itemTemplate = "holocron_dark", weight = 80000},
 		{itemTemplate = "holocron_light", weight = 80000},
 		{itemTemplate = "attachment_clothing", weight = 80000},
