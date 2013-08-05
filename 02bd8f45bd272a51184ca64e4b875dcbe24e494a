@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAC3///Hk\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-08-05T04:18:12Z",
+      "side": 1,
+      "message": "This formula doesn\u0027t quite look right to me. You\u0027ll never get a value over 300. Instead of that one rand that you are seeding into all of the calculations, it would be better if you replace it with a System::random(max) where max is the maximum value from the lua. something like the following:\n\nstrength \u003d round(MAX(dotGatesPoison.elementAt(0).getKey(), MIN(dotGatesPoison.elementAt(0).getValue(), round(System::random(dotGatesPoison.elementAt(0).getValue() - level) + level))))",
+      "revId": "02bd8f45bd272a51184ca64e4b875dcbe24e494a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAC3///Hw\u003d",
         "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
         "patchSetId": 1
