@@ -19,6 +19,8 @@ includeFile("tatooine/serverobjects.lua")
 includeFile("thug/serverobjects.lua")
 includeFile("townsperson/serverobjects.lua")
 includeFile("tutorial/serverobjects.lua")
+includeFile("misc/boba_fett_samplequest.lua")
+includeFile("misc/han_solo_quest.lua")
 includeFile("yavin4/serverobjects.lua")
 
 includeFile("faction/serverobjects.lua")
@@ -41,3 +43,6 @@ includeFile("lair/serverobjects.lua")
 
 -- Outfits
 includeFile("outfits/serverobjects.lua")
+
+
+
