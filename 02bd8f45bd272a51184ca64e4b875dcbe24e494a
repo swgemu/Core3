@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAC3///Hw\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 10
+      },
+      "writtenOn": "2013-08-05T04:03:10Z",
+      "side": 1,
+      "message": "with this change, dots can only get to 6999, i think you should have kept the \u0027level * 10 +\u0027 and only changed the system::random(3000) to system::random(7000) so that the range could go from 250 - 9999.\n\nint uses \u003d level * 10 + System::random(7000);",
+      "revId": "02bd8f45bd272a51184ca64e4b875dcbe24e494a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
