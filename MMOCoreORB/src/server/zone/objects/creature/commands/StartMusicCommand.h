@@ -144,9 +144,10 @@ public:
 		bool targetedInstrument = false;
 
 		if (instrument == NULL) {
-			ManagedReference<SceneObject*> nala = server->getZoneServer()->getObject(target);
+			ManagedReference<SceneObject*> nala = server->getZoneServer()->getObject(creature->getTargetID());
 
 			if (nala != NULL && dynamic_cast<Instrument*> (nala.get())) {
+
 				targetedInstrument = true;
 				instrument = cast<Instrument*> (nala.get());
 				ManagedReference<SceneObject*> creatureParent = creature->getParent();

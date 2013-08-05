@@ -91,7 +91,7 @@ public:
 			}
 		}
 
-		if (!canPlayInstrument(creature, target))
+		if (!canPlayInstrument(creature, creature->getTargetID()))
 			return GENERALERROR;
 
 		PlayerObject* ghost = dynamic_cast<PlayerObject*> (creature->getSlottedObject("ghost"));
@@ -169,7 +169,8 @@ public:
 				bool targetedInstrument = false;
 
 				if (instrument == NULL) {
-					instrument = cast<Instrument*> (server->getZoneServer()->getObject(target));
+					ManagedReference<SceneObject*> nala = server->getZoneServer()->getObject(groupMember->getTargetID());
+					instrument = cast<Instrument*> (nala.get());
 					targetedInstrument = true;
 				}
 
