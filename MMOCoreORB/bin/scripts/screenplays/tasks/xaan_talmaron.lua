@@ -1,7 +1,7 @@
 xaan_talmaron_missions =
 {
 	{ 
-		missionType = "retrieve",
+		missionType = "deliver",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "ezawo_wagli", planetName = "dantooine", npcName = "Ezawo Wagli" } 

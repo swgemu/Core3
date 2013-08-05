@@ -1,1 +1,10 @@
-4173M
+f92c7c9 was Sal Scotto, 2 months ago, message: [fix] for craftingstage2
+43e0c0d was Victor Popovici, 2 months ago, message: Merge "[Fixed] NPCs inside a cell to turn to face you when conversed with - mantis 3417, 3941" into unstable
+9703962 was Pete, 3 months ago, message: Merge "[changed] Temporarily Reduced BE slicing XP from bases to 1" into unstable
+a32ee96 was Pete, 3 months ago, message: [changed] Temporarily Reduced BE slicing XP from bases to 1
+68b5143 was Pete, 3 months ago, message: Merge "[remoted] Removed more spam" into unstable
+0711c97 was Pete, 3 months ago, message: [remoted] Removed more spam
+1835fd2 was Ivojedi, 3 months ago, message: [Fixed] NPCs inside a cell to turn to face you when conversed with - mantis 3417, 3941
+776e4dc was Victor Popovici, 3 months ago, message: [fixed] stability issue
+4191a15 was Victor Popovici, 3 months ago, message: [fixed] stability issue
+2fb2564 was Pete, 3 months ago, message: [removed] removed some server spam
