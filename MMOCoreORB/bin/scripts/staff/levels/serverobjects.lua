@@ -42,6 +42,8 @@
 --true = 1, false = 0
 
 includeFile("levels/admin.lua")
+includeFile("levels/ct.lua")
+includeFile("levels/cc.lua")
 includeFile("levels/dev.lua")
 includeFile("levels/qa.lua")
 includeFile("levels/csr.lua")
