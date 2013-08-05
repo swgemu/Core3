@@ -187,8 +187,8 @@ public:
 				}
 
 				if (targetedInstrument) {
-					instrument->setDirection(*creature->getDirection());
-					instrument->teleport(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), creature->getParentID());
+					instrument->setDirection(*groupMember->getDirection());
+					instrument->teleport(groupMember->getPositionX(), groupMember->getPositionZ(), groupMember->getPositionY(), groupMember->getParentID());
 				}
 
 				String instrumentAnimation;
