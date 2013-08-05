@@ -182,6 +182,6 @@ rori_static_spawns = {
 rori_badges = {
 	{"badge_imp_camp",-5633,-5661,10,96},
 	{"badge_imp_hyperdrive_fac",-1130,4544,10,97},
-	{"badge_kobala_spice_mine",7371,169,10,94},
+	{"badge_kobala_spice_mine",7304,63,10,94},
 	{"badge_rebel_outpost",3664,-6501,10,95}
 }
