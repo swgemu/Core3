@@ -1,0 +1,37 @@
+midgoss_dlabaninaph = Creature:new {
+	objectName = "@mob/creature_names:patron_devaronian_male",
+	customName = "Midgoss D'labaninaph",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
+	level = 4,
+	chanceHit = 0.24,
+	damageMin = 40,
+	damageMax = 45,
+	baseXp = 62,
+	baseHAM = 2000,
+	baseHAMmax = 2500,
+	armor = 0,
+	resists = {0,0,0,0,0,0,0,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = NONE,
+	creatureBitmask = NONE,
+	optionsBitmask = 264,
+	diet = HERBIVORE,
+	templates = {"object/mobile/devaronian_male.iff"},
+	lootGroups = {},
+	weapons = {},
+	conversationTemplate = "diktatTargetConvo",
+	attacks = {
+	}
+}
+
+CreatureTemplates:addCreatureTemplate(midgoss_dlabaninaph, "midgoss_dlabaninaph")
