@@ -354,31 +354,31 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 			String da;
 
 			switch (dotAttribute) {
-			case 1:
+			case 0:
 				da = "Health";
 				break;
-			case 2:
+			case 1:
 				da = "Strength";
 				break;
-			case 3:
+			case 2:
 				da = "Constitution";
 				break;
-			case 4:
+			case 3:
 				da = "Action";
 				break;
-			case 5:
+			case 4:
 				da = "Quickness";
 				break;
-			case 6:
+			case 5:
 				da = "Stamina";
 				break;
-			case 7:
+			case 6:
 				da = "Mind";
 				break;
-			case 8:
+			case 7:
 				da = "Focus";
 				break;
-			case 9:
+			case 8:
 				da = "Willpower";
 				break;
 			default:

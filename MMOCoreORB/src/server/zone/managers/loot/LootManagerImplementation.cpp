@@ -56,9 +56,53 @@ bool LootManagerImplementation::loadConfigData() {
 	legendaryChance = lua->getGlobalFloat("legendaryChance");
 	legendaryModifier = lua->getGlobalFloat("legendaryModifier");
 	dotChance = lua->getGlobalFloat("dotChance");
-	dotPotencyMax = lua->getGlobalFloat("dotPotencyMax");
-	dotStrengthMax = lua->getGlobalFloat("dotStrengthMax");
-	dotDurationMax = lua->getGlobalFloat("dotDurationMax");
+	LuaObject dotGatesOne = lua->getGlobalObject("dotGatesPoison");
+
+	if(dotGatesOne.isValidTable()){
+		for(int i = 1; i <= dotGatesOne.getTableSize(); ++i){
+			LuaObject dotGatesTwo = dotGatesOne.getObjectAt(i);
+			if(dotGatesTwo.isValidTable()){
+				int dotMin = dotGatesTwo.getIntAt(1);
+				int dotMax = dotGatesTwo.getIntAt(2);
+				dotGatesPoison.put(dotMin, dotMax);
+			}
+			dotGatesTwo.pop();
+
+		}
+		dotGatesOne.pop();
+	}
+
+	LuaObject dotGatesThree = lua->getGlobalObject("dotGatesDisease");
+
+	if(dotGatesThree.isValidTable()){
+		for(int i = 1; i <= dotGatesThree.getTableSize(); ++i){
+			LuaObject dotGatesFour = dotGatesThree.getObjectAt(i);
+			if(dotGatesFour.isValidTable()){
+				int dotMin = dotGatesFour.getIntAt(1);
+				int dotMax = dotGatesFour.getIntAt(2);
+				dotGatesDisease.put(dotMin, dotMax);
+			}
+			dotGatesFour.pop();
+
+		}
+		dotGatesThree.pop();
+	}
+
+	LuaObject dotGatesFive = lua->getGlobalObject("dotGatesFire");
+
+	if(dotGatesFive.isValidTable()){
+		for(int i = 1; i <= dotGatesFive.getTableSize(); ++i){
+			LuaObject dotGatesSix = dotGatesFive.getObjectAt(i);
+			if(dotGatesSix.isValidTable()){
+				int dotMin = dotGatesSix.getIntAt(1);
+				int dotMax = dotGatesSix.getIntAt(2);
+				dotGatesFire.put(dotMin, dotMax);
+			}
+			dotGatesSix.pop();
+
+		}
+		dotGatesFive.pop();
+	}
 
 	LuaObject lootableDotsTable = lua->getGlobalObject("weaponDotTemplates");
 
@@ -73,6 +117,7 @@ bool LootManagerImplementation::loadConfigData() {
 	lootableDotsTable.pop();
 
 	LuaObject lootableModsTable = lua->getGlobalObject("lootableStatMods");
+
 
 	if (!lootableModsTable.isValidTable())
 		return false;
@@ -419,41 +464,43 @@ void LootManagerImplementation::addDots(TangibleObject* object, int creatureLeve
 			// Lets generate some stats based on creature level. TODO: Needs possibility of additional dots added depending on chance/loot level.
 			int level = creatureLevel;
 
-			int type = System::random(2) + 1; // Types are: Disease, Poison, Fire (3).
+			int type = (System::random(2)) + 1; // Types are: Disease, Poison, Fire (3).
 
 			int attribute = 0;
 			int strength = 0;
 			int duration = 0;
 			int potency = 0;
-			int numbers[] = {  1, 4, 7 }; // The main pool attributes.
-			int modifier = 1.5;
+			int numbers[] = {  0, 3, 6 }; // The main pool attributes.
 			int chooseAttribute = System::random(2); // Types are the corresponding pools, main ones for this.
 
 			switch (type) {
 			case 1: // Poison, only does the main 3 pools.
 				attribute = numbers[chooseAttribute];
-				strength = round(MIN(((level - System::random(level)) * modifier) + 50, dotStrengthMax)); // Poisons apparently have higher strength.
-				duration = round(MIN(((level - System::random(level)) / modifier) + 10, dotDurationMax)); // Lower duration.
-				potency = round(MIN((level - System::random(50)) + 1, dotPotencyMax)); // Potency is anywhere from 1 to 100%.
+				strength = round(MAX(dotGatesPoison.elementAt(0).getKey(), MIN(dotGatesPoison.elementAt(0).getValue(), round(System::random(dotGatesPoison.elementAt(0).getValue() - level) + level)))); // Poisons apparently have higher strength.
+				duration = round(MAX(dotGatesPoison.elementAt(2).getKey(), MIN(dotGatesPoison.elementAt(2).getValue(), round(System::random(dotGatesPoison.elementAt(2).getValue() - level) + level)))); // Lower duration.
+				potency = round(MAX(dotGatesPoison.elementAt(1).getKey(), MIN(dotGatesPoison.elementAt(1).getValue(), round(System::random(dotGatesPoison.elementAt(1).getValue() - level) + level))));
 				break;
 			case 2: // Disease, drops on all 9 pools.
-				attribute = System::random(8) + 1;
-				strength = round(MIN(((level - System::random(level)) / modifier) + 50, dotStrengthMax)); // Diseases apparently have lower strength.
-				duration = round(MIN(((level - System::random(level)) * modifier) + 10, dotDurationMax)); // Higher duration.
-				potency = round(MIN((level - System::random(50)) + 1, dotPotencyMax)); // Potency is anywhere from 1 to 100%.
+				attribute = System::random(8);
+				strength = round(MAX(dotGatesDisease.elementAt(0).getKey(), MIN(dotGatesDisease.elementAt(0).getValue(), round(System::random(dotGatesDisease.elementAt(0).getValue() - level) + level)))); // Diseases apparently have lower strength.
+				duration = round(MAX(dotGatesDisease.elementAt(2).getKey(), MIN(dotGatesDisease.elementAt(2).getValue(), round(System::random(dotGatesDisease.elementAt(2).getValue() - level) + level)))); // Higher duration.
+				potency = round(MAX(dotGatesDisease.elementAt(1).getKey(), MIN(dotGatesDisease.elementAt(1).getValue(), round(System::random(dotGatesDisease.elementAt(1).getValue() - level) + level)))); // Potency is anywhere from 1 to 100%.
 				break;
 			case 3: // Fire, same as Poison.
 				attribute = numbers[chooseAttribute];
-				strength = round(MIN(((level - System::random(level)) * modifier) + 50, dotStrengthMax)); // Fires apparently have higher strength.
-				duration = round(MIN(((level - System::random(level)) / modifier) + 10, dotDurationMax)); // Lower duration.
-				potency = round(MIN((level - System::random(50)) + 1, dotPotencyMax)); // Potency is anywhere from 1 to 100%.
+				strength = round(MAX(dotGatesFire.elementAt(0).getKey(), MIN(dotGatesFire.elementAt(0).getValue(), round(System::random(dotGatesFire.elementAt(0).getValue() - level) + level)))); // Fires apparently have higher strength.
+				duration = round(MAX(dotGatesFire.elementAt(2).getKey(), MIN(dotGatesFire.elementAt(2).getValue(), round(System::random(dotGatesFire.elementAt(2).getValue() - level) + level)))); // Lower duration.
+				potency = round(MAX(dotGatesFire.elementAt(1).getKey(), MIN(dotGatesFire.elementAt(1).getValue(), round(System::random(dotGatesFire.elementAt(1).getValue() - level) + level))));
 				break;
 			default:
 				break;
 
 			}
 
-			int uses = level * 10 + System::random(3000); // Uses are global, and not dependent on type like other stats.
+			int uses = (level * 10) + (System::random(7000)); // Uses are global, and not dependent on type like other stats.
+
+			if (uses < 250)
+				uses = 250;
 
 			weapon->setDotType(type);
 			weapon->setDotAttribute(attribute);
