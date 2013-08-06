@@ -29,9 +29,22 @@ fringer = Creature:new {
 				"object/mobile/dressed_commoner_naboo_human_male_02.iff",
 				"object/mobile/dressed_commoner_tatooine_bith_male_05.iff"
 	},
-	lootGroups = {},
-	weapons = {},
-	attacks = {}
+	lootGroups = {
+		{
+	        groups = {
+			{group = "junk", chance = 5500000},
+			{group = "armor_looted", chance = 500000},
+			{group = "rifles", chance = 1000000},
+			{group = "pistols", chance = 1000000},
+			{group = "melee_weapons", chance = 1000000},
+			{group = "carbines", chance = 1000000},
+		},
+			lootChance = 2600000
+		}
+	},
+	weapons = {"pirate_weapons_light"},
+	conversationTemplate = "",
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(fringer, "fringer")
