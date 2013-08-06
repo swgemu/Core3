@@ -2462,7 +2462,7 @@ bool CreatureObjectImplementation::isAttackableBy(TangibleObject* object){
 	if(ghost == NULL)
 		return false;
 
-	if (isDead() || isIncapacitated())
+	if (isDead() || isIncapacitated() || isInvisible())
 		return false;
 
 	if(object->getFaction() == 0 )
@@ -2487,7 +2487,7 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 	if (object == _this.get())
 		return false;
 
-	if (isDead())
+	if (isDead() || isInvisible())
 		return false;
 
 	if (object->getZone() != getZone())
@@ -2538,6 +2538,12 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 }
 
 bool CreatureObjectImplementation::isHealableBy(CreatureObject* object) {
+	if (object == _this.get())
+		return true;
+
+	if (isInvisible())
+		return false;
+
 	PlayerObject* ghost = object->getPlayerObject(); // ghost is the healer
 	PlayerObject* targetGhost = getPlayerObject();
 
