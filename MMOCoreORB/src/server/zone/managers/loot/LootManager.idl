@@ -75,9 +75,15 @@ class LootManager extends ManagedService implements Logger {
 	private transient float legendaryModifier;
 
 	private transient float dotChance;
-	private transient float dotPotencyMax;
-	private transient float dotStrengthMax;
-	private transient float dotDurationMax;
+
+	@dereferenced
+	private transient VectorMap<unsigned long, unsigned long> dotGatesPoison;
+
+	@dereferenced
+	private transient VectorMap<unsigned long, unsigned long> dotGatesDisease;
+
+	@dereferenced
+	private transient VectorMap<unsigned long, unsigned long> dotGatesFire;
 	
 	@dereferenced
 	private transient SortedVector<string> lootableMods;
@@ -102,9 +108,6 @@ class LootManager extends ManagedService implements Logger {
 		legendaryModifier = 0.0;
 	
 		dotChance = 0.0;
-		dotPotencyMax = 0.0;
-		dotStrengthMax = 0.0;
-		dotDurationMax = 0.0;
 		
 		Logger.setLoggingName("LootManager");
 		

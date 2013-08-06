@@ -55,12 +55,30 @@ weaponDotTemplates = {
 }
 
 -- Determines how often a Dot can drop off a weapon.
-dotChance = 350 --1 in 350
+dotChance = 50 -- LOWERED FOR TESTING ON NOVA.
+-- dotChance = 350
 
 -- Determines the maximum stats a DoT weapon can have.
-dotPotencyMax = 100 --Percentage of potency (default 100%)
-dotStrengthMax = 500 -- Amount of Strength max for the DoT.
-dotDurationMax = 200 -- Max amount of duration in seconds possible to drop.
+-- Poison Dots. First value is the 'min', second is 'max', order is Strength, Potency, Duration.
+dotGatesPoison = {
+		{50, 500}, -- Strength
+		{10, 200}, -- Potency
+		{30, 240}, -- Duration
+}
+
+-- Disease Dots.
+dotGatesDisease = {
+		{20, 200}, -- Strength
+		{10, 200}, -- Potency
+		{120, 1200}, -- Duration
+}
+
+-- Fire Dots.
+dotGatesFire = {
+		{50, 600}, -- Strength
+		{10, 200}, -- Potency
+		{60, 360}, -- Duration
+}
 
 --Determines how much of an increase in the base stats will be applied to the object.
 exceptionalModifier = 2.5

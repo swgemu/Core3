@@ -190,11 +190,11 @@ class LootManagerImplementation : public ManagedServiceImplementation, public Lo
 
 	float dotChance;
 
-	float dotPotencyMax;
+	VectorMap<unsigned long long, unsigned long long> dotGatesPoison;
 
-	float dotStrengthMax;
+	VectorMap<unsigned long long, unsigned long long> dotGatesDisease;
 
-	float dotDurationMax;
+	VectorMap<unsigned long long, unsigned long long> dotGatesFire;
 
 	SortedVector<String> lootableMods;
 
