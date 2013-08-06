@@ -36,23 +36,20 @@ public:
 
 		Locker _lock(vehicle, player);
 
-		//Need to check if they are city banned.
-		/*
-		ManagedReference<ActiveArea*> activeArea = vehicle->getActiveRegion();
-
-		if (activeArea != NULL && activeArea->isRegion() && !player->getPlayerObject()->isPrivileged()) {
-			Region* region = cast<Region*>( activeArea.get());
-
-			ManagedReference<CityHallObject*> cityHall = region->getCityHall();
-
-			if (cityHall != NULL && cityHall->isBanned(player->getObjectID())) {
-				player->sendSystemMessage("@city/city:garage_banned"); //You are city banned and cannot use this garage.
-				return;
-			}
-		}*/
+		if (!vehicle->checkInRangeGarage()) {
+			player->sendSystemMessage("@pet/pet_menu:repair_unrecognized_garages"); //Your vehicle does not recognize any local garages. Try again in a garage repair zone.
+			return;
+		}
 
 		int repairCost = vehicle->calculateRepairCost(player);
 		int totalFunds = player->getBankCredits();
+		int tax = 0;
+
+		ManagedReference<CityRegion*> city =vehicle->getCityRegion();
+		if(city != NULL && city->getGarageTax() > 0){
+			tax = repairCost * city->getGarageTax() / 100;
+			repairCost += tax;
+		}
 
 		if (repairCost > totalFunds) {
 			player->sendSystemMessage("@pet/pet_menu:lacking_funds_prefix " + String::valueOf(repairCost - totalFunds) + " @pet/pet_menu:lacking_funds_suffix"); //You lack the additional  credits required to repair your vehicle.
@@ -66,6 +63,14 @@ public:
 		player->sendSystemMessage(params);
 
 		vehicle->healDamage(player, 0, vehicle->getConditionDamage(), true);
+
+		if( city != NULL && tax > 0){
+
+			_lock.release();
+			Locker clocker(city, player);
+			city->addToCityTreasury(tax);
+		}
+
 	}
 };
 
