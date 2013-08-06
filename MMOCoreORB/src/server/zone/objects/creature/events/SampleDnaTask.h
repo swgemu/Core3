@@ -102,11 +102,24 @@ public:
 				int sampleRoll = System::random(100);
 				sampleRoll += System::random(player->getSkillMod("luck") + player->getSkillMod("force_luck"));
 				float rollMod = (((skillMod-cl)/cl))  + (skillMod-cl);
+				rollMod /= 2;
 				// We have the players roll. NOW to determine if success of failure;
-				if (sampleRoll < 5) {
+				if (sampleRoll > 95) { // we had an amazing roll, either kill it via sample or it ignores us
+					int maxSamples = ceil(skillMod/25);
+					if (creature->getDnaSampleCount() > maxSamples ){
+						creature->setDnaState(CreatureManager::DNASAMPLED);
+						// We took the max samples the shock it too much and kils the creature.
+						result = 4;
+					} else {
+						// did we aggro?
+						creature->activateAwarenessEvent(player);
+						result = 5;
+					}
+				}
+				else if (sampleRoll < 5) {
 					// Critical failure, this can always occur
 					result = 1;
-				} else if ( (50 + rollMod) < sampleRoll) { // failure your roll < 50%
+				} else if ( (30 + rollMod) < sampleRoll) { // failure your roll < 50%
 					result = 2;
 				} else { // success
 					int maxSamples = ceil(skillMod/25);
