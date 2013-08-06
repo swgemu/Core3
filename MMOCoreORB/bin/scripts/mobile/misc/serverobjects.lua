@@ -126,3 +126,7 @@ includeFile("misc/wedge_antilles.lua")
 includeFile("misc/workshop_droid.lua")
 includeFile("misc/rebel_battle_droid.lua")
 includeFile("misc/protocol_droid_3po.lua")
+
+-- Han Solo/Boba Fett Sample Quest
+includeFile("misc/hanSoloSampleQuest.lua")
+includeFile("misc/bobaFettSampleQuest.lua")

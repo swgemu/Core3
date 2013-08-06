@@ -1,3 +1,53 @@
+<<<<<<< HEAD
+-- Conversations
+includeFile("conversations.lua")
+
+-- Creatures
+includeFile("all/serverobjects.lua") 
+includeFile("corellia/serverobjects.lua")
+includeFile("dantooine/serverobjects.lua")
+includeFile("dathomir/serverobjects.lua")
+includeFile("endor/serverobjects.lua")
+includeFile("event/serverobjects.lua")
+includeFile("lok/serverobjects.lua")
+includeFile("misc/serverobjects.lua")
+includeFile("naboo/serverobjects.lua")
+includeFile("quest/serverobjects.lua")
+includeFile("rori/serverobjects.lua")
+includeFile("space/serverobjects.lua")
+includeFile("talus/serverobjects.lua")
+includeFile("tatooine/serverobjects.lua")
+includeFile("thug/serverobjects.lua")
+includeFile("townsperson/serverobjects.lua")
+includeFile("tutorial/serverobjects.lua")
+includeFile("misc/boba_fett_samplequest.lua")
+includeFile("misc/han_solo_quest.lua")
+includeFile("yavin4/serverobjects.lua")
+
+includeFile("faction/serverobjects.lua")
+includeFile("dungeon/serverobjects.lua") 
+
+-- Weapons
+includeFile("weapon/serverobjects.lua") 
+
+-- Spawn Groups
+includeFile("spawn/serverobjects.lua")
+
+-- Trainer
+includeFile("trainer/serverobjects.lua")
+
+-- Mission
+includeFile("mission/serverobjects.lua")
+
+-- Lairs
+includeFile("lair/serverobjects.lua")
+
+-- Outfits
+includeFile("outfits/serverobjects.lua")
+
+
+
+=======
 -- Conversations
 includeFile("conversations.lua")
 
@@ -41,3 +91,4 @@ includeFile("lair/serverobjects.lua")
 
 -- Outfits
 includeFile("outfits/serverobjects.lua")
+>>>>>>> 9df69d124e87a1e0b78e9259a1d4b77d6042cef3

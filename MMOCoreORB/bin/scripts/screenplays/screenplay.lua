@@ -84,6 +84,7 @@ Act = Object:new {
 
 }
 
+
 -- Theme parks
 includeFile("themepark/themeParkLogic.lua")
 includeFile("themepark/conversations/mission_giver_conv_handler.lua")
@@ -107,6 +108,7 @@ includeFile("dungeon/death_watch_bunker_conv_handles.lua")
 includeFile("tasks/ajuva_vanasterin.lua")
 includeFile("tasks/booto_lubble.lua")
 includeFile("tasks/captain_gavyn_sykes.lua")
+includeFile("tasks/diktatQuest.lua")
 includeFile("tasks/dolac_legasi.lua")
 includeFile("tasks/drakka_judarrl.lua")
 includeFile("tasks/draya_korbinari.lua")
@@ -229,7 +231,7 @@ includeFile("static_spawns/rori_static_spawns.lua")
 includeFile("static_spawns/talus_static_spawns_north.lua")
 includeFile("static_spawns/talus_static_spawns_south.lua")
 
+--Han Solo/Bobba Fett Quest
+--includeFile("tests/hSoloBFettQuest.lua")
 
---Tests
---includeFile("tests/options_bitmask_test.lua")
---includeFile("event/stresstest_20120128.lua")
+
