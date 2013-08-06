@@ -405,8 +405,8 @@ void DeliverMissionObjectiveImplementation::finalize() {
 void DeliverMissionObjectiveImplementation::initializeTransientMembers() {
 	// server/zone/objects/mission/DeliverMissionObjective.idl():  		super.initializeTransientMembers();
 	MissionObjectiveImplementation::initializeTransientMembers();
-	// server/zone/objects/mission/DeliverMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
-	Logger::setLoggingName("MissionObject");
+	// server/zone/objects/mission/DeliverMissionObjective.idl():  		Logger.setLoggingName("DeliverMissionObjective");
+	Logger::setLoggingName("DeliverMissionObjective");
 }
 
 TangibleObject* DeliverMissionObjectiveImplementation::getItem() {

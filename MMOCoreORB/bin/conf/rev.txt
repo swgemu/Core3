@@ -1,1 +1,10 @@
-4173M
+8636cbc was papasmurf520, 21 minutes ago, message: [added] Diktat Quest
+9df69d1 was Ivojedi, 13 hours ago, message: [Fixed] all nalargons and omni boxes warping to the group leader when /startband is used
+36baa1e was Victor Popovici, 17 hours ago, message: Merge "[fixed] Adjusted the award area of the Dathomir Imperial Prison badge and the Kobala Spice Mine badge on Rori" into unstable
+73613da was Victor Popovici, 17 hours ago, message: Merge "[Fixed] typos preventing locked containers from having loot inside [Added] chance for locked containers to be empty [Fixed] locked containers not being able to be moved" into unstable
+96730b4 was Naikoi, 21 hours ago, message: [fixed] Adjusted the award area of the Dathomir Imperial Prison badge and the Kobala Spice Mine badge on Rori
+fb2677c was Ivojedi, 22 hours ago, message: [Fixed] typos preventing locked containers from having loot inside [Added] chance for locked containers to be empty [Fixed] locked containers not being able to be moved
+524b49f was Ivojedi, 26 hours ago, message: [Fixed] /startmusic and /startband to work with the nalargon and omni box
+6b1957f was Victor Popovici, 32 hours ago, message: Merge "[fixed] mantis 3536 trap count display at one use" into unstable
+ddc93fe was Ivojedi, 32 hours ago, message: [Fixed] stability issue
+a12a727 was Klivian, 33 hours ago, message: [fixed] mantis 3536 trap count display at one use

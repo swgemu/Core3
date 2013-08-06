@@ -357,8 +357,8 @@ void EntertainerMissionObjectiveImplementation::finalize() {
 void EntertainerMissionObjectiveImplementation::initializeTransientMembers() {
 	// server/zone/objects/mission/EntertainerMissionObjective.idl():  		super.initializeTransientMembers();
 	MissionObjectiveImplementation::initializeTransientMembers();
-	// server/zone/objects/mission/EntertainerMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
-	Logger::setLoggingName("MissionObject");
+	// server/zone/objects/mission/EntertainerMissionObjective.idl():  		Logger.setLoggingName("EntertainerMissionObjective");
+	Logger::setLoggingName("EntertainerMissionObjective");
 }
 
 /*

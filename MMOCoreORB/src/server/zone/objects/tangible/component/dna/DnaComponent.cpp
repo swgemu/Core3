@@ -975,6 +975,8 @@ void DnaComponentImplementation::setStats(unsigned int cle, unsigned int end, un
 	fortitude = frt;
 	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		hardiness = har;
 	hardiness = har;
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		dexterity = dex;
+	dexterity = dex;
 }
 
 void DnaComponentImplementation::setCleverness(unsigned int value) {

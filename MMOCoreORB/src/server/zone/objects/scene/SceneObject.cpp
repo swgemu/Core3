@@ -893,6 +893,15 @@ void SceneObject::getSlottedObjects(VectorMap<String, ManagedReference<SceneObje
 		_implementation->getSlottedObjects(objects);
 }
 
+void SceneObject::getContainerObjects(VectorMap<unsigned long long, ManagedReference<SceneObject* > >& objects) {
+	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->getContainerObjects(objects);
+}
+
 unsigned long long SceneObject::getParentID() {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
