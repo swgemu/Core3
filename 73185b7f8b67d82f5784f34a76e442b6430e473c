@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAAC3///fQ\u003d",
+        "filename": "MMOCoreORB/src/server/zone/managers/vendor/VendorManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-08-07T19:00:59Z",
+      "side": 1,
+      "message": "There was a TODO in the StructureManager to display the maintenance pool in hours remaining.  Added that since I was already here.",
+      "revId": "73185b7f8b67d82f5784f34a76e442b6430e473c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a1d315d_7474289c",
         "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/vendor/VendorDataComponent.cpp",
         "patchSetId": 1
@@ -13,6 +30,41 @@
       "writtenOn": "2013-08-07T15:07:40Z",
       "side": 1,
       "message": "Locker vlocker(owner, vendor);",
+      "revId": "73185b7f8b67d82f5784f34a76e442b6430e473c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_f46718e9",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/vendor/VendorDataComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-08-07T19:00:59Z",
+      "side": 1,
+      "message": "For my education, is this an existing problem or caused by something I did?",
+      "parentUuid": "3a1d315d_7474289c",
+      "revId": "73185b7f8b67d82f5784f34a76e442b6430e473c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAC3///fk\u003d",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/vendor/VendorDataComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-08-07T19:00:59Z",
+      "side": 1,
+      "message": "There was a typo in the skill string in the previous version:  crafting_merchant_sales_2 vs crafting_merchant_sales_02.   Merchants with Efficiency 2 weren\u0027t getting a decreased maintenance rate as a result.",
       "revId": "73185b7f8b67d82f5784f34a76e442b6430e473c",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
