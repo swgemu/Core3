@@ -204,4 +204,5 @@ class DraftSchematic extends IntangibleObject {
 	public DraftSchematicObjectTemplate getDraftSchematicTemplate() {
 		return schematicTemplate;
 	}
+	public native int getLabratory();
 }

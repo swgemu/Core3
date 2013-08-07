@@ -114,8 +114,9 @@ public:
 				creature->sendSystemMessage("Unable to create target item, is it implemented yet?");
 				return GENERALERROR;
 			}
-
-			prototype->setInitialCraftingValues(manuSchematic, CraftingManager::GREATSUCCESS);
+			Locker locker(prototype);
+			Locker mlock(manuSchematic);
+			craftingManager->setInitialCraftingValues(prototype,manuSchematic,CraftingManager::GREATSUCCESS);
 			prototype->updateCraftingValues(manuSchematic->getCraftingValues(), true);
 
 			prototype->createChildObjects();

@@ -570,15 +570,6 @@ class TangibleObject extends SceneObject {
 	public native ThreatMap getThreatMap();
 	
 	/*
-	 * Set the initial values for this object based on the schematic
-	 */
-	public native void setInitialCraftingValues(ManufactureSchematic manufactureSchematic, int assemblySuccess);
-
-	/*
-	 * Add the subcomponent stats to this based on the items in the schematic
-	 */
-	public native boolean applyComponentStats(ManufactureSchematic manufactureSchematic);
-	/*
 	 * Creates a factory crate for this object, can insert this object or a clone
 	 */
 	public native FactoryCrate createFactoryCrate(boolean insertSelf = false);

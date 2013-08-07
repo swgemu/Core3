@@ -108,6 +108,7 @@
 
 #include "server/zone/managers/director/DirectorManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
+#include "server/zone/managers/crafting/CraftingManager.h"
 
 #include "server/conf/ConfigManager.h"
 
@@ -670,6 +671,9 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("ARMS_HITLOCATION", CombatManager::ARMS);
 	luaTemplatesInstance->setGlobalInt("LEGS_HITLOCATION", CombatManager::LEGS);
 	luaTemplatesInstance->setGlobalInt("HEAD_HITLOCATION", CombatManager::HEAD);
+
+	luaTemplatesInstance->setGlobalInt("GENETIC_LAB", CraftingManager::GENETIC_LAB);
+	luaTemplatesInstance->setGlobalInt("RESOURCE_LAB", CraftingManager::RESOURCE_LAB);
 }
 
 String TemplateManager::getTemplateFile(uint32 key) {

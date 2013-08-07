@@ -45,11 +45,15 @@
 #include "CraftingManager.h"
 #include "server/zone/objects/resource/ResourceContainer.h"
 #include "server/zone/objects/manufactureschematic/ingredientslots/ResourceSlot.h"
+#include "server/zone/managers/crafting/labratories/SharedLabratory.h"
+#include "server/zone/managers/crafting/labratories/ResourceLabratory.h"
+#include "server/zone/managers/crafting/labratories/GeneticLabratory.h"
 
 void CraftingManagerImplementation::initialize() {
 	schematicMap = SchematicMap::instance();
 	schematicMap->initialize(zoneServer.get());
 	loadBioSkillMods();
+	configureLabratories();
 }
 
 void CraftingManagerImplementation::awardSchematicGroup(PlayerObject* playerObject, Vector<String>& schematicgroups, bool updateClient) {
@@ -134,32 +138,12 @@ int CraftingManagerImplementation::calculateAssemblySuccess(CreatureObject* play
 	return BARELYSUCCESSFUL;
 }
 
-float CraftingManagerImplementation::calculateAssemblyValueModifier(int assemblyResult) {
-
-	if(assemblyResult == CraftingManager::AMAZINGSUCCESS)
-		return 1.05f;
-
-	float result = 1.1f - (assemblyResult * .1f);
-
-	return result;
-
-	/*
-	else
-		return 1.0f;*/
-}
-
-float CraftingManagerImplementation::getAssemblyPercentage(float value) {
-
-	float percentage = (value * (0.000015f * value + .015f)) * 0.01f;
-
-	return percentage;
-}
 
 int CraftingManagerImplementation::calculateExperimentationFailureRate(CreatureObject* player,
 		ManufactureSchematic* manufactureSchematic, int pointsUsed) {
-
+	SharedLabratory* lab = labs.get(manufactureSchematic->getLabratory());
 	// Get the Weighted value of MA
-	float ma = getWeightedValue(manufactureSchematic, MA);
+	float ma = lab->getWeightedValue(manufactureSchematic, MA);
 
 	// Get Experimentation skill
 	String expSkill = manufactureSchematic->getDraftSchematic()->getExperimentationSkill();
@@ -237,97 +221,6 @@ int CraftingManagerImplementation::calculateExperimentationSuccess(CreatureObjec
 	return BARELYSUCCESSFUL;
 }
 
-float CraftingManagerImplementation::calculateExperimentationValueModifier(
-		int experimentationResult, int pointsAttempted) {
-
-	// Make it so failure detract
-
-	float results;
-
-	switch (experimentationResult) {
-
-	case AMAZINGSUCCESS:
-		results = 0.08f;
-		break;
-	case GREATSUCCESS:
-		results = 0.07f;
-		break;
-	case GOODSUCCESS:
-		results = 0.055f;
-		break;
-	case MODERATESUCCESS:
-		results = 0.015f;
-		break;
-	case SUCCESS:
-		results = 0.01f;
-		break;
-	case MARGINALSUCCESS:
-		results = 0.00f;
-		break;
-	case OK:
-		results = -0.04f;
-		break;
-	case BARELYSUCCESSFUL:
-		results = -0.07f;
-		break;
-	case CRITICALFAILURE:
-		results = -0.08f;
-		break;
-	default:
-		results = 0;
-		break;
-	}
-
-	results *= pointsAttempted;
-
-	return results;
-
-}
-
-float CraftingManagerImplementation::getWeightedValue(ManufactureSchematic* manufactureSchematic, int type) {
-
-	int nsum = 0;
-	float weightedAverage = 0;
-	int n = 0;
-	int stat = 0;
-
-	for (int i = 0; i < manufactureSchematic->getSlotCount(); ++i) {
-
-		Reference<IngredientSlot* > ingredientslot = manufactureSchematic->getSlot(i);
-		Reference<DraftSlot* > draftslot = manufactureSchematic->getDraftSchematic()->getDraftSlot(i);
-
-		/// If resource slot, continue
-		if(!ingredientslot->isResourceSlot())
-			continue;
-
-		ResourceSlot* resSlot = cast<ResourceSlot*>(ingredientslot.get());
-
-		if(resSlot == NULL)
-			continue;
-
-		ManagedReference<ResourceSpawn* > spawn = resSlot->getCurrentSpawn();
-
-		if (spawn == NULL) {
-			error("Spawn object is null when running getWeightedValue");
-			return 0.0f;
-		}
-
-		n = draftslot->getQuantity();
-		stat = spawn->getValueOf(type);
-
-		if (stat != 0) {
-
-			nsum += n;
-			weightedAverage += (stat * n);
-		}
-	}
-
-	if (weightedAverage != 0)
-		weightedAverage /= float(nsum);
-
-	return weightedAverage;
-}
-
 String CraftingManagerImplementation::generateSerial() {
 
 	StringBuffer ss;
@@ -354,38 +247,11 @@ String CraftingManagerImplementation::generateSerial() {
 	return ss.toString();
 }
 
-void CraftingManagerImplementation::experimentRow(CraftingValues* craftingValues,
+void CraftingManagerImplementation::experimentRow(ManufactureSchematic* schematic, CraftingValues* craftingValues,
 		int rowEffected, int pointsAttempted, float failure, int experimentationResult) {
-
-	float modifier, newValue;
-
-	String title, subtitle, subtitlesTitle;
-
-	title = craftingValues->getVisibleExperimentalPropertyTitle(rowEffected);
-
-	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
-
-		subtitlesTitle = craftingValues->getExperimentalPropertySubtitlesTitle(i);
-
-		if (subtitlesTitle == title) {
-
-			subtitle = craftingValues->getExperimentalPropertySubtitle(i);
-
-			modifier = calculateExperimentationValueModifier(experimentationResult,
-					pointsAttempted);
-
-			newValue = craftingValues->getCurrentPercentage(subtitle)
-					+ modifier;
-
-			if (newValue > craftingValues->getMaxPercentage(subtitle))
-				newValue = craftingValues->getMaxPercentage(subtitle);
-
-			if (newValue < 0)
-				newValue = 0;
-
-			craftingValues->setCurrentPercentage(subtitle, newValue);
-		}
-	}
+	int labratory = schematic->getLabratory();
+	SharedLabratory* lab = labs.get(labratory);
+	lab->experimentRow(craftingValues,rowEffected,pointsAttempted,failure,experimentationResult);
 }
 
 bool CraftingManagerImplementation::loadBioSkillMods() {
@@ -425,4 +291,21 @@ String CraftingManagerImplementation::checkBioSkillMods(const String& property) 
 	}
 
 	return "";
+}
+
+void CraftingManagerImplementation::configureLabratories() {
+	ResourceLabratory* resLab = new ResourceLabratory();
+	resLab->initialize(zoneServer.get());
+	labs.put(static_cast<int>(RESOURCE_LAB),resLab); //RESOURCE_LAB
+
+	GeneticLabratory* genLab = new GeneticLabratory();
+	genLab->initialize(zoneServer.get());
+	labs.put(static_cast<int>(GENETIC_LAB), genLab); //GENETIC_LAB
+}
+void CraftingManagerImplementation::setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
+	if(manufactureSchematic == NULL || manufactureSchematic->getDraftSchematic() == NULL)
+		return;
+	int labratory = manufactureSchematic->getLabratory();
+	SharedLabratory* lab = labs.get(labratory);
+	lab->setInitialCraftingValues(prototype,manufactureSchematic,assemblySuccess);
 }

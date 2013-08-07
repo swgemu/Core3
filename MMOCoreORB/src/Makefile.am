@@ -238,6 +238,9 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/managers/minigames/GamblingManager.cpp \
 				server/zone/managers/minigames/ForageManager.cpp \
 				server/zone/objects/tangible/weapon/WeaponObject.cpp \
+				server/zone/managers/crafting/labratories/SharedLabratory.cpp \
+				server/zone/managers/crafting/labratories/ResourceLabratory.cpp \
+				server/zone/managers/crafting/labratories/GeneticLabratory.cpp \
 				server/zone/managers/crafting/CraftingManager.cpp \
 				server/zone/managers/loot/LootManager.cpp \
 				server/zone/managers/loot/LootGroupMap.cpp \

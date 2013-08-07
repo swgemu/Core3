@@ -610,3 +610,8 @@ void ManufactureSchematicImplementation::createFactoryBlueprint() {
 		factoryBlueprint.addIngredient(ingredientSlot->getFactoryIngredient(), ingredientSlot->getQuantityNeeded(), ingredientSlot->requiresIdentical());
 	}
 }
+int ManufactureSchematicImplementation::getLabratory() {
+	if(draftSchematic == NULL)
+		return -1;
+	return draftSchematic->getLabratory();
+}

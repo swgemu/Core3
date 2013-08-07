@@ -72,6 +72,8 @@ protected:
 
 	VectorMap<String, int> skillMods;
 
+	int labratory;
+
 public:
 	DraftSchematicObjectTemplate();
 
@@ -169,6 +171,10 @@ public:
 
     int getSkillMod(const String& mod) {
     	return skillMods.get(mod);
+    }
+
+    int getLabratory() {
+    	return labratory;
     }
 
 };

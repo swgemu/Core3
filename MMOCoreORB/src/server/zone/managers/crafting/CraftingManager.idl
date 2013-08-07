@@ -54,6 +54,8 @@ import server.zone.objects.manufactureschematic.ManufactureSchematic;
 import server.zone.objects.draftschematic.DraftSchematic;
 import system.util.Vector;
 import server.zone.managers.ZoneManager;
+import server.zone.managers.crafting.labratories.SharedLabratory;
+import server.zone.objects.tangible.TangibleObject;
 include server.zone.managers.crafting.schematicmap.SchematicMap;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
 
@@ -87,10 +89,17 @@ class CraftingManager extends ZoneManager {
 	public static final short OK = 6;
 	public static final short BARELYSUCCESSFUL = 7;
 	public static final short CRITICALFAILURE = 8;
-
+	
+	public static final int RESOURCE_LAB = 0x00;
+	public static final int GENETIC_LAB = 0x01;
+	
+	
 	@dereferenced
 	private transient SortedVector<string> bioMods;
-
+	
+	@dereferenced
+	private transient HashTable<int, Reference<SharedLabratory> > labs;
+	
 	public CraftingManager() {
 		super("CraftingManager");
 	}
@@ -114,26 +123,22 @@ class CraftingManager extends ZoneManager {
 	
 	public native int calculateAssemblySuccess(CreatureObject player, DraftSchematic draftSchematic, float effectiveness);
 	
-	public native float calculateAssemblyValueModifier(int assemblyResult);
-	
 	@local
-	public native void experimentRow(CraftingValues craftingValues, int rowEffected, int pointsAttempted, 
+	public native void experimentRow(ManufactureSchematic schematic, CraftingValues craftingValues, int rowEffected, int pointsAttempted, 
 			float failure, int experimentationResult);
-	
-	public native float getAssemblyPercentage(float value);
 	
 	public native int calculateExperimentationFailureRate(CreatureObject player, ManufactureSchematic manufactureSchematic, int pointsUsed);
 	
 	public native int calculateExperimentationSuccess(CreatureObject player, DraftSchematic draftSchematic, float effectiveness);
-	
-	public native float calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted);
-	
-	public native float getWeightedValue(ManufactureSchematic manufactureSchematic, int type);
 	
 	public native string generateSerial();
 
 	private native boolean loadBioSkillMods();
 
 	public native string checkBioSkillMods(final string property);
+	
+	private native void configureLabratories();
+	
+	public native void setInitialCraftingValues(TangibleObject prototype, ManufactureSchematic manufactureSchematic, int assemblySuccess);
 
 }

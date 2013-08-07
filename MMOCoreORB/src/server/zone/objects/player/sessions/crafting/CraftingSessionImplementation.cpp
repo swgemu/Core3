@@ -657,7 +657,6 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 	ManagedReference<CraftingStation*> craftingStation = this->craftingStation.get();
 	ManagedReference<ManufactureSchematic*> manufactureSchematic = this->manufactureSchematic.get();
 	ManagedReference<TangibleObject*> prototype = this->prototype.get();
-
 	// Get the appropriate number of Experimentation points from Skill
 	ManagedReference<DraftSchematic*> draftSchematic = manufactureSchematic->getDraftSchematic();
 
@@ -690,8 +689,10 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 			draftSchematic, craftingTool->getEffectiveness());
 
 	Locker locker(prototype);
+	Locker schLock(manufactureSchematic);
 	//Set initial crafting percentages
-	prototype->setInitialCraftingValues(manufactureSchematic, assemblyResult);
+	craftingManager.get()->setInitialCraftingValues(prototype,manufactureSchematic,assemblyResult);
+	//prototype->setInitialCraftingValues(manufactureSchematic, assemblyResult);
 
 	Reference<CraftingValues*> craftingValues = manufactureSchematic->getCraftingValues();
 	craftingValues->setManufactureSchematic(manufactureSchematic);
@@ -905,7 +906,7 @@ void CraftingSessionImplementation::experiment(int rowsAttempted, const String& 
 		prototype->setComplexity(manufactureSchematic->getComplexity());
 
 		// Do the experimenting - sets new percentages
-		craftingManager->experimentRow(craftingValues, rowEffected,
+		craftingManager->experimentRow(manufactureSchematic, craftingValues, rowEffected,
 				pointsAttempted, failure, experimentationResult);
 
 	}
