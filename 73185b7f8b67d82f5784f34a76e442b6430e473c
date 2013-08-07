@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_7474289c",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/vendor/VendorDataComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-08-07T15:07:40Z",
+      "side": 1,
+      "message": "Locker vlocker(owner, vendor);",
+      "revId": "73185b7f8b67d82f5784f34a76e442b6430e473c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
