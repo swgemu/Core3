@@ -55,8 +55,7 @@ public:
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments)
-	{
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -64,71 +63,99 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		try
-		{
+		try {
 			StringTokenizer args(arguments.toString());
 			ManagedReference<CreatureObject*> player = NULL;
 
-			ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+			ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(creature->getTargetID());
 
-			if (object != NULL && !object->isPlayerObject())
-			{
-				return INVALIDTARGET;
-			}
+			if (!args.hasMoreTokens()) {
+				if (object != NULL && object->isPlayerCreature()) {
+					player = cast<CreatureObject*>( object.get());
+					revivePlayer(creature, player);
 
-			else if (object == NULL)
-			{
-				creature->sendSystemMessage("Error: Nothing selected.");
-				object = creature;
-			}
+				} else if (object == NULL) {
+					player = creature;
+					revivePlayer(creature, player);
 
-			String firstName;
-			if (args.hasMoreTokens())
-			{
+				} else {
+					creature->sendSystemMessage("Syntax: /gmrevive [name]|[area [range]]");
+					return INVALIDTARGET;
+				}
+
+			} else {
+
+				String firstName;
 				args.getStringToken(firstName);
-				player = server->getZoneServer()->getChatManager()->getPlayer(firstName);
+
+				if (firstName.toLowerCase() == "area") {
+					int range = 32;
+					if (args.hasMoreTokens())
+						range = args.getIntToken();
+
+					if (range > 50)
+						range = 50;
+					else if (range < 5)
+						range = 5;
+
+					SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+					Zone* zone = creature->getZone();
+
+					if (creature->getCloseObjects() == NULL) {
+						zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
+					}
+					else {
+						CloseObjectsVector* closeVector = (CloseObjectsVector*) creature->getCloseObjects();
+						closeVector->safeCopyTo(closeObjects);
+					}
+
+					for (int i = 0; i < closeObjects.size(); ++i) {
+						SceneObject* sceneObject = cast<SceneObject*>(closeObjects.get(i).get());
+
+						if (sceneObject->isPlayerCreature() && creature->isInRange(sceneObject, range)) {
+							ManagedReference<CreatureObject*> playerObject = cast<CreatureObject*>(sceneObject);
+
+							if (playerObject != NULL)
+								revivePlayer(creature, playerObject);
+						}
+					}
+
+				} else {
+					player = server->getZoneServer()->getChatManager()->getPlayer(firstName);
+
+					if (player != NULL)
+						revivePlayer(creature, player);
+				}
 			}
 
-			else
-			{
-				player = cast<CreatureObject*>( object.get());
-			}
-
-			if (player == NULL)
-			{
-				creature->sendSystemMessage("Error: Nothing selected.");
-				return GENERALERROR;
-			}
-
-			Locker clocker(player, creature);
-
-			player->healDamage(creature, CreatureAttribute::HEALTH, 5000);
-			player->healDamage(creature, CreatureAttribute::ACTION, 5000);
-			player->healDamage(creature, CreatureAttribute::MIND, 5000);
-
-			for (int i = 0; i < 9; ++i) {
-				player->setWounds(i, 0);
-			}
-
-			player->setShockWounds(0);
-
-			player->setPosture(CreaturePosture::UPRIGHT);
-
-			player->broadcastPvpStatusBitmask();
-
-			player->sendSystemMessage("You have been restored.");
-
-			creature->sendSystemMessage(player->getFirstName() + " has been restored.");
-		}
-
-		catch (Exception& e)
-		{
-
+		} catch (Exception& e) {
+			creature->sendSystemMessage("Syntax: /gmrevive [name]|[area [range]]");
 		}
 
 		return SUCCESS;
 	}
 
+	void revivePlayer(CreatureObject* creature, CreatureObject* player) {
+		Locker clocker(player, creature);
+
+		player->healDamage(creature, CreatureAttribute::HEALTH, 5000);
+		player->healDamage(creature, CreatureAttribute::ACTION, 5000);
+		player->healDamage(creature, CreatureAttribute::MIND, 5000);
+
+		for (int i = 0; i < 9; ++i) {
+			player->setWounds(i, 0);
+		}
+
+		player->setShockWounds(0);
+
+		player->setPosture(CreaturePosture::UPRIGHT);
+
+		player->broadcastPvpStatusBitmask();
+
+		player->sendSystemMessage("You have been restored.");
+
+		creature->sendSystemMessage(player->getFirstName() + " has been restored.");
+	}
 };
 
 #endif //GMREVIVECOMMAND_H_
