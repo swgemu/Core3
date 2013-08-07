@@ -84,6 +84,13 @@ include server.zone.managers.collision.IntersectionResults;
 
 class PlayerManager extends Observer implements Logger {
 	transient ZoneProcessServer processor;
+
+	// Used for frog/gm buffs
+	// TODO: make configurable in lua
+	protected static final int performanceBuff = 1000;
+	protected static final int medicalBuff = 1900;
+	protected static final int performanceDuration = 7200;
+	protected static final int medicalDuration = 7200;
 	
 	@dereferenced
 	private transient VectorMap<int, string> badgeMap;
@@ -333,5 +340,20 @@ class PlayerManager extends Observer implements Logger {
 	public native void cleanupCharacters();
 
 	public native boolean shouldDeleteCharacter(unsigned long characterID, int galaxyID);
-	
+
+	/**
+	 * Enhances the target character with doc/ent buffs
+	 * @pre { player is locked }
+	 * @post { player is locked }
+	 */
+	public native void enhanceCharacter(CreatureObject player);
+
+	/**
+	 * Creates and adds buff to Player
+	 * @pre { player is locked }
+	 * @post { player is locked }
+	 * @returns true if it was added
+	 * @param crc CRC of the buff, player target of buff, amount is the attribute modifier for the buff, duration of the buff, buffType specifies whether medical or performance and attribute sets the creature attribute to modify
+	 */
+	private native boolean doEnhanceCharacter(unsigned int crc, CreatureObject player, int amount, int duration, int buffType, byte attribute);
 }

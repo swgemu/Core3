@@ -55,10 +55,6 @@ include server.zone.objects.tangible.terminal.characterbuilder.CharacterBuilderM
 
 class CharacterBuilderTerminal extends Terminal {
 	public transient CharacterBuilderMenuNode rootNode;
-	public transient int performanceBuff;
-	public transient int medicalBuff;
-	public transient int performanceDuration;
-	public transient int medicalDuration;
 	
 	public CharacterBuilderTerminal() {
 		Logger.setLoggingName("CharacterBuilderTerminal");
@@ -99,12 +95,5 @@ class CharacterBuilderTerminal extends Terminal {
 	 */
 	public native void enhanceCharacter(CreatureObject player);
 	
-	/**
-	 * Creates and adds buff to Player
-	 * @pre { player is locked }
-	 * @post { player is locked }
-	 * @returns true if it was added
-	 * @param crc CRC of the buff, player target of buff, amount is the attribute modifier for the buff, duration of the buff, buffType specifies whether medical or performance and attribute sets the creature attribute to modify
-	 */
-	private native boolean doEnhanceCharacter(unsigned int crc, CreatureObject player, int amount, int duration, int buffType, byte attribute);
+
 }
