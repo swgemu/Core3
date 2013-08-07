@@ -50,8 +50,7 @@ which carries forward this exception.
 class GmReviveCommand : public QueueCommand {
 public:
 
-	GmReviveCommand(const String& name, ZoneProcessServer* server)
-	: QueueCommand(name, server) {
+	GmReviveCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 
 	}
 
@@ -69,67 +68,117 @@ public:
 
 			ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(creature->getTargetID());
 
-			if (!args.hasMoreTokens()) {
-				if (object != NULL && object->isPlayerCreature()) {
+			PlayerManager* pm = server->getZoneServer()->getPlayerManager();
+
+			if (!args.hasMoreTokens()) { // No arguments passed
+
+				if (object != NULL && object->isPlayerCreature()) { // Target is a player, rez target
 					player = cast<CreatureObject*>( object.get());
 					revivePlayer(creature, player);
 
-				} else if (object == NULL) {
+				} else if (object == NULL) { // No target, rez self
 					player = creature;
 					revivePlayer(creature, player);
 
-				} else {
-					creature->sendSystemMessage("Syntax: /gmrevive [name]|[area [range]]");
+				} else { // Target is not a player
+					creature->sendSystemMessage("Syntax: /gmrevive [buff] [name]|[area [range]]");
 					return INVALIDTARGET;
 				}
 
-			} else {
+			} else { // Has arguments
 
-				String firstName;
-				args.getStringToken(firstName);
+				String firstArg;
+				String firstName = "";
+				bool buff = false;
+				args.getStringToken(firstArg);
 
-				if (firstName.toLowerCase() == "area") {
-					int range = 32;
+				if (firstArg.toLowerCase() == "buff") { // First argument is buff, get second argument
+					buff = true;
 					if (args.hasMoreTokens())
-						range = args.getIntToken();
+						args.getStringToken(firstName);
 
-					if (range > 50)
-						range = 50;
-					else if (range < 5)
-						range = 5;
+				} else { // First argument is not buff, must be a name or area
+					firstName = firstArg;
+				}
 
-					SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
-					Zone* zone = creature->getZone();
+				if (firstName != "") { // There's an argument for a name or area
 
-					if (creature->getCloseObjects() == NULL) {
-						zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
-					}
-					else {
-						CloseObjectsVector* closeVector = (CloseObjectsVector*) creature->getCloseObjects();
-						closeVector->safeCopyTo(closeObjects);
-					}
+					if (firstName.toLowerCase() == "area") { // Area argument found, check for range argument
+						int range = 32;
 
-					for (int i = 0; i < closeObjects.size(); ++i) {
-						SceneObject* sceneObject = cast<SceneObject*>(closeObjects.get(i).get());
+						if (args.hasMoreTokens()) // Must be range
+							range = args.getIntToken();
 
-						if (sceneObject->isPlayerCreature() && creature->isInRange(sceneObject, range)) {
-							ManagedReference<CreatureObject*> playerObject = cast<CreatureObject*>(sceneObject);
+						if (range > 50) // We don't want the range to get crazy, so hard caps of 5-50
+							range = 50;
+						else if (range < 5)
+							range = 5;
 
-							if (playerObject != NULL)
-								revivePlayer(creature, playerObject);
+						SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+						Zone* zone = creature->getZone();
+
+						if (creature->getCloseObjects() == NULL) {
+							zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
+						} else {
+							CloseObjectsVector* closeVector = (CloseObjectsVector*) creature->getCloseObjects();
+							closeVector->safeCopyTo(closeObjects);
+						}
+
+						for (int i = 0; i < closeObjects.size(); ++i) {
+							SceneObject* sceneObject = cast<SceneObject*>(closeObjects.get(i).get());
+
+							if (sceneObject->isPlayerCreature() && creature->isInRange(sceneObject, range)) {
+								ManagedReference<CreatureObject*> playerObject = cast<CreatureObject*>(sceneObject);
+
+								if (playerObject != NULL) {
+									if (buff) {
+										Locker clocker(playerObject, creature);
+										pm->enhanceCharacter(playerObject);
+
+									} else {
+										revivePlayer(creature, playerObject);
+									}
+								}
+							}
+						}
+
+					} else { // Not area
+						player = server->getZoneServer()->getChatManager()->getPlayer(firstName);
+
+						if (player != NULL) {
+							if (buff) {
+								Locker clocker(player, creature);
+								pm->enhanceCharacter(player);
+
+							} else {
+								revivePlayer(creature, player);
+							}
 						}
 					}
 
-				} else {
-					player = server->getZoneServer()->getChatManager()->getPlayer(firstName);
+				} else if (buff) {  // Buff was the only argument
 
-					if (player != NULL)
-						revivePlayer(creature, player);
+					if (object != NULL && object->isPlayerCreature()) { // Target is a player, buff target
+						player = cast<CreatureObject*>( object.get());
+						Locker clocker(player, creature);
+						pm->enhanceCharacter(player);
+
+					} else if (object == NULL) { // No target, buff self
+						pm->enhanceCharacter(creature);
+
+					} else { // Target is not a player
+						creature->sendSystemMessage("Syntax: /gmrevive [buff] [name]|[area [range]]");
+						return INVALIDTARGET;
+					}
+
+				} else { // Shouldn't ever end up here
+					creature->sendSystemMessage("Syntax: /gmrevive [buff] [name]|[area [range]]");
+					return INVALIDTARGET;
 				}
 			}
 
 		} catch (Exception& e) {
-			creature->sendSystemMessage("Syntax: /gmrevive [name]|[area [range]]");
+			creature->sendSystemMessage("Syntax: /gmrevive [buff] [name]|[area [range]]");
 		}
 
 		return SUCCESS;
