@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3a1d315d_b461a0d5",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/vendor/VendorDataComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-08-07T21:48:04Z",
+      "side": 1,
+      "message": "Almost any (managed) object you read/write needs to be locked(mutex) to preserve thread safety. But if you lock 2 objects or more you might get a deadlock this is why we use \"cross locks\" Locker guard(objectoToLock, objectAlreadyLocked) a mechanism that avoids A-\u003eB/B-\u003eA deadlocks.\n\nThe vendor is already locked from the parent method so you need to lock the owner when you check for the skill.",
+      "parentUuid": "3a1d315d_f46718e9",
+      "revId": "73185b7f8b67d82f5784f34a76e442b6430e473c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAC3///fk\u003d",
         "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/vendor/VendorDataComponent.cpp",
         "patchSetId": 1
