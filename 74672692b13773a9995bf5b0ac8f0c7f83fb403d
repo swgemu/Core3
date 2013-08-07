@@ -16,6 +16,24 @@
       "revId": "74672692b13773a9995bf5b0ac8f0c7f83fb403d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_3409102d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/VehicleObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-08-07T03:43:07Z",
+      "side": 1,
+      "message": "I almost did it like that but city tax is based on the repair cost.  If i calculate it there, I would have to reverse it to get the city tax to deposit it to the city unless i created a structure of some sort.",
+      "parentUuid": "AAAAC3///Bs\u003d",
+      "revId": "74672692b13773a9995bf5b0ac8f0c7f83fb403d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
