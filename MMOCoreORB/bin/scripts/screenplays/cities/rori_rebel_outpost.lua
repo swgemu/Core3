@@ -14,6 +14,30 @@ end
 
 function RoriRebelOutpostScreenPlay:spawnMobiles()
 	--mobs
+
+		--Patrols outside the walls
+	spawnMobile("rori", "rebel_army_captain", 360, math.random(16) + 3618.3, 96.1, math.random(24) + -6469.6, math.random(360), 0)
+	spawnMobile("rori", "rebel_trooper", 360, math.random(16) + 3618.3, 96.1, math.random(24) + -6469.6, math.random(360), 0)
+	spawnMobile("rori", "rebel_medic", 360, math.random(16) + 3618.3, 96.1, math.random(24) + -6469.6, math.random(360), 0)
+	spawnMobile("rori", "rebel_trooper", 360, math.random(16) + 3618.3, 96.1, math.random(24) + -6469.6, math.random(360), 0)
+	spawnMobile("rori", "rebel_trooper", 360, math.random(16) + 3618.3, 96.1, math.random(24) + -6469.6, math.random(360), 0)
+	spawnMobile("rori", "rebel_first_lieutenant", 360, math.random(16) + 3618.3, 96.1, math.random(24) + -6469.6, math.random(360), 0)
+
+	spawnMobile("rori", "rebel_army_captain", 360, math.random(16) + 3708.4, 96.1, math.random(24) + -6429.6, math.random(360), 0)
+	spawnMobile("rori", "rebel_trooper", 360, math.random(16) + 3708.4, 96.1, math.random(24) + -6429.6, math.random(360), 0)
+	spawnMobile("rori", "rebel_trooper", 360, math.random(16) + 3708.4, 96.1, math.random(24) + -6429.6, math.random(360), 0)
+	spawnMobile("rori", "rebel_trooper", 360, math.random(16) + 3708.4, 96.1, math.random(24) + -6429.6, math.random(360), 0)
+	spawnMobile("rori", "rebel_trooper", 360, math.random(16) + 3708.4, 96.1, math.random(24) + -6429.6, math.random(360), 0)
+	spawnMobile("rori", "rebel_trooper", 360, math.random(16) + 3708.4, 96.1, math.random(24) + -6429.6, math.random(360), 0)
+
+	spawnMobile("rori", "specforce_wilderness_operative", 360, 3696.0, 85.0, -6566.6, -110, 0)
+	spawnMobile("rori", "specforce_wilderness_operative", 360, 3685.3, 86.8, -6573.1, 10, 0)
+	spawnMobile("rori", "specforce_wilderness_operative", 360, 3664.1, 86.4, -6574.7, 160, 0)
+	spawnMobile("rori", "specforce_wilderness_operative", 360, 3629.9, 83.8, -6570.1, -90, 0)
+
+	spawnMobile("rori", "specforce_marine", 360, 3654.9, 96.0, -6499.0, 180, 0)
+	spawnMobile("rori", "specforce_marine", 360, 3674.4, 96.0, -6499.0, 180, 0)
+
 		--Outside
 	spawnMobile("rori", "rebel_army_captain", 360, 3644, 96, -6404, 133, 0)
 	spawnMobile("rori", "rebel_colonel", 360, 3662, 96, -6402, 162, 0)
