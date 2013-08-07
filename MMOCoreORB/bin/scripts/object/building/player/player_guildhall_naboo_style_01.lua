@@ -50,6 +50,7 @@ object_building_player_player_guildhall_naboo_style_01 = object_building_player_
 	length = 7,
 	width = 8,
 	skillMods = {
+                {"private_medical_rating", 100},
 		{"private_buff_mind", 100},
 		{"private_med_battle_fatigue", 5}
 	},
