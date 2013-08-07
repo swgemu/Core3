@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_f4403837",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GmReviveCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-08-07T14:30:52Z",
+      "side": 1,
+      "message": "You cant use the close objects vector directly its not thread safe, you need to make a copy of it using -\u003esafeCopyTo.\n\nCheck KillCommand for examples",
+      "revId": "5adce2c1b8ca57c0a273ed6aff49d8d31b2c0150",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
