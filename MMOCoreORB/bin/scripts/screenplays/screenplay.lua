@@ -231,6 +231,9 @@ includeFile("static_spawns/rori_static_spawns.lua")
 includeFile("static_spawns/talus_static_spawns_north.lua")
 includeFile("static_spawns/talus_static_spawns_south.lua")
 
+--Yavin4
+includeFile("static_spawns/yavin4_static_spawns.lua")
+
 
 --Tests
 --includeFile("tests/options_bitmask_test.lua")
