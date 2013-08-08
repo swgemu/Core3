@@ -208,3 +208,7 @@ createMissionGiverConvoTemplate("hefsen_zindalai_mission_giver_convotemplate","h
 createMissionGiverConvoTemplate("indintra_imbru_yerevan_mission_giver_convotemplate","indintra_imbru_yerevan_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("magur_torigai_mission_giver_convotemplate","magur_torigai_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("sloan_rusper_mission_giver_convotemplate","sloan_rusper_mission_giver_conv_handler")
+
+--Corellia
+createMissionGiverConvoTemplate("diktatGiverConvo","diktatGiverHandler")
+
