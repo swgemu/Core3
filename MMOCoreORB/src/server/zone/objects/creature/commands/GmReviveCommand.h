@@ -81,7 +81,7 @@ public:
 					revivePlayer(creature, player);
 
 				} else { // Target is not a player
-					creature->sendSystemMessage("Syntax: /gmrevive [buff] [name]|[area [range]]");
+					creature->sendSystemMessage("Syntax: /gmrevive [buff] [ [<name>] | [area [<range>] [imperial | rebel | neutral]] ]");
 					return INVALIDTARGET;
 				}
 
@@ -105,14 +105,32 @@ public:
 
 					if (firstName.toLowerCase() == "area") { // Area argument found, check for range argument
 						int range = 32;
+						String faction = "";
 
-						if (args.hasMoreTokens()) // Must be range
-							range = args.getIntToken();
+						if (args.hasMoreTokens()) { // Can be range or faction
+							String token;
+							args.getStringToken(token);
+
+							if (Character::isDigit(token.charAt(0))) { // If the argument is an int, it's range
+								for (int i = 0; i < token.length(); i++) {
+									if (!Character::isDigit(token.charAt(i)))
+										throw Exception();
+								}
+								range = Integer::valueOf(token);
+
+							} else { // Otherwise it's faction
+								faction = token;
+							}
+						}
 
 						if (range > 50) // We don't want the range to get crazy, so hard caps of 5-50
 							range = 50;
 						else if (range < 5)
 							range = 5;
+
+						if (faction == "" && args.hasMoreTokens()) { // Last argument must be faction
+							args.getStringToken(faction);
+						}
 
 						SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
 						Zone* zone = creature->getZone();
@@ -131,12 +149,15 @@ public:
 								ManagedReference<CreatureObject*> playerObject = cast<CreatureObject*>(sceneObject);
 
 								if (playerObject != NULL) {
-									if (buff) {
-										Locker clocker(playerObject, creature);
-										pm->enhanceCharacter(playerObject);
+									if (faction == "" || faction.hashCode() == playerObject->getFaction() || (faction == "neutral" && playerObject->getFaction() == 0)) {
+										if (buff) {
+											Locker clocker(playerObject, creature);
+											pm->enhanceCharacter(playerObject);
+											creature->sendSystemMessage(playerObject->getFirstName() + " has been enhanced.");
 
-									} else {
-										revivePlayer(creature, playerObject);
+										} else {
+											revivePlayer(creature, playerObject);
+										}
 									}
 								}
 							}
@@ -149,6 +170,7 @@ public:
 							if (buff) {
 								Locker clocker(player, creature);
 								pm->enhanceCharacter(player);
+								creature->sendSystemMessage(player->getFirstName() + " has been enhanced.");
 
 							} else {
 								revivePlayer(creature, player);
@@ -162,23 +184,24 @@ public:
 						player = cast<CreatureObject*>( object.get());
 						Locker clocker(player, creature);
 						pm->enhanceCharacter(player);
+						creature->sendSystemMessage(player->getFirstName() + " has been enhanced.");
 
 					} else if (object == NULL) { // No target, buff self
 						pm->enhanceCharacter(creature);
 
 					} else { // Target is not a player
-						creature->sendSystemMessage("Syntax: /gmrevive [buff] [name]|[area [range]]");
+						creature->sendSystemMessage("Syntax: /gmrevive [buff] [ [<name>] | [area [<range>] [imperial | rebel | neutral]] ]");
 						return INVALIDTARGET;
 					}
 
 				} else { // Shouldn't ever end up here
-					creature->sendSystemMessage("Syntax: /gmrevive [buff] [name]|[area [range]]");
+					creature->sendSystemMessage("Syntax: /gmrevive [buff] [ [<name>] | [area [<range>] [imperial | rebel | neutral]] ]");
 					return INVALIDTARGET;
 				}
 			}
 
 		} catch (Exception& e) {
-			creature->sendSystemMessage("Syntax: /gmrevive [buff] [name]|[area [range]]");
+			creature->sendSystemMessage("Syntax: /gmrevive [buff] [ [<name>] | [area [<range>] [imperial | rebel | neutral]] ]");
 		}
 
 		return SUCCESS;
