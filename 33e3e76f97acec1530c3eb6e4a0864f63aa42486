@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_7482e853",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GmReviveCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-08-08T04:20:43Z",
+      "side": 1,
+      "message": "missing cross lock",
+      "revId": "33e3e76f97acec1530c3eb6e4a0864f63aa42486",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_5487ec61",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GmReviveCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-08-08T04:20:43Z",
+      "side": 1,
+      "message": "missing cross lock",
+      "revId": "33e3e76f97acec1530c3eb6e4a0864f63aa42486",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
