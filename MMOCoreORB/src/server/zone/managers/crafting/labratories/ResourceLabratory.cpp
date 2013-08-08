@@ -170,7 +170,7 @@ bool ResourceLabratory::applyComponentStats(TangibleObject* prototype, Manufactu
 						currentvalue = component->getAttributeValue(property);
 						precision = component->getAttributePrecision(property);
 						int preciseValue = Math::getPrecision(currentvalue, precision);
-						WearableObjectImplementation* clothing = cast<WearableObjectImplementation*>(this);
+						WearableObject* clothing = cast<WearableObject*>(prototype);
 						VectorMap<String, int>* clothingMods = clothing->getWearableSkillMods();
 
 						int existingValue = 0;
