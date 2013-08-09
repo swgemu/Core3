@@ -29,13 +29,16 @@ bh_targets_at_mission_level = {
 		"naboo_pirate_lieutenant"
 	},
 	level2 = {
-		"dune_stalker_brawler",
-		"canyon_corsair_cutthroat"
+		"bh_dune_stalker_brawler",
+		"bh_canyon_corsair_cutthroat"
 	},
 	level3 = {
-		"pirate_leader",
-		"sennex_guard",
-		"canyon_corsair_captain"
+		"bh_pirate_leader",
+		"bh_sennex_guard",
+		"bh_canyon_corsair_captain",
+		"bh_untrained_wielder_of_the_dark_side",
+		"bh_force_trained_archaist",
+		"bh_feral_force_wielder"
 	}
 }
 
