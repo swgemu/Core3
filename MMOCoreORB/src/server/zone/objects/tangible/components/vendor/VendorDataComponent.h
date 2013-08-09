@@ -223,6 +223,8 @@ public:
 		vendorBarks.removeElement(target->getObjectID());
 	}
 
+	float getMaintenanceRate();
+
 	void payMaintanence();
 
 	void withdrawMaintanence();
