@@ -88,8 +88,16 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* 
 
 	int condition = (((float)vendor->getMaxCondition() - (float)vendor->getConditionDamage()) / (float)vendor->getMaxCondition()) * 100;
 	statusBox->addMenuItem("Condition: " + String::valueOf(condition) + "%");
-	statusBox->addMenuItem("Maintenance Pool: " + String::valueOf(vendorData->getMaint()));
 
+	float hrsRemaining = 0.f;
+	if( vendorData->getMaint() > 0 ){
+			hrsRemaining = vendorData->getMaint() / vendorData->getMaintenanceRate();
+	}
+
+	statusBox->addMenuItem("Maintenance Pool: " +
+			               String::valueOf(vendorData->getMaint()) +
+			               "cr (" + String::valueOf((int)hrsRemaining) + "hrs)" );
+	statusBox->addMenuItem("Maintenance Rate: " + String::valueOf((int)vendorData->getMaintenanceRate()) + " cr/hr");
 
 	ManagedReference<AuctionManager*> auctionManager = server->getZoneServer()->getAuctionManager();
 	if(auctionManager == NULL) {

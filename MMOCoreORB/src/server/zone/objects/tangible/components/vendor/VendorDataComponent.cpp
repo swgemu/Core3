@@ -113,23 +113,12 @@ void VendorDataComponent::runVendorUpdate() {
 	float hoursSinceLastUpdate = now - last;
 	hoursSinceLastUpdate /= 3600.f;
 
-	float skillReduction = 1;
-	if(owner->hasSkill("crafting_merchant_sales_2"))
-		skillReduction = .80f;
-	if(owner->hasSkill("crafting_merchant_master"))
-		skillReduction = .60f;
-
-	float regMaint = 0;
-
-	/// 6 credits per hour to be registered
-	if(registered)
-		regMaint -= (6 * hoursSinceLastUpdate);
-
 	if(maintAmount > 0)
 		inactiveTimer.updateToCurrentTime();
 
 	/// parent salaries
-	maintAmount -= ((15.f * skillReduction) * hoursSinceLastUpdate) - regMaint;
+	Locker vlocker(owner, vendor);
+	maintAmount -= getMaintenanceRate() * hoursSinceLastUpdate;
 
 	if(maintAmount < 0)
 			vendor->setConditionDamage(-maintAmount, true);
@@ -197,6 +186,27 @@ void VendorDataComponent::runVendorUpdate() {
 
 	awardUsageXP = 0;
 	lastSuccessfulUpdate.updateToCurrentTime();
+}
+
+float VendorDataComponent::getMaintenanceRate() {
+
+	// 15 credits base maintenance
+	float maintRate = 15.f;
+
+	// Apply reduction for merchant skills
+	ManagedReference<CreatureObject*> owner = cast<CreatureObject*>(parent.get()->getZoneServer()->getObject(getOwnerId()));
+	if (owner != NULL && owner->isPlayerCreature() ) {
+		if(owner->hasSkill("crafting_merchant_master"))
+			maintRate *= .60f;
+		else if(owner->hasSkill("crafting_merchant_sales_02"))
+			maintRate *= .80f;
+	}
+
+	// Additional 6 credits per hour to be registered on the map
+	if(registered)
+		maintRate += 6.f;
+
+	return maintRate;
 }
 
 void VendorDataComponent::payMaintanence() {
