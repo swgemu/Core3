@@ -4,7 +4,7 @@ king_terak = Creature:new {
 	pvpFaction = "endor_marauder",
 	faction = "endor_marauder",
 	level = 100,
-	chanceHit = 1.000000,
+	chanceHit = 1,
 	damageMin = 645,
 	damageMax = 1000,
 	baseXp = 9429,
@@ -19,16 +19,17 @@ king_terak = Creature:new {
 	boneType = "",
 	boneAmount = 0,
 	milk = 0,
-	tamingChance = 0.000000,
+	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/king_terak.iff"},
 	lootGroups = {},
 	weapons = {},
+	conversationTemplate = "theme_park_marauder_mission_giver_convotemplate",
 	attacks = {}
 }
 
