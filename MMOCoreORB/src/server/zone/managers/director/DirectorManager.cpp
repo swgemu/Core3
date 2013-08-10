@@ -53,6 +53,7 @@
 
 
 int DirectorManager::DEBUG_MODE = 0;
+int DirectorManager::ERROR_CODE = NO_ERROR;
 
 DirectorManager::DirectorManager() : Logger("DirectorManager") {
 	info("loading..", true);
@@ -74,7 +75,7 @@ void DirectorManager::startGlobalScreenPlays() {
 	}
 }
 
-void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
+int DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	if (DEBUG_MODE)
 		setLogging(true);
 
@@ -232,8 +233,13 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaObjectMenuResponse>::Register(luaEngine->getLuaState());
 	Luna<LuaDeed>::Register(luaEngine->getLuaState());
 
-	if (!luaEngine->runFile("scripts/screenplays/screenplay.lua"))
-		error("could not run scripts/screenplays/screenplay.lua");
+
+	bool res = luaEngine->runFile("scripts/screenplays/screenplay.lua");
+
+	if (!res)
+		return 1;
+
+	return 0;
 }
 
 int DirectorManager::writeScreenPlayData(lua_State* L) {
@@ -369,7 +375,10 @@ int DirectorManager::includeFile(lua_State* L) {
 		DirectorManager::instance()->info("running file: scripts/screenplays/" + filename);
 	}
 
-	Lua::runFile("scripts/screenplays/" + filename, L);
+	bool ret = Lua::runFile("scripts/screenplays/" + filename, L);
+
+	if (!ret)
+		ERROR_CODE = GENERAL_ERROR;
 
 	return 0;
 }
@@ -1036,6 +1045,20 @@ Lua* DirectorManager::getLuaInstance() {
 	//lua->runFile("scripts/screenplays/screenplay.lua");
 
 	return lua;
+}
+
+int DirectorManager::runLuaInstance() {
+	Lua* lua = localLua.get();
+	int ret = 0;
+
+	if (lua == NULL) {
+		lua = new Lua();
+		ret = initializeLuaEngine(lua);
+
+		localLua.set(lua);
+	}
+
+	return ret || ERROR_CODE;
 }
 
 void DirectorManager::startScreenPlay(CreatureObject* creatureObject, const String& screenPlayName) {
