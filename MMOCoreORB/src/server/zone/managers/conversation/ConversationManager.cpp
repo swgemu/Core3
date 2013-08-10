@@ -63,6 +63,8 @@ ConversationObserver* ConversationManager::getConversationObserver(uint32 conver
 		//Observer does already exist, return it.
 		return conversationObservers.get(conversationTemplateCRC).get();
 	} else {
+		if (CreatureTemplateManager::DEBUG_MODE)
+			return NULL;
 		//No observer, create it.
 		ManagedReference<ConversationObserver*> conversationObserver = NULL;
 		ConversationTemplate* conversationTemplate = CreatureTemplateManager::instance()->getConversationTemplate(conversationTemplateCRC);

@@ -11,6 +11,9 @@
 
 AtomicInteger CreatureTemplateManager::loadedMobileTemplates;
 
+int CreatureTemplateManager::DEBUG_MODE = 0;
+int CreatureTemplateManager::ERROR_CODE = NO_ERROR;
+
 CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateManager") {
 	/*setLogging(false);
 		setGlobalLogging(true);*/
@@ -18,6 +21,12 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 
 	lua = new Lua();
 	lua->init();
+
+	if (DEBUG_MODE) {
+		setLogging(true);
+		lua->setLogging(true);
+	}
+
 	hashTable.setNullValue(NULL);
 
 	lua_register(lua->getLuaState(), "includeFile", includeFile);
@@ -56,32 +65,73 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 CreatureTemplateManager::~CreatureTemplateManager() {
 }
 
-void CreatureTemplateManager::loadTemplates() {
+int CreatureTemplateManager::loadTemplates() {
 	info("loading mobile templates...", true);
+	bool ret = false;
 
 	try {
-		lua->runFile("scripts/mobile/creatures.lua");
+		ret = lua->runFile("scripts/mobile/creatures.lua");
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
+		ret = false;
 	}
 
-	delete lua;
 	lua = NULL;
+
+	if (!ret)
+		ERROR_CODE = GENERAL_ERROR;
 
 	printf("\n");
 	info("done loading mobile templates", true);
+
+	return ERROR_CODE;
+}
+
+int CreatureTemplateManager::checkArgumentCount(lua_State* L, int args) {
+	int parameterCount = lua_gettop(L);
+
+	if (parameterCount < args) {
+		return 1;
+	} else if (parameterCount > args)
+		return 2;
+
+	return 0;
 }
 
 int CreatureTemplateManager::includeFile(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to CreatureTemplateManager::includeFile");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
 	String filename = Lua::getStringParameter(L);
 
-	Lua::runFile("scripts/mobile/" + filename, L);
+	int oldError = ERROR_CODE;
+
+	bool ret = Lua::runFile("scripts/mobile/" + filename, L);
+
+	if (!ret) {
+		ERROR_CODE = GENERAL_ERROR;
+
+		instance()->error("running file scripts/mobile/" + filename);
+	} else {
+		if (!oldError && ERROR_CODE) {
+			instance()->error("running file scripts/mobile/" + filename);
+		}
+	}
 
 	return 0;
 }
 
 int CreatureTemplateManager::addTemplate(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		instance()->error("incorrect number of arguments passed to CreatureTemplateManager::addTemplate");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
 	String ascii =  lua_tostring(L, -2);
 	uint32 crc = (uint32) ascii.hashCode();
 
@@ -97,19 +147,27 @@ int CreatureTemplateManager::addTemplate(lua_State* L) {
 		lua_pop(L, 1);
 
 		instance()->error("overwriting mobile " + ascii + " with " + luaMethodName);
+
+		ERROR_CODE = DUPLICATE_MOBILE;
 	}
 
 	CreatureTemplateManager::instance()->hashTable.put(crc, newTemp);
 
 	int count = loadedMobileTemplates.increment();
 
-	if (ConfigManager::instance()->isProgressMonitorActivated())
+	if (ConfigManager::instance()->isProgressMonitorActivated() && !DEBUG_MODE)
 		printf("\r\tLoading mobile templates: [%d] / [?]\t", count);
 
 	return 0;
 }
 
 int CreatureTemplateManager::addConversationTemplate(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		instance()->error("incorrect number of arguments passed to CreatureTemplateManager::addConversationTemplate");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
 	String ascii =  lua_tostring(L, -2);
 	uint32 crc = (uint32) ascii.hashCode();
 
@@ -123,6 +181,12 @@ int CreatureTemplateManager::addConversationTemplate(lua_State* L) {
 }
 
 int CreatureTemplateManager::addWeapon(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		instance()->error("incorrect number of arguments passed to CreatureTemplateManager::addWeapon");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
 	String ascii = lua_tostring(L, -2);
 	uint32 crc = (uint32) ascii.hashCode();
 
@@ -139,6 +203,12 @@ int CreatureTemplateManager::addWeapon(lua_State* L) {
 }
 
 int CreatureTemplateManager::addDynamicGroup(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		instance()->error("incorrect number of arguments passed to CreatureTemplateManager::addDynamicGroup");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
 	String ascii = lua_tostring(L, -2);
 	uint32 crc = (uint32) ascii.hashCode();
 
@@ -149,6 +219,12 @@ int CreatureTemplateManager::addDynamicGroup(lua_State* L) {
 }
 
 int CreatureTemplateManager::addStaticGroup(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		instance()->error("incorrect number of arguments passed to CreatureTemplateManager::addStaticGroup");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
 	String ascii = lua_tostring(L, -2);
 	uint32 crc = (uint32) ascii.hashCode();
 
@@ -159,6 +235,12 @@ int CreatureTemplateManager::addStaticGroup(lua_State* L) {
 }
 
 int CreatureTemplateManager::addLairGroup(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		instance()->error("incorrect number of arguments passed to CreatureTemplateManager::addLairGroup");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
 	String ascii = lua_tostring(L, -2);
 	uint32 crc = (uint32) ascii.hashCode();
 
@@ -169,6 +251,12 @@ int CreatureTemplateManager::addLairGroup(lua_State* L) {
 }
 
 int CreatureTemplateManager::addLairTemplate(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		instance()->error("incorrect number of arguments passed to CreatureTemplateManager::addLairTemplate");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
 	String ascii = lua_tostring(L, -2);
 	uint32 crc = (uint32) ascii.hashCode();
 
@@ -183,6 +271,12 @@ int CreatureTemplateManager::addLairTemplate(lua_State* L) {
 }
 
 int CreatureTemplateManager::addPatrolPathTemplate(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		instance()->error("incorrect number of arguments passed to CreatureTemplateManager::addPatrolPathTemplate");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
 	String ascii = lua_tostring(L, -2);
 
 	LuaObject obj(L);
@@ -196,6 +290,12 @@ int CreatureTemplateManager::addPatrolPathTemplate(lua_State* L) {
 }
 
 int CreatureTemplateManager::addOutfitGroup(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		instance()->error("incorrect number of arguments passed to CreatureTemplateManager::addOutfitGroup");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
 	String ascii = lua_tostring(L, -2);
 
 	LuaObject obj(L);
