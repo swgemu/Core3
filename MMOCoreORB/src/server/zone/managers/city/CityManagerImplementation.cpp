@@ -1108,7 +1108,7 @@ void CityManagerImplementation::sendTreasuryReport(CityRegion* city, CreatureObj
 	listbox->setUsingObject(terminal);
 	listbox->setForceCloseDistance(16.f);
 
-	listbox->addMenuItem("@city/city:treasury " + String::valueOf(city->getCityTreasury()));
+	listbox->addMenuItem("@city/city:treasury " + String::valueOf((int)city->getCityTreasury()));
 
 	creature->sendMessage(listbox->generateMessage());
 }
@@ -1432,10 +1432,10 @@ void CityManagerImplementation::sendMaintenanceReport(CityRegion* city, Creature
 				if(serverTemplate != NULL) {
 					int thiscost = serverTemplate->getCityMaintenanceBase() + (serverTemplate->getCityMaintenanceRate()*(city->getCityRank()-1));
 					totalcost += thiscost;
-					maintString += " - " + String::valueOf(thiscost);
+					maintString += " : " + String::valueOf(thiscost);
 
 				} else {
-					maintString += " - NA";
+					maintString += " : NA";
 				}
 
 			}
@@ -1449,14 +1449,14 @@ void CityManagerImplementation::sendMaintenanceReport(CityRegion* city, Creature
 		ManagedReference<SceneObject*> trainer = city->getCitySkillTrainer(i);
 		if(trainer != NULL){
 			totalcost += 1500;
-			maintList->addMenuItem(trainer->getDisplayedName() + " - 1500",i);
+			maintList->addMenuItem(trainer->getDisplayedName() + " : 1500",i);
 		}
 	}
 
 	for(int i = 0; i < city->getDecorationCount(); i++){
 		ManagedReference<SceneObject*> sceno = city->getCityDecoration(i);
 		if(sceno != NULL) {
-			maintList->addMenuItem(sceno->getDisplayedName() + " - NA " );
+			maintList->addMenuItem(sceno->getDisplayedName() + " : NA " );
 		}
 	}
 
@@ -1465,7 +1465,7 @@ void CityManagerImplementation::sendMaintenanceReport(CityRegion* city, Creature
 
 		if(term != NULL){
 			totalcost += 1500;
-			maintList->addMenuItem(term->getDisplayedName() + " - 1500");
+			maintList->addMenuItem(term->getDisplayedName() + " : 1500");
 		}
 	}
 
@@ -1475,7 +1475,7 @@ void CityManagerImplementation::sendMaintenanceReport(CityRegion* city, Creature
 		if(spec != NULL) {
 			int speccost = spec->getCost();
 			totalcost += speccost;
-			maintList->addMenuItem(city->getCitySpecialization() + " - " + String::valueOf(speccost));
+			maintList->addMenuItem(city->getCitySpecialization() + " : " + String::valueOf(speccost));
 		}
 
 	}
