@@ -357,7 +357,9 @@ void CityManagerImplementation::sendStructureReport(CityRegion* city, CreatureOb
 		ManagedReference<StructureObject*> structure = city->getCivicStructure(i);
 		if(structure != NULL)
 			maintList->addMenuItem(structure->getDisplayedName() + " - Condition : " +
-					String::valueOf(structure->getDecayPercentage()) + "%",i);
+				String::valueOf( (1.0f * structure->getMaxCondition() - structure->getConditionDamage()) / structure->getMaxCondition() * 100) + "%",i);
+
+
 	}
 
 	for(int i = 0; i < city->getDecorationCount(); i++){
@@ -376,7 +378,7 @@ void CityManagerImplementation::promptWithdrawCityTreasury(CityRegion* city, Cre
 	if (!city->isMayor(mayor->getObjectID()))
 		return;
 
-	if (!mayor->checkCooldownRecovery("city_withdrawal")) {
+	if (!mayor->checkCooldownRecovery("city_withdrawal") && !mayor->getPlayerObject()->isPrivileged()) {
 		mayor->sendSystemMessage("@city/city:withdraw_daily"); //You may only withdraw from the city treasury once per day.
 		return;
 	}
@@ -402,7 +404,7 @@ void CityManagerImplementation::withdrawFromCityTreasury(CityRegion* city, Creat
 	if (session == NULL)
 		return;
 
-	if (!mayor->checkCooldownRecovery("city_withdrawal")) {
+	if (!mayor->checkCooldownRecovery("city_withdrawal") && !mayor->getPlayerObject()->isPrivileged()) {
 		mayor->sendSystemMessage("@city/city:withdraw_daily"); //You may only withdraw from the city treasury once per day.
 		session->cancelSession();
 		return;
@@ -562,10 +564,9 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 
 	city->rescheduleUpdateEvent(cityUpdateInterval * 60);
 
-	deductCityMaintenance(city);
-
 	processIncomeTax(city);
 
+	deductCityMaintenance(city);
 }
 
 void CityManagerImplementation::processIncomeTax(CityRegion* city) {
@@ -606,8 +607,111 @@ void CityManagerImplementation::processIncomeTax(CityRegion* city) {
 	task->execute();
 }
 
-void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 
+// pay city hall first
+// next pay civic structures
+
+void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
+	int totalPaid = 0;
+
+	Locker _lock(city);
+
+	// pay city hall maintenanance first
+	TemplateManager* templateManager = TemplateManager::instance();
+
+	if(templateManager == NULL)
+		return;
+
+	ManagedReference<StructureObject*> ch = city->getCityHall();
+
+	if(ch == NULL || ch->getObjectTemplate() == NULL)
+		return;
+
+	Reference<SharedStructureObjectTemplate*> structureTemplate = cast<SharedStructureObjectTemplate*>(ch->getObjectTemplate());
+
+	if(structureTemplate == NULL)
+		return;
+
+	int thisCost = structureTemplate->getCityMaintenanceAtRank(city->getCityRank()-1);
+
+	if(city->getCitySpecialization() != ""){
+		CitySpecialization* spec  = getCitySpecialization(city->getCitySpecialization());
+
+		if(spec != NULL)
+			thisCost += spec->getCost();
+
+	}
+
+	//info("should pay " + String::valueOf(thisCost),true);
+
+	collectCivicStructureMaintenance(ch, city, thisCost);
+
+	// if the condition is 0, destroy the city
+	if(ch->getConditionDamage() >= ch->getMaxCondition()) {
+		StructureManager::instance()->destroyStructure(ch);
+		return;
+	}
+
+
+}
+
+void CityManagerImplementation::collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue){
+
+	if(city->getCityTreasury() >= maintenanceDue) {
+		//info("paid in full",true);
+		// we have enough to pay the full amount.  subtract from city
+		city->subtractFromCityTreasury(maintenanceDue);
+
+		// now try to fix the surplus maintenance if the CH is decayed
+
+		int amountOwed = abs(structure->getSurplusMaintenance());
+
+		if(amountOwed > 0) {
+
+			if(city->getCityTreasury() >= amountOwed) {
+				//info("paid off old debt too",true);
+				city->subtractFromCityTreasury(amountOwed);
+				structure->setConditionDamage(0);
+				structure->setSurplusMaintenance(0);
+
+			} else {
+				// pay what you the city can afford on what it owes
+
+				int currentDecay = structure->getConditionDamage();
+				int availableFunds = city->getCityTreasury();
+				float costPerUnitCondition = amountOwed / currentDecay;
+				int pointsBack = availableFunds / costPerUnitCondition;
+				//info("we could only get " + String::valueOf(pointsBack) + " back",true);
+
+				currentDecay -= pointsBack;
+
+				city->subtractFromCityTreasury(availableFunds);
+				structure->setConditionDamage(currentDecay);
+				structure->setSurplusMaintenance(-(amountOwed - availableFunds));
+			}
+
+		}
+
+	} else {
+
+		// pay what we can then decay it
+		// full maint should deduct 20%
+		int currentDecay = structure->getConditionDamage();
+		int fundsAvailable = city->getCityTreasury();
+		float amountOutstanding = maintenanceDue - fundsAvailable;
+		int currentSurplus = structure->getSurplusMaintenance();
+		int newDecay =  ( 1.0f * amountOutstanding ) / maintenanceDue * structure->getMaxCondition() * .25;
+
+		currentSurplus -= amountOutstanding;
+		currentDecay += newDecay;
+
+		//info("could not pay any maint.  decaying by " + String::valueOf(newDecay),true);
+
+		structure->setSurplusMaintenance(currentSurplus);
+		structure->setConditionDamage(currentDecay);
+		city->subtractFromCityTreasury(fundsAvailable);
+
+	}
 }
 
 void CityManagerImplementation::updateCityVoting(CityRegion* city, bool override) {

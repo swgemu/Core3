@@ -57,6 +57,7 @@ import system.util.HashTable;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.region.CityRegion;
 import server.zone.objects.waypoint.WaypointObject;
+import server.zone.objects.structure.StructureObject;
 include server.chat.StringIdChatParameter;
 include server.zone.managers.city.CitiesAllowed;
 include server.zone.managers.city.CitySpecialization;
@@ -143,6 +144,8 @@ class CityManager extends ManagedService implements Logger {
 	public native void updateCityVoting(CityRegion city, boolean override = false);
 	
 	public native void deductCityMaintenance(CityRegion city);
+
+	public native void collectCivicStructureMaintenance(StructureObject structure, CityRegion city, int maintenanceDue);
 	
 	public native void contractCity(CityRegion city);
 	
