@@ -267,7 +267,13 @@ void AuctionManagerImplementation::addSaleItem(CreatureObject* player, uint64 ob
 		return;
 	}
 
+	// add city tax to the price
+	if(vendor->getCityRegion() != NULL) {
+		price *= (1.0f + (vendor->getCityRegion().get()->getSalesTax() / 100.0f));
+	}
+
 	ManagedReference<AuctionItem*> item = createVendorItem(player, objectToSell.get(), vendor, description, price, duration, auction, premium);
+
 	if(item == NULL) {
 		error("Unable to create vendor item");
 		ItemSoldMessage* soldMessage = new ItemSoldMessage(objectid, ItemSoldMessage::UNKNOWNERROR);
@@ -516,7 +522,7 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 
 	if( vendor->getCityRegion() != NULL){
 		city = vendor->getCityRegion().get();
-		tax = item->getPrice() * (float) city->getSalesTax() / 100.f;
+		tax = item->getPrice() - ( item->getPrice() / ( 1.0f + (city->getSalesTax() / 100.f)));
 		vendorRegionName = city->getRegionName();
 	}
 	String playername = player->getFirstName().toLowerCase();
@@ -548,7 +554,7 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	item->setBidderName(playername);
 	item->clearAuctionWithdraw();
 
-	player->subtractBankCredits(item->getPrice() + tax);
+	player->subtractBankCredits(item->getPrice());
 
 	BaseMessage* msg = new BidAuctionResponseMessage(item->getAuctionedItemObjectID(), 0);
 	player->sendMessage(msg);
@@ -678,7 +684,7 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	locker.release();
 
 	Locker slocker(seller);
-	seller->addBankCredits(item->getPrice());
+	seller->addBankCredits(item->getPrice() - tax);
 	slocker.release();
 
 
@@ -824,9 +830,6 @@ void AuctionManagerImplementation::buyItem(CreatureObject* player, uint64 object
 	ManagedReference<CityRegion*> city = vendor->getCityRegion();
 
 	int totalPrice = item->getPrice();
-
-	if (city != NULL && !city->isClientRegion())
-		totalPrice *= 1.f + (float) city->getSalesTax() / 100.f;
 
 	int res = checkBidAuction(player, item, totalPrice , price2);
 
@@ -1061,6 +1064,8 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 					if (item->getStatus() == AuctionItem::FORSALE) {
 						if (category & 255) { // Searching a sub category
 							if (item->getItemType() == category) {
+								// copy the item
+
 								if (displaying >= offset)
 									reply->addItemToList(items->get(i));
 
