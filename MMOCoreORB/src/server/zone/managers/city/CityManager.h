@@ -192,7 +192,7 @@ public:
 
 	void promptDepositCityTreasury(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
-	void withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, SceneObject* terminal = NULL);
+	void withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, const String& reason, SceneObject* terminal = NULL);
 
 	void depositToCityTreasury(CityRegion* city, CreatureObject* creature, int value);
 
@@ -373,7 +373,7 @@ public:
 
 	void promptDepositCityTreasury(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
-	void withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, SceneObject* terminal = NULL);
+	void withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, const String& reason, SceneObject* terminal = NULL);
 
 	void depositToCityTreasury(CityRegion* city, CreatureObject* creature, int value);
 
@@ -520,7 +520,7 @@ public:
 
 	void promptDepositCityTreasury(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
 
-	void withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, SceneObject* terminal);
+	void withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, const String& reason, SceneObject* terminal);
 
 	void depositToCityTreasury(CityRegion* city, CreatureObject* creature, int value);
 

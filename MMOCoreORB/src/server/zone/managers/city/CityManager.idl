@@ -163,7 +163,7 @@ class CityManager extends ManagedService implements Logger {
 	
 	public native void promptDepositCityTreasury(CityRegion city, CreatureObject creature, SceneObject terminal = null);
 	
-	public native void withdrawFromCityTreasury(CityRegion city, CreatureObject mayor, int value, SceneObject terminal = null);
+	public native void withdrawFromCityTreasury(CityRegion city, CreatureObject mayor, int value, final string reason, SceneObject terminal = null);
 	
 	public native void depositToCityTreasury(CityRegion city, CreatureObject creature, int value);
 	

@@ -76,7 +76,7 @@ int CityTreasuryWithdrawalSessionImplementation::withdrawCredits(int value) {
 		return cancelSession();
 
 	CityManager* cityManager = creatureObject->getZoneServer()->getCityManager();
-	cityManager->withdrawFromCityTreasury(cityRegion, creatureObject, value, terminalObject.get());
+	cityManager->withdrawFromCityTreasury(cityRegion, creatureObject, value, reason, terminalObject.get());
 
 	return 1;
 }
