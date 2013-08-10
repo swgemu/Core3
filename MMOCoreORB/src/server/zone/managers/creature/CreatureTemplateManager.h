@@ -41,10 +41,15 @@ protected:
 	static AtomicInteger loadedMobileTemplates;
 
 public:
+	static int DEBUG_MODE;
+	enum LUA_ERROR_CODE { NO_ERROR = 0, GENERAL_ERROR };
+	static int ERROR_CODE;
+
+public:
 	CreatureTemplateManager();
 	virtual ~CreatureTemplateManager();
 
-	void loadTemplates();
+	int loadTemplates();
 	static int includeFile(lua_State* L);
 	static int addTemplate(lua_State* L);
 	static int addWeapon(lua_State* L);

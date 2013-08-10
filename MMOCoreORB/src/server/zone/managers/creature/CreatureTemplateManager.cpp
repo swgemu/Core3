@@ -11,6 +11,9 @@
 
 AtomicInteger CreatureTemplateManager::loadedMobileTemplates;
 
+int CreatureTemplateManager::DEBUG_MODE = 0;
+int CreatureTemplateManager::ERROR_CODE = NO_ERROR;
+
 CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateManager") {
 	/*setLogging(false);
 		setGlobalLogging(true);*/
@@ -18,6 +21,12 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 
 	lua = new Lua();
 	lua->init();
+
+	if (DEBUG_MODE) {
+		setLogging(true);
+		lua->setLogging(true);
+	}
+
 	hashTable.setNullValue(NULL);
 
 	lua_register(lua->getLuaState(), "includeFile", includeFile);
@@ -56,27 +65,37 @@ CreatureTemplateManager::CreatureTemplateManager() : Logger("CreatureTemplateMan
 CreatureTemplateManager::~CreatureTemplateManager() {
 }
 
-void CreatureTemplateManager::loadTemplates() {
+int CreatureTemplateManager::loadTemplates() {
 	info("loading mobile templates...", true);
+	bool ret = false;
 
 	try {
-		lua->runFile("scripts/mobile/creatures.lua");
+		ret = lua->runFile("scripts/mobile/creatures.lua");
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
+		ret = false;
 	}
 
 	delete lua;
 	lua = NULL;
 
+	if (!ret)
+		ERROR_CODE = GENERAL_ERROR;
+
 	printf("\n");
 	info("done loading mobile templates", true);
+
+	return ERROR_CODE;
 }
 
 int CreatureTemplateManager::includeFile(lua_State* L) {
 	String filename = Lua::getStringParameter(L);
 
-	Lua::runFile("scripts/mobile/" + filename, L);
+	bool ret = Lua::runFile("scripts/mobile/" + filename, L);
+
+	if (!ret)
+		ERROR_CODE = GENERAL_ERROR;
 
 	return 0;
 }
@@ -103,7 +122,7 @@ int CreatureTemplateManager::addTemplate(lua_State* L) {
 
 	int count = loadedMobileTemplates.increment();
 
-	if (ConfigManager::instance()->isProgressMonitorActivated())
+	if (ConfigManager::instance()->isProgressMonitorActivated() && !DEBUG_MODE)
 		printf("\r\tLoading mobile templates: [%d] / [?]\t", count);
 
 	return 0;
