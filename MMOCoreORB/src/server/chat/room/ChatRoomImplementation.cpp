@@ -132,9 +132,13 @@ void ChatRoomImplementation::removePlayer(const String& player) {
 }
 
 void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
+	Locker locker(_this.get());
+
 	for (int i = 0; i < playerList.size(); ++i) {
-		CreatureObject* player = playerList.get(i);
-		player->sendMessage(msg->clone());
+		ManagedReference<CreatureObject*> player = playerList.get(i);
+
+		if (player)
+			player->sendMessage(msg->clone());
 	}
 
 	delete msg;
