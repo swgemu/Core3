@@ -199,7 +199,7 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 		local clonedConversation = LuaConversationScreen(conversationScreen)
 
 		if (clonedConversation ~= nil) then
-				self:addWeaponsArmor(clonedConversation, getGCWDiscount(conversingPlayer))
+				self:addWeaponsArmor(clonedConversation, getGCWDiscount(conversingPlayer), self:getSmugglerDiscount(player))
 		end
 	elseif ( screenID == "fp_uniforms" ) then
 		conversationScreen = screen:cloneScreen()
@@ -207,7 +207,7 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 		local clonedConversation = LuaConversationScreen(conversationScreen)
 		
 		if ( clonedConversation ~= nil ) then	
-			self:addUniforms(clonedConversation, getGCWDiscount(conversingPlayer))
+			self:addUniforms(clonedConversation, getGCWDiscount(conversingPlayer), self:getSmugglerDiscount(player))
 		end
 	elseif ( screenID == "fp_furniture" ) then
 		conversationScreen = screen:cloneScreen()
@@ -215,7 +215,7 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 		local clonedConversation = LuaConversationScreen(conversationScreen)
 			
 		if ( clonedConversation ~= nil ) then
-			self:addFurniture(clonedConversation, getGCWDiscount(conversingPlayer))
+			self:addFurniture(clonedConversation, getGCWDiscount(conversingPlayer), self:getSmugglerDiscount(player))
 		end
 		
 	elseif (screenID == "purchased_item" or screenID == "purchased_hireling") then
@@ -226,7 +226,7 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 		local clonedConversation = LuaConversationScreen(conversationScreen)
 			
 		if (clonedConversation ~= nil) then
-			self:addInstallations(clonedConversation, getGCWDiscount(conversingPlayer))
+			self:addInstallations(clonedConversation, getGCWDiscount(conversingPlayer), self:getSmugglerDiscount(player))
 		end
 	elseif (screenID == "fp_hirelings") then
 		conversationScreen = screen:cloneScreen()
@@ -234,7 +234,7 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 		local clonedConversation = LuaConversationScreen(conversationScreen)
 			
 		if (clonedConversation ~= nil) then
-			self:addHirelings(clonedConversation, getGCWDiscount(conversingPlayer))
+			self:addHirelings(clonedConversation, getGCWDiscount(conversingPlayer), self:getSmugglerDiscount(player))
 		end
 	end
 	
@@ -450,24 +450,24 @@ function recruiter_convo_handler:getEnemyFactionString()
 	return ""
 end
 
-function recruiter_convo_handler:addUniforms(thisConversation, gcwDiscount)
-	printf("pure recruiter_convo_handler:addUniforms(thisConversation)")
+function recruiter_convo_handler:addUniforms(thisConversation, gcwDiscount, smugglerDiscount)
+	printf("pure recruiter_convo_handler:addUniforms(thisConversation gcwDiscount, smugglerDiscount)")
 end
 
-function recruiter_convo_handler:addFurniture(thisConversation, gcwDiscount)
-	printf("pure recruiter_convo_handler:addFurniture(thisConversation)")
+function recruiter_convo_handler:addFurniture(thisConversation, gcwDiscount, smugglerDiscount)
+	printf("pure recruiter_convo_handler:addFurniture(thisConversation, gcwDiscount, smugglerDiscount)")
 end
 
-function recruiter_convo_handler:addWeaponsArmor(thisConversation, gcwDiscount)
-	printf("pure recruiter_convo_handler:addWeaponsArmor(thisConversation, gcwDiscount)")
+function recruiter_convo_handler:addWeaponsArmor(thisConversation, gcwDiscount, smugglerDiscount)
+	printf("pure recruiter_convo_handler:addWeaponsArmor(thisConversation, gcwDiscount, smugglerDiscount)")
 end
 
-function recruiter_convo_handler:addInstallations(thisConversation, gcwDiscount)
-	printf("pure recruiter_convo_handler:addInstallations(thisConversation, gcwDiscount)")
+function recruiter_convo_handler:addInstallations(thisConversation, gcwDiscount, smugglerDiscount)
+	printf("pure recruiter_convo_handler:addInstallations(thisConversation, gcwDiscount, smugglerDiscount)")
 end
 
-function recruiter_convo_handler:addHirelings(thisConversation, gcwDiscount)
-	printf("pure recruiter_convo_handler:addHirelings(thisConversation, gcwDiscount)")
+function recruiter_convo_handler:addHirelings(thisConversation, gcwDiscount, smugglerDiscount)
+	printf("pure recruiter_convo_handler:addHirelings(thisConversation, gcwDiscount, smugglerDiscount)")
 end
 
 function recruiter_convo_handler:getInitialScreen(play, npc, conversationTemplate)
