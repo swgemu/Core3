@@ -56,7 +56,7 @@ namespace server {
 	public:
 		static int DEBUG_MODE;
 
-		enum LUA_ERROR_CODE { NO_ERROR = 0, MAIN_FILE_ERROR, GENERAL_ERROR, PANIC_ERROR };
+		enum LUA_ERROR_CODE { NO_ERROR = 0, MAIN_FILE_ERROR, GENERAL_ERROR, INCORRECT_ARGUMENTS };
 		static int ERROR_CODE;
 
 	public:
@@ -124,6 +124,7 @@ namespace server {
 		static int getSpawnPoint(lua_State* L);
 		static int makeCreatureName(lua_State* L);
 		static int getGCWDiscount(lua_State* L);
+		static int checkArgumentCount(lua_State*L, int args);
 
 	private:
 		int initializeLuaEngine(Lua* lua);
