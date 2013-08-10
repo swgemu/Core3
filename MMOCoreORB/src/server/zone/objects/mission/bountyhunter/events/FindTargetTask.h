@@ -195,7 +195,7 @@ class FindTargetTask : public Task, public Logger {
 			checkedSkillMods = maximumSkillMod;
 		}
 
-		int checkValue = checkedSkillMods - getTargetLevel(player, objective);
+		int checkValue = checkedSkillMods - ((getTargetLevel(player, objective)) / 2);
 		if (checkValue < 5) {
 			checkValue = 5;
 		} else if (checkValue > 95) {
