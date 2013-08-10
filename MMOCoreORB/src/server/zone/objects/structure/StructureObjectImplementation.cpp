@@ -255,7 +255,7 @@ void StructureObjectImplementation::updateStructureStatus() {
 
 	//Update structure condition.
 	if (surplusMaintenance < 0) {
-		setConditionDamage(-surplusMaintenance - cityTaxDue, true);
+		setConditionDamage(-surplusMaintenance, true);
 	} else {
 		setConditionDamage(0, true);
 	}
