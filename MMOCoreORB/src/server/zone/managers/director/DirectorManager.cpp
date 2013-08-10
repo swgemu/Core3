@@ -493,7 +493,7 @@ int DirectorManager::createEvent(lua_State* L) {
 	String play = lua_tostring(L, -3);
 	uint32 mili = lua_tonumber(L, -4);
 
-	int parameterCount = lua_gettop(L) - 1;
+	int parameterCount = lua_gettop(L);
 
 	//System::out << "scheduling task with mili:" << mili << endl;
 
