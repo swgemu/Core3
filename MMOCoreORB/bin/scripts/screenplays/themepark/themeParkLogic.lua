@@ -21,6 +21,8 @@ function ThemeParkLogic:start()
 	self:permissionObservers()
 end
 
+asdf
+
 function ThemeParkLogic:spawnNpcs()
 	for i = 1, # self.npcMap do
 		local npcSpawnData = self.npcMap[i].spawnData

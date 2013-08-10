@@ -80,7 +80,8 @@ bin_PROGRAMS = core3 #odb3
 #server/zone/objects/scene/SceneObject.h.gch:
 #	$(CXX) $(INCLUDES) -I../../../src ../../../src/server/zone/objects/scene/SceneObject.h
 
-core3_TESTS = server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.cpp
+core3_TESTS = server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.cpp \
+			  server/zone/managers/director/tests/BasicScreenPlayTest.cpp
 
 core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp \
 				server/zone/objects/area/FsVillageArea.cpp \
