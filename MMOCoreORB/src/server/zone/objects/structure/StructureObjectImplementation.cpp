@@ -228,6 +228,9 @@ void StructureObjectImplementation::updateStructureStatus() {
 	 * Any time the maintenance or power surplus is changed by a hand other than this method.
 	 */
 
+	if(isCivicStructure())
+		return;
+
 	float timeDiff = ((float) lastMaintenanceTime.miliDifference()) / 1000.f;
 	float maintenanceDue = (getMaintenanceRate() / 3600.f) * timeDiff;
 	float cityTaxDue = 0;

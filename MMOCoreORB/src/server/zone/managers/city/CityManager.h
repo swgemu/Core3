@@ -97,6 +97,20 @@ class WaypointObject;
 
 using namespace server::zone::objects::waypoint;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace structure {
+
+class StructureObject;
+
+} // namespace structure
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::structure;
+
 #include "server/chat/StringIdChatParameter.h"
 
 #include "server/zone/managers/city/CitiesAllowed.h"
@@ -159,6 +173,8 @@ public:
 	void updateCityVoting(CityRegion* city, bool override = false);
 
 	void deductCityMaintenance(CityRegion* city);
+
+	void collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue);
 
 	void contractCity(CityRegion* city);
 
@@ -339,6 +355,8 @@ public:
 
 	void deductCityMaintenance(CityRegion* city);
 
+	void collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue);
+
 	void contractCity(CityRegion* city);
 
 	void expandCity(CityRegion* city);
@@ -483,6 +501,8 @@ public:
 	void updateCityVoting(CityRegion* city, bool override);
 
 	void deductCityMaintenance(CityRegion* city);
+
+	void collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue);
 
 	void contractCity(CityRegion* city);
 
