@@ -514,6 +514,20 @@ void CityRegionImplementation::removeAllSkillTrainers(){
 	citySkillTrainers.removeAll();
 }
 
+void CityRegionImplementation::removeAllDecorations(){
+	for (int i = 0; i < cityDecorations.size(); i++){
+		ManagedReference<SceneObject*> dec = cityDecorations.get(i);
+		if(dec->isStructureObject()){
+			StructureManager::instance()->destroyStructure(cast<StructureObject*>(dec.get()));
+		} else {
+			cityDecorations.get(i)->destroyObjectFromWorld(false);
+			cityDecorations.get(i)->destroyObjectFromDatabase(false);
+		}
+	}
+
+	cityDecorations.removeAll();
+}
+
 bool CityRegionImplementation::isVotingLocked(){
 	Time rightnow;
 	rightnow.updateToCurrentTime();
