@@ -113,7 +113,7 @@ void ChatRoomImplementation::removePlayer(const String& player) {
 	// Pre: player unlocked
 	Locker locker(_this.get());
 
-	CreatureObject* play = playerList.get(player);
+	ManagedReference<CreatureObject*> play = playerList.get(player);
 	playerList.drop(player);
 
 	locker.release();
@@ -132,9 +132,13 @@ void ChatRoomImplementation::removePlayer(const String& player) {
 }
 
 void ChatRoomImplementation::broadcastMessage(BaseMessage* msg) {
+	Locker locker(_this.get());
+
 	for (int i = 0; i < playerList.size(); ++i) {
-		CreatureObject* player = playerList.get(i);
-		player->sendMessage(msg->clone());
+		ManagedReference<CreatureObject*> player = playerList.get(i);
+
+		if (player)
+			player->sendMessage(msg->clone());
 	}
 
 	delete msg;
@@ -144,7 +148,7 @@ void ChatRoomImplementation::removeAllPlayers() {
 	Locker locker(_this.get());
 
 	for (int i = 0; i < playerList.size(); i++) {
-		CreatureObject* player = playerList.get(i);
+		ManagedReference<CreatureObject*> player = playerList.get(i);
 
 		Locker clocker(player, _this.get());
 
