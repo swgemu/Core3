@@ -316,6 +316,8 @@ public:
 
 	void removeAllTerminals();
 
+	void removeAllDecorations();
+
 	void updateMilitia();
 
 	void addStructure(StructureObject* structure);
@@ -670,6 +672,8 @@ public:
 
 	void removeAllTerminals();
 
+	void removeAllDecorations();
+
 	void updateMilitia();
 
 	void addStructure(StructureObject* structure);
@@ -934,6 +938,8 @@ public:
 	void removeAllSkillTrainers();
 
 	void removeAllTerminals();
+
+	void removeAllDecorations();
 
 	void updateMilitia();
 

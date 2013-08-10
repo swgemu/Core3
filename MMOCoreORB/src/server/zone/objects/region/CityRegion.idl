@@ -492,6 +492,8 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	public native void removeAllTerminals();
 	
+	public native void removeAllDecorations();
+
 	public native void updateMilitia();
 	
 	public void addStructure(StructureObject structure) {
