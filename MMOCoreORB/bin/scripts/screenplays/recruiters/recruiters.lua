@@ -644,9 +644,9 @@ function recruiter_convo_handler:awardItem(player, itemstring)
 		return self.ITEMCOST
 	end
 	
-	if(itemcost > 4 and creatureObject:hasSkill("combat_smuggler_master") ) then
-		--print("give a 25% discount")
-		itemcost = itemcost * .75
+	
+	if(itemcost * self:getSmugglerDiscount(creatureObject) > 0 ) then
+		itemcost = itemcost * self:getSmugglerDiscount(creatureObject)
 	end
 	
 	itemcost  = math.ceil(itemcost *  getGCWDiscount(player))
@@ -733,9 +733,8 @@ function recruiter_convo_handler:awardData(player, itemstring)
 		return self.ITEMCOST
 	end
 	
-	if(itemcost > 4 and creatureObject:hasSkill("combat_smuggler_master") ) then
-		--print("give a 25% discount")
-		itemcost = itemcost * .75
+	if(itemcost * self:getSmugglerDiscount(creatureObject) > 0 ) then
+		itemcost = itemcost * self:getSmugglerDiscount(creatureObject)
 	end
 	
 	itemcost  = math.ceil(itemcost *  getGCWDiscount(player))
@@ -843,6 +842,21 @@ function recruiter_convo_handler:transferItem(player, pInventory, itemstring)
 	end
 	
 	return self.SUCCESS
+end
+
+function recruiter_convo_handler:getSmugglerDiscount( creatureObject )
+	
+	if( creatureObject:hasSkill("combat_smuggler_master") ) then
+		return .75
+	end
+	
+	if( creatureObject:hasSkill("combat_smuggler_underworld_01") ) then
+		return .90
+	end	
+	
+	-- No discount
+	return 1.0
+
 end
 
 function recruiter_convo_handler:transferData(player, pDatapad, itemstring)
