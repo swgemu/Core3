@@ -29,7 +29,7 @@ protected:
 	VectorMap<uint32, Vector<String> > weaponMap;
 	VectorMap<uint32, DynamicSpawnGroup*> dynamicGroupMap;
 	VectorMap<uint32, StaticSpawnGroup*> staticGroupMap;
-	Lua* lua;
+	Reference<Lua*> lua;
 	HashTable<uint32, Reference<CreatureTemplate*> > hashTable;
 
 	HashTable<uint32, Reference<ConversationTemplate*> > conversations;
@@ -41,10 +41,15 @@ protected:
 	static AtomicInteger loadedMobileTemplates;
 
 public:
+	static int DEBUG_MODE;
+	enum LUA_ERROR_CODE { NO_ERROR = 0, GENERAL_ERROR, DUPLICATE_MOBILE, INCORRECT_ARGUMENTS };
+	static int ERROR_CODE;
+
+public:
 	CreatureTemplateManager();
 	virtual ~CreatureTemplateManager();
 
-	void loadTemplates();
+	int loadTemplates();
 	static int includeFile(lua_State* L);
 	static int addTemplate(lua_State* L);
 	static int addWeapon(lua_State* L);
@@ -55,6 +60,8 @@ public:
 	static int addLairGroup(lua_State* L);
 	static int addPatrolPathTemplate(lua_State* L);
 	static int addOutfitGroup(lua_State* L);
+
+	static int checkArgumentCount(lua_State* L, int args);
 
 	int size() {
 		return hashTable.size();
