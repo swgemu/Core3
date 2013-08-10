@@ -371,14 +371,17 @@ int DirectorManager::checkInt64Lua(lua_State* L) {
 int DirectorManager::includeFile(lua_State* L) {
 	String filename = Lua::getStringParameter(L);
 
-	if (DEBUG_MODE) {
-		DirectorManager::instance()->info("running file: scripts/screenplays/" + filename);
-	}
+	int oldError = ERROR_CODE;
 
 	bool ret = Lua::runFile("scripts/screenplays/" + filename, L);
 
-	if (!ret)
+	if (!ret) {
 		ERROR_CODE = GENERAL_ERROR;
+
+		DirectorManager::instance()->error("running file: scripts/screenplays/" + filename);
+	} else if (!oldError && ERROR_CODE) {
+		DirectorManager::instance()->error("running file: scripts/screenplays/" + filename);
+	}
 
 	return 0;
 }
@@ -493,7 +496,7 @@ int DirectorManager::createEvent(lua_State* L) {
 	String play = lua_tostring(L, -3);
 	uint32 mili = lua_tonumber(L, -4);
 
-	int parameterCount = lua_gettop(L) - 1;
+	int parameterCount = lua_gettop(L);
 
 	//System::out << "scheduling task with mili:" << mili << endl;
 
