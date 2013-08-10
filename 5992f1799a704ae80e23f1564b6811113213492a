@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_548dac30",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/corvette/imperial/destroyMission.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-08-10T20:19:23Z",
+      "side": 1,
+      "message": "You cant change the screen, you need to make a copy of the screen (cloneScreen()) and use that to add your aditional custom options everywhere else.",
+      "revId": "5992f1799a704ae80e23f1564b6811113213492a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
