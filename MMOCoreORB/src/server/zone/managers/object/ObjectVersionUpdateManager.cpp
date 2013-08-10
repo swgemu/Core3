@@ -11,6 +11,8 @@
 #include "server/db/ServerDatabase.h"
 #include "system/util/SortedVector.h"
 
+#define INITIAL_DATABASE_VERSION 0
+
 ObjectVersionUpdateManager::ObjectVersionUpdateManager() : Logger("ObjectVersionUpdateManager") {
 	luaInstance = new Lua();
 	luaInstance->init();
@@ -20,13 +22,13 @@ ObjectVersionUpdateManager::ObjectVersionUpdateManager() : Logger("ObjectVersion
 int ObjectVersionUpdateManager::run() {
 	int version = ObjectDatabaseManager::instance()->getCurrentVersion();
 
-	if (version == 0 ){
+	if (version == INITIAL_DATABASE_VERSION ){
 		updateResidences();
-		ObjectDatabaseManager::instance()->updateCurrentVersion(1);
+		ObjectDatabaseManager::instance()->updateCurrentVersion(INITIAL_DATABASE_VERSION + 1);
 		return 0;
-	} else if ( version == 1) {
+	} else if ( version ==  INITIAL_DATABASE_VERSION + 1) {
 		updateCityTreasury();
-		ObjectDatabaseManager::instance()->updateCurrentVersion(2);
+		ObjectDatabaseManager::instance()->updateCurrentVersion(INITIAL_DATABASE_VERSION + 2);
 		return 0;
 	} else {
 
