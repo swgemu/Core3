@@ -24,7 +24,7 @@ protected:
 	VectorMap<String, int> mobiles;
 	int spawnLimit;
 
-	VectorMap<uint32, Vector<String>* > buildings;
+	VectorMap<uint32, Reference<Vector<String>*> > buildings;
 
 	String name;
 
@@ -45,8 +45,6 @@ public:
 	}
 
 	virtual ~LairTemplate() {
-		for (int i = 0; i < buildings.size(); ++i)
-			delete buildings.elementAt(i).getValue();
 	}
 
 	String getBuilding(int level) {
