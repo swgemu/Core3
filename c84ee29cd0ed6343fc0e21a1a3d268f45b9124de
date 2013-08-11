@@ -16,6 +16,24 @@
       "revId": "c84ee29cd0ed6343fc0e21a1a3d268f45b9124de",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_170e1635",
+        "filename": "MMOCoreORB/bin/scripts/managers/loot_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2013-08-11T11:24:47Z",
+      "side": 1,
+      "message": "Yeah, that is most likely a better way to do it.",
+      "parentUuid": "3a1d315d_9402240a",
+      "revId": "c84ee29cd0ed6343fc0e21a1a3d268f45b9124de",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
