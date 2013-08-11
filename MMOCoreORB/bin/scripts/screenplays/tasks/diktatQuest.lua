@@ -4,7 +4,7 @@ brantleeMissions =
 		missionType = "retrieve",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "midgoss_dlabaninaph", planetName = "corellia", npcName = "Midgoss D'labaninaph" } 
+			{ npcTemplate = "midgoss_dlabaninaph", planetName = "corellia", npcName = "Midgoss D'labaninaph" }
 		},
 		secondarySpawns = 
 		{
@@ -13,7 +13,8 @@ brantleeMissions =
 		},
 		itemSpawns =
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/brantlee_spondoon_q1_needed.iff", itemName = "Devaronian Fur Glosser" }
+			{ itemTemplate = "object/tangible/mission/quest_item/brantlee_spondoon_q1_needed.iff",
+				itemName = "Devaronian Fur Glosser" }
 		},
 		rewards = 
 		{
@@ -33,7 +34,8 @@ brantleeMissions =
 		},
 		itemSpawns = 
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/brantlee_spondoon_q2_needed.iff", itemName = "Neonian Red Cheese" }
+			{ itemTemplate = "object/tangible/mission/quest_item/brantlee_spondoon_q2_needed.iff",
+				itemName = "Neonian Red Cheese" }
 		},
 		rewards = 
 		{
@@ -72,7 +74,8 @@ daclifMissions =
 		},
 		itemSpawns =
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/daclif_gallamby_q1_needed.iff", itemName = "Bonadan Shipping Order" }
+			{ itemTemplate = "object/tangible/mission/quest_item/daclif_gallamby_q1_needed.iff",
+				itemName = "Bonadan Shipping Order" }
 		},
 		rewards = 
 		{
@@ -91,7 +94,8 @@ daclifMissions =
 		},
 		itemSpawns = 
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/daclif_gallamby_q2_needed.iff", itemName = "Approved Bonadan Order" }
+			{ itemTemplate = "object/tangible/mission/quest_item/daclif_gallamby_q2_needed.iff",
+				itemName = "Approved Bonadan Order" }
 		},
 		rewards =
 		{
@@ -107,7 +111,8 @@ daclifMissions =
 		secondarySpawns = { },
 		itemSpawns = 
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/daclif_gallamby_q3_needed.iff", itemName = "Donation to Diktat's Charity" }
+			{ itemTemplate = "object/tangible/mission/quest_item/daclif_gallamby_q3_needed.iff",
+				itemName = "Donation to Diktat's Charity" }
 		},
 		rewards = 
 		{
@@ -118,7 +123,7 @@ daclifMissions =
 		missionType = "deliver",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "lieutenant_mien_halloor", planetName = "corellia", npcName = "Lt. Mien Halloor" } 
+			{ npcTemplate = "lieutenant_mien_halloor", planetName = "corellia", npcName = "Lt. Mien Halloor" }
 		},
 		secondarySpawns = 
 		{
@@ -127,7 +132,8 @@ daclifMissions =
 		},
 		itemSpawns =
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/daclif_gallamby_q4_needed.iff", itemName = "Customs Charity Donation" }
+			{ itemTemplate = "object/tangible/mission/quest_item/daclif_gallamby_q4_needed.iff",
+				itemName = "Customs Charity Donation" }
 		},
 		rewards = 
 		{
@@ -142,8 +148,8 @@ daclifMissions =
 		},
 		secondarySpawns = 
 		{
-			{ npcTemplate = "mercenary", planetName = "corellia", npcName = "a mercenary" },
-			{ npcTemplate = "mercenary", planetName = "corellia", npcName = "a mercenary" }	
+			{ npcTemplate = "mercenary_aggro", planetName = "corellia", npcName = "a mercenary" },
+			{ npcTemplate = "mercenary_aggro", planetName = "corellia", npcName = "a mercenary" }	
 		},
 		rewards = 
 		{
@@ -154,12 +160,13 @@ daclifMissions =
 		missionType = "deliver",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "hired_agent", planetName = "corellia", npcName = "Qeko Lobikoba" } 
+			{ npcTemplate = "morgo_one_shot", planetName = "corellia", npcName = "Morgo One-Shot" }
 		},
 		secondarySpawns = { },
 		itemSpawns = 
 		{
-			{ itemTemplate = "object/tangible/mission/quest_item/daclif_gallamby_q6_needed.iff", itemName = "Orders for a Gangster" }
+			{ itemTemplate = "object/tangible/mission/quest_item/daclif_gallamby_q6_needed.iff",
+				itemName = "Orders for a Gangster" }
 		},
 		rewards = 
 		{
@@ -171,14 +178,16 @@ daclifMissions =
 npcMapDiktat = 
 { 
 	{ 
-		spawnData = { planetName = "corellia", npcTemplate = "brantlee_spondoon", x = -24.7, z = 1.3, y = -0.5, direction = 124, cellID = 1855463, position = STAND }, 
+		spawnData = { planetName = "corellia", npcTemplate = "brantlee_spondoon", x = -24.7, z = 1.3, y = -0.5,
+			direction = 124, cellID = 1855463, position = STAND }, 
 		worldPosition = { x = -234.0, y = -4570.0 },
 		npcNumber = 1,   
 		stfFile = "@static_npc/corellia/brantlee_spondoon", 
 		missions = brantleeMissions
 	},
 	{ 
-		spawnData = { planetName = "corellia", npcTemplate = "daclif_gallamby", x = -35.6875, z = 1.29422, y = -1.70805, direction = 88.4786, cellID = 1855467, position = STAND }, 
+		spawnData = { planetName = "corellia", npcTemplate = "daclif_gallamby", x = -35.6875, z = 1.29422,
+			y = -1.70805, direction = 88.4786, cellID = 1855467, position = STAND }, 
 		worldPosition = { x = -245.0, y = -4571.0 },
 		npcNumber = 2,   
 		stfFile = "@static_npc/corellia/daclif_gallamby", 

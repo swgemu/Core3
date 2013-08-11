@@ -1,6 +1,6 @@
-hired_agent = Creature:new {
+morgo_one_shot = Creature:new {
 	objectName = "",
-	customName = "Qeko Lobikoba",
+	customName = "Morgo One-Shot",
 	socialGroup = "corsec",
 	pvpFaction = "corsec",
 	faction = "corsec",
@@ -35,4 +35,4 @@ hired_agent = Creature:new {
 	attacks = { }
 }
 
-CreatureTemplates:addCreatureTemplate(hired_agent, "hired_agent")
+CreatureTemplates:addCreatureTemplate(morgo_one_shot, "morgo_one_shot")
