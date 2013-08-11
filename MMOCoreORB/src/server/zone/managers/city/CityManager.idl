@@ -145,8 +145,14 @@ class CityManager extends ManagedService implements Logger {
 	
 	public native void deductCityMaintenance(CityRegion city);
 
-	public native void collectCivicStructureMaintenance(StructureObject structure, CityRegion city, int maintenanceDue);
+	public native int collectCivicStructureMaintenance(StructureObject structure, CityRegion city, int maintenanceDue);
 	
+	public native void sendMaintenanceEmail(CityRegion city, int maintenancePaid);
+
+	public native void sendMaintenanceDecayEmail(CityRegion city, StructureObject structure, int maintenanceDue);
+
+	public native void sendMaintenanceDestroyEmail(CityRegion city, StructureObject structure);
+
 	public native void contractCity(CityRegion city);
 	
 	public native void expandCity(CityRegion city);

@@ -174,7 +174,13 @@ public:
 
 	void deductCityMaintenance(CityRegion* city);
 
-	void collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue);
+	int collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue);
+
+	void sendMaintenanceEmail(CityRegion* city, int maintenancePaid);
+
+	void sendMaintenanceDecayEmail(CityRegion* city, StructureObject* structure, int maintenanceDue);
+
+	void sendMaintenanceDestroyEmail(CityRegion* city, StructureObject* structure);
 
 	void contractCity(CityRegion* city);
 
@@ -355,7 +361,13 @@ public:
 
 	void deductCityMaintenance(CityRegion* city);
 
-	void collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue);
+	int collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue);
+
+	void sendMaintenanceEmail(CityRegion* city, int maintenancePaid);
+
+	void sendMaintenanceDecayEmail(CityRegion* city, StructureObject* structure, int maintenanceDue);
+
+	void sendMaintenanceDestroyEmail(CityRegion* city, StructureObject* structure);
 
 	void contractCity(CityRegion* city);
 
@@ -502,7 +514,13 @@ public:
 
 	void deductCityMaintenance(CityRegion* city);
 
-	void collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue);
+	int collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue);
+
+	void sendMaintenanceEmail(CityRegion* city, int maintenancePaid);
+
+	void sendMaintenanceDecayEmail(CityRegion* city, StructureObject* structure, int maintenanceDue);
+
+	void sendMaintenanceDestroyEmail(CityRegion* city, StructureObject* structure);
 
 	void contractCity(CityRegion* city);
 
