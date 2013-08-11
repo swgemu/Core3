@@ -173,10 +173,10 @@ public:
 					return GENERALERROR;
 				}
 
-				instrument->setDirection(*creature->getDirection());
-				instrument->teleport(creature->getPositionX(),
-						creature->getPositionZ(), creature->getPositionY(),
-						creature->getParentID());
+				if (instrument->getParent() != NULL || instrument->getSpawnerPlayer() != NULL) {
+					instrument->setDirection(*creature->getDirection());
+					instrument->teleport(creature->getPositionX(), creature->getPositionZ(), creature->getPositionY(), creature->getParentID());
+				}
 			} else {
 				creature->sendSystemMessage("@performance:music_no_instrument"); // You must have an instrument equipped to play music.
 
