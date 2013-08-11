@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_9719067c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/TransferItemMiscCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-08-11T11:59:01Z",
+      "side": 1,
+      "message": "Is there a better way to determine whether an item transfer is a player looting?",
+      "revId": "be669539092b515d6bb6a17ae379b86578bc0f34",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
