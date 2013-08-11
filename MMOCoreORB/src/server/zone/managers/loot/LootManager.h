@@ -190,15 +190,7 @@ class LootManagerImplementation : public ManagedServiceImplementation, public Lo
 
 	float dotChance;
 
-	VectorMap<unsigned long long, unsigned long long> dotGatesPoison;
-
-	VectorMap<unsigned long long, unsigned long long> dotGatesDisease;
-
-	VectorMap<unsigned long long, unsigned long long> dotGatesFire;
-
 	SortedVector<String> lootableMods;
-
-	SortedVector<String> lootableDots;
 
 public:
 	LootManagerImplementation(CraftingManager* craftman, ObjectManager* objMan, ZoneServer* server);
@@ -226,7 +218,7 @@ private:
 
 	void setSockets(TangibleObject* object, CraftingValues* craftingValues);
 
-	void addDots(TangibleObject* object, int creatureLevel);
+	void addDots(TangibleObject* object, LootItemTemplate* templateObject, int level);
 
 	void addConditionDamage(TangibleObject* loot, CraftingValues* craftingValues);
 
