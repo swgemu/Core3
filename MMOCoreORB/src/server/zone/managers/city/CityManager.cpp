@@ -24,7 +24,7 @@
  *	CityManagerStub
  */
 
-enum {RPC_LOADLUACONFIG__ = 6,RPC_LOADCITYREGIONS__,RPC_VALIDATECITYNAME__STRING_,RPC_ISCITYINRANGE__ZONE_FLOAT_FLOAT_,RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_,RPC_PROCESSCITYUPDATE__CITYREGION_,RPC_PROCESSINCOMETAX__CITYREGION_,RPC_UPDATECITYVOTING__CITYREGION_BOOL_,RPC_DEDUCTCITYMAINTENANCE__CITYREGION_,RPC_COLLECTCIVICSTRUCTUREMAINTENANCE__STRUCTUREOBJECT_CITYREGION_INT_,RPC_CONTRACTCITY__CITYREGION_,RPC_EXPANDCITY__CITYREGION_,RPC_DESTROYCITY__CITYREGION_,RPC_SENDSTATUSREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_,RPC_PROMPTWITHDRAWCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTDEPOSITCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_WITHDRAWFROMCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_STRING_SCENEOBJECT_,RPC_DEPOSITTOCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_,RPC_SENDTREASURYREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_SENDCITIZENSHIPREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITIZEN__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITIZEN__CITYREGION_CREATUREOBJECT_BOOL_,RPC_SENDMANAGEMILITIA__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_ADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_STRING_,RPC_REMOVEMILITIAMEMBER__CITYREGION_CREATUREOBJECT_LONG_,RPC_SENDCITYADVANCEMENT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTUNREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITY__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITY__CITYREGION_CREATUREOBJECT_,RPC_PROMPTADJUSTTAXES__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTSETTAX__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_,RPC_SETTAX__CITYREGION_CREATUREOBJECT_INT_INT_,RPC_SENDMAINTENANCEREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CONTAINSCITYNAME__STRING_,RPC_ISCITYRANKCAPPED__STRING_BYTE_,RPC_VALIDATECITYINRANGE__CREATUREOBJECT_ZONE_FLOAT_FLOAT_,RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_,RPC_GETTOTALCITIES__,RPC_SENDMAYORALSTANDINGS__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTMAYORALVOTE__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERFORMAYORALRACE__CITYREGION_CREATUREOBJECT_,RPC_CASTMAYORALVOTE__CITYREGION_CREATUREOBJECT_LONG_,RPC_SENDSTRUCTUREREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_FIXMAYOR__CITYREGION_CREATUREOBJECT_,RPC_CANSUPPORTMOREDECORATIONS__CITYREGION_,};
+enum {RPC_LOADLUACONFIG__ = 6,RPC_LOADCITYREGIONS__,RPC_VALIDATECITYNAME__STRING_,RPC_ISCITYINRANGE__ZONE_FLOAT_FLOAT_,RPC_CREATECITY__CREATUREOBJECT_STRING_FLOAT_FLOAT_,RPC_PROCESSCITYUPDATE__CITYREGION_,RPC_PROCESSINCOMETAX__CITYREGION_,RPC_UPDATECITYVOTING__CITYREGION_BOOL_,RPC_DEDUCTCITYMAINTENANCE__CITYREGION_,RPC_COLLECTCIVICSTRUCTUREMAINTENANCE__STRUCTUREOBJECT_CITYREGION_INT_,RPC_SENDMAINTENANCEEMAIL__CITYREGION_INT_,RPC_SENDMAINTENANCEDECAYEMAIL__CITYREGION_STRUCTUREOBJECT_INT_,RPC_SENDMAINTENANCEDESTROYEMAIL__CITYREGION_STRUCTUREOBJECT_,RPC_CONTRACTCITY__CITYREGION_,RPC_EXPANDCITY__CITYREGION_,RPC_DESTROYCITY__CITYREGION_,RPC_SENDSTATUSREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTCITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CHANGECITYSPECIALIZATION__CITYREGION_CREATUREOBJECT_STRING_,RPC_PROMPTWITHDRAWCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTDEPOSITCITYTREASURY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_WITHDRAWFROMCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_STRING_SCENEOBJECT_,RPC_DEPOSITTOCITYTREASURY__CITYREGION_CREATUREOBJECT_INT_,RPC_SENDTREASURYREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_SENDCITIZENSHIPREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITIZEN__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITIZEN__CITYREGION_CREATUREOBJECT_BOOL_,RPC_SENDMANAGEMILITIA__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_ADDMILITIAMEMBER__CITYREGION_CREATUREOBJECT_STRING_,RPC_REMOVEMILITIAMEMBER__CITYREGION_CREATUREOBJECT_LONG_,RPC_SENDCITYADVANCEMENT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTUNREGISTERCITY__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERCITY__CITYREGION_CREATUREOBJECT_,RPC_UNREGISTERCITY__CITYREGION_CREATUREOBJECT_,RPC_PROMPTADJUSTTAXES__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTSETTAX__CITYREGION_CREATUREOBJECT_INT_SCENEOBJECT_,RPC_SETTAX__CITYREGION_CREATUREOBJECT_INT_INT_,RPC_SENDMAINTENANCEREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_CONTAINSCITYNAME__STRING_,RPC_ISCITYRANKCAPPED__STRING_BYTE_,RPC_VALIDATECITYINRANGE__CREATUREOBJECT_ZONE_FLOAT_FLOAT_,RPC_TOGGLEZONINGENABLED__CITYREGION_CREATUREOBJECT_,RPC_GETTOTALCITIES__,RPC_SENDMAYORALSTANDINGS__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_PROMPTMAYORALVOTE__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_REGISTERFORMAYORALRACE__CITYREGION_CREATUREOBJECT_,RPC_CASTMAYORALVOTE__CITYREGION_CREATUREOBJECT_LONG_,RPC_SENDSTRUCTUREREPORT__CITYREGION_CREATUREOBJECT_SCENEOBJECT_,RPC_FIXMAYOR__CITYREGION_CREATUREOBJECT_,RPC_CANSUPPORTMOREDECORATIONS__CITYREGION_,};
 
 CityManager::CityManager(ZoneServer* zserv) : ManagedService(DummyConstructorParameter::instance()) {
 	CityManagerImplementation* _implementation = new CityManagerImplementation(zserv);
@@ -172,7 +172,7 @@ void CityManager::deductCityMaintenance(CityRegion* city) {
 		_implementation->deductCityMaintenance(city);
 }
 
-void CityManager::collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue) {
+int CityManager::collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue) {
 	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -183,9 +183,55 @@ void CityManager::collectCivicStructureMaintenance(StructureObject* structure, C
 		method.addObjectParameter(city);
 		method.addSignedIntParameter(maintenanceDue);
 
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->collectCivicStructureMaintenance(structure, city, maintenanceDue);
+}
+
+void CityManager::sendMaintenanceEmail(CityRegion* city, int maintenancePaid) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDMAINTENANCEEMAIL__CITYREGION_INT_);
+		method.addObjectParameter(city);
+		method.addSignedIntParameter(maintenancePaid);
+
 		method.executeWithVoidReturn();
 	} else
-		_implementation->collectCivicStructureMaintenance(structure, city, maintenanceDue);
+		_implementation->sendMaintenanceEmail(city, maintenancePaid);
+}
+
+void CityManager::sendMaintenanceDecayEmail(CityRegion* city, StructureObject* structure, int maintenanceDue) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDMAINTENANCEDECAYEMAIL__CITYREGION_STRUCTUREOBJECT_INT_);
+		method.addObjectParameter(city);
+		method.addObjectParameter(structure);
+		method.addSignedIntParameter(maintenanceDue);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendMaintenanceDecayEmail(city, structure, maintenanceDue);
+}
+
+void CityManager::sendMaintenanceDestroyEmail(CityRegion* city, StructureObject* structure) {
+	CityManagerImplementation* _implementation = static_cast<CityManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDMAINTENANCEDESTROYEMAIL__CITYREGION_STRUCTUREOBJECT_);
+		method.addObjectParameter(city);
+		method.addObjectParameter(structure);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendMaintenanceDestroyEmail(city, structure);
 }
 
 void CityManager::contractCity(CityRegion* city) {
@@ -1067,7 +1113,22 @@ void CityManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 		break;
 	case RPC_COLLECTCIVICSTRUCTUREMAINTENANCE__STRUCTUREOBJECT_CITYREGION_INT_:
 		{
-			collectCivicStructureMaintenance(static_cast<StructureObject*>(inv->getObjectParameter()), static_cast<CityRegion*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+			resp->insertSignedInt(collectCivicStructureMaintenance(static_cast<StructureObject*>(inv->getObjectParameter()), static_cast<CityRegion*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		}
+		break;
+	case RPC_SENDMAINTENANCEEMAIL__CITYREGION_INT_:
+		{
+			sendMaintenanceEmail(static_cast<CityRegion*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_SENDMAINTENANCEDECAYEMAIL__CITYREGION_STRUCTUREOBJECT_INT_:
+		{
+			sendMaintenanceDecayEmail(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_SENDMAINTENANCEDESTROYEMAIL__CITYREGION_STRUCTUREOBJECT_:
+		{
+			sendMaintenanceDestroyEmail(static_cast<CityRegion*>(inv->getObjectParameter()), static_cast<StructureObject*>(inv->getObjectParameter()));
 		}
 		break;
 	case RPC_CONTRACTCITY__CITYREGION_:
@@ -1311,8 +1372,20 @@ void CityManagerAdapter::deductCityMaintenance(CityRegion* city) {
 	(static_cast<CityManager*>(stub))->deductCityMaintenance(city);
 }
 
-void CityManagerAdapter::collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue) {
-	(static_cast<CityManager*>(stub))->collectCivicStructureMaintenance(structure, city, maintenanceDue);
+int CityManagerAdapter::collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue) {
+	return (static_cast<CityManager*>(stub))->collectCivicStructureMaintenance(structure, city, maintenanceDue);
+}
+
+void CityManagerAdapter::sendMaintenanceEmail(CityRegion* city, int maintenancePaid) {
+	(static_cast<CityManager*>(stub))->sendMaintenanceEmail(city, maintenancePaid);
+}
+
+void CityManagerAdapter::sendMaintenanceDecayEmail(CityRegion* city, StructureObject* structure, int maintenanceDue) {
+	(static_cast<CityManager*>(stub))->sendMaintenanceDecayEmail(city, structure, maintenanceDue);
+}
+
+void CityManagerAdapter::sendMaintenanceDestroyEmail(CityRegion* city, StructureObject* structure) {
+	(static_cast<CityManager*>(stub))->sendMaintenanceDestroyEmail(city, structure);
 }
 
 void CityManagerAdapter::contractCity(CityRegion* city) {
