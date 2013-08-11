@@ -54,19 +54,60 @@ void GeneticComponentImplementation::initializeTransientMembers() {
 void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ComponentImplementation::updateCraftingValues(values, firstUpdate);
 	if (firstUpdate) {
+		fortitude = values->getCurrentValue("fortitude");
+		endurance = values->getCurrentValue("endurance");
+		cleverness = values->getCurrentValue("cleverness");
+		courage = values->getCurrentValue("courage");
+		dexterity = values->getCurrentValue("dexterity");
+		dependency = values->getCurrentValue("dependability");
+		fierceness = values->getCurrentValue("fierceness");
+		intelligence = values->getCurrentValue("intellect");
+		power = values->getCurrentValue("power");
+		hardiness = values->getCurrentValue("hardiness");
 		/**
 		 * Now we need to grab the appropiate slots and apply the rules for first pass, vs experimentation.
 		 */
-	//	addProperty("dna_comp_armor_kinetic",kinResist,10,"@obj_attr_n:dna_comp_armor_kinetic");
-	//	addProperty("dna_comp_armor_energy",energyResist,10,"@obj_attr_n:dna_comp_armor_energy");
-	//	addProperty("dna_comp_armor_blast",blastResist,10,"@obj_attr_n:dna_comp_armor_blast");
-	//	addProperty("dna_comp_armor_heat",heatResist,10,"@obj_attr_n:dna_comp_armor_heat");
-	//	addProperty("dna_comp_armor_cold",coldResist,10,"@obj_attr_n:dna_comp_armor_cold");
-	//	addProperty("dna_comp_armor_electric",elecResist,10,"@obj_attr_n:dna_comp_armor_electric");
-	//	addProperty("dna_comp_armor_acid",acidResist,10,"@obj_attr_n:dna_comp_armor_acid");
-	//	addProperty("dna_comp_armor_stun",stunResist,10,"@obj_attr_n:dna_comp_armor_stun");
+		kinResist = values->getMaxValue("dna_comp_armor_kinetic");
+		if (kinResist > 60)
+			kinResist = 60;
+		energyResist = values->getMaxValue("dna_comp_armor_energy");
+		if (energyResist > 60)
+			energyResist = 60;
+		blastResist = values->getMaxValue("dna_comp_armor_blast");
+		if (blastResist > 100)
+			blastResist = 100;
+		heatResist = values->getMaxValue("dna_comp_armor_heat");
+		if (heatResist > 100)
+			heatResist = 100;
+		coldResist = values->getMaxValue("dna_comp_armor_cold");
+		if (coldResist > 100)
+			coldResist = 100;
+		elecResist = values->getMaxValue("dna_comp_armor_electric");
+		if (elecResist > 100)
+			elecResist = 100;
+		acidResist = values->getMaxValue("dna_comp_armor_acid");
+		if (acidResist > 100)
+			acidResist = 100;
+		stunResist = values->getMaxValue("dna_comp_armor_stun");
+		if (stunResist > 100)
+			stunResist = 100;
+		saberResist = values->getMaxValue("dna_comp_armor_saber");
+		if (saberResist > 100)
+			saberResist = 100;
 	} else {
-
+		fortitude = values->getCurrentValue("fortitude");
+		endurance = values->getCurrentValue("endurance");
+		cleverness = values->getCurrentValue("cleverness");
+		courage = values->getCurrentValue("courage");
+		dexterity = values->getCurrentValue("dexterity");
+		dependency = values->getCurrentValue("dependability");
+		fierceness = values->getCurrentValue("fierceness");
+		intelligence = values->getCurrentValue("intellect");
+		power = values->getCurrentValue("power");
+		hardiness = values->getCurrentValue("hardiness");
+		if (fortitude > 500) {
+			armorRating = 1;
+		}
 	}
 }
 String GeneticComponentImplementation::convertSpecialAttack(String &attackName) {
@@ -85,6 +126,7 @@ String GeneticComponentImplementation::resistValue(float input){
 	}
 }
 void GeneticComponentImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
+	TangibleObjectImplementation::fillAttributeList(alm, object);
 	switch (quality){
 		case 1:
 			alm->insertAttribute("dna_comp_quality","@obj_attr_n:dna_comp_very_high");
@@ -107,8 +149,20 @@ void GeneticComponentImplementation::fillAttributeList(AttributeListMessage* alm
 		case 7:
 			alm->insertAttribute("dna_comp_quality","@obj_attr_n:dna_comp_very_low");
 			break;
+		default:
+			alm->insertAttribute("dna_comp_quality","Unknown");
 	}
-	ComponentImplementation::fillAttributeList(alm,object);
+	alm->insertAttribute("dna_comp_hardiness",(int)hardiness);
+	alm->insertAttribute("dna_comp_fortitude",(int)fortitude);
+	alm->insertAttribute("dna_comp_endurance",(int)endurance);
+	alm->insertAttribute("dna_comp_intellect",(int)intelligence);
+	alm->insertAttribute("dna_comp_cleverness",(int)cleverness);
+	alm->insertAttribute("dna_comp_dependability",(int)dependency);
+	alm->insertAttribute("dna_comp_courage",(int)courage);
+	alm->insertAttribute("dna_comp_dexterity",(int)dexterity);
+	alm->insertAttribute("dna_comp_fierceness",(int)fierceness);
+	alm->insertAttribute("dna_comp_power",(int)power);
+
 	if (armorRating == 0)
 		alm->insertAttribute("dna_comp_armor_rating","@obj_attr_n:armor_pierce_none");
 	else if (armorRating == 1)

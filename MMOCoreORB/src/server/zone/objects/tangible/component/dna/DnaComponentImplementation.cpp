@@ -53,16 +53,6 @@ void DnaComponentImplementation::initializeTransientMembers() {
 
 void DnaComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ComponentImplementation::updateCraftingValues(values, firstUpdate);
-	//if (firstUpdate) {
-	//	addProperty("dna_comp_armor_kinetic",kinResist,10,"@obj_attr_n:dna_comp_armor_kinetic");
-	//	addProperty("dna_comp_armor_energy",energyResist,10,"@obj_attr_n:dna_comp_armor_energy");
-	//	addProperty("dna_comp_armor_blast",blastResist,10,"@obj_attr_n:dna_comp_armor_blast");
-	//	addProperty("dna_comp_armor_heat",heatResist,10,"@obj_attr_n:dna_comp_armor_heat");
-	//	addProperty("dna_comp_armor_cold",coldResist,10,"@obj_attr_n:dna_comp_armor_cold");
-	//	addProperty("dna_comp_armor_electric",elecResist,10,"@obj_attr_n:dna_comp_armor_electric");
-	//	addProperty("dna_comp_armor_acid",acidResist,10,"@obj_attr_n:dna_comp_armor_acid");
-	//	addProperty("dna_comp_armor_stun",stunResist,10,"@obj_attr_n:dna_comp_armor_stun");
-	//}
 }
 String DnaComponentImplementation::convertSpecialAttack(String &attackName) {
 	if (attackName == "defaultattack")

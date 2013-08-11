@@ -70,53 +70,99 @@ public:
 
 	void setCleverness(unsigned int value);
 
+	unsigned int getCleverness();
+
 	void setEndurance(unsigned int value);
+
+	unsigned int getEndurance();
 
 	void setFierceness(unsigned int value);
 
+	unsigned int getFierceness();
+
 	void setPower(unsigned int value);
+
+	unsigned int getPower();
 
 	void setIntellect(unsigned int value);
 
+	unsigned int getIntellect();
+
 	void setCourage(unsigned int value);
+
+	unsigned int getCourage();
 
 	void setDependency(unsigned int value);
 
+	unsigned int getDependency();
+
 	void setDexterity(unsigned int value);
+
+	unsigned int getDexterity();
 
 	void setFortitude(unsigned int value);
 
+	unsigned int getForititude();
+
 	void setHardiness(unsigned int value);
+
+	unsigned int getHardiness();
 
 	void setEnergy(float value);
 
+	float getEnergy();
+
 	void setBlast(float value);
+
+	float getBlast();
 
 	void setCold(float value);
 
+	float getCold();
+
 	void setHeat(float value);
+
+	float getHeat();
 
 	void setElectric(float value);
 
+	float getElectric();
+
 	void setAcid(float value);
+
+	float getAcid();
 
 	void setStun(float value);
 
+	float getStun();
+
 	void setSaber(float value);
+
+	float getSaber();
 
 	void setArmorRating(int rating);
 
 	void setKinetic(float value);
 
+	float getKinetic();
+
 	void setSource(const String& src);
 
 	void setSpecialAttackOne(const String& atk);
 
+	String getSpecialAttackOne();
+
 	void setSpecialAttackTwo(const String& atk);
+
+	String getSpecialAttackTwo();
 
 	void setRanged(bool b);
 
+	bool isRanged();
+
 	void setQuality(int qual);
+
+	unsigned int getQuality();
 
 	void initializeTransientMembers();
 
@@ -218,53 +264,99 @@ public:
 
 	void setCleverness(unsigned int value);
 
+	unsigned int getCleverness();
+
 	void setEndurance(unsigned int value);
+
+	unsigned int getEndurance();
 
 	void setFierceness(unsigned int value);
 
+	unsigned int getFierceness();
+
 	void setPower(unsigned int value);
+
+	unsigned int getPower();
 
 	void setIntellect(unsigned int value);
 
+	unsigned int getIntellect();
+
 	void setCourage(unsigned int value);
+
+	unsigned int getCourage();
 
 	void setDependency(unsigned int value);
 
+	unsigned int getDependency();
+
 	void setDexterity(unsigned int value);
+
+	unsigned int getDexterity();
 
 	void setFortitude(unsigned int value);
 
+	unsigned int getForititude();
+
 	void setHardiness(unsigned int value);
+
+	unsigned int getHardiness();
 
 	void setEnergy(float value);
 
+	float getEnergy();
+
 	void setBlast(float value);
+
+	float getBlast();
 
 	void setCold(float value);
 
+	float getCold();
+
 	void setHeat(float value);
+
+	float getHeat();
 
 	void setElectric(float value);
 
+	float getElectric();
+
 	void setAcid(float value);
+
+	float getAcid();
 
 	void setStun(float value);
 
+	float getStun();
+
 	void setSaber(float value);
+
+	float getSaber();
 
 	void setArmorRating(int rating);
 
 	void setKinetic(float value);
 
+	float getKinetic();
+
 	void setSource(const String& src);
 
 	void setSpecialAttackOne(const String& atk);
 
+	String getSpecialAttackOne();
+
 	void setSpecialAttackTwo(const String& atk);
+
+	String getSpecialAttackTwo();
 
 	void setRanged(bool b);
 
+	bool isRanged();
+
 	void setQuality(int qual);
+
+	unsigned int getQuality();
 
 	void initializeTransientMembers();
 
@@ -323,53 +415,99 @@ public:
 
 	void setCleverness(unsigned int value);
 
+	unsigned int getCleverness();
+
 	void setEndurance(unsigned int value);
+
+	unsigned int getEndurance();
 
 	void setFierceness(unsigned int value);
 
+	unsigned int getFierceness();
+
 	void setPower(unsigned int value);
+
+	unsigned int getPower();
 
 	void setIntellect(unsigned int value);
 
+	unsigned int getIntellect();
+
 	void setCourage(unsigned int value);
+
+	unsigned int getCourage();
 
 	void setDependency(unsigned int value);
 
+	unsigned int getDependency();
+
 	void setDexterity(unsigned int value);
+
+	unsigned int getDexterity();
 
 	void setFortitude(unsigned int value);
 
+	unsigned int getForititude();
+
 	void setHardiness(unsigned int value);
+
+	unsigned int getHardiness();
 
 	void setEnergy(float value);
 
+	float getEnergy();
+
 	void setBlast(float value);
+
+	float getBlast();
 
 	void setCold(float value);
 
+	float getCold();
+
 	void setHeat(float value);
+
+	float getHeat();
 
 	void setElectric(float value);
 
+	float getElectric();
+
 	void setAcid(float value);
+
+	float getAcid();
 
 	void setStun(float value);
 
+	float getStun();
+
 	void setSaber(float value);
+
+	float getSaber();
 
 	void setArmorRating(int rating);
 
 	void setKinetic(float value);
 
+	float getKinetic();
+
 	void setSource(const String& src);
 
 	void setSpecialAttackOne(const String& atk);
 
+	String getSpecialAttackOne();
+
 	void setSpecialAttackTwo(const String& atk);
+
+	String getSpecialAttackTwo();
 
 	void setRanged(bool b);
 
+	bool isRanged();
+
 	void setQuality(int qual);
+
+	unsigned int getQuality();
 
 	void initializeTransientMembers();
 
