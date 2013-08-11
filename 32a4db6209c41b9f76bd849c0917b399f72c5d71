@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_941c64c3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/recruiters/recruiters.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-08-11T00:46:03Z",
+      "side": 1,
+      "message": "How about returning 0 here so the calculation isn\u0027t done again in the if clause above?  It isn\u0027t changing anyway.",
+      "revId": "32a4db6209c41b9f76bd849c0917b399f72c5d71",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
