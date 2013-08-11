@@ -282,6 +282,10 @@ public:
 	PortalLayout* getPortalLayout();
 	AppearanceTemplate* getAppearanceTemplate();
 
+	inline bool areArrangementsOptional(){
+		return arrangementDescriptors->isOptional();
+	}
+
 	inline Vector<String>* getArrangementDescriptors() {
 		if (arrangementDescriptors == NULL)
 			return NULL;

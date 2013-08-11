@@ -13,9 +13,11 @@
 
 class ArrangementDescriptor : public IffTemplate {
 	Vector<String> arrangementSlots;
+	bool optional;
 
 public:
 	ArrangementDescriptor() {
+		optional = false;
 	}
 
 	void readObject(IffStream* iffStream) {
@@ -23,11 +25,15 @@ public:
 		uint32 version = iffStream->getNextFormType();
 		Chunk* versionForm = iffStream->openForm(version);
 
+		optional = (iffStream->getSubChunksNumber() > 1);
+
 		switch (version) {
 		case '0000':
 		{
+
 			//for (int i = 0; i < versionForm->getChunksSize(); ++i) {
-			for (int i = 0; i < MIN(versionForm->getChunksSize(), 1); ++i) { // TODO:figure out different arrangement groups
+			//for (int i = 0; i < MIN(versionForm->getChunksSize(), 1); ++i) { // TODO:figure out different arrangement groups
+			while(iffStream->getRemainingSubChunksNumber() > 0) {
 				Chunk* arg = iffStream->openChunk('ARG ');
 
 				while (arg->hasData()) {
@@ -38,6 +44,7 @@ public:
 
 				iffStream->closeChunk('ARG ');
 			}
+			//}
 		}
 
 		break;
@@ -54,6 +61,11 @@ public:
 	Vector<String>* getArrangementSlots() {
 		return &arrangementSlots;
 	}
+
+	bool isOptional(){
+		return optional;
+	}
+
 };
 
 

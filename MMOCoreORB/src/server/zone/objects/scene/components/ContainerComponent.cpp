@@ -62,14 +62,28 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 	if (containmentType == 4 || containmentType == 5) {
 		int arrangementSize = object->getArrangementDescriptorSize();
 
-		for (int i = 0; i < arrangementSize; ++i) {
-			String childArrangement = object->getArrangementDescriptor(i);
+		if( !object->getObjectTemplate()->areArrangementsOptional()){
+			for (int i = 0; i < arrangementSize; ++i) {
+				String childArrangement = object->getArrangementDescriptor(i);
 
-			if (slottedObjects->contains(childArrangement)) {
-				errorDescription = "@container_error_message:container04"; //This slot is already occupied.
-
-				return TransferErrorCode::SLOTOCCUPIED;
+				if (slottedObjects->contains(childArrangement)) {
+					errorDescription = "@container_error_message:container04"; //This slot is already occupied.
+					return TransferErrorCode::SLOTOCCUPIED;
+				}
 			}
+		} else {
+
+			bool slotAvailable = false;
+			for (int i = 0; i < arrangementSize; ++i) {
+				String childArrangement = object->getArrangementDescriptor(i);
+				if (!slottedObjects->contains(childArrangement)) {
+					slotAvailable = true;
+					i = arrangementSize+1;
+				}
+			}
+
+			if(!slotAvailable)
+				return TransferErrorCode::SLOTOCCUPIED;
 		}
 	} else if (containmentType == -1) {
 		if (containerObjects->size() >= sceneObject->getContainerVolumeLimit()) {
@@ -164,18 +178,36 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 		int arrangementSize = object->getArrangementDescriptorSize();
 
-		for (int i = 0; i < arrangementSize; ++i) {
-			String childArrangement = object->getArrangementDescriptor(i);
+		if(!object->getObjectTemplate()->areArrangementsOptional()){
+			for (int i = 0; i < arrangementSize; ++i) {
+				String childArrangement = object->getArrangementDescriptor(i);
 
-			if (slottedObjects->contains(childArrangement)) {
-				return false;
+				if (slottedObjects->contains(childArrangement)) {
+					return false;
+				}
 			}
-		}
 
-		for (int i = 0; i < arrangementSize; ++i) {
-			slottedObjects->put(object->getArrangementDescriptor(i), object);
-		}
+			for (int i = 0; i < arrangementSize; ++i) {
+				slottedObjects->put(object->getArrangementDescriptor(i), object);
+			}
 
+		} else {
+
+			String availableSlot = "";
+
+			for( int i = 0; i < arrangementSize; ++i){
+				String childArrangement = object->getArrangementDescriptor(i);
+				if(!slottedObjects->contains(childArrangement)){
+					availableSlot = childArrangement;
+					i = arrangementSize+1;
+				}
+			}
+
+			if(availableSlot.isEmpty())
+				return false;
+			else
+				slottedObjects->put(availableSlot, object);
+		}
 		object->setParent(sceneObject);
 		object->setContainmentType(containmentType);
 	} else if (containmentType == -1) { /* else if (containerType == 2 || containerType == 3) {*/
