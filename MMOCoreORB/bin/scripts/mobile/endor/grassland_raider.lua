@@ -29,10 +29,10 @@ grassland_raider = Creature:new {
 	templates = {
 			"object/mobile/dressed_grassland_blood_marauder.iff",
 			"object/mobile/dressed_marauder.iff",
-			"object/mobile/dressed_marauder_male.iff",
-			"object/mobile/dressed_marauder_male_02.iff",
-			"object/mobile/dressed_marauder_male_03.iff",
-			"object/mobile/dressed_marauder_female.iff"},
+			"object/mobile/marauder_male.iff",
+			"object/mobile/marauder_male_02.iff",
+			"object/mobile/marauder_male_03.iff",
+			"object/mobile/marauder_female.iff"},
 	lootGroups = {
 		{
 			groups = {
