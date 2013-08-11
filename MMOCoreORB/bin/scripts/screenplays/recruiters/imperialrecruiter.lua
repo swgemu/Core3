@@ -106,45 +106,45 @@ function imperial_recruiter_handler:isInstallation(strItem)
 	
 	return false
 end
-function imperial_recruiter_handler:addUniforms(screen, gcwDiscount)
+function imperial_recruiter_handler:addUniforms(screen, gcwDiscount, smugglerDiscount)
 	for k,v in pairs(faction_reward_data.imperial_uniform_list) do
 		if ( faction_reward_data.imperial_uniforms[v] ~= nil and faction_reward_data.imperial_uniforms[v].display ~= nil and faction_reward_data.imperial_uniforms[v].cost ~= nil ) then
-			screen:addOption(faction_reward_data.imperial_uniforms[v].display .. " - " .. math.ceil((faction_reward_data.imperial_uniforms[v].cost * gcwDiscount)), v)
+			screen:addOption(faction_reward_data.imperial_uniforms[v].display .. " - " .. math.ceil((faction_reward_data.imperial_uniforms[v].cost * gcwDiscount * smugglerDiscount)), v)
 		end
 	end
 end
 
 
-function imperial_recruiter_handler:addWeaponsArmor(screen, gcwDiscount)
+function imperial_recruiter_handler:addWeaponsArmor(screen, gcwDiscount, smugglerDiscount)
 	for k,v in pairs(faction_reward_data.imperial_weapons_armor_list) do
 		if ( faction_reward_data.imperial_weapons_armor[v] ~= nill and 	faction_reward_data.imperial_weapons_armor[v].display ~= nil and faction_reward_data.imperial_weapons_armor[v].cost ~= nil ) then
-				screen:addOption(faction_reward_data.imperial_weapons_armor[v].display .. " - " .. math.ceil((faction_reward_data.imperial_weapons_armor[v].cost * gcwDiscount)), v)
+				screen:addOption(faction_reward_data.imperial_weapons_armor[v].display .. " - " .. math.ceil((faction_reward_data.imperial_weapons_armor[v].cost * gcwDiscount * smugglerDiscount)), v)
 		end
 	end
 end
 
-function imperial_recruiter_handler:addFurniture(screen, gcwDiscount) 
+function imperial_recruiter_handler:addFurniture(screen, gcwDiscount, smugglerDiscount) 
 	for k,v in pairs(faction_reward_data.imperial_furniture_list) do
 		if ( faction_reward_data.imperial_furniture[v] ~= nil and faction_reward_data.imperial_furniture[v].display ~= nil and faction_reward_data.imperial_furniture[v].cost ~= nil ) then
-			screen:addOption(faction_reward_data.imperial_furniture[v].display .. " - " .. math.ceil((faction_reward_data.imperial_furniture[v].cost * gcwDiscount)), v)
+			screen:addOption(faction_reward_data.imperial_furniture[v].display .. " - " .. math.ceil((faction_reward_data.imperial_furniture[v].cost * gcwDiscount * smugglerDiscount)), v)
 		end
 	end
 end
 
-function imperial_recruiter_handler:addInstallations(screen, gcwDiscount)
+function imperial_recruiter_handler:addInstallations(screen, gcwDiscount, smugglerDiscount)
 	for k,v in pairs(faction_reward_data.imperial_installations_list) do
 		if ( faction_reward_data.imperial_installations[v] ~= nil and faction_reward_data.imperial_installations[v].display ~= nil and faction_reward_data.imperial_installations[v].cost ~= nil ) then
-			screen:addOption(faction_reward_data.imperial_installations[v].display .. " - " .. math.ceil((faction_reward_data.imperial_installations[v].cost * gcwDiscount)), v)
+			screen:addOption(faction_reward_data.imperial_installations[v].display .. " - " .. math.ceil((faction_reward_data.imperial_installations[v].cost * gcwDiscount * smugglerDiscount)), v)
 		else
 			--print("not in table")
 		end
 	end
 end
 
-function imperial_recruiter_handler:addHirelings(screen, gcwDiscount)
+function imperial_recruiter_handler:addHirelings(screen, gcwDiscount, smugglerDiscount)
 	for k,v in pairs(faction_reward_data.imperial_hireling_list) do
 		if ( faction_reward_data.imperial_hireling[v] ~= nil and faction_reward_data.imperial_hireling[v].display ~= nil and faction_reward_data.imperial_hireling[v].cost ~= nil ) then
-			screen:addOption(faction_reward_data.imperial_hireling[v].display .. " - " .. math.ceil((faction_reward_data.imperial_hireling[v].cost * gcwDiscount)), v)
+			screen:addOption(faction_reward_data.imperial_hireling[v].display .. " - " .. math.ceil((faction_reward_data.imperial_hireling[v].cost * gcwDiscount * smugglerDiscount)), v)
 		end
 	end
 end
