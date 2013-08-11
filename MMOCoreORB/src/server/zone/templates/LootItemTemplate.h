@@ -25,6 +25,9 @@ protected:
 	Vector<String> customizationStringNames;
 	Vector<Vector<int> > customizationValues;
 
+	int dotChance;
+	VectorMap<int, int> dotValues;
+
 	VectorMap<String, int> skillMods;
 
 public:
@@ -117,6 +120,23 @@ public:
 		}
 
 		skillModsLuaObject.pop();
+
+
+		dotChance = templateData->getIntField("dotChance");
+
+		LuaObject dotValuesTable = templateData->getObjectField("dotValues");
+
+		for (int i = 1; i <= dotValuesTable.getTableSize(); ++i) {
+			lua_rawgeti(templateData->getLuaState(), -1, i);
+
+			LuaObject dot(templateData->getLuaState());
+
+			dotValues.put(dot.getIntAt(1), dot.getIntAt(2));
+
+			dot.pop();
+		}
+
+		dotValuesTable.pop();
 	}
 
 	String& getDirectObjectTemplate() {
@@ -141,6 +161,14 @@ public:
 
 	VectorMap<String, int>* getSkillMods() {
 		return &skillMods;
+	}
+
+	int getDotChance() {
+		return dotChance;
+	}
+
+	VectorMap<int, int>* getDotValues() {
+		return &dotValues;
 	}
 };
 
