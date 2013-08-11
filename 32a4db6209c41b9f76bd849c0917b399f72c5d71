@@ -34,6 +34,24 @@
       "revId": "32a4db6209c41b9f76bd849c0917b399f72c5d71",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_145f3474",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/recruiters/recruiters.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-08-11T01:08:33Z",
+      "side": 1,
+      "message": "Sure, I can remove the clause.  I think the previous author was just being paranoid to make sure the cost didn\u0027t go fractional.  I don\u0027t think it\u0027s an issue as there aren\u0027t any items that cost 10 or 4 credits.",
+      "parentUuid": "3a1d315d_547ecce5",
+      "revId": "32a4db6209c41b9f76bd849c0917b399f72c5d71",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
