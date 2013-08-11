@@ -275,8 +275,6 @@ LootManagerImplementation::LootManagerImplementation(CraftingManager* craftman, 
 	lootGroupMap = NULL;
 	// server/zone/managers/loot/LootManager.idl():  		lootableMods.setNoDuplicateInsertPlan();
 	(&lootableMods)->setNoDuplicateInsertPlan();
-	// server/zone/managers/loot/LootManager.idl():  		lootableDots.setNoDuplicateInsertPlan();
-	(&lootableDots)->setNoDuplicateInsertPlan();
 	// server/zone/managers/loot/LootManager.idl():  		exceptionalChance = 0.0;
 	exceptionalChance = 0.0;
 	// server/zone/managers/loot/LootManager.idl():  		exceptionalModifier = 0.0;

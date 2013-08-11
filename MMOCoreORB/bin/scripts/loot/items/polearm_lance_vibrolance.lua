@@ -21,7 +21,18 @@ polearm_lance_vibrolance = {
 		{"attackmindcost",29,15,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+
+	-- dotValues: Object map that can randomly or statically generate a dot (used for weapon objects.)
+	dotValues = {
+		{1,3}, -- Type, 1 = Poison, 2 = Disease, 3 = Fire.
+		{0,8}, -- Attribute, See CreatureAttributes.h in src for numbers.
+		{20, 600}, -- Strength.
+		{30,240}, -- Duration.
+		{10, 200}, -- Potency.
+		{250, 7000} -- Uses.
+	}
+
 }
 
 addLootItemTemplate("polearm_lance_vibrolance", polearm_lance_vibrolance)
