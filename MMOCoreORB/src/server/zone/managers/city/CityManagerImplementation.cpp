@@ -757,16 +757,19 @@ void CityManagerImplementation::collectCivicStructureMaintenance(
 				// pay what you the city can afford on what it owes
 
 				int currentDecay = structure->getConditionDamage();
-				int availableFunds = city->getCityTreasury();
-				float costPerUnitCondition = amountOwed / currentDecay;
-				int pointsBack = availableFunds / costPerUnitCondition;
-				//info("we could only get " + String::valueOf(pointsBack) + " back",true);
 
-				currentDecay -= pointsBack;
+				if(currentDecay > 0 && amountOwed > 0){
+					int availableFunds = city->getCityTreasury();
+					float costPerUnitCondition = amountOwed / currentDecay;
+					int pointsBack = availableFunds / costPerUnitCondition;
+					//info("we could only get " + String::valueOf(pointsBack) + " back",true);
 
-				city->subtractFromCityTreasury(availableFunds);
-				structure->setConditionDamage(currentDecay);
-				structure->setSurplusMaintenance(-(amountOwed - availableFunds));
+					currentDecay -= pointsBack;
+
+					city->subtractFromCityTreasury(availableFunds);
+					structure->setConditionDamage(currentDecay);
+					structure->setSurplusMaintenance(-(amountOwed - availableFunds));
+				}
 			}
 
 		}
