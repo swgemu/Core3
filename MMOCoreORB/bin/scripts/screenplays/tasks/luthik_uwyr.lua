@@ -25,7 +25,7 @@ luthik_uwyr_missions =
 		rewards = {}
 	},
 	{
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "untrained_padawan", planetName = "dantooine", npcName = "Untrained Padawan" } 

@@ -53,7 +53,7 @@ rakir_banai_missions =
 		}
 	},
 	{ 
-		missionType = "assassinate",
+		missionType = "confiscate",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "wizzel", planetName = "tatooine", npcName = "Wizzel" } 

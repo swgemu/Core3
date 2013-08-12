@@ -43,7 +43,7 @@ raglith_missions =
 		}
 	},
 	{
-		missionType = "assassinate",
+		missionType = "confiscate",
 		primarySpawns =
 		{
 			{ npcTemplate = "theme_park_marauder_ewok_pelt", planetName = "endor", npcName = "" }
@@ -137,7 +137,7 @@ fightmaster_jorak_missions =
 charal_missions =
 {
 	{
-		missionType = "assassinate",
+		missionType = "confiscate",
 		primarySpawns =
 		{
 	 		{ npcTemplate = "theme_park_marauder_ewok_spleen", planetName = "endor", npcName = "" }
@@ -196,7 +196,7 @@ charal_missions =
 	 	}
 	},
 	{
-		missionType = "assassinate",
+		missionType = "confiscate",
 		primarySpawns =
 		{
 			{ npcTemplate = "theme_park_marauder_dengo", planetName = "endor", npcName = "Dengo Haribonn" }
@@ -221,7 +221,7 @@ charal_missions =
 scholar_szingo_missions =
 {
 	{
-		missionType = "assassinate",
+		missionType = "confiscate",
 		primarySpawns =
 		{
 			{ npcTemplate = "theme_park_marauder_pirate_leader", planetName = "endor", npcName = "Pirate Captain" }
@@ -286,7 +286,7 @@ scholar_szingo_missions =
 king_terak_missions =
 {
 	{
-		missionType = "assassinate",
+		missionType = "confiscate",
 		primarySpawns =
 		{
 			{ npcTemplate = "theme_park_marauder_ewok_holy", planetName = "endor", npcName = "Ewok Holy One" }
@@ -326,7 +326,7 @@ king_terak_missions =
 		}
 	},
 	{
-		missionType = "assassinate",
+		missionType = "confiscate",
 		primarySpawns =
 		{
 			{ npcTemplate = "theme_park_marauder_stranded_mercenary", planetName = "endor", npcName = "random" }

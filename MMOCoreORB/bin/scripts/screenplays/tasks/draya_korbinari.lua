@@ -42,7 +42,7 @@ draya_korbinari_missions =
 		}
 	},
 	{
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "draya_korbinari_smuggler", planetName = "rori", npcName = "a Smuggler" }	
