@@ -52,7 +52,7 @@ object_draft_schematic_furniture_furniture_basket_closed = object_draft_schemati
    size = 1, 
 
    xpType = "crafting_structure_general", 
-   xp = 340, 
+   xp = 100, 
 
    assemblySkill = "structure_assembly", 
    experimentingSkill = "structure_experimentation", 

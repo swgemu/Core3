@@ -42,7 +42,12 @@
 
 
 object_tangible_loot_loot_schematic_basket_closed_schematic = object_tangible_loot_loot_schematic_shared_basket_closed_schematic:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "crafting_architect_novice",
+	targetDraftSchematic = "object/draft_schematic/furniture/furniture_basket_closed.iff",
+	targetUseCount = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_basket_closed_schematic, "object/tangible/loot/loot_schematic/basket_closed_schematic.iff")
