@@ -176,6 +176,24 @@ rori_destroy_mission = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
+		},
+		{
+			lairTemplateName = "rori_kobola_miner_base_neutral_large_theater",
+			spawnLimit = -1,
+			minDifficulty = 6,
+			maxDifficulty = 14,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "rori_kobola_underboss_base_neutral_large_theater",
+			spawnLimit = -1,
+			minDifficulty = 19,
+			maxDifficulty = 28,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
 		}
 	}
 }
