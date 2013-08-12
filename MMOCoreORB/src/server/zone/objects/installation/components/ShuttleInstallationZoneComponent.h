@@ -35,6 +35,7 @@ class ShuttleInstallationZoneComponent : public StructureZoneComponent {
 public:
 	void notifyInsertToZone(SceneObject* sceneObject, Zone* zone);
 	void notifyRemoveFromZone(SceneObject* sceneObject);
+	void destroyObjectFromWorld(SceneObject* sceneObject, bool sendSelfDestroy);
 };
 
 #endif /* SHUTTLEINSTALLATIONZONECOMPONENT_H_ */
