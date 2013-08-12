@@ -238,6 +238,62 @@ bool CityManagerImplementation::isCityRankCapped(const String& planetName,
 	return (totalAtRank >= maxAtRank);
 }
 
+void CityManagerImplementation::sendCityReport(CreatureObject* creature, const String& planetName, byte rank){
+	Locker _lock(_this.get(),creature);
+
+
+	Vector < byte > *citiesAllowed = &citiesAllowedPerRank.get(planetName.toLowerCase());
+
+	if(citiesAllowed->size()== 0){
+		creature->sendSystemMessage("INVALID PLANET");
+		return;
+	}
+
+	byte maxAtRank = citiesAllowed->get(rank - 1);
+	int totalCitiesAtRank = 0;
+	int totalErroredCities = 0;
+
+
+	StringBuffer report;
+	report << endl << "===============================" << endl;
+	report << "City Report / Planet = " << planetName.toUpperCase() << "  Rank = " << String::valueOf(rank) << endl;
+	report << "===================================" << endl;
+	report << "City, citizens, treasury, Loc, Next Update" << endl;
+
+
+
+	for (int i = 0; i < cities.size(); ++i) {
+		CityRegion* city = cities.get(i);
+
+		Zone* cityZone = city->getZone();
+
+		if (cityZone == NULL) {
+				totalErroredCities++;
+				continue;
+		}
+
+		if( cityZone->getZoneName().toLowerCase() != planetName.toLowerCase() || city->getCityRank() != rank ) {
+			continue;
+		}
+
+		totalCitiesAtRank++;
+		report << city->getRegionName() << ", " << String::valueOf(city->getCitizenCount())
+			<< ", " << String::valueOf((int)city->getCityTreasury())
+			<< ",x:" << String::valueOf(city->getPositionX()) << "y:" << String::valueOf(city->getPositionY())
+			<< ", " << city->getNextUpdateTime()->getFormattedTime()<<  endl;
+
+	}
+
+	report << "==============================" << endl;
+	report << "Total Cities at rank: " << String::valueOf(totalCitiesAtRank) << endl;
+	report << "Max at rank: " << String::valueOf(maxAtRank) << endl;
+	report << "Total Errored Cities (all planets & ranks): " << String::valueOf(totalErroredCities) << endl;
+	report << "==============================" << endl;
+	creature->sendSystemMessage(report.toString());
+
+}
+
+
 bool CityManagerImplementation::validateCityInRange(CreatureObject* creature,
 		Zone* zone, float x, float y) {
 	Vector3 testPosition(x, y, 0);
