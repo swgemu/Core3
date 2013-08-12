@@ -52,7 +52,7 @@ object_draft_schematic_furniture_furniture_throwpillow = object_draft_schematic_
    size = 2, 
 
    xpType = "crafting_general", 
-   xp = 0, 
+   xp = 180, 
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 

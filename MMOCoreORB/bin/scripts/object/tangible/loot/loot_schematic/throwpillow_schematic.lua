@@ -42,7 +42,12 @@
 
 
 object_tangible_loot_loot_schematic_throwpillow_schematic = object_tangible_loot_loot_schematic_shared_throwpillow_schematic:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "crafting_artisan_domestic_01",
+	targetDraftSchematic = "object/draft_schematic/furniture/furniture_throwpillow.iff",
+	targetUseCount = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_throwpillow_schematic, "object/tangible/loot/loot_schematic/throwpillow_schematic.iff")

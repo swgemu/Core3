@@ -42,7 +42,12 @@
 
 
 object_tangible_loot_loot_schematic_bottle_pear_schematic = object_tangible_loot_loot_schematic_shared_bottle_pear_schematic:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "crafting_artisan_domestic_02",
+	targetDraftSchematic = "object/draft_schematic/furniture/furniture_bottle_pear.iff",
+	targetUseCount = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_bottle_pear_schematic, "object/tangible/loot/loot_schematic/bottle_pear_schematic.iff")

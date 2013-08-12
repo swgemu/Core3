@@ -52,7 +52,7 @@ object_draft_schematic_furniture_furniture_bottle_pear = object_draft_schematic_
    size = 1, 
 
    xpType = "crafting_general", 
-   xp = 140, 
+   xp = 120, 
 
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 

@@ -230,6 +230,24 @@ naboo_destroy_mission = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
+		},
+		{
+			lairTemplateName = "borvos_camp",
+			spawnLimit = -1,
+			minDifficulty = 7,
+			maxDifficulty = 16,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "borvos_gang",
+			spawnLimit = -1,
+			minDifficulty = 14,
+			maxDifficulty = 24,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
 		}
 	}
 }
