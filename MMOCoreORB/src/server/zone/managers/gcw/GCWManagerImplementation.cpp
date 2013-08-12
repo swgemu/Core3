@@ -1743,7 +1743,7 @@ void GCWManagerImplementation::processDNASample(CreatureObject* creature, Buildi
 	{
 		creature->sendSystemMessage("DNA Profiles complete");
 		baseData->setState(DestructibleBuildingDataComponent::DNA);
-		awardSlicingXP(creature, "bio_engineer_dna_harvesting", 1);
+		awardSlicingXP(creature, "bio_engineer_dna_harvesting", 1000);
 	}
 
 }
