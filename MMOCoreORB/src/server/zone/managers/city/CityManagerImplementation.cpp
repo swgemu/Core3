@@ -722,25 +722,25 @@ void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 	}
 
 	//info("should pay " + String::valueOf(thisCost),true);
+	int lastPaid = 0;
 
-	collectCivicStructureMaintenance(ch, city, thisCost);
+	lastPaid = collectCivicStructureMaintenance(ch, city, thisCost);
 
-	// if the condition is 0, destroy the city
-	if (ch->getConditionDamage() >= ch->getMaxCondition()) {
-		StructureManager::instance()->destroyStructure(ch);
-		return;
-	}
+	totalPaid += lastPaid;
+
+	sendMaintenanceEmail(city, totalPaid);
 
 }
 
-void CityManagerImplementation::collectCivicStructureMaintenance(
+int CityManagerImplementation::collectCivicStructureMaintenance(
 		StructureObject* structure, CityRegion* city, int maintenanceDue) {
 
+	int amountPaid = 0;
 	if (city->getCityTreasury() >= maintenanceDue) {
 		//info("paid in full",true);
 		// we have enough to pay the full amount.  subtract from city
 		city->subtractFromCityTreasury(maintenanceDue);
-
+		amountPaid = maintenanceDue;
 		// now try to fix the surplus maintenance if the CH is decayed
 
 		int amountOwed = abs(structure->getSurplusMaintenance());
@@ -749,9 +749,11 @@ void CityManagerImplementation::collectCivicStructureMaintenance(
 
 			if (city->getCityTreasury() >= amountOwed) {
 				//info("paid off old debt too",true);
+
 				city->subtractFromCityTreasury(amountOwed);
 				structure->setConditionDamage(0);
 				structure->setSurplusMaintenance(0);
+				amountPaid += amountOwed;
 
 			} else {
 				// pay what you the city can afford on what it owes
@@ -770,6 +772,7 @@ void CityManagerImplementation::collectCivicStructureMaintenance(
 					structure->setConditionDamage(currentDecay);
 					structure->setSurplusMaintenance(-(amountOwed - availableFunds));
 				}
+
 			}
 
 		}
@@ -793,7 +796,87 @@ void CityManagerImplementation::collectCivicStructureMaintenance(
 		structure->setSurplusMaintenance(currentSurplus);
 		structure->setConditionDamage(currentDecay);
 		city->subtractFromCityTreasury(fundsAvailable);
+		amountPaid += fundsAvailable;
 
+		sendMaintenanceDecayEmail(city, structure, maintenanceDue);
+
+	}
+
+	if (structure->getConditionDamage() >= structure->getMaxCondition()) {
+			sendMaintenanceDestroyEmail(city, structure);
+			StructureManager::instance()->destroyStructure(structure);
+	}
+
+	return amountPaid;
+}
+
+void CityManagerImplementation::sendMaintenanceEmail(CityRegion* city, int maint){
+	if(zoneServer != NULL) {
+
+		ManagedReference<CreatureObject*> mayor = cast<CreatureObject*>(zoneServer->getObject(
+					city->getMayorID()));
+
+		if(mayor != NULL) {
+			/*
+			stringFiles[81].addEntry("city_maint", "Maintenance Report");
+			stringFiles[81].addEntry("city_maint_body", "Mayor %TO,A total of %DI credits has been paid from the city treasury for maintenance and upkeep of structures.");
+			stringFiles[81].addEntry("city_maint_subject", "City Maintenance Paid");
+			*/
+			StringIdChatParameter emailBody("@city/city:city_maint_body");
+			emailBody.setDI(maint);
+			emailBody.setTO(mayor);
+
+			Locker clock(mayor, city);
+			ChatManager* chatManager = zoneServer->getChatManager();
+			chatManager->sendMail("@city/city:treasury_withdraw_from", "@city/city:city_maint_subject", emailBody, mayor->getFirstName(), NULL);
+		}
+
+	}
+}
+
+void CityManagerImplementation::sendMaintenanceDecayEmail(CityRegion* city, StructureObject* structure, int maintenanceDue){
+	if(zoneServer != NULL) {
+			ManagedReference<CreatureObject*> mayor = cast<CreatureObject*>(zoneServer->getObject(
+						city->getMayorID()));
+
+			if(mayor != NULL) {
+				/*
+				stringFiles[81].addEntry("structure_damaged_body", "Mayor %TT,There was insufficient money to pay for the maintenance of the structure %TO.  The amount required was %DI credits.  The structure has been damaged.  You can check the structure's condition in the structure report at the City Management terminal.");
+				stringFiles[81].addEntry("structure_damaged_subject", "Insufficient Maintenance, Structure Damaged");
+				*/
+				StringIdChatParameter emailBody("@city/city:structure_damaged_body");
+				emailBody.setTO(structure);
+				emailBody.setTT(mayor);
+				emailBody.setDI(maintenanceDue);
+
+				Locker clock(mayor, city);
+				ChatManager* chatManager = zoneServer->getChatManager();
+				chatManager->sendMail("@city/city:treasury_withdraw_from", "@city/city:structure_damaged_subject", emailBody, mayor->getFirstName(), NULL);
+
+			}
+
+	}
+
+}
+
+void CityManagerImplementation::sendMaintenanceDestroyEmail(CityRegion* city, StructureObject* structure){
+	if(zoneServer != NULL) {
+		ManagedReference<CreatureObject*> mayor = cast<CreatureObject*>(zoneServer->getObject(
+					city->getMayorID()));
+
+		if(mayor != NULL) {
+			/*
+			stringFiles[81].addEntry("structure_destroyed_maint_body", "Alert Mayor %TO!The structure (or object) %TT was condemned and destroyed due to lack of maintenance!");
+			stringFiles[81].addEntry("structure_destroyed_maint_subject", "Insufficient Maintenance, Structure DESTROYED");
+			*/
+			StringIdChatParameter emailBody("@city/city:structure_destroyed_maint_body");
+			emailBody.setTO(mayor);
+			emailBody.setTT("@building_name:" + structure->getObjectNameStringIdName());
+
+			Locker clock(mayor, city);
+			ChatManager* chatManager = zoneServer->getChatManager();
+			chatManager->sendMail("@city/city:treasury_withdraw_from", "@city/city:structure_destroyed_maint_subject", emailBody, mayor->getFirstName(), NULL);
+		}
 	}
 }
 
