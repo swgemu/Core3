@@ -876,12 +876,19 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 					+ String::valueOf(structure->getDecayPercentage()) + "%");
 
 	if (!structure->isCivicStructure()) {
-		//TODO: Calculate how much time is remaining on the current maintenance pool.
+
+		float hrsRemainingMaint = 0.f;
+		if( structure->getSurplusMaintenance() > 0 ){
+			hrsRemainingMaint = structure->getSurplusMaintenance() / structure->getMaintenanceRate();
+		}
+
 		status->addMenuItem(
 			"@player_structure:maintenance_pool_prompt "
-					+ String::valueOf(
-							(int) floor(
-									(float) structure->getSurplusMaintenance())));
+					+ String::valueOf( (int) floor( (float) structure->getSurplusMaintenance()))
+					+ " ("
+					+ String::valueOf( (int) floor( hrsRemainingMaint ) )
+					+ "hrs)" );
+
 		status->addMenuItem(
 			"@player_structure:maintenance_rate_prompt "
 					+ String::valueOf(structure->getMaintenanceRate())
@@ -908,10 +915,18 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 	if (structure->isInstallationObject() && !structure->isGeneratorObject() && !structure->isCivicStructure()) {
 		InstallationObject* installation = cast<InstallationObject*>(structure);
 
+		float hrsRemainingPower = 0.f;
+		if( installation->getSurplusPower() > 0 ){
+			hrsRemainingPower = installation->getSurplusPower() / installation->getBasePowerRate();
+		}
+
 		status->addMenuItem(
 				"@player_structure:power_reserve_prompt "
-						+ String::valueOf(
-								(int) installation->getSurplusPower()));
+						+ String::valueOf( (int) installation->getSurplusPower())
+						+ " ("
+						+ String::valueOf( (int) floor( hrsRemainingPower ) )
+						+ "hrs)" );
+
 		status->addMenuItem(
 				"@player_structure:power_consumption_prompt "
 						+ String::valueOf(
