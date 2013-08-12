@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_d7641ee7",
+        "filename": "MMOCoreORB/src/server/zone/templates/LootItemTemplate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-08-12T02:21:08Z",
+      "side": 1,
+      "message": "You should put a check here to make sure the field exists on the loot file so we don\u0027t need to go back and add it to every single loot item.\n\nif (templateData-\u003egetIntField(\"dotChance\").length() \u003e 0) {\n    dotChance \u003d templateData-\u003egetIntField(\"dotChance\");\n}\n\nDo the same for the dotValues table.\n\nYou should also initialize each of them with some value that you can check for in the loot manager to know if nothing is set in lua.",
+      "revId": "75922e3b6880ba20c2e3e82a5e06e2518d0593f4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
