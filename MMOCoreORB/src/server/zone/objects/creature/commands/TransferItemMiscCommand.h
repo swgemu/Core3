@@ -196,6 +196,8 @@ public:
 
 		bool clearWeapon = objectToTransfer->isWeaponObject() && (creature == objectToTransfer->getParent().get());
 
+		bool notifyLooted = (objectToTransfer->getParentRecursively(SceneObjectType::CREATURE) != NULL || objectToTransfer->getParentRecursively(SceneObjectType::NPCCREATURE) != NULL);
+
 		Locker clocker(objectsParent, creature);
 
 		if (!objectController->transferObject(objectToTransfer, destinationObject, transferType, true))
@@ -206,6 +208,10 @@ public:
 
 			if (creature->hasBuff(String("centerofbeing").hashCode()))
 				creature->removeBuff(String("centerofbeing").hashCode());
+		}
+
+		if (notifyLooted) {
+			objectToTransfer->notifyObservers(ObserverEventType::ITEMLOOTED, creature, 0);
 		}
 
 		return SUCCESS;
