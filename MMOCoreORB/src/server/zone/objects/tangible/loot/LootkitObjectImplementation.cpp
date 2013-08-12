@@ -83,7 +83,7 @@ void LootkitObjectImplementation::addToKit(SceneObject* object) {
 }
 
 void LootkitObjectImplementation::createItem() {
-	for (int i = 1; i<comps.size(); ++i) {
+	for (int i = 0; i<comps.size(); ++i) {
 		if (components.get(comps.get(i)) == 0) {
 			return; // Still missing pieces
 		}
