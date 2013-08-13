@@ -14,7 +14,7 @@
  *	DnaComponentStub
  */
 
-enum {RPC_SETSTATS__INT_INT_INT_INT_INT_INT_INT_INT_INT_INT_ = 6,RPC_SETCLEVERNESS__INT_,RPC_SETENDURANCE__INT_,RPC_SETFIERCENESS__INT_,RPC_SETPOWER__INT_,RPC_SETINTELLECT__INT_,RPC_SETCOURAGE__INT_,RPC_SETDEPENDENCY__INT_,RPC_SETDEXTERITY__INT_,RPC_SETFORTITUDE__INT_,RPC_SETHARDINESS__INT_,RPC_SETENERGY__FLOAT_,RPC_SETBLAST__FLOAT_,RPC_SETCOLD__FLOAT_,RPC_SETHEAT__FLOAT_,RPC_SETELECTRIC__FLOAT_,RPC_SETACID__FLOAT_,RPC_SETSTUN__FLOAT_,RPC_SETSABER__FLOAT_,RPC_SETARMORRATING__INT_,RPC_SETKINETIC__FLOAT_,RPC_SETSOURCE__STRING_,RPC_SETSPECIALATTACKONE__STRING_,RPC_SETSPECIALATTACKTWO__STRING_,RPC_SETRANGED__BOOL_,RPC_SETQUALITY__INT_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CONVERTSPECIALATTACK__STRING_,RPC_RESISTVALUE__FLOAT_};
+enum {RPC_SETSTATS__INT_INT_INT_INT_INT_INT_INT_INT_INT_INT_ = 6,RPC_SETCLEVERNESS__INT_,RPC_GETCLEVERNESS__,RPC_SETENDURANCE__INT_,RPC_GETENDURANCE__,RPC_SETFIERCENESS__INT_,RPC_GETFIERCENESS__,RPC_SETPOWER__INT_,RPC_GETPOWER__,RPC_SETINTELLECT__INT_,RPC_GETINTELLECT__,RPC_SETCOURAGE__INT_,RPC_GETCOURAGE__,RPC_SETDEPENDENCY__INT_,RPC_GETDEPENDENCY__,RPC_SETDEXTERITY__INT_,RPC_GETDEXTERITY__,RPC_SETFORTITUDE__INT_,RPC_GETFORITITUDE__,RPC_SETHARDINESS__INT_,RPC_GETHARDINESS__,RPC_SETENERGY__FLOAT_,RPC_GETENERGY__,RPC_SETBLAST__FLOAT_,RPC_GETBLAST__,RPC_SETCOLD__FLOAT_,RPC_GETCOLD__,RPC_SETHEAT__FLOAT_,RPC_GETHEAT__,RPC_SETELECTRIC__FLOAT_,RPC_GETELECTRIC__,RPC_SETACID__FLOAT_,RPC_GETACID__,RPC_SETSTUN__FLOAT_,RPC_GETSTUN__,RPC_SETSABER__FLOAT_,RPC_GETSABER__,RPC_SETARMORRATING__INT_,RPC_SETKINETIC__FLOAT_,RPC_GETKINETIC__,RPC_SETSOURCE__STRING_,RPC_SETSPECIALATTACKONE__STRING_,RPC_GETSPECIALATTACKONE__,RPC_SETSPECIALATTACKTWO__STRING_,RPC_GETSPECIALATTACKTWO__,RPC_SETRANGED__BOOL_,RPC_ISRANGED__,RPC_SETQUALITY__INT_,RPC_GETQUALITY__,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CONVERTSPECIALATTACK__STRING_,RPC_RESISTVALUE__FLOAT_};
 
 DnaComponent::DnaComponent() : Component(DummyConstructorParameter::instance()) {
 	DnaComponentImplementation* _implementation = new DnaComponentImplementation();
@@ -69,6 +69,19 @@ void DnaComponent::setCleverness(unsigned int value) {
 		_implementation->setCleverness(value);
 }
 
+unsigned int DnaComponent::getCleverness() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCLEVERNESS__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getCleverness();
+}
+
 void DnaComponent::setEndurance(unsigned int value) {
 	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -81,6 +94,19 @@ void DnaComponent::setEndurance(unsigned int value) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setEndurance(value);
+}
+
+unsigned int DnaComponent::getEndurance() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETENDURANCE__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getEndurance();
 }
 
 void DnaComponent::setFierceness(unsigned int value) {
@@ -97,6 +123,19 @@ void DnaComponent::setFierceness(unsigned int value) {
 		_implementation->setFierceness(value);
 }
 
+unsigned int DnaComponent::getFierceness() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETFIERCENESS__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getFierceness();
+}
+
 void DnaComponent::setPower(unsigned int value) {
 	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -109,6 +148,19 @@ void DnaComponent::setPower(unsigned int value) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setPower(value);
+}
+
+unsigned int DnaComponent::getPower() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETPOWER__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getPower();
 }
 
 void DnaComponent::setIntellect(unsigned int value) {
@@ -125,6 +177,19 @@ void DnaComponent::setIntellect(unsigned int value) {
 		_implementation->setIntellect(value);
 }
 
+unsigned int DnaComponent::getIntellect() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETINTELLECT__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getIntellect();
+}
+
 void DnaComponent::setCourage(unsigned int value) {
 	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -137,6 +202,19 @@ void DnaComponent::setCourage(unsigned int value) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setCourage(value);
+}
+
+unsigned int DnaComponent::getCourage() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCOURAGE__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getCourage();
 }
 
 void DnaComponent::setDependency(unsigned int value) {
@@ -153,6 +231,19 @@ void DnaComponent::setDependency(unsigned int value) {
 		_implementation->setDependency(value);
 }
 
+unsigned int DnaComponent::getDependency() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDEPENDENCY__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getDependency();
+}
+
 void DnaComponent::setDexterity(unsigned int value) {
 	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -165,6 +256,19 @@ void DnaComponent::setDexterity(unsigned int value) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setDexterity(value);
+}
+
+unsigned int DnaComponent::getDexterity() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETDEXTERITY__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getDexterity();
 }
 
 void DnaComponent::setFortitude(unsigned int value) {
@@ -181,6 +285,19 @@ void DnaComponent::setFortitude(unsigned int value) {
 		_implementation->setFortitude(value);
 }
 
+unsigned int DnaComponent::getForititude() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETFORITITUDE__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getForititude();
+}
+
 void DnaComponent::setHardiness(unsigned int value) {
 	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -193,6 +310,19 @@ void DnaComponent::setHardiness(unsigned int value) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setHardiness(value);
+}
+
+unsigned int DnaComponent::getHardiness() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETHARDINESS__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getHardiness();
 }
 
 void DnaComponent::setEnergy(float value) {
@@ -209,6 +339,19 @@ void DnaComponent::setEnergy(float value) {
 		_implementation->setEnergy(value);
 }
 
+float DnaComponent::getEnergy() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETENERGY__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getEnergy();
+}
+
 void DnaComponent::setBlast(float value) {
 	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -221,6 +364,19 @@ void DnaComponent::setBlast(float value) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setBlast(value);
+}
+
+float DnaComponent::getBlast() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETBLAST__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getBlast();
 }
 
 void DnaComponent::setCold(float value) {
@@ -237,6 +393,19 @@ void DnaComponent::setCold(float value) {
 		_implementation->setCold(value);
 }
 
+float DnaComponent::getCold() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCOLD__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getCold();
+}
+
 void DnaComponent::setHeat(float value) {
 	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -249,6 +418,19 @@ void DnaComponent::setHeat(float value) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setHeat(value);
+}
+
+float DnaComponent::getHeat() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETHEAT__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getHeat();
 }
 
 void DnaComponent::setElectric(float value) {
@@ -265,6 +447,19 @@ void DnaComponent::setElectric(float value) {
 		_implementation->setElectric(value);
 }
 
+float DnaComponent::getElectric() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETELECTRIC__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getElectric();
+}
+
 void DnaComponent::setAcid(float value) {
 	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -277,6 +472,19 @@ void DnaComponent::setAcid(float value) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setAcid(value);
+}
+
+float DnaComponent::getAcid() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETACID__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getAcid();
 }
 
 void DnaComponent::setStun(float value) {
@@ -293,6 +501,19 @@ void DnaComponent::setStun(float value) {
 		_implementation->setStun(value);
 }
 
+float DnaComponent::getStun() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSTUN__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getStun();
+}
+
 void DnaComponent::setSaber(float value) {
 	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -305,6 +526,19 @@ void DnaComponent::setSaber(float value) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setSaber(value);
+}
+
+float DnaComponent::getSaber() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSABER__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getSaber();
 }
 
 void DnaComponent::setArmorRating(int rating) {
@@ -335,6 +569,19 @@ void DnaComponent::setKinetic(float value) {
 		_implementation->setKinetic(value);
 }
 
+float DnaComponent::getKinetic() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETKINETIC__);
+
+		return method.executeWithFloatReturn();
+	} else
+		return _implementation->getKinetic();
+}
+
 void DnaComponent::setSource(const String& src) {
 	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -363,6 +610,21 @@ void DnaComponent::setSpecialAttackOne(const String& atk) {
 		_implementation->setSpecialAttackOne(atk);
 }
 
+String DnaComponent::getSpecialAttackOne() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSPECIALATTACKONE__);
+
+		String _return_getSpecialAttackOne;
+		method.executeWithAsciiReturn(_return_getSpecialAttackOne);
+		return _return_getSpecialAttackOne;
+	} else
+		return _implementation->getSpecialAttackOne();
+}
+
 void DnaComponent::setSpecialAttackTwo(const String& atk) {
 	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -375,6 +637,21 @@ void DnaComponent::setSpecialAttackTwo(const String& atk) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setSpecialAttackTwo(atk);
+}
+
+String DnaComponent::getSpecialAttackTwo() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETSPECIALATTACKTWO__);
+
+		String _return_getSpecialAttackTwo;
+		method.executeWithAsciiReturn(_return_getSpecialAttackTwo);
+		return _return_getSpecialAttackTwo;
+	} else
+		return _implementation->getSpecialAttackTwo();
 }
 
 void DnaComponent::setRanged(bool b) {
@@ -391,6 +668,19 @@ void DnaComponent::setRanged(bool b) {
 		_implementation->setRanged(b);
 }
 
+bool DnaComponent::isRanged() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISRANGED__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isRanged();
+}
+
 void DnaComponent::setQuality(int qual) {
 	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -403,6 +693,19 @@ void DnaComponent::setQuality(int qual) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setQuality(qual);
+}
+
+unsigned int DnaComponent::getQuality() {
+	DnaComponentImplementation* _implementation = static_cast<DnaComponentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETQUALITY__);
+
+		return method.executeWithUnsignedIntReturn();
+	} else
+		return _implementation->getQuality();
 }
 
 void DnaComponent::initializeTransientMembers() {
@@ -902,8 +1205,8 @@ int DnaComponentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 
 DnaComponentImplementation::DnaComponentImplementation() {
 	_initializeImplementation();
-	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		Logger.setLoggingName("GeneticComponent");
-	Logger::setLoggingName("GeneticComponent");
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		Logger.setLoggingName("DnaComponent");
+	Logger::setLoggingName("DnaComponent");
 	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		cleverness = 0;
 	cleverness = 0;
 	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		endurance = 0;
@@ -975,6 +1278,8 @@ void DnaComponentImplementation::setStats(unsigned int cle, unsigned int end, un
 	fortitude = frt;
 	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		hardiness = har;
 	hardiness = har;
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		dexterity = dex;
+	dexterity = dex;
 }
 
 void DnaComponentImplementation::setCleverness(unsigned int value) {
@@ -982,9 +1287,19 @@ void DnaComponentImplementation::setCleverness(unsigned int value) {
 	cleverness = value;
 }
 
+unsigned int DnaComponentImplementation::getCleverness() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return cleverness;
+	return cleverness;
+}
+
 void DnaComponentImplementation::setEndurance(unsigned int value) {
 	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		endurance = value;
 	endurance = value;
+}
+
+unsigned int DnaComponentImplementation::getEndurance() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return endurance;
+	return endurance;
 }
 
 void DnaComponentImplementation::setFierceness(unsigned int value) {
@@ -992,9 +1307,19 @@ void DnaComponentImplementation::setFierceness(unsigned int value) {
 	fierceness = value;
 }
 
+unsigned int DnaComponentImplementation::getFierceness() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return fierceness;
+	return fierceness;
+}
+
 void DnaComponentImplementation::setPower(unsigned int value) {
 	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		power = value;
 	power = value;
+}
+
+unsigned int DnaComponentImplementation::getPower() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return power;
+	return power;
 }
 
 void DnaComponentImplementation::setIntellect(unsigned int value) {
@@ -1002,9 +1327,19 @@ void DnaComponentImplementation::setIntellect(unsigned int value) {
 	intelligence = value;
 }
 
+unsigned int DnaComponentImplementation::getIntellect() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return intelligence;
+	return intelligence;
+}
+
 void DnaComponentImplementation::setCourage(unsigned int value) {
 	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		courage = value;
 	courage = value;
+}
+
+unsigned int DnaComponentImplementation::getCourage() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return courage;
+	return courage;
 }
 
 void DnaComponentImplementation::setDependency(unsigned int value) {
@@ -1012,9 +1347,19 @@ void DnaComponentImplementation::setDependency(unsigned int value) {
 	dependency = value;
 }
 
+unsigned int DnaComponentImplementation::getDependency() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return dependency;
+	return dependency;
+}
+
 void DnaComponentImplementation::setDexterity(unsigned int value) {
 	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		dexterity = value;
 	dexterity = value;
+}
+
+unsigned int DnaComponentImplementation::getDexterity() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return dexterity;
+	return dexterity;
 }
 
 void DnaComponentImplementation::setFortitude(unsigned int value) {
@@ -1022,9 +1367,19 @@ void DnaComponentImplementation::setFortitude(unsigned int value) {
 	fortitude = value;
 }
 
+unsigned int DnaComponentImplementation::getForititude() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return fortitude;
+	return fortitude;
+}
+
 void DnaComponentImplementation::setHardiness(unsigned int value) {
 	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		hardiness = value;
 	hardiness = value;
+}
+
+unsigned int DnaComponentImplementation::getHardiness() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return hardiness;
+	return hardiness;
 }
 
 void DnaComponentImplementation::setEnergy(float value) {
@@ -1032,9 +1387,19 @@ void DnaComponentImplementation::setEnergy(float value) {
 	energyResist = value;
 }
 
+float DnaComponentImplementation::getEnergy() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return energyResist;
+	return energyResist;
+}
+
 void DnaComponentImplementation::setBlast(float value) {
 	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		blastResist = value;
 	blastResist = value;
+}
+
+float DnaComponentImplementation::getBlast() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return blastResist;
+	return blastResist;
 }
 
 void DnaComponentImplementation::setCold(float value) {
@@ -1042,9 +1407,19 @@ void DnaComponentImplementation::setCold(float value) {
 	coldResist = value;
 }
 
+float DnaComponentImplementation::getCold() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return coldResist;
+	return coldResist;
+}
+
 void DnaComponentImplementation::setHeat(float value) {
 	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		heatResist = value;
 	heatResist = value;
+}
+
+float DnaComponentImplementation::getHeat() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return heatResist;
+	return heatResist;
 }
 
 void DnaComponentImplementation::setElectric(float value) {
@@ -1052,9 +1427,19 @@ void DnaComponentImplementation::setElectric(float value) {
 	elecResist = value;
 }
 
+float DnaComponentImplementation::getElectric() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return elecResist;
+	return elecResist;
+}
+
 void DnaComponentImplementation::setAcid(float value) {
 	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		acidResist = value;
 	acidResist = value;
+}
+
+float DnaComponentImplementation::getAcid() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return acidResist;
+	return acidResist;
 }
 
 void DnaComponentImplementation::setStun(float value) {
@@ -1062,9 +1447,19 @@ void DnaComponentImplementation::setStun(float value) {
 	stunResist = value;
 }
 
+float DnaComponentImplementation::getStun() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return stunResist;
+	return stunResist;
+}
+
 void DnaComponentImplementation::setSaber(float value) {
 	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		saberResist = value;
 	saberResist = value;
+}
+
+float DnaComponentImplementation::getSaber() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return saberResist;
+	return saberResist;
 }
 
 void DnaComponentImplementation::setArmorRating(int rating) {
@@ -1077,6 +1472,11 @@ void DnaComponentImplementation::setKinetic(float value) {
 	kinResist = value;
 }
 
+float DnaComponentImplementation::getKinetic() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return kinResist;
+	return kinResist;
+}
+
 void DnaComponentImplementation::setSource(const String& src) {
 	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		source = src;
 	source = src;
@@ -1087,9 +1487,19 @@ void DnaComponentImplementation::setSpecialAttackOne(const String& atk) {
 	special1 = atk;
 }
 
+String DnaComponentImplementation::getSpecialAttackOne() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return special1;
+	return special1;
+}
+
 void DnaComponentImplementation::setSpecialAttackTwo(const String& atk) {
 	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		special2 = atk;
 	special2 = atk;
+}
+
+String DnaComponentImplementation::getSpecialAttackTwo() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return special2;
+	return special2;
 }
 
 void DnaComponentImplementation::setRanged(bool b) {
@@ -1097,9 +1507,19 @@ void DnaComponentImplementation::setRanged(bool b) {
 	ranged = b;
 }
 
+bool DnaComponentImplementation::isRanged() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return ranged;
+	return ranged;
+}
+
 void DnaComponentImplementation::setQuality(int qual) {
 	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		quality = qual;
 	quality = qual;
+}
+
+unsigned int DnaComponentImplementation::getQuality() {
+	// server/zone/objects/tangible/component/dna/DnaComponent.idl():  		return quality;
+	return quality;
 }
 
 /*
@@ -1127,9 +1547,19 @@ void DnaComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			setCleverness(inv->getUnsignedIntParameter());
 		}
 		break;
+	case RPC_GETCLEVERNESS__:
+		{
+			resp->insertInt(getCleverness());
+		}
+		break;
 	case RPC_SETENDURANCE__INT_:
 		{
 			setEndurance(inv->getUnsignedIntParameter());
+		}
+		break;
+	case RPC_GETENDURANCE__:
+		{
+			resp->insertInt(getEndurance());
 		}
 		break;
 	case RPC_SETFIERCENESS__INT_:
@@ -1137,9 +1567,19 @@ void DnaComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			setFierceness(inv->getUnsignedIntParameter());
 		}
 		break;
+	case RPC_GETFIERCENESS__:
+		{
+			resp->insertInt(getFierceness());
+		}
+		break;
 	case RPC_SETPOWER__INT_:
 		{
 			setPower(inv->getUnsignedIntParameter());
+		}
+		break;
+	case RPC_GETPOWER__:
+		{
+			resp->insertInt(getPower());
 		}
 		break;
 	case RPC_SETINTELLECT__INT_:
@@ -1147,9 +1587,19 @@ void DnaComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			setIntellect(inv->getUnsignedIntParameter());
 		}
 		break;
+	case RPC_GETINTELLECT__:
+		{
+			resp->insertInt(getIntellect());
+		}
+		break;
 	case RPC_SETCOURAGE__INT_:
 		{
 			setCourage(inv->getUnsignedIntParameter());
+		}
+		break;
+	case RPC_GETCOURAGE__:
+		{
+			resp->insertInt(getCourage());
 		}
 		break;
 	case RPC_SETDEPENDENCY__INT_:
@@ -1157,9 +1607,19 @@ void DnaComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			setDependency(inv->getUnsignedIntParameter());
 		}
 		break;
+	case RPC_GETDEPENDENCY__:
+		{
+			resp->insertInt(getDependency());
+		}
+		break;
 	case RPC_SETDEXTERITY__INT_:
 		{
 			setDexterity(inv->getUnsignedIntParameter());
+		}
+		break;
+	case RPC_GETDEXTERITY__:
+		{
+			resp->insertInt(getDexterity());
 		}
 		break;
 	case RPC_SETFORTITUDE__INT_:
@@ -1167,9 +1627,19 @@ void DnaComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			setFortitude(inv->getUnsignedIntParameter());
 		}
 		break;
+	case RPC_GETFORITITUDE__:
+		{
+			resp->insertInt(getForititude());
+		}
+		break;
 	case RPC_SETHARDINESS__INT_:
 		{
 			setHardiness(inv->getUnsignedIntParameter());
+		}
+		break;
+	case RPC_GETHARDINESS__:
+		{
+			resp->insertInt(getHardiness());
 		}
 		break;
 	case RPC_SETENERGY__FLOAT_:
@@ -1177,9 +1647,19 @@ void DnaComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			setEnergy(inv->getFloatParameter());
 		}
 		break;
+	case RPC_GETENERGY__:
+		{
+			resp->insertFloat(getEnergy());
+		}
+		break;
 	case RPC_SETBLAST__FLOAT_:
 		{
 			setBlast(inv->getFloatParameter());
+		}
+		break;
+	case RPC_GETBLAST__:
+		{
+			resp->insertFloat(getBlast());
 		}
 		break;
 	case RPC_SETCOLD__FLOAT_:
@@ -1187,9 +1667,19 @@ void DnaComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			setCold(inv->getFloatParameter());
 		}
 		break;
+	case RPC_GETCOLD__:
+		{
+			resp->insertFloat(getCold());
+		}
+		break;
 	case RPC_SETHEAT__FLOAT_:
 		{
 			setHeat(inv->getFloatParameter());
+		}
+		break;
+	case RPC_GETHEAT__:
+		{
+			resp->insertFloat(getHeat());
 		}
 		break;
 	case RPC_SETELECTRIC__FLOAT_:
@@ -1197,9 +1687,19 @@ void DnaComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			setElectric(inv->getFloatParameter());
 		}
 		break;
+	case RPC_GETELECTRIC__:
+		{
+			resp->insertFloat(getElectric());
+		}
+		break;
 	case RPC_SETACID__FLOAT_:
 		{
 			setAcid(inv->getFloatParameter());
+		}
+		break;
+	case RPC_GETACID__:
+		{
+			resp->insertFloat(getAcid());
 		}
 		break;
 	case RPC_SETSTUN__FLOAT_:
@@ -1207,9 +1707,19 @@ void DnaComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			setStun(inv->getFloatParameter());
 		}
 		break;
+	case RPC_GETSTUN__:
+		{
+			resp->insertFloat(getStun());
+		}
+		break;
 	case RPC_SETSABER__FLOAT_:
 		{
 			setSaber(inv->getFloatParameter());
+		}
+		break;
+	case RPC_GETSABER__:
+		{
+			resp->insertFloat(getSaber());
 		}
 		break;
 	case RPC_SETARMORRATING__INT_:
@@ -1220,6 +1730,11 @@ void DnaComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_SETKINETIC__FLOAT_:
 		{
 			setKinetic(inv->getFloatParameter());
+		}
+		break;
+	case RPC_GETKINETIC__:
+		{
+			resp->insertFloat(getKinetic());
 		}
 		break;
 	case RPC_SETSOURCE__STRING_:
@@ -1234,10 +1749,20 @@ void DnaComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			setSpecialAttackOne(inv->getAsciiParameter(atk));
 		}
 		break;
+	case RPC_GETSPECIALATTACKONE__:
+		{
+			resp->insertAscii(getSpecialAttackOne());
+		}
+		break;
 	case RPC_SETSPECIALATTACKTWO__STRING_:
 		{
 			String atk; 
 			setSpecialAttackTwo(inv->getAsciiParameter(atk));
+		}
+		break;
+	case RPC_GETSPECIALATTACKTWO__:
+		{
+			resp->insertAscii(getSpecialAttackTwo());
 		}
 		break;
 	case RPC_SETRANGED__BOOL_:
@@ -1245,9 +1770,19 @@ void DnaComponentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			setRanged(inv->getBooleanParameter());
 		}
 		break;
+	case RPC_ISRANGED__:
+		{
+			resp->insertBoolean(isRanged());
+		}
+		break;
 	case RPC_SETQUALITY__INT_:
 		{
 			setQuality(inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_GETQUALITY__:
+		{
+			resp->insertInt(getQuality());
 		}
 		break;
 	case RPC_INITIALIZETRANSIENTMEMBERS__:
@@ -1279,72 +1814,144 @@ void DnaComponentAdapter::setCleverness(unsigned int value) {
 	(static_cast<DnaComponent*>(stub))->setCleverness(value);
 }
 
+unsigned int DnaComponentAdapter::getCleverness() {
+	return (static_cast<DnaComponent*>(stub))->getCleverness();
+}
+
 void DnaComponentAdapter::setEndurance(unsigned int value) {
 	(static_cast<DnaComponent*>(stub))->setEndurance(value);
+}
+
+unsigned int DnaComponentAdapter::getEndurance() {
+	return (static_cast<DnaComponent*>(stub))->getEndurance();
 }
 
 void DnaComponentAdapter::setFierceness(unsigned int value) {
 	(static_cast<DnaComponent*>(stub))->setFierceness(value);
 }
 
+unsigned int DnaComponentAdapter::getFierceness() {
+	return (static_cast<DnaComponent*>(stub))->getFierceness();
+}
+
 void DnaComponentAdapter::setPower(unsigned int value) {
 	(static_cast<DnaComponent*>(stub))->setPower(value);
+}
+
+unsigned int DnaComponentAdapter::getPower() {
+	return (static_cast<DnaComponent*>(stub))->getPower();
 }
 
 void DnaComponentAdapter::setIntellect(unsigned int value) {
 	(static_cast<DnaComponent*>(stub))->setIntellect(value);
 }
 
+unsigned int DnaComponentAdapter::getIntellect() {
+	return (static_cast<DnaComponent*>(stub))->getIntellect();
+}
+
 void DnaComponentAdapter::setCourage(unsigned int value) {
 	(static_cast<DnaComponent*>(stub))->setCourage(value);
+}
+
+unsigned int DnaComponentAdapter::getCourage() {
+	return (static_cast<DnaComponent*>(stub))->getCourage();
 }
 
 void DnaComponentAdapter::setDependency(unsigned int value) {
 	(static_cast<DnaComponent*>(stub))->setDependency(value);
 }
 
+unsigned int DnaComponentAdapter::getDependency() {
+	return (static_cast<DnaComponent*>(stub))->getDependency();
+}
+
 void DnaComponentAdapter::setDexterity(unsigned int value) {
 	(static_cast<DnaComponent*>(stub))->setDexterity(value);
+}
+
+unsigned int DnaComponentAdapter::getDexterity() {
+	return (static_cast<DnaComponent*>(stub))->getDexterity();
 }
 
 void DnaComponentAdapter::setFortitude(unsigned int value) {
 	(static_cast<DnaComponent*>(stub))->setFortitude(value);
 }
 
+unsigned int DnaComponentAdapter::getForititude() {
+	return (static_cast<DnaComponent*>(stub))->getForititude();
+}
+
 void DnaComponentAdapter::setHardiness(unsigned int value) {
 	(static_cast<DnaComponent*>(stub))->setHardiness(value);
+}
+
+unsigned int DnaComponentAdapter::getHardiness() {
+	return (static_cast<DnaComponent*>(stub))->getHardiness();
 }
 
 void DnaComponentAdapter::setEnergy(float value) {
 	(static_cast<DnaComponent*>(stub))->setEnergy(value);
 }
 
+float DnaComponentAdapter::getEnergy() {
+	return (static_cast<DnaComponent*>(stub))->getEnergy();
+}
+
 void DnaComponentAdapter::setBlast(float value) {
 	(static_cast<DnaComponent*>(stub))->setBlast(value);
+}
+
+float DnaComponentAdapter::getBlast() {
+	return (static_cast<DnaComponent*>(stub))->getBlast();
 }
 
 void DnaComponentAdapter::setCold(float value) {
 	(static_cast<DnaComponent*>(stub))->setCold(value);
 }
 
+float DnaComponentAdapter::getCold() {
+	return (static_cast<DnaComponent*>(stub))->getCold();
+}
+
 void DnaComponentAdapter::setHeat(float value) {
 	(static_cast<DnaComponent*>(stub))->setHeat(value);
+}
+
+float DnaComponentAdapter::getHeat() {
+	return (static_cast<DnaComponent*>(stub))->getHeat();
 }
 
 void DnaComponentAdapter::setElectric(float value) {
 	(static_cast<DnaComponent*>(stub))->setElectric(value);
 }
 
+float DnaComponentAdapter::getElectric() {
+	return (static_cast<DnaComponent*>(stub))->getElectric();
+}
+
 void DnaComponentAdapter::setAcid(float value) {
 	(static_cast<DnaComponent*>(stub))->setAcid(value);
+}
+
+float DnaComponentAdapter::getAcid() {
+	return (static_cast<DnaComponent*>(stub))->getAcid();
 }
 
 void DnaComponentAdapter::setStun(float value) {
 	(static_cast<DnaComponent*>(stub))->setStun(value);
 }
 
+float DnaComponentAdapter::getStun() {
+	return (static_cast<DnaComponent*>(stub))->getStun();
+}
+
 void DnaComponentAdapter::setSaber(float value) {
 	(static_cast<DnaComponent*>(stub))->setSaber(value);
+}
+
+float DnaComponentAdapter::getSaber() {
+	return (static_cast<DnaComponent*>(stub))->getSaber();
 }
 
 void DnaComponentAdapter::setArmorRating(int rating) {
@@ -1355,6 +1962,10 @@ void DnaComponentAdapter::setKinetic(float value) {
 	(static_cast<DnaComponent*>(stub))->setKinetic(value);
 }
 
+float DnaComponentAdapter::getKinetic() {
+	return (static_cast<DnaComponent*>(stub))->getKinetic();
+}
+
 void DnaComponentAdapter::setSource(const String& src) {
 	(static_cast<DnaComponent*>(stub))->setSource(src);
 }
@@ -1363,16 +1974,32 @@ void DnaComponentAdapter::setSpecialAttackOne(const String& atk) {
 	(static_cast<DnaComponent*>(stub))->setSpecialAttackOne(atk);
 }
 
+String DnaComponentAdapter::getSpecialAttackOne() {
+	return (static_cast<DnaComponent*>(stub))->getSpecialAttackOne();
+}
+
 void DnaComponentAdapter::setSpecialAttackTwo(const String& atk) {
 	(static_cast<DnaComponent*>(stub))->setSpecialAttackTwo(atk);
+}
+
+String DnaComponentAdapter::getSpecialAttackTwo() {
+	return (static_cast<DnaComponent*>(stub))->getSpecialAttackTwo();
 }
 
 void DnaComponentAdapter::setRanged(bool b) {
 	(static_cast<DnaComponent*>(stub))->setRanged(b);
 }
 
+bool DnaComponentAdapter::isRanged() {
+	return (static_cast<DnaComponent*>(stub))->isRanged();
+}
+
 void DnaComponentAdapter::setQuality(int qual) {
 	(static_cast<DnaComponent*>(stub))->setQuality(qual);
+}
+
+unsigned int DnaComponentAdapter::getQuality() {
+	return (static_cast<DnaComponent*>(stub))->getQuality();
 }
 
 void DnaComponentAdapter::initializeTransientMembers() {

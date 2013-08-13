@@ -356,10 +356,6 @@ public:
 
 	ThreatMap* getThreatMap();
 
-	void setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess);
-
-	bool applyComponentStats(ManufactureSchematic* manufactureSchematic);
-
 	FactoryCrate* createFactoryCrate(bool insertSelf = false);
 
 	bool canRepair(CreatureObject* player);
@@ -600,10 +596,6 @@ public:
 
 	ThreatMap* getThreatMap();
 
-	void setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess);
-
-	bool applyComponentStats(ManufactureSchematic* manufactureSchematic);
-
 	FactoryCrate* createFactoryCrate(bool insertSelf = false);
 
 	bool canRepair(CreatureObject* player);
@@ -804,10 +796,6 @@ public:
 	void setLevel(int lev);
 
 	String getSerialNumber();
-
-	void setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess);
-
-	bool applyComponentStats(ManufactureSchematic* manufactureSchematic);
 
 	FactoryCrate* createFactoryCrate(bool insertSelf);
 

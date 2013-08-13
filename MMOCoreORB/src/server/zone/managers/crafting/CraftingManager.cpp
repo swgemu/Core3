@@ -12,11 +12,15 @@
 
 #include "server/zone/objects/draftschematic/DraftSchematic.h"
 
+#include "server/zone/managers/crafting/labratories/SharedLabratory.h"
+
+#include "server/zone/objects/tangible/TangibleObject.h"
+
 /*
  *	CraftingManagerStub
  */
 
-enum {RPC_GETSCHEMATIC__INT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_INT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_INT_,RPC_CALCULATEASSEMBLYSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_,RPC_CALCULATEASSEMBLYVALUEMODIFIER__INT_,RPC_GETASSEMBLYPERCENTAGE__FLOAT_,RPC_CALCULATEEXPERIMENTATIONFAILURERATE__CREATUREOBJECT_MANUFACTURESCHEMATIC_INT_,RPC_CALCULATEEXPERIMENTATIONSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_,RPC_CALCULATEEXPERIMENTATIONVALUEMODIFIER__INT_INT_,RPC_GETWEIGHTEDVALUE__MANUFACTURESCHEMATIC_INT_,RPC_GENERATESERIAL__,RPC_CHECKBIOSKILLMODS__STRING_};
+enum {RPC_GETSCHEMATIC__INT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_INT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_INT_,RPC_CALCULATEASSEMBLYSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_,RPC_CALCULATEEXPERIMENTATIONFAILURERATE__CREATUREOBJECT_MANUFACTURESCHEMATIC_INT_,RPC_CALCULATEEXPERIMENTATIONSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_,RPC_GENERATESERIAL__,RPC_CHECKBIOSKILLMODS__STRING_,RPC_SETINITIALCRAFTINGVALUES__TANGIBLEOBJECT_MANUFACTURESCHEMATIC_INT_};
 
 CraftingManager::CraftingManager() : ZoneManager(DummyConstructorParameter::instance()) {
 	CraftingManagerImplementation* _implementation = new CraftingManagerImplementation();
@@ -121,41 +125,13 @@ int CraftingManager::calculateAssemblySuccess(CreatureObject* player, DraftSchem
 		return _implementation->calculateAssemblySuccess(player, draftSchematic, effectiveness);
 }
 
-float CraftingManager::calculateAssemblyValueModifier(int assemblyResult) {
-	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CALCULATEASSEMBLYVALUEMODIFIER__INT_);
-		method.addSignedIntParameter(assemblyResult);
-
-		return method.executeWithFloatReturn();
-	} else
-		return _implementation->calculateAssemblyValueModifier(assemblyResult);
-}
-
-void CraftingManager::experimentRow(CraftingValues* craftingValues, int rowEffected, int pointsAttempted, float failure, int experimentationResult) {
+void CraftingManager::experimentRow(ManufactureSchematic* schematic, CraftingValues* craftingValues, int rowEffected, int pointsAttempted, float failure, int experimentationResult) {
 	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
 
 	} else
-		_implementation->experimentRow(craftingValues, rowEffected, pointsAttempted, failure, experimentationResult);
-}
-
-float CraftingManager::getAssemblyPercentage(float value) {
-	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETASSEMBLYPERCENTAGE__FLOAT_);
-		method.addFloatParameter(value);
-
-		return method.executeWithFloatReturn();
-	} else
-		return _implementation->getAssemblyPercentage(value);
+		_implementation->experimentRow(schematic, craftingValues, rowEffected, pointsAttempted, failure, experimentationResult);
 }
 
 int CraftingManager::calculateExperimentationFailureRate(CreatureObject* player, ManufactureSchematic* manufactureSchematic, int pointsUsed) {
@@ -190,36 +166,6 @@ int CraftingManager::calculateExperimentationSuccess(CreatureObject* player, Dra
 		return _implementation->calculateExperimentationSuccess(player, draftSchematic, effectiveness);
 }
 
-float CraftingManager::calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted) {
-	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_CALCULATEEXPERIMENTATIONVALUEMODIFIER__INT_INT_);
-		method.addSignedIntParameter(experimentationResult);
-		method.addSignedIntParameter(pointsAttempted);
-
-		return method.executeWithFloatReturn();
-	} else
-		return _implementation->calculateExperimentationValueModifier(experimentationResult, pointsAttempted);
-}
-
-float CraftingManager::getWeightedValue(ManufactureSchematic* manufactureSchematic, int type) {
-	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETWEIGHTEDVALUE__MANUFACTURESCHEMATIC_INT_);
-		method.addObjectParameter(manufactureSchematic);
-		method.addSignedIntParameter(type);
-
-		return method.executeWithFloatReturn();
-	} else
-		return _implementation->getWeightedValue(manufactureSchematic, type);
-}
-
 String CraftingManager::generateSerial() {
 	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -249,6 +195,22 @@ String CraftingManager::checkBioSkillMods(const String& property) {
 		return _return_checkBioSkillMods;
 	} else
 		return _implementation->checkBioSkillMods(property);
+}
+
+void CraftingManager::setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
+	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETINITIALCRAFTINGVALUES__TANGIBLEOBJECT_MANUFACTURESCHEMATIC_INT_);
+		method.addObjectParameter(prototype);
+		method.addObjectParameter(manufactureSchematic);
+		method.addSignedIntParameter(assemblySuccess);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setInitialCraftingValues(prototype, manufactureSchematic, assemblySuccess);
 }
 
 DistributedObjectServant* CraftingManager::_getImplementation() {
@@ -427,16 +389,6 @@ void CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 			resp->insertSignedInt(calculateAssemblySuccess(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<DraftSchematic*>(inv->getObjectParameter()), inv->getFloatParameter()));
 		}
 		break;
-	case RPC_CALCULATEASSEMBLYVALUEMODIFIER__INT_:
-		{
-			resp->insertFloat(calculateAssemblyValueModifier(inv->getSignedIntParameter()));
-		}
-		break;
-	case RPC_GETASSEMBLYPERCENTAGE__FLOAT_:
-		{
-			resp->insertFloat(getAssemblyPercentage(inv->getFloatParameter()));
-		}
-		break;
 	case RPC_CALCULATEEXPERIMENTATIONFAILURERATE__CREATUREOBJECT_MANUFACTURESCHEMATIC_INT_:
 		{
 			resp->insertSignedInt(calculateExperimentationFailureRate(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<ManufactureSchematic*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
@@ -445,16 +397,6 @@ void CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 	case RPC_CALCULATEEXPERIMENTATIONSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_:
 		{
 			resp->insertSignedInt(calculateExperimentationSuccess(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<DraftSchematic*>(inv->getObjectParameter()), inv->getFloatParameter()));
-		}
-		break;
-	case RPC_CALCULATEEXPERIMENTATIONVALUEMODIFIER__INT_INT_:
-		{
-			resp->insertFloat(calculateExperimentationValueModifier(inv->getSignedIntParameter(), inv->getSignedIntParameter()));
-		}
-		break;
-	case RPC_GETWEIGHTEDVALUE__MANUFACTURESCHEMATIC_INT_:
-		{
-			resp->insertFloat(getWeightedValue(static_cast<ManufactureSchematic*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
 		}
 		break;
 	case RPC_GENERATESERIAL__:
@@ -466,6 +408,11 @@ void CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 		{
 			String property; 
 			resp->insertAscii(checkBioSkillMods(inv->getAsciiParameter(property)));
+		}
+		break;
+	case RPC_SETINITIALCRAFTINGVALUES__TANGIBLEOBJECT_MANUFACTURESCHEMATIC_INT_:
+		{
+			setInitialCraftingValues(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<ManufactureSchematic*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		}
 		break;
 	default:
@@ -489,14 +436,6 @@ int CraftingManagerAdapter::calculateAssemblySuccess(CreatureObject* player, Dra
 	return (static_cast<CraftingManager*>(stub))->calculateAssemblySuccess(player, draftSchematic, effectiveness);
 }
 
-float CraftingManagerAdapter::calculateAssemblyValueModifier(int assemblyResult) {
-	return (static_cast<CraftingManager*>(stub))->calculateAssemblyValueModifier(assemblyResult);
-}
-
-float CraftingManagerAdapter::getAssemblyPercentage(float value) {
-	return (static_cast<CraftingManager*>(stub))->getAssemblyPercentage(value);
-}
-
 int CraftingManagerAdapter::calculateExperimentationFailureRate(CreatureObject* player, ManufactureSchematic* manufactureSchematic, int pointsUsed) {
 	return (static_cast<CraftingManager*>(stub))->calculateExperimentationFailureRate(player, manufactureSchematic, pointsUsed);
 }
@@ -505,20 +444,16 @@ int CraftingManagerAdapter::calculateExperimentationSuccess(CreatureObject* play
 	return (static_cast<CraftingManager*>(stub))->calculateExperimentationSuccess(player, draftSchematic, effectiveness);
 }
 
-float CraftingManagerAdapter::calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted) {
-	return (static_cast<CraftingManager*>(stub))->calculateExperimentationValueModifier(experimentationResult, pointsAttempted);
-}
-
-float CraftingManagerAdapter::getWeightedValue(ManufactureSchematic* manufactureSchematic, int type) {
-	return (static_cast<CraftingManager*>(stub))->getWeightedValue(manufactureSchematic, type);
-}
-
 String CraftingManagerAdapter::generateSerial() {
 	return (static_cast<CraftingManager*>(stub))->generateSerial();
 }
 
 String CraftingManagerAdapter::checkBioSkillMods(const String& property) {
 	return (static_cast<CraftingManager*>(stub))->checkBioSkillMods(property);
+}
+
+void CraftingManagerAdapter::setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
+	(static_cast<CraftingManager*>(stub))->setInitialCraftingValues(prototype, manufactureSchematic, assemblySuccess);
 }
 
 /*

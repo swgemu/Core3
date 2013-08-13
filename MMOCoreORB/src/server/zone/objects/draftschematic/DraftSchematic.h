@@ -142,6 +142,8 @@ public:
 
 	DraftSchematicObjectTemplate* getDraftSchematicTemplate();
 
+	int getLabratory();
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -235,6 +237,8 @@ public:
 
 	DraftSchematicObjectTemplate* getDraftSchematicTemplate();
 
+	int getLabratory();
+
 	WeakReference<DraftSchematic*> _this;
 
 	operator const DraftSchematic*();
@@ -321,6 +325,8 @@ public:
 	int getTemplateListSize();
 
 	String getTemplate(int i);
+
+	int getLabratory();
 
 };
 

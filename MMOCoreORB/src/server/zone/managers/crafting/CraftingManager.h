@@ -67,6 +67,36 @@ class DraftSchematic;
 
 using namespace server::zone::objects::draftschematic;
 
+namespace server {
+namespace zone {
+namespace managers {
+namespace crafting {
+namespace labratories {
+
+class SharedLabratory;
+
+} // namespace labratories
+} // namespace crafting
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::crafting::labratories;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace tangible {
+
+class TangibleObject;
+
+} // namespace tangible
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::tangible;
+
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
@@ -134,6 +164,10 @@ public:
 
 	static const short CRITICALFAILURE = 8;
 
+	static const int RESOURCE_LAB = 0x00;
+
+	static const int GENETIC_LAB = 0x01;
+
 	CraftingManager();
 
 	void initialize();
@@ -150,23 +184,17 @@ public:
 
 	int calculateAssemblySuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness);
 
-	float calculateAssemblyValueModifier(int assemblyResult);
-
-	void experimentRow(CraftingValues* craftingValues, int rowEffected, int pointsAttempted, float failure, int experimentationResult);
-
-	float getAssemblyPercentage(float value);
+	void experimentRow(ManufactureSchematic* schematic, CraftingValues* craftingValues, int rowEffected, int pointsAttempted, float failure, int experimentationResult);
 
 	int calculateExperimentationFailureRate(CreatureObject* player, ManufactureSchematic* manufactureSchematic, int pointsUsed);
 
 	int calculateExperimentationSuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness);
 
-	float calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted);
-
-	float getWeightedValue(ManufactureSchematic* manufactureSchematic, int type);
-
 	String generateSerial();
 
 	String checkBioSkillMods(const String& property);
+
+	void setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess);
 
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
@@ -245,8 +273,14 @@ public:
 
 	static const short CRITICALFAILURE = 8;
 
+	static const int RESOURCE_LAB = 0x00;
+
+	static const int GENETIC_LAB = 0x01;
+
 private:
 	SortedVector<String> bioMods;
+
+	HashTable<int, Reference<SharedLabratory*> > labs;
 
 public:
 	CraftingManagerImplementation();
@@ -267,19 +301,11 @@ public:
 
 	int calculateAssemblySuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness);
 
-	float calculateAssemblyValueModifier(int assemblyResult);
-
-	void experimentRow(CraftingValues* craftingValues, int rowEffected, int pointsAttempted, float failure, int experimentationResult);
-
-	float getAssemblyPercentage(float value);
+	void experimentRow(ManufactureSchematic* schematic, CraftingValues* craftingValues, int rowEffected, int pointsAttempted, float failure, int experimentationResult);
 
 	int calculateExperimentationFailureRate(CreatureObject* player, ManufactureSchematic* manufactureSchematic, int pointsUsed);
 
 	int calculateExperimentationSuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness);
-
-	float calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted);
-
-	float getWeightedValue(ManufactureSchematic* manufactureSchematic, int type);
 
 	String generateSerial();
 
@@ -288,6 +314,12 @@ private:
 
 public:
 	String checkBioSkillMods(const String& property);
+
+private:
+	void configureLabratories();
+
+public:
+	void setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess);
 
 	WeakReference<CraftingManager*> _this;
 
@@ -340,21 +372,15 @@ public:
 
 	int calculateAssemblySuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness);
 
-	float calculateAssemblyValueModifier(int assemblyResult);
-
-	float getAssemblyPercentage(float value);
-
 	int calculateExperimentationFailureRate(CreatureObject* player, ManufactureSchematic* manufactureSchematic, int pointsUsed);
 
 	int calculateExperimentationSuccess(CreatureObject* player, DraftSchematic* draftSchematic, float effectiveness);
 
-	float calculateExperimentationValueModifier(int experimentationResult, int pointsAttempted);
-
-	float getWeightedValue(ManufactureSchematic* manufactureSchematic, int type);
-
 	String generateSerial();
 
 	String checkBioSkillMods(const String& property);
+
+	void setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess);
 
 };
 
