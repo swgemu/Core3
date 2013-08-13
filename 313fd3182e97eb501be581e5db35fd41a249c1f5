@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_d7cade6d",
+        "filename": "MMOCoreORB/bin/scripts/loot/groups/radar_screen.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-08-13T10:28:59Z",
+      "side": 1,
+      "message": "Typo here: creen instead of screen",
+      "revId": "313fd3182e97eb501be581e5db35fd41a249c1f5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
