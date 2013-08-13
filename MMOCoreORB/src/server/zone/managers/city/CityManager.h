@@ -242,6 +242,8 @@ public:
 
 	bool isCityRankCapped(const String& planetName, byte cityRank);
 
+	void sendCityReport(CreatureObject* creature, const String& planetName, byte rank);
+
 	bool validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
@@ -429,6 +431,8 @@ public:
 
 	bool isCityRankCapped(const String& planetName, byte cityRank);
 
+	void sendCityReport(CreatureObject* creature, const String& planetName, byte rank);
+
 	bool validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y);
 
 	void toggleZoningEnabled(CityRegion* city, CreatureObject* mayor);
@@ -579,6 +583,8 @@ public:
 	bool containsCityName(const String& name);
 
 	bool isCityRankCapped(const String& planetName, byte cityRank);
+
+	void sendCityReport(CreatureObject* creature, const String& planetName, byte rank);
 
 	bool validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y);
 
