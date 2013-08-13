@@ -31,20 +31,21 @@ rebel_surface_marshall = Creature:new {
 		"object/mobile/dressed_rebel_surface_marshal_rodian_male_01.iff",
 		"object/mobile/dressed_rebel_surface_marshal_human_male_01.iff",
 		"object/mobile/dressed_rebel_surface_marshal_rodian_female_01.iff",
-		"object/mobile/dressed_rebel_surface_marshal_twk_male_fat_011.iff",
+		"object/mobile/dressed_rebel_surface_marshal_twk_male_fat_01.iff",
 		"object/mobile/dressed_rebel_surface_marshal_zabrak_male_01.iff"},
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 3900000},
-				{group = "holocron_dark", chance = 500000},
-				{group = "holocron_light", chance = 500000},
-				{group = "rifles", chance = 1200000},
-				{group = "pistols", chance = 1200000},
-				{group = "carbines", chance = 1200000},
-				{group = "melee_weapons", chance = 1000000},
-				{group = "clothing_attachments", chance = 250000},
-				{group = "armor_attachments", chance = 250000}
+				{group = "junk", chance = 3700000},
+				{group = "holocron_dark", chance = 450000},
+				{group = "holocron_light", chance = 450000},
+				{group = "rifles", chance = 1180000},
+				{group = "pistols", chance = 1180000},
+				{group = "carbines", chance = 1180000},
+				{group = "melee_weapons", chance = 930000},
+				{group = "clothing_attachments", chance = 240000},
+				{group = "armor_attachments", chance = 240000},
+				{group = "radar_screen", chance = 450000},
 			},
 			lootChance = 3000000
 		}

@@ -41,6 +41,7 @@ function RoriRebelOutpostScreenPlay:spawnMobiles()
 		--Outside
 	spawnMobile("rori", "rebel_army_captain", 360, 3644, 96, -6404, 133, 0)
 	spawnMobile("rori", "rebel_colonel", 360, 3662, 96, -6402, 162, 0)
+	spawnMobile("rori", "rebel_surface_marshall", 360, 3660, 96, -6443, 342, 0)
 	spawnMobile("rori", "rebel_commando", 360, 3703, 96, -6404, 265, 0)
 	spawnMobile("rori", "rebel_commando", 360, 3703, 96, -6431, 270, 0)
 	spawnMobile("rori", "rebel_colonel", 360, 3694, 96, -6441, 0, 0)
