@@ -21,7 +21,7 @@ mauler = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
 	creatureBitmask = PACK + KILLER + STALKER,
 	diet = HERBIVORE,
 
@@ -29,11 +29,13 @@ mauler = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 3000000},
-				{group = "tailor_components", chance = 500000},
-				{group = "loot_kit_parts", chance = 500000}
+				{group = "junk", chance = 5600000},
+				{group = "tailor_components", chance = 1000000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "carbines", chance = 1000000},
+				{group = "mauler_common", chance = 400000}
 			},
-			lootChance = 3200000
+			lootChance = 2500000
 		}				
 	},
 	weapons = {"pirate_weapons_medium"},

@@ -248,6 +248,15 @@ naboo_destroy_mission = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
+		},
+		{
+			lairTemplateName = "mauler_gang",
+			spawnLimit = -1,
+			minDifficulty = 10,
+			maxDifficulty = 18,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
 		}
 	}
 }

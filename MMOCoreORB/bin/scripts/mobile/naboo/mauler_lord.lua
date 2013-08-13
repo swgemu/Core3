@@ -21,7 +21,7 @@ mauler_lord = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
@@ -29,15 +29,17 @@ mauler_lord = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 6000000},
-				{group = "tailor_components", chance = 2000000},
-				{group = "loot_kit_parts", chance = 2000000}
+				{group = "junk", chance = 5600000},
+				{group = "tailor_components", chance = 1000000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "carbines", chance = 1000000},
+				{group = "mauler_common", chance = 400000}
 			},
-			lootChance = 3200000
+			lootChance = 2700000
 		}					
 	},
 	weapons = {"pirate_weapons_heavy"},
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermaster,marksmanmaster,bountyhuntermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(mauler_lord, "mauler_lord")
