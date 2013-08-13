@@ -125,14 +125,6 @@ class CharacterBuilderTerminalImplementation : public TerminalImplementation {
 public:
 	Reference<CharacterBuilderMenuNode* > rootNode;
 
-	int performanceBuff;
-
-	int medicalBuff;
-
-	int performanceDuration;
-
-	int medicalDuration;
-
 	CharacterBuilderTerminalImplementation();
 
 	CharacterBuilderTerminalImplementation(DummyConstructorParameter* param);
@@ -149,10 +141,6 @@ public:
 
 	void enhanceCharacter(CreatureObject* player);
 
-private:
-	bool doEnhanceCharacter(unsigned int crc, CreatureObject* player, int amount, int duration, int buffType, byte attribute);
-
-public:
 	WeakReference<CharacterBuilderTerminal*> _this;
 
 	operator const CharacterBuilderTerminal*();

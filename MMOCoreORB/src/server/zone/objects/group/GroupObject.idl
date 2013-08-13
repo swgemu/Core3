@@ -62,6 +62,8 @@ class GroupObject extends SceneObject {
 	ChatRoom chatRoom;
 	
 	int groupLevel;
+
+	protected string bandSong;
 	
 	public GroupObject() {		
 		groupLevel = 0;
@@ -69,6 +71,8 @@ class GroupObject extends SceneObject {
 		Logger.setLoggingName("GroupObject");
 		
 		chatRoom = null;
+
+		bandSong = "";
 	}
 	
 	public native void sendBaselinesTo(SceneObject player);
@@ -145,4 +149,14 @@ class GroupObject extends SceneObject {
 	public native void addGroupModifiers(CreatureObject player);
 	
 	public native void removeGroupModifiers(CreatureObject player);
+
+	public native boolean isOtherMemberPlayingMusic(CreatureObject player);
+
+	public string getBandSong() {
+		return bandSong;
+	}
+
+	public void setBandSong(final string song) {
+		bandSong = song;
+	}
 }

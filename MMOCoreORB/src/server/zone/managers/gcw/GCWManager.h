@@ -304,6 +304,10 @@ public:
 
 	bool isRacialPenaltyEnabled();
 
+	bool shouldSpawnDefenses();
+
+	int getInitialVulnerabilityDelay();
+
 	void awardSlicingXP(CreatureObject* creature, const String& xpType, int value);
 
 	DistributedObjectServant* _getImplementation();
@@ -396,6 +400,10 @@ public:
 	static int bonusXP;
 
 	static int bonusDiscount;
+
+	static bool spawnDefenses;
+
+	static int initialVulnerabilityDelay;
 
 	static bool racialPenaltyEnabled;
 
@@ -626,6 +634,10 @@ public:
 	float getRacialPenalty(int race);
 
 	bool isRacialPenaltyEnabled();
+
+	bool shouldSpawnDefenses();
+
+	int getInitialVulnerabilityDelay();
 
 	void awardSlicingXP(CreatureObject* creature, const String& xpType, int value);
 

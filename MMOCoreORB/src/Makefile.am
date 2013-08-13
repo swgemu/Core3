@@ -80,7 +80,9 @@ bin_PROGRAMS = core3 #odb3
 #server/zone/objects/scene/SceneObject.h.gch:
 #	$(CXX) $(INCLUDES) -I../../../src ../../../src/server/zone/objects/scene/SceneObject.h
 
-core3_TESTS = server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.cpp
+core3_TESTS = server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.cpp \
+			  server/zone/managers/director/tests/BasicScreenPlayTest.cpp \
+			  server/zone/managers/creature/tests/LuaMobileTest.cpp
 
 core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp \
 				server/zone/objects/area/FsVillageArea.cpp \
@@ -99,6 +101,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/area/LairSpawnArea.cpp \
 				server/zone/managers/creature/LairObserver.cpp \
 				server/zone/managers/director/ScreenPlayObserver.cpp \
+				server/zone/managers/director/PersistentEvent.cpp \
 				server/zone/objects/ship/SpaceStationObject.cpp \
 				server/zone/objects/ship/FighterShipObject.cpp \
 				server/zone/objects/ship/ShipObject.cpp \
@@ -237,6 +240,9 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/managers/minigames/GamblingManager.cpp \
 				server/zone/managers/minigames/ForageManager.cpp \
 				server/zone/objects/tangible/weapon/WeaponObject.cpp \
+				server/zone/managers/crafting/labratories/SharedLabratory.cpp \
+				server/zone/managers/crafting/labratories/ResourceLabratory.cpp \
+				server/zone/managers/crafting/labratories/GeneticLabratory.cpp \
 				server/zone/managers/crafting/CraftingManager.cpp \
 				server/zone/managers/loot/LootManager.cpp \
 				server/zone/managers/loot/LootGroupMap.cpp \
@@ -254,6 +260,8 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/resource/ResourceContainer.cpp \
 				server/zone/objects/tangible/component/Component.cpp \
 				server/zone/objects/tangible/component/armor/ArmorComponent.cpp \
+				server/zone/objects/tangible/component/genetic/GeneticComponent.cpp \
+				server/zone/objects/tangible/component/dna/DnaComponent.cpp \
 				server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.cpp \
 				server/zone/objects/tangible/tool/CraftingTool.cpp \
 				server/zone/objects/tangible/tool/CraftingStation.cpp \
@@ -347,6 +355,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/creature/LairObserverImplementation.cpp \
 		server/zone/managers/customization/CustomizationIdManager.cpp \
 		server/zone/managers/director/ScreenPlayObserverImplementation.cpp \
+		server/zone/managers/director/PersistentEventImplementation.cpp \
 		server/zone/objects/ship/SpaceStationObjectImplementation.cpp \
 		server/zone/objects/ship/FighterShipObjectImplementation.cpp \
 		server/zone/objects/ship/ShipObjectImplementation.cpp \
@@ -527,6 +536,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/installation/harvester/HarvesterObjectImplementation.cpp \
 		server/zone/objects/installation/generator/GeneratorObjectImplementation.cpp \
 		server/zone/objects/tangible/component/ComponentImplementation.cpp \
+		server/zone/objects/tangible/component/genetic/GeneticComponentImplementation.cpp \
+		server/zone/objects/tangible/component/dna/DnaComponentImplementation.cpp \
 		server/zone/objects/tangible/component/armor/ArmorComponentImplementation.cpp \
 		server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponentImplementation.cpp \
 		server/zone/objects/tangible/tool/SurveyToolImplementation.cpp \
@@ -667,6 +678,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/creature/CreatureManagerImplementation.cpp \
 		server/zone/managers/creature/SpawnAreaMap.cpp \
 		server/zone/managers/creature/CreatureTemplateManager.cpp \
+		server/zone/managers/creature/DnaSampleRange.cpp \
+		server/zone/managers/creature/DnaManager.cpp \
 		server/zone/managers/combat/CombatManager.cpp \
 		server/zone/managers/combat/CreatureAttackData.cpp \
 		server/zone/objects/mission/MissionObjectImplementation.cpp \

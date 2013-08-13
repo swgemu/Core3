@@ -205,15 +205,6 @@ tatooine_creatures_world = {
 			size = 25
 		},
 		{
-			lairTemplateName = "tatooine_tusken_raider_village_neutral_large_theater",
-			spawnLimit = -1,
-			minDifficulty = 21,
-			maxDifficulty = 31,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "tatooine_dragonet_lair_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 24,
@@ -229,33 +220,6 @@ tatooine_creatures_world = {
 			maxDifficulty = 34,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "tatooine_evil_settlement_neutral_medium_theater",
-			spawnLimit = -1,
-			minDifficulty = 3,
-			maxDifficulty = 6,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "tatooine_moisture_settler_neutral_medium_theater",
-			spawnLimit = -1,
-			minDifficulty = 3,
-			maxDifficulty = 6,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "tatooine_alkhara_bandit_patrol_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 11,
-			maxDifficulty = 15,
-			numberToSpawn = 0,
-			weighting = 0,
 			size = 25
 		}
 	}

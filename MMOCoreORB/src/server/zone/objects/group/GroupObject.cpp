@@ -14,7 +14,7 @@
  *	GroupObjectStub
  */
 
-enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_,RPC_SENDSYSTEMMESSAGE__STRING_,RPC_ADDMEMBER__SCENEOBJECT_,RPC_REMOVEMEMBER__SCENEOBJECT_,RPC_DISBAND__,RPC_MAKELEADER__SCENEOBJECT_,RPC_HASMEMBER__SCENEOBJECT_,RPC_HASMEMBER__LONG_,RPC_STARTCHATROOM__,RPC_DESTROYCHATROOM__,RPC_GETGROUPHARVESTMODIFIER__CREATUREOBJECT_,RPC_CALCGROUPLEVEL__,RPC_GETGROUPLEVEL__,RPC_GETGROUPCHANNEL__,RPC_GETGROUPSIZE__,RPC_GETGROUPMEMBER__INT_,RPC_INITIALIZELEADER__SCENEOBJECT_,RPC_GETLEADER__,RPC_ISGROUPOBJECT__,RPC_HASSQUADLEADER__,RPC_ADDGROUPMODIFIERS__,RPC_REMOVEGROUPMODIFIERS__,RPC_ADDGROUPMODIFIERS__CREATUREOBJECT_,RPC_REMOVEGROUPMODIFIERS__CREATUREOBJECT_};
+enum {RPC_SENDBASELINESTO__SCENEOBJECT_ = 6,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__CREATUREOBJECT_BASEMESSAGE_BOOL_,RPC_SENDSYSTEMMESSAGE__STRING_,RPC_ADDMEMBER__SCENEOBJECT_,RPC_REMOVEMEMBER__SCENEOBJECT_,RPC_DISBAND__,RPC_MAKELEADER__SCENEOBJECT_,RPC_HASMEMBER__SCENEOBJECT_,RPC_HASMEMBER__LONG_,RPC_STARTCHATROOM__,RPC_DESTROYCHATROOM__,RPC_GETGROUPHARVESTMODIFIER__CREATUREOBJECT_,RPC_CALCGROUPLEVEL__,RPC_GETGROUPLEVEL__,RPC_GETGROUPCHANNEL__,RPC_GETGROUPSIZE__,RPC_GETGROUPMEMBER__INT_,RPC_INITIALIZELEADER__SCENEOBJECT_,RPC_GETLEADER__,RPC_ISGROUPOBJECT__,RPC_HASSQUADLEADER__,RPC_ADDGROUPMODIFIERS__,RPC_REMOVEGROUPMODIFIERS__,RPC_ADDGROUPMODIFIERS__CREATUREOBJECT_,RPC_REMOVEGROUPMODIFIERS__CREATUREOBJECT_,RPC_ISOTHERMEMBERPLAYINGMUSIC__CREATUREOBJECT_,RPC_GETBANDSONG__,RPC_SETBANDSONG__STRING_};
 
 GroupObject::GroupObject() : SceneObject(DummyConstructorParameter::instance()) {
 	GroupObjectImplementation* _implementation = new GroupObjectImplementation();
@@ -404,6 +404,49 @@ void GroupObject::removeGroupModifiers(CreatureObject* player) {
 		_implementation->removeGroupModifiers(player);
 }
 
+bool GroupObject::isOtherMemberPlayingMusic(CreatureObject* player) {
+	GroupObjectImplementation* _implementation = static_cast<GroupObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISOTHERMEMBERPLAYINGMUSIC__CREATUREOBJECT_);
+		method.addObjectParameter(player);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isOtherMemberPlayingMusic(player);
+}
+
+String GroupObject::getBandSong() {
+	GroupObjectImplementation* _implementation = static_cast<GroupObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETBANDSONG__);
+
+		String _return_getBandSong;
+		method.executeWithAsciiReturn(_return_getBandSong);
+		return _return_getBandSong;
+	} else
+		return _implementation->getBandSong();
+}
+
+void GroupObject::setBandSong(const String& song) {
+	GroupObjectImplementation* _implementation = static_cast<GroupObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETBANDSONG__STRING_);
+		method.addAsciiParameter(song);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setBandSong(song);
+}
+
 DistributedObjectServant* GroupObject::_getImplementation() {
 
 	 if (!_updated) _updated = true;
@@ -526,6 +569,10 @@ bool GroupObjectImplementation::readObjectMember(ObjectInputStream* stream, cons
 		TypeInfo<int >::parseFromBinaryStream(&groupLevel, stream);
 		return true;
 
+	case 0x68fdca98: //GroupObject.bandSong
+		TypeInfo<String >::parseFromBinaryStream(&bandSong, stream);
+		return true;
+
 	}
 
 	return false;
@@ -568,8 +615,16 @@ int GroupObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_nameHashCode = 0x68fdca98; //GroupObject.bandSong
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<String >::toBinaryStream(&bandSong, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 3;
+
+	return _count + 4;
 }
 
 GroupObjectImplementation::GroupObjectImplementation() {
@@ -580,6 +635,8 @@ GroupObjectImplementation::GroupObjectImplementation() {
 	Logger::setLoggingName("GroupObject");
 	// server/zone/objects/group/GroupObject.idl():  		chatRoom = null;
 	chatRoom = NULL;
+	// server/zone/objects/group/GroupObject.idl():  		bandSong = "";
+	bandSong = "";
 }
 
 int GroupObjectImplementation::getGroupLevel() {
@@ -620,6 +677,16 @@ GroupList* GroupObjectImplementation::getGroupList() {
 bool GroupObjectImplementation::isGroupObject() {
 	// server/zone/objects/group/GroupObject.idl():  		return true;
 	return true;
+}
+
+String GroupObjectImplementation::getBandSong() {
+	// server/zone/objects/group/GroupObject.idl():  		return bandSong;
+	return bandSong;
+}
+
+void GroupObjectImplementation::setBandSong(const String& song) {
+	// server/zone/objects/group/GroupObject.idl():  		bandSong = song;
+	bandSong = song;
 }
 
 /*
@@ -768,6 +835,22 @@ void GroupObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			removeGroupModifiers(static_cast<CreatureObject*>(inv->getObjectParameter()));
 		}
 		break;
+	case RPC_ISOTHERMEMBERPLAYINGMUSIC__CREATUREOBJECT_:
+		{
+			resp->insertBoolean(isOtherMemberPlayingMusic(static_cast<CreatureObject*>(inv->getObjectParameter())));
+		}
+		break;
+	case RPC_GETBANDSONG__:
+		{
+			resp->insertAscii(getBandSong());
+		}
+		break;
+	case RPC_SETBANDSONG__STRING_:
+		{
+			String song; 
+			setBandSong(inv->getAsciiParameter(song));
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -875,6 +958,18 @@ void GroupObjectAdapter::addGroupModifiers(CreatureObject* player) {
 
 void GroupObjectAdapter::removeGroupModifiers(CreatureObject* player) {
 	(static_cast<GroupObject*>(stub))->removeGroupModifiers(player);
+}
+
+bool GroupObjectAdapter::isOtherMemberPlayingMusic(CreatureObject* player) {
+	return (static_cast<GroupObject*>(stub))->isOtherMemberPlayingMusic(player);
+}
+
+String GroupObjectAdapter::getBandSong() {
+	return (static_cast<GroupObject*>(stub))->getBandSong();
+}
+
+void GroupObjectAdapter::setBandSong(const String& song) {
+	(static_cast<GroupObject*>(stub))->setBandSong(song);
 }
 
 /*

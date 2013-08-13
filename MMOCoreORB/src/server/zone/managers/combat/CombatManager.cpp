@@ -280,6 +280,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	if (!defender->isDead()) {
 		applyStates(attacker, defender, data);
 		applyDots(attacker, defender, data, damage);
+		applyWeaponDots(attacker, defender, weapon);
 	}
 
 	return damage;
@@ -302,6 +303,46 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 		//info("entering addDotState", true);
 
 		defender->addDotState(effect.getDotType(), data.getCommand()->getNameCRC(), effect.isDotDamageofHit() ? appliedDamage : effect.getDotStrength(), effect.getDotPool(), effect.getDotDuration(), effect.getDotPotency(), resist);
+	}
+}
+
+void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* defender, WeaponObject* weapon) {
+
+	//ManagedReference<WeaponObject*> attackerWeapon = attacker->getWeapon();
+
+	// Get attacker's weapon they have.
+	ManagedReference<WeaponObject*> attackerWeapon = cast<WeaponObject*>(weapon);
+
+	if (attackerWeapon->getDotType() > 0 && attackerWeapon->getDotUses() > 0) {
+		if (attackerWeapon->getDotType() == 1) { // Poison.
+			int power = defender->addDotState(CreatureState::POISONED, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(), attackerWeapon->getDotAttribute(), attackerWeapon->getDotDuration(), attackerWeapon->getDotPotency(), defender->getSkillMod("resistance_poison"));
+
+			if (power > 0) { // Unresisted, reduce use count.
+				if (attackerWeapon->getDotUses() > 0) {
+					attackerWeapon->setDotUses(attackerWeapon->getDotUses() - 1);
+				}
+			}
+		}
+
+		if (attackerWeapon->getDotType() == 2) { // Disease.
+			int power = defender->addDotState(CreatureState::DISEASED, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(), attackerWeapon->getDotAttribute(), attackerWeapon->getDotDuration(), attackerWeapon->getDotPotency(), defender->getSkillMod("resistance_disease"));
+
+			if (power > 0) { // Unresisted, reduce use count.
+				if (attackerWeapon->getDotUses() > 0) {
+					attackerWeapon->setDotUses(attackerWeapon->getDotUses() - 1);
+				}
+			}
+		}
+
+		if (attackerWeapon->getDotType() == 3) { // Fire.
+			int power = defender->addDotState(CreatureState::ONFIRE, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(), attackerWeapon->getDotAttribute(), attackerWeapon->getDotDuration(), attackerWeapon->getDotPotency(), defender->getSkillMod("resistance_fire"));
+
+			if (power > 0) { // Unresisted, reduce use count.
+				if (attackerWeapon->getDotUses() > 0) {
+					attackerWeapon->setDotUses(attackerWeapon->getDotUses() - 1);
+				}
+			}
+		}
 	}
 }
 
@@ -1309,7 +1350,9 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, C
 	if (wounded)
 		defender->addShockWounds(1, true);
 
-	weapon->decreasePowerupUses(attacker);
+	// This method can be called multiple times for area attacks.  Let the calling method decrease the powerup once
+	if (!data.getCommand()->isAreaAction() && !data.getCommand()->isConeAction())
+		weapon->decreasePowerupUses(attacker);
 
 	return (int) (healthDamage + actionDamage + mindDamage);
 }
@@ -1340,7 +1383,10 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, T
 	}
 
 	defender->inflictDamage(attacker, 0, damage, true, xpType);
-	weapon->decreasePowerupUses(attacker);
+
+	// This method can be called multiple times for area attacks.  Let the calling method decrease the powerup once
+	if (!data.getCommand()->isAreaAction() && !data.getCommand()->isConeAction())
+		weapon->decreasePowerupUses(attacker);
 
 	return damage;
 }
@@ -1821,6 +1867,7 @@ int CombatManager::doAreaCombatAction(CreatureObject* attacker, WeaponObject* we
 		throw;
 	}
 
+	weapon->decreasePowerupUses(attacker);
 	return damage;
 }
 

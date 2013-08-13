@@ -149,6 +149,20 @@ using namespace server::zone::managers::creature;
 
 namespace server {
 namespace zone {
+namespace managers {
+namespace creature {
+
+class DnaManager;
+
+} // namespace creature
+} // namespace managers
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::managers::creature;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace area {
 
@@ -187,6 +201,12 @@ public:
 	static const short BEINGMILKED = 0x01;
 
 	static const short ALREADYMILKED = 0x02;
+
+	static const short HASDNA = 0x00;
+
+	static const short DNASAMPLED = 0x01;
+
+	static const short DNADEATH = 0x03;
 
 	CreatureManager(Zone* planet);
 
@@ -230,6 +250,8 @@ public:
 
 	void milk(Creature* creature, CreatureObject* player);
 
+	void sample(Creature* creature, CreatureObject* player);
+
 	void addToReservePool(AiAgent* agent);
 
 	int getSpawnedRandomCreatures();
@@ -243,6 +265,8 @@ public:
 	Vector<ManagedReference<SpawnArea* > >* getFactionalRebelMissionSpawnAreas();
 
 	Vector<ManagedReference<SpawnArea* > >* getFactionalImperialMissionSpawnAreas();
+
+	Vector<ManagedReference<SpawnArea* > >* getNonfactionalMissionSpawnAreas();
 
 	SpawnArea* getSpawnArea(const String& areaname);
 
@@ -283,6 +307,8 @@ protected:
 
 	Reference<CreatureTemplateManager* > creatureTemplateManager;
 
+	Reference<DnaManager* > dnaManager;
+
 	SortedVector<ManagedReference<AiAgent* > > reservePool;
 
 	int spawnedRandomCreatures;
@@ -295,6 +321,12 @@ public:
 	static const short BEINGMILKED = 0x01;
 
 	static const short ALREADYMILKED = 0x02;
+
+	static const short HASDNA = 0x00;
+
+	static const short DNASAMPLED = 0x01;
+
+	static const short DNADEATH = 0x03;
 
 	CreatureManagerImplementation(Zone* planet);
 
@@ -348,6 +380,8 @@ public:
 
 	void milk(Creature* creature, CreatureObject* player);
 
+	void sample(Creature* creature, CreatureObject* player);
+
 	void addToReservePool(AiAgent* agent);
 
 	int getSpawnedRandomCreatures();
@@ -361,6 +395,8 @@ public:
 	Vector<ManagedReference<SpawnArea* > >* getFactionalRebelMissionSpawnAreas();
 
 	Vector<ManagedReference<SpawnArea* > >* getFactionalImperialMissionSpawnAreas();
+
+	Vector<ManagedReference<SpawnArea* > >* getNonfactionalMissionSpawnAreas();
 
 	SpawnArea* getSpawnArea(const String& areaname);
 
@@ -446,6 +482,8 @@ public:
 	void harvest(Creature* creature, CreatureObject* player, int selectedID);
 
 	void milk(Creature* creature, CreatureObject* player);
+
+	void sample(Creature* creature, CreatureObject* player);
 
 	void addToReservePool(AiAgent* agent);
 

@@ -1,0 +1,304 @@
+/*
+Copyright (C) 2009 <SWGEmu>
+ 
+This File is part of Core3.
+ 
+This program is free software; you can redistribute 
+it and/or modify it under the terms of the GNU Lesser 
+General Public License as published by the Free Software
+Foundation; either version 2 of the License, 
+or (at your option) any later version.
+ 
+This program is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+See the GNU Lesser General Public License for
+more details.
+ 
+You should have received a copy of the GNU Lesser General 
+Public License along with this program; if not, write to
+the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ 
+Linking Engine3 statically or dynamically with other modules 
+is making a combined work based on Engine3. 
+Thus, the terms and conditions of the GNU Lesser General Public License 
+cover the whole combination.
+ 
+In addition, as a special exception, the copyright holders of Engine3 
+give you permission to combine Engine3 program with free software 
+programs or libraries that are released under the GNU LGPL and with 
+code included in the standard release of Core3 under the GNU LGPL 
+license (or modified versions of such code, with unchanged license). 
+You may copy and distribute such a system following the terms of the 
+GNU LGPL for Engine3 and the licenses of the other code concerned, 
+provided that you include the source code of that other code when 
+and as the GNU LGPL requires distribution of source code.
+ 
+Note that people who make modified versions of Engine3 are not obligated 
+to grant this special exception for their modified versions; 
+it is their choice whether to do so. The GNU Lesser General Public License 
+gives permission to release a modified version without this exception; 
+this exception also makes it possible to release a modified version 
+which carries forward this exception.
+*/
+
+package server.zone.objects.tangible.component.dna;
+
+import server.zone.objects.tangible.component.Component;
+import engine.lua.LuaObject;
+import server.zone.objects.scene.SceneObject;
+import server.zone.Zone;
+import server.zone.templates.mobile.CreatureTemplate;
+include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+ 
+class DnaComponent extends Component {
+
+	protected unsigned int cleverness;
+	protected unsigned int endurance;
+	protected unsigned int fierceness;
+	protected unsigned int power;
+	protected unsigned int intelligence;
+	protected unsigned int courage;
+	protected unsigned int dependency;
+	protected unsigned int dexterity;
+	protected unsigned int fortitude;
+	protected unsigned int hardiness;
+	protected string source;
+	protected string special1;
+	protected string special2;
+	protected boolean ranged;
+	protected int quality;
+	protected int armorRating;
+	protected float kinResist;
+	protected float energyResist;
+	protected float blastResist;
+	protected float coldResist;
+	protected float heatResist;
+	protected float elecResist;
+	protected float acidResist;
+	protected float stunResist;
+	protected float saberResist;
+
+	public DnaComponent() {
+		Logger.setLoggingName("DnaComponent");
+		cleverness = 0;
+		endurance = 0;
+		fierceness = 0;
+		power = 0;
+		intelligence = 0;
+		courage = 0;
+		dependency = 0;
+		dexterity = 0;
+		fortitude = 0;
+		hardiness = 0;
+		source = "unknown";
+		special1 = "none";
+		special2 = "none";
+		ranged = false;
+		quality = 7;
+		armorRating = 0;
+		kinResist = 0;
+		energyResist = 0;
+		blastResist = 0;
+		coldResist = 0;
+		heatResist = 0;
+		elecResist = 0;
+		acidResist = 0;
+		stunResist = 0;	
+		saberResist = -1;
+	}
+	public void setStats(unsigned int cle, unsigned int end, unsigned int fie, unsigned int pow, 
+						    unsigned int ite, unsigned int cou, unsigned int dep, unsigned int dex, 
+						    unsigned int frt, unsigned int har){
+		cleverness = cle;
+		endurance = end;
+		fierceness = fie;
+		power = pow;
+		intelligence = ite;
+		courage = cou;
+		dependency = dep;
+		fortitude = frt;
+		hardiness = har;
+		dexterity = dex;
+	}
+	public void setCleverness(unsigned int value) {
+		cleverness = value;
+	}
+	public unsigned int getCleverness() { 
+		return cleverness;
+	}
+	public void setEndurance(unsigned int value) {
+		endurance = value;
+	}
+	public unsigned int getEndurance() { 
+		return endurance;
+	}
+	
+	public void setFierceness(unsigned int value) {
+		fierceness = value;
+	}
+	public unsigned int getFierceness() { 
+		return fierceness;
+	}
+	
+	public void setPower(unsigned int value) {
+		power = value;
+	}
+	public unsigned int getPower() { 
+		return power;
+	}
+
+	public void setIntellect(unsigned int value) {
+		intelligence = value;
+	}
+	public unsigned int getIntellect() { 
+		return intelligence;
+	}
+	
+	public void setCourage(unsigned int value) {
+		courage = value;
+	}
+	public unsigned int getCourage() { 
+		return courage;
+	}
+	
+	public void setDependency(unsigned int value) {
+		dependency = value;
+	}
+	public unsigned int getDependency() { 
+		return dependency;
+	}
+	
+	public void setDexterity(unsigned int value) {
+		dexterity = value;
+	}
+	public unsigned int getDexterity() { 
+		return dexterity;
+	}
+	
+	public void setFortitude(unsigned int value) {
+		fortitude = value;
+	}
+	public unsigned int getForititude() { 
+		return fortitude;
+	}
+	
+	public void setHardiness(unsigned int value) {
+		hardiness = value;
+	}
+	public unsigned int getHardiness() { 
+		return hardiness;
+	}
+	
+	public void setEnergy(float value){
+		energyResist = value;
+	}
+	public float getEnergy() {
+		return energyResist;
+	}
+	public void setBlast(float value) {
+		blastResist = value;
+	}
+	public float getBlast(){
+		return blastResist;
+	}
+	
+	public void setCold(float value) {
+		coldResist = value;
+	}
+	public float getCold() {
+		return coldResist;
+	}
+	public void setHeat(float value) {
+		heatResist = value;
+	}
+	public float getHeat() { 
+		return heatResist;
+	}
+	public void setElectric(float value) {
+		elecResist = value;
+	}
+	public float getElectric() { 
+		return elecResist;
+	}
+	
+	public void setAcid(float value) {
+		acidResist = value;
+	}
+	public float getAcid() { 
+		return acidResist;
+	}
+	
+	public void setStun(float value) {
+		stunResist = value;
+	}
+	public float getStun() { 
+		return stunResist;
+	}
+	
+	public void setSaber(float value) {
+		saberResist = value;
+	}
+	public float getSaber() { 
+		return saberResist;
+	}
+			
+	public void setArmorRating(int rating) {
+		armorRating = rating;	
+	}
+	
+	public void setKinetic(float value) {
+		kinResist = value;	
+	}
+	public float getKinetic() {
+		return kinResist;
+	}
+	public void setSource(final string src) {
+		source = src;	
+	}
+	
+	public void setSpecialAttackOne(final string atk) {
+		special1 = atk;	
+	}
+	public string getSpecialAttackOne() { 
+		return special1;
+	}
+	
+	public void setSpecialAttackTwo(final string atk) {
+		special2 = atk;	
+	}
+	public string getSpecialAttackTwo() { 
+		return special2;
+	}
+	
+	public void setRanged(boolean b) {
+		ranged = b;	
+	}
+	public boolean isRanged() { 
+		return ranged;
+	}
+	
+	public void setQuality(int qual) {
+		quality = qual;		
+	}
+	public unsigned int getQuality() { 
+		return quality;
+	}
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
+	public native void initializeTransientMembers();
+
+	@local
+	public native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
+	
+	@local
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+	
+	public native string convertSpecialAttack(string attackName);
+
+	public native string resistValue(float input);
+	
+}

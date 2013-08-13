@@ -27,7 +27,18 @@ wookiee_brawler = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/wookiee_male.iff","object/mobile/wookiee_female.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+	        groups = {
+			{group = "junk", chance = 6000000},
+			{group = "rifles", chance = 1000000},
+			{group = "pistols", chance = 1000000},
+			{group = "melee_weapons", chance = 1000000},
+			{group = "carbines", chance = 1000000},
+		},
+			lootChance = 2600000
+		}
+	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)

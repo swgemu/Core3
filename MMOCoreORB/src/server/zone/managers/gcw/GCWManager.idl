@@ -76,6 +76,8 @@ class GCWManager extends ManagedService implements Logger {
 	public transient static int maxBasesPerPlayer;
 	public transient static int bonusXP;
 	public transient static int bonusDiscount;
+	public transient static boolean spawnDefenses;
+	public transient static int initialVulnerabilityDelay;
 	
 	public transient static boolean racialPenaltyEnabled;
 
@@ -425,6 +427,18 @@ class GCWManager extends ManagedService implements Logger {
 		return racialPenaltyEnabled;
 	}
  
+	@local
+	@read
+	public boolean shouldSpawnDefenses(){
+		return spawnDefenses;
+	}
+
+	@local
+	@read
+	public int getInitialVulnerabilityDelay(){
+		return initialVulnerabilityDelay;
+	}
+
 	public native void awardSlicingXP(CreatureObject creature, final string xpType, int value);
 
 }

@@ -213,8 +213,9 @@ class GuildManager extends ManagedService implements Logger {
 	public native void sendAcceptLotsTo(CreatureObject newOwner, GuildTerminal guildTerminal);
 	
 	public native void transferGuildHall(CreatureObject newOwner, SceneObject guildTerminal);
-	
-		
+
 	@local
 	public native void sendGuildMail(final string subject, @dereferenced StringIdChatParameter body, GuildObject guild);
+
+	public native GuildObject getGuildFromAbbrev(final string guildAbbrev);
 }

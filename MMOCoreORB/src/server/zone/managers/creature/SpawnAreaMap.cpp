@@ -230,7 +230,7 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	for (int j = 7; j <= areaObj.getTableSize(); ++j)
 		area->addTemplate(areaObj.getStringAt(j).hashCode());
 
-	if ((radius != -1) && !(tier & (WORLDSPAWNAREA | REBELSPAWNAREA | IMPERIALSPAWNAREA | NEUTRALSPAWNAREA))) {
+	if ((radius != -1) && !(tier & (WORLDSPAWNAREA | REBELSPAWNAREA | IMPERIALSPAWNAREA | NEUTRALSPAWNAREA | NONFACTIONSPAWNAREA))) {
 		zone->transferObject(area, -1, true);
 	} else {
 		if (tier & NEUTRALSPAWNAREA) {
@@ -241,6 +241,8 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 			factionalImperialMissionSpawnAreas.add(area);
 		} else if (tier & WORLDSPAWNAREA) {
 			worldSpawnAreas.add(area);
+		} else if (tier & NONFACTIONSPAWNAREA) {
+			nonfactionalMissionSpawnAreas.add(area);
 		}
 
 		area->setZone(zone);

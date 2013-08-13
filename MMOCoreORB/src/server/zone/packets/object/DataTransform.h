@@ -149,6 +149,20 @@ public:
 		if (object->getZone() == NULL)
 			return;
 
+
+
+		int posture = object->getPosture();
+
+		if(posture == CreaturePosture::UPRIGHT || posture == CreaturePosture::PRONE || posture == CreaturePosture::DRIVINGVEHICLE
+			|| posture == CreaturePosture::RIDINGCREATURE || posture == CreaturePosture::SKILLANIMATING ) {
+
+			updatePosition(object);
+
+		}
+
+	}
+
+	void updatePosition(CreatureObject* object) {
 		PlayerObject* ghost = object->getPlayerObject();
 
 		if (isnan(positionX) || isnan(positionY) || isnan(positionZ))
@@ -167,7 +181,6 @@ public:
 			StringBuffer msg;
 			msg << "position out of bounds";
 			object->error(msg.toString());
-
 			return;
 		}	
 
@@ -223,10 +236,10 @@ public:
 		uint32 objectMovementCounter = object->getMovementCounter();
 
 		/*if (objectMovementCounter > movementCounter) { // we already parsed an more updated movement counter
-			StringBuffer msg;
-			msg << "trying to parse movement update: 0x" << hex << movementCounter << " but we already parsed 0x" << hex << objectMovementCounter;
-			object->info(msg.toString(), true);
-			return;
+		StringBuffer msg;
+		msg << "trying to parse movement update: 0x" << hex << movementCounter << " but we already parsed 0x" << hex << objectMovementCounter;
+		bject->info(msg.toString(), true);
+		return;
 		}*/
 
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
@@ -244,21 +257,21 @@ public:
 
 		object->setMovementCounter(movementCounter);
 		//object->setDirection(directionW, directionX, directionY, directionZ);
-		
+
 		float oldX = object->getPositionX();
 		float oldY = object->getPositionY();
 		float oldZ = object->getPositionZ();
-		
+
 		float dirw = object->getDirectionW();
 		float dirz = object->getDirectionZ();
 		float diry = object->getDirectionY();
 		float dirx = object->getDirectionX();
-		
+
 		ghost->setClientLastMovementStamp(movementStamp);
-		
+
 		if (oldX == positionX && oldY == positionY && oldZ == positionZ && 
 			dirw == directionW && dirz == directionZ && dirx == directionX && diry == directionY) {
-			
+
 			return;
 		}
 
@@ -268,8 +281,8 @@ public:
 		object->info(degrees.toString(), true);*/
 
 		object->setPosition(positionX, positionZ, positionY);
-//		ghost->setClientLastMovementStamp(movementStamp);
-		
+		//		ghost->setClientLastMovementStamp(movementStamp);
+
 		object->setDirection(directionW, directionX, directionY, directionZ);
 
 		/*StringBuffer posMsg;
@@ -281,7 +294,9 @@ public:
 		else
 			object->updateZone(true);
 
+
 		object->setCurrentSpeed(parsedSpeed);
+
 
 		object->updateLocomotion();
 	}

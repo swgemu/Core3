@@ -42,10 +42,9 @@ forsaken_force_drifter = Creature:new {
 			lootChance = 4500000
 		}	
 	},
-	weapons = {},
+	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(pikemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(forsaken_force_drifter, "forsaken_force_drifter")

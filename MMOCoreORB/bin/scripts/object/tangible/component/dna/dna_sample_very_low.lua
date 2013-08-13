@@ -42,7 +42,9 @@
 
 
 object_tangible_component_dna_dna_sample_very_low = object_tangible_component_dna_shared_dna_sample_very_low:new {
-
+	quality = "Very Low",
+	templateType = DNASAMPLE,
+	gameObjectType = 262158
 }
 
 ObjectTemplates:addTemplate(object_tangible_component_dna_dna_sample_very_low, "object/tangible/component/dna/dna_sample_very_low.iff")

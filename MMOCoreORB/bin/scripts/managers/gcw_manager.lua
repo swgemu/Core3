@@ -44,6 +44,12 @@ bonusXP = 15
 -- discount percentage for side losing the gcw.  negative value of increase in price.  positive for a decrease
 bonusDiscount = -30
 
+-- Spawn turrets and minefields when base is placed 1=true 0=false 
+spawnDefenses = 1
+
+-- Amount of time to delay vulnerability in seconds afer placing base
+initialVulnerabilityDelay = 0
+
 racialPenaltyEnabled = 1
 
 -- assign points to each type of base

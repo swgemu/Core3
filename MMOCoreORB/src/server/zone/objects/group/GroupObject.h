@@ -124,6 +124,12 @@ public:
 
 	void removeGroupModifiers(CreatureObject* player);
 
+	bool isOtherMemberPlayingMusic(CreatureObject* player);
+
+	String getBandSong();
+
+	void setBandSong(const String& song);
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -155,6 +161,9 @@ class GroupObjectImplementation : public SceneObjectImplementation {
 	ManagedReference<ChatRoom* > chatRoom;
 
 	int groupLevel;
+
+protected:
+	String bandSong;
 
 public:
 	GroupObjectImplementation();
@@ -216,6 +225,12 @@ public:
 	void addGroupModifiers(CreatureObject* player);
 
 	void removeGroupModifiers(CreatureObject* player);
+
+	bool isOtherMemberPlayingMusic(CreatureObject* player);
+
+	String getBandSong();
+
+	void setBandSong(const String& song);
 
 	WeakReference<GroupObject*> _this;
 
@@ -311,6 +326,12 @@ public:
 	void addGroupModifiers(CreatureObject* player);
 
 	void removeGroupModifiers(CreatureObject* player);
+
+	bool isOtherMemberPlayingMusic(CreatureObject* player);
+
+	String getBandSong();
+
+	void setBandSong(const String& song);
 
 };
 

@@ -97,6 +97,20 @@ class WaypointObject;
 
 using namespace server::zone::objects::waypoint;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace structure {
+
+class StructureObject;
+
+} // namespace structure
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::structure;
+
 #include "server/chat/StringIdChatParameter.h"
 
 #include "server/zone/managers/city/CitiesAllowed.h"
@@ -160,6 +174,14 @@ public:
 
 	void deductCityMaintenance(CityRegion* city);
 
+	int collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue);
+
+	void sendMaintenanceEmail(CityRegion* city, int maintenancePaid);
+
+	void sendMaintenanceDecayEmail(CityRegion* city, StructureObject* structure, int maintenanceDue);
+
+	void sendMaintenanceDestroyEmail(CityRegion* city, StructureObject* structure);
+
 	void contractCity(CityRegion* city);
 
 	void expandCity(CityRegion* city);
@@ -176,7 +198,7 @@ public:
 
 	void promptDepositCityTreasury(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
-	void withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, SceneObject* terminal = NULL);
+	void withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, const String& reason, SceneObject* terminal = NULL);
 
 	void depositToCityTreasury(CityRegion* city, CreatureObject* creature, int value);
 
@@ -219,6 +241,8 @@ public:
 	bool containsCityName(const String& name);
 
 	bool isCityRankCapped(const String& planetName, byte cityRank);
+
+	void sendCityReport(CreatureObject* creature, const String& planetName, byte rank);
 
 	bool validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y);
 
@@ -339,6 +363,14 @@ public:
 
 	void deductCityMaintenance(CityRegion* city);
 
+	int collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue);
+
+	void sendMaintenanceEmail(CityRegion* city, int maintenancePaid);
+
+	void sendMaintenanceDecayEmail(CityRegion* city, StructureObject* structure, int maintenanceDue);
+
+	void sendMaintenanceDestroyEmail(CityRegion* city, StructureObject* structure);
+
 	void contractCity(CityRegion* city);
 
 	void expandCity(CityRegion* city);
@@ -355,7 +387,7 @@ public:
 
 	void promptDepositCityTreasury(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
-	void withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, SceneObject* terminal = NULL);
+	void withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, const String& reason, SceneObject* terminal = NULL);
 
 	void depositToCityTreasury(CityRegion* city, CreatureObject* creature, int value);
 
@@ -398,6 +430,8 @@ public:
 	bool containsCityName(const String& name);
 
 	bool isCityRankCapped(const String& planetName, byte cityRank);
+
+	void sendCityReport(CreatureObject* creature, const String& planetName, byte rank);
 
 	bool validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y);
 
@@ -484,6 +518,14 @@ public:
 
 	void deductCityMaintenance(CityRegion* city);
 
+	int collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue);
+
+	void sendMaintenanceEmail(CityRegion* city, int maintenancePaid);
+
+	void sendMaintenanceDecayEmail(CityRegion* city, StructureObject* structure, int maintenanceDue);
+
+	void sendMaintenanceDestroyEmail(CityRegion* city, StructureObject* structure);
+
 	void contractCity(CityRegion* city);
 
 	void expandCity(CityRegion* city);
@@ -500,7 +542,7 @@ public:
 
 	void promptDepositCityTreasury(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
 
-	void withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, SceneObject* terminal);
+	void withdrawFromCityTreasury(CityRegion* city, CreatureObject* mayor, int value, const String& reason, SceneObject* terminal);
 
 	void depositToCityTreasury(CityRegion* city, CreatureObject* creature, int value);
 
@@ -541,6 +583,8 @@ public:
 	bool containsCityName(const String& name);
 
 	bool isCityRankCapped(const String& planetName, byte cityRank);
+
+	void sendCityReport(CreatureObject* creature, const String& planetName, byte rank);
 
 	bool validateCityInRange(CreatureObject* creature, Zone* zone, float x, float y);
 

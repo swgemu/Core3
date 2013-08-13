@@ -112,6 +112,12 @@ public:
 
 	bool isCreature();
 
+	short getDnaState();
+
+	short getDnaSampleCount();
+
+	void incDnaSampleCount();
+
 	bool isCamouflaged(CreatureObject* target);
 
 	void runAway(CreatureObject* target);
@@ -128,15 +134,23 @@ public:
 
 	bool hasMilk();
 
+	bool hasDNA();
+
 	bool canHarvestMe(CreatureObject* player);
 
 	bool hasSkillToHarvestMe(CreatureObject* player);
 
 	bool canMilkMe(CreatureObject* player);
 
+	bool canCollectDna(CreatureObject* player);
+
+	bool hasSkillToSampleMe(CreatureObject* player);
+
 	void addAlreadyHarvested(CreatureObject* player);
 
 	void setMilkState(short milkState);
+
+	void setDnaState(short dnaState);
 
 	void notifyDespawn(Zone* zone);
 
@@ -190,6 +204,10 @@ class CreatureImplementation : public AiAgentImplementation {
 
 	short milkState;
 
+	short dnaState;
+
+	short dnaSampleCount;
+
 public:
 	CreatureImplementation();
 
@@ -198,6 +216,12 @@ public:
 	void initializeTransientMembers();
 
 	bool isCreature();
+
+	short getDnaState();
+
+	short getDnaSampleCount();
+
+	void incDnaSampleCount();
 
 	bool isCamouflaged(CreatureObject* target);
 
@@ -215,15 +239,23 @@ public:
 
 	bool hasMilk();
 
+	bool hasDNA();
+
 	bool canHarvestMe(CreatureObject* player);
 
 	bool hasSkillToHarvestMe(CreatureObject* player);
 
 	bool canMilkMe(CreatureObject* player);
 
+	bool canCollectDna(CreatureObject* player);
+
+	bool hasSkillToSampleMe(CreatureObject* player);
+
 	void addAlreadyHarvested(CreatureObject* player);
 
 	void setMilkState(short milkState);
+
+	void setDnaState(short dnaState);
 
 	void notifyDespawn(Zone* zone);
 
@@ -294,6 +326,12 @@ public:
 
 	bool isCreature();
 
+	short getDnaState();
+
+	short getDnaSampleCount();
+
+	void incDnaSampleCount();
+
 	bool isCamouflaged(CreatureObject* target);
 
 	void runAway(CreatureObject* target);
@@ -308,15 +346,23 @@ public:
 
 	bool hasMilk();
 
+	bool hasDNA();
+
 	bool canHarvestMe(CreatureObject* player);
 
 	bool hasSkillToHarvestMe(CreatureObject* player);
 
 	bool canMilkMe(CreatureObject* player);
 
+	bool canCollectDna(CreatureObject* player);
+
+	bool hasSkillToSampleMe(CreatureObject* player);
+
 	void addAlreadyHarvested(CreatureObject* player);
 
 	void setMilkState(short milkState);
+
+	void setDnaState(short dnaState);
 
 	void notifyDespawn(Zone* zone);
 

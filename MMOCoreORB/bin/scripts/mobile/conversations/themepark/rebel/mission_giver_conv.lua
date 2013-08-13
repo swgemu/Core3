@@ -179,6 +179,7 @@ end
 -- Themeparks
 createMissionGiverConvoTemplate("theme_park_rebel_mission_giver_convotemplate", "theme_park_rebel_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("theme_park_jabba_mission_giver_convotemplate", "theme_park_jabba_mission_giver_conv_handler")
+createMissionGiverConvoTemplate("theme_park_marauder_mission_giver_convotemplate", "theme_park_marauder_mission_giver_conv_handler")
 
 -- Tatooine
 createMissionGiverConvoTemplate("kitster_banai_mission_giver_convotemplate", "kitster_banai_mission_giver_conv_handler")
@@ -208,3 +209,7 @@ createMissionGiverConvoTemplate("hefsen_zindalai_mission_giver_convotemplate","h
 createMissionGiverConvoTemplate("indintra_imbru_yerevan_mission_giver_convotemplate","indintra_imbru_yerevan_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("magur_torigai_mission_giver_convotemplate","magur_torigai_mission_giver_conv_handler")
 createMissionGiverConvoTemplate("sloan_rusper_mission_giver_convotemplate","sloan_rusper_mission_giver_conv_handler")
+
+--Corellia
+createMissionGiverConvoTemplate("diktatGiverConvo","diktatGiverHandler")
+

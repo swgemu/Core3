@@ -1003,6 +1003,8 @@ void BuildingObjectImplementation::createChildObjects(){
 		if(server == NULL)
 			return;
 
+		GCWManager* gcwMan = zone->getGCWManager();
+
 		for(int i = 0; i < serverTemplate->getChildObjectsSize();i++){
 			//info("iterating child",true);
 			ChildObject* child = serverTemplate->getChildObject(i);
@@ -1055,6 +1057,18 @@ void BuildingObjectImplementation::createChildObjects(){
 
 			} else {
 
+				if( (obj->isTurret() || obj->isMinefield() || obj->isDetector()) && !gcwMan->shouldSpawnDefenses() ){
+
+					if(obj->isTurret())
+						gcwMan->addTurret(_this.get(),NULL);
+					else if (obj->isMinefield())
+						gcwMan->addMinefield(_this.get(),NULL);
+					else if (obj->isDetector())
+						gcwMan->addScanner(_this.get(), NULL);
+
+					continue;
+				}
+
 				SharedObjectTemplate* thisTemplate = TemplateManager::instance()->getTemplate(child->getTemplateFile().hashCode());
 
 				if(thisTemplate == NULL || thisTemplate->getGameObjectType() == SceneObjectType::NPCCREATURE)
@@ -1074,6 +1088,7 @@ void BuildingObjectImplementation::createChildObjects(){
 
 				obj->initializePosition(x, z, y);
 				obj->setDirection(dir.rotate(Vector3(0, 1, 0), degrees));
+
 
 				if(obj->isTurret() || obj->isMinefield())
 					obj->createChildObjects();
@@ -1101,8 +1116,6 @@ void BuildingObjectImplementation::createChildObjects(){
 			permissions->setDefaultDenyPermission(ContainerPermissions::MOVECONTAINER);
 			permissions->setDenyPermission("owner", ContainerPermissions::MOVECONTAINER);
 			obj->initializeChildObject(_this.get());
-
-			GCWManager* gcwMan = zone->getGCWManager();
 
 			if(obj->isTurret() || obj->isMinefield() || obj->isDetector()){
 				TangibleObject* tano = cast<TangibleObject*>(obj.get());

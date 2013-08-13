@@ -17,11 +17,9 @@ namespace test {
 
 class CircularAreaShapeTest : public ::testing::Test {
 public:
-	Reference<CircularAreaShape*> circularAreaShape;
 
 	CircularAreaShapeTest() {
 		// Perform creation setup here.
-		circularAreaShape = new CircularAreaShape();
 	}
 
 	~CircularAreaShapeTest() {
@@ -38,9 +36,20 @@ public:
 };
 
 TEST_F(CircularAreaShapeTest, CircularAreaShapeHasItsCenterAtZeroZeroZeroAfterCreation) {
+	CircularAreaShape* circularAreaShape = new CircularAreaShape();
 	EXPECT_EQ(circularAreaShape->getAreaCenter().getX(), 0);
 	EXPECT_EQ(circularAreaShape->getAreaCenter().getY(), 0);
 	EXPECT_EQ(circularAreaShape->getAreaCenter().getZ(), 0);
+}
+
+TEST_F(CircularAreaShapeTest, CircularAreaShapeHasRadiusEqualToZeroAfterCreation) {
+	CircularAreaShape* circularAreaShape = new CircularAreaShape();
+	EXPECT_EQ(circularAreaShape->getRadius(), 0);
+}
+
+TEST_F(CircularAreaShapeTest, CircularAreaShapeHasRadiusSquareEqualToZeroAfterCreation) {
+	CircularAreaShape* circularAreaShape = new CircularAreaShape();
+	EXPECT_EQ(circularAreaShape->getRadius2(), 0);
 }
 
 }

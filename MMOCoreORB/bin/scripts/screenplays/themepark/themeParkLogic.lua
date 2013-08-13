@@ -287,6 +287,8 @@ function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversin
 		return self:handleRetrieveMissionAccept(mission, pConversingPlayer, missionNumber)
 	elseif mission.missionType == "assassinate" then
 		return self:handleAssassinateMissionAccept(mission, pConversingPlayer, missionNumber)
+	elseif mission.missionType == "confiscate" then
+		return self:handleConfiscateMissionAccept(mission, pConversingPlayer, missionNumber)
 	end
 end
 
@@ -348,6 +350,16 @@ function ThemeParkLogic:handleAssassinateMissionAccept(mission, pConversingPlaye
 	end
 end
 
+function ThemeParkLogic:handleConfiscateMissionAccept(mission, pConversingPlayer, missionNumber)
+	if self:spawnMissionNpcs(mission, pConversingPlayer) == true then
+		self:writeData(pConversingPlayer, ":activeMission", 1)
+		self:writeData(pConversingPlayer, ":requiredItemsLooted", 0)
+		return true
+	else
+		return false
+	end
+end
+
 function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 	if pConversingPlayer == nil then
 		return false
@@ -377,6 +389,11 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 				local npc = LuaCreatureObject(pNpc)
 				local creature = LuaCreatureObject(pConversingPlayer)
 				writeData(npc:getObjectID() .. ":missionOwnerID", creature:getObjectID())
+			elseif mission.missionType == "confiscate" then
+				createObserver(OBJECTDESTRUCTION, self.className, "notifyDefeatedTargetWithLoot", pNpc)
+				local npc = LuaCreatureObject(pNpc)
+				local creature = LuaCreatureObject(pConversingPlayer)
+				writeData(npc:getObjectID() .. ":missionOwnerID", creature:getObjectID())
 			end
 		end
 	end
@@ -387,6 +404,95 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 	end
 	
 	return true
+end
+
+function ThemeParkLogic:notifyDefeatedTargetWithLoot(pVictim, pAttacker)
+	if pVictim == nil or pAttacker == nil then
+		return 0
+	end
+
+	local victim = LuaCreatureObject(pVictim)
+	local attacker = LuaCreatureObject(pAttacker)
+	
+	local victimID = victim:getObjectID()
+	local attackerID = attacker:getObjectID()
+
+	if self:killedByCorrectPlayer(victimID, attackerID) == false then
+		return 0
+	end
+
+	local pInventory = victim:getSlottedObject("inventory")
+	if pInventory == nil then
+		return 0
+	end
+
+	local inventory = LuaSceneObject(pInventory)
+
+	local numberOfItems = inventory:getContainerObjectsSize()
+	local activeNpcNumber = self:getActiveNpcNumber(pAttacker)
+	local requiredItems = self:getRequiredItem(activeNpcNumber, pAttacker)
+
+	for j = 1, # requiredItems, 1 do
+		for i = 0, numberOfItems - 1, 1 do
+			local pItem = inventory:getContainerObject(i)
+			
+			if pItem ~= nil then
+				local item = LuaSceneObject(pItem)
+
+				if requiredItems[j].itemTemplate == item:getTemplateObjectPath() and requiredItems[j].itemName == item:getCustomObjectName() then
+					createObserver(ITEMLOOTED, self.className, "notifyItemLooted", pItem)
+					writeData(item:getObjectID() .. ":missionOwnerID", attacker:getObjectID())
+					break
+				end
+			end
+		end
+	end
+
+	return 1
+end
+
+function ThemeParkLogic:notifyItemLooted(pItem, pLooter)
+	if pItem == nil or pLooter == nil then
+		return 0
+	end
+
+	local item = LuaCreatureObject(pItem)
+	local looter = LuaCreatureObject(pLooter)
+
+	local itemID = item:getObjectID()
+	local looterID = looter:getObjectID()
+
+	if self:lootedByCorrectPlayer(itemID, looterID) == true then
+		local currentLootCount = readData(looterID .. ":requiredItemsLooted") + 1
+		writeData(looterID, ":requiredItemsLooted", currentLootCount)
+
+		if currentLootCount == self:getMissionLootCount(pLooter) then
+			self:completeMission(pLooter)
+			return 1
+		end
+	end
+
+	return 0
+end
+
+function ThemeParkLogic:lootedByCorrectPlayer(itemID, looterID)
+	if readData(itemID .. ":missionOwnerID") == looterID then
+		return true
+	else
+		return false
+	end
+end
+
+function ThemeParkLogic:getMissionLootCount(pLooter)	
+	local npcNumber = self:getActiveNpcNumber(pLooter)
+	local missionNumber = self:getCurrentMissionNumber(npcNumber, pLooter)
+	local mission = self:getMission(npcNumber, missionNumber)
+	
+	if mission.missionType == "confiscate" then
+		return table.getn(mission.itemSpawns)
+	else
+		return 0
+	end
 end
 
 function ThemeParkLogic:notifyDefeatedTarget(pVictim, pAttacker)
@@ -566,6 +672,9 @@ function ThemeParkLogic:getDefaultWaypointName(pConversingPlayer, direction)
 			return "Retrieve " .. missionItemName
 		elseif currentMissionType == "assassinate" then
 			return "Kill " .. mainNpcName
+		elseif currentMissionType == "confiscate" then
+			local missionItemName = missionItem[1].itemName
+			return "Confiscate " .. missionItemName
 		end
 	else
 		return "Return to the mission giver."

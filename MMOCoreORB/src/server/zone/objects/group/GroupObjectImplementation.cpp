@@ -427,3 +427,18 @@ void GroupObjectImplementation::sendSystemMessage(const String& fullPath) {
 		creature->sendSystemMessage(fullPath);
 	}
 }
+
+bool GroupObjectImplementation::isOtherMemberPlayingMusic(CreatureObject* player) {
+	for (int i = 0; i < getGroupSize(); ++i) {
+		ManagedReference<CreatureObject*> groupMember = cast<CreatureObject*>(getGroupMember(i));
+
+		if (groupMember == NULL || groupMember == player)
+			continue;
+
+		if (groupMember->isPlayingMusic()) {
+			return true;
+		}
+	}
+
+	return false;
+}

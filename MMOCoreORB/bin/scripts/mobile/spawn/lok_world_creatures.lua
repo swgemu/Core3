@@ -160,33 +160,6 @@ lok_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "lok_blood_razor_camp_neutral_medium_theater",
-			spawnLimit = -1,
-			minDifficulty = 30,
-			maxDifficulty = 40,
-			numberToSpawn = 0,
-			weighting = 0,
-			size = 25
-		},
-		{
-			lairTemplateName = "lok_canyon_corsair_camp_neutral_medium_theater",
-			spawnLimit = -1,
-			minDifficulty = 26,
-			maxDifficulty = 34,
-			numberToSpawn = 0,
-			weighting = 0,
-			size = 25
-		},
-		{
-			lairTemplateName = "lok_canyon_corsair_camp2_neutral_medium_theater",
-			spawnLimit = -1,
-			minDifficulty = 36,
-			maxDifficulty = 50,
-			numberToSpawn = 0,
-			weighting = 0,
-			size = 25
-		},
-		{
 			lairTemplateName = "lok_kimogilla_pack_neutral_none",
 			spawnLimit = 15,
 			minDifficulty = 85,
@@ -212,7 +185,7 @@ lok_world_creatures = {
 			numberToSpawn = 0,
 			weighting = 3,
 			size = 25
-		},
+		}
 	}
 }
 

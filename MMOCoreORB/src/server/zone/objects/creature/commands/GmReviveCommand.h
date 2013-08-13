@@ -50,13 +50,11 @@ which carries forward this exception.
 class GmReviveCommand : public QueueCommand {
 public:
 
-	GmReviveCommand(const String& name, ZoneProcessServer* server)
-	: QueueCommand(name, server) {
+	GmReviveCommand(const String& name, ZoneProcessServer* server) : QueueCommand(name, server) {
 
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments)
-	{
+	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -64,71 +62,172 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		try
-		{
+		try {
 			StringTokenizer args(arguments.toString());
 			ManagedReference<CreatureObject*> player = NULL;
 
-			ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+			ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(creature->getTargetID());
 
-			if (object != NULL && !object->isPlayerObject())
-			{
-				return INVALIDTARGET;
+			PlayerManager* pm = server->getZoneServer()->getPlayerManager();
+
+			if (!args.hasMoreTokens()) { // No arguments passed
+
+				if (object != NULL && object->isPlayerCreature()) { // Target is a player, rez target
+					player = cast<CreatureObject*>( object.get());
+					revivePlayer(creature, player);
+
+				} else if (object == NULL) { // No target, rez self
+					player = creature;
+					revivePlayer(creature, player);
+
+				} else { // Target is not a player
+					creature->sendSystemMessage("Syntax: /gmrevive [buff] [ [<name>] | [area [<range>] [imperial | rebel | neutral]] ]");
+					return INVALIDTARGET;
+				}
+
+			} else { // Has arguments
+
+				String firstArg;
+				String firstName = "";
+				bool buff = false;
+				args.getStringToken(firstArg);
+
+				if (firstArg.toLowerCase() == "buff") { // First argument is buff, get second argument
+					buff = true;
+					if (args.hasMoreTokens())
+						args.getStringToken(firstName);
+
+				} else { // First argument is not buff, must be a name or area
+					firstName = firstArg;
+				}
+
+				if (firstName != "") { // There's an argument for a name or area
+
+					if (firstName.toLowerCase() == "area") { // Area argument found, check for range argument
+						int range = 32;
+						String faction = "";
+
+						if (args.hasMoreTokens()) { // Can be range or faction
+							String token;
+							args.getStringToken(token);
+
+							if (Character::isDigit(token.charAt(0))) { // If the argument is an int, it's range
+								for (int i = 0; i < token.length(); i++) {
+									if (!Character::isDigit(token.charAt(i)))
+										throw Exception();
+								}
+								range = Integer::valueOf(token);
+
+							} else { // Otherwise it's faction
+								faction = token;
+							}
+						}
+
+						if (range > 50) // We don't want the range to get crazy, so hard caps of 5-50
+							range = 50;
+						else if (range < 5)
+							range = 5;
+
+						if (faction == "" && args.hasMoreTokens()) { // Last argument must be faction
+							args.getStringToken(faction);
+						}
+
+						SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+						Zone* zone = creature->getZone();
+
+						if (creature->getCloseObjects() == NULL) {
+							zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &closeObjects, true);
+						} else {
+							CloseObjectsVector* closeVector = (CloseObjectsVector*) creature->getCloseObjects();
+							closeVector->safeCopyTo(closeObjects);
+						}
+
+						for (int i = 0; i < closeObjects.size(); ++i) {
+							SceneObject* sceneObject = cast<SceneObject*>(closeObjects.get(i).get());
+
+							if (sceneObject->isPlayerCreature() && creature->isInRange(sceneObject, range)) {
+								ManagedReference<CreatureObject*> playerObject = cast<CreatureObject*>(sceneObject);
+
+								if (playerObject != NULL) {
+									if (faction == "" || faction.hashCode() == playerObject->getFaction() || (faction == "neutral" && playerObject->getFaction() == 0)) {
+										if (buff) {
+											Locker clocker(playerObject, creature);
+											pm->enhanceCharacter(playerObject);
+											creature->sendSystemMessage(playerObject->getFirstName() + " has been enhanced.");
+
+										} else {
+											revivePlayer(creature, playerObject);
+										}
+									}
+								}
+							}
+						}
+
+					} else { // Not area
+						player = server->getZoneServer()->getChatManager()->getPlayer(firstName);
+
+						if (player != NULL) {
+							if (buff) {
+								Locker clocker(player, creature);
+								pm->enhanceCharacter(player);
+								creature->sendSystemMessage(player->getFirstName() + " has been enhanced.");
+
+							} else {
+								revivePlayer(creature, player);
+							}
+						}
+					}
+
+				} else if (buff) {  // Buff was the only argument
+
+					if (object != NULL && object->isPlayerCreature()) { // Target is a player, buff target
+						player = cast<CreatureObject*>( object.get());
+						Locker clocker(player, creature);
+						pm->enhanceCharacter(player);
+						creature->sendSystemMessage(player->getFirstName() + " has been enhanced.");
+
+					} else if (object == NULL) { // No target, buff self
+						pm->enhanceCharacter(creature);
+
+					} else { // Target is not a player
+						creature->sendSystemMessage("Syntax: /gmrevive [buff] [ [<name>] | [area [<range>] [imperial | rebel | neutral]] ]");
+						return INVALIDTARGET;
+					}
+
+				} else { // Shouldn't ever end up here
+					creature->sendSystemMessage("Syntax: /gmrevive [buff] [ [<name>] | [area [<range>] [imperial | rebel | neutral]] ]");
+					return INVALIDTARGET;
+				}
 			}
 
-			else if (object == NULL)
-			{
-				creature->sendSystemMessage("Error: Nothing selected.");
-				object = creature;
-			}
-
-			String firstName;
-			if (args.hasMoreTokens())
-			{
-				args.getStringToken(firstName);
-				player = server->getZoneServer()->getChatManager()->getPlayer(firstName);
-			}
-
-			else
-			{
-				player = cast<CreatureObject*>( object.get());
-			}
-
-			if (player == NULL)
-			{
-				creature->sendSystemMessage("Error: Nothing selected.");
-				return GENERALERROR;
-			}
-
-			Locker clocker(player, creature);
-
-			player->healDamage(creature, CreatureAttribute::HEALTH, 5000);
-			player->healDamage(creature, CreatureAttribute::ACTION, 5000);
-			player->healDamage(creature, CreatureAttribute::MIND, 5000);
-
-			for (int i = 0; i < 9; ++i) {
-				player->setWounds(i, 0);
-			}
-
-			player->setShockWounds(0);
-
-			player->setPosture(CreaturePosture::UPRIGHT);
-
-			player->broadcastPvpStatusBitmask();
-
-			player->sendSystemMessage("You have been restored.");
-
-			creature->sendSystemMessage(player->getFirstName() + " has been restored.");
-		}
-
-		catch (Exception& e)
-		{
-
+		} catch (Exception& e) {
+			creature->sendSystemMessage("Syntax: /gmrevive [buff] [ [<name>] | [area [<range>] [imperial | rebel | neutral]] ]");
 		}
 
 		return SUCCESS;
 	}
 
+	void revivePlayer(CreatureObject* creature, CreatureObject* player) {
+		Locker clocker(player, creature);
+
+		player->healDamage(creature, CreatureAttribute::HEALTH, 5000);
+		player->healDamage(creature, CreatureAttribute::ACTION, 5000);
+		player->healDamage(creature, CreatureAttribute::MIND, 5000);
+
+		for (int i = 0; i < 9; ++i) {
+			player->setWounds(i, 0);
+		}
+
+		player->setShockWounds(0);
+
+		player->setPosture(CreaturePosture::UPRIGHT);
+
+		player->broadcastPvpStatusBitmask();
+
+		player->sendSystemMessage("You have been restored.");
+
+		creature->sendSystemMessage(player->getFirstName() + " has been restored.");
+	}
 };
 
 #endif //GMREVIVECOMMAND_H_

@@ -736,10 +736,9 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObjec
 
 		byte status = oguild->getWarStatus(guild->getObjectID());
 
-		if (status != NULL) {
-			oguild->wlock();
+		if (status != 0) {
+			//setWarStatus uses its own mutex, no need to lock the guild
 			oguild->setWarStatus(guild->getObjectID(), GuildObject::WAR_NONE);
-			oguild->unlock();
 		}
 	}
 	_lock.release();
@@ -1426,4 +1425,22 @@ void GuildManagerImplementation::declareWarByName(CreatureObject* creature, Guil
 void GuildManagerImplementation::updateWarStatusToWaringGuild(GuildObject* guild, GuildObject* waringGuild) {
 	Reference<UpdateWarStatusTask*> task = new UpdateWarStatusTask(server, guild, waringGuild);
 	task->schedule(10);
+}
+
+GuildObject* GuildManagerImplementation::getGuildFromAbbrev(const String& guildAbbrev) {
+	Locker _lock(_this.get());
+
+	for (int i = 0; i < guildList.size(); ++i) {
+		ManagedReference<GuildObject*> guild = guildList.getValueAt(i);
+
+		if (guild == NULL)
+			continue;
+
+		Locker clocker(guild, _this.get());
+
+		if (guild->getGuildAbbrev() == guildAbbrev)
+			return guild;
+	}
+
+	return NULL;
 }

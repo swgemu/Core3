@@ -73,6 +73,20 @@ object_draft_schematic_structure_city_garden_medium = object_draft_schematic_str
    targetTemplate = "object/tangible/deed/city_deed/garden_corellia_med_01_deed.iff",
 
    additionalTemplates = {
+			"object/tangible/deed/city_deed/shared_garden_corellia_med_02_deed.iff",
+			"object/tangible/deed/city_deed/shared_garden_corellia_med_03_deed.iff",
+			"object/tangible/deed/city_deed/shared_garden_corellia_med_04_deed.iff",
+			"object/tangible/deed/city_deed/shared_garden_corellia_med_05_deed.iff",
+			"object/tangible/deed/city_deed/shared_garden_naboo_med_01_deed.iff",
+			"object/tangible/deed/city_deed/shared_garden_naboo_med_02_deed.iff",
+			"object/tangible/deed/city_deed/shared_garden_naboo_med_03_deed.iff",
+			"object/tangible/deed/city_deed/shared_garden_naboo_med_04_deed.iff",
+			"object/tangible/deed/city_deed/shared_garden_naboo_med_05_deed.iff",
+			"object/tangible/deed/city_deed/shared_garden_tatooine_med_01_deed.iff",
+			"object/tangible/deed/city_deed/shared_garden_tatooine_med_02_deed.iff",
+			"object/tangible/deed/city_deed/shared_garden_tatooine_med_03_deed.iff",
+			"object/tangible/deed/city_deed/shared_garden_tatooine_med_04_deed.iff",
+			"object/tangible/deed/city_deed/shared_garden_tatooine_med_05_deed.iff",
              }
 
 }

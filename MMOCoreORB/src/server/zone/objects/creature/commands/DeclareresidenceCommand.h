@@ -65,9 +65,20 @@ public:
 			return INVALIDLOCOMOTION;
 
 		ManagedReference<SceneObject*> obj = creature->getParentRecursively(SceneObjectType::BUILDING);
-
-		if (obj == NULL || !obj->isStructureObject())
-			return INVALIDPARAMETERS;
+		ManagedReference<SceneObject*> tobj = creature->getParentRecursively(SceneObjectType::THEATERBUILDING);
+		if ( obj == NULL || !obj->isStructureObject() ){
+			// wasnt a building is it a threatre as theatre has differnet object flag
+			if (tobj == NULL || !tobj->isStructureObject()) {
+				return INVALIDPARAMETERS;
+			}
+		}
+		if (obj != NULL) {
+			StructureObject* structure = cast<StructureObject*>(obj.get());
+			StructureManager::instance()->declareResidence(creature, structure);
+		} else {
+			StructureObject* structure = cast<StructureObject*>(tobj.get());
+			StructureManager::instance()->declareResidence(creature, structure);
+		}
 
 		StructureObject* structure = cast<StructureObject*>(obj.get());
 

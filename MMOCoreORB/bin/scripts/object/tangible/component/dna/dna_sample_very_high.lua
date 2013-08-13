@@ -42,6 +42,9 @@
 
 
 object_tangible_component_dna_dna_sample_very_high = object_tangible_component_dna_shared_dna_sample_very_high:new {
+	quality = "Very High",
+	templateType = DNASAMPLE,
+	gameObjectType = 262158
 
 }
 

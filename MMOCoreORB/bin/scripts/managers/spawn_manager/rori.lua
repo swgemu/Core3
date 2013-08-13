@@ -3,16 +3,17 @@
 -- Tier is a bit mask with the following possible values where each hexadecimal position is one possible configuration.
 -- That means that it is not possible to have both a world spawn area and imperial spawn area in the same region, but
 -- a dynamic rebel spawn area that is also a no build zone is possible.
-UNDEFINEDAREA     = 0x0000
-WORLDSPAWNAREA    = 0x0001
-REBELSPAWNAREA    = 0x0002
-IMPERIALSPAWNAREA = 0x0004
-NEUTRALSPAWNAREA  = 0x0008
-STATICSPAWNAREA   = 0x0010
-DYNAMICSPAWNAREA  = 0x0020
-LAIRSPAWNAREA     = 0x0040
-NOSPAWNAREA       = 0x0100
-NOBUILDZONEAREA   = 0x1000
+UNDEFINEDAREA       = 0x0000
+WORLDSPAWNAREA      = 0x0001
+REBELSPAWNAREA      = 0x0002
+IMPERIALSPAWNAREA   = 0x0004
+NEUTRALSPAWNAREA    = 0x0008
+NONFACTIONSPAWNAREA = 0x0010
+STATICSPAWNAREA     = 0x0100
+DYNAMICSPAWNAREA    = 0x0200
+LAIRSPAWNAREA       = 0x0400
+NOSPAWNAREA         = 0x1000
+NOBUILDZONEAREA     = 0x10000
 
 rori_regions = {
 	{"a_rebel_outpost",0,0,{1,0},UNDEFINEDAREA,1},
@@ -158,16 +159,12 @@ rori_regions = {
 	{"world_factional_imperial",0,0,{1,-1},LAIRSPAWNAREA + IMPERIALSPAWNAREA,1,"factional_imperial"},
 	{"world_factional_neutral",0,0,{1,-1},LAIRSPAWNAREA + NEUTRALSPAWNAREA,1,"factional_neutral"},
 	{"world_factional_rebel",0,0,{1,-1},LAIRSPAWNAREA + REBELSPAWNAREA,1,"factional_rebel"},
+	{"world_nonfaction_destroy_mission",0,0,{1,-1},LAIRSPAWNAREA + NONFACTIONSPAWNAREA,1,"rori_destroy_mission"},
 	{"world_spawner",0,0,{1,-1},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"rori_world_creatures"},
         {"wrecked_outpost",5085,4674,{1,50},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 }
 
 rori_static_spawns = {
-	{"kobola_assassin",360,5514.9,77.3,1009.3,-97,0, "angry", ""},
-	{"kobola_assassin",360,5506.4,75.6,1003.4,-97,0, "annoyed", ""},
-	{"kobola_thief",360,5510.2,76.2,1009.3,83,0, "angry", ""},
-	{"narmle_militia_commander",720,5212.9,76.4,1019.6,112,0, "worried", ""},
-	{"narmle_militia_ensign",720,5206.6,76.4,1022.2,112,0, "worried", ""},
 
 	--Rebel Outpost
 	{"raxa_binn", 60, -4.0, 0.1, -4.2, 140, 4505669, "npc_sitting_chair", ""},
@@ -185,6 +182,6 @@ rori_static_spawns = {
 rori_badges = {
 	{"badge_imp_camp",-5633,-5661,10,96},
 	{"badge_imp_hyperdrive_fac",-1130,4544,10,97},
-	{"badge_kobala_spice_mine",7371,169,10,94},
+	{"badge_kobala_spice_mine",7304,63,10,94},
 	{"badge_rebel_outpost",3664,-6501,10,95}
 }

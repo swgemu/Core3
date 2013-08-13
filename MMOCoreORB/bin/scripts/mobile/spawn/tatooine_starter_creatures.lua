@@ -34,24 +34,6 @@ tatooine_starter_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "tatooine_evil_settlement_neutral_medium_theater",
-			spawnLimit = -1,
-			minDifficulty = 2,
-			maxDifficulty = 5,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "tatooine_moisture_settler_neutral_medium_theater",
-			spawnLimit = -1,
-			minDifficulty = 3,
-			maxDifficulty = 5,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
 			lairTemplateName = "tatooine_kreetle_over_swarming_neutral_medium_boss_02",
 			spawnLimit = -1,
 			minDifficulty = 4,
@@ -110,15 +92,6 @@ tatooine_starter_creatures = {
 			spawnLimit = -1,
 			minDifficulty = 7,
 			maxDifficulty = 10,
-			numberToSpawn = 0,
-			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "tatooine_alkhara_bandit_patrol_neutral_none",
-			spawnLimit = -1,
-			minDifficulty = 8,
-			maxDifficulty = 11,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25

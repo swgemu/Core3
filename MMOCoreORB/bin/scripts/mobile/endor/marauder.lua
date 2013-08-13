@@ -28,7 +28,30 @@ marauder = Creature:new {
 
 	templates = {
 			"object/mobile/dressed_marauder.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "pistols", chance = 2000000},
+				{group = "carbines", chance = 2000000},
+				{group = "rifles", chance = 2000000},
+				{group = "melee_baton", chance = 2000000},
+				{group = "loot_kit_parts", chance = 1000000},
+				{group = "armor_attachments", chance = 500000},
+				{group = "clothing_attachments", chance = 500000}
+			},
+			lootChance = 2200000
+		},
+		{
+			groups = {
+				{group = "bone_armor_looted", chance = 2000000},
+				{group = "chitin_armor_looted", chance = 2000000},
+				{group = "mabari_armor_looted", chance = 2000000},
+				{group = "tantel_armor_looted", chance = 2000000},
+				{group = "ubese_armor_looted", chance = 2000000},
+			},
+			lootChance = 2500000
+		}
+	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)

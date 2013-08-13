@@ -20,7 +20,7 @@
  *	BuildingObjectStub
  */
 
-enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_BROADCASTCELLPERMISSIONS__LONG_,RPC_ISALLOWEDENTRY__CREATUREOBJECT_,RPC_ISCITYBANNED__CREATUREOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__CREATUREOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_BOOL_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_LONG_,RPC_ISBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__,RPC_GETREDEEDMESSAGE__,RPC_HASACCESSFEE__,RPC_GETACCESSFEE__,RPC_CANCHANGEACCESSFEE__,RPC_SETACCESSFEE__INT_INT_,RPC_REMOVEACCESSFEE__,RPC_GETACCESSFEEDELAY__,RPC_PAYACCESSFEE__CREATUREOBJECT_,RPC_UPDATEPAIDACCESSLIST__,RPC_CREATECHILDOBJECTS__,RPC_SPAWNCHILDCREATURES__,RPC_HASCHILDCREATURES__};
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_BROADCASTCELLPERMISSIONS__LONG_,RPC_ISALLOWEDENTRY__CREATUREOBJECT_,RPC_ISCITYBANNED__CREATUREOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_EJECTOBJECT__CREATUREOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_BOOL_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_LONG_,RPC_ISBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__,RPC_GETREDEEDMESSAGE__,RPC_HASACCESSFEE__,RPC_GETACCESSFEE__,RPC_CANCHANGEACCESSFEE__,RPC_SETACCESSFEE__INT_INT_,RPC_REMOVEACCESSFEE__,RPC_GETACCESSFEEDELAY__,RPC_PAYACCESSFEE__CREATUREOBJECT_,RPC_UPDATEPAIDACCESSLIST__,RPC_CREATECHILDOBJECTS__,RPC_SPAWNCHILDCREATURES__,RPC_HASCHILDCREATURES__,RPC_ISRESIDENCE__,RPC_SETRESIDENCE__BOOL_};
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
@@ -851,6 +851,33 @@ bool BuildingObject::hasChildCreatures() {
 		return _implementation->hasChildCreatures();
 }
 
+bool BuildingObject::isResidence() {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISRESIDENCE__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isResidence();
+}
+
+void BuildingObject::setResidence(bool isResidence) {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETRESIDENCE__BOOL_);
+		method.addBooleanParameter(isResidence);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setResidence(isResidence);
+}
+
 DistributedObjectServant* BuildingObject::_getImplementation() {
 
 	 if (!_updated) _updated = true;
@@ -997,6 +1024,10 @@ bool BuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		TypeInfo<UnicodeString >::parseFromBinaryStream(&signName, stream);
 		return true;
 
+	case 0xff1529a2: //BuildingObject.isOwnerResidence
+		TypeInfo<bool >::parseFromBinaryStream(&isOwnerResidence, stream);
+		return true;
+
 	}
 
 	return false;
@@ -1087,8 +1118,16 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_nameHashCode = 0xff1529a2; //BuildingObject.isOwnerResidence
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<bool >::toBinaryStream(&isOwnerResidence, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 9;
+
+	return _count + 10;
 }
 
 BuildingObjectImplementation::BuildingObjectImplementation() {
@@ -1116,6 +1155,8 @@ BuildingObjectImplementation::BuildingObjectImplementation() {
 	publicStructure = true;
 	// server/zone/objects/building/BuildingObject.idl():  		signName = "";
 	signName = "";
+	// server/zone/objects/building/BuildingObject.idl():  		isOwnerResidence = false;
+	isOwnerResidence = false;
 }
 
 void BuildingObjectImplementation::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
@@ -1228,6 +1269,16 @@ void BuildingObjectImplementation::removeAccessFee() {
 	// server/zone/objects/building/BuildingObject.idl():  			updatePaidAccessList();
 	updatePaidAccessList();
 }
+}
+
+bool BuildingObjectImplementation::isResidence() {
+	// server/zone/objects/building/BuildingObject.idl():  		return isOwnerResidence;
+	return isOwnerResidence;
+}
+
+void BuildingObjectImplementation::setResidence(bool isResidence) {
+	// server/zone/objects/building/BuildingObject.idl():  		isOwnerResidence = isResidence;
+	isOwnerResidence = isResidence;
 }
 
 /*
@@ -1516,6 +1567,16 @@ void BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			resp->insertBoolean(hasChildCreatures());
 		}
 		break;
+	case RPC_ISRESIDENCE__:
+		{
+			resp->insertBoolean(isResidence());
+		}
+		break;
+	case RPC_SETRESIDENCE__BOOL_:
+		{
+			setResidence(inv->getBooleanParameter());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -1735,6 +1796,14 @@ void BuildingObjectAdapter::spawnChildCreatures() {
 
 bool BuildingObjectAdapter::hasChildCreatures() {
 	return (static_cast<BuildingObject*>(stub))->hasChildCreatures();
+}
+
+bool BuildingObjectAdapter::isResidence() {
+	return (static_cast<BuildingObject*>(stub))->isResidence();
+}
+
+void BuildingObjectAdapter::setResidence(bool isResidence) {
+	(static_cast<BuildingObject*>(stub))->setResidence(isResidence);
 }
 
 /*

@@ -233,22 +233,17 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 	if (object->isStructureObject()){
 		StructureObject* structure = cast<StructureObject*>(object);
 
-		/*uint64 creatureID = structure->getOwnerObjectID();
-
-		if (structure->isBuildingObject() && !citizenList.contains(creatureID)) {
-			BuildingObject* building = cast<BuildingObject*>(object);
-			CreatureObject* owner = building->getOwnerCreatureObject();
-
-			if (owner != NULL) {
-				PlayerObject* playerObject = owner->getPlayerObject();
-
-				if (playerObject != NULL && playerObject->getDeclaredResidence() == building) {
-					addCitizen(creatureID);
-				}
-			}
-		}*/
-
 		Locker slocker(&structureListMutex);
+
+		if (structure->isBuildingObject()) {
+
+			BuildingObject* building = cast<BuildingObject*>(object);
+			uint64 owner = structure->getOwnerObjectID();
+
+			if(building->isResidence() &&  owner != 0 && !citizenList.contains(owner)) {
+				addCitizen(owner);
+			}
+		 }
 
 		completeStructureList.put(structure->getObjectID());
 
@@ -317,27 +312,19 @@ void CityRegionImplementation::notifyExit(SceneObject* object) {
 		float x = object->getWorldPositionX();
 		float y = object->getWorldPositionY();
 
-		//StructureObject* structure = cast<StructureObject*>(object);
-
 		StructureObject* structure = cast<StructureObject*>(object);
 
-		/*uint64 creatureID = structure->getOwnerObjectID();
-
-		if (structure->isBuildingObject() && citizenList.contains(creatureID)) {
-			BuildingObject* building = cast<BuildingObject*>(object);
-
-			CreatureObject* owner = building->getOwnerCreatureObject();
-
-			if (owner != NULL) {
-				PlayerObject* playerObject = owner->getPlayerObject();
-
-				if (playerObject != NULL && playerObject->getDeclaredResidence() == building){
-					removeCitizen(creatureID);
-				}
-			}
-		}*/
-
 		Locker slocker(&structureListMutex);
+
+		if (structure->isBuildingObject()) {
+
+			BuildingObject* building = cast<BuildingObject*>(object);
+			uint64 owner = structure->getOwnerObjectID();
+
+			if( building->isResidence() &&  owner != 0 && citizenList.contains(owner)) {
+				removeCitizen(owner);
+			}
+		}
 
 		completeStructureList.drop(structure->getObjectID());
 
@@ -364,9 +351,10 @@ void CityRegionImplementation::cleanupCitizens() {
 		ManagedReference<BuildingObject*> building = zone->getZoneServer()->getObject(oid).castTo<BuildingObject*>();
 
 		if (building != NULL) {
-			uint64 owner = building->getOwnerObjectID();
-			
-			ownerIds.put(owner);
+			if (building->isResidence()) {
+				uint64 owner = building->getOwnerObjectID();
+				ownerIds.put(owner);
+			}
 		}
 	}
 
@@ -524,6 +512,20 @@ void CityRegionImplementation::removeAllSkillTrainers(){
 	}
 
 	citySkillTrainers.removeAll();
+}
+
+void CityRegionImplementation::removeAllDecorations(){
+	for (int i = 0; i < cityDecorations.size(); i++){
+		ManagedReference<SceneObject*> dec = cityDecorations.get(i);
+		if(dec->isStructureObject()){
+			StructureManager::instance()->destroyStructure(cast<StructureObject*>(dec.get()));
+		} else {
+			cityDecorations.get(i)->destroyObjectFromWorld(false);
+			cityDecorations.get(i)->destroyObjectFromDatabase(false);
+		}
+	}
+
+	cityDecorations.removeAll();
 }
 
 bool CityRegionImplementation::isVotingLocked(){

@@ -21,13 +21,24 @@ grovo = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/nsister_rancor_grovo.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "rancor_common", chance = 5000000},
+				{group = "pistols", chance = 1500000},
+				{group = "rifles", chance = 1500000},
+				{group = "armor_looted", chance = 1000000},
+				{group = "unarmed_melee", chance = 1000000}
+			},
+			lootChance = 4000000
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

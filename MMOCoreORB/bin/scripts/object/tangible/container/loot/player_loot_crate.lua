@@ -44,7 +44,6 @@
 object_tangible_container_loot_player_loot_crate = object_tangible_container_loot_shared_player_loot_crate:new {
 	gameObjectType = 8245,
 	sliceable = 1,
-	containerComponent = "PlaceableLootContainerComponent"
 
 }
 

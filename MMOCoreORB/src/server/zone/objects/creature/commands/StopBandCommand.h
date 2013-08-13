@@ -63,6 +63,70 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		ManagedReference<GroupObject*> group = creature->getGroup();
+
+		if (group == NULL) {
+			creature->sendSystemMessage("You must be the leader of a band to use that command.");
+			return GENERALERROR;
+		}
+
+		ManagedReference<CreatureObject*> leader = cast<CreatureObject*>(group->getLeader());
+
+		if (leader == NULL || creature != leader) {
+			creature->sendSystemMessage("You must be the band leader to stop the band's song.");
+			return GENERALERROR;
+		}
+
+		ManagedReference<Facade*> facade = creature->getActiveSession(SessionFacadeType::ENTERTAINING);
+		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
+
+		if (session == NULL)
+			return GENERALERROR;
+
+		if (!session->isPlayingMusic())
+			return GENERALERROR;
+
+		creature->unlock();
+
+		try {
+			Locker locker(group);
+
+			for (int i = 0; i < group->getGroupSize(); ++i) {
+				ManagedReference<CreatureObject*> groupMember = cast<CreatureObject*>(group->getGroupMember(i));
+
+				Locker clocker(groupMember, group);
+
+				if (groupMember == NULL || !groupMember->isPlayingMusic())
+					continue;
+
+				ManagedReference<EntertainingSession*> bandMemberSession = dynamic_cast<EntertainingSession*>(groupMember->getActiveSession(SessionFacadeType::ENTERTAINING));
+
+				if (bandMemberSession == NULL || !bandMemberSession->isPlayingMusic())
+					continue;
+
+				if (groupMember == creature) {
+					groupMember->sendSystemMessage("@performance:music_stop_band_self"); // You stop the band.
+				} else {
+					StringIdChatParameter stringID;
+
+					stringID.setTU(creature->getCustomObjectName());
+					stringID.setStringId("performance", "music_stop_band_members"); // %TU stops your band.
+					groupMember->sendSystemMessage(stringID);
+				}
+
+				bandMemberSession->stopPlayingMusic();
+			}
+
+			group->setBandSong("");
+
+		} catch (Exception& e) {
+			creature->wlock();
+
+			throw;
+		}
+
+		creature->wlock();
+
 		return SUCCESS;
 	}
 

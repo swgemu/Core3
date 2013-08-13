@@ -86,6 +86,7 @@ import server.zone.managers.minigames.GamblingManager;
 import server.zone.managers.minigames.ForageManager;
 import server.zone.managers.stringid.StringIdManager;
 import server.zone.managers.creature.CreatureTemplateManager;
+import server.zone.managers.creature.DnaManager;
 import server.zone.managers.guild.GuildManager;
 import server.zone.managers.city.CityManager;
 
@@ -119,6 +120,8 @@ class ZoneServer extends ManagedService implements Logger {
 	private transient StringIdManager stringIdManager;
 	
 	private transient CreatureTemplateManager creatureTemplateManager;
+
+	private transient DnaManager dnaManager;
 
 	private int totalSentPackets;
 

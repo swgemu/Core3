@@ -423,7 +423,7 @@ class TangibleObject extends SceneObject {
 	}
 	
 	public abstract int getDisplayedUseCount() {
-		if(useCount == 1)
+		if(useCount == 1 && super.gameObjectType != SceneObjectType.TRAP)
 			return 0;
 		
 		return useCount;
@@ -569,15 +569,6 @@ class TangibleObject extends SceneObject {
 	@local
 	public native ThreatMap getThreatMap();
 	
-	/*
-	 * Set the initial values for this object based on the schematic
-	 */
-	public native void setInitialCraftingValues(ManufactureSchematic manufactureSchematic, int assemblySuccess);
-
-	/*
-	 * Add the subcomponent stats to this based on the items in the schematic
-	 */
-	public native boolean applyComponentStats(ManufactureSchematic manufactureSchematic);
 	/*
 	 * Creates a factory crate for this object, can insert this object or a clone
 	 */

@@ -541,7 +541,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 		return;
 	}
 
-	LairSpawn* randomLairSpawn = getRandomLairSpawn(player, faction);
+	LairSpawn* randomLairSpawn = getRandomLairSpawn(player, faction, MissionObject::DESTROY);
 
 	if (randomLairSpawn == NULL) {
 		mission->setTypeCRC(0);
@@ -1174,7 +1174,7 @@ void MissionManagerImplementation::randomizeHuntingMission(CreatureObject* playe
 }
 
 void MissionManagerImplementation::randomizeGenericHuntingMission(CreatureObject* player, MissionObject* mission, const int faction) {
-	LairSpawn* randomLairSpawn = getRandomLairSpawn(player, MissionObject::FACTIONNEUTRAL);
+	LairSpawn* randomLairSpawn = getRandomLairSpawn(player, MissionObject::FACTIONNEUTRAL, MissionObject::HUNTING);
 
 	if (randomLairSpawn == NULL) {
 		mission->setTypeCRC(0);
@@ -1456,7 +1456,7 @@ void MissionManagerImplementation::createSpawnPoint(CreatureObject* player, cons
 	}
 }
 
-LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* player, const int faction) {
+LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* player, const int faction, unsigned int type) {
 	Zone* zone = player->getZone();
 
 	if (zone == NULL)
@@ -1467,7 +1467,10 @@ LairSpawn* MissionManagerImplementation::getRandomLairSpawn(CreatureObject* play
 	Vector<ManagedReference<SpawnArea* > >* worldAreas;
 
 	if (faction == MissionObject::FACTIONNEUTRAL) {
-		worldAreas = creatureManager->getWorldSpawnAreas();
+		if (type == MissionObject::DESTROY)
+			worldAreas = creatureManager->getNonfactionalMissionSpawnAreas();
+		else
+			worldAreas = creatureManager->getWorldSpawnAreas();
 	} else {
 		bool neutralMission = true;
 

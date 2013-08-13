@@ -112,7 +112,7 @@ public:
 	float getCommandDuration(CreatureObject *object, const UnicodeString& arguments) {
 		StringTokenizer tokenizer(arguments.toString());
 		uint64 weaponID = tokenizer.getLongToken();
-		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*> (server->getZoneServer()->getObject(weaponID));
+		ManagedReference<WeaponObject*> weapon = server->getZoneServer()->getObject(weaponID).castTo<WeaponObject*>();
 
 		if (weapon != NULL)
 			return CombatManager::instance()->calculateWeaponAttackSpeed(object, weapon, speedMultiplier);

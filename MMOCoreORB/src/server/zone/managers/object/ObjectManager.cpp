@@ -59,6 +59,7 @@ ObjectManager::ObjectManager() : DOBObjectManager() {
 	databaseManager->loadObjectDatabase("spawnareas", true);
 	databaseManager->loadObjectDatabase("spawnobservers", true);
 	databaseManager->loadObjectDatabase("aiobservers", true);
+	databaseManager->loadObjectDatabase("events", true);
 
 	ObjectDatabaseManager::instance()->commitLocalTransaction();
 
@@ -304,7 +305,8 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Component>(SceneObjectType::COMMUNITYCRAFTINGCOMPONENT);
 	objectFactory.registerObject<Component>(SceneObjectType::DROIDCOMPONENT);
 	objectFactory.registerObject<Component>(SceneObjectType::ELECTRONICSCOMPONENT);
-	objectFactory.registerObject<Component>(SceneObjectType::GENETICCOMPONENT);
+	objectFactory.registerObject<GeneticComponent>(SceneObjectType::GENETICCOMPONENT);
+	objectFactory.registerObject<DnaComponent>(SceneObjectType::DNACOMPONENT);
 	objectFactory.registerObject<LightsaberCrystalComponent>(SceneObjectType::LIGHTSABERCRYSTAL);
 	objectFactory.registerObject<Component>(SceneObjectType::MELEEWEAPONCOMPONENT);
 	objectFactory.registerObject<Component>(SceneObjectType::MUNITIONCOMPONENT);

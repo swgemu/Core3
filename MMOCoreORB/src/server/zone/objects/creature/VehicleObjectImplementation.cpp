@@ -18,6 +18,7 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/creature/sui/RepairVehicleSuiCallback.h"
+#include "server/zone/objects/region/CityRegion.h"
 
 void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (!player->getPlayerObject()->isPrivileged() && linkedCreature != player)
@@ -120,6 +121,12 @@ void VehicleObjectImplementation::sendRepairConfirmTo(CreatureObject* player) {
 
 	int repairCost = calculateRepairCost(player);
 	int totalFunds = player->getBankCredits();
+	int tax = 0;
+
+	ManagedReference<CityRegion*> city = getCityRegion();
+	if(city != NULL && city->getGarageTax() > 0){
+		repairCost += repairCost * city->getGarageTax() / 100;
+	}
 
 	listbox->addMenuItem("@pet/pet_menu:vehicle_prompt " + getDisplayedName()); //Vehicle:
 	listbox->addMenuItem("@pet/pet_menu:repair_cost_prompt " + String::valueOf(repairCost)); //Repair Cost:
@@ -133,12 +140,7 @@ int VehicleObjectImplementation::calculateRepairCost(CreatureObject* player) {
 	if (player->getPlayerObject()->isPrivileged())
 		return 0;
 
-	//TODO: Implement city taxes.
-	float cityTax = 1.0f;
-
-	int repairCost = (int) (getConditionDamage() * 5.0f * cityTax);
-
-	return repairCost;
+	return getConditionDamage() * 5;
 }
 
 int VehicleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {

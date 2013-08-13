@@ -240,7 +240,7 @@ public:
 
 	String getCitySpecialization();
 
-	int getCityTreasury();
+	float getCityTreasury();
 
 	bool isMayor(unsigned long long objectid);
 
@@ -258,11 +258,11 @@ public:
 
 	void setRegionName(const String& fullPath);
 
-	void setCityTreasury(int val);
+	void setCityTreasury(float val);
 
-	int addToCityTreasury(int val);
+	float addToCityTreasury(float val);
 
-	int subtractFromCityTreasury(int val);
+	float subtractFromCityTreasury(float val);
 
 	int getMaxWithdrawal();
 
@@ -315,6 +315,8 @@ public:
 	void removeAllSkillTrainers();
 
 	void removeAllTerminals();
+
+	void removeAllDecorations();
 
 	void updateMilitia();
 
@@ -459,7 +461,7 @@ protected:
 
 	byte cityRank;
 
-	int cityTreasury;
+	float cityTreasury;
 
 	unsigned long long mayorID;
 
@@ -594,7 +596,7 @@ public:
 
 	String getCitySpecialization();
 
-	int getCityTreasury();
+	float getCityTreasury();
 
 	bool isMayor(unsigned long long objectid);
 
@@ -612,11 +614,11 @@ public:
 
 	void setRegionName(const String& fullPath);
 
-	void setCityTreasury(int val);
+	void setCityTreasury(float val);
 
-	int addToCityTreasury(int val);
+	float addToCityTreasury(float val);
 
-	int subtractFromCityTreasury(int val);
+	float subtractFromCityTreasury(float val);
 
 	int getMaxWithdrawal();
 
@@ -669,6 +671,8 @@ public:
 	void removeAllSkillTrainers();
 
 	void removeAllTerminals();
+
+	void removeAllDecorations();
 
 	void updateMilitia();
 
@@ -863,7 +867,7 @@ public:
 
 	String getCitySpecialization();
 
-	int getCityTreasury();
+	float getCityTreasury();
 
 	bool isMayor(unsigned long long objectid);
 
@@ -881,11 +885,11 @@ public:
 
 	void setRegionName(const String& fullPath);
 
-	void setCityTreasury(int val);
+	void setCityTreasury(float val);
 
-	int addToCityTreasury(int val);
+	float addToCityTreasury(float val);
 
-	int subtractFromCityTreasury(int val);
+	float subtractFromCityTreasury(float val);
 
 	int getMaxWithdrawal();
 
@@ -934,6 +938,8 @@ public:
 	void removeAllSkillTrainers();
 
 	void removeAllTerminals();
+
+	void removeAllDecorations();
 
 	void updateMilitia();
 

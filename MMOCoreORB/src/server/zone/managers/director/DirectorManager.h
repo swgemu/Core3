@@ -56,6 +56,9 @@ namespace server {
 	public:
 		static int DEBUG_MODE;
 
+		enum LUA_ERROR_CODE { NO_ERROR = 0, MAIN_FILE_ERROR, GENERAL_ERROR, INCORRECT_ARGUMENTS };
+		static int ERROR_CODE;
+
 	public:
 		DirectorManager();
 
@@ -66,6 +69,7 @@ namespace server {
 		ConversationScreen* runScreenHandlers(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 
 		Lua* getLuaInstance();
+		int runLuaInstance();
 
 		static int writeScreenPlayData(lua_State* L);
 		static int readScreenPlayData(lua_State* L);
@@ -120,9 +124,10 @@ namespace server {
 		static int getSpawnPoint(lua_State* L);
 		static int makeCreatureName(lua_State* L);
 		static int getGCWDiscount(lua_State* L);
+		static int checkArgumentCount(lua_State*L, int args);
 
 	private:
-		void initializeLuaEngine(Lua* lua);
+		int initializeLuaEngine(Lua* lua);
 	};
 
    }

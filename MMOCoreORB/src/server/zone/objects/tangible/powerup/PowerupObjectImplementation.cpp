@@ -109,7 +109,7 @@ void PowerupObjectImplementation::updateCraftingValues(CraftingValues* values, b
 		}
 
 		type = pup->getType().toLowerCase();
-		uses = System::random(50) + 50;
+		uses = 100; // Powerups are always 100 uses
 
 	} else {
 

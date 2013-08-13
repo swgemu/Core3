@@ -926,6 +926,24 @@ bool GCWManager::isRacialPenaltyEnabled() {
 		return _implementation->isRacialPenaltyEnabled();
 }
 
+bool GCWManager::shouldSpawnDefenses() {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementationForRead());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->shouldSpawnDefenses();
+}
+
+int GCWManager::getInitialVulnerabilityDelay() {
+	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementationForRead());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getInitialVulnerabilityDelay();
+}
+
 void GCWManager::awardSlicingXP(CreatureObject* creature, const String& xpType, int value) {
 	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1346,6 +1364,16 @@ float GCWManagerImplementation::getRacialPenalty(int race) {
 bool GCWManagerImplementation::isRacialPenaltyEnabled() {
 	// server/zone/managers/gcw/GCWManager.idl():  		return racialPenaltyEnabled;
 	return racialPenaltyEnabled;
+}
+
+bool GCWManagerImplementation::shouldSpawnDefenses() {
+	// server/zone/managers/gcw/GCWManager.idl():  		return spawnDefenses;
+	return spawnDefenses;
+}
+
+int GCWManagerImplementation::getInitialVulnerabilityDelay() {
+	// server/zone/managers/gcw/GCWManager.idl():  		return initialVulnerabilityDelay;
+	return initialVulnerabilityDelay;
 }
 
 /*

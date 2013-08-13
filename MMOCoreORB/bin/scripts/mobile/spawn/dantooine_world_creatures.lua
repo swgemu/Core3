@@ -205,37 +205,7 @@ dantooine_world_creatures = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
-		},
-		{
-			--Mokk Scout missions, weighting = 0
-			lairTemplateName = "dantooine_mokk_scout_neutral_none",
-			spawnLimit = 0,
-			minDifficulty = 35,
-			maxDifficulty = 55,
-			numberToSpawn = 0,
-			weighting = 0,
-			size = 25
-		},
-		{
-			--Kunga Scout missions, weighting = 0
-			lairTemplateName = "dantooine_kunga_scout_neutral_none",
-			spawnLimit = 0,
-			minDifficulty = 35,
-			maxDifficulty = 55,
-			numberToSpawn = 0,
-			weighting = 0,
-			size = 25
-		},
-		{
-			--Janta Scout missions, weighting = 0
-			lairTemplateName = "dantooine_janta_scout_neutral_none",
-			spawnLimit = 0,
-			minDifficulty = 35,
-			maxDifficulty = 55,
-			numberToSpawn = 0,
-			weighting = 0,
-			size = 25
-		},
+		}
 	}
 }
 

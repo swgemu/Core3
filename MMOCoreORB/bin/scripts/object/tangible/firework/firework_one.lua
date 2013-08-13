@@ -42,21 +42,9 @@
 
 
 object_tangible_firework_firework_one = object_tangible_firework_shared_firework_one:new {
-	
-
 	templateType = FIREWORK,
 	fireworkObject = "object/static/firework/fx_01.iff",
 	objectMenuComponent = {"cpp", "FireworkMenuComponent"},
-
-	numberExperimentalProperties = {1, 1, 1, 1},
-	experimentalProperties = {"XX", "XX", "XX", "OQ"},
-	experimentalWeights = {1, 1, 1, 1},
-	experimentalGroupTitles = {"null", "null", "null", "exp_effectiveness"},
-	experimentalSubGroupTitles = {"null", "null", "hitpoints", "charges"},
-	experimentalMin = {0, 0, 1000, 2},
-	experimentalMax = {0, 0, 1000, 10},
-	experimentalPrecision = {0, 0, 0, 0},
-	experimentalCombineType = {0, 0, 4, 1},
 }
 
 ObjectTemplates:addTemplate(object_tangible_firework_firework_one, "object/tangible/firework/firework_one.iff")

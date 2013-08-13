@@ -17,6 +17,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/guild/GuildObject.h"
 
 #include "server/zone/objects/player/sessions/vendor/CreateVendorSession.h"
 
@@ -27,6 +28,7 @@
 #include "server/zone/templates/appearance/MeshAppearanceTemplate.h"
 #include "server/zone/templates/appearance/PortalLayout.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
+#include "server/zone/managers/city/PayPropertyTaxTask.h"
 
 void StructureObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -132,7 +134,15 @@ void StructureObjectImplementation::scheduleMaintenanceExpirationEvent() {
 	if (structureMaintenanceTask != NULL) {
 		updateStructureStatus();
 
-		timeRemaining = (int) (surplusMaintenance * 3600.f / getMaintenanceRate());
+		float cityTax = 0.f;
+
+		ManagedReference<CityRegion*> city = _this.get()->getCityRegion();
+
+		if(city != NULL) {
+			cityTax = city->getPropertyTax();
+		}
+
+		timeRemaining = (int) (surplusMaintenance * 3600.f / (getMaintenanceRate() + (getMaintenanceRate() * cityTax / 100) ));
 
 		if (timeRemaining <= 0) {
 			//Decaying structures should be scheduled as soon as possible. Maintenance task will handle
@@ -217,16 +227,34 @@ void StructureObjectImplementation::updateStructureStatus() {
 	 * When correct maintenance/power values are needed.
 	 * Any time the maintenance or power surplus is changed by a hand other than this method.
 	 */
+
+	if(isCivicStructure())
+		return;
+
 	float timeDiff = ((float) lastMaintenanceTime.miliDifference()) / 1000.f;
 	float maintenanceDue = (getMaintenanceRate() / 3600.f) * timeDiff;
+	float cityTaxDue = 0;
 
 	if (maintenanceDue > 0) {
 		//Only update last time if we actually progressed to get correct consumption.
 		lastMaintenanceTime.updateToCurrentTime();
 	}
 
+	ManagedReference<CityRegion*> city = getCityRegion();
+
+	if(isBuildingObject() && city != NULL && !city->isClientRegion() && city->getPropertyTax() > 0){
+		cityTaxDue = city->getPropertyTax() / 100.0f * maintenanceDue;
+
+		// sometimes a creature and building will be locked here
+		if(cityTaxDue > 0){
+			Reference<PayPropertyTaxTask*> taxTask = new PayPropertyTaxTask(city, cityTaxDue);
+			taxTask->execute();
+		}
+
+	}
+
 	//Maintenance is used as decay as well so let it go below 0.
-	surplusMaintenance -= maintenanceDue;
+	surplusMaintenance -= maintenanceDue - cityTaxDue;
 
 	//Update structure condition.
 	if (surplusMaintenance < 0) {
@@ -372,4 +400,88 @@ int StructureObjectImplementation::getBasePowerRate(){
 		return 0;
 
 	return tmpl->getBasePowerRate();
+}
+
+bool StructureObjectImplementation::isOnAdminList(CreatureObject* player) {
+	if (player->isPlayerCreature() && player->getPlayerObject()->isPrivileged())
+		return true;
+	else if (structurePermissionList.isOnPermissionList("ADMIN", player->getFirstName()))
+		return true;
+	else {
+		GuildObject* guild = player->getGuildObject();
+
+		if (guild != NULL && structurePermissionList.isOnPermissionList("ADMIN", "guild:" + guild->getGuildAbbrev(), true))
+			return true;
+	}
+
+	return false;
+}
+
+bool StructureObjectImplementation::isOnEntryList(CreatureObject* player) {
+	if (player->isPlayerCreature() && player->getPlayerObject()->isPrivileged())
+		return true;
+	else if (structurePermissionList.isOnPermissionList("ADMIN", player->getFirstName())
+			|| structurePermissionList.isOnPermissionList("ENTRY", player->getFirstName())
+			|| structurePermissionList.isOnPermissionList("VENDOR", player->getFirstName()))
+		return true;
+	else {
+		GuildObject* guild = player->getGuildObject();
+
+		if (guild != NULL && (structurePermissionList.isOnPermissionList("ADMIN", "guild:" + guild->getGuildAbbrev(), true)
+				|| structurePermissionList.isOnPermissionList("ENTRY", "guild:" + guild->getGuildAbbrev(), true)
+				|| structurePermissionList.isOnPermissionList("VENDOR", "guild:" + guild->getGuildAbbrev(), true)))
+			return true;
+	}
+
+	return false;
+}
+
+bool StructureObjectImplementation::isOnBanList(CreatureObject* player) {
+	if (player->isPlayerCreature() && player->getPlayerObject()->isPrivileged())
+		return false;
+	else if (structurePermissionList.isOnPermissionList("BAN", player->getFirstName()))
+		return true;
+	else {
+		GuildObject* guild = player->getGuildObject();
+
+		if (guild != NULL && structurePermissionList.isOnPermissionList("BAN", "guild:" + guild->getGuildAbbrev(), true))
+			return true;
+	}
+
+	return false;
+}
+
+bool StructureObjectImplementation::isOnHopperList(CreatureObject* player) {
+	if (player->isPlayerCreature() && player->getPlayerObject()->isPrivileged())
+		return true;
+	else if (structurePermissionList.isOnPermissionList("HOPPER", player->getFirstName())
+			|| structurePermissionList.isOnPermissionList("ADMIN", player->getFirstName()))
+		return true;
+	else {
+		GuildObject* guild = player->getGuildObject();
+
+		if (guild != NULL && (structurePermissionList.isOnPermissionList("HOPPER", "guild:" + guild->getGuildAbbrev(), true)
+				|| structurePermissionList.isOnPermissionList("ADMIN", "guild:" + guild->getGuildAbbrev(), true)))
+			return true;
+	}
+
+	return false;
+}
+
+bool StructureObjectImplementation::isOnPermissionList(const String& listName, CreatureObject* player) {
+	if (player->isPlayerCreature() && player->getPlayerObject()->isPrivileged()) {
+		if (listName == "BAN")
+			return false;
+		else
+			return true;
+	} else if (structurePermissionList.isOnPermissionList(listName, player->getFirstName()))
+		return true;
+	else {
+		GuildObject* guild = player->getGuildObject();
+
+		if (guild != NULL && structurePermissionList.isOnPermissionList(listName, "guild:" + guild->getGuildAbbrev(), true))
+			return true;
+	}
+
+	return false;
 }

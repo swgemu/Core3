@@ -110,7 +110,7 @@ void StructurePermissionList::sendTo(CreatureObject* creature, const String& lis
 	creature->sendMessage(listMsg);
 }
 
-int StructurePermissionList::togglePermission(const String& listName, const String& playerName) {
+int StructurePermissionList::togglePermission(const String& listName, const String& playerName, bool caseSensitive) {
 	Locker locker(&lock);
 
 	if(playerName == ownerName)
@@ -121,7 +121,12 @@ int StructurePermissionList::togglePermission(const String& listName, const Stri
 
 	SortedVector<String>* list = &permissionLists.get(listName);
 
-	String name = playerName.toLowerCase();
+	String name = "";
+
+	if (caseSensitive)
+		name = playerName;
+	else
+		name = playerName.toLowerCase();
 
 	//If they exist, remove them.
 	if (list->contains(name)) {
@@ -133,7 +138,7 @@ int StructurePermissionList::togglePermission(const String& listName, const Stri
 	return GRANTED;
 }
 
-int StructurePermissionList::grantPermission(const String& listName, const String& playerName) {
+int StructurePermissionList::grantPermission(const String& listName, const String& playerName, bool caseSensitive) {
 	Locker locker(&lock);
 
 	if(playerName == ownerName)
@@ -144,11 +149,15 @@ int StructurePermissionList::grantPermission(const String& listName, const Strin
 
 	SortedVector<String>* list = &permissionLists.get(listName);
 
-	list->put(playerName.toLowerCase());
+	if (caseSensitive)
+		list->put(playerName);
+	else
+		list->put(playerName.toLowerCase());
+
 	return GRANTED;
 }
 
-int StructurePermissionList::revokePermission(const String& listName, const String& playerName) {
+int StructurePermissionList::revokePermission(const String& listName, const String& playerName, bool caseSensitive) {
 	Locker locker(&lock);
 
 	if(playerName == ownerName)
@@ -159,11 +168,15 @@ int StructurePermissionList::revokePermission(const String& listName, const Stri
 
 	SortedVector<String>* list = &permissionLists.get(listName);
 
-	list->drop(playerName.toLowerCase());
+	if (caseSensitive)
+		list->drop(playerName);
+	else
+		list->drop(playerName.toLowerCase());
+
 	return REVOKED;
 }
 
-int StructurePermissionList::revokeAllPermissions(const String& playerName) {
+int StructurePermissionList::revokeAllPermissions(const String& playerName, bool caseSensitive) {
 	Locker locker(&lock);
 
 	if(playerName == ownerName)
@@ -172,7 +185,10 @@ int StructurePermissionList::revokeAllPermissions(const String& playerName) {
 	for (int i = 0; i < permissionLists.size(); ++i) {
 		SortedVector<String>* list = &permissionLists.get(i);
 
-		list->drop(playerName.toLowerCase());
+		if (caseSensitive)
+			list->drop(playerName);
+		else
+			list->drop(playerName.toLowerCase());
 	}
 
 	return REVOKED;

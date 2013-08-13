@@ -81,7 +81,7 @@ ree_yees_missions =
 		}
 	},
     {
-		missionType = "assassinate",
+		missionType = "confiscate",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "theme_park_jawa", planetName = "tatooine", npcName = "Jawa" } 
@@ -146,7 +146,7 @@ ephant_mon_missions =
 		}
 	},
 	    {
-		missionType = "assassinate",
+		missionType = "confiscate",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "valarian_courier", planetName = "tatooine", npcName = "Valarian Courier" } 
@@ -160,7 +160,7 @@ ephant_mon_missions =
 		}, 
 		itemSpawns =
 		{
-					{ itemTemplate = "object/tangible/loot/misc/ledger_s01.iff", itemName = "Ledger" }
+			{ itemTemplate = "object/tangible/loot/misc/ledger_s01.iff", itemName = "Ledger" }
 		}, 
 		rewards = 
 		{ 
@@ -208,7 +208,7 @@ porcellus_missions =
 		}
 	},
 	    {
-		missionType = "assassinate",
+		missionType = "confiscate",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "theme_park_jabba_veterinarian", planetName = "tatooine", npcName = "Veterinarian" } 
@@ -219,7 +219,7 @@ porcellus_missions =
 			{ npcTemplate = "alkhara_bandit", planetName = "tatooine", npcName = "Alkhara Bandit" },
 		}, 
 		itemSpawns = {
-					{ itemTemplate = "object/tangible/loot/misc/damaged_datapad.iff", itemName = "A Datapad" }
+			{ itemTemplate = "object/tangible/loot/misc/damaged_datapad.iff", itemName = "A Datapad" }
 		}, 
 		rewards = 
 		{ 
@@ -249,7 +249,7 @@ porcellus_missions =
 barada_missions =
 {
     {
-		missionType = "assassinate",
+		missionType = "confiscate",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "theme_park_jabba_valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" } 
@@ -501,7 +501,7 @@ g5po_missions =
 		}
 	},
 			{ 
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "theme_park_jabba_valarian_thug_02", planetName = "tatooine", npcName = "Valarian Thug" } 

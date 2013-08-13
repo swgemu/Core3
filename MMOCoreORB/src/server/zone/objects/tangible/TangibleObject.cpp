@@ -30,7 +30,7 @@
  *	TangibleObjectStub
  */
 
-enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_APPLYSKILLMODSTO__CREATUREOBJECT_BOOL_,RPC_REMOVESKILLMODSFROM__CREATUREOBJECT_,RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_,RPC_REMOVESKILLMOD__INT_STRING_INT_BOOL_,RPC_REMOVEALLSKILLMODSOFTYPE__INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_SETCOUNTDOWNTIMER__INT_BOOL_,RPC_DECREASEUSECOUNT__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_ISHEALABLEBY__CREATUREOBJECT_,RPC_SENDPVPSTATUSTO__CREATUREOBJECT_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_STRING_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_,RPC_SETCONDITIONDAMAGE__FLOAT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_SHORT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_SHORT_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_DROPFROMDEFENDERLISTS__TANGIBLEOBJECT_,RPC_GETUNKNOWNBYTE__,RPC_ISKILLER__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETDISPLAYEDUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_BOOL_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_SETCOMPLEXITY__FLOAT_,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_BOOL_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETSERIALNUMBER__STRING_,RPC_SETLEVEL__INT_,RPC_GETSERIALNUMBER__,RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_,RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_,RPC_CREATEFACTORYCRATE__BOOL_,RPC_CANREPAIR__CREATUREOBJECT_,RPC_REPAIR__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_,RPC_ISBROKEN__,RPC_GETHITCHANCE__,RPC_BROADCASTPVPSTATUSBITMASK__};
+enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_APPLYSKILLMODSTO__CREATUREOBJECT_BOOL_,RPC_REMOVESKILLMODSFROM__CREATUREOBJECT_,RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_,RPC_REMOVESKILLMOD__INT_STRING_INT_BOOL_,RPC_REMOVEALLSKILLMODSOFTYPE__INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_SETCOUNTDOWNTIMER__INT_BOOL_,RPC_DECREASEUSECOUNT__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_ISHEALABLEBY__CREATUREOBJECT_,RPC_SENDPVPSTATUSTO__CREATUREOBJECT_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_STRING_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_,RPC_SETCONDITIONDAMAGE__FLOAT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_SHORT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_SHORT_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_DROPFROMDEFENDERLISTS__TANGIBLEOBJECT_,RPC_GETUNKNOWNBYTE__,RPC_ISKILLER__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETDISPLAYEDUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_BOOL_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_SETCOMPLEXITY__FLOAT_,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_BOOL_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETSERIALNUMBER__STRING_,RPC_SETLEVEL__INT_,RPC_GETSERIALNUMBER__,RPC_CREATEFACTORYCRATE__BOOL_,RPC_CANREPAIR__CREATUREOBJECT_,RPC_REPAIR__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_,RPC_ISBROKEN__,RPC_GETHITCHANCE__,RPC_BROADCASTPVPSTATUSBITMASK__};
 
 TangibleObject::TangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
 	TangibleObjectImplementation* _implementation = new TangibleObjectImplementation();
@@ -1117,35 +1117,6 @@ ThreatMap* TangibleObject::getThreatMap() {
 		return _implementation->getThreatMap();
 }
 
-void TangibleObject::setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
-	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_);
-		method.addObjectParameter(manufactureSchematic);
-		method.addSignedIntParameter(assemblySuccess);
-
-		method.executeWithVoidReturn();
-	} else
-		_implementation->setInitialCraftingValues(manufactureSchematic, assemblySuccess);
-}
-
-bool TangibleObject::applyComponentStats(ManufactureSchematic* manufactureSchematic) {
-	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_);
-		method.addObjectParameter(manufactureSchematic);
-
-		return method.executeWithBooleanReturn();
-	} else
-		return _implementation->applyComponentStats(manufactureSchematic);
-}
-
 Reference<FactoryCrate* > TangibleObject::createFactoryCrate(bool insertSelf) {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1651,21 +1622,25 @@ bool TangibleObjectImplementation::hasDefender(SceneObject* defender) {
 }
 
 bool TangibleObjectImplementation::isAttackableBy(CreatureObject* object) {
-	// server/zone/objects/tangible/TangibleObject.idl():  			if 
+	// server/zone/objects/tangible/TangibleObject.idl():  			return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
 	if (isImperial() && !(object->isRebel()))	// server/zone/objects/tangible/TangibleObject.idl():  			return false;
 	return false;
 
-	else 	// server/zone/objects/tangible/TangibleObject.idl():  			if 
+	else 	// server/zone/objects/tangible/TangibleObject.idl():  			return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
 	if (isRebel() && !(object->isImperial()))	// server/zone/objects/tangible/TangibleObject.idl():  			return false;
 	return false;
 
-	else 	// server/zone/objects/tangible/TangibleObject.idl():  			if 
-	if (object->isPlayerCreature() && object->getPlayerObject())	// server/zone/objects/tangible/TangibleObject.idl():  			if 
+	else 	// server/zone/objects/tangible/TangibleObject.idl():  			return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
+	if (object->isPlayerCreature() && object->getPlayerObject()){
+	// server/zone/objects/tangible/TangibleObject.idl():  			if 
 	if (isImperial() && (object->getPlayerObject())->getFactionStatus() == 0)	// server/zone/objects/tangible/TangibleObject.idl():  				return false;
 	return false;
-	// server/zone/objects/tangible/TangibleObject.idl():  			return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
+	// server/zone/objects/tangible/TangibleObject.idl():  			return 
 	if (isRebel() && (object->getPlayerObject())->getFactionStatus() == 0)	// server/zone/objects/tangible/TangibleObject.idl():  				return false;
 	return false;
+	// server/zone/objects/tangible/TangibleObject.idl():  			return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
+	return pvpStatusBitmask & CreatureFlag::ATTACKABLE;
+}
 
 	else 	// server/zone/objects/tangible/TangibleObject.idl():  			return pvpStatusBitmask & CreatureFlag.ATTACKABLE;
 	return pvpStatusBitmask & CreatureFlag::ATTACKABLE;
@@ -1713,7 +1688,7 @@ int TangibleObjectImplementation::getUseCount() {
 
 int TangibleObjectImplementation::getDisplayedUseCount() {
 	// server/zone/objects/tangible/TangibleObject.idl():  		return 
-	if (useCount == 1)	// server/zone/objects/tangible/TangibleObject.idl():  			return 0;
+	if (useCount == 1 && SceneObjectImplementation::gameObjectType != SceneObjectType::TRAP)	// server/zone/objects/tangible/TangibleObject.idl():  			return 0;
 	return 0;
 	// server/zone/objects/tangible/TangibleObject.idl():  		return useCount;
 	return useCount;
@@ -2293,16 +2268,6 @@ void TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			resp->insertAscii(getSerialNumber());
 		}
 		break;
-	case RPC_SETINITIALCRAFTINGVALUES__MANUFACTURESCHEMATIC_INT_:
-		{
-			setInitialCraftingValues(static_cast<ManufactureSchematic*>(inv->getObjectParameter()), inv->getSignedIntParameter());
-		}
-		break;
-	case RPC_APPLYCOMPONENTSTATS__MANUFACTURESCHEMATIC_:
-		{
-			resp->insertBoolean(applyComponentStats(static_cast<ManufactureSchematic*>(inv->getObjectParameter())));
-		}
-		break;
 	case RPC_CREATEFACTORYCRATE__BOOL_:
 		{
 			resp->insertLong(createFactoryCrate(inv->getBooleanParameter())->_getObjectID());
@@ -2621,14 +2586,6 @@ void TangibleObjectAdapter::setLevel(int lev) {
 
 String TangibleObjectAdapter::getSerialNumber() {
 	return (static_cast<TangibleObject*>(stub))->getSerialNumber();
-}
-
-void TangibleObjectAdapter::setInitialCraftingValues(ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
-	(static_cast<TangibleObject*>(stub))->setInitialCraftingValues(manufactureSchematic, assemblySuccess);
-}
-
-bool TangibleObjectAdapter::applyComponentStats(ManufactureSchematic* manufactureSchematic) {
-	return (static_cast<TangibleObject*>(stub))->applyComponentStats(manufactureSchematic);
 }
 
 Reference<FactoryCrate* > TangibleObjectAdapter::createFactoryCrate(bool insertSelf) {

@@ -88,6 +88,8 @@ class BuildingObject extends StructureObject {
 
 	protected unicode signName;
 		
+	protected boolean isOwnerResidence;
+	
 	public BuildingObject() {
 		Logger.setLoggingName("BuildingObject");
 		
@@ -107,6 +109,7 @@ class BuildingObject extends StructureObject {
 		publicStructure = true;
 
 		signName = "";
+		isOwnerResidence = false;
 	}
 	
 	public native void createCellObjects();
@@ -365,4 +368,12 @@ class BuildingObject extends StructureObject {
 	public native void spawnChildCreatures();
 
 	public native boolean hasChildCreatures();
+
+	public boolean isResidence(){
+		return isOwnerResidence;
+	}
+
+	public void setResidence (boolean isResidence){
+		isOwnerResidence = isResidence;
+	}
 }

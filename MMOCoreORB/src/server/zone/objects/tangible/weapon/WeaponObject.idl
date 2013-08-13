@@ -100,6 +100,13 @@ class WeaponObject extends TangibleObject {
 	
 	protected float damageSlice;
 	protected float speedSlice;
+
+	protected int dotType;
+	protected int dotAttribute;
+	protected int dotStrength;
+	protected int dotDuration;
+	protected int dotPotency;
+	protected int dotUses;
 	
 	protected transient SharedWeaponObjectTemplate weaponTemplate;
 	
@@ -163,6 +170,13 @@ class WeaponObject extends TangibleObject {
 		attackSpeed = 1;
 		
 		weaponTemplate = null;
+
+		dotType = 0;
+		dotAttribute = 0;
+		dotStrength = 0;
+		dotDuration = 0;
+		dotPotency = 0;
+		dotUses = 0;
 		
 		Logger.setLoggingName("WeaponObject");
 		
@@ -364,6 +378,53 @@ class WeaponObject extends TangibleObject {
 	
 	public string getXpType() {
 		return weaponTemplate.getXpType();
+	}
+
+	public int getDotType() {
+		return dotType;
+	}
+
+	public int getDotAttribute() {
+		return dotAttribute;
+	}
+
+	public int getDotStrength() {
+		return dotStrength;
+	}
+
+	public int getDotDuration() {
+		return dotDuration;
+	}
+	public int getDotPotency() {
+		return dotPotency;
+	}
+
+	public int getDotUses() {
+		return dotUses;
+	}
+
+	public void setDotType(int t) {
+		dotType = t;
+	}
+
+	public void setDotAttribute(int a) {
+		dotAttribute = a;
+	}
+
+	public void setDotStrength(int s) {
+		dotStrength = s;
+	}
+
+	public void setDotDuration(int du) {
+		dotDuration = du;
+	}
+
+	public void setDotPotency(int po) {
+		dotPotency = po;
+	}	
+
+	public void setDotUses(int u) {
+		dotUses = u;
 	}
 	
 	public native string getWeaponType();

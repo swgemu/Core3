@@ -448,6 +448,8 @@ public:
 
 	bool shouldDeleteCharacter(unsigned long long characterID, int galaxyID);
 
+	void enhanceCharacter(CreatureObject* player);
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -476,6 +478,16 @@ namespace player {
 class PlayerManagerImplementation : public ObserverImplementation, public Logger {
 	ManagedReference<ZoneProcessServer* > processor;
 
+protected:
+	static const int performanceBuff = 1000;
+
+	static const int medicalBuff = 1900;
+
+	static const int performanceDuration = 7200;
+
+	static const int medicalDuration = 7200;
+
+private:
 	VectorMap<int, String> badgeMap;
 
 	int highestBadgeIndex;
@@ -689,6 +701,12 @@ public:
 
 	bool shouldDeleteCharacter(unsigned long long characterID, int galaxyID);
 
+	void enhanceCharacter(CreatureObject* player);
+
+private:
+	bool doEnhanceCharacter(unsigned int crc, CreatureObject* player, int amount, int duration, int buffType, byte attribute);
+
+public:
 	WeakReference<PlayerManager*> _this;
 
 	operator const PlayerManager*();
@@ -871,6 +889,8 @@ public:
 	void cleanupCharacters();
 
 	bool shouldDeleteCharacter(unsigned long long characterID, int galaxyID);
+
+	void enhanceCharacter(CreatureObject* player);
 
 };
 

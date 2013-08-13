@@ -86,7 +86,7 @@ qualdo_missions =
 		} 
 	},
 	{ 
-		missionType = "assassinate",
+		missionType = "confiscate",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "theme_park_imperial_sergeant_montage", planetName = "corellia", npcName = "Sergeant Montage" } 
@@ -186,7 +186,7 @@ wedge_missions =
 	 	}
 	},
 	{ 
-		missionType = "assassinate",
+		missionType = "confiscate",
 	 	primarySpawns = 
 	 	{ 
 	 		{ npcTemplate = "theme_park_imperial_general_boize", planetName = "corellia", npcName = "General Boize" } 
@@ -208,7 +208,7 @@ wedge_missions =
 	 	}
 	},
 	{ 
-		missionType = "assassinate",
+		missionType = "confiscate",
 	 	primarySpawns = 
 	 	{ 
 	 		{ npcTemplate = "theme_park_imperial_officer_emil", planetName = "corellia", npcName = "Officer Emil" } 
@@ -390,7 +390,7 @@ han_missions =
 		}
 	},
 	{
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "theme_park_rebel_pirate_holocron", planetName = "lok", npcName = "random" }, 
@@ -479,7 +479,7 @@ ackbar_missions =
 		}
 	},
 	{
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "theme_park_rebel_disgruntled_citizen", planetName = "dantooine", npcName = "Disgruntled Citizen" }
@@ -757,7 +757,7 @@ luke_missions =
 		}
 	},
 	{
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		silentTarget = "yes",
 		primarySpawns = 
 		{ 
@@ -787,7 +787,7 @@ luke_missions =
 		}
 	},
 	{
-		missionType = "assassinate",  
+		missionType = "confiscate",  
 		silentTarget = "yes",
 		primarySpawns = 
 		{ 

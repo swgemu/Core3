@@ -3,16 +3,17 @@
 -- Tier is a bit mask with the following possible values where each hexadecimal position is one possible configuration.
 -- That means that it is not possible to have both a world spawn area and imperial spawn area in the same region, but
 -- a dynamic rebel spawn area that is also a no build zone is possible.
-UNDEFINEDAREA     = 0x0000
-WORLDSPAWNAREA    = 0x0001
-REBELSPAWNAREA    = 0x0002
-IMPERIALSPAWNAREA = 0x0004
-NEUTRALSPAWNAREA  = 0x0008
-STATICSPAWNAREA   = 0x0010
-DYNAMICSPAWNAREA  = 0x0020
-LAIRSPAWNAREA     = 0x0040
-NOSPAWNAREA       = 0x0100
-NOBUILDZONEAREA   = 0x1000
+UNDEFINEDAREA       = 0x0000
+WORLDSPAWNAREA      = 0x0001
+REBELSPAWNAREA      = 0x0002
+IMPERIALSPAWNAREA   = 0x0004
+NEUTRALSPAWNAREA    = 0x0008
+NONFACTIONSPAWNAREA = 0x0010
+STATICSPAWNAREA     = 0x0100
+DYNAMICSPAWNAREA    = 0x0200
+LAIRSPAWNAREA       = 0x0400
+NOSPAWNAREA         = 0x1000
+NOBUILDZONEAREA     = 0x10000
 
 corellia_regions = {
         {"abandoned_campsite",6050,6400,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
@@ -172,6 +173,7 @@ corellia_regions = {
 	{"world_factional_imperial",0,0,{1,-1},LAIRSPAWNAREA + IMPERIALSPAWNAREA,1,"factional_imperial"},
 	{"world_factional_neutral",0,0,{1,-1},LAIRSPAWNAREA + NEUTRALSPAWNAREA,1,"factional_neutral"},
 	{"world_factional_rebel",0,0,{1,-1},LAIRSPAWNAREA + REBELSPAWNAREA,1,"factional_rebel"},
+	{"world_nonfaction_destroy_mission",0,0,{1,-1},LAIRSPAWNAREA + NONFACTIONSPAWNAREA,1,"corellia_destroy_mission"},
 	{"world_spawner",0,0,{1,-1},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"corellia_world_creatures"},
 }
 
@@ -230,7 +232,7 @@ corellia_static_spawns = {
 	{"bounty_hunter",60,17.1745,1.28309,-13.1361,0,3075367, "conversation", ""},
 	{"bounty_hunter",60,-42.098,0.105009,-24.1786,0,3075441, "conversation", ""},
 	{"bounty_hunter",60,21.6023,-0.894996,-18.5913,360.011,3375356, "conversation", ""},
-	{"brantlee_spondoon",60,-24.7,1.3,-0.5,124,1855463, "calm", ""},
+	--{"brantlee_spondoon",60,-24.7,1.3,-0.5,124,1855463, "calm", ""},
 	{"brawler",60,16.2045,2.25,19.3968,135.003,1855477, "conversation", ""},
 	{"brawler",60,-1.72746,7.9,-32.175,0,1855463, "conversation", ""},
 	{"brawler",60,2.09577,-5.5,-6.31594,135.004,3005430, "conversation", ""},
@@ -842,7 +844,7 @@ corellia_static_spawns = {
 	{"criminal",60,6871.34,315,-5753.42,355.947,0, "calm", ""},
 	{"crowley",60,-3404.73,86,3092.64,323.239,0, "calm", ""},
 	{"dac_axfow",60,-3143.7,31,2803.73,233.156,0, "neutral", ""},
-	{"daclif_gallamby",60,-35.6875,1.29422,-1.70805,88.4786,1855467, "calm", ""},
+	--{"daclif_gallamby",60,-35.6875,1.29422,-1.70805,88.4786,1855467, "calm", ""},
 	{"dannik_malaan",60,-451.472,28,-4572.05,218.458,0, "calm", "Dannik Malaan"},
 	{"death_watch_herald_rebel",1,-213.642,28,-4445.46,28.5501,0, "", ""},
 	{"denell_kelvannon",60,-3414.11,74,3336.52,28.1393,0, "calm", "Denell Kel'Vannon"},

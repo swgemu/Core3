@@ -189,6 +189,8 @@ public:
 
 	Instrument* getInstrument(CreatureObject* creature);
 
+	String getPerformanceName();
+
 	void addWatcher(CreatureObject* creature);
 
 	void addListener(CreatureObject* listener);
@@ -355,6 +357,8 @@ public:
 
 	Instrument* getInstrument(CreatureObject* creature);
 
+	String getPerformanceName();
+
 	void addWatcher(CreatureObject* creature);
 
 	void addListener(CreatureObject* listener);
@@ -487,6 +491,8 @@ public:
 	void activateEntertainerBuff(CreatureObject* creature, int performanceType);
 
 	Instrument* getInstrument(CreatureObject* creature);
+
+	String getPerformanceName();
 
 	void addWatcher(CreatureObject* creature);
 

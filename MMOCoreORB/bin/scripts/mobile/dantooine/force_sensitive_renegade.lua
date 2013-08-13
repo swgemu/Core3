@@ -42,10 +42,9 @@ force_sensitive_renegade = Creature:new {
 			lootChance = 4500000
 		}	
 	},
-	weapons = {},
+	weapons = {"mixed_force_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(pikemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(force_sensitive_renegade, "force_sensitive_renegade")

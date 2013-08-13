@@ -16,7 +16,7 @@
  *	DraftSchematicStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_,RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_,RPC_SETGROUPNAME__STRING_,RPC_GETGROUPNAME__,RPC_GETDRAFTSLOTCOUNT__,RPC_ISVALIDDRAFTSCHEMATIC__,RPC_GETRESOURCEWEIGHTCOUNT__,RPC_GETCOMPLEXITY__,RPC_GETTOOLTAB__,RPC_GETSIZE__,RPC_GETXPTYPE__,RPC_GETXPAMOUNT__,RPC_GETASSEMBLYSKILL__,RPC_GETEXPERIMENTATIONSKILL__,RPC_GETCUSTOMIZATIONSKILL__,RPC_GETCUSTOMNAME__,RPC_GETTANOCRC__,RPC_GETTEMPLATELISTSIZE__,RPC_GETTEMPLATE__INT_,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_,RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_,RPC_SETGROUPNAME__STRING_,RPC_GETGROUPNAME__,RPC_GETDRAFTSLOTCOUNT__,RPC_ISVALIDDRAFTSCHEMATIC__,RPC_GETRESOURCEWEIGHTCOUNT__,RPC_GETCOMPLEXITY__,RPC_GETTOOLTAB__,RPC_GETSIZE__,RPC_GETXPTYPE__,RPC_GETXPAMOUNT__,RPC_GETASSEMBLYSKILL__,RPC_GETEXPERIMENTATIONSKILL__,RPC_GETCUSTOMIZATIONSKILL__,RPC_GETCUSTOMNAME__,RPC_GETTANOCRC__,RPC_GETTEMPLATELISTSIZE__,RPC_GETTEMPLATE__INT_,RPC_GETLABRATORY__};
 
 DraftSchematic::DraftSchematic() : IntangibleObject(DummyConstructorParameter::instance()) {
 	DraftSchematicImplementation* _implementation = new DraftSchematicImplementation();
@@ -385,6 +385,19 @@ DraftSchematicObjectTemplate* DraftSchematic::getDraftSchematicTemplate() {
 		return _implementation->getDraftSchematicTemplate();
 }
 
+int DraftSchematic::getLabratory() {
+	DraftSchematicImplementation* _implementation = static_cast<DraftSchematicImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETLABRATORY__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getLabratory();
+}
+
 DistributedObjectServant* DraftSchematic::_getImplementation() {
 
 	 if (!_updated) _updated = true;
@@ -683,6 +696,11 @@ void DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			resp->insertAscii(getTemplate(inv->getSignedIntParameter()));
 		}
 		break;
+	case RPC_GETLABRATORY__:
+		{
+			resp->insertSignedInt(getLabratory());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -774,6 +792,10 @@ int DraftSchematicAdapter::getTemplateListSize() {
 
 String DraftSchematicAdapter::getTemplate(int i) {
 	return (static_cast<DraftSchematic*>(stub))->getTemplate(i);
+}
+
+int DraftSchematicAdapter::getLabratory() {
+	return (static_cast<DraftSchematic*>(stub))->getLabratory();
 }
 
 /*

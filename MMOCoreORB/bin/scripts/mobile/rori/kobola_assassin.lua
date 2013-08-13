@@ -32,12 +32,12 @@ kobola_assassin = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 5050000},
+				{group = "junk", chance = 2400000},
 				{group = "tailor_components", chance = 2000000},
 				{group = "loot_kit_parts", chance = 2000000},
-				{group = "kobola_common", chance = 950000}
+				{group = "kobola_common", chance = 3600000}
 			},
-			lootChance = 3200000
+			lootChance = 2500000
 		}					
 	},
 	weapons = {"pirate_weapons_medium"},

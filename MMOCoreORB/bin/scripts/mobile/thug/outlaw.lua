@@ -26,7 +26,19 @@ outlaw = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_criminal_assassin_human_female_01.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+	        groups = {
+			{group = "junk", chance = 5500000},
+			{group = "armor_looted", chance = 500000},
+			{group = "rifles", chance = 1000000},
+			{group = "pistols", chance = 1000000},
+			{group = "melee_weapons", chance = 1000000},
+			{group = "carbines", chance = 1000000},
+		},
+			lootChance = 2600000
+		}
+	},
 	weapons = {"pirate_weapons_light"},
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }

@@ -6,6 +6,7 @@
 #include "server/zone/templates/tangible/CharacterBuilderTerminalTemplate.h"
 #include "CharacterBuilderMenuNode.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 void CharacterBuilderTerminalImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -16,11 +17,6 @@ void CharacterBuilderTerminalImplementation::loadTemplateData(SharedObjectTempla
 		return;
 
 	rootNode = terminalData->getItemList();
-
-	performanceBuff = terminalData->getPerformanceBuff();
-	medicalBuff = terminalData->getMedicalBuff();
-	performanceDuration = terminalData->getPerformanceDuration();
-	medicalDuration = terminalData->getMedicalDuration();
 
 	//info("loaded " + String::valueOf(itemList.size()));
 }
@@ -57,39 +53,10 @@ void CharacterBuilderTerminalImplementation::sendInitialChoices(CreatureObject* 
 	player->getPlayerObject()->addSuiBox(sui);
 }
 
-bool CharacterBuilderTerminalImplementation::doEnhanceCharacter(uint32 crc, CreatureObject* player, int amount, int duration, int buffType, uint8 attribute) {
-	if (player == NULL)
-		return false;
-
-	if (player->hasBuff(crc))
-		return false;
-
-	ManagedReference<Buff*> buff = new Buff(player, crc, duration, buffType);
-	buff->setAttributeModifier(attribute, amount);
-	player->addBuff(buff);
-
-	return true;
-}
-
 void CharacterBuilderTerminalImplementation::enhanceCharacter(CreatureObject* player) {
-	if (player == NULL)
-		return;
+	PlayerManager* pm = player->getZoneServer()->getPlayerManager();
 
-	bool message = true;
-
-	message = message && doEnhanceCharacter(0x98321369, player, medicalBuff, medicalDuration, BuffType::MEDICAL, 0); // medical_enhance_health
-	message = message && doEnhanceCharacter(0x815D85C5, player, medicalBuff, medicalDuration, BuffType::MEDICAL, 1); // medical_enhance_strength
-	message = message && doEnhanceCharacter(0x7F86D2C6, player, medicalBuff, medicalDuration, BuffType::MEDICAL, 2); // medical_enhance_constitution
-	message = message && doEnhanceCharacter(0x4BF616E2, player, medicalBuff, medicalDuration, BuffType::MEDICAL, 3); // medical_enhance_action
-	message = message && doEnhanceCharacter(0x71B5C842, player, medicalBuff, medicalDuration, BuffType::MEDICAL, 4); // medical_enhance_quickness
-	message = message && doEnhanceCharacter(0xED0040D9, player, medicalBuff, medicalDuration, BuffType::MEDICAL, 5); // medical_enhance_stamina
-
-	message = message && doEnhanceCharacter(0x11C1772E, player, performanceBuff, performanceDuration, BuffType::PERFORMANCE, 6); // performance_enhance_dance_mind
-	message = message && doEnhanceCharacter(0x2E77F586, player, performanceBuff, performanceDuration, BuffType::PERFORMANCE, 7); // performance_enhance_music_focus
-	message = message && doEnhanceCharacter(0x3EC6FCB6, player, performanceBuff, performanceDuration, BuffType::PERFORMANCE, 8); // performance_enhance_music_willpower
-
-	if (message)
-		player->sendSystemMessage("An unknown force strengthens you for battles yet to come.");
+	pm->enhanceCharacter(player);
 }
 
 void CharacterBuilderTerminalImplementation::giveLanguages(CreatureObject* player) {

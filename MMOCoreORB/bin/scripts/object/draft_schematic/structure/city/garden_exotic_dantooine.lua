@@ -73,6 +73,8 @@ object_draft_schematic_structure_city_garden_exotic_dantooine = object_draft_sch
    targetTemplate = "object/tangible/deed/city_deed/garden_dantooine_lrg_01_deed.iff",
 
    additionalTemplates = {
+			"object/tangible/deed/city_deed/shared_garden_dantooine_med_01_deed.iff",
+			"object/tangible/deed/city_deed/shared_garden_dantooine_sml_01_deed.iff",
              }
 
 }

@@ -42,6 +42,9 @@
 
 
 object_tangible_component_dna_dna_sample_low = object_tangible_component_dna_shared_dna_sample_low:new {
+	quality = "Low",
+	templateType = DNASAMPLE,	
+	gameObjectType = 262158
 
 }
 

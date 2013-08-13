@@ -85,23 +85,29 @@ public:
 			return;
 
 		} else { //leader is in a group.
-			if (instrumentType > 0) { //the leader specified a valid instrument.
-				if (!musicflourish) {
-					return;
-				}
-				leader->sendSystemMessage("@performance:flourish_perform_band_self"); //"Your band performs a flourish."
-				if (leader->isPlayingMusic() && leaderInstrument == instrumentType && session->isAcceptingBandFlourishes()) {
-					session->doFlourish(Integer::valueOf(number));
-				}
+			CreatureObject* groupLeader = cast<CreatureObject*>(group->getLeader());
 
-			} else { //no instrument specified.
-				leader->sendSystemMessage("@performance:flourish_perform_band_self"); //"Your band performs a flourish."
-				if (session->isAcceptingBandFlourishes()) {
-					session->doFlourish(Integer::valueOf(number));
+			if (leader == groupLeader) {
+				if (instrumentType > 0) { //the leader specified a valid instrument.
+					if (!musicflourish) {
+						return;
+					}
+					leader->sendSystemMessage("@performance:flourish_perform_band_self"); //"Your band performs a flourish."
+					if (leader->isPlayingMusic() && leaderInstrument == instrumentType && session->isAcceptingBandFlourishes()) {
+						session->doFlourish(Integer::valueOf(number));
+					}
+
+				} else { //no instrument specified.
+					leader->sendSystemMessage("@performance:flourish_perform_band_self"); //"Your band performs a flourish."
+					if (session->isAcceptingBandFlourishes()) {
+						session->doFlourish(Integer::valueOf(number));
+					}
 				}
+			} else {
+				leader->sendSystemMessage("You must be the leader to issue a band flourish.");
+				return;
 			}
 		}
-
 		//Make group members flourish.
 		StringIdChatParameter params;
 		params.setTT(leader->getFirstName());

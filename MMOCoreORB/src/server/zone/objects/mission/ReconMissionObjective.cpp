@@ -246,15 +246,13 @@ ReconMissionObjectiveImplementation::ReconMissionObjectiveImplementation(Mission
 }
 
 void ReconMissionObjectiveImplementation::finalize() {
-	// server/zone/objects/mission/ReconMissionObjective.idl():  		Logger.info("deleting from memory", true);
-	Logger::info("deleting from memory", true);
 }
 
 void ReconMissionObjectiveImplementation::initializeTransientMembers() {
 	// server/zone/objects/mission/ReconMissionObjective.idl():  		super.initializeTransientMembers();
 	MissionObjectiveImplementation::initializeTransientMembers();
-	// server/zone/objects/mission/ReconMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
-	Logger::setLoggingName("MissionObject");
+	// server/zone/objects/mission/ReconMissionObjective.idl():  		Logger.setLoggingName("ReconMissionObjective");
+	Logger::setLoggingName("ReconMissionObjective");
 	// server/zone/objects/mission/ReconMissionObjective.idl():  		activate();
 	activate();
 }

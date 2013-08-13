@@ -53,17 +53,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 	gameObjectType = 16400,
 			
 	maxCondition = 0,
-	
-	performanceBuff = 1000,
-	
-	medicalBuff = 1900,
-	
-	-- Duration in seconds
-	performanceDuration = 7200,
-	
-	-- Duration in seconds
-	medicalDuration = 7200,
-	
+
 	templateType = CHARACTERBUILDERTERMINAL,
 
 	itemList = {

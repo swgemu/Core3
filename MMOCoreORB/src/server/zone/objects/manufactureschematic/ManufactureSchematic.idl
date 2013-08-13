@@ -337,4 +337,6 @@ class ManufactureSchematic extends IntangibleObject {
 	public BlueprintEntry getBlueprintEntry(int i) {
 		return factoryBlueprint.getConsolidatedEntry(i);
 	}
+	
+	public native int getLabratory();
 }

@@ -30,19 +30,20 @@ borvos_mercenary = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 68000000},
+				{group = "junk", chance = 40000000},
 				{group = "color_crystals", chance = 200000},
 				{group = "tailor_components", chance = 1000000},
 				{group = "loot_kit_parts", chance = 1000000},
 				{group = "rilfes", chance = 500000},
-				{group = "carbines", chance = 500000}
+				{group = "carbines", chance = 500000},
+				{group = "borvos_common", chance = 2800000}
 			},
-			lootChance = 3200000
+			lootChance = 2400000
 		}				
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlernovice,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(borvos_mercenary, "borvos_mercenary")

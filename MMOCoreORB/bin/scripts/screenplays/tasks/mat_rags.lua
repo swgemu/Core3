@@ -1,7 +1,7 @@
 mat_rags_missions =
 {
 	{ 
-		missionType = "assassinate",
+		missionType = "confiscate",
 		silentTarget = "yes",
 		primarySpawns = 
 		{ 
@@ -18,7 +18,7 @@ mat_rags_missions =
 		}
 	},
 	{
-		missionType = "assassinate",
+		missionType = "confiscate",
 		silentTarget = "yes",
 		primarySpawns = 
 		{ 
@@ -35,7 +35,7 @@ mat_rags_missions =
 		}
 	},
 	{
-		missionType = "assassinate",
+		missionType = "confiscate",
 		silentTarget = "yes",
 		primarySpawns = 
 		{ 
@@ -52,7 +52,7 @@ mat_rags_missions =
 		}
 	},	
 	{
-		missionType = "assassinate",
+		missionType = "confiscate",
 		silentTarget = "yes",
 		primarySpawns = 
 		{ 

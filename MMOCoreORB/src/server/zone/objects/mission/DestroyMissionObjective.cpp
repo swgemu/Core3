@@ -371,8 +371,8 @@ void DestroyMissionObjectiveImplementation::finalize() {
 void DestroyMissionObjectiveImplementation::initializeTransientMembers() {
 	// server/zone/objects/mission/DestroyMissionObjective.idl():  		super.initializeTransientMembers();
 	MissionObjectiveImplementation::initializeTransientMembers();
-	// server/zone/objects/mission/DestroyMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
-	Logger::setLoggingName("MissionObject");
+	// server/zone/objects/mission/DestroyMissionObjective.idl():  		Logger.setLoggingName("DestroyMissionObjective");
+	Logger::setLoggingName("DestroyMissionObjective");
 }
 
 void DestroyMissionObjectiveImplementation::setDifficulty(int diff) {

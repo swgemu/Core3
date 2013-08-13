@@ -42,7 +42,12 @@
 
 
 object_tangible_loot_loot_schematic_stove_schematic = object_tangible_loot_loot_schematic_shared_stove_schematic:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "crafting_chef_master",
+	targetDraftSchematic = "object/draft_schematic/furniture/furniture_stove.iff",
+	targetUseCount = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_stove_schematic, "object/tangible/loot/loot_schematic/stove_schematic.iff")

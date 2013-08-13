@@ -52,7 +52,7 @@ object_draft_schematic_furniture_furniture_stove = object_draft_schematic_furnit
    size = 1, 
 
    xpType = "crafting_food_general", 
-   xp = 230, 
+   xp = 130, 
 
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 

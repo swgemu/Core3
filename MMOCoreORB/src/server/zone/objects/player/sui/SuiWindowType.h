@@ -61,7 +61,8 @@ public:
 	static const uint16 MUSIC_CHANGE = 12;
 	static const uint16 DANCING_START = 13;
 	static const uint16 DANCING_CHANGE = 14;
-	static const uint16 BAND_CHANGE = 15;
+	static const uint16 BAND_START = 15;
+	static const uint16 BAND_CHANGE = 16;
 
 	//Guilds 21 - 50
 	static const uint16 GUILD_CREATE_NAME = 21;

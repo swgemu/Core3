@@ -1,7 +1,7 @@
 booto_lubble_missions =
 {
 	{ 
-		missionType = "assassinate",
+		missionType = "confiscate",
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "luhin_jinnor", planetName = "rori", npcName = "Warrant Officer Luhin Jinnor" } 
@@ -22,7 +22,7 @@ booto_lubble_missions =
 		}
 	},
 	{
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
 			{ npcTemplate = "rohd_gostervek", planetName = "rori", npcName = "Captain Rohd Gostervek" }	
@@ -63,7 +63,7 @@ BootoLubble = ThemeParkLogic:new {
 	permissionMap = {},
 	className = "BootoLubble",
 	screenPlayState = "booto_lubble_quest",
-	distance = 1200,
+	distance = 800,
 	missionDescriptionStf = "",
 	missionCompletionMessageStf = "@theme_park/messages:static_completion_message",
 	faction = FACTIONREBEL

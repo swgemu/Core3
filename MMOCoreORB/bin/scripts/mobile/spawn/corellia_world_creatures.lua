@@ -169,15 +169,6 @@ corellia_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "corellia_drall_patriot_camp_neutral_medium_theater",
-			spawnLimit = -1,
-			minDifficulty = 10,
-			maxDifficulty = 16,
-			numberToSpawn = 0,
-			weighting = 0,
-			size = 25
-		},	
-		{
 			lairTemplateName = "corellia_gulginaw_nest_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 11,
@@ -265,15 +256,6 @@ corellia_world_creatures = {
 			maxDifficulty = 34,
 			numberToSpawn = 0,
 			weighting = 15,
-			size = 25
-		},
-		{
-			lairTemplateName = "corellia_hidden_daggers_camp_neutral_medium_theater",
-			spawnLimit = -1,
-			minDifficulty = 9,
-			maxDifficulty = 15,
-			numberToSpawn = 0,
-			weighting = 0,
 			size = 25
 		}
 	}

@@ -70,7 +70,7 @@ object_draft_schematic_item_item_firework_three = object_draft_schematic_item_sh
    contribution = {100, 100, 100, 100},
 
 
-   targetTemplate = "object/tangible/firework/firework_three.iff",
+   targetTemplate = "object/tangible/firework/firework_s03.iff",
 
    additionalTemplates = {
              }

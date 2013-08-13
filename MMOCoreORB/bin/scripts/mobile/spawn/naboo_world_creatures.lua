@@ -312,24 +312,6 @@ naboo_world_creatures = {
 			weighting = 15,
 			size = 25
 		},
- 		{
- 			lairTemplateName = "naboo_gungan_hermit_neutral_small_theater",
- 			spawnLimit = -1,
- 			minDifficulty = 10,
- 			maxDifficulty = 15,
- 			numberToSpawn = 0,
- 			weighting = 15,
- 			size = 25
- 		},
- 		{
- 			lairTemplateName = "naboo_gungan_mercenary_camp_neutral_large_theater",
- 			spawnLimit = -1,
- 			minDifficulty = 13,
- 			maxDifficulty = 27,
- 			numberToSpawn = 0,
- 			weighting = 15,
- 			size = 25
- 		},
 		{
 			lairTemplateName = "naboo_gualama_small_lair_neutral_medium",
 			spawnLimit = -1,

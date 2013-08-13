@@ -61,6 +61,10 @@ class Creature extends AiAgent {
 	private transient SortedVector<unsigned long> alreadyHarvested;
 
 	private short milkState;
+	
+	private short dnaState;
+	
+	private short dnaSampleCount;
 
 	public Creature() {
 		Logger.setLoggingName("Creature");
@@ -79,6 +83,16 @@ class Creature extends AiAgent {
 		return true;
 	}
 	
+	public short getDnaState() {
+		return dnaState;
+	}
+
+	public short getDnaSampleCount(){
+		return dnaSampleCount;	
+	}
+	public void incDnaSampleCount() {
+		dnaSampleCount++;	
+	}
 	public boolean isCamouflaged(CreatureObject target) {
 		return isScentMasked(target) || isConcealed(target);
 	}
@@ -105,15 +119,23 @@ class Creature extends AiAgent {
 
 	public native boolean hasMilk();
 	
+	public native boolean hasDNA();
+	
 	public native boolean canHarvestMe(CreatureObject player);
 
 	public native boolean hasSkillToHarvestMe(CreatureObject player);
 
 	public native boolean canMilkMe(CreatureObject player);
+
+	public native boolean canCollectDna(CreatureObject player);
+
+	public native boolean hasSkillToSampleMe(CreatureObject player);
 	
 	public native void addAlreadyHarvested(CreatureObject player);
 
 	public native void setMilkState(short milkState);
+
+	public native void setDnaState(short dnaState);
 	
 	public native void notifyDespawn(Zone zone);
 	
@@ -184,3 +206,4 @@ class Creature extends AiAgent {
 		return super.npcTemplate.getMeatMax();
 	}
 }
+

@@ -172,10 +172,7 @@ class StructureObject extends TangibleObject {
 	 * @param playerName The name of the player to check for admin permission.
 	 * @return Returns true if the player name has admin permissions.
 	 */
-	public boolean isOnAdminList(CreatureObject player) {
-		return structurePermissionList.isOnPermissionList("ADMIN", player.getFirstName()) 
-		|| (player.isPlayerCreature() && player.getPlayerObject().isPrivileged());
-	}
+	public native boolean isOnAdminList(CreatureObject player);
 	
 	/**
 	 * Checks if the playerName is on the admin list.
@@ -183,8 +180,8 @@ class StructureObject extends TangibleObject {
 	 * @param playerName The name of the player to check for admin permission.
 	 * @return Returns true if the player name has admin permissions.
 	 */
-	public boolean isOnAdminList(final string firstName) {
-		return structurePermissionList.isOnPermissionList("ADMIN", firstName);
+	public boolean isOnAdminList(final string firstName, boolean caseSensitive = false) {
+		return structurePermissionList.isOnPermissionList("ADMIN", firstName, caseSensitive);
 	}
 	
 	/**
@@ -192,22 +189,14 @@ class StructureObject extends TangibleObject {
 	 * @param playerName The name of the player to check for entry permission.
 	 * @return Returns true if the player name has entry permissions.
 	 */
-	public boolean isOnEntryList(CreatureObject player) {
-		return structurePermissionList.isOnPermissionList("ENTRY", player.getFirstName())
-			|| structurePermissionList.isOnPermissionList("ADMIN", player.getFirstName())
-			|| structurePermissionList.isOnPermissionList("VENDOR", player.getFirstName())
-			|| (player.isPlayerCreature() && player.getPlayerObject().isPrivileged());
-	}
+	public native boolean isOnEntryList(CreatureObject player);
 	
 	/**
 	 * Checks if the playerName is on the ban list.
 	 * @param playerName The name of the player to check for ban permission.
 	 * @return Returns true if the player name has ban permissions.
 	 */
-	public boolean isOnBanList(CreatureObject player) {
-		return structurePermissionList.isOnPermissionList("BAN", player.getFirstName())
-		&& (player.isPlayerCreature() && !player.getPlayerObject().isPrivileged());
-	}
+	public native boolean isOnBanList(CreatureObject player);
 	
 	/**
 	 * Checks if the playerName is on the ban list.
@@ -215,8 +204,8 @@ class StructureObject extends TangibleObject {
 	 * @param playerName The name of the player to check for ban permission.
 	 * @return Returns true if the player name has ban permissions.
 	 */
-	public boolean isOnBanList(final string firstName) {
-		return structurePermissionList.isOnPermissionList("BAN", firstName);
+	public boolean isOnBanList(final string firstName, boolean caseSensitive = false) {
+		return structurePermissionList.isOnPermissionList("BAN", firstName, caseSensitive);
 	}
 	
 	/**
@@ -224,11 +213,7 @@ class StructureObject extends TangibleObject {
 	 * @param playerName The name of the player to check for hopper permission.
 	 * @return Returns true if the player name has hopper permissions.
 	 */
-	public boolean isOnHopperList(CreatureObject player) {
-		return structurePermissionList.isOnPermissionList("HOPPER", player.getFirstName())
-		|| structurePermissionList.isOnPermissionList("ADMIN", player.getFirstName())
-		|| (player.isPlayerCreature() && player.getPlayerObject().isPrivileged());
-	}
+	public native boolean isOnHopperList(CreatureObject player);
 	
 	/**
 	 * Checks if the player name is the on the specified permission list.
@@ -236,10 +221,7 @@ class StructureObject extends TangibleObject {
 	 * @param playerName The name of the player to check.
 	 * @return Returns true if the player name was found on the list.
 	 */
-	public boolean isOnPermissionList(final string listName, CreatureObject player) {
-		return structurePermissionList.isOnPermissionList(listName, player.getFirstName())
-		|| (player.isPlayerCreature() && player.getPlayerObject().isPrivileged());
-	}
+	public native boolean isOnPermissionList(final string listName, CreatureObject player);
 	
 	/**
 	 * Checks if the player name is the on the specified permission list.
@@ -248,8 +230,8 @@ class StructureObject extends TangibleObject {
 	 * @param firstName The name of the player to check.
 	 * @return Returns true if the player name was found on the list.
 	 */
-	public boolean isOnPermissionList(final string listName, final string firstName) {
-		return structurePermissionList.isOnPermissionList(listName, firstName);
+	public boolean isOnPermissionList(final string listName, final string firstName, boolean caseSensitive = false) {
+		return structurePermissionList.isOnPermissionList(listName, firstName, caseSensitive);
 	}
 
 	public native boolean isOwnerOf(SceneObject obj);
@@ -275,20 +257,20 @@ class StructureObject extends TangibleObject {
 		return structurePermissionList.isListFull(listName);
 	}
 	
-	public int togglePermission(final string listName, final string targetName) {
-		return structurePermissionList.togglePermission(listName, targetName);
+	public int togglePermission(final string listName, final string targetName, boolean caseSensitive = false) {
+		return structurePermissionList.togglePermission(listName, targetName, caseSensitive);
 	}
 	
-	public int grantPermission(final string listName, final string targetName) {
-		return structurePermissionList.grantPermission(listName, targetName);
+	public int grantPermission(final string listName, final string targetName, boolean caseSensitive = false) {
+		return structurePermissionList.grantPermission(listName, targetName, caseSensitive);
 	}
 	
-	public int revokePermission(final string listName, final string targetName) {
-		return structurePermissionList.revokePermission(listName, targetName);
+	public int revokePermission(final string listName, final string targetName, boolean caseSensitive = false) {
+		return structurePermissionList.revokePermission(listName, targetName, caseSensitive);
 	}
 	
-	public int revokeAllPermissions(final string targetName) {
-		return structurePermissionList.revokeAllPermissions(targetName);
+	public int revokeAllPermissions(final string targetName, boolean caseSensitive = false) {
+		return structurePermissionList.revokeAllPermissions(targetName, caseSensitive);
 	}
 
 	public void setOwnerName(final string ownerName) {
