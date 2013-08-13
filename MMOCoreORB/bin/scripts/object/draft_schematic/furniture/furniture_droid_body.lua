@@ -51,8 +51,8 @@ object_draft_schematic_furniture_furniture_droid_body = object_draft_schematic_f
    complexity = 18, 
    size = 1, 
 
-   xpType = "", 
-   xp = 340, 
+   xpType = "crafting_droid_general", 
+   xp = 1480, 
 
    assemblySkill = "droid_assembly", 
    experimentingSkill = "droid_experimentation", 

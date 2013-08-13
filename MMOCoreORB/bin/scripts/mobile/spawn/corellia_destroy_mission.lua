@@ -230,6 +230,15 @@ corellia_destroy_mission = {
 			numberToSpawn = 0,
 			weighting = 0,
 			size = 25
+		},
+		{
+			lairTemplateName = "corellia_meatlump_camp_neutral_medium_theater",
+			spawnLimit = -1,
+			minDifficulty = 8,
+			maxDifficulty = 11,
+			numberToSpawn = 0,
+			weighting = 0,
+			size = 25
 		}
 	}
 }

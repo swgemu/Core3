@@ -43,13 +43,13 @@ meatlump_fool = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 5400000},
+				{group = "junk", chance = 2900000},
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "color_crystals", chance = 100000},
 				{group = "tailor_components", chance = 500000},
-				{group = "meatlump_common", chance = 2500000}
+				{group = "meatlump_common", chance = 5000000}
 			},
-			lootChance = 3200000
+			lootChance = 2200000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

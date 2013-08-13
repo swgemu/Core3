@@ -43,6 +43,38 @@
 
 object_draft_schematic_furniture_furniture_lamp_street = object_draft_schematic_furniture_shared_furniture_lamp_street:new {
 
+   templateType = DRAFTSCHEMATIC,
+
+   customObjectName = "Streetlamp",
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 16, 
+   size = 1, 
+
+   xpType = "crafting_general", 
+   xp = 70, 
+
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+   customizationSkill = "general_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"lamp_body", "lamp_assembly", "shade"},
+   ingredientSlotType = {0, 0, 0},
+   resourceTypes = {"metal", "metal", "mineral"},
+   resourceQuantities = {35, 15, 20},
+   contribution = {100, 100, 100},
+
+
+   targetTemplate = "object/tangible/furniture/decorative/streetlamp.iff",
+
+   additionalTemplates = {
+             }
+
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_lamp_street, "object/draft_schematic/furniture/furniture_lamp_street.iff")
