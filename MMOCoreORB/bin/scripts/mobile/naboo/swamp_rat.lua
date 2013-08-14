@@ -26,7 +26,19 @@ swamp_rat = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_swamp_rat.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 5500000},
+				{group = "rifles", chance = 1000000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "loot_kit_parts", chance = 500000}
+			},
+			lootChance = 1900000
+		}					
+	},
 	weapons = {"pirate_weapons_medium"},
 	attacks = merge(brawlermaster,marksmanmaster)
 }
