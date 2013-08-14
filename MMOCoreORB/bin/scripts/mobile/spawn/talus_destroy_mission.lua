@@ -194,6 +194,15 @@ talus_destroy_mission = {
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
+		},
+		{
+			lairTemplateName = "talus_sleemo_delinquent_camp_neutral_medium_theater",
+			spawnLimit = -1,			
+			minDifficulty = 5,
+			maxDifficulty = 8,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
 		}
 	}
 }
