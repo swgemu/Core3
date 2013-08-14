@@ -37,13 +37,14 @@ rebel_second_lieutenant = Creature:new {
 		{
 	        groups = {
 				{group = "color_crystals", chance = 100000},
-				{group = "junk", chance = 5600000},
+				{group = "junk", chance = 5150000},
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
 				{group = "melee_weapons", chance = 1000000},
 				{group = "carbines", chance = 1000000},
 				{group = "clothing_attachments", chance = 150000},
-				{group = "armor_attachments", chance = 150000}
+				{group = "armor_attachments", chance = 150000},
+				{group = "rebel_officer_common", chance = 450000}
 			},
 			lootChance = 2600000
 		}	
