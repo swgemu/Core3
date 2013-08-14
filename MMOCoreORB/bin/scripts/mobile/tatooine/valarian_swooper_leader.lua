@@ -35,17 +35,18 @@ valarian_swooper_leader = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 6000000},
-				{group = "tailor_components", chance = 5500000},
-				{group = "loot_kit_parts", chance = 1500000}
+				{group = "junk", chance = 4700000},
+				{group = "tailor_components", chance = 1000000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "printer_parts", chance = 1500000},
+				{group = "valarian_common", chance = 800000}
 			},
-			lootChance = 2200000
+			lootChance = 2300000
 		}			
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(valarian_swooper_leader, "valarian_swooper_leader")

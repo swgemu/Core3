@@ -30,7 +30,7 @@ hutt_expeditionary_force_surveyor = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 2600000},
+				{group = "junk", chance = 3400000},
 				{group = "tailor_components", chance = 1000000},
 				{group = "loot_kit_parts", chance = 1000000},
 				{group = "color_crystals", chance = 200000},
@@ -40,7 +40,7 @@ hutt_expeditionary_force_surveyor = Creature:new {
 				{group = "rifles", chance = 600000},
 				{group = "clothing_attachments", chance = 200000},
 				{group = "armor_attachments", chance = 200000},
-				{group = "hutt_exp_common", chance = 2800000}
+				{group = "hutt_exp_common", chance = 2000000}
 			},
 			lootChance = 2500000
 		}

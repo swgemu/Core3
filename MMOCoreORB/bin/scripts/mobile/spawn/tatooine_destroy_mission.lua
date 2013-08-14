@@ -203,6 +203,24 @@ tatooine_destroy_mission = {
 			numberToSpawn = 0,
 			weighting = 0,
 			size = 25
+		},
+		{
+			lairTemplateName = "valarian_swooper_camp",
+			spawnLimit = -1,
+			minDifficulty = 9,
+			maxDifficulty = 14,
+			numberToSpawn = 0,
+			weighting = 0,
+			size = 25
+		},
+		{
+			lairTemplateName = "valarian_camp",
+			spawnLimit = -1,
+			minDifficulty = 7,
+			maxDifficulty = 11,
+			numberToSpawn = 0,
+			weighting = 0,
+			size = 25
 		}
 	}
 }
