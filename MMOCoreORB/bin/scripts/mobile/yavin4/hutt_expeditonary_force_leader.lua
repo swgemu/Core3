@@ -27,7 +27,24 @@ hutt_expeditonary_force_leader = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_hutt_expedition_force_leader.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 2600000},
+				{group = "tailor_components", chance = 1000000},
+				{group = "loot_kit_parts", chance = 1000000},
+				{group = "color_crystals", chance = 200000},
+				{group = "crystals_poor", chance = 200000},
+				{group = "pistols", chance = 600000},
+				{group = "carbines", chance = 600000},
+				{group = "rifles", chance = 600000},
+				{group = "clothing_attachments", chance = 200000},
+				{group = "armor_attachments", chance = 200000},
+				{group = "hutt_exp_common", chance = 2800000}
+			},
+			lootChance = 2600000
+		}
+},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = merge(brawlermaster,marksmanmaster)
