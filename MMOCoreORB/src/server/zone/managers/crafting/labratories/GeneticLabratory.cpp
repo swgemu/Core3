@@ -45,7 +45,7 @@ float GeneticLabratory::applyFormula(float aVal, float bVal, float cVal, float d
 	}
 	return 0;
 }
-String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String d, String e) {
+String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String d, String e, int odds) {
 	String effectiveSpecial = "";
 	if (a.isEmpty()) {
 		int rand = System::random(3);
@@ -68,16 +68,16 @@ String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String 
 	} else {
 		effectiveSpecial = a;
 	}
-	int odds = System::random(1000);
-	if (odds > 750) {
-		if (effectiveSpecial == "defaultattack" ||
-			effectiveSpecial == "creatureareacombo" ||
-			effectiveSpecial == "creatureareableeding" ||
-			effectiveSpecial == "creatureareaknockdown" ||
-			effectiveSpecial == "creatureareadisease" ||
-			effectiveSpecial == "creatureareapoison")
-			effectiveSpecial = "";
-
+	if (effectiveSpecial == "defaultattack" ||
+		effectiveSpecial == "creatureareacombo" ||
+		effectiveSpecial == "creatureareableeding" ||
+		effectiveSpecial == "creatureareaknockdown" ||
+		effectiveSpecial == "creatureareadisease" ||
+		effectiveSpecial == "creatureareapoison")
+		effectiveSpecial = "";
+	int roll = System::random(1000);
+	if (roll > odds ) {
+		effectiveSpecial = "";
 	}
 	return effectiveSpecial;
 }
@@ -163,6 +163,7 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	craftingValues->addExperimentalProperty("expPsychologicalProfile","courage",couMin,couMax,0,false,CraftingManager::LINEARCOMBINE);
 	craftingValues->addExperimentalProperty("expAggressionProfile","fierceness",fieMin,fieMax,0,false,CraftingManager::LINEARCOMBINE);
 	craftingValues->addExperimentalProperty("expAggressionProfile","power",powMin,powMax,0,false,CraftingManager::LINEARCOMBINE);
+
 	craftingValues->addExperimentalProperty("","dna_comp_armor_kinetic",calcResistMin(kinetic,modifier),kinetic,0,true,CraftingManager::OVERRIDECOMBINE);
 	craftingValues->addExperimentalProperty("","dna_comp_armor_blast",calcResistMin(blast,modifier),blast,0,true,CraftingManager::OVERRIDECOMBINE);
 	craftingValues->addExperimentalProperty("","dna_comp_armor_energy",calcResistMin(energy,modifier),energy,0,true,CraftingManager::OVERRIDECOMBINE);
@@ -172,59 +173,109 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	craftingValues->addExperimentalProperty("","dna_comp_armor_acid",calcResistMin(acid,modifier),acid,0,true,CraftingManager::OVERRIDECOMBINE);
 	craftingValues->addExperimentalProperty("","dna_comp_armor_stun",calcResistMin(stun,modifier),stun,0,true,CraftingManager::OVERRIDECOMBINE);
 	craftingValues->addExperimentalProperty("","dna_comp_armor_saber",calcResistMin(saber,modifier),saber,0,true,CraftingManager::OVERRIDECOMBINE);
+
+	craftingValues->setMaxPercentage("dna_comp_armor_kinetic",1);
+	craftingValues->setMaxPercentage("dna_comp_armor_blast",1);
+	craftingValues->setMaxPercentage("dna_comp_armor_energy",1);
+	craftingValues->setMaxPercentage("dna_comp_armor_heat",1);
+	craftingValues->setMaxPercentage("dna_comp_armor_cold",1);
+	craftingValues->setMaxPercentage("dna_comp_armor_electric",1);
+	craftingValues->setMaxPercentage("dna_comp_armor_acid",1);
+	craftingValues->setMaxPercentage("dna_comp_armor_stun",1);
+	craftingValues->setMaxPercentage("dna_comp_armor_saber",1);
+
+	if (kinetic > 0)
+		craftingValues->setCurrentPercentage("dna_comp_armor_kinetic",calcResistMin(kinetic,modifier)/kinetic);
+	else
+		craftingValues->setCurrentPercentage("dna_comp_armor_kinetic",1);
+	if (blast > 0)
+		craftingValues->setCurrentPercentage("dna_comp_armor_blast",calcResistMin(blast,modifier)/blast);
+	else
+		craftingValues->setCurrentPercentage("dna_comp_armor_blast",1);
+	if (energy > 0)
+		craftingValues->setCurrentPercentage("dna_comp_armor_energy",calcResistMin(energy,modifier)/energy);
+	else
+		craftingValues->setCurrentPercentage("dna_comp_armor_energy",1);
+	if (heat > 0)
+		craftingValues->setCurrentPercentage("dna_comp_armor_heat",calcResistMin(heat,modifier)/heat);
+	else
+		craftingValues->setCurrentPercentage("dna_comp_armor_heat",1);
+	if (cold > 0)
+		craftingValues->setCurrentPercentage("dna_comp_armor_cold",calcResistMin(cold,modifier)/cold);
+	else
+		craftingValues->setCurrentPercentage("dna_comp_armor_cold",1);
+	if (electric > 0)
+		craftingValues->setCurrentPercentage("dna_comp_armor_electric",calcResistMin(electric,modifier)/electric);
+	else
+		craftingValues->setCurrentPercentage("dna_comp_armor_electric",calcResistMin(electric,modifier)/electric);
+	if (acid > 0)
+		craftingValues->setCurrentPercentage("dna_comp_armor_acid",calcResistMin(acid,modifier)/acid);
+	else
+		craftingValues->setCurrentPercentage("dna_comp_armor_acid",1);
+	if (stun > 0)
+		craftingValues->setCurrentPercentage("dna_comp_armor_stun",calcResistMin(stun,modifier)/stun);
+	else
+		craftingValues->setCurrentPercentage("dna_comp_armor_stun",1);
+	if (saber > 0)
+		craftingValues->setCurrentPercentage("dna_comp_armor_saber",calcResistMin(saber,modifier)/saber);
+	else
+		craftingValues->setCurrentPercentage("dna_comp_armor_saber",1);
+
+
 	// Calc the max Percentage, vs Min Percentage
-	craftingValues->setMaxPercentage("fortitude",(fortMax/10.0f) * 0.01f);
-	craftingValues->setCurrentPercentage("fortitude", getAssemblyPercentage(fortMin) * modifier);
+	craftingValues->setMaxPercentage("fortitude",1);
+	craftingValues->setCurrentPercentage("fortitude", ((float)fortMin/(float)fortMax) * modifier);
 
-	craftingValues->setMaxPercentage("hardiness",(harMax/10.0f) * 0.01f);
-	craftingValues->setCurrentPercentage("hardiness", getAssemblyPercentage(harMin) * modifier);
+	craftingValues->setMaxPercentage("hardiness",1);
+	craftingValues->setCurrentPercentage("hardiness", ((float)harMin/(float)harMax) * modifier);
 
-	craftingValues->setMaxPercentage("dexterity",(dexMax/10.0f) * 0.01f);
-	craftingValues->setCurrentPercentage("dexterity", getAssemblyPercentage(dexMin) * modifier);
+	craftingValues->setMaxPercentage("dexterity",1);
+	craftingValues->setCurrentPercentage("dexterity", ((float)dexMin/(float)dexMax) * modifier);
 
-	craftingValues->setMaxPercentage("endurance",(endMax/10.0f) * 0.01f);
-	craftingValues->setCurrentPercentage("endurance", getAssemblyPercentage(endMin) * modifier);
+	craftingValues->setMaxPercentage("endurance",1);
+	craftingValues->setCurrentPercentage("endurance", ((float)endMin/(float)endMax) * modifier);
 
-	craftingValues->setMaxPercentage("intellect",(intMax/10.0f) * 0.01f);
-	craftingValues->setCurrentPercentage("intellect", getAssemblyPercentage(intMin) * modifier);
+	craftingValues->setMaxPercentage("intellect",1);
+	craftingValues->setCurrentPercentage("intellect", ((float)intMin/(float)intMax) * modifier);
 
-	craftingValues->setMaxPercentage("cleverness",(cleMax/10.0f) * 0.01f);
-	craftingValues->setCurrentPercentage("cleverness", getAssemblyPercentage(cleMin) * modifier);
+	craftingValues->setMaxPercentage("cleverness",1);
+	craftingValues->setCurrentPercentage("cleverness", ((float)cleMin/(float)cleMax) * modifier);
 
-	craftingValues->setMaxPercentage("dependability",(depMax/10.0f) * 0.01f);
-	craftingValues->setCurrentPercentage("dependability", getAssemblyPercentage(depMin) * modifier);
+	craftingValues->setMaxPercentage("dependability",1);
+	craftingValues->setCurrentPercentage("dependability", ((float)depMin/(float)depMax) * modifier);
 
-	craftingValues->setMaxPercentage("courage",(couMax/10.0f) * 0.01f);
-	craftingValues->setCurrentPercentage("courage", getAssemblyPercentage(couMin) * modifier);
+	craftingValues->setMaxPercentage("courage",1);
+	craftingValues->setCurrentPercentage("courage",((float)couMin/(float)couMax) * modifier);
 
-	craftingValues->setMaxPercentage("fierceness",(fieMax/10.0f) * 0.01f);
-	craftingValues->setCurrentPercentage("fierceness", getAssemblyPercentage(fieMin) * modifier);
+	craftingValues->setMaxPercentage("fierceness",1);
+	craftingValues->setCurrentPercentage("fierceness",((float)fieMin/(float)fieMax) * modifier);
 
-	craftingValues->setMaxPercentage("power",(powMax/10.0f) * 0.01f);
-	craftingValues->setCurrentPercentage("power", getAssemblyPercentage(powMin) * modifier);
+	craftingValues->setMaxPercentage("power",1);
+	craftingValues->setCurrentPercentage("power", ((float)powMin/(float)powMax) * modifier);
 
 	// Figure out the min percentage of the stats
 
 	int quality = (phy->getQuality() + pro->getQuality() + men->getQuality() + psy->getQuality() + agr->getQuality()) / 5;
 	bool ranged = false;
+	int odds = 0;
+	float menQual = 7 - men->getQuality();
+	float psyQual = 7 - psy->getQuality();
 	if (men->isRanged() || psy->isRanged()) {
-		float menQual = 7 - men->getQuality();
-		float psyQual = 7 - psy->getQuality();
 		int chance = System::random(100 - (assemblySuccess * 10)); // so amazing success 100, critical falure is 20
 		// did you roll exceed (7 - Quality) * 10 (VHQ is 0) so always works
 		if (chance > (menQual * 10) || chance > (psyQual * 10))
 			ranged = true;
 	}
+	odds = men->getQuality() * 100;
 	// check for specials here, then we have base assemble work completed.
 	// update crafting values, and/or experimentRow should handle resist calc changes. update crafting values should determine armor setup
-	String sp1 = pickSpecialAttack(agr->getSpecialAttackOne(),psy->getSpecialAttackOne(),phy->getSpecialAttackOne(),men->getSpecialAttackOne(),pro->getSpecialAttackOne());
-	String sp2 = pickSpecialAttack(psy->getSpecialAttackTwo(),pro->getSpecialAttackTwo(),agr->getSpecialAttackTwo(),men->getSpecialAttackTwo(),phy->getSpecialAttackTwo());
+	String sp1 = pickSpecialAttack(agr->getSpecialAttackOne(),psy->getSpecialAttackOne(),phy->getSpecialAttackOne(),men->getSpecialAttackOne(),pro->getSpecialAttackOne(),odds);
+	String sp2 = pickSpecialAttack(psy->getSpecialAttackTwo(),pro->getSpecialAttackTwo(),agr->getSpecialAttackTwo(),men->getSpecialAttackTwo(),phy->getSpecialAttackTwo(),odds);
 	genetic->setSpecialAttackOne(sp1);
 	genetic->setSpecialAttackTwo(sp2);
 	genetic->setRanged(ranged);
 	genetic->setQuality(quality);
 	craftingValues->recalculateValues(true);
-	//System::out << "Crafting Values" << craftingValues->toString() << "\n";
 
 }
 
@@ -233,9 +284,49 @@ void GeneticLabratory::initialize(ZoneServer* server) {
 
 }
 void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffected, int pointsAttempted, float failure, int experimentationResult){
-	float modifier, newValue;
+	float modifier, newValue, valA, valB;
 	String title, subtitle, subtitlesTitle;
 	title = craftingValues->getVisibleExperimentalPropertyTitle(rowEffected);
+	modifier = calculateExperimentationValueModifier(experimentationResult,pointsAttempted);
+
+	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
+		subtitlesTitle = craftingValues->getExperimentalPropertySubtitlesTitle(i);
+		if (subtitlesTitle == title) {
+			subtitle = craftingValues->getExperimentalPropertySubtitle(i);
+			modifier = calculateExperimentationValueModifier(experimentationResult,pointsAttempted);
+			newValue = craftingValues->getCurrentPercentage(subtitle) + modifier;
+
+			if (newValue > 1)
+				newValue = 1;
+
+			if (newValue < 0)
+				newValue = 0;
+
+			craftingValues->setCurrentPercentage(subtitle, newValue);
+		}
+	}
+
+	// Pick random resist to buff up
+	if (craftingValues->getMaxValue("dna_comp_armor_kinetic") > 0)
+		craftingValues->setCurrentPercentage("dna_comp_armor_kinetic",craftingValues->getCurrentPercentage("dna_comp_armor_kinetic") + modifier);
+	if (craftingValues->getMaxValue("dna_comp_armor_blast") > 0)
+		craftingValues->setCurrentPercentage("dna_comp_armor_blast",craftingValues->getCurrentPercentage("dna_comp_armor_blast") + modifier);
+	if (craftingValues->getMaxValue("dna_comp_armor_energy") > 0)
+		craftingValues->setCurrentPercentage("dna_comp_armor_energy",craftingValues->getCurrentPercentage("dna_comp_armor_energy") + modifier);
+	if (craftingValues->getMaxValue("dna_comp_armor_heat") > 0)
+		craftingValues->setCurrentPercentage("dna_comp_armor_heat",craftingValues->getCurrentPercentage("dna_comp_armor_heat") + modifier);
+	if (craftingValues->getMaxValue("dna_comp_armor_cold") > 0)
+		craftingValues->setCurrentPercentage("dna_comp_armor_cold",craftingValues->getCurrentPercentage("dna_comp_armor_cold") + modifier);
+	if (craftingValues->getMaxValue("dna_comp_armor_electric") > 0)
+		craftingValues->setCurrentPercentage("dna_comp_armor_electric",craftingValues->getCurrentPercentage("dna_comp_armor_electric") + modifier);
+	if (craftingValues->getMaxValue("dna_comp_armor_acid") > 0)
+		craftingValues->setCurrentPercentage("dna_comp_armor_acid",craftingValues->getCurrentPercentage("dna_comp_armor_acid") + modifier);
+	if (craftingValues->getMaxValue("dna_comp_armor_stun") > 0)
+		craftingValues->setCurrentPercentage("dna_comp_armor_stun",craftingValues->getCurrentPercentage("dna_comp_armor_stun") + modifier);
+	if (craftingValues->getMaxValue("dna_comp_armor_saber") > 0)
+		craftingValues->setCurrentPercentage("dna_comp_armor_saber",craftingValues->getCurrentPercentage("dna_comp_armor_saber") + modifier);
+
+	/*
 	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
 		subtitlesTitle = craftingValues->getExperimentalPropertySubtitlesTitle(i);
 		if (subtitlesTitle == title) {
@@ -252,5 +343,5 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 			craftingValues->setCurrentPercentage(subtitle, newValue);
 		}
 	}
-
+	*/
 }
