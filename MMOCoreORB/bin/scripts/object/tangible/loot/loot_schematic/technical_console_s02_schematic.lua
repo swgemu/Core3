@@ -42,7 +42,12 @@
 
 
 object_tangible_loot_loot_schematic_technical_console_s02_schematic = object_tangible_loot_loot_schematic_shared_technical_console_s02_schematic:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "crafting_architect_production_04",
+	targetDraftSchematic = "object/draft_schematic/furniture/furniture_technical_console_s02.iff",
+	targetUseCount = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_technical_console_s02_schematic, "object/tangible/loot/loot_schematic/technical_console_s02_schematic.iff")
