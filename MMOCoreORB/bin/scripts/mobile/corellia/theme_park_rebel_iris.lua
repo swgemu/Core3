@@ -32,12 +32,12 @@ theme_park_rebel_iris = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 7000000},
+				{group = "junk", chance = 7900000},
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "color_crystals", chance = 100000},
 				{group = "tailor_components", chance = 500000}
 			},
-			lootChance = 3200000
+			lootChance = 2100000
 		}
 	},
 	weapons = {"pirate_weapons_light"},

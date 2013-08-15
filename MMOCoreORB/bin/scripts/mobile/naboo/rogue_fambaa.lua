@@ -31,9 +31,9 @@ rogue_fambaa = Creature:new {
 	lootGroups = {
 	 {
 	        groups = {
-				{group = "fambaa_common", chance = 3300000}
+				{group = "fambaa_common", chance = 10000000}
 			},
-			lootChance = 6500000
+			lootChance = 2200000
 		}
 	},
 	weapons = {},

@@ -33,8 +33,9 @@ draya_korbinari_bounty_hunter = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{ group = "junk", chance = 5050000},			},
- 			lootChance = 3200000
+				{ group = "junk", chance = 10000000},
+			},
+ 			lootChance = 2200000
 		},
 	},
 	outfit = "",

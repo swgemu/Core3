@@ -30,14 +30,14 @@ feral_force_wielder = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 2000000},
+				{group = "junk", chance = 6500000},
 				{group = "crystals_poor", chance = 500000},
 				{group = "color_crystals", chance = 500000},
 				{group = "melee_weapons", chance = 1000000},
-				{group = "armor_attachments", chance = 1000000},
-				{group = "clothing_attachments", chance = 1000000}
+				{group = "armor_attachments", chance = 750000},
+				{group = "clothing_attachments", chance = 750000}
 			},
-			lootChance = 3000000
+			lootChance = 3500000
 		}	
 	},
 	weapons = {"mixed_force_weapons"},
