@@ -42,7 +42,12 @@
 
 
 object_tangible_loot_loot_schematic_tanning_hide_s01_schematic = object_tangible_loot_loot_schematic_shared_tanning_hide_s01_schematic:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "crafting_architect_production_04",
+	targetDraftSchematic = "object/draft_schematic/furniture/tanning_hide.iff",
+	targetUseCount = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_tanning_hide_s01_schematic, "object/tangible/loot/loot_schematic/tanning_hide_s01_schematic.iff")

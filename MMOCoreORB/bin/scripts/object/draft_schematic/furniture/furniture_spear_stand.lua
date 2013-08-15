@@ -52,7 +52,7 @@ object_draft_schematic_furniture_furniture_spear_stand = object_draft_schematic_
    size = 1, 
 
    xpType = "crafting_weapons_general", 
-   xp = 700, 
+   xp = 540, 
 
    assemblySkill = "weapon_assembly", 
    experimentingSkill = "weapon_experimentation", 

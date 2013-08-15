@@ -30,16 +30,16 @@ tusken_lighter = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 2800000},
-				{group = "tusken_common", chance = 3700000},
+				{group = "junk", chance = 1500000},
+				{group = "tusken_common", chance = 5000000},
 				{group = "bone_armor_looted", chance = 750000},
 				{group = "chitin_armor_looted", chance = 750000},
 				{group = "armor_attachments", chance = 500000},
 				{group = "clothing_attachments", chance = 500000},
 				{group = "color_crystals", chance = 500000},
-				{group = "crystals_good", chance = 500000}
+				{group = "crystals_poor", chance = 500000}
 			},
-			lootChance = 4500000
+			lootChance = 2500000
 		}	
 	},
 	weapons = {"tusken_weapons"},
