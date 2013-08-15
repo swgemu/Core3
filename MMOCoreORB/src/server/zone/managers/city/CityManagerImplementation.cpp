@@ -777,6 +777,7 @@ void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 
 	}
 
+
 	//info("should pay " + String::valueOf(thisCost),true);
 	int lastPaid = 0;
 
@@ -784,6 +785,18 @@ void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 
 	totalPaid += lastPaid;
 
+
+	for(int i = 0; i < city->getStructuresCount(); i++){
+		ManagedReference<StructureObject*> str = city->getCivicStructure(i);
+
+		if(str != NULL && str != ch){
+
+			structureTemplate = cast<SharedStructureObjectTemplate*> (str->getObjectTemplate());
+			thisCost = structureTemplate->getCityMaintenanceAtRank(city->getCityRank() - 1);
+			//info("maint on " + str->getObjectNameStringIdName() + " " + String::valueOf(thisCost),true);
+			totalPaid += collectCivicStructureMaintenance(str, city, thisCost);
+		}
+	}
 	sendMaintenanceEmail(city, totalPaid);
 
 }
@@ -1675,6 +1688,8 @@ void CityManagerImplementation::sendMaintenanceReport(CityRegion* city,
 	}
 
 	String updateStr = buffer.toString();
+
+
 
 	if (updateStr.isEmpty())
 		updateStr = "Now";
