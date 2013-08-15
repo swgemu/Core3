@@ -27,7 +27,14 @@ kliknik_hatchling = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kliknik_hatchling.iff"},
-	lootGroups = {},
+	lootGroups = {
+	 {
+	        groups = {
+				{group = "kliknik_common", chance = 10000000}
+			},
+			lootChance = 2000000
+		}
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
