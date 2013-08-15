@@ -30,9 +30,10 @@ desert_demon_brawler = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 7000000},
+				{group = "junk", chance = 5500000},
 				{group = "tailor_components", chance = 1500000},
-				{group = "loot_kit_parts", chance = 1500000}
+				{group = "loot_kit_parts", chance = 1500000},
+				{group = "desert_demon_common", chance = 1500000}
 			},
 			lootChance = 2200000
 		}				
