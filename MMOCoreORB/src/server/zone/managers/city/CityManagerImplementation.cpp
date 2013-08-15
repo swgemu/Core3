@@ -52,6 +52,7 @@ uint64 CityManagerImplementation::treasuryWithdrawalCooldown = 0;
 byte CityManagerImplementation::cityVotingCycles = 0;
 byte CityManagerImplementation::cityVotingCyclesUntilLocked = 0;
 int CityManagerImplementation::decorationsPerRank = 10;
+float CityManagerImplementation::maintenanceDiscount = 1.0f;
 
 void CityManagerImplementation::loadLuaConfig() {
 	info("Loading configuration file.", true);
@@ -117,6 +118,7 @@ void CityManagerImplementation::loadLuaConfig() {
 	cityVotingCyclesUntilLocked = lua->getGlobalByte(
 			"CityVotingCyclesUntilLocked");
 	decorationsPerRank = lua->getGlobalInt("DecorationsPerRank");
+	maintenanceDiscount = lua->getGlobalFloat("maintenanceDiscount");
 
 	luaObject = lua->getGlobalObject("CitizensPerRank");
 
@@ -765,7 +767,7 @@ void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 	if (structureTemplate == NULL)
 		return;
 
-	int thisCost = structureTemplate->getCityMaintenanceAtRank(
+	int thisCost = maintenanceDiscount * structureTemplate->getCityMaintenanceAtRank(
 			city->getCityRank() - 1);
 
 	if (city->getCitySpecialization() != "") {
@@ -792,7 +794,7 @@ void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 		if(str != NULL && str != ch){
 
 			structureTemplate = cast<SharedStructureObjectTemplate*> (str->getObjectTemplate());
-			thisCost = structureTemplate->getCityMaintenanceAtRank(city->getCityRank() - 1);
+			thisCost = maintenanceDiscount * structureTemplate->getCityMaintenanceAtRank(city->getCityRank() - 1);
 			//info("maint on " + str->getObjectNameStringIdName() + " " + String::valueOf(thisCost),true);
 			totalPaid += collectCivicStructureMaintenance(str, city, thisCost);
 		}
@@ -1728,9 +1730,7 @@ void CityManagerImplementation::sendMaintenanceReport(CityRegion* city,
 								structure->getObjectTemplate());
 
 				if (serverTemplate != NULL) {
-					int thiscost = serverTemplate->getCityMaintenanceBase()
-							+ (serverTemplate->getCityMaintenanceRate()
-									* (city->getCityRank() - 1));
+					int thiscost = maintenanceDiscount * serverTemplate->getCityMaintenanceAtRank(city->getCityRank()-1);
 					totalcost += thiscost;
 					maintString += " : " + String::valueOf(thiscost);
 
@@ -1746,9 +1746,10 @@ void CityManagerImplementation::sendMaintenanceReport(CityRegion* city,
 
 	for (int i = 0; i < city->getSkillTrainerCount(); i++) {
 		ManagedReference<SceneObject*> trainer = city->getCitySkillTrainer(i);
+		int trainerCost = maintenanceDiscount * 1500;
 		if (trainer != NULL) {
-			totalcost += 1500;
-			maintList->addMenuItem(trainer->getDisplayedName() + " : 1500", i);
+			totalcost += trainerCost;
+			maintList->addMenuItem(trainer->getDisplayedName() + " : " + String::valueOf(trainerCost), i);
 		}
 	}
 
@@ -1761,10 +1762,10 @@ void CityManagerImplementation::sendMaintenanceReport(CityRegion* city,
 
 	for (int i = 0; i < city->getMissionTerminalCount(); i++) {
 		ManagedReference<SceneObject*> term = city->getCityMissionTerminal(i);
-
+		int terminalCost = maintenanceDiscount * 1500;
 		if (term != NULL) {
-			totalcost += 1500;
-			maintList->addMenuItem(term->getDisplayedName() + " : 1500");
+			totalcost += terminalCost;
+			maintList->addMenuItem(term->getDisplayedName() + " : " + String::valueOf(terminalCost));
 		}
 	}
 
@@ -1773,7 +1774,7 @@ void CityManagerImplementation::sendMaintenanceReport(CityRegion* city,
 				city->getCitySpecialization());
 
 		if (spec != NULL) {
-			int speccost = spec->getCost();
+			int speccost = maintenanceDiscount * spec->getCost();
 			totalcost += speccost;
 			maintList->addMenuItem(
 					city->getCitySpecialization() + " : " + String::valueOf(

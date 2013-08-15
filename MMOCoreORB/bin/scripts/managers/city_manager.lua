@@ -74,7 +74,7 @@ OldCityGracePeriod = 30240
 EnableCityWarn = false
 
 --The number of citizens required to achieve each city rank. (Outpost, Village, Township, City, Metropolis)
-CitizensPerRank = {1, 2, 3, 5, 8}
+CitizensPerRank = {1, 1, 1, 1, 8}
 --CitizensPerRank = {10, 20, 35, 55, 85}
 
 --The radius in meters of the city at each city rank. (Outpost, Village, Township, City, Metropolis)
@@ -82,6 +82,9 @@ RadiusPerRank = {150, 200, 300, 400, 450}
 
 -- Maximum for each rank.  rank 1 = decorationsperrank * 1, rank 5 = decorationsperrank * 5	82
 DecorationsPerRank = 10
+
+-- Amount to discount city maintenance  float.  1 = 100%, .75 =75%, .5=50% etc
+maintenanceDiscount = 1.0
 
 --[[
 	CITIES ALLOWED PER PLANET
