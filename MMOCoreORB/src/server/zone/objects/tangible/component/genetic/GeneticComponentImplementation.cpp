@@ -189,7 +189,7 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 	}
 }
 String GeneticComponentImplementation::convertSpecialAttack(String &attackName) {
-	if (attackName == "defaultattack")
+	if (attackName == "defaultattack" || attackName == "")
 		return "@combat_effects:none";
 	else
 		return "@combat_effects:" + attackName;

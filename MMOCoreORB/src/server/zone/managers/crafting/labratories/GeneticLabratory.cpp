@@ -46,7 +46,7 @@ float GeneticLabratory::applyFormula(float aVal, float bVal, float cVal, float d
 	return 0;
 }
 String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String d, String e, int odds) {
-	String effectiveSpecial = "";
+	String effectiveSpecial = "defaultattack";
 	if (a.isEmpty()) {
 		int rand = System::random(3);
 		switch(rand) {
@@ -63,7 +63,7 @@ String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String 
 				effectiveSpecial = e;
 				break;
 			default:
-				effectiveSpecial = "";
+				effectiveSpecial = "defaultattack";
 		}
 	} else {
 		effectiveSpecial = a;
@@ -74,10 +74,10 @@ String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String 
 		effectiveSpecial == "creatureareaknockdown" ||
 		effectiveSpecial == "creatureareadisease" ||
 		effectiveSpecial == "creatureareapoison")
-		effectiveSpecial = "";
+		effectiveSpecial = "defaultattack";
 	int roll = System::random(1000);
 	if (roll > odds ) {
-		effectiveSpecial = "";
+		effectiveSpecial = "defaultattack";
 	}
 	return effectiveSpecial;
 }
@@ -142,6 +142,7 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	couMin = calcMin(couMax);
 	fieMin = calcMin(fieMax);
 	powMin = calcMin(powMax);
+
 	float blast, energy, kinetic,heat,cold,electric,acid,stun,saber;
 	blast = applyFormula(phy->getBlast(),pro->getBlast(),men->getBlast(),psy->getBlast(),agr->getBlast(),PHYSIQUE);
 	kinetic = applyFormula(phy->getKinetic(),pro->getKinetic(),men->getKinetic(),psy->getKinetic(),agr->getKinetic(),PHYSIQUE);
@@ -306,7 +307,7 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 		}
 	}
 
-	// Pick random resist to buff up
+	// bump the resists up
 	if (craftingValues->getMaxValue("dna_comp_armor_kinetic") > 0)
 		craftingValues->setCurrentPercentage("dna_comp_armor_kinetic",craftingValues->getCurrentPercentage("dna_comp_armor_kinetic") + modifier);
 	if (craftingValues->getMaxValue("dna_comp_armor_blast") > 0)
@@ -325,23 +326,4 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 		craftingValues->setCurrentPercentage("dna_comp_armor_stun",craftingValues->getCurrentPercentage("dna_comp_armor_stun") + modifier);
 	if (craftingValues->getMaxValue("dna_comp_armor_saber") > 0)
 		craftingValues->setCurrentPercentage("dna_comp_armor_saber",craftingValues->getCurrentPercentage("dna_comp_armor_saber") + modifier);
-
-	/*
-	for (int i = 0; i < craftingValues->getExperimentalPropertySubtitleSize(); ++i) {
-		subtitlesTitle = craftingValues->getExperimentalPropertySubtitlesTitle(i);
-		if (subtitlesTitle == title) {
-			subtitle = craftingValues->getExperimentalPropertySubtitle(i);
-			modifier = calculateExperimentationValueModifier(experimentationResult,pointsAttempted);
-			newValue = craftingValues->getCurrentPercentage(subtitle) + modifier;
-
-			if (newValue > craftingValues->getMaxPercentage(subtitle))
-				newValue = craftingValues->getMaxPercentage(subtitle);
-
-			if (newValue < 0)
-				newValue = 0;
-
-			craftingValues->setCurrentPercentage(subtitle, newValue);
-		}
-	}
-	*/
 }
