@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_ba8f4975",
+        "filename": "MMOCoreORB/bin/scripts/mobile/faction/imperial/stormtrooper_captain.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-08-16T23:23:58Z",
+      "side": 1,
+      "message": "Missed removing this one.",
+      "revId": "00b1d368760182471ba7627312c3840c4c33f0da",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_9a8c8d81",
+        "filename": "MMOCoreORB/bin/scripts/mobile/faction/imperial/stormtrooper_commando.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-08-16T23:23:58Z",
+      "side": 1,
+      "message": "Missed removing this one.",
+      "revId": "00b1d368760182471ba7627312c3840c4c33f0da",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_7ae9b119",
+        "filename": "MMOCoreORB/bin/scripts/mobile/faction/imperial/stormtrooper_major.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-08-16T23:23:58Z",
+      "side": 1,
+      "message": "Missed removing this one.",
+      "revId": "00b1d368760182471ba7627312c3840c4c33f0da",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_5aeef523",
+        "filename": "MMOCoreORB/bin/scripts/mobile/faction/imperial/stormtrooper_rifleman.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-08-16T23:23:58Z",
+      "side": 1,
+      "message": "Missed removing this one.",
+      "revId": "00b1d368760182471ba7627312c3840c4c33f0da",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
