@@ -1116,11 +1116,11 @@ function DWB:refill(sceneObject)
 		
 		-- add items
 		chance = math.random(100)
-		createLoot(sceneObject, "death_watch_bunker_lootbox", 1) 
+		createLoot(sceneObject, "death_watch_bunker_lootbox", 1, false) 
 	
 		-- second item
 		if chance > 95 then
-   			createLoot(sceneObject, "death_watch_bunker_lootbox", 1)
+   			createLoot(sceneObject, "death_watch_bunker_lootbox", 1, false)
  		end
 	else
 		if TEST == 1 then

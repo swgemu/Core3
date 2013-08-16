@@ -144,7 +144,7 @@ class LootManager extends ManagedService implements Logger {
 	private native void addConditionDamage(TangibleObject loot, CraftingValues craftingValues);
 	
 	@local
-	public native TangibleObject createLootObject(LootItemTemplate templateObject, int level);
+	public native TangibleObject createLootObject(LootItemTemplate templateObject, int level, boolean maxCondition = false);
 	
 	public native int calculateLootCredits(int level);
 
@@ -153,7 +153,7 @@ class LootManager extends ManagedService implements Logger {
 	@local
 	public native boolean createLootFromCollection(SceneObject container, LootGroupCollection collection, int level);
 	
-	public native boolean createLoot(SceneObject container, final string lootGroup, int level = -1);
+	public native boolean createLoot(SceneObject container, final string lootGroup, int level = -1, boolean maxCondition = false);
 	
 	//public native void generateStats(final string lootTemplate, CraftingValues)
 

@@ -197,7 +197,7 @@ int LootManagerImplementation::calculateLootCredits(int level) {
 	return credits;
 }
 
-TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* templateObject, int level) {
+TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* templateObject, int level, bool maxCondition) {
 
 	if(level > 300)
 		level = 300;
@@ -322,7 +322,8 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	prototype->updateCraftingValues(&craftingValues, true);
 
 	//add some condition damage where appropriate
-	addConditionDamage(prototype, &craftingValues);
+	if (!maxCondition)
+		addConditionDamage(prototype, &craftingValues);
 
 	return prototype;
 }
@@ -412,7 +413,7 @@ bool LootManagerImplementation::createLootFromCollection(SceneObject* container,
 	return true;
 }
 
-bool LootManagerImplementation::createLoot(SceneObject* container, const String& lootGroup, int level) {
+bool LootManagerImplementation::createLoot(SceneObject* container, const String& lootGroup, int level, bool maxCondition) {
 	Reference<LootGroupTemplate*> group = lootGroupMap->getLootGroupTemplate(lootGroup);
 
 	if (group == NULL) {
@@ -430,7 +431,7 @@ bool LootManagerImplementation::createLoot(SceneObject* container, const String&
 		return false;
 	}
 
-	TangibleObject* obj = createLootObject(itemTemplate, level);
+	TangibleObject* obj = createLootObject(itemTemplate, level, maxCondition);
 
 	if (obj == NULL)
 		return false;

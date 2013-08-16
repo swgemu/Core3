@@ -194,7 +194,7 @@ function hedon_istee_screenplay:spawnTreasure(pTreasureMap, pPlayer)
 	local pChest = spawnSceneObject("tatooine", "object/tangible/container/drum/treasure_drum.iff", self.loc.map.x, self.loc.map.z, self.loc.map.y, 0, 0, 0, 0, 0)
 	local pKrayt = spawnMobile("tatooine", "canyon_krayt_dragon", 0, self.loc.map.x, self.loc.map.z, self.loc.map.y, 0, 0)
 	
-	createLoot(pChest, "hedon_istee_treasure", 10)
+	createLoot(pChest, "hedon_istee_treasure", 10, false)
 	createEvent(self.treasure_life, "hedon_istee_screenplay", "removeTreasureChest", pChest)
 	
 	if (pTreasureMap ~= nil) then
