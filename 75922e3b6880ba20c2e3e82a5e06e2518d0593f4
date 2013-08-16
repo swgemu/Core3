@@ -16,6 +16,24 @@
       "revId": "75922e3b6880ba20c2e3e82a5e06e2518d0593f4",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_f75dda49",
+        "filename": "MMOCoreORB/src/server/zone/templates/LootItemTemplate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2013-08-16T06:38:56Z",
+      "side": 1,
+      "message": "I\u0027ve done it for the dotValues table and the initializations/checks in the loot manager already, but when I try to use that code you wrote for dotChance, it gives me an error about the length not in uint32, please advise.",
+      "parentUuid": "3a1d315d_d7641ee7",
+      "revId": "75922e3b6880ba20c2e3e82a5e06e2518d0593f4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
