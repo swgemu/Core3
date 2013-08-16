@@ -34,6 +34,24 @@
       "revId": "75922e3b6880ba20c2e3e82a5e06e2518d0593f4",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_b7576226",
+        "filename": "MMOCoreORB/src/server/zone/templates/LootItemTemplate.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-08-16T07:35:47Z",
+      "side": 1,
+      "message": "Yeah, that was an error on my part. You can disregard that bit of code. I copied it from where I used it to check if a string field was present, and didn\u0027t double check what I was doing. length() is a method from String.h.",
+      "parentUuid": "3a1d315d_f75dda49",
+      "revId": "75922e3b6880ba20c2e3e82a5e06e2518d0593f4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
