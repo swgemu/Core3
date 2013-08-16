@@ -36,7 +36,6 @@ void LootManagerImplementation::initialize() {
 	lootGroupMap->initialize();
 
 	info("Loaded " + String::valueOf(lootableMods.size()) + " lootable stat mods.", true);
-	info("Loaded " + String::valueOf(lootableDots.size()) + " possible lootable DoT weapon templates.", true);
 	info("Loaded " + String::valueOf(lootGroupMap->countLootItemTemplates()) + " loot items.", true);
 	info("Loaded " + String::valueOf(lootGroupMap->countLootGroupTemplates()) + " loot groups.", true);
 
@@ -55,66 +54,6 @@ bool LootManagerImplementation::loadConfigData() {
 	exceptionalModifier = lua->getGlobalFloat("exceptionalModifier");
 	legendaryChance = lua->getGlobalFloat("legendaryChance");
 	legendaryModifier = lua->getGlobalFloat("legendaryModifier");
-	dotChance = lua->getGlobalFloat("dotChance");
-	LuaObject dotGatesOne = lua->getGlobalObject("dotGatesPoison");
-
-	if(dotGatesOne.isValidTable()){
-		for(int i = 1; i <= dotGatesOne.getTableSize(); ++i){
-			LuaObject dotGatesTwo = dotGatesOne.getObjectAt(i);
-			if(dotGatesTwo.isValidTable()){
-				int dotMin = dotGatesTwo.getIntAt(1);
-				int dotMax = dotGatesTwo.getIntAt(2);
-				dotGatesPoison.put(dotMin, dotMax);
-			}
-			dotGatesTwo.pop();
-
-		}
-		dotGatesOne.pop();
-	}
-
-	LuaObject dotGatesThree = lua->getGlobalObject("dotGatesDisease");
-
-	if(dotGatesThree.isValidTable()){
-		for(int i = 1; i <= dotGatesThree.getTableSize(); ++i){
-			LuaObject dotGatesFour = dotGatesThree.getObjectAt(i);
-			if(dotGatesFour.isValidTable()){
-				int dotMin = dotGatesFour.getIntAt(1);
-				int dotMax = dotGatesFour.getIntAt(2);
-				dotGatesDisease.put(dotMin, dotMax);
-			}
-			dotGatesFour.pop();
-
-		}
-		dotGatesThree.pop();
-	}
-
-	LuaObject dotGatesFive = lua->getGlobalObject("dotGatesFire");
-
-	if(dotGatesFive.isValidTable()){
-		for(int i = 1; i <= dotGatesFive.getTableSize(); ++i){
-			LuaObject dotGatesSix = dotGatesFive.getObjectAt(i);
-			if(dotGatesSix.isValidTable()){
-				int dotMin = dotGatesSix.getIntAt(1);
-				int dotMax = dotGatesSix.getIntAt(2);
-				dotGatesFire.put(dotMin, dotMax);
-			}
-			dotGatesSix.pop();
-
-		}
-		dotGatesFive.pop();
-	}
-
-	LuaObject lootableDotsTable = lua->getGlobalObject("weaponDotTemplates");
-
-	if (!lootableDotsTable.isValidTable())
-		return false;
-
-	for (int i = 1; i <= lootableDotsTable.getTableSize(); ++i) {
-		String mod = lootableDotsTable.getStringAt(i);
-		lootableDots.put(mod);
-	}
-
-	lootableDotsTable.pop();
 
 	LuaObject lootableModsTable = lua->getGlobalObject("lootableStatMods");
 
@@ -306,13 +245,14 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 		craftingValues.setCurrentPercentage(subtitle, percentage + deviation);
 	}
 
-	addDots(prototype, level);
-
 	// Use percentages to recalculate the values
 	craftingValues.recalculateValues(false);
 
 	craftingValues.addExperimentalProperty("creatureLevel", "creatureLevel", level, level, 0, false, CraftingManager::LINEARCOMBINE);
 	craftingValues.setHidden("creatureLevel");
+
+	// Add Dots to weapon objects.
+	addDots(prototype, templateObject, level);
 
 	setSkillMods(prototype, templateObject);
 
@@ -442,7 +382,7 @@ bool LootManagerImplementation::createLoot(SceneObject* container, const String&
 	return true;
 }
 
-void LootManagerImplementation::addDots(TangibleObject* object, int creatureLevel) {
+void LootManagerImplementation::addDots(TangibleObject* object, LootItemTemplate* templateObject, int level) {
 
 	if (object == NULL)
 		return;
@@ -452,63 +392,66 @@ void LootManagerImplementation::addDots(TangibleObject* object, int creatureLeve
 
 		bool shouldGenerateDots = false;
 
-		// Only apply dot if it's in the weapon table.
-		for (int i = 0; i < lootableDots.size(); i++ )
-			if (weapon->getWeaponType() == lootableDots.get(i)) {
-				if (System::random(dotChance) == dotChance) { // Defined in scripts.
-					shouldGenerateDots = true;
-				}
+		float dotChance = templateObject->getDotChance();
+
+		// Check if there was anything specified in LUA.
+		if (dotChance > 0) {
+			// Apply the Dot if the chance roll equals the number.
+			if (System::random(dotChance) == dotChance) { // Defined in loot item script.
+				shouldGenerateDots = true;
 			}
+		}
 
 		if (shouldGenerateDots) {
-			// Lets generate some stats based on creature level. TODO: Needs possibility of additional dots added depending on chance/loot level.
-			int level = creatureLevel;
 
-			int type = (System::random(2)) + 1; // Types are: Disease, Poison, Fire (3).
+			VectorMap<int, int>* dotValues = templateObject->getDotValues();
+			int size = dotValues->size();
 
-			int attribute = 0;
-			int strength = 0;
-			int duration = 0;
-			int potency = 0;
-			int numbers[] = {  0, 3, 6 }; // The main pool attributes.
-			int chooseAttribute = System::random(2); // Types are the corresponding pools, main ones for this.
+			// Check if they specified correct vals.
+			if (size > 0) {
 
-			switch (type) {
-			case 1: // Poison, only does the main 3 pools.
-				attribute = numbers[chooseAttribute];
-				strength = round(MAX(dotGatesPoison.elementAt(0).getKey(), MIN(dotGatesPoison.elementAt(0).getValue(), round(System::random(dotGatesPoison.elementAt(0).getValue() - level) + level)))); // Poisons apparently have higher strength.
-				duration = round(MAX(dotGatesPoison.elementAt(2).getKey(), MIN(dotGatesPoison.elementAt(2).getValue(), round(System::random(dotGatesPoison.elementAt(2).getValue() - level) + level)))); // Lower duration.
-				potency = round(MAX(dotGatesPoison.elementAt(1).getKey(), MIN(dotGatesPoison.elementAt(1).getValue(), round(System::random(dotGatesPoison.elementAt(1).getValue() - level) + level))));
-				break;
-			case 2: // Disease, drops on all 9 pools.
-				attribute = System::random(8);
-				strength = round(MAX(dotGatesDisease.elementAt(0).getKey(), MIN(dotGatesDisease.elementAt(0).getValue(), round(System::random(dotGatesDisease.elementAt(0).getValue() - level) + level)))); // Diseases apparently have lower strength.
-				duration = round(MAX(dotGatesDisease.elementAt(2).getKey(), MIN(dotGatesDisease.elementAt(2).getValue(), round(System::random(dotGatesDisease.elementAt(2).getValue() - level) + level)))); // Higher duration.
-				potency = round(MAX(dotGatesDisease.elementAt(1).getKey(), MIN(dotGatesDisease.elementAt(1).getValue(), round(System::random(dotGatesDisease.elementAt(1).getValue() - level) + level)))); // Potency is anywhere from 1 to 100%.
-				break;
-			case 3: // Fire, same as Poison.
-				attribute = numbers[chooseAttribute];
-				strength = round(MAX(dotGatesFire.elementAt(0).getKey(), MIN(dotGatesFire.elementAt(0).getValue(), round(System::random(dotGatesFire.elementAt(0).getValue() - level) + level)))); // Fires apparently have higher strength.
-				duration = round(MAX(dotGatesFire.elementAt(2).getKey(), MIN(dotGatesFire.elementAt(2).getValue(), round(System::random(dotGatesFire.elementAt(2).getValue() - level) + level)))); // Lower duration.
-				potency = round(MAX(dotGatesFire.elementAt(1).getKey(), MIN(dotGatesFire.elementAt(1).getValue(), round(System::random(dotGatesFire.elementAt(1).getValue() - level) + level))));
-				break;
-			default:
-				break;
+				for (int i = 0; i < size; i++) {
 
+					int min = dotValues->elementAt(i).getKey();
+					int max = dotValues->elementAt(i).getValue();
+					int value = 0;
+
+					if (max != min) {
+						value = MAX(min, MIN(max, System::random(max - level) + level)); // Mainly used for Str, Pot, Dur.
+					}
+					else { value = max; }
+
+					switch (i) {
+					case 0:
+						if (min != max) // Non-static.
+							value = System::random(2) + 1;
+						weapon->setDotType(value);
+						break;
+					case 1:
+						if (weapon->getDotType() == 1 || weapon->getDotType() == 3) {
+							int numbers[] = { 0, 3, 6 }; // The main pool attributes.
+							int choose = System::random(2);
+							value = numbers[choose]; // Reset value to a main pool if it's a Poison or Fire.
+						} else value = System::random(8);
+						weapon->setDotAttribute(value);
+						break;
+					case 2:
+						weapon->setDotStrength(value);
+						break;
+					case 3:
+						weapon->setDotDuration(value);
+						break;
+					case 4:
+						weapon->setDotPotency(value);
+						break;
+					case 5:
+						weapon->setDotUses(value);
+						break;
+					default:
+						break;
+					}
+				}
 			}
-
-			int uses = (level * 10) + (System::random(7000)); // Uses are global, and not dependent on type like other stats.
-
-			if (uses < 250)
-				uses = 250;
-
-			weapon->setDotType(type);
-			weapon->setDotAttribute(attribute);
-			weapon->setDotStrength(strength);
-			weapon->setDotDuration(duration);
-			weapon->setDotPotency(potency);
-			weapon->setDotUses(uses);
 		}
 	}
-
 }

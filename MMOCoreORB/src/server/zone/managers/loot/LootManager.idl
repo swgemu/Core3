@@ -73,24 +73,10 @@ class LootManager extends ManagedService implements Logger {
 	
 	private transient float legendaryChance;
 	private transient float legendaryModifier;
-
-	private transient float dotChance;
-
-	@dereferenced
-	private transient VectorMap<unsigned long, unsigned long> dotGatesPoison;
-
-	@dereferenced
-	private transient VectorMap<unsigned long, unsigned long> dotGatesDisease;
-
-	@dereferenced
-	private transient VectorMap<unsigned long, unsigned long> dotGatesFire;
 	
 	@dereferenced
 	private transient SortedVector<string> lootableMods;
 
-	@dereferenced
-	private transient SortedVector<string> lootableDots;
-	
 	public LootManager(CraftingManager craftman, ObjectManager objMan, ZoneServer server) {
 		craftingManager = craftman;
 		objectManager = objMan;
@@ -99,15 +85,12 @@ class LootManager extends ManagedService implements Logger {
 		lootGroupMap = null;
 		
 		lootableMods.setNoDuplicateInsertPlan();
-		lootableDots.setNoDuplicateInsertPlan();
 		
 		exceptionalChance = 0.0;
 		exceptionalModifier = 0.0;
 		
 		legendaryChance = 0.0;
 		legendaryModifier = 0.0;
-	
-		dotChance = 0.0;
 		
 		Logger.setLoggingName("LootManager");
 		
@@ -138,7 +121,7 @@ class LootManager extends ManagedService implements Logger {
 	private native void setSockets(TangibleObject object, CraftingValues craftingValues);
 
 	@local
-	private native void addDots(TangibleObject object, int creatureLevel);
+	private native void addDots(TangibleObject object, LootItemTemplate templateObject, int level);
 
 	@local
 	private native void addConditionDamage(TangibleObject loot, CraftingValues craftingValues);

@@ -21,7 +21,21 @@ polearm_vibro_axe = {
 		{"attackmindcost",29,15,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+
+	-- dotChance: The chance of this weapon object dropping with a dot on it. Higher number means less chance. Set to 0 for static.
+	dotChance = 10,
+
+	-- dotValues: Object map that can randomly or statically generate a dot (used for weapon objects.)
+	dotValues = {
+		{1,3}, -- Type, 1 = Poison, 2 = Disease, 3 = Fire.
+		{0,8}, -- Attribute, See CreatureAttributes.h in src for numbers.
+		{20, 400}, -- Strength.
+		{30,140}, -- Duration.
+		{10, 100}, -- Potency.
+		{250, 5000} -- Uses.
+	}
+
 }
 
 addLootItemTemplate("polearm_vibro_axe", polearm_vibro_axe)
