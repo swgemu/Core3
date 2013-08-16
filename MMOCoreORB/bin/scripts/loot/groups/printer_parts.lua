@@ -3,12 +3,12 @@ printer_parts = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "blank_canvas", weight = 1818182},
-		{itemTemplate = "paint_cartridge", weight = 1818182},
-		{itemTemplate = "paint_disperser", weight = 1818182},
-		{itemTemplate = "picture_printer", weight = 1818182},
-		{itemTemplate = "viewscreen_printer", weight = 1818182},
-		{itemTemplate = "viewscreen_reader", weight = 909090},
+		{itemTemplate = "blank_canvas", weight = 2222222},
+		{itemTemplate = "paint_cartridge", weight = 2222222},
+		{itemTemplate = "paint_disperser", weight = 2222222},
+		{itemTemplate = "picture_printer", weight = 1111111},
+		{itemTemplate = "viewscreen_printer", weight = 1111111},
+		{itemTemplate = "viewscreen_reader", weight = 1111112},
 	}
 }
 

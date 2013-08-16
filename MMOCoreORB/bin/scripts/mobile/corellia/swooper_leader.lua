@@ -32,11 +32,12 @@ swooper_leader = Creature:new {
 	lootGroups = {
       	{
 			groups = {
-				{group = "junk", chance = 6000000},
-				{group = "loot_kit_parts", chance = 2500000},
-				{group = "tailor_components", chance = 1500000}
+				{group = "junk", chance = 5500000},
+				{group = "loot_kit_parts", chance = 2000000},
+				{group = "tailor_components", chance = 1500000},
+				{group = "printer_parts", chance = 1000000},
 			},
-			lootChance = 3000000
+			lootChance = 2200000
 		}		
 	},
 	weapons = {"pirate_weapons_medium"},

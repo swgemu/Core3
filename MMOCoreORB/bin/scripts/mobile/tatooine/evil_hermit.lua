@@ -21,7 +21,7 @@ evil_hermit = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -30,9 +30,10 @@ evil_hermit = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 7000000},
+				{group = "junk", chance = 6000000},
 				{group = "tailor_components", chance = 1500000},
-				{group = "loot_kit_parts", chance = 1500000}
+				{group = "loot_kit_parts", chance = 1500000},
+				{group = "printer_parts", chance = 1000000},
 			},
 			lootChance = 2200000
 		}			
