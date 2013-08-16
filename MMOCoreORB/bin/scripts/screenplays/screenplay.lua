@@ -169,6 +169,7 @@ includeFile("caves/tatooine_squill_cave.lua")
 includeFile("caves/tatooine_tusken_bunker.lua")
 
 -- Cities
+includeFile("cities/corellia_kor_vella.lua")
 includeFile("cities/dantooine_imperial_outpost.lua")
 includeFile("cities/lok_nym_stronghold.lua")
 includeFile("cities/rori_narmle.lua")
