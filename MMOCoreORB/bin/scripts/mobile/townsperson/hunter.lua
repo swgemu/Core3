@@ -32,14 +32,14 @@ hunter = Creature:new {
                         "object/mobile/dressed_commoner_naboo_moncal_male_01.iff"
         },
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 7000000},
 				{group = "tailor_components", chance = 1500000},
 				{group = "loot_kit_parts", chance = 1500000}
 			},
 			lootChance = 2200000
-		}				
+		}
 	},
 	weapons = {"rebel_weapons_light"},
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
