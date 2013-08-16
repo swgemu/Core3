@@ -1,1 +1,10 @@
-4173M
+6233348 was Ivojedi, 6 hours ago, message: Merge "[Removed] reinforced kliknik shells from common kliknik's loot" into unstable
+59cfc4c was Ivojedi, 6 hours ago, message: [Removed] reinforced kliknik shells from common kliknik's loot
+89e84c1 was Benjamin 'Ivojedi' Jensen, 8 hours ago, message: Merge "[fix] updated max percentages to be inline with re-cu pics found today on forums." into unstable
+5fb6177 was Ivojedi, 8 hours ago, message: [Fixed] themepark confiscate missions to properly remove their required items from the player's inventory
+3a2b5ed was washu, 10 hours ago, message: [fix] updated max percentages to be inline with re-cu pics found today on forums.
+1a8f7fa was Ivojedi, 19 hours ago, message: [Added] tanned hide and spear rack schematics to tusken's loot
+819453e was Victor Popovici, 21 hours ago, message: Merge "[added] spawns to restuss screenplay" into unstable
+edc29e6 was Victor Popovici, 21 hours ago, message: Merge "[added] Civic structures are now charged maintenance" into unstable
+70e6d3b was Pete, 25 hours ago, message: [added] Civic structures are now charged maintenance
+e8e6d87 was Klivian, 25 hours ago, message: [added] Unit test to catch when loot groups don't total 100%
