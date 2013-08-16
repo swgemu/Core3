@@ -325,6 +325,8 @@ public:
 
 	static int decorationsPerRank;
 
+	static float maintenanceDiscount;
+
 private:
 	VectorMap<String, ManagedReference<CityRegion* > > cities;
 
