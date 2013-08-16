@@ -16,6 +16,24 @@
       "revId": "5279d808c1939f1059a58f33d15b0e2ba4a6de3c",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_faaee1e6",
+        "filename": "MMOCoreORB/src/server/zone/templates/slots/ArrangementDescriptor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-08-16T15:48:58Z",
+      "side": 1,
+      "message": "And when you check if the slot is available you check the entire group, if its not available you check the next one.",
+      "parentUuid": "3a1d315d_3aa57904",
+      "revId": "5279d808c1939f1059a58f33d15b0e2ba4a6de3c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
