@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_1af87de4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/singular_nak.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-08-16T23:39:37Z",
+      "side": 1,
+      "message": "Change the mission type on this one to \"confiscate\"\n\nI recently added that type and it should be used whenever you need to kill a target and bring back something you loot. assassinate should be used when there\u0027s a kill target but no special loot involved.",
+      "revId": "c688b559fd3c3a7c31678c3422c8ee9edf6bd280",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_fadca176",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/singular_nak.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-08-16T23:39:37Z",
+      "side": 1,
+      "message": "Glancing at the string file, there should be a third mission here. Please add it.",
+      "revId": "c688b559fd3c3a7c31678c3422c8ee9edf6bd280",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
