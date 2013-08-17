@@ -871,6 +871,7 @@ schematics = {
 {path="object/draft_schematic/furniture/furniture_chair_elegant.iff"},
 {path="object/draft_schematic/furniture/furniture_chair_loveseat_elegant.iff"},
 {path="object/draft_schematic/furniture/furniture_chest_elegant.iff"},
+{path="object/draft_schematic/furniture/furniture_cabinet_elegant.iff"},
 {path="object/draft_schematic/furniture/furniture_technical_console_s01.iff"},
 {path="object/draft_schematic/furniture/furniture_technical_console_s02.iff"},
 {path="object/draft_schematic/instrument/instrument_slitherhorn.iff"},
