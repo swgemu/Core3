@@ -127,7 +127,9 @@ public:
 
 	int declareResidence(CreatureObject* player, StructureObject* structureObject);
 
-	//TEMPORARY
+	/**
+	 * Converts seconds remaining into days, hours, minutes timestamp
+	 */
 	String getTimeString(uint32 timestamp);
 
 	/**

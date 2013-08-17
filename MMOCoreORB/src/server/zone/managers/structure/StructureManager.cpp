@@ -558,14 +558,14 @@ int StructureManager::destroyStructure(StructureObject* structureObject) {
 }
 
 String StructureManager::getTimeString(uint32 timestamp) {
-	String abbrvs[4] = { "seconds", "minutes", "hours", "days" };
+	String abbrvs[3] = { "minutes", "hours", "days" };
 
-	int intervals[4] = { 1, 60, 3600, 86400 };
-	int values[4] = { 0, 0, 0, 0 };
+	int intervals[3] = { 60, 3600, 86400 };
+	int values[3] = { 0, 0, 0 };
 
 	StringBuffer str;
 
-	for (int i = 3; i > -1; --i) {
+	for (int i = 2; i > -1; --i) {
 		values[i] = floor((float) timestamp / intervals[i]);
 		timestamp -= values[i] * intervals[i];
 
@@ -877,17 +877,17 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 
 	if (!structure->isCivicStructure()) {
 
-		float hrsRemainingMaint = 0.f;
+		float secsRemainingMaint = 0.f;
 		if( structure->getSurplusMaintenance() > 0 ){
-			hrsRemainingMaint = structure->getSurplusMaintenance() / structure->getMaintenanceRate();
+			secsRemainingMaint = (structure->getSurplusMaintenance() / structure->getMaintenanceRate())*3600;
 		}
 
 		status->addMenuItem(
 			"@player_structure:maintenance_pool_prompt "
 					+ String::valueOf( (int) floor( (float) structure->getSurplusMaintenance()))
 					+ " ("
-					+ String::valueOf( (int) floor( hrsRemainingMaint ) )
-					+ "hrs)" );
+					+ getTimeString( (uint32)secsRemainingMaint )
+					+ ")" );
 
 		status->addMenuItem(
 			"@player_structure:maintenance_rate_prompt "
@@ -915,17 +915,17 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 	if (structure->isInstallationObject() && !structure->isGeneratorObject() && !structure->isCivicStructure()) {
 		InstallationObject* installation = cast<InstallationObject*>(structure);
 
-		float hrsRemainingPower = 0.f;
+		float secsRemainingPower = 0.f;
 		if( installation->getSurplusPower() > 0 ){
-			hrsRemainingPower = installation->getSurplusPower() / installation->getBasePowerRate();
+			secsRemainingPower = (installation->getSurplusPower() / installation->getBasePowerRate())*3600;
 		}
 
 		status->addMenuItem(
 				"@player_structure:power_reserve_prompt "
 						+ String::valueOf( (int) installation->getSurplusPower())
 						+ " ("
-						+ String::valueOf( (int) floor( hrsRemainingPower ) )
-						+ "hrs)" );
+						+ getTimeString( (uint32)secsRemainingPower )
+						+ ")" );
 
 		status->addMenuItem(
 				"@player_structure:power_consumption_prompt "
