@@ -31,19 +31,20 @@ sleemo_vandal = Creature:new {
 	lootGroups = {
 	    {
 	        groups = {
-				{group = "junk", chance = 7200000},
+				{group = "junk", chance = 5200000},
 				{group = "rifles", chance = 700000},
 				{group = "melee_knife", chance = 700000},
 				{group = "pistols", chance = 700000},
 				{group = "carbines", chance = 700000},
-				
+				{group = "printer_parts", chance = 1000000},
+				{group = "loot_kit_parts", chance = 1000000},
 	    	},
-			lootChance = 3500000
+			lootChance = 2200000
 		}
 	},
 	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(sleemo_vandal, "sleemo_vandal")

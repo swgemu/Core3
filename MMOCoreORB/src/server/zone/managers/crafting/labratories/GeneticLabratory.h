@@ -25,7 +25,7 @@ private:
 	const static short AGRESSION = 3;
 	const static short PHYSCHOLOGICAL = 4;
 	float applyFormula(float a, float b, float c, float d, float e,int formula);
-	String pickSpecialAttack(String a, String b, String c, String d, String e);
+	String pickSpecialAttack(String a, String b, String c, String d, String e, int odds);
 public:
 	GeneticLabratory();
 	virtual ~GeneticLabratory();

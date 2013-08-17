@@ -31,6 +31,7 @@ kaeline_ungasan = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
+	outfit = "kaeline_ungasan_outfit",
 	attacks = {
 	}
 }

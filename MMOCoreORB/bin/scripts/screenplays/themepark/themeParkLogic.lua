@@ -910,7 +910,7 @@ function ThemeParkLogic:giveLoot(pConversingPlayer, lootGroup)
 		return
 	end
 	
-	createLoot(pInventory, lootGroup, 0)
+	createLoot(pInventory, lootGroup, 0, true)
 	creature:sendSystemMessage("@theme_park/messages:theme_park_reward")
 end
 

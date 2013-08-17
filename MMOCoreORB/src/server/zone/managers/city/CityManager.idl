@@ -91,6 +91,7 @@ class CityManager extends ManagedService implements Logger {
 	public transient static byte cityVotingCycles;
 	public transient static byte cityVotingCyclesUntilLocked;
 	public transient static int decorationsPerRank;
+	public transient static float maintenanceDiscount;
 
 	@dereferenced
 	private transient VectorMap<string, CityRegion> cities;

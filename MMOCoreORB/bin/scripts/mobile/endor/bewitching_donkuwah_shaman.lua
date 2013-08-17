@@ -31,9 +31,9 @@ bewitching_donkuwah_shaman = Creature:new {
 	lootGroups = {
 		 {
 	        groups = {
-				{group = "donkuwah_common", chance = 3300000}
+				{group = "donkuwah_common", chance = 10000000}
 			},
-			lootChance = 7000000
+			lootChance = 2300000
 		}
 	},
 	weapons = {"donkuwah_weapons"},

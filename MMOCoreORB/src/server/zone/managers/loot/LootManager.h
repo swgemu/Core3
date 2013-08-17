@@ -134,7 +134,7 @@ public:
 
 	String getRandomLootableMod();
 
-	TangibleObject* createLootObject(LootItemTemplate* templateObject, int level);
+	TangibleObject* createLootObject(LootItemTemplate* templateObject, int level, bool maxCondition = false);
 
 	int calculateLootCredits(int level);
 
@@ -142,7 +142,7 @@ public:
 
 	bool createLootFromCollection(SceneObject* container, LootGroupCollection* collection, int level);
 
-	bool createLoot(SceneObject* container, const String& lootGroup, int level = -1);
+	bool createLoot(SceneObject* container, const String& lootGroup, int level = -1, bool maxCondition = false);
 
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
@@ -188,17 +188,7 @@ class LootManagerImplementation : public ManagedServiceImplementation, public Lo
 
 	float legendaryModifier;
 
-	float dotChance;
-
-	VectorMap<unsigned long long, unsigned long long> dotGatesPoison;
-
-	VectorMap<unsigned long long, unsigned long long> dotGatesDisease;
-
-	VectorMap<unsigned long long, unsigned long long> dotGatesFire;
-
 	SortedVector<String> lootableMods;
-
-	SortedVector<String> lootableDots;
 
 public:
 	LootManagerImplementation(CraftingManager* craftman, ObjectManager* objMan, ZoneServer* server);
@@ -226,12 +216,12 @@ private:
 
 	void setSockets(TangibleObject* object, CraftingValues* craftingValues);
 
-	void addDots(TangibleObject* object, int creatureLevel);
+	void addDots(TangibleObject* object, LootItemTemplate* templateObject, int level);
 
 	void addConditionDamage(TangibleObject* loot, CraftingValues* craftingValues);
 
 public:
-	TangibleObject* createLootObject(LootItemTemplate* templateObject, int level);
+	TangibleObject* createLootObject(LootItemTemplate* templateObject, int level, bool maxCondition = false);
 
 	int calculateLootCredits(int level);
 
@@ -239,7 +229,7 @@ public:
 
 	bool createLootFromCollection(SceneObject* container, LootGroupCollection* collection, int level);
 
-	bool createLoot(SceneObject* container, const String& lootGroup, int level = -1);
+	bool createLoot(SceneObject* container, const String& lootGroup, int level = -1, bool maxCondition = false);
 
 	WeakReference<LootManager*> _this;
 
@@ -292,7 +282,7 @@ public:
 
 	bool createLoot(SceneObject* container, AiAgent* creature);
 
-	bool createLoot(SceneObject* container, const String& lootGroup, int level);
+	bool createLoot(SceneObject* container, const String& lootGroup, int level, bool maxCondition);
 
 };
 

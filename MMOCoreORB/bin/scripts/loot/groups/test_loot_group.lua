@@ -5,7 +5,7 @@ test_loot_group = {
 	minimumLevel = 0,
 	maximumLevel = -1,
 	lootItems = {
-		{itemTemplate = "test_loot_item", weight = 0}
+		{itemTemplate = "test_loot_item", weight = 10000000}
 	}
 }
 

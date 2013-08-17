@@ -30,8 +30,8 @@ tusken_warlord = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "junk", chance = 2800000},
-				{group = "tusken_common", chance = 3700000},
+				{group = "junk", chance = 1500000},
+				{group = "tusken_common", chance = 5000000},
 				{group = "bone_armor_looted", chance = 750000},
 				{group = "chitin_armor_looted", chance = 750000},
 				{group = "armor_attachments", chance = 500000},
@@ -39,12 +39,12 @@ tusken_warlord = Creature:new {
 				{group = "color_crystals", chance = 500000},
 				{group = "crystals_good", chance = 500000}
 			},
-			lootChance = 4500000
+			lootChance = 3200000
 		}	
 	},
 	weapons = {"tusken_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = merge(brawlernovice,marksmannovice,fencermaster,riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(tusken_warlord, "tusken_warlord")

@@ -43,6 +43,38 @@
 
 object_draft_schematic_furniture_tanning_hide_2 = object_draft_schematic_furniture_shared_tanning_hide_2:new {
 
+   templateType = DRAFTSCHEMATIC,
+
+   customObjectName = "Tanned Hide Draft Schematic",
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 25, 
+   size = 1, 
+
+   xpType = "crafting_structure_general", 
+   xp = 500, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+   customizationSkill = "structure_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"stretched_hide", "frame"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"hide_leathery", "wood"},
+   resourceQuantities = {100, 150},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/furniture/decorative/tanning_hide_s02.iff",
+
+   additionalTemplates = {
+             }
+
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_tanning_hide_2, "object/draft_schematic/furniture/tanning_hide_2.iff")

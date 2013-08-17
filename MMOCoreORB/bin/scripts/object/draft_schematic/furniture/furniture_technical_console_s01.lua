@@ -42,7 +42,38 @@
 
 
 object_draft_schematic_furniture_furniture_technical_console_s01 = object_draft_schematic_furniture_shared_furniture_technical_console_s01:new {
+   templateType = DRAFTSCHEMATIC,
 
+   customObjectName = "Technical Console",
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 36, 
+   size = 1, 
+
+   xpType = "crafting_structure_general", 
+   xp = 1480, 
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+   customizationSkill = "structure_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+
+   ingredientTitleNames = {"table_top", "sealant", "frame", "electronics", "display" },
+   ingredientSlotType = {0, 0, 0, 0, 0},
+   resourceTypes = {"aluminum", "fiberplast", "steel", "copper", "gemstone"},
+   resourceQuantities = {250, 160, 30, 150, 150},
+   contribution = {100, 100, 100, 100, 100},
+
+
+   targetTemplate = "object/tangible/furniture/all/frn_all_technical_console_s01.iff",
+
+   additionalTemplates = {
+             }
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_technical_console_s01, "object/draft_schematic/furniture/furniture_technical_console_s01.iff")

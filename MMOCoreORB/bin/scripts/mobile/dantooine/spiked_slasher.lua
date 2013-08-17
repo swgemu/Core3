@@ -30,9 +30,9 @@ spiked_slasher = Creature:new {
 	lootGroups = {
 	 {
 	        groups = {
-				{group = "voritor_lizard_common", chance = 3300000}
+				{group = "voritor_lizard_common", chance = 10000000}
 			},
-			lootChance = 7000000
+			lootChance = 2300000
 		}
 	},
 	weapons = {},

@@ -34,7 +34,7 @@ scavenger = Creature:new {
 				{group = "melee_knife", chance = 700000},
 				{group = "pistols", chance = 700000},
 				{group = "carbines", chance = 700000},
-				{group = "wanted_poster", chance = 700000},
+				{group = "stormtrooper_common", chance = 700000},
 	    	},
 			lootChance = 3500000
 		}

@@ -116,7 +116,7 @@ function mission_giver_conv_handler:handleScreenInit(pConversationTemplate, pCon
 					nextScreenName = "npc_work_n"
 				end
 			elseif self.themePark:missionStatus(pConversingPlayer) == 2 then
-				if self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "assassinate" and not self.themePark:hasLootedRequiredItem(activeNpcNumber, pConversingPlayer) == true then
+				if self.themePark:getMissionType(activeNpcNumber, pConversingPlayer) == "confiscate" and not self.themePark:hasLootedRequiredItem(activeNpcNumber, pConversingPlayer) == true then
 					nextScreenName = "npc_work_n"
 				else
 					nextScreenName = "npc_reward_n"

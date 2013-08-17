@@ -42,7 +42,12 @@
 
 
 object_tangible_loot_loot_schematic_gambling_table_schematic = object_tangible_loot_loot_schematic_shared_gambling_table_schematic:new {
-
+	templateType = LOOTSCHEMATIC,
+	objectMenuComponent = {"cpp", "LootSchematicMenuComponent"},
+	attributeListComponent = "LootSchematicAttributeListComponent",
+	requiredSkill = "combat_smuggler_underworld_01",
+	targetDraftSchematic = "object/draft_schematic/furniture/furniture_table_gambling.iff",
+	targetUseCount = 1,
 }
 
 ObjectTemplates:addTemplate(object_tangible_loot_loot_schematic_gambling_table_schematic, "object/tangible/loot/loot_schematic/gambling_table_schematic.iff")

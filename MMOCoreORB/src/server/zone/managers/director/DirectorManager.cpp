@@ -268,21 +268,22 @@ int DirectorManager::writeScreenPlayData(lua_State* L) {
 }
 
 int DirectorManager::createLoot(lua_State* L) {
-	if (checkArgumentCount(L, 3) == 1) {
+	if (checkArgumentCount(L, 4) == 1) {
 		instance()->error("incorrect number of arguments passed to DirectorManager::createLoot");
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
 	}
 
-	SceneObject* container = (SceneObject*)lua_touserdata(L, -3);
-	String lootGroup = lua_tostring(L, -2);
-	int level = lua_tonumber(L, -1);
+	SceneObject* container = (SceneObject*)lua_touserdata(L, -4);
+	String lootGroup = lua_tostring(L, -3);
+	int level = lua_tonumber(L, -2);
+	bool maxCondition = lua_toboolean(L, -1);
 
 	if (container == NULL || lootGroup == "")
 		return 0;
 
 	LootManager* lootManager = ServerCore::getZoneServer()->getLootManager();
-	lootManager->createLoot(container, lootGroup, level);
+	lootManager->createLoot(container, lootGroup, level, maxCondition);
 
 	return 0;
 }

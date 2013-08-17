@@ -8,9 +8,9 @@ forage_live_creatures = {
 		{itemTemplate = "foraged_sample_bats", weight = 1428571},
 		{itemTemplate = "foraged_sample_bees", weight = 1428571},
 		{itemTemplate = "foraged_sample_bugs", weight = 1428571},
-		{itemTemplate = "foraged_sample_butterflies", weight = 1428571},
-		{itemTemplate = "foraged_sample_flies", weight = 1428571},
-		{itemTemplate = "foraged_sample_glowzees", weight = 1428571},
+		{itemTemplate = "foraged_sample_butterflies", weight = 1428572},
+		{itemTemplate = "foraged_sample_flies", weight = 1428572},
+		{itemTemplate = "foraged_sample_glowzees", weight = 1428572},
 		{itemTemplate = "foraged_sample_moths", weight = 1428571}
 	}
 }

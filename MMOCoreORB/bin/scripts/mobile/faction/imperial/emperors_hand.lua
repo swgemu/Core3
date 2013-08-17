@@ -37,12 +37,12 @@ emperors_hand = Creature:new {
 				{group = "holocron_dark", chance = 850000},
 				{group = "holocron_light", chance = 850000},
 				{group = "crystals_premium", chance = 1600000},
-				{group = "rifles", chance = 1500000},
-				{group = "pistols", chance = 1500000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
 				{group = "melee_weapons", chance = 1500000},
 				{group = "armor_attachments", chance = 1100000},
 				{group = "clothing_attachments", chance = 1100000},
-				{group = "carbines", chance = 1500000}				
+				{group = "carbines", chance = 1000000}				
 			},
 			lootChance = 8500000
 		}
