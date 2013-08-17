@@ -420,7 +420,10 @@ void LootManagerImplementation::addDots(TangibleObject* object, LootItemTemplate
 				int type = 0;
 
 				if (max != min) {
-					value = MAX(min, MIN(max, System::random(max - level) + level)); // Mainly used for Str, Pot, Dur.
+					value = MAX(min, MIN(max, System::random(max - min) * (1 + (level / 1000)))); // Mainly used for Str, Pot, Dur.
+						if (value < min) {
+							value = min;
+						}
 				}
 				else { value = max; }
 
