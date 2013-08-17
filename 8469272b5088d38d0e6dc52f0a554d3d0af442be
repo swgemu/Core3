@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_3a58d9f9",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/StructureManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-08-17T08:50:06Z",
+      "side": 1,
+      "message": "There were any other references to this method (in fact there was a TODO to get rid of it).",
+      "revId": "8469272b5088d38d0e6dc52f0a554d3d0af442be",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
