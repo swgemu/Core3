@@ -5,12 +5,12 @@ death_watch_bunker_art = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "art_lg_s1", weight = 2500000},
-		{itemTemplate = "art_lg_s2", weight = 2500000},
-		{itemTemplate = "art_sm_s1", weight = 2000000},
-		{itemTemplate = "art_sm_s2", weight = 2000000},
-		{itemTemplate = "art_sm_s3", weight = 2000000},
-		{itemTemplate = "art_sm_s4", weight = 2000000}
+		{itemTemplate = "art_lg_s1", weight = 2000000},
+		{itemTemplate = "art_lg_s2", weight = 2000000},
+		{itemTemplate = "art_sm_s1", weight = 1500000},
+		{itemTemplate = "art_sm_s2", weight = 1500000},
+		{itemTemplate = "art_sm_s3", weight = 1500000},
+		{itemTemplate = "art_sm_s4", weight = 1500000}
 	}
 }
 

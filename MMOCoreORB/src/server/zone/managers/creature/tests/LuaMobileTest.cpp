@@ -6,6 +6,9 @@
  */
 
 #include "gtest/gtest.h"
+#include "server/zone/templates/LootItemTemplate.h"
+#include "server/zone/templates/LootGroupTemplate.h"
+#include "server/zone/managers/loot/LootGroupMap.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/loot/lootgroup/LootGroupCollectionEntry.h"
 
@@ -62,6 +65,27 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 				}
 			}
 		}
+	}
+
+}
+
+TEST_F(LuaMobileTest, LuaLootGroupsTest) {
+
+	LootGroupMap* lootGroupMap = LootGroupMap::instance();
+	lootGroupMap->initialize();
+
+	HashTableIterator<String, Reference<LootGroupTemplate*> > iter = lootGroupMap->groupTemplates.iterator();
+	while (iter.hasNext()) {
+
+		LootGroupTemplate* lootGroupTemplate = iter.next();
+		std::string templateName( lootGroupTemplate->getTemplateName().toCharArray() );
+
+		// Check non-empty loot groups
+		if( lootGroupTemplate->getLootItemTemplateForRoll(-1).length() > 0  ){
+			EXPECT_GT( lootGroupTemplate->getLootItemTemplateForRoll(10000000).length(), 0 ) << "Item total chance is less than 10000000: " << templateName;
+			EXPECT_EQ( lootGroupTemplate->getLootItemTemplateForRoll(10000001).length(), 0 ) << "Item total chance is greater than 10000000: " << templateName;
+		}
+
 	}
 
 }
