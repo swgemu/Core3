@@ -21,7 +21,21 @@ knife_donkuwah = {
 		{"attackmindcost",8,4,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+
+	-- dotChance: The chance of this weapon object dropping with a dot on it. Higher number means less chance. Set to 0 for static.
+	dotChance = 0,
+
+	-- dotValues: Object map that can randomly or statically generate a dot (used for weapon objects.)
+	dotValues = {
+		{"type", 1, 1}, -- 1 = Poison, 2 = Disease, 3 = Fire.
+		{"attribute", 3, 3}, -- See CreatureAttributes.h in src for numbers.
+		{"strength", 55, 55}, -- set for disease. Fire will be x1.5, poison x2.
+		{"duration", 30, 240}, -- set for poison. Fire will be x1.5, disease x5.
+		{"potency", 1, 100},
+		{"uses", 250, 9999}
+	}
+
 }
 
 addLootItemTemplate("knife_donkuwah", knife_donkuwah)
