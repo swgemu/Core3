@@ -30,11 +30,11 @@ rebel_gungan_war_chief = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 7000000},
+				{group = "junk", chance = 6500000},
 				{group = "tailor_components", chance = 1500000},
-				{group = "loot_kit_parts", chance = 1500000}
+				{group = "loot_kit_parts", chance = 2000000}
 			},
-			lootChance = 2500000
+			lootChance = 2400000
 		}					
 	},
 	weapons = {"rebel_weapons_medium"},

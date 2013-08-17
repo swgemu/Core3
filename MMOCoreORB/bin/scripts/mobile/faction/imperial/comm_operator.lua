@@ -31,13 +31,13 @@ comm_operator = Creature:new {
 		{
 			groups = {
 				{group = "color_crystals", chance = 200000},
-				{group = "junk", chance = 9000000},
-				{group = "rifles", chance = 300000},
-				{group = "pistols", chance = 300000},
-				{group = "clothing_attachments", chance = 100000},
-				{group = "armor_attachments", chance = 100000}
+				{group = "junk", chance = 7900000},
+				{group = "rifles", chance = 800000},
+				{group = "pistols", chance = 800000},
+				{group = "clothing_attachments", chance = 150000},
+				{group = "armor_attachments", chance = 150000}
 			},
-			lootChance = 2300000
+			lootChance = 2200000
 		}		
 	},
 	weapons = {"imperial_weapons_light"},
