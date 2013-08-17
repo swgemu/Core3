@@ -277,6 +277,7 @@ int LuaSceneObject::getParent(lua_State* L) {
 	if (obj == NULL) {
 		lua_pushnil(L);
 	} else {
+		obj->_setUpdated(true);
 		lua_pushlightuserdata(L, obj);
 	}
 
@@ -291,6 +292,7 @@ int LuaSceneObject::getContainerObject(lua_State* L) {
 	if (obj == NULL) {
 		lua_pushnil(L);
 	} else {
+		obj->_setUpdated(true);
 		lua_pushlightuserdata(L, obj);
 	}
 
@@ -303,6 +305,7 @@ int LuaSceneObject::getContainerObjectById(lua_State* L) {
 	SceneObject* obj = realObject->getContainerObject(objectID);
 
 	if (obj != NULL) {
+		obj->_setUpdated(true);
 		lua_pushlightuserdata(L, obj);
 	} else {
 		lua_pushnil(L);
@@ -318,6 +321,7 @@ int LuaSceneObject::getSlottedObject(lua_State* L) {
 	if (obj == NULL) {
 		lua_pushnil(L);
 	} else {
+		obj->_setUpdated(true);
 		lua_pushlightuserdata(L, obj);
 	}
 

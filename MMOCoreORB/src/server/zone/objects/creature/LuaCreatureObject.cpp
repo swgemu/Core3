@@ -551,6 +551,7 @@ int LuaCreatureObject::getGroupMember(lua_State* L) {
 		realObject->info("LuaCreatureObject::getGroupMember GroupMember is NULL.");
 		lua_pushnil(L);
 	} else {
+		creo->_setUpdated(true);
 		lua_pushlightuserdata(L, creo);
 	}
 

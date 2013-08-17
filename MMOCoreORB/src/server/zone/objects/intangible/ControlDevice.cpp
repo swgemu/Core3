@@ -595,9 +595,10 @@ int LuaControlDevice::getControlledObject(lua_State *L) {
 	if (parameterCount == 0) {
 		TangibleObject* result = realObject->getControlledObject();
 
-		if (result != NULL)
+		if (result != NULL) {
+			result->_setUpdated(true);
 			lua_pushlightuserdata(L, result);
-		else
+		} else
 			lua_pushnil(L);
 		return 1;
 	} else {

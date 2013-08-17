@@ -56,7 +56,8 @@ int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
 
 DirectorManager::DirectorManager() : Logger("DirectorManager") {
-	info("loading..", true);
+	if (!DEBUG_MODE)
+		info("loading..", true);
 
 	sharedMemory = new DirectorSharedMemory();
 	sharedMemory->setNullValue(0);
@@ -79,7 +80,8 @@ int DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	if (DEBUG_MODE)
 		setLogging(true);
 
-	info("initializeLuaEngine");
+	if (!DEBUG_MODE)
+		info("initializeLuaEngine");
 
 	luaEngine->init();
 	luaEngine->setLoggingName("DirectorManagerLuaInstance");
@@ -800,6 +802,7 @@ int DirectorManager::getSceneObject(lua_State* L) {
 	uint64 objectID = lua_tointeger(L, -1);
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 	SceneObject* object = zoneServer->getObject(objectID);
+	object->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 
 	if (object == NULL) {
 		lua_pushnil(L);
@@ -830,6 +833,7 @@ int DirectorManager::getRegion(lua_State* L) {
 	CreatureManager* creatureManager = zone->getCreatureManager();
 
 	SceneObject* spawnArea = creatureManager->getSpawnArea(regionName);
+	spawnArea->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 
 	if (spawnArea == NULL)
 		lua_pushnil(L);
@@ -849,6 +853,7 @@ int DirectorManager::getCreatureObject(lua_State* L) {
 	uint64 objectID = lua_tointeger(L, -1);
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 	SceneObject* object = zoneServer->getObject(objectID);
+	object->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 
 	if (object != NULL && object->isCreatureObject()) {
 		lua_pushlightuserdata(L, object);
@@ -889,6 +894,7 @@ int DirectorManager::getContainerObjectByTemplate(lua_State* L) {
 			continue;
 
 		if (sco->getServerObjectCRC() == objectCRC) {
+			sco->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 			lua_pushlightuserdata(L, sco);
 			return 1;
 		}
@@ -901,6 +907,7 @@ int DirectorManager::getContainerObjectByTemplate(lua_State* L) {
 					continue;
 
 				if (child->getServerObjectCRC() == objectCRC) {
+					child->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 					lua_pushlightuserdata(L, child);
 					return 1;
 				}
@@ -1080,6 +1087,7 @@ int DirectorManager::giveItem(lua_State* L) {
 	if (item != NULL && obj != NULL) {
 		obj->transferObject(item, slot, true);
 
+		item->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 		lua_pushlightuserdata(L, item.get());
 	} else {
 		lua_pushnil(L);
@@ -1113,6 +1121,7 @@ int DirectorManager::giveControlDevice(lua_State* L) {
 		controlDevice->setControlledObject(controlledObject);
 		obj->transferObject(controlDevice, slot, true);
 
+		controlDevice->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 		lua_pushlightuserdata(L, controlDevice.get());
 	} else {
 		lua_pushnil(L);
@@ -1194,6 +1203,7 @@ int DirectorManager::spawnMobile(lua_State* L) {
 			ai->setRespawnTimer(respawnTimer);
 		}
 
+		creature->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 		lua_pushlightuserdata(L, creature);
 	}
 
@@ -1249,6 +1259,8 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 			cellParent->transferObject(object, -1);
 		} else
 			zone->transferObject(object, -1, true);
+
+		object->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 	}
 
 	lua_pushlightuserdata(L, object.get());

@@ -66,7 +66,9 @@ CreatureTemplateManager::~CreatureTemplateManager() {
 }
 
 int CreatureTemplateManager::loadTemplates() {
-	info("loading mobile templates...", true);
+	if (!DEBUG_MODE)
+		info("loading mobile templates...", true);
+
 	bool ret = false;
 
 	try {
@@ -82,8 +84,10 @@ int CreatureTemplateManager::loadTemplates() {
 	if (!ret)
 		ERROR_CODE = GENERAL_ERROR;
 
-	printf("\n");
-	info("done loading mobile templates", true);
+	if (!DEBUG_MODE) {
+		printf("\n");
+		info("done loading mobile templates", true);
+	}
 
 	return ERROR_CODE;
 }
