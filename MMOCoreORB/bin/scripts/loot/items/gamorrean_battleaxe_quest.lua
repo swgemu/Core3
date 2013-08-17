@@ -21,7 +21,21 @@ gamorrean_battleaxe_quest = {
 	},
 	customizationStringNames = {},
 	customizationValues = {},
-	skillMods = {{"block", 5}}
+	skillMods = {{"block", 5}},
+
+	-- dotChance: The chance of this weapon object dropping with a dot on it. Higher number means less chance. Set to 0 for static.
+	dotChance = 0,
+
+	-- dotValues: Object map that can randomly or statically generate a dot (used for weapon objects.)
+	dotValues = {
+		{"type", 2, 2}, -- 1 = Poison, 2 = Disease, 3 = Fire.
+		{"attribute", 6, 6}, -- See CreatureAttributes.h in src for numbers.
+		{"strength", 50, 50}, -- set for disease. Fire will be x1.5, poison x2.
+		{"duration", 80, 80}, -- set for poison. Fire will be x1.5, disease x5.
+		{"potency", 60, 60},
+		{"uses", 9999, 9999}
+	}
+
 }
--- needs DOT added, disease mind str 50, dur 400s, pot 60% 9999 uses
+
 addLootItemTemplate("gamorrean_battleaxe_quest", gamorrean_battleaxe_quest)

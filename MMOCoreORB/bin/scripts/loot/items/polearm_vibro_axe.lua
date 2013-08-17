@@ -28,12 +28,12 @@ polearm_vibro_axe = {
 
 	-- dotValues: Object map that can randomly or statically generate a dot (used for weapon objects.)
 	dotValues = {
-		{1,3}, -- Type, 1 = Poison, 2 = Disease, 3 = Fire.
-		{0,8}, -- Attribute, See CreatureAttributes.h in src for numbers.
-		{20, 400}, -- Strength.
-		{30,140}, -- Duration.
-		{10, 100}, -- Potency.
-		{250, 5000} -- Uses.
+		{"type", 1, 3}, -- 1 = Poison, 2 = Disease, 3 = Fire.
+		{"attribute", 0, 8}, -- See CreatureAttributes.h in src for numbers.
+		{"strength", 10, 200}, -- set for disease. Fire will be x1.5, poison x2.
+		{"duration", 30, 240}, -- set for poison. Fire will be x1.5, disease x5.
+		{"potency", 1, 100},
+		{"uses", 250, 9999}
 	}
 
 }
