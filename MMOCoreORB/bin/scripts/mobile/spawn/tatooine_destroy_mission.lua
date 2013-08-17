@@ -221,6 +221,15 @@ tatooine_destroy_mission = {
 			numberToSpawn = 0,
 			weighting = 0,
 			size = 25
+		},
+		{
+			lairTemplateName = "weequay_tribe_camp",
+			spawnLimit = -1,
+			minDifficulty = 8,
+			maxDifficulty = 13,
+			numberToSpawn = 0,
+			weighting = 0,
+			size = 25
 		}
 	}
 }
