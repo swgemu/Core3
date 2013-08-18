@@ -8,11 +8,9 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 #include "../RectangularAreaShape.h"
-#include "../AreaShape.h"
 
 using ::testing::_;
 using ::testing::Return;
-using server::zone::objects::area::areashapes::MockAreaShape;
 
 namespace server {
 namespace zone {
