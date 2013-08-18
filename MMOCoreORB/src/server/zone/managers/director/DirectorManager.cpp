@@ -802,11 +802,11 @@ int DirectorManager::getSceneObject(lua_State* L) {
 	uint64 objectID = lua_tointeger(L, -1);
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 	SceneObject* object = zoneServer->getObject(objectID);
-	object->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 
 	if (object == NULL) {
 		lua_pushnil(L);
 	} else {
+		object->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 		lua_pushlightuserdata(L, object);
 	}
 
@@ -833,12 +833,13 @@ int DirectorManager::getRegion(lua_State* L) {
 	CreatureManager* creatureManager = zone->getCreatureManager();
 
 	SceneObject* spawnArea = creatureManager->getSpawnArea(regionName);
-	spawnArea->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 
 	if (spawnArea == NULL)
 		lua_pushnil(L);
-	else
+	else {
+		spawnArea->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 		lua_pushlightuserdata(L, spawnArea);
+	}
 
 	return 1;
 }
@@ -853,9 +854,9 @@ int DirectorManager::getCreatureObject(lua_State* L) {
 	uint64 objectID = lua_tointeger(L, -1);
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
 	SceneObject* object = zoneServer->getObject(objectID);
-	object->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 
 	if (object != NULL && object->isCreatureObject()) {
+		object->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 		lua_pushlightuserdata(L, object);
 	} else {
 		lua_pushnil(L);
