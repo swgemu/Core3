@@ -74,6 +74,8 @@ protected:
 
 	int labratory;
 
+	bool disableFactory;
+
 public:
 	DraftSchematicObjectTemplate();
 
@@ -175,6 +177,10 @@ public:
 
     int getLabratory() {
     	return labratory;
+    }
+
+    bool allowFactoryRun() {
+    	return !disableFactory;
     }
 
 };
