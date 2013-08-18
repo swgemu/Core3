@@ -178,6 +178,7 @@ public:
 	const static int SHIPDEED = 0x4000037;
 	const static int RECYCLETOOL = 0x4000038;
 	const static int DNASAMPLE = 0x4000039;
+	const static int PETDEED = 0x4000040;
 
 public:
 	SharedObjectTemplate();
@@ -667,6 +668,9 @@ public:
 	}
 	virtual bool isDnaSampleTemplate() {
 	    	return false;
+	}
+	virtual bool isPetDeedTemplate() {
+		return false;
 	}
 };
 

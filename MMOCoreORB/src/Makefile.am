@@ -46,7 +46,7 @@ AM_CXXFLAGS= -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -D
 ENGINE3_PATH=../../../../MMOEngine
 
 GTEST_PATH=../../../utils/gtest-1.6.0
-
+GMOCK_PATH=../../../utils/gmock-1.6.0
 
 
 #CC = clang
@@ -57,7 +57,8 @@ INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(ENGINE3_PATH)/include -I$(ENGINE3_PATH)/src -I/usr/include/lua5.1 -I/usr/include/mysql \
 	    -I/usr/local/BerkeleyDB.5.0/include \
 	    -I/usr/include/db5.0 \
-	    -I$(GTEST_PATH)/include
+	    -I$(GTEST_PATH)/include \
+	    -I$(GMOCK_PATH)/include
 			
 LIBS =	$(SYSTEM_LIBS)  \
 	$(USER_LD_FLAGS) \
@@ -279,6 +280,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/tangible/attachment/Attachment.cpp \
 				server/zone/objects/tangible/deed/Deed.cpp \
 				server/zone/objects/tangible/deed/vehicle/VehicleDeed.cpp \
+				server/zone/objects/tangible/deed/pet/PetDeed.cpp \
 				server/zone/objects/tangible/deed/resource/ResourceDeed.cpp \
 				server/zone/objects/tangible/sign/SignObject.cpp \
 				server/zone/objects/tangible/terminal/Terminal.cpp \
@@ -527,6 +529,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/consumable/ConsumableImplementation.cpp \
 		server/zone/objects/tangible/consumable/DelayedBuffObserverImplementation.cpp \
 		server/zone/objects/tangible/deed/DeedImplementation.cpp \
+		server/zone/objects/tangible/deed/pet/PetDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/vehicle/VehicleDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/resource/ResourceDeedImplementation.cpp \
 		server/zone/objects/tangible/sign/SignObjectImplementation.cpp \

@@ -44,6 +44,7 @@
 object_tangible_deed_pet_deed_shear_mite_deed = object_tangible_deed_pet_deed_shared_shear_mite_deed:new {
 
 
+	templateType = PETDEED,
 	numberExperimentalProperties = {1, 1},
 	experimentalProperties = {"XX", "XX"},
 	experimentalWeights = {1, 1},
