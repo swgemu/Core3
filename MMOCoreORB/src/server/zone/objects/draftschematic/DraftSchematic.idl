@@ -205,4 +205,6 @@ class DraftSchematic extends IntangibleObject {
 		return schematicTemplate;
 	}
 	public native int getLabratory();
+	
+	public native boolean allowFactoryRun();
 }

@@ -20,7 +20,7 @@
  *	CraftingManagerStub
  */
 
-enum {RPC_GETSCHEMATIC__INT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_INT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_INT_,RPC_CALCULATEASSEMBLYSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_,RPC_CALCULATEEXPERIMENTATIONFAILURERATE__CREATUREOBJECT_MANUFACTURESCHEMATIC_INT_,RPC_CALCULATEEXPERIMENTATIONSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_,RPC_GENERATESERIAL__,RPC_CHECKBIOSKILLMODS__STRING_,RPC_SETINITIALCRAFTINGVALUES__TANGIBLEOBJECT_MANUFACTURESCHEMATIC_INT_};
+enum {RPC_GETSCHEMATIC__INT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_INT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_INT_,RPC_CALCULATEASSEMBLYSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_,RPC_CALCULATEEXPERIMENTATIONFAILURERATE__CREATUREOBJECT_MANUFACTURESCHEMATIC_INT_,RPC_CALCULATEEXPERIMENTATIONSUCCESS__CREATUREOBJECT_DRAFTSCHEMATIC_FLOAT_,RPC_GENERATESERIAL__,RPC_CHECKBIOSKILLMODS__STRING_,RPC_SETINITIALCRAFTINGVALUES__TANGIBLEOBJECT_MANUFACTURESCHEMATIC_INT_,RPC_ALLOWMANUFACTURESCHEMATIC__MANUFACTURESCHEMATIC_};
 
 CraftingManager::CraftingManager() : ZoneManager(DummyConstructorParameter::instance()) {
 	CraftingManagerImplementation* _implementation = new CraftingManagerImplementation();
@@ -211,6 +211,20 @@ void CraftingManager::setInitialCraftingValues(TangibleObject* prototype, Manufa
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setInitialCraftingValues(prototype, manufactureSchematic, assemblySuccess);
+}
+
+bool CraftingManager::allowManufactureSchematic(ManufactureSchematic* manufactureSchematic) {
+	CraftingManagerImplementation* _implementation = static_cast<CraftingManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ALLOWMANUFACTURESCHEMATIC__MANUFACTURESCHEMATIC_);
+		method.addObjectParameter(manufactureSchematic);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->allowManufactureSchematic(manufactureSchematic);
 }
 
 DistributedObjectServant* CraftingManager::_getImplementation() {
@@ -415,6 +429,11 @@ void CraftingManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv)
 			setInitialCraftingValues(static_cast<TangibleObject*>(inv->getObjectParameter()), static_cast<ManufactureSchematic*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		}
 		break;
+	case RPC_ALLOWMANUFACTURESCHEMATIC__MANUFACTURESCHEMATIC_:
+		{
+			resp->insertBoolean(allowManufactureSchematic(static_cast<ManufactureSchematic*>(inv->getObjectParameter())));
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -454,6 +473,10 @@ String CraftingManagerAdapter::checkBioSkillMods(const String& property) {
 
 void CraftingManagerAdapter::setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess) {
 	(static_cast<CraftingManager*>(stub))->setInitialCraftingValues(prototype, manufactureSchematic, assemblySuccess);
+}
+
+bool CraftingManagerAdapter::allowManufactureSchematic(ManufactureSchematic* manufactureSchematic) {
+	return (static_cast<CraftingManager*>(stub))->allowManufactureSchematic(manufactureSchematic);
 }
 
 /*

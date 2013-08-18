@@ -154,6 +154,11 @@ int CraftingManagerImplementation::calculateExperimentationFailureRate(CreatureO
 	return failure;
 }
 
+bool CraftingManagerImplementation::allowManufactureSchematic(ManufactureSchematic* manufactureSchematic) {
+	SharedLabratory* lab = labs.get(manufactureSchematic->getLabratory());
+	return lab->allowFactoryRun(manufactureSchematic);
+}
+
 int CraftingManagerImplementation::calculateExperimentationSuccess(CreatureObject* player,
 		DraftSchematic* draftSchematic, float effectiveness) {
 
