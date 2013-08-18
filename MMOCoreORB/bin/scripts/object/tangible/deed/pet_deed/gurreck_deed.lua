@@ -44,6 +44,7 @@
 object_tangible_deed_pet_deed_gurreck_deed = object_tangible_deed_pet_deed_shared_gurreck_deed:new {
 
 
+	templateType = PETDEED,
 	numberExperimentalProperties = {1, 1},
 	experimentalProperties = {"XX", "XX"},
 	experimentalWeights = {1, 1},

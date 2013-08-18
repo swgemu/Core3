@@ -225,34 +225,34 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 
 	// Calc the max Percentage, vs Min Percentage
 	craftingValues->setMaxPercentage("fortitude",((float)fortMax/(float)1000));
-	craftingValues->setCurrentPercentage("fortitude", ((float)fortMin/(float)fortMax) * modifier);
+	craftingValues->setCurrentPercentage("fortitude", getAssemblyPercentage(fortMin) * modifier);
 
 	craftingValues->setMaxPercentage("hardiness",((float)harMax/(float)1000));
-	craftingValues->setCurrentPercentage("hardiness", ((float)harMin/(float)harMax) * modifier);
+	craftingValues->setCurrentPercentage("hardiness", getAssemblyPercentage(harMin) * modifier);
 
 	craftingValues->setMaxPercentage("dexterity",((float)dexMax/(float)1000));
-	craftingValues->setCurrentPercentage("dexterity", ((float)dexMin/(float)dexMax) * modifier);
+	craftingValues->setCurrentPercentage("dexterity", getAssemblyPercentage(dexMin) * modifier);
 
 	craftingValues->setMaxPercentage("endurance",((float)endMax/(float)1000));
-	craftingValues->setCurrentPercentage("endurance", ((float)endMin/(float)endMax) * modifier);
+	craftingValues->setCurrentPercentage("endurance", getAssemblyPercentage(endMin) * modifier);
 
 	craftingValues->setMaxPercentage("intellect",((float)intMax/(float)1000));
 	craftingValues->setCurrentPercentage("intellect", ((float)intMin/(float)intMax) * modifier);
 
 	craftingValues->setMaxPercentage("cleverness",((float)cleMax/(float)1000));
-	craftingValues->setCurrentPercentage("cleverness", ((float)cleMin/(float)cleMax) * modifier);
+	craftingValues->setCurrentPercentage("cleverness", getAssemblyPercentage(cleMin) * modifier);
 
 	craftingValues->setMaxPercentage("dependability",((float)depMax/(float)1000));
 	craftingValues->setCurrentPercentage("dependability", ((float)depMin/(float)depMax) * modifier);
 
 	craftingValues->setMaxPercentage("courage",((float)couMax/(float)1000));
-	craftingValues->setCurrentPercentage("courage",((float)couMin/(float)couMax) * modifier);
+	craftingValues->setCurrentPercentage("courage",getAssemblyPercentage(couMin) * modifier);
 
 	craftingValues->setMaxPercentage("fierceness",((float)fieMax/(float)1000));
-	craftingValues->setCurrentPercentage("fierceness",((float)fieMin/(float)fieMax) * modifier);
+	craftingValues->setCurrentPercentage("fierceness",getAssemblyPercentage(fieMin) * modifier);
 
-	craftingValues->setMaxPercentage("power",((float)fortMax/(float)1000));
-	craftingValues->setCurrentPercentage("power", ((float)powMin/(float)powMax) * modifier);
+	craftingValues->setMaxPercentage("power",((float)powMax/(float)1000));
+	craftingValues->setCurrentPercentage("power", getAssemblyPercentage(powMin) * modifier);
 
 	// Figure out the min percentage of the stats
 

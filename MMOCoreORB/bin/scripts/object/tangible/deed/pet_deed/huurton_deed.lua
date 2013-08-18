@@ -44,6 +44,7 @@
 object_tangible_deed_pet_deed_huurton_deed = object_tangible_deed_pet_deed_shared_huurton_deed:new {
 
 
+	templateType = PETDEED,
 	numberExperimentalProperties = {1, 1},
 	experimentalProperties = {"XX", "XX"},
 	experimentalWeights = {1, 1},
