@@ -51,6 +51,10 @@ SharedLabratory::SharedLabratory() : Logger("SharedLabratory"){
 SharedLabratory::~SharedLabratory() {
 }
 
+bool SharedLabratory::allowFactoryRun() {
+	return true;
+}
+
 void SharedLabratory::initialize(ZoneServer* server) {
 	zoneServer = server;
 }

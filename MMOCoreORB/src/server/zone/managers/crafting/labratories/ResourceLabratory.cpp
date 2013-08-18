@@ -14,6 +14,11 @@ ResourceLabratory::ResourceLabratory() {
 ResourceLabratory::~ResourceLabratory() {
 }
 
+bool ResourceLabratory::allowFactoryRun() {
+	return true;
+}
+
+
 void ResourceLabratory::initialize(ZoneServer* server) {
 	SharedLabratory::initialize(server);
 	Reference<Lua* > lua = new Lua();
