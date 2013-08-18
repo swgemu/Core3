@@ -30,10 +30,10 @@ knife_donkuwah = {
 	dotValues = {
 		{"type", 1, 1}, -- 1 = Poison, 2 = Disease, 3 = Fire.
 		{"attribute", 3, 3}, -- See CreatureAttributes.h in src for numbers.
-		{"strength", 55, 55}, -- set for disease. Fire will be x1.5, poison x2.
-		{"duration", 30, 240}, -- set for poison. Fire will be x1.5, disease x5.
-		{"potency", 1, 100},
-		{"uses", 250, 9999}
+		{"strength", 35, 35}, -- set for disease. Fire will be x1.5, poison x2.
+		{"duration", 120, 120}, -- set for poison. Fire will be x1.5, disease x5.
+		{"potency", 60, 60},
+		{"uses", 500, 500}
 	}
 
 }
