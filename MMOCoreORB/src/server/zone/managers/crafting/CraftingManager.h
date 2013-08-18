@@ -196,6 +196,8 @@ public:
 
 	void setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess);
 
+	bool allowManufactureSchematic(ManufactureSchematic* manufactureSchematic);
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -321,6 +323,8 @@ private:
 public:
 	void setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess);
 
+	bool allowManufactureSchematic(ManufactureSchematic* manufactureSchematic);
+
 	WeakReference<CraftingManager*> _this;
 
 	operator const CraftingManager*();
@@ -381,6 +385,8 @@ public:
 	String checkBioSkillMods(const String& property);
 
 	void setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess);
+
+	bool allowManufactureSchematic(ManufactureSchematic* manufactureSchematic);
 
 };
 
