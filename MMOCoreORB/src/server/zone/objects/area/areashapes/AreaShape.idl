@@ -47,6 +47,7 @@ package server.zone.objects.area.areashapes;
 include engine.core.ManagedObject;
 include engine.util.u3d.Vector3;
 
+@mock
 class AreaShape extends ManagedObject {
 	
 	/** The center coordinate of the area. */
@@ -92,6 +93,7 @@ class AreaShape extends ManagedObject {
 	 */
 	@dereferenced
 	@local
+	@mock
 	public abstract boolean containsPoint(@dereferenced final Vector3 point) {
 		return false;
 	}
