@@ -11,6 +11,8 @@
 
 #include "engine/core/ManagedWeakReference.h"
 
+#include "gmock/gmock.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/util/u3d/Vector3.h"
@@ -31,7 +33,7 @@ public:
 
 	bool containsPoint(float x, float y);
 
-	bool containsPoint(const Vector3& point);
+	virtual bool containsPoint(const Vector3& point);
 
 	float getRadius();
 
@@ -179,6 +181,13 @@ public:
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class Singleton<AreaShapeHelper>;
+};
+
+class MockAreaShape : public AreaShape {
+public:
+
+	MOCK_METHOD1(containsPoint,bool(const Vector3& point));
+
 };
 
 } // namespace areashapes

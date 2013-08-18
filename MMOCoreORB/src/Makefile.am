@@ -46,8 +46,8 @@ AM_CXXFLAGS= -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -D
 ENGINE3_PATH=../../../../MMOEngine
 
 GTEST_PATH=../../../utils/gtest-1.6.0
-GMOCK_PATH=../../../utils/gmock-1.6.0
 
+GMOCK_PATH=../../../utils/gmock-1.6.0
 
 #CC = clang
 #CXX = clang++
@@ -81,9 +81,10 @@ bin_PROGRAMS = core3 #odb3
 #server/zone/objects/scene/SceneObject.h.gch:
 #	$(CXX) $(INCLUDES) -I../../../src ../../../src/server/zone/objects/scene/SceneObject.h
 
-core3_TESTS = server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.cpp \
-			  server/zone/managers/director/tests/BasicScreenPlayTest.cpp \
-			  server/zone/managers/creature/tests/LuaMobileTest.cpp
+core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.cpp \
+			  	server/zone/managers/director/tests/BasicScreenPlayTest.cpp \
+			  	server/zone/managers/creature/tests/LuaMobileTest.cpp \
+			  	server/zone/objects/area/areashapes/tests/RectangularAreaShapeTest.cpp
 
 core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp \
 				server/zone/objects/area/FsVillageArea.cpp \
