@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_1abbdd73",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/crafting/CraftingSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-08-19T20:10:15Z",
+      "side": 1,
+      "message": "You got it backwards, this will try to lock the crafter not the satchel.\n\nLocker(satchel, crafter) will lock the satchel and avoid deadlock with the crafter.",
+      "revId": "973201dc872fd1223f83f26b5f9e7e4cebcca8d8",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
