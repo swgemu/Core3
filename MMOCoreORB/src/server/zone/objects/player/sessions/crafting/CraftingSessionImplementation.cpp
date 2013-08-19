@@ -399,7 +399,10 @@ void CraftingSessionImplementation::sendIngredientForUIListen() {
 	if (prototype == NULL) {
 		return;
 	}
-
+	uint8 allowFactory = 1;
+	if (!craftingManager.get()->allowManufactureSchematic(manufactureSchematic)) {
+		allowFactory = 0;
+	}
 	// Object Controller w/ Ingredients ***************************
 	ObjectControllerMessage* objMsg = new ObjectControllerMessage(
 			crafter->getObjectID(), 0x1B, 0x0103);
@@ -407,7 +410,7 @@ void CraftingSessionImplementation::sendIngredientForUIListen() {
 	objMsg->insertLong(manufactureSchematic->getObjectID());// Manufacture Schematic Object ID
 	objMsg->insertLong(prototype->getObjectID()); // Crafting Tangible Object ID
 	objMsg->insertInt(2);
-	objMsg->insertByte(1);
+	objMsg->insertByte(allowFactory); // set to 1 to allow create manufact schematic, 0 to prevent it.
 
 	ManagedReference<DraftSchematic*> draftSchematic = manufactureSchematic->getDraftSchematic();
 	int draftSlotCount = draftSchematic->getDraftSlotCount();
@@ -1241,6 +1244,11 @@ void CraftingSessionImplementation::createManufactureSchematic(int clientCounter
 
 	if (prototype == NULL) {
 		sendSlotMessage(0, IngredientSlot::PROTOTYPENOTFOUND);
+		return;
+	}
+
+	if (!craftingManager.get()->allowManufactureSchematic(manufactureSchematic)){
+		sendSlotMessage(0, IngredientSlot::NOSCHEMATIC);
 		return;
 	}
 

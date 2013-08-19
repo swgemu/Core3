@@ -284,6 +284,11 @@ void GeneticLabratory::initialize(ZoneServer* server) {
 	SharedLabratory::initialize(server);
 
 }
+
+bool GeneticLabratory::allowFactoryRun(ManufactureSchematic* manufactureSchematic) {
+	return false;
+}
+
 void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffected, int pointsAttempted, float failure, int experimentationResult){
 	float modifier, newValue, valA, valB;
 	String title, subtitle, subtitlesTitle;

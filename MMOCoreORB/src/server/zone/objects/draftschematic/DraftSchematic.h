@@ -144,6 +144,8 @@ public:
 
 	int getLabratory();
 
+	bool allowFactoryRun();
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -239,6 +241,8 @@ public:
 
 	int getLabratory();
 
+	bool allowFactoryRun();
+
 	WeakReference<DraftSchematic*> _this;
 
 	operator const DraftSchematic*();
@@ -327,6 +331,8 @@ public:
 	String getTemplate(int i);
 
 	int getLabratory();
+
+	bool allowFactoryRun();
 
 };
 

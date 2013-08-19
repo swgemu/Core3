@@ -32,6 +32,7 @@ public:
 	void setInitialCraftingValues(TangibleObject* prototype, ManufactureSchematic* manufactureSchematic, int assemblySuccess);
 	void experimentRow(CraftingValues* craftingValues,int rowEffected, int pointsAttempted, float failure, int experimentationResult);
 	void initialize(ZoneServer* server);
+	bool allowFactoryRun(ManufactureSchematic* manufactureSchematic);
 protected:
 	uint32 calcMin(float input) {
 		return Math::getPrecision( (input * ((input/1000) + 0.15)),0);

@@ -214,6 +214,8 @@ public:
 
 	BlueprintEntry* getBlueprintEntry(int i);
 
+	bool allowFactoryRun();
+
 	int getLabratory();
 
 	DistributedObjectServant* _getImplementation();
@@ -390,6 +392,8 @@ public:
 
 	BlueprintEntry* getBlueprintEntry(int i);
 
+	bool allowFactoryRun();
+
 	int getLabratory();
 
 	WeakReference<ManufactureSchematic*> _this;
@@ -502,6 +506,8 @@ public:
 	void createFactoryBlueprint();
 
 	int getBlueprintSize();
+
+	bool allowFactoryRun();
 
 	int getLabratory();
 

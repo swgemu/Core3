@@ -16,7 +16,7 @@
  *	DraftSchematicStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_,RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_,RPC_SETGROUPNAME__STRING_,RPC_GETGROUPNAME__,RPC_GETDRAFTSLOTCOUNT__,RPC_ISVALIDDRAFTSCHEMATIC__,RPC_GETRESOURCEWEIGHTCOUNT__,RPC_GETCOMPLEXITY__,RPC_GETTOOLTAB__,RPC_GETSIZE__,RPC_GETXPTYPE__,RPC_GETXPAMOUNT__,RPC_GETASSEMBLYSKILL__,RPC_GETEXPERIMENTATIONSKILL__,RPC_GETCUSTOMIZATIONSKILL__,RPC_GETCUSTOMNAME__,RPC_GETTANOCRC__,RPC_GETTEMPLATELISTSIZE__,RPC_GETTEMPLATE__INT_,RPC_GETLABRATORY__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDRAFTSLOTSTO__CREATUREOBJECT_,RPC_SENDRESOURCEWEIGHTSTO__CREATUREOBJECT_,RPC_CREATEMANUFACTURESCHEMATIC__SCENEOBJECT_,RPC_SETGROUPNAME__STRING_,RPC_GETGROUPNAME__,RPC_GETDRAFTSLOTCOUNT__,RPC_ISVALIDDRAFTSCHEMATIC__,RPC_GETRESOURCEWEIGHTCOUNT__,RPC_GETCOMPLEXITY__,RPC_GETTOOLTAB__,RPC_GETSIZE__,RPC_GETXPTYPE__,RPC_GETXPAMOUNT__,RPC_GETASSEMBLYSKILL__,RPC_GETEXPERIMENTATIONSKILL__,RPC_GETCUSTOMIZATIONSKILL__,RPC_GETCUSTOMNAME__,RPC_GETTANOCRC__,RPC_GETTEMPLATELISTSIZE__,RPC_GETTEMPLATE__INT_,RPC_GETLABRATORY__,RPC_ALLOWFACTORYRUN__};
 
 DraftSchematic::DraftSchematic() : IntangibleObject(DummyConstructorParameter::instance()) {
 	DraftSchematicImplementation* _implementation = new DraftSchematicImplementation();
@@ -398,6 +398,19 @@ int DraftSchematic::getLabratory() {
 		return _implementation->getLabratory();
 }
 
+bool DraftSchematic::allowFactoryRun() {
+	DraftSchematicImplementation* _implementation = static_cast<DraftSchematicImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ALLOWFACTORYRUN__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->allowFactoryRun();
+}
+
 DistributedObjectServant* DraftSchematic::_getImplementation() {
 
 	 if (!_updated) _updated = true;
@@ -701,6 +714,11 @@ void DraftSchematicAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			resp->insertSignedInt(getLabratory());
 		}
 		break;
+	case RPC_ALLOWFACTORYRUN__:
+		{
+			resp->insertBoolean(allowFactoryRun());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -796,6 +814,10 @@ String DraftSchematicAdapter::getTemplate(int i) {
 
 int DraftSchematicAdapter::getLabratory() {
 	return (static_cast<DraftSchematic*>(stub))->getLabratory();
+}
+
+bool DraftSchematicAdapter::allowFactoryRun() {
+	return (static_cast<DraftSchematic*>(stub))->allowFactoryRun();
 }
 
 /*
