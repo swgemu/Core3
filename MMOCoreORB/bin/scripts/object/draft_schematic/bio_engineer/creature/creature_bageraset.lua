@@ -56,7 +56,7 @@ object_draft_schematic_bio_engineer_creature_creature_bageraset = object_draft_s
 
    assemblySkill = "bio_engineer_assembly", 
    experimentingSkill = "bio_engineer_experimentation", 
-   customizationSkill = "bio_customization", 
+   customizationSkill = "bio_engineer_experimentation", 
 
    customizationOptions = {},
    customizationStringNames = {},
@@ -65,7 +65,7 @@ object_draft_schematic_bio_engineer_creature_creature_bageraset = object_draft_s
    ingredientTemplateNames = {"craft_creature_ingredients_n", "craft_creature_ingredients_n", "craft_creature_ingredients_n"},
    ingredientTitleNames = {"dna_template", "protein_base", "organic_nutrition_materials"},
    ingredientSlotType = {1, 0, 0},
-   resourceTypes = {"object/tangible/component/dna/shared_dna_template_generic.iff", "creature_food", "***BAD NAME***"},
+   resourceTypes = {"object/tangible/component/dna/shared_dna_template_generic.iff", "creature_food", "flora_food"},
    resourceQuantities = {1, 45, 65},
    contribution = {100, 100, 100},
 

@@ -56,7 +56,7 @@ object_draft_schematic_bio_engineer_creature_creature_boar_wolf = object_draft_s
 
    assemblySkill = "bio_engineer_assembly", 
    experimentingSkill = "bio_engineer_experimentation", 
-   customizationSkill = "bio_customization", 
+   customizationSkill = "bio_engineer_experimentation", 
 
    customizationOptions = {},
    customizationStringNames = {},
