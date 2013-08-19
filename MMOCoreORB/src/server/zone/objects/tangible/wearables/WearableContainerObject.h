@@ -13,6 +13,20 @@
 
 namespace server {
 namespace zone {
+namespace packets {
+namespace scene {
+
+class AttributeListMessage;
+
+} // namespace scene
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::scene;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace creature {
 
@@ -37,13 +51,21 @@ class WearableContainerObject : public Container {
 public:
 	WearableContainerObject();
 
+	void initializeTransientMembers();
+
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
+
 	void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
 
 	void applySkillModsTo(CreatureObject* creature, bool doCheck = true);
 
 	void removeSkillModsFrom(CreatureObject* creature);
 
+	VectorMap<String, int>* getWearableSkillMods();
+
 	bool isEquipped();
+
+	bool isWearableContainerObject();
 
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
@@ -81,13 +103,21 @@ public:
 
 	WearableContainerObjectImplementation(DummyConstructorParameter* param);
 
+	void initializeTransientMembers();
+
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
+
 	virtual void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
 
 	virtual void applySkillModsTo(CreatureObject* creature, bool doCheck = true);
 
 	virtual void removeSkillModsFrom(CreatureObject* creature);
 
+	VectorMap<String, int>* getWearableSkillMods();
+
 	bool isEquipped();
+
+	bool isWearableContainerObject();
 
 	WeakReference<WearableContainerObject*> _this;
 
@@ -132,6 +162,8 @@ public:
 
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
+	void initializeTransientMembers();
+
 	void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient);
 
 	void applySkillModsTo(CreatureObject* creature, bool doCheck);
@@ -139,6 +171,8 @@ public:
 	void removeSkillModsFrom(CreatureObject* creature);
 
 	bool isEquipped();
+
+	bool isWearableContainerObject();
 
 };
 
