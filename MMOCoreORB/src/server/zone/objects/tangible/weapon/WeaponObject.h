@@ -375,6 +375,8 @@ public:
 
 	void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
 
+	VectorMap<String, int>* getWearableSkillMods();
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -718,6 +720,8 @@ public:
 	virtual void removeSkillModsFrom(CreatureObject* creature);
 
 	virtual void addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient = true);
+
+	VectorMap<String, int>* getWearableSkillMods();
 
 	WeakReference<WeaponObject*> _this;
 
