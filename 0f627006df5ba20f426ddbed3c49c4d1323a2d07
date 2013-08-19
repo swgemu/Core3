@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_ba1f49b7",
+        "filename": "MMOCoreORB/bin/scripts/loot/items.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-08-19T03:16:04Z",
+      "side": 1,
+      "message": "Many of these includes are duplicated above. I\u0027d actually prefer it if you would create a new sub-folder called themepark_reward and put them all in there. I\u0027ll move all the other themepark rewards to it afterwards.",
+      "revId": "0f627006df5ba20f426ddbed3c49c4d1323a2d07",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_9a1c8dc3",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-08-19T03:16:04Z",
+      "side": 1,
+      "message": "Nit pick, but I\u0027m sure that these are from another review. Can you remove them for this one?",
+      "revId": "0f627006df5ba20f426ddbed3c49c4d1323a2d07",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_3a8339ce",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/screenplay.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-08-19T03:16:04Z",
+      "side": 1,
+      "message": "You\u0027re missing the includes for the themepark screenplays. Also, don\u0027t need this corvette one.",
+      "revId": "0f627006df5ba20f426ddbed3c49c4d1323a2d07",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
