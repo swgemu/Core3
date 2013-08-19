@@ -72,7 +72,7 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 TEST_F(LuaMobileTest, LuaLootGroupsTest) {
 
 	LootGroupMap* lootGroupMap = LootGroupMap::instance();
-	lootGroupMap->initialize();
+	EXPECT_EQ(lootGroupMap->initialize(), 0);
 
 	HashTableIterator<String, Reference<LootGroupTemplate*> > iter = lootGroupMap->groupTemplates.iterator();
 	while (iter.hasNext()) {
