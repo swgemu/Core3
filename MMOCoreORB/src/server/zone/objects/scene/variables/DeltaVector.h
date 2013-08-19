@@ -50,6 +50,13 @@ public:
 		addSerializableVariables();
 	}
 
+	~DeltaVector() {
+		if (mutex) {
+			delete mutex;
+			mutex = NULL;
+		}
+	}
+
 	DeltaVector& operator=(const DeltaVector& v) {
 		if (this == &v)
 			return *this;
@@ -104,6 +111,12 @@ public:
 	}
 
 	E& get(int index) const {
+		return vector.get(index);
+	}
+
+	E& getSafe(int index) {
+		ReadLocker locker(getLock());
+
 		return vector.get(index);
 	}
 
@@ -183,7 +196,6 @@ public:
 		return vector.size();
 	}
 
-protected:
 	inline ReadWriteLock* getLock() {
 		if (mutex == NULL) {
 			mutex = new ReadWriteLock();

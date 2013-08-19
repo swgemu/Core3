@@ -120,7 +120,7 @@ class GroupObject extends SceneObject {
 	}
 
 	public SceneObject getGroupMember(int index) {
-		return groupMembers.get(index);
+		return groupMembers.getSafe(index);
 	}
 
 	public void initializeLeader(SceneObject player) {
@@ -128,7 +128,7 @@ class GroupObject extends SceneObject {
 	}
 
 	public SceneObject getLeader() {
-		return groupMembers.get(0);
+		return groupMembers.getSafe(0);
 	}
 	
 	@local
