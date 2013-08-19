@@ -17,6 +17,8 @@ class LootItemTemplate;
 class LootGroupMap : public Singleton<LootGroupMap>, public Object {
 public:
 	static Lua* lua;
+	enum LUA_ERROR_CODE { NO_ERROR = 0, GENERAL_ERROR };
+	static int ERROR_CODE;
 
 	HashTable<String, Reference<LootItemTemplate*> > itemTemplates;
 	HashTable<String, Reference<LootGroupTemplate*> > groupTemplates;
@@ -25,7 +27,7 @@ public:
 	LootGroupMap();
 	virtual ~LootGroupMap();
 
-	void initialize();
+	int initialize();
 
 	inline void putLootItemTemplate(const String& name, LootItemTemplate* item) {
 		itemTemplates.put(name, item);
