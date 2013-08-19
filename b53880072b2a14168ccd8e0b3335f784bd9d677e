@@ -50,6 +50,24 @@
       "revId": "b53880072b2a14168ccd8e0b3335f784bd9d677e",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_9a8fedcc",
+        "filename": "MMOCoreORB/bin/scripts/mobile/naboo/theme_park_imperial_escort_twilek.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2013-08-19T19:54:46Z",
+      "side": 1,
+      "message": "According to scrapbook, he should be attackable in both the escort and the attack mission.",
+      "parentUuid": "3a1d315d_fada61e8",
+      "revId": "b53880072b2a14168ccd8e0b3335f784bd9d677e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
