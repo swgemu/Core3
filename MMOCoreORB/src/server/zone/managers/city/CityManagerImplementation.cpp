@@ -1102,9 +1102,22 @@ void CityManagerImplementation::contractCity(CityRegion* city) {
 				mayor->getFirstName(), NULL);
 	}
 
+	CitizenList* cityMilitia = city->getMilitiaMembers();
+
+	SortedVector<uint64> militiaMembers;
+
+	for (int i = 0; i < cityMilitia->size(); ++i) {
+		militiaMembers.put(cityMilitia->get(i));
+	}
+
 	city->setCityRank(newRank);
 	city->setRadius(radiusPerRank.get(newRank - 1));
 	city->destroyAllStructuresForRank(uint8(newRank + 1));
+
+	for (int i = 0; i < militiaMembers.size(); ++i) {
+		city->addMilitiaMember(militiaMembers.get(i));
+	}
+
 	city->cleanupCitizens();
 }
 
@@ -1145,10 +1158,20 @@ void CityManagerImplementation::expandCity(CityRegion* city) {
 				mayor->getFirstName(), NULL);
 	}
 
-	//TODO: Add new citizens within limits.
+	CitizenList* cityMilitia = city->getMilitiaMembers();
+
+	SortedVector<uint64> militiaMembers;
+
+	for (int i = 0; i < cityMilitia->size(); ++i) {
+		militiaMembers.put(cityMilitia->get(i));
+	}
 
 	city->setCityRank(newRank);
 	city->setRadius(radiusPerRank.get(newRank - 1));
+
+	for (int i = 0; i < militiaMembers.size(); ++i) {
+		city->addMilitiaMember(militiaMembers.get(i));
+	}
 }
 
 void CityManagerImplementation::destroyCity(CityRegion* city) {
