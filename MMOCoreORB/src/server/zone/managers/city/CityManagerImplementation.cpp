@@ -364,6 +364,9 @@ void CityManagerImplementation::promptCitySpecialization(CityRegion* city,
 
 void CityManagerImplementation::changeCitySpecialization(CityRegion* city,
 		CreatureObject* mayor, const String& spec) {
+
+	Locker _clock(city, mayor);
+
 	city->setCitySpecialization(spec);
 #ifndef CITY_DEBUG
 	mayor->addCooldown("city_specialization", citySpecializationCooldown); //1 week.
@@ -372,8 +375,21 @@ void CityManagerImplementation::changeCitySpecialization(CityRegion* city,
 	params.setTO(spec);
 	mayor->sendSystemMessage(params);
 
+	CitizenList* cityMilitia = city->getMilitiaMembers();
+
+	SortedVector<uint64> militiaMembers;
+
 	//Resetting the city radius will remove it and reinsert it, updating it to everything in the area.
+	for (int i = 0; i < cityMilitia->size(); ++i) {
+		militiaMembers.put(cityMilitia->get(i));
+	}
+
 	city->setRadius(city->getRadius());
+
+	for (int i = 0; i < militiaMembers.size(); ++i) {
+		city->addMilitiaMember(militiaMembers.get(i));
+	}
+
 }
 
 void CityManagerImplementation::sendStatusReport(CityRegion* city,

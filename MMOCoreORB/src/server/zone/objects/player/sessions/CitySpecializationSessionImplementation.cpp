@@ -50,6 +50,8 @@ int CitySpecializationSessionImplementation::initializeSession() {
 		return cancelSession();
 	}
 
+	sui->addMenuItem("@city/city:null",-1);
+
 	ghost->addSuiBox(sui);
 	creatureObject->sendMessage(sui->generateMessage());
 
