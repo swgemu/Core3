@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_3ad1f9cd",
+        "filename": "MMOCoreORB/bin/scripts/loot/items.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-08-19T08:57:07Z",
+      "side": 1,
+      "message": "This looks to be a duplicate entry.",
+      "revId": "b53880072b2a14168ccd8e0b3335f784bd9d677e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_1ad63dc6",
+        "filename": "MMOCoreORB/bin/scripts/mobile/faction/rebel/rebel_coordinator.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-08-19T08:57:07Z",
+      "side": 1,
+      "message": "Is there a reason for this change? Rebel/Imperial npcs generally aren\u0027t marked as aggressive (that behavior is determined by the faction status of the mob and target).",
+      "revId": "b53880072b2a14168ccd8e0b3335f784bd9d677e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_fada61e8",
+        "filename": "MMOCoreORB/bin/scripts/mobile/naboo/theme_park_imperial_escort_twilek.lua",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-08-19T08:57:07Z",
+      "side": 1,
+      "message": "Should this escort be attackable?",
+      "revId": "b53880072b2a14168ccd8e0b3335f784bd9d677e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
