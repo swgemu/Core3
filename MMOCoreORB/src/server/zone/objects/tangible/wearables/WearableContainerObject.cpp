@@ -4,13 +4,15 @@
 
 #include "WearableContainerObject.h"
 
+#include "server/zone/packets/scene/AttributeListMessage.h"
+
 #include "server/zone/objects/creature/CreatureObject.h"
 
 /*
  *	WearableContainerObjectStub
  */
 
-enum {RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_ = 6,RPC_APPLYSKILLMODSTO__CREATUREOBJECT_BOOL_,RPC_REMOVESKILLMODSFROM__CREATUREOBJECT_,RPC_ISEQUIPPED__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_,RPC_APPLYSKILLMODSTO__CREATUREOBJECT_BOOL_,RPC_REMOVESKILLMODSFROM__CREATUREOBJECT_,RPC_ISEQUIPPED__,RPC_ISWEARABLECONTAINEROBJECT__};
 
 WearableContainerObject::WearableContainerObject() : Container(DummyConstructorParameter::instance()) {
 	WearableContainerObjectImplementation* _implementation = new WearableContainerObjectImplementation();
@@ -27,6 +29,28 @@ WearableContainerObject::~WearableContainerObject() {
 }
 
 
+
+void WearableContainerObject::initializeTransientMembers() {
+	WearableContainerObjectImplementation* _implementation = static_cast<WearableContainerObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INITIALIZETRANSIENTMEMBERS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->initializeTransientMembers();
+}
+
+void WearableContainerObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
+	WearableContainerObjectImplementation* _implementation = static_cast<WearableContainerObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->fillAttributeList(msg, object);
+}
 
 void WearableContainerObject::addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient) {
 	WearableContainerObjectImplementation* _implementation = static_cast<WearableContainerObjectImplementation*>(_getImplementation());
@@ -74,6 +98,15 @@ void WearableContainerObject::removeSkillModsFrom(CreatureObject* creature) {
 		_implementation->removeSkillModsFrom(creature);
 }
 
+VectorMap<String, int>* WearableContainerObject::getWearableSkillMods() {
+	WearableContainerObjectImplementation* _implementation = static_cast<WearableContainerObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getWearableSkillMods();
+}
+
 bool WearableContainerObject::isEquipped() {
 	WearableContainerObjectImplementation* _implementation = static_cast<WearableContainerObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -85,6 +118,19 @@ bool WearableContainerObject::isEquipped() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isEquipped();
+}
+
+bool WearableContainerObject::isWearableContainerObject() {
+	WearableContainerObjectImplementation* _implementation = static_cast<WearableContainerObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISWEARABLECONTAINEROBJECT__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isWearableContainerObject();
 }
 
 DistributedObjectServant* WearableContainerObject::_getImplementation() {
@@ -244,6 +290,16 @@ void WearableContainerObjectImplementation::addSkillMod(const int skillType, con
 	(&wearableSkillMods)->put(skillMod, value);
 }
 
+VectorMap<String, int>* WearableContainerObjectImplementation::getWearableSkillMods() {
+	// server/zone/objects/tangible/wearables/WearableContainerObject.idl():  		return wearableSkillMods;
+	return (&wearableSkillMods);
+}
+
+bool WearableContainerObjectImplementation::isWearableContainerObject() {
+	// server/zone/objects/tangible/wearables/WearableContainerObject.idl():  		return true;
+	return true;
+}
+
 /*
  *	WearableContainerObjectAdapter
  */
@@ -259,6 +315,11 @@ void WearableContainerObjectAdapter::invokeMethod(uint32 methid, DistributedMeth
 	DOBMessage* resp = inv->getInvocationMessage();
 
 	switch (methid) {
+	case RPC_INITIALIZETRANSIENTMEMBERS__:
+		{
+			initializeTransientMembers();
+		}
+		break;
 	case RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_:
 		{
 			String skillMod; 
@@ -280,9 +341,18 @@ void WearableContainerObjectAdapter::invokeMethod(uint32 methid, DistributedMeth
 			resp->insertBoolean(isEquipped());
 		}
 		break;
+	case RPC_ISWEARABLECONTAINEROBJECT__:
+		{
+			resp->insertBoolean(isWearableContainerObject());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
+}
+
+void WearableContainerObjectAdapter::initializeTransientMembers() {
+	(static_cast<WearableContainerObject*>(stub))->initializeTransientMembers();
 }
 
 void WearableContainerObjectAdapter::addSkillMod(const int skillType, const String& skillMod, int value, bool notifyClient) {
@@ -299,6 +369,10 @@ void WearableContainerObjectAdapter::removeSkillModsFrom(CreatureObject* creatur
 
 bool WearableContainerObjectAdapter::isEquipped() {
 	return (static_cast<WearableContainerObject*>(stub))->isEquipped();
+}
+
+bool WearableContainerObjectAdapter::isWearableContainerObject() {
+	return (static_cast<WearableContainerObject*>(stub))->isWearableContainerObject();
 }
 
 /*

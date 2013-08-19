@@ -646,6 +646,8 @@ public:
 
 	bool isWearableObject();
 
+	bool isWearableContainerObject();
+
 	bool isArmorObject();
 
 	bool isRobeObject();
@@ -1320,6 +1322,8 @@ public:
 
 	virtual bool isWearableObject();
 
+	virtual bool isWearableContainerObject();
+
 	virtual bool isArmorObject();
 
 	virtual bool isRobeObject();
@@ -1848,6 +1852,8 @@ public:
 	bool isWeaponObject();
 
 	bool isWearableObject();
+
+	bool isWearableContainerObject();
 
 	bool isArmorObject();
 

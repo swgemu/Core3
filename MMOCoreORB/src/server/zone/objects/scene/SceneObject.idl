@@ -1472,6 +1472,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isWearableObject() {
 		return false;
 	}
+	
+	@dirty
+	public abstract boolean isWearableContainerObject() {
+		return false;
+	}
 
 	@dirty
 	public abstract boolean isArmorObject() {

@@ -11,6 +11,7 @@
 #include "server/zone/templates/LootGroupTemplate.h"
 
 Lua* LootGroupMap::lua = NULL;
+int LootGroupMap::ERROR_CODE = NO_ERROR;
 
 LootGroupMap::LootGroupMap() {
 	lua = NULL;
@@ -24,15 +25,20 @@ LootGroupMap::~LootGroupMap() {
 	lua = NULL;
 }
 
-void LootGroupMap::initialize() {
+int LootGroupMap::initialize() {
 	lua = new Lua();
 	lua->init();
 
 	registerFunctions();
 	registerGlobals();
 
-	lua->runFile("scripts/loot/lootgroup.lua");
-	lua->runFile("scripts/loot/serverobjects.lua");
+	bool res = lua->runFile("scripts/loot/lootgroup.lua");
+	bool res2 = lua->runFile("scripts/loot/serverobjects.lua");
+
+	if (!res || !res2)
+		ERROR_CODE = GENERAL_ERROR;
+
+	return ERROR_CODE;
 }
 
 void LootGroupMap::registerFunctions() {
@@ -47,7 +53,10 @@ void LootGroupMap::registerGlobals() {
 int LootGroupMap::includeFile(lua_State* L) {
 	String filename = Lua::getStringParameter(L);
 
-	Lua::runFile("scripts/loot/" + filename, L);
+	bool res = Lua::runFile("scripts/loot/" + filename, L);
+
+	if (!res)
+		ERROR_CODE = GENERAL_ERROR;
 
 	return 0;
 }

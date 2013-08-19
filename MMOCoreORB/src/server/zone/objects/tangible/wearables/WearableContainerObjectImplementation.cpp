@@ -7,6 +7,27 @@
 
 #include "WearableContainerObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/managers/skill/SkillModManager.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
+
+void WearableContainerObjectImplementation::initializeTransientMembers() {
+	ContainerImplementation::initializeTransientMembers();
+	setLoggingName("WearableContainerObject");
+}
+
+void WearableContainerObjectImplementation::fillAttributeList(AttributeListMessage* alm,
+		CreatureObject* object) {
+	TangibleObjectImplementation::fillAttributeList(alm, object);
+
+	for(int i = 0; i < wearableSkillMods.size(); ++i) {
+		String key = wearableSkillMods.elementAt(i).getKey();
+		String statname = "cat_skill_mod_bonus.@stat_n:" + key;
+		int value = wearableSkillMods.get(key);
+
+		if (value > 0)
+			alm->insertAttribute(statname, value);
+	}
+}
 
 void WearableContainerObjectImplementation::applySkillModsTo(CreatureObject* creature, bool doCheck) {
 	if (creature == NULL) {
