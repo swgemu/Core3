@@ -520,3 +520,16 @@ includeFile("items/task_loot/scholar_szingo_rifle.lua")
 --task_reward sub-folder
 includeFile("items/task_reward/kitster_banai_anakin_droid_brain.lua")
 includeFile("items/task_reward/kitster_banai_anakin_podrace_helmet.lua")
+
+--themepark_reward sub-folder
+includeFile("items/themepark_reward/armor_stormtrooper_chestplate.lua")
+includeFile("items/themepark_reward/armor_stormtrooper_helmet.lua")
+includeFile("items/themepark_reward/armor_stormtrooper_leggings.lua")
+includeFile("items/themepark_reward/atat_suit.lua")
+includeFile("items/themepark_reward/droidsmith_schematic.lua")
+includeFile("items/themepark_reward/enhanced_carbine_schematic.lua")
+includeFile("items/themepark_reward/imperial_medallion.lua")
+includeFile("items/themepark_reward/lightweight_backpack_schematic.lua")
+includeFile("items/themepark_reward/projectile_rifle_barrel_quest.lua")
+includeFile("items/themepark_reward/tuned_weapon_scope_quest.lua")
+includeFile("items/themepark_reward/weapon_stock_quest.lua")
