@@ -13,6 +13,8 @@ grooved_two_handed_sword = {
 		{"zerorangemod",3,3,0},
 		{"midrangemod",3,3,0},
 		{"maxrangemod",3,3,0},
+		{"midrange",3,3,0},
+		{"maxrange",7,7,0},
 		{"attackhealthcost",18,18,0},
 		{"attackactioncost",43,43,0},
 		{"attackmindcost",22,22,0},
@@ -21,7 +23,23 @@ grooved_two_handed_sword = {
 		{ "intimidate", 5 }
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+
+	-- dotChance: The chance of this weapon object dropping with a dot on it. Higher number means less chance. Set to 0 for static.
+	dotChance = 0,
+
+	-- dotType: 1 = Poison, 2 = Disease, 3 = Fire, 4 = Bleed, 5 = Random
+	dotType = 4,
+
+	-- dotValues: Object map that can randomly or statically generate a dot (used for weapon objects.)
+	dotValues = {
+		{"attribute", 0, 0}, -- See CreatureAttributes.h in src for numbers.
+		{"strength", 125, 125}, -- Random type: set for disease. Fire will be x1.5, poison x2.
+		{"duration", 60, 60}, -- Random type: set for poison. Fire will be x1.5, disease x5.
+		{"potency", 50, 50},
+		{"uses", 9999, 9999}
+	}
+
 }
 
 addLootItemTemplate("grooved_two_handed_sword", grooved_two_handed_sword)
