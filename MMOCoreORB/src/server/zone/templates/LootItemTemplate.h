@@ -26,6 +26,7 @@ protected:
 	Vector<Vector<int> > customizationValues;
 
 	float dotChance;
+	int dotType;
 	VectorMap<String, SortedVector<int> > dotValues;
 
 	VectorMap<String, int> skillMods;
@@ -34,6 +35,7 @@ public:
 	LootItemTemplate(const String& name) {
 		templateName = name;
 		dotChance = -1;
+		dotType = -1;
 	}
 
 	void readObject(LuaObject* templateData) {
@@ -131,6 +133,12 @@ public:
 			dotChance = temp;
 		}
 
+		int type = -1;
+		type = templateData->getIntField("dotType");
+
+		if (type >= 0)
+			dotType = type;
+
 		LuaObject dotValuesTable = templateData->getObjectField("dotValues");
 
 		if (dotValuesTable.isValidTable() && dotValuesTable.getTableSize() > 0) {
@@ -180,8 +188,12 @@ public:
 		return &skillMods;
 	}
 
-	int getDotChance() {
+	float getDotChance() {
 		return dotChance;
+	}
+
+	int getDotType() {
+		return dotType;
 	}
 
 	VectorMap<String, SortedVector<int> >* getDotValues() {
