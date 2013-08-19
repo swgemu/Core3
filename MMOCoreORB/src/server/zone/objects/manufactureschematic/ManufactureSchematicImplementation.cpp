@@ -536,18 +536,27 @@ bool ManufactureSchematicImplementation::isReadyForAssembly() {
 
 	if(ingredientSlots.isEmpty() || !initialized)
 		return false;
-
+	// store off all component objects we find
+	int componetSlotItemCount = 0;
+	HashSet<uint64> usedObjectIds;
 	for (int i = 0; i < ingredientSlots.size(); ++i) {
 
 		Reference<IngredientSlot* > slot = ingredientSlots.get(i);
-
 		if(slot->isOptional())
 			continue;
-
+		// Check for unique needs done here
 		if(slot == NULL || !slot->isFull())
 			return false;
+		if (slot->isComponentSlot()) {
+			Vector<uint64> v = slot->getOIDVector();
+			componetSlotItemCount += slot->getSlotQuantity();
+			for (int i=0;i<v.size();i++) {
+				usedObjectIds.add(v.get(i));
+			}
+		}
 	}
-
+	if (componetSlotItemCount != usedObjectIds.size())
+		return false;
 	return true;
 }
 
