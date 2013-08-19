@@ -209,3 +209,6 @@ uint32 DraftSchematicImplementation::getTanoCRC() {
 int DraftSchematicImplementation::getLabratory() {
 	return schematicTemplate->getLabratory();
 }
+bool DraftSchematicImplementation::allowFactoryRun() {
+	return schematicTemplate->allowFactoryRun();
+}

@@ -28,6 +28,7 @@ DraftSchematicObjectTemplate::DraftSchematicObjectTemplate() {
 	skillMods.setNoDuplicateInsertPlan();
 	skillMods.setNullValue(0);
 	labratory = 0;
+	disableFactory = false;
 }
 
 DraftSchematicObjectTemplate::~DraftSchematicObjectTemplate() {
@@ -62,6 +63,7 @@ void DraftSchematicObjectTemplate::readObject(LuaObject* templateData) {
 	xpType = templateData->getStringField("xpType");
 	xp = templateData->getIntField("xp");
 	labratory = templateData->getIntField("lab");
+	disableFactory = templateData->getBooleanField("disableFactoryRun");
 
 	assemblySkill = templateData->getStringField("assemblySkill");
 	experimentingSkill = templateData->getStringField("experimentingSkill");
