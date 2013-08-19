@@ -344,6 +344,9 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 			case 3:
 				dt = "Fire";
 				break;
+			case 4:
+				dt = "Bleeding";
+				break;
 			default:
 				dt = "Unknown";
 				break;

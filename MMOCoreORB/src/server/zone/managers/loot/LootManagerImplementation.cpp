@@ -404,11 +404,22 @@ void LootManagerImplementation::addDots(TangibleObject* object, LootItemTemplate
 
 	if (shouldGenerateDots) {
 
+		int dotType = templateObject->getDotType();
+		bool random = false;
+
+		if (dotType < 1 || dotType > 5)
+			dotType = 5;
+
 		VectorMap<String, SortedVector<int> >* dotValues = templateObject->getDotValues();
 		int size = dotValues->size();
 
 		// Check if they specified correct vals.
 		if (size > 0) {
+			if (dotType == 5) {
+				dotType = System::random(2) + 1; // Poison, Disease, or Fire. No random bleeds.
+				random = true;
+			}
+			weapon->setDotType(dotType);
 
 			for (int i = 0; i < size; i++) {
 
@@ -416,60 +427,50 @@ void LootManagerImplementation::addDots(TangibleObject* object, LootItemTemplate
 				SortedVector<int> theseValues = dotValues->elementAt(i).getValue();
 				int min = theseValues.elementAt(0);
 				int max = theseValues.elementAt(1);
-				int value = 0;
-				int type = 0;
+				float value = 0;
 
 				if (max != min) {
-					value = MAX(min, MIN(max, System::random(max - min) * (1 + (level / 1000)))); // Mainly used for Str, Pot, Dur.
+					value = MAX(min, MIN(max, System::random(max - min) * (1 + (level / 1000)))); // Used for Str, Pot, Dur, Uses.
 						if (value < min) {
 							value = min;
 						}
 				}
 				else { value = max; }
 
-				if (property == "type") {
-					if (min != max) // Non-static.
-						value = System::random(2) + 1;
-					weapon->setDotType(value);
-				} else if(property == "attribute") {
+				if(property == "attribute") {
 					if (min != max)
-						value = System::random(8);
+						value = System::random(max - min) + min;
+
+					if (dotType != 2 && (value != 0 && value != 3 && value != 6)) {
+						int numbers[] = { 0, 3, 6 }; // The main pool attributes.
+						int choose = System::random(2);
+						value = numbers[choose];
+					}
+
 					weapon->setDotAttribute(value);
 				} else if (property == "strength") {
+					if (random) {
+						if (dotType == 1)
+							value = value * 2;
+						else if (dotType == 3)
+							value = value * 1.5;
+					}
+
 					weapon->setDotStrength(value);
 				} else if (property == "duration") {
+					if (random) {
+						if (dotType == 2)
+							value = value * 5;
+						else if (dotType == 3)
+							value = value * 1.5;
+					}
+
 					weapon->setDotDuration(value);
 				} else if (property == "potency") {
 					weapon->setDotPotency(value);
 				} else if (property == "uses") {
 					weapon->setDotUses(value);
 				}
-			}
-
-			int type = weapon->getDotType();
-			int pool = weapon->getDotAttribute();
-			int changeAttribute = false;
-
-			if (type == 1) {
-				weapon->setDotStrength(weapon->getDotStrength() * 2);
-
-				if (pool != 0 && pool != 3 && pool != 6)
-					changeAttribute = true;
-			} else if (type == 2) {
-				weapon->setDotDuration(weapon->getDotDuration() * 5);
-			} else if (type == 3) {
-				weapon->setDotStrength(weapon->getDotStrength() * 1.5);
-				weapon->setDotDuration(weapon->getDotDuration() * 1.5);
-
-				if (pool != 0 && pool != 3 && pool != 6)
-					changeAttribute = true;
-			}
-
-			if (changeAttribute) { // Reset attribute to a main pool if it's a Poison or Fire.
-				int numbers[] = { 0, 3, 6 }; // The main pool attributes.
-				int choose = System::random(2);
-				int value = numbers[choose];
-				weapon->setDotAttribute(value);
 			}
 		}
 	}
