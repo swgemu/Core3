@@ -484,8 +484,11 @@ void CityManagerImplementation::sendStructureReport(CityRegion* city,
 		if (deco != NULL)
 			maintList->addMenuItem(
 					deco->getDisplayedName() + " - Condition : "
-							+ String::valueOf(deco->getDecayPercentage()) + "%",
-					i);
+					+ String::valueOf(
+							(1.0f * deco->getMaxCondition()
+									- deco->getConditionDamage())
+									/ deco->getMaxCondition()
+									* 100) + "%", i);
 	}
 
 	ghost->addSuiBox(maintList);
@@ -815,6 +818,21 @@ void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 			totalPaid += collectCivicStructureMaintenance(str, city, thisCost);
 		}
 	}
+
+	for(int i = 0; i < city->getDecorationCount(); i++){
+		ManagedReference<SceneObject*> decoration = city->getCityDecoration(i);
+		if(decoration != NULL && decoration->isStructureObject()){
+			StructureObject* structure = cast<StructureObject*>(decoration.get());
+
+			if(structure != NULL){
+
+				structureTemplate = cast<SharedStructureObjectTemplate*>(structure->getObjectTemplate());
+				thisCost = maintenanceDiscount * structureTemplate->getCityMaintenanceAtRank(city->getCityRank() - 1);
+				totalPaid += collectCivicStructureMaintenance(structure, city, thisCost);
+			}
+		}
+	}
+
 	sendMaintenanceEmail(city, totalPaid);
 
 }
@@ -1751,6 +1769,8 @@ void CityManagerImplementation::sendMaintenanceReport(CityRegion* city,
 	maintList->addMenuItem("Next City Update: " + updateStr);
 	Locker lock(city);
 
+	TemplateManager* templateManager = TemplateManager::instance();
+
 	for (int i = 0; i < city->getStructuresCount(); i++) {
 		ManagedReference<StructureObject*> structure = city->getCivicStructure(
 				i);
@@ -1758,9 +1778,7 @@ void CityManagerImplementation::sendMaintenanceReport(CityRegion* city,
 		if (structure != NULL) {
 			String maintString = structure->getDisplayedName();
 
-			TemplateManager* templateManager = TemplateManager::instance();
-
-			if (templateManager != NULL) {
+					if (templateManager != NULL) {
 				if (structure->getObjectTemplate() == NULL)
 					continue;
 
@@ -1794,8 +1812,22 @@ void CityManagerImplementation::sendMaintenanceReport(CityRegion* city,
 
 	for (int i = 0; i < city->getDecorationCount(); i++) {
 		ManagedReference<SceneObject*> sceno = city->getCityDecoration(i);
-		if (sceno != NULL) {
-			maintList->addMenuItem(sceno->getDisplayedName() + " : NA ");
+		if (sceno != NULL && sceno->isStructureObject()) {
+			StructureObject* structure = cast<StructureObject*>(sceno.get());
+
+			if (templateManager != NULL) {
+					if (structure->getObjectTemplate() == NULL)
+						continue;
+
+					Reference<SharedStructureObjectTemplate*> serverTemplate =
+							cast<SharedStructureObjectTemplate*> (structure->getObjectTemplate());
+
+
+					int decCost = maintenanceDiscount * serverTemplate->getCityMaintenanceAtRank(city->getCityRank()-1);
+					totalcost += decCost;
+					maintList->addMenuItem(sceno->getDisplayedName() + " : " + String::valueOf(decCost));
+			}
+
 		}
 	}
 
