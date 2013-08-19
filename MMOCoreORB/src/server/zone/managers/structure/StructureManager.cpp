@@ -327,6 +327,11 @@ int StructureManager::placeStructureFromDeed(CreatureObject* creature,
 			return 1;
 		}
 
+		if (serverTemplate->isCivicStructure() && !city->isMayor(creature->getObjectID()) ) {
+				creature->sendSystemMessage("@player_structure:cant_place_civic");//"This structure must be placed within the borders of the city in which you are mayor."
+				return 1;
+		}
+
 		if (serverTemplate->isUniqueStructure()
 				&& city->hasUniqueStructure(
 						serverTemplate->getServerObjectCRC())) {
