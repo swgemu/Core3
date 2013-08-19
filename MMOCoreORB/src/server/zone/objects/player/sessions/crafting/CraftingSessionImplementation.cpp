@@ -514,6 +514,8 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 	} else {
 		craftingComponentsSatchel = craftingComponents->getContainerObject(0);
 	}
+	// Lock the craft and satchel as well
+	Locker crossSatcheLock(crafter,craftingComponentsSatchel);
 
 	int result = manufactureSchematic->addIngredientToSlot(crafter, craftingComponentsSatchel, tano, slot);
 
