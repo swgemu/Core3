@@ -54,6 +54,8 @@ object_draft_schematic_furniture_furniture_lamp_street = object_draft_schematic_
    xpType = "crafting_general", 
    xp = 70, 
 
+   disableFactoryRun = true,
+
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
    customizationSkill = "general_customization", 

@@ -54,6 +54,8 @@ object_draft_schematic_furniture_furniture_stove = object_draft_schematic_furnit
    xpType = "crafting_food_general", 
    xp = 130, 
 
+   disableFactoryRun = true,
+
    assemblySkill = "food_assembly", 
    experimentingSkill = "food_experimentation", 
    customizationSkill = "food_customization", 

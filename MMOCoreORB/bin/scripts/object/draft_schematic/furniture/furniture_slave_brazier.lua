@@ -54,6 +54,8 @@ object_draft_schematic_furniture_furniture_slave_brazier = object_draft_schemati
    xpType = "crafting_structure_general", 
    xp = 340, 
 
+   disableFactoryRun = true,
+
    assemblySkill = "structure_assembly", 
    experimentingSkill = "structure_experimentation", 
    customizationSkill = "structure_customization", 

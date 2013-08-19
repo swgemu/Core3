@@ -54,6 +54,8 @@ object_draft_schematic_furniture_furniture_table_gambling = object_draft_schemat
    xpType = "crafting_spice", 
    xp = 140, 
 
+   disableFactoryRun = true,
+
    assemblySkill = "spice_assembly", 
    experimentingSkill = "spice_experimentation", 
    customizationSkill = "spice_customization", 
