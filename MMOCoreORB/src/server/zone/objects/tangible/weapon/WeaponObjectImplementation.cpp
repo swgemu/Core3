@@ -207,15 +207,14 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 	/*if (usesRemaining > 0)
 		alm->insertAttribute("count", usesRemaining);*/
 
-	/*int key = 0;
-	int value = 0;
-	for (int i = 0; i < innateSkillModMap.size(); ++i) {
-		key = innateSkillModMap.elementAt(i).getKey();
-		value = innateSkillModMap.elementAt(i).getValue();
+	for(int i = 0; i < wearableSkillMods.size(); ++i) {
+		String key = wearableSkillMods.elementAt(i).getKey();
+		String statname = "cat_skill_mod_bonus.@stat_n:" + key;
+		int value = wearableSkillMods.get(key);
 
 		if (value > 0)
-			generateSkillMods(alm, key, value);
-	}*/
+			alm->insertAttribute(statname, value);
+	}
 
 	String ap;
 
