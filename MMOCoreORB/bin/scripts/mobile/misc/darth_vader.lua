@@ -21,16 +21,16 @@ darth_vader = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
+	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/darth_vader.iff"},
 	lootGroups = {
 	},
-	weapons = {"darth_vader_weapons"},
-	conversationTemplate = "",
+	weapons = {""},
+	conversationTemplate = "theme_park_imperial_mission_giver_convotemplate",
 	attacks = {
 	}
 }
