@@ -237,13 +237,13 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 	craftingValues->setCurrentPercentage("endurance", getAssemblyPercentage(endMin) * modifier);
 
 	craftingValues->setMaxPercentage("intellect",((float)intMax/(float)1000));
-	craftingValues->setCurrentPercentage("intellect", ((float)intMin/(float)intMax) * modifier);
+	craftingValues->setCurrentPercentage("intellect", getAssemblyPercentage(intMin) * modifier);
 
 	craftingValues->setMaxPercentage("cleverness",((float)cleMax/(float)1000));
 	craftingValues->setCurrentPercentage("cleverness", getAssemblyPercentage(cleMin) * modifier);
 
 	craftingValues->setMaxPercentage("dependability",((float)depMax/(float)1000));
-	craftingValues->setCurrentPercentage("dependability", ((float)depMin/(float)depMax) * modifier);
+	craftingValues->setCurrentPercentage("dependability", getAssemblyPercentage(depMin) * modifier);
 
 	craftingValues->setMaxPercentage("courage",((float)couMax/(float)1000));
 	craftingValues->setCurrentPercentage("courage",getAssemblyPercentage(couMin) * modifier);
