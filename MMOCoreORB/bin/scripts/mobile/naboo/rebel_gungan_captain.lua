@@ -28,14 +28,21 @@ rebel_gungan_captain = Creature:new {
 
 	templates = {"object/mobile/gungan_male.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
-				{group = "junk", chance = 6500000},
+				{group = "junk", chance = 2000000},
 				{group = "tailor_components", chance = 1500000},
-				{group = "loot_kit_parts", chance = 2000000}
+				{group = "loot_kit_parts", chance = 1500000},
+				{group = "rifles", chance = 1000000},
+				{group = "pistols", chance = 1000000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+				{group = "clothing_attachments", chance = 300000},
+				{group = "armor_attachments", chance = 300000},
+				{group = "rebel_officer_common", chance = 400000}
 			},
-			lootChance = 2400000
-		}					
+			lootChance = 3000000
+		}
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",
