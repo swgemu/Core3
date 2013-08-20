@@ -50,6 +50,9 @@ legendaryChance = 1000000 --1 in 1,000,000
 exceptionalModifier = 2.5
 legendaryModifier = 5.0
 
+--The chance for random skill mods to be on looted weapons/armor
+skillModChance = 10
+
 lootableStatMods = {
 	"aim",
 	"alert",

@@ -54,6 +54,7 @@ bool LootManagerImplementation::loadConfigData() {
 	exceptionalModifier = lua->getGlobalFloat("exceptionalModifier");
 	legendaryChance = lua->getGlobalFloat("legendaryChance");
 	legendaryModifier = lua->getGlobalFloat("legendaryModifier");
+	skillModChance = lua->getGlobalFloat("skillModChance");
 
 	LuaObject lootableModsTable = lua->getGlobalObject("lootableStatMods");
 
@@ -254,7 +255,7 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	// Add Dots to weapon objects.
 	addDots(prototype, templateObject, level);
 
-	setSkillMods(prototype, templateObject);
+	setSkillMods(prototype, templateObject, level, excMod);
 
 	setSockets(prototype, &craftingValues);
 
@@ -285,11 +286,42 @@ void LootManagerImplementation::addConditionDamage(TangibleObject* loot, Craftin
 	loot->setConditionDamage(damage);
 }
 
-void LootManagerImplementation::setSkillMods(TangibleObject* object, LootItemTemplate* templateObject) {
+void LootManagerImplementation::setSkillMods(TangibleObject* object, LootItemTemplate* templateObject, int level, float excMod) {
+	VectorMap<String, int>* skillMods = templateObject->getSkillMods();
+	VectorMap<String, int> additionalMods;
+
+	if (System::random(skillModChance / excMod) == 0) {
+		int modCount = 1;
+		int roll = System::random(100);
+
+		if(roll > (100 - excMod))
+			modCount += 2;
+
+		if(roll < (5 * excMod))
+			modCount += 1;
+
+		for(int i = 0; i < modCount; ++i) {
+			//Mods can't be lower than -1 or greater than 25
+			int max = MAX(-1, MIN(25, round(0.1f * level + 3)));
+			int min = MAX(-1, MIN(25, round(0.075f * level - 1)));
+
+			int mod = System::random(max - min) + min;
+
+			if(mod == 0)
+				mod = 1;
+
+			String modName = getRandomLootableMod();
+
+			additionalMods.put(modName, mod);
+		}
+	}
+
 	if (object->isWearableObject()) {
 		ManagedReference<WearableObject*> wearableObject = cast<WearableObject*>(object);
 
-		VectorMap<String, int>* skillMods = templateObject->getSkillMods();
+		for (int i = 0; i < additionalMods.size(); i++) {
+			wearableObject->addSkillMod(SkillModManager::WEARABLE, additionalMods.elementAt(i).getKey(), additionalMods.elementAt(i).getValue());
+		}
 
 		for (int i = 0; i < skillMods->size(); i++) {
 			wearableObject->addSkillMod(SkillModManager::WEARABLE, skillMods->elementAt(i).getKey(), skillMods->elementAt(i).getValue());
@@ -297,7 +329,9 @@ void LootManagerImplementation::setSkillMods(TangibleObject* object, LootItemTem
 	} else if (object->isWeaponObject()) {
 		ManagedReference<WeaponObject*> weaponObject = cast<WeaponObject*>(object);
 
-		VectorMap<String, int>* skillMods = templateObject->getSkillMods();
+		for (int i = 0; i < additionalMods.size(); i++) {
+			weaponObject->addSkillMod(SkillModManager::WEARABLE, additionalMods.elementAt(i).getKey(), additionalMods.elementAt(i).getValue());
+		}
 
 		for (int i = 0; i < skillMods->size(); i++) {
 			weaponObject->addSkillMod(SkillModManager::WEARABLE, skillMods->elementAt(i).getKey(), skillMods->elementAt(i).getValue());

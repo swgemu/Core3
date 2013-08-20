@@ -284,6 +284,8 @@ LootManagerImplementation::LootManagerImplementation(CraftingManager* craftman, 
 	legendaryChance = 0.0;
 	// server/zone/managers/loot/LootManager.idl():  		legendaryModifier = 0.0;
 	legendaryModifier = 0.0;
+	// server/zone/managers/loot/LootManager.idl():  		skillModChance = 0.0;
+	skillModChance = 0.0;
 	// server/zone/managers/loot/LootManager.idl():  		Logger.setLoggingName("LootManager");
 	Logger::setLoggingName("LootManager");
 	// server/zone/managers/loot/LootManager.idl():  		Logger.setLogging(true);
