@@ -544,6 +544,9 @@ bool ManufactureSchematicImplementation::isReadyForAssembly() {
 
 		Reference<IngredientSlot* > slot = ingredientSlots.get(i);
 
+		if(slot->isOptional()) // Skip before adding as it can be blank
+			continue;
+
 		if(slot == NULL || !slot->isFull())
 			return false;
 
@@ -557,10 +560,6 @@ bool ManufactureSchematicImplementation::isReadyForAssembly() {
 		// If we are using idenitcal slots, we may have duplicate objectid i.e. factory crate
 		if(slot->requiresIdentical())
 			usingIdentical = true;
-		// Check optional last, since the skip could cause the count to be wrong
-		if(slot->isOptional())
-			continue;
-		// Check for unique needs done here
 	}
 	if (componetSlotItemCount != usedObjectIds.size())
 		if(!usingIdentical)
