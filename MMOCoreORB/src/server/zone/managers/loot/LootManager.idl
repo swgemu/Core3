@@ -73,6 +73,8 @@ class LootManager extends ManagedService implements Logger {
 	
 	private transient float legendaryChance;
 	private transient float legendaryModifier;
+
+	private transient float skillModChance;
 	
 	@dereferenced
 	private transient SortedVector<string> lootableMods;
@@ -91,7 +93,9 @@ class LootManager extends ManagedService implements Logger {
 		
 		legendaryChance = 0.0;
 		legendaryModifier = 0.0;
-		
+
+		skillModChance = 0.0;
+
 		Logger.setLoggingName("LootManager");
 		
 		Logger.setLogging(true);
@@ -112,7 +116,7 @@ class LootManager extends ManagedService implements Logger {
 	private native void setInitialObjectStats(LootItemTemplate templateObject, CraftingValues craftingValues, TangibleObject prototype);
 	
 	@local
-	private native void setSkillMods(TangibleObject object, LootItemTemplate templateObject);
+	private native void setSkillMods(TangibleObject object, LootItemTemplate templateObject, int level, float excMod);
 	
 	@local
 	private native void setCustomObjectName(TangibleObject object, LootItemTemplate templateObject);
