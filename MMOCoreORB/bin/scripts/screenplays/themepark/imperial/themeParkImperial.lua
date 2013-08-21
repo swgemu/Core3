@@ -7,7 +7,7 @@ kaja_orzee_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "theme_park_imperial_escort", planetName = "naboo", npcName = "an Imperial Moff" } 
+			{ npcTemplate = "theme_park_imperial_escort_moff", planetName = "naboo", npcName = "an Imperial Moff" } 
 		}, 
 		secondarySpawns =
      		{
@@ -93,13 +93,13 @@ kaja_orzee_missions =
 	}
 }
 
-loam_hedge_missions =
+loam_redge_missions =
 {
 	{ 
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "theme_park_imperial_escort", planetName = "naboo", npcName = "random" } 
+			{ npcTemplate = "theme_park_imperial_escort_noble", planetName = "naboo", npcName = "a Noble" } 
 		}, 
 		secondarySpawns =
      		{
@@ -115,10 +115,13 @@ loam_hedge_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "theme_park_imperial_escort", planetName = "naboo", npcName = "random" } 
+			{ npcTemplate = "theme_park_imperial_escort_rebel_leader", planetName = "naboo", npcName = "random" } 
 		}, 
 		secondarySpawns =
      		{
+			{ npcTemplate = "rebel_resistance_dissident", planetName = "naboo", npcName = "" },
+			{ npcTemplate = "rebel_resistance_dissident", planetName = "naboo", npcName = "" },
+			{ npcTemplate = "rebel_resistance_dissident", planetName = "naboo", npcName = "" }
 		}, 
 		itemSpawns = {}, 
 		rewards = 
@@ -127,15 +130,17 @@ loam_hedge_missions =
 		}
 	},
 	   { 
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{
-			{ npcTemplate = "skaak_tipper_crook", planetName = "naboo", npcName = "a Slicer" }
+			{ npcTemplate = "theme_park_imperial_slicer", planetName = "naboo", npcName = "a Slicer" }
 		}, 
 		secondarySpawns = 
 		{
 		}, 
-		itemSpawns = {}, 
+		itemSpawns = {
+			{ itemTemplate = "object/tangible/loot/misc/damaged_datapad.iff", itemName = "Datapad" }
+		}, 
 		rewards = 
 		{ 
 			{ rewardType = "credits", amount = 525 } 
@@ -146,7 +151,7 @@ loam_hedge_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "theme_park_imperial_escort", planetName = "naboo", npcName = "random" } 
+			{ npcTemplate = "theme_park_imperial_escort", planetName = "naboo", npcName = "a Slicer" } 
 		}, 
 		secondarySpawns =
      		{
@@ -155,7 +160,7 @@ loam_hedge_missions =
 		rewards = 
 		{ 
 			{ rewardType = "faction", faction = "imperial", amount = 125 },
-			{ rewardType = "loot", lootGroup = "theme_park_reward_imperial_hedge"}
+			{ rewardType = "loot", lootGroup = "theme_park_reward_imperial_redge"}
 		}
 	}
 }
@@ -703,16 +708,16 @@ npcMapImperial =
 		missions = kaja_orzee_missions
 	},
 	{ 
-		spawnData = { planetName = "naboo", npcTemplate = "loam_hedge", x = 24, z = 0.2, y = -24, direction = 180, cellID = 1418874, position = STAND }, 
-		worldPosition = { x = 2402, y = -3940 }, 
+		spawnData = { planetName = "naboo", npcTemplate = "loam_redge", x = 19.8, z = 0.2, y = -41.9, direction = 54, cellID = 1418875, position = STAND }, 
+		worldPosition = { x = 2382, y = -3967 }, 
 		npcNumber = 2,   
 		stfFile = "@theme_park_imperial/loam_redge",
 		stfWarning = "kaja_orzee",
-		missions = loam_hedge_missions
+		missions = loam_redge_missions
 	},
 	{ 
-		spawnData = { planetName = "naboo", npcTemplate = "lord_hethrir", x = 23, z = 0.2, y = -42, direction = 1, cellID = 1418875, position = STAND }, 
-		worldPosition = { x = 2382, y = -3970 }, 
+		spawnData = { planetName = "naboo", npcTemplate = "lord_hethrir", x = 5.1, z = 0.2, y = -41.4, direction = -30, cellID = 1418876, position = STAND }, 
+		worldPosition = { x = 2380, y = -3952 }, 
 		npcNumber = 4,   
 		stfFile = "@theme_park_imperial/lord_hethrir",
 		stfWarning = "loam_redge",

@@ -1,4 +1,4 @@
-loam_hedge = Creature:new {
+loam_redge = Creature:new {
 	objectName = "@mob/creature_names:loam_redge",
 	customName = "Inquisitor Loam Redge",--according to ZAM that's the name
 	socialGroup = "imperial",
@@ -36,4 +36,4 @@ loam_hedge = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(loam_hedge, "loam_hedge")
+CreatureTemplates:addCreatureTemplate(loam_redge, "loam_redge")

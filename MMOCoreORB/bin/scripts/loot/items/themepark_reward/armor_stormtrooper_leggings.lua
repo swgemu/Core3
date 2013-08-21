@@ -8,10 +8,6 @@ armor_stormtrooper_leggings = {
 	craftingValues = {
 		{"armor_rating",1,1,0},
 	        {"armor_effectiveness",30,30,10},
-             	{"kineticeffectiveness",30,30,10},
-	        {"energyeffectiveness",30,30,10},
-	        {"heateffectiveness",30,30,10},
-	        {"coldeffectiveness",30,30,10},
 	        {"armor_integrity",45000,45000,0},
 	        {"armor_health_encumbrance",45,45,0},
 	        {"armor_action_encumbrance",130,130,0},

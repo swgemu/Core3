@@ -26,7 +26,9 @@ theme_park_imperial_assassin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_cobral_assassin_twk_male_01.iff"},
+	templates = {"object/mobile/dressed_cobral_assassin_twk_male_01.iff",
+			"object/mobile/dressed_criminal_assassin_human_female_01.iff",
+			"object/mobile/dressed_criminal_assassin_human_male_01.iff"},
 	lootGroups = {
 	    {
 			groups = {
