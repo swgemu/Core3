@@ -1,5 +1,6 @@
 kaja_orzee = Creature:new {
 	objectName = "@mob/creature_names:kaja_orzee",
+	customName = "Kaja Orzee",
 	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",
@@ -29,7 +30,7 @@ kaja_orzee = Creature:new {
 	templates = {"object/mobile/kaja_orzee.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "imperial_retreat_kaja_orzee_convotemplate",
+	conversationTemplate = "theme_park_imperial_mission_giver_convotemplate",
 	outfit = "kaja_orzee_outfit",
 	attacks = {
 	}

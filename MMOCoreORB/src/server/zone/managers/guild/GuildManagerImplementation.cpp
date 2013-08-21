@@ -851,12 +851,12 @@ void GuildManagerImplementation::sendGuildSponsorVerifyTo(CreatureObject* player
 }
 
 void GuildManagerImplementation::acceptSponsorshipRequest(CreatureObject* player, CreatureObject* target) {
+	Locker _lock(player, target);
+
 	ManagedReference<GuildObject*> guild = player->getGuildObject();
 
 	if (guild == NULL)
 		return;
-
-	Locker _lock(target, player);
 
 	StringIdChatParameter params;
 	params.setStringId("@guild:sponsor_accept"); //%TU has accepted your sponsorship

@@ -1,4 +1,4 @@
-loam_hedge = Creature:new {
+loam_redge = Creature:new {
 	objectName = "@mob/creature_names:loam_redge",
 	customName = "Inquisitor Loam Redge",--according to ZAM that's the name
 	socialGroup = "imperial",
@@ -24,16 +24,16 @@ loam_hedge = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/loam_redge.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "theme_park_imperial_mission_giver_convotemplate",
 	outfit = "loam_redge_outfit",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(loam_hedge, "loam_hedge")
+CreatureTemplates:addCreatureTemplate(loam_redge, "loam_redge")

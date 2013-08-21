@@ -561,5 +561,10 @@ class WeaponObject extends TangibleObject {
 	
 	public abstract void addSkillMod(final int skillType, final string skillMod, int value, boolean notifyClient = true) {
 		wearableSkillMods.put(skillMod, value);
-	}	
+	}
+
+	@local
+	public VectorMap<string, int> getWearableSkillMods() {
+		return wearableSkillMods;
+	}
 }

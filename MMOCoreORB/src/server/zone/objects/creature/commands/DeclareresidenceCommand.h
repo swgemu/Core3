@@ -80,10 +80,6 @@ public:
 			StructureManager::instance()->declareResidence(creature, structure);
 		}
 
-		StructureObject* structure = cast<StructureObject*>(obj.get());
-
-		StructureManager::instance()->declareResidence(creature, structure);
-
 		return SUCCESS;
 	}
 

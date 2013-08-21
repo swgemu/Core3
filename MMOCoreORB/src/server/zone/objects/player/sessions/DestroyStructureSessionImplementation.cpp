@@ -71,6 +71,8 @@ int DestroyStructureSessionImplementation::sendDestroyCode() {
 	if (!creatureObject->isPlayerCreature())
 		return cancelSession();
 
+	Locker structureLock(structureObject);
+
 	Locker _lock(creatureObject, structureObject);
 
 	CreatureObject* player = cast<CreatureObject*>( creatureObject.get());

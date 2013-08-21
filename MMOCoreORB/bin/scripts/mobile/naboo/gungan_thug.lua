@@ -1,6 +1,6 @@
 gungan_thug = Creature:new {
 	objectName = "",
-	custonName = "Gungan Thug",
+	customName = "a Gungan Thug",
 	socialGroup = "gungan",
 	pvpFaction = "gungan",
 	faction = "gungan",
@@ -28,16 +28,16 @@ gungan_thug = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gungan_male.iff",
-		     "object/mobile/gungan_s02_male.iff"},
+			"object/mobile/gungan_s02_male.iff"},
 	lootGroups = {
-	    {
+		{
 			groups = {
 				{group = "junk", chance = 6000000},
 				{group = "tailor_components", chance = 2000000},
 				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 3200000
-		}					
+		}
 	},
 	weapons = {"rebel_weapons_medium"},
 	conversationTemplate = "",

@@ -188,6 +188,8 @@ class LootManagerImplementation : public ManagedServiceImplementation, public Lo
 
 	float legendaryModifier;
 
+	float skillModChance;
+
 	SortedVector<String> lootableMods;
 
 public:
@@ -210,7 +212,7 @@ public:
 private:
 	void setInitialObjectStats(LootItemTemplate* templateObject, CraftingValues* craftingValues, TangibleObject* prototype);
 
-	void setSkillMods(TangibleObject* object, LootItemTemplate* templateObject);
+	void setSkillMods(TangibleObject* object, LootItemTemplate* templateObject, int level, float excMod);
 
 	void setCustomObjectName(TangibleObject* object, LootItemTemplate* templateObject);
 

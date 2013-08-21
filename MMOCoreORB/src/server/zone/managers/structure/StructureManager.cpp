@@ -593,7 +593,9 @@ int StructureManager::declareResidence(CreatureObject* player,
 		return 1;
 	}
 
-	if (!player->checkCooldownRecovery("declare_residence")) {
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (!player->checkCooldownRecovery("declare_residence") && !ghost->isPrivileged()) {
 		Time* timeremaining = player->getCooldownTime("declare_residence");
 		StringIdChatParameter params("player_structure",
 				"change_residence_time"); //You cannot change residence for %NO hours.
@@ -613,7 +615,7 @@ int StructureManager::declareResidence(CreatureObject* player,
 		return 1;
 	}
 
-	PlayerObject* ghost = player->getPlayerObject();
+
 	uint64 objectid = player->getObjectID();
 
 	uint64 declaredOidResidence = ghost->getDeclaredResidence();

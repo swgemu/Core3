@@ -45,6 +45,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
 #include "server/zone/objects/structure/StructureObject.h"
@@ -164,10 +165,23 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 					mods.put(name, value);
 				}
 			}
-		}
+		} else if (object->isWeaponObject()) {
+			WeaponObject* weapon = cast<WeaponObject*>(object.get());
+			if(weapon != NULL) {
 
-		if(object->isWeaponObject()) {
+				VectorMap<String, int>* wearableSkillMods = weapon->getWearableSkillMods();
 
+				for (int j = 0; j < wearableSkillMods->size(); ++j) {
+					String name = wearableSkillMods->elementAt(j).getKey();
+					int value = wearableSkillMods->get(name);
+
+					if(mods.contains(name)) {
+						value += mods.get(name);
+					}
+
+					mods.put(name, value);
+				}
+			}
 		}
 
 		usedObjects.put(object.get());

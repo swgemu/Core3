@@ -54,6 +54,8 @@ object_draft_schematic_furniture_furniture_radar_table = object_draft_schematic_
    xpType = "crafting_structure_general", 
    xp = 140, 
 
+   disableFactoryRun = true,
+
    assemblySkill = "structure_assembly", 
    experimentingSkill = "structure_experimentation", 
    customizationSkill = "structure_customization", 

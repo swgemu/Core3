@@ -54,6 +54,8 @@ object_draft_schematic_furniture_furniture_radio = object_draft_schematic_furnit
    xpType = "crafting_general", 
    xp = 70, 
 
+   disableFactoryRun = true,
+
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
    customizationSkill = "general_customization", 

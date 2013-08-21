@@ -54,6 +54,8 @@ object_draft_schematic_furniture_furniture_cabinet_elegant = object_draft_schema
    xpType = "crafting_structure_general", 
    xp = 700, 
 
+   disableFactoryRun = true,
+
    assemblySkill = "structure_assembly", 
    experimentingSkill = "structure_experimentation", 
    customizationSkill = "structure_customization", 

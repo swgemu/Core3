@@ -539,14 +539,21 @@ bool ManufactureSchematicImplementation::isReadyForAssembly() {
 	// store off all component objects we find
 	int componetSlotItemCount = 0;
 	HashSet<uint64> usedObjectIds;
+	bool usingIdentical = false;
 	for (int i = 0; i < ingredientSlots.size(); ++i) {
 
 		Reference<IngredientSlot* > slot = ingredientSlots.get(i);
-		if(slot->isOptional())
-			continue;
-		// Check for unique needs done here
-		if(slot == NULL || !slot->isFull())
+
+		// null slots should happen unless something bad happened
+		if(slot == NULL)
 			return false;
+
+		if(slot->isOptional()) // Skip before adding as it can be blank
+			continue;
+
+		if(!slot->isFull())
+			return false;
+
 		if (slot->isComponentSlot()) {
 			Vector<uint64> v = slot->getOIDVector();
 			componetSlotItemCount += slot->getSlotQuantity();
@@ -554,9 +561,13 @@ bool ManufactureSchematicImplementation::isReadyForAssembly() {
 				usedObjectIds.add(v.get(i));
 			}
 		}
+		// If we are using idenitcal slots, we may have duplicate objectid i.e. factory crate
+		if(slot->requiresIdentical())
+			usingIdentical = true;
 	}
 	if (componetSlotItemCount != usedObjectIds.size())
-		return false;
+		if(!usingIdentical)
+			return false;
 	return true;
 }
 

@@ -54,6 +54,8 @@ object_draft_schematic_furniture_furniture_bowl_plain = object_draft_schematic_f
    xpType = "crafting_general", 
    xp = 100, 
 
+   disableFactoryRun = true,
+
    assemblySkill = "general_assembly", 
    experimentingSkill = "general_experimentation", 
    customizationSkill = "general_customization", 
