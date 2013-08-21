@@ -8,7 +8,8 @@ nyax_necklace = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {{"combat_medic_effectiveness", 5}}
 }
 
 addLootItemTemplate("nyax_necklace", nyax_necklace)
