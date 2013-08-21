@@ -1,1 +1,10 @@
-4173M
+722cc8f was marsorbust, 2 hours ago, message: [added] spawns to imperial camp on Dathomir
+0b26cd4 was Victor Popovici, 11 hours ago, message: Merge "[added] Admin characters can bypass declare residence timer" into unstable
+36ea035 was Victor Popovici, 11 hours ago, message: Merge "[Fixed] Weapons with skill mods will now display them and properly add/remove them when equipped/unequipped" into unstable
+6725eb9 was Victor Popovici, 11 hours ago, message: [fixed] stability issue
+f9ca1e5 was Pete, 12 hours ago, message: [added] Admin characters can bypass declare residence timer
+e4c5298 was Ivojedi, 14 hours ago, message: [Fixed] a few loot schematics to no longer be able to be made into a factory schematic
+b02324e was Ivojedi, 15 hours ago, message: [Added] bleed dot to grooved 2h sword [Changed] some more loot directory restructuring
+523e8f3 was Valkyra, 16 hours ago, message: [fixed] Imperial Themepark conversations
+ec7c64a was Ivojedi, 16 hours ago, message: [Fixed] Weapons with skill mods will now display them and properly add/remove them when equipped/unequipped
+101bdc3 was Victor Popovici, 17 hours ago, message: Merge "[fixed] stability issues [fixed] mem leak" into unstable

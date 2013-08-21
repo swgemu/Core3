@@ -21,13 +21,26 @@ exiled_gungan = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gungan_outcast.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 4400000},
+				{group = "tailor_components", chance = 1500000},
+				{group = "loot_kit_parts", chance = 1500000},
+				{group = "composite_armor_looted", chance = 1000000},
+				{group = "melee_two_handed", chance = 1000000},
+				{group = "clothing_attachments", chance = 300000},
+				{group = "armor_attachments", chance = 300000},
+			},
+			lootChance = 2500000
+		}
+	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
 	attacks = merge(brawlernovice,marksmannovice)

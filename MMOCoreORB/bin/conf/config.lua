@@ -100,7 +100,7 @@ ZonesEnabled = {
 	--"floratest",
 	--"godclient_test",
 	--"lok",
-	--"naboo",
+	"naboo",
 	--"otoh_gunga",
 	--"rivertest",
 	--"rori",
@@ -124,9 +124,9 @@ ZonesEnabled = {
 	--"space_yavin4",
 	--"taanab",
 	--"talus",
-	"tatooine",
+	--"tatooine",
 	--"test_wearables",
-	"tutorial",
+	--"tutorial",
 	--"umbra",
 	--"watertabletest",
 	--"yavin4"
@@ -134,7 +134,7 @@ ZonesEnabled = {
 
 
 -- directory of tres with live.cfg
-TrePath = "/home/swgemu/Desktop/SWGEmu"
+TrePath = "/home/anthony/workspace/tre"
 
 TreFiles = {
 	"default_patch.tre",

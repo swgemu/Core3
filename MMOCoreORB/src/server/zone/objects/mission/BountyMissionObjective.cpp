@@ -510,8 +510,8 @@ void BountyMissionObjectiveImplementation::finalize() {
 void BountyMissionObjectiveImplementation::initializeTransientMembers() {
 	// server/zone/objects/mission/BountyMissionObjective.idl():  		super.initializeTransientMembers();
 	MissionObjectiveImplementation::initializeTransientMembers();
-	// server/zone/objects/mission/BountyMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
-	Logger::setLoggingName("MissionObject");
+	// server/zone/objects/mission/BountyMissionObjective.idl():  		Logger.setLoggingName("BountyMissionObjective");
+	Logger::setLoggingName("BountyMissionObjective");
 }
 
 int BountyMissionObjectiveImplementation::getObjectiveStatus() {
