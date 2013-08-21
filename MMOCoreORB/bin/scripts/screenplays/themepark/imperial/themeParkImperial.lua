@@ -168,15 +168,17 @@ loam_redge_missions =
 lord_hethrir_missions =
 {
 	   { 
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{
-			{ npcTemplate = "skaak_tipper_crook", planetName = "naboo", npcName = "random" }
+			{ npcTemplate = "theme_park_imperial_counterfeiter", planetName = "naboo", npcName = "a Counterfeiter" }
 		}, 
 		secondarySpawns = 
 		{
 		}, 
-		itemSpawns = {}, 
+		itemSpawns = {
+			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "Holodisc" }
+		}, 
 		rewards = 
 		{ 
 			{ rewardType = "credits", amount = 600 } 
@@ -184,15 +186,17 @@ lord_hethrir_missions =
 	  },
 
 	   { 
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{
-			{ npcTemplate = "skaak_tipper_crook", planetName = "naboo", npcName = "random" }
+			{ npcTemplate = "theme_park_imperial_alderaanian_leader", planetName = "naboo", npcName = "random" }
 		}, 
 		secondarySpawns = 
 		{
 		}, 
-		itemSpawns = {}, 
+		itemSpawns = {
+			{ itemTemplate = "object/tangible/loot/misc/damaged_datapad.iff", itemName = "Datapad" }
+		}, 
 		rewards = 
 		{ 
 			{ rewardType = "credits", amount = 675 } 
@@ -202,7 +206,7 @@ lord_hethrir_missions =
 		missionType = "assassinate", 
 		primarySpawns = 
 		{
-			{ npcTemplate = "skaak_tipper_crook", planetName = "naboo", npcName = "random" }
+			{ npcTemplate = "theme_park_imperial_rebels_father", planetName = "naboo", npcName = "random" }
 		}, 
 		secondarySpawns = 
 		{
@@ -225,7 +229,7 @@ lord_hethrir_missions =
 		}, 
 		itemSpawns = 
 		{ 
-			{ itemTemplate = "object/tangible/loot/misc/damaged_datapad.iff", itemName = "Holodisc" }
+			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "Holodisc" }
 		}, 
 		rewards = 
 		{ 
@@ -236,7 +240,7 @@ lord_hethrir_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "theme_park_imperial_escort", planetName = "naboo", npcName = "random" } 
+			{ npcTemplate = "theme_park_imperial_escort_rebel", planetName = "naboo", npcName = "random" } 
 		}, 
 		secondarySpawns =
      		{
