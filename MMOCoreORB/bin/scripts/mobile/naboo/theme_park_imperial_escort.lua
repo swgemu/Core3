@@ -27,7 +27,7 @@ theme_park_imperial_escort = Creature:new {
 	optionsBitmask = 264,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_aakuan_defender_human_male_01.iff"},
+	templates = {"object/mobile/dressed_imperial_moff_m.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "theme_park_imperial_mission_target_convotemplate",

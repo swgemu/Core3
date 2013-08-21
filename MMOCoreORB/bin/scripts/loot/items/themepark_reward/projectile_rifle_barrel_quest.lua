@@ -3,16 +3,16 @@
 projectile_rifle_barrel_quest = {
 	minimumLevel = 0,
 	maximumLevel = 0,
-	customObjectName = "Enhanced Projectile Rifle Barrel",
+	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/projectile_rifle_barrel_advanced_quest.iff",
 	craftingValues = {
 		{"mindamage",25,25,0},
 		{"maxdamage",30,30,0},
 		{"attackspeed",-0.4,-0.4,1},
 		{"woundchance",20,20,0},
-		{"hitpoints",0,100,0},
-		{"midrangemod",20,20,0},
+		{"midrangemod",15,15,0},
 		{"useCount",2,10,0},
+		{"hitpoints",0,0,0},
 	},
 	customizationStringNames = {},
 	customizationValues = {}

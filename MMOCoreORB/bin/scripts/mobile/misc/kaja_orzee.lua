@@ -1,5 +1,6 @@
 kaja_orzee = Creature:new {
 	objectName = "@mob/creature_names:kaja_orzee",
+	customName = "Kaja Orzee",
 	socialGroup = "imperial",
 	pvpFaction = "imperial",
 	faction = "imperial",

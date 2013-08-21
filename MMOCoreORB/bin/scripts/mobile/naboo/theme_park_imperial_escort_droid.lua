@@ -1,5 +1,5 @@
 theme_park_imperial_escort_droid = Creature:new {
-	objectName = "@npc_spawner_n:j1_po",
+	objectName = "",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",
@@ -25,7 +25,7 @@ theme_park_imperial_escort_droid = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/3po_protocol_droid_silver.iff"},
+	templates = {"object/mobile/ra7_bug_droid.iff"},
 	lootGroups = {},
 	weapons = {},
 	attacks = {},

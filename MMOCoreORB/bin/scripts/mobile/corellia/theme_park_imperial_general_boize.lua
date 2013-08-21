@@ -30,7 +30,7 @@ theme_park_imperial_general_boize = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "theme_park_loot_imperial_general_boize", chance = 10000000}
+				{group = "theme_park_loot_documents", chance = 10000000}
 			},
 			lootChance = 10000000
 		}						

@@ -7,7 +7,7 @@ kaja_orzee_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "theme_park_imperial_escort", planetName = "naboo", npcName = "random" } 
+			{ npcTemplate = "theme_park_imperial_escort", planetName = "naboo", npcName = "an Imperial Moff" } 
 		}, 
 		secondarySpawns =
      		{
@@ -19,17 +19,20 @@ kaja_orzee_missions =
 		}
 	},
 	   { 
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{
-			{ npcTemplate = "rebel_corporal", planetName = "naboo", npcName = "a Rebel Sympathizer" }
+			{ npcTemplate = "theme_park_imperial_rebel_sympathizer", planetName = "naboo", npcName = "a Rebel Sympathizer" }
 		}, 
 		secondarySpawns = 
 		{
-			{ npcTemplate = "rebel_corporal", planetName = "naboo", npcName = "a Rebel Corporal" },
-			{ npcTemplate = "rebel_corporal", planetName = "naboo", npcName = "a Rebel Corporal" }
+			{ npcTemplate = "rebel_corporal", planetName = "naboo", npcName = "" },
+			{ npcTemplate = "rebel_corporal", planetName = "naboo", npcName = "" }
 		}, 
-		itemSpawns = {}, 
+		itemSpawns = 
+		{ 
+			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "Documents" }
+		}, 
 		rewards = 
 		{ 
 			{ rewardType = "credits", amount = 150 } 
@@ -40,12 +43,10 @@ kaja_orzee_missions =
 		missionType = "assassinate", 
 		primarySpawns = 
 		{
-			{ npcTemplate = "skaak_tipper_crook", planetName = "naboo", npcName = "Assassin" }
+			{ npcTemplate = "theme_park_imperial_assassin", planetName = "naboo", npcName = "an Assassin" }
 		}, 
 		secondarySpawns = 
 		{
-			{ npcTemplate = "rebel_corporal", planetName = "naboo", npcName = "a Rebel Specialist" },
-			{ npcTemplate = "rebel_corporal", planetName = "naboo", npcName = "a Rebel Specialist" },
 		}, 
 		itemSpawns = {}, 
 		rewards = 
@@ -58,14 +59,14 @@ kaja_orzee_missions =
 		missionType = "assassinate", 
 		primarySpawns = 
 		{
-			{ npcTemplate = "skaak_tipper_crook", planetName = "naboo", npcName = "a Droid Programmer" },
-			{ npcTemplate = "skaak_tipper_crook", planetName = "naboo", npcName = "a Droid Programmer" }
+			{ npcTemplate = "theme_park_imperial_assassin", planetName = "naboo", npcName = "a Droid Programmer" },
+			{ npcTemplate = "theme_park_imperial_assassin", planetName = "naboo", npcName = "a Droid Programmer" }
 		}, 
 		secondarySpawns = 
 		{
-			{ npcTemplate = "rebel_corporal", planetName = "naboo", npcName = "a Rebel Specialist" },
-			{ npcTemplate = "rebel_corporal", planetName = "naboo", npcName = "a Rebel Specialist" },
-			{ npcTemplate = "rebel_corporal", planetName = "naboo", npcName = "a Rebel Specialist" }
+			{ npcTemplate = "rebel_corporal", planetName = "naboo", npcName = "" },
+			{ npcTemplate = "rebel_corporal", planetName = "naboo", npcName = "" },
+			{ npcTemplate = "rebel_corporal", planetName = "naboo", npcName = "" }
 		}, 
 		itemSpawns = {}, 
 		rewards = 
@@ -77,7 +78,7 @@ kaja_orzee_missions =
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "theme_park_imperial_escort_droid", planetName = "naboo", npcName = "random" } 
+			{ npcTemplate = "theme_park_imperial_escort_droid", planetName = "naboo", npcName = "RA-7" } 
 		}, 
 		secondarySpawns =
      		{
@@ -695,7 +696,7 @@ npcMapImperial =
 { 
 	{ 
 		spawnData = { planetName = "naboo", npcTemplate = "kaja_orzee", x = -2, z = 0.5, y = -12.6, direction = 90, cellID = 1418872, position = STAND }, 
-		worldPosition = { x = 2047, y = -3941 }, 
+		worldPosition = { x = 2407, y = -3941 }, 
 		npcNumber = 1,   
 		stfFile = "@theme_park_imperial/kaja_orzee",
 		stfWarning = "not_imperial",
