@@ -1699,6 +1699,10 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 		return true;
 
 	switch(nameHashCode) {
+	case 0x51c159e3: //CityRegion.cityRank
+		TypeInfo<byte >::parseFromBinaryStream(&cityRank, stream);
+		return true;
+
 	case 0x5d900a99: //CityRegion.cityHall
 		TypeInfo<ManagedReference<StructureObject* > >::parseFromBinaryStream(&cityHall, stream);
 		return true;
@@ -1767,10 +1771,6 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 		TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&citySkillTrainers, stream);
 		return true;
 
-	case 0x51c159e3: //CityRegion.cityRank
-		TypeInfo<byte >::parseFromBinaryStream(&cityRank, stream);
-		return true;
-
 	case 0xbc710eef: //CityRegion.cityTreasury
 		TypeInfo<float >::parseFromBinaryStream(&cityTreasury, stream);
 		return true;
@@ -1829,6 +1829,14 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	uint32 _nameHashCode;
 	int _offset;
 	uint32 _totalSize;
+	_nameHashCode = 0x51c159e3; //CityRegion.cityRank
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<byte >::toBinaryStream(&cityRank, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_nameHashCode = 0x5d900a99; //CityRegion.cityHall
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
@@ -1962,14 +1970,6 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::toBinaryStream(&citySkillTrainers, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_nameHashCode = 0x51c159e3; //CityRegion.cityRank
-	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<byte >::toBinaryStream(&cityRank, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 

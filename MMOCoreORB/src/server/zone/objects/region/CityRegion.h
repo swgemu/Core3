@@ -419,6 +419,8 @@ namespace region {
 
 class CityRegionImplementation : public ManagedObjectImplementation, public Logger {
 protected:
+	byte cityRank;
+
 	ManagedReference<StructureObject* > cityHall;
 
 	StringId regionName;
@@ -458,8 +460,6 @@ protected:
 	SortedVector<ManagedReference<SceneObject* > > citySkillTrainers;
 
 	VectorMap<unsigned long long, ManagedReference<TangibleObject* > > bazaars;
-
-	byte cityRank;
 
 	float cityTreasury;
 

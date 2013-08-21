@@ -27,8 +27,11 @@ include system.thread.atomic.AtomicInteger;
 import system.thread.Mutex;
 
 class CityRegion extends ManagedObject implements Logger {
-	protected StructureObject cityHall;
 	
+	protected byte cityRank;	
+	
+	protected StructureObject cityHall;
+
 	@dereferenced
 	protected StringId regionName;
 	
@@ -84,8 +87,6 @@ class CityRegion extends ManagedObject implements Logger {
 	
 	@dereferenced
 	protected transient VectorMap<unsigned long, TangibleObject> bazaars;
-	
-	protected byte cityRank;
 	
 	protected float cityTreasury;
 	
