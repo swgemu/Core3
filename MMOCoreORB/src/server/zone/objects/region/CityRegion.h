@@ -238,6 +238,8 @@ public:
 
 	int getCommercialStructuresCount();
 
+	int getAllStructuresCount();
+
 	String getCitySpecialization();
 
 	float getCityTreasury();
@@ -594,6 +596,8 @@ public:
 
 	int getCommercialStructuresCount();
 
+	int getAllStructuresCount();
+
 	String getCitySpecialization();
 
 	float getCityTreasury();
@@ -864,6 +868,8 @@ public:
 	int getStructuresCount();
 
 	int getCommercialStructuresCount();
+
+	int getAllStructuresCount();
 
 	String getCitySpecialization();
 

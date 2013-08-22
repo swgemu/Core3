@@ -260,7 +260,7 @@ void CityManagerImplementation::sendCityReport(CreatureObject* creature, const S
 	report << endl << "===============================" << endl;
 	report << "City Report / Planet = " << planetName.toUpperCase() << "  Rank = " << String::valueOf(rank) << endl;
 	report << "===================================" << endl;
-	report << "City, citizens, treasury, Loc, Next Update" << endl;
+	report << "City, citizens, structures, treasury, Loc, Next Update" << endl;
 
 
 
@@ -281,7 +281,8 @@ void CityManagerImplementation::sendCityReport(CreatureObject* creature, const S
 		totalCitiesAtRank++;
 		report << city->getRegionName() << ", " << String::valueOf(city->getCitizenCount())
 			<< ", " << String::valueOf((int)city->getCityTreasury())
-			<< ",x:" << String::valueOf(city->getPositionX()) << "y:" << String::valueOf(city->getPositionY())
+			<< ", " << String::valueOf(city->getAllStructuresCount())
+			<< ",x: " << String::valueOf(city->getPositionX()) << " y:" << String::valueOf(city->getPositionY())
 			<< ", " << city->getNextUpdateTime()->getFormattedTime()<<  endl;
 
 	}
@@ -426,8 +427,15 @@ void CityManagerImplementation::sendStatusReport(CityRegion* city,
 			"@city/city:reg_citizen_prompt " + String::valueOf(
 					city->getCitizenCount())); //Registered Citizens:
 	list->addMenuItem(
+			"@kb/kb_player_cities_n:civic_structures_n " + String::valueOf(
+					 city->getStructuresCount())); //Structures:
+
+	//Show total number of all structures for debugging purposes
+	// TODO: Remove
+	list->addMenuItem(
 			"@city/city:structures_prompt " + String::valueOf(
-					city->getStructuresCount())); //Structures:
+					city->getAllStructuresCount())); //Structures:
+
 	list->addMenuItem(
 			"@city/city:decorations " + String::valueOf(
 					city->getDecorationCount())); // Decorations

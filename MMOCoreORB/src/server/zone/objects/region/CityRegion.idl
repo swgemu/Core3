@@ -329,6 +329,10 @@ class CityRegion extends ManagedObject implements Logger {
 		return commercialStructures.size();
 	}
 
+	public int getAllStructuresCount(){
+		return completeStructureList.size();
+	}
+
 	public string getCitySpecialization() {
 		return citySpecialization;
 	}
