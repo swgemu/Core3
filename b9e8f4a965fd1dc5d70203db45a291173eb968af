@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_3db0d3dc",
+        "filename": "MMOCoreORB/src/server/zone/managers/city/CityManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-08-22T07:57:22Z",
+      "side": 1,
+      "message": "Would it be preferred to remove fromthe list  in CityRegion.notifyExit()",
+      "revId": "b9e8f4a965fd1dc5d70203db45a291173eb968af",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
