@@ -254,13 +254,13 @@ lord_hethrir_missions =
 	},
 }
 
-thrown_missions =
+thrawn_missions =
 {
 	{ 
 		missionType = "escort", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "theme_park_imperial_escort", planetName = "naboo", npcName = "Captain Dolman" } 
+			{ npcTemplate = "theme_park_imperial_escort_commander", planetName = "naboo", npcName = "Commander Dolman" } 
 		}, 
 		secondarySpawns =
      		{
@@ -273,18 +273,15 @@ thrown_missions =
 	},
 
 	{ 
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "valarian_thug", planetName = "naboo", npcName = "a Thug" } 
+			{ npcTemplate = "theme_park_imperial_thug", planetName = "naboo", npcName = "a Thug" } 
 		}, 
-		secondarySpawns = {
-			{ npcTemplate = "valarian_thug", planetName = "naboo", npcName = "a Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "naboo", npcName = "a Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "naboo", npcName = "a Thug" } 		
-		}, 
+		secondarySpawns = {}, 
 		itemSpawns = 
 		{ 
+			{ itemTemplate = "object/tangible/component/item/quest_item/directional_sensor.iff", itemName = "Transponder" }
 		},	
 		rewards = 
 		{ 
@@ -302,7 +299,7 @@ thrown_missions =
 		}, 
 		itemSpawns = 
 		{ 
-			{ itemTemplate = "object/tangible/loot/misc/damaged_datapad.iff", itemName = "Holodisc" }
+			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "Holodisc" }
 		}, 
 		rewards = 
 		{ 
@@ -311,15 +308,16 @@ thrown_missions =
 	},
 
 	{ 
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "fambaa", planetName = "naboo", npcName = "a Fambaa" } 
+			{ npcTemplate = "theme_park_fambaa", planetName = "naboo", npcName = "a Fambaa" } 
 		}, 
 		secondarySpawns = {	
 		}, 
 		itemSpawns = 
 		{ 
+			{ itemTemplate = "object/tangible/container/jar/jar_guts_s01.iff", itemName = "Jar of Fambaa Blood" }
 		},	
 		rewards = 
 		{ 
@@ -327,14 +325,15 @@ thrown_missions =
 		}
 	},
 	{ 
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "theme_park_imperial_seller", planetName = "naboo", npcName = "a Seller" } 
+			{ npcTemplate = "theme_park_imperial_seller", planetName = "naboo", npcName = "Seldair Keeloo" } 
 		}, 
 		secondarySpawns = {}, 
 		itemSpawns = 
 		{ 
+			{ itemTemplate = "object/tangible/loot/misc/firework_dud_s1.iff", itemName = "Rocket Launcher" }
 		},	
 			rewards = 
 		{ 
@@ -349,6 +348,8 @@ thrown_missions =
 			{ npcTemplate = "rebel_commando", planetName = "naboo", npcName = "a Rebel Commando" } 
 		}, 
 		secondarySpawns = {	
+			{ npcTemplate = "rebel_trooper", planetName = "naboo", npcName = "" },
+			{ npcTemplate = "rebel_trooper", planetName = "naboo", npcName = "" }
 		}, 
 		itemSpawns = 
 		{ 
@@ -356,7 +357,8 @@ thrown_missions =
 		rewards = 
 		{ 
 			{ rewardType = "faction", faction = "imperial", amount = 225 },
-			{ rewardType = "loot", lootGroup = "theme_park_reward_imperial_thrawn"}
+			{ rewardType = "loot", lootGroup = "theme_park_reward_imperial_thrawn_helmets"},
+			{ rewardType = "loot", lootGroup = "theme_park_reward_imperial_thrawn_suits"}
 		}
 	},
 }
@@ -728,11 +730,11 @@ npcMapImperial =
 		missions = lord_hethrir_missions
 	},
 	{ 
-		spawnData = { planetName = "naboo", npcTemplate = "thrown", x = 2372, z = 292, y = -3924, direction = 150, cellID = 0, position = STAND }, 
+		spawnData = { planetName = "naboo", npcTemplate = "thrawn", x = 2372, z = 292, y = -3924, direction = 150, cellID = 0, position = STAND }, 
 		npcNumber = 8,   
 		stfFile = "@theme_park_imperial/thrawn",
 		stfWarning = "lord_hethrir",
-		missions = thrown_missions
+		missions = thrawn_missions
 	},
 	{ 
 		spawnData = { planetName = "naboo", npcTemplate = "veers", x = 2372, z = 292, y = -3917, direction = 90, cellID = 0, position = STAND }, 

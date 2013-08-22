@@ -1,9 +1,9 @@
 theme_park_imperial_seller = Creature:new {
 	objectName = "",
 	customName = "escort",
-	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
-	faction = "townsperson",
+	socialGroup = "thug",
+	pvpFaction = "thug",
+	faction = "thug",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,
@@ -28,11 +28,17 @@ theme_park_imperial_seller = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_commoner_naboo_bothan_female_02.iff"},
-	lootGroups = {},
-	weapons = {},
-	conversationTemplate = "",
-	attacks = {
-	}
+	lootGroups = {
+	 {
+	        groups = {
+				{group = "theme_park_loot_rocket", chance = 10000000}
+			},
+			lootChance = 10000000
+		}
+	},
+	weapons = {"pirate_weapons_light"},
+	conversationTemplate = "theme_park_imperial_mission_target_convotemplate",
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(theme_park_imperial_seller, "theme_park_imperial_seller")

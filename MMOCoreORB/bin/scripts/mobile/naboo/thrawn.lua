@@ -1,4 +1,4 @@
-thrown = Creature:new {
+thrawn = Creature:new {
 	objectName = "",
 	customName = "Captain Thrawn",
 	socialGroup = "imperial",
@@ -35,4 +35,4 @@ thrown = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(thrown, "thrown")
+CreatureTemplates:addCreatureTemplate(thrawn, "thrawn")

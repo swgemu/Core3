@@ -30,7 +30,7 @@ theme_park_jawa = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "theme_park_loot_jabba_jawa", chance = 10000000},
+				{group = "theme_park_loot_transponder", chance = 10000000},
 				
 			},
 			lootChance = 10000000

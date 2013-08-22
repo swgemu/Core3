@@ -8,7 +8,8 @@ atat_suit = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	skillMods = {{"slope_move", 5}}
 }
 
 addLootItemTemplate("atat_suit", atat_suit)

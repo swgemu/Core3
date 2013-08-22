@@ -42,6 +42,8 @@
 
 
 object_tangible_wearables_helmet_helmet_atat = object_tangible_wearables_helmet_shared_helmet_atat:new {
+	faction = "Imperial",
+
 	playerRaces = { "object/creature/player/bothan_male.iff",
 				"object/creature/player/bothan_female.iff",
 				"object/creature/player/human_male.iff",
