@@ -174,6 +174,8 @@ public:
 
 	void deductCityMaintenance(CityRegion* city);
 
+	int collectNonStructureMaintenance(SceneObject* object, CityRegion* city, int maintenanceDue);
+
 	int collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue);
 
 	void sendMaintenanceEmail(CityRegion* city, int maintenancePaid);
@@ -365,6 +367,8 @@ public:
 
 	void deductCityMaintenance(CityRegion* city);
 
+	int collectNonStructureMaintenance(SceneObject* object, CityRegion* city, int maintenanceDue);
+
 	int collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue);
 
 	void sendMaintenanceEmail(CityRegion* city, int maintenancePaid);
@@ -519,6 +523,8 @@ public:
 	void updateCityVoting(CityRegion* city, bool override);
 
 	void deductCityMaintenance(CityRegion* city);
+
+	int collectNonStructureMaintenance(SceneObject* object, CityRegion* city, int maintenanceDue);
 
 	int collectCivicStructureMaintenance(StructureObject* structure, CityRegion* city, int maintenanceDue);
 
