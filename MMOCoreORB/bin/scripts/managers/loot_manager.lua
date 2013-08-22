@@ -116,7 +116,6 @@ lootableStatMods = {
 	"intimidate_defense",
 	"keep_creature",
 	"knockdown_defense",
-	"knockdown_defense",
 	"medical_foraging",
 	"medicine_assembly",
 	"medicine_experimentation",

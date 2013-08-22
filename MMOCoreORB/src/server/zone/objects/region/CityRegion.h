@@ -238,6 +238,8 @@ public:
 
 	int getCommercialStructuresCount();
 
+	int getAllStructuresCount();
+
 	String getCitySpecialization();
 
 	float getCityTreasury();
@@ -419,7 +421,7 @@ namespace region {
 
 class CityRegionImplementation : public ManagedObjectImplementation, public Logger {
 protected:
-	ManagedReference<StructureObject* > cityHall;
+	byte cityRank;
 
 	StringId regionName;
 
@@ -433,8 +435,6 @@ protected:
 
 	ZoneReference zone;
 
-	SortedVector<ManagedReference<Region* > > regions;
-
 	VectorMap<unsigned long long, unsigned int> zoningRights;
 
 	CitizenList militiaMembers;
@@ -443,23 +443,9 @@ protected:
 
 	CitizenList bannedList;
 
-	SortedVector<ManagedReference<StructureObject* > > structures;
-
-	SortedVector<ManagedReference<StructureObject* > > commercialStructures;
-
 	SortedVector<unsigned long long> completeStructureList;
 
 	Mutex structureListMutex;
-
-	SortedVector<ManagedReference<SceneObject* > > cityMissionTerminals;
-
-	SortedVector<ManagedReference<SceneObject* > > cityDecorations;
-
-	SortedVector<ManagedReference<SceneObject* > > citySkillTrainers;
-
-	VectorMap<unsigned long long, ManagedReference<TangibleObject* > > bazaars;
-
-	byte cityRank;
 
 	float cityTreasury;
 
@@ -484,6 +470,22 @@ protected:
 	Reference<CityUpdateEvent* > cityUpdateEvent;
 
 	String citySpecialization;
+
+	ManagedReference<StructureObject* > cityHall;
+
+	SortedVector<ManagedReference<Region* > > regions;
+
+	SortedVector<ManagedReference<StructureObject* > > structures;
+
+	SortedVector<ManagedReference<StructureObject* > > commercialStructures;
+
+	SortedVector<ManagedReference<SceneObject* > > cityMissionTerminals;
+
+	SortedVector<ManagedReference<SceneObject* > > cityDecorations;
+
+	SortedVector<ManagedReference<SceneObject* > > citySkillTrainers;
+
+	VectorMap<unsigned long long, ManagedReference<TangibleObject* > > bazaars;
 
 public:
 	static const byte RANK_CLIENT = 0;
@@ -593,6 +595,8 @@ public:
 	int getStructuresCount();
 
 	int getCommercialStructuresCount();
+
+	int getAllStructuresCount();
 
 	String getCitySpecialization();
 
@@ -864,6 +868,8 @@ public:
 	int getStructuresCount();
 
 	int getCommercialStructuresCount();
+
+	int getAllStructuresCount();
 
 	String getCitySpecialization();
 

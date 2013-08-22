@@ -8,8 +8,8 @@ mordran = Creature:new {
 	damageMin = 520,
 	damageMax = 750,
 	baseXp = 7484,
-	baseHAM = 12000,
-	baseHAMmax = 15000,
+	baseHAM = 26000,
+	baseHAMmax = 31000,
 	armor = 0,
 	resists = {0,75,0,45,80,0,0,0,-1},
 	meatType = "",
@@ -21,14 +21,27 @@ mordran = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE + AGGRESSIVE,
+	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/mordran.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 2000000},
+				{group = "tailor_components", chance = 1500000},
+				{group = "loot_kit_parts", chance = 1500000},
+				{group = "composite_armor_looted", chance = 2000000},
+				{group = "melee_two_handed", chance = 2000000},
+				{group = "clothing_attachments", chance = 500000},
+				{group = "armor_attachments", chance = 500000},
+			},
+			lootChance = 4500000
+		}
+	},
 	weapons = {"mordran_weapons"},
-	attacks = merge(brawlermaster)
+	attacks = merge(brawlermaster, swordsmanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(mordran, "mordran")

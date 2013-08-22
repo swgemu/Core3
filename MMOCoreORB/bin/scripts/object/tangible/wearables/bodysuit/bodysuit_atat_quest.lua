@@ -42,6 +42,8 @@
 
 
 object_tangible_wearables_bodysuit_bodysuit_atat_quest = object_tangible_wearables_bodysuit_shared_bodysuit_atat_quest:new {
+	faction = "Imperial",
+
 	playerRaces = { "object/creature/player/bothan_male.iff",
 				"object/creature/player/bothan_female.iff",
 				"object/creature/player/human_male.iff",

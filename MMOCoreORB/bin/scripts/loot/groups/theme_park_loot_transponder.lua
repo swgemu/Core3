@@ -1,4 +1,4 @@
-theme_park_loot_jabba_jawa = {
+theme_park_loot_transponder = {
 	description = "",
 	minimumLevel = 0,
 	maximumLevel = 0,
@@ -7,4 +7,4 @@ theme_park_loot_jabba_jawa = {
 	}
 }
 
-addLootGroupTemplate("theme_park_loot_jabba_jawa", theme_park_loot_jabba_jawa)
+addLootGroupTemplate("theme_park_loot_transponder", theme_park_loot_transponder)

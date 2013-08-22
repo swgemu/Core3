@@ -42,6 +42,8 @@
 
 
 object_tangible_wearables_helmet_helmet_tie_fighter = object_tangible_wearables_helmet_shared_helmet_tie_fighter:new {
+	faction = "Imperial",
+
 	playerRaces = { "object/creature/player/human_male.iff",
 				"object/creature/player/human_female.iff",
 				"object/creature/player/zabrak_male.iff",

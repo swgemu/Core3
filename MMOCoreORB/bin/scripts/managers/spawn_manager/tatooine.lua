@@ -874,7 +874,7 @@ tatooine_static_spawns = {
 	{"info_broker",60,-17.046,2.6,18.3264,180.006,1153601, "conversation", ""},
 	{"informant_npc_lvl_1",0,1266,0,3184,225,0, "", ""},
 	{"informant_npc_lvl_1",0,1727,0,3093,225,0, "", ""},
-	{"informant_npc_lvl_1",0,3775,0,2371,180,0, "", ""},
+
 	{"informant_npc_lvl_1",0,-2804,0,2237,315,0, "", ""},
 	{"informant_npc_lvl_1",0,-2836,0,2275,45,0, "", ""},
 	{"informant_npc_lvl_1",0,-2935,0,2393,90,0, "", ""},
@@ -889,13 +889,13 @@ tatooine_static_spawns = {
 	{"informant_npc_lvl_1",0,3447,0,-4850,135,0, "", ""},
 	{"informant_npc_lvl_1",0,3253,0,-4923,180,0, "", ""},
 	{"informant_npc_lvl_1",0,3488,0,-4782,135,0, "", ""},
-	{"informant_npc_lvl_2",0,0.93374,1.00421,9.03511,180,1154123, "", ""},
+
 	{"informant_npc_lvl_2",0,-2879,0,2555,135,0, "", ""},
 	{"informant_npc_lvl_2",0,-5284,0,2676,240,0, "", ""},
 	{"informant_npc_lvl_2",0,-5205,0,-6503,315,0, "", ""},
 	{"informant_npc_lvl_2",0,-685,0,-6731,0,0, "", ""},
 	{"informant_npc_lvl_2",0,-703,0,-6734,0,0, "", ""},
-	{"informant_npc_lvl_3",0,-1.97807,-9.54192,9.62469,315,1154131, "", ""},
+
 	{"informant_npc_lvl_3",0,-31.4241,-0.894991,19.0307,70,1134569, "", ""},
 	{"informant_npc_lvl_3",0,3.8,7,-12.5,84,1076948, "", ""},
 	{"issirx",60,-1074.37,12,-3676.69,21.1437,0, "neutral", "Issirx"},
@@ -1035,8 +1035,8 @@ tatooine_static_spawns = {
 	{"junk_dealer",0,-1392,185,-3847.9,8,0, "", ""},
 	{"junk_dealer",0,-2750.9,5,2057,132,0, "", ""},
 	{"junk_dealer",0,1308.1,7,3085.2,1,0, "", ""},
-	{"junk_dealer",0,3905.3,33,2362.9,-90,0, "", ""},
-	{"junk_nathan",60,3817.7,16.2,2340.5,0,0, "calm", "Nathan Blyskipper"},
+
+	{"junk_nathan",60,3817.7,16.2,2340.5,0,0, "calm", "Nathan Blyskipper (a Junk Dealer)"},
 	{"kaeline_ungasan",60,-2815.58,5,1940.55,335.154,0, "", "Kaeline Ungasan"},
 	{"kahfr_oladi",60,3473.4,5,-4974.8,104,0, "npc_sitting_chair", ""},
 	{"kavas_urdano",60,-13.7911,7.01,-3.96167,12.0127,1076943, "calm", "Kavas"},
