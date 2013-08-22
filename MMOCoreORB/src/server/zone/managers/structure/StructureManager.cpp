@@ -563,6 +563,11 @@ int StructureManager::destroyStructure(StructureObject* structureObject) {
 }
 
 String StructureManager::getTimeString(uint32 timestamp) {
+
+	if( timestamp == 0 ){
+		return "";
+	}
+
 	String abbrvs[3] = { "minutes", "hours", "days" };
 
 	int intervals[3] = { 60, 3600, 86400 };
@@ -575,14 +580,15 @@ String StructureManager::getTimeString(uint32 timestamp) {
 		timestamp -= values[i] * intervals[i];
 
 		if (values[i] > 0) {
-			if (str.length() > 0)
-				str << ",";
+			if (str.length() > 0){
+				str << ", ";
+			}
 
-			str << ((i == 0) ? " and " : " ") << values[i] << " " << abbrvs[i];
+			str << values[i] << " " << abbrvs[i];
 		}
 	}
 
-	return str.toString();
+	return "(" + str.toString() + ")";
 }
 
 int StructureManager::declareResidence(CreatureObject* player,
@@ -892,9 +898,8 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 		status->addMenuItem(
 			"@player_structure:maintenance_pool_prompt "
 					+ String::valueOf( (int) floor( (float) structure->getSurplusMaintenance()))
-					+ " ("
-					+ getTimeString( (uint32)secsRemainingMaint )
-					+ ")" );
+					+ " "
+					+ getTimeString( (uint32)secsRemainingMaint ) );
 
 		status->addMenuItem(
 			"@player_structure:maintenance_rate_prompt "
@@ -930,9 +935,8 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 		status->addMenuItem(
 				"@player_structure:power_reserve_prompt "
 						+ String::valueOf( (int) installation->getSurplusPower())
-						+ " ("
-						+ getTimeString( (uint32)secsRemainingPower )
-						+ ")" );
+						+ " "
+						+ getTimeString( (uint32)secsRemainingPower ) );
 
 		status->addMenuItem(
 				"@player_structure:power_consumption_prompt "
