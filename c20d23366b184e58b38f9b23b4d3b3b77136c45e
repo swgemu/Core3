@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_3d357346",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/poi/corellia_rebel_hideout.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-08-22T20:01:58Z",
+      "side": 0,
+      "message": "Not a corvette mob, I know, but it was on top of the lieutenant on line above.",
+      "revId": "c20d23366b184e58b38f9b23b4d3b3b77136c45e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
