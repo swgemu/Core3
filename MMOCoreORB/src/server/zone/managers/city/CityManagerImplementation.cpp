@@ -833,10 +833,37 @@ void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 		}
 	}
 
+	for(int i = city->getMissionTerminalCount() - 1; i >= 0; i--){
+		totalPaid += collectNonStructureMaintenance(city->getCityMissionTerminal(i), city, 1500);
+	}
+
 	sendMaintenanceEmail(city, totalPaid);
 
 }
 
+int CityManagerImplementation::collectNonStructureMaintenance(SceneObject* object, CityRegion* city, int maintenanceDue){
+	if(object == NULL || city == NULL)
+		return 0;
+
+	int amountPaid = 0;
+	if(city->getCityTreasury() >= maintenanceDue){
+		city->subtractFromCityTreasury(maintenanceDue);
+		amountPaid = maintenanceDue;
+	} else {
+		Locker clock(object,city);
+
+		// can probably be moved to cityregion notifyExit
+		if(object->isMissionTerminal())
+			city->removeMissionTerminal(object);
+		else if ( object->isDecoration())
+			city->removeDecoration(object);
+
+		object->destroyObjectFromWorld(true);
+		object->destroyObjectFromDatabase();
+	}
+
+	return amountPaid;
+}
 int CityManagerImplementation::collectCivicStructureMaintenance(
 		StructureObject* structure, CityRegion* city, int maintenanceDue) {
 
