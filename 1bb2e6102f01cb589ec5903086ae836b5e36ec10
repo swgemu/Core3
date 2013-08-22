@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_dd9f9f4f",
+        "filename": "MMOCoreORB/src/server/zone/managers/city/CityManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-08-22T07:50:23Z",
+      "side": 1,
+      "message": "We can do the removal from the missionTerminal vector from the notifyExit() method in cityRegion if that\u0027s preferred.",
+      "revId": "1bb2e6102f01cb589ec5903086ae836b5e36ec10",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
