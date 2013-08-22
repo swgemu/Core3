@@ -178,6 +178,7 @@ includeFile("cities/rori_rebel_outpost.lua")
 includeFile("cities/rori_restuss.lua")
 includeFile("cities/talus_dearic.lua")
 includeFile("cities/talus_nashal.lua")
+includeFile("cities/tatooine_mos_taike.lua")
 
 -- POIs
 includeFile("poi/corellia_rogue_corsec_base.lua")
