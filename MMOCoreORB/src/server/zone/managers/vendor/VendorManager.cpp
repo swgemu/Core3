@@ -89,14 +89,14 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* 
 	int condition = (((float)vendor->getMaxCondition() - (float)vendor->getConditionDamage()) / (float)vendor->getMaxCondition()) * 100;
 	statusBox->addMenuItem("Condition: " + String::valueOf(condition) + "%");
 
-	float hrsRemaining = 0.f;
+	float secsRemaining = 0.f;
 	if( vendorData->getMaint() > 0 ){
-			hrsRemaining = vendorData->getMaint() / vendorData->getMaintenanceRate();
+		secsRemaining = (vendorData->getMaint() / vendorData->getMaintenanceRate())*3600;
 	}
 
 	statusBox->addMenuItem("Maintenance Pool: " +
 			               String::valueOf(vendorData->getMaint()) +
-			               "cr (" + String::valueOf((int)hrsRemaining) + "hrs)" );
+			               "cr " + getTimeString( (uint32)secsRemaining ) );
 	statusBox->addMenuItem("Maintenance Rate: " + String::valueOf((int)vendorData->getMaintenanceRate()) + " cr/hr");
 
 	ManagedReference<AuctionManager*> auctionManager = server->getZoneServer()->getAuctionManager();
@@ -151,6 +151,35 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* 
 	player->getPlayerObject()->addSuiBox(statusBox);
 	player->sendMessage(statusBox->generateMessage());
 
+}
+
+String VendorManager::getTimeString(uint32 timestamp) {
+
+	if( timestamp == 0 ){
+		return "";
+	}
+
+	String abbrvs[3] = { "minutes", "hours", "days" };
+
+	int intervals[3] = { 60, 3600, 86400 };
+	int values[3] = { 0, 0, 0 };
+
+	StringBuffer str;
+
+	for (int i = 2; i > -1; --i) {
+		values[i] = floor((float) timestamp / intervals[i]);
+		timestamp -= values[i] * intervals[i];
+
+		if (values[i] > 0) {
+			if (str.length() > 0){
+				str << ", ";
+			}
+
+			str << values[i] << " " << abbrvs[i];
+		}
+	}
+
+	return "(" + str.toString() + ")";
 }
 
 void VendorManager::promptDestroyVendor(CreatureObject* player, TangibleObject* vendor) {
