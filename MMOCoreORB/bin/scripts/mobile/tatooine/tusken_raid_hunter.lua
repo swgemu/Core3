@@ -1,5 +1,5 @@
 tusken_raid_hunter = Creature:new {
-	objectName = "@mob/creature_names:Tusken_raid_hunter",
+	objectName = "@mob/creature_names:bestine_tusken_raid_sub_leader",
 	socialGroup = "tusken_raider",
 	pvpFaction = "tusken_raider",
 	faction = "tusken_raider",
