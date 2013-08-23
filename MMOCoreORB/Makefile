@@ -120,3 +120,6 @@ cleanidl-cmake:
 	$(IDLC_BIN) -rb -cp $(ENGINE3_DIR)/include -sd src *.idl
 	#done
 	
+engine:
+	cd utils/engine && make all	
+	
