@@ -1,15 +1,15 @@
-canyon_krayt_dragon = Creature:new {
-	objectName = "@mob/creature_names:canyon_krayt_dragon",
+krayt_dragon_adolescent = Creature:new {
+	objectName = "@mob/creature_names:krayt_dragon_adolescent",
 	socialGroup = "Krayt",
 	pvpFaction = "",
 	faction = "",
-	level = 275,
+	level = 200,
 	chanceHit = 27.25,
-	damageMin = 1520,
-	damageMax = 2750,
+	damageMin = 1220,
+	damageMax = 2150,
 	baseXp = 26356,
-	baseHAM = 321000,
-	baseHAMmax = 392000,
+	baseHAM = 268000,
+	baseHAMmax = 312000,
 	armor = 3,
 	resists = {60,60,60,60,50,60,60,60,-1},
 	meatType = "meat_carnivore",
@@ -26,8 +26,8 @@ canyon_krayt_dragon = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/canyon_krayt_dragon.iff"},
-	scale = 0.9;
+	templates = {"object/mobile/krayt_dragon_hue.iff"},
+	scale = 0.7;
 	lootGroups = {
 		{
 	        groups = {
@@ -49,9 +49,10 @@ canyon_krayt_dragon = Creature:new {
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"dizzyattack","dizzyChance=50"},
+		{"creatureareaattack",""},
+		{"posturedownattack","postureDownChance=50"},
 		{"stunattack","stunChance=50"}
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(canyon_krayt_dragon, "canyon_krayt_dragon")
+CreatureTemplates:addCreatureTemplate(krayt_dragon_adolescent, "krayt_dragon_adolescent")

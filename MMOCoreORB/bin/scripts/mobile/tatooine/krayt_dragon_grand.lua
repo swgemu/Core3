@@ -1,17 +1,17 @@
-krayt_dragon_ancient = Creature:new {
-	objectName = "@mob/creature_names:krayt_dragon_ancient",
+krayt_dragon_grand = Creature:new {
+	objectName = "@mob/creature_names:krayt_dragon_grand",
 	socialGroup = "Krayt",
 	pvpFaction = "",
 	faction = "",
-	level = 336,
-	chanceHit = 30.0,
-	damageMin = 2270,
-	damageMax = 4250,
-	baseXp = 28549,
-	baseHAM = 410000,
-	baseHAMmax = 501000,
+	level = 306,
+	chanceHit = 30,
+	damageMin = 2170,
+	damageMax = 4150,
+	baseXp = 28049,
+	baseHAM = 390000,
+	baseHAMmax = 481000,
 	armor = 3,
-	resists = {95,95,95,100,65,95,95,95,-1},
+	resists = {90,90,90,100,65,90,90,90,-1},
 	meatType = "meat_carnivore",
 	meatAmount = 1000,
 	hideType = "hide_bristley",
@@ -27,6 +27,7 @@ krayt_dragon_ancient = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/krayt_dragon.iff"},
+	scale = 1.1;
 	lootGroups = {
 		{
 	        groups = {
@@ -50,7 +51,6 @@ krayt_dragon_ancient = Creature:new {
 	conversationTemplate = "",
 	attacks = {
 		{"creatureareacombo",""},
-		{"dizzyattack","dizzyChance=50"},
 		{"blindattack","blindChance=50"},
 		{"intimidationattack","intimidationChance=50"},
 		{"creatureareaknockdown","knockdownChance=50"},
@@ -58,4 +58,4 @@ krayt_dragon_ancient = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(krayt_dragon_ancient, "krayt_dragon_ancient")
+CreatureTemplates:addCreatureTemplate(krayt_dragon_grand, "krayt_dragon_grand")
