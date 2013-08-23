@@ -253,7 +253,7 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	craftingValues.setHidden("creatureLevel");
 
 	// Add Dots to weapon objects.
-	addDots(prototype, templateObject, level);
+	addDots(prototype, templateObject, level, excMod);
 
 	setSkillMods(prototype, templateObject, level, excMod);
 
@@ -425,7 +425,7 @@ bool LootManagerImplementation::createLoot(SceneObject* container, const String&
 	return true;
 }
 
-void LootManagerImplementation::addDots(TangibleObject* object, LootItemTemplate* templateObject, int level) {
+void LootManagerImplementation::addDots(TangibleObject* object, LootItemTemplate* templateObject, int level, float excMod) {
 
 	if (object == NULL)
 		return;
@@ -440,7 +440,7 @@ void LootManagerImplementation::addDots(TangibleObject* object, LootItemTemplate
 	float dotChance = templateObject->getDotChance();
 
 	// Apply the Dot if the chance roll equals the number or is zero.
-	if (dotChance == 0 || System::random(dotChance) == 0) { // Defined in loot item script.
+	if (dotChance == 0 || System::random(dotChance / excMod) == 0) { // Defined in loot item script.
 		shouldGenerateDots = true;
 	}
 
@@ -498,7 +498,7 @@ void LootManagerImplementation::addDots(TangibleObject* object, LootItemTemplate
 							value = value * 1.5;
 					}
 
-					weapon->setDotStrength(value);
+					weapon->setDotStrength(value * excMod);
 				} else if (property == "duration") {
 					if (random) {
 						if (dotType == 2)
@@ -507,11 +507,11 @@ void LootManagerImplementation::addDots(TangibleObject* object, LootItemTemplate
 							value = value * 1.5;
 					}
 
-					weapon->setDotDuration(value);
+					weapon->setDotDuration(value * excMod);
 				} else if (property == "potency") {
-					weapon->setDotPotency(value);
+					weapon->setDotPotency(value * excMod);
 				} else if (property == "uses") {
-					weapon->setDotUses(value);
+					weapon->setDotUses(value * excMod);
 				}
 			}
 		}

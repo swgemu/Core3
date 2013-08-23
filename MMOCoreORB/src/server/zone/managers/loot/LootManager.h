@@ -218,7 +218,7 @@ private:
 
 	void setSockets(TangibleObject* object, CraftingValues* craftingValues);
 
-	void addDots(TangibleObject* object, LootItemTemplate* templateObject, int level);
+	void addDots(TangibleObject* object, LootItemTemplate* templateObject, int level, float excMod);
 
 	void addConditionDamage(TangibleObject* loot, CraftingValues* craftingValues);
 
