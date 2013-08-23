@@ -827,7 +827,7 @@ void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 		}
 	}
 
-	for(int i = 0; i < city->getDecorationCount(); i++){
+	for(int i = city->getDecorationCount(); i >= 0; i--){
 		ManagedReference<SceneObject*> decoration = city->getCityDecoration(i);
 		if(decoration != NULL && decoration->isStructureObject()){
 			StructureObject* structure = cast<StructureObject*>(decoration.get());
