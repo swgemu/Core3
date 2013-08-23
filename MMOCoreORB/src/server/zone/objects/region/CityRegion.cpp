@@ -1804,20 +1804,8 @@ bool CityRegionImplementation::readObjectMember(ObjectInputStream* stream, const
 		TypeInfo<SortedVector<ManagedReference<Region* > > >::parseFromBinaryStream(&regions, stream);
 		return true;
 
-	case 0x2d3bc58b: //CityRegion.structures
-		TypeInfo<SortedVector<ManagedReference<StructureObject* > > >::parseFromBinaryStream(&structures, stream);
-		return true;
-
-	case 0x98dfa969: //CityRegion.commercialStructures
-		TypeInfo<SortedVector<ManagedReference<StructureObject* > > >::parseFromBinaryStream(&commercialStructures, stream);
-		return true;
-
 	case 0xb9951777: //CityRegion.cityMissionTerminals
 		TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&cityMissionTerminals, stream);
-		return true;
-
-	case 0xa1dbb5c3: //CityRegion.cityDecorations
-		TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::parseFromBinaryStream(&cityDecorations, stream);
 		return true;
 
 	case 0x33ae2bac: //CityRegion.citySkillTrainers
@@ -2026,35 +2014,11 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	_nameHashCode = 0x2d3bc58b; //CityRegion.structures
-	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<SortedVector<ManagedReference<StructureObject* > > >::toBinaryStream(&structures, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_nameHashCode = 0x98dfa969; //CityRegion.commercialStructures
-	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<SortedVector<ManagedReference<StructureObject* > > >::toBinaryStream(&commercialStructures, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
 	_nameHashCode = 0xb9951777; //CityRegion.cityMissionTerminals
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
 	TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::toBinaryStream(&cityMissionTerminals, stream);
-	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
-	stream->writeInt(_offset, _totalSize);
-
-	_nameHashCode = 0xa1dbb5c3; //CityRegion.cityDecorations
-	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
-	_offset = stream->getOffset();
-	stream->writeInt(0);
-	TypeInfo<SortedVector<ManagedReference<SceneObject* > > >::toBinaryStream(&cityDecorations, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -2067,7 +2031,7 @@ int CityRegionImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 28;
+	return _count + 25;
 }
 
 CityRegionImplementation::CityRegionImplementation() {
@@ -2100,6 +2064,8 @@ CityRegionImplementation::CityRegionImplementation() {
 	(&commercialStructures)->setNoDuplicateInsertPlan();
 	// server/zone/objects/region/CityRegion.idl():  		completeStructureList.setNoDuplicateInsertPlan();
 	(&completeStructureList)->setNoDuplicateInsertPlan();
+	// server/zone/objects/region/CityRegion.idl():  		cityDecorations.setNoDuplicateInsertPlan();
+	(&cityDecorations)->setNoDuplicateInsertPlan();
 }
 
 void CityRegionImplementation::addMilitiaMember(unsigned long long objectid) {

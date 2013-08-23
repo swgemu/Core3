@@ -98,16 +98,16 @@ class CityRegion extends ManagedObject implements Logger {
 	protected SortedVector<Region> regions;
 
 	@dereferenced
-	protected SortedVector<StructureObject> structures;
+	protected transient SortedVector<StructureObject> structures;
 
 	@dereferenced
-	protected SortedVector<StructureObject> commercialStructures;
+	protected transient SortedVector<StructureObject> commercialStructures;
 	
 	@dereferenced
 	protected SortedVector<SceneObject> cityMissionTerminals;
 	
 	@dereferenced
-	protected SortedVector<SceneObject> cityDecorations;
+	protected transient SortedVector<SceneObject> cityDecorations;
 	
 	@dereferenced
 	protected SortedVector<SceneObject> citySkillTrainers;
@@ -148,6 +148,7 @@ class CityRegion extends ManagedObject implements Logger {
 		structures.setNoDuplicateInsertPlan();
 		commercialStructures.setNoDuplicateInsertPlan();
 		completeStructureList.setNoDuplicateInsertPlan();
+		cityDecorations.setNoDuplicateInsertPlan();
 	}
 	
 	public native void initialize();
