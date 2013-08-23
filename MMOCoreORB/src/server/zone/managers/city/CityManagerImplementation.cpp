@@ -845,6 +845,10 @@ void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 		totalPaid += collectNonStructureMaintenance(city->getCityMissionTerminal(i), city, 1500);
 	}
 
+	for(int i = city->getSkillTrainerCount() -1; i >=0; i--){
+		totalPaid += collectNonStructureMaintenance(city->getCitySkillTrainer(i), city, 1500);
+	}
+
 	sendMaintenanceEmail(city, totalPaid);
 
 }
@@ -863,8 +867,11 @@ int CityManagerImplementation::collectNonStructureMaintenance(SceneObject* objec
 		// can probably be moved to cityregion notifyExit
 		if(object->isMissionTerminal())
 			city->removeMissionTerminal(object);
-		else if ( object->isDecoration())
+		else if (object->isDecoration())
 			city->removeDecoration(object);
+		else if (object->isCreatureObject())
+			city->removeSkillTrainers(object);
+
 
 		object->destroyObjectFromWorld(true);
 		object->destroyObjectFromDatabase();
