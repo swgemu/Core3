@@ -367,18 +367,18 @@ veers_missions =
 {
 
 	{ 
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "rebel_crewman", planetName = "naboo", npcName = "a Rebel Crewman" },
-			{ npcTemplate = "rebel_coordinator", planetName = "naboo", npcName = "a Rebel Coordinator" },
-			{ npcTemplate = "rebel_medic", planetName = "naboo", npcName = "a Rebel Medic" },
-			{ npcTemplate = "rebel_crewman", planetName = "naboo", npcName = "a Crewman" },
+			{ npcTemplate = "theme_park_imperial_rebel_trooper", planetName = "naboo", npcName = "a Rebel Trooper" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+			{ npcTemplate = "borvos_thug", planetName = "naboo", npcName = "Borvo's Thug" },
 		}, 
 		secondarySpawns = {	
 		}, 
 		itemSpawns = 
 		{ 
+			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "Information" }
 		},	
 		rewards = 
 		{ 
@@ -389,10 +389,9 @@ veers_missions =
 		missionType = "assassinate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "rebel_crewman", planetName = "naboo", npcName = "a Rebel Crewman" },
-			{ npcTemplate = "rebel_coordinator", planetName = "naboo", npcName = "a Rebel Coordinator" },
-			{ npcTemplate = "rebel_medic", planetName = "naboo", npcName = "a Rebel Medic" },
-			{ npcTemplate = "rebel_crewman", planetName = "naboo", npcName = "a Crewman" },
+			{ npcTemplate = "rebel_trooper", planetName = "naboo", npcName = "a Rebel Trooper" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
 		}, 
 		secondarySpawns = {	
 		}, 
@@ -405,14 +404,18 @@ veers_missions =
 		}
 	},
 	{ 
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" }
+			{ npcTemplate = "theme_park_imperial_borvos_thug", planetName = "naboo", npcName = "Borvo's Thug" },
 		}, 
-		secondarySpawns = {}, 
+		secondarySpawns = {
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+		}, 
 		itemSpawns = 
 		{ 
+			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "Shipping Manifest" }
 		},	
 			rewards = 
 		{ 
@@ -428,6 +431,8 @@ veers_missions =
 		}, 
 		secondarySpawns =
      		{
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
 		}, 
 		itemSpawns = {}, 
 		rewards = 
@@ -440,11 +445,10 @@ veers_missions =
 		missionType = "assassinate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "rebel_crewman", planetName = "naboo", npcName = "a Rebel Crewman" },
-			{ npcTemplate = "rebel_coordinator", planetName = "naboo", npcName = "a Rebel Coordinator" },
-			{ npcTemplate = "rebel_medic", planetName = "naboo", npcName = "a Rebel Medic" },
-			{ npcTemplate = "rebel_crewman", planetName = "naboo", npcName = "a Crewman" },
-			{ npcTemplate = "theme_park_imperial_escort_twilek", planetName = "naboo", npcName = "Borvo the Twi'lek" }
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+			{ npcTemplate = "mercenary_aggro", planetName = "naboo", npcName = "a Mercenary" },
 		}, 
 		secondarySpawns = {	
 		}, 
