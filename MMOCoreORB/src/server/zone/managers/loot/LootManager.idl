@@ -68,6 +68,9 @@ class LootManager extends ManagedService implements Logger {
 	
 	private transient LootGroupMap lootGroupMap;
 	
+	private transient float yellowChance;
+	private transient float yellowModifier;
+
 	private transient float exceptionalChance;
 	private transient float exceptionalModifier;
 	
