@@ -895,6 +895,8 @@ int CityManagerImplementation::collectCivicStructureMaintenance(
 				structure->setSurplusMaintenance(0);
 				amountPaid += amountOwed;
 
+				sendMaintenanceRepairEmail(city,structure);
+
 			} else {
 				// pay what you the city can afford on what it owes
 
@@ -907,6 +909,9 @@ int CityManagerImplementation::collectCivicStructureMaintenance(
 					//info("we could only get " + String::valueOf(pointsBack) + " back",true);
 
 					currentDecay -= pointsBack;
+
+					if(pointsBack > 0)
+						sendMaintenanceRepairEmail(city,structure);
 
 					city->subtractFromCityTreasury(availableFunds);
 					structure->setConditionDamage(currentDecay);
@@ -969,6 +974,29 @@ void CityManagerImplementation::sendMaintenanceEmail(CityRegion* city, int maint
 			Locker clock(mayor, city);
 			ChatManager* chatManager = zoneServer->getChatManager();
 			chatManager->sendMail("@city/city:treasury_withdraw_from", "@city/city:city_maint_subject", emailBody, mayor->getFirstName(), NULL);
+		}
+
+	}
+}
+
+void CityManagerImplementation::sendMaintenanceRepairEmail(CityRegion* city, StructureObject* structure){
+
+	if(zoneServer != NULL) {
+		ManagedReference<CreatureObject*> mayor = cast<CreatureObject*>(zoneServer->getObject(
+		city->getMayorID()));
+
+		if(mayor != NULL) {
+			/*
+			stringFiles[81].addEntry("structure_repaired_body", "Mayor %TO,Repair work has been done on structure %TT.  You can check the structure's condition in the structure report at the City Management terminal.");
+			stringFiles[81].addEntry("structure_repaired_subject", "Structure Repaired");
+			*/
+			StringIdChatParameter emailBody("@city/city:structure_repaired_body");
+			emailBody.setTO(mayor);
+			emailBody.setTT(structure);
+
+			Locker clock(mayor, city);
+			ChatManager* chatManager = zoneServer->getChatManager();
+			chatManager->sendMail("@city/city:treasury_withdraw_from", "@city/city:structure_repaired_subject", emailBody, mayor->getFirstName(), NULL);
 		}
 
 	}
