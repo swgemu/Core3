@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_ddd79fbe",
+        "filename": "MMOCoreORB/src/server/zone/objects/area/areashapes/AreaShape.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-08-23T06:23:18Z",
+      "side": 1,
+      "message": "This include needs to be in the idl.  The .h that gets generated from the idl isn\u0027t matching this one.",
+      "revId": "c0a23d73e13ac6c684679675a4711556c3ce2c4d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
