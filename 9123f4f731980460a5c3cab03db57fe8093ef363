@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "3a1d315d_08ddd770",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-08-24T22:54:00Z",
+      "side": 1,
+      "message": "Dont unlock the sender and lock the zone, it will create unnecessary contention.\n\nIts unnecessary because the zone chat room will never change and ChatRoom::broadcastMessage is thread safe",
+      "revId": "9123f4f731980460a5c3cab03db57fe8093ef363",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a1d315d_0813975d",
         "filename": "MMOCoreORB/src/server/zone/ZoneServerImplementation.cpp",
         "patchSetId": 1
