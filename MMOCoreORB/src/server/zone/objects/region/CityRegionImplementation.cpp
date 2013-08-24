@@ -247,12 +247,16 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 
 		completeStructureList.put(structure->getObjectID());
 
-		if ( structure->isDecoration() ) {
-			addDecoration(structure);
-		} else if (structure->isCivicStructure()) {
-			addStructure(structure);
-		} else if (structure->isCommercialStructure()) {
-			addCommercialStructure(structure);
+		if(isLoaded()){
+
+			if ( structure->isDecoration() ) {
+				addDecoration(structure);
+			} else if (structure->isCivicStructure()) {
+				addStructure(structure);
+			} else if (structure->isCommercialStructure()) {
+				addCommercialStructure(structure);
+			}
+
 		}
 
 		if (registered) {
