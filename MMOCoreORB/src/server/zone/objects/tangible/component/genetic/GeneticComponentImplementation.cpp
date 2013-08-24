@@ -53,89 +53,31 @@ void GeneticComponentImplementation::initializeTransientMembers() {
 
 void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ComponentImplementation::updateCraftingValues(values, firstUpdate);
+	fortitude = values->getCurrentValue("fortitude");
+	endurance = values->getCurrentValue("endurance");
+	cleverness = values->getCurrentValue("cleverness");
+	courage = values->getCurrentValue("courage");
+	dexterity = values->getCurrentValue("dexterity");
+	dependency = values->getCurrentValue("dependability");
+	fierceness = values->getCurrentValue("fierceness");
+	intelligence = values->getCurrentValue("intellect");
+	power = values->getCurrentValue("power");
+	hardiness = values->getCurrentValue("hardiness");
+	kinResist = values->getCurrentValue("dna_comp_armor_kinetic");
+	energyResist = values->getCurrentValue("dna_comp_armor_energy");
+	blastResist = values->getCurrentValue("dna_comp_armor_blast");
+	heatResist = values->getCurrentValue("dna_comp_armor_heat");
+	coldResist = values->getCurrentValue("dna_comp_armor_cold");
+	elecResist = values->getCurrentValue("dna_comp_armor_electric");
+	acidResist = values->getCurrentValue("dna_comp_armor_acid");
+	stunResist = values->getCurrentValue("dna_comp_armor_stun");
+	saberResist = values->getCurrentValue("dna_comp_armor_saber");
 	if (firstUpdate) {
-		fortitude = values->getCurrentValue("fortitude");
-		endurance = values->getCurrentValue("endurance");
-		cleverness = values->getCurrentValue("cleverness");
-		courage = values->getCurrentValue("courage");
-		dexterity = values->getCurrentValue("dexterity");
-		dependency = values->getCurrentValue("dependability");
-		fierceness = values->getCurrentValue("fierceness");
-		intelligence = values->getCurrentValue("intellect");
-		power = values->getCurrentValue("power");
-		hardiness = values->getCurrentValue("hardiness");
-		/**
-		 * Now we need to grab the appropiate slots and apply the rules for first pass, vs experimentation.
-		 */
-		kinResist = values->getCurrentValue("dna_comp_armor_kinetic");
-		if (kinResist > 60)
-			kinResist = 60;
-		energyResist = values->getCurrentValue("dna_comp_armor_energy");
-		if (energyResist > 60)
-			energyResist = 60;
-		blastResist = values->getCurrentValue("dna_comp_armor_blast");
-		if (blastResist > 100)
-			blastResist = 100;
-		heatResist = values->getCurrentValue("dna_comp_armor_heat");
-		if (heatResist > 100)
-			heatResist = 100;
-		coldResist = values->getCurrentValue("dna_comp_armor_cold");
-		if (coldResist > 100)
-			coldResist = 100;
-		elecResist = values->getCurrentValue("dna_comp_armor_electric");
-		if (elecResist > 100)
-			elecResist = 100;
-		acidResist = values->getCurrentValue("dna_comp_armor_acid");
-		if (acidResist > 100)
-			acidResist = 100;
-		stunResist = values->getCurrentValue("dna_comp_armor_stun");
-		if (stunResist > 100)
-			stunResist = 100;
-		saberResist = values->getCurrentValue("dna_comp_armor_saber");
-		if (saberResist > 100)
-			saberResist = 100;
 		if (fortitude > 500) {
 			armorRating = 1;
 		}
 	} else {
-		fortitude = values->getCurrentValue("fortitude");
-		endurance = values->getCurrentValue("endurance");
-		cleverness = values->getCurrentValue("cleverness");
-		courage = values->getCurrentValue("courage");
-		dexterity = values->getCurrentValue("dexterity");
-		dependency = values->getCurrentValue("dependability");
-		fierceness = values->getCurrentValue("fierceness");
-		intelligence = values->getCurrentValue("intellect");
-		power = values->getCurrentValue("power");
-		hardiness = values->getCurrentValue("hardiness");
-		kinResist = values->getCurrentValue("dna_comp_armor_kinetic");
-		if (kinResist > 60)
-			kinResist = 60;
-		energyResist = values->getCurrentValue("dna_comp_armor_energy");
-		if (energyResist > 60)
-			energyResist = 60;
-		blastResist = values->getCurrentValue("dna_comp_armor_blast");
-		if (blastResist > 100)
-			blastResist = 100;
-		heatResist = values->getCurrentValue("dna_comp_armor_heat");
-		if (heatResist > 100)
-			heatResist = 100;
-		coldResist = values->getCurrentValue("dna_comp_armor_cold");
-		if (coldResist > 100)
-			coldResist = 100;
-		elecResist = values->getCurrentValue("dna_comp_armor_electric");
-		if (elecResist > 100)
-			elecResist = 100;
-		acidResist = values->getCurrentValue("dna_comp_armor_acid");
-		if (acidResist > 100)
-			acidResist = 100;
-		stunResist = values->getCurrentValue("dna_comp_armor_stun");
-		if (stunResist > 100)
-			stunResist = 100;
-		saberResist = values->getCurrentValue("dna_comp_armor_saber");
-		if (saberResist > 100)
-			saberResist = 100;
-		if (fortitude > 500) {
+		if (fortitude > 500 && armorRating == 0) {
 			armorRating = 1;
 			// Reset resist to 0
 			if (stunResist > 0) {
@@ -187,6 +129,67 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 			armorRating = 0;
 		}
 	}
+	// max values
+	if (fortitude > 1000) {
+		fortitude = 1000;
+		values->setCurrentPercentage("fortitude",1);
+	}
+	if (endurance > 1000){
+		endurance = 1000;
+		values->setCurrentPercentage("endurance",1);
+	}
+	if (cleverness > 1000){
+		cleverness = 1000;
+		values->setCurrentPercentage("cleverness",1);
+	}
+	if (courage > 1000){
+		courage = 1000;
+		values->setCurrentPercentage("courage",1);
+	}
+	if (dependency > 1000){
+		dependency = 1000;
+		values->setCurrentPercentage("dependability",1);
+	}
+	if (dexterity > 1000) {
+		dexterity = 1000;
+		values->setCurrentPercentage("dexterity",1);
+	}
+	if (fierceness > 1000){
+		fierceness = 1000;
+		values->setCurrentPercentage("fierceness",1);
+	}
+	if (hardiness > 1000) {
+		hardiness = 1000;
+		values->setCurrentPercentage("hardiness",1);
+	}
+	if (intelligence > 1000){
+		intelligence = 1000;
+		values->setCurrentPercentage("intellect",1);
+	}
+	if (power > 1000) {
+		power = 1000;
+		values->setCurrentPercentage("power",1);
+	}
+	// max on resists
+	if (kinResist > 60)
+		kinResist = 60;
+	if (energyResist > 60)
+		energyResist = 60;
+	if (blastResist > 100)
+		blastResist = 100;
+	if (heatResist > 100)
+		heatResist = 100;
+	if (coldResist > 100)
+		coldResist = 100;
+	if (elecResist > 100)
+		elecResist = 100;
+	if (acidResist > 100)
+		acidResist = 100;
+	if (stunResist > 100)
+		stunResist = 100;
+	if (saberResist > 100)
+		saberResist = 100;
+
 }
 String GeneticComponentImplementation::convertSpecialAttack(String &attackName) {
 	if (attackName == "defaultattack" || attackName == "")

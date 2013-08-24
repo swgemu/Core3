@@ -21,6 +21,7 @@ float GeneticLabratory::applyFormula(float aVal, float bVal, float cVal, float d
 	float c = cVal;
 	float d = dVal;
 	float e = eVal;
+	float rc = 0;
 	if (aVal < 0)
 		a = -99;
 	if (bVal < 0)
@@ -33,16 +34,23 @@ float GeneticLabratory::applyFormula(float aVal, float bVal, float cVal, float d
 		e = -99;
 	switch (formula) {
 		case PHYSIQUE:
-			return (a * 0.4) + (b *0.25) + (c * 0.5) + (d * 0.5) + (e * .25);
+			rc = (a * 0.4) + (b *0.25) + (c * 0.5) + (d * 0.5) + (e * .25);
+			break;
 		case PROWESS:
-			return (a * 0.25) + (b *0.42) + (c * 0.17) + (d * 0.085) + (e * .075);
+			rc = (a * 0.25) + (b *0.42) + (c * 0.17) + (d * 0.085) + (e * .075);
+			break;
 		case MENTAL:
-			return (a * 0.05) + (b *0.1) + (c * 0.5) + (d * 0.3) + (e * .05);
+			rc = (a * 0.05) + (b *0.1) + (c * 0.5) + (d * 0.3) + (e * .05);
+			break;
 		case PHYSCHOLOGICAL:
-			return (a * 0.09) + (b *0.05) + (c * 0.26) + (d * 0.43) + (e * .17);
+			rc = (a * 0.09) + (b *0.05) + (c * 0.26) + (d * 0.43) + (e * .17);
+			break;
 		case AGRESSION:
-			return (a * 0.17) + (b *0.16) + (c * 0.085) + (d * 0.165) + (e * .42);
+			rc = (a * 0.17) + (b *0.16) + (c * 0.085) + (d * 0.165) + (e * .42);
+			break;
 	}
+	if (rc > 1000)
+		rc = 1000;
 	return 0;
 }
 String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String d, String e, int odds) {
@@ -224,34 +232,34 @@ void GeneticLabratory::setInitialCraftingValues(TangibleObject* prototype, Manuf
 
 
 	// Calc the max Percentage, vs Min Percentage
-	craftingValues->setMaxPercentage("fortitude",((float)fortMax/(float)1000));
+	craftingValues->setMaxPercentage("fortitude",calcMaxPercentage(fortMax));
 	craftingValues->setCurrentPercentage("fortitude", getAssemblyPercentage(fortMin) * modifier);
 
-	craftingValues->setMaxPercentage("hardiness",((float)harMax/(float)1000));
+	craftingValues->setMaxPercentage("hardiness",calcMaxPercentage(harMax));
 	craftingValues->setCurrentPercentage("hardiness", getAssemblyPercentage(harMin) * modifier);
 
-	craftingValues->setMaxPercentage("dexterity",((float)dexMax/(float)1000));
+	craftingValues->setMaxPercentage("dexterity",calcMaxPercentage(dexMax));
 	craftingValues->setCurrentPercentage("dexterity", getAssemblyPercentage(dexMin) * modifier);
 
-	craftingValues->setMaxPercentage("endurance",((float)endMax/(float)1000));
+	craftingValues->setMaxPercentage("endurance",calcMaxPercentage(endMax));
 	craftingValues->setCurrentPercentage("endurance", getAssemblyPercentage(endMin) * modifier);
 
-	craftingValues->setMaxPercentage("intellect",((float)intMax/(float)1000));
+	craftingValues->setMaxPercentage("intellect",calcMaxPercentage(intMax));
 	craftingValues->setCurrentPercentage("intellect", getAssemblyPercentage(intMin) * modifier);
 
-	craftingValues->setMaxPercentage("cleverness",((float)cleMax/(float)1000));
+	craftingValues->setMaxPercentage("cleverness",calcMaxPercentage(cleMax));
 	craftingValues->setCurrentPercentage("cleverness", getAssemblyPercentage(cleMin) * modifier);
 
-	craftingValues->setMaxPercentage("dependability",((float)depMax/(float)1000));
+	craftingValues->setMaxPercentage("dependability",calcMaxPercentage(depMax));
 	craftingValues->setCurrentPercentage("dependability", getAssemblyPercentage(depMin) * modifier);
 
-	craftingValues->setMaxPercentage("courage",((float)couMax/(float)1000));
+	craftingValues->setMaxPercentage("courage",calcMaxPercentage(couMax));
 	craftingValues->setCurrentPercentage("courage",getAssemblyPercentage(couMin) * modifier);
 
-	craftingValues->setMaxPercentage("fierceness",((float)fieMax/(float)1000));
+	craftingValues->setMaxPercentage("fierceness",calcMaxPercentage(fieMax));
 	craftingValues->setCurrentPercentage("fierceness",getAssemblyPercentage(fieMin) * modifier);
 
-	craftingValues->setMaxPercentage("power",((float)powMax/(float)1000));
+	craftingValues->setMaxPercentage("power",calcMaxPercentage(powMax));
 	craftingValues->setCurrentPercentage("power", getAssemblyPercentage(powMin) * modifier);
 
 	// Figure out the min percentage of the stats
@@ -302,10 +310,10 @@ void GeneticLabratory::experimentRow(CraftingValues* craftingValues,int rowEffec
 			modifier = calculateExperimentationValueModifier(experimentationResult,pointsAttempted);
 			newValue = craftingValues->getCurrentPercentage(subtitle) + modifier;
 
-			if (newValue > craftingValues->getMaxPercentage(subtitle))
+			if (newValue >= craftingValues->getMaxPercentage(subtitle))
 				newValue = craftingValues->getMaxPercentage(subtitle);
 
-			if (newValue < 0)
+			if (newValue <= 0)
 				newValue = 0;
 
 			craftingValues->setCurrentPercentage(subtitle, newValue);
