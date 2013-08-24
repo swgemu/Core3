@@ -180,6 +180,10 @@ class LootManagerImplementation : public ManagedServiceImplementation, public Lo
 
 	Reference<LootGroupMap* > lootGroupMap;
 
+	float yellowChance;
+
+	float yellowModifier;
+
 	float exceptionalChance;
 
 	float exceptionalModifier;

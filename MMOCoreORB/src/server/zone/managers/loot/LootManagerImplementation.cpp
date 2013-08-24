@@ -49,7 +49,8 @@ bool LootManagerImplementation::loadConfigFile() {
 bool LootManagerImplementation::loadConfigData() {
 	if (!loadConfigFile())
 		return false;
-
+	yellowChance = lua->getGlobalFloat("yellowChance");
+	yellowModifier = lua->getGlobalFloat("yellowModifier");
 	exceptionalChance = lua->getGlobalFloat("exceptionalChance");
 	exceptionalModifier = lua->getGlobalFloat("exceptionalModifier");
 	legendaryChance = lua->getGlobalFloat("legendaryChance");
@@ -164,7 +165,20 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 	float excMod = 1.0;
 
-	if (System::random(exceptionalChance) == exceptionalChance) {
+	if (System::random(legendaryChance) == legendaryChance) {
+			UnicodeString objectName = prototype->getCustomObjectName();
+			uint32 bitmask = prototype->getOptionsBitmask() | OptionBitmask::YELLOW;
+
+			if (objectName.isEmpty())
+				objectName = StringIdManager::instance()->getStringId(prototype->getObjectName()->getFullPath().hashCode());
+
+			UnicodeString newName = objectName + " (Legendary)";
+			prototype->setCustomObjectName(newName, false);
+
+			excMod = legendaryModifier;
+
+			prototype->setOptionsBitmask(bitmask, false);
+	} else if (System::random(exceptionalChance) == exceptionalChance) {
 		UnicodeString objectName = prototype->getCustomObjectName();
 		uint32 bitmask = prototype->getOptionsBitmask() | OptionBitmask::YELLOW;
 
@@ -177,17 +191,17 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 		excMod = exceptionalModifier;
 
 		prototype->setOptionsBitmask(bitmask, false);
-	} else if (System::random(legendaryChance) == legendaryChance) {
+	} else if (System::random(yellowChance) == yellowChance) {
 		UnicodeString objectName = prototype->getCustomObjectName();
 		uint32 bitmask = prototype->getOptionsBitmask() | OptionBitmask::YELLOW;
 
 		if (objectName.isEmpty())
 			objectName = StringIdManager::instance()->getStringId(prototype->getObjectName()->getFullPath().hashCode());
 
-		UnicodeString newName = objectName + " (Legendary)";
+		UnicodeString newName = objectName;
 		prototype->setCustomObjectName(newName, false);
 
-		excMod = legendaryModifier;
+		excMod = yellowModifier;
 
 		prototype->setOptionsBitmask(bitmask, false);
 	}
