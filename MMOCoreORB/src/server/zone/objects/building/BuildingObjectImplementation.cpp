@@ -893,6 +893,15 @@ void BuildingObjectImplementation::promptPayAccessFee(CreatureObject* player) {
 }
 
 void BuildingObjectImplementation::payAccessFee(CreatureObject* player) {
+	Locker acessLock(&paidAccessListMutex);
+
+	if (paidAccessList.contains(player->getObjectID())) {
+		uint32 expireTime = paidAccessList.get(player->getObjectID());
+
+		if(expireTime > time(0)) {
+			return;
+		}
+	}
 
 	if(player->getCashCredits() < accessFee) {
 		player->sendSystemMessage("@player/player_utility:not_enough_money");
@@ -905,7 +914,6 @@ void BuildingObjectImplementation::payAccessFee(CreatureObject* player) {
 	else
 		error("Unable to pay access fee credits to owner");
 
-	Locker acessLock(&paidAccessListMutex);
 
 	if(paidAccessList.contains(player->getObjectID()))
 		paidAccessList.drop(player->getObjectID());
