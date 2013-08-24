@@ -88,7 +88,8 @@ kaja_orzee_missions =
 		rewards = 
 		{ 
 			{ rewardType = "faction", faction = "imperial", amount = 75 },
-			{ rewardType = "loot", lootGroup = "theme_park_reward_imperial_kaja"} 
+			{ rewardType = "loot", lootGroup = "theme_park_reward_imperial_kaja"} ,
+			{ rewardType = "permission", permissionGroup = "emperors_retreat2" }
 		}
 	}
 }
@@ -771,12 +772,34 @@ npcMapImperial =
 	}
 }
 
-permissionMapImperial = { -- Coming soon...
+permissionMapImperial = {
+	{
+		planetName = "naboo", 
+		regionName = "emperors_retreat",		
+		permissions = 
+		{ 
+			{ 
+				cells = { 1418872, 1418873 },
+				conditions = 
+				{
+					{ permissionType = "faction" }
+				}
+			},
+			{
+				cells = { 1418874, 1418875, 1418876, 1418877, 1418878, 1418879, 1418880, 1418881, 1418882, 1418883, 1418884, 1418885, 1418886 },
+				conditions = 
+				{
+					{ permissionType = "missionState", mission = "theme_park_imperial", missionState = 1 },
+					{ permissionType = "faction" }
+				}
+			}
+		}
+	}
 }
 
 permissionMapImperialWarp = {
 		{ planetName = "naboo",  radius = 20,
-			cells = {8555472},
+			cells = { 1418874 },
 				conditions = 
 				{
 					{ permissionType = "faction", faction = FACTIONIMPERIAL }
@@ -788,11 +811,12 @@ permissionMapImperialWarp = {
 ThemeParkImperial = ThemeParkLogic:new {
 	numberOfActs = 1,
 	npcMap = npcMapImperial,
-	--permissionMap = permissionMapImperialWarp,
+	permissionMap = permissionMapImperial,
 	className = "ThemeParkImperial",
 	screenPlayState = "imperial_theme_park",
 	missionDescriptionStf = "@theme_park_imperial/quest_details:imperial_retreat_",
 	missionCompletionMessageStf = "@theme_park/messages:imperial_completion_message",
+	faction = FACTIONIMPERIAL
 	--warningMessageStf = "@theme_park_imperial/warning:"
 }
 
