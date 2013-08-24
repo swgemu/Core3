@@ -51,7 +51,7 @@ float GeneticLabratory::applyFormula(float aVal, float bVal, float cVal, float d
 	}
 	if (rc > 1000)
 		rc = 1000;
-	return 0;
+	return rc;
 }
 String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String d, String e, int odds) {
 	String effectiveSpecial = "defaultattack";
