@@ -46,18 +46,23 @@ IDL_CLASSPATH = ../MMOEngine/include
 
 IDL_DIRECTIVES = -cp $(IDL_CLASSPATH)
 
+UNITTEST_DIRECTIVES = 
+
 all: #build
 	#cd build/unix && cmake ../.. && make
 	#cp build/unix/src/core3 bin
 
 build: idl gtest
-	cd build/unix && make -j4
+	cd build/unix && make -j4 UNITTEST_DIRECTIVES="$(UNITTEST_DIRECTIVES)"
 	cp build/unix/src/client/core3* bin
 	cp build/unix/src/core3* bin
 	#cd bin/conf && svnversion > rev.txt
 	cd bin/conf && git log --pretty=format:'%h was %an, %ar, message: %s' -10 > rev.txt
 	rm build/unix/src/core3
 	#done
+	
+unittest: UNITTEST_DIRECTIVES = -fprofile-arcs -ftest-coverage
+unittest: build
 
 rebuild: clean build
 
