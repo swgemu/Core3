@@ -881,6 +881,11 @@ void BuildingObjectImplementation::promptPayAccessFee(CreatureObject* player) {
 	if(!player->isPlayerCreature())
 		return;
 
+	PlayerObject* ghost = player->getPlayerObject();
+
+	if (ghost->hasSuiBoxWindowType(SuiWindowType::STRUCTURE_CONSENT_PAY_ACCESS_FEE))
+		return;
+
 	ManagedReference<SuiMessageBox*> box = new SuiMessageBox(player, SuiWindowType::STRUCTURE_CONSENT_PAY_ACCESS_FEE);
 	box->setPromptTitle("@player_structure:access_fee_t");
 	box->setPromptText("You must pay a fee of " + String::valueOf(accessFee) + " credits to enter this building");
@@ -888,11 +893,20 @@ void BuildingObjectImplementation::promptPayAccessFee(CreatureObject* player) {
 	box->setForceCloseDistance(30.f);
 	box->setCallback(new StructurePayAccessFeeSuiCallback(server->getZoneServer()));
 
-	player->getPlayerObject()->addSuiBox(box);
+	ghost->addSuiBox(box);
 	player->sendMessage(box->generateMessage());
 }
 
 void BuildingObjectImplementation::payAccessFee(CreatureObject* player) {
+	Locker acessLock(&paidAccessListMutex);
+
+	if (paidAccessList.contains(player->getObjectID())) {
+		uint32 expireTime = paidAccessList.get(player->getObjectID());
+
+		if(expireTime > time(0)) {
+			return;
+		}
+	}
 
 	if(player->getCashCredits() < accessFee) {
 		player->sendSystemMessage("@player/player_utility:not_enough_money");
@@ -905,7 +919,6 @@ void BuildingObjectImplementation::payAccessFee(CreatureObject* player) {
 	else
 		error("Unable to pay access fee credits to owner");
 
-	Locker acessLock(&paidAccessListMutex);
 
 	if(paidAccessList.contains(player->getObjectID()))
 		paidAccessList.drop(player->getObjectID());
