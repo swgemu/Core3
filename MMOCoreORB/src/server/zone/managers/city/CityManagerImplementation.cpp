@@ -724,6 +724,7 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 
 	processIncomeTax(city);
 
+	city->cleanupCityStructures();
 	deductCityMaintenance(city);
 }
 
