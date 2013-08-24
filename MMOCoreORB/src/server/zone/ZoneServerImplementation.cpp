@@ -192,7 +192,6 @@ void ZoneServerImplementation::initialize() {
 
 	chatManager = new ChatManager(_this.get(), 10000);
 	chatManager->deploy("ChatManager");
-	chatManager->initiateRooms();
 
 	playerManager = new PlayerManager(_this.get(), processor);
 	playerManager->deploy("PlayerManager");
@@ -282,6 +281,8 @@ void ZoneServerImplementation::startManagers() {
 	guildManager->deploy("GuildManager");
 	guildManager->setChatManager(chatManager);
 	guildManager->loadGuilds();
+
+	chatManager->initiateRooms();
 
 	//Loads the FactionManager LUA Config.
 	FactionManager::instance()->loadData();

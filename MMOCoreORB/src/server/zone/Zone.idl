@@ -46,6 +46,7 @@ package server.zone;
 
 import engine.util.u3d.QuadTree;
 import engine.util.u3d.QuadTreeEntry;
+include server.chat.room.ChatRoom;
 
 import system.lang.Time;
 import engine.core.TaskManager;
@@ -89,6 +90,8 @@ class Zone extends SceneObject {
 	private transient CreatureManager creatureManager;
 	
 	private transient GCWManager gcwManager;
+	
+	private ChatRoom chatRoom;
 
 	@dereferenced
 	private transient SortedVector<CityRegion> cityRegionUpdateVector;
@@ -237,4 +240,12 @@ class Zone extends SceneObject {
 	public native GCWManager getGCWManager(){
 		return gcwManager;
 	}
+	
+	public void setChatRoom(ChatRoom room) {
+		chatRoom = room;
+	}
+
+	public ChatRoom getChatRoom() {
+		return chatRoom;
+	}	
 }
