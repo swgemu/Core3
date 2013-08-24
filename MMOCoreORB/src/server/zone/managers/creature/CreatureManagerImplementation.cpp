@@ -435,11 +435,11 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 			FactionManager* factionManager = FactionManager::instance();
 
-			if (destructedObject->getFaction() != 0) {
+			if (!destructedObject->getPvPFaction().isEmpty()) {
 				if(!player->isGrouped())
-					factionManager->awardFactionStanding(player, destructedObject->getFactionString());
+					factionManager->awardFactionStanding(player, destructedObject->getPvPFaction());
 				else
-					factionManager->awardFactionStanding(copyThreatMap.getHighestDamagePlayer(), destructedObject->getFactionString());
+					factionManager->awardFactionStanding(copyThreatMap.getHighestDamagePlayer(), destructedObject->getPvPFaction());
 			}
 
 		}
