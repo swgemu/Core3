@@ -42,6 +42,12 @@ protected:
 			input = -99;
 		return (input * ((input/1000) + 0.15)) * mod;
 	}
+	float calcMaxPercentage(uint32 value) {
+		float percent = ((float)value/(float)1000);
+		if (percent > 1)
+			percent = 1;
+		return percent;
+	}
 };
 
 }
