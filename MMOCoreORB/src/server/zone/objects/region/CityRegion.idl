@@ -680,5 +680,6 @@ class CityRegion extends ManagedObject implements Logger {
 
 	public native void transferCivicStructuresToMayor();
 
+	public native void cleanupCityStructures();
 
 }
