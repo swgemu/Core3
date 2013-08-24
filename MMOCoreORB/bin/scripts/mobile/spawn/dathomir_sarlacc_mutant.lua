@@ -63,8 +63,8 @@ dathomir_sarlacc_mutant = {
 		{
 			lairTemplateName = "dathomir_rancor_mutant_pack_neutral_none",
 			spawnLimit = -1,
-			minDifficulty = 65,
-			maxDifficulty = 85,
+			minDifficulty = 75,
+			maxDifficulty = 75,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
