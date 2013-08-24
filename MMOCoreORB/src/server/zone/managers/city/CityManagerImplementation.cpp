@@ -724,7 +724,7 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 
 	processIncomeTax(city);
 
-	city->cleanupCityStructures();
+	city->cleanupDuplicateCityStructures();
 	deductCityMaintenance(city);
 }
 
@@ -1214,6 +1214,8 @@ void CityManagerImplementation::contractCity(CityRegion* city) {
 	for (int i = 0; i < cityMilitia->size(); ++i) {
 		militiaMembers.put(cityMilitia->get(i));
 	}
+
+	city->removeAmenitiesOutsideCity(radiusPerRank.get(newRank - 1));
 
 	city->setCityRank(newRank);
 	city->setRadius(radiusPerRank.get(newRank - 1));
