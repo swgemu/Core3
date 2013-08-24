@@ -102,11 +102,23 @@ void ChatManagerImplementation::initiateRooms() {
 		if (zone == NULL)
 			continue;
 
-		ChatRoom* planetRoom = createRoom(zone->getZoneName(), core3Room);
-		core3Room->addSubRoom(planetRoom);
+		try {
+			zone->wlock();
 
-		ChatRoom* planetaryChat = createRoom("chat", planetRoom);
-		planetRoom->addSubRoom(planetaryChat);
+			ChatRoom* planetRoom = createRoom(zone->getZoneName(), core3Room);
+			core3Room->addSubRoom(planetRoom);
+
+			ChatRoom* planetaryChat = createRoom("Planet", planetRoom);
+			planetRoom->addSubRoom(planetaryChat);
+			zone->setChatRoom( planetaryChat );
+
+			zone->unlock();
+		} catch (...) {
+			zone->unlock();
+
+			throw;
+		}
+
 	}
 }
 
@@ -786,6 +798,46 @@ void ChatManagerImplementation::handleGuildChat(CreatureObject* sender, const Un
 		guild->unlock();
 	} catch (...) {
 		guild->unlock();
+
+		throw;
+	}
+
+	sender->wlock();
+}
+
+void ChatManagerImplementation::handlePlanetChat(CreatureObject* sender, const UnicodeString& message) {
+	/*if (sender->isChatMuted()) {
+		sender->sendSystemMessage("Your chat abilities are currently disabled by the server administrators.");
+		return;
+	}*/
+
+	String name = sender->getFirstName();
+
+	Zone* zone = sender->getZone();
+	if( zone == NULL ){
+		return;
+	}
+
+	StringTokenizer args(message.toString());
+	if (!args.hasMoreTokens()) {
+		sender->sendSystemMessage("@ui:im_no_message"); // You need to include a message!
+		return;
+	}
+
+	sender->unlock();
+
+	try {
+		zone->wlock();
+
+		ManagedReference<ChatRoom*> room = zone->getChatRoom();
+		if (room != NULL) {
+			BaseMessage* msg = new ChatRoomMessage(name, message, room->getRoomID());
+			room->broadcastMessage(msg);
+		}
+
+		zone->unlock();
+	} catch (...) {
+		zone->unlock();
 
 		throw;
 	}

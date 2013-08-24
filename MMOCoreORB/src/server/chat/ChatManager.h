@@ -224,6 +224,8 @@ public:
 
 	void handleGuildChat(CreatureObject* player, const UnicodeString& message);
 
+	void handlePlanetChat(CreatureObject* player, const UnicodeString& message);
+
 	ChatRoom* createRoomByFullPath(const String& path);
 
 	ChatRoom* getChatRoomByFullPath(const String& path);
@@ -363,6 +365,8 @@ public:
 
 	void handleGuildChat(CreatureObject* player, const UnicodeString& message);
 
+	void handlePlanetChat(CreatureObject* player, const UnicodeString& message);
+
 	ChatRoom* createRoomByFullPath(const String& path);
 
 	ChatRoom* getChatRoomByFullPath(const String& path);
@@ -485,6 +489,8 @@ public:
 	void handleGroupChat(CreatureObject* player, const UnicodeString& message);
 
 	void handleGuildChat(CreatureObject* player, const UnicodeString& message);
+
+	void handlePlanetChat(CreatureObject* player, const UnicodeString& message);
 
 	ChatRoom* createRoomByFullPath(const String& path);
 

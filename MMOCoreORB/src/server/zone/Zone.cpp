@@ -30,7 +30,7 @@
  *	ZoneStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECONTAINERCOMPONENT__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_ADDCITYREGIONTOUPDATE__CITYREGION_,RPC_UPDATECITYREGIONS__,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_GETBOUNDINGRADIUS__,RPC_REGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_UNREGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_GETZONENAME__,RPC_GETZONECRC__,RPC_GETGCWMANAGER__};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_GETNEARESTPLANETARYOBJECT__SCENEOBJECT_STRING_,RPC_INITIALIZEPRIVATEDATA__,RPC_CREATECONTAINERCOMPONENT__,RPC_UPDATEACTIVEAREAS__SCENEOBJECT_,RPC_STARTMANAGERS__,RPC_STOPMANAGERS__,RPC_GETHEIGHT__FLOAT_FLOAT_,RPC_ADDSCENEOBJECT__SCENEOBJECT_,RPC_ADDCITYREGIONTOUPDATE__CITYREGION_,RPC_UPDATECITYREGIONS__,RPC_SENDMAPLOCATIONSTO__SCENEOBJECT_,RPC_DROPSCENEOBJECT__SCENEOBJECT_,RPC_GETPLANETMANAGER__,RPC_GETZONESERVER__,RPC_GETCREATUREMANAGER__,RPC_GETGALACTICTIME__,RPC_HASMANAGERSSTARTED__,RPC_GETMINX__,RPC_GETMAXX__,RPC_GETMINY__,RPC_GETMAXY__,RPC_GETBOUNDINGRADIUS__,RPC_REGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_UNREGISTEROBJECTWITHPLANETARYMAP__SCENEOBJECT_,RPC_GETZONENAME__,RPC_GETZONECRC__,RPC_GETGCWMANAGER__,RPC_SETCHATROOM__CHATROOM_,RPC_GETCHATROOM__};
 
 Zone::Zone(ZoneProcessServer* processor, const String& zoneName) : SceneObject(DummyConstructorParameter::instance()) {
 	ZoneImplementation* _implementation = new ZoneImplementation(processor, zoneName);
@@ -506,6 +506,33 @@ GCWManager* Zone::getGCWManager() {
 		return _implementation->getGCWManager();
 }
 
+void Zone::setChatRoom(ChatRoom* room) {
+	ZoneImplementation* _implementation = static_cast<ZoneImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETCHATROOM__CHATROOM_);
+		method.addObjectParameter(room);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setChatRoom(room);
+}
+
+ChatRoom* Zone::getChatRoom() {
+	ZoneImplementation* _implementation = static_cast<ZoneImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCHATROOM__);
+
+		return static_cast<ChatRoom*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->getChatRoom();
+}
+
 DistributedObjectServant* Zone::_getImplementation() {
 
 	 if (!_updated) _updated = true;
@@ -622,6 +649,10 @@ bool ZoneImplementation::readObjectMember(ObjectInputStream* stream, const uint3
 		TypeInfo<unsigned int >::parseFromBinaryStream(&zoneCRC, stream);
 		return true;
 
+	case 0xc1522ac5: //Zone.chatRoom
+		TypeInfo<ManagedReference<ChatRoom* > >::parseFromBinaryStream(&chatRoom, stream);
+		return true;
+
 	case 0x7b0557ae: //Zone.regionTree
 		TypeInfo<QuadTreeReference >::parseFromBinaryStream(&regionTree, stream);
 		return true;
@@ -664,6 +695,14 @@ int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_nameHashCode = 0xc1522ac5; //Zone.chatRoom
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<ManagedReference<ChatRoom* > >::toBinaryStream(&chatRoom, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_nameHashCode = 0x7b0557ae; //Zone.regionTree
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
@@ -681,7 +720,7 @@ int ZoneImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 4;
+	return _count + 5;
 }
 
 QuadTree* ZoneImplementation::getRegionTree() {
@@ -733,6 +772,16 @@ unsigned int ZoneImplementation::getZoneCRC() {
 GCWManager* ZoneImplementation::getGCWManager() {
 	// server/zone/Zone.idl():  		return gcwManager;
 	return gcwManager;
+}
+
+void ZoneImplementation::setChatRoom(ChatRoom* room) {
+	// server/zone/Zone.idl():  		chatRoom = room;
+	chatRoom = room;
+}
+
+ChatRoom* ZoneImplementation::getChatRoom() {
+	// server/zone/Zone.idl():  		return chatRoom;
+	return chatRoom;
 }
 
 /*
@@ -896,6 +945,16 @@ void ZoneAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertLong(getGCWManager()->_getObjectID());
 		}
 		break;
+	case RPC_SETCHATROOM__CHATROOM_:
+		{
+			setChatRoom(static_cast<ChatRoom*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_GETCHATROOM__:
+		{
+			resp->insertLong(getChatRoom()->_getObjectID());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -1015,6 +1074,14 @@ unsigned int ZoneAdapter::getZoneCRC() {
 
 GCWManager* ZoneAdapter::getGCWManager() {
 	return (static_cast<Zone*>(stub))->getGCWManager();
+}
+
+void ZoneAdapter::setChatRoom(ChatRoom* room) {
+	(static_cast<Zone*>(stub))->setChatRoom(room);
+}
+
+ChatRoom* ZoneAdapter::getChatRoom() {
+	return (static_cast<Zone*>(stub))->getChatRoom();
 }
 
 /*

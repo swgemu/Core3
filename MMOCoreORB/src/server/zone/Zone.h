@@ -161,6 +161,8 @@ class CityRegion;
 
 using namespace server::zone::objects::region;
 
+#include "server/chat/room/ChatRoom.h"
+
 #include "server/zone/ZoneServer.h"
 
 #include "server/zone/managers/planet/HeightMap.h"
@@ -274,6 +276,10 @@ public:
 
 	GCWManager* getGCWManager();
 
+	void setChatRoom(ChatRoom* room);
+
+	ChatRoom* getChatRoom();
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -309,6 +315,8 @@ class ZoneImplementation : public SceneObjectImplementation {
 	ManagedReference<CreatureManager* > creatureManager;
 
 	ManagedReference<GCWManager* > gcwManager;
+
+	ManagedReference<ChatRoom* > chatRoom;
 
 	SortedVector<ManagedReference<CityRegion* > > cityRegionUpdateVector;
 
@@ -406,6 +414,10 @@ public:
 	unsigned int getZoneCRC();
 
 	GCWManager* getGCWManager();
+
+	void setChatRoom(ChatRoom* room);
+
+	ChatRoom* getChatRoom();
 
 	WeakReference<Zone*> _this;
 
@@ -505,6 +517,10 @@ public:
 	unsigned int getZoneCRC();
 
 	GCWManager* getGCWManager();
+
+	void setChatRoom(ChatRoom* room);
+
+	ChatRoom* getChatRoom();
 
 };
 
