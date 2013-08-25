@@ -275,19 +275,19 @@ function TalusStaticSpawnsNorthScreenPlay:spawnMobiles()
 	--Broken Arch (-2988,3820)
 
 	--Statue (-3246,3425)
-	spawnMobile("talus", "sleemo_vandal", 12, -3248.9, 50.0, 3432.9, 175, 0)
-	spawnMobile("talus", "sleemo_vandal", 12, -3242.6, 49.5, 3432.4, 75, 0)
-	spawnMobile("talus", "sleemo_vandal", 12, -3241.8, 48.9, 3425.6, -95, 0)
-	spawnMobile("talus", "sleemo_vandal", 12, -3245.5, 49.7, 3428.3, -145, 0)
+	spawnMobile("talus", "sleemo_vandal", 120, -3248.9, 50.0, 3432.9, 175, 0)
+	spawnMobile("talus", "sleemo_vandal", 120, -3242.6, 49.5, 3432.4, 75, 0)
+	spawnMobile("talus", "sleemo_vandal", 120, -3241.8, 48.9, 3425.6, -95, 0)
+	spawnMobile("talus", "sleemo_vandal", 120, -3245.5, 49.7, 3428.3, -145, 0)
 
 	--Skeleton and Debris (-3394,2497)
-	spawnMobile("talus", "scavenger", 18, -3394.8, 8.4, 2497.4, 105, 0)
-	spawnMobile("talus", "scavenger", 18, -3391.3, 8.4, 2500.2, 180, 0)
-	spawnMobile("talus", "scavenger", 18, -3397.8, 8.6, 2499.6, 55, 0)
+	spawnMobile("talus", "scavenger", 180, -3394.8, 8.4, 2497.4, 105, 0)
+	spawnMobile("talus", "scavenger", 180, -3391.3, 8.4, 2500.2, 180, 0)
+	spawnMobile("talus", "scavenger", 180, -3397.8, 8.6, 2499.6, 55, 0)
 
 	--Ruins (-3492,3697)
-	spawnMobile("talus", "scavenger", 18, -3491.7, 40.5, 3697.5, 180, 0)
-	spawnMobile("talus", "scavenger", 18, -3483.6, 39.9, 3700.0, 180, 0)
+	spawnMobile("talus", "scavenger", 180, -3491.7, 40.5, 3697.5, 180, 0)
+	spawnMobile("talus", "scavenger", 180, -3483.6, 39.9, 3700.0, 180, 0)
 
 	--Creature Skeleton (-3482,3965)
 
@@ -296,8 +296,8 @@ function TalusStaticSpawnsNorthScreenPlay:spawnMobiles()
 	--Broken Bridge (-4025,3664)
 
 	--Ruined Lookout Tower (-4381,2669)
-	spawnMobile("talus", "scavenger", 18, -4384.1, 16.7, 2663.6, 12, 0)
-	spawnMobile("talus", "scavenger", 18, -4379.1, 16.8, 2663.1, -33, 0)
+	spawnMobile("talus", "scavenger", 180, -4384.1, 16.7, 2663.6, 12, 0)
+	spawnMobile("talus", "scavenger", 180, -4379.1, 16.8, 2663.1, -33, 0)
 
 	--Pillar Ruins (4974,3848)
 
@@ -384,7 +384,7 @@ function TalusStaticSpawnsNorthScreenPlay:spawnMobiles()
 	spawnMobile("talus", "rot_mite", 180, -4981.1, 44.5, 5744.7, -31, 0)
 
 	--Broken Probe Droid (-4803,5165)
-	spawnMobile("talus", "scavenger", 18, -4804.6, 14.8, 5165.8, 102, 0)
+	spawnMobile("talus", "scavenger", 180, -4804.6, 14.8, 5165.8, 102, 0)
 
 	--Geyser (-4596,5703)
 	spawnMobile("talus", "guf_drolg", 240, -4578.9, 29.5, 5694.6, -105, 0)
@@ -399,8 +399,8 @@ function TalusStaticSpawnsNorthScreenPlay:spawnMobiles()
 	--Stone Pillar + Fire (-4085,5566)
 
 	--Broken Gas Harvester + Debris (-4020,4623)
-	spawnMobile("talus", "scavenger", 18, -4020.9, 30.2, 4619.2, 10, 0)
-	spawnMobile("talus", "scavenger", 18, -4030.9, 30.6, 4628.1, 152, 0)
+	spawnMobile("talus", "scavenger", 180, -4020.9, 30.2, 4619.2, 10, 0)
+	spawnMobile("talus", "scavenger", 180, -4030.9, 30.6, 4628.1, 152, 0)
 
 	--3 Spikes (-3920,4127)
 
@@ -414,7 +414,10 @@ function TalusStaticSpawnsNorthScreenPlay:spawnMobiles()
 	spawnMobile("talus", "scientist", 1, -3642.4, 56.7, 6337.1, 180, 0)
 
 	--Shipping containers (-3445,6184)
-	spawnMobile("talus", "smuggler", 18, -3448.2, 43.3, 6186.0, 10, 0)
+	spawnMobile("talus", "smuggler", 180, -3448.2, 43.3, 6186.0, 10, 0)
+	spawnMobile("talus", "scavenger", 180, -3440.6, 42.5, 6182.3, 96, 0)
+	spawnMobile("talus", "scavenger", 180, -3444.8, 43.8, 6174.0, 28, 0)
+	spawnMobile("talus", "scavenger", 180, -3451.5, 44.1, 6181.7, 64, 0)
 
 	--Skeleton on Rocks (-3171,5735)
 
