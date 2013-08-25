@@ -544,3 +544,12 @@ includeFile("items/themepark_reward/twilek_painting_quest_03.lua")
 includeFile("items/themepark_reward/twilek_painting_quest_04.lua")
 includeFile("items/themepark_reward/weapon_scope_quest.lua")
 includeFile("items/themepark_reward/weapon_stock_quest.lua")
+
+--weapon sub folder
+includeFile("items/weapon/grenade_cryoban.lua")
+includeFile("items/weapon/grenade_fragmentation_light.lua")
+includeFile("items/weapon/grenade_fragmentation.lua")
+includeFile("items/weapon/grenade_glop.lua")
+includeFile("items/weapon/grenade_imperial_detonator.lua")
+includeFile("items/weapon/grenade_proton.lua")
+includeFile("items/weapon/grenade_thermal_detonator.lua")
