@@ -1595,17 +1595,6 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 	if (!player->isPlayerCreature())
 		return;
 
-	//Face player.
-	faceObject(player);
-
-	PatrolPoint current(coordinates.getPosition(), getParent().get());
-
-	broadcastNextPositionUpdate(&current);
-
-	CreatureObject* playerCreature = cast<CreatureObject*>( player);
-	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
-	player->sendMessage(conv);
-
 	SortedVector<ManagedReference<Observer*> >* observers = getObservers(ObserverEventType::STARTCONVERSATION);
 
 	if (observers != NULL) {
@@ -1628,7 +1617,20 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 		registerObserver(ObserverEventType::STOPCONVERSATION, conversationObserver);
 	} else {
 		error("Could not create conversation observer.");
+		return;
 	}
+
+	//Face player.
+	faceObject(player);
+
+	PatrolPoint current(coordinates.getPosition(), getParent().get());
+
+	broadcastNextPositionUpdate(&current);
+
+	CreatureObject* playerCreature = cast<CreatureObject*>( player);
+	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
+	player->sendMessage(conv);
+
 }
 
 bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
