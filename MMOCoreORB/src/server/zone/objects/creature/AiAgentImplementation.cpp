@@ -1593,8 +1593,19 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 
 
 void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
-	if (!player->isPlayerCreature())
+	if (!player->isPlayerCreature() || isDead() || npcTemplate == NULL || npcTemplate->getConversationTemplate() == 0)
 		return;
+
+	//Face player.
+	faceObject(player);
+
+	PatrolPoint current(coordinates.getPosition(), getParent().get());
+
+	broadcastNextPositionUpdate(&current);
+
+	CreatureObject* playerCreature = cast<CreatureObject*>( player);
+	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
+	player->sendMessage(conv);
 
 	SortedVector<ManagedReference<Observer*> >* observers = getObservers(ObserverEventType::STARTCONVERSATION);
 
@@ -1621,16 +1632,7 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 		return;
 	}
 
-	//Face player.
-	faceObject(player);
 
-	PatrolPoint current(coordinates.getPosition(), getParent().get());
-
-	broadcastNextPositionUpdate(&current);
-
-	CreatureObject* playerCreature = cast<CreatureObject*>( player);
-	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
-	player->sendMessage(conv);
 
 }
 
