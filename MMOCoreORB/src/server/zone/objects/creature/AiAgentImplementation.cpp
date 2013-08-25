@@ -1205,9 +1205,8 @@ void AiAgentImplementation::doMovement() {
 
 			setNextPosition(follow->getPositionX(), follow->getPositionZ(), follow->getPositionY(), follow->getParent().get());
 			// stop in weapons range
-			if (getWeapon() != NULL ) {
-				float weapMaxRange = MIN(getWeapon()->getIdealRange(), getWeapon()->getMaxRange());
-				maxDistance = MAX(0.5, weapMaxRange - 2);
+			if (weapon != NULL ) {
+				maxDistance = MAX(0.5, weapon->getIdealRange() - 2);
 			}
 
 			if (follow != NULL && !CollisionManager::checkLineOfSight(_this.get(), follow)) {
@@ -1593,33 +1592,8 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 
 
 void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
-	if (!player->isPlayerCreature())
-		return;
-
-	SortedVector<ManagedReference<Observer*> >* observers = getObservers(ObserverEventType::STARTCONVERSATION);
-
-	if (observers != NULL) {
-		for (int i = 0;  i < observers->size(); ++i) {
-			if (dynamic_cast<ConversationObserver*>(observers->get(i).get()) != NULL)
-				return;
-		}
-	}
-
-	if (npcTemplate == NULL)
-		return;
-	//Create conversation observer.
-	ConversationObserver* conversationObserver = ConversationManager::instance()->getConversationObserver(npcTemplate->getConversationTemplate());
-
-	if (conversationObserver != NULL) {
-		//Register observers.
-		registerObserver(ObserverEventType::CONVERSE, conversationObserver);
-		registerObserver(ObserverEventType::STARTCONVERSATION, conversationObserver);
-		registerObserver(ObserverEventType::SELECTCONVERSATION, conversationObserver);
-		registerObserver(ObserverEventType::STOPCONVERSATION, conversationObserver);
-	} else {
-		error("Could not create conversation observer.");
-		return;
-	}
+	if (!player->isPlayerCreature() || npcTemplate == NULL || npcTemplate->getConversationTemplate() == 0 || isDead())
+			return;
 
 	//Face player.
 	faceObject(player);
@@ -1631,6 +1605,31 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 	CreatureObject* playerCreature = cast<CreatureObject*>( player);
 	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
 	player->sendMessage(conv);
+
+	SortedVector<ManagedReference<Observer*> >* observers = getObservers(ObserverEventType::STARTCONVERSATION);
+
+	if (observers != NULL) {
+		for (int i = 0;  i < observers->size(); ++i) {
+			if (dynamic_cast<ConversationObserver*>(observers->get(i).get()) != NULL)
+				return;
+		}
+	}
+
+	//Create conversation observer.
+	ConversationObserver* conversationObserver = ConversationManager::instance()->getConversationObserver(npcTemplate->getConversationTemplate());
+
+	if (conversationObserver != NULL) {
+		//Register observers.
+		registerObserver(ObserverEventType::CONVERSE, conversationObserver);
+		registerObserver(ObserverEventType::STARTCONVERSATION, conversationObserver);
+		registerObserver(ObserverEventType::SELECTCONVERSATION, conversationObserver);
+		registerObserver(ObserverEventType::STOPCONVERSATION, conversationObserver);
+	} else {
+		error("Could not create conversation observer.");
+		//return;
+	}
+
+
 
 }
 
