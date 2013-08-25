@@ -13,6 +13,7 @@ const char LuaTangibleObject::className[] = "LuaTangibleObject";
 Luna<LuaTangibleObject>::RegType LuaTangibleObject::Register[] = {
 		{ "_setObject", &LuaSceneObject::_setObject },
 		{ "setOptionsBitmask", &LuaTangibleObject::setOptionsBitmask },
+		{ "setPvpStatusBitmask", &LuaTangibleObject::setPvpStatusBitmask },
 		{ "setCustomizationVariable", &LuaTangibleObject::setCustomizationVariable },
 		{ "setConditionDamage", &LuaTangibleObject::setConditionDamage },
 		{ "setFaction", &LuaTangibleObject::setFaction },
@@ -42,6 +43,14 @@ int LuaTangibleObject::setOptionsBitmask(lua_State* L) {
 	uint32 bitmask = lua_tointeger(L, -1);
 
 	realObject->setOptionsBitmask(bitmask, true);
+
+	return 0;
+}
+
+int LuaTangibleObject::setPvpStatusBitmask(lua_State* L) {
+	uint32 bitmask = lua_tointeger(L, -1);
+
+	realObject->setPvpStatusBitmask(bitmask, true);
 
 	return 0;
 }

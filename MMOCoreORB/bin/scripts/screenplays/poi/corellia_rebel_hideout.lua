@@ -262,11 +262,30 @@ end
 function RebelHideoutScreenPlay:spawnSceneObjects()
 	
 	-- Turrets
-	spawnSceneObject("corellia", "object/installation/turret/turret_block_med.iff", -6559.3, 404, 5965.1, 0, -0.707107, 0, 0.707107, 0)
-	spawnSceneObject("corellia", "object/installation/turret/turret_block_med.iff", -6536.3, 404, 5942.1, 0, -0.707107, 0, 0.707107, 0)
-	spawnSceneObject("corellia", "object/installation/turret/turret_block_med.iff", -6510.0, 404, 5931.7, 0, -0.707107, 0, 0.707107, 0)
-	spawnSceneObject("corellia", "object/installation/turret/turret_block_med.iff", -6474.8, 404, 5938.6, 0, 0.707107, 0, 0.707107, 0)
-	spawnSceneObject("corellia", "object/installation/turret/turret_block_med.iff", -6443.1, 404, 5999.0, 0, 0.707107, 0, 0.707107, 0)
-	spawnSceneObject("corellia", "object/installation/turret/turret_block_med.iff", -6457.1, 404, 6031.5, 0, 0.707107, 0, 0.707107, 0)
+	local pTurret1 = spawnSceneObject("corellia", "object/installation/turret/turret_block_med.iff", -6559.3, 404, 5965.1, 0, -0.707107, 0, 0.707107, 0)
+	setTurretFaction(pTurret1)
+
+	local pTurret2 = spawnSceneObject("corellia", "object/installation/turret/turret_block_med.iff", -6536.3, 404, 5942.1, 0, -0.707107, 0, 0.707107, 0)
+	setTurretFaction(pTurret2)
+
+	local pTurret3 = spawnSceneObject("corellia", "object/installation/turret/turret_block_med.iff", -6510.0, 404, 5931.7, 0, -0.707107, 0, 0.707107, 0)
+	setTurretFaction(pTurret3)
+
+	local pTurret4 = spawnSceneObject("corellia", "object/installation/turret/turret_block_med.iff", -6474.8, 404, 5938.6, 0, 0.707107, 0, 0.707107, 0)
+	setTurretFaction(pTurret4)
+
+	local pTurret5 = spawnSceneObject("corellia", "object/installation/turret/turret_block_med.iff", -6443.1, 404, 5999.0, 0, 0.707107, 0, 0.707107, 0)
+	setTurretFaction(pTurret5)
+
+	local pTurret6 = spawnSceneObject("corellia", "object/installation/turret/turret_block_med.iff", -6457.1, 404, 6031.5, 0, 0.707107, 0, 0.707107, 0)
+	setTurretFaction(pTurret6)
 		
+end
+
+function setTurretFaction(pTurret)
+	if pTurret ~= nil then
+		local turret = LuaTangibleObject(pTurret)
+		turret:setFaction(FACTIONREBEL)
+		turret:setPvpStatusBitmask(1)
+	end
 end
