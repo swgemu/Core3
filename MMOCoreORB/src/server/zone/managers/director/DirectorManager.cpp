@@ -1261,6 +1261,8 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 		} else
 			zone->transferObject(object, -1, true);
 
+		object->createChildObjects();
+
 		object->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 	}
 
