@@ -148,6 +148,8 @@ public:
 
 	void activate();
 
+	void deactivate();
+
 	void abort();
 
 	void complete();
@@ -241,6 +243,8 @@ public:
 	void initializeTransientMembers();
 
 	void activate();
+
+	void deactivate();
 
 	void abort();
 
@@ -350,6 +354,8 @@ public:
 	void initializeTransientMembers();
 
 	void activate();
+
+	void deactivate();
 
 	void abort();
 

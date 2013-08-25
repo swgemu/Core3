@@ -22,7 +22,7 @@
  *	BountyMissionObjectiveStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__,RPC_GETARAKYDDROID__,RPC_SETARAKYDDROID__SCENEOBJECT_,RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_,RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_,RPC_UPDATEWAYPOINT__,RPC_CANCELALLTASKS__,RPC_GETTARGETZONENAME__,};
+enum {RPC_FINALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_ACTIVATE__,RPC_DEACTIVATE__,RPC_ABORT__,RPC_COMPLETE__,RPC_SPAWNTARGET__STRING_,RPC_NOTIFYOBSERVEREVENT__MISSIONOBSERVER_INT_OBSERVABLE_MANAGEDOBJECT_LONG_,RPC_UPDATEMISSIONSTATUS__INT_,RPC_GETOBJECTIVESTATUS__,RPC_GETARAKYDDROID__,RPC_SETARAKYDDROID__SCENEOBJECT_,RPC_PERFORMDROIDACTION__INT_SCENEOBJECT_CREATUREOBJECT_,RPC_PLAYERHASMISSIONOFCORRECTLEVEL__INT_,RPC_UPDATEWAYPOINT__,RPC_CANCELALLTASKS__,RPC_GETTARGETZONENAME__,};
 
 BountyMissionObjective::BountyMissionObjective(MissionObject* mission) : MissionObjective(DummyConstructorParameter::instance()) {
 	BountyMissionObjectiveImplementation* _implementation = new BountyMissionObjectiveImplementation(mission);
@@ -64,6 +64,19 @@ void BountyMissionObjective::activate() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->activate();
+}
+
+void BountyMissionObjective::deactivate() {
+	BountyMissionObjectiveImplementation* _implementation = static_cast<BountyMissionObjectiveImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DEACTIVATE__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->deactivate();
 }
 
 void BountyMissionObjective::abort() {
@@ -510,8 +523,8 @@ void BountyMissionObjectiveImplementation::finalize() {
 void BountyMissionObjectiveImplementation::initializeTransientMembers() {
 	// server/zone/objects/mission/BountyMissionObjective.idl():  		super.initializeTransientMembers();
 	MissionObjectiveImplementation::initializeTransientMembers();
-	// server/zone/objects/mission/BountyMissionObjective.idl():  		Logger.setLoggingName("MissionObject");
-	Logger::setLoggingName("MissionObject");
+	// server/zone/objects/mission/BountyMissionObjective.idl():  		Logger.setLoggingName("BountyMissionObjective");
+	Logger::setLoggingName("BountyMissionObjective");
 }
 
 int BountyMissionObjectiveImplementation::getObjectiveStatus() {
@@ -562,6 +575,11 @@ void BountyMissionObjectiveAdapter::invokeMethod(uint32 methid, DistributedMetho
 	case RPC_ACTIVATE__:
 		{
 			activate();
+		}
+		break;
+	case RPC_DEACTIVATE__:
+		{
+			deactivate();
 		}
 		break;
 	case RPC_ABORT__:
@@ -645,6 +663,10 @@ void BountyMissionObjectiveAdapter::initializeTransientMembers() {
 
 void BountyMissionObjectiveAdapter::activate() {
 	(static_cast<BountyMissionObjective*>(stub))->activate();
+}
+
+void BountyMissionObjectiveAdapter::deactivate() {
+	(static_cast<BountyMissionObjective*>(stub))->deactivate();
 }
 
 void BountyMissionObjectiveAdapter::abort() {

@@ -13,7 +13,7 @@
 
 Reference<Task*> BountyHunterDroid::performAction(int action, SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
 	if (droidObject == NULL || player == NULL || mission == NULL) {
-		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability");
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability"); // You do not understand how to use this item.
 		return NULL;
 	}
 
@@ -35,7 +35,7 @@ Reference<Task*> BountyHunterDroid::performAction(int action, SceneObject* droid
 		task = findTarget(droidObject, player, mission, true);
 		break;
 	default:
-		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability");
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability"); // You do not understand how to use this item.
 		break;
 	}
 
@@ -45,19 +45,19 @@ Reference<Task*> BountyHunterDroid::performAction(int action, SceneObject* droid
 Reference<FindTargetTask*> BountyHunterDroid::findTarget(SceneObject* droidObject, CreatureObject* player, MissionObject* mission, bool track) {
 	if (mission->getMissionLevel() < 2 ||
 			(mission->getMissionLevel() < 3 && track)) {
-		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability");
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability"); // You do not understand how to use this item.
 		return NULL;
 	}
 
 	ManagedReference<BountyMissionObjective*> objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
 
 	if (objective == NULL || objective->getObjectiveStatus() == BountyMissionObjective::INITSTATUS) {
-		player->sendSystemMessage("@mission/mission_generic:bounty_no_signature");
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_signature");// You must go speak with your informant before you can track your target.
 		return NULL;
 	}
 
 	if (player->isRidingCreature() || player->isRidingMount()) {
-		player->sendSystemMessage("@error_message:survey_on_mount");
+		player->sendSystemMessage("@error_message:survey_on_mount"); // You cannot perform that action while mounted on a creature or driving a vehicle.
 		return NULL;
 	}
 
@@ -80,32 +80,37 @@ Reference<FindTargetTask*> BountyHunterDroid::findTarget(SceneObject* droidObjec
 
 Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
 	if (mission->getMissionLevel() < 3) {
-		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability");
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability"); // You do not understand how to use this item.
 		return NULL;
 	}
 
 	if (mission->getMissionObjective() == NULL) {
-		player->sendSystemMessage("@mission/mission_generic:bounty_no_mission");
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_mission"); // You must accept a bounty mission before you can use a probe droid.
 		return NULL;
 	}
 
 	ManagedReference<BountyMissionObjective*> objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
 
+	if (objective == NULL || objective->getObjectiveStatus() == BountyMissionObjective::INITSTATUS) {
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_signature");// You must go speak with your informant before you can track your target.
+		return NULL;
+	}
+
 	if (objective->getArakydDroid() != NULL) {
-		player->sendSystemMessage("@mission/mission_generic:probe_droid_too_many");
+		player->sendSystemMessage("@mission/mission_generic:probe_droid_too_many"); // You cannot launch another probe droid.
 		return NULL;
 	}
 
 	Vector<ManagedReference<ActiveArea*> >* areas = player->getActiveAreas();
 	for (int i = 0; i < areas->size(); i++) {
 		if (areas->get(i)->isMunicipalZone()) {
-			player->sendSystemMessage("@mission/mission_generic:probe_droid_bad_location");
+			player->sendSystemMessage("@mission/mission_generic:probe_droid_bad_location"); // You must move to a different area to call down a probe droid from orbit.
 			return NULL;
 		}
 	}
 
 	if (player->isRidingCreature() || player->isRidingMount()) {
-		player->sendSystemMessage("@error_message:survey_on_mount");
+		player->sendSystemMessage("@error_message:survey_on_mount"); // You cannot perform that action while mounted on a creature or driving a vehicle.
 		return NULL;
 	}
 
@@ -132,19 +137,19 @@ Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droid
 
 Reference<FindTargetTask*> BountyHunterDroid::transmitBiologicalSignature(SceneObject* droidObject, CreatureObject* player, MissionObject* mission) {
 	if (mission->getMissionLevel() < 3) {
-		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability");
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability"); // You do not understand how to use this item.
 		return NULL;
 	}
 
 	ManagedReference<BountyMissionObjective*> objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
 
 	if (objective == NULL || objective->getObjectiveStatus() == BountyMissionObjective::INITSTATUS) {
-		player->sendSystemMessage("@mission/mission_generic:bounty_no_signature");
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_signature"); // You must go speak with your informant before you can track your target.
 		return NULL;
 	}
 
 	if (player->isRidingCreature() || player->isRidingMount()) {
-		player->sendSystemMessage("@error_message:survey_on_mount");
+		player->sendSystemMessage("@error_message:survey_on_mount"); // You cannot perform that action while mounted on a creature or driving a vehicle.
 		return NULL;
 	}
 

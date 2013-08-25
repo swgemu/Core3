@@ -106,6 +106,7 @@ class BountyMissionObjective extends MissionObjective {
 	}
 	
 	public native void activate();
+	public native void deactivate();
 	public native void abort();
 	public native void complete();
 	
