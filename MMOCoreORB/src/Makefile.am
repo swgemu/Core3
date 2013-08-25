@@ -84,6 +84,7 @@ bin_PROGRAMS = core3 #odb3
 core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.cpp \
 			  	server/zone/managers/director/tests/BasicScreenPlayTest.cpp \
 			  	server/zone/managers/creature/tests/LuaMobileTest.cpp \
+			  	server/zone/objects/creature/ai/bt/tests/BehaviorTest.cpp \
 			  	server/zone/objects/area/areashapes/tests/RectangularAreaShapeTest.cpp
 
 core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp \
@@ -585,6 +586,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sui/LuaSuiBox.cpp \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
 		server/zone/objects/creature/variables/SkillList.cpp \
+		server/zone/objects/creature/ai/bt/BehaviorTree.cpp \
+		server/zone/objects/creature/ai/bt/SequenceBehavior.cpp \		
 		server/zone/objects/creature/ai/AiActorImplementation.cpp \
 		server/zone/objects/creature/aigroup/AiGroupImplementation.cpp \
 		server/zone/objects/creature/aigroup/HerdGroupImplementation.cpp \
