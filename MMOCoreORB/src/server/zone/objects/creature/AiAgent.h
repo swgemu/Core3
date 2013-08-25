@@ -476,6 +476,8 @@ public:
 
 	bool isEventMob();
 
+	String getPvPFaction();
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -780,6 +782,8 @@ public:
 
 	bool isEventMob();
 
+	String getPvPFaction();
+
 	WeakReference<AiAgent*> _this;
 
 	operator const AiAgent*();
@@ -994,6 +998,8 @@ public:
 	void setShowNextPosition(bool val);
 
 	bool isEventMob();
+
+	String getPvPFaction();
 
 };
 

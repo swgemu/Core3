@@ -726,4 +726,8 @@ class AiAgent extends CreatureObject {
 	}
 
 	public native boolean isEventMob();
+
+	public string getPvPFaction(){
+		return npcTemplate.get().getPvpFaction();
+	}
 }
