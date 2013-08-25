@@ -137,7 +137,7 @@ function TatooineStaticSpawnsNorthScreenPlay:spawnMobiles()
 	--Wreckage (-1480,988)
 	spawnMobile("tatooine", "scavenger", 300, -1493, 26.5, 990.2, 150, 0)
 
-	--3 small Buildings (170,1930)
+	--3 small Buildings (-170,1930)
 	spawnMobile("tatooine", "tusken_commoner", 300, -169.3, 152.2, 1931.0, -122, 0)
 	spawnMobile("tatooine", "tusken_commoner", 300, -157.1, 155.8, 1930.2, -122, 0)
 
