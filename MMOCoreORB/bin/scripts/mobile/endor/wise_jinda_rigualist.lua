@@ -26,16 +26,25 @@ wise_jinda_ritualist = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {
-			"object/mobile/jinda_male.iff",
+	templates = {"object/mobile/jinda_male.iff",
 			"object/mobile/jinda_female.iff",
 			"object/mobile/jinda_male_01.iff",
 			"object/mobile/jinda_female_01.iff"},
-	lootGroups = {},
-	weapons = {},
+
+	lootGroups = {
+		 {
+	        groups = {
+				{group = "ewok", chance = 9100000},
+				{group = "armor_attachments", chance = 450000},
+				{group = "clothing_attachments", chance = 450000},
+			},
+			lootChance = 2500000
+		},
+	},
+	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,brawlermaster)
+
 }
 
 CreatureTemplates:addCreatureTemplate(wise_jinda_ritualist, "wise_jinda_ritualist")
