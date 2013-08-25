@@ -86,7 +86,7 @@ class LairObserver extends Observer implements Logger {
 	public void setLairTemplate(LairTemplate tmpl) {
 		lairTemplate = tmpl;
 	}
-	
+
 	public void setDifficulty(int diff) {
 		difficulty = diff;
 	}
@@ -103,5 +103,9 @@ class LairObserver extends Observer implements Logger {
 				alive++;
 		}
 		return alive;
+	}
+
+	public int getLairType() {
+		return lairTemplate.getLairType();
 	}
 }

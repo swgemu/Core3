@@ -14,7 +14,7 @@
  *	LairObserverStub
  */
 
-enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_BOOL_,RPC_HEALLAIR__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_CHECKFORHEAL__TANGIBLEOBJECT_TANGIBLEOBJECT_BOOL_,RPC_DOAGGRO__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_SETDIFFICULTY__INT_,RPC_ISLAIROBSERVER__,RPC_GETLIVINGCREATURECOUNT__};
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_BOOL_,RPC_HEALLAIR__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_CHECKFORHEAL__TANGIBLEOBJECT_TANGIBLEOBJECT_BOOL_,RPC_DOAGGRO__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_SETDIFFICULTY__INT_,RPC_ISLAIROBSERVER__,RPC_GETLIVINGCREATURECOUNT__,RPC_GETLAIRTYPE__};
 
 LairObserver::LairObserver() : Observer(DummyConstructorParameter::instance()) {
 	LairObserverImplementation* _implementation = new LairObserverImplementation();
@@ -173,6 +173,19 @@ int LairObserver::getLivingCreatureCount() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getLivingCreatureCount();
+}
+
+int LairObserver::getLairType() {
+	LairObserverImplementation* _implementation = static_cast<LairObserverImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETLAIRTYPE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getLairType();
 }
 
 DistributedObjectServant* LairObserver::_getImplementation() {
@@ -390,6 +403,11 @@ i ++) {
 	return alive;
 }
 
+int LairObserverImplementation::getLairType() {
+	// server/zone/managers/creature/LairObserver.idl():  		return lairTemplate.getLairType();
+	return lairTemplate->getLairType();
+}
+
 /*
  *	LairObserverAdapter
  */
@@ -450,6 +468,11 @@ void LairObserverAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertSignedInt(getLivingCreatureCount());
 		}
 		break;
+	case RPC_GETLAIRTYPE__:
+		{
+			resp->insertSignedInt(getLairType());
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -489,6 +512,10 @@ bool LairObserverAdapter::isLairObserver() {
 
 int LairObserverAdapter::getLivingCreatureCount() {
 	return (static_cast<LairObserver*>(stub))->getLivingCreatureCount();
+}
+
+int LairObserverAdapter::getLairType() {
+	return (static_cast<LairObserver*>(stub))->getLairType();
 }
 
 /*
