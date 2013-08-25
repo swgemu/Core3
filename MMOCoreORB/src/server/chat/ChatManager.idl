@@ -104,6 +104,7 @@ class ChatManager extends ManagedService implements Logger {
 	public native void finalize();
 	
 	public native void initiateRooms();
+	public native void initiatePlanetRooms();
 	public native void destroyRooms();
 	
 	public native ChatRoom createRoom(final string roomName, ChatRoom parent = null);

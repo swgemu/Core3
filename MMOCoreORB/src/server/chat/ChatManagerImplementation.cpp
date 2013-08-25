@@ -95,6 +95,10 @@ void ChatManagerImplementation::initiateRooms() {
 	ChatRoom* generalRoom = createRoom("general", core3Room);
 	core3Room->addSubRoom(generalRoom);
 
+
+}
+
+void ChatManagerImplementation::initiatePlanetRooms() {
 	// Planet Chat
 	for (int i = 0; i < server->getZoneCount(); ++i) {
 		ManagedReference<Zone*> zone = server->getZone(i);
@@ -102,22 +106,14 @@ void ChatManagerImplementation::initiateRooms() {
 		if (zone == NULL)
 			continue;
 
-		try {
-			zone->wlock();
+		Locker locker(zone);
 
-			ChatRoom* planetRoom = createRoom(zone->getZoneName(), core3Room);
-			core3Room->addSubRoom(planetRoom);
+		ChatRoom* planetRoom = createRoom(zone->getZoneName(), core3Room);
+		core3Room->addSubRoom(planetRoom);
 
-			ChatRoom* planetaryChat = createRoom("Planet", planetRoom);
-			planetRoom->addSubRoom(planetaryChat);
-			zone->setChatRoom( planetaryChat );
-
-			zone->unlock();
-		} catch (...) {
-			zone->unlock();
-
-			throw;
-		}
+		ChatRoom* planetaryChat = createRoom("Planet", planetRoom);
+		planetRoom->addSubRoom(planetaryChat);
+		zone->setChatRoom( planetaryChat );
 
 	}
 }
