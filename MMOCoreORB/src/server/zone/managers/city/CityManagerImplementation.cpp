@@ -1895,12 +1895,15 @@ void CityManagerImplementation::sendMaintenanceReport(CityRegion* city,
 					Reference<SharedStructureObjectTemplate*> serverTemplate =
 							cast<SharedStructureObjectTemplate*> (structure->getObjectTemplate());
 
-
 					int decCost = maintenanceDiscount * serverTemplate->getCityMaintenanceAtRank(city->getCityRank()-1);
 					totalcost += decCost;
 					maintList->addMenuItem(sceno->getDisplayedName() + " : " + String::valueOf(decCost));
 			}
 
+		} else if ( sceno != NULL) {
+			int decCost = maintenanceDiscount * 1500;
+			totalcost += decCost;
+			maintList->addMenuItem(sceno->getDisplayedName() + " : " + String::valueOf(decCost));
 		}
 	}
 
