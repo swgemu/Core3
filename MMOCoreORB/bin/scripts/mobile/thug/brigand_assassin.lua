@@ -21,16 +21,29 @@ brigand_assassin = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
-	lootGroups = {},
-	weapons = {"pirate_weapons_heavy"},
+	templates = {
+		"object/mobile/dressed_criminal_thug_human_male_01.iff",
+		"object/mobile/dressed_criminal_thug_human_male_02.iff",
+		"object/mobile/dressed_criminal_thug_human_female_01.iff",
+		"object/mobile/dressed_criminal_thug_human_female_02.iff"},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 6000000},
+				{group = "tailor_components", chance = 2000000},
+				{group = "loot_kit_parts", chance = 2000000}
+			},
+			lootChance = 2400000
+		}						
+	},
+	weapons = {"pirate_weapons_medium"},
 	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	attacks = merge(marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(brigand_assassin, "brigand_assassin")

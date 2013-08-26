@@ -604,15 +604,16 @@ palpatine_missions =
 darth_vader_missions =
 {
 	{ 
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "rebel_general", planetName = "naboo", npcName = "a Rebel General" },
+			{ npcTemplate = "theme_park_imperial_haro_whitesun", planetName = "naboo", npcName = "Haro Whitesun" },
 		}, 
 		secondarySpawns = {
 		}, 
 		itemSpawns = 
 		{ 
+			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "Information" }
 		},	
 		rewards = 
 		{ 
@@ -639,15 +640,16 @@ darth_vader_missions =
 	},
 
 	{ 
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "rebel_trooper", planetName = "naboo", npcName = "Rebellion's Courier" }
+			{ npcTemplate = "theme_park_imperial_mellag_davin_lars", planetName = "naboo", npcName = "Mellag Davin-Lars" }
 		}, 
 		secondarySpawns = {	
 		}, 
 		itemSpawns = 
 		{ 
+			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "Information" }
 		},	
 		rewards = 
 		{ 
@@ -656,17 +658,17 @@ darth_vader_missions =
 	},
 
 	{ 
-		missionType = "deliver", 
+		missionType = "retrieve", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "theme_park_imperial_escort", planetName = "naboo", npcName = "an Information Broker" } 
+			{ npcTemplate = "theme_park_imperial_mattias", planetName = "naboo", npcName = "Mattias Ve'Shra" } 
 		}, 
 		secondarySpawns = 
 		{
 		}, 
 		itemSpawns = 
 		{ 
-			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "a Datadisk" }
+			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "Information" }
 		}, 
 		rewards = 
 		{ 
@@ -678,11 +680,12 @@ darth_vader_missions =
 		missionType = "assassinate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "thug", planetName = "naboo", npcName = "an Information Broker" }
+			{ npcTemplate = "theme_park_imperial_mattias_aggro", planetName = "naboo", npcName = "Mattias Ve'Shra" }
 		}, 
 		secondarySpawns = {	
-			{ npcTemplate = "assassin", planetName = "naboo", npcName = "an Assassin" },
-			{ npcTemplate = "mercenary", planetName = "naboo", npcName = "a Mercenary" }
+			{ npcTemplate = "brigand_assassin", planetName = "naboo", npcName = "an Assassin" },
+			{ npcTemplate = "brigand_assassin", planetName = "naboo", npcName = "an Assassin" },
+			{ npcTemplate = "brigand_assassin", planetName = "naboo", npcName = "an Assassin" },
 		}, 
 		itemSpawns = 
 		{ 
@@ -694,15 +697,16 @@ darth_vader_missions =
 	},
 
 	{ 
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "thug", planetName = "naboo", npcName = "Kaydeer" }
+			{ npcTemplate = "theme_park_imperial_kayderr", planetName = "naboo", npcName = "Kayderr" }
 		}, 
 		secondarySpawns = {
 		}, 
 		itemSpawns = 
 		{ 
+			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "Information" }
 		},	
 		rewards = 
 		{ 
