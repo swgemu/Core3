@@ -1,5 +1,5 @@
 dantooine_thune_herd_neutral_none = Lair:new {
-	mobiles = {{"hostile_thune_mother", 0},{"thune_herd_leader", 0}},
+	mobiles = {{"hostile_thune_mother", -18},{"thune_herd_leader", 0}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_rocks_large_fog_green.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_rocks_large_fog_green.iff"},

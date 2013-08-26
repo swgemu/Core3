@@ -1,5 +1,5 @@
 dantooine_picket_protector_lair_neutral_medium = Lair:new {
-	mobiles = {{"fierce_piket_protector", 0},{"enraged_defender", 0}},
+	mobiles = {{"fierce_piket_protector", -4},{"enraged_defender", 0}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_rocks_large.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_rocks_large.iff"},
