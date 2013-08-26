@@ -111,7 +111,7 @@ object_weapon_ranged_pistol_pistol_fwg5_quest = object_weapon_ranged_pistol_shar
 	idealRange = 15,
 	idealAccuracy = 15,
 
-	maxRange = 45,
+	maxRange = 64,
 	maxRangeAccuracy = 5,
 
 	minDamage = 14,
