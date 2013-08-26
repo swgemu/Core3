@@ -108,6 +108,7 @@
 #include "server/zone/objects/tangible/components/PlaceableLootContainerComponent.h"
 #include "server/zone/objects/tangible/tool/recycle/RecycleToolContainerComponent.h"
 #include "server/zone/objects/structure/components/DecorationDataComponent.h"
+#include "server/zone/objects/tangible/components/CityDecorationMenuComponent.h"
 
 ComponentManager::ComponentManager() {
 	components.put("ContainerComponent", new ContainerComponent());
@@ -240,6 +241,7 @@ ComponentManager::ComponentManager() {
 	components.put("TurretControlMenuComponent", new TurretControlMenuComponent());
 	components.put("GCWBaseContainerComponent", new GCWBaseContainerComponent());
 	components.put("PlaceDecorationComponent", new PlaceDecorationComponent());
+	components.put("CityDecorationMenuComponent", new CityDecorationMenuComponent());
 
 	// SE Goggles.
 	components.put("GogglesObjectMenuComponent", new GogglesObjectMenuComponent());
@@ -247,4 +249,5 @@ ComponentManager::ComponentManager() {
 
 	components.put("DecorationDataComponent", new DecorationDataComponent() );
 	dataObjectFactory.registerObject<DecorationDataComponent>("DecorationDataComponent");
+
 }
