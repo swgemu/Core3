@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_a845c3b4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/AiAgentImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1209,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-08-26T00:32:33Z",
+      "side": 1,
+      "message": "why did you revert this?",
+      "revId": "04885f1e295ac577b88344eaedd049d570333491",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
