@@ -1,5 +1,5 @@
 corellia_gurrcat_hunt_neutral_none = Lair:new {
-	mobiles = {{"gurrcat", 0},{"swamp_gurrcat", 0}},
+	mobiles = {{"gurrcat", -2},{"swamp_gurrcat", 0}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_rock_shelter_large.iff"},
