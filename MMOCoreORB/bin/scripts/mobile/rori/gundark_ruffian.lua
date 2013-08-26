@@ -26,8 +26,7 @@ gundark_ruffian = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-		"object/mobile/dressed_ruffian_zabrak_female_01.iff",
-		"object/mobile/dressed_ruffian_zabrak_male_01.iff"},
+		"object/mobile/dressed_ruffian_zabrak_female_01.iff"},
 	lootGroups = {
 	    {
 			groups = {
