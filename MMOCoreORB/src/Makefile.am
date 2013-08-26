@@ -587,7 +587,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
 		server/zone/objects/creature/variables/SkillList.cpp \
 		server/zone/objects/creature/ai/bt/BehaviorTree.cpp \
-		server/zone/objects/creature/ai/bt/SequenceBehavior.cpp \		
+		server/zone/objects/creature/ai/bt/SequenceBehavior.cpp \
 		server/zone/objects/creature/ai/AiActorImplementation.cpp \
 		server/zone/objects/creature/aigroup/AiGroupImplementation.cpp \
 		server/zone/objects/creature/aigroup/HerdGroupImplementation.cpp \
@@ -727,6 +727,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/templates/tangible/PlayerCreatureTemplate.cpp \
 		server/zone/templates/tangible/SharedWeaponObjectTemplate.cpp \
 		server/zone/templates/customization/AssetCustomizationManagerTemplate.cpp \
+		server/zone/objects/tangible/components/CityDecorationMenuComponent.cpp \
 		main.cpp
 		
 
