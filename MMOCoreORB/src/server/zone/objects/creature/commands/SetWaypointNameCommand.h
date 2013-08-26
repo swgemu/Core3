@@ -77,7 +77,7 @@ public:
 		if (object == NULL || !object->isWaypointObject())
 			return INVALIDTARGET;
 
-		if (arguments.isEmpty() || arguments.length() > 20)
+		if (arguments.isEmpty() || arguments.length() > 150)
 			return GENERALERROR;
 
 		WaypointObject* waypoint = cast<WaypointObject*>( object.get());
