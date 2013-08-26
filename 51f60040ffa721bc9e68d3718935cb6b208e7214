@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_4883cfcc",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/static_spawns/talus_static_spawns_north.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-08-26T01:28:27Z",
+      "side": 1,
+      "message": "Missed some commas.",
+      "revId": "51f60040ffa721bc9e68d3718935cb6b208e7214",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
