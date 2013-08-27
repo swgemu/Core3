@@ -48,6 +48,9 @@ public:
 
 	int notifyPositionUpdate(CreatureObject* object);
 
+	void addTerrainModification(float x, float y, const String& terrainModificationFilename, uint64 objectid);
+	void removeTerrainModification(uint64 objectid);
+
 	ProceduralTerrainAppearance* getProceduralTerrainAppearance() {
 		return &terrainData;
 	}

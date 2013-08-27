@@ -87,6 +87,11 @@ public:
 	bool isEnabled() {
 		return informationHeader.isEnabled();
 	}
+
+	void translateBoundary(float x, float y) {
+		centerX += x;
+		centerY += y;
+	}
 };
 
 
