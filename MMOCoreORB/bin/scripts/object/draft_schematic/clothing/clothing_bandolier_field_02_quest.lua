@@ -51,7 +51,7 @@ object_draft_schematic_clothing_clothing_bandolier_field_02_quest = object_draft
    size = 1, 
 
    xpType = "crafting_clothing_general", 
-   xp = 110, 
+   xp = 120, 
 
    assemblySkill = "clothing_assembly", 
    experimentingSkill = "clothing_experimentation", 
@@ -61,24 +61,24 @@ object_draft_schematic_clothing_clothing_bandolier_field_02_quest = object_draft
    customizationStringNames = {},
    customizationDefaults = {},
 
-   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
-   ingredientTitleNames = {"utility_pocket", "load_bearing_harness", "steel_interstructure", "steel_crossframe", "reinforcement"},
-   ingredientSlotType = {1, 0, 0, 0, 1},
-   resourceTypes = {"object/tangible/component/clothing/shared_cargo_pocket.iff", "fiberplast", "metal", "metal", "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff"},
-   resourceQuantities = {1, 20, 15, 10, 1},
-   contribution = {100, 100, 100, 100, 100},
+   ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
+   ingredientTitleNames = {"utility_pocket", "load_bearing_harness", "steel_interstructure", "steel_crossframe", "reinforcement", "tool_mount", "tool_set", "clasps"},
+   ingredientSlotType = {2, 0, 0, 0, 2, 0, 2, 1},
+   resourceTypes = {"object/tangible/component/clothing/shared_cargo_pocket.iff", "fiberplast", "metal", "metal", "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff", "metal_nonferrous", "object/tangible/crafting/station/shared_droid_repair.iff", "object/tangible/component/clothing/shared_clasp_heavy_duty.iff"},
+   resourceQuantities = {1, 20, 15, 10, 1, 15, 1, 2},
+   contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
 
    targetTemplate = "object/tangible/wearables/bandolier/bandolier_s02_quest.iff",
 				
 	skillMods = {
 	    {"droid_assembly", 5},
-	    {"droid_experimentation", 5}
+	    {"droid_customization", 5},
+	    {"droid_experimentation", 3}
 	},
 
    additionalTemplates = {
              }
 
 }
-
 ObjectTemplates:addTemplate(object_draft_schematic_clothing_clothing_bandolier_field_02_quest, "object/draft_schematic/clothing/clothing_bandolier_field_02_quest.iff")

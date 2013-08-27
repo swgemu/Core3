@@ -21,7 +21,7 @@ sennex_slaver = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -41,16 +41,16 @@ sennex_slaver = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 7000000},
+				{group = "junk", chance = 6500000},
 				{group = "tailor_components", chance = 1500000},
-				{group = "loot_kits", chance = 1500000}
+				{group = "loot_kits", chance = 2000000}
 			},
-			lootChance = 2200000
+			lootChance = 2400000
 		}			
 	},
 	weapons = {"pirate_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(marksmannovice,brawlernovice)
+	attacks = merge(marksmanmaster,brawlermaster,bountyhuntermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(sennex_slaver, "sennex_slaver")

@@ -180,6 +180,10 @@ class LootManagerImplementation : public ManagedServiceImplementation, public Lo
 
 	Reference<LootGroupMap* > lootGroupMap;
 
+	float yellowChance;
+
+	float yellowModifier;
+
 	float exceptionalChance;
 
 	float exceptionalModifier;
@@ -218,7 +222,7 @@ private:
 
 	void setSockets(TangibleObject* object, CraftingValues* craftingValues);
 
-	void addDots(TangibleObject* object, LootItemTemplate* templateObject, int level);
+	void addDots(TangibleObject* object, LootItemTemplate* templateObject, int level, float excMod);
 
 	void addConditionDamage(TangibleObject* loot, CraftingValues* craftingValues);
 

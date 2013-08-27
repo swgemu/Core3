@@ -77,6 +77,14 @@ public:
 
 		if (terminalTemplatePath != ""){
 
+			if(city->getCityTreasury() < 1000){
+				StringIdChatParameter msg;
+				msg.setStringId("@city/city:action_no_money");
+				msg.setDI(1000);
+				player->sendSystemMessage(msg); //"The city treasury must have %DI credits in order to perform that action.");
+				return;
+			}
+
 			ManagedReference<SceneObject*> sceneObject = ObjectManager::instance()->createObject(terminalTemplatePath.hashCode(), 1, "sceneobjects");
 
 			sceneObject->initializePosition(player->getWorldPositionX(), player->getWorldPositionZ(),player->getWorldPositionY());

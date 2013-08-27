@@ -12,6 +12,7 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/minigames/ForageManager.h"
+#include "server/zone/managers/creature/LairObserver.h"
 
 void LairMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 
@@ -22,7 +23,17 @@ void LairMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectM
 	if(tano == NULL)
 		return;
 
-	if(player->hasSkill("outdoors_scout_novice") && player->getDistanceTo(sceneObject) < 8) {
+	ManagedReference<LairObserver*> lairObserver = NULL;
+	SortedVector<ManagedReference<Observer*> >* observers = tano->getObservers(ObserverEventType::OBJECTDESTRUCTION);
+
+	for (int i = 0; i < observers->size(); i++) {
+		lairObserver = cast<LairObserver*>(observers->get(i).get());
+
+		if (lairObserver != NULL)
+			break;
+	}
+
+	if(player->hasSkill("outdoors_scout_novice") && player->getDistanceTo(sceneObject) < 8 && lairObserver->getLairType() != LairTemplate::NPC) {
 		menuResponse->addRadialMenuItem(50, 3, "@lair_n:search_lair"); //Search Lair
 	}
 

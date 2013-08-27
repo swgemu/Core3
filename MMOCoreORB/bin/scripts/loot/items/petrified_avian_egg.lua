@@ -3,7 +3,7 @@
 petrified_avian_egg = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "",
+	customObjectName = "Petrified Avian Egg",
 	directObjectTemplate = "object/tangible/loot/misc/petrified_avian_egg.iff",
 	craftingValues = {
 	},

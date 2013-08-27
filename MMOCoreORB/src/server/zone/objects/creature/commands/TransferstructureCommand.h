@@ -157,7 +157,9 @@ public:
 	// structure not locked
 	// bForceTransfer = whether or not to force the transfer.  meaning do the trasnfer even if the owner is offline or out of range
 	static int doTransferStructure(CreatureObject* creature, CreatureObject* targetCreature, StructureObject* structure, bool bForceTransfer = false){
+		Locker _cclock(creature);
 
+		Locker _crlock(targetCreature, creature);
 
 
 		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();

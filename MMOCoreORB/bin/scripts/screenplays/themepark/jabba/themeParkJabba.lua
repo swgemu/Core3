@@ -55,7 +55,8 @@ reelo_missions =
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "loot", lootGroup = "jabba_theme_park_reelo" } 
+			{ rewardType = "loot", lootGroup = "jabba_theme_park_reelo" },
+			{ rewardType = "faction", faction = "jabba", amount = 25 }
 		}
 	}
 }
@@ -66,13 +67,13 @@ ree_yees_missions =
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Sirad's Thug" } 
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Raf Daris" } 
 		}, 
 		secondarySpawns = 
 		{ 
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Sirad's Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Sirad's Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Sirad's Thug" }, 
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian's Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian's Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian's Thug" }, 
 		}, 
 		itemSpawns = {}, 
 		rewards = 
@@ -88,9 +89,9 @@ ree_yees_missions =
 		}, 
 		secondarySpawns = 
 		{ 
-			{ npcTemplate = "jawa_henchman", planetName = "tatooine", npcName = "Jawa" },
-			{ npcTemplate = "jawa_henchman", planetName = "tatooine", npcName = "Jawa" },
-			{ npcTemplate = "jawa_henchman", planetName = "tatooine", npcName = "Jawa" }, 
+			{ npcTemplate = "jawa_henchman", planetName = "tatooine", npcName = "a Jawa" },
+			{ npcTemplate = "jawa_henchman", planetName = "tatooine", npcName = "a Jawa" },
+			{ npcTemplate = "jawa_henchman", planetName = "tatooine", npcName = "a Jawa" }, 
 		}, 
 		itemSpawns = 
 		{
@@ -119,7 +120,9 @@ ree_yees_missions =
 		}, 
 		rewards = 
 		{ 
-			{ rewardType = "loot", lootGroup = "jabba_theme_park_ree_yees" } 
+			{ rewardType = "loot", lootGroup = "jabba_theme_park_ree_yees" },
+			{ rewardType = "permission", permissionGroup = "jabba_palace1" },
+			{ rewardType = "faction", faction = "jabba", amount = 50 }
 		}
 	}
 }
@@ -181,6 +184,8 @@ ephant_mon_missions =
 		rewards = 
 		{ 
 			{ rewardType = "loot", lootGroup = "jabba_theme_park_ephant_mon"},
+			{ rewardType = "permission", permissionGroup = "jabba_palace2" },
+			{ rewardType = "faction", faction = "jabba", amount = 75 }
 		}
 	}
 }
@@ -188,7 +193,7 @@ ephant_mon_missions =
 porcellus_missions =
 {
     {
-		missionType = "assassinate",
+		missionType = "confiscate",
 		silentTarget = "yes",
 		primarySpawns = 
 		{ 
@@ -196,12 +201,12 @@ porcellus_missions =
 		}, 
 		secondarySpawns = 
 		{ 
-			{ npcTemplate = "theme_park_jabba_kaadu", planetName = "tatooine", npcName = "Kaadu" },
-			{ npcTemplate = "theme_park_jabba_kaadu", planetName = "tatooine", npcName = "Kaadu" },
-		    { npcTemplate = "theme_park_jabba_kaadu", planetName = "tatooine", npcName = "Kaadu" },
-			{ npcTemplate = "theme_park_jabba_kaadu", planetName = "tatooine", npcName = "Kaadu" }, 
+			{ npcTemplate = "mercenary_aggro", planetName = "tatooine", npcName = "a Mercenary" },
+			{ npcTemplate = "mercenary_aggro", planetName = "tatooine", npcName = "a Mercenary" },
 		}, 
-		itemSpawns = {}, 
+		itemSpawns = {
+		          { itemTemplate = "object/tangible/loot/misc/petrified_avian_egg.iff", itemName = "Petrified Avian Egg" }
+		}, 
 		rewards = 
 		{ 
 			{ rewardType = "credits", amount = 650 } 
@@ -223,25 +228,26 @@ porcellus_missions =
 		}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", amount = 650 } 
+			{ rewardType = "credits", amount = 750 } 
 		}
 	},
 	    {
-		missionType = "assassinate",
+		missionType = "confiscate",
 		silentTarget = "yes",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "dewback", planetName = "tatooine", npcName = "Dewback" } 
+			{ npcTemplate = "theme_park_jabba_meatbeast", planetName = "tatooine", npcName = "Meatbeast" } 
 		}, 
 		secondarySpawns = 
-		{ 
-			{ npcTemplate = "dewback", planetName = "tatooine", npcName = "Dewback" },
-			{ npcTemplate = "dewback", planetName = "tatooine", npcName = "Dewback" },
+		{}, 
+		itemSpawns = {
+			{ itemTemplate = "object/tangible/food/meat_object.iff", itemName = "Chicken Leg" }
 		}, 
-		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "loot", lootGroup = "jabba_theme_park_porcellus"} 
+			{ rewardType = "loot", lootGroup = "jabba_theme_park_porcellus"},
+			{ rewardType = "permission", permissionGroup = "jabba_palace3" },
+			{ rewardType = "faction", faction = "jabba", amount = 100 }
 		}
 	}
 }
@@ -256,7 +262,7 @@ barada_missions =
 		}, 
 		secondarySpawns = 
 		{ 
-			{ npcTemplate = "weak_mercenary", planetName = "lok", npcName = "Weak Mercenary" },
+			{ npcTemplate = "weak_mercenary", planetName = "tatooine", npcName = "Weak Mercenary" },
 			
 		}, 
 		itemSpawns = {
@@ -299,7 +305,9 @@ barada_missions =
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "loot", lootGroup = "jabba_theme_park_barada"} 
+			{ rewardType = "loot", lootGroup = "jabba_theme_park_barada"},
+			{ rewardType = "permission", permissionGroup = "jabba_palace4" },
+			{ rewardType = "faction", faction = "jabba", amount = 125 }
 		}
 	}
 }
@@ -312,13 +320,7 @@ bib_missions =
 		{ 
 			{ npcTemplate = "romo_vax", planetName = "tatooine", npcName = "Romo Vax" } 
 		}, 
-		secondarySpawns =
-     	{
-		    { npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
-		    { npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
-		}, 
+		secondarySpawns = {}, 
 		itemSpawns = {}, 
 		rewards = 
 		{ 
@@ -333,8 +335,8 @@ bib_missions =
 		}, 
 		secondarySpawns = 
 		{ 
-			{ npcTemplate = "alkhara_bandit", planetName = "tatooine", npcName = "A Thug" },
-			{ npcTemplate = "alkhara_bandit", planetName = "tatooine", npcName = "A Thug" },
+			{ npcTemplate = "thug", planetName = "tatooine", npcName = "A Thug" },
+			{ npcTemplate = "thug", planetName = "tatooine", npcName = "A Thug" },
 		}, 
 		itemSpawns = {}, 
 		rewards = 
@@ -374,7 +376,8 @@ bib_missions =
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "loot", lootGroup = "jabba_theme_park_bib"} 
+			{ rewardType = "loot", lootGroup = "jabba_theme_park_bib"},
+			{ rewardType = "faction", faction = "jabba", amount = 150 }
 		}
 	}
 }	
@@ -389,8 +392,8 @@ g5po_missions =
 		}, 
 		secondarySpawns = 
 		{
-		    { npcTemplate = "alkhara_bandit", planetName = "tatooine", npcName = "A Thug" },
-			{ npcTemplate = "alkhara_bandit", planetName = "tatooine", npcName = "A Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
 		}, 
 		itemSpawns = {}, 
 		rewards = 
@@ -402,13 +405,13 @@ g5po_missions =
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Interrogator" } 
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Interrogator" } 
 		}, 
 		secondarySpawns = 
 		{ 
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
 		}, 
 		itemSpawns = {}, 
 		rewards = 
@@ -417,38 +420,40 @@ g5po_missions =
 		}
 	},
 		{
-		missionType = "assassinate",
+		missionType = "confiscate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Courier" } 
+			{ npcTemplate = "valarian_courier", planetName = "tatooine", npcName = "Valarian Courier" } 
 		}, 
 		secondarySpawns = 
 		{ 
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
 		}, 
-		itemSpawns = {}, 
+		itemSpawns = {
+			{ itemTemplate = "object/tangible/loot/misc/ledger_s01.iff", itemName = "Ledger" }
+		}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", amount = 1650 } 
+			{ rewardType = "credits", amount = 1550 } 
 		}
 	},
 	   {
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Thug Leader" } 
+			{ npcTemplate = "valarian_assassin", planetName = "tatooine", npcName = "Valarian Strike Team Leader" } 
 		}, 
 		secondarySpawns = 
 		{ 
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
 		}, 
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", amount = 1750 } 
+			{ rewardType = "credits", amount = 1650 } 
 		}
 	},
 		{ 
@@ -464,24 +469,24 @@ g5po_missions =
 		}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", amount = 1850 }
+			{ rewardType = "credits", amount = 1750 }
 		}
 	},
 		{
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Punk" } 
+			{ npcTemplate = "valarian_assassin", planetName = "tatooine", npcName = "Punk" } 
 		}, 
 		secondarySpawns = 
 		{ 
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
 		}, 
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", amount = 1950 } 
+			{ rewardType = "credits", amount = 1850 } 
 		}
 	},
 		{ 
@@ -497,7 +502,7 @@ g5po_missions =
 		}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", amount = 2050 }
+			{ rewardType = "credits", amount = 1950 }
 		}
 	},
 			{ 
@@ -519,7 +524,10 @@ g5po_missions =
 		rewards = 
 		{ 
 			{ rewardType = "loot", lootGroup = "jabba_theme_park_g5p0"},
-			{ rewardType = "badge", badge = THEME_PARK_JABBA_BADGE }
+			{ rewardType = "badge", badge = THEME_PARK_JABBA_BADGE },
+			{ rewardType = "faction", faction = "jabba", amount = 200 },
+			{ rewardType = "permission", permissionGroup = "jabba_palace5" },
+			{ rewardType = "credits", amount = 2000 }
 		} 
 	},
 }
@@ -577,11 +585,58 @@ npcMapJabba =
 	}
 }
 
+permissionMapJabba = {
+	{
+		planetName = "tatooine", 
+		regionName = "jabba_palace",		
+		permissions = 
+		{ 
+			{ 
+				cells = { 1177467, 1177468, 1177469, 1177489, 1177490 },
+				conditions = 
+				{
+					{ permissionType = "missionState", mission = "theme_park_jabba", missionState = 2 }
+				}
+			},
+			{
+				cells = {1177470, 1177474, 1177475, 1177476, 1177477, 1177478, 1177479, 1177480, 1177481, 1177488 },
+				conditions = 
+				{
+					{ permissionType = "missionState", mission = "theme_park_jabba", missionState = 4 }
+				}
+			},
+			{
+				cells = { 1177471, 1177472, 1177473, 1177484, 1177499, 1177502 },
+				conditions = 
+				{
+					{ permissionType = "missionState", mission = "theme_park_jabba", missionState = 8 }
+				}
+			},
+			{
+				cells = { 1177482, 1177483, 1177485, 1177487, 1177500, 1177501 },
+				conditions = 
+				{
+					{ permissionType = "missionState", mission = "theme_park_jabba", missionState = 16 }
+				}
+			},
+			{
+				cells = { 1177486 },
+				conditions = 
+				{
+					{ permissionType = "missionState", mission = "theme_park_jabba", missionState = 64 }
+				}
+			}
+		}
+	}
+}
+
 ThemeParkJabba = ThemeParkLogic:new {
 	numberOfActs = 1,
 	npcMap = npcMapJabba,
+	permissionMap = permissionMapJabba,
 	className = "ThemeParkJabba",
 	screenPlayState = "jabba_theme_park",
+	distance = 850,
 	missionDescriptionStf = "@theme_park_jabba/quest_details:jabbas_palace_",
 	missionCompletionMessageStf = "@theme_park/messages:jabba_completion_message"
 }

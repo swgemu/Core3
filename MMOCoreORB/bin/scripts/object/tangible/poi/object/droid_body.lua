@@ -44,7 +44,7 @@
 object_tangible_poi_object_droid_body = object_tangible_poi_object_shared_droid_body:new {
 
 	numberExperimentalProperties = {1, 1, 1, 1},
-	experimentalProperties = {"XX", "XX", "XX", "XX"},
+	experimentalProperties = {"XX", "XX", "XX", "OQ"},
 	experimentalWeights = {1, 1, 1, 1},
 	experimentalGroupTitles = {"null", "null", "null", "exp_quality"},
 	experimentalSubGroupTitles = {"null", "null", "hitPoints", "quality"},

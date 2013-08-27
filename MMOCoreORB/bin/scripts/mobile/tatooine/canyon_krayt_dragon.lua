@@ -4,7 +4,7 @@ canyon_krayt_dragon = Creature:new {
 	pvpFaction = "",
 	faction = "",
 	level = 275,
-	chanceHit = 272.5,
+	chanceHit = 27.25,
 	damageMin = 1520,
 	damageMax = 2750,
 	baseXp = 26356,
@@ -27,19 +27,29 @@ canyon_krayt_dragon = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/canyon_krayt_dragon.iff"},
+	scale = 0.9;
 	lootGroups = {
-	 {
+		{
 	        groups = {
 				{group = "krayt_dragon_common", chance = 6000000},
 				{group = "krayt_tissue_uncommon", chance = 4000000}				
 			},
 			lootChance = 5000000
+		},
+		{
+	        groups = {
+				{group = "composite_armor_looted", chance = 2500000},
+				{group = "ubese_armor_looted", chance = 2500000},
+				{group = "melee_two_handed", chance = 2500000},
+				{group = "rifles", chance = 2500000}				
+			},
+			lootChance = 2500000
 		}
 	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {
-		{"creatureareaattack",""},
+		{"dizzyattack","dizzyChance=50"},
 		{"stunattack","stunChance=50"}
 	}
 }

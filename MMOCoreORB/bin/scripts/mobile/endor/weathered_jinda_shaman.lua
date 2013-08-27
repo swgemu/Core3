@@ -31,11 +31,19 @@ weathered_jinda_shaman = Creature:new {
 			"object/mobile/jinda_male_01.iff",
 			"object/mobile/jinda_female.iff",
 			"object/mobile/jinda_female_01.iff"},
-	lootGroups = {},
-	weapons = {},
+	lootGroups = {
+		 {
+	        groups = {
+				{group = "ewok", chance = 9100000},
+				{group = "armor_attachments", chance = 450000},
+				{group = "clothing_attachments", chance = 450000}
+			},
+			lootChance = 2500000
+		}
+	},
+	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(weathered_jinda_shaman, "weathered_jinda_shaman")

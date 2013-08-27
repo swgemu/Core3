@@ -453,13 +453,14 @@ int CombatManager::getAttackerAccuracyModifier(CreatureObject* attacker, WeaponO
 		attackerAccuracy += attacker->getSkillMod("private_" + mod);
 	}
 
+	attackerAccuracy += attacker->getSkillMod("attack_accuracy");
+
 	return attackerAccuracy;
 }
 
 int CombatManager::getAttackerAccuracyBonus(CreatureObject* attacker, WeaponObject* weapon) {
 	int bonus = 0;
 
-	bonus += attacker->getSkillMod("attack_accuracy");
 	bonus += attacker->getSkillMod("private_attack_accuracy");
 	bonus += attacker->getSkillMod("private_accuracy_bonus");
 
@@ -1014,7 +1015,7 @@ int CombatManager::getHitChance(CreatureObject* creature, CreatureObject* target
 
 	//info("Base attacker accuracy is " + String::valueOf(attackerAccuracy), true);
 
-	// need to also add in general attack accuracy (mostly gotten from foods and states)
+	// need to also add in general attack accuracy (mostly gotten from posture and states)
 	int totalBonus = getAttackerAccuracyBonus(creature, weapon);
 	totalBonus += calculateTargetPostureModifier(weapon, targetCreature);
 

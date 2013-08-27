@@ -283,6 +283,8 @@ void ZoneServerImplementation::startManagers() {
 	guildManager->setChatManager(chatManager);
 	guildManager->loadGuilds();
 
+	chatManager->initiatePlanetRooms();
+
 	//Loads the FactionManager LUA Config.
 	FactionManager::instance()->loadData();
 

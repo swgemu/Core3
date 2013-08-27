@@ -46,6 +46,8 @@ public:
 
 	void handleDisplayStatus(CreatureObject* player, TangibleObject* vendor);
 
+	String getTimeString(uint32 timestamp);
+
 	void promptDestroyVendor(CreatureObject* player, TangibleObject* vendor);
 
 	void promptRenameVendorTo(CreatureObject* player, TangibleObject* vendor);

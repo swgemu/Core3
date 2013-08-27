@@ -88,7 +88,8 @@ kaja_orzee_missions =
 		rewards = 
 		{ 
 			{ rewardType = "faction", faction = "imperial", amount = 75 },
-			{ rewardType = "loot", lootGroup = "theme_park_reward_imperial_kaja"} 
+			{ rewardType = "loot", lootGroup = "theme_park_reward_imperial_kaja"} ,
+			{ rewardType = "permission", permissionGroup = "emperors_retreat2" }
 		}
 	}
 }
@@ -367,18 +368,18 @@ veers_missions =
 {
 
 	{ 
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "rebel_crewman", planetName = "naboo", npcName = "a Rebel Crewman" },
-			{ npcTemplate = "rebel_coordinator", planetName = "naboo", npcName = "a Rebel Coordinator" },
-			{ npcTemplate = "rebel_medic", planetName = "naboo", npcName = "a Rebel Medic" },
-			{ npcTemplate = "rebel_crewman", planetName = "naboo", npcName = "a Crewman" },
+			{ npcTemplate = "theme_park_imperial_rebel_trooper", planetName = "naboo", npcName = "a Rebel Trooper" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+			{ npcTemplate = "borvos_thug", planetName = "naboo", npcName = "Borvo's Thug" },
 		}, 
 		secondarySpawns = {	
 		}, 
 		itemSpawns = 
 		{ 
+			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "Information" }
 		},	
 		rewards = 
 		{ 
@@ -389,10 +390,9 @@ veers_missions =
 		missionType = "assassinate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "rebel_crewman", planetName = "naboo", npcName = "a Rebel Crewman" },
-			{ npcTemplate = "rebel_coordinator", planetName = "naboo", npcName = "a Rebel Coordinator" },
-			{ npcTemplate = "rebel_medic", planetName = "naboo", npcName = "a Rebel Medic" },
-			{ npcTemplate = "rebel_crewman", planetName = "naboo", npcName = "a Crewman" },
+			{ npcTemplate = "rebel_trooper", planetName = "naboo", npcName = "a Rebel Trooper" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
 		}, 
 		secondarySpawns = {	
 		}, 
@@ -405,14 +405,18 @@ veers_missions =
 		}
 	},
 	{ 
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" }
+			{ npcTemplate = "theme_park_imperial_borvos_thug", planetName = "naboo", npcName = "Borvo's Thug" },
 		}, 
-		secondarySpawns = {}, 
+		secondarySpawns = {
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+		}, 
 		itemSpawns = 
 		{ 
+			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "Shipping Manifest" }
 		},	
 			rewards = 
 		{ 
@@ -421,13 +425,15 @@ veers_missions =
 	},
 
 	{ 
-		missionType = "escort", 
+		missionType = "assassinate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "theme_park_imperial_escort_twilek", planetName = "naboo", npcName = "Borvo the Twi'lek" } 
+			{ npcTemplate = "theme_park_imperial_twilek", planetName = "naboo", npcName = "Borvo the Twi'lek" } 
 		}, 
 		secondarySpawns =
      		{
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
 		}, 
 		itemSpawns = {}, 
 		rewards = 
@@ -440,11 +446,10 @@ veers_missions =
 		missionType = "assassinate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "rebel_crewman", planetName = "naboo", npcName = "a Rebel Crewman" },
-			{ npcTemplate = "rebel_coordinator", planetName = "naboo", npcName = "a Rebel Coordinator" },
-			{ npcTemplate = "rebel_medic", planetName = "naboo", npcName = "a Rebel Medic" },
-			{ npcTemplate = "rebel_crewman", planetName = "naboo", npcName = "a Crewman" },
-			{ npcTemplate = "theme_park_imperial_escort_twilek", planetName = "naboo", npcName = "Borvo the Twi'lek" }
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+			{ npcTemplate = "mercenary_aggro", planetName = "naboo", npcName = "a Mercenary" },
 		}, 
 		secondarySpawns = {	
 		}, 
@@ -488,7 +493,7 @@ palpatine_missions =
 		}, 
 		itemSpawns = 
 		{ 
-			{ itemTemplate = "object/tangible/component/item/quest_item/directional_sensor.iff", itemName = "Plans" }
+			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "Plans" }
 		}, 
 		rewards = 
 		{ 
@@ -502,8 +507,10 @@ palpatine_missions =
 			{ npcTemplate = "rsf_security_officer", planetName = "naboo", npcName = "a Security Officer" },
 		}, 
 		secondarySpawns = {	
-			{ npcTemplate = "rsf_security_guard", planetName = "naboo", npcName = "a Security Guard" },
-			{ npcTemplate = "rsf_security_guard", planetName = "naboo", npcName = "a Security Guard" }
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" }
 		}, 
 		itemSpawns = 
 		{ 
@@ -531,17 +538,19 @@ palpatine_missions =
 	},
 
 	{ 
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "rebel_trooper", planetName = "naboo", npcName = "a Rebel Trooper" },
-			{ npcTemplate = "rebel_trooper", planetName = "naboo", npcName = "a Rebel Trooper" },
-			{ npcTemplate = "rebel_trooper", planetName = "naboo", npcName = "a Rebel Trooper" }
+			{ npcTemplate = "theme_park_imperial_thug_ringleader", planetName = "naboo", npcName = "a Thug Ringleader" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" },
+			{ npcTemplate = "thug", planetName = "naboo", npcName = "a Thug" }
 		}, 
 		secondarySpawns = {	
 		}, 
 		itemSpawns = 
 		{ 
+			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "Plans" }
 		},	
 		rewards = 
 		{ 
@@ -560,7 +569,7 @@ palpatine_missions =
 		}, 
 		itemSpawns = 
 		{ 
-			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "a Recording" }
+			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "a Holodisc" }
 		}, 
 		rewards = 
 		{ 
@@ -575,6 +584,8 @@ palpatine_missions =
 			{ npcTemplate = "rebel_general", planetName = "naboo", npcName = "a Rebel General" }
 		}, 
 		secondarySpawns = {	
+			{ npcTemplate = "rebel_trooper", planetName = "naboo", npcName = "a Rebel Trooper" },
+			{ npcTemplate = "rebel_trooper", planetName = "naboo", npcName = "a Rebel Trooper" },
 			{ npcTemplate = "rebel_trooper", planetName = "naboo", npcName = "a Rebel Trooper" },
 			{ npcTemplate = "rebel_trooper", planetName = "naboo", npcName = "a Rebel Trooper" }
 		}, 
@@ -593,15 +604,16 @@ palpatine_missions =
 darth_vader_missions =
 {
 	{ 
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "rebel_general", planetName = "naboo", npcName = "a Rebel General" },
+			{ npcTemplate = "theme_park_imperial_haro_whitesun", planetName = "naboo", npcName = "Haro Whitesun" },
 		}, 
 		secondarySpawns = {
 		}, 
 		itemSpawns = 
 		{ 
+			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "Information" }
 		},	
 		rewards = 
 		{ 
@@ -628,15 +640,16 @@ darth_vader_missions =
 	},
 
 	{ 
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "rebel_trooper", planetName = "naboo", npcName = "Rebellion's Courier" }
+			{ npcTemplate = "theme_park_imperial_mellag_davin_lars", planetName = "naboo", npcName = "Mellag Davin-Lars" }
 		}, 
 		secondarySpawns = {	
 		}, 
 		itemSpawns = 
 		{ 
+			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "Information" }
 		},	
 		rewards = 
 		{ 
@@ -645,17 +658,17 @@ darth_vader_missions =
 	},
 
 	{ 
-		missionType = "deliver", 
+		missionType = "retrieve", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "theme_park_imperial_escort", planetName = "naboo", npcName = "an Information Broker" } 
+			{ npcTemplate = "theme_park_imperial_mattias", planetName = "naboo", npcName = "Mattias Ve'Shra" } 
 		}, 
 		secondarySpawns = 
 		{
 		}, 
 		itemSpawns = 
 		{ 
-			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "a Datadisk" }
+			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "Information" }
 		}, 
 		rewards = 
 		{ 
@@ -667,11 +680,12 @@ darth_vader_missions =
 		missionType = "assassinate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "thug", planetName = "naboo", npcName = "an Information Broker" }
+			{ npcTemplate = "theme_park_imperial_mattias_aggro", planetName = "naboo", npcName = "Mattias Ve'Shra" }
 		}, 
 		secondarySpawns = {	
-			{ npcTemplate = "assassin", planetName = "naboo", npcName = "an Assassin" },
-			{ npcTemplate = "mercenary", planetName = "naboo", npcName = "a Mercenary" }
+			{ npcTemplate = "brigand_assassin", planetName = "naboo", npcName = "an Assassin" },
+			{ npcTemplate = "brigand_assassin", planetName = "naboo", npcName = "an Assassin" },
+			{ npcTemplate = "brigand_assassin", planetName = "naboo", npcName = "an Assassin" },
 		}, 
 		itemSpawns = 
 		{ 
@@ -683,15 +697,16 @@ darth_vader_missions =
 	},
 
 	{ 
-		missionType = "assassinate", 
+		missionType = "confiscate", 
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "thug", planetName = "naboo", npcName = "Kaydeer" }
+			{ npcTemplate = "theme_park_imperial_kayderr", planetName = "naboo", npcName = "Kayderr" }
 		}, 
 		secondarySpawns = {
 		}, 
 		itemSpawns = 
 		{ 
+			{ itemTemplate = "object/tangible/mission/mission_datadisk.iff", itemName = "Information" }
 		},	
 		rewards = 
 		{ 
@@ -745,7 +760,7 @@ npcMapImperial =
 	},
 	{ 
 		spawnData = { planetName = "naboo", npcTemplate = "palpatine", x = 13, z = 21, y = -25, direction = 180, cellID = 1418886, position = STAND },
-		worldPosition = { x = -2397, y = -3958 },  
+		worldPosition = { x = 2397, y = -3958 },  
 		npcNumber = 32,   
 		stfFile = "@theme_park_imperial/emperor",
 		stfWarning = "emperor",
@@ -761,12 +776,34 @@ npcMapImperial =
 	}
 }
 
-permissionMapImperial = { -- Coming soon...
+permissionMapImperial = {
+	{
+		planetName = "naboo", 
+		regionName = "emperors_retreat",		
+		permissions = 
+		{ 
+			{ 
+				cells = { 1418872, 1418873 },
+				conditions = 
+				{
+					{ permissionType = "faction" }
+				}
+			},
+			{
+				cells = { 1418874, 1418875, 1418876, 1418877, 1418878, 1418879, 1418880, 1418881, 1418882, 1418883, 1418884, 1418885, 1418886 },
+				conditions = 
+				{
+					{ permissionType = "missionState", mission = "theme_park_imperial", missionState = 1 },
+					{ permissionType = "faction" }
+				}
+			}
+		}
+	}
 }
 
 permissionMapImperialWarp = {
 		{ planetName = "naboo",  radius = 20,
-			cells = {8555472},
+			cells = { 1418874 },
 				conditions = 
 				{
 					{ permissionType = "faction", faction = FACTIONIMPERIAL }
@@ -778,11 +815,12 @@ permissionMapImperialWarp = {
 ThemeParkImperial = ThemeParkLogic:new {
 	numberOfActs = 1,
 	npcMap = npcMapImperial,
-	--permissionMap = permissionMapImperialWarp,
+	permissionMap = permissionMapImperial,
 	className = "ThemeParkImperial",
 	screenPlayState = "imperial_theme_park",
 	missionDescriptionStf = "@theme_park_imperial/quest_details:imperial_retreat_",
 	missionCompletionMessageStf = "@theme_park/messages:imperial_completion_message",
+	faction = FACTIONIMPERIAL
 	--warningMessageStf = "@theme_park_imperial/warning:"
 }
 

@@ -3232,7 +3232,7 @@ bool PlayerManagerImplementation::promptTeachableSkills(CreatureObject* teacher,
 		return false;
 	}
 
-	Locker _lock(teacher, target);
+	Locker _lock(target, teacher);
 
 	//We checked if they had the player object in slot with isPlayerCreature
 	CreatureObject* student = cast<CreatureObject*>(target);

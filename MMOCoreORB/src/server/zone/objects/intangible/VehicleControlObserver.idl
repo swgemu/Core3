@@ -70,10 +70,12 @@ class VehicleControlObserver extends Observer {
 		if (eventType != ObserverEventType.STARTCOMBAT) {
 			return 1;
 		}
+		
+		VehicleControlDevice dev = vehicleControlDevice;
 
-		if (vehicleControlDevice != null) {
+		if (dev != null) {
 			CreatureObject creature = (CreatureObject) observable;
-			vehicleControlDevice.cancelSpawnObject(creature);
+			dev.cancelSpawnObject(creature);
 		}
 		
 		return 1;

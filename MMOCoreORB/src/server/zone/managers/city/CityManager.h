@@ -184,6 +184,8 @@ public:
 
 	void sendMaintenanceDestroyEmail(CityRegion* city, StructureObject* structure);
 
+	void sendMaintenanceRepairEmail(CityRegion* city, StructureObject* structure);
+
 	void contractCity(CityRegion* city);
 
 	void expandCity(CityRegion* city);
@@ -377,6 +379,8 @@ public:
 
 	void sendMaintenanceDestroyEmail(CityRegion* city, StructureObject* structure);
 
+	void sendMaintenanceRepairEmail(CityRegion* city, StructureObject* structure);
+
 	void contractCity(CityRegion* city);
 
 	void expandCity(CityRegion* city);
@@ -533,6 +537,8 @@ public:
 	void sendMaintenanceDecayEmail(CityRegion* city, StructureObject* structure, int maintenanceDue);
 
 	void sendMaintenanceDestroyEmail(CityRegion* city, StructureObject* structure);
+
+	void sendMaintenanceRepairEmail(CityRegion* city, StructureObject* structure);
 
 	void contractCity(CityRegion* city);
 

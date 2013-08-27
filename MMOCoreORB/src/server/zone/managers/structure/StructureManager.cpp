@@ -892,7 +892,7 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 
 		float secsRemainingMaint = 0.f;
 		if( structure->getSurplusMaintenance() > 0 ){
-			secsRemainingMaint = (structure->getSurplusMaintenance() / structure->getMaintenanceRate())*3600;
+			secsRemainingMaint = ((float)structure->getSurplusMaintenance() / (float)structure->getMaintenanceRate())*3600;
 		}
 
 		status->addMenuItem(
@@ -929,7 +929,7 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 
 		float secsRemainingPower = 0.f;
 		if( installation->getSurplusPower() > 0 ){
-			secsRemainingPower = (installation->getSurplusPower() / installation->getBasePowerRate())*3600;
+			secsRemainingPower = ((float)installation->getSurplusPower() / (float)installation->getBasePowerRate())*3600;
 		}
 
 		status->addMenuItem(

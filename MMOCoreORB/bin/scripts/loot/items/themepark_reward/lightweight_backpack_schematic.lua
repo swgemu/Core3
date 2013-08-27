@@ -11,4 +11,4 @@ lightweight_backpack_schematic = {
 	customizationValues = {}
 }
 
-addLootItemTemplate("lightweight_backpackschematic", lightweight_backpack_schematic)
+addLootItemTemplate("lightweight_backpack_schematic", lightweight_backpack_schematic)

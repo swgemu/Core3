@@ -27,7 +27,14 @@ theme_park_jabba_kaadu = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kaadu.iff"},
-	lootGroups = {},
+	lootGroups = {
+         {
+			groups = {
+				{group = "theme_park_loot_petrified_avian_egg", chance = 10000000}
+			},
+			lootChance = 10000000
+		}	
+	},
 	weapons = {},
 	conversationTemplate = "",
 	attacks = {

@@ -32,8 +32,6 @@ void BountyMissionObjectiveImplementation::activate() {
 
 	MissionObjectiveImplementation::activate();
 
-	activeDroid = NULL;
-
 	bool failMission = false;
 
 	//Start NPC task or add observers to player target.
@@ -49,9 +47,18 @@ void BountyMissionObjectiveImplementation::activate() {
 	}
 
 	if (failMission) {
-		getPlayerOwner().get()->sendSystemMessage("@mission/mission_generic:failed");
+		getPlayerOwner().get()->sendSystemMessage("@mission/mission_generic:failed"); // Mission failed
 		abort();
 		removeMissionFromPlayer();
+	}
+}
+
+void BountyMissionObjectiveImplementation::deactivate() {
+	MissionObjectiveImplementation::deactivate();
+
+	if (activeDroid != NULL) {
+		activeDroid->destroyObjectFromDatabase();
+		activeDroid->destroyObjectFromWorld(true);
 	}
 }
 
@@ -221,7 +228,7 @@ void BountyMissionObjectiveImplementation::updateWaypoint() {
 	mission->updateMissionLocation();
 
 	if (mission->getMissionLevel() == 1) {
-		getPlayerOwner().get()->sendSystemMessage("@mission/mission_bounty_informant:target_location_received");
+		getPlayerOwner().get()->sendSystemMessage("@mission/mission_bounty_informant:target_location_received"); // Target Waypoint Received.
 	}
 }
 
@@ -229,7 +236,7 @@ void BountyMissionObjectiveImplementation::performDroidAction(int action, SceneO
 	Locker locker(&syncMutex);
 
 	if (!playerHasMissionOfCorrectLevel(action)) {
-		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability");
+		player->sendSystemMessage("@mission/mission_generic:bounty_no_ability"); // You do not understand how to use this item.
 		return;
 	}
 
@@ -483,7 +490,7 @@ void BountyMissionObjectiveImplementation::handleNpcTargetKilled(ManagedObject* 
 		complete();
 	} else {
 		//Target killed by other player, fail mission.
-		attacker->sendSystemMessage("@mission/mission_generic:failed");
+		attacker->sendSystemMessage("@mission/mission_generic:failed"); // Mission failed
 		abort();
 		removeMissionFromPlayer();
 	}
@@ -540,7 +547,7 @@ void BountyMissionObjectiveImplementation::handlePlayerKilled(ManagedObject* arg
 		} else if (mission->getTargetObjectId() == killer->getObjectID() ||
 				(npcTarget != NULL && npcTarget->getObjectID() == killer->getObjectID())) {
 			//Player killed by target, fail mission.
-			owner->sendSystemMessage("@mission/mission_generic:failed");
+			owner->sendSystemMessage("@mission/mission_generic:failed"); // Mission failed
 			killer->sendSystemMessage("You have defeated a bounty hunter, ruining his mission against you!");
 			fail();
 		}

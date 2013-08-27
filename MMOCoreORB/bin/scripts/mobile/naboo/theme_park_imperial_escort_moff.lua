@@ -1,9 +1,9 @@
 theme_park_imperial_escort_moff = Creature:new {
 	objectName = "",
 	customName = "escort",
-	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
-	faction = "townsperson",
+	socialGroup = "imperial",
+	pvpFaction = "imperial",
+	faction = "imperial",
 	level = 4,
 	chanceHit = 0.24,
 	damageMin = 40,

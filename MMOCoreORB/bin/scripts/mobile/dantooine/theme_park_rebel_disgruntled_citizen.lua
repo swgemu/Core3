@@ -33,7 +33,7 @@ theme_park_rebel_disgruntled_citizen = Creature:new {
 	{
 		{
 			groups = {
-				{group = "theme_park_loot_rebel_disgruntled_citizen", chance = 10000000}
+				{group = "theme_park_loot_information", chance = 10000000}
 			},
 			lootChance = 10000000
 		}

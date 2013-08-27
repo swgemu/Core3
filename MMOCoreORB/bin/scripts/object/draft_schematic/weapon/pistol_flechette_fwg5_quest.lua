@@ -72,9 +72,13 @@ object_draft_schematic_weapon_pistol_flechette_fwg5_quest = object_draft_schemat
 
    targetTemplate = "object/weapon/ranged/pistol/pistol_fwg5_quest.iff",
 
-   additionalTemplates = {
-              "object/weapon/ranged/pistol/shared_pistol_fwg5_quest.iff",
-             }
+   additionalTemplates = {},
+
+	skillMods = {	    
+		{"counterattack", 5},
+		{"dodge", 5},
+		{"pistol_accuracy", 5}
+	}
 
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_pistol_flechette_fwg5_quest, "object/draft_schematic/weapon/pistol_flechette_fwg5_quest.iff")

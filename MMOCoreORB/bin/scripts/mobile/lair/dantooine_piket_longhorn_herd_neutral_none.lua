@@ -1,5 +1,5 @@
 dantooine_piket_longhorn_herd_neutral_none = Lair:new {
-	mobiles = {{"piket_longhorn_female", 0},{"piket_longhorn", 0}},
+	mobiles = {{"piket_longhorn_female", -7},{"piket_longhorn", 0}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_rocks_large.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_rocks_large.iff"},

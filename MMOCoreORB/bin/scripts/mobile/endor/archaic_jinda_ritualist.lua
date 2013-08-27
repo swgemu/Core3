@@ -31,11 +31,19 @@ archaic_jinda_ritualist = Creature:new {
 			"object/mobile/jinda_male_01.iff",
 			"object/mobile/jinda_female.iff",
 			"object/mobile/jinda_female_01.iff"},
-	lootGroups = {},
-	weapons = {},
+	lootGroups = {
+		{
+	        groups = {
+				{group = "ewok", chance = 9100000},
+				{group = "armor_attachments", chance = 450000},
+				{group = "clothing_attachments", chance = 450000}
+			},
+			lootChance = 2600000
+		}
+	},
+	weapons = {"ewok_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(riflemanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(archaic_jinda_ritualist, "archaic_jinda_ritualist")

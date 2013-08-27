@@ -200,7 +200,7 @@ tatooine_regions = {
 	{"northeastern_oasis",0,0,{1,0},UNDEFINEDAREA,1},
 	{"northern_wasteland",0,0,{1,0},UNDEFINEDAREA,1},
 	{"northwestern_mountains",0,0,{1,0},UNDEFINEDAREA,1},
-	{"oasis_northeast",0,0,{1,0},UNDEFINEDAREA,1},
+	{"oasis_northeast",6663,5455,{1,60},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"oasis_south",-5327,2699,{1,500},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"ore_harvesters",-5794,-559,{1,50},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
         {"outpost_ruins",-800,-4450,{1,100},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},

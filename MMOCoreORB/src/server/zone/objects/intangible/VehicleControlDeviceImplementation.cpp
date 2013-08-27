@@ -15,6 +15,7 @@
 #include "tasks/CallMountTask.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/player/sessions/TradeSession.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) {
 	if (player->getParent() != NULL)
@@ -37,7 +38,7 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
 
 	if (tradeContainer != NULL) {
-		return;
+		server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
 	}
 
 	if(player->getPendingTask("call_mount") != NULL) {
@@ -114,7 +115,7 @@ void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
 
 	if (tradeContainer != NULL) {
-		return;
+		server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
 	}
 
 	controlledObject->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());

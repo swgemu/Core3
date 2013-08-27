@@ -331,6 +331,32 @@ void PlayerObjectImplementation::notifySceneReady() {
 	if (zoneServer != NULL && zoneServer->isServerLoading())
 		return;
 
+	// Leave all planet chat rooms
+	for (int i = 0; i < zoneServer->getZoneCount(); ++i) {
+		ManagedReference<Zone*> zone = zoneServer->getZone(i);
+
+		if (zone == NULL)
+			continue;
+
+		ManagedReference<ChatRoom*> room = zone->getChatRoom();
+		if( room == NULL )
+			continue;
+
+		room->removePlayer(creature);
+
+	}
+
+	// Join current planet chat room
+	if(creature->getZone() != NULL ){
+		ManagedReference<ChatRoom*> planetChat = creature->getZone()->getChatRoom();
+
+		if (planetChat == NULL)
+			return;
+
+		planetChat->sendTo(creature);
+		planetChat->addPlayer(creature);
+	}
+
 	if(creature->getZone() != NULL && creature->getZone()->getPlanetManager() != NULL) {
 		ManagedReference<WeatherManager*> weatherManager = creature->getZone()->getPlanetManager()->getWeatherManager();
 		if(weatherManager != NULL) {

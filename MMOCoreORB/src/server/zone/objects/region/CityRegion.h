@@ -394,6 +394,8 @@ public:
 
 	void transferCivicStructuresToMayor();
 
+	void cleanupCityStructures();
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -752,6 +754,8 @@ public:
 
 	void transferCivicStructuresToMayor();
 
+	void cleanupCityStructures();
+
 	WeakReference<CityRegion*> _this;
 
 	operator const CityRegion*();
@@ -1006,6 +1010,8 @@ public:
 	void setTax(int tax, int value);
 
 	void transferCivicStructuresToMayor();
+
+	void cleanupCityStructures();
 
 };
 

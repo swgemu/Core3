@@ -80,7 +80,7 @@ void ChatManagerImplementation::initiateRooms() {
 	mainRoom->setPrivate();
 	gameRooms.put("SWG", mainRoom);
 
-	ChatRoom* core3Room = createRoom(server->getGalaxyName(), mainRoom);
+	core3Room = createRoom(server->getGalaxyName(), mainRoom);
 	core3Room->setPrivate();
 	mainRoom->addSubRoom(core3Room);
 
@@ -95,6 +95,10 @@ void ChatManagerImplementation::initiateRooms() {
 	ChatRoom* generalRoom = createRoom("general", core3Room);
 	core3Room->addSubRoom(generalRoom);
 
+
+}
+
+void ChatManagerImplementation::initiatePlanetRooms() {
 	// Planet Chat
 	for (int i = 0; i < server->getZoneCount(); ++i) {
 		ManagedReference<Zone*> zone = server->getZone(i);
@@ -102,11 +106,15 @@ void ChatManagerImplementation::initiateRooms() {
 		if (zone == NULL)
 			continue;
 
+		Locker locker(zone);
+
 		ChatRoom* planetRoom = createRoom(zone->getZoneName(), core3Room);
 		core3Room->addSubRoom(planetRoom);
 
-		ChatRoom* planetaryChat = createRoom("chat", planetRoom);
+		ChatRoom* planetaryChat = createRoom("Planet", planetRoom);
 		planetRoom->addSubRoom(planetaryChat);
+		zone->setChatRoom( planetaryChat );
+
 	}
 }
 
@@ -771,26 +779,39 @@ void ChatManagerImplementation::handleGuildChat(CreatureObject* sender, const Un
 		return;
 	}
 
-	sender->unlock();
-
-	try {
-		guild->wlock();
-
-		ManagedReference<ChatRoom*> room = guild->getChatRoom();
-
-		if (room != NULL) {
-			BaseMessage* msg = new ChatRoomMessage(name, message, room->getRoomID());
-			room->broadcastMessage(msg);
-		}
-
-		guild->unlock();
-	} catch (...) {
-		guild->unlock();
-
-		throw;
+	ManagedReference<ChatRoom*> room = guild->getChatRoom();
+	if (room != NULL) {
+		BaseMessage* msg = new ChatRoomMessage(name, message, room->getRoomID());
+		room->broadcastMessage(msg);
 	}
 
-	sender->wlock();
+}
+
+void ChatManagerImplementation::handlePlanetChat(CreatureObject* sender, const UnicodeString& message) {
+	/*if (sender->isChatMuted()) {
+		sender->sendSystemMessage("Your chat abilities are currently disabled by the server administrators.");
+		return;
+	}*/
+
+	String name = sender->getFirstName();
+
+	Zone* zone = sender->getZone();
+	if( zone == NULL ){
+		return;
+	}
+
+	StringTokenizer args(message.toString());
+	if (!args.hasMoreTokens()) {
+		sender->sendSystemMessage("@ui:im_no_message"); // You need to include a message!
+		return;
+	}
+
+	ManagedReference<ChatRoom*> room = zone->getChatRoom();
+	if (room != NULL) {
+		BaseMessage* msg = new ChatRoomMessage(name, message, room->getRoomID());
+		room->broadcastMessage(msg);
+	}
+
 }
 
 void ChatManagerImplementation::sendMail(const String& sendername, const UnicodeString& header, const UnicodeString& body, const String& name) {

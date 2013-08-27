@@ -239,7 +239,9 @@ void CreatureImplementation::setDnaState(short dna){
 }
 void CreatureImplementation::notifyDespawn(Zone* zone) {
 	alreadyHarvested.removeAll();
-
+	dnaState = CreatureManager::HASDNA;
+	dnaSampleCount = 0;
+	milkState = CreatureManager::NOTMILKED;
 	AiAgentImplementation::notifyDespawn(zone);
 }
 

@@ -1205,8 +1205,9 @@ void AiAgentImplementation::doMovement() {
 
 			setNextPosition(follow->getPositionX(), follow->getPositionZ(), follow->getPositionY(), follow->getParent().get());
 			// stop in weapons range
-			if (weapon != NULL ) {
-				maxDistance = MAX(0.5, weapon->getIdealRange() - 2);
+			if (getWeapon() != NULL ) {
+				float weapMaxRange = MIN(getWeapon()->getIdealRange(), getWeapon()->getMaxRange());
+				maxDistance = MAX(0.5, weapMaxRange - 2);
 			}
 
 			if (follow != NULL && !CollisionManager::checkLineOfSight(_this.get(), follow)) {
@@ -1592,7 +1593,7 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 
 
 void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
-	if (!player->isPlayerCreature())
+	if (!player->isPlayerCreature() || isDead() || npcTemplate == NULL || npcTemplate->getConversationTemplate() == 0)
 		return;
 
 	//Face player.
@@ -1628,7 +1629,11 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 		registerObserver(ObserverEventType::STOPCONVERSATION, conversationObserver);
 	} else {
 		error("Could not create conversation observer.");
+		return;
 	}
+
+
+
 }
 
 bool AiAgentImplementation::isAggressiveTo(CreatureObject* target) {
