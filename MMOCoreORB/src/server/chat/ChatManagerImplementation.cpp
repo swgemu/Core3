@@ -302,43 +302,6 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 		zone->getInRangeObjects(sender->getWorldPositionX(), sender->getWorldPositionX(), 192, &closeEntryObjects, true);
 	}
 
-	//Vector<QuadTreeEntry*> closeEntryObjects(closeObjects->size(), 50);
-	/*
-	try {
-//		zone->rlock(readlock);
-
-	if (vec != NULL) {
-		vec->safeCopyTo(closeEntryObjects);
-	} else {
-		zone->getInRangeObjects(sender->getWorldPositionX(), sender->getWorldPositionX(), 192, &closeEntryObjects, true);
-	}
-
-	//Vector<QuadTreeEntry*> closeEntryObjects(closeObjects->size(), 50);
-	/*
-	try {
-//		zone->rlock(readlock);
-
-		for (int i = 0; i < closeObjects->size(); ++i) {
-			closeEntryObjects.add(closeObjects->get(i).get());
-		}
-
-//		zone->runlock(readlock);
-	} catch (...) {
-//		zone->runlock(readlock);
-	}
-
-	for (int i = 0; i < closeEntryObjects.size(); ++i) {
-		SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i).get());
-
-	for (int i = 0; i < closeObjects->size(); ++i) {
-			closeEntryObjects.add(closeObjects->get(i).get());
-		}
-
-//		zone->runlock(readlock);
-	} catch (...) {
-//		zone->runlock(readlock);
-	}
-	 */
 	for (int i = 0; i < closeEntryObjects.size(); ++i) {
 		SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i).get());
 
@@ -487,9 +450,6 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 		param = new StringIdChatParameter(message.toString());
 	}
 
-	//Locker zoneLocker(zone);
-	//zone->rlock();
-
 	CloseObjectsVector* closeObjects = (CloseObjectsVector*) player->getCloseObjects();
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeEntryObjects(200, 50);
@@ -499,41 +459,6 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 	} else {
 		zone->getInRangeObjects(player->getWorldPositionX(), player->getWorldPositionY(), 192, &closeEntryObjects, true);
 	}
-
-	/*
-=======
-	CloseObjectsVector* closeObjects = (CloseObjectsVector*) player->getCloseObjects();
-
-	SortedVector<ManagedReference<QuadTreeEntry*> > closeEntryObjects(200, 50);
-
-	if (closeObjects != NULL) {
-		closeObjects->safeCopyTo(closeEntryObjects);
-	} else {
-		zone->getInRangeObjects(player->getWorldPositionX(), player->getWorldPositionY(), 192, &closeEntryObjects, true);
-	}
-
-/*
->>>>>>> .merge-right.r5676
-	try {
-		zone->rlock(readlock);
-
-		for (int i = 0; i < closeObjects->size(); ++i) {
-			closeEntryObjects.add(closeObjects->get(i).get());
-		}
-
-<<<<<<< .working
-		zone->runlock(readlock);
-	} catch (...) {
-		zone->runlock(readlock);
-	}
-=======
-		zone->runlock(readlock);
-	} catch (...) {
-		zone->runlock(readlock);
-	}
-
-	 */
-
 
 	try {
 		for (int i = 0; i < closeEntryObjects.size(); ++i) {
