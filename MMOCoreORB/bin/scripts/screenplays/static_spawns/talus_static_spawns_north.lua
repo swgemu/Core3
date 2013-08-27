@@ -299,7 +299,7 @@ function TalusStaticSpawnsNorthScreenPlay:spawnMobiles()
 	spawnMobile("talus", "scavenger", 180, -4384.1, 16.7, 2663.6, 12, 0)
 	spawnMobile("talus", "scavenger", 180, -4379.1, 16.8, 2663.1, -33, 0)
 
-	--Pillar Ruins (4974,3848)
+	--Pillar Ruins (-4974,3848)
 
 	--Diseased Ruins & Mite Nest (-5117,3213)
 	spawnMobile("talus", "giant_decay_mite_queen", 360, -5107.7, 19.6, 3215.1, -108, 0)
