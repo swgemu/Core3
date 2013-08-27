@@ -154,6 +154,15 @@ public:
 
 		if (trainerTemplatePath != ""){
 
+			if(city->getCityTreasury() < 1000){
+				StringIdChatParameter msg;
+				msg.setStringId("@city/city:action_no_money");
+				msg.setDI(1000);
+				player->sendSystemMessage(msg); //"The city treasury must have %DI credits in order to perform that action.");
+				return;
+
+			}
+
 			city->subtractFromCityTreasury(1000);
 			CreatureObject* trainer = zone->getCreatureManager()->spawnCreature(trainerTemplatePath.hashCode(),0,player->getWorldPositionX(),player->getWorldPositionZ(),player->getWorldPositionY(),0,true);
 			trainer->rotate(player->getDirectionAngle());
