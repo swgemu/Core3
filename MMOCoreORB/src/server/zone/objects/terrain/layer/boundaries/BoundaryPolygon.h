@@ -47,6 +47,12 @@ public:
 	}
 
 	void translateBoundary(float x, float y) {
+		minX = 800000000;
+		minY = 800000000;
+
+		maxX = -80000000;
+		minX = -80000000;
+
 		for(int i = 0; i < vertices.size(); ++i) {
 			Point2D* point = vertices.get(i);
 
