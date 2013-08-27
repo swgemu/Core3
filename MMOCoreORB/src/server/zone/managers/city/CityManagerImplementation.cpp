@@ -987,8 +987,8 @@ void CityManagerImplementation::sendMaintenanceEmail(CityRegion* city, int maint
 void CityManagerImplementation::sendMaintenanceRepairEmail(CityRegion* city, StructureObject* structure){
 
 	if(zoneServer != NULL) {
-		ManagedReference<CreatureObject*> mayor = cast<CreatureObject*>(zoneServer->getObject(
-		city->getMayorID()));
+		ManagedReference<CreatureObject*> mayor = zoneServer->getObject(
+		city->getMayorID()).castTo<CreatureObject*>();
 
 		if(mayor != NULL) {
 			/*
