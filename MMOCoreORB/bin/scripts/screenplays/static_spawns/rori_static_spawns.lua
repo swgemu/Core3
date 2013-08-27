@@ -140,7 +140,7 @@ function RoriStaticSpawnsScreenPlay:spawnMobiles()
 	--Ruins (-2713,4486)
 
 	--Bounty Hunter Camp (-3650,5531)
-	spawnMobile("rori", "bounty_hunter", 120, -3649.6, 79.1, 5528.6, 155, 0)
+	spawnMobile("rori", "bounty_hunter_thug", 120, -3649.6, 79.1, 5528.6, 155, 0)
 
 	--RorGungan Monument (-5819,5826)
 	spawnMobile("rori", "rorgungan_warchief", 240, -5818.7, 79.0, 5816.3, 55, 0)
