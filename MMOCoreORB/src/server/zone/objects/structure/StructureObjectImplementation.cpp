@@ -254,7 +254,7 @@ void StructureObjectImplementation::updateStructureStatus() {
 	}
 
 	//Maintenance is used as decay as well so let it go below 0.
-	surplusMaintenance -= maintenanceDue - cityTaxDue;
+	surplusMaintenance -= ( maintenanceDue + cityTaxDue );
 
 	//Update structure condition.
 	if (surplusMaintenance < 0) {
