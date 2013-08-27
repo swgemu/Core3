@@ -26,7 +26,16 @@ slaver = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_tatooine_slaver.iff"},
-	lootGroups = {},
+	lootGroups = {
+	    {
+			groups = {
+				{group = "junk", chance = 6500000},
+				{group = "tailor_components", chance = 1500000},
+				{group = "loot_kits", chance = 2000000}
+			},
+			lootChance = 2000000
+		}			
+	},
 	weapons = {"pirate_weapons_light"},
 	attacks = merge(marksmannovice,brawlernovice)
 }
