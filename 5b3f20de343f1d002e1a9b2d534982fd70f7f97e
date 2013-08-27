@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_c33340f5",
+        "filename": "MMOCoreORB/src/server/zone/managers/city/CityDecorationTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-08-27T10:43:20Z",
+      "side": 1,
+      "message": "Is this really correct? Isn\u0027t the object in the zone and not in the inventory?",
+      "revId": "5b3f20de343f1d002e1a9b2d534982fd70f7f97e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
