@@ -71,9 +71,9 @@ public:
 
 			CreatureObject* player = cast<CreatureObject*>(creature);
 
-			// REMOVE WHEN TESTED
-			manager->freeBait(player);
-			// ENDREMOVE
+			// ENABLE FOR TESTING
+			// manager->freeBait(player);
+			// ENDENABLE
 
 			if ((manager->getFishingState(player) != FishingManager::NOTFISHING) || (manager->isPlaying(player))) {
 				player->sendSystemMessage("You are already fishing.");
