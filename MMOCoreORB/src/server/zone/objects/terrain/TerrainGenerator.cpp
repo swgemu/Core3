@@ -60,6 +60,20 @@ void TerrainGenerator::parseFromIffStream(engine::util::IffStream* iffStream, Ve
 		//mapGroup2.readObject(iffStream);
 	}
 
-	layers.readObject(iffStream);
+	if (type == 'LAYR') {
+		Layer* layer = new Layer();
+		layer->readObject(iffStream);
 
+		layers.getLayers()->add(layer);
+	} else
+		layers.readObject(iffStream);
+
+}
+
+void TerrainGenerator::addLayer(Layer* layer) {
+	layers.getLayers()->add(layer);
+}
+
+void TerrainGenerator::removeLayer(Layer* layer) {
+	layers.getLayers()->removeElement(layer);
 }

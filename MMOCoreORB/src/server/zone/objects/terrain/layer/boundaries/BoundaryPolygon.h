@@ -46,6 +46,27 @@ public:
 			generator->insertWaterBoundary(this);
 	}
 
+	void translateBoundary(float x, float y) {
+		for(int i = 0; i < vertices.size(); ++i) {
+			Point2D* point = vertices.get(i);
+
+			point->x += x;
+			point->y += y;
+
+			if (point->x < minX)
+				minX = point->x;
+
+			if (point->y < minY)
+				minY = point->y;
+
+			if (point->x > maxX)
+				maxX = point->x;
+
+			if (point->y > maxY)
+				maxY = point->y;
+		}
+	}
+
 	void initialize() {
 		for(int i = 0; i < vertices.size(); ++i) {
 			const Point2D* point = vertices.get(i);

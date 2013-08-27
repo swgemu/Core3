@@ -70,6 +70,10 @@ public:
 	inline ChildCreatureObject* getChildCreatureObject(int indx){
 		return &childCreatureObjects.get(indx);
 	}
+
+	inline String getTerrainModificationFile() {
+		return terrainModificationFileName.get();
+	}
 };
 
 #endif /* SHAREDBUILDINGOBJECTTEMPLATE_H_ */

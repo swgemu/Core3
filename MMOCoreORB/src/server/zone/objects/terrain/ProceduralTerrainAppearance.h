@@ -63,6 +63,12 @@ class ProceduralTerrainAppearance : public TemplateVariable<'PTAT'>, public Logg
 	float radialFarTileBorder;
 	float radialFarSeed;
 
+	ReadWriteLock guard;
+
+	HashTable<uint64, TerrainGenerator*> terrainModifications;
+
+	Vector<TerrainGenerator*> customTerrain;
+
 protected:
 	float calculateFeathering(float value, int featheringType);
 	float processTerrain(Layer* layer, float x, float y, float& baseValue, float affectorTransformValue, int affectorType);
@@ -93,6 +99,9 @@ public:
 	bool getWater(float x, float y, float& waterHeight);
 	float getHeight(float x, float y);
 	int getEnvironmentID(float x, float y);
+
+	TerrainGenerator* addTerrainModification(engine::util::IffStream* terrainGeneratorIffStream, float x, float y, uint64 objectid);
+	void removeTerrainModification(uint64 objectid);
 
 };
 

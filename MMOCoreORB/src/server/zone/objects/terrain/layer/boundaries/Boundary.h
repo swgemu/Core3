@@ -44,6 +44,7 @@ public:
 		return false;
 	}
 
+	virtual void translateBoundary(float x, float y) = 0;
 };
 
 
