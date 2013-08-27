@@ -320,13 +320,7 @@ bib_missions =
 		{ 
 			{ npcTemplate = "romo_vax", planetName = "tatooine", npcName = "Romo Vax" } 
 		}, 
-		secondarySpawns =
-     	{
-		    { npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
-		    { npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
-		}, 
+		secondarySpawns = {}, 
 		itemSpawns = {}, 
 		rewards = 
 		{ 
@@ -341,8 +335,8 @@ bib_missions =
 		}, 
 		secondarySpawns = 
 		{ 
-			{ npcTemplate = "alkhara_bandit", planetName = "tatooine", npcName = "A Thug" },
-			{ npcTemplate = "alkhara_bandit", planetName = "tatooine", npcName = "A Thug" },
+			{ npcTemplate = "thug", planetName = "tatooine", npcName = "A Thug" },
+			{ npcTemplate = "thug", planetName = "tatooine", npcName = "A Thug" },
 		}, 
 		itemSpawns = {}, 
 		rewards = 
@@ -398,8 +392,8 @@ g5po_missions =
 		}, 
 		secondarySpawns = 
 		{
-		    { npcTemplate = "alkhara_bandit", planetName = "tatooine", npcName = "A Thug" },
-			{ npcTemplate = "alkhara_bandit", planetName = "tatooine", npcName = "A Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
 		}, 
 		itemSpawns = {}, 
 		rewards = 
@@ -411,13 +405,13 @@ g5po_missions =
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Interrogator" } 
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Interrogator" } 
 		}, 
 		secondarySpawns = 
 		{ 
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
 		}, 
 		itemSpawns = {}, 
 		rewards = 
@@ -426,38 +420,40 @@ g5po_missions =
 		}
 	},
 		{
-		missionType = "assassinate",
+		missionType = "confiscate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Courier" } 
+			{ npcTemplate = "valarian_courier", planetName = "tatooine", npcName = "Valarian Courier" } 
 		}, 
 		secondarySpawns = 
 		{ 
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
 		}, 
-		itemSpawns = {}, 
+		itemSpawns = {
+			{ itemTemplate = "object/tangible/loot/misc/ledger_s01.iff", itemName = "Ledger" }
+		}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", amount = 1650 } 
+			{ rewardType = "credits", amount = 1550 } 
 		}
 	},
 	   {
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Thug Leader" } 
+			{ npcTemplate = "valarian_assassin", planetName = "tatooine", npcName = "Valarian Strike Team Leader" } 
 		}, 
 		secondarySpawns = 
 		{ 
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
 		}, 
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", amount = 1750 } 
+			{ rewardType = "credits", amount = 1650 } 
 		}
 	},
 		{ 
@@ -473,24 +469,24 @@ g5po_missions =
 		}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", amount = 1850 }
+			{ rewardType = "credits", amount = 1750 }
 		}
 	},
 		{
 		missionType = "assassinate",
 		primarySpawns = 
 		{ 
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Punk" } 
+			{ npcTemplate = "valarian_assassin", planetName = "tatooine", npcName = "Punk" } 
 		}, 
 		secondarySpawns = 
 		{ 
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
-			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "A Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
+			{ npcTemplate = "valarian_thug", planetName = "tatooine", npcName = "Valarian Thug" },
 		}, 
 		itemSpawns = {}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", amount = 1950 } 
+			{ rewardType = "credits", amount = 1850 } 
 		}
 	},
 		{ 
@@ -506,7 +502,7 @@ g5po_missions =
 		}, 
 		rewards = 
 		{ 
-			{ rewardType = "credits", amount = 2050 }
+			{ rewardType = "credits", amount = 1950 }
 		}
 	},
 			{ 
