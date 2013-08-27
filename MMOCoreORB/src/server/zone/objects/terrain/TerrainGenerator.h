@@ -41,6 +41,9 @@ public:
 	void parseFromIffStream(engine::util::IffStream* iffStream);
 	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0000'>);
 
+	void addLayer(Layer* layer);
+	void removeLayer(Layer* layer);
+
 	inline MapGroup* getMapGroup() {
 		return &mapGroup;
 	}
@@ -52,7 +55,6 @@ public:
 	inline MapFractal* getMfrc(int idx) {
 		return mapGroup.getMfrc(idx);
 	}
-
 
 };
 

@@ -78,3 +78,22 @@ int TerrainManager::notifyPositionUpdate(CreatureObject* object) {
 
 	return 0;
 }
+
+void TerrainManager::addTerrainModification(float x, float y, const String& terrainModificationFilename, uint64 objectid) {
+	IffStream* stream = TemplateManager::instance()->openIffFile(terrainModificationFilename);
+
+	if (stream == NULL) {
+		error("could not find custom terrain file: " + terrainModificationFilename);
+		return;
+	}
+
+	if (terrainData.addTerrainModification(stream, x, y, objectid) == NULL) {
+		error("could not add custom terrain file: " + terrainModificationFilename);
+	}
+
+	delete stream;
+}
+
+void TerrainManager::removeTerrainModification(uint64 objectid) {
+	terrainData.removeTerrainModification(objectid);
+}

@@ -54,6 +54,10 @@ which carries forward this exception.
 #include "server/zone/packets/scene/LightUpdateTransformWithParentMessage.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/packets/scene/GameSceneChangedMessage.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/terrain/TerrainManager.h"
+#include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
+
 
 void ZoneComponent::notifyInsertToZone(SceneObject* sceneObject, Zone* newZone) {
 	info("inserting to zone");
@@ -416,6 +420,16 @@ void ZoneComponent::destroyObjectFromWorld(SceneObject* sceneObject, bool sendSe
 			rootZone->remove(sceneObject);
 			
 		rootZone->dropSceneObject(sceneObject);
+
+		SharedBuildingObjectTemplate* objtemplate = dynamic_cast<SharedBuildingObjectTemplate*>(sceneObject->getObjectTemplate());
+
+		if (objtemplate != NULL) {
+			String modFile = objtemplate->getTerrainModificationFile();
+
+			if (!modFile.isEmpty()) {
+				rootZone->getPlanetManager()->getTerrainManager()->removeTerrainModification(sceneObject->getObjectID());
+			}
+		}
 		
 		locker.release();
 

@@ -202,6 +202,16 @@ public:
 		return v29 / v30;
 	}
 
+	void translateBoundary(float x, float y) {
+		x0 += x;
+		x1 += x;
+
+		y0 += y;
+		y1 += y;
+
+		initialize();
+	}
+
 	void initialize() {
 		if (x0 > x1) {
 			double v1 = x0;

@@ -76,6 +76,32 @@ public:
 		initialize();
 	}
 
+	void translateBoundary(float x, float y) {
+		for(int i = 0; i < points.size(); ++i) {
+			Point2D* point = points.get(i);
+
+			point->x += x;
+			point->y += y;
+
+			if (point->x < minX)
+				minX = point->x;
+
+			if (point->y < minY)
+				minY = point->y;
+
+			if (point->x > maxX)
+				maxX = point->x;
+
+			if (point->y > maxY)
+				maxY = point->y;
+		}
+
+		minX = minX - lineWidth;
+		maxX = maxX + lineWidth;
+		minY = minY - lineWidth;
+		maxY = maxY + lineWidth;
+	}
+
 	void initialize() {
 		for(int i = 0; i < points.size(); ++i) {
 			Point2D* point = points.get(i);
