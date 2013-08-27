@@ -1,4 +1,4 @@
-mercenary_warlord = Creature:new {
+bh_mercenary_warlord = Creature:new {
 	objectName = "@mob/creature_names:mercenary_warlord",
 	socialGroup = "lok_mercenaries",
 	pvpFaction = "lok_mercenaries",
@@ -47,6 +47,19 @@ mercenary_warlord = Creature:new {
 				{group = "armor_attachments", chance = 300000}
 			},
 			lootChance = 3500000
+		},
+		{
+			groups = {
+				{group = "color_crystals", chance = 1500000},
+				{group = "crystals_poor", chance = 1000000},
+				{group = "crystals_good", chance = 1000000},
+				{group = "grenades_looted", chance = 1500000},
+				{group = "carbines", chance = 1500000},
+				{group = "pistols", chance = 1500000},
+				{group = "clothing_attachments", chance = 1000000},
+				{group = "armor_attachments", chance = 1000000}
+			},
+			lootChance = 6000000
 		}
 	},
 	weapons = {"rebel_weapons_heavy"},
@@ -54,4 +67,4 @@ mercenary_warlord = Creature:new {
 	attacks = merge(riflemanmaster,commandomaster,carbineermaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(mercenary_warlord, "mercenary_warlord")
+CreatureTemplates:addCreatureTemplate(bh_mercenary_warlord, "bh_mercenary_warlord")
