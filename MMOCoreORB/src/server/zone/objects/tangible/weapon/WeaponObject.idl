@@ -101,12 +101,18 @@ class WeaponObject extends TangibleObject {
 	protected float damageSlice;
 	protected float speedSlice;
 
-	protected int dotType;
-	protected int dotAttribute;
-	protected int dotStrength;
-	protected int dotDuration;
-	protected int dotPotency;
-	protected int dotUses;
+	@dereferenced
+	protected Vector<int> dotType;
+	@dereferenced
+	protected Vector<int> dotAttribute;
+	@dereferenced
+	protected Vector<int> dotStrength;
+	@dereferenced
+	protected Vector<int> dotDuration;
+	@dereferenced
+	protected Vector<int> dotPotency;
+	@dereferenced
+	protected Vector<int> dotUses;
 	
 	protected transient SharedWeaponObjectTemplate weaponTemplate;
 	
@@ -170,19 +176,12 @@ class WeaponObject extends TangibleObject {
 		attackSpeed = 1;
 		
 		weaponTemplate = null;
-
-		dotType = 0;
-		dotAttribute = 0;
-		dotStrength = 0;
-		dotDuration = 0;
-		dotPotency = 0;
-		dotUses = 0;
 		
 		Logger.setLoggingName("WeaponObject");
 		
 		damageSlice = 1;
 		speedSlice = 1;
-		
+
 		wearableSkillMods.setAllowOverwriteInsertPlan();
 	}
 	
@@ -380,53 +379,61 @@ class WeaponObject extends TangibleObject {
 		return weaponTemplate.getXpType();
 	}
 
-	public int getDotType() {
-		return dotType;
+	public int getNumberOfDots() {
+		return dotType.size();
 	}
 
-	public int getDotAttribute() {
-		return dotAttribute;
+	public int getDotType(int index) {
+		return dotType.elementAt(index);
 	}
 
-	public int getDotStrength() {
-		return dotStrength;
+	public int getDotAttribute(int index) {
+		return dotAttribute.elementAt(index);
 	}
 
-	public int getDotDuration() {
-		return dotDuration;
-	}
-	public int getDotPotency() {
-		return dotPotency;
+	public int getDotStrength(int index) {
+		return dotStrength.elementAt(index);
 	}
 
-	public int getDotUses() {
-		return dotUses;
+	public int getDotDuration(int index) {
+		return dotDuration.elementAt(index);
+	}
+	public int getDotPotency(int index) {
+		return dotPotency.elementAt(index);
 	}
 
-	public void setDotType(int t) {
-		dotType = t;
+	public int getDotUses(int index) {
+		return dotUses.elementAt(index);
 	}
 
-	public void setDotAttribute(int a) {
-		dotAttribute = a;
+	public void addDotType(int t) {
+		dotType.add(t);
 	}
 
-	public void setDotStrength(int s) {
-		dotStrength = s;
+	public void addDotAttribute(int a) {
+		dotAttribute.add(a);
 	}
 
-	public void setDotDuration(int du) {
-		dotDuration = du;
+	public void addDotStrength(int s) {
+		dotStrength.add(s);
 	}
 
-	public void setDotPotency(int po) {
-		dotPotency = po;
+	public void addDotDuration(int du) {
+		dotDuration.add(du);
+	}
+
+	public void addDotPotency(int po) {
+		dotPotency.add(po);
 	}	
 
-	public void setDotUses(int u) {
-		dotUses = u;
+	public void addDotUses(int u) {
+		dotUses.add(u);
 	}
-	
+
+	public void setDotUses(int u, int index) {
+		dotUses.elementAt(index) = u;
+	}
+
 	public native string getWeaponType();
 	
 	public boolean isUnarmedWeapon() {

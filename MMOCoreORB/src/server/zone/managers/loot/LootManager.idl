@@ -45,6 +45,7 @@ which carries forward this exception.
 package server.zone.managers.loot;
 
 import system.util.VectorMap;
+import system.util.SortedVector;
 import engine.core.ManagedService;
 import server.zone.objects.scene.SceneObject;
 import server.zone.objects.creature.CreatureObject;
@@ -78,7 +79,18 @@ class LootManager extends ManagedService implements Logger {
 	private transient float legendaryModifier;
 
 	private transient float skillModChance;
-	
+
+	@dereferenced
+	private transient SortedVector<int> randomDotAttribute;
+	@dereferenced
+	private transient SortedVector<int> randomDotStrength;
+	@dereferenced
+	private transient SortedVector<int> randomDotDuration;
+	@dereferenced
+	private transient SortedVector<int> randomDotPotency;
+	@dereferenced
+	private transient SortedVector<int> randomDotUses;
+
 	@dereferenced
 	private transient SortedVector<string> lootableMods;
 
@@ -128,7 +140,13 @@ class LootManager extends ManagedService implements Logger {
 	private native void setSockets(TangibleObject object, CraftingValues craftingValues);
 
 	@local
-	private native void addDots(TangibleObject object, LootItemTemplate templateObject, int level, float excMod);
+	private native void addRandomDots(TangibleObject object, LootItemTemplate templateObject, int level, float excMod);
+
+	@local
+	private native void addStaticDots(TangibleObject object, LootItemTemplate templateObject, int level);
+
+	@local
+	private native float calculateDotValue(float min, float max, float level);
 
 	@local
 	private native void addConditionDamage(TangibleObject loot, CraftingValues craftingValues);

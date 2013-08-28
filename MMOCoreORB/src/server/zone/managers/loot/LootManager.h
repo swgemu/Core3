@@ -117,6 +117,8 @@ using namespace server::zone::objects::tangible;
 
 #include "system/util/VectorMap.h"
 
+#include "system/util/SortedVector.h"
+
 #include "engine/core/ManagedService.h"
 
 #include "engine/lua/Lua.h"
@@ -194,6 +196,16 @@ class LootManagerImplementation : public ManagedServiceImplementation, public Lo
 
 	float skillModChance;
 
+	SortedVector<int> randomDotAttribute;
+
+	SortedVector<int> randomDotStrength;
+
+	SortedVector<int> randomDotDuration;
+
+	SortedVector<int> randomDotPotency;
+
+	SortedVector<int> randomDotUses;
+
 	SortedVector<String> lootableMods;
 
 public:
@@ -222,7 +234,11 @@ private:
 
 	void setSockets(TangibleObject* object, CraftingValues* craftingValues);
 
-	void addDots(TangibleObject* object, LootItemTemplate* templateObject, int level, float excMod);
+	void addRandomDots(TangibleObject* object, LootItemTemplate* templateObject, int level, float excMod);
+
+	void addStaticDots(TangibleObject* object, LootItemTemplate* templateObject, int level);
+
+	float calculateDotValue(float min, float max, float level);
 
 	void addConditionDamage(TangibleObject* loot, CraftingValues* craftingValues);
 
