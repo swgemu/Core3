@@ -16,6 +16,24 @@
       "revId": "c339981725f21067fda24988d4b0dfe54964d560",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_23b0b4f3",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/CityDecorationMenuComponent.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-08-28T23:22:00Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "3a1d315d_43ddf041",
+      "revId": "c339981725f21067fda24988d4b0dfe54964d560",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
