@@ -821,7 +821,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 		int reward = 1000;
 
 		if (creoTemplate != NULL) {
-			reward = creoTemplate->getLevel() * (200 + System::random(200));
+			reward = creoTemplate->getLevel() * (300 + System::random(300));
 		}
 
 		mission->setRewardCredits(reward);
