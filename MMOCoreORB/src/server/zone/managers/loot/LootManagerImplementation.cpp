@@ -57,6 +57,56 @@ bool LootManagerImplementation::loadConfigData() {
 	legendaryModifier = lua->getGlobalFloat("legendaryModifier");
 	skillModChance = lua->getGlobalFloat("skillModChance");
 
+	LuaObject dotAttributeTable = lua->getGlobalObject("randomDotAttribute");
+
+	if (dotAttributeTable.isValidTable() && dotAttributeTable.getTableSize() > 0) {
+		for (int i = 1; i <= dotAttributeTable.getTableSize(); ++i) {
+			int value = dotAttributeTable.getIntAt(i);
+			randomDotAttribute.put(value);
+		}
+		dotAttributeTable.pop();
+	}
+
+	LuaObject dotStrengthTable = lua->getGlobalObject("randomDotStrength");
+
+	if (dotStrengthTable.isValidTable() && dotStrengthTable.getTableSize() > 0) {
+		for (int i = 1; i <= dotStrengthTable.getTableSize(); ++i) {
+			int value = dotStrengthTable.getIntAt(i);
+			randomDotStrength.put(value);
+		}
+		dotStrengthTable.pop();
+	}
+
+	LuaObject dotDurationTable = lua->getGlobalObject("randomDotDuration");
+
+	if (dotDurationTable.isValidTable() && dotDurationTable.getTableSize() > 0) {
+		for (int i = 1; i <= dotDurationTable.getTableSize(); ++i) {
+			int value = dotDurationTable.getIntAt(i);
+			randomDotDuration.put(value);
+		}
+		dotDurationTable.pop();
+	}
+
+	LuaObject dotPotencyTable = lua->getGlobalObject("randomDotPotency");
+
+	if (dotPotencyTable.isValidTable() && dotPotencyTable.getTableSize() > 0) {
+		for (int i = 1; i <= dotPotencyTable.getTableSize(); ++i) {
+			int value = dotPotencyTable.getIntAt(i);
+			randomDotPotency.put(value);
+		}
+		dotPotencyTable.pop();
+	}
+
+	LuaObject dotUsesTable = lua->getGlobalObject("randomDotUses");
+
+	if (dotUsesTable.isValidTable() && dotUsesTable.getTableSize() > 0) {
+		for (int i = 1; i <= dotUsesTable.getTableSize(); ++i) {
+			int value = dotUsesTable.getIntAt(i);
+			randomDotUses.put(value);
+		}
+		dotUsesTable.pop();
+	}
+
 	LuaObject lootableModsTable = lua->getGlobalObject("lootableStatMods");
 
 
@@ -267,7 +317,8 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	craftingValues.setHidden("creatureLevel");
 
 	// Add Dots to weapon objects.
-	addDots(prototype, templateObject, level, excMod);
+	addStaticDots(prototype, templateObject, level);
+	addRandomDots(prototype, templateObject, level, excMod);
 
 	setSkillMods(prototype, templateObject, level, excMod);
 
@@ -439,7 +490,7 @@ bool LootManagerImplementation::createLoot(SceneObject* container, const String&
 	return true;
 }
 
-void LootManagerImplementation::addDots(TangibleObject* object, LootItemTemplate* templateObject, int level, float excMod) {
+void LootManagerImplementation::addStaticDots(TangibleObject* object, LootItemTemplate* templateObject, int level) {
 
 	if (object == NULL)
 		return;
@@ -451,31 +502,26 @@ void LootManagerImplementation::addDots(TangibleObject* object, LootItemTemplate
 
 	bool shouldGenerateDots = false;
 
-	float dotChance = templateObject->getDotChance();
+	float dotChance = templateObject->getStaticDotChance();
 
 	// Apply the Dot if the chance roll equals the number or is zero.
-	if (dotChance == 0 || System::random(dotChance / excMod) == 0) { // Defined in loot item script.
+	if (dotChance == 0 || System::random(dotChance) == 0) { // Defined in loot item script.
 		shouldGenerateDots = true;
 	}
 
 	if (shouldGenerateDots) {
 
-		int dotType = templateObject->getDotType();
-		bool random = false;
+		int dotType = templateObject->getStaticDotType();
 
-		if (dotType < 1 || dotType > 5)
-			dotType = 5;
+		if (dotType < 1 || dotType > 4)
+			return;
 
-		VectorMap<String, SortedVector<int> >* dotValues = templateObject->getDotValues();
+		VectorMap<String, SortedVector<int> >* dotValues = templateObject->getStaticDotValues();
 		int size = dotValues->size();
 
 		// Check if they specified correct vals.
 		if (size > 0) {
-			if (dotType == 5) {
-				dotType = System::random(2) + 1; // Poison, Disease, or Fire. No random bleeds.
-				random = true;
-			}
-			weapon->setDotType(dotType);
+			weapon->addDotType(dotType);
 
 			for (int i = 0; i < size; i++) {
 
@@ -486,10 +532,7 @@ void LootManagerImplementation::addDots(TangibleObject* object, LootItemTemplate
 				float value = 0;
 
 				if (max != min) {
-					value = MAX(min, MIN(max, System::random(max - min) * (1 + (level / 1000)))); // Used for Str, Pot, Dur, Uses.
-						if (value < min) {
-							value = min;
-						}
+					value = calculateDotValue(min, max, level);
 				}
 				else { value = max; }
 
@@ -503,31 +546,130 @@ void LootManagerImplementation::addDots(TangibleObject* object, LootItemTemplate
 						value = numbers[choose];
 					}
 
-					weapon->setDotAttribute(value);
+					weapon->addDotAttribute(value);
 				} else if (property == "strength") {
-					if (random) {
-						if (dotType == 1)
-							value = value * 2;
-						else if (dotType == 3)
-							value = value * 1.5;
-					}
-
-					weapon->setDotStrength(value * excMod);
+					weapon->addDotStrength(value);
 				} else if (property == "duration") {
-					if (random) {
-						if (dotType == 2)
-							value = value * 5;
-						else if (dotType == 3)
-							value = value * 1.5;
-					}
-
-					weapon->setDotDuration(value * excMod);
+					weapon->addDotDuration(value);
 				} else if (property == "potency") {
-					weapon->setDotPotency(value * excMod);
+					weapon->addDotPotency(value);
 				} else if (property == "uses") {
-					weapon->setDotUses(value * excMod);
+					weapon->addDotUses(value);
 				}
 			}
 		}
 	}
+}
+
+void LootManagerImplementation::addRandomDots(TangibleObject* object, LootItemTemplate* templateObject, int level, float excMod) {
+
+	if (object == NULL)
+		return;
+
+	if (!object->isWeaponObject())
+		return;
+
+	ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(object);
+
+	bool shouldGenerateDots = false;
+
+	float dotChance = templateObject->getRandomDotChance();
+
+	// Apply the Dot if the chance roll equals the number or is zero.
+	if (dotChance == 0 || System::random(dotChance / excMod) == 0) { // Defined in loot item script.
+		shouldGenerateDots = true;
+	}
+
+	if (shouldGenerateDots) {
+
+		int number = 1;
+		// TODO: Change this before merge to Basilisk
+		if (System::random(10) == 5)
+			number = 2;
+
+		for (int i = 0; i < number; i++) {
+			int dotType = System::random(2) + 1;
+
+			weapon->addDotType(dotType);
+
+			int attMin = randomDotAttribute.elementAt(0);
+			int attMax = randomDotAttribute.elementAt(1);
+			float att = 0;
+
+			if (attMin != attMax)
+				att= System::random(attMax - attMin) + attMin;
+
+			if (dotType != 2 && (att != 0 && att != 3 && att != 6)) {
+				int numbers[] = { 0, 3, 6 }; // The main pool attributes.
+				int choose = System::random(2);
+				att = numbers[choose];
+			}
+
+			weapon->addDotAttribute(att);
+
+			int strMin = randomDotStrength.elementAt(0);
+			int strMax = randomDotStrength.elementAt(1);
+			float str = 0;
+
+			if (strMax != strMin)
+				str = calculateDotValue(strMin, strMax, level);
+			else
+				str = strMax;
+
+			if (dotType == 1)
+				str = str * 2;
+			else if (dotType == 3)
+				str = str * 1.5;
+
+			weapon->addDotStrength(str * excMod);
+
+			int durMin = randomDotDuration.elementAt(0);
+			int durMax = randomDotDuration.elementAt(1);
+			float dur = 0;
+
+			if (durMax != durMin)
+				dur = calculateDotValue(durMin, durMax, level);
+			else
+				dur = durMax;
+
+			if (dotType == 2)
+				dur = dur * 5;
+			else if (dotType == 3)
+				dur = dur * 1.5;
+
+			weapon->addDotDuration(dur * excMod);
+
+			int potMin = randomDotPotency.elementAt(0);
+			int potMax = randomDotPotency.elementAt(1);
+			float pot = 0;
+
+			if (potMax != potMin)
+				pot = calculateDotValue(potMin, potMax, level);
+			else
+				pot = potMax;
+
+			weapon->addDotPotency(pot * excMod);
+
+			int useMin = randomDotUses.elementAt(0);
+			int useMax = randomDotUses.elementAt(1);
+			float use = 0;
+
+			if (useMax != useMin)
+				use = calculateDotValue(useMin, useMax, level);
+			else
+				use = useMax;
+
+			weapon->addDotUses(use * excMod);
+		}
+	}
+}
+
+float LootManagerImplementation::calculateDotValue(float min, float max, float level) {
+	float value = MAX(min, MIN(max, System::random(max - min) * (1 + (level / 1000)))); // Used for Str, Pot, Dur, Uses.
+
+	if (value < min) {
+		value = min;
+	}
+
+	return value;
 }

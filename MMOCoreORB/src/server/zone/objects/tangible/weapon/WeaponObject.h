@@ -119,6 +119,8 @@ using namespace server::zone::objects::tangible::powerup;
 
 #include "system/util/Vector.h"
 
+#include "system/util/SortedVector.h"
+
 #include "system/lang/String.h"
 
 namespace server {
@@ -285,29 +287,33 @@ public:
 
 	String getXpType();
 
-	int getDotType();
+	int getNumberOfDots();
 
-	int getDotAttribute();
+	int getDotType(int index);
 
-	int getDotStrength();
+	int getDotAttribute(int index);
 
-	int getDotDuration();
+	int getDotStrength(int index);
 
-	int getDotPotency();
+	int getDotDuration(int index);
 
-	int getDotUses();
+	int getDotPotency(int index);
 
-	void setDotType(int t);
+	int getDotUses(int index);
 
-	void setDotAttribute(int a);
+	void addDotType(int t);
 
-	void setDotStrength(int s);
+	void addDotAttribute(int a);
 
-	void setDotDuration(int du);
+	void addDotStrength(int s);
 
-	void setDotPotency(int po);
+	void addDotDuration(int du);
 
-	void setDotUses(int u);
+	void addDotPotency(int po);
+
+	void addDotUses(int u);
+
+	void setDotUses(int u, int index);
 
 	String getWeaponType();
 
@@ -456,17 +462,17 @@ protected:
 
 	float speedSlice;
 
-	int dotType;
+	SortedVector<int> dotType;
 
-	int dotAttribute;
+	SortedVector<int> dotAttribute;
 
-	int dotStrength;
+	SortedVector<int> dotStrength;
 
-	int dotDuration;
+	SortedVector<int> dotDuration;
 
-	int dotPotency;
+	SortedVector<int> dotPotency;
 
-	int dotUses;
+	SortedVector<int> dotUses;
 
 	Reference<SharedWeaponObjectTemplate* > weaponTemplate;
 
@@ -631,29 +637,33 @@ public:
 
 	String getXpType();
 
-	int getDotType();
+	int getNumberOfDots();
 
-	int getDotAttribute();
+	int getDotType(int index);
 
-	int getDotStrength();
+	int getDotAttribute(int index);
 
-	int getDotDuration();
+	int getDotStrength(int index);
 
-	int getDotPotency();
+	int getDotDuration(int index);
 
-	int getDotUses();
+	int getDotPotency(int index);
 
-	void setDotType(int t);
+	int getDotUses(int index);
 
-	void setDotAttribute(int a);
+	void addDotType(int t);
 
-	void setDotStrength(int s);
+	void addDotAttribute(int a);
 
-	void setDotDuration(int du);
+	void addDotStrength(int s);
 
-	void setDotPotency(int po);
+	void addDotDuration(int du);
 
-	void setDotUses(int u);
+	void addDotPotency(int po);
+
+	void addDotUses(int u);
+
+	void setDotUses(int u, int index);
 
 	String getWeaponType();
 
@@ -852,29 +862,33 @@ public:
 
 	String getXpType();
 
-	int getDotType();
+	int getNumberOfDots();
 
-	int getDotAttribute();
+	int getDotType(int index);
 
-	int getDotStrength();
+	int getDotAttribute(int index);
 
-	int getDotDuration();
+	int getDotStrength(int index);
 
-	int getDotPotency();
+	int getDotDuration(int index);
 
-	int getDotUses();
+	int getDotPotency(int index);
 
-	void setDotType(int t);
+	int getDotUses(int index);
 
-	void setDotAttribute(int a);
+	void addDotType(int t);
 
-	void setDotStrength(int s);
+	void addDotAttribute(int a);
 
-	void setDotDuration(int du);
+	void addDotStrength(int s);
 
-	void setDotPotency(int po);
+	void addDotDuration(int du);
 
-	void setDotUses(int u);
+	void addDotPotency(int po);
+
+	void addDotUses(int u);
+
+	void setDotUses(int u, int index);
 
 	String getWeaponType();
 

@@ -329,11 +329,11 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 	if (getForceCost() > 0)
 		alm->insertAttribute("forcecost", getForceCost());
 
-	if (getDotType() > 0) {
+	for (int i = 0; i < getNumberOfDots(); i++) {
 
 			String dt;
 
-			switch (dotType) {
+			switch (getDotType(i)) {
 			case 1:
 				dt = "Poison";
 				break;
@@ -351,11 +351,13 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 				break;
 			}
 
-			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_type", dt);
+			StringBuffer type;
+			type << "cat_wpn_dot_0" << i << ".wpn_dot_type";
+			alm->insertAttribute(type.toString(), dt);
 
 			String da;
 
-			switch (dotAttribute) {
+			switch (getDotAttribute(i)) {
 			case 0:
 				da = "Health";
 				break;
@@ -388,19 +390,29 @@ void WeaponObjectImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 				break;
 			}
 
-			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_attrib", da);
+			StringBuffer attrib;
+			attrib << "cat_wpn_dot_0" << i << ".wpn_dot_attrib";
+			alm->insertAttribute(attrib.toString(), da);
 
-			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_strength", getDotStrength());
+			StringBuffer str;
+			str << "cat_wpn_dot_0" << i << ".wpn_dot_strength";
+			alm->insertAttribute(str.toString(), getDotStrength(i));
 
 			StringBuffer dotDur;
-			dotDur << getDotDuration() << "s";
-			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_duration", dotDur);
+			dotDur << getDotDuration(i) << "s";
+			StringBuffer dur;
+			dur << "cat_wpn_dot_0" << i << ".wpn_dot_duration";
+			alm->insertAttribute(dur.toString(), dotDur);
 
 			StringBuffer dotPot;
-			dotPot << getDotPotency() << "%";
-			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_potency", dotPot);
+			dotPot << getDotPotency(i) << "%";
+			StringBuffer pot;
+			pot << "cat_wpn_dot_0" << i << ".wpn_dot_potency";
+			alm->insertAttribute(pot.toString(), dotPot);
 
-			alm->insertAttribute("cat_wpn_dot_00.wpn_dot_uses", getDotUses());
+			StringBuffer use;
+			use << "cat_wpn_dot_0" << i << ".wpn_dot_uses";
+			alm->insertAttribute(use.toString(), getDotUses(i));
 		}
 
 	if(hasPowerup())
