@@ -7,27 +7,29 @@
 
 #include "SequenceBehavior.h"
 
-SequenceBehavior::SequenceBehavior() {
+SequenceBehavior::SequenceBehavior(BehaviorTree* sequenceTree) {
+	this->tree = sequenceTree;
 }
 
 SequenceBehavior::~SequenceBehavior() {
 }
 
 void SequenceBehavior::onInitialize() {
-	currentChild = 0;
-	tree->start(children.get(currentChild));
+	position = 0;
+	end = children.size();
+	tree->start(children.get(0));
 }
 void SequenceBehavior::observe(Status s) {
-	Behavior* child = children.get(0);
+	Behavior* child = children.get(position);
 	if (child->status == FAILURE) {
 		tree->stop(this,FAILURE);
 		return;
 	}
 	if (child->status == SUCCESS) {
-		if (++currentChild == children.size()) {
+		if (++position > end) {
 			tree->stop(this,SUCCESS);
 		} else {
-			tree->start(children.get(currentChild));
+			tree->start(children.get(position));
 		}
 	}
 }

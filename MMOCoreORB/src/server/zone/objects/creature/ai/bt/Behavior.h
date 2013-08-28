@@ -9,6 +9,7 @@
 #define BEHAVIOR_H_
 
 #include "engine/engine.h"
+#include "../AiActor.h"
 
 namespace server {
 namespace zone {
@@ -27,13 +28,13 @@ public:
 	}
 	virtual ~Behavior(){}
 	Status status;
-	Status tick() {
+	Status tick(AiActor* actor) {
 		if (status == INVALID) { onInitialize(); }
-		status = update();
+		status = update(actor);
 		if (status != RUNNING) { onTerminate(status); }
 		return status;
 	}
-	virtual Status update() = 0;
+	virtual Status update(AiActor* actor) = 0;
 	virtual void onInitialize() {}
 	virtual void onTerminate(Status s) {}
 	virtual void observe(Status s){}

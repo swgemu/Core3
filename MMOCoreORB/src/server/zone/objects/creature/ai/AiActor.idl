@@ -68,6 +68,7 @@ import engine.core.ManagedObject;
 include system.thread.Mutex;
 import system.lang.Time;
 
+@mock
 class AiActor extends SceneObject {
 	// finished moving and/or finished dying/spawning
 	public static final unsigned short FINISHED = 0;

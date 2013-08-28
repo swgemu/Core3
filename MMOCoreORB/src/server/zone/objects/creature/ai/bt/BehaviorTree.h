@@ -23,8 +23,8 @@ public:
 	virtual ~BehaviorTree();
 	void start(Behavior* behavior);
 	void stop(Behavior* behavior, Status result);
-	void tick();
-	bool step();
+	void tick(AiActor* actor);
+	bool step(AiActor* actor);
 protected:
 	ArrayQueue<Behavior*> blist;
 };
