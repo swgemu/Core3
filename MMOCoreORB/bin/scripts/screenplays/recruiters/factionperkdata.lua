@@ -64,7 +64,7 @@ faction_reward_data = {
 		"carbine_e11",
 		"pistol_power5",
 		"sword_02",
-		--"rocket_launcher",
+		"rocket_launcher",
 		"mine_drx",
 		"mine_xg",
 	
