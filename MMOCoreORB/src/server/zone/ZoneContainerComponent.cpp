@@ -11,6 +11,9 @@
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/area/ActiveArea.h"
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/terrain/TerrainManager.h"
+#include "server/zone/templates/tangible/SharedBuildingObjectTemplate.h"
 
 bool ZoneContainerComponent::insertActiveArea(Zone* newZone, ActiveArea* activeArea) {
 	if (newZone == NULL)
@@ -184,6 +187,16 @@ bool ZoneContainerComponent::transferObject(SceneObject* sceneObject, SceneObjec
 
 	zone->updateActiveAreas(object);
 
+	SharedBuildingObjectTemplate* objtemplate = dynamic_cast<SharedBuildingObjectTemplate*>(object->getObjectTemplate());
+
+	if (objtemplate != NULL) {
+		String modFile = objtemplate->getTerrainModificationFile();
+
+		if (!modFile.isEmpty()) {
+			newZone->getPlanetManager()->getTerrainManager()->addTerrainModification(object->getWorldPositionX(), object->getWorldPositionY(), modFile, object->getObjectID());
+		}
+	}
+
 	object->notifyInsertToZone(zone);
 
 	return true;
@@ -252,6 +265,16 @@ bool ZoneContainerComponent::removeObject(SceneObject* sceneObject, SceneObject*
 		zone = NULL;
 
 		oldZone->dropSceneObject(object);
+
+		SharedBuildingObjectTemplate* objtemplate = dynamic_cast<SharedBuildingObjectTemplate*>(object->getObjectTemplate());
+
+		if (objtemplate != NULL) {
+			String modFile = objtemplate->getTerrainModificationFile();
+
+			if (!modFile.isEmpty()) {
+				oldZone->getPlanetManager()->getTerrainManager()->removeTerrainModification(object->getObjectID());
+			}
+		}
 
 		zoneLocker.release();
 

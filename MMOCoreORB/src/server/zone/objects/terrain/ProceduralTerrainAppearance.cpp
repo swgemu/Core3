@@ -109,6 +109,8 @@ void ProceduralTerrainAppearance::parseFromIffStream(engine::util::IffStream* if
 }
 
 bool ProceduralTerrainAppearance::getWater(float x, float y, float& waterHeight) {
+	ReadLocker locker(&guard);
+
 	for (int i = 0; i < waterBoundaries.size(); ++i) {
 		Boundary* boundary = waterBoundaries.get(i);
 
@@ -298,21 +300,28 @@ float ProceduralTerrainAppearance::processTerrain(Layer* layer, float x, float y
 }
 
 int ProceduralTerrainAppearance::getEnvironmentID(float x, float y) {
-	LayersGroup* layersGroup = terrainGenerator->getLayersGroup();
-
-	Vector<Layer*>* layers = layersGroup->getLayers();
+	ReadLocker locker(&guard);
 
 	float affectorTransform = 1.0;
 
 	float transformValue = 0;
 	float fullTraverse = 0;
 
-	for (int i = 0; i < layers->size(); ++i) {
-		Layer* layer = layers->get(i);
+	int count = 0;
+	TerrainGenerator* terrain = terrainGenerator;
 
-		if (layer->isEnabled())
-			transformValue = processTerrain(layer, x, y, fullTraverse, affectorTransform, AffectorProceduralRule::ENVIRONMENT);
-	}
+	do {
+		LayersGroup* layersGroup = terrain->getLayersGroup();
+
+		Vector<Layer*>* layers = layersGroup->getLayers();
+
+		for (int i = 0; i < layers->size(); ++i) {
+			Layer* layer = layers->get(i);
+
+			if (layer->isEnabled())
+				transformValue = processTerrain(layer, x, y, fullTraverse, affectorTransform, AffectorProceduralRule::ENVIRONMENT);
+		}
+	} while (count < customTerrain.size() && (terrain = customTerrain.get(count++)));
 
 	//info("full traverse height ... is " + String::valueOf(fullTraverse) + " in mili:" + String::valueOf(start.miliDifference()), true);
 
@@ -320,25 +329,97 @@ int ProceduralTerrainAppearance::getEnvironmentID(float x, float y) {
 }
 
 float ProceduralTerrainAppearance::getHeight(float x, float y) {
-	LayersGroup* layersGroup = terrainGenerator->getLayersGroup();
-
-	Vector<Layer*>* layers = layersGroup->getLayers();
+	ReadLocker locker(&guard);
 
 	float affectorTransform = 1.0;
 
 	float transformValue = 0;
 	float fullTraverse = 0;
 
-	//Time start;
+	int count = 0;
+	TerrainGenerator* terrain = terrainGenerator;
+
+	do {
+		LayersGroup* layersGroup = terrain->getLayersGroup();
+
+		Vector<Layer*>* layers = layersGroup->getLayers();
+
+		for (int i = 0; i < layers->size(); ++i) {
+			Layer* layer = layers->get(i);
+
+			if (layer->isEnabled())
+				transformValue = processTerrain(layer, x, y, fullTraverse, affectorTransform, AffectorProceduralRule::HEIGHTTYPE);
+		}
+	} while (count < customTerrain.size() && (terrain = customTerrain.get(count++)));
+
+	//info("full traverse height ... is " + String::valueOf(fullTraverse) + " in mili:" + String::valueOf(start.miliDifference()), true);
+
+	return fullTraverse;
+}
+
+void ProceduralTerrainAppearance::translateBoundaries(Layer* layer, float x, float y) {
+	Vector<Boundary*>* boundaries = layer->getBoundaries();
+
+	for (int j = 0; j < boundaries->size(); ++j) {
+		Boundary* boundary = boundaries->get(j);
+
+		boundary->translateBoundary(x, y);
+	}
+
+	Vector<Layer*>* children = layer->getChildren();
+
+	for (int i = 0; i < children->size(); ++i) {
+		Layer* child = children->get(i);
+
+		if (child->isEnabled()) {
+			translateBoundaries(child, x, y);
+		}
+	}
+}
+
+TerrainGenerator* ProceduralTerrainAppearance::addTerrainModification(engine::util::IffStream* terrainGeneratorIffStream, float x, float y, uint64 objectid) {
+	TerrainGenerator* terrain = new TerrainGenerator(this);
+
+	try {
+		terrain->parseFromIffStream(terrainGeneratorIffStream, Version<'0000'>());
+	} catch (Exception& e) {
+		error("could not deserialize terrain modification iff file");
+		error(e.getMessage());
+		delete terrain;
+		return NULL;
+	}
+
+	Vector<Layer*>* layers = terrain->getLayersGroup()->getLayers();
 
 	for (int i = 0; i < layers->size(); ++i) {
 		Layer* layer = layers->get(i);
 
 		if (layer->isEnabled())
-			transformValue = processTerrain(layer, x, y, fullTraverse, affectorTransform, AffectorProceduralRule::HEIGHTTYPE);
+			translateBoundaries(layer, x, y);
 	}
 
-	//info("full traverse height ... is " + String::valueOf(fullTraverse) + " in mili:" + String::valueOf(start.miliDifference()), true);
+	Locker locker(&guard);
 
-	return fullTraverse;
+	TerrainGenerator* oldLayer = terrainModifications.put(objectid, terrain);
+	customTerrain.add(terrain);
+
+	if (oldLayer != NULL) {
+		customTerrain.removeElement(oldLayer);
+		delete oldLayer;
+	}
+
+	return terrain;
+}
+
+void ProceduralTerrainAppearance::removeTerrainModification(uint64 objectid) {
+	Locker locker(&guard);
+
+	TerrainGenerator* layer = terrainModifications.remove(objectid);
+
+	if (layer == NULL)
+		return;
+
+	customTerrain.removeElement(layer);
+
+	delete layer;
 }

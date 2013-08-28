@@ -582,11 +582,8 @@ uint32 FishingManagerImplementation::createWindow(CreatureObject* player, uint32
 void FishingManagerImplementation::closeMenu(CreatureObject* player, uint32 boxID) {
 	PlayerObject* ghost = player->getPlayerObject();
 
-	if ((player != NULL) && (boxID != -1)) {
-		if (ghost->hasSuiBox(boxID)) {
-			player->sendMessage(ghost->getSuiBox(boxID)->generateCloseMessage());
-			ghost->removeSuiBox(boxID);
-		}
+	if(player != NULL) {
+		ghost->removeSuiBoxType(SuiWindowType::FISHING);
 	}
 }
 

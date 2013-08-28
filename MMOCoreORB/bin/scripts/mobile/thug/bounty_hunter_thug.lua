@@ -21,13 +21,27 @@ bounty_hunter_thug = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = ATTACKABLE + AGGRESSIVE + ENEMY,
 	optionsBitmask = 128,
-	creatureBitmask = KILLER,
+	creatureBitmask = PACK + STALKER + KILLER,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_bountyhunter_trainer_03.iff"},
-	lootGroups = {},
+	templates = {"object/mobile/dressed_bountyhunter_trainer_03.iff",
+			"object/mobile/dressed_bounty_hunter_zabrak_female_01.iff"},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 3500000},
+				{group = "grenades_looted", chance = 1000000},
+				{group = "armor_looted", chance = 1500000},
+				{group = "rifles", chance = 1000000},
+				{group = "carbines", chance = 1000000},
+				{group = "tailor_components", chance = 1000000},
+				{group = "loot_kit_parts", chance = 1000000}
+			},
+			lootChance = 2300000
+		}				
+	},
 	weapons = {"pirate_weapons_heavy"},
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
