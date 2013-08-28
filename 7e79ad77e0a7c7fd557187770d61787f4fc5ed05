@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_03e7f813",
+        "filename": "MMOCoreORB/src/server/zone/objects/region/CityRegionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-08-28T21:46:12Z",
+      "side": 1,
+      "message": "The object needs to be locked when calling destroyObjectFromWorld",
+      "revId": "7e79ad77e0a7c7fd557187770d61787f4fc5ed05",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
