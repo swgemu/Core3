@@ -34,7 +34,7 @@ borvos_thug = Creature:new {
 				{group = "color_crystals", chance = 200000},
 				{group = "tailor_components", chance = 1000000},
 				{group = "loot_kit_parts", chance = 1000000},
-				{group = "rilfes", chance = 500000},
+				{group = "rifles", chance = 500000},
 				{group = "carbines", chance = 500000},
 				{group = "borvos_common", chance = 2800000}
 			},

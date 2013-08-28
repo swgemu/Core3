@@ -32,7 +32,7 @@ the_mos_taike_mayor = Creature:new {
 			groups = {
 				{group = "junk", chance = 6500000},
 				{group = "tailor_components", chance = 1500000},
-				{group = "loot_kits", chance = 2000000}
+				{group = "loot_kit_parts", chance = 2000000}
 			},
 			lootChance = 2400000
 		}			

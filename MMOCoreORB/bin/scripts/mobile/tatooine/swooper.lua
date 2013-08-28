@@ -32,7 +32,7 @@ swooper = Creature:new {
 			groups = {
 				{group = "junk", chance = 6000000},
 				{group = "tailor_components", chance = 1000000},
-				{group = "loot_kits", chance = 2000000},
+				{group = "loot_kit_parts", chance = 2000000},
 				{group = "printer_parts", chance = 1000000},
 			},
 			lootChance = 2000000
