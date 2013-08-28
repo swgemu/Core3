@@ -17,10 +17,10 @@ namespace creature {
 namespace ai {
 namespace bt {
 
-class MockBehaviour: public Behavior {
+class MockBehavior: public Behavior {
 public:
-	MOCK_METHOD0(tick, Status());
-	MOCK_METHOD0(update,Status());
+	MOCK_METHOD1(tick, Status(AiActor* a));
+	MOCK_METHOD1(update,Status(AiActor* a));
 	MOCK_METHOD0(onInitialize,void());
 	MOCK_METHOD0(canObserve,bool());
 	MOCK_METHOD1(onTerminate, void(Status s));

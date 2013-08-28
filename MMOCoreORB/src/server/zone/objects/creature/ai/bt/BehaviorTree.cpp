@@ -26,18 +26,21 @@ void BehaviorTree::stop(Behavior* behavior, Status result) {
 		behavior->observe(result);
 	}
 }
-void BehaviorTree::tick() {
+void BehaviorTree::tick(AiActor* actor) {
 	Behavior* stop = NULL;
+	if (actor == NULL)
+		return;
+	Locker actorLock(actor);
 	blist.add(stop);
-	while(step()) {
+	while(step(actor)) {
 		continue;
 	}
 }
-bool BehaviorTree::step() {
+bool BehaviorTree::step(AiActor* actor) {
 	Behavior* current = blist.remove();
 	if (current == NULL)
 		return false;
-	current->tick();
+	current->tick(actor);
 	if (current->status != RUNNING && current->canObserve()) {
 		current->observe(current->status);
 	} else {

@@ -20,7 +20,7 @@ namespace bt {
 
 class SequenceBehavior: public CompositeBehavior {
 public:
-	SequenceBehavior();
+	SequenceBehavior(BehaviorTree* sequenceTree);
 	virtual ~SequenceBehavior();
 protected:
 	BehaviorTree* tree;
@@ -28,7 +28,8 @@ protected:
 	virtual Status update() { return RUNNING; }
 	virtual void observe(Status s);
 	virtual bool canObserve() { return true; }
-	int currentChild;
+	int position;
+	int end;
 };
 
 }
