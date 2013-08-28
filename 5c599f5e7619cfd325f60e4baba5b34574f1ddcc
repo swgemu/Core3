@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_83a1c8ab",
+        "filename": "MMOCoreORB/src/server/zone/templates/LootItemTemplate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-08-28T21:49:10Z",
+      "side": 1,
+      "message": "Why are you using SortedVector everywhere but using ::add()?",
+      "revId": "5c599f5e7619cfd325f60e4baba5b34574f1ddcc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
