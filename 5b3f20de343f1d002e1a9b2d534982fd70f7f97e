@@ -16,6 +16,24 @@
       "revId": "5b3f20de343f1d002e1a9b2d534982fd70f7f97e",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_43ca90a2",
+        "filename": "MMOCoreORB/src/server/zone/managers/city/CityDecorationTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-08-28T02:46:26Z",
+      "side": 1,
+      "message": "Yes, it\u0027s wrong.  I meant to in the placeDecoration() and must have misplaced it.",
+      "parentUuid": "3a1d315d_c33340f5",
+      "revId": "5b3f20de343f1d002e1a9b2d534982fd70f7f97e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
