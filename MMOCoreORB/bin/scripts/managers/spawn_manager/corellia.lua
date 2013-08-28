@@ -1173,7 +1173,6 @@ corellia_static_spawns = {
 	{"trainer_marksman",0,6770,0,-5714,180,0, "", ""},
 	{"trainer_marksman",0,0,1.13306,-14,0,2365769, "", ""},
 
-	{"trainer_marksman",0,-3130,0,2791,180,0, "", ""},
 	{"trainer_marksman",0,-165,28,-4746,92,0, "", ""},
 	{"trainer_marksman",0,0,1.13306,-14,0,1855507, "", ""},
 	{"trainer_marksman",0,0,1.13306,-14,0,3075360, "", ""},
