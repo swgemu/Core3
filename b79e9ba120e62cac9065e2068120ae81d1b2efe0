@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_c376a006",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/ai/bt/SequenceBehavior.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-08-29T21:49:30Z",
+      "side": 1,
+      "message": "i perhaps instead of 0?",
+      "revId": "b79e9ba120e62cac9065e2068120ae81d1b2efe0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_a373a414",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/ai/bt/tests/BehaviorTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-08-29T21:49:30Z",
+      "side": 1,
+      "message": "Try to name the test what you verify in them. That way it is easier to understand what you are trying to verify. See the test name as a description of the test.\n\nIf the name gets to long then the test case is to complex and should be split into several tests.",
+      "revId": "b79e9ba120e62cac9065e2068120ae81d1b2efe0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
