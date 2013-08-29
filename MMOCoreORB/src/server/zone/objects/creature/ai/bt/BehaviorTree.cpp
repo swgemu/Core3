@@ -18,12 +18,12 @@ BehaviorTree::~BehaviorTree() {
 void BehaviorTree::start(Behavior* behavior) {
 	blist.add(behavior);
 }
-void BehaviorTree::stop(Behavior* behavior, Status result) {
-	if (result != RUNNING) {
-		behavior->status = result;
+void BehaviorTree::stop(Behavior* behavior, AiActor* actor) {
+	if (actor->getBehaviorStatus(behavior) != RUNNING) {
+		return;
 	}
 	if (behavior->canObserve()) {
-		behavior->observe(result);
+		behavior->observe(actor);
 	}
 }
 void BehaviorTree::tick(AiActor* actor) {
@@ -41,8 +41,8 @@ bool BehaviorTree::step(AiActor* actor) {
 	if (current == NULL)
 		return false;
 	current->tick(actor);
-	if (current->status != RUNNING && current->canObserve()) {
-		current->observe(current->status);
+	if (actor->getBehaviorStatus(current) != RUNNING && current->canObserve()) {
+		current->observe(actor);
 	} else {
 		blist.add(current);
 	}
