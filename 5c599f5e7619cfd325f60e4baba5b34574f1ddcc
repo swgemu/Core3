@@ -34,6 +34,24 @@
       "revId": "5c599f5e7619cfd325f60e4baba5b34574f1ddcc",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_4399706d",
+        "filename": "MMOCoreORB/src/server/zone/templates/LootItemTemplate.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-08-29T02:03:23Z",
+      "side": 1,
+      "message": "Changing to put will force them to be ordered, i am not sure you want that everywhere (the idl for example).\n\nI am just curious why are you using sorted vector without sorting the elements.",
+      "parentUuid": "3a1d315d_43829001",
+      "revId": "5c599f5e7619cfd325f60e4baba5b34574f1ddcc",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
