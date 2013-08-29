@@ -52,6 +52,34 @@ void StructureObjectImplementation::initializeTransientMembers() {
 void StructureObjectImplementation::finalize() {
 }
 
+void StructureObjectImplementation::notifyInsertToZone(Zone* zone) {
+	TangibleObjectImplementation::notifyInsertToZone(zone);
+
+	if (isCivicStructure()) {
+		if (structurePermissionList.containsList("ADMIN"))
+			structurePermissionList.dropList("ADMIN");
+
+		if (structurePermissionList.containsList("ENTRY"))
+			structurePermissionList.dropList("ENTRY");
+
+		if (structurePermissionList.containsList("HOPPER"))
+			structurePermissionList.dropList("HOPPER");
+
+		if (structurePermissionList.containsList("BAN"))
+			structurePermissionList.dropList("BAN");
+
+		if (structurePermissionList.containsList("VENDOR"))
+			structurePermissionList.dropList("VENDOR");
+	}
+
+	if (!staticObject && baseMaintenanceRate != 0 && !isTurret() && !isMinefield()) {
+		//Decay is 4 weeks.
+		maxCondition = baseMaintenanceRate * 24 * 7 * 4;
+
+		scheduleMaintenanceExpirationEvent();
+	}
+}
+
 int StructureObjectImplementation::getLotSize() {
 	SharedStructureObjectTemplate* ssot = dynamic_cast<SharedStructureObjectTemplate*>(templateObject.get());
 

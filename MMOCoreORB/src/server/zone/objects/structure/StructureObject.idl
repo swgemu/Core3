@@ -121,16 +121,7 @@ class StructureObject extends TangibleObject {
 	public native void loadTemplateData(SharedObjectTemplate templateData);
 	
 	
-	public void notifyInsertToZone(Zone zone) {
-		super.notifyInsertToZone(zone);
-		
-		if (!super.staticObject && baseMaintenanceRate != 0 && !isTurret() && !isMinefield()) {
-			//Decay is 4 weeks.
-			super.maxCondition = baseMaintenanceRate * 24 * 7 * 4;
-			
-			scheduleMaintenanceExpirationEvent();
-		}			
-	}
+	public native void notifyInsertToZone(Zone zone);
 	
 	public void createChildObjects() {
 		super.createChildObjects();
