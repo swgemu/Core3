@@ -24,12 +24,16 @@ public:
 	virtual ~SequenceBehavior();
 protected:
 	BehaviorTree* tree;
-	virtual void onInitialize();
-	virtual Status update() { return RUNNING; }
-	virtual void observe(Status s);
+	virtual void onInitialize(AiActor* actor);
+	virtual Status update(AiActor* actor) { return RUNNING; }
+	virtual void observe(AiActor* actor);
 	virtual bool canObserve() { return true; }
 	int position;
 	int end;
+	virtual void addChild(Behavior* child) {
+		CompositeBehavior::addChild(child);
+		end = children.size();
+	}
 };
 
 }

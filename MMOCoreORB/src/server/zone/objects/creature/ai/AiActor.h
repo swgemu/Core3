@@ -91,6 +91,60 @@ using namespace server::zone::objects::creature::events;
 
 namespace server {
 namespace zone {
+namespace objects {
+namespace creature {
+namespace ai {
+namespace bt {
+
+class Behavior;
+
+} // namespace bt
+} // namespace ai
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::ai::bt;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace ai {
+namespace bt {
+
+class BehaviorTreeList;
+
+} // namespace bt
+} // namespace ai
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::ai::bt;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace ai {
+namespace bt {
+
+class BehaviorTree;
+
+} // namespace bt
+} // namespace ai
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::ai::bt;
+
+namespace server {
+namespace zone {
 namespace packets {
 namespace scene {
 
@@ -143,6 +197,8 @@ class Zone;
 
 using namespace server::zone;
 
+#include "gmock/gmock.h"
+
 #include "server/zone/objects/creature/ai/components/AiStateComponent.h"
 
 #include "server/zone/objects/creature/PatrolPointsVector.h"
@@ -164,6 +220,10 @@ using namespace server::zone;
 #include "system/lang/Time.h"
 
 #include "system/util/Vector.h"
+
+#include "system/util/ArrayQueue.h"
+
+#include "system/util/HashTable.h"
 
 #include "system/lang/ref/Reference.h"
 
@@ -383,6 +443,16 @@ public:
 
 	bool isActorObject();
 
+	int getBehaviorStatus(Behavior* b);
+
+	void setBehaviorStatus(Behavior* b, int status);
+
+	void addBehaviorToTree(BehaviorTree* tree, Behavior* b);
+
+	Behavior* getNextBehaviorFromTree(BehaviorTree* tree);
+
+	void resetBehaviorList(BehaviorTree* tree);
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -432,6 +502,10 @@ public:
 
 protected:
 	VectorMap<String, String> transitions;
+
+	HashTable<Behavior*, int> statuses;
+
+	HashTable<BehaviorTree*, BehaviorTreeList*> trees;
 
 	Reference<AiStateComponent* > currentState;
 
@@ -678,6 +752,16 @@ public:
 
 	bool isActorObject();
 
+	int getBehaviorStatus(Behavior* b);
+
+	void setBehaviorStatus(Behavior* b, int status);
+
+	void addBehaviorToTree(BehaviorTree* tree, Behavior* b);
+
+	Behavior* getNextBehaviorFromTree(BehaviorTree* tree);
+
+	void resetBehaviorList(BehaviorTree* tree);
+
 	WeakReference<AiActor*> _this;
 
 	operator const AiActor*();
@@ -892,6 +976,12 @@ public:
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class Singleton<AiActorHelper>;
+};
+
+class MockAiActor : public AiActor {
+public:
+
+
 };
 
 } // namespace ai
