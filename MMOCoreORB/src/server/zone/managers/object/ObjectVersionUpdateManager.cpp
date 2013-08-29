@@ -30,6 +30,10 @@ int ObjectVersionUpdateManager::run() {
 		updateCityTreasury();
 		ObjectDatabaseManager::instance()->updateCurrentVersion(INITIAL_DATABASE_VERSION + 2);
 		return 0;
+	} else if (version == INITIAL_DATABASE_VERSION + 2) {
+		updateWeaponsDots();
+		ObjectDatabaseManager::instance()->updateCurrentVersion(INITIAL_DATABASE_VERSION + 3);
+		return 0;
 	} else {
 
 		info("database on latest version : " + String::valueOf(version), true);
@@ -161,6 +165,93 @@ ObjectOutputStream* ObjectVersionUpdateManager::changeVariableData(const uint32&
 	//newData->reset();
 
 	return newData;
+}
+
+void ObjectVersionUpdateManager::updateWeaponsDots() {
+	ObjectDatabase* database = ObjectDatabaseManager::instance()->loadObjectDatabase("sceneobjects", true);
+
+	ObjectDatabaseIterator iterator(database);
+	ObjectInputStream objectData(2000);
+	uint64 objectID = 0;
+
+	info("update database weapon dots", true);
+
+	int count = 0;
+	uint32 classNameHashCode = String("_className").hashCode();
+	try {
+
+		while (iterator.getNextKeyAndValue(objectID, &objectData)) {
+			String className;
+			uint64 residence = 0;
+
+			try {
+				if (!Serializable::getVariable<String>(classNameHashCode, &className, &objectData)) {
+
+					objectData.clear();
+					continue;
+				}
+			} catch (...) {
+				objectData.clear();
+				continue;
+			}
+
+			if (className == "WeaponObject") {
+				Vector<int> dots;
+
+				ObjectOutputStream newDotsValue;
+				TypeInfo<Vector<int> >::toBinaryStream(&dots, &newDotsValue);
+
+				//	info("we found a Player " + String::valueOf(objectID) + " with residence " + String::valueOf(residence),true);
+				ObjectOutputStream* newData = changeVariableData(String("WeaponObject.dotType").hashCode(), &objectData, &newDotsValue);
+				newData->reset();
+
+				ObjectInputStream* inputStream = new ObjectInputStream(newData->getBuffer(), newData->size());
+				delete newData;
+
+				ObjectOutputStream* newNextData = changeVariableData(String("WeaponObject.dotAttribute").hashCode(), inputStream, &newDotsValue);
+				newNextData->reset();
+
+				delete inputStream;
+				inputStream = new ObjectInputStream(newNextData->getBuffer(), newNextData->size());
+				delete newNextData;
+
+				newData = changeVariableData(String("WeaponObject.dotStrength").hashCode(), inputStream, &newDotsValue);
+				newData->reset();
+
+				delete inputStream;
+				inputStream = new ObjectInputStream(newData->getBuffer(), newData->size());
+				delete newData;
+
+				newNextData = changeVariableData(String("WeaponObject.dotDuration").hashCode(), inputStream, &newDotsValue);
+				newNextData->reset();
+
+				delete inputStream;
+				inputStream = new ObjectInputStream(newNextData->getBuffer(), newNextData->size());
+				delete newNextData;
+
+				newData = changeVariableData(String("WeaponObject.dotPotency").hashCode(), inputStream, &newDotsValue);
+				newData->reset();
+
+				delete inputStream;
+				inputStream = new ObjectInputStream(newData->getBuffer(), newData->size());
+				delete newData;
+
+				newNextData = changeVariableData(String("WeaponObject.dotUses").hashCode(), inputStream, &newDotsValue);
+				newNextData->reset();
+
+				delete inputStream;
+
+				database->putData(objectID, newNextData, NULL);
+			}
+
+			objectData.clear();
+		}
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+	}
+
+	info("done updating databse weapon dots\n", true);
 }
 
 
