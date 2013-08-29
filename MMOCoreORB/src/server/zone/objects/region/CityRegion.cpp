@@ -22,7 +22,7 @@
  *	CityRegionStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_CLEANUPCITIZENS__,RPC_GETCURRENTPLAYERCOUNT__,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCOMMERCIALSTRUCTURESCOUNT__,RPC_GETALLSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__FLOAT_,RPC_ADDTOCITYTREASURY__FLOAT_,RPC_SUBTRACTFROMCITYTREASURY__FLOAT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_,RPC_REMOVESHUTTLEINSTALLATION__,RPC_HASSHUTTLEINSTALLATION__,RPC_SETSHUTTLEID__LONG_,RPC_GETMISSIONTERMINALCOUNT__,RPC_GETDECORATIONCOUNT__,RPC_GETSKILLTRAINERCOUNT__,RPC_ADDMISSIONTERMINAL__SCENEOBJECT_,RPC_ADDDECORATION__SCENEOBJECT_,RPC_ADDSKILLTRAINER__SCENEOBJECT_,RPC_REMOVEMISSIONTERMINAL__SCENEOBJECT_,RPC_REMOVEDECORATION__SCENEOBJECT_,RPC_REMOVESKILLTRAINERS__SCENEOBJECT_,RPC_ADDBAZAAR__TANGIBLEOBJECT_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_REMOVEALLSKILLTRAINERS__,RPC_REMOVEALLTERMINALS__,RPC_REMOVEALLDECORATIONS__,RPC_UPDATEMILITIA__,RPC_ADDSTRUCTURE__STRUCTUREOBJECT_,RPC_ADDCOMMERCIALSTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVESTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVECOMMERCIALSTRUCTURE__STRUCTUREOBJECT_,RPC_HASUNIQUESTRUCTURE__INT_,RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_,RPC_ADDCANDIDATE__LONG_,RPC_SETMAYORALVOTE__LONG_LONG_,RPC_GETCANDIDATEVOTES__LONG_,RPC_RESETCANDIDATES__,RPC_RESETMAYORALVOTES__,RPC_REMOVECANDIDATE__LONG_,RPC_ISCANDIDATE__LONG_,RPC_ISVOTINGPERIODOVER__,RPC_ISVOTINGPERIOD__,RPC_ISVOTINGLOCKED__,RPC_RESETVOTINGPERIOD__,RPC_ISLOADED__,RPC_SETLOADED__,RPC_APPLYSPECIALIZATIONMODIFIERS__CREATUREOBJECT_,RPC_REMOVESPECIALIZATIONMODIFIERS__CREATUREOBJECT_,RPC_GETPROPERTYTAX__,RPC_GETINCOMETAX__,RPC_GETSALESTAX__,RPC_GETTRAVELTAX__,RPC_GETGARAGETAX__,RPC_GETTAX__INT_,RPC_SETTAX__INT_INT_,RPC_TRANSFERCIVICSTRUCTURESTOMAYOR__,RPC_CLEANUPCITYSTRUCTURES__};
+enum {RPC_INITIALIZE__ = 6,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYENTER__SCENEOBJECT_,RPC_NOTIFYEXIT__SCENEOBJECT_,RPC_ADDREGION__FLOAT_FLOAT_FLOAT_BOOL_,RPC_RESCHEDULEUPDATEEVENT__INT_,RPC_DESTROYACTIVEAREAS__,RPC_ADDMILITIAMEMBER__LONG_,RPC_REMOVEMILITIAMEMBER__LONG_,RPC_ISMILITIAMEMBER__LONG_,RPC_ADDZONINGRIGHTS__LONG_INT_,RPC_REMOVEZONINGRIGHTS__LONG_,RPC_HASZONINGRIGHTS__LONG_,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_CLEANUPCITIZENS__,RPC_GETCURRENTPLAYERCOUNT__,RPC_ADDCITIZEN__LONG_,RPC_REMOVECITIZEN__LONG_,RPC_ADDBANNEDPLAYER__LONG_,RPC_REMOVEBANNEDPLAYER__LONG_,RPC_ISCITIZEN__LONG_,RPC_GETTIMETOUPDATE__,RPC_GETCITIZENCOUNT__,RPC_GETCITYRANK__,RPC_ISBANNED__LONG_,RPC_ISREGISTERED__,RPC_GETZONE__,RPC_GETREGIONNAME__,RPC_GETMAYORID__,RPC_GETPOSITIONX__,RPC_GETPOSITIONY__,RPC_GETRADIUS__,RPC_GETREGION__INT_,RPC_GETREGIONSCOUNT__,RPC_GETSTRUCTURESCOUNT__,RPC_GETCOMMERCIALSTRUCTURESCOUNT__,RPC_GETALLSTRUCTURESCOUNT__,RPC_GETCITYSPECIALIZATION__,RPC_GETCITYTREASURY__,RPC_ISMAYOR__LONG_,RPC_ISZONINGENABLED__,RPC_ISCLIENTREGION__,RPC_GETCITYHALL__,RPC_SETZONE__ZONE_,RPC_SETCUSTOMREGIONNAME__STRING_,RPC_SETCITYSPECIALIZATION__STRING_,RPC_SETREGIONNAME__STRING_,RPC_SETCITYTREASURY__FLOAT_,RPC_ADDTOCITYTREASURY__FLOAT_,RPC_SUBTRACTFROMCITYTREASURY__FLOAT_,RPC_GETMAXWITHDRAWAL__,RPC_SETCITYRANK__BYTE_,RPC_SETMAYORID__LONG_,RPC_SETREGISTERED__BOOL_,RPC_SETZONINGENABLED__BOOL_,RPC_SETRADIUS__FLOAT_,RPC_SETCITYHALL__STRUCTUREOBJECT_,RPC_REMOVESHUTTLEINSTALLATION__,RPC_HASSHUTTLEINSTALLATION__,RPC_SETSHUTTLEID__LONG_,RPC_GETMISSIONTERMINALCOUNT__,RPC_GETDECORATIONCOUNT__,RPC_GETSKILLTRAINERCOUNT__,RPC_ADDMISSIONTERMINAL__SCENEOBJECT_,RPC_ADDDECORATION__SCENEOBJECT_,RPC_ADDSKILLTRAINER__SCENEOBJECT_,RPC_REMOVEMISSIONTERMINAL__SCENEOBJECT_,RPC_REMOVEDECORATION__SCENEOBJECT_,RPC_REMOVESKILLTRAINERS__SCENEOBJECT_,RPC_ADDBAZAAR__TANGIBLEOBJECT_,RPC_GETBAZAAR__INT_,RPC_GETBAZAARCOUNT__,RPC_REMOVEALLSKILLTRAINERS__,RPC_REMOVEALLTERMINALS__,RPC_REMOVEALLDECORATIONS__,RPC_UPDATEMILITIA__,RPC_ADDSTRUCTURE__STRUCTUREOBJECT_,RPC_ADDCOMMERCIALSTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVESTRUCTURE__STRUCTUREOBJECT_,RPC_REMOVECOMMERCIALSTRUCTURE__STRUCTUREOBJECT_,RPC_HASUNIQUESTRUCTURE__INT_,RPC_DESTROYALLSTRUCTURESFORRANK__BYTE_,RPC_ADDCANDIDATE__LONG_,RPC_SETMAYORALVOTE__LONG_LONG_,RPC_GETCANDIDATEVOTES__LONG_,RPC_RESETCANDIDATES__,RPC_RESETMAYORALVOTES__,RPC_REMOVECANDIDATE__LONG_,RPC_ISCANDIDATE__LONG_,RPC_ISVOTINGPERIODOVER__,RPC_ISVOTINGPERIOD__,RPC_ISVOTINGLOCKED__,RPC_RESETVOTINGPERIOD__,RPC_ISLOADED__,RPC_SETLOADED__,RPC_APPLYSPECIALIZATIONMODIFIERS__CREATUREOBJECT_,RPC_REMOVESPECIALIZATIONMODIFIERS__CREATUREOBJECT_,RPC_GETPROPERTYTAX__,RPC_GETINCOMETAX__,RPC_GETSALESTAX__,RPC_GETTRAVELTAX__,RPC_GETGARAGETAX__,RPC_GETTAX__INT_,RPC_SETTAX__INT_INT_,RPC_TRANSFERCIVICSTRUCTURESTOMAYOR__,RPC_CLEANUPDUPLICATECITYSTRUCTURES__,RPC_REMOVEDECORATIONSOUTSIDECITY__INT_,RPC_REMOVETRAINERSOUTSIDECITY__INT_,RPC_REMOVETERMINALSOUTSIDECITY__INT_,RPC_REMOVESTRUCTURESOUTSIDECITY__INT_,RPC_ISINSIDERADIUS__SCENEOBJECT_INT_,RPC_REMOVEAMENITIESOUTSIDECITY__INT_};
 
 CityRegion::CityRegion() : ManagedObject(DummyConstructorParameter::instance()) {
 	CityRegionImplementation* _implementation = new CityRegionImplementation();
@@ -1602,17 +1602,102 @@ void CityRegion::transferCivicStructuresToMayor() {
 		_implementation->transferCivicStructuresToMayor();
 }
 
-void CityRegion::cleanupCityStructures() {
+void CityRegion::cleanupDuplicateCityStructures() {
 	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_CLEANUPCITYSTRUCTURES__);
+		DistributedMethod method(this, RPC_CLEANUPDUPLICATECITYSTRUCTURES__);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->cleanupCityStructures();
+		_implementation->cleanupDuplicateCityStructures();
+}
+
+void CityRegion::removeDecorationsOutsideCity(int newRadius) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEDECORATIONSOUTSIDECITY__INT_);
+		method.addSignedIntParameter(newRadius);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeDecorationsOutsideCity(newRadius);
+}
+
+void CityRegion::removeTrainersOutsideCity(int newRadius) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVETRAINERSOUTSIDECITY__INT_);
+		method.addSignedIntParameter(newRadius);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeTrainersOutsideCity(newRadius);
+}
+
+void CityRegion::removeTerminalsOutsideCity(int newRadius) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVETERMINALSOUTSIDECITY__INT_);
+		method.addSignedIntParameter(newRadius);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeTerminalsOutsideCity(newRadius);
+}
+
+void CityRegion::removeStructuresOutsideCity(int newRadius) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVESTRUCTURESOUTSIDECITY__INT_);
+		method.addSignedIntParameter(newRadius);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeStructuresOutsideCity(newRadius);
+}
+
+bool CityRegion::isInsideRadius(SceneObject* obj, int radiusToUse) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISINSIDERADIUS__SCENEOBJECT_INT_);
+		method.addObjectParameter(obj);
+		method.addSignedIntParameter(radiusToUse);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isInsideRadius(obj, radiusToUse);
+}
+
+void CityRegion::removeAmenitiesOutsideCity(int newRadius) {
+	CityRegionImplementation* _implementation = static_cast<CityRegionImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_REMOVEAMENITIESOUTSIDECITY__INT_);
+		method.addSignedIntParameter(newRadius);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->removeAmenitiesOutsideCity(newRadius);
 }
 
 DistributedObjectServant* CityRegion::_getImplementation() {
@@ -2670,6 +2755,17 @@ SceneObject* CityRegionImplementation::getCitySkillTrainer(int indx) {
 	return (&citySkillTrainers)->get(indx);
 }
 
+void CityRegionImplementation::removeAmenitiesOutsideCity(int newRadius) {
+	// server/zone/objects/region/CityRegion.idl():  		removeStructuresOutsideCity(newRadius);
+	removeStructuresOutsideCity(newRadius);
+	// server/zone/objects/region/CityRegion.idl():  		removeDecorationsOutsideCity(newRadius);
+	removeDecorationsOutsideCity(newRadius);
+	// server/zone/objects/region/CityRegion.idl():  		removeTrainersOutsideCity(newRadius);
+	removeTrainersOutsideCity(newRadius);
+	// server/zone/objects/region/CityRegion.idl():  		removeTerminalsOutsideCity(newRadius);
+	removeTerminalsOutsideCity(newRadius);
+}
+
 /*
  *	CityRegionAdapter
  */
@@ -3218,9 +3314,39 @@ void CityRegionAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			transferCivicStructuresToMayor();
 		}
 		break;
-	case RPC_CLEANUPCITYSTRUCTURES__:
+	case RPC_CLEANUPDUPLICATECITYSTRUCTURES__:
 		{
-			cleanupCityStructures();
+			cleanupDuplicateCityStructures();
+		}
+		break;
+	case RPC_REMOVEDECORATIONSOUTSIDECITY__INT_:
+		{
+			removeDecorationsOutsideCity(inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_REMOVETRAINERSOUTSIDECITY__INT_:
+		{
+			removeTrainersOutsideCity(inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_REMOVETERMINALSOUTSIDECITY__INT_:
+		{
+			removeTerminalsOutsideCity(inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_REMOVESTRUCTURESOUTSIDECITY__INT_:
+		{
+			removeStructuresOutsideCity(inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_ISINSIDERADIUS__SCENEOBJECT_INT_:
+		{
+			resp->insertBoolean(isInsideRadius(static_cast<SceneObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		}
+		break;
+	case RPC_REMOVEAMENITIESOUTSIDECITY__INT_:
+		{
+			removeAmenitiesOutsideCity(inv->getSignedIntParameter());
 		}
 		break;
 	default:
@@ -3652,8 +3778,32 @@ void CityRegionAdapter::transferCivicStructuresToMayor() {
 	(static_cast<CityRegion*>(stub))->transferCivicStructuresToMayor();
 }
 
-void CityRegionAdapter::cleanupCityStructures() {
-	(static_cast<CityRegion*>(stub))->cleanupCityStructures();
+void CityRegionAdapter::cleanupDuplicateCityStructures() {
+	(static_cast<CityRegion*>(stub))->cleanupDuplicateCityStructures();
+}
+
+void CityRegionAdapter::removeDecorationsOutsideCity(int newRadius) {
+	(static_cast<CityRegion*>(stub))->removeDecorationsOutsideCity(newRadius);
+}
+
+void CityRegionAdapter::removeTrainersOutsideCity(int newRadius) {
+	(static_cast<CityRegion*>(stub))->removeTrainersOutsideCity(newRadius);
+}
+
+void CityRegionAdapter::removeTerminalsOutsideCity(int newRadius) {
+	(static_cast<CityRegion*>(stub))->removeTerminalsOutsideCity(newRadius);
+}
+
+void CityRegionAdapter::removeStructuresOutsideCity(int newRadius) {
+	(static_cast<CityRegion*>(stub))->removeStructuresOutsideCity(newRadius);
+}
+
+bool CityRegionAdapter::isInsideRadius(SceneObject* obj, int radiusToUse) {
+	return (static_cast<CityRegion*>(stub))->isInsideRadius(obj, radiusToUse);
+}
+
+void CityRegionAdapter::removeAmenitiesOutsideCity(int newRadius) {
+	(static_cast<CityRegion*>(stub))->removeAmenitiesOutsideCity(newRadius);
 }
 
 /*

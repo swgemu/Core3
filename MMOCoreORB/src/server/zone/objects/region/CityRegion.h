@@ -394,7 +394,19 @@ public:
 
 	void transferCivicStructuresToMayor();
 
-	void cleanupCityStructures();
+	void cleanupDuplicateCityStructures();
+
+	void removeDecorationsOutsideCity(int newRadius);
+
+	void removeTrainersOutsideCity(int newRadius);
+
+	void removeTerminalsOutsideCity(int newRadius);
+
+	void removeStructuresOutsideCity(int newRadius);
+
+	bool isInsideRadius(SceneObject* obj, int radiusToUse);
+
+	void removeAmenitiesOutsideCity(int newRadius);
 
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
@@ -754,7 +766,19 @@ public:
 
 	void transferCivicStructuresToMayor();
 
-	void cleanupCityStructures();
+	void cleanupDuplicateCityStructures();
+
+	void removeDecorationsOutsideCity(int newRadius);
+
+	void removeTrainersOutsideCity(int newRadius);
+
+	void removeTerminalsOutsideCity(int newRadius);
+
+	void removeStructuresOutsideCity(int newRadius);
+
+	bool isInsideRadius(SceneObject* obj, int radiusToUse);
+
+	void removeAmenitiesOutsideCity(int newRadius);
 
 	WeakReference<CityRegion*> _this;
 
@@ -1011,7 +1035,19 @@ public:
 
 	void transferCivicStructuresToMayor();
 
-	void cleanupCityStructures();
+	void cleanupDuplicateCityStructures();
+
+	void removeDecorationsOutsideCity(int newRadius);
+
+	void removeTrainersOutsideCity(int newRadius);
+
+	void removeTerminalsOutsideCity(int newRadius);
+
+	void removeStructuresOutsideCity(int newRadius);
+
+	bool isInsideRadius(SceneObject* obj, int radiusToUse);
+
+	void removeAmenitiesOutsideCity(int newRadius);
 
 };
 

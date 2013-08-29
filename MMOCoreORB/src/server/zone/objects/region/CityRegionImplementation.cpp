@@ -658,7 +658,7 @@ void CityRegionImplementation::transferCivicStructuresToMayor(){
 
 }
 
-void CityRegionImplementation::cleanupCityStructures(){
+void CityRegionImplementation::cleanupDuplicateCityStructures(){
 	Vector<ManagedReference<StructureObject*> > singleStructures;
 
 	for(int i = 0; i < getStructuresCount(); i++){
@@ -696,5 +696,92 @@ void CityRegionImplementation::cleanupCityStructures(){
 
 	cityDecorations.removeAll();
 	cityDecorations.addAll(singleDecorations);
+
+}
+
+void CityRegionImplementation::removeDecorationsOutsideCity(int newRadius){
+	if(cityHall == NULL)
+		return;
+
+	for(int i = getDecorationCount() - 1; i >= 0; i--){
+		ManagedReference<SceneObject*> obj = getCityDecoration(i);
+		if(obj != NULL && !isInsideRadius(obj, newRadius)){
+			//info("need to destroy the decoration" + obj->getObjectNameStringIdName(),true);
+
+			removeDecoration(obj);
+
+			if(obj->isStructureObject()){
+				StructureManager* structureManager = StructureManager::instance();
+				structureManager->destroyStructure(obj.castTo<StructureObject*>());
+			} else {
+
+				Locker clock(obj, _this.get());
+				obj->destroyObjectFromWorld(true);
+				obj->destroyObjectFromDatabase();
+			}
+
+		}
+	}
+}
+
+void CityRegionImplementation::removeTrainersOutsideCity(int newRadius){
+	if(cityHall == NULL)
+		return;
+
+	for(int i = getSkillTrainerCount() -1; i >=0; i--){
+		ManagedReference<SceneObject*> obj = getCitySkillTrainer(i);
+
+		if(obj != NULL && !isInsideRadius(obj, newRadius)){
+			//info("need to destroy the skill trainer" + obj->getObjectNameStringIdName(),true);
+
+			removeSkillTrainers(obj);
+
+			Locker clock(obj, _this.get());
+			obj->destroyObjectFromWorld(true);
+			obj->destroyObjectFromDatabase();
+		}
+	}
+}
+
+void CityRegionImplementation::removeTerminalsOutsideCity(int newRadius){
+	if(cityHall == NULL)
+		return;
+
+	for(int i = getMissionTerminalCount() - 1; i >= 0; i--){
+		ManagedReference<SceneObject*> obj = getCityMissionTerminal(i);
+		if(obj != NULL && !isInsideRadius(obj, newRadius)){
+			//info("need to destroy the mission terminal" + obj->getObjectNameStringIdName(),true);
+
+			removeMissionTerminal(obj);
+
+			Locker clock(obj, _this.get());
+			obj->destroyObjectFromWorld(true);
+			obj->destroyObjectFromDatabase();
+		}
+	}
+}
+
+void CityRegionImplementation::removeStructuresOutsideCity(int newRadius){
+	if(cityHall == NULL)
+		return;
+
+	for(int i = getStructuresCount() - 1; i >= 0; i--){
+		ManagedReference<SceneObject*> obj = this->getCivicStructure(i);
+		if(obj != NULL && !isInsideRadius(obj, newRadius) ){
+			//info("need to destroy the civic structure " + obj->getObjectNameStringIdName() + " based on cityRegionCheck",true);
+			removeStructure(obj.castTo<StructureObject*>());
+			StructureManager* structureManager = StructureManager::instance();
+			structureManager->destroyStructure(obj.castTo<StructureObject*>());
+
+		}
+	}
+
+}
+
+bool CityRegionImplementation::isInsideRadius(SceneObject* obj, int radiusToUse){
+	Vector3 cityCenter(cityHall->getPositionX(), cityHall->getPositionY(), 0);
+	Vector3 loc(obj->getPositionX(), obj->getPositionY(),0);
+	//info("checking inside city for " + obj->getObjectNameStringIdName() + " " + String::valueOf(cityCenter.squaredDistanceTo(loc) <= (getRadius() * getRadius())),true);
+	return (cityCenter.squaredDistanceTo(loc) <= (radiusToUse * radiusToUse));
 
 }
