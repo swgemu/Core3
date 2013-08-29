@@ -34,6 +34,24 @@
       "revId": "6a1df26b104da5f4e2cc42ef1ca77a02782a6da0",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_e33bdc36",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/CityDecorationMenuComponent.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-08-29T17:54:40Z",
+      "side": 1,
+      "message": "the mayor isnt checked in removeDecorations it seems",
+      "parentUuid": "3a1d315d_233af436",
+      "revId": "6a1df26b104da5f4e2cc42ef1ca77a02782a6da0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
