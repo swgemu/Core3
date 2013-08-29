@@ -182,10 +182,11 @@ void ObjectVersionUpdateManager::updateWeaponsDots() {
 
 		while (iterator.getNextKeyAndValue(objectID, &objectData)) {
 			String className;
-			uint64 residence = 0;
+			int oldType = 0;
 
 			try {
-				if (!Serializable::getVariable<String>(classNameHashCode, &className, &objectData)) {
+				if (!Serializable::getVariable<String>(classNameHashCode, &className, &objectData) ||
+						!Serializable::getVariable<int>(String("WeaponObject.dotType").hashCode(), &oldType, &objectData)) {
 
 					objectData.clear();
 					continue;
