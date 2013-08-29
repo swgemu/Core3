@@ -240,6 +240,7 @@ void AiActorImplementation::initializeTransientMembers() {
 	currentMessage = AiActor::UNFINISHED;
 
 	transitions.removeAll();
+	behaviorStatus.setNullValue(0);
 }
 
 void AiActorImplementation::next(uint16 msg) {
@@ -784,3 +785,9 @@ Time AiActorImplementation::getLastDamageReceived() {
 	return lastDamageReceived;
 }
 
+int AiActorImplementation::getBehaviorStatus(Behavior* b){
+	return behaviorStatus.get(b);
+}
+void AiActorImplementation::setBehaviorStatus(Behavior* b,int status){
+	behaviorStatus.put(b,status);
+}

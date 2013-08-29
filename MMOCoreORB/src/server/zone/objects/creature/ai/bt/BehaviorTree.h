@@ -22,7 +22,7 @@ public:
 	BehaviorTree();
 	virtual ~BehaviorTree();
 	void start(Behavior* behavior);
-	void stop(Behavior* behavior, Status result);
+	void stop(Behavior* behavior, AiActor* actor);
 	void tick(AiActor* actor);
 	bool step(AiActor* actor);
 protected:
