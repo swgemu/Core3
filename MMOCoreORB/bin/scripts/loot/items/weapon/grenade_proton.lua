@@ -10,7 +10,6 @@ grenade_proton = {
 		{"woundchance",7,13,0},
 		{"hitpoints",1000,1000,0},
 		{"zerorangemod",-16,14,0},
-		{"maxrange",64,64,0},
 		{"maxrangemod",-45,-15,0},
 		{"midrange",0,30,0},
 		{"midrangemod",10,25,0},
