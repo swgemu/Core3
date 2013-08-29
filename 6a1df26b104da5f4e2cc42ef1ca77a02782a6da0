@@ -70,6 +70,24 @@
       "revId": "6a1df26b104da5f4e2cc42ef1ca77a02782a6da0",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_6317cca4",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/CityDecorationMenuComponent.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-08-29T18:07:39Z",
+      "side": 1,
+      "message": "fillObjectMenu fills the menu and sends it to the client to populate the radial menu.\n\nBut you can hack the client to show any menu option you want, so all the checks must be performored in ::handleObjectMenuSelect as well.\n\nAdd the check in the task because its async(the data might change between here and task::execute).",
+      "parentUuid": "3a1d315d_a345e4b4",
+      "revId": "6a1df26b104da5f4e2cc42ef1ca77a02782a6da0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
