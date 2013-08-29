@@ -43,7 +43,7 @@ sennex_hunter = Creature:new {
 			groups = {
 				{group = "junk", chance = 7000000},
 				{group = "tailor_components", chance = 1500000},
-				{group = "loot_kits", chance = 1500000}
+				{group = "loot_kit_parts", chance = 1500000}
 			},
 			lootChance = 2200000
 		}					
