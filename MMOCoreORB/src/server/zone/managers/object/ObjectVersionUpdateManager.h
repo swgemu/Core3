@@ -31,6 +31,7 @@ public:
 	void updateResidences();
 	void setResidence(uint64 buildingID, bool isResidence);
 	void verifyResidenceVariables();
+	void updateWeaponsDots();
 
 	void updateCityTreasury();
 	int run();
