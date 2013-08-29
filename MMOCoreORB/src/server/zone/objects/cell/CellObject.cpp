@@ -644,6 +644,7 @@ int LuaCellObject::loadTemplateData(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'CellObject:loadTemplateData(userdata)'");
 	}
+	return 0;
 }
 
 int LuaCellObject::setAllowEntryPermissionGroup(lua_State *L) {
@@ -662,6 +663,7 @@ int LuaCellObject::setAllowEntryPermissionGroup(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'CellObject:setAllowEntryPermissionGroup(string)'");
 	}
+	return 0;
 }
 
 int LuaCellObject::notifyLoadFromDatabase(lua_State *L) {
@@ -674,6 +676,7 @@ int LuaCellObject::notifyLoadFromDatabase(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:notifyLoadFromDatabase()'");
 	}
+	return 0;
 }
 
 int LuaCellObject::sendContainerObjectsTo(lua_State *L) {
@@ -692,6 +695,7 @@ int LuaCellObject::sendContainerObjectsTo(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'CellObject:sendContainerObjectsTo(userdata)'");
 	}
+	return 0;
 }
 
 int LuaCellObject::sendPermissionsTo(lua_State *L) {
@@ -715,6 +719,7 @@ int LuaCellObject::sendPermissionsTo(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'CellObject:sendPermissionsTo(userdata, boolean)'");
 	}
+	return 0;
 }
 
 int LuaCellObject::canAddObject(lua_State *L) {
@@ -744,6 +749,7 @@ int LuaCellObject::canAddObject(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'CellObject:canAddObject(userdata, integer, string)'");
 	}
+	return 0;
 }
 
 int LuaCellObject::transferObject(lua_State *L) {
@@ -778,6 +784,7 @@ int LuaCellObject::transferObject(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'CellObject:transferObject(userdata, integer, boolean, boolean)'");
 	}
+	return 0;
 }
 
 int LuaCellObject::initializeTransientMembers(lua_State *L) {
@@ -790,6 +797,7 @@ int LuaCellObject::initializeTransientMembers(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:initializeTransientMembers()'");
 	}
+	return 0;
 }
 
 int LuaCellObject::sendBaselinesTo(lua_State *L) {
@@ -808,6 +816,7 @@ int LuaCellObject::sendBaselinesTo(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'CellObject:sendBaselinesTo(userdata)'");
 	}
+	return 0;
 }
 
 int LuaCellObject::getCurrentNumberOfPlayerItems(lua_State *L) {
@@ -821,6 +830,7 @@ int LuaCellObject::getCurrentNumberOfPlayerItems(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:getCurrentNumberOfPlayerItems()'");
 	}
+	return 0;
 }
 
 int LuaCellObject::destroyAllPlayerItems(lua_State *L) {
@@ -833,6 +843,7 @@ int LuaCellObject::destroyAllPlayerItems(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:destroyAllPlayerItems()'");
 	}
+	return 0;
 }
 
 int LuaCellObject::getCellNumber(lua_State *L) {
@@ -846,6 +857,7 @@ int LuaCellObject::getCellNumber(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:getCellNumber()'");
 	}
+	return 0;
 }
 
 int LuaCellObject::setCellNumber(lua_State *L) {
@@ -864,6 +876,7 @@ int LuaCellObject::setCellNumber(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'CellObject:setCellNumber(integer)'");
 	}
+	return 0;
 }
 
 int LuaCellObject::isCellObject(lua_State *L) {
@@ -877,5 +890,6 @@ int LuaCellObject::isCellObject(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'CellObject:isCellObject()'");
 	}
+	return 0;
 }
 

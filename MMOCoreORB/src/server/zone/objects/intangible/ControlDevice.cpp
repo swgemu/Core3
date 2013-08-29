@@ -515,6 +515,7 @@ int LuaControlDevice::updateToDatabaseAllObjects(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'ControlDevice:updateToDatabaseAllObjects(boolean)'");
 	}
+	return 0;
 }
 
 int LuaControlDevice::storeObject(lua_State *L) {
@@ -533,6 +534,7 @@ int LuaControlDevice::storeObject(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'ControlDevice:storeObject(userdata)'");
 	}
+	return 0;
 }
 
 int LuaControlDevice::generateObject(lua_State *L) {
@@ -551,6 +553,7 @@ int LuaControlDevice::generateObject(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'ControlDevice:generateObject(userdata)'");
 	}
+	return 0;
 }
 
 int LuaControlDevice::callObject(lua_State *L) {
@@ -569,6 +572,7 @@ int LuaControlDevice::callObject(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'ControlDevice:callObject(userdata)'");
 	}
+	return 0;
 }
 
 int LuaControlDevice::setControlledObject(lua_State *L) {
@@ -587,6 +591,7 @@ int LuaControlDevice::setControlledObject(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'ControlDevice:setControlledObject(userdata)'");
 	}
+	return 0;
 }
 
 int LuaControlDevice::getControlledObject(lua_State *L) {
@@ -603,6 +608,7 @@ int LuaControlDevice::getControlledObject(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'ControlDevice:getControlledObject()'");
 	}
+	return 0;
 }
 
 int LuaControlDevice::isControlDevice(lua_State *L) {
@@ -616,5 +622,6 @@ int LuaControlDevice::isControlDevice(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'ControlDevice:isControlDevice()'");
 	}
+	return 0;
 }
 
