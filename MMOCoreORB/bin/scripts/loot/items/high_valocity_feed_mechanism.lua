@@ -6,7 +6,7 @@ high_valocity_feed_mechanism = {
 	customObjectName = "",
 	directObjectTemplate = "object/tangible/component/weapon/projectile_feed_mechanism_enhancement_max_damage.iff",
 	craftingValues = {
-		{"maxdamage",20,20,1},
+		{"maxdamage",20,20.01,1}, -- setting at 20,20.01, allows damage to be effected by legendary, exceptional, and yellow modifiers
 		{"useCount",1,5,0},
 	},
 	customizationStringNames = {},
