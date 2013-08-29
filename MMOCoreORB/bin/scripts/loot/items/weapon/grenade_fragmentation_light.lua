@@ -19,6 +19,8 @@ grenade_fragmentation_light = {
 		{"attackmindcost",13,7,0},
 	},
 
+	-- randomDotChance: The chance of this weapon object dropping with a random dot on it. Higher number means less chance. Set to 0 to always have a random dot.
+	randomDotChance = 10,
 }
 
 addLootItemTemplate("grenade_fragmentation_light", grenade_fragmentation_light)

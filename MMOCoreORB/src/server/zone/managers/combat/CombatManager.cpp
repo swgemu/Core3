@@ -313,49 +313,52 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 	// Get attacker's weapon they have.
 	ManagedReference<WeaponObject*> attackerWeapon = cast<WeaponObject*>(weapon);
 
-	if (attackerWeapon->getDotType() > 0 && attackerWeapon->getDotUses() > 0) {
+	for (int i = 0; i < attackerWeapon->getNumberOfDots(); i++) {
+		if (attackerWeapon->getDotUses(i) <= 0)
+			continue;
+
 		int resist = 0;
 
-		if (attackerWeapon->getDotType() == 1) { // Poison.
+		if (attackerWeapon->getDotType(i) == 1) { // Poison.
 			resist = defender->getSkillMod("resistance_poison");
-			int power = defender->addDotState(CreatureState::POISONED, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(), attackerWeapon->getDotAttribute(), attackerWeapon->getDotDuration(), attackerWeapon->getDotPotency(), resist);
+			int power = defender->addDotState(CreatureState::POISONED, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist);
 
 			if (power > 0) { // Unresisted, reduce use count.
-				if (attackerWeapon->getDotUses() > 0) {
-					attackerWeapon->setDotUses(attackerWeapon->getDotUses() - 1);
+				if (attackerWeapon->getDotUses(i) > 0) {
+					attackerWeapon->setDotUses(attackerWeapon->getDotUses(i) - 1, i);
 				}
 			}
 		}
 
-		if (attackerWeapon->getDotType() == 2) { // Disease.
+		if (attackerWeapon->getDotType(i) == 2) { // Disease.
 			resist = defender->getSkillMod("resistance_disease");
-			int power = defender->addDotState(CreatureState::DISEASED, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(), attackerWeapon->getDotAttribute(), attackerWeapon->getDotDuration(), attackerWeapon->getDotPotency(), resist);
+			int power = defender->addDotState(CreatureState::DISEASED, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist);
 
 			if (power > 0) { // Unresisted, reduce use count.
-				if (attackerWeapon->getDotUses() > 0) {
-					attackerWeapon->setDotUses(attackerWeapon->getDotUses() - 1);
+				if (attackerWeapon->getDotUses(i) > 0) {
+					attackerWeapon->setDotUses(attackerWeapon->getDotUses(i) - 1, i);
 				}
 			}
 		}
 
-		if (attackerWeapon->getDotType() == 3) { // Fire.
+		if (attackerWeapon->getDotType(i) == 3) { // Fire.
 			resist = defender->getSkillMod("resistance_fire");
-			int power = defender->addDotState(CreatureState::ONFIRE, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(), attackerWeapon->getDotAttribute(), attackerWeapon->getDotDuration(), attackerWeapon->getDotPotency(), resist);
+			int power = defender->addDotState(CreatureState::ONFIRE, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist);
 
 			if (power > 0) { // Unresisted, reduce use count.
-				if (attackerWeapon->getDotUses() > 0) {
-					attackerWeapon->setDotUses(attackerWeapon->getDotUses() - 1);
+				if (attackerWeapon->getDotUses(i) > 0) {
+					attackerWeapon->setDotUses(attackerWeapon->getDotUses(i) - 1, i);
 				}
 			}
 		}
 
-		if (attackerWeapon->getDotType() == 4) { // Bleeding.
+		if (attackerWeapon->getDotType(i) == 4) { // Bleeding.
 			resist = defender->getSkillMod("resistance_bleeding") + defender->getSkillMod("combat_bleeding_defense");
-			int power = defender->addDotState(CreatureState::BLEEDING, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(), attackerWeapon->getDotAttribute(), attackerWeapon->getDotDuration(), attackerWeapon->getDotPotency(), resist);
+			int power = defender->addDotState(CreatureState::BLEEDING, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist);
 
 			if (power > 0) { // Unresisted, reduce use count.
-				if (attackerWeapon->getDotUses() > 0) {
-					attackerWeapon->setDotUses(attackerWeapon->getDotUses() - 1);
+				if (attackerWeapon->getDotUses(i) > 0) {
+					attackerWeapon->setDotUses(attackerWeapon->getDotUses(i) - 1, i);
 				}
 			}
 		}

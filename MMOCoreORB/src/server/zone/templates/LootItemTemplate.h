@@ -25,17 +25,19 @@ protected:
 	Vector<String> customizationStringNames;
 	Vector<Vector<int> > customizationValues;
 
-	float dotChance;
-	int dotType;
-	VectorMap<String, SortedVector<int> > dotValues;
+	float randomDotChance;
+	float staticDotChance;
+	int staticDotType;
+	VectorMap<String, SortedVector<int> > staticDotValues;
 
 	VectorMap<String, int> skillMods;
 
 public:
 	LootItemTemplate(const String& name) {
 		templateName = name;
-		dotChance = -1;
-		dotType = -1;
+		randomDotChance = -1;
+		staticDotChance = -1;
+		staticDotType = -1;
 	}
 
 	void readObject(LuaObject* templateData) {
@@ -125,21 +127,29 @@ public:
 		skillModsLuaObject.pop();
 
 		// Initializations.
-		float temp = -1;
+		float randomDot = -1;
 
-		temp = templateData->getFloatField("dotChance");
+		randomDot = templateData->getFloatField("randomDotChance");
 
-		if (temp >= 0) {
-			dotChance = temp;
+		if (randomDot >= 0) {
+			randomDotChance = randomDot;
+		}
+
+		float staticDot = -1;
+
+		staticDot = templateData->getFloatField("staticDotChance");
+
+		if (staticDot >= 0) {
+			staticDotChance = staticDot;
 		}
 
 		int type = -1;
-		type = templateData->getIntField("dotType");
+		type = templateData->getIntField("staticDotType");
 
 		if (type >= 0)
-			dotType = type;
+			staticDotType = type;
 
-		LuaObject dotValuesTable = templateData->getObjectField("dotValues");
+		LuaObject dotValuesTable = templateData->getObjectField("staticDotValues");
 
 		if (dotValuesTable.isValidTable() && dotValuesTable.getTableSize() > 0) {
 			for (int i = 1; i <= dotValuesTable.getTableSize(); ++i) {
@@ -152,10 +162,10 @@ public:
 
 				if (dot.isValidTable()) {
 					property = dot.getStringAt(1);
-					valuesVector.add(dot.getIntAt(2));
-					valuesVector.add(dot.getIntAt(3));
+					valuesVector.put(dot.getIntAt(2));
+					valuesVector.put(dot.getIntAt(3));
 				}
-					dotValues.put(property, valuesVector);
+					staticDotValues.put(property, valuesVector);
 
 				dot.pop();
 			}
@@ -188,16 +198,20 @@ public:
 		return &skillMods;
 	}
 
-	float getDotChance() {
-		return dotChance;
+	float getRandomDotChance() {
+		return randomDotChance;
 	}
 
-	int getDotType() {
-		return dotType;
+	float getStaticDotChance() {
+		return staticDotChance;
 	}
 
-	VectorMap<String, SortedVector<int> >* getDotValues() {
-		return &dotValues;
+	int getStaticDotType() {
+		return staticDotType;
+	}
+
+	VectorMap<String, SortedVector<int> >* getStaticDotValues() {
+		return &staticDotValues;
 	}
 };
 

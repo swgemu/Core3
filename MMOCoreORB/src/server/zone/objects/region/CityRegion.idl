@@ -680,6 +680,24 @@ class CityRegion extends ManagedObject implements Logger {
 
 	public native void transferCivicStructuresToMayor();
 
-	public native void cleanupCityStructures();
+	public native void cleanupDuplicateCityStructures();
+
+	public native void removeDecorationsOutsideCity(int newRadius);
+
+	public native void removeTrainersOutsideCity(int newRadius);
+
+	public native void removeTerminalsOutsideCity(int newRadius);
+
+	public native void removeStructuresOutsideCity(int newRadius);
+
+	public native boolean isInsideRadius(SceneObject obj, int radiusToUse);
+
+	
+	public void removeAmenitiesOutsideCity(int newRadius){
+		removeStructuresOutsideCity(newRadius);
+		removeDecorationsOutsideCity(newRadius);
+		removeTrainersOutsideCity(newRadius);
+		removeTerminalsOutsideCity(newRadius);
+	}
 
 }

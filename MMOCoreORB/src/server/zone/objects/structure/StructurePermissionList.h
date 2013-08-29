@@ -68,6 +68,9 @@ public:
 	inline bool isOnPermissionList(const String& listName, const String& playerName, bool caseSensitive = false) {
 		ReadLocker locker(&lock);
 
+		if (listName != "BAN" && playerName.toLowerCase() == ownerName.toLowerCase())
+			return true;
+
 		if (!permissionLists.contains(listName))
 			return false;
 

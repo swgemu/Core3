@@ -22,7 +22,7 @@
  *	WeaponObjectStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINERTO__CREATUREOBJECT_,RPC_CREATECHILDOBJECTS__,RPC_ISCERTIFIEDFOR__CREATUREOBJECT_,RPC_SETCERTIFIED__BOOL_,RPC_GETATTACKTYPE__,RPC_SETATTACKTYPE__INT_,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__BOOL_,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__BOOL_,RPC_GETIDEALRANGE__BOOL_,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__BOOL_,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__BOOL_,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__BOOL_,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__BOOL_,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__BOOL_,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__BOOL_,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__BOOL_,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETDAMAGERADIUS__BOOL_,RPC_SETDAMAGERADIUS__FLOAT_,RPC_GETHEALTHATTACKCOST__BOOL_,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__BOOL_,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__BOOL_,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_SETFORCECOST__INT_,RPC_GETBLADECOLOR__,RPC_SETBLADECOLOR__INT_,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_GETDOTTYPE__,RPC_GETDOTATTRIBUTE__,RPC_GETDOTSTRENGTH__,RPC_GETDOTDURATION__,RPC_GETDOTPOTENCY__,RPC_GETDOTUSES__,RPC_SETDOTTYPE__INT_,RPC_SETDOTATTRIBUTE__INT_,RPC_SETDOTSTRENGTH__INT_,RPC_SETDOTDURATION__INT_,RPC_SETDOTPOTENCY__INT_,RPC_SETDOTUSES__INT_,RPC_GETWEAPONTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISFLAMETHROWER__,RPC_ISHEAVYACIDRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISMINEWEAPON__,RPC_ISJEDIWEAPON__,RPC_ISJEDIONEHANDEDWEAPON__,RPC_ISJEDITWOHANDEDWEAPON__,RPC_ISJEDIPOLEARMWEAPON__,RPC_ISWEAPONOBJECT__,RPC_HASPOWERUP__,RPC_APPLYPOWERUP__CREATUREOBJECT_POWERUPOBJECT_,RPC_REMOVEPOWERUP__,RPC_DECREASEPOWERUPUSES__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_,RPC_DECAY__CREATUREOBJECT_FLOAT_,RPC_SETDAMAGESLICE__FLOAT_,RPC_SETSPEEDSLICE__FLOAT_,RPC_APPLYSKILLMODSTO__CREATUREOBJECT_BOOL_,RPC_REMOVESKILLMODSFROM__CREATUREOBJECT_,RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDCONTAINERTO__CREATUREOBJECT_,RPC_CREATECHILDOBJECTS__,RPC_ISCERTIFIEDFOR__CREATUREOBJECT_,RPC_SETCERTIFIED__BOOL_,RPC_GETATTACKTYPE__,RPC_SETATTACKTYPE__INT_,RPC_ISCERTIFIED__,RPC_GETPOINTBLANKACCURACY__BOOL_,RPC_SETPOINTBLANKACCURACY__INT_,RPC_GETPOINTBLANKRANGE__BOOL_,RPC_GETIDEALRANGE__BOOL_,RPC_SETIDEALRANGE__INT_,RPC_GETMAXRANGE__BOOL_,RPC_SETMAXRANGE__INT_,RPC_GETIDEALACCURACY__BOOL_,RPC_SETIDEALACCURACY__INT_,RPC_GETARMORPIERCING__,RPC_GETMAXRANGEACCURACY__BOOL_,RPC_SETMAXRANGEACCURACY__INT_,RPC_GETATTACKSPEED__BOOL_,RPC_SETATTACKSPEED__FLOAT_,RPC_GETMAXDAMAGE__BOOL_,RPC_SETMAXDAMAGE__FLOAT_,RPC_GETMINDAMAGE__BOOL_,RPC_SETMINDAMAGE__FLOAT_,RPC_GETWOUNDSRATIO__BOOL_,RPC_SETWOUNDSRATIO__FLOAT_,RPC_GETDAMAGERADIUS__BOOL_,RPC_SETDAMAGERADIUS__FLOAT_,RPC_GETHEALTHATTACKCOST__BOOL_,RPC_SETHEALTHATTACKCOST__INT_,RPC_GETACTIONATTACKCOST__BOOL_,RPC_SETACTIONATTACKCOST__INT_,RPC_GETMINDATTACKCOST__BOOL_,RPC_SETMINDATTACKCOST__INT_,RPC_GETFORCECOST__,RPC_SETFORCECOST__INT_,RPC_GETBLADECOLOR__,RPC_SETBLADECOLOR__INT_,RPC_GETDAMAGETYPE__,RPC_GETXPTYPE__,RPC_GETNUMBEROFDOTS__,RPC_GETDOTTYPE__INT_,RPC_GETDOTATTRIBUTE__INT_,RPC_GETDOTSTRENGTH__INT_,RPC_GETDOTDURATION__INT_,RPC_GETDOTPOTENCY__INT_,RPC_GETDOTUSES__INT_,RPC_ADDDOTTYPE__INT_,RPC_ADDDOTATTRIBUTE__INT_,RPC_ADDDOTSTRENGTH__INT_,RPC_ADDDOTDURATION__INT_,RPC_ADDDOTPOTENCY__INT_,RPC_ADDDOTUSES__INT_,RPC_SETDOTUSES__INT_INT_,RPC_GETWEAPONTYPE__,RPC_ISUNARMEDWEAPON__,RPC_ISMELEEWEAPON__,RPC_ISRANGEDWEAPON__,RPC_ISRIFLEWEAPON__,RPC_ISTHROWNWEAPON__,RPC_ISHEAVYWEAPON__,RPC_ISSPECIALHEAVYWEAPON__,RPC_ISLIGHTNINGRIFLE__,RPC_ISFLAMETHROWER__,RPC_ISHEAVYACIDRIFLE__,RPC_ISCARBINEWEAPON__,RPC_ISPISTOLWEAPON__,RPC_ISONEHANDMELEEWEAPON__,RPC_ISPOLEARMWEAPONOBJECT__,RPC_ISTWOHANDMELEEWEAPON__,RPC_ISMINEWEAPON__,RPC_ISJEDIWEAPON__,RPC_ISJEDIONEHANDEDWEAPON__,RPC_ISJEDITWOHANDEDWEAPON__,RPC_ISJEDIPOLEARMWEAPON__,RPC_ISWEAPONOBJECT__,RPC_HASPOWERUP__,RPC_APPLYPOWERUP__CREATUREOBJECT_POWERUPOBJECT_,RPC_REMOVEPOWERUP__,RPC_DECREASEPOWERUPUSES__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_,RPC_DECAY__CREATUREOBJECT_FLOAT_,RPC_SETDAMAGESLICE__FLOAT_,RPC_SETSPEEDSLICE__FLOAT_,RPC_APPLYSKILLMODSTO__CREATUREOBJECT_BOOL_,RPC_REMOVESKILLMODSFROM__CREATUREOBJECT_,RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_,};
 
 WeaponObject::WeaponObject() : TangibleObject(DummyConstructorParameter::instance()) {
 	WeaponObjectImplementation* _implementation = new WeaponObjectImplementation();
@@ -725,166 +725,200 @@ String WeaponObject::getXpType() {
 		return _implementation->getXpType();
 }
 
-int WeaponObject::getDotType() {
+int WeaponObject::getNumberOfDots() {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETDOTTYPE__);
+		DistributedMethod method(this, RPC_GETNUMBEROFDOTS__);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getDotType();
+		return _implementation->getNumberOfDots();
 }
 
-int WeaponObject::getDotAttribute() {
+int WeaponObject::getDotType(int index) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETDOTATTRIBUTE__);
+		DistributedMethod method(this, RPC_GETDOTTYPE__INT_);
+		method.addSignedIntParameter(index);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getDotAttribute();
+		return _implementation->getDotType(index);
 }
 
-int WeaponObject::getDotStrength() {
+int WeaponObject::getDotAttribute(int index) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETDOTSTRENGTH__);
+		DistributedMethod method(this, RPC_GETDOTATTRIBUTE__INT_);
+		method.addSignedIntParameter(index);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getDotStrength();
+		return _implementation->getDotAttribute(index);
 }
 
-int WeaponObject::getDotDuration() {
+int WeaponObject::getDotStrength(int index) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETDOTDURATION__);
+		DistributedMethod method(this, RPC_GETDOTSTRENGTH__INT_);
+		method.addSignedIntParameter(index);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getDotDuration();
+		return _implementation->getDotStrength(index);
 }
 
-int WeaponObject::getDotPotency() {
+int WeaponObject::getDotDuration(int index) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETDOTPOTENCY__);
+		DistributedMethod method(this, RPC_GETDOTDURATION__INT_);
+		method.addSignedIntParameter(index);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getDotPotency();
+		return _implementation->getDotDuration(index);
 }
 
-int WeaponObject::getDotUses() {
+int WeaponObject::getDotPotency(int index) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_GETDOTUSES__);
+		DistributedMethod method(this, RPC_GETDOTPOTENCY__INT_);
+		method.addSignedIntParameter(index);
 
 		return method.executeWithSignedIntReturn();
 	} else
-		return _implementation->getDotUses();
+		return _implementation->getDotPotency(index);
 }
 
-void WeaponObject::setDotType(int t) {
+int WeaponObject::getDotUses(int index) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETDOTTYPE__INT_);
+		DistributedMethod method(this, RPC_GETDOTUSES__INT_);
+		method.addSignedIntParameter(index);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getDotUses(index);
+}
+
+void WeaponObject::addDotType(int t) {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ADDDOTTYPE__INT_);
 		method.addSignedIntParameter(t);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setDotType(t);
+		_implementation->addDotType(t);
 }
 
-void WeaponObject::setDotAttribute(int a) {
+void WeaponObject::addDotAttribute(int a) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETDOTATTRIBUTE__INT_);
+		DistributedMethod method(this, RPC_ADDDOTATTRIBUTE__INT_);
 		method.addSignedIntParameter(a);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setDotAttribute(a);
+		_implementation->addDotAttribute(a);
 }
 
-void WeaponObject::setDotStrength(int s) {
+void WeaponObject::addDotStrength(int s) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETDOTSTRENGTH__INT_);
+		DistributedMethod method(this, RPC_ADDDOTSTRENGTH__INT_);
 		method.addSignedIntParameter(s);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setDotStrength(s);
+		_implementation->addDotStrength(s);
 }
 
-void WeaponObject::setDotDuration(int du) {
+void WeaponObject::addDotDuration(int du) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETDOTDURATION__INT_);
+		DistributedMethod method(this, RPC_ADDDOTDURATION__INT_);
 		method.addSignedIntParameter(du);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setDotDuration(du);
+		_implementation->addDotDuration(du);
 }
 
-void WeaponObject::setDotPotency(int po) {
+void WeaponObject::addDotPotency(int po) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETDOTPOTENCY__INT_);
+		DistributedMethod method(this, RPC_ADDDOTPOTENCY__INT_);
 		method.addSignedIntParameter(po);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setDotPotency(po);
+		_implementation->addDotPotency(po);
 }
 
-void WeaponObject::setDotUses(int u) {
+void WeaponObject::addDotUses(int u) {
 	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SETDOTUSES__INT_);
+		DistributedMethod method(this, RPC_ADDDOTUSES__INT_);
 		method.addSignedIntParameter(u);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->setDotUses(u);
+		_implementation->addDotUses(u);
+}
+
+void WeaponObject::setDotUses(int u, int index) {
+	WeaponObjectImplementation* _implementation = static_cast<WeaponObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETDOTUSES__INT_INT_);
+		method.addSignedIntParameter(u);
+		method.addSignedIntParameter(index);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setDotUses(u, index);
 }
 
 String WeaponObject::getWeaponType() {
@@ -1555,27 +1589,27 @@ bool WeaponObjectImplementation::readObjectMember(ObjectInputStream* stream, con
 		return true;
 
 	case 0x40433917: //WeaponObject.dotType
-		TypeInfo<int >::parseFromBinaryStream(&dotType, stream);
+		TypeInfo<Vector<int> >::parseFromBinaryStream(&dotType, stream);
 		return true;
 
 	case 0x5662a29d: //WeaponObject.dotAttribute
-		TypeInfo<int >::parseFromBinaryStream(&dotAttribute, stream);
+		TypeInfo<Vector<int> >::parseFromBinaryStream(&dotAttribute, stream);
 		return true;
 
 	case 0xe6ae6a5b: //WeaponObject.dotStrength
-		TypeInfo<int >::parseFromBinaryStream(&dotStrength, stream);
+		TypeInfo<Vector<int> >::parseFromBinaryStream(&dotStrength, stream);
 		return true;
 
 	case 0xe8f7f5b9: //WeaponObject.dotDuration
-		TypeInfo<int >::parseFromBinaryStream(&dotDuration, stream);
+		TypeInfo<Vector<int> >::parseFromBinaryStream(&dotDuration, stream);
 		return true;
 
 	case 0x8f640033: //WeaponObject.dotPotency
-		TypeInfo<int >::parseFromBinaryStream(&dotPotency, stream);
+		TypeInfo<Vector<int> >::parseFromBinaryStream(&dotPotency, stream);
 		return true;
 
 	case 0x40a17332: //WeaponObject.dotUses
-		TypeInfo<int >::parseFromBinaryStream(&dotUses, stream);
+		TypeInfo<Vector<int> >::parseFromBinaryStream(&dotUses, stream);
 		return true;
 
 	case 0xdeec3bb7: //WeaponObject.wearableSkillMods
@@ -1804,7 +1838,7 @@ int WeaponObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<int >::toBinaryStream(&dotType, stream);
+	TypeInfo<Vector<int> >::toBinaryStream(&dotType, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -1812,7 +1846,7 @@ int WeaponObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<int >::toBinaryStream(&dotAttribute, stream);
+	TypeInfo<Vector<int> >::toBinaryStream(&dotAttribute, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -1820,7 +1854,7 @@ int WeaponObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<int >::toBinaryStream(&dotStrength, stream);
+	TypeInfo<Vector<int> >::toBinaryStream(&dotStrength, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -1828,7 +1862,7 @@ int WeaponObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<int >::toBinaryStream(&dotDuration, stream);
+	TypeInfo<Vector<int> >::toBinaryStream(&dotDuration, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -1836,7 +1870,7 @@ int WeaponObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<int >::toBinaryStream(&dotPotency, stream);
+	TypeInfo<Vector<int> >::toBinaryStream(&dotPotency, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -1844,7 +1878,7 @@ int WeaponObjectImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
 	stream->writeInt(0);
-	TypeInfo<int >::toBinaryStream(&dotUses, stream);
+	TypeInfo<Vector<int> >::toBinaryStream(&dotUses, stream);
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
@@ -1900,18 +1934,6 @@ WeaponObjectImplementation::WeaponObjectImplementation() {
 	attackSpeed = 1;
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		weaponTemplate = null;
 	weaponTemplate = NULL;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		dotType = 0;
-	dotType = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		dotAttribute = 0;
-	dotAttribute = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		dotStrength = 0;
-	dotStrength = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		dotDuration = 0;
-	dotDuration = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		dotPotency = 0;
-	dotPotency = 0;
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		dotUses = 0;
-	dotUses = 0;
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		Logger.setLoggingName("WeaponObject");
 	Logger::setLoggingName("WeaponObject");
 	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		damageSlice = 1;
@@ -2077,64 +2099,74 @@ String WeaponObjectImplementation::getXpType() {
 	return weaponTemplate->getXpType();
 }
 
-int WeaponObjectImplementation::getDotType() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return dotType;
-	return dotType;
+int WeaponObjectImplementation::getNumberOfDots() {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return dotType.size();
+	return (&dotType)->size();
 }
 
-int WeaponObjectImplementation::getDotAttribute() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return dotAttribute;
-	return dotAttribute;
+int WeaponObjectImplementation::getDotType(int index) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return dotType.elementAt(index);
+	return (&dotType)->elementAt(index);
 }
 
-int WeaponObjectImplementation::getDotStrength() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return dotStrength;
-	return dotStrength;
+int WeaponObjectImplementation::getDotAttribute(int index) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return dotAttribute.elementAt(index);
+	return (&dotAttribute)->elementAt(index);
 }
 
-int WeaponObjectImplementation::getDotDuration() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return dotDuration;
-	return dotDuration;
+int WeaponObjectImplementation::getDotStrength(int index) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return dotStrength.elementAt(index);
+	return (&dotStrength)->elementAt(index);
 }
 
-int WeaponObjectImplementation::getDotPotency() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return dotPotency;
-	return dotPotency;
+int WeaponObjectImplementation::getDotDuration(int index) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return dotDuration.elementAt(index);
+	return (&dotDuration)->elementAt(index);
 }
 
-int WeaponObjectImplementation::getDotUses() {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return dotUses;
-	return dotUses;
+int WeaponObjectImplementation::getDotPotency(int index) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return dotPotency.elementAt(index);
+	return (&dotPotency)->elementAt(index);
 }
 
-void WeaponObjectImplementation::setDotType(int t) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		dotType = t;
-	dotType = t;
+int WeaponObjectImplementation::getDotUses(int index) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		return dotUses.elementAt(index);
+	return (&dotUses)->elementAt(index);
 }
 
-void WeaponObjectImplementation::setDotAttribute(int a) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		dotAttribute = a;
-	dotAttribute = a;
+void WeaponObjectImplementation::addDotType(int t) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		dotType.add(t);
+	(&dotType)->add(t);
 }
 
-void WeaponObjectImplementation::setDotStrength(int s) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		dotStrength = s;
-	dotStrength = s;
+void WeaponObjectImplementation::addDotAttribute(int a) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		dotAttribute.add(a);
+	(&dotAttribute)->add(a);
 }
 
-void WeaponObjectImplementation::setDotDuration(int du) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		dotDuration = du;
-	dotDuration = du;
+void WeaponObjectImplementation::addDotStrength(int s) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		dotStrength.add(s);
+	(&dotStrength)->add(s);
 }
 
-void WeaponObjectImplementation::setDotPotency(int po) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		dotPotency = po;
-	dotPotency = po;
+void WeaponObjectImplementation::addDotDuration(int du) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		dotDuration.add(du);
+	(&dotDuration)->add(du);
 }
 
-void WeaponObjectImplementation::setDotUses(int u) {
-	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		dotUses = u;
-	dotUses = u;
+void WeaponObjectImplementation::addDotPotency(int po) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		dotPotency.add(po);
+	(&dotPotency)->add(po);
+}
+
+void WeaponObjectImplementation::addDotUses(int u) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		dotUses.add(u);
+	(&dotUses)->add(u);
+}
+
+void WeaponObjectImplementation::setDotUses(int u, int index) {
+	// server/zone/objects/tangible/weapon/WeaponObject.idl():  		dotUses.elementAt(index) = u;
+	(&dotUses)->elementAt(index) = u;
 }
 
 bool WeaponObjectImplementation::isUnarmedWeapon() {
@@ -2530,64 +2562,74 @@ void WeaponObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertAscii(getXpType());
 		}
 		break;
-	case RPC_GETDOTTYPE__:
+	case RPC_GETNUMBEROFDOTS__:
 		{
-			resp->insertSignedInt(getDotType());
+			resp->insertSignedInt(getNumberOfDots());
 		}
 		break;
-	case RPC_GETDOTATTRIBUTE__:
+	case RPC_GETDOTTYPE__INT_:
 		{
-			resp->insertSignedInt(getDotAttribute());
+			resp->insertSignedInt(getDotType(inv->getSignedIntParameter()));
 		}
 		break;
-	case RPC_GETDOTSTRENGTH__:
+	case RPC_GETDOTATTRIBUTE__INT_:
 		{
-			resp->insertSignedInt(getDotStrength());
+			resp->insertSignedInt(getDotAttribute(inv->getSignedIntParameter()));
 		}
 		break;
-	case RPC_GETDOTDURATION__:
+	case RPC_GETDOTSTRENGTH__INT_:
 		{
-			resp->insertSignedInt(getDotDuration());
+			resp->insertSignedInt(getDotStrength(inv->getSignedIntParameter()));
 		}
 		break;
-	case RPC_GETDOTPOTENCY__:
+	case RPC_GETDOTDURATION__INT_:
 		{
-			resp->insertSignedInt(getDotPotency());
+			resp->insertSignedInt(getDotDuration(inv->getSignedIntParameter()));
 		}
 		break;
-	case RPC_GETDOTUSES__:
+	case RPC_GETDOTPOTENCY__INT_:
 		{
-			resp->insertSignedInt(getDotUses());
+			resp->insertSignedInt(getDotPotency(inv->getSignedIntParameter()));
 		}
 		break;
-	case RPC_SETDOTTYPE__INT_:
+	case RPC_GETDOTUSES__INT_:
 		{
-			setDotType(inv->getSignedIntParameter());
+			resp->insertSignedInt(getDotUses(inv->getSignedIntParameter()));
 		}
 		break;
-	case RPC_SETDOTATTRIBUTE__INT_:
+	case RPC_ADDDOTTYPE__INT_:
 		{
-			setDotAttribute(inv->getSignedIntParameter());
+			addDotType(inv->getSignedIntParameter());
 		}
 		break;
-	case RPC_SETDOTSTRENGTH__INT_:
+	case RPC_ADDDOTATTRIBUTE__INT_:
 		{
-			setDotStrength(inv->getSignedIntParameter());
+			addDotAttribute(inv->getSignedIntParameter());
 		}
 		break;
-	case RPC_SETDOTDURATION__INT_:
+	case RPC_ADDDOTSTRENGTH__INT_:
 		{
-			setDotDuration(inv->getSignedIntParameter());
+			addDotStrength(inv->getSignedIntParameter());
 		}
 		break;
-	case RPC_SETDOTPOTENCY__INT_:
+	case RPC_ADDDOTDURATION__INT_:
 		{
-			setDotPotency(inv->getSignedIntParameter());
+			addDotDuration(inv->getSignedIntParameter());
 		}
 		break;
-	case RPC_SETDOTUSES__INT_:
+	case RPC_ADDDOTPOTENCY__INT_:
 		{
-			setDotUses(inv->getSignedIntParameter());
+			addDotPotency(inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_ADDDOTUSES__INT_:
+		{
+			addDotUses(inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_SETDOTUSES__INT_INT_:
+		{
+			setDotUses(inv->getSignedIntParameter(), inv->getSignedIntParameter());
 		}
 		break;
 	case RPC_GETWEAPONTYPE__:
@@ -2933,52 +2975,60 @@ String WeaponObjectAdapter::getXpType() {
 	return (static_cast<WeaponObject*>(stub))->getXpType();
 }
 
-int WeaponObjectAdapter::getDotType() {
-	return (static_cast<WeaponObject*>(stub))->getDotType();
+int WeaponObjectAdapter::getNumberOfDots() {
+	return (static_cast<WeaponObject*>(stub))->getNumberOfDots();
 }
 
-int WeaponObjectAdapter::getDotAttribute() {
-	return (static_cast<WeaponObject*>(stub))->getDotAttribute();
+int WeaponObjectAdapter::getDotType(int index) {
+	return (static_cast<WeaponObject*>(stub))->getDotType(index);
 }
 
-int WeaponObjectAdapter::getDotStrength() {
-	return (static_cast<WeaponObject*>(stub))->getDotStrength();
+int WeaponObjectAdapter::getDotAttribute(int index) {
+	return (static_cast<WeaponObject*>(stub))->getDotAttribute(index);
 }
 
-int WeaponObjectAdapter::getDotDuration() {
-	return (static_cast<WeaponObject*>(stub))->getDotDuration();
+int WeaponObjectAdapter::getDotStrength(int index) {
+	return (static_cast<WeaponObject*>(stub))->getDotStrength(index);
 }
 
-int WeaponObjectAdapter::getDotPotency() {
-	return (static_cast<WeaponObject*>(stub))->getDotPotency();
+int WeaponObjectAdapter::getDotDuration(int index) {
+	return (static_cast<WeaponObject*>(stub))->getDotDuration(index);
 }
 
-int WeaponObjectAdapter::getDotUses() {
-	return (static_cast<WeaponObject*>(stub))->getDotUses();
+int WeaponObjectAdapter::getDotPotency(int index) {
+	return (static_cast<WeaponObject*>(stub))->getDotPotency(index);
 }
 
-void WeaponObjectAdapter::setDotType(int t) {
-	(static_cast<WeaponObject*>(stub))->setDotType(t);
+int WeaponObjectAdapter::getDotUses(int index) {
+	return (static_cast<WeaponObject*>(stub))->getDotUses(index);
 }
 
-void WeaponObjectAdapter::setDotAttribute(int a) {
-	(static_cast<WeaponObject*>(stub))->setDotAttribute(a);
+void WeaponObjectAdapter::addDotType(int t) {
+	(static_cast<WeaponObject*>(stub))->addDotType(t);
 }
 
-void WeaponObjectAdapter::setDotStrength(int s) {
-	(static_cast<WeaponObject*>(stub))->setDotStrength(s);
+void WeaponObjectAdapter::addDotAttribute(int a) {
+	(static_cast<WeaponObject*>(stub))->addDotAttribute(a);
 }
 
-void WeaponObjectAdapter::setDotDuration(int du) {
-	(static_cast<WeaponObject*>(stub))->setDotDuration(du);
+void WeaponObjectAdapter::addDotStrength(int s) {
+	(static_cast<WeaponObject*>(stub))->addDotStrength(s);
 }
 
-void WeaponObjectAdapter::setDotPotency(int po) {
-	(static_cast<WeaponObject*>(stub))->setDotPotency(po);
+void WeaponObjectAdapter::addDotDuration(int du) {
+	(static_cast<WeaponObject*>(stub))->addDotDuration(du);
 }
 
-void WeaponObjectAdapter::setDotUses(int u) {
-	(static_cast<WeaponObject*>(stub))->setDotUses(u);
+void WeaponObjectAdapter::addDotPotency(int po) {
+	(static_cast<WeaponObject*>(stub))->addDotPotency(po);
+}
+
+void WeaponObjectAdapter::addDotUses(int u) {
+	(static_cast<WeaponObject*>(stub))->addDotUses(u);
+}
+
+void WeaponObjectAdapter::setDotUses(int u, int index) {
+	(static_cast<WeaponObject*>(stub))->setDotUses(u, index);
 }
 
 String WeaponObjectAdapter::getWeaponType() {
