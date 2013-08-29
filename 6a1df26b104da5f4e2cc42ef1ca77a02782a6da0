@@ -52,6 +52,24 @@
       "revId": "6a1df26b104da5f4e2cc42ef1ca77a02782a6da0",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_a345e4b4",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/CityDecorationMenuComponent.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-08-29T18:04:38Z",
+      "side": 1,
+      "message": "The mayor check is perfomed in fillObjectResponse().  Should we do it here too or in the task to be consistent?",
+      "parentUuid": "3a1d315d_e33bdc36",
+      "revId": "6a1df26b104da5f4e2cc42ef1ca77a02782a6da0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
