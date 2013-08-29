@@ -285,29 +285,33 @@ public:
 
 	String getXpType();
 
-	int getDotType();
+	int getNumberOfDots();
 
-	int getDotAttribute();
+	int getDotType(int index);
 
-	int getDotStrength();
+	int getDotAttribute(int index);
 
-	int getDotDuration();
+	int getDotStrength(int index);
 
-	int getDotPotency();
+	int getDotDuration(int index);
 
-	int getDotUses();
+	int getDotPotency(int index);
 
-	void setDotType(int t);
+	int getDotUses(int index);
 
-	void setDotAttribute(int a);
+	void addDotType(int t);
 
-	void setDotStrength(int s);
+	void addDotAttribute(int a);
 
-	void setDotDuration(int du);
+	void addDotStrength(int s);
 
-	void setDotPotency(int po);
+	void addDotDuration(int du);
 
-	void setDotUses(int u);
+	void addDotPotency(int po);
+
+	void addDotUses(int u);
+
+	void setDotUses(int u, int index);
 
 	String getWeaponType();
 
@@ -456,17 +460,17 @@ protected:
 
 	float speedSlice;
 
-	int dotType;
+	Vector<int> dotType;
 
-	int dotAttribute;
+	Vector<int> dotAttribute;
 
-	int dotStrength;
+	Vector<int> dotStrength;
 
-	int dotDuration;
+	Vector<int> dotDuration;
 
-	int dotPotency;
+	Vector<int> dotPotency;
 
-	int dotUses;
+	Vector<int> dotUses;
 
 	Reference<SharedWeaponObjectTemplate* > weaponTemplate;
 
@@ -631,29 +635,33 @@ public:
 
 	String getXpType();
 
-	int getDotType();
+	int getNumberOfDots();
 
-	int getDotAttribute();
+	int getDotType(int index);
 
-	int getDotStrength();
+	int getDotAttribute(int index);
 
-	int getDotDuration();
+	int getDotStrength(int index);
 
-	int getDotPotency();
+	int getDotDuration(int index);
 
-	int getDotUses();
+	int getDotPotency(int index);
 
-	void setDotType(int t);
+	int getDotUses(int index);
 
-	void setDotAttribute(int a);
+	void addDotType(int t);
 
-	void setDotStrength(int s);
+	void addDotAttribute(int a);
 
-	void setDotDuration(int du);
+	void addDotStrength(int s);
 
-	void setDotPotency(int po);
+	void addDotDuration(int du);
 
-	void setDotUses(int u);
+	void addDotPotency(int po);
+
+	void addDotUses(int u);
+
+	void setDotUses(int u, int index);
 
 	String getWeaponType();
 
@@ -852,29 +860,33 @@ public:
 
 	String getXpType();
 
-	int getDotType();
+	int getNumberOfDots();
 
-	int getDotAttribute();
+	int getDotType(int index);
 
-	int getDotStrength();
+	int getDotAttribute(int index);
 
-	int getDotDuration();
+	int getDotStrength(int index);
 
-	int getDotPotency();
+	int getDotDuration(int index);
 
-	int getDotUses();
+	int getDotPotency(int index);
 
-	void setDotType(int t);
+	int getDotUses(int index);
 
-	void setDotAttribute(int a);
+	void addDotType(int t);
 
-	void setDotStrength(int s);
+	void addDotAttribute(int a);
 
-	void setDotDuration(int du);
+	void addDotStrength(int s);
 
-	void setDotPotency(int po);
+	void addDotDuration(int du);
 
-	void setDotUses(int u);
+	void addDotPotency(int po);
+
+	void addDotUses(int u);
+
+	void setDotUses(int u, int index);
 
 	String getWeaponType();
 
