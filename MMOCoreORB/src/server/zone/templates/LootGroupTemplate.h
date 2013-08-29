@@ -58,6 +58,23 @@ public:
 		return "";
 	}
 
+	int size(){
+		return itemMap.size();
+	}
+
+	String getLootItemTemplateAt( int i ){
+
+		if( i < 0 )
+			return "";
+
+		if( i >= itemMap.size() )
+			return "";
+
+		VectorMapEntry<String, int>* entry = &itemMap.elementAt(i);
+		return entry->getKey();
+
+	}
+
 	void readObject(LuaObject* lua) {
 		LuaObject lootItems = lua->getObjectField("lootItems");
 
