@@ -16,6 +16,24 @@
       "revId": "6a1df26b104da5f4e2cc42ef1ca77a02782a6da0",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_233af436",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/CityDecorationMenuComponent.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-08-29T17:48:19Z",
+      "side": 1,
+      "message": "The inventory check is performed in the task.  I can move it here if you like.",
+      "parentUuid": "3a1d315d_03d138fb",
+      "revId": "6a1df26b104da5f4e2cc42ef1ca77a02782a6da0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
