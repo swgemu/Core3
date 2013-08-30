@@ -1,5 +1,5 @@
 lok_kimogilla_enraged_dune_neutral_none = Lair:new {
-	mobiles = {{"dune_kimogila", 0},{"enraged_dune_kimogila", 0}},
+	mobiles = {{"dune_kimogila", -25},{"enraged_dune_kimogila", 0}},
 	spawnLimit = 7,
 	buildingsVeryEasy = {"object/tangible/lair/kimogila/lair_kimogila_grassland.iff"},
 	buildingsEasy = {"object/tangible/lair/kimogila/lair_kimogila_grassland.iff"},

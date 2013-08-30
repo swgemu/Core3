@@ -1,5 +1,5 @@
 lok_mynock_pack_neutral_none = Lair:new {
-	mobiles = {{"salt_mynock", 0},{"lowland_salt_mynock", 0}},
+	mobiles = {{"salt_mynock", -3},{"lowland_salt_mynock", 0}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/mynock/lair_mynock.iff"},
 	buildingsEasy = {"object/tangible/lair/mynock/lair_mynock.iff"},
