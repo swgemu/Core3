@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_433bb0eb",
+        "filename": "MMOCoreORB/src/server/zone/objects/structure/StructurePermissionList.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-08-30T20:02:17Z",
+      "side": 1,
+      "message": "This method needs to return the number of serialized vars, so in this case 3.",
+      "revId": "b91751bad15e3a2dc7834da44e7bad058323fbdd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
