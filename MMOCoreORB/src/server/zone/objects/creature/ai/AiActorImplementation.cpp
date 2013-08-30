@@ -32,6 +32,7 @@
 #include "server/zone/objects/player/FactionStatus.h"
 #include "system/thread/Mutex.h"
 #include "engine/core/ManagedReference.h"
+#include "server/zone/objects/creature/ai/bt/BehaviorTreeList.h"
 
 using server::zone::objects::creature::conversation::ConversationObserver;
 
@@ -784,3 +785,34 @@ Time AiActorImplementation::getLastDamageReceived() {
 	return lastDamageReceived;
 }
 
+int AiActorImplementation::getBehaviorStatus(Behavior* b) {
+		return statuses.get(b);
+}
+void AiActorImplementation::setBehaviorStatus(Behavior* b,int status) {
+		statuses.put(b,status);
+}
+void AiActorImplementation::addBehaviorToTree(BehaviorTree* tree, Behavior* b) {
+	if (trees.containsKey(tree)) {
+		BehaviorTreeList* list = trees.get(tree);
+		list->add(b);
+	} else {
+		BehaviorTreeList* list = new BehaviorTreeList();
+		list->add(b);
+		trees.put(tree,list);
+	}
+}
+Behavior* AiActorImplementation::getNextBehaviorFromTree(BehaviorTree* tree) {
+	if (trees.containsKey(tree)) {
+		BehaviorTreeList* list = trees.get(tree);
+		return list->remove();
+	} else {
+		return NULL;
+	}
+}
+void AiActorImplementation::resetBehaviorList(BehaviorTree* tree) {
+	if (trees.containsKey(tree)) {
+		BehaviorTreeList* list = trees.get(tree);
+		trees.remove(tree);
+		delete list;
+	}
+}

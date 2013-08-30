@@ -436,6 +436,7 @@ int LuaDeed::initializeTransientMembers(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'Deed:initializeTransientMembers()'");
 	}
+	return 0;
 }
 
 int LuaDeed::loadTemplateData(lua_State *L) {
@@ -454,6 +455,7 @@ int LuaDeed::loadTemplateData(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'Deed:loadTemplateData(userdata)'");
 	}
+	return 0;
 }
 
 int LuaDeed::fillAttributeList(lua_State *L) {
@@ -477,6 +479,7 @@ int LuaDeed::fillAttributeList(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'Deed:fillAttributeList(userdata, userdata)'");
 	}
+	return 0;
 }
 
 int LuaDeed::updateCraftingValues(lua_State *L) {
@@ -500,6 +503,7 @@ int LuaDeed::updateCraftingValues(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'Deed:updateCraftingValues(userdata, boolean)'");
 	}
+	return 0;
 }
 
 int LuaDeed::setGeneratedObjectTemplate(lua_State *L) {
@@ -518,6 +522,7 @@ int LuaDeed::setGeneratedObjectTemplate(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument at 0 for lua method 'Deed:setGeneratedObjectTemplate(string)'");
 	}
+	return 0;
 }
 
 int LuaDeed::getGeneratedObjectTemplate(lua_State *L) {
@@ -531,6 +536,7 @@ int LuaDeed::getGeneratedObjectTemplate(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'Deed:getGeneratedObjectTemplate()'");
 	}
+	return 0;
 }
 
 int LuaDeed::isDeedObject(lua_State *L) {
@@ -544,5 +550,6 @@ int LuaDeed::isDeedObject(lua_State *L) {
 	} else {
 		throw LuaCallbackException(L, "invalid argument count " + String::valueOf(parameterCount) + " for lua method 'Deed:isDeedObject()'");
 	}
+	return 0;
 }
 

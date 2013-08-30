@@ -63,10 +63,10 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 						LootGroupEntry* lootGroup = groups->get(j);
 						totalChance += lootGroup->getLootChance();
 
-						// I'll enable this test when everything that needs to be fixed is merged
-//						LootGroupTemplate* foundGroup = lootGroupMap->getLootGroupTemplate( lootGroup->getLootGroupName() );
-//						std::string groupName( lootGroup->getLootGroupName().toCharArray() );
-//						EXPECT_TRUE( foundGroup != NULL ) << "Loot group " << groupName << " from " << templateName << " was not found in LootGroupMap";
+						// Verify loot group is configured correctly
+						LootGroupTemplate* foundGroup = lootGroupMap->getLootGroupTemplate( lootGroup->getLootGroupName() );
+						std::string groupName( lootGroup->getLootGroupName().toCharArray() );
+						EXPECT_TRUE( foundGroup != NULL ) << "Loot group " << groupName << " from " << templateName << " was not found in LootGroupMap";
 
 					}
 
@@ -95,17 +95,16 @@ TEST_F(LuaMobileTest, LuaLootGroupsTest) {
 			EXPECT_EQ( lootGroupTemplate->getLootItemTemplateForRoll(10000001).length(), 0 ) << "Item total chance is greater than 10000000: " << groupTemplateName;
 		}
 
-		// Check that all items exist
-		// I'll enable this test when everything that needs to be fixed is merged
-//		for( int i = 0; i < lootGroupTemplate->size(); i++ ){
-//
-//			String itemTemplateName = lootGroupTemplate->getLootItemTemplateAt(i);
-//			if( !itemTemplateName.isEmpty() ){
-//				Reference<LootItemTemplate*> itemTemplate = lootGroupMap->getLootItemTemplate( itemTemplateName );
-//				EXPECT_TRUE( itemTemplate != NULL ) << "Item template " << std::string(itemTemplateName.toCharArray()) << " from " << groupTemplateName << " was not found in LootGroupMap";
-//			}
-//
-//		}
+		// Check that all items are configured correctly
+		for( int i = 0; i < lootGroupTemplate->size(); i++ ){
+
+			String itemTemplateName = lootGroupTemplate->getLootItemTemplateAt(i);
+			if( !itemTemplateName.isEmpty() ){
+				Reference<LootItemTemplate*> itemTemplate = lootGroupMap->getLootItemTemplate( itemTemplateName );
+				EXPECT_TRUE( itemTemplate != NULL ) << "Item template " << std::string(itemTemplateName.toCharArray()) << " from " << groupTemplateName << " was not found in LootGroupMap";
+			}
+
+		}
 
 	}
 

@@ -79,6 +79,18 @@ public:
 		return height;
 	}
 
+	inline int getOperationType() {
+		return operationType;
+	}
+
+	inline void setHeight(float val) {
+		height = val;
+	}
+
+	inline void setOperationType(int val) {
+		operationType = val;
+	}
+
 	bool isEnabled() {
 		return informationHeader.isEnabled();
 	}

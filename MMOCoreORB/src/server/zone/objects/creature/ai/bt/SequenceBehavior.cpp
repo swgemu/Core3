@@ -14,22 +14,23 @@ SequenceBehavior::SequenceBehavior(BehaviorTree* sequenceTree) {
 SequenceBehavior::~SequenceBehavior() {
 }
 
-void SequenceBehavior::onInitialize() {
+void SequenceBehavior::onInitialize(AiActor* actor) {
+	Behavior::onInitialize(actor);
 	position = 0;
 	end = children.size();
-	tree->start(children.get(0));
+	tree->start(children.get(0),actor);
 }
-void SequenceBehavior::observe(Status s) {
+void SequenceBehavior::observe(AiActor* actor) {
 	Behavior* child = children.get(position);
-	if (child->status == FAILURE) {
-		tree->stop(this,FAILURE);
+	if (actor->getBehaviorStatus(child) == FAILURE) {
+		tree->stop(this,actor);
 		return;
 	}
-	if (child->status == SUCCESS) {
+	if (actor->getBehaviorStatus(child) == SUCCESS) {
 		if (++position > end) {
-			tree->stop(this,SUCCESS);
+			tree->stop(this,actor);
 		} else {
-			tree->start(children.get(position));
+			tree->start(children.get(position),actor);
 		}
 	}
 }
