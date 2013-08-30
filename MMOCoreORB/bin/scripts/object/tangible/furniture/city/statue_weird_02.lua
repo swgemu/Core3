@@ -42,7 +42,7 @@
 
 
 object_tangible_furniture_city_statue_weird_02 = object_tangible_furniture_city_shared_statue_weird_02:new {
-
+	objectMenuComponent = "CityDecorationMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_city_statue_weird_02, "object/tangible/furniture/city/statue_weird_02.iff")

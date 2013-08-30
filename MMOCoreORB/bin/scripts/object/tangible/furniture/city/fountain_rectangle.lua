@@ -42,7 +42,7 @@
 
 
 object_tangible_furniture_city_fountain_rectangle = object_tangible_furniture_city_shared_fountain_rectangle:new {
-
+	objectMenuComponent = "CityDecorationMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_city_fountain_rectangle, "object/tangible/furniture/city/fountain_rectangle.iff")

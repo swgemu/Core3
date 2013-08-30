@@ -42,7 +42,7 @@
 
 
 object_tangible_furniture_city_statue_sentinel_02 = object_tangible_furniture_city_shared_statue_sentinel_02:new {
-
+	objectMenuComponent = "CityDecorationMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_city_statue_sentinel_02, "object/tangible/furniture/city/statue_sentinel_02.iff")
