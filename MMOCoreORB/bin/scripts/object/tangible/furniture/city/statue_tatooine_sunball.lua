@@ -42,7 +42,7 @@
 
 
 object_tangible_furniture_city_statue_tatooine_sunball = object_tangible_furniture_city_shared_statue_tatooine_sunball:new {
-
+	objectMenuComponent = "CityDecorationMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_city_statue_tatooine_sunball, "object/tangible/furniture/city/statue_tatooine_sunball.iff")

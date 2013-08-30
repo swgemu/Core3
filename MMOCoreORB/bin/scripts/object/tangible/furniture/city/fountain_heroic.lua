@@ -42,7 +42,7 @@
 
 
 object_tangible_furniture_city_fountain_heroic = object_tangible_furniture_city_shared_fountain_heroic:new {
-
+	objectMenuComponent = "CityDecorationMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_city_fountain_heroic, "object/tangible/furniture/city/fountain_heroic.iff")
