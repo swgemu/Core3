@@ -32,6 +32,8 @@ public:
 	void setResidence(uint64 buildingID, bool isResidence);
 	void verifyResidenceVariables();
 	void updateWeaponsDots();
+	void updateStructurePermissionLists();
+	String getOwnerName(uint64 ownerID);
 
 	void updateCityTreasury();
 	int run();
