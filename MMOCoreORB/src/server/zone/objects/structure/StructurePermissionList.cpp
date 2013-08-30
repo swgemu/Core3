@@ -47,6 +47,14 @@ int StructurePermissionList::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_name = "ownerName";
+	_name.toBinaryStream(stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<String>::toBinaryStream(&ownerName, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	String emptyName; // making it serialize the same way as Serializable so bas doesnt have to update all the objects
 
 	_name = "_className";
@@ -57,12 +65,16 @@ int StructurePermissionList::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
-	return 2;
+	return 3;
 }
 
 bool StructurePermissionList::readObjectMember(ObjectInputStream* stream, const String& name) {
 	if (name == "permissionLists") {
 		TypeInfo<VectorMap<String, SortedVector<String> > >::parseFromBinaryStream(&permissionLists, stream);
+
+		return true;
+	} else if (name == "ownerName") {
+		TypeInfo<String>::parseFromBinaryStream(&ownerName, stream);
 
 		return true;
 	}
