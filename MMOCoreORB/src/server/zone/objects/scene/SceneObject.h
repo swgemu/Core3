@@ -1823,6 +1823,8 @@ public:
 
 	bool isPlayerCreature();
 
+	bool isDecoration();
+
 	bool isNoTrade();
 
 	bool isContainerFull();
