@@ -17,16 +17,15 @@ namespace objects {
 namespace creature {
 namespace ai {
 namespace bt {
+
 class BehaviorTree {
 public:
 	BehaviorTree();
 	virtual ~BehaviorTree();
-	void start(Behavior* behavior);
-	void stop(Behavior* behavior, Status result);
+	void start(Behavior* behavior,AiActor* actor);
+	void stop(Behavior* behavior, AiActor* actor);
 	void tick(AiActor* actor);
 	bool step(AiActor* actor);
-protected:
-	ArrayQueue<Behavior*> blist;
 };
 
 }

@@ -56,6 +56,9 @@ include engine.util.u3d.QuadTreeEntry;
 include system.thread.Mutex;
 include server.zone.templates.AiTemplate;
 include server.zone.objects.creature.variables.CreatureTemplateReference;
+import server.zone.objects.creature.ai.bt.Behavior;
+import server.zone.objects.creature.ai.bt.BehaviorTreeList;
+import server.zone.objects.creature.ai.bt.BehaviorTree;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.tangible.weapon.WeaponObject;
 import server.zone.objects.scene.SceneObject;
@@ -63,6 +66,8 @@ import server.zone.objects.player.PlayerObject;
 import server.zone.Zone;
 import system.lang.Time;
 import system.util.Vector;
+import system.util.ArrayQueue;
+import system.util.HashTable;
 import system.lang.ref.Reference;
 import engine.core.ManagedObject;
 include system.thread.Mutex;
@@ -91,6 +96,12 @@ class AiActor extends SceneObject {
 	
 	@dereferenced
 	protected transient VectorMap<string, string> transitions; // <"currentState:msg", "newState">
+
+	@dereferenced
+	protected transient HashTable<Behavior, int> statuses;
+	
+	@dereferenced
+	protected transient HashTable<BehaviorTree, BehaviorTreeList> trees;
 	
 	protected transient AiStateComponent currentState;
 	@dereferenced
@@ -593,4 +604,19 @@ class AiActor extends SceneObject {
 	public boolean isActorObject() {
 		return true;
 	}
+	
+	@local
+	public native int getBehaviorStatus(Behavior b);
+	
+	@local
+	public native void setBehaviorStatus(Behavior b,int status);
+	
+	@local
+	public native void addBehaviorToTree(BehaviorTree tree, Behavior b);
+	
+	@local
+	public native Behavior getNextBehaviorFromTree(BehaviorTree tree);
+	
+	@local
+	public native void resetBehaviorList(BehaviorTree tree);
 }

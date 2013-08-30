@@ -19,8 +19,12 @@ namespace ai {
 namespace bt {
 
 class CompositeBehavior : public Behavior{
-public:
+protected:
 	Vector<Behavior*> children;
+public:
+	virtual void addChild(Behavior* child) {
+		children.add(child);
+	}
 };
 
 }
