@@ -10,6 +10,7 @@
 #include "server/zone/objects/player/Races.h"
 #include "server/db/ServerDatabase.h"
 #include "system/util/SortedVector.h"
+#include "server/zone/objects/structure/StructurePermissionList.h"
 
 #define INITIAL_DATABASE_VERSION 0
 
@@ -34,7 +35,11 @@ int ObjectVersionUpdateManager::run() {
 		updateWeaponsDots();
 		ObjectDatabaseManager::instance()->updateCurrentVersion(INITIAL_DATABASE_VERSION + 3);
 		return 0;
-	} else {
+	} else if (version == INITIAL_DATABASE_VERSION + 3) {
+		updateStructurePermissionLists();
+		ObjectDatabaseManager::instance()->updateCurrentVersion(INITIAL_DATABASE_VERSION + 4);
+		return 0;
+	}  else {
 
 		info("database on latest version : " + String::valueOf(version), true);
 		//verifyResidenceVariables();
@@ -255,6 +260,100 @@ void ObjectVersionUpdateManager::updateWeaponsDots() {
 	info("done updating databse weapon dots\n", true);
 }
 
+
+void ObjectVersionUpdateManager::updateStructurePermissionLists() {
+	ObjectDatabase* database = ObjectDatabaseManager::instance()->loadObjectDatabase("playerstructures", true);
+
+	ObjectDatabaseIterator iterator(database);
+
+	ObjectInputStream objectData(2000);
+	uint64 objectID = 0;
+	int count = 0;
+
+	info("Setting owner on structure permission lists",true);
+
+	try {
+
+		while (iterator.getNextKeyAndValue(objectID, &objectData)) {
+
+			String className;
+
+			try {
+				if (!Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData)) {
+					objectData.clear();
+					continue;
+				}
+			} catch (...) {
+				objectData.clear();
+				continue;
+			}
+
+			if (className == "BuildingObject" || className == "InstallationObject" || className == "GarageInstallation" || className == "ShuttleInstallation") {
+				uint64 ownerID = 0;
+				String ownerName;
+				count ++;
+				printf("\r\tUpdating structure owners [%d] / [?]\t", count);
+
+				if( Serializable::getVariable<uint64>(String("StructureObject.ownerObjectID").hashCode(), &ownerID, &objectData)) {
+					String owner = getOwnerName(ownerID);
+					StructurePermissionList permissionList;
+
+					if ( Serializable::getVariable<StructurePermissionList>(String("StructureObject.structurePermissionList").hashCode(), &permissionList, &objectData)){
+						ObjectOutputStream newOutputStream;
+						permissionList.setOwnerName(owner);
+						permissionList.toBinaryStream(&newOutputStream);
+
+						ObjectOutputStream* test = changeVariableData(String("StructureObject.structurePermissionList").hashCode(), &objectData, &newOutputStream);
+						test->reset();
+						database->putData(objectID, test, NULL);
+					} else {
+						info("ERROR unable to get structurePermissionList for structure " + String::valueOf(objectID),true);
+					}
+
+				} else {
+					info("ERROR unable to get ownerObjectID for structure " + String::valueOf(objectID),true);
+				}
+			}
+			objectData.clear();
+		}
+	} catch (Exception& e) {
+		error(e.getMessage());
+		e.printStackTrace();
+	}
+	info("Done updating owner on structure permission lists\n",true);
+
+}
+
+String ObjectVersionUpdateManager::getOwnerName(uint64 ownerID) {
+	ObjectDatabase* database = ObjectDatabaseManager::instance()->loadObjectDatabase("sceneobjects", true);
+	ObjectInputStream objectData(2000);
+
+	String className;
+	UnicodeString fullName;
+
+	if(!database->getData(ownerID,&objectData)){
+		if ( Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData)){
+
+			if(className == "CreatureObject"){
+				if ( Serializable::getVariable<UnicodeString>(String("SceneObject.customName").hashCode(), &fullName, &objectData)){
+					int idx = fullName.indexOf(' ');
+
+					if (idx != -1) {
+						return fullName.subString(0, idx).toString();
+					} else {
+						return fullName.toString();
+					}
+				}
+			}
+		} else {
+
+			info("ERROR couldn't get object " + String::valueOf(ownerID),true);
+
+		}
+	}
+
+	return "";
+}
 
 void ObjectVersionUpdateManager::updateResidences(){
 	ObjectDatabase* database = ObjectDatabaseManager::instance()->loadObjectDatabase("sceneobjects", true);
