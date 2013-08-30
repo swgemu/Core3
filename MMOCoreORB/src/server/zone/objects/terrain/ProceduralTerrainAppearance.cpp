@@ -9,6 +9,7 @@
 #include "TerrainGenerator.h"
 #include "TerrainMaps.h"
 #include "layer/boundaries/Boundary.h"
+#include "layer/affectors/AffectorHeightConstant.h"
 #include "PerlinNoise.h"
 
 ProceduralTerrainAppearance::ProceduralTerrainAppearance() : Logger("ProceduralTerrainAppearance") {
@@ -377,6 +378,30 @@ void ProceduralTerrainAppearance::translateBoundaries(Layer* layer, float x, flo
 	}
 }
 
+void ProceduralTerrainAppearance::setHeight(Layer* layer, float height) {
+	Vector<AffectorProceduralRule*>* affectors = layer->getAffectors();
+
+	for (int i = 0; i < affectors->size(); ++i) {
+		AffectorProceduralRule* affector = affectors->get(i);
+
+		AffectorHeightConstant* heightAffector = dynamic_cast<AffectorHeightConstant*>(affector);
+
+		if (heightAffector != NULL && (heightAffector->getHeight() == 0) && (heightAffector->getOperationType() == 0)) {
+			heightAffector->setHeight(height);
+		}
+	}
+
+	Vector<Layer*>* children = layer->getChildren();
+
+	for (int i = 0; i < children->size(); ++i) {
+		Layer* child = children->get(i);
+
+		if (child->isEnabled()) {
+			setHeight(child, height);
+		}
+	}
+}
+
 TerrainGenerator* ProceduralTerrainAppearance::addTerrainModification(engine::util::IffStream* terrainGeneratorIffStream, float x, float y, uint64 objectid) {
 	TerrainGenerator* terrain = new TerrainGenerator(this);
 
@@ -391,11 +416,16 @@ TerrainGenerator* ProceduralTerrainAppearance::addTerrainModification(engine::ut
 
 	Vector<Layer*>* layers = terrain->getLayersGroup()->getLayers();
 
+	float currentHeight = getHeight(x, y);
+
 	for (int i = 0; i < layers->size(); ++i) {
 		Layer* layer = layers->get(i);
 
-		if (layer->isEnabled())
+		if (layer->isEnabled()) {
 			translateBoundaries(layer, x, y);
+
+			setHeight(layer, currentHeight);
+		}
 	}
 
 	Locker locker(&guard);

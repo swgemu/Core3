@@ -76,6 +76,7 @@ protected:
 	Layer* getLayer(float x, float y);
 
 	void translateBoundaries(Layer* layer, float x, float y);
+	void setHeight(Layer* layer, float height);
 
 public:
 	ProceduralTerrainAppearance();
