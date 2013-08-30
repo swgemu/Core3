@@ -44,12 +44,12 @@
 --yellowChance = 5000 -- 1 in 5000
 exceptionalChance = 100000 --1 in 100,000
 legendaryChance = 1000000 --1 in 1,000,000
-yellowChance = 5 --1 in 5 for testing
+yellowChance = 50 --1 in 50 for testing
 --exceptionalChance = 100 --1 in 100 for testing
 --legendaryChance = 1000 --1 in 1000 for testing
 
 --Determines how much of an increase in the base stats will be applied to the object.
-yellowModifier = 1.5
+yellowModifier = 1.75
 exceptionalModifier = 2.5
 legendaryModifier = 5.0
 

@@ -241,29 +241,17 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 		excMod = exceptionalModifier;
 
 		prototype->setOptionsBitmask(bitmask, false);
-	} else if (System::random(yellowChance) == yellowChance) {
-		UnicodeString objectName = prototype->getCustomObjectName();
-		uint32 bitmask = prototype->getOptionsBitmask() | OptionBitmask::YELLOW;
-
-		if (objectName.isEmpty())
-			objectName = StringIdManager::instance()->getStringId(prototype->getObjectName()->getFullPath().hashCode());
-
-		UnicodeString newName = objectName;
-		prototype->setCustomObjectName(newName, false);
-
-		excMod = yellowModifier;
-
-		prototype->setOptionsBitmask(bitmask, false);
 	}
 
 	String subtitle;
+	bool yellow = false;
 
 	float percentage = System::random(10000) / 10000.f; //Generate a base percentage. We will deviate slightly from this on each stat.
 
 	for (int i = 0; i < craftingValues.getExperimentalPropertySubtitleSize(); ++i) {
 		subtitle = craftingValues.getExperimentalPropertySubtitle(i);
 
-		if (subtitle == "hitpoints" || subtitle == "armor_integrity") {
+		if (subtitle == "hitpoints" || subtitle == "maxrange") {
 			if(!(prototype->isComponent())) {
 				continue;
 			}
@@ -272,7 +260,7 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 		float min = craftingValues.getMinValue(subtitle);
 		float max = craftingValues.getMaxValue(subtitle);
 
-		if(min == max)
+		if (min == max)
 			continue;
 
 		if (subtitle != "useCount" &&
@@ -300,14 +288,38 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 				min /= excMod;
 				max /= excMod;
 			}
-
-			craftingValues.setMinValue(subtitle, min);
-			craftingValues.setMaxValue(subtitle, max);
 		}
+
+		if (excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
+			if (max >= min && max > 0) {
+					min *= yellowModifier;
+					max *= yellowModifier;
+				} else if (max <= min && max > 0) {
+					min /= yellowModifier;
+					max /= yellowModifier;
+				} else if (max <= min && max <= 0) {
+					min *= yellowModifier;
+					max *= yellowModifier;
+				} else {
+					min /= yellowModifier;
+					max /= yellowModifier;
+				}
+
+			yellow = true;
+		}
+
+		craftingValues.setMinValue(subtitle, min);
+		craftingValues.setMaxValue(subtitle, max);
 
 		float deviation = (((float) System::random(400)) - 200) / 1000.f; //Deviate up to 2%
 
 		craftingValues.setCurrentPercentage(subtitle, percentage + deviation);
+	}
+
+	if (yellow) {
+		uint32 bitmask = prototype->getOptionsBitmask() | OptionBitmask::YELLOW;
+
+		prototype->setOptionsBitmask(bitmask, false);
 	}
 
 	// Use percentages to recalculate the values
@@ -352,10 +364,17 @@ void LootManagerImplementation::addConditionDamage(TangibleObject* loot, Craftin
 }
 
 void LootManagerImplementation::setSkillMods(TangibleObject* object, LootItemTemplate* templateObject, int level, float excMod) {
+	if (!object->isWeaponObject() && !object->isWearableObject())
+		return;
+
 	VectorMap<String, int>* skillMods = templateObject->getSkillMods();
 	VectorMap<String, int> additionalMods;
 
+	bool yellow = false;
+
 	if (System::random(skillModChance / excMod) == 0) {
+		// if it has a skillmod the name will be yellow
+		yellow = true;
 		int modCount = 1;
 		int roll = System::random(100);
 
@@ -379,6 +398,12 @@ void LootManagerImplementation::setSkillMods(TangibleObject* object, LootItemTem
 
 			additionalMods.put(modName, mod);
 		}
+	}
+
+	if (yellow) {
+	uint32 bitmask = object->getOptionsBitmask() | OptionBitmask::YELLOW;
+
+	object->setOptionsBitmask(bitmask, false);
 	}
 
 	if (object->isWearableObject()) {
@@ -587,6 +612,8 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, LootItemTe
 		if (System::random(10) == 5)
 			number = 2;
 
+		bool yellow = false;
+
 		for (int i = 0; i < number; i++) {
 			int dotType = System::random(2) + 1;
 
@@ -616,6 +643,11 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, LootItemTe
 			else
 				str = strMax;
 
+			if (excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
+				str *= yellowModifier;
+				yellow = true;
+			}
+
 			if (dotType == 1)
 				str = str * 2;
 			else if (dotType == 3)
@@ -631,6 +663,11 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, LootItemTe
 				dur = calculateDotValue(durMin, durMax, level);
 			else
 				dur = durMax;
+
+			if (excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
+				dur *= yellowModifier;
+				yellow = true;
+			}
 
 			if (dotType == 2)
 				dur = dur * 5;
@@ -648,6 +685,11 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, LootItemTe
 			else
 				pot = potMax;
 
+			if (excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
+				pot *= yellowModifier;
+				yellow = true;
+			}
+
 			weapon->addDotPotency(pot * excMod);
 
 			int useMin = randomDotUses.elementAt(0);
@@ -659,7 +701,18 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, LootItemTe
 			else
 				use = useMax;
 
+			if (excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
+				use *= yellowModifier;
+				yellow = true;
+			}
+
 			weapon->addDotUses(use * excMod);
+		}
+
+		if (yellow) {
+			uint32 bitmask = weapon->getOptionsBitmask() | OptionBitmask::YELLOW;
+
+			weapon->setOptionsBitmask(bitmask, false);
 		}
 	}
 }
