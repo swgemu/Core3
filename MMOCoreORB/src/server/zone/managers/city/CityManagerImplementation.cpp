@@ -830,7 +830,11 @@ void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 
 	for(int i = city->getDecorationCount() - 1; i >= 0; i--){
 		ManagedReference<SceneObject*> decoration = city->getCityDecoration(i);
-		if(decoration != NULL && decoration->isStructureObject()){
+
+		if(decoration == NULL)
+			continue;
+
+		if( decoration->isStructureObject()){
 			StructureObject* structure = cast<StructureObject*>(decoration.get());
 
 			if(structure != NULL){
@@ -839,6 +843,9 @@ void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 				thisCost = maintenanceDiscount * structureTemplate->getCityMaintenanceAtRank(city->getCityRank() - 1);
 				totalPaid += collectCivicStructureMaintenance(structure, city, thisCost);
 			}
+		} else {
+			thisCost = maintenanceDiscount * 1500;
+			totalPaid += collectNonStructureMaintenance(decoration, city, thisCost);
 		}
 	}
 
