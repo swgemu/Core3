@@ -725,6 +725,11 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 	processIncomeTax(city);
 
 	city->cleanupDuplicateCityStructures();
+
+	if( city->getDecorationCount() > (decorationsPerRank * city->getCityRank())){
+		city->cleanupDecorations(decorationsPerRank * city->getCityRank());
+	}
+
 	deductCityMaintenance(city);
 }
 

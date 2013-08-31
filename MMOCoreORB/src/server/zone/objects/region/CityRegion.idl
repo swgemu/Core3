@@ -700,4 +700,6 @@ class CityRegion extends ManagedObject implements Logger {
 		removeTerminalsOutsideCity(newRadius);
 	}
 
+	public native void cleanupDecorations(int decorationLimit);
+
 }
