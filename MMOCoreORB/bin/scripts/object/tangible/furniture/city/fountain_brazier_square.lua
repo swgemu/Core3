@@ -42,7 +42,7 @@
 
 
 object_tangible_furniture_city_fountain_brazier_square = object_tangible_furniture_city_shared_fountain_brazier_square:new {
-
+	objectMenuComponent = "CityDecorationMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_city_fountain_brazier_square, "object/tangible/furniture/city/fountain_brazier_square.iff")

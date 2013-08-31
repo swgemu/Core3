@@ -53,6 +53,7 @@ object_tangible_furniture_city_fountain_generic = object_tangible_furniture_city
 	experimentalMax = {0, 0, 1000},
 	experimentalPrecision = {0, 0, 0},
 	experimentalCombineType = {0, 0, 4},
+	objectMenuComponent = "CityDecorationMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_city_fountain_generic, "object/tangible/furniture/city/fountain_generic.iff")

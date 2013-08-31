@@ -1638,3 +1638,11 @@ int SceneObjectImplementation::getContainedObjectsRecursive() {
 
 	return count;
 }
+
+bool SceneObjectImplementation::isDecoration(){
+	return (templateObject != NULL &&
+		(templateObject->getFullTemplateString().contains("object/tangible/furniture/city") ||
+			templateObject->getFullTemplateString().contains("object/building/player/city/garden")));
+
+
+}

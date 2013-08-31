@@ -1123,10 +1123,10 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 					break;
 				}
 			}
-			items->unlock();
+			items->runlock();
 		} catch(Exception& e) {
 			error(e.getMessage());
-			items->unlock();
+			items->runlock();
 		}
 	}
 

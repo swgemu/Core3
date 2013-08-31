@@ -42,7 +42,7 @@
 
 
 object_tangible_furniture_city_fountain_contemplate = object_tangible_furniture_city_shared_fountain_contemplate:new {
-
+	objectMenuComponent = "CityDecorationMenuComponent",
 }
 
 ObjectTemplates:addTemplate(object_tangible_furniture_city_fountain_contemplate, "object/tangible/furniture/city/fountain_contemplate.iff")

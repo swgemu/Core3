@@ -408,6 +408,8 @@ public:
 
 	void removeAmenitiesOutsideCity(int newRadius);
 
+	void cleanupDecorations(int decorationLimit);
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -780,6 +782,8 @@ public:
 
 	void removeAmenitiesOutsideCity(int newRadius);
 
+	void cleanupDecorations(int decorationLimit);
+
 	WeakReference<CityRegion*> _this;
 
 	operator const CityRegion*();
@@ -1048,6 +1052,8 @@ public:
 	bool isInsideRadius(SceneObject* obj, int radiusToUse);
 
 	void removeAmenitiesOutsideCity(int newRadius);
+
+	void cleanupDecorations(int decorationLimit);
 
 };
 

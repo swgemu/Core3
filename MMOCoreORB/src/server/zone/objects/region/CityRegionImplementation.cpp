@@ -785,3 +785,31 @@ bool CityRegionImplementation::isInsideRadius(SceneObject* obj, int radiusToUse)
 	return (cityCenter.squaredDistanceTo(loc) <= (radiusToUse * radiusToUse));
 
 }
+
+void CityRegionImplementation::cleanupDecorations(int limit){
+
+	int decorationsToRemove = cityDecorations.size() -limit;
+
+	if(decorationsToRemove <= 0)
+		return;
+
+	for(int i =  0; i < decorationsToRemove; i++){
+
+		SceneObject* dec = getCityDecoration(0);
+		if(dec != NULL) {
+
+			if(dec->isStructureObject()){
+				StructureManager* structureManager = StructureManager::instance();
+				structureManager->destroyStructure(cast<StructureObject*>(dec));
+
+			} else {
+				Locker clock(dec, _this.get());
+				dec->destroyObjectFromWorld(true);
+				dec->destroyObjectFromDatabase();
+			}
+
+			cityDecorations.removeElementAt(0);
+
+		}
+	}
+}

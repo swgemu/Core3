@@ -35,13 +35,12 @@ jabba_swooper = Creature:new {
 				{group = "loot_kit_parts", chance = 1500000},
 				{group = "jabba_common", chance = 1500000}
 			},
-			lootChance = 2200000
+			lootChance = 2100000
 		}				
 	},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(brawlernovice,marksmannovice)
 }
 
 CreatureTemplates:addCreatureTemplate(jabba_swooper, "jabba_swooper")

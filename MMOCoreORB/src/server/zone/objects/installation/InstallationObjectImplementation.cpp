@@ -666,6 +666,8 @@ void InstallationObjectImplementation::setHopperSizeMax(float size){
 }
 
 void InstallationObjectImplementation::updateStructureStatus() {
+	if(isCivicStructure())
+		return;
 
 	updateInstallationWork();
 

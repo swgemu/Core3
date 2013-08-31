@@ -230,6 +230,15 @@ tatooine_destroy_mission = {
 			numberToSpawn = 0,
 			weighting = 0,
 			size = 25
+		},
+		{
+			lairTemplateName = "jabba_swooper_camp",
+			spawnLimit = -1,
+			minDifficulty = 6,
+			maxDifficulty = 10,
+			numberToSpawn = 0,
+			weighting = 0,
+			size = 25
 		}
 	}
 }
