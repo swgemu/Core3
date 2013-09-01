@@ -16,6 +16,24 @@
       "revId": "30ab1c01ddbe966551e1dd2db1371676a4f32e16",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_ee47431c",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hedon_istee.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-09-01T23:46:48Z",
+      "side": 1,
+      "message": "Yeah, I declared them here as globals so that they would be easily configurable and available to multiple functions. I can move them elsewhere if you\u0027d prefer.",
+      "parentUuid": "3a1d315d_2ef89be4",
+      "revId": "30ab1c01ddbe966551e1dd2db1371676a4f32e16",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
