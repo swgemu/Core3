@@ -76,7 +76,11 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 		if (fortitude > 500) {
 			armorRating = 1;
 		}
+		if (fortitude == 1000) {
+			armorRating = 2;
+		}
 	} else {
+		// We experimented for up and gained armor, when this happens reset resists
 		if (fortitude > 500 && armorRating == 0) {
 			armorRating = 1;
 			// Reset resist to 0
@@ -124,9 +128,11 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 				energyResist = 0;
 				values->setCurrentValue("dna_comp_armor_energy", 0);
 				values->setCurrentPercentage("dna_comp_armor_energy",0);
-		}
+			}
 		} else {
-			armorRating = 0;
+			if (fortitude < 500 && armorRating > 0) {
+				armorRating = 0;
+			}
 		}
 	}
 	// max values
