@@ -30,7 +30,7 @@ serene_floater = Creature:new {
 	templates = {"object/mobile/bomarr_spider_monk_droid.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "serene_floater_convotemplate",
+	conversationTemplate = "hedon_istee_mission_target_convotemplate",
 	attacks = {
 	}
 }
