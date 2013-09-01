@@ -146,6 +146,7 @@ int DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getSpawnPoint", getSpawnPoint);
 	lua_register(luaEngine->getLuaState(), "makeCreatureName", makeCreatureName);
 	lua_register(luaEngine->getLuaState(), "getGCWDiscount", getGCWDiscount);
+	lua_register(luaEngine->getLuaState(), "getTerrainHeight", getTerrainHeight);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -1600,6 +1601,24 @@ int DirectorManager::getGCWDiscount(lua_State* L){
 		return 0;
 
 	lua_pushnumber(L, gcwMan->getGCWDiscount(creature));
+	return 1;
+}
+
+int DirectorManager::getTerrainHeight(lua_State* L){
+	if (checkArgumentCount(L, 3) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getGCWDiscount");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	float y = lua_tonumber(L, -1);
+	float x = lua_tonumber(L, -2);
+	CreatureObject* creatureObject = (CreatureObject*) lua_touserdata(L, -3);
+
+	if(creatureObject == NULL || creatureObject->getZone() == NULL)
+		return 0;
+
+	lua_pushnumber(L, creatureObject->getZone()->getHeight(x, y));
 	return 1;
 }
 
