@@ -515,7 +515,8 @@ void CraftingSessionImplementation::addIngredient(TangibleObject* tano, int slot
 		craftingComponentsSatchel = craftingComponents->getContainerObject(0);
 	}
 	// Lock the craft and satchel as well
-	Locker crossSatcheLock(craftingComponentsSatchel,crafter);
+	//Locker crossSatcheLock(craftingComponentsSatchel,crafter);
+	// crafter is pre-locked before entering this method, satchel::trasnferObject is thread safe
 
 	int result = manufactureSchematic->addIngredientToSlot(crafter, craftingComponentsSatchel, tano, slot);
 
