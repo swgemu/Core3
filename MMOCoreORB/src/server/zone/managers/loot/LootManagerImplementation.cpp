@@ -328,6 +328,19 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	craftingValues.addExperimentalProperty("creatureLevel", "creatureLevel", level, level, 0, false, CraftingManager::LINEARCOMBINE);
 	craftingValues.setHidden("creatureLevel");
 
+	//check weapons and weapon components for min damage > max damage
+	if (prototype->isComponent() || prototype->isWeaponObject()) {
+		if (craftingValues.hasProperty("mindamage") && craftingValues.hasProperty("maxdamage")) {
+			float oldMin = craftingValues.getCurrentValue("mindamage");
+			float oldMax = craftingValues.getCurrentValue("maxdamage");
+
+			if (oldMin > oldMax) {
+				craftingValues.setCurrentValue("mindamage", oldMax);
+				craftingValues.setCurrentValue("maxdamage", oldMin);
+			}
+		}
+	}
+
 	// Add Dots to weapon objects.
 	addStaticDots(prototype, templateObject, level);
 	addRandomDots(prototype, templateObject, level, excMod);
