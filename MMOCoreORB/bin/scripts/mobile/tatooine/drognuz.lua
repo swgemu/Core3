@@ -28,11 +28,21 @@ drognuz = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gamorrean.iff"},
-	lootGroups = {},
-	weapons = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "junk", chance = 3500000},
+				{group = "armor_looted", chance = 2000000},
+				{group = "melee_weapons", chance = 2500000},
+				{group = "tailor_components", chance = 1000000},
+				{group = "loot_kit_parts", chance = 1000000}
+			},
+			lootChance = 2200000
+		}				
+	},
+	weapons = {"gamorrean_weapons"},
 	conversationTemplate = "",
-	attacks = {
-	}
+	attacks = merge(marksmanmaster,brawlermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(drognuz, "drognuz")
