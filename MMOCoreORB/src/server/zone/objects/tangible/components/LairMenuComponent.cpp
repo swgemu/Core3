@@ -26,14 +26,16 @@ void LairMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectM
 	ManagedReference<LairObserver*> lairObserver = NULL;
 	SortedVector<ManagedReference<Observer*> >* observers = tano->getObservers(ObserverEventType::OBJECTDESTRUCTION);
 
-	for (int i = 0; i < observers->size(); i++) {
-		lairObserver = cast<LairObserver*>(observers->get(i).get());
+	if (observers != NULL) {
+		for (int i = 0; i < observers->size(); i++) {
+			lairObserver = cast<LairObserver*>(observers->get(i).get());
 
-		if (lairObserver != NULL)
-			break;
+			if (lairObserver != NULL)
+				break;
+		}
 	}
 
-	if(player->hasSkill("outdoors_scout_novice") && player->getDistanceTo(sceneObject) < 8 && lairObserver->getLairType() != LairTemplate::NPC) {
+	if(player->hasSkill("outdoors_scout_novice") && player->getDistanceTo(sceneObject) < 8 && lairObserver && lairObserver->getLairType() != LairTemplate::NPC) {
 		menuResponse->addRadialMenuItem(50, 3, "@lair_n:search_lair"); //Search Lair
 	}
 
