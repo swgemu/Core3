@@ -19,7 +19,7 @@ void BehaviorTree::start(Behavior* behavior,AiActor* actor) {
 	actor->addBehaviorToTree(this,behavior);
 }
 void BehaviorTree::stop(Behavior* behavior, AiActor* actor) {
-	if (actor->getBehaviorStatus(behavior) != RUNNING) {
+	if (actor->getBehaviorStatus(behavior) != Behavior::RUNNING) {
 		return;
 	}
 	if (behavior->canObserve()) {
@@ -42,7 +42,7 @@ bool BehaviorTree::step(AiActor* actor) {
 		return false;
 	}
 	current->tick(actor);
-	if (actor->getBehaviorStatus(current) != RUNNING && current->canObserve()) {
+	if (actor->getBehaviorStatus(current) != Behavior::RUNNING && current->canObserve()) {
 		current->observe(actor);
 	} else {
 		actor->addBehaviorToTree(this,current);

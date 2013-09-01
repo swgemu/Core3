@@ -18,23 +18,26 @@ namespace creature {
 namespace ai {
 namespace bt {
 
-enum Status {INVALID=0,SUCCESS=1,FAILURE=2,RUNNING=3,SUSPENDED=4};
-
 class Behavior {
 
 public:
 	Behavior() {
 	}
+	static const int INVALID = 0;
+	static const int SUCCESS = 1;
+	static const int FAILURE = 2;
+	static const int RUNNING = 3;
+	static const int SUSPENDED = 4;
 	virtual ~Behavior(){}
-	Status tick(AiActor* actor) {
+	int tick(AiActor* actor) {
 		if (actor->getBehaviorStatus(this) == INVALID || actor->getBehaviorStatus(this) == -1) { onInitialize(actor); }
-		Status status = update(actor);
+		int status = update(actor);
 		if (status != RUNNING) { onTerminate(actor,status); }
 		return status;
 	}
-	virtual Status update(AiActor* actor) = 0;
+	virtual int update(AiActor* actor) = 0;
 	virtual void onInitialize(AiActor* actor) { actor->setBehaviorStatus(this,INVALID);}
-	virtual void onTerminate(AiActor* actor, Status s) {}
+	virtual void onTerminate(AiActor* actor, int s) {}
 	virtual void observe(AiActor* actor){}
 	virtual bool canObserve() { return false; }
 };
