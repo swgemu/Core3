@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_2ef89be4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/tasks/hedon_istee.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-09-01T15:56:47Z",
+      "side": 1,
+      "message": "can you move them somewhere else? They\u0027re declared here as global vars, might mess up local ones",
+      "revId": "30ab1c01ddbe966551e1dd2db1371676a4f32e16",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
