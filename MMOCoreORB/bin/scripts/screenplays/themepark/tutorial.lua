@@ -2511,8 +2511,14 @@ function TutorialScreenPlay:lootBanditEvent(creatureObject)
 		player:playMusicMessage("sound/tut_00_congratulations.snd")
 	end
 	
+	local playerParent = player:getParent()
+	
+	if (playerParent == nil) then
+		return
+	end
+	
 	--unlock cell door
-	local targetCellObject = LuaSceneObject(player:getParent())
+	local targetCellObject = LuaSceneObject(playerParent)
 	local buildingObject = LuaBuildingObject(targetCellObject:getParent())
 	
 	updateCellPermission(buildingObject:getCell(9), 1, creatureObject)
