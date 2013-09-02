@@ -1,9 +1,9 @@
-garm_bel_iblis = Creature:new {
+fadulk_dikeer = Creature:new {
 	objectName = "",
-	customName = "Garm Bel Iblis",
-	socialGroup = "rebel",
-	pvpFaction = "rebel",
-	faction = "rebel",
+	customName = "Fadulk Di'keer",
+	socialGroup = "townsperson",
+	pvpFaction = "townsperson",
+	faction = "townsperson",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -26,13 +26,14 @@ garm_bel_iblis = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 264,
 	diet = HERBIVORE,
-
-	templates = {"object/mobile/dressed_garm_bel_iblis.iff"},
+	templates = {
+		"object/mobile/dressed_commoner_naboo_bothan_male_02.iff"
+	},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "garmGiverConvo",
+	conversationTemplate = "garmTargetConvo",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(garm_bel_iblis, "garm_bel_iblis")
+CreatureTemplates:addCreatureTemplate(fadulk_dikeer, "fadulk_dikeer")
