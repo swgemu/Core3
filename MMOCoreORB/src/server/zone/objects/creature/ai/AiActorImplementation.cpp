@@ -684,14 +684,13 @@ void AiActorImplementation::sendConversationStartTo(SceneObject* player) {
 
 	currentState->sendConversationStartTo(host, player);
 
-	SortedVector<ManagedReference<Observer*> >* observers = observerEventMap.getObservers(ObserverEventType::STARTCONVERSATION);
+	SortedVector<ManagedReference<Observer*> > observers = observerEventMap.getObservers(ObserverEventType::STARTCONVERSATION);
 
-	if (observers != NULL) {
-		for (int i = 0;  i < observers->size(); ++i) {
-			if (dynamic_cast<ConversationObserver*>(observers->get(i).get()) != NULL)
-				return;
-		}
+	for (int i = 0;  i < observers.size(); ++i) {
+		if (dynamic_cast<ConversationObserver*>(observers.get(i).get()) != NULL)
+			return;
 	}
+
 
 	if (npcTemplate == NULL)
 		return;

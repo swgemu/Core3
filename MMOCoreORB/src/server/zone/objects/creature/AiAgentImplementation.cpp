@@ -1607,13 +1607,11 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
 	player->sendMessage(conv);
 
-	SortedVector<ManagedReference<Observer*> >* observers = getObservers(ObserverEventType::STARTCONVERSATION);
+	SortedVector<ManagedReference<Observer*> > observers = getObservers(ObserverEventType::STARTCONVERSATION);
 
-	if (observers != NULL) {
-		for (int i = 0;  i < observers->size(); ++i) {
-			if (dynamic_cast<ConversationObserver*>(observers->get(i).get()) != NULL)
-				return;
-		}
+	for (int i = 0;  i < observers.size(); ++i) {
+		if (dynamic_cast<ConversationObserver*>(observers.get(i).get()) != NULL)
+			return;
 	}
 
 	if (npcTemplate == NULL)

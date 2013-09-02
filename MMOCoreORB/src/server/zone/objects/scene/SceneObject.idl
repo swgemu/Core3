@@ -1887,6 +1887,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * The returning value points directly to the internal vector, do not delete it or store it
 	 */
 	@local
+	@dereferenced
 	public native SortedVector<Observer> getObservers(unsigned int eventType);
 	
 	public native abstract void createChildObjects();

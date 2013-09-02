@@ -818,7 +818,7 @@ public:
 
 	SharedObjectTemplate* getObjectTemplate();
 
-	SortedVector<ManagedReference<Observer* > >* getObservers(unsigned int eventType);
+	SortedVector<ManagedReference<Observer* > > getObservers(unsigned int eventType);
 
 	void createChildObjects();
 
@@ -1494,7 +1494,7 @@ public:
 
 	SharedObjectTemplate* getObjectTemplate();
 
-	SortedVector<ManagedReference<Observer* > >* getObservers(unsigned int eventType);
+	SortedVector<ManagedReference<Observer* > > getObservers(unsigned int eventType);
 
 	virtual void createChildObjects();
 

@@ -1569,7 +1569,7 @@ ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParent() {
 	return ManagedWeakReference<SceneObject*>(parent.castTo<SceneObject*>());
 }
 
-SortedVector<ManagedReference<Observer* > >* SceneObjectImplementation::getObservers(unsigned int eventType) {
+SortedVector<ManagedReference<Observer* > > SceneObjectImplementation::getObservers(unsigned int eventType) {
 	return observerEventMap.getObservers(eventType);
 }
 
