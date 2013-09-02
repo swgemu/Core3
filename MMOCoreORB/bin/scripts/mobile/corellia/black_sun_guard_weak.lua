@@ -1,0 +1,36 @@
+black_sun_guard_weak = Creature:new {
+	objectName = "@mob/creature_names:mand_bunker_blksun_guard",
+	socialGroup = "death_watch",
+	pvpFaction = "death_watch",
+	faction = "death_watch",
+	level = 20,
+	chanceHit = 0.95,
+	damageMin = 100,
+	damageMax = 200,
+	baseXp = 905,
+	baseHAM = 2000,
+	baseHAMmax = 2500,
+	armor = 2,
+	resists = {40,40,60,35,55,70,35,40,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
+	creatureBitmask = KILLER,
+	optionsBitmask = 128,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_black_sun_guard.iff"},
+	lootGroups = {},
+	weapons = {"pirate_weapons_heavy"},
+	conversationTemplate = "",
+	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+}
+
+CreatureTemplates:addCreatureTemplate(black_sun_guard_weak, "black_sun_guard_weak")

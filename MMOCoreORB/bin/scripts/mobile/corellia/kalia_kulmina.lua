@@ -1,9 +1,9 @@
-garm_bel_iblis = Creature:new {
+kalia_kulmina = Creature:new {
 	objectName = "",
-	customName = "Garm Bel Iblis",
-	socialGroup = "rebel",
-	pvpFaction = "rebel",
-	faction = "rebel",
+	customName = "Kalia Kulmina",
+	socialGroup = "",
+	pvpFaction = "",
+	faction = "",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -22,17 +22,18 @@ garm_bel_iblis = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = NONE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK,
 	optionsBitmask = 264,
 	diet = HERBIVORE,
-
-	templates = {"object/mobile/dressed_garm_bel_iblis.iff"},
+	templates = {
+		"object/mobile/dressed_kobola_assassin_zabrak_female_01.iff"
+	},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "garmGiverConvo",
+	conversationTemplate = "garmTargetConvo",
 	attacks = {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(garm_bel_iblis, "garm_bel_iblis")
+CreatureTemplates:addCreatureTemplate(kalia_kulmina, "kalia_kulmina")
