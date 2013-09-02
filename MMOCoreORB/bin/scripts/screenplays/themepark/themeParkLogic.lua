@@ -1,3 +1,6 @@
+package.path = package.path .. ";scripts/screenplays/?.lua"
+require("screenplay")
+
 WAYPOINT_COLOR_PURPLE = 5
 SIT = 1
 STAND = 0
