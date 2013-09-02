@@ -238,7 +238,9 @@ int DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaDeed>::Register(luaEngine->getLuaState());
 
 
-	bool res = luaEngine->runFile("scripts/screenplays/screenplay.lua");
+	bool res = luaEngine->runFile("scripts/screenplays/screenplays.lua");
+
+	info("Loaded " + String::valueOf(instance()->screenPlays.size()) + " screenplays.", true);
 
 	if (!res)
 		return 1;
