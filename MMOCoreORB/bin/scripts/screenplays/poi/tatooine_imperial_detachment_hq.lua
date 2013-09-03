@@ -66,10 +66,10 @@ function ImperialDetachmentHQScreenPlay:spawnMobiles()
 		spawnMobile("tatooine", "imperial_noncom", 300, 6.81, -6.75, -3.09, 180, 1250071)
 		
 		-- Mess hall
-		spawnMobile("tatooine", "stormtrooper", 300, -5.05, -13.75, 6.70, 180, 1250073)
-		spawnMobile("tatooine", "stormtrooper", 300, -2.16, -13.75, 6.70, 180, 1250073)
+		spawnMobile("tatooine", "stormtrooper", 300, -5.05, -13.75, 6.70, -176, 1250073)
+		spawnMobile("tatooine", "stormtrooper", 300, -2.16, -13.75, 6.70, -176, 1250073)
 		spawnMobile("tatooine", "imperial_officer", 300, -6.39, -13.75, -4.39, 32, 1250073)
-		spawnMobile("tatooine", "imperial_staff_sergeant", 300, -4.66, -13.75, 180, 60, 1250073)
+		spawnMobile("tatooine", "imperial_staff_sergeant", 300, -4.66, -13.75, -3.3, -126, 1250073)
 	
 		-- Medical Bay
 		spawnMobile("tatooine", "imperial_medic", 300, 6.95, -13.75, 10.05, -90, 1250074)
