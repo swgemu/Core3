@@ -133,6 +133,7 @@ public:
 	static const uint16 CITY_MAYOR_VOTE = 128;
 	static const uint16 CITY_ADJUST_TAX = 129;
 	static const uint16 CITY_TAX_PROMPT = 130;
+	static const uint16 CITY_RENAME = 131;
 
 	//Structure 141 - 170
 	static const uint16 STRUCTURE_STATUS = 141;
