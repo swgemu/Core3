@@ -25,7 +25,7 @@ naboo_dread_pirate = Creature:new {
 	creatureBitmask = PACK,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = { "object/mobile/dressed_criminal_pirate_human_male_01.iff" },
 	lootGroups = {
 	    {
 			groups = {

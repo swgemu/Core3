@@ -26,6 +26,7 @@ includeFile("dungeon/death_watch_bunker_conv_handles.lua")
 
 -- Task/Quest
 includeFile("tasks/ajuva_vanasterin.lua")
+includeFile("tasks/biribas_tarun.lua")
 includeFile("tasks/booto_lubble.lua")
 includeFile("tasks/captain_gavyn_sykes.lua")
 includeFile("tasks/diktatQuest.lua")
