@@ -90,6 +90,10 @@ public:
 		departureVector = shuttle->getWorldPosition();
 	}
 
+	void setPointName(const String& name){
+		pointName = name;
+	}
+
 	inline String& getPointZone() {
 		return pointZone;
 	}

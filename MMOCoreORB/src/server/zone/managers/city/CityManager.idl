@@ -241,6 +241,17 @@ class CityManager extends ManagedService implements Logger {
 	public int getTotalCities() {
 		return cities.size();
 	}
+
+	public boolean renameCity(CityRegion city, final string newName){
+		if(cities.contains(city.getRegionName())){
+			cities.drop(city.getRegionName());
+			cities.put(newName, city);
+			return true;
+		}	
+
+		return false;
+
+	}
 	
 	/**
 	 * @pre city locked, creature locked, sceneObject locked
@@ -273,5 +284,7 @@ class CityManager extends ManagedService implements Logger {
 	
 	@local
 	public native CityTax getCityTax(int idx);
+
+	public native void sendChangeCityName(CityRegion city, CreatureObject mayor);
 
 }

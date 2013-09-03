@@ -254,6 +254,8 @@ public:
 
 	int getTotalCities();
 
+	bool renameCity(CityRegion* city, const String& newName);
+
 	void sendMayoralStandings(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
 	void promptMayoralVote(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
@@ -271,6 +273,8 @@ public:
 	CitySpecialization* getCitySpecialization(const String& cityspec);
 
 	CityTax* getCityTax(int idx);
+
+	void sendChangeCityName(CityRegion* city, CreatureObject* mayor);
 
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
@@ -449,6 +453,8 @@ public:
 
 	int getTotalCities();
 
+	bool renameCity(CityRegion* city, const String& newName);
+
 	void sendMayoralStandings(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
 	void promptMayoralVote(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
@@ -466,6 +472,8 @@ public:
 	CitySpecialization* getCitySpecialization(const String& cityspec);
 
 	CityTax* getCityTax(int idx);
+
+	void sendChangeCityName(CityRegion* city, CreatureObject* mayor);
 
 	WeakReference<CityManager*> _this;
 
@@ -606,6 +614,8 @@ public:
 
 	int getTotalCities();
 
+	bool renameCity(CityRegion* city, const String& newName);
+
 	void sendMayoralStandings(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
 
 	void promptMayoralVote(CityRegion* city, CreatureObject* creature, SceneObject* terminal);
@@ -619,6 +629,8 @@ public:
 	void fixMayor(CityRegion* city, CreatureObject* mayor);
 
 	bool canSupportMoreDecorations(CityRegion* city);
+
+	void sendChangeCityName(CityRegion* city, CreatureObject* mayor);
 
 };
 
