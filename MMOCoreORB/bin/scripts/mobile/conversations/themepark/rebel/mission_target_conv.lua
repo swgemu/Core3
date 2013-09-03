@@ -117,4 +117,4 @@ createMissionTargetConvoTemplate("zeelius_kraymunder_mission_target_convotemplat
 
 --Corellia
 createMissionTargetConvoTemplate("diktatTargetConvo","diktatTargetHandler")
-
+createMissionTargetConvoTemplate("garmTargetConvo","garmTargetHandler")

@@ -215,4 +215,4 @@ createMissionGiverConvoTemplate("zeelius_kraymunder_mission_giver_convotemplate"
 
 --Corellia
 createMissionGiverConvoTemplate("diktatGiverConvo","diktatGiverHandler")
-
+createMissionGiverConvoTemplate("garmGiverConvo","garmGiverHandler")
