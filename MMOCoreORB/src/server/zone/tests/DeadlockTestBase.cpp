@@ -62,7 +62,7 @@ TEST_F(GeneralDeadlockTest, CrossLockTest) {
 		return;
 	}
 
-	FAIL() << "Cross lock not detected!";
+	FAIL() << "Cross lock deadlock not detected!";
 }
 
 TEST_F(GeneralDeadlockTest, CrossLockToNullTest) {
@@ -77,7 +77,7 @@ TEST_F(GeneralDeadlockTest, CrossLockToNullTest) {
 		return;
 	}
 
-	FAIL() << "Cross lock to non-locked lockable not detected!";
+	FAIL() << "Cross lock to null lockable not detected!";
 }
 
 TEST_F(GeneralDeadlockTest, CrossLockToUnlockedTest) {
@@ -109,7 +109,7 @@ TEST_F(GeneralDeadlockTest, ThreeLocksTest) {
 		return;
 	}
 
-	FAIL() << "Could not detect a deadlock with 3 locks!";
+	FAIL() << "Could not detect a 3 way deadlock!";
 }
 
 TEST_F(GeneralDeadlockTest, MonitorLockTest) {
@@ -122,6 +122,38 @@ TEST_F(GeneralDeadlockTest, MonitorLockTest) {
 	Locker locker3(monitor);
 
 	EXPECT_TOTAL_LOCKED(3);
+}
+
+TEST_F(GeneralDeadlockTest, MultipleLocksTest) {
+	EXPECT_TOTAL_LOCKED(0);
+
+	Locker locker(sceneObject1);
+
+	Locker locker2(sceneObject2, sceneObject1);
+
+	Locker locker3(monitor);
+
+	EXPECT_TOTAL_LOCKED(3);
+
+	locker3.release();
+
+	Locker locker4(monitor);
+
+	EXPECT_TOTAL_LOCKED(3);
+
+	locker4.release();
+
+	locker2.release();
+
+	Locker locker5(monitor);
+
+	EXPECT_TOTAL_LOCKED(2);
+
+	locker5.release();
+
+	Locker locker6(sceneObject3, sceneObject1);
+
+	EXPECT_TOTAL_LOCKED(2);
 }
 
 void DeadlockDetector::detectDeadlock() {
