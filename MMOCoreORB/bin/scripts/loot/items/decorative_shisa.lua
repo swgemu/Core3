@@ -8,7 +8,10 @@ decorative_shisa = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	junkDealerTypeNeeded = LOOTJUNK,
+	junkMinValue = 2,
+	junkMaxValue = 22
 }
 
 addLootItemTemplate("decorative_shisa", decorative_shisa)

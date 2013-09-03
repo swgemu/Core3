@@ -8,7 +8,10 @@ dermal_analyzer = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	junkDealerTypeNeeded = LOOTJUNK,
+	junkMinValue = 2,
+	junkMaxValue = 22
 }
 
 addLootItemTemplate("dermal_analyzer", dermal_analyzer)

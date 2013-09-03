@@ -8,7 +8,10 @@ decorative_bowl = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	junkDealerTypeNeeded = LOOTJUNK,
+	junkMinValue = 2,
+	junkMaxValue = 22
 }
 
 addLootItemTemplate("decorative_bowl", decorative_bowl)
