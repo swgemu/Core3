@@ -30,7 +30,7 @@ minor_gubbur = Creature:new {
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
-	attacks = merge(brawlernovice,marksmannovice)
+	attacks = { }
 }
 
 CreatureTemplates:addCreatureTemplate(minor_gubbur, "minor_gubbur")

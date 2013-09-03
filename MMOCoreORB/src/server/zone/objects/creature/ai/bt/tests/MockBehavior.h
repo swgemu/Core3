@@ -19,11 +19,11 @@ namespace bt {
 
 class MockBehavior: public Behavior {
 public:
-	MOCK_METHOD1(tick, Status(AiActor* a));
-	MOCK_METHOD1(update,Status(AiActor* a));
+	MOCK_METHOD1(tick, int(AiActor* a));
+	MOCK_METHOD1(update,int(AiActor* a));
 	MOCK_METHOD1(onInitialize,void(AiActor* a));
 	MOCK_METHOD0(canObserve,bool());
-	MOCK_METHOD2(onTerminate, void(AiActor* a,Status s));
+	MOCK_METHOD2(onTerminate, void(AiActor* a,int s));
 	MOCK_METHOD1(observe, void(AiActor* a));
 };
 

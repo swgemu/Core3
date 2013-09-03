@@ -25,7 +25,7 @@ public:
 protected:
 	BehaviorTree* tree;
 	virtual void onInitialize(AiActor* actor);
-	virtual Status update(AiActor* actor) { return RUNNING; }
+	virtual int update(AiActor* actor) { return RUNNING; }
 	virtual void observe(AiActor* actor);
 	virtual bool canObserve() { return true; }
 	int position;

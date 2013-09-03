@@ -62,6 +62,7 @@ Luna<LuaSceneObject>::RegType LuaSceneObject::Register[] = {
 		{ "clearContainerDefaultAllowPermission", &LuaSceneObject::clearContainerDefaultAllowPermission},
 		{ "setContainerDefaultDenyPermission", &LuaSceneObject::setContainerDefaultDenyPermission},
 		{ "clearContainerDefaultDenyPermission", &LuaSceneObject::clearContainerDefaultDenyPermission},
+		{ "setContainerOwnerID", &LuaSceneObject::setContainerOwnerID},
 		{ "hasActiveArea", &LuaSceneObject::hasActiveArea},
 		{ "setObjectName", &LuaSceneObject::setObjectName},
 		{ "isASubChildOf", &LuaSceneObject::isASubChildOf},
@@ -529,6 +530,14 @@ int LuaSceneObject::clearContainerDefaultDenyPermission(lua_State* L) {
 	uint16 perm = lua_tointeger(L, -1);
 
 	realObject->clearContainerDefaultDenyPermission(perm);
+
+	return 0;
+}
+
+int LuaSceneObject::setContainerOwnerID(lua_State* L) {
+	uint64 ownerID = lua_tointeger(L, -1);
+
+	realObject->setContainerOwnerID(ownerID);
 
 	return 0;
 }

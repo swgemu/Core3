@@ -50,7 +50,7 @@ public:
 TEST_F(BehaviorTest, testInitialize) {
 	MockBehavior mock;
 	BehaviorTree tree;
-	ON_CALL(mock,update(_)).WillByDefault(Return(RUNNING));
+	ON_CALL(mock,update(_)).WillByDefault(Return(Behavior::RUNNING));
 	EXPECT_CALL(mock,onInitialize(_)).Times(AtLeast(1));
 	EXPECT_CALL(mock,update(_)).Times(AtLeast(1));
 	EXPECT_CALL(mock,canObserve()).Times(AtLeast(1));
@@ -63,11 +63,11 @@ TEST_F(BehaviorTest, testUpdate) {
 	BehaviorTree tree;
 	EXPECT_CALL(mock,onTerminate(_,_)).Times(AtLeast(0));
 	EXPECT_CALL(mock,onInitialize(_)).Times(AtLeast(1));
-	EXPECT_CALL(mock,update(_)).WillOnce(Return(RUNNING));
+	EXPECT_CALL(mock,update(_)).WillOnce(Return(Behavior::RUNNING));
 	EXPECT_CALL(mock,canObserve()).Times(AtLeast(1));
 	tree.start(&mock,actor);
 	tree.tick(actor);
-	EXPECT_CALL(mock,update(_)).WillOnce(Return(RUNNING));
+	EXPECT_CALL(mock,update(_)).WillOnce(Return(Behavior::RUNNING));
 	tree.tick(actor);
 }
 TEST_F(BehaviorTest, testTerminate) {
@@ -76,10 +76,10 @@ TEST_F(BehaviorTest, testTerminate) {
 	EXPECT_CALL(mock,onTerminate(_,_)).Times(AtLeast(1));
 	EXPECT_CALL(mock,canObserve()).Times(AtLeast(1));
 	EXPECT_CALL(mock,onInitialize(_)).Times(AtLeast(1));
-	EXPECT_CALL(mock,update(_)).WillOnce(Return(RUNNING));
+	EXPECT_CALL(mock,update(_)).WillOnce(Return(Behavior::RUNNING));
 	tree.start(&mock,actor);
 	tree.tick(actor);
-	EXPECT_CALL(mock,update(_)).WillOnce(Return(SUCCESS));
+	EXPECT_CALL(mock,update(_)).WillOnce(Return(Behavior::SUCCESS));
 	tree.tick(actor);
 }
 TEST_F(BehaviorTest, testAbort) {
@@ -94,12 +94,12 @@ TEST_F(BehaviorTest, testAbort) {
 
 }
 TEST_F(BehaviorTest, testSingleNodeTreePassAndFail) {
-	Status status[2] = { SUCCESS,FAILURE };
+	int status[2] = { Behavior::SUCCESS,Behavior::FAILURE };
 	for (int i=0; i<2; ++i) {
 		BehaviorTree tree;
 		MockSequenceBehavior mock(&tree,1);
 		EXPECT_CALL(mock,onInitialize(_)).Times(AtLeast(1));
-		EXPECT_CALL(mock,update(_)).WillOnce(Return(RUNNING));
+		EXPECT_CALL(mock,update(_)).WillOnce(Return(Behavior::RUNNING));
 		EXPECT_CALL(mock,canObserve()).Times(AtLeast(1));
 		tree.start(&mock,actor);
 		tree.tick(actor);
@@ -116,13 +116,13 @@ TEST_F(BehaviorTest, testTwoNodesWithFailingBehavior) {
 	BehaviorTree tree;
 	MockSequenceBehavior mock(&tree,2);
 	EXPECT_CALL(mock,onInitialize(_)).Times(AtLeast(1));
-	EXPECT_CALL(mock,update(_)).WillOnce(Return(RUNNING));
+	EXPECT_CALL(mock,update(_)).WillOnce(Return(Behavior::RUNNING));
 	EXPECT_CALL(mock,onTerminate(_,_)).Times(AtLeast(1));
 	EXPECT_CALL(mock,canObserve()).Times(AtLeast(1));
 	tree.start(&mock,actor);
 	tree.tick(actor);
 	EXPECT_CALL(mock,canObserve()).Times(AtLeast(1));
-	EXPECT_CALL(mock,update(_)).WillOnce(Return(FAILURE));
+	EXPECT_CALL(mock,update(_)).WillOnce(Return(Behavior::FAILURE));
 	tree.tick(actor);
 
 }
@@ -130,12 +130,12 @@ TEST_F(BehaviorTest, testTwoNodeWithRunningBehavior) {
 	BehaviorTree tree;
 	MockSequenceBehavior mock(&tree,2);
 	EXPECT_CALL(mock,onInitialize(_)).Times(AtLeast(1));
-	EXPECT_CALL(mock,update(_)).WillOnce(Return(RUNNING));
+	EXPECT_CALL(mock,update(_)).WillOnce(Return(Behavior::RUNNING));
 	EXPECT_CALL(mock,onTerminate(_,_)).Times(AtLeast(0));
 	EXPECT_CALL(mock,canObserve()).Times(AtLeast(0));
 	tree.start(&mock,actor);
 	tree.tick(actor);
-	EXPECT_CALL(mock,update(_)).WillOnce(Return(RUNNING));
+	EXPECT_CALL(mock,update(_)).WillOnce(Return(Behavior::RUNNING));
 	tree.tick(actor);
 }
 

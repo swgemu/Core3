@@ -133,6 +133,7 @@ includeFile("tasks/sloan_rusper.lua")
 includeFile("tasks/tekil_barje.lua")
 includeFile("tasks/vardias_tyne.lua")
 includeFile("tasks/xaan_talmaron.lua")
+includeFile("tasks/zeelius_kraymunder.lua")
 
 -- Caves
 includeFile("caves/corellia_afarathu_cave.lua")
