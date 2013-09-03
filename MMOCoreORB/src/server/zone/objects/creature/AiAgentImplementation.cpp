@@ -1840,3 +1840,34 @@ bool AiAgentImplementation::isEventMob() {
 
 	return false;
 }
+int AiAgentImplementation::getBehaviorStatus(Behavior* b) {
+		return statuses.get(b);
+}
+void AiAgentImplementation::setBehaviorStatus(Behavior* b,int status) {
+		statuses.put(b,status);
+}
+void AiAgentImplementation::addBehaviorToTree(BehaviorTree* tree, Behavior* b) {
+	if (trees.containsKey(tree)) {
+		BehaviorTreeList* list = trees.get(tree);
+		list->add(b);
+	} else {
+		BehaviorTreeList* list = new BehaviorTreeList();
+		list->add(b);
+		trees.put(tree,list);
+	}
+}
+Behavior* AiAgentImplementation::getNextBehaviorFromTree(BehaviorTree* tree) {
+	if (trees.containsKey(tree)) {
+		BehaviorTreeList* list = trees.get(tree);
+		return list->remove();
+	} else {
+		return NULL;
+	}
+}
+void AiAgentImplementation::resetBehaviorList(BehaviorTree* tree) {
+	if (trees.containsKey(tree)) {
+		BehaviorTreeList* list = trees.get(tree);
+		trees.remove(tree);
+		delete list;
+	}
+}

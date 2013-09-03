@@ -22,10 +22,10 @@ class BehaviorTree {
 public:
 	BehaviorTree();
 	virtual ~BehaviorTree();
-	void start(Behavior* behavior,AiActor* actor);
-	void stop(Behavior* behavior, AiActor* actor);
-	void tick(AiActor* actor);
-	bool step(AiActor* actor);
+	void start(Behavior* behavior,AiAgent* actor);
+	void stop(Behavior* behavior, AiAgent* actor);
+	void tick(AiAgent* actor);
+	bool step(AiAgent* actor);
 };
 
 }

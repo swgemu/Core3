@@ -22,9 +22,9 @@ public:
 
 	LuaBehavior(String name);
 	virtual ~LuaBehavior();
-	virtual int update(AiActor* actor);
-	virtual void onInitialize(AiActor* actor);
-	virtual void onTerminate(AiActor* actor, int s);
+	virtual int update(AiAgent* actor);
+	virtual void onInitialize(AiAgent* actor);
+	virtual void onTerminate(AiAgent* actor, int s);
 protected:
 	String className;
 };

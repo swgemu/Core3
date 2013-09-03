@@ -30,7 +30,7 @@ namespace test {
 
 class BehaviorTest : public ::testing::Test {
 public:
-	Reference<MockAiActor*> actor;
+	Reference<MockAiAgent*> actor;
 	BehaviorTest() {
 		// Perform creation setup here.
 	}
@@ -40,7 +40,7 @@ public:
 	}
 
 	void SetUp() {
-		actor = new MockAiActor();
+		actor = new MockAiAgent();
 	}
 
 	void TearDown() {

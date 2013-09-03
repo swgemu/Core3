@@ -24,7 +24,7 @@ LuaBehavior::LuaBehavior(String name) {
 LuaBehavior::~LuaBehavior() {
 }
 
-int LuaBehavior::update(AiActor* actor) {
+int LuaBehavior::update(AiAgent* actor) {
 	// re-use director maager
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
 	LuaFunction update(lua->getLuaState(), this->className, "update", 1);
@@ -34,7 +34,7 @@ int LuaBehavior::update(AiActor* actor) {
 	int rc = lua_tonumber(L, -1);
 	return rc;
 }
-void LuaBehavior::onInitialize(AiActor* actor) {
+void LuaBehavior::onInitialize(AiAgent* actor) {
 	// re-use director maager
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
 	LuaFunction initialize(lua->getLuaState(), this->className, "OnInitialize", 0);
@@ -42,7 +42,7 @@ void LuaBehavior::onInitialize(AiActor* actor) {
 	// run the function and fetch result
 	lua->callFunction(&initialize);
 }
-void LuaBehavior::onTerminate(AiActor* actor, int s) {
+void LuaBehavior::onTerminate(AiAgent* actor, int s) {
 	// re-use director maager
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
 	LuaFunction terminate(lua->getLuaState(), this->className, "OnTerminiate", 0);

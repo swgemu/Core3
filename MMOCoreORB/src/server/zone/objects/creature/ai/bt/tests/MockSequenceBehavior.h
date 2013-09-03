@@ -35,12 +35,12 @@ public:
 			delete b;
 		}
 	}
-	MOCK_METHOD1(tick, int(AiActor* a));
-	MOCK_METHOD1(update,int(AiActor* a));
-	MOCK_METHOD1(onInitialize,void(AiActor* a));
+	MOCK_METHOD1(tick, int(AiAgent* a));
+	MOCK_METHOD1(update,int(AiAgent* a));
+	MOCK_METHOD1(onInitialize,void(AiAgent* a));
 	MOCK_METHOD0(canObserve,bool());
-	MOCK_METHOD2(onTerminate, void(AiActor* a,int s));
-	MOCK_METHOD1(observe, void(AiActor* a));
+	MOCK_METHOD2(onTerminate, void(AiAgent* a,int s));
+	MOCK_METHOD1(observe, void(AiAgent* a));
     MockBehavior& operator[](uint32 index)
     {
         return *static_cast<MockBehavior*>(children.get(index));

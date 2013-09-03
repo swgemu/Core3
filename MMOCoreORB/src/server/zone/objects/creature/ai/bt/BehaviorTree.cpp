@@ -15,10 +15,10 @@ BehaviorTree::BehaviorTree() {
 BehaviorTree::~BehaviorTree() {
 }
 
-void BehaviorTree::start(Behavior* behavior,AiActor* actor) {
+void BehaviorTree::start(Behavior* behavior,AiAgent* actor) {
 	actor->addBehaviorToTree(this,behavior);
 }
-void BehaviorTree::stop(Behavior* behavior, AiActor* actor) {
+void BehaviorTree::stop(Behavior* behavior, AiAgent* actor) {
 	if (actor->getBehaviorStatus(behavior) != Behavior::RUNNING) {
 		return;
 	}
@@ -26,7 +26,7 @@ void BehaviorTree::stop(Behavior* behavior, AiActor* actor) {
 		behavior->observe(actor);
 	}
 }
-void BehaviorTree::tick(AiActor* actor) {
+void BehaviorTree::tick(AiAgent* actor) {
 	Behavior* stop = NULL;
 	if (actor == NULL)
 		return;
@@ -36,7 +36,7 @@ void BehaviorTree::tick(AiActor* actor) {
 		continue;
 	}
 }
-bool BehaviorTree::step(AiActor* actor) {
+bool BehaviorTree::step(AiAgent* actor) {
 	Behavior* current = actor->getNextBehaviorFromTree(this);
 	if (current == NULL) {
 		return false;
