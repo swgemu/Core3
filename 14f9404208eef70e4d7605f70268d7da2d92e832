@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_aed70bed",
+        "filename": "MMOCoreORB/bin/scripts/mobile/corellia/crackdown_elite_dark_trooper_covert.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-09-03T01:19:45Z",
+      "side": 1,
+      "message": "The stats are not for a level 1 mob. Please fix the level or the stats.",
+      "revId": "14f9404208eef70e4d7605f70268d7da2d92e832",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_8e044f7f",
+        "filename": "MMOCoreORB/bin/scripts/mobile/corellia/kalia_kulmina.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-09-03T01:19:45Z",
+      "side": 1,
+      "message": "Is this supposed to be a level 100 mob?",
+      "revId": "14f9404208eef70e4d7605f70268d7da2d92e832",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

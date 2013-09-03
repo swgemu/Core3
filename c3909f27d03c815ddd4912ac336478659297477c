@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_eecd035f",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/themepark/rebel/mission_giver_conv.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-09-03T01:19:45Z",
+      "side": 0,
+      "message": "Don\u0027t remove this line, or the hedon istee one above.",
+      "revId": "c3909f27d03c815ddd4912ac336478659297477c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_ceda4717",
+        "filename": "MMOCoreORB/bin/scripts/mobile/conversations/themepark/rebel/mission_target_conv.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-09-03T01:19:45Z",
+      "side": 0,
+      "message": "Don\u0027t remove this line, or the hedon istee one above.",
+      "revId": "c3909f27d03c815ddd4912ac336478659297477c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
