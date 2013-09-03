@@ -29,21 +29,14 @@ public:
 		// Perform creation setup here.
 	}
 
-	static void SetUpTestCase() {
-		core = new TestCore();
-	}
-
-	static void TearDownTestCase() {
-		delete core;
-		core = NULL;
-	}
-
 	~GeneralDeadlockTest() {
 		// Clean up.
 	}
 
 	void SetUp() {
 		// Perform setup of common constructs here.
+		CLEAR_LOCK_TRACE();
+
 		sceneObject1 = new LockMockSceneObject();
 		sceneObject2 = new LockMockSceneObject();
 		sceneObject3 = new LockMockSceneObject();
@@ -53,14 +46,8 @@ public:
 
 	void TearDown() {
 		// Perform clean up of common constructs here.
-		CLEAR_LOCK_TRACE();
 	}
-
-	static Core* core;
 };
-
-Core* GeneralDeadlockTest::core = NULL;
-
 
 TEST_F(GeneralDeadlockTest, CrossLockTest) {
 	EXPECT_TOTAL_LOCKED(0);
@@ -76,6 +63,21 @@ TEST_F(GeneralDeadlockTest, CrossLockTest) {
 	}
 
 	FAIL() << "Cross lock not detected!";
+}
+
+TEST_F(GeneralDeadlockTest, CrossLockToNullTest) {
+	EXPECT_TOTAL_LOCKED(0);
+
+	try {
+		Locker locker2(sceneObject2, NULL);
+
+	} catch (DeadlockException& e) {
+		SUCCEED();
+
+		return;
+	}
+
+	FAIL() << "Cross lock to non-locked lockable not detected!";
 }
 
 TEST_F(GeneralDeadlockTest, CrossLockToUnlockedTest) {
@@ -131,10 +133,6 @@ void DeadlockDetector::detectDeadlock() {
 		LockableTrace* lock = &trace->get(i);
 
 		if (lock->locked) {
-			if (lock->crossedTo && !lock->crossedTo->isLockedByCurrentThread()) {
-				throw DeadlockException(lock->lockable, "Trying to cross lock with an unlocked lockable!");
-			}
-
 			Lockable* lastLockable = locked.size() > 0 ? locked.get(locked.size() - 1) : NULL;
 			LockableTrace* lastTrace = NULL;
 			// find last lock with lastLockable

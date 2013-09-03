@@ -44,7 +44,12 @@
 	\
 	void lock(Lockable* lockable) { \
 		\
-		assert(lockable); \
+		if (lockable == NULL) \
+		 	 throw DeadlockException(this, "Trying to crosslock against a null lockable!"); \
+		\
+		if (!lockable->isLockedByCurrentThread()) \
+			throw DeadlockException(this, "Trying to crosslock against an unlocked lockable!"); \
+		\
 		Thread::getCurrentThread()->addAcquiredLockable(this, lockable, _monitorLockable); \
 		DeadlockDetector::detectDeadlock(); \
 		\
@@ -53,7 +58,12 @@
 	\
 	void lock(ManagedObject* obj) { \
 		\
-		assert(obj); \
+		if (obj == NULL) \
+		 	 throw DeadlockException(this, "Trying to crosslock against a null lockable!"); \
+		\
+		if (!obj->isLockedByCurrentThread()) \
+			throw DeadlockException(this, "Trying to crosslock against an unlocked lockable!"); \
+		\
 		Thread::getCurrentThread()->addAcquiredLockable(this, obj, _monitorLockable); \
 		DeadlockDetector::detectDeadlock();\
 		\

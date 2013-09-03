@@ -46,6 +46,7 @@ which carries forward this exception.
 
 #include "server/ServerCore.h"
 #include "server/zone/managers/director/DirectorManager.h"
+#include "server/zone/tests/TestCore.h"
 
 #include "gtest/gtest.h"
 
@@ -102,6 +103,8 @@ int main(int argc, char* argv[]) {
 			}
 		} else if (arguments.contains("runUnitTests")) {
 			printf("Running unit tests...\n");
+			TestCore core;
+
 			testing::InitGoogleTest(&argc, argv);
 
 			return RUN_ALL_TESTS();
