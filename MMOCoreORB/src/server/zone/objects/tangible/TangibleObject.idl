@@ -91,6 +91,10 @@ class TangibleObject extends SceneObject {
 	
 	protected byte unknownByte;
 	protected string craftersName;
+
+	protected int junkDealerNeeded;
+	protected int junkValue;
+
 	protected string objectSerial;
 	
 	@transactional
@@ -133,6 +137,8 @@ class TangibleObject extends SceneObject {
 		sliced = false;
 		
 		threatMap = null;
+		junkDealerNeeded = 0;
+		junkValue = 0;
 	}
 	
 	/**
@@ -555,7 +561,21 @@ class TangibleObject extends SceneObject {
 	public abstract string getCraftersName() {
 		return craftersName;
 	}
+
+	public void setJunkDealerNeeded(int jdNeeded) {
+		junkDealerNeeded = jdNeeded;
+	}
 	
+	public abstract int getJunkDealerNeeded() {
+		return junkDealerNeeded;
+	}
+	public void setJunkValue(int jValue) {
+		junkValue = jValue;
+	}
+	
+	public abstract int getJunkValue() {
+		return junkValue;
+	}
 	public native void setSerialNumber(final string serial);
 	
 	public abstract void setLevel(int lev) {

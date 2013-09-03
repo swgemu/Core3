@@ -20,6 +20,9 @@ protected:
 	String customObjectName;
 	String directObjectTemplate;
 
+	int junkDealerTypeNeeded;
+	int junkValue;
+
 	CraftingValues craftingValues;
 
 	Vector<String> customizationStringNames;
@@ -43,6 +46,9 @@ public:
 	void readObject(LuaObject* templateData) {
 		customObjectName = templateData->getStringField("customObjectName");
 		directObjectTemplate = templateData->getStringField("directObjectTemplate");
+
+		junkDealerTypeNeeded = templateData->getIntField("junkDealerTypeNeeded");
+		junkValue = templateData->getIntField("junkValue");
 
 		//TODO: At this point, we should go ahead and pull in the tangible objects stats
 
@@ -208,6 +214,13 @@ public:
 
 	int getStaticDotType() {
 		return staticDotType;
+	}
+
+	int getJunkDealerTypeNeeded() {
+		return junkDealerTypeNeeded;
+	}
+	int getJunkValue() {
+		return junkValue;
 	}
 
 	VectorMap<String, SortedVector<int> >* getStaticDotValues() {
