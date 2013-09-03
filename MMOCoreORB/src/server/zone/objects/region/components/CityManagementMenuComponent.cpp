@@ -12,6 +12,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/player/PlayerObject.h"
+
 #ifndef CITY_DEBUG
 #define CITY_DEBUG
 #endif
@@ -95,6 +96,9 @@ int CityManagementMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		break;
 	case 215: //Treasury Report
 		cityManager->sendTreasuryReport(city, player, sceneObject);
+		break;
+	case 217:  // Change Name
+		cityManager->sendChangeCityName(city, player);
 		break;
 	case 218: //Manage Militia
 		if (city->isMayor(player->getObjectID()))
