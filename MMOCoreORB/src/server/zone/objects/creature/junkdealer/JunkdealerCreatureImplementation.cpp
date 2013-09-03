@@ -18,9 +18,7 @@
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/tangible/loot/LootkitObject.h"
 #include "server/chat/StringIdChatParameter.h"
-
 #include "server/zone/objects/creature/junkdealer/sui/JunkDealerSellListSuiCallback.h"
-
 
 void JunkdealerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 	if (!obj->isPlayerCreature())
@@ -301,7 +299,16 @@ void JunkdealerCreatureImplementation::createSellJunkLootSelection(CreatureObjec
 	box->setOkButton(true, "@loot_dealer:btn_sell");
 	box->setCancelButton(true, "@cancel");
 
-	//box->addMenuItem("[1337] Medal of Elvaron", 0);
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+	Locker locker(inventory);
+    for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
+    	UnicodeString itemName = StringIdManager::instance()->getStringId(inventory->getContainerObject(i)->getDisplayedName().hashCode());
+    	ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i));
+    	//if (item->getCraftersName().isEmpty() == true && item->isWeaponObject()==false && item->isArmorObject()==false
+    	//		&& item->isAttachment()==false && item->isDeedObject()==false && item->isContainerObject()==false && item->isResourceContainer()==false )
+    	if ((item->getJunkDealerNeeded() & 1) == 1 && item->getCraftersName().isEmpty() == true )
+    		box->addMenuItem(itemName.toString(), inventory->getContainerObject(i)->getObjectID());
+    }
 
 	box->setUsingObject(_this.get());
 	player->getPlayerObject()->addSuiBox(box);

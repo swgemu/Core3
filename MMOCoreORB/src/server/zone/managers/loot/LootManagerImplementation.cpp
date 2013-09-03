@@ -206,7 +206,8 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 	String serial = craftingManager->generateSerial();
 	prototype->setSerialNumber(serial);
-
+	prototype->setJunkDealerNeeded(templateObject->getJunkDealerTypeNeeded());
+	prototype->setJunkValue(templateObject->getJunkValue());
 	CraftingValues craftingValues = templateObject->getCraftingValuesCopy();
 
 	setInitialObjectStats(templateObject, &craftingValues, prototype);

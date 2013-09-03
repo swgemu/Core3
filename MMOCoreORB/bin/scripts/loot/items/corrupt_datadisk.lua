@@ -8,7 +8,10 @@ corrupt_datadisk = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	-- 0 (default) = not Junk and can't be sold, 1 = Normal Junk, 2 = Clothes & Jewellry, 4 = Weapons, 8 = Armour, 16 = Tusken Items
+	junkDealerTypeNeeded = 1,
+	junkValue = 150
 }
 
 addLootItemTemplate("corrupt_datadisk", corrupt_datadisk)
