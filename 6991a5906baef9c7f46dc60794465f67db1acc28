@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "1a1a2d67_b31c186c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-09-04T19:11:14Z",
+      "side": 1,
+      "message": "OK.  sounds good.",
+      "parentUuid": "1a1a2d67_f3129057",
+      "revId": "6991a5906baef9c7f46dc60794465f67db1acc28",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a1d315d_eeace337",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp",
         "patchSetId": 4
