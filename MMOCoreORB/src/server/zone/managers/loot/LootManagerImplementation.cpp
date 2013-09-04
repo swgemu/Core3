@@ -206,7 +206,11 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 	String serial = craftingManager->generateSerial();
 	prototype->setSerialNumber(serial);
-
+	prototype->setJunkDealerNeeded(templateObject->getJunkDealerTypeNeeded());
+	float fJunkValue = templateObject->getJunkMinValue()+System::random(templateObject->getJunkMaxValue()-templateObject->getJunkMinValue());
+	if (level>0){
+		fJunkValue=fJunkValue + (fJunkValue * ((float)level / 10));
+	}
 	CraftingValues craftingValues = templateObject->getCraftingValuesCopy();
 
 	setInitialObjectStats(templateObject, &craftingValues, prototype);
@@ -242,7 +246,6 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 		prototype->setOptionsBitmask(bitmask, false);
 	}
-
 	String subtitle;
 	bool yellow = false;
 
@@ -323,8 +326,14 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 	if (yellow) {
 		uint32 bitmask = prototype->getOptionsBitmask() | OptionBitmask::YELLOW;
-
 		prototype->setOptionsBitmask(bitmask, false);
+		prototype->setJunkValue((int)(fJunkValue * 1.25));
+	}else{
+		if (excMod==1){
+			prototype->setJunkValue((int)(fJunkValue));
+		}else{
+			prototype->setJunkValue((int)(fJunkValue * (excMod/2)));
+		}
 	}
 
 	// Use percentages to recalculate the values

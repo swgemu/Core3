@@ -6,7 +6,10 @@ broken_viewscreen_grey = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	junkDealerTypeNeeded = LOOTJUNK,
+	junkMinValue = 2,
+	junkMaxValue = 22
 }
 
 addLootItemTemplate("broken_viewscreen_grey", broken_viewscreen_grey)

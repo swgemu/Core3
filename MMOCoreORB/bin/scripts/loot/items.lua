@@ -1,3 +1,9 @@
+LOOTNOTSELLABLE =0 
+LOOTJUNK = 1
+LOOTCLOTHESANDJEWELLERY = 2
+LOOTWEAPONS = 4
+LOOTARMOUR = 8
+LOOTTUSKEN = 16
 includeFile("items/aakuan_belt.lua")
 includeFile("items/aakuan_ring.lua")
 includeFile("items/aakuan_robe.lua")
