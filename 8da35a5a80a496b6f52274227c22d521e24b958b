@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3a1d315d_ce57e725",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/RenameCitySuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-09-04T16:42:17Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "3a1d315d_6e4fb393",
+      "revId": "8da35a5a80a496b6f52274227c22d521e24b958b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a1d315d_4e44f773",
         "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/RenameCitySuiCallback.h",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-09-04T16:03:23Z",
       "side": 1,
       "message": "Missing mayor check? I am not sure if everybody could change the name",
+      "revId": "8da35a5a80a496b6f52274227c22d521e24b958b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_ae54ab21",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/RenameCitySuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-09-04T16:42:17Z",
+      "side": 1,
+      "message": "I\u0027ll add it on this side too.",
+      "parentUuid": "3a1d315d_4e44f773",
       "revId": "8da35a5a80a496b6f52274227c22d521e24b958b",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
