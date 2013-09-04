@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_8e60cf36",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/broken_decryptor.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-09-04T01:47:33Z",
+      "side": 1,
+      "message": "Might be easier to create these as constants similar to bitmasks for creature templates.  That way when other community members help to populate this, they can just add the different vendor types with \n\nNORMAL + WEAPONS",
+      "revId": "a767d9a72b9d6b883a93b4dbc187862fc30927a3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_6e657344",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/broken_decryptor.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-09-04T01:47:33Z",
+      "side": 1,
+      "message": "What is the plan for items that can be sold to different vendors?  Are they going to pay the same?",
+      "revId": "a767d9a72b9d6b883a93b4dbc187862fc30927a3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_4e5ab784",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/junkdealer/sui/JunkDealerSellListSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-09-04T01:47:33Z",
+      "side": 1,
+      "message": "I don\u0027t think tst is locked in this scope since you did it in the if statement.",
+      "revId": "a767d9a72b9d6b883a93b4dbc187862fc30927a3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
