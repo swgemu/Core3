@@ -8,7 +8,10 @@ dud_firework_red = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	junkDealerTypeNeeded = LOOTJUNK,
+	junkMinValue = 2,
+	junkMaxValue = 22
 }
 
 addLootItemTemplate("dud_firework_red", dud_firework_red)

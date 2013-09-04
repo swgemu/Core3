@@ -206,7 +206,11 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 	String serial = craftingManager->generateSerial();
 	prototype->setSerialNumber(serial);
-
+	prototype->setJunkDealerNeeded(templateObject->getJunkDealerTypeNeeded());
+	float fJunkValue = templateObject->getJunkMinValue()+System::random(templateObject->getJunkMaxValue()-templateObject->getJunkMinValue());
+	if (level>0){
+		fJunkValue=fJunkValue + (fJunkValue * ((float)level / 10));
+	}
 	CraftingValues craftingValues = templateObject->getCraftingValuesCopy();
 
 	setInitialObjectStats(templateObject, &craftingValues, prototype);
@@ -242,7 +246,6 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 		prototype->setOptionsBitmask(bitmask, false);
 	}
-
 	String subtitle;
 	bool yellow = false;
 
@@ -318,8 +321,14 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 	if (yellow) {
 		uint32 bitmask = prototype->getOptionsBitmask() | OptionBitmask::YELLOW;
-
 		prototype->setOptionsBitmask(bitmask, false);
+		prototype->setJunkValue((int)(fJunkValue * 1.25));
+	}else{
+		if (excMod==1){
+			prototype->setJunkValue((int)(fJunkValue));
+		}else{
+			prototype->setJunkValue((int)(fJunkValue * (excMod/2)));
+		}
 	}
 
 	// Use percentages to recalculate the values
@@ -327,6 +336,19 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 
 	craftingValues.addExperimentalProperty("creatureLevel", "creatureLevel", level, level, 0, false, CraftingManager::LINEARCOMBINE);
 	craftingValues.setHidden("creatureLevel");
+
+	//check weapons and weapon components for min damage > max damage
+	if (prototype->isComponent() || prototype->isWeaponObject()) {
+		if (craftingValues.hasProperty("mindamage") && craftingValues.hasProperty("maxdamage")) {
+			float oldMin = craftingValues.getCurrentValue("mindamage");
+			float oldMax = craftingValues.getCurrentValue("maxdamage");
+
+			if (oldMin > oldMax) {
+				craftingValues.setCurrentValue("mindamage", oldMax);
+				craftingValues.setCurrentValue("maxdamage", oldMin);
+			}
+		}
+	}
 
 	// Add Dots to weapon objects.
 	addStaticDots(prototype, templateObject, level);
