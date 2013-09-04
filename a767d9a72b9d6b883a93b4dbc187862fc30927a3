@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3a1d315d_ce4da7c6",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/broken_decryptor.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 418
+      },
+      "writtenOn": "2013-09-04T01:54:21Z",
+      "side": 1,
+      "message": "Fair point, Tbh, I only really expect ARMOUR+TUSKEN or WEAPON+TUSKEN to be used together though",
+      "parentUuid": "3a1d315d_8e60cf36",
+      "revId": "a767d9a72b9d6b883a93b4dbc187862fc30927a3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a1d315d_6e657344",
         "filename": "MMOCoreORB/bin/scripts/loot/items/broken_decryptor.lua",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2013-09-04T01:47:33Z",
       "side": 1,
       "message": "What is the plan for items that can be sold to different vendors?  Are they going to pay the same?",
+      "revId": "a767d9a72b9d6b883a93b4dbc187862fc30927a3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_ee506360",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/broken_decryptor.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 418
+      },
+      "writtenOn": "2013-09-04T01:54:21Z",
+      "side": 1,
+      "message": "The loot value will be determined at object creation, so the price will be the same at all vendors (as implemented)",
+      "parentUuid": "3a1d315d_6e657344",
       "revId": "a767d9a72b9d6b883a93b4dbc187862fc30927a3",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
