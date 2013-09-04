@@ -72,6 +72,23 @@
     },
     {
       "key": {
+        "uuid": "3a1d315d_2ed65bc6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/junkdealer/sui/JunkDealerSellListSuiCallback.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-09-04T02:06:34Z",
+      "side": 1,
+      "message": "Creature is already locked when this is called so you shouldn\u0027t have to lock inventory.  Also, when you lock tst below, you\u0027ll want to crosslock tst to the creature.",
+      "revId": "a767d9a72b9d6b883a93b4dbc187862fc30927a3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a1d315d_4e5ab784",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/junkdealer/sui/JunkDealerSellListSuiCallback.h",
         "patchSetId": 2
