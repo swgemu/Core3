@@ -87,7 +87,7 @@ int DamageOverTimeList::getStrength(uint8 pool, uint64 dotType) {
 	return strength;
 }
 
-uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint64 objectID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense) {
+uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint64 objectID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense, int secondaryStrength) {
 	if (strength == 0) return 0;
 	int oldStrength = getStrength(pool, dotType);
 	float dotReductionMod = 1.0f;
@@ -133,7 +133,7 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint64 objectID, uint3
 		objectID = Long::hashCode(CreatureState::DISEASED);
 
 	}
-	DamageOverTime newDot(dotType, pool, redStrength, duration, redPotency);
+	DamageOverTime newDot(dotType, pool, redStrength, duration, redPotency, secondaryStrength);
 	int dotPower = newDot.initDot(victim);
 	victim->setState(dotType);
 

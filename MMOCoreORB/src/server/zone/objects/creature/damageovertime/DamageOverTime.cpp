@@ -57,16 +57,17 @@ DamageOverTime::DamageOverTime() {
 	setDuration(0);
 	setPotency(0.0f);
 	setExpires(0);
-
+	setSecondaryStrength(0);
 	addSerializableVariables();
 }
 
-DamageOverTime::DamageOverTime(uint64 tp, uint8 attrib, uint32 str, uint32 dur, float potency) {
+DamageOverTime::DamageOverTime(uint64 tp, uint8 attrib, uint32 str, uint32 dur, float potency, int secondaryStrength) {
 	setType(tp);
 	setAttribute(attrib);
 	strength = str;
 	setDuration(dur);
 	setPotency(potency);
+	setSecondaryStrength(secondaryStrength);
 	activate();
 
 	addSerializableVariables();
@@ -82,6 +83,8 @@ DamageOverTime::DamageOverTime(const DamageOverTime& dot) : Object(), Serializab
 	potency = dot.potency;
 	expires = dot.expires;
 	nextTick = dot.nextTick;
+	secondaryStrength = dot.secondaryStrength;
+
 }
 
 DamageOverTime& DamageOverTime::operator=(const DamageOverTime& dot) {
@@ -95,6 +98,8 @@ DamageOverTime& DamageOverTime::operator=(const DamageOverTime& dot) {
 	potency = dot.potency;
 	expires = dot.expires;
 	nextTick = dot.nextTick;
+	secondaryStrength = dot.secondaryStrength;
+
 
 	return *this;
 }
@@ -107,6 +112,8 @@ void DamageOverTime::addSerializableVariables() {
 	addSerializableVariable("potency", &potency);
 	addSerializableVariable("expires", &expires);
 	addSerializableVariable("nextTick", &nextTick);
+	addSerializableVariable("secondaryStrength", &secondaryStrength);
+
 }
 
 /*bool DamageOverTime::toBinaryStream(ObjectOutputStream* stream) {
@@ -222,9 +229,10 @@ uint32 DamageOverTime::doBleedingTick(CreatureObject* victim) {
 uint32 DamageOverTime::doFireTick(CreatureObject* victim) {
 	uint32 attr = victim->getHAM(attribute);
 	uint32 strengthToApply = strength;
+	int woundsToApply = secondaryStrength;
 
 	if ((int)strength > 0)
-		victim->addWounds(attribute, strength, true);
+		victim->addWounds(attribute, woundsToApply, true);
 
 	if (attr < strengthToApply)
 		strengthToApply = attr - 1;
