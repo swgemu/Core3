@@ -301,8 +301,8 @@ void CombatManager::applyDots(CreatureObject* attacker, CreatureObject* defender
 			resist += defender->getSkillMod(defenseMods.get(j));
 
 		//info("entering addDotState", true);
-
-		defender->addDotState(effect.getDotType(), data.getCommand()->getNameCRC(), effect.isDotDamageofHit() ? appliedDamage : effect.getDotStrength(), effect.getDotPool(), effect.getDotDuration(), effect.getDotPotency(), resist);
+		defender->addDotState(effect.getDotType(), data.getCommand()->getNameCRC(), effect.isDotDamageofHit() ? appliedDamage * effect.getPrimaryPercent() / 100.0f : effect.getDotStrength(), effect.getDotPool(), effect.getDotDuration(), effect.getDotPotency(), resist,
+				effect.isDotDamageofHit() ? appliedDamage * effect.getSecondaryPercent() / 100.0f : effect.getDotStrength());
 	}
 }
 
@@ -346,7 +346,7 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 
 		if (attackerWeapon->getDotType(i) == 3) { // Fire.
 			resist = defender->getSkillMod("resistance_fire");
-			int power = defender->addDotState(CreatureState::ONFIRE, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist);
+			int power = defender->addDotState(CreatureState::ONFIRE, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist,  attackerWeapon->getDotStrength(i));
 
 			if (power > 0) { // Unresisted, reduce use count.
 				if (attackerWeapon->getDotUses(i) > 0) {

@@ -55,7 +55,20 @@ FlameSingle1Command = {
 
 	animationCRC = hashCode("fire_flame_thrower_single_1_light"),
 	combatSpam = "flamesingle1",
-	
+	dotEffects = {
+	  DotEffect( 
+		ONFIRE, 
+		{"resistance_fire", "fire_resist"},
+		HEALTH,
+		true,
+		100,
+		100,
+		100, 
+		60,
+		10,
+		2
+	  )
+	},
 	range = 16
 }
 AddCommand(FlameSingle1Command)
