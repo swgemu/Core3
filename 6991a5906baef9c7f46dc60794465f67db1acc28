@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a1a2d67_732680bc",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/broken_decryptor.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 418
+      },
+      "writtenOn": "2013-09-04T19:16:42Z",
+      "side": 1,
+      "message": "Well spotted, I\u0027ve missed that file out from the upload. but for reference it\u0027s scripts\\loot\\items.lua",
+      "parentUuid": "1a1a2d67_5304a414",
+      "revId": "6991a5906baef9c7f46dc60794465f67db1acc28",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a1d315d_8ebc4f6e",
         "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
         "patchSetId": 4
