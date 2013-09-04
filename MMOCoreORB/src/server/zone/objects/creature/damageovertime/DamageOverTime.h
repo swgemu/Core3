@@ -32,9 +32,11 @@ protected:
 
 	Time expires;
 	Time nextTick;
+	int secondaryStrength;
+
 public:
 	DamageOverTime();
-	DamageOverTime(uint64 tp, uint8 attrib, uint32 str, uint32 dur, float potency);
+	DamageOverTime(uint64 tp, uint8 attrib, uint32 str, uint32 dur, float potency, int secondaryStr = 0);
 
 	DamageOverTime(const DamageOverTime& dot);
 	DamageOverTime& operator=(const DamageOverTime& dot);
@@ -82,6 +84,9 @@ public:
 		expires = time;
 	}
 
+	inline void setSecondaryStrength(int str){
+		secondaryStrength = str;
+	}
 	//Getters
 	inline uint64 getType() {
 		return type;
@@ -126,6 +131,12 @@ public:
 	inline Time getNextTick() {
 		return nextTick;
 	}
+
+	inline int getSecondaryStrength() {
+		return secondaryStrength;
+	}
+
+
 };
 
 

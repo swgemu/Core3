@@ -20,10 +20,14 @@ protected:
 	uint32 dotStrength;
 	uint32 dotPotency;
     uint32 dotChance;
+    byte primaryPercent;
+    byte secondaryPercent;
+
 public:
     DotEffect()
     :Object()
     {
+
         dotType = 0;
         dotPool = 0;
         dotDamageofHit = 0;
@@ -31,6 +35,8 @@ public:
         dotStrength = 0;
         dotPotency = 0;
         dotChance = 0;
+        primaryPercent = 100;
+        secondaryPercent = 0;
     }
 
     DotEffect(LuaObject dot)
@@ -42,6 +48,7 @@ public:
     DotEffect(const DotEffect & effect)
     :Object()
     {
+
         dotType = effect.dotType;
         defenderStateDefenseModifers = effect.defenderStateDefenseModifers;
         dotPool = effect.dotPool;
@@ -50,6 +57,8 @@ public:
         dotStrength = effect.dotStrength;
         dotPotency = effect.dotPotency;
         dotChance = effect.dotChance;
+        primaryPercent = effect.primaryPercent;
+        secondaryPercent = effect.secondaryPercent;
     }
 
     virtual ~DotEffect()
@@ -69,6 +78,9 @@ public:
         dotStrength = effect.dotStrength;
         dotPotency = effect.dotPotency;
         dotChance = effect.dotChance;
+        primaryPercent = effect.primaryPercent;
+        secondaryPercent = effect.secondaryPercent;
+
         return *this;
     }
     inline int compareTo(const DotEffect & effect)
@@ -88,6 +100,9 @@ public:
         dotStrength = dot.getIntField("dotStrength");
         dotPotency = dot.getIntField("dotPotency");
         dotChance = dot.getIntField("dotChance");
+        primaryPercent = dot.getByteField("primaryPercent");
+        secondaryPercent = dot.getByteField("secondaryPercent");
+
         LuaObject defMods = dot.getObjectField("defenderStateDefenseModifiers");
         for(int i = 1;i <= defMods.getTableSize();++i){
             defenderStateDefenseModifers.add(defMods.getStringAt(i));
@@ -171,6 +186,14 @@ public:
 
     void setDotChance(uint32 dotChance) {
         this->dotChance = dotChance;
+    }
+
+    byte getPrimaryPercent(){
+    	return primaryPercent;
+    }
+
+    byte getSecondaryPercent(){
+    	return secondaryPercent;
     }
 
 };

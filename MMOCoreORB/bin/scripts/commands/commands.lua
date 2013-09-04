@@ -12,7 +12,7 @@ function StateEffect(t, et, dm, jm, c, s, l)
 end
 
 -- carries dot data for combat commands
-function DotEffect(t, dm, pl, h, p, c, s, d)
+function DotEffect(t, dm, pl, h, p, c, s, d, pp, sp)
   return {
 	dotType = t,
 	defenderStateDefenseModifers = dm,
@@ -21,7 +21,9 @@ function DotEffect(t, dm, pl, h, p, c, s, d)
 	dotPotency = p,
 	dotChance = c,
 	dotStrength = s,
-	dotDuration = d
+	dotDuration = d,
+	primaryPercent = pp or 100,
+	secondaryPercent = sp or 100
   }
 end
 
