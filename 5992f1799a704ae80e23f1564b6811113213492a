@@ -16,6 +16,24 @@
       "revId": "5992f1799a704ae80e23f1564b6811113213492a",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_ae7dcbb3",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/corvette/imperial/destroyMission.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2013-09-04T09:23:34Z",
+      "side": 1,
+      "message": "Ok, I\u0027ll clone the screen instead of directly changing it in my next patch set.",
+      "parentUuid": "3a1d315d_548dac30",
+      "revId": "5992f1799a704ae80e23f1564b6811113213492a",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
