@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa3479d7_12250cab",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/corvette/corvette.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2013-09-04T23:51:18Z",
+      "side": 1,
+      "message": "Not correct template (self note)",
+      "revId": "305b8ecf4f00793e0354cc8b1fd4f17a276f6538",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa3479d7_3220109b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/corvette/corvette.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2013-09-04T23:51:18Z",
+      "side": 1,
+      "message": "Everything below will need to be removed and added functionality for other buttons (self note)",
+      "revId": "305b8ecf4f00793e0354cc8b1fd4f17a276f6538",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa3479d7_522b9482",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/corvette/imperial/destroyMission.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2013-09-04T23:51:18Z",
+      "side": 1,
+      "message": "These options need to be on a cloned screen too (self note).",
+      "revId": "305b8ecf4f00793e0354cc8b1fd4f17a276f6538",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
