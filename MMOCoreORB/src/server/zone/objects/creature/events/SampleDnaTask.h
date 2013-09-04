@@ -165,6 +165,9 @@ public:
 					player->sendSystemMessage("@bio_engineer:harvest_dna_succeed");
 					creature->incDnaSampleCount();
 					award(cl,rollMod);
+					if (creature->getDnaSampleCount() > 5) {
+						creature->setDnaState(CreatureManager::DNASAMPLED);
+					}
 					if (aggro) {
 						CombatManager::instance()->startCombat(creature,player,true);
 					}

@@ -79,7 +79,11 @@ include server.zone.objects.scene.components.AiInterfaceComponent;
 include server.zone.objects.creature.variables.CreatureTemplateReference;
 include system.thread.ReadWriteLock;
 include server.zone.objects.creature.variables.CurrentFoundPath;
+import server.zone.objects.creature.ai.bt.Behavior;
+include server.zone.objects.creature.ai.bt.BehaviorTreeList;
+import server.zone.objects.creature.ai.bt.BehaviorTree;
 
+@mock
 class AiAgent extends CreatureObject {
 	protected transient AiThinkEvent thinkEvent;
 	
@@ -155,6 +159,14 @@ class AiAgent extends CreatureObject {
 	public static final unsigned int STALKING = 2;
 	public static final unsigned int FOLLOWING = 3;
 	public static final unsigned int PATROLING = 4;
+
+	// AI bits
+	@dereferenced
+	protected transient HashTable<Behavior, int> statuses;
+	
+	@dereferenced
+	protected transient HashTable<BehaviorTree, BehaviorTreeList> trees;
+	
 	
 	public AiAgent() {
 		baby = false;
@@ -730,4 +742,19 @@ class AiAgent extends CreatureObject {
 	public string getPvPFaction(){
 		return npcTemplate.get().getPvpFaction();
 	}
+	@local
+	public native int getBehaviorStatus(Behavior b);
+	
+	@local
+	public native void setBehaviorStatus(Behavior b,int status);
+	
+	@local
+	public native void addBehaviorToTree(BehaviorTree tree, Behavior b);
+	
+	@local
+	public native Behavior getNextBehaviorFromTree(BehaviorTree tree);
+	
+	@local
+	public native void resetBehaviorList(BehaviorTree tree);
+	
 }

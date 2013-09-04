@@ -24,9 +24,9 @@ public:
 	virtual ~SequenceBehavior();
 protected:
 	BehaviorTree* tree;
-	virtual void onInitialize(AiActor* actor);
-	virtual int update(AiActor* actor) { return RUNNING; }
-	virtual void observe(AiActor* actor);
+	virtual void onInitialize(AiAgent* actor);
+	virtual int update(AiAgent* actor) { return RUNNING; }
+	virtual void observe(AiAgent* actor);
 	virtual bool canObserve() { return true; }
 	int position;
 	int end;

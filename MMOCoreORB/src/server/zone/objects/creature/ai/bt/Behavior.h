@@ -9,7 +9,7 @@
 #define BEHAVIOR_H_
 
 #include "engine/engine.h"
-#include "../AiActor.h"
+#include "server/zone/objects/creature/AiAgent.h"
 
 namespace server {
 namespace zone {
@@ -29,16 +29,16 @@ public:
 	static const int RUNNING = 3;
 	static const int SUSPENDED = 4;
 	virtual ~Behavior(){}
-	int tick(AiActor* actor) {
+	int tick(AiAgent* actor) {
 		if (actor->getBehaviorStatus(this) == INVALID || actor->getBehaviorStatus(this) == -1) { onInitialize(actor); }
 		int status = update(actor);
 		if (status != RUNNING) { onTerminate(actor,status); }
 		return status;
 	}
-	virtual int update(AiActor* actor) = 0;
-	virtual void onInitialize(AiActor* actor) { actor->setBehaviorStatus(this,INVALID);}
-	virtual void onTerminate(AiActor* actor, int s) {}
-	virtual void observe(AiActor* actor){}
+	virtual int update(AiAgent* actor) = 0;
+	virtual void onInitialize(AiAgent* actor) { actor->setBehaviorStatus(this,INVALID);}
+	virtual void onTerminate(AiAgent* actor, int s) {}
+	virtual void observe(AiAgent* actor){}
 	virtual bool canObserve() { return false; }
 };
 

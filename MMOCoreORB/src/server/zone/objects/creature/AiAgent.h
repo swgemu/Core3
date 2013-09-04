@@ -217,6 +217,44 @@ class PlayerObject;
 
 using namespace server::zone::objects::player;
 
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace ai {
+namespace bt {
+
+class Behavior;
+
+} // namespace bt
+} // namespace ai
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::ai::bt;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+namespace ai {
+namespace bt {
+
+class BehaviorTree;
+
+} // namespace bt
+} // namespace ai
+} // namespace creature
+} // namespace objects
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::objects::creature::ai::bt;
+
+#include "gmock/gmock.h"
+
 #include "server/zone/objects/creature/PatrolPointsVector.h"
 
 #include "server/zone/objects/creature/PatrolPoint.h"
@@ -238,6 +276,8 @@ using namespace server::zone::objects::player;
 #include "system/thread/ReadWriteLock.h"
 
 #include "server/zone/objects/creature/variables/CurrentFoundPath.h"
+
+#include "server/zone/objects/creature/ai/bt/BehaviorTreeList.h"
 
 #include "engine/lua/LuaObject.h"
 
@@ -478,6 +518,16 @@ public:
 
 	String getPvPFaction();
 
+	int getBehaviorStatus(Behavior* b);
+
+	void setBehaviorStatus(Behavior* b, int status);
+
+	void addBehaviorToTree(BehaviorTree* tree, Behavior* b);
+
+	Behavior* getNextBehaviorFromTree(BehaviorTree* tree);
+
+	void resetBehaviorList(BehaviorTree* tree);
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -576,6 +626,12 @@ public:
 
 	unsigned static const int PATROLING = 4;
 
+protected:
+	HashTable<Behavior*, int> statuses;
+
+	HashTable<BehaviorTree*, BehaviorTreeList*> trees;
+
+public:
 	AiAgentImplementation();
 
 	AiAgentImplementation(DummyConstructorParameter* param);
@@ -783,6 +839,16 @@ public:
 	bool isEventMob();
 
 	String getPvPFaction();
+
+	int getBehaviorStatus(Behavior* b);
+
+	void setBehaviorStatus(Behavior* b, int status);
+
+	void addBehaviorToTree(BehaviorTree* tree, Behavior* b);
+
+	Behavior* getNextBehaviorFromTree(BehaviorTree* tree);
+
+	void resetBehaviorList(BehaviorTree* tree);
 
 	WeakReference<AiAgent*> _this;
 
@@ -1018,6 +1084,12 @@ public:
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class Singleton<AiAgentHelper>;
+};
+
+class MockAiAgent : public AiAgent {
+public:
+
+
 };
 
 } // namespace creature

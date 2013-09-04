@@ -1,0 +1,36 @@
+naboo_police_agent = Creature:new {
+	objectName = "@mob/creature_names:naboo_police",
+	socialGroup = "naboo_security_force",
+	pvpFaction = "naboo_security_force",
+	faction = "naboo_security_force",
+	level = 8,
+	chanceHit = 0.27,
+	damageMin = 70,
+	damageMax = 75,
+	baseXp = 235,
+	baseHAM = 405,
+	baseHAMmax = 495,
+	armor = 0,
+	resists = {5,5,5,0,0,0,0,-1,-1},
+	meatType = "",
+	meatAmount = 0,
+	hideType = "",
+	hideAmount = 0,
+	boneType = "",
+	boneAmount = 0,
+	milk = 0,
+	tamingChance = 0,
+	ferocity = 0,
+	pvpBitmask = NONE,
+	creatureBitmask = PACK,
+	optionsBitmask = 264,
+	diet = HERBIVORE,
+
+	templates = {"object/mobile/dressed_naboo_police.iff"},
+	lootGroups = {},
+	weapons = {},
+	conversationTemplate = "biribas_tarun_mission_target_convotemplate",
+	attacks = {}
+}
+
+CreatureTemplates:addCreatureTemplate(naboo_police_agent, "naboo_police_agent")
