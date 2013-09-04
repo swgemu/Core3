@@ -16,7 +16,7 @@ class LockMockSceneObject : public MockSceneObject {
 	MOCK_LOCKS(LockMockSceneObject, MockSceneObject);
 };
 
-class GeneralDeadlockTest : public ::testing::Test {
+class GeneralDeadlockTestBase : public ::testing::Test {
 public:
 	Reference<LockMockSceneObject*> sceneObject1;
 	Reference<LockMockSceneObject*> sceneObject2;
@@ -25,11 +25,11 @@ public:
 
 	Reference<LockMockSceneObject*> monitor;
 
-	GeneralDeadlockTest() {
+	GeneralDeadlockTestBase() {
 		// Perform creation setup here.
 	}
 
-	~GeneralDeadlockTest() {
+	~GeneralDeadlockTestBase() {
 		// Clean up.
 	}
 
@@ -49,7 +49,7 @@ public:
 	}
 };
 
-TEST_F(GeneralDeadlockTest, CrossLockTest) {
+TEST_F(GeneralDeadlockTestBase, CrossLockTest) {
 	EXPECT_TOTAL_LOCKED(0);
 
 	try {
@@ -65,7 +65,7 @@ TEST_F(GeneralDeadlockTest, CrossLockTest) {
 	FAIL() << "Cross lock deadlock not detected!";
 }
 
-TEST_F(GeneralDeadlockTest, CrossLockToNullTest) {
+TEST_F(GeneralDeadlockTestBase, CrossLockToNullTest) {
 	EXPECT_TOTAL_LOCKED(0);
 
 	try {
@@ -80,7 +80,7 @@ TEST_F(GeneralDeadlockTest, CrossLockToNullTest) {
 	FAIL() << "Cross lock to null lockable not detected!";
 }
 
-TEST_F(GeneralDeadlockTest, CrossLockToUnlockedTest) {
+TEST_F(GeneralDeadlockTestBase, CrossLockToUnlockedTest) {
 	EXPECT_TOTAL_LOCKED(0);
 
 	try {
@@ -95,7 +95,7 @@ TEST_F(GeneralDeadlockTest, CrossLockToUnlockedTest) {
 	FAIL() << "Cross lock to non-locked lockable not detected!";
 }
 
-TEST_F(GeneralDeadlockTest, ThreeLocksTest) {
+TEST_F(GeneralDeadlockTestBase, ThreeLocksTest) {
 	EXPECT_TOTAL_LOCKED(0);
 
 	try {
@@ -112,7 +112,7 @@ TEST_F(GeneralDeadlockTest, ThreeLocksTest) {
 	FAIL() << "Could not detect a 3 way deadlock!";
 }
 
-TEST_F(GeneralDeadlockTest, MonitorLockTest) {
+TEST_F(GeneralDeadlockTestBase, MonitorLockTest) {
 	EXPECT_TOTAL_LOCKED(0);
 
 	Locker locker(sceneObject1);
@@ -124,7 +124,7 @@ TEST_F(GeneralDeadlockTest, MonitorLockTest) {
 	EXPECT_TOTAL_LOCKED(3);
 }
 
-TEST_F(GeneralDeadlockTest, MultipleLocksTest) {
+TEST_F(GeneralDeadlockTestBase, MultipleLocksTest) {
 	EXPECT_TOTAL_LOCKED(0);
 
 	Locker locker(sceneObject1);
