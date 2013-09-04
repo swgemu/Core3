@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "1a1a2d67_f3129057",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 418
+      },
+      "writtenOn": "2013-09-04T19:01:46Z",
+      "side": 1,
+      "message": "Point, however, the next step of this is to implement the junk dealer flavours, so the comparison will be bit wise against the actual \n(item-\u003egetJunkDealerNeeded()  \u0026 junkDealer-\u003eJunkDealerType())!\u003d0  \nwhen that gets implemented.",
+      "parentUuid": "1a1a2d67_3309282d",
+      "revId": "6991a5906baef9c7f46dc60794465f67db1acc28",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a1d315d_eeace337",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp",
         "patchSetId": 4
