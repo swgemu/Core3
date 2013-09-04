@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a1d315d_8ebc4f6e",
+        "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-09-04T05:43:29Z",
+      "side": 1,
+      "message": "It looks like this means junk price will be randomized a bit every time the server restarts.   Should it instead be random with every sell?  Or every refresh on the junk dealer?",
+      "revId": "6991a5906baef9c7f46dc60794465f67db1acc28",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_2ebbfb73",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-09-04T05:43:29Z",
+      "side": 1,
+      "message": "getJunkDealerNeeded should return a boolean already and not need to be bitwise and\u0027d.   isEmpty() already returns a boolean and doesn\u0027t need the \u003d\u003d true.",
+      "revId": "6991a5906baef9c7f46dc60794465f67db1acc28",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_eeace337",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-09-04T05:43:29Z",
+      "side": 1,
+      "message": "Same comment as before.   Confusing conditional.",
+      "revId": "6991a5906baef9c7f46dc60794465f67db1acc28",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
