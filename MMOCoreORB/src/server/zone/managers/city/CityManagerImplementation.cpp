@@ -34,6 +34,8 @@
 #include "server/zone/objects/building/BuildingObject.h"
 #include "TaxPayMailTask.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
+#include "server/zone/objects/player/sui/callbacks/RenameCitySuiCallback.h"
+
 
 #ifndef CITY_DEBUG
 #define CITY_DEBUG
@@ -2248,4 +2250,26 @@ bool CityManagerImplementation::canSupportMoreDecorations(CityRegion* city) {
 	return city->getDecorationCount() < (decorationsPerRank
 			* city->getCityRank());
 
+}
+
+void CityManagerImplementation::sendChangeCityName(CityRegion* city, CreatureObject* mayor){
+	PlayerObject* ghost = mayor->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	if(ghost->hasSuiBoxWindowType(SuiWindowType::CITY_RENAME))
+		return;
+
+	if(!mayor->checkCooldownRecovery("rename_city_cooldown") && !ghost->isPrivileged()){
+		mayor->sendSystemMessage("You can't change the city name now");
+		return;
+	}
+	ManagedReference<SuiInputBox*> inputBox = new SuiInputBox(mayor, SuiWindowType::CITY_RENAME, 0);
+	inputBox->setPromptTitle("@city/city:city_name_new_t"); //Change City Name
+	inputBox->setPromptText("@city/city:city_name_new_d"); //Enter the new city name below.  Your city must be uniquely named for this planet.  Note that the citizens of your town will receive an email notifying them of the city name change.
+	inputBox->setCallback(new RenameCitySuiCallback(mayor->getZone(), city) );
+
+	ghost->addSuiBox(inputBox);
+	mayor->sendMessage(inputBox->generateMessage());
 }
