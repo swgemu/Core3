@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3a1d315d_aea6eb51",
+        "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 418
+      },
+      "writtenOn": "2013-09-04T05:50:38Z",
+      "side": 1,
+      "message": "Should only be randomized when the item is created, The loot value sticks with it through server restarts",
+      "parentUuid": "3a1d315d_8ebc4f6e",
+      "revId": "6991a5906baef9c7f46dc60794465f67db1acc28",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a1d315d_2ebbfb73",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3a1d315d_8e632f1a",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 418
+      },
+      "writtenOn": "2013-09-04T05:50:38Z",
+      "side": 1,
+      "message": "getJunkDealerNeeded returns an integer as specified in the .LUA files (at the time the loot item was created) , this allows the pre-NGE difference between junk dealers.",
+      "parentUuid": "3a1d315d_2ebbfb73",
+      "revId": "6991a5906baef9c7f46dc60794465f67db1acc28",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a1d315d_eeace337",
         "filename": "MMOCoreORB/src/server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2013-09-04T05:43:29Z",
       "side": 1,
       "message": "Same comment as before.   Confusing conditional.",
+      "revId": "6991a5906baef9c7f46dc60794465f67db1acc28",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1d315d_6e68d3f5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 418
+      },
+      "writtenOn": "2013-09-04T05:50:38Z",
+      "side": 1,
+      "message": "Comment is a placeholder whilst implementation of junkdealer type is implemented.",
+      "parentUuid": "3a1d315d_eeace337",
       "revId": "6991a5906baef9c7f46dc60794465f67db1acc28",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
