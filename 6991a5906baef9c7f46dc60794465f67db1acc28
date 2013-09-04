@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a1a2d67_5304a414",
+        "filename": "MMOCoreORB/bin/scripts/loot/items/broken_decryptor.lua",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-09-04T18:50:30Z",
+      "side": 1,
+      "message": "Where was the LOOTJUNK constant defined?",
+      "revId": "6991a5906baef9c7f46dc60794465f67db1acc28",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a1d315d_8ebc4f6e",
         "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
         "patchSetId": 4
@@ -66,6 +83,24 @@
       "side": 1,
       "message": "getJunkDealerNeeded returns an integer as specified in the .LUA files (at the time the loot item was created) , this allows the pre-NGE difference between junk dealers.",
       "parentUuid": "3a1d315d_2ebbfb73",
+      "revId": "6991a5906baef9c7f46dc60794465f67db1acc28",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1a2d67_3309282d",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-09-04T18:50:30Z",
+      "side": 1,
+      "message": "Minor, but maybe use the LOOTJUNK constant here to make debugging/troubleshooting easier.",
+      "parentUuid": "3a1d315d_8e632f1a",
       "revId": "6991a5906baef9c7f46dc60794465f67db1acc28",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
