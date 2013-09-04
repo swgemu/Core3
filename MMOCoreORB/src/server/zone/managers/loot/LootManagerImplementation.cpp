@@ -290,6 +290,36 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 			}
 		}
 
+		if (excMod != 1.0) {
+
+			if (subtitle == "useCount") {
+
+				min *= yellowModifier;
+				max *= yellowModifier;
+
+			} else if (subtitle == "quantity") {
+
+				min *= yellowModifier;
+				max *= yellowModifier;
+
+			} else if (subtitle == "charges") {
+
+				min *= yellowModifier;
+				max *= yellowModifier;
+
+			} else if (subtitle == "uses") {
+
+				min *= yellowModifier;
+				max *= yellowModifier;
+
+			} else if (subtitle == "charge") {
+
+				min *= yellowModifier;
+				max *= yellowModifier;
+
+			}
+		}
+
 		if (excMod == 1.0 && (yellowChance == 0 || System::random(yellowChance) == 0)) {
 			if (max >= min && max > 0) {
 					min *= yellowModifier;
