@@ -592,6 +592,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/ai/AiActorImplementation.cpp \
 		server/zone/objects/creature/ai/LuaAiActor.cpp \
 		server/zone/objects/creature/ai/bt/LuaBehavior.cpp \
+		server/zone/objects/creature/ai/bt/LuaSequence.cpp \
 		server/zone/objects/creature/aigroup/AiGroupImplementation.cpp \
 		server/zone/objects/creature/aigroup/HerdGroupImplementation.cpp \
 		server/zone/objects/creature/aigroup/LairGroupImplementation.cpp \
