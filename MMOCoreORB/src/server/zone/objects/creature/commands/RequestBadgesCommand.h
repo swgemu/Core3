@@ -73,7 +73,7 @@ public:
 
 		CreatureObject* playerCreature = cast<CreatureObject*>( object.get());
 
-		PlayerObject* playerObject = dynamic_cast<PlayerObject*>(playerCreature->getSlottedObject("ghost"));
+		Reference<PlayerObject*> playerObject = playerCreature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 		if (playerObject != NULL)
 			playerObject->sendBadgesResponseTo(creature);

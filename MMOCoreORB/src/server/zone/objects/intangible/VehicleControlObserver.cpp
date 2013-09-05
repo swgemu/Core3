@@ -198,17 +198,19 @@ VehicleControlObserverImplementation::VehicleControlObserverImplementation(Vehic
 }
 
 int VehicleControlObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2) {
-	// server/zone/objects/intangible/VehicleControlObserver.idl():  		if 
+	// server/zone/objects/intangible/VehicleControlObserver.idl():  		VehicleControlDevice 
 	if (eventType != ObserverEventType::STARTCOMBAT){
 	// server/zone/objects/intangible/VehicleControlObserver.idl():  			return 1;
 	return 1;
 }
+	// server/zone/objects/intangible/VehicleControlObserver.idl():  		VehicleControlDevice dev = vehicleControlDevice;
+	ManagedReference<VehicleControlDevice* > dev = vehicleControlDevice;
 	// server/zone/objects/intangible/VehicleControlObserver.idl():  		return 
-	if (vehicleControlDevice != NULL){
+	if (dev != NULL){
 	// server/zone/objects/intangible/VehicleControlObserver.idl():  			CreatureObject creature = (CreatureObject) observable;
 	ManagedReference<CreatureObject* > creature = (CreatureObject*) observable;
-	// server/zone/objects/intangible/VehicleControlObserver.idl():  			vehicleControlDevice.cancelSpawnObject(creature);
-	vehicleControlDevice.get()->cancelSpawnObject(creature);
+	// server/zone/objects/intangible/VehicleControlObserver.idl():  			dev.cancelSpawnObject(creature);
+	dev->cancelSpawnObject(creature);
 }
 	// server/zone/objects/intangible/VehicleControlObserver.idl():  		return 1;
 	return 1;

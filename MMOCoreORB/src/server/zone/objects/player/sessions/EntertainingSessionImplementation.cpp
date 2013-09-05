@@ -903,7 +903,7 @@ void EntertainingSessionImplementation::updateEntertainerMissionStatus(bool ente
 	int datapadSize = datapad->getContainerObjectsSize();
 	for (int i = 0; i < datapadSize; ++i) {
 		if (datapad->getContainerObject(i)->isMissionObject()) {
-			MissionObject* datapadMission = cast<MissionObject*>(datapad->getContainerObject(i));
+			Reference<MissionObject*> datapadMission = datapad->getContainerObject(i).castTo<MissionObject*>();
 
 			if (datapadMission != NULL) {
 				EntertainerMissionObjective* objective = cast<EntertainerMissionObjective*>(datapadMission->getMissionObjective());

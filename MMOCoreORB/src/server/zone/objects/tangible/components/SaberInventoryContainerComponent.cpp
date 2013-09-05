@@ -86,7 +86,7 @@ int SaberInventoryContainerComponent::canAddObject(SceneObject* sceneObject, Sce
 
 
 	for (int i = 0; i < containerObjects->size(); i++){
-		LightsaberCrystalComponent* crystalInside = cast<LightsaberCrystalComponent*>( sceneObject->getContainerObject(i));
+		Reference<LightsaberCrystalComponent*> crystalInside =  sceneObject->getContainerObject(i).castTo<LightsaberCrystalComponent*>();
 
 		if (crystal->getColor() != 31 && crystalInside->getColor() != 31){
 				errorDescription = "@jedi_spam:saber_already_has_color";

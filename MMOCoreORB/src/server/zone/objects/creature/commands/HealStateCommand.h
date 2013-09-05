@@ -262,7 +262,7 @@ public:
 		ManagedReference<StatePack*> statePack = NULL;
 
 		if (inventory != NULL) {
-			statePack = dynamic_cast<StatePack*>(inventory->getContainerObject(objectId));
+			statePack = inventory->getContainerObject(objectId).castTo<StatePack*>();
 		}
 
 		if (statePack == NULL)

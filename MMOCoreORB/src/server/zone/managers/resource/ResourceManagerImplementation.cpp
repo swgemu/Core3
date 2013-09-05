@@ -325,7 +325,7 @@ uint32 ResourceManagerImplementation::getAvailablePowerFromPlayer(CreatureObject
 	uint32 power = 0;
 
 	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-		ManagedReference<SceneObject*> obj = cast<SceneObject*>( inventory->getContainerObject(i));
+		Reference<SceneObject*> obj =  inventory->getContainerObject(i).castTo<SceneObject*>();
 
 		if (obj == NULL || !obj->isResourceContainer())
 			continue;

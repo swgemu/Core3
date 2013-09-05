@@ -508,11 +508,13 @@ public:
 
 	VectorMap<String, ManagedReference<SceneObject* > >* getSlottedObjects();
 
-	SceneObject* getSlottedObject(const String& slot);
+	Reference<SceneObject* > getSlottedObject(const String& slot);
 
 	int getSlotDescriptorSize();
 
-	SceneObject* getSlottedObject(int idx);
+	Reference<SceneObject* > getSlottedObject(int idx);
+
+	Reference<SceneObject* > getContainerObjectRecursive(unsigned long long oid);
 
 	void dropSlottedObject(const String& arrengementDescriptor);
 
@@ -526,7 +528,7 @@ public:
 
 	unsigned int getContainerVolumeLimit();
 
-	SceneObject* getContainerObject(int idx);
+	Reference<SceneObject* > getContainerObject(int idx);
 
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
@@ -534,7 +536,7 @@ public:
 
 	bool hasObjectInSlottedContainer(SceneObject* object);
 
-	SceneObject* getContainerObject(unsigned long long objectID);
+	Reference<SceneObject* > getContainerObject(unsigned long long objectID);
 
 	void removeAllContainerObjects();
 
@@ -1184,11 +1186,13 @@ public:
 
 	VectorMap<String, ManagedReference<SceneObject* > >* getSlottedObjects();
 
-	SceneObject* getSlottedObject(const String& slot);
+	Reference<SceneObject* > getSlottedObject(const String& slot);
 
 	int getSlotDescriptorSize();
 
-	SceneObject* getSlottedObject(int idx);
+	Reference<SceneObject* > getSlottedObject(int idx);
+
+	Reference<SceneObject* > getContainerObjectRecursive(unsigned long long oid);
 
 	void dropSlottedObject(const String& arrengementDescriptor);
 
@@ -1202,7 +1206,7 @@ public:
 
 	unsigned int getContainerVolumeLimit();
 
-	SceneObject* getContainerObject(int idx);
+	Reference<SceneObject* > getContainerObject(int idx);
 
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
@@ -1210,7 +1214,7 @@ public:
 
 	bool hasObjectInSlottedContainer(SceneObject* object);
 
-	SceneObject* getContainerObject(unsigned long long objectID);
+	Reference<SceneObject* > getContainerObject(unsigned long long objectID);
 
 	void removeAllContainerObjects();
 
@@ -1745,11 +1749,13 @@ public:
 
 	bool hasArrangementDescriptor(const String& descr);
 
-	SceneObject* getSlottedObject(const String& slot);
+	Reference<SceneObject* > getSlottedObject(const String& slot);
 
 	int getSlotDescriptorSize();
 
-	SceneObject* getSlottedObject(int idx);
+	Reference<SceneObject* > getSlottedObject(int idx);
+
+	Reference<SceneObject* > getContainerObjectRecursive(unsigned long long oid);
 
 	void dropSlottedObject(const String& arrengementDescriptor);
 
@@ -1763,13 +1769,13 @@ public:
 
 	unsigned int getContainerVolumeLimit();
 
-	SceneObject* getContainerObject(int idx);
+	Reference<SceneObject* > getContainerObject(int idx);
 
 	bool hasObjectInContainer(unsigned long long objectID);
 
 	bool hasObjectInSlottedContainer(SceneObject* object);
 
-	SceneObject* getContainerObject(unsigned long long objectID);
+	Reference<SceneObject* > getContainerObject(unsigned long long objectID);
 
 	void removeAllContainerObjects();
 

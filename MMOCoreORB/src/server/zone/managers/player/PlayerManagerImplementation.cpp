@@ -282,10 +282,10 @@ bool PlayerManagerImplementation::kickUser(const String& name, const String& adm
 	if (adminplayer == NULL)
 		return false;
 
-	PlayerObject* ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
+	Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 
-	PlayerObject* adminghost = cast<PlayerObject*>(adminplayer->getSlottedObject("ghost"));
+	Reference<PlayerObject*> adminghost = adminplayer->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 	if(adminghost == NULL)
 		return false;
@@ -3480,7 +3480,7 @@ bool PlayerManagerImplementation::increaseOnlineCharCountIfPossible(ZoneClientSe
 		ManagedReference<SceneObject*> player = session->getPlayer();
 
 		if (player != NULL) {
-			ManagedReference<PlayerObject*> ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
+			Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 			if (ghost != NULL && ghost->getAdminLevel() > 0)
 				continue;

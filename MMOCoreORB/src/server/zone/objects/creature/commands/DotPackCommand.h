@@ -265,7 +265,7 @@ public:
 		SceneObject* inventory = creature->getSlottedObject("inventory");
 
 		if (inventory != NULL) {
-			dotPack = dynamic_cast<DotPack*>(inventory->getContainerObject(objectId));
+			dotPack = inventory->getContainerObject(objectId).castTo<DotPack*>();
 		}
 
 		if (dotPack == NULL)

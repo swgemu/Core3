@@ -27,7 +27,7 @@ public:
 		if (player == NULL)
 			return;
 
-		PlayerObject* playerObject = cast<PlayerObject*>( player->getSlottedObject("ghost"));
+		Reference<PlayerObject*> playerObject = player->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 		PlayerObjectDeltaMessage9* delta = new  PlayerObjectDeltaMessage9(playerObject);
 		delta->updateStomachFilling();

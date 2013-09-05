@@ -203,9 +203,9 @@ public:
 
 	float getComplexityLevel();
 
-	TangibleObject* getPrototype();
+	Reference<TangibleObject* > getPrototype();
 
-	ManufactureSchematic* getManufactureSchematic();
+	Reference<ManufactureSchematic* > getManufactureSchematic();
 
 	Vector<unsigned int>* getToolTabs();
 
@@ -303,9 +303,9 @@ public:
 
 	float getComplexityLevel();
 
-	TangibleObject* getPrototype();
+	Reference<TangibleObject* > getPrototype();
 
-	ManufactureSchematic* getManufactureSchematic();
+	Reference<ManufactureSchematic* > getManufactureSchematic();
 
 	Vector<unsigned int>* getToolTabs();
 
@@ -380,9 +380,9 @@ public:
 
 	float getComplexityLevel();
 
-	TangibleObject* getPrototype();
+	Reference<TangibleObject* > getPrototype();
 
-	ManufactureSchematic* getManufactureSchematic();
+	Reference<ManufactureSchematic* > getManufactureSchematic();
 
 	void disperseItems();
 

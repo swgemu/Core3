@@ -308,7 +308,7 @@ void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* send
 		if (object->isPlayerCreature()) {
 			CreatureObject* creature = cast<CreatureObject*>(object);
 
-			PlayerObject* ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+			Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 			if (ghost == NULL)
 				continue;

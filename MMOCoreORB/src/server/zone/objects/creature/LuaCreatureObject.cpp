@@ -12,7 +12,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
-
+#include "server/zone/objects/player/PlayerObject.h"
 
 const char LuaCreatureObject::className[] = "LuaCreatureObject";
 
@@ -409,11 +409,12 @@ int LuaCreatureObject::engageCombat(lua_State* L) {
 }
 
 int LuaCreatureObject::getPlayerObject(lua_State* L) {
-	PlayerObject* obj = realObject->getPlayerObject();
+	Reference<PlayerObject*> obj = realObject->getPlayerObject();
 
-	if (obj != NULL)
+	if (obj != NULL) {
+		obj->_setUpdated(true);
 		lua_pushlightuserdata(L, obj);
-	else
+	} else
 		lua_pushnil(L);
 
 	return 1;

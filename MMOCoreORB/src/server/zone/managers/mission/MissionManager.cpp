@@ -702,7 +702,7 @@ Vector3 MissionManager::getRandomBountyTargetPosition(CreatureObject* player) {
 		return _implementation->getRandomBountyTargetPosition(player);
 }
 
-MissionObject* MissionManager::getBountyHunterMission(CreatureObject* player) {
+Reference<MissionObject* > MissionManager::getBountyHunterMission(CreatureObject* player) {
 	MissionManagerImplementation* _implementation = static_cast<MissionManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -1655,7 +1655,7 @@ void MissionManagerAdapter::createSpawnPoint(CreatureObject* player, const Strin
 	(static_cast<MissionManager*>(stub))->createSpawnPoint(player, spawnTypes);
 }
 
-MissionObject* MissionManagerAdapter::getBountyHunterMission(CreatureObject* player) {
+Reference<MissionObject* > MissionManagerAdapter::getBountyHunterMission(CreatureObject* player) {
 	return (static_cast<MissionManager*>(stub))->getBountyHunterMission(player);
 }
 
