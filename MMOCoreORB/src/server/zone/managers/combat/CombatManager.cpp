@@ -313,6 +313,9 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 	// Get attacker's weapon they have.
 	ManagedReference<WeaponObject*> attackerWeapon = cast<WeaponObject*>(weapon);
 
+	if (!attackerWeapon->isCertifiedFor(attacker))
+		return;
+
 	for (int i = 0; i < attackerWeapon->getNumberOfDots(); i++) {
 		if (attackerWeapon->getDotUses(i) <= 0)
 			continue;

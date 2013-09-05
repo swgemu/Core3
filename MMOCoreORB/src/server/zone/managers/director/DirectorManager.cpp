@@ -249,7 +249,8 @@ int DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 
 	bool res = luaEngine->runFile("scripts/screenplays/screenplays.lua");
 
-	info("Loaded " + String::valueOf(instance()->screenPlays.size()) + " screenplays.", true);
+	if (!DEBUG_MODE)
+		info("Loaded " + String::valueOf(instance()->screenPlays.size()) + " screenplays.", true);
 
 	if (!res)
 		return 1;
