@@ -22,7 +22,7 @@
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/objects/creature/buffs/StateBuff.h"
 #include "server/zone/managers/visibility/VisibilityManager.h"
-
+#include "server/zone/managers/creature/LairObserver.h"
 #include "server/zone/objects/installation/components/TurretDataComponent.h"
 
 const uint32 CombatManager::defaultAttacks[9] = {
@@ -949,7 +949,19 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 
 	//info("damage to be dealt is " + String::valueOf(damage), true);
 
-	return damage * 10;
+	ManagedReference<LairObserver*> lairObserver = NULL;
+	SortedVector<ManagedReference<Observer*> > observers = defender->getObservers(ObserverEventType::OBJECTDESTRUCTION);
+
+	for (int i = 0; i < observers.size(); i++) {
+		lairObserver = cast<LairObserver*>(observers.get(i).get());
+		if (lairObserver != NULL)
+			break;
+	}
+
+	if (lairObserver && lairObserver->getSpawnNumber() > 2)
+		damage *= 10;
+
+	return damage;
 }
 
 float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, const CreatureAttackData& data) {

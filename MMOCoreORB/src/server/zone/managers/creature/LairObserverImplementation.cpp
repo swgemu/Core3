@@ -136,7 +136,7 @@ void LairObserverImplementation::doAggro(TangibleObject* lair, TangibleObject* a
 }
 
 void LairObserverImplementation::checkForHeal(TangibleObject* lair, TangibleObject* attacker, bool forceNewUpdate) {
-	if (lair->isDestroyed())
+	if (lair->isDestroyed() || getLairType() == LairTemplate::NPC)
 		return;
 
 	if (!(getLivingCreatureCount() > 0 && lair->getConditionDamage() > 0))
@@ -215,7 +215,7 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 			}
 			break;
 		case 2:
-			if (conditionDamage > (maxCondition * 2 / 3)) {
+			if (conditionDamage > (maxCondition / 2)) {
 				spawnNumber++;
 			} else {
 				return false;
