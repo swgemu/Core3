@@ -412,7 +412,7 @@ public:
 			SceneObject* inventory = creature->getSlottedObject("inventory");
 
 			if (inventory != NULL) {
-				stimPack = dynamic_cast<StimPack*>(inventory->getContainerObject(pharmaceuticalObjectID));
+				stimPack = inventory->getContainerObject(pharmaceuticalObjectID).castTo<StimPack*>();
 			}
 		}
 

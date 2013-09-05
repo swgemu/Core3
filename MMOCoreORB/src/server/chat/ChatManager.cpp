@@ -30,7 +30,7 @@
  *	ChatManagerStub
  */
 
-enum {RPC_FINALIZE__ = 6,RPC_INITIATEROOMS__,RPC_DESTROYROOMS__,RPC_CREATEROOM__STRING_CHATROOM_,RPC_ADDROOM__CHATROOM_,RPC_REMOVEROOM__CHATROOM_,RPC_POPULATEROOMLISTMESSAGE__CHATROOM_CHATROOMLIST_,RPC_SENDROOMLIST__CREATUREOBJECT_,RPC_ADDPLAYER__CREATUREOBJECT_,RPC_GETPLAYER__STRING_,RPC_REMOVEPLAYER__STRING_,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__CREATUREOBJECT_UNICODESTRING_LONG_INT_INT_,RPC_HANDLESPATIALCHATINTERNALMESSAGE__CREATUREOBJECT_UNICODESTRING_,RPC_HANDLEGROUPCHAT__CREATUREOBJECT_UNICODESTRING_,RPC_HANDLEGUILDCHAT__CREATUREOBJECT_UNICODESTRING_,RPC_HANDLEPLANETCHAT__CREATUREOBJECT_UNICODESTRING_,RPC_CREATEROOMBYFULLPATH__STRING_,RPC_GETCHATROOMBYFULLPATH__STRING_,RPC_GETCHATROOMBYGAMEPATH__CHATROOM_STRING_,RPC_HANDLECHATROOMMESSAGE__CREATUREOBJECT_UNICODESTRING_INT_INT_,RPC_HANDLECHATENTERROOMBYID__CREATUREOBJECT_INT_INT_,RPC_HANDLESOCIALINTERNALMESSAGE__CREATUREOBJECT_UNICODESTRING_,RPC_DESTROYROOM__CHATROOM_,RPC_CREATEGROUPROOM__LONG_CREATUREOBJECT_,RPC_LOADMAIL__CREATUREOBJECT_,RPC_SENDMAIL__STRING_UNICODESTRING_UNICODESTRING_STRING_,RPC_HANDLEREQUESTPERSISTENTMSG__CREATUREOBJECT_INT_,RPC_DELETEPERSISTENTMESSAGE__CREATUREOBJECT_INT_,RPC_BROADCASTGALAXY__CREATUREOBJECT_STRING_,RPC_BROADCASTGALAXY__STRING_STRING_,RPC_SETPLAYERMANAGER__PLAYERMANAGER_,RPC_GETCHATROOM__INT_,RPC_GETGAMEROOM__STRING_,RPC_GETNEXTROOMID__,RPC_GETPLAYERCOUNT__,RPC_GETGUILDROOM__,RPC_GETGROUPROOM__};
+enum {RPC_FINALIZE__ = 6,RPC_INITIATEROOMS__,RPC_INITIATEPLANETROOMS__,RPC_DESTROYROOMS__,RPC_CREATEROOM__STRING_CHATROOM_,RPC_ADDROOM__CHATROOM_,RPC_REMOVEROOM__CHATROOM_,RPC_POPULATEROOMLISTMESSAGE__CHATROOM_CHATROOMLIST_,RPC_SENDROOMLIST__CREATUREOBJECT_,RPC_ADDPLAYER__CREATUREOBJECT_,RPC_GETPLAYER__STRING_,RPC_REMOVEPLAYER__STRING_,RPC_BROADCASTMESSAGE__BASEMESSAGE_,RPC_BROADCASTMESSAGE__CREATUREOBJECT_UNICODESTRING_LONG_INT_INT_,RPC_HANDLESPATIALCHATINTERNALMESSAGE__CREATUREOBJECT_UNICODESTRING_,RPC_HANDLEGROUPCHAT__CREATUREOBJECT_UNICODESTRING_,RPC_HANDLEGUILDCHAT__CREATUREOBJECT_UNICODESTRING_,RPC_HANDLEPLANETCHAT__CREATUREOBJECT_UNICODESTRING_,RPC_CREATEROOMBYFULLPATH__STRING_,RPC_GETCHATROOMBYFULLPATH__STRING_,RPC_GETCHATROOMBYGAMEPATH__CHATROOM_STRING_,RPC_HANDLECHATROOMMESSAGE__CREATUREOBJECT_UNICODESTRING_INT_INT_,RPC_HANDLECHATENTERROOMBYID__CREATUREOBJECT_INT_INT_,RPC_HANDLESOCIALINTERNALMESSAGE__CREATUREOBJECT_UNICODESTRING_,RPC_DESTROYROOM__CHATROOM_,RPC_CREATEGROUPROOM__LONG_CREATUREOBJECT_,RPC_LOADMAIL__CREATUREOBJECT_,RPC_SENDMAIL__STRING_UNICODESTRING_UNICODESTRING_STRING_,RPC_HANDLEREQUESTPERSISTENTMSG__CREATUREOBJECT_INT_,RPC_DELETEPERSISTENTMESSAGE__CREATUREOBJECT_INT_,RPC_BROADCASTGALAXY__CREATUREOBJECT_STRING_,RPC_BROADCASTGALAXY__STRING_STRING_,RPC_SETPLAYERMANAGER__PLAYERMANAGER_,RPC_GETCHATROOM__INT_,RPC_GETGAMEROOM__STRING_,RPC_GETNEXTROOMID__,RPC_GETPLAYERCOUNT__,RPC_GETGUILDROOM__,RPC_GETGROUPROOM__};
 
 ChatManager::ChatManager(ZoneServer* serv, int initsize) : ManagedService(DummyConstructorParameter::instance()) {
 	ChatManagerImplementation* _implementation = new ChatManagerImplementation(serv, initsize);
@@ -59,6 +59,19 @@ void ChatManager::initiateRooms() {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->initiateRooms();
+}
+
+void ChatManager::initiatePlanetRooms() {
+	ChatManagerImplementation* _implementation = static_cast<ChatManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_INITIATEPLANETROOMS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->initiatePlanetRooms();
 }
 
 void ChatManager::destroyRooms() {
@@ -749,6 +762,10 @@ bool ChatManagerImplementation::readObjectMember(ObjectInputStream* stream, cons
 		TypeInfo<ManagedReference<ChatRoom* > >::parseFromBinaryStream(&guildRoom, stream);
 		return true;
 
+	case 0x35b5181: //ChatManager.core3Room
+		TypeInfo<ManagedReference<ChatRoom* > >::parseFromBinaryStream(&core3Room, stream);
+		return true;
+
 	case 0xd57f367d: //ChatManager.roomID
 		TypeInfo<unsigned int >::parseFromBinaryStream(&roomID, stream);
 		return true;
@@ -815,6 +832,14 @@ int ChatManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_nameHashCode = 0x35b5181; //ChatManager.core3Room
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<ManagedReference<ChatRoom* > >::toBinaryStream(&core3Room, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_nameHashCode = 0xd57f367d; //ChatManager.roomID
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
@@ -832,7 +857,7 @@ int ChatManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 7;
+	return _count + 8;
 }
 
 void ChatManagerImplementation::addRoom(ChatRoom* channel) {
@@ -913,6 +938,11 @@ void ChatManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_INITIATEROOMS__:
 		{
 			initiateRooms();
+		}
+		break;
+	case RPC_INITIATEPLANETROOMS__:
+		{
+			initiatePlanetRooms();
 		}
 		break;
 	case RPC_DESTROYROOMS__:
@@ -1123,6 +1153,10 @@ void ChatManagerAdapter::finalize() {
 
 void ChatManagerAdapter::initiateRooms() {
 	(static_cast<ChatManager*>(stub))->initiateRooms();
+}
+
+void ChatManagerAdapter::initiatePlanetRooms() {
+	(static_cast<ChatManager*>(stub))->initiatePlanetRooms();
 }
 
 void ChatManagerAdapter::destroyRooms() {

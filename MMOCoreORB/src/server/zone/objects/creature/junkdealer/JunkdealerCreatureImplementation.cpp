@@ -289,7 +289,7 @@ void JunkdealerCreatureImplementation::createSellJunkLootSelection(CreatureObjec
 	bool bHaveStuffToSell = false;
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
     for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-    	ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i));
+    	Reference<TangibleObject*>  item = inventory->getContainerObject(i).castTo<TangibleObject*>();
      	if ((item->getJunkDealerNeeded() & 1) == 1 && item->getCraftersName().isEmpty() == true ){
     		bHaveStuffToSell=true;
     		break;
@@ -311,7 +311,7 @@ void JunkdealerCreatureImplementation::createSellJunkLootSelection(CreatureObjec
 
 		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 			UnicodeString itemName = StringIdManager::instance()->getStringId(inventory->getContainerObject(i)->getDisplayedName().hashCode());
-			ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i));
+			Reference<TangibleObject*>  item = inventory->getContainerObject(i).castTo<TangibleObject*>();
 			//if (item->getCraftersName().isEmpty() == true && item->isWeaponObject()==false && item->isArmorObject()==false
 			//		&& item->isAttachment()==false && item->isDeedObject()==false && item->isContainerObject()==false && item->isResourceContainer()==false )
 			if ((item->getJunkDealerNeeded() & 1) == 1 && item->getCraftersName().isEmpty() == true )

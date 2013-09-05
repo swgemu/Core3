@@ -199,14 +199,14 @@ void VehicleControlDeviceImplementation::destroyObjectFromDatabase(bool destroyC
 		Locker locker(controlledObject);
 
 		//ManagedReference<CreatureObject*> object = controlledObject.castTo<CreatureObject*>()->getLinkedCreature();
-		ManagedReference<CreatureObject*> object = cast<CreatureObject*>(controlledObject->getSlottedObject("rider"));
+		ManagedReference<CreatureObject*> object = controlledObject->getSlottedObject("rider").castTo<CreatureObject*>();
 
 		if (object != NULL) {
 			Locker clocker(object, controlledObject);
 
 			object->executeObjectControllerAction(String("dismount").hashCode());
 
-			object = cast<CreatureObject*>(controlledObject->getSlottedObject("rider"));
+			object = controlledObject->getSlottedObject("rider").castTo<CreatureObject*>();
 
 			if (object != NULL) {
 				controlledObject->removeObject(object, NULL, true);

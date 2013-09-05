@@ -82,7 +82,7 @@ public:
 		// need to add checks.. inventory, datapad, bank, waypoint
 
 		if (object->isWaypointObject()) {
-			PlayerObject* playerObject = cast<PlayerObject*>( creature->getSlottedObject("ghost"));
+			Reference<PlayerObject*> playerObject = creature->getSlottedObject("ghost").castTo<PlayerObject*>( );
 
 			if (playerObject != NULL)
 				playerObject->removeWaypoint(target);

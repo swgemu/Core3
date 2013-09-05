@@ -137,10 +137,9 @@ public:
 			}
 		}
 
-		PlayerObject
-		* ghost =
-				dynamic_cast<PlayerObject*> (creature->getSlottedObject(
-						"ghost"));
+		Reference<PlayerObject*> ghost =
+				creature->getSlottedObject(
+						"ghost").castTo<PlayerObject*> ();
 
 		String args = arguments.toString();
 

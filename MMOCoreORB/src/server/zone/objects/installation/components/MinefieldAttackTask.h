@@ -44,7 +44,7 @@ public:
 
 		//Locker clocker(player, sceneObject);
 
-		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(sceneObject->getContainerObject(0));;
+		ManagedReference<WeaponObject*> weapon = sceneObject->getContainerObject(0).castTo<WeaponObject*>();
 
 		if (weapon == NULL || sceneObject->getZone() == NULL)
 			return;

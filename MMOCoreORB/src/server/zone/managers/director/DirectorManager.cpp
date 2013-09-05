@@ -276,7 +276,7 @@ int DirectorManager::writeScreenPlayData(lua_State* L) {
 		return 0;
 	}
 
-	PlayerObject* ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
+	Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
 	ghost->setScreenPlayData(screenPlay, variable, data);
 
 	return 0;
@@ -354,7 +354,7 @@ int DirectorManager::readScreenPlayData(lua_State* L) {
 		return 0;
 	}
 
-	PlayerObject* ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
+	Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 	//readScreenPlayData(player, screenPlay, variable)
 
@@ -378,7 +378,7 @@ int DirectorManager::clearScreenPlayData(lua_State* L) {
 		return 0;
 	}
 
-	PlayerObject* ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
+	Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 	ghost->clearScreenPlayData(screenPlay);
 

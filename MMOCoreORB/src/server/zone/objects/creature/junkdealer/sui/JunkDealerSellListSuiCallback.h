@@ -40,7 +40,7 @@ void run(CreatureObject* player, SuiBox* suiBox, bool cancel, Vector<UnicodeStri
 	if (selectedObject == NULL || otherPressed==true ){
 				return;
 	}
-	int iCredits = cast<TangibleObject*>(inventory->getContainerObject(itemId))->getJunkValue();
+	int iCredits = inventory->getContainerObject(itemId).castTo<TangibleObject*>()->getJunkValue();
 	UnicodeString itemName = StringIdManager::instance()->getStringId(selectedObject->getDisplayedName().hashCode());
 	Locker locker(selectedObject, player);
 	selectedObject->destroyObjectFromWorld(true);
@@ -50,7 +50,7 @@ void run(CreatureObject* player, SuiBox* suiBox, bool cancel, Vector<UnicodeStri
 	player->sendSystemMessage("You sell " + itemName + " for " + String::valueOf(iCredits) +" cr");
 	bool bHaveStuffToSell = false;
     for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-    	ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i));
+    	Reference<TangibleObject*>  item = inventory->getContainerObject(i).castTo<TangibleObject*>();
     	if ((item->getJunkDealerNeeded() & 1) == 1 && item->getCraftersName().isEmpty() == true ){
     		bHaveStuffToSell=true;
     		break;
@@ -68,7 +68,7 @@ void run(CreatureObject* player, SuiBox* suiBox, bool cancel, Vector<UnicodeStri
 		box->setCancelButton(true, "@cancel");
 		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 			UnicodeString itemName = StringIdManager::instance()->getStringId(inventory->getContainerObject(i)->getDisplayedName().hashCode());
-			ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i));
+			Reference<TangibleObject*>  item = inventory->getContainerObject(i).castTo<TangibleObject*>();
 			if ((item->getJunkDealerNeeded() & 1) == 1 && item->getCraftersName().isEmpty() == true )
 				box->addMenuItem(itemName.toString(), inventory->getContainerObject(i)->getObjectID());
 		}

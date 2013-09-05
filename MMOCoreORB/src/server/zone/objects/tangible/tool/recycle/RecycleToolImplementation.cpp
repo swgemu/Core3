@@ -6,6 +6,7 @@
 #include "server/zone/objects/tangible/Container.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/templates/tangible/tool/RecycleToolTemplate.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
@@ -58,7 +59,7 @@ void RecycleToolImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuR
 }
 
 int RecycleToolImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	PlayerObject* playerObject = player->getPlayerObject();
+	Reference<PlayerObject*> playerObject = player->getPlayerObject();
 
 	if(isASubChildOf(player)) {
 

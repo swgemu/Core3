@@ -95,9 +95,9 @@ void CraftingToolImplementation::fillObjectMenuResponse(
 
 }
 
-TangibleObject* CraftingToolImplementation::getPrototype() {
+Reference<TangibleObject*> CraftingToolImplementation::getPrototype() {
 	if (getContainerObjectsSize() > 0)
-		return cast<TangibleObject*> (getContainerObject(0));
+		return getContainerObject(0).castTo<TangibleObject*> ();
 	else
 		return NULL;
 }
@@ -232,4 +232,8 @@ void CraftingToolImplementation::disperseItems() {
 
 	if(prototype != NULL)
 		prototype->destroyObjectFromWorld(true);
+}
+
+Reference<ManufactureSchematic*> CraftingToolImplementation::getManufactureSchematic() {
+	return getSlottedObject("test_manf_schematic").castTo<ManufactureSchematic*>();
 }

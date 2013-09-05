@@ -1480,8 +1480,8 @@ void SceneObjectImplementation::getContainerObjects(VectorMap<uint64, ManagedRef
 	containerLock.runlock(lock);
 }
 
-SceneObject* SceneObjectImplementation::getSlottedObject(const String& slot) {
-	SceneObject* obj = NULL;
+Reference<SceneObject*> SceneObjectImplementation::getSlottedObject(const String& slot) {
+	ManagedReference<SceneObject*> obj = NULL;
 
 	bool lock = !containerLock.isLockedByCurrentThread();
 
@@ -1501,8 +1501,8 @@ SceneObject* SceneObjectImplementation::getSlottedObject(const String& slot) {
 }
 
 
-SceneObject* SceneObjectImplementation::getSlottedObject(int idx) {
-	SceneObject* obj = NULL;
+Reference<SceneObject*> SceneObjectImplementation::getSlottedObject(int idx) {
+	ManagedReference<SceneObject*> obj = NULL;
 
 	bool lock = !containerLock.isLockedByCurrentThread();
 
@@ -1643,6 +1643,24 @@ bool SceneObjectImplementation::isDecoration(){
 	return (templateObject != NULL &&
 		(templateObject->getFullTemplateString().contains("object/tangible/furniture/city") ||
 			templateObject->getFullTemplateString().contains("object/building/player/city/garden")));
+}
 
+Reference<SceneObject*> SceneObjectImplementation::getContainerObjectRecursive(uint64 oid) {
+	ManagedReference<SceneObject*> obj = containerObjects.get(oid);
 
+	if (obj != NULL)
+		return obj;
+
+	for (int i = 0; i < containerObjects.size(); ++i) {
+		Locker locker(&containerLock);
+
+		ManagedReference<SceneObject*> inContainerObject = containerObjects.get(i);
+
+		obj = inContainerObject->getContainerObjectRecursive(oid);
+
+		if (obj != NULL)
+			break;
+	}
+
+	return obj;
 }

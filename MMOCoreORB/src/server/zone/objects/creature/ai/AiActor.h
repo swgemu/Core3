@@ -981,6 +981,10 @@ public:
 class MockAiActor : public AiActor {
 public:
 
+	MOCK_METHOD0(getWorldPositionX,float());
+	MOCK_METHOD0(getWorldPositionY,float());
+	MOCK_METHOD0(getWorldPositionZ,float());
+	MOCK_METHOD0(getWorldPosition,Vector3());
 
 };
 

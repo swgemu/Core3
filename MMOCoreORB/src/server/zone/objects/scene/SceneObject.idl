@@ -1091,6 +1091,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	@read
+	@reference
 	public native SceneObject getSlottedObject(final string slot);
 
 	@read
@@ -1102,7 +1103,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	@read
+	@reference
 	public native SceneObject getSlottedObject(int idx);
+	
+	@read
+	@reference
+	public native SceneObject getContainerObjectRecursive(unsigned long oid);
 	
 	public native void dropSlottedObject(final string arrengementDescriptor);
 	
@@ -1129,6 +1135,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 
 	@read
+	@reference
 	public SceneObject getContainerObject(int idx) {
 		return containerObjects.get(idx);
 	}
@@ -1165,6 +1172,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	@read
+	@reference
 	public SceneObject getContainerObject(unsigned long objectID) {
 		return containerObjects.get(objectID);
 	}

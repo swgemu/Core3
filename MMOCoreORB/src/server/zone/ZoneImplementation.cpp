@@ -235,7 +235,7 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 					if (cell != NULL) {
 					try {
 							for (int h = 0; h < cell->getContainerObjectsSize(); ++h) {
-								ManagedReference<QuadTreeEntry*> obj = cell->getContainerObject(h);
+								ManagedReference<QuadTreeEntry*> obj = cell->getContainerObject(h).get();
 								
 								if (obj != NULL)
 									buildingObjects.add(obj);
@@ -246,7 +246,7 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 					}
 				}
 			} else if (sceneObject != NULL && sceneObject->isVehicleObject()) {
-				ManagedReference<QuadTreeEntry*> rider = sceneObject->getSlottedObject("rider");
+				ManagedReference<QuadTreeEntry*> rider = sceneObject->getSlottedObject("rider").get();
 
 				if (rider != NULL)
 					buildingObjects.add(rider);

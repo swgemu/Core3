@@ -91,7 +91,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	float maxDmg = calculateAttackMaxDamage(level);
 	float speed = calculateAttackSpeed(level);
 
-	WeaponObject* defaultWeapon = cast<WeaponObject*>(getSlottedObject("default_weapon"));
+	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
 
 	if (weapons.size() == 0) {
 		Vector<String> wepgroups = npcTemplate->getWeapons();
@@ -235,7 +235,7 @@ void AiAgentImplementation::setLevel(int lvl) {
 	float maxDmg = calculateAttackMaxDamage(baseLevel);
 	float speed = calculateAttackSpeed(baseLevel);
 
-	WeaponObject* defaultWeapon = cast<WeaponObject*>(getSlottedObject("default_weapon"));
+	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
 
 	float ratio = ((float)lvl) / (float)baseLevel;
 
@@ -488,7 +488,7 @@ void AiAgentImplementation::selectWeapon() {
 	}
 
 	ManagedReference<WeaponObject*> currentWeapon = getWeapon();
-	ManagedReference<WeaponObject*> defaultWeapon = dynamic_cast<WeaponObject*>(getSlottedObject("default_weapon"));
+	ManagedReference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
 
 	if ((dist < 6) && (finalWeap->isRangedWeapon() || (finalWeap->isMeleeWeapon() && System::random(10) == 0))) {
 		float range = fabs(defaultWeapon->getIdealRange() - dist);

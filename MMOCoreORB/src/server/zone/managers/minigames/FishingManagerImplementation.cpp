@@ -685,7 +685,7 @@ FishingBaitObject* FishingManagerImplementation::getBait(CreatureObject* player)
 
 	if (pole != NULL) {
 		if (pole->isFishingPoleObject() && pole->hasFullContainerObjects()) {
-			ManagedReference<FishingBaitObject*> bait = cast<FishingBaitObject*>(pole->getContainerObject(0));
+			ManagedReference<FishingBaitObject*> bait = pole->getContainerObject(0).castTo<FishingBaitObject*>();
 
 			if (bait != NULL) {
 				if (bait->isFishingBait()) {
