@@ -377,7 +377,7 @@ String ImageDesignManager::getSpeciesGenderString(CreatureObject* creo) {
 }
 
 TangibleObject* ImageDesignManager::createHairObject(CreatureObject* imageDesigner, CreatureObject* targetObject, const String& hairTemplate, const String& hairCustomization) {
-	TangibleObject* oldHair = dynamic_cast<TangibleObject*>(targetObject->getSlottedObject("hair"));
+	Reference<TangibleObject*> oldHair = targetObject->getSlottedObject("hair").castTo<TangibleObject*>();
 
 	HairAssetData* hairAssetData = CustomizationIdManager::instance()->getHairAssetData(hairTemplate);
 
@@ -427,7 +427,7 @@ TangibleObject* ImageDesignManager::updateHairObject(CreatureObject* creo, Tangi
 	if (creo == NULL)
 		return NULL;
 
-	ManagedReference<TangibleObject*> hair = cast<TangibleObject*>( creo->getSlottedObject("hair"));
+	ManagedReference<TangibleObject*> hair = creo->getSlottedObject("hair").castTo<TangibleObject*>();
 
 	if (hair != NULL) {
 		hair->destroyObjectFromWorld(true);

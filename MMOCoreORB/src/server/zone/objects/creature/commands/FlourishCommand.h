@@ -84,10 +84,9 @@ public:
 
 		int mod = Integer::valueOf(args);
 
-		PlayerObject
-				* ghost =
-						dynamic_cast<PlayerObject*> (creature->getSlottedObject(
-								"ghost"));
+		Reference<PlayerObject*> ghost =
+						creature->getSlottedObject(
+								"ghost").castTo<PlayerObject*> ();
 
 		String fullString = String("flourish") + "+" + args;
 

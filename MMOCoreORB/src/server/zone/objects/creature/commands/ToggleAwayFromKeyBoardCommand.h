@@ -67,7 +67,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerObject* ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+		Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 		if (ghost != NULL)
 			ghost->toggleCharacterBit(PlayerObject::AFK);

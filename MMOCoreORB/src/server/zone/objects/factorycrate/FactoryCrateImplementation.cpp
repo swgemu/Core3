@@ -97,7 +97,7 @@ TangibleObject* FactoryCrateImplementation::getPrototype() {
 		return NULL;
 	}
 
-	TangibleObject* prototype = cast<TangibleObject*>( getContainerObject(0));
+	Reference<TangibleObject*> prototype = getContainerObject(0).castTo<TangibleObject*>();
 
 	if(prototype == NULL || !prototype->isTangibleObject()) {
 		error("FactoryCrateImplementation::getPrototype has a NULL or non-tangible item");

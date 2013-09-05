@@ -185,7 +185,7 @@ void GroupManager::joinGroup(CreatureObject* player) {
 	player->sendSystemMessage("@group:joined_self");
 
 	// clear invitee's LFG setting once a group is joined
-	PlayerObject* ghost = cast<PlayerObject*>(player->getSlottedObject("ghost"));
+	Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
 	if (ghost != NULL)
 		ghost->clearCharacterBit(PlayerObject::LFG, true);
 
@@ -241,7 +241,7 @@ GroupObject* GroupManager::createGroup(CreatureObject* leader) {
 	leader->sendSystemMessage("@group:formed_self");
 
 	// clear inviter's LFG setting once a group is created
-	PlayerObject* ghost = cast<PlayerObject*>(leader->getSlottedObject("ghost"));
+	Reference<PlayerObject*> ghost = leader->getSlottedObject("ghost").castTo<PlayerObject*>();
 	if (ghost != NULL)
 		ghost->clearCharacterBit(PlayerObject::LFG, true);
 

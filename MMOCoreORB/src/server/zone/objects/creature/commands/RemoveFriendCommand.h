@@ -66,7 +66,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		PlayerObject* ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+		Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 		ghost->removeFriend(arguments.toString());
 
 		return SUCCESS;

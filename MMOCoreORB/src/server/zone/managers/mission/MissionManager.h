@@ -260,7 +260,7 @@ public:
 
 	Vector3 getRandomBountyTargetPosition(CreatureObject* player);
 
-	MissionObject* getBountyHunterMission(CreatureObject* player);
+	Reference<MissionObject* > getBountyHunterMission(CreatureObject* player);
 
 	String getDeliveryMissionFileName(const int faction);
 
@@ -440,7 +440,7 @@ public:
 
 	Vector3 getRandomBountyTargetPosition(CreatureObject* player);
 
-	MissionObject* getBountyHunterMission(CreatureObject* player);
+	Reference<MissionObject* > getBountyHunterMission(CreatureObject* player);
 
 	String getDeliveryMissionFileName(const int faction);
 
@@ -597,7 +597,7 @@ public:
 
 	void createSpawnPoint(CreatureObject* player, const String& spawnTypes);
 
-	MissionObject* getBountyHunterMission(CreatureObject* player);
+	Reference<MissionObject* > getBountyHunterMission(CreatureObject* player);
 
 	String getDeliveryMissionFileName(const int faction);
 

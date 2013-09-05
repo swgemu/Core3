@@ -109,7 +109,7 @@ void ZoneClientSessionImplementation::disconnect(bool doLock) {
 
 		closeConnection(true, false);
 	} else if (player != NULL) {
-		PlayerObject* ghost = cast<PlayerObject*>( player->getSlottedObject("ghost"));
+		Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 		if (ghost->isLoggingOut() && player->getClient() == _this.get().get()) {
 			//((CreatureObject*)player.get())->logout(true);

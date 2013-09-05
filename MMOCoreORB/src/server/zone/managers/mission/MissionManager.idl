@@ -170,6 +170,7 @@ class MissionManager extends Observer implements Logger {
 	@local
 	@dereferenced
 	public native Vector3 getRandomBountyTargetPosition(CreatureObject player);
+	@reference
 	public native MissionObject getBountyHunterMission(CreatureObject player);
 		
 	public native string getDeliveryMissionFileName(final int faction);

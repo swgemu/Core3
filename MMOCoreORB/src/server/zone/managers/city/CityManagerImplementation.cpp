@@ -715,8 +715,8 @@ void CityManagerImplementation::processCityUpdate(CityRegion* city) {
 			city->getMayorID());
 
 	if (mayor != NULL && mayor->isPlayerCreature()) {
-		PlayerObject* ghost = cast<PlayerObject*> (
-				mayor->getSlottedObject("ghost"));
+		Reference<PlayerObject*> ghost =
+				mayor->getSlottedObject("ghost").castTo<PlayerObject*> ();
 		ghost->addExperience("political", 750, true);
 	}
 
@@ -1102,8 +1102,8 @@ void CityManagerImplementation::updateCityVoting(CityRegion* city,
 
 				CreatureObject* mayor = cast<CreatureObject*> (
 						mayorObject.get());
-				PlayerObject* ghost = cast<PlayerObject*> (
-						mayorObject->getSlottedObject("ghost"));
+				Reference<PlayerObject*> ghost =
+						mayorObject->getSlottedObject("ghost").castTo<PlayerObject*> ();
 
 				//Make sure the candidate is still a politician.
 				if (mayor->hasSkill("social_politician_novice")) {

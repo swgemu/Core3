@@ -2412,12 +2412,12 @@ void CreatureObjectImplementation::sendExecuteConsoleCommand(
 	sendMessage(msg);
 }
 
-PlayerObject* CreatureObjectImplementation::getPlayerObject() {
-	return dynamic_cast<PlayerObject*> (getSlottedObject("ghost"));
+Reference<PlayerObject*> CreatureObjectImplementation::getPlayerObject() {
+	return getSlottedObject("ghost").castTo<PlayerObject*> ();
 }
 
 AiActor* CreatureObjectImplementation::getActorObject() {
-	return dynamic_cast<AiActor*> (getSlottedObject("ghost"));
+	return dynamic_cast<AiActor*> (getSlottedObject("ghost").get());
 }
 
 bool CreatureObjectImplementation::isAggressiveTo(CreatureObject* object) {
@@ -2725,4 +2725,11 @@ float CreatureObjectImplementation::calculateCostAdjustment(uint8 stat, float ba
 		cost = 0;
 
 	return cost;
+}
+
+Reference<WeaponObject*> CreatureObjectImplementation::getWeapon() {
+	if (weapon == NULL) {
+		return TangibleObjectImplementation::getSlottedObject("default_weapon").castTo<WeaponObject*>();
+	} else
+		return weapon;
 }

@@ -94,7 +94,7 @@ public:
 		if (!canPlayInstrument(creature, creature->getTargetID()))
 			return GENERALERROR;
 
-		PlayerObject* ghost = dynamic_cast<PlayerObject*> (creature->getSlottedObject("ghost"));
+		Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*> ();
 
 		String args = arguments.toString();
 
@@ -165,7 +165,7 @@ public:
 					continue;
 				}
 
-				ManagedReference<Instrument*> instrument = dynamic_cast<Instrument*> (groupMember->getSlottedObject("hold_r"));
+				Reference<Instrument*> instrument = groupMember->getSlottedObject("hold_r").castTo<Instrument*> ();
 				bool targetedInstrument = false;
 
 				if (instrument == NULL) {
@@ -235,9 +235,9 @@ public:
 	}
 
 	bool canPlayInstrument(CreatureObject* creature, const uint64& target) {
-		PlayerObject* ghost = dynamic_cast<PlayerObject*> (creature->getSlottedObject("ghost"));
+		Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*> ();
 
-		ManagedReference<Instrument*> instrument = dynamic_cast<Instrument*> (creature->getSlottedObject("hold_r"));
+		Reference<Instrument*> instrument = creature->getSlottedObject("hold_r").castTo<Instrument*> ();
 
 		if (instrument == NULL) {
 			ManagedReference<SceneObject*> nala = server->getZoneServer()->getObject(target);
