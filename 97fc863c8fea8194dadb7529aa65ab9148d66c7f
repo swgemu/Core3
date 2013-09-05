@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa3479d7_925e9c11",
+        "filename": "MMOCoreORB/bin/scripts/ai/tests/AiBaseTest.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-09-05T13:31:48Z",
+      "side": 1,
+      "message": "We should probably create a file with all functions provided by the DirectorManager mocked and include that file in all our tests.",
+      "revId": "97fc863c8fea8194dadb7529aa65ab9148d66c7f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
