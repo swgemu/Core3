@@ -1048,6 +1048,7 @@ class CreatureObject extends TangibleObject {
 		return super.getPendingTask("conditionTreatment") == null;
 	}
 	
+	@reference
 	public native PlayerObject getPlayerObject();
 	
 	public native AiActor getActorObject();
@@ -1369,13 +1370,10 @@ class CreatureObject extends TangibleObject {
 			return weapon.getObjectID();
 	}
 	
-	public WeaponObject getWeapon() {
-		if (weapon == null) {
-			return (WeaponObject) super.getSlottedObject("default_weapon");
-		} else
-			return weapon;
-	}
+	@reference
+	public native WeaponObject getWeapon();
 	
+	@reference
 	public GuildObject getGuildObject() {
 		return guild;
 	}

@@ -1867,7 +1867,7 @@ bool CreatureObject::canTreatConditions() {
 		return _implementation->canTreatConditions();
 }
 
-PlayerObject* CreatureObject::getPlayerObject() {
+Reference<PlayerObject* > CreatureObject::getPlayerObject() {
 	CreatureObjectImplementation* _implementation = static_cast<CreatureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -3034,7 +3034,7 @@ unsigned long long CreatureObject::getWeaponID() {
 		return _implementation->getWeaponID();
 }
 
-WeaponObject* CreatureObject::getWeapon() {
+Reference<WeaponObject* > CreatureObject::getWeapon() {
 	CreatureObjectImplementation* _implementation = static_cast<CreatureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -3047,7 +3047,7 @@ WeaponObject* CreatureObject::getWeapon() {
 		return _implementation->getWeapon();
 }
 
-GuildObject* CreatureObject::getGuildObject() {
+Reference<GuildObject* > CreatureObject::getGuildObject() {
 	CreatureObjectImplementation* _implementation = static_cast<CreatureObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -5402,18 +5402,7 @@ unsigned long long CreatureObjectImplementation::getWeaponID() {
 	return weapon->getObjectID();
 }
 
-WeaponObject* CreatureObjectImplementation::getWeapon() {
-	// server/zone/objects/creature/CreatureObject.idl():  			return weapon;
-	if (weapon == NULL){
-	// server/zone/objects/creature/CreatureObject.idl():  			return (WeaponObject) super.getSlottedObject("default_weapon");
-	return (WeaponObject*) TangibleObjectImplementation::getSlottedObject("default_weapon");
-}
-
-	else 	// server/zone/objects/creature/CreatureObject.idl():  			return weapon;
-	return weapon;
-}
-
-GuildObject* CreatureObjectImplementation::getGuildObject() {
+Reference<GuildObject* > CreatureObjectImplementation::getGuildObject() {
 	// server/zone/objects/creature/CreatureObject.idl():  		return guild;
 	return guild;
 }
@@ -7759,7 +7748,7 @@ bool CreatureObjectAdapter::canTreatConditions() {
 	return (static_cast<CreatureObject*>(stub))->canTreatConditions();
 }
 
-PlayerObject* CreatureObjectAdapter::getPlayerObject() {
+Reference<PlayerObject* > CreatureObjectAdapter::getPlayerObject() {
 	return (static_cast<CreatureObject*>(stub))->getPlayerObject();
 }
 
@@ -8083,11 +8072,11 @@ unsigned long long CreatureObjectAdapter::getWeaponID() {
 	return (static_cast<CreatureObject*>(stub))->getWeaponID();
 }
 
-WeaponObject* CreatureObjectAdapter::getWeapon() {
+Reference<WeaponObject* > CreatureObjectAdapter::getWeapon() {
 	return (static_cast<CreatureObject*>(stub))->getWeapon();
 }
 
-GuildObject* CreatureObjectAdapter::getGuildObject() {
+Reference<GuildObject* > CreatureObjectAdapter::getGuildObject() {
 	return (static_cast<CreatureObject*>(stub))->getGuildObject();
 }
 

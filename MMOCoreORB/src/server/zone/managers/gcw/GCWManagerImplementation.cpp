@@ -1080,7 +1080,7 @@ void GCWManagerImplementation::generateTurretControlBoxTo(CreatureObject* creatu
 	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
 
 	vec->safeCopyTo(closeObjects);
-	WeaponObject* weapon = cast<WeaponObject*>(turret->getSlottedObject("hold_r"));
+	Reference<WeaponObject*> weapon = turret->getSlottedObject("hold_r").castTo<WeaponObject*>();
 
 	if(weapon == NULL)
 		return;

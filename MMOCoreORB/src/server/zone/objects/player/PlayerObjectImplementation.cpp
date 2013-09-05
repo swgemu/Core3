@@ -1562,7 +1562,7 @@ void PlayerObjectImplementation::activateMissions() {
 
 	for (int i = datapadSize - 1; i >= 0; --i) {
 		if (datapad->getContainerObject(i)->isMissionObject()) {
-			MissionObject* mission = cast<MissionObject*>(datapad->getContainerObject(i));
+			Reference<MissionObject*> mission = datapad->getContainerObject(i).castTo<MissionObject*>();
 
 			if (mission != NULL) {
 				//Check if it is target or destination NPC

@@ -110,7 +110,7 @@ public:
 		ManagedReference<TangibleObject*> usableKit = NULL;
 
 		for(int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
-			TangibleObject* item = cast<TangibleObject*>(inventory->getContainerObject(i));
+			Reference<TangibleObject*> item = inventory->getContainerObject(i).castTo<TangibleObject*>();
 
 			if(item == NULL || !item->isCamoKit())
 				continue;
