@@ -67,8 +67,8 @@ public:
 		StringTokenizer tokenizer(arguments.toString());
 		uint64 toContainerID = tokenizer.getLongToken();
 
-		ManagedReference<ResourceContainer* > fromContainer = cast<ResourceContainer*>( server->getZoneServer()->getObject(target));
-		ManagedReference<ResourceContainer* > toContainer = cast<ResourceContainer*>( server->getZoneServer()->getObject(toContainerID));
+		ManagedReference<ResourceContainer* > fromContainer = server->getZoneServer()->getObject(target).castTo<ResourceContainer*>();
+		ManagedReference<ResourceContainer* > toContainer = server->getZoneServer()->getObject(toContainerID).castTo<ResourceContainer*>();
 
 		if((fromContainer == NULL || toContainer == NULL || !fromContainer->isResourceContainer()
 				|| !toContainer->isResourceContainer() || !creature->isPlayerCreature() || !fromContainer->isASubChildOf(creature) || !toContainer->isASubChildOf(creature)))

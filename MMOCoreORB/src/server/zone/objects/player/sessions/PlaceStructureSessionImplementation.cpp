@@ -79,7 +79,7 @@ void PlaceStructureSessionImplementation::placeTemporaryNoBuildZone(SharedStruct
 	areaShape->setRadius(64);
 	areaShape->setAreaCenter(positionX, positionY);
 
-	temporaryNoBuildZone = cast<ActiveArea*>(zone->getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0));
+	temporaryNoBuildZone = (zone->getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0)).castTo<ActiveArea*>();
 	temporaryNoBuildZone->initializePosition(positionX, 0, positionY);
 	temporaryNoBuildZone->setAreaShape(areaShape);
 	temporaryNoBuildZone->setNoBuildArea(true);
@@ -123,7 +123,7 @@ int PlaceStructureSessionImplementation::completeSession() {
 		ghost->addOwnedStructure(structureObject);
 
 		//Create Waypoint
-		ManagedReference<WaypointObject*> waypointObject = cast<WaypointObject*>( zone->getZoneServer()->createObject(String("object/waypoint/world_waypoint_blue.iff").hashCode(), 1));
+		ManagedReference<WaypointObject*> waypointObject = ( zone->getZoneServer()->createObject(String("object/waypoint/world_waypoint_blue.iff").hashCode(), 1)).castTo<WaypointObject*>();
 		waypointObject->setCustomObjectName(structureObject->getDisplayedName(), false);
 		waypointObject->setActive(true);
 		waypointObject->setPosition(positionX, 0, positionY);

@@ -75,7 +75,7 @@ public:
 		ManagedReference<CreatureObject*> targetObj = NULL;
 
 		if (creature->getTargetID() != 0) {
-			targetObj = dynamic_cast<CreatureObject*>(server->getZoneServer()->getObject(creature->getTargetID()));
+			targetObj = server->getZoneServer()->getObject(creature->getTargetID()).castTo<CreatureObject*>();
 		} else {
 			if(!args.hasMoreTokens())
 				return GENERALERROR;

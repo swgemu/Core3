@@ -176,7 +176,7 @@ void ResourceSpawner::loadResourceSpawns() {
 
 	while (iterator.getNextKey(objectID)) {
 
-		ManagedReference<ResourceSpawn*> resourceSpawn = dynamic_cast<ResourceSpawn*> (Core::getObjectBroker()->lookUp(objectID));
+		Reference<ResourceSpawn*> resourceSpawn = Core::getObjectBroker()->lookUp(objectID).castTo<ResourceSpawn*>();
 		//ObjectDatabaseManager::instance()->commitLocalTransaction();
 
 		if (resourceSpawn == NULL) {
@@ -249,7 +249,7 @@ void ResourceSpawner::spawnScriptResources() {
 		if(!resource.isValidTable())
 			continue;
 
-		ResourceSpawn* newSpawn = dynamic_cast<ResourceSpawn*>
+		Reference<ResourceSpawn*> newSpawn = dynamic_cast<ResourceSpawn*>
 			(objectManager->createObject(0xb2825c5a, 1, "resourcespawns"));
 
 		if (newSpawn == NULL) {
@@ -820,7 +820,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 
 		// Create new waypoint
 		if (waypoint == NULL)
-			waypoint = cast<WaypointObject*>( server->createObject(0xc456e788, 1));
+			waypoint = ( server->createObject(0xc456e788, 1)).castTo<WaypointObject*>();
 
 		// Update new waypoint
 		waypoint->setCustomObjectName(UnicodeString("Resource Survey"), false);

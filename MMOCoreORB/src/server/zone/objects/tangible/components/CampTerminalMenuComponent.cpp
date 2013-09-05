@@ -52,7 +52,7 @@ void CampTerminalMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 	for (int i = 0; i < ghost->getTotalOwnedStructureCount(); ++i) {
 		uint64 oid = ghost->getOwnedStructure(i);
 
-		ManagedReference<StructureObject*> structure = cast<StructureObject*>(ghost->getZoneServer()->getObject(oid));
+		ManagedReference<StructureObject*> structure = ghost->getZoneServer()->getObject(oid).castTo<StructureObject*>();
 
 		if (structure == camp) {
 			menuResponse->addRadialMenuItem(182, 3, "@camp:mnu_disband");

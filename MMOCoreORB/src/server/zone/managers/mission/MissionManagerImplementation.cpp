@@ -852,7 +852,7 @@ void MissionManagerImplementation::randomizeGenericBountyMission(CreatureObject*
 
 			ZoneServer* zoneServer = player->getZoneServer();
 			if (zoneServer != NULL) {
-				ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(zoneServer->getObject(target->getTargetId()));
+				ManagedReference<CreatureObject*> creature = zoneServer->getObject(target->getTargetId()).castTo<CreatureObject*>();
 
 				if (creature != NULL) {
 					String name = creature->getFirstName() + " " + creature->getLastName();
@@ -1732,7 +1732,7 @@ void MissionManagerImplementation::completePlayerBounty(uint64 targetId, uint64 
 }
 
 void MissionManagerImplementation::failPlayerBountyMission(uint64 bountyHunter) {
-	ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(server->getObject(bountyHunter));
+	ManagedReference<CreatureObject*> creature = server->getObject(bountyHunter).castTo<CreatureObject*>();
 
 	if (creature != NULL) {
 		Locker creatureLock(creature);

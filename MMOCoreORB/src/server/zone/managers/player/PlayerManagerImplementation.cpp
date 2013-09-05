@@ -316,7 +316,7 @@ bool PlayerManagerImplementation::kickUser(const String& name, const String& adm
 	return true;
 }
 
-CreatureObject* PlayerManagerImplementation::getPlayer(const String& name) {
+Reference<CreatureObject*> PlayerManagerImplementation::getPlayer(const String& name) {
 	uint64 oid = 0;
 
 	rlock();
@@ -328,12 +328,12 @@ CreatureObject* PlayerManagerImplementation::getPlayer(const String& name) {
 	if (oid == 0)
 		return NULL;
 
-	SceneObject* obj = server->getObject(oid);
+	Reference<SceneObject*> obj = server->getObject(oid);
 
 	if (obj == NULL || !obj->isPlayerCreature())
 		return NULL;
 
-	return cast<CreatureObject*>( obj);
+	return obj.castTo<CreatureObject*>();
 }
 
 uint64 PlayerManagerImplementation::getObjectID(const String& name) {
@@ -437,8 +437,8 @@ bool PlayerManagerImplementation::checkPlayerName(MessageCallback* messageCallba
 }
 
 
-TangibleObject* PlayerManagerImplementation::createHairObject(const String& hairObjectFile, const String& hairCustomization) {
-	TangibleObject* hairObject = NULL;
+Reference<TangibleObject*> PlayerManagerImplementation::createHairObject(const String& hairObjectFile, const String& hairCustomization) {
+	Reference<TangibleObject*> hairObject = NULL;
 
 	if (hairObjectFile.isEmpty()) {
 		info("hairObjectFile empty");
@@ -448,7 +448,7 @@ TangibleObject* PlayerManagerImplementation::createHairObject(const String& hair
 	//String sharedHairObjectFile = hairObjectFile.replaceFirst("hair_", "shared_hair_");
 
 	info("trying to create hair object " + hairObjectFile);
-	SceneObject* hair = server->createObject(hairObjectFile.hashCode(), 1);
+	Reference<SceneObject*> hair = server->createObject(hairObjectFile.hashCode(), 1);
 
 	if (hair == NULL) {
 		info("objectManager returned NULL hair object");
@@ -463,7 +463,7 @@ TangibleObject* PlayerManagerImplementation::createHairObject(const String& hair
 
 		return NULL;
 	} else {
-		hairObject = cast<TangibleObject*>( hair);
+		hairObject = hair.castTo<TangibleObject*>();
 
 		hairObject->setCustomizationString(hairCustomization);
 
@@ -474,7 +474,7 @@ TangibleObject* PlayerManagerImplementation::createHairObject(const String& hair
 }
 
 bool PlayerManagerImplementation::createAllPlayerObjects(CreatureObject* player) {
-	SceneObject* inventory = server->createObject(0x77ae7dbb, 1); // character_inventory
+	Reference<SceneObject*> inventory = server->createObject(0x77ae7dbb, 1); // character_inventory
 
 	if (inventory == NULL) {
 		error("could not create player inventory");
@@ -483,7 +483,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(CreatureObject* player)
 
 	player->transferObject(inventory, 4);
 
-	SceneObject* datapad = server->createObject(0x95ae7939, 1); //datapad
+	Reference<SceneObject*> datapad = server->createObject(0x95ae7939, 1); //datapad
 
 	if (datapad == NULL) {
 		error("could not create player datapad");
@@ -492,7 +492,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(CreatureObject* player)
 
 	player->transferObject(datapad, 4);
 
-	SceneObject* playerObject = server->createObject(String("object/player/player.iff").hashCode(), 1); //player object
+	Reference<SceneObject*> playerObject = server->createObject(String("object/player/player.iff").hashCode(), 1); //player object
 
 	if (playerObject == NULL) {
 		error("could not create player object");
@@ -501,7 +501,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(CreatureObject* player)
 
 	player->transferObject(playerObject, 4);
 
-	SceneObject* bank = server->createObject(0xf5b8caa5, 1); //bank
+	Reference<SceneObject*> bank = server->createObject(0xf5b8caa5, 1); //bank
 
 	if (bank == NULL) {
 		error("could not create bank");
@@ -510,7 +510,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(CreatureObject* player)
 
 	player->transferObject(bank, 4);
 
-	SceneObject* missionBag = server->createObject(0xaa5efb52, 1); //mission bag
+	Reference<SceneObject*> missionBag = server->createObject(0xaa5efb52, 1); //mission bag
 
 	if (missionBag == NULL) {
 		error("could not create mission bag");
@@ -521,7 +521,7 @@ bool PlayerManagerImplementation::createAllPlayerObjects(CreatureObject* player)
 
 	uint32 defaultWeaponCRC = String("object/weapon/melee/unarmed/unarmed_default_player.iff").hashCode();
 
-	SceneObject* defaultWeapon = server->createObject(defaultWeaponCRC, 1);
+	Reference<SceneObject*> defaultWeapon = server->createObject(defaultWeaponCRC, 1);
 
 	if (defaultWeapon == NULL) {
 		error("could not create default_weapon");
@@ -554,20 +554,20 @@ bool PlayerManagerImplementation::createAllPlayerObjects(CreatureObject* player)
 	datapad->transferObject(vehicleControlDevice, -1);*/
 
 	String pole = "object/tangible/fishing/fishing_pole.iff";
-	SceneObject* poleObject = server->createObject(pole.hashCode(), 1);
+	Reference<SceneObject*> poleObject = server->createObject(pole.hashCode(), 1);
 	inventory->transferObject(poleObject, -1);
 
 	String bait = "object/tangible/fishing/bait/bait_worm.iff";
-	SceneObject* baitObject = server->createObject(bait.hashCode(), 1);
+	Reference<SceneObject*> baitObject = server->createObject(bait.hashCode(), 1);
 	inventory->transferObject(baitObject, -1);
 
 	/*SceneObject* mission = server->createObject(3741732474UL, 1); // empty mission
 	datapad->transferObject(mission, -1);*/
 
 	//Add a ship
-	ShipControlDevice* shipControlDevice = cast<ShipControlDevice*>( server->createObject(String("object/intangible/ship/sorosuub_space_yacht_pcd.iff").hashCode(), 1));
+	Reference<ShipControlDevice*> shipControlDevice = server->createObject(String("object/intangible/ship/sorosuub_space_yacht_pcd.iff").hashCode(), 1).castTo<ShipControlDevice*>();
 	//ShipObject* ship = cast<ShipObject*>( server->createObject(String("object/ship/player/player_sorosuub_space_yacht.iff").hashCode(), 1));
-	ShipObject* ship = cast<ShipObject*>( server->createObject(String("object/ship/player/player_basic_tiefighter.iff").hashCode(), 1));
+	Reference<ShipObject*> ship = server->createObject(String("object/ship/player/player_basic_tiefighter.iff").hashCode(), 1).castTo<ShipObject*>();
 
 	shipControlDevice->setControlledObject(ship);
 
@@ -584,7 +584,7 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 	String tut = "object/building/general/newbie_hall.iff";
 	String cell = "object/cell/cell.iff";
 
-	BuildingObject* tutorial = cast<BuildingObject*>( server->createObject(tut.hashCode(), 1));
+	Reference<BuildingObject*> tutorial = server->createObject(tut.hashCode(), 1).castTo<BuildingObject*>();
 	tutorial->createCellObjects();
 	tutorial->setPublicStructure(true);
 
@@ -635,12 +635,12 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(CreatureObject* 
 	String tut = "object/building/general/newbie_hall_skipped.iff";
 	String cell = "object/cell/cell.iff";
 
-	BuildingObject* tutorial = cast<BuildingObject*>( server->createObject(tut.hashCode(), 1));
+	Reference<BuildingObject*> tutorial = server->createObject(tut.hashCode(), 1).castTo<BuildingObject*>();
 	tutorial->createCellObjects();
 	tutorial->initializePosition(System::random(5000), 0, System::random(5000));
 	zone->transferObject(tutorial, -1, true);
 
-	SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/beta/beta_terminal_warp.iff").hashCode(), 1);
+	Reference<SceneObject*> travelTutorialTerminal = server->createObject((uint32)String("object/tangible/beta/beta_terminal_warp.iff").hashCode(), 1);
 
 	SceneObject* cellTut = tutorial->getCell(1);
 	cellTut->transferObject(travelTutorialTerminal, -1);
@@ -695,7 +695,7 @@ void PlayerManagerImplementation::createDefaultPlayerItems(CreatureObject* playe
 	for (int j = 0; j < items->size(); ++j) {
 		StartingItem item = items->get(j);
 
-		SceneObject* obj = server->createObject(item.getTemplateCRC(), 1);
+		Reference<SceneObject*> obj = server->createObject(item.getTemplateCRC(), 1);
 
 		if (obj == NULL) {
 			StringBuffer msg;
@@ -717,7 +717,7 @@ void PlayerManagerImplementation::createDefaultPlayerItems(CreatureObject* playe
 	for (int j = 0; j < items->size(); ++j) {
 		StartingItem item = items->get(j);
 
-		SceneObject* obj = server->createObject(item.getTemplateCRC(), 1);
+		Reference<SceneObject*> obj = server->createObject(item.getTemplateCRC(), 1);
 
 		if (obj == NULL) {
 			StringBuffer msg;
@@ -740,7 +740,7 @@ void PlayerManagerImplementation::createDefaultPlayerItems(CreatureObject* playe
 	for (int j = 0; j < items->size(); ++j) {
 		StartingItem item = items->get(j);
 
-		SceneObject* obj = server->createObject(item.getTemplateCRC(), 1);
+		Reference<SceneObject*> obj = server->createObject(item.getTemplateCRC(), 1);
 
 		if (obj == NULL) {
 			StringBuffer msg;
@@ -763,7 +763,7 @@ void PlayerManagerImplementation::createDefaultPlayerItems(CreatureObject* playe
 	for (int j = 0; j < items->size(); ++j) {
 		StartingItem item = items->get(j);
 
-		SceneObject* obj = server->createObject(item.getTemplateCRC(), 1);
+		Reference<SceneObject*> obj = server->createObject(item.getTemplateCRC(), 1);
 
 		if (obj == NULL) {
 			StringBuffer msg;
@@ -2334,7 +2334,7 @@ StructureObject* PlayerManagerImplementation::getInRangeOwnedStructure(CreatureO
 	for (int i = 0; i < ghost->getTotalOwnedStructureCount(); ++i) {
 		uint64 oid = ghost->getOwnedStructure(i);
 
-		ManagedReference<StructureObject*> structure = cast<StructureObject*>(ghost->getZoneServer()->getObject(oid));
+		ManagedReference<StructureObject*> structure = (ghost->getZoneServer()->getObject(oid)).castTo<StructureObject*>();
 
 		Locker _slock(structure, creature);
 
@@ -2861,7 +2861,7 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 
 		if (scno->isCraftingStation() && (abs(scno->getPositionZ() - player->getPositionZ()) < 7.0f) && player->isInRange(scno, 7.0f)) {
 
-			station = cast<CraftingStation*> (server->getObject(scno->getObjectID()));
+			station = server->getObject(scno->getObjectID()).castTo<CraftingStation*>();
 
 			if (station == NULL)
 				continue;
@@ -3660,7 +3660,7 @@ void PlayerManagerImplementation::cleanupCharacters(){
 
 				if(shouldDeleteCharacter(objectID, galaxyID)){
 
-					ManagedReference<CreatureObject*> object = dynamic_cast<CreatureObject*>(Core::getObjectBroker()->lookUp(objectID));
+					ManagedReference<CreatureObject*> object = Core::getObjectBroker()->lookUp(objectID).castTo<CreatureObject*>();
 
 					if(object == NULL){
 						info("OBJECT NULL when getting object " + String::valueOf(objectID),true);

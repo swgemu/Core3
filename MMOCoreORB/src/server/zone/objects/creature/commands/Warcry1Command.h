@@ -64,7 +64,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		TangibleObject* targetObject = cast<TangibleObject*> (server->getZoneServer()->getObject(target));
+		Reference<TangibleObject*> targetObject = server->getZoneServer()->getObject(target).castTo<TangibleObject*>();
 
 		if (targetObject == NULL || !targetObject->isCreatureObject())
 			return INVALIDTARGET;
@@ -72,7 +72,7 @@ public:
 		int res = doCombatAction(creature, target);
 
 		if (res == TOOFAR)
-			CombatManager::instance()->broadcastCombatSpam(creature, cast<TangibleObject*>(server->getZoneServer()->getObject(target)), creature->getWeapon(), 0, "warcry_out_of_range");
+			CombatManager::instance()->broadcastCombatSpam(creature, targetObject, creature->getWeapon(), 0, "warcry_out_of_range");
 
 		if (res == GENERALERROR)
 			creature->sendSystemMessage("@combat_effects:warcry_miss");

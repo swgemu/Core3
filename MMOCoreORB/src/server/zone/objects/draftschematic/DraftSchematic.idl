@@ -119,6 +119,7 @@ class DraftSchematic extends IntangibleObject {
 	 */
 	public native void sendResourceWeightsTo(CreatureObject player);
 
+	@reference
 	public native SceneObject createManufactureSchematic(SceneObject craftingTool = null);
 	
 	public void setGroupName(string name) {

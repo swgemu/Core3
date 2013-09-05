@@ -902,7 +902,7 @@ void ChatManagerImplementation::loadMail(CreatureObject* player) {
 	for (int i = 0; i < messages->size(); ++i) {
 		uint64 messageObjectID = messages->get(i);
 
-		ManagedReference<PersistentMessage*> mail = cast<PersistentMessage*>(Core::getObjectBroker()->lookUp(messageObjectID));
+		Reference<PersistentMessage*> mail = Core::getObjectBroker()->lookUp(messageObjectID).castTo<PersistentMessage*>();
 
 		if (mail == NULL) {
 			messages->drop(messageObjectID);
@@ -934,7 +934,7 @@ void ChatManagerImplementation::handleRequestPersistentMsg(CreatureObject* playe
 		return;
 	}
 
-	ManagedReference<PersistentMessage*> mail = cast<PersistentMessage*>(Core::getObjectBroker()->lookUp(messageObjectID));
+	Reference<PersistentMessage*> mail = Core::getObjectBroker()->lookUp(messageObjectID).castTo<PersistentMessage*>();
 
 	if (mail == NULL) {
 		messages->drop(messageObjectID);

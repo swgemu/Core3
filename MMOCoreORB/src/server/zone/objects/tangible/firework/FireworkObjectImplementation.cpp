@@ -79,7 +79,7 @@ void FireworkObjectImplementation::launch(CreatureObject* player, int removeDela
 
 void FireworkObjectImplementation::completeLaunch(CreatureObject* player, int removeDelay) {
 
-	ManagedReference<StaticObject*> launcherObject = cast<StaticObject*>(server->getZoneServer()->createObject(fireworkObject.hashCode(), 0));
+	ManagedReference<StaticObject*> launcherObject = (server->getZoneServer()->createObject(fireworkObject.hashCode(), 0)).castTo<StaticObject*>();
 
 	if (launcherObject == NULL)
 		return;

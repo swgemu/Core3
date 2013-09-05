@@ -91,7 +91,7 @@ TangibleObject* CreatureManagerImplementation::spawnLair(unsigned int lairTempla
  		return NULL;
  	}
 
- 	ManagedReference<TangibleObject*> building = dynamic_cast<TangibleObject*>(zoneServer->createObject(buildingToSpawn.hashCode(), 0));
+ 	ManagedReference<TangibleObject*> building = zoneServer->createObject(buildingToSpawn.hashCode(), 0).castTo<TangibleObject*>();
 
  	if (building == NULL) {
  		error("error spawning " + buildingToSpawn);
@@ -288,7 +288,7 @@ void CreatureManagerImplementation::placeCreature(CreatureObject* creature, floa
 	if (creature == NULL)
 		return;
 
-	SceneObject* cellParent = NULL;
+	Reference<SceneObject*> cellParent = NULL;
 
 	if (parentID != 0) {
 		cellParent = zoneServer->getObject(parentID);
@@ -350,7 +350,7 @@ bool CreatureManagerImplementation::createCreatureChildrenObjects(CreatureObject
 	}
 
 	if (creature->hasSlotDescriptor("inventory")) {
-		SceneObject* creatureInventory = zoneServer->createObject(String("object/tangible/inventory/creature_inventory.iff").hashCode(), persistent);
+		Reference<SceneObject*> creatureInventory = zoneServer->createObject(String("object/tangible/inventory/creature_inventory.iff").hashCode(), persistent);
 
 		if (creatureInventory == NULL) {
 			error("could not create creature inventory");

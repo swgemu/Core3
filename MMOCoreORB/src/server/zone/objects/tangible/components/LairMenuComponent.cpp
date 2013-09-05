@@ -24,15 +24,13 @@ void LairMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectM
 		return;
 
 	ManagedReference<LairObserver*> lairObserver = NULL;
-	SortedVector<ManagedReference<Observer*> >* observers = tano->getObservers(ObserverEventType::OBJECTDESTRUCTION);
+	SortedVector<ManagedReference<Observer*> > observers = tano->getObservers(ObserverEventType::OBJECTDESTRUCTION);
 
-	if (observers != NULL) {
-		for (int i = 0; i < observers->size(); i++) {
-			lairObserver = cast<LairObserver*>(observers->get(i).get());
+	for (int i = 0; i < observers.size(); i++) {
+		lairObserver = cast<LairObserver*>(observers.get(i).get());
 
-			if (lairObserver != NULL)
-				break;
-		}
+		if (lairObserver != NULL)
+			break;
 	}
 
 	if(player->hasSkill("outdoors_scout_novice") && player->getDistanceTo(sceneObject) < 8 && lairObserver && lairObserver->getLairType() != LairTemplate::NPC) {

@@ -100,7 +100,7 @@ public:
 
 	void sendResourceWeightsTo(CreatureObject* player);
 
-	SceneObject* createManufactureSchematic(SceneObject* craftingTool = NULL);
+	Reference<SceneObject* > createManufactureSchematic(SceneObject* craftingTool = NULL);
 
 	void setGroupName(String& name);
 
@@ -197,7 +197,7 @@ private:
 public:
 	void sendResourceWeightsTo(CreatureObject* player);
 
-	SceneObject* createManufactureSchematic(SceneObject* craftingTool = NULL);
+	Reference<SceneObject* > createManufactureSchematic(SceneObject* craftingTool = NULL);
 
 	void setGroupName(String& name);
 
@@ -294,7 +294,7 @@ public:
 
 	void sendResourceWeightsTo(CreatureObject* player);
 
-	SceneObject* createManufactureSchematic(SceneObject* craftingTool);
+	Reference<SceneObject* > createManufactureSchematic(SceneObject* craftingTool);
 
 	void setGroupName(String& name);
 

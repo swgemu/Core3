@@ -139,7 +139,7 @@ public:
 			ticketoid = tickets.get(0)->getObjectID();
 		}
 
-		ManagedReference<TicketObject*> ticketObject = dynamic_cast<TicketObject*>(server->getZoneServer()->getObject(ticketoid));
+		ManagedReference<TicketObject*> ticketObject = server->getZoneServer()->getObject(ticketoid).castTo<TicketObject*>();
 
 		//If no ticket was passed as the target, then send the selection box.
 		if (ticketObject == NULL) {

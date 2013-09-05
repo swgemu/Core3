@@ -420,7 +420,7 @@ void ObjectManager::loadStaticObjects() {
 	ObjectInputStream objectData(2000);
 
 	while (iterator.getNextKeyAndValue(objectID, &objectData)) {
-		SceneObject* object = cast<SceneObject*>(getObject(objectID));
+		Reference<SceneObject*> object = getObject(objectID).castTo<SceneObject*>();
 
 		if (object != NULL)
 			continue;
@@ -613,8 +613,8 @@ void ObjectManager::persistObject(ManagedObject* object, int persistenceLevel, c
 	updatePersistentObject(object);
 }
 
-DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
-	DistributedObjectStub* object = NULL;
+Reference<DistributedObjectStub*> ObjectManager::loadPersistentObject(uint64 objectID) {
+	Reference<DistributedObjectStub*> object = NULL;
 
 	uint16 tableID = (uint16)(objectID >> 48);
 
@@ -660,7 +660,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 
 			_locker.release();
 
-			SceneObject* scene = cast<SceneObject*>(object);
+			SceneObject* scene = object.castTo<SceneObject*>();
 
 			String loggingName = scene->getLoggingName();
 			uint32 templateObjectType = scene->getGameObjectType();
@@ -671,7 +671,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 
 			scene->setLoggingName(loggingName);
 
-			(cast<SceneObject*>(object))->info("loaded from db");
+			//(cast<SceneObject*>(object))->info("loaded from db");
 
 		} else if (Serializable::getVariable<String>(_classNameHashCode, &className, &objectData)) {
 			object = createObject(className, false, "", objectID, false);
@@ -682,7 +682,7 @@ DistributedObjectStub* ObjectManager::loadPersistentObject(uint64 objectID) {
 			}
 
 			_locker.release();
-			deSerializeObject(cast<ManagedObject*>(object), &objectData);
+			deSerializeObject(object.castTo<ManagedObject*>(), &objectData);
 
 		} else {
 			error("could not load object from database, unknown template crc or class name");

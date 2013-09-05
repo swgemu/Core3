@@ -230,7 +230,7 @@ public:
 
 				for (int i = 0; i < targetGuild->getTotalMembers(); ++i) {
 					uint64 memberID = targetGuild->getMember(i);
-					ManagedReference<CreatureObject*> guildMember = cast<CreatureObject*>(server->getZoneServer()->getObject(memberID));
+					ManagedReference<CreatureObject*> guildMember = server->getZoneServer()->getObject(memberID).castTo<CreatureObject*>();
 
 					if (guildMember != NULL)
 						buildingObject->updateCellPermissionsTo(guildMember);

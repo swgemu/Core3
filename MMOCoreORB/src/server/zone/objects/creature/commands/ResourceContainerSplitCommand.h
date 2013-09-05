@@ -70,7 +70,7 @@ public:
 		if (newStackSize < 1)
 			return GENERALERROR;
 
-		ManagedReference<ResourceContainer* > resourceContainer = cast<ResourceContainer*>( server->getZoneServer()->getObject(target));
+		ManagedReference<ResourceContainer* > resourceContainer = server->getZoneServer()->getObject(target).castTo<ResourceContainer*>();
 
 		if ((resourceContainer == NULL || !resourceContainer->isResourceContainer() ||!creature->isPlayerCreature()))
 			return INVALIDTARGET;

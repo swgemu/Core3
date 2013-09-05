@@ -303,7 +303,7 @@ void ZoneServer::printEvents() {
 		_implementation->printEvents();
 }
 
-SceneObject* ZoneServer::getObject(unsigned long long objectID, bool doLock) {
+Reference<SceneObject* > ZoneServer::getObject(unsigned long long objectID, bool doLock) {
 	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -318,7 +318,7 @@ SceneObject* ZoneServer::getObject(unsigned long long objectID, bool doLock) {
 		return _implementation->getObject(objectID, doLock);
 }
 
-SceneObject* ZoneServer::createObject(unsigned int templateCRC, const String& dbname, int persistenceLevel) {
+Reference<SceneObject* > ZoneServer::createObject(unsigned int templateCRC, const String& dbname, int persistenceLevel) {
 	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -334,7 +334,7 @@ SceneObject* ZoneServer::createObject(unsigned int templateCRC, const String& db
 		return _implementation->createObject(templateCRC, dbname, persistenceLevel);
 }
 
-SceneObject* ZoneServer::createObject(unsigned int templateCRC, int persistenceLevel, unsigned long long objectID) {
+Reference<SceneObject* > ZoneServer::createObject(unsigned int templateCRC, int persistenceLevel, unsigned long long objectID) {
 	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -350,7 +350,7 @@ SceneObject* ZoneServer::createObject(unsigned int templateCRC, int persistenceL
 		return _implementation->createObject(templateCRC, persistenceLevel, objectID);
 }
 
-SceneObject* ZoneServer::createClientObject(unsigned int templateCRC, unsigned long long objectID) {
+Reference<SceneObject* > ZoneServer::createClientObject(unsigned int templateCRC, unsigned long long objectID) {
 	ZoneServerImplementation* _implementation = static_cast<ZoneServerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -1908,19 +1908,19 @@ void ZoneServerAdapter::printEvents() {
 	(static_cast<ZoneServer*>(stub))->printEvents();
 }
 
-SceneObject* ZoneServerAdapter::getObject(unsigned long long objectID, bool doLock) {
+Reference<SceneObject* > ZoneServerAdapter::getObject(unsigned long long objectID, bool doLock) {
 	return (static_cast<ZoneServer*>(stub))->getObject(objectID, doLock);
 }
 
-SceneObject* ZoneServerAdapter::createObject(unsigned int templateCRC, const String& dbname, int persistenceLevel) {
+Reference<SceneObject* > ZoneServerAdapter::createObject(unsigned int templateCRC, const String& dbname, int persistenceLevel) {
 	return (static_cast<ZoneServer*>(stub))->createObject(templateCRC, dbname, persistenceLevel);
 }
 
-SceneObject* ZoneServerAdapter::createObject(unsigned int templateCRC, int persistenceLevel, unsigned long long objectID) {
+Reference<SceneObject* > ZoneServerAdapter::createObject(unsigned int templateCRC, int persistenceLevel, unsigned long long objectID) {
 	return (static_cast<ZoneServer*>(stub))->createObject(templateCRC, persistenceLevel, objectID);
 }
 
-SceneObject* ZoneServerAdapter::createClientObject(unsigned int templateCRC, unsigned long long objectID) {
+Reference<SceneObject* > ZoneServerAdapter::createClientObject(unsigned int templateCRC, unsigned long long objectID) {
 	return (static_cast<ZoneServer*>(stub))->createClientObject(templateCRC, objectID);
 }
 

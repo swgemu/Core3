@@ -64,8 +64,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<CreatureObject*> targetPlayer = cast<CreatureObject*> (
-				server->getZoneServer()->getObject(target));
+		ManagedReference<CreatureObject*> targetPlayer = server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
 
 		if(targetPlayer == NULL || creature->getZone() == NULL) {
 			return INVALIDTARGET;

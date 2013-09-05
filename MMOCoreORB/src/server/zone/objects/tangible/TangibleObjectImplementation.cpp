@@ -563,8 +563,8 @@ void TangibleObjectImplementation::updateCraftingValues(CraftingValues* values,
 		setUseCount(values->getCurrentValue("charge"));
 	}
 }
-FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) {
 
+Reference<FactoryCrate*> TangibleObjectImplementation::createFactoryCrate(bool insertSelf) {
 	String file;
 	uint32 type = getGameObjectType();
 
@@ -589,7 +589,7 @@ FactoryCrate* TangibleObjectImplementation::createFactoryCrate(bool insertSelf) 
 
 	ObjectManager* objectManager = ObjectManager::instance();
 
-	FactoryCrate* crate = dynamic_cast<FactoryCrate*>(getZoneServer()->createObject(file.hashCode(), 2));
+	Reference<FactoryCrate*> crate = (getZoneServer()->createObject(file.hashCode(), 2)).castTo<FactoryCrate*>();
 
 	if (crate == NULL)
 		return NULL;

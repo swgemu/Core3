@@ -79,8 +79,8 @@ public:
 
 			// Setup task, if choke attack was successful (5 tick amount.), AND if they don't already have one.
 
-			SceneObject* object = server->getZoneServer()->getObject(target);
-			ManagedReference<CreatureObject*> creatureTarget = cast<CreatureObject*>( object);
+			Reference<SceneObject*> object = server->getZoneServer()->getObject(target);
+			ManagedReference<CreatureObject*> creatureTarget = cast<CreatureObject*>( object.get());
 
 			if (creatureTarget == NULL)
 				return GENERALERROR;

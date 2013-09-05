@@ -107,7 +107,7 @@ void DraftSchematic::sendResourceWeightsTo(CreatureObject* player) {
 		_implementation->sendResourceWeightsTo(player);
 }
 
-SceneObject* DraftSchematic::createManufactureSchematic(SceneObject* craftingTool) {
+Reference<SceneObject* > DraftSchematic::createManufactureSchematic(SceneObject* craftingTool) {
 	DraftSchematicImplementation* _implementation = static_cast<DraftSchematicImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -740,7 +740,7 @@ void DraftSchematicAdapter::sendResourceWeightsTo(CreatureObject* player) {
 	(static_cast<DraftSchematic*>(stub))->sendResourceWeightsTo(player);
 }
 
-SceneObject* DraftSchematicAdapter::createManufactureSchematic(SceneObject* craftingTool) {
+Reference<SceneObject* > DraftSchematicAdapter::createManufactureSchematic(SceneObject* craftingTool) {
 	return (static_cast<DraftSchematic*>(stub))->createManufactureSchematic(craftingTool);
 }
 

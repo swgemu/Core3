@@ -38,7 +38,7 @@ int PlaceCityHallComponent::placeStructure(StructureDeed* deed, CreatureObject* 
 
 	uint64 declaredOidResidence = ghost->getDeclaredResidence();
 
-	ManagedReference<BuildingObject*> declaredResidence = cast<BuildingObject*>(zone->getZoneServer()->getObject(declaredOidResidence));
+	ManagedReference<BuildingObject*> declaredResidence = zone->getZoneServer()->getObject(declaredOidResidence).castTo<BuildingObject*>();
 
 	if (declaredResidence != NULL) {
 		ManagedReference<CityRegion*> city = declaredResidence->getCityRegion();

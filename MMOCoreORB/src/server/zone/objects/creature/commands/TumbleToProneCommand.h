@@ -76,7 +76,7 @@ public:
 		if (creature->isDizzied())
 			creature->queueDizzyFallEvent();		
 		
-		Reference<CreatureObject*> defender = cast<CreatureObject*>(server->getZoneServer()->getObject(target));
+		Reference<CreatureObject*> defender = server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
 		if (defender == NULL)
 			creature->doCombatAnimation(creature,String("tumble").hashCode(),0,0xFF);
 		else

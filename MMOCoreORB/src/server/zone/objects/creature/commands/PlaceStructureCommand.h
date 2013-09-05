@@ -123,7 +123,7 @@ public:
 
 		//We want to begin the session here.
 
-		ManagedReference<StructureDeed*> deed = dynamic_cast<StructureDeed*>(server->getZoneServer()->getObject(deedID));
+		ManagedReference<StructureDeed*> deed = server->getZoneServer()->getObject(deedID).castTo<StructureDeed*>();
 
 		if (deed != NULL)
 			deed->placeStructure(creature, x, y, angle);

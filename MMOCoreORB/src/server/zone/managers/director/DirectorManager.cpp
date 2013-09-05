@@ -814,13 +814,13 @@ int DirectorManager::getSceneObject(lua_State* L) {
 
 	uint64 objectID = lua_tointeger(L, -1);
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
-	SceneObject* object = zoneServer->getObject(objectID);
+	Reference<SceneObject*> object = zoneServer->getObject(objectID);
 
 	if (object == NULL) {
 		lua_pushnil(L);
 	} else {
+		lua_pushlightuserdata(L, object.get());
 		object->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
-		lua_pushlightuserdata(L, object);
 	}
 
 	return 1;
@@ -866,11 +866,11 @@ int DirectorManager::getCreatureObject(lua_State* L) {
 
 	uint64 objectID = lua_tointeger(L, -1);
 	ZoneServer* zoneServer = ServerCore::getZoneServer();
-	SceneObject* object = zoneServer->getObject(objectID);
+	Reference<SceneObject*> object = zoneServer->getObject(objectID);
 
 	if (object != NULL && object->isCreatureObject()) {
+		lua_pushlightuserdata(L, object.get());
 		object->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
-		lua_pushlightuserdata(L, object);
 	} else {
 		lua_pushnil(L);
 	}
@@ -1127,9 +1127,9 @@ int DirectorManager::giveControlDevice(lua_State* L) {
 
 	ZoneServer* zoneServer = obj->getZoneServer();
 
-	ManagedReference<ControlDevice*> controlDevice = dynamic_cast<ControlDevice*>(zoneServer->createObject(objectString.hashCode(), 1));
+	ManagedReference<ControlDevice*> controlDevice = zoneServer->createObject(objectString.hashCode(), 1).castTo<ControlDevice*>();
 
-	TangibleObject* controlledObject = dynamic_cast<TangibleObject*>(zoneServer->createObject(controlledObjectPath.hashCode(), 1));
+	ManagedReference<TangibleObject*> controlledObject = zoneServer->createObject(controlledObjectPath.hashCode(), 1).castTo<TangibleObject*>();
 
 	if (controlDevice != NULL && obj != NULL) {
 		controlDevice->setControlledObject(controlledObject);
@@ -1258,7 +1258,7 @@ int DirectorManager::spawnSceneObject(lua_State* L) {
 		object->initializePosition(x, z, y);
 		object->setDirection(dw, dx, dy, dz);
 
-		SceneObject* cellParent = NULL;
+		Reference<SceneObject*> cellParent = NULL;
 
 		if (parentID != 0) {
 			cellParent = zoneServer->getObject(parentID);

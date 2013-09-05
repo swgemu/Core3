@@ -4082,29 +4082,6 @@ unsigned long long PlayerObjectImplementation::getOwnedStructure(int i) {
 	return (&ownedStructures)->get(i);
 }
 
-int PlayerObjectImplementation::getLotsRemaining() {
-	Locker _locker(_this.get());
-	// server/zone/objects/player/PlayerObject.idl():  		int lotsRemaining = maximumLots;
-	int lotsRemaining = maximumLots;
-	// server/zone/objects/player/PlayerObject.idl():  		}
-	for (	// server/zone/objects/player/PlayerObject.idl():  		for (int i = 0;
-	int i = 0;
-	i < (&ownedStructures)->size();
- ++i) {
-	// server/zone/objects/player/PlayerObject.idl():  			unsigned long oid = ownedStructures.get(i);
-	unsigned long long oid = (&ownedStructures)->get(i);
-	// server/zone/objects/player/PlayerObject.idl():  			StructureObject structure = (StructureObject) super.getZoneServer().getObject(oid);
-	ManagedReference<StructureObject* > structure = (StructureObject*) IntangibleObjectImplementation::getZoneServer()->getObject(oid);
-	// server/zone/objects/player/PlayerObject.idl():  		}
-	if (structure != NULL){
-	// server/zone/objects/player/PlayerObject.idl():  				lotsRemaining = lotsRemaining - structure.getLotSize();
-	lotsRemaining = lotsRemaining - structure->getLotSize();
-}
-}
-	// server/zone/objects/player/PlayerObject.idl():  		return lotsRemaining;
-	return lotsRemaining;
-}
-
 bool PlayerObjectImplementation::hasLotsRemaining(int lots) {
 	Locker _locker(_this.get());
 	// server/zone/objects/player/PlayerObject.idl():  		return lots <= getLotsRemaining();

@@ -84,7 +84,7 @@ void VendorDataComponent::notifyObjectDestroyingFromDatabase() {
 	if(parent.get() == NULL)
 		return;
 
-	ManagedReference<CreatureObject*> player = cast<CreatureObject*>(parent.get()->getZoneServer()->getObject(ownerId));
+	ManagedReference<CreatureObject*> player = parent.get()->getZoneServer()->getObject(ownerId).castTo<CreatureObject*>();
 	if(player == NULL)
 		return;
 
@@ -98,7 +98,7 @@ void VendorDataComponent::runVendorUpdate() {
 
 	vendorCheckTask->reschedule(1000 * 60 * VENDORCHECKINTERVAL);
 
-	ManagedReference<CreatureObject*> owner = cast<CreatureObject*>(parent.get()->getZoneServer()->getObject(getOwnerId()));
+	ManagedReference<CreatureObject*> owner = parent.get()->getZoneServer()->getObject(getOwnerId()).castTo<CreatureObject*>();
 	ManagedReference<PlayerManager*> playerManager = parent.get()->getZoneServer()->getPlayerManager();
 	ManagedReference<TangibleObject*> vendor = cast<TangibleObject*>(parent.get().get());
 
@@ -194,7 +194,7 @@ float VendorDataComponent::getMaintenanceRate() {
 	float maintRate = 15.f;
 
 	// Apply reduction for merchant skills
-	ManagedReference<CreatureObject*> owner = cast<CreatureObject*>(parent.get()->getZoneServer()->getObject(getOwnerId()));
+	ManagedReference<CreatureObject*> owner = parent.get()->getZoneServer()->getObject(getOwnerId()).castTo<CreatureObject*>();
 	if (owner != NULL && owner->isPlayerCreature() ) {
 		if(owner->hasSkill("crafting_merchant_master"))
 			maintRate *= .60f;
@@ -211,7 +211,7 @@ float VendorDataComponent::getMaintenanceRate() {
 
 void VendorDataComponent::payMaintanence() {
 
-	ManagedReference<CreatureObject*> owner = cast<CreatureObject*>(parent.get()->getZoneServer()->getObject(getOwnerId()));
+	ManagedReference<CreatureObject*> owner = parent.get()->getZoneServer()->getObject(getOwnerId()).castTo<CreatureObject*>();
 	if(owner == NULL)
 		return;
 
@@ -229,7 +229,7 @@ void VendorDataComponent::payMaintanence() {
 
 void VendorDataComponent::handlePayMaintanence(int value) {
 
-	ManagedReference<CreatureObject*> owner = cast<CreatureObject*>(parent.get()->getZoneServer()->getObject(getOwnerId()));
+	ManagedReference<CreatureObject*> owner = parent.get()->getZoneServer()->getObject(getOwnerId()).castTo<CreatureObject*>();
 	if(owner == NULL)
 		return;
 
@@ -264,7 +264,7 @@ void VendorDataComponent::handlePayMaintanence(int value) {
 
 void VendorDataComponent::withdrawMaintanence() {
 
-	ManagedReference<CreatureObject*> owner = cast<CreatureObject*>(parent.get()->getZoneServer()->getObject(getOwnerId()));
+	ManagedReference<CreatureObject*> owner = parent.get()->getZoneServer()->getObject(getOwnerId()).castTo<CreatureObject*>();
 	if(owner == NULL)
 		return;
 
@@ -281,7 +281,7 @@ void VendorDataComponent::withdrawMaintanence() {
 }
 
 void VendorDataComponent::handleWithdrawMaintanence(int value) {
-	ManagedReference<CreatureObject*> owner = cast<CreatureObject*>(parent.get()->getZoneServer()->getObject(getOwnerId()));
+	ManagedReference<CreatureObject*> owner = parent.get()->getZoneServer()->getObject(getOwnerId()).castTo<CreatureObject*>();
 	if(owner == NULL)
 		return;
 

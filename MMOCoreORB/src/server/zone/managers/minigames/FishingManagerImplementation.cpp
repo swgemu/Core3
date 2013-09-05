@@ -410,7 +410,7 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 			return;
 		} else {
 			String lootFish = "object/tangible/fishing/fish/" + fishType.get(fish) + ".iff";
-			ManagedReference<FishObject*> lootFishObject = cast<FishObject*>(player->getZoneServer()->createObject(lootFish.hashCode(), 2));
+			ManagedReference<FishObject*> lootFishObject = player->getZoneServer()->createObject(lootFish.hashCode(), 2).castTo<FishObject*>();
 
 			if (lootFishObject != NULL) {
 				String time = getTime();
@@ -463,7 +463,7 @@ void FishingManagerImplementation::success(CreatureObject* player, int fish, Sce
 				lootFishObject->setCustomizationVariable("/private/index_color_1", color.get(zone->getZoneName()));
 
 				String baitString = "object/tangible/fishing/bait/bait_chum.iff";
-				ManagedReference<TangibleObject*> baitObject = cast<TangibleObject*>(zone->getZoneServer()->createObject(baitString.hashCode(), 2));
+				ManagedReference<TangibleObject*> baitObject = zone->getZoneServer()->createObject(baitString.hashCode(), 2).castTo<TangibleObject*>();
 
 				int useCount = System::random(5);
 				if (useCount > 1)

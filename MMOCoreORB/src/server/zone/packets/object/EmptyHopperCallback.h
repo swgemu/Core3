@@ -80,7 +80,7 @@ public:
 
 			SceneObject* inventory = player->getSlottedObject("inventory");
 
-			ManagedReference<ResourceSpawn*> resourceSpawn = dynamic_cast<ResourceSpawn*>(server->getZoneServer()->getObject(resourceId));
+			ManagedReference<ResourceSpawn*> resourceSpawn = server->getZoneServer()->getObject(resourceId).castTo<ResourceSpawn*>();
 
 			if (resourceSpawn == NULL) {
 				player->error("wrong spawn id");

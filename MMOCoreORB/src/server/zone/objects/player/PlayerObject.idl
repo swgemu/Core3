@@ -374,21 +374,7 @@ class PlayerObject extends IntangibleObject {
 		return ownedStructures.get(i);
 	}
 	
-	public synchronized int getLotsRemaining() {
-		int lotsRemaining = maximumLots;
-		
-		for (int i = 0; i < ownedStructures.size(); ++i) {
-			unsigned long oid = ownedStructures.get(i);
-			
-			StructureObject structure = (StructureObject) super.getZoneServer().getObject(oid); 
-			
-			if (structure != null) {
-				lotsRemaining = lotsRemaining - structure.getLotSize();
-			}
-		}
-		
-		return lotsRemaining;
-	}
+	public native int getLotsRemaining();
 	
 	public synchronized boolean hasLotsRemaining(int lots) {
 		return lots <= getLotsRemaining();

@@ -91,14 +91,14 @@ public:
 			tokenizer.getStringToken(file);
 
 			ManagedReference<DraftSchematic* > draftSchematic =
-					dynamic_cast<DraftSchematic*>(creature->getZoneServer()->createObject(file.hashCode(), 0));
+					creature->getZoneServer()->createObject(file.hashCode(), 0).castTo<DraftSchematic*>();
 
 			if(draftSchematic == NULL || !draftSchematic->isValidDraftSchematic()) {
 				creature->sendSystemMessage("File entered not valid, please be sure to use the draft schematics server script path not client path");
 				return GENERALERROR;
 			}
 
-			ManagedReference<ManufactureSchematic* > manuSchematic = cast<ManufactureSchematic*>( draftSchematic->createManufactureSchematic());
+			ManagedReference<ManufactureSchematic* > manuSchematic = ( draftSchematic->createManufactureSchematic()).castTo<ManufactureSchematic*>();
 
 			if(manuSchematic == NULL) {
 				creature->sendSystemMessage("Error creating ManufactureSchematic from DraftSchematic");
@@ -107,8 +107,8 @@ public:
 
 			manuSchematic->createChildObjects();
 
-			ManagedReference<TangibleObject *> prototype = dynamic_cast<TangibleObject*> (
-					creature->getZoneServer()->createObject(draftSchematic->getTanoCRC(), 2));
+			ManagedReference<TangibleObject *> prototype =  (
+					creature->getZoneServer()->createObject(draftSchematic->getTanoCRC(), 2)).castTo<TangibleObject*>();
 
 			if(prototype == NULL) {
 				creature->sendSystemMessage("Unable to create target item, is it implemented yet?");

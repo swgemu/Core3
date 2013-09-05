@@ -356,7 +356,7 @@ public:
 
 	ThreatMap* getThreatMap();
 
-	FactoryCrate* createFactoryCrate(bool insertSelf = false);
+	Reference<FactoryCrate* > createFactoryCrate(bool insertSelf = false);
 
 	bool canRepair(CreatureObject* player);
 
@@ -596,7 +596,7 @@ public:
 
 	ThreatMap* getThreatMap();
 
-	FactoryCrate* createFactoryCrate(bool insertSelf = false);
+	Reference<FactoryCrate* > createFactoryCrate(bool insertSelf = false);
 
 	bool canRepair(CreatureObject* player);
 
@@ -797,7 +797,7 @@ public:
 
 	String getSerialNumber();
 
-	FactoryCrate* createFactoryCrate(bool insertSelf);
+	Reference<FactoryCrate* > createFactoryCrate(bool insertSelf);
 
 	bool canRepair(CreatureObject* player);
 

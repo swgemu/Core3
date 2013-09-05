@@ -434,13 +434,13 @@ public:
 
 	void printEvents();
 
-	SceneObject* getObject(unsigned long long objectID, bool doLock = true);
+	Reference<SceneObject* > getObject(unsigned long long objectID, bool doLock = true);
 
-	SceneObject* createObject(unsigned int templateCRC, const String& dbname, int persistenceLevel = 2);
+	Reference<SceneObject* > createObject(unsigned int templateCRC, const String& dbname, int persistenceLevel = 2);
 
-	SceneObject* createObject(unsigned int templateCRC, int persistenceLevel = 2, unsigned long long objectID = 0);
+	Reference<SceneObject* > createObject(unsigned int templateCRC, int persistenceLevel = 2, unsigned long long objectID = 0);
 
-	SceneObject* createClientObject(unsigned int templateCRC, unsigned long long objectID = 0);
+	Reference<SceneObject* > createClientObject(unsigned int templateCRC, unsigned long long objectID = 0);
 
 	void updateObjectToDatabase(SceneObject* object);
 
@@ -675,13 +675,13 @@ public:
 
 	void printEvents();
 
-	SceneObject* getObject(unsigned long long objectID, bool doLock = true);
+	Reference<SceneObject* > getObject(unsigned long long objectID, bool doLock = true);
 
-	SceneObject* createObject(unsigned int templateCRC, const String& dbname, int persistenceLevel = 2);
+	Reference<SceneObject* > createObject(unsigned int templateCRC, const String& dbname, int persistenceLevel = 2);
 
-	SceneObject* createObject(unsigned int templateCRC, int persistenceLevel = 2, unsigned long long objectID = 0);
+	Reference<SceneObject* > createObject(unsigned int templateCRC, int persistenceLevel = 2, unsigned long long objectID = 0);
 
-	SceneObject* createClientObject(unsigned int templateCRC, unsigned long long objectID = 0);
+	Reference<SceneObject* > createClientObject(unsigned int templateCRC, unsigned long long objectID = 0);
 
 	void updateObjectToDatabase(SceneObject* object);
 
@@ -842,13 +842,13 @@ public:
 
 	void printEvents();
 
-	SceneObject* getObject(unsigned long long objectID, bool doLock);
+	Reference<SceneObject* > getObject(unsigned long long objectID, bool doLock);
 
-	SceneObject* createObject(unsigned int templateCRC, const String& dbname, int persistenceLevel);
+	Reference<SceneObject* > createObject(unsigned int templateCRC, const String& dbname, int persistenceLevel);
 
-	SceneObject* createObject(unsigned int templateCRC, int persistenceLevel, unsigned long long objectID);
+	Reference<SceneObject* > createObject(unsigned int templateCRC, int persistenceLevel, unsigned long long objectID);
 
-	SceneObject* createClientObject(unsigned int templateCRC, unsigned long long objectID);
+	Reference<SceneObject* > createClientObject(unsigned int templateCRC, unsigned long long objectID);
 
 	void updateObjectToDatabase(SceneObject* object);
 

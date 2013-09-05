@@ -162,7 +162,7 @@ public:
 
 	void extractResource(const String& zoneName, int units);
 
-	ResourceContainer* createResource(int units);
+	Reference<ResourceContainer* > createResource(int units);
 
 	String getSpawnMapZone(int i);
 
@@ -322,7 +322,7 @@ public:
 
 	void extractResource(const String& zoneName, int units);
 
-	ResourceContainer* createResource(int units);
+	Reference<ResourceContainer* > createResource(int units);
 
 	String getSpawnMapZone(int i);
 
@@ -461,7 +461,7 @@ public:
 
 	void extractResource(const String& zoneName, int units);
 
-	ResourceContainer* createResource(int units);
+	Reference<ResourceContainer* > createResource(int units);
 
 	unsigned int getPlanetCRC();
 

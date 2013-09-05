@@ -246,6 +246,7 @@ class PlayerManager extends Observer implements Logger {
 	
 	public native boolean checkExistentNameInDatabase(final string firstName);
 	
+	@reference
 	public native TangibleObject createHairObject(final string hairObjectFile, final string hairCustomization);
 	public native boolean createAllPlayerObjects(CreatureObject player);
 	public native void createDefaultPlayerItems(CreatureObject player, final string profession, final string templateFile);
@@ -261,6 +262,7 @@ class PlayerManager extends Observer implements Logger {
 	
 	public native boolean existsName(final string name);
 	public native unsigned long getObjectID(final string name);
+	@reference
 	public native CreatureObject getPlayer(final string name);
 	
 	public native void updatePermissionLevel(CreatureObject player, int adminLevel = 1);

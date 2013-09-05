@@ -142,12 +142,12 @@ void BuildingObjectImplementation::createCellObjects() {
 
 	for (int i = 0; i < totalCellNumber; ++i) {
 
-		SceneObject* newCell = getZoneServer()->createObject(0xAD431713, getPersistenceLevel());
+		Reference<SceneObject*> newCell = getZoneServer()->createObject(0xAD431713, getPersistenceLevel());
 
 		if (!transferObject(newCell, -1))
 			error("could not add cell");
 
-		addCell(cast<CellObject*>(newCell), i + 1);
+		addCell(cast<CellObject*>(newCell.get()), i + 1);
 	}
 
 
@@ -972,7 +972,7 @@ void BuildingObjectImplementation::updatePaidAccessList() {
 	for(int i = 0; i < ejectList.size(); ++i)
 	{
 		paidAccessList.drop(ejectList.get(i));
-		ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(server->getZoneServer()->getObject(ejectList.get(i)));
+		ManagedReference<CreatureObject*> creature = server->getZoneServer()->getObject(ejectList.get(i)).castTo<CreatureObject*>();
 		if(creature != NULL && creature->getRootParent() == _this.get()) {
 			creature->sendSystemMessage("@player_structure:turnstile_expire"); // You have been ejected because your access expired
 			ejectObject(creature);

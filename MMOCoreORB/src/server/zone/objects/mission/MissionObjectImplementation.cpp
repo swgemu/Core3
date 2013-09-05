@@ -185,7 +185,7 @@ void MissionObjectImplementation::setTargetTemplate(SharedObjectTemplate* templa
 }
 
 WaypointObject* MissionObjectImplementation::createWaypoint() {
-	waypointToMission = cast<WaypointObject*>( getZoneServer()->createObject(0xc456e788, 1));
+	waypointToMission = ( getZoneServer()->createObject(0xc456e788, 1)).castTo<WaypointObject*>();
 	//obj->setPlanetCRC(planet.hashCode());
 	//obj->setPosition(positionX, 0, positionY);
 	waypointToMission->setActive(false);

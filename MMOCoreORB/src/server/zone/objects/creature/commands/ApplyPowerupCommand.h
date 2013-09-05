@@ -67,7 +67,7 @@ public:
 
 		StringTokenizer args(arguments.toString());
 
-		ManagedReference<PowerupObject*> pup = cast<PowerupObject*>(server->getZoneServer()->getObject(target));
+		ManagedReference<PowerupObject*> pup = server->getZoneServer()->getObject(target).castTo<PowerupObject*>();
 
 		if (pup == NULL)
 			return GENERALERROR;
@@ -77,7 +77,7 @@ public:
 
 		uint64 targetObjectID = args.getLongToken();
 
-		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(server->getZoneServer()->getObject(targetObjectID));
+		ManagedReference<WeaponObject*> weapon = server->getZoneServer()->getObject(targetObjectID).castTo<WeaponObject*>();
 
 		if (weapon == NULL)
 			return GENERALERROR;

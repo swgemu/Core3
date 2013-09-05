@@ -496,7 +496,7 @@ void ResourceSpawn::extractResource(const String& zoneName, int units) {
 		_implementation->extractResource(zoneName, units);
 }
 
-ResourceContainer* ResourceSpawn::createResource(int units) {
+Reference<ResourceContainer* > ResourceSpawn::createResource(int units) {
 	ResourceSpawnImplementation* _implementation = static_cast<ResourceSpawnImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -1548,7 +1548,7 @@ void ResourceSpawnAdapter::extractResource(const String& zoneName, int units) {
 	(static_cast<ResourceSpawn*>(stub))->extractResource(zoneName, units);
 }
 
-ResourceContainer* ResourceSpawnAdapter::createResource(int units) {
+Reference<ResourceContainer* > ResourceSpawnAdapter::createResource(int units) {
 	return (static_cast<ResourceSpawn*>(stub))->createResource(units);
 }
 

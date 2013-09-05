@@ -136,7 +136,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		for (int i = 0; i < ghost->getTotalOwnedStructureCount(); ++i) {
 			uint64 oid = ghost->getOwnedStructure(i);
 
-			ManagedReference<StructureObject*> structure = cast<StructureObject*>(ghost->getZoneServer()->getObject(oid));
+			ManagedReference<StructureObject*> structure = ghost->getZoneServer()->getObject(oid).castTo<StructureObject*>();
 
 			if (structure != NULL && structure->isCampStructure()) {
 				player->sendSystemMessage("@camp:sys_already_camping");
@@ -174,9 +174,9 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			if(scno != NULL && scno->getObserverCount(ObserverEventType::OBJECTDESTRUCTION) > 0 &&
 					scno->getDistanceTo(player) <= scno->getObjectTemplate()->getNoBuildRadius() + campStructureData->getRadius()) {
 
-				SortedVector<ManagedReference<Observer* > >* observers = scno->getObservers(ObserverEventType::OBJECTDESTRUCTION);
-				for(int j = 0; j < observers->size(); ++j) {
-					if(observers->get(j)->isObserverType(ObserverType::LAIR)) {
+				SortedVector<ManagedReference<Observer* > > observers = scno->getObservers(ObserverEventType::OBJECTDESTRUCTION);
+				for(int j = 0; j < observers.size(); ++j) {
+					if(observers.get(j)->isObserverType(ObserverType::LAIR)) {
 						player->sendSystemMessage("@camp:error_lair_too_close");
 						return 0;
 					}
@@ -228,8 +228,8 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 
 		/// Create active area
 		String areaPath = "object/camp_area.iff";
-		ManagedReference<CampSiteActiveArea*> campArea = cast< CampSiteActiveArea*>
-			(zoneServer->createObject( areaPath.hashCode(), 1));
+		ManagedReference<CampSiteActiveArea*> campArea =
+			(zoneServer->createObject( areaPath.hashCode(), 1)).castTo< CampSiteActiveArea*>();
 		campArea->init(campStructureData);
 		campArea->setTerminal(campTerminal);
 		campArea->setCamp(structureObject);

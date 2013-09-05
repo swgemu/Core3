@@ -62,7 +62,7 @@ WebServer::WebServer() {
 	configManager = NULL;
 
 	// Lookup zone to have access to playerobjects
-	zoneServer = cast<ZoneServer*>(DistributedObjectBroker::instance()->lookUp("ZoneServer"));
+	zoneServer = DistributedObjectBroker::instance()->lookUp("ZoneServer").castTo<ZoneServer*>().get();
 
 	// Default Time in minutes, value is in script
 	sessionTimeout = 10;

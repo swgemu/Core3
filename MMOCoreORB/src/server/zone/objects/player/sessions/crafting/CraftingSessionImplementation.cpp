@@ -327,7 +327,7 @@ bool CraftingSessionImplementation::createSessionObjects(DraftSchematic* draftSc
 bool CraftingSessionImplementation::createManufactureSchematic(DraftSchematic* draftschematic) {
 
 	manufactureSchematic =
-			cast<ManufactureSchematic*> (draftschematic->createManufactureSchematic(craftingTool.get()));
+			 (draftschematic->createManufactureSchematic(craftingTool.get())).castTo<ManufactureSchematic*>();
 
 	if (manufactureSchematic == NULL) {
 		crafter.get()->sendSystemMessage("@ui_craft:err_no_manf_schematic");
@@ -354,8 +354,8 @@ bool CraftingSessionImplementation::createPrototypeObject(DraftSchematic* drafts
 		craftingTool->getContainerObject(0)->destroyObjectFromWorld(true);
 	}
 
-	prototype = cast<TangibleObject*> (crafter.get()->getZoneServer()->createObject(
-			draftschematic->getTanoCRC(), 0));
+	prototype = (crafter.get()->getZoneServer()->createObject(
+			draftschematic->getTanoCRC(), 0)).castTo<TangibleObject*>();
 
 	if (prototype == NULL) {
 		crafter.get()->sendSystemMessage("@ui_craft:err_no_prototype");

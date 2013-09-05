@@ -70,7 +70,7 @@ public:
 		PlayerObject* ghost = player->getPlayerObject();
 
 		uint64 conversationCreatureOid = ghost->getConversatingCreature();
-		ManagedReference<CreatureObject*> object = cast<CreatureObject*>(server->getZoneServer()->getObject(conversationCreatureOid));
+		ManagedReference<CreatureObject*> object = server->getZoneServer()->getObject(conversationCreatureOid).castTo<CreatureObject*>();
 
 		if (object != NULL) {
 			int option = Integer::valueOf(arguments.toString());

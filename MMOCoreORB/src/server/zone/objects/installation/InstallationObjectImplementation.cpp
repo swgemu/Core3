@@ -509,7 +509,7 @@ void InstallationObjectImplementation::changeActiveResourceID(uint64 spawnID) {
 		updateInstallationWork();
 	}
 
-	currentSpawn = dynamic_cast<ResourceSpawn*>(getZoneServer()->getObject(spawnID));
+	currentSpawn = getZoneServer()->getObject(spawnID).castTo<ResourceSpawn*>();
 	if (currentSpawn == NULL) {
 		error("new spawn null");
 		return;
@@ -712,7 +712,7 @@ void InstallationObjectImplementation::createChildObjects(){
 
 			uint32 defaultWeaponCRC = inso->getWeapon().hashCode();
 			if(getZoneServer() != NULL) {
-					WeaponObject* defaultWeapon = cast<WeaponObject*>(getZoneServer()->createObject(defaultWeaponCRC, 1));
+					Reference<WeaponObject*> defaultWeapon = (getZoneServer()->createObject(defaultWeaponCRC, 1)).castTo<WeaponObject*>();
 
 					if (defaultWeapon == NULL) {
 							return;

@@ -98,7 +98,7 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
 
 	// FIXME: temp hack
-	server = Core::lookupObject<ZoneProcessServer>("ZoneProcessServer");
+	server = Core::lookupObject<ZoneProcessServer>("ZoneProcessServer").get();
 
 	templateObject = TemplateManager::instance()->getTemplate(serverObjectCRC);
 
@@ -1569,7 +1569,7 @@ ManagedWeakReference<SceneObject*> SceneObjectImplementation::getParent() {
 	return ManagedWeakReference<SceneObject*>(parent.castTo<SceneObject*>());
 }
 
-SortedVector<ManagedReference<Observer* > >* SceneObjectImplementation::getObservers(unsigned int eventType) {
+SortedVector<ManagedReference<Observer* > > SceneObjectImplementation::getObservers(unsigned int eventType) {
 	return observerEventMap.getObservers(eventType);
 }
 

@@ -100,6 +100,7 @@ import system.thread.ReadWriteLock;
 import system.thread.Mutex;
 include server.zone.objects.scene.variables.ContainerObjectsMap;
 
+@mock
 class SceneObject extends QuadTreeEntry implements Logger {
 	protected transient ZoneProcessServer server;
 	
@@ -968,16 +969,22 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@dereferenced
 	public native Vector3 getWorldCoordinate(float distance, float angleDegrees);
 	
+	@mock
 	@read
 	public native float getWorldPositionX();
+	
 	@read
+	@mock
 	public native float getWorldPositionY();
+	
 	@read
+	@mock
 	public native float getWorldPositionZ();
 	
 	@read
 	@local
 	@dereferenced
+	@mock
 	public native Vector3 getWorldPosition();
 
 	@read
@@ -1887,6 +1894,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * The returning value points directly to the internal vector, do not delete it or store it
 	 */
 	@local
+	@dereferenced
 	public native SortedVector<Observer> getObservers(unsigned int eventType);
 	
 	public native abstract void createChildObjects();

@@ -101,7 +101,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 			for (int i = 0; i < weptemps.size(); ++i) {
 				uint32 crc = weptemps.get(i).hashCode();
 
-				ManagedReference<WeaponObject*> weao = dynamic_cast<WeaponObject*>(server->getZoneServer()->createObject(crc, 0));
+				ManagedReference<WeaponObject*> weao = (server->getZoneServer()->createObject(crc, 0)).castTo<WeaponObject*>();
 
 				if (weao != NULL) {
 					weao->setMinDamage(minDmg * 0.5);
@@ -193,7 +193,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 						String templ = obj->getObjectTemplate();
 
-						ManagedReference<TangibleObject*> tano = dynamic_cast<TangibleObject*>(server->getZoneServer()->createObject(templ.hashCode(), 0));
+						ManagedReference<TangibleObject*> tano = (server->getZoneServer()->createObject(templ.hashCode(), 0)).castTo<TangibleObject*>();
 
 						if (tano != NULL) {
 							VectorMap<String, uint8>* cust = obj->getCustomizationVariables();
@@ -1097,7 +1097,7 @@ bool AiAgentImplementation::findNextPosition(float maxDistance, WorldCoordinates
 
 						movementMarkers.removeAll();
 
-						SceneObject* movementMarker = getZoneServer()->createObject(String("object/path_waypoint/path_waypoint.iff").hashCode(), 0);
+						Reference<SceneObject*> movementMarker = getZoneServer()->createObject(String("object/path_waypoint/path_waypoint.iff").hashCode(), 0);
 
 						movementMarker->initializePosition(newPositionX, newPositionZ, newPositionY);
 						StringBuffer msg;
@@ -1607,13 +1607,11 @@ void AiAgentImplementation::sendConversationStartTo(SceneObject* player) {
 	StartNpcConversation* conv = new StartNpcConversation(playerCreature, getObjectID(), "");
 	player->sendMessage(conv);
 
-	SortedVector<ManagedReference<Observer*> >* observers = getObservers(ObserverEventType::STARTCONVERSATION);
+	SortedVector<ManagedReference<Observer*> > observers = getObservers(ObserverEventType::STARTCONVERSATION);
 
-	if (observers != NULL) {
-		for (int i = 0;  i < observers->size(); ++i) {
-			if (dynamic_cast<ConversationObserver*>(observers->get(i).get()) != NULL)
-				return;
-		}
+	for (int i = 0;  i < observers.size(); ++i) {
+		if (dynamic_cast<ConversationObserver*>(observers.get(i).get()) != NULL)
+			return;
 	}
 
 	if (npcTemplate == NULL)

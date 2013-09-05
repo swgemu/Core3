@@ -133,10 +133,10 @@ void DraftSchematicImplementation::sendResourceWeightsTo(CreatureObject* player)
 	player->sendMessage(msg);
 }
 
-SceneObject* DraftSchematicImplementation::createManufactureSchematic(SceneObject* craftingTool) {
+Reference<SceneObject*> DraftSchematicImplementation::createManufactureSchematic(SceneObject* craftingTool) {
 
-	ManufactureSchematic* manuSchematic =
-			dynamic_cast<ManufactureSchematic* > (getZoneServer()->createObject(0xF75E04C2, 0));
+	Reference<ManufactureSchematic*> manuSchematic =
+			 (getZoneServer()->createObject(0xF75E04C2, 0)).castTo<ManufactureSchematic* >();
 
 	if(manuSchematic == NULL) {
 		error("Could not create ManufactureSchematic for " + getObjectNameStringIdName());
@@ -147,7 +147,7 @@ SceneObject* DraftSchematicImplementation::createManufactureSchematic(SceneObjec
 
 	manuSchematic->setDraftSchematic(_this.get());
 
-	return manuSchematic;
+	return Reference<SceneObject*>(manuSchematic.get());
 }
 
 int DraftSchematicImplementation::getDraftSlotCount() {

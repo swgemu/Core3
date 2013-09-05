@@ -1117,7 +1117,7 @@ ThreatMap* TangibleObject::getThreatMap() {
 		return _implementation->getThreatMap();
 }
 
-FactoryCrate* TangibleObject::createFactoryCrate(bool insertSelf) {
+Reference<FactoryCrate* > TangibleObject::createFactoryCrate(bool insertSelf) {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -2588,7 +2588,7 @@ String TangibleObjectAdapter::getSerialNumber() {
 	return (static_cast<TangibleObject*>(stub))->getSerialNumber();
 }
 
-FactoryCrate* TangibleObjectAdapter::createFactoryCrate(bool insertSelf) {
+Reference<FactoryCrate* > TangibleObjectAdapter::createFactoryCrate(bool insertSelf) {
 	return (static_cast<TangibleObject*>(stub))->createFactoryCrate(insertSelf);
 }
 

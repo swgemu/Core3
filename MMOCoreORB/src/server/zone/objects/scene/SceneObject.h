@@ -175,6 +175,8 @@ class CreatureObject;
 
 using namespace server::zone::objects::creature;
 
+#include "gmock/gmock.h"
+
 #include "engine/core/ManagedObject.h"
 
 #include "engine/util/Facade.h"
@@ -460,13 +462,13 @@ public:
 
 	Vector3 getWorldCoordinate(float distance, float angleDegrees);
 
-	float getWorldPositionX();
+	virtual float getWorldPositionX();
 
-	float getWorldPositionY();
+	virtual float getWorldPositionY();
 
-	float getWorldPositionZ();
+	virtual float getWorldPositionZ();
 
-	Vector3 getWorldPosition();
+	virtual Vector3 getWorldPosition();
 
 	float getDirectionX();
 
@@ -818,7 +820,7 @@ public:
 
 	SharedObjectTemplate* getObjectTemplate();
 
-	SortedVector<ManagedReference<Observer* > >* getObservers(unsigned int eventType);
+	SortedVector<ManagedReference<Observer* > > getObservers(unsigned int eventType);
 
 	void createChildObjects();
 
@@ -1136,13 +1138,13 @@ public:
 
 	Vector3 getWorldCoordinate(float distance, float angleDegrees);
 
-	float getWorldPositionX();
+	virtual float getWorldPositionX();
 
-	float getWorldPositionY();
+	virtual float getWorldPositionY();
 
-	float getWorldPositionZ();
+	virtual float getWorldPositionZ();
 
-	Vector3 getWorldPosition();
+	virtual Vector3 getWorldPosition();
 
 	float getDirectionX();
 
@@ -1494,7 +1496,7 @@ public:
 
 	SharedObjectTemplate* getObjectTemplate();
 
-	SortedVector<ManagedReference<Observer* > >* getObservers(unsigned int eventType);
+	SortedVector<ManagedReference<Observer* > > getObservers(unsigned int eventType);
 
 	virtual void createChildObjects();
 
@@ -2034,6 +2036,16 @@ public:
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class Singleton<SceneObjectHelper>;
+};
+
+class MockSceneObject : public SceneObject {
+public:
+
+	MOCK_METHOD0(getWorldPositionX,float());
+	MOCK_METHOD0(getWorldPositionY,float());
+	MOCK_METHOD0(getWorldPositionZ,float());
+	MOCK_METHOD0(getWorldPosition,Vector3());
+
 };
 
 } // namespace scene

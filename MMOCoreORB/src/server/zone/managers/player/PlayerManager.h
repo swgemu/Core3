@@ -372,7 +372,7 @@ public:
 
 	bool checkExistentNameInDatabase(const String& firstName);
 
-	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
+	Reference<TangibleObject* > createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
 	bool createAllPlayerObjects(CreatureObject* player);
 
@@ -392,7 +392,7 @@ public:
 
 	unsigned long long getObjectID(const String& name);
 
-	CreatureObject* getPlayer(const String& name);
+	Reference<CreatureObject* > getPlayer(const String& name);
 
 	void updatePermissionLevel(CreatureObject* player, int adminLevel = 1);
 
@@ -621,7 +621,7 @@ public:
 
 	bool checkExistentNameInDatabase(const String& firstName);
 
-	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
+	Reference<TangibleObject* > createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
 	bool createAllPlayerObjects(CreatureObject* player);
 
@@ -641,7 +641,7 @@ public:
 
 	unsigned long long getObjectID(const String& name);
 
-	CreatureObject* getPlayer(const String& name);
+	Reference<CreatureObject* > getPlayer(const String& name);
 
 	void updatePermissionLevel(CreatureObject* player, int adminLevel = 1);
 
@@ -826,7 +826,7 @@ public:
 
 	bool checkExistentNameInDatabase(const String& firstName);
 
-	TangibleObject* createHairObject(const String& hairObjectFile, const String& hairCustomization);
+	Reference<TangibleObject* > createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
 	bool createAllPlayerObjects(CreatureObject* player);
 
@@ -842,7 +842,7 @@ public:
 
 	unsigned long long getObjectID(const String& name);
 
-	CreatureObject* getPlayer(const String& name);
+	Reference<CreatureObject* > getPlayer(const String& name);
 
 	void updatePermissionLevel(CreatureObject* player, int adminLevel);
 

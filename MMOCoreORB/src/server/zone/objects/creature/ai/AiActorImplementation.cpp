@@ -79,7 +79,7 @@ void AiActorImplementation::loadTemplateData(CreatureTemplate* templateData) {
 			for (int i = 0; i < weptemps.size(); ++i) {
 				uint32 crc = weptemps.get(i).hashCode();
 
-				ManagedReference<WeaponObject*> weao = dynamic_cast<WeaponObject*>(server->getZoneServer()->createObject(crc, 0));
+				ManagedReference<WeaponObject*> weao = (server->getZoneServer()->createObject(crc, 0)).castTo<WeaponObject*>();
 
 				if (weao != NULL) {
 					weapons.add(weao);
@@ -136,7 +136,7 @@ void AiActorImplementation::loadTemplateData(CreatureTemplate* templateData) {
 
 						String templ = obj->getObjectTemplate();
 
-						ManagedReference<TangibleObject*> tano = dynamic_cast<TangibleObject*>(server->getZoneServer()->createObject(templ.hashCode(), 0));
+						ManagedReference<TangibleObject*> tano = (server->getZoneServer()->createObject(templ.hashCode(), 0)).castTo<TangibleObject*>();
 
 						if (tano != NULL) {
 							VectorMap<String, uint8>* cust = obj->getCustomizationVariables();
@@ -684,14 +684,13 @@ void AiActorImplementation::sendConversationStartTo(SceneObject* player) {
 
 	currentState->sendConversationStartTo(host, player);
 
-	SortedVector<ManagedReference<Observer*> >* observers = observerEventMap.getObservers(ObserverEventType::STARTCONVERSATION);
+	SortedVector<ManagedReference<Observer*> > observers = observerEventMap.getObservers(ObserverEventType::STARTCONVERSATION);
 
-	if (observers != NULL) {
-		for (int i = 0;  i < observers->size(); ++i) {
-			if (dynamic_cast<ConversationObserver*>(observers->get(i).get()) != NULL)
-				return;
-		}
+	for (int i = 0;  i < observers.size(); ++i) {
+		if (dynamic_cast<ConversationObserver*>(observers.get(i).get()) != NULL)
+			return;
 	}
+
 
 	if (npcTemplate == NULL)
 		return;

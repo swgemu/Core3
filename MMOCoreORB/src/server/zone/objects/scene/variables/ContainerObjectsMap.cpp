@@ -69,7 +69,7 @@ void ContainerObjectsMap::loadObjects() {
 	for (int i = 0; i < oids->size(); ++i) {
 		uint64 oid = oids->elementAt(i).getKey();
 
-		ManagedReference<SceneObject*> object = cast<SceneObject*>(Core::getObjectBroker()->lookUp(oid));
+		Reference<SceneObject*> object = Core::getObjectBroker()->lookUp(oid).castTo<SceneObject*>();
 
 		if (object != NULL)
 			containerObjects.put(oid, object);

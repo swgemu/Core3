@@ -63,7 +63,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		ManagedReference<CreatureObject*> targetObject = cast<CreatureObject*>(server->getZoneServer()->getObject(target));
+		ManagedReference<CreatureObject*> targetObject = server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
 
 		if(targetObject == NULL)
 			return GENERALERROR;

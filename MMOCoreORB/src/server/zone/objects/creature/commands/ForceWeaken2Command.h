@@ -74,8 +74,8 @@ public:
 
 			// Setup debuff.
 
-			SceneObject* object = server->getZoneServer()->getObject(target);
-			ManagedReference<CreatureObject*> creatureTarget = cast<CreatureObject*>( object);
+			Reference<SceneObject*> object = server->getZoneServer()->getObject(target);
+			ManagedReference<CreatureObject*> creatureTarget = cast<CreatureObject*>( object.get());
 
 			ManagedReference<Buff*> buff = new Buff(creatureTarget, getNameCRC(), 120, BuffType::JEDI);
 			buff->setAttributeModifier(CreatureAttribute::HEALTH, -600);

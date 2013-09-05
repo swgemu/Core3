@@ -70,7 +70,7 @@ public:
 		try {
 
 			uint64 weaponID = tokenizer.getLongToken();
-			WeaponObject* grenade = cast<WeaponObject*> (server->getZoneServer()->getObject(weaponID));
+			Reference<WeaponObject*> grenade = server->getZoneServer()->getObject(weaponID).castTo<WeaponObject*>();
 			if (grenade == NULL)
 				return INVALIDPARAMETERS;
 
@@ -80,7 +80,7 @@ public:
 			if (!grenade->isASubChildOf(creature))
 				return GENERALERROR;
 
-			ManagedReference<TangibleObject*> targetObject = cast<TangibleObject*> (server->getZoneServer()->getObject(target));
+			ManagedReference<TangibleObject*> targetObject = server->getZoneServer()->getObject(target).castTo<TangibleObject*>();
 			if (targetObject == NULL)
 				return GENERALERROR;
 
@@ -116,7 +116,8 @@ public:
 	float getCommandDuration(CreatureObject *object, const UnicodeString& arguments) {
 		StringTokenizer tokenizer(arguments.toString());
 		uint64 weaponID = tokenizer.getLongToken();
-		ManagedReference<WeaponObject*> grenade = cast<WeaponObject*> (server->getZoneServer()->getObject(weaponID));
+
+		Reference<WeaponObject*> grenade = server->getZoneServer()->getObject(weaponID).castTo<WeaponObject*>();
 
 		if (grenade != NULL)
 			return CombatManager::instance()->calculateWeaponAttackSpeed(object, grenade, speedMultiplier);

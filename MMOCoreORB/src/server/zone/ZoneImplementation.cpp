@@ -168,26 +168,6 @@ void ZoneImplementation::stopManagers() {
 	}*/
 }
 
-/*void ZoneImplementation::registerObject(SceneObject* obj) {
-	server->transferObject(obj);
-}
-
-SceneObject* ZoneImplementation::lookupObject(uint64 oid) {
-	return server->getObject(oid);
-}
-
-SceneObject* ZoneImplementation::deleteObject(uint64 oid) {
-	return server->removeObject(oid);
-}
-
-SceneObject* ZoneImplementation::deleteObject(SceneObject* obj) {
-	return server->removeObject(obj->getObjectID());
-}
-
-SceneObject* ZoneImplementation::deleteCachedObject(SceneObject* obj) {
-	return server->removeCachedObject(obj->getObjectID());
-}*/
-
 float ZoneImplementation::getHeight(float x, float y) {
 	if (heightMap->isLoaded())
 		return heightMap->getHeight(x, y);

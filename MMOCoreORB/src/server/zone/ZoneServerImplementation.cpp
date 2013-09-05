@@ -438,16 +438,16 @@ bool ZoneServerImplementation::handleError(ZoneClientSession* client, Exception&
 	return true;
 }
 
-SceneObject* ZoneServerImplementation::getObject(uint64 oid, bool doLock) {
-	SceneObject* obj = NULL;
+Reference<SceneObject*> ZoneServerImplementation::getObject(uint64 oid, bool doLock) {
+	Reference<SceneObject*> obj = NULL;
 
 	try {
 		//lock(doLock); ObjectManager has its own mutex
 
-		DistributedObject* distributedObject = Core::getObjectBroker()->lookUp(oid);
+		Reference<DistributedObject*> distributedObject = Core::getObjectBroker()->lookUp(oid);
 
 		if (distributedObject != NULL) {
-			obj = dynamic_cast<SceneObject*>(distributedObject); // only for debug purposes
+			obj = dynamic_cast<SceneObject*>(distributedObject.get()); // only for debug purposes
 
 			if (obj == NULL) {
 				error("trying to lookup object that is not an SceneObject");
@@ -472,8 +472,9 @@ void ZoneServerImplementation::updateObjectToDatabase(SceneObject* object) {
 void ZoneServerImplementation::updateObjectToStaticDatabase(SceneObject* object) {
 	objectManager->updatePersistentObject(object);
 }
-SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, const String& dbname, int persistenceLevel ){
-	SceneObject* obj = NULL;
+
+Reference<SceneObject*> ZoneServerImplementation::createObject(uint32 templateCRC, const String& dbname, int persistenceLevel ){
+	Reference<SceneObject*> obj = NULL;
 
 	try {
 		//lock(); ObjectManager has its own mutex
@@ -491,8 +492,8 @@ SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, const St
 	return obj;
 }
 
-SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, int persistenceLevel, uint64 oid) {
-	SceneObject* obj = NULL;
+Reference<SceneObject*> ZoneServerImplementation::createObject(uint32 templateCRC, int persistenceLevel, uint64 oid) {
+	Reference<SceneObject*> obj = NULL;
 
 	try {
 		//lock(); ObjectManager has its own mutex
@@ -510,8 +511,8 @@ SceneObject* ZoneServerImplementation::createObject(uint32 templateCRC, int pers
 	return obj;
 }
 
-SceneObject* ZoneServerImplementation::createClientObject(uint32 templateCRC, uint64 oid) {
-	SceneObject* obj = NULL;
+Reference<SceneObject*> ZoneServerImplementation::createClientObject(uint32 templateCRC, uint64 oid) {
+	Reference<SceneObject*> obj = NULL;
 
 	try {
 		//lock(); ObjectManager has its own mutex

@@ -168,9 +168,7 @@ void CityManagerImplementation::loadCityRegions() {
 		uint64 objectID;
 
 		while (iterator.getNextKeyAndValue(objectID, objectData)) {
-			CityRegion* object =
-					dynamic_cast<CityRegion*> (Core::getObjectBroker()->lookUp(
-							objectID));
+			Reference<CityRegion*> object = Core::getObjectBroker()->lookUp(objectID).castTo<CityRegion*>();
 
 			if (object != NULL && object->getZone() != NULL) {
 				++i;
@@ -980,8 +978,7 @@ int CityManagerImplementation::collectCivicStructureMaintenance(
 void CityManagerImplementation::sendMaintenanceEmail(CityRegion* city, int maint){
 	if(zoneServer != NULL) {
 
-		ManagedReference<CreatureObject*> mayor = cast<CreatureObject*>(zoneServer->getObject(
-					city->getMayorID()));
+		ManagedReference<CreatureObject*> mayor = zoneServer->getObject(city->getMayorID()).castTo<CreatureObject*>();
 
 		if(mayor != NULL) {
 			/*
@@ -1004,8 +1001,8 @@ void CityManagerImplementation::sendMaintenanceEmail(CityRegion* city, int maint
 void CityManagerImplementation::sendMaintenanceRepairEmail(CityRegion* city, StructureObject* structure){
 
 	if(zoneServer != NULL) {
-		ManagedReference<CreatureObject*> mayor = cast<CreatureObject*>(zoneServer->getObject(
-		city->getMayorID()));
+		ManagedReference<CreatureObject*> mayor = zoneServer->getObject(
+		city->getMayorID()).castTo<CreatureObject*>();
 
 		if(mayor != NULL) {
 			/*
@@ -1026,8 +1023,7 @@ void CityManagerImplementation::sendMaintenanceRepairEmail(CityRegion* city, Str
 
 void CityManagerImplementation::sendMaintenanceDecayEmail(CityRegion* city, StructureObject* structure, int maintenanceDue){
 	if(zoneServer != NULL) {
-			ManagedReference<CreatureObject*> mayor = cast<CreatureObject*>(zoneServer->getObject(
-						city->getMayorID()));
+		ManagedReference<CreatureObject*> mayor = zoneServer->getObject(city->getMayorID()).castTo<CreatureObject*>();
 
 			if(mayor != NULL) {
 				/*
@@ -1051,8 +1047,7 @@ void CityManagerImplementation::sendMaintenanceDecayEmail(CityRegion* city, Stru
 
 void CityManagerImplementation::sendMaintenanceDestroyEmail(CityRegion* city, StructureObject* structure){
 	if(zoneServer != NULL) {
-		ManagedReference<CreatureObject*> mayor = cast<CreatureObject*>(zoneServer->getObject(
-					city->getMayorID()));
+		ManagedReference<CreatureObject*> mayor = zoneServer->getObject(city->getMayorID()).castTo<CreatureObject*>();
 
 		if(mayor != NULL) {
 			/*
@@ -2130,9 +2125,7 @@ void CityManagerImplementation::registerForMayoralRace(CityRegion* city,
 
 	uint64 declaredOidResidence = ghost->getDeclaredResidence();
 
-	ManagedReference<BuildingObject*> declaredResidence =
-			cast<BuildingObject*> (
-					creature->getZoneServer()->getObject(declaredOidResidence));
+	ManagedReference<BuildingObject*> declaredResidence = creature->getZoneServer()->getObject(declaredOidResidence).castTo<BuildingObject*>();
 
 	if (declaredResidence != NULL) {
 		ManagedReference<CityRegion*> declaredCity =

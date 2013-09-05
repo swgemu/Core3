@@ -52,7 +52,7 @@ void AuctionManagerImplementation::initialize() {
 	ManagedReference<SceneObject*> defaultBazaar = NULL;
 
 	while (iterator.getNextKey(objectID)) {
-		ManagedReference<AuctionItem*> auctionItem = cast<AuctionItem*>(Core::getObjectBroker()->lookUp(objectID));
+		Reference<AuctionItem*> auctionItem = Core::getObjectBroker()->lookUp(objectID).castTo<AuctionItem*>();
 		ObjectDatabaseManager::instance()->commitLocalTransaction();
 
 		if(auctionItem == NULL) {
@@ -60,7 +60,7 @@ void AuctionManagerImplementation::initialize() {
 			continue;
 		}
 
-		ManagedReference<SceneObject*> vendor = cast<SceneObject*>(zoneServer->getObject(auctionItem->getVendorID()));
+		ManagedReference<SceneObject*> vendor = zoneServer->getObject(auctionItem->getVendorID());
 
 		if(vendor == NULL || vendor->getZone() == NULL) {
 			if(auctionItem->isOnBazaar()) {
@@ -563,7 +563,7 @@ void AuctionManagerImplementation::doInstantBuy(CreatureObject* player, AuctionI
 	float waypointX = vendor->getWorldPositionX();
 	float waypointY = vendor->getWorldPositionY();
 
-	ManagedReference<WaypointObject*> waypoint = cast<WaypointObject*>(zoneServer->createObject(0xc456e788, 1));
+	ManagedReference<WaypointObject*> waypoint = zoneServer->createObject(0xc456e788, 1).castTo<WaypointObject*>();
 	waypoint->setPlanetCRC(vendor->getPlanetCRC());
 	waypoint->setPosition(waypointX, 0, waypointY);
 
@@ -1139,7 +1139,7 @@ AuctionQueryHeadersResponseMessage* AuctionManagerImplementation::fillAuctionQue
 }
 
 void AuctionManagerImplementation::getData(CreatureObject* player, int extent, uint64 vendorObjectID, int screen, unsigned int category, int clientcounter, int offset) {
-	ManagedReference<TangibleObject*> vendorInUse = cast<TangibleObject*>(zoneServer->getObject(vendorObjectID));
+	ManagedReference<TangibleObject*> vendorInUse = (zoneServer->getObject(vendorObjectID)).castTo<TangibleObject*>();
 
 	if (vendorInUse == NULL || (!vendorInUse->isVendor() && !vendorInUse->isBazaarTerminal())) {
 		error("null vendor in getData()");
@@ -1329,7 +1329,7 @@ void AuctionManagerImplementation::cancelItem(CreatureObject* player, uint64 obj
 			float waypointX = vendor->getWorldPositionX();
 			float waypointY = vendor->getWorldPositionY();
 
-			ManagedReference<WaypointObject*> waypoint = cast<WaypointObject*>(zoneServer->createObject(0xc456e788, 1));
+			ManagedReference<WaypointObject*> waypoint = zoneServer->createObject(0xc456e788, 1).castTo<WaypointObject*>();
 			waypoint->setPlanetCRC(vendor->getPlanetCRC());
 			waypoint->setPosition(waypointX, 0, waypointY);
 
@@ -1471,7 +1471,7 @@ void AuctionManagerImplementation::expireAuction(AuctionItem* item) {
 		float waypointX = vendor->getWorldPositionX();
 		float waypointY = vendor->getWorldPositionY();
 
-		ManagedReference<WaypointObject*> waypoint = cast<WaypointObject*>(zoneServer->createObject(0xc456e788, 1));
+		ManagedReference<WaypointObject*> waypoint = zoneServer->createObject(0xc456e788, 1).castTo<WaypointObject*>();
 		waypoint->setPlanetCRC(vendor->getPlanetCRC());
 		waypoint->setPosition(waypointX, 0, waypointY);
 
@@ -1553,7 +1553,7 @@ void AuctionManagerImplementation::deleteExpiredSale(AuctionItem* item) {
 		float waypointX = vendor->getWorldPositionX();
 		float waypointY = vendor->getWorldPositionY();
 
-		ManagedReference<WaypointObject*> waypoint = cast<WaypointObject*>(zoneServer->createObject(0xc456e788, 1));
+		ManagedReference<WaypointObject*> waypoint = zoneServer->createObject(0xc456e788, 1).castTo<WaypointObject*>();
 		waypoint->setPlanetCRC(vendor->getPlanetCRC());
 		waypoint->setPosition(waypointX, 0, waypointY);
 

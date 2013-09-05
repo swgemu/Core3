@@ -273,7 +273,7 @@ Vector3 BountyMissionObjectiveImplementation::getTargetPosition() {
 
 		ZoneServer* zoneServer = getPlayerOwner().get()->getZoneServer();
 		if (zoneServer != NULL) {
-			ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(zoneServer->getObject(targetId));
+			ManagedReference<CreatureObject*> creature = zoneServer->getObject(targetId).castTo<CreatureObject*>();
 
 			if (creature != NULL) {
 				return creature->getWorldPosition();
@@ -318,7 +318,7 @@ String BountyMissionObjectiveImplementation::getTargetZoneName() {
 
 		ZoneServer* zoneServer = getPlayerOwner().get()->getZoneServer();
 		if (zoneServer != NULL) {
-			ManagedReference<CreatureObject*> creature = cast<CreatureObject*>(zoneServer->getObject(targetId));
+			ManagedReference<CreatureObject*> creature = zoneServer->getObject(targetId).castTo<CreatureObject*>();
 
 			if (creature != NULL && creature->getZone() != NULL) {
 				return creature->getZone()->getZoneName();
@@ -375,7 +375,7 @@ void BountyMissionObjectiveImplementation::removePlayerTargetObservers() {
 	ZoneServer* zoneServer = owner->getZoneServer();
 
 	if (zoneServer != NULL) {
-		ManagedReference<CreatureObject*> target = cast<CreatureObject*>(zoneServer->getObject(mission->getTargetObjectId()));
+		ManagedReference<CreatureObject*> target = zoneServer->getObject(mission->getTargetObjectId()).castTo<CreatureObject*>();
 
 		removeObserver(2, ObserverEventType::DEFENDERDROPPED, target);
 		removeObserver(1, ObserverEventType::DEFENDERADDED, target);
@@ -433,7 +433,7 @@ bool BountyMissionObjectiveImplementation::addPlayerTargetObservers() {
 	ZoneServer* zoneServer = owner->getZoneServer();
 
 	if (zoneServer != NULL) {
-		ManagedReference<CreatureObject*> target = cast<CreatureObject*>(zoneServer->getObject(mission->getTargetObjectId()));
+		ManagedReference<CreatureObject*> target = zoneServer->getObject(mission->getTargetObjectId()).castTo<CreatureObject*>();
 
 		if (target != NULL) {
 			addObserverToCreature(ObserverEventType::PLAYERKILLED, target);
@@ -536,7 +536,7 @@ void BountyMissionObjectiveImplementation::handlePlayerKilled(ManagedObject* arg
 			//Target killed by player, complete mission.
 			ZoneServer* zoneServer = owner->getZoneServer();
 			if (zoneServer != NULL) {
-				ManagedReference<CreatureObject*> target = cast<CreatureObject*>(zoneServer->getObject(mission->getTargetObjectId()));
+				ManagedReference<CreatureObject*> target = zoneServer->getObject(mission->getTargetObjectId()).castTo<CreatureObject*>();
 				if (target != NULL) {
 					VisibilityManager::instance()->clearVisibility(target);
 					owner->getZoneServer()->getPlayerManager()->awardExperience(target, "jedi_general", -30000, true);

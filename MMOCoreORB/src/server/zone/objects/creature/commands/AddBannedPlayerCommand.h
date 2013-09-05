@@ -84,8 +84,7 @@ public:
 
 		} else {
 
-			targetCreature = cast<CreatureObject*> (
-					server->getZoneServer()->getObject(target));
+			targetCreature = server->getZoneServer()->getObject(target).castTo<CreatureObject*>();
 
 		}
 

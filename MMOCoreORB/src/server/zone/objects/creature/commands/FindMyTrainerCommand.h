@@ -85,7 +85,7 @@ public:
 
 		String name = "@jedi_spam:trainer_waypoint_name";
 
-		ManagedReference<WaypointObject*> obj = cast<WaypointObject*>( server->getZoneServer()->createObject(0xc456e788, 1));
+		ManagedReference<WaypointObject*> obj = ( server->getZoneServer()->createObject(0xc456e788, 1)).castTo<WaypointObject*>();
 		obj->setPlanetCRC(planetCRC);
 		obj->setPosition(coords.getX(), 0, coords.getY());
 		obj->setCustomObjectName(name, false);

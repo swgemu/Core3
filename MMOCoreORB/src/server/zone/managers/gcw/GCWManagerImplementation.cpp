@@ -651,7 +651,7 @@ void GCWManagerImplementation::performGCWTasks(){
 	for(int i = 0; i< gcwBaseList.size();i++){
 		thisOid = this->getBase(i)->getObjectID();
 
-		BuildingObject* building = cast<BuildingObject*>(zone->getZoneServer()->getObject(thisOid));
+		Reference<BuildingObject*> building = zone->getZoneServer()->getObject(thisOid).castTo<BuildingObject*>();
 
 		if(building == NULL)
 			continue;
@@ -1000,14 +1000,14 @@ void GCWManagerImplementation::sendTurretAttackListTo(CreatureObject* creature, 
 	if(server == NULL)
 		return;
 
-	SceneObject* turret = server->getObject(tindex);
+	Reference<SceneObject*> turret = server->getObject(tindex);
 
 	if(turret == NULL || !turret->isTurret()) {
 		creature->sendSystemMessage("@hq:none_active"); // There are no available turrets to control using this terminal.
 		return;
 	}
 
-	TangibleObject* turretObject = cast<TangibleObject*>(turret);
+	TangibleObject* turretObject = cast<TangibleObject*>(turret.get());
 	if(turretObject == NULL)
 		return;
 
@@ -1854,7 +1854,7 @@ void GCWManagerImplementation::notifyInstallationDestruction(InstallationObject*
 		return;
 	}
 
-	SceneObject* ownerObject = server->getObject(ownerid);
+	Reference<SceneObject*> ownerObject = server->getObject(ownerid);
 
 	if(ownerObject == NULL){
 
@@ -1872,7 +1872,7 @@ void GCWManagerImplementation::notifyInstallationDestruction(InstallationObject*
 	}
 
 	if(ownerObject->isGCWBase()){
-		building = cast<BuildingObject*>(ownerObject);
+		building = cast<BuildingObject*>(ownerObject.get());
 
 		Locker _lock(installation);
 		Locker clock(building, installation);

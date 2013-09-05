@@ -78,7 +78,7 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 	 */
 
 	if (hasShuttle){
-		CreatureObject* shuttle = cast<CreatureObject*>( zone->getZoneServer()->getObject(shuttleID, false));
+		Reference<CreatureObject*> shuttle = zone->getZoneServer()->getObject(shuttleID, false).castTo<CreatureObject*>();
 
 		if (shuttle == NULL) {
 			hasShuttle = false;
@@ -352,7 +352,7 @@ void CityRegionImplementation::cleanupCitizens() {
 	for (int i = 0; i < completeStructureList.size(); ++i) {
 		uint64 oid = completeStructureList.get(i);
 
-		ManagedReference<BuildingObject*> building = dynamic_cast<BuildingObject*>(zone->getZoneServer()->getObject(oid));
+		ManagedReference<BuildingObject*> building = zone->getZoneServer()->getObject(oid).castTo<BuildingObject*>();
 
 		if (building != NULL) {
 			if (building->isResidence()) {

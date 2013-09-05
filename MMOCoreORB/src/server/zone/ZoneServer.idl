@@ -209,15 +209,19 @@ class ZoneServer extends ManagedService implements Logger {
 	@dirty
 	public native void printEvents();
 	
+	@reference
 	@dirty
 	public native SceneObject getObject(unsigned long objectID, boolean doLock = true);
 	
+	@reference
 	@dirty
 	public native SceneObject createObject(unsigned int templateCRC, final string dbname, int persistenceLevel = 2);
 
+	@reference
 	@dirty
 	public native SceneObject createObject(unsigned int templateCRC, int persistenceLevel = 2, unsigned long objectID = 0);
 	
+	@reference
 	@dirty
 	public native SceneObject createClientObject(unsigned int templateCRC, unsigned long objectID = 0);
 	
@@ -229,7 +233,6 @@ class ZoneServer extends ManagedService implements Logger {
 	
 	@dirty
 	public native void destroyObjectFromDatabase(unsigned long objectID);
-
 	
 	public native void lock(boolean doLock = true);
 

@@ -243,7 +243,7 @@ class FindTargetTask : public Task, public Logger {
 				return 0;
 			}
 		} else {
-			ManagedReference<CreatureObject*> target = cast<CreatureObject*>(player->getZoneServer()->getObject(strong->getTargetObjectId()));
+			ManagedReference<CreatureObject*> target = player->getZoneServer()->getObject(strong->getTargetObjectId()).castTo<CreatureObject*>();
 
 			if (target != NULL) {
 				//TODO: modify this to better suit the calculation.
