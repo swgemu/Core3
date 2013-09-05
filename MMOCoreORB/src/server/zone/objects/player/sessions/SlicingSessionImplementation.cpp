@@ -269,10 +269,8 @@ bool SlicingSessionImplementation::hasPrecisionLaserKnife(bool removeItem) {
 
 	Locker inventoryLocker(inventory);
 
-	VectorMap<uint64, ManagedReference<SceneObject*> >* items = inventory->getContainerObjects();
-
-	for (int i = 0; i < items->size(); ++i) {
-		ManagedReference<SceneObject*> sceno = items->get(i);
+	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> sceno = inventory->getContainerObject(i);
 
 		uint32 objType = sceno->getGameObjectType();
 
@@ -301,10 +299,8 @@ bool SlicingSessionImplementation::hasWeaponUpgradeKit() {
 	if (inventory == NULL)
 		return false;
 
-	VectorMap<uint64, ManagedReference<SceneObject*> >* items = inventory->getContainerObjects();
-
-	for (int i = 0; i < items->size(); ++i) {
-		ManagedReference<SceneObject*> sceno = items->get(i);
+	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> sceno = inventory->getContainerObject(i);
 
 		uint32 objType = sceno->getGameObjectType();
 
@@ -332,10 +328,8 @@ bool SlicingSessionImplementation::hasArmorUpgradeKit() {
 	if (inventory == NULL)
 		return false;
 
-	VectorMap<uint64, ManagedReference<SceneObject*> >* items = inventory->getContainerObjects();
-
-	for (int i = 0; i < items->size(); ++i) {
-		ManagedReference<SceneObject*> sceno = items->get(i);
+	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> sceno = inventory->getContainerObject(i);
 
 		uint32 objType = sceno->getGameObjectType();
 
@@ -384,10 +378,8 @@ void SlicingSessionImplementation::handleUseClamp() {
 
 	Locker inventoryLocker(inventory);
 
-	VectorMap<uint64, ManagedReference<SceneObject*> >* map = inventory->getContainerObjects();
-
-	for (int i = 0; i < map->size(); ++i) {
-		ManagedReference<SceneObject*> sceno = map->get(i);
+	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> sceno = inventory->getContainerObject(i);
 
 		uint32 objType = sceno->getGameObjectType();
 
@@ -416,10 +408,8 @@ void SlicingSessionImplementation::handleUseFlowAnalyzer() {
 
 	Locker inventoryLocker(inventory);
 
-	VectorMap<uint64, ManagedReference<SceneObject*> >* inventoryObjects = inventory->getContainerObjects();
-
-	for (int i = 0; i < inventoryObjects->size(); ++i) {
-		ManagedReference<SceneObject*> sceno = inventoryObjects->get(i);
+	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> sceno = inventory->getContainerObject(i);
 
 		uint32 objType = sceno->getGameObjectType();
 
