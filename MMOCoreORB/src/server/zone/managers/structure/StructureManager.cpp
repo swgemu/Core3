@@ -1113,3 +1113,30 @@ void StructureManager::payMaintenance(StructureObject* structure,
 		structure->setMaintenanceReduced(false);
 	}
 }
+
+bool StructureManager::isInStructureFootprint(StructureObject* structure, float positionX, float positionY){
+
+	if(structure == NULL)
+		return false;
+
+	if(structure->getObjectTemplate() == NULL)
+		return false;
+
+	Reference<SharedStructureObjectTemplate*> serverTemplate =
+				dynamic_cast<SharedStructureObjectTemplate*>(structure->getObjectTemplate());
+
+	float placingFootprintLength0, placingFootprintWidth0, placingFootprintLength1, placingFootprintWidth1;
+
+	StructureManager::instance()->getStructureFootprint(serverTemplate, 0, placingFootprintLength0, placingFootprintWidth0, placingFootprintLength1, placingFootprintWidth1);
+	//info("object: " + obj->getObjectNameStringIdName() + " obj x = " + String::valueOf(obj->getPositionX()) + " y= " + String::valueOf(obj->getPositionY()),true);
+
+	float x0 = structure->getPositionX() + placingFootprintWidth0;
+	float y0 = structure->getPositionY() + placingFootprintLength0;
+	float x1 = structure->getPositionX() + placingFootprintWidth1;
+	float y1 = structure->getPositionY() + placingFootprintLength1;
+
+	BoundaryRectangle structureFootprint(x0, y0, x1, y1);
+
+	return structureFootprint.containsPoint(positionX, positionY);
+
+}

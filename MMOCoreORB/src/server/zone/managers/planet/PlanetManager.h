@@ -224,6 +224,8 @@ public:
 
 	bool isCampingPermittedAt(float x, float y, float margin);
 
+	SceneObject* findObjectTooCloseToDecoration(float x, float y, float margin);
+
 	bool isInRangeWithPoi(float x, float y, float range);
 
 	bool isInObjectsNoBuildZone(float x, float y, float extraMargin);
@@ -400,6 +402,8 @@ public:
 
 	bool isCampingPermittedAt(float x, float y, float margin);
 
+	SceneObject* findObjectTooCloseToDecoration(float x, float y, float margin);
+
 	bool isInRangeWithPoi(float x, float y, float range);
 
 	bool isInObjectsNoBuildZone(float x, float y, float extraMargin);
@@ -522,6 +526,8 @@ public:
 	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild);
 
 	bool isCampingPermittedAt(float x, float y, float margin);
+
+	SceneObject* findObjectTooCloseToDecoration(float x, float y, float margin);
 
 	bool isInRangeWithPoi(float x, float y, float range);
 
