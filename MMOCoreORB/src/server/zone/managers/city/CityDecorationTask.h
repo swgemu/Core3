@@ -11,7 +11,8 @@
 #include "engine/engine.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/region/CityRegion.h"
-
+#include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class CityDecorationTask : public Task {
 	ManagedReference<CreatureObject*> mayor;
@@ -58,6 +59,7 @@ public:
 			return;
 		}
 
+
 		if(!cityManager->canSupportMoreDecorations(city)){
 			StringIdChatParameter param("city/city", "no_more_decos"); //"Your city can't support any more decorations at its current rank!");
 			mayor->sendSystemMessage(param);
@@ -66,8 +68,20 @@ public:
 
 		Zone* zone = mayor->getZone();
 
-		if (zone == NULL)
+		if (zone == NULL || obj->getObjectTemplate() == NULL)
 			return;
+
+		SceneObject* objTooClose = zone->getPlanetManager()->findObjectTooCloseToDecoration(mayor->getPositionX(), mayor->getPositionY(), obj->getObjectTemplate()->getNoBuildRadius());
+
+		if(objTooClose != NULL){
+			StringIdChatParameter msg;
+			msg.setStringId("@city/city:deco_too_close"); //"You can't place a decoration here, it would be too close to structure %TO.");
+
+			msg.setTO(objTooClose);
+			//msg.setTO(objTooClose->getObjectNameStringIdFile(), obj->getObjectNameStringIdName());
+			mayor->sendSystemMessage(msg);
+			return;
+		}
 
 		if(city->getCityTreasury() < 1000){
 			StringIdChatParameter msg;

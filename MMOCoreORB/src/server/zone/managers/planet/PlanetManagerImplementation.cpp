@@ -41,6 +41,9 @@
 #include "server/conf/ConfigManager.h"
 
 #include "PlanetTravelPoint.h"
+#include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"
+#include "server/zone/managers/structure/StructureManager.h"
+#include "server/zone/objects/terrain/layer/boundaries/BoundaryRectangle.h"
 
 ClientPoiDataTable PlanetManagerImplementation::clientPoiDataTable;
 Mutex PlanetManagerImplementation::poiMutex;
@@ -724,6 +727,38 @@ bool PlanetManagerImplementation::isCampingPermittedAt(float x, float y, float m
 
 	return true;
 }
+
+SceneObject* PlanetManagerImplementation::findObjectTooCloseToDecoration(float x, float y, float margin) {
+	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
+
+	Vector3 targetPos(x, y,0);
+
+	zone->getInRangeObjects(x, y, 256, &closeObjects, true);
+
+	for (int i = 0; i < closeObjects.size(); ++i) {
+
+		ManagedReference<SceneObject*> obj = cast<SceneObject*>(closeObjects.get(i).get());
+
+		if(obj == NULL || obj->isCreatureObject() || obj->getObjectTemplate() == NULL)
+			continue;
+
+		Vector3 objVec(obj->getPositionX(), obj->getPositionY(),0);
+
+		int squaredDistance = (obj->getObjectTemplate()->getNoBuildRadius() + margin) * (obj->getObjectTemplate()->getNoBuildRadius() + margin);
+
+		if(objVec.squaredDistanceTo(targetPos) < squaredDistance){
+			return obj;
+		}
+
+		if(obj->isStructureObject() && StructureManager::instance()->isInStructureFootprint(cast<StructureObject*>(obj.get()), x, y, margin) ){
+				return obj;
+		}
+	}
+
+	return NULL;
+
+}
+
 
 SceneObject* PlanetManagerImplementation::createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint) {
 	ManagedReference<SceneObject*> obj = server->getZoneServer()->createObject(String("object/tangible/travel/travel_ticket/base/base_travel_ticket.iff").hashCode(), 1);

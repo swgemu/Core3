@@ -203,6 +203,8 @@ public:
 	void payMaintenance(StructureObject* structure, CreatureObject* creature, int amount);
 
 	int getStructureFootprint(SharedObjectTemplate* objectTemplate, int angle, float& l0, float& w0, float& l1, float& w1);
+
+	bool isInStructureFootprint(StructureObject* structure, float positionX, float positionY, int extraFootprintMargin);
 };
 
 #endif /*STRUCTUREMANAGER_H_*/
