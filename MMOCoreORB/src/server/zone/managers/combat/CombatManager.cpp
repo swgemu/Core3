@@ -514,12 +514,14 @@ int CombatManager::getDefenderDefenseModifier(CreatureObject* defender, WeaponOb
 }
 
 int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender) {
-	if (defender->isIntimidated()) return 0;
 
 	int targetDefense = 0;
 	ManagedReference<WeaponObject*> weapon = defender->getWeapon();
 
 	Vector<String>* defenseAccMods = weapon->getDefenderSecondaryDefenseModifiers();
+
+	if (!defenseAccMods->contains("saber_block") && defender->isIntimidated())
+		return 0;
 
 	for (int i = 0; i < defenseAccMods->size(); ++i) {
 		String mod = defenseAccMods->get(i);
@@ -538,20 +540,20 @@ float CombatManager::getDefenderToughnessModifier(CreatureObject* defender, int 
 
 	Vector<String>* defenseToughMods = weapon->getDefenderToughnessModifiers();
 
-	if (damType != WeaponObject::FORCEATTACK) {
+	if (damType != WeaponObject::FORCEATTACK) { // Force attacks can't be mitigated by any toughness.
 		for (int i = 0; i < defenseToughMods->size(); ++i) {
 			int toughMod = defender->getSkillMod(defenseToughMods->get(i));
 			if (toughMod > 0) damage *= 1.f - (toughMod / 100.f);
 		}
+
+		int jediToughness = defender->getSkillMod("jedi_toughness");
+		if (damType != WeaponObject::LIGHTSABER && jediToughness > 0)
+			damage *= 1.f - (jediToughness / 100.f);
+
+		int foodBonus = defender->getSkillMod("mitigate_damage");
+		if (foodBonus > 0)
+			damage *= 1.f - (foodBonus / 100.f);
 	}
-
-	int jediToughness = defender->getSkillMod("jedi_toughness");
-	if (damType != WeaponObject::LIGHTSABER && jediToughness > 0)
-		damage *= 1.f - (jediToughness / 100.f);
-
-	int foodBonus = defender->getSkillMod("mitigate_damage");
-	if (foodBonus > 0)
-		damage *= 1.f - (foodBonus / 100.f);
 
 	return damage < 0 ? 0 : damage;
 }
@@ -812,6 +814,12 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, WeaponObject* wea
 		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
 
 		return damage;
+	}
+
+	// Start with intimidate - According to scrapbook, it factors in before even PSGs/toughness.
+	// http://www.swgemu.com/archive/scrapbookv51/data/20070211115541/index.html
+	if (attacker->isIntimidated()) {
+		damage *= 0.50;
 	}
 
 	// start with PSG reduction

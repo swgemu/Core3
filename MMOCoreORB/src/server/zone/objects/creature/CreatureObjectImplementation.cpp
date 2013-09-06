@@ -2061,12 +2061,16 @@ void CreatureObjectImplementation::setIntimidatedState(uint32 mod, int durationS
 		state->setStartFlyText("combat_effects", "go_intimidated", 0, 0xFF, 0);
 		state->setEndFlyText("combat_effects", "no_intimidated", 0xFF, 0, 0);
 
+
+		// Commented out - "Intim effects min range too" - Scrapbook.
+		/*
 		int div = getSkillMod("private_max_damage_divisor") * 2;
 		if (div == 0) div = 2;
 
 		div += mod / 10;
 
 		state->setSkillModifier("private_max_damage_divisor", div);
+		*/
 
 		addBuff(state);
 	}
