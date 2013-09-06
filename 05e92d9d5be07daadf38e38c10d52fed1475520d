@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da3975d1_b1bd2005",
+        "filename": "MMOCoreORB/src/server/zone/managers/planet/PlanetManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-09-06T12:52:47Z",
+      "side": 1,
+      "message": "You could calculate margin * margin outside the loop but the compiler might be smart enough to figure that out by it self.",
+      "revId": "05e92d9d5be07daadf38e38c10d52fed1475520d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da3975d1_91ba1c09",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/StructureManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-09-06T12:52:47Z",
+      "side": 1,
+      "message": "Will this be enough? What about overlap where the center/placing coordinate isn\u0027t within the footprint?",
+      "revId": "05e92d9d5be07daadf38e38c10d52fed1475520d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
