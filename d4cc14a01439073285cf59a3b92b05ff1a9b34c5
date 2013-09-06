@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da3975d1_9168dc88",
+        "filename": "MMOCoreORB/src/server/zone/managers/planet/PlanetManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-09-06T20:22:52Z",
+      "side": 1,
+      "message": "Changed this to use the no build radius of both the decoration and the object that it\u0027s checking.",
+      "revId": "d4cc14a01439073285cf59a3b92b05ff1a9b34c5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da3975d1_710578c1",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/StructureManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-09-06T20:22:52Z",
+      "side": 1,
+      "message": "Just used the nobuild radius of the decoration to add to the footprint.  Open to suggestions for a better way to account for this overlap.",
+      "revId": "d4cc14a01439073285cf59a3b92b05ff1a9b34c5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
