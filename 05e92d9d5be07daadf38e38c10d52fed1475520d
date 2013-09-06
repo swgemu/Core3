@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "da3975d1_516394b1",
+        "filename": "MMOCoreORB/src/server/zone/managers/planet/PlanetManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-09-06T19:24:22Z",
+      "side": 1,
+      "message": "I\u0027ll go ahead and move it outside the loop.",
+      "parentUuid": "da3975d1_b1bd2005",
+      "revId": "05e92d9d5be07daadf38e38c10d52fed1475520d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da3975d1_9151fcda",
         "filename": "MMOCoreORB/src/server/zone/managers/structure/StructureManager.cpp",
         "patchSetId": 1
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "da3975d1_315810fa",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/StructureManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-09-06T19:24:22Z",
+      "side": 1,
+      "message": "Good point.  I\u0027ll use the rotation of the structure.",
+      "parentUuid": "da3975d1_9151fcda",
+      "revId": "05e92d9d5be07daadf38e38c10d52fed1475520d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da3975d1_91ba1c09",
         "filename": "MMOCoreORB/src/server/zone/managers/structure/StructureManager.cpp",
         "patchSetId": 1
@@ -64,6 +100,24 @@
       "writtenOn": "2013-09-06T12:52:47Z",
       "side": 1,
       "message": "Will this be enough? What about overlap where the center/placing coordinate isn\u0027t within the footprint?",
+      "revId": "05e92d9d5be07daadf38e38c10d52fed1475520d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da3975d1_115d0cea",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/StructureManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 4
+      },
+      "writtenOn": "2013-09-06T19:24:22Z",
+      "side": 1,
+      "message": "Easy solution could probably be to just extend the  footprintwidth by the nobuildradius of the decoration or just use a flat number.\n\nI\u0027m open to suggestions.",
+      "parentUuid": "da3975d1_91ba1c09",
       "revId": "05e92d9d5be07daadf38e38c10d52fed1475520d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
