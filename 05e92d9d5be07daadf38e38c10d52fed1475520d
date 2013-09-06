@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "da3975d1_b15400cb",
+        "filename": "MMOCoreORB/src/server/zone/managers/city/CityDecorationTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-09-06T17:18:52Z",
+      "side": 1,
+      "message": "Reference\u003c\u003e",
+      "revId": "05e92d9d5be07daadf38e38c10d52fed1475520d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da3975d1_b1bd2005",
         "filename": "MMOCoreORB/src/server/zone/managers/planet/PlanetManagerImplementation.cpp",
         "patchSetId": 1
@@ -13,6 +30,23 @@
       "writtenOn": "2013-09-06T12:52:47Z",
       "side": 1,
       "message": "You could calculate margin * margin outside the loop but the compiler might be smart enough to figure that out by it self.",
+      "revId": "05e92d9d5be07daadf38e38c10d52fed1475520d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da3975d1_9151fcda",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/StructureManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-09-06T17:18:52Z",
+      "side": 1,
+      "message": "Its always checking the footprint with angle 0... what if the structure was rotated?",
       "revId": "05e92d9d5be07daadf38e38c10d52fed1475520d",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
