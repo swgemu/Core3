@@ -208,7 +208,8 @@ TangibleObject* LootManagerImplementation::createLootObject(LootItemTemplate* te
 	prototype->setSerialNumber(serial);
 	prototype->setJunkDealerNeeded(templateObject->getJunkDealerTypeNeeded());
 	float fJunkValue = templateObject->getJunkMinValue()+System::random(templateObject->getJunkMaxValue()-templateObject->getJunkMinValue());
-	if (level>0){
+
+	if (level>0 && templateObject->getJunkDealerTypeNeeded()>1){
 		fJunkValue=fJunkValue + (fJunkValue * ((float)level / 10));
 	}
 	CraftingValues craftingValues = templateObject->getCraftingValuesCopy();

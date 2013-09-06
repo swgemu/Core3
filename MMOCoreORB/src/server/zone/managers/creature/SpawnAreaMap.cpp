@@ -95,12 +95,19 @@ void SpawnAreaMap::loadStaticSpawns() {
 			uint64 parentID = obj.getLongAt(7);
 			String moodString;
 			UnicodeString customName;
-
+			int junkDealerBuyingType;
+			int junkDealerConversationType;
 			if (obj.getTableSize() > 7)
 				moodString = obj.getStringAt(8);
 
 			if (obj.getTableSize() > 8)
 				customName = obj.getStringAt(9);
+
+			if (obj.getTableSize() > 9)
+				junkDealerBuyingType = obj.getIntAt(10);
+
+			if (obj.getTableSize() > 10)
+				junkDealerConversationType = obj.getIntAt(11);
 
 			if (parentID == 0)
 				z = zone->getHeight(x, y);
@@ -109,7 +116,8 @@ void SpawnAreaMap::loadStaticSpawns() {
 
 			if (creatureObject != NULL) {
 				creatureObject->setDirection(Math::deg2rad(heading));
-
+				creatureObject->setJunkDealerBuyerType(junkDealerBuyingType);
+				creatureObject->setJunkDealerConversationType(junkDealerConversationType);
 				if (!moodString.isEmpty()) {
 					creatureObject->setMoodString(moodString);
 

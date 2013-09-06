@@ -93,7 +93,8 @@ class CreatureObject extends TangibleObject {
 
 	protected int bankCredits;
 	protected int cashCredits;
-	
+	protected int junkDealerBuyerType;
+	protected int junkDealerConversationType;
 	protected int gender;
 	protected int species;
 	
@@ -1725,4 +1726,20 @@ class CreatureObject extends TangibleObject {
 	public native float calculateCostAdjustment(byte stat, float baseCost);
 
 	public native void updateSpeedAndAccelerationMods();
+
+	public void setJunkDealerBuyerType(int jdBuyerType) {
+		junkDealerBuyerType = jdBuyerType;
+	}
+	
+	public abstract int getJunkDealerBuyerType() {
+		return junkDealerBuyerType;
+	}
+	public void setJunkDealerConversationType(int jdConvoType) {
+		junkDealerConversationType = jdConvoType;
+	}
+	
+	public abstract int getJunkDealerConversationType() {
+		return junkDealerConversationType;
+	}
+
 }

@@ -49,9 +49,11 @@ void run(CreatureObject* player, SuiBox* suiBox, bool cancel, Vector<UnicodeStri
 	//player->sendSystemMessage("Index: " + String::valueOf(index) + " ItemID:" + String::valueOf(itemId) + " " + tst->getObjectNameStringIdName()+  " Cancel: " + String::valueOf(cancel) + " Other: " + String::valueOf(otherPressed));
 	player->sendSystemMessage("You sell " + itemName + " for " + String::valueOf(iCredits) +" cr");
 	bool bHaveStuffToSell = false;
+	SceneObject*  dealerScene = suiBox->getUsingObject().get();
+	int dealerType= cast<JunkdealerCreature*>(dealerScene)->getJunkDealerBuyerType();
     for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
     	ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i));
-    	if ((item->getJunkDealerNeeded() & 1) == 1 && item->getCraftersName().isEmpty() == true ){
+    	if ((item->getJunkDealerNeeded() & dealerType) == dealerType && item->getCraftersName().isEmpty() == true ){
     		bHaveStuffToSell=true;
     		break;
     	}
@@ -69,13 +71,16 @@ void run(CreatureObject* player, SuiBox* suiBox, bool cancel, Vector<UnicodeStri
 		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
 			UnicodeString itemName = StringIdManager::instance()->getStringId(inventory->getContainerObject(i)->getDisplayedName().hashCode());
 			ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i));
-			if ((item->getJunkDealerNeeded() & 1) == 1 && item->getCraftersName().isEmpty() == true )
-				box->addMenuItem(itemName.toString(), inventory->getContainerObject(i)->getObjectID());
+			if ((item->getJunkDealerNeeded() & dealerType) == dealerType && item->getCraftersName().isEmpty() == true && item->isSliced() == false )
+				box->addMenuItem("[" + String::valueOf(item->getJunkValue()) + "Cr] " +itemName.toString(), inventory->getContainerObject(i)->getObjectID());
 		}
+		box->setUsingObject(suiBox->getUsingObject().get());
 		player->getPlayerObject()->addSuiBox(box);
 		player->sendMessage(box->generateMessage());
 	}else{
 		player->sendSystemMessage("You currently have nothing further of interest.");
+		player->sendMessage(new StopNpcConversation(player, suiBox->getUsingObject().get()->getObjectID()));
+
 	}
 
 

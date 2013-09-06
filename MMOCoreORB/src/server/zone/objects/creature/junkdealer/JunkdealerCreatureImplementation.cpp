@@ -20,6 +20,8 @@
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/creature/junkdealer/sui/JunkDealerSellListSuiCallback.h"
 
+
+
 void JunkdealerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 	if (!obj->isPlayerCreature())
 		return;
@@ -28,7 +30,7 @@ void JunkdealerCreatureImplementation::sendConversationStartTo(SceneObject* obj)
 
 	PlayerObject* ghost = player->getPlayerObject();
 
-	String stffile = "conversation/junk_dealer_generic";
+	String stffile = getConversationString(_this.get()->getJunkDealerBuyerType());
 
 	StartNpcConversation* conv = new StartNpcConversation(player, getObjectID(), "");
 	player->sendMessage(conv);
@@ -41,7 +43,7 @@ void JunkdealerCreatureImplementation::sendConversationStartTo(SceneObject* obj)
 
 
 void JunkdealerCreatureImplementation::sendInitialMessage(CreatureObject* player) {
-	String stffile = "conversation/junk_dealer_generic";
+	String stffile = getConversationString(_this.get()->getJunkDealerBuyerType());
 	String stfname = "s_bef51e38";
 
 	StringIdChatParameter params(stffile, stfname);
@@ -58,9 +60,9 @@ void JunkdealerCreatureImplementation::sendInitialMessage(CreatureObject* player
 void JunkdealerCreatureImplementation::sendInitialChoices(CreatureObject* player) {
 	StringList* slist = new StringList(player);
 
-	slist->insertOption("conversation/junk_dealer_generic", "s_54fab04f");
-	slist->insertOption("conversation/junk_dealer_generic", "s_cd7a3f41");
-	slist->insertOption("conversation/junk_dealer_generic", "s_3aa18b2d");
+	slist->insertOption(getConversationString(_this.get()->getJunkDealerBuyerType()), "s_54fab04f");
+	slist->insertOption(getConversationString(_this.get()->getJunkDealerBuyerType()), "s_cd7a3f41");
+	slist->insertOption(getConversationString(_this.get()->getJunkDealerBuyerType()), "s_3aa18b2d");
 
 	PlayerObject* ghost = player->getPlayerObject();
 	ghost->setLastNpcConvMessStr("junkdealer_options");
@@ -78,7 +80,7 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 	if (ghost->getLastNpcConvStr() != getObjectNameStringIdName())
 		return;
 
-	String stffile = "conversation/junk_dealer_generic";
+	String stffile = getConversationString(_this.get()->getJunkDealerBuyerType());
 
 	String choice;
 
@@ -102,7 +104,7 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 				player->sendMessage(skillmsg);
 
 				createSellJunkLootSelection(player);
-
+				player->sendMessage(new StopNpcConversation(player, getObjectID()));
 				break;
 			}
 			case 1: {
@@ -286,43 +288,89 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 void JunkdealerCreatureImplementation::createSellJunkLootSelection(CreatureObject* player) {
 	if (player == NULL)
 		return;
-	bool bHaveStuffToSell = false;
-	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-    for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-    	ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i));
-     	if ((item->getJunkDealerNeeded() & 1) == 1 && item->getCraftersName().isEmpty() == true ){
-    		bHaveStuffToSell=true;
-    		break;
-    	}
-    }
-
-	if (bHaveStuffToSell==true) {
-		// create new window
-		ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::JUNK_DEALER_SELL_LIST, SuiListBox::HANDLETHREEBUTTON);
-		box->setCallback(new JunkDealerSellListSuiCallback(server->getZoneServer()));
-
-		box->setPromptText("@loot_dealer:sell_prompt");
-		box->setOtherButton(true, "@loot_dealer:btn_sell_all");
-		box->setPromptTitle("@loot_dealer:sell_title");
-
-		box->setHandlerText("handleUpdateSchematic");
-		box->setOkButton(true, "@loot_dealer:btn_sell");
-		box->setCancelButton(true, "@cancel");
-
+	int dealerType= _this.get()->getJunkDealerBuyerType();
+	if (dealerType==0){
+		player->sendSystemMessage("Junk Dealer Not Configured at this time :(");
+		player->sendMessage(new StopNpcConversation(player, getObjectID()));
+	}else{
+		bool bHaveStuffToSell = false;
+		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-			UnicodeString itemName = StringIdManager::instance()->getStringId(inventory->getContainerObject(i)->getDisplayedName().hashCode());
 			ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i));
-			//if (item->getCraftersName().isEmpty() == true && item->isWeaponObject()==false && item->isArmorObject()==false
-			//		&& item->isAttachment()==false && item->isDeedObject()==false && item->isContainerObject()==false && item->isResourceContainer()==false )
-			if ((item->getJunkDealerNeeded() & 1) == 1 && item->getCraftersName().isEmpty() == true )
-				box->addMenuItem(itemName.toString(), inventory->getContainerObject(i)->getObjectID());
+			if ((item->getJunkDealerNeeded() & dealerType) == dealerType && item->getCraftersName().isEmpty() == true ){
+				bHaveStuffToSell=true;
+				break;
+			}
 		}
 
-		box->setUsingObject(_this.get());
-		player->getPlayerObject()->addSuiBox(box);
-		player->sendMessage(box->generateMessage());
-	}else{
-		player->sendSystemMessage("You currently have nothing of interest.");
+		if (bHaveStuffToSell==true) {
+			// create new window
+			ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::JUNK_DEALER_SELL_LIST, SuiListBox::HANDLETHREEBUTTON);
+			box->setCallback(new JunkDealerSellListSuiCallback(server->getZoneServer()));
+
+			box->setPromptText("@loot_dealer:sell_prompt");
+			box->setOtherButton(true, "@loot_dealer:btn_sell_all");
+			box->setPromptTitle("@loot_dealer:sell_title");
+
+			box->setHandlerText("handleUpdateSchematic");
+			box->setOkButton(true, "@loot_dealer:btn_sell");
+			box->setCancelButton(true, "@cancel");
+
+			for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
+				UnicodeString itemName = StringIdManager::instance()->getStringId(inventory->getContainerObject(i)->getDisplayedName().hashCode());
+				ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i));
+
+				//if (item->getCraftersName().isEmpty() == true && item->isWeaponObject()==false && item->isArmorObject()==false
+				//		&& item->isAttachment()==false && item->isDeedObject()==false && item->isContainerObject()==false && item->isResourceContainer()==false )
+				if ((item->getJunkDealerNeeded() & dealerType) == dealerType && item->getCraftersName().isEmpty() == true && item->isSliced() == false  )
+					box->addMenuItem("[" + String::valueOf(item->getJunkValue()) + "Cr] " + itemName.toString(), inventory->getContainerObject(i)->getObjectID());
+			}
+
+			box->setUsingObject(_this.get());
+			player->getPlayerObject()->addSuiBox(box);
+			player->sendMessage(box->generateMessage());
+		}else{
+			player->sendSystemMessage("You currently have nothing of interest.");
+			player->sendMessage(new StopNpcConversation(player, getObjectID()));
+
+		}
 	}
+
+}
+String JunkdealerCreatureImplementation::getConversationString(int dealerType) {
+	switch (dealerType){
+		case JUNKCONVGENERIC:
+			{return "conversation/junk_dealer_generic";}
+		case JUNKCONVARMS:
+			{return "conversation/junk_dealer_generic";}
+		case JUNKCONVFINARY:
+			{return "conversation/junk_dealer_generic";}
+		case JUNKCONVDENDERRORI:
+			{return "conversation/junk_dealer_generic";}
+		case JUNKCONVDENDERTHEED:
+			{return "conversation/junk_dealer_generic";}
+		case JUNKCONVLILABORVO:
+			{return "conversation/junk_dealer_generic";}
+		case JUNKCONVMALIKVISTAL:
+			{return "conversation/junk_dealer_generic";}
+		case JUNKCONVNADOWATTOS:
+			{return "conversation/junk_dealer_generic";}
+		case JUNKCONVNATHANTAIKE:
+			{return "conversation/junk_dealer_generic";}
+		case JUNKCONVOLLOBOJABBAS:
+			{return "conversation/junk_dealer_generic";}
+		case JUNKCONVQUICHDANTOOINE:
+			{return "conversation/junk_dealer_generic";}
+		case JUNKCONVREGGINYM:
+			{return "conversation/junk_dealer_generic";}
+		case JUNKCONVSHEANILAKE:
+			{return "conversation/junk_dealer_generic";}
+		case JUNKCONVSNEGVALARIAN:
+			{return "conversation/junk_dealer_generic";}
+		case JUNKCONVJAWATRADER:
+			{return "conversation/junk_dealer_generic";}
+		default:
+			{return "conversation/junk_dealer_generic";}
+		}
 
 }
