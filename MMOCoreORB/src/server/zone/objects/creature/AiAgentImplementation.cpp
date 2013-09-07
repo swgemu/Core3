@@ -1563,31 +1563,31 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint", txt.toString());
 	}
 
-	if (getKinetic() == 0)
+	if (getKinetic() < 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_kinetic", "-");
 
-	if (getEnergy() == 0)
+	if (getEnergy() < 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_energy", "-");
 
-	if (getElectricity() == 0)
+	if (getElectricity() < 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_electrical", "-");
 
-	if (getStun() == 0)
+	if (getStun() < 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_stun", "-");
 
-	if (getBlast() == 0)
+	if (getBlast() < 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_blast", "-");
 
-	if (getHeat() == 0)
+	if (getHeat() < 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_heat", "-");
 
-	if (getCold() == 0)
+	if (getCold() < 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_cold", "-");
 
-	if (getAcid() == 0)
+	if (getAcid() < 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_acid", "-");
 
-	if (getLightSaber() == 0)
+	if (getLightSaber() < 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_restraint", "-");
 }
 
