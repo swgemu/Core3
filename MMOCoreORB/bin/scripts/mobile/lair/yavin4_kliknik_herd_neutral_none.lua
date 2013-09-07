@@ -1,5 +1,5 @@
 yavin4_kliknik_herd_neutral_none = Lair:new {
-	mobiles = {{"kliknik_hunter", 0}, {"kliknik_scout", 0}},
+	mobiles = {{"kliknik_hunter", 0}, {"kliknik_scout", -5}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/kliknik/lair_kliknik.iff"},
 	buildingsEasy = {"object/tangible/lair/kliknik/lair_kliknik.iff"},

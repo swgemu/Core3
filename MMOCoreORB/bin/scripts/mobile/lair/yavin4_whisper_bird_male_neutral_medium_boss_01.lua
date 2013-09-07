@@ -1,5 +1,5 @@
 yavin4_whisper_bird_male_neutral_medium_boss_01 = Lair:new {
-	mobiles = {{"whisper_bird_female", 0}, {"whisper_bird_male", 0}},
+	mobiles = {{"whisper_bird_female", -1}, {"whisper_bird_male", 0}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_nest_large.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_nest_large.iff"},

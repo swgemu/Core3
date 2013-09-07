@@ -1,5 +1,5 @@
 yavin4_choku_herd_neutral_none = Lair:new {
-	mobiles = {{"choku_female", 0}, {"choku_male", 0}, {"choku_pup", 0}},
+	mobiles = {{"choku_female", -5}, {"choku_male", 0}, {"choku_pup", -10}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_mound_small.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_mound_small.iff"},
