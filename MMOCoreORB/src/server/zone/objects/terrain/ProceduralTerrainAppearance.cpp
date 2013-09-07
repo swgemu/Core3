@@ -217,6 +217,9 @@ float ProceduralTerrainAppearance::processTerrain(Layer* layer, float x, float y
 
 	bool hasBoundaries = false;
 
+	FilterRectangle rect;
+	rect.minX = FLT_MAX, rect.maxX = FLT_MIN, rect.minY = FLT_MAX, rect.maxY = FLT_MIN;
+
 	for (int i = 0; i < boundaries->size(); ++i) {
 		Boundary* boundary = boundaries->get(i);
 
@@ -226,6 +229,20 @@ float ProceduralTerrainAppearance::processTerrain(Layer* layer, float x, float y
 			hasBoundaries = true;
 
 		float result = boundary->process(x, y);
+
+		if (result != 0.0) {
+			if (boundary->getMinX() < rect.minX)
+				rect.minX = boundary->getMinX();
+
+			if (boundary->getMaxX() > rect.maxX)
+				rect.maxX = boundary->getMaxX();
+
+			if (boundary->getMinY() < rect.minY)
+				rect.minY = boundary->getMinY();
+
+			if (boundary->getMaxY() > rect.maxY)
+				rect.maxY = boundary->getMaxY();
+		}
 
 		int featheringType = boundary->getFeatheringType();
 
@@ -255,7 +272,7 @@ float ProceduralTerrainAppearance::processTerrain(Layer* layer, float x, float y
 			/*if (!(filter->getFilterType() & affectorType))
 				continue;*/
 
-			float result = filter->process(x, y, transformValue, baseValue, terrainGenerator);
+			float result = filter->process(x, y, transformValue, baseValue, terrainGenerator, &rect);
 
 			int featheringType = filter->getFeatheringType();
 

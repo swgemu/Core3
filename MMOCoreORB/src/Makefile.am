@@ -86,7 +86,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/managers/creature/tests/LuaMobileTest.cpp \
 			  	server/zone/objects/creature/ai/bt/tests/BehaviorTest.cpp \
 			  	server/zone/objects/area/areashapes/tests/RectangularAreaShapeTest.cpp \
-			  	server/zone/tests/DeadlockTestBase.cpp
+			  	server/zone/tests/DeadlockTestBase.cpp \
+			  	server/zone/objects/terrain/tests/BasicTerrainTest.cpp
 
 core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp \
 				server/zone/objects/area/FsVillageArea.cpp \
@@ -509,10 +510,12 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/region/RegionImplementation.cpp \
 		server/zone/objects/terrain/ProceduralTerrainAppearance.cpp \
 		server/zone/objects/terrain/MapFractal.cpp \
+		server/zone/objects/terrain/TargaBitmap.cpp \
 		server/zone/objects/terrain/TerrainGenerator.cpp \
 		server/zone/objects/terrain/layer/Layer.cpp \
 		server/zone/objects/terrain/layer/affectors/AffectorHeightFractal.cpp \
 		server/zone/objects/terrain/layer/filters/FilterFractal.cpp \
+		server/zone/objects/terrain/layer/filters/FilterBitmap.cpp \
 		server/zone/objects/intangible/IntangibleObjectImplementation.cpp \
 		server/zone/objects/intangible/LuaIntangibleObject.cpp \
 		server/zone/objects/staticobject/StaticObjectImplementation.cpp \
@@ -663,6 +666,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/objectcontroller/command/CommandConfigManager.cpp \
 		server/zone/managers/terrain/TerrainManager.cpp \
 		server/zone/managers/templates/TemplateManager.cpp \
+		server/zone/managers/templates/DataArchiveStore.cpp \
 		server/zone/managers/mission/MissionManagerImplementation.cpp \
 		server/zone/managers/mission/spawnmaps/MissionNpcSpawnMap.cpp \
 		server/zone/managers/mission/spawnmaps/NpcSpawnPoint.cpp \

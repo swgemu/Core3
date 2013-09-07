@@ -17,7 +17,7 @@ class FilterHeight : public ProceduralRule<'FHGT'>, public FilterProceduralRule 
 	float maxHeight;
 
 public:
-	FilterHeight() {
+	FilterHeight() : FilterProceduralRule(0) {
 		filterType = HEIGHTTYPE;
 	}
 
@@ -51,7 +51,7 @@ public:
 		iffStream->closeChunk('DATA');
 	}
 
-	float process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator) {
+	float process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator, FilterRectangle* rect) {
 		float result;
 
 		if ((baseValue > minHeight) && (baseValue < maxHeight)) {
