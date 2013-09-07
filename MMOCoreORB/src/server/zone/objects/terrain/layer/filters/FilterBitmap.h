@@ -5,24 +5,28 @@
  *      Author: victor
  */
 
-#ifndef FILTERBIT_H_
-#define FILTERBIT_H_
+#ifndef FILTERBITMAP_H_
+#define FILTERBITMAP_H_
 
 
 #include "../ProceduralRule.h"
 
 #include "FilterProceduralRule.h"
 
-class FilterBIT : public ProceduralRule<'FBIT'>, public FilterProceduralRule {
-	int var1;
-	int var2;
-	float var3;
-	float var4;
-	float var5;
+class TargaBitmap;
+
+class FilterBitmap : public ProceduralRule<'FBIT'>, public FilterProceduralRule {
+	int bitmapId;
+	//int featharingType;
+	//float featheringAmount;
+	float min;
+	float max;
+
+	TargaBitmap* map;
 
 public:
-	FilterBIT() {
-
+	FilterBitmap() : FilterProceduralRule(5) { //magic numbers from the client
+		map = NULL;
 	}
 
 	void parseFromIffStream(engine::util::IffStream* iffStream) {
@@ -50,15 +54,21 @@ public:
 		iffStream->openChunk('PARM');
 
 		//5 vars
-		var1 = iffStream->getInt();
-		var2 = iffStream->getInt();
-		var3 = iffStream->getFloat();
-		var4 = iffStream->getFloat();
-		var5 = iffStream->getFloat();
+		bitmapId = iffStream->getInt();
+		featheringType = iffStream->getInt();
+		featheringAmount = iffStream->getFloat();
+		min = iffStream->getFloat();
+		max = iffStream->getFloat();
 
 		iffStream->closeChunk('PARM');
 
 		iffStream->closeForm('DATA');
+	}
+
+	float process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator, FilterRectangle* rect);
+
+	bool isEnabled() {
+		return informationHeader.isEnabled();
 	}
 };
 

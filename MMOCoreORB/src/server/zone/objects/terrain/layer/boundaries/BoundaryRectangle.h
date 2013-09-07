@@ -238,6 +238,22 @@ public:
 		newY1 = y1 - v7;
 	}
 
+	float getMinX() {
+		return x0;
+	}
+
+	float getMaxX() {
+		return x1;
+	}
+
+	float getMinY() {
+		return y0;
+	}
+
+	float getMaxY() {
+		return y1;
+	}
+
 	bool isEnabled() {
 		return informationHeader.isEnabled();
 	}
