@@ -158,6 +158,7 @@ void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* 
 		return;
 
 	int damageToHeal = 0;
+	int lairMaxCondition = lair->getMaxCondition();
 
 	for (int i = 0; i < spawnedCreatures.size() ; ++i) {
 		CreatureObject* creo = spawnedCreatures.get(i);
@@ -166,7 +167,7 @@ void LairObserverImplementation::healLair(TangibleObject* lair, TangibleObject* 
 			continue;
 
 		//  TODO: Range check
-		damageToHeal += 100;
+		damageToHeal += lairMaxCondition / 100;
 
 	}
 
