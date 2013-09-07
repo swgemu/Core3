@@ -806,9 +806,11 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, WeaponObject* wea
 
 	// the easy calculation
 	if (defender->isAiAgent()) {
-		damage *= getArmorPiercing(cast<AiAgent*>(defender), weapon);
-
 		float armorReduction = getArmorNpcReduction(attacker, cast<AiAgent*>(defender), weapon);
+
+		if (armorReduction >= 0)
+			damage *= getArmorPiercing(cast<AiAgent*>(defender), weapon);
+
 		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
 
 		return damage;
@@ -886,28 +888,32 @@ int CombatManager::getArmorReduction(CreatureObject* attacker, WeaponObject* wea
 	return damage;
 }
 
-float CombatManager::getArmorPiercing(ArmorObject* armor, WeaponObject* weapon) {
+float CombatManager::getArmorPiercing(TangibleObject* defender, WeaponObject* weapon) {
 	int armorPiercing = weapon->getArmorPiercing();
 	if (weapon->isBroken())
 		armorPiercing = 0;
 
 	int armorReduction = 0;
 
-	if (armor != NULL && !armor->isBroken())
-		armorReduction = armor->getRating();
+	if (defender->isAiAgent()) {
+		AiAgent* aiDefender = cast<AiAgent*>(defender);
+		armorReduction = aiDefender->getArmor();
+	} else if (defender->isArmorObject()) {
+		ArmorObject* armorDefender = cast<ArmorObject*>(defender);
 
-	if (armorPiercing > armorReduction)
-		return pow(1.25, armorPiercing - armorReduction);
-	else
-		return pow(0.50, armorReduction - armorPiercing);
-}
+		if (armorDefender != NULL && !armorDefender->isBroken())
+			armorReduction = armorDefender->getRating();
+	} else {
+		DataObjectComponentReference* data = defender->getDataObjectComponent();
+		if(data != NULL){
 
-float CombatManager::getArmorPiercing(AiAgent* defender, WeaponObject* weapon) {
-	int armorPiercing = weapon->getArmorPiercing();
-	if (weapon->isBroken())
-		armorPiercing = 0;
+			TurretDataComponent* turretData = cast<TurretDataComponent*>(data->get());
 
-	int armorReduction = defender->getArmor();
+			if(turretData != NULL) {
+				armorReduction = turretData->getArmorRating();
+			}
+		}
+	}
 
 	if (armorPiercing > armorReduction)
 		return pow(1.25, armorPiercing - armorReduction);
@@ -1414,7 +1420,12 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, T
 	}
 
 	if(defender->isTurret()){
-		damage *= (1.f - (getArmorTurretReduction(attacker, defender, weapon) / 100.f));
+		int armorReduction = getArmorTurretReduction(attacker, defender, weapon);
+
+		if (armorReduction >= 0)
+			damage *= getArmorPiercing(defender, weapon);
+
+		damage *= (1.f - (armorReduction / 100.f));
 	}
 
 	defender->inflictDamage(attacker, 0, damage, true, xpType);
@@ -2015,9 +2026,11 @@ int CombatManager::getArmorReduction(TangibleObject* attacker, WeaponObject* wea
 
 	// the easy calculation
 	if (defender->isAiAgent()) {
-		damage *= getArmorPiercing(cast<AiAgent*>(defender), weapon);
-
 		float armorReduction = getArmorNpcReduction(NULL, cast<AiAgent*>(defender), weapon);
+
+		if (armorReduction >= 0)
+			damage *= getArmorPiercing(cast<AiAgent*>(defender), weapon);
+
 		if (armorReduction > 0) damage *= (1.f - (armorReduction / 100.f));
 
 		return damage;
