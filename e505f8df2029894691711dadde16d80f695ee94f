@@ -16,6 +16,24 @@
       "revId": "e505f8df2029894691711dadde16d80f695ee94f",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da3975d1_31e7f0e6",
+        "filename": "MMOCoreORB/src/server/zone/objects/area/areashapes/RectangularAreaShapeImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-09-08T09:40:06Z",
+      "side": 1,
+      "message": "You can disregard this. Once I thought on it some I realized that the farthest point will always be one of the corners.",
+      "parentUuid": "da3975d1_d1c66449",
+      "revId": "e505f8df2029894691711dadde16d80f695ee94f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
