@@ -25,7 +25,15 @@ scavenger = Creature:new {
 	creatureBitmask = NONE,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dressed_tatooine_scavenger.iff"},
+	templates = {"object/mobile/dressed_tatooine_scavenger.iff",
+			"object/mobile/dressed_mercenary_commander_zab_m.iff",
+			"object/mobile/human_male.iff",
+			"object/mobile/dressed_criminal_thug_bothan_female_01.iff",
+			"object/mobile/dressed_goon_twk_male_01.iff",
+			"object/mobile/dressed_robber_twk_female_01.iff",
+			"object/mobile/dressed_goon_twk_female_01.iff",
+			"object/mobile/dressed_robber_human_female_01.iff",
+			"object/mobile/dressed_villain_trandoshan_male_01.iff"},
 	lootGroups = {
 	    {
 	        groups = {
