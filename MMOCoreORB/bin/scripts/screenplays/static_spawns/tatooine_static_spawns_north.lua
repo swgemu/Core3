@@ -14,9 +14,9 @@ end
 function TatooineStaticSpawnsNorthScreenPlay:spawnMobiles()
 
 	--Ruins + Bounty Hunter Camp (7045,7042)
-	spawnMobile("tatooine", "bounty_hunter_thug", 360, 7039.7, 71.4, 7045.3, 145, 0)
-	spawnMobile("tatooine", "bounty_hunter_thug", 360, 7047.8, 70.6, 7042.2, -90, 0)
-	spawnMobile("tatooine", "bounty_hunter_thug", 360, 7039.3, 70.6, 7036.1, -160, 0)
+	spawnMobile("tatooine", "bounty_hunter_thug", 360, 7039.0, 72.2, 7051.5, -125, 0)
+	spawnMobile("tatooine", "bounty_hunter_thug", 360, 7034.1, 71.6, 7052.1, 131, 0)
+	spawnMobile("tatooine", "bounty_hunter_thug", 360, 7051.6, 70.6, 7038.0, -10, 0)
 
 	--Broken Walls (2980,6465)
 	spawnMobile("tatooine", "desert_demon_bodyguard", 300, 2991.2, 46.5, 6460.1, 60, 0)
