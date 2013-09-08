@@ -34,6 +34,24 @@
       "revId": "e157d4c00623a6de1ac96daecd33d0599eb884b1",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da3975d1_7160d835",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-09-08T17:46:57Z",
+      "side": 1,
+      "message": "You can check for isAiAgent and cast, no need to have all the creos in the server with these persistent variables",
+      "parentUuid": "da3975d1_318370ce",
+      "revId": "e157d4c00623a6de1ac96daecd33d0599eb884b1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
