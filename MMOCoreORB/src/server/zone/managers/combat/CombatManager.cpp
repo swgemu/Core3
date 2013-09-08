@@ -965,7 +965,7 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 	}
 
 	if (lairObserver && lairObserver->getSpawnNumber() > 2)
-		damage *= 10;
+		damage *= 3.5;
 
 	return damage;
 }
