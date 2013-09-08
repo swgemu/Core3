@@ -81,7 +81,7 @@ public:
 		if (!cancelled && playerCreature->getPendingTask("sample") != NULL) {
 			playerCreature->removePendingTask("sample");
 
-			ManagedReference<SurveySession*> session = cast<SurveySession*>(playerCreature->getActiveSession(SessionFacadeType::SURVEY));
+			ManagedReference<SurveySession*> session = playerCreature->getActiveSession(SessionFacadeType::SURVEY).castTo<SurveySession*>();
 			if(session != NULL) {
 				session->reSample();
 			}

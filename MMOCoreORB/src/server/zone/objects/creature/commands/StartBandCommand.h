@@ -77,7 +77,7 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(creature->getActiveSession(SessionFacadeType::ENTERTAINING));
+		ManagedReference<EntertainingSession*> session = creature->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
 		if (session != NULL) {
 			if (session->isDancing()) {
@@ -148,7 +148,7 @@ public:
 				if (groupMember == NULL)
 					continue;
 
-				ManagedReference<EntertainingSession*> groupMemberSession = dynamic_cast<EntertainingSession*>(groupMember->getActiveSession(SessionFacadeType::ENTERTAINING));
+				ManagedReference<EntertainingSession*> groupMemberSession = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
 				if (groupMemberSession != NULL)
 					continue;

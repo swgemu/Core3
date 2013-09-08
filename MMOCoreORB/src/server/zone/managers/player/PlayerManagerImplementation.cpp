@@ -1452,7 +1452,7 @@ void PlayerManagerImplementation::resendLoginMessageToAll() {
 void PlayerManagerImplementation::handleAbortTradeMessage(CreatureObject* player) {
 	Locker _locker(player);
 
-	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
+	ManagedReference<TradeSession*> tradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 	if (tradeContainer == NULL) {
 		AbortTradeMessage* msg = new AbortTradeMessage();
@@ -1471,7 +1471,7 @@ void PlayerManagerImplementation::handleAbortTradeMessage(CreatureObject* player
 
 		Locker locker(receiver, player);
 
-		ManagedReference<TradeSession*> receiverContainer = dynamic_cast<TradeSession*>(receiver->getActiveSession(SessionFacadeType::TRADE));
+		ManagedReference<TradeSession*> receiverContainer = receiver->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 		if (receiverContainer != NULL && receiverContainer->getTradeTargetPlayer() == player->getObjectID()) {
 			receiver->dropActiveSession(SessionFacadeType::TRADE);
@@ -1491,7 +1491,7 @@ void PlayerManagerImplementation::handleAbortTradeMessage(CreatureObject* player
 void PlayerManagerImplementation::handleAddItemToTradeWindow(CreatureObject* player, uint64 itemID) {
 	Locker _locker(player);
 
-	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
+	ManagedReference<TradeSession*> tradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 	if (tradeContainer == NULL)
 		return;
@@ -1542,7 +1542,7 @@ void PlayerManagerImplementation::handleGiveMoneyMessage(CreatureObject* player,
 	if (value > currentMoney)
 		value = currentMoney;
 
-	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
+	ManagedReference<TradeSession*> tradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 	if (tradeContainer == NULL)
 		return;
@@ -1563,7 +1563,7 @@ void PlayerManagerImplementation::handleGiveMoneyMessage(CreatureObject* player,
 void PlayerManagerImplementation::handleAcceptTransactionMessage(CreatureObject* player) {
 	Locker _locker(player);
 
-	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
+	ManagedReference<TradeSession*> tradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 	if (tradeContainer == NULL)
 		return;
@@ -1584,7 +1584,7 @@ void PlayerManagerImplementation::handleAcceptTransactionMessage(CreatureObject*
 void PlayerManagerImplementation::handleUnAcceptTransactionMessage(CreatureObject* player) {
 	Locker _locker(player);
 
-	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
+	ManagedReference<TradeSession*> tradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 	if (tradeContainer == NULL)
 		return;
@@ -1607,8 +1607,8 @@ bool PlayerManagerImplementation::checkTradeItems(CreatureObject* player, Creatu
 	PlayerObject* ghost = player->getPlayerObject();
 	PlayerObject* targetGhost = receiver->getPlayerObject();
 
-	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
-	ManagedReference<TradeSession*> receiverContainer = dynamic_cast<TradeSession*>(receiver->getActiveSession(SessionFacadeType::TRADE));
+	ManagedReference<TradeSession*> tradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
+	ManagedReference<TradeSession*> receiverContainer = receiver->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 	if (tradeContainer == NULL || receiverContainer == NULL)
 		return false;
@@ -1751,7 +1751,7 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(CreatureObject* playe
 
 	Locker locker(player);
 
-	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
+	ManagedReference<TradeSession*> tradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 	if (tradeContainer == NULL) {
 		return;
@@ -1767,7 +1767,7 @@ void PlayerManagerImplementation::handleVerifyTradeMessage(CreatureObject* playe
 
 		Locker clocker(receiver, player);
 
-		ManagedReference<TradeSession*> receiverTradeContainer = dynamic_cast<TradeSession*>(receiver->getActiveSession(SessionFacadeType::TRADE));
+		ManagedReference<TradeSession*> receiverTradeContainer = receiver->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 		if (receiverTradeContainer == NULL) {
 			tradeContainer->setVerifiedTrade(false);
@@ -1851,7 +1851,7 @@ int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observabl
 			creature->clearState(CreatureState::ALERT, true);
 
 			// Check POSTERCHANGE on Meditate...
-			Reference<MeditateTask*> meditateTask = cast<MeditateTask*>( creature->getPendingTask("meditate"));
+			Reference<MeditateTask*> meditateTask = creature->getPendingTask("meditate").castTo<MeditateTask*>();
 			if (meditateTask != NULL) {
 				creature->removePendingTask("meditate");
 
@@ -1860,7 +1860,7 @@ int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observabl
 			}
 
 			// Check POSTERCHANGE on Force Meditate...
-			Reference<ForceMeditateTask*> fmeditateTask = cast<ForceMeditateTask*>( creature->getPendingTask("forcemeditate"));
+			Reference<ForceMeditateTask*> fmeditateTask = creature->getPendingTask("forcemeditate").castTo<ForceMeditateTask*>( );
 
 			if (fmeditateTask != NULL) {
 				creature->removePendingTask("forcemeditate");
@@ -1871,7 +1871,7 @@ int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observabl
 		}
 
 		// Check POSTURECHANGED disrupting Logout...
-		Reference<LogoutTask*> logoutTask = cast<LogoutTask*>(creature->getPendingTask("logout"));
+		Reference<LogoutTask*> logoutTask = creature->getPendingTask("logout").castTo<LogoutTask*>();
 		if(logoutTask != NULL) {
 			logoutTask->cancelLogout();
 		}
@@ -3569,7 +3569,7 @@ void PlayerManagerImplementation::rescheduleCorpseDestruction(CreatureObject* pl
 
 	//If the looting player or no group members in the area can harvest then despawn immediately
 	if (shouldRescheduleCorpseDestruction(player, ai)) {
-		Reference<DespawnCreatureTask*> despawn = dynamic_cast<DespawnCreatureTask*>(ai->getPendingTask("despawn"));
+		Reference<DespawnCreatureTask*> despawn = ai->getPendingTask("despawn").castTo<DespawnCreatureTask*>();
 		if (despawn != NULL) {
 			despawn->cancel();
 			despawn->reschedule(1000);

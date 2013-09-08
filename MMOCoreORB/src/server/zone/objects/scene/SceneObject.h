@@ -400,7 +400,7 @@ public:
 
 	PendingTasksMap* getPendingTasks();
 
-	Task* getPendingTask(const String& name);
+	Reference<Task* > getPendingTask(const String& name);
 
 	bool containsPendingTask(const String& name);
 
@@ -410,7 +410,7 @@ public:
 
 	int getCountableObjectsRecursive();
 
-	Facade* getActiveSession(unsigned int type);
+	Reference<Facade* > getActiveSession(unsigned int type);
 
 	void addActiveSession(unsigned int type, Facade* session);
 
@@ -446,7 +446,7 @@ public:
 
 	int getActiveAreasSize();
 
-	ActiveArea* getActiveRegion();
+	Reference<ActiveArea* > getActiveRegion();
 
 	ManagedWeakReference<CityRegion* > getCityRegion();
 
@@ -1078,7 +1078,7 @@ public:
 
 	PendingTasksMap* getPendingTasks();
 
-	Task* getPendingTask(const String& name);
+	Reference<Task* > getPendingTask(const String& name);
 
 	bool containsPendingTask(const String& name);
 
@@ -1088,7 +1088,7 @@ public:
 
 	virtual int getCountableObjectsRecursive();
 
-	Facade* getActiveSession(unsigned int type);
+	Reference<Facade* > getActiveSession(unsigned int type);
 
 	void addActiveSession(unsigned int type, Facade* session);
 
@@ -1124,7 +1124,7 @@ public:
 
 	int getActiveAreasSize();
 
-	ActiveArea* getActiveRegion();
+	Reference<ActiveArea* > getActiveRegion();
 
 	virtual ManagedWeakReference<CityRegion* > getCityRegion();
 
@@ -1675,7 +1675,7 @@ public:
 
 	int getCountableObjectsRecursive();
 
-	Facade* getActiveSession(unsigned int type);
+	Reference<Facade* > getActiveSession(unsigned int type);
 
 	void addActiveSession(unsigned int type, Facade* session);
 
@@ -1705,7 +1705,7 @@ public:
 
 	int getActiveAreasSize();
 
-	ActiveArea* getActiveRegion();
+	Reference<ActiveArea* > getActiveRegion();
 
 	Zone* getZone();
 

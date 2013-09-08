@@ -234,7 +234,7 @@ public:
 
 	void sendPlanetTravelPointListResponse(CreatureObject* player);
 
-	SceneObject* createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
+	Reference<SceneObject* > createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
 
 	bool validateRegionName(const String& name);
 
@@ -365,7 +365,7 @@ public:
 	PlanetManagerImplementation(DummyConstructorParameter* param);
 
 private:
-	SceneObject* loadSnapshotObject(WorldSnapshotNode* node, WorldSnapshotIff* wsiff, int& totalObjects);
+	Reference<SceneObject* > loadSnapshotObject(WorldSnapshotNode* node, WorldSnapshotIff* wsiff, int& totalObjects);
 
 	void loadSnapshotObjects();
 
@@ -412,7 +412,7 @@ public:
 
 	void sendPlanetTravelPointListResponse(CreatureObject* player);
 
-	SceneObject* createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
+	Reference<SceneObject* > createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
 
 	bool validateRegionName(const String& name);
 
@@ -537,7 +537,7 @@ public:
 
 	void sendPlanetTravelPointListResponse(CreatureObject* player);
 
-	SceneObject* createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
+	Reference<SceneObject* > createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
 
 	bool validateRegionName(const String& name);
 

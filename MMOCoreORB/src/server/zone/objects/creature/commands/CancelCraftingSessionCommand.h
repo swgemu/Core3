@@ -68,7 +68,7 @@ public:
 		if(creature == NULL || !creature->isPlayerCreature())
 			return INVALIDTARGET;
 
-		Reference<CraftingSession*> session = cast<CraftingSession*>(creature->getActiveSession(SessionFacadeType::CRAFTING));
+		Reference<CraftingSession*> session = creature->getActiveSession(SessionFacadeType::CRAFTING).castTo<CraftingSession*>();
 
 		if(session == NULL) {
 			return GENERALERROR;

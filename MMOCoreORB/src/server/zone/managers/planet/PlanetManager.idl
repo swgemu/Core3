@@ -154,6 +154,7 @@ class PlanetManager extends ManagedService implements Logger {
 	}
 	
 	@local
+	@reference
 	private native SceneObject loadSnapshotObject(WorldSnapshotNode node, WorldSnapshotIff wsiff, @dereferenced int totalObjects);
 	private native void loadSnapshotObjects();
 	private native void loadTravelFares();
@@ -220,6 +221,7 @@ class PlanetManager extends ManagedService implements Logger {
 	 * @param departurePoint The point on the arrival planet to which the ticket is set to arrive.
 	 * @return Returns a travel ticket for the route specified, or NULL if it could not be created.
 	 */
+	@reference
 	public native SceneObject createTicket(final string departurePoint, final string arrivalPlanet, final string arrivalPoint);
 	
 	public native boolean validateRegionName(final string name);

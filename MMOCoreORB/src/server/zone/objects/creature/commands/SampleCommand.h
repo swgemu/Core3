@@ -67,7 +67,7 @@ public:
 			return INVALIDLOCOMOTION;
 
 		if (creature->isPlayerCreature()) {
-			ManagedReference<SurveySession*> session = cast<SurveySession*>(creature->getActiveSession(SessionFacadeType::SURVEY));
+			ManagedReference<SurveySession*> session = creature->getActiveSession(SessionFacadeType::SURVEY).castTo<SurveySession*>();
 			if(session == NULL) {
 				creature->sendSystemMessage("@ui:survey_notool");
 			}

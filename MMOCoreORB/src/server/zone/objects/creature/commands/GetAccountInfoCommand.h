@@ -81,7 +81,7 @@ public:
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 		ManagedReference<Account*> account = NULL;
 
-		session = cast<PlayerManagementSession*>(creature->getActiveSession(SessionFacadeType::PLAYERMANAGEMENT));
+		session = creature->getActiveSession(SessionFacadeType::PLAYERMANAGEMENT).castTo<PlayerManagementSession*>();
 
 		if(session != NULL) {
 			if(!admin->hasSuiBoxWindowType(SuiWindowType::ADMIN_ACCOUNTINFO))

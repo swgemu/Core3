@@ -26,6 +26,9 @@ LootGroupMap::~LootGroupMap() {
 }
 
 int LootGroupMap::initialize() {
+	if (lua != NULL)
+		return ERROR_CODE;
+
 	lua = new Lua();
 	lua->init();
 

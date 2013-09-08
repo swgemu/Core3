@@ -238,7 +238,7 @@ void PlayerObjectImplementation::unload() {
 
 	creature->stopEntertaining();
 
-	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(creature->getActiveSession(SessionFacadeType::TRADE));
+	ManagedReference<TradeSession*> tradeContainer = creature->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 	if (tradeContainer != NULL)
 		creature->dropActiveSession(SessionFacadeType::TRADE);
