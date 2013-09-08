@@ -71,7 +71,7 @@ public:
 		if (zone == NULL || obj->getObjectTemplate() == NULL)
 			return;
 
-		SceneObject* objTooClose = zone->getPlanetManager()->findObjectTooCloseToDecoration(mayor->getPositionX(), mayor->getPositionY(), obj->getObjectTemplate()->getNoBuildRadius());
+		Reference<SceneObject*> objTooClose = zone->getPlanetManager()->findObjectTooCloseToDecoration(mayor->getPositionX(), mayor->getPositionY(), obj->getObjectTemplate()->getNoBuildRadius());
 
 		if(objTooClose != NULL){
 			StringIdChatParameter msg;

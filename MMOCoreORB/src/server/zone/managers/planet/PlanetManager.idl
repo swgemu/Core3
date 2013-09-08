@@ -196,6 +196,7 @@ class PlanetManager extends ManagedService implements Logger {
 
 	public native boolean isCampingPermittedAt(float x, float y, float margin);
 	
+	@reference
 	public native SceneObject findObjectTooCloseToDecoration(float x, float y, float margin);
 
 	public native boolean isInRangeWithPoi(float x, float y, float range);

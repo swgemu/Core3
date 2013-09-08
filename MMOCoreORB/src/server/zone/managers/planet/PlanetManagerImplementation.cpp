@@ -728,7 +728,7 @@ bool PlanetManagerImplementation::isCampingPermittedAt(float x, float y, float m
 	return true;
 }
 
-SceneObject* PlanetManagerImplementation::findObjectTooCloseToDecoration(float x, float y, float margin) {
+Reference<SceneObject*> PlanetManagerImplementation::findObjectTooCloseToDecoration(float x, float y, float margin) {
 	SortedVector<ManagedReference<QuadTreeEntry* > > closeObjects;
 
 	Vector3 targetPos(x, y,0);

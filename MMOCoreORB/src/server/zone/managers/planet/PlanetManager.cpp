@@ -174,7 +174,7 @@ bool PlanetManager::isCampingPermittedAt(float x, float y, float margin) {
 		return _implementation->isCampingPermittedAt(x, y, margin);
 }
 
-SceneObject* PlanetManager::findObjectTooCloseToDecoration(float x, float y, float margin) {
+Reference<SceneObject* > PlanetManager::findObjectTooCloseToDecoration(float x, float y, float margin) {
 	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -1301,7 +1301,7 @@ bool PlanetManagerAdapter::isCampingPermittedAt(float x, float y, float margin) 
 	return (static_cast<PlanetManager*>(stub))->isCampingPermittedAt(x, y, margin);
 }
 
-SceneObject* PlanetManagerAdapter::findObjectTooCloseToDecoration(float x, float y, float margin) {
+Reference<SceneObject* > PlanetManagerAdapter::findObjectTooCloseToDecoration(float x, float y, float margin) {
 	return (static_cast<PlanetManager*>(stub))->findObjectTooCloseToDecoration(x, y, margin);
 }
 
