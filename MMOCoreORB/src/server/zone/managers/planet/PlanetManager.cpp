@@ -28,7 +28,7 @@
  *	PlanetManagerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADCLIENTPOIDATA__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_,RPC_ISCAMPINGPERMITTEDAT__FLOAT_FLOAT_FLOAT_,RPC_ISINRANGEWITHPOI__FLOAT_FLOAT_FLOAT_,RPC_ISINOBJECTSNOBUILDZONE__FLOAT_FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_VALIDATEREGIONNAME__STRING_,RPC_VALIDATECLIENTCITYINRANGE__CREATUREOBJECT_FLOAT_FLOAT_,RPC_GETWEATHERMANAGER__,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_GETREGION__STRING_,RPC_GETREGIONAT__FLOAT_FLOAT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISINCOMINGTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_,RPC_SCHEDULESHUTTLE__CREATUREOBJECT_INT_,RPC_REMOVESHUTTLE__CREATUREOBJECT_,RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_,RPC_ISINWATER__FLOAT_FLOAT_,RPC_REMOVEPLAYERCITYTRAVELPOINT__STRING_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADCLIENTPOIDATA__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_,RPC_ISCAMPINGPERMITTEDAT__FLOAT_FLOAT_FLOAT_,RPC_FINDOBJECTTOOCLOSETODECORATION__FLOAT_FLOAT_FLOAT_,RPC_ISINRANGEWITHPOI__FLOAT_FLOAT_FLOAT_,RPC_ISINOBJECTSNOBUILDZONE__FLOAT_FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_VALIDATEREGIONNAME__STRING_,RPC_VALIDATECLIENTCITYINRANGE__CREATUREOBJECT_FLOAT_FLOAT_,RPC_GETWEATHERMANAGER__,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_GETREGION__STRING_,RPC_GETREGIONAT__FLOAT_FLOAT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISINCOMINGTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_,RPC_SCHEDULESHUTTLE__CREATUREOBJECT_INT_,RPC_REMOVESHUTTLE__CREATUREOBJECT_,RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_,RPC_ISINWATER__FLOAT_FLOAT_,RPC_REMOVEPLAYERCITYTRAVELPOINT__STRING_};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -172,6 +172,22 @@ bool PlanetManager::isCampingPermittedAt(float x, float y, float margin) {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isCampingPermittedAt(x, y, margin);
+}
+
+SceneObject* PlanetManager::findObjectTooCloseToDecoration(float x, float y, float margin) {
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_FINDOBJECTTOOCLOSETODECORATION__FLOAT_FLOAT_FLOAT_);
+		method.addFloatParameter(x);
+		method.addFloatParameter(y);
+		method.addFloatParameter(margin);
+
+		return static_cast<SceneObject*>(method.executeWithObjectReturn());
+	} else
+		return _implementation->findObjectTooCloseToDecoration(x, y, margin);
 }
 
 bool PlanetManager::isInRangeWithPoi(float x, float y, float range) {
@@ -1093,6 +1109,11 @@ void PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(isCampingPermittedAt(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter()));
 		}
 		break;
+	case RPC_FINDOBJECTTOOCLOSETODECORATION__FLOAT_FLOAT_FLOAT_:
+		{
+			resp->insertLong(findObjectTooCloseToDecoration(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter())->_getObjectID());
+		}
+		break;
 	case RPC_ISINRANGEWITHPOI__FLOAT_FLOAT_FLOAT_:
 		{
 			resp->insertBoolean(isInRangeWithPoi(inv->getFloatParameter(), inv->getFloatParameter(), inv->getFloatParameter()));
@@ -1278,6 +1299,10 @@ bool PlanetManagerAdapter::isBuildingPermittedAt(float x, float y, SceneObject* 
 
 bool PlanetManagerAdapter::isCampingPermittedAt(float x, float y, float margin) {
 	return (static_cast<PlanetManager*>(stub))->isCampingPermittedAt(x, y, margin);
+}
+
+SceneObject* PlanetManagerAdapter::findObjectTooCloseToDecoration(float x, float y, float margin) {
+	return (static_cast<PlanetManager*>(stub))->findObjectTooCloseToDecoration(x, y, margin);
 }
 
 bool PlanetManagerAdapter::isInRangeWithPoi(float x, float y, float range) {
