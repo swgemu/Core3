@@ -6,6 +6,7 @@
  */
 
 #include "RectangularAreaShape.h"
+#include "RingAreaShape.h"
 #include "engine/util/u3d/Segment.h"
 
 bool RectangularAreaShapeImplementation::containsPoint(float x, float y) {
@@ -47,7 +48,18 @@ Vector3 RectangularAreaShapeImplementation::getRandomPosition(const Vector3& ori
 }
 
 bool RectangularAreaShapeImplementation::intersectsWith(AreaShape* areaShape) {
-	return areaShape->containsPoint(getClosestPoint(areaShape->getAreaCenter()));
+	if (areaShape->isRingAreaShape()) {
+		ManagedReference<RingAreaShape*> ring = cast<RingAreaShape*>(areaShape);
+		Vector3 center = ring->getAreaCenter();
+
+		if (ring->getOuterRadius2() < center.squaredDistanceTo(getClosestPoint(center))) // wholly outside the ring
+			return false;
+		else if (ring->getInnerRadius2() > center.squaredDistanceTo(getFarthestPoint(center))) // wholly inside the ring's inner circle
+			return false;
+		else
+			return true;
+	} else
+		return areaShape->containsPoint(getClosestPoint(areaShape->getAreaCenter()));
 }
 
 Vector3 RectangularAreaShapeImplementation::getClosestPoint(const Vector3& position) {
@@ -79,6 +91,41 @@ Vector3 RectangularAreaShapeImplementation::getClosestPoint(const Vector3& posit
 		point = bottom;
 	}
 	if (point.distanceTo(position) > left.distanceTo(position)) {
+		point = left;
+	}
+
+	return point;
+}
+
+Vector3 RectangularAreaShapeImplementation::getFarthestPoint(const Vector3& position) {
+	// Calculate corners.
+	Vector3 topLeft, topRight, bottomLeft, bottomRight;
+	topLeft.set(areaCenter.getX() - width / 2, 0, areaCenter.getY() - height / 2);
+	topRight.set(areaCenter.getX() + width / 2, 0, areaCenter.getY() - height / 2);
+	bottomLeft.set(areaCenter.getX() - width / 2, 0, areaCenter.getY() + height / 2);
+	bottomRight.set(areaCenter.getX() + width / 2, 0, areaCenter.getY() + height / 2);
+
+	// Find farthest point on each side.
+	Segment topSegment(topLeft, topRight);
+	Segment rightSegment(topRight, bottomRight);
+	Segment bottomSegment(bottomRight, bottomLeft);
+	Segment leftSegment(bottomLeft, topLeft);
+
+	Vector3 top, right, bottom, left;
+	top = topSegment.getFarthestPointFrom(position);
+	right = rightSegment.getFarthestPointFrom(position);
+	bottom = bottomSegment.getFarthestPointFrom(position);
+	left = leftSegment.getFarthestPointFrom(position);
+
+	// Find the farthest of the four side points.
+	Vector3 point = top;
+	if (point.distanceTo(position) < right.distanceTo(position)) {
+		point = right;
+	}
+	if (point.distanceTo(position) < bottom.distanceTo(position)) {
+		point = bottom;
+	}
+	if (point.distanceTo(position) < left.distanceTo(position)) {
 		point = left;
 	}
 
