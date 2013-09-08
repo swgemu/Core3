@@ -17,7 +17,7 @@ public:
 	}
 
 	void run(CreatureObject* player, SuiBox* sui, bool cancelPressed, Vector<UnicodeString>* args) {
-		ManagedReference<DestroyStructureSession*> session = dynamic_cast<DestroyStructureSession*>(player->getActiveSession(SessionFacadeType::DESTROYSTRUCTURE));
+		ManagedReference<DestroyStructureSession*> session = player->getActiveSession(SessionFacadeType::DESTROYSTRUCTURE).castTo<DestroyStructureSession*>();
 
 		if (session == NULL)
 			return;

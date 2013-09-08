@@ -534,8 +534,7 @@ void CityManagerImplementation::withdrawFromCityTreasury(CityRegion* city,
 
 	ManagedReference<CityTreasuryWithdrawalSession*>
 			session =
-					dynamic_cast<CityTreasuryWithdrawalSession*> (mayor->getActiveSession(
-							SessionFacadeType::CITYWITHDRAW));
+					mayor->getActiveSession(SessionFacadeType::CITYWITHDRAW).castTo<CityTreasuryWithdrawalSession*>();
 
 	if (session == NULL)
 		return;

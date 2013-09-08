@@ -35,7 +35,7 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 	if (player->isInCombat() || player->isDead() || player->isIncapacitated())
 		return;
 
-	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
+	ManagedReference<TradeSession*> tradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 	if (tradeContainer != NULL) {
 		server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
@@ -112,7 +112,7 @@ void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	if (!isASubChildOf(player))
 		return;
 
-	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
+	ManagedReference<TradeSession*> tradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 	if (tradeContainer != NULL) {
 		server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
@@ -155,8 +155,9 @@ void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 
 void VehicleControlDeviceImplementation::cancelSpawnObject(CreatureObject* player) {
 
-	if(player->getPendingTask("call_mount")) {
-		player->getPendingTask("call_mount")->cancel();
+	Reference<Task*> mountTask = player->getPendingTask("call_mount");
+	if(mountTask) {
+		mountTask->cancel();
 		player->removePendingTask("call_mount");
 	}
 

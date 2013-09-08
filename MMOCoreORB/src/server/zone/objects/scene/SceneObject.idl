@@ -773,6 +773,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 */
 	@local
 	@read
+	@reference
 	public Task getPendingTask(final string name) {
 		synchronized (containerLock) {
 			if (pendingTasks == null)
@@ -803,6 +804,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	 * Returns a Facade session
 	 */
 	@read
+	@reference
 	public Facade getActiveSession(unsigned int type) {
 		return objectActiveSessions.get(type);
 	}
@@ -911,6 +913,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	@read
+	@reference
 	public ActiveArea getActiveRegion() {
 		synchronized (containerLock) {
 			for (int i = 0; i < activeAreas.size(); i++) {

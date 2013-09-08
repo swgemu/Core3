@@ -163,7 +163,7 @@ void CraftingToolImplementation::fillAttributeList(AttributeListMessage* alm,
 	alm->insertAttribute("craft_tool_status", status);
 
 
-	Reference<CraftingSession*> session = cast<CraftingSession*>(object->getActiveSession(SessionFacadeType::CRAFTING));
+	Reference<CraftingSession*> session = object->getActiveSession(SessionFacadeType::CRAFTING).castTo<CraftingSession*>();
 	if(session == NULL && getParent() != NULL) {
 		disperseItems();
 	}

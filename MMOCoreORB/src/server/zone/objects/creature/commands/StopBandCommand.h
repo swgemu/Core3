@@ -99,7 +99,7 @@ public:
 				if (groupMember == NULL || !groupMember->isPlayingMusic())
 					continue;
 
-				ManagedReference<EntertainingSession*> bandMemberSession = dynamic_cast<EntertainingSession*>(groupMember->getActiveSession(SessionFacadeType::ENTERTAINING));
+				ManagedReference<EntertainingSession*> bandMemberSession = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
 				if (bandMemberSession == NULL || !bandMemberSession->isPlayingMusic())
 					continue;

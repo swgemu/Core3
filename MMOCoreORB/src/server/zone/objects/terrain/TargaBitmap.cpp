@@ -126,16 +126,7 @@ void TargaBitmap::readObject(ObjectInputStream* stream) {
 
 	for (int i = header.width - 1; i >= 0; --i) {
 		for (int j = 0; j < header.height; ++j) {
-			switch (header.datatypecode) {
-			case 3:
-				pixelData[i * header.width + j]->read(stream, read);
-				break;
-			case 2:
-				pixelData[i * header.width + j]->read(stream, read);
-				break;
-			default:
-				break;
-			}
+			pixelData[i * header.width + j]->read(stream, read);
 		}
 	}
 }

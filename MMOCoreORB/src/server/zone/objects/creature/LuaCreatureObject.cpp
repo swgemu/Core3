@@ -380,11 +380,12 @@ int LuaCreatureObject::getBankCredits(lua_State *L) {
 }
 
 int LuaCreatureObject::getConversationSession(lua_State* L) {
-	ConversationSession* session = cast<ConversationSession*>(realObject->getActiveSession(SessionFacadeType::CONVERSATION));
+	Reference<ConversationSession*> session = realObject->getActiveSession(SessionFacadeType::CONVERSATION).castTo<ConversationSession*>();
 
-	if (session != NULL)
+	if (session != NULL) {
+		session->_setUpdated(true);
 		lua_pushlightuserdata(L, session);
-	else
+	} else
 		lua_pushnil(L);
 
 	return 1;

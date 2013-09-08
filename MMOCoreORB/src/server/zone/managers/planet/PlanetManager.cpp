@@ -251,7 +251,7 @@ void PlanetManager::sendPlanetTravelPointListResponse(CreatureObject* player) {
 		_implementation->sendPlanetTravelPointListResponse(player);
 }
 
-SceneObject* PlanetManager::createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint) {
+Reference<SceneObject* > PlanetManager::createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint) {
 	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -1321,7 +1321,7 @@ void PlanetManagerAdapter::sendPlanetTravelPointListResponse(CreatureObject* pla
 	(static_cast<PlanetManager*>(stub))->sendPlanetTravelPointListResponse(player);
 }
 
-SceneObject* PlanetManagerAdapter::createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint) {
+Reference<SceneObject* > PlanetManagerAdapter::createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint) {
 	return (static_cast<PlanetManager*>(stub))->createTicket(departurePoint, arrivalPlanet, arrivalPoint);
 }
 

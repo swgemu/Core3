@@ -942,7 +942,7 @@ PendingTasksMap* SceneObject::getPendingTasks() {
 		return _implementation->getPendingTasks();
 }
 
-Task* SceneObject::getPendingTask(const String& name) {
+Reference<Task* > SceneObject::getPendingTask(const String& name) {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		throw ObjectNotLocalException(this);
@@ -1009,7 +1009,7 @@ int SceneObject::getCountableObjectsRecursive() {
 		return _implementation->getCountableObjectsRecursive();
 }
 
-Facade* SceneObject::getActiveSession(unsigned int type) {
+Reference<Facade* > SceneObject::getActiveSession(unsigned int type) {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -1246,7 +1246,7 @@ int SceneObject::getActiveAreasSize() {
 		return _implementation->getActiveAreasSize();
 }
 
-ActiveArea* SceneObject::getActiveRegion() {
+Reference<ActiveArea* > SceneObject::getActiveRegion() {
 	SceneObjectImplementation* _implementation = static_cast<SceneObjectImplementation*>(_getImplementationForRead());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -4269,7 +4269,7 @@ PendingTasksMap* SceneObjectImplementation::getPendingTasks() {
 	return pendingTasks;
 }
 
-Task* SceneObjectImplementation::getPendingTask(const String& name) {
+Reference<Task* > SceneObjectImplementation::getPendingTask(const String& name) {
 	// server/zone/objects/scene/SceneObject.idl():  		}
 {
 	Locker _locker((&containerLock));
@@ -4293,7 +4293,7 @@ bool SceneObjectImplementation::containsPendingTask(const String& name) {
 }
 }
 
-Facade* SceneObjectImplementation::getActiveSession(unsigned int type) {
+Reference<Facade* > SceneObjectImplementation::getActiveSession(unsigned int type) {
 	// server/zone/objects/scene/SceneObject.idl():  		return objectActiveSessions.get(type);
 	return (&objectActiveSessions)->get(type);
 }
@@ -4383,7 +4383,7 @@ int SceneObjectImplementation::getActiveAreasSize() {
 	return (&activeAreas)->size();
 }
 
-ActiveArea* SceneObjectImplementation::getActiveRegion() {
+Reference<ActiveArea* > SceneObjectImplementation::getActiveRegion() {
 	// server/zone/objects/scene/SceneObject.idl():  		}
 {
 	Locker _locker((&containerLock));
@@ -6705,7 +6705,7 @@ int SceneObjectAdapter::getCountableObjectsRecursive() {
 	return (static_cast<SceneObject*>(stub))->getCountableObjectsRecursive();
 }
 
-Facade* SceneObjectAdapter::getActiveSession(unsigned int type) {
+Reference<Facade* > SceneObjectAdapter::getActiveSession(unsigned int type) {
 	return (static_cast<SceneObject*>(stub))->getActiveSession(type);
 }
 
@@ -6765,7 +6765,7 @@ int SceneObjectAdapter::getActiveAreasSize() {
 	return (static_cast<SceneObject*>(stub))->getActiveAreasSize();
 }
 
-ActiveArea* SceneObjectAdapter::getActiveRegion() {
+Reference<ActiveArea* > SceneObjectAdapter::getActiveRegion() {
 	return (static_cast<SceneObject*>(stub))->getActiveRegion();
 }
 

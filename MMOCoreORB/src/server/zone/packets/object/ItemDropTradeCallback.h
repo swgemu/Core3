@@ -46,7 +46,7 @@ public:
 		CreatureObject* targetPlayer = cast<CreatureObject*>( targetObject.get());
 		PlayerObject* ghost = player->getPlayerObject();
 
-		ManagedReference<TradeSession*> playerTradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
+		ManagedReference<TradeSession*> playerTradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 		if (player->isInCombat() || (playerTradeContainer != NULL && playerTradeContainer->getTradeTargetPlayer() == targetToTrade))
 			return;
@@ -62,7 +62,7 @@ public:
 
 		PlayerObject* targetGhost = targetPlayer->getPlayerObject();
 
-		ManagedReference<TradeSession*> targetTradeContainer = dynamic_cast<TradeSession*>(targetPlayer->getActiveSession(SessionFacadeType::TRADE));
+		ManagedReference<TradeSession*> targetTradeContainer = targetPlayer->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 		if (targetTradeContainer != NULL && targetTradeContainer->getTradeTargetPlayer() == player->getObjectID()) {
 			BeginTradeMessage* msg = new BeginTradeMessage(targetPlayer->getObjectID());

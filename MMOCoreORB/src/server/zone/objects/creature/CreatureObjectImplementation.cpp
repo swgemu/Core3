@@ -611,7 +611,7 @@ void CreatureObjectImplementation::setCombatState() {
 		if (posture == CreaturePosture::SITTING)
 			setPosture(CreaturePosture::UPRIGHT);
 
-		Reference<LogoutTask*> logoutTask = cast<LogoutTask*>(getPendingTask("logout"));
+		Reference<LogoutTask*> logoutTask = getPendingTask("logout").castTo<LogoutTask*>();
 
 		if (logoutTask != NULL)
 			logoutTask->cancelLogout();

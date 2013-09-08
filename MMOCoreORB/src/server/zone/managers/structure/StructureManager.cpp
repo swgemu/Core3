@@ -711,9 +711,7 @@ SceneObject* StructureManager::getInRangeParkingGarage(SceneObject* obj,
 }
 
 int StructureManager::redeedStructure(CreatureObject* creature) {
-	ManagedReference<DestroyStructureSession*> session =
-			dynamic_cast<DestroyStructureSession*>(creature->getActiveSession(
-					SessionFacadeType::DESTROYSTRUCTURE));
+	ManagedReference<DestroyStructureSession*> session = creature->getActiveSession(SessionFacadeType::DESTROYSTRUCTURE).castTo<DestroyStructureSession*>();
 
 	if (session == NULL)
 		return 0;

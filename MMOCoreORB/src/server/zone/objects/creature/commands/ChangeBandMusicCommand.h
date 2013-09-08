@@ -63,7 +63,7 @@ public:
 	}
 
 	bool canPlaySong(CreatureObject* entertainer, String song) {
-		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(entertainer->getActiveSession(SessionFacadeType::ENTERTAINING));
+		ManagedReference<EntertainingSession*> session = entertainer->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
 		if (session == NULL || !session->isPlayingMusic())
 			return false;
@@ -113,7 +113,7 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(creature->getActiveSession(SessionFacadeType::ENTERTAINING));
+		ManagedReference<EntertainingSession*> session = creature->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
 		if (session == NULL) {
 			creature->sendSystemMessage("@performance:music_must_be_performing_self"); // You must be playing music before you can change the song.
@@ -188,7 +188,7 @@ public:
 				if (groupMember == NULL || !groupMember->isPlayingMusic())
 					continue;
 
-				ManagedReference<EntertainingSession*> bandMemberSession = dynamic_cast<EntertainingSession*>(groupMember->getActiveSession(SessionFacadeType::ENTERTAINING));
+				ManagedReference<EntertainingSession*> bandMemberSession = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
 				if (bandMemberSession == NULL || !bandMemberSession->isPlayingMusic())
 					continue;

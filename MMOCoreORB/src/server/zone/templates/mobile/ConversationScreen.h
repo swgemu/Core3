@@ -219,7 +219,7 @@ public:
 			screenToSave = NULL;
 		}
 
-		ConversationSession* session = cast<ConversationSession* >(player->getActiveSession(SessionFacadeType::CONVERSATION));
+		Reference<ConversationSession*> session = player->getActiveSession(SessionFacadeType::CONVERSATION).castTo<ConversationSession* >();
 		if (session != NULL) {
 			session->setLastConversationScreen(screenToSave);
 		}

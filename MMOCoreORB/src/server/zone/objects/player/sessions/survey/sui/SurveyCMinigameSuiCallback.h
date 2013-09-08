@@ -28,7 +28,7 @@ public:
 				return;
 		}
 
-		ManagedReference<SurveySession*> session = cast<SurveySession*>(player->getActiveSession(SessionFacadeType::SURVEY));
+		ManagedReference<SurveySession*> session = player->getActiveSession(SessionFacadeType::SURVEY).castTo<SurveySession*>();
 
 		if(session == NULL) {
 			return;

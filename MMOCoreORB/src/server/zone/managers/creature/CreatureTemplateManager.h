@@ -27,8 +27,8 @@ namespace creature {
 class CreatureTemplateManager : public Singleton<CreatureTemplateManager>, public Object, public Logger {
 protected:
 	VectorMap<uint32, Vector<String> > weaponMap;
-	VectorMap<uint32, DynamicSpawnGroup*> dynamicGroupMap;
-	VectorMap<uint32, StaticSpawnGroup*> staticGroupMap;
+	VectorMap<uint32, Reference<DynamicSpawnGroup*> > dynamicGroupMap;
+	VectorMap<uint32, Reference<StaticSpawnGroup*> > staticGroupMap;
 	Reference<Lua*> lua;
 	HashTable<uint32, Reference<CreatureTemplate*> > hashTable;
 

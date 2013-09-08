@@ -102,7 +102,7 @@ int SurveyToolImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 
 			Locker locker(_this.get());
 
-			ManagedReference<SurveySession*> session = cast<SurveySession*>(player->getActiveSession(SessionFacadeType::SURVEY));
+			ManagedReference<SurveySession*> session = player->getActiveSession(SessionFacadeType::SURVEY).castTo<SurveySession*>();
 			if(session == NULL) {
 				session = new SurveySession(player);
 				session->initializeSession(_this.get());

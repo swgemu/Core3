@@ -23,7 +23,7 @@ public:
 	void run() {
 		Locker lock(creatureObject);
 
-		ManagedReference<PlaceStructureSession*> session = dynamic_cast<PlaceStructureSession*>(creatureObject->getActiveSession(SessionFacadeType::PLACESTRUCTURE));
+		ManagedReference<PlaceStructureSession*> session = creatureObject->getActiveSession(SessionFacadeType::PLACESTRUCTURE).castTo<PlaceStructureSession*>();
 
 		if (session == NULL)
 			return;
