@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da3975d1_d1c66449",
+        "filename": "MMOCoreORB/src/server/zone/objects/area/areashapes/RectangularAreaShapeImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-09-08T08:43:26Z",
+      "side": 1,
+      "message": "Needs an engine update to add getFarthestPointFrom(const Vector3\u0026 point) method to engine/util/u3d/Segment.h or I need to redo this part.",
+      "revId": "e505f8df2029894691711dadde16d80f695ee94f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
