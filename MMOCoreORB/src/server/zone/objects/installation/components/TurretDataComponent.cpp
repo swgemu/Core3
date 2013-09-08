@@ -100,6 +100,12 @@ void TurretDataComponent::updateManualCooldown(float secondsToAdd){
 	nextManualFireTime.addMiliTime(milisecondsToAdd);
 }
 
+unsigned int TurretDataComponent::getArmorRating(){
+	if(templateData != NULL)
+		return templateData->getArmorRating();
+
+	return 0;
+}
 
 float TurretDataComponent::getKinetic(){
 	if(templateData != NULL)

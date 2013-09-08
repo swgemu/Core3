@@ -216,8 +216,7 @@ protected:
 	int getArmorObjectReduction(WeaponObject* weapon, ArmorObject* armor);
 	int getArmorReduction(TangibleObject* attacker, WeaponObject* weapon, CreatureObject* defender, float damage, int poolsToDamage, const CreatureAttackData& data);
 	int getArmorReduction(CreatureObject* attacker, WeaponObject* weapon, CreatureObject* defender, float damage, int poolsToDamage, const CreatureAttackData& data);
-	float getArmorPiercing(ArmorObject* armor, WeaponObject* weapon);
-	float getArmorPiercing(AiAgent* defender, WeaponObject* weapon);
+	float getArmorPiercing(TangibleObject* defender, WeaponObject* weapon);
 	int getArmorNpcReduction(CreatureObject* attacker, AiAgent* defender, WeaponObject* weapon);
 	int getArmorTurretReduction(CreatureObject* attacker, TangibleObject* defender, WeaponObject* weapon);
 
