@@ -86,6 +86,7 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/managers/creature/tests/LuaMobileTest.cpp \
 			  	server/zone/objects/creature/ai/bt/tests/BehaviorTest.cpp \
 			  	server/zone/objects/area/areashapes/tests/RectangularAreaShapeTest.cpp \
+			  	server/zone/objects/area/areashapes/tests/RingAreaShapeTest.cpp \
 			  	server/zone/tests/DeadlockTestBase.cpp \
 			  	server/zone/objects/terrain/tests/BasicTerrainTest.cpp
 
@@ -134,6 +135,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/area/areashapes/AreaShape.cpp \
 				server/zone/objects/area/areashapes/CircularAreaShape.cpp \
 				server/zone/objects/area/areashapes/RectangularAreaShape.cpp \
+				server/zone/objects/area/areashapes/RingAreaShape.cpp \
 				server/zone/objects/factorycrate/FactoryCrate.cpp \
 				server/zone/objects/intangible/IntangibleObject.cpp \
 				server/zone/objects/intangible/ControlDevice.cpp \
@@ -507,6 +509,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/area/areashapes/AreaShapeImplementation.cpp \
 		server/zone/objects/area/areashapes/CircularAreaShapeImplementation.cpp \
 		server/zone/objects/area/areashapes/RectangularAreaShapeImplementation.cpp \
+		server/zone/objects/area/areashapes/RingAreaShapeImplementation.cpp \
 		server/zone/objects/region/RegionImplementation.cpp \
 		server/zone/objects/terrain/ProceduralTerrainAppearance.cpp \
 		server/zone/objects/terrain/MapFractal.cpp \

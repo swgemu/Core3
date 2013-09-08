@@ -6,6 +6,8 @@
  */
 
 #include "CircularAreaShape.h"
+#include "RectangularAreaShape.h"
+#include "RingAreaShape.h"
 
 bool CircularAreaShapeImplementation::containsPoint(float x, float y) {
 	Vector3 position;
@@ -46,6 +48,12 @@ bool CircularAreaShapeImplementation::intersectsWith(AreaShape* areaShape) {
 	if (areaShape->isCircularAreaShape()) {
 		ManagedReference<CircularAreaShape*> circle = cast<CircularAreaShape*>(areaShape);
 		return intersectsWithCircle(circle);
+	} else if (areaShape->isRectangularAreaShape()) {
+		ManagedReference<RectangularAreaShape*> rectangle = cast<RectangularAreaShape*>(areaShape);
+		return rectangle->intersectsWith(_this.get());
+	} else if (areaShape->isRingAreaShape()) {
+		ManagedReference<RingAreaShape*> ring = cast<RingAreaShape*>(areaShape);
+		return ring->intersectsWith(_this.get());
 	} else {
 		return false;
 	}

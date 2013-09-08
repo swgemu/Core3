@@ -12,6 +12,7 @@
 #include "server/conf/ConfigManager.h"
 #include "server/zone/objects/area/areashapes/CircularAreaShape.h"
 #include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
+#include "server/zone/objects/area/areashapes/RingAreaShape.h"
 
 void SpawnAreaMap::loadMap(Zone* z) {
 	zone = z;
@@ -165,6 +166,8 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 	float radius = 0;
 	float width = 0;
 	float height = 0;
+	float innerRadius = 0;
+	float outerRadius = 0;
 
     LuaObject areaShapeObject = areaObj.getObjectAt(4);
     if (areaShapeObject.isValidTable()) {
@@ -173,6 +176,9 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
         } else if (areaShapeObject.getIntAt(1) == 2) {
             width = areaShapeObject.getFloatAt(2);
             height = areaShapeObject.getFloatAt(3);
+        } else if (areaShapeObject.getIntAt(1) == 3) {
+        	innerRadius = areaShapeObject.getFloatAt(2);
+        	outerRadius = areaShapeObject.getFloatAt(3);
         }
         areaShapeObject.pop();
     } else {
@@ -182,7 +188,7 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
         height = 0;
     }
 
-	if (radius == 0 && width == 0 && height == 0)
+	if (radius == 0 && width == 0 && height == 0 && innerRadius == 0 && outerRadius == 0)
 		return;
 
 	uint32 crc = 0;
@@ -216,6 +222,12 @@ void SpawnAreaMap::readAreaObject(LuaObject& areaObj) {
 		circularAreaShape->setAreaCenter(x, y);
 		circularAreaShape->setRadius(radius);
 		area->setAreaShape(circularAreaShape);
+	} else if (innerRadius > 0 && outerRadius > 0) {
+		ManagedReference<RingAreaShape*> ringAreaShape = new RingAreaShape();
+		ringAreaShape->setAreaCenter(x, y);
+		ringAreaShape->setInnerRadius(innerRadius);
+		ringAreaShape->setOuterRadius(outerRadius);
+		area->setAreaShape(ringAreaShape);
 	} else {
 		ManagedReference<CircularAreaShape*> circularAreaShape = new CircularAreaShape();
 		circularAreaShape->setAreaCenter(x, y);

@@ -141,6 +141,14 @@ class RectangularAreaShape extends AreaShape {
 	}
 
 	/**
+	 * Check if this is a ring area shape.
+	 * @return true if it is a ring area shape.
+	 */
+	public abstract boolean isRingAreaShape() {
+		return false;
+	}
+
+	/**
 	 * Check if this area shape intersects with the supplied area shape.
 	 * @param areaShape the area shape to check for intersections with.s
 	 * @return true if the area shapes intersects each other.
@@ -156,7 +164,17 @@ class RectangularAreaShape extends AreaShape {
 	@dereferenced
 	@local
 	private native Vector3 getClosestPoint(@dereferenced final Vector3 position);
-	
+
+	/**
+	 * Calculates the point in the area that has the longest distance to the supplied
+	 * position.
+	 * @param position the position to find the closest point towards.
+	 * @return the farthest point inside the area.
+	 */
+	@dereferenced
+	@local
+	private native Vector3 getFarthestPoint(@dereferenced final Vector3 position);
+
 	/**
 	 * Get the area of the areaShape.
 	 * @return the area of the area shape.

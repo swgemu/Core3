@@ -41,6 +41,8 @@ public:
 
 	bool isRectangularAreaShape();
 
+	bool isRingAreaShape();
+
 	bool intersectsWith(AreaShape* areaShape);
 
 	float getArea();
@@ -100,6 +102,8 @@ public:
 	virtual bool isCircularAreaShape();
 
 	virtual bool isRectangularAreaShape();
+
+	virtual bool isRingAreaShape();
 
 	virtual bool intersectsWith(AreaShape* areaShape);
 
@@ -163,6 +167,8 @@ public:
 	bool isCircularAreaShape();
 
 	bool isRectangularAreaShape();
+
+	bool isRingAreaShape();
 
 	bool intersectsWith(AreaShape* areaShape);
 
