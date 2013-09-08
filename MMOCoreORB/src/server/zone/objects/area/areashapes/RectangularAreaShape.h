@@ -57,6 +57,8 @@ public:
 
 	bool isRectangularAreaShape();
 
+	bool isRingAreaShape();
+
 	bool intersectsWith(AreaShape* areaShape);
 
 	float getArea();
@@ -117,10 +119,14 @@ public:
 
 	virtual bool isRectangularAreaShape();
 
+	virtual bool isRingAreaShape();
+
 	virtual bool intersectsWith(AreaShape* areaShape);
 
 private:
 	Vector3 getClosestPoint(const Vector3& position);
+
+	Vector3 getFarthestPoint(const Vector3& position);
 
 public:
 	virtual float getArea();
@@ -179,6 +185,8 @@ public:
 	bool isCircularAreaShape();
 
 	bool isRectangularAreaShape();
+
+	bool isRingAreaShape();
 
 	bool intersectsWith(AreaShape* areaShape);
 
