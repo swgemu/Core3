@@ -113,6 +113,8 @@
 
 #include "server/conf/ConfigManager.h"
 
+#include "DataArchiveStore.h"
+
 Lua* TemplateManager::luaTemplatesInstance = NULL;
 
 AtomicInteger TemplateManager::loadedTemplatesCount;
@@ -136,7 +138,6 @@ TemplateManager::TemplateManager() {
 	portalLayoutMap = new PortalLayoutMap();
 	floorMeshMap = new FloorMeshMap();
 	appearanceMap = new AppearanceMap();
-	treeDirectory = NULL;
 
 	registerFunctions();
 	registerGlobals();
@@ -384,7 +385,11 @@ void TemplateManager::loadTreArchive() {
 	if (treFilesToLoad.size() == 0)
 		return;
 
-	info("Loading TRE archives...", true);
+	DataArchiveStore::instance()->loadTres(path, treFilesToLoad);
+
+/*	info("Loading TRE archives...", true);
+
+
 
 	treeDirectory = new TreeArchive();
 
@@ -399,7 +404,8 @@ void TemplateManager::loadTreArchive() {
 		treeDirectory->unpackFile(fullPath);
 	}
 
-	info("Finished loading TRE archives.", true);
+
+	info("Finished loading TRE archives.", true);*/
 }
 
 void TemplateManager::addTemplate(uint32 key, const String& fullName, LuaObject* templateData) {
@@ -700,11 +706,10 @@ ObjectInputStream* TemplateManager::openTreFile(const String& fileName) {
 
 	IffStream* iffStream = NULL;
 
-	if (treeDirectory == NULL)
-		return NULL;
-
 	int size = 0;
-	byte* data = treeDirectory->getBytes(fileName, size);
+	//byte* data = treeDirectory->getBytes(fileName, size);
+
+	byte* data = DataArchiveStore::instance()->getData(fileName, size);
 
 	if (size == 0)
 		return NULL;
@@ -717,37 +722,7 @@ ObjectInputStream* TemplateManager::openTreFile(const String& fileName) {
 }
 
 IffStream* TemplateManager::openIffFile(const String& fileName) {
-	if (fileName.isEmpty())
-		return NULL;
-
-	IffStream* iffStream = NULL;
-
-	if (treeDirectory == NULL)
-		return NULL;
-
-	int size = 0;
-	byte* data = treeDirectory->getBytes(fileName, size);
-
-	if (size == 0)
-		return NULL;
-
-	iffStream = new IffStream();
-
-	if (iffStream != NULL) {
-		try {
-			if (!iffStream->parseChunks(data, size, fileName)) {
-				delete iffStream;
-				iffStream = NULL;
-			}
-		} catch (Exception& e) {
-			delete iffStream;
-			iffStream = NULL;
-		}
-	}
-
-	delete [] data;
-
-	return iffStream;
+	return DataArchiveStore::instance()->openIffFile(fileName);
 }
 
 FloorMesh* TemplateManager::getFloorMesh(const String& fileName) {

@@ -8,11 +8,13 @@
 #include "StringIdManager.h"
 #include "server/zone/templates/string/StringFile.h"
 #include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/managers/templates/DataArchiveStore.h"
 
 void StringIdManager::populateDatabase() {
 	int count = 0;
 
-	TreeArchive* treeArchive = TemplateManager::instance()->getTreeArchive();
+	TemplateManager::instance();
+	TreeArchive* treeArchive = DataArchiveStore::instance()->getTreeArchive();
 
 	Vector<String>* files = treeArchive->getFilesAndSubDirectoryFiles("string/en");
 

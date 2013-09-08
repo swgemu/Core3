@@ -23,7 +23,7 @@ class FilterFractal : public ProceduralRule<'FFRA'>, public FilterProceduralRule
 	MapFractal* mfrc;
 
 public:
-	FilterFractal() {
+	FilterFractal() : FilterProceduralRule(1) {
 		mfrc = NULL;
 		filterType = HEIGHTTYPE;
 	}
@@ -31,7 +31,7 @@ public:
 	void parseFromIffStream(engine::util::IffStream* iffStream);
 	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0005'>);
 
-	float process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator);
+	float process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator, FilterRectangle* rect);
 
 	bool isEnabled() {
 		return informationHeader.isEnabled();

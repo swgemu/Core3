@@ -44,6 +44,11 @@ public:
 		return false;
 	}
 
+	virtual float getMinX() = 0;
+	virtual float getMaxX() = 0;
+	virtual float getMinY() = 0;
+	virtual float getMaxY() = 0;
+
 	virtual void translateBoundary(float x, float y) = 0;
 };
 

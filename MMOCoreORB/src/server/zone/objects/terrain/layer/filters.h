@@ -8,7 +8,7 @@
 #ifndef FILTERS_H_
 #define FILTERS_H_
 
-#include "filters/FilterBIT.h"
+#include "filters/FilterBitmap.h"
 #include "filters/FilterDirection.h"
 #include "filters/FilterFractal.h"
 #include "filters/FilterHeight.h"
