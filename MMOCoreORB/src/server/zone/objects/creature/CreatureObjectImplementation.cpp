@@ -1314,6 +1314,11 @@ void CreatureObjectImplementation::setPosture(int newPosture, bool notifyClient)
 		broadcastMessages(&messages, true);
 	}
 
+	if(posture != CreaturePosture::UPRIGHT && posture != CreaturePosture::DRIVINGVEHICLE
+				&& posture != CreaturePosture::RIDINGCREATURE && posture != CreaturePosture::SKILLANIMATING ) {
+		setCurrentSpeed(0);
+	}
+
 	updateLocomotion();
 	notifyPostureChange(newPosture);
 }
