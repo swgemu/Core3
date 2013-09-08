@@ -16,6 +16,24 @@
       "revId": "e157d4c00623a6de1ac96daecd33d0599eb884b1",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da3975d1_318370ce",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 418
+      },
+      "writtenOn": "2013-09-08T16:57:51Z",
+      "side": 1,
+      "message": "I\u0027d put them there due to the static spawns being loaded within void SpawnAreaMap::loadStaticSpawns() and using a CreatureObject as the loading type",
+      "parentUuid": "da3975d1_51303456",
+      "revId": "e157d4c00623a6de1ac96daecd33d0599eb884b1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
