@@ -200,6 +200,10 @@ void SceneObjectImplementation::createContainerComponent() {
 	containerComponent = cast<ContainerComponent*>(templateObject->getContainerComponent());
 }
 
+void SceneObjectImplementation::setZoneComponent(const String& name) {
+	zoneComponent = ComponentManager::instance()->getComponent<ZoneComponent*>(name);
+}
+
 void SceneObjectImplementation::createComponents() {
 	if (templateObject != NULL) {
 		String zoneComponentClassName = templateObject->getZoneComponent();

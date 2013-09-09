@@ -1410,6 +1410,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@local
 	public native void setContainerComponent(final string name);
+	public native void setZoneComponent(final string name);
 	
 	public boolean isNoTrade() {
 		return templateObject.isNoTrade();

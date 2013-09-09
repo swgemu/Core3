@@ -620,6 +620,8 @@ public:
 
 	void setContainerComponent(const String& name);
 
+	void setZoneComponent(const String& name);
+
 	bool isNoTrade();
 
 	bool isContainerFull();
@@ -1298,6 +1300,8 @@ public:
 
 	void setContainerComponent(const String& name);
 
+	void setZoneComponent(const String& name);
+
 	bool isNoTrade();
 
 	bool isContainerFull();
@@ -1832,6 +1836,8 @@ public:
 	bool isPlayerCreature();
 
 	bool isDecoration();
+
+	void setZoneComponent(const String& name);
 
 	bool isNoTrade();
 
