@@ -9,7 +9,7 @@ ledger = {
 	},
 	customizationStringNames = {},
 	customizationValues = {},
-	junkDealerTypeNeeded = LOOTJUNK,
+	junkDealerTypeNeeded = JUNKGENERIC,
 	junkMinValue = 2,
 	junkMaxValue = 22
 }

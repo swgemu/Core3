@@ -39,7 +39,10 @@ knife_donkuwah = {
 		{"duration", 120, 120},
 		{"potency", 60, 60},
 		{"uses", 500, 500}
-	}
+	},
+	junkDealerTypeNeeded = JUNKWEAPONS,
+	junkMinValue = 2,
+	junkMaxValue = 22
 
 }
 

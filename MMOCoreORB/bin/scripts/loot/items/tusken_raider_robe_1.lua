@@ -8,7 +8,10 @@ tusken_raider_robe_1 = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	junkDealerTypeNeeded = JUNKTUSKEN,
+	junkMinValue = 2,
+	junkMaxValue = 22
 }
 
 addLootItemTemplate("tusken_raider_robe_1", tusken_raider_robe_1)

@@ -40,7 +40,10 @@ nyax_sword = {
 		{"duration", 30, 240},
 		{"potency", 1, 100},
 		{"uses", 250, 9999}
-	}
+	},
+	junkDealerTypeNeeded = JUNKWEAPONS,
+	junkMinValue = 2,
+	junkMaxValue = 22
 
 }
 
