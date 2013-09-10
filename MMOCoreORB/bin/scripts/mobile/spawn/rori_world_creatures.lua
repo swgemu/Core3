@@ -25,6 +25,15 @@ rori_world_creatures = {
 			size = 25
 		},
 		{
+			lairTemplateName = "rori_squall_pack_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 6,
+			maxDifficulty = 6,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
 			lairTemplateName = "rori_capper_spineflap_hive_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 6,
@@ -52,10 +61,37 @@ rori_world_creatures = {
 			size = 25
 		},
 		{
+			lairTemplateName = "krevol",
+			spawnLimit = -1,
+			minDifficulty = 8,
+			maxDifficulty = 8,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "barkmite_hills",
+			spawnLimit = -1,
+			minDifficulty = 9,
+			maxDifficulty = 9,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
 			lairTemplateName = "rori_borgle_lair_neutral_large",
 			spawnLimit = -1,
 			minDifficulty = 12,
 			maxDifficulty = 12,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "rori_nudfuh_pack_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 13,
+			maxDifficulty = 13,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
@@ -309,7 +345,7 @@ rori_world_creatures = {
 			minDifficulty = 38,
 			maxDifficulty = 38,
 			numberToSpawn = 0,
-			weighting = 1,
+			weighting = 15,
 			size = 25
 		},
 		{

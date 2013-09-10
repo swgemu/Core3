@@ -16,7 +16,7 @@ NOSPAWNAREA         = 0x1000
 NOBUILDZONEAREA     = 0x10000
 
 rori_regions = {
-	{"a_rebel_outpost",0,0,{1,0},UNDEFINEDAREA,1},
+	{"a_rebel_outpost",3669,-6455,{1,200},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"asworal_everglades_1",0,0,{1,0},UNDEFINEDAREA,1},
 	{"asworal_everglades_2",0,0,{1,0},UNDEFINEDAREA,1},
 	{"asworal_everglades_3",0,0,{1,0},UNDEFINEDAREA,1},
@@ -85,8 +85,9 @@ rori_regions = {
 	{"narlis_fens_1",0,0,{1,0},UNDEFINEDAREA,1},
 	{"narlis_fens_2",0,0,{1,0},UNDEFINEDAREA,1},
 	{"narmle",0,0,{1,0},UNDEFINEDAREA,1},
-	{"narmle_easy_newbie",-5205,-2290,{1,2048},LAIRSPAWNAREA,1,"rori_starter_creatures"},
-	{"narmle_medium_newbie",0,0,{1,0},UNDEFINEDAREA,1},
+	{"narmle_easy_newbie",-5205,-2290,{1,1800},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"rori_starter_creatures"},
+		--requires ringareashape
+	--{"narmle_medium_newbie",-5200,-2290,{3,1600,2600},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"rori_medium_creatures"},
         {"narmle_spike",-3389,-2096,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"northeast_mountains",0,0,{1,0},UNDEFINEDAREA,1},
 	{"northern_islands_1",0,0,{1,0},UNDEFINEDAREA,1},
@@ -103,10 +104,11 @@ rori_regions = {
 	{"plains_6",0,0,{1,0},UNDEFINEDAREA,1},
         {"pygmy_torton_cave",-1986,-4584,{1,150},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
         {"rancher_and_pets",-430,-5437,{1,50},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
-        {"rebel_outpost",3669,-6455,{1,200},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
+        {"rebel_outpost",3677,-6447,{1,2000},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"rori_medium_creatures"},
 	{"restuss",0,0,{1,0},UNDEFINEDAREA,1},
-	{"restuss_easy_newbie",5300,5700,{1,2048},LAIRSPAWNAREA,1,"rori_starter_creatures"},
-	{"restuss_medium_newbie",0,0,{1,0},UNDEFINEDAREA,1},
+	{"restuss_easy_newbie",5300,5700,{1,1800},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"rori_starter_creatures"},
+		--requires ringareashape
+	--{"restuss_medium_newbie",5305,5700,{3,1600,2600},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"rori_medium_creatures"},
         {"rori_gungan_swamp_town",-2073,3315,{1,200},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
         {"rorgungan_ruins",-5826,5826,{1,50},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
         {"rorgungan_ruins_2",-6964,-5637,{1,75},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
