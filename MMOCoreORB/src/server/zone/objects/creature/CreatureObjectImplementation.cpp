@@ -2726,3 +2726,5 @@ float CreatureObjectImplementation::calculateCostAdjustment(uint8 stat, float ba
 
 	return cost;
 }
+
+	

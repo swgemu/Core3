@@ -19,7 +19,10 @@ tusken_raider_helmet_1 = {
 	         {"armor_mind_encumbrance",0,0,0,0},
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	junkDealerTypeNeeded = JUNKTUSKEN,
+	junkMinValue = 2,
+	junkMaxValue = 22
 }
 
 addLootItemTemplate("tusken_raider_helmet_1", tusken_raider_helmet_1)
