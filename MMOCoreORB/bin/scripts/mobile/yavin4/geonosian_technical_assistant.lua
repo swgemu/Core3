@@ -29,10 +29,18 @@ geonosian_technical_assistant = Creature:new {
 	templates = {
 		"object/mobile/dressed_geonosian_noble_01.iff",
 		"object/mobile/dressed_geonosian_noble_02.iff"},
-	lootGroups = {},
+	lootGroups = {
+		{
+			groups = {
+				{group = "geonosian_common", chance = 5000000},
+				{group = "geonosian_relic", chance = 5000000}
+			},
+			lootChance = 3000000
+		}
+	},
 	weapons = {"geonosian_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermaster,marksmanmaster,pistoleermaster,riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(geonosian_technical_assistant, "geonosian_technical_assistant")
