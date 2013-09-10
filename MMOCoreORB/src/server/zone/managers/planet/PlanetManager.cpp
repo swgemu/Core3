@@ -28,7 +28,7 @@
  *	PlanetManagerStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADCLIENTPOIDATA__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_,RPC_ISCAMPINGPERMITTEDAT__FLOAT_FLOAT_FLOAT_,RPC_FINDOBJECTTOOCLOSETODECORATION__FLOAT_FLOAT_FLOAT_,RPC_ISINRANGEWITHPOI__FLOAT_FLOAT_FLOAT_,RPC_ISINOBJECTSNOBUILDZONE__FLOAT_FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_VALIDATEREGIONNAME__STRING_,RPC_VALIDATECLIENTCITYINRANGE__CREATUREOBJECT_FLOAT_FLOAT_,RPC_GETWEATHERMANAGER__,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_GETREGION__STRING_,RPC_GETREGIONAT__FLOAT_FLOAT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISINCOMINGTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_,RPC_SCHEDULESHUTTLE__CREATUREOBJECT_INT_,RPC_REMOVESHUTTLE__CREATUREOBJECT_,RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_,RPC_ISINWATER__FLOAT_FLOAT_,RPC_REMOVEPLAYERCITYTRAVELPOINT__STRING_};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__,RPC_FINALIZE__,RPC_INITIALIZE__,RPC_LOADCLIENTREGIONS__,RPC_LOADCLIENTPOIDATA__,RPC_LOADBADGEAREAS__,RPC_LOADPERFORMANCELOCATIONS__,RPC_ISBUILDINGPERMITTEDAT__FLOAT_FLOAT_SCENEOBJECT_,RPC_ISCAMPINGPERMITTEDAT__FLOAT_FLOAT_FLOAT_,RPC_FINDOBJECTTOOCLOSETODECORATION__FLOAT_FLOAT_FLOAT_,RPC_ISINRANGEWITHPOI__FLOAT_FLOAT_FLOAT_,RPC_ISINOBJECTSNOBUILDZONE__FLOAT_FLOAT_FLOAT_,RPC_GETTRAVELFARE__STRING_STRING_,RPC_SENDPLANETTRAVELPOINTLISTRESPONSE__CREATUREOBJECT_,RPC_CREATETICKET__STRING_STRING_STRING_,RPC_VALIDATEREGIONNAME__STRING_,RPC_VALIDATECLIENTCITYINRANGE__CREATUREOBJECT_FLOAT_FLOAT_,RPC_GETWEATHERMANAGER__,RPC_GETREGIONCOUNT__,RPC_GETNUMBEROFCITIES__,RPC_INCREASENUMBEROFCITIES__,RPC_GETREGION__INT_,RPC_GETREGION__STRING_,RPC_GETREGIONAT__FLOAT_FLOAT_,RPC_ADDREGION__CITYREGION_,RPC_DROPREGION__STRING_,RPC_HASREGION__STRING_,RPC_ADDPERFORMANCELOCATION__SCENEOBJECT_,RPC_ISEXISTINGPLANETTRAVELPOINT__STRING_,RPC_ISINTERPLANETARYTRAVELALLOWED__STRING_,RPC_ISINCOMINGTRAVELALLOWED__STRING_,RPC_ISTRAVELTOLOCATIONPERMITTED__STRING_STRING_STRING_,RPC_SCHEDULESHUTTLE__CREATUREOBJECT_INT_,RPC_REMOVESHUTTLE__CREATUREOBJECT_,RPC_CHECKSHUTTLESTATUS__CREATUREOBJECT_CREATUREOBJECT_,RPC_ISDUNGEONCELL__INT_,RPC_ISINWATER__FLOAT_FLOAT_,RPC_REMOVEPLAYERCITYTRAVELPOINT__STRING_};
 
 PlanetManager::PlanetManager(Zone* planet, ZoneProcessServer* srv) : ManagedService(DummyConstructorParameter::instance()) {
 	PlanetManagerImplementation* _implementation = new PlanetManagerImplementation(planet, srv);
@@ -577,6 +577,29 @@ bool PlanetManager::checkShuttleStatus(CreatureObject* creature, CreatureObject*
 		return _implementation->checkShuttleStatus(creature, shuttle);
 }
 
+bool PlanetManager::isDungeonCell(int cellID) {
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISDUNGEONCELL__INT_);
+		method.addSignedIntParameter(cellID);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isDungeonCell(cellID);
+}
+
+Vector3 PlanetManager::getDungeonEjectionPoint(int cellID) {
+	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getDungeonEjectionPoint(cellID);
+}
+
 bool PlanetManager::isInWater(float x, float y) {
 	PlanetManagerImplementation* _implementation = static_cast<PlanetManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -748,6 +771,10 @@ bool PlanetManagerImplementation::readObjectMember(ObjectInputStream* stream, co
 		TypeInfo<Reference<PlanetTravelPointList* > >::parseFromBinaryStream(&planetTravelPointList, stream);
 		return true;
 
+	case 0xb046f205: //PlanetManager.dungeonList
+		TypeInfo<Reference<DungeonList* > >::parseFromBinaryStream(&dungeonList, stream);
+		return true;
+
 	case 0x7f1b36da: //PlanetManager.shuttleportAwayTime
 		TypeInfo<int >::parseFromBinaryStream(&shuttleportAwayTime, stream);
 		return true;
@@ -830,6 +857,14 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_nameHashCode = 0xb046f205; //PlanetManager.dungeonList
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<Reference<DungeonList* > >::toBinaryStream(&dungeonList, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_nameHashCode = 0x7f1b36da; //PlanetManager.shuttleportAwayTime
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
@@ -895,13 +930,14 @@ int PlanetManagerImplementation::writeObjectMembers(ObjectOutputStream* stream) 
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 12;
+	return _count + 13;
 }
 
 PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProcessServer* srv) {
 	_initializeImplementation();
 	Reference<TerrainManager*> _ref0;
 	Reference<PlanetTravelPointList*> _ref1;
+	Reference<DungeonList*> _ref2;
 	// server/zone/managers/planet/PlanetManager.idl():  		zone = planet;
 	zone = planet;
 	// server/zone/managers/planet/PlanetManager.idl():  		server = srv;
@@ -944,6 +980,8 @@ PlanetManagerImplementation::PlanetManagerImplementation(Zone* planet, ZoneProce
 	(&travelFares)->setNoDuplicateInsertPlan();
 	// server/zone/managers/planet/PlanetManager.idl():  		planetTravelPointList = new PlanetTravelPointList();
 	planetTravelPointList = _ref1 = new PlanetTravelPointList();
+	// server/zone/managers/planet/PlanetManager.idl():  		dungeonList = new DungeonList();
+	dungeonList = _ref2 = new DungeonList();
 }
 
 WeatherManager* PlanetManagerImplementation::getWeatherManager() {
@@ -1249,6 +1287,11 @@ void PlanetManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(checkShuttleStatus(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter())));
 		}
 		break;
+	case RPC_ISDUNGEONCELL__INT_:
+		{
+			resp->insertBoolean(isDungeonCell(inv->getSignedIntParameter()));
+		}
+		break;
 	case RPC_ISINWATER__FLOAT_FLOAT_:
 		{
 			resp->insertBoolean(isInWater(inv->getFloatParameter(), inv->getFloatParameter()));
@@ -1403,6 +1446,10 @@ void PlanetManagerAdapter::removeShuttle(CreatureObject* shuttle) {
 
 bool PlanetManagerAdapter::checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle) {
 	return (static_cast<PlanetManager*>(stub))->checkShuttleStatus(creature, shuttle);
+}
+
+bool PlanetManagerAdapter::isDungeonCell(int cellID) {
+	return (static_cast<PlanetManager*>(stub))->isDungeonCell(cellID);
 }
 
 bool PlanetManagerAdapter::isInWater(float x, float y) {

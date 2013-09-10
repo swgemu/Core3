@@ -245,6 +245,16 @@ yavin4 = {
 		{templateFile = "object/tangible/terminal/terminal_character_builder.iff", ox = 0, oy = -0.705623, oz = 0, ow = 0.708587, x = -6917.18, z = 73, y = -5732.25, parentid = 0},
 		{templateFile = "object/tangible/terminal/terminal_character_builder.iff", ox = 0, oy = 0.723339, oz = 0, ow = -0.690493, x = 4057.69, z = 37, y = -6217.54, parentid = 0},
 		{templateFile = "object/tangible/terminal/terminal_character_builder.iff", ox = 0, oy = 0.00721678, oz = 0, ow = 0.999974, x = -293.367, z = 35, y = 4854.52, parentid = 0}
+	},
+
+	dungeons = {
+		{
+			name = "Geonosian Bio Lab",
+			cells = {1627781, 1627782, 1627783, 1627784, 1627785, 1627786, 1627787, 1627788, 1627789, 1627790, 1627791, 1627792, 1627793, 1627794, 1627795, 1627796, 1627797, 1627798, 1627799, 1627800, 1627801, 1627802, 1627803, 1627804, 1627805, 1627806, 1627807, 1627808, 1627809, 1627810, 1627811, 1627812, 1627813, 1627814, 1627815, 1627816, 1627817, 1627818, 1627819, 1627820, 1627821, 1627822, 1627823, 1627824},
+			ejectX = -6515,
+			ejectY = -423,
+			ejectZ = 85
+		}
 	}
 }
 

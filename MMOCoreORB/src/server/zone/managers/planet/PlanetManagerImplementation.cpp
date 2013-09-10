@@ -105,6 +105,11 @@ void PlanetManagerImplementation::loadLuaConfig() {
 		LuaObject planetObjectsTable = luaObject.getObjectField("planetObjects");
 		loadPlanetObjects(&planetObjectsTable);
 		planetObjectsTable.pop();
+
+		LuaObject dungeonsTable = luaObject.getObjectField("dungeons");
+		dungeonList->readLuaObject(&dungeonsTable);
+		dungeonsTable.pop();
+
 	} else {
 		warning("Configuration settings not found.");
 	}
@@ -819,6 +824,32 @@ bool PlanetManagerImplementation::checkShuttleStatus(CreatureObject* creature, C
 	}
 
 	return true;
+}
+
+bool PlanetManagerImplementation::isDungeonCell(int cellID) {
+	for (int i = 0; i < dungeonList->size(); i++) {
+		Dungeon* dungeon = dungeonList->get(i);
+		Vector<int> cells = dungeon->getCells();
+
+		if (cells.contains(cellID))
+			return true;
+	}
+
+	return false;
+}
+
+Vector3 PlanetManagerImplementation::getDungeonEjectionPoint(int cellID) {
+	Vector3 ejectionPoint;
+
+	for (int i = 0; i < dungeonList->size(); i++) {
+		Dungeon* dungeon = dungeonList->get(i);
+		Vector<int> cells = dungeon->getCells();
+
+		if (cells.contains(cellID))
+			ejectionPoint = dungeon->getEjectionPoint();
+	}
+
+	return ejectionPoint;
 }
 
 bool PlanetManagerImplementation::isInWater(float x, float y) {
