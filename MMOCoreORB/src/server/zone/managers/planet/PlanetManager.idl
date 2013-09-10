@@ -67,6 +67,8 @@ include server.zone.templates.snapshot.WorldSnapshotNode;
 include server.zone.templates.snapshot.WorldSnapshotIff;
 include server.zone.managers.planet.PlanetTravelPointList;
 include server.zone.managers.planet.PlanetTravelPoint;
+include server.zone.managers.planet.DungeonList;
+include server.zone.managers.planet.Dungeon;
 include engine.lua.LuaObject;
 include server.zone.objects.building.ShuttleMap;
 include server.zone.objects.building.tasks.ShuttleDepartureTask;
@@ -91,6 +93,8 @@ class PlanetManager extends ManagedService implements Logger {
 	protected TravelFare travelFares;
 	
 	protected PlanetTravelPointList planetTravelPointList;
+
+	protected DungeonList dungeonList;
 	
 	//In seconds.
 	protected int shuttleportAwayTime;
@@ -151,6 +155,7 @@ class PlanetManager extends ManagedService implements Logger {
 		travelFares.setNoDuplicateInsertPlan();
 		
 		planetTravelPointList = new PlanetTravelPointList();
+		dungeonList = new DungeonList();
 	}
 	
 	@local
@@ -161,7 +166,7 @@ class PlanetManager extends ManagedService implements Logger {
 	
 	@local
 	private native void loadPlanetObjects(LuaObject lua);
-	
+
 	private native void loadLuaConfig();
 	
 	public native void initializeTransientMembers();
@@ -345,6 +350,12 @@ class PlanetManager extends ManagedService implements Logger {
 	}
 	
 	public native boolean checkShuttleStatus(CreatureObject creature, CreatureObject shuttle);
+
+	public native boolean isDungeonCell(int cellID);
+
+	@local
+	@dereferenced
+	public native Vector3 getDungeonEjectionPoint(int cellID);
 
 	public native boolean isInWater(float x, float y);
 

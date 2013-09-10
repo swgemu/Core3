@@ -159,6 +159,10 @@ using namespace server::zone::objects::area;
 
 #include "server/zone/managers/planet/PlanetTravelPoint.h"
 
+#include "server/zone/managers/planet/DungeonList.h"
+
+#include "server/zone/managers/planet/Dungeon.h"
+
 #include "engine/lua/LuaObject.h"
 
 #include "server/zone/objects/building/ShuttleMap.h"
@@ -282,6 +286,10 @@ public:
 
 	bool checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle);
 
+	bool isDungeonCell(int cellID);
+
+	Vector3 getDungeonEjectionPoint(int cellID);
+
 	bool isInWater(float x, float y);
 
 	float findClosestWorldFloor(float x, float y, float z, float swimHeight, IntersectionResults* intersections = NULL, CloseObjectsVector* closeObjects = NULL);
@@ -326,6 +334,8 @@ protected:
 	TravelFare travelFares;
 
 	Reference<PlanetTravelPointList* > planetTravelPointList;
+
+	Reference<DungeonList* > dungeonList;
 
 	int shuttleportAwayTime;
 
@@ -460,6 +470,10 @@ public:
 
 	bool checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle);
 
+	bool isDungeonCell(int cellID);
+
+	Vector3 getDungeonEjectionPoint(int cellID);
+
 	bool isInWater(float x, float y);
 
 	float findClosestWorldFloor(float x, float y, float z, float swimHeight, IntersectionResults* intersections = NULL, CloseObjectsVector* closeObjects = NULL);
@@ -578,6 +592,8 @@ public:
 	void removeShuttle(CreatureObject* shuttle);
 
 	bool checkShuttleStatus(CreatureObject* creature, CreatureObject* shuttle);
+
+	bool isDungeonCell(int cellID);
 
 	bool isInWater(float x, float y);
 
