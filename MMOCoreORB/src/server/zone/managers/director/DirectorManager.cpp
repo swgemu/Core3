@@ -20,6 +20,7 @@
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/name/NameManager.h"
+#include "server/zone/managers/collision/CollisionManager.h"
 #include "ScreenPlayTask.h"
 #include "ScreenPlayObserver.h"
 #include "PersistentEvent.h"
@@ -1543,7 +1544,7 @@ int DirectorManager::getSpawnPoint(lua_State* L) {
 
 	bool found = false;
 	Vector3 position;
-	int retries = 20;
+	int retries = 40;
 
 	while (!found && retries > 0) {
 		float distance = minimumDistance + System::random(maximumDistance - minimumDistance);
@@ -1558,7 +1559,8 @@ int DirectorManager::getSpawnPoint(lua_State* L) {
 
 		if (creatureObject->getZone()->isWithinBoundaries(position)) {
 			found = creatureObject->getZone()->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL) &
-					!creatureObject->getZone()->getPlanetManager()->isInObjectsNoBuildZone(position.getX(), position.getY(), 5.0);
+					!creatureObject->getZone()->getPlanetManager()->isInObjectsNoBuildZone(position.getX(), position.getY(), 5.0) &
+					!CollisionManager::checkSphereCollision(position, 20, creatureObject->getZone());
 		}
 		retries--;
 	}
