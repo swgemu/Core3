@@ -251,7 +251,7 @@ void MissionManagerImplementation::createCraftingMissionObjectives(MissionObject
 
 	for (int i = 0; i < datapadSize; ++i) {
 		if (datapad->getContainerObject(i)->isMissionObject()) {
-			MissionObject* datapadMission = cast<MissionObject*>(datapad->getContainerObject(i));
+			Reference<MissionObject*> datapadMission = datapad->getContainerObject(i).castTo<MissionObject*>();
 
 			if (datapadMission != NULL && datapadMission->getTypeCRC() == MissionObject::CRAFTING && datapadMission != mission) {
 				//Crafting mission found, store the item.
@@ -426,7 +426,7 @@ void MissionManagerImplementation::populateMissionList(MissionTerminal* missionT
 	}
 
 	for (int i = 0; i < bagSize; ++i) {
-		MissionObject* mission = cast<MissionObject*>( missionBag->getContainerObject(i));
+		Reference<MissionObject*> mission = missionBag->getContainerObject(i).castTo<MissionObject*>( );
 
 		//Clear mission type before calling mission generators.
 		mission->setTypeCRC(0);
@@ -1608,13 +1608,13 @@ Vector3 MissionManagerImplementation::getRandomBountyTargetPosition(CreatureObje
 	return position;
 }
 
-MissionObject* MissionManagerImplementation::getBountyHunterMission(CreatureObject* player) {
+Reference<MissionObject*> MissionManagerImplementation::getBountyHunterMission(CreatureObject* player) {
 	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
 
 	if (datapad != NULL) {
 		for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
 			if (datapad->getContainerObject(i)->isMissionObject()) {
-				ManagedReference<MissionObject*> mission = cast<MissionObject*>(datapad->getContainerObject(i));
+				Reference<MissionObject*> mission = datapad->getContainerObject(i).castTo<MissionObject*>();
 
 				if (mission != NULL && mission->getTypeCRC() == MissionObject::BOUNTY) {
 					return mission;
@@ -1737,7 +1737,7 @@ void MissionManagerImplementation::failPlayerBountyMission(uint64 bountyHunter) 
 	if (creature != NULL) {
 		Locker creatureLock(creature);
 
-		ManagedReference<MissionObject*> mission = getBountyHunterMission(creature);
+		Reference<MissionObject*> mission = getBountyHunterMission(creature);
 
 		if (mission != NULL) {
 			ManagedReference<BountyMissionObjective*> objective = cast<BountyMissionObjective*>(mission->getMissionObjective());
@@ -1790,7 +1790,7 @@ void MissionManagerImplementation::deactivateMissions(CreatureObject* player) {
 
 	for (int i = datapadSize - 1; i >= 0; --i) {
 		if (datapad->getContainerObject(i)->isMissionObject()) {
-			MissionObject* mission = cast<MissionObject*>(datapad->getContainerObject(i));
+			Reference<MissionObject*> mission = datapad->getContainerObject(i).castTo<MissionObject*>();
 
 			if (mission != NULL) {
 				//Check if it is target or destination NPC

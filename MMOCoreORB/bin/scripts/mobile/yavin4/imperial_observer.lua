@@ -36,18 +36,18 @@ imperial_observer = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "clothing_attachments", chance = 500000},
-				{group = "armor_attachments", chance = 500000},
-				{group = "geonosian_hard", chance = 1000000},
-				{group = "geonosian_common", chance = 5000000},
-				{group = "geonosian_relic", chance = 3000000}
+				{group = "clothing_attachments", chance = 350000},
+				{group = "armor_attachments", chance = 350000},
+				{group = "geonosian_hard", chance = 900000},
+				{group = "geonosian_common", chance = 4200000},
+				{group = "geonosian_relic", chance = 4200000}
 			},
-			lootChance = 5500000
+			lootChance = 3000000
 		}
 	},
 	weapons = {"imperial_weapons_heavy"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermaster,marksmanmaster,riflemanmaster,carbineermaster)
 }
 
 CreatureTemplates:addCreatureTemplate(imperial_observer, "imperial_observer")

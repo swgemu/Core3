@@ -158,6 +158,10 @@ public:
 			|| posture == CreaturePosture::RIDINGCREATURE || posture == CreaturePosture::SKILLANIMATING ) {
 
 			updatePosition(object);
+		} else {
+			object->setCurrentSpeed(0);
+
+			object->updateLocomotion();
 		}
 
 	}

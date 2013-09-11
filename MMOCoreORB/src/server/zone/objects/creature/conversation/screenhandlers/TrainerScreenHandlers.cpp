@@ -62,7 +62,7 @@ const String TrainerScreenHandlers::ERRORSCREENHANDLERID = "convoscreenerror";
 const String TrainerScreenHandlers::NONEXISTINGSCREENHANDLERID = "non-existing-screen";
 
 ConversationScreen* TrainerInfoScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
-	TrainerConversationSession* session = cast<TrainerConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
+	Reference<TrainerConversationSession*> session = conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION).castTo<TrainerConversationSession* >();
 	if (session == NULL) {
 		nextScreenId = TrainerScreenHandlers::ERRORSCREENHANDLERID;
 		return NULL;
@@ -110,7 +110,7 @@ ConversationScreen* TrainerTrainableSkillsScreenHandler::handleScreen(CreatureOb
 	Vector<String> trainableSkills;
 	Vector<Skill*> masterSkills;
 
-	TrainerConversationSession* session = cast<TrainerConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
+	Reference<TrainerConversationSession*> session = conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION).castTo<TrainerConversationSession* >();
 	if (session == NULL) {
 		nextScreenId = TrainerScreenHandlers::ERRORSCREENHANDLERID;
 		return NULL;
@@ -181,7 +181,7 @@ ConversationScreen* TrainerNextSkillsScreenHandler::handleScreen(CreatureObject*
 	Vector<String> nextSkills;
 	Vector<Skill*> masterSkills;
 
-	TrainerConversationSession* session = cast<TrainerConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
+	Reference<TrainerConversationSession*> session = conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION).castTo<TrainerConversationSession* >();
 	if (session == NULL) {
 		nextScreenId = TrainerScreenHandlers::ERRORSCREENHANDLERID;
 		return NULL;
@@ -249,7 +249,7 @@ void TrainerNextSkillsScreenHandler::getNextSkillsList(CreatureObject* conversin
 
 ConversationScreen* TrainerSkillInfoScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	//Get conversation session.
-	TrainerConversationSession* session = cast<TrainerConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
+	Reference<TrainerConversationSession*> session = conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION).castTo<TrainerConversationSession* >();
 	if (session == NULL) {
 		nextScreenId = TrainerScreenHandlers::ERRORSCREENHANDLERID;
 		return NULL;
@@ -275,7 +275,7 @@ ConversationScreen* TrainerSkillInfoScreenHandler::handleScreen(CreatureObject* 
 
 ConversationScreen* TrainerCanLearnSkillScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	//Get conversation session.
-	TrainerConversationSession* session = cast<TrainerConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
+	Reference<TrainerConversationSession*> session = conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION).castTo<TrainerConversationSession* >();
 	if (session == NULL) {
 		nextScreenId = TrainerScreenHandlers::ERRORSCREENHANDLERID;
 		return NULL;
@@ -314,7 +314,7 @@ ConversationScreen* TrainerTrainSkillScreenHandler::handleScreen(CreatureObject*
 	ManagedReference<PlayerObject* > ghost = conversingPlayer->getPlayerObject();
 
 	//Skill previously stored in player session.
-	TrainerConversationSession* session = cast<TrainerConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
+	Reference<TrainerConversationSession*> session = conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION).castTo<TrainerConversationSession* >();
 	if (session == NULL) {
 		nextScreenId = TrainerScreenHandlers::ERRORSCREENHANDLERID;
 		return NULL;
@@ -391,7 +391,7 @@ ConversationScreen* TrainerTrainSkillScreenHandler::handleScreen(CreatureObject*
 
 ConversationScreen* TrainerNotEnoughCreditsScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	//Skill previously stored in player session.
-	TrainerConversationSession* session = cast<TrainerConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
+	Reference<TrainerConversationSession*> session = conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION).castTo<TrainerConversationSession* >();
 	if (session == NULL) {
 		nextScreenId = TrainerScreenHandlers::ERRORSCREENHANDLERID;
 		return NULL;
@@ -412,7 +412,7 @@ ConversationScreen* TrainerNotEnoughCreditsScreenHandler::handleScreen(CreatureO
 
 ConversationScreen* TrainerNotEnoughSkillPointsScreenHandler::handleScreen(CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen) {
 	//Skill previously stored in player session.
-	TrainerConversationSession* session = cast<TrainerConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
+	Reference<TrainerConversationSession*> session = conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION).castTo<TrainerConversationSession* >();
 	if (session == NULL) {
 		nextScreenId = TrainerScreenHandlers::ERRORSCREENHANDLERID;
 		return NULL;

@@ -238,7 +238,7 @@ void PlayerObjectImplementation::unload() {
 
 	creature->stopEntertaining();
 
-	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(creature->getActiveSession(SessionFacadeType::TRADE));
+	ManagedReference<TradeSession*> tradeContainer = creature->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 	if (tradeContainer != NULL)
 		creature->dropActiveSession(SessionFacadeType::TRADE);
@@ -1562,7 +1562,7 @@ void PlayerObjectImplementation::activateMissions() {
 
 	for (int i = datapadSize - 1; i >= 0; --i) {
 		if (datapad->getContainerObject(i)->isMissionObject()) {
-			MissionObject* mission = cast<MissionObject*>(datapad->getContainerObject(i));
+			Reference<MissionObject*> mission = datapad->getContainerObject(i).castTo<MissionObject*>();
 
 			if (mission != NULL) {
 				//Check if it is target or destination NPC

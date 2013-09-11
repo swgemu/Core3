@@ -35,11 +35,11 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 	CreatureTemplateManager::DEBUG_MODE = 1;
 
 	// Verify that all mobiles load
-	EXPECT_EQ(CreatureTemplateManager::instance()->loadTemplates(), 0);
+	ASSERT_EQ(CreatureTemplateManager::instance()->loadTemplates(), 0);
 
 	// Verify loot group map loads
 	LootGroupMap* lootGroupMap = LootGroupMap::instance();
-	EXPECT_EQ(lootGroupMap->initialize(), 0);
+	ASSERT_EQ(lootGroupMap->initialize(), 0);
 
 	// Verify loot group percentages
 	HashTableIterator<uint32, Reference<CreatureTemplate*> > iter = CreatureTemplateManager::instance()->iterator();
@@ -81,7 +81,7 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 TEST_F(LuaMobileTest, LuaLootGroupsTest) {
 
 	LootGroupMap* lootGroupMap = LootGroupMap::instance();
-	EXPECT_EQ(lootGroupMap->initialize(), 0);
+	ASSERT_EQ(lootGroupMap->initialize(), 0);
 
 	HashTableIterator<String, Reference<LootGroupTemplate*> > iter = lootGroupMap->groupTemplates.iterator();
 	while (iter.hasNext()) {

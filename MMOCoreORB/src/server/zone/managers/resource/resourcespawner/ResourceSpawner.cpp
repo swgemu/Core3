@@ -757,7 +757,7 @@ void ResourceSpawner::sendSurvey(CreatureObject* player, const String& resname) 
 
 	player->inflictDamage(player, CreatureAttribute::MIND, mindCost, false, true);
 
-	ManagedReference<SurveySession*> session = cast<SurveySession*>(player->getActiveSession(SessionFacadeType::SURVEY));
+	ManagedReference<SurveySession*> session = player->getActiveSession(SessionFacadeType::SURVEY).castTo<SurveySession*>();
 	if(session == NULL) {
 		return;
 	}
@@ -846,7 +846,7 @@ void ResourceSpawner::sendSample(CreatureObject* player, const String& resname,
 		const String& sampleAnimation) {
 
 	// Determine if survey tool is valid, and that resource actually exists
-	ManagedReference<SurveySession*> session = cast<SurveySession*>(player->getActiveSession(SessionFacadeType::SURVEY));
+	ManagedReference<SurveySession*> session = player->getActiveSession(SessionFacadeType::SURVEY).castTo<SurveySession*>();
 	if(session == NULL) {
 		return;
 	}
@@ -890,7 +890,7 @@ void ResourceSpawner::sendSample(CreatureObject* player, const String& resname,
 
 void ResourceSpawner::sendSampleResults(CreatureObject* player, const float density, const String& resname) {
 
-	ManagedReference<SurveySession*> session = cast<SurveySession*>(player->getActiveSession(SessionFacadeType::SURVEY));
+	ManagedReference<SurveySession*> session = player->getActiveSession(SessionFacadeType::SURVEY).castTo<SurveySession*>();
 
 	if(session == NULL) {
 		return;

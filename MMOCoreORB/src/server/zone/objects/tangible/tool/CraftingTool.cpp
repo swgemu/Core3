@@ -253,7 +253,7 @@ float CraftingTool::getComplexityLevel() {
 		return _implementation->getComplexityLevel();
 }
 
-TangibleObject* CraftingTool::getPrototype() {
+Reference<TangibleObject* > CraftingTool::getPrototype() {
 	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -266,7 +266,7 @@ TangibleObject* CraftingTool::getPrototype() {
 		return _implementation->getPrototype();
 }
 
-ManufactureSchematic* CraftingTool::getManufactureSchematic() {
+Reference<ManufactureSchematic* > CraftingTool::getManufactureSchematic() {
 	CraftingToolImplementation* _implementation = static_cast<CraftingToolImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
@@ -578,11 +578,6 @@ float CraftingToolImplementation::getComplexityLevel() {
 	return complexityLevel;
 }
 
-ManufactureSchematic* CraftingToolImplementation::getManufactureSchematic() {
-	// server/zone/objects/tangible/tool/CraftingTool.idl():  		return (ManufactureSchematic)getSlottedObject("test_manf_schematic");
-	return (ManufactureSchematic*) getSlottedObject("test_manf_schematic");
-}
-
 /*
  *	CraftingToolAdapter
  */
@@ -736,11 +731,11 @@ float CraftingToolAdapter::getComplexityLevel() {
 	return (static_cast<CraftingTool*>(stub))->getComplexityLevel();
 }
 
-TangibleObject* CraftingToolAdapter::getPrototype() {
+Reference<TangibleObject* > CraftingToolAdapter::getPrototype() {
 	return (static_cast<CraftingTool*>(stub))->getPrototype();
 }
 
-ManufactureSchematic* CraftingToolAdapter::getManufactureSchematic() {
+Reference<ManufactureSchematic* > CraftingToolAdapter::getManufactureSchematic() {
 	return (static_cast<CraftingTool*>(stub))->getManufactureSchematic();
 }
 

@@ -60,6 +60,8 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
 
 	if (containmentType == 4 || containmentType == 5) {
+		Locker contLocker(sceneObject->getContainerLock());
+
 		int arrangementSize = object->getArrangementDescriptorSize();
 
 		for (int i = 0; i < arrangementSize; ++i) {

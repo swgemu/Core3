@@ -35,7 +35,7 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 	if (player->isInCombat() || player->isDead() || player->isIncapacitated())
 		return;
 
-	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
+	ManagedReference<TradeSession*> tradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 	if (tradeContainer != NULL) {
 		server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
@@ -112,7 +112,7 @@ void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	if (!isASubChildOf(player))
 		return;
 
-	ManagedReference<TradeSession*> tradeContainer = dynamic_cast<TradeSession*>(player->getActiveSession(SessionFacadeType::TRADE));
+	ManagedReference<TradeSession*> tradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
 
 	if (tradeContainer != NULL) {
 		server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
@@ -155,8 +155,9 @@ void VehicleControlDeviceImplementation::spawnObject(CreatureObject* player) {
 
 void VehicleControlDeviceImplementation::cancelSpawnObject(CreatureObject* player) {
 
-	if(player->getPendingTask("call_mount")) {
-		player->getPendingTask("call_mount")->cancel();
+	Reference<Task*> mountTask = player->getPendingTask("call_mount");
+	if(mountTask) {
+		mountTask->cancel();
 		player->removePendingTask("call_mount");
 	}
 
@@ -199,14 +200,14 @@ void VehicleControlDeviceImplementation::destroyObjectFromDatabase(bool destroyC
 		Locker locker(controlledObject);
 
 		//ManagedReference<CreatureObject*> object = controlledObject.castTo<CreatureObject*>()->getLinkedCreature();
-		ManagedReference<CreatureObject*> object = cast<CreatureObject*>(controlledObject->getSlottedObject("rider"));
+		ManagedReference<CreatureObject*> object = controlledObject->getSlottedObject("rider").castTo<CreatureObject*>();
 
 		if (object != NULL) {
 			Locker clocker(object, controlledObject);
 
 			object->executeObjectControllerAction(String("dismount").hashCode());
 
-			object = cast<CreatureObject*>(controlledObject->getSlottedObject("rider"));
+			object = controlledObject->getSlottedObject("rider").castTo<CreatureObject*>();
 
 			if (object != NULL) {
 				controlledObject->removeObject(object, NULL, true);

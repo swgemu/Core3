@@ -33,15 +33,15 @@ crazed_geonosian_guard = Creature:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "geonosian_common", chance = 6000000},
-				{group = "geonosian_relic", chance = 4000000}
+				{group = "geonosian_common", chance = 5000000},
+				{group = "geonosian_relic", chance = 5000000}
 			},
-			lootChance = 4500000
+			lootChance = 3300000
 		}
 	},
 	weapons = {"geonosian_weapons"},
 	conversationTemplate = "",
-	attacks = merge(brawlermaster,marksmanmaster)
+	attacks = merge(brawlermaster,marksmanmaster,pistoleermaster,riflemanmaster)
 }
 
 CreatureTemplates:addCreatureTemplate(crazed_geonosian_guard, "crazed_geonosian_guard")

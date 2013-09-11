@@ -594,7 +594,7 @@ public:
 
 	bool canTreatConditions();
 
-	PlayerObject* getPlayerObject();
+	Reference<PlayerObject* > getPlayerObject();
 
 	AiActor* getActorObject();
 
@@ -772,9 +772,9 @@ public:
 
 	unsigned long long getWeaponID();
 
-	WeaponObject* getWeapon();
+	Reference<WeaponObject* > getWeapon();
 
-	GuildObject* getGuildObject();
+	Reference<GuildObject* > getGuildObject();
 
 	int getGuildID();
 
@@ -1386,7 +1386,7 @@ public:
 
 	bool canTreatConditions();
 
-	PlayerObject* getPlayerObject();
+	Reference<PlayerObject* > getPlayerObject();
 
 	AiActor* getActorObject();
 
@@ -1564,9 +1564,9 @@ public:
 
 	unsigned long long getWeaponID();
 
-	WeaponObject* getWeapon();
+	Reference<WeaponObject* > getWeapon();
 
-	GuildObject* getGuildObject();
+	Reference<GuildObject* > getGuildObject();
 
 	int getGuildID();
 
@@ -2007,7 +2007,7 @@ public:
 
 	bool canTreatConditions();
 
-	PlayerObject* getPlayerObject();
+	Reference<PlayerObject* > getPlayerObject();
 
 	AiActor* getActorObject();
 
@@ -2169,9 +2169,9 @@ public:
 
 	unsigned long long getWeaponID();
 
-	WeaponObject* getWeapon();
+	Reference<WeaponObject* > getWeapon();
 
-	GuildObject* getGuildObject();
+	Reference<GuildObject* > getGuildObject();
 
 	int getGuildID();
 

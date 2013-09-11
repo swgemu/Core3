@@ -213,7 +213,7 @@ function TalusStaticSpawnsNorthScreenPlay:spawnMobiles()
 
 	--Table (5413,2655)
 
-	--Pillars (4973,3849)
+	--Pillars Ruins (4974,3849)
 
 	--Burning Rocks (4310,2563)
 
@@ -298,8 +298,6 @@ function TalusStaticSpawnsNorthScreenPlay:spawnMobiles()
 	--Ruined Lookout Tower (-4381,2669)
 	spawnMobile("talus", "scavenger", 180, -4384.1, 16.7, 2663.6, 12, 0)
 	spawnMobile("talus", "scavenger", 180, -4379.1, 16.8, 2663.1, -33, 0)
-
-	--Pillar Ruins (-4974,3848)
 
 	--Diseased Ruins & Mite Nest (-5117,3213)
 	spawnMobile("talus", "giant_decay_mite_queen", 360, -5107.7, 19.6, 3215.1, -108, 0)

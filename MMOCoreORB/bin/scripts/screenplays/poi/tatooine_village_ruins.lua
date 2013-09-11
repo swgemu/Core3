@@ -38,7 +38,7 @@ function TatooineVillageRuinsScreenPlay:spawnTuskens()
 	spawnSceneObject("tatooine", "object/tangible/camp/camp_tent_s1.iff", 5657.5, 36.5, 1889.6, 0, 1, 0, 0, 0)
 	spawnSceneObject("tatooine", "object/tangible/camp/camp_stool_short.iff", 5705.9, 34.4, 1842.7, 0, 1, 0, 0, 0)
 	spawnSceneObject("tatooine", "object/tangible/camp/camp_stool_short.iff", 5695.3, 31.7, 1902.0, 0, 1, 0, 0, 0)
-	spawnSceneObject("tatooine", "object/tangible/camp/camp_stool_short.iff", 5682.9, 31.1, 1917.5, 0, 1, 0, 0, 0)
+	spawnSceneObject("tatooine", "object/tangible/camp/camp_stool_short.iff", 5682.9, 33.1, 1917.5, 0, 1, 0, 0, 0)
 
 	--tuskens
 	spawnMobile("tatooine", "tusken_raid_leader", 300, 5669.8, 35.5, 1928.9, 127, 0)

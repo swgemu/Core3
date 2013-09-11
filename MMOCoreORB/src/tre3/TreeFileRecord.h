@@ -127,6 +127,8 @@ public:
 
 		fileStream.close();
 
+		delete file;
+
 		return buffer;
 	}
 

@@ -274,7 +274,7 @@ IffTemplateVariable* Layer::parseFilter(IffStream* iffStream) {
 		break;
 	}
 	case ('FBIT'): {
-		res = new FilterBIT();
+		res = new FilterBitmap();
 		break;
 	}
 	case ('FDIR'): {

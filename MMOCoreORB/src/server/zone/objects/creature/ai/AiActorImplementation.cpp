@@ -90,7 +90,7 @@ void AiActorImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		}
 	}
 
-	WeaponObject* defaultWeapon = cast<WeaponObject*>(host->getSlottedObject("default_weapon"));
+	Reference<WeaponObject*> defaultWeapon = host->getSlottedObject("default_weapon").castTo<WeaponObject*>();
 	if (defaultWeapon != NULL && !weapons.contains(defaultWeapon))
 		weapons.add(defaultWeapon);
 
@@ -173,7 +173,7 @@ void AiActorImplementation::setLevel(int lvl) {
 	float maxDmg = calculateAttackMaxDamage(baseLevel);
 	float speed = calculateAttackSpeed(baseLevel);
 
-	WeaponObject* defaultWeapon = cast<WeaponObject*>(host->getSlottedObject("default_weapon"));
+	Reference<WeaponObject*> defaultWeapon = host->getSlottedObject("default_weapon").castTo<WeaponObject*>();
 
 	float ratio = ((float)lvl) / (float)baseLevel;
 

@@ -10,12 +10,6 @@
 #include "server/zone/managers/director/DirectorManager.h"
 #include "engine/engine.h"
 
-namespace server {
-namespace zone {
-namespace objects {
-namespace creature {
-namespace ai {
-namespace bt {
 
 LuaBehavior::LuaBehavior(String name) {
 	this->className = name;
@@ -50,12 +44,4 @@ void LuaBehavior::onTerminate(AiAgent* actor, int s) {
 	terminate << s;
 	// run the function
 	lua->callFunction(&terminate);
-}
-
-
-}
-}
-}
-}
-}
 }

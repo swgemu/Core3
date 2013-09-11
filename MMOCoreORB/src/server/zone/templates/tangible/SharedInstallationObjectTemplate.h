@@ -12,6 +12,7 @@
 
 class SharedInstallationObjectTemplate : public SharedStructureObjectTemplate {
 	uint32 installationType;
+	unsigned int armorRating;
 	float kinetic;
 	float energy;
 	float electricity;
@@ -28,6 +29,7 @@ public:
 	SharedInstallationObjectTemplate() {
 		installationType = 0;
 
+		armorRating = 0;
 		kinetic = 0;
 		energy = 0;
 		electricity = 0;
@@ -49,6 +51,7 @@ public:
 
 		installationType = templateData->getIntField("installationType");
 
+		armorRating = templateData->getIntField("rating");
 		kinetic = templateData->getFloatField("kinetic");
 		energy = templateData->getFloatField("energy");
 		electricity = templateData->getFloatField("electricity");
@@ -114,6 +117,10 @@ public:
 
 	inline uint32 getInstallationType() {
 		return installationType;
+	}
+
+	inline unsigned int getArmorRating() {
+		return armorRating;
 	}
 
 	inline float getKinetic() {

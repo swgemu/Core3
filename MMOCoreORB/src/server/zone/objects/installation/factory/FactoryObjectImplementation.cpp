@@ -98,7 +98,7 @@ void FactoryObjectImplementation::fillAttributeList(AttributeListMessage* alm, C
 	if (operating && isOnAdminList(object)) {
 
 		ManagedReference<ManufactureSchematic*> schematic =
-				dynamic_cast<ManufactureSchematic*>(getContainerObject(0));
+				getContainerObject(0).castTo<ManufactureSchematic*>();
 
 		if(schematic == NULL)
 			return;
@@ -217,7 +217,7 @@ void FactoryObjectImplementation::sendIngredientsNeededSui(CreatureObject* playe
 
 	ingredientList->setOkButton(true, "@ok");
 
-	ManagedReference<ManufactureSchematic* > schematic = dynamic_cast<ManufactureSchematic*>(getContainerObject(0));
+	ManagedReference<ManufactureSchematic* > schematic = getContainerObject(0).castTo<ManufactureSchematic*>();
 
 	for (int i = 0; i < schematic->getBlueprintSize(); ++i) {
 		BlueprintEntry* blueprintEntry = schematic->getBlueprintEntry(i);
@@ -379,7 +379,7 @@ void FactoryObjectImplementation::handleOperateToggle(CreatureObject* player) {
 		return;
 	}
 
-	ManagedReference<ManufactureSchematic*> schematic = cast<ManufactureSchematic*>(getContainerObject(0));
+	ManagedReference<ManufactureSchematic*> schematic = getContainerObject(0).castTo<ManufactureSchematic*>();
 	if(schematic == NULL) {
 		player->sendSystemMessage("No schematic, unable to start");
 		return;
@@ -406,7 +406,7 @@ bool FactoryObjectImplementation::startFactory() {
 		return false;
 	}
 
-	ManagedReference<ManufactureSchematic* > schematic = cast<ManufactureSchematic*>(getContainerObject(0));
+	ManagedReference<ManufactureSchematic* > schematic = getContainerObject(0).castTo<ManufactureSchematic*>();
 
 	timer = ((int)schematic->getComplexity()) * 2;
 
@@ -501,7 +501,7 @@ void FactoryObjectImplementation::createNewObject() {
 	}
 
 	ManagedReference<ManufactureSchematic*> schematic =
-			cast<ManufactureSchematic*>(getContainerObject(0));
+			getContainerObject(0).castTo<ManufactureSchematic*>();
 
 	if (schematic == NULL || !schematic->isManufactureSchematic()) {
 		stopFactory("manf_error_4", "", "", -1);
@@ -654,7 +654,7 @@ void FactoryObjectImplementation::collectMatchesInInputHopper(
 	for (int i = 0; i < inputHopper->getContainerObjectsSize(); ++i) {
 
 		ManagedReference<TangibleObject*> object =
-				cast<TangibleObject*>( inputHopper->getContainerObject(i));
+				inputHopper->getContainerObject(i).castTo<TangibleObject*>();
 
 		if (object == NULL) {
 			error("NULL hopper object in FactoryObjectImplementation::countItemInInputHopper");

@@ -241,7 +241,7 @@ public:
 		SceneObject* inventory = creature->getSlottedObject("inventory");
 
 		if (inventory != NULL) {
-			revivePack = dynamic_cast<RevivePack*>(inventory->getContainerObject(objectId));
+			revivePack = inventory->getContainerObject(objectId).castTo<RevivePack*>();
 		}
 
 		if (revivePack == NULL)

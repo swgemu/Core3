@@ -1,5 +1,5 @@
 yavin4_tybis_herd_neutral_none = Lair:new {
-	mobiles = {{"female_tybis", 0}, {"male_tybis", 0}, {"tybis_youth", 0}},
+	mobiles = {{"female_tybis", -1}, {"male_tybis", 0}, {"tybis_youth", -9}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_fog_green.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_fog_green.iff"},

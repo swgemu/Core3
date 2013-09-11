@@ -410,7 +410,7 @@ void AiStateComponent::selectWeapon(AiActor* actor) {
 		}
 	}
 
-	ManagedReference<WeaponObject*> defaultWeapon = dynamic_cast<WeaponObject*>(host->getSlottedObject("default_weapon"));
+	ManagedReference<WeaponObject*> defaultWeapon = host->getSlottedObject("default_weapon").castTo<WeaponObject*>();
 
 	// why is this here? defaultWeapon is in weapons
 	if ((dist < 6) && (finalWeap->isRangedWeapon() || (finalWeap->isMeleeWeapon() && System::random(10) == 0))) {

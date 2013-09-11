@@ -711,9 +711,7 @@ SceneObject* StructureManager::getInRangeParkingGarage(SceneObject* obj,
 }
 
 int StructureManager::redeedStructure(CreatureObject* creature) {
-	ManagedReference<DestroyStructureSession*> session =
-			dynamic_cast<DestroyStructureSession*>(creature->getActiveSession(
-					SessionFacadeType::DESTROYSTRUCTURE));
+	ManagedReference<DestroyStructureSession*> session = creature->getActiveSession(SessionFacadeType::DESTROYSTRUCTURE).castTo<DestroyStructureSession*>();
 
 	if (session == NULL)
 		return 0;
@@ -1112,4 +1110,32 @@ void StructureManager::payMaintenance(StructureObject* structure,
 	}else{
 		structure->setMaintenanceReduced(false);
 	}
+}
+
+bool StructureManager::isInStructureFootprint(StructureObject* structure, float positionX, float positionY, int extraFootprintMargin){
+
+	if(structure == NULL)
+		return false;
+
+	if(structure->getObjectTemplate() == NULL)
+		return false;
+
+	Reference<SharedStructureObjectTemplate*> serverTemplate =
+				dynamic_cast<SharedStructureObjectTemplate*>(structure->getObjectTemplate());
+
+	float placingFootprintLength0, placingFootprintWidth0, placingFootprintLength1, placingFootprintWidth1;
+
+	StructureManager::instance()->getStructureFootprint(serverTemplate, structure->getDirectionAngle(), placingFootprintLength0, placingFootprintWidth0, placingFootprintLength1, placingFootprintWidth1);
+	//info("object: " + obj->getObjectNameStringIdName() + " obj x = " + String::valueOf(obj->getPositionX()) + " y= " + String::valueOf(obj->getPositionY()),true);
+
+	float x0 = structure->getPositionX() + placingFootprintWidth0 + extraFootprintMargin;
+	float y0 = structure->getPositionY() + placingFootprintLength0 + extraFootprintMargin;
+	float x1 = structure->getPositionX() + placingFootprintWidth1 + extraFootprintMargin;
+	float y1 = structure->getPositionY() + placingFootprintLength1 + extraFootprintMargin;
+
+	BoundaryRectangle structureFootprint(x0, y0, x1, y1);
+
+
+	return structureFootprint.containsPoint(positionX, positionY);
+
 }

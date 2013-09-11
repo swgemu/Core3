@@ -67,7 +67,7 @@ public:
 		if(!creature->isPlayerCreature())
 			return INVALIDTARGET;
 
-		PlayerObject* admin = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+		Reference<PlayerObject*> admin = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 		if(admin == NULL || !admin->isPrivileged())
 			return INVALIDTARGET;

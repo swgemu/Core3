@@ -104,7 +104,7 @@ float VisibilityManager::calculateVisibilityIncrease(CreatureObject* creature) {
 }
 
 void VisibilityManager::decreaseVisibility(CreatureObject* creature) {
-	ManagedReference<PlayerObject*> ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 	if (ghost != NULL) {
 		Locker locker(ghost);
@@ -131,7 +131,7 @@ VisibilityManager::VisibilityManager() {
 
 void VisibilityManager::login(CreatureObject* creature) {
 	//info("Logging in " + creature->getFirstName(), true);
-	ManagedReference<PlayerObject*> ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 	if (ghost != NULL) {
 		decreaseVisibility(creature);
@@ -165,7 +165,7 @@ void VisibilityManager::logout(CreatureObject* creature) {
 
 void VisibilityManager::increaseVisibility(CreatureObject* creature) {
 	//info("Increasing visibility for " + creature->getFirstName(), true);
-	ManagedReference<PlayerObject*> ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 	if (ghost != NULL) {
 		Locker locker(ghost);
@@ -179,7 +179,7 @@ void VisibilityManager::increaseVisibility(CreatureObject* creature) {
 }
 
 void VisibilityManager::clearVisibility(CreatureObject* creature) {
-	ManagedReference<PlayerObject*> ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+	Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 	if (ghost != NULL) {
 		//info("Clearing visibility for player " + String::valueOf(creature->getObjectID()), true);
