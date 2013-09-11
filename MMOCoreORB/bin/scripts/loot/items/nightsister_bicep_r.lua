@@ -8,7 +8,10 @@ nightsister_bicep_r = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	junkDealerTypeNeeded = JUNKGENERIC,
+	junkMinValue = 2,
+	junkMaxValue = 22
 }
 
 addLootItemTemplate("nightsister_bicep_r", nightsister_bicep_r)

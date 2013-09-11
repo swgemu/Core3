@@ -1452,6 +1452,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	}
 	
 	@dirty
+	public abstract boolean isJunkDealer() {
+		return false;
+	}
+
+	@dirty
 	public abstract boolean isShipObject() {
 		return false;
 	}

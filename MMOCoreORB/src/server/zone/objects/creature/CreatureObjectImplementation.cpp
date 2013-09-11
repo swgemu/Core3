@@ -2738,3 +2738,4 @@ Reference<WeaponObject*> CreatureObjectImplementation::getWeapon() {
 	} else
 		return weapon;
 }
+

@@ -39,7 +39,10 @@ nightsister_controllerfp_lance = {
 		{"duration", 1200, 1200},
 		{"potency", 70, 70},
 		{"uses", 8000, 8000}
-	}
+	},
+	junkDealerTypeNeeded = JUNKWEAPONS,
+	junkMinValue = 2,
+	junkMaxValue = 22
 
 }
 
