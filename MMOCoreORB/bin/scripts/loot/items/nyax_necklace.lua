@@ -9,7 +9,10 @@ nyax_necklace = {
 	},
 	customizationStringNames = {},
 	customizationValues = {},
-	skillMods = {{"combat_medic_effectiveness", 5}}
+	skillMods = {{"combat_medic_effectiveness", 5}},
+	junkDealerTypeNeeded = JUNKCLOTHESANDJEWELLERY,
+	junkMinValue = 2,
+	junkMaxValue = 22
 }
 
 addLootItemTemplate("nyax_necklace", nyax_necklace)

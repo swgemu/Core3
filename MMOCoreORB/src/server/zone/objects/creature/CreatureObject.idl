@@ -93,7 +93,6 @@ class CreatureObject extends TangibleObject {
 
 	protected int bankCredits;
 	protected int cashCredits;
-	
 	protected int gender;
 	protected int species;
 	
@@ -154,7 +153,6 @@ class CreatureObject extends TangibleObject {
 	protected GroupObject group;
 	protected unsigned long groupInviterID;
 	protected unsigned long groupInviteCounter;
-	
 	protected GuildObject guild;
 	protected unsigned long targetID;
 	protected byte moodID;
@@ -1723,4 +1721,6 @@ class CreatureObject extends TangibleObject {
 	public native float calculateCostAdjustment(byte stat, float baseCost);
 
 	public native void updateSpeedAndAccelerationMods();
+
+
 }
