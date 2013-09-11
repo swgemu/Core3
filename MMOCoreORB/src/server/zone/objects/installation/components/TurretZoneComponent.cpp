@@ -47,7 +47,7 @@ void TurretZoneComponent::notifyPositionUpdate(SceneObject* sceneObject, QuadTre
 		return;
 	}
 
-	WeaponObject* weapon = cast<WeaponObject*>(sceneObject->getSlottedObject("hold_r"));
+	Reference<WeaponObject*> weapon = sceneObject->getSlottedObject("hold_r").castTo<WeaponObject*>();
 
 	if(weapon == NULL)
 		return;

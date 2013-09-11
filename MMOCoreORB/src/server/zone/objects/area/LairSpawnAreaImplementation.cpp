@@ -168,7 +168,7 @@ int LairSpawnAreaImplementation::trySpawnLair(SceneObject* object) {
 	randomPosition.setZ(spawnZ);
 
 	//lets check if we intersect with some object (buildings, etc..)
-	if (CollisionManager::checkSphereCollision(randomPosition, 64, zone))
+	if (CollisionManager::checkSphereCollision(randomPosition, 90, zone))
 		return 7;
 
 	//dont spawn in cities

@@ -199,6 +199,22 @@ public:
 		return result;
 	}
 
+	float getMinX() {
+		return minX;
+	}
+
+	float getMaxX() {
+		return maxX;
+	}
+
+	float getMinY() {
+		return minY;
+	}
+
+	float getMaxY() {
+		return maxY;
+	}
+
 	bool isEnabled() {
 		return informationHeader.isEnabled();
 	}

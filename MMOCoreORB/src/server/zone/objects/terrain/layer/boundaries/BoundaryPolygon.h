@@ -312,6 +312,22 @@ public:
 	bool isEnabled() {
 		return informationHeader.isEnabled();
 	}
+
+	float getMinX() {
+		return minX;
+	}
+
+	float getMaxX() {
+		return maxX;
+	}
+
+	float getMinY() {
+		return minY;
+	}
+
+	float getMaxY() {
+		return maxY;
+	}
 };
 
 

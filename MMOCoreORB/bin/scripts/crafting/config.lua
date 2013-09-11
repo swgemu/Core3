@@ -826,6 +826,7 @@ schematics = {
 {path="object/draft_schematic/furniture/furniture_chair_tatooine_cafe.iff"},
 {path="object/draft_schematic/furniture/furniture_chair_upholstered.iff"},
 {path="object/draft_schematic/furniture/furniture_chair_wooden.iff"},
+{path="object/draft_schematic/furniture/furniture_couch_blue.iff"},
 {path="object/draft_schematic/furniture/furniture_couch_large.iff"},
 {path="object/draft_schematic/furniture/furniture_couch_small.iff"},
 {path="object/draft_schematic/furniture/furniture_droid_detector.iff"},

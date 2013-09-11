@@ -91,7 +91,7 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 	float maxDmg = calculateAttackMaxDamage(level);
 	float speed = calculateAttackSpeed(level);
 
-	WeaponObject* defaultWeapon = cast<WeaponObject*>(getSlottedObject("default_weapon"));
+	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
 
 	if (weapons.size() == 0) {
 		Vector<String> wepgroups = npcTemplate->getWeapons();
@@ -235,7 +235,7 @@ void AiAgentImplementation::setLevel(int lvl) {
 	float maxDmg = calculateAttackMaxDamage(baseLevel);
 	float speed = calculateAttackSpeed(baseLevel);
 
-	WeaponObject* defaultWeapon = cast<WeaponObject*>(getSlottedObject("default_weapon"));
+	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
 
 	float ratio = ((float)lvl) / (float)baseLevel;
 
@@ -488,7 +488,7 @@ void AiAgentImplementation::selectWeapon() {
 	}
 
 	ManagedReference<WeaponObject*> currentWeapon = getWeapon();
-	ManagedReference<WeaponObject*> defaultWeapon = dynamic_cast<WeaponObject*>(getSlottedObject("default_weapon"));
+	ManagedReference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
 
 	if ((dist < 6) && (finalWeap->isRangedWeapon() || (finalWeap->isMeleeWeapon() && System::random(10) == 0))) {
 		float range = fabs(defaultWeapon->getIdealRange() - dist);
@@ -1563,31 +1563,31 @@ void AiAgentImplementation::fillAttributeList(AttributeListMessage* alm, Creatur
 		alm->insertAttribute("cat_armor_effectiveness.armor_eff_restraint", txt.toString());
 	}
 
-	if (getKinetic() == 0)
+	if (getKinetic() < 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_kinetic", "-");
 
-	if (getEnergy() == 0)
+	if (getEnergy() < 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_energy", "-");
 
-	if (getElectricity() == 0)
+	if (getElectricity() < 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_electrical", "-");
 
-	if (getStun() == 0)
+	if (getStun() < 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_stun", "-");
 
-	if (getBlast() == 0)
+	if (getBlast() < 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_blast", "-");
 
-	if (getHeat() == 0)
+	if (getHeat() < 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_heat", "-");
 
-	if (getCold() == 0)
+	if (getCold() < 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_cold", "-");
 
-	if (getAcid() == 0)
+	if (getAcid() < 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_elemental_acid", "-");
 
-	if (getLightSaber() == 0)
+	if (getLightSaber() < 0)
 		alm->insertAttribute("cat_armor_vulnerability.armor_eff_restraint", "-");
 }
 

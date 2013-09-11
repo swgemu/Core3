@@ -23,7 +23,7 @@ class FilterSlope : public ProceduralRule<'FSLP'>, public FilterProceduralRule {
 	//const static float defaultValue = 1.5707964;
 
 public:
-	FilterSlope() {
+	FilterSlope() : FilterProceduralRule(2) {
 		filterType = HEIGHTTYPE;
 	}
 

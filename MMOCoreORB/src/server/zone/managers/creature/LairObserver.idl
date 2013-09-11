@@ -108,4 +108,8 @@ class LairObserver extends Observer implements Logger {
 	public int getLairType() {
 		return lairTemplate.getLairType();
 	}
+
+	public int getSpawnNumber() {
+		return spawnNumber;
+	}
 }

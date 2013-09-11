@@ -41,7 +41,7 @@ void run(CreatureObject* player, SuiBox* suiBox, bool cancel, Vector<UnicodeStri
 	if ( otherPressed==true ){
 		int iCreditsTotal =0;
 		for (int i = inventory->getContainerObjectsSize()-1; i > 0; i--) {
-			ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i));
+			ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i).get());
 			if (cast<JunkdealerCreature*>(dealerScene)->canInventoryItemBeSoldAsJunk(item,dealerType)){
 				Locker locker(item, player);
 				iCreditsTotal += item->getJunkValue();
@@ -66,7 +66,7 @@ void run(CreatureObject* player, SuiBox* suiBox, bool cancel, Vector<UnicodeStri
 		StringIdChatParameter msg;
 		msg.setStringId("@loot_dealer:prose_sold_junk");
 		msg.setTT(selectedObject->getObjectID());
-		int iCredits = cast<TangibleObject*>(inventory->getContainerObject(itemId))->getJunkValue();
+		int iCredits = cast<TangibleObject*>(inventory->getContainerObject(itemId).get())->getJunkValue();
 		msg.setDI(iCredits);
 		player->sendSystemMessage(msg);
 		UnicodeString itemName = StringIdManager::instance()->getStringId(selectedObject->getDisplayedName().hashCode());
@@ -79,7 +79,7 @@ void run(CreatureObject* player, SuiBox* suiBox, bool cancel, Vector<UnicodeStri
 		//player->sendSystemMessage("You sell " + itemName + " for " + String::valueOf(iCredits) +" cr");
 		bool bHaveStuffToSell = false;
 		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-			ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i));
+			ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i).get());
 			if (cast<JunkdealerCreature*>(dealerScene)->canInventoryItemBeSoldAsJunk(item,dealerType)==true){
 				bHaveStuffToSell=true;
 				break;
@@ -99,7 +99,7 @@ void run(CreatureObject* player, SuiBox* suiBox, bool cancel, Vector<UnicodeStri
 				UnicodeString itemName = StringIdManager::instance()->getStringId(inventory->getContainerObject(i)->getDisplayedName().hashCode());
 				if (itemName == "")
 					itemName=inventory->getContainerObject(i)->getCustomObjectName();
-				ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i));
+				ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i).get());
 				if (cast<JunkdealerCreature*>(dealerScene)->canInventoryItemBeSoldAsJunk(item,dealerType)==true )
 					box->addMenuItem("[" + String::valueOf(item->getJunkValue()) + "Cr] " +itemName.toString(), inventory->getContainerObject(i)->getObjectID());
 			}

@@ -16,6 +16,7 @@
 #include "MapGroup.h"
 #include "LayersGroup.h"
 #include "layer/Layer.h"
+#include "BitmapGroup.h"
 
 class ProceduralTerrainAppearance;
 
@@ -27,7 +28,7 @@ class TerrainGenerator : public TemplateVariable<'TGEN'> {
 	FloraGroup floraGroup;
 	EnvironmentGroup environmentGroup;
 	MapGroup mapGroup;
-	//MapGroup mapGroup2;
+	BitmapGroup bitmapGroup;
 	LayersGroup layers;
 
 public:
@@ -50,6 +51,10 @@ public:
 
 	inline LayersGroup* getLayersGroup() {
 		return &layers;
+	}
+
+	inline BitmapGroup* getBitmapGroup() {
+		return &bitmapGroup;
 	}
 
 	inline MapFractal* getMfrc(int idx) {

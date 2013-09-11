@@ -55,10 +55,10 @@ object_installation_faction_perk_turret_tower_sm = object_installation_faction_p
 	rating = HEAVY,
 
 	kinetic = 90,
-	energy = 90,
+	energy = 95,
 	electricity = 90,
 	stun = 100,
-	blast = 0,
+	blast = -1,
 	heat = 90,
 	cold = 90,
 	acid = 90,

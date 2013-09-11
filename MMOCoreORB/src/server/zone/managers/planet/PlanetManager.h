@@ -224,6 +224,8 @@ public:
 
 	bool isCampingPermittedAt(float x, float y, float margin);
 
+	Reference<SceneObject* > findObjectTooCloseToDecoration(float x, float y, float margin);
+
 	bool isInRangeWithPoi(float x, float y, float range);
 
 	bool isInObjectsNoBuildZone(float x, float y, float extraMargin);
@@ -232,7 +234,7 @@ public:
 
 	void sendPlanetTravelPointListResponse(CreatureObject* player);
 
-	SceneObject* createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
+	Reference<SceneObject* > createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
 
 	bool validateRegionName(const String& name);
 
@@ -363,7 +365,7 @@ public:
 	PlanetManagerImplementation(DummyConstructorParameter* param);
 
 private:
-	SceneObject* loadSnapshotObject(WorldSnapshotNode* node, WorldSnapshotIff* wsiff, int& totalObjects);
+	Reference<SceneObject* > loadSnapshotObject(WorldSnapshotNode* node, WorldSnapshotIff* wsiff, int& totalObjects);
 
 	void loadSnapshotObjects();
 
@@ -400,6 +402,8 @@ public:
 
 	bool isCampingPermittedAt(float x, float y, float margin);
 
+	Reference<SceneObject* > findObjectTooCloseToDecoration(float x, float y, float margin);
+
 	bool isInRangeWithPoi(float x, float y, float range);
 
 	bool isInObjectsNoBuildZone(float x, float y, float extraMargin);
@@ -408,7 +412,7 @@ public:
 
 	void sendPlanetTravelPointListResponse(CreatureObject* player);
 
-	SceneObject* createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
+	Reference<SceneObject* > createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
 
 	bool validateRegionName(const String& name);
 
@@ -523,6 +527,8 @@ public:
 
 	bool isCampingPermittedAt(float x, float y, float margin);
 
+	Reference<SceneObject* > findObjectTooCloseToDecoration(float x, float y, float margin);
+
 	bool isInRangeWithPoi(float x, float y, float range);
 
 	bool isInObjectsNoBuildZone(float x, float y, float extraMargin);
@@ -531,7 +537,7 @@ public:
 
 	void sendPlanetTravelPointListResponse(CreatureObject* player);
 
-	SceneObject* createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
+	Reference<SceneObject* > createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
 
 	bool validateRegionName(const String& name);
 

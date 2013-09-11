@@ -38,7 +38,7 @@ public:
 	}
 
 	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
-		ManagedReference<CityRemoveMilitiaSession*> session = dynamic_cast<CityRemoveMilitiaSession*>(player->getActiveSession(SessionFacadeType::CITYMILITIA));
+		ManagedReference<CityRemoveMilitiaSession*> session = player->getActiveSession(SessionFacadeType::CITYMILITIA).castTo<CityRemoveMilitiaSession*>();
 
 		if (session == NULL)
 			return;

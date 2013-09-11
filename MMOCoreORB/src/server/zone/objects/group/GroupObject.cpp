@@ -655,8 +655,8 @@ int GroupObjectImplementation::getGroupSize() {
 }
 
 SceneObject* GroupObjectImplementation::getGroupMember(int index) {
-	// server/zone/objects/group/GroupObject.idl():  		return groupMembers.get(index);
-	return (&groupMembers)->get(index);
+	// server/zone/objects/group/GroupObject.idl():  		return groupMembers.getSafe(index);
+	return (&groupMembers)->getSafe(index);
 }
 
 void GroupObjectImplementation::initializeLeader(SceneObject* player) {
@@ -665,8 +665,8 @@ void GroupObjectImplementation::initializeLeader(SceneObject* player) {
 }
 
 SceneObject* GroupObjectImplementation::getLeader() {
-	// server/zone/objects/group/GroupObject.idl():  		return groupMembers.get(0);
-	return (&groupMembers)->get(0);
+	// server/zone/objects/group/GroupObject.idl():  		return groupMembers.getSafe(0);
+	return (&groupMembers)->getSafe(0);
 }
 
 GroupList* GroupObjectImplementation::getGroupList() {

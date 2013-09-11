@@ -194,7 +194,7 @@ public:
 		y = (y < -8192) ? -8192 : y;
 		y = (y > 8192) ? 8192 : y;
 
-		PlayerObject* playerObject = cast<PlayerObject*>( creature->getSlottedObject("ghost"));
+		Reference<PlayerObject*> playerObject =  creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 		ManagedReference<WaypointObject*> obj = server->getZoneServer()->createObject(0xc456e788, 1).castTo<WaypointObject*>();
 		obj->setPlanetCRC(planet.hashCode());

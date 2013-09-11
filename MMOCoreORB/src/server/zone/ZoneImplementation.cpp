@@ -106,17 +106,10 @@ void ZoneImplementation::initializePrivateData() {
 	creatureManager->setZoneProcessor(processor);
 
 	gcwManager = new GCWManager(_this.get());
-
-
 }
 
 void ZoneImplementation::finalize() {
 	//System::out << "deleting height map\n";
-	delete heightMap;
-	heightMap = NULL;
-
-	delete regionTree;
-	regionTree = NULL;
 }
 
 void ZoneImplementation::initializeTransientMembers() {
@@ -235,7 +228,7 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 					if (cell != NULL) {
 					try {
 							for (int h = 0; h < cell->getContainerObjectsSize(); ++h) {
-								ManagedReference<QuadTreeEntry*> obj = cell->getContainerObject(h);
+								ManagedReference<QuadTreeEntry*> obj = cell->getContainerObject(h).get();
 								
 								if (obj != NULL)
 									buildingObjects.add(obj);
@@ -246,7 +239,7 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 					}
 				}
 			} else if (sceneObject != NULL && sceneObject->isVehicleObject()) {
-				ManagedReference<QuadTreeEntry*> rider = sceneObject->getSlottedObject("rider");
+				ManagedReference<QuadTreeEntry*> rider = sceneObject->getSlottedObject("rider").get();
 
 				if (rider != NULL)
 					buildingObjects.add(rider);
@@ -361,20 +354,24 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 		}
 
 		// update world areas
-		Vector<ManagedReference<SpawnArea*> >* worldAreas = creatureManager->getWorldSpawnAreas();
+		if (creatureManager != NULL) {
+			Vector<ManagedReference<SpawnArea*> >* worldAreas = creatureManager->getWorldSpawnAreas();
 
-		for (int i = 0; i < worldAreas->size(); ++i) {
-			ActiveArea* activeArea = worldAreas->get(i);
-			Locker lockerO(object);
+			if (worldAreas != NULL) {
+				for (int i = 0; i < worldAreas->size(); ++i) {
+					ActiveArea* activeArea = worldAreas->get(i);
+					Locker lockerO(object);
 
-//			Locker locker(activeArea, object);
+					//			Locker locker(activeArea, object);
 
-			if (!object->hasActiveArea(activeArea)) {
-				object->addActiveArea(activeArea);
-				//activeArea->enqueueEnterEvent(object);
-				activeArea->notifyEnter(object);
-			} else {
-				activeArea->notifyPositionUpdate(object);
+					if (!object->hasActiveArea(activeArea)) {
+						object->addActiveArea(activeArea);
+						//activeArea->enqueueEnterEvent(object);
+						activeArea->notifyEnter(object);
+					} else {
+						activeArea->notifyPositionUpdate(object);
+					}
+				}
 			}
 		}
 	} catch (...) {

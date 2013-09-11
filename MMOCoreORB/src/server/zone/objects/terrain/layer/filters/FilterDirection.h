@@ -18,7 +18,7 @@ class FilterDirection : public ProceduralRule<'FDIR'>, public FilterProceduralRu
 	float max;
 
 public:
-	FilterDirection() {
+	FilterDirection()  : FilterProceduralRule(3) {
 		filterType = 0;
 	}
 
@@ -45,6 +45,10 @@ public:
 		if (-M_PI >= minDegree) {
 			minDegree = -M_PI
 		}
+	}*/
+
+	/*float process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator) {
+
 	}*/
 
 	void parseFromIffStream(engine::util::IffStream* iffStream, Version<'0000'>) {

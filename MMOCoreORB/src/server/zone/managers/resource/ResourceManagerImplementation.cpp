@@ -76,8 +76,8 @@ int ResourceManagerImplementation::notifyObserverEvent(uint32 eventType, Observa
 	if (eventType == ObserverEventType::POSTURECHANGED) {
 		CreatureObject* creature = cast<CreatureObject*>( observable);
 		// Cancel Sampling on posture change
-		Reference<SampleTask*> task = cast<SampleTask*>( creature->getPendingTask("sample"));
-		Reference<SampleResultsTask*> sampleResultsTask = cast<SampleResultsTask*>( creature->getPendingTask("sampleresults"));
+		Reference<SampleTask*> task = creature->getPendingTask("sample").castTo<SampleTask*>( );
+		Reference<SampleResultsTask*> sampleResultsTask = creature->getPendingTask("sampleresults").castTo<SampleResultsTask*>( );
 
 		if (task != NULL) {
 
@@ -325,7 +325,7 @@ uint32 ResourceManagerImplementation::getAvailablePowerFromPlayer(CreatureObject
 	uint32 power = 0;
 
 	for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-		ManagedReference<SceneObject*> obj = cast<SceneObject*>( inventory->getContainerObject(i));
+		Reference<SceneObject*> obj =  inventory->getContainerObject(i).castTo<SceneObject*>();
 
 		if (obj == NULL || !obj->isResourceContainer())
 			continue;

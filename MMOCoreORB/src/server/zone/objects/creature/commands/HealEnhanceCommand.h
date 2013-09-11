@@ -312,7 +312,7 @@ public:
 			SceneObject* inventory = creature->getSlottedObject("inventory");
 
 			if (inventory != NULL) {
-				enhancePack = dynamic_cast<EnhancePack*>(inventory->getContainerObject(objectId));
+				enhancePack = inventory->getContainerObject(objectId).castTo<EnhancePack*>();
 			}
 		} else {
 			enhancePack = findEnhancePack(creature, attribute);

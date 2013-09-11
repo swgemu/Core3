@@ -1,5 +1,5 @@
 yavin4_mamien_pack_neutral_none = Lair:new {
-	mobiles = {{"female_mamien", 0}, {"male_mamien", 0}},
+	mobiles = {{"female_mamien", -1}, {"male_mamien", 0}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/mamien/lair_mamien.iff"},
 	buildingsEasy = {"object/tangible/lair/mamien/lair_mamien.iff"},

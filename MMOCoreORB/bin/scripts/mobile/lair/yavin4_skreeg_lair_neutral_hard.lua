@@ -1,5 +1,5 @@
 yavin4_skreeg_lair_neutral_hard = Lair:new {
-	mobiles = {{"skreeg_female", 0}, {"skreeg_male", 0}},
+	mobiles = {{"skreeg_female", -6}, {"skreeg_male", 0}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_evil_fire_green.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_dead_log_large_evil_fire_green.iff"},

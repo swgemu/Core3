@@ -21,7 +21,7 @@ public:
 
 	void run(CreatureObject* creature, SuiBox* sui, bool cancelPressed, Vector<UnicodeString>* args) {
 
-		ManagedReference<VendorAdBarkingSession*> session = cast<VendorAdBarkingSession*>(creature->getActiveSession(SessionFacadeType::VENDORADBARKING));
+		ManagedReference<VendorAdBarkingSession*> session = creature->getActiveSession(SessionFacadeType::VENDORADBARKING).castTo<VendorAdBarkingSession*>();
 		if(session == NULL)
 			return;
 

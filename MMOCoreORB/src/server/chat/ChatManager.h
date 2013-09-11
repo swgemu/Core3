@@ -196,6 +196,8 @@ public:
 
 	void initiateRooms();
 
+	void initiatePlanetRooms();
+
 	void destroyRooms();
 
 	ChatRoom* createRoom(const String& roomName, ChatRoom* parent = NULL);
@@ -310,6 +312,8 @@ class ChatManagerImplementation : public ManagedServiceImplementation, public Lo
 
 	ManagedReference<ChatRoom* > guildRoom;
 
+	ManagedReference<ChatRoom* > core3Room;
+
 	Reference<ChatRoomMap* > roomMap;
 
 	unsigned int roomID;
@@ -336,6 +340,8 @@ public:
 	void finalize();
 
 	void initiateRooms();
+
+	void initiatePlanetRooms();
 
 	void destroyRooms();
 
@@ -461,6 +467,8 @@ public:
 	void finalize();
 
 	void initiateRooms();
+
+	void initiatePlanetRooms();
 
 	void destroyRooms();
 

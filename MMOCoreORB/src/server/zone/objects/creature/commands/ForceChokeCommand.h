@@ -85,7 +85,7 @@ public:
 			if (creatureTarget == NULL)
 				return GENERALERROR;
 
-			Reference<ForceChokeTickTask*> chokeCheck = dynamic_cast<ForceChokeTickTask*>(creatureTarget->getPendingTask("forceChokeTickTask"));
+			Reference<ForceChokeTickTask*> chokeCheck = creatureTarget->getPendingTask("forceChokeTickTask").castTo<ForceChokeTickTask*>();
 
 			if (chokeCheck != NULL) {
 				return SUCCESS;

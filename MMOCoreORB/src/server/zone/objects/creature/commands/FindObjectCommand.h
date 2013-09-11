@@ -90,7 +90,7 @@ public:
 
 		//CreateClientPathMessage* msg = new CreateClientPathMessage();
 
-		PlayerObject* ghost = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+		Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 		for (int i = 0; i < path->size(); ++i) {
 			WorldCoordinates* coord = &path->get(i);

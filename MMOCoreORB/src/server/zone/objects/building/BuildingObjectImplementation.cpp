@@ -269,6 +269,7 @@ void BuildingObjectImplementation::notifyRemoveFromZone() {
 				SceneObject* test = cell->getContainerObject(0);
 
 				if (test == obj) {
+					Locker contLocker(cell->getContainerLock());
 					cont->remove(0);
 				}
 			}

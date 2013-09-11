@@ -168,7 +168,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 		object->info("activating characterAbility " + characterAbility);
 
 		if (object->isPlayerCreature()) {
-			PlayerObject* playerObject = cast<PlayerObject*>( object->getSlottedObject("ghost"));
+			Reference<PlayerObject*> playerObject =  object->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 			if (!playerObject->hasAbility(characterAbility)) {
 				object->clearQueueAction(actionCount, 0, 2);
@@ -196,7 +196,7 @@ float ObjectControllerImplementation::activateCommand(CreatureObject* object, un
 		try {
 
 			if(object->isPlayerCreature()) {
-				ManagedReference<PlayerObject*> ghost = cast<PlayerObject*>( object->getSlottedObject("ghost"));
+				Reference<PlayerObject*> ghost =  object->getSlottedObject("ghost").castTo<PlayerObject*>();
 				if (ghost == NULL || !ghost->isPrivileged() || !ghost->hasAbility(queueCommand->getQueueCommandName())) {
 
 					StringBuffer logEntry;

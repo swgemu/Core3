@@ -35,6 +35,8 @@ void TreeFile::read(const String& path) {
 
 	readHeader(&fileStream);
 
+	fileStream.close();
+
 	delete file;
 }
 

@@ -267,7 +267,7 @@ void CityRegionImplementation::notifyEnter(SceneObject* object) {
 
 void CityRegionImplementation::notifyExit(SceneObject* object) {
 	//pre: no 2 different city regions should ever overlap, only 2 Regions of the same city region
-	ManagedReference<Region*> activeRegion = cast<Region*>(object->getActiveRegion());
+	ManagedReference<Region*> activeRegion = object->getActiveRegion().castTo<Region*>();
 
 	if (activeRegion != NULL) {
 		ManagedReference<CityRegion*> city = activeRegion->getCityRegion();

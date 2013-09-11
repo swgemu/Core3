@@ -30,7 +30,7 @@
  *	TangibleObjectStub
  */
 
-enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_APPLYSKILLMODSTO__CREATUREOBJECT_BOOL_,RPC_REMOVESKILLMODSFROM__CREATUREOBJECT_,RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_,RPC_REMOVESKILLMOD__INT_STRING_INT_BOOL_,RPC_REMOVEALLSKILLMODSOFTYPE__INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_SETCOUNTDOWNTIMER__INT_BOOL_,RPC_DECREASEUSECOUNT__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_ISHEALABLEBY__CREATUREOBJECT_,RPC_SENDPVPSTATUSTO__CREATUREOBJECT_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_STRING_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_,RPC_SETCONDITIONDAMAGE__FLOAT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_SHORT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_SHORT_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_DROPFROMDEFENDERLISTS__TANGIBLEOBJECT_,RPC_GETUNKNOWNBYTE__,RPC_ISKILLER__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETDISPLAYEDUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_BOOL_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_SETCOMPLEXITY__FLOAT_,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_BOOL_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETSERIALNUMBER__STRING_,RPC_SETLEVEL__INT_,RPC_GETSERIALNUMBER__,RPC_CREATEFACTORYCRATE__BOOL_,RPC_CANREPAIR__CREATUREOBJECT_,RPC_REPAIR__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_,RPC_ISBROKEN__,RPC_GETHITCHANCE__,RPC_BROADCASTPVPSTATUSBITMASK__};
+enum {RPC_INITIALIZEMEMBERS__ = 6,RPC_APPLYSKILLMODSTO__CREATUREOBJECT_BOOL_,RPC_REMOVESKILLMODSFROM__CREATUREOBJECT_,RPC_ADDSKILLMOD__INT_STRING_INT_BOOL_,RPC_REMOVESKILLMOD__INT_STRING_INT_BOOL_,RPC_REMOVEALLSKILLMODSOFTYPE__INT_BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SYNCHRONIZEDUILISTEN__SCENEOBJECT_INT_,RPC_SYNCHRONIZEDUISTOPLISTEN__SCENEOBJECT_INT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDERS__,RPC_SETCOMBATSTATE__,RPC_SETUSECOUNT__INT_BOOL_,RPC_SETCOUNTDOWNTIMER__INT_BOOL_,RPC_DECREASEUSECOUNT__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_HASDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_ISHEALABLEBY__CREATUREOBJECT_,RPC_SENDPVPSTATUSTO__CREATUREOBJECT_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_STRING_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_,RPC_SETCONDITIONDAMAGE__FLOAT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__BYTE_SHORT_BOOL_,RPC_SETCUSTOMIZATIONVARIABLE__STRING_SHORT_BOOL_,RPC_SETOPTIONSBITMASK__INT_BOOL_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_DROPFROMDEFENDERLISTS__TANGIBLEOBJECT_,RPC_GETUNKNOWNBYTE__,RPC_ISKILLER__,RPC_ISTICKETCOLLECTOR__,RPC_ISTICKETOBJECT__,RPC_GETUSECOUNT__,RPC_GETDISPLAYEDUSECOUNT__,RPC_GETMAXCONDITION__,RPC_SETMAXCONDITION__INT_BOOL_,RPC_GETCONDITIONDAMAGE__,RPC_GETVOLUME__,RPC_SETCOMPLEXITY__FLOAT_,RPC_GETCOMPLEXITY__,RPC_GETOPTIONSBITMASK__,RPC_GETLEVEL__,RPC_GETPVPSTATUSBITMASK__,RPC_ISTANGIBLEOBJECT__,RPC_GETCUSTOMIZATIONSTRING__STRING_,RPC_GETMAINDEFENDER__,RPC_ISDESTROYED__,RPC_SETFACTION__INT_,RPC_GETFACTION__,RPC_ISREBEL__,RPC_ISIMPERIAL__,RPC_ISNEUTRAL__,RPC_ISSLICEABLE__,RPC_ISSLICED__,RPC_SETSLICEABLE__BOOL_,RPC_SETSLICED__BOOL_,RPC_ISPHARMACEUTICALOBJECT__,RPC_SETCUSTOMIZATIONSTRING__STRING_,RPC_SETPVPSTATUSBITMASK__INT_BOOL_,RPC_SETCRAFTERSNAME__STRING_,RPC_GETCRAFTERSNAME__,RPC_SETJUNKDEALERNEEDED__INT_,RPC_GETJUNKDEALERNEEDED__,RPC_SETJUNKVALUE__INT_,RPC_GETJUNKVALUE__,RPC_SETSERIALNUMBER__STRING_,RPC_SETLEVEL__INT_,RPC_GETSERIALNUMBER__,RPC_CREATEFACTORYCRATE__BOOL_,RPC_CANREPAIR__CREATUREOBJECT_,RPC_REPAIR__CREATUREOBJECT_,RPC_REPAIRATTEMPT__INT_,RPC_ISBROKEN__,RPC_GETHITCHANCE__,RPC_BROADCASTPVPSTATUSBITMASK__};
 
 TangibleObject::TangibleObject() : SceneObject(DummyConstructorParameter::instance()) {
 	TangibleObjectImplementation* _implementation = new TangibleObjectImplementation();
@@ -1065,6 +1065,60 @@ String TangibleObject::getCraftersName() {
 		return _implementation->getCraftersName();
 }
 
+void TangibleObject::setJunkDealerNeeded(int jdNeeded) {
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETJUNKDEALERNEEDED__INT_);
+		method.addSignedIntParameter(jdNeeded);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setJunkDealerNeeded(jdNeeded);
+}
+
+int TangibleObject::getJunkDealerNeeded() {
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETJUNKDEALERNEEDED__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getJunkDealerNeeded();
+}
+
+void TangibleObject::setJunkValue(int jValue) {
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETJUNKVALUE__INT_);
+		method.addSignedIntParameter(jValue);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setJunkValue(jValue);
+}
+
+int TangibleObject::getJunkValue() {
+	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETJUNKVALUE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getJunkValue();
+}
+
 void TangibleObject::setSerialNumber(const String& serial) {
 	TangibleObjectImplementation* _implementation = static_cast<TangibleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1376,6 +1430,14 @@ bool TangibleObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		TypeInfo<String >::parseFromBinaryStream(&craftersName, stream);
 		return true;
 
+	case 0xa090b45c: //TangibleObject.junkDealerNeeded
+		TypeInfo<int >::parseFromBinaryStream(&junkDealerNeeded, stream);
+		return true;
+
+	case 0x30289553: //TangibleObject.junkValue
+		TypeInfo<int >::parseFromBinaryStream(&junkValue, stream);
+		return true;
+
 	case 0x4f048d7d: //TangibleObject.objectSerial
 		TypeInfo<String >::parseFromBinaryStream(&objectSerial, stream);
 		return true;
@@ -1514,6 +1576,22 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_nameHashCode = 0xa090b45c; //TangibleObject.junkDealerNeeded
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&junkDealerNeeded, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_nameHashCode = 0x30289553; //TangibleObject.junkValue
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&junkValue, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_nameHashCode = 0x4f048d7d; //TangibleObject.objectSerial
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
@@ -1547,7 +1625,7 @@ int TangibleObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 17;
+	return _count + 19;
 }
 
 TangibleObjectImplementation::TangibleObjectImplementation() {
@@ -1581,6 +1659,10 @@ void TangibleObjectImplementation::initializeMembers() {
 	sliced = false;
 	// server/zone/objects/tangible/TangibleObject.idl():  		threatMap = null;
 	threatMap = NULL;
+	// server/zone/objects/tangible/TangibleObject.idl():  		junkDealerNeeded = 0;
+	junkDealerNeeded = 0;
+	// server/zone/objects/tangible/TangibleObject.idl():  		junkValue = 0;
+	junkValue = 0;
 }
 
 void TangibleObjectImplementation::applySkillModsTo(CreatureObject* creature, bool doCheck) {
@@ -1852,6 +1934,26 @@ void TangibleObjectImplementation::setCraftersName(String& name) {
 String TangibleObjectImplementation::getCraftersName() {
 	// server/zone/objects/tangible/TangibleObject.idl():  		return craftersName;
 	return craftersName;
+}
+
+void TangibleObjectImplementation::setJunkDealerNeeded(int jdNeeded) {
+	// server/zone/objects/tangible/TangibleObject.idl():  		junkDealerNeeded = jdNeeded;
+	junkDealerNeeded = jdNeeded;
+}
+
+int TangibleObjectImplementation::getJunkDealerNeeded() {
+	// server/zone/objects/tangible/TangibleObject.idl():  		return junkDealerNeeded;
+	return junkDealerNeeded;
+}
+
+void TangibleObjectImplementation::setJunkValue(int jValue) {
+	// server/zone/objects/tangible/TangibleObject.idl():  		junkValue = jValue;
+	junkValue = jValue;
+}
+
+int TangibleObjectImplementation::getJunkValue() {
+	// server/zone/objects/tangible/TangibleObject.idl():  		return junkValue;
+	return junkValue;
 }
 
 void TangibleObjectImplementation::setLevel(int lev) {
@@ -2252,6 +2354,26 @@ void TangibleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			resp->insertAscii(getCraftersName());
 		}
 		break;
+	case RPC_SETJUNKDEALERNEEDED__INT_:
+		{
+			setJunkDealerNeeded(inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_GETJUNKDEALERNEEDED__:
+		{
+			resp->insertSignedInt(getJunkDealerNeeded());
+		}
+		break;
+	case RPC_SETJUNKVALUE__INT_:
+		{
+			setJunkValue(inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_GETJUNKVALUE__:
+		{
+			resp->insertSignedInt(getJunkValue());
+		}
+		break;
 	case RPC_SETSERIALNUMBER__STRING_:
 		{
 			String serial; 
@@ -2574,6 +2696,22 @@ void TangibleObjectAdapter::setCraftersName(String& name) {
 
 String TangibleObjectAdapter::getCraftersName() {
 	return (static_cast<TangibleObject*>(stub))->getCraftersName();
+}
+
+void TangibleObjectAdapter::setJunkDealerNeeded(int jdNeeded) {
+	(static_cast<TangibleObject*>(stub))->setJunkDealerNeeded(jdNeeded);
+}
+
+int TangibleObjectAdapter::getJunkDealerNeeded() {
+	return (static_cast<TangibleObject*>(stub))->getJunkDealerNeeded();
+}
+
+void TangibleObjectAdapter::setJunkValue(int jValue) {
+	(static_cast<TangibleObject*>(stub))->setJunkValue(jValue);
+}
+
+int TangibleObjectAdapter::getJunkValue() {
+	return (static_cast<TangibleObject*>(stub))->getJunkValue();
 }
 
 void TangibleObjectAdapter::setSerialNumber(const String& serial) {

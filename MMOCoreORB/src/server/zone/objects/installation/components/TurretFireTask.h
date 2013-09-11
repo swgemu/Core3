@@ -80,7 +80,7 @@ public:
 	}
 
 	void executeCommand(TurretDataComponent* turretData, CombatQueueCommand* combatCommand ){
-		WeaponObject* weapon = cast<WeaponObject*>(sceneObject->getSlottedObject("hold_r"));
+		Reference<WeaponObject*> weapon = sceneObject->getSlottedObject("hold_r").castTo<WeaponObject*>();
 
 		if (weapon != NULL) {
 			TangibleObject* defenderObject = cast<TangibleObject*>(target.get());
@@ -160,7 +160,7 @@ public:
 		ManagedReference<CreatureObject*> targetCreature = cast<CreatureObject*>(turretData->getTarget());
 		ManagedReference<CreatureObject*> attacker = cast<CreatureObject*>(turretData->getController());
 
-		ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(sceneObject->getSlottedObject("hold_r"));
+		ManagedReference<WeaponObject*> weapon = sceneObject->getSlottedObject("hold_r").castTo<WeaponObject*>();
 
 		if(weapon == NULL || targetCreature == NULL)
 			return false;
