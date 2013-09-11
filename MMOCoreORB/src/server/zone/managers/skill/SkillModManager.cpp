@@ -127,7 +127,7 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 	usedObjects.setNoDuplicateInsertPlan();
 
 	for(int i = 0; i < creature->getSlottedObjectsSize(); ++i) {
-		ManagedReference<TangibleObject*> object = cast<TangibleObject*>(creature->getSlottedObject(i));
+		ManagedReference<TangibleObject*> object = creature->getSlottedObject(i).castTo<TangibleObject*>();
 		if(object == NULL || usedObjects.contains(object.get()))
 			continue;
 

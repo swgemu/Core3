@@ -376,7 +376,7 @@ public:
 			SceneObject* inventory = creature->getSlottedObject("inventory");
 
 			if (inventory != NULL) {
-				curePack = dynamic_cast<CurePack*>(inventory->getContainerObject(objectId));
+				curePack = inventory->getContainerObject(objectId).castTo<CurePack*>();
 			}
 		}
 

@@ -36,19 +36,19 @@ public:
 };
 
 TEST_F(CircularAreaShapeTest, CircularAreaShapeHasItsCenterAtZeroZeroZeroAfterCreation) {
-	CircularAreaShape* circularAreaShape = new CircularAreaShape();
+	Reference<CircularAreaShape*> circularAreaShape = new CircularAreaShape();
 	EXPECT_EQ(circularAreaShape->getAreaCenter().getX(), 0);
 	EXPECT_EQ(circularAreaShape->getAreaCenter().getY(), 0);
 	EXPECT_EQ(circularAreaShape->getAreaCenter().getZ(), 0);
 }
 
 TEST_F(CircularAreaShapeTest, CircularAreaShapeHasRadiusEqualToZeroAfterCreation) {
-	CircularAreaShape* circularAreaShape = new CircularAreaShape();
+	Reference<CircularAreaShape*> circularAreaShape = new CircularAreaShape();
 	EXPECT_EQ(circularAreaShape->getRadius(), 0);
 }
 
 TEST_F(CircularAreaShapeTest, CircularAreaShapeHasRadiusSquareEqualToZeroAfterCreation) {
-	CircularAreaShape* circularAreaShape = new CircularAreaShape();
+	Reference<CircularAreaShape*> circularAreaShape = new CircularAreaShape();
 	EXPECT_EQ(circularAreaShape->getRadius2(), 0);
 }
 

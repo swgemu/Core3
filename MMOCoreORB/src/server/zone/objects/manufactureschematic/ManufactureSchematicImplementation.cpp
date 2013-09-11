@@ -161,7 +161,7 @@ void ManufactureSchematicImplementation::synchronizedUIListen(SceneObject* playe
 	if(!player->isPlayerCreature() || draftSchematic == NULL)
 		return;
 
-	Reference<CraftingSession*> session = cast<CraftingSession*>(player->getActiveSession(SessionFacadeType::CRAFTING));
+	Reference<CraftingSession*> session = player->getActiveSession(SessionFacadeType::CRAFTING).castTo<CraftingSession*>();
 	if(session == NULL || session->getSchematic() != _this.get()) {
 		return;
 	}

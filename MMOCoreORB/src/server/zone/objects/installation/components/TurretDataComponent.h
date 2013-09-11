@@ -98,6 +98,7 @@ public:
 	void rescheduleManualFireTask(float secondsToWait);
 	void rescheduleFireTask(float secondsToWait, bool manual);
 	void setWeapon(WeaponObject* weapon);
+	unsigned int getArmorRating();
 	float getKinetic();
 	float getEnergy();
 	float getElectricity();

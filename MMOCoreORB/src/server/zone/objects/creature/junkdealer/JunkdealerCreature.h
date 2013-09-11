@@ -49,8 +49,6 @@ using namespace server::zone::objects::scene;
 
 #include "server/zone/objects/creature/CreatureObject.h"
 
-#include "server/zone/objects/creature/CreatureObject.h"
-
 namespace server {
 namespace zone {
 namespace objects {
@@ -69,6 +67,36 @@ public:
 
 	static const int GONG = 0xB26210DB;
 
+	static const int JUNKCONVGENERIC = 1;
+
+	static const int JUNKCONVARMS = 2;
+
+	static const int JUNKCONVFINARY = 3;
+
+	static const int JUNKCONVDENDERRORI = 4;
+
+	static const int JUNKCONVDENDERTHEED = 5;
+
+	static const int JUNKCONVLILABORVO = 6;
+
+	static const int JUNKCONVMALIKVISTAL = 7;
+
+	static const int JUNKCONVNADOWATTOS = 8;
+
+	static const int JUNKCONVNATHANTAIKE = 9;
+
+	static const int JUNKCONVOLLOBOJABBAS = 10;
+
+	static const int JUNKCONVQUICHDANTOOINE = 11;
+
+	static const int JUNKCONVREGGINYM = 12;
+
+	static const int JUNKCONVSHEANILAKE = 13;
+
+	static const int JUNKCONVSNEGVALARIAN = 14;
+
+	static const int JUNKCONVJAWATRADER = 15;
+
 	JunkdealerCreature();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
@@ -83,6 +111,8 @@ public:
 
 	void selectConversationOption(int option, SceneObject* obj);
 
+	String getConversationString(int dealerType);
+
 	String getLocation();
 
 	void setLocation(const String& loc);
@@ -90,6 +120,18 @@ public:
 	bool isAttackableBy(CreatureObject* object);
 
 	void createSellJunkLootSelection(CreatureObject* player);
+
+	bool canInventoryItemBeSoldAsJunk(TangibleObject* lootItem, int dealerType);
+
+	void setJunkDealerBuyerType(int jdBuyerType);
+
+	int getJunkDealerBuyerType();
+
+	void setJunkDealerConversationType(int jdConvoType);
+
+	int getJunkDealerConversationType();
+
+	bool isJunkDealer();
 
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
@@ -133,6 +175,42 @@ public:
 
 	static const int GONG = 0xB26210DB;
 
+	static const int JUNKCONVGENERIC = 1;
+
+	static const int JUNKCONVARMS = 2;
+
+	static const int JUNKCONVFINARY = 3;
+
+	static const int JUNKCONVDENDERRORI = 4;
+
+	static const int JUNKCONVDENDERTHEED = 5;
+
+	static const int JUNKCONVLILABORVO = 6;
+
+	static const int JUNKCONVMALIKVISTAL = 7;
+
+	static const int JUNKCONVNADOWATTOS = 8;
+
+	static const int JUNKCONVNATHANTAIKE = 9;
+
+	static const int JUNKCONVOLLOBOJABBAS = 10;
+
+	static const int JUNKCONVQUICHDANTOOINE = 11;
+
+	static const int JUNKCONVREGGINYM = 12;
+
+	static const int JUNKCONVSHEANILAKE = 13;
+
+	static const int JUNKCONVSNEGVALARIAN = 14;
+
+	static const int JUNKCONVJAWATRADER = 15;
+
+protected:
+	int junkDealerBuyerType;
+
+	int junkDealerConversationType;
+
+public:
 	JunkdealerCreatureImplementation();
 
 	JunkdealerCreatureImplementation(DummyConstructorParameter* param);
@@ -149,6 +227,8 @@ public:
 
 	void selectConversationOption(int option, SceneObject* obj);
 
+	String getConversationString(int dealerType);
+
 	String getLocation();
 
 	void setLocation(const String& loc);
@@ -156,6 +236,18 @@ public:
 	bool isAttackableBy(CreatureObject* object);
 
 	void createSellJunkLootSelection(CreatureObject* player);
+
+	bool canInventoryItemBeSoldAsJunk(TangibleObject* lootItem, int dealerType);
+
+	void setJunkDealerBuyerType(int jdBuyerType);
+
+	virtual int getJunkDealerBuyerType();
+
+	void setJunkDealerConversationType(int jdConvoType);
+
+	virtual int getJunkDealerConversationType();
+
+	bool isJunkDealer();
 
 	WeakReference<JunkdealerCreature*> _this;
 
@@ -210,6 +302,8 @@ public:
 
 	void selectConversationOption(int option, SceneObject* obj);
 
+	String getConversationString(int dealerType);
+
 	String getLocation();
 
 	void setLocation(const String& loc);
@@ -217,6 +311,18 @@ public:
 	bool isAttackableBy(CreatureObject* object);
 
 	void createSellJunkLootSelection(CreatureObject* player);
+
+	bool canInventoryItemBeSoldAsJunk(TangibleObject* lootItem, int dealerType);
+
+	void setJunkDealerBuyerType(int jdBuyerType);
+
+	int getJunkDealerBuyerType();
+
+	void setJunkDealerConversationType(int jdConvoType);
+
+	int getJunkDealerConversationType();
+
+	bool isJunkDealer();
 
 };
 

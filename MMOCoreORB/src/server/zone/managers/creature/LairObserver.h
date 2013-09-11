@@ -92,6 +92,8 @@ public:
 
 	int getLairType();
 
+	int getSpawnNumber();
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -156,6 +158,8 @@ public:
 
 	int getLairType();
 
+	int getSpawnNumber();
+
 	WeakReference<LairObserver*> _this;
 
 	operator const LairObserver*();
@@ -218,6 +222,8 @@ public:
 	int getLivingCreatureCount();
 
 	int getLairType();
+
+	int getSpawnNumber();
 
 };
 

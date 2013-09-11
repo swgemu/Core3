@@ -305,7 +305,7 @@ public:
 			SceneObject* inventory = creature->getSlottedObject("inventory");
 
 			if (inventory != NULL) {
-				woundPack = dynamic_cast<WoundPack*>(inventory->getContainerObject(objectId));
+				woundPack = inventory->getContainerObject(objectId).castTo<WoundPack*>();
 			}
 		} else {
 			int searchAttribute = -1;

@@ -46,6 +46,7 @@ public:
 
 	void TearDown() {
 		// Perform clean up of common constructs here.
+		CLEAR_LOCK_TRACE();
 	}
 };
 

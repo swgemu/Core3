@@ -77,7 +77,7 @@ public:
 			return GENERALERROR;
 		}
 
-		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(creature->getActiveSession(SessionFacadeType::ENTERTAINING));
+		ManagedReference<EntertainingSession*> session = creature->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
 		if (session != NULL) {
 			if (session->isDancing()) {
@@ -94,7 +94,7 @@ public:
 		if (!canPlayInstrument(creature, creature->getTargetID()))
 			return GENERALERROR;
 
-		PlayerObject* ghost = dynamic_cast<PlayerObject*> (creature->getSlottedObject("ghost"));
+		Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*> ();
 
 		String args = arguments.toString();
 
@@ -148,7 +148,7 @@ public:
 				if (groupMember == NULL)
 					continue;
 
-				ManagedReference<EntertainingSession*> groupMemberSession = dynamic_cast<EntertainingSession*>(groupMember->getActiveSession(SessionFacadeType::ENTERTAINING));
+				ManagedReference<EntertainingSession*> groupMemberSession = groupMember->getActiveSession(SessionFacadeType::ENTERTAINING).castTo<EntertainingSession*>();
 
 				if (groupMemberSession != NULL)
 					continue;
@@ -165,7 +165,7 @@ public:
 					continue;
 				}
 
-				ManagedReference<Instrument*> instrument = dynamic_cast<Instrument*> (groupMember->getSlottedObject("hold_r"));
+				Reference<Instrument*> instrument = groupMember->getSlottedObject("hold_r").castTo<Instrument*> ();
 				bool targetedInstrument = false;
 
 				if (instrument == NULL) {
@@ -235,9 +235,9 @@ public:
 	}
 
 	bool canPlayInstrument(CreatureObject* creature, const uint64& target) {
-		PlayerObject* ghost = dynamic_cast<PlayerObject*> (creature->getSlottedObject("ghost"));
+		Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*> ();
 
-		ManagedReference<Instrument*> instrument = dynamic_cast<Instrument*> (creature->getSlottedObject("hold_r"));
+		Reference<Instrument*> instrument = creature->getSlottedObject("hold_r").castTo<Instrument*> ();
 
 		if (instrument == NULL) {
 			ManagedReference<SceneObject*> nala = server->getZoneServer()->getObject(target);

@@ -75,7 +75,7 @@ public:
 		Locker playerLocker(player);
 
 		try {
-			Reference<ForceMeditateTask*> fmeditateTask = dynamic_cast<ForceMeditateTask*>(player->getPendingTask("forcemeditate"));
+			Reference<ForceMeditateTask*> fmeditateTask = player->getPendingTask("forcemeditate").castTo<ForceMeditateTask*>();
 
 			if (!player->isMeditating())
 				return;

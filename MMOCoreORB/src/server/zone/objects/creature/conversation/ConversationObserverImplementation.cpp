@@ -93,7 +93,7 @@ int ConversationObserverImplementation::notifyObserverEvent(unsigned int eventTy
 	switch (eventType) {
 	case ObserverEventType::POSITIONCHANGED:
 		if (npc != NULL) { //the observable in this case is the player
-			ManagedReference<ConversationSession*> session = dynamic_cast<ConversationSession*>(npc->getActiveSession(SessionFacadeType::CONVERSATION));
+			ManagedReference<ConversationSession*> session = npc->getActiveSession(SessionFacadeType::CONVERSATION).castTo<ConversationSession*>();
 
 			if (session != NULL) {
 				ManagedReference<CreatureObject*> sessionNpc = session->getNPC();
@@ -168,7 +168,7 @@ void ConversationObserverImplementation::cancelConversationSession(CreatureObjec
 
 ConversationScreen* ConversationObserverImplementation::getNextConversationScreen(CreatureObject* conversingPlayer, int selectedOption, CreatureObject* conversingNPC) {
 	//Get screen ID from last conversation screen.
-	Reference<ConversationSession*> session = cast<ConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
+	Reference<ConversationSession*> session = conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION).castTo<ConversationSession* >();
 	/*String lastScreenId = "";
 	if (session != NULL) {
 		lastScreenId = session->getLastConversationScreenName();
@@ -227,7 +227,7 @@ void ConversationObserverImplementation::sendConversationScreenToPlayer(Creature
 		conversationScreen->sendTo(conversingPlayer, conversingNPC);
 	} else {
 		//Clear screen ID from last conversation screen.
-		ConversationSession* session = cast<ConversationSession* >(conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION));
+		Reference<ConversationSession*> session = conversingPlayer->getActiveSession(SessionFacadeType::CONVERSATION).castTo<ConversationSession* >();
 		if (session != NULL) {
 			session->setLastConversationScreen(NULL);
 		}

@@ -98,7 +98,7 @@ public:
 			args.getStringToken(xpType);
 			int amount = args.getIntToken();
 
-			int num = cast<PlayerObject*>(player->getSlottedObject("ghost"))->getExperience(xpType);
+			int num = (player->getSlottedObject("ghost").castTo<PlayerObject*>())->getExperience(xpType);
 			amount -= num;
 			player->getZoneServer()->getPlayerManager()->awardExperience(player, xpType, amount);
 

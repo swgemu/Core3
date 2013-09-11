@@ -55,9 +55,11 @@ void TerrainGenerator::parseFromIffStream(engine::util::IffStream* iffStream, Ve
 	mapGroup.readObject(iffStream);
 
 	uint32 type = iffStream->getNextFormType();
+
 	if (type == 'MGRP') {
-		System::out << "ASOIDJASOIDJAOSIJDAOISJD" << endl;
-		//mapGroup2.readObject(iffStream);
+		bitmapGroup.readObject(iffStream);
+
+		type = iffStream->getNextFormType();
 	}
 
 	if (type == 'LAYR') {

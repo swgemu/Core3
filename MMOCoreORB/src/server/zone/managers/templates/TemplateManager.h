@@ -52,9 +52,6 @@ class TemplateManager : public Singleton<TemplateManager>, public Logger, public
 	VectorMap<String, Reference<SlotDescriptor*> > slotDescriptors;
 	VectorMap<String, Reference<ArrangementDescriptor*> > arrangementDescriptors;
 
-	//treArchive* treeDirectory;
-	TreeArchive* treeDirectory;
-
 	ReadWriteLock appearanceMapLock;
 
 	void loadTreArchive();
@@ -100,14 +97,6 @@ public:
 	SharedObjectTemplate* getTemplate(uint32 key);
 
 	IffStream* openIffFile(const String& fileName);
-
-	TreeDirectory* getTreeDirectory(const String& path) {
-		return treeDirectory->getDirectory(path);
-	}
-
-	TreeArchive* getTreeArchive() {
-		return treeDirectory;
-	}
 
 	ObjectInputStream* openTreFile(const String& filePath);
 

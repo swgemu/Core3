@@ -10,7 +10,7 @@
 #include "../../TerrainGenerator.h"
 
 
-float FilterFractal::process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator) {
+float FilterFractal::process(float x, float y, float transformValue, float& baseValue, TerrainGenerator* terrainGenerator, FilterRectangle* rect) {
 	if (mfrc == NULL) {
 		mfrc = terrainGenerator->getMfrc(fractalId);
 

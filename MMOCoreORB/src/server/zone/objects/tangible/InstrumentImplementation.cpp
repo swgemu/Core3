@@ -71,14 +71,14 @@ int InstrumentImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 		if (getZone() == NULL)
 			return 1;
 
-		ManagedReference<Instrument*> instrument = dynamic_cast<Instrument*>(player->getSlottedObject("hold_r"));
+		Reference<Instrument*> instrument = player->getSlottedObject("hold_r").castTo<Instrument*>();
 
 		if (instrument != NULL) {
 			player->sendSystemMessage("@performance:music_must_unequip");
 			return 1;
 		}
 
-		PlayerObject* ghost = dynamic_cast<PlayerObject*>(player->getSlottedObject("ghost"));
+		Reference<PlayerObject*> ghost = player->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 		if (ghost == NULL)
 			return 1;

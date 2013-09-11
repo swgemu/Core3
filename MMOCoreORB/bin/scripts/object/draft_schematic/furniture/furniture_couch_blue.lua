@@ -43,6 +43,39 @@
 
 object_draft_schematic_furniture_furniture_couch_blue = object_draft_schematic_furniture_shared_furniture_couch_blue:new {
 
+   templateType = DRAFTSCHEMATIC,
+
+   customObjectName = "Large Couch",
+
+   craftingToolTab = 512, -- (See DraftSchemticImplementation.h)
+   complexity = 18, 
+   size = 1, 
+
+   xpType = "crafting_structure_general", 
+   xp = 340, 
+
+   disableFactoryRun = true,
+
+   assemblySkill = "structure_assembly", 
+   experimentingSkill = "structure_experimentation", 
+   customizationSkill = "structure_customization", 
+
+   customizationOptions = {},
+   customizationStringNames = {},
+   customizationDefaults = {},
+
+   ingredientTemplateNames = {"craft_furniture_ingredients_n", "craft_furniture_ingredients_n"},
+   ingredientTitleNames = {"cushions", "frame"},
+   ingredientSlotType = {0, 0},
+   resourceTypes = {"hide", "metal"},
+   resourceQuantities = {80, 90},
+   contribution = {100, 100},
+
+
+   targetTemplate = "object/tangible/furniture/all/frn_all_couch_lg_s2.iff",
+
+   additionalTemplates = {
+             }
 }
 
 ObjectTemplates:addTemplate(object_draft_schematic_furniture_furniture_couch_blue, "object/draft_schematic/furniture/furniture_couch_blue.iff")

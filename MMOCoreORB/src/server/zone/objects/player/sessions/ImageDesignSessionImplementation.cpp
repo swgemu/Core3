@@ -80,7 +80,7 @@ void ImageDesignSessionImplementation::startImageDesign(CreatureObject* designer
 
 	String hairTemplate;
 
-	TangibleObject* targetHair = dynamic_cast<TangibleObject*>(targetPlayer->getSlottedObject("hair"));
+	Reference<TangibleObject*> targetHair = targetPlayer->getSlottedObject("hair").castTo<TangibleObject*>();
 
 	ImageDesignStartMessage* msg = new ImageDesignStartMessage(designer, designer, targetPlayer, designerTentID, hairTemplate);
 	designer->sendMessage(msg);
@@ -171,7 +171,7 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 
 		ImageDesignManager* imageDesignManager = ImageDesignManager::instance();
 
-		hairObject = dynamic_cast<TangibleObject*>(strongReferenceTarget->getSlottedObject("hair"));
+		hairObject = strongReferenceTarget->getSlottedObject("hair").castTo<TangibleObject*>();
 
 		if (type == 1) {
 			String oldCustomization;

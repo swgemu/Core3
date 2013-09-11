@@ -66,7 +66,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		PlayerObject* admin = cast<PlayerObject*>(creature->getSlottedObject("ghost"));
+		Reference<PlayerObject*> admin = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
 		if(admin == NULL || !admin->isPrivileged())
 			return INVALIDTARGET;
@@ -81,7 +81,7 @@ public:
 		ManagedReference<PlayerManager*> playerManager = server->getPlayerManager();
 		ManagedReference<Account*> account = NULL;
 
-		session = cast<PlayerManagementSession*>(creature->getActiveSession(SessionFacadeType::PLAYERMANAGEMENT));
+		session = creature->getActiveSession(SessionFacadeType::PLAYERMANAGEMENT).castTo<PlayerManagementSession*>();
 
 		if(session != NULL) {
 			if(!admin->hasSuiBoxWindowType(SuiWindowType::ADMIN_ACCOUNTINFO))

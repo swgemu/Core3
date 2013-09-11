@@ -348,6 +348,14 @@ public:
 
 	String getCraftersName();
 
+	void setJunkDealerNeeded(int jdNeeded);
+
+	int getJunkDealerNeeded();
+
+	void setJunkValue(int jValue);
+
+	int getJunkValue();
+
 	void setSerialNumber(const String& serial);
 
 	void setLevel(int lev);
@@ -422,6 +430,10 @@ protected:
 	byte unknownByte;
 
 	String craftersName;
+
+	int junkDealerNeeded;
+
+	int junkValue;
 
 	String objectSerial;
 
@@ -587,6 +599,14 @@ public:
 	void setCraftersName(String& name);
 
 	virtual String getCraftersName();
+
+	void setJunkDealerNeeded(int jdNeeded);
+
+	virtual int getJunkDealerNeeded();
+
+	void setJunkValue(int jValue);
+
+	virtual int getJunkValue();
 
 	void setSerialNumber(const String& serial);
 
@@ -790,6 +810,14 @@ public:
 	void setCraftersName(String& name);
 
 	String getCraftersName();
+
+	void setJunkDealerNeeded(int jdNeeded);
+
+	int getJunkDealerNeeded();
+
+	void setJunkValue(int jValue);
+
+	int getJunkValue();
 
 	void setSerialNumber(const String& serial);
 

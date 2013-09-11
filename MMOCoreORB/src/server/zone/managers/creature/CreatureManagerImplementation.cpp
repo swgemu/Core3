@@ -480,7 +480,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 	if (shouldRescheduleCorpseDestruction) {
 
-		Reference<DespawnCreatureTask*> despawn = dynamic_cast<DespawnCreatureTask*>(destructedObject->getPendingTask("despawn"));
+		Reference<DespawnCreatureTask*> despawn = destructedObject->getPendingTask("despawn").castTo<DespawnCreatureTask*>();
 
 		if (despawn != NULL) {
 			despawn->cancel();
@@ -647,7 +647,7 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 	creature->addAlreadyHarvested(player);
 
 	if (!creature->hasLoot() && creature->getBankCredits() < 1 && creature->getCashCredits() < 1 && !playerManager->canGroupMemberHarvestCorpse(player, creature)) {
-		Reference<DespawnCreatureTask*> despawn = dynamic_cast<DespawnCreatureTask*>(creature->getPendingTask("despawn"));
+		Reference<DespawnCreatureTask*> despawn = creature->getPendingTask("despawn").castTo<DespawnCreatureTask*>();
 
 		if (despawn != NULL) {
 			despawn->cancel();

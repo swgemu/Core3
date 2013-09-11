@@ -1,5 +1,5 @@
 yavin4_choku_pack_neutral_none = Lair:new {
-	mobiles = {{"choku_packmaster", 0}, {"choku_hunter", 0}},
+	mobiles = {{"choku_packmaster", 0}, {"choku_hunter", -6}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/poi_all_lair_mound_small.iff"},
 	buildingsEasy = {"object/tangible/lair/base/poi_all_lair_mound_small.iff"},

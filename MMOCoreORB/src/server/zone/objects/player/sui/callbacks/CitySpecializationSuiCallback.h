@@ -19,7 +19,7 @@ public:
 	}
 
 	void run(CreatureObject* player, SuiBox* suiBox, bool cancelPressed, Vector<UnicodeString>* args) {
-		ManagedReference<CitySpecializationSession*> session = dynamic_cast<CitySpecializationSession*>(player->getActiveSession(SessionFacadeType::CITYSPEC));
+		ManagedReference<CitySpecializationSession*> session = player->getActiveSession(SessionFacadeType::CITYSPEC).castTo<CitySpecializationSession*>();
 
 		if (session == NULL)
 			return;

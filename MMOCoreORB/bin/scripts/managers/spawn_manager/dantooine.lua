@@ -25,7 +25,7 @@ JUNKCONVJAWATRADER = 15
 -- {"regionName", xCenter, yCenter, radius, tier, spawnConstant, "spawnGroup1", [...]}
 -- Tier is a bit mask with the following possible values where each hexadecimal position is one possible configuration.
 -- That means that it is not possible to have both a world spawn area and imperial spawn area in the same region, but
--- a dynamic rebel spawn area that is also a no build zone is possible.
+-- a dynamic rebel spawn area that is also a no build zone is possible. 
 UNDEFINEDAREA       = 0x0000
 WORLDSPAWNAREA      = 0x0001
 REBELSPAWNAREA      = 0x0002
@@ -83,11 +83,11 @@ dantooine_regions = {
 	{"fields_of_banir_5",0,0,{1,0},UNDEFINEDAREA,1},
 	{"fields_of_banir_6",0,0,{1,0},UNDEFINEDAREA,1},
         {"four_huts",-3985,2131,{1,100},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
-	{"hard_dantari_ne",5104,5168,{1,6000},LAIRSPAWNAREA,1,"dantooine_world_npc"},
-	{"hard_dantari_nw",-5136,5152,{1,6000},LAIRSPAWNAREA,1,"dantooine_world_npc"},
-	{"hard_dantari_sw",-5184,-5184,{1,6000},LAIRSPAWNAREA,1,"dantooine_world_npc"},
-	{"hard_graul_nw",-5136,5152,{1,6000},LAIRSPAWNAREA,1,"dantooine_hard_graul"},
-	{"hard_graul_se",5136,5152,{1,6000},LAIRSPAWNAREA,1,"dantooine_hard_graul"},
+	{"hard_dantari_ne",5104,5168,{1,6000},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"dantooine_world_npc"},
+	{"hard_dantari_nw",-5136,5152,{1,6000},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"dantooine_world_npc"},
+	{"hard_dantari_sw",-5184,-5184,{1,6000},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"dantooine_world_npc"},
+	{"hard_graul_nw",-5136,5152,{1,6000},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"dantooine_hard_graul"},
+	{"hard_graul_se",5136,5152,{1,6000},LAIRSPAWNAREA + WORLDSPAWNAREA,1,"dantooine_hard_graul"},
 	{"hard_quenker_ne",0,0,{1,0},UNDEFINEDAREA,1},
 	{"hard_quenker_se",0,0,{1,0},UNDEFINEDAREA,1},
 	{"hard_voritor_sw",0,0,{1,0},UNDEFINEDAREA,1},

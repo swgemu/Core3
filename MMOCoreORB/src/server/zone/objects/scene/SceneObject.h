@@ -400,7 +400,7 @@ public:
 
 	PendingTasksMap* getPendingTasks();
 
-	Task* getPendingTask(const String& name);
+	Reference<Task* > getPendingTask(const String& name);
 
 	bool containsPendingTask(const String& name);
 
@@ -410,7 +410,7 @@ public:
 
 	int getCountableObjectsRecursive();
 
-	Facade* getActiveSession(unsigned int type);
+	Reference<Facade* > getActiveSession(unsigned int type);
 
 	void addActiveSession(unsigned int type, Facade* session);
 
@@ -446,7 +446,7 @@ public:
 
 	int getActiveAreasSize();
 
-	ActiveArea* getActiveRegion();
+	Reference<ActiveArea* > getActiveRegion();
 
 	ManagedWeakReference<CityRegion* > getCityRegion();
 
@@ -508,11 +508,13 @@ public:
 
 	VectorMap<String, ManagedReference<SceneObject* > >* getSlottedObjects();
 
-	SceneObject* getSlottedObject(const String& slot);
+	Reference<SceneObject* > getSlottedObject(const String& slot);
 
 	int getSlotDescriptorSize();
 
-	SceneObject* getSlottedObject(int idx);
+	Reference<SceneObject* > getSlottedObject(int idx);
+
+	Reference<SceneObject* > getContainerObjectRecursive(unsigned long long oid);
 
 	void dropSlottedObject(const String& arrengementDescriptor);
 
@@ -526,7 +528,7 @@ public:
 
 	unsigned int getContainerVolumeLimit();
 
-	SceneObject* getContainerObject(int idx);
+	Reference<SceneObject* > getContainerObject(int idx);
 
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
@@ -534,7 +536,7 @@ public:
 
 	bool hasObjectInSlottedContainer(SceneObject* object);
 
-	SceneObject* getContainerObject(unsigned long long objectID);
+	Reference<SceneObject* > getContainerObject(unsigned long long objectID);
 
 	void removeAllContainerObjects();
 
@@ -618,6 +620,8 @@ public:
 
 	void setContainerComponent(const String& name);
 
+	void setZoneComponent(const String& name);
+
 	bool isNoTrade();
 
 	bool isContainerFull();
@@ -633,6 +637,8 @@ public:
 	bool isCreatureObject();
 
 	bool isAiAgent();
+
+	bool isJunkDealer();
 
 	bool isShipObject();
 
@@ -1076,7 +1082,7 @@ public:
 
 	PendingTasksMap* getPendingTasks();
 
-	Task* getPendingTask(const String& name);
+	Reference<Task* > getPendingTask(const String& name);
 
 	bool containsPendingTask(const String& name);
 
@@ -1086,7 +1092,7 @@ public:
 
 	virtual int getCountableObjectsRecursive();
 
-	Facade* getActiveSession(unsigned int type);
+	Reference<Facade* > getActiveSession(unsigned int type);
 
 	void addActiveSession(unsigned int type, Facade* session);
 
@@ -1122,7 +1128,7 @@ public:
 
 	int getActiveAreasSize();
 
-	ActiveArea* getActiveRegion();
+	Reference<ActiveArea* > getActiveRegion();
 
 	virtual ManagedWeakReference<CityRegion* > getCityRegion();
 
@@ -1184,11 +1190,13 @@ public:
 
 	VectorMap<String, ManagedReference<SceneObject* > >* getSlottedObjects();
 
-	SceneObject* getSlottedObject(const String& slot);
+	Reference<SceneObject* > getSlottedObject(const String& slot);
 
 	int getSlotDescriptorSize();
 
-	SceneObject* getSlottedObject(int idx);
+	Reference<SceneObject* > getSlottedObject(int idx);
+
+	Reference<SceneObject* > getContainerObjectRecursive(unsigned long long oid);
 
 	void dropSlottedObject(const String& arrengementDescriptor);
 
@@ -1202,7 +1210,7 @@ public:
 
 	unsigned int getContainerVolumeLimit();
 
-	SceneObject* getContainerObject(int idx);
+	Reference<SceneObject* > getContainerObject(int idx);
 
 	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* getContainerObjects();
 
@@ -1210,7 +1218,7 @@ public:
 
 	bool hasObjectInSlottedContainer(SceneObject* object);
 
-	SceneObject* getContainerObject(unsigned long long objectID);
+	Reference<SceneObject* > getContainerObject(unsigned long long objectID);
 
 	void removeAllContainerObjects();
 
@@ -1294,6 +1302,8 @@ public:
 
 	void setContainerComponent(const String& name);
 
+	void setZoneComponent(const String& name);
+
 	bool isNoTrade();
 
 	bool isContainerFull();
@@ -1309,6 +1319,8 @@ public:
 	virtual bool isCreatureObject();
 
 	virtual bool isAiAgent();
+
+	virtual bool isJunkDealer();
 
 	virtual bool isShipObject();
 
@@ -1671,7 +1683,7 @@ public:
 
 	int getCountableObjectsRecursive();
 
-	Facade* getActiveSession(unsigned int type);
+	Reference<Facade* > getActiveSession(unsigned int type);
 
 	void addActiveSession(unsigned int type, Facade* session);
 
@@ -1701,7 +1713,7 @@ public:
 
 	int getActiveAreasSize();
 
-	ActiveArea* getActiveRegion();
+	Reference<ActiveArea* > getActiveRegion();
 
 	Zone* getZone();
 
@@ -1745,11 +1757,13 @@ public:
 
 	bool hasArrangementDescriptor(const String& descr);
 
-	SceneObject* getSlottedObject(const String& slot);
+	Reference<SceneObject* > getSlottedObject(const String& slot);
 
 	int getSlotDescriptorSize();
 
-	SceneObject* getSlottedObject(int idx);
+	Reference<SceneObject* > getSlottedObject(int idx);
+
+	Reference<SceneObject* > getContainerObjectRecursive(unsigned long long oid);
 
 	void dropSlottedObject(const String& arrengementDescriptor);
 
@@ -1763,13 +1777,13 @@ public:
 
 	unsigned int getContainerVolumeLimit();
 
-	SceneObject* getContainerObject(int idx);
+	Reference<SceneObject* > getContainerObject(int idx);
 
 	bool hasObjectInContainer(unsigned long long objectID);
 
 	bool hasObjectInSlottedContainer(SceneObject* object);
 
-	SceneObject* getContainerObject(unsigned long long objectID);
+	Reference<SceneObject* > getContainerObject(unsigned long long objectID);
 
 	void removeAllContainerObjects();
 
@@ -1827,6 +1841,8 @@ public:
 
 	bool isDecoration();
 
+	void setZoneComponent(const String& name);
+
 	bool isNoTrade();
 
 	bool isContainerFull();
@@ -1842,6 +1858,8 @@ public:
 	bool isCreatureObject();
 
 	bool isAiAgent();
+
+	bool isJunkDealer();
 
 	bool isShipObject();
 

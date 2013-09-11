@@ -1,7 +1,7 @@
 /*
  * TrainerCreatureImplementation.cpp
  *
- *  Created on: 26/05/2010
+ *  Created on: 26/05/2010 -a
  *      Author: victor
  */
 
@@ -420,7 +420,7 @@ void JunkdealerCreatureImplementation::createSellJunkLootSelection(CreatureObjec
 		bool bHaveStuffToSell = false;
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-			ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i));
+			ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i).get());
 			if (canInventoryItemBeSoldAsJunk(item,dealerType)==true){
 				bHaveStuffToSell=true;
 				break;
@@ -444,7 +444,7 @@ void JunkdealerCreatureImplementation::createSellJunkLootSelection(CreatureObjec
 				UnicodeString itemName = StringIdManager::instance()->getStringId(inventory->getContainerObject(i)->getDisplayedName().hashCode());
 				if (itemName == "")
 					itemName=inventory->getContainerObject(i)->getCustomObjectName();
-				ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i));
+				ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i).get());
 				if (canInventoryItemBeSoldAsJunk(item,dealerType)==true)
 					box->addMenuItem("[" + String::valueOf(item->getJunkValue()) + "Cr] " + itemName.toString(), inventory->getContainerObject(i)->getObjectID());
 			}

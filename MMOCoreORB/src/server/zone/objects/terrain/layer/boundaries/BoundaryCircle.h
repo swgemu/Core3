@@ -92,6 +92,22 @@ public:
 		centerX += x;
 		centerY += y;
 	}
+
+	float getMinX() {
+		return centerX - radius;
+	}
+
+	float getMaxX() {
+		return centerX + radius;
+	}
+
+	float getMinY() {
+		return centerY - radius;
+	}
+
+	float getMaxY() {
+		return centerY + radius;
+	}
 };
 
 

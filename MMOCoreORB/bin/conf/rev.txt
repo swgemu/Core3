@@ -1,1 +1,10 @@
-4173M
+5bc97d9 was Mack W, 24 hours ago, message: [Changes] Junk Dealers now are able to have a speciality and are a little nicer in their conversations with most.....
+abfc3e6 was Mack W, 7 days ago, message: [added] ability to sell Junk to junk dealers
+10c4820 was Victor Popovici, 6 days ago, message: [fixed] stability fixes [added] a deadlock base class for unit testing [needs] new engine
+daf006e was Victor Popovici, 6 days ago, message: Merge "[tweak] exceptional and legendary will now use yellowmodifier for stack size instead of not applying any modifier to stack size" into unstable
+42bdedb was marsorbust, 6 days ago, message: [tweak] exceptional and legendary will now use yellowmodifier for stack size instead of not applying any modifier to stack size
+b42a8bf was Benjamin 'Ivojedi' Jensen, 7 days ago, message: Merge "[added]screenplay to populate Ewok Tree Village #2 on Endor" into unstable
+9af7e56 was Ivojedi, 7 days ago, message: [Fixed] Weapon DoTs to not apply to a target if the attacker is not certified for the weapon
+e6f5bc8 was NickWill86, 7 days ago, message: [added]screenplay to populate Ewok Tree Village #2 on Endor
+2d90973 was Victor Popovici, 7 days ago, message: [fixed] unit test log message
+b2afd42 was Victor Popovici, 7 days ago, message: Merge "[added] Change city name" into unstable

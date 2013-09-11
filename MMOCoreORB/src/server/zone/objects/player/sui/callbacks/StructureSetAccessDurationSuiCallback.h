@@ -24,7 +24,7 @@ public:
 
 		ManagedReference<SceneObject*> obj = sui->getUsingObject();
 		ManagedReference<StructureSetAccessFeeSession*> session =
-				cast<StructureSetAccessFeeSession*>(creature->getActiveSession(SessionFacadeType::SETSTRUCTUREACCESSFEE));
+				creature->getActiveSession(SessionFacadeType::SETSTRUCTUREACCESSFEE).castTo<StructureSetAccessFeeSession*>();
 
 		if (session == NULL)
 			return;
