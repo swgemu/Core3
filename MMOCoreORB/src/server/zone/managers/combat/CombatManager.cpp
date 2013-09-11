@@ -208,7 +208,7 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	} else {
 		int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
 
-		damage = applyDamage(attacker, weapon, tano, damage, poolsToDamage, data);
+		damage = applyDamage(attacker, weapon, tano, poolsToDamage, data);
 
 		String combatSpam = data.getCombatSpam();
 
@@ -1398,7 +1398,7 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, C
 	return (int) (healthDamage + actionDamage + mindDamage);
 }
 
-int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defender, float damageMultiplier, int poolsToDamage, const CreatureAttackData& data) {
+int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, TangibleObject* defender, int poolsToDamage, const CreatureAttackData& data) {
 	if (poolsToDamage == 0)
 		return 0;
 
@@ -1406,8 +1406,12 @@ int CombatManager::applyDamage(CreatureObject* attacker, WeaponObject* weapon, T
 		return 0;
 	}
 
-	// TODO: take into account special attack data when calculating damage
 	int damage = calculateDamage(attacker, weapon, defender);
+
+	float damageMultiplier = data.getDamageMultiplier();
+
+	if (damageMultiplier != 0)
+		damage *= damageMultiplier;
 
 	String xpType;
 	switch (data.getAttackType()) {
