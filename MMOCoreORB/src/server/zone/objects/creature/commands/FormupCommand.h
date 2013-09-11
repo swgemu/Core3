@@ -83,16 +83,15 @@ public:
 
 		shoutCommand(player, group);
 
-		int chance = 70;
 
-		if (!doFormUp(player, group, chance))
+		if (!doFormUp(player, group))
 			return GENERALERROR;
 
 		return SUCCESS;
 	}
 
-	bool doFormUp(CreatureObject* leader, GroupObject* group, int chance) {
-		if (leader == NULL || group == NULL || chance < 1 || chance > 99)
+	bool doFormUp(CreatureObject* leader, GroupObject* group) {
+		if (leader == NULL || group == NULL)
 			return false;
 
 		for (int i = 0; i < group->getGroupSize(); i++) {
@@ -108,12 +107,11 @@ public:
 			sendCombatSpam(memberPlayer);
 
 			if (memberPlayer->isDizzied())
-				if (System::random(99) < chance)
+
 					memberPlayer->removeStateBuff(CreatureState::DIZZY);
 					
 
 			if (memberPlayer->isStunned())
-				if (System::random(99) < chance)
 					memberPlayer->removeStateBuff(CreatureState::STUNNED);
 		}
 
