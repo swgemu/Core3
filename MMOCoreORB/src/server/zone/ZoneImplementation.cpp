@@ -106,17 +106,10 @@ void ZoneImplementation::initializePrivateData() {
 	creatureManager->setZoneProcessor(processor);
 
 	gcwManager = new GCWManager(_this.get());
-
-
 }
 
 void ZoneImplementation::finalize() {
 	//System::out << "deleting height map\n";
-	delete heightMap;
-	heightMap = NULL;
-
-	delete regionTree;
-	regionTree = NULL;
 }
 
 void ZoneImplementation::initializeTransientMembers() {
@@ -361,20 +354,24 @@ void ZoneImplementation::updateActiveAreas(SceneObject* object) {
 		}
 
 		// update world areas
-		Vector<ManagedReference<SpawnArea*> >* worldAreas = creatureManager->getWorldSpawnAreas();
+		if (creatureManager != NULL) {
+			Vector<ManagedReference<SpawnArea*> >* worldAreas = creatureManager->getWorldSpawnAreas();
 
-		for (int i = 0; i < worldAreas->size(); ++i) {
-			ActiveArea* activeArea = worldAreas->get(i);
-			Locker lockerO(object);
+			if (worldAreas != NULL) {
+				for (int i = 0; i < worldAreas->size(); ++i) {
+					ActiveArea* activeArea = worldAreas->get(i);
+					Locker lockerO(object);
 
-//			Locker locker(activeArea, object);
+					//			Locker locker(activeArea, object);
 
-			if (!object->hasActiveArea(activeArea)) {
-				object->addActiveArea(activeArea);
-				//activeArea->enqueueEnterEvent(object);
-				activeArea->notifyEnter(object);
-			} else {
-				activeArea->notifyPositionUpdate(object);
+					if (!object->hasActiveArea(activeArea)) {
+						object->addActiveArea(activeArea);
+						//activeArea->enqueueEnterEvent(object);
+						activeArea->notifyEnter(object);
+					} else {
+						activeArea->notifyPositionUpdate(object);
+					}
+				}
 			}
 		}
 	} catch (...) {

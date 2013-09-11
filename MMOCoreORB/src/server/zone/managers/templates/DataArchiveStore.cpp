@@ -34,6 +34,8 @@ byte* DataArchiveStore::getData(const String& path, int& size) {
 
 			test->read((char*)data, size);
 
+			test->close();
+
 			test = NULL;
 
 			delete file;
