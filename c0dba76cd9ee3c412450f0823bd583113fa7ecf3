@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da3975d1_b44aae53",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/TendCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-09-12T02:44:38Z",
+      "side": 1,
+      "message": "Don\u0027t change these here. Change the mind wound cost in TendWoundCommand.h",
+      "revId": "c0dba76cd9ee3c412450f0823bd583113fa7ecf3",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
