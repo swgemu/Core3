@@ -51,6 +51,55 @@ void GeneticComponentImplementation::initializeTransientMembers() {
 	ComponentImplementation::initializeTransientMembers();
 }
 
+void GeneticComponentImplementation::resetResists(CraftingValues* values) {
+	if (stunResist > 0) {
+		stunResist = 0;
+		values->setCurrentValue("dna_comp_armor_stun", 0);
+		values->setCurrentPercentage("dna_comp_armor_stun",0);
+	}
+	if (kinResist > 0) {
+		kinResist = 0;
+		values->setCurrentValue("dna_comp_armor_kinetic", 0);
+		values->setCurrentPercentage("dna_comp_armor_kinetic",0);
+	}
+	if (saberResist > 0) {
+		saberResist = 0;
+		values->setCurrentValue("dna_comp_armor_saber", 0);
+		values->setCurrentPercentage("dna_comp_armor_saber",0);
+	}
+	if (elecResist > 0){
+		elecResist = 0;
+		values->setCurrentValue("dna_comp_armor_electric", 0);
+		values->setCurrentPercentage("dna_comp_armor_electric",0);
+	}
+	if (acidResist > 0) {
+		acidResist = 0;
+		values->setCurrentValue("dna_comp_armor_acid", 0);
+		values->setCurrentPercentage("dna_comp_armor_acid",0);
+	}
+	if (coldResist > 0) {
+		coldResist = 0;
+		values->setCurrentValue("dna_comp_armor_cold", 0);
+		values->setCurrentPercentage("dna_comp_armor_cold",0);
+	}
+	if (heatResist > 0) {
+		heatResist = 0;
+		values->setCurrentValue("dna_comp_armor_heat", 0);
+		values->setCurrentPercentage("dna_comp_armor_heat",0);
+	}
+	if (blastResist > 0) {
+		blastResist = 0;
+		values->setCurrentValue("dna_comp_armor_blast", 0);
+		values->setCurrentPercentage("dna_comp_armor_blast",0);
+	}
+	if (energyResist > 0) {
+		energyResist = 0;
+		values->setCurrentValue("dna_comp_armor_energy", 0);
+		values->setCurrentPercentage("dna_comp_armor_energy",0);
+	}
+
+}
+
 void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
 	ComponentImplementation::updateCraftingValues(values, firstUpdate);
 	fortitude = values->getCurrentValue("fortitude");
@@ -84,97 +133,46 @@ void GeneticComponentImplementation::updateCraftingValues(CraftingValues* values
 		if (fortitude > 500 && armorRating == 0) {
 			armorRating = 1;
 			// Reset resist to 0
-			if (stunResist > 0) {
-				stunResist = 0;
-				values->setCurrentValue("dna_comp_armor_stun", 0);
-				values->setCurrentPercentage("dna_comp_armor_stun",0);
-			}
-			if (kinResist > 0) {
-				kinResist = 0;
-				values->setCurrentValue("dna_comp_armor_kinetic", 0);
-				values->setCurrentPercentage("dna_comp_armor_kinetic",0);
-			}
-			if (saberResist > 0) {
-				saberResist = 0;
-				values->setCurrentValue("dna_comp_armor_saber", 0);
-				values->setCurrentPercentage("dna_comp_armor_saber",0);
-			}
-			if (elecResist > 0){
-				elecResist = 0;
-				values->setCurrentValue("dna_comp_armor_electric", 0);
-				values->setCurrentPercentage("dna_comp_armor_electric",0);
-			}
-			if (acidResist > 0) {
-				acidResist = 0;
-				values->setCurrentValue("dna_comp_armor_acid", 0);
-				values->setCurrentPercentage("dna_comp_armor_acid",0);
-			}
-			if (coldResist > 0) {
-				coldResist = 0;
-				values->setCurrentValue("dna_comp_armor_cold", 0);
-				values->setCurrentPercentage("dna_comp_armor_cold",0);
-			}
-			if (heatResist > 0) {
-				heatResist = 0;
-				values->setCurrentValue("dna_comp_armor_heat", 0);
-				values->setCurrentPercentage("dna_comp_armor_heat",0);
-			}
-			if (blastResist > 0) {
-				blastResist = 0;
-				values->setCurrentValue("dna_comp_armor_blast", 0);
-				values->setCurrentPercentage("dna_comp_armor_blast",0);
-			}
-			if (energyResist > 0) {
-				energyResist = 0;
-				values->setCurrentValue("dna_comp_armor_energy", 0);
-				values->setCurrentPercentage("dna_comp_armor_energy",0);
-			}
-		} else {
-			if (fortitude < 500 && armorRating > 0) {
-				armorRating = 0;
-			}
+			resetResists(values);
+		}
+		else if (fortitude < 500 && armorRating > 0) {
+			armorRating = 0;
+		}
+		else if (fortitude > 999 && armorRating == 1) {
+			armorRating = 2;
+			resetResists(values);
 		}
 	}
 	// max values
 	if (fortitude > 1000) {
 		fortitude = 1000;
-		values->setCurrentPercentage("fortitude",1);
 	}
 	if (endurance > 1000){
 		endurance = 1000;
-		values->setCurrentPercentage("endurance",1);
 	}
 	if (cleverness > 1000){
 		cleverness = 1000;
-		values->setCurrentPercentage("cleverness",1);
 	}
 	if (courage > 1000){
 		courage = 1000;
-		values->setCurrentPercentage("courage",1);
 	}
 	if (dependency > 1000){
 		dependency = 1000;
-		values->setCurrentPercentage("dependability",1);
 	}
 	if (dexterity > 1000) {
 		dexterity = 1000;
-		values->setCurrentPercentage("dexterity",1);
 	}
 	if (fierceness > 1000){
 		fierceness = 1000;
-		values->setCurrentPercentage("fierceness",1);
 	}
 	if (hardiness > 1000) {
 		hardiness = 1000;
-		values->setCurrentPercentage("hardiness",1);
 	}
 	if (intelligence > 1000){
 		intelligence = 1000;
-		values->setCurrentPercentage("intellect",1);
 	}
 	if (power > 1000) {
 		power = 1000;
-		values->setCurrentPercentage("power",1);
 	}
 	// max on resists
 	if (kinResist > 60)
@@ -238,6 +236,7 @@ void GeneticComponentImplementation::fillAttributeList(AttributeListMessage* alm
 			break;
 		default:
 			alm->insertAttribute("dna_comp_quality","Unknown");
+			break;
 	}
 	alm->insertAttribute("dna_comp_hardiness",(int)hardiness);
 	alm->insertAttribute("dna_comp_fortitude",(int)fortitude);

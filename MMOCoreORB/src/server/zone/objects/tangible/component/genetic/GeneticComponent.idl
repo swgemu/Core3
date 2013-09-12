@@ -230,4 +230,6 @@ class GeneticComponent extends Component {
 
 	public native string resistValue(float input);
 	
+	@local
+	public native void resetResists(CraftingValues values);
 }

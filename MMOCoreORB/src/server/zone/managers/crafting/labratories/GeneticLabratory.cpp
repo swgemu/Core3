@@ -34,7 +34,7 @@ float GeneticLabratory::applyFormula(float aVal, float bVal, float cVal, float d
 		e = -99;
 	switch (formula) {
 		case PHYSIQUE:
-			rc = (a * 0.4) + (b *0.25) + (c * 0.5) + (d * 0.5) + (e * .25);
+			rc = (a * 0.4) + (b *0.25) + (c * 0.05) + (d * 0.05) + (e * 0.25);
 			break;
 		case PROWESS:
 			rc = (a * 0.25) + (b *0.42) + (c * 0.17) + (d * 0.085) + (e * .075);
@@ -43,10 +43,10 @@ float GeneticLabratory::applyFormula(float aVal, float bVal, float cVal, float d
 			rc = (a * 0.05) + (b *0.1) + (c * 0.5) + (d * 0.3) + (e * .05);
 			break;
 		case PHYSCHOLOGICAL:
-			rc = (a * 0.09) + (b *0.05) + (c * 0.26) + (d * 0.43) + (e * .17);
+			rc = (a * 0.09) + (b *0.05) + (c * 0.26) + (d * 0.43) + (e * 0.17);
 			break;
 		case AGRESSION:
-			rc = (a * 0.17) + (b *0.16) + (c * 0.085) + (d * 0.165) + (e * .42);
+			rc = (a * 0.17) + (b *0.16) + (c * 0.085) + (d * 0.165) + (e * 0.42);
 			break;
 	}
 	if (rc > 1000)
@@ -72,6 +72,7 @@ String GeneticLabratory::pickSpecialAttack(String a, String b, String c, String 
 				break;
 			default:
 				effectiveSpecial = "defaultattack";
+				break;
 		}
 	} else {
 		effectiveSpecial = a;
