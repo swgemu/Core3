@@ -2029,9 +2029,23 @@ void GCWManagerImplementation::sendSelectDeedToDonate(BuildingObject* building, 
 	for(int i =0;i < inv->getContainerObjectsSize(); ++i){
 		ManagedReference<SceneObject*> inventoryObject = inv->getContainerObject(i);
 
-		if(inventoryObject->isDeedObject() || inventoryObject->getGameObjectType() == SceneObjectType::MINE){
+		if(inventoryObject->isDeedObject() ){
+			ManagedReference<Deed*> deed = dynamic_cast<Deed*>(inventoryObject.get());
+			if(deed != NULL){
+
+				Reference<SharedObjectTemplate* > generatedTemplate = TemplateManager::instance()->getTemplate(deed->getGeneratedObjectTemplate().hashCode());
+				if(generatedTemplate != NULL &&
+					(generatedTemplate->getGameObjectType() == SceneObjectType::MINEFIELD ||
+					 generatedTemplate->getGameObjectType() == SceneObjectType::TURRET) ){
+
+					donate->addMenuItem(inventoryObject->getDisplayedName(),inventoryObject->getObjectID());
+				}
+			}
+		}
+		else if( inventoryObject->getGameObjectType() == SceneObjectType::MINE){
 			donate->addMenuItem(inventoryObject->getDisplayedName(),inventoryObject->getObjectID());
 		}
+
 	}
 
 	ghost->addSuiBox(donate);
