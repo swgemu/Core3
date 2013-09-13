@@ -8,7 +8,7 @@
  *	CircularAreaShapeStub
  */
 
-enum {RPC_SETRADIUS__FLOAT_ = 6,RPC_GETRADIUS__,RPC_GETRADIUS2__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ISCIRCULARAREASHAPE__,RPC_ISRECTANGULARAREASHAPE__,RPC_INTERSECTSWITH__AREASHAPE_,RPC_GETAREA__};
+enum {RPC_SETRADIUS__FLOAT_ = 6,RPC_GETRADIUS__,RPC_GETRADIUS2__,RPC_CONTAINSPOINT__FLOAT_FLOAT_,RPC_ISCIRCULARAREASHAPE__,RPC_ISRECTANGULARAREASHAPE__,RPC_ISRINGAREASHAPE__,RPC_INTERSECTSWITH__AREASHAPE_,RPC_GETAREA__};
 
 CircularAreaShape::CircularAreaShape() : AreaShape(DummyConstructorParameter::instance()) {
 	CircularAreaShapeImplementation* _implementation = new CircularAreaShapeImplementation();
@@ -132,6 +132,19 @@ bool CircularAreaShape::isRectangularAreaShape() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isRectangularAreaShape();
+}
+
+bool CircularAreaShape::isRingAreaShape() {
+	CircularAreaShapeImplementation* _implementation = static_cast<CircularAreaShapeImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISRINGAREASHAPE__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isRingAreaShape();
 }
 
 bool CircularAreaShape::intersectsWith(AreaShape* areaShape) {
@@ -352,6 +365,11 @@ bool CircularAreaShapeImplementation::isRectangularAreaShape() {
 	return false;
 }
 
+bool CircularAreaShapeImplementation::isRingAreaShape() {
+	// server/zone/objects/area/areashapes/CircularAreaShape.idl():  		return false;
+	return false;
+}
+
 /*
  *	CircularAreaShapeAdapter
  */
@@ -397,6 +415,11 @@ void CircularAreaShapeAdapter::invokeMethod(uint32 methid, DistributedMethod* in
 			resp->insertBoolean(isRectangularAreaShape());
 		}
 		break;
+	case RPC_ISRINGAREASHAPE__:
+		{
+			resp->insertBoolean(isRingAreaShape());
+		}
+		break;
 	case RPC_INTERSECTSWITH__AREASHAPE_:
 		{
 			resp->insertBoolean(intersectsWith(static_cast<AreaShape*>(inv->getObjectParameter())));
@@ -434,6 +457,10 @@ bool CircularAreaShapeAdapter::isCircularAreaShape() {
 
 bool CircularAreaShapeAdapter::isRectangularAreaShape() {
 	return (static_cast<CircularAreaShape*>(stub))->isRectangularAreaShape();
+}
+
+bool CircularAreaShapeAdapter::isRingAreaShape() {
+	return (static_cast<CircularAreaShape*>(stub))->isRingAreaShape();
 }
 
 bool CircularAreaShapeAdapter::intersectsWith(AreaShape* areaShape) {

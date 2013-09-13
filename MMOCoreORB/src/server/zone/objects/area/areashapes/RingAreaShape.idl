@@ -44,48 +44,90 @@ which carries forward this exception.
 
 package server.zone.objects.area.areashapes;
 
-include engine.core.ManagedObject;
-include engine.util.u3d.Vector3;
+import server.zone.objects.area.areashapes.AreaShape;
+import server.zone.objects.area.areashapes.CircularAreaShape;
 
-@mock
-class AreaShape extends ManagedObject {
-	
-	/** The center coordinate of the area. */
-	@dereferenced
-	protected Vector3 areaCenter;
-	
+class RingAreaShape extends AreaShape {
+
+	/** The radius to the inner edge of the ring. */
+	protected float innerRadius;
+
+	/** The radius to the outer edge of the ring. */
+	protected float outerRadius;
+
+	/** The squared inner radius of the ring */
+	protected float innerRadius2;
+
+	/** The squared outer radius of the ring */
+	protected float outerRadius2;
+
 	/** Constructor */
-	public AreaShape() {
-		areaCenter.set(0, 0, 0);
+	public RingAreaShape() {
+		super();
+		innerRadius = 0;
+		outerRadius = 0;
+		innerRadius2 = 0;
+		outerRadius2 = 0;
 	}
-	
+
 	/**
-	 * Set the area center.
-	 * @param x the x coordinate.
-	 * @param y the y coordinate.
+	 * Set the inner radius of the ring.
+	 * @param r the new inner radius of the ring.
 	 */
-	public void setAreaCenter(float x, float y) {
-		areaCenter.set(x, 0, y);
+	public void setInnerRadius(float r) {
+		innerRadius = r;
+		innerRadius2 = r * r;
 	}
-	
+
 	/**
-	 * Get the area center.
-	 * @return the area center.
+	 * Set the outer radius of the ring.
+	 * @param r the new outer radius of the ring.
 	 */
-	@dereferenced
-	@local
-	public native Vector3 getAreaCenter();
-	
+	public void setOuterRadius(float r) {
+		outerRadius = r;
+		outerRadius2 = r * r;
+	}
+
+	/**
+	 * Get the inner radius of the ring.
+	 * @return inner radius of the ring
+	 */
+	public abstract float getInnerRadius() {
+		return innerRadius;
+	}
+
+	/**
+	 * Get the inner squared radius of the ring.
+	 * @return inner squared radius of the ring
+	 */
+	public float getInnerRadius2() {
+		return innerRadius2;
+	}
+
+	/**
+	 * Get the outer radius of the ring.
+	 * @return outer radius of the ring
+	 */
+	public abstract float getOuterRadius() {
+		return outerRadius;
+	}
+
+	/**
+	 * Get the outer squared radius of the ring.
+	 * @return outer squared radius of the ring
+	 */
+	public float getOuterRadius2() {
+		return outerRadius2;
+	}
+
 	/**
 	 * Check if the coordinate is within the area shape.
 	 * @param x the x coordinate.
 	 * @param y the y coordinate.
 	 * @return true if the coordinate is within the area shape.
 	 */
-	public abstract boolean containsPoint(float x, float y) {
-		return false;
-	}
-	
+	public native abstract boolean containsPoint(float x, float y);
+
 	/**
 	 * Check if the coordinate is within the area shape.
 	 * @param point the point to check if it is within the area shape.
@@ -93,19 +135,8 @@ class AreaShape extends ManagedObject {
 	 */
 	@dereferenced
 	@local
-	@mock
-	public abstract boolean containsPoint(@dereferenced final Vector3 point) {
-		return false;
-	}
-	
-	/**
-	 * Get the minimum radius of a circle bounding the area shape.
-	 * @return the minimum bonding radius.
-	 */
-	public abstract float getRadius() {
-		return 0;
-	}
-	
+	public native abstract boolean containsPoint(@dereferenced final Vector3 point);
+
 	/**
 	 * Generate a random position within the area.
 	 * @return a random position within the area.
@@ -124,7 +155,15 @@ class AreaShape extends ManagedObject {
 	@dereferenced
 	@local
 	public native abstract Vector3 getRandomPosition(@dereferenced final Vector3 origin, float minDistance, float maxDistance);
-	
+
+	/**
+	 * Check if this is a ring area shape.
+	 * @return true if it is a ring area shape.
+	 */
+	public abstract boolean isRingAreaShape() {
+		return true;
+	}
+
 	/**
 	 * Check if this is a circular area shape.
 	 * @return true if it is a circular area shape.
@@ -142,27 +181,29 @@ class AreaShape extends ManagedObject {
 	}
 
 	/**
-	 * Check if this is a ring area shape.
-	 * @return true if it is a ring area shape.
-	 */
-	public abstract boolean isRingAreaShape() {
-		return false;
-	}
-
-	/**
 	 * Check if this area shape intersects with the supplied area shape.
-	 * @param areaShape the area shape to check for intersections with.
+	 * @param areaShape the area shape to check for intersections with.s
 	 * @return true if the area shapes intersects each other.
 	 */
-	public abstract boolean intersectsWith(AreaShape areaShape) {
-		return false;
-	}
-	
+	public native abstract boolean intersectsWith(AreaShape areaShape);
+
+	/**
+	 * Check if this area shape intersects with the supplied circular area shape.
+	 * @param circle the circular area shape to check for intersections with.
+	 * @return true if the area shapes intersects each other.
+	 */
+	private native boolean intersectsWithCircle(CircularAreaShape circle);
+
+	/**
+	 * Check if this area shape intersects with the supplied ring area shape.
+	 * @param ring the ring area shape to check for intersections with.
+	 * @return true if the rings intersect with each other.
+	 */
+	private native boolean intersectsWithRing(RingAreaShape ring);
+
 	/**
 	 * Get the area of the areaShape.
 	 * @return the area of the area shape.
 	 */
-	public abstract float getArea() {
-		return 0;
-	}
+	public native abstract float getArea();
 }

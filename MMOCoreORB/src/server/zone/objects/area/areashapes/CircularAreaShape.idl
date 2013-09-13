@@ -139,6 +139,14 @@ class CircularAreaShape extends AreaShape {
 	}
 
 	/**
+	 * Check if this is a ring area shape.
+	 * @return true if it is a ring area shape.
+	 */
+	public abstract boolean isRingAreaShape() {
+		return false;
+	}
+
+	/**
 	 * Check if this area shape intersects with the supplied area shape.
 	 * @param areaShape the area shape to check for intersections with.s
 	 * @return true if the area shapes intersects each other.
@@ -148,7 +156,7 @@ class CircularAreaShape extends AreaShape {
 	/**
 	 * Check if this area shape intersects with the supplied circular area shape.
 	 * @param circle the circular area shape to check for intersections with.
-	 * @return true if the circles intersects with each other.
+	 * @return true if the circles intersect with each other.
 	 */
 	private native boolean intersectsWithCircle(CircularAreaShape circle);
 	
