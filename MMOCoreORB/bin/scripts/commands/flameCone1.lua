@@ -58,7 +58,20 @@ FlameCone1Command = {
 
 	animationCRC = hashCode("fire_flame_thrower_cone_1_light"),
 	combatSpam = "flamecone1",
-	
+	dotEffects = {
+	  DotEffect( 
+		ONFIRE, 
+		{"resistance_fire", "fire_resist"},
+		HEALTH,
+		true,
+		100,
+		100,
+		100, 
+		60,
+		10,
+		2
+	  )
+	},
 	range = 16
 }
 
