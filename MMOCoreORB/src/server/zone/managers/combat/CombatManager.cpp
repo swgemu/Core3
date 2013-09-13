@@ -346,7 +346,7 @@ void CombatManager::applyWeaponDots(CreatureObject* attacker, CreatureObject* de
 
 		if (attackerWeapon->getDotType(i) == 3) { // Fire.
 			resist = defender->getSkillMod("resistance_fire");
-			int power = defender->addDotState(CreatureState::ONFIRE, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist,  attackerWeapon->getDotStrength(i));
+			int power = defender->addDotState(CreatureState::ONFIRE, attackerWeapon->getServerObjectCRC(), attackerWeapon->getDotStrength(i), attackerWeapon->getDotAttribute(i), attackerWeapon->getDotDuration(i), attackerWeapon->getDotPotency(i), resist,  attackerWeapon->getDotStrength(i) * .5f);
 
 			if (power > 0) { // Unresisted, reduce use count.
 				if (attackerWeapon->getDotUses(i) > 0) {
