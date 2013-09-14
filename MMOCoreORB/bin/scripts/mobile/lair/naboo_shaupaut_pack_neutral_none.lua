@@ -1,4 +1,4 @@
-naboo_sharupat_pack_neutral_none = Lair:new {
+naboo_shaupaut_pack_neutral_none = Lair:new {
 	mobiles = {},
 	spawnLimit = 15,
 	buildingsVeryEasy = {},
@@ -8,4 +8,4 @@ naboo_sharupat_pack_neutral_none = Lair:new {
 	buildingsVeryHard = {},
 }
 
-addLairTemplate("naboo_sharupat_pack_neutral_none", naboo_sharupat_pack_neutral_none)
+addLairTemplate("naboo_shaupaut_pack_neutral_none", naboo_shaupaut_pack_neutral_none)
