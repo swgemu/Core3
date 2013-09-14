@@ -1117,6 +1117,33 @@ void PlayerManagerImplementation::sendPlayerToCloner(CreatureObject* player, uin
 		awardExperience(player, "jedi_general", -200000, true);
 }
 
+void PlayerManagerImplementation::ejectPlayerFromBuilding(CreatureObject* player) {
+	Zone* zone = player->getZone();
+
+	if (zone == NULL)
+		return;
+
+	ManagedReference<SceneObject*> parent = player->getParent();
+
+	if (parent == NULL || !parent->isCellObject())
+		return;
+
+	ManagedReference<CellObject*> cell = cast<CellObject*>(parent.get());
+
+	if (cell == NULL)
+		return;
+
+	ManagedReference<BuildingObject*> building = cell->getParent().castTo<BuildingObject*>();
+
+	if (building == NULL)
+		return;
+
+	if (building->hasTemplateEjectionPoint()) {
+		Vector3 ejectionPoint = building->getEjectionPoint();
+		player->switchZone(zone->getZoneName(), ejectionPoint.getX(), ejectionPoint.getZ(), ejectionPoint.getY(), 0);
+	}
+}
+
 void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap) {
 	uint32 totalDamage = threatMap->getTotalDamage();
 

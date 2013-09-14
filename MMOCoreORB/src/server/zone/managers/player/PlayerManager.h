@@ -370,6 +370,8 @@ public:
 
 	void sendPlayerToCloner(CreatureObject* player, unsigned long long clonerID, int typeofdeath = 0);
 
+	void ejectPlayerFromBuilding(CreatureObject* player);
+
 	bool checkExistentNameInDatabase(const String& firstName);
 
 	Reference<TangibleObject* > createHairObject(const String& hairObjectFile, const String& hairCustomization);
@@ -619,6 +621,8 @@ public:
 
 	void sendPlayerToCloner(CreatureObject* player, unsigned long long clonerID, int typeofdeath = 0);
 
+	void ejectPlayerFromBuilding(CreatureObject* player);
+
 	bool checkExistentNameInDatabase(const String& firstName);
 
 	Reference<TangibleObject* > createHairObject(const String& hairObjectFile, const String& hairCustomization);
@@ -823,6 +827,8 @@ public:
 	void sendActivateCloneRequest(CreatureObject* player, int typeofdeath);
 
 	void sendPlayerToCloner(CreatureObject* player, unsigned long long clonerID, int typeofdeath);
+
+	void ejectPlayerFromBuilding(CreatureObject* player);
 
 	bool checkExistentNameInDatabase(const String& firstName);
 

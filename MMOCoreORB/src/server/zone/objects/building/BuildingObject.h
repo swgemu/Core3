@@ -148,6 +148,10 @@ public:
 
 	int notifyStructurePlaced(CreatureObject* player);
 
+	bool hasTemplateEjectionPoint();
+
+	Vector3 getTemplateEjectionPoint();
+
 	Vector3 getEjectionPoint();
 
 	void ejectObject(CreatureObject* creature);
@@ -336,6 +340,10 @@ public:
 
 	virtual int notifyStructurePlaced(CreatureObject* player);
 
+	bool hasTemplateEjectionPoint();
+
+	Vector3 getTemplateEjectionPoint();
+
 	Vector3 getEjectionPoint();
 
 	void ejectObject(CreatureObject* creature);
@@ -508,6 +516,8 @@ public:
 	bool isCityBanned(CreatureObject* player);
 
 	int notifyStructurePlaced(CreatureObject* player);
+
+	bool hasTemplateEjectionPoint();
 
 	void ejectObject(CreatureObject* creature);
 

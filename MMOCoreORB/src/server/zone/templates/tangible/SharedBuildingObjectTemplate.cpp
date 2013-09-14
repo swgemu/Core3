@@ -53,6 +53,11 @@ void SharedBuildingObjectTemplate::parseVariableData(const String& varName, LuaO
 
 		luaItemList.pop();
 
+	} else if (varName == "ejectionPoint") {
+		LuaObject ejectPoint(state);
+		ejectionPoint.setX(ejectPoint.getFloatAt(1));
+		ejectionPoint.setY(ejectPoint.getFloatAt(2));
+		ejectPoint.pop();
 	} else {
 
 		templateData->pop();

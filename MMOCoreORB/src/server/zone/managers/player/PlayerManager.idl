@@ -243,6 +243,8 @@ class PlayerManager extends Observer implements Logger {
 	
 	public native void sendActivateCloneRequest(CreatureObject player, int typeofdeath = 0);
 	public native void sendPlayerToCloner(CreatureObject player, unsigned long clonerID, int typeofdeath = 0);
+
+	public native void ejectPlayerFromBuilding(CreatureObject player);
 	
 	public native boolean checkExistentNameInDatabase(final string firstName);
 	

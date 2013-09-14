@@ -203,6 +203,26 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	//}
 }
 
+bool BuildingObjectImplementation::hasTemplateEjectionPoint() {
+	SharedBuildingObjectTemplate* buildingTemplate = templateObject.castTo<SharedBuildingObjectTemplate*>();
+
+	if (buildingTemplate == NULL)
+		return false;
+
+	Vector3 ejectionPoint = buildingTemplate->getEjectionPoint();
+
+	if (ejectionPoint.getX() == 0 && ejectionPoint.getY() == 0)
+		return false;
+	else
+		return true;
+}
+
+Vector3 BuildingObjectImplementation::getTemplateEjectionPoint() {
+	SharedBuildingObjectTemplate* buildingTemplate = templateObject.castTo<SharedBuildingObjectTemplate*>();
+
+	return buildingTemplate->getEjectionPoint();
+}
+
 Vector3 BuildingObjectImplementation::getEjectionPoint() {
 	/*
 	Vector3 ejectionPoint = getWorldPosition();
@@ -240,8 +260,19 @@ Vector3 BuildingObjectImplementation::getEjectionPoint() {
 
 	return ejectionPoint;*/
 
-	if (signObject == NULL)
-		return getWorldPosition();
+	Vector3 worldPosition = getWorldPosition();
+
+	if (hasTemplateEjectionPoint()) {
+		Vector3 templateEjectionPoint = getTemplateEjectionPoint();
+		Vector3 ejectionPoint;
+
+		ejectionPoint.setX(worldPosition.getX() + templateEjectionPoint.getX());
+		ejectionPoint.setY(worldPosition.getY() + templateEjectionPoint.getY());
+		ejectionPoint.setZ(zone->getHeight(ejectionPoint.getX(), ejectionPoint.getY()));
+
+		return ejectionPoint;
+	} else if (signObject == NULL)
+		return worldPosition;
 
 	return signObject->getPosition();
 }

@@ -24,6 +24,7 @@ class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
 
 	bool alwaysPublic;
 
+	Vector3 ejectionPoint;
 
 public:
 	SharedBuildingObjectTemplate() {
@@ -73,6 +74,10 @@ public:
 
 	inline String getTerrainModificationFile() {
 		return terrainModificationFileName.get();
+	}
+
+	inline Vector3 getEjectionPoint() {
+		return ejectionPoint;
 	}
 };
 

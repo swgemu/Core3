@@ -207,6 +207,9 @@ void PlayerObjectImplementation::unload() {
 
 	unloadSpawnedChildren();
 
+	PlayerManager* playerManager = creature->getZoneServer()->getPlayerManager();
+	playerManager->ejectPlayerFromBuilding(creature);
+
 	ManagedReference<SceneObject*> creoParent = creature->getParent();
 
 	if (creature->getZone() != NULL) {
@@ -269,7 +272,6 @@ void PlayerObjectImplementation::unload() {
 
 	_this.get()->printReferenceHolders();*/
 }
-
 
 void PlayerObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	info("sending player object baselines");
