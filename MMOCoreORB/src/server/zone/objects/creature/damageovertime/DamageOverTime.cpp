@@ -229,10 +229,13 @@ uint32 DamageOverTime::doBleedingTick(CreatureObject* victim) {
 uint32 DamageOverTime::doFireTick(CreatureObject* victim) {
 	uint32 attr = victim->getHAM(attribute);
 	uint32 strengthToApply = strength;
-	int woundsToApply = secondaryStrength;
+	int woundsToApply = (int)(secondaryStrength * (100 + victim->getShockWounds() ) / 100.0f);
 
-	if ((int)strength > 0)
+	if ((int)strength > 0) {
 		victim->addWounds(attribute, woundsToApply, true);
+		victim->addShockWounds((int)(woundsToApply * 0.075f));
+	}
+
 
 	if (attr < strengthToApply)
 		strengthToApply = attr - 1;
