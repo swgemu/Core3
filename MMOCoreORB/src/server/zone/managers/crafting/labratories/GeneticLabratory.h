@@ -48,6 +48,7 @@ protected:
 			percent = 1;
 		return percent;
 	}
+
 };
 
 }

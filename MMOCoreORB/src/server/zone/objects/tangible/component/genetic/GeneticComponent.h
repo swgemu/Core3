@@ -126,6 +126,8 @@ public:
 
 	String resistValue(float input);
 
+	void resetResists(CraftingValues* values);
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -269,6 +271,8 @@ public:
 	String convertSpecialAttack(String& attackName);
 
 	String resistValue(float input);
+
+	void resetResists(CraftingValues* values);
 
 	WeakReference<GeneticComponent*> _this;
 

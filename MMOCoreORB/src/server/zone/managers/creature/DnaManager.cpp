@@ -142,6 +142,7 @@ int DnaManager::addRange(lua_State* L) {
 		}
 		default: {
 			DnaManager::instance()->info("Unknown stat provided "+stat);
+			break;
 		}
 	}
 	obj.pop();
