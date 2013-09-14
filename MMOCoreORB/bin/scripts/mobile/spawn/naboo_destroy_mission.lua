@@ -79,7 +79,7 @@ naboo_destroy_mission = {
 			size = 25
 		},
 		{
-			lairTemplateName = "naboo_sharupat_family_neutral_medium",
+			lairTemplateName = "naboo_shaupaut_family_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 6,
 			maxDifficulty = 8,
@@ -164,6 +164,15 @@ naboo_destroy_mission = {
 			spawnLimit = -1,
 			minDifficulty = 19,
 			maxDifficulty = 23,
+			numberToSpawn = 0,
+			weighting = 15,
+			size = 25
+		},
+		{
+			lairTemplateName = "naboo_shaupaut_pack_diseased_neutral_none",
+			spawnLimit = -1,
+			minDifficulty = 19,
+			maxDifficulty = 25,
 			numberToSpawn = 0,
 			weighting = 15,
 			size = 25
