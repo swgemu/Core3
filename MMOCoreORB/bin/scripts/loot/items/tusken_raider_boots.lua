@@ -8,7 +8,10 @@ tusken_raider_boots = {
 	craftingValues = {
 	},
 	customizationStringNames = {},
-	customizationValues = {}
+	customizationValues = {},
+	junkDealerTypeNeeded = JUNKTUSKEN,
+	junkMinValue = 2,
+	junkMaxValue = 22
 }
 
 addLootItemTemplate("tusken_raider_boots", tusken_raider_boots)

@@ -1,7 +1,7 @@
 /*
 * JunkDealerSellListSuiCallback.h
 *
-*  Created on: Mar 24, 2011
+*  Created on: Mar 24, 2011 -a
 *      Author: crush
 */
 
@@ -10,6 +10,7 @@
 
 #include "server/zone/objects/player/sui/SuiCallback.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/objects/creature/AiAgent.h"
 
 class JunkDealerSellListSuiCallback : public SuiCallback {
 
@@ -34,50 +35,81 @@ void run(CreatureObject* player, SuiBox* suiBox, bool cancel, Vector<UnicodeStri
 	else if (cancel == 0)
 		player->info("Sell");
 	SuiListBox* listBox = cast<SuiListBox*>( suiBox);
-	uint64 itemId = listBox->getMenuObjectID(index);
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-	ManagedReference<SceneObject*> selectedObject =inventory->getContainerObject(itemId);
-	if (selectedObject == NULL || otherPressed==true ){
-				return;
-	}
-	int iCredits = inventory->getContainerObject(itemId).castTo<TangibleObject*>()->getJunkValue();
-	UnicodeString itemName = StringIdManager::instance()->getStringId(selectedObject->getDisplayedName().hashCode());
-	Locker locker(selectedObject, player);
-	selectedObject->destroyObjectFromWorld(true);
-	selectedObject->destroyObjectFromDatabase(true);
-	player->addCashCredits(iCredits,true);
-	//player->sendSystemMessage("Index: " + String::valueOf(index) + " ItemID:" + String::valueOf(itemId) + " " + tst->getObjectNameStringIdName()+  " Cancel: " + String::valueOf(cancel) + " Other: " + String::valueOf(otherPressed));
-	player->sendSystemMessage("You sell " + itemName + " for " + String::valueOf(iCredits) +" cr");
-	bool bHaveStuffToSell = false;
-    for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-    	Reference<TangibleObject*>  item = inventory->getContainerObject(i).castTo<TangibleObject*>();
-    	if ((item->getJunkDealerNeeded() & 1) == 1 && item->getCraftersName().isEmpty() == true ){
-    		bHaveStuffToSell=true;
-    		break;
-    	}
-    }
-	if (bHaveStuffToSell==true) {
-		// create new window
-		ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::JUNK_DEALER_SELL_LIST, SuiListBox::HANDLETHREEBUTTON);
-		box->setCallback(new JunkDealerSellListSuiCallback(player->getZoneServer()));
-		box->setPromptText("@loot_dealer:sell_prompt");
-		box->setOtherButton(true, "@loot_dealer:btn_sell_all");
-		box->setPromptTitle("@loot_dealer:sell_title");
-		box->setHandlerText("handleUpdateSchematic");
-		box->setOkButton(true, "@loot_dealer:btn_sell");
-		box->setCancelButton(true, "@cancel");
-		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-			UnicodeString itemName = StringIdManager::instance()->getStringId(inventory->getContainerObject(i)->getDisplayedName().hashCode());
-			Reference<TangibleObject*>  item = inventory->getContainerObject(i).castTo<TangibleObject*>();
-			if ((item->getJunkDealerNeeded() & 1) == 1 && item->getCraftersName().isEmpty() == true )
-				box->addMenuItem(itemName.toString(), inventory->getContainerObject(i)->getObjectID());
+	SceneObject*  dealerScene = suiBox->getUsingObject().get();
+	int dealerType= cast<JunkdealerCreature*>(dealerScene)->getJunkDealerBuyerType();
+	if ( otherPressed==true ){
+		int iCreditsTotal =0;
+		for (int i = inventory->getContainerObjectsSize()-1; i > 0; i--) {
+			ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i).get());
+			if (cast<JunkdealerCreature*>(dealerScene)->canInventoryItemBeSoldAsJunk(item,dealerType)){
+				Locker locker(item, player);
+				iCreditsTotal += item->getJunkValue();
+				item->destroyObjectFromWorld(true);
+				item->destroyObjectFromDatabase(true);
+			}
 		}
-		player->getPlayerObject()->addSuiBox(box);
-		player->sendMessage(box->generateMessage());
+		StringIdChatParameter msg;
+		player->addCashCredits(iCreditsTotal,true);
+		msg.setStringId("@loot_dealer:prose_sold_all_junk");
+		msg.setTT(suiBox->getUsingObject().get()->getObjectID());
+		msg.setDI(iCreditsTotal);
+		player->sendSystemMessage(msg);
+		player->sendMessage(new StopNpcConversation(player, suiBox->getUsingObject().get()->getObjectID()));
 	}else{
-		player->sendSystemMessage("You currently have nothing further of interest.");
+		uint64 itemId = listBox->getMenuObjectID(index);
+		ManagedReference<SceneObject*> selectedObject =inventory->getContainerObject(itemId);
+		if (selectedObject == NULL){
+				return;
+		}
+		Locker locker(selectedObject, player);
+		StringIdChatParameter msg;
+		msg.setStringId("@loot_dealer:prose_sold_junk");
+		msg.setTT(selectedObject->getObjectID());
+		int iCredits = cast<TangibleObject*>(inventory->getContainerObject(itemId).get())->getJunkValue();
+		msg.setDI(iCredits);
+		player->sendSystemMessage(msg);
+		UnicodeString itemName = StringIdManager::instance()->getStringId(selectedObject->getDisplayedName().hashCode());
+		if (itemName == "")
+			itemName=selectedObject->getCustomObjectName();
+		selectedObject->destroyObjectFromWorld(true);
+		selectedObject->destroyObjectFromDatabase(true);
+		player->addCashCredits(iCredits,true);
+		//player->sendSystemMessage("Index: " + String::valueOf(index) + " ItemID:" + String::valueOf(itemId) + " " + tst->getObjectNameStringIdName()+  " Cancel: " + String::valueOf(cancel) + " Other: " + String::valueOf(otherPressed));
+		//player->sendSystemMessage("You sell " + itemName + " for " + String::valueOf(iCredits) +" cr");
+		bool bHaveStuffToSell = false;
+		for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
+			ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i).get());
+			if (cast<JunkdealerCreature*>(dealerScene)->canInventoryItemBeSoldAsJunk(item,dealerType)==true){
+				bHaveStuffToSell=true;
+				break;
+			}
+		}
+		if (bHaveStuffToSell==true) {
+			// create new window
+			ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::JUNK_DEALER_SELL_LIST, SuiListBox::HANDLETHREEBUTTON);
+			box->setCallback(new JunkDealerSellListSuiCallback(player->getZoneServer()));
+			box->setPromptText("@loot_dealer:sell_prompt");
+			box->setOtherButton(true, "@loot_dealer:btn_sell_all");
+			box->setPromptTitle("@loot_dealer:sell_title");
+			box->setHandlerText("handleUpdateSchematic");
+			box->setOkButton(true, "@loot_dealer:btn_sell");
+			box->setCancelButton(true, "@cancel");
+			for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
+				UnicodeString itemName = StringIdManager::instance()->getStringId(inventory->getContainerObject(i)->getDisplayedName().hashCode());
+				if (itemName == "")
+					itemName=inventory->getContainerObject(i)->getCustomObjectName();
+				ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i).get());
+				if (cast<JunkdealerCreature*>(dealerScene)->canInventoryItemBeSoldAsJunk(item,dealerType)==true )
+					box->addMenuItem("[" + String::valueOf(item->getJunkValue()) + "Cr] " +itemName.toString(), inventory->getContainerObject(i)->getObjectID());
+			}
+			box->setUsingObject(suiBox->getUsingObject().get());
+			player->getPlayerObject()->addSuiBox(box);
+			player->sendMessage(box->generateMessage());
+		}else{
+			player->sendMessage(new StopNpcConversation(player, suiBox->getUsingObject().get()->getObjectID()));
+		}
 	}
-
 
 	/*try {
 				player->wlock();
