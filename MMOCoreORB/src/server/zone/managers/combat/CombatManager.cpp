@@ -269,18 +269,25 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 		break;
 	}
 
+	// Apply states first
+	applyStates(attacker, defender, data);
+
 	int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
 	// TODO: animations are probably determined by which pools are damaged (high, mid, low, combos, etc)
-	if (damage != 0 && damageMultiplier != 0 && poolsToDamage != 0) {
-		damage = applyDamage(attacker, weapon, defender, damage, damageMultiplier, poolsToDamage, data);
-		if (defender->hasAttackDelay())
-			defender->removeAttackDelay();
-	}
 
-	if (!defender->isDead()) {
-		applyStates(attacker, defender, data);
+	// Return if it's a state only attack (intimidate, warcry, wookiee roar) so they don't apply dots or break combat delays
+	if (poolsToDamage == 0)
+		return 0;
+
+	if (defender->hasAttackDelay())
+		defender->removeAttackDelay();
+
+	if (damageMultiplier != 0 && damage != 0) {
+		// Apply dots before damage so that target's armor doesn't reduce
 		applyDots(attacker, defender, data, damage);
 		applyWeaponDots(attacker, defender, weapon);
+
+		damage = applyDamage(attacker, weapon, defender, damage, damageMultiplier, poolsToDamage, data);
 	}
 
 	return damage;
