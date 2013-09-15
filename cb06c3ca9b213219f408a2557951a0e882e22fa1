@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da3975d1_14b97ae9",
+        "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-09-15T04:29:28Z",
+      "side": 1,
+      "message": "You probably only want to check for SceneObjectType::SPECIALHEAVYWEAPON as that is what flamethrowers, acid rifles, and LLCs are. The other type are the consumable heavy weapons (such as rocket launchers).",
+      "revId": "cb06c3ca9b213219f408a2557951a0e882e22fa1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
