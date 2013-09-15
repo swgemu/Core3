@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "da3975d1_d4cad26d",
+        "filename": "MMOCoreORB/bin/scripts/managers/loot_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 14
+      },
+      "writtenOn": "2013-09-15T06:07:46Z",
+      "side": 1,
+      "message": "Looks like this pistol accuracy snuck in there",
+      "revId": "cb06c3ca9b213219f408a2557951a0e882e22fa1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da3975d1_14b97ae9",
         "filename": "MMOCoreORB/src/server/zone/managers/loot/LootManagerImplementation.cpp",
         "patchSetId": 1
