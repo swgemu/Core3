@@ -2171,6 +2171,9 @@ void AiAgentImplementation::setShowNextPosition(bool val) {
 }
 
 String AiAgentImplementation::getPvPFaction() {
+	// server/zone/objects/creature/AiAgent.idl():  		return 
+	if ((&npcTemplate)->get() == NULL)	// server/zone/objects/creature/AiAgent.idl():  			return "";
+	return "";
 	// server/zone/objects/creature/AiAgent.idl():  		return npcTemplate.get().getPvpFaction();
 	return (&npcTemplate)->get()->getPvpFaction();
 }

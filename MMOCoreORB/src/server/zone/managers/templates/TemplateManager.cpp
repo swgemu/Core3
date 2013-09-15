@@ -119,6 +119,8 @@ Lua* TemplateManager::luaTemplatesInstance = NULL;
 
 AtomicInteger TemplateManager::loadedTemplatesCount;
 
+int TemplateManager::ERROR_CODE = NO_ERROR;
+
 TemplateManager::TemplateManager() {
 	setLogging(false);
 	setGlobalLogging(true);
@@ -172,6 +174,7 @@ void TemplateManager::loadSlotDefinitions() {
 
 	if (iffStream == NULL) {
 		error("Slot definitions can't be found.");
+		ERROR_CODE = SLOT_DEFINITION_FILE_NOT_FOUND;
 		return;
 	}
 
@@ -204,6 +207,7 @@ void TemplateManager::loadAssetCustomizationManager() {
 
 	if (iffStream == NULL) {
 		error("Asset customization manager data not found.");
+		ERROR_CODE = ASSETCUSTOMIZATIONMANAGER_FILE_NOT_FOUND;
 		return;
 	}
 
@@ -226,6 +230,7 @@ void TemplateManager::loadAssetCustomizationManager() {
 
 	if (iffStream == NULL) {
 		error("Customization Id manager data not found.");
+		ERROR_CODE = CUSTOMIZATION_ID_MANAGER_FILE_NOT_FOUND;
 		return;
 	}
 
@@ -237,6 +242,7 @@ void TemplateManager::loadAssetCustomizationManager() {
 
 	if (iffStream == NULL) {
 		error("Customization palette columns data not found.");
+		ERROR_CODE = PALLETE_COLUMNS_FILE_NOT_FOUND;
 		return;
 	}
 
@@ -248,6 +254,7 @@ void TemplateManager::loadAssetCustomizationManager() {
 
 	if (iffStream == NULL) {
 		error("Hair assets data not found.");
+		ERROR_CODE = HAIR_ASSETS_FILE_NOT_FOUND;
 		return;
 	}
 
@@ -259,6 +266,7 @@ void TemplateManager::loadAssetCustomizationManager() {
 
 	if (iffStream == NULL) {
 		error("allow bald data not found");
+		ERROR_CODE = HAIR_ASSETS_FILE_NOT_FOUND;
 		return;
 	}
 
@@ -331,6 +339,7 @@ void TemplateManager::loadPlanetMapCategories() {
 
 	if (iffStream == NULL) {
 		error("Planet map categories could not be found.");
+		ERROR_CODE = PLANET_CAT_FILE_NOT_FOUND;
 		return;
 	}
 
@@ -357,10 +366,15 @@ void TemplateManager::loadLuaTemplates() {
 	int count = ComponentManager::instance()->size();
 
 	try {
-		luaTemplatesInstance->runFile("scripts/object/main.lua");
+		bool val = luaTemplatesInstance->runFile("scripts/object/main.lua");
+
+		if (!val)
+			ERROR_CODE = LOAD_LUA_TEMPLATE_ERROR;
 	} catch (Exception& e) {
 		error(e.getMessage());
 		e.printStackTrace();
+
+		ERROR_CODE = LOAD_LUA_TEMPLATE_ERROR;
 	}
 
 	printf("\n");
@@ -377,15 +391,23 @@ void TemplateManager::loadLuaTemplates() {
 void TemplateManager::loadTreArchive() {
 	String path = ConfigManager::instance()->getTrePath();
 
-	if (path.length() <= 1)
+	if (path.length() <= 1) {
+		ERROR_CODE = NO_TRE_PATH;
 		return;
+	}
 
 	Vector<String> treFilesToLoad = ConfigManager::instance()->getTreFiles();
 
-	if (treFilesToLoad.size() == 0)
+	if (treFilesToLoad.size() == 0) {
+		ERROR_CODE = NO_TRE_FILES;
 		return;
+	}
 
-	DataArchiveStore::instance()->loadTres(path, treFilesToLoad);
+	int res = DataArchiveStore::instance()->loadTres(path, treFilesToLoad);
+
+	if (res != 0) {
+		ERROR_CODE = LOAD_TRES_ERROR;
+	}
 
 /*	info("Loading TRE archives...", true);
 
@@ -871,7 +893,10 @@ bool TemplateManager::existsTemplate(uint32 key) {
 int TemplateManager::includeFile(lua_State* L) {
 	String filename = Lua::getStringParameter(L);
 
-	Lua::runFile("scripts/object/" + filename, L);
+	bool val = Lua::runFile("scripts/object/" + filename, L);
+
+	if (!val)
+		ERROR_CODE = LOAD_LUA_TEMPLATE_ERROR;
 
 	return 0;
 }
@@ -926,10 +951,10 @@ int TemplateManager::addTemplateCRC(lua_State* L) {
 
 	int val = loadedTemplatesCount.increment();
 
-	if (ConfigManager::instance()->isProgressMonitorActivated())
-		if (val % 38 == 0)
-			//printf("\r(%llu s) Loaded templates: [%d] / [15998]:", seconds, val);
-			printf("\r\tLoading templates: [%d] / [15998]\t", val);
+	if (ConfigManager::instance()->isProgressMonitorActivated()) {
+		if (val % 159 == 0)
+			printf("\r\tLoading templates: [%d%%]\t", (int) (float(val) / 15998.f * 100.f));
+	}
 
 	//System::out << str;
 

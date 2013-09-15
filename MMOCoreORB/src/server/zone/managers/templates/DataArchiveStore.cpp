@@ -59,20 +59,20 @@ byte* DataArchiveStore::getData(const String& path, int& size) {
 	return data;
 }
 
-void DataArchiveStore::loadTres(String& path, Vector<String>& treFilesToLoad) {
+int DataArchiveStore::loadTres(String& path, Vector<String>& treFilesToLoad) {
 	Locker locker(this);
 
 	if (treeDirectory != NULL) {
 		error("tree directory already loaded");
 
-		return;
+		return 1;
 	}
 
 	if (path.length() <= 1)
-		return;
+		return 2;
 
 	if (treFilesToLoad.size() == 0)
-		return;
+		return 3;
 
 	info("Loading TRE archives...");
 
@@ -90,6 +90,8 @@ void DataArchiveStore::loadTres(String& path, Vector<String>& treFilesToLoad) {
 	}
 
 	info("Finished loading TRE archives.");
+
+	return 0;
 }
 
 IffStream* DataArchiveStore::openIffFile(const String& fileName) {

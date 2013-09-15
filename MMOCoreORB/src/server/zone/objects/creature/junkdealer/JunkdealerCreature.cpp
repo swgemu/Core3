@@ -12,7 +12,7 @@
  *	JunkdealerCreatureStub
  */
 
-enum {RPC_ACTIVATERECOVERY__,RPC_SENDINITIALMESSAGE__CREATUREOBJECT_,RPC_SENDINITIALCHOICES__CREATUREOBJECT_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_GETLOCATION__,RPC_SETLOCATION__STRING_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_CREATESELLJUNKLOOTSELECTION__CREATUREOBJECT_};
+enum {RPC_ACTIVATERECOVERY__,RPC_SENDINITIALMESSAGE__CREATUREOBJECT_,RPC_SENDINITIALCHOICES__CREATUREOBJECT_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_GETCONVERSATIONSTRING__INT_,RPC_GETLOCATION__,RPC_SETLOCATION__STRING_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_CREATESELLJUNKLOOTSELECTION__CREATUREOBJECT_,RPC_CANINVENTORYITEMBESOLDASJUNK__TANGIBLEOBJECT_INT_,RPC_SETJUNKDEALERBUYERTYPE__INT_,RPC_GETJUNKDEALERBUYERTYPE__,RPC_SETJUNKDEALERCONVERSATIONTYPE__INT_,RPC_GETJUNKDEALERCONVERSATIONTYPE__,RPC_ISJUNKDEALER__};
 
 JunkdealerCreature::JunkdealerCreature() : CreatureObject(DummyConstructorParameter::instance()) {
 	JunkdealerCreatureImplementation* _implementation = new JunkdealerCreatureImplementation();
@@ -109,6 +109,22 @@ void JunkdealerCreature::selectConversationOption(int option, SceneObject* obj) 
 		_implementation->selectConversationOption(option, obj);
 }
 
+String JunkdealerCreature::getConversationString(int dealerType) {
+	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETCONVERSATIONSTRING__INT_);
+		method.addSignedIntParameter(dealerType);
+
+		String _return_getConversationString;
+		method.executeWithAsciiReturn(_return_getConversationString);
+		return _return_getConversationString;
+	} else
+		return _implementation->getConversationString(dealerType);
+}
+
 String JunkdealerCreature::getLocation() {
 	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -164,6 +180,88 @@ void JunkdealerCreature::createSellJunkLootSelection(CreatureObject* player) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->createSellJunkLootSelection(player);
+}
+
+bool JunkdealerCreature::canInventoryItemBeSoldAsJunk(TangibleObject* lootItem, int dealerType) {
+	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_CANINVENTORYITEMBESOLDASJUNK__TANGIBLEOBJECT_INT_);
+		method.addObjectParameter(lootItem);
+		method.addSignedIntParameter(dealerType);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->canInventoryItemBeSoldAsJunk(lootItem, dealerType);
+}
+
+void JunkdealerCreature::setJunkDealerBuyerType(int jdBuyerType) {
+	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETJUNKDEALERBUYERTYPE__INT_);
+		method.addSignedIntParameter(jdBuyerType);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setJunkDealerBuyerType(jdBuyerType);
+}
+
+int JunkdealerCreature::getJunkDealerBuyerType() {
+	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETJUNKDEALERBUYERTYPE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getJunkDealerBuyerType();
+}
+
+void JunkdealerCreature::setJunkDealerConversationType(int jdConvoType) {
+	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETJUNKDEALERCONVERSATIONTYPE__INT_);
+		method.addSignedIntParameter(jdConvoType);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setJunkDealerConversationType(jdConvoType);
+}
+
+int JunkdealerCreature::getJunkDealerConversationType() {
+	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETJUNKDEALERCONVERSATIONTYPE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getJunkDealerConversationType();
+}
+
+bool JunkdealerCreature::isJunkDealer() {
+	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_ISJUNKDEALER__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->isJunkDealer();
 }
 
 DistributedObjectServant* JunkdealerCreature::_getImplementation() {
@@ -280,6 +378,14 @@ bool JunkdealerCreatureImplementation::readObjectMember(ObjectInputStream* strea
 		TypeInfo<String >::parseFromBinaryStream(&location, stream);
 		return true;
 
+	case 0xdd106bf8: //JunkdealerCreature.junkDealerBuyerType
+		TypeInfo<int >::parseFromBinaryStream(&junkDealerBuyerType, stream);
+		return true;
+
+	case 0x6a045b8b: //JunkdealerCreature.junkDealerConversationType
+		TypeInfo<int >::parseFromBinaryStream(&junkDealerConversationType, stream);
+		return true;
+
 	}
 
 	return false;
@@ -306,8 +412,24 @@ int JunkdealerCreatureImplementation::writeObjectMembers(ObjectOutputStream* str
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_nameHashCode = 0xdd106bf8; //JunkdealerCreature.junkDealerBuyerType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&junkDealerBuyerType, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 1;
+	_nameHashCode = 0x6a045b8b; //JunkdealerCreature.junkDealerConversationType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&junkDealerConversationType, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+
+	return _count + 3;
 }
 
 JunkdealerCreatureImplementation::JunkdealerCreatureImplementation() {
@@ -341,6 +463,31 @@ void JunkdealerCreatureImplementation::setLocation(const String& loc) {
 bool JunkdealerCreatureImplementation::isAttackableBy(CreatureObject* object) {
 	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl():  		return false;
 	return false;
+}
+
+void JunkdealerCreatureImplementation::setJunkDealerBuyerType(int jdBuyerType) {
+	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl():  		junkDealerBuyerType = jdBuyerType;
+	junkDealerBuyerType = jdBuyerType;
+}
+
+int JunkdealerCreatureImplementation::getJunkDealerBuyerType() {
+	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl():  		return junkDealerBuyerType;
+	return junkDealerBuyerType;
+}
+
+void JunkdealerCreatureImplementation::setJunkDealerConversationType(int jdConvoType) {
+	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl():  		junkDealerConversationType = jdConvoType;
+	junkDealerConversationType = jdConvoType;
+}
+
+int JunkdealerCreatureImplementation::getJunkDealerConversationType() {
+	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl():  		return junkDealerConversationType;
+	return junkDealerConversationType;
+}
+
+bool JunkdealerCreatureImplementation::isJunkDealer() {
+	// server/zone/objects/creature/junkdealer/JunkdealerCreature.idl():  		return true;
+	return true;
 }
 
 /*
@@ -383,6 +530,11 @@ void JunkdealerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 			selectConversationOption(inv->getSignedIntParameter(), static_cast<SceneObject*>(inv->getObjectParameter()));
 		}
 		break;
+	case RPC_GETCONVERSATIONSTRING__INT_:
+		{
+			resp->insertAscii(getConversationString(inv->getSignedIntParameter()));
+		}
+		break;
 	case RPC_GETLOCATION__:
 		{
 			resp->insertAscii(getLocation());
@@ -402,6 +554,36 @@ void JunkdealerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 	case RPC_CREATESELLJUNKLOOTSELECTION__CREATUREOBJECT_:
 		{
 			createSellJunkLootSelection(static_cast<CreatureObject*>(inv->getObjectParameter()));
+		}
+		break;
+	case RPC_CANINVENTORYITEMBESOLDASJUNK__TANGIBLEOBJECT_INT_:
+		{
+			resp->insertBoolean(canInventoryItemBeSoldAsJunk(static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter()));
+		}
+		break;
+	case RPC_SETJUNKDEALERBUYERTYPE__INT_:
+		{
+			setJunkDealerBuyerType(inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_GETJUNKDEALERBUYERTYPE__:
+		{
+			resp->insertSignedInt(getJunkDealerBuyerType());
+		}
+		break;
+	case RPC_SETJUNKDEALERCONVERSATIONTYPE__INT_:
+		{
+			setJunkDealerConversationType(inv->getSignedIntParameter());
+		}
+		break;
+	case RPC_GETJUNKDEALERCONVERSATIONTYPE__:
+		{
+			resp->insertSignedInt(getJunkDealerConversationType());
+		}
+		break;
+	case RPC_ISJUNKDEALER__:
+		{
+			resp->insertBoolean(isJunkDealer());
 		}
 		break;
 	default:
@@ -429,6 +611,10 @@ void JunkdealerCreatureAdapter::selectConversationOption(int option, SceneObject
 	(static_cast<JunkdealerCreature*>(stub))->selectConversationOption(option, obj);
 }
 
+String JunkdealerCreatureAdapter::getConversationString(int dealerType) {
+	return (static_cast<JunkdealerCreature*>(stub))->getConversationString(dealerType);
+}
+
 String JunkdealerCreatureAdapter::getLocation() {
 	return (static_cast<JunkdealerCreature*>(stub))->getLocation();
 }
@@ -443,6 +629,30 @@ bool JunkdealerCreatureAdapter::isAttackableBy(CreatureObject* object) {
 
 void JunkdealerCreatureAdapter::createSellJunkLootSelection(CreatureObject* player) {
 	(static_cast<JunkdealerCreature*>(stub))->createSellJunkLootSelection(player);
+}
+
+bool JunkdealerCreatureAdapter::canInventoryItemBeSoldAsJunk(TangibleObject* lootItem, int dealerType) {
+	return (static_cast<JunkdealerCreature*>(stub))->canInventoryItemBeSoldAsJunk(lootItem, dealerType);
+}
+
+void JunkdealerCreatureAdapter::setJunkDealerBuyerType(int jdBuyerType) {
+	(static_cast<JunkdealerCreature*>(stub))->setJunkDealerBuyerType(jdBuyerType);
+}
+
+int JunkdealerCreatureAdapter::getJunkDealerBuyerType() {
+	return (static_cast<JunkdealerCreature*>(stub))->getJunkDealerBuyerType();
+}
+
+void JunkdealerCreatureAdapter::setJunkDealerConversationType(int jdConvoType) {
+	(static_cast<JunkdealerCreature*>(stub))->setJunkDealerConversationType(jdConvoType);
+}
+
+int JunkdealerCreatureAdapter::getJunkDealerConversationType() {
+	return (static_cast<JunkdealerCreature*>(stub))->getJunkDealerConversationType();
+}
+
+bool JunkdealerCreatureAdapter::isJunkDealer() {
+	return (static_cast<JunkdealerCreature*>(stub))->isJunkDealer();
 }
 
 /*

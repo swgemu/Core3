@@ -299,6 +299,10 @@ namespace server {
 			inline int getPurgeDeletedCharacters() {
 				return purgeDeletedCharacters;
 			}
+
+			inline void setProgressMonitors(bool val) {
+				progressMonitors = val;
+			}
 		};
 	}
 }

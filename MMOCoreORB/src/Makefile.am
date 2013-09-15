@@ -88,7 +88,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/objects/area/areashapes/tests/RectangularAreaShapeTest.cpp \
 			  	server/zone/objects/area/areashapes/tests/RingAreaShapeTest.cpp \
 			  	server/zone/tests/DeadlockTestBase.cpp \
-			  	server/zone/objects/terrain/tests/BasicTerrainTest.cpp
+			  	server/zone/objects/terrain/tests/BasicTerrainTest.cpp \
+			  	server/zone/tests/ZoneTest.cpp
 
 core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp \
 				server/zone/objects/area/FsVillageArea.cpp \

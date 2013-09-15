@@ -638,6 +638,8 @@ public:
 
 	bool isAiAgent();
 
+	bool isJunkDealer();
+
 	bool isShipObject();
 
 	bool isVehicleObject();
@@ -1318,6 +1320,8 @@ public:
 
 	virtual bool isAiAgent();
 
+	virtual bool isJunkDealer();
+
 	virtual bool isShipObject();
 
 	virtual bool isVehicleObject();
@@ -1854,6 +1858,8 @@ public:
 	bool isCreatureObject();
 
 	bool isAiAgent();
+
+	bool isJunkDealer();
 
 	bool isShipObject();
 

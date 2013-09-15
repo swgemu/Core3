@@ -27,7 +27,7 @@ public:
 
 	byte* getData(const String& path, int& size);
 
-	void loadTres(String& path, Vector<String>& treFilesToLoad);
+	int loadTres(String& path, Vector<String>& treFilesToLoad);
 
 	IffStream* openIffFile(const String& fileName);
 
