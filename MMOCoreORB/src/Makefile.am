@@ -42,8 +42,8 @@
 
 AM_CXXFLAGS= $(UNITTEST_DIRECTIVES) -ggdb -Wall -Wextra -Wno-unused -Wno-sign-compare -Wno-multichar -DDEFAULT_DYNAMIC_CAST -Wno-unused-parameter -Wno-overloaded-virtual -Wno-missing-declarations
 
-#ENGINE3_PATH=/Users/victor/Documents/workspacePublic/MMOEnginePrivate
 ENGINE3_PATH=../../../../MMOEngine
+ENGINE3_MOCK_PATH=../../../utils
 
 GTEST_PATH=../../../utils/gtest-1.6.0
 
@@ -54,7 +54,7 @@ GMOCK_PATH=../../../utils/gmock-1.6.0
 
 INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I$(USER_INCLUDES_PATH) -I$(USER_INCLUDES_PATH)/mysql \
-	    -I$(ENGINE3_PATH)/include -I$(ENGINE3_PATH)/src -I/usr/include/lua5.1 -I/usr/include/mysql \
+	    -I$(ENGINE3_PATH)/include -I$(ENGINE3_PATH)/src -I$(ENGINE3_MOCK_PATH) -I/usr/include/lua5.1 -I/usr/include/mysql \
 	    -I/usr/local/BerkeleyDB.5.0/include \
 	    -I/usr/include/db5.0 \
 	    -I$(GTEST_PATH)/include \
@@ -84,6 +84,7 @@ bin_PROGRAMS = core3 #odb3
 core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.cpp \
 			  	server/zone/managers/director/tests/BasicScreenPlayTest.cpp \
 			  	server/zone/managers/creature/tests/LuaMobileTest.cpp \
+			  	server/zone/managers/jedi/tests/JediManagerTest.cpp \
 			  	server/zone/objects/creature/ai/bt/tests/BehaviorTest.cpp \
 			  	server/zone/objects/area/areashapes/tests/RectangularAreaShapeTest.cpp \
 			  	server/zone/objects/area/areashapes/tests/RingAreaShapeTest.cpp \
@@ -252,6 +253,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/managers/crafting/labratories/ResourceLabratory.cpp \
 				server/zone/managers/crafting/labratories/GeneticLabratory.cpp \
 				server/zone/managers/crafting/CraftingManager.cpp \
+				server/zone/managers/jedi/JediManager.cpp \
 				server/zone/managers/loot/LootManager.cpp \
 				server/zone/managers/loot/LootGroupMap.cpp \
 				server/zone/managers/crafting/schematicmap/SchematicMap.cpp \
