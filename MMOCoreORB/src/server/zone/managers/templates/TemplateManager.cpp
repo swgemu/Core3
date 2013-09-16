@@ -287,6 +287,8 @@ Reference<SlotDescriptor*> TemplateManager::getSlotDescriptor(const String& file
 		slotDesc->readObject(iffStream);
 
 		slotDescriptors.put(filename, slotDesc);
+
+		delete iffStream;
 	}
 
 	return slotDescriptors.get(filename);
@@ -329,6 +331,8 @@ Reference<ArrangementDescriptor*> TemplateManager::getArrangementDescriptor(cons
 		slotDesc->readObject(iffStream);
 
 		arrangementDescriptors.put(filename, slotDesc);
+
+		delete iffStream;
 	}
 
 	return arrangementDescriptors.get(filename);

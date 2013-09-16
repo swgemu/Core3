@@ -97,6 +97,15 @@ TEST_F(ZoneTest, InRangeTest) {
 	zone->getInRangeObjects(1000, 1000, 128, &objects, true);
 
 	ASSERT_EQ(objects.size(), 2);
+
+	scene2->destroyObjectFromWorld(false);
+	scene->destroyObjectFromWorld(false);
+
+	objects.removeAll();
+
+	zone->getInRangeObjects(1000, 1000, 128, &objects, true);
+
+	ASSERT_EQ(objects.size(), 0);
 }
 
 
