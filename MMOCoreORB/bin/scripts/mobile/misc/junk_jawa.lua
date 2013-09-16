@@ -1,6 +1,6 @@
 junk_jawa = Creature:new {
 	objectName = "@mob/creature_names:junk_dealer",
-	customName = "Jawa",
+	customName = "Jawa Trader",
 	socialGroup = "jawa",
 	pvpFaction = "jawa",
 	faction = "jawa",
@@ -24,10 +24,10 @@ junk_jawa = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/jawa_male.iff"},
+	templates = {"object/mobile/jawa.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

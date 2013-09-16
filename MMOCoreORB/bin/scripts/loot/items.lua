@@ -5,6 +5,7 @@ JUNKWEAPONS = 4
 JUNKARMOUR = 8
 JUNKTUSKEN = 16
 JUNKJEDI = 32
+JUNKJAWA = 64
 
 
 includeFile("items/aakuan_belt.lua")
