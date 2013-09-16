@@ -42,6 +42,7 @@
 
 
 object_building_general_bunker_allum_mine = object_building_general_shared_bunker_allum_mine:new {
+	ejectionPoint = {-57, 15}
 }
 
 ObjectTemplates:addTemplate(object_building_general_bunker_allum_mine, "object/building/general/bunker_allum_mine.iff")
