@@ -48,6 +48,7 @@ JediManager::JediManager(Lua* lua) : Logger("JediManager") {
 	info("Loading...", true);
 
 	this->lua = lua;
+	jediProgressionType = NOJEDIPROGRESSION;
 
 	loadConfiguration();
 }
@@ -58,4 +59,6 @@ JediManager::~JediManager() {
 
 void JediManager::loadConfiguration() {
 	lua->runFile("scripts/managers/jedi_manager.lua");
+
+	jediProgressionType = lua->getGlobalInt(String("jediProgressionType"));
 }
