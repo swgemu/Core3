@@ -56,9 +56,16 @@ class JediManager : public Singleton<JediManager>, public Logger {
 private:
 	Lua* lua;
 
+	int jediProgressionType;
+
 	void loadConfiguration();
 
 public:
+	static const int NOJEDIPROGRESSION = 0;
+	static const int HOLOCRONJEDIPROGRESSION = 1;
+	static const int VILLAGEJEDIPROGRESSION = 2;
+	static const int CUSTOMJEDIPROGRESSION = 3;
+
 	JediManager(Lua* lua);
 	~JediManager();
 };

@@ -48,6 +48,10 @@ which carries forward this exception.
 
 #include "engine/lua/MockLua.h"
 
+using ::testing::_;
+using ::testing::Return;
+using ::testing::AnyNumber;
+
 namespace server {
 namespace zone {
 namespace managers {
@@ -72,12 +76,31 @@ public:
 	void TearDown() {
 		// Perform clean up of common constructs here.
 	}
+
+	void constructorDefaults(MockLua& mockLua) {
+		EXPECT_CALL(mockLua, runFile(_)).Times(AnyNumber());
+		EXPECT_CALL(mockLua, getGlobalInt(_)).Times(AnyNumber());
+	}
 };
 
-TEST_F(JediManagerTest, ShouldRunFileJediManagerLuaAtLoadConfiguration) {
+TEST_F(JediManagerTest, ShouldRunFileJediManagerLuaAtCreation) {
 	MockLua mockLua;
 
+	constructorDefaults(mockLua);
+
 	EXPECT_CALL(mockLua, runFile(String("scripts/managers/jedi_manager.lua"))).Times(1);
+
+	JediManager* jediManager = new JediManager(&mockLua);
+
+	delete jediManager;
+}
+
+TEST_F(JediManagerTest, ShouldReadTheJediProgressionTypeVariableAtCreation) {
+	MockLua mockLua;
+
+	constructorDefaults(mockLua);
+
+	EXPECT_CALL(mockLua, getGlobalInt(String("jediProgressionType"))).WillOnce(Return(JediManager::NOJEDIPROGRESSION));
 
 	JediManager* jediManager = new JediManager(&mockLua);
 
