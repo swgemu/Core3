@@ -24,6 +24,9 @@ class PathNode : public Object {
 public:
 	PathNode(PathGraph* graph) {
 		pathGraph = graph;
+		id = 0;
+		var2 = globalGraphNodeID = var4 = 0;
+		x = z = y = var8 = 0;
 	}
 
 	inline void addChild(PathNode* node) {

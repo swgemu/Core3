@@ -29,6 +29,7 @@ public:
 		creature = pl;
 		target = t;
 		coord.setPosition(t->getPosition());
+		mtime = 0;
 	}
 
 	virtual ~AiAwarenessEvent() {

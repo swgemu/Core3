@@ -104,6 +104,13 @@ public:
 
 public:
 	IngredientSlot(){
+		requiredQuantity = 0;
+
+		identical = false;
+		optional = false;
+
+		clientSlotType = 0;
+
 		setLogging(false);
 	}
 

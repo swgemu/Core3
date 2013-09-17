@@ -56,7 +56,8 @@ private:
 
 public:
 	GalaxyBanEntry() {
-
+		galaxyID = 0;
+		accountID = banAdmin = 0;
 	}
 
 	GalaxyBanEntry(const GalaxyBanEntry& e) : Object() {

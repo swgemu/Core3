@@ -146,6 +146,8 @@ public:
 		containerCRC = 0;
 
 		attributeMap.setNullValue(NULL);
+
+		myNode = NULL;
 	}
 
 	/**

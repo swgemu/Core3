@@ -57,6 +57,8 @@ ResourceTreeNode::ResourceTreeNode(const String& t, const String& n, const int d
 	depth = d;
 
 	parentNode = NULL;
+
+	maxtype = mintype = maxpool = minpool = 0;
 }
 
 ResourceTreeNode::~ResourceTreeNode() {

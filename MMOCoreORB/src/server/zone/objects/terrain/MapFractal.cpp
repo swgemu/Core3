@@ -15,6 +15,21 @@ MapFractal::MapFractal() {
 	noise = NULL;
 	rand = NULL;
 
+	bias = 0;
+	biasValue = 0;
+	gainType = 0;
+	gainValue = 0;
+	octaves = 0;
+	octavesParam = 0;
+	amplitude = 0;
+	xFrequency = 0;
+	yFrequency = 0;
+	xOffset = 0;
+	zOffset = 0;
+	combination = 0;
+
+	offset32 = 0;
+
 	unkown = false;
 }
 

@@ -269,6 +269,8 @@ public:
 			hidden = true;
 		} else
 			hidden = false;
+
+		avePercentage = 0;
 	}
 
 	Subclasses(const Subclasses& sub) : Object() {

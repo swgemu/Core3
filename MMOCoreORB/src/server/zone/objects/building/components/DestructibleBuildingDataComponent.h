@@ -77,6 +77,9 @@ public:
 		terminalDamaged = false;
 		rebootFinishTime = Time(0);
 		dnaProfiles.removeAll();
+
+		uplinkBand = 0;
+		inRepair = false;
 	}
 
 	virtual ~DestructibleBuildingDataComponent(){

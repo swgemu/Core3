@@ -19,7 +19,7 @@ class Vert : public Object {
 	float x, z, y;
 
 public:
-	Vert() {
+	Vert() : x(0), y(0), z(0) {
 
 	}
 

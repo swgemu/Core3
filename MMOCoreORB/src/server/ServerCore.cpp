@@ -83,6 +83,7 @@ ServerCore::ServerCore(bool truncateDatabases, SortedVector<String>& args) :
 	pingServer = NULL;
 	webServer = NULL;
 	database = NULL;
+	mantisDatabase = NULL;
 
 	truncateAllData = truncateDatabases;
 	arguments = args;

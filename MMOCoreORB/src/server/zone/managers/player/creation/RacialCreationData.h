@@ -25,6 +25,7 @@ class RacialCreationData : public Object {
 
 public:
 	RacialCreationData() {
+		totalAttributes = 0;
 	}
 
 	RacialCreationData(const RacialCreationData& cd) : Object() {
