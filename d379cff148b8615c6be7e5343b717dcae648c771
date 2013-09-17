@@ -16,6 +16,24 @@
       "revId": "d379cff148b8615c6be7e5343b717dcae648c771",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da3975d1_74dd6614",
+        "filename": "MMOCoreORB/src/server/zone/managers/jedi/tests/JediManagerTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-09-17T00:53:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da3975d1_b4acee8d",
+      "revId": "d379cff148b8615c6be7e5343b717dcae648c771",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
