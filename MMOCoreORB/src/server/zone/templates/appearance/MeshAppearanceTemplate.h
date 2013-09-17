@@ -16,7 +16,7 @@ protected:
 	float x, y, z;
 
 public:
-	MeshVertex() {
+	MeshVertex() : x(0), y(0), z(0) {
 
 	}
 

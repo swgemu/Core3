@@ -95,7 +95,13 @@ public:
 
 	static const int JUNKCONVSNEGVALARIAN = 14;
 
-	static const int JUNKCONVJAWATRADER = 15;
+	static const int JUNKCONVJAWAGENERIC = 15;
+
+	static const int JUNKCONVJAWAFINARY = 16;
+
+	static const int JUNKCONVJAWAARMS = 17;
+
+	static const int JUNKCONVJAWATUSKEN = 18;
 
 	JunkdealerCreature();
 
@@ -203,7 +209,13 @@ public:
 
 	static const int JUNKCONVSNEGVALARIAN = 14;
 
-	static const int JUNKCONVJAWATRADER = 15;
+	static const int JUNKCONVJAWAGENERIC = 15;
+
+	static const int JUNKCONVJAWAFINARY = 16;
+
+	static const int JUNKCONVJAWAARMS = 17;
+
+	static const int JUNKCONVJAWATUSKEN = 18;
 
 protected:
 	int junkDealerBuyerType;

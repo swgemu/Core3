@@ -18,6 +18,7 @@ protected:
 public:
 	DamageOverTimeList() {
 		setNoDuplicateInsertPlan();
+		dot = false;
 	}
 
 	DamageOverTimeList(const DamageOverTimeList& list) : VectorMap<uint64, Vector<DamageOverTime> >(list) {

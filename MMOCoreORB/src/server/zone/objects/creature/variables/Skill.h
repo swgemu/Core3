@@ -61,6 +61,21 @@ protected:
 public:
 	Skill() {
 		skillName = "root";
+		graphType = 0;
+
+		godOnly = false;
+		moneyRequired = 0;
+		jediStateRequired = 0;
+		xpCost = 0;
+		profession = false;
+		xpCap = 0;
+		apprenticeshipsRequired = 0;
+		jediStateRequired = 0;
+		title = false;
+		hidden = false;
+		searchable = false;
+		skillsRequiredCount = 0;
+		pointsRequired = 0;
 	}
 
 	~Skill() {

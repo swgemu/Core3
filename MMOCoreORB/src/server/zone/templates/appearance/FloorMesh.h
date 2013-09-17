@@ -20,7 +20,7 @@ class Vert : public Object {
 
 public:
 	Vert() {
-
+		x = z = y = 0;
 	}
 
 	Vert(const Vert& v) : Object() {
@@ -60,7 +60,8 @@ class Nods  : public Object {
 
 public:
 	Nods() {
-
+		x0 = y0 = z0 = x1 = y1 = z1 = 0;
+		id = var2 = leftNode = rightNode = 0;
 	}
 
 	void readObject(IffStream* iffStream) {
@@ -85,7 +86,8 @@ class Bedg : public Object {
 
 public:
 	Bedg() {
-
+		var1 = var2 = 0;
+		var3 = 0;
 	}
 
 	void readObject(IffStream* iffStream) {
@@ -116,6 +118,11 @@ public:
 	FloorMeshTriangleNode(FloorMesh* floorMesh) : neighbors(1, 1) {
 		mesh = floorMesh;
 		edge = false;
+		northWestTriangle = northEastTriangle = southTriangle = 0;
+		id = 0;
+		var8 = var9 = var10 = 0;
+		var14 = 0;
+		var15 = var16 = var17 = var18 = 0;
 	}
 
 	void readObject(IffStream* iffStream);

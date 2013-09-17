@@ -31,7 +31,13 @@ protected:
 
 public:
 	PaletteData() {
-
+		creationColumns = creationIndexes
+				= idNoviceColumns = idNoviceIndexes
+				= idLevel1Columns = idLevel1Indexes
+				= idLevel2Columns = idLevel2Indexes
+				= idLevel3Columns = idLevel3Indexes
+				= idLevel4Columns = idLevel4Indexes
+				= idMasterColumns = idMasterIndexes = 0;
 	}
 
 	void readObject(DataTableRow* row) {

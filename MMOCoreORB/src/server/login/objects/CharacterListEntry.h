@@ -63,7 +63,7 @@ private:
 
 public:
 	CharacterListEntry() {
-
+		objectID = accountID = galaxyID = race = gender = banAdmin = 0;
 	}
 
 	CharacterListEntry(const CharacterListEntry& e) : Object() {

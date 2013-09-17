@@ -21,7 +21,8 @@ class HairAssetData : public Object {
 
 public:
 	HairAssetData() {
-
+		skillModValue = 0;
+		availableAtCreation = 0;
 	}
 
 	void readObject(DataTableRow* row) {

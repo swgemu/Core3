@@ -30,6 +30,7 @@ protected:
 public:
 	PathGraph(FloorMesh* floor) {
 		floorMesh = floor;
+		unkownMetaInt = 0;
 	}
 
 	~PathGraph() {

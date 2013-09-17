@@ -162,6 +162,8 @@ void SceneObjectImplementation::initializePrivateData() {
 
 	staticObject = false;
 
+	zone = NULL;
+
 	setGlobalLogging(true);
 	setLogging(false);
 

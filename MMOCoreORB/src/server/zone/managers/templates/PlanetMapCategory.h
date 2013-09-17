@@ -24,7 +24,12 @@ class PlanetMapCategory : public Object {
 
 public:
 	PlanetMapCategory() {
-
+		nameCRC = 0;
+		index = 0;
+		category = false;
+		subCategory = false;
+		activatable = false;
+		factionVisibleOnly = false;
 	}
 
 	PlanetMapCategory(const PlanetMapCategory& pmc) : Object() {

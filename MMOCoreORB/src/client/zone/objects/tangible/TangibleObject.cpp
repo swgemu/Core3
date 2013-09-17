@@ -8,7 +8,18 @@
 #include "TangibleObject.h"
 
 TangibleObject::TangibleObject(LuaObject* templateData) : SceneObject(templateData) {
+	complexity = 0;
 
+	volume = 0;
+
+	optionsBitmask = 0;
+
+	count = 0;
+
+	conditionDamage = 0;
+	maxCondition = 0;
+
+	unknown = 0;
 }
 
 void TangibleObject::parseBaseline3(Message* message) {
