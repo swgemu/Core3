@@ -25,8 +25,20 @@
 void JunkdealerCreatureImplementation::sendConversationStartTo(SceneObject* obj) {
 	if (!obj->isPlayerCreature())
 		return;
-
 	CreatureObject* player = cast<CreatureObject*>( obj);
+	int dealerType = _this.get()->getJunkDealerConversationType();
+	if (dealerType == JUNKCONVJAWAARMS || dealerType == JUNKCONVJAWAFINARY || dealerType == JUNKCONVJAWAGENERIC || dealerType == JUNKCONVJAWATUSKEN){
+		if (player->hasSkill("combat_smuggler_underworld_01")){
+			StringIdChatParameter msg;
+			msg.setStringId("@jawa_trader:understand");
+			player->sendSystemMessage(msg);
+		}else{
+			StringIdChatParameter msg;
+			msg.setStringId("@jawa_trader:cant_understand");
+			player->sendSystemMessage(msg);
+			return;
+		}
+	}
 	PlayerObject* ghost = player->getPlayerObject();
 	StartNpcConversation* conv = new StartNpcConversation(player, getObjectID(), "");
 	player->sendMessage(conv);
@@ -94,8 +106,20 @@ void JunkdealerCreatureImplementation::sendInitialMessage(CreatureObject* player
 			stfname = "s_3c06418f";
 			break;
 		}
-		case JUNKCONVJAWATRADER:{
-			stfname = "s_3c06418f";
+		case JUNKCONVJAWAGENERIC:{
+			stfname = "greeting_thought_01";
+			break;
+		}
+		case JUNKCONVJAWAFINARY:{
+			stfname = "greeting_thought_03";
+			break;
+		}
+		case JUNKCONVJAWAARMS:{
+			stfname = "greeting_thought_02";
+			break;
+		}
+		case JUNKCONVJAWATUSKEN:{
+			stfname = "greeting_thought_bounty";
 			break;
 		}
 		default:{ // This Covers JUNKCONVGENERIC as well
@@ -174,8 +198,24 @@ void JunkdealerCreatureImplementation::sendInitialChoices(CreatureObject* player
 			slist->insertOption(getConversationString(JUNKCONVSNEGVALARIAN), "s_54fab04f");
 			break;
 		}
-		case JUNKCONVJAWATRADER:{
-			slist->insertOption(getConversationString(JUNKCONVJAWATRADER), "s_54fab04f");
+		case JUNKCONVJAWAGENERIC:{
+			slist->insertOption(getConversationString(JUNKCONVARMS), "s_c86eba88");
+			slist->insertOption(getConversationString(JUNKCONVARMS), "s_370a03c");
+			break;
+		}
+		case JUNKCONVJAWAFINARY:{
+			slist->insertOption(getConversationString(JUNKCONVARMS), "s_c86eba88");
+			slist->insertOption(getConversationString(JUNKCONVARMS), "s_370a03c");
+			break;
+		}
+		case JUNKCONVJAWAARMS:{
+			slist->insertOption(getConversationString(JUNKCONVARMS), "s_c86eba88");
+			slist->insertOption(getConversationString(JUNKCONVARMS), "s_370a03c");
+			break;
+		}
+		case JUNKCONVJAWATUSKEN:{
+			slist->insertOption(getConversationString(JUNKCONVARMS), "s_c86eba88");
+			slist->insertOption(getConversationString(JUNKCONVARMS), "s_370a03c");
 			break;
 		}
 		default:{ // This Covers JUNKCONVGENERIC as well
@@ -200,7 +240,9 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 
 	if (ghost->getLastNpcConvStr() != getObjectNameStringIdName())
 		return;
-
+	if (_this.get()->getJunkDealerConversationType()>JUNKCONVJAWATUSKEN) {
+		return;
+	}
 	String stffile = getConversationString(_this.get()->getJunkDealerConversationType());
 
 	String choice;
@@ -217,8 +259,8 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 
 	if (ghost->getLastNpcConvMessStr() == "junkdealer_options") {
 		switch (option) {
-			case 0: {
-				String chatResponses[] = {"","s_84a67771", "s_24f30320","s_e8ceb290","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771"};
+			case 0: { //                   0  1             2            3            4            5            6            7            8            9            10           11           12           13           14           15           16           17           18
+				String chatResponses[] = {"","s_84a67771", "s_24f30320","s_e8ceb290","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","start_trading","start_trading","start_trading","start_trading"};
 				StringIdChatParameter params(stffile, chatResponses[_this.get()->getJunkDealerConversationType()]);
 				NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 				ghost->setLastNpcConvMessStr("junkdealer_sell");
@@ -230,7 +272,7 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 				break;
 			}
 			case 1: {
-				String chatResponses[] = {"","s_4bd9d15e", "s_df5bd64e","s_1eb9feb7","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771"};
+				String chatResponses[] = {"","s_4bd9d15e", "s_df5bd64e","s_1eb9feb7","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","goodbye","goodbye","goodbye","goodbye"};
 				StringIdChatParameter params(stffile, chatResponses[_this.get()->getJunkDealerConversationType()]);
 				NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 				ghost->setLastNpcConvMessStr("junkdealer_nosell");
@@ -446,7 +488,7 @@ void JunkdealerCreatureImplementation::createSellJunkLootSelection(CreatureObjec
 					itemName=inventory->getContainerObject(i)->getCustomObjectName();
 				ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i).get());
 				if (canInventoryItemBeSoldAsJunk(item,dealerType)==true)
-					box->addMenuItem("[" + String::valueOf(item->getJunkValue()) + "Cr] " + itemName.toString(), inventory->getContainerObject(i)->getObjectID());
+					box->addMenuItem("[" + String::valueOf(item->getJunkValue()) + "] " + itemName.toString(), inventory->getContainerObject(i)->getObjectID());
 			}
 
 			box->setUsingObject(_this.get());
@@ -501,8 +543,14 @@ String JunkdealerCreatureImplementation::getConversationString(int dealerType) {
 			{return "conversation/sheani_lake";}
 		case JUNKCONVSNEGVALARIAN:
 			{return "conversation/junk_sneg_valarian";}
-		case JUNKCONVJAWATRADER:
-			{return "conversation/jawa_trader";}
+		case JUNKCONVJAWAGENERIC:
+			{return "jawa_trader";}
+		case JUNKCONVJAWAFINARY:
+			{return "jawa_trader";}
+		case JUNKCONVJAWAARMS:
+			{return "jawa_trader";}
+		case JUNKCONVJAWATUSKEN:
+			{return "jawa_trader";}
 		default:
 			{return "conversation/junk_dealer_generic";}
 		}

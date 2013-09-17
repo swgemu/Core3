@@ -80,7 +80,10 @@ class JunkdealerCreature extends CreatureObject {
 	public static final int JUNKCONVREGGINYM = 12;
 	public static final int JUNKCONVSHEANILAKE = 13;
 	public static final int JUNKCONVSNEGVALARIAN = 14;
-	public static final int JUNKCONVJAWATRADER = 15;
+	public static final int JUNKCONVJAWAGENERIC = 15;
+	public static final int JUNKCONVJAWAFINARY = 16;
+	public static final int JUNKCONVJAWAARMS = 17;
+	public static final int JUNKCONVJAWATUSKEN = 18;
 
 	protected int junkDealerBuyerType;
 	protected int junkDealerConversationType;
