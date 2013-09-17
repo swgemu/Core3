@@ -13,7 +13,7 @@
 #include "server/zone/managers/templates/TemplateManager.h"
 
 class CharacterBuilderMenuNode : public Object {
-	Reference<CharacterBuilderMenuNode*> parentNode;
+	WeakReference<CharacterBuilderMenuNode*> parentNode;
 
 	String displayName;
 	String templatePath;
@@ -25,6 +25,7 @@ public:
 	CharacterBuilderMenuNode(const String& name) {
 		displayName = name;
 		parentNode = NULL;
+		templateCRC = 0;
 		childNodes.setInsertPlan(SortedVector<CharacterBuilderMenuNode*>::NO_DUPLICATE);
 	}
 
@@ -80,11 +81,11 @@ public:
 	}
 
 	inline CharacterBuilderMenuNode* getParentNode() {
-		return parentNode;
+		return parentNode.get().get();
 	}
 
 	inline bool hasParentNode() {
-		return parentNode != NULL;
+		return parentNode.get() != NULL;
 	}
 
 	inline bool hasChildNodes() {
