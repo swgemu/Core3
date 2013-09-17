@@ -52,21 +52,57 @@ namespace zone {
 namespace managers {
 namespace jedi {
 
+/**
+ * Singleton class with a common interface for all different Jedi progression systems.
+ */
 class JediManager : public Singleton<JediManager>, public Logger {
 private:
+	/**
+	 * Pointer to a Lua object.
+	 */
 	Lua* lua;
 
+	/**
+	 * The Jedi progression type currently configured.
+	 */
 	int jediProgressionType;
 
+	/**
+	 * Load the Jedi Manager configuration.
+	 */
 	void loadConfiguration();
 
 public:
+	/**
+	 * Jedi progression not available.
+	 */
 	static const int NOJEDIPROGRESSION = 0;
+
+	/**
+	 * Jedi progression through the holocron system, i.e. master five random professions.
+	 */
 	static const int HOLOCRONJEDIPROGRESSION = 1;
+
+	/**
+	 * Jedi progression through the village system.
+	 */
 	static const int VILLAGEJEDIPROGRESSION = 2;
+
+	/**
+	 * Custom defined jedi progression system.
+	 */
 	static const int CUSTOMJEDIPROGRESSION = 3;
 
+	/**
+	 * Constructor for the Jedi Manager.
+	 * @param lua pointer to a Lua object. The lua object will be used until the
+	 *            Jedi Manager itself is deleted.
+	 */
 	JediManager(Lua* lua);
+
+	/**
+	 * Destructor for the Jedi Manager.
+	 */
 	~JediManager();
 };
 

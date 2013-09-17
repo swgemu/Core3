@@ -61,4 +61,18 @@ void JediManager::loadConfiguration() {
 	lua->runFile("scripts/managers/jedi_manager.lua");
 
 	jediProgressionType = lua->getGlobalInt(String("jediProgressionType"));
+
+	switch (jediProgressionType) {
+	case HOLOCRONJEDIPROGRESSION:
+		lua->runFile("scripts/managers/holocron_jedi_manager.lua");
+		break;
+	case VILLAGEJEDIPROGRESSION:
+		lua->runFile("scripts/managers/village_jedi_manager.lua");
+		break;
+	case CUSTOMJEDIPROGRESSION:
+		lua->runFile(lua->getGlobalString(String("customJediProgressionFile")));
+		break;
+	default:
+		break;
+	}
 }

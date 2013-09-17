@@ -54,6 +54,7 @@ class MockLua: public Lua {
 public:
 	MOCK_METHOD1(runFile, bool(const String& filename));
 	MOCK_METHOD1(getGlobalInt, sys::uint32(const String& name));
+	MOCK_METHOD1(getGlobalString, String(const String& name));
 };
 
 }
