@@ -11,6 +11,7 @@
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/conf/ConfigManager.h"
 
 class ZoneTest : public ::testing::Test {
@@ -18,14 +19,36 @@ protected:
 	Reference<ZoneServer*> zoneServer;
 	Reference<Zone*> zone;
 	Reference<ZoneProcessServer*> processServer;
-
+	AtomicLong nextObjectId;
 public:
 	ZoneTest() {
 		// Perform creation setup here.
+		nextObjectId = 1;
 	}
 
 	~ZoneTest() {
 		// Clean up.
+	}
+
+	void setDefaultComponents(SceneObject* object) {
+		object->setContainerComponent("ContainerComponent");
+		object->setZoneComponent("ZoneComponent");
+	}
+
+	Reference<SceneObject*> createSceneObject() {
+		Reference<SceneObject*> object = new SceneObject();
+		setDefaultComponents(object);
+		object->_setObjectID(nextObjectId.increment());
+
+		return object;
+	}
+
+	Reference<ActiveArea*> createActiveArea() {
+		Reference<ActiveArea*> activeArea = new ActiveArea();
+		setDefaultComponents(activeArea);
+		activeArea->_setObjectID(nextObjectId.increment());
+
+		return activeArea;
 	}
 
 	void SetUp() {
@@ -55,10 +78,9 @@ TEST_F(ZoneTest, TreLoad) {
 }
 
 TEST_F(ZoneTest, InRangeTest) {
-	Reference<SceneObject*> scene = new SceneObject();
-	scene->setContainerComponent("ContainerComponent");
-	scene->setZoneComponent("ZoneComponent");
-	scene->_setObjectID(2);
+	Reference<SceneObject*> scene = createSceneObject();
+
+	Locker slocker(scene);
 
 	zone->transferObject(scene, -1);
 
@@ -84,11 +106,13 @@ TEST_F(ZoneTest, InRangeTest) {
 
 	ASSERT_EQ(objects.size(), 1);
 
-	Reference<SceneObject*> scene2 = new SceneObject();
-	scene2->setContainerComponent("ContainerComponent");
-	scene2->setZoneComponent("ZoneComponent");
-	scene2->_setObjectID(3);
-	scene2->setPosition(1000, 1000, 1000);
+	slocker.release();
+
+	Reference<SceneObject*> scene2 = createSceneObject();
+
+	Locker s2locker(scene2);
+
+	scene2->initializePosition(1000, 1000, 1000);
 
 	zone->transferObject(scene2, -1);
 
@@ -99,6 +123,11 @@ TEST_F(ZoneTest, InRangeTest) {
 	ASSERT_EQ(objects.size(), 2);
 
 	scene2->destroyObjectFromWorld(false);
+
+	s2locker.release();
+
+	Locker s3locker(scene);
+
 	scene->destroyObjectFromWorld(false);
 
 	objects.removeAll();
@@ -106,6 +135,51 @@ TEST_F(ZoneTest, InRangeTest) {
 	zone->getInRangeObjects(1000, 1000, 128, &objects, true);
 
 	ASSERT_EQ(objects.size(), 0);
+}
+
+TEST_F(ZoneTest, ActiveAreaTest) {
+	Reference<ActiveArea*> activeArea = createActiveArea();
+	activeArea->setRadius(128);
+	activeArea->initializePosition(0, 0, 0);
+
+	Locker alocker(activeArea);
+
+	zone->transferObject(activeArea, -1);
+
+	alocker.release();
+
+	Reference<SceneObject*> scene = createSceneObject();
+	scene->initializePosition(0, 0, 0);
+
+	Locker slocker(scene);
+
+	ASSERT_EQ(scene->getActiveAreasSize(), 0);
+
+	zone->transferObject(scene, -1);
+
+	ASSERT_EQ(scene->getActiveAreasSize(), 1);
+
+	scene->teleport(200, 0, 0);
+
+	ASSERT_EQ(scene->getActiveAreasSize(), 0);
+
+	scene->teleport(120, 0, 0);
+
+	ASSERT_EQ(scene->getActiveAreasSize(), 1);
+
+	slocker.release();
+
+	Locker blocker(activeArea);
+
+	activeArea->destroyObjectFromWorld(false);
+
+	blocker.release();
+
+	Locker s2locker(scene);
+
+	ASSERT_EQ(scene->getActiveAreasSize(), 0);
+
+	scene->destroyObjectFromWorld(false);
 }
 
 
