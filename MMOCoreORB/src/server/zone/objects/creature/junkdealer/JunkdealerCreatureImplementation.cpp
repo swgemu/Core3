@@ -63,23 +63,23 @@ void JunkdealerCreatureImplementation::sendInitialMessage(CreatureObject* player
 			break;
 		}
 		case JUNKCONVDENDERRORI:{
-			stfname = "s_3c06418f";
+			stfname = "s_3c06418f"; //TD
 			break;
 		}
 		case JUNKCONVDENDERTHEED:{
-			stfname = "s_e88820";
+			stfname = "s_e88820"; //On Hold
 			break;
 		}
 		case JUNKCONVLILABORVO:{
-			stfname = "s_3c06418f";
+			stfname = "s_3c06418f"; //TD
 			break;
 		}
 		case JUNKCONVMALIKVISTAL:{
-			stfname = "s_3c06418f";
+			stfname = "s_3c06418f"; //TD
 			break;
 		}
 		case JUNKCONVNADOWATTOS:{
-			stfname = "s_3c06418f";
+			stfname = "s_294d7f51";
 			break;
 		}
 		case JUNKCONVNATHANTAIKE:{
@@ -87,23 +87,23 @@ void JunkdealerCreatureImplementation::sendInitialMessage(CreatureObject* player
 			break;
 		}
 		case JUNKCONVOLLOBOJABBAS:{
-			stfname = "s_3c06418f";
+			stfname = "s_3c06418f"; //TD
 			break;
 		}
 		case JUNKCONVQUICHDANTOOINE:{
-			stfname = "s_3c06418f";
+			stfname = "s_3c06418f"; //TD
 			break;
 		}
 		case JUNKCONVREGGINYM:{
-			stfname = "s_3c06418f";
+			stfname = "s_3c06418f"; //TD
 			break;
 		}
 		case JUNKCONVSHEANILAKE:{
-			stfname = "s_3c06418f";
+			stfname = "s_3c06418f"; //TD
 			break;
 		}
 		case JUNKCONVSNEGVALARIAN:{
-			stfname = "s_3c06418f";
+			stfname = "s_3c06418f"; //TD
 			break;
 		}
 		case JUNKCONVJAWAGENERIC:{
@@ -142,6 +142,7 @@ void JunkdealerCreatureImplementation::sendInitialMessage(CreatureObject* player
 void JunkdealerCreatureImplementation::sendInitialChoices(CreatureObject* player) {
 	StringList* slist = new StringList(player);
 	int dealerConversationType= _this.get()->getJunkDealerConversationType();
+	String sOptionsMsg ="junkdealer_options";
 	switch (dealerConversationType){
 		case JUNKCONVARMS:{
 			slist->insertOption(getConversationString(JUNKCONVARMS), "s_c86eba88");
@@ -153,48 +154,50 @@ void JunkdealerCreatureImplementation::sendInitialChoices(CreatureObject* player
 			slist->insertOption(getConversationString(JUNKCONVFINARY), "s_370a03c");
 			break;
 		}
-		case JUNKCONVDENDERRORI:{
+		case JUNKCONVDENDERRORI:{ //TD
 			slist->insertOption(getConversationString(JUNKCONVDENDERRORI), "s_673b632f");
 			slist->insertOption(getConversationString(JUNKCONVDENDERRORI), "s_a753e4d6");
 			break;
 		}
-		case JUNKCONVDENDERTHEED:{
+		case JUNKCONVDENDERTHEED:{ // On Hold
 			slist->insertOption(getConversationString(JUNKCONVDENDERTHEED), "s_54fab04f");
 			break;
 		}
-		case JUNKCONVLILABORVO:{
+		case JUNKCONVLILABORVO:{ //TD
 			slist->insertOption(getConversationString(JUNKCONVLILABORVO), "s_54fab04f");
 			break;
 		}
-		case JUNKCONVMALIKVISTAL:{
+		case JUNKCONVMALIKVISTAL:{ //TD
 			slist->insertOption(getConversationString(JUNKCONVMALIKVISTAL), "s_54fab04f");
 			break;
 		}
 		case JUNKCONVNADOWATTOS:{
-			slist->insertOption(getConversationString(JUNKCONVNADOWATTOS), "s_54fab04f");
+			slist->insertOption(getConversationString(JUNKCONVNADOWATTOS), "s_d94d5d64"); //What sort of things do you buy?
+			slist->insertOption(getConversationString(JUNKCONVNADOWATTOS), "s_50c8b3e1"); //I am just taking a look around.
+			sOptionsMsg ="dealer_specific-1";
 			break;
 		}
-		case JUNKCONVNATHANTAIKE:{
+		case JUNKCONVNATHANTAIKE:{ //TD
 			slist->insertOption(getConversationString(JUNKCONVNATHANTAIKE), "s_54fab04f");
 			break;
 		}
-		case JUNKCONVOLLOBOJABBAS:{
+		case JUNKCONVOLLOBOJABBAS:{ //TD
 			slist->insertOption(getConversationString(JUNKCONVOLLOBOJABBAS), "s_54fab04f");
 			break;
 		}
-		case JUNKCONVQUICHDANTOOINE:{
+		case JUNKCONVQUICHDANTOOINE:{ //TD
 			slist->insertOption(getConversationString(JUNKCONVQUICHDANTOOINE), "s_54fab04f");
 			break;
 		}
-		case JUNKCONVREGGINYM:{
+		case JUNKCONVREGGINYM:{ //TD
 			slist->insertOption(getConversationString(JUNKCONVREGGINYM), "s_54fab04f");
 			break;
 		}
-		case JUNKCONVSHEANILAKE:{
+		case JUNKCONVSHEANILAKE:{ //TD
 			slist->insertOption(getConversationString(JUNKCONVSHEANILAKE), "s_54fab04f");
 			break;
 		}
-		case JUNKCONVSNEGVALARIAN:{
+		case JUNKCONVSNEGVALARIAN:{ //TD
 			slist->insertOption(getConversationString(JUNKCONVSNEGVALARIAN), "s_54fab04f");
 			break;
 		}
@@ -226,8 +229,7 @@ void JunkdealerCreatureImplementation::sendInitialChoices(CreatureObject* player
 		}
 	}
 	PlayerObject* ghost = player->getPlayerObject();
-	ghost->setLastNpcConvMessStr("junkdealer_options");
-
+	ghost->setLastNpcConvMessStr(sOptionsMsg);
 	player->sendMessage(slist);
 }
 
@@ -263,10 +265,7 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 				String chatResponses[] = {"","s_84a67771", "s_24f30320","s_e8ceb290","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","start_trading","start_trading","start_trading","start_trading"};
 				StringIdChatParameter params(stffile, chatResponses[_this.get()->getJunkDealerConversationType()]);
 				NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
-				ghost->setLastNpcConvMessStr("junkdealer_sell");
-				ghost->addLastNpcConvOptions(choice);
 				player->sendMessage(skillmsg);
-
 				createSellJunkLootSelection(player);
 				player->sendMessage(new StopNpcConversation(player, getObjectID()));
 				break;
@@ -275,8 +274,6 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 				String chatResponses[] = {"","s_4bd9d15e", "s_df5bd64e","s_1eb9feb7","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","goodbye","goodbye","goodbye","goodbye"};
 				StringIdChatParameter params(stffile, chatResponses[_this.get()->getJunkDealerConversationType()]);
 				NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
-				ghost->setLastNpcConvMessStr("junkdealer_nosell");
-				ghost->addLastNpcConvOptions(choice);
 				player->sendMessage(skillmsg);
 				player->sendMessage(new StopNpcConversation(player, getObjectID()));
 				break;
@@ -287,16 +284,64 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 				ghost->setLastNpcConvMessStr("junkdealer_kit1");
 				ghost->addLastNpcConvOptions(choice);
 				player->sendMessage(skillmsg);
-
 				StringList* slist = new StringList(player);
-
 				slist->insertOption(stffile, "s_6d53d062");
-
 				player->sendMessage(slist);
-
 				break;
 			}
 		}
+	} else if (ghost->getLastNpcConvMessStr() == "dealer_specific-1") {
+		switch (_this.get()->getJunkDealerConversationType()){
+			case JUNKCONVNADOWATTOS:{
+				switch (option) {
+					case 0:{ //What sort of things do you buy?
+						StringIdChatParameter params(stffile, "s_17e67aee"); //We deal in a wide assortment of goods and offer the best prices on Tatooine for junk. A large number of settlers come to Watto's looking for various parts and nic-naks to suit their purpose.
+						NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
+						ghost->setLastNpcConvMessStr("dealer_specific-2");
+						ghost->addLastNpcConvOptions(choice);
+						player->sendMessage(skillmsg);
+						StringList* slist = new StringList(player);
+						slist->insertOption(stffile, "s_a5d02a3c"); //I think I might have a few things that will spark your interest.
+						slist->insertOption(stffile, "s_90b63763"); //I am sorry but I don't have anything you would be interested in.
+						player->sendMessage(slist);
+						break;
+					}
+					case 1:{ //I am just taking a look around.
+						StringIdChatParameter params(stffile, "s_6afe640d");
+						NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
+						player->sendMessage(skillmsg);
+						player->sendMessage(new StopNpcConversation(player, getObjectID()));
+						break;
+					}
+				}
+				break;
+			}
+		}
+	}else if (ghost->getLastNpcConvMessStr() == "dealer_specific-2") {
+		switch (_this.get()->getJunkDealerConversationType()){
+			case JUNKCONVNADOWATTOS:{
+				switch (option) {
+					case 0:{ ///I think I might have a few things that will spark your interest.
+						StringIdChatParameter params(stffile, "s_8441c2ce");
+						NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
+						player->sendMessage(skillmsg);
+						createSellJunkLootSelection(player);
+						player->sendMessage(new StopNpcConversation(player, getObjectID()));
+						break;
+					}
+					case 1:{ //I am sorry but I don't have anything you would be interested in.
+						StringIdChatParameter params(stffile, "s_6afe640d");
+						NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
+						player->sendMessage(skillmsg);
+						player->sendMessage(new StopNpcConversation(player, getObjectID()));
+						break;
+					}
+				}
+				break;
+			}
+		}
+
+
 	} else if (ghost->getLastNpcConvMessStr() == "junkdealer_kit1") {
 		if (option == 0) {
 			StringIdChatParameter params(stffile, "s_e29f48dc");

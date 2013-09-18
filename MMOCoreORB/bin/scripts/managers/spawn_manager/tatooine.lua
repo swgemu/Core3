@@ -1,4 +1,4 @@
-JUJUNKNOTSELLABLE = 0
+JUNKNOTSELLABLE = 0
 JUNKGENERIC = 1
 JUNKCLOTHESANDJEWELLERY = 2
 JUNKWEAPONS = 4
@@ -1073,8 +1073,9 @@ tatooine_static_spawns = {
 	{"junk_dealer",0,-1392,185,-3847.9,8,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	{"junk_dealer",0,-2750.9,5,2057,132,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	{"junk_dealer",0,1308.1,7,3085.2,1,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
-
-	{"junk_nathan",60,3817.7,16.2,2340.5,0,0, "calm", "Nathan Blyskipper (a Junk Dealer)",JUNKGENERIC,JUNKCONVNATHANTAIKE},
+	{"junk_nado",60,4.4,-0.5,1.3,-133,1255997, "", "Nado",JUNKGENERIC,JUNKCONVNADOWATTOS},
+	{"junk_sneg",60,-1.63376,7.01,7.35289,203.569,1076943, "calm", "Sneg the Hand",JUNKWEAPONS,JUNKCONVSNEGVALARIAN},
+	{"junk_nathan",60,3817.7,16.2,2340.5,0,0, "calm", "Nathan Blyskipper (a Junk Dealer)",JUNKJAWA,JUNKCONVNATHANTAIKE},
 	{"kaeline_ungasan",60,-2815.58,5,1940.55,335.154,0, "", "Kaeline Ungasan"},
 	{"kahfr_oladi",60,3473.4,5,-4974.8,104,0, "npc_sitting_chair", ""},
 	{"kavas_urdano",60,-13.7911,7.01,-3.96167,12.0127,1076943, "calm", "Kavas"},
@@ -1627,7 +1628,6 @@ tatooine_static_spawns = {
 	{"smuggler",60,-3.4032,7.01,4.89576,360.011,1153497, "conversation", ""},
 	{"smuggler",60,34.4931,0.104999,-7.576,0,1134559, "conversation", ""},
 	{"smuggler_pilot",60,-5868.38,90,-6199.5,65.5014,0, "neutral", ""},
-	{"sneg_the_hand",60,-1.63376,7.01,7.35289,203.569,1076943, "calm", "Sneg the Hand"},
 	{"sol_windtide",60,-1203.12,12,-3612.74,236.494,0, "calm", "Sol Windtide"},
 	{"spacer",60,20.4356,1.28309,-2.59068,0,1223850, "conversation", ""},
 	{"spacer",60,-23.4917,9.01,1.31044,0,1153499, "conversation", ""},

@@ -101,7 +101,7 @@ void run(CreatureObject* player, SuiBox* suiBox, bool cancel, Vector<UnicodeStri
 					itemName=inventory->getContainerObject(i)->getCustomObjectName();
 				ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i).get());
 				if (cast<JunkdealerCreature*>(dealerScene)->canInventoryItemBeSoldAsJunk(item,dealerType)==true )
-					box->addMenuItem("[" + String::valueOf(item->getJunkValue()) + "Cr] " +itemName.toString(), inventory->getContainerObject(i)->getObjectID());
+					box->addMenuItem("[" + String::valueOf(item->getJunkValue()) + "] " +itemName.toString(), inventory->getContainerObject(i)->getObjectID());
 			}
 			box->setUsingObject(suiBox->getUsingObject().get());
 			player->getPlayerObject()->addSuiBox(box);
