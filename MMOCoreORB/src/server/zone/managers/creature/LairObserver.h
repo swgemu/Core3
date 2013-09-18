@@ -94,6 +94,8 @@ public:
 
 	int getSpawnNumber();
 
+	Vector<ManagedReference<CreatureObject* > >* getSpawnedCreatures();
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -159,6 +161,8 @@ public:
 	int getLairType();
 
 	int getSpawnNumber();
+
+	Vector<ManagedReference<CreatureObject* > >* getSpawnedCreatures();
 
 	WeakReference<LairObserver*> _this;
 
