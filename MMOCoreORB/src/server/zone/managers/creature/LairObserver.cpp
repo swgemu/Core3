@@ -14,7 +14,7 @@
  *	LairObserverStub
  */
 
-enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_BOOL_,RPC_HEALLAIR__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_CHECKFORHEAL__TANGIBLEOBJECT_TANGIBLEOBJECT_BOOL_,RPC_DOAGGRO__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_SETDIFFICULTY__INT_,RPC_ISLAIROBSERVER__,RPC_GETLIVINGCREATURECOUNT__,RPC_GETLAIRTYPE__,RPC_GETSPAWNNUMBER__};
+enum {RPC_NOTIFYOBSERVEREVENT__INT_OBSERVABLE_MANAGEDOBJECT_LONG_ = 6,RPC_NOTIFYDESTRUCTION__TANGIBLEOBJECT_TANGIBLEOBJECT_INT_,RPC_CHECKFORNEWSPAWNS__TANGIBLEOBJECT_BOOL_,RPC_HEALLAIR__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_CHECKFORHEAL__TANGIBLEOBJECT_TANGIBLEOBJECT_BOOL_,RPC_DOAGGRO__TANGIBLEOBJECT_TANGIBLEOBJECT_,RPC_SETDIFFICULTY__INT_,RPC_ISLAIROBSERVER__,RPC_GETLIVINGCREATURECOUNT__,RPC_GETLAIRTYPE__,RPC_GETSPAWNNUMBER__,};
 
 LairObserver::LairObserver() : Observer(DummyConstructorParameter::instance()) {
 	LairObserverImplementation* _implementation = new LairObserverImplementation();
@@ -199,6 +199,15 @@ int LairObserver::getSpawnNumber() {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->getSpawnNumber();
+}
+
+Vector<ManagedReference<CreatureObject* > >* LairObserver::getSpawnedCreatures() {
+	LairObserverImplementation* _implementation = static_cast<LairObserverImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getSpawnedCreatures();
 }
 
 DistributedObjectServant* LairObserver::_getImplementation() {
@@ -424,6 +433,11 @@ int LairObserverImplementation::getLairType() {
 int LairObserverImplementation::getSpawnNumber() {
 	// server/zone/managers/creature/LairObserver.idl():  		return spawnNumber;
 	return spawnNumber;
+}
+
+Vector<ManagedReference<CreatureObject* > >* LairObserverImplementation::getSpawnedCreatures() {
+	// server/zone/managers/creature/LairObserver.idl():  		return spawnedCreatures;
+	return (&spawnedCreatures);
 }
 
 /*
