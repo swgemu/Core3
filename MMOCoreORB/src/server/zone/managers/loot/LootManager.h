@@ -123,6 +123,8 @@ using namespace server::zone::objects::tangible;
 
 #include "engine/lua/Lua.h"
 
+#include "engine/lua/LuaObject.h"
+
 namespace server {
 namespace zone {
 namespace managers {
@@ -134,9 +136,9 @@ public:
 
 	void initialize();
 
-	String getRandomLootableMod();
-
 	TangibleObject* createLootObject(LootItemTemplate* templateObject, int level, bool maxCondition = false);
+
+	String getRandomLootableMod(unsigned int sceneObjectType);
 
 	int calculateLootCredits(int level);
 
@@ -206,7 +208,29 @@ class LootManagerImplementation : public ManagedServiceImplementation, public Lo
 
 	SortedVector<int> randomDotUses;
 
-	SortedVector<String> lootableMods;
+	SortedVector<String> lootableArmorAttachmentMods;
+
+	SortedVector<String> lootableClothingAttachmentMods;
+
+	SortedVector<String> lootableArmorMods;
+
+	SortedVector<String> lootableClothingMods;
+
+	SortedVector<String> lootableOneHandedMeleeMods;
+
+	SortedVector<String> lootableTwoHandedMeleeMods;
+
+	SortedVector<String> lootableUnarmedMods;
+
+	SortedVector<String> lootablePistolMods;
+
+	SortedVector<String> lootableRifleMods;
+
+	SortedVector<String> lootableCarbineMods;
+
+	SortedVector<String> lootablePolearmMods;
+
+	SortedVector<String> lootableHeavyWeaponMods;
 
 public:
 	LootManagerImplementation(CraftingManager* craftman, ObjectManager* objMan, ZoneServer* server);
@@ -222,10 +246,6 @@ private:
 
 	void loadDefaultConfig();
 
-public:
-	String getRandomLootableMod();
-
-private:
 	void setInitialObjectStats(LootItemTemplate* templateObject, CraftingValues* craftingValues, TangibleObject* prototype);
 
 	void setSkillMods(TangibleObject* object, LootItemTemplate* templateObject, int level, float excMod);
@@ -242,8 +262,12 @@ private:
 
 	void addConditionDamage(TangibleObject* loot, CraftingValues* craftingValues);
 
+	void loadLootableMods(LuaObject* modTable, SortedVector<String>* mods);
+
 public:
 	TangibleObject* createLootObject(LootItemTemplate* templateObject, int level, bool maxCondition = false);
+
+	String getRandomLootableMod(unsigned int sceneObjectType);
 
 	int calculateLootCredits(int level);
 
@@ -297,8 +321,6 @@ public:
 	void invokeMethod(sys::uint32 methid, DistributedMethod* method);
 
 	void initialize();
-
-	String getRandomLootableMod();
 
 	int calculateLootCredits(int level);
 
