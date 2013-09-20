@@ -2294,6 +2294,8 @@ void CreatureObjectImplementation::activatePassiveWoundRegeneration() {
 		healthWoundHeal += (int)(healthRegen * 0.2);
 		if(healthWoundHeal >= 100) {
 			healWound(_this.get(), CreatureAttribute::HEALTH, 1, true, false);
+			healWound(_this.get(), CreatureAttribute::STRENGTH, 1, true, false);
+			healWound(_this.get(), CreatureAttribute::CONSTITUTION, 1, true, false);
 			healthWoundHeal -= 100;
 		}
 	}
@@ -2305,6 +2307,8 @@ void CreatureObjectImplementation::activatePassiveWoundRegeneration() {
 		actionWoundHeal += (int)(actionRegen * 0.2);
 		if(actionWoundHeal >= 100) {
 			healWound(_this.get(), CreatureAttribute::ACTION, 1, true, false);
+			healWound(_this.get(), CreatureAttribute::QUICKNESS, 1, true, false);
+			healWound(_this.get(), CreatureAttribute::STAMINA, 1, true, false);
 			actionWoundHeal -= 100;
 		}
 	}
@@ -2316,6 +2320,8 @@ void CreatureObjectImplementation::activatePassiveWoundRegeneration() {
 		mindWoundHeal += (int)(mindRegen * 0.2);
 		if(mindWoundHeal >= 100) {
 			healWound(_this.get(), CreatureAttribute::MIND, 1, true, false);
+			healWound(_this.get(), CreatureAttribute::FOCUS, 1, true, false);
+			healWound(_this.get(), CreatureAttribute::WILLPOWER, 1, true, false);
 			mindWoundHeal -= 100;
 		}
 	}
