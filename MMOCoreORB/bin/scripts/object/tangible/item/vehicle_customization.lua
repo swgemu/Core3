@@ -43,6 +43,8 @@
 
 object_tangible_item_vehicle_customization = object_tangible_item_shared_vehicle_customization:new {
 
+templateType = VEHICLECUSTOMKIT,
+gameObjectType = 32781,
 
 	numberExperimentalProperties = {1, 1, 1, 2},
 	experimentalProperties = {"XX", "XX", "XX", "CD", "OQ"},

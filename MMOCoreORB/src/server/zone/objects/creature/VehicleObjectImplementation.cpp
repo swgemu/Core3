@@ -18,7 +18,8 @@
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/creature/sui/RepairVehicleSuiCallback.h"
-#include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
+
 
 void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	if (!player->getPlayerObject()->isPrivileged() && linkedCreature != player)
@@ -33,7 +34,23 @@ void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 
 void VehicleObjectImplementation::notifyInsertToZone(Zone* zone) {
 	SceneObjectImplementation::notifyInsertToZone(zone);
-
+	if (paintCount > 0){
+		ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
+		if (linkedCreature != NULL && paintCount == 1){
+			linkedCreature->sendSystemMessage("the paint is fading out");
+			String appearanceFilename = getObjectTemplate()->getAppearanceFilename();
+			VectorMap<String, Reference<CustomizationVariable*> > variables;
+			AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(appearanceFilename.hashCode(), variables, false);
+			for(int i = 0; i< variables.size(); ++i){
+				String varkey = variables.elementAt(i).getKey();
+				if (varkey.contains("color")){
+					//TODO:set the correct default value for each vehicle
+					setCustomizationVariable(varkey, 0, true);
+				}
+			}
+		}
+		--paintCount;
+	}
 	//inflictDamage(_this.get(), 0, System::random(50), true);
 }
 
@@ -121,12 +138,6 @@ void VehicleObjectImplementation::sendRepairConfirmTo(CreatureObject* player) {
 
 	int repairCost = calculateRepairCost(player);
 	int totalFunds = player->getBankCredits();
-	int tax = 0;
-
-	ManagedReference<CityRegion*> city = getCityRegion();
-	if(city != NULL && city->getGarageTax() > 0){
-		repairCost += repairCost * city->getGarageTax() / 100;
-	}
 
 	listbox->addMenuItem("@pet/pet_menu:vehicle_prompt " + getDisplayedName()); //Vehicle:
 	listbox->addMenuItem("@pet/pet_menu:repair_cost_prompt " + String::valueOf(repairCost)); //Repair Cost:
@@ -140,7 +151,12 @@ int VehicleObjectImplementation::calculateRepairCost(CreatureObject* player) {
 	if (player->getPlayerObject()->isPrivileged())
 		return 0;
 
-	return getConditionDamage() * 5;
+	//TODO: Implement city taxes.
+	float cityTax = 1.0f;
+
+	int repairCost = (int) (getConditionDamage() * 5.0f * cityTax);
+
+	return repairCost;
 }
 
 int VehicleObjectImplementation::inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient) {
