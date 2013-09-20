@@ -83,7 +83,7 @@ void JunkdealerCreatureImplementation::sendInitialMessage(CreatureObject* player
 			break;
 		}
 		case JUNKCONVNATHANTAIKE:{
-			stfname = "s_3c06418f";
+			stfname = "s_5ceff11f";
 			break;
 		}
 		case JUNKCONVOLLOBOJABBAS:{
@@ -178,7 +178,9 @@ void JunkdealerCreatureImplementation::sendInitialChoices(CreatureObject* player
 			break;
 		}
 		case JUNKCONVNATHANTAIKE:{ //TD
-			slist->insertOption(getConversationString(JUNKCONVNATHANTAIKE), "s_54fab04f");
+			slist->insertOption(getConversationString(JUNKCONVNATHANTAIKE), "s_c20cb2b0");
+			slist->insertOption(getConversationString(JUNKCONVNATHANTAIKE), "s_e613f19");
+			sOptionsMsg ="dealer_specific-1";
 			break;
 		}
 		case JUNKCONVOLLOBOJABBAS:{ //TD
@@ -291,10 +293,10 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 			}
 		}
 	} else if (ghost->getLastNpcConvMessStr() == "dealer_specific-1") {
-		switch (_this.get()->getJunkDealerConversationType()){
-			case JUNKCONVNADOWATTOS:{
-				switch (option) {
-					case 0:{ //What sort of things do you buy?
+		switch (option) {
+			case 0:{
+				switch (_this.get()->getJunkDealerConversationType()){
+					case JUNKCONVNADOWATTOS:{ //What sort of things do you buy?
 						StringIdChatParameter params(stffile, "s_17e67aee"); //We deal in a wide assortment of goods and offer the best prices on Tatooine for junk. A large number of settlers come to Watto's looking for various parts and nic-naks to suit their purpose.
 						NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 						ghost->setLastNpcConvMessStr("dealer_specific-2");
@@ -306,8 +308,78 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 						player->sendMessage(slist);
 						break;
 					}
-					case 1:{ //I am just taking a look around.
+					case JUNKCONVNATHANTAIKE:{
+						StringIdChatParameter params(stffile, "s_47a68e94");
+						NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
+						ghost->setLastNpcConvMessStr("dealer_specific-2");
+						ghost->addLastNpcConvOptions(choice);
+						player->sendMessage(skillmsg);
+						StringList* slist = new StringList(player);
+						slist->insertOption(stffile, "s_34475b33"); //What sort of proof are you looking for?
+						slist->insertOption(stffile, "s_5b767310");  //You have me all wrong. I can't help anyone today.
+						player->sendMessage(slist);
+						break;
+					}
+				}
+				break;
+			}
+			case 1:{
+				switch (_this.get()->getJunkDealerConversationType()){
+					case JUNKCONVNADOWATTOS:{ //I am just taking a look around.
 						StringIdChatParameter params(stffile, "s_6afe640d");
+						NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
+						player->sendMessage(skillmsg);
+						player->sendMessage(new StopNpcConversation(player, getObjectID()));
+						break;
+					}
+					case JUNKCONVNATHANTAIKE:{
+						StringIdChatParameter params(stffile, "s_808503a8"); //Bah! I should have figured that a stranger wouldn't understand the extent of the problem.
+						NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
+						player->sendMessage(skillmsg);
+						player->sendMessage(new StopNpcConversation(player, getObjectID()));
+						break;
+					}
+				}
+			}
+		}
+	}else if (ghost->getLastNpcConvMessStr() == "dealer_specific-2") {
+		switch (option){
+			case 0:{
+				switch (_this.get()->getJunkDealerConversationType()) {
+					case JUNKCONVNADOWATTOS:{ ///I think I might have a few things that will spark your interest.
+						StringIdChatParameter params(stffile, "s_8441c2ce");
+						NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
+						player->sendMessage(skillmsg);
+						createSellJunkLootSelection(player);
+						player->sendMessage(new StopNpcConversation(player, getObjectID()));
+						break;
+					}
+					case JUNKCONVNATHANTAIKE:{ //I am sorry but I don't have anything you would be interested in.
+						StringIdChatParameter params(stffile, "s_3b924e4a");
+						NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
+						ghost->setLastNpcConvMessStr("dealer_specific-3");
+						ghost->addLastNpcConvOptions(choice);
+						player->sendMessage(skillmsg);
+						StringList* slist = new StringList(player);
+						slist->insertOption(stffile, "s_e022ccee");
+						slist->insertOption(stffile, "s_b47d6575");
+						player->sendMessage(slist);
+						break;
+					}
+				}
+				break;
+			}
+			case 1:{
+				switch (_this.get()->getJunkDealerConversationType()) {
+					case JUNKCONVNADOWATTOS:{ //I am sorry but I don't have anything you would be interested in.
+						StringIdChatParameter params(stffile, "s_6afe640d");
+						NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
+						player->sendMessage(skillmsg);
+						player->sendMessage(new StopNpcConversation(player, getObjectID()));
+						break;
+					}
+					case JUNKCONVNATHANTAIKE:{ //Bah! I should have figured that a stranger wouldn't understand the extent of the problem.
+						StringIdChatParameter params(stffile, "s_735e3c59");
 						NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 						player->sendMessage(skillmsg);
 						player->sendMessage(new StopNpcConversation(player, getObjectID()));
@@ -317,20 +389,58 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 				break;
 			}
 		}
-	}else if (ghost->getLastNpcConvMessStr() == "dealer_specific-2") {
-		switch (_this.get()->getJunkDealerConversationType()){
-			case JUNKCONVNADOWATTOS:{
-				switch (option) {
-					case 0:{ ///I think I might have a few things that will spark your interest.
-						StringIdChatParameter params(stffile, "s_8441c2ce");
+	} else if (ghost->getLastNpcConvMessStr() == "dealer_specific-3") {
+		switch (option){
+			case 0:{
+				switch (_this.get()->getJunkDealerConversationType()) {
+					case JUNKCONVNATHANTAIKE:{ //I am sorry but I don't have anything you would be interested in.
+						StringIdChatParameter params(stffile, "s_aaac386c");
+						NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
+						ghost->setLastNpcConvMessStr("dealer_specific-4");
+						ghost->addLastNpcConvOptions(choice);
+						player->sendMessage(skillmsg);
+						StringList* slist = new StringList(player);
+						slist->insertOption(stffile, "s_ecf19442");
+						slist->insertOption(stffile, "s_69567be7");
+						player->sendMessage(slist);
+						break;
+					}
+				}
+				break;
+			}
+			case 1:{
+				switch (_this.get()->getJunkDealerConversationType()) {
+					case JUNKCONVNATHANTAIKE:{ //Bah! I should have figured that a stranger wouldn't understand the extent of the problem.
+						StringIdChatParameter params(stffile, "s_eadc8d6e");
+						NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
+						player->sendMessage(skillmsg);
+						player->sendMessage(new StopNpcConversation(player, getObjectID()));
+						break;
+					}
+				}
+				break;
+			}
+		}
+	}else if (ghost->getLastNpcConvMessStr() == "dealer_specific-4") {
+		switch (option){
+			case 0:{
+				switch (_this.get()->getJunkDealerConversationType()) {
+					case JUNKCONVNATHANTAIKE:{ //I am sorry but I don't have anything you would be interested in.
+						StringIdChatParameter params(stffile, "s_33db8b80");
 						NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 						player->sendMessage(skillmsg);
 						createSellJunkLootSelection(player);
 						player->sendMessage(new StopNpcConversation(player, getObjectID()));
 						break;
 					}
-					case 1:{ //I am sorry but I don't have anything you would be interested in.
-						StringIdChatParameter params(stffile, "s_6afe640d");
+				}
+				break;
+			}
+			case 1:{
+				switch (_this.get()->getJunkDealerConversationType()) {
+
+					case JUNKCONVNATHANTAIKE:{ //Bah! I should have figured that a stranger wouldn't understand the extent of the problem.
+						StringIdChatParameter params(stffile, "s_2d363db3");
 						NpcConversationMessage* skillmsg = new NpcConversationMessage(player, params);
 						player->sendMessage(skillmsg);
 						player->sendMessage(new StopNpcConversation(player, getObjectID()));
