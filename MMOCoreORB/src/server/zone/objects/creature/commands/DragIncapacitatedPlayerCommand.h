@@ -60,30 +60,49 @@ public:
 		needsConsent = true;
 	}
 
-	Vector3 getCoordinate(SceneObject* object1, SceneObject* object2, float distanceFromObject1) {
-		Vector3 newPosition;
+	void getCoordinate(SceneObject* object1, SceneObject* object2, float distanceFromObject1, WorldCoordinates* newPosition) {
+		ManagedReference<SceneObject*> object1Cell = object1->getParent().get();
+		ManagedReference<SceneObject*> object2Cell = object2->getParent().get();
+		Vector3 object1Position = object1->getPosition();
+		Vector3 object2Position = object2->getPosition();
 
-		float dx = object2->getPositionX() - object1->getPositionX();
-		float dy = object2->getPositionY() - object1->getPositionY();
-
-		float distance = sqrt((dx * dx) + (dy * dy));
-
-		if (distanceFromObject1 == 0 || distance == 0) {
-			newPosition.set(object1->getPositionX(), object1->getPositionZ(), object1->getPositionY());
-			return newPosition;
-
-		} else if (distance < distanceFromObject1) {
-			newPosition.set(object2->getPositionX(), object2->getPositionZ(), object2->getPositionY());
-			return newPosition;
+		if (object2Cell != NULL) {
+			if (object1Cell == NULL)
+				object1Position = PathFinderManager::transformToModelSpace(object1Position, object2Cell->getParent().get());
+		} else {
+			object1Position = object1->getWorldPosition();
 		}
 
-		float newPositionX = object1->getPositionX() + (distanceFromObject1 * (dx / distance));
-		float newPositionY = object1->getPositionY() + (distanceFromObject1 * (dy / distance));
-		float newPositionZ = object1->getZone()->getHeight(newPositionX, newPositionY);
+		float distance = object1Position.distanceTo(object2Position);
 
-		newPosition.set(newPositionX, newPositionZ, newPositionY);
+		if (distanceFromObject1 == 0 || distance == 0) {
+			newPosition->setCoordinates(object1Position);
+			newPosition->setCell(object1Cell);
+			return;
 
-		return newPosition;
+		} else if (distance < distanceFromObject1) {
+			newPosition->setCoordinates(object2Position);
+			newPosition->setCell(object2Cell);
+			return;
+		}
+
+		float dx = object2Position.getX() - object1Position.getX();
+		float dy = object2Position.getY() - object1Position.getY();
+
+		newPosition->setX(object1Position.getX() + (distanceFromObject1 * (dx / distance)));
+		newPosition->setY(object1Position.getY() + (distanceFromObject1 * (dy / distance)));
+		newPosition->setCell(object2Cell);
+
+		if (object2Cell == NULL) {
+			Zone* zone = object1->getZone();
+			if (zone != NULL)
+				newPosition->setZ(zone->getPlanetManager()->findClosestWorldFloor(newPosition->getX(), newPosition->getY(), object1->getWorldPositionZ(), 0));
+
+		} else {
+			newPosition->setZ(object2Position.getZ());
+		}
+
+		return;
 	}
 
 	void drag(CreatureObject* player, CreatureObject* targetPlayer, float maxRange, float maxMovement, bool needsConsent, bool canDragLiveTarget) {
@@ -135,8 +154,8 @@ public:
 		}
 
 		//Collect locations of the dragger and the target player.
-		Vector3 dragger = player->getPosition();
-		Vector3 target = targetPlayer->getPosition();
+		Vector3 dragger = player->getWorldPosition();
+		Vector3 target = targetPlayer->getWorldPosition();
 
 		//Check for height being too far above or below.
 		float heightDifference = dragger.getZ() - target.getZ();
@@ -159,17 +178,21 @@ public:
 		targetPlayer->setDirection(radangle);
 
 		//Set the new location of the target player.
-		Vector3 newPosition = getCoordinate(targetPlayer, player, maxMovement);
+		WorldCoordinates newPosition;
+		getCoordinate(targetPlayer, player, maxMovement, &newPosition);
 		targetPlayer->setPosition(newPosition.getX(), newPosition.getZ(), newPosition.getY());
 		targetPlayer->incrementMovementCounter();
-		ManagedReference<SceneObject*> parent = player->getParent();
-		if (parent != NULL && parent->isCellObject()) {
-			targetPlayer->updateZoneWithParent(parent, false);
+		ManagedReference<SceneObject*> cell = newPosition.getCell();
+		uint64 parentID = 0;
+
+		if (cell != NULL) {
+			parentID = cell->getObjectID();
+			targetPlayer->updateZoneWithParent(cell, false);
 		} else {
 			targetPlayer->updateZone(false);
 		}
 
-		targetPlayer->teleport(newPosition.getX(), newPosition.getZ(), newPosition.getY(), player->getParentID()); //Updates targetPlayer with the new location.
+		targetPlayer->teleport(newPosition.getX(), newPosition.getZ(), newPosition.getY(), parentID); //Updates targetPlayer with the new location.
 
 		//Visuals.
 		targetPlayer->showFlyText("base_player", "fly_drag", 255, 0, 0);
