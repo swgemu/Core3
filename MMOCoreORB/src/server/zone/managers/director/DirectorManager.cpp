@@ -79,7 +79,7 @@ void DirectorManager::startGlobalScreenPlays() {
 	}
 }
 
-int DirectorManager::initializeLuaEngine(Lua* luaEngine) {
+void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	if (DEBUG_MODE)
 		setLogging(true);
 
@@ -246,8 +246,9 @@ int DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaObjectMenuResponse>::Register(luaEngine->getLuaState());
 	Luna<LuaDeed>::Register(luaEngine->getLuaState());
 	Luna<LuaAiActor>::Register(luaEngine->getLuaState());
+}
 
-
+int DirectorManager::loadScreenPlays(Lua* luaEngine) {
 	bool res = luaEngine->runFile("scripts/screenplays/screenplays.lua");
 
 	if (!DEBUG_MODE)
@@ -1312,6 +1313,7 @@ Lua* DirectorManager::getLuaInstance() {
 	if (lua == NULL) {
 		lua = new Lua();
 		initializeLuaEngine(lua);
+		loadScreenPlays(lua);
 
 		localLua.set(lua);
 	}
@@ -1327,7 +1329,8 @@ int DirectorManager::runLuaInstance() {
 
 	if (lua == NULL) {
 		lua = new Lua();
-		ret = initializeLuaEngine(lua);
+		initializeLuaEngine(lua);
+		ret = loadScreenPlays(lua);
 
 		localLua.set(lua);
 	}

@@ -128,7 +128,8 @@ namespace server {
 		static int checkArgumentCount(lua_State*L, int args);
 
 	private:
-		int initializeLuaEngine(Lua* lua);
+		void initializeLuaEngine(Lua* luaEngine);
+		int loadScreenPlays(Lua* luaEngine);
 	};
 
    }
