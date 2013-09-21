@@ -55,7 +55,7 @@ namespace jedi {
 /**
  * Singleton class with a common interface for all different Jedi progression systems.
  */
-class JediManager : public Singleton<JediManager>, public Logger {
+class JediManager : public Singleton<JediManager>, public Logger, public Object {
 private:
 	/**
 	 * Pointer to a Lua object.
@@ -66,11 +66,6 @@ private:
 	 * The Jedi progression type currently configured.
 	 */
 	int jediProgressionType;
-
-	/**
-	 * Load the Jedi Manager configuration.
-	 */
-	void loadConfiguration();
 
 public:
 	/**
@@ -95,15 +90,19 @@ public:
 
 	/**
 	 * Constructor for the Jedi Manager.
-	 * @param lua pointer to a Lua object. The lua object will be used until the
-	 *            Jedi Manager itself is deleted.
 	 */
-	JediManager(Lua* lua);
+	JediManager();
 
 	/**
 	 * Destructor for the Jedi Manager.
 	 */
 	~JediManager();
+
+	/**
+	 * Load the Jedi Manager configuration.
+	 * @param luaEngine the lua engine to use for loading the configuration.
+	 */
+	void loadConfiguration(Lua* luaEngine);
 };
 
 }

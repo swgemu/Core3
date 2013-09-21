@@ -44,20 +44,18 @@ which carries forward this exception.
 
 #include "JediManager.h"
 
-JediManager::JediManager(Lua* lua) : Logger("JediManager") {
-	info("Loading...", true);
-
-	this->lua = lua;
+JediManager::JediManager() : Logger("JediManager") {
 	jediProgressionType = NOJEDIPROGRESSION;
-
-	loadConfiguration();
 }
 
 JediManager::~JediManager() {
 
 }
 
-void JediManager::loadConfiguration() {
+void JediManager::loadConfiguration(Lua* luaEngine) {
+	lua = luaEngine;
+
+	info("Loading...", true);
 	lua->runFile("scripts/managers/jedi_manager.lua");
 
 	jediProgressionType = lua->getGlobalInt(String("jediProgressionType"));

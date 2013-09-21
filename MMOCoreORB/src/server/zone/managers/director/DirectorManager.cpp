@@ -53,6 +53,7 @@
 #include "server/zone/objects/scene/variables/ContainerPermissions.h"
 #include "server/zone/objects/tangible/deed/Deed.h"
 #include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/managers/jedi/JediManager.h"
 
 
 int DirectorManager::DEBUG_MODE = 0;
@@ -1314,16 +1315,15 @@ Lua* DirectorManager::getLuaInstance() {
 		lua = new Lua();
 		initializeLuaEngine(lua);
 		loadScreenPlays(lua);
+		JediManager::instance()->loadConfiguration(lua);
 
 		localLua.set(lua);
 	}
 
-	//lua->runFile("scripts/screenplays/screenplay.lua");
-
 	return lua;
 }
 
-int DirectorManager::runLuaInstance() {
+int DirectorManager::runScreenPlays() {
 	Lua* lua = localLua.get();
 	int ret = 0;
 
