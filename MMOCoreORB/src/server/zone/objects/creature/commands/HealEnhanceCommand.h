@@ -382,6 +382,8 @@ public:
 
 		doAnimations(enhancer, patient);
 
+		creature->notifyObservers(ObserverEventType::MEDPACKUSED);
+
 		return SUCCESS;
 	}
 

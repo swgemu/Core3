@@ -59,6 +59,7 @@ public:
 	const static int OBJECTINSERTED = 47; // ManagedObject arg1 = inserted object, long arg2 = 0
 	const static int OBJECTDISAPPEARED = 48; // ManagedObject arg1 = disappeared object, long arg2 = 0
 	const static int ITEMLOOTED = 49; // ManagedObject arg1 = looting player, long arg2 = 0
+	const static int MEDPACKUSED = 50; // ManagedObject arg1 = null, long arg2 = 0
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */

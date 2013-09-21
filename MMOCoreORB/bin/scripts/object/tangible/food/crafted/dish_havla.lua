@@ -49,7 +49,7 @@ object_tangible_food_crafted_dish_havla = object_tangible_food_crafted_shared_di
 	nutrition = 10,
 
 	effectType = 3, -- Event Based Buff
-	eventTypes = {HEALINGPERFORMED, ENHANCINGPERFORMED, WOUNDHEALINGPERFORMED},
+	eventTypes = {MEDPACKUSED},
 
 	fillingMin = 35,
 	fillingMax = 25,

@@ -244,6 +244,19 @@ public:
 			float modSkill = (float)creature->getSkillMod("healing_range_speed");
 			int delay = (int)round(12.0f - (6.0f * modSkill / 100 ));
 
+			if (creature->hasBuff(BuffCRC::FOOD_HEAL_RECOVERY)) {
+				DelayedBuff* buff = cast<DelayedBuff*>( creature->getBuff(BuffCRC::FOOD_HEAL_RECOVERY));
+
+				if (buff != NULL) {
+					float percent = buff->getSkillModifierValue("heal_recovery");
+
+					delay = round(delay * (100.0f - percent) / 100.0f);
+				}
+			}
+
+			//Force the delay to be at least 4 seconds.
+			delay = (delay < 4) ? 4 : delay;
+
 			creature->addCooldown(skillName, delay * 1000);
 		}
 
@@ -340,6 +353,8 @@ public:
 			dotPack->decreaseUseCount();
 
 		doAnimationsRange(creature, creatureTarget, dotPack->getObjectID(), creature->getDistanceTo(creatureTarget), dotPack->isArea());
+
+		creature->notifyObservers(ObserverEventType::MEDPACKUSED);
 
 		return SUCCESS;
 	}
