@@ -12,7 +12,7 @@
  *	JunkdealerCreatureStub
  */
 
-enum {RPC_ACTIVATERECOVERY__,RPC_SENDINITIALMESSAGE__CREATUREOBJECT_,RPC_SENDINITIALCHOICES__CREATUREOBJECT_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_GETCONVERSATIONSTRING__INT_,RPC_GETLOCATION__,RPC_SETLOCATION__STRING_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_CREATESELLJUNKLOOTSELECTION__CREATUREOBJECT_,RPC_CANINVENTORYITEMBESOLDASJUNK__TANGIBLEOBJECT_INT_,RPC_SETJUNKDEALERBUYERTYPE__INT_,RPC_GETJUNKDEALERBUYERTYPE__,RPC_SETJUNKDEALERCONVERSATIONTYPE__INT_,RPC_GETJUNKDEALERCONVERSATIONTYPE__,RPC_ISJUNKDEALER__};
+enum {RPC_ACTIVATERECOVERY__,RPC_SENDINITIALMESSAGE__CREATUREOBJECT_,RPC_SENDINITIALCHOICES__CREATUREOBJECT_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_GETCONVERSATIONSTRING__INT_,RPC_GETLOCATION__,RPC_SETLOCATION__STRING_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_CREATESELLJUNKLOOTSELECTION__CREATUREOBJECT_,RPC_CANINVENTORYITEMBESOLDASJUNK__TANGIBLEOBJECT_INT_,RPC_SETJUNKDEALERBUYERTYPE__INT_,RPC_GETJUNKDEALERBUYERTYPE__,RPC_SETJUNKDEALERCONVERSATIONTYPE__INT_,RPC_GETJUNKDEALERCONVERSATIONTYPE__,RPC_ISJUNKDEALER__,RPC_SENDCONVERSATIONTERMINATE__CREATUREOBJECT_STRING_STRING_,RPC_SENDCONVERSATIONCONTINUE__CREATUREOBJECT_STRING_STRING_STRING_STRING_};
 
 JunkdealerCreature::JunkdealerCreature() : CreatureObject(DummyConstructorParameter::instance()) {
 	JunkdealerCreatureImplementation* _implementation = new JunkdealerCreatureImplementation();
@@ -262,6 +262,40 @@ bool JunkdealerCreature::isJunkDealer() {
 		return method.executeWithBooleanReturn();
 	} else
 		return _implementation->isJunkDealer();
+}
+
+void JunkdealerCreature::sendConversationTerminate(CreatureObject* player, const String& stfFile, const String& convTerminateMsg) {
+	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDCONVERSATIONTERMINATE__CREATUREOBJECT_STRING_STRING_);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(stfFile);
+		method.addAsciiParameter(convTerminateMsg);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendConversationTerminate(player, stfFile, convTerminateMsg);
+}
+
+void JunkdealerCreature::sendConversationContinue(CreatureObject* player, const String& stfFile, const String& convMsg, const String& convOption1, const String& convOption2) {
+	JunkdealerCreatureImplementation* _implementation = static_cast<JunkdealerCreatureImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SENDCONVERSATIONCONTINUE__CREATUREOBJECT_STRING_STRING_STRING_STRING_);
+		method.addObjectParameter(player);
+		method.addAsciiParameter(stfFile);
+		method.addAsciiParameter(convMsg);
+		method.addAsciiParameter(convOption1);
+		method.addAsciiParameter(convOption2);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->sendConversationContinue(player, stfFile, convMsg, convOption1, convOption2);
 }
 
 DistributedObjectServant* JunkdealerCreature::_getImplementation() {
@@ -586,6 +620,18 @@ void JunkdealerCreatureAdapter::invokeMethod(uint32 methid, DistributedMethod* i
 			resp->insertBoolean(isJunkDealer());
 		}
 		break;
+	case RPC_SENDCONVERSATIONTERMINATE__CREATUREOBJECT_STRING_STRING_:
+		{
+			String stfFile; String convTerminateMsg; 
+			sendConversationTerminate(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(stfFile), inv->getAsciiParameter(convTerminateMsg));
+		}
+		break;
+	case RPC_SENDCONVERSATIONCONTINUE__CREATUREOBJECT_STRING_STRING_STRING_STRING_:
+		{
+			String stfFile; String convMsg; String convOption1; String convOption2; 
+			sendConversationContinue(static_cast<CreatureObject*>(inv->getObjectParameter()), inv->getAsciiParameter(stfFile), inv->getAsciiParameter(convMsg), inv->getAsciiParameter(convOption1), inv->getAsciiParameter(convOption2));
+		}
+		break;
 	default:
 		throw Exception("Method does not exists");
 	}
@@ -653,6 +699,14 @@ int JunkdealerCreatureAdapter::getJunkDealerConversationType() {
 
 bool JunkdealerCreatureAdapter::isJunkDealer() {
 	return (static_cast<JunkdealerCreature*>(stub))->isJunkDealer();
+}
+
+void JunkdealerCreatureAdapter::sendConversationTerminate(CreatureObject* player, const String& stfFile, const String& convTerminateMsg) {
+	(static_cast<JunkdealerCreature*>(stub))->sendConversationTerminate(player, stfFile, convTerminateMsg);
+}
+
+void JunkdealerCreatureAdapter::sendConversationContinue(CreatureObject* player, const String& stfFile, const String& convMsg, const String& convOption1, const String& convOption2) {
+	(static_cast<JunkdealerCreature*>(stub))->sendConversationContinue(player, stfFile, convMsg, convOption1, convOption2);
 }
 
 /*

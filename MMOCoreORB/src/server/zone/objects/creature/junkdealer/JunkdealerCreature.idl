@@ -169,4 +169,7 @@ class JunkdealerCreature extends CreatureObject {
 	public boolean isJunkDealer() {
 		return true; 
 	}
+	public native void sendConversationTerminate(CreatureObject player,final string stfFile,final string convTerminateMsg);
+
+	public native void sendConversationContinue(CreatureObject player,final string stfFile,final string convMsg,final string convOption1,final string convOption2);
 }

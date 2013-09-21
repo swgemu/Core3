@@ -139,6 +139,10 @@ public:
 
 	bool isJunkDealer();
 
+	void sendConversationTerminate(CreatureObject* player, const String& stfFile, const String& convTerminateMsg);
+
+	void sendConversationContinue(CreatureObject* player, const String& stfFile, const String& convMsg, const String& convOption1, const String& convOption2);
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -261,6 +265,10 @@ public:
 
 	bool isJunkDealer();
 
+	void sendConversationTerminate(CreatureObject* player, const String& stfFile, const String& convTerminateMsg);
+
+	void sendConversationContinue(CreatureObject* player, const String& stfFile, const String& convMsg, const String& convOption1, const String& convOption2);
+
 	WeakReference<JunkdealerCreature*> _this;
 
 	operator const JunkdealerCreature*();
@@ -335,6 +343,10 @@ public:
 	int getJunkDealerConversationType();
 
 	bool isJunkDealer();
+
+	void sendConversationTerminate(CreatureObject* player, const String& stfFile, const String& convTerminateMsg);
+
+	void sendConversationContinue(CreatureObject* player, const String& stfFile, const String& convMsg, const String& convOption1, const String& convOption2);
 
 };
 
