@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da3975d1_d48532ae",
+        "filename": "MMOCoreORB/src/server/zone/templates/SharedObjectTemplate.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-09-21T02:38:14Z",
+      "side": 1,
+      "message": "I\u0027m going to guess that this can\u0027t be the same as DNASAMPLE below.",
+      "revId": "d9808ca7da6b5b87e9ed42de51665117ea61b4f6",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
