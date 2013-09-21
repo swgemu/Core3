@@ -193,6 +193,7 @@ public:
 	const static int WEAPONUPGRADEKIT = 0x800A;
 	const static int ARMORUPGRADEKIT = 0x800B;
 	const static int RECYCLETOOL = 0x800C;
+	const static int VEHICLECUSTOMKIT = 0x800D;
 	// End Not in client *****************
 
 	const static int VEHICLE = 0x10000;
