@@ -245,6 +245,7 @@ core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp
 				server/zone/objects/tangible/pharmaceutical/RevivePack.cpp \
 				server/zone/objects/tangible/pharmaceutical/StatePack.cpp \
 				server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
+				server/zone/objects/tangible/skill_buff/SkillBuff.cpp \
 				server/zone/managers/minigames/FishingManager.cpp \
 				server/zone/managers/minigames/GamblingManager.cpp \
 				server/zone/managers/minigames/ForageManager.cpp \
@@ -545,6 +546,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/deed/vehicle/VehicleDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/resource/ResourceDeedImplementation.cpp \
 		server/zone/objects/tangible/sign/SignObjectImplementation.cpp \
+		server/zone/objects/tangible/skill_buff/SkillBuffImplementation.cpp \
 		server/zone/objects/installation/factory/FactoryObjectImplementation.cpp \
 		server/zone/objects/installation/shuttle/ShuttleInstallationImplementation.cpp \
 		server/zone/objects/installation/garage/GarageInstallationImplementation.cpp \

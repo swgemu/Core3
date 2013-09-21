@@ -244,6 +244,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<WoundPack>(SceneObjectType::WOUNDPACK);
 	objectFactory.registerObject<StatePack>(SceneObjectType::STATEPACK);
 	objectFactory.registerObject<RevivePack>(SceneObjectType::REVIVEPACK);
+	objectFactory.registerObject<SkillBuff>(SceneObjectType::SKILLBUFF);
 
 	//clothing
 	objectFactory.registerObject<ClothingObject>(SceneObjectType::CLOTHING);

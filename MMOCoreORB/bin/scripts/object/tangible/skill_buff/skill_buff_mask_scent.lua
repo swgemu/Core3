@@ -42,7 +42,13 @@
 
 
 object_tangible_skill_buff_skill_buff_mask_scent = object_tangible_skill_buff_shared_skill_buff_mask_scent:new {
-
+	templateType = SKILLBUFF,
+	gameObjectType = 8246,
+	
+	duration = 300,
+	quantity = 5,
+	modifiers = { "mask_scent", 10 },
+	buffName = "mask_scent"
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_skill_buff_mask_scent, "object/tangible/skill_buff/skill_buff_mask_scent.iff")

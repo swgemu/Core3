@@ -31,6 +31,7 @@
 #include "server/zone/templates/tangible/SharedShipObjectTemplate.h"
 #include "server/zone/templates/tangible/SharedWeaponObjectTemplate.h"
 #include "server/zone/templates/tangible/StimPackTemplate.h"
+#include "server/zone/templates/tangible/SkillBuffTemplate.h"
 #include "server/zone/templates/tangible/ConsumableTemplate.h"
 #include "server/zone/templates/tangible/InstrumentObjectTemplate.h"
 #include "server/zone/templates/tangible/RangedStimPackTemplate.h"
@@ -542,6 +543,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<DotPackTemplate>(SharedObjectTemplate::DOTPACK);
 	templateFactory.registerObject<WoundPackTemplate>(SharedObjectTemplate::WOUNDPACK);
 	templateFactory.registerObject<StatePackTemplate>(SharedObjectTemplate::STATEPACK);
+	templateFactory.registerObject<SkillBuffTemplate>(SharedObjectTemplate::SKILLBUFF);
 	templateFactory.registerObject<ConsumableTemplate>(SharedObjectTemplate::CONSUMABLE);
 	templateFactory.registerObject<InstrumentObjectTemplate>(SharedObjectTemplate::INSTRUMENT);
 	templateFactory.registerObject<CampKitTemplate>(SharedObjectTemplate::CAMPKIT);
@@ -690,6 +692,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("DOTPACK", SharedObjectTemplate::DOTPACK);
 	luaTemplatesInstance->setGlobalInt("WOUNDPACK", SharedObjectTemplate::WOUNDPACK);
 	luaTemplatesInstance->setGlobalInt("STATEPACK", SharedObjectTemplate::STATEPACK);
+	luaTemplatesInstance->setGlobalInt("SKILLBUFF", SharedObjectTemplate::SKILLBUFF);
 	luaTemplatesInstance->setGlobalInt("CONSUMABLE", SharedObjectTemplate::CONSUMABLE);
 	luaTemplatesInstance->setGlobalInt("INSTRUMENT", SharedObjectTemplate::INSTRUMENT);
 	luaTemplatesInstance->setGlobalInt("CAMPKIT", SharedObjectTemplate::CAMPKIT);

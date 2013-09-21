@@ -42,7 +42,13 @@
 
 
 object_tangible_skill_buff_skill_buff_carbine_speed = object_tangible_skill_buff_shared_skill_buff_carbine_speed:new {
-
+	templateType = SKILLBUFF,
+	gameObjectType = 8246,
+	
+	duration = 300,
+	quantity = 5,
+	modifiers = { "carbine_speed", 10 },
+	buffName = "carbine_speed"
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_skill_buff_carbine_speed, "object/tangible/skill_buff/skill_buff_carbine_speed.iff")

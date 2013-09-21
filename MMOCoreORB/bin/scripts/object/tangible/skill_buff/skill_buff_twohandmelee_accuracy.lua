@@ -42,7 +42,13 @@
 
 
 object_tangible_skill_buff_skill_buff_twohandmelee_accuracy = object_tangible_skill_buff_shared_skill_buff_twohandmelee_accuracy:new {
-
+	templateType = SKILLBUFF,
+	gameObjectType = 8246,
+	
+	duration = 300,
+	quantity = 5,
+	modifiers = { "twohandmelee_accuracy", 10 },
+	buffName = "twohandmelee_accuracy"
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_skill_buff_twohandmelee_accuracy, "object/tangible/skill_buff/skill_buff_twohandmelee_accuracy.iff")

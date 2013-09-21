@@ -726,6 +726,8 @@ public:
 
 	bool isRepairTool();
 
+	bool isSkillBuff();
+
 	bool isCamoKit();
 
 	bool isAttachment();
@@ -1408,6 +1410,8 @@ public:
 
 	bool isRepairTool();
 
+	bool isSkillBuff();
+
 	bool isCamoKit();
 
 	virtual bool isAttachment();
@@ -1946,6 +1950,8 @@ public:
 	bool isTrapObject();
 
 	bool isRepairTool();
+
+	bool isSkillBuff();
 
 	bool isCamoKit();
 
