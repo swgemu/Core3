@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da3975d1_b4806e8c",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/junkdealer/JunkdealerCreatureImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-09-21T18:43:40Z",
+      "side": 1,
+      "message": "Can you try to make these methods shorter by refactoring them? You can join several cases since the content in many of them are the same. If you have more than a few lines in one case extract them to a new method.",
+      "revId": "a58039ecf7af8f131669ac0355efce12ef3e48e1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
