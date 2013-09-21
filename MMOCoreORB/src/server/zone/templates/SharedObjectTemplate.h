@@ -179,6 +179,7 @@ public:
 	const static int RECYCLETOOL = 0x4000038;
 	const static int DNASAMPLE = 0x4000039;
 	const static int PETDEED = 0x4000040;
+	const static int SKILLBUFF = 0x4000042;
 
 public:
 	SharedObjectTemplate();
@@ -604,6 +605,10 @@ public:
 	}
 
 	virtual bool isWoundPackTemplate() {
+		return false;
+	}
+
+	virtual bool isSkillBuffTemplate() {
 		return false;
 	}
 
