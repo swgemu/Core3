@@ -464,6 +464,10 @@ int CombatManager::getAttackerAccuracyModifier(CreatureObject* attacker, WeaponO
 		String mod = creatureAccMods->get(i);
 		attackerAccuracy += attacker->getSkillMod(mod);
 		attackerAccuracy += attacker->getSkillMod("private_" + mod);
+
+		if (attacker->isStanding()) {
+			attackerAccuracy += attacker->getSkillMod(mod + "_while_standing");
+		}
 	}
 
 	attackerAccuracy += attacker->getSkillMod("attack_accuracy");
