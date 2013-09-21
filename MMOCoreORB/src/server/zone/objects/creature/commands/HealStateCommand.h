@@ -70,12 +70,12 @@ public:
 
 	void deactivateStateTreatment(CreatureObject* creature) {
 		float modSkill = (float)creature->getSkillMod("healing_injury_speed");
-		int delay = (int)round((modSkill * -(1.0f / 8.0f)) + 21.0f);
+		int delay = (int)round(20.0f - (modSkill / 5));
 
-		//Force the delay to be at least 3 seconds.
-		delay = (delay < 3) ? 3 : delay;
+		//Force the delay to be at least 4 seconds.
+		delay = (delay < 4) ? 4 : delay;
 
-		StringIdChatParameter message("healing_response", "healing_response_59"); //You are now ready to heal more wounds or apply more enhancements.
+		StringIdChatParameter message("healing_response", "healing_response_58"); //You are now ready to heal more damage.
 		Reference<InjuryTreatmentTask*> task = new InjuryTreatmentTask(creature, message, "stateTreatment");
 		creature->addPendingTask("stateTreatment", task, delay * 1000);
 	}
