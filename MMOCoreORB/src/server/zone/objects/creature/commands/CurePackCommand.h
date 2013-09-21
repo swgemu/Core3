@@ -117,13 +117,13 @@ public:
 	}
 
 	void deactivateConditionTreatment(CreatureObject* creature) {
-		float modSkill = (float)creature->getSkillMod("healing_wound_speed");
-		int delay = (int)round((modSkill * -(2.0f / 25.0f)) + 20.0f);
+		float modSkill = (float)creature->getSkillMod("healing_injury_speed");
+		int delay = (int)round(20.0f - (modSkill / 5));
 
-		//Force the delay to be at least 3 seconds.
-		delay = (delay < 3) ? 3 : delay;
+		//Force the delay to be at least 4 seconds.
+		delay = (delay < 4) ? 4 : delay;
 
-		StringIdChatParameter message("healing_response", "healing_response_59");
+		StringIdChatParameter message("healing_response", "healing_response_58"); //You are now ready to heal more damage.
 		Reference<InjuryTreatmentTask*> task = new InjuryTreatmentTask(creature, message, "conditionTreatment");
 		creature->addPendingTask("conditionTreatment", task, delay * 1000);
 	}
