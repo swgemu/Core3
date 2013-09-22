@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da3975d1_f424b6c7",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/CurePackCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-09-22T02:12:10Z",
+      "side": 1,
+      "message": "Can you put the actual message sent in a comment at the end of this line?",
+      "revId": "b995304a1e783dc82f669d2b40c2f12796e77b59",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da3975d1_d421b2b5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/HealStateCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-09-22T02:12:10Z",
+      "side": 1,
+      "message": "Please fix the comment to reflect the new message.",
+      "revId": "b995304a1e783dc82f669d2b40c2f12796e77b59",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
