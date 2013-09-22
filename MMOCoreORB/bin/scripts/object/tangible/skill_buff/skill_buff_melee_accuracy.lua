@@ -42,7 +42,14 @@
 
 
 object_tangible_skill_buff_skill_buff_melee_accuracy = object_tangible_skill_buff_shared_skill_buff_melee_accuracy:new {
-
+	templateType = SKILLBUFF,
+	objectMenuComponent = {"cpp", "SkillBuffObjectMenuComponent"},
+	attributeListComponent = "SkillBuffObjectAttributeListComponent",
+	
+	duration = 300,
+	useCount = 5,
+	modifiers = { "melee_accuracy", 10 },
+	buffName = "melee_accuracy"
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_skill_buff_melee_accuracy, "object/tangible/skill_buff/skill_buff_melee_accuracy.iff")

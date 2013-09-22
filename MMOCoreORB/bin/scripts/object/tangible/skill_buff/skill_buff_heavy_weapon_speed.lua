@@ -42,7 +42,14 @@
 
 
 object_tangible_skill_buff_skill_buff_heavy_weapon_speed = object_tangible_skill_buff_shared_skill_buff_heavy_weapon_speed:new {
-
+	templateType = SKILLBUFF,
+	objectMenuComponent = {"cpp", "SkillBuffObjectMenuComponent"},
+	attributeListComponent = "SkillBuffObjectAttributeListComponent",
+	
+	duration = 300,
+	useCount = 5,
+	modifiers = { "heavyweapon_speed", 10 },
+	buffName = "heavyweapon_speed"
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_skill_buff_heavy_weapon_speed, "object/tangible/skill_buff/skill_buff_heavy_weapon_speed.iff")

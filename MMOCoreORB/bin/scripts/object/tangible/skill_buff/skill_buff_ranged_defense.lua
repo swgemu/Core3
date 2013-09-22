@@ -42,7 +42,14 @@
 
 
 object_tangible_skill_buff_skill_buff_ranged_defense = object_tangible_skill_buff_shared_skill_buff_ranged_defense:new {
-
+	templateType = SKILLBUFF,
+	objectMenuComponent = {"cpp", "SkillBuffObjectMenuComponent"},
+	attributeListComponent = "SkillBuffObjectAttributeListComponent",
+	
+	duration = 300,
+	useCount = 5,
+	modifiers = { "ranged_defense", 10 },
+	buffName = "ranged_defense"
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_skill_buff_ranged_defense, "object/tangible/skill_buff/skill_buff_ranged_defense.iff")

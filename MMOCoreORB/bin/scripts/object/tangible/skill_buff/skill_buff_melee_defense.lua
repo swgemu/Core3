@@ -42,7 +42,14 @@
 
 
 object_tangible_skill_buff_skill_buff_melee_defense = object_tangible_skill_buff_shared_skill_buff_melee_defense:new {
-
+	templateType = SKILLBUFF,
+	objectMenuComponent = {"cpp", "SkillBuffObjectMenuComponent"},
+	attributeListComponent = "SkillBuffObjectAttributeListComponent",
+	
+	duration = 300,
+	useCount = 5,
+	modifiers = { "melee_defense", 10 },
+	buffName = "melee_defense"
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_skill_buff_melee_defense, "object/tangible/skill_buff/skill_buff_melee_defense.iff")
