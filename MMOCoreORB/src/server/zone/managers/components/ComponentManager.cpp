@@ -52,6 +52,7 @@
 #include "server/zone/objects/tangible/components/generic/ArtCrateMenuComponent.h"
 #include "server/zone/objects/tangible/components/WeaponObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/LightsaberObjectMenuComponent.h"
+#include "server/zone/objects/tangible/components/VehicleCustomKitObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/SaberInventoryContainerComponent.h"
 #include "server/zone/objects/tangible/components/generic/LootSchematicAttributeListComponent.h"
 #include "server/zone/objects/tangible/components/RobeObjectAttributeListComponent.h"
@@ -218,6 +219,8 @@ ComponentManager::ComponentManager() {
 	components.put("RobeObjectMenuComponent", new RobeObjectMenuComponent());
 	components.put("ForceShrineMenuComponent", new ForceShrineMenuComponent());
 	components.put("SaberInventoryContainerComponent", new SaberInventoryContainerComponent());
+
+	components.put("VehicleCustomKitObjectMenuComponent", new VehicleCustomKitObjectMenuComponent());
 
 	components.put("FireworkMenuComponent", new FireworkMenuComponent());
 	components.put("FireworkShowMenuComponent", new FireworkShowMenuComponent());

@@ -179,6 +179,7 @@ public:
 	const static int RECYCLETOOL = 0x4000038;
 	const static int DNASAMPLE = 0x4000039;
 	const static int PETDEED = 0x4000040;
+	const static int VEHICLECUSTOMKIT = 0x4000041;
 	const static int SKILLBUFF = 0x4000042;
 
 public:
@@ -669,6 +670,9 @@ public:
     }
 
 	virtual bool isRecycleToolTemplate() {
+	    	return false;
+	}
+	virtual bool isVehicleCustomKitTemplate() {
 	    	return false;
 	}
 	virtual bool isDnaSampleTemplate() {
