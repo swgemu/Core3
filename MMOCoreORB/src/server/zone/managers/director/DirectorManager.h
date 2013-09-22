@@ -69,7 +69,7 @@ namespace server {
 		ConversationScreen* runScreenHandlers(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 
 		Lua* getLuaInstance();
-		int runLuaInstance();
+		int runScreenPlays();
 
 		static int writeScreenPlayData(lua_State* L);
 		static int readScreenPlayData(lua_State* L);
@@ -130,6 +130,7 @@ namespace server {
 	private:
 		void initializeLuaEngine(Lua* luaEngine);
 		int loadScreenPlays(Lua* luaEngine);
+		void loadJediManager(Lua* luaEngine);
 	};
 
    }

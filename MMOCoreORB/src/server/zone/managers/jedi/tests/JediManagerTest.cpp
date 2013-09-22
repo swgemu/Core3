@@ -60,6 +60,7 @@ namespace tests {
 
 class JediManagerTest : public ::testing::Test {
 public:
+	JediManager* jediManager;
 
 	JediManagerTest() {
 		// Perform creation setup here.
@@ -71,10 +72,12 @@ public:
 
 	void SetUp() {
 		// Perform setup of common constructs here.
+		jediManager = new JediManager();
 	}
 
 	void TearDown() {
 		// Perform clean up of common constructs here.
+		delete jediManager;
 	}
 
 	void constructorDefaults(MockLua& mockLua) {
@@ -91,9 +94,7 @@ TEST_F(JediManagerTest, ShouldRunFileJediManagerLuaAtCreation) {
 
 	EXPECT_CALL(mockLua, runFile(String("scripts/managers/jedi_manager.lua"))).Times(1);
 
-	JediManager* jediManager = new JediManager(&mockLua);
-
-	delete jediManager;
+	jediManager->loadConfiguration(&mockLua);
 }
 
 TEST_F(JediManagerTest, ShouldReadTheJediProgressionTypeVariableAtCreation) {
@@ -103,9 +104,7 @@ TEST_F(JediManagerTest, ShouldReadTheJediProgressionTypeVariableAtCreation) {
 
 	EXPECT_CALL(mockLua, getGlobalInt(String("jediProgressionType"))).WillOnce(Return(JediManager::NOJEDIPROGRESSION));
 
-	JediManager* jediManager = new JediManager(&mockLua);
-
-	delete jediManager;
+	jediManager->loadConfiguration(&mockLua);
 }
 
 TEST_F(JediManagerTest, ShouldRunTheHolocronJediManagerLuaFileIfHolocronJediProgressionIsConfigured) {
@@ -116,9 +115,7 @@ TEST_F(JediManagerTest, ShouldRunTheHolocronJediManagerLuaFileIfHolocronJediProg
 	ON_CALL(mockLua, getGlobalInt(String("jediProgressionType"))).WillByDefault(Return(JediManager::HOLOCRONJEDIPROGRESSION));
 	EXPECT_CALL(mockLua, runFile(String("scripts/managers/holocron_jedi_manager.lua"))).Times(1);
 
-	JediManager* jediManager = new JediManager(&mockLua);
-
-	delete jediManager;
+	jediManager->loadConfiguration(&mockLua);
 }
 
 TEST_F(JediManagerTest, ShouldRunTheVillageJediManagerLuaFileIfVillageJediProgressionIsConfigured) {
@@ -129,9 +126,7 @@ TEST_F(JediManagerTest, ShouldRunTheVillageJediManagerLuaFileIfVillageJediProgre
 	ON_CALL(mockLua, getGlobalInt(String("jediProgressionType"))).WillByDefault(Return(JediManager::VILLAGEJEDIPROGRESSION));
 	EXPECT_CALL(mockLua, runFile(String("scripts/managers/village_jedi_manager.lua"))).Times(1);
 
-	JediManager* jediManager = new JediManager(&mockLua);
-
-	delete jediManager;
+	jediManager->loadConfiguration(&mockLua);
 }
 
 TEST_F(JediManagerTest, ShouldReadTheCustomJediProgressionFileStringIfCustomJediProgressionIsConfigured) {
@@ -142,9 +137,7 @@ TEST_F(JediManagerTest, ShouldReadTheCustomJediProgressionFileStringIfCustomJedi
 	ON_CALL(mockLua, getGlobalInt(String("jediProgressionType"))).WillByDefault(Return(JediManager::CUSTOMJEDIPROGRESSION));
 	EXPECT_CALL(mockLua, getGlobalString(String("customJediProgressionFile"))).WillOnce(Return(String("scripts/managers/custom_jedi_manager.lua")));
 
-	JediManager* jediManager = new JediManager(&mockLua);
-
-	delete jediManager;
+	jediManager->loadConfiguration(&mockLua);
 }
 
 TEST_F(JediManagerTest, ShouldLoadTheCustomJediProgressionFileIfCustomJediProgressionIsConfigured) {
@@ -156,9 +149,7 @@ TEST_F(JediManagerTest, ShouldLoadTheCustomJediProgressionFileIfCustomJediProgre
 	EXPECT_CALL(mockLua, getGlobalString(String("customJediProgressionFile"))).WillOnce(Return(String("scripts/managers/custom_jedi_manager.lua")));
 	EXPECT_CALL(mockLua, runFile(String("scripts/managers/custom_jedi_manager.lua"))).Times(1);
 
-	JediManager* jediManager = new JediManager(&mockLua);
-
-	delete jediManager;
+	jediManager->loadConfiguration(&mockLua);
 }
 
 }

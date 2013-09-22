@@ -33,7 +33,7 @@ public:
 
 TEST_F(BasicScreenPlayTest, ScreenPlayLuaInitialize) {
 	DirectorManager::DEBUG_MODE = 1;
-	EXPECT_EQ(DirectorManager::instance()->runLuaInstance(), 0);
+	EXPECT_EQ(DirectorManager::instance()->runScreenPlays(), 0);
 }
 
 #endif /* BASICSCREENPLAYTEST_CPP_ */
