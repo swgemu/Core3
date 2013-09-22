@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da3975d1_77ffa802",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/SkillBuffObjectAttributeListComponent.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-09-22T04:53:33Z",
+      "side": 1,
+      "message": "schematicData is always null.   The SceneObject is okay but from nearest I can tell, doesn\u0027t have any subclasses beyond SceneObject.",
+      "revId": "561c75fc78a57648fcd133ab10b283f1ce38cd57",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da3975d1_5704a414",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/SkillBuffObjectMenuComponent.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-09-22T04:53:33Z",
+      "side": 1,
+      "message": "skillBuff is always null.   The SceneObject is okay but from nearest I can tell, doesn\u0027t have any subclasses beyond SceneObject.",
+      "revId": "561c75fc78a57648fcd133ab10b283f1ce38cd57",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
