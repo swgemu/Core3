@@ -22,7 +22,7 @@
  *	LootManagerStub
  */
 
-enum {RPC_INITIALIZE__ = 6,RPC_GETRANDOMLOOTABLEMOD__,RPC_CALCULATELOOTCREDITS__INT_,RPC_CREATELOOT__SCENEOBJECT_AIAGENT_,RPC_CREATELOOT__SCENEOBJECT_STRING_INT_BOOL_};
+enum {RPC_INITIALIZE__ = 6,RPC_CALCULATELOOTCREDITS__INT_,RPC_CREATELOOT__SCENEOBJECT_AIAGENT_,RPC_CREATELOOT__SCENEOBJECT_STRING_INT_BOOL_};
 
 LootManager::LootManager(CraftingManager* craftman, ObjectManager* objMan, ZoneServer* server) : ManagedService(DummyConstructorParameter::instance()) {
 	LootManagerImplementation* _implementation = new LootManagerImplementation(craftman, objMan, server);
@@ -53,21 +53,6 @@ void LootManager::initialize() {
 		_implementation->initialize();
 }
 
-String LootManager::getRandomLootableMod() {
-	LootManagerImplementation* _implementation = static_cast<LootManagerImplementation*>(_getImplementation());
-	if (_implementation == NULL) {
-		if (!deployed)
-			throw ObjectNotDeployedException(this);
-
-		DistributedMethod method(this, RPC_GETRANDOMLOOTABLEMOD__);
-
-		String _return_getRandomLootableMod;
-		method.executeWithAsciiReturn(_return_getRandomLootableMod);
-		return _return_getRandomLootableMod;
-	} else
-		return _implementation->getRandomLootableMod();
-}
-
 TangibleObject* LootManager::createLootObject(LootItemTemplate* templateObject, int level, bool maxCondition) {
 	LootManagerImplementation* _implementation = static_cast<LootManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -75,6 +60,15 @@ TangibleObject* LootManager::createLootObject(LootItemTemplate* templateObject, 
 
 	} else
 		return _implementation->createLootObject(templateObject, level, maxCondition);
+}
+
+String LootManager::getRandomLootableMod(unsigned int sceneObjectType) {
+	LootManagerImplementation* _implementation = static_cast<LootManagerImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		return _implementation->getRandomLootableMod(sceneObjectType);
 }
 
 int LootManager::calculateLootCredits(int level) {
@@ -274,8 +268,30 @@ LootManagerImplementation::LootManagerImplementation(CraftingManager* craftman, 
 	zoneServer = server;
 	// server/zone/managers/loot/LootManager.idl():  		lootGroupMap = null;
 	lootGroupMap = NULL;
-	// server/zone/managers/loot/LootManager.idl():  		lootableMods.setNoDuplicateInsertPlan();
-	(&lootableMods)->setNoDuplicateInsertPlan();
+	// server/zone/managers/loot/LootManager.idl():  		lootableArmorAttachmentMods.setNoDuplicateInsertPlan();
+	(&lootableArmorAttachmentMods)->setNoDuplicateInsertPlan();
+	// server/zone/managers/loot/LootManager.idl():  		lootableClothingAttachmentMods.setNoDuplicateInsertPlan();
+	(&lootableClothingAttachmentMods)->setNoDuplicateInsertPlan();
+	// server/zone/managers/loot/LootManager.idl():  		lootableArmorMods.setNoDuplicateInsertPlan();
+	(&lootableArmorMods)->setNoDuplicateInsertPlan();
+	// server/zone/managers/loot/LootManager.idl():  		lootableClothingMods.setNoDuplicateInsertPlan();
+	(&lootableClothingMods)->setNoDuplicateInsertPlan();
+	// server/zone/managers/loot/LootManager.idl():  		lootableOneHandedMeleeMods.setNoDuplicateInsertPlan();
+	(&lootableOneHandedMeleeMods)->setNoDuplicateInsertPlan();
+	// server/zone/managers/loot/LootManager.idl():  		lootableTwoHandedMeleeMods.setNoDuplicateInsertPlan();
+	(&lootableTwoHandedMeleeMods)->setNoDuplicateInsertPlan();
+	// server/zone/managers/loot/LootManager.idl():  		lootableUnarmedMods.setNoDuplicateInsertPlan();
+	(&lootableUnarmedMods)->setNoDuplicateInsertPlan();
+	// server/zone/managers/loot/LootManager.idl():  		lootablePistolMods.setNoDuplicateInsertPlan();
+	(&lootablePistolMods)->setNoDuplicateInsertPlan();
+	// server/zone/managers/loot/LootManager.idl():  		lootableRifleMods.setNoDuplicateInsertPlan();
+	(&lootableRifleMods)->setNoDuplicateInsertPlan();
+	// server/zone/managers/loot/LootManager.idl():  		lootableCarbineMods.setNoDuplicateInsertPlan();
+	(&lootableCarbineMods)->setNoDuplicateInsertPlan();
+	// server/zone/managers/loot/LootManager.idl():  		lootablePolearmMods.setNoDuplicateInsertPlan();
+	(&lootablePolearmMods)->setNoDuplicateInsertPlan();
+	// server/zone/managers/loot/LootManager.idl():  		lootableHeavyWeaponMods.setNoDuplicateInsertPlan();
+	(&lootableHeavyWeaponMods)->setNoDuplicateInsertPlan();
 	// server/zone/managers/loot/LootManager.idl():  		exceptionalChance = 0.0;
 	exceptionalChance = 0.0;
 	// server/zone/managers/loot/LootManager.idl():  		exceptionalModifier = 0.0;
@@ -292,11 +308,6 @@ LootManagerImplementation::LootManagerImplementation(CraftingManager* craftman, 
 	Logger::setLogging(true);
 	// server/zone/managers/loot/LootManager.idl():  		Logger.setGlobalLogging(true);
 	Logger::setGlobalLogging(true);
-}
-
-String LootManagerImplementation::getRandomLootableMod() {
-	// server/zone/managers/loot/LootManager.idl():  		return lootableMods.get(System.random(lootableMods.size() - 1));
-	return (&lootableMods)->get(System::random((&lootableMods)->size() - 1));
 }
 
 /*
@@ -317,11 +328,6 @@ void LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_INITIALIZE__:
 		{
 			initialize();
-		}
-		break;
-	case RPC_GETRANDOMLOOTABLEMOD__:
-		{
-			resp->insertAscii(getRandomLootableMod());
 		}
 		break;
 	case RPC_CALCULATELOOTCREDITS__INT_:
@@ -347,10 +353,6 @@ void LootManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 
 void LootManagerAdapter::initialize() {
 	(static_cast<LootManager*>(stub))->initialize();
-}
-
-String LootManagerAdapter::getRandomLootableMod() {
-	return (static_cast<LootManager*>(stub))->getRandomLootableMod();
 }
 
 int LootManagerAdapter::calculateLootCredits(int level) {

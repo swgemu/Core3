@@ -35,7 +35,18 @@ void LootManagerImplementation::initialize() {
 	lootGroupMap = LootGroupMap::instance();
 	lootGroupMap->initialize();
 
-	info("Loaded " + String::valueOf(lootableMods.size()) + " lootable stat mods.", true);
+	info("Loaded " + String::valueOf(lootableArmorAttachmentMods.size()) + " lootable armor attachment stat mods.", true);
+	info("Loaded " + String::valueOf(lootableClothingAttachmentMods.size()) + " lootable clothing attachment stat mods.", true);
+	info("Loaded " + String::valueOf(lootableArmorMods.size()) + " lootable armor stat mods.", true);
+	info("Loaded " + String::valueOf(lootableClothingMods.size()) + " lootable clothing stat mods.", true);
+	info("Loaded " + String::valueOf(lootableOneHandedMeleeMods.size()) + " lootable one handed melee stat mods.", true);
+	info("Loaded " + String::valueOf(lootableTwoHandedMeleeMods.size()) + " lootable two handed melee stat mods.", true);
+	info("Loaded " + String::valueOf(lootableUnarmedMods.size()) + " lootable unarmed stat mods.", true);
+	info("Loaded " + String::valueOf(lootablePistolMods.size()) + " lootable pistol stat mods.", true);
+	info("Loaded " + String::valueOf(lootableRifleMods.size()) + " lootable rifle stat mods.", true);
+	info("Loaded " + String::valueOf(lootableCarbineMods.size()) + " lootable carbine stat mods.", true);
+	info("Loaded " + String::valueOf(lootablePolearmMods.size()) + " lootable polearm stat mods.", true);
+	info("Loaded " + String::valueOf(lootableHeavyWeaponMods.size()) + " lootable heavy weapon stat mods.", true);
 	info("Loaded " + String::valueOf(lootGroupMap->countLootItemTemplates()) + " loot items.", true);
 	info("Loaded " + String::valueOf(lootGroupMap->countLootGroupTemplates()) + " loot groups.", true);
 
@@ -107,20 +118,57 @@ bool LootManagerImplementation::loadConfigData() {
 		dotUsesTable.pop();
 	}
 
-	LuaObject lootableModsTable = lua->getGlobalObject("lootableStatMods");
+	LuaObject modsTable = lua->getGlobalObject("lootableArmorAttachmentStatMods");
+	loadLootableMods( &modsTable, &lootableArmorAttachmentMods );
 
+	modsTable = lua->getGlobalObject("lootableClothingAttachmentStatMods");
+	loadLootableMods( &modsTable, &lootableClothingAttachmentMods );
 
-	if (!lootableModsTable.isValidTable())
-		return false;
+	modsTable = lua->getGlobalObject("lootableArmorStatMods");
+	loadLootableMods( &modsTable, &lootableArmorMods );
 
-	for (int i = 1; i <= lootableModsTable.getTableSize(); ++i) {
-		String mod = lootableModsTable.getStringAt(i);
-		lootableMods.put(mod);
-	}
+	modsTable = lua->getGlobalObject("lootableClothingStatMods");
+	loadLootableMods( &modsTable, &lootableClothingMods );
 
-	lootableModsTable.pop();
+	modsTable = lua->getGlobalObject("lootableOneHandedMeleeStatMods");
+	loadLootableMods( &modsTable, &lootableOneHandedMeleeMods );
+
+	modsTable = lua->getGlobalObject("lootableTwoHandedMeleeStatMods");
+	loadLootableMods( &modsTable, &lootableTwoHandedMeleeMods );
+
+	modsTable = lua->getGlobalObject("lootableUnarmedStatMods");
+	loadLootableMods( &modsTable, &lootableUnarmedMods );
+
+	modsTable = lua->getGlobalObject("lootablePistolStatMods");
+	loadLootableMods( &modsTable, &lootablePistolMods );
+
+	modsTable = lua->getGlobalObject("lootableRifleStatMods");
+	loadLootableMods( &modsTable, &lootableRifleMods );
+
+	modsTable = lua->getGlobalObject("lootableCarbineStatMods");
+	loadLootableMods( &modsTable, &lootableCarbineMods );
+
+	modsTable = lua->getGlobalObject("lootablePolearmStatMods");
+	loadLootableMods( &modsTable, &lootablePolearmMods );
+
+	modsTable = lua->getGlobalObject("lootableHeavyWeaponStatMods");
+	loadLootableMods( &modsTable, &lootableHeavyWeaponMods );
 
 	return true;
+}
+
+void LootManagerImplementation::loadLootableMods(LuaObject* modsTable, SortedVector<String>* mods ){
+
+	if (!modsTable->isValidTable())
+		return;
+
+	for (int i = 1; i <= modsTable->getTableSize(); ++i) {
+		String mod = modsTable->getStringAt(i);
+		mods->put(mod);
+	}
+
+	modsTable->pop();
+
 }
 
 void LootManagerImplementation::loadDefaultConfig() {
@@ -422,9 +470,9 @@ void LootManagerImplementation::setSkillMods(TangibleObject* object, LootItemTem
 			if(mod == 0)
 				mod = 1;
 
-			String modName = getRandomLootableMod();
-
-			additionalMods.put(modName, mod);
+			String modName = getRandomLootableMod( object->getGameObjectType() );
+			if( !modName.isEmpty() )
+				additionalMods.put(modName, mod);
 		}
 	}
 
@@ -455,6 +503,64 @@ void LootManagerImplementation::setSkillMods(TangibleObject* object, LootItemTem
 			weaponObject->addSkillMod(SkillModManager::WEARABLE, skillMods->elementAt(i).getKey(), skillMods->elementAt(i).getValue());
 		}
 	}
+}
+
+String LootManagerImplementation::getRandomLootableMod( unsigned int sceneObjectType ) {
+	if( sceneObjectType == SceneObjectType::ARMORATTACHMENT ){
+		return lootableArmorAttachmentMods.get(System::random(lootableArmorAttachmentMods.size() - 1));
+	}
+	else if( sceneObjectType == SceneObjectType::CLOTHINGATTACHMENT ){
+		return lootableClothingAttachmentMods.get(System::random(lootableClothingAttachmentMods.size() - 1));
+	}
+	else if( sceneObjectType == SceneObjectType::ARMOR || sceneObjectType == SceneObjectType::BODYARMOR ||
+			 sceneObjectType == SceneObjectType::HEADARMOR || sceneObjectType == SceneObjectType::MISCARMOR ||
+			 sceneObjectType == SceneObjectType::LEGARMOR || sceneObjectType == SceneObjectType::ARMARMOR ||
+			 sceneObjectType == SceneObjectType::HANDARMOR || sceneObjectType == SceneObjectType::FOOTARMOR ){
+		return lootableArmorMods.get(System::random(lootableArmorMods.size() - 1));
+	}
+	else if( sceneObjectType == SceneObjectType::CLOTHING || sceneObjectType == SceneObjectType::BANDOLIER ||
+			 sceneObjectType == SceneObjectType::BELT || sceneObjectType == SceneObjectType::BODYSUIT ||
+		     sceneObjectType == SceneObjectType::CAPE || sceneObjectType == SceneObjectType::CLOAK ||
+			 sceneObjectType == SceneObjectType::FOOTWEAR || sceneObjectType == SceneObjectType::DRESS ||
+			 sceneObjectType == SceneObjectType::HANDWEAR || sceneObjectType == SceneObjectType::EYEWEAR ||
+			 sceneObjectType == SceneObjectType::HEADWEAR || sceneObjectType == SceneObjectType::JACKET ||
+			 sceneObjectType == SceneObjectType::PANTS || sceneObjectType == SceneObjectType::ROBE ||
+			 sceneObjectType == SceneObjectType::SHIRT || sceneObjectType == SceneObjectType::VEST ||
+			 sceneObjectType == SceneObjectType::WOOKIEGARB || sceneObjectType == SceneObjectType::MISCCLOTHING ||
+			 sceneObjectType == SceneObjectType::SKIRT || sceneObjectType == SceneObjectType::WEARABLECONTAINER ||
+			 sceneObjectType == SceneObjectType::JEWELRY || sceneObjectType == SceneObjectType::RING ||
+			 sceneObjectType == SceneObjectType::BRACELET || sceneObjectType == SceneObjectType::NECKLACE ||
+			 sceneObjectType == SceneObjectType::EARRING ){
+		return lootableClothingMods.get(System::random(lootableClothingMods.size() - 1));
+	}
+	else if( sceneObjectType == SceneObjectType::ONEHANDMELEEWEAPON ){
+		return lootableOneHandedMeleeMods.get(System::random(lootableOneHandedMeleeMods.size() - 1));
+	}
+	else if( sceneObjectType == SceneObjectType::TWOHANDMELEEWEAPON ){
+		return lootableTwoHandedMeleeMods.get(System::random(lootableTwoHandedMeleeMods.size() - 1));
+	}
+	else if( sceneObjectType == SceneObjectType::MELEEWEAPON ){
+		return lootableUnarmedMods.get(System::random(lootableUnarmedMods.size() - 1));
+	}
+	else if( sceneObjectType == SceneObjectType::PISTOL ){
+		return lootablePistolMods.get(System::random(lootablePistolMods.size() - 1));
+	}
+	else if( sceneObjectType == SceneObjectType::RIFLE ){
+		return lootableRifleMods.get(System::random(lootableRifleMods.size() - 1));
+	}
+	else if( sceneObjectType == SceneObjectType::CARBINE ){
+		return lootableCarbineMods.get(System::random(lootableCarbineMods.size() - 1));
+	}
+	else if( sceneObjectType == SceneObjectType::POLEARM ){
+		return lootablePolearmMods.get(System::random(lootablePolearmMods.size() - 1));
+	}
+	else if( sceneObjectType == SceneObjectType::SPECIALHEAVYWEAPON ){
+		return lootableHeavyWeaponMods.get(System::random(lootableHeavyWeaponMods.size() - 1));
+	}
+	else{
+		return "";
+	}
+
 }
 
 void LootManagerImplementation::setSockets(TangibleObject* object, CraftingValues* craftingValues) {

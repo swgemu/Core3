@@ -39,7 +39,7 @@ void AttachmentImplementation::updateCraftingValues(CraftingValues* values, bool
 		if(mod == 0)
 			mod = 1;
 
-		String modName = server->getZoneServer()->getLootManager()->getRandomLootableMod();
+		String modName = server->getZoneServer()->getLootManager()->getRandomLootableMod(gameObjectType);
 
 		skillModMap.put(modName, mod);
 	}
