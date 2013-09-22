@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da3975d1_572b8482",
+        "filename": "MMOCoreORB/bin/scripts/object/tangible/food/crafted/dish_havla.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-09-22T11:58:13Z",
+      "side": 0,
+      "message": "I looked again and it appears that with this change the ENHANCINGPERFORMED and WOUNDHEALINGPERFORMED event types will no longer be used anywhere. Should I remove them?\n\nThe HEALINGPERFORMED event type is used by the ThreatMap class.",
+      "revId": "0bfab9a315ddffd7b1df599d81866ea196bf381e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
