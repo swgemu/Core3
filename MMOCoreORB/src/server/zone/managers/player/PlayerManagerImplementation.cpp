@@ -1943,6 +1943,9 @@ int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureO
 		if (buff != NULL) {
 			int value = buff->getAttributeModifierValue(attribute);
 
+			if(BuffAttribute::isProtection(attribute))
+				value = buff->getSkillModifierValue(BuffAttribute::getProtectionString(attribute));
+
 			if (value > buffvalue)
 				return 0;
 
