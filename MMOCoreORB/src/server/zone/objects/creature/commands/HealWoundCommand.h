@@ -367,6 +367,8 @@ public:
 
 		doAnimations(creature, creatureTarget);
 
+		creature->notifyObservers(ObserverEventType::MEDPACKUSED);
+
 		return SUCCESS;
 	}
 

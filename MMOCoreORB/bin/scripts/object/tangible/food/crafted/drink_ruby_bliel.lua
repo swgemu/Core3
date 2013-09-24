@@ -49,7 +49,7 @@ object_tangible_food_crafted_drink_ruby_bliel = object_tangible_food_crafted_sha
 	nutrition = 10,
 
 	effectType = 3, -- Event Based Buff
-	eventTypes = {HEALINGPERFORMED, ENHANCINGPERFORMED, WOUNDHEALINGPERFORMED},
+	eventTypes = {MEDPACKUSED},
 
 	fillingMin = 22,
 	fillingMax = 18,

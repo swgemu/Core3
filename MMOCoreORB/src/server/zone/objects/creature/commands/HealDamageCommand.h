@@ -465,6 +465,8 @@ public:
 
 		deactivateInjuryTreatment(creature, stimPack->isRangedStimPack());
 
+		creature->notifyObservers(ObserverEventType::MEDPACKUSED);
+
 		return SUCCESS;
 	}
 

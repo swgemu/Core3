@@ -72,6 +72,16 @@ public:
 		float modSkill = (float)creature->getSkillMod("healing_injury_speed");
 		int delay = (int)round(20.0f - (modSkill / 5));
 
+		if (creature->hasBuff(BuffCRC::FOOD_HEAL_RECOVERY)) {
+			DelayedBuff* buff = cast<DelayedBuff*>( creature->getBuff(BuffCRC::FOOD_HEAL_RECOVERY));
+
+			if (buff != NULL) {
+				float percent = buff->getSkillModifierValue("heal_recovery");
+
+				delay = round(delay * (100.0f - percent) / 100.0f);
+			}
+		}
+
 		//Force the delay to be at least 4 seconds.
 		delay = (delay < 4) ? 4 : delay;
 
@@ -307,6 +317,8 @@ public:
 			awardXp(creature, "medical", 50); //No experience for healing yourself.
 
 		doAnimations(creature, creatureTarget);
+
+		creature->notifyObservers(ObserverEventType::MEDPACKUSED);
 
 		return SUCCESS;
 	}
