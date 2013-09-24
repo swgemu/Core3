@@ -146,6 +146,7 @@ class AiAgent extends CreatureObject {
 	protected transient Time lastDamageReceived;
 	
 	protected float respawnTimer;
+	protected boolean randomRespawn;
 	protected int numberOfPlayersInRange;
 	
 	protected boolean loadedOutfit;
@@ -174,7 +175,8 @@ class AiAgent extends CreatureObject {
 		followState = OBLIVIOUS;
 
 		respawnTimer = 0;
-		
+		randomRespawn = false;
+
 		showNextMovementPosition = true;
 		
 		despawnOnNoPlayerInRange = true;
@@ -423,7 +425,11 @@ class AiAgent extends CreatureObject {
 	public void setRespawnTimer(float resp) {
 		respawnTimer = resp;
 	}
-	
+
+	public void setRandomRespawn(boolean resp) {
+		randomRespawn = resp;
+	}
+
 	/**
 	 * Evaluates if this object can be attacket by the passed creature object
 	 * @pre { this object is locked }
@@ -716,7 +722,11 @@ class AiAgent extends CreatureObject {
 	public float getRespawnTimer() {
 		return respawnTimer;
 	}
-	
+
+	public boolean getRandomRespawn() {
+		return randomRespawn;
+	}
+
 	@local
 	public PatrolPoint getHomeLocation() {
 		return homeLocation;

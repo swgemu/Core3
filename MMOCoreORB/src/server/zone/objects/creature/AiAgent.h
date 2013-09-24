@@ -428,6 +428,8 @@ public:
 
 	void setRespawnTimer(float resp);
 
+	void setRandomRespawn(bool resp);
+
 	bool isAttackableBy(CreatureObject* object);
 
 	bool isAggressiveTo(CreatureObject* object);
@@ -503,6 +505,8 @@ public:
 	LootGroupCollection* getLootGroups();
 
 	float getRespawnTimer();
+
+	bool getRandomRespawn();
 
 	PatrolPoint* getHomeLocation();
 
@@ -606,6 +610,8 @@ protected:
 	Time lastDamageReceived;
 
 	float respawnTimer;
+
+	bool randomRespawn;
 
 	int numberOfPlayersInRange;
 
@@ -750,6 +756,8 @@ public:
 
 	void setRespawnTimer(float resp);
 
+	void setRandomRespawn(bool resp);
+
 	bool isAttackableBy(CreatureObject* object);
 
 	bool isAggressiveTo(CreatureObject* object);
@@ -825,6 +833,8 @@ public:
 	LootGroupCollection* getLootGroups();
 
 	float getRespawnTimer();
+
+	bool getRandomRespawn();
 
 	PatrolPoint* getHomeLocation();
 
@@ -985,6 +995,8 @@ public:
 
 	void setRespawnTimer(float resp);
 
+	void setRandomRespawn(bool resp);
+
 	bool isAttackableBy(CreatureObject* object);
 
 	bool isAggressiveTo(CreatureObject* object);
@@ -1056,6 +1068,8 @@ public:
 	unsigned int getDiet();
 
 	float getRespawnTimer();
+
+	bool getRandomRespawn();
 
 	bool isAiAgent();
 

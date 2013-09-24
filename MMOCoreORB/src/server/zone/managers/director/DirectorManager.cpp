@@ -96,6 +96,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "createEvent", createEvent);
 	lua_register(luaEngine->getLuaState(), "createObserver", createObserver);
 	lua_register(luaEngine->getLuaState(), "spawnMobile", spawnMobile);
+	lua_register(luaEngine->getLuaState(), "spawnMobileRandom", spawnMobileRandom);
 	lua_register(luaEngine->getLuaState(), "spatialChat", spatialChat);
 	lua_register(luaEngine->getLuaState(), "spatialMoodChat", spatialMoodChat);
 
@@ -1218,6 +1219,60 @@ int DirectorManager::spawnMobile(lua_State* L) {
 		if (creature->isAiAgent()) {
 			AiAgent* ai = cast<AiAgent*>(creature);
 			ai->setRespawnTimer(respawnTimer);
+		}
+
+		creature->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
+		lua_pushlightuserdata(L, creature);
+	}
+
+	return 1;
+	//public native CreatureObject spawnCreature(unsigned int templateCRC, float x, float z, float y, unsigned long parentID = 0);
+}
+
+int DirectorManager::spawnMobileRandom(lua_State* L) {
+	if (checkArgumentCount(L, 8) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::spawnMobileRandom");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	uint64 parentID = lua_tointeger(L, -1);
+	float heading = lua_tonumber(L, -2);
+	float y = lua_tonumber(L, -3);
+	float z = lua_tonumber(L, -4);
+	float x = lua_tonumber(L, -5);
+	int respawnTimer = lua_tointeger(L, -6);
+	String mobile = lua_tostring(L, -7);
+	String zoneid = lua_tostring(L, -8);
+
+	ZoneServer* zoneServer = ServerCore::getZoneServer();
+
+	Zone* zone = zoneServer->getZone(zoneid);
+
+	if (zone == NULL) {
+		lua_pushnil(L);
+		return 1;
+	}
+
+	CreatureManager* creatureManager = zone->getCreatureManager();
+
+	/*StringBuffer msg;
+	msg << "trying to spawn with mobile: " << mobile << " x:" << x;
+	DirectorManager::instance()->info(msg.toString(), true);*/
+
+	CreatureObject* creature = creatureManager->spawnCreature(mobile.hashCode(), 0, x, z, y, parentID);
+
+	if (creature == NULL) {
+		instance()->error("coult not spawn mobile " + mobile);
+
+		lua_pushnil(L);
+	} else {
+		creature->updateDirection(Math::deg2rad(heading));
+
+		if (creature->isAiAgent()) {
+			AiAgent* ai = cast<AiAgent*>(creature);
+			ai->setRespawnTimer(respawnTimer);
+			ai->setRandomRespawn(true);
 		}
 
 		creature->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA

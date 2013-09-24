@@ -40,7 +40,7 @@
  *	AiAgentStub
  */
 
-enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_ACTIVATERECOVERY__,RPC_ACTIVATEMOVEMENTEVENT__,RPC_ACTIVATEWAITEVENT__,RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_,RPC_TRYRETREAT__,RPC_DORECOVERY__,RPC_DOATTACK__,RPC_DOMOVEMENT__,RPC_SETLEVEL__INT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_CALCULATEATTACKMINDAMAGE__INT_,RPC_CALCULATEATTACKMAXDAMAGE__INT_,RPC_CALCULATEATTACKSPEED__INT_,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_ISSCENTMASKED__CREATUREOBJECT_,RPC_ISCONCEALED__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CHECKNEWANGLE__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SETNEXTPOSITION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_CLEARPATROLPOINTS__,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_STRING_BOOL_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SENDDEFAULTCONVERSATIONTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_NOTIFYCONVERSEOBSERVERS__CREATUREOBJECT_,RPC_NOTIFYATTACK__OBSERVABLE_,RPC_NOTIFYCALLFORHELP__OBSERVABLE_MANAGEDOBJECT_,RPC_DESTROYOBJECTFROMWORLD__BOOL_,RPC_ACTIVATEPOSTURERECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDESPAWNONNOPLAYERINRANGE__BOOL_,RPC_NOTIFYDESPAWN__ZONE_,RPC_SCHEDULEDESPAWN__,RPC_SCHEDULEDESPAWN__INT_,RPC_RESPAWN__ZONE_INT_,RPC_SETHOMELOCATION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETRESPAWNTIMER__FLOAT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SETOBLIVIOUS__,RPC_SETWATCHOBJECT__SCENEOBJECT_,RPC_SETSTALKOBJECT__SCENEOBJECT_,RPC_SETFOLLOWOBJECT__SCENEOBJECT_,RPC_SETTARGETOBJECT__SCENEOBJECT_,RPC_GETFOLLOWOBJECT__,RPC_SELECTWEAPON__,RPC_VALIDATESTATEATTACK__CREATUREOBJECT_STRING_,RPC_ISRETREATING__,RPC_ISFLEEING__,RPC_CLEARDESPAWNEVENT__,RPC_GETKINETIC__,RPC_GETENERGY__,RPC_GETELECTRICITY__,RPC_GETSTUN__,RPC_GETBLAST__,RPC_GETHEAT__,RPC_GETCOLD__,RPC_GETACID__,RPC_GETLIGHTSABER__,RPC_ISSTALKER__,RPC_ISKILLER__,RPC_GETFEROCITY__,RPC_GETARMOR__,RPC_GETDESPAWNONNOPLAYERINRANGE__,RPC_GETNUMBEROFPLAYERSINRANGE__,RPC_GETFACTIONSTRING__,RPC_GETSOCIALGROUP__,RPC_GETCHANCEHIT__,RPC_GETDAMAGEMIN__,RPC_GETDAMAGEMAX__,RPC_GETBASEXP__,RPC_GETDIET__,RPC_GETRESPAWNTIMER__,RPC_ISAIAGENT__,RPC_HASLOOT__,RPC_SETSHOWNEXTPOSITION__BOOL_,RPC_ISEVENTMOB__,RPC_GETPVPFACTION__,};
+enum {RPC_INITIALIZETRANSIENTMEMBERS__ = 6,RPC_FINALIZE__,RPC_ACTIVATERECOVERY__,RPC_ACTIVATEMOVEMENTEVENT__,RPC_ACTIVATEWAITEVENT__,RPC_ACTIVATEAWARENESSEVENT__CREATUREOBJECT_,RPC_TRYRETREAT__,RPC_DORECOVERY__,RPC_DOATTACK__,RPC_DOMOVEMENT__,RPC_SETLEVEL__INT_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_CALCULATEATTACKMINDAMAGE__INT_,RPC_CALCULATEATTACKMAXDAMAGE__INT_,RPC_CALCULATEATTACKSPEED__INT_,RPC_ISCAMOUFLAGED__CREATUREOBJECT_,RPC_ISSCENTMASKED__CREATUREOBJECT_,RPC_ISCONCEALED__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_CHECKNEWANGLE__,RPC_FILLATTRIBUTELIST__ATTRIBUTELISTMESSAGE_CREATUREOBJECT_,RPC_SETNEXTPOSITION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_NOTIFYPOSITIONUPDATE__QUADTREEENTRY_,RPC_CLEARPATROLPOINTS__,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_STRING_BOOL_,RPC_SENDCONVERSATIONSTARTTO__SCENEOBJECT_,RPC_SENDDEFAULTCONVERSATIONTO__SCENEOBJECT_,RPC_SELECTCONVERSATIONOPTION__INT_SCENEOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_NOTIFYCONVERSEOBSERVERS__CREATUREOBJECT_,RPC_NOTIFYATTACK__OBSERVABLE_,RPC_NOTIFYCALLFORHELP__OBSERVABLE_MANAGEDOBJECT_,RPC_DESTROYOBJECTFROMWORLD__BOOL_,RPC_ACTIVATEPOSTURERECOVERY__,RPC_QUEUEDIZZYFALLEVENT__,RPC_CLEARCOMBATSTATE__BOOL_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDESPAWNONNOPLAYERINRANGE__BOOL_,RPC_NOTIFYDESPAWN__ZONE_,RPC_SCHEDULEDESPAWN__,RPC_SCHEDULEDESPAWN__INT_,RPC_RESPAWN__ZONE_INT_,RPC_SETHOMELOCATION__FLOAT_FLOAT_FLOAT_SCENEOBJECT_,RPC_SETRESPAWNTIMER__FLOAT_,RPC_SETRANDOMRESPAWN__BOOL_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_ISAGGRESSIVETO__CREATUREOBJECT_,RPC_SETOBLIVIOUS__,RPC_SETWATCHOBJECT__SCENEOBJECT_,RPC_SETSTALKOBJECT__SCENEOBJECT_,RPC_SETFOLLOWOBJECT__SCENEOBJECT_,RPC_SETTARGETOBJECT__SCENEOBJECT_,RPC_GETFOLLOWOBJECT__,RPC_SELECTWEAPON__,RPC_VALIDATESTATEATTACK__CREATUREOBJECT_STRING_,RPC_ISRETREATING__,RPC_ISFLEEING__,RPC_CLEARDESPAWNEVENT__,RPC_GETKINETIC__,RPC_GETENERGY__,RPC_GETELECTRICITY__,RPC_GETSTUN__,RPC_GETBLAST__,RPC_GETHEAT__,RPC_GETCOLD__,RPC_GETACID__,RPC_GETLIGHTSABER__,RPC_ISSTALKER__,RPC_ISKILLER__,RPC_GETFEROCITY__,RPC_GETARMOR__,RPC_GETDESPAWNONNOPLAYERINRANGE__,RPC_GETNUMBEROFPLAYERSINRANGE__,RPC_GETFACTIONSTRING__,RPC_GETSOCIALGROUP__,RPC_GETCHANCEHIT__,RPC_GETDAMAGEMIN__,RPC_GETDAMAGEMAX__,RPC_GETBASEXP__,RPC_GETDIET__,RPC_GETRESPAWNTIMER__,RPC_GETRANDOMRESPAWN__,RPC_ISAIAGENT__,RPC_HASLOOT__,RPC_SETSHOWNEXTPOSITION__BOOL_,RPC_ISEVENTMOB__,RPC_GETPVPFACTION__,};
 
 AiAgent::AiAgent() : CreatureObject(DummyConstructorParameter::instance()) {
 	AiAgentImplementation* _implementation = new AiAgentImplementation();
@@ -782,6 +782,20 @@ void AiAgent::setRespawnTimer(float resp) {
 		_implementation->setRespawnTimer(resp);
 }
 
+void AiAgent::setRandomRespawn(bool resp) {
+	AiAgentImplementation* _implementation = static_cast<AiAgentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_SETRANDOMRESPAWN__BOOL_);
+		method.addBooleanParameter(resp);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->setRandomRespawn(resp);
+}
+
 bool AiAgent::isAttackableBy(CreatureObject* object) {
 	AiAgentImplementation* _implementation = static_cast<AiAgentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1280,6 +1294,19 @@ float AiAgent::getRespawnTimer() {
 		return _implementation->getRespawnTimer();
 }
 
+bool AiAgent::getRandomRespawn() {
+	AiAgentImplementation* _implementation = static_cast<AiAgentImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETRANDOMRESPAWN__);
+
+		return method.executeWithBooleanReturn();
+	} else
+		return _implementation->getRandomRespawn();
+}
+
 PatrolPoint* AiAgent::getHomeLocation() {
 	AiAgentImplementation* _implementation = static_cast<AiAgentImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -1579,6 +1606,10 @@ bool AiAgentImplementation::readObjectMember(ObjectInputStream* stream, const ui
 		TypeInfo<float >::parseFromBinaryStream(&respawnTimer, stream);
 		return true;
 
+	case 0x6c050a2e: //AiAgent.randomRespawn
+		TypeInfo<bool >::parseFromBinaryStream(&randomRespawn, stream);
+		return true;
+
 	case 0x4804fb0: //AiAgent.numberOfPlayersInRange
 		TypeInfo<int >::parseFromBinaryStream(&numberOfPlayersInRange, stream);
 		return true;
@@ -1725,6 +1756,14 @@ int AiAgentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_nameHashCode = 0x6c050a2e; //AiAgent.randomRespawn
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<bool >::toBinaryStream(&randomRespawn, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_nameHashCode = 0x4804fb0; //AiAgent.numberOfPlayersInRange
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
@@ -1742,7 +1781,7 @@ int AiAgentImplementation::writeObjectMembers(ObjectOutputStream* stream) {
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 17;
+	return _count + 18;
 }
 
 AiAgentImplementation::AiAgentImplementation() {
@@ -1753,6 +1792,8 @@ AiAgentImplementation::AiAgentImplementation() {
 	followState = OBLIVIOUS;
 	// server/zone/objects/creature/AiAgent.idl():  		respawnTimer = 0;
 	respawnTimer = 0;
+	// server/zone/objects/creature/AiAgent.idl():  		randomRespawn = false;
+	randomRespawn = false;
 	// server/zone/objects/creature/AiAgent.idl():  		showNextMovementPosition = true;
 	showNextMovementPosition = true;
 	// server/zone/objects/creature/AiAgent.idl():  		despawnOnNoPlayerInRange = true;
@@ -1828,6 +1869,11 @@ void AiAgentImplementation::setHomeLocation(float x, float z, float y, SceneObje
 void AiAgentImplementation::setRespawnTimer(float resp) {
 	// server/zone/objects/creature/AiAgent.idl():  		respawnTimer = resp;
 	respawnTimer = resp;
+}
+
+void AiAgentImplementation::setRandomRespawn(bool resp) {
+	// server/zone/objects/creature/AiAgent.idl():  		randomRespawn = resp;
+	randomRespawn = resp;
 }
 
 bool AiAgentImplementation::isAttackableBy(CreatureObject* object) {
@@ -2150,6 +2196,11 @@ float AiAgentImplementation::getRespawnTimer() {
 	return respawnTimer;
 }
 
+bool AiAgentImplementation::getRandomRespawn() {
+	// server/zone/objects/creature/AiAgent.idl():  		return randomRespawn;
+	return randomRespawn;
+}
+
 PatrolPoint* AiAgentImplementation::getHomeLocation() {
 	// server/zone/objects/creature/AiAgent.idl():  		return homeLocation;
 	return (&homeLocation);
@@ -2429,6 +2480,11 @@ void AiAgentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			setRespawnTimer(inv->getFloatParameter());
 		}
 		break;
+	case RPC_SETRANDOMRESPAWN__BOOL_:
+		{
+			setRandomRespawn(inv->getBooleanParameter());
+		}
+		break;
 	case RPC_ISATTACKABLEBY__CREATUREOBJECT_:
 		{
 			resp->insertBoolean(isAttackableBy(static_cast<CreatureObject*>(inv->getObjectParameter())));
@@ -2608,6 +2664,11 @@ void AiAgentAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 	case RPC_GETRESPAWNTIMER__:
 		{
 			resp->insertFloat(getRespawnTimer());
+		}
+		break;
+	case RPC_GETRANDOMRESPAWN__:
+		{
+			resp->insertBoolean(getRandomRespawn());
 		}
 		break;
 	case RPC_ISAIAGENT__:
@@ -2828,6 +2889,10 @@ void AiAgentAdapter::setRespawnTimer(float resp) {
 	(static_cast<AiAgent*>(stub))->setRespawnTimer(resp);
 }
 
+void AiAgentAdapter::setRandomRespawn(bool resp) {
+	(static_cast<AiAgent*>(stub))->setRandomRespawn(resp);
+}
+
 bool AiAgentAdapter::isAttackableBy(CreatureObject* object) {
 	return (static_cast<AiAgent*>(stub))->isAttackableBy(object);
 }
@@ -2970,6 +3035,10 @@ unsigned int AiAgentAdapter::getDiet() {
 
 float AiAgentAdapter::getRespawnTimer() {
 	return (static_cast<AiAgent*>(stub))->getRespawnTimer();
+}
+
+bool AiAgentAdapter::getRandomRespawn() {
+	return (static_cast<AiAgent*>(stub))->getRandomRespawn();
 }
 
 bool AiAgentAdapter::isAiAgent() {
