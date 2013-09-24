@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da3975d1_b76190d5",
+        "filename": "MMOCoreORB/src/server/zone/managers/director/DirectorManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1275,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-09-24T06:22:08Z",
+      "side": 1,
+      "message": "I basically copied the spawnMobile method and added this line. I did this because I didn\u0027t want to have to update every call of the method in every screen play with a new boolean argument. With the checkArgumentCount in place I wasn\u0027t sure if it would have been possible to have optional arguments.\n\nIf there\u0027s a better way to do this, I\u0027m open to suggestions.",
+      "revId": "400b6014355d51187e3f01add044188a0dc517e1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
