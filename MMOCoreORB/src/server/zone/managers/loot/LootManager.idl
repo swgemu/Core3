@@ -53,6 +53,7 @@ import server.zone.objects.creature.AiAgent;
 import server.zone.managers.crafting.CraftingManager;
 import server.zone.managers.object.ObjectManager;
 import engine.lua.Lua;
+import engine.lua.LuaObject;
 import server.zone.ZoneServer;
 import server.zone.objects.tangible.TangibleObject;
 include server.zone.managers.loot.LootGroupMap;
@@ -92,7 +93,29 @@ class LootManager extends ManagedService implements Logger {
 	private transient SortedVector<int> randomDotUses;
 
 	@dereferenced
-	private transient SortedVector<string> lootableMods;
+	private transient SortedVector<string> lootableArmorAttachmentMods;
+	@dereferenced
+	private transient SortedVector<string> lootableClothingAttachmentMods;	
+	@dereferenced
+	private transient SortedVector<string> lootableArmorMods;
+	@dereferenced
+	private transient SortedVector<string> lootableClothingMods;
+	@dereferenced
+	private transient SortedVector<string> lootableOneHandedMeleeMods;
+	@dereferenced
+	private transient SortedVector<string> lootableTwoHandedMeleeMods;
+	@dereferenced
+	private transient SortedVector<string> lootableUnarmedMods;
+	@dereferenced
+	private transient SortedVector<string> lootablePistolMods;
+	@dereferenced
+	private transient SortedVector<string> lootableRifleMods;
+	@dereferenced
+	private transient SortedVector<string> lootableCarbineMods;
+	@dereferenced
+	private transient SortedVector<string> lootablePolearmMods;
+	@dereferenced
+	private transient SortedVector<string> lootableHeavyWeaponMods;
 
 	public LootManager(CraftingManager craftman, ObjectManager objMan, ZoneServer server) {
 		craftingManager = craftman;
@@ -101,7 +124,18 @@ class LootManager extends ManagedService implements Logger {
 		
 		lootGroupMap = null;
 		
-		lootableMods.setNoDuplicateInsertPlan();
+		lootableArmorAttachmentMods.setNoDuplicateInsertPlan();
+		lootableClothingAttachmentMods.setNoDuplicateInsertPlan();
+		lootableArmorMods.setNoDuplicateInsertPlan();
+		lootableClothingMods.setNoDuplicateInsertPlan();
+		lootableOneHandedMeleeMods.setNoDuplicateInsertPlan();
+		lootableTwoHandedMeleeMods.setNoDuplicateInsertPlan();
+		lootableUnarmedMods.setNoDuplicateInsertPlan();
+		lootablePistolMods.setNoDuplicateInsertPlan();
+		lootableRifleMods.setNoDuplicateInsertPlan();
+		lootableCarbineMods.setNoDuplicateInsertPlan();
+		lootablePolearmMods.setNoDuplicateInsertPlan();
+		lootableHeavyWeaponMods.setNoDuplicateInsertPlan();
 		
 		exceptionalChance = 0.0;
 		exceptionalModifier = 0.0;
@@ -122,10 +156,6 @@ class LootManager extends ManagedService implements Logger {
 	private native boolean loadConfigFile();
 	private native boolean loadConfigData();
 	private native void loadDefaultConfig();
-	
-	public string getRandomLootableMod() {
-		return lootableMods.get(System.random(lootableMods.size() - 1));
-	}
 	
 	@local
 	private native void setInitialObjectStats(LootItemTemplate templateObject, CraftingValues craftingValues, TangibleObject prototype);
@@ -152,7 +182,13 @@ class LootManager extends ManagedService implements Logger {
 	private native void addConditionDamage(TangibleObject loot, CraftingValues craftingValues);
 	
 	@local
+	private native void loadLootableMods( LuaObject modTable, SortedVector<string> mods );
+	
+	@local
 	public native TangibleObject createLootObject(LootItemTemplate templateObject, int level, boolean maxCondition = false);
+	
+	@local
+	public native string getRandomLootableMod( unsigned int sceneObjectType );	
 	
 	public native int calculateLootCredits(int level);
 
