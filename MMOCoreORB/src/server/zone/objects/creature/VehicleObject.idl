@@ -59,10 +59,17 @@ import server.zone.templates.SharedObjectTemplate;
 
 class VehicleObject extends CreatureObject {
 	protected int vehicleType;
-	
+	protected int paintCount;
+
+	/*
+	In October 21, 2004 :Jump to Lightspeed Expansion Publish Part 1: 
+	 was 2000 but get a good cut in a successive patch
+	*/
+	public static final int PAINTCHARGES = 999;
+
 	public VehicleObject() {
 		vehicleType = SceneObjectType.HOVERVEHICLE;
-		
+		paintCount = 0;
 		Logger.setLoggingName("VehicleObject");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
@@ -203,7 +210,11 @@ class VehicleObject extends CreatureObject {
 	public native int calculateRepairCost(CreatureObject player);
 	
 	public native void sendRepairConfirmTo(CreatureObject player);
-	
+
+	public void refreshPaint() {
+		paintCount = PAINTCHARGES;
+	}	
+
 	public boolean isVehicleObject() {
 		return true;
 	}
