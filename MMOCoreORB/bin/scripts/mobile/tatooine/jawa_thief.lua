@@ -30,7 +30,8 @@ jawa_thief = Creature:new {
 	lootGroups = {
 	    {
 			groups = {
-				{group = "junk", chance = 6500000},
+				{group = "junk", chance = 5000000},
+				{group = "jawa_common", chance = 1500000},
 				{group = "armor_looted", chance = 800000},
 				{group = "tailor_components", chance = 1000000},
 				{group = "loot_kit_parts", chance = 1500000},

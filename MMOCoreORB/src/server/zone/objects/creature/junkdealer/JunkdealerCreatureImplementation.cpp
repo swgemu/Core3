@@ -63,7 +63,7 @@ void JunkdealerCreatureImplementation::sendInitialMessage(CreatureObject* player
 			break;
 		}
 		case JUNKCONVDENDERRORI:{
-			stfname = "s_3c06418f"; //TD
+			stfname = "s_e88820";
 			break;
 		}
 		case JUNKCONVDENDERTHEED:{
@@ -91,7 +91,7 @@ void JunkdealerCreatureImplementation::sendInitialMessage(CreatureObject* player
 			break;
 		}
 		case JUNKCONVQUICHDANTOOINE:{
-			stfname = "s_3c06418f"; //TD
+			stfname = "s_87c4b1c3";
 			break;
 		}
 		case JUNKCONVREGGINYM:{
@@ -152,9 +152,10 @@ void JunkdealerCreatureImplementation::sendInitialChoices(CreatureObject* player
 			slist->insertOption(getConversationString(JUNKCONVFINARY), "s_370a03c");
 			break;
 		}
-		case JUNKCONVDENDERRORI:{ //TD
-			slist->insertOption(getConversationString(JUNKCONVDENDERRORI), "s_673b632f");//TD
-			slist->insertOption(getConversationString(JUNKCONVDENDERRORI), "s_a753e4d6");//TD
+		case JUNKCONVDENDERRORI:{
+			slist->insertOption(getConversationString(JUNKCONVDENDERRORI), "s_c9aa99a2"); //I am listening.
+			slist->insertOption(getConversationString(JUNKCONVDENDERRORI), "s_13d756ae"); //Whoa, sorry about that didn't mean to bother you.
+			sOptionsMsg ="dealer_specific-1";
 			break;
 		}
 		case JUNKCONVDENDERTHEED:{ // On Hold
@@ -185,8 +186,10 @@ void JunkdealerCreatureImplementation::sendInitialChoices(CreatureObject* player
 			slist->insertOption(getConversationString(JUNKCONVOLLOBOJABBAS), "s_54fab04f");//TD
 			break;
 		}
-		case JUNKCONVQUICHDANTOOINE:{ //TD
-			slist->insertOption(getConversationString(JUNKCONVQUICHDANTOOINE), "s_54fab04f");//TD
+		case JUNKCONVQUICHDANTOOINE:{
+			slist->insertOption(getConversationString(JUNKCONVQUICHDANTOOINE), "s_2313ac9e");
+			slist->insertOption(getConversationString(JUNKCONVQUICHDANTOOINE), "s_953d967f");
+			sOptionsMsg ="dealer_specific-1";
 			break;
 		}
 		case JUNKCONVREGGINYM:{ //TD
@@ -292,6 +295,14 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 						sendConversationContinue(player,stffile,"s_47a68e94","s_34475b33","s_5b767310");
 						break;
 					}
+					case JUNKCONVDENDERRORI:{
+						sendConversationContinue(player,stffile,"s_fd11d689","s_6925372f","s_19e6693b");
+						break;
+					}
+					case JUNKCONVQUICHDANTOOINE:{
+						sendConversationContinue(player,stffile,"s_86df00aa","s_f2e88b32","s_fbe44b83");
+						break;
+					}
 				}
 				break;
 			}
@@ -303,6 +314,14 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 					}
 					case JUNKCONVNATHANTAIKE:{ //Bah! I should have figured that a stranger wouldn't understand the extent of the problem.
 						sendConversationTerminate(player,stffile,"s_808503a8");
+						break;
+					}
+					case JUNKCONVDENDERRORI:{
+						sendConversationTerminate(player,stffile,"s_1ea1fb0f");
+						break;
+					}
+					case JUNKCONVQUICHDANTOOINE:{
+						sendConversationTerminate(player,stffile,"s_35b56f0a");
 						break;
 					}
 				}
@@ -318,8 +337,16 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 						createSellJunkLootSelection(player);
 						break;
 					}
-					case JUNKCONVNATHANTAIKE:{ //I am sorry but I don't have anything you would be interested in.
+					case JUNKCONVNATHANTAIKE:{
 						sendConversationContinue(player,stffile,"s_3b924e4a","s_e022ccee","s_b47d6575");
+						break;
+					}
+					case JUNKCONVDENDERRORI:{
+						sendConversationContinue(player,stffile,"s_42c6dbd2","s_6925372f","s_e2f6a3b8");
+						break;
+					}
+					case JUNKCONVQUICHDANTOOINE:{
+						sendConversationContinue(player,stffile,"s_5bc0c939","s_463bc6c4","s_6e11f342");
 						break;
 					}
 				}
@@ -335,6 +362,14 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 						sendConversationTerminate(player,stffile,"s_735e3c59");
 						break;
 					}
+					case JUNKCONVDENDERRORI:{
+						sendConversationTerminate(player,stffile,"s_cfe66406");
+						break;
+					}
+					case JUNKCONVQUICHDANTOOINE:{
+						sendConversationTerminate(player,stffile,"s_f5349262");
+						break;
+					}
 				}
 				break;
 			}
@@ -348,6 +383,15 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 						sendConversationContinue(player,stffile,"s_aaac386c","s_ecf19442","s_69567be7");
 						break;
 					}
+					case JUNKCONVDENDERRORI:{
+						sendConversationContinue(player,stffile,"s_7d842aa5","s_673b632f","s_a753e4d6");
+						break;
+					}
+					case JUNKCONVQUICHDANTOOINE:{ //I am sorry but I don't have anything you would be interested in.
+						sendConversationTerminate(player,stffile,"s_ba5cc7c");
+						createSellJunkLootSelection(player);
+						break;
+					}
 				}
 				break;
 			}
@@ -355,6 +399,14 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 				switch (_this.get()->getJunkDealerConversationType()) {
 					case JUNKCONVNATHANTAIKE:{ //Bah! I should have figured that a stranger wouldn't understand the extent of the problem.
 						sendConversationTerminate(player,stffile,"s_eadc8d6e");
+						break;
+					}
+					case JUNKCONVDENDERRORI:{
+						sendConversationTerminate(player,stffile,"s_ef66cf46");
+						break;
+					}
+					case JUNKCONVQUICHDANTOOINE:{
+						sendConversationTerminate(player,stffile,"s_413bfd08");
 						break;
 					}
 				}
@@ -370,6 +422,11 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 						createSellJunkLootSelection(player);
 						break;
 					}
+					case JUNKCONVDENDERRORI:{
+						sendConversationTerminate(player,stffile,"s_9aa94773");
+						createSellJunkLootSelection(player);
+						break;
+					}
 				}
 				break;
 			}
@@ -377,6 +434,10 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 				switch (_this.get()->getJunkDealerConversationType()) {
 					case JUNKCONVNATHANTAIKE:{ //Bah! I should have figured that a stranger wouldn't understand the extent of the problem.
 						sendConversationTerminate(player,stffile,"s_2d363db3");
+						break;
+					}
+					case JUNKCONVDENDERRORI:{
+						sendConversationTerminate(player,stffile,"s_b0d63c3a");
 						break;
 					}
 				}
