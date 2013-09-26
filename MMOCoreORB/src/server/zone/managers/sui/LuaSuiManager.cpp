@@ -17,6 +17,7 @@ Luna<LuaSuiManager>::RegType LuaSuiManager::Register[] = {
 		{ "sendConfirmSui", &LuaSuiManager::sendConfirmSui },
 		{ "sendMessageBox", &LuaSuiManager::sendMessageBox },
 		{ "sendInputBox", &LuaSuiManager::sendInputBox },
+		{ "sendListBox", &LuaSuiManager::sendListBox },
 		{ 0, 0 }
 };
 
@@ -74,6 +75,23 @@ int LuaSuiManager::sendMessageBox(lua_State* L) {
 	String callback = lua_tostring(L, -1);
 
 	realObject->sendMessageBox(usingObject, targetPlayer, title, text, okButton, screenplay, callback);
+
+	return 0;
+}
+
+int LuaSuiManager::sendListBox(lua_State* L) {
+	SceneObject* usingObject = (SceneObject*) lua_touserdata(L, -10);
+	SceneObject* targetPlayer = (SceneObject*) lua_touserdata(L, -9);
+	String title = lua_tostring(L, -8);
+	String text = lua_tostring(L, -7);
+	int numOfButtons = lua_tointeger(L, -6);
+	String cancelButton = lua_tostring(L, -5);
+	String otherButton = lua_tostring(L, -4);
+	String okButton = lua_tostring(L, -3);
+	String screenplay = lua_tostring(L, -2);
+	String callback = lua_tostring(L, -1);
+
+	realObject->sendListBox(usingObject, targetPlayer, title, text, numOfButtons, cancelButton, otherButton, okButton, screenplay, callback);
 
 	return 0;
 }

@@ -656,3 +656,53 @@ void SuiManager::sendMessageBox(SceneObject* usingObject, SceneObject* player, c
 		playerObject->addSuiBox(messageBox);
 	}
 }
+
+void SuiManager::sendListBox(SceneObject* usingObject, SceneObject* player, const String& title, const String& text, const uint8& numOfButtons, const String& cancelButton, const String& otherButton, const String& okButton, const String& screenplay, const String& callback) {
+	if (usingObject == NULL)
+		return;
+
+	if (player == NULL || !player->isCreatureObject())
+		return;
+
+	CreatureObject* creature = cast<CreatureObject*>(player);
+
+	PlayerObject* playerObject = creature->getPlayerObject();
+
+	if (playerObject != NULL) {
+
+		ManagedReference<SuiListBox*> box = NULL;
+
+		switch (numOfButtons) {
+		case 1:
+			box = new SuiListBox(creature, 0x00, SuiListBox::HANDLESINGLEBUTTON);
+			box->setCancelButton(false, "");
+			box->setOtherButton(false, "");
+			box->setOkButton(true, okButton);
+			break;
+		case 2:
+			box = new SuiListBox(creature, 0x00, SuiListBox::HANDLETWOBUTTON);
+			box->setCancelButton(true, cancelButton);
+			box->setOtherButton(false, "");
+			box->setOkButton(true, okButton);
+			break;
+		case 3:
+			box = new SuiListBox(creature, 0x00, SuiListBox::HANDLETHREEBUTTON);
+			box->setCancelButton(true, cancelButton);
+			box->setOtherButton(true, otherButton);
+			box->setOkButton(true, okButton);
+			break;
+		default:
+			return;
+			break;
+		}
+
+		box->setCallback(new LuaSuiCallback(creature->getZoneServer(), screenplay, callback));
+		box->setPromptTitle(title);
+		box->setPromptText(text);
+		box->setUsingObject(usingObject);
+		box->setForceCloseDistance(32.f);
+
+		creature->sendMessage(box->generateMessage());
+		playerObject->addSuiBox(box);
+	}
+}
