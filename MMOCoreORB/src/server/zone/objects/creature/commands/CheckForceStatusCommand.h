@@ -46,6 +46,7 @@ which carries forward this exception.
 #define CHECKFORCESTATUSCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/managers/jedi/JediManager.h"
 
 class CheckForceStatusCommand : public QueueCommand {
 public:
@@ -62,6 +63,8 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		JediManager::instance()->checkForceStatusCommand(creature);
 
 		return SUCCESS;
 	}

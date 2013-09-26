@@ -55,7 +55,6 @@ JediManager::~JediManager() {
 void JediManager::loadConfiguration(Lua* luaEngine) {
 	lua = luaEngine;
 
-	info("Loading...", true);
 	lua->runFile("scripts/managers/jedi_manager.lua");
 
 	jediProgressionType = lua->getGlobalInt(String("jediProgressionType"));
@@ -73,4 +72,15 @@ void JediManager::loadConfiguration(Lua* luaEngine) {
 	default:
 		break;
 	}
+
+	jediManagerName = lua->getGlobalString(String("jediManagerName"));
+
+	info("Loaded.", true);
+}
+
+void JediManager::checkForceStatusCommand(CreatureObject* creature) {
+	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), jediManagerName, "checkForceStatusCommand", 0);
+	luaCheckForceStatusCommand << creature;
+
+	lua->callFunction(&luaCheckForceStatusCommand);
 }

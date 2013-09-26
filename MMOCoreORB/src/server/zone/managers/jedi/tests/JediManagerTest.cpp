@@ -84,10 +84,11 @@ public:
 		EXPECT_CALL(mockLua, runFile(_)).Times(AnyNumber());
 		EXPECT_CALL(mockLua, getGlobalInt(_)).Times(AnyNumber());
 		EXPECT_CALL(mockLua, getGlobalString(_)).Times(AnyNumber());
+		ON_CALL(mockLua, getGlobalString(_)).WillByDefault(Return(String("")));
 	}
 };
 
-TEST_F(JediManagerTest, ShouldRunFileJediManagerLuaAtCreation) {
+TEST_F(JediManagerTest, ShouldRunFileJediManagerLuaAtLoadConfiguration) {
 	MockLua mockLua;
 
 	constructorDefaults(mockLua);
@@ -97,7 +98,7 @@ TEST_F(JediManagerTest, ShouldRunFileJediManagerLuaAtCreation) {
 	jediManager->loadConfiguration(&mockLua);
 }
 
-TEST_F(JediManagerTest, ShouldReadTheJediProgressionTypeVariableAtCreation) {
+TEST_F(JediManagerTest, ShouldReadTheJediProgressionTypeVariableAtLoadConfigurations) {
 	MockLua mockLua;
 
 	constructorDefaults(mockLua);
@@ -151,6 +152,19 @@ TEST_F(JediManagerTest, ShouldLoadTheCustomJediProgressionFileIfCustomJediProgre
 
 	jediManager->loadConfiguration(&mockLua);
 }
+
+TEST_F(JediManagerTest, ShouldReadTheJediProgressionSystemNameAtLoadConfiguration) {
+	MockLua mockLua;
+
+	constructorDefaults(mockLua);
+
+	ON_CALL(mockLua, getGlobalInt(String("jediProgressionType"))).WillByDefault(Return(JediManager::HOLOCRONJEDIPROGRESSION));
+	EXPECT_CALL(mockLua, getGlobalString(String("jediManagerName"))).WillOnce(Return(String("HolocronJediManager")));
+
+	jediManager->loadConfiguration(&mockLua);
+}
+
+//TODO Add test of the checkForceStatusCommand. Needs an updated engine.
 
 }
 }
