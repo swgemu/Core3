@@ -68,6 +68,7 @@ which carries forward this exception.
 #include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
 #include "server/zone/templates/params/PaletteColorCustomizationVariable.h"
 #include "server/zone/templates/customization/BasicRangedIntCustomizationVariable.h"
+#include "server/zone/managers/jedi/JediManager.h"
 
 PlayerCreationManager::PlayerCreationManager() :
 		Logger("PlayerCreationManager") {
@@ -613,6 +614,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 	client->addCharacter(playerCreature->getObjectID(), zoneServer.get()->getGalaxyID());
 
+	JediManager::instance()->onPlayerCreation(playerCreature);
 
 	return true;
 }
