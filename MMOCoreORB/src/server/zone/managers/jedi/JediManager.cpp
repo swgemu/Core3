@@ -85,6 +85,20 @@ void onPlayerCreation(CreatureObject* creature) {
 	lua->callFunction(&luaCheckForceStatusCommand);
 }
 
+void onPlayerLogin(CreatureObject* creature) {
+	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), jediManagerName, "onPlayerLogin", 0);
+	luaCheckForceStatusCommand << creature;
+
+	lua->callFunction(&luaCheckForceStatusCommand);
+}
+
+void onPlayerLogout(CreatureObject* creature) {
+	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), jediManagerName, "onPlayerLogout", 0);
+	luaCheckForceStatusCommand << creature;
+
+	lua->callFunction(&luaCheckForceStatusCommand);
+}
+
 void JediManager::checkForceStatusCommand(CreatureObject* creature) {
 	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), jediManagerName, "checkForceStatusCommand", 0);
 	luaCheckForceStatusCommand << creature;
