@@ -78,6 +78,13 @@ void JediManager::loadConfiguration(Lua* luaEngine) {
 	info("Loaded.", true);
 }
 
+void JediManager::onPlayerCreation(CreatureObject* creature) {
+	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), jediManagerName, "onPlayerCreation", 0);
+	luaCheckForceStatusCommand << creature;
+
+	lua->callFunction(&luaCheckForceStatusCommand);
+}
+
 void JediManager::checkForceStatusCommand(CreatureObject* creature) {
 	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), jediManagerName, "checkForceStatusCommand", 0);
 	luaCheckForceStatusCommand << creature;
