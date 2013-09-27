@@ -111,6 +111,11 @@ public:
 	void loadConfiguration(Lua* luaEngine);
 
 	/**
+	 * Start the jedi manager.
+	 */
+	void start();
+
+	/**
 	 * On player creation.
 	 * @param creature the creature/player that was created.
 	 */
