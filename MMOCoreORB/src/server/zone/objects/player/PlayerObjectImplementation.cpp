@@ -113,6 +113,8 @@ which carries forward this exception.
 #include "server/zone/objects/player/events/BountyHunterTefRemovalTask.h"
 #include "server/zone/managers/visibility/VisibilityManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
+#include "server/zone/managers/jedi/JediManager.h"
+
 void PlayerObjectImplementation::initializeTransientMembers() {
 	IntangibleObjectImplementation::initializeTransientMembers();
 
@@ -1125,6 +1127,9 @@ void PlayerObjectImplementation::notifyOnline() {
 
 	//Login to visibility manager
 	VisibilityManager::instance()->login(playerCreature);
+
+	//Login to jedi manager
+	JediManager::instance()->onPlayerLogin(playerCreature);
 }
 
 void PlayerObjectImplementation::notifyOffline() {
@@ -1151,6 +1156,9 @@ void PlayerObjectImplementation::notifyOffline() {
 
 	//Logout from visibility manager
 	VisibilityManager::instance()->logout(playerCreature);
+
+	//Logout from jedi manager
+	JediManager::instance()->onPlayerLogout(playerCreature);
 }
 
 void PlayerObjectImplementation::setLanguageID(byte language, bool notifyClient) {
