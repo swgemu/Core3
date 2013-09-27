@@ -111,6 +111,24 @@ public:
 	void loadConfiguration(Lua* luaEngine);
 
 	/**
+	 * On player creation.
+	 * @param creature the creature/player that was created.
+	 */
+	void onPlayerCreation(CreatureObject* creature);
+
+	/**
+	 * On player login.
+	 * @param creature the creature/player that logged in.
+	 */
+	void onPlayerLogin(CreatureObject* creature);
+
+	/**
+	 * On player logout.
+	 * @param creature the creature/player that logged out.
+	 */
+	void onPlayerLogout(CreatureObject* creature);
+
+	/**
 	 * Check force status command.
 	 * Calls the checkForceStatusCommand in the lua manager.
 	 * @param creature the creature that performed the command.

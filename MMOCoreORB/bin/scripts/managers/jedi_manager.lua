@@ -25,8 +25,19 @@ JediManager = Object:new {
 	startingEvent = nil,
 }
 
+function JediManager:onPlayerCreation(pCreature)
+	-- Default behaviour for the onPlayerCreation event, do nothing.
+end
+
+function JediManager:onPlayerLogin(pCreature)
+	-- Default behaviour for the onPlayerLogin event, do nothing.
+end
+
+function JediManager:onPlayerLogout(pCreature)
+	-- Default behaviour for the onPlayerLogout event, do nothing.
+end
+
 function JediManager:checkForceStatusCommand(pCreature)
 	-- Default behaviour for the checkForceStatus command, do nothing.
-	printf("checkForceStatusCommand")
 end
 
