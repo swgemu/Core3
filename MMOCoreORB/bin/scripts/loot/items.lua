@@ -6,6 +6,7 @@ JUNKARMOUR = 8
 JUNKTUSKEN = 16
 JUNKJEDI = 32
 JUNKJAWA = 64
+JUNKGUNGAN = 128
 
 
 includeFile("items/aakuan_belt.lua")
@@ -115,6 +116,8 @@ includeFile("items/gorax_bone_shards_common.lua")
 includeFile("items/gorax_bone_shards_rare.lua")
 includeFile("items/grizzled_dewback_hide.lua")
 includeFile("items/gurk_king_hide.lua")
+includeFile("items/gungan_lance.lua")
+includeFile("items/gungan_signet.lua")
 includeFile("items/heavy_duty_clasp.lua")
 includeFile("items/heavy_duty_leather.lua")
 includeFile("items/high_frequency_vibro_motor.lua")
@@ -128,6 +131,7 @@ includeFile("items/hyperdrive_part.lua")
 includeFile("items/injector_tank.lua")
 includeFile("items/janta_blood.lua")
 includeFile("items/janta_hides.lua")
+includeFile("items/jawa_beads.lua")
 includeFile("items/jetpack_base.lua")
 includeFile("items/jetpack_stabilizer.lua")
 includeFile("items/kimogila_bone_segment.lua")

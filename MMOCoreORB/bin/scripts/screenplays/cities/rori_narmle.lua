@@ -196,7 +196,7 @@ function RoriNarmleScreenPlay:spawnMobiles()
 	spawnMobile("rori", "informant_npc_lvl_1", 1, -5120, 80, -2269, 0, 0)
 	spawnMobile("rori", "informant_npc_lvl_1", 1, -5127, 80, -2266, 45, 0)
 	spawnMobile("rori", "informant_npc_lvl_1", 1, -5331, 80, -2233, 180, 0)
-	spawnMobile("rori", "junk_dealer", 1, -5428.2, 80, -2244.2, 10, 0)
+
 
 	--trainers
 	spawnMobile("rori", "trainer_1hsword", 1, -5219, 80.6094, -2164, 0, 0)
