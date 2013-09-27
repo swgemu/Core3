@@ -579,8 +579,6 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 				ghost->getLastValidatedPosition();
 		lastValidatedPosition->update(playerCreature);
 
-		playerManager->generateHologrindSkills(playerCreature);
-
 		ghost->setBiography(bio);
 		ghost->setRaceID(raceID);
 	}
