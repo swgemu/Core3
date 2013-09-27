@@ -214,6 +214,10 @@ class VehicleObject extends CreatureObject {
 	public void refreshPaint() {
 		paintCount = PAINTCHARGES;
 	}	
+	
+	public int getPaintCount(){
+		return paintCount;
+	}
 
 	public boolean isVehicleObject() {
 		return true;

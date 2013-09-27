@@ -14,6 +14,8 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 
+#include "server/zone/packets/scene/AttributeListMessage.h"
+
 #include "server/zone/Zone.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -24,7 +26,7 @@
  *	VehicleControlDeviceStub
  */
 
-enum {RPC_STOREOBJECT__CREATUREOBJECT_ = 6,RPC_GENERATEOBJECT__CREATUREOBJECT_,RPC_SPAWNOBJECT__CREATUREOBJECT_,RPC_CANCELSPAWNOBJECT__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__CREATUREOBJECT_};
+enum {RPC_STOREOBJECT__CREATUREOBJECT_ = 6,RPC_GENERATEOBJECT__CREATUREOBJECT_,RPC_SPAWNOBJECT__CREATUREOBJECT_,RPC_CANCELSPAWNOBJECT__CREATUREOBJECT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_CANBEDESTROYED__CREATUREOBJECT_,};
 
 VehicleControlDevice::VehicleControlDevice() : ControlDevice(DummyConstructorParameter::instance()) {
 	VehicleControlDeviceImplementation* _implementation = new VehicleControlDeviceImplementation();
@@ -139,6 +141,15 @@ int VehicleControlDevice::canBeDestroyed(CreatureObject* player) {
 		return method.executeWithSignedIntReturn();
 	} else
 		return _implementation->canBeDestroyed(player);
+}
+
+void VehicleControlDevice::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
+	VehicleControlDeviceImplementation* _implementation = static_cast<VehicleControlDeviceImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->fillAttributeList(msg, object);
 }
 
 DistributedObjectServant* VehicleControlDevice::_getImplementation() {

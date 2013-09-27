@@ -150,6 +150,8 @@ public:
 
 	void refreshPaint();
 
+	int getPaintCount();
+
 	bool isVehicleObject();
 
 	DistributedObjectServant* _getImplementation();
@@ -227,6 +229,8 @@ public:
 	void sendRepairConfirmTo(CreatureObject* player);
 
 	void refreshPaint();
+
+	int getPaintCount();
 
 	bool isVehicleObject();
 
@@ -306,6 +310,8 @@ public:
 	void sendRepairConfirmTo(CreatureObject* player);
 
 	void refreshPaint();
+
+	int getPaintCount();
 
 	bool isVehicleObject();
 
