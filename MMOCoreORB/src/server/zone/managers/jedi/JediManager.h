@@ -46,6 +46,7 @@ which carries forward this exception.
 #define JEDIMANAGER_H_
 
 #include "engine/engine.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 namespace server {
 namespace zone {
@@ -66,6 +67,11 @@ private:
 	 * The Jedi progression type currently configured.
 	 */
 	int jediProgressionType;
+
+	/**
+	 * The name of the jedi manager class in Lua.
+	 */
+	String jediManagerName;
 
 public:
 	/**
@@ -103,6 +109,13 @@ public:
 	 * @param luaEngine the lua engine to use for loading the configuration.
 	 */
 	void loadConfiguration(Lua* luaEngine);
+
+	/**
+	 * Check force status command.
+	 * Calls the checkForceStatusCommand in the lua manager.
+	 * @param creature the creature that performed the command.
+	 */
+	void checkForceStatusCommand(CreatureObject* creature);
 };
 
 }
