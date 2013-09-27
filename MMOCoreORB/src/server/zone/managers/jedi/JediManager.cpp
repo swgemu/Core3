@@ -76,6 +76,15 @@ void JediManager::loadConfiguration(Lua* luaEngine) {
 	jediManagerName = lua->getGlobalString(String("jediManagerName"));
 
 	info("Loaded.", true);
+
+	start();
+}
+
+void JediManager::start() {
+	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), jediManagerName, "start", 0);
+	luaCheckForceStatusCommand << creature;
+
+	lua->callFunction(&luaCheckForceStatusCommand);
 }
 
 void JediManager::onPlayerCreation(CreatureObject* creature) {
