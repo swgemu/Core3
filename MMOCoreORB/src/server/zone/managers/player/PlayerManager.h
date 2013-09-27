@@ -396,8 +396,6 @@ public:
 
 	void updatePermissionName(CreatureObject* player, int adminLevel);
 
-	void generateHologrindSkills(CreatureObject* player);
-
 	void addPlayer(CreatureObject* player);
 
 	void removePlayer(String& playerName);
@@ -643,8 +641,6 @@ public:
 
 	void updatePermissionName(CreatureObject* player, int adminLevel);
 
-	void generateHologrindSkills(CreatureObject* player);
-
 	void addPlayer(CreatureObject* player);
 
 	void removePlayer(String& playerName);
@@ -841,8 +837,6 @@ public:
 	void updatePermissionLevel(CreatureObject* player, int adminLevel);
 
 	void updatePermissionName(CreatureObject* player, int adminLevel);
-
-	void generateHologrindSkills(CreatureObject* player);
 
 	void addPlayer(CreatureObject* player);
 
