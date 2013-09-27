@@ -376,10 +376,6 @@ public:
 
 	Reference<TangibleObject* > createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
-	bool createAllPlayerObjects(CreatureObject* player);
-
-	void createDefaultPlayerItems(CreatureObject* player, const String& profession, const String& templateFile);
-
 	void createTutorialBuilding(CreatureObject* player);
 
 	void createSkippedTutorialBuilding(CreatureObject* player);
@@ -627,10 +623,6 @@ public:
 
 	Reference<TangibleObject* > createHairObject(const String& hairObjectFile, const String& hairCustomization);
 
-	bool createAllPlayerObjects(CreatureObject* player);
-
-	void createDefaultPlayerItems(CreatureObject* player, const String& profession, const String& templateFile);
-
 	void createTutorialBuilding(CreatureObject* player);
 
 	void createSkippedTutorialBuilding(CreatureObject* player);
@@ -833,10 +825,6 @@ public:
 	bool checkExistentNameInDatabase(const String& firstName);
 
 	Reference<TangibleObject* > createHairObject(const String& hairObjectFile, const String& hairCustomization);
-
-	bool createAllPlayerObjects(CreatureObject* player);
-
-	void createDefaultPlayerItems(CreatureObject* player, const String& profession, const String& templateFile);
 
 	void createTutorialBuilding(CreatureObject* player);
 

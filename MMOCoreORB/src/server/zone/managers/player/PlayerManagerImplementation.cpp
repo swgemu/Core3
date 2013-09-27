@@ -445,8 +445,6 @@ Reference<TangibleObject*> PlayerManagerImplementation::createHairObject(const S
 		return NULL;
 	}
 
-	//String sharedHairObjectFile = hairObjectFile.replaceFirst("hair_", "shared_hair_");
-
 	info("trying to create hair object " + hairObjectFile);
 	Reference<SceneObject*> hair = server->createObject(hairObjectFile.hashCode(), 1);
 
@@ -456,9 +454,6 @@ Reference<TangibleObject*> PlayerManagerImplementation::createHairObject(const S
 	}
 
 	if (hair->getGameObjectType() != SceneObjectType::GENERICITEM || hair->getArrangementDescriptor(0) != "hair") {
-		//info("wrong hair object type");
-		//hair->finalize();
-
 		ManagedReference<SceneObject*> clearRef = hair;
 
 		return NULL;
@@ -473,111 +468,6 @@ Reference<TangibleObject*> PlayerManagerImplementation::createHairObject(const S
 	return hairObject;
 }
 
-bool PlayerManagerImplementation::createAllPlayerObjects(CreatureObject* player) {
-	Reference<SceneObject*> inventory = server->createObject(0x77ae7dbb, 1); // character_inventory
-
-	if (inventory == NULL) {
-		error("could not create player inventory");
-		return false;
-	}
-
-	player->transferObject(inventory, 4);
-
-	Reference<SceneObject*> datapad = server->createObject(0x95ae7939, 1); //datapad
-
-	if (datapad == NULL) {
-		error("could not create player datapad");
-		return false;
-	}
-
-	player->transferObject(datapad, 4);
-
-	Reference<SceneObject*> playerObject = server->createObject(String("object/player/player.iff").hashCode(), 1); //player object
-
-	if (playerObject == NULL) {
-		error("could not create player object");
-		return false;
-	}
-
-	player->transferObject(playerObject, 4);
-
-	Reference<SceneObject*> bank = server->createObject(0xf5b8caa5, 1); //bank
-
-	if (bank == NULL) {
-		error("could not create bank");
-		return false;
-	}
-
-	player->transferObject(bank, 4);
-
-	Reference<SceneObject*> missionBag = server->createObject(0xaa5efb52, 1); //mission bag
-
-	if (missionBag == NULL) {
-		error("could not create mission bag");
-		return false;
-	}
-
-	player->transferObject(missionBag, 4);
-
-	uint32 defaultWeaponCRC = String("object/weapon/melee/unarmed/unarmed_default_player.iff").hashCode();
-
-	Reference<SceneObject*> defaultWeapon = server->createObject(defaultWeaponCRC, 1);
-
-	if (defaultWeapon == NULL) {
-		error("could not create default_weapon");
-		return false;
-	}
-
-	player->transferObject(defaultWeapon, 4);
-
-	// temp
-
-	/*SceneObject* vibro = server->createObject(0x652688CE, 1);
-	player->transferObject(vibro, 4);
-	player->setWeaponID(vibro->getObjectID());
-
-	SceneObject* vibro2 = server->createObject(0x652688CE, 1);
-	inventory->transferObject(vibro2, -1);
-
-	String bharmor = "object/tangible/wearables/armor/bounty_hunter/shared_armor_bounty_hunter_chest_plate.iff";
-	SceneObject* armor = server->createObject(bharmor.hashCode(), 1);
-	inventory->transferObject(armor, -1);
-
-	String backpack = "object/tangible/wearables/backpack/shared_backpack_s01.iff";
-	SceneObject* backpackObject = server->createObject(backpack.hashCode(), 1);
-	inventory->transferObject(backpackObject, -1);*/
-
-	/// Add vehicle
-	/*VehicleControlDevice* vehicleControlDevice = cast<VehicleControlDevice*>( server->createObject(String("object/intangible/vehicle/speederbike_swoop_pcd.iff").hashCode(), 1));
-	VehicleObject* vehicle = cast<VehicleObject*>( server->createObject(String("object/mobile/vehicle/speederbike_swoop.iff").hashCode(), 1));
-	vehicleControlDevice->setControlledObject(vehicle);
-	datapad->transferObject(vehicleControlDevice, -1);*/
-
-	String pole = "object/tangible/fishing/fishing_pole.iff";
-	Reference<SceneObject*> poleObject = server->createObject(pole.hashCode(), 1);
-	inventory->transferObject(poleObject, -1);
-
-	String bait = "object/tangible/fishing/bait/bait_worm.iff";
-	Reference<SceneObject*> baitObject = server->createObject(bait.hashCode(), 1);
-	inventory->transferObject(baitObject, -1);
-
-	/*SceneObject* mission = server->createObject(3741732474UL, 1); // empty mission
-	datapad->transferObject(mission, -1);*/
-
-	//Add a ship
-	Reference<ShipControlDevice*> shipControlDevice = server->createObject(String("object/intangible/ship/sorosuub_space_yacht_pcd.iff").hashCode(), 1).castTo<ShipControlDevice*>();
-	//ShipObject* ship = cast<ShipObject*>( server->createObject(String("object/ship/player/player_sorosuub_space_yacht.iff").hashCode(), 1));
-	Reference<ShipObject*> ship = server->createObject(String("object/ship/player/player_basic_tiefighter.iff").hashCode(), 1).castTo<ShipObject*>();
-
-	shipControlDevice->setControlledObject(ship);
-
-	if (!shipControlDevice->transferObject(ship, 4))
-		info("Adding of ship to device failed");
-	datapad->transferObject(shipControlDevice, -1);
-
-	return true;
-}
-
 void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player) {
 	Zone* zone = server->getZone("tutorial");
 
@@ -588,39 +478,15 @@ void PlayerManagerImplementation::createTutorialBuilding(CreatureObject* player)
 	tutorial->createCellObjects();
 	tutorial->setPublicStructure(true);
 
-	/*int totalCellNumber = tutorial->getTotalCellNumber();
-
-	info("totalCellNumber " + String::valueOf(totalCellNumber), true);*/
-
 	tutorial->initializePosition(System::random(5000), 0, System::random(5000));
 	zone->transferObject(tutorial, -1, true);
 
-	//SceneObject* travelTutorialTerminal = server->createObject((uint32)String("object/tangible/beta/beta_terminal_warp.iff").hashCode(), 1);
-
-	/*	String blueFrogTemplateCRC = "object/tangible/terminal/terminal_character_builder.iff";
-	SceneObject* blueFrogTemplate =  server->createObject(blueFrogTemplateCRC.hashCode(), 1);*/
-
 	SceneObject* cellTut = tutorial->getCell(11);
-	//cellTut->transferObject(travelTutorialTerminal, -1);
 
 	SceneObject* cellTutPlayer = tutorial->getCell(1);
-	//	cellTut->transferObject(blueFrogTemplate, -1);
 
-	//tutorial->insertToZone(zone);
-
-	//addPermission
-
-	//tutorial->togglePermission("ADMIN", player->getFirstName());
-
-	//travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
-	//travelTutorialTerminal->insertToZone(zone);
-	//zone->transferObject(travelTutorialTerminal, -1, true);
-	//	blueFrogTemplate->initializePosition(27.0f, -3.5f, -165.0f);
-	//	blueFrogTemplate->insertToZone(zone);
-
-	//player->initializePosition(27.0f, -3.5f, -165.0f);
 	player->initializePosition(0, 0, -3);
-	//player->setZone(zone);
+
 	cellTutPlayer->transferObject(player, -1);
 	PlayerObject* ghost = player->getPlayerObject();
 	ghost->setSavedTerrainName(zone->getZoneName());
@@ -645,141 +511,15 @@ void PlayerManagerImplementation::createSkippedTutorialBuilding(CreatureObject* 
 	SceneObject* cellTut = tutorial->getCell(1);
 	cellTut->transferObject(travelTutorialTerminal, -1);
 
-	//tutorial->insertToZone(zone);
-
 	travelTutorialTerminal->initializePosition(27.0f, -3.5f, -168.0f);
-	//travelTutorialTerminal->insertToZone(zone);
-	//zone->transferObject(travelTutorialTerminal, -1, true);
 
 	player->initializePosition(27.0f, -3.5f, -165.0f);
-	//player->setZone(zone);
 	cellTut->transferObject(player, -1);
 	PlayerObject* ghost = player->getPlayerObject();
 	ghost->setSavedTerrainName(zone->getZoneName());
 	ghost->setSavedParentID(cellTut->getObjectID());
 
 	tutorial->updateToDatabase();
-}
-
-void PlayerManagerImplementation::createDefaultPlayerItems(CreatureObject* player, const String& profession, const String& templateFile) {
-	String prof;
-
-	try {
-		prof = profession.subString(profession.indexOf('_') + 1);
-	} catch (ArrayIndexOutOfBoundsException& e) {
-		prof = "artisan";
-	}
-
-	String race = templateFile;
-	int ls = race.lastIndexOf('/');
-	int fu = race.indexOf('_');
-	int dot = race.lastIndexOf('.');
-
-	String species = race.subString(ls + 1, fu);
-	String sex = race.subString(fu + 1, dot);
-
-	String gen = "general";
-	String all = "all";
-
-	Vector<StartingItem>* items;
-
-	SceneObject* inventory = player->getSlottedObject("inventory");
-
-	//Make profession items for species
-
-	items = startingItemList->getSkillItems(prof, species, sex);
-
-	if (items == NULL)
-		return;
-
-	for (int j = 0; j < items->size(); ++j) {
-		StartingItem item = items->get(j);
-
-		Reference<SceneObject*> obj = server->createObject(item.getTemplateCRC(), 1);
-
-		if (obj == NULL) {
-			StringBuffer msg;
-			msg << "trying to create unknown starting player object with template 0x" << item.getTemplateCRC();
-			error(msg.toString());
-
-			continue;
-		}
-
-		if (item.createEquipped()) {
-			player->transferObject(obj, 4);
-		} else {
-			inventory->transferObject(obj, -1);
-		}
-	}
-
-	//Make profession items for that apply to all species
-	items = startingItemList->getSkillItems(prof, all, sex);
-	for (int j = 0; j < items->size(); ++j) {
-		StartingItem item = items->get(j);
-
-		Reference<SceneObject*> obj = server->createObject(item.getTemplateCRC(), 1);
-
-		if (obj == NULL) {
-			StringBuffer msg;
-			msg << "trying to create unknown starting player object with template 0x" << item.getTemplateCRC();
-			error(msg.toString());
-
-			continue;
-		}
-
-		if (item.createEquipped()) {
-			player->transferObject(obj, 4);
-		} else {
-			inventory->transferObject(obj, -1);
-		}
-	}
-
-
-	//Make general items for species
-	items = startingItemList->getSkillItems(gen, species, sex);
-	for (int j = 0; j < items->size(); ++j) {
-		StartingItem item = items->get(j);
-
-		Reference<SceneObject*> obj = server->createObject(item.getTemplateCRC(), 1);
-
-		if (obj == NULL) {
-			StringBuffer msg;
-			msg << "trying to create unknown starting player object with template 0x" << item.getTemplateCRC();
-			error(msg.toString());
-
-			continue;
-		}
-
-		if (item.createEquipped()) {
-			player->transferObject(obj, 4);
-		} else {
-			inventory->transferObject(obj, -1);
-		}
-	}
-
-
-	//Make general items that apple to all species
-	items = startingItemList->getSkillItems(gen, all, sex);
-	for (int j = 0; j < items->size(); ++j) {
-		StartingItem item = items->get(j);
-
-		Reference<SceneObject*> obj = server->createObject(item.getTemplateCRC(), 1);
-
-		if (obj == NULL) {
-			StringBuffer msg;
-			msg << "trying to create unknown starting player object with template 0x" << item.getTemplateCRC();
-			error(msg.toString());
-
-			continue;
-		}
-
-		if (item.createEquipped()) {
-			player->transferObject(obj, 4);
-		} else {
-			inventory->transferObject(obj, -1);
-		}
-	}
-
 }
 
 uint8 PlayerManagerImplementation::calculateIncapacitationTimer(CreatureObject* playerCreature, int condition) {

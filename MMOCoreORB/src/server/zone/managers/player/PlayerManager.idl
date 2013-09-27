@@ -250,8 +250,6 @@ class PlayerManager extends Observer implements Logger {
 	
 	@reference
 	public native TangibleObject createHairObject(final string hairObjectFile, final string hairCustomization);
-	public native boolean createAllPlayerObjects(CreatureObject player);
-	public native void createDefaultPlayerItems(CreatureObject player, final string profession, final string templateFile);
 	
 	public native void createTutorialBuilding(CreatureObject player);
 	public native void createSkippedTutorialBuilding(CreatureObject player);
