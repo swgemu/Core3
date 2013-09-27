@@ -764,8 +764,14 @@ void AiAgentImplementation::notifyDespawn(Zone* zone) {
 		return;
 	}
 
+	float respawn = respawnTimer * 1000;
+
+	if (randomRespawn) {
+		respawn = System::random(respawn) + (respawn / 2.f);
+	}
+
 	Reference<Task*> task = new RespawnCreatureTask(_this.get(), zone, level);
-	task->schedule(respawnTimer * 1000);
+	task->schedule(respawn);
 }
 
 void AiAgentImplementation::scheduleDespawn(int timeToDespawn) {
