@@ -11,6 +11,7 @@
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 
 #include "server/zone/packets/tangible/TangibleObjectDeltaMessage3.h"
@@ -716,6 +717,8 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 
 	addSkillMods();
 
+	addWeaponDots();
+
 	// Set default customization
 	SharedTangibleObjectTemplate* templateData =
 			cast<SharedTangibleObjectTemplate*>(prototype->getObjectTemplate());
@@ -1300,5 +1303,42 @@ void CraftingSessionImplementation::addSkillMods() {
 	for (int i = 0; i < skillMods->size(); i++) {
 		VectorMapEntry<String, int> mod = skillMods->elementAt(i);
 		prototype->addSkillMod(SkillModManager::WEARABLE, mod.getKey(), mod.getValue(), false);
+	}
+}
+
+void CraftingSessionImplementation::addWeaponDots() {
+	ManagedReference<TangibleObject*> prototype = this->prototype.get();
+
+	if (!(prototype->isWeaponObject()))
+		return;
+
+	ManagedReference<WeaponObject*> weapon = cast<WeaponObject*>(prototype.get());
+
+	ManagedReference<ManufactureSchematic*> manufactureSchematic = this->manufactureSchematic.get();
+	ManagedReference<DraftSchematic*> draftSchematic = manufactureSchematic->getDraftSchematic();
+
+	Vector<VectorMap<String, int> >* weaponDots = draftSchematic->getDraftSchematicTemplate()->getWeaponDots();
+
+	for (int i = 0; i < weaponDots->size(); i++) {
+		VectorMap<String, int> dot = weaponDots->elementAt(i);
+
+		for (int j = 0; j < dot.size(); j++) {
+			String property = dot.elementAt(j).getKey();
+			int value = dot.elementAt(j).getValue();
+
+			if (property == "type")
+				weapon->addDotType(value);
+			else if (property == "attribute")
+				weapon->addDotAttribute(value);
+			else if (property == "strength")
+				weapon->addDotStrength(value);
+			else if (property == "duration")
+				weapon->addDotDuration(value);
+			else if (property == "potency")
+				weapon->addDotPotency(value);
+			else if (property == "uses")
+				weapon->addDotUses(value);
+
+		}
 	}
 }
