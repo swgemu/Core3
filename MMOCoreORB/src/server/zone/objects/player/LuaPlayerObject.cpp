@@ -30,6 +30,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "hasPermissionGroup", &LuaPlayerObject::hasPermissionGroup },
 		{ "awardBadge", &LuaPlayerObject::awardBadge },
 		{ "hasBadge", &LuaPlayerObject::hasBadge },
+		{ "addHologrindProfession", &LuaPlayerObject::addHologrindProfession },
 		{ 0, 0 }
 };
 
@@ -202,3 +203,24 @@ int LuaPlayerObject::hasBadge(lua_State* L){
 	return 1;
 }
 
+int LuaPlayerObject::addHologrindProfession(lua_State* L){
+	byte profession = lua_tobyte(L, -1);
+
+	realObject->addHologrindProfession(profession);
+
+	return 0;
+}
+
+int LuaPlayerObject::getHologrindProfessions(lua_State* L) {
+	Vector<byte> professions = realObject->getHologrindProfessions();
+
+	lua_newtable(L);
+	for (int i = 0; i < professions.size(); i++) {
+		lua_pushnumber(L, professions.get(i));
+	}
+	for (int i = professions.size(); i > 0; i--) {
+		lua_rawseti(L, -i - 1, i);
+	}
+
+	return 1;
+}

@@ -40,6 +40,8 @@ public:
 	int hasPermissionGroup(lua_State* L);
 	int awardBadge(lua_State* L);
 	int hasBadge(lua_State* L);
+	int addHologrindProfession(lua_State* L);
+	int getHologrindProfessions(lua_State* L);
 
 private:
 	// The pointer to the 'real object' defined in object.cc
