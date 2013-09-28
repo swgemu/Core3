@@ -108,7 +108,7 @@ namespace creature {
 
 class VehicleObject : public CreatureObject {
 public:
-	static const int PAINTCHARGES = 999;
+	static const int PAINTCHARGES = 20;
 
 	VehicleObject();
 
@@ -186,7 +186,7 @@ protected:
 	int paintCount;
 
 public:
-	static const int PAINTCHARGES = 999;
+	static const int PAINTCHARGES = 20;
 
 	VehicleObjectImplementation();
 
