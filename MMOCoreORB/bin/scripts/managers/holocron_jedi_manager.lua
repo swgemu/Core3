@@ -61,27 +61,19 @@ function HolocronJediManager:getGrindableProfessionList()
 	return grindableProfessions
 end
 
-function HolocronJediManager:onPlayerCreation(pCreature)
-	if (pCreature == nil) then
-		return
-	end
-
+function HolocronJediManager:onPlayerCreation(pCreatureObject)
 	local skillList = self:getGrindableProfessionList()
 
-	local creature = LuaCreatureObject(pCreature)
+	self:withCreaturePlayerObject(pCreatureObject, function(playerObject)
+		for i = 1, NUMBEROFPROFESSIONSTOMASTER, 1 do
+			local numberOfSkillsInList = table.getn(skillList)
+			local skillNumber = math.random(1, numberOfSkillsInList)
+			playerObject:addHologrindProfession(skillList[skillNumber][2])
+			table.remove(skillList, skillNumber)
+		end
+	end)
+end
 
-	local pPlayer = creature.getPlayerObject()
-
-	if (pPlayer == nil) then
-		return
-	end
-
-	local player = LuaPlayerObject(pPlayer)
-
-	for i = 1, NUMBEROFPROFESSIONSTOMASTER, 1 do
-		local numberOfSkillsInList = table.getn(skillList)
-		local skillNumber = math.random(1, numberOfSkillsInList)
-		player.addHologrindProfession(skillList[skillNumber][2])
-		table.remove(skillList, skillNumber)
-	end
+function HolocronJediManager:checkForceStatusCommand(pCreatureObject)
+	
 end
