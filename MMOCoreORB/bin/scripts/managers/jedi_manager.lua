@@ -66,7 +66,7 @@ end
 function JediManager:withCreatureAndPlayerObject(pCreatureObject, performThisFunction)
 	return self:withCreatureObject(pCreatureObject, function(creatureObject)
 		return self:withPlayerObject(creatureObject:getPlayerObject(), function(playerObject)
-			performThisFunction(creatureObject, playerObject)
+			return performThisFunction(creatureObject, playerObject)
 		end)
 	end)
 end
