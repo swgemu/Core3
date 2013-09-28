@@ -73,7 +73,26 @@ object_draft_schematic_weapon_lance_nightsister = object_draft_schematic_weapon_
    targetTemplate = "object/weapon/melee/polearm/lance_nightsister.iff",
 
    additionalTemplates = {
-             }
+             },
+
+	weaponDots = {
+		{
+			{"type", 2}, -- 1 = Poison, 2 = Disease, 3 = Fire, 4 = Bleed
+			{"attribute", 0}, -- See CreatureAttributes.h in src for numbers.
+			{"strength", 40},
+			{"duration", 1200},
+			{"potency", 70},
+			{"uses", 9000}
+		},
+		{
+			{"type", 2}, -- 1 = Poison, 2 = Disease, 3 = Fire, 4 = Bleed
+			{"attribute", 2}, -- See CreatureAttributes.h in src for numbers.
+			{"strength", 40},
+			{"duration", 1200},
+			{"potency", 70},
+			{"uses", 9000}
+		}
+	},
 
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_lance_nightsister, "object/draft_schematic/weapon/lance_nightsister.iff")

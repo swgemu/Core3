@@ -74,7 +74,18 @@ object_draft_schematic_weapon_rifle_light_blaster_e11_carbine_quest = object_dra
 
    additionalTemplates = {
               "object/weapon/ranged/carbine/shared_carbine_e11.iff",
-             }
+             },
+
+	weaponDots = {
+		{
+			{"type", 4}, -- 1 = Poison, 2 = Disease, 3 = Fire, 4 = Bleed
+			{"attribute", 0}, -- See CreatureAttributes.h in src for numbers.
+			{"strength", 150},
+			{"duration", 60},
+			{"potency", 75},
+			{"uses", 9000}
+		}
+	},
 
 }
 ObjectTemplates:addTemplate(object_draft_schematic_weapon_rifle_light_blaster_e11_carbine_quest, "object/draft_schematic/weapon/rifle_light_blaster_e11_carbine_quest.iff")
