@@ -30,7 +30,7 @@ JediManager = Object:new {
 -- @param performThisFunction a function that takes a creature object as its argument.
 -- @return whatever performThisFunction returns or nil if the pCreatureObject pointer is nil.
 function JediManager:withCreatureObject(pCreatureObject, performThisFunction)
-	if (pCreatureObject == nil) then
+	if pCreatureObject == nil then
 		return nil
 	end
 	local creatureObject = LuaCreatureObject(pCreatureObject)
@@ -42,7 +42,7 @@ end
 -- @param performThisFunction a function that takes a player object as its argument.
 -- @return whatever performThisFunction returns or nil if the pPlayerObject pointer is nil.
 function JediManager:withPlayerObject(pPlayerObject, performThisFunction)
-	if (pPlayerObject == nil) then
+	if pPlayerObject == nil then
 		return nil
 	end
 	local playerObject = LuaPlayerObject(pPlayerObject)
@@ -54,8 +54,20 @@ end
 -- @param performThisFunction a function that takes a player object as its argument.
 -- @return whatever performThisFunction returns or nil if the pCreatureObject pointer is nil or does not have a player object.
 function JediManager:withCreaturePlayerObject(pCreatureObject, performThisFunction)
-	return self:withCreatureObject(pCreatureObject, function(creatureObject) 
-		return self:withPlayerObject(creatureObject:getPlayerObject(), performThisFunction) 
+	return self:withCreatureObject(pCreatureObject, function(creatureObject)
+		return self:withPlayerObject(creatureObject:getPlayerObject(), performThisFunction)
+	end)
+end
+
+-- Perform the supplied function with a creature object and a player object fetched from the creature object pointer.
+-- @param pCreatureObject a pointer to a creature object.
+-- @param performThisFunction a function that takes a creature object and a player object as its argument.
+-- @return whatever performThisFunction returns or nil if the pCreatureObject pointer is nil or does not have a player object.
+function JediManager:withCreatureAndPlayerObject(pCreatureObject, performThisFunction)
+	return self:withCreatureObject(pCreatureObject, function(creatureObject)
+		return self:withPlayerObject(creatureObject:getPlayerObject(), function(playerObject)
+			performThisFunction(creatureObject, playerObject)
+		end)
 	end)
 end
 
