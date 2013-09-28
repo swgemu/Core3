@@ -59,11 +59,6 @@ namespace jedi {
 class JediManager : public Singleton<JediManager>, public Logger, public Object {
 private:
 	/**
-	 * Pointer to a Lua object.
-	 */
-	Lua* lua;
-
-	/**
 	 * The Jedi progression type currently configured.
 	 */
 	int jediProgressionType;
