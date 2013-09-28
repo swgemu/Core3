@@ -10,6 +10,7 @@
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/VehicleObject.h"
+#include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
 #include "tasks/CallMountTask.h"
@@ -234,4 +235,20 @@ int VehicleControlDeviceImplementation::canBeDestroyed(CreatureObject* player) {
 	}
 
 	return IntangibleObjectImplementation::canBeDestroyed(player);
+}
+
+void VehicleControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
+	SceneObjectImplementation::fillAttributeList(alm, object);
+
+	if( this->controlledObject == NULL )
+		return;
+
+	ManagedReference<VehicleObject*> vehicle = this->controlledObject.get().castTo<VehicleObject*>();
+	if( vehicle == NULL )
+		return;
+
+	if (vehicle->getPaintCount() > 0){
+		alm->insertAttribute("customization_cnt", vehicle->getPaintCount());
+	}
+
 }
