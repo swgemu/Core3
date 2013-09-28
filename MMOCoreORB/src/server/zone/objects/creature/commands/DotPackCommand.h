@@ -235,31 +235,6 @@ public:
 		if (cost < 0)
 			return INSUFFICIENTHAM;
 
-		//timer
-		if (!creature->checkCooldownRecovery(skillName)) {
-			creature->sendSystemMessage("@healing_response:healing_must_wait");
-
-			return GENERALERROR;
-		} else {
-			float modSkill = (float)creature->getSkillMod("healing_range_speed");
-			int delay = (int)round(12.0f - (6.0f * modSkill / 100 ));
-
-			if (creature->hasBuff(BuffCRC::FOOD_HEAL_RECOVERY)) {
-				DelayedBuff* buff = cast<DelayedBuff*>( creature->getBuff(BuffCRC::FOOD_HEAL_RECOVERY));
-
-				if (buff != NULL) {
-					float percent = buff->getSkillModifierValue("heal_recovery");
-
-					delay = round(delay * (100.0f - percent) / 100.0f);
-				}
-			}
-
-			//Force the delay to be at least 4 seconds.
-			delay = (delay < 4) ? 4 : delay;
-
-			creature->addCooldown(skillName, delay * 1000);
-		}
-
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
 		if (object != NULL && !object->isCreatureObject()) {
@@ -293,8 +268,36 @@ public:
 			return GENERALERROR;
 		}
 
-		if (creature != creatureTarget && !creature->isInRange(creatureTarget, dotPack->getRange()))
+		int	range = int(dotPack->getRange() + creature->getSkillMod("healing_range") / 100 * 14);
+
+		if (creature != creatureTarget && !creature->isInRange(creatureTarget, range)){
+			creature->sendSystemMessage("@error_message:target_out_of_range"); //Your target is out of range for this action.
 			return TOOFAR;
+		}
+		//timer
+		if (!creature->checkCooldownRecovery(skillName)) {
+			creature->sendSystemMessage("@healing_response:healing_must_wait"); //You must wait before you can do that.
+
+			return GENERALERROR;
+		} else {
+			float modSkill = (float)creature->getSkillMod("healing_range_speed");
+			int delay = (int)round(12.0f - (6.0f * modSkill / 100 ));
+
+			if (creature->hasBuff(BuffCRC::FOOD_HEAL_RECOVERY)) {
+				DelayedBuff* buff = cast<DelayedBuff*>( creature->getBuff(BuffCRC::FOOD_HEAL_RECOVERY));
+
+				if (buff != NULL) {
+					float percent = buff->getSkillModifierValue("heal_recovery");
+
+					delay = round(delay * (100.0f - percent) / 100.0f);
+				}
+			}
+
+			//Force the delay to be at least 4 seconds.
+			delay = (delay < 4) ? 4 : delay;
+
+			creature->addCooldown(skillName, delay * 1000);
+		}
 
 		Locker clocker(creatureTarget, creature);
 
