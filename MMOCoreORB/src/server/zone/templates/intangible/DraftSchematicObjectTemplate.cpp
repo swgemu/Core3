@@ -142,6 +142,28 @@ void DraftSchematicObjectTemplate::readObject(LuaObject* templateData) {
 		mod.pop();
 	}
 	skillModList.pop();
+
+	LuaObject weaponDotList = templateData->getObjectField("weaponDots");
+	for (int i = 1; i <= weaponDotList.getTableSize(); ++i) {
+		LuaObject dot = weaponDotList.getObjectAt(i);
+		VectorMap<String, int> dotValues;
+
+		for (int j = 1; j <= dot.getTableSize(); ++j) {
+			LuaObject attribute = dot.getObjectAt(j);
+
+			String attrName = attribute.getStringAt(1);
+			int attrValue = attribute.getIntAt(2);
+
+			dotValues.put(attrName, attrValue);
+
+			attribute.pop();
+		}
+
+		weaponDots.add(dotValues);
+
+		dot.pop();
+	}
+	weaponDotList.pop();
 }
 
 Vector<Reference<ResourceWeight*> >* DraftSchematicObjectTemplate::getResourceWeights() {

@@ -317,6 +317,8 @@ public:
 private:
 	void addSkillMods();
 
+	void addWeaponDots();
+
 public:
 	WeakReference<CraftingSession*> _this;
 

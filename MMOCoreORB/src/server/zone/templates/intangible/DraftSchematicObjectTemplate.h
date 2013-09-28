@@ -72,6 +72,8 @@ protected:
 
 	VectorMap<String, int> skillMods;
 
+	Vector<VectorMap<String, int> > weaponDots;
+
 	int labratory;
 
 	bool disableFactory;
@@ -173,6 +175,10 @@ public:
 
     int getSkillMod(const String& mod) {
     	return skillMods.get(mod);
+    }
+
+    Vector<VectorMap<String, int> >* getWeaponDots() {
+    	return &weaponDots;
     }
 
     int getLabratory() {
