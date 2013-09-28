@@ -29,6 +29,11 @@ LuaSuiManager::~LuaSuiManager(){
 }
 
 int LuaSuiManager::sendKeypadSui(lua_State* L) {
+	if (lua_gettop(L) - 1 < 4) {
+		Logger::console.error("incorrect number of arguments for LuaSuiManager::sendKeypadSui");
+		return 0;
+	}
+
 	String callback = lua_tostring(L, -1);
 	String play = lua_tostring(L, -2);
 	SceneObject* creatureSceneObject = (SceneObject*) lua_touserdata(L, -3);
@@ -40,6 +45,11 @@ int LuaSuiManager::sendKeypadSui(lua_State* L) {
 }
 
 int LuaSuiManager::sendConfirmSui(lua_State* L) {
+	if (lua_gettop(L) - 1 < 6) {
+		Logger::console.error("incorrect number of arguments for LuaSuiManager::sendConfirmSui");
+		return 0;
+	}
+
 	String button = lua_tostring(L, -1);
 	String prompt = lua_tostring(L, -2);
 	String callback = lua_tostring(L, -3);
@@ -53,6 +63,11 @@ int LuaSuiManager::sendConfirmSui(lua_State* L) {
 }
 
 int LuaSuiManager::sendInputBox(lua_State* L) {
+	if (lua_gettop(L) - 1 < 6) {
+		Logger::console.error("incorrect number of arguments for LuaSuiManager::sendInputBox");
+		return 0;
+	}
+
 	String button = lua_tostring(L, -1);
 	String prompt = lua_tostring(L, -2);
 	String callback = lua_tostring(L, -3);
@@ -66,6 +81,11 @@ int LuaSuiManager::sendInputBox(lua_State* L) {
 }
 
 int LuaSuiManager::sendMessageBox(lua_State* L) {
+	if (lua_gettop(L) - 1 < 7) {
+		Logger::console.error("incorrect number of arguments for LuaSuiManager::sendMessageBox");
+		return 0;
+	}
+
 	SceneObject* usingObject = (SceneObject*) lua_touserdata(L, -7);
 	SceneObject* targetPlayer = (SceneObject*) lua_touserdata(L, -6);
 	String title = lua_tostring(L, -5);
@@ -80,6 +100,11 @@ int LuaSuiManager::sendMessageBox(lua_State* L) {
 }
 
 int LuaSuiManager::sendListBox(lua_State* L) {
+	if (lua_gettop(L) - 1 < 10) {
+		Logger::console.error("incorrect number of arguments for LuaSuiManager::sendListBox");
+		return 0;
+	}
+
 	SceneObject* usingObject = (SceneObject*) lua_touserdata(L, -10);
 	SceneObject* targetPlayer = (SceneObject*) lua_touserdata(L, -9);
 	String title = lua_tostring(L, -8);
