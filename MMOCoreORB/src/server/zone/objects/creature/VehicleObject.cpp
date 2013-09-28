@@ -20,7 +20,7 @@
  *	VehicleObjectStub
  */
 
-enum {RPC_CHECKINRANGEGARAGE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_SETPOSTURE__INT_BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_STRING_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_REPAIRVEHICLE__CREATUREOBJECT_,RPC_CALCULATEREPAIRCOST__CREATUREOBJECT_,RPC_SENDREPAIRCONFIRMTO__CREATUREOBJECT_,RPC_REFRESHPAINT__,RPC_ISVEHICLEOBJECT__};
+enum {RPC_CHECKINRANGEGARAGE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_SETPOSTURE__INT_BOOL_,RPC_SENDMESSAGE__BASEPACKET_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_BOOL_,RPC_INFLICTDAMAGE__TANGIBLEOBJECT_INT_FLOAT_BOOL_STRING_BOOL_,RPC_HEALDAMAGE__TANGIBLEOBJECT_INT_INT_BOOL_,RPC_ADDDEFENDER__SCENEOBJECT_,RPC_REMOVEDEFENDER__SCENEOBJECT_,RPC_SETDEFENDER__SCENEOBJECT_,RPC_ISATTACKABLEBY__CREATUREOBJECT_,RPC_NOTIFYOBJECTDESTRUCTIONOBSERVERS__TANGIBLEOBJECT_INT_,RPC_HANDLEOBJECTMENUSELECT__CREATUREOBJECT_BYTE_,RPC_REPAIRVEHICLE__CREATUREOBJECT_,RPC_CALCULATEREPAIRCOST__CREATUREOBJECT_,RPC_SENDREPAIRCONFIRMTO__CREATUREOBJECT_,RPC_REFRESHPAINT__,RPC_GETPAINTCOUNT__,RPC_ISVEHICLEOBJECT__};
 
 VehicleObject::VehicleObject() : CreatureObject(DummyConstructorParameter::instance()) {
 	VehicleObjectImplementation* _implementation = new VehicleObjectImplementation();
@@ -307,6 +307,19 @@ void VehicleObject::refreshPaint() {
 		_implementation->refreshPaint();
 }
 
+int VehicleObject::getPaintCount() {
+	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETPAINTCOUNT__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getPaintCount();
+}
+
 bool VehicleObject::isVehicleObject() {
 	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -516,8 +529,11 @@ void VehicleObjectImplementation::setDefender(SceneObject* defender) {
 bool VehicleObjectImplementation::isAttackableBy(CreatureObject* object) {
 	// server/zone/objects/creature/VehicleObject.idl():  		CreatureObject creature = super.linkedCreature;
 	ManagedReference<CreatureObject* > creature = CreatureObjectImplementation::linkedCreature.getForUpdate();
+	// server/zone/objects/creature/VehicleObject.idl():  		if 
+	if (creature == NULL || isDestroyed())	// server/zone/objects/creature/VehicleObject.idl():  			return false;
+	return false;
 	// server/zone/objects/creature/VehicleObject.idl():  		return 
-	if (creature == NULL)	// server/zone/objects/creature/VehicleObject.idl():  			return false;
+	if (object->getZone() != getZone())	// server/zone/objects/creature/VehicleObject.idl():  			return false;
 	return false;
 	// server/zone/objects/creature/VehicleObject.idl():  		return creature.isAttackableBy(object);
 	return creature->isAttackableBy(object);
@@ -526,6 +542,11 @@ bool VehicleObjectImplementation::isAttackableBy(CreatureObject* object) {
 void VehicleObjectImplementation::refreshPaint() {
 	// server/zone/objects/creature/VehicleObject.idl():  		paintCount = PAINTCHARGES;
 	paintCount = PAINTCHARGES;
+}
+
+int VehicleObjectImplementation::getPaintCount() {
+	// server/zone/objects/creature/VehicleObject.idl():  		return paintCount;
+	return paintCount;
 }
 
 bool VehicleObjectImplementation::isVehicleObject() {
@@ -634,6 +655,11 @@ void VehicleObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			refreshPaint();
 		}
 		break;
+	case RPC_GETPAINTCOUNT__:
+		{
+			resp->insertSignedInt(getPaintCount());
+		}
+		break;
 	case RPC_ISVEHICLEOBJECT__:
 		{
 			resp->insertBoolean(isVehicleObject());
@@ -710,6 +736,10 @@ void VehicleObjectAdapter::sendRepairConfirmTo(CreatureObject* player) {
 
 void VehicleObjectAdapter::refreshPaint() {
 	(static_cast<VehicleObject*>(stub))->refreshPaint();
+}
+
+int VehicleObjectAdapter::getPaintCount() {
+	return (static_cast<VehicleObject*>(stub))->getPaintCount();
 }
 
 bool VehicleObjectAdapter::isVehicleObject() {

@@ -83,6 +83,20 @@ using namespace server::zone::objects::scene;
 
 namespace server {
 namespace zone {
+namespace packets {
+namespace scene {
+
+class AttributeListMessage;
+
+} // namespace scene
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::scene;
+
+namespace server {
+namespace zone {
 
 class Zone;
 
@@ -150,6 +164,8 @@ public:
 
 	int canBeDestroyed(CreatureObject* player);
 
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
+
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
 
@@ -196,6 +212,8 @@ public:
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
 	int canBeDestroyed(CreatureObject* player);
+
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	WeakReference<VehicleControlDevice*> _this;
 
