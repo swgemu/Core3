@@ -56,13 +56,8 @@ namespace jedi {
 /**
  * Singleton class with a common interface for all different Jedi progression systems.
  */
-class JediManager : public Singleton<JediManager>, public Logger, public Object {
+class JediManager : public Singleton<JediManager>, public Logger, public Object, public ReadWriteLock {
 private:
-	/**
-	 * Pointer to a Lua object.
-	 */
-	Lua* lua;
-
 	/**
 	 * The Jedi progression type currently configured.
 	 */
@@ -134,6 +129,8 @@ public:
 	 * @param creature the creature that performed the command.
 	 */
 	void checkForceStatusCommand(CreatureObject* creature);
+
+	String getJediManagerName();
 };
 
 }

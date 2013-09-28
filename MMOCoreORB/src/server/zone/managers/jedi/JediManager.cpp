@@ -43,6 +43,7 @@ which carries forward this exception.
 */
 
 #include "JediManager.h"
+#include "server/zone/managers/director/DirectorManager.h"
 
 JediManager::JediManager() : Logger("JediManager") {
 	jediProgressionType = NOJEDIPROGRESSION;
@@ -52,55 +53,67 @@ JediManager::~JediManager() {
 
 }
 
+String JediManager::getJediManagerName() {
+	ReadLocker locker(this);
+
+	String ret = jediManagerName;
+
+	return ret;
+}
+
 void JediManager::loadConfiguration(Lua* luaEngine) {
-	lua = luaEngine;
+	luaEngine->runFile("scripts/managers/jedi_manager.lua");
 
-	lua->runFile("scripts/managers/jedi_manager.lua");
-
-	jediProgressionType = lua->getGlobalInt(String("jediProgressionType"));
+	jediProgressionType = luaEngine->getGlobalInt(String("jediProgressionType"));
 
 	switch (jediProgressionType) {
 	case HOLOCRONJEDIPROGRESSION:
-		lua->runFile("scripts/managers/holocron_jedi_manager.lua");
+		luaEngine->runFile("scripts/managers/holocron_jedi_manager.lua");
 		break;
 	case VILLAGEJEDIPROGRESSION:
-		lua->runFile("scripts/managers/village_jedi_manager.lua");
+		luaEngine->runFile("scripts/managers/village_jedi_manager.lua");
 		break;
 	case CUSTOMJEDIPROGRESSION:
-		lua->runFile(lua->getGlobalString(String("customJediProgressionFile")));
+		luaEngine->runFile(luaEngine->getGlobalString(String("customJediProgressionFile")));
 		break;
 	default:
 		break;
 	}
 
-	jediManagerName = lua->getGlobalString(String("jediManagerName"));
+	Locker writeLock(this);
+
+	jediManagerName = luaEngine->getGlobalString(String("jediManagerName"));
 
 	info("Loaded.", true);
 }
 
 void JediManager::onPlayerCreation(CreatureObject* creature) {
-	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), jediManagerName, "onPlayerCreation", 0);
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), getJediManagerName(), "onPlayerCreation", 0);
 	luaCheckForceStatusCommand << creature;
 
 	lua->callFunction(&luaCheckForceStatusCommand);
 }
 
 void JediManager::onPlayerLogin(CreatureObject* creature) {
-	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), jediManagerName, "onPlayerLogin", 0);
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), getJediManagerName(), "onPlayerLogin", 0);
 	luaCheckForceStatusCommand << creature;
 
 	lua->callFunction(&luaCheckForceStatusCommand);
 }
 
 void JediManager::onPlayerLogout(CreatureObject* creature) {
-	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), jediManagerName, "onPlayerLogout", 0);
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), getJediManagerName(), "onPlayerLogout", 0);
 	luaCheckForceStatusCommand << creature;
 
 	lua->callFunction(&luaCheckForceStatusCommand);
 }
 
 void JediManager::checkForceStatusCommand(CreatureObject* creature) {
-	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), jediManagerName, "checkForceStatusCommand", 0);
+	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), getJediManagerName(), "checkForceStatusCommand", 0);
 	luaCheckForceStatusCommand << creature;
 
 	lua->callFunction(&luaCheckForceStatusCommand);
