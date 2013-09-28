@@ -2481,35 +2481,6 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 	}
 }
 
-void PlayerManagerImplementation::generateHologrindSkills(CreatureObject* player) {
-	PlayerObject* ghost = player->getPlayerObject();
-
-	SortedVector<uint8> profs;
-	//Fill the total profs array.
-	for (int i = 0; i < 32; ++i)
-		profs.put(i + 1);
-
-	// TODO: Remove ungrindable professions (temporary.)
-	// Commando.
-	profs.drop(5);
-	// Droid Engineer.
-	profs.drop(16);
-	// Bio-Engineer.
-	profs.drop(20);
-	// Creature Handler.
-	profs.drop(21);
-	// Politician.
-	profs.drop(32);
-
-	uint8 totalProfsNeeded = 6; // Six for the time being (static amount), if number is altered, please also change method in awardBadge that calls finishHologrind.
-
-	for (int i = 0; i < totalProfsNeeded; ++i) {
-		uint8 prof = profs.remove(System::random(profs.size() - 1));
-		ghost->addHologrindProfession(prof);
-	}
-
-}
-
 void PlayerManagerImplementation::sendStartingLocationsTo(CreatureObject* player) {
 	StartingLocationListMessage* slm = new StartingLocationListMessage(player);
 	startingLocationList.insertToMessage(slm);

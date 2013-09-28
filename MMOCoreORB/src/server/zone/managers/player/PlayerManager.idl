@@ -268,12 +268,6 @@ class PlayerManager extends Observer implements Logger {
 	public native void updatePermissionLevel(CreatureObject player, int adminLevel = 1);
 	public native void updatePermissionName(CreatureObject player, int adminLevel);
 	
-	/**
-	 * Generates 5 random hologrind professions for the player.
-	 * @param player The player whose hologrind professions should be set.
-	 */
-	public native void generateHologrindSkills(CreatureObject player);
-	
 	public void addPlayer(CreatureObject player) {
 		nameMap.put(player);
 	}
