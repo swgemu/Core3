@@ -71,7 +71,7 @@ void JunkdealerCreatureImplementation::sendInitialMessage(CreatureObject* player
 			break;
 		}
 		case JUNKCONVLILABORVO:{
-			stfname = "s_3c06418f"; //TD
+			stfname = "s_ea90afa0";
 			break;
 		}
 		case JUNKCONVMALIKVISTAL:{
@@ -162,8 +162,10 @@ void JunkdealerCreatureImplementation::sendInitialChoices(CreatureObject* player
 			slist->insertOption(getConversationString(JUNKCONVDENDERTHEED), "s_54fab04f");//TD
 			break;
 		}
-		case JUNKCONVLILABORVO:{ //TD
-			slist->insertOption(getConversationString(JUNKCONVLILABORVO), "s_54fab04f");//TD
+		case JUNKCONVLILABORVO:{
+			slist->insertOption(getConversationString(JUNKCONVLILABORVO), "s_a16cfd3b");//I hear that you are the person to see if one has something they need to move.
+			slist->insertOption(getConversationString(JUNKCONVLILABORVO), "s_e8b03c7c");//This seems a little shady. I don't think I want to be involved.
+			sOptionsMsg ="dealer_specific-1";
 			break;
 		}
 		case JUNKCONVMALIKVISTAL:{ //TD
@@ -303,6 +305,10 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 						sendConversationContinue(player,stffile,"s_86df00aa","s_f2e88b32","s_fbe44b83");
 						break;
 					}
+					case JUNKCONVLILABORVO:{
+						sendConversationContinue(player,stffile,"s_113dbce8","s_1875d09c","s_210d33b4");
+						break;
+					}
 				}
 				break;
 			}
@@ -322,6 +328,10 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 					}
 					case JUNKCONVQUICHDANTOOINE:{
 						sendConversationTerminate(player,stffile,"s_35b56f0a");
+						break;
+					}
+					case JUNKCONVLILABORVO:{
+						sendConversationTerminate(player,stffile,"s_98d18f02");
 						break;
 					}
 				}
@@ -349,6 +359,11 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 						sendConversationContinue(player,stffile,"s_5bc0c939","s_463bc6c4","s_6e11f342");
 						break;
 					}
+					case JUNKCONVLILABORVO:{
+						sendConversationTerminate(player,stffile,"s_7edb783c");
+						createSellJunkLootSelection(player);
+						break;
+					}
 				}
 				break;
 			}
@@ -368,6 +383,10 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 					}
 					case JUNKCONVQUICHDANTOOINE:{
 						sendConversationTerminate(player,stffile,"s_f5349262");
+						break;
+					}
+					case JUNKCONVLILABORVO:{
+						sendConversationTerminate(player,stffile,"s_a83a2e6b");
 						break;
 					}
 				}

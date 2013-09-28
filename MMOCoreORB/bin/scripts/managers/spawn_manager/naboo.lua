@@ -390,7 +390,7 @@ naboo_static_spawns = {
 	{"junk_dealer",0,-5222.4,6,4217.4,-137,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 
 	{"junk_dealer",0,1371.6,13,2705.3,177,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
-	{"junk_dealer",0,4809.5,4.2,-4663,112,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
+	{"junk_lila",0,4809.5,4.2,-4663,112,0, "", "Lila Rawlkiss",JUNKWEAPONS,JUNKCONVLILABORVO},
 	{"junk_dealer",0,-5885.3,6,4214.7,83,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	{"medic",60,-11.5446,2.12878,75.9709,0,5475487, "conversation", ""},
 	{"mercenary",60,-6.34119,0.6,-9.37965,360.011,5475480, "conversation", ""},
