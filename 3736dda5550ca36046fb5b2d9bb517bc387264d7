@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da3975d1_b7acf08d",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/VehicleControlDeviceImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-09-28T15:18:37Z",
+      "side": 1,
+      "message": "check for null on controlledObject",
+      "revId": "3736dda5550ca36046fb5b2d9bb517bc387264d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
