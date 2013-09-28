@@ -46,6 +46,8 @@ which carries forward this exception.
 
 JediManager::JediManager() : Logger("JediManager") {
 	jediProgressionType = NOJEDIPROGRESSION;
+
+	lua = NULL;
 }
 
 JediManager::~JediManager() {
