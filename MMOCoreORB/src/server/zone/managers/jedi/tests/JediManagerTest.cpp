@@ -164,6 +164,7 @@ TEST_F(JediManagerTest, ShouldReadTheJediProgressionSystemNameAtLoadConfiguratio
 	jediManager->loadConfiguration(&mockLua);
 }
 
+//TODO Add test of the start method.
 //TODO Add test of the onPlayerCreation method.
 //TODO Add test of the onPlayerLogin method.
 //TODO Add test of the onPlayerLogout method.

@@ -25,6 +25,10 @@ JediManager = Object:new {
 	startingEvent = nil,
 }
 
+function JediManager:start()
+	-- Default behaviour for the start event, do nothing.
+end
+
 function JediManager:onPlayerCreation(pCreature)
 	-- Default behaviour for the onPlayerCreation event, do nothing.
 end
