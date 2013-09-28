@@ -1386,6 +1386,7 @@ int DirectorManager::runScreenPlays() {
 		lua = new Lua();
 		initializeLuaEngine(lua);
 		ret = loadScreenPlays(lua);
+		JediManager::instance()->loadConfiguration(lua);
 
 		localLua.set(lua);
 	}
