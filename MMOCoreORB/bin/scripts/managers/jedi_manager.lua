@@ -29,7 +29,7 @@ JediManager = Object:new {
 -- @param pCreatureObject a pointer to a creature object.
 -- @param performThisFunction a function that takes a creature object as its argument.
 -- @return whatever performThisFunction returns or nil if the pCreatureObject pointer is nil.
-function JediManager:withCreatureObject(pCreatureObject, performThisFunction)
+function JediManager.withCreatureObject(pCreatureObject, performThisFunction)
 	if pCreatureObject == nil then
 		return nil
 	end
@@ -41,7 +41,7 @@ end
 -- @param pPlayerObject a pointer to a player object.
 -- @param performThisFunction a function that takes a player object as its argument.
 -- @return whatever performThisFunction returns or nil if the pPlayerObject pointer is nil.
-function JediManager:withPlayerObject(pPlayerObject, performThisFunction)
+function JediManager.withPlayerObject(pPlayerObject, performThisFunction)
 	if pPlayerObject == nil then
 		return nil
 	end
@@ -53,9 +53,9 @@ end
 -- @param pCreatureObject a pointer to a creature object.
 -- @param performThisFunction a function that takes a player object as its argument.
 -- @return whatever performThisFunction returns or nil if the pCreatureObject pointer is nil or does not have a player object.
-function JediManager:withCreaturePlayerObject(pCreatureObject, performThisFunction)
-	return self:withCreatureObject(pCreatureObject, function(creatureObject)
-		return self:withPlayerObject(creatureObject:getPlayerObject(), performThisFunction)
+function JediManager.withCreaturePlayerObject(pCreatureObject, performThisFunction)
+	return JediManager.withCreatureObject(pCreatureObject, function(creatureObject)
+		return JediManager.withPlayerObject(creatureObject:getPlayerObject(), performThisFunction)
 	end)
 end
 
@@ -63,9 +63,9 @@ end
 -- @param pCreatureObject a pointer to a creature object.
 -- @param performThisFunction a function that takes a creature object and a player object as its argument.
 -- @return whatever performThisFunction returns or nil if the pCreatureObject pointer is nil or does not have a player object.
-function JediManager:withCreatureAndPlayerObject(pCreatureObject, performThisFunction)
-	return self:withCreatureObject(pCreatureObject, function(creatureObject)
-		return self:withPlayerObject(creatureObject:getPlayerObject(), function(playerObject)
+function JediManager.withCreatureAndPlayerObject(pCreatureObject, performThisFunction)
+	return JediManager.withCreatureObject(pCreatureObject, function(creatureObject)
+		return JediManager.withPlayerObject(creatureObject:getPlayerObject(), function(playerObject)
 			return performThisFunction(creatureObject, playerObject)
 		end)
 	end)
@@ -87,7 +87,9 @@ function JediManager:onPlayerLogout(pCreatureObject)
 	-- Default behaviour for the onPlayerLogout event, do nothing.
 end
 
-function JediManager:checkForceStatusCommand(pCreatureObject)
+function JediManager.checkForceStatusCommand(pCreatureObject)
 	-- Default behaviour for the checkForceStatus command, do nothing.
 end
+
+return JediManager
 
