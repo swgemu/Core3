@@ -1,5 +1,5 @@
 package.path = package.path .. ";scripts/managers/?.lua"
-require("jedi_manager")
+JediManager = require("jedi_manager")
 
 jediManagerName = "HolocronJediManager"
 
@@ -61,10 +61,9 @@ function HolocronJediManager:getGrindableProfessionList()
 	return grindableProfessions
 end
 
-function HolocronJediManager:onPlayerCreation(pCreatureObject)
-	local skillList = self:getGrindableProfessionList()
-
-	self:withCreaturePlayerObject(pCreatureObject, function(playerObject)
+function HolocronJediManager.onPlayerCreation(pCreatureObject)
+	local skillList = HolocronJediManager.getGrindableProfessionList()
+	HolocronJediManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
 		for i = 1, NUMBEROFPROFESSIONSTOMASTER, 1 do
 			local numberOfSkillsInList = table.getn(skillList)
 			local skillNumber = math.random(1, numberOfSkillsInList)
@@ -74,8 +73,8 @@ function HolocronJediManager:onPlayerCreation(pCreatureObject)
 	end)
 end
 
-function HolocronJediManager:getProfessionNameFromBadgeNumber(badgeNumber)
-	local skillList = self:getGrindableProfessionList()
+function HolocronJediManager.getProfessionNameFromBadgeNumber(badgeNumber)
+	local skillList = HolocronJediManager.getGrindableProfessionList()
 	for i = 1, table.getn(skillList), 1 do
 		if skillList[i][2] == badgeNumber then
 			return skillList[i][3]
@@ -84,13 +83,15 @@ function HolocronJediManager:getProfessionNameFromBadgeNumber(badgeNumber)
 	return "Unknown profession"
 end
 
-function HolocronJediManager:checkForceStatusCommand(pCreatureObject)
-	self:withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject)
+function HolocronJediManager.checkForceStatusCommand(pCreatureObject)
+	HolocronJediManager.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject)
 		creatureObject:sendSystemMessage("Debug information for the holocron jedi progression system.")
 		creatureObject:sendSystemMessage("Professions selected for this player:")
 		local professions = playerObject:getHologrindProfessions()
 		for i = 1, table.getn(professions), 1 do
-			creatureObject:sendSystemMessage(self:getProfessionNameFromBadgeNumber(professions[i]))
+			creatureObject:sendSystemMessage(HolocronJediManager.getProfessionNameFromBadgeNumber(professions[i]))
 		end
 	end)
 end
+
+return HolocronJediManager
