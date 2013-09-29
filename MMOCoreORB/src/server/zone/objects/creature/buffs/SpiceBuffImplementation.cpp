@@ -18,8 +18,8 @@ void SpiceBuffImplementation::deactivate(bool removeModifiers) {
 		uint32 crc = String("spice." + buffName + ".down").hashCode();
 		ManagedReference<Buff*> downer = new SpiceDownerBuff(creature.get(), buffName, crc, 120);
 		setDownerAttributes(creature.get(), downer);
-
 		creature.get()->addBuff(downer);
+		creature.get()->doAnimation("heavy_cough_vomit");
 	}
 }
 
