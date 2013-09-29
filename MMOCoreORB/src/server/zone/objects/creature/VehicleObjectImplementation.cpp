@@ -35,24 +35,42 @@ void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 
 void VehicleObjectImplementation::notifyInsertToZone(Zone* zone) {
 	SceneObjectImplementation::notifyInsertToZone(zone);
+
+	if( this->linkedCreature == NULL )
+		return;
+
+	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
+	if( linkedCreature == NULL )
+		return;
+
+	// Decay customized paint (if any)
 	if (paintCount > 0){
-		ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
-		if (linkedCreature != NULL && paintCount == 1){
-			linkedCreature->sendSystemMessage("the paint is fading out");
+
+		// Paint starts to fade when there are 4 calls left
+		if (paintCount <= 4){
+
+			// Send player notification of decay
+			if( paintCount == 1 ){
+				linkedCreature->sendSystemMessage("@pet/pet_menu:customization_gone_veh"); // "Your vehicle's customization has completely faded away."
+			}
+			else{
+				linkedCreature->sendSystemMessage("@pet/pet_menu:customization_fading_veh"); // "Your vehicle's customization is fading away."
+			}
+
+			// Fade color to white
 			String appearanceFilename = getObjectTemplate()->getAppearanceFilename();
 			VectorMap<String, Reference<CustomizationVariable*> > variables;
 			AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(appearanceFilename.hashCode(), variables, false);
 			for(int i = 0; i< variables.size(); ++i){
 				String varkey = variables.elementAt(i).getKey();
 				if (varkey.contains("color")){
-					//TODO:set the correct default value for each vehicle
-					setCustomizationVariable(varkey, 0, true);
+					setCustomizationVariable(varkey, paintCount-1, true); // Palette values 3,2,1,0 are grey->white
 				}
 			}
 		}
 		--paintCount;
 	}
-	//inflictDamage(_this.get(), 0, System::random(50), true);
+
 }
 
 bool VehicleObjectImplementation::checkInRangeGarage() {
