@@ -49,7 +49,8 @@ object_tangible_skill_buff_skill_buff_unarmed_speed = object_tangible_skill_buff
 	duration = 300,
 	useCount = 5,
 	modifiers = { "unarmed_accuracy", 10 },
-	buffName = "unarmed_accuracy"
+	buffName = "unarmed_accuracy",
+	buffCRC = 0x133ADA2F
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_skill_buff_unarmed_speed, "object/tangible/skill_buff/skill_buff_unarmed_speed.iff")

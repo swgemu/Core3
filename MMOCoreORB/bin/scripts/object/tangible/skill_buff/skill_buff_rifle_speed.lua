@@ -49,7 +49,8 @@ object_tangible_skill_buff_skill_buff_rifle_speed = object_tangible_skill_buff_s
 	duration = 300,
 	useCount = 5,
 	modifiers = { "rifle_speed", 10 },
-	buffName = "rifle_speed"
+	buffName = "rifle_speed",
+	buffCRC = 0x1F7E043E
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_skill_buff_rifle_speed, "object/tangible/skill_buff/skill_buff_rifle_speed.iff")

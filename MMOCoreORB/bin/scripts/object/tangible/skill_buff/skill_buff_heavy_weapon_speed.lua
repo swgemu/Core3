@@ -49,7 +49,8 @@ object_tangible_skill_buff_skill_buff_heavy_weapon_speed = object_tangible_skill
 	duration = 300,
 	useCount = 5,
 	modifiers = { "heavyweapon_speed", 10 },
-	buffName = "heavyweapon_speed"
+	buffName = "heavyweapon_speed",
+	buffCRC = 0x311A7044
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_skill_buff_heavy_weapon_speed, "object/tangible/skill_buff/skill_buff_heavy_weapon_speed.iff")

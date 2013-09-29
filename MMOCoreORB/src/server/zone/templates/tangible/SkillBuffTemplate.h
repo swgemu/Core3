@@ -14,6 +14,7 @@ class SkillBuffTemplate : public SharedTangibleObjectTemplate {
 	int duration;
 	VectorMap<String, float> modifiers;
 	String buffName;
+	unsigned int buffCRC;
 
 public:
 	SkillBuffTemplate() {
@@ -42,6 +43,8 @@ public:
 
 		buffName = templateData->getStringField("buffName");
 
+		buffCRC = templateData->getIntField("buffCRC");
+
     }
 
     inline String& getBuffName() {
@@ -58,6 +61,10 @@ public:
 
 	bool isSkillBuffTemplate() {
 		return true;
+	}
+
+	inline unsigned int getBuffCRC(){
+		return buffCRC;
 	}
 
 };
