@@ -49,7 +49,8 @@ object_tangible_skill_buff_skill_buff_ranged_defense = object_tangible_skill_buf
 	duration = 300,
 	useCount = 5,
 	modifiers = { "ranged_defense", 10 },
-	buffName = "ranged_defense"
+	buffName = "ranged_defense",
+	buffCRC = 0xA6407812
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_skill_buff_ranged_defense, "object/tangible/skill_buff/skill_buff_ranged_defense.iff")

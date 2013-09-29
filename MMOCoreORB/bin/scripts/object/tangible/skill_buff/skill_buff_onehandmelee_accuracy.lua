@@ -49,7 +49,8 @@ object_tangible_skill_buff_skill_buff_onehandmelee_accuracy = object_tangible_sk
 	duration = 300,
 	useCount = 5,
 	modifiers = { "onehandmelee_accuracy", 10 },
-	buffName = "onehandmelee_accuracy"
+	buffName = "onehandmelee_accuracy",
+	buffCRC = 0x05C34219
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_skill_buff_onehandmelee_accuracy, "object/tangible/skill_buff/skill_buff_onehandmelee_accuracy.iff")

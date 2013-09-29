@@ -49,7 +49,8 @@ object_tangible_skill_buff_skill_buff_polearm_speed = object_tangible_skill_buff
 	duration = 300,
 	useCount = 5,
 	modifiers = { "polearm_speed", 10 },
-	buffName = "polearm_speed"
+	buffName = "polearm_speed",
+	buffCRC = 0x6F675FB6
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_skill_buff_polearm_speed, "object/tangible/skill_buff/skill_buff_polearm_speed.iff")

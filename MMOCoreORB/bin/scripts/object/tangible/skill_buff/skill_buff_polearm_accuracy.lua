@@ -49,7 +49,8 @@ object_tangible_skill_buff_skill_buff_polearm_accuracy = object_tangible_skill_b
 	duration = 300,
 	useCount = 5,
 	modifiers = { "polearm_accuracy", 10 },
-	buffName = "polearm_accuracy"
+	buffName = "polearm_accuracy",
+	buffCRC = 0xF0C5EEED
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_skill_buff_polearm_accuracy, "object/tangible/skill_buff/skill_buff_polearm_accuracy.iff")
