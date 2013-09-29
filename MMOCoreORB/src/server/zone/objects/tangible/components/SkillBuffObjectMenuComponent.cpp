@@ -50,7 +50,7 @@ int SkillBuffObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 		return 1;
 	}
 
-	unsigned int buffCRC = skillBuff->getBuffName().hashCode();
+	unsigned int buffCRC = skillBuff->getBuffCRC();
 	int duration = skillBuff->getDuration();
 	VectorMap<String, float>* modifiers = skillBuff->getModifiers();
 

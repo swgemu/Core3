@@ -49,7 +49,8 @@ object_tangible_skill_buff_skill_buff_thrown_speed = object_tangible_skill_buff_
 	duration = 300,
 	useCount = 5,
 	modifiers = { "thrown_speed", 10 },
-	buffName = "thrown_speed"
+	buffName = "thrown_speed",
+	buffCRC = 0x232EE11E
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_skill_buff_thrown_speed, "object/tangible/skill_buff/skill_buff_thrown_speed.iff")

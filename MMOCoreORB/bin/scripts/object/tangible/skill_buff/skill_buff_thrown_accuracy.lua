@@ -49,7 +49,8 @@ object_tangible_skill_buff_skill_buff_thrown_accuracy = object_tangible_skill_bu
 	duration = 300,
 	useCount = 5,
 	modifiers = { "thrown_accuracy", 10 },
-	buffName = "thrown_accuracy"
+	buffName = "thrown_accuracy",
+	buffCRC = 0xBFEEDABF
 }
 
 ObjectTemplates:addTemplate(object_tangible_skill_buff_skill_buff_thrown_accuracy, "object/tangible/skill_buff/skill_buff_thrown_accuracy.iff")
