@@ -43,6 +43,7 @@
 
 object_tangible_dungeon_corellian_corvette_corvette_search_imperial_destroy_03 = object_tangible_dungeon_corellian_corvette_shared_corvette_search_imperial_destroy_03:new {
 
+objectMenuComponent = {"Lua", "searchable_object_menucomponent"}
 }
 
 ObjectTemplates:addTemplate(object_tangible_dungeon_corellian_corvette_corvette_search_imperial_destroy_03, "object/tangible/dungeon/corellian_corvette/corvette_search_imperial_destroy_03.iff")

@@ -30,7 +30,7 @@ lt_velso = Creature:new {
 	templates = {"object/mobile/dressed_corvette_imperial_velso.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "ImperialDestroyConversationTemplate",
 	attacks = {
 	}
 }
