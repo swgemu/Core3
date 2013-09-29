@@ -38,6 +38,11 @@ includeFile("conversations/dungeon/warren/dirk_maggin_conv.lua")
 includeFile("conversations/dungeon/warren/captain_heff_conv.lua")
 includeFile("conversations/dungeon/warren/manx_try_conv.lua")
 
+-- Corvette
+includeFile("conversations/dungeon/corvette/imperial_destroy_conv.lua")
+--includeFile("conversations/dungeon/corvette/imperial_pilot_conv.lua")
+--includeFile("conversations/dungeon/corvette/imperial_assassin_conv.lua")
+
 -- ** OTHER **
 
 includeFile("conversations/trainer/trainers_conv.lua")
