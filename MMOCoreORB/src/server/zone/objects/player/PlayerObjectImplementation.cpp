@@ -1129,7 +1129,7 @@ void PlayerObjectImplementation::notifyOnline() {
 	VisibilityManager::instance()->login(playerCreature);
 
 	//Login to jedi manager
-	JediManager::instance()->onPlayerLogin(playerCreature);
+	JediManager::instance()->onPlayerLoggedIn(playerCreature);
 }
 
 void PlayerObjectImplementation::notifyOffline() {
@@ -1158,7 +1158,7 @@ void PlayerObjectImplementation::notifyOffline() {
 	VisibilityManager::instance()->logout(playerCreature);
 
 	//Logout from jedi manager
-	JediManager::instance()->onPlayerLogout(playerCreature);
+	JediManager::instance()->onPlayerLoggedOut(playerCreature);
 }
 
 void PlayerObjectImplementation::setLanguageID(byte language, bool notifyClient) {

@@ -93,25 +93,25 @@ void JediManager::start(Lua* luaEngine) {
 	luaEngine->callFunction(&luaCheckForceStatusCommand);
 }
 
-void JediManager::onPlayerCreation(CreatureObject* creature) {
+void JediManager::onPlayerCreated(CreatureObject* creature) {
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
-	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), getJediManagerName(), "onPlayerCreation", 0);
+	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), getJediManagerName(), "onPlayerCreated", 0);
 	luaCheckForceStatusCommand << creature;
 
 	lua->callFunction(&luaCheckForceStatusCommand);
 }
 
-void JediManager::onPlayerLogin(CreatureObject* creature) {
+void JediManager::onPlayerLoggedIn(CreatureObject* creature) {
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
-	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), getJediManagerName(), "onPlayerLogin", 0);
+	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), getJediManagerName(), "onPlayerLoggedIn", 0);
 	luaCheckForceStatusCommand << creature;
 
 	lua->callFunction(&luaCheckForceStatusCommand);
 }
 
-void JediManager::onPlayerLogout(CreatureObject* creature) {
+void JediManager::onPlayerLoggedOut(CreatureObject* creature) {
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
-	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), getJediManagerName(), "onPlayerLogout", 0);
+	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), getJediManagerName(), "onPlayerLoggedOut", 0);
 	luaCheckForceStatusCommand << creature;
 
 	lua->callFunction(&luaCheckForceStatusCommand);

@@ -71,22 +71,31 @@ function JediManager.withCreatureAndPlayerObject(pCreatureObject, performThisFun
 	end)
 end
 
+-- Default handling of the start event.
 function JediManager:start()
 	-- Default behaviour for the start event, do nothing.
 end
 
-function JediManager:onPlayerCreation(pCreatureObject)
-	-- Default behaviour for the onPlayerCreation event, do nothing.
+-- Default handling of the onPlayerCreated event.
+-- @param pCreatureObject pointer to the creature object for the player that was created.
+function JediManager:onPlayerCreated(pCreatureObject)
+	-- Default behaviour for the onPlayerCreated event, do nothing.
 end
 
-function JediManager:onPlayerLogin(pCreatureObject)
-	-- Default behaviour for the onPlayerLogin event, do nothing.
+-- Default handling of the onPlayerLoggedIn event.
+-- @param pCreatureObject pointer to the creature object for the player that logged in.
+function JediManager:onPlayerLoggedIn(pCreatureObject)
+	-- Default behaviour for the onPlayerLoggedIn event, do nothing.
 end
 
-function JediManager:onPlayerLogout(pCreatureObject)
-	-- Default behaviour for the onPlayerLogout event, do nothing.
+-- Default handling of the onPlayerLoggedOut event.
+-- @param pCreatureObject pointer to the creature object for the player that logged out.
+function JediManager:onPlayerLoggedOut(pCreatureObject)
+	-- Default behaviour for the onPlayerLoggedOut event, do nothing.
 end
 
+-- Default handling of the checkForceStatus command.
+-- @param pCreatureObject pointer to the creature object for the player that performed the command.
 function JediManager:checkForceStatusCommand(pCreatureObject)
 	-- Default behaviour for the checkForceStatus command, do nothing.
 end

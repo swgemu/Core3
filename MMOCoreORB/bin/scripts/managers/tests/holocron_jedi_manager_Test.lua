@@ -29,7 +29,7 @@ describe("Holocron Jedi Manager", function()
 			return performThisFunction({ addHologrindProfession = addHologrindProfessionSpy }) 
 		end)
 
-		HolocronJediManager.onPlayerCreation(creaturePointer)
+		HolocronJediManager.onPlayerCreated(creaturePointer)
 
 		assert.spy(HolocronJediManager.withCreaturePlayerObject).was.called(1)
 		assert.spy(addHologrindProfessionSpy).was.called(EXPECTEDNUMBEROFPROFESSIONSTOGRIND)
