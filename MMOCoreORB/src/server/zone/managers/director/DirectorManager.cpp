@@ -191,6 +191,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setGlobalInt("SPATIALCHATRECEIVED", ObserverEventType::SPATIALCHATRECEIVED);
 	luaEngine->setGlobalInt("ITEMLOOTED", ObserverEventType::ITEMLOOTED);
 	luaEngine->setGlobalInt("MEDPACKUSED", ObserverEventType::MEDPACKUSED);
+	luaEngine->setGlobalInt("BADGEAWARDED", ObserverEventType::BADGEAWARDED);
 
 	luaEngine->setGlobalInt("UPRIGHT", CreaturePosture::UPRIGHT);
 	luaEngine->setGlobalInt("PRONE", CreaturePosture::PRONE);

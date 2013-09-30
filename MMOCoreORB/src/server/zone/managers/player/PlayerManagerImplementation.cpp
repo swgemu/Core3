@@ -1089,6 +1089,8 @@ void PlayerManagerImplementation::awardBadge(PlayerObject* ghost, uint32 badge) 
 	stringId.setStringId("badge_n", "prose_grant");
 	player->sendSystemMessage(stringId);
 
+	player->notifyObservers(ObserverEventType::BADGEAWARDED, player, badge);
+
 	switch (ghost->getNumBadges()) {
 	case 5:
 		awardBadge(ghost, Badge::COUNT_5);
@@ -1136,30 +1138,6 @@ void PlayerManagerImplementation::awardBadge(PlayerObject* ghost, uint32 badge) 
 			break;
 		}
 	}
-
-	// For the Hologrind - Please uncomment to re-enable when ready.
-
-	/*
-	Vector<byte>* profs = ghost->getHologrindProfessions();
-
-	int profsDone = 0;
-
-	for (int i = 0; i < profs->size(); ++i) { // So that it only sends 1 popup...
-		byte prof = profs->get(i);
-
-		int badgeIdx = 42 + prof;
-
-		if (!ghost->hasBadge(badgeIdx))
-			continue;
-
-		profsDone++;
-	}
-
-	if (profsDone > 5) // Corresponds to the total professions needed in Generate holo.
-		finishHologrind(player); // Method to send popup and grant Force Sensitive box.
-
-	 */
-
 }
 
 void PlayerManagerImplementation::setExperienceMultiplier(float globalMultiplier) {
