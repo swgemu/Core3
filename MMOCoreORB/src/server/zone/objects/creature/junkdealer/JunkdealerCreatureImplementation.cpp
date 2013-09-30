@@ -75,7 +75,7 @@ void JunkdealerCreatureImplementation::sendInitialMessage(CreatureObject* player
 			break;
 		}
 		case JUNKCONVMALIKVISTAL:{
-			stfname = "s_3c06418f"; //TD
+			stfname = "s_769000a5";
 			break;
 		}
 		case JUNKCONVNADOWATTOS:{
@@ -87,7 +87,7 @@ void JunkdealerCreatureImplementation::sendInitialMessage(CreatureObject* player
 			break;
 		}
 		case JUNKCONVOLLOBOJABBAS:{
-			stfname = "s_3c06418f"; //TD
+			stfname = "s_6d35d0e1";
 			break;
 		}
 		case JUNKCONVQUICHDANTOOINE:{
@@ -95,15 +95,15 @@ void JunkdealerCreatureImplementation::sendInitialMessage(CreatureObject* player
 			break;
 		}
 		case JUNKCONVREGGINYM:{
-			stfname = "s_3c06418f"; //TD
+			stfname = "s_60d2f507";
 			break;
 		}
 		case JUNKCONVSHEANILAKE:{
-			stfname = "s_3c06418f"; //TD
+			stfname = "s_d3c4bb84";
 			break;
 		}
 		case JUNKCONVSNEGVALARIAN:{
-			stfname = "s_3c06418f"; //TD
+			stfname = "s_6dbdfc7";
 			break;
 		}
 		case JUNKCONVJAWAGENERIC:{
@@ -159,7 +159,7 @@ void JunkdealerCreatureImplementation::sendInitialChoices(CreatureObject* player
 			break;
 		}
 		case JUNKCONVDENDERTHEED:{ // On Hold
-			slist->insertOption(getConversationString(JUNKCONVDENDERTHEED), "s_54fab04f");//TD
+			slist->insertOption(getConversationString(JUNKCONVDENDERTHEED), "s_54fab04f");// Not being implemented at this time
 			break;
 		}
 		case JUNKCONVLILABORVO:{
@@ -169,7 +169,9 @@ void JunkdealerCreatureImplementation::sendInitialChoices(CreatureObject* player
 			break;
 		}
 		case JUNKCONVMALIKVISTAL:{ //TD
-			slist->insertOption(getConversationString(JUNKCONVMALIKVISTAL), "s_54fab04f");//TD
+			slist->insertOption(getConversationString(JUNKCONVMALIKVISTAL), "s_f836463");
+			slist->insertOption(getConversationString(JUNKCONVMALIKVISTAL), "s_f66e6241");
+			sOptionsMsg ="dealer_specific-1";
 			break;
 		}
 		case JUNKCONVNADOWATTOS:{
@@ -185,7 +187,9 @@ void JunkdealerCreatureImplementation::sendInitialChoices(CreatureObject* player
 			break;
 		}
 		case JUNKCONVOLLOBOJABBAS:{ //TD
-			slist->insertOption(getConversationString(JUNKCONVOLLOBOJABBAS), "s_54fab04f");//TD
+			slist->insertOption(getConversationString(JUNKCONVOLLOBOJABBAS), "s_6ee477c3");
+			slist->insertOption(getConversationString(JUNKCONVOLLOBOJABBAS), "s_aadc214b");
+			sOptionsMsg ="dealer_specific-1";
 			break;
 		}
 		case JUNKCONVQUICHDANTOOINE:{
@@ -194,16 +198,22 @@ void JunkdealerCreatureImplementation::sendInitialChoices(CreatureObject* player
 			sOptionsMsg ="dealer_specific-1";
 			break;
 		}
-		case JUNKCONVREGGINYM:{ //TD
-			slist->insertOption(getConversationString(JUNKCONVREGGINYM), "s_54fab04f");//TD
+		case JUNKCONVREGGINYM:{
+			slist->insertOption(getConversationString(JUNKCONVREGGINYM), "s_ef8c7236");
+			slist->insertOption(getConversationString(JUNKCONVREGGINYM), "s_53d778d8");
+			sOptionsMsg ="dealer_specific-1";
 			break;
 		}
-		case JUNKCONVSHEANILAKE:{ //TD
-			slist->insertOption(getConversationString(JUNKCONVSHEANILAKE), "s_54fab04f");//TD
+		case JUNKCONVSHEANILAKE:{
+			slist->insertOption(getConversationString(JUNKCONVSHEANILAKE), "s_45632ab8");
+			slist->insertOption(getConversationString(JUNKCONVSHEANILAKE), "s_f6c161d");
+			sOptionsMsg ="dealer_specific-1";
 			break;
 		}
 		case JUNKCONVSNEGVALARIAN:{ //TD
-			slist->insertOption(getConversationString(JUNKCONVSNEGVALARIAN), "s_54fab04f");//TD
+			slist->insertOption(getConversationString(JUNKCONVSNEGVALARIAN), "s_f0f3bea2");
+			slist->insertOption(getConversationString(JUNKCONVSNEGVALARIAN), "s_50c8b3e1");
+			sOptionsMsg ="dealer_specific-1";
 			break;
 		}
 		case JUNKCONVJAWAGENERIC:{
@@ -309,6 +319,26 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 						sendConversationContinue(player,stffile,"s_113dbce8","s_1875d09c","s_210d33b4");
 						break;
 					}
+					case JUNKCONVMALIKVISTAL:{
+						sendConversationContinue(player,stffile,"s_9251cdb4","s_b44309e2","s_91196436");
+						break;
+					}
+					case JUNKCONVOLLOBOJABBAS:{
+						sendConversationContinue(player,stffile,"s_472f3294","s_e2ee167d","s_b85badf5");
+						break;
+					}
+					case JUNKCONVREGGINYM:{
+						sendConversationContinue(player,stffile,"s_14e5bdc0","s_b8e27f3c","s_2e005077");
+						break;
+					}
+					case JUNKCONVSHEANILAKE:{
+						sendConversationContinue(player,stffile,"s_38c64dea","s_370197a6","s_d264cf44");
+						break;
+					}
+					case JUNKCONVSNEGVALARIAN:{
+						sendConversationContinue(player,stffile,"s_4717ab1e","s_14b517b1","s_b4cc3fb7");
+						break;
+					}
 				}
 				break;
 			}
@@ -332,6 +362,26 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 					}
 					case JUNKCONVLILABORVO:{
 						sendConversationTerminate(player,stffile,"s_98d18f02");
+						break;
+					}
+					case JUNKCONVMALIKVISTAL:{
+						sendConversationTerminate(player,stffile,"s_420b90b8");
+						break;
+					}
+					case JUNKCONVOLLOBOJABBAS:{
+						sendConversationTerminate(player,stffile,"s_935bfcd0");
+						break;
+					}
+					case JUNKCONVREGGINYM:{
+						sendConversationTerminate(player,stffile,"s_f25d9c2");
+						break;
+					}
+					case JUNKCONVSHEANILAKE:{
+						sendConversationTerminate(player,stffile,"s_57feadd0");
+						break;
+					}
+					case JUNKCONVSNEGVALARIAN:{
+						sendConversationTerminate(player,stffile,"s_f7c66216");
 						break;
 					}
 				}
@@ -364,6 +414,29 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 						createSellJunkLootSelection(player);
 						break;
 					}
+					case JUNKCONVMALIKVISTAL:{
+						sendConversationContinue(player,stffile,"s_18123132","s_fc51be40","s_d36db42d");
+						break;
+					}
+					case JUNKCONVOLLOBOJABBAS:{
+						sendConversationTerminate(player,stffile,"s_73b59dd6");
+						createSellJunkLootSelection(player);
+						break;
+					}
+					case JUNKCONVREGGINYM:{
+						sendConversationTerminate(player,stffile,"s_5c453a2f");
+						createSellJunkLootSelection(player);
+						break;
+					}
+					case JUNKCONVSHEANILAKE:{
+						sendConversationTerminate(player,stffile,"s_82f469f5");
+						createSellJunkLootSelection(player);
+						break;
+					}
+					case JUNKCONVSNEGVALARIAN:{
+						sendConversationContinue(player,stffile,"s_7debe28e","s_94fa366f","s_50b9f32f");
+						break;
+					}
 				}
 				break;
 			}
@@ -389,6 +462,26 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 						sendConversationTerminate(player,stffile,"s_a83a2e6b");
 						break;
 					}
+					case JUNKCONVMALIKVISTAL:{
+						sendConversationTerminate(player,stffile,"s_af6451b5");
+						break;
+					}
+					case JUNKCONVOLLOBOJABBAS:{
+						sendConversationTerminate(player,stffile,"s_b950c3eb");
+						break;
+					}
+					case JUNKCONVREGGINYM:{
+						sendConversationTerminate(player,stffile,"s_233f3214");
+						break;
+					}
+					case JUNKCONVSHEANILAKE:{
+						sendConversationTerminate(player,stffile,"s_d4565283");
+						break;
+					}
+					case JUNKCONVSNEGVALARIAN:{
+						sendConversationTerminate(player,stffile,"s_a3ad61f1");
+						break;
+					}
 				}
 				break;
 			}
@@ -411,6 +504,16 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 						createSellJunkLootSelection(player);
 						break;
 					}
+					case JUNKCONVMALIKVISTAL:{
+						sendConversationTerminate(player,stffile,"s_9334c0a0");
+						createSellJunkLootSelection(player);
+						break;
+					}
+					case JUNKCONVSNEGVALARIAN:{
+						sendConversationTerminate(player,stffile,"s_63a817cf");
+						createSellJunkLootSelection(player);
+						break;
+					}
 				}
 				break;
 			}
@@ -426,6 +529,14 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 					}
 					case JUNKCONVQUICHDANTOOINE:{
 						sendConversationTerminate(player,stffile,"s_413bfd08");
+						break;
+					}
+					case JUNKCONVMALIKVISTAL:{
+						sendConversationTerminate(player,stffile,"s_9c1435e4");
+						break;
+					}
+					case JUNKCONVSNEGVALARIAN:{
+						sendConversationTerminate(player,stffile,"s_e27c50ad");
 						break;
 					}
 				}
@@ -684,7 +795,7 @@ String JunkdealerCreatureImplementation::getConversationString(int dealerType) {
 		case JUNKCONVREGGINYM:
 			{return "conversation/junk_reggi_nym";}
 		case JUNKCONVSHEANILAKE:
-			{return "conversation/sheani_lake";}
+			{return "conversation/junk_sheani_lake";}
 		case JUNKCONVSNEGVALARIAN:
 			{return "conversation/junk_sneg_valarian";}
 		case JUNKCONVJAWAGENERIC:
