@@ -87,7 +87,7 @@ function JediManager:onPlayerLogout(pCreatureObject)
 	-- Default behaviour for the onPlayerLogout event, do nothing.
 end
 
-function JediManager.checkForceStatusCommand(pCreatureObject)
+function JediManager:checkForceStatusCommand(pCreatureObject)
 	-- Default behaviour for the checkForceStatus command, do nothing.
 end
 
