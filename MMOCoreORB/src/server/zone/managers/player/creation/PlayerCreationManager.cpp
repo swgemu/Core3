@@ -612,7 +612,7 @@ bool PlayerCreationManager::createCharacter(MessageCallback* data) {
 
 	client->addCharacter(playerCreature->getObjectID(), zoneServer.get()->getGalaxyID());
 
-	JediManager::instance()->onPlayerCreation(playerCreature);
+	JediManager::instance()->onPlayerCreated(playerCreature);
 
 	return true;
 }

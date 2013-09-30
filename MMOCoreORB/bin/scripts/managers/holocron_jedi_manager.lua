@@ -11,6 +11,8 @@ HolocronJediManager = JediManager:new {
 	startingEvent = nil,
 }
 
+-- Return a list of all professions and their badge number that are available for the hologrind
+-- @return a list of professions and their badge numbers.
 function HolocronJediManager:getGrindableProfessionList()
 	local grindableProfessions = {
 		-- String Id, badge number, profession name
@@ -61,7 +63,10 @@ function HolocronJediManager:getGrindableProfessionList()
 	return grindableProfessions
 end
 
-function HolocronJediManager:onPlayerCreation(pCreatureObject)
+-- Handling of the onPlayerCreated event.
+-- Hologrind professions will be generated for the player.
+-- @param pCreatureObject pointer to the creature object of the created player.
+function HolocronJediManager:onPlayerCreated(pCreatureObject)
 	local skillList = HolocronJediManager.getGrindableProfessionList()
 	HolocronJediManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
 		for i = 1, NUMBEROFPROFESSIONSTOMASTER, 1 do
@@ -73,6 +78,9 @@ function HolocronJediManager:onPlayerCreation(pCreatureObject)
 	end)
 end
 
+-- Check and count the number of mastered hologrind professions.
+-- @param pCreatureObject pointer to the creature object of the player which should get its number of mastered professions counted.
+-- @return the number of mastered hologrind professions.
 function HolocronJediManager.getNumberOfMasteredProfessions(pCreatureObject)
 	return HolocronJediManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
 		local professions = playerObject:getHologrindProfessions()
@@ -86,6 +94,8 @@ function HolocronJediManager.getNumberOfMasteredProfessions(pCreatureObject)
 	end)
 end
 
+-- Check if the player has mastered all hologrind professions and give the player jedi status in that case.
+-- @param pCreatureObject pointer to the creature object of the player to check the jedi progression on.
 function HolocronJediManager.checkIfProgressedToJedi(pCreatureObject)
 	if HolocronJediManager.getNumberOfMasteredProfessions(pCreatureObject) >= NUMBEROFPROFESSIONSTOMASTER then
 		HolocronJediManager.withCreatureObject(pCreatureObject, function(creatureObject)
@@ -94,15 +104,22 @@ function HolocronJediManager.checkIfProgressedToJedi(pCreatureObject)
 	end
 end
 
+-- Register observer on the player for observing badge awards.
+-- @param pCreatureObject pointer to the creature object of the player to register observers on.
 function HolocronJediManager.registerObservers(pCreatureObject)
 
 end
 
-function HolocronJediManager:onPlayerLogin(pCreatureObject)
+-- Handling of the onPlayerLoggedIn event. The progression of the player will be checked and observers will be registered.
+-- @param pCreatureObject pointer to the creature object of the player who logged in.
+function HolocronJediManager:onPlayerLoggedIn(pCreatureObject)
 	HolocronJediManager.checkIfProgressedToJedi(pCreatureObject)
 	HolocronJediManager.registerObservers(pCreatureObject)
 end
 
+-- Get the profession name from the badge number. Only used for the temporary debug message in the checkForceCommand.
+-- @param badgeNumber the badge number to find the profession name for.
+-- @return the profession name associated with the badge number, Unknown profession returned if the badge number isn't found.
 function HolocronJediManager.getProfessionNameFromBadgeNumber(badgeNumber)
 	local skillList = HolocronJediManager.getGrindableProfessionList()
 	for i = 1, table.getn(skillList), 1 do
@@ -113,6 +130,9 @@ function HolocronJediManager.getProfessionNameFromBadgeNumber(badgeNumber)
 	return "Unknown profession"
 end
 
+-- Handling of the checkForceCommand.
+-- Temporary debug message print out during test. This function should be empty when everything has been tested.
+-- @param pCreatureObject pointer to the creature object for the player performing the command.
 function HolocronJediManager:checkForceStatusCommand(pCreatureObject)
 	HolocronJediManager.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject)
 		creatureObject:sendSystemMessage("Debug information for the holocron jedi progression system.")

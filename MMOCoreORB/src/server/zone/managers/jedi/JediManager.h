@@ -112,22 +112,22 @@ public:
 	void start(Lua* luaEngine);
 
 	/**
-	 * On player creation.
+	 * On player created.
 	 * @param creature the creature/player that was created.
 	 */
-	void onPlayerCreation(CreatureObject* creature);
+	void onPlayerCreated(CreatureObject* creature);
 
 	/**
-	 * On player login.
+	 * On player logged in.
 	 * @param creature the creature/player that logged in.
 	 */
-	void onPlayerLogin(CreatureObject* creature);
+	void onPlayerLoggedIn(CreatureObject* creature);
 
 	/**
-	 * On player logout.
+	 * On player logged out.
 	 * @param creature the creature/player that logged out.
 	 */
-	void onPlayerLogout(CreatureObject* creature);
+	void onPlayerLoggedOut(CreatureObject* creature);
 
 	/**
 	 * Check force status command.
