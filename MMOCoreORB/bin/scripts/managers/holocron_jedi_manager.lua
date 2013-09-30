@@ -73,6 +73,36 @@ function HolocronJediManager:onPlayerCreation(pCreatureObject)
 	end)
 end
 
+function HolocronJediManager.getNumberOfMasteredProfessions(pCreatureObject)
+	return HolocronJediManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
+		local professions = playerObject:getHologrindProfessions()
+		local masteredNumberOfProfessions = 0
+		for i = 1, table.getn(professions), 1 do
+			if playerObject:hasBadge(professions[i]) then
+				masteredNumberOfProfessions = masteredNumberOfProfessions + 1
+			end
+		end
+		return masteredNumberOfProfessions
+	end)
+end
+
+function HolocronJediManager.checkIfProgressedToJedi(pCreatureObject)
+	if HolocronJediManager.getNumberOfMasteredProfessions(pCreatureObject) >= NUMBEROFPROFESSIONSTOMASTER then
+		HolocronJediManager.withCreatureObject(pCreatureObject, function(creatureObject)
+			creatureObject:sendSystemMessage("JEDI WEEEE!")
+		end)
+	end
+end
+
+function HolocronJediManager.registerObservers(pCreatureObject)
+
+end
+
+function HolocronJediManager:onPlayerLogin(pCreatureObject)
+	HolocronJediManager.checkIfProgressedToJedi(pCreatureObject)
+	HolocronJediManager.registerObservers(pCreatureObject)
+end
+
 function HolocronJediManager.getProfessionNameFromBadgeNumber(badgeNumber)
 	local skillList = HolocronJediManager.getGrindableProfessionList()
 	for i = 1, table.getn(skillList), 1 do
@@ -89,8 +119,13 @@ function HolocronJediManager:checkForceStatusCommand(pCreatureObject)
 		creatureObject:sendSystemMessage("Professions selected for this player:")
 		local professions = playerObject:getHologrindProfessions()
 		for i = 1, table.getn(professions), 1 do
-			creatureObject:sendSystemMessage(HolocronJediManager.getProfessionNameFromBadgeNumber(professions[i]))
+			if playerObject:hasBadge(professions[i]) then
+				creatureObject:sendSystemMessage(HolocronJediManager.getProfessionNameFromBadgeNumber(professions[i]) .. " - completed")
+			else
+				creatureObject:sendSystemMessage(HolocronJediManager.getProfessionNameFromBadgeNumber(professions[i]) .. " - not mastered yet")
+			end
 		end
+		creatureObject:sendSystemMessage("You have mastered " .. HolocronJediManager.getNumberOfMasteredProfessions(pCreatureObject) .. " professions out of " .. NUMBEROFPROFESSIONSTOMASTER)
 	end)
 end
 
