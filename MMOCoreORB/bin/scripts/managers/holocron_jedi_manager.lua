@@ -4,6 +4,7 @@ JediManager = require("jedi_manager")
 jediManagerName = "HolocronJediManager"
 
 NUMBEROFPROFESSIONSTOMASTER = 6
+MAXIMUMNUMBEROFPROFESSIONSTOSHOWWITHHOLOCRON = NUMBEROFPROFESSIONSTOMASTER - 2
 
 HolocronJediManager = JediManager:new {
 	jediManagerName = jediManagerName,
@@ -153,6 +154,45 @@ function HolocronJediManager:checkForceStatusCommand(pCreatureObject)
 		end
 		creatureObject:sendSystemMessage("You have mastered " .. HolocronJediManager.getNumberOfMasteredProfessions(pCreatureObject) .. " professions out of " .. NUMBEROFPROFESSIONSTOMASTER)
 	end)
+end
+
+-- Get the profession name from the badge number. Only used for the temporary debug message in the checkForceCommand.
+-- @param badgeNumber the badge number to find the profession name for.
+-- @return the profession name associated with the badge number, Unknown profession returned if the badge number isn't found.
+function HolocronJediManager.getProfessionStringIdFromBadgeNumber(badgeNumber)
+	local skillList = HolocronJediManager.getGrindableProfessionList()
+	for i = 1, table.getn(skillList), 1 do
+		if skillList[i][2] == badgeNumber then
+			return skillList[i][1]
+		end
+	end
+	return "Unknown profession"
+end
+
+-- Handling of the useHolocron event.
+-- @param pSceneObject pointer to the holocron object.
+-- @param pCreatureObject pointer to the creature object that used the holocron.
+function HolocronJediManager:useHolocron(pSceneObject, pCreatureObject)
+	if HolocronJediManager.getNumberOfMasteredProfessions >= MAXIMUMNUMBEROFPROFESSIONSTOSHOWWITHHOLOCRON then
+		HolocronJediManager.withCreatureObject(pCreatureObject, function(creatureObject)
+			-- The Holocron is quiet. The ancients' knowledge of the Force will no longer assist you
+  			-- on your journey. You must continue seeking on your own.
+			creatureObject:sendSystemMessage("@jedi_spam:holocron_quiet")
+		end)
+	else
+		HolocronJediManager.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject)
+			local professions = playerObject:getHologrindProfessions()
+			for i = 1, table.getn(professions), 1 do			
+				if not playerObject:hasBadge(professions[i]) then
+					local professionText = HolocronJediManager.getProfessionStringIdFromBadgeNumber(professions[i])
+					creatureObject:sendSystemMessageWithTO("@jedi_spam:holocron_light_information", professionText)
+				end
+			end
+		end)
+	end
+
+	sceneObject = LuaSceneObject(pSceneObject)
+	sceneObject:destroyObjectFromWorld()
 end
 
 return HolocronJediManager
