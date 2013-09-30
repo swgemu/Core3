@@ -21,6 +21,7 @@ int VillageHolocronMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 	if (!sceneObject->isASubChildOf(creature))
 		return 0;
 
+	//TODO Move this to the lua jedi manager for the village, then delete this menu component and rename the hologrind holocron menu component.
 	ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
 	if (playerObject != NULL && playerObject->isJedi() && !creature->checkCooldownRecovery("used_holocron")) {

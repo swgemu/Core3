@@ -136,7 +136,18 @@ public:
 	 */
 	void checkForceStatusCommand(CreatureObject* creature);
 
+	/**
+	 * Get the name of the currently active lua jedi manager.
+	 * @return the name of the currently active lua jedi manager.
+	 */
 	String getJediManagerName();
+
+	/**
+	 * Handle the holocron use messages.
+	 * @param holocron pointer to the holocron object.
+	 * @param creature the creature that used the holocron.
+	 */
+	void useHolocron(SceneObject* holocron, CreatureObject* creature);
 };
 
 }

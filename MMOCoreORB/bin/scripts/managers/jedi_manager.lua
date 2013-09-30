@@ -100,5 +100,12 @@ function JediManager:checkForceStatusCommand(pCreatureObject)
 	-- Default behaviour for the checkForceStatus command, do nothing.
 end
 
+-- Default handling of the useHolocron event.
+-- @param pSceneObject pointer to the holocron object.
+-- @param pCreatureObject pointer to the creature object that used the holocron.
+function JediManager:useHolocron(pSceneObject, pCreatureObject)
+	-- Default behaviour for the useHolocron event, do nothing.
+end
+
 return JediManager
 
