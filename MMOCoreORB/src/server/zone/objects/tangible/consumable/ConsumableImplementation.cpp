@@ -271,6 +271,36 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 	stringId.setTT(getObjectID());
 	player->sendSystemMessage(stringId);//player->sendSystemMessage("base_player", "prose_consume_item", objectID);;
 
+	// Play the client effect sound depending on species/gender.
+
+	// Get the species.
+	int species = player->getSpecies();
+
+	switch (species) {
+	case 0:
+		// Human
+		if (player->getGender() == 0)
+			player->playEffect("clienteffect/human_male_eat.cef");
+		else if (player->getGender() == 1)
+			player->playEffect("clienteffect/human_female_eat.cef");
+		break;
+	case 2: // Trandoshan
+		if (player->getGender() == 0)
+			player->playEffect("clienteffect/reptile_male_eat.cef");
+		else if (player->getGender() == 1)
+			player->playEffect("clienteffect/reptile_female_eat.cef");
+		break;
+	case 4: // Wookiee
+		if (player->getGender() == 0)
+			player->playEffect("clienteffect/wookiee_male_eat.cef");
+		else if (player->getGender() == 1)
+			player->playEffect("clienteffect/wookiee_female_eat.cef");
+		break;
+	default:
+		break;
+
+	}
+
 	//Consume a charge from the item, destroy it if it reaches 0 charges remaining.
 	//useCharge(player);
 	decreaseUseCount();
