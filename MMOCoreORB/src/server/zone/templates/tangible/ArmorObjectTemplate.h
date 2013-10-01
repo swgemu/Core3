@@ -31,6 +31,7 @@ class ArmorObjectTemplate : public SharedTangibleObjectTemplate {
 	float lightSaber;
 
 	int vulnerabilites;
+	int specialResists;
 
 	uint8 hitLocation;
 
@@ -47,6 +48,7 @@ public:
 		SharedTangibleObjectTemplate::readObject(templateData);
 
 		vulnerabilites = templateData->getIntField("vulnerability");
+		specialResists = templateData->getIntField("specialResists");
 
 		healthEncumbrance = templateData->getIntField("healthEncumbrance");
 		actionEncumbrance = templateData->getIntField("actionEncumbrance");
@@ -121,6 +123,10 @@ public:
 
 	int getVulnerabilites() const {
 		return vulnerabilites;
+	}
+
+	int getSpecialResists() const {
+		return specialResists;
 	}
 
 	int getHitLocation() const {
