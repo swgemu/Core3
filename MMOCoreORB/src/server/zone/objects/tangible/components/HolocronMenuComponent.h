@@ -1,12 +1,12 @@
 /*
- * HologrindHolocronMenuComponent.h
+ * HolocronMenuComponent.h
  *
  *  Created on: 01/23/2012
  *      Author: xyborn
  */
 
-#ifndef HOLOGRINDHOLOCRONMENUCOMPONENT_H_
-#define HOLOGRINDHOLOCRONMENUCOMPONENT_H_
+#ifndef HOLOCRONMENUCOMPONENT_H_
+#define HOLOCRONMENUCOMPONENT_H_
 
 #include "TangibleObjectMenuComponent.h"
 
@@ -34,10 +34,10 @@ namespace creature {
 
 using namespace server::zone::objects::creature;
 
-class HologrindHolocronMenuComponent : public TangibleObjectMenuComponent {
+class HolocronMenuComponent : public TangibleObjectMenuComponent {
 public:
 	int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID);
 };
 
 
-#endif /* HOLOGRINDHOLOCRONMENUCOMPONENT_H_ */
+#endif /* HOLOCRONMENUCOMPONENT_H_ */
