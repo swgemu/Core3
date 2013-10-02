@@ -1386,7 +1386,7 @@ tatooine_static_spawns = {
 	{"nomad",60,-9.6227,0.995934,0.354028,180.009,1134533, "conversation", ""},
 	{"oberhaur",60,-21.8614,3.22324,26.9177,183.918,926480, "npc_imperial", ""},
 	{"oka_alewame",60,3.72152,1.13306,-4.85162,52.801,1028558, "neutral", "Oka Alewame"},
-	{"ollobo",60,-6.35875,0.199999,134.272,9.69838,1177466, "calm", "Ollobo"},
+	{"junk_ollobo",60,-6.35875,0.199999,134.272,9.69838,1177466, "calm", "Ollobo",JUNKWEAPONS,JUNKCONVOLLOBOJABBAS},
 	{"oohiani",60,-1120.21,12,-3639.71,204.893,0, "neutral", "Oohiani"},
 	{"oola",60,-10,2,43,329.443,1177487, "themepark_oola", ""},
 	{"osweri_hepa",60,11.3838,-0.894992,-2.63465,180.006,1134560, "conversation", "Osweri Hepa"},
