@@ -36,7 +36,7 @@ function HolocronJediManager:getGrindableProfessionList()
 		{ "science_doctor_master", 		68,  "Doctor" },
 		{ "crafting_droidengineer_master", 	58,  "Droid-Engineer" },
 		{ "social_entertainer_master", 		71,  "Entertainer" },
-		{ "combat_1hsword_master", 		42,  "One-Hand Sword" },
+		{ "combat_1hsword_master", 		42,  "Fencer" },
 		{ "social_imagedesigner_master", 	72,  "Image-Designer" },
 		{ "combat_marksman_master", 		48,  "Marksman" },
 		{ "science_medic_master", 		69,  "Medic" },
@@ -51,7 +51,7 @@ function HolocronJediManager:getGrindableProfessionList()
 		--{ "crafting_shipwright", 		129, "Shipwright" },
 		{ "combat_smuggler_master", 		52,  "Smuggler" },
 		{ "outdoors_squadleader_master", 	66,  "Squad-Leader" },
-		{ "combat_2hsword_master", 		43,  "Two-Hand Sword" },
+		{ "combat_2hsword_master", 		43,  "Swordsman" },
 		{ "crafting_tailor_master", 		60,  "Tailor" },
 		{ "crafting_weaponsmith_master", 	61,  "Weaponsmith" },
 		--{ "pilot_neutral_naboo", 		136, "Neutral Pilot Naboo" },
@@ -104,10 +104,16 @@ function HolocronJediManager.checkIfProgressedToJedi(pCreatureObject)
 	end
 end
 
+function HolocronJediManager:badgeAwardedEventHandler(pCreatureObject, pCreatureObject2, badgeNumber)
+	HolocronJediManager.checkIfProgressedToJedi(pCreatureObject)
+
+	return 0
+end
+
 -- Register observer on the player for observing badge awards.
 -- @param pCreatureObject pointer to the creature object of the player to register observers on.
 function HolocronJediManager.registerObservers(pCreatureObject)
-
+	createObserver(BADGEAWARDED, "HolocronJediManager", "badgeAwardedEventHandler", pCreatureObject)
 end
 
 -- Handling of the onPlayerLoggedIn event. The progression of the player will be checked and observers will be registered.
