@@ -32,6 +32,10 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "hasBadge", &LuaPlayerObject::hasBadge },
 		{ "addHologrindProfession", &LuaPlayerObject::addHologrindProfession },
 		{ "getHologrindProfessions", &LuaPlayerObject::getHologrindProfessions },
+		{ "getForcePower", &LuaPlayerObject::getForcePower },
+		{ "getForcePowerMax", &LuaPlayerObject::getForcePowerMax },
+		{ "setForcePower", &LuaPlayerObject::setForcePower },
+		{ "isJedi", &LuaPlayerObject::isJedi },
 		{ 0, 0 }
 };
 
@@ -222,6 +226,32 @@ int LuaPlayerObject::getHologrindProfessions(lua_State* L) {
 	for (int i = professions->size(); i > 0; i--) {
 		lua_rawseti(L, -i - 1, i);
 	}
+
+	return 1;
+}
+
+int LuaPlayerObject::getForcePower(lua_State* L) {
+	lua_pushinteger(L, realObject->getForcePower());
+
+	return 1;
+}
+
+int LuaPlayerObject::getForcePowerMax(lua_State* L) {
+	lua_pushinteger(L, realObject->getForcePowerMax());
+
+	return 1;
+}
+
+int LuaPlayerObject::setForcePower(lua_State* L) {
+	int forcePower = lua_tointeger(L, -1);
+
+	realObject->setForcePower(forcePower, true);
+
+	return 0;
+}
+
+int LuaPlayerObject::isJedi(lua_State* L) {
+	lua_pushboolean(L, realObject->isJedi());
 
 	return 1;
 }

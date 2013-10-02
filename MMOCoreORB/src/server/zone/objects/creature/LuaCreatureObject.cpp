@@ -84,6 +84,8 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "setPvpStatusBitmask", &LuaCreatureObject::setPvpStatusBitmask},
 		{ "addDotState", &LuaCreatureObject::addDotState},
 		{ "getSlottedObject", &LuaSceneObject::getSlottedObject},
+		{ "checkCooldownRecovery", &LuaCreatureObject::checkCooldownRecovery},
+		{ "addCooldown", &LuaCreatureObject::addCooldown},
 		{ 0, 0 }
 };
 
@@ -571,4 +573,21 @@ int LuaCreatureObject::getGroupMember(lua_State* L) {
 	}
 
 	return 1;
+}
+
+int LuaCreatureObject::checkCooldownRecovery(lua_State* L) {
+	String cooldownName = lua_tostring(L, -1);
+
+	lua_pushboolean(L, realObject->checkCooldownRecovery(cooldownName));
+
+	return 1;
+}
+
+int LuaCreatureObject::addCooldown(lua_State* L) {
+	String cooldownName = lua_tostring(L, -2);
+	int milliseconds = lua_tointeger(L, -1);
+
+	realObject->addCooldown(cooldownName, milliseconds);
+
+	return 0;
 }
