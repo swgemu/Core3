@@ -114,7 +114,7 @@ void MapLocationEntry::setObject(SceneObject *obj) {
 	displayName = newName;
 }
 
-bool MapLocationEntry::insertToMessage(BaseMessage* message) const {
+bool MapLocationEntry::insertToMessage(BaseMessage* message, unsigned int faction) const {
 	if (object == NULL)
 		return false;
 
@@ -122,6 +122,13 @@ bool MapLocationEntry::insertToMessage(BaseMessage* message) const {
 
 	if (category == NULL)
 		return false;
+
+	if (category->isFactionVisibleOnly()) {
+		unsigned int entryFaction = category->getFaction().hashCode();
+
+		if (entryFaction != faction)
+			return false;
+	}
 
 	message->insertLong(object->getObjectID());
 

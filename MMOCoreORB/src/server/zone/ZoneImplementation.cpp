@@ -418,7 +418,7 @@ void ZoneImplementation::dropSceneObject(SceneObject* object)  {
 }
 
 void ZoneImplementation::sendMapLocationsTo(SceneObject* player) {
-	GetMapLocationsResponseMessage* gmlr = new GetMapLocationsResponseMessage(zoneName, mapLocations);
+	GetMapLocationsResponseMessage* gmlr = new GetMapLocationsResponseMessage(zoneName, mapLocations, player);
 	player->sendMessage(gmlr);
 }
 

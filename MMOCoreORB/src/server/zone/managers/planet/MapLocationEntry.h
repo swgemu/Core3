@@ -50,7 +50,7 @@ public:
 
 	int compareTo(const MapLocationEntry& entry) const;
 
-	bool insertToMessage(BaseMessage* message) const;
+	bool insertToMessage(BaseMessage* message, unsigned int faction = 0) const;
 
 	MapLocationEntry& operator=(const MapLocationEntry& entry);
 

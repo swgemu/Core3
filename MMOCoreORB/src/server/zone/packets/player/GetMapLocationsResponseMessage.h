@@ -54,7 +54,7 @@ which carries forward this exception.
 
 class GetMapLocationsResponseMessage : public BaseMessage {
 public:
-	GetMapLocationsResponseMessage(const String& planet, MapLocationTable* mapLocations) : BaseMessage() {
+	GetMapLocationsResponseMessage(const String& planet, MapLocationTable* mapLocations, SceneObject* player) : BaseMessage() {
 		insertShort(0x05);
 		insertInt(0x9F80464C);  //GetMapLocationsResponseMessage
 
@@ -68,12 +68,15 @@ public:
 
 		int totalEntries = 0;
 
+		TangibleObject* play = cast<TangibleObject*>(player);
+		unsigned int faction = play->getFaction();
+
 		try {
 			for (int i = 0; i < mapLocations->size(); ++i) {
 				SortedVector<MapLocationEntry>& sortedVector = mapLocations->get(i);
 
 				for (int j = 0; j < sortedVector.size(); ++j) {
-					if (sortedVector.elementAt(j).insertToMessage(this))
+					if (sortedVector.elementAt(j).insertToMessage(this, faction))
 						++totalEntries;
 				}
 			}
