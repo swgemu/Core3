@@ -13,6 +13,7 @@
 
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/jedi/JediManager.h"
 
 int HologrindHolocronMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* creature, byte selectedID) {
 	if (selectedID != 20)
@@ -21,7 +22,9 @@ int HologrindHolocronMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 	if (!sceneObject->isASubChildOf(creature))
 		return 0;
 
-	ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
+	JediManager::instance()->useHolocron(sceneObject, creature);
+
+	/*ManagedReference<PlayerObject*> playerObject = creature->getPlayerObject();
 
 	if (playerObject != NULL) {
 		Vector<byte>* profs = playerObject->getHologrindProfessions();
@@ -53,7 +56,7 @@ int HologrindHolocronMenuComponent::handleObjectMenuSelect(SceneObject* sceneObj
 		}
 
 		sceneObject->destroyObjectFromWorld(true);
-	}
+	}*/
 
 	return 0;
 }
