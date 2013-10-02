@@ -1,1 +1,10 @@
-4173M
+5f4e26e was Loshult, 84 minutes ago, message: [Added] unit tests for the useHolocron function in the holocron jedi manager.
+82fe0eb was Loshult, 23 hours ago, message: [Added] useHolocron method to the jedi manager. [Added] connection from the holocron menu component to the jedi manager useHolocron method. [Removed] C++ implementation of the holocron responses. [Added] Lua implementation of the holocron response for the hologrind jedi progression system. [Changed] all holocrons to use the hologrind holocron menu component.
+e6c4774 was Loshult, 24 hours ago, message: [Added] observer event BADGEAWARDED that is triggered when a player is awarded a badge. [Added] observer in the Holocron Jedi Manager to trigger on BADGEAWARDED events and enable jedi on the player if all professions have been mastered.
+3db8b30 was Loshult, 32 hours ago, message: [Updated] documentation of functions in the lua jedi managers. [Changed] name of a few functions in the jedi manager.
+ee7036a was Loshult, 2 days ago, message: [Updated] checkForceStatus command to show progress of the jedi progression. [Added] Check at login if the player has mastered the professions to become jedi. A message will be sent to the player in that case.
+cc2a053 was Loshult, 2 days ago, message: [Added] More unit tests for the Lua jedi managers. [Updated] usage of . and : in the jedi manager lua files.
+bbd363d was Loshult, 3 days ago, message: [Added] Unit tests for the withXXXObject functions in the Jedi Manager.
+6bbb17c was Loshult, 3 days ago, message: [Added] addHologrindProfession method to LuaPlayerOjbect. [Added] getHologrindProfessions method to LuaPlayerOjbect.
+eab5352 was Loshult, 3 days ago, message: [Updated] naming of a few unit tests for the holocron jedi manager. [Added] Start method to jedi manager. [Added] useful functions in the jedi manager lua part that uses lambda expressions to simplifies writing functions that uses creature objects and player objects.
+ec55f01 was Victor Popovici, 3 days ago, message: Merge "[added] vehicle customization lifespan to datapad entry" into unstable
