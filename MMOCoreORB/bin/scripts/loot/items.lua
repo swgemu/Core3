@@ -7,6 +7,7 @@ JUNKTUSKEN = 16
 JUNKJEDI = 32
 JUNKJAWA = 64
 JUNKGUNGAN = 128
+JUNKCORSEC = 256
 
 
 includeFile("items/aakuan_belt.lua")

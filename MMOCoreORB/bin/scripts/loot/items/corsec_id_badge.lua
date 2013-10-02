@@ -9,7 +9,7 @@ corsec_id_badge = {
 	},
 	customizationStringNames = {},
 	customizationValues = {},
-	junkDealerTypeNeeded = JUNKGENERIC,
+	junkDealerTypeNeeded = JUNKGENERIC + JUNKCORSEC,
 	junkMinValue = 2,
 	junkMaxValue = 22
 }
