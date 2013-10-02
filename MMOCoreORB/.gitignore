@@ -1,2 +1,16 @@
 autom4te.cache
+config.h.in
 config.h.in~
+configure
+bin/coverage.info
+bin/luacov.stats.out
+Makefile.in
+aclocal.m4
+bin/conf/rev.txt
+build/*
+src/Makefile.in
+src/client/Makefile.in
+src/client/aclocal.m4
+src/client/config.h.in
+src/client/configure
+
