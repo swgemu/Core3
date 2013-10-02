@@ -62,27 +62,35 @@ int DnaManager::generateXp(int creatureLevel) {
 	return (int)ceil(x1-x2+x3+x4+x5);
 }
 int DnaManager::generateScoreFor(int stat, int cl, int quality) {
+	int actualCl;
+	actualCl = cl;
+	if (actualCl > 80) {
+		actualCl = 80;
+	}
 	switch(stat){
 		case DnaManager::CLEVERNESS:
-			return instance()->cleverness.get(cl)->generateValue(quality);
+			return instance()->cleverness.get(actualCl)->generateValue(quality);
 		case DnaManager::COURAGE:
-			return instance()->courage.get(cl)->generateValue(quality);
+			return instance()->courage.get(actualCl)->generateValue(quality);
 		case DnaManager::DEPENDABILITY:
-			return instance()->dependency.get(cl)->generateValue(quality);
+			return instance()->dependency.get(actualCl)->generateValue(quality);
 		case DnaManager::DEXTERITY:
-			return instance()->dexerity.get(cl)->generateValue(quality);
+			return instance()->dexerity.get(actualCl)->generateValue(quality);
 		case DnaManager::ENDURANCE:
-			return instance()->endurance.get(cl)->generateValue(quality);
+			return instance()->endurance.get(actualCl)->generateValue(quality);
 		case DnaManager::FIERCENESS:
-			return instance()->fierceness.get(cl)->generateValue(quality);
+			if (actualCl > 20) {
+				actualCl = 20;
+			}
+			return instance()->fierceness.get(actualCl)->generateValue(quality);
 		case DnaManager::FORTITUDE:
-			return instance()->fortitude.get(cl)->generateValue(quality);
+			return instance()->fortitude.get(actualCl)->generateValue(quality);
 		case DnaManager::HARDINESS:
-			return instance()->hardiness.get(cl)->generateValue(quality);
+			return instance()->hardiness.get(actualCl)->generateValue(quality);
 		case DnaManager::INTELLIGENCE:
-			return instance()->intelligence.get(cl)->generateValue(quality);
+			return instance()->intelligence.get(actualCl)->generateValue(quality);
 		case DnaManager::POWER:
-			return instance()->power.get(cl)->generateValue(quality);
+			return instance()->power.get(actualCl)->generateValue(quality);
 		default:
 			return 0;
 	}
