@@ -693,27 +693,11 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 		cloneMenu = new SuiListBox(player, SuiWindowType::CLONE_REQUEST_FACTIONAL);
 	}*/
 
-	ManagedReference<SceneObject*> closestCloning = zone->getNearestPlanetaryObject(player, "cloningfacility");
-
 	uint64 preDesignatedFacilityOid = ghost->getCloningFacility();
 	ManagedReference<SceneObject*> preDesignatedFacility = server->getObject(preDesignatedFacilityOid);
-
-	ManagedReference<PlanetManager*> planetManager = zone->getPlanetManager();
-
-	String closestName = "None";
 	String predesignatedName = "None";
 
-	//Get the name of the closest
-	if (closestCloning != NULL) {
-		ManagedReference<CityRegion*> cr = closestCloning->getCityRegion();
-
-		if (cr != NULL)
-			closestName = cr->getRegionName();
-		else
-			closestName = closestCloning->getDisplayedName();
-	}
-
-	//Get the name of the predesignated
+	//Get the name of the predesignated facility
 	if (preDesignatedFacility != NULL) {
 		ManagedReference<CityRegion*> cr = preDesignatedFacility->getCityRegion();
 
@@ -721,6 +705,48 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 			predesignatedName = cr->getRegionName();
 		else
 			predesignatedName = preDesignatedFacility->getDisplayedName();
+	}
+
+	SortedVector<ManagedReference<SceneObject*> > locations = zone->getPlanetaryObjectList("cloningfacility");
+	ManagedReference<SceneObject*> closestCloning = zone->getNearestPlanetaryObject(player, "cloningfacility");
+	String closestName = "None";
+	ManagedReference<CityRegion*> cr = closestCloning->getCityRegion();
+	unsigned long long playerID = player->getObjectID();
+
+	if (cr != NULL) {
+		//Check if player is city banned where the closest facility is
+		if (cr->isBanned(playerID)) {
+			int distance = 50000;
+			for (int j = 0; j < locations.size(); j++) {
+				ManagedReference<SceneObject*> location = locations.get(j);
+
+				if (location == NULL)
+					continue;
+
+				cr = location->getCityRegion();
+				String name;
+
+				if (cr != NULL) {
+					if (cr->isBanned(playerID))
+						continue;
+
+					name = cr->getRegionName();
+				} else {
+					name = location->getDisplayedName();
+				}
+
+				if (location->getDistanceTo(player) < distance) {
+					distance = location->getDistanceTo(player);
+					closestName = name;
+					closestCloning = location;
+				}
+			}
+		} else {
+			closestName = cr->getRegionName();
+		}
+
+	} else {
+		closestName = closestCloning->getDisplayedName();
 	}
 
 	StringBuffer promptText;
@@ -736,23 +762,6 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 
 	if (preDesignatedFacility != NULL && preDesignatedFacility->getZone() == zone)
 		cloneMenu->addMenuItem("@base_player:revive_bind", preDesignatedFacility->getObjectID());
-
-	// Adding major ones
-	SortedVector<ManagedReference<SceneObject*> > locations = zone->getPlanetaryObjectList("cloningfacility");
-
-	for (int j = 0; j < locations.size(); j++) {
-		ManagedReference<SceneObject*> location = locations.get(j);
-
-		if (location == NULL || location == closestCloning || location == preDesignatedFacility)
-			continue;
-
-		ManagedReference<CityRegion*> cr = location->getCityRegion();
-
-		if (cr != NULL)
-			cloneMenu->addMenuItem(cr->getRegionName() + " (" + String::valueOf((int) player->getDistanceTo(location)) + "m)", location->getObjectID());
-		else
-			cloneMenu->addMenuItem(location->getDisplayedName() + " (" + String::valueOf((int) player->getDistanceTo(location)) + "m)", location->getObjectID());
-	}
 
 	ghost->addSuiBox(cloneMenu);
 	player->sendMessage(cloneMenu->generateMessage());
