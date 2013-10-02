@@ -31,7 +31,7 @@ int LuaContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* o
 	runMethod << object;
 	runMethod << containmentType;
 
-	lua->callFunction(&runMethod);
+	runMethod.callFunction();
 
 	int result = lua_tointeger(lua->getLuaState(), -1);
 
@@ -54,7 +54,7 @@ bool LuaContainerComponent::transferObject(SceneObject* sceneObject, SceneObject
 	runMethod << object;
 	runMethod << containmentType;
 
-	lua->callFunction(&runMethod);
+	runMethod.callFunction();
 
 	int result = lua_tointeger(lua->getLuaState(), -1);
 
@@ -77,7 +77,7 @@ bool LuaContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* 
 	runMethod << object;
 	runMethod << destination;
 
-	lua->callFunction(&runMethod);
+	runMethod.callFunction();
 
 	int result = lua_tointeger(lua->getLuaState(), -1);
 
