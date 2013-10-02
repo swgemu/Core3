@@ -933,7 +933,7 @@ LuaObject* TemplateManager::getLuaObject(const String& iffTemplate) {
 
 	LuaFunction getObject(luaTemplatesInstance->getLuaState(), "getTemplate", 1);
 	getObject << iffTemplate.hashCode(); // push first argument
-	luaTemplatesInstance->callFunction(&getObject);
+	getObject.callFunction();
 
 	LuaObject* result = new LuaObject(luaTemplatesInstance->getLuaState());
 

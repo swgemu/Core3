@@ -28,7 +28,7 @@ void LuaObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Ob
 	runMethod << menuResponse;
 	runMethod << player;
 
-	lua->callFunction(&runMethod);
+	runMethod.callFunction();
 }
 
 
@@ -43,7 +43,7 @@ int LuaObjectMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Cre
 	runMethod << player;
 	runMethod << selectedID;
 
-	lua->callFunction(&runMethod);
+	runMethod.callFunction();
 
 	int result = lua_tonumber(lua->getLuaState(), -1);
 

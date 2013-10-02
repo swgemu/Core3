@@ -111,7 +111,7 @@ SceneObject* ObjectManager::createObject(uint32 objectCRC, uint64 objectID) {
 
 		LuaFunction getTemplate(luaInstance->getLuaState(), "getTemplate", 1);
 		getTemplate << objectCRC; // push first argument
-		luaInstance->callFunction(&getTemplate);
+		getTemplate.callFunction();
 
 		LuaObject result(luaInstance->getLuaState());
 
