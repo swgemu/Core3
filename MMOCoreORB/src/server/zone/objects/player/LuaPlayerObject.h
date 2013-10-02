@@ -42,6 +42,10 @@ public:
 	int hasBadge(lua_State* L);
 	int addHologrindProfession(lua_State* L);
 	int getHologrindProfessions(lua_State* L);
+	int getForcePower(lua_State* L);
+	int getForcePowerMax(lua_State* L);
+	int setForcePower(lua_State* L);
+	int isJedi(lua_State* L);
 
 private:
 	// The pointer to the 'real object' defined in object.cc
