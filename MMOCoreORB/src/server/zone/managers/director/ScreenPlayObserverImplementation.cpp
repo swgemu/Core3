@@ -52,7 +52,7 @@ int ScreenPlayObserverImplementation::notifyObserverEvent(uint32 eventType, Obse
 	startScreenPlay << arg1;
 	startScreenPlay << arg2;
 
-	lua->callFunction(&startScreenPlay);
+	startScreenPlay.callFunction();
 
 	if (lua_gettop(lua->getLuaState()) == 0) {
 		Logger::console.error("ScreenPlayObserverImplementation::notifyObserverEvent didnt return a value from " + play + ":" + key);

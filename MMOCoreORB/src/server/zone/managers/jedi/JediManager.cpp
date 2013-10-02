@@ -90,7 +90,7 @@ void JediManager::loadConfiguration(Lua* luaEngine) {
 void JediManager::start(Lua* luaEngine) {
 	LuaFunction luaStart(luaEngine->getLuaState(), jediManagerName, "start", 0);
 
-	luaEngine->callFunction(&luaStart);
+	luaStart.callFunction();
 }
 
 void JediManager::onPlayerCreated(CreatureObject* creature) {
@@ -98,7 +98,7 @@ void JediManager::onPlayerCreated(CreatureObject* creature) {
 	LuaFunction luaOnPlayerCreated(lua->getLuaState(), getJediManagerName(), "onPlayerCreated", 0);
 	luaOnPlayerCreated << creature;
 
-	lua->callFunction(&luaOnPlayerCreated);
+	luaOnPlayerCreated.callFunction();
 }
 
 void JediManager::onPlayerLoggedIn(CreatureObject* creature) {
@@ -106,7 +106,7 @@ void JediManager::onPlayerLoggedIn(CreatureObject* creature) {
 	LuaFunction luaOnPlayerLoggedIn(lua->getLuaState(), getJediManagerName(), "onPlayerLoggedIn", 0);
 	luaOnPlayerLoggedIn << creature;
 
-	lua->callFunction(&luaOnPlayerLoggedIn);
+	luaOnPlayerLoggedIn.callFunction();
 }
 
 void JediManager::onPlayerLoggedOut(CreatureObject* creature) {
@@ -114,7 +114,7 @@ void JediManager::onPlayerLoggedOut(CreatureObject* creature) {
 	LuaFunction luaOnPlayerLoggedOut(lua->getLuaState(), getJediManagerName(), "onPlayerLoggedOut", 0);
 	luaOnPlayerLoggedOut << creature;
 
-	lua->callFunction(&luaOnPlayerLoggedOut);
+	luaOnPlayerLoggedOut.callFunction();
 }
 
 void JediManager::checkForceStatusCommand(CreatureObject* creature) {
@@ -122,7 +122,7 @@ void JediManager::checkForceStatusCommand(CreatureObject* creature) {
 	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), getJediManagerName(), "checkForceStatusCommand", 0);
 	luaCheckForceStatusCommand << creature;
 
-	lua->callFunction(&luaCheckForceStatusCommand);
+	luaCheckForceStatusCommand.callFunction();
 }
 
 void JediManager::useHolocron(SceneObject* holocron, CreatureObject* creature) {
@@ -131,5 +131,5 @@ void JediManager::useHolocron(SceneObject* holocron, CreatureObject* creature) {
 	luaUseHolocron << holocron;
 	luaUseHolocron << creature;
 
-	lua->callFunction(&luaUseHolocron);
+	luaUseHolocron.callFunction();
 }

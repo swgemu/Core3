@@ -1403,7 +1403,7 @@ void DirectorManager::startScreenPlay(CreatureObject* creatureObject, const Stri
 	LuaFunction startScreenPlay(lua->getLuaState(), screenPlayName, "start", 0);
 	startScreenPlay << creatureObject;
 
-	lua->callFunction(&startScreenPlay);
+	startScreenPlay.callFunction();
 }
 
 ConversationScreen* DirectorManager::getNextConversationScreen(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, int selectedOption, CreatureObject* conversingNPC) {
@@ -1415,7 +1415,7 @@ ConversationScreen* DirectorManager::getNextConversationScreen(const String& lua
 	runMethod << selectedOption;
 	runMethod << conversingNPC;
 
-	lua->callFunction(&runMethod);
+	runMethod.callFunction();
 
 	ConversationScreen* result = (ConversationScreen*) lua_touserdata(lua->getLuaState(), -1);
 
@@ -1434,7 +1434,7 @@ ConversationScreen* DirectorManager::runScreenHandlers(const String& luaClass, C
 	runMethod << selectedOption;
 	runMethod << conversationScreen;
 
-	lua->callFunction(&runMethod);
+	runMethod.callFunction();
 
 	ConversationScreen* result = (ConversationScreen*) lua_touserdata(lua->getLuaState(), -1);
 
@@ -1454,7 +1454,7 @@ void DirectorManager::activateEvent(ScreenPlayTask* task) {
 		LuaFunction startScreenPlay(lua->getLuaState(), play, key, 0);
 		startScreenPlay << obj;
 
-		lua->callFunction(&startScreenPlay);
+		startScreenPlay.callFunction();
 	} catch (Exception& e) {
 		error("exception while running lua task " + play + ":" + key);
 		e.printStackTrace();

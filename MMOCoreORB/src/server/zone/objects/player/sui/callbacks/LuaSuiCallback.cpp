@@ -22,5 +22,5 @@ void LuaSuiCallback::run(CreatureObject* creature, SuiBox* sui, bool cancelPress
 		startScreenPlay << args->get(i).toString().toCharArray();
 	}
 
-	lua->callFunction(&startScreenPlay);
+	startScreenPlay.callFunction();
 }
