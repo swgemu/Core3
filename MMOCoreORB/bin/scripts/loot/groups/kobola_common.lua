@@ -3,11 +3,13 @@ kobola_common = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "ore_recycler_schematic", weight = 1111112},
-		{itemTemplate = "tumble_blender_schematic", weight = 2222222},
-		{itemTemplate = "fireworks_packager", weight = 2222222},
-		{itemTemplate = "firework_casing", weight = 2222222},
-		{itemTemplate = "packaged_flash_powder", weight = 2222222},
+		{itemTemplate = "ore_recycler_schematic", weight = 1000000},
+		{itemTemplate = "tumble_blender_schematic", weight = 1500000},
+		{itemTemplate = "fireworks_packager", weight = 1500000},
+		{itemTemplate = "firework_casing", weight = 1500000},
+		{itemTemplate = "packaged_flash_powder", weight = 1500000},
+		{itemTemplate = "skill_buff_onehandmelee_accuracy", weight = 1500000},
+		{itemTemplate = "skill_buff_onehandmelee_speed", weight = 1500000}		
 	}
 }
 
