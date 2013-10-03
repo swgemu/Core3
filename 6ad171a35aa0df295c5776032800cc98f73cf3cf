@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da3975d1_ba0295b2",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/corvette/imperial/destroyMission.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-03T09:00:24Z",
+      "side": 1,
+      "message": "need to use a clone instead",
+      "revId": "6ad171a35aa0df295c5776032800cc98f73cf3cf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da3975d1_9affd1aa",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/corvette/imperial/destroyMission.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-03T09:00:24Z",
+      "side": 1,
+      "message": "clone",
+      "revId": "6ad171a35aa0df295c5776032800cc98f73cf3cf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da3975d1_7a2c2d4b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/corvette/imperial/destroyMission.lua",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-03T09:00:24Z",
+      "side": 1,
+      "message": "clone",
+      "revId": "6ad171a35aa0df295c5776032800cc98f73cf3cf",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
