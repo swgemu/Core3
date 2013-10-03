@@ -113,10 +113,12 @@ class ConversationScreen : public Object {
 
 	Vector<Reference<ConversationOption*> > options;
 
-	bool stopConversation;
+	bool stopConversation, readOnly;
 
 public:
 	ConversationScreen() {
+		stopConversation = false;
+		readOnly = false;
 	}
 
 	/**
@@ -127,10 +129,14 @@ public:
 		dialogText = objectToCopy.dialogText;
 		options = objectToCopy.options;
 		stopConversation = objectToCopy.stopConversation;
+		readOnly = objectToCopy.readOnly;
 	}
 
 	ConversationScreen* cloneScreen() {
-		return new ConversationScreen(*this);
+		ConversationScreen* clone = new ConversationScreen(*this);
+		clone->readOnly = false;
+
+		return clone;
 	}
 
 	/**
@@ -139,6 +145,9 @@ public:
 	 * @param linkedScreenID The ID of the screen this option is linked.
 	 */
 	void addOption(const String& optionText, const String& linkedScreenID) {
+		if (readOnly)
+			throw Exception("Can't modify read only Conversation Screen!");
+
 		if (optionText.beginsWith("@"))
 			options.add(new ConversationOption(StringIdChatParameter(optionText), linkedScreenID));
 		else
@@ -146,10 +155,16 @@ public:
 	}
 
 	void removeOption(int idx) {
+		if (readOnly)
+			throw Exception("Can't modify read only Conversation Screen!");
+
 		options.remove(idx);
 	}
 
 	void removeAllOptions() {
+		if (readOnly)
+			throw Exception("Can't modify read only Conversation Screen!");
+
 		options.removeAll();
 	}
 
@@ -263,56 +278,94 @@ public:
 		}
 
 		optionsTable.pop();
+
+		readOnly = true;
 	}
 
 	template<class T>
 	inline void setDialogTextTT(const T& obj) {
+		if (readOnly)
+			throw Exception("Can't modify read only Conversation Screen!");
+
 		dialogText.setTT(obj);
 	}
 
 	inline void setDialogTextTT(const String& file, const String& id) {
+		if (readOnly)
+			throw Exception("Can't modify read only Conversation Screen!");
+
 		dialogText.setTT(file, id);
 	}
 
 	template<class T>
 	inline void setDialogTextTO(const T& obj) {
+		if (readOnly)
+			throw Exception("Can't modify read only Conversation Screen!");
+
 		dialogText.setTO(obj);
 	}
 
 	inline void setDialogTextTO(const String& file, const String& id) {
+		if (readOnly)
+			throw Exception("Can't modify read only Conversation Screen!");
+
 		dialogText.setTO(file, id);
 	}
 
 	template<class T>
 	inline void setDialogTextTU(const T& obj) {
+		if (readOnly)
+			throw Exception("Can't modify read only Conversation Screen!");
+
 		dialogText.setTO(obj);
 	}
 
 	inline void setDialogTextTU(const String& file, const String& id) {
+		if (readOnly)
+			throw Exception("Can't modify read only Conversation Screen!");
+
 		dialogText.setTU(file, id);
 	}
 
 	inline void setDialogTextDI(uint32 val) {
+		if (readOnly)
+			throw Exception("Can't modify read only Conversation Screen!");
+
 		dialogText.setDI(val);
 	}
 
 	inline void setDialogTextDF(float val) {
+		if (readOnly)
+			throw Exception("Can't modify read only Conversation Screen!");
+
 		dialogText.setDF(val);
 	}
 
 	inline void setDialogText(const String& fullPath) {
+		if (readOnly)
+			throw Exception("Can't modify read only Conversation Screen!");
+
 		dialogText.setStringId(fullPath);
 	}
 
 	inline void setCustomDialogText(const UnicodeString& custom) {
+		if (readOnly)
+			throw Exception("Can't modify read only Conversation Screen!");
+
 		customText = custom;
 	}
 
 	inline void setDialogText(const StringIdChatParameter& param) {
+		if (readOnly)
+			throw Exception("Can't modify read only Conversation Screen!");
+
 		dialogText = param;
 	}
 
 	inline void setStopConversation(bool stopConversation) {
+		if (readOnly)
+			throw Exception("Can't modify read only Conversation Screen!");
+
 		this->stopConversation = stopConversation;
 	}
 
