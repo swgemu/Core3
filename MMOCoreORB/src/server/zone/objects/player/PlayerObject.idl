@@ -599,6 +599,8 @@ class PlayerObject extends IntangibleObject {
 	
 	public native void logout(boolean doLock);
 	
+	public native void setJediState(int state, boolean notifyClient = true);
+	
 	/**
 	 * Gets the faction point list.
 	 */
@@ -1079,11 +1081,6 @@ class PlayerObject extends IntangibleObject {
 	
 	public int getJediState() {
 		return jediState;
-	}
-	
-		
-	public void setJediState(int state) {
-		jediState = state;
 	}
 	
 	public byte getLanguageID() {

@@ -1828,3 +1828,19 @@ int PlayerObjectImplementation::getLotsRemaining() {
 
 	return lotsRemaining;
 }
+
+void PlayerObjectImplementation::setJediState(int state, bool notifyClient) {
+	if (jediState == state)
+		return;
+
+	jediState = state;
+
+	if (!notifyClient)
+		return;
+
+	PlayerObjectDeltaMessage9* delta = new PlayerObjectDeltaMessage9(_this.get());
+	delta->setJediState(state);
+	delta->close();
+
+	sendMessage(delta);
+}

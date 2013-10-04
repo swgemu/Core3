@@ -102,6 +102,11 @@ public:
 		insertLong(oid);
 	}
 
+	void setJediState(int state) {
+		startUpdate(0x11);
+		insertInt(state);
+	}
+
 	/*void startSkillListUpdate(int skillsToUpdate) {
 		startUpdate(0);
 		startList(skillsToUpdate, play->getPlayer()->getNewCreatureSkillsCount(skillsToUpdate));
