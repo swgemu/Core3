@@ -811,6 +811,8 @@ void CityManagerImplementation::deductCityMaintenance(CityRegion* city) {
 
 	}
 
+	if(city->isRegistered())
+		thisCost += 5000;
 
 	//info("should pay " + String::valueOf(thisCost),true);
 	int lastPaid = 0;
@@ -1870,6 +1872,10 @@ void CityManagerImplementation::sendMaintenanceReport(CityRegion* city,
 				if (serverTemplate != NULL) {
 					int thiscost = maintenanceDiscount * serverTemplate->getCityMaintenanceAtRank(city->getCityRank()-1);
 					totalcost += thiscost;
+
+					if(structure->isCityHall() && city->isRegistered())
+							thiscost += 5000;
+
 					maintString += " : " + String::valueOf(thiscost);
 
 				} else {
