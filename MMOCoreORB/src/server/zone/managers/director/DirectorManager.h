@@ -127,6 +127,7 @@ namespace server {
 		static int getGCWDiscount(lua_State* L);
 		static int getTerrainHeight(lua_State* L);
 		static int checkArgumentCount(lua_State*L, int args);
+		static int awardSkill(lua_State* L);
 
 	private:
 		void initializeLuaEngine(Lua* luaEngine);

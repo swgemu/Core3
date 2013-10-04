@@ -36,6 +36,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "getForcePowerMax", &LuaPlayerObject::getForcePowerMax },
 		{ "setForcePower", &LuaPlayerObject::setForcePower },
 		{ "isJedi", &LuaPlayerObject::isJedi },
+		{ "setJediState", &LuaPlayerObject::setJediState },
 		{ 0, 0 }
 };
 
@@ -254,4 +255,12 @@ int LuaPlayerObject::isJedi(lua_State* L) {
 	lua_pushboolean(L, realObject->isJedi());
 
 	return 1;
+}
+
+int LuaPlayerObject::setJediState(lua_State* L) {
+	int jediState = lua_tointeger(L, -1);
+
+	realObject->setJediState(jediState);
+
+	return 0;
 }

@@ -54,6 +54,7 @@
 #include "server/zone/objects/tangible/deed/Deed.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
 
 
 int DirectorManager::DEBUG_MODE = 0;
@@ -152,6 +153,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "makeCreatureName", makeCreatureName);
 	lua_register(luaEngine->getLuaState(), "getGCWDiscount", getGCWDiscount);
 	lua_register(luaEngine->getLuaState(), "getTerrainHeight", getTerrainHeight);
+	lua_register(luaEngine->getLuaState(), "awardSkill", awardSkill);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -1705,6 +1707,24 @@ int DirectorManager::checkArgumentCount(lua_State* L, int args) {
 		return 1;
 	} else if (parameterCount > args)
 		return 2;
+
+	return 0;
+}
+
+int DirectorManager::awardSkill(lua_State* L) {
+	if (checkArgumentCount(L, 2) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::awardSkill");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -2);
+	String skillName = lua_tostring(L, -1);
+
+	if(creature == NULL)
+		return 0;
+
+	SkillManager::instance()->awardSkill(skillName, creature, true, false, true);
 
 	return 0;
 }

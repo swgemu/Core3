@@ -95,13 +95,43 @@ function HolocronJediManager.getNumberOfMasteredProfessions(pCreatureObject)
 	end)
 end
 
--- Check if the player has mastered all hologrind professions and give the player jedi status in that case.
+-- Check if the player is jedi.
+-- @param pCreatureObject pointer to the creature object of the player to check if he is jedi.
+-- @return returns if the player is jedi or not.
+function HolocronJediManager.isJedi(pCreatureObject)
+	return HolocronJediManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
+		return playerObject:isJedi()
+	end)
+end
+
+-- Sui window ok pressed callback function.
+function HolocronJediManager:notifyOkPressed()
+	-- Do nothing.
+end
+
+-- Send a sui window to the player about unlocking jedi and award jedi status and force sensitive skill.
+-- @param pCreatureObject pointer to the creature object of the player who unlocked jedi.
+function HolocronJediManager.sendSuiWindow(pCreatureObject)
+	local suiManager = LuaSuiManager()
+	suiManager:sendMessageBox(pCreatureObject, pCreatureObject, "@quest/force_sensitive/intro:force_sensitive", "Perhaps you should meditate somewhere alone...", "@ok", "HolocronJediManager", "notifyOkPressed")
+end
+
+-- Award skill and jedi status to the player.
+-- @param pCreatureObject pointer to the creature object of the player who unlocked jedi.
+function HolocronJediManager.awardJediStatusAndSkill(pCreatureObject)
+	HolocronJediManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
+		awardSkill(pCreatureObject, "force_title_jedi_novice")
+		playerObject:setJediState(1)
+	end)
+end
+
+-- Check if the player has mastered all hologrind professions and send sui window and award skills.
 -- @param pCreatureObject pointer to the creature object of the player to check the jedi progression on.
 function HolocronJediManager.checkIfProgressedToJedi(pCreatureObject)
-	if HolocronJediManager.getNumberOfMasteredProfessions(pCreatureObject) >= NUMBEROFPROFESSIONSTOMASTER then
-		HolocronJediManager.withCreatureObject(pCreatureObject, function(creatureObject)
-			creatureObject:sendSystemMessage("JEDI WEEEE!")
-		end)
+	if HolocronJediManager.getNumberOfMasteredProfessions(pCreatureObject) >= NUMBEROFPROFESSIONSTOMASTER and 
+	   not HolocronJediManager.isJedi(pCreatureObject) then
+		HolocronJediManager.sendSuiWindow(pCreatureObject)
+		HolocronJediManager.awardJediStatusAndSkill(pCreatureObject)
 	end
 end
 
