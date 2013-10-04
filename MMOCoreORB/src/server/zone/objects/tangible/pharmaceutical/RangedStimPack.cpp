@@ -378,6 +378,8 @@ void RangedStimPackImplementation::updateCraftingValues(CraftingValues* values, 
 }
 
 void RangedStimPackImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
+	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		super.fillAttributeList(msg, object);
+	StimPackImplementation::fillAttributeList(msg, object);
 	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(super.effectiveness, 0));
 	msg->insertAttribute("examine_heal_damage_health", Math::getPrecision(StimPackImplementation::effectiveness, 0));
 	// server/zone/objects/tangible/pharmaceutical/RangedStimPack.idl():  		msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(super.effectiveness, 0));

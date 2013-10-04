@@ -343,12 +343,15 @@ int StimPackImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 void StimPackImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
 	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		super.fillAttributeList(msg, object);
 	PharmaceuticalObjectImplementation::fillAttributeList(msg, object);
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(effectiveness, 0));
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  	}
+	if (!isRangedStimPack()){
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(effectiveness, 0));
 	msg->insertAttribute("examine_heal_damage_health", Math::getPrecision(effectiveness, 0));
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(effectiveness, 0));
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(effectiveness, 0));
 	msg->insertAttribute("examine_heal_damage_action", Math::getPrecision(effectiveness, 0));
-	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  		msg.insertAttribute("healing_ability", super.medicineUseRequired);
+	// server/zone/objects/tangible/pharmaceutical/StimPack.idl():  			msg.insertAttribute("healing_ability", super.medicineUseRequired);
 	msg->insertAttribute("healing_ability", PharmaceuticalObjectImplementation::medicineUseRequired);
+}
 }
 
 float StimPackImplementation::getEffectiveness() {

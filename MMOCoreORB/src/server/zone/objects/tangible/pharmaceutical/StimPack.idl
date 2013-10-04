@@ -145,10 +145,12 @@ class StimPack extends PharmaceuticalObject {
 	@local
 	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
 		super.fillAttributeList(msg, object);
-		
-		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(effectiveness, 0));
-		msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(effectiveness, 0));
-		msg.insertAttribute("healing_ability", super.medicineUseRequired);
+
+		if (!isRangedStimPack()) {
+			msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(effectiveness, 0));
+			msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(effectiveness, 0));
+			msg.insertAttribute("healing_ability", super.medicineUseRequired);
+		}
 	}
 	
 	public float getEffectiveness() {

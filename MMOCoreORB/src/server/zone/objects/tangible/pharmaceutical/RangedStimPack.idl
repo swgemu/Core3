@@ -92,7 +92,9 @@ class RangedStimPack extends StimPack {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {	
+	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
+		super.fillAttributeList(msg, object);
+	
 		msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(super.effectiveness, 0));
 		msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(super.effectiveness, 0));
 		msg.insertAttribute("examine_heal_range", Math.getPrecision(range, 0));
