@@ -64,8 +64,8 @@ object_draft_schematic_bio_engineer_utilities_pet_stimpack_d = object_draft_sche
 
    ingredientTemplateNames = {"craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n", "craft_chemical_ingredients_n"},
    ingredientTitleNames = {"organic_element", "inorganic_element", "delivery_medium", "drug_duration_compound", "drug_strength_compound"},
-   ingredientSlotType = {0, 0, 0, 1, 1},
-   resourceTypes = {"seafood_fish", "fiberplast_dantooine", "***BAD NAME***", "object/tangible/component/chemistry/shared_release_mechanism_duration_advanced.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller_advanced.iff"},
+   ingredientSlotType = {0, 0, 1, 1, 1},
+   resourceTypes = {"seafood_fish", "fiberplast_dantooine", "object/tangible/component/chemistry/shared_liquid_delivery_suspension_advanced.iff", "object/tangible/component/chemistry/shared_release_mechanism_duration_advanced.iff", "object/tangible/component/chemistry/shared_biologic_effect_controller_advanced.iff"},
    resourceQuantities = {24, 26, 1, 1, 3},
    contribution = {100, 100, 100, 100, 100},
 
