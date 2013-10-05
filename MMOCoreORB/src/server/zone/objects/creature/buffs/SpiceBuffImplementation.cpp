@@ -7,6 +7,7 @@
 
 #include "SpiceBuff.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/events/SpiceDownerAnimationTask.h"
 #include "SpiceDownerBuff.h"
 
 void SpiceBuffImplementation::deactivate(bool removeModifiers) {
@@ -18,8 +19,12 @@ void SpiceBuffImplementation::deactivate(bool removeModifiers) {
 		uint32 crc = String("spice." + buffName + ".down").hashCode();
 		ManagedReference<Buff*> downer = new SpiceDownerBuff(creature.get(), buffName, crc, 120);
 		setDownerAttributes(creature.get(), downer);
-
 		creature.get()->addBuff(downer);
+
+		// Puke now and every 15 seconds while debuff is active
+		creature.get()->doAnimation("heavy_cough_vomit");
+		Reference<Task*> downerAnimationTask = new SpiceDownerAnimationTask( creature.get(), crc);
+		creature.get()->addPendingTask("spice_downer_animation", downerAnimationTask, 15000);
 	}
 }
 
