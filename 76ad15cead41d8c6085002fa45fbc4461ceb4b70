@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_8f47954b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/SpiceDownerAnimationTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-05T20:30:52Z",
+      "side": 1,
+      "message": "Locker locker(player);",
+      "revId": "76ad15cead41d8c6085002fa45fbc4461ceb4b70",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
