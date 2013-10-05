@@ -66,7 +66,7 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		return GENERALERROR;
+		//return GENERALERROR;
 
 		//TODO: fix powerboost cancel
 
