@@ -8,8 +8,8 @@ gungan_lance = {
 	customizationStringNames = {},
 	customizationValues = {},
 	junkDealerTypeNeeded = JUNKGUNGAN,
-	junkMinValue = 2,
-	junkMaxValue = 22
+	junkMinValue = 35,
+	junkMaxValue = 70
 }
 
 addLootItemTemplate("gungan_lance", gungan_lance)

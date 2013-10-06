@@ -10,8 +10,8 @@ dud_firework_grey = {
 	customizationStringNames = {},
 	customizationValues = {},
 	junkDealerTypeNeeded = JUNKGENERIC,
-	junkMinValue = 2,
-	junkMaxValue = 22
+	junkMinValue = 20,
+	junkMaxValue = 40
 }
 
 addLootItemTemplate("dud_firework_grey", dud_firework_grey)

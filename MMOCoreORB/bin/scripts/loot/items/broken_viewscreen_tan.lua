@@ -7,9 +7,9 @@ broken_viewscreen_tan = {
 	},
 	customizationStringNames = {},
 	customizationValues = {},
-	junkDealerTypeNeeded = LOOTJUNK,
-	junkMinValue = 2,
-	junkMaxValue = 22
+	junkDealerTypeNeeded = JUNKGENERIC,
+	junkMinValue = 20,
+	junkMaxValue = 40
 }
 
 addLootItemTemplate("broken_viewscreen_tan", broken_viewscreen_tan)

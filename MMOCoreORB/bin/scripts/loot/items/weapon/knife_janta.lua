@@ -42,8 +42,8 @@ knife_janta = {
 	},
 
 	junkDealerTypeNeeded = JUNKWEAPONS,
-	junkMinValue = 2,
-	junkMaxValue = 22
+	junkMinValue = 20,
+	junkMaxValue = 60
 
 }
 

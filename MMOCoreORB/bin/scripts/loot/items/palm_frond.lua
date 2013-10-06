@@ -10,8 +10,8 @@ palm_frond = {
 	customizationStringNames = {},
 	customizationValues = {},
 	junkDealerTypeNeeded = JUNKGENERIC,
-	junkMinValue = 2,
-	junkMaxValue = 22
+	junkMinValue = 20,
+	junkMaxValue = 40
 }
 
 addLootItemTemplate("palm_frond", palm_frond)

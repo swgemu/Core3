@@ -41,8 +41,8 @@ nightsister_controllerfp_lance = {
 		{"uses", 8000, 8000}
 	},
 	junkDealerTypeNeeded = JUNKWEAPONS,
-	junkMinValue = 2,
-	junkMaxValue = 22
+	junkMinValue = 30,
+	junkMaxValue = 55
 
 }
 

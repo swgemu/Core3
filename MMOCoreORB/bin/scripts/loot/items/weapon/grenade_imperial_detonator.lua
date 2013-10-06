@@ -22,8 +22,8 @@ grenade_imperial_detonator = {
 	-- randomDotChance: The chance of this weapon object dropping with a random dot on it. Higher number means less chance. Set to 0 to always have a random dot.
 	randomDotChance = 10,
 	junkDealerTypeNeeded = JUNKWEAPONS,
-	junkMinValue = 2,
-	junkMaxValue = 22
+	junkMinValue = 30,
+	junkMaxValue = 55
 }
 
 addLootItemTemplate("grenade_imperial_detonator", grenade_imperial_detonator)

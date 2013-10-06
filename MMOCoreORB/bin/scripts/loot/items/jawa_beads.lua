@@ -9,8 +9,8 @@ jawa_beads = {
 	customizationStringNames = {},
 	customizationValues = {},
 	junkDealerTypeNeeded = JUNKJAWA,
-	junkMinValue = 2,
-	junkMaxValue = 22
+	junkMinValue = 35,
+	junkMaxValue = 70
 }
 
 addLootItemTemplate("jawa_beads", jawa_beads)

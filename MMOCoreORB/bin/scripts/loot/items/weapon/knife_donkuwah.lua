@@ -41,8 +41,8 @@ knife_donkuwah = {
 		{"uses", 500, 500}
 	},
 	junkDealerTypeNeeded = JUNKWEAPONS,
-	junkMinValue = 2,
-	junkMaxValue = 22
+	junkMinValue = 20,
+	junkMaxValue = 60
 
 }
 

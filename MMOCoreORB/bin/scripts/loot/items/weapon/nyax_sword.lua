@@ -42,8 +42,8 @@ nyax_sword = {
 		{"uses", 250, 9999}
 	},
 	junkDealerTypeNeeded = JUNKWEAPONS,
-	junkMinValue = 2,
-	junkMaxValue = 22
+	junkMinValue = 20,
+	junkMaxValue = 60
 
 }
 

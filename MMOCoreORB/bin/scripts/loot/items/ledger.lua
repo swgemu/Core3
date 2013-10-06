@@ -10,8 +10,8 @@ ledger = {
 	customizationStringNames = {},
 	customizationValues = {},
 	junkDealerTypeNeeded = JUNKGENERIC,
-	junkMinValue = 2,
-	junkMaxValue = 22
+	junkMinValue = 20,
+	junkMaxValue = 40
 }
 
 addLootItemTemplate("ledger", ledger)
