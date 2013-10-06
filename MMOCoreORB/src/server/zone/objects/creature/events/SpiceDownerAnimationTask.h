@@ -72,6 +72,8 @@ public:
 
 		Locker locker(player);
 
+		player->removePendingTask("spice_downer_animation");
+
 		// If debuff is still active, perform animation and reschedule
 		if ( player->hasBuff(debuffCRC) ) {
 
