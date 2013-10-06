@@ -30,7 +30,7 @@ sabol = Creature:new {
 	templates = {"object/mobile/dressed_corvette_imperial_sabol.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "ImperialAssassinConversationTemplate",
 	attacks = {
 	}
 }
