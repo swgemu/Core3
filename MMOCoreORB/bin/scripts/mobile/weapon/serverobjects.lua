@@ -45,6 +45,7 @@ includeFile("weapon/groups/sandtrooper_weapons.lua")
 includeFile("weapon/groups/unarmed_weapons.lua")
 includeFile("weapon/groups/novice_weapons.lua")
 includeFile("weapon/groups/corsec_police_weapons.lua")
+includeFile("weapon/groups/geonosian_mercenary_weapons.lua")
 
 
 -- Groups gotten from swgemu
