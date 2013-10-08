@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_0ff845e4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/dungeon/corvette/imperial/destroyMission.lua",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2013-10-08T01:26:12Z",
+      "side": 1,
+      "message": "This one and the one below have changed to cloned screen as TheAnswer requested.",
+      "revId": "f653478ec573908ffd183d518e00b6c92af5c31f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
