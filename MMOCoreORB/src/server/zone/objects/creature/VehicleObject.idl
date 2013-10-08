@@ -49,6 +49,7 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.packets.object.ObjectMenuResponse;
+import server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.intangible.VehicleControlDevice;
 import engine.core.ManagedObject;
 import engine.lua.LuaObject;
@@ -85,6 +86,16 @@ class VehicleObject extends CreatureObject {
 	
 	@local
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+	
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
+	@local
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);	
 	
 	public native boolean checkInRangeGarage();
 	

@@ -10,6 +10,8 @@
 
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 
+#include "server/zone/packets/scene/AttributeListMessage.h"
+
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 
 #include "server/zone/Zone.h"
@@ -54,6 +56,15 @@ void VehicleObject::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, Cre
 
 	} else
 		_implementation->fillObjectMenuResponse(menuResponse, player);
+}
+
+void VehicleObject::fillAttributeList(AttributeListMessage* msg, CreatureObject* object) {
+	VehicleObjectImplementation* _implementation = static_cast<VehicleObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->fillAttributeList(msg, object);
 }
 
 bool VehicleObject::checkInRangeGarage() {

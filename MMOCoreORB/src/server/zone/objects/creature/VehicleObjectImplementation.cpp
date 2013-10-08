@@ -33,6 +33,16 @@ void VehicleObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* men
 		menuResponse->addRadialMenuItem(62, 3, "@pet/pet_menu:menu_repair_vehicle"); //Repair Vehicle
 }
 
+void VehicleObjectImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object){
+
+	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
+	if( linkedCreature == NULL )
+		return;
+
+	msg->insertAttribute("@obj_attr_n:owner", linkedCreature->getFirstName());
+
+}
+
 void VehicleObjectImplementation::notifyInsertToZone(Zone* zone) {
 	SceneObjectImplementation::notifyInsertToZone(zone);
 

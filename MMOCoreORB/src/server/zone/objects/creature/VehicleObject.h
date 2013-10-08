@@ -55,6 +55,20 @@ using namespace server::zone::packets::object;
 
 namespace server {
 namespace zone {
+namespace packets {
+namespace scene {
+
+class AttributeListMessage;
+
+} // namespace scene
+} // namespace packets
+} // namespace zone
+} // namespace server
+
+using namespace server::zone::packets::scene;
+
+namespace server {
+namespace zone {
 namespace objects {
 namespace intangible {
 
@@ -115,6 +129,8 @@ public:
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
+
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	bool checkInRangeGarage();
 
@@ -195,6 +211,8 @@ public:
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
+
+	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	bool checkInRangeGarage();
 
