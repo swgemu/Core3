@@ -44,7 +44,7 @@
 ForceChokeCommand = {
         name = "forcechoke",
         
-   	damage = 0,
+   	damage = 750,
 	speed = 6.0,
 	forceCost = 400,
 
@@ -52,7 +52,7 @@ ForceChokeCommand = {
 
 	combatSpam = "forcechoke",
 	
-	poolsToDamage = NONE,
+	poolsToDamage = RANDOM_ATTRIBUTE,
 
 	range = 32
 }

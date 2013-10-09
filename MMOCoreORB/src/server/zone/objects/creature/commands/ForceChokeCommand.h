@@ -71,9 +71,9 @@ public:
 
 		int res = doCombatAction(creature, target);
 
-		if (creature->isAiAgent()) { // If they are NPC, don't get past here.
-			return SUCCESS;
-		}
+		//if (creature->isAiAgent()) { // If they are NPC, don't get past here.
+		//	return SUCCESS;
+		//}
 
 		if (res == SUCCESS) {
 
