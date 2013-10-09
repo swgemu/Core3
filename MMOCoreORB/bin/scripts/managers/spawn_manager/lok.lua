@@ -305,7 +305,7 @@ lok_static_spawns = {
 	{"reclusive_gurk_king",1200,720.3,11.9,-3396.6,130,0, "", ""},
 
 	{"junk_dealer",60,367,12,5202.8,-178,0,"","",JUNKGENERIC,JUNKCONVGENERIC},
-	{"junk_reggi",60,443.925,12,4879.41,69.9891,0,"","Reggi_Tirver",JUNKWEAPONS,JUNKCONVREGGINYM},
+	{"junk_reggi",60,443.925,12,4879.41,69.9891,0,"","Reggi Tirver",JUNKWEAPONS,JUNKCONVREGGINYM},
 
 	{"rifea_eicik",60,-23.1848,1.58812,1.95072,180.005,8145358, "conversation", "Rifea Eicik"},
 	{"rorha_wahe",60,7.54821,-0.894991,-8.57564,0,8145378, "conversation", "Rorha Wahe"},
