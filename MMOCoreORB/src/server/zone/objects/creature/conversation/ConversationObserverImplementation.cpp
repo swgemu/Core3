@@ -200,7 +200,7 @@ ConversationScreen* ConversationObserverImplementation::runScreenHandlers(Creatu
 		//Call appropriate screen handler.
 		if (screenHandlers.contains(conversationScreen->getScreenID())) {
 			//Copy the conversation screen to preserve the template.
-			modifiedScreen = screenHandlers.get(conversationScreen->getScreenID())->handleScreen(conversingPlayer, conversingNPC, selectedOption, new ConversationScreen(*conversationScreen));
+			modifiedScreen = screenHandlers.get(conversationScreen->getScreenID())->handleScreen(conversingPlayer, conversingNPC, selectedOption, conversationScreen->cloneScreen());
 
 			//Check if another screen should be handled
 			if (modifiedScreen == NULL) {
