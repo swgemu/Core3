@@ -467,9 +467,9 @@ int LuaSceneObject::getObjectName(lua_State* L) {
 }
 
 int LuaSceneObject::setDirectionalHeading(lua_State* L) {
-	int heading = lua_tointeger(L, -1);
+	float heading = lua_tonumber(L, -1);
 
-	SceneObject* obj = (SceneObject*) lua_touserdata(L, -2);
+	//SceneObject* obj = (SceneObject*) lua_touserdata(L, -2);
 
 	realObject->setDirection(heading);
 
