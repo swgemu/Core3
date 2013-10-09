@@ -27,10 +27,7 @@ mercenary_sentry = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-		"object/mobile/dressed_mercenary_strong_hum_f.iff",
-		"object/mobile/dressed_mercenary_strong_hum_m.iff",
-		"object/mobile/dressed_mercenary_strong_rod_m.iff",
-		"object/mobile/dressed_mercenary_strong_tran_m.iff"},
+		"object/mobile/dressed_noble_human_male_03.iff"},
 	lootGroups = {
 		{
 			groups = {
@@ -41,7 +38,7 @@ mercenary_sentry = Creature:new {
 			lootChance = 3300000
 		}
 	},
-	weapons = {"geonosian_weapons"},
+	weapons = {"geonosian_mercenary_weapons"},
 	conversationTemplate = "",
 	attacks = merge(brawlermaster,marksmanmaster,pistoleermaster,riflemanmaster)
 }
