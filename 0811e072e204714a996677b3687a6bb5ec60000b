@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_af5499ca",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ForceChokeTickTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-09T02:46:28Z",
+      "side": 1,
+      "message": "Locker lockerCt(creatureTarget, creature);",
+      "revId": "0811e072e204714a996677b3687a6bb5ec60000b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_8f51d5da",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ForceChokeTickTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-09T02:46:28Z",
+      "side": 1,
+      "message": "ManagedReference\u003cSceneObject*\u003e psg",
+      "revId": "0811e072e204714a996677b3687a6bb5ec60000b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_6f5eb1eb",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ForceChokeTickTask.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-09T02:46:28Z",
+      "side": 1,
+      "message": "move this after counter++",
+      "revId": "0811e072e204714a996677b3687a6bb5ec60000b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
