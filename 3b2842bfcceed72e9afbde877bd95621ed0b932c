@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_8f68b588",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/events/ForceChokeTickTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-10T00:29:40Z",
+      "side": 1,
+      "message": "you didnt have to remove the old lock, the first Locker locks creature and the second one locks creatureTarget avoiding a deadlock with creature so it should be\n\nLocker locker(creature);\nLocker lockerc(creatureTarget, creature);",
+      "revId": "3b2842bfcceed72e9afbde877bd95621ed0b932c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
