@@ -1375,7 +1375,6 @@ Lua* DirectorManager::getLuaInstance() {
 		initializeLuaEngine(lua);
 		loadScreenPlays(lua);
 		JediManager::instance()->loadConfiguration(lua);
-		JediManager::instance()->start(lua);
 
 		localLua.set(lua);
 	}

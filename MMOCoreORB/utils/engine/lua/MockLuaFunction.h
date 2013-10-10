@@ -42,22 +42,40 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef MOCKLUA_H_
-#define MOCKLUA_H_
+#ifndef MOCKLUAFUNCTION_H_
+#define MOCKLUAFUNCTION_H_
 
-#include "engine/lua/Lua.h"
+#include "engine/lua/LuaFunction.h"
 
 namespace engine {
 namespace lua {
 
-class MockLua: public Lua {
+class MockLuaFunction: public LuaFunction {
 public:
-	MOCK_METHOD1(runFile, bool(const String& filename));
-	MOCK_METHOD1(getGlobalInt, sys::uint32(const String& name));
-	MOCK_METHOD1(getGlobalString, String(const String& name));
-	MOCK_METHOD0(getLuaState, lua_State*());
-	MOCK_METHOD2(createFunction, LuaFunction*(const String& func, int argsThatWillReturn));
-	MOCK_METHOD3(createFunction, LuaFunction*(const String& object, const String& func, int argsThatWillReturn));
+	MockLuaFunction(lua_State* l, const String& object, const String& func, int argsToReturn) : LuaFunction(l, object, func, argsToReturn) {}
+
+	MOCK_METHOD0(callFunction, lua_State*());
+	MOCK_METHOD1(addArgument, void(int number));
+	MOCK_METHOD1(addArgument, void(sys::uint32 number));
+	MOCK_METHOD1(addArgument, void(float number));
+	MOCK_METHOD1(addArgument, void(double number));
+	MOCK_METHOD1(addArgument, void(int64 number));
+	MOCK_METHOD1(addArgument, void(uint64 number));
+	MOCK_METHOD1(addArgument, void(bool boolean));
+	MOCK_METHOD1(addArgument, void(String& str));
+	MOCK_METHOD1(addArgument, void(const char* str));
+	MOCK_METHOD1(addArgument, void(void* pointer));
+
+	virtual void operator<<(int number) { addArgument(number); }
+	virtual void operator<<(sys::uint32 number) { addArgument(number); }
+	virtual void operator<<(float number) { addArgument(number); }
+	virtual void operator<<(double number) { addArgument(number); }
+	virtual void operator<<(int64 number) { addArgument(number); }
+	virtual void operator<<(uint64 number) { addArgument(number); }
+	virtual void operator<<(bool boolean) { addArgument(boolean); }
+	virtual void operator<<(String& str) { addArgument(str); }
+	virtual void operator<<(const char* str) { addArgument(str); }
+	virtual void operator<<(void* pointer) { addArgument(pointer); }
 };
 
 }
@@ -65,4 +83,4 @@ public:
 
 using namespace engine::lua;
 
-#endif /* MOCKLUA_H_ */
+#endif /* MOCKLUAFUNCTION_H_ */
