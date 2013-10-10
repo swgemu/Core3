@@ -567,6 +567,16 @@ void BuildingObjectImplementation::destroyObjectFromDatabase(
 	if (signObject != NULL)
 		signObject->destroyObjectFromDatabase(true);
 
+	//Remove all child creature objects from database
+	for (int i = 0; i < childCreatureObjects.size(); ++i) {
+		ManagedReference<CreatureObject*> child = childCreatureObjects.get(i);
+
+		if (child == NULL)
+			continue;
+
+		child->destroyObjectFromDatabase(true);
+	}
+
 	//Loop through the cells and delete all objects from the database.
 }
 
@@ -1200,7 +1210,7 @@ void BuildingObjectImplementation::createChildObjects(){
 
 }
 
-void BuildingObjectImplementation::spawnChildCreatures(){
+void BuildingObjectImplementation::spawnChildCreaturesFromTemplate(){
 	SharedBuildingObjectTemplate* buildingTemplate = cast<SharedBuildingObjectTemplate*>(getObjectTemplate());
 
 	if(buildingTemplate == NULL)
@@ -1265,12 +1275,33 @@ void BuildingObjectImplementation::spawnChildCreatures(){
 				ai->setRespawnTimer(child->getRespawnTimer());
 			}
 
-			childObjects.put(creature);
+			childCreatureObjects.put(creature);
 		}
 	}
 }
 
-bool BuildingObjectImplementation::hasChildCreatures(){
+void BuildingObjectImplementation::spawnChildCreature(String& mobile, int respawnTimer, float x, float z, float y, float heading, unsigned long long cellID){
+	CreatureManager* creatureManager = zone->getCreatureManager();
+
+	if(creatureManager == NULL)
+		return;
+
+	CreatureObject* creature = creatureManager->spawnCreature(mobile.hashCode(),0,x,z,y,cellID,false);
+
+	if(creature == NULL)
+		return;
+
+	creature->updateDirection(heading);
+
+	if(creature->isAiAgent()){
+		AiAgent* ai = cast<AiAgent*>(creature);
+		ai->setRespawnTimer(respawnTimer);
+	}
+
+	childCreatureObjects.put(creature);
+}
+
+bool BuildingObjectImplementation::hasTemplateChildCreatures(){
 	SharedBuildingObjectTemplate* buildingTemplate = cast<SharedBuildingObjectTemplate*>(getObjectTemplate());
 
 	if(buildingTemplate == NULL)

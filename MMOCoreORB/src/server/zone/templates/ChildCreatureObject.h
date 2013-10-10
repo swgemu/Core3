@@ -74,6 +74,18 @@ public:
 		containmentType = containment;
 	}
 
+	inline void setMobileName(String name) {
+		mobileName = name;
+	}
+
+	inline void setRespawnTime(int respawn) {
+		respawnTime = respawn;
+	}
+
+	inline void setHeading(float head) {
+		heading = head;
+	}
+
 	inline Vector3& getPosition() {
 		return position;
 	}

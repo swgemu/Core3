@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-#include "server/zone/objects/scene/LuaSceneObject.h"
+#include "server/zone/objects/tangible/LuaTangibleObject.h"
 
 namespace server {
 namespace zone {
@@ -18,7 +18,7 @@ namespace objects {
 namespace building {
 	class BuildingObject;
 
-	class LuaBuildingObject : public LuaSceneObject {
+	class LuaBuildingObject : public LuaTangibleObject {
 	public:
 		// Constants
 		static const char className[];
@@ -33,6 +33,7 @@ namespace building {
 		int getCell(lua_State* L);
 		int grantPermission(lua_State* L);
 		int broadcastSpecificCellPermissions(lua_State* L);
+		int spawnChildCreature(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc

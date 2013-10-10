@@ -20,7 +20,7 @@
  *	BuildingObjectStub
  */
 
-enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_BROADCASTCELLPERMISSIONS__LONG_,RPC_ISALLOWEDENTRY__CREATUREOBJECT_,RPC_ISCITYBANNED__CREATUREOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_HASTEMPLATEEJECTIONPOINT__,RPC_EJECTOBJECT__CREATUREOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_BOOL_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_LONG_,RPC_ISBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__,RPC_GETREDEEDMESSAGE__,RPC_HASACCESSFEE__,RPC_GETACCESSFEE__,RPC_CANCHANGEACCESSFEE__,RPC_SETACCESSFEE__INT_INT_,RPC_REMOVEACCESSFEE__,RPC_GETACCESSFEEDELAY__,RPC_PAYACCESSFEE__CREATUREOBJECT_,RPC_UPDATEPAIDACCESSLIST__,RPC_CREATECHILDOBJECTS__,RPC_SPAWNCHILDCREATURES__,RPC_HASCHILDCREATURES__,RPC_ISRESIDENCE__,RPC_SETRESIDENCE__BOOL_};
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_BROADCASTCELLPERMISSIONS__LONG_,RPC_ISALLOWEDENTRY__CREATUREOBJECT_,RPC_ISCITYBANNED__CREATUREOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_HASTEMPLATEEJECTIONPOINT__,RPC_EJECTOBJECT__CREATUREOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_BOOL_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_LONG_,RPC_ISBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__,RPC_GETREDEEDMESSAGE__,RPC_HASACCESSFEE__,RPC_GETACCESSFEE__,RPC_CANCHANGEACCESSFEE__,RPC_SETACCESSFEE__INT_INT_,RPC_REMOVEACCESSFEE__,RPC_GETACCESSFEEDELAY__,RPC_PAYACCESSFEE__CREATUREOBJECT_,RPC_UPDATEPAIDACCESSLIST__,RPC_CREATECHILDOBJECTS__,RPC_SPAWNCHILDCREATURESFROMTEMPLATE__,RPC_HASTEMPLATECHILDCREATURES__,RPC_ISRESIDENCE__,RPC_SETRESIDENCE__BOOL_};
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
@@ -847,30 +847,39 @@ void BuildingObject::createChildObjects() {
 		_implementation->createChildObjects();
 }
 
-void BuildingObject::spawnChildCreatures() {
+void BuildingObject::spawnChildCreaturesFromTemplate() {
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SPAWNCHILDCREATURES__);
+		DistributedMethod method(this, RPC_SPAWNCHILDCREATURESFROMTEMPLATE__);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->spawnChildCreatures();
+		_implementation->spawnChildCreaturesFromTemplate();
 }
 
-bool BuildingObject::hasChildCreatures() {
+void BuildingObject::spawnChildCreature(String& mobile, int respawnTimer, float x, float z, float y, float heading, unsigned long long cellID) {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->spawnChildCreature(mobile, respawnTimer, x, z, y, heading, cellID);
+}
+
+bool BuildingObject::hasTemplateChildCreatures() {
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HASCHILDCREATURES__);
+		DistributedMethod method(this, RPC_HASTEMPLATECHILDCREATURES__);
 
 		return method.executeWithBooleanReturn();
 	} else
-		return _implementation->hasChildCreatures();
+		return _implementation->hasTemplateChildCreatures();
 }
 
 bool BuildingObject::isResidence() {
@@ -1038,6 +1047,10 @@ bool BuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		TypeInfo<VectorMap<unsigned long long, unsigned int> >::parseFromBinaryStream(&paidAccessList, stream);
 		return true;
 
+	case 0x2f655877: //BuildingObject.childCreatureObjects
+		TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::parseFromBinaryStream(&childCreatureObjects, stream);
+		return true;
+
 	case 0xd1c7bb1c: //BuildingObject.publicStructure
 		TypeInfo<bool >::parseFromBinaryStream(&publicStructure, stream);
 		return true;
@@ -1124,6 +1137,14 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_nameHashCode = 0x2f655877; //BuildingObject.childCreatureObjects
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<SortedVector<ManagedReference<CreatureObject* > > >::toBinaryStream(&childCreatureObjects, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_nameHashCode = 0xd1c7bb1c; //BuildingObject.publicStructure
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
@@ -1149,7 +1170,7 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 10;
+	return _count + 11;
 }
 
 BuildingObjectImplementation::BuildingObjectImplementation() {
@@ -1584,14 +1605,14 @@ void BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			createChildObjects();
 		}
 		break;
-	case RPC_SPAWNCHILDCREATURES__:
+	case RPC_SPAWNCHILDCREATURESFROMTEMPLATE__:
 		{
-			spawnChildCreatures();
+			spawnChildCreaturesFromTemplate();
 		}
 		break;
-	case RPC_HASCHILDCREATURES__:
+	case RPC_HASTEMPLATECHILDCREATURES__:
 		{
-			resp->insertBoolean(hasChildCreatures());
+			resp->insertBoolean(hasTemplateChildCreatures());
 		}
 		break;
 	case RPC_ISRESIDENCE__:
@@ -1821,12 +1842,12 @@ void BuildingObjectAdapter::createChildObjects() {
 	(static_cast<BuildingObject*>(stub))->createChildObjects();
 }
 
-void BuildingObjectAdapter::spawnChildCreatures() {
-	(static_cast<BuildingObject*>(stub))->spawnChildCreatures();
+void BuildingObjectAdapter::spawnChildCreaturesFromTemplate() {
+	(static_cast<BuildingObject*>(stub))->spawnChildCreaturesFromTemplate();
 }
 
-bool BuildingObjectAdapter::hasChildCreatures() {
-	return (static_cast<BuildingObject*>(stub))->hasChildCreatures();
+bool BuildingObjectAdapter::hasTemplateChildCreatures() {
+	return (static_cast<BuildingObject*>(stub))->hasTemplateChildCreatures();
 }
 
 bool BuildingObjectAdapter::isResidence() {
