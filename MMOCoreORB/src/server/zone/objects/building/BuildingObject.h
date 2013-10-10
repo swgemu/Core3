@@ -91,6 +91,8 @@ using namespace server::zone::templates;
 
 #include "engine/util/u3d/CloseObjectsVector.h"
 
+#include "server/zone/templates/ChildCreatureObject.h"
+
 #include "server/zone/objects/structure/StructureObject.h"
 
 #include "engine/lua/LuaObject.h"
@@ -244,9 +246,11 @@ public:
 
 	void createChildObjects();
 
-	void spawnChildCreatures();
+	void spawnChildCreaturesFromTemplate();
 
-	bool hasChildCreatures();
+	void spawnChildCreature(ChildCreatureObject* child);
+
+	bool hasTemplateChildCreatures();
 
 	bool isResidence();
 
@@ -296,6 +300,8 @@ protected:
 	Mutex paidAccessListMutex;
 
 	VectorMap<unsigned long long, unsigned int> paidAccessList;
+
+	SortedVector<ManagedReference<CreatureObject* > > childCreatureObjects;
 
 public:
 	bool publicStructure;
@@ -440,9 +446,11 @@ public:
 
 	void createChildObjects();
 
-	void spawnChildCreatures();
+	void spawnChildCreaturesFromTemplate();
 
-	bool hasChildCreatures();
+	void spawnChildCreature(ChildCreatureObject* child);
+
+	bool hasTemplateChildCreatures();
 
 	bool isResidence();
 
@@ -597,9 +605,9 @@ public:
 
 	void createChildObjects();
 
-	void spawnChildCreatures();
+	void spawnChildCreaturesFromTemplate();
 
-	bool hasChildCreatures();
+	bool hasTemplateChildCreatures();
 
 	bool isResidence();
 

@@ -567,6 +567,16 @@ void BuildingObjectImplementation::destroyObjectFromDatabase(
 	if (signObject != NULL)
 		signObject->destroyObjectFromDatabase(true);
 
+	//Remove all child creature objects from database
+	for (int i = 0; i < childCreatureObjects.size(); ++i) {
+		ManagedReference<CreatureObject*> child = childCreatureObjects.get(i);
+
+		if (child == NULL)
+			continue;
+
+		child->destroyObjectFromDatabase(true);
+	}
+
 	//Loop through the cells and delete all objects from the database.
 }
 
@@ -1200,77 +1210,81 @@ void BuildingObjectImplementation::createChildObjects(){
 
 }
 
-void BuildingObjectImplementation::spawnChildCreatures(){
+void BuildingObjectImplementation::spawnChildCreaturesFromTemplate(){
 	SharedBuildingObjectTemplate* buildingTemplate = cast<SharedBuildingObjectTemplate*>(getObjectTemplate());
 
 	if(buildingTemplate == NULL)
 		return;
 
-	CreatureManager* creatureManager = zone->getCreatureManager();
-	if(creatureManager == NULL)
-		return;
-
 	for(int i = 0; i < buildingTemplate->getChildCreatureObjectsSize();i++){
 
 		ChildCreatureObject* child = buildingTemplate->getChildCreatureObject(i);
-		CreatureObject* creature = NULL;
 		if(child != NULL){
-
-			// if it's inside
-			if(child->getCellId() > 0){
-				int totalCells = getTotalCellNumber();
-				try {
-
-					if (totalCells >= child->getCellId()) {
-
-						ManagedReference<CellObject*> cellObject = getCell(child->getCellId());
-						if (cellObject != NULL) {
-							creature = creatureManager->spawnCreature(child->getMobile().hashCode(),0,child->getPosition().getX(),child->getPosition().getZ(),child->getPosition().getY(),cellObject->getObjectID(),false);
-						} else
-							error("NULL CELL OBJECT");
-					}
-
-				} catch (Exception& e) {
-						error("unreported exception caught in void SceneObjectImplementation::createChildObjects()!");
-						e.printStackTrace();
-				}
-
-			} // create the creature outside
-			else {
-					String mobilename = child->getMobile();
-
-					Vector3 childPosition = child->getPosition();
-					float angle = getDirection()->getRadians();
-
-					float x = (Math::cos(angle) * childPosition.getX()) + (childPosition.getY() * Math::sin(angle));
-					float y = (Math::cos(angle) * childPosition.getY()) - (childPosition.getX() * Math::sin(angle));
-
-					x += getPosition().getX();
-					y += getPosition().getY();
-
-					float z = getPosition().getZ() + childPosition.getZ();
-					float degrees = getDirection()->getDegrees();
-
-					creature = creatureManager->spawnCreature(mobilename.hashCode(),0,x,z,y,0,false);
-
-			}
-
-			if(creature == NULL)
-				continue;
-
-			creature->updateDirection(child->getHeading());
-
-			if(creature->isAiAgent()){
-				AiAgent* ai = cast<AiAgent*>(creature);
-				ai->setRespawnTimer(child->getRespawnTimer());
-			}
-
-			childObjects.put(creature);
+			spawnChildCreature(child);
 		}
 	}
 }
 
-bool BuildingObjectImplementation::hasChildCreatures(){
+void BuildingObjectImplementation::spawnChildCreature(ChildCreatureObject* child){
+	CreatureManager* creatureManager = zone->getCreatureManager();
+	if(creatureManager == NULL)
+		return;
+
+	CreatureObject* creature = NULL;
+
+	// if it's inside
+	if(child->getCellId() > 0){
+		int totalCells = getTotalCellNumber();
+		try {
+
+			if (totalCells >= child->getCellId()) {
+
+				ManagedReference<CellObject*> cellObject = getCell(child->getCellId());
+				if (cellObject != NULL) {
+					creature = creatureManager->spawnCreature(child->getMobile().hashCode(),0,child->getPosition().getX(),child->getPosition().getZ(),child->getPosition().getY(),cellObject->getObjectID(),false);
+				} else
+					error("NULL CELL OBJECT");
+			}
+
+		} catch (Exception& e) {
+				error("unreported exception caught in void SceneObjectImplementation::createChildObjects()!");
+				e.printStackTrace();
+		}
+
+	} // create the creature outside
+	else {
+			String mobilename = child->getMobile();
+
+			Vector3 childPosition = child->getPosition();
+			float angle = getDirection()->getRadians();
+
+			float x = (Math::cos(angle) * childPosition.getX()) + (childPosition.getY() * Math::sin(angle));
+			float y = (Math::cos(angle) * childPosition.getY()) - (childPosition.getX() * Math::sin(angle));
+
+			x += getPosition().getX();
+			y += getPosition().getY();
+
+			float z = getPosition().getZ() + childPosition.getZ();
+			float degrees = getDirection()->getDegrees();
+
+			creature = creatureManager->spawnCreature(mobilename.hashCode(),0,x,z,y,0,false);
+
+	}
+
+	if(creature == NULL)
+		return;
+
+	creature->updateDirection(child->getHeading());
+
+	if(creature->isAiAgent()){
+		AiAgent* ai = cast<AiAgent*>(creature);
+		ai->setRespawnTimer(child->getRespawnTimer());
+	}
+
+	childCreatureObjects.put(creature);
+}
+
+bool BuildingObjectImplementation::hasTemplateChildCreatures(){
 	SharedBuildingObjectTemplate* buildingTemplate = cast<SharedBuildingObjectTemplate*>(getObjectTemplate());
 
 	if(buildingTemplate == NULL)

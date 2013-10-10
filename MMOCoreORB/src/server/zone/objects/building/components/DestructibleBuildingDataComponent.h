@@ -338,7 +338,6 @@ public:
 	void addMinefield(int indx, uint64 minefieldOID){
 		minefieldSlots.add(indx, minefieldOID);
 	}
-	void spawnChildCreatures();
 
 	bool isGCWBaseData(){
 		return true;

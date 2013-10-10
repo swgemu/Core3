@@ -23,10 +23,11 @@ Luna<LuaBuildingObject>::RegType LuaBuildingObject::Register[] = {
 		{ "getServerObjectCRC", &LuaSceneObject::getServerObjectCRC },
 		{ "grantPermission", &LuaBuildingObject::grantPermission },
 		{ "broadcastSpecificCellPermissions", &LuaBuildingObject::broadcastSpecificCellPermissions },
+		{ "spawnChildCreature", &LuaBuildingObject::spawnChildCreature },
 		{ 0, 0 }
 };
 
-LuaBuildingObject::LuaBuildingObject(lua_State *L) : LuaSceneObject(L) {
+LuaBuildingObject::LuaBuildingObject(lua_State *L) : LuaTangibleObject(L) {
 	realObject = (BuildingObject*)lua_touserdata(L, 1);
 }
 
@@ -67,6 +68,29 @@ int LuaBuildingObject::broadcastSpecificCellPermissions(lua_State* L) {
 	uint64 cellid = lua_tointeger(L, -1);
 
 	realObject->broadcastCellPermissions(cellid);
+
+	return 0;
+}
+
+int LuaBuildingObject::spawnChildCreature(lua_State* L) {
+	uint64 parentID = lua_tointeger(L, -1);
+	float heading = lua_tonumber(L, -2);
+	float y = lua_tonumber(L, -3);
+	float z = lua_tonumber(L, -4);
+	float x = lua_tonumber(L, -5);
+	int respawnTimer = lua_tointeger(L, -6);
+	String mobile = lua_tostring(L, -7);
+
+	ChildCreatureObject object;
+
+	object.setPosition(x, z, y);
+	object.setCellId(parentID);
+	object.setContainmentType(-1);
+	object.setMobileName(mobile);
+	object.setRespawnTime(respawnTimer);
+	object.setHeading(heading);
+
+	realObject->spawnChildCreature(&object);
 
 	return 0;
 }

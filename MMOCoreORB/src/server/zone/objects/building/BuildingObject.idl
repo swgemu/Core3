@@ -61,6 +61,7 @@ import system.lang.StackTrace;
 include server.zone.objects.cell.CellObject;
 include engine.util.u3d.CloseObjectsVector;
 import system.thread.Mutex;
+include server.zone.templates.ChildCreatureObject;
 
 class BuildingObject extends StructureObject {
 	@dereferenced
@@ -81,7 +82,10 @@ class BuildingObject extends StructureObject {
 	
 	@dereferenced
 	protected VectorMap<unsigned long, unsigned int> paidAccessList;
-	
+
+	@dereferenced
+	protected SortedVector<CreatureObject> childCreatureObjects;
+
 	public boolean publicStructure;
 	
 	public static final int MAXPLAYERITEMS = 400;
@@ -377,9 +381,12 @@ class BuildingObject extends StructureObject {
 
 	public native void createChildObjects();
 
-	public native void spawnChildCreatures();
+	public native void spawnChildCreaturesFromTemplate();
 
-	public native boolean hasChildCreatures();
+	@local
+	public native void spawnChildCreature(ChildCreatureObject child);
+
+	public native boolean hasTemplateChildCreatures();
 
 	public boolean isResidence(){
 		return isOwnerResidence;
