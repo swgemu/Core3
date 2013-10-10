@@ -81,7 +81,10 @@ class BuildingObject extends StructureObject {
 	
 	@dereferenced
 	protected VectorMap<unsigned long, unsigned int> paidAccessList;
-	
+
+	@dereferenced
+	protected SortedVector<CreatureObject> childCreatureObjects;
+
 	public boolean publicStructure;
 	
 	public static final int MAXPLAYERITEMS = 400;
@@ -377,9 +380,12 @@ class BuildingObject extends StructureObject {
 
 	public native void createChildObjects();
 
-	public native void spawnChildCreatures();
+	public native void spawnChildCreaturesFromTemplate();
 
-	public native boolean hasChildCreatures();
+	@local
+	public native void spawnChildCreature(string mobile, int respawnTimer, float x, float z, float y, float heading, unsigned long cellID);
+
+	public native boolean hasTemplateChildCreatures();
 
 	public boolean isResidence(){
 		return isOwnerResidence;

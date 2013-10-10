@@ -244,9 +244,11 @@ public:
 
 	void createChildObjects();
 
-	void spawnChildCreatures();
+	void spawnChildCreaturesFromTemplate();
 
-	bool hasChildCreatures();
+	void spawnChildCreature(String& mobile, int respawnTimer, float x, float z, float y, float heading, unsigned long long cellID);
+
+	bool hasTemplateChildCreatures();
 
 	bool isResidence();
 
@@ -296,6 +298,8 @@ protected:
 	Mutex paidAccessListMutex;
 
 	VectorMap<unsigned long long, unsigned int> paidAccessList;
+
+	SortedVector<ManagedReference<CreatureObject* > > childCreatureObjects;
 
 public:
 	bool publicStructure;
@@ -440,9 +444,11 @@ public:
 
 	void createChildObjects();
 
-	void spawnChildCreatures();
+	void spawnChildCreaturesFromTemplate();
 
-	bool hasChildCreatures();
+	void spawnChildCreature(String& mobile, int respawnTimer, float x, float z, float y, float heading, unsigned long long cellID);
+
+	bool hasTemplateChildCreatures();
 
 	bool isResidence();
 
@@ -597,9 +603,9 @@ public:
 
 	void createChildObjects();
 
-	void spawnChildCreatures();
+	void spawnChildCreaturesFromTemplate();
 
-	bool hasChildCreatures();
+	bool hasTemplateChildCreatures();
 
 	bool isResidence();
 
