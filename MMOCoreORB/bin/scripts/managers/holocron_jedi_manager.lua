@@ -7,6 +7,7 @@ NUMBEROFPROFESSIONSTOMASTER = 6
 MAXIMUMNUMBEROFPROFESSIONSTOSHOWWITHHOLOCRON = NUMBEROFPROFESSIONSTOMASTER - 2
 
 HolocronJediManager = JediManager:new {
+	screenplayName = jediManagerName,
 	jediManagerName = jediManagerName,
 	jediProgressionType = HOLOCRONJEDIPROGRESSION,
 	startingEvent = nil,
@@ -232,5 +233,7 @@ function HolocronJediManager:useHolocron(pSceneObject, pCreatureObject)
 	sceneObject = LuaSceneObject(pSceneObject)
 	sceneObject:destroyObjectFromWorld()
 end
+
+registerScreenPlay("HolocronJediManager", true)
 
 return HolocronJediManager

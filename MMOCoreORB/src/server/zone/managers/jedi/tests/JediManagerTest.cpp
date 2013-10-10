@@ -47,6 +47,8 @@ which carries forward this exception.
 #include "gmock/gmock.h"
 
 #include "engine/lua/MockLua.h"
+#include "engine/lua/MockLuaFunction.h"
+#include "server/zone/managers/director/MockDirectorManager.h"
 
 using ::testing::_;
 using ::testing::Return;
@@ -164,7 +166,6 @@ TEST_F(JediManagerTest, ShouldReadTheJediProgressionSystemNameAtLoadConfiguratio
 	jediManager->loadConfiguration(&mockLua);
 }
 
-//TODO Add test of the start method.
 //TODO Add test of the onPlayerCreation method.
 //TODO Add test of the onPlayerLogin method.
 //TODO Add test of the onPlayerLogout method.

@@ -7,6 +7,7 @@ USEDHOLOCRON = "used_holocron"
 HOLOCRONCOOLDOWNTIME = 24 * 60 * 60 * 1000 -- 24 hours
 
 VillageJediManager = JediManager:new {
+	screenplayName = jediManagerName,
 	jediManagerName = jediManagerName,
 	jediProgressionType = VILLAGEJEDIPROGRESSION,
 	startingEvent = nil,
@@ -76,5 +77,7 @@ function VillageJediManager:useHolocron(pSceneObject, pCreatureObject)
 		VillageJediManager.cannotUseHolocron(pCreatureObject)
 	end
 end
+
+registerScreenPlay("VillageJediManager", true)
 
 return VillageJediManager
