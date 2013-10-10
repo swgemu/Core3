@@ -97,8 +97,9 @@ public:
 					bool bMarkedForDelete = object->_isMarkedForDeletion();
 					bool bIsUpdated = object->_isUpdated();
 					int rCount = object.get()->getReferenceCount();
+					uint64 parentID = object->getParentID();
 					StringBuffer msg;
-					msg << endl << "OBJECTID " << String::valueOf(objectID) << endl;
+					msg << endl << "OBJECTID: " << String::valueOf(objectID) << endl;
 					msg << "OBJECTTYPE: " << String::valueOf(object->getGameObjectType()) << endl;
 
 					if(object->isCreatureObject()){
@@ -111,6 +112,7 @@ public:
 					msg << "REFERENCE COUNT " << String::valueOf(rCount) << endl;
 					msg << "Path: " << object->getObjectTemplate()->getFullTemplateString() << endl;
 					msg << "Children: " << String::valueOf(object->getChildObjects()->size()) << endl;
+					msg << "PARENT OBJECTID: " << String::valueOf(parentID) << endl;
 					if(object->getZone() != NULL)
 						msg << "location: " << String::valueOf(object->getPositionX()) << " "  << String::valueOf(object->getPositionY()) << " " << object->getZone()->getZoneName();
 
