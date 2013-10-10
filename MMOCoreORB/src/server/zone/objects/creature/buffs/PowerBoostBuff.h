@@ -134,6 +134,10 @@ protected:
 
 	int counter;
 
+	int haBuffAmount;
+
+	int mindBuffAmount;
+
 	Time nextTickTime;
 
 public:

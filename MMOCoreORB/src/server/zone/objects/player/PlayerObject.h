@@ -418,6 +418,8 @@ public:
 
 	void logout(bool doLock);
 
+	void setJediState(int state, bool notifyClient = true);
+
 	FactionStandingList* getFactionStandingList();
 
 	void setLastNpcConvStr(const String& conv);
@@ -639,8 +641,6 @@ public:
 	int getDrinkFillingMax();
 
 	int getJediState();
-
-	void setJediState(int state);
 
 	byte getLanguageID();
 
@@ -1078,6 +1078,8 @@ public:
 
 	void logout(bool doLock);
 
+	void setJediState(int state, bool notifyClient = true);
+
 	FactionStandingList* getFactionStandingList();
 
 	void setLastNpcConvStr(const String& conv);
@@ -1299,8 +1301,6 @@ public:
 	int getDrinkFillingMax();
 
 	int getJediState();
-
-	void setJediState(int state);
 
 	byte getLanguageID();
 
@@ -1561,6 +1561,8 @@ public:
 
 	void logout(bool doLock);
 
+	void setJediState(int state, bool notifyClient);
+
 	void setLastNpcConvStr(const String& conv);
 
 	void setLastNpcConvMessStr(const String& mess);
@@ -1754,8 +1756,6 @@ public:
 	int getDrinkFillingMax();
 
 	int getJediState();
-
-	void setJediState(int state);
 
 	byte getLanguageID();
 
