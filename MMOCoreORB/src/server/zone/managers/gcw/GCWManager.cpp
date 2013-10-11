@@ -26,7 +26,7 @@
  *	GCWManagerStub
  */
 
-enum {RPC_LOADLUACONFIG__ = 6,RPC_INITIALIZE__,RPC_START__,RPC_REGISTERGCWBASE__BUILDINGOBJECT_BOOL_,RPC_UNREGISTERGCWBASE__BUILDINGOBJECT_,RPC_PERFORMGCWTASKS__,RPC_STARTVULNERABILITY__BUILDINGOBJECT_,RPC_ENDVULNERABILITY__BUILDINGOBJECT_,RPC_ISBASEVULNERABLE__BUILDINGOBJECT_,RPC_ISBANDIDENTIFIED__BUILDINGOBJECT_,RPC_ISUPLINKJAMMED__BUILDINGOBJECT_,RPC_ISSHUTDOWNSEQUENCESTARTED__BUILDINGOBJECT_,RPC_ISSECURITYTERMSLICED__BUILDINGOBJECT_,RPC_ISPOWEROVERLOADED__BUILDINGOBJECT_,RPC_RESETVULNERABILITY__CREATUREOBJECT_BUILDINGOBJECT_,RPC_SENDBASEDEFENSESTATUS__CREATUREOBJECT_BUILDINGOBJECT_,RPC_DOBASEDESTRUCTION__STRUCTUREOBJECT_,RPC_DOBASEDESTRUCTION__BUILDINGOBJECT_,RPC_SENDRESETVERIFICATION__CREATUREOBJECT_BUILDINGOBJECT_,RPC_SENDJAMUPLINKMENU__CREATUREOBJECT_BUILDINGOBJECT_,RPC_VERIFYUPLINKBAND__CREATUREOBJECT_BUILDINGOBJECT_INT_,RPC_CANSTARTSLICE__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_SENDDNASAMPLEMENU__CREATUREOBJECT_BUILDINGOBJECT_,RPC_COMPLETESECURITYSLICE__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_FAILSECURITYSLICE__TANGIBLEOBJECT_,RPC_ISTERMINALDAMAGED__TANGIBLEOBJECT_,RPC_ISDNASAMPLED__BUILDINGOBJECT_,RPC_REPAIRTERMINAL__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_ABORTSHUTDOWNSEQUENCE__BUILDINGOBJECT_CREATUREOBJECT_,RPC_PROCESSDNASAMPLE__CREATUREOBJECT_BUILDINGOBJECT_STRING_INT_,RPC_HANDLEPOWERREGULATORSWITCH__CREATUREOBJECT_BUILDINGOBJECT_INT_,RPC_SENDPOWERREGULATORCONTROLS__CREATUREOBJECT_BUILDINGOBJECT_,RPC_GETDNAHASH__STRING_,RPC_ISPLANETCAPPED__,RPC_SCHEDULEBASEDESTRUCTION__BUILDINGOBJECT_CREATUREOBJECT_,RPC_INITIALIZENEWVULNERABILITY__BUILDINGOBJECT_,RPC_NOTIFYINSTALLATIONDESTRUCTION__INSTALLATIONOBJECT_,RPC_NOTIFYTURRETDESTRUCTION__BUILDINGOBJECT_INSTALLATIONOBJECT_,RPC_NOTIFYMINEFIELDDESTRUCTION__BUILDINGOBJECT_INSTALLATIONOBJECT_,RPC_SENDSELECTDEEDTODONATE__BUILDINGOBJECT_CREATUREOBJECT_INT_,RPC_SENDREMOVEDEFENSECONFIRMATION__BUILDINGOBJECT_CREATUREOBJECT_LONG_,RPC_PERFORMDEFENSEDONTATION__BUILDINGOBJECT_CREATUREOBJECT_LONG_INT_,RPC_SENDSTATUS__BUILDINGOBJECT_CREATUREOBJECT_,RPC_ADDMINEFIELD__BUILDINGOBJECT_SCENEOBJECT_,RPC_ADDTURRET__BUILDINGOBJECT_SCENEOBJECT_,RPC_ADDSCANNER__BUILDINGOBJECT_SCENEOBJECT_,RPC_REMOVEDEFENSE__BUILDINGOBJECT_CREATUREOBJECT_LONG_,RPC_CANUSETERMINALS__CREATUREOBJECT_BUILDINGOBJECT_SCENEOBJECT_,RPC_SENDTURRETATTACKLISTTO__CREATUREOBJECT_SCENEOBJECT_,RPC_CANPLACEMOREBASES__CREATUREOBJECT_,RPC_GETIMPERIALBASECOUNT__,RPC_GETREBELBASECOUNT__,RPC_GETGCWDISCOUNT__CREATUREOBJECT_,RPC_AWARDSLICINGXP__CREATUREOBJECT_STRING_INT_};
+enum {RPC_LOADLUACONFIG__ = 6,RPC_INITIALIZE__,RPC_START__,RPC_REGISTERGCWBASE__BUILDINGOBJECT_BOOL_,RPC_UNREGISTERGCWBASE__BUILDINGOBJECT_,RPC_PERFORMGCWTASKS__,RPC_STARTVULNERABILITY__BUILDINGOBJECT_,RPC_ENDVULNERABILITY__BUILDINGOBJECT_,RPC_ISBASEVULNERABLE__BUILDINGOBJECT_,RPC_ISBANDIDENTIFIED__BUILDINGOBJECT_,RPC_ISUPLINKJAMMED__BUILDINGOBJECT_,RPC_ISSHUTDOWNSEQUENCESTARTED__BUILDINGOBJECT_,RPC_ISSECURITYTERMSLICED__BUILDINGOBJECT_,RPC_ISPOWEROVERLOADED__BUILDINGOBJECT_,RPC_RESETVULNERABILITY__CREATUREOBJECT_BUILDINGOBJECT_,RPC_SENDBASEDEFENSESTATUS__CREATUREOBJECT_BUILDINGOBJECT_,RPC_DOBASEDESTRUCTION__STRUCTUREOBJECT_,RPC_DOBASEDESTRUCTION__BUILDINGOBJECT_,RPC_SENDRESETVERIFICATION__CREATUREOBJECT_BUILDINGOBJECT_,RPC_SENDJAMUPLINKMENU__CREATUREOBJECT_BUILDINGOBJECT_TANGIBLEOBJECT_,RPC_VERIFYUPLINKBAND__CREATUREOBJECT_BUILDINGOBJECT_INT_,RPC_CANSTARTSLICE__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_SENDDNASAMPLEMENU__CREATUREOBJECT_BUILDINGOBJECT_TANGIBLEOBJECT_,RPC_COMPLETESECURITYSLICE__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_FAILSECURITYSLICE__TANGIBLEOBJECT_,RPC_ISTERMINALDAMAGED__TANGIBLEOBJECT_,RPC_ISDNASAMPLED__BUILDINGOBJECT_,RPC_REPAIRTERMINAL__CREATUREOBJECT_TANGIBLEOBJECT_,RPC_ABORTSHUTDOWNSEQUENCE__BUILDINGOBJECT_CREATUREOBJECT_,RPC_PROCESSDNASAMPLE__CREATUREOBJECT_TANGIBLEOBJECT_STRING_INT_,RPC_HANDLEPOWERREGULATORSWITCH__CREATUREOBJECT_TANGIBLEOBJECT_INT_,RPC_SENDPOWERREGULATORCONTROLS__CREATUREOBJECT_BUILDINGOBJECT_TANGIBLEOBJECT_,RPC_GETDNAHASH__STRING_,RPC_ISPLANETCAPPED__,RPC_SCHEDULEBASEDESTRUCTION__BUILDINGOBJECT_CREATUREOBJECT_,RPC_INITIALIZENEWVULNERABILITY__BUILDINGOBJECT_,RPC_NOTIFYINSTALLATIONDESTRUCTION__INSTALLATIONOBJECT_,RPC_NOTIFYTURRETDESTRUCTION__BUILDINGOBJECT_INSTALLATIONOBJECT_,RPC_NOTIFYMINEFIELDDESTRUCTION__BUILDINGOBJECT_INSTALLATIONOBJECT_,RPC_SENDSELECTDEEDTODONATE__BUILDINGOBJECT_CREATUREOBJECT_INT_,RPC_SENDREMOVEDEFENSECONFIRMATION__BUILDINGOBJECT_CREATUREOBJECT_LONG_,RPC_PERFORMDEFENSEDONTATION__BUILDINGOBJECT_CREATUREOBJECT_LONG_INT_,RPC_SENDSTATUS__BUILDINGOBJECT_CREATUREOBJECT_,RPC_ADDMINEFIELD__BUILDINGOBJECT_SCENEOBJECT_,RPC_ADDTURRET__BUILDINGOBJECT_SCENEOBJECT_,RPC_ADDSCANNER__BUILDINGOBJECT_SCENEOBJECT_,RPC_REMOVEDEFENSE__BUILDINGOBJECT_CREATUREOBJECT_LONG_,RPC_CANUSETERMINALS__CREATUREOBJECT_BUILDINGOBJECT_SCENEOBJECT_,RPC_SENDTURRETATTACKLISTTO__CREATUREOBJECT_SCENEOBJECT_,RPC_CANPLACEMOREBASES__CREATUREOBJECT_,RPC_GETIMPERIALBASECOUNT__,RPC_GETREBELBASECOUNT__,RPC_GETGCWDISCOUNT__CREATUREOBJECT_,RPC_AWARDSLICINGXP__CREATUREOBJECT_STRING_INT_};
 
 GCWManager::GCWManager(Zone* zne) : ManagedService(DummyConstructorParameter::instance()) {
 	GCWManagerImplementation* _implementation = new GCWManagerImplementation(zne);
@@ -310,19 +310,20 @@ void GCWManager::sendResetVerification(CreatureObject* creature, BuildingObject*
 		_implementation->sendResetVerification(creature, building);
 }
 
-void GCWManager::sendJamUplinkMenu(CreatureObject* creature, BuildingObject* building) {
+void GCWManager::sendJamUplinkMenu(CreatureObject* creature, BuildingObject* building, TangibleObject* uplinkTerminal) {
 	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDJAMUPLINKMENU__CREATUREOBJECT_BUILDINGOBJECT_);
+		DistributedMethod method(this, RPC_SENDJAMUPLINKMENU__CREATUREOBJECT_BUILDINGOBJECT_TANGIBLEOBJECT_);
 		method.addObjectParameter(creature);
 		method.addObjectParameter(building);
+		method.addObjectParameter(uplinkTerminal);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->sendJamUplinkMenu(creature, building);
+		_implementation->sendJamUplinkMenu(creature, building, uplinkTerminal);
 }
 
 void GCWManager::verifyUplinkBand(CreatureObject* creature, BuildingObject* building, int band) {
@@ -356,19 +357,20 @@ bool GCWManager::canStartSlice(CreatureObject* creature, TangibleObject* termina
 		return _implementation->canStartSlice(creature, terminal);
 }
 
-void GCWManager::sendDNASampleMenu(CreatureObject* creature, BuildingObject* building) {
+void GCWManager::sendDNASampleMenu(CreatureObject* creature, BuildingObject* building, TangibleObject* overrideTerminal) {
 	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDDNASAMPLEMENU__CREATUREOBJECT_BUILDINGOBJECT_);
+		DistributedMethod method(this, RPC_SENDDNASAMPLEMENU__CREATUREOBJECT_BUILDINGOBJECT_TANGIBLEOBJECT_);
 		method.addObjectParameter(creature);
 		method.addObjectParameter(building);
+		method.addObjectParameter(overrideTerminal);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->sendDNASampleMenu(creature, building);
+		_implementation->sendDNASampleMenu(creature, building, overrideTerminal);
 }
 
 void GCWManager::completeSecuritySlice(CreatureObject* creature, TangibleObject* securityTerminal) {
@@ -458,52 +460,53 @@ void GCWManager::abortShutdownSequence(BuildingObject* building, CreatureObject*
 		_implementation->abortShutdownSequence(building, creature);
 }
 
-void GCWManager::processDNASample(CreatureObject* creature, BuildingObject* building, const String& sampleChain, int indx) {
+void GCWManager::processDNASample(CreatureObject* creature, TangibleObject* overrideTerminal, const String& sampleChain, int indx) {
 	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_PROCESSDNASAMPLE__CREATUREOBJECT_BUILDINGOBJECT_STRING_INT_);
+		DistributedMethod method(this, RPC_PROCESSDNASAMPLE__CREATUREOBJECT_TANGIBLEOBJECT_STRING_INT_);
 		method.addObjectParameter(creature);
-		method.addObjectParameter(building);
+		method.addObjectParameter(overrideTerminal);
 		method.addAsciiParameter(sampleChain);
 		method.addSignedIntParameter(indx);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->processDNASample(creature, building, sampleChain, indx);
+		_implementation->processDNASample(creature, overrideTerminal, sampleChain, indx);
 }
 
-void GCWManager::handlePowerRegulatorSwitch(CreatureObject* creature, BuildingObject* building, int indx) {
+void GCWManager::handlePowerRegulatorSwitch(CreatureObject* creature, TangibleObject* powerRegulator, int indx) {
 	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_HANDLEPOWERREGULATORSWITCH__CREATUREOBJECT_BUILDINGOBJECT_INT_);
+		DistributedMethod method(this, RPC_HANDLEPOWERREGULATORSWITCH__CREATUREOBJECT_TANGIBLEOBJECT_INT_);
 		method.addObjectParameter(creature);
-		method.addObjectParameter(building);
+		method.addObjectParameter(powerRegulator);
 		method.addSignedIntParameter(indx);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->handlePowerRegulatorSwitch(creature, building, indx);
+		_implementation->handlePowerRegulatorSwitch(creature, powerRegulator, indx);
 }
 
-void GCWManager::sendPowerRegulatorControls(CreatureObject* creature, BuildingObject* building) {
+void GCWManager::sendPowerRegulatorControls(CreatureObject* creature, BuildingObject* building, TangibleObject* powerRegulator) {
 	GCWManagerImplementation* _implementation = static_cast<GCWManagerImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
 		if (!deployed)
 			throw ObjectNotDeployedException(this);
 
-		DistributedMethod method(this, RPC_SENDPOWERREGULATORCONTROLS__CREATUREOBJECT_BUILDINGOBJECT_);
+		DistributedMethod method(this, RPC_SENDPOWERREGULATORCONTROLS__CREATUREOBJECT_BUILDINGOBJECT_TANGIBLEOBJECT_);
 		method.addObjectParameter(creature);
 		method.addObjectParameter(building);
+		method.addObjectParameter(powerRegulator);
 
 		method.executeWithVoidReturn();
 	} else
-		_implementation->sendPowerRegulatorControls(creature, building);
+		_implementation->sendPowerRegulatorControls(creature, building, powerRegulator);
 }
 
 String GCWManager::getDNAHash(const String& usersample) {
@@ -1486,9 +1489,9 @@ void GCWManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			sendResetVerification(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<BuildingObject*>(inv->getObjectParameter()));
 		}
 		break;
-	case RPC_SENDJAMUPLINKMENU__CREATUREOBJECT_BUILDINGOBJECT_:
+	case RPC_SENDJAMUPLINKMENU__CREATUREOBJECT_BUILDINGOBJECT_TANGIBLEOBJECT_:
 		{
-			sendJamUplinkMenu(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<BuildingObject*>(inv->getObjectParameter()));
+			sendJamUplinkMenu(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<BuildingObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()));
 		}
 		break;
 	case RPC_VERIFYUPLINKBAND__CREATUREOBJECT_BUILDINGOBJECT_INT_:
@@ -1501,9 +1504,9 @@ void GCWManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			resp->insertBoolean(canStartSlice(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter())));
 		}
 		break;
-	case RPC_SENDDNASAMPLEMENU__CREATUREOBJECT_BUILDINGOBJECT_:
+	case RPC_SENDDNASAMPLEMENU__CREATUREOBJECT_BUILDINGOBJECT_TANGIBLEOBJECT_:
 		{
-			sendDNASampleMenu(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<BuildingObject*>(inv->getObjectParameter()));
+			sendDNASampleMenu(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<BuildingObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()));
 		}
 		break;
 	case RPC_COMPLETESECURITYSLICE__CREATUREOBJECT_TANGIBLEOBJECT_:
@@ -1536,20 +1539,20 @@ void GCWManagerAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) {
 			abortShutdownSequence(static_cast<BuildingObject*>(inv->getObjectParameter()), static_cast<CreatureObject*>(inv->getObjectParameter()));
 		}
 		break;
-	case RPC_PROCESSDNASAMPLE__CREATUREOBJECT_BUILDINGOBJECT_STRING_INT_:
+	case RPC_PROCESSDNASAMPLE__CREATUREOBJECT_TANGIBLEOBJECT_STRING_INT_:
 		{
 			String sampleChain; 
-			processDNASample(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<BuildingObject*>(inv->getObjectParameter()), inv->getAsciiParameter(sampleChain), inv->getSignedIntParameter());
+			processDNASample(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getAsciiParameter(sampleChain), inv->getSignedIntParameter());
 		}
 		break;
-	case RPC_HANDLEPOWERREGULATORSWITCH__CREATUREOBJECT_BUILDINGOBJECT_INT_:
+	case RPC_HANDLEPOWERREGULATORSWITCH__CREATUREOBJECT_TANGIBLEOBJECT_INT_:
 		{
-			handlePowerRegulatorSwitch(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<BuildingObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
+			handlePowerRegulatorSwitch(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()), inv->getSignedIntParameter());
 		}
 		break;
-	case RPC_SENDPOWERREGULATORCONTROLS__CREATUREOBJECT_BUILDINGOBJECT_:
+	case RPC_SENDPOWERREGULATORCONTROLS__CREATUREOBJECT_BUILDINGOBJECT_TANGIBLEOBJECT_:
 		{
-			sendPowerRegulatorControls(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<BuildingObject*>(inv->getObjectParameter()));
+			sendPowerRegulatorControls(static_cast<CreatureObject*>(inv->getObjectParameter()), static_cast<BuildingObject*>(inv->getObjectParameter()), static_cast<TangibleObject*>(inv->getObjectParameter()));
 		}
 		break;
 	case RPC_GETDNAHASH__STRING_:
@@ -1745,8 +1748,8 @@ void GCWManagerAdapter::sendResetVerification(CreatureObject* creature, Building
 	(static_cast<GCWManager*>(stub))->sendResetVerification(creature, building);
 }
 
-void GCWManagerAdapter::sendJamUplinkMenu(CreatureObject* creature, BuildingObject* building) {
-	(static_cast<GCWManager*>(stub))->sendJamUplinkMenu(creature, building);
+void GCWManagerAdapter::sendJamUplinkMenu(CreatureObject* creature, BuildingObject* building, TangibleObject* uplinkTerminal) {
+	(static_cast<GCWManager*>(stub))->sendJamUplinkMenu(creature, building, uplinkTerminal);
 }
 
 void GCWManagerAdapter::verifyUplinkBand(CreatureObject* creature, BuildingObject* building, int band) {
@@ -1757,8 +1760,8 @@ bool GCWManagerAdapter::canStartSlice(CreatureObject* creature, TangibleObject* 
 	return (static_cast<GCWManager*>(stub))->canStartSlice(creature, terminal);
 }
 
-void GCWManagerAdapter::sendDNASampleMenu(CreatureObject* creature, BuildingObject* building) {
-	(static_cast<GCWManager*>(stub))->sendDNASampleMenu(creature, building);
+void GCWManagerAdapter::sendDNASampleMenu(CreatureObject* creature, BuildingObject* building, TangibleObject* overrideTerminal) {
+	(static_cast<GCWManager*>(stub))->sendDNASampleMenu(creature, building, overrideTerminal);
 }
 
 void GCWManagerAdapter::completeSecuritySlice(CreatureObject* creature, TangibleObject* securityTerminal) {
@@ -1785,16 +1788,16 @@ void GCWManagerAdapter::abortShutdownSequence(BuildingObject* building, Creature
 	(static_cast<GCWManager*>(stub))->abortShutdownSequence(building, creature);
 }
 
-void GCWManagerAdapter::processDNASample(CreatureObject* creature, BuildingObject* building, const String& sampleChain, int indx) {
-	(static_cast<GCWManager*>(stub))->processDNASample(creature, building, sampleChain, indx);
+void GCWManagerAdapter::processDNASample(CreatureObject* creature, TangibleObject* overrideTerminal, const String& sampleChain, int indx) {
+	(static_cast<GCWManager*>(stub))->processDNASample(creature, overrideTerminal, sampleChain, indx);
 }
 
-void GCWManagerAdapter::handlePowerRegulatorSwitch(CreatureObject* creature, BuildingObject* building, int indx) {
-	(static_cast<GCWManager*>(stub))->handlePowerRegulatorSwitch(creature, building, indx);
+void GCWManagerAdapter::handlePowerRegulatorSwitch(CreatureObject* creature, TangibleObject* powerRegulator, int indx) {
+	(static_cast<GCWManager*>(stub))->handlePowerRegulatorSwitch(creature, powerRegulator, indx);
 }
 
-void GCWManagerAdapter::sendPowerRegulatorControls(CreatureObject* creature, BuildingObject* building) {
-	(static_cast<GCWManager*>(stub))->sendPowerRegulatorControls(creature, building);
+void GCWManagerAdapter::sendPowerRegulatorControls(CreatureObject* creature, BuildingObject* building, TangibleObject* powerRegulator) {
+	(static_cast<GCWManager*>(stub))->sendPowerRegulatorControls(creature, building, powerRegulator);
 }
 
 String GCWManagerAdapter::getDNAHash(const String& usersample) {

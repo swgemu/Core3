@@ -52,6 +52,7 @@ int UplinkTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		return 0;
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+	ManagedReference<TangibleObject*> uplinkTerminal = cast<TangibleObject*>(sceneObject);
 
 	if(building == NULL)
 		return 1;
@@ -74,7 +75,7 @@ int UplinkTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 
 
 			if(player->hasSkill("combat_bountyhunter_investigation_02"))
-				gcwMan->sendJamUplinkMenu(player, building);
+				gcwMan->sendJamUplinkMenu(player, building, uplinkTerminal);
 			else
 				player->sendSystemMessage("Only an experienced Bounty Hunter with Investigation experience could expect to jam the uplink");
 		}

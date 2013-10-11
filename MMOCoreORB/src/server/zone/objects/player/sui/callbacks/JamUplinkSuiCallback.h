@@ -30,10 +30,13 @@ public:
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
 
-		if(obj == NULL || !obj->isBuildingObject())
+		if(obj == NULL)
 			return;
 
-		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(obj.get());
+		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(obj->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+
+		if (building == NULL)
+			return;
 
 		GCWManager* gcwMan = player->getZone()->getGCWManager();
 

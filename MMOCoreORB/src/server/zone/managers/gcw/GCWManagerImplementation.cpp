@@ -1230,11 +1230,11 @@ void GCWManagerImplementation::sendBaseDefenseStatus(CreatureObject* creature, B
 	creature->sendMessage(status->generateMessage());
 }
 
-void GCWManagerImplementation::sendJamUplinkMenu(CreatureObject* creature, BuildingObject* building){
+void GCWManagerImplementation::sendJamUplinkMenu(CreatureObject* creature, BuildingObject* building, TangibleObject* uplinkTerminal){
 	ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
 
-	if(ghost==NULL || baseData == NULL)
+	if(ghost==NULL || baseData == NULL || uplinkTerminal == NULL)
 		return;
 
 	if(!isBaseVulnerable(building))
@@ -1252,7 +1252,7 @@ void GCWManagerImplementation::sendJamUplinkMenu(CreatureObject* creature, Build
 
 		status->setPromptTitle("@hq:mnu_defense_status"); //Defense status
 		status->setPromptText("Select the correct channel"); // DEfense status
-		status->setUsingObject(building);
+		status->setUsingObject(uplinkTerminal);
 		status->setOkButton(true, "@ok");
 		status->setCancelButton(true, "@cancel");
 		status->setCallback( new JamUplinkSuiCallback(this->zone->getZoneServer()) );
@@ -1264,7 +1264,7 @@ void GCWManagerImplementation::sendJamUplinkMenu(CreatureObject* creature, Build
 
 		status->setPromptTitle("@hq:mnu_defense_status"); //Defense status
 		status->setPromptText("Select the correct frequency bandwidth within the channel"); // DEfense status
-		status->setUsingObject(building);
+		status->setUsingObject(uplinkTerminal);
 		status->setOkButton(true, "@ok");
 		status->setCancelButton(true, "@cancel");
 		status->setCallback( new JamUplinkSuiCallback(this->zone->getZoneServer()) );
@@ -1587,11 +1587,11 @@ void GCWManagerImplementation::failSecuritySlice(TangibleObject* securityTermina
 
 }
 
-void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, BuildingObject* building){
+void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, BuildingObject* building, TangibleObject* overrideTerminal){
 	ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
 
-	if(ghost==NULL || baseData == NULL)
+	if(ghost==NULL || baseData == NULL || overrideTerminal == NULL)
 		return;
 
 	if(!this->isBaseVulnerable(building))
@@ -1603,7 +1603,7 @@ void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, Build
 	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
 	status->setPromptTitle("@hq:mnu_dna"); //Defense status
 
-	status->setUsingObject(building);
+	status->setUsingObject(overrideTerminal);
 	status->setOkButton(true, "@ok");
 	status->setCancelButton(true, "@cancel");
 
@@ -1688,7 +1688,12 @@ void GCWManagerImplementation::sendDNASampleMenu(CreatureObject* creature, Build
 
 }
 
-void GCWManagerImplementation::processDNASample(CreatureObject* creature, BuildingObject* building, const String& sampleChain, const int indx){
+void GCWManagerImplementation::processDNASample(CreatureObject* creature, TangibleObject* overrideTerminal, const String& sampleChain, const int indx){
+	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(overrideTerminal->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+
+	if (building == NULL)
+		return;
+
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
 
 	if(creature==NULL || baseData == NULL)
@@ -1737,7 +1742,7 @@ void GCWManagerImplementation::processDNASample(CreatureObject* creature, Buildi
 
 	if ( baseData->getSampleMatches() <  dnaMatchesRequired)
 	{
-		this->sendDNASampleMenu(creature, building);
+		this->sendDNASampleMenu(creature, building, overrideTerminal);
 	}
 	else
 	{
@@ -1760,7 +1765,7 @@ String GCWManagerImplementation::refreshDNA(DestructibleBuildingDataComponent* b
 	return tstring.toString();
 }
 
-void GCWManagerImplementation::sendPowerRegulatorControls(CreatureObject* creature, BuildingObject* building){
+void GCWManagerImplementation::sendPowerRegulatorControls(CreatureObject* creature, BuildingObject* building, TangibleObject* powerRegulator){
 	ManagedReference<PlayerObject* > ghost = creature->getPlayerObject();
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
 
@@ -1776,7 +1781,7 @@ void GCWManagerImplementation::sendPowerRegulatorControls(CreatureObject* creatu
 	ManagedReference<SuiListBox*> status = new SuiListBox(creature, SuiWindowType::HQ_TERMINAL);
 	status->setPromptTitle("@hq:mnu_set_overload"); //Set to Overload
 
-	status->setUsingObject(building);
+	status->setUsingObject(powerRegulator);
 
 	status->setOkButton(true, "OFF");
 	status->setCancelButton(true, "OFF");
@@ -1797,7 +1802,12 @@ void GCWManagerImplementation::sendPowerRegulatorControls(CreatureObject* creatu
 
 }
 
-void GCWManagerImplementation::handlePowerRegulatorSwitch(CreatureObject* creature, BuildingObject* building, int indx){
+void GCWManagerImplementation::handlePowerRegulatorSwitch(CreatureObject* creature, TangibleObject* powerRegulator, int indx){
+	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(powerRegulator->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+
+	if (building == NULL)
+		return;
+
 	DestructibleBuildingDataComponent* baseData = getDestructibleBuildingData( building );
 
 	if(baseData == NULL)
@@ -1833,7 +1843,7 @@ void GCWManagerImplementation::handlePowerRegulatorSwitch(CreatureObject* creatu
 	}
 	else {
 		block.release();
-		this->sendPowerRegulatorControls(creature,building);
+		this->sendPowerRegulatorControls(creature,building, powerRegulator);
 	}
 
 }
