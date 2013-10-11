@@ -68,6 +68,11 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
+		if (!creature->hasSkill("social_entertainer_novice")) {
+			creature->sendSystemMessage("@ui_imagedesigner:noskill"); // You don't have any image designer skills
+			return GENERALERROR;
+		}
+
 		//Disabled again for public use until bugs can be worked out.
 		//return SUCCESS;
 
