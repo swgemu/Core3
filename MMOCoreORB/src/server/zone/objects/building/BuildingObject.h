@@ -244,6 +244,8 @@ public:
 
 	void createChildObjects();
 
+	void spawnChildSceneObject(String& templatePath, float x, float z, float y, unsigned long long cellID, float dw, float dx, float dy, float dz);
+
 	void spawnChildCreaturesFromTemplate();
 
 	void spawnChildCreature(String& mobile, int respawnTimer, float x, float z, float y, float heading, unsigned long long cellID);
@@ -443,6 +445,8 @@ public:
 	void updatePaidAccessList();
 
 	void createChildObjects();
+
+	void spawnChildSceneObject(String& templatePath, float x, float z, float y, unsigned long long cellID, float dw, float dx, float dy, float dz);
 
 	void spawnChildCreaturesFromTemplate();
 

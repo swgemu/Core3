@@ -380,6 +380,9 @@ class BuildingObject extends StructureObject {
 
 	public native void createChildObjects();
 
+	@local
+	public native void spawnChildSceneObject(string templatePath, float x, float z, float y, unsigned long cellID, float dw, float dx, float dy, float dz);
+
 	public native void spawnChildCreaturesFromTemplate();
 
 	@local

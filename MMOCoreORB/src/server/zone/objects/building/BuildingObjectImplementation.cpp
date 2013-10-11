@@ -1210,6 +1210,45 @@ void BuildingObjectImplementation::createChildObjects(){
 
 }
 
+void BuildingObjectImplementation::spawnChildSceneObject(String& templatePath, float x, float z, float y, unsigned long long cellID, float dw, float dx, float dy, float dz){
+	ZoneServer* zoneServer = getZoneServer();
+
+	if(zoneServer == NULL)
+		return;
+
+	Zone* zone = _this.get()->getZone();
+
+	if (zone == NULL)
+		return;
+
+	ManagedReference<SceneObject*> object = zoneServer->createObject(templatePath.hashCode(), 0);
+
+	if (object == NULL || object->isCreatureObject())
+		return;
+
+	object->initializePosition(x, z, y);
+	object->setDirection(dw, dx, dy, dz);
+
+	Reference<SceneObject*> cell = NULL;
+
+	if (cellID != 0) {
+		cell = zoneServer->getObject(cellID);
+
+		if (cell != NULL && !cell->isCellObject()) {
+			cell = NULL;
+		}
+	}
+
+	if (cell != NULL) {
+		cell->transferObject(object, -1);
+	} else
+		zone->transferObject(object, -1, true);
+
+	object->createChildObjects();
+
+	childObjects.put(object);
+}
+
 void BuildingObjectImplementation::spawnChildCreaturesFromTemplate(){
 	SharedBuildingObjectTemplate* buildingTemplate = cast<SharedBuildingObjectTemplate*>(getObjectTemplate());
 

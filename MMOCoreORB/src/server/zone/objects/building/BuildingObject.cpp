@@ -847,6 +847,15 @@ void BuildingObject::createChildObjects() {
 		_implementation->createChildObjects();
 }
 
+void BuildingObject::spawnChildSceneObject(String& templatePath, float x, float z, float y, unsigned long long cellID, float dw, float dx, float dy, float dz) {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		throw ObjectNotLocalException(this);
+
+	} else
+		_implementation->spawnChildSceneObject(templatePath, x, z, y, cellID, dw, dx, dy, dz);
+}
+
 void BuildingObject::spawnChildCreaturesFromTemplate() {
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {

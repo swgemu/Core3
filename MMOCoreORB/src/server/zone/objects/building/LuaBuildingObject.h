@@ -34,6 +34,7 @@ namespace building {
 		int grantPermission(lua_State* L);
 		int broadcastSpecificCellPermissions(lua_State* L);
 		int spawnChildCreature(lua_State* L);
+		int spawnChildSceneObject(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc

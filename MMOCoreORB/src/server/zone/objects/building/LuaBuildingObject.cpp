@@ -25,6 +25,7 @@ Luna<LuaBuildingObject>::RegType LuaBuildingObject::Register[] = {
 		{ "grantPermission", &LuaBuildingObject::grantPermission },
 		{ "broadcastSpecificCellPermissions", &LuaBuildingObject::broadcastSpecificCellPermissions },
 		{ "spawnChildCreature", &LuaBuildingObject::spawnChildCreature },
+		{ "spawnChildSceneObject", &LuaBuildingObject::spawnChildSceneObject },
 		{ 0, 0 }
 };
 
@@ -83,6 +84,22 @@ int LuaBuildingObject::spawnChildCreature(lua_State* L) {
 	String mobile = lua_tostring(L, -7);
 
 	realObject->spawnChildCreature(mobile, respawnTimer, x, z, y, heading, parentID);
+
+	return 0;
+}
+
+int LuaBuildingObject::spawnChildSceneObject(lua_State* L) {
+	float dz = lua_tonumber(L, -1);
+	float dy = lua_tonumber(L, -2);
+	float dx = lua_tonumber(L, -3);
+	float dw = lua_tonumber(L, -4);
+	uint64 cellID = lua_tointeger(L, -5);
+	float y = lua_tonumber(L, -6);
+	float z = lua_tonumber(L, -7);
+	float x = lua_tonumber(L, -8);
+	String script = lua_tostring(L, -9);
+
+	realObject->spawnChildSceneObject(script, x, z, y, cellID, dw, dx, dy, dz);
 
 	return 0;
 }
