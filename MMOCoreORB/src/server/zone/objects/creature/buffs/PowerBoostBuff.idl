@@ -66,6 +66,8 @@ class PowerBoostBuff extends Buff {
 	protected int pbTick;
 	protected int time;
 	protected int counter;
+	protected int haBuffAmount;
+	protected int mindBuffAmount;
 	
 	@dereferenced
 	protected Time nextTickTime; 
@@ -78,6 +80,8 @@ class PowerBoostBuff extends Buff {
 		pbTick = value/20;
 		time = duration * 1000;
 		counter = 0;
+		haBuffAmount=0;
+		mindBuffAmount=0;
 	}
 	
 	public native void initializeTransientMembers();
@@ -93,3 +97,4 @@ class PowerBoostBuff extends Buff {
 	public native void clearBuffEvent();
 
 }
+
