@@ -42,10 +42,11 @@
 
 
 object_building_general_rori_hyperdrive_research_facility = object_building_general_shared_rori_hyperdrive_research_facility:new {
-
-
-
-
+	gameObjectType = 515,
+	pvpStatusBitmask = 0,
+	dataObjectComponent = "DestructibleBuildingDataComponent",
+	alwaysPublic = 1,
+	factionBaseType = 2,
 
 }
 

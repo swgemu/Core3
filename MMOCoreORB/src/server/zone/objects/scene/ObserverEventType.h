@@ -61,6 +61,7 @@ public:
 	const static int ITEMLOOTED 				= 49; // ManagedObject arg1 = looting player, long arg2 = 0
 	const static int MEDPACKUSED 				= 50; // ManagedObject arg1 = null, long arg2 = 0
 	const static int BADGEAWARDED 				= 51; // ManagedObject arg1 = player, long arg2 = badge number awarded
+	const static int FACTIONBASEFLIPPED			= 52; // ManagedObject arg1 = null, long arg2 = 0
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */

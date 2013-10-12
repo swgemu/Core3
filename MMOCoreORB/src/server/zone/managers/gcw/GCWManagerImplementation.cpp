@@ -553,13 +553,21 @@ void GCWManagerImplementation::doBaseDestruction(BuildingObject* building){
 		error("ERROR:  could not get base data for base");
 		return;
 	}
+
+	// need to lock both.  building must be locked for destroyStructure() and then _this is locked when it calls unregister.
 	Locker locker(_this.get());
 	Locker block(building,_this.get());
 
-	this->unregisterGCWBase(building);
+	int baseType = building->getFactionBaseType();
 
-	// need to lock both.  building must be locked for destroyStructure() and then _this is locked when it calls unregister.
-	StructureManager::instance()->destroyStructure(building);
+	if (baseType == PLAYERFACTIONBASE) {
+		this->unregisterGCWBase(building);
+
+		StructureManager::instance()->destroyStructure(building);
+	} else if (baseType == STATICFACTIONBASE) {
+		building->notifyObservers(ObserverEventType::FACTIONBASEFLIPPED);
+	}
+
 }
 
 void GCWManagerImplementation::unregisterGCWBase(BuildingObject* building){
@@ -615,7 +623,9 @@ void GCWManagerImplementation::unregisterGCWBase(BuildingObject* building){
 		this->dropDestroyTask(building->getObjectID());
 	}
 
+#ifdef GCW_DEBUG
 	info("Base " + String::valueOf(building->getObjectID()) + " has been removed",true);
+#endif
 }
 
 void GCWManagerImplementation::performGCWTasks(){

@@ -35,6 +35,8 @@ namespace building {
 		int broadcastSpecificCellPermissions(lua_State* L);
 		int spawnChildCreature(lua_State* L);
 		int spawnChildSceneObject(lua_State* L);
+		int destroyChildObjects(lua_State* L);
+		int initializeStaticGCWBase(lua_State* L);
 
 	private:
 		// The pointer to the 'real object' defined in object.cc

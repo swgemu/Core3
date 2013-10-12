@@ -3,30 +3,6 @@ HyperdriveResearchFacilityScreenPlay = ScreenPlay:new {
 
 	screenplayName = "HyperdriveResearchFacilityScreenPlay",
 
-	lootContainers = {
-
-        },
-
-        lootLevel = 22,
-
-        lootGroups = {
-                {
-                        groups = {
-                                {group = "color_crystals", chance = 100000},
-                                {group = "junk", chance = 6300000},
-                                {group = "melee_weapons", chance = 1500000},
-				{group = "pistols", chance = 500000},
-				{group = "carbines", chance = 500000},
-				{group = "rifles", chance = 500000},
-                                {group = "clothing_attachments", chance = 300000},
-                                {group = "armor_attachments", chance = 300000}
-                        },
-                        lootChance = 8000000
-                }
-        },
-
-        lootContainerRespawn = 1800, -- 30 minutes
-
 	buildingID =  479815
 }
 
@@ -34,9 +10,8 @@ registerScreenPlay("HyperdriveResearchFacilityScreenPlay", true)
 
 function HyperdriveResearchFacilityScreenPlay:start()
 	if isZoneEnabled("rori") then
-		self:initializeLootContainers()
-
 		local pBuilding = getSceneObject(self.buildingID)
+		createObserver(FACTIONBASEFLIPPED, "HyperdriveResearchFacilityScreenPlay", "flipBase", pBuilding)
 
 		if math.random(100) >= 50 then
 			self:spawnRebels(pBuilding)
@@ -46,13 +21,27 @@ function HyperdriveResearchFacilityScreenPlay:start()
 	end
 end
 
+function HyperdriveResearchFacilityScreenPlay:flipBase(pBuilding)
 
+	if pBuilding ~= nil then
+		local building = LuaBuildingObject(pBuilding)
+		building:destroyChildObjects()
+
+		if building:getFaction() == FACTIONIMPERIAL then
+			self:spawnRebels(pBuilding)
+		elseif building:getFaction() == FACTIONREBEL then
+			self:spawnImperials(pBuilding)
+		end
+	end
+
+	return 0
+end
 
 function HyperdriveResearchFacilityScreenPlay:spawnImperials(pBuilding)
 
 	if pBuilding ~= nil then
 		local building = LuaBuildingObject(pBuilding)
-		building:setFaction(FACTIONIMPERIAL)
+		building:initializeStaticGCWBase(FACTIONIMPERIAL)
 
 		--imperial decorations
 		building:spawnChildSceneObject("object/tangible/gcw/flip_banner_onpole_imperial.iff", -1130.5, 77.2, 4532.2, 0, 1, 0, 0, 0)
@@ -243,7 +232,7 @@ function HyperdriveResearchFacilityScreenPlay:spawnRebels(pBuilding)
 
 	if pBuilding ~= nil then
 		local building = LuaBuildingObject(pBuilding)
-		building:setFaction(FACTIONREBEL)
+		building:initializeStaticGCWBase(FACTIONREBEL)
 
 		--rebel decorations
 		building:spawnChildSceneObject("object/tangible/gcw/flip_banner_onpole_rebel.iff", -1130.5, 77.2, 4532.2, 0, 1, 0, 0, 0)

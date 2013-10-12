@@ -7,7 +7,9 @@
 
 #include "LuaBuildingObject.h"
 #include "BuildingObject.h"
+#include "server/zone/Zone.h"
 #include "server/zone/objects/cell/CellObject.h"
+#include "server/zone/managers/gcw/GCWManager.h"
 
 const char LuaBuildingObject::className[] = "LuaBuildingObject";
 
@@ -21,11 +23,13 @@ Luna<LuaBuildingObject>::RegType LuaBuildingObject::Register[] = {
 		{ "getPositionZ", &LuaSceneObject::getPositionZ },
 		{ "getParentID", &LuaSceneObject::getParentID },
 		{ "getServerObjectCRC", &LuaSceneObject::getServerObjectCRC },
-		{ "setFaction", &LuaTangibleObject::setFaction },
+		{ "getFaction", &LuaTangibleObject::getFaction },
 		{ "grantPermission", &LuaBuildingObject::grantPermission },
 		{ "broadcastSpecificCellPermissions", &LuaBuildingObject::broadcastSpecificCellPermissions },
 		{ "spawnChildCreature", &LuaBuildingObject::spawnChildCreature },
 		{ "spawnChildSceneObject", &LuaBuildingObject::spawnChildSceneObject },
+		{ "destroyChildObjects", &LuaBuildingObject::destroyChildObjects },
+		{ "initializeStaticGCWBase", &LuaBuildingObject::initializeStaticGCWBase },
 		{ 0, 0 }
 };
 
@@ -100,6 +104,33 @@ int LuaBuildingObject::spawnChildSceneObject(lua_State* L) {
 	String script = lua_tostring(L, -9);
 
 	realObject->spawnChildSceneObject(script, x, z, y, cellID, dw, dx, dy, dz);
+
+	return 0;
+}
+
+int LuaBuildingObject::destroyChildObjects(lua_State* L) {
+	realObject->destroyChildObjects();
+
+	return 0;
+}
+
+int LuaBuildingObject::initializeStaticGCWBase(lua_State* L) {
+	unsigned int faction = lua_tointeger(L, -1);
+
+	Zone* zone = realObject->getZone();
+
+	if (zone == NULL)
+		return 0;
+
+	GCWManager* gcwMan = zone->getGCWManager();
+
+	if (gcwMan == NULL)
+		return 0;
+
+	gcwMan->unregisterGCWBase(realObject);
+	realObject->setFaction(faction);
+	gcwMan->initializeNewVulnerability(realObject);
+	gcwMan->registerGCWBase(realObject, false);
 
 	return 0;
 }

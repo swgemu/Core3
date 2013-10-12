@@ -172,6 +172,12 @@ public:
 
 	static const int REBELHASH = 370444368;
 
+	static const int NOTAFACTIONBASE = 0;
+
+	static const int PLAYERFACTIONBASE = 1;
+
+	static const int STATICFACTIONBASE = 2;
+
 	GCWManager(Zone* zne);
 
 	void loadLuaConfig();
@@ -340,6 +346,12 @@ public:
 	static const int IMPERIALHASH = 3679112276;
 
 	static const int REBELHASH = 370444368;
+
+	static const int NOTAFACTIONBASE = 0;
+
+	static const int PLAYERFACTIONBASE = 1;
+
+	static const int STATICFACTIONBASE = 2;
 
 private:
 	ManagedReference<Zone* > zone;

@@ -71,6 +71,7 @@ HQValues = {
 	{"object/building/faction_perk/hq/hq_s03_rebel.iff", 4},
 	{"object/building/faction_perk/hq/hq_s04_rebel_pvp.iff", 20},
 	{"object/building/faction_perk/hq/hq_s04_rebel.iff", 10},
+	{"object/building/general/rori_hyperdrive_research_facility.iff", 2},
 
 }
 

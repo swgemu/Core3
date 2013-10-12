@@ -29,7 +29,11 @@ class GCWManager extends ManagedService implements Logger {
 
 	public final static int IMPERIALHASH = 3679112276;
 	public final static int REBELHASH = 370444368;
-	
+
+	public static final int NOTAFACTIONBASE = 0;
+	public static final int PLAYERFACTIONBASE = 1;
+	public static final int STATICFACTIONBASE = 2;
+
 	private Zone zone;
 	
 	@dereferenced 
