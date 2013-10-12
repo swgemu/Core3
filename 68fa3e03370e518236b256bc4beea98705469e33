@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_cff47d89",
+        "filename": "MMOCoreORB/src/server/zone/managers/jedi/tests/JediManagerTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-12T14:09:23Z",
+      "side": 1,
+      "message": "SceneObjects need to be in Reference\u003c\u003e and created on the heap",
+      "revId": "68fa3e03370e518236b256bc4beea98705469e33",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
