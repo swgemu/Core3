@@ -26,8 +26,11 @@ class SharedBuildingObjectTemplate : public SharedStructureObjectTemplate {
 
 	Vector3 ejectionPoint;
 
+	int factionBaseType;
+
 public:
 	SharedBuildingObjectTemplate() {
+		factionBaseType = 0;
 	}
 
 	~SharedBuildingObjectTemplate() {
@@ -78,6 +81,10 @@ public:
 
 	inline Vector3 getEjectionPoint() {
 		return ejectionPoint;
+	}
+
+	inline int getFactionBaseType() {
+		return factionBaseType;
 	}
 };
 

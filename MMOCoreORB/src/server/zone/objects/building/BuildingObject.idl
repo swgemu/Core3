@@ -92,7 +92,9 @@ class BuildingObject extends StructureObject {
 	protected unicode signName;
 		
 	protected boolean isOwnerResidence;
-	
+
+	protected int factionBaseType;
+
 	public BuildingObject() {
 		Logger.setLoggingName("BuildingObject");
 		
@@ -113,6 +115,8 @@ class BuildingObject extends StructureObject {
 
 		signName = "";
 		isOwnerResidence = false;
+
+		factionBaseType = 0;
 	}
 	
 	public native void createCellObjects();
@@ -390,11 +394,17 @@ class BuildingObject extends StructureObject {
 
 	public native boolean hasTemplateChildCreatures();
 
+	public native void destroyChildObjects();
+
 	public boolean isResidence(){
 		return isOwnerResidence;
 	}
 
 	public void setResidence (boolean isResidence){
 		isOwnerResidence = isResidence;
+	}
+
+	public int getFactionBaseType() {
+		return factionBaseType;
 	}
 }

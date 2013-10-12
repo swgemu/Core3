@@ -58,14 +58,15 @@ object_building_faction_perk_hq_hq_s03_imp_pvp = object_building_faction_perk_hq
 		width = 6,
 		planetMapCategory = "imperial_hq",
 		alwaysPublic = 1,
+		factionBaseType = 1,
 		
 		skillMods = {
 			{"private_buff_mind", 100},
 			{"private_med_battle_fatigue", 5},
 			{"private_medical_rating", 100},
 		},
-			childObjects = {
-					
+
+		childObjects = {
 	
 			-- left side columns
 			

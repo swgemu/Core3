@@ -252,9 +252,13 @@ public:
 
 	bool hasTemplateChildCreatures();
 
+	void destroyChildObjects();
+
 	bool isResidence();
 
 	void setResidence(bool isResidence);
+
+	int getFactionBaseType();
 
 	DistributedObjectServant* _getImplementation();
 	DistributedObjectServant* _getImplementationForRead();
@@ -312,6 +316,8 @@ protected:
 	UnicodeString signName;
 
 	bool isOwnerResidence;
+
+	int factionBaseType;
 
 public:
 	BuildingObjectImplementation();
@@ -454,9 +460,13 @@ public:
 
 	bool hasTemplateChildCreatures();
 
+	void destroyChildObjects();
+
 	bool isResidence();
 
 	void setResidence(bool isResidence);
+
+	int getFactionBaseType();
 
 	WeakReference<BuildingObject*> _this;
 
@@ -611,9 +621,13 @@ public:
 
 	bool hasTemplateChildCreatures();
 
+	void destroyChildObjects();
+
 	bool isResidence();
 
 	void setResidence(bool isResidence);
+
+	int getFactionBaseType();
 
 };
 

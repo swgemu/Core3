@@ -88,6 +88,7 @@ void BuildingObjectImplementation::loadTemplateData(
 
 	publicStructure = buildingData->isPublicStructure();
 
+	factionBaseType = buildingData->getFactionBaseType();
 }
 
 void BuildingObjectImplementation::createContainerComponent() {
@@ -573,6 +574,11 @@ void BuildingObjectImplementation::destroyObjectFromDatabase(
 
 		if (child == NULL)
 			continue;
+
+		if (child->isAiAgent()) {
+			AiAgent* ai = cast<AiAgent*>(child.get());
+			ai->setRespawnTimer(0);
+		}
 
 		child->destroyObjectFromDatabase(true);
 	}
@@ -1349,3 +1355,35 @@ bool BuildingObjectImplementation::hasTemplateChildCreatures(){
 	return buildingTemplate->getChildCreatureObjectsSize() > 0;
 }
 
+void BuildingObjectImplementation::destroyChildObjects() {
+
+	int size = childObjects.size();
+
+	for (int i = 0; i < size; i++) {
+		ManagedReference<SceneObject*> child = childObjects.get(0);
+
+		if (child == NULL)
+			continue;
+
+		childObjects.drop(child);
+		child->destroyObjectFromDatabase(true);
+		child->destroyObjectFromWorld(true);
+	}
+
+	size = childCreatureObjects.size();
+
+	for (int i = 0; i < size; i++) {
+		ManagedReference<CreatureObject*> child = childCreatureObjects.get(0);
+
+		if (child == NULL)
+			continue;
+
+		if (child->isAiAgent()) {
+			AiAgent* ai = cast<AiAgent*>(child.get());
+			ai->setRespawnTimer(0);
+		}
+
+		childCreatureObjects.drop(child);
+		child->destroyObjectFromDatabase(true);
+	}
+}

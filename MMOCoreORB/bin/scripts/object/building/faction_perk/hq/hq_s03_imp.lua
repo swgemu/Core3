@@ -56,6 +56,8 @@ object_building_faction_perk_hq_hq_s03_imp = object_building_faction_perk_hq_sha
 		width = 6,
 		planetMapCategory = "imperial_hq",
 		alwaysPublic = 1,
+		factionBaseType = 1,
+
 		skillMods = {
 			{"private_buff_mind", 100},
 			{"private_med_battle_fatigue", 5},
@@ -63,6 +65,7 @@ object_building_faction_perk_hq_hq_s03_imp = object_building_faction_perk_hq_sha
 		},
 
 		childObjects = {
+
 			{templateFile = "object/static/structure/military/military_wall_med_imperial_style_01.iff", x=-10, z=0, y=37, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1},
 			{templateFile = "object/static/structure/military/military_wall_med_imperial_style_01.iff", x=10, z=0, y=37, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1},
 

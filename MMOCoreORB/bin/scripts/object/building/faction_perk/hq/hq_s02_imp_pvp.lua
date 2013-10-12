@@ -57,13 +57,15 @@ object_building_faction_perk_hq_hq_s02_imp_pvp = object_building_faction_perk_hq
 		width = 6,
 		planetMapCategory = "imperial_hq",
 		alwaysPublic = 1,
+		factionBaseType = 1,
+
 		skillMods = {
 			{"private_medical_rating", 100},
 			{"private_med_wound_health", 100},
 		    {"private_med_wound_action", 100},
 		},
-			childObjects = {
-		
+
+		childObjects = {
 									
 			{templateFile = "object/static/structure/military/military_wall_med_imperial_style_01.iff", x=7, z=0, y=23.7, ox=0, oy=.37824, oz=0, ow=.9257, cellid=-1, containmentType=-1}, -- Front right
 			{templateFile = "object/static/structure/military/military_wall_med_imperial_style_01.iff", x=-7, z=0, y=23.7, ox=0, oy=-.37824, oz=0, ow=.9257, cellid=-1, containmentType=-1},

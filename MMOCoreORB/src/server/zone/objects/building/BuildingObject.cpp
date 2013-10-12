@@ -20,7 +20,7 @@
  *	BuildingObjectStub
  */
 
-enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_BROADCASTCELLPERMISSIONS__LONG_,RPC_ISALLOWEDENTRY__CREATUREOBJECT_,RPC_ISCITYBANNED__CREATUREOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_HASTEMPLATEEJECTIONPOINT__,RPC_EJECTOBJECT__CREATUREOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_BOOL_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_LONG_,RPC_ISBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__,RPC_GETREDEEDMESSAGE__,RPC_HASACCESSFEE__,RPC_GETACCESSFEE__,RPC_CANCHANGEACCESSFEE__,RPC_SETACCESSFEE__INT_INT_,RPC_REMOVEACCESSFEE__,RPC_GETACCESSFEEDELAY__,RPC_PAYACCESSFEE__CREATUREOBJECT_,RPC_UPDATEPAIDACCESSLIST__,RPC_CREATECHILDOBJECTS__,RPC_SPAWNCHILDCREATURESFROMTEMPLATE__,RPC_HASTEMPLATECHILDCREATURES__,RPC_ISRESIDENCE__,RPC_SETRESIDENCE__BOOL_};
+enum {RPC_CREATECELLOBJECTS__ = 6,RPC_DESTROYOBJECTFROMDATABASE__BOOL_,RPC_INITIALIZETRANSIENTMEMBERS__,RPC_CREATECONTAINERCOMPONENT__,RPC_SETCUSTOMOBJECTNAME__UNICODESTRING_BOOL_,RPC_UPDATESIGNNAME__BOOL_,RPC_SENDCONTAINEROBJECTSTO__SCENEOBJECT_,RPC_UPDATECELLPERMISSIONSTO__CREATUREOBJECT_,RPC_BROADCASTCELLPERMISSIONS__,RPC_BROADCASTCELLPERMISSIONS__LONG_,RPC_ISALLOWEDENTRY__CREATUREOBJECT_,RPC_ISCITYBANNED__CREATUREOBJECT_,RPC_NOTIFYSTRUCTUREPLACED__CREATUREOBJECT_,RPC_HASTEMPLATEEJECTIONPOINT__,RPC_EJECTOBJECT__CREATUREOBJECT_,RPC_NOTIFYREMOVEFROMZONE__,RPC_NOTIFYLOADFROMDATABASE__,RPC_NOTIFYINSERTTOZONE__ZONE_,RPC_NOTIFYOBJECTINSERTEDTOZONE__SCENEOBJECT_,RPC_SENDTO__SCENEOBJECT_BOOL_,RPC_SENDBASELINESTO__SCENEOBJECT_,RPC_SENDDESTROYTO__SCENEOBJECT_,RPC_ADDCELL__CELLOBJECT_INT_,RPC_ISSTATICBUILDING__,RPC_GETCELL__INT_,RPC_GETTOTALCELLNUMBER__,RPC_TRANSFEROBJECT__SCENEOBJECT_INT_BOOL_BOOL_,RPC_NOTIFYOBJECTINSERTEDTOCHILD__SCENEOBJECT_SCENEOBJECT_SCENEOBJECT_,RPC_NOTIFYOBJECTREMOVEDFROMCHILD__SCENEOBJECT_SCENEOBJECT_,RPC_GETCURRENTNUMBEROFPLAYERITEMS__,RPC_DESTROYALLPLAYERITEMS__,RPC_ONENTER__CREATUREOBJECT_,RPC_ONEXIT__CREATUREOBJECT_LONG_,RPC_ISBUILDINGOBJECT__,RPC_SETSIGNOBJECT__SIGNOBJECT_,RPC_GETSIGNOBJECT__,RPC_ISPUBLICSTRUCTURE__,RPC_ISPRIVATESTRUCTURE__,RPC_SETPUBLICSTRUCTURE__BOOL_,RPC_ISCONDEMNED__,RPC_GETMAPCELLSIZE__,RPC_TOGGLEPRIVACY__,RPC_GETMAXIMUMNUMBEROFPLAYERITEMS__,RPC_GETREDEEDMESSAGE__,RPC_HASACCESSFEE__,RPC_GETACCESSFEE__,RPC_CANCHANGEACCESSFEE__,RPC_SETACCESSFEE__INT_INT_,RPC_REMOVEACCESSFEE__,RPC_GETACCESSFEEDELAY__,RPC_PAYACCESSFEE__CREATUREOBJECT_,RPC_UPDATEPAIDACCESSLIST__,RPC_CREATECHILDOBJECTS__,RPC_SPAWNCHILDCREATURESFROMTEMPLATE__,RPC_HASTEMPLATECHILDCREATURES__,RPC_DESTROYCHILDOBJECTS__,RPC_ISRESIDENCE__,RPC_SETRESIDENCE__BOOL_,RPC_GETFACTIONBASETYPE__};
 
 BuildingObject::BuildingObject() : StructureObject(DummyConstructorParameter::instance()) {
 	BuildingObjectImplementation* _implementation = new BuildingObjectImplementation();
@@ -891,6 +891,19 @@ bool BuildingObject::hasTemplateChildCreatures() {
 		return _implementation->hasTemplateChildCreatures();
 }
 
+void BuildingObject::destroyChildObjects() {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_DESTROYCHILDOBJECTS__);
+
+		method.executeWithVoidReturn();
+	} else
+		_implementation->destroyChildObjects();
+}
+
 bool BuildingObject::isResidence() {
 	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
 	if (_implementation == NULL) {
@@ -916,6 +929,19 @@ void BuildingObject::setResidence(bool isResidence) {
 		method.executeWithVoidReturn();
 	} else
 		_implementation->setResidence(isResidence);
+}
+
+int BuildingObject::getFactionBaseType() {
+	BuildingObjectImplementation* _implementation = static_cast<BuildingObjectImplementation*>(_getImplementation());
+	if (_implementation == NULL) {
+		if (!deployed)
+			throw ObjectNotDeployedException(this);
+
+		DistributedMethod method(this, RPC_GETFACTIONBASETYPE__);
+
+		return method.executeWithSignedIntReturn();
+	} else
+		return _implementation->getFactionBaseType();
 }
 
 DistributedObjectServant* BuildingObject::_getImplementation() {
@@ -1072,6 +1098,10 @@ bool BuildingObjectImplementation::readObjectMember(ObjectInputStream* stream, c
 		TypeInfo<bool >::parseFromBinaryStream(&isOwnerResidence, stream);
 		return true;
 
+	case 0x164451a9: //BuildingObject.factionBaseType
+		TypeInfo<int >::parseFromBinaryStream(&factionBaseType, stream);
+		return true;
+
 	}
 
 	return false;
@@ -1178,8 +1208,16 @@ int BuildingObjectImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_nameHashCode = 0x164451a9; //BuildingObject.factionBaseType
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&factionBaseType, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
 
-	return _count + 11;
+
+	return _count + 12;
 }
 
 BuildingObjectImplementation::BuildingObjectImplementation() {
@@ -1209,6 +1247,8 @@ BuildingObjectImplementation::BuildingObjectImplementation() {
 	signName = "";
 	// server/zone/objects/building/BuildingObject.idl():  		isOwnerResidence = false;
 	isOwnerResidence = false;
+	// server/zone/objects/building/BuildingObject.idl():  		factionBaseType = 0;
+	factionBaseType = 0;
 }
 
 void BuildingObjectImplementation::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
@@ -1331,6 +1371,11 @@ bool BuildingObjectImplementation::isResidence() {
 void BuildingObjectImplementation::setResidence(bool isResidence) {
 	// server/zone/objects/building/BuildingObject.idl():  		isOwnerResidence = isResidence;
 	isOwnerResidence = isResidence;
+}
+
+int BuildingObjectImplementation::getFactionBaseType() {
+	// server/zone/objects/building/BuildingObject.idl():  		return factionBaseType;
+	return factionBaseType;
 }
 
 /*
@@ -1624,6 +1669,11 @@ void BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 			resp->insertBoolean(hasTemplateChildCreatures());
 		}
 		break;
+	case RPC_DESTROYCHILDOBJECTS__:
+		{
+			destroyChildObjects();
+		}
+		break;
 	case RPC_ISRESIDENCE__:
 		{
 			resp->insertBoolean(isResidence());
@@ -1632,6 +1682,11 @@ void BuildingObjectAdapter::invokeMethod(uint32 methid, DistributedMethod* inv) 
 	case RPC_SETRESIDENCE__BOOL_:
 		{
 			setResidence(inv->getBooleanParameter());
+		}
+		break;
+	case RPC_GETFACTIONBASETYPE__:
+		{
+			resp->insertSignedInt(getFactionBaseType());
 		}
 		break;
 	default:
@@ -1859,12 +1914,20 @@ bool BuildingObjectAdapter::hasTemplateChildCreatures() {
 	return (static_cast<BuildingObject*>(stub))->hasTemplateChildCreatures();
 }
 
+void BuildingObjectAdapter::destroyChildObjects() {
+	(static_cast<BuildingObject*>(stub))->destroyChildObjects();
+}
+
 bool BuildingObjectAdapter::isResidence() {
 	return (static_cast<BuildingObject*>(stub))->isResidence();
 }
 
 void BuildingObjectAdapter::setResidence(bool isResidence) {
 	(static_cast<BuildingObject*>(stub))->setResidence(isResidence);
+}
+
+int BuildingObjectAdapter::getFactionBaseType() {
+	return (static_cast<BuildingObject*>(stub))->getFactionBaseType();
 }
 
 /*

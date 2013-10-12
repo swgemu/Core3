@@ -56,7 +56,8 @@ object_building_faction_perk_hq_hq_s04_rebel_pvp = object_building_faction_perk_
 		width = 6,
 		containerComponent = {"cpp", "GCWBaseContainerComponent"},
 		planetMapCategory = "rebel_hq",
-		
+		factionBaseType = 1,
+
 		skillMods = {
 			{"private_buff_mind", 100},
 			{"private_med_battle_fatigue", 5},

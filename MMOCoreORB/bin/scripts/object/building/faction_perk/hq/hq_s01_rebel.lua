@@ -57,8 +57,9 @@ object_building_faction_perk_hq_hq_s01_rebel = object_building_faction_perk_hq_s
 		width = 6,
 		planetMapCategory = "rebel_hq",
 		alwaysPublic = 1,
-			childObjects = {
+		factionBaseType = 1,
 
+		childObjects = {
 
 			-- left side columns
 			{templateFile = "object/static/structure/military/military_column_weak_rebel_style_01.iff", x=-5, z=0, y=14, ox=0, oy=-0, oz=0, ow=1, cellid=-1, containmentType=-1}, -- left column 1

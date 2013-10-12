@@ -57,6 +57,7 @@ object_building_faction_perk_hq_hq_s01_imp = object_building_faction_perk_hq_sha
 		width = 6,
 		planetMapCategory = "imperial_hq",
 		alwaysPublic = 1,
+		factionBaseType = 1,
 
 		childObjects = {
 
