@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_4f308d56",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/PowerBoostBuffImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-12T14:27:46Z",
+      "side": 1,
+      "message": "the first argument is the object you want to lock\nin this case it would be _this because you locked creature just above",
+      "revId": "0fd6c561afb2d0647b342cfb1d77ba0c3e62f5e4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_2f354946",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/PowerBoostBuffImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-12T14:27:46Z",
+      "side": 1,
+      "message": "variable names always with first letter lower case",
+      "revId": "0fd6c561afb2d0647b342cfb1d77ba0c3e62f5e4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_0f3a8536",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/PowerBoostBuffImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-12T14:27:46Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "0fd6c561afb2d0647b342cfb1d77ba0c3e62f5e4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_ef3e2129",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/PowerBoostBuffImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-12T14:27:46Z",
+      "side": 1,
+      "message": "*",
+      "revId": "0fd6c561afb2d0647b342cfb1d77ba0c3e62f5e4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_cf3b5d37",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/PowerBoostBuffImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-12T14:27:46Z",
+      "side": 1,
+      "message": "*",
+      "revId": "0fd6c561afb2d0647b342cfb1d77ba0c3e62f5e4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_af4819cd",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/buffs/PowerBoostBuffImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-12T14:27:46Z",
+      "side": 1,
+      "message": "*",
+      "revId": "0fd6c561afb2d0647b342cfb1d77ba0c3e62f5e4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
