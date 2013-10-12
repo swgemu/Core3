@@ -16,6 +16,23 @@
       "revId": "68fa3e03370e518236b256bc4beea98705469e33",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_8fe1d59c",
+        "filename": "MMOCoreORB/src/server/zone/managers/jedi/tests/JediManagerTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-12T16:06:52Z",
+      "side": 1,
+      "message": "this one needs to be created on the heap as well or it will crash on shutdown",
+      "revId": "68fa3e03370e518236b256bc4beea98705469e33",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
