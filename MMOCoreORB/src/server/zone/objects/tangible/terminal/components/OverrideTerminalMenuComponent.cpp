@@ -50,6 +50,7 @@ int OverrideTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 		return 1;
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+	ManagedReference<TangibleObject*> overrideTerminal = cast<TangibleObject*>(sceneObject);
 
 	if (building == NULL)
 		return 1;
@@ -67,7 +68,7 @@ int OverrideTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObje
 	if(player->getFaction() != building->getFaction()) {
 		if(selectedID == 228 || selectedID == 20){
 			if(player->hasSkill("outdoors_bio_engineer_novice"))
-				gcwMan->sendDNASampleMenu(player, building);
+				gcwMan->sendDNASampleMenu(player, building, overrideTerminal);
 			else
 				player->sendSystemMessage("Only an experience Bio Engineer can be expected to access the Override Terminal");
 		}

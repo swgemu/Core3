@@ -212,13 +212,13 @@ public:
 
 	void sendResetVerification(CreatureObject* creature, BuildingObject* building);
 
-	void sendJamUplinkMenu(CreatureObject* creature, BuildingObject* building);
+	void sendJamUplinkMenu(CreatureObject* creature, BuildingObject* building, TangibleObject* uplinkTerminal);
 
 	void verifyUplinkBand(CreatureObject* creature, BuildingObject* building, int band);
 
 	bool canStartSlice(CreatureObject* creature, TangibleObject* terminal);
 
-	void sendDNASampleMenu(CreatureObject* creature, BuildingObject* building);
+	void sendDNASampleMenu(CreatureObject* creature, BuildingObject* building, TangibleObject* overrideTerminal);
 
 	void completeSecuritySlice(CreatureObject* creature, TangibleObject* securityTerminal);
 
@@ -232,11 +232,11 @@ public:
 
 	void abortShutdownSequence(BuildingObject* building, CreatureObject* creature);
 
-	void processDNASample(CreatureObject* creature, BuildingObject* building, const String& sampleChain, int indx);
+	void processDNASample(CreatureObject* creature, TangibleObject* overrideTerminal, const String& sampleChain, int indx);
 
-	void handlePowerRegulatorSwitch(CreatureObject* creature, BuildingObject* building, int indx);
+	void handlePowerRegulatorSwitch(CreatureObject* creature, TangibleObject* powerRegulator, int indx);
 
-	void sendPowerRegulatorControls(CreatureObject* creature, BuildingObject* building);
+	void sendPowerRegulatorControls(CreatureObject* creature, BuildingObject* building, TangibleObject* powerRegulator);
 
 	String getDNAHash(const String& usersample);
 
@@ -449,13 +449,13 @@ public:
 
 	void sendResetVerification(CreatureObject* creature, BuildingObject* building);
 
-	void sendJamUplinkMenu(CreatureObject* creature, BuildingObject* building);
+	void sendJamUplinkMenu(CreatureObject* creature, BuildingObject* building, TangibleObject* uplinkTerminal);
 
 	void verifyUplinkBand(CreatureObject* creature, BuildingObject* building, int band);
 
 	bool canStartSlice(CreatureObject* creature, TangibleObject* terminal);
 
-	void sendDNASampleMenu(CreatureObject* creature, BuildingObject* building);
+	void sendDNASampleMenu(CreatureObject* creature, BuildingObject* building, TangibleObject* overrideTerminal);
 
 	void completeSecuritySlice(CreatureObject* creature, TangibleObject* securityTerminal);
 
@@ -469,11 +469,11 @@ public:
 
 	void abortShutdownSequence(BuildingObject* building, CreatureObject* creature);
 
-	void processDNASample(CreatureObject* creature, BuildingObject* building, const String& sampleChain, int indx);
+	void processDNASample(CreatureObject* creature, TangibleObject* overrideTerminal, const String& sampleChain, int indx);
 
-	void handlePowerRegulatorSwitch(CreatureObject* creature, BuildingObject* building, int indx);
+	void handlePowerRegulatorSwitch(CreatureObject* creature, TangibleObject* powerRegulator, int indx);
 
-	void sendPowerRegulatorControls(CreatureObject* creature, BuildingObject* building);
+	void sendPowerRegulatorControls(CreatureObject* creature, BuildingObject* building, TangibleObject* powerRegulator);
 
 	String getDNAHash(const String& usersample);
 
@@ -722,13 +722,13 @@ public:
 
 	void sendResetVerification(CreatureObject* creature, BuildingObject* building);
 
-	void sendJamUplinkMenu(CreatureObject* creature, BuildingObject* building);
+	void sendJamUplinkMenu(CreatureObject* creature, BuildingObject* building, TangibleObject* uplinkTerminal);
 
 	void verifyUplinkBand(CreatureObject* creature, BuildingObject* building, int band);
 
 	bool canStartSlice(CreatureObject* creature, TangibleObject* terminal);
 
-	void sendDNASampleMenu(CreatureObject* creature, BuildingObject* building);
+	void sendDNASampleMenu(CreatureObject* creature, BuildingObject* building, TangibleObject* overrideTerminal);
 
 	void completeSecuritySlice(CreatureObject* creature, TangibleObject* securityTerminal);
 
@@ -742,11 +742,11 @@ public:
 
 	void abortShutdownSequence(BuildingObject* building, CreatureObject* creature);
 
-	void processDNASample(CreatureObject* creature, BuildingObject* building, const String& sampleChain, int indx);
+	void processDNASample(CreatureObject* creature, TangibleObject* overrideTerminal, const String& sampleChain, int indx);
 
-	void handlePowerRegulatorSwitch(CreatureObject* creature, BuildingObject* building, int indx);
+	void handlePowerRegulatorSwitch(CreatureObject* creature, TangibleObject* powerRegulator, int indx);
 
-	void sendPowerRegulatorControls(CreatureObject* creature, BuildingObject* building);
+	void sendPowerRegulatorControls(CreatureObject* creature, BuildingObject* building, TangibleObject* powerRegulator);
 
 	String getDNAHash(const String& usersample);
 

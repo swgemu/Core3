@@ -31,10 +31,10 @@ public:
 
 		ManagedReference<SceneObject*> obj = suiBox->getUsingObject();
 
-		if(obj == NULL || !obj->isBuildingObject())
+		if(obj == NULL || !obj->isTangibleObject())
 			return;
 
-		ManagedReference<BuildingObject*> building = cast<BuildingObject*>(obj.get());
+		ManagedReference<TangibleObject*> powerRegulator = cast<TangibleObject*>(obj.get());
 
 		GCWManager* gcwMan = player->getZone()->getGCWManager();
 
@@ -43,7 +43,7 @@ public:
 
 		int index = Integer::valueOf(args->get(0).toString());
 
-		gcwMan->handlePowerRegulatorSwitch(player,building,index);
+		gcwMan->handlePowerRegulatorSwitch(player,powerRegulator,index);
 	}
 };
 

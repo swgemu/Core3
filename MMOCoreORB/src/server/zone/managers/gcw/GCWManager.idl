@@ -143,13 +143,13 @@ class GCWManager extends ManagedService implements Logger {
 	
 	public native void sendResetVerification(CreatureObject creature, BuildingObject building);
 	
-	public native void sendJamUplinkMenu(CreatureObject creature, BuildingObject building);
+	public native void sendJamUplinkMenu(CreatureObject creature, BuildingObject building, TangibleObject uplinkTerminal);
 	
 	public native void verifyUplinkBand(CreatureObject creature, BuildingObject building, int band);
 	
 	public native boolean canStartSlice(CreatureObject creature, TangibleObject terminal);
 	
-	public native void sendDNASampleMenu(CreatureObject creature, BuildingObject building);
+	public native void sendDNASampleMenu(CreatureObject creature, BuildingObject building, TangibleObject overrideTerminal);
 		
 	public native void completeSecuritySlice(CreatureObject creature, TangibleObject securityTerminal);
 	
@@ -163,13 +163,13 @@ class GCWManager extends ManagedService implements Logger {
 	
 	public native void abortShutdownSequence(BuildingObject building, CreatureObject creature);
 	
-	public native void processDNASample(CreatureObject creature, BuildingObject building, final string sampleChain, int indx);
+	public native void processDNASample(CreatureObject creature, TangibleObject overrideTerminal, final string sampleChain, int indx);
 	
 	//public native void processDNASample(CreatureObject creature, BuildingObject building, final string dnaString, int indx);
 	
-	public native void handlePowerRegulatorSwitch(CreatureObject creature, BuildingObject building, int indx);
+	public native void handlePowerRegulatorSwitch(CreatureObject creature, TangibleObject powerRegulator, int indx);
 	
-	public native void sendPowerRegulatorControls(CreatureObject creature, BuildingObject building);
+	public native void sendPowerRegulatorControls(CreatureObject creature, BuildingObject building, TangibleObject powerRegulator);
 
 	public synchronized string getDNAHash(final string usersample){
 		return dnaHash.get(usersample); 

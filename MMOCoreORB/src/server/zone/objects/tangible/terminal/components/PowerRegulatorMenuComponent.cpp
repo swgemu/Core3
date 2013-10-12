@@ -50,6 +50,7 @@ int PowerRegulatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 		return 1;
 
 	ManagedReference<BuildingObject*> building = cast<BuildingObject*>(sceneObject->getParentRecursively(SceneObjectType::FACTIONBUILDING).get().get());
+	ManagedReference<TangibleObject*> powerRegulator = cast<TangibleObject*>(sceneObject);
 
 	if (building == NULL)
 		return 1;
@@ -70,7 +71,7 @@ int PowerRegulatorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject
 	if(player->getFaction() != building->getFaction()) {
 		if(selectedID == 228 || selectedID == 20){
 			if(player->hasSkill("combat_commando_heavyweapon_speed_02"))
-				gcwMan->sendPowerRegulatorControls(player, building);
+				gcwMan->sendPowerRegulatorControls(player, building, powerRegulator);
 			else
 				player->sendSystemMessage("@faction/faction_hq/faction_hq_response:commando_only"); // Only an experienced commando with heavy weapons training could expect to rig the regulators for overload
 
