@@ -257,6 +257,8 @@ class AttributeListMessage;
 
 using namespace server::zone::packets::scene;
 
+#include "gmock/gmock.h"
+
 #include "server/zone/objects/creature/variables/CooldownTimerMap.h"
 
 #include "server/zone/objects/creature/buffs/BuffList.h"
@@ -2340,6 +2342,16 @@ public:
 	DistributedObjectAdapter* createAdapter(DistributedObjectStub* obj);
 
 	friend class Singleton<CreatureObjectHelper>;
+};
+
+class MockCreatureObject : public CreatureObject {
+public:
+
+	MOCK_METHOD0(getWorldPositionX,float());
+	MOCK_METHOD0(getWorldPositionY,float());
+	MOCK_METHOD0(getWorldPositionZ,float());
+	MOCK_METHOD0(getWorldPosition,Vector3());
+
 };
 
 } // namespace creature
