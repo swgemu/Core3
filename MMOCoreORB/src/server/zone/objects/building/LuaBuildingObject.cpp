@@ -128,6 +128,9 @@ int LuaBuildingObject::initializeStaticGCWBase(lua_State* L) {
 		return 0;
 
 	gcwMan->unregisterGCWBase(realObject);
+
+	Locker locker(realObject);
+
 	realObject->setFaction(faction);
 	gcwMan->initializeNewVulnerability(realObject);
 	gcwMan->registerGCWBase(realObject, false);
