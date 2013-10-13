@@ -42,10 +42,11 @@
 
 
 object_building_general_bunker_rebel_weapons_depot = object_building_general_shared_bunker_rebel_weapons_depot:new {
-
-
-
-
+	gameObjectType = 515,
+	pvpStatusBitmask = 0,
+	dataObjectComponent = "DestructibleBuildingDataComponent",
+	alwaysPublic = 1,
+	factionBaseType = 2,
 
 }
 
