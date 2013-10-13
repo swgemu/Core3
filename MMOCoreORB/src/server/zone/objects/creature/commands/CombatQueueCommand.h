@@ -561,7 +561,9 @@ public:
 				creature->dismount();
 			}
 
-			creature->setPosture(CreaturePosture::KNOCKEDDOWN);
+			if (!creature->isDead() && !creature->isIncapacitated())
+				creature->setPosture(CreaturePosture::KNOCKEDDOWN);
+
 			creature->updateKnockdownRecovery();
 			creature->updateLastKnockdown();
 			creature->sendSystemMessage("@cbt_spam:posture_knocked_down");
