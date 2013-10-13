@@ -282,17 +282,12 @@ corellia_static_spawns = {
 	{"businessman",60,-5091.15,21,-2315.33,227.834,0, "calm", ""},
 	{"businessman",60,52.3124,0.639417,48.2148,107.997,9665359, "calm", ""},
 	{"businessman",60,3.32,1.13306,-8.49,228.007,3075360, "calm", ""},
-	{"businessman",60,-5428.59,24.1812,-6228.31,140.458,0, "calm", ""},
 	{"businessman",60,-6.56842,-0.894996,21.9012,135.001,3375361, "conversation", ""},
 	{"businessman",60,-10.2935,-0.895782,7.13264,339.313,3375355, "calm", ""},
 	{"businessman",60,3.32,1.13306,-8.49,228.007,2365769, "calm", ""},
-
 	{"chassis_broker",60,-56.6393,0.974563,8.33815,26.9298,1935697, "neutral", ""},
 	{"chassis_broker",60,-56.6993,0.974563,8.57384,27.5028,9665366, "neutral", ""},
-
 	{"cll8_binary_load_lifter",60,-146.217,28,-4738.99,346.392,0, "calm", ""},
-
-	{"cll8_binary_load_lifter",60,-5692.65,14.6,-6151.28,140.406,0, "calm", ""},
 	{"cll8_binary_load_lifter",60,6826.88,315,-5778.01,0.0395659,0, "calm", ""},
 	{"cll_8",60,-5050.13,21,-2288.73,145.718,0, "neutral", ""},
 	{"coa2_rebel_coordinator",60,94.8749,28,-4519.08,121.279,0, "calm", ""},
@@ -346,9 +341,7 @@ corellia_static_spawns = {
 	{"commoner",60,2.56172,0.6,-2.64185,135,2365392, "conversation", ""},
 	{"commoner",60,101.283,28,-4554.86,358.797,0, "calm", ""},
 	{"commoner",60,-51.7918,28,-4662.65,360.011,0, "calm", "Hunter Javeezo"},
-
 	{"commoner",60,-24,1.6,-4,124.701,3005676, "calm", "An Event Promoter"},
-
 	{"commoner",60,-5633.73,21,-2757.46,93.1038,0, "calm", ""},
 	{"commoner",60,-5583.79,21,-2764.8,215.273,0, "calm", ""},
 	{"commoner",60,-5538.94,21,-2600.55,4.08279,0, "calm", ""},
@@ -426,20 +419,6 @@ corellia_static_spawns = {
 	{"commoner",60,3414.81,308,5624.67,237.948,0, "calm", ""},
 	{"commoner",60,3431.28,308,5563.41,159.884,0, "calm", ""},
 	{"commoner",60,25.4426,0.655075,43.6577,180.006,4395401, "conversation", ""},
-	{"commoner",60,-5708.22,14.6,-6157.68,63.8572,0, "calm", ""},
-	{"commoner",60,-5686.69,14.6,-6148.05,214.943,0, "calm", ""},
-	{"commoner",60,-5693.27,14.6,-6177.12,293.479,0, "calm", ""},
-	{"commoner",60,-5571.88,23.4,-6129.85,97.3312,0, "calm", ""},
-	{"commoner",60,-5551.88,23.4,-6221.48,124.882,0, "calm", ""},
-	{"commoner",60,-5495.01,23.4,-6190.5,325.039,0, "calm", ""},
-	{"commoner",60,-5505.69,23.4,-6118.63,272.183,0, "calm", ""},
-	{"commoner",60,-5468.42,23.4,-6144.87,182.034,0, "calm", ""},
-	{"commoner",60,-5549.18,23.4,-6189.25,119.296,0, "calm", ""},
-	{"commoner",60,-5519.68,23.4,-6224.4,134.773,0, "calm", ""},
-	{"commoner",60,-5504.22,23.4,-6211.56,1.34408,0, "calm", ""},
-	{"commoner",60,-5488.87,23.8964,-6242.6,304.866,0, "calm", ""},
-	{"commoner",60,-24,1.6,-4,353.052,2775419, "calm", "An Event Promoter"},
-	{"commoner",60,-5385.68,24,-6239.93,118.359,0, "calm", ""},
 	{"commoner",60,6798.04,315,-5731.94,209.929,0, "calm", ""},
 	{"commoner",60,6760.75,315,-5733.05,101.495,0, "calm", ""},
 	{"commoner",60,6761.43,315,-5695.98,3.51103,0, "calm", ""},
@@ -471,21 +450,17 @@ corellia_static_spawns = {
 	{"corsec_agent",60,-10.5223,1.75,-18.7259,134.999,1855484, "conversation", ""},
 	{"corsec_agent",60,-0.332123,0.3,-2.90219,134.998,1855463, "conversation", ""},
 	{"corsec_agent",60,7.44572,1.00001,-6.90652,179.997,1855548, "conversation", ""},
-
 	{"corsec_agent",60,-8.04223,-0.894941,-16.6225,180.002,2625360, "conversation", ""},
 	{"corsec_agent",60,-5412.5,20.8978,-2794.47,215.747,0, "calm", ""},
 	{"corsec_agent",60,57.1873,-0.521137,36.2187,180.007,1935690, "conversation", ""},
 	{"corsec_cadet",60,17.3045,2.25,19.3968,180.006,1855477, "conversation", ""},
 	{"corsec_cadet",60,37.163,0.639417,40.7061,180.01,1855678, "conversation", ""},
-
 	{"corsec_cadet",60,-4945.07,21,-2489.35,89.6921,0, "calm", ""},
-
 	{"corsec_chief",60,15.7701,1.28309,-8.57401,180.007,1935823, "conversation", ""},
 	{"corsec_chief",60,-5000.34,21,-2520.6,135.004,0, "conversation", ""},
 	{"corsec_chief",60,3154.04,300,5173.07,180.005,0, "conversation", ""},
 	{"corsec_chief",60,3112.43,280.843,4981.38,252.823,0, "calm", ""},
 	{"corsec_commissioner",60,22.2962,0.788717,42.1976,5.2426,2365397, "conversation", ""},
-	
 	{"corsec_commissioner",60,-26.4983,-0.519991,9.85428,360.011,2625365, "conversation", ""},
 	{"corsec_commissioner",60,7.8197,1.00001,-5.9104,180.001,3075366, "conversation", ""},
 	{"corsec_commissioner",60,21.878,-0.894997,-15.7126,0,3075430, "conversation", ""},
@@ -496,39 +471,29 @@ corellia_static_spawns = {
 	{"corsec_deserter",60,-5.41306,0.999953,6.26959,134.998,3075366, "conversation", ""},
 	{"corsec_detective",60,-20.2743,3.22324,22.781,180.005,1855468, "conversation", ""},
 	{"corsec_detective",60,-524.755,28,-4700.63,114.989,0, "calm", ""},
-
 	{"corsec_detective",60,-18.0229,9,14.3195,180.008,1935472, "conversation", ""},
 	{"corsec_detective",60,-4999.24,21,-2520.6,180.005,0, "conversation", ""},
 	{"corsec_detective",60,-1.85381,0.639422,56.3013,180.012,1935687, "conversation", ""},
-
 	{"corsec_inspector_sergeant",60,-5061.36,21,-2532.53,0,0, "conversation", ""},
-	{"corsec_inspector_sergeant",60,24.9055,1.28309,5.31569,360.011,2775414, "conversation", ""},
 	{"corsec_investigator",60,17.3056,1.28309,-6.37174,180.003,1935527, "conversation", ""},
 	{"corsec_investigator",60,-5491.88,30.0036,-2808.63,180.005,0, "conversation", ""},
 	{"corsec_investigator",60,-5159.41,21,-2569.03,0,0, "conversation", ""},
 	{"corsec_investigator",60,17.1745,1.28309,-12.0361,179.995,3075367, "conversation", ""},
 	{"corsec_investigator",60,40.8822,0.104999,2.22818,0,3075427, "conversation", ""},
-	{"corsec_investigator",60,9.49578,1.00001,10.5511,178.041,2775413, "conversation", ""},
 	{"corsec_lieutenant",60,21.8079,3.22324,25.517,360.011,1855469, "conversation", ""},
-
 	{"corsec_major",60,-7.91375,-0.894992,-5.88587,0,8105496, "conversation", ""},
-
 	{"corsec_major",60,5.33572,2.12878,71.6096,0,2365436, "conversation", ""},
 	{"corsec_major",60,-5010.49,21,-2496.09,135.004,0, "conversation", ""},
 	{"corsec_master_sergeant",60,-203.95,28,-4076.98,270.008,0, "calm", ""},
-
 	{"corsec_master_sergeant",60,-1.85381,0.639422,55.3013,360.011,1935687, "conversation", ""},
 	{"corsec_master_sergeant",60,3300.28,308,5496.49,180.005,0, "conversation", ""},
 	{"corsec_master_sergeant",60,-14.8394,2.41844,24.4443,5.24424,4395401, "conversation", ""},
-	{"corsec_master_sergeant",60,24.9055,1.28309,6.41569,180.019,2775414, "conversation", ""},
 	{"corsec_renegade",60,-662.805,9.26289,-4182.05,196.426,0, "calm", ""},
 	{"corsec_rogue",60,4.71201,-0.894992,-8.73417,180.01,8105496, "conversation", ""},
-
 	{"corsec_rogue",60,-16.9721,1.00014,-3.02621,180.01,1935528, "conversation", ""},
 	{"corsec_rogue",60,-5059.06,21,-2399.08,180.005,0, "conversation", ""},
 	{"corsec_rogue",60,7.8197,1.00001,-7.0104,0,3075366, "conversation", ""},
 	{"corsec_sergeant",60,24.3471,1.28309,8.93357,360.011,1855549, "conversation", ""},
-
 	{"corsec_sergeant",60,-5410.17,20.9418,-2789.21,215.169,0, "calm", ""},
 	{"corsec_sergeant",60,29.3506,13.25,10.8359,180.011,1935841, "conversation", ""},
 	{"corsec_sergeant",60,-5059.87,21,-2606.63,195.299,0, "calm", ""},
@@ -549,7 +514,6 @@ corellia_static_spawns = {
 	{"corsec_trooper",60,-59.6867,28.5179,-4596.54,47.4129,0, "", ""},
 	{"corsec_trooper",60,-358.581,28,-4445.64,90.0027,0, "", ""},
 	{"corsec_trooper",60,-324.144,28,-4442.29,277.786,0, "", ""},
-
 	{"corsec_trooper",60,-5527.51,22,-2588.06,86.7137,0, "", ""},
 	{"corsec_trooper",60,-5626.49,21,-2812.58,261.279,0, "calm", ""},
 	{"corsec_trooper",60,-5470.84,21,-2565.16,107.104,0, "calm", ""},
@@ -580,7 +544,6 @@ corellia_static_spawns = {
 	{"crackdown_dark_trooper",400,126.785,28,-4459.52,154.154,0, "npc_imperial", ""},
 	{"crackdown_dark_trooper",400,-76.6,28.5179,-4625.3,215.006,0, "", ""},
 	{"crackdown_dark_trooper",400,-157.6,28,-4834.8,328.985,0, "", ""},
-
 	{"crackdown_dark_trooper",400,-4941.2,20.8719,-2522,214.459,0, "", ""},
 	{"crackdown_dark_trooper",400,-5381.8,20.7451,-2741.1,130.004,0, "", ""},
 	{"crackdown_dark_trooper",400,-5565.3,20.6891,-2852.06,298.056,0, "", ""},
@@ -605,35 +568,17 @@ corellia_static_spawns = {
 	{"crackdown_imperial_army_captain",400,6832.21,315,-5811.19,189.637,0, "npc_imperial", ""},
 	{"crackdown_imperial_colonel",400,158.9,28,-4707.2,137.004,0, "", ""},
 	{"crackdown_imperial_corporal",400,-291.531,28,-4412.73,308.31,0, "", ""},
-
 	{"crackdown_imperial_corporal",400,-5590.48,20.3776,-2854.51,311.192,0, "npc_imperial", ""},
 	{"crackdown_imperial_corporal",400,3367.38,308,5495.93,241.976,0, "npc_imperial", ""},
 	{"crackdown_imperial_first_lieutenant",400,-336.602,28,-4791.97,283.938,0, "npc_imperial", ""},
 	{"crackdown_imperial_first_lieutenant",400,-199.701,28,-4077.2,109.656,0, "npc_imperial", ""},
-
 	{"crackdown_imperial_medic",400,-439.1,28,-4144.4,335.01,0, "", ""},
 	{"crackdown_imperial_medic",400,-582.441,28,-4259.52,15.0132,0, "npc_imperial", ""},
 	{"crackdown_imperial_noncom",400,-5207.41,21.425,-2247.49,237.999,0, "npc_imperial", ""},
 	{"crackdown_imperial_noncom",400,3297.95,308,5563.09,123.034,0, "", ""},
 	{"crackdown_imperial_noncom",400,6663.8,330,-5913.3,134.004,0, "", ""},
-
 	{"crackdown_imperial_warrant_officer_ii",400,-374.063,28,-4286.45,23.4486,0, "", ""},
 	{"crackdown_imperial_warrant_officer_ii",400,-535.282,28,-4633.32,270.266,0, "npc_imperial", ""},
-
-	{"crackdown_rebel_cadet",400,-5568.4,23.4,-6199.11,90.254,0, "calm", ""},
-	{"crackdown_rebel_comm_operator",400,-5582.42,23.4,-6199.06,90.2331,0, "calm", ""},
-	{"crackdown_rebel_command_security_guard",400,-5501.09,23.4,-6128.22,142.839,0, "", ""},
-	{"crackdown_rebel_guard_captain",400,-5411.4,24.9599,-6219.3,5.00012,0, "", ""},
-	{"crackdown_rebel_guardsman",400,-5429.8,24,-6218.9,0,0, "", ""},
-	{"crackdown_rebel_guardsman",400,-5534.1,23.4,-6217.9,138.004,0, "", ""},
-	{"crackdown_rebel_guardsman",400,-5538.4,16.4902,-6054.7,182.005,0, "", ""},
-	{"crackdown_rebel_guardsman",400,-5664,14.7566,-6185.3,94.0028,0, "", ""},
-	{"crackdown_rebel_liberator",400,-5549.5,23.4,-6202.1,310.009,0, "", ""},
-	{"crackdown_rebel_liberator",400,-5716.1,14.6,-6147.5,271.008,0, "", ""},
-	{"crackdown_rebel_soldier",400,-5320,24,-6237.8,94.0028,0, "", ""},
-	{"crackdown_rebel_soldier",400,-5443.6,24,-6243,282.008,0, "", ""},
-	{"crackdown_rebel_soldier",400,-5664,14.6,-6179.3,94.0028,0, "", ""},
-	{"crackdown_rebel_soldier",400,-5716.1,14.6,-6153.1,269.008,0, "", ""},
 	{"crackdown_scout_trooper",400,-582.736,28,-4260.62,15.0137,0, "", ""},
 	{"crackdown_scout_trooper",400,-545.52,28,-4669.28,331.919,0, "", ""},
 	{"crackdown_scout_trooper",400,185.754,28,-4685.24,220.783,0, "", ""},
@@ -646,7 +591,6 @@ corellia_static_spawns = {
 	{"crackdown_scout_trooper",400,-5468.4,21.1828,-2841.6,175.005,0, "calm", ""},
 	{"crackdown_scout_trooper",400,6832.36,314.758,-5811.93,312.353,0, "", ""},
 	{"crackdown_specialist_noncom",400,-289.923,28,-4414.09,273.228,0, "", ""},
-
 	{"crackdown_specialist_noncom",400,-5342.53,21,-2468.78,360.011,0, "npc_imperial", ""},
 	{"crackdown_specialist_noncom",400,6830.18,314.823,-5816.91,187.167,0, "npc_imperial", ""},
 	{"crackdown_storm_commando",400,152.386,28,-4524.14,207.005,0, "", ""},
@@ -680,7 +624,6 @@ corellia_static_spawns = {
 	{"crackdown_stormtrooper",400,-158.235,28,-4194.42,172.18,0, "npc_imperial", ""},
 	{"crackdown_stormtrooper",400,-221.1,28,-4798.1,237.007,0, "", ""},
 	{"crackdown_stormtrooper",400,-533.6,28,-4626.5,196.006,0, "", ""},
-
 	{"crackdown_stormtrooper",400,-4944.3,21,-2387.8,257.008,0, "", ""},
 	{"crackdown_stormtrooper",400,-4945.7,21,-2383.1,249.007,0, "", ""},
 	{"crackdown_stormtrooper",400,-4936.1,21,-2486.2,197.971,0, "", ""},
@@ -724,7 +667,6 @@ corellia_static_spawns = {
 	{"crackdown_stormtrooper_captain",400,22.6,28,-4290.2,353.01,0, "", ""},
 	{"crackdown_stormtrooper_captain",400,-336.361,28,-4790.74,283.916,0, "npc_imperial", ""},
 	{"crackdown_stormtrooper_captain",400,6853.17,315,-5696.6,258.27,0, "npc_imperial", ""},
-
 	{"crackdown_stormtrooper_medic",400,-5302.1,21,-2379.2,225.007,0, "", ""},
 	{"crackdown_stormtrooper_rifleman",400,-118.7,28,-4204.6,16.0005,0, "", ""},
 	{"crackdown_stormtrooper_rifleman",400,-526.1,28,-4670.1,290.009,0, "", ""},
@@ -745,7 +687,6 @@ corellia_static_spawns = {
 	{"crackdown_stormtrooper_sniper",400,-59.1,28,-4260.1,47.0014,0, "", ""},
 	{"crackdown_stormtrooper_sniper",400,-275.4,28,-4614.6,256.27,0, "", ""},
 	{"crackdown_stormtrooper_sniper",400,-533.523,28,-4632.07,270.284,0, "npc_imperial", ""},
-
 	{"crackdown_stormtrooper_sniper",400,-5227.3,21,-2272.3,331.01,0, "", ""},
 	{"crackdown_stormtrooper_sniper",400,-5574.1,20.98,-2843.3,314.848,0, "", ""},
 	{"crackdown_stormtrooper_sniper",400,-4932.5,20.978,-2427.7,123.004,0, "calm", ""},
@@ -761,7 +702,6 @@ corellia_static_spawns = {
 	{"crev_bombaasa",60,45.2285,0.104999,0.017077,135.448,2625353, "calm", "Crev Bombaasa"},
 	{"criminal",60,-5.02826,-0.894991,-21.3375,60.6357,8105501, "calm", ""},
 	{"criminal",60,6871.34,315,-5753.42,355.947,0, "calm", ""},
-
 	--{"daclif_gallamby",60,-35.6875,1.29422,-1.70805,88.4786,1855467, "calm", ""},
 	{"dannik_malaan",60,-451.472,28,-4572.05,218.458,0, "calm", "Dannik Malaan"},
 	{"death_watch_herald_rebel",1,-213.642,28,-4445.46,28.5501,0, "", ""},
@@ -771,7 +711,6 @@ corellia_static_spawns = {
 	{"eg6_power_droid",60,-5605.25,21,-2721.9,155.92,0, "calm", ""},
 	{"eg6_power_droid",60,-5295.6,21,-2396.69,237.183,0, "calm", ""},
 	{"eg6_power_droid",60,-5692.65,14.6,-6151.28,179.632,0, "calm", ""},
-	{"eg6_power_droid",60,6825.9,315,-5791.64,173.583,0, "calm", ""},
 	{"entertainer",60,2.80432,-0.894991,9.55434,360.011,8105496, "conversation", ""},
 	{"entertainer",60,0.767877,0.3,-2.90219,180.005,1855463, "conversation", ""},
 
@@ -819,7 +758,6 @@ corellia_static_spawns = {
 	{"farmer",60,-17.5346,0.665389,43.4928,180.009,4395401, "conversation", ""},
 	{"farmer",60,25.4426,0.746078,42.666,5.24364,4395401, "conversation", ""},
 	{"farmer",60,3.96145,2.12878,76.4149,180.002,4395403, "conversation", ""},
-	{"farmer",60,-22.5021,1.6,4.63468,179.972,2775415, "conversation", ""},
 	{"farmer_rancher",60,4.71201,-0.894992,-9.83418,360.011,8105496, "conversation", ""},
 	{"farmer_rancher",60,-20.3488,2.12878,65.9854,180.006,2365400, "conversation", ""},
 
@@ -839,7 +777,7 @@ corellia_static_spawns = {
 	{"gambler",60,5.33572,2.12878,72.7096,180.003,2365436, "conversation", ""},
 	{"gambler",60,3184.22,300,5162.04,0,0, "conversation", ""},
 	{"gambler",60,3184.22,300,5163.04,180.005,0, "conversation", ""},
-	{"gambler",60,-22.5017,1.59973,3.53494,359.971,2775415, "conversation", ""},
+
 
 	{"ging_darjeek",60,-24.6629,-0.519991,7.12104,148.001,3375365, "calm", ""},
 	{"grobber",60,-15.4768,1,-8.20706,245.925,1855551, "calm", ""},
@@ -908,7 +846,6 @@ corellia_static_spawns = {
 	{"informant_npc_lvl_1",0,-5097,0,-2344,270,0, "", ""},
 	{"informant_npc_lvl_2",0,6775,0,-5487,150,0, "", ""},
 	{"informant_npc_lvl_2",0,6876,0,-5466,0,0, "", ""},
-	{"informant_npc_lvl_3",0,-5559,0,-6220,90,0, "", ""},
 	{"informant_npc_lvl_3",0,6860,0,-5761,45,0, "", ""},
 	{"io_tsomcren",60,-140.701,28,-4719.16,44.0418,0, "neutral", ""},
 	{"j_pai_brek",60,-5073.17,21,-2342.77,33.2325,0, "neutral", ""},
@@ -930,7 +867,6 @@ corellia_static_spawns = {
 	{"junk_dealer",0,-5203.6,21,-2285.9,-11,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	{"karena_keer",60,-7.91182,-0.895002,18.5763,115.51,2625361, "calm", "Karena Keer"},
 	{"karin_featherlight",60,-185.082,28,-4460.71,86.3314,0, "calm", ""},
-	{"karrek_flim",60,-6.11988,1.6,-7.43599,219.682,2775417, "calm", ""},
 	{"larek_tatham",60,-5050.23,21,-2291.69,113.059,0, "neutral", ""},
 
 	{"meatlump_buffoon",600,-145,28.9,-4959.8,63,0, "", ""},
@@ -1005,7 +941,6 @@ corellia_static_spawns = {
 	{"noble",60,15.2654,2.47978,23.7759,5.24424,4395401, "conversation", ""},
 	{"noble",60,28.93,2.12878,58.19,222.007,4395402, "calm", ""},
 	{"noble",60,19.26,2.12847,56.13,266.008,4395403, "calm", ""},
-	{"noble",60,-24.96,1.6,-4.79578,14.5444,2775419, "calm", ""},
 	{"noble",60,6724.41,330,-5909.35,213.723,0, "calm", ""},
 	{"noble",60,5.80982,-0.894992,-5.41349,248.205,3375355, "calm", ""},
 	{"noren_krast",60,-5203.33,21,-2488.13,176.643,0, "calm", "Noren Krast"},
@@ -1021,7 +956,6 @@ corellia_static_spawns = {
 	{"r2",60,-13.4312,1.6,-15.4443,7.68027,1935827, "calm", "R2-P9"},
 	{"r2",60,-5297.6,21,-2396.69,271.4,0, "calm", "R2-X2"},
 	{"r2",60,-4954.63,21,-2376.82,26.4361,0, "calm", "R2-E3"},
-	{"r2",60,-5528,23.4,-6195.05,84.2678,0, "calm", "R2-P2"},
 	{"r2",60,6857.06,315,-5702.8,0,0, "calm", "R2-J9"},
 	{"r3",60,-149.754,28,-4785.34,297.928,0, "calm", "R3-E4"},
 	{"r3",60,-182.479,28,-4731.42,293.019,0, "calm", "R3-S1"},
@@ -1095,8 +1029,6 @@ corellia_static_spawns = {
 	{"scientist",60,-7.22488,2.6,14.1431,135.008,2365397, "conversation", ""},
 	{"scientist",60,56.669,-0.521137,32.6689,360.011,1855678, "conversation", ""},
 	{"scientist",60,-5431.41,21,-2685.81,106.943,0, "calm", ""},
-	{"scientist",60,-5691.18,14.6,-6133.32,248.134,0, "calm", ""},
-	{"scientist",60,-5557.29,23.4,-6203.08,226.081,0, "calm", ""},
 	{"scolex_grath",60,3347.39,308,5490.74,251.277,0, "calm", ""},
 	{"shalera_the_hutt",60,-19.2041,-0.894989,22.0094,239.061,2625364, "calm", "Shalera the Hutt"},
 
@@ -1181,7 +1113,7 @@ corellia_static_spawns = {
 	{"trainer_dancer",0,34.5107,0.105,1.79681,89,3005398, "", ""},
 	{"trainer_dancer",0,17.7541,2.12875,53.6699,1,4395403, "", ""},
 
-	{"trainer_doctor",0,-2.9,0.7,2.5,132,7615446, "", ""},
+
 	{"trainer_doctor",0,-25.2731,0.26,-5,13,1855535, "", ""},
 	{"trainer_doctor",0,-3.95652,0.184067,0.467273,171,4345354, "", ""},
 	{"trainer_doctor",0,-5002,0,-2459,180,0, "", ""},
@@ -1199,7 +1131,6 @@ corellia_static_spawns = {
 	{"trainer_entertainer",0,-5661,21.6,-2599.57,14,0, "", ""},
 	{"trainer_entertainer",0,6.15345,-0.894992,-19.3905,0,2625358, "", ""},
 	{"trainer_entertainer",0,-5062,21,-2291,124,0, "", ""},
-	{"trainer_entertainer",0,22.0446,-0.894993,11.7787,189,3005697, "", ""},
 	{"trainer_entertainer",0,-173,28,-4739,0,0, "", ""},
 	{"trainer_entertainer",0,-228,28.6,-4118,0,0, "", ""},
 	{"trainer_imagedesigner",0,-21.4483,2.12878,74.4461,185,2365400, "", ""},
@@ -1235,7 +1166,6 @@ corellia_static_spawns = {
 	{"trainer_musician",0,-5067,21,-2296,158,0, "", ""},
 	{"trainer_musician",0,21.1399,-0.894993,8.20648,120,2625355, "", ""},
 	{"trainer_musician",0,21.9985,2.12818,63.5,0,2365436, "", ""},
-	{"trainer_musician",0,-5408,24.7288,-6260,50,0, "", ""},
 	{"trainer_pistol",0,-5220,0,-2488,180,0, "", ""},
 
 	{"trainer_politician",0,-218,0,-4500,0,0, "", ""},
