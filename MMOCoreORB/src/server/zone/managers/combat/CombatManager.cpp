@@ -1326,7 +1326,7 @@ void CombatManager::applyStates(CreatureObject* creature, CreatureObject* target
 			if (combatEquil > 100)
 				combatEquil = 100;
 
-			if ((combatEquil >> 1) > (int) System::random(100))
+			if ((combatEquil >> 1) > (int) System::random(100) && !targetCreature->isDead() && !targetCreature->isIntimidated())
 				targetCreature->setPosture(CreaturePosture::UPRIGHT, true);
 		}
 	}
