@@ -14,6 +14,7 @@
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.h"
+#include "server/zone/objects/player/sui/callbacks/BankTerminalSuiCallback.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/region/CityRegion.h"
 
@@ -88,6 +89,7 @@ int BankTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 
 		sui->addCash(creature->getCashCredits());
 		sui->addBank(creature->getBankCredits());
+		sui->setCallback(new BankTerminalSuiCallback(playerZone->getZoneServer()));
 
 		ghost->addSuiBox(sui);
 		creature->sendMessage(sui->generateMessage());
