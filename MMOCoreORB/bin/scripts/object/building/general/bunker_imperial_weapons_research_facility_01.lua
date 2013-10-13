@@ -42,10 +42,11 @@
 
 
 object_building_general_bunker_imperial_weapons_research_facility_01 = object_building_general_shared_bunker_imperial_weapons_research_facility_01:new {
-
-
-
-
+	gameObjectType = 515,
+	pvpStatusBitmask = 0,
+	dataObjectComponent = "DestructibleBuildingDataComponent",
+	alwaysPublic = 1,
+	factionBaseType = 2,
 
 }
 
