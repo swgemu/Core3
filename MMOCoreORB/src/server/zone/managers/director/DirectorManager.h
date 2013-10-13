@@ -68,7 +68,7 @@ namespace server {
 		ConversationScreen* getNextConversationScreen(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, int selectedOption, CreatureObject* conversingNPC);
 		ConversationScreen* runScreenHandlers(const String& luaClass, ConversationTemplate* conversationTemplate, CreatureObject* conversingPlayer, CreatureObject* conversingNPC, int selectedOption, ConversationScreen* conversationScreen);
 
-		Lua* getLuaInstance();
+		virtual Lua* getLuaInstance();
 		int runScreenPlays();
 
 		static int writeScreenPlayData(lua_State* L);

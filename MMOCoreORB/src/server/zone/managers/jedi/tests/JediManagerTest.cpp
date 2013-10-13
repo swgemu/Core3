@@ -53,6 +53,8 @@ which carries forward this exception.
 using ::testing::_;
 using ::testing::Return;
 using ::testing::AnyNumber;
+using ::testing::TypedEq;
+using ::testing::An;
 
 namespace server {
 namespace zone {
@@ -60,11 +62,11 @@ namespace managers {
 namespace jedi {
 namespace tests {
 
-class JediManagerTest : public ::testing::Test {
+class JediManagerTest : public ::testing::Test, public Logger {
 public:
 	JediManager* jediManager;
 
-	JediManagerTest() {
+	JediManagerTest() : Logger("JediManagerTest") {
 		// Perform creation setup here.
 	}
 
@@ -166,10 +168,107 @@ TEST_F(JediManagerTest, ShouldReadTheJediProgressionSystemNameAtLoadConfiguratio
 	jediManager->loadConfiguration(&mockLua);
 }
 
-//TODO Add test of the onPlayerCreation method.
-//TODO Add test of the onPlayerLogin method.
-//TODO Add test of the onPlayerLogout method.
-//TODO Add test of the checkForceStatusCommand. Needs an updated engine.
+TEST_F(JediManagerTest, OnPlayerCreatedShouldCallTheOnPlayerCreatedMethodInTheLuaJediManager) {
+	MockLua mockLua;
+	Reference<MockLuaFunction*> mockLuaFunction = new MockLuaFunction();
+	Reference<MockDirectorManager*> mockDirectorManager = new MockDirectorManager();
+	Reference<MockCreatureObject*> mockCreatureObject = new MockCreatureObject();
+
+	EXPECT_CALL(*mockDirectorManager, getLuaInstance()).WillOnce(Return(&mockLua));
+	EXPECT_CALL(mockLua, createFunction(String("JediManager"), String("onPlayerCreated"), 0)).WillOnce(Return(mockLuaFunction));
+	EXPECT_CALL(*mockLuaFunction, addArgument(TypedEq<void*>(mockCreatureObject))).Times(1);
+	EXPECT_CALL(*mockLuaFunction, callFunction()).Times(1);
+
+	Reference<DirectorManager*> realDirectorManager = DirectorManager::instance();
+
+	DirectorManager::setSingletonInstance(mockDirectorManager);
+
+	JediManager::instance()->onPlayerCreated(mockCreatureObject);
+
+	DirectorManager::setSingletonInstance(realDirectorManager);
+}
+
+TEST_F(JediManagerTest, OnPlayerLoggedInShouldCallTheOnPlayerLoggedInMethodInTheLuaJediManager) {
+	MockLua mockLua;
+	Reference<MockLuaFunction*> mockLuaFunction = new MockLuaFunction();
+	Reference<MockDirectorManager*> mockDirectorManager = new MockDirectorManager();
+	Reference<MockCreatureObject*> mockCreatureObject = new MockCreatureObject();
+
+	EXPECT_CALL(*mockDirectorManager, getLuaInstance()).WillOnce(Return(&mockLua));
+	EXPECT_CALL(mockLua, createFunction(String("JediManager"), String("onPlayerLoggedIn"), 0)).WillOnce(Return(mockLuaFunction));
+	EXPECT_CALL(*mockLuaFunction, addArgument(TypedEq<void*>(mockCreatureObject))).Times(1);
+	EXPECT_CALL(*mockLuaFunction, callFunction()).Times(1);
+
+	Reference<DirectorManager*> realDirectorManager = DirectorManager::instance();
+
+	DirectorManager::setSingletonInstance(mockDirectorManager);
+
+	JediManager::instance()->onPlayerLoggedIn(mockCreatureObject);
+
+	DirectorManager::setSingletonInstance(realDirectorManager);
+}
+
+TEST_F(JediManagerTest, OnPlayerLoggedOutShouldCallTheOnPlayerLoggedOutMethodInTheLuaJediManager) {
+	MockLua mockLua;
+	Reference<MockLuaFunction*> mockLuaFunction = new MockLuaFunction();
+	Reference<MockDirectorManager*> mockDirectorManager = new MockDirectorManager();
+	Reference<MockCreatureObject*> mockCreatureObject = new MockCreatureObject();
+
+	EXPECT_CALL(*mockDirectorManager, getLuaInstance()).WillOnce(Return(&mockLua));
+	EXPECT_CALL(mockLua, createFunction(String("JediManager"), String("onPlayerLoggedOut"), 0)).WillOnce(Return(mockLuaFunction));
+	EXPECT_CALL(*mockLuaFunction, addArgument(TypedEq<void*>(mockCreatureObject))).Times(1);
+	EXPECT_CALL(*mockLuaFunction, callFunction()).Times(1);
+
+	Reference<DirectorManager*> realDirectorManager = DirectorManager::instance();
+
+	DirectorManager::setSingletonInstance(mockDirectorManager);
+
+	JediManager::instance()->onPlayerLoggedOut(mockCreatureObject);
+
+	DirectorManager::setSingletonInstance(realDirectorManager);
+}
+
+TEST_F(JediManagerTest, CheckForceStatusCommandShouldCallTheCheckForceStatusCommandMethodInTheLuaJediManager) {
+	MockLua mockLua;
+	Reference<MockLuaFunction*> mockLuaFunction = new MockLuaFunction();
+	Reference<MockDirectorManager*> mockDirectorManager = new MockDirectorManager();
+	Reference<MockCreatureObject*> mockCreatureObject = new MockCreatureObject();
+
+	EXPECT_CALL(*mockDirectorManager, getLuaInstance()).WillOnce(Return(&mockLua));
+	EXPECT_CALL(mockLua, createFunction(String("JediManager"), String("checkForceStatusCommand"), 0)).WillOnce(Return(mockLuaFunction));
+	EXPECT_CALL(*mockLuaFunction, addArgument(TypedEq<void*>(mockCreatureObject))).Times(1);
+	EXPECT_CALL(*mockLuaFunction, callFunction()).Times(1);
+
+	Reference<DirectorManager*> realDirectorManager = DirectorManager::instance();
+
+	DirectorManager::setSingletonInstance(mockDirectorManager);
+
+	JediManager::instance()->checkForceStatusCommand(mockCreatureObject);
+
+	DirectorManager::setSingletonInstance(realDirectorManager);
+}
+
+TEST_F(JediManagerTest, UseHolocronShouldCallTheUseHolocronMethodInTheLuaJediManager) {
+	MockLua mockLua;
+	Reference<MockLuaFunction*> mockLuaFunction = new MockLuaFunction();
+	Reference<MockDirectorManager*> mockDirectorManager = new MockDirectorManager();
+	Reference<MockCreatureObject*> mockCreatureObject = new MockCreatureObject();
+	Reference<MockSceneObject*> mockSceneObject = new MockSceneObject();
+
+	EXPECT_CALL(*mockDirectorManager, getLuaInstance()).WillOnce(Return(&mockLua));
+	EXPECT_CALL(mockLua, createFunction(String("JediManager"), String("useHolocron"), 0)).WillOnce(Return(mockLuaFunction));
+	EXPECT_CALL(*mockLuaFunction, addArgument(An<void*>())).Times(2);
+	EXPECT_CALL(*mockLuaFunction, callFunction()).Times(1);
+
+	Reference<DirectorManager*> realDirectorManager = DirectorManager::instance();
+
+	DirectorManager::setSingletonInstance(mockDirectorManager);
+
+	JediManager::instance()->useHolocron(mockSceneObject, mockCreatureObject);
+
+	DirectorManager::setSingletonInstance(realDirectorManager);
+}
+
 
 }
 }

@@ -52,7 +52,6 @@ namespace lua {
 
 class MockLuaFunction: public LuaFunction {
 public:
-	MockLuaFunction(lua_State* l, const String& object, const String& func, int argsToReturn) : LuaFunction(l, object, func, argsToReturn) {}
 
 	MOCK_METHOD0(callFunction, lua_State*());
 	MOCK_METHOD1(addArgument, void(int number));
