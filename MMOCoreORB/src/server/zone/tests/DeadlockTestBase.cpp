@@ -65,7 +65,7 @@ TEST_F(GeneralDeadlockTestBase, CrossLockTest) {
 
 	FAIL() << "Cross lock deadlock not detected!";
 }
-
+/*
 TEST_F(GeneralDeadlockTestBase, CrossLockToNullTest) {
 	EXPECT_TOTAL_LOCKED(0);
 
@@ -95,7 +95,7 @@ TEST_F(GeneralDeadlockTestBase, CrossLockToUnlockedTest) {
 
 	FAIL() << "Cross lock to non-locked lockable not detected!";
 }
-
+*/
 TEST_F(GeneralDeadlockTestBase, ThreeLocksTest) {
 	EXPECT_TOTAL_LOCKED(0);
 
