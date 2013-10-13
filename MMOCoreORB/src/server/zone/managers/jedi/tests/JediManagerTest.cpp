@@ -53,6 +53,7 @@ which carries forward this exception.
 using ::testing::_;
 using ::testing::Return;
 using ::testing::AnyNumber;
+using ::testing::TypedEq;
 
 namespace server {
 namespace zone {
@@ -164,6 +165,22 @@ TEST_F(JediManagerTest, ShouldReadTheJediProgressionSystemNameAtLoadConfiguratio
 	EXPECT_CALL(mockLua, getGlobalString(String("jediManagerName"))).WillOnce(Return(String("HolocronJediManager")));
 
 	jediManager->loadConfiguration(&mockLua);
+}
+
+TEST_F(JediManagerTest, OnPlayerCreatedShouldCallTheOnPlayerCreatedMethodInTheLuaJediManager) {
+	MockLua mockLua;
+	MockLuaFunction mockLuaFunction;
+	Reference<MockDirectorManager*> mockDirectorManager = new MockDirectorManager();
+	Reference<MockCreatureObject*> mockCreatureObject = new MockCreatureObject();
+
+	EXPECT_CALL(*mockDirectorManager, getLuaInstance()).WillOnce(Return(&mockLua));
+	EXPECT_CALL(mockLua, createFunction(String("JediManager"), String("onPlayerCreated"), 0)).WillOnce(Return(&mockLuaFunction));
+	EXPECT_CALL(mockLuaFunction, addArgument(TypedEq<void*>(mockCreatureObject))).Times(1);
+	EXPECT_CALL(mockLuaFunction, callFunction()).Times(1);
+
+	DirectorManager::setSingletonInstance(mockDirectorManager);
+
+	JediManager::instance()->onPlayerCreated(mockCreatureObject);
 }
 
 //TODO Add test of the onPlayerCreation method.

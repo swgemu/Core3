@@ -89,41 +89,41 @@ void JediManager::loadConfiguration(Lua* luaEngine) {
 
 void JediManager::onPlayerCreated(CreatureObject* creature) {
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
-	LuaFunction luaOnPlayerCreated(lua->getLuaState(), getJediManagerName(), "onPlayerCreated", 0);
-	luaOnPlayerCreated << creature;
+	Reference<LuaFunction*> luaOnPlayerCreated = lua->createFunction(getJediManagerName(), "onPlayerCreated", 0);
+	*luaOnPlayerCreated << creature;
 
-	luaOnPlayerCreated.callFunction();
+	luaOnPlayerCreated->callFunction();
 }
 
 void JediManager::onPlayerLoggedIn(CreatureObject* creature) {
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
-	LuaFunction luaOnPlayerLoggedIn(lua->getLuaState(), getJediManagerName(), "onPlayerLoggedIn", 0);
-	luaOnPlayerLoggedIn << creature;
+	Reference<LuaFunction*> luaOnPlayerLoggedIn = lua->createFunction(getJediManagerName(), "onPlayerLoggedIn", 0);
+	*luaOnPlayerLoggedIn << creature;
 
-	luaOnPlayerLoggedIn.callFunction();
+	luaOnPlayerLoggedIn->callFunction();
 }
 
 void JediManager::onPlayerLoggedOut(CreatureObject* creature) {
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
-	LuaFunction luaOnPlayerLoggedOut(lua->getLuaState(), getJediManagerName(), "onPlayerLoggedOut", 0);
-	luaOnPlayerLoggedOut << creature;
+	Reference<LuaFunction*> luaOnPlayerLoggedOut = lua->createFunction(getJediManagerName(), "onPlayerLoggedOut", 0);
+	*luaOnPlayerLoggedOut << creature;
 
-	luaOnPlayerLoggedOut.callFunction();
+	luaOnPlayerLoggedOut->callFunction();
 }
 
 void JediManager::checkForceStatusCommand(CreatureObject* creature) {
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
-	LuaFunction luaCheckForceStatusCommand(lua->getLuaState(), getJediManagerName(), "checkForceStatusCommand", 0);
-	luaCheckForceStatusCommand << creature;
+	Reference<LuaFunction*> luaCheckForceStatusCommand = lua->createFunction(getJediManagerName(), "checkForceStatusCommand", 0);
+	*luaCheckForceStatusCommand << creature;
 
-	luaCheckForceStatusCommand.callFunction();
+	luaCheckForceStatusCommand->callFunction();
 }
 
 void JediManager::useHolocron(SceneObject* holocron, CreatureObject* creature) {
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
-	LuaFunction luaUseHolocron(lua->getLuaState(), getJediManagerName(), "useHolocron", 0);
-	luaUseHolocron << holocron;
-	luaUseHolocron << creature;
+	Reference<LuaFunction*> luaUseHolocron = lua->createFunction(getJediManagerName(), "useHolocron", 0);
+	*luaUseHolocron << holocron;
+	*luaUseHolocron << creature;
 
-	luaUseHolocron.callFunction();
+	luaUseHolocron->callFunction();
 }
