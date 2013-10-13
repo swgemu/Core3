@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_8f543522",
+        "filename": "MMOCoreORB/src/server/zone/objects/building/LuaBuildingObject.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-13T19:31:42Z",
+      "side": 1,
+      "message": "this will cause a deadlock becaust it cross locks the building with the owner that will be unlocked in this case",
+      "revId": "333b5ef20f711be6e535cb4febf0b68c6b972a57",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
