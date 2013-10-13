@@ -552,8 +552,11 @@ function DWB:start(creatureObject)
 	end
 
 	zero = self:spawnObjects(bunker)
-	zero = self:test(bunker)
 	zero = self:spawnMobiles(bunker)
+
+	if TEST == 1 then
+		zero = self:test(bunker)
+	end
 
 	local bunkerObject = LuaBuildingObject(bunker)
 
