@@ -15,7 +15,8 @@ TalusChunkerBunkerScreenPlay = ScreenPlay:new {
                 {
                         groups = {
                                 {group = "color_crystals", chance = 160000},
-                                {group = "junk", chance = 8240000},
+                                {group = "junk", chance = 7740000},
+				{group = "heavy_weapons_consumable", chance = 500000},
                                 {group = "melee_weapons", chance = 500000},
 				{group = "ranged_weapons", chance = 500000},
                                 {group = "clothing_attachments", chance = 300000},

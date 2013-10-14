@@ -16,8 +16,10 @@ DathomirCrashSiteScreenPlay = ScreenPlay:new {
 		{
 			groups = {
 				{group = "color_crystals", chance = 700000},
-				{group = "junk", chance = 7500000},
+				{group = "junk", chance = 6300000},
+				{group = "heavy_weapons_consumable", chance = 600000},
 				{group = "rifles", chance = 600000},
+				{group = "carbines", chance = 600000},
 				{group = "pistols", chance = 600000},
 				{group = "clothing_attachments", chance = 300000},
 				{group = "armor_attachments", chance = 300000}

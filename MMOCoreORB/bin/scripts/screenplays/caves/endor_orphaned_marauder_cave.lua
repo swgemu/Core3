@@ -16,7 +16,8 @@ EndorOrphanedMarauderCaveScreenPlay = ScreenPlay:new {
                 {
                         groups = {
                                 {group = "color_crystals", chance = 160000},
-                                {group = "junk", chance = 7240000},
+                                {group = "junk", chance = 6240000},
+				{group = "heavy_weapons_consumable", chance = 1000000},
                                 {group = "melee_weapons", chance = 1000000},
 				{group = "ranged_weapons", chance = 1000000},
                                 {group = "clothing_attachments", chance = 300000},

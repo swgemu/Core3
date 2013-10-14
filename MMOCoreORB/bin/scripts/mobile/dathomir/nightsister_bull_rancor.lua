@@ -31,8 +31,10 @@ nightsister_bull_rancor = Creature:new {
 		{
 			groups = {
 				{group = "rancor_common", chance = 5000000},
-				{group = "pistols", chance = 1250000},
-				{group = "rifles", chance = 1250000},
+				{group = "pistols", chance = 750000},
+				{group = "heavy_weapons", chance = 500000},
+				{group = "rifles", chance = 750000},
+				{group = "carbines", chance = 500000},
 				{group = "grenades_looted", chance = 500000},
 				{group = "armor_looted", chance = 1000000},
 				{group = "melee_unarmed", chance = 1000000}

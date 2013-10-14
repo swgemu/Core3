@@ -18,8 +18,9 @@ GarynRaidersBunkerScreenPlay = ScreenPlay:new {
                 {
                         groups = {
                                 {group = "color_crystals", chance = 100000},
-                                {group = "junk", chance = 6100000},
+                                {group = "junk", chance = 5300000},
                                 {group = "melee_weapons", chance = 1500000},
+				{group = "heavy_weapons_consumable", chance = 800000},
 				{group = "pistols", chance = 500000},
 				{group = "carbines", chance = 500000},
 				{group = "rifles", chance = 500000},

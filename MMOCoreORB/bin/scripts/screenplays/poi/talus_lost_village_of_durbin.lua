@@ -14,10 +14,12 @@ LostVillageofDurbinScreenPlay = ScreenPlay:new {
 	lootGroups = {
 		{
 			groups = {
-				{group = "color_crystals", chance = 3500000},
+				{group = "color_crystals", chance = 3100000},
 				{group = "junk", chance = 3500000},
-				{group = "rifles", chance = 1000000},
-				{group = "pistols", chance = 1000000},
+				{group = "heavy_weapons_consumable", chance = 600000},
+				{group = "rifles", chance = 600000},
+				{group = "carbines", chance = 600000},
+				{group = "pistols", chance = 600000},
 				{group = "clothing_attachments", chance = 500000},
 				{group = "armor_attachments", chance = 500000}
 			},

@@ -17,8 +17,10 @@ HuttHideoutScreenPlay = ScreenPlay:new {
 		{
 			groups = {
 				{group = "color_crystals", chance = 200000},
-				{group = "junk", chance = 8600000},
+				{group = "junk", chance = 7600000},
+				{group = "heavy_weapons_consumable", chance = 500000},
 				{group = "rifles", chance = 500000},
+				{group = "carbines", chance = 500000},
 				{group = "pistols", chance = 500000},
 				{group = "clothing_attachments", chance = 100000},
 				{group = "armor_attachments", chance = 100000}

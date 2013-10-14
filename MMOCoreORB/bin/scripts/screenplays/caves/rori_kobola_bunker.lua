@@ -22,7 +22,8 @@ KobolaBunkerScreenPlay = ScreenPlay:new {
                 {
                         groups = {
                                 {group = "color_crystals", chance = 100000},
-                                {group = "junk", chance = 6900000},
+                                {group = "junk", chance = 6400000},
+				{group = "heavy_weapons_consumable", chance = 500000},
                                 {group = "melee_weapons", chance = 900000},
 				{group = "pistols", chance = 300000},
 				{group = "carbines", chance = 300000},

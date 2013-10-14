@@ -16,10 +16,11 @@ BloodRazerTransportScreenPlay = ScreenPlay:new {
 			groups = {
 				{group = "color_crystals", chance = 2500000},
 				{group = "junk", chance = 2500000},
-				{group = "melee_two_handed", chance = 1000000},
-				{group = "rifles", chance = 1000000},
-				{group = "carbines", chance = 1000000},
-				{group = "pistols", chance = 1000000},
+				{group = "melee_two_handed", chance = 800000},
+				{group = "heavy_weapons_consumable", chance = 800000},
+				{group = "rifles", chance = 800000},
+				{group = "carbines", chance = 800000},
+				{group = "pistols", chance = 800000},
 				{group = "clothing_attachments", chance = 500000},
 				{group = "armor_attachments", chance = 500000}
 			},
