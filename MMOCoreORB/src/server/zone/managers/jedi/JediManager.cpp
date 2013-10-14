@@ -47,6 +47,7 @@ which carries forward this exception.
 
 JediManager::JediManager() : Logger("JediManager") {
 	jediProgressionType = NOJEDIPROGRESSION;
+	setJediManagerName("JediManager");
 }
 
 JediManager::~JediManager() {
@@ -59,6 +60,12 @@ String JediManager::getJediManagerName() {
 	String ret = jediManagerName;
 
 	return ret;
+}
+
+void JediManager::setJediManagerName(String name) {
+	Locker writeLock(this);
+
+	jediManagerName = name;
 }
 
 void JediManager::loadConfiguration(Lua* luaEngine) {
@@ -80,9 +87,7 @@ void JediManager::loadConfiguration(Lua* luaEngine) {
 		break;
 	}
 
-	Locker writeLock(this);
-
-	jediManagerName = luaEngine->getGlobalString(String("jediManagerName"));
+	setJediManagerName(luaEngine->getGlobalString(String("jediManagerName")));
 
 	info("Loaded.", true);
 }

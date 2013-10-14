@@ -137,6 +137,12 @@ public:
 	String getJediManagerName();
 
 	/**
+	 * Set the name of the currently active lua jedi manager.
+	 * @param name the name of the currently active lua jedi manager.
+	 */
+	void setJediManagerName(String name);
+
+	/**
 	 * Handle the holocron use messages.
 	 * @param holocron pointer to the holocron object.
 	 * @param creature the creature that used the holocron.
