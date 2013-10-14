@@ -77,6 +77,7 @@ public:
 	void SetUp() {
 		// Perform setup of common constructs here.
 		jediManager = new JediManager();
+		jediManager->setJediManagerName("JediManager");
 	}
 
 	void TearDown() {
@@ -183,7 +184,7 @@ TEST_F(JediManagerTest, OnPlayerCreatedShouldCallTheOnPlayerCreatedMethodInTheLu
 
 	DirectorManager::setSingletonInstance(mockDirectorManager);
 
-	JediManager::instance()->onPlayerCreated(mockCreatureObject);
+	jediManager->onPlayerCreated(mockCreatureObject);
 
 	DirectorManager::setSingletonInstance(realDirectorManager);
 }
@@ -203,7 +204,7 @@ TEST_F(JediManagerTest, OnPlayerLoggedInShouldCallTheOnPlayerLoggedInMethodInThe
 
 	DirectorManager::setSingletonInstance(mockDirectorManager);
 
-	JediManager::instance()->onPlayerLoggedIn(mockCreatureObject);
+	jediManager->onPlayerLoggedIn(mockCreatureObject);
 
 	DirectorManager::setSingletonInstance(realDirectorManager);
 }
@@ -223,7 +224,7 @@ TEST_F(JediManagerTest, OnPlayerLoggedOutShouldCallTheOnPlayerLoggedOutMethodInT
 
 	DirectorManager::setSingletonInstance(mockDirectorManager);
 
-	JediManager::instance()->onPlayerLoggedOut(mockCreatureObject);
+	jediManager->onPlayerLoggedOut(mockCreatureObject);
 
 	DirectorManager::setSingletonInstance(realDirectorManager);
 }
@@ -243,7 +244,7 @@ TEST_F(JediManagerTest, CheckForceStatusCommandShouldCallTheCheckForceStatusComm
 
 	DirectorManager::setSingletonInstance(mockDirectorManager);
 
-	JediManager::instance()->checkForceStatusCommand(mockCreatureObject);
+	jediManager->checkForceStatusCommand(mockCreatureObject);
 
 	DirectorManager::setSingletonInstance(realDirectorManager);
 }
@@ -264,7 +265,7 @@ TEST_F(JediManagerTest, UseHolocronShouldCallTheUseHolocronMethodInTheLuaJediMan
 
 	DirectorManager::setSingletonInstance(mockDirectorManager);
 
-	JediManager::instance()->useHolocron(mockSceneObject, mockCreatureObject);
+	jediManager->useHolocron(mockSceneObject, mockCreatureObject);
 
 	DirectorManager::setSingletonInstance(realDirectorManager);
 }
