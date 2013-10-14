@@ -1339,7 +1339,7 @@ void BuildingObjectImplementation::spawnChildCreature(String& mobile, int respaw
 	if(creature == NULL)
 		return;
 
-	creature->updateDirection(heading);
+	creature->updateDirection(Math::deg2rad(heading));
 
 	if(creature->isAiAgent()){
 		AiAgent* ai = cast<AiAgent*>(creature);
