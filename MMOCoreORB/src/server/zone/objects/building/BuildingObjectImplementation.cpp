@@ -351,6 +351,9 @@ bool BuildingObjectImplementation::isCityBanned(CreatureObject* player){
 bool BuildingObjectImplementation::isAllowedEntry(CreatureObject* player) {
 
 	if(isGCWBase()){
+		if (factionBaseType == GCWManager::STATICFACTIONBASE)
+			return true;
+
 		return checkContainerPermission(player,ContainerPermissions::WALKIN);
 	}
 	
