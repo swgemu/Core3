@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_d2ab02d5",
+        "filename": "MMOCoreORB/bin/scripts/loot/groups/meatlump_common.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-10-15T09:42:35Z",
+      "side": 1,
+      "message": "I wouldn\u0027t recommend lowering the drop rate on the batteries this far. They should be more common than the other items.\n\nI\u0027d probably set them something like 4% each for the buffs, 8% each for the schematics, and 20% for the batteries.",
+      "revId": "8bb529e31619dedc0ba2809ad932f8a06abc8c22",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
