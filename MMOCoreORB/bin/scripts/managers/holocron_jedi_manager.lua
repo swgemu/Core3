@@ -136,6 +136,11 @@ function HolocronJediManager.checkIfProgressedToJedi(pCreatureObject)
 	end
 end
 
+-- Event handler for the BADGEAWARDED event.
+-- @param pCreatureObject pointer to the creature object of the player who was awarded with a badge.
+-- @param pCreatureObject2 pointer to the creature object of the player who was awarded with a badge.
+-- @param badgeNumber the badge number that was awarded.
+-- @return 0 to keep the observer active.
 function HolocronJediManager:badgeAwardedEventHandler(pCreatureObject, pCreatureObject2, badgeNumber)
 	HolocronJediManager.checkIfProgressedToJedi(pCreatureObject)
 

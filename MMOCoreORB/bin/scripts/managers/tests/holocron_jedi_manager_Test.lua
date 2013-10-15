@@ -227,11 +227,14 @@ describe("Holocron Jedi Manager", function()
 		describe("registerObservers", function()
 			it("Should call createObserver for the BADGEAWARDED event on the player", function()
 				local creaturePointer = { "creaturePointer" }
+				local realCreateObserver = createObserver
 				createObserver = spy.new(function() end)
 
 				HolocronJediManager.registerObservers(creaturePointer)
 
 				assert.spy(createObserver).was.called_with(BADGEAWARDED, "HolocronJediManager", "badgeAwardedEventHandler", creaturePointer)
+
+				createObserver = realCreateObserver
 			end)
 		end)
 

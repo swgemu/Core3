@@ -239,6 +239,36 @@ function VillageJediManager:checkForceStatusCommand(pCreatureObject)
 	end)
 end
 
+-- Check if the player should progress towards jedi and handle any events for it.
+-- @param pCreatureObject pointer to the creature object of the player.
+function VillageJediManager.checkAndHandleJediProgression(pCreatureObject)
+	
+end
+
+-- Event handler for the BADGEAWARDED event.
+-- @param pCreatureObject pointer to the creature object of the player who was awarded with a badge.
+-- @param pCreatureObject2 pointer to the creature object of the player who was awarded with a badge.
+-- @param badgeNumber the badge number that was awarded.
+-- @return 0 to keep the observer active.
+function VillageJediManager:badgeAwardedEventHandler(pCreatureObject, pCreatureObject2, badgeNumber)
+	VillageJediManager.checkAndHandleJediProgression(pCreatureObject)
+
+	return 0
+end
+
+-- Register observer on the player for observing badge awards.
+-- @param pCreatureObject pointer to the creature object of the player to register observers on.
+function VillageJediManager.registerObservers(pCreatureObject)
+	createObserver(BADGEAWARDED, "VillageJediManager", "badgeAwardedEventHandler", pCreatureObject)
+end
+
+-- Handling of the onPlayerLoggedIn event. The progression of the player will be checked and observers will be registered.
+-- @param pCreatureObject pointer to the creature object of the player who logged in.
+function VillageJediManager:onPlayerLoggedIn(pCreatureObject)
+	VillageJediManager.checkAndHandleJediProgression(pCreatureObject)
+	VillageJediManager.registerObservers(pCreatureObject)
+end
+
 registerScreenPlay("VillageJediManager", true)
 
 return VillageJediManager

@@ -91,6 +91,40 @@ describe("Village Jedi Manager", function()
 				VillageJediManager.getJediProgressionStatus = realGetJediProgressionStatus
 			end)
 		end)
+
+		describe("onPlayerLoggedIn", function()
+			describe("When called with a player as argument", function()
+				it("Should check and handle the jedi progression of the player", function()
+					local pCreatureObject = { "creatureObjectPointer" }
+					local realCheckAndHandleJediProgression = VillageJediManager.checkAndHandleJediProgression
+					VillageJediManager.checkAndHandleJediProgression = spy.new(function() end)
+					local realRegisterObservers = VillageJediManager.registerObservers
+					VillageJediManager.registerObservers = spy.new(function() end)
+
+					VillageJediManager:onPlayerLoggedIn(pCreatureObject)
+
+					assert.spy(VillageJediManager.checkAndHandleJediProgression).was.called_with(pCreatureObject)
+
+					VillageJediManager.checkAndHandleJediProgression = realCheckAndHandleJediProgression
+					VillageJediManager.registerObservers = realRegisterObservers
+				end)
+
+				it("Should register observers on the player", function()
+					local pCreatureObject = { "creatureObjectPointer" }
+					local realCheckAndHandleJediProgression = VillageJediManager.checkAndHandleJediProgression
+					VillageJediManager.checkAndHandleJediProgression = spy.new(function() end)
+					local realRegisterObservers = VillageJediManager.registerObservers
+					VillageJediManager.registerObservers = spy.new(function() end)
+
+					VillageJediManager:onPlayerLoggedIn(pCreatureObject)
+
+					assert.spy(VillageJediManager.registerObservers).was.called_with(pCreatureObject)
+
+					VillageJediManager.checkAndHandleJediProgression = realCheckAndHandleJediProgression
+					VillageJediManager.registerObservers = realRegisterObservers
+				end)
+			end)
+		end)
 	end)
 
 	describe("Private functions", function() 
@@ -414,6 +448,22 @@ describe("Village Jedi Manager", function()
 				assert.spy(VillageJediManager.countBadges).was.called(18)
 
 				VillageJediManager.countBadges = realCountBadges
+			end)
+		end)
+
+		describe("registerObservers", function()
+			describe("When called with a player object", function()
+				it("Should register an observer for the BADGEAWARDED event on the player.", function()
+					local pCreatureObject = { "creatureObjectPointer" }
+					local realCreateObserver = createObserver
+					createObserver = spy.new(function() end)
+
+					VillageJediManager.registerObservers(pCreatureObject)
+
+					assert.spy(createObserver).was.called_with(BADGEAWARDED, "VillageJediManager", "badgeAwardedEventHandler", pCreatureObject)
+
+					createObserver = realCreateObserver
+				end)
 			end)
 		end)
 	end)
