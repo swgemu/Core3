@@ -40,7 +40,7 @@ public:
 
 		for (int i = 0; i < modifiers->size(); ++i) {
 			VectorMapEntry<String, float>* entry = &modifiers->elementAt(i);
-			alm->insertAttribute("skill", "@stat_n:" + entry->getKey());
+			alm->insertAttribute("cat_skill_mod_bonus.@stat_n:" + entry->getKey(), (int)entry->getValue() );
 		}
 
 		StringBuffer durationstring;
