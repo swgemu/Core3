@@ -18,6 +18,18 @@ JediManager = ScreenPlay:new {
 	jediProgressionType = NOJEDIPROGRESSION,
 }
 
+-- Perform the supplied function with a scene object created from the pointer.
+-- @param pSceneObject a pointer to a scene object.
+-- @param performThisFunction a function that takes a scene object as its argument.
+-- @return whatever performThisFunction returns or nil if the pSceneObject pointer is nil.
+function JediManager.withSceneObject(pSceneObject, performThisFunction)
+	if pSceneObject == nil then
+		return nil
+	end
+	local sceneObject = LuaSceneObject(pSceneObject)
+	return performThisFunction(sceneObject)
+end
+
 -- Perform the supplied function with a creature object created from the pointer.
 -- @param pCreatureObject a pointer to a creature object.
 -- @param performThisFunction a function that takes a creature object as its argument.
