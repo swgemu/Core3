@@ -107,8 +107,20 @@ public:
 
 	void setQuality(int value);
 
+	/**
+	 * Fills the radial options
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
@@ -165,8 +177,20 @@ public:
 
 	void setQuality(int value);
 
+	/**
+	 * Fills the radial options
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);

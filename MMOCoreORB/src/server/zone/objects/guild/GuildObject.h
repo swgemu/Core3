@@ -112,6 +112,11 @@ public:
 
 	void broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf = false);
 
+	/**
+	 * Adds the Player to the GuildMemberList. Doesn't do anything else!
+	 * Use the GuildManager for adding and removing of players that sends messages etc.
+	 * @param player The player's objectid to add
+	 */
 	void addMember(unsigned long long playerID);
 
 	void removeMember(unsigned long long playerID);
@@ -276,6 +281,11 @@ public:
 
 	void broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf = false);
 
+	/**
+	 * Adds the Player to the GuildMemberList. Doesn't do anything else!
+	 * Use the GuildManager for adding and removing of players that sends messages etc.
+	 * @param player The player's objectid to add
+	 */
 	void addMember(unsigned long long playerID);
 
 	void removeMember(unsigned long long playerID);

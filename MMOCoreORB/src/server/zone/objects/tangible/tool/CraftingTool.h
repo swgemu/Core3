@@ -175,26 +175,52 @@ public:
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	bool isCraftingTool();
 
+	/**
+	 * Crafting tool state is ready
+	 */
 	bool isReady();
 
 	void setReady();
 
+	/**
+	 * Crafting tool state is busy (crafting something)
+	 */
 	bool isBusy();
 
 	void setBusy();
 
+	/**
+	 * Crafting tool state is Finished (Something in hopper)
+	 */
 	bool isFinished();
 
 	void setFinished();
 
+	/**
+	 * Sends message to player if the tool is unable 
+	 * to start
+	 */
 	void sendToolStartFailure(CreatureObject* player, const String& message);
 
 	int getToolType();
@@ -275,26 +301,52 @@ public:
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
 	bool isCraftingTool();
 
+	/**
+	 * Crafting tool state is ready
+	 */
 	bool isReady();
 
 	void setReady();
 
+	/**
+	 * Crafting tool state is busy (crafting something)
+	 */
 	bool isBusy();
 
 	void setBusy();
 
+	/**
+	 * Crafting tool state is Finished (Something in hopper)
+	 */
 	bool isFinished();
 
 	void setFinished();
 
+	/**
+	 * Sends message to player if the tool is unable 
+	 * to start
+	 */
 	void sendToolStartFailure(CreatureObject* player, const String& message);
 
 	int getToolType();

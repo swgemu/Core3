@@ -36,12 +36,40 @@ class GeneratorObject : public InstallationObject {
 public:
 	GeneratorObject();
 
+	/**
+	 * Fills the radial options, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
+	/**
+	 * Calls the appropriate UI Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player CreatureObject using the item
+	 * @param value value from packet
+	 */
 	void synchronizedUIListen(SceneObject* player, int value);
 
+	/**
+	 * Calls the appropriate UI Stop Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player CreatureObject using the item
+	 * @param value value from packet
+	 */
 	void synchronizedUIStopListen(SceneObject* player, int value);
 
 	bool isGeneratorObject();
@@ -78,12 +106,40 @@ public:
 
 	GeneratorObjectImplementation(DummyConstructorParameter* param);
 
+	/**
+	 * Fills the radial options, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
+	/**
+	 * Calls the appropriate UI Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player CreatureObject using the item
+	 * @param value value from packet
+	 */
 	void synchronizedUIListen(SceneObject* player, int value);
 
+	/**
+	 * Calls the appropriate UI Stop Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player CreatureObject using the item
+	 * @param value value from packet
+	 */
 	void synchronizedUIStopListen(SceneObject* player, int value);
 
 	bool isGeneratorObject();

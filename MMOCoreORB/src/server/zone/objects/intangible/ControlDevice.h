@@ -110,6 +110,12 @@ class ControlDevice : public IntangibleObject {
 public:
 	ControlDevice();
 
+	/**
+	 * Updates this object to database (calls updatesToDatabaseAllObjects())
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param startTask if true, queues a new update task
+	 */
 	void updateToDatabaseAllObjects(bool startTask);
 
 	void storeObject(CreatureObject* player);
@@ -158,6 +164,12 @@ public:
 
 	ControlDeviceImplementation(DummyConstructorParameter* param);
 
+	/**
+	 * Updates this object to database (calls updatesToDatabaseAllObjects())
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param startTask if true, queues a new update task
+	 */
 	void updateToDatabaseAllObjects(bool startTask);
 
 	virtual void storeObject(CreatureObject* player);

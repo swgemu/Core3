@@ -240,6 +240,14 @@ bool PowerBoostBuffImplementation::readObjectMember(ObjectInputStream* stream, c
 		TypeInfo<int >::parseFromBinaryStream(&counter, stream);
 		return true;
 
+	case 0x9d5be2b0: //PowerBoostBuff.haBuffAmount
+		TypeInfo<int >::parseFromBinaryStream(&haBuffAmount, stream);
+		return true;
+
+	case 0x6e78934d: //PowerBoostBuff.mindBuffAmount
+		TypeInfo<int >::parseFromBinaryStream(&mindBuffAmount, stream);
+		return true;
+
 	case 0x6fc704f8: //PowerBoostBuff.nextTickTime
 		TypeInfo<Time >::parseFromBinaryStream(&nextTickTime, stream);
 		return true;
@@ -294,6 +302,22 @@ int PowerBoostBuffImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
 	stream->writeInt(_offset, _totalSize);
 
+	_nameHashCode = 0x9d5be2b0; //PowerBoostBuff.haBuffAmount
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&haBuffAmount, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
+	_nameHashCode = 0x6e78934d; //PowerBoostBuff.mindBuffAmount
+	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
+	_offset = stream->getOffset();
+	stream->writeInt(0);
+	TypeInfo<int >::toBinaryStream(&mindBuffAmount, stream);
+	_totalSize = (uint32) (stream->getOffset() - (_offset + 4));
+	stream->writeInt(_offset, _totalSize);
+
 	_nameHashCode = 0x6fc704f8; //PowerBoostBuff.nextTickTime
 	TypeInfo<uint32>::toBinaryStream(&_nameHashCode, stream);
 	_offset = stream->getOffset();
@@ -303,7 +327,7 @@ int PowerBoostBuffImplementation::writeObjectMembers(ObjectOutputStream* stream)
 	stream->writeInt(_offset, _totalSize);
 
 
-	return _count + 5;
+	return _count + 7;
 }
 
 PowerBoostBuffImplementation::PowerBoostBuffImplementation(CreatureObject* creo, const String& name, unsigned int buffCRC, int value, int duration) : BuffImplementation(creo, buffCRC, duration, BuffType::SKILL) {
@@ -318,6 +342,10 @@ PowerBoostBuffImplementation::PowerBoostBuffImplementation(CreatureObject* creo,
 	time = duration * 1000;
 	// server/zone/objects/creature/buffs/PowerBoostBuff.idl():  		counter = 0;
 	counter = 0;
+	// server/zone/objects/creature/buffs/PowerBoostBuff.idl():  		haBuffAmount=0;
+	haBuffAmount = 0;
+	// server/zone/objects/creature/buffs/PowerBoostBuff.idl():  		mindBuffAmount=0;
+	mindBuffAmount = 0;
 }
 
 /*

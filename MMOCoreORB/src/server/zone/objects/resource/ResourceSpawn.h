@@ -98,12 +98,25 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void decreaseContainerReferenceCount();
 
 	bool isResourceSpawn();
 
+	/**
+	 * Sets the resource spawn with the system generated name
+	 * @pre { }
+	 * @post { }
+	 * @param name generated name to set this object with
+	 */
 	void setName(const String& name);
 
 	void setType(const String& type);
@@ -112,6 +125,12 @@ public:
 
 	void setZoneRestriction(const String& zoneName);
 
+	/**
+	 * adds a class to the resource
+	 * @pre { }
+	 * @post { }
+	 * @param class string added to spawn
+	 */
 	void addClass(const String& newclass);
 
 	void addStfClass(const String& newclass);
@@ -258,12 +277,25 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void decreaseContainerReferenceCount();
 
 	bool isResourceSpawn();
 
+	/**
+	 * Sets the resource spawn with the system generated name
+	 * @pre { }
+	 * @post { }
+	 * @param name generated name to set this object with
+	 */
 	void setName(const String& name);
 
 	void setType(const String& type);
@@ -272,6 +304,12 @@ public:
 
 	void setZoneRestriction(const String& zoneName);
 
+	/**
+	 * adds a class to the resource
+	 * @pre { }
+	 * @post { }
+	 * @param class string added to spawn
+	 */
 	void addClass(const String& newclass);
 
 	void addStfClass(const String& newclass);

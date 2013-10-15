@@ -111,18 +111,59 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Call after all Header settings have been added with addHeader()
+	 * Generates the UI-Header of the packet, SuiCreatePageMessage, based on the headerSets vector.
+	 * If you are reusing the SuiBox and rebuilding with different variables, make sure you reset
+	 * the object with clearOptions()
+	 * \sa addHeader(), clearOptions()
+	 */
 	void generateHeader(SuiCreatePageMessage* message);
 
+	/**
+	 * Call after all Body Settings have been added with addSetting() and the header has been generated
+	 * Generates the UI-Body of the packet, SuiCreatePageMessage, based on the optionSets vector.
+	 * If you are reusing the SuiBox and rebuilding with different variables, make sure you
+	 * reset the object with clearOptions()
+	 * \sa addSetting(), clearOptions()
+	 */
 	void generateBody(SuiCreatePageMessage* message);
 
+	/**
+	 * Call after generating both the header and body.
+	 * Footer of SuiCreatePageMessage is largely unknown. Subject to change based on research. See trac
+	 * \param type Type of footer to place into packet
+	 */
 	void generateFooter(SuiCreatePageMessage* message, int type = 0);
 
 	BaseMessage* generateMessage();
 
+	/**
+	 * Use to close the UI object on the client.
+	 * Sends the SuiForceClosePage packet to the client.
+	 */
 	BaseMessage* generateCloseMessage();
 
+	/**
+	 * Use to add a UI-body option that will be included in UI generation
+	 * See trac documentation of SuiCreatePageMessage for when to use
+	 * Variables are concated into a string and placed in a vector (optionSets) of all the body settings
+	 * for the SuiBoxImplementation object. Each string separates variables with a tilde (~) character.
+	 * \param optType Type of setting to add. See packet docs for info
+	 * \param variable UI Classpath in the script to access
+	 * \param setting SWG UI setting to modify
+	 * \param value The value of the setting being modified
+	 */
 	void addSetting(const String& optType, const String& variable, const String& setting, const String& value);
 
+	/**
+	 * Use to add a UI-Header that will eventually be included in the UI generation.
+	 * See trac documentation of SuiCreatePageMessage for when to use
+	 * Variables are concated into a string and placed in a vector (headerSets) of all the header settings
+	 * for the SuiBoxImplementation object. Each string separates variables with a tilde (~) character.
+	 * \param variable UI Variable to declare header for
+	 * \param type Data type of the UI variable being declared
+	 */
 	void addHeader(const String& variable, const String& type);
 
 	void clearOptions();
@@ -281,18 +322,59 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Call after all Header settings have been added with addHeader()
+	 * Generates the UI-Header of the packet, SuiCreatePageMessage, based on the headerSets vector.
+	 * If you are reusing the SuiBox and rebuilding with different variables, make sure you reset
+	 * the object with clearOptions()
+	 * \sa addHeader(), clearOptions()
+	 */
 	void generateHeader(SuiCreatePageMessage* message);
 
+	/**
+	 * Call after all Body Settings have been added with addSetting() and the header has been generated
+	 * Generates the UI-Body of the packet, SuiCreatePageMessage, based on the optionSets vector.
+	 * If you are reusing the SuiBox and rebuilding with different variables, make sure you
+	 * reset the object with clearOptions()
+	 * \sa addSetting(), clearOptions()
+	 */
 	void generateBody(SuiCreatePageMessage* message);
 
+	/**
+	 * Call after generating both the header and body.
+	 * Footer of SuiCreatePageMessage is largely unknown. Subject to change based on research. See trac
+	 * \param type Type of footer to place into packet
+	 */
 	void generateFooter(SuiCreatePageMessage* message, int type = 0);
 
 	virtual BaseMessage* generateMessage();
 
+	/**
+	 * Use to close the UI object on the client.
+	 * Sends the SuiForceClosePage packet to the client.
+	 */
 	BaseMessage* generateCloseMessage();
 
+	/**
+	 * Use to add a UI-body option that will be included in UI generation
+	 * See trac documentation of SuiCreatePageMessage for when to use
+	 * Variables are concated into a string and placed in a vector (optionSets) of all the body settings
+	 * for the SuiBoxImplementation object. Each string separates variables with a tilde (~) character.
+	 * \param optType Type of setting to add. See packet docs for info
+	 * \param variable UI Classpath in the script to access
+	 * \param setting SWG UI setting to modify
+	 * \param value The value of the setting being modified
+	 */
 	void addSetting(const String& optType, const String& variable, const String& setting, const String& value);
 
+	/**
+	 * Use to add a UI-Header that will eventually be included in the UI generation.
+	 * See trac documentation of SuiCreatePageMessage for when to use
+	 * Variables are concated into a string and placed in a vector (headerSets) of all the header settings
+	 * for the SuiBoxImplementation object. Each string separates variables with a tilde (~) character.
+	 * \param variable UI Variable to declare header for
+	 * \param type Data type of the UI variable being declared
+	 */
 	void addHeader(const String& variable, const String& type);
 
 	void clearOptions();

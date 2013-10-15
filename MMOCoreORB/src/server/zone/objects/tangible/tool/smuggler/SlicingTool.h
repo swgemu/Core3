@@ -120,10 +120,31 @@ class SlicingTool : public TangibleObject {
 public:
 	SlicingTool();
 
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
@@ -170,10 +191,31 @@ public:
 
 	SlicingToolImplementation(DummyConstructorParameter* param);
 
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);

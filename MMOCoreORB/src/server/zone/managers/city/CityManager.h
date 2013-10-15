@@ -156,6 +156,9 @@ public:
 
 	CityManager(ZoneServer* zserv);
 
+	/**
+	 * Loads configuration settings for cities from the lua for the city manager.
+	 */
 	void loadLuaConfig();
 
 	void loadCityRegions();
@@ -168,8 +171,18 @@ public:
 
 	void processCityUpdate(CityRegion* city);
 
+	/**
+	 * Processes income tax from all citizens
+	 * @pre city locked
+	 * @post city locked
+	 */
 	void processIncomeTax(CityRegion* city);
 
+	/**
+	 * Handles the voting of the city, tallys votes, see's who won. Resets the voting process.
+	 * @pre city locked
+	 * @post city locked
+	 */
 	void updateCityVoting(CityRegion* city, bool override = false);
 
 	void deductCityMaintenance(CityRegion* city);
@@ -256,10 +269,22 @@ public:
 
 	bool renameCity(CityRegion* city, const String& newName);
 
+	/**
+	 * @pre city locked, creature locked, sceneObject locked
+	 * @post city locked, creature locked, sceneObject locked
+	 */
 	void sendMayoralStandings(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
+	/**
+	 * @pre city locked, creature locked, sceneObject locked
+	 * @post city locked, creature locked, sceneObject locked
+	 */
 	void promptMayoralVote(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
+	/**
+	 * @pre city locked, creature locked
+	 * @post city locked, creature locked
+	 */
 	void registerForMayoralRace(CityRegion* city, CreatureObject* creature);
 
 	void castMayoralVote(CityRegion* city, CreatureObject* creature, unsigned long long oid);
@@ -355,6 +380,9 @@ public:
 
 	CityManagerImplementation(DummyConstructorParameter* param);
 
+	/**
+	 * Loads configuration settings for cities from the lua for the city manager.
+	 */
 	void loadLuaConfig();
 
 	void loadCityRegions();
@@ -367,8 +395,18 @@ public:
 
 	void processCityUpdate(CityRegion* city);
 
+	/**
+	 * Processes income tax from all citizens
+	 * @pre city locked
+	 * @post city locked
+	 */
 	void processIncomeTax(CityRegion* city);
 
+	/**
+	 * Handles the voting of the city, tallys votes, see's who won. Resets the voting process.
+	 * @pre city locked
+	 * @post city locked
+	 */
 	void updateCityVoting(CityRegion* city, bool override = false);
 
 	void deductCityMaintenance(CityRegion* city);
@@ -455,10 +493,22 @@ public:
 
 	bool renameCity(CityRegion* city, const String& newName);
 
+	/**
+	 * @pre city locked, creature locked, sceneObject locked
+	 * @post city locked, creature locked, sceneObject locked
+	 */
 	void sendMayoralStandings(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
+	/**
+	 * @pre city locked, creature locked, sceneObject locked
+	 * @post city locked, creature locked, sceneObject locked
+	 */
 	void promptMayoralVote(CityRegion* city, CreatureObject* creature, SceneObject* terminal = NULL);
 
+	/**
+	 * @pre city locked, creature locked
+	 * @post city locked, creature locked
+	 */
 	void registerForMayoralRace(CityRegion* city, CreatureObject* creature);
 
 	void castMayoralVote(CityRegion* city, CreatureObject* creature, unsigned long long oid);

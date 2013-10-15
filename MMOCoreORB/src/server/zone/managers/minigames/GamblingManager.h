@@ -144,34 +144,162 @@ public:
 
 	void handleSlot(CreatureObject* player, bool cancel, bool other);
 
+	/**
+	 * Accept bet from /bet command
+	 * This method receives the player who wants to bet, the amount he wants to bet, and the target he's betting on
+	 * and calls bet(terminal, player, amount, target)
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject betting money
+	 * @param amount Amount of Credits to bet
+	 * @param target Target field (remains empty for slotMachine)
+	 */
 	void bet(CreatureObject* player, int amount, int target, int machineType);
 
+	/**
+	 * Accept bet from /bet command or startGame
+	 * This method receives the player who wants to bet, the amount he wants to bet, and the target he's betting on
+	 * The method creates a bet and adds it to the GamblingTerminal's bets VectorMap
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param terminal GamblingTerminal for which to add bet
+	 * @param player CreatureObject betting money
+	 * @param amount Amount of Credits to bet
+	 * @param target Target field (remains empty for slotMachine)
+	 */
 	void bet(GamblingTerminal* terminal, CreatureObject* player, int amount, int target);
 
+	/**
+	 * StartGame called by SuiManager
+	 * This method receives a CreatureObject, looks it up in the machineType's corresponding VectorMap
+	 * and then calls startGame(Terminal) 
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject for which to start the Game
+	 * @param machineType machine type of the Terminal, set in the SuiManager
+	 */
 	void startGame(CreatureObject* player, int machineType);
 
+	/**
+	 * Starts Game
+	 * This method receives a GamblingTerminal, starting the Event cycle of the Game
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param terminal GamblingTerminal for which to start the game
+	 */
 	void startGame(GamblingTerminal* terminal);
 
+	/**
+	 * LeaveTerminal called by SuiManager
+	 * This method receives a CreatureObject, looks it up in the machineType's corresponding VectorMap
+	 * and then calls Terminal::leaveTerminal(player) 
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject who wants to leave the Terminal
+	 * @param machineType machine type of the Terminal, set in the SuiManager
+	 */
 	void leaveTerminal(CreatureObject* player, int machineType);
 
+	/**
+	 * Adds player to VectorMap
+	 * This method switches machineTypes adding the Player and GamblingTerminal to the machineType's corresponding VectorMap
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param terminal GamblingTerminal to register
+	 * @param player CreatureObject to register
+	 */
 	void registerPlayer(GamblingTerminal* terminal, CreatureObject* player);
 
+	/**
+	 * Refreshes the menu
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
+	 * and then closes the Roulette Menu, reopening it
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject for which to refresh menu
+	 */
 	void refreshRouletteMenu(CreatureObject* player);
 
+	/**
+	 * Continues the Game
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
+	 * and then closes the Roulette Menu, reopening it
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject for which to refresh menu
+	 */
 	void continueGame(GamblingTerminal* terminal);
 
+	/**
+	 * Ends the Game
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
+	 * and then closes the Roulette Menu, reopening it
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject for which to refresh menu
+	 */
 	void stopGame(GamblingTerminal* terminal, bool cancel);
 
+	/**
+	 * Calculates the results of each players' bets
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
+	 * and then closes the Roulette Menu, reopening it
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject for which to refresh menu
+	 */
 	void calculateOutcome(GamblingTerminal* terminal);
 
+	/**
+	 * Creates the Windows
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
+	 * and then closes the Roulette Menu, reopening it
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject for which to refresh menu
+	 */
 	unsigned int createWindow(GamblingTerminal* terminal, CreatureObject* player);
 
+	/**
+	 * Creates the SlotPayoutWindow
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
+	 * and then closes the Roulette Menu, reopening it
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject for which to refresh menu
+	 */
 	unsigned int createPayoutWindow(CreatureObject* player);
 
+	/**
+	 * Creates the SlotWindow
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
+	 * and then closes the Roulette Menu, reopening it
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject for which to refresh menu
+	 * @param payoutBoxID boxID of the payout menu so it can be closed later
+	 */
 	unsigned int createSlotWindow(CreatureObject* player, unsigned int payoutBoxID);
 
+	/**
+	 * Creates the RouletteWindow
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
+	 * and then closes the Roulette Menu, reopening it
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject for which to refresh menu
+	 */
 	unsigned int createRouletteWindow(CreatureObject* player);
 
+	/**
+	 * Creates Events
+	 * This method receives a Terminal and a time,
+	 * creates a GamblingEvent, stores it in the Terminal and schedules it to time
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param terminal GamblingTerminal for which to create event
+	 * @param time Time in ms to schedule the Task
+	 */
 	void createEvent(GamblingTerminal* terminal, int time);
 
 	bool isPlaying(CreatureObject* player);
@@ -254,34 +382,162 @@ protected:
 	void refreshSlotMenu(CreatureObject* player, GamblingTerminal* terminal);
 
 public:
+	/**
+	 * Accept bet from /bet command
+	 * This method receives the player who wants to bet, the amount he wants to bet, and the target he's betting on
+	 * and calls bet(terminal, player, amount, target)
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject betting money
+	 * @param amount Amount of Credits to bet
+	 * @param target Target field (remains empty for slotMachine)
+	 */
 	void bet(CreatureObject* player, int amount, int target, int machineType);
 
+	/**
+	 * Accept bet from /bet command or startGame
+	 * This method receives the player who wants to bet, the amount he wants to bet, and the target he's betting on
+	 * The method creates a bet and adds it to the GamblingTerminal's bets VectorMap
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param terminal GamblingTerminal for which to add bet
+	 * @param player CreatureObject betting money
+	 * @param amount Amount of Credits to bet
+	 * @param target Target field (remains empty for slotMachine)
+	 */
 	void bet(GamblingTerminal* terminal, CreatureObject* player, int amount, int target);
 
+	/**
+	 * StartGame called by SuiManager
+	 * This method receives a CreatureObject, looks it up in the machineType's corresponding VectorMap
+	 * and then calls startGame(Terminal) 
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject for which to start the Game
+	 * @param machineType machine type of the Terminal, set in the SuiManager
+	 */
 	void startGame(CreatureObject* player, int machineType);
 
+	/**
+	 * Starts Game
+	 * This method receives a GamblingTerminal, starting the Event cycle of the Game
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param terminal GamblingTerminal for which to start the game
+	 */
 	void startGame(GamblingTerminal* terminal);
 
+	/**
+	 * LeaveTerminal called by SuiManager
+	 * This method receives a CreatureObject, looks it up in the machineType's corresponding VectorMap
+	 * and then calls Terminal::leaveTerminal(player) 
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject who wants to leave the Terminal
+	 * @param machineType machine type of the Terminal, set in the SuiManager
+	 */
 	void leaveTerminal(CreatureObject* player, int machineType);
 
+	/**
+	 * Adds player to VectorMap
+	 * This method switches machineTypes adding the Player and GamblingTerminal to the machineType's corresponding VectorMap
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param terminal GamblingTerminal to register
+	 * @param player CreatureObject to register
+	 */
 	void registerPlayer(GamblingTerminal* terminal, CreatureObject* player);
 
+	/**
+	 * Refreshes the menu
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
+	 * and then closes the Roulette Menu, reopening it
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject for which to refresh menu
+	 */
 	void refreshRouletteMenu(CreatureObject* player);
 
+	/**
+	 * Continues the Game
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
+	 * and then closes the Roulette Menu, reopening it
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject for which to refresh menu
+	 */
 	void continueGame(GamblingTerminal* terminal);
 
+	/**
+	 * Ends the Game
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
+	 * and then closes the Roulette Menu, reopening it
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject for which to refresh menu
+	 */
 	void stopGame(GamblingTerminal* terminal, bool cancel);
 
+	/**
+	 * Calculates the results of each players' bets
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
+	 * and then closes the Roulette Menu, reopening it
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject for which to refresh menu
+	 */
 	void calculateOutcome(GamblingTerminal* terminal);
 
+	/**
+	 * Creates the Windows
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
+	 * and then closes the Roulette Menu, reopening it
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject for which to refresh menu
+	 */
 	unsigned int createWindow(GamblingTerminal* terminal, CreatureObject* player);
 
+	/**
+	 * Creates the SlotPayoutWindow
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
+	 * and then closes the Roulette Menu, reopening it
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject for which to refresh menu
+	 */
 	unsigned int createPayoutWindow(CreatureObject* player);
 
+	/**
+	 * Creates the SlotWindow
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
+	 * and then closes the Roulette Menu, reopening it
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject for which to refresh menu
+	 * @param payoutBoxID boxID of the payout menu so it can be closed later
+	 */
 	unsigned int createSlotWindow(CreatureObject* player, unsigned int payoutBoxID);
 
+	/**
+	 * Creates the RouletteWindow
+	 * This method receives a CreatureObject, looks it up in the Roulette VectorMap
+	 * and then closes the Roulette Menu, reopening it
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject for which to refresh menu
+	 */
 	unsigned int createRouletteWindow(CreatureObject* player);
 
+	/**
+	 * Creates Events
+	 * This method receives a Terminal and a time,
+	 * creates a GamblingEvent, stores it in the Terminal and schedules it to time
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param terminal GamblingTerminal for which to create event
+	 * @param time Time in ms to schedule the Task
+	 */
 	void createEvent(GamblingTerminal* terminal, int time);
 
 	bool isPlaying(CreatureObject* player);

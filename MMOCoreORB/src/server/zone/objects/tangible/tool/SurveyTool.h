@@ -91,10 +91,21 @@ public:
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
+	/**
+	 * Set the surveying range on tool
+	 * Values should be:
+	 * 64, 128, 256, 512
+	 */
 	void setRange(int r);
 
 	void sendRangeSui(CreatureObject* player);
@@ -191,10 +202,21 @@ public:
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
+	/**
+	 * Set the surveying range on tool
+	 * Values should be:
+	 * 64, 128, 256, 512
+	 */
 	void setRange(int r);
 
 	void sendRangeSui(CreatureObject* player);

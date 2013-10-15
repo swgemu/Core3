@@ -66,6 +66,12 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void setAuthorizationState(bool state);
@@ -110,6 +116,12 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void setAuthorizationState(bool state);

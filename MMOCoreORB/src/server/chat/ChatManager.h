@@ -274,8 +274,14 @@ public:
 
 	PlayerMap* getPlayerMap();
 
+	/**
+	 * Returns the parent room for guild chat rooms.
+	 */
 	ChatRoom* getGuildRoom();
 
+	/**
+	 * Returns the parent room for group chat rooms.
+	 */
 	ChatRoom* getGroupRoom();
 
 	DistributedObjectServant* _getImplementation();
@@ -419,8 +425,14 @@ public:
 
 	PlayerMap* getPlayerMap();
 
+	/**
+	 * Returns the parent room for guild chat rooms.
+	 */
 	ChatRoom* getGuildRoom();
 
+	/**
+	 * Returns the parent room for group chat rooms.
+	 */
 	ChatRoom* getGroupRoom();
 
 	WeakReference<ChatManager*> _this;

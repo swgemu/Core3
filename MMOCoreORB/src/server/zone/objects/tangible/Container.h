@@ -92,10 +92,32 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Fills the radial options, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
+	/**
+	 * Evaluates if this object has the necessary free slots to be able to add the specified SceneObject
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be checked
+	 * @param error error string that the player will receive on error
+	 * @return returns 0 on success, or error code
+	 */
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	bool isContainerObject();
@@ -142,10 +164,32 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Fills the radial options, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
+	/**
+	 * Evaluates if this object has the necessary free slots to be able to add the specified SceneObject
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be checked
+	 * @param error error string that the player will receive on error
+	 * @return returns 0 on success, or error code
+	 */
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
 	bool isContainerObject();

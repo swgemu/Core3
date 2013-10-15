@@ -158,30 +158,70 @@ class CraftingSession : public Facade {
 public:
 	CraftingSession(CreatureObject* creature);
 
+	/**
+	 * The crafting tool and station have been identified pre calling initializeSession
+	 */
 	int initializeSession(CraftingTool* tool, CraftingStation* station);
 
+	/**
+	 * Cancels the current session
+	 */
 	int cancelSession();
 
+	/**
+	 * 
+	 */
 	int clearSession();
 
 	ManagedWeakReference<ManufactureSchematic* > getSchematic();
 
+	/**
+	 * The SelectDraftSchematicCommand uses this
+	 */
 	void selectDraftSchematic(int index);
 
+	/**
+	 * Sends ingredients on ManufactureSchematic::synchronizedUIListen
+	 */
 	void sendIngredientForUIListen();
 
+	/**
+	 * The CraftingAddIngredientCallback executes this method
+	 * when an object is added in the crafting window
+	 */
 	void addIngredient(TangibleObject* tano, int slotUpdated, int clientCounter);
 
+	/**
+	 * The CraftingRemoveIngredientCallback executes this method
+	 * when an object is removed from the crafting window
+	 */
 	void removeIngredient(TangibleObject* tano, int slotUpdated, int clientCounter);
 
+	/**
+	 * The NextCraftingStageCommand uses this
+	 */
 	void nextCraftingStage(int clientCounter);
 
+	/**
+	 * The CraftingExperimentCallback executes this method
+	 * when a player experiments in a crafting tool
+	 */
 	void experiment(int rowsAttempted, const String& expAttempt, int clientCounter);
 
+	/**
+	 * The CraftingCustomizationCallback executes this method 
+	 * a user customizes a tano in the crafting tool
+	 */
 	void customization(const String& name, byte templateChoice, int schematicCount, const String& customizationString);
 
+	/**
+	 * CreatePrototypeCommand calls this
+	 */
 	void createPrototype(int clientCounter, bool practice);
 
+	/**
+	 * CreateManfSchematicCommand calls this
+	 */
 	void createManufactureSchematic(int clientCounter);
 
 	int getState();
@@ -252,63 +292,139 @@ public:
 
 	CraftingSessionImplementation(DummyConstructorParameter* param);
 
+	/**
+	 * The crafting tool and station have been identified pre calling initializeSession
+	 */
 	int initializeSession(CraftingTool* tool, CraftingStation* station);
 
 private:
+	/**
+	 * Sends the packets and creates the objects to start
+	 * the crafting session
+	 */
 	int startSession();
 
 public:
+	/**
+	 * Cancels the current session
+	 */
 	int cancelSession();
 
+	/**
+	 * 
+	 */
 	int clearSession();
 
 	ManagedWeakReference<ManufactureSchematic* > getSchematic();
 
 private:
+	/**
+	 * Closes an open crafting windows
+	 */
 	void closeCraftingWindow(int clientCounter);
 
+	/**
+	 * Sends various crafting messages
+	 */
 	void sendSlotMessage(int counter, int message);
 
 public:
+	/**
+	 * The SelectDraftSchematicCommand uses this
+	 */
 	void selectDraftSchematic(int index);
 
 private:
+	/**
+	 * Creates the needed objects when a schematic is selected
+	 */
 	bool createSessionObjects(DraftSchematic* draftSchematic);
 
+	/**
+	 * Creates the manufacture schematic
+	 */
 	bool createManufactureSchematic(DraftSchematic* draftschematic);
 
+	/**
+	 * Creates the prototype to be crafted
+	 */
 	bool createPrototypeObject(DraftSchematic* draftschematic);
 
 public:
+	/**
+	 * Sends ingredients on ManufactureSchematic::synchronizedUIListen
+	 */
 	void sendIngredientForUIListen();
 
+	/**
+	 * The CraftingAddIngredientCallback executes this method
+	 * when an object is added in the crafting window
+	 */
 	void addIngredient(TangibleObject* tano, int slotUpdated, int clientCounter);
 
+	/**
+	 * The CraftingRemoveIngredientCallback executes this method
+	 * when an object is removed from the crafting window
+	 */
 	void removeIngredient(TangibleObject* tano, int slotUpdated, int clientCounter);
 
+	/**
+	 * The NextCraftingStageCommand uses this
+	 */
 	void nextCraftingStage(int clientCounter);
 
 private:
+	/**
+	 * Ends the ingredient phase, resources/components are
+	 * unrecoverable
+	 */
 	void initialAssembly(int clientCounter);
 
+	/**
+	 * Sends the crafting process to customization
+	 */
 	void finishAssembly(int clientCounter);
 
 public:
+	/**
+	 * The CraftingExperimentCallback executes this method
+	 * when a player experiments in a crafting tool
+	 */
 	void experiment(int rowsAttempted, const String& expAttempt, int clientCounter);
 
+	/**
+	 * The CraftingCustomizationCallback executes this method 
+	 * a user customizes a tano in the crafting tool
+	 */
 	void customization(const String& name, byte templateChoice, int schematicCount, const String& customizationString);
 
 private:
+	/**
+	 * 
+	 */
 	void finishStage1(int clientCounter);
 
+	/**
+	 * 
+	 */
 	void finishStage2(int clientCounter);
 
 public:
+	/**
+	 * CreatePrototypeCommand calls this
+	 */
 	void createPrototype(int clientCounter, bool practice);
 
+	/**
+	 * CreateManfSchematicCommand calls this
+	 */
 	void createManufactureSchematic(int clientCounter);
 
 private:
+	/**
+	 * Starts tasks for counting down and creating item
+	 * based on complexity
+	 */
 	void startCreationTasks(int timer, bool practice);
 
 public:

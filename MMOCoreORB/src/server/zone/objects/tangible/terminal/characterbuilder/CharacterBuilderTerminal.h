@@ -80,16 +80,38 @@ class CharacterBuilderTerminal : public Terminal {
 public:
 	CharacterBuilderTerminal();
 
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
 
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void sendInitialChoices(CreatureObject* player);
 
+	/**
+	 * Player gets all languages available
+	 * @pre { player is locked }
+	 * @post { player is locked }
+	 */
 	void giveLanguages(CreatureObject* player);
 
+	/**
+	 * Enhances the target character with doc/ent buffs
+	 * @pre { player is locked }
+	 * @post { player is locked }
+	 */
 	void enhanceCharacter(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
@@ -129,16 +151,38 @@ public:
 
 	CharacterBuilderTerminalImplementation(DummyConstructorParameter* param);
 
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void initializeTransientMembers();
 
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void sendInitialChoices(CreatureObject* player);
 
+	/**
+	 * Player gets all languages available
+	 * @pre { player is locked }
+	 * @post { player is locked }
+	 */
 	void giveLanguages(CreatureObject* player);
 
+	/**
+	 * Enhances the target character with doc/ent buffs
+	 * @pre { player is locked }
+	 * @post { player is locked }
+	 */
 	void enhanceCharacter(CreatureObject* player);
 
 	WeakReference<CharacterBuilderTerminal*> _this;

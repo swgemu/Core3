@@ -342,122 +342,404 @@ public:
 
 	unsigned static const long long DEAD_TOO_LONG = 1800000;
 
+	/**
+	 * CreatureObject constructor, used to initialized the object
+	 * @pre { templateData is a valid SharedCreatureObjectTemplate LuaObject that contains the necessary values to initialize CreatureObject }
+	 * @post { CreatureObject is initialized } 
+	 * @param templateData templateData points to the SharedCreatureObjectTemplate LuaObject that is used to initialize CreatureObject members
+	 */
 	CreatureObject();
 
 	void initializeMembers();
 
 	void createChildObjects();
 
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
 	void initializeTransientMembers();
 
+	/**
+	 * Sends a CommandQueueRemove ObjectControllerMessage to the owner client of this object
+	 * @pre { }
+	 * @post { client received the CommandQueueRemove message }
+	 * @param actioncntr action id that will be cleared from clients queue
+	 * @param timer how many seconds will the action take to execute
+	 * @param tab1 message 1
+	 * @param tab2 message 2 
+	 */
 	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
 
+	/**
+	 * Sends the CREO baseline messages of this object to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
 	void sendBaselinesTo(SceneObject* player);
 
+	/**
+	 * Sends the necessary messages to owner client
+	 * @pre { this object is locked }
+	 * @post { this object is locked, owner received its own scene object }
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
 	void sendToOwner(bool doClose = true);
 
+	/**
+	 * Sends the necessary messages to player in order to create this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received this object }
+	 * @param player SceneObject that will receive the messages
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
 	void sendTo(SceneObject* player, bool doClose);
 
+	/**
+	 * Sends a system message to the client of this object
+	 * @pre {}
+	 * @post { this object received the message }
+	 * @param message string message to send
+	 */
 	void sendSystemMessage(const String& message);
 
+	/**
+	 * Sends a PlayMusicMessage
+	 */
 	void playMusicMessage(const String& file);
 
+	/**
+	 * Sends a tutorial request
+	 */
 	void sendNewbieTutorialRequest(const String& request);
 
+	/**
+	 * Sends NewbieTutorialEnableHud
+	 */
 	void sendNewbieTutorialEnableHudElement(const String& ui, bool enable = true);
 
 	void sendOpenHolocronToPageMessage();
 
+	/**
+	 * Sends a system message to the client of this object
+	 * @pre {}
+	 * @post { this object received the message }
+	 * @param message unicode message to send
+	 */
 	void sendSystemMessage(UnicodeString& message);
 
+	/**
+	 * Sends a system message to the client of this object
+	 * @pre {}
+	 * @post { this object received the message }
+	 * @param message StringIdChatParameter message to send
+	 */
 	void sendSystemMessage(StringIdChatParameter& stringid);
 
+	/**
+	 * Sends the contained slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the slotted objects }
+	 * @param player SceneObject that will receive the objects 
+	 */
 	void sendSlottedObjectsTo(SceneObject* player);
 
+	/**
+	 * Sets the combat state
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is in a combat state }
+	 */
 	void setCombatState();
 
+	/**
+	 * Cleares the combat state
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is not in a combat state }
+	 * @param clearDefenders if true the defender vector willl be emptied
+	 */
 	void clearCombatState(bool clearDefenders = true);
 
+	/**
+	 * Sets a new posture
+	 * @pre { this object is locked }
+	 * @post {this object is locked, this object has the new posture set }
+	 * @param newPosture posture to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setPosture(int newPosture, bool notifyClient = true);
 
+	/**
+	 * checks locomotion and sets a new one if appropriate
+	 * @pre { this object is locked }
+	 * @post {this object is locked, this object has the new locomotion set, if appropriate }
+	 */
 	float calculateSpeed();
 
 	void updateLocomotion();
 
 	void setHeight(float heigh, bool notifyClient = true);
 
+	/**
+	 * Updates the acceleration speed multiplier base
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param newMultiplierBase new multiplier base to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setAccelerationMultiplierBase(float newMultiplierBase, bool notifyClient = true);
 
+	/**
+	 * Updates the acceleration speed multiplier mod
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param newMultiplierMod new multiplier mod to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setAccelerationMultiplierMod(float newMultiplierMod, bool notifyClient = true);
 
+	/**
+	 * Updates the speed multiplier base
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param newMultiplierBase new multiplier base to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setSpeedMultiplierBase(float newMultiplierBase, bool notifyClient = true);
 
+	/**
+	 * Updates the speed multiplier mod
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param newMultiplierMod new multiplier mod to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setSpeedMultiplierMod(float newMultiplierMod, bool notifyClient = true);
 
+	/**
+	 * Updates the turn scale mod
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param newMultiplierMod new multiplier mod to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setTurnScale(float newMultiplierMod, bool notifyClient = true);
 
+	/**
+	 * Updates the run speed
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * 
+	 */
 	void setRunSpeed(float newSpeed, bool notifyClient = true);
 
 	void setCurrentSpeed(float newSpeed);
 
+	/**
+	 * Updates a specific type of the HAM
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the HAM type updated to the new value }
+	 * @param type specifies which HAM type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setHAM(int type, int value, bool notifyClient = true);
 
+	/**
+	 * Inflicts damage into the object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return unused for now
+	 */
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient = true);
 
 	bool hasDamage(int attribute);
 
+	/**
+	 * Heals damage
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return unused for now
+	 */
 	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient = true, bool notifyObservers = true);
 
+	/**
+	 * Heals wound
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return unused for now
+	 */
 	int healWound(TangibleObject* healer, int damageType, int damage, bool notifyClient = true, bool notifyObservers = true);
 
+	/**
+	 * Updates a specific type of the Base HAM
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the Base HAM type updated to the new value }
+	 * @param type specifies which Base HAM type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setBaseHAM(int type, int value, bool notifyClient = true);
 
+	/**
+	 * Updates a specific type of the Wounds
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the Wounds type updated to the new value }
+	 * @param type specifies which Wounds type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setWounds(int type, int value, bool notifyClient = true);
 
+	/**
+	 * @return returns wounds added
+	 */
 	int addWounds(int type, int value, bool notifyClient = true);
 
+	/**
+	 * Updates a specific type of the Max HAM
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the Max HAM type updated to the new value }
+	 * @param type specifies which Max HAM type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setMaxHAM(int type, int value, bool notifyClient = true);
 
 	void addMaxHAM(int type, int value, bool notifyClient = true);
 
+	/**
+	 * Updates a specific type of the Encumbrance
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the Encumbrance type updated to the new value }
+	 * @param type specifies which Encumbrance type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setEncumbrance(int type, int value, bool notifyClient = true);
 
 	void addEncumbrance(int type, int value, bool notifyClient = true);
 
+	/**
+	 * Updates the weapon to the specified object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified weapon id }
+	 * @param weao the new weapon
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setWeapon(WeaponObject* weao, bool notifyClient = false);
 
+	/**
+	 * Is called when this object has been inserted with an object
+	 * @param object object that has been inserted
+	 */
 	int notifyObjectInserted(SceneObject* object);
 
+	/**
+	 * Is called when an object was removed
+	 * @param object object that has been inserted
+	 */
 	int notifyObjectRemoved(SceneObject* object);
 
+	/**
+	 * Updates the instrument id to the specified object id
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified weapon id }
+	 * @param instrumentid the new instrument id
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setInstrumentID(int instrumentid, bool notifyClient = true);
 
+	/**
+	 * Updates listen id
+	 */
 	void setListenToID(unsigned long long id, bool notifyClient = true);
 
+	/**
+	 * Updates the preformance counter
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the counter updated }
+	 * @param counter new performance counter
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setPerformanceCounter(int counter, bool notifyClient = true);
 
+	/**
+	 * Updates the preformance animation string
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the animation updated }
+	 * @param animation new animation
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setPerformanceAnimation(const String& animation, bool notifyClient = true);
 
+	/**
+	 * Updates shock wounds
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified target id }
+	 * @param shock new shock wounds
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setShockWounds(int newShock, bool notifyClient = true);
 
 	void addShockWounds(int shockToAdd, bool notiyClient = true);
 
+	/**
+	 * Updates the target id to the specified object id
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified target id }
+	 * @param objectID the new target id
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setTargetID(unsigned long long targetID, bool notifyClient = true);
 
+	/**
+	 * Updates the bank credits of this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified bank credits }
+	 * @param credits the new credits
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setBankCredits(int credits, bool notifyClient = true);
 
+	/**
+	 * Adds the buff to the creature, activating it and sending packets if it is a player.
+	 * Buffs should never be added to the list without sending of packets.
+	 * @param buff The Buff object to add the creature.
+	 */
 	void addBuff(Buff* buff);
 
+	/**
+	 * Removes the buff from the creature, activating it and sending packets if it is a player.
+	 * Buffs should never be removed from the list without sending of packets.
+	 * @param buffcrc The buff crc to remove from the buff list.
+	 */
 	bool removeBuff(unsigned int buffcrc);
 
+	/**
+	 * Removes the buff from the creature, activating it and sending packets if it is a player.
+	 * Buffs should never be removed from the list without sending of packets.
+	 * @param buffcrc The buff object to remove from the list.
+	 */
 	void removeBuff(Buff* buff);
 
 	bool removeStateBuff(unsigned long long state);
 
+	/**
+	 * Removes all buffs from the creature, deactivating any currently active buffs.
+	 * @param updateclient Should packets be sent to the player?
+	 */
 	void clearBuffs(bool updateclient);
 
 	void addWearableObject(TangibleObject* object, bool notifyClient = true);
@@ -514,70 +796,243 @@ public:
 
 	bool isEntertaining();
 
+	/**
+	 * Update the cash credits of this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified cash credits }
+	 * @param credits the new credits
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setCashCredits(int credits, bool notifyClient = true);
 
+	/**
+	 * Updates the terrain negotiation variable?
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified terrain negotiation }
+	 * @param terrain new terrain negotiation
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setTerrainNegotiation(float value, bool notifyClient = true);
 
+	/**
+	 * Adds the specified skillbox to this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified skillbox in the delta vector
+	 * @param skillbox skillbox to add
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void addSkill(Skill* skill, bool notifyClient = true);
 
+	/**
+	 * Adds the specified skillbox to this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified skillbox in the delta vector
+	 * @param skillbox skillbox name to add
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void addSkill(const String& skill, bool notifyClient = true);
 
+	/**
+	 * Removes the specified skillbox from this object
+	 * @pre { this object is locked }
+	 * @post { this obejct is locked, skillbox is removed }
+	 * @param skillBox skillBox to remove
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void removeSkill(Skill* skill, bool notifyClient = true);
 
+	/**
+	 * Removes the specified skillbox from this object
+	 * @pre { this object is locked }
+	 * @post { this obejct is locked, skillbox is removed }
+	 * @param skillBox skillBox to remove
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void removeSkill(const String& skill, bool notifyClient = true);
 
+	/**
+	 * Adds new value to the specified skillmod (add a negative number to subtract)
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param skillMod skill mod to change
+	 * @param value value to add/subtract
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void addSkillMod(const int modType, const String& skillMod, int value, bool notifyClient = true);
 
+	/**
+	 * Removes skill mod from the list (same as setting to 0)
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param skillMod skill mod to remove
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void removeSkillMod(const int modType, const String& skillMod, int value, bool notifyClient = true);
 
 	void removeAllSkillModsOfType(const int modType, bool notifyClient = true);
 
+	/**
+	 * Sets a new group inviter id
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param id object id of the inviter
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void updateGroupInviterID(unsigned long long id, bool notifyClient = true);
 
+	/**
+	 * Sets the group of this object
+	 * @pre { this object is locked }
+	 * @post {this object is locked }
+	 * @param group GroupObject to update
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void updateGroup(GroupObject* group, bool notifyClient = true);
 
+	/**
+	 * Enqueues a command action
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param actionCRC queue command crc
+	 * @param actionCount command count
+	 * @param targetID target
+	 * @param arguments arguments
+	 * @param priority command priority
+	 */
 	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments, int priority = -1);
 
+	/**
+	 * Sets characters mood
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param moodID mood to set
+	 */
 	void setMood(byte moodID, bool notifyClient = true);
 
+	/**
+	 * Sets a new mood animation
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param mood mood animation string
+	 */
 	void setMoodString(const String& animation, bool notifyClient = true);
 
+	/**
+	 * Removes a command from queue
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param actionCount the action count to remove
+	 */
 	void deleteQueueAction(unsigned int actionCount);
 
+	/**
+	 * Sets a new state to the statebitmask
+	 * @pre { this object is locked }
+	 * @post { this object is locked, stateBitmask has the new state }
+	 * @param state state to add
+	 */
 	bool setState(unsigned long long state, bool notifyClient = true);
 
+	/**
+	 * Cleares a state from the state bitmask
+	 * @pre { this object is locked }
+	 * @post { this object is locked, stateBitmask doesnt have the specified state }
+	 * @param state state to clear
+	 */
 	bool clearState(unsigned long long state, bool notifyClient = true);
 
 	void setControlDevice(ControlDevice* device);
 
+	/**
+	 * Updates creatureLinkID with specified object
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
 	void setCreatureLink(CreatureObject* object, bool notifyClient = true);
 
+	/**
+	 * Executes an object controller command
+	 */
 	void executeObjectControllerAction(unsigned int actionCRC);
 
 	void executeObjectControllerAction(unsigned int actionCRC, unsigned long long targetID, const UnicodeString& args);
 
+	/**
+	 * Evaluates if this object can be attacket by the passed creature object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns true if the creature object can attack this 
+	 */
 	bool isAttackableBy(CreatureObject* object);
 
 	bool isAttackableBy(TangibleObject* attacker);
 
 	bool isHealableBy(CreatureObject* object);
 
+	/**
+	 * Evaluates if the bounty hunter has a mission with the target.
+	 * @param bountyHunter the bounty hunter.
+	 * @param target the target.
+	 * @return true if bounty hunter has a mission with the target.
+	 */
 	bool isInBountyMission(CreatureObject* bountyHunter, CreatureObject* target);
 
+	/**
+	 * sends the conversation list 
+	 * @pre {this locked, player locked }
+	 * @post { this locked, player locked }
+	 */
 	void sendConversationStartTo(SceneObject* player);
 
+	/**
+	 * sends the conversation list 
+	 * @pre {this locked, player locked }
+	 * @post { this locked, player locked }
+	 */
 	void selectConversationOption(int option, SceneObject* obj);
 
+	/**
+	 * Sends a message to client
+	 * @pre { }
+	 * @post { message is sent to client }
+	 * @param msg BasePacket to send
+	 */
 	void sendMessage(BasePacket* msg);
 
+	/**
+	 * Sends a ExecuteConsoleCommand to the client
+	 * @param command example "/attack"
+	 */
 	void sendExecuteConsoleCommand(const String& command);
 
+	/**
+	 * Evaluates if this creature is aggresive to the object
+	 * @pre { }
+	 * @post { }
+	 * @return returns true if its aggressive
+	 */
 	bool isAggressiveTo(CreatureObject* object);
 
+	/**
+	 * Is called when this object is destroyed
+	 * @pre { this, attacker locked }
+	 * @post { this, attacker locked }
+	 */
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
+	/**
+	 * Is called when this object is killed
+	 * @pre { this, killer locked }
+	 * @post { this, killer locked }
+	 * @param killer The killer.
+	 */
 	int notifyObjectKillObservers(TangibleObject* killer);
 
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	void notifyLoadFromDatabase();
 
 	void setFactionRank(int rank, bool notifyClient = true);
@@ -1140,116 +1595,392 @@ public:
 
 	void createChildObjects();
 
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
 	void initializeTransientMembers();
 
+	/**
+	 * Sends a CommandQueueRemove ObjectControllerMessage to the owner client of this object
+	 * @pre { }
+	 * @post { client received the CommandQueueRemove message }
+	 * @param actioncntr action id that will be cleared from clients queue
+	 * @param timer how many seconds will the action take to execute
+	 * @param tab1 message 1
+	 * @param tab2 message 2 
+	 */
 	void clearQueueAction(unsigned int actioncntr, float timer = 0, unsigned int tab1 = 0, unsigned int tab2 = 0);
 
+	/**
+	 * Sends the CREO baseline messages of this object to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
 	void sendBaselinesTo(SceneObject* player);
 
+	/**
+	 * Sends the necessary messages to owner client
+	 * @pre { this object is locked }
+	 * @post { this object is locked, owner received its own scene object }
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
 	void sendToOwner(bool doClose = true);
 
+	/**
+	 * Sends the necessary messages to player in order to create this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received this object }
+	 * @param player SceneObject that will receive the messages
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
 	void sendTo(SceneObject* player, bool doClose);
 
+	/**
+	 * Sends a system message to the client of this object
+	 * @pre {}
+	 * @post { this object received the message }
+	 * @param message string message to send
+	 */
 	void sendSystemMessage(const String& message);
 
+	/**
+	 * Sends a PlayMusicMessage
+	 */
 	void playMusicMessage(const String& file);
 
+	/**
+	 * Sends a tutorial request
+	 */
 	void sendNewbieTutorialRequest(const String& request);
 
+	/**
+	 * Sends NewbieTutorialEnableHud
+	 */
 	void sendNewbieTutorialEnableHudElement(const String& ui, bool enable = true);
 
 	void sendOpenHolocronToPageMessage();
 
+	/**
+	 * Sends a system message to the client of this object
+	 * @pre {}
+	 * @post { this object received the message }
+	 * @param message unicode message to send
+	 */
 	void sendSystemMessage(UnicodeString& message);
 
+	/**
+	 * Sends a system message to the client of this object
+	 * @pre {}
+	 * @post { this object received the message }
+	 * @param message StringIdChatParameter message to send
+	 */
 	void sendSystemMessage(StringIdChatParameter& stringid);
 
+	/**
+	 * Sends the contained slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the slotted objects }
+	 * @param player SceneObject that will receive the objects 
+	 */
 	void sendSlottedObjectsTo(SceneObject* player);
 
+	/**
+	 * Sets the combat state
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is in a combat state }
+	 */
 	void setCombatState();
 
+	/**
+	 * Cleares the combat state
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is not in a combat state }
+	 * @param clearDefenders if true the defender vector willl be emptied
+	 */
 	void clearCombatState(bool clearDefenders = true);
 
+	/**
+	 * Sets a new posture
+	 * @pre { this object is locked }
+	 * @post {this object is locked, this object has the new posture set }
+	 * @param newPosture posture to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	virtual void setPosture(int newPosture, bool notifyClient = true);
 
+	/**
+	 * checks locomotion and sets a new one if appropriate
+	 * @pre { this object is locked }
+	 * @post {this object is locked, this object has the new locomotion set, if appropriate }
+	 */
 	float calculateSpeed();
 
 	virtual void updateLocomotion();
 
 	void setHeight(float heigh, bool notifyClient = true);
 
+	/**
+	 * Updates the acceleration speed multiplier base
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param newMultiplierBase new multiplier base to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setAccelerationMultiplierBase(float newMultiplierBase, bool notifyClient = true);
 
+	/**
+	 * Updates the acceleration speed multiplier mod
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param newMultiplierMod new multiplier mod to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setAccelerationMultiplierMod(float newMultiplierMod, bool notifyClient = true);
 
+	/**
+	 * Updates the speed multiplier base
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param newMultiplierBase new multiplier base to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setSpeedMultiplierBase(float newMultiplierBase, bool notifyClient = true);
 
+	/**
+	 * Updates the speed multiplier mod
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param newMultiplierMod new multiplier mod to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	virtual void setSpeedMultiplierMod(float newMultiplierMod, bool notifyClient = true);
 
+	/**
+	 * Updates the turn scale mod
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param newMultiplierMod new multiplier mod to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	virtual void setTurnScale(float newMultiplierMod, bool notifyClient = true);
 
+	/**
+	 * Updates the run speed
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * 
+	 */
 	void setRunSpeed(float newSpeed, bool notifyClient = true);
 
 	void setCurrentSpeed(float newSpeed);
 
+	/**
+	 * Updates a specific type of the HAM
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the HAM type updated to the new value }
+	 * @param type specifies which HAM type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setHAM(int type, int value, bool notifyClient = true);
 
+	/**
+	 * Inflicts damage into the object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return unused for now
+	 */
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient = true);
 
 	bool hasDamage(int attribute);
 
+	/**
+	 * Heals damage
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return unused for now
+	 */
 	int healDamage(TangibleObject* healer, int damageType, int damage, bool notifyClient = true, bool notifyObservers = true);
 
+	/**
+	 * Heals wound
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return unused for now
+	 */
 	int healWound(TangibleObject* healer, int damageType, int damage, bool notifyClient = true, bool notifyObservers = true);
 
+	/**
+	 * Updates a specific type of the Base HAM
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the Base HAM type updated to the new value }
+	 * @param type specifies which Base HAM type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setBaseHAM(int type, int value, bool notifyClient = true);
 
+	/**
+	 * Updates a specific type of the Wounds
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the Wounds type updated to the new value }
+	 * @param type specifies which Wounds type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setWounds(int type, int value, bool notifyClient = true);
 
+	/**
+	 * @return returns wounds added
+	 */
 	int addWounds(int type, int value, bool notifyClient = true);
 
+	/**
+	 * Updates a specific type of the Max HAM
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the Max HAM type updated to the new value }
+	 * @param type specifies which Max HAM type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setMaxHAM(int type, int value, bool notifyClient = true);
 
 	void addMaxHAM(int type, int value, bool notifyClient = true);
 
+	/**
+	 * Updates a specific type of the Encumbrance
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the Encumbrance type updated to the new value }
+	 * @param type specifies which Encumbrance type to update
+	 * @param value the new value
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setEncumbrance(int type, int value, bool notifyClient = true);
 
 	void addEncumbrance(int type, int value, bool notifyClient = true);
 
+	/**
+	 * Updates the weapon to the specified object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified weapon id }
+	 * @param weao the new weapon
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setWeapon(WeaponObject* weao, bool notifyClient = false);
 
+	/**
+	 * Is called when this object has been inserted with an object
+	 * @param object object that has been inserted
+	 */
 	int notifyObjectInserted(SceneObject* object);
 
+	/**
+	 * Is called when an object was removed
+	 * @param object object that has been inserted
+	 */
 	int notifyObjectRemoved(SceneObject* object);
 
+	/**
+	 * Updates the instrument id to the specified object id
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified weapon id }
+	 * @param instrumentid the new instrument id
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setInstrumentID(int instrumentid, bool notifyClient = true);
 
+	/**
+	 * Updates listen id
+	 */
 	void setListenToID(unsigned long long id, bool notifyClient = true);
 
+	/**
+	 * Updates the preformance counter
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the counter updated }
+	 * @param counter new performance counter
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setPerformanceCounter(int counter, bool notifyClient = true);
 
+	/**
+	 * Updates the preformance animation string
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the animation updated }
+	 * @param animation new animation
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setPerformanceAnimation(const String& animation, bool notifyClient = true);
 
+	/**
+	 * Updates shock wounds
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified target id }
+	 * @param shock new shock wounds
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setShockWounds(int newShock, bool notifyClient = true);
 
 	void addShockWounds(int shockToAdd, bool notiyClient = true);
 
+	/**
+	 * Updates the target id to the specified object id
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified target id }
+	 * @param objectID the new target id
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setTargetID(unsigned long long targetID, bool notifyClient = true);
 
+	/**
+	 * Updates the bank credits of this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified bank credits }
+	 * @param credits the new credits
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setBankCredits(int credits, bool notifyClient = true);
 
+	/**
+	 * Adds the buff to the creature, activating it and sending packets if it is a player.
+	 * Buffs should never be added to the list without sending of packets.
+	 * @param buff The Buff object to add the creature.
+	 */
 	void addBuff(Buff* buff);
 
+	/**
+	 * Removes the buff from the creature, activating it and sending packets if it is a player.
+	 * Buffs should never be removed from the list without sending of packets.
+	 * @param buffcrc The buff crc to remove from the buff list.
+	 */
 	bool removeBuff(unsigned int buffcrc);
 
+	/**
+	 * Removes the buff from the creature, activating it and sending packets if it is a player.
+	 * Buffs should never be removed from the list without sending of packets.
+	 * @param buffcrc The buff object to remove from the list.
+	 */
 	void removeBuff(Buff* buff);
 
 	bool removeStateBuff(unsigned long long state);
 
+	/**
+	 * Removes all buffs from the creature, deactivating any currently active buffs.
+	 * @param updateclient Should packets be sent to the player?
+	 */
 	void clearBuffs(bool updateclient);
 
 	void addWearableObject(TangibleObject* object, bool notifyClient = true);
@@ -1306,70 +2037,243 @@ public:
 
 	bool isEntertaining();
 
+	/**
+	 * Update the cash credits of this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified cash credits }
+	 * @param credits the new credits
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setCashCredits(int credits, bool notifyClient = true);
 
+	/**
+	 * Updates the terrain negotiation variable?
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified terrain negotiation }
+	 * @param terrain new terrain negotiation
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setTerrainNegotiation(float value, bool notifyClient = true);
 
+	/**
+	 * Adds the specified skillbox to this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified skillbox in the delta vector
+	 * @param skillbox skillbox to add
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void addSkill(Skill* skill, bool notifyClient = true);
 
+	/**
+	 * Adds the specified skillbox to this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object has the specified skillbox in the delta vector
+	 * @param skillbox skillbox name to add
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void addSkill(const String& skill, bool notifyClient = true);
 
+	/**
+	 * Removes the specified skillbox from this object
+	 * @pre { this object is locked }
+	 * @post { this obejct is locked, skillbox is removed }
+	 * @param skillBox skillBox to remove
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void removeSkill(Skill* skill, bool notifyClient = true);
 
+	/**
+	 * Removes the specified skillbox from this object
+	 * @pre { this object is locked }
+	 * @post { this obejct is locked, skillbox is removed }
+	 * @param skillBox skillBox to remove
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void removeSkill(const String& skill, bool notifyClient = true);
 
+	/**
+	 * Adds new value to the specified skillmod (add a negative number to subtract)
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param skillMod skill mod to change
+	 * @param value value to add/subtract
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void addSkillMod(const int modType, const String& skillMod, int value, bool notifyClient = true);
 
+	/**
+	 * Removes skill mod from the list (same as setting to 0)
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param skillMod skill mod to remove
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void removeSkillMod(const int modType, const String& skillMod, int value, bool notifyClient = true);
 
 	void removeAllSkillModsOfType(const int modType, bool notifyClient = true);
 
+	/**
+	 * Sets a new group inviter id
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param id object id of the inviter
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void updateGroupInviterID(unsigned long long id, bool notifyClient = true);
 
+	/**
+	 * Sets the group of this object
+	 * @pre { this object is locked }
+	 * @post {this object is locked }
+	 * @param group GroupObject to update
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void updateGroup(GroupObject* group, bool notifyClient = true);
 
+	/**
+	 * Enqueues a command action
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param actionCRC queue command crc
+	 * @param actionCount command count
+	 * @param targetID target
+	 * @param arguments arguments
+	 * @param priority command priority
+	 */
 	void enqueueCommand(unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments, int priority = -1);
 
+	/**
+	 * Sets characters mood
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param moodID mood to set
+	 */
 	void setMood(byte moodID, bool notifyClient = true);
 
+	/**
+	 * Sets a new mood animation
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param mood mood animation string
+	 */
 	void setMoodString(const String& animation, bool notifyClient = true);
 
+	/**
+	 * Removes a command from queue
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param actionCount the action count to remove
+	 */
 	void deleteQueueAction(unsigned int actionCount);
 
+	/**
+	 * Sets a new state to the statebitmask
+	 * @pre { this object is locked }
+	 * @post { this object is locked, stateBitmask has the new state }
+	 * @param state state to add
+	 */
 	bool setState(unsigned long long state, bool notifyClient = true);
 
+	/**
+	 * Cleares a state from the state bitmask
+	 * @pre { this object is locked }
+	 * @post { this object is locked, stateBitmask doesnt have the specified state }
+	 * @param state state to clear
+	 */
 	bool clearState(unsigned long long state, bool notifyClient = true);
 
 	void setControlDevice(ControlDevice* device);
 
+	/**
+	 * Updates creatureLinkID with specified object
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
 	void setCreatureLink(CreatureObject* object, bool notifyClient = true);
 
+	/**
+	 * Executes an object controller command
+	 */
 	void executeObjectControllerAction(unsigned int actionCRC);
 
 	void executeObjectControllerAction(unsigned int actionCRC, unsigned long long targetID, const UnicodeString& args);
 
+	/**
+	 * Evaluates if this object can be attacket by the passed creature object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns true if the creature object can attack this 
+	 */
 	bool isAttackableBy(CreatureObject* object);
 
 	bool isAttackableBy(TangibleObject* attacker);
 
 	bool isHealableBy(CreatureObject* object);
 
+	/**
+	 * Evaluates if the bounty hunter has a mission with the target.
+	 * @param bountyHunter the bounty hunter.
+	 * @param target the target.
+	 * @return true if bounty hunter has a mission with the target.
+	 */
 	bool isInBountyMission(CreatureObject* bountyHunter, CreatureObject* target);
 
+	/**
+	 * sends the conversation list 
+	 * @pre {this locked, player locked }
+	 * @post { this locked, player locked }
+	 */
 	virtual void sendConversationStartTo(SceneObject* player);
 
+	/**
+	 * sends the conversation list 
+	 * @pre {this locked, player locked }
+	 * @post { this locked, player locked }
+	 */
 	virtual void selectConversationOption(int option, SceneObject* obj);
 
+	/**
+	 * Sends a message to client
+	 * @pre { }
+	 * @post { message is sent to client }
+	 * @param msg BasePacket to send
+	 */
 	void sendMessage(BasePacket* msg);
 
+	/**
+	 * Sends a ExecuteConsoleCommand to the client
+	 * @param command example "/attack"
+	 */
 	void sendExecuteConsoleCommand(const String& command);
 
+	/**
+	 * Evaluates if this creature is aggresive to the object
+	 * @pre { }
+	 * @post { }
+	 * @return returns true if its aggressive
+	 */
 	bool isAggressiveTo(CreatureObject* object);
 
+	/**
+	 * Is called when this object is destroyed
+	 * @pre { this, attacker locked }
+	 * @post { this, attacker locked }
+	 */
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
+	/**
+	 * Is called when this object is killed
+	 * @pre { this, killer locked }
+	 * @post { this, killer locked }
+	 * @param killer The killer.
+	 */
 	int notifyObjectKillObservers(TangibleObject* killer);
 
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	void notifyLoadFromDatabase();
 
 	void setFactionRank(int rank, bool notifyClient = true);

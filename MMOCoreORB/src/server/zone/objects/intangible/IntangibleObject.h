@@ -50,6 +50,12 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	bool isIntangibleObject();
@@ -98,6 +104,12 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	bool isIntangibleObject();

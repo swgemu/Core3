@@ -104,8 +104,21 @@ class RepairTool : public TangibleObject {
 public:
 	RepairTool();
 
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
@@ -150,8 +163,21 @@ public:
 
 	RepairToolImplementation(DummyConstructorParameter* param);
 
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);

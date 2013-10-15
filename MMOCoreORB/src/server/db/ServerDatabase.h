@@ -86,6 +86,9 @@ public:
 	}
 
 	inline static Database* instance() {
+		if (databases == NULL)
+			throw DatabaseException("No Server Database initiated");
+
 		int i = currentDB.get() % databases->size();
 
 		currentDB.increment();

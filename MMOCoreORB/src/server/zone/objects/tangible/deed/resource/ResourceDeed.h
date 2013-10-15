@@ -93,12 +93,29 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Fills the radial options, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	int useObject(CreatureObject* player);
 
+	/**
+	 * Removes this object from parent container
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 */
 	void destroyDeed();
 
 	DistributedObjectServant* _getImplementation();
@@ -137,12 +154,29 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Fills the radial options, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	int useObject(CreatureObject* player);
 
+	/**
+	 * Removes this object from parent container
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 */
 	void destroyDeed();
 
 	WeakReference<ResourceDeed*> _this;

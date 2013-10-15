@@ -254,6 +254,9 @@ public:
 
 	bool hasManagersStarted();
 
+	/**
+	 * These functions return the size of the terrain file for this zone.
+	 */
 	float getMinX();
 
 	float getMaxX();
@@ -266,8 +269,16 @@ public:
 
 	float getBoundingRadius();
 
+	/**
+	 * Registers the object to the planetary map. This also makes the object visible to the find command.
+	 * @param object The object to register to the planetary map.
+	 */
 	void registerObjectWithPlanetaryMap(SceneObject* object);
 
+	/**
+	 * Unregisters the object from the planetary map.
+	 * @param object The object to unregister from the planetary map.
+	 */
 	void unregisterObjectWithPlanetaryMap(SceneObject* object);
 
 	String getZoneName();
@@ -393,6 +404,9 @@ public:
 
 	bool hasManagersStarted();
 
+	/**
+	 * These functions return the size of the terrain file for this zone.
+	 */
 	float getMinX();
 
 	float getMaxX();
@@ -405,8 +419,16 @@ public:
 
 	float getBoundingRadius();
 
+	/**
+	 * Registers the object to the planetary map. This also makes the object visible to the find command.
+	 * @param object The object to register to the planetary map.
+	 */
 	void registerObjectWithPlanetaryMap(SceneObject* object);
 
+	/**
+	 * Unregisters the object from the planetary map.
+	 * @param object The object to unregister from the planetary map.
+	 */
 	void unregisterObjectWithPlanetaryMap(SceneObject* object);
 
 	String getZoneName();

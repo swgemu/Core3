@@ -70,6 +70,11 @@ public:
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
 	void destroyObjectFromDatabase();
 
 	DistributedObjectServant* _getImplementation();
@@ -108,6 +113,11 @@ public:
 
 	virtual int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
 	virtual void destroyObjectFromDatabase();
 
 	WeakReference<MissionObserver*> _this;

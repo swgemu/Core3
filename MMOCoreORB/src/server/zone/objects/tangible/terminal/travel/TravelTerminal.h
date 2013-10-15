@@ -114,8 +114,19 @@ public:
 
 	void notifyInsertToZone(Zone* zone);
 
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
+	/**
+	 * Return the planetTravelPoint for this Travel Terminal
+	 *
+	 * NOTE: Resolution of the planetTravelPoint is delayed so the PlanetTravelPoints can get properly updated as objects load
+	 */
 	PlanetTravelPoint* getPlanetTravelPoint();
 
 	DistributedObjectServant* _getImplementation();
@@ -159,8 +170,19 @@ public:
 
 	void notifyInsertToZone(Zone* zone);
 
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
+	/**
+	 * Return the planetTravelPoint for this Travel Terminal
+	 *
+	 * NOTE: Resolution of the planetTravelPoint is delayed so the PlanetTravelPoints can get properly updated as objects load
+	 */
 	PlanetTravelPoint* getPlanetTravelPoint();
 
 	WeakReference<TravelTerminal*> _this;

@@ -266,94 +266,323 @@ namespace scene {
 
 class SceneObject : public QuadTreeEntry {
 public:
+	/**
+	 * SceneObject constructor, used to initialize the object.
+	 * @pre { templateData is a valid SharedObjectTemplate LuaObject that contains the necessary values to initialize SceneObject }
+	 * @post { SceneObject is initialized } 
+	 * @param templateData templateData points to the SharedObjectTemplate LuaObject that is used to initialize SceneObejct members 
+	 */
 	SceneObject();
 
 	void initializePrivateData();
 
+	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void createComponents();
 
 	void createContainerComponent();
 
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
 	void initializeTransientMembers();
 
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	void notifyLoadFromDatabase();
 
+	/**
+	 * Logs an info message
+	 * @pre {}
+	 * @post { message has been printed to console or file }
+	 * @param msg message to print
+	 * @param forced if true, always prints the message to console 
+	 */
 	void info(const String& msg, bool forced = false);
 
+	/**
+	 * Logs an error message
+	 * @pre {}
+	 * @post {error message has been printed to console and file }
+	 * @param msg error message to print
+	 */
 	void error(const String& msg);
 
+	/**
+	 * Returns number of specified game objects in range
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return number of objects in range
+	 */
 	int inRangeObjects(unsigned int gameObjectType, float range);
 
+	/**
+	 * Evaluates if the object is in range
+	 * @pre { this object is locked, obj is locked}
+	 * @post { thisobject is locked, obj is locked }
+	 * @param obj object that will be checked against
+	 * @param range range to check
+	 * @return returns true if this object is in range with obj
+	 */
 	bool isInRange(SceneObject* obj, float range);
 
+	/**
+	 * Tries to add/link object
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be added to the current object
+	 * @param containmentType arrangement type that will be used to add the object
+	 * @param notifyClient if true in range objects will be updated with the change
+	 * @return returns true if the object has been successfully added
+	 */
 	bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false, bool allowOverflow = false);
 
+	/**
+	 * Tries to remove/unlink object
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be removed from the current object
+	 * @param destination SceneObject that will be the new destination of the object.
+	 * @param notifyClient not used currently
+	 * @return returns true if the object has been successfully removed
+	 */
 	bool removeObject(SceneObject* object, SceneObject* destination, bool notifyClient = false);
 
+	/**
+	 * Destroys the object from the world
+	 */
 	void destroyObjectFromWorld(bool sendSelfDestroy);
 
+	/**
+	 * Evaluates if this object has the necessary free slots to be able to add the specified SceneObject
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be checked
+	 * @param error error string that the player will receive on error
+	 * @return returns 0 on success, or error code
+	 */
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
+	/**
+	 * 
+	 */
 	int notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent);
 
 	int notifyObjectRemovedFromChild(SceneObject* object, SceneObject* child);
 
+	/**
+	 * Calls the appropriate UI Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player CreatureObject using the item
+	 * @param value value from packet
+	 */
 	void synchronizedUIListen(SceneObject* player, int value);
 
+	/**
+	 * Calls the appropriate UI Stop Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player CreatureObject using the item
+	 * @param value value from packet
+	 */
 	void synchronizedUIStopListen(SceneObject* player, int value);
 
+	/**
+	 * Updates this object to database (calls updatesToDatabaseAllObjects())
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param startTask if true, queues a new update task
+	 */
 	void updateToDatabase();
 
+	/**
+	  * Updates only this object to database without updating children
+	  * WARNING use only when necessary
+	  */
 	void updateToDatabaseWithoutChildren();
 
+	/**
+	 * Updates this object and childre objects to database
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param startTask if true, queues a new update task
+	 */
 	void updateToDatabaseAllObjects(bool startTask);
 
+	/**
+	 * Destroys a PlayerCreature from the database. If this object is not a PlayerCreature then the method will return without doing anything.
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
 	void destroyPlayerCreatureFromDatabase(bool destroyContainedObjects = false);
 
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
+	/**
+	 * Checks if the object can be destroyed
+	 * @pre { player is locked }
+	 * @post { player is locked }
+	 * @param player Player that attempts to destroy this object
+	 * @returns 0 on succes, != 0 on error
+	 */
 	int canBeDestroyed(CreatureObject* player);
 
+	/**
+	 * Creates a new UpdateContainmentMessage that adds/links this object to the specified objectID
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param objectID object id of object to link
+	 * @param containmentType arrangement type?
+	 * @return returns a new valid UpdateContainmentMessage
+	 */
 	BaseMessage* link(unsigned long long objectID, unsigned int containmentType = 4);
 
+	/**
+	 * Sends the necessary messages to player in order to create this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received this object }
+	 * @param player SceneObject that will receive the messages
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
 	void sendTo(SceneObject* player, bool doClose);
 
+	/**
+	 * Sends the object without linking to its actual parent and without sending its children (f.e trade)
+	 */
 	void sendWithoutParentTo(SceneObject* player);
 
 	void sendWithoutContainerObjectsTo(SceneObject* player);
 
+	/**
+	 * Sends a SceneObjectDestroyMessage of this object to client
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the destroy message }
+	 * @param plaer SceneObject that will receive the message 
+	 */
 	void sendDestroyTo(SceneObject* player);
 
+	/**
+	 * Sends the baseline messages of this object to the specified player, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
 	void sendBaselinesTo(SceneObject* player);
 
+	/**
+	 * Sends the contained non slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the container objects }
+	 * @param player SceneObject that will receive the objects 
+	 */
 	void sendContainerObjectsTo(SceneObject* player);
 
+	/**
+	 * Sends the contained slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the slotted objects }
+	 * @param player SceneObject that will receive the objects 
+	 */
 	void sendSlottedObjectsTo(SceneObject* player);
 
+	/**
+	 * Sends the necessary messages to owner client, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, owner received its own scene object }
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
 	void sendToOwner(bool doClose = true);
 
+	/**
+	 * Sends an AttributeListMessage to specified object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, object received the attribute list message }
+	 * @param object SceneObject that will receive the message
+	 */
 	void sendAttributeListTo(CreatureObject* object);
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
+	/**
+	 * Updates the custom name of the object
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
 
+	/**
+	 * Fills the radial options, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Opens container contents to player
+	 * @pre { }
+	 * @post { }
+	 * @param player CreatureObject to open the container to   
+	 */
 	void openContainerTo(CreatureObject* player);
 
 	byte checkContainerPermission(CreatureObject* player, unsigned short permission);
 
+	/**
+	 * Closes the container of a player
+	 */
 	void closeContainerTo(CreatureObject* player, bool notify = true);
 
+	/**
+	 * Inserts this object into zone
+	 * @pre { this object is locked }
+	 * @post { this object is locked and inserted into zone }
+	 * @param zone Zone object where this object will be inserted
+	 */
 	void notifyInsertToZone(Zone* zone);
 
+	/**
+	 * Switches zone and position of this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, is in the new zone and in the new position }
+	 * @param newTerrainName Name of the new terrain where the player will be inserted.
+	 * @param newPositionX new position X
+	 * @param newPositionZ new position Z
+	 * @param newPositionY new position Y
+	 */
 	void switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
 
 	void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
 
+	/**
+	 * Updates the direction of this object, and braodcasts DataTransform with the update 
+	 */
 	void updateDirection(float fw, float fx, float fy, float fz);
 
 	void updateDirection(float angleHeadingRadians);
@@ -364,42 +593,126 @@ public:
 
 	void notifyRemoveFromZone();
 
+	/**
+	 * Updates position of this object to the rest of in range objects
+	 * @pre { this object is locked}
+	 * @post { this object is locked, in range objects are updated with the new position }
+	 * @param lightUpdate if true a standalone message is sent to the in range objects
+	 */
 	void updateZone(bool lightUpdate, bool sendPackets = true);
 
+	/**
+	 * Updates position and/or parent of this object and to the rest of in range objects
+	 * @pre { this object is locked, newParent is a CellObject }
+	 * @post {this object is locked, in range objects are updated of the new position and parent }
+	 * @param newParent cellObject where this object is
+	 * @param lightUpdate if true a standalone message is sent to the in range objects
+	 */
 	void updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets = true);
 
+	/**
+	 * Broadcasts the message to the in range objects
+	 * @pre {this object is locked, message is not null }
+	 * @post {this object is locked, in range objects received a copy of the message, message is deleted }
+	 * @param sendSelf if true the owner if this object receives the message too
+	 */
 	void broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone = true);
 
 	void broadcastMessagePrivate(BasePacket* message, SceneObject* selfObject, bool lockZone);
 
+	/**
+	 * Broadcasts an object to the in range objects
+	 * @pre {this object is locked, object is not null }
+	 * @post {this object is locked, in range objects received the object }
+	 * @param object SceneObject that will be sent to the in range objects
+	 * @param sendSelf if true the owner of this object receives the object too
+	 */
 	void broadcastObject(SceneObject* object, bool sendSelf);
 
 	void broadcastObjectPrivate(SceneObject* object, SceneObject* selfObject);
 
+	/**
+	 * Broadcasts an object to the in range objects
+	 * @pre {this object is locked, object is not null }
+	 * @post {this object is locked, in range objects received the object }
+	 * @param object SceneObject that will be sent to the in range objects
+	 * @param sendSelf if true the owner of this object receives the object too
+	 */
 	void broadcastDestroy(SceneObject* object, bool sendSelf);
 
 	void broadcastDestroyPrivate(SceneObject* object, SceneObject* selfObject);
 
+	/**
+	 * Broadcasts a vector of messages to the in range objects
+	 * @pre {this object is locked }
+	 * @post { this object is locked, in range objects received the messages, messages are deleted and removed from the vector }
+	 * @param messages a vector containing the messages to be sent, it will be emptied when messages get sent
+	 * @param sendSelf if true the owner of this object receives the messages too
+	 */
 	void broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf);
 
 	void broadcastMessagesPrivate(Vector<BasePacket*>* messages, SceneObject* selfObject);
 
+	/**
+	 * Sends BasePacket msg to the owner of this object, needs to be overriden
+	 * @pre { } 
+	 * @post {owner of this object received message, message is deleted }
+	 * @param msg BasePacket to be sent
+	 */
 	void sendMessage(BasePacket* msg);
 
+	/**
+	 * Compares object ids of this object with obj
+	 * @pre { this object is locked, obj is not null }
+	 * @post {this object is locked }
+	 * @param obj SceneObject that will be compared to
+	 * @return returns 1 if this < obj, -1 if this > obj and 0 if this == obj 
+	 */
 	int compareTo(SceneObject* obj);
 
+	/**
+	 * Fills the specified vector with the containment objects of this object
+	 * @pre { this obejct is locked }
+	 * @post { this object is locked, objects is a vector map with the contained objects and their occupied slots }
+	 * @param objects the vector map that will contain the objects and their occupied slots 
+	 */
 	void getSlottedObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects);
 
 	void getContainerObjects(VectorMap<unsigned long long, ManagedReference<SceneObject* > >& objects);
 
+	/**
+	 * Returns the object id of the parent of this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns 0 if this object doesnt have a parent, otherwise returns its object id
+	 */
 	unsigned long long getParentID();
 
+	/**
+	 * Adds a pending task of this SceneObject
+	 * @pre { this locked }
+	 * @post { this locked}
+	 * @param name Name of the task
+	 * @param task Task to add
+	 */
 	void addPendingTask(const String& name, Task* task, int miliseconds);
 
+	/**
+	 * Removes a pending task from this SceneObject
+	 * @pre { this locked }
+	 * @post { this locked }
+	 * @param name Name of the task to drop
+	 */
 	void removePendingTask(const String& name);
 
 	PendingTasksMap* getPendingTasks();
 
+	/**
+	 * Looks up a specific pending tasks by the name
+	 * @pre { this locked }
+	 * @post { this locked }
+	 * @param name Name of the task to lookup
+	 */
 	Reference<Task* > getPendingTask(const String& name);
 
 	bool containsPendingTask(const String& name);
@@ -410,6 +723,9 @@ public:
 
 	int getCountableObjectsRecursive();
 
+	/**
+	 * Returns a Facade session
+	 */
 	Reference<Facade* > getActiveSession(unsigned int type);
 
 	void addActiveSession(unsigned int type, Facade* session);
@@ -422,6 +738,14 @@ public:
 
 	VectorMap<unsigned int, ManagedReference<Facade* > >* getObjectActiveSessions();
 
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	float getDistanceTo(SceneObject* object);
@@ -430,8 +754,16 @@ public:
 
 	void updateVehiclePosition(bool sendPackets);
 
+	/**
+	 * Is called when this object has been inserted with an object
+	 * @param object object that has been inserted
+	 */
 	int notifyObjectInserted(SceneObject* object);
 
+	/**
+	 * Is called when an object was removed
+	 * @param object object that has been inserted
+	 */
 	int notifyObjectRemoved(SceneObject* object);
 
 	void addActiveArea(ActiveArea* area);
@@ -562,14 +894,26 @@ public:
 
 	float getSpecialDirectionAngle();
 
+	/**
+	 * Rotates an object by a specified number of degrees.
+	 * @param degrees How many degrees to rotate the object with 0 being North.
+	 * TODO: @param notifyClient
+	 */
 	void rotate(int degrees);
 
+	/**
+	 * Sets this objects direction so that the object is facing the specified object.
+	 * @param obj The object to face.
+	 */
 	void faceObject(SceneObject* obj);
 
 	void notifySelfPositionUpdate();
 
 	void notifyPositionUpdate(QuadTreeEntry* entry);
 
+	/**
+	 * @param player player that closed the container
+	 */
 	void notifyCloseContainer(CreatureObject* player);
 
 	unsigned int getMovementCounter();
@@ -580,10 +924,28 @@ public:
 
 	ZoneServer* getZoneServer();
 
+	/**
+	 * Returns the parent of all children in the object tree
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns the parent of all children in the object tree
+	 */
 	ManagedWeakReference<SceneObject* > getRootParent();
 
+	/**
+	 * Returns the parent of object type in the tree
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return Returns the parent of object type in the tree
+	 */
 	ManagedWeakReference<SceneObject* > getParentRecursively(unsigned int gameObjectType);
 
+	/**
+	 * Evaluates if this object is a child of the specified SceneObject
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns true if this object is a child of object
+	 */
 	bool isASubChildOf(SceneObject* object);
 
 	ReadWriteLock* getContainerLock();
@@ -826,6 +1188,9 @@ public:
 
 	SharedObjectTemplate* getObjectTemplate();
 
+	/**
+	 * The returning value points directly to the internal vector, do not delete it or store it
+	 */
 	SortedVector<ManagedReference<Observer* > > getObservers(unsigned int eventType);
 
 	void createChildObjects();
@@ -834,6 +1199,13 @@ public:
 
 	bool setTransformForCollisionMatrixIfNull(Matrix4* mat);
 
+	/**
+	 * This method initializes "this" object as if it were a "childObject" of the controller object that is passed
+	 * as an argument to the method.
+	 * NOTE: The controllerObject is not necessarily the "parent" of the child object. The childObject just happens
+	 * to be specified in the controllerObject's childObjects vector.
+	 * @param controllerObject The object that has this object specified as a "childObject".
+	 */
 	void initializeChildObject(SceneObject* controllerObject);
 
 	bool isInWater();
@@ -946,96 +1318,332 @@ public:
 
 	void initializePrivateData();
 
+	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
 	virtual void loadTemplateData(SharedObjectTemplate* templateData);
 
 	virtual void createComponents();
 
 	virtual void createContainerComponent();
 
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
 	void initializeTransientMembers();
 
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	void notifyLoadFromDatabase();
 
+	/**
+	 * Logs an info message
+	 * @pre {}
+	 * @post { message has been printed to console or file }
+	 * @param msg message to print
+	 * @param forced if true, always prints the message to console 
+	 */
 	void info(const String& msg, bool forced = false);
 
+	/**
+	 * Logs an error message
+	 * @pre {}
+	 * @post {error message has been printed to console and file }
+	 * @param msg error message to print
+	 */
 	void error(const String& msg);
 
+	/**
+	 * Returns number of specified game objects in range
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return number of objects in range
+	 */
 	int inRangeObjects(unsigned int gameObjectType, float range);
 
+	/**
+	 * Evaluates if the object is in range
+	 * @pre { this object is locked, obj is locked}
+	 * @post { thisobject is locked, obj is locked }
+	 * @param obj object that will be checked against
+	 * @param range range to check
+	 * @return returns true if this object is in range with obj
+	 */
 	bool isInRange(SceneObject* obj, float range);
 
+	/**
+	 * Tries to add/link object
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be added to the current object
+	 * @param containmentType arrangement type that will be used to add the object
+	 * @param notifyClient if true in range objects will be updated with the change
+	 * @return returns true if the object has been successfully added
+	 */
 	virtual bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false, bool allowOverflow = false);
 
+	/**
+	 * Tries to remove/unlink object
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be removed from the current object
+	 * @param destination SceneObject that will be the new destination of the object.
+	 * @param notifyClient not used currently
+	 * @return returns true if the object has been successfully removed
+	 */
 	virtual bool removeObject(SceneObject* object, SceneObject* destination, bool notifyClient = false);
 
+	/**
+	 * Destroys the object from the world
+	 */
 	virtual void destroyObjectFromWorld(bool sendSelfDestroy);
 
+	/**
+	 * Evaluates if this object has the necessary free slots to be able to add the specified SceneObject
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be checked
+	 * @param error error string that the player will receive on error
+	 * @return returns 0 on success, or error code
+	 */
 	virtual int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
+	/**
+	 * 
+	 */
 	virtual int notifyObjectInsertedToChild(SceneObject* object, SceneObject* child, SceneObject* oldParent);
 
 	virtual int notifyObjectRemovedFromChild(SceneObject* object, SceneObject* child);
 
+	/**
+	 * Calls the appropriate UI Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player CreatureObject using the item
+	 * @param value value from packet
+	 */
 	virtual void synchronizedUIListen(SceneObject* player, int value);
 
+	/**
+	 * Calls the appropriate UI Stop Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player CreatureObject using the item
+	 * @param value value from packet
+	 */
 	virtual void synchronizedUIStopListen(SceneObject* player, int value);
 
+	/**
+	 * Updates this object to database (calls updatesToDatabaseAllObjects())
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param startTask if true, queues a new update task
+	 */
 	void updateToDatabase();
 
+	/**
+	  * Updates only this object to database without updating children
+	  * WARNING use only when necessary
+	  */
 	void updateToDatabaseWithoutChildren();
 
+	/**
+	 * Updates this object and childre objects to database
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param startTask if true, queues a new update task
+	 */
 	void updateToDatabaseAllObjects(bool startTask);
 
+	/**
+	 * Destroys a PlayerCreature from the database. If this object is not a PlayerCreature then the method will return without doing anything.
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
 	virtual void destroyPlayerCreatureFromDatabase(bool destroyContainedObjects = false);
 
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
 	virtual void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
+	/**
+	 * Checks if the object can be destroyed
+	 * @pre { player is locked }
+	 * @post { player is locked }
+	 * @param player Player that attempts to destroy this object
+	 * @returns 0 on succes, != 0 on error
+	 */
 	virtual int canBeDestroyed(CreatureObject* player);
 
 protected:
+	/**
+	 * Sends a SceneObjectCloseMessage of this object to client
+	 * @pre { this object is locked }
+	 * @post { this object is locked, client received the close message }
+	 * @param client ZoneClientSession that will receive the message
+	 */
 	void close(SceneObject* client);
 
+	/**
+	 * Sends an UpdateContainmentMessage to client that adds/links this object to its parent object 
+	 * @pre { this object is locked }
+	 * @post { this object is locked, client received the link message }
+	 * @param client ZoneClientSession that will receive the message
+	 * @param containmentType arrangement type?
+	 */
 	void link(SceneObject* client, unsigned int containmentType = 4);
 
 public:
+	/**
+	 * Creates a new UpdateContainmentMessage that adds/links this object to the specified objectID
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param objectID object id of object to link
+	 * @param containmentType arrangement type?
+	 * @return returns a new valid UpdateContainmentMessage
+	 */
 	BaseMessage* link(unsigned long long objectID, unsigned int containmentType = 4);
 
+	/**
+	 * Sends the necessary messages to player in order to create this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received this object }
+	 * @param player SceneObject that will receive the messages
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
 	virtual void sendTo(SceneObject* player, bool doClose);
 
+	/**
+	 * Sends the object without linking to its actual parent and without sending its children (f.e trade)
+	 */
 	virtual void sendWithoutParentTo(SceneObject* player);
 
 	virtual void sendWithoutContainerObjectsTo(SceneObject* player);
 
+	/**
+	 * Sends a SceneObjectDestroyMessage of this object to client
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the destroy message }
+	 * @param plaer SceneObject that will receive the message 
+	 */
 	virtual void sendDestroyTo(SceneObject* player);
 
+	/**
+	 * Sends the baseline messages of this object to the specified player, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
 	virtual void sendBaselinesTo(SceneObject* player);
 
+	/**
+	 * Sends the contained non slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the container objects }
+	 * @param player SceneObject that will receive the objects 
+	 */
 	virtual void sendContainerObjectsTo(SceneObject* player);
 
+	/**
+	 * Sends the contained slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the slotted objects }
+	 * @param player SceneObject that will receive the objects 
+	 */
 	virtual void sendSlottedObjectsTo(SceneObject* player);
 
+	/**
+	 * Sends the necessary messages to owner client, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, owner received its own scene object }
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
 	virtual void sendToOwner(bool doClose = true);
 
+	/**
+	 * Sends an AttributeListMessage to specified object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, object received the attribute list message }
+	 * @param object SceneObject that will receive the message
+	 */
 	virtual void sendAttributeListTo(CreatureObject* object);
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	virtual void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
+	/**
+	 * Updates the custom name of the object
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	virtual void setCustomObjectName(const UnicodeString& name, bool notifyClient);
 
+	/**
+	 * Fills the radial options, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
 	virtual void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Opens container contents to player
+	 * @pre { }
+	 * @post { }
+	 * @param player CreatureObject to open the container to   
+	 */
 	virtual void openContainerTo(CreatureObject* player);
 
 	virtual byte checkContainerPermission(CreatureObject* player, unsigned short permission);
 
+	/**
+	 * Closes the container of a player
+	 */
 	virtual void closeContainerTo(CreatureObject* player, bool notify = true);
 
+	/**
+	 * Inserts this object into zone
+	 * @pre { this object is locked }
+	 * @post { this object is locked and inserted into zone }
+	 * @param zone Zone object where this object will be inserted
+	 */
 	virtual void notifyInsertToZone(Zone* zone);
 
+	/**
+	 * Switches zone and position of this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, is in the new zone and in the new position }
+	 * @param newTerrainName Name of the new terrain where the player will be inserted.
+	 * @param newPositionX new position X
+	 * @param newPositionZ new position Z
+	 * @param newPositionY new position Y
+	 */
 	virtual void switchZone(const String& newTerrainName, float newPostionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
 
 	virtual void teleport(float newPositionX, float newPositionZ, float newPositionY, unsigned long long parentID = 0);
 
+	/**
+	 * Updates the direction of this object, and braodcasts DataTransform with the update 
+	 */
 	void updateDirection(float fw, float fx, float fy, float fz);
 
 	void updateDirection(float angleHeadingRadians);
@@ -1046,42 +1654,126 @@ public:
 
 	virtual void notifyRemoveFromZone();
 
+	/**
+	 * Updates position of this object to the rest of in range objects
+	 * @pre { this object is locked}
+	 * @post { this object is locked, in range objects are updated with the new position }
+	 * @param lightUpdate if true a standalone message is sent to the in range objects
+	 */
 	virtual void updateZone(bool lightUpdate, bool sendPackets = true);
 
+	/**
+	 * Updates position and/or parent of this object and to the rest of in range objects
+	 * @pre { this object is locked, newParent is a CellObject }
+	 * @post {this object is locked, in range objects are updated of the new position and parent }
+	 * @param newParent cellObject where this object is
+	 * @param lightUpdate if true a standalone message is sent to the in range objects
+	 */
 	virtual void updateZoneWithParent(SceneObject* newParent, bool lightUpdate, bool sendPackets = true);
 
+	/**
+	 * Broadcasts the message to the in range objects
+	 * @pre {this object is locked, message is not null }
+	 * @post {this object is locked, in range objects received a copy of the message, message is deleted }
+	 * @param sendSelf if true the owner if this object receives the message too
+	 */
 	void broadcastMessage(BasePacket* message, bool sendSelf, bool lockZone = true);
 
 	void broadcastMessagePrivate(BasePacket* message, SceneObject* selfObject, bool lockZone);
 
+	/**
+	 * Broadcasts an object to the in range objects
+	 * @pre {this object is locked, object is not null }
+	 * @post {this object is locked, in range objects received the object }
+	 * @param object SceneObject that will be sent to the in range objects
+	 * @param sendSelf if true the owner of this object receives the object too
+	 */
 	void broadcastObject(SceneObject* object, bool sendSelf);
 
 	void broadcastObjectPrivate(SceneObject* object, SceneObject* selfObject);
 
+	/**
+	 * Broadcasts an object to the in range objects
+	 * @pre {this object is locked, object is not null }
+	 * @post {this object is locked, in range objects received the object }
+	 * @param object SceneObject that will be sent to the in range objects
+	 * @param sendSelf if true the owner of this object receives the object too
+	 */
 	void broadcastDestroy(SceneObject* object, bool sendSelf);
 
 	void broadcastDestroyPrivate(SceneObject* object, SceneObject* selfObject);
 
+	/**
+	 * Broadcasts a vector of messages to the in range objects
+	 * @pre {this object is locked }
+	 * @post { this object is locked, in range objects received the messages, messages are deleted and removed from the vector }
+	 * @param messages a vector containing the messages to be sent, it will be emptied when messages get sent
+	 * @param sendSelf if true the owner of this object receives the messages too
+	 */
 	void broadcastMessages(Vector<BasePacket*>* messages, bool sendSelf);
 
 	void broadcastMessagesPrivate(Vector<BasePacket*>* messages, SceneObject* selfObject);
 
+	/**
+	 * Sends BasePacket msg to the owner of this object, needs to be overriden
+	 * @pre { } 
+	 * @post {owner of this object received message, message is deleted }
+	 * @param msg BasePacket to be sent
+	 */
 	virtual void sendMessage(BasePacket* msg);
 
+	/**
+	 * Compares object ids of this object with obj
+	 * @pre { this object is locked, obj is not null }
+	 * @post {this object is locked }
+	 * @param obj SceneObject that will be compared to
+	 * @return returns 1 if this < obj, -1 if this > obj and 0 if this == obj 
+	 */
 	int compareTo(SceneObject* obj);
 
+	/**
+	 * Fills the specified vector with the containment objects of this object
+	 * @pre { this obejct is locked }
+	 * @post { this object is locked, objects is a vector map with the contained objects and their occupied slots }
+	 * @param objects the vector map that will contain the objects and their occupied slots 
+	 */
 	void getSlottedObjects(VectorMap<String, ManagedReference<SceneObject* > >& objects);
 
 	void getContainerObjects(VectorMap<unsigned long long, ManagedReference<SceneObject* > >& objects);
 
+	/**
+	 * Returns the object id of the parent of this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns 0 if this object doesnt have a parent, otherwise returns its object id
+	 */
 	unsigned long long getParentID();
 
+	/**
+	 * Adds a pending task of this SceneObject
+	 * @pre { this locked }
+	 * @post { this locked}
+	 * @param name Name of the task
+	 * @param task Task to add
+	 */
 	void addPendingTask(const String& name, Task* task, int miliseconds);
 
+	/**
+	 * Removes a pending task from this SceneObject
+	 * @pre { this locked }
+	 * @post { this locked }
+	 * @param name Name of the task to drop
+	 */
 	void removePendingTask(const String& name);
 
 	PendingTasksMap* getPendingTasks();
 
+	/**
+	 * Looks up a specific pending tasks by the name
+	 * @pre { this locked }
+	 * @post { this locked }
+	 * @param name Name of the task to lookup
+	 */
 	Reference<Task* > getPendingTask(const String& name);
 
 	bool containsPendingTask(const String& name);
@@ -1092,6 +1784,9 @@ public:
 
 	virtual int getCountableObjectsRecursive();
 
+	/**
+	 * Returns a Facade session
+	 */
 	Reference<Facade* > getActiveSession(unsigned int type);
 
 	void addActiveSession(unsigned int type, Facade* session);
@@ -1104,6 +1799,14 @@ public:
 
 	VectorMap<unsigned int, ManagedReference<Facade* > >* getObjectActiveSessions();
 
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
 	virtual int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	float getDistanceTo(SceneObject* object);
@@ -1112,8 +1815,16 @@ public:
 
 	void updateVehiclePosition(bool sendPackets);
 
+	/**
+	 * Is called when this object has been inserted with an object
+	 * @param object object that has been inserted
+	 */
 	virtual int notifyObjectInserted(SceneObject* object);
 
+	/**
+	 * Is called when an object was removed
+	 * @param object object that has been inserted
+	 */
 	virtual int notifyObjectRemoved(SceneObject* object);
 
 	void addActiveArea(ActiveArea* area);
@@ -1244,14 +1955,26 @@ public:
 
 	float getSpecialDirectionAngle();
 
+	/**
+	 * Rotates an object by a specified number of degrees.
+	 * @param degrees How many degrees to rotate the object with 0 being North.
+	 * TODO: @param notifyClient
+	 */
 	void rotate(int degrees);
 
+	/**
+	 * Sets this objects direction so that the object is facing the specified object.
+	 * @param obj The object to face.
+	 */
 	void faceObject(SceneObject* obj);
 
 	virtual void notifySelfPositionUpdate();
 
 	void notifyPositionUpdate(QuadTreeEntry* entry);
 
+	/**
+	 * @param player player that closed the container
+	 */
 	virtual void notifyCloseContainer(CreatureObject* player);
 
 	unsigned int getMovementCounter();
@@ -1262,10 +1985,28 @@ public:
 
 	ZoneServer* getZoneServer();
 
+	/**
+	 * Returns the parent of all children in the object tree
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns the parent of all children in the object tree
+	 */
 	ManagedWeakReference<SceneObject* > getRootParent();
 
+	/**
+	 * Returns the parent of object type in the tree
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return Returns the parent of object type in the tree
+	 */
 	ManagedWeakReference<SceneObject* > getParentRecursively(unsigned int gameObjectType);
 
+	/**
+	 * Evaluates if this object is a child of the specified SceneObject
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns true if this object is a child of object
+	 */
 	bool isASubChildOf(SceneObject* object);
 
 	ReadWriteLock* getContainerLock();
@@ -1508,6 +2249,9 @@ public:
 
 	SharedObjectTemplate* getObjectTemplate();
 
+	/**
+	 * The returning value points directly to the internal vector, do not delete it or store it
+	 */
 	SortedVector<ManagedReference<Observer* > > getObservers(unsigned int eventType);
 
 	virtual void createChildObjects();
@@ -1516,6 +2260,13 @@ public:
 
 	bool setTransformForCollisionMatrixIfNull(Matrix4* mat);
 
+	/**
+	 * This method initializes "this" object as if it were a "childObject" of the controller object that is passed
+	 * as an argument to the method.
+	 * NOTE: The controllerObject is not necessarily the "parent" of the child object. The childObject just happens
+	 * to be specified in the controllerObject's childObjects vector.
+	 * @param controllerObject The object that has this object specified as a "childObject".
+	 */
 	virtual void initializeChildObject(SceneObject* controllerObject);
 
 	bool isInWater();

@@ -160,10 +160,29 @@ public:
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
+	/**
+	 * Checks if the object can be destroyed
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @returns 0 on succes, != 0 on error
+	 */
 	int canBeDestroyed(CreatureObject* player);
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	DistributedObjectServant* _getImplementation();
@@ -209,10 +228,29 @@ public:
 
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
+	/**
+	 * Checks if the object can be destroyed
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @returns 0 on succes, != 0 on error
+	 */
 	int canBeDestroyed(CreatureObject* player);
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	WeakReference<VehicleControlDevice*> _this;

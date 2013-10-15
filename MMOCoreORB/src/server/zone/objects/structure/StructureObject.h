@@ -128,38 +128,104 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void notifyInsertToZone(Zone* zone);
 
 	void createChildObjects();
 
+	/**
+	 * Gets called when the structure has been created;
+	 */
 	int notifyStructurePlaced(CreatureObject* creature);
 
 	bool checkRequisitesForPlacement(CreatureObject* player);
 
 	String getTimeString(unsigned int timestamp);
 
+	/**
+	 * Schedules the event that will be fired when maintenance is due to run out.
+	 * This method calls updateStructureStatus before running.
+	 */
 	void scheduleMaintenanceExpirationEvent();
 
+	/**
+	 * Schedules the maintenance task.
+	 * @param timeFromNow the time till the task should be run.
+	 */
 	void scheduleMaintenanceTask(int timeFromNow);
 
+	/**
+	 * This method should be called anytime a method needs up to date information about
+	 * maintenance, power, and condition of the structure.
+	 */
 	void updateStructureStatus();
 
+	/**
+	 * Checks if the playerName is on the admin list.
+	 * @param playerName The name of the player to check for admin permission.
+	 * @return Returns true if the player name has admin permissions.
+	 */
 	bool isOnAdminList(CreatureObject* player);
 
+	/**
+	 * Checks if the playerName is on the admin list.
+	 * For PermissionsListModify command
+	 * @param playerName The name of the player to check for admin permission.
+	 * @return Returns true if the player name has admin permissions.
+	 */
 	bool isOnAdminList(const String& firstName, bool caseSensitive = false);
 
+	/**
+	 * Checks if the playerName is on the entry list.
+	 * @param playerName The name of the player to check for entry permission.
+	 * @return Returns true if the player name has entry permissions.
+	 */
 	bool isOnEntryList(CreatureObject* player);
 
+	/**
+	 * Checks if the playerName is on the ban list.
+	 * @param playerName The name of the player to check for ban permission.
+	 * @return Returns true if the player name has ban permissions.
+	 */
 	bool isOnBanList(CreatureObject* player);
 
+	/**
+	 * Checks if the playerName is on the ban list.
+	 * For PermissionsListModify command
+	 * @param playerName The name of the player to check for ban permission.
+	 * @return Returns true if the player name has ban permissions.
+	 */
 	bool isOnBanList(const String& firstName, bool caseSensitive = false);
 
+	/**
+	 * Checks if the playerName is on the hopper list.
+	 * @param playerName The name of the player to check for hopper permission.
+	 * @return Returns true if the player name has hopper permissions.
+	 */
 	bool isOnHopperList(CreatureObject* player);
 
+	/**
+	 * Checks if the player name is the on the specified permission list.
+	 * @param listName The name of the list to check.
+	 * @param playerName The name of the player to check.
+	 * @return Returns true if the player name was found on the list.
+	 */
 	bool isOnPermissionList(const String& listName, CreatureObject* player);
 
+	/**
+	 * Checks if the player name is the on the specified permission list.
+	 * For PermissionsListModify command
+	 * @param listName The name of the list to check.
+	 * @param firstName The name of the player to check.
+	 * @return Returns true if the player name was found on the list.
+	 */
 	bool isOnPermissionList(const String& listName, const String& firstName, bool caseSensitive = false);
 
 	bool isOwnerOf(SceneObject* obj);
@@ -186,6 +252,10 @@ public:
 
 	void setOwnerName(const String& ownerName);
 
+	/**
+	 * Returns the cost to redeed this building. The redeed cost is 50 times the hourly maintenance rate.
+	 * @return int The cost to redeed this building.
+	 */
 	int getRedeedCost();
 
 	CreatureObject* getOwnerCreatureObject();
@@ -226,6 +296,17 @@ public:
 
 	void addMaintenance(float add);
 
+	/**
+	 * Withdraws maintenance from payer and deposits it in the structure
+	 * maintenance pool. Updates maintenance modifier depending on skill
+	 * of payer.
+	 * @pre payer and structure objects are locked.
+	 * @post payer and structure objects are locked.
+	 * @param maintenance maintenance amount to deposit.
+	 * @param payer payer object.
+	 * @param cashFirst Indicates if the amount should be withdrawn from
+	 * the player's cash or bank account first.
+	 */
 	void payMaintenance(int maintenance, CreatureObject* payer, bool cashFirst);
 
 	void setSurplusPower(int surplus);
@@ -250,6 +331,10 @@ public:
 
 	AABBTree* getAABBTree();
 
+	/**
+	 * Adds this object's skill mod map to the target object's skill mod map
+	 * @param targetObject The targeted object containing the SkillModMap which will be affected.
+	 */
 	void addTemplateSkillMods(TangibleObject* targetObject);
 
 	void removeTemplateSkillMods(TangibleObject* tangibleObject);
@@ -322,38 +407,104 @@ public:
 
 	void finalize();
 
+	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void notifyInsertToZone(Zone* zone);
 
 	void createChildObjects();
 
+	/**
+	 * Gets called when the structure has been created;
+	 */
 	virtual int notifyStructurePlaced(CreatureObject* creature);
 
 	virtual bool checkRequisitesForPlacement(CreatureObject* player);
 
 	String getTimeString(unsigned int timestamp);
 
+	/**
+	 * Schedules the event that will be fired when maintenance is due to run out.
+	 * This method calls updateStructureStatus before running.
+	 */
 	void scheduleMaintenanceExpirationEvent();
 
+	/**
+	 * Schedules the maintenance task.
+	 * @param timeFromNow the time till the task should be run.
+	 */
 	void scheduleMaintenanceTask(int timeFromNow);
 
+	/**
+	 * This method should be called anytime a method needs up to date information about
+	 * maintenance, power, and condition of the structure.
+	 */
 	virtual void updateStructureStatus();
 
+	/**
+	 * Checks if the playerName is on the admin list.
+	 * @param playerName The name of the player to check for admin permission.
+	 * @return Returns true if the player name has admin permissions.
+	 */
 	bool isOnAdminList(CreatureObject* player);
 
+	/**
+	 * Checks if the playerName is on the admin list.
+	 * For PermissionsListModify command
+	 * @param playerName The name of the player to check for admin permission.
+	 * @return Returns true if the player name has admin permissions.
+	 */
 	bool isOnAdminList(const String& firstName, bool caseSensitive = false);
 
+	/**
+	 * Checks if the playerName is on the entry list.
+	 * @param playerName The name of the player to check for entry permission.
+	 * @return Returns true if the player name has entry permissions.
+	 */
 	bool isOnEntryList(CreatureObject* player);
 
+	/**
+	 * Checks if the playerName is on the ban list.
+	 * @param playerName The name of the player to check for ban permission.
+	 * @return Returns true if the player name has ban permissions.
+	 */
 	bool isOnBanList(CreatureObject* player);
 
+	/**
+	 * Checks if the playerName is on the ban list.
+	 * For PermissionsListModify command
+	 * @param playerName The name of the player to check for ban permission.
+	 * @return Returns true if the player name has ban permissions.
+	 */
 	bool isOnBanList(const String& firstName, bool caseSensitive = false);
 
+	/**
+	 * Checks if the playerName is on the hopper list.
+	 * @param playerName The name of the player to check for hopper permission.
+	 * @return Returns true if the player name has hopper permissions.
+	 */
 	bool isOnHopperList(CreatureObject* player);
 
+	/**
+	 * Checks if the player name is the on the specified permission list.
+	 * @param listName The name of the list to check.
+	 * @param playerName The name of the player to check.
+	 * @return Returns true if the player name was found on the list.
+	 */
 	bool isOnPermissionList(const String& listName, CreatureObject* player);
 
+	/**
+	 * Checks if the player name is the on the specified permission list.
+	 * For PermissionsListModify command
+	 * @param listName The name of the list to check.
+	 * @param firstName The name of the player to check.
+	 * @return Returns true if the player name was found on the list.
+	 */
 	bool isOnPermissionList(const String& listName, const String& firstName, bool caseSensitive = false);
 
 	bool isOwnerOf(SceneObject* obj);
@@ -380,6 +531,10 @@ public:
 
 	void setOwnerName(const String& ownerName);
 
+	/**
+	 * Returns the cost to redeed this building. The redeed cost is 50 times the hourly maintenance rate.
+	 * @return int The cost to redeed this building.
+	 */
 	int getRedeedCost();
 
 	CreatureObject* getOwnerCreatureObject();
@@ -420,6 +575,17 @@ public:
 
 	void addMaintenance(float add);
 
+	/**
+	 * Withdraws maintenance from payer and deposits it in the structure
+	 * maintenance pool. Updates maintenance modifier depending on skill
+	 * of payer.
+	 * @pre payer and structure objects are locked.
+	 * @post payer and structure objects are locked.
+	 * @param maintenance maintenance amount to deposit.
+	 * @param payer payer object.
+	 * @param cashFirst Indicates if the amount should be withdrawn from
+	 * the player's cash or bank account first.
+	 */
 	void payMaintenance(int maintenance, CreatureObject* payer, bool cashFirst);
 
 	void setSurplusPower(int surplus);
@@ -444,6 +610,10 @@ public:
 
 	AABBTree* getAABBTree();
 
+	/**
+	 * Adds this object's skill mod map to the target object's skill mod map
+	 * @param targetObject The targeted object containing the SkillModMap which will be affected.
+	 */
 	void addTemplateSkillMods(TangibleObject* targetObject);
 
 	void removeTemplateSkillMods(TangibleObject* tangibleObject);

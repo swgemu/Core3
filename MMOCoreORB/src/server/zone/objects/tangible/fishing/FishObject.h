@@ -105,12 +105,31 @@ public:
 
 	void setAttributes(const String& playerName, const String& terrainN, String& timestamp, float fishLength);
 
+	/**
+	 * Fills the radial options
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
+	/**
+	 * Filet a fish
+	 * Takes objects in the Container and sends them to the player invenvotry
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player The player to whom to send the items
+	 */
 	void filet(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
@@ -159,12 +178,31 @@ public:
 
 	void setAttributes(const String& playerName, const String& terrainN, String& timestamp, float fishLength);
 
+	/**
+	 * Fills the radial options
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
+	/**
+	 * Filet a fish
+	 * Takes objects in the Container and sends them to the player invenvotry
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player The player to whom to send the items
+	 */
 	void filet(CreatureObject* player);
 
 	WeakReference<FishObject*> _this;

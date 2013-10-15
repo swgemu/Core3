@@ -196,10 +196,20 @@ namespace tangible {
 
 class TangibleObject : public SceneObject {
 public:
+	/**
+	 * TangibleObject constructor, used to initialized the object
+	 * @pre { templateData is a valid SharedTangibleObjectTemplate LuaObject that contains the necessary values to initialize CreatureObject }
+	 * @post { TangibleObject is initialized } 
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize TangibleObject members
+	 */
 	TangibleObject();
 
 	void initializeMembers();
 
+	/**
+	 * Adds this object's skill mod map to the target object's skill mod map
+	 * @param targetObject The targeted object containing the SkillModMap which will be affected.
+	 */
 	void addTemplateSkillMods(TangibleObject* targetObject);
 
 	void applySkillModsTo(CreatureObject* creature, bool doCheck = true);
@@ -212,60 +222,194 @@ public:
 
 	void removeAllSkillModsOfType(const int skillType, bool notifyClient = true);
 
+	/**
+	 * Removes this object's skill mod map from the target object's skill mod map
+	 * @param targetObject the targeted object containing the SkillModMap which will be affected.
+	 */
 	void removeTemplateSkillMods(TangibleObject* tangibleObject);
 
 	VectorMap<String, int>* getTemplateSkillMods();
 
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
 	void initializeTransientMembers();
 
+	/**
+	 * Updates the custom name of the object
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
 
+	/**
+	 * Sends the TANO baseline messages of this object to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
 	void sendBaselinesTo(SceneObject* player);
 
+	/**
+	 * Calls the appropriate UI Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player CreatureObject using the item
+	 * @param value value from packet
+	 */
 	void synchronizedUIListen(SceneObject* player, int value);
 
+	/**
+	 * Calls the appropriate UI Stop Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player CreatureObject using the item
+	 * @param value value from packet
+	 */
 	void synchronizedUIStopListen(SceneObject* player, int value);
 
+	/**
+	 * Sets the active defender
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is active }
+	 * @param defender SceneObject to set as the active defender
+	 */
 	void setDefender(SceneObject* defender);
 
+	/**
+	 * Adds a SceneObject to the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is in the defender vector }
+	 * @param defender SceneObject to add to the defender vector
+	 */
 	void addDefender(SceneObject* defender);
 
+	/**
+	 * Removes the specified defender from the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is not in the defender vector }
+	 * @param defender SceneObject to remove from the defender vector
+	 */
 	void removeDefender(SceneObject* defender);
 
+	/**
+	 * Removes all the defenders from the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender vector is empty }
+	 */
 	void removeDefenders();
 
+	/**
+	 * Sets the combat state, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is in a combat state }
+	 */
 	void setCombatState();
 
+	/**
+	 * Updates the object count delta
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param newUseCount new value to update
+	 */
 	void setUseCount(unsigned int newUseCount, bool notifyClient = true);
 
 	void setCountdownTimer(unsigned int newCount, bool notifyClient = true);
 
+	/**
+	 * Decreases use count, when reaches 0 destroys itself
+	 */
 	void decreaseUseCount();
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
+	/**
+	 * Cleares the combat state
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is not in a combat state }
+	 * @param clearDefenders if true the defender vector willl be emptied
+	 */
 	void clearCombatState(bool clearDefenders = true);
 
+	/**
+	 * Evaluates if this object contains the specified defender
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns true if SceneObject defender exists in the defender vector
+	 */
 	bool hasDefender(SceneObject* defender);
 
+	/**
+	 * Evaluates if this object can be attacket by the passed creature object
+	 * @pre { this object is locked }
+	 * @post { this object is locked}
+	 * @return returns true if the creature object can attack this 
+	 */
 	bool isAttackableBy(CreatureObject* object);
 
+	/**
+	 * Evaluates if this creature is aggresive to the object
+	 * @pre { }
+	 * @post { }
+	 * @return returns true if its aggressive
+	 */
 	bool isAggressiveTo(CreatureObject* object);
 
 	bool isHealableBy(CreatureObject* object);
 
+	/**
+	 * Sends the pvp options bitmask
+	 * @pre { this object is locked}
+	 * @post { this object is locked }
+	 */
 	void sendPvpStatusTo(CreatureObject* player);
 
+	/**
+	 * Inflicts damage into the object
+	 * @pre { attacker, this object is locked }
+	 * @post { attacker, this object is locked }
+	 * @return unused for now
+	 */
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient = true);
 
+	/**
+	 * Heals damage
+	 * @pre { this, healer locked }
+	 * @post { this, healer locked }
+	 * @return returns total health healed
+	 */
 	int healDamage(TangibleObject* healer, int damageType, float damageToHeal, bool notifyClient = true);
 
+	/**
+	 * Sets the condition damage variable
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param condDamage new condition damage
+	 */
 	void setConditionDamage(float condDamage, bool notifyClient = true);
 
+	/**
+	 * Updates a customization variable
+	 */
 	void setCustomizationVariable(byte type, short value, bool notifyClient = true);
 
 	void setCustomizationVariable(const String& type, short value, bool notifyClient = true);
@@ -452,6 +596,10 @@ public:
 
 	void initializeMembers();
 
+	/**
+	 * Adds this object's skill mod map to the target object's skill mod map
+	 * @param targetObject The targeted object containing the SkillModMap which will be affected.
+	 */
 	virtual void addTemplateSkillMods(TangibleObject* targetObject);
 
 	virtual void applySkillModsTo(CreatureObject* creature, bool doCheck = true);
@@ -464,60 +612,194 @@ public:
 
 	virtual void removeAllSkillModsOfType(const int skillType, bool notifyClient = true);
 
+	/**
+	 * Removes this object's skill mod map from the target object's skill mod map
+	 * @param targetObject the targeted object containing the SkillModMap which will be affected.
+	 */
 	virtual void removeTemplateSkillMods(TangibleObject* tangibleObject);
 
 	VectorMap<String, int>* getTemplateSkillMods();
 
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
 	void initializeTransientMembers();
 
+	/**
+	 * Updates the custom name of the object
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	void setCustomObjectName(const UnicodeString& name, bool notifyClient);
 
+	/**
+	 * Sends the TANO baseline messages of this object to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
 	virtual void sendBaselinesTo(SceneObject* player);
 
+	/**
+	 * Calls the appropriate UI Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player CreatureObject using the item
+	 * @param value value from packet
+	 */
 	virtual void synchronizedUIListen(SceneObject* player, int value);
 
+	/**
+	 * Calls the appropriate UI Stop Listener Function
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param player CreatureObject using the item
+	 * @param value value from packet
+	 */
 	virtual void synchronizedUIStopListen(SceneObject* player, int value);
 
+	/**
+	 * Sets the active defender
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is active }
+	 * @param defender SceneObject to set as the active defender
+	 */
 	virtual void setDefender(SceneObject* defender);
 
+	/**
+	 * Adds a SceneObject to the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is in the defender vector }
+	 * @param defender SceneObject to add to the defender vector
+	 */
 	virtual void addDefender(SceneObject* defender);
 
+	/**
+	 * Removes the specified defender from the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is not in the defender vector }
+	 * @param defender SceneObject to remove from the defender vector
+	 */
 	virtual void removeDefender(SceneObject* defender);
 
+	/**
+	 * Removes all the defenders from the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender vector is empty }
+	 */
 	virtual void removeDefenders();
 
+	/**
+	 * Sets the combat state, needs to be overriden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is in a combat state }
+	 */
 	virtual void setCombatState();
 
+	/**
+	 * Updates the object count delta
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param newUseCount new value to update
+	 */
 	virtual void setUseCount(unsigned int newUseCount, bool notifyClient = true);
 
 	void setCountdownTimer(unsigned int newCount, bool notifyClient = true);
 
+	/**
+	 * Decreases use count, when reaches 0 destroys itself
+	 */
 	void decreaseUseCount();
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
+	/**
+	 * Cleares the combat state
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is not in a combat state }
+	 * @param clearDefenders if true the defender vector willl be emptied
+	 */
 	virtual void clearCombatState(bool clearDefenders = true);
 
+	/**
+	 * Evaluates if this object contains the specified defender
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns true if SceneObject defender exists in the defender vector
+	 */
 	bool hasDefender(SceneObject* defender);
 
+	/**
+	 * Evaluates if this object can be attacket by the passed creature object
+	 * @pre { this object is locked }
+	 * @post { this object is locked}
+	 * @return returns true if the creature object can attack this 
+	 */
 	virtual bool isAttackableBy(CreatureObject* object);
 
+	/**
+	 * Evaluates if this creature is aggresive to the object
+	 * @pre { }
+	 * @post { }
+	 * @return returns true if its aggressive
+	 */
 	virtual bool isAggressiveTo(CreatureObject* object);
 
 	virtual bool isHealableBy(CreatureObject* object);
 
+	/**
+	 * Sends the pvp options bitmask
+	 * @pre { this object is locked}
+	 * @post { this object is locked }
+	 */
 	virtual void sendPvpStatusTo(CreatureObject* player);
 
+	/**
+	 * Inflicts damage into the object
+	 * @pre { attacker, this object is locked }
+	 * @post { attacker, this object is locked }
+	 * @return unused for now
+	 */
 	virtual int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
 	virtual int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient = true);
 
+	/**
+	 * Heals damage
+	 * @pre { this, healer locked }
+	 * @post { this, healer locked }
+	 * @return returns total health healed
+	 */
 	virtual int healDamage(TangibleObject* healer, int damageType, float damageToHeal, bool notifyClient = true);
 
+	/**
+	 * Sets the condition damage variable
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param condDamage new condition damage
+	 */
 	void setConditionDamage(float condDamage, bool notifyClient = true);
 
+	/**
+	 * Updates a customization variable
+	 */
 	void setCustomizationVariable(byte type, short value, bool notifyClient = true);
 
 	void setCustomizationVariable(const String& type, short value, bool notifyClient = true);

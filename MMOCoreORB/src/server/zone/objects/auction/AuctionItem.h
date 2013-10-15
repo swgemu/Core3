@@ -70,6 +70,13 @@ public:
 
 	AuctionItem(unsigned long long objectid);
 
+	/**
+	 * Compares object ids of this object with obj
+	 * @pre { this object is locked, obj is not null }
+	 * @post {this object is locked }
+	 * @param obj SceneObject that will be compared to
+	 * @return returns 1 if this < obj, -1 if this > obj and 0 if this == obj 
+	 */
 	int compareTo(AuctionItem* obj);
 
 	void notifyLoadFromDatabase();
@@ -238,6 +245,13 @@ public:
 
 	AuctionItemImplementation(DummyConstructorParameter* param);
 
+	/**
+	 * Compares object ids of this object with obj
+	 * @pre { this object is locked, obj is not null }
+	 * @post {this object is locked }
+	 * @param obj SceneObject that will be compared to
+	 * @return returns 1 if this < obj, -1 if this > obj and 0 if this == obj 
+	 */
 	int compareTo(AuctionItem* obj);
 
 	void notifyLoadFromDatabase();

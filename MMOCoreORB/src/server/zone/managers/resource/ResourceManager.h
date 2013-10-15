@@ -144,6 +144,10 @@ class ResourceManager : public Observer {
 public:
 	static const int RESOURCE_DEED_QUANTITY = 100000;
 
+	/**
+ * The resource manager handles all aspects of in game resources
+ * within the Core3 environment
+ */
 	ResourceManager(ZoneServer* server, ZoneProcessServer* impl, ObjectManager* objectMan);
 
 	void stop();

@@ -77,7 +77,7 @@ WARN_LOGFILE =
 #---------------------------------------------------------------------------
 INPUT = ../src
 INPUT_ENCODING = UTF-8
-FILE_PATTERNS = *.c *.cc *.cxx *.cpp *.c++ *.d *.java *.ii *.ixx *.ipp *.i++ *.inl *.h *.hh *.hxx *.hpp *.h++ *.idl *.odl *.cs *.php *.php3 *.inc *.m *.mm *.dox *.py
+FILE_PATTERNS = *.c *.cc *.cxx *.cpp *.c++ *.d *.java *.ii *.ixx *.ipp *.i++ *.inl *.h *.hh *.hxx *.hpp *.h++ *.odl *.cs *.php *.php3 *.inc *.m *.mm *.dox *.py
 RECURSIVE = YES
 EXCLUDE = 
 EXCLUDE_SYMLINKS = NO

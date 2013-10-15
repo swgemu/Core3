@@ -216,12 +216,30 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
 	void fillAttributeList(AttributeListMessage* alm, CreatureObject* object);
 
+	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	/**
+	 * Broadcasts the message to the in range objects
+	 * @pre {this object is locked, message is not null }
+	 * @post {this object is locked, in range objects received a copy of the message, message is deleted }
+	 * @param sendSelf if true the owner if this object receives the message too
+	 */
 	void broadcastMessage(BasePacket* message, bool sendSelf);
 
 	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
@@ -248,8 +266,15 @@ public:
 
 	float getHopperSize();
 
+	/**
+	 * @param workingTime Time till when the installation can work
+	 * @returns true if to continue working, false to shutdown after next hopper update
+	 */
 	bool updateMaintenance(Time& workingTime);
 
+	/**
+	 * @param workingTime time till when harvester can work
+	 */
 	void updateHopper(Time& workingTime, bool shutdownAfterUpdate);
 
 	int getHopperItemQuantity(ResourceSpawn* spawn);
@@ -292,6 +317,10 @@ public:
 
 	void setExtractionRate(float rate);
 
+	/**
+	* pre{ object is locked}
+	* post{this object is locked}
+	*/
 	bool isAttackableBy(CreatureObject* object);
 
 	void createChildObjects();
@@ -358,12 +387,30 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
 	void fillAttributeList(AttributeListMessage* alm, CreatureObject* object);
 
+	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	/**
+	 * Broadcasts the message to the in range objects
+	 * @pre {this object is locked, message is not null }
+	 * @post {this object is locked, in range objects received a copy of the message, message is deleted }
+	 * @param sendSelf if true the owner if this object receives the message too
+	 */
 	void broadcastMessage(BasePacket* message, bool sendSelf);
 
 	void updateResourceContainerQuantity(ResourceContainer* container, int newQuantity, bool notifyClient = true);
@@ -390,8 +437,15 @@ public:
 
 	float getHopperSize();
 
+	/**
+	 * @param workingTime Time till when the installation can work
+	 * @returns true if to continue working, false to shutdown after next hopper update
+	 */
 	bool updateMaintenance(Time& workingTime);
 
+	/**
+	 * @param workingTime time till when harvester can work
+	 */
 	void updateHopper(Time& workingTime, bool shutdownAfterUpdate);
 
 	int getHopperItemQuantity(ResourceSpawn* spawn);
@@ -434,6 +488,10 @@ public:
 
 	void setExtractionRate(float rate);
 
+	/**
+	* pre{ object is locked}
+	* post{this object is locked}
+	*/
 	bool isAttackableBy(CreatureObject* object);
 
 	void createChildObjects();

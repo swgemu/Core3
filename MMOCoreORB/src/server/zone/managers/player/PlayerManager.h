@@ -290,6 +290,10 @@ public:
 
 	StartingLocation* getStartingLocation(const String& city);
 
+	/**
+	 * Kicks a user
+	 *
+	 */
 	bool kickUser(const String& name, const String& admin, String& reason, bool doBan = true);
 
 	bool createPlayer(MessageCallback* callback);
@@ -298,6 +302,10 @@ public:
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
+	/**
+	 * @pre { destructor and destructedObject locked }
+	 * @post { destructor and destructedObject locked }
+	 */
 	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
 
 	bool shouldRescheduleCorpseDestruction(CreatureObject* player, CreatureObject* ai);
@@ -306,10 +314,21 @@ public:
 
 	bool canGroupMemberHarvestCorpse(CreatureObject* player, Creature* creature);
 
+	/**
+	 * @pre { attacker and player locked }
+	 * @post { attacker and player locked }
+	 */
 	void killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath = 0);
 
+	/**
+	 * Calculates the length of time that incapacitation should last. Cannot exceed 1 minute.
+	 * \return Returns the number of seconds until the player should recover from incapacitation.
+	 */
 	byte calculateIncapacitationTimer(CreatureObject* player, int condition);
 
+	/**
+	 * Check for enough encumbrances 
+	 */
 	bool checkEncumbrancies(CreatureObject* player, ArmorObject* armor);
 
 	void applyEncumbrancies(CreatureObject* player, ArmorObject* armor);
@@ -340,6 +359,15 @@ public:
 
 	bool checkTradeItems(CreatureObject* player, CreatureObject* receiver);
 
+	/**
+	 * Finds the closest structure in range with Administration priveleges.
+	 * This is primarily used for commands that require a building or installation.
+	 * First checks the passed targetID, then checks if the player is inside a building. Finally searches for an installation in range.
+	 * @pre: creature locked, zone unlocked
+
+	 * @post: creature locked, zone unlocked
+	 * @param targetID The object id of the players target.
+	 */
 	SceneObject* getInRangeStructureWithAdminRights(CreatureObject* creature, unsigned long long targetID = 0);
 
 	StructureObject* getInRangeOwnedStructure(CreatureObject* creature, float range = 128);
@@ -356,6 +384,14 @@ public:
 
 	void lootAll(CreatureObject* player, CreatureObject* creature);
 
+	/**
+	 * Enhances the patients attribute by a specified amount for a specified duration.
+	 * @param patient The patient to enhance.
+	 * @param attribute The attribute to enhance.
+	 * @param buffvalue The amount to enhance the attribute.
+	 * @param duration The duration in seconds the enhancement will last.
+	 * @return The amount that was enhanced. If a buff existed, this is the amount exceeding the previous buff.
+	 */
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
 	void disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap);
@@ -430,10 +466,25 @@ public:
 
 	void fixHAM(CreatureObject* player);
 
+	/**
+	 * Sends a confirmation box to the student asking if they want to learn the skill.
+	 * @pre student crosslocked with teacher
+	 * @post student crosslocked with teacher
+	 */
 	bool offerTeaching(CreatureObject* teacher, CreatureObject* student, Skill* skill);
 
+	/**
+	 * Accepts a teaching office.
+	 * @pre student crosslocked with teacher
+	 * @post student crosslocked with teacher
+	 */
 	bool acceptTeachingOffer(CreatureObject* teacher, CreatureObject* student, Skill* skill);
 
+	/**
+	 * Gets a vector skillboxes this teacher can teach this student.
+	 * @pre student crosslocked with teacher
+	 * @post student crosslocked with teacher
+	 */
 	SortedVector<String> getTeachableSkills(CreatureObject* teacher, CreatureObject* student);
 
 	OnlineZoneClientMap* getOnlineZoneClientMap();
@@ -444,6 +495,11 @@ public:
 
 	bool shouldDeleteCharacter(unsigned long long characterID, int galaxyID);
 
+	/**
+	 * Enhances the target character with doc/ent buffs
+	 * @pre { player is locked }
+	 * @post { player is locked }
+	 */
 	void enhanceCharacter(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
@@ -535,6 +591,10 @@ public:
 
 	StartingLocation* getStartingLocation(const String& city);
 
+	/**
+	 * Kicks a user
+	 *
+	 */
 	bool kickUser(const String& name, const String& admin, String& reason, bool doBan = true);
 
 	bool createPlayer(MessageCallback* callback);
@@ -543,6 +603,10 @@ public:
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
+	/**
+	 * @pre { destructor and destructedObject locked }
+	 * @post { destructor and destructedObject locked }
+	 */
 	int notifyDestruction(TangibleObject* destructor, TangibleObject* destructedObject, int condition);
 
 	bool shouldRescheduleCorpseDestruction(CreatureObject* player, CreatureObject* ai);
@@ -551,10 +615,21 @@ public:
 
 	bool canGroupMemberHarvestCorpse(CreatureObject* player, Creature* creature);
 
+	/**
+	 * @pre { attacker and player locked }
+	 * @post { attacker and player locked }
+	 */
 	void killPlayer(TangibleObject* attacker, CreatureObject* player, int typeofdeath = 0);
 
+	/**
+	 * Calculates the length of time that incapacitation should last. Cannot exceed 1 minute.
+	 * \return Returns the number of seconds until the player should recover from incapacitation.
+	 */
 	byte calculateIncapacitationTimer(CreatureObject* player, int condition);
 
+	/**
+	 * Check for enough encumbrances 
+	 */
 	bool checkEncumbrancies(CreatureObject* player, ArmorObject* armor);
 
 	void applyEncumbrancies(CreatureObject* player, ArmorObject* armor);
@@ -585,6 +660,15 @@ public:
 
 	bool checkTradeItems(CreatureObject* player, CreatureObject* receiver);
 
+	/**
+	 * Finds the closest structure in range with Administration priveleges.
+	 * This is primarily used for commands that require a building or installation.
+	 * First checks the passed targetID, then checks if the player is inside a building. Finally searches for an installation in range.
+	 * @pre: creature locked, zone unlocked
+
+	 * @post: creature locked, zone unlocked
+	 * @param targetID The object id of the players target.
+	 */
 	SceneObject* getInRangeStructureWithAdminRights(CreatureObject* creature, unsigned long long targetID = 0);
 
 	StructureObject* getInRangeOwnedStructure(CreatureObject* creature, float range = 128);
@@ -601,6 +685,14 @@ public:
 
 	void lootAll(CreatureObject* player, CreatureObject* creature);
 
+	/**
+	 * Enhances the patients attribute by a specified amount for a specified duration.
+	 * @param patient The patient to enhance.
+	 * @param attribute The attribute to enhance.
+	 * @param buffvalue The amount to enhance the attribute.
+	 * @param duration The duration in seconds the enhancement will last.
+	 * @return The amount that was enhanced. If a buff existed, this is the amount exceeding the previous buff.
+	 */
 	int healEnhance(CreatureObject* enhancer, CreatureObject* patient, byte attribute, int buffvalue, float duration);
 
 	void disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap);
@@ -679,10 +771,25 @@ public:
 
 	void fixHAM(CreatureObject* player);
 
+	/**
+	 * Sends a confirmation box to the student asking if they want to learn the skill.
+	 * @pre student crosslocked with teacher
+	 * @post student crosslocked with teacher
+	 */
 	bool offerTeaching(CreatureObject* teacher, CreatureObject* student, Skill* skill);
 
+	/**
+	 * Accepts a teaching office.
+	 * @pre student crosslocked with teacher
+	 * @post student crosslocked with teacher
+	 */
 	bool acceptTeachingOffer(CreatureObject* teacher, CreatureObject* student, Skill* skill);
 
+	/**
+	 * Gets a vector skillboxes this teacher can teach this student.
+	 * @pre student crosslocked with teacher
+	 * @post student crosslocked with teacher
+	 */
 	SortedVector<String> getTeachableSkills(CreatureObject* teacher, CreatureObject* student);
 
 	OnlineZoneClientMap* getOnlineZoneClientMap();
@@ -693,9 +800,21 @@ public:
 
 	bool shouldDeleteCharacter(unsigned long long characterID, int galaxyID);
 
+	/**
+	 * Enhances the target character with doc/ent buffs
+	 * @pre { player is locked }
+	 * @post { player is locked }
+	 */
 	void enhanceCharacter(CreatureObject* player);
 
 private:
+	/**
+	 * Creates and adds buff to Player
+	 * @pre { player is locked }
+	 * @post { player is locked }
+	 * @returns true if it was added
+	 * @param crc CRC of the buff, player target of buff, amount is the attribute modifier for the buff, duration of the buff, buffType specifies whether medical or performance and attribute sets the creature attribute to modify
+	 */
 	bool doEnhanceCharacter(unsigned int crc, CreatureObject* player, int amount, int duration, int buffType, byte attribute);
 
 public:

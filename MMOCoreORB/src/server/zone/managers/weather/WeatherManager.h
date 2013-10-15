@@ -96,10 +96,22 @@ public:
 
 	WeatherManager(Zone* planet);
 
+	/**
+	 * Initializes the weather manager events and some of the customization variables.
+	 * Calls loadLuaConfig() to read in the lua values and schedules the weather change event. 
+	 */
 	void initialize();
 
+	/**
+	 * Creates a new weather map
+	 */
 	void createNewWeatherPattern();
 
+	/**
+	 * Sends the ServerWeatherMessage packet to the players.
+	 * @pre Locks the player for the duration of the method.
+	 * @param player The player who will receive the new weather information.
+	 */
 	void sendWeatherTo(CreatureObject* player);
 
 	void enableWeather(CreatureObject* player);
@@ -182,21 +194,57 @@ public:
 
 	WeatherManagerImplementation(DummyConstructorParameter* param);
 
+	/**
+	 * Initializes the weather manager events and some of the customization variables.
+	 * Calls loadLuaConfig() to read in the lua values and schedules the weather change event. 
+	 */
 	void initialize();
 
 private:
+	/**
+	 * Loads the weather customization values from the lua script.
+	 * If there is an error during loading, loadDefaultValues() will be triggered.
+	 */
 	bool loadLuaConfig();
 
+	/**
+	 * Configures the weather manager with default values if lua loading fails.
+	 */
 	void loadDefaultValues();
 
 public:
+	/**
+	 * Creates a new weather map
+	 */
 	void createNewWeatherPattern();
 
+	/**
+	 * Sends the ServerWeatherMessage packet to the players.
+	 * @pre Locks the player for the duration of the method.
+	 * @param player The player who will receive the new weather information.
+	 */
 	void sendWeatherTo(CreatureObject* player);
 
 private:
+	/**
+	 * Applies sandstorm effects to exposed players on the planet.
+	 * Calls calculateSandstormProtection() to determine how much of the effects to apply.
+	 * @pre Weather Manager and player are locked.
+	 * @post Weather Manager is locked.
+	 * @post Player is locked.
+	 * @param player The player that the sandstorm effects will potentially be applied to.
+	 */
 	void applySandstormDamage(CreatureObject* player);
 
+	/**
+	 * Counts how many pieces of protecting clothing or armour a player is wearing
+	 * for the purposes of sandstorm effects.
+	 * @pre Weather Manager and player are locked.
+	 * @post Weather Manager and player are locked.
+	 * @param player The player we are applying sandstorm effects to.
+	 * @param sandstormCoverings A Vector created in applySandstormDamage() that will store 
+	 * the number of clothing and armour pieces the player is wearing.
+	 */
 	int calculateSandstormProtection(CreatureObject* player);
 
 public:

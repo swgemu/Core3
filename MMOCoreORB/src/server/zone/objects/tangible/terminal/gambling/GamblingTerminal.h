@@ -218,12 +218,38 @@ public:
 
 	String getMachineTypeText();
 
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	/**
+	 * Returns stf string for Radial Menu
+	 * Based on whether the player is joined to the station this method returns the stf string to fill in the Radial menu
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to check whether joined 
+	 * @return { String of stf }
+	 */
 	String getText(CreatureObject* player);
 
+	/**
+	 * Fills the radial options
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void setGamblingRegion(const String& region);
@@ -232,22 +258,90 @@ public:
 
 	bool gameRunning();
 
+	/**
+	 * Notifies other Players
+	 * This method sends the argument text to every Player joined to the Terminal except the Player provided
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject who won't receive the text
+	 * @param text Message to send to players 
+	 */
 	void notifyOthers(CreatureObject* player, StringIdChatParameter* text);
 
+	/**
+	 * Notifies all Players
+	 * This method sends the argument text to every Player joined to the Terminal
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param text Message to send to players 
+	 */
 	void notifyAll(StringIdChatParameter* text);
 
+	/**
+	 * Checks whether Player is allowed to join
+	 * This method checks for certain conditions depending on machineType
+	 * and sends a SystemMessage to the Player in case he cannot join describing the reason.
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to check whether he can join 
+	 * @return { true if Player may join }
+	 */
 	bool checkJoin(CreatureObject* player);
 
+	/**
+	 * Join Terminal
+	 * This method handles the radial command to join a Terminal, creating Windows and adding the Player
+	 * to playersWindows if checkJoin returns true. Whether the game is being started already depends on the machineType
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject who wants to join the Terminal 
+	 */
 	void joinTerminal(CreatureObject* player);
 
+	/**
+	 * Leave Terminal
+	 * This method handles the radial command to leave a Terminal, closing Windows and stopping running games.
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject who wants to leave the Terminal 
+	 */
 	void leaveTerminal(CreatureObject* player);
 
+	/**
+	 * Close a Menu
+	 * This method closes a menu, but won't drop it from playersWindows, so the list of players remains intact if further needed
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject who wants to join the Terminal
+	 * @param payout If true, the SuiSlotMachineBox's payoutBoxID reference is called and that menu closed aswell to clean the player's screen. 
+	 */
 	void closeMenu(CreatureObject* player, bool payout);
 
+	/**
+	 * Close all Menus
+	 * This method closes all players' menus, but won't drop it from playersWindows, so the list of players remains intact if further needed
+	 * @pre { this object is locked }
+	 * @post { this object is locked } 
+	 */
 	void closeAllMenus();
 
+	/**
+	 * Notifiy Players of the current status
+	 * This method handles all game-related messages based on the event that is happening
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player Protagonist of the event, may be set to NULL for a variety of events
+	 * @param event The switch argument to decide what needs to be sent 
+	 */
 	void statusUpdate(CreatureObject* player, int event);
 
+	/**
+	 * Calls statusUpdate for the Players
+	 * This method calls statusUpdate(player,event); for each Player joined to the Terminal
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param event The switch argument to decide what needs to be sent in statusUpdate(player,event) 
+	 */
 	void statusUpdate(int event);
 
 	DistributedObjectServant* _getImplementation();
@@ -402,12 +496,38 @@ public:
 
 	String getMachineTypeText();
 
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	/**
+	 * Returns stf string for Radial Menu
+	 * Based on whether the player is joined to the station this method returns the stf string to fill in the Radial menu
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to check whether joined 
+	 * @return { String of stf }
+	 */
 	String getText(CreatureObject* player);
 
+	/**
+	 * Fills the radial options
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 */
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Handles the radial selection sent by the client
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void setGamblingRegion(const String& region);
@@ -416,22 +536,90 @@ public:
 
 	bool gameRunning();
 
+	/**
+	 * Notifies other Players
+	 * This method sends the argument text to every Player joined to the Terminal except the Player provided
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject who won't receive the text
+	 * @param text Message to send to players 
+	 */
 	void notifyOthers(CreatureObject* player, StringIdChatParameter* text);
 
+	/**
+	 * Notifies all Players
+	 * This method sends the argument text to every Player joined to the Terminal
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param text Message to send to players 
+	 */
 	void notifyAll(StringIdChatParameter* text);
 
+	/**
+	 * Checks whether Player is allowed to join
+	 * This method checks for certain conditions depending on machineType
+	 * and sends a SystemMessage to the Player in case he cannot join describing the reason.
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to check whether he can join 
+	 * @return { true if Player may join }
+	 */
 	bool checkJoin(CreatureObject* player);
 
+	/**
+	 * Join Terminal
+	 * This method handles the radial command to join a Terminal, creating Windows and adding the Player
+	 * to playersWindows if checkJoin returns true. Whether the game is being started already depends on the machineType
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject who wants to join the Terminal 
+	 */
 	void joinTerminal(CreatureObject* player);
 
+	/**
+	 * Leave Terminal
+	 * This method handles the radial command to leave a Terminal, closing Windows and stopping running games.
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject who wants to leave the Terminal 
+	 */
 	void leaveTerminal(CreatureObject* player);
 
+	/**
+	 * Close a Menu
+	 * This method closes a menu, but won't drop it from playersWindows, so the list of players remains intact if further needed
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject who wants to join the Terminal
+	 * @param payout If true, the SuiSlotMachineBox's payoutBoxID reference is called and that menu closed aswell to clean the player's screen. 
+	 */
 	void closeMenu(CreatureObject* player, bool payout);
 
+	/**
+	 * Close all Menus
+	 * This method closes all players' menus, but won't drop it from playersWindows, so the list of players remains intact if further needed
+	 * @pre { this object is locked }
+	 * @post { this object is locked } 
+	 */
 	void closeAllMenus();
 
+	/**
+	 * Notifiy Players of the current status
+	 * This method handles all game-related messages based on the event that is happening
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player Protagonist of the event, may be set to NULL for a variety of events
+	 * @param event The switch argument to decide what needs to be sent 
+	 */
 	void statusUpdate(CreatureObject* player, int event);
 
+	/**
+	 * Calls statusUpdate for the Players
+	 * This method calls statusUpdate(player,event); for each Player joined to the Terminal
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param event The switch argument to decide what needs to be sent in statusUpdate(player,event) 
+	 */
 	void statusUpdate(int event);
 
 protected:

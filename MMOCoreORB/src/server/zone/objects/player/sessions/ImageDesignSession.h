@@ -105,8 +105,24 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Starts an ImageDesign session between the designer and the target player.
+	 * @param designer The image designer.
+	 * @param targetPlayer The recipient of the image designing.
+	 * @param type Unknown type specifier (needs more research)
+	 * @pre designer and targetPlayer are locked
+	 * @post designer and targetPlayer are locked
+	 */
 	void startImageDesign(CreatureObject* designer, CreatureObject* targetPlayer);
 
+	/**
+	 * When a change is made by the designer, the target's window needs to be notified, and vice versa.
+	 * @param designer The object id of the designer.
+	 * @param targetPlayer The target player's object id.
+	 * @param tent The object id of the salon tent being used.
+	 * @param type The type of something - unknown atm.
+	 * @param data The image design data associated with this update request.
+	 */
 	void updateImageDesign(CreatureObject* updater, unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data);
 
 	void cancelImageDesign(unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data);
@@ -179,8 +195,24 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Starts an ImageDesign session between the designer and the target player.
+	 * @param designer The image designer.
+	 * @param targetPlayer The recipient of the image designing.
+	 * @param type Unknown type specifier (needs more research)
+	 * @pre designer and targetPlayer are locked
+	 * @post designer and targetPlayer are locked
+	 */
 	void startImageDesign(CreatureObject* designer, CreatureObject* targetPlayer);
 
+	/**
+	 * When a change is made by the designer, the target's window needs to be notified, and vice versa.
+	 * @param designer The object id of the designer.
+	 * @param targetPlayer The target player's object id.
+	 * @param tent The object id of the salon tent being used.
+	 * @param type The type of something - unknown atm.
+	 * @param data The image design data associated with this update request.
+	 */
 	void updateImageDesign(CreatureObject* updater, unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data);
 
 	void cancelImageDesign(unsigned long long designer, unsigned long long targetPlayer, unsigned long long tent, int type, const ImageDesignData& data);

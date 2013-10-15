@@ -126,6 +126,15 @@ public:
 
 	bool transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient = false);
 
+	/**
+	 * Activates a queue command from a creature object
+	 * @param object creature object that the command will be run on
+	 * @param actionCRC crc of the command to run
+	 * @param actionCount count of the command
+	 * @paramt targetID target object id
+	 * @param arguments arguments of the command
+	 * @returns time in seconds of command execution
+	 */
 	float activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments);
 
 	void addQueueCommand(QueueCommand* command);
@@ -179,6 +188,15 @@ public:
 
 	bool transferObject(SceneObject* objectToTransfer, SceneObject* destinationObject, int containmentType, bool notifyClient = false);
 
+	/**
+	 * Activates a queue command from a creature object
+	 * @param object creature object that the command will be run on
+	 * @param actionCRC crc of the command to run
+	 * @param actionCount count of the command
+	 * @paramt targetID target object id
+	 * @param arguments arguments of the command
+	 * @returns time in seconds of command execution
+	 */
 	float activateCommand(CreatureObject* object, unsigned int actionCRC, unsigned int actionCount, unsigned long long targetID, const UnicodeString& arguments);
 
 	void addQueueCommand(QueueCommand* command);

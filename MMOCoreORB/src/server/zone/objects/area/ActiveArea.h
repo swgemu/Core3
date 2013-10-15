@@ -64,6 +64,13 @@ class ActiveArea : public SceneObject {
 public:
 	ActiveArea();
 
+	/**
+	 * Sends the necessary messages to player in order to create this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received this object }
+	 * @param player SceneObject that will receive the messages
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
 	void sendTo(SceneObject* player, bool doClose);
 
 	void enqueueEnterEvent(SceneObject* obj);
@@ -158,6 +165,13 @@ public:
 
 	ActiveAreaImplementation(DummyConstructorParameter* param);
 
+	/**
+	 * Sends the necessary messages to player in order to create this object
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received this object }
+	 * @param player SceneObject that will receive the messages
+	 * @param doClose if true a SceneObjectCloseMessage is sent to finish the object
+	 */
 	void sendTo(SceneObject* player, bool doClose);
 
 	virtual void enqueueEnterEvent(SceneObject* obj);

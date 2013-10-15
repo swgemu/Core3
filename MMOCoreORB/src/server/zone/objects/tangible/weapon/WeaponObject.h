@@ -187,12 +187,28 @@ public:
 
 	void sendContainerTo(CreatureObject* player);
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
+	/**
+	 * Handles creating the Saber inventory.
+	 */
 	void createChildObjects();
 
+	/**
+	 * Returns true if the player has the required certifications for this weapon
+	 * @pre { }
+	 * @post { }
+	 * @param object player object to check against
+	 */
 	bool isCertifiedFor(CreatureObject* object);
 
 	Vector<String>* getDamageModifiers();
@@ -537,12 +553,28 @@ public:
 
 	void sendContainerTo(CreatureObject* player);
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
+	/**
+	 * Handles creating the Saber inventory.
+	 */
 	void createChildObjects();
 
+	/**
+	 * Returns true if the player has the required certifications for this weapon
+	 * @pre { }
+	 * @post { }
+	 * @param object player object to check against
+	 */
 	bool isCertifiedFor(CreatureObject* object);
 
 	Vector<String>* getDamageModifiers();

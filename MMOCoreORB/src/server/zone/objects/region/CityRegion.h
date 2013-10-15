@@ -160,6 +160,11 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	void notifyLoadFromDatabase();
 
 	void notifyEnter(SceneObject* object);
@@ -330,12 +335,24 @@ public:
 
 	void removeCommercialStructure(StructureObject* structure);
 
+	/**
+	 * Checks if the city has a structure in it's structures list of a particular template type.
+	 * @param crc The crc of the template of the structure to search for.
+	 * @return True if the city has a structure of this type.
+	 */
 	bool hasUniqueStructure(unsigned int crc);
 
 	void destroyAllStructuresForRank(byte rank);
 
+	/**
+	 * Adds a candidate to the ballot.
+	 */
 	void addCandidate(unsigned long long candidateoid);
 
+	/**
+	 * This method does not check to see if they have previously voted. That logic should be contained in the Manager.
+	 * This is just a data container.
+	 */
 	void setMayoralVote(unsigned long long voteroid, unsigned long long candidateoid);
 
 	int getCandidateVotes(unsigned long long candidateoid);
@@ -344,8 +361,14 @@ public:
 
 	VectorMap<unsigned long long, unsigned long long>* getMayoralVotes();
 
+	/**
+	 * At the end of a voting term, all candidates are removed from the ballot.
+	 */
 	void resetCandidates();
 
+	/**
+	 * All votes are removed from the ballot.
+	 */
 	void resetMayoralVotes();
 
 	void removeCandidate(unsigned long long candidateoid);
@@ -534,6 +557,11 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	void notifyLoadFromDatabase();
 
 	void notifyEnter(SceneObject* object);
@@ -704,12 +732,24 @@ public:
 
 	void removeCommercialStructure(StructureObject* structure);
 
+	/**
+	 * Checks if the city has a structure in it's structures list of a particular template type.
+	 * @param crc The crc of the template of the structure to search for.
+	 * @return True if the city has a structure of this type.
+	 */
 	bool hasUniqueStructure(unsigned int crc);
 
 	void destroyAllStructuresForRank(byte rank);
 
+	/**
+	 * Adds a candidate to the ballot.
+	 */
 	void addCandidate(unsigned long long candidateoid);
 
+	/**
+	 * This method does not check to see if they have previously voted. That logic should be contained in the Manager.
+	 * This is just a data container.
+	 */
 	void setMayoralVote(unsigned long long voteroid, unsigned long long candidateoid);
 
 	int getCandidateVotes(unsigned long long candidateoid);
@@ -718,8 +758,14 @@ public:
 
 	VectorMap<unsigned long long, unsigned long long>* getMayoralVotes();
 
+	/**
+	 * At the end of a voting term, all candidates are removed from the ballot.
+	 */
 	void resetCandidates();
 
+	/**
+	 * All votes are removed from the ballot.
+	 */
 	void resetMayoralVotes();
 
 	void removeCandidate(unsigned long long candidateoid);

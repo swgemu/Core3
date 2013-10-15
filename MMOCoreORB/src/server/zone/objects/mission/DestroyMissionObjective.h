@@ -144,6 +144,11 @@ public:
 
 	void spawnLair();
 
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
 	void destroyObjectFromDatabase();
 
 	Vector3 findValidSpawnPosition(Zone* zone);
@@ -209,6 +214,11 @@ public:
 
 	void spawnLair();
 
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
 	void destroyObjectFromDatabase();
 
 	Vector3 findValidSpawnPosition(Zone* zone);
