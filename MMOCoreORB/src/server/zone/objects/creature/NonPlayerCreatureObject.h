@@ -54,6 +54,11 @@ class NonPlayerCreatureObject : public AiAgent {
 public:
 	NonPlayerCreatureObject();
 
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
 	void initializeTransientMembers();
 
 	bool isNonPlayerCreatureObject();
@@ -92,6 +97,11 @@ public:
 
 	NonPlayerCreatureObjectImplementation(DummyConstructorParameter* param);
 
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
 	void initializeTransientMembers();
 
 	bool isNonPlayerCreatureObject();

@@ -164,6 +164,11 @@ public:
 
 	unsigned int getQuality();
 
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
 	void initializeTransientMembers();
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
@@ -358,6 +363,11 @@ public:
 
 	unsigned int getQuality();
 
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
 	void initializeTransientMembers();
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);

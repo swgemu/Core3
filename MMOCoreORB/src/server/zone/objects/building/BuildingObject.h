@@ -134,30 +134,77 @@ public:
 
 	void updateSignName(bool notifyClient);
 
+	/**
+	 * Sends the contained non slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the container objects }
+	 * @param player SceneObject that will receive the objects 
+	 */
 	void sendContainerObjectsTo(SceneObject* player);
 
+	/**
+	 * Updates the cell permissions to the player based on the players permission in the StructurePermissionList.
+	 * @param creature The player to update cell permissions to.
+	 */
 	void updateCellPermissionsTo(CreatureObject* creature);
 
+	/**
+	 * Updates the cell permissions to the players in the area.
+	 * @pre Zone unlocked
+	 * @post Zone unlocked
+	 */
 	void broadcastCellPermissions();
 
+	/**
+	 * Updates a specific cell's permissions to the players in the area
+	 */
 	void broadcastCellPermissions(unsigned long long objectid);
 
+	/**
+	 * Checks to see if the player with the name is allowed entry.
+	 * @param firstName The name of the player.
+	 * @return Returns true if allowed to enter.
+	 */
 	bool isAllowedEntry(CreatureObject* player);
 
+	/**
+	 * Checks to see if the player is CityBanned from the city
+	 * that the building is in
+	 * returns true if the player is cityBanned
+	 * returns false if the player is not CityBanned
+	 */
 	bool isCityBanned(CreatureObject* player);
 
+	/**
+	 * Gets called when the structure has been created;
+	 */
 	int notifyStructurePlaced(CreatureObject* player);
 
+	/**
+	* Checks if the template has an ejection point
+	*/
 	bool hasTemplateEjectionPoint();
 
+	/**
+	* Returns the template ejection point
+	*/
 	Vector3 getTemplateEjectionPoint();
 
 	Vector3 getEjectionPoint();
 
+	/**
+	 * Ejects an object to this building's ejection point.
+	 * @param creature The creature to eject.
+	 */
 	void ejectObject(CreatureObject* creature);
 
 	void notifyRemoveFromZone();
 
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	void notifyLoadFromDatabase();
 
 	void notifyInsert(QuadTreeEntry* obj);
@@ -186,6 +233,10 @@ public:
 
 	bool isStaticBuilding();
 
+	/**
+	 * Returns cell based on the index.
+	 * Cells start index 1
+	 */
 	CellObject* getCell(unsigned int idx);
 
 	int getTotalCellNumber();
@@ -198,10 +249,29 @@ public:
 
 	int getCurrentNumberOfPlayerItems();
 
+	/**
+	 * Loops through all the cells, destroying items from the database that aren't contained in the child objects vector.
+	 */
 	void destroyAllPlayerItems();
 
+	/**
+	 * Abstract function that is triggered when a player enters a building.
+	 * This function should only be called from CreatureObject::insertToBuilding.
+	 * Overloaded functions must meet the post conditions for this function.
+	 * @pre { player is locked, zone is locked }
+	 * @post { player is locked, zone is locked }
+	 * @param player CreatureObject that entered the building
+	 */
 	void onEnter(CreatureObject* player);
 
+	/**
+	 * Abstract function that is triggered when a player exits a building.
+	 * This function should only be called from CreatureObject::removeFromBuilding.
+	 * Overloaded functions must meet the post conditions for this function.
+	 * @pre { player is locked, zone is locked }
+	 * @post { player is locked, zone is locked }
+	 * @param player CreatureObject that exited the building
+	 */
 	void onExit(CreatureObject* player, unsigned long long parentid);
 
 	bool isBuildingObject();
@@ -220,8 +290,16 @@ public:
 
 	int getMapCellSize();
 
+	/**
+	 * Switches the state of this building's privacy. If it is public, it becomes private, and vice-versa.
+	 * @return Returns true if the structure is now public, or false if it is now private.
+	 */
 	bool togglePrivacy();
 
+	/**
+	 * Calculates the maximum number of items that can be stored by a player in this building.
+	 * @return Returns a uint32 number representing the max items that can be stored in this building.
+	 */
 	unsigned int getMaximumNumberOfPlayerItems();
 
 	String getRedeedMessage();
@@ -338,30 +416,77 @@ public:
 
 	void updateSignName(bool notifyClient);
 
+	/**
+	 * Sends the contained non slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the container objects }
+	 * @param player SceneObject that will receive the objects 
+	 */
 	void sendContainerObjectsTo(SceneObject* player);
 
+	/**
+	 * Updates the cell permissions to the player based on the players permission in the StructurePermissionList.
+	 * @param creature The player to update cell permissions to.
+	 */
 	void updateCellPermissionsTo(CreatureObject* creature);
 
+	/**
+	 * Updates the cell permissions to the players in the area.
+	 * @pre Zone unlocked
+	 * @post Zone unlocked
+	 */
 	void broadcastCellPermissions();
 
+	/**
+	 * Updates a specific cell's permissions to the players in the area
+	 */
 	void broadcastCellPermissions(unsigned long long objectid);
 
+	/**
+	 * Checks to see if the player with the name is allowed entry.
+	 * @param firstName The name of the player.
+	 * @return Returns true if allowed to enter.
+	 */
 	bool isAllowedEntry(CreatureObject* player);
 
+	/**
+	 * Checks to see if the player is CityBanned from the city
+	 * that the building is in
+	 * returns true if the player is cityBanned
+	 * returns false if the player is not CityBanned
+	 */
 	bool isCityBanned(CreatureObject* player);
 
+	/**
+	 * Gets called when the structure has been created;
+	 */
 	virtual int notifyStructurePlaced(CreatureObject* player);
 
+	/**
+	* Checks if the template has an ejection point
+	*/
 	bool hasTemplateEjectionPoint();
 
+	/**
+	* Returns the template ejection point
+	*/
 	Vector3 getTemplateEjectionPoint();
 
 	Vector3 getEjectionPoint();
 
+	/**
+	 * Ejects an object to this building's ejection point.
+	 * @param creature The creature to eject.
+	 */
 	void ejectObject(CreatureObject* creature);
 
 	void notifyRemoveFromZone();
 
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	void notifyLoadFromDatabase();
 
 	void notifyInsert(QuadTreeEntry* obj);
@@ -390,6 +515,10 @@ public:
 
 	bool isStaticBuilding();
 
+	/**
+	 * Returns cell based on the index.
+	 * Cells start index 1
+	 */
 	CellObject* getCell(unsigned int idx);
 
 	int getTotalCellNumber();
@@ -402,10 +531,29 @@ public:
 
 	int getCurrentNumberOfPlayerItems();
 
+	/**
+	 * Loops through all the cells, destroying items from the database that aren't contained in the child objects vector.
+	 */
 	void destroyAllPlayerItems();
 
+	/**
+	 * Abstract function that is triggered when a player enters a building.
+	 * This function should only be called from CreatureObject::insertToBuilding.
+	 * Overloaded functions must meet the post conditions for this function.
+	 * @pre { player is locked, zone is locked }
+	 * @post { player is locked, zone is locked }
+	 * @param player CreatureObject that entered the building
+	 */
 	virtual void onEnter(CreatureObject* player);
 
+	/**
+	 * Abstract function that is triggered when a player exits a building.
+	 * This function should only be called from CreatureObject::removeFromBuilding.
+	 * Overloaded functions must meet the post conditions for this function.
+	 * @pre { player is locked, zone is locked }
+	 * @post { player is locked, zone is locked }
+	 * @param player CreatureObject that exited the building
+	 */
 	virtual void onExit(CreatureObject* player, unsigned long long parentid);
 
 	bool isBuildingObject();
@@ -424,8 +572,16 @@ public:
 
 	int getMapCellSize();
 
+	/**
+	 * Switches the state of this building's privacy. If it is public, it becomes private, and vice-versa.
+	 * @return Returns true if the structure is now public, or false if it is now private.
+	 */
 	bool togglePrivacy();
 
+	/**
+	 * Calculates the maximum number of items that can be stored by a player in this building.
+	 * @return Returns a uint32 number representing the max items that can be stored in this building.
+	 */
 	virtual unsigned int getMaximumNumberOfPlayerItems();
 
 	String getRedeedMessage();

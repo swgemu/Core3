@@ -25,30 +25,87 @@ namespace areashapes {
 
 class AreaShape : public ManagedObject {
 public:
+	/** Constructor */
 	AreaShape();
 
+	/**
+	 * Set the area center.
+	 * @param x the x coordinate.
+	 * @param y the y coordinate.
+	 */
 	void setAreaCenter(float x, float y);
 
+	/**
+	 * Get the area center.
+	 * @return the area center.
+	 */
 	Vector3 getAreaCenter();
 
+	/**
+	 * Check if the coordinate is within the area shape.
+	 * @param x the x coordinate.
+	 * @param y the y coordinate.
+	 * @return true if the coordinate is within the area shape.
+	 */
 	bool containsPoint(float x, float y);
 
+	/**
+	 * Check if the coordinate is within the area shape.
+	 * @param point the point to check if it is within the area shape.
+	 * @return true if the coordinate is within the area shape.
+	 */
 	virtual bool containsPoint(const Vector3& point);
 
+	/**
+	 * Get the minimum radius of a circle bounding the area shape.
+	 * @return the minimum bonding radius.
+	 */
 	float getRadius();
 
+	/**
+	 * Generate a random position within the area.
+	 * @return a random position within the area.
+	 */
 	Vector3 getRandomPosition();
 
+	/**
+	 * Generate a random position within the area with the supplied origin and radius as limits.
+	 * @param origin the origin coordinate to generate the random position from.
+	 * @param minDistance the minimum distance from the origin.
+	 * @param maxDistance the maximum distance from the origin.
+	 * @return a random position within the area.
+	 */
 	Vector3 getRandomPosition(const Vector3& origin, float minDistance, float maxDistance);
 
+	/**
+	 * Check if this is a circular area shape.
+	 * @return true if it is a circular area shape.
+	 */
 	bool isCircularAreaShape();
 
+	/**
+	 * Check if this is a rectangular area shape.
+	 * @return true if it is a rectangular area shape.
+	 */
 	bool isRectangularAreaShape();
 
+	/**
+	 * Check if this is a ring area shape.
+	 * @return true if it is a ring area shape.
+	 */
 	bool isRingAreaShape();
 
+	/**
+	 * Check if this area shape intersects with the supplied area shape.
+	 * @param areaShape the area shape to check for intersections with.
+	 * @return true if the area shapes intersects each other.
+	 */
 	bool intersectsWith(AreaShape* areaShape);
 
+	/**
+	 * Get the area of the areaShape.
+	 * @return the area of the area shape.
+	 */
 	float getArea();
 
 	DistributedObjectServant* _getImplementation();
@@ -87,28 +144,84 @@ public:
 
 	AreaShapeImplementation(DummyConstructorParameter* param);
 
+	/**
+	 * Set the area center.
+	 * @param x the x coordinate.
+	 * @param y the y coordinate.
+	 */
 	void setAreaCenter(float x, float y);
 
+	/**
+	 * Get the area center.
+	 * @return the area center.
+	 */
 	Vector3 getAreaCenter();
 
+	/**
+	 * Check if the coordinate is within the area shape.
+	 * @param x the x coordinate.
+	 * @param y the y coordinate.
+	 * @return true if the coordinate is within the area shape.
+	 */
 	virtual bool containsPoint(float x, float y);
 
+	/**
+	 * Check if the coordinate is within the area shape.
+	 * @param point the point to check if it is within the area shape.
+	 * @return true if the coordinate is within the area shape.
+	 */
 	virtual bool containsPoint(const Vector3& point);
 
+	/**
+	 * Get the minimum radius of a circle bounding the area shape.
+	 * @return the minimum bonding radius.
+	 */
 	virtual float getRadius();
 
+	/**
+	 * Generate a random position within the area.
+	 * @return a random position within the area.
+	 */
 	virtual Vector3 getRandomPosition();
 
+	/**
+	 * Generate a random position within the area with the supplied origin and radius as limits.
+	 * @param origin the origin coordinate to generate the random position from.
+	 * @param minDistance the minimum distance from the origin.
+	 * @param maxDistance the maximum distance from the origin.
+	 * @return a random position within the area.
+	 */
 	virtual Vector3 getRandomPosition(const Vector3& origin, float minDistance, float maxDistance);
 
+	/**
+	 * Check if this is a circular area shape.
+	 * @return true if it is a circular area shape.
+	 */
 	virtual bool isCircularAreaShape();
 
+	/**
+	 * Check if this is a rectangular area shape.
+	 * @return true if it is a rectangular area shape.
+	 */
 	virtual bool isRectangularAreaShape();
 
+	/**
+	 * Check if this is a ring area shape.
+	 * @return true if it is a ring area shape.
+	 */
 	virtual bool isRingAreaShape();
 
+	/**
+	 * Check if this area shape intersects with the supplied area shape.
+	 * @param areaShape the area shape to check for intersections with.
+	 * @return true if the area shapes intersects each other.
+	 */
 	virtual bool intersectsWith(AreaShape* areaShape);
 
+	/**
+	 * Get the area of the areaShape.
+	 * @return the area of the area shape.
+	 */
 	virtual float getArea();
 
 	WeakReference<AreaShape*> _this;

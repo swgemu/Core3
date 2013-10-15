@@ -81,14 +81,27 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillAttributeList(AttributeListMessage* alm, CreatureObject* object);
 
 	void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
+	/**
+	 * Sets the object template path for the object which is generated from this deed being used.
+	 * @param templ The string template path that is to be created when this deed is used.
+	 */
 	void setGeneratedObjectTemplate(const String& templ);
 
+	/**
+	 * Gets the object template path for the object which is generated from this deed being used.
+	 */
 	String getGeneratedObjectTemplate();
 
 	bool isDeedObject();
@@ -133,14 +146,27 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void fillAttributeList(AttributeListMessage* alm, CreatureObject* object);
 
 	virtual void updateCraftingValues(CraftingValues* values, bool firstUpdate);
 
+	/**
+	 * Sets the object template path for the object which is generated from this deed being used.
+	 * @param templ The string template path that is to be created when this deed is used.
+	 */
 	void setGeneratedObjectTemplate(const String& templ);
 
+	/**
+	 * Gets the object template path for the object which is generated from this deed being used.
+	 */
 	String getGeneratedObjectTemplate();
 
 	bool isDeedObject();

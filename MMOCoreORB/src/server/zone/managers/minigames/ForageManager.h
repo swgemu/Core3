@@ -76,12 +76,64 @@ public:
 
 	void deleteForageAreaCollection(String& playerName);
 
+	/**
+	 * Starts foraging.
+	 * Checks the player's pending tasks to see if they are already foraging. If so, cancels forage.
+	 * Checks if the player is inside a structure. If so, cancels forage.
+	 * Deducts the foraging action cost from the player.
+	 * Collects the player's current position so we can compare it after the forage animation is done.
+	 * Creates the forage task and puts it into the player's pending tasks, it will activate in 8.5 
+	 * seconds and will activate finishForaging().
+	 * @pre { this object is not locked, player is locked }
+	 * @post { this object is not locked, player is not locked }
+	 * @param player CreatureObject who is trying to forage.
+	 * @param scoutForage Determines if the player is using /forage or /medicalforage.
+	 */
 	void startForaging(CreatureObject* player, int forageType);
 
+	/**
+	 * Finishes foraging.
+	 * Checks if the player moved since first foraging. If so, cancels forage.
+	 * Checks if the player entered combat. If so, cancels forage.
+	 * Checks the forage areas to see if the player is allowed to forage here again. If not, cancels forage.
+	 * Determines if the player is successful or not in the forage attempt.
+	 * If successful, activates forageGiveItems().
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is not locked, player is not locked }
+	 * @param player CreatureObject who is foraging.
+	 * @param scoutForage Determines if the player is using /forage or /medicalforage.
+	 * @param forageX The x coordinate of the player's position when they first started foraging.
+	 * @param forageY The y coordinate of the player's position when they first started foraging.
+	 * @param planet The planet (zone ID) the player was on when they first started foraging.
+	 */
 	void finishForaging(CreatureObject* player, int forageType, float forageX, float forageY, const String& planet);
 
+	/**
+	 * Gives the player items for a successful forage.
+	 * Checks player's inventory space and discards items they could have received if they had space.
+ 	 * Determines which loot group they will get an item from. If resource, calls giveForageResource().
+	 * @pre { this object is not locked, player is locked }
+	 * @post { this object is not locked, player is not locked }
+	 * @param player CreatureObject who is foraging.
+	 * @param scoutForage Determines if the player is using /forage or /medicalforage.
+	 * @param forageX The x coordinate of the player's position when they first started foraging.
+	 * @param forageY The y coordinate of the player's position when they first started foraging.
+	 * @param planet The planet (zone ID) the player was on when they first started foraging.
+	 */
 	bool forageGiveItems(CreatureObject* player, int forageType, float forageX, float forageY, const String& planet);
 
+	/**
+	 * Gives the player resources for a successful forage.
+	 * Pulls a list of all the flora resource spawns on that planet.
+ 	 * Picks a random flora from the list and gives it to the player if there is some under them.
+	 * If the density of the flora is zero, it picks a different resource.
+	 * @pre { this object is not locked, player is locked }
+	 * @post { this object is not locked, player is not locked }
+	 * @param player CreatureObject who is foraging.
+	 * @param forageX The x coordinate of the player's position when they first started foraging.
+	 * @param forageY The y coordinate of the player's position when they first started foraging.
+	 * @param planet The planet (zone ID) the player was on when they first started foraging.
+	 */
 	bool forageGiveResource(CreatureObject* player, float forageX, float forageY, const String& planet, String& resType);
 
 	DistributedObjectServant* _getImplementation();
@@ -129,12 +181,64 @@ public:
 
 	void deleteForageAreaCollection(String& playerName);
 
+	/**
+	 * Starts foraging.
+	 * Checks the player's pending tasks to see if they are already foraging. If so, cancels forage.
+	 * Checks if the player is inside a structure. If so, cancels forage.
+	 * Deducts the foraging action cost from the player.
+	 * Collects the player's current position so we can compare it after the forage animation is done.
+	 * Creates the forage task and puts it into the player's pending tasks, it will activate in 8.5 
+	 * seconds and will activate finishForaging().
+	 * @pre { this object is not locked, player is locked }
+	 * @post { this object is not locked, player is not locked }
+	 * @param player CreatureObject who is trying to forage.
+	 * @param scoutForage Determines if the player is using /forage or /medicalforage.
+	 */
 	void startForaging(CreatureObject* player, int forageType);
 
+	/**
+	 * Finishes foraging.
+	 * Checks if the player moved since first foraging. If so, cancels forage.
+	 * Checks if the player entered combat. If so, cancels forage.
+	 * Checks the forage areas to see if the player is allowed to forage here again. If not, cancels forage.
+	 * Determines if the player is successful or not in the forage attempt.
+	 * If successful, activates forageGiveItems().
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is not locked, player is not locked }
+	 * @param player CreatureObject who is foraging.
+	 * @param scoutForage Determines if the player is using /forage or /medicalforage.
+	 * @param forageX The x coordinate of the player's position when they first started foraging.
+	 * @param forageY The y coordinate of the player's position when they first started foraging.
+	 * @param planet The planet (zone ID) the player was on when they first started foraging.
+	 */
 	void finishForaging(CreatureObject* player, int forageType, float forageX, float forageY, const String& planet);
 
+	/**
+	 * Gives the player items for a successful forage.
+	 * Checks player's inventory space and discards items they could have received if they had space.
+ 	 * Determines which loot group they will get an item from. If resource, calls giveForageResource().
+	 * @pre { this object is not locked, player is locked }
+	 * @post { this object is not locked, player is not locked }
+	 * @param player CreatureObject who is foraging.
+	 * @param scoutForage Determines if the player is using /forage or /medicalforage.
+	 * @param forageX The x coordinate of the player's position when they first started foraging.
+	 * @param forageY The y coordinate of the player's position when they first started foraging.
+	 * @param planet The planet (zone ID) the player was on when they first started foraging.
+	 */
 	bool forageGiveItems(CreatureObject* player, int forageType, float forageX, float forageY, const String& planet);
 
+	/**
+	 * Gives the player resources for a successful forage.
+	 * Pulls a list of all the flora resource spawns on that planet.
+ 	 * Picks a random flora from the list and gives it to the player if there is some under them.
+	 * If the density of the flora is zero, it picks a different resource.
+	 * @pre { this object is not locked, player is locked }
+	 * @post { this object is not locked, player is not locked }
+	 * @param player CreatureObject who is foraging.
+	 * @param forageX The x coordinate of the player's position when they first started foraging.
+	 * @param forageY The y coordinate of the player's position when they first started foraging.
+	 * @param planet The planet (zone ID) the player was on when they first started foraging.
+	 */
 	bool forageGiveResource(CreatureObject* player, float forageX, float forageY, const String& planet, String& resType);
 
 	WeakReference<ForageManager*> _this;

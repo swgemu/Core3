@@ -109,12 +109,33 @@ public:
 
 	void activateRecovery();
 
+	/**
+	 * Sends the initial trainer NPC blurb.
+	 * \param player The player to send the conversation to.
+	 */
 	void sendInitialMessage(CreatureObject* player);
 
+	/**
+	 * Sends the initial trainer NPC options.
+	 * \param player The player to send the conversation to.
+	 */
 	void sendInitialChoices(CreatureObject* player);
 
+	/**
+	 * Sends the intial message to start the
+	 * training conversation. Checks for
+	 * qualificactions.
+	 * \param player The player to send the conversation to (in SceneObject form).
+	 */
 	void sendConversationStartTo(SceneObject* obj);
 
+	/**
+	 * Handles the options that the player has selected
+	 * and sets the last conversation strings to be used
+	 * to determine how to parse the option selected.
+	 * \param option The numerical selection the player has made (0indexed).
+	 * \param obj The player to send the conversation to (in SceneObject form).
+	 */
 	void selectConversationOption(int option, SceneObject* obj);
 
 	String getConversationString(int dealerType);
@@ -235,12 +256,33 @@ public:
 
 	void activateRecovery();
 
+	/**
+	 * Sends the initial trainer NPC blurb.
+	 * \param player The player to send the conversation to.
+	 */
 	void sendInitialMessage(CreatureObject* player);
 
+	/**
+	 * Sends the initial trainer NPC options.
+	 * \param player The player to send the conversation to.
+	 */
 	void sendInitialChoices(CreatureObject* player);
 
+	/**
+	 * Sends the intial message to start the
+	 * training conversation. Checks for
+	 * qualificactions.
+	 * \param player The player to send the conversation to (in SceneObject form).
+	 */
 	void sendConversationStartTo(SceneObject* obj);
 
+	/**
+	 * Handles the options that the player has selected
+	 * and sets the last conversation strings to be used
+	 * to determine how to parse the option selected.
+	 * \param option The numerical selection the player has made (0indexed).
+	 * \param obj The player to send the conversation to (in SceneObject form).
+	 */
 	void selectConversationOption(int option, SceneObject* obj);
 
 	String getConversationString(int dealerType);

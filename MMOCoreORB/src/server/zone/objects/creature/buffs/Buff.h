@@ -83,6 +83,11 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	void notifyLoadFromDatabase();
 
 	void loadBuffDurationEvent(CreatureObject* creo);
@@ -253,6 +258,11 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	void notifyLoadFromDatabase();
 
 	void loadBuffDurationEvent(CreatureObject* creo);

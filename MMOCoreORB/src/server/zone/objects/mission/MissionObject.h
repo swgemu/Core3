@@ -156,8 +156,20 @@ public:
 
 	WaypointObject* createWaypoint();
 
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
+	/**
+	 * Updates this object and childre objects to database
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param startTask if true, queues a new update task
+	 */
 	void updateToDatabaseAllObjects(bool startTask);
 
 	void setRefreshCounter(int ctr, bool notifyClient = true);
@@ -406,8 +418,20 @@ public:
 
 	WaypointObject* createWaypoint();
 
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param destroyContainedObjects if true, will destroy from database all its contained objects
+	 */
 	void destroyObjectFromDatabase(bool destroyContainedObjects = false);
 
+	/**
+	 * Updates this object and childre objects to database
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param startTask if true, queues a new update task
+	 */
 	void updateToDatabaseAllObjects(bool startTask);
 
 	void setRefreshCounter(int ctr, bool notifyClient = true);

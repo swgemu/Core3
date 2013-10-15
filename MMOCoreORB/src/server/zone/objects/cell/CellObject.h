@@ -70,14 +70,42 @@ public:
 
 	void setAllowEntryPermissionGroup(const String& group);
 
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	void notifyLoadFromDatabase();
 
+	/**
+	 * Sends the contained non slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the container objects }
+	 * @param player SceneObject that will receive the objects 
+	 */
 	void sendContainerObjectsTo(SceneObject* player);
 
 	void sendPermissionsTo(CreatureObject* object, bool allowEntry);
 
+	/**
+	 * Evaluates if this object has the necessary free slots to be able to add the specified SceneObject
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be checked
+	 * @param error error string that the player will receive on error
+	 * @return returns 0 on success, or error code
+	 */
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
+	/**
+	 * Tries to add/link object
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be added to the current object
+	 * @param containmentType arrangement type that will be used to add the object
+	 * @param notifyClient if true in range objects will be updated with the change
+	 * @return returns true if the object has been successfully added
+	 */
 	bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false, bool allowOverflow = false);
 
 	void initializeTransientMembers();
@@ -86,6 +114,9 @@ public:
 
 	int getCurrentNumberOfPlayerItems();
 
+	/**
+	 * This method loops through all items in the cell and attempts to destroy them from the database.
+	 */
 	void destroyAllPlayerItems();
 
 	int getCellNumber();
@@ -134,14 +165,42 @@ public:
 
 	void setAllowEntryPermissionGroup(const String& group);
 
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	void notifyLoadFromDatabase();
 
+	/**
+	 * Sends the contained non slotted objects to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the container objects }
+	 * @param player SceneObject that will receive the objects 
+	 */
 	void sendContainerObjectsTo(SceneObject* player);
 
 	void sendPermissionsTo(CreatureObject* object, bool allowEntry);
 
+	/**
+	 * Evaluates if this object has the necessary free slots to be able to add the specified SceneObject
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be checked
+	 * @param error error string that the player will receive on error
+	 * @return returns 0 on success, or error code
+	 */
 	int canAddObject(SceneObject* object, int containmentType, String& errorDescription);
 
+	/**
+	 * Tries to add/link object
+	 * @pre { this object is locked, object is locked }
+	 * @post {this object is locked, object is locked }
+	 * @param object SceneObject that will be added to the current object
+	 * @param containmentType arrangement type that will be used to add the object
+	 * @param notifyClient if true in range objects will be updated with the change
+	 * @return returns true if the object has been successfully added
+	 */
 	bool transferObject(SceneObject* object, int containmentType, bool notifyClient = false, bool allowOverflow = false);
 
 	void initializeTransientMembers();
@@ -150,6 +209,9 @@ public:
 
 	int getCurrentNumberOfPlayerItems();
 
+	/**
+	 * This method loops through all items in the cell and attempts to destroy them from the database.
+	 */
 	void destroyAllPlayerItems();
 
 	int getCellNumber();

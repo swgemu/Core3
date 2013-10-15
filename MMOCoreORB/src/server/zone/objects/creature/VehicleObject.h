@@ -130,34 +130,114 @@ public:
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	bool checkInRangeGarage();
 
+	/**
+	 * Inserts this object into zone
+	 * @pre { this object is locked }
+	 * @post { this object is locked and inserted into zone }
+	 * @param zone Zone object where this object will be inserted
+	 */
 	void notifyInsertToZone(Zone* zone);
 
+	/**
+	 * Sets a new posture
+	 * @pre { this object is locked }
+	 * @post {this object is locked, this object has the new posture set }
+	 * @param newPosture posture to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setPosture(int newPosture, bool notifyClient = true);
 
+	/**
+	 * Sends BasePacket msg to the owner of this object, needs to be overriden
+	 * @pre { } 
+	 * @post {owner of this object received message, message is deleted }
+	 * @param msg BasePacket to be sent
+	 */
 	void sendMessage(BasePacket* msg);
 
+	/**
+	 * Inflicts damage into the object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return unused for now
+	 */
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient = true);
 
+	/**
+	 * Heals damage
+	 * @pre { this, healer locked }
+	 * @post { this, healer locked }
+	 */
 	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
 
+	/**
+	 * Adds a SceneObject to the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is in the defender vector }
+	 * @param defender SceneObject to add to the defender vector
+	 */
 	void addDefender(SceneObject* defender);
 
+	/**
+	 * Removes the specified defender from the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is not in the defender vector }
+	 * @param defender SceneObject to remove from the defender vector
+	 */
 	void removeDefender(SceneObject* defender);
 
+	/**
+	 * Sets the active defender
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is active }
+	 * @param defender SceneObject to set as the active defender
+	 */
 	void setDefender(SceneObject* defender);
 
+	/**
+	 * Evaluates if this object can be attacket by the passed creature object
+	 * @pre { this object is locked }
+	 * @post { this object is locked}
+	 * @return returns true if the creature object can attack this 
+	 */
 	bool isAttackableBy(CreatureObject* object);
 
+	/**
+	 * Is called when this object is destroyed
+	 * @pre { this, attacker locked }
+	 * @post { this, attacker locked }
+	 */
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
+	/**
+	 * Attempts to see if the vehicle can be repaired. If tests are passed, then it sends the confirmation box to the player.
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player The player that is repairing the vehicle.
+	 */
 	void repairVehicle(CreatureObject* player);
 
 	int calculateRepairCost(CreatureObject* player);
@@ -212,34 +292,114 @@ public:
 
 	void fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player);
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	bool checkInRangeGarage();
 
+	/**
+	 * Inserts this object into zone
+	 * @pre { this object is locked }
+	 * @post { this object is locked and inserted into zone }
+	 * @param zone Zone object where this object will be inserted
+	 */
 	void notifyInsertToZone(Zone* zone);
 
+	/**
+	 * Sets a new posture
+	 * @pre { this object is locked }
+	 * @post {this object is locked, this object has the new posture set }
+	 * @param newPosture posture to set
+	 * @param notifyClient if set true the client will be updated with the changes
+	 */
 	void setPosture(int newPosture, bool notifyClient = true);
 
+	/**
+	 * Sends BasePacket msg to the owner of this object, needs to be overriden
+	 * @pre { } 
+	 * @post {owner of this object received message, message is deleted }
+	 * @param msg BasePacket to be sent
+	 */
 	void sendMessage(BasePacket* msg);
 
+	/**
+	 * Inflicts damage into the object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return unused for now
+	 */
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient = true);
 
+	/**
+	 * Heals damage
+	 * @pre { this, healer locked }
+	 * @post { this, healer locked }
+	 */
 	int healDamage(TangibleObject* healer, int damageType, int damageToHeal, bool notifyClient = true);
 
+	/**
+	 * Adds a SceneObject to the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is in the defender vector }
+	 * @param defender SceneObject to add to the defender vector
+	 */
 	void addDefender(SceneObject* defender);
 
+	/**
+	 * Removes the specified defender from the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is not in the defender vector }
+	 * @param defender SceneObject to remove from the defender vector
+	 */
 	void removeDefender(SceneObject* defender);
 
+	/**
+	 * Sets the active defender
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is active }
+	 * @param defender SceneObject to set as the active defender
+	 */
 	void setDefender(SceneObject* defender);
 
+	/**
+	 * Evaluates if this object can be attacket by the passed creature object
+	 * @pre { this object is locked }
+	 * @post { this object is locked}
+	 * @return returns true if the creature object can attack this 
+	 */
 	bool isAttackableBy(CreatureObject* object);
 
+	/**
+	 * Is called when this object is destroyed
+	 * @pre { this, attacker locked }
+	 * @post { this, attacker locked }
+	 */
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
+	/**
+	 * Attempts to see if the vehicle can be repaired. If tests are passed, then it sends the confirmation box to the player.
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player The player that is repairing the vehicle.
+	 */
 	void repairVehicle(CreatureObject* player);
 
 	int calculateRepairCost(CreatureObject* player);

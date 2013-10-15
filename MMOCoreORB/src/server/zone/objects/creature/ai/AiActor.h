@@ -265,14 +265,25 @@ public:
 
 	CreatureObject* getHost();
 
+	/**
+	 * Initializes the transient members of ManagedObject, must call the inherited object method first.
+	 * @pre { transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
 	void initializeTransientMembers();
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
+	/**
+	 * Uses position updates to perform a think
+	 */
 	void notifyPositionUpdate(QuadTreeEntry* entry);
 
 	void setCurrentMessage(unsigned short msg);
 
+	/**
+	 * calculate next state based on initial state and message
+	 */
 	void next(unsigned short msg);
 
 	void next();
@@ -383,8 +394,20 @@ public:
 
 	void removeDefender(SceneObject* defender);
 
+	/**
+	 * Evaluates if this object can be attacket by the passed creature object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns true if the creature object can attack this 
+	 */
 	bool isAttackableBy(CreatureObject* object);
 
+	/**
+	 * Evaluates if this creature is aggresive to the object
+	 * @pre { }
+	 * @post { }
+	 * @return returns true if its aggressive
+	 */
 	bool isAggressiveTo(CreatureObject* object);
 
 	void updateLastDamageReceived();
@@ -574,14 +597,25 @@ public:
 
 	CreatureObject* getHost();
 
+	/**
+	 * Initializes the transient members of ManagedObject, must call the inherited object method first.
+	 * @pre { transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
 	void initializeTransientMembers();
 
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
+	/**
+	 * Uses position updates to perform a think
+	 */
 	void notifyPositionUpdate(QuadTreeEntry* entry);
 
 	void setCurrentMessage(unsigned short msg);
 
+	/**
+	 * calculate next state based on initial state and message
+	 */
 	void next(unsigned short msg);
 
 	void next();
@@ -692,8 +726,20 @@ public:
 
 	void removeDefender(SceneObject* defender);
 
+	/**
+	 * Evaluates if this object can be attacket by the passed creature object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns true if the creature object can attack this 
+	 */
 	bool isAttackableBy(CreatureObject* object);
 
+	/**
+	 * Evaluates if this creature is aggresive to the object
+	 * @pre { }
+	 * @post { }
+	 * @return returns true if its aggressive
+	 */
 	bool isAggressiveTo(CreatureObject* object);
 
 	void updateLastDamageReceived();

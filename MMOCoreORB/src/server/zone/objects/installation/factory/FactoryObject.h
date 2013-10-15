@@ -105,14 +105,33 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	void notifyLoadFromDatabase();
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	bool isFactory();
 
+	/**
+	 * Handles creating the hoppers
+	 */
 	void createChildObjects();
 
+	/**
+	 * Handles sending the SUI full of manufacturing schematics
+	 * that will work in this station
+	 */
 	void sendInsertManuSui(CreatureObject* player);
 
 	void sendIngredientsNeededSui(CreatureObject* player);
@@ -125,8 +144,16 @@ public:
 
 	void closeHopper(Observable* observable, ManagedObject* arg1);
 
+	/**
+	 * Handles inputting the schematic to the 
+	 * factory
+	 */
 	void handleInsertFactorySchem(CreatureObject* player, ManufactureSchematic* schematic);
 
+	/**
+	 * Handles inputting the schematic to the 
+	 * factory
+	 */
 	void handleRemoveFactorySchem(CreatureObject* player);
 
 	void handleOperateToggle(CreatureObject* player);
@@ -183,14 +210,33 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	void notifyLoadFromDatabase();
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
 	bool isFactory();
 
+	/**
+	 * Handles creating the hoppers
+	 */
 	void createChildObjects();
 
+	/**
+	 * Handles sending the SUI full of manufacturing schematics
+	 * that will work in this station
+	 */
 	void sendInsertManuSui(CreatureObject* player);
 
 	void sendIngredientsNeededSui(CreatureObject* player);
@@ -203,8 +249,16 @@ public:
 
 	void closeHopper(Observable* observable, ManagedObject* arg1);
 
+	/**
+	 * Handles inputting the schematic to the 
+	 * factory
+	 */
 	void handleInsertFactorySchem(CreatureObject* player, ManufactureSchematic* schematic);
 
+	/**
+	 * Handles inputting the schematic to the 
+	 * factory
+	 */
 	void handleRemoveFactorySchem(CreatureObject* player);
 
 	void handleOperateToggle(CreatureObject* player);

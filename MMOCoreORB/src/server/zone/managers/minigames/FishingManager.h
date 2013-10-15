@@ -232,86 +232,469 @@ public:
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
+	/**
+	 * Checks for Player movement
+	 * checkFishingOnPositionUpdate is called from notify(SceneObject) by the observer pattern
+	 * The method locks the manager since it is a new entry point into the manager
+	 * Based on the Fishing State and the position change, fishing might be stopped
+	 * if the Player goes in too deep (starts swimming) or moves too far from the marker for the line
+	 * or if the Player moves within 2.0 distance of the marker, attempts to reel in
+	 * either succeeding or stopping fishing because no fish was caught yet.
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject to check movement for
+	 */
 	void checkFishingOnPositionUpdate(CreatureObject* player);
 
+	/**
+	 * Removes the Marker
+	 * notifyCloseContainer is called when the registered Marker is closed.
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject to remove Marker from
+	 */
 	int notifyCloseContainer(CreatureObject* player, SceneObject* container);
 
+	/** 
+	 * check location of Player and return the marker position
+	 * checkLocation gets the PositionX/Y/Z from Player computing new coordinates based on quality of the fishing pole
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject used for coordinate calculation
+	 * @param quality Crafted Quality of the Fishing Pole
+	 * @param x x-Coordinate to be filled with marker position
+	 * @param y y-Coordinate to be filled with marker position
+	 * @param z z-Coordinate to be filled with marker position 
+	 * @return { 0: everything worked, 1: Exception case, 3: No Water, 4: Water under terrain }
+	 * @TODO { once actually craftable the line range calculation probably needs to be adjusted to affect the outcome less } 
+	 */
 	int checkLocation(CreatureObject* player, int quality, float& x, float& y, float& z);
 
+	/**
+	 * Starts Fishing Game
+	 * startFishing checks for Fishing Pole, Fishing Bait and Water at the position of the bobber,
+	 * creates the bobber and opens the window for Fishing.
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject which wants to start fishing
+	 * @return { 0: everything worked, 1: No Pole, 2: No Bait, 3: No Water, 4: Water under terrain, 5: Player Swimming, 6: Exception case }
+	 */
 	int startFishing(CreatureObject* player);
 
+	/**
+	 * Stops Fishing Game
+	 * stopFishing sets fishing state to NOTFISHING, creates a new splash (marker disappearing), closes the menu,
+	 * removes the marker and stops the event
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject which wants to stop fishing
+	 * @param boxID Fishing window to close
+	 * @param rem if true removes Marker, false when called by successful catch so the container won't disappear
+	 */
 	void stopFishing(CreatureObject* player, unsigned int boxID, bool rem);
 
+	/**
+	 * fishingStep gets called from FishingEvent::run()
+	 * fishingStep closes the menu, gets the current state and computes two random numbers
+	 * If the player hasnt reached CATCH state yet and the bait is MUSH, it will be tossed and fishing ends
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject which is currently fishing
+	 */
 	void fishingStep(CreatureObject* player);
 
+	/**
+	 * success is called to give the Player his reward
+	 * success uses the given fish to decide whether the player receives a misc item or a fish
+	 * The values for chances (>93 for item, >94 on another roll for rare item) are based on a SWG Dev comment:
+	 * "As for the drop rates of Fish Tank Items/Treasure maps/Junk Loot (not including collection fish) when fishing, each time you catch something, there is a 6% chance it will be one of the above mentioned items." -Millbarge - SWG Developer
+	 * So there is a 6% chance of an item, and another 5% change for a rare item => 0.3% chance for a rare item
+	 * Also, if you are unlucky (5% chance) the fish was too small and it is being tossed
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject that receives the reward
+	 * @param marker Fishing Marker that is used as Container
+	 * @param boxID Fishing window being closed
+	 */
 	void success(CreatureObject* player, int fish, SceneObject* marker, unsigned int boxID);
 
+	/**
+	 * Returns timestamp as string
+	 * Takes current time and returns formatted String
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return { String of time }
+	 */
 	String getTime();
 
+	/**
+	 * Sends loot to Player
+	 * sendReward receives Player, the Marker and the created Object,
+	 * adds the object to the marker, opens the Container to the Player and sends appropriate SystemMessage
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject receiving item
+	 * @param marker Container for item
+	 * @param loot Item to send to Player
+	 */
 	void sendReward(CreatureObject* player, SceneObject* marker, SceneObject* loot);
 
+	/**
+	 * Creates a Fishing Window
+	 * createWindow closes the old menu and creates a new one based on vegetation, density, freshness etc
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to open a new window
+	 * @param boxID Old fishing window to close
+	 * @return { -1: problem, otherwise uint32 boxID of new window }
+	 */
 	unsigned int createWindow(CreatureObject* player, unsigned int boxID);
 
+	/**
+	 * Closes the FishingMenu
+	 * closeMenu checks for valid boxID and Player and sends the close message, removing the sui box from the player
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to close window
+	 * @param boxID Fishing window being closed
+	 */
 	void closeMenu(CreatureObject* player, unsigned int boxID);
 
+	/**
+	 * Calculates vegetation based on current Position
+	 * vegetation returns a value 0-5 based on abs(PositionX/100) rounded up
+	 * @TODO { Actually make vegetation a property of a body of water }
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param marker Fishing marker to get coordinates of to calculate the vegetation
+	 * @return { 0-5 }
+	 */
 	int vegetation(SceneObject* marker);
 
+	/**
+	 * Calculates density based on current Position
+	 * density returns a value 0-5 based on abs(PositionY/100) rounded up
+	 * @TODO { Actually make density a property of a body of water }
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param marker Fishing marker to get coordinates of to calculate the fish density
+	 * @return { 0-5 }
+	 */
 	int density(SceneObject* marker);
 
+	/**
+	 * Calculates Fish biting
+	 * getFish calculates a random number 0-99 and, if it's a fish (<94) calculates what kind of fish
+	 * based on pole quality, vegetation penalty, fish density bonus, bait status, and a random number
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to randomize fish 
+	 * @return { 0-6: Fish, 94-99: Misc Item }
+	 */
 	int getFish(CreatureObject* player);
 
+	/**
+	 * Gets Next Action from Event
+	 * getNextAction gets the Event linked to the Player and returns the next action,
+	 * if the player or the event are NULL the value DONOTHING(=0) is returned
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to get the fishing event's nextAction member
+	 * @return { 0-5: Next Action }
+	 */
 	int getNextAction(CreatureObject* player);
 
+	/**
+	 * Sets Next Action on Fishing Event
+	 * setNextAction gets the Fishing Event linked to the Player and sets it's Action to the argument
+	 * unless it is out of acceptable bounds
+ 	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to modify the fishing event
+	 * @param next Integer index of Action selected by Player
+	 */
 	void setNextAction(CreatureObject* player, int next);
 
+	/**
+	 * Gets Pole from Player
+	 * getPole gets the SceneObject in the Players right hand and, unless it is NULL,
+	 * checks whether it is a fishing pole and returns it
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to get fishing pole
+	 * @return { FishingPoleObject or NULL }
+	 */
 	FishingPoleObject* getPole(CreatureObject* player);
 
+	/**
+	 * Gets Bait from Pole
+	 * getBait gets the pole from the Player, looks into the Container and if there's an object in it returns it
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to get fishing bait
+	 * @return { FishingBaitObject or NULL }
+	 */
 	FishingBaitObject* getBait(CreatureObject* player);
 
+	/**
+	 * Gets Fishing Window ID from Event
+	 * getFishBoxID gets the Event linked to a player and returns the fishBoxID from it
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to get fishing event's fishBoxID
+	 * @return { boxID or -1 }
+	 */
 	unsigned int getFishBoxID(CreatureObject* player);
 
+	/**
+	 * Sets Window BoxID in Event
+	 * setFishBoxID gets the event linked to the player
+	 * and sets the fishBoxID to the argument given boxID
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to modify the fishing event
+	 * @param boxID fishing window to point to
+	 */
 	void setFishBoxID(CreatureObject* player, unsigned int boxID);
 
+	/**
+	 * Gets fishing state from Event
+	 * getFishingState gets the Event linked to the player
+	 * and returns the FishingState, NOTFISHING if there is no event
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to get the fishing event's fishing state
+	 * @return { 0-6 }
+	 */
 	int getFishingState(CreatureObject* player);
 
+	/**
+	 * Sets fishing state in Event
+	 * setFishingState gets the Event linked to the player
+	 * and sets the FishingState to the argument-given state unless it's NULL
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to set the fishing event's fishing state
+	 * @param state Integer value sent to event
+	 */
 	void setFishingState(CreatureObject* player, int state);
 
+	/**
+	 * Gets Fish Marker in Event
+	 * getFishMarker gets the Event linked to the player
+	 * and returns the Marker of the Event, even if it is NULL
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to get the event's fish marker
+	 * @return { NULL: player is NULL, player: no fishing event, FishMarker otherwise }
+	 */
 	SceneObject* getFishMarker(CreatureObject* player);
 
+	/**
+	 * Sets Fish Marker in Event
+	 * setFishMarker gets the Event linked to the player
+	 * and sets it's marker to the argument-given marker
+	 * there is an intended call that sets the marker in the event to NULL
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to set the event's fish marker
+	 * @param marker Marker sent to event
+	 */
 	void setFishMarker(CreatureObject* player, SceneObject* marker);
 
+	/**
+	 * Hands out free Bait
+	 * freeBait is used for debugging: in case the Pole is empty, a bait will be created
+	 * and added to the pole
+	 * @TODO { Remove this and it's call at FishCommand when testing is complete }
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to put free bait into the fishing pole
+	 */
 	void freeBait(CreatureObject* player);
 
+	/**
+	 * fishingProceed notifies the Player and create the new Event
+	 * fishingProceed is called from FishingStep unless fishing has ended
+	 * It will notify the Player through fly text and system messages of what is going on
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to proceed fishing
+	 * @param nextAction action taken by player
+	 * @param marker Fish marker used to create splash at
+	 * @param fish Integer carried along to know what fish is currently biting
+	 * @param boxID window to close when creating new window
+	 * @param newstate The new state for the player to know from where and where to the transition is taking place
+	 * @param notifyClient If true the marker was updated and the player will be informed that the fish was brought closer
+	 * @param moodString String taken from player before fishing to return to after fishing
+	 */
 	void fishingProceed(CreatureObject* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, int newstate, bool notifyClient, String& moodString);
 
+	/**
+	 * mishapEvent stops Fishing out of bad luck, possibly losing bait in the process
+	 * mishapEvent uses the argument string and sends it to the Player, stops Fishing and if losebait
+	 * is true, calls loseBait
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param text String to send to Player
+	 * @param player CreatureObject to which send message
+	 * @param boxID fishing window to close when calling stopFishing()
+	 * @param losebait If true the bait in the pole will be removed as an outcome of what happened
+	 * @param moodString String taken from player before fishing to return to after fishing 
+	 */
 	void mishapEvent(const String& text, CreatureObject* player, unsigned int boxID, bool losebait, String& moodString);
 
+	/**
+	 * Lose the Bait in the Container
+	 * loseBait gets the pole and removes the object from that container
+	 * @TODO { For stacks (more than 1 of the bait) remove just one of it }
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to remove bait from pole
+	 * @return { true if bait was removed }
+	 */
 	bool loseBait(CreatureObject* player);
 
+	/**
+	 * Does Player Animations for different fishing actions
+	 * animate switches through nextAction and calls appropriate Animations
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to doAnimation()
+	 * @param nextAction index used to decide which animation to play
+	 */
 	void animate(CreatureObject* player, int nextAction);
 
+	/**
+	 * Creates a marker object at the given coordinates
+	 * createMarker creates a SceneObject for tango/fishing/shared_marker.iff and inserts it at given coordinates
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param x X-Coordinate of new marker
+	 * @param y Y-Coordinate of new marker
+	 * @param z Z-Coordinate of new marker
+	 * @param zone Zone used to create the marker in
+	 * @return { SceneObject of new marker }
+	 */
 	SceneObject* createMarker(float x, float y, float z, Zone* zone);
 
+	/**
+	 * Creates a small Splash at the given coordinates
+	 * createSplash creates a SceneObject for tango/fishing/shared_splash.iff and inserts it at given coordinates
+	 * a FishingSplashEvent is created so that the splash is removed in due time
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param x X-Coordinate of the splash
+	 * @param y Y-Coordinate of the splash
+	 * @param z Z-Coordinate of the splash
+	 * @param zone Zone used to create the splash in
+	 * @param player CreatureObject for which to create fishing splash event
+	 */
 	void createSplash(float x, float y, float z, Zone* zone, CreatureObject* player);
 
+	/**
+	 * Checks whether the fish has beached
+	 * checkUpdateMarker is called by updateMarker to see if the new position is in Water
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to check
+	 * @param x X-Coordinate of the splash
+	 * @param y Y-Coordinate of the splash
+	 * @param z Z-Coordinate of the splash
+	 * @return { true if beached, false if water }
+	 */
 	bool checkUpdateMarker(CreatureObject* player, float& x, float& y, float& z);
 
 	bool isPlaying(CreatureObject* player);
 
+	/**
+	 * Updates the fishing Marker
+	 * updateMarker takes the player position and the marker position and halfes that distance creating
+	 * a new marker at that position and returning the marker
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to update the fishing event's marker
+	 * @param marker Object sent to event as new marker
+	 * @return { SceneObject of new Marker }
+	 */
 	SceneObject* updateMarker(CreatureObject* player, SceneObject* marker, bool notifyPlayer);
 
+	/**
+	 * Removes the fishing marker
+	 * removeMarker sets the Marker in the Event to NULL and removes the marker from Zone
+	 * it is only called where it is set to a new marker, or the event is stopped, so the NULL won't cause problems
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject to get Event to remove marker from
+	 * @param container Container to remove
+	 */
 	void removeMarker(CreatureObject* player, SceneObject* container);
 
+	/**
+	 * Removes the Splash
+	 * removeSplash is called from FishingSplashEvent, the splash is simply removed from zone
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param splash SceneObject to remove from Zone
+	 */
 	void removeSplash(SceneObject* splash);
 
+	/**
+	 * Creates a Splash Event schedule 1000
+	 * createFishingSplashEvent creates a new FishingSplashEvent for the given SceneObject
+	 * and schedules it to 1000 so the Splash is removed after 1 second
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to create Splash Event
+	 * @param zoneServer ZoneServer used
+	 * @param splash SceneObject to remove later
+	 */
 	void createFishingSplashEvent(CreatureObject* player, SceneObject* splash);
 
+	/**
+	 * Creates a FishingSession
+	 * createFishingSession creates a new FishingSession given the player, event, nextAction,
+	 * the marker, the FishType as sum, the fishing window, the State and the mood and puts it into VectorMap sessions
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to create FishingSession
+	 * @param event Current FishingEvent
+	 * @param nextAction Action to be executed
+	 * @param marker The fish marker being used
+	 * @param sum Integer indicating fish
+	 * @param boxID Fishing window to later close
+	 * @param state FishingState the player is in
+	 * @param moodString String taken from player before fishing to return to after fishing
+	 */
 	void createFishingSession(CreatureObject* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, unsigned int boxID, int fishingState, String& mood);
 
+	/**
+	 * Creates a Fishing Event schedule 7000
+	 * createFishingEvent creates a new Fishing Event given the State
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to create Fishing Event
+	 * @param zoneServer ZoneServer used
+	 * @param state FishingState the player is in
+	 */
 	FishingEvent* createFishingEvent(CreatureObject* player, int state);
 
+	/**
+	 * Stops Fishing Event
+	 * stopFishingEvent gets the FishingEvent for a player, drops it from the VectorMap and cancels it
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to stop the fishing event
+	 */
 	void stopFishingEvent(CreatureObject* player);
 
+	/**
+	 * FishingEvent getter
+	 * getFishingEvent is a readonly method that gets the FishingEvent from the events VectorMap and returns it
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to get fishing event
+	 */
 	FishingEvent* getFishingEvent(CreatureObject* player);
 
 	DistributedObjectServant* _getImplementation();
@@ -436,86 +819,469 @@ public:
 
 	int notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
 
+	/**
+	 * Checks for Player movement
+	 * checkFishingOnPositionUpdate is called from notify(SceneObject) by the observer pattern
+	 * The method locks the manager since it is a new entry point into the manager
+	 * Based on the Fishing State and the position change, fishing might be stopped
+	 * if the Player goes in too deep (starts swimming) or moves too far from the marker for the line
+	 * or if the Player moves within 2.0 distance of the marker, attempts to reel in
+	 * either succeeding or stopping fishing because no fish was caught yet.
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject to check movement for
+	 */
 	void checkFishingOnPositionUpdate(CreatureObject* player);
 
+	/**
+	 * Removes the Marker
+	 * notifyCloseContainer is called when the registered Marker is closed.
+	 * @pre { this object is not locked }
+	 * @post { this object is not locked }
+	 * @param player CreatureObject to remove Marker from
+	 */
 	int notifyCloseContainer(CreatureObject* player, SceneObject* container);
 
+	/** 
+	 * check location of Player and return the marker position
+	 * checkLocation gets the PositionX/Y/Z from Player computing new coordinates based on quality of the fishing pole
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject used for coordinate calculation
+	 * @param quality Crafted Quality of the Fishing Pole
+	 * @param x x-Coordinate to be filled with marker position
+	 * @param y y-Coordinate to be filled with marker position
+	 * @param z z-Coordinate to be filled with marker position 
+	 * @return { 0: everything worked, 1: Exception case, 3: No Water, 4: Water under terrain }
+	 * @TODO { once actually craftable the line range calculation probably needs to be adjusted to affect the outcome less } 
+	 */
 	int checkLocation(CreatureObject* player, int quality, float& x, float& y, float& z);
 
+	/**
+	 * Starts Fishing Game
+	 * startFishing checks for Fishing Pole, Fishing Bait and Water at the position of the bobber,
+	 * creates the bobber and opens the window for Fishing.
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject which wants to start fishing
+	 * @return { 0: everything worked, 1: No Pole, 2: No Bait, 3: No Water, 4: Water under terrain, 5: Player Swimming, 6: Exception case }
+	 */
 	int startFishing(CreatureObject* player);
 
+	/**
+	 * Stops Fishing Game
+	 * stopFishing sets fishing state to NOTFISHING, creates a new splash (marker disappearing), closes the menu,
+	 * removes the marker and stops the event
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject which wants to stop fishing
+	 * @param boxID Fishing window to close
+	 * @param rem if true removes Marker, false when called by successful catch so the container won't disappear
+	 */
 	void stopFishing(CreatureObject* player, unsigned int boxID, bool rem);
 
+	/**
+	 * fishingStep gets called from FishingEvent::run()
+	 * fishingStep closes the menu, gets the current state and computes two random numbers
+	 * If the player hasnt reached CATCH state yet and the bait is MUSH, it will be tossed and fishing ends
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject which is currently fishing
+	 */
 	void fishingStep(CreatureObject* player);
 
+	/**
+	 * success is called to give the Player his reward
+	 * success uses the given fish to decide whether the player receives a misc item or a fish
+	 * The values for chances (>93 for item, >94 on another roll for rare item) are based on a SWG Dev comment:
+	 * "As for the drop rates of Fish Tank Items/Treasure maps/Junk Loot (not including collection fish) when fishing, each time you catch something, there is a 6% chance it will be one of the above mentioned items." -Millbarge - SWG Developer
+	 * So there is a 6% chance of an item, and another 5% change for a rare item => 0.3% chance for a rare item
+	 * Also, if you are unlucky (5% chance) the fish was too small and it is being tossed
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject that receives the reward
+	 * @param marker Fishing Marker that is used as Container
+	 * @param boxID Fishing window being closed
+	 */
 	void success(CreatureObject* player, int fish, SceneObject* marker, unsigned int boxID);
 
+	/**
+	 * Returns timestamp as string
+	 * Takes current time and returns formatted String
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return { String of time }
+	 */
 	String getTime();
 
+	/**
+	 * Sends loot to Player
+	 * sendReward receives Player, the Marker and the created Object,
+	 * adds the object to the marker, opens the Container to the Player and sends appropriate SystemMessage
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject receiving item
+	 * @param marker Container for item
+	 * @param loot Item to send to Player
+	 */
 	void sendReward(CreatureObject* player, SceneObject* marker, SceneObject* loot);
 
+	/**
+	 * Creates a Fishing Window
+	 * createWindow closes the old menu and creates a new one based on vegetation, density, freshness etc
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to open a new window
+	 * @param boxID Old fishing window to close
+	 * @return { -1: problem, otherwise uint32 boxID of new window }
+	 */
 	unsigned int createWindow(CreatureObject* player, unsigned int boxID);
 
+	/**
+	 * Closes the FishingMenu
+	 * closeMenu checks for valid boxID and Player and sends the close message, removing the sui box from the player
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to close window
+	 * @param boxID Fishing window being closed
+	 */
 	void closeMenu(CreatureObject* player, unsigned int boxID);
 
+	/**
+	 * Calculates vegetation based on current Position
+	 * vegetation returns a value 0-5 based on abs(PositionX/100) rounded up
+	 * @TODO { Actually make vegetation a property of a body of water }
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param marker Fishing marker to get coordinates of to calculate the vegetation
+	 * @return { 0-5 }
+	 */
 	int vegetation(SceneObject* marker);
 
+	/**
+	 * Calculates density based on current Position
+	 * density returns a value 0-5 based on abs(PositionY/100) rounded up
+	 * @TODO { Actually make density a property of a body of water }
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param marker Fishing marker to get coordinates of to calculate the fish density
+	 * @return { 0-5 }
+	 */
 	int density(SceneObject* marker);
 
+	/**
+	 * Calculates Fish biting
+	 * getFish calculates a random number 0-99 and, if it's a fish (<94) calculates what kind of fish
+	 * based on pole quality, vegetation penalty, fish density bonus, bait status, and a random number
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to randomize fish 
+	 * @return { 0-6: Fish, 94-99: Misc Item }
+	 */
 	int getFish(CreatureObject* player);
 
+	/**
+	 * Gets Next Action from Event
+	 * getNextAction gets the Event linked to the Player and returns the next action,
+	 * if the player or the event are NULL the value DONOTHING(=0) is returned
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to get the fishing event's nextAction member
+	 * @return { 0-5: Next Action }
+	 */
 	int getNextAction(CreatureObject* player);
 
+	/**
+	 * Sets Next Action on Fishing Event
+	 * setNextAction gets the Fishing Event linked to the Player and sets it's Action to the argument
+	 * unless it is out of acceptable bounds
+ 	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to modify the fishing event
+	 * @param next Integer index of Action selected by Player
+	 */
 	void setNextAction(CreatureObject* player, int next);
 
+	/**
+	 * Gets Pole from Player
+	 * getPole gets the SceneObject in the Players right hand and, unless it is NULL,
+	 * checks whether it is a fishing pole and returns it
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to get fishing pole
+	 * @return { FishingPoleObject or NULL }
+	 */
 	FishingPoleObject* getPole(CreatureObject* player);
 
+	/**
+	 * Gets Bait from Pole
+	 * getBait gets the pole from the Player, looks into the Container and if there's an object in it returns it
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to get fishing bait
+	 * @return { FishingBaitObject or NULL }
+	 */
 	FishingBaitObject* getBait(CreatureObject* player);
 
+	/**
+	 * Gets Fishing Window ID from Event
+	 * getFishBoxID gets the Event linked to a player and returns the fishBoxID from it
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to get fishing event's fishBoxID
+	 * @return { boxID or -1 }
+	 */
 	unsigned int getFishBoxID(CreatureObject* player);
 
+	/**
+	 * Sets Window BoxID in Event
+	 * setFishBoxID gets the event linked to the player
+	 * and sets the fishBoxID to the argument given boxID
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to modify the fishing event
+	 * @param boxID fishing window to point to
+	 */
 	void setFishBoxID(CreatureObject* player, unsigned int boxID);
 
+	/**
+	 * Gets fishing state from Event
+	 * getFishingState gets the Event linked to the player
+	 * and returns the FishingState, NOTFISHING if there is no event
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to get the fishing event's fishing state
+	 * @return { 0-6 }
+	 */
 	int getFishingState(CreatureObject* player);
 
+	/**
+	 * Sets fishing state in Event
+	 * setFishingState gets the Event linked to the player
+	 * and sets the FishingState to the argument-given state unless it's NULL
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to set the fishing event's fishing state
+	 * @param state Integer value sent to event
+	 */
 	void setFishingState(CreatureObject* player, int state);
 
+	/**
+	 * Gets Fish Marker in Event
+	 * getFishMarker gets the Event linked to the player
+	 * and returns the Marker of the Event, even if it is NULL
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to get the event's fish marker
+	 * @return { NULL: player is NULL, player: no fishing event, FishMarker otherwise }
+	 */
 	SceneObject* getFishMarker(CreatureObject* player);
 
+	/**
+	 * Sets Fish Marker in Event
+	 * setFishMarker gets the Event linked to the player
+	 * and sets it's marker to the argument-given marker
+	 * there is an intended call that sets the marker in the event to NULL
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param player CreatureObject for which to set the event's fish marker
+	 * @param marker Marker sent to event
+	 */
 	void setFishMarker(CreatureObject* player, SceneObject* marker);
 
+	/**
+	 * Hands out free Bait
+	 * freeBait is used for debugging: in case the Pole is empty, a bait will be created
+	 * and added to the pole
+	 * @TODO { Remove this and it's call at FishCommand when testing is complete }
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to put free bait into the fishing pole
+	 */
 	void freeBait(CreatureObject* player);
 
+	/**
+	 * fishingProceed notifies the Player and create the new Event
+	 * fishingProceed is called from FishingStep unless fishing has ended
+	 * It will notify the Player through fly text and system messages of what is going on
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to proceed fishing
+	 * @param nextAction action taken by player
+	 * @param marker Fish marker used to create splash at
+	 * @param fish Integer carried along to know what fish is currently biting
+	 * @param boxID window to close when creating new window
+	 * @param newstate The new state for the player to know from where and where to the transition is taking place
+	 * @param notifyClient If true the marker was updated and the player will be informed that the fish was brought closer
+	 * @param moodString String taken from player before fishing to return to after fishing
+	 */
 	void fishingProceed(CreatureObject* player, int nextAction, SceneObject* marker, int fish, unsigned int boxID, int newstate, bool notifyClient, String& moodString);
 
+	/**
+	 * mishapEvent stops Fishing out of bad luck, possibly losing bait in the process
+	 * mishapEvent uses the argument string and sends it to the Player, stops Fishing and if losebait
+	 * is true, calls loseBait
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param text String to send to Player
+	 * @param player CreatureObject to which send message
+	 * @param boxID fishing window to close when calling stopFishing()
+	 * @param losebait If true the bait in the pole will be removed as an outcome of what happened
+	 * @param moodString String taken from player before fishing to return to after fishing 
+	 */
 	void mishapEvent(const String& text, CreatureObject* player, unsigned int boxID, bool losebait, String& moodString);
 
+	/**
+	 * Lose the Bait in the Container
+	 * loseBait gets the pole and removes the object from that container
+	 * @TODO { For stacks (more than 1 of the bait) remove just one of it }
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to remove bait from pole
+	 * @return { true if bait was removed }
+	 */
 	bool loseBait(CreatureObject* player);
 
+	/**
+	 * Does Player Animations for different fishing actions
+	 * animate switches through nextAction and calls appropriate Animations
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to doAnimation()
+	 * @param nextAction index used to decide which animation to play
+	 */
 	void animate(CreatureObject* player, int nextAction);
 
+	/**
+	 * Creates a marker object at the given coordinates
+	 * createMarker creates a SceneObject for tango/fishing/shared_marker.iff and inserts it at given coordinates
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param x X-Coordinate of new marker
+	 * @param y Y-Coordinate of new marker
+	 * @param z Z-Coordinate of new marker
+	 * @param zone Zone used to create the marker in
+	 * @return { SceneObject of new marker }
+	 */
 	SceneObject* createMarker(float x, float y, float z, Zone* zone);
 
+	/**
+	 * Creates a small Splash at the given coordinates
+	 * createSplash creates a SceneObject for tango/fishing/shared_splash.iff and inserts it at given coordinates
+	 * a FishingSplashEvent is created so that the splash is removed in due time
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param x X-Coordinate of the splash
+	 * @param y Y-Coordinate of the splash
+	 * @param z Z-Coordinate of the splash
+	 * @param zone Zone used to create the splash in
+	 * @param player CreatureObject for which to create fishing splash event
+	 */
 	void createSplash(float x, float y, float z, Zone* zone, CreatureObject* player);
 
+	/**
+	 * Checks whether the fish has beached
+	 * checkUpdateMarker is called by updateMarker to see if the new position is in Water
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to check
+	 * @param x X-Coordinate of the splash
+	 * @param y Y-Coordinate of the splash
+	 * @param z Z-Coordinate of the splash
+	 * @return { true if beached, false if water }
+	 */
 	bool checkUpdateMarker(CreatureObject* player, float& x, float& y, float& z);
 
 	bool isPlaying(CreatureObject* player);
 
+	/**
+	 * Updates the fishing Marker
+	 * updateMarker takes the player position and the marker position and halfes that distance creating
+	 * a new marker at that position and returning the marker
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to update the fishing event's marker
+	 * @param marker Object sent to event as new marker
+	 * @return { SceneObject of new Marker }
+	 */
 	SceneObject* updateMarker(CreatureObject* player, SceneObject* marker, bool notifyPlayer);
 
+	/**
+	 * Removes the fishing marker
+	 * removeMarker sets the Marker in the Event to NULL and removes the marker from Zone
+	 * it is only called where it is set to a new marker, or the event is stopped, so the NULL won't cause problems
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject to get Event to remove marker from
+	 * @param container Container to remove
+	 */
 	void removeMarker(CreatureObject* player, SceneObject* container);
 
+	/**
+	 * Removes the Splash
+	 * removeSplash is called from FishingSplashEvent, the splash is simply removed from zone
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param splash SceneObject to remove from Zone
+	 */
 	void removeSplash(SceneObject* splash);
 
+	/**
+	 * Creates a Splash Event schedule 1000
+	 * createFishingSplashEvent creates a new FishingSplashEvent for the given SceneObject
+	 * and schedules it to 1000 so the Splash is removed after 1 second
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to create Splash Event
+	 * @param zoneServer ZoneServer used
+	 * @param splash SceneObject to remove later
+	 */
 	void createFishingSplashEvent(CreatureObject* player, SceneObject* splash);
 
+	/**
+	 * Creates a FishingSession
+	 * createFishingSession creates a new FishingSession given the player, event, nextAction,
+	 * the marker, the FishType as sum, the fishing window, the State and the mood and puts it into VectorMap sessions
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to create FishingSession
+	 * @param event Current FishingEvent
+	 * @param nextAction Action to be executed
+	 * @param marker The fish marker being used
+	 * @param sum Integer indicating fish
+	 * @param boxID Fishing window to later close
+	 * @param state FishingState the player is in
+	 * @param moodString String taken from player before fishing to return to after fishing
+	 */
 	void createFishingSession(CreatureObject* player, FishingEvent* event, SceneObject* marker, int nextAction, int fish, unsigned int boxID, int fishingState, String& mood);
 
+	/**
+	 * Creates a Fishing Event schedule 7000
+	 * createFishingEvent creates a new Fishing Event given the State
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to create Fishing Event
+	 * @param zoneServer ZoneServer used
+	 * @param state FishingState the player is in
+	 */
 	FishingEvent* createFishingEvent(CreatureObject* player, int state);
 
+	/**
+	 * Stops Fishing Event
+	 * stopFishingEvent gets the FishingEvent for a player, drops it from the VectorMap and cancels it
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to stop the fishing event
+	 */
 	void stopFishingEvent(CreatureObject* player);
 
+	/**
+	 * FishingEvent getter
+	 * getFishingEvent is a readonly method that gets the FishingEvent from the events VectorMap and returns it
+	 * @pre { object is locked }
+	 * @post { object is locked }
+	 * @param player CreatureObject for which to get fishing event
+	 */
 	FishingEvent* getFishingEvent(CreatureObject* player);
 
 	WeakReference<FishingManager*> _this;

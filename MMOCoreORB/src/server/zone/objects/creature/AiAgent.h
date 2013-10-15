@@ -320,6 +320,11 @@ public:
 
 	AiAgent();
 
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
 	void initializeTransientMembers();
 
 	void activateRecovery();
@@ -340,6 +345,12 @@ public:
 
 	void setLevel(int lvl);
 
+	/**
+	 * Sends the CREO baseline messages of this object to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
 	void sendBaselinesTo(SceneObject* player);
 
 	int calculateAttackMinDamage(int level);
@@ -356,6 +367,14 @@ public:
 
 	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void checkNewAngle();
@@ -376,22 +395,59 @@ public:
 
 	void notifyDissapear(QuadTreeEntry* entry);
 
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void loadTemplateData(CreatureTemplate* templateData);
 
+	/**
+	 * Inflicts damage into the object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return unused for now
+	 */
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient = true);
 
+	/**
+	 * sends the conversation notification 
+	 * @pre {this locked, player locked }
+	 * @post { this locked, player locked }
+	 */
 	void sendConversationStartTo(SceneObject* player);
 
+	/**
+	 * sends the default conversation list
+	 * @pre {this locked, player locked }
+	 * @post {this locked, player locked }
+	 */
 	void sendDefaultConversationTo(SceneObject* player);
 
+	/**
+	 * sends the conversation list 
+	 * @pre {this locked, player locked }
+	 * @post { this locked, player locked }
+	 */
 	void selectConversationOption(int option, SceneObject* obj);
 
+	/**
+	 * Is called when this object is destroyed
+	 * @pre { this, attacker locked }
+	 * @post { this, attacker locked }
+	 */
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
+	/**
+	 * Is called when an object is talked to
+	 * @pre { this, converser locked }
+	 * @post {this, converser locked }
+	 */
 	int notifyConverseObservers(CreatureObject* converser);
 
 	int notifyAttack(Observable* observable);
@@ -404,22 +460,56 @@ public:
 
 	void queueDizzyFallEvent();
 
+	/**
+	 * Cleares the combat state
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is not in a combat state }
+	 * @param clearDefenders if true the defender vector willl be emptied
+	 */
 	void clearCombatState(bool clearDefenders = true);
 
+	/**
+	 * Sets the active defender
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is active }
+	 * @param defender SceneObject to set as the active defender
+	 */
 	void setDefender(SceneObject* defender);
 
+	/**
+	 * Adds a SceneObject to the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is in the defender vector }
+	 * @param defender SceneObject to add to the defender vector
+	 */
 	void addDefender(SceneObject* defender);
 
+	/**
+	 * Removes the specified defender from the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is not in the defender vector }
+	 * @param defender SceneObject to remove from the defender vector
+	 */
 	void removeDefender(SceneObject* defender);
 
 	void setDespawnOnNoPlayerInRange(bool val);
 
+	/**
+	 * Gets called when the creature was despawned
+	 */
 	void notifyDespawn(Zone* zone);
 
 	void scheduleDespawn();
 
+	/**
+	 * Schedules despawn of the AiAgent.
+	 * @param timeToDespawn the time to despawn the AiAgent in seconds.
+	 */
 	void scheduleDespawn(int timeToDespawn);
 
+	/**
+	 * Respawns creature to specified zone with home location position
+	 */
 	void respawn(Zone* zone, int level);
 
 	void addPatrolPoint(PatrolPoint& point);
@@ -430,8 +520,20 @@ public:
 
 	void setRandomRespawn(bool resp);
 
+	/**
+	 * Evaluates if this object can be attacket by the passed creature object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns true if the creature object can attack this 
+	 */
 	bool isAttackableBy(CreatureObject* object);
 
+	/**
+	 * Evaluates if this creature is aggresive to the object
+	 * @pre { }
+	 * @post { }
+	 * @return returns true if its aggressive
+	 */
 	bool isAggressiveTo(CreatureObject* object);
 
 	void setOblivious();
@@ -642,6 +744,11 @@ public:
 
 	AiAgentImplementation(DummyConstructorParameter* param);
 
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
 	void initializeTransientMembers();
 
 	void finalize();
@@ -664,6 +771,12 @@ public:
 
 	void setLevel(int lvl);
 
+	/**
+	 * Sends the CREO baseline messages of this object to the specified player
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
 	void sendBaselinesTo(SceneObject* player);
 
 	int calculateAttackMinDamage(int level);
@@ -684,6 +797,14 @@ protected:
 public:
 	void doAwarenessCheck(Coordinate& start, unsigned long long time, CreatureObject* target);
 
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successfull
+	 */
 	int handleObjectMenuSelect(CreatureObject* player, byte selectedID);
 
 	void checkNewAngle();
@@ -704,22 +825,59 @@ public:
 
 	void notifyDissapear(QuadTreeEntry* entry);
 
+	/**
+	 * Reads and sets the template data from a SharedTangibleObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { TangibleObject members are initialized }
+	 * @param templateData templateData points to the SharedTangibleObjectTemplate LuaObject that is used to initialize the TangibleObject members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void loadTemplateData(CreatureTemplate* templateData);
 
+	/**
+	 * Inflicts damage into the object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return unused for now
+	 */
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, bool notifyClient = true);
 
 	int inflictDamage(TangibleObject* attacker, int damageType, float damage, bool destroy, const String& xp, bool notifyClient = true);
 
+	/**
+	 * sends the conversation notification 
+	 * @pre {this locked, player locked }
+	 * @post { this locked, player locked }
+	 */
 	void sendConversationStartTo(SceneObject* player);
 
+	/**
+	 * sends the default conversation list
+	 * @pre {this locked, player locked }
+	 * @post {this locked, player locked }
+	 */
 	void sendDefaultConversationTo(SceneObject* player);
 
+	/**
+	 * sends the conversation list 
+	 * @pre {this locked, player locked }
+	 * @post { this locked, player locked }
+	 */
 	void selectConversationOption(int option, SceneObject* obj);
 
+	/**
+	 * Is called when this object is destroyed
+	 * @pre { this, attacker locked }
+	 * @post { this, attacker locked }
+	 */
 	int notifyObjectDestructionObservers(TangibleObject* attacker, int condition);
 
+	/**
+	 * Is called when an object is talked to
+	 * @pre { this, converser locked }
+	 * @post {this, converser locked }
+	 */
 	int notifyConverseObservers(CreatureObject* converser);
 
 	int notifyAttack(Observable* observable);
@@ -732,22 +890,56 @@ public:
 
 	void queueDizzyFallEvent();
 
+	/**
+	 * Cleares the combat state
+	 * @pre { this object is locked }
+	 * @post { this object is locked, this object is not in a combat state }
+	 * @param clearDefenders if true the defender vector willl be emptied
+	 */
 	void clearCombatState(bool clearDefenders = true);
 
+	/**
+	 * Sets the active defender
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is active }
+	 * @param defender SceneObject to set as the active defender
+	 */
 	void setDefender(SceneObject* defender);
 
+	/**
+	 * Adds a SceneObject to the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is in the defender vector }
+	 * @param defender SceneObject to add to the defender vector
+	 */
 	void addDefender(SceneObject* defender);
 
+	/**
+	 * Removes the specified defender from the defender vector
+	 * @pre { this object is locked }
+	 * @post { this object is locked, defender is not in the defender vector }
+	 * @param defender SceneObject to remove from the defender vector
+	 */
 	void removeDefender(SceneObject* defender);
 
 	void setDespawnOnNoPlayerInRange(bool val);
 
+	/**
+	 * Gets called when the creature was despawned
+	 */
 	virtual void notifyDespawn(Zone* zone);
 
 	virtual void scheduleDespawn();
 
+	/**
+	 * Schedules despawn of the AiAgent.
+	 * @param timeToDespawn the time to despawn the AiAgent in seconds.
+	 */
 	virtual void scheduleDespawn(int timeToDespawn);
 
+	/**
+	 * Respawns creature to specified zone with home location position
+	 */
 	void respawn(Zone* zone, int level);
 
 	void addPatrolPoint(PatrolPoint& point);
@@ -758,8 +950,20 @@ public:
 
 	void setRandomRespawn(bool resp);
 
+	/**
+	 * Evaluates if this object can be attacket by the passed creature object
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @return returns true if the creature object can attack this 
+	 */
 	bool isAttackableBy(CreatureObject* object);
 
+	/**
+	 * Evaluates if this creature is aggresive to the object
+	 * @pre { }
+	 * @post { }
+	 * @return returns true if its aggressive
+	 */
 	bool isAggressiveTo(CreatureObject* object);
 
 	void setOblivious();

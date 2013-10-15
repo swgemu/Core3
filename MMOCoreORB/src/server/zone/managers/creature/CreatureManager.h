@@ -214,6 +214,16 @@ public:
 
 	TangibleObject* spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y, unsigned int faction);
 
+	/**
+	 * Spawns the specified creature into zone
+	 * @pre { this unlocked }
+	 * @post { creature is in zone }
+	 * @param templateCRC template string crc of the creature to spawn
+	 * @param x position x
+	 * @param y position y
+	 * @param parentID cell object id (optional)
+	 * @return returns creature object that has been spawned, NULL on error
+	 */
 	CreatureObject* spawnCreatureWithAi(unsigned int templateCRC, float x, float z, float y, SceneObject* cell, bool persistent = false);
 
 	CreatureObject* spawnCreatureWithLevel(unsigned int mobileTemplateCRC, int level, float x, float z, float y, unsigned long long parentID = 0);
@@ -228,6 +238,10 @@ public:
 
 	String getTemplateToSpawn(unsigned int templateCRC);
 
+	/**
+	 * @pre { destructor and destructedObject locked }
+	 * @post { destructor and destructedObject locked }
+	 */
 	int notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition);
 
 	void loadSpawnAreas();
@@ -250,6 +264,7 @@ public:
 
 	void milk(Creature* creature, CreatureObject* player);
 
+	/** Gather a DNA sample from the given creature*/
 	void sample(Creature* creature, CreatureObject* player);
 
 	void addToReservePool(AiAgent* agent);
@@ -336,6 +351,16 @@ public:
 
 	TangibleObject* spawnLair(unsigned int lairTemplate, int difficulty, float x, float z, float y, unsigned int faction);
 
+	/**
+	 * Spawns the specified creature into zone
+	 * @pre { this unlocked }
+	 * @post { creature is in zone }
+	 * @param templateCRC template string crc of the creature to spawn
+	 * @param x position x
+	 * @param y position y
+	 * @param parentID cell object id (optional)
+	 * @return returns creature object that has been spawned, NULL on error
+	 */
 	CreatureObject* spawnCreatureWithAi(unsigned int templateCRC, float x, float z, float y, SceneObject* cell, bool persistent = false);
 
 	CreatureObject* spawnCreatureWithLevel(unsigned int mobileTemplateCRC, int level, float x, float z, float y, unsigned long long parentID = 0);
@@ -350,6 +375,10 @@ public:
 
 	String getTemplateToSpawn(unsigned int templateCRC);
 
+	/**
+	 * @pre { destructor and destructedObject locked }
+	 * @post { destructor and destructedObject locked }
+	 */
 	int notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition);
 
 	void loadSpawnAreas();
@@ -380,6 +409,7 @@ public:
 
 	void milk(Creature* creature, CreatureObject* player);
 
+	/** Gather a DNA sample from the given creature*/
 	void sample(Creature* creature, CreatureObject* player);
 
 	void addToReservePool(AiAgent* agent);

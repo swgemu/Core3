@@ -46,6 +46,12 @@ class StaticObject : public SceneObject {
 public:
 	StaticObject();
 
+	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void sendBaselinesTo(SceneObject* player);
@@ -82,6 +88,12 @@ public:
 
 	StaticObjectImplementation(DummyConstructorParameter* param);
 
+	/**
+	 * Reads and sets the template data from a SharedObjectTemplate LuaObject
+	 * @pre { templateData is a valid pointer }
+	 * @post { SceneObject members are initialized }
+	 * @param templateData templateData points to the LuaObject that is used to initialize SceneObejct members
+	 */
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
 	void sendBaselinesTo(SceneObject* player);

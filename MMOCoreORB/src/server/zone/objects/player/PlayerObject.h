@@ -308,6 +308,11 @@ public:
 
 	PlayerObject();
 
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	void notifyLoadFromDatabase();
 
 	void unload();
@@ -336,24 +341,83 @@ public:
 
 	void notifySceneReady();
 
+	/**
+	 * Adds experience of a type to the player's experience pool.
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param xpType The string value for the type of experience to add.
+	 * @param xp The value of experience to add.
+	 * @param notifyClient Boolean to determing whether the client should receive a delta packet for the experience gain.
+	 * @return returns total experience awarded
+	 */
 	int addExperience(const String& xpType, int xp, bool notifyClient = true);
 
+	/**
+	 * Removes experience of a type from the player's experience pool.
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param xpType The string value for the type of experience to remove.
+	 * @param notifyClient Boolean to determing whether the client should receive a delta packet for the experience loss.
+	 */
 	void removeExperience(const String& xpType, bool notifyClient = true);
 
+	/**
+	 * Checks if the player has capped the experience type.
+	 * @param xpType The string value for the type of experience to check.
+	 * @return true if experience is capped, false otherwise.
+	 */
 	bool hasCappedExperience(const String& xpType);
 
+	/**
+	 * Adds waypoint object to waypointList
+	 * @pre { this is locked }
+	 * @post { this is locked, waypoint object is in the list }
+	 * @param waypoint waypoint object to add
+	 * @param checkName determines whether to remove existing Waypoint with equal customName
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	void addWaypoint(WaypointObject* waypoint, bool checkName, bool notifyClient = true);
 
 	void setWaypoint(WaypointObject* waypoint, bool notifyClient = true);
 
+	/** 
+	 * Adds a new waypoint with the specified coordinates
+	 * @pre { this is locked }
+	 * @post { this is locked, waypoint object is in the list }
+	 * @param planet planet where waypoint will be created
+	 * @param positionX waypoint position X
+	 * @param positionY waypoint position Y
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	WaypointObject* addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient = true);
 
+	/**
+	 * Removes a waypoint from this player
+	 * @pre { this is locked }
+	 * @post { this is locked, waypoint list doesnt contain the specified waypoint }
+	 * @param waypointID waypoint object id to remove
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	void removeWaypoint(unsigned long long waypointID, bool notifyClient = true);
 
+	/**
+	 * Adds new abilities commands to player
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param abilities Vector of abilities to add
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	void addAbilities(Vector<Ability*>& abilities, bool notifyClient = true);
 
 	void addAbility(Ability* ability, bool notifyClient = true);
 
+	/**
+	 * Removes certifications from player
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param skills Vector of skills to add
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	void removeAbilities(Vector<Ability*>& abilities, bool notifyClient = true);
 
 	void removeAbility(Ability* ability, bool notifyClient = true);
@@ -368,14 +432,49 @@ public:
 
 	void decreaseSchematicUseCount(DraftSchematic* schematic);
 
+	/**
+	 * Sets the specified language id
+	 * @pre { }
+	 * @post { }
+	 * @param language language id to set
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	void setLanguageID(byte language, bool notifyClient = true);
 
+	/**
+	 * Adds a friend to the friend list
+	 * @pre { this is locked}
+	 * @post { this is locked }
+	 * @param name friends name
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	void addFriend(const String& name, bool notifyClient = true);
 
+	/**
+	 * Removes the specified friend from the friend list
+	 * @pre { this is locked }
+	 * @post { this is locked}
+	 * @param name friend name to remove
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	void removeFriend(const String& name, bool notifyClient = true);
 
+	/**
+	 * Adds a player to the ignore list
+	 * @pre { this is locked}
+	 * @post { this is locked }
+	 * @param name player name
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	void addIgnore(const String& name, bool notifyClient = true);
 
+	/**
+	 * Removes the specified player from the ignore list
+	 * @pre { this is locked }
+	 * @post { this is locked}
+	 * @param name player name to remove
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	void removeIgnore(const String& name, bool notifyClient = true);
 
 	void setTitle(const String& characterTitle, bool notifyClient = true);
@@ -384,12 +483,22 @@ public:
 
 	void setDrinkFilling(int newValue, bool notifyClient = true);
 
+	/**
+	 * Adds the amount of faction points to the faction point list.
+	 * @pre { this locked }
+	 * @post { this locked }
+	 * @param factionName The string key for the faction the faction points are to be added.
+	 * @param amount The float amount of faction points to add. 
+	 */
 	void increaseFactionStanding(const String& factionName, float amount);
 
 	void decreaseFactionStanding(const String& factionName, float amount);
 
 	float getFactionStanding(const String& factionName);
 
+	/**
+	 * Returns the active SurveyWaypoint
+	 */
 	WaypointObject* getSurveyWaypoint();
 
 	void setScreenPlayData(const String& screenPlay, const String& variable, const String& data);
@@ -414,10 +523,21 @@ public:
 
 	void setLoggingOut();
 
+	/**
+	 * Sends a badges response message
+	 * @pre { }
+	 * @post { }
+	 * @param player CreatureObject to receive badges response message
+	 */
 	void sendBadgesResponseTo(CreatureObject* player);
 
 	void logout(bool doLock);
 
+	void setJediState(int state, bool notifyClient = true);
+
+	/**
+	 * Gets the faction point list.
+	 */
 	FactionStandingList* getFactionStandingList();
 
 	void setLastNpcConvStr(const String& conv);
@@ -454,6 +574,9 @@ public:
 
 	void dropPersistentMessage(unsigned long long id);
 
+	/**
+	 * Unloads all the spawned creatures from the datapad control devices
+	 */
 	void unloadSpawnedChildren();
 
 	void addToConsentList(const String& name);
@@ -482,6 +605,11 @@ public:
 
 	unsigned long long getCloningFacility();
 
+	/**
+	 * Notifies all reverse friends online status
+	 * @pre { }
+	 * @post { }
+	 */
 	void notifyOnline();
 
 	void doDigest(int fillingReduction);
@@ -512,6 +640,9 @@ public:
 
 	SuiBox* getSuiBox(unsigned int boxID);
 
+	/**
+	 * Removes the specified box id and optionally closes the client sui
+	 */
 	void removeSuiBox(unsigned int boxID, bool closeWindowToClient = false);
 
 	void removeSuiBoxType(unsigned int windowType);
@@ -558,6 +689,11 @@ public:
 
 	UnicodeString getBiography();
 
+	/**
+	 * Notifies all reverse friends offline status
+	 * @pre { }
+	 * @post { }
+	 */
 	void notifyOffline();
 
 	void setBadge(unsigned int badge);
@@ -582,6 +718,11 @@ public:
 
 	bool hasWaypoint(unsigned long long objectID);
 
+	/**
+	 * Checks to see if this player object has the specified ability.
+	 * @param ability The ability to search for.
+	 * @return True if the player has the ability.
+	 */
 	bool hasAbility(const String& ability);
 
 	bool hasCommandMessageString(unsigned int actionCRC);
@@ -610,6 +751,9 @@ public:
 
 	void toggleCharacterBit(unsigned int bit);
 
+	/**
+	 * is the player AFK
+	 */
 	bool isAFK();
 
 	VectorMap<String, int>* getXpTypeCapList();
@@ -640,8 +784,6 @@ public:
 
 	int getJediState();
 
-	void setJediState(int state);
-
 	byte getLanguageID();
 
 	DeltaVector<String>* getFriendList();
@@ -660,6 +802,9 @@ public:
 
 	int getExperience(const String& xp);
 
+	/**
+	 * Maximizes all types of experience for the player.
+	 */
 	void maximizeExperience();
 
 	void activateMissions();
@@ -968,6 +1113,11 @@ public:
 
 	void finalize();
 
+	/**
+	 * Gets called when this objects is loaded from database
+	 * @pre { this locked }
+	 * @post { this locked }
+	 */
 	void notifyLoadFromDatabase();
 
 	void unload();
@@ -996,24 +1146,83 @@ public:
 
 	void notifySceneReady();
 
+	/**
+	 * Adds experience of a type to the player's experience pool.
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param xpType The string value for the type of experience to add.
+	 * @param xp The value of experience to add.
+	 * @param notifyClient Boolean to determing whether the client should receive a delta packet for the experience gain.
+	 * @return returns total experience awarded
+	 */
 	int addExperience(const String& xpType, int xp, bool notifyClient = true);
 
+	/**
+	 * Removes experience of a type from the player's experience pool.
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param xpType The string value for the type of experience to remove.
+	 * @param notifyClient Boolean to determing whether the client should receive a delta packet for the experience loss.
+	 */
 	void removeExperience(const String& xpType, bool notifyClient = true);
 
+	/**
+	 * Checks if the player has capped the experience type.
+	 * @param xpType The string value for the type of experience to check.
+	 * @return true if experience is capped, false otherwise.
+	 */
 	bool hasCappedExperience(const String& xpType);
 
+	/**
+	 * Adds waypoint object to waypointList
+	 * @pre { this is locked }
+	 * @post { this is locked, waypoint object is in the list }
+	 * @param waypoint waypoint object to add
+	 * @param checkName determines whether to remove existing Waypoint with equal customName
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	void addWaypoint(WaypointObject* waypoint, bool checkName, bool notifyClient = true);
 
 	void setWaypoint(WaypointObject* waypoint, bool notifyClient = true);
 
+	/** 
+	 * Adds a new waypoint with the specified coordinates
+	 * @pre { this is locked }
+	 * @post { this is locked, waypoint object is in the list }
+	 * @param planet planet where waypoint will be created
+	 * @param positionX waypoint position X
+	 * @param positionY waypoint position Y
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	WaypointObject* addWaypoint(const String& planet, float positionX, float positionY, bool notifyClient = true);
 
+	/**
+	 * Removes a waypoint from this player
+	 * @pre { this is locked }
+	 * @post { this is locked, waypoint list doesnt contain the specified waypoint }
+	 * @param waypointID waypoint object id to remove
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	void removeWaypoint(unsigned long long waypointID, bool notifyClient = true);
 
+	/**
+	 * Adds new abilities commands to player
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param abilities Vector of abilities to add
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	void addAbilities(Vector<Ability*>& abilities, bool notifyClient = true);
 
 	void addAbility(Ability* ability, bool notifyClient = true);
 
+	/**
+	 * Removes certifications from player
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 * @param skills Vector of skills to add
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	void removeAbilities(Vector<Ability*>& abilities, bool notifyClient = true);
 
 	void removeAbility(Ability* ability, bool notifyClient = true);
@@ -1028,14 +1237,49 @@ public:
 
 	void decreaseSchematicUseCount(DraftSchematic* schematic);
 
+	/**
+	 * Sets the specified language id
+	 * @pre { }
+	 * @post { }
+	 * @param language language id to set
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	void setLanguageID(byte language, bool notifyClient = true);
 
+	/**
+	 * Adds a friend to the friend list
+	 * @pre { this is locked}
+	 * @post { this is locked }
+	 * @param name friends name
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	void addFriend(const String& name, bool notifyClient = true);
 
+	/**
+	 * Removes the specified friend from the friend list
+	 * @pre { this is locked }
+	 * @post { this is locked}
+	 * @param name friend name to remove
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	void removeFriend(const String& name, bool notifyClient = true);
 
+	/**
+	 * Adds a player to the ignore list
+	 * @pre { this is locked}
+	 * @post { this is locked }
+	 * @param name player name
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	void addIgnore(const String& name, bool notifyClient = true);
 
+	/**
+	 * Removes the specified player from the ignore list
+	 * @pre { this is locked }
+	 * @post { this is locked}
+	 * @param name player name to remove
+	 * @param notifyClient determines whether to update the client with the changes
+	 */
 	void removeIgnore(const String& name, bool notifyClient = true);
 
 	void setTitle(const String& characterTitle, bool notifyClient = true);
@@ -1044,12 +1288,22 @@ public:
 
 	void setDrinkFilling(int newValue, bool notifyClient = true);
 
+	/**
+	 * Adds the amount of faction points to the faction point list.
+	 * @pre { this locked }
+	 * @post { this locked }
+	 * @param factionName The string key for the faction the faction points are to be added.
+	 * @param amount The float amount of faction points to add. 
+	 */
 	void increaseFactionStanding(const String& factionName, float amount);
 
 	void decreaseFactionStanding(const String& factionName, float amount);
 
 	float getFactionStanding(const String& factionName);
 
+	/**
+	 * Returns the active SurveyWaypoint
+	 */
 	WaypointObject* getSurveyWaypoint();
 
 	void setScreenPlayData(const String& screenPlay, const String& variable, const String& data);
@@ -1074,10 +1328,21 @@ public:
 
 	void setLoggingOut();
 
+	/**
+	 * Sends a badges response message
+	 * @pre { }
+	 * @post { }
+	 * @param player CreatureObject to receive badges response message
+	 */
 	void sendBadgesResponseTo(CreatureObject* player);
 
 	void logout(bool doLock);
 
+	void setJediState(int state, bool notifyClient = true);
+
+	/**
+	 * Gets the faction point list.
+	 */
 	FactionStandingList* getFactionStandingList();
 
 	void setLastNpcConvStr(const String& conv);
@@ -1114,6 +1379,9 @@ public:
 
 	void dropPersistentMessage(unsigned long long id);
 
+	/**
+	 * Unloads all the spawned creatures from the datapad control devices
+	 */
 	void unloadSpawnedChildren();
 
 	void addToConsentList(const String& name);
@@ -1142,6 +1410,11 @@ public:
 
 	unsigned long long getCloningFacility();
 
+	/**
+	 * Notifies all reverse friends online status
+	 * @pre { }
+	 * @post { }
+	 */
 	void notifyOnline();
 
 	void doDigest(int fillingReduction);
@@ -1172,6 +1445,9 @@ public:
 
 	SuiBox* getSuiBox(unsigned int boxID);
 
+	/**
+	 * Removes the specified box id and optionally closes the client sui
+	 */
 	void removeSuiBox(unsigned int boxID, bool closeWindowToClient = false);
 
 	void removeSuiBoxType(unsigned int windowType);
@@ -1218,6 +1494,11 @@ public:
 
 	UnicodeString getBiography();
 
+	/**
+	 * Notifies all reverse friends offline status
+	 * @pre { }
+	 * @post { }
+	 */
 	void notifyOffline();
 
 	void setBadge(unsigned int badge);
@@ -1242,6 +1523,11 @@ public:
 
 	bool hasWaypoint(unsigned long long objectID);
 
+	/**
+	 * Checks to see if this player object has the specified ability.
+	 * @param ability The ability to search for.
+	 * @return True if the player has the ability.
+	 */
 	bool hasAbility(const String& ability);
 
 	bool hasCommandMessageString(unsigned int actionCRC);
@@ -1270,6 +1556,9 @@ public:
 
 	void toggleCharacterBit(unsigned int bit);
 
+	/**
+	 * is the player AFK
+	 */
 	bool isAFK();
 
 	VectorMap<String, int>* getXpTypeCapList();
@@ -1300,8 +1589,6 @@ public:
 
 	int getJediState();
 
-	void setJediState(int state);
-
 	byte getLanguageID();
 
 	DeltaVector<String>* getFriendList();
@@ -1320,6 +1607,9 @@ public:
 
 	int getExperience(const String& xp);
 
+	/**
+	 * Maximizes all types of experience for the player.
+	 */
 	void maximizeExperience();
 
 	void activateMissions();
@@ -1561,6 +1851,8 @@ public:
 
 	void logout(bool doLock);
 
+	void setJediState(int state, bool notifyClient);
+
 	void setLastNpcConvStr(const String& conv);
 
 	void setLastNpcConvMessStr(const String& mess);
@@ -1754,8 +2046,6 @@ public:
 	int getDrinkFillingMax();
 
 	int getJediState();
-
-	void setJediState(int state);
 
 	byte getLanguageID();
 

@@ -88,16 +88,46 @@ class DraftSchematic : public IntangibleObject {
 public:
 	DraftSchematic();
 
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
 	void initializeTransientMembers();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
+	/**
+	 * Sends the baseline messages of this object to the specified player\
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
 	void sendBaselinesTo(SceneObject* player);
 
+	/**
+	 * Sends the ingredients of this object to the specified player\
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the ingredients 
+	 */
 	void sendDraftSlotsTo(CreatureObject* player);
 
+	/**
+	 * Sends the resource weights of this object to the specified player\
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the ingredients 
+	 */
 	void sendResourceWeightsTo(CreatureObject* player);
 
 	Reference<SceneObject* > createManufactureSchematic(SceneObject* craftingTool = NULL);
@@ -116,18 +146,46 @@ public:
 
 	ResourceWeight* getResourceWeight(int i);
 
+	/**
+	 * Getter for complexity
+	 * \return complexity
+	 */
 	float getComplexity();
 
+	/**
+	 * Setter for the crafting tool tab mask
+	 * \return toolTab
+	 */
 	unsigned int getToolTab();
 
+	/**
+	 * getter for the schematic size
+	 * \return size
+	 */
 	float getSize();
 
+	/**
+	 * getter for xpType
+	 * \return size
+	 */
 	String getXpType();
 
+	/**
+	 * getter for the xpAmount
+	 * \return xpAmount
+	 */
 	int getXpAmount();
 
+	/**
+	 * getter for assemblyMod
+	 * \return assemblyMod
+	 */
 	String getAssemblySkill();
 
+	/**
+	 * getter for experiementationMod
+	 * \return experiementationMod
+	 */
 	String getExperimentationSkill();
 
 	String getCustomizationSkill();
@@ -181,20 +239,50 @@ public:
 
 	DraftSchematicImplementation(DummyConstructorParameter* param);
 
+	/**
+	 * Initializes the transient members of SceneObject, must call the inherited object method first.
+	 * @pre {transient members are not initialized }
+	 * @post { transient members are initialized }
+	 */
 	void initializeTransientMembers();
 
 	void loadTemplateData(SharedObjectTemplate* templateData);
 
+	/**
+	 * Fills the attribute list message options that are sent to player creature
+	 * @pre { }
+	 * @post { }
+	 * @param msg attribute list message with the attributes
+	 * @param object player creature to which the message is sent
+	 */
 	void fillAttributeList(AttributeListMessage* msg, CreatureObject* object);
 
+	/**
+	 * Sends the baseline messages of this object to the specified player\
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the baselines 
+	 */
 	void sendBaselinesTo(SceneObject* player);
 
+	/**
+	 * Sends the ingredients of this object to the specified player\
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the ingredients 
+	 */
 	void sendDraftSlotsTo(CreatureObject* player);
 
 private:
 	void insertIngredients(ObjectControllerMessage* msg);
 
 public:
+	/**
+	 * Sends the resource weights of this object to the specified player\
+	 * @pre { this object is locked }
+	 * @post { this object is locked, player received the baseline messages }
+	 * @param player SceneObject that will receive the ingredients 
+	 */
 	void sendResourceWeightsTo(CreatureObject* player);
 
 	Reference<SceneObject* > createManufactureSchematic(SceneObject* craftingTool = NULL);
@@ -213,18 +301,46 @@ public:
 
 	ResourceWeight* getResourceWeight(int i);
 
+	/**
+	 * Getter for complexity
+	 * \return complexity
+	 */
 	float getComplexity();
 
+	/**
+	 * Setter for the crafting tool tab mask
+	 * \return toolTab
+	 */
 	unsigned int getToolTab();
 
+	/**
+	 * getter for the schematic size
+	 * \return size
+	 */
 	float getSize();
 
+	/**
+	 * getter for xpType
+	 * \return size
+	 */
 	String getXpType();
 
+	/**
+	 * getter for the xpAmount
+	 * \return xpAmount
+	 */
 	int getXpAmount();
 
+	/**
+	 * getter for assemblyMod
+	 * \return assemblyMod
+	 */
 	String getAssemblySkill();
 
+	/**
+	 * getter for experiementationMod
+	 * \return experiementationMod
+	 */
 	String getExperimentationSkill();
 
 	String getCustomizationSkill();

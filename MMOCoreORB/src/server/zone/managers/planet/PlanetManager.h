@@ -216,8 +216,20 @@ public:
 
 	void loadPerformanceLocations();
 
+	/**
+	 * Returns the closest PlanetTravelPoint within the given range.
+	 * @param object The object to use as reference.
+	 * @param range The maximum range to search within.
+	 * @return Returns a PlanetTravelPoint or NULL if not found in range
+	 */
 	PlanetTravelPoint* getNearestPlanetTravelPoint(SceneObject* object, float range = 16000.0);
 
+	/**
+	 * Returns the closest PlanetTravelPoint within the given range.
+	 * @param position The position to use as reference.
+	 * @param range The maximum range to search within.
+	 * @return Returns a PlanetTravelPoint or NULL if not found in range
+	 */
 	PlanetTravelPoint* getNearestPlanetTravelPoint(const Vector3& position, float range = 16000.0);
 
 	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild = NULL);
@@ -230,10 +242,23 @@ public:
 
 	bool isInObjectsNoBuildZone(float x, float y, float extraMargin);
 
+	/**
+	 * Gets the cost to travel via shuttleport/starport to the destination planet.
+	 * If the value is 0, then travel to the planet from this planet is disabled.
+	 * @param destinationPlanet The planet that to which is being travelled. Can be the same planet.
+	 * @return The cost to travel to the destination planet.
+	 */
 	int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
 
 	void sendPlanetTravelPointListResponse(CreatureObject* player);
 
+	/**
+	 * Creates a travel ticket from the departure point on this planet to the arrival point on the arrival planet.
+	 * @param departurePoint The point on this planet from which the ticket is set to depart.
+	 * @param arrivalPlanet The planet to which the ticket is set to arrive.
+	 * @param departurePoint The point on the arrival planet to which the ticket is set to arrive.
+	 * @return Returns a travel ticket for the route specified, or NULL if it could not be created.
+	 */
 	Reference<SceneObject* > createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
 
 	bool validateRegionName(const String& name);
@@ -266,14 +291,42 @@ public:
 
 	MissionTargetMap* getPerformanceLocations();
 
+	/**
+	 * Checks to see if the point is an existing planet travel point.
+	 * @param pointName The name of the point to check for.
+	 * @return Returns true if the point exists.
+	 */
 	bool isExistingPlanetTravelPoint(const String& pointName);
 
+	/**
+	 * Checks to see if interplanetary travel is allowed to the specified point.
+	 * @param pointName The point name representing a travel point belonging to this planet.
+	 * @return Returns true if interplanetary travel is allowed.
+	 */
 	bool isInterplanetaryTravelAllowed(const String& pointName);
 
+	/**
+	 * Checks to see if incoming travel is allowed to the specified point.
+	 * @param pointName The point name representing a travel point belonging to this planet.
+	 * @return Returns true if incoming travel is allowed.
+	 */
 	bool isIncomingTravelAllowed(const String& pointName);
 
+	/**
+	 * Gets the PlanetTravelPoint that corresponds to the point name. If the point doesn't exist
+	 * then it will return NULL.
+	 * @param pointName The planet travel point's name.
+	 * @return PlanetTravelPoint for the given point name.
+	 */
 	PlanetTravelPoint* getPlanetTravelPoint(const String& pointName);
 
+	/**
+	 * Checks to see the travel between the points is allowed based on their settings.
+	 * @param destinationPoint The point from which is being traveled.
+	 * @param arrivalPlanet The planet to which is being traveled.
+	 * @param arrivalPoint The point to which is being traveled.
+	 * @return Returns true if travel is permitted between the two points.
+	 */
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
 
 	void scheduleShuttle(CreatureObject* shuttle, int shuttleType);
@@ -394,8 +447,20 @@ protected:
 	void loadStaticTangibleObjects();
 
 public:
+	/**
+	 * Returns the closest PlanetTravelPoint within the given range.
+	 * @param object The object to use as reference.
+	 * @param range The maximum range to search within.
+	 * @return Returns a PlanetTravelPoint or NULL if not found in range
+	 */
 	PlanetTravelPoint* getNearestPlanetTravelPoint(SceneObject* object, float range = 16000.0);
 
+	/**
+	 * Returns the closest PlanetTravelPoint within the given range.
+	 * @param position The position to use as reference.
+	 * @param range The maximum range to search within.
+	 * @return Returns a PlanetTravelPoint or NULL if not found in range
+	 */
 	PlanetTravelPoint* getNearestPlanetTravelPoint(const Vector3& position, float range = 16000.0);
 
 	bool isBuildingPermittedAt(float x, float y, SceneObject* objectTryingToBuild = NULL);
@@ -408,10 +473,23 @@ public:
 
 	bool isInObjectsNoBuildZone(float x, float y, float extraMargin);
 
+	/**
+	 * Gets the cost to travel via shuttleport/starport to the destination planet.
+	 * If the value is 0, then travel to the planet from this planet is disabled.
+	 * @param destinationPlanet The planet that to which is being travelled. Can be the same planet.
+	 * @return The cost to travel to the destination planet.
+	 */
 	int getTravelFare(const String& departurePlanet, const String& arrivalPlanet);
 
 	void sendPlanetTravelPointListResponse(CreatureObject* player);
 
+	/**
+	 * Creates a travel ticket from the departure point on this planet to the arrival point on the arrival planet.
+	 * @param departurePoint The point on this planet from which the ticket is set to depart.
+	 * @param arrivalPlanet The planet to which the ticket is set to arrive.
+	 * @param departurePoint The point on the arrival planet to which the ticket is set to arrive.
+	 * @return Returns a travel ticket for the route specified, or NULL if it could not be created.
+	 */
 	Reference<SceneObject* > createTicket(const String& departurePoint, const String& arrivalPlanet, const String& arrivalPoint);
 
 	bool validateRegionName(const String& name);
@@ -444,14 +522,42 @@ public:
 
 	MissionTargetMap* getPerformanceLocations();
 
+	/**
+	 * Checks to see if the point is an existing planet travel point.
+	 * @param pointName The name of the point to check for.
+	 * @return Returns true if the point exists.
+	 */
 	bool isExistingPlanetTravelPoint(const String& pointName);
 
+	/**
+	 * Checks to see if interplanetary travel is allowed to the specified point.
+	 * @param pointName The point name representing a travel point belonging to this planet.
+	 * @return Returns true if interplanetary travel is allowed.
+	 */
 	bool isInterplanetaryTravelAllowed(const String& pointName);
 
+	/**
+	 * Checks to see if incoming travel is allowed to the specified point.
+	 * @param pointName The point name representing a travel point belonging to this planet.
+	 * @return Returns true if incoming travel is allowed.
+	 */
 	bool isIncomingTravelAllowed(const String& pointName);
 
+	/**
+	 * Gets the PlanetTravelPoint that corresponds to the point name. If the point doesn't exist
+	 * then it will return NULL.
+	 * @param pointName The planet travel point's name.
+	 * @return PlanetTravelPoint for the given point name.
+	 */
 	PlanetTravelPoint* getPlanetTravelPoint(const String& pointName);
 
+	/**
+	 * Checks to see the travel between the points is allowed based on their settings.
+	 * @param destinationPoint The point from which is being traveled.
+	 * @param arrivalPlanet The planet to which is being traveled.
+	 * @param arrivalPoint The point to which is being traveled.
+	 * @return Returns true if travel is permitted between the two points.
+	 */
 	bool isTravelToLocationPermitted(const String& destinationPoint, const String& arrivalPlanet, const String& arrivalPoint);
 
 	void scheduleShuttle(CreatureObject* shuttle, int shuttleType);

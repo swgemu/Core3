@@ -84,10 +84,17 @@ public:
 
 	void init();
 
+	/**
+	 * Use to add Menu Item to the ListBox Sui class. List will be looped through in generateBody
+	 */
 	void addMenuItem(const String& name, unsigned long long objectID = 0);
 
 	String getMenuItemName(int index);
 
+	/**
+	 * Clears all Menu Items from the list box
+	 * \warning If you are going to reuse the SuiBox object and call this method, you most likely need to call clearOptions() in SuiBoxImplementation
+	 */
 	void removeAllMenuItems();
 
 	unsigned long long getMenuObjectID(unsigned int idx);
@@ -161,10 +168,17 @@ public:
 
 	void init();
 
+	/**
+	 * Use to add Menu Item to the ListBox Sui class. List will be looped through in generateBody
+	 */
 	void addMenuItem(const String& name, unsigned long long objectID = 0);
 
 	String getMenuItemName(int index);
 
+	/**
+	 * Clears all Menu Items from the list box
+	 * \warning If you are going to reuse the SuiBox object and call this method, you most likely need to call clearOptions() in SuiBoxImplementation
+	 */
 	void removeAllMenuItems();
 
 	unsigned long long getMenuObjectID(unsigned int idx);

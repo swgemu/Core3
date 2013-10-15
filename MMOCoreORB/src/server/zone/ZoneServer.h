@@ -484,6 +484,11 @@ public:
 
 	Zone* getZone(const String& terrainName);
 
+	/**
+	 * Gets a note based on it's position in the zone map.
+	 * NOTE: This idx is not to be considered consistent.
+	 * @param idx The index in the map to get the zone.
+	 */
 	Zone* getZone(int idx);
 
 	int getZoneCount();
@@ -725,6 +730,11 @@ public:
 
 	Zone* getZone(const String& terrainName);
 
+	/**
+	 * Gets a note based on it's position in the zone map.
+	 * NOTE: This idx is not to be considered consistent.
+	 * @param idx The index in the map to get the zone.
+	 */
 	Zone* getZone(int idx);
 
 	int getZoneCount();

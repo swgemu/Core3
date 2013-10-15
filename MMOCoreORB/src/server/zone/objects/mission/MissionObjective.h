@@ -106,6 +106,11 @@ public:
 
 	void initializeTransientMembers();
 
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
 	void destroyObjectFromDatabase();
 
 	int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
@@ -194,6 +199,11 @@ public:
 
 	virtual void initializeTransientMembers();
 
+	/**
+	 * Destroys this object from database
+	 * @pre { this is locked }
+	 * @post { this is locked }
+	 */
 	virtual void destroyObjectFromDatabase();
 
 	virtual int notifyObserverEvent(MissionObserver* observer, unsigned int eventType, Observable* observable, ManagedObject* arg1, long long arg2);
