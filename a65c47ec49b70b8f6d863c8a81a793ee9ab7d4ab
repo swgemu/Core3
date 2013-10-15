@@ -16,6 +16,24 @@
       "revId": "a65c47ec49b70b8f6d863c8a81a793ee9ab7d4ab",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_12f86ae4",
+        "filename": "MMOCoreORB/bin/scripts/managers/holocron_jedi_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-10-15T13:51:10Z",
+      "side": 1,
+      "message": "My bad since I forgot it in the first commit, but it should be fixed now when we found it.",
+      "parentUuid": "9a437d4f_928c5a81",
+      "revId": "a65c47ec49b70b8f6d863c8a81a793ee9ab7d4ab",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
