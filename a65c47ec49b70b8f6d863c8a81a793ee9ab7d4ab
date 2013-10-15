@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_928c5a81",
+        "filename": "MMOCoreORB/bin/scripts/managers/holocron_jedi_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-15T13:47:43Z",
+      "side": 1,
+      "message": "local",
+      "revId": "a65c47ec49b70b8f6d863c8a81a793ee9ab7d4ab",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
