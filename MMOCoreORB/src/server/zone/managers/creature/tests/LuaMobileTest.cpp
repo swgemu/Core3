@@ -41,12 +41,12 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 	LootGroupMap* lootGroupMap = LootGroupMap::instance();
 	ASSERT_EQ(lootGroupMap->initialize(), 0);
 
-	// Verify loot group percentages
 	HashTableIterator<uint32, Reference<CreatureTemplate*> > iter = CreatureTemplateManager::instance()->iterator();
 	while (iter.hasNext()) {
 		CreatureTemplate* creature = iter.next();
 		std::string templateName( creature->getTemplateName().toCharArray() );
 
+		// Verify loot group percentages
 		LootGroupCollection* groupCollection = creature->getLootGroups();
 		if( groupCollection->count() > 0 ){
 
@@ -73,6 +73,15 @@ TEST_F(LuaMobileTest, LuaMobileTemplatesTest) {
 					EXPECT_EQ( 10000000, totalChance ) << "Loot groups total chance is incorrect " << templateName;
 				}
 			}
+		}
+
+		// Verify weapon groups exist
+		Vector<String> weapons = creature->getWeapons();
+		for (int i = 0; i < weapons.size(); i++) {
+			String weaponGroup = weapons.get(i);
+			std::string groupName( weaponGroup.toCharArray() );
+			Vector<String> group = CreatureTemplateManager::instance()->getWeapons(weaponGroup);
+			EXPECT_TRUE( group.size() > 0 ) << "Weapon group " << groupName << " from " << templateName << " was not found in weaponMap";
 		}
 	}
 
