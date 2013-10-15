@@ -60,7 +60,7 @@ describe("Holocron Jedi Manager", function()
 			end)
 		end)
 
-		describe("", function()
+		describe("useHolocron", function()
 			it("Should call sendHolocronMessage.", function() 
 				local sceneObjectPointer = { "sceneObjectPointer" }
 				local creaturePointer = { "creaturePointer" }
@@ -76,19 +76,38 @@ describe("Holocron Jedi Manager", function()
 				HolocronJediManager.sendHolocronMessage = realSendHolocronMessage
 			end)
 
-			it("Should destroy the holocron.", function() 
-				local sceneObjectPointer = { "sceneObjectPointer" }
-				local creaturePointer = { "creaturePointer" }
-				local realSendHolocronMessage = HolocronJediManager.sendHolocronMessage
-				HolocronJediManager.sendHolocronMessage = spy.new(function() end)
-				local destroyObjectFromWorldSpy = spy.new(function() end)
-				LuaSceneObject = spy.new(function() return { destroyObjectFromWorld = destroyObjectFromWorldSpy } end)
+			describe("When sendHolocronMessage returns false", function()
+				it("Should destroy the holocron.", function() 
+					local sceneObjectPointer = { "sceneObjectPointer" }
+					local creaturePointer = { "creaturePointer" }
+					local realSendHolocronMessage = HolocronJediManager.sendHolocronMessage
+					HolocronJediManager.sendHolocronMessage = spy.new(function() return false end)
+					local destroyObjectFromWorldSpy = spy.new(function() end)
+					LuaSceneObject = spy.new(function() return { destroyObjectFromWorld = destroyObjectFromWorldSpy } end)
 
-				HolocronJediManager:useHolocron(sceneObjectPointer, creaturePointer)
+					HolocronJediManager:useHolocron(sceneObjectPointer, creaturePointer)
 
-				assert.spy(destroyObjectFromWorldSpy).was.called(1)
+					assert.spy(destroyObjectFromWorldSpy).was.called(1)
 
-				HolocronJediManager.sendHolocronMessage = realSendHolocronMessage
+					HolocronJediManager.sendHolocronMessage = realSendHolocronMessage
+				end)
+			end)
+
+			describe("When sendHolocronMessage returns true", function()
+				it("Should not destroy the holocron.", function()
+					local sceneObjectPointer = { "sceneObjectPointer" }
+					local creaturePointer = { "creaturePointer" }
+					local realSendHolocronMessage = HolocronJediManager.sendHolocronMessage
+					HolocronJediManager.sendHolocronMessage = spy.new(function() return true end)
+					local destroyObjectFromWorldSpy = spy.new(function() end)
+					LuaSceneObject = spy.new(function() return { destroyObjectFromWorld = destroyObjectFromWorldSpy } end)
+
+					HolocronJediManager:useHolocron(sceneObjectPointer, creaturePointer)
+
+					assert.spy(destroyObjectFromWorldSpy).was_not.called()
+
+					HolocronJediManager.sendHolocronMessage = realSendHolocronMessage
+				end)
 			end)
 		end)
 	end)
@@ -208,11 +227,14 @@ describe("Holocron Jedi Manager", function()
 		describe("registerObservers", function()
 			it("Should call createObserver for the BADGEAWARDED event on the player", function()
 				local creaturePointer = { "creaturePointer" }
+				local realCreateObserver = createObserver
 				createObserver = spy.new(function() end)
 
 				HolocronJediManager.registerObservers(creaturePointer)
 
 				assert.spy(createObserver).was.called_with(BADGEAWARDED, "HolocronJediManager", "badgeAwardedEventHandler", creaturePointer)
+
+				createObserver = realCreateObserver
 			end)
 		end)
 
@@ -257,8 +279,8 @@ describe("Holocron Jedi Manager", function()
 				assert.spy(HolocronJediManager.getNumberOfMasteredProfessions).was.called(1)
 				assert.spy(HolocronJediManager.withCreatureAndPlayerObject).was.called(1)
 				assert.spy(getHologrindProfessionsSpy).was.called(1)
-				assert.spy(hasBadgeSpy).was.called(3)
-				assert.spy(sendSystemMessageWithTOSpy).was.called(1)
+				assert.spy(hasBadgeSpy).was.called(4)
+				assert.spy(sendSystemMessageWithTOSpy).was.called(2)
 
 				HolocronJediManager.getNumberOfMasteredProfessions = realGetNumberOfMasteredProfessions
 				HolocronJediManager.withCreatureObject = realWithCreatureObject
@@ -292,6 +314,60 @@ describe("Holocron Jedi Manager", function()
 				assert.spy(getHologrindProfessionsSpy).was.called(0)
 				assert.spy(hasBadgeSpy).was.called(0)
 				assert.spy(sendSystemMessageSpy).was.called(1)
+
+				HolocronJediManager.getNumberOfMasteredProfessions = realGetNumberOfMasteredProfessions
+				HolocronJediManager.withCreatureObject = realWithCreatureObject
+				HolocronJediManager.withCreatureAndPlayerObject = realWithCreatureAndPlayerObject
+			end)
+
+			it("Should return false if the number of mastered professions is below the threshold", function() 
+				local creaturePointer = { "creaturePointer" }
+				local sendSystemMessageSpy = spy.new(function() end)
+				local sendSystemMessageWithTOSpy = spy.new(function() end)
+				local creatureObject = { sendSystemMessage = sendSystemMessageSpy, sendSystemMessageWithTO = sendSystemMessageWithTOSpy }
+				local getHologrindProfessionsSpy = spy.new(function() return { 1, 2, 3, 4 } end)
+				local hasBadgeSpy = spy.new(function(self, badgeNumber) return badgeNumber < 3 end)
+				local playerObject = { getHologrindProfessions = getHologrindProfessionsSpy, hasBadge = hasBadgeSpy }
+
+				local realGetNumberOfMasteredProfessions = HolocronJediManager.getNumberOfMasteredProfessions
+				local realWithCreatureObject = HolocronJediManager.withCreatureObject
+				local realWithCreatureAndPlayerObject = HolocronJediManager.withCreatureAndPlayerObject
+				HolocronJediManager.getNumberOfMasteredProfessions = spy.new(function() return 2 end)
+				HolocronJediManager.withCreatureObject = spy.new(function(pCreatureObject, performThisFunction) 
+					return performThisFunction(creatureObject) 
+				end)
+				HolocronJediManager.withCreatureAndPlayerObject = spy.new(function(pCreatureObject, performThisFunction) 
+					return performThisFunction(creatureObject, playerObject) 
+				end)
+
+				assert.is_not_true(HolocronJediManager.sendHolocronMessage(creaturePointer))
+
+				HolocronJediManager.getNumberOfMasteredProfessions = realGetNumberOfMasteredProfessions
+				HolocronJediManager.withCreatureObject = realWithCreatureObject
+				HolocronJediManager.withCreatureAndPlayerObject = realWithCreatureAndPlayerObject
+			end)
+
+			it("Should return true if the number of mastered professions is above the threshold", function() 
+				local creaturePointer = { "creaturePointer" }
+				local sendSystemMessageSpy = spy.new(function() end)
+				local sendSystemMessageWithTOSpy = spy.new(function() end)
+				local creatureObject = { sendSystemMessage = sendSystemMessageSpy, sendSystemMessageWithTO = sendSystemMessageWithTOSpy }
+				local getHologrindProfessionsSpy = spy.new(function() return { 1, 2, 3, 4, 5, 6 } end)
+				local hasBadgeSpy = spy.new(function(self, badgeNumber) return badgeNumber < 5 end)
+				local playerObject = { getHologrindProfessions = getHologrindProfessionsSpy, hasBadge = hasBadgeSpy }
+
+				local realGetNumberOfMasteredProfessions = HolocronJediManager.getNumberOfMasteredProfessions
+				local realWithCreatureObject = HolocronJediManager.withCreatureObject
+				local realWithCreatureAndPlayerObject = HolocronJediManager.withCreatureAndPlayerObject
+				HolocronJediManager.getNumberOfMasteredProfessions = spy.new(function() return 4 end)
+				HolocronJediManager.withCreatureObject = spy.new(function(pCreatureObject, performThisFunction) 
+					return performThisFunction(creatureObject) 
+				end)
+				HolocronJediManager.withCreatureAndPlayerObject = spy.new(function(pCreatureObject, performThisFunction) 
+					return performThisFunction(creatureObject, playerObject) 
+				end)
+
+				assert.is_true(HolocronJediManager.sendHolocronMessage(creaturePointer))
 
 				HolocronJediManager.getNumberOfMasteredProfessions = realGetNumberOfMasteredProfessions
 				HolocronJediManager.withCreatureObject = realWithCreatureObject
