@@ -28,7 +28,7 @@ rebel_battle_droid = Creature:new {
 
 	templates = {"object/mobile/battle_droid.iff"},
 	lootGroups = {},
-	weapons = {"battle_droid"},
+	weapons = {"battle_droid_weapons"},
 	conversationTemplate = "",
 	attacks = {
 	}

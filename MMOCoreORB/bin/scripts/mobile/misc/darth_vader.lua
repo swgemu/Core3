@@ -29,7 +29,7 @@ darth_vader = Creature:new {
 	templates = {"object/mobile/darth_vader.iff"},
 	lootGroups = {
 	},
-	weapons = {""},
+	weapons = {},
 	conversationTemplate = "theme_park_imperial_mission_giver_convotemplate",
 	attacks = {
 	}
