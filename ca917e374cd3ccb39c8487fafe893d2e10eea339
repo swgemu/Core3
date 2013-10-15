@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_f24a8626",
+        "filename": "MMOCoreORB/bin/scripts/managers/village_jedi_manager.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-15T18:46:34Z",
+      "side": 1,
+      "message": "what if the scene object is in a cell?",
+      "revId": "ca917e374cd3ccb39c8487fafe893d2e10eea339",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
