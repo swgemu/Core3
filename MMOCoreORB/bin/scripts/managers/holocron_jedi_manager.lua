@@ -177,6 +177,7 @@ function HolocronJediManager.sendHolocronMessage(pCreatureObject)
   			-- on your journey. You must continue seeking on your own.
 			creatureObject:sendSystemMessage("@jedi_spam:holocron_quiet")
 		end)
+		return true
 	else
 		HolocronJediManager.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject)
 			local professions = playerObject:getHologrindProfessions()
@@ -184,10 +185,10 @@ function HolocronJediManager.sendHolocronMessage(pCreatureObject)
 				if not playerObject:hasBadge(professions[i]) then
 					local professionText = HolocronJediManager.getProfessionStringIdFromBadgeNumber(professions[i])
 					creatureObject:sendSystemMessageWithTO("@jedi_spam:holocron_light_information", "@skl_n:" .. professionText)
-					return
 				end
 			end
 		end)
+		return false
 	end
 end
 
@@ -195,9 +196,13 @@ end
 -- @param pSceneObject pointer to the holocron object.
 -- @param pCreatureObject pointer to the creature object that used the holocron.
 function HolocronJediManager:useHolocron(pSceneObject, pCreatureObject)
-	HolocronJediManager.sendHolocronMessage(pCreatureObject)
-	sceneObject = LuaSceneObject(pSceneObject)
-	sceneObject:destroyObjectFromWorld()
+	local isSilent = HolocronJediManager.sendHolocronMessage(pCreatureObject)
+	if isSilent then
+		return
+	else
+		local sceneObject = LuaSceneObject(pSceneObject)
+		sceneObject:destroyObjectFromWorld()
+	end
 end
 
 registerScreenPlay("HolocronJediManager", true)
