@@ -75,9 +75,9 @@ public:
 	static const int NOJEDIPROGRESSION = 0;
 
 	/**
-	 * Jedi progression through the holocron system, i.e. master five random professions.
+	 * Jedi progression through the hologrind system, i.e. master five random professions.
 	 */
-	static const int HOLOCRONJEDIPROGRESSION = 1;
+	static const int HOLOGRINDJEDIPROGRESSION = 1;
 
 	/**
 	 * Jedi progression through the village system.

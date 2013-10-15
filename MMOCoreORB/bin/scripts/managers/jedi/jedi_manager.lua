@@ -2,13 +2,15 @@ package.path = package.path .. ";scripts/screenplays/?.lua"
 JediManager = require("screenplay")
 
 NOJEDIPROGRESSION = 0
-HOLOCRONJEDIPROGRESSION = 1
+HOLOGRINDJEDIPROGRESSION = 1
 VILLAGEJEDIPROGRESSION = 2
 CUSTOMJEDIPROGRESSION = 3
 
 jediProgressionType = VILLAGEJEDIPROGRESSION
 
 jediManagerName = "JediManager"
+
+customJediProgressionFile = "scripts/managers/jedi/custom_jedi_manager.lua"
 
 function printf(...) io.write(string.format(unpack(arg))) end
 

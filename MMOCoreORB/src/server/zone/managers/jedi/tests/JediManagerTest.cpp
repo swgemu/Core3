@@ -98,7 +98,7 @@ TEST_F(JediManagerTest, ShouldRunFileJediManagerLuaAtLoadConfiguration) {
 
 	constructorDefaults(mockLua);
 
-	EXPECT_CALL(mockLua, runFile(String("scripts/managers/jedi_manager.lua"))).Times(1);
+	EXPECT_CALL(mockLua, runFile(String("scripts/managers/jedi/jedi_manager.lua"))).Times(1);
 
 	jediManager->loadConfiguration(&mockLua);
 }
@@ -118,8 +118,8 @@ TEST_F(JediManagerTest, ShouldRunTheHolocronJediManagerLuaFileIfHolocronJediProg
 
 	constructorDefaults(mockLua);
 
-	ON_CALL(mockLua, getGlobalInt(String("jediProgressionType"))).WillByDefault(Return(JediManager::HOLOCRONJEDIPROGRESSION));
-	EXPECT_CALL(mockLua, runFile(String("scripts/managers/holocron_jedi_manager.lua"))).Times(1);
+	ON_CALL(mockLua, getGlobalInt(String("jediProgressionType"))).WillByDefault(Return(JediManager::HOLOGRINDJEDIPROGRESSION));
+	EXPECT_CALL(mockLua, runFile(String("scripts/managers/jedi/hologrind/hologrind_jedi_manager.lua"))).Times(1);
 
 	jediManager->loadConfiguration(&mockLua);
 }
@@ -130,7 +130,7 @@ TEST_F(JediManagerTest, ShouldRunTheVillageJediManagerLuaFileIfVillageJediProgre
 	constructorDefaults(mockLua);
 
 	ON_CALL(mockLua, getGlobalInt(String("jediProgressionType"))).WillByDefault(Return(JediManager::VILLAGEJEDIPROGRESSION));
-	EXPECT_CALL(mockLua, runFile(String("scripts/managers/village_jedi_manager.lua"))).Times(1);
+	EXPECT_CALL(mockLua, runFile(String("scripts/managers/jedi/village/village_jedi_manager.lua"))).Times(1);
 
 	jediManager->loadConfiguration(&mockLua);
 }
@@ -141,7 +141,7 @@ TEST_F(JediManagerTest, ShouldReadTheCustomJediProgressionFileStringIfCustomJedi
 	constructorDefaults(mockLua);
 
 	ON_CALL(mockLua, getGlobalInt(String("jediProgressionType"))).WillByDefault(Return(JediManager::CUSTOMJEDIPROGRESSION));
-	EXPECT_CALL(mockLua, getGlobalString(String("customJediProgressionFile"))).WillOnce(Return(String("scripts/managers/custom_jedi_manager.lua")));
+	EXPECT_CALL(mockLua, getGlobalString(String("customJediProgressionFile"))).WillOnce(Return(String("scripts/managers/jedi/custom_jedi_manager.lua")));
 
 	jediManager->loadConfiguration(&mockLua);
 }
@@ -152,8 +152,8 @@ TEST_F(JediManagerTest, ShouldLoadTheCustomJediProgressionFileIfCustomJediProgre
 	constructorDefaults(mockLua);
 
 	ON_CALL(mockLua, getGlobalInt(String("jediProgressionType"))).WillByDefault(Return(JediManager::CUSTOMJEDIPROGRESSION));
-	EXPECT_CALL(mockLua, getGlobalString(String("customJediProgressionFile"))).WillOnce(Return(String("scripts/managers/custom_jedi_manager.lua")));
-	EXPECT_CALL(mockLua, runFile(String("scripts/managers/custom_jedi_manager.lua"))).Times(1);
+	EXPECT_CALL(mockLua, getGlobalString(String("customJediProgressionFile"))).WillOnce(Return(String("scripts/managers/jedi/custom_jedi_manager.lua")));
+	EXPECT_CALL(mockLua, runFile(String("scripts/managers/jedi/custom_jedi_manager.lua"))).Times(1);
 
 	jediManager->loadConfiguration(&mockLua);
 }
@@ -163,8 +163,8 @@ TEST_F(JediManagerTest, ShouldReadTheJediProgressionSystemNameAtLoadConfiguratio
 
 	constructorDefaults(mockLua);
 
-	ON_CALL(mockLua, getGlobalInt(String("jediProgressionType"))).WillByDefault(Return(JediManager::HOLOCRONJEDIPROGRESSION));
-	EXPECT_CALL(mockLua, getGlobalString(String("jediManagerName"))).WillOnce(Return(String("HolocronJediManager")));
+	ON_CALL(mockLua, getGlobalInt(String("jediProgressionType"))).WillByDefault(Return(JediManager::HOLOGRINDJEDIPROGRESSION));
+	EXPECT_CALL(mockLua, getGlobalString(String("jediManagerName"))).WillOnce(Return(String("HologrindJediManager")));
 
 	jediManager->loadConfiguration(&mockLua);
 }

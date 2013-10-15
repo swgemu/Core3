@@ -1,4 +1,4 @@
-package.path = package.path .. ";scripts/managers/?.lua"
+package.path = package.path .. ";scripts/managers/jedi/?.lua"
 JediManager = require("jedi_manager")
 
 jediManagerName = "VillageJediManager"

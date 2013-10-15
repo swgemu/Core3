@@ -1,6 +1,6 @@
 registerScreenPlay = spy.new(function() end)
 
-package.path = package.path .. ";scripts/managers/?.lua"
+package.path = package.path .. ";scripts/managers/jedi/village/?.lua"
 require("village_jedi_manager")
 
 describe("Village Jedi Manager", function()

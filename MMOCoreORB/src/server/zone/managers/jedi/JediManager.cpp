@@ -69,16 +69,16 @@ void JediManager::setJediManagerName(String name) {
 }
 
 void JediManager::loadConfiguration(Lua* luaEngine) {
-	luaEngine->runFile("scripts/managers/jedi_manager.lua");
+	luaEngine->runFile("scripts/managers/jedi/jedi_manager.lua");
 
 	jediProgressionType = luaEngine->getGlobalInt(String("jediProgressionType"));
 
 	switch (jediProgressionType) {
-	case HOLOCRONJEDIPROGRESSION:
-		luaEngine->runFile("scripts/managers/holocron_jedi_manager.lua");
+	case HOLOGRINDJEDIPROGRESSION:
+		luaEngine->runFile("scripts/managers/jedi/hologrind/hologrind_jedi_manager.lua");
 		break;
 	case VILLAGEJEDIPROGRESSION:
-		luaEngine->runFile("scripts/managers/village_jedi_manager.lua");
+		luaEngine->runFile("scripts/managers/jedi/village/village_jedi_manager.lua");
 		break;
 	case CUSTOMJEDIPROGRESSION:
 		luaEngine->runFile(luaEngine->getGlobalString(String("customJediProgressionFile")));
