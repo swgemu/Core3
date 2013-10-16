@@ -98,8 +98,8 @@ void ConsumableImplementation::updateCraftingValues(CraftingValues* values, bool
 		if(values->hasProperty("flavor")) {
 			duration = (flavorMax - flavorMin) * values->getCurrentPercentage("flavor") + flavorMin;
 
-			if(values->hasProperty("add_duration"))
-				duration *= (1 + (values->getCurrentValue("add_duration") / 100.f));
+			if(values->hasProperty("add_flavor"))
+				duration *= (1 + (values->getCurrentValue("add_flavor") / 100.f));
 
 		}
 
