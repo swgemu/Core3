@@ -18,25 +18,31 @@ protected:
 	String planet;
 	short xCoord;
 	short yCoord;
+	int forageType;
 	Time expiration;
 
 public:
 
 	uint8 uses;
 
-     ForageArea(short playerX, short playerY, const String& plt) {
+     ForageArea(short playerX, short playerY, const String& plt, int forageAreaType) {
     	 xCoord = playerX;
     	 yCoord = playerY;
     	 planet = plt;
+    	 forageType = forageAreaType;
     	 expiration.addMiliTime(EXPIRE*60000);
     	 uses = 1;
      }
 
-     int checkPermission(short playerX, short playerY, const String& playerPlanet) {
+     int checkPermission(short playerX, short playerY, const String& playerPlanet, int forageAreaType) {
 
     	 //Check if area is expired.
     	 if (expiration.isPast())
     	 	return 0;
+
+    	 // Check if area is same type.
+    	 if (forageType != forageAreaType )
+    		 return 1;
 
     	 //Check if player is inside this area.
     	 if (abs(xCoord - playerX) >= SIZE)
@@ -53,7 +59,7 @@ public:
     	 	return 3;
 
          //return 0: If zone is time expired so it can be deleted.
-         //return 1: If player is not in this zone so we can ignore it.
+         //return 1: If player is not in this zone or different forage type so we can ignore it.
          //return 2: If player is in this zone but hasn't used it 3 times (allow).
          //return 3: If player is in this zone and has used it 3 times (deny).
 

@@ -58,9 +58,9 @@ protected:
 
 
 public:
-	ForageAreaCollection(CreatureObject* player, short forageX, short forageY, const String& planet) {
+	ForageAreaCollection(CreatureObject* player, short forageX, short forageY, const String& planet, int forageAreaType ) {
     	//Player is foraging for the first time, so make a new forage area.
-		Reference<ForageArea*> newArea = new ForageArea(forageX, forageY, planet);
+		Reference<ForageArea*> newArea = new ForageArea(forageX, forageY, planet, forageAreaType);
     	forageAreas.add(newArea);
 
     	//Queue cleanup event.
@@ -69,7 +69,7 @@ public:
 	}
 
 
-	bool checkForageAreas(short forageX, short forageY, const String& planet) {
+	bool checkForageAreas(short forageX, short forageY, const String& planet, int forageAreaType) {
 		Reference<ForageArea*> forageArea;
 		int8 zoneStatus = -1;
 		int8 authorized = -1;
@@ -80,7 +80,7 @@ public:
 		//Check forage areas for permission to forage.
 		for (int i = 0; i < forageAreas.size(); i++) {
 			forageArea = forageAreas.get(i);
-			zoneStatus = forageArea->checkPermission(forageX, forageY, planet);
+			zoneStatus = forageArea->checkPermission(forageX, forageY, planet, forageAreaType);
 
 			switch (zoneStatus) {
 
@@ -114,7 +114,7 @@ public:
 	    	if (forageAreas.size() == 120) //Cap how many zones we remember.
 	    		forageAreas.remove(0); //If at capacity, delete the oldest zone.
 
-	    	Reference<ForageArea*> newArea = new ForageArea(forageX, forageY, planet);
+	    	Reference<ForageArea*> newArea = new ForageArea(forageX, forageY, planet, forageAreaType);
 	    	forageAreas.add(newArea);
 	    }
 

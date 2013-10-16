@@ -141,13 +141,18 @@ void ForageManagerImplementation::finishForaging(CreatureObject* player, int for
 		Reference<ForageAreaCollection*> forageAreaCollection = forageAreas.get(player->getFirstName());
 
 		if (forageAreaCollection != NULL) { //Player has foraged before.
-			if (!forageAreaCollection->checkForageAreas(forageX, forageY, zoneName)) {
-				player->sendSystemMessage("@skl_use:sys_forage_empty"); //"There is nothing in this area to forage."
+			if (!forageAreaCollection->checkForageAreas(forageX, forageY, zoneName, forageType)) {
+				if( forageType == LAIR ){
+					player->sendSystemMessage("There is nothing of interest remaining in the lair.");
+				}
+				else{
+					player->sendSystemMessage("@skl_use:sys_forage_empty"); //"There is nothing in this area to forage."
+				}
 				return;
 			}
 
 		} else { //Player has not foraged before.
-			forageAreaCollection = new ForageAreaCollection(player, forageX, forageY, zoneName);
+			forageAreaCollection = new ForageAreaCollection(player, forageX, forageY, zoneName, forageType);
 			forageAreas.put(player->getFirstName(), forageAreaCollection);
 		}
 	}
