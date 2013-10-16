@@ -95,7 +95,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/objects/terrain/tests/BasicTerrainTest.cpp \
 			  	server/zone/tests/ZoneTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp \
+core3_IDLS =	autogen/server/zone/objects/player/sessions/StructureStatusSession.cpp \
+				autogen/server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp \
 				autogen/server/zone/objects/area/FsVillageArea.cpp \
 				autogen/server/zone/objects/player/sessions/TradeSession.cpp \
 				autogen/server/zone/objects/tangible/powerup/PowerupObject.cpp \
