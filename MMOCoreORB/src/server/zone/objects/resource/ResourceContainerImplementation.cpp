@@ -43,8 +43,8 @@ which carries forward this exception.
 */
 
 
-#include "ResourceContainer.h"
-#include "ResourceSpawn.h"
+#include "server/zone/objects/resource/ResourceContainer.h"
+#include "server/zone/objects/resource/ResourceSpawn.h"
 #include "server/zone/packets/resource/ResourceContainerObjectDeltaMessage3.h"
 #include "server/zone/packets/resource/ResourceContainerObjectMessage3.h"
 #include "server/zone/packets/resource/ResourceContainerObjectMessage6.h"

@@ -42,13 +42,13 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "ZoneClientSession.h"
+#include "server/zone/ZoneClientSession.h"
 
-#include "ZoneServer.h"
+#include "server/zone/ZoneServer.h"
 
-#include "Zone.h"
+#include "server/zone/Zone.h"
 
-#include "objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 #include "server/zone/objects/player/events/ClearClientEvent.h"
 #include "server/zone/objects/player/events/DisconnectClientEvent.h"

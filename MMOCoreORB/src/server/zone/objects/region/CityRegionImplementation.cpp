@@ -5,7 +5,7 @@
  *      Author: xyborn
  */
 
-#include "CityRegion.h"
+#include "server/zone/objects/region/CityRegion.h"
 #include "events/CityUpdateEvent.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/ServerCore.h"

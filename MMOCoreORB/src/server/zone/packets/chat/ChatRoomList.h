@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../../chat/room/ChatRoom.h"
+#include "server/chat/room/ChatRoom.h"
 #include "../MessageCallback.h"
 
 #include "server/zone/ZoneServer.h"

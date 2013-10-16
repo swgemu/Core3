@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../DeltaMessage.h"
 
-#include "../../objects/player/PlayerObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 class PlayerObjectDeltaMessage8 : public DeltaMessage {
 	PlayerObjectImplementation* play;

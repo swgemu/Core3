@@ -5,7 +5,7 @@
  *      Author: crush
  */
 
-#include "DestroyStructureSession.h"
+#include "server/zone/objects/player/sessions/DestroyStructureSession.h"
 #include "server/zone/managers/structure/StructureManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"

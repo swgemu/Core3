@@ -5,7 +5,7 @@
  *      Author: xyborn
  */
 
-#include "CityRemoveMilitiaSession.h"
+#include "server/zone/objects/player/sessions/CityRemoveMilitiaSession.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"

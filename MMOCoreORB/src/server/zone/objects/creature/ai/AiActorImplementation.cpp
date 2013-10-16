@@ -5,7 +5,7 @@
  *      Author: da
  */
 
-#include "AiActor.h"
+#include "server/zone/objects/creature/ai/AiActor.h"
 #include "components/AiStateComponent.h"
 #include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"

@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 
 class FactoryCrateObjectMessage6 : public BaseLineMessage {
 public:

@@ -46,8 +46,8 @@ which carries forward this exception.
 #define EXTRACTOBJECTCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../factorycrate/FactoryCrate.h"
-#include "../../tangible/TangibleObject.h"
+#include "server/zone/objects/factorycrate/FactoryCrate.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 
 class ExtractObjectCommand : public QueueCommand {
 public:

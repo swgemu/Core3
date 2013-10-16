@@ -5,8 +5,8 @@
  *      Author: victor
  */
 
-#include "LuaSceneObject.h"
-#include "SceneObject.h"
+#include "server/zone/objects/scene/LuaSceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/Zone.h"

@@ -46,7 +46,7 @@ which carries forward this exception.
 #define GROUPCHATCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../../../chat/ChatManager.h"
+#include "server/chat/ChatManager.h"
 
 
 class GroupChatCommand : public QueueCommand {

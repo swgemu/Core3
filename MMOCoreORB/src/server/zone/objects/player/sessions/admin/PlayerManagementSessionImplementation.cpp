@@ -5,7 +5,7 @@
  *      Author: Kyle
  */
 
-#include "PlayerManagementSession.h"
+#include "server/zone/objects/player/sessions/admin/PlayerManagementSession.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"

@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "SuiMessageBox.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 
 BaseMessage* SuiMessageBoxImplementation::generateMessage() {
 	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.messageBox");

@@ -41,7 +41,7 @@ which carries forward this exception.
 
  */
 
-#include "DelayedBuffObserver.h"
+#include "server/zone/objects/tangible/consumable/DelayedBuffObserver.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/buffs/DelayedBuff.h"

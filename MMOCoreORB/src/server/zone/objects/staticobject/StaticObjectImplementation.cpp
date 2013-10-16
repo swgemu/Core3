@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "StaticObject.h"
+#include "server/zone/objects/staticobject/StaticObject.h"
 #include "server/zone/packets/static/StaticObjectMessage3.h"
 #include "server/zone/packets/static/StaticObjectMessage6.h"
 

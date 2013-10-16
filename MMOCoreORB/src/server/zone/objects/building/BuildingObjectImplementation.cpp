@@ -5,7 +5,7 @@
  *      Author: TheAnswer
  */
 
-#include "BuildingObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/cell/CellObject.h"

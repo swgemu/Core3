@@ -43,7 +43,7 @@ which carries forward this exception.
 */
 
 #include <limits>
-#include "ConversationObserver.h"
+#include "server/zone/objects/creature/conversation/ConversationObserver.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/conversation/ConversationManager.h"
 #include "server/zone/objects/player/sessions/ConversationSession.h"

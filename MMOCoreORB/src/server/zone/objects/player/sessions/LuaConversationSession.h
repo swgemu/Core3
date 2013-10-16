@@ -9,7 +9,7 @@
 #define LUACONVERSATIONSESSION_H_
 
 
-#include "ConversationSession.h"
+#include "server/zone/objects/player/sessions/ConversationSession.h"
 
 #include "engine/engine.h"
 

@@ -5,7 +5,7 @@
  *      Author: Kyle
  */
 
-#include "FactoryCrate.h"
+#include "server/zone/objects/factorycrate/FactoryCrate.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/packets/factory/FactoryCrateObjectMessage3.h"
 #include "server/zone/packets/factory/FactoryCrateObjectMessage6.h"

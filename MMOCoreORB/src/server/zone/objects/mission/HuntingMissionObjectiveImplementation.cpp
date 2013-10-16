@@ -5,7 +5,7 @@
  *      Author: dannuic
  */
 
-#include "HuntingMissionObjective.h"
+#include "server/zone/objects/mission/HuntingMissionObjective.h"
 
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/Zone.h"
@@ -17,8 +17,8 @@
 #include "server/chat/StringIdChatParameter.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
-#include "MissionObject.h"
-#include "MissionObserver.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/mission/MissionObserver.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 
 void HuntingMissionObjectiveImplementation::activate() {

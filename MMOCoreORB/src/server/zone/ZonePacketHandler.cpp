@@ -44,9 +44,9 @@ which carries forward this exception.
 
 #include "ZonePacketHandler.h"
 
-#include "ZoneServer.h"
-#include "ZoneClientSession.h"
-#include "ZoneProcessServer.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/ZoneClientSession.h"
+#include "server/zone/ZoneProcessServer.h"
 
 #include "packets/zone/ClientIDMessage.h"
 #include "packets/zone/ClientIDMessageCallback.h"

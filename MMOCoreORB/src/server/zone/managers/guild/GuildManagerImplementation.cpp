@@ -5,7 +5,7 @@
  *      Author: crush
  */
 
-#include "GuildManager.h"
+#include "server/zone/managers/guild/GuildManager.h"
 
 #include "server/chat/ChatManager.h"
 #include "server/chat/room/ChatRoom.h"

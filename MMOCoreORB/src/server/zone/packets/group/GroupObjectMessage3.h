@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/group/GroupObject.h"
+#include "server/zone/objects/group/GroupObject.h"
 
 class GroupObjectMessage3 : public BaseLineMessage {
 public:

@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../objects/player/PlayerObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 class IgnoreListMessage : public BaseMessage {
 public:

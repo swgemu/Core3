@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/Zone.h"
-#include "../ForageManager.h"
+#include "server/zone/managers/minigames/ForageManager.h"
 
 namespace server {
 namespace zone {

@@ -4,7 +4,7 @@
  *  Created on: Oct 22, 2012
  *      Author: root
  */
-#include "GCWManager.h"
+#include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "system/util/SortedVector.h"

@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "ActiveArea.h"
+#include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "events/ActiveAreaEvent.h"
 #include "server/zone/Zone.h"

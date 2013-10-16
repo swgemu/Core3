@@ -5,7 +5,7 @@
  *      Author: elvaron
  */
 
-#include "ResourceDeed.h"
+#include "server/zone/objects/tangible/deed/resource/ResourceDeed.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/sui/callbacks/ResourceDeedSuiCallback.h"

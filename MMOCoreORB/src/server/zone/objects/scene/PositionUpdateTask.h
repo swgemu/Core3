@@ -9,7 +9,7 @@
 #define POSITIONUPDATETASK_H_
 
 #include "engine/engine.h"
-#include "SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class PositionUpdateTask : public Task {
 	ManagedReference<SceneObject*> object;

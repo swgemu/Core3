@@ -46,7 +46,7 @@ which carries forward this exception.
 #define SURVEYCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../tangible/tool/SurveyTool.h"
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
 
 class SurveyCommand : public QueueCommand {
 public:

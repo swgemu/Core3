@@ -6,7 +6,7 @@
  */
 
 #include "LuaTangibleObject.h"
-#include "TangibleObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 
 const char LuaTangibleObject::className[] = "LuaTangibleObject";
 

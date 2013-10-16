@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "SuiInputBox.h"
+#include "server/zone/objects/player/sui/inputbox/SuiInputBox.h"
 
 BaseMessage* SuiInputBoxImplementation::generateMessage() {
 	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.inputBox");

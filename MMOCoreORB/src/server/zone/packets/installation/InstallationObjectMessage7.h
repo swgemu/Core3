@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "server/zone/objects/resource/ResourceSpawn.h"
 
 #include "server/zone/objects/installation/harvester/HarvesterObject.h"
+#include "server/zone/objects/installation/InstallationObject.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 class InstallationObjectMessage7 : public BaseLineMessage {

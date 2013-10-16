@@ -41,7 +41,7 @@ which carries forward this exception.
 
 */
 
-#include "ShipObject.h"
+#include "server/zone/objects/ship/ShipObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/packets/ship/ShipObjectMessage1.h"
 #include "server/zone/packets/ship/ShipObjectMessage3.h"

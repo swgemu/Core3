@@ -5,7 +5,7 @@
  *      Author: crush
  */
 
-#include "VehicleDeed.h"
+#include "server/zone/objects/tangible/deed/vehicle/VehicleDeed.h"
 #include"server/zone/ZoneServer.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"

@@ -6,7 +6,7 @@
  */
 
 #include "DamageOverTimeList.h"
-#include "../CreatureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 	uint64 states = 0;

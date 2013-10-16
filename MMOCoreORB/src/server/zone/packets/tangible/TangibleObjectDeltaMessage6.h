@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../../packets/DeltaMessage.h"
 
-#include "../../objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 
 class TangibleObjectDeltaMessage6 : public DeltaMessage {
 	TangibleObject* tano;

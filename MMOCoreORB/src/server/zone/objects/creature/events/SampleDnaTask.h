@@ -27,6 +27,7 @@ public:
 		waitCount = 0;
 		creature = cre;
 		player = playo;
+		originalMask = 0;
 	}
 	void run() {
 		Locker locker(player);

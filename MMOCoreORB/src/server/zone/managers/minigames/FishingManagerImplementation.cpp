@@ -5,7 +5,7 @@
  *      Author: swgemu
  */
 
-#include "FishingManager.h"
+#include "server/zone/managers/minigames/FishingManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"

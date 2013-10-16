@@ -46,8 +46,8 @@ which carries forward this exception.
 #define DISBANDCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../group/GroupObject.h"
-#include "../../../managers/group/GroupManager.h"
+#include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/managers/group/GroupManager.h"
 
 class DisbandCommand : public QueueCommand {
 public:

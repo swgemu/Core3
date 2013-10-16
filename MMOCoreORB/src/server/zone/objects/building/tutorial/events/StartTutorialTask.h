@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "../TutorialBuildingObject.h"
+#include "server/zone/objects/building/tutorial/TutorialBuildingObject.h"
 
 #include "server/zone/managers/director/DirectorManager.h"
 

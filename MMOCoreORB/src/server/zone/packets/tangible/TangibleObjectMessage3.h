@@ -47,10 +47,10 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "../../objects/scene/variables/StringId.h"
-#include "../../objects/player/PlayerObject.h"
-#include "../../objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "../../managers/player/PermissionLevelList.h"
 
 class TangibleObjectMessage3 : public BaseLineMessage {

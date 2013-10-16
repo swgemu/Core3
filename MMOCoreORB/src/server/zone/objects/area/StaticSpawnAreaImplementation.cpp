@@ -5,8 +5,8 @@
  *      Author: da
  */
 
-#include "StaticSpawnArea.h"
-#include "SpawnObserver.h"
+#include "server/zone/objects/area/StaticSpawnArea.h"
+#include "server/zone/objects/area/SpawnObserver.h"
 #include "server/zone/managers/creature/StaticSpawnGroup.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"

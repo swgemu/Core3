@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "PersistentMessage.h"
+#include "server/chat/PersistentMessage.h"
 #include "server/zone/packets/chat/ChatPersistentMessageToClient.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 

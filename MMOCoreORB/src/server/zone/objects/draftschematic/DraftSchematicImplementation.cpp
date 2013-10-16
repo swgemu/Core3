@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "DraftSchematic.h"
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
 
 #include "server/zone/ZoneServer.h"
 

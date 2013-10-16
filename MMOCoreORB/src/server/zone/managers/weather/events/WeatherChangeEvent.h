@@ -46,7 +46,7 @@ which carries forward this exception.
 #define WEATHERCHANGEEVENT_H_
 
 
-#include"../WeatherManager.h"
+#include"server/zone/managers/weather/WeatherManager.h"
 
 namespace server {
 namespace zone {

@@ -46,8 +46,8 @@ which carries forward this exception.
 #define CLOSECONTAINERCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../creature/CreatureObject.h"
-#include "../../../managers/minigames/FishingManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/managers/minigames/FishingManager.h"
 
 class CloseContainerCommand : public QueueCommand {
 public:

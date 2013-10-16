@@ -8,7 +8,7 @@
 #ifndef AiMoveEvent_H_
 #define AiMoveEvent_H_
 
-#include "../AiAgent.h"
+#include "server/zone/objects/creature/AiAgent.h"
 #include "../PatrolPoint.h"
 
 namespace server {

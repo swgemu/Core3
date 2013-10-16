@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "TicketCollector.h"
+#include "server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/ticket/TicketObject.h"
 #include "server/zone/Zone.h"

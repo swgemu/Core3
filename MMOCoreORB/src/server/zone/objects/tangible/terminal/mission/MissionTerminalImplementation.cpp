@@ -5,7 +5,7 @@
  *      Author: polonel
  */
 
-#include "MissionTerminal.h"
+#include "server/zone/objects/tangible/terminal/mission/MissionTerminal.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/player/PlayerObject.h"

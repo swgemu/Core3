@@ -5,7 +5,7 @@
  *      Author: loshult
  */
 
-#include "WearableContainerObject.h"
+#include "server/zone/objects/tangible/wearables/WearableContainerObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/skill/SkillModManager.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"

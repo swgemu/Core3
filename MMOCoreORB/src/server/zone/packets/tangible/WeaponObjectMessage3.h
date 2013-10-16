@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "TangibleObjectMessage3.h"
 
-#include "../../objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 
 class WeaponObjectMessage3 : public TangibleObjectMessage3 {
 public:

@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "SuiBox.h"
+#include "server/zone/objects/player/sui/SuiBox.h"
 #include "server/zone/packets/ui/SuiCreatePageMessage.h"
 #include "server/zone/packets/ui/SuiForceClosePage.h"
 #include "server/zone/objects/scene/SceneObject.h"

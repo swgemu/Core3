@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "WaypointObject.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
 
 void WaypointObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	IntangibleObjectImplementation::loadTemplateData(templateData);

@@ -5,7 +5,7 @@
  *      Author: dannuic
  */
 
-#include "CraftingMissionObjective.h"
+#include "server/zone/objects/mission/CraftingMissionObjective.h"
 #include "server/zone/managers/crafting/schematicmap/SchematicMap.h"
 #include "server/zone/objects/mission/MissionObject.h"
 

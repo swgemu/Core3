@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../DeltaMessage.h"
 
-#include "../../objects/group/GroupObject.h"
+#include "server/zone/objects/group/GroupObject.h"
 
 class GroupObjectDeltaMessage6 : public DeltaMessage {
 	GroupObject* grup;

@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "ObjectController.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/managers/objectcontroller/command/CommandConfigManager.h"
 #include "server/zone/managers/objectcontroller/command/CommandList.h"

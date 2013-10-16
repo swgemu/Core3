@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "FsVillageArea.h"
+#include "server/zone/objects/area/FsVillageArea.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/Zone.h"
 

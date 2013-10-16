@@ -8,7 +8,7 @@
 #ifndef HEALLAIROBSERVEREVENT_H_
 #define HEALLAIROBSERVEREVENT_H_
 
-#include "LairObserver.h"
+#include "server/zone/managers/creature/LairObserver.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 
 namespace server {

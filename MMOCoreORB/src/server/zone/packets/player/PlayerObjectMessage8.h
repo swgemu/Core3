@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/player/PlayerObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "../../objects/player/variables/WaypointList.h"
 
 

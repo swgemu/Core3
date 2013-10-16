@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "ArmorComponent.h"
+#include "server/zone/objects/tangible/component/armor/ArmorComponent.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 

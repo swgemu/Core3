@@ -46,7 +46,7 @@ which carries forward this exception.
 #define BUFFLIST_H_
 
 #include "engine/engine.h"
-#include "Buff.h"
+#include "server/zone/objects/creature/buffs/Buff.h"
 
 class BuffList : public Serializable {
 protected:

@@ -46,7 +46,7 @@ which carries forward this exception.
 #define SHIPOBJECTMESSAGE4_H_
 
 #include "../../packets/BaseLineMessage.h"
-#include "../../objects/ship/ShipObject.h"
+#include "server/zone/objects/ship/ShipObject.h"
 
 
 class ShipObjectMessage4 : public BaseLineMessage {

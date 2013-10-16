@@ -44,7 +44,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "ResourceManager.h"
+#include "server/zone/managers/resource/ResourceManager.h"
 #include "ResourceShiftTask.h"
 #include "resourcespawner/SampleTask.h"
 #include "resourcespawner/SampleResultsTask.h"

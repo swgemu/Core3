@@ -7,7 +7,7 @@
 
 #include "engine/engine.h"
 
-#include "AuctionsMap.h"
+#include "server/zone/managers/auction/AuctionsMap.h"
 #include "AuctionTerminalMap.h"
 #include "server/zone/objects/auction/AuctionItem.h"
 #include "server/zone/objects/scene/SceneObject.h"

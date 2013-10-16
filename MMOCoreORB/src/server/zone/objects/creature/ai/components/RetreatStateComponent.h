@@ -9,7 +9,7 @@
 #define RETREATSTATECOMPONENT_H_
 
 #include "AiStateComponent.h"
-#include "../AiActor.h"
+#include "server/zone/objects/creature/ai/AiActor.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "engine/core/ManagedReference.h"
 

@@ -5,7 +5,7 @@
  *      Author: xyborn
  */
 
-#include "StructureDeed.h"
+#include "server/zone/objects/tangible/deed/structure/StructureDeed.h"
 #include "server/zone/templates/tangible/StructureDeedTemplate.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"

@@ -5,7 +5,7 @@
  *      Author: Kyle
  */
 
-#include "CraftingSession.h"
+#include "server/zone/objects/player/sessions/crafting/CraftingSession.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"

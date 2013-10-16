@@ -41,7 +41,7 @@ which carries forward this exception.
 
  */
 
-#include "LairObserver.h"
+#include "server/zone/managers/creature/LairObserver.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/objects/creature/NonPlayerCreatureObject.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"

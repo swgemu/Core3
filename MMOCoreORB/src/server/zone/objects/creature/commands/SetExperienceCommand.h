@@ -46,9 +46,9 @@ which carries forward this exception.
 #define SETEXPERIENCECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../creature/CreatureObject.h"
-#include "../../player/PlayerObject.h"
-#include "../../../managers/player/PlayerManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 class SetExperienceCommand : public QueueCommand {
 public:

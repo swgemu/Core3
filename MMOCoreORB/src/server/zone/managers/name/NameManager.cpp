@@ -45,9 +45,9 @@ which carries forward this exception.
 
 #include "NameManager.h"
 
-#include "../../ZoneProcessServer.h"
-#include "../../ZoneClientSession.h"
-#include "../../objects/player/Races.h"
+#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/ZoneClientSession.h"
+#include "server/zone/objects/player/Races.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
 NameManager::NameManager() {

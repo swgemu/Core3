@@ -5,7 +5,7 @@
  *      Author: swgemu
  */
 
-#include "FishingPoleObject.h"
+#include "server/zone/objects/tangible/fishing/FishingPoleObject.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"

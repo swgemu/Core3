@@ -9,7 +9,7 @@
 #define BASEDESTRUCTIONTASK_H_
 
 #include "engine/engine.h"
-#include "GCWManager.h"
+#include "server/zone/managers/gcw/GCWManager.h"
 
 class BaseDestructionTask : public Task {
 	ManagedWeakReference<GCWManager*> gcwManager;

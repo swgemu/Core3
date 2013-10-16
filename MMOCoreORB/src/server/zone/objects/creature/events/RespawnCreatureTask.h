@@ -8,7 +8,7 @@
 #ifndef RESPAWNCREATURETASK_H_
 #define RESPAWNCREATURETASK_H_
 
-#include "../AiAgent.h"
+#include "server/zone/objects/creature/AiAgent.h"
 
 class RespawnCreatureTask : public Task {
 	ManagedReference<AiAgent*> creature;

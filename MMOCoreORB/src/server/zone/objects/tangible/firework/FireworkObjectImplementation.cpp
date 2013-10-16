@@ -5,7 +5,7 @@
  *      Author: swgemu
  */
 
-#include "FireworkObject.h"
+#include "server/zone/objects/tangible/firework/FireworkObject.h"
 #include "FireworkRemoveEvent.h"
 #include "FireworkLaunchEvent.h"
 #include "server/zone/objects/tangible/TangibleObject.h"

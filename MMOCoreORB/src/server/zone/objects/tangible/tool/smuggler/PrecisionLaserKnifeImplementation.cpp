@@ -5,7 +5,7 @@
  *      Author: polonel
  */
 
-#include "PrecisionLaserKnife.h"
+#include "server/zone/objects/tangible/tool/smuggler/PrecisionLaserKnife.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/player/sessions/SlicingSession.h"

@@ -46,7 +46,7 @@ which carries forward this exception.
 #define NPCCONVERSATIONMESSAGE_H_
 
 #include "ObjectControllerMessage.h"
-#include "../../objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/chat/StringIdChatParameter.h"
 
 //TODO: This needs more research!

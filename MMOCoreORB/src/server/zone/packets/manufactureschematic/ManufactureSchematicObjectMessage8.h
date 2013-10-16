@@ -48,7 +48,7 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/draftschematic/DraftSchematic.h"
+#include "server/zone/objects/draftschematic/DraftSchematic.h"
 
 class ManufactureSchematicObjectMessage8 : public BaseLineMessage {
 public:

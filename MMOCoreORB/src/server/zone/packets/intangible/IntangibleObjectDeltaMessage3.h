@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../../packets/DeltaMessage.h"
 
-#include "../../objects/intangible/IntangibleObject.h"
+#include "server/zone/objects/intangible/IntangibleObject.h"
 
 class IntangibleObjectDeltaMessage3 : public DeltaMessage {
 	IntangibleObject* itno;

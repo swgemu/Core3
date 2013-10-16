@@ -6,7 +6,7 @@
  */
 
 #include "GuildMemberInfo.h"
-#include "GuildObject.h"
+#include "server/zone/objects/guild/GuildObject.h"
 
 GuildMemberInfo::GuildMemberInfo(uint64 playerid) : Object() {
 	playerID = playerid;

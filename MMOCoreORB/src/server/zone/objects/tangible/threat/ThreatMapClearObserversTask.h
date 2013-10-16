@@ -9,8 +9,8 @@
 #define THREATMAPCLEAROBSERVERSTASK_H_
 
 #include "engine/engine.h"
-#include "ThreatMap.h"
-#include "ThreatMapObserver.h"
+#include "server/zone/objects/tangible/threat/ThreatMap.h"
+#include "server/zone/objects/tangible/threat/ThreatMapObserver.h"
 
 class ThreatMapClearObserversTask : public Task {
 	ThreatMap threatMap;

@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
  */
 
-#include "TangibleObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "variables/SkillModMap.h"
 #include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/managers/skill/SkillModManager.h"

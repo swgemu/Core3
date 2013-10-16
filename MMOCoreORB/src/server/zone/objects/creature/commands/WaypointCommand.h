@@ -47,9 +47,9 @@ which carries forward this exception.
 
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../waypoint/WaypointObject.h"
-#include "../../player/PlayerObject.h"
-#include "../../../Zone.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/Zone.h"
 
 
 #include "server/zone/managers/object/ObjectManager.h"

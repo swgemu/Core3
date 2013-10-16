@@ -9,7 +9,7 @@
 #define AiThinkEvent_H_
 
 
-#include "../AiAgent.h"
+#include "server/zone/objects/creature/AiAgent.h"
 
 namespace server {
 namespace zone {

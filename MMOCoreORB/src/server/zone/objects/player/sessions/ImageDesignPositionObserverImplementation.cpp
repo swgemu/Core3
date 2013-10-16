@@ -41,10 +41,10 @@ which carries forward this exception.
 
 */
 
-#include "ImageDesignPositionObserver.h"
+#include "server/zone/objects/player/sessions/ImageDesignPositionObserver.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/objects/scene/SceneObject.h"
-#include "ImageDesignSession.h"
+#include "server/zone/objects/player/sessions/ImageDesignSession.h"
 
 int ImageDesignPositionObserverImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	ManagedReference<ImageDesignSession*> strongRef = session.get();

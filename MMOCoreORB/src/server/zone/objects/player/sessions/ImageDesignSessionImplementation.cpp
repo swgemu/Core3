@@ -6,7 +6,7 @@
  */
 
 #include "engine/engine.h"
-#include "ImageDesignSession.h"
+#include "server/zone/objects/player/sessions/ImageDesignSession.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/packets/object/ImageDesignMessage.h"
 #include "server/zone/packets/object/ImageDesignRejectMessageCallback.h"
@@ -15,7 +15,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/scene/variables/CustomizationVariables.h"
 #include "server/zone/ZoneServer.h"
-#include "ImageDesignPositionObserver.h"
+#include "server/zone/objects/player/sessions/ImageDesignPositionObserver.h"
 #include "server/zone/objects/player/events/ImageDesignTimeoutEvent.h"
 #include "server/zone/objects/player/sessions/MigrateStatsSession.h"
 

@@ -42,7 +42,7 @@
  which carries forward this exception.
  */
 
-#include "ResourceSpawn.h"
+#include "server/zone/objects/resource/ResourceSpawn.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/resource/ResourceContainer.h"

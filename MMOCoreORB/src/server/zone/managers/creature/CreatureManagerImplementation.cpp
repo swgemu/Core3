@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "CreatureManager.h"
+#include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "CreatureTemplateManager.h"
 #include "DnaManager.h"
@@ -37,7 +37,7 @@
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/packets/chat/ChatSystemMessage.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
-#include "LairObserver.h"
+#include "server/zone/managers/creature/LairObserver.h"
 #include "server/zone/packets/object/SpatialChat.h"
 
 Mutex CreatureManagerImplementation::loadMutex;

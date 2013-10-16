@@ -6,7 +6,7 @@
  */
 
 #include "ZoneReference.h"
-#include "Zone.h"
+#include "server/zone/Zone.h"
 #include "../ServerCore.h"
 
 bool ZoneReference::toBinaryStream(ObjectOutputStream* stream) {

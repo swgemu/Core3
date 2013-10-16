@@ -7,7 +7,7 @@
 
 #include "engine/engine.h"
 
-#include "LootManager.h"
+#include "server/zone/managers/loot/LootManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/AiAgent.h"

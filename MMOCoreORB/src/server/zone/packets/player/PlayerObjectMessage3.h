@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 #include "../intangible/IntangibleObjectMessage3.h"
-#include "../../objects/player/PlayerObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 class PlayerObjectMessage3 : public IntangibleObjectMessage3 {
 public:

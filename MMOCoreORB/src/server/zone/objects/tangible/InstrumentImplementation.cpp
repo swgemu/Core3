@@ -5,8 +5,8 @@
  *      Author: victor
  */
 
-#include "Instrument.h"
-#include "InstrumentObserver.h"
+#include "server/zone/objects/tangible/Instrument.h"
+#include "server/zone/objects/tangible/InstrumentObserver.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/managers/object/ObjectManager.h"

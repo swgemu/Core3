@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "StartingLocationTerminal.h"
+#include "server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 

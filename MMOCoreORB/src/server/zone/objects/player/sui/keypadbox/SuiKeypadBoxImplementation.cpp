@@ -5,7 +5,7 @@
  *      Author: xyborn
  */
 
-#include "SuiKeypadBox.h"
+#include "server/zone/objects/player/sui/keypadbox/SuiKeypadBox.h"
 #include "server/zone/objects/scene/SceneObject.h"
 
 BaseMessage* SuiKeypadBoxImplementation::generateMessage() {

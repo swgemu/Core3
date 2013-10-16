@@ -5,9 +5,9 @@
  *      Author: dannuic
  */
 
-#include "DynamicSpawnArea.h"
-#include "SpawnDynamicAreaCreatureTask.h"
-#include "SpawnObserver.h"
+#include "server/zone/objects/area/DynamicSpawnArea.h"
+#include "server/zone/objects/area/SpawnDynamicAreaCreatureTask.h"
+#include "server/zone/objects/area/SpawnObserver.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/DynamicSpawnGroup.h"
 #include "server/zone/managers/object/ObjectManager.h"

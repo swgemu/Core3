@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
  */
 
-#include "SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 #include "engine/util/Facade.h"
 

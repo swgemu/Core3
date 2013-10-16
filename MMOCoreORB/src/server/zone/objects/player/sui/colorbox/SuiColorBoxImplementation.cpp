@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "SuiColorBox.h"
+#include "server/zone/objects/player/sui/colorbox/SuiColorBox.h"
 #include "server/zone/objects/scene/SceneObject.h"
 
 BaseMessage* SuiColorBoxImplementation::generateMessage() {

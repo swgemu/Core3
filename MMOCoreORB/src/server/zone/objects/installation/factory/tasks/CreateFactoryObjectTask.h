@@ -45,7 +45,7 @@
 #ifndef CREATEFACTORYOBJECTTASK_H_
 #define CREATEFACTORYOBJECTTASK_H_
 
-#include "../FactoryObject.h"
+#include "server/zone/objects/installation/factory/FactoryObject.h"
 
 class CreateFactoryObjectTask : public Task {
 

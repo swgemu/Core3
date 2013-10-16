@@ -6,7 +6,7 @@
  */
 
 #include "LuaSuiBox.h"
-#include "SuiBox.h"
+#include "server/zone/objects/player/sui/SuiBox.h"
 #include "server/zone/objects/scene/SceneObject.h"
 
 const char LuaSuiBox::className[] = "LuaSuiBox";

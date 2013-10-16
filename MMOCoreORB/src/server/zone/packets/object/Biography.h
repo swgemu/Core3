@@ -46,7 +46,7 @@ which carries forward this exception.
 #define BIOGRAPHY_H_
 
 #include "ObjectControllerMessage.h"
-#include "../../objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class Biography : public ObjectControllerMessage {
 public:

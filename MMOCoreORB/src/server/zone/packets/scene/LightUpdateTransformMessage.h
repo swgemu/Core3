@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class LightUpdateTransformMessage : public BaseMessage {
 public:

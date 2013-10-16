@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../DeltaMessage.h"
 
-#include "../../objects/mission/MissionObject.h"
+#include "server/zone/objects/mission/MissionObject.h"
 
 class MissionObjectDeltaMessage3 : public DeltaMessage {
 	MissionObject* miso;

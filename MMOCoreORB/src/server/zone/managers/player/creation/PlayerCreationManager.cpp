@@ -47,7 +47,7 @@ which carries forward this exception.
 #include "ProfessionDefaultsInfo.h"
 #include "RacialCreationData.h"
 #include "HairStyleInfo.h"
-#include "../PlayerManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/login/packets/ErrorMessage.h"
 #include "server/chat/ChatManager.h"
 #include "server/login/account/Account.h"

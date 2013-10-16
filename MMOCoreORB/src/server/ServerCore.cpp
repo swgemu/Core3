@@ -48,9 +48,9 @@
 
 #include "db/MantisDatabase.h"
 
-#include "chat/ChatManager.h"
+#include "server/chat/ChatManager.h"
 
-#include "login/LoginServer.h"
+#include "server/login/LoginServer.h"
 
 #include "features/Features.h"
 
@@ -60,13 +60,13 @@
 
 #include "web/WebServer.h"
 
-#include "zone/ZoneServer.h"
+#include "server/zone/ZoneServer.h"
 
-#include "zone/managers/object/ObjectManager.h"
-#include "zone/managers/templates/TemplateManager.h"
-#include "zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
-#include "zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 ManagedReference<ZoneServer*> ServerCore::zoneServerRef = NULL;
 SortedVector<String> ServerCore::arguments;

@@ -1,7 +1,7 @@
 
 
 #include "engine/engine.h"
-#include "RecycleTool.h"
+#include "server/zone/objects/tangible/tool/recycle/RecycleTool.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/tangible/Container.h"
 #include "server/zone/objects/tangible/TangibleObject.h"

@@ -6,7 +6,7 @@
  */
 
 
-#include "SignObject.h"
+#include "server/zone/objects/tangible/sign/SignObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 #include "server/zone/objects/building/BuildingObject.h"

@@ -44,7 +44,7 @@ which carries forward this exception.
 
 #include "SuiManager.h"
 
-#include "../radial/RadialManager.h"
+#include "server/zone/managers/radial/RadialManager.h"
 
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"

@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "VehicleObject.h"
+#include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"

@@ -9,7 +9,7 @@
 
 #include "MapLocationEntry.h"
 #include "MapLocationType.h"
-#include "PlanetManager.h"
+#include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/objects/region/CityRegion.h"

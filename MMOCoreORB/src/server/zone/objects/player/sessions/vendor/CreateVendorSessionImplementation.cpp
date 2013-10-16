@@ -5,7 +5,7 @@
  *      Author: Kyle
  */
 
-#include "CreateVendorSession.h"
+#include "server/zone/objects/player/sessions/vendor/CreateVendorSession.h"
 #include "server/zone/ZoneServer.h"
 
 #include "server/zone/managers/auction/AuctionManager.h"

@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "DestroyMissionObjective.h"
+#include "server/zone/objects/mission/DestroyMissionObjective.h"
 #include "server/zone/objects/area/MissionSpawnActiveArea.h"
 
 #include "server/zone/objects/waypoint/WaypointObject.h"
@@ -16,8 +16,8 @@
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
-#include "MissionObject.h"
-#include "MissionObserver.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/mission/MissionObserver.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/collision/CollisionManager.h"

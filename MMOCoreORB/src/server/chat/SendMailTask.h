@@ -11,7 +11,7 @@
 #include "engine/engine.h"
 
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "PersistentMessage.h"
+#include "server/chat/PersistentMessage.h"
 
 class SendMailTask : public Task {
 	ManagedReference<CreatureObject*> receiver;

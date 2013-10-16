@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "AiAgent.h"
+#include "server/zone/objects/creature/AiAgent.h"
 #include "LuaAiAgent.h"
 
 const char LuaAiAgent::className[] = "LuaAiAgent";

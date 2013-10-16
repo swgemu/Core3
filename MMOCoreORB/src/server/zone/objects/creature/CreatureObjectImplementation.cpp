@@ -42,7 +42,7 @@
  which carries forward this exception.
  */
 
-#include "CreatureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "CreatureState.h"
 #include "CreatureFlag.h"
 
@@ -117,7 +117,7 @@
 #include "system/lang/ref/Reference.h"
 #include "server/zone/objects/player/events/LogoutTask.h"
 
-#include "ai/AiActor.h"
+#include "server/zone/objects/creature/ai/AiActor.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 
 #include "buffs/BuffDurationEvent.h"

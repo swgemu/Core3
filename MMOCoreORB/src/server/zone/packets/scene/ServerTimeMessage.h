@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../Zone.h"
+#include "server/zone/Zone.h"
 
 class ServerTimeMessage : public BaseMessage {
 public:

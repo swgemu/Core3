@@ -42,10 +42,10 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "Zone.h"
+#include "server/zone/Zone.h"
 
-#include "ZoneProcessServer.h"
-#include "objects/scene/SceneObject.h"
+#include "server/zone/ZoneProcessServer.h"
+#include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
@@ -64,9 +64,9 @@ which carries forward this exception.
 
 #include "server/zone/managers/structure/StructureManager.h"
 
-#include "managers/minigames/FishingManager.h"
-#include "managers/minigames/GamblingManager.h"
-#include "managers/minigames/ForageManager.h"
+#include "server/zone/managers/minigames/FishingManager.h"
+#include "server/zone/managers/minigames/GamblingManager.h"
+#include "server/zone/managers/minigames/ForageManager.h"
 
 ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& name) {
 	processor = serv;

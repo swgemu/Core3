@@ -6,7 +6,7 @@
  */
 
 #include "engine/engine.h"
-#include "CityManager.h"
+#include "server/zone/managers/city/CityManager.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"

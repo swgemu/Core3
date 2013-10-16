@@ -10,7 +10,7 @@
 
 #include "server/zone/objects/scene/LuaSceneObject.h"
 
-#include "IntangibleObject.h"
+#include "server/zone/objects/intangible/IntangibleObject.h"
 
 class LuaIntangibleObject : public LuaSceneObject {
 public:

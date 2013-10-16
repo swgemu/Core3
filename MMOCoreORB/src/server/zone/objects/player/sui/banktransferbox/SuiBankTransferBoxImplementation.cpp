@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "SuiBankTransferBox.h"
+#include "server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.h"
 #include "server/zone/packets/ui/SuiCreatePageMessage.h"
 
 BaseMessage* SuiBankTransferBoxImplementation::generateMessage() {

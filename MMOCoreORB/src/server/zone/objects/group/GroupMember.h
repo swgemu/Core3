@@ -8,8 +8,8 @@
 #ifndef GROUPMEMBER_H_
 #define GROUPMEMBER_H_
 
-#include "../scene/SceneObject.h"
-#include "../scene/variables/StringId.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/variables/StringId.h"
 
 class GroupMember : public Variable {
 	ManagedReference<SceneObject*> creature;

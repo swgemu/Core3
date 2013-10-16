@@ -5,7 +5,7 @@
  *      Author: Itac
  */
 
-#include "PerformanceBuff.h"
+#include "server/zone/objects/creature/buffs/PerformanceBuff.h"
 #include "server/zone/managers/skill/Performance.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"

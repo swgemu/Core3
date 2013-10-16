@@ -5,7 +5,7 @@
  *      Author: dannuic
  */
 
-#include "BountyMissionObjective.h"
+#include "server/zone/objects/mission/BountyMissionObjective.h"
 
 #include "server/zone/objects/waypoint/WaypointObject.h"
 #include "server/zone/Zone.h"
@@ -14,8 +14,8 @@
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
-#include "MissionObject.h"
-#include "MissionObserver.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/mission/MissionObserver.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/chat/ChatManager.h"

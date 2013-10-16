@@ -5,7 +5,7 @@
  *      Author: swgemu
  */
 
-#include "GamblingManager.h"
+#include "server/zone/managers/minigames/GamblingManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"

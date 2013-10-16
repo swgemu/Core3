@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "WeaponObject.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/packets/tangible/WeaponObjectMessage3.h"
 #include "server/zone/packets/tangible/WeaponObjectMessage6.h"
 #include "server/zone/objects/creature/CreatureObject.h"

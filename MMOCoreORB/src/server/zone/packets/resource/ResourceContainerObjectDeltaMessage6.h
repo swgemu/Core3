@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../DeltaMessage.h"
 
-#include "../../objects/tangible/resource/ResourceContainer.h"
+#include "server/zone/objects/tangible/resource/ResourceContainer.h"
 
 class ResourceContainerObjectDeltaMessage6 : public DeltaMessage {
 public:

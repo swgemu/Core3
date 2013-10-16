@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "TrainerConversationObserver.h"
+#include "server/zone/objects/creature/conversation/TrainerConversationObserver.h"
 #include "server/zone/objects/player/sessions/TrainerConversationSession.h"
 
 TrainerConversationObserverImplementation::TrainerConversationObserverImplementation(ConversationTemplate* conversationTemplate) :

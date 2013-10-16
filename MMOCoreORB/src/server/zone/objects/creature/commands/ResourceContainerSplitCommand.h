@@ -46,7 +46,7 @@ which carries forward this exception.
 #define RESOURCECONTAINERSPLITCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../resource/ResourceContainer.h"
+#include "server/zone/objects/resource/ResourceContainer.h"
 
 class ResourceContainerSplitCommand : public QueueCommand {
 public:

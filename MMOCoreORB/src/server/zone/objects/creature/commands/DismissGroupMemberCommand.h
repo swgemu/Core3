@@ -46,8 +46,8 @@ which carries forward this exception.
 #define DISMISSGROUPMEMBERCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../group/GroupObject.h"
-#include "../../../managers/group/GroupManager.h"
+#include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/managers/group/GroupManager.h"
 
 class DismissGroupMemberCommand : public QueueCommand {
 public:

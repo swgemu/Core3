@@ -44,7 +44,7 @@ IDLC = /usr/local/bin/idlc
 				
 IDL_CLASSPATH = ../MMOEngine/include
 
-IDL_DIRECTIVES = -cp $(IDL_CLASSPATH)
+IDL_DIRECTIVES = -outdir autogen -cp $(IDL_CLASSPATH)
 
 UNITTEST_DIRECTIVES = 
 
@@ -76,7 +76,7 @@ gtest:
 config:
 	aclocal
 	automake --add-missing
-	autoreconf --force
+	autoreconf --force --install
 	cd build/unix && ../../configure
 	#cd ../MMOEngine/external/ptmalloc3 && make
 	#done
@@ -123,5 +123,9 @@ idl-cmake:
 
 cleanidl-cmake:
 	$(IDLC_BIN) -rb -cp $(ENGINE3_DIR)/include -sd src *.idl
+	#done
+	
+deleteidl:
+	$(IDLC) -delete $(IDL_DIRECTIVES) -sd src anyadEclipse
 	#done
 	

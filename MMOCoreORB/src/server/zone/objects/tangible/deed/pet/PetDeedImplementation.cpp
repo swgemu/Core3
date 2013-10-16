@@ -5,7 +5,7 @@
  *      Author: washu
  */
 
-#include "PetDeed.h"
+#include "server/zone/objects/tangible/deed/pet/PetDeed.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"

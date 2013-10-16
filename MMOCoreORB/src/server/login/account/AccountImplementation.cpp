@@ -44,8 +44,8 @@ which carries forward this exception.
 
 
 #include "../objects.h"
-#include "Account.h"
-#include "AccountManager.h"
+#include "server/login/account/Account.h"
+#include "server/login/account/AccountManager.h"
 #include "../objects/GalaxyBanEntry.h"
 
 AccountImplementation::AccountImplementation() {

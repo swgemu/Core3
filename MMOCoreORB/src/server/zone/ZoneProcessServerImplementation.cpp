@@ -43,24 +43,24 @@ which carries forward this exception.
  */
 
 #include "server/zone/managers/player/creation/PlayerCreationManager.h"
-#include "ZoneProcessServer.h"
+#include "server/zone/ZoneProcessServer.h"
 
-#include "ZoneServer.h"
+#include "server/zone/ZoneServer.h"
 
-#include "ZonePacketHandler.h"
+#include "server/zone/ZonePacketHandler.h"
 
-#include "managers/sui/SuiManager.h"
+#include "server/zone/managers/sui/SuiManager.h"
 
-#include "managers/name/NameManager.h"
-#include "managers/holocron/HolocronManager.h"
-#include "managers/skill/SkillManager.h"
+#include "server/zone/managers/name/NameManager.h"
+#include "server/zone/managers/holocron/HolocronManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/objects/creature/variables/Skill.h"
-#include "managers/vendor/VendorManager.h"
+#include "server/zone/managers/vendor/VendorManager.h"
 
-#include "managers/objectcontroller/ObjectController.h"
-#include "managers/minigames/FishingManager.h"
-#include "managers/minigames/GamblingManager.h"
-#include "managers/minigames/ForageManager.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/managers/minigames/FishingManager.h"
+#include "server/zone/managers/minigames/GamblingManager.h"
+#include "server/zone/managers/minigames/ForageManager.h"
 
 
 ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* server) {

@@ -46,7 +46,7 @@ which carries forward this exception.
 #define SHIPOBJECTMESSAGE6_H_
 
 #include "../../packets/tangible/TangibleObjectMessage6.h"
-#include "../../objects/ship/ShipObject.h"
+#include "server/zone/objects/ship/ShipObject.h"
 
 class ShipObjectMessage6 : public TangibleObjectMessage6 {
 public:

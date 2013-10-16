@@ -41,4 +41,4 @@ which carries forward this exception.
 
 */
 
-#include "SpaceStationObject.h"
+#include "server/zone/objects/ship/SpaceStationObject.h"

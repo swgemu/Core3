@@ -47,12 +47,12 @@ which carries forward this exception.
 
 #include "../../packets/DeltaMessage.h"
 
-#include "../../objects/tangible/TangibleObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 
-#include "../../objects/player/PlayerObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 class TangibleObjectDeltaMessage3 : public DeltaMessage {
-	TangibleObject* tano;
+	ManagedReference<TangibleObject*> tano;
 
 public:
 	TangibleObjectDeltaMessage3(TangibleObject* ta, uint32 objType = 0x54414E4F)
@@ -86,7 +86,7 @@ public:
 
 	void updateName(const UnicodeString& name, const UnicodeString& tag = "") {
 		if (tano->isPlayerCreature()) {
-			CreatureObject* player = cast<CreatureObject*>( tano);
+			CreatureObject* player = cast<CreatureObject*>( tano.get());
 
 			if (player->getPlayerObject()->isPrivileged() && tag != "") {
 				UnicodeString customName = name + " \\#ffff00[" + tag + "]\\#.";

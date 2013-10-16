@@ -5,8 +5,8 @@
  *      Author: victor
  */
 
-#include "MissionObserver.h"
-#include "MissionObjective.h"
+#include "server/zone/objects/mission/MissionObserver.h"
+#include "server/zone/objects/mission/MissionObjective.h"
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/managers/object/ObjectManager.h"
 

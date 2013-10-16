@@ -41,13 +41,13 @@ which carries forward this exception.
 
 */
 
-#include "LairSpawnArea.h"
+#include "server/zone/objects/area/LairSpawnArea.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/creature/LairSpawnGroup.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
-#include "SpawnObserver.h"
+#include "server/zone/objects/area/SpawnObserver.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "events/RemoveNoSpawnAreaTask.h"

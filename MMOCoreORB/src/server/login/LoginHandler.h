@@ -8,8 +8,8 @@
 #ifndef LOGINHANDLER_H_
 #define LOGINHANDLER_H_
 
-#include "LoginClient.h"
-#include "LoginServer.h"
+#include "server/login/LoginClient.h"
+#include "server/login/LoginServer.h"
 
 namespace server {
   namespace login {

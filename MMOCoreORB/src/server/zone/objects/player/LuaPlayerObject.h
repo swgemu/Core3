@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 #include "server/zone/objects/intangible/LuaIntangibleObject.h"
-#include "PlayerObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 class LuaPlayerObject : public LuaIntangibleObject {
 public:

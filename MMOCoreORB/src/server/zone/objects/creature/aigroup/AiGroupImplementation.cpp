@@ -5,8 +5,8 @@
  *      Author: dannuic
  */
 
-#include "AiGroup.h"
-#include "AiGroupObserver.h"
+#include "server/zone/objects/creature/aigroup/AiGroup.h"
+#include "server/zone/objects/creature/aigroup/AiGroupObserver.h"
 #include "server/zone/objects/creature/PatrolPoint.h"
 #include "server/zone/objects/creature/PatrolPointsVector.h"
 #include "engine/util/u3d/Coordinate.h"

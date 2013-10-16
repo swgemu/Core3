@@ -5,7 +5,7 @@
  *      Author: polonel
  */
 
-#include "FindSession.h"
+#include "server/zone/objects/player/sessions/FindSession.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 

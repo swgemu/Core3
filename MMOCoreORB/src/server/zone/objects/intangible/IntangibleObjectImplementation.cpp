@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "IntangibleObject.h"
+#include "server/zone/objects/intangible/IntangibleObject.h"
 
 #include "../../managers/object/ObjectManager.h"
 #include "server/zone/packets/intangible/IntangibleObjectMessage3.h"

@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../RingAreaShape.h"
+#include "server/zone/objects/area/areashapes/RingAreaShape.h"
 
 namespace server {
 namespace zone {

@@ -7,7 +7,7 @@
 
 #include "engine/engine.h"
 
-#include "WeatherManager.h"
+#include "server/zone/managers/weather/WeatherManager.h"
 #include "server/zone/Zone.h"
 #include "server/chat/ChatManager.h"
 #include "events/WeatherChangeEvent.h"

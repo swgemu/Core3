@@ -47,9 +47,9 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "../../../chat/room/ChatRoom.h"
+#include "server/chat/room/ChatRoom.h"
 
-#include "../../objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class ChatOnLeaveRoom : public BaseMessage {
 public:

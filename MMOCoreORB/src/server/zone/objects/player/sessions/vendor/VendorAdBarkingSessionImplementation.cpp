@@ -5,7 +5,7 @@
  *      Author: Kyle
  */
 
-#include "VendorAdBarkingSession.h"
+#include "server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.h"
 #include "server/zone/ZoneServer.h"
 
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"

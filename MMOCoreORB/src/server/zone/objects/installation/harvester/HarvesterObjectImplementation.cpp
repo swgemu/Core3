@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "HarvesterObject.h"
+#include "server/zone/objects/installation/harvester/HarvesterObject.h"
 #include "server/zone/packets/harvester/HarvesterObjectMessage7.h"
 #include "server/zone/packets/installation/InstallationObjectDeltaMessage7.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"

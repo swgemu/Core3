@@ -46,7 +46,7 @@ which carries forward this exception.
 #define ENUMERATECHARACTERID_H_
 
 #include "engine/engine.h"
-#include "../account/Account.h"
+#include "server/login/account/Account.h"
 #include "../objects/CharacterList.h"
 
 class EnumerateCharacterID : public BaseMessage {

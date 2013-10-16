@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "Terminal.h"
+#include "server/zone/objects/tangible/terminal/Terminal.h"
 
 void TerminalImplementation::initializeTransientMembers() {
 	TangibleObjectImplementation::initializeTransientMembers();

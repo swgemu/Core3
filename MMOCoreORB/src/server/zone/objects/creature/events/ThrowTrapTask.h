@@ -9,8 +9,8 @@
 #define THROWTRAPTASK_H_
 
 #include "engine/util/u3d/Coordinate.h"
-#include "../AiAgent.h"
-#include "../CreatureObject.h"
+#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 namespace server {
 namespace zone {

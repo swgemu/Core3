@@ -48,7 +48,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/ZoneServer.h"
-#include "../GamblingManager.h"
+#include "server/zone/managers/minigames/GamblingManager.h"
 #include "server/zone/objects/tangible/terminal/gambling/GamblingTerminal.h"
 
 namespace server {

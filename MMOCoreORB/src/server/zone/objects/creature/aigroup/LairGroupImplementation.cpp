@@ -5,4 +5,4 @@
  *      Author: da
  */
 
-#include "LairGroup.h"
+#include "server/zone/objects/creature/aigroup/LairGroup.h"

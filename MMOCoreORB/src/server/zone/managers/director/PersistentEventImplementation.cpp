@@ -41,7 +41,7 @@ which carries forward this exception.
 
 */
 
-#include "PersistentEvent.h"
+#include "server/zone/managers/director/PersistentEvent.h"
 #include "DirectorManager.h"
 #include "ScreenPlayTask.h"
 #include "engine/engine.h"

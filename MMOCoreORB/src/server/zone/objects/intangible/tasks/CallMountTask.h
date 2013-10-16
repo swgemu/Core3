@@ -8,8 +8,8 @@
 #ifndef CALLMOUNTTASK_H_
 #define CALLMOUNTTASK_H_
 
-#include "../../creature/CreatureObject.h"
-#include "../ControlDevice.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/intangible/ControlDevice.h"
 
 class CallMountTask : public Task {
 	ManagedReference<CreatureObject*> player;

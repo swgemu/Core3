@@ -5,7 +5,7 @@
  *      Author: dannuic
  */
 
-#include "DeliverMissionObjective.h"
+#include "server/zone/objects/mission/DeliverMissionObjective.h"
 #include "server/zone/objects/area/MissionSpawnActiveArea.h"
 #include "server/ServerCore.h"
 #include "server/zone/objects/waypoint/WaypointObject.h"
@@ -22,8 +22,8 @@
 #include "server/zone/packets/object/NpcConversationMessage.h"
 #include "server/zone/packets/object/StartNpcConversation.h"
 #include "server/zone/packets/object/StopNpcConversation.h"
-#include "MissionObject.h"
-#include "MissionObserver.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/mission/MissionObserver.h"
 
 void DeliverMissionObjectiveImplementation::activate() {
 	if (activated) {

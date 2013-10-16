@@ -5,8 +5,8 @@
  *      Author: victor
  */
 
-#include "VehicleControlDevice.h"
-#include "VehicleControlObserver.h"
+#include "server/zone/objects/intangible/VehicleControlDevice.h"
+#include "server/zone/objects/intangible/VehicleControlObserver.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/VehicleObject.h"

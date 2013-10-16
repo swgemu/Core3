@@ -6,7 +6,7 @@
  */
 
 
-#include "GeneratorObject.h"
+#include "server/zone/objects/installation/generator/GeneratorObject.h"
 #include "server/zone/packets/harvester/HarvesterObjectMessage7.h"
 #include "server/zone/packets/installation/InstallationObjectDeltaMessage7.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"

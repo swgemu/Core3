@@ -5,7 +5,7 @@
  *      Author: crush
  */
 
-#include "InstallationObject.h"
+#include "server/zone/objects/installation/InstallationObject.h"
 #include "sui/InsertPowerSuiCallback.h"
 
 #include "server/zone/managers/resource/ResourceManager.h"

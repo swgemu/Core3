@@ -6,7 +6,7 @@
  */
 
 
-#include "ThreatMapObserver.h"
+#include "server/zone/objects/tangible/threat/ThreatMapObserver.h"
 #include "ThreatMap.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/scene/ObserverEventType.h"

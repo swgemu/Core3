@@ -45,9 +45,9 @@ which carries forward this exception.
 #ifndef ZONEHANDLER_H_
 #define ZONEHANDLER_H_
 
-#include "ZoneServer.h"
+#include "server/zone/ZoneServer.h"
 
-#include "ZoneClientSession.h"
+#include "server/zone/ZoneClientSession.h"
 
 namespace server {
   namespace zone {

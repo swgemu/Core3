@@ -5,7 +5,7 @@
  *      Author: Anakis
  */
 
-#include "ForageManager.h"
+#include "server/zone/managers/minigames/ForageManager.h"
 #include "server/zone/managers/loot/LootManager.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/minigames/events/ForagingEvent.h"

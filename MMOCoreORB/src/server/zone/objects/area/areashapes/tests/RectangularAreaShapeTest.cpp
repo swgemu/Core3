@@ -7,7 +7,7 @@
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "../RectangularAreaShape.h"
+#include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
 
 using ::testing::_;
 using ::testing::Return;

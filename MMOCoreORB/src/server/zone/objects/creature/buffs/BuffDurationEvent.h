@@ -45,8 +45,8 @@ which carries forward this exception.
 #ifndef BUFFDURATIONEVENT_H_
 #define BUFFDURATIONEVENT_H_
 
-#include "../CreatureObject.h"
-#include "Buff.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/buffs/Buff.h"
 
 namespace server {
  namespace zone {

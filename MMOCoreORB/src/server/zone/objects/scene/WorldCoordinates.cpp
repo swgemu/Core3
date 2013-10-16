@@ -6,7 +6,7 @@
  */
 
 #include "WorldCoordinates.h"
-#include "SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 WorldCoordinates::WorldCoordinates() : Object() {
 

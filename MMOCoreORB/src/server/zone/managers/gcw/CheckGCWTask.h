@@ -8,7 +8,7 @@
 #ifndef CHECKGCWTASK_H_
 #define CHECKGCWTASK_H_
 #include "engine/engine.h"
-#include "GCWManager.h"
+#include "server/zone/managers/gcw/GCWManager.h"
 
 class CheckGCWTask : public Task {
 	ManagedWeakReference<GCWManager*> gcwManager;

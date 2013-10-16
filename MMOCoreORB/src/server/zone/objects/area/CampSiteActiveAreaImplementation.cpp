@@ -5,8 +5,8 @@
  *      Author: Kyle
  */
 
-#include "CampSiteActiveArea.h"
-#include "CampSiteObserver.h"
+#include "server/zone/objects/area/CampSiteActiveArea.h"
+#include "server/zone/objects/area/CampSiteObserver.h"
 #include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"

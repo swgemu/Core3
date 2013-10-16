@@ -45,9 +45,8 @@ which carries forward this exception.
 
 #include "../CreatureAttribute.h"
 #include "../CreatureState.h"
-#include "../CreatureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "DamageOverTime.h"
-#include "../../creature/CreatureObject.h"
 #include "../../../packets/object/CombatSpam.h"
 
 DamageOverTime::DamageOverTime() {

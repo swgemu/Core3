@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "Consumable.h"
+#include "server/zone/objects/tangible/consumable/Consumable.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/Races.h"
@@ -15,7 +15,7 @@
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/templates/tangible/ConsumableTemplate.h"
-#include "DelayedBuffObserver.h"
+#include "server/zone/objects/tangible/consumable/DelayedBuffObserver.h"
 
 void ConsumableImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);

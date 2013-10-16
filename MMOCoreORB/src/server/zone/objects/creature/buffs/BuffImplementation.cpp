@@ -44,7 +44,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "Buff.h"
+#include "server/zone/objects/creature/buffs/Buff.h"
 #include "BuffDurationEvent.h"
 #include "BuffList.h"
 

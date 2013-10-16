@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef PLAYERRECOVERYEVENT_H_
 #define PLAYERRECOVERYEVENT_H_
 
-#include "../PlayerObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 namespace server {
 namespace zone {

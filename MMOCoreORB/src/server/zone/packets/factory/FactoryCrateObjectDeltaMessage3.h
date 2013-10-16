@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../../packets/DeltaMessage.h"
 
-#include "../../objects/factorycrate/FactoryCrate.h"
+#include "server/zone/objects/factorycrate/FactoryCrate.h"
 
 class FactoryCrateObjectDeltaMessage3 : public DeltaMessage {
 	FactoryCrate* tano;

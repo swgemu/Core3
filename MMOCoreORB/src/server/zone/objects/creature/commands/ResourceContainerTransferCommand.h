@@ -46,7 +46,7 @@ which carries forward this exception.
 #define RESOURCECONTAINERTRANSFERCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../resource/ResourceContainer.h"
+#include "server/zone/objects/resource/ResourceContainer.h"
 
 class ResourceContainerTransferCommand : public QueueCommand {
 public:

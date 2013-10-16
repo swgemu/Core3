@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "SuiTransferBox.h"
+#include "server/zone/objects/player/sui/transferbox/SuiTransferBox.h"
 
 BaseMessage* SuiTransferBoxImplementation::generateMessage() {
 	SuiCreatePageMessage* message = new SuiCreatePageMessage(boxID, "Script.transfer");

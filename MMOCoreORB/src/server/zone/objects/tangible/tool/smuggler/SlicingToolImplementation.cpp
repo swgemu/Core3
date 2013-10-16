@@ -5,7 +5,7 @@
  *      Author: polonel
  */
 
-#include "SlicingTool.h"
+#include "server/zone/objects/tangible/tool/smuggler/SlicingTool.h"
 
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"

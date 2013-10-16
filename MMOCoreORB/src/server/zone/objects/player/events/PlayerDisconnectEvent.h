@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef PLAYERDISCONNECTEVENT_H_
 #define PLAYERDISCONNECTEVENT_H_
 
-#include "../PlayerObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 namespace server {
 namespace zone {

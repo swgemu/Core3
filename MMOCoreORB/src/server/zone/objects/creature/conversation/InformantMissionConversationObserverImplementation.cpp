@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "InformantMissionConversationObserver.h"
+#include "server/zone/objects/creature/conversation/InformantMissionConversationObserver.h"
 
 InformantMissionConversationObserverImplementation::InformantMissionConversationObserverImplementation(ConversationTemplate* conversationTemplate) :
 	ConversationObserverImplementation(conversationTemplate) {

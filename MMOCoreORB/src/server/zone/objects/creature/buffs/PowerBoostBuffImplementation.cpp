@@ -5,7 +5,7 @@
  *      Author: polonel
  */
 
-#include "PowerBoostBuff.h"
+#include "server/zone/objects/creature/buffs/PowerBoostBuff.h"
 #include "PowerBoostBuffDurationEvent.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"

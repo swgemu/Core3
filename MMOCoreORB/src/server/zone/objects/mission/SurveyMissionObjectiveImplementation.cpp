@@ -5,9 +5,9 @@
  *      Author: victor
  */
 
-#include "SurveyMissionObjective.h"
-#include "MissionObserver.h"
-#include "MissionObject.h"
+#include "server/zone/objects/mission/SurveyMissionObjective.h"
+#include "server/zone/objects/mission/MissionObserver.h"
+#include "server/zone/objects/mission/MissionObject.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"

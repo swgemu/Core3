@@ -55,7 +55,7 @@ namespace server {
 
 using namespace server::zone;
 
-#include "login/LoginServer.h"
+#include "server/login/LoginServer.h"
 
 namespace server {
 	namespace conf {

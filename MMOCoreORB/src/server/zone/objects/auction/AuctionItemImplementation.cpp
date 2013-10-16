@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "AuctionItem.h"
+#include "server/zone/objects/auction/AuctionItem.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/Zone.h"
 

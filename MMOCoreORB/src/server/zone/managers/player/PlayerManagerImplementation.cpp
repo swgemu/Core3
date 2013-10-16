@@ -5,7 +5,7 @@
  *      Author: TheAnswer
  */
 
-#include "PlayerManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 #include "server/login/account/Account.h"
 #include "server/zone/packets/charcreation/ClientCreateCharacter.h"

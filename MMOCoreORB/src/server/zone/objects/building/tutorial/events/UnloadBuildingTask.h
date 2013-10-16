@@ -45,7 +45,7 @@
 #ifndef UNLOADBUILDINGTASK_H_
 #define UNLOADBUILDINGTASK_H_
 
-#include "../TutorialBuildingObject.h"
+#include "server/zone/objects/building/tutorial/TutorialBuildingObject.h"
 
 namespace server {
 namespace zone {

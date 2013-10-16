@@ -43,8 +43,7 @@ which carries forward this exception.
 */
 
 #include "BuffList.h"
-#include "../CreatureObject.h"
-#include "../../creature/CreatureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/managers/object/ObjectManager.h"
 
 BuffList::BuffList() {

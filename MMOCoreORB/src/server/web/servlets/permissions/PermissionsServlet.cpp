@@ -7,9 +7,9 @@
 
 #include "PermissionsServlet.h"
 #include "../../WebServer.h"
-#include "../../../zone/managers/player/PermissionLevelList.h"
-#include "../../../zone/managers/player/PlayerManager.h"
-#include "../../../zone/objects/creature/CreatureObject.h"
+#include "server/zone/managers/player/PermissionLevelList.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 PermissionsServlet::PermissionsServlet(String context) :
 Servlet(context) {

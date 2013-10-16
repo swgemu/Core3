@@ -48,9 +48,8 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "../../../managers/group/GroupManager.h"
+#include "server/zone/managers/group/GroupManager.h"
 #include "server/zone/ZoneServer.h"
-#include "../../creature/CreatureObject.h"
 
 class InviteCommand : public QueueCommand {
 public:

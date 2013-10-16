@@ -5,7 +5,7 @@
  *      Author: polonel
  */
 
-#include "SlicingSession.h"
+#include "server/zone/objects/player/sessions/SlicingSession.h"
 #include "server/zone/objects/player/sui/SuiWindowType.h"
 #include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 #include "server/zone/objects/tangible/tool/smuggler/SlicingTool.h"

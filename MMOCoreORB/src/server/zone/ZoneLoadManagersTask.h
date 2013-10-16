@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-#include "Zone.h"
+#include "server/zone/Zone.h"
 
 class ZoneLoadManagersTask : public Task {
 	ManagedReference<ZoneServer*> zoneServer;

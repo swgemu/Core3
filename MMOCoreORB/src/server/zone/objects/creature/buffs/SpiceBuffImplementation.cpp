@@ -5,10 +5,10 @@
  *      Author: victor
  */
 
-#include "SpiceBuff.h"
+#include "server/zone/objects/creature/buffs/SpiceBuff.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/events/SpiceDownerAnimationTask.h"
-#include "SpiceDownerBuff.h"
+#include "server/zone/objects/creature/buffs/SpiceDownerBuff.h"
 
 void SpiceBuffImplementation::deactivate(bool removeModifiers) {
 	BuffImplementation::deactivate(true);

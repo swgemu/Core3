@@ -6,7 +6,7 @@
  */
 
 #include "LuaActiveArea.h"
-#include "ActiveArea.h"
+#include "server/zone/objects/area/ActiveArea.h"
 
 const char LuaActiveArea::className[] = "LuaActiveArea";
 

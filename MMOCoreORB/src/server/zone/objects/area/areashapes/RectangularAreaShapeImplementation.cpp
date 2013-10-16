@@ -5,8 +5,8 @@
  *      Author: loshult
  */
 
-#include "RectangularAreaShape.h"
-#include "RingAreaShape.h"
+#include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
+#include "server/zone/objects/area/areashapes/RingAreaShape.h"
 #include "engine/util/u3d/Segment.h"
 
 bool RectangularAreaShapeImplementation::containsPoint(float x, float y) {

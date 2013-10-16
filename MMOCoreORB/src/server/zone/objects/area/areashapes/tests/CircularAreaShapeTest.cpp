@@ -6,7 +6,7 @@
  */
 
 #include "gtest/gtest.h"
-#include "../CircularAreaShape.h"
+#include "server/zone/objects/area/areashapes/CircularAreaShape.h"
 
 namespace server {
 namespace zone {

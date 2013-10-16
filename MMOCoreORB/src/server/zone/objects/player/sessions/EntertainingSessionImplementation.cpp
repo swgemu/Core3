@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "EntertainingSession.h"
+#include "server/zone/objects/player/sessions/EntertainingSession.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/skill/Performance.h"
 #include "server/zone/managers/skill/PerformanceManager.h"

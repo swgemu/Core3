@@ -44,7 +44,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "SurveyTool.h"
+#include "server/zone/objects/tangible/tool/SurveyTool.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"

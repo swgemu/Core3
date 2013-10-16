@@ -11,7 +11,7 @@
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "FireworkMenuComponent.h"
-#include "../FireworkObject.h"
+#include "server/zone/objects/tangible/firework/FireworkObject.h"
 
 void FireworkMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		ObjectMenuResponse* menuResponse, CreatureObject* player) {

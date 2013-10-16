@@ -5,8 +5,8 @@
  *      Author: kyle
  */
 
-#include "FactoryObject.h"
-#include "FactoryHopperObserver.h"
+#include "server/zone/objects/installation/factory/FactoryObject.h"
+#include "server/zone/objects/installation/factory/FactoryHopperObserver.h"
 #include "sui/InsertSchematicSuiCallback.h"
 #include "tasks/CreateFactoryObjectTask.h"
 

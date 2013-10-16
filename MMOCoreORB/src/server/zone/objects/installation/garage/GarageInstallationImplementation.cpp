@@ -7,7 +7,7 @@
 
 
 
-#include "GarageInstallation.h"
+#include "server/zone/objects/installation/garage/GarageInstallation.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"

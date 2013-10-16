@@ -42,11 +42,11 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "ZoneServer.h"
+#include "server/zone/ZoneServer.h"
 
-#include "ZoneClientSession.h"
+#include "server/zone/ZoneClientSession.h"
 
-#include "Zone.h"
+#include "server/zone/Zone.h"
 
 #include "../db/ServerDatabase.h"
 
@@ -55,28 +55,28 @@ which carries forward this exception.
 
 #include "server/conf/ConfigManager.h"
 
-#include "managers/object/ObjectManager.h"
-#include "managers/stringid/StringIdManager.h"
-#include "managers/objectcontroller/ObjectController.h"
-#include "managers/player/PlayerManager.h"
-#include "managers/radial/RadialManager.h"
-#include "managers/resource/ResourceManager.h"
-#include "managers/crafting/CraftingManager.h"
-#include "managers/loot/LootManager.h"
-#include "managers/skill/SkillManager.h"
-#include "managers/auction/AuctionManager.h"
-#include "managers/minigames/FishingManager.h"
-#include "managers/minigames/GamblingManager.h"
-#include "managers/minigames/ForageManager.h"
+#include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/radial/RadialManager.h"
+#include "server/zone/managers/resource/ResourceManager.h"
+#include "server/zone/managers/crafting/CraftingManager.h"
+#include "server/zone/managers/loot/LootManager.h"
+#include "server/zone/managers/skill/SkillManager.h"
+#include "server/zone/managers/auction/AuctionManager.h"
+#include "server/zone/managers/minigames/FishingManager.h"
+#include "server/zone/managers/minigames/GamblingManager.h"
+#include "server/zone/managers/minigames/ForageManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
-#include "managers/creature/CreatureTemplateManager.h"
-#include "managers/creature/DnaManager.h"
-#include "managers/guild/GuildManager.h"
-#include "managers/creature/CreatureManager.h"
-#include "managers/faction/FactionManager.h"
-#include "managers/director/DirectorManager.h"
-#include "managers/city/CityManager.h"
-#include "managers/structure/StructureManager.h"
+#include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/managers/creature/DnaManager.h"
+#include "server/zone/managers/guild/GuildManager.h"
+#include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/faction/FactionManager.h"
+#include "server/zone/managers/director/DirectorManager.h"
+#include "server/zone/managers/city/CityManager.h"
+#include "server/zone/managers/structure/StructureManager.h"
 
 #include "server/chat/ChatManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -84,7 +84,7 @@ which carries forward this exception.
 
 #include "tre3/TreeDirectory.h"
 
-#include "ZoneProcessServer.h"
+#include "server/zone/ZoneProcessServer.h"
 #include "ZonePacketHandler.h"
 #include "ZoneHandler.h"
 

@@ -47,8 +47,8 @@ which carries forward this exception.
 
 #include "../../packets/DeltaMessage.h"
 
-#include "../../objects/installation/InstallationObject.h"
-#include "../../objects/installation/harvester/HarvesterObject.h"
+#include "server/zone/objects/installation/InstallationObject.h"
+#include "server/zone/objects/installation/harvester/HarvesterObject.h"
 
 class InstallationObjectDeltaMessage7 : public DeltaMessage {
 	InstallationObject* inso;

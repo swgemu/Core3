@@ -13,7 +13,7 @@
 #include "engine/engine.h"
 #include "ThreatStates.h"
 #include "ThreatMatrix.h"
-#include "ThreatMapObserver.h"
+#include "server/zone/objects/tangible/threat/ThreatMapObserver.h"
 #include "server/zone/objects/creature/variables/CooldownTimerMap.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 

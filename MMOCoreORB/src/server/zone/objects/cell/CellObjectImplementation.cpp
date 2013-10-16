@@ -5,7 +5,7 @@
  *      Author: TheAnswer
  */
 
-#include "CellObject.h"
+#include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/packets/cell/CellObjectMessage3.h"
 #include "server/zone/packets/cell/CellObjectMessage6.h"

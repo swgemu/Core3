@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
  */
 
-#include "Container.h"
+#include "server/zone/objects/tangible/Container.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"

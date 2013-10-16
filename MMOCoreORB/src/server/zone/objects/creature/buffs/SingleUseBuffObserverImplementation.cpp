@@ -5,8 +5,8 @@
  *      Author: dannuic
  */
 
-#include "SingleUseBuffObserver.h"
-#include "SingleUseBuff.h"
+#include "server/zone/objects/creature/buffs/SingleUseBuffObserver.h"
+#include "server/zone/objects/creature/buffs/SingleUseBuff.h"
 
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 //#include "server/zone/Zone.h"

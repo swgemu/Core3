@@ -11,7 +11,7 @@
 
 #include "engine/engine.h"
 
-#include "../../objects/scene/SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 class PlayClientEventObjectMessage : public BaseMessage {
 public:

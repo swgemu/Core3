@@ -9,7 +9,7 @@
 #define LAIRAGGROTASK_H_
 
 #include "engine/engine.h"
-#include "LairObserver.h"
+#include "server/zone/managers/creature/LairObserver.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 class LairAggroTask : public Task {
 

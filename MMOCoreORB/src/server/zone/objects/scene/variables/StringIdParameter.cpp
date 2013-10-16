@@ -45,7 +45,7 @@ which carries forward this exception.
 #include "StringIdParameter.h"
 
 #include "StringId.h"
-#include "../SceneObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
 
 StringIdParameter::StringIdParameter(const StringIdParameter& par) : Object(), Serializable() {
 	addSerializableVariables();

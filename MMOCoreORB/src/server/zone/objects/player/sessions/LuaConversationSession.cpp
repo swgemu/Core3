@@ -6,7 +6,7 @@
  */
 
 #include "LuaConversationSession.h"
-#include "ConversationSession.h"
+#include "server/zone/objects/player/sessions/ConversationSession.h"
 
 const char LuaConversationSession::className[] = "LuaConversationSession";
 

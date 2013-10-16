@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "RadialManager.h"
+#include "server/zone/managers/radial/RadialManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"

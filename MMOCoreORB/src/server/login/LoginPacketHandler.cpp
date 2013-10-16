@@ -46,8 +46,8 @@ which carries forward this exception.
 #include "objects.h"
 
 #include "LoginPacketHandler.h"
-#include "LoginClient.h"
-#include "LoginServer.h"
+#include "server/login/LoginClient.h"
+#include "server/login/LoginServer.h"
 #include "LoginProcessServerImplementation.h"
 
 #include "account/AccountManager.h"

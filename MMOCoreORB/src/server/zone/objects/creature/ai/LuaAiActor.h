@@ -8,7 +8,7 @@
 #ifndef LUAAIACTOR_H_
 #define LUAAIACTOR_H_
 
-#include "AiActor.h"
+#include "server/zone/objects/creature/ai/AiActor.h"
 
 namespace server {
 namespace zone {

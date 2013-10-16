@@ -41,7 +41,7 @@ which carries forward this exception.
 
 */
 
-#include "ScreenPlayObserver.h"
+#include "server/zone/managers/director/ScreenPlayObserver.h"
 #include "DirectorManager.h"
 
 int ScreenPlayObserverImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {

@@ -6,7 +6,7 @@
  *  Updated on: Thu Oct 13 08:34:42 PDT 2011 by lordkator - use getPlanetTravelPoint() instead of trying to resolve here
  */
 
-#include "TravelTerminal.h"
+#include "server/zone/objects/tangible/terminal/travel/TravelTerminal.h"
 
 #include "server/zone/packets/player/EnterTicketPurchaseModeMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"

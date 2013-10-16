@@ -3,7 +3,7 @@
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/installation/harvester/HarvesterObject.h"
+#include "server/zone/objects/installation/harvester/HarvesterObject.h"
 #include "server/zone/objects/resource/ResourceSpawn.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/Zone.h"

@@ -5,9 +5,9 @@
  *      Author: loshult
  */
 
-#include "CircularAreaShape.h"
-#include "RectangularAreaShape.h"
-#include "RingAreaShape.h"
+#include "server/zone/objects/area/areashapes/CircularAreaShape.h"
+#include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
+#include "server/zone/objects/area/areashapes/RingAreaShape.h"
 
 bool CircularAreaShapeImplementation::containsPoint(float x, float y) {
 	Vector3 position;

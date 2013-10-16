@@ -5,10 +5,10 @@
  *      Author: victor
  */
 
-#include "SuiListBox.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
 
 #include "server/zone/packets/ui/SuiCreatePageMessage.h"
-#include "SuiListBoxMenuItem.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.h"
 #include <stdio.h>
 
 BaseMessage* SuiListBoxImplementation::generateMessage() {

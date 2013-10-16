@@ -5,7 +5,7 @@
  *      Author: crush
  */
 
-#include "PlaceStructureSession.h"
+#include "server/zone/objects/player/sessions/PlaceStructureSession.h"
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/structure/StructureManager.h"

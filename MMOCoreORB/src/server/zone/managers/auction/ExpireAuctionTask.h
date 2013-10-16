@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-#include "AuctionManager.h"
+#include "server/zone/managers/auction/AuctionManager.h"
 
 class ExpireAuctionTask : public Task {
 	ManagedWeakReference<AuctionManager*> auctionManager;

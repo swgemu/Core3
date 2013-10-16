@@ -10,7 +10,7 @@
 
 #include "engine/engine.h"
 
-#include "../ZoneClientSession.h"
+#include "server/zone/ZoneClientSession.h"
 
 #include "server/zone/ZoneProcessServer.h"
 

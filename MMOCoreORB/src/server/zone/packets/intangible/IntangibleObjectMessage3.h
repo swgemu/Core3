@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/intangible/IntangibleObject.h"
+#include "server/zone/objects/intangible/IntangibleObject.h"
 
 class IntangibleObjectMessage3 : public BaseLineMessage {
 public:

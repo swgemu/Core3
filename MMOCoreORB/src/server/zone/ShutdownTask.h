@@ -9,7 +9,7 @@
 #define SHUTDOWNTASK_H_
 
 #include "engine/engine.h"
-#include "ZoneServer.h"
+#include "server/zone/ZoneServer.h"
 #include "server/chat/ChatManager.h"
 
 class ShutdownTask : public Task {

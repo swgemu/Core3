@@ -44,7 +44,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "CraftingStation.h"
+#include "server/zone/objects/tangible/tool/CraftingStation.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/creature/CreatureObject.h"

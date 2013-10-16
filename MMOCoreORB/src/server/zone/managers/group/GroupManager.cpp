@@ -44,18 +44,18 @@ which carries forward this exception.
 
 #include "GroupManager.h"
 
-#include "../../ZoneServer.h"
-#include "../../Zone.h"
+#include "server/zone/ZoneServer.h"
+#include "server/zone/Zone.h"
 
-#include "../../../chat/room/ChatRoom.h"
+#include "server/chat/room/ChatRoom.h"
 
-#include "../../objects/creature/CreatureObject.h"
-#include "../../objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 
-#include "../../objects/group/GroupObject.h"
+#include "server/zone/objects/group/GroupObject.h"
 #include "server/chat/StringIdChatParameter.h"
-#include "../../managers/object/ObjectManager.h"
+#include "server/zone/managers/object/ObjectManager.h"
 #include "server/zone/objects/player/sessions/EntertainingSession.h"
 
 

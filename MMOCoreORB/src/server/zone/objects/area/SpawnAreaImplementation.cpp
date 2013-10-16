@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "SpawnArea.h"
+#include "server/zone/objects/area/SpawnArea.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/area/areashapes/AreaShape.h"
 

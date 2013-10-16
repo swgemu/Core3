@@ -4,7 +4,7 @@
  *  Created on: Nov 20, 2012
  *      Author: root
  */
-#include "TurretObserver.h"
+#include "server/zone/objects/installation/components/TurretObserver.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/gcw/DestroyFactionInstallationTask.h"

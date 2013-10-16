@@ -49,6 +49,8 @@ GTEST_PATH=../../../utils/gtest-1.6.0
 
 GMOCK_PATH=../../../utils/gmock-1.6.0
 
+AUTOGEN_PATH=../../../src/autogen
+
 #CC = clang
 #CXX = clang++
 
@@ -58,7 +60,8 @@ INCLUDES =  $(SYSTEM_INCLUDES) \
 	    -I/usr/local/BerkeleyDB.5.0/include \
 	    -I/usr/include/db5.0 \
 	    -I$(GTEST_PATH)/include \
-	    -I$(GMOCK_PATH)/include
+	    -I$(GMOCK_PATH)/include \
+	    -I$(AUTOGEN_PATH)
 			
 LIBS =	$(SYSTEM_LIBS)  \
 	$(USER_LD_FLAGS) \
@@ -92,234 +95,240 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/objects/terrain/tests/BasicTerrainTest.cpp \
 			  	server/zone/tests/ZoneTest.cpp
 
-core3_IDLS =	server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp \
-				server/zone/objects/area/FsVillageArea.cpp \
-				server/zone/objects/player/sessions/TradeSession.cpp \
-				server/zone/objects/tangible/powerup/PowerupObject.cpp \
-				server/zone/managers/minigames/FishingSession.cpp \
-				server/zone/objects/intangible/VehicleControlObserver.cpp \
-				server/zone/objects/tangible/deed/structure/StructureDeed.cpp \
-				server/zone/objects/player/sessions/CityRemoveMilitiaSession.cpp \
-				server/zone/objects/player/sessions/crafting/CraftingSession.cpp \
-				server/zone/objects/player/sessions/survey/SurveySession.cpp \
-				server/zone/objects/player/sessions/admin/PlayerManagementSession.cpp \
-				server/zone/objects/player/sessions/StructureSetAccessFeeSession.cpp \
-				server/zone/objects/creature/buffs/StateBuff.cpp \
-				server/zone/objects/creature/conversation/LuaConversationObserver.cpp \
-				server/zone/objects/area/LairSpawnArea.cpp \
-				server/zone/managers/creature/LairObserver.cpp \
-				server/zone/managers/director/ScreenPlayObserver.cpp \
-				server/zone/managers/director/PersistentEvent.cpp \
-				server/zone/objects/ship/SpaceStationObject.cpp \
-				server/zone/objects/ship/FighterShipObject.cpp \
-				server/zone/objects/ship/ShipObject.cpp \
-				server/zone/objects/intangible/ShipControlDevice.cpp \
-				server/zone/objects/tangible/terminal/spaceship/SpaceshipTerminal.cpp \
-				server/login/LoginServer.cpp \
-				server/login/account/Account.cpp \
-				server/login/account/AccountImplementation.cpp \
-				server/zone/ZoneServer.cpp \
-				server/zone/ZoneProcessServer.cpp \
-				server/zone/ZoneClientSession.cpp \
-				server/zone/Zone.cpp \
-				server/zone/objects/scene/SceneObject.cpp \
-				server/zone/objects/area/ActiveArea.cpp \
-				server/zone/objects/area/BadgeActiveArea.cpp \
-				server/zone/objects/area/GarageArea.cpp \
-				server/zone/objects/area/CampSiteActiveArea.cpp \
-				server/zone/objects/area/MissionSpawnActiveArea.cpp \
-				server/zone/objects/area/MissionReconActiveArea.cpp \
-				server/zone/objects/area/SpawnArea.cpp \
-				server/zone/objects/area/DynamicSpawnArea.cpp \
-				server/zone/objects/area/StaticSpawnArea.cpp \
-				server/zone/objects/area/SpawnObserver.cpp \
-				server/zone/objects/area/CampSiteObserver.cpp \
-				server/zone/objects/area/areashapes/AreaShape.cpp \
-				server/zone/objects/area/areashapes/CircularAreaShape.cpp \
-				server/zone/objects/area/areashapes/RectangularAreaShape.cpp \
-				server/zone/objects/area/areashapes/RingAreaShape.cpp \
-				server/zone/objects/factorycrate/FactoryCrate.cpp \
-				server/zone/objects/intangible/IntangibleObject.cpp \
-				server/zone/objects/intangible/ControlDevice.cpp \
-				server/zone/objects/staticobject/StaticObject.cpp \
-				server/zone/objects/intangible/VehicleControlDevice.cpp \
-				server/zone/objects/tangible/TangibleObject.cpp \
-				server/zone/objects/tangible/Container.cpp \
-				server/zone/objects/tangible/Instrument.cpp \
-				server/zone/objects/tangible/InstrumentObserver.cpp \
-				server/zone/objects/tangible/consumable/Food.cpp \
-				server/zone/objects/tangible/consumable/Drink.cpp \
-				server/zone/objects/tangible/consumable/DelayedBuffObserver.cpp \
-				server/zone/objects/tangible/loot/LootkitObject.cpp \
-				server/zone/objects/creature/CreatureObject.cpp \
-				server/zone/objects/creature/junkdealer/JunkdealerCreature.cpp \
-				server/zone/objects/creature/VehicleObject.cpp \
-				server/zone/objects/creature/NonPlayerCreatureObject.cpp \
-				server/zone/objects/creature/Creature.cpp \
-				server/zone/objects/creature/AiAgent.cpp \
-				server/zone/objects/creature/buffs/Buff.cpp \
-				server/zone/objects/creature/aigroup/AiGroup.cpp \
-				server/zone/objects/creature/aigroup/HerdGroup.cpp \
-				server/zone/objects/creature/aigroup/LairGroup.cpp \
-				server/zone/objects/creature/aigroup/PackGroup.cpp \
-				server/zone/objects/creature/aigroup/AiGroupObserver.cpp \
-				server/zone/objects/creature/buffs/DelayedBuff.cpp \
-				server/zone/objects/creature/buffs/SpiceBuff.cpp \
-				server/zone/objects/creature/buffs/PowerBoostBuff.cpp \
-				server/zone/objects/creature/buffs/DurationBuff.cpp \
-				server/zone/objects/creature/buffs/SpiceDownerBuff.cpp \
-				server/zone/objects/creature/buffs/PerformanceBuff.cpp \
-				server/zone/objects/creature/buffs/SingleUseBuff.cpp \
-				server/zone/objects/creature/buffs/SingleUseBuffObserver.cpp \
-				server/zone/objects/player/PlayerObject.cpp \
-				server/zone/objects/player/sui/SuiBox.cpp \
-				server/zone/objects/player/sui/keypadbox/SuiKeypadBox.cpp \
-				server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
-				server/zone/objects/player/sui/listbox/SuiListBox.cpp \
-				server/zone/objects/player/sui/inputbox/SuiInputBox.cpp \
-				server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.cpp \
-				server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.cpp \
-				server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp \
-				server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.cpp \
-				server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
-				server/zone/objects/player/sui/colorbox/SuiColorBox.cpp \
-				server/zone/objects/waypoint/WaypointObject.cpp \
-				server/zone/objects/player/sessions/CitySpecializationSession.cpp \
-				server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.cpp \
-				server/zone/objects/player/sessions/EntertainingSession.cpp \
-				server/zone/objects/player/sessions/MigrateStatsSession.cpp \
-				server/zone/objects/player/sessions/ImageDesignSession.cpp \
-				server/zone/objects/player/sessions/SlicingSession.cpp \
-				server/zone/objects/player/sessions/FindSession.cpp \
-				server/zone/objects/player/sessions/vendor/CreateVendorSession.cpp \
-				server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.cpp \
-				server/zone/objects/player/sessions/PlaceStructureSession.cpp \
-				server/zone/objects/player/sessions/DestroyStructureSession.cpp \
-				server/zone/objects/player/sessions/ConversationSession.cpp \
-				server/zone/objects/player/sessions/TrainerConversationSession.cpp \
-				server/zone/objects/player/EntertainingObserver.cpp \
-				server/zone/objects/cell/CellObject.cpp \
-				server/zone/objects/group/GroupObject.cpp \
-				server/zone/objects/guild/GuildObject.cpp \
-				server/zone/objects/region/Region.cpp \
-				server/zone/objects/installation/InstallationObject.cpp \
-				server/zone/objects/installation/shuttle/ShuttleInstallation.cpp \
-				server/zone/objects/installation/garage/GarageInstallation.cpp \
-				server/zone/objects/installation/factory/FactoryObject.cpp \
-				server/zone/objects/installation/factory/FactoryHopperObserver.cpp \
-				server/zone/objects/installation/generator/GeneratorObject.cpp \
-				server/zone/objects/installation/harvester/HarvesterObject.cpp \
-				server/zone/objects/building/BuildingObject.cpp \
-				server/zone/objects/building/hospital/HospitalBuildingObject.cpp \
-				server/zone/objects/building/recreation/RecreationBuildingObject.cpp \
-				server/zone/objects/building/travel/TravelBuildingObject.cpp \
-				server/zone/objects/building/tutorial/TutorialBuildingObject.cpp \
-				server/zone/managers/guild/GuildManager.cpp \
-				server/chat/room/ChatRoom.cpp \
-				server/chat/ChatManager.cpp \
-				server/chat/PersistentMessage.cpp \
-				server/chat/ChatMessage.cpp \
-				server/zone/managers/ZoneManager.cpp \
-				server/zone/managers/objectcontroller/ObjectController.cpp \
-				server/zone/managers/player/PlayerManager.cpp \
-				server/zone/managers/skill/SkillManager.cpp \
-				server/zone/managers/skill/SkillModManager.cpp \
-				server/zone/objects/draftschematic/DraftSchematic.cpp \
-				server/zone/objects/manufactureschematic/ManufactureSchematic.cpp \
-				server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.cpp \
-				server/zone/objects/manufactureschematic/factoryblueprint/FactoryBlueprint.cpp \
-				server/zone/objects/manufactureschematic/factoryblueprint/BlueprintEntry.cpp \
-				server/zone/objects/resource/ResourceSpawn.cpp \
-				server/zone/objects/structure/StructureObject.cpp \
-				server/zone/objects/tangible/fishing/FishingPoleObject.cpp \
-				server/zone/objects/tangible/fishing/FishingBaitObject.cpp \
-				server/zone/objects/tangible/fishing/FishObject.cpp \
-				server/zone/objects/tangible/firework/FireworkObject.cpp \
-				server/zone/objects/tangible/consumable/Consumable.cpp \
-				server/zone/objects/tangible/pharmaceutical/CurePack.cpp \
-				server/zone/objects/tangible/pharmaceutical/DotPack.cpp \
-				server/zone/objects/tangible/pharmaceutical/EnhancePack.cpp \
-				server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.cpp \
-				server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp \
-				server/zone/objects/tangible/pharmaceutical/StimPack.cpp \
-				server/zone/objects/tangible/pharmaceutical/RevivePack.cpp \
-				server/zone/objects/tangible/pharmaceutical/StatePack.cpp \
-				server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
-				server/zone/managers/minigames/FishingManager.cpp \
-				server/zone/managers/minigames/GamblingManager.cpp \
-				server/zone/managers/minigames/ForageManager.cpp \
-				server/zone/objects/tangible/weapon/WeaponObject.cpp \
-				server/zone/managers/crafting/labratories/SharedLabratory.cpp \
-				server/zone/managers/crafting/labratories/ResourceLabratory.cpp \
-				server/zone/managers/crafting/labratories/GeneticLabratory.cpp \
-				server/zone/managers/crafting/CraftingManager.cpp \
-				server/zone/managers/jedi/JediManager.cpp \
-				server/zone/managers/loot/LootManager.cpp \
-				server/zone/managers/loot/LootGroupMap.cpp \
-				server/zone/managers/crafting/schematicmap/SchematicMap.cpp \
-				server/zone/managers/weather/WeatherManager.cpp \
-				server/zone/managers/city/CityManager.cpp \
-				server/zone/managers/planet/PlanetManager.cpp \
-				server/zone/managers/radial/RadialManager.cpp \
-				server/zone/managers/resource/ResourceManager.cpp \
-				server/zone/managers/creature/CreatureManager.cpp \
-				server/zone/managers/auction/AuctionManager.cpp \
-				server/zone/managers/auction/AuctionsMap.cpp \
-				server/zone/managers/mission/MissionManager.cpp \
-				server/zone/managers/vendor/VendorManager.cpp \
-				server/zone/objects/resource/ResourceContainer.cpp \
-				server/zone/objects/tangible/component/Component.cpp \
-				server/zone/objects/tangible/component/armor/ArmorComponent.cpp \
-				server/zone/objects/tangible/component/genetic/GeneticComponent.cpp \
-				server/zone/objects/tangible/component/dna/DnaComponent.cpp \
-				server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.cpp \
-				server/zone/objects/tangible/tool/CraftingTool.cpp \
-				server/zone/objects/tangible/tool/CraftingStation.cpp \
-				server/zone/objects/tangible/tool/ToolTangibleObject.cpp \
-				server/zone/objects/tangible/tool/smuggler/SlicingTool.cpp \
-				server/zone/objects/tangible/tool/smuggler/PrecisionLaserKnife.cpp \
-				server/zone/objects/tangible/tool/recycle/RecycleTool.cpp \
-				server/zone/objects/tangible/tool/repair/RepairTool.cpp \
-				server/zone/objects/tangible/tool/SurveyTool.cpp \
-				server/zone/objects/tangible/wearables/WearableObject.cpp \
-				server/zone/objects/tangible/wearables/WearableContainerObject.cpp \
-				server/zone/objects/tangible/wearables/ClothingObject.cpp \
-				server/zone/objects/tangible/wearables/ArmorObject.cpp \
-				server/zone/objects/tangible/wearables/PsgArmorObject.cpp \
-				server/zone/objects/tangible/attachment/Attachment.cpp \
-				server/zone/objects/tangible/deed/Deed.cpp \
-				server/zone/objects/tangible/deed/vehicle/VehicleDeed.cpp \
-				server/zone/objects/tangible/deed/pet/PetDeed.cpp \
-				server/zone/objects/tangible/deed/resource/ResourceDeed.cpp \
-				server/zone/objects/tangible/sign/SignObject.cpp \
-				server/zone/objects/tangible/terminal/Terminal.cpp \
-				server/zone/objects/tangible/terminal/guild/GuildTerminal.cpp \
-				server/zone/objects/tangible/terminal/mission/MissionTerminal.cpp \
-				server/zone/objects/tangible/wearables/RobeObject.cpp \
-				server/zone/objects/auction/AuctionItem.cpp \
-				server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
-				server/zone/objects/tangible/terminal/gambling/GamblingTerminal.cpp \
-				server/zone/objects/mission/MissionObject.cpp \
-				server/zone/objects/mission/MissionObjective.cpp \
-				server/zone/objects/region/CityRegion.cpp \
-				server/zone/objects/mission/SurveyMissionObjective.cpp \
-				server/zone/objects/mission/DestroyMissionObjective.cpp \
-				server/zone/objects/mission/DeliverMissionObjective.cpp \
-				server/zone/objects/mission/BountyMissionObjective.cpp \
-				server/zone/objects/mission/CraftingMissionObjective.cpp \
-				server/zone/objects/mission/EntertainerMissionObjective.cpp \
-				server/zone/objects/mission/HuntingMissionObjective.cpp \
-				server/zone/objects/mission/ReconMissionObjective.cpp \
-				server/zone/objects/mission/MissionObserver.cpp \
-				server/zone/objects/installation/components/TurretObserver.cpp \
-				server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp \
-				server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.cpp \
-				server/zone/objects/tangible/ticket/TicketObject.cpp \
-				server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp \
-				server/zone/objects/creature/ai/AiActor.cpp
+core3_IDLS =	autogen/server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp \
+				autogen/server/zone/objects/area/FsVillageArea.cpp \
+				autogen/server/zone/objects/player/sessions/TradeSession.cpp \
+				autogen/server/zone/objects/tangible/powerup/PowerupObject.cpp \
+				autogen/server/zone/managers/minigames/FishingSession.cpp \
+				autogen/server/zone/objects/intangible/VehicleControlObserver.cpp \
+				autogen/server/zone/objects/tangible/deed/structure/StructureDeed.cpp \
+				autogen/server/zone/objects/player/sessions/CityRemoveMilitiaSession.cpp \
+				autogen/server/zone/objects/player/sessions/crafting/CraftingSession.cpp \
+				autogen/server/zone/objects/player/sessions/survey/SurveySession.cpp \
+				autogen/server/zone/objects/player/sessions/admin/PlayerManagementSession.cpp \
+				autogen/server/zone/objects/player/sessions/StructureSetAccessFeeSession.cpp \
+				autogen/server/zone/objects/creature/buffs/StateBuff.cpp \
+				autogen/server/zone/objects/creature/conversation/LuaConversationObserver.cpp \
+				autogen/server/zone/objects/area/LairSpawnArea.cpp \
+				autogen/server/zone/managers/creature/LairObserver.cpp \
+				autogen/server/zone/managers/director/ScreenPlayObserver.cpp \
+				autogen/server/zone/managers/director/PersistentEvent.cpp \
+				autogen/server/zone/managers/loot/LootManager.cpp \
+				autogen/server/zone/objects/ship/SpaceStationObject.cpp \
+				autogen/server/zone/objects/ship/FighterShipObject.cpp \
+				autogen/server/zone/objects/ship/ShipObject.cpp \
+				autogen/server/zone/objects/intangible/ShipControlDevice.cpp \
+				autogen/server/zone/objects/tangible/terminal/spaceship/SpaceshipTerminal.cpp \
+				autogen/server/login/LoginServer.cpp \
+				autogen/server/login/account/Account.cpp \
+				autogen/server/zone/ZoneServer.cpp \
+				autogen/server/zone/ZoneProcessServer.cpp \
+				autogen/server/zone/ZoneClientSession.cpp \
+				autogen/server/zone/Zone.cpp \
+				autogen/server/zone/objects/scene/SceneObject.cpp \
+				autogen/server/zone/objects/area/ActiveArea.cpp \
+				autogen/server/zone/objects/area/BadgeActiveArea.cpp \
+				autogen/server/zone/objects/area/GarageArea.cpp \
+				autogen/server/zone/objects/area/CampSiteActiveArea.cpp \
+				autogen/server/zone/objects/area/MissionSpawnActiveArea.cpp \
+				autogen/server/zone/objects/area/MissionReconActiveArea.cpp \
+				autogen/server/zone/objects/area/SpawnArea.cpp \
+				autogen/server/zone/objects/area/DynamicSpawnArea.cpp \
+				autogen/server/zone/objects/area/StaticSpawnArea.cpp \
+				autogen/server/zone/objects/area/SpawnObserver.cpp \
+				autogen/server/zone/objects/area/CampSiteObserver.cpp \
+				autogen/server/zone/objects/area/areashapes/AreaShape.cpp \
+				autogen/server/zone/objects/area/areashapes/CircularAreaShape.cpp \
+				autogen/server/zone/objects/area/areashapes/RectangularAreaShape.cpp \
+				autogen/server/zone/objects/area/areashapes/RingAreaShape.cpp \
+				autogen/server/zone/objects/factorycrate/FactoryCrate.cpp \
+				autogen/server/zone/objects/intangible/IntangibleObject.cpp \
+				autogen/server/zone/objects/intangible/ControlDevice.cpp \
+				autogen/server/zone/objects/staticobject/StaticObject.cpp \
+				autogen/server/zone/objects/intangible/VehicleControlDevice.cpp \
+				autogen/server/zone/objects/tangible/TangibleObject.cpp \
+				autogen/server/zone/objects/tangible/Container.cpp \
+				autogen/server/zone/objects/tangible/Instrument.cpp \
+				autogen/server/zone/objects/tangible/InstrumentObserver.cpp \
+				autogen/server/zone/objects/tangible/consumable/Food.cpp \
+				autogen/server/zone/objects/tangible/consumable/Drink.cpp \
+				autogen/server/zone/objects/tangible/consumable/DelayedBuffObserver.cpp \
+				autogen/server/zone/objects/tangible/loot/LootkitObject.cpp \
+				autogen/server/zone/objects/creature/CreatureObject.cpp \
+				autogen/server/zone/objects/creature/junkdealer/JunkdealerCreature.cpp \
+				autogen/server/zone/objects/creature/VehicleObject.cpp \
+				autogen/server/zone/objects/creature/NonPlayerCreatureObject.cpp \
+				autogen/server/zone/objects/creature/Creature.cpp \
+				autogen/server/zone/objects/creature/AiAgent.cpp \
+				autogen/server/zone/objects/creature/buffs/Buff.cpp \
+				autogen/server/zone/objects/creature/aigroup/AiGroup.cpp \
+				autogen/server/zone/objects/creature/aigroup/HerdGroup.cpp \
+				autogen/server/zone/objects/creature/aigroup/LairGroup.cpp \
+				autogen/server/zone/objects/creature/aigroup/PackGroup.cpp \
+				autogen/server/zone/objects/creature/aigroup/AiGroupObserver.cpp \
+				autogen/server/zone/objects/creature/buffs/DelayedBuff.cpp \
+				autogen/server/zone/objects/creature/buffs/SpiceBuff.cpp \
+				autogen/server/zone/objects/creature/buffs/PowerBoostBuff.cpp \
+				autogen/server/zone/objects/creature/buffs/DurationBuff.cpp \
+				autogen/server/zone/objects/creature/buffs/SpiceDownerBuff.cpp \
+				autogen/server/zone/objects/creature/buffs/PerformanceBuff.cpp \
+				autogen/server/zone/objects/creature/buffs/SingleUseBuff.cpp \
+				autogen/server/zone/objects/creature/buffs/SingleUseBuffObserver.cpp \
+				autogen/server/zone/objects/player/PlayerObject.cpp \
+				autogen/server/zone/objects/player/sui/SuiBox.cpp \
+				autogen/server/zone/objects/player/sui/keypadbox/SuiKeypadBox.cpp \
+				autogen/server/zone/objects/player/sui/messagebox/SuiMessageBox.cpp \
+				autogen/server/zone/objects/player/sui/listbox/SuiListBox.cpp \
+				autogen/server/zone/objects/player/sui/inputbox/SuiInputBox.cpp \
+				autogen/server/zone/objects/player/sui/listbox/SuiListBoxMenuItem.cpp \
+				autogen/server/zone/objects/player/sui/slotmachinebox/SuiSlotMachineBox.cpp \
+				autogen/server/zone/objects/player/sui/banktransferbox/SuiBankTransferBox.cpp \
+				autogen/server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.cpp \
+				autogen/server/zone/objects/player/sui/transferbox/SuiTransferBox.cpp \
+				autogen/server/zone/objects/player/sui/colorbox/SuiColorBox.cpp \
+				autogen/server/zone/objects/waypoint/WaypointObject.cpp \
+				autogen/server/zone/objects/player/sessions/CitySpecializationSession.cpp \
+				autogen/server/zone/objects/player/sessions/CityTreasuryWithdrawalSession.cpp \
+				autogen/server/zone/objects/player/sessions/EntertainingSession.cpp \
+				autogen/server/zone/objects/player/sessions/MigrateStatsSession.cpp \
+				autogen/server/zone/objects/player/sessions/ImageDesignSession.cpp \
+				autogen/server/zone/objects/player/sessions/SlicingSession.cpp \
+				autogen/server/zone/objects/player/sessions/FindSession.cpp \
+				autogen/server/zone/objects/player/sessions/vendor/CreateVendorSession.cpp \
+				autogen/server/zone/objects/player/sessions/vendor/VendorAdBarkingSession.cpp \
+				autogen/server/zone/objects/player/sessions/PlaceStructureSession.cpp \
+				autogen/server/zone/objects/player/sessions/DestroyStructureSession.cpp \
+				autogen/server/zone/objects/player/sessions/ConversationSession.cpp \
+				autogen/server/zone/objects/player/sessions/TrainerConversationSession.cpp \
+				autogen/server/zone/objects/player/EntertainingObserver.cpp \
+				autogen/server/zone/objects/manufactureschematic/ManufactureSchematic.cpp \
+				autogen/server/zone/objects/cell/CellObject.cpp \
+				autogen/server/zone/objects/group/GroupObject.cpp \
+				autogen/server/zone/objects/guild/GuildObject.cpp \
+				autogen/server/zone/objects/region/Region.cpp \
+				autogen/server/zone/objects/installation/InstallationObject.cpp \
+				autogen/server/zone/objects/installation/shuttle/ShuttleInstallation.cpp \
+				autogen/server/zone/objects/installation/garage/GarageInstallation.cpp \
+				autogen/server/zone/objects/installation/factory/FactoryObject.cpp \
+				autogen/server/zone/objects/installation/factory/FactoryHopperObserver.cpp \
+				autogen/server/zone/objects/installation/generator/GeneratorObject.cpp \
+				autogen/server/zone/objects/installation/harvester/HarvesterObject.cpp \
+				autogen/server/zone/objects/building/BuildingObject.cpp \
+				autogen/server/zone/objects/building/hospital/HospitalBuildingObject.cpp \
+				autogen/server/zone/objects/building/recreation/RecreationBuildingObject.cpp \
+				autogen/server/zone/objects/building/travel/TravelBuildingObject.cpp \
+				autogen/server/zone/objects/building/tutorial/TutorialBuildingObject.cpp \
+				autogen/server/zone/managers/guild/GuildManager.cpp \
+				autogen/server/chat/room/ChatRoom.cpp \
+				autogen/server/chat/ChatManager.cpp \
+				autogen/server/chat/PersistentMessage.cpp \
+				autogen/server/chat/ChatMessage.cpp \
+				autogen/server/zone/managers/ZoneManager.cpp \
+				autogen/server/zone/managers/objectcontroller/ObjectController.cpp \
+				autogen/server/zone/managers/player/PlayerManager.cpp \
+				autogen/server/zone/objects/draftschematic/DraftSchematic.cpp \
+				autogen/server/zone/objects/resource/ResourceSpawn.cpp \
+				autogen/server/zone/objects/structure/StructureObject.cpp \
+				autogen/server/zone/objects/tangible/fishing/FishingPoleObject.cpp \
+				autogen/server/zone/objects/tangible/fishing/FishingBaitObject.cpp \
+				autogen/server/zone/objects/tangible/fishing/FishObject.cpp \
+				autogen/server/zone/objects/tangible/firework/FireworkObject.cpp \
+				autogen/server/zone/objects/tangible/consumable/Consumable.cpp \
+				autogen/server/zone/objects/tangible/pharmaceutical/CurePack.cpp \
+				autogen/server/zone/objects/tangible/pharmaceutical/DotPack.cpp \
+				autogen/server/zone/objects/tangible/pharmaceutical/EnhancePack.cpp \
+				autogen/server/zone/objects/tangible/pharmaceutical/PharmaceuticalObject.cpp \
+				autogen/server/zone/objects/tangible/pharmaceutical/RangedStimPack.cpp \
+				autogen/server/zone/objects/tangible/pharmaceutical/StimPack.cpp \
+				autogen/server/zone/objects/tangible/pharmaceutical/RevivePack.cpp \
+				autogen/server/zone/objects/tangible/pharmaceutical/StatePack.cpp \
+				autogen/server/zone/objects/tangible/pharmaceutical/WoundPack.cpp \
+				autogen/server/zone/managers/minigames/FishingManager.cpp \
+				autogen/server/zone/managers/minigames/GamblingManager.cpp \
+				autogen/server/zone/managers/minigames/ForageManager.cpp \
+				autogen/server/zone/objects/tangible/weapon/WeaponObject.cpp \
+				autogen/server/zone/managers/crafting/CraftingManager.cpp \
+				autogen/server/zone/managers/weather/WeatherManager.cpp \
+				autogen/server/zone/managers/city/CityManager.cpp \
+				autogen/server/zone/managers/planet/PlanetManager.cpp \
+				autogen/server/zone/managers/radial/RadialManager.cpp \
+				autogen/server/zone/managers/resource/ResourceManager.cpp \
+				autogen/server/zone/managers/creature/CreatureManager.cpp \
+				autogen/server/zone/managers/auction/AuctionManager.cpp \
+				autogen/server/zone/managers/auction/AuctionsMap.cpp \
+				autogen/server/zone/managers/mission/MissionManager.cpp \
+				autogen/server/zone/objects/resource/ResourceContainer.cpp \
+				autogen/server/zone/objects/tangible/component/Component.cpp \
+				autogen/server/zone/objects/tangible/component/armor/ArmorComponent.cpp \
+				autogen/server/zone/objects/tangible/component/genetic/GeneticComponent.cpp \
+				autogen/server/zone/objects/tangible/component/dna/DnaComponent.cpp \
+				autogen/server/zone/objects/tangible/component/lightsaber/LightsaberCrystalComponent.cpp \
+				autogen/server/zone/objects/tangible/tool/CraftingTool.cpp \
+				autogen/server/zone/objects/tangible/tool/CraftingStation.cpp \
+				autogen/server/zone/objects/tangible/tool/ToolTangibleObject.cpp \
+				autogen/server/zone/objects/tangible/tool/smuggler/SlicingTool.cpp \
+				autogen/server/zone/objects/tangible/tool/smuggler/PrecisionLaserKnife.cpp \
+				autogen/server/zone/objects/tangible/tool/recycle/RecycleTool.cpp \
+				autogen/server/zone/objects/tangible/tool/repair/RepairTool.cpp \
+				autogen/server/zone/objects/tangible/tool/SurveyTool.cpp \
+				autogen/server/zone/objects/tangible/wearables/WearableObject.cpp \
+				autogen/server/zone/objects/tangible/wearables/WearableContainerObject.cpp \
+				autogen/server/zone/objects/tangible/wearables/ClothingObject.cpp \
+				autogen/server/zone/objects/tangible/wearables/ArmorObject.cpp \
+				autogen/server/zone/objects/tangible/wearables/PsgArmorObject.cpp \
+				autogen/server/zone/objects/tangible/attachment/Attachment.cpp \
+				autogen/server/zone/objects/tangible/deed/Deed.cpp \
+				autogen/server/zone/objects/tangible/deed/vehicle/VehicleDeed.cpp \
+				autogen/server/zone/objects/tangible/deed/pet/PetDeed.cpp \
+				autogen/server/zone/objects/tangible/deed/resource/ResourceDeed.cpp \
+				autogen/server/zone/objects/tangible/sign/SignObject.cpp \
+				autogen/server/zone/objects/tangible/terminal/Terminal.cpp \
+				autogen/server/zone/objects/tangible/terminal/guild/GuildTerminal.cpp \
+				autogen/server/zone/objects/tangible/terminal/mission/MissionTerminal.cpp \
+				autogen/server/zone/objects/tangible/wearables/RobeObject.cpp \
+				autogen/server/zone/objects/auction/AuctionItem.cpp \
+				autogen/server/zone/objects/tangible/terminal/travel/TravelTerminal.cpp \
+				autogen/server/zone/objects/tangible/terminal/gambling/GamblingTerminal.cpp \
+				autogen/server/zone/objects/mission/MissionObject.cpp \
+				autogen/server/zone/objects/mission/MissionObjective.cpp \
+				autogen/server/zone/objects/region/CityRegion.cpp \
+				autogen/server/zone/objects/mission/SurveyMissionObjective.cpp \
+				autogen/server/zone/objects/mission/DestroyMissionObjective.cpp \
+				autogen/server/zone/objects/mission/DeliverMissionObjective.cpp \
+				autogen/server/zone/objects/mission/BountyMissionObjective.cpp \
+				autogen/server/zone/objects/mission/CraftingMissionObjective.cpp \
+				autogen/server/zone/objects/mission/EntertainerMissionObjective.cpp \
+				autogen/server/zone/objects/mission/HuntingMissionObjective.cpp \
+				autogen/server/zone/objects/mission/ReconMissionObjective.cpp \
+				autogen/server/zone/objects/mission/MissionObserver.cpp \
+				autogen/server/zone/objects/installation/components/TurretObserver.cpp \
+				autogen/server/zone/objects/tangible/terminal/startinglocation/StartingLocationTerminal.cpp \
+				autogen/server/zone/objects/tangible/terminal/ticketcollector/TicketCollector.cpp \
+				autogen/server/zone/objects/tangible/ticket/TicketObject.cpp \
+				autogen/server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.cpp \
+				autogen/server/zone/objects/creature/ai/AiActor.cpp \
+				autogen/server/zone/managers/gcw/GCWManager.cpp \
+				autogen/server/zone/objects/tangible/threat/ThreatMapObserver.cpp \
+				autogen/server/zone/objects/creature/conversation/ConversationObserver.cpp \
+				autogen/server/zone/objects/creature/conversation/TrainerConversationObserver.cpp \
+				autogen/server/zone/objects/creature/conversation/DeliverMissionConversationObserver.cpp \
+				autogen/server/zone/objects/creature/conversation/InformantMissionConversationObserver.cpp
 				
 core3_SOURCES =	$(core3_IDLS) \
 		$(core3_TESTS) \
+		server/zone/managers/vendor/VendorManager.cpp \
+		server/zone/managers/jedi/JediManager.cpp \
+		server/zone/managers/loot/LootGroupMap.cpp \
+		server/zone/managers/crafting/schematicmap/SchematicMap.cpp \
+		server/zone/managers/crafting/labratories/SharedLabratory.cpp \
+		server/zone/managers/crafting/labratories/ResourceLabratory.cpp \
+		server/zone/managers/crafting/labratories/GeneticLabratory.cpp \
+		server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.cpp \
+		server/zone/objects/manufactureschematic/factoryblueprint/FactoryBlueprint.cpp \
+		server/zone/objects/manufactureschematic/factoryblueprint/BlueprintEntry.cpp \
+		server/zone/managers/skill/SkillManager.cpp \
+		server/zone/managers/skill/SkillModManager.cpp \
+		server/login/account/AccountImplementation.cpp \
 		server/zone/objects/structure/events/StructureMaintenanceTask.cpp \
 		server/zone/objects/tangible/components/ElevatorMenuComponent.cpp \
 		server/zone/objects/tangible/components/ElevatorUpMenuComponent.cpp \
@@ -461,7 +470,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/loot/LootManagerImplementation.cpp \
 		server/zone/managers/faction/FactionManager.cpp \
 		server/zone/managers/faction/FactionMap.cpp \
-		server/zone/managers/gcw/GCWManager.cpp \
 		server/zone/managers/gcw/GCWManagerImplementation.cpp \
 		server/zone/managers/components/ComponentManager.cpp \
 		server/zone/managers/planet/HeightMap.cpp \
@@ -570,7 +578,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/NonPlayerCreatureObjectImplementation.cpp \
 		server/zone/objects/creature/AiAgentImplementation.cpp \
 		server/zone/objects/tangible/threat/ThreatMap.cpp \
-		server/zone/objects/tangible/threat/ThreatMapObserver.cpp \
 		server/zone/objects/tangible/threat/ThreatMatrix.cpp \
 		server/zone/objects/creature/damageovertime/DamageOverTime.cpp \
 		server/zone/objects/creature/damageovertime/DamageOverTimeList.cpp \
@@ -607,13 +614,9 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/creature/aigroup/HerdGroupImplementation.cpp \
 		server/zone/objects/creature/aigroup/LairGroupImplementation.cpp \
 		server/zone/objects/creature/aigroup/PackGroupImplementation.cpp \
-		server/zone/objects/creature/conversation/ConversationObserver.cpp \
 		server/zone/objects/creature/conversation/ConversationObserverImplementation.cpp \
-		server/zone/objects/creature/conversation/TrainerConversationObserver.cpp \
 		server/zone/objects/creature/conversation/TrainerConversationObserverImplementation.cpp \
-		server/zone/objects/creature/conversation/DeliverMissionConversationObserver.cpp \
 		server/zone/objects/creature/conversation/DeliverMissionConversationObserverImplementation.cpp \
-		server/zone/objects/creature/conversation/InformantMissionConversationObserver.cpp \
 		server/zone/objects/creature/conversation/InformantMissionConversationObserverImplementation.cpp \
 		server/zone/objects/creature/conversation/screenhandlers/TrainerScreenHandlers.cpp \
 		server/zone/objects/creature/conversation/screenhandlers/DeliverMissionScreenHandler.cpp \

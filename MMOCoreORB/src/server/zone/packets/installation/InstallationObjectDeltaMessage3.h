@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../../packets/tangible/TangibleObjectDeltaMessage3.h"
 
-#include "../../objects/installation/InstallationObject.h"
+#include "server/zone/objects/installation/InstallationObject.h"
 
 class InstallationObjectDeltaMessage3 : public TangibleObjectDeltaMessage3 {
 	InstallationObject* inso;

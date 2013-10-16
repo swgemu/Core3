@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/chat/StringIdChatParameter.h"
-#include "../../creature/CreatureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 
 

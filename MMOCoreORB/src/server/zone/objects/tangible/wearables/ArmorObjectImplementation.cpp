@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "ArmorObject.h"
+#include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/templates/tangible/ArmorObjectTemplate.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"

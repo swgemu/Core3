@@ -6,7 +6,7 @@
  */
 
 #include "LuaBuildingObject.h"
-#include "BuildingObject.h"
+#include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/Zone.h"
 #include "server/zone/objects/cell/CellObject.h"
 #include "server/zone/managers/gcw/GCWManager.h"

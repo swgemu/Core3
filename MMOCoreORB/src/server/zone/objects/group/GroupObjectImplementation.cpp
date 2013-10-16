@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "GroupObject.h"
+#include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/packets/group/GroupObjectMessage3.h"
 #include "server/zone/packets/group/GroupObjectMessage6.h"
 #include "server/zone/packets/group/GroupObjectDeltaMessage6.h"

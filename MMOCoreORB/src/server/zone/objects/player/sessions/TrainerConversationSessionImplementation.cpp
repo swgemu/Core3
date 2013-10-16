@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "TrainerConversationSession.h"
+#include "server/zone/objects/player/sessions/TrainerConversationSession.h"
 
 void TrainerConversationSessionImplementation::clearTrainableSkills() {
 	while (trainableSkills.size() > 0) {

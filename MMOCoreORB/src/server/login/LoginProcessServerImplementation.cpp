@@ -44,7 +44,7 @@ which carries forward this exception.
 
 #include "engine/engine.h"
 
-#include "LoginServer.h"
+#include "server/login/LoginServer.h"
 
 #include "LoginPacketHandler.h"
 

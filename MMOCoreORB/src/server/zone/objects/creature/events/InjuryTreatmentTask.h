@@ -8,7 +8,7 @@
 #ifndef INJURYTREATMENTTASK_H_
 #define INJURYTREATMENTTASK_H_
 
-#include "../CreatureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class InjuryTreatmentTask : public Task {
 	ManagedReference<CreatureObject*> creature;

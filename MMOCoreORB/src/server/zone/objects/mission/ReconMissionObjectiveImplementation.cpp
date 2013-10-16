@@ -5,7 +5,7 @@
  *      Author: dannuic
  */
 
-#include "ReconMissionObjective.h"
+#include "server/zone/objects/mission/ReconMissionObjective.h"
 #include "server/zone/objects/area/MissionReconActiveArea.h"
 
 #include "server/zone/objects/waypoint/WaypointObject.h"
@@ -15,8 +15,8 @@
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/terrain/TerrainManager.h"
-#include "MissionObject.h"
-#include "MissionObserver.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/mission/MissionObserver.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 

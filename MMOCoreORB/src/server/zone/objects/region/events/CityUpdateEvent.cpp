@@ -5,7 +5,7 @@
  *      Author: xyborn
  */
 
-#include "../CityRegion.h"
+#include "server/zone/objects/region/CityRegion.h"
 #include "CityUpdateEvent.h"
 #include "server/zone/managers/city/CityManager.h"
 #include "server/zone/ZoneServer.h"

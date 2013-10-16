@@ -46,9 +46,9 @@ which carries forward this exception.
 #define MAKELEADERCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "../../group/GroupObject.h"
-#include "../../../managers/group/GroupManager.h"
-#include "../../creature/CreatureObject.h"
+#include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/managers/group/GroupManager.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 
 class MakeLeaderCommand : public QueueCommand {

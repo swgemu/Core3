@@ -45,7 +45,7 @@ which carries forward this exception.
 #ifndef BURSTRUNNOTIFYAVAILABLEEVENT_H_
 #define BURSTRUNNOTIFYAVAILABLEEVENT_H_
 
-#include "../CreatureObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
 class BurstRunNotifyAvailableEvent : public Task {
 	ManagedWeakReference<CreatureObject*> creo;

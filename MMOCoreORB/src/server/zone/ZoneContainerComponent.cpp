@@ -7,7 +7,7 @@
 
 #include "ZoneContainerComponent.h"
 
-#include "Zone.h"
+#include "server/zone/Zone.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/area/ActiveArea.h"

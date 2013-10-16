@@ -8,7 +8,7 @@
 #ifndef SPAWNDYNAMICAREACREATURETASK_H_
 #define SPAWNDYNAMICAREACREATURETASK_H_
 
-#include "DynamicSpawnArea.h"
+#include "server/zone/objects/area/DynamicSpawnArea.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
 namespace server {

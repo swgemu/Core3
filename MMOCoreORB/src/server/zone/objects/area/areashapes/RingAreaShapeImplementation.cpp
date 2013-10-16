@@ -1,7 +1,7 @@
 
-#include "RingAreaShape.h"
-#include "RectangularAreaShape.h"
-#include "CircularAreaShape.h"
+#include "server/zone/objects/area/areashapes/RingAreaShape.h"
+#include "server/zone/objects/area/areashapes/RectangularAreaShape.h"
+#include "server/zone/objects/area/areashapes/CircularAreaShape.h"
 
 bool RingAreaShapeImplementation::containsPoint(float x, float y) {
 	Vector3 position;

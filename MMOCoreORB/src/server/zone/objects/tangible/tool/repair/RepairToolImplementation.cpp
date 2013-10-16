@@ -5,7 +5,7 @@
  *      Author: Kyle
  */
 
-#include "RepairTool.h"
+#include "server/zone/objects/tangible/tool/repair/RepairTool.h"
 
 #include "server/zone/objects/manufactureschematic/craftingvalues/CraftingValues.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"

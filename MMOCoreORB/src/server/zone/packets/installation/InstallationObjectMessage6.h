@@ -47,7 +47,7 @@ which carries forward this exception.
 
 #include "../BaseLineMessage.h"
 
-#include "../../objects/installation/InstallationObject.h"
+#include "server/zone/objects/installation/InstallationObject.h"
 #include "../tangible/TangibleObjectMessage6.h"
 
 class InstallationObjectMessage6 : public TangibleObjectMessage6 {

@@ -5,7 +5,7 @@
  *      Author: swgemu
  */
 
-#include "FishingBaitObject.h"
+#include "server/zone/objects/tangible/fishing/FishingBaitObject.h"
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"

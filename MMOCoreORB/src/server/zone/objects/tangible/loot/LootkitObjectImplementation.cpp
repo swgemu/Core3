@@ -5,8 +5,8 @@
  *      Author: swgemu
  */
 
-#include "LootkitObject.h"
-#include "../TangibleObject.h"
+#include "server/zone/objects/tangible/loot/LootkitObject.h"
+#include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/packets/scene/AttributeListMessage.h"

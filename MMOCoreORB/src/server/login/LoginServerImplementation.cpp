@@ -42,8 +42,8 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "LoginServer.h"
-#include "LoginClient.h"
+#include "server/login/LoginServer.h"
+#include "server/login/LoginClient.h"
 
 #include "LoginProcessServerImplementation.h"
 

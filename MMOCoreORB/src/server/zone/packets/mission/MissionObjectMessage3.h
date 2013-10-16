@@ -47,8 +47,8 @@ which carries forward this exception.
 
 #include "../../packets/BaseLineMessage.h"
 
-#include "../../objects/mission/MissionObject.h"
-#include "../../objects/waypoint/WaypointObject.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/waypoint/WaypointObject.h"
 
 /*
  * Unforunately, the way SOE designed the baseline/delta system with missions makes it

@@ -5,7 +5,7 @@
  *      Author: victor
  */
 
-#include "ChatManager.h"
+#include "server/chat/ChatManager.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/player/PlayerManager.h"
@@ -25,13 +25,13 @@
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/chat/StringIdChatParameter.h"
-#include "PersistentMessage.h"
-#include "ChatMessage.h"
+#include "server/chat/PersistentMessage.h"
+#include "server/chat/ChatMessage.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 
-#include "room/ChatRoom.h"
-#include "room/ChatRoomMap.h"
-#include "SendMailTask.h"
+#include "server/chat/room/ChatRoom.h"
+#include "server/chat/room/ChatRoomMap.h"
+#include "server/chat/SendMailTask.h"
 
 ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int initsize) : ManagedServiceImplementation() {
 	server = serv;

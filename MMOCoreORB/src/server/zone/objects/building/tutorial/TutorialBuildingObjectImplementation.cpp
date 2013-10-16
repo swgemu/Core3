@@ -42,7 +42,7 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#include "TutorialBuildingObject.h"
+#include "server/zone/objects/building/tutorial/TutorialBuildingObject.h"
 #include "events/UnloadBuildingTask.h"
 #include "server/zone/objects/cell/CellObject.h"
 

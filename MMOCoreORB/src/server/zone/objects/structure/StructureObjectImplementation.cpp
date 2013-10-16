@@ -5,7 +5,7 @@
  *      Author: crush
  */
 
-#include "StructureObject.h"
+#include "server/zone/objects/structure/StructureObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
 #include "server/zone/templates/tangible/SharedStructureObjectTemplate.h"

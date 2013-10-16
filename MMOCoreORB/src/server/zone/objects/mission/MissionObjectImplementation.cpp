@@ -5,8 +5,8 @@
  *      Author: theanswer
  */
 
-#include "MissionObject.h"
-#include "MissionObjective.h"
+#include "server/zone/objects/mission/MissionObject.h"
+#include "server/zone/objects/mission/MissionObjective.h"
 #include "server/zone/packets/mission/MissionObjectMessage6.h"
 #include "server/zone/packets/mission/MissionObjectMessage3.h"
 #include "server/zone/packets/mission/MissionObjectDeltaMessage3.h"

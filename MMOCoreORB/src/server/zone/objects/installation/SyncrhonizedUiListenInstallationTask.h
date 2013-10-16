@@ -8,7 +8,7 @@
 #ifndef SYNCRHONIZEDUILISTENHARVESTERTASK_H_
 #define SYNCRHONIZEDUILISTENHARVESTERTASK_H_
 
-#include "InstallationObject.h"
+#include "server/zone/objects/installation/InstallationObject.h"
 
 namespace server {
  namespace zone {
