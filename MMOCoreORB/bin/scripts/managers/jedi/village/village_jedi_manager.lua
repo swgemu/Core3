@@ -1,6 +1,7 @@
 package.path = package.path .. ";scripts/managers/jedi/?.lua;scripts/managers/jedi/village/?.lua"
 JediManager = require("jedi_manager")
 VillageJediManagerHolocron = require("village_jedi_manager_holocron")
+require("old_man_conv_handler")
 
 jediManagerName = "VillageJediManager"
 
@@ -228,6 +229,28 @@ end
 function VillageJediManager:onPlayerLoggedIn(pCreatureObject)
 	VillageJediManager.checkAndHandleJediProgression(pCreatureObject)
 	VillageJediManager.registerObservers(pCreatureObject)
+end
+
+-- Check if the old man belongs to the player or not.
+-- @param pConversingPlayer pointer to the creature object of the conversing player.
+-- @param pConversingNpc pointer to the creature object of the old man.
+-- @return true if the old man belongs to the player.
+function VillageJediManager.oldManBelongsToThePlayer(pConversingPlayer, pConversingNpc)
+	return true
+end
+
+-- Check if the old man spawned due to the player becoming glowing and need access to the village.
+-- @param pCreatureObject pointer to the creature object of the player.
+-- @return true if the player is glowing and need access to the village.
+function VillageJediManager.isGlowing(pCreatureObject)
+	return true
+end
+
+-- Check if the player has complete the village grind and is ready for meeting Mellichae.
+-- @param pCreatureObject pointer to the creature object of the player.
+-- @return true if the player has complete the village grind and is ready for meeting Mellichae.
+function VillageJediManager.readyForMellichae(pConversingPlayer)
+	return false
 end
 
 registerScreenPlay("VillageJediManager", true)
