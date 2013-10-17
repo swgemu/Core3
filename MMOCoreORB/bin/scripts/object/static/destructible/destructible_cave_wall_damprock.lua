@@ -42,6 +42,8 @@
 
 
 object_static_destructible_destructible_cave_wall_damprock = object_static_destructible_shared_destructible_cave_wall_damprock:new {
+	pvpStatusBitmask = ATTACKABLE,
+	optionsBitmask = 0
 
 }
 

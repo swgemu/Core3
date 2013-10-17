@@ -42,6 +42,8 @@
 
 
 object_static_destructible_destructible_tato_crate1 = object_static_destructible_shared_destructible_tato_crate1:new {
+	pvpStatusBitmask = ATTACKABLE,
+	optionsBitmask = 0
 
 }
 

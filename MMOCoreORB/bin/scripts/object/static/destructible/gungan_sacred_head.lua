@@ -42,6 +42,8 @@
 
 
 object_static_destructible_gungan_sacred_head = object_static_destructible_shared_gungan_sacred_head:new {
+	pvpStatusBitmask = ATTACKABLE,
+	optionsBitmask = 0
 
 }
 

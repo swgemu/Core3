@@ -42,6 +42,8 @@
 
 
 object_static_destructible_destructible_tato_cave_rock_lg = object_static_destructible_shared_destructible_tato_cave_rock_lg:new {
+	pvpStatusBitmask = ATTACKABLE,
+	optionsBitmask = 0
 
 }
 

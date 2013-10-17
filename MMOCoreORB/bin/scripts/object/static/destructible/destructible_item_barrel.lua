@@ -42,6 +42,8 @@
 
 
 object_static_destructible_destructible_item_barrel = object_static_destructible_shared_destructible_item_barrel:new {
+	pvpStatusBitmask = ATTACKABLE,
+	optionsBitmask = 0
 
 }
 

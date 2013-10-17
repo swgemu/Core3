@@ -42,6 +42,8 @@
 
 
 object_static_destructible_destructible_tato_drum_storage1 = object_static_destructible_shared_destructible_tato_drum_storage1:new {
+	pvpStatusBitmask = ATTACKABLE,
+	optionsBitmask = 0
 
 }
 
