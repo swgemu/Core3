@@ -435,7 +435,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 			FactionManager* factionManager = FactionManager::instance();
 
-			if (!destructedObject->getPvPFaction().isEmpty()) {
+			if (!destructedObject->getPvPFaction().isEmpty() && !destructedObject->isEventMob()) {
 				if(!player->isGrouped())
 					factionManager->awardFactionStanding(player, destructedObject->getPvPFaction());
 				else
