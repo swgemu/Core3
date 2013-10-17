@@ -54,14 +54,12 @@ public:
 	ShipObjectMessage4(ShipObject* ship)
 			: BaseLineMessage(ship->getObjectID(), 0x53484950, 4, 0x06) {
 
-		insertFloat(0.80000001f);
-		insertFloat(512.f);
-		insertFloat(100.f);
-		insertInt(0);
+		insertFloat(0.80000001f); //float
+		insertFloat(512.f); //float
+		insertFloat(100.f); // float
+		insertFloat(0); //float
 
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
+		insertInt(0); //const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
 		insertInt(0);
 
 		setSize();

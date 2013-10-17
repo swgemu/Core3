@@ -53,68 +53,84 @@ public:
 	ShipObjectMessage1(ShipObject* ship)
 	: BaseLineMessage(ship->getObjectID(), 0x53484950, 1, 0x29) {
 
+		// const Archive::AutoDeltaVariableCallback<int,ClientObject::Callbacks::DefaultCallback<ClientObject::Messages::BankBalance,int>,ClientObject>::`vftable'
 		insertInt(0);
-		insertInt(0);
-		//insertDummyList(1);
 
+		//const Archive::AutoDeltaVariableCallback<int,ClientObject::Callbacks::DefaultCallback<ClientObject::Messages::CashBalance,int>,ClientObject>::`vftable
+		insertInt(0);
+
+		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable
 		insertInt(0);
 		insertInt(0);
 		//insertDummyList(0x3f800000);
 
+		// const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable
 		insertInt(0);
 		insertInt(0);
 		//insertDummyList(0x44fa0000);
 
+		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
 		insertInt(0);
 		insertInt(0);
 		//insertDummyList(0x44bb0000);
-		
 
+		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
 		insertInt(0);
 		insertInt(0);
 		//insertDummyList(0);
 
+		// const Archive::AutoDeltaPackedMap<int,_STL::basic_string<ushort,_STL::char_traits<ushort>,_STL::allocator<ushort>>,Archive::DefaultObjectType>::`vftable
+		//map<int, unicode>
 		insertInt(0);
 		insertInt(0);
 		//insertDummyList(0x44fa0000);
 
+		//const Archive::AutoDeltaPackedMap<int,NetworkId,Archive::DefaultObjectType>::`vftable'
 		insertInt(0);
 		insertInt(0);
 
+		// const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
 		insertInt(0);
 		insertInt(0);
 
+		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
 		insertInt(0);
 		insertInt(0);
 
+		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
 		insertInt(0);
 		insertInt(0);
 
+		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
 		insertInt(0);
 		insertInt(0);
 
+		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
 		insertInt(0);
 		insertInt(0);
 
+		//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
 		insertInt(0);
 		insertInt(0);
 
+		//const Archive::AutoDeltaPackedMap<int,int,Archive::DefaultObjectType>::`vftable'
 		insertInt(0);
 		insertInt(0);
 
+		//const Archive::AutoDeltaPackedMap<int,int,Archive::DefaultObjectType>::`vftable'
 		insertInt(0);
 		insertInt(0);
 
+		//const Archive::AutoDeltaPackedMap<int,ulong,Archive::DefaultObjectType>::`vftable'
 		insertInt(0);
 		insertInt(0);
 
-
-		insertFloat(ship->getTotalMass());
-		insertFloat(2.f);
-		insertFloat(500.f);
-		insertFloat(20.f);
-		insertFloat(50.f);
-		insertFloat(50.f);
+		insertFloat(ship->getTotalMass()); //const Archive::AutoDeltaVariable<float>::`vftable'
+		insertFloat(2.f); //const Archive::AutoDeltaVariable<float>::`vftable'
+		insertFloat(500.f); //const Archive::AutoDeltaVariable<float>::`vftable'
+		insertFloat(20.f); // const Archive::AutoDeltaVariable<float>::`vftable'
+		insertFloat(50.f); //const Archive::AutoDeltaVariable<float>::`vftable'
+		insertFloat(50.f);// const Archive::AutoDeltaVariable<float>::`vftable'
 		insertFloat(10.472f); //Pitch Acceleration
 		insertFloat(10.472f); //Pitch Acceleration Max
 		insertFloat(5.23599f); //Yaw Acceleration
@@ -123,37 +139,14 @@ public:
 		insertFloat(0.907571f); //Roll Acceleration Max
 		insertFloat(50.f); //Max Speed?
 		insertFloat(8000.f); //Total Energy?
-		insertFloat(0.f);
-		insertFloat(0.f);
-		insertFloat(0.f);
-		insertFloat(0.f);
-		insertFloat(0.f);
+		insertFloat(0.f); //const Archive::AutoDeltaVariable<float>::`vftable'
+		insertFloat(0.f); //const Archive::AutoDeltaVariable<float>::`vftable'
+		insertFloat(0.f); //const Archive::AutoDeltaVariable<float>::`vftable'
+		insertFloat(0.f); //const Archive::AutoDeltaVariable<float>::`vftable
+		insertFloat(0.f); //const Archive::AutoDeltaVariable<float>::`vftable'
+		insertFloat(0); // const Archive::AutoDeltaVariable<float>::`vftable'
 
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-
-
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-
+		insertLong(0); // const Archive::AutoDeltaVariableCallback<NetworkId,ShipObject::Callbacks::DefaultCallback<ShipObject::Messages::DroidPcdChanged,NetworkId>,ShipObject>::`vftable'
 
 		setSize();
 	}

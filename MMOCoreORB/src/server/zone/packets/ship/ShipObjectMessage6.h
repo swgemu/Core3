@@ -53,13 +53,13 @@ public:
 	ShipObjectMessage6(ShipObject* ship)
 			: TangibleObjectMessage6(ship, 0x53484950, 0x18) {
 
-		insertShort(ship->getUniqueID());
+		insertShort(ship->getUniqueID()); //const Archive::AutoDeltaVariableCallback<ushort,ShipObject::Callbacks::DefaultCallback<ShipObject::Messages::ShipIdChanged,ushort>,ShipObject>::`vftable
 
-		insertFloat(50.f);
-		insertFloat(50.f); //min speed
+		insertFloat(50.f); // const Archive::AutoDeltaVariable<float>::`vftable'
+		insertFloat(50.f); //min speed // Archive::AutoDeltaVariable<float>
 
-		insertFloat(0.174532935 * 3);
-		insertFloat(0.174532935 * 3);
+		insertFloat(0.174532935 * 3); //const Archive::AutoDeltaVariable<float>::`vftable'
+		insertFloat(0.174532935 * 3); // same
 		insertFloat(0.174532935 * 3);
 
 		insertFloat(1.260066867 * 2);
@@ -67,16 +67,16 @@ public:
 		insertFloat(1.260066867 * 2);
 
 		insertFloat(50.f); // max speed
-		//insertLong(ship->getObjectID()); //This is zeroed out on NGE packet caps?
-		insertLong(0);
 
-		insertInt(0); //length
-		insertInt(0); // list?
+		insertLong(0); // const Archive::AutoDeltaVariableCallback<CachedNetworkId,ShipObject::Callbacks::DefaultCallback<ShipObject::Messages::LookAtTargetChanged,CachedNetworkId>,ShipObject>::`vftable'
 
+		insertInt(0); // const Archive::AutoDeltaVariableCallback<int,ShipObject::Callbacks::DefaultCallback<ShipObject::Messages::LookAtTargetSlotChanged,int>,ShipObject>::`vftable'
+
+		insertInt(0); //  const Archive::AutoDeltaVariableCallback<BitArray,ShipObject::Callbacks::DefaultCallback<ShipObject::Messages::TargetableSlotBitfieldChanged,BitArray>,ShipObject>::`vftable'
 		insertInt(0);
 
 		//components
-		insertInt(7);
+		insertInt(7); // const Archive::AutoDeltaMap<int,ulong,ShipObject>::`vftable'
 		insertInt(7);
 
 		insertByte(0);
@@ -107,29 +107,15 @@ public:
 		insertInt(0x0f);
 		insertInt(0x2c823c3d); //0x3D, 0x3C, 0x82, 0x2C,
 
+		insertAscii(""); //const Archive::AutoDeltaVariable<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char>>>::`vftable'
+		insertAscii(""); //const Archive::AutoDeltaVariable<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char>>>::`vftable'
+		insertAscii(""); //const Archive::AutoDeltaVariable<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char>>>::`vftable'
+		insertAscii(""); //const Archive::AutoDeltaVariable<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char>>>::`vftable'
 
+		insertFloat(300.f); //const Archive::AutoDeltaVariable<float>::`vftable'
+		insertFloat(300.f); //const Archive::AutoDeltaVariable<float>::`vftable'
 
-		insertInt(0);
-		insertInt(0);
-
-/*
-
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-		insertInt(0);
-
-		insertInt(0); //List
-		insertInt(0);
-
-		insertInt(0);
-		insertInt(0);*/
-
-		insertFloat(300.f);
-		insertFloat(300.f);
-
-		insertInt(0);
+		insertInt(0); //const Archive::AutoDeltaVariable<int>::`vftable'
 
 		setSize();
 	}
