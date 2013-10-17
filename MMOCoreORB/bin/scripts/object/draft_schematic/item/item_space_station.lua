@@ -54,9 +54,9 @@ object_draft_schematic_item_item_space_station = object_draft_schematic_item_sha
    xpType = "crafting_structure_general", 
    xp = 900, 
 
-   assemblySkill = "structure_assembly", 
-   experimentingSkill = "structure_experimentation", 
-   customizationSkill = "structure_customization", 
+   assemblySkill = "general_assembly", 
+   experimentingSkill = "general_experimentation", 
+   customizationSkill = "clothing_customization",
 
    customizationOptions = {},
    customizationStringNames = {},
