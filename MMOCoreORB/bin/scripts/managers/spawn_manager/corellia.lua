@@ -852,15 +852,12 @@ corellia_static_spawns = {
 	{"jadam_questrel",60,9.77643,-0.894992,-14.4836,262.46,3075432, "calm", ""},
 	{"jom_irimore",60,-5520,21.3,-2630.99,0,0, "calm", "Jom Irimore"},
 	{"junk_dealer",0,6840,315,-5630,-32,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
-	{"junk_dealer",0,-14.5,1.1,1.9,89,2365767, "", "",JUNKGENERIC,JUNKCONVGENERIC},
+	{"junk_dealer",0,-14.5,1.1,1.9,89,2365767, "", "",JUNKWEAPONS,JUNKCONVARMS},
 	{"junk_malik",0,6756.1,315,-5778,88,0, "", "Malik Pendron",JUNKCORSEC,JUNKCONVMALIKVISTAL},
 	{"junk_dealer",0,6970,330,-5588,92,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
-	{"junk_dealer",0,-118.2,28,-4792.9,-144,0, "", "",JUNKGENERIC,JUNKCONVGENERIC}, --Correct One
-	{"junk_dealer",0,-118.7,28,-4793.6,-144,0, "", "Weapons Dealer",JUNKWEAPONS,JUNKCONVARMS}, -- Extra one For Test Weapons
-	{"junk_dealer",0,-119.7,28,-4794.6,-144,0, "", "Clothes / Jewellery Dealer",JUNKCLOTHESANDJEWELLERY,JUNKCONVFINARY}, -- Extra one For Test Finary
-
-	{"junk_dealer",0,-14.5,1.1,2.5,88,1855505, "", "",JUNKGENERIC,JUNKCONVGENERIC},
-	{"junk_dealer",0,-14.5,1.1,2.5,88,3075358, "", "",JUNKGENERIC,JUNKCONVGENERIC},
+	{"junk_dealer",0,-118.2,28,-4792.9,-144,0, "", "",JUNKGENERIC,JUNKCONVGENERIC}, 
+	{"junk_dealer",0,-14.5,1.1,2.5,88,1855505, "", "",JUNKWEAPONS,JUNKCONVARMS},
+	{"junk_dealer",0,-14.5,1.1,2.5,88,3075358, "", "",JUNKWEAPONS,JUNKCONVARMS},
 	{"junk_dealer",0,3402.4,308,5679,5,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 
 	{"junk_dealer",0,-5639.2,21,-2799.2,-40,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
