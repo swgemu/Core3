@@ -128,6 +128,7 @@ namespace server {
 		static int getTerrainHeight(lua_State* L);
 		static int checkArgumentCount(lua_State*L, int args);
 		static int awardSkill(lua_State* L);
+		static int getCityRegionAt(lua_State* L);
 
 	private:
 		void initializeLuaEngine(Lua* luaEngine);

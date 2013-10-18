@@ -55,7 +55,7 @@
 #include "server/zone/managers/gcw/GCWManager.h"
 #include "server/zone/managers/jedi/JediManager.h"
 #include "server/zone/managers/skill/SkillManager.h"
-
+#include "server/zone/objects/region/CityRegion.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -395,6 +395,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaObjectMenuResponse>::Register(luaEngine->getLuaState());
 	Luna<LuaDeed>::Register(luaEngine->getLuaState());
 	Luna<LuaAiActor>::Register(luaEngine->getLuaState());
+	Luna<LuaCityRegion>::Register(luaEngine->getLuaState());
 }
 
 int DirectorManager::loadScreenPlays(Lua* luaEngine) {
@@ -1869,4 +1870,24 @@ int DirectorManager::awardSkill(lua_State* L) {
 	SkillManager::instance()->awardSkill(skillName, creature, true, false, true);
 
 	return 0;
+}
+
+int DirectorManager::getCityRegionAt(lua_State* L) {
+	if (checkArgumentCount(L, 3) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getCityRegionAt");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	String zoneid = lua_tostring(L, -3);
+	float x = lua_tonumber(L, -2);
+	float y = lua_tonumber(L, -1);
+
+	PlanetManager* planetManager = ServerCore::getZoneServer()->getZone(zoneid)->getPlanetManager();
+
+	CityRegion* cityRegion = planetManager->getRegionAt(x, y);
+
+	lua_pushlightuserdata(L, cityRegion);
+
+	return 1;
 }

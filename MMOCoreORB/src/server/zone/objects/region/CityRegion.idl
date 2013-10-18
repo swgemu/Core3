@@ -26,6 +26,7 @@ include server.zone.objects.region.CityStructureInventory;
 include system.thread.atomic.AtomicInteger;
 import system.thread.Mutex;
 
+@lua
 class CityRegion extends ManagedObject implements Logger {
 	
 	protected byte cityRank;

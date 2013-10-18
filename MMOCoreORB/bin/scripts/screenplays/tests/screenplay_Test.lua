@@ -18,6 +18,10 @@ describe("ScreenPlay", function()
 		assert.is.Nil(ScreenPlay.withPlayerObject(nil, function(playerObject) end))
 	end)
 
+	it("Shall return nil if the city region pointer is nil to the withCityRegion function.", function()
+		assert.is.Nil(ScreenPlay.withCityRegion(nil, function(cityRegion) end))
+	end)
+
 	it("Shall return nil if the creature object pointer is nil to the withCreatureAndPlayerObject function.", function()
 		assert.is.Nil(ScreenPlay.withCreatureAndPlayerObject(nil, function(creatureObject, playerObject) end))
 	end)
@@ -59,6 +63,19 @@ describe("ScreenPlay", function()
 		assert.same(playerObjectArgument, playerObjectCreated)
 
 		LuaPlayerObject = realLuaPlayerObject
+	end)
+
+	it("Shall call the supplied lambda expression with the CityRegion when calling the withCityRegion function.", function()
+		local pCityRegion = { "cityRegionPointer" }
+		local cityRegionCreated = { "cityRegion" }
+		local cityRegionArgument = nil
+		local realLuaCityRegion = LuaCityRegion
+		LuaCityRegion = spy.new(function() return cityRegionCreated end)
+
+		ScreenPlay.withCityRegion(pCityRegion, function(cityRegion) cityRegionArgument = cityRegion end)
+		assert.same(cityRegionArgument, cityRegionCreated)
+
+		LuaCityRegion = realLuaCityRegion
 	end)
 
 	it("Shall return nil if the creature object has a nil pointer to the player object when calling the withCreaturePlayerObject function.", function()
