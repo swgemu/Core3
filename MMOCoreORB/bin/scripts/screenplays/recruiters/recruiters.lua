@@ -451,7 +451,7 @@ function recruiter_convo_handler:getEnemyFactionString()
 end
 
 function recruiter_convo_handler:addUniforms(thisConversation, gcwDiscount, smugglerDiscount)
-	printf("pure recruiter_convo_handler:addUniforms(thisConversation gcwDiscount, smugglerDiscount)")
+	printf("pure recruiter_convo_handler:addUniforms(thisConversation, gcwDiscount, smugglerDiscount)")
 end
 
 function recruiter_convo_handler:addFurniture(thisConversation, gcwDiscount, smugglerDiscount)
