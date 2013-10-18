@@ -693,7 +693,7 @@ void CraftingSessionImplementation::initialAssembly(int clientCounter) {
 
 	// Determine the outcome of the craft, Amazing through Critical
 	assemblyResult = craftingManager.get()->calculateAssemblySuccess(crafter,
-			draftSchematic, craftingTool->getEffectiveness());
+			draftSchematic, craftingTool->getEffectiveness(), craftingStation->getComplexityLevel());
 
 	Locker locker(prototype);
 	Locker schLock(manufactureSchematic);
