@@ -9,6 +9,7 @@
 #define PROCEDURALTERRAINAPPEARANCE_H_
 
 #include "TemplateVariable.h"
+#include "TerrainAppearance.h"
 
 class TerrainGenerator;
 class Boundary;
@@ -18,7 +19,7 @@ class Boundary;
 
 class Layer;
 
-class ProceduralTerrainAppearance : public TemplateVariable<'PTAT'>, public Logger {
+class ProceduralTerrainAppearance : public TemplateVariable<'PTAT'>, public Logger, public TerrainAppearance {
 	TerrainGenerator* terrainGenerator;
 
 	Vector<Boundary*> waterBoundaries;
@@ -95,7 +96,7 @@ public:
 	 * Returns the size of the terrain.
 	 * @return float The size of the terrain.
 	 */
-	inline float getSize() {
+	float getSize() {
 		return size;
 	}
 
