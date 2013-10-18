@@ -114,6 +114,18 @@ function ScreenPlay.withPlayerObject(pPlayerObject, performThisFunction)
 	return performThisFunction(playerObject)
 end
 
+-- Perform the supplied function with a city region created from the pointer.
+-- @param pCityRegion a pointer to a city region.
+-- @param performThisFunction a function that takes a city region as its argument.
+-- @return whatever performThisFunction returns or nil if the pCityRegion pointer is nil.
+function ScreenPlay.withCityRegion(pCityRegion, performThisFunction)
+	if pCityRegion == nil then
+		return nil
+	end
+	local cityRegion = LuaCityRegion(pCityRegion)
+	return performThisFunction(cityRegion)
+end
+
 -- Perform the supplied function with a player object fetched from the creature object pointer.
 -- @param pCreatureObject a pointer to a creature object.
 -- @param performThisFunction a function that takes a player object as its argument.
