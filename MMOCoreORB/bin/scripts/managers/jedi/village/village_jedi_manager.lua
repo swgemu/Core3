@@ -235,15 +235,30 @@ function VillageJediManager.spawnOldMan(pCreatureObject)
 		local spawnPoint = getSpawnPoint(pCreatureObject, sceneObject:getPositionX(), sceneObject:getPositionY(), 32, 64)
 		if spawnPoint ~= nil then
 			spawnMobile(sceneObject:getZoneName(), "old_man", 1, spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, sceneObject:getParentID())
+			print("spawned old man")
 		end
 	end)
+end
+
+-- Function to handle the old man event.
+-- @param pCreatureObject pointer to the creature object who should have an event created for spawning the old man.
+function VillageJediManager:handleOldManEvent(pCreatureObject)
+	VillageJediManager.spawnOldMan(pCreatureObject)
+	print("event triggered")
+end
+
+-- Generate an event to spawn the old man for the player.
+-- @param pCreatureObject pointer to the creature object who should have an event created for spawning the old man.
+function VillageJediManager.createOldManEvent(pCreatureObject)
+	createEvent(20000, "VillageJediManager", "handleOldManEvent", pCreatureObject)
+	print("created event")
 end
 
 -- Check if the player should progress towards jedi and handle any events for it.
 -- @param pCreatureObject pointer to the creature object of the player.
 function VillageJediManager.checkAndHandleJediProgression(pCreatureObject)
 	if VillageJediManager.countBadges(pCreatureObject) >= TOTALNUMBEROFBADGESREQUIRED then
-		VillageJediManager.spawnOldMan(pCreatureObject)
+		VillageJediManager.createOldManEvent(pCreatureObject)
 	end
 end
 
