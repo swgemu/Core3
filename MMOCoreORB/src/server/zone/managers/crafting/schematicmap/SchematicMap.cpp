@@ -107,6 +107,8 @@ void SchematicMap::loadSchematicGroups() {
 		iffGroupMap.put(schematicName.hashCode(), groupId);
 	}
 
+	delete iffStream;
+
 	buildSchematicGroups();
 }
 

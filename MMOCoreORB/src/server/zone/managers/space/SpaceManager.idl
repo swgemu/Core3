@@ -1,5 +1,5 @@
 /*
-Copyright (C) 2007 <SWGEmu>
+Copyright (C) 2013 <SWGEmu>
  
 This File is part of Core3.
  
@@ -42,30 +42,22 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef SHIPOBJECTMESSAGE4_H_
-#define SHIPOBJECTMESSAGE4_H_
+package server.zone.managers.space;
 
-#include "../../packets/BaseLineMessage.h"
-#include "server/zone/objects/ship/ShipObject.h"
+import engine.core.ManagedService;
+import server.zone.managers.planet.PlanetManager;
+include server.zone.managers.ship.ShipManager;
 
-
-class ShipObjectMessage4 : public BaseLineMessage {
-public:
-	ShipObjectMessage4(ShipObject* ship)
-			: BaseLineMessage(ship->getObjectID(), 0x53484950, 4, 0x06) {
-
-		insertFloat(0.80000001f); //mass
-		insertFloat(512.f); //mass max
-
-		insertFloat(100.f); // capacitor ?
-		insertFloat(0); //float
-
-		insertInt(0); //const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable'
-		insertInt(0);
-
-		setSize();
-	}
+class SpaceManager extends PlanetManager {
+	public SpaceManager(Zone planet, ZoneProcessServer srv) {
+		super(planet, srv);
 		
-};
+		Logger.setLoggingName("SpaceManager " + planet.getZoneName());
+		Logger.setLogging(false);
+		Logger.setGlobalLogging(true);
+	}
 
-#endif /*SHIPOBJECTMESSAGE4_H_*/
+	public void initialize() {
+		Logger.info("loading space manager " + super.zone.getZoneName());
+	}
+}

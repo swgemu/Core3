@@ -74,13 +74,14 @@ void ShipObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	BaseMessage* ship3 = new ShipObjectMessage3(_this.get());
 	player->sendMessage(ship3);
 
-	if (player->getParent().get() == _this.get() || getRootParent().get() == player) {
+
+	//if (player->getParent().get() == _this.get() || getRootParent().get() == player) {
 		BaseMessage* ship4 = new ShipObjectMessage4(_this.get());
 		player->sendMessage(ship4);
 	
 		BaseMessage* ship1 = new ShipObjectMessage1(_this.get());
 		player->sendMessage(ship1);
-	}
+	//}
 
 	BaseMessage* ship6 = new ShipObjectMessage6(_this.get());
 	player->sendMessage(ship6);

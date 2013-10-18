@@ -49,7 +49,7 @@ which carries forward this exception.
 
 void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
 	//info("generating ship", true);
-	return;
+	//return;
 
 	ZoneServer* zoneServer = getZoneServer();
 
@@ -109,7 +109,7 @@ void ShipControlDeviceImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 
 	if (!controlledObject->isInQuadTree()) {
-		//menuResponse->addRadialMenuItem(60, 3, "Launch Ship"); //Launch
+		menuResponse->addRadialMenuItem(60, 3, "Launch Ship"); //Launch
 	} else
 		menuResponse->addRadialMenuItem(61, 3, "Land Ship"); //Launch
 	//menuResponse->addRadialMenuItem(61, 3, "Launch Ship"); //Launch

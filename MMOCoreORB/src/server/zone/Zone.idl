@@ -65,7 +65,6 @@ import system.util.SortedVector;
 import server.zone.managers.minigames.FishingManager;
 import server.zone.managers.minigames.GamblingManager;
 import server.zone.managers.minigames.ForageManager;
-include server.zone.managers.planet.HeightMap;
 include server.zone.managers.object.ObjectMap;
 include server.zone.managers.planet.MapLocationTable;
 include engine.util.u3d.Vector3;
@@ -106,9 +105,7 @@ class Zone extends SceneObject {
 
 	@dereferenced
 	private transient Time galacticTime;
-	
-	private transient HeightMap heightMap;
-	
+		
 	@transactional
 	private transient MapLocationTable mapLocations;
 	
