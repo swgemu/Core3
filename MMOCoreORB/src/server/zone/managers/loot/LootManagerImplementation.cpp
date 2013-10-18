@@ -663,6 +663,9 @@ void LootManagerImplementation::addStaticDots(TangibleObject* object, LootItemTe
 
 	float dotChance = templateObject->getStaticDotChance();
 
+	if (dotChance < 0)
+		return;
+
 	// Apply the Dot if the chance roll equals the number or is zero.
 	if (dotChance == 0 || System::random(dotChance) == 0) { // Defined in loot item script.
 		shouldGenerateDots = true;
@@ -734,6 +737,9 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, LootItemTe
 
 	float dotChance = templateObject->getRandomDotChance();
 
+	if (dotChance < 0)
+		return;
+
 	// Apply the Dot if the chance roll equals the number or is zero.
 	if (dotChance == 0 || System::random(dotChance / excMod) == 0) { // Defined in loot item script.
 		shouldGenerateDots = true;
@@ -742,8 +748,8 @@ void LootManagerImplementation::addRandomDots(TangibleObject* object, LootItemTe
 	if (shouldGenerateDots) {
 
 		int number = 1;
-		// TODO: Change this before merge to Basilisk
-		if (System::random(10) == 5)
+
+		if (System::random(250 / excMod) == 5)
 			number = 2;
 
 		bool yellow = false;

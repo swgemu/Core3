@@ -19,7 +19,7 @@ rifle_tusken = {
 	customizationValues = {},
 
 	-- randomDotChance: The chance of this weapon object dropping with a random dot on it. Higher number means less chance. Set to 0 to always have a random dot.
-	randomDotChance = 10,
+	randomDotChance = 1000,
 	junkDealerTypeNeeded = JUNKWEAPONS + JUNKTUSKEN,
 	junkMinValue = 25,
 	junkMaxValue = 45

@@ -24,10 +24,10 @@ knife_donkuwah = {
 	customizationValues = {},
 
 	-- randomDotChance: The chance of this weapon object dropping with a random dot on it. Higher number means less chance. Set to 0 to always have a random dot.
-	randomDotChance = 10,
+	randomDotChance = 600,
 
 	-- staticDotChance: The chance of this weapon object dropping with a static dot on it. Higher number means less chance. Set to 0 to always have a static dot.
-	staticDotChance = 1,
+	staticDotChance = 10,
 
 	-- staticDotType: 1 = Poison, 2 = Disease, 3 = Fire, 4 = Bleed
 	staticDotType = 1,
