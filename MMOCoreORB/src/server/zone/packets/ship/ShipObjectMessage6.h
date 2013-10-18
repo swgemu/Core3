@@ -58,13 +58,25 @@ public:
 		insertFloat(50.f); // const Archive::AutoDeltaVariable<float>::`vftable'
 		insertFloat(50.f); //min speed // Archive::AutoDeltaVariable<float>
 
-		insertFloat(0.174532935 * 3); //const Archive::AutoDeltaVariable<float>::`vftable'
-		insertFloat(0.174532935 * 3); // same
-		insertFloat(0.174532935 * 3);
+		/*
+		insertFloat(0.174532935); //const  pi / 180 wtf / 10 = deg2rad = 10 degrees of what?
+		insertFloat(0.174532935); // 10 degrees converted to radians
+		insertFloat(0.174532935); // 10 degrees converted to radians
 
-		insertFloat(1.260066867 * 2);
-		insertFloat(1.260066867 * 2);
-		insertFloat(1.260066867 * 2);
+		insertFloat(1.260066867); //??
+		insertFloat(1.260066867);
+		insertFloat(1.260066867);
+		*/
+
+		insertFloat(10.472f); //Yaw Acceleration
+		insertFloat(10.472f); //Pitch Acceleration
+		insertFloat(5.23599f); //Roll Acceleration
+
+
+		insertFloat(0.1675516); //Yaw Acceleration Max
+		insertFloat(0.1675516); //Pitch Acceleration Max
+		insertFloat(0.907571f); //Roll Acceleration Max
+
 
 		insertFloat(50.f); // max speed
 
@@ -81,39 +93,39 @@ public:
 
 		insertByte(0);
 		insertInt(0);
-		insertInt(0x9abdbfdc); // 0xDC, 0xBF, 0xBD, 0x9A,
+		insertInt(0x9abdbfdc); // 0xDC, 0xBF, 0xBD, 0x9A, //rct_prototype
 
 		insertByte(0);
 		insertInt(1);
-		insertInt(0x35a0c705); // 0x05, 0xC7, 0xA0, 0x35,
+		insertInt(0x35a0c705); // 0x05, 0xC7, 0xA0, 0x35, //eng_prototype
 
 		insertByte(0);
 		insertInt(2);
-		insertInt(0xe73217be); // 0xBE, 0x17, 0x32, 0xE7
+		insertInt(0xe73217be); // 0xBE, 0x17, 0x32, 0xE7 //shd_prototype
 
 		insertByte(0);
 		insertInt(4);
-		insertInt(0x9e60cbe1); // 0x9E, 0x60, 0xCB, 0xE1,
+		insertInt(0xe1cb609e); // 0x9E, 0x60, 0xCB, 0xE1, //arm_prototype
 
 		insertByte(0);
 		insertInt(5);
-		insertInt(0x9e60cbe1); // 0x9E, 0x60, 0xCB, 0xE1,
+		insertInt(0xe1cb609e); // 0x9E, 0x60, 0xCB, 0xE1, //arm_prototype
 
 		insertByte(0);
 		insertInt(6);
-		insertInt(0x20ced6ee); // 0xEE, 0xD6, 0xCE, 0x20,
+		insertInt(0x20ced6ee); // 0xEE, 0xD6, 0xCE, 0x20, //cap_prototype
 
 		insertByte(0);
 		insertInt(0x0f);
-		insertInt(0x2c823c3d); //0x3D, 0x3C, 0x82, 0x2C,
+		insertInt(0x2c823c3d); //0x3D, 0x3C, 0x82, 0x2C, //wpn_prototype
 
 		insertAscii(""); //const Archive::AutoDeltaVariable<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char>>>::`vftable'
 		insertAscii(""); //const Archive::AutoDeltaVariable<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char>>>::`vftable'
 		insertAscii(""); //const Archive::AutoDeltaVariable<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char>>>::`vftable'
 		insertAscii(""); //const Archive::AutoDeltaVariable<_STL::basic_string<char,_STL::char_traits<char>,_STL::allocator<char>>>::`vftable'
 
-		insertFloat(300.f); //const Archive::AutoDeltaVariable<float>::`vftable'
-		insertFloat(300.f); //const Archive::AutoDeltaVariable<float>::`vftable'
+		insertFloat(301.f); // front shield current
+		insertFloat(302.f); //back shield current
 
 		insertInt(0); //const Archive::AutoDeltaVariable<int>::`vftable'
 

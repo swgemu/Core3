@@ -95,7 +95,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/objects/terrain/tests/BasicTerrainTest.cpp \
 			  	server/zone/tests/ZoneTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/player/sessions/StructureStatusSession.cpp \
+core3_IDLS =	autogen/server/zone/managers/space/SpaceManager.cpp \
+				autogen/server/zone/objects/player/sessions/StructureStatusSession.cpp \
 				autogen/server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp \
 				autogen/server/zone/objects/area/FsVillageArea.cpp \
 				autogen/server/zone/objects/player/sessions/TradeSession.cpp \
@@ -319,6 +320,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		$(core3_TESTS) \
 		server/zone/managers/vendor/VendorManager.cpp \
 		server/zone/managers/jedi/JediManager.cpp \
+		server/zone/managers/ship/ShipManager.cpp \
 		server/zone/managers/loot/LootGroupMap.cpp \
 		server/zone/managers/crafting/schematicmap/SchematicMap.cpp \
 		server/zone/managers/crafting/labratories/SharedLabratory.cpp \

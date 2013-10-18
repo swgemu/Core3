@@ -168,7 +168,7 @@ class PlanetManager extends ManagedService implements Logger {
 	
 	public native void finalize();
 	
-	public native void initialize();
+	public native abstract void initialize();
 	public native void loadClientRegions();
 	public native void loadClientPoiData();
 	public native void loadBadgeAreas();

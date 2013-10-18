@@ -54,30 +54,37 @@ public:
 			: TangibleObjectMessage3(ship, 0x53484950, 0x16) {
 
 		insertFloat(10.9f); //?Speed or Acceleration?
+
 		insertFloat(800.f); //chassis cur
 		insertFloat(800.f); //chassis max
+
 		insertInt(0x16B73FE9); //unk
 
 		//armor
 		/*insertInt(0);
 			insertInt(0);*/
 
+		//Float 100
 		insertDummyList(0x42c80000);//const Archive::AutoDeltaPackedMap<int,float,Archive::DefaultObjectType>::`vftable
 
 		//max armor
 		/*insertInt(0);
 		insertInt(0);*/
+
+		//Float 100
 		insertDummyList(0x42c80000);
 
 		//cur hit
 		/*insertInt(0);
 			insertInt(0);*/
 
+		//float 200
 		insertDummyList(0x43480000);
 
 		//max hit
 		/*insertInt(0);
 		insertInt(0);*/
+		//float 200
 		insertDummyList(0x43480000);
 
 		//unk
@@ -86,8 +93,8 @@ public:
 
 		insertDummyList(0x2);
 
-		insertFloat(300.f);
-		insertFloat(300.f);
+		insertFloat(301.f); //front shield max
+		insertFloat(302.f); // back shield max
 
 		setSize();
 	}

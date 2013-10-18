@@ -645,18 +645,20 @@ bool CollisionManager::checkShipCollision(ShipObject* ship, const Vector3& targe
 
 	TerrainManager* terrainManager = zone->getPlanetManager()->getTerrainManager();
 
-	float height = terrainManager->getHeight(targetPosition.getX(), targetPosition.getY());
+	if (terrainManager->getProceduralTerrainAppearance() != NULL) {
+		float height = terrainManager->getHeight(targetPosition.getX(), targetPosition.getY());
 
-	float waterHeight = -16368.f;
+		float waterHeight = -16368.f;
 
-	if (terrainManager->getWaterHeight(targetPosition.getY(), targetPosition.getY(), waterHeight))
-		height = MAX(waterHeight, height);
+		if (terrainManager->getWaterHeight(targetPosition.getY(), targetPosition.getY(), waterHeight))
+			height = MAX(waterHeight, height);
 
-	if (height > targetPosition.getZ()) {
-		collisionPoint = targetPosition;
-		collisionPoint.setZ(height);
-		//ship->info("colliding with terrain", true);
-		return true;
+		if (height > targetPosition.getZ()) {
+			collisionPoint = targetPosition;
+			collisionPoint.setZ(height);
+			//ship->info("colliding with terrain", true);
+			return true;
+		}
 	}
 
 	Vector3 rayOrigin = ship->getWorldPosition();

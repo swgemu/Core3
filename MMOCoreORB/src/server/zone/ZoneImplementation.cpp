@@ -47,6 +47,7 @@ which carries forward this exception.
 #include "server/zone/ZoneProcessServer.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/space/SpaceManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
@@ -75,7 +76,6 @@ ZoneImplementation::ZoneImplementation(ZoneProcessServer* serv, const String& na
 	zoneName = name;
 	zoneCRC = name.hashCode();
 
-	heightMap = new HeightMap();
 	regionTree = new QuadTree(-8192, -8192, 8192, 8192);
 	quadTree = new QuadTree(-8192, -8192, 8192, 8192);
 
@@ -99,7 +99,11 @@ void ZoneImplementation::createContainerComponent() {
 }
 
 void ZoneImplementation::initializePrivateData() {
-	planetManager = new PlanetManager(_this.get(), processor);
+	if (zoneName.contains("space_")) {
+		planetManager = new SpaceManager(_this.get(), processor);
+	} else {
+		planetManager = new PlanetManager(_this.get(), processor);
+	}
 
 	creatureManager = new CreatureManager(_this.get());
 	creatureManager->deploy("CreatureManager " + zoneName);
@@ -114,8 +118,6 @@ void ZoneImplementation::finalize() {
 
 void ZoneImplementation::initializeTransientMembers() {
 	ManagedObjectImplementation::initializeTransientMembers();
-
-	heightMap = new HeightMap();
 
 	mapLocations = new MapLocationTable();
 
@@ -162,9 +164,6 @@ void ZoneImplementation::stopManagers() {
 }
 
 float ZoneImplementation::getHeight(float x, float y) {
-	if (heightMap->isLoaded())
-		return heightMap->getHeight(x, y);
-
 	if (planetManager != NULL) {
 		TerrainManager* manager = planetManager->getTerrainManager();
 

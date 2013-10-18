@@ -61,6 +61,7 @@ which carries forward this exception.
 #include "server/zone/managers/minigames/FishingManager.h"
 #include "server/zone/managers/minigames/GamblingManager.h"
 #include "server/zone/managers/minigames/ForageManager.h"
+#include "server/zone/managers/space/SpaceManager.h"
 
 
 ZoneProcessServerImplementation::ZoneProcessServerImplementation(ZoneServer* server) {
@@ -134,5 +135,7 @@ void ZoneProcessServerImplementation::initialize() {
 
 	forageManager = new ForageManager();
 	forageManager->deploy();
+
+	ShipManager::instance();
 
 }
