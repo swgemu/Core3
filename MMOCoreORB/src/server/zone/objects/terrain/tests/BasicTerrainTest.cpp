@@ -10,13 +10,17 @@
 
 #include "server/zone/managers/templates/DataArchiveStore.h"
 #include "server/zone/objects/terrain/ProceduralTerrainAppearance.h"
+#include "server/zone/objects/terrain/SpaceTerrainAppearance.h"
 #include "server/zone/objects/terrain/TargaBitmap.h"
+#include "server/conf/ConfigManager.h"
 
 class BasicTerrainTest : public ::testing::Test {
 public:
 
 	BasicTerrainTest() {
 		// Perform creation setup here.
+		ConfigManager::instance()->loadConfigData();
+		DataArchiveStore::instance()->loadTres(ConfigManager::instance()->getTrePath(), ConfigManager::instance()->getTreFiles());
 	}
 
 	~BasicTerrainTest() {
@@ -55,4 +59,16 @@ TEST_F(BasicTerrainTest, LoadTestTerrainTest) {
 	EXPECT_NEAR(res, 83.3, 0.1);
 
 	//printf("height at %f, %f is:%f\n", x, y, res);
+}
+
+TEST_F(BasicTerrainTest, LoadTestSpaceTerrain) {
+	IffStream* stream = DataArchiveStore::instance()->openIffFile("terrain/space_corellia.trn");
+
+	ASSERT_TRUE(stream != NULL);
+
+	SpaceTerrainAppearance terrain;
+
+	terrain.readObject(stream);
+
+	delete stream;
 }

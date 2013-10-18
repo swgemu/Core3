@@ -5,9 +5,8 @@
  *      Author: victor
  */
 
-#include "TerrainGenerator.h"
-
 #include "ProceduralTerrainAppearance.h"
+#include "TerrainGenerator.h"
 
 void TerrainGenerator::processLayers() {
 	Vector<Layer*>* layerVector = layers.getLayers();

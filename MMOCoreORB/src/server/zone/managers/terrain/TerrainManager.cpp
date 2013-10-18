@@ -8,6 +8,8 @@
 #include "TerrainManager.h"
 #include "server/zone/Zone.h"
 #include "server/zone/managers/templates/TemplateManager.h"
+#include "server/zone/objects/terrain/ProceduralTerrainAppearance.h"
+#include "server/zone/objects/terrain/SpaceTerrainAppearance.h"
 
 TerrainManager::TerrainManager(Zone* planet) : Logger("TerrainManager") {
 	zone = planet;
@@ -23,10 +25,17 @@ bool TerrainManager::initialize(const String& terrainFile) {
 	if (iffStream == NULL)
 		return false;
 
-	if (iffStream->getNextFormType() != 'PTAT')
-		return false;
+	if (iffStream->getNextFormType() == 'PTAT') {
+		terrainData = new ProceduralTerrainAppearance();
+	} else if (iffStream->getNextFormType() == 'STAT') {
+		terrainData = new SpaceTerrainAppearance();
+	}
 
-	return terrainData.load(iffStream);
+	bool val = terrainData->load(iffStream);
+
+	delete iffStream;
+
+	return val;
 }
 
 /**
@@ -80,6 +89,11 @@ int TerrainManager::notifyPositionUpdate(CreatureObject* object) {
 }
 
 void TerrainManager::addTerrainModification(float x, float y, const String& terrainModificationFilename, uint64 objectid) {
+	ProceduralTerrainAppearance* ptat = dynamic_cast<ProceduralTerrainAppearance*>(terrainData.get());
+
+	if (ptat == NULL)
+		return;
+
 	IffStream* stream = TemplateManager::instance()->openIffFile(terrainModificationFilename);
 
 	if (stream == NULL) {
@@ -87,7 +101,7 @@ void TerrainManager::addTerrainModification(float x, float y, const String& terr
 		return;
 	}
 
-	if (terrainData.addTerrainModification(stream, x, y, objectid) == NULL) {
+	if (ptat->addTerrainModification(stream, x, y, objectid) == NULL) {
 		error("could not add custom terrain file: " + terrainModificationFilename);
 	}
 
@@ -95,5 +109,14 @@ void TerrainManager::addTerrainModification(float x, float y, const String& terr
 }
 
 void TerrainManager::removeTerrainModification(uint64 objectid) {
-	terrainData.removeTerrainModification(objectid);
+	ProceduralTerrainAppearance* ptat = dynamic_cast<ProceduralTerrainAppearance*>(terrainData.get());
+
+	if (ptat == NULL)
+		return;
+
+	ptat->removeTerrainModification(objectid);
+}
+
+ProceduralTerrainAppearance* TerrainManager::getProceduralTerrainAppearance() {
+	return dynamic_cast<ProceduralTerrainAppearance*>(terrainData.get());
 }
