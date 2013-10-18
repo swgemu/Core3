@@ -525,6 +525,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/area/areashapes/RingAreaShapeImplementation.cpp \
 		server/zone/objects/region/RegionImplementation.cpp \
 		server/zone/objects/terrain/ProceduralTerrainAppearance.cpp \
+		server/zone/objects/terrain/SpaceTerrainAppearance.cpp \
 		server/zone/objects/terrain/MapFractal.cpp \
 		server/zone/objects/terrain/TargaBitmap.cpp \
 		server/zone/objects/terrain/TerrainGenerator.cpp \

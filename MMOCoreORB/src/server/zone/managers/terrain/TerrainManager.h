@@ -10,7 +10,7 @@
 
 
 #include "engine/engine.h"
-#include "server/zone/objects/terrain/ProceduralTerrainAppearance.h"
+#include "server/zone/objects/terrain/TerrainAppearance.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 
@@ -22,8 +22,10 @@ namespace server {
 
 using namespace server::zone;
 
+class ProceduralTerrainAppearance;
+
 class TerrainManager : public Logger, public Object {
-	ProceduralTerrainAppearance terrainData;
+	Reference<TerrainAppearance*> terrainData;
 
 	Zone* zone;
 
@@ -34,7 +36,7 @@ public:
 	bool initialize(const String& terrainFile);
 
 	inline bool getWaterHeight(float x, float y, float& waterHeight) {
-		return terrainData.getWater(x, y, waterHeight);
+		return terrainData->getWater(x, y, waterHeight);
 	}
 
 	/**
@@ -51,24 +53,22 @@ public:
 	void addTerrainModification(float x, float y, const String& terrainModificationFilename, uint64 objectid);
 	void removeTerrainModification(uint64 objectid);
 
-	ProceduralTerrainAppearance* getProceduralTerrainAppearance() {
-		return &terrainData;
-	}
+	ProceduralTerrainAppearance* getProceduralTerrainAppearance();
 
 	float getHeight(float x, float y) {
-		return terrainData.getHeight(x, y);
+		return terrainData->getHeight(x, y);
 	}
 
 	float getMin() {
-		return terrainData.getSize() / 2 * -1;
+		return terrainData->getSize() / 2 * -1;
 	}
 
 	float getMax() {
-		return terrainData.getSize() / 2;
+		return terrainData->getSize() / 2;
 	}
 
 	float getSize() {
-		return terrainData.getSize();
+		return terrainData->getSize();
 	}
 };
 
