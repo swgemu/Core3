@@ -32,6 +32,27 @@ geonosian_lab_screenplay = ScreenPlay:new {
 	},
 	
 	geonosianLabObjectID = 1627780,
+
+	--debri fields, all respawns are set to 4 minutes
+	debrisM = {x = -105.8, z = -29.6, y = -368.3, cell = 1627818, respawn = 240000},
+	--acklay doorway
+	debrisA1 = {x = 37.5, z = -34.0, y = -333.5, cell = 1627822, respawn = 240000},
+	debrisA2 = {x = 37.6, z = -34.0, y = -334.4, cell = 1627822, respawn = 240000},
+	debrisA3 = {x = 37.2, z = -34.0, y = -335.2, cell = 1627822, respawn = 240000},
+	debrisA4 = {x = 36.4, z = -34.0, y = -335.7, cell = 1627822, respawn = 240000},
+	--hallway
+	debrisH1 = {x = -121.3, z = -33.5, y = -226.5, cell = 1627809, respawn = 240000},
+	debrisH2 = {x = -121.8, z = -33.6, y = -227.7, cell = 1627809, respawn = 240000},
+	debrisH3 = {x = -121.5, z = -33.6, y = -228.4, cell = 1627809, respawn = 240000},
+	debrisH4 = {x = -122.0, z = -33.6, y = -229.1, cell = 1627809, respawn = 240000},
+	debrisH5 = {x = -122.3, z = -33.6, y = -228.4, cell = 1627809, respawn = 240000},
+	--spider hallway
+	debrisS1 = {x = -74.5, z = -21.9, y = -109.7, cell = 1627792, respawn = 240000},
+	debrisS2 = {x = -75.0, z = -21.9, y = -110.3, cell = 1627792, respawn = 240000},
+	debrisS3 = {x = -75.2, z = -22.0, y = -111.0, cell = 1627792, respawn = 240000},
+	debrisS4 = {x = -75.3, z = -22.0, y = -111.6, cell = 1627792, respawn = 240000},
+	debrisS5 = {x = -74.1, z = -22.5, y = -110.7, cell = 1627792, respawn = 240000}, 
+	
 	
 	poisonShutoffDuration = 30000 --30 seconds
 }
@@ -143,6 +164,54 @@ function geonosian_lab_screenplay:spawnSceneObjects()
 	sceneObject:_setObject(pSceneObject)
 	writeData(sceneObject:getObjectID() .. ":geonosian_lab:keypad_index", 8)
 	createObserver(OBJECTRADIALUSED, "geonosian_lab_screenplay", "notifyKeypadUsed", pSceneObject)
+	
+	--debri fields
+	--main rock wall
+	local pDebrisM = spawnSceneObject("yavin4", "object/static/destructible/destructible_cave_wall_damprock.iff", self.debrisM.x, self.debrisM.z, self.debrisM.y, self.debrisM.cell, 1, 0, 0, 0)
+	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisMDestroyed", pDebrisM)
+	--acklay doorway
+	local pDebrisA1 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_drum_dented.iff", self.debrisA1.x, self.debrisA1.z, self.debrisA1.y, self.debrisA1.cell, 1, 0, 0, 0)
+	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisADestroyed", pDebrisA1)
+
+	local pDebrisA2 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_drum_storage1.iff", self.debrisA2.x, self.debrisA2.z, self.debrisA2.y, self.debrisA2.cell, 1, 0, 0, 0)
+	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisADestroyed", pDebrisA2)
+	
+	local pDebrisA3 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_drum_storage1.iff", self.debrisA3.x, self.debrisA3.z, self.debrisA3.y, self.debrisA3.cell, 1, 0, 0, 0)
+	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisADestroyed", pDebrisA3)
+
+	local pDebrisA4 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_drum_storage1.iff", self.debrisA4.x, self.debrisA4.z, self.debrisA4.y, self.debrisA4.cell, 1, 0, 0, 0)
+	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisADestroyed", pDebrisA4)
+	--hallway
+	local pDebrisH1 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_lg.iff", self.debrisH1.x, self.debrisH1.z, self.debrisH1.y, self.debrisH1.cell, 1, 0, 0, 0)
+	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisHDestroyed", pDebrisH1)
+
+	local pDebrisH2 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_med.iff", self.debrisH2.x, self.debrisH2.z, self.debrisH2.y, self.debrisH2.cell, 1, 0, 0, 0)
+	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisHDestroyed", pDebrisH2)
+
+	local pDebrisH3 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_med.iff", self.debrisH3.x, self.debrisH3.z, self.debrisH3.y, self.debrisH3.cell, 1, 0, 0, 0)
+	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisHDestroyed", pDebrisH3)
+
+	local pDebrisH4 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_med.iff", self.debrisH4.x, self.debrisH4.z, self.debrisH4.y, self.debrisH4.cell, 1, 0, 0, 0)
+	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisHDestroyed", pDebrisH4)
+
+	local pDebrisH5 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_med.iff", self.debrisH5.x, self.debrisH5.z, self.debrisH5.y, self.debrisH5.cell, 1, 0, 0, 0)
+	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisHDestroyed", pDebrisH5)
+	--spider hallway
+	local pDebrisS1 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_med.iff", self.debrisS1.x, self.debrisS1.z, self.debrisS1.y, self.debrisS1.cell, 1, 0, 0, 0)
+	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisSDestroyed", pDebrisS1)
+
+	local pDebrisS2 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_med.iff", self.debrisS2.x, self.debrisS2.z, self.debrisS2.y, self.debrisS2.cell, 1, 0, 0, 0)
+	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisSDestroyed", pDebrisS2)
+
+	local pDebrisS3 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_med.iff", self.debrisS3.x, self.debrisS3.z, self.debrisS3.y, self.debrisS3.cell, 1, 0, 0, 0)
+	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisSDestroyed", pDebrisS3)
+
+	local pDebrisS4 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_med.iff", self.debrisS4.x, self.debrisS4.z, self.debrisS4.y, self.debrisS4.cell, 1, 0, 0, 0)
+	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisSDestroyed", pDebrisS4)
+
+	local pDebrisS5 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_lg.iff", self.debrisS5.x, self.debrisS5.z, self.debrisS5.y, self.debrisS5.cell, 1, 0, 0, 0)
+	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisSDestroyed", pDebrisS5)
+
 end
 
 function geonosian_lab_screenplay:spawnMobiles()
@@ -197,7 +266,7 @@ function geonosian_lab_screenplay:spawnMobiles()
 	spawnMobile("yavin4", "enhanced_kwi",210,9.5,-16.0,-27.9,89,1627824)
 	spawnMobile("yavin4", "enhanced_kwi",210,10.8,-6.3,-7.8,-93,1627824)
         spawnMobile("yavin4", "enhanced_kwi",210,-104.2,-28.7,-193.4,0,1627807)
-	spawnMobile("yavin4", "enhanced_kliknik",210,-143.2,-34,-180.8,-139,1627815)
+	spawnMobile("yavin4", "enhanced_kwi",210,-143.2,-34,-180.8,-139,1627815)
 	spawnMobile("yavin4", "enhanced_kliknik",210,-129.0,-34,-192.6,-32,1627815)
 	spawnMobile("yavin4", "geonosian_scientist",210,-124.3,-34.0,-199.5,-60,1627815)
 	spawnMobile("yavin4", "geonosian_scientist",210,-60.0,-34.0,-273.7,0,1627812)
@@ -208,7 +277,7 @@ function geonosian_lab_screenplay:spawnMobiles()
         spawnMobile("yavin4", "enhanced_kliknik",210,29.5,-30.1,-88,-45,1627798)
 	spawnMobile("yavin4", "enhanced_kliknik",210,-139.8,-34,-194.3,57,1627815)
 	spawnMobile("yavin4", "enhanced_kliknik",210,-64.9,-34,-266.5,-143,1627812)
-	spawnMobile("yavin4", "enhanced_kliknik",210,-66.5,-34,-283.1,35,1627812)
+	spawnMobile("yavin4", "enhanced_kwi",210,-66.5,-34,-283.1,35,1627812)
         spawnMobile("yavin4", "enhanced_kliknik",210,-87,-34.1,-386.5,210,1627819)
 	spawnMobile("yavin4", "cavern_spider",210,-128.2,-34.4,-322.4,-30,1627817)
 	spawnMobile("yavin4", "cavern_spider",210,-143.5,-33.5,-321.7,134,1627817)
@@ -417,6 +486,120 @@ function geonosian_lab_screenplay:hasRebreather(scno)
 	return 0
 end
 
+function geonosian_lab_screenplay:respawnMDebris(pDebrisM)
+	if (pDebrisM == nil) then
+		return
+	end
+	
+	local pCell = getSceneObject(self.debrisM.cell)
+	
+	if (pCell ~= nil) then
+		local cell = LuaSceneObject(pCell)
+		local debris = LuaTangibleObject(pDebrisM)
+		debris:setConditionDamage(0, false)
+		cell:transferObject(pDebrisM, -1, true)
+	end
+end
+
+function geonosian_lab_screenplay:notifyDebrisMDestroyed(pDebrisM, pPlayer)
+	local player = LuaCreatureObject(pPlayer)
+	local debris = LuaSceneObject(pDebrisM)
+	debris:destroyObjectFromWorld()
+	player:clearCombatState(1)
+	
+	createEvent(self.debrisM.respawn, "geonosian_lab_screenplay", "respawnMDebris", pDebrisM)
+	
+	return 0
+end
+
+function geonosian_lab_screenplay:respawnADebris(pDebrisA1)
+	if (pDebrisA1 == nil) then
+		return
+	end
+	
+	local pCell = getSceneObject(self.debrisA1.cell)
+	
+	if (pCell ~= nil) then
+		local cell = LuaSceneObject(pCell)
+		local debris = LuaTangibleObject(pDebrisA1)
+		debris:setConditionDamage(0, false)
+		cell:transferObject(pDebrisA1, -1, true)
+	end
+end
+
+function geonosian_lab_screenplay:notifyDebrisADestroyed(pDebrisA1, pPlayer)
+	local player = LuaCreatureObject(pPlayer)
+	local debris = LuaSceneObject(pDebrisA1)
+	debris:destroyObjectFromWorld()
+	player:clearCombatState(1)
+	
+	createEvent(self.debrisA1.respawn, "geonosian_lab_screenplay", "respawnADebris", pDebrisA1)
+	createEvent(self.debrisA2.respawn, "geonosian_lab_screenplay", "respawnADebris", pDebrisA2)
+	createEvent(self.debrisA3.respawn, "geonosian_lab_screenplay", "respawnADebris", pDebrisA3)
+	createEvent(self.debrisA4.respawn, "geonosian_lab_screenplay", "respawnADebris", pDebrisA4)
+	
+	return 0
+end
+
+function geonosian_lab_screenplay:respawnHDebris(pDebrisH1)
+	if (pDebrisH1 == nil) then
+		return
+	end
+	
+	local pCell = getSceneObject(self.debrisH1.cell)
+	
+	if (pCell ~= nil) then
+		local cell = LuaSceneObject(pCell)
+		local debris = LuaTangibleObject(pDebrisH1)
+		debris:setConditionDamage(0, false)
+		cell:transferObject(pDebrisH1, -1, true)
+	end
+end
+
+function geonosian_lab_screenplay:notifyDebrisHDestroyed(pDebrisH1, pPlayer)
+	local player = LuaCreatureObject(pPlayer)
+	local debris = LuaSceneObject(pDebrisH1)
+	debris:destroyObjectFromWorld()
+	player:clearCombatState(1)
+	
+	createEvent(self.debrisH1.respawn, "geonosian_lab_screenplay", "respawnHDebris", pDebrisH1)
+	createEvent(self.debrisH1.respawn, "geonosian_lab_screenplay", "respawnHDebris", pDebrisH2)
+	createEvent(self.debrisH1.respawn, "geonosian_lab_screenplay", "respawnHDebris", pDebrisH3)
+	createEvent(self.debrisH1.respawn, "geonosian_lab_screenplay", "respawnHDebris", pDebrisH4)
+	createEvent(self.debrisH1.respawn, "geonosian_lab_screenplay", "respawnHDebris", pDebrisH5)
+	
+	return 0
+end
+
+function geonosian_lab_screenplay:respawnSDebris(pDebrisS1)
+	if (pDebrisS1 == nil) then
+		return
+	end
+	
+	local pCell = getSceneObject(self.debrisS1.cell)
+	
+	if (pCell ~= nil) then
+		local cell = LuaSceneObject(pCell)
+		local debris = LuaTangibleObject(pDebrisS1)
+		debris:setConditionDamage(0, false)
+		cell:transferObject(pDebrisS1, -1, true)
+	end
+end
+
+function geonosian_lab_screenplay:notifyDebrisSDestroyed(pDebrisS1, pPlayer)
+	local player = LuaCreatureObject(pPlayer)
+	local debris = LuaSceneObject(pDebrisS1)
+	debris:destroyObjectFromWorld()
+	player:clearCombatState(1)
+	
+	createEvent(self.debrisS1.respawn, "geonosian_lab_screenplay", "respawnSDebris", pDebrisS1)
+	createEvent(self.debrisS1.respawn, "geonosian_lab_screenplay", "respawnSDebris", pDebrisS2)
+	createEvent(self.debrisS1.respawn, "geonosian_lab_screenplay", "respawnSDebris", pDebrisS3)
+	createEvent(self.debrisS1.respawn, "geonosian_lab_screenplay", "respawnSDebris", pDebrisS4)
+	createEvent(self.debrisS1.respawn, "geonosian_lab_screenplay", "respawnSDebris", pDebrisS5)
+	
+	return 0
+end
 --------------------------------------
 --   Common functions                -
 --------------------------------------
