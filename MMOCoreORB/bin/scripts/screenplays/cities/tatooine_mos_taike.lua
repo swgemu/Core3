@@ -15,7 +15,7 @@ end
 function TatooineMosTaikeScreenPlay:spawnMobiles()
 
 		--misc
-	spawnMobile("tatooine", "junk_dealer", 1, 3905.3, 33, 2362.9, -90, 0)
+	--spawnMobile("tatooine", "junk_dealer", 1, 3905.3, 33, 2362.9, -90, 0)
 	--spawnMobile("tatooine", "junk_nathan", 1, 3817.7, 16.2, 2340.5, 0, 0)
 	spawnMobile("tatooine", "informant_npc_lvl_1", 1, 3775, 8.7, 2371, 180, 0)
 	spawnMobile("tatooine", "informant_npc_lvl_2", 1, 0.93374, 1.00421, 9.03511, 180, 1154123)

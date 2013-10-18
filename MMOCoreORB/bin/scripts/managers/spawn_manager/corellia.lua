@@ -851,7 +851,7 @@ corellia_static_spawns = {
 	{"j_pai_brek",60,-5073.17,21,-2342.77,33.2325,0, "neutral", ""},
 	{"jadam_questrel",60,9.77643,-0.894992,-14.4836,262.46,3075432, "calm", ""},
 	{"jom_irimore",60,-5520,21.3,-2630.99,0,0, "calm", "Jom Irimore"},
-	{"junk_dealer",0,6840,315,-5630,-32,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
+	{"junk_dealer",0,6840,315,-5630,-32,0, "", "",JUNKCLOTHESANDJEWELLERY,JUNKCONVFINARY},
 	{"junk_dealer",0,-14.5,1.1,1.9,89,2365767, "", "",JUNKWEAPONS,JUNKCONVARMS},
 	{"junk_malik",0,6756.1,315,-5778,88,0, "", "Malik Pendron",JUNKCORSEC,JUNKCONVMALIKVISTAL},
 	{"junk_dealer",0,6970,330,-5588,92,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
@@ -860,7 +860,7 @@ corellia_static_spawns = {
 	{"junk_dealer",0,-14.5,1.1,2.5,88,3075358, "", "",JUNKWEAPONS,JUNKCONVARMS},
 	{"junk_dealer",0,3402.4,308,5679,5,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 
-	{"junk_dealer",0,-5639.2,21,-2799.2,-40,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
+	{"junk_dealer",0,-5639.2,21,-2799.2,-40,0, "", "",JUNKCLOTHESANDJEWELLERY,JUNKCONVFINARY},
 	{"junk_dealer",0,-5203.6,21,-2285.9,-11,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	{"karena_keer",60,-7.91182,-0.895002,18.5763,115.51,2625361, "calm", "Karena Keer"},
 	{"karin_featherlight",60,-185.082,28,-4460.71,86.3314,0, "calm", ""},

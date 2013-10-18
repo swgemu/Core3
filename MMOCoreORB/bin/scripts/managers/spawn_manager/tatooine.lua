@@ -1073,6 +1073,7 @@ tatooine_static_spawns = {
 	{"junk_dealer",0,-1392,185,-3847.9,8,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	{"junk_dealer",0,-2750.9,5,2057,132,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	{"junk_dealer",0,1308.1,7,3085.2,1,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
+	{"junk_dealer",0,3905.3,33, 2362.9,-90,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	{"junk_nado",60,4.4,-0.5,1.3,-133,1255997, "", "Nado",JUNKGENERIC,JUNKCONVNADOWATTOS},
 	{"junk_sneg",60,-1.63376,7.01,7.35289,203.569,1076943, "calm", "Sneg the Hand",JUNKWEAPONS,JUNKCONVSNEGVALARIAN},
 	{"junk_nathan",60,3817.7,16.2,2340.5,0,0, "calm", "Nathan Blyskipper (a Junk Dealer)",JUNKJAWA,JUNKCONVNATHANTAIKE},
