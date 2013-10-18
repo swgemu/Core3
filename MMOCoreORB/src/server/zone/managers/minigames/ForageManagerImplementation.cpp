@@ -122,22 +122,23 @@ void ForageManagerImplementation::finishForaging(CreatureObject* player, int for
 		return;
 
 	//Check if player moved.
+	float playerX = player->getPositionX();
+	float playerY = player->getPositionY();
+
+	if ((abs(playerX - forageX) > 2.0) || (abs(playerY - forageY) > 2.0) || player->getZone()->getZoneName() != zoneName) {
+		player->sendSystemMessage("@skl_use:sys_forage_movefail"); //"You fail to forage because you moved."
+		return;
+	}
+
+	//Check if player is in combat.
+	if (player->isInCombat()) {
+		player->sendSystemMessage("@skl_use:sys_forage_combatfail"); //"Combat distracts you from your foraging attempt."
+		return;
+	}
+
+	//Check if player is allowed to forage in this area.
 	if (forageType != ForageManager::SHELLFISH) {
-		float playerX = player->getPositionX();
-		float playerY = player->getPositionY();
 
-		if ((abs(playerX - forageX) > 2.0) || (abs(playerY - forageY) > 2.0) || player->getZone()->getZoneName() != zoneName) {
-			player->sendSystemMessage("@skl_use:sys_forage_movefail"); //"You fail to forage because you moved."
-			return;
-		}
-
-		//Check if player is in combat.
-		if (player->isInCombat()) {
-			player->sendSystemMessage("@skl_use:sys_forage_combatfail"); //"Combat distracts you from your foraging attempt."
-			return;
-		}
-
-		//Check if player is allowed to forage in this area.
 		Reference<ForageAreaCollection*> forageAreaCollection = forageAreas.get(player->getFirstName());
 
 		if (forageAreaCollection != NULL) { //Player has foraged before.
@@ -156,6 +157,7 @@ void ForageManagerImplementation::finishForaging(CreatureObject* player, int for
 			forageAreas.put(player->getFirstName(), forageAreaCollection);
 		}
 	}
+
 	//Calculate the player's chance to find an item.
 	int chance;
 	int skillMod;
