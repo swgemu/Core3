@@ -163,6 +163,8 @@ bool ConfigManager::loadConfigData() {
 }
 
 void ConfigManager::loadTreFileList() {
+	treFiles.removeAll();
+
 	LuaObject files = getGlobalObject("TreFiles");
 
 	for (int i = 1; i <= files.getTableSize(); ++i) {
@@ -173,6 +175,8 @@ void ConfigManager::loadTreFileList() {
 }
 
 void ConfigManager::loadEnabledZones() {
+	enabledZones.removeAll();
+
 	LuaObject zones = getGlobalObject("ZonesEnabled");
 
 	for (int i = 1; i <= zones.getTableSize(); ++i)
@@ -182,6 +186,8 @@ void ConfigManager::loadEnabledZones() {
 }
 
 void ConfigManager::loadMOTD() {
+	messageOfTheDay = "";
+
 	File* file;
 	FileReader* reader;
 
@@ -208,6 +214,8 @@ void ConfigManager::loadMOTD() {
 void ConfigManager::loadRevision() {
 	File* file;
 	FileReader* reader;
+
+	revision = "";
 
 	try {
 		file = new File("conf/rev.txt");
