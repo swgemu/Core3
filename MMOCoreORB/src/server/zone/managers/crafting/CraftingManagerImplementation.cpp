@@ -73,7 +73,7 @@ void CraftingManagerImplementation::sendResourceWeightsTo(CreatureObject* player
 }
 
 int CraftingManagerImplementation::calculateAssemblySuccess(CreatureObject* player,
-		DraftSchematic* draftSchematic, float effectiveness) {
+		DraftSchematic* draftSchematic, float effectiveness, float stationEffectiveness) {
 
 	// assemblyPoints is 0-12
 	/// City bonus should be 10
@@ -89,6 +89,7 @@ int CraftingManagerImplementation::calculateAssemblySuccess(CreatureObject* play
 
 	// 0.85-1.15
 	float toolModifier = 1.0f + (effectiveness / 100.0f);
+	toolModifier += (stationEffectiveness / 1000.0f);
 
 	//Pyollian Cake
 

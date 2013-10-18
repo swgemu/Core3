@@ -121,7 +121,7 @@ class CraftingManager extends ZoneManager {
 	
 	public native void sendResourceWeightsTo(CreatureObject player, unsigned int schematicID);
 	
-	public native int calculateAssemblySuccess(CreatureObject player, DraftSchematic draftSchematic, float effectiveness);
+	public native int calculateAssemblySuccess(CreatureObject player, DraftSchematic draftSchematic, float effectiveness, float stationEffectiveness);
 	
 	@local
 	public native void experimentRow(ManufactureSchematic schematic, CraftingValues craftingValues, int rowEffected, int pointsAttempted, 
