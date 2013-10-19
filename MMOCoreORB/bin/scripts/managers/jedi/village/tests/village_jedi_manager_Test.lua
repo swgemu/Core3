@@ -252,17 +252,17 @@ describe("Village Jedi Manager", function()
 			describe("When player has all the needed badges", function()
 				it("Should create an event to spawn the old man", function()
 					local pCreatureObject = { "creatureObjectPointer" }
-					local realCreateOldManEvent = VillageJediManager.createOldManEvent
-					VillageJediManager.createOldManEvent = spy.new(function() end)
+					local realCreateSpawnOldManEvent = OldMan.createSpawnOldManEvent
+					OldMan.createSpawnOldManEvent = spy.new(function() end)
 					local realCountBadges = VillageJediManager.countBadges
 					VillageJediManager.countBadges = spy.new(function() return TOTALNUMBEROFBADGESREQUIRED end)
 
 					VillageJediManager.checkAndHandleJediProgression(pCreatureObject)
 
 					assert.spy(VillageJediManager.countBadges).was.called(1)
-					assert.spy(VillageJediManager.createOldManEvent).was.called_with(pCreatureObject)
+					assert.spy(OldMan.createSpawnOldManEvent).was.called_with(pCreatureObject)
 
-					VillageJediManager.createOldManEvent = realCreateOldManEvent
+					OldMan.createSpawnOldManEvent = realCreateSpawnOldManEvent
 					VillageJediManager.countBadges = realCountBadges
 				end)
 			end)
@@ -284,6 +284,6 @@ describe("Village Jedi Manager", function()
 					VillageJediManager.countBadges = realCountBadges
 				end)
 			end)
-		end)		
+		end)
 	end)
 end)
