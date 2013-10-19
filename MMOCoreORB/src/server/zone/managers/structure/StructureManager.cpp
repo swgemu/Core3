@@ -888,9 +888,24 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 
 	if (!structure->isCivicStructure()) {
 
+		// property tax
+		float propertytax = 0.f;
+		if(!structure->isCivicStructure() && structure->getCityRegion() != NULL){
+			ManagedReference<CityRegion*> city = structure->getCityRegion().get();
+			if(city != NULL){
+				propertytax = city->getPropertyTax()/ 100.f * structure->getMaintenanceRate();
+				status->addMenuItem(
+							"@city/city:property_tax_prompt : "
+									+ String::valueOf(ceil(propertytax))
+									+  " cr/hr");
+			}
+		}
+
+		// maintenance
 		float secsRemainingMaint = 0.f;
 		if( structure->getSurplusMaintenance() > 0 ){
-			secsRemainingMaint = ((float)structure->getSurplusMaintenance() / (float)structure->getMaintenanceRate())*3600;
+			float totalrate = (float)structure->getMaintenanceRate() + propertytax;
+			secsRemainingMaint = ((float)structure->getSurplusMaintenance() / totalrate)*3600;
 		}
 
 		status->addMenuItem(
@@ -903,18 +918,6 @@ void StructureManager::reportStructureStatus(CreatureObject* creature,
 			"@player_structure:maintenance_rate_prompt "
 					+ String::valueOf(structure->getMaintenanceRate())
 					+ " cr/hr");
-
-		// property tax
-		if(!structure->isCivicStructure() && structure->getCityRegion() != NULL){
-			ManagedReference<CityRegion*> city = structure->getCityRegion().get();
-			if(city != NULL){
-				float propertytax = city->getPropertyTax();
-				status->addMenuItem(
-							"@city/city:property_tax_prompt : "
-									+ String::valueOf(ceil( propertytax / 100.f * structure->getMaintenanceRate()))
-									+  " cr/hr");
-			}
-		}
 
 		status->addMenuItem(
 			"@player_structure:maintenance_mods_prompt "
