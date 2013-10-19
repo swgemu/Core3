@@ -135,13 +135,13 @@ public:
 		insertFloat(50.f); //const Archive::AutoDeltaVariable<float>::`vftable'
 		insertFloat(50.f);// const Archive::AutoDeltaVariable<float>::`vftable'
 
-		insertFloat(10.472f); //Yaw Acceleration
-		insertFloat(10.472f); //Pitch Acceleration
-		insertFloat(5.23599f); //Roll Acceleration
+		insertFloat(10.472f); //Max Yaw Acceleration
+		insertFloat(10.472f); //Max Pitch Acceleration
+		insertFloat(5.23599f); //Max Roll Acceleration
 
-		insertFloat(0.837759f); //Yaw Acceleration Max
-		insertFloat(0.837759f); //Pitch Acceleration Max
-		insertFloat(0.907571f); //Roll Acceleration Max
+		insertFloat(0.837759f); //Current Yaw Acceleration
+		insertFloat(0.837759f); //Current Pitch Acceleration
+		insertFloat(0.907571f); //Current Roll Acceleration
 
 		insertFloat(50.f); //Max Speed?
 		insertFloat(8000.f); // Reactor generation rate

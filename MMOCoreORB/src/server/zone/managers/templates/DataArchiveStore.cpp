@@ -65,7 +65,7 @@ int DataArchiveStore::loadTres(String& path, Vector<String>& treFilesToLoad) {
 	if (treeDirectory != NULL) {
 		//error("tree directory already loaded");
 
-		return 1;
+		return 0;
 	}
 
 	if (path.length() <= 1)
