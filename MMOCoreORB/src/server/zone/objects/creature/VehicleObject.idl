@@ -66,7 +66,7 @@ class VehicleObject extends CreatureObject {
 	In October 21, 2004 :Jump to Lightspeed Expansion Publish Part 1: 
 	 was 2000 but get a good cut in a successive patch
 	*/
-	public static final int PAINTCHARGES = 20;
+	public static final int PAINTCHARGES = 999;
 
 	public VehicleObject() {
 		vehicleType = SceneObjectType.HOVERVEHICLE;
