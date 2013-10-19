@@ -51,7 +51,7 @@ function old_man_conv_handler.handleInit(pConversationTemplate, pConversingPlaye
 	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
 	local nextScreen = "not_you"
 
-	if VillageJediManager.oldManBelongsToThePlayer(pConversingPlayer, pConversingNpc) then
+	if OldMan.oldManBelongsToThePlayer(pConversingPlayer, pConversingNpc) then
 		if VillageJediManager.isGlowing(pConversingPlayer) then
 			nextScreen = "village_intro"
 		elseif VillageJediManager.readyForMellichae(pConversingPlayer) then
