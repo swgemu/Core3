@@ -55,7 +55,7 @@ which carries forward this exception.
 #include "server/zone/managers/minigames/events/GamblingEvent.h"
 
 int GamblingTerminalImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	return 0;
+	// return 0;
 
 	if (selectedID == 245 || selectedID == 20) {
 		if (playersWindows.contains(player)) {
@@ -335,6 +335,11 @@ void GamblingTerminalImplementation::statusUpdate(int event) {
 }
 
 void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int event) {
+
+	ManagedReference<GamblingManager*> gamblingManager = server->getGamblingManager();
+	if (gamblingManager == NULL )
+		return;
+
 	switch (machineType) {
 		case SLOTMACHINE: {
 
@@ -540,11 +545,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 
 					StringIdChatParameter body("gambling/default_interface","prose_wheel_slow");
 					body.setTT(String::valueOf(first));
-
-					String terminalName;
-					_this.get()->getObjectName()->getFullPath(terminalName);
-					body.setTO(terminalName);
-
+					body.setTO( gamblingManager->getColor(first) );
 					notifyAll(&body);
 
 					break;
@@ -558,12 +559,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 
 						StringIdChatParameter body("gambling/default_interface","prose_result_same");
 						body.setTT(String::valueOf(first));
-
-						String terminalName;
-						_this.get()->getObjectName()->getFullPath(terminalName);
-
-						body.setTO(terminalName);
-
+						body.setTO( gamblingManager->getColor(first) );
 						notifyAll(&body);
 
 					} else {
@@ -572,12 +568,7 @@ void GamblingTerminalImplementation::statusUpdate(CreatureObject* player, int ev
 
 						StringIdChatParameter body("gambling/default_interface","prose_result_change");
 						body.setTT(String::valueOf(first));
-
-						String terminalName;
-						_this.get()->getObjectName()->getFullPath(terminalName);
-
-						body.setTO(terminalName);
-
+						body.setTO( gamblingManager->getColor(first) );
 						notifyAll(&body);
 					}
 

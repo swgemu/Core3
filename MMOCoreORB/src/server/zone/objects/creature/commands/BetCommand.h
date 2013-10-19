@@ -70,7 +70,7 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
-		return SUCCESS;
+		// return SUCCESS;
 
 		if (creature->isPlayerCreature()) {
 
@@ -109,7 +109,7 @@ public:
 					}
 
 					if (targetBet == -1) {
-						player->sendSystemMessage("@gambling/default_interface:bet_failed_amt");
+						player->sendSystemMessage("@gambling/default_interface:bet_failed");
 						return GENERALERROR;
 					}
 

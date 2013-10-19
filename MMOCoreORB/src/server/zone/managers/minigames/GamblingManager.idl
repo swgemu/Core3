@@ -261,6 +261,18 @@ class GamblingManager extends Observer implements Logger {
 		return false;
 	}
 	
+	public string getColor(int value) {
+		if( isRed(value) ){
+			return "Red";
+		}
+		else if( isBlack(value) ){
+			return "Black";
+		}
+		else{
+			return "Green";
+		}		
+	}
+	
 	public native void handleSlot(CreatureObject player, boolean cancel, boolean other);
 	
 	protected native void refreshSlotMenu(CreatureObject player, GamblingTerminal terminal);
