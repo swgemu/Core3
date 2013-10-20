@@ -127,6 +127,7 @@ void SceneObjectImplementation::initializeTransientMembers() {
 	setGlobalLogging(true);
 	setLogging(false);
 
+
 	setLoggingName("SceneObject");
 }
 
