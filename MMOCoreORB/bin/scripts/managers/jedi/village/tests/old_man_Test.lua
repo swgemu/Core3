@@ -3,6 +3,7 @@ require("old_man")
 
 describe("Old Man", function()
 	local pCreatureObject = { "creatureObjectPointer" }
+	local pOldMan = { "oldManPointer" }
 
 	describe("Interface methods", function()
 		describe("createSpawnOldManEvent", function()
@@ -19,6 +20,69 @@ describe("Old Man", function()
 				end)
 			end)
 		end)
+
+		describe("oldManBelongsToThePlayer", function()
+			local playerId = 12345678
+			local oldManId = 98765432
+			local getObjectIDPlayerSpy
+			local getObjectIDOldManSpy
+			local creatureObjectPlayer
+			local creatureObjectOldMan
+			local realWithCreatureObject
+			local realReadData
+
+			setup(function()
+				realWithCreatureObject = OldMan.withCreatureObject
+				realReadData = readData
+			end)
+
+			teardown(function()
+				OldMan.withCreatureObject = realWithCreatureObject
+				readData = realReadData
+			end)
+
+			before_each(function()
+				getObjectIDPlayerSpy = spy.new(function() return playerId end)
+				getObjectIDOldManSpy = spy.new(function() return oldManId end)
+				creatureObjectPlayer = { getObjectID = getObjectIDPlayerSpy }
+				creatureObjectOldMan = { getObjectID = getObjectIDOldManSpy }
+				OldMan.withCreatureObject = spy.new(function(pco, performThisFunction)
+					if pco == pCreatureObject then
+						return performThisFunction(creatureObjectPlayer)
+					elseif pco == pOldMan then
+						return performThisFunction(creatureObjectOldMan)
+					else
+						return nil
+					end
+				end)
+			end)
+
+			describe("When called with a player and his old man", function()
+				it("Should return true", function()
+					readData = spy.new(function() return oldManId end)
+
+					assert.is_true(OldMan.oldManBelongsToThePlayer(pCreatureObject, pOldMan))
+
+					assert.spy(OldMan.withCreatureObject).was.called(2)
+					assert.spy(getObjectIDPlayerSpy).was.called(1)
+					assert.spy(getObjectIDOldManSpy).was.called(1)
+					assert.spy(readData).was.called_with(playerId .. OLD_MAN_ID_STRING)
+				end)
+			end)
+
+			describe("When called with a player and an old man of another player", function()
+				it("Should return false", function()
+					readData = spy.new(function() return 0 end)
+
+					assert.is_false(OldMan.oldManBelongsToThePlayer(pCreatureObject, pOldMan))
+
+					assert.spy(OldMan.withCreatureObject).was.called(2)
+					assert.spy(getObjectIDPlayerSpy).was.called(1)
+					assert.spy(getObjectIDOldManSpy).was.called(1)
+					assert.spy(readData).was.called_with(playerId .. OLD_MAN_ID_STRING)
+				end)
+			end)
+		end)
 	end)
 
 	describe("Private methods", function()
@@ -29,6 +93,7 @@ describe("Old Man", function()
 				local realIsPlayerInNpcCity
 				local realSpawnOldMan
 				local realCreateSpawnOldManEvent
+				local realSaveOldManIdOnPlayer
 
 				setup(function()
 					realIsPlayerOnline = OldMan.isPlayerOnline
@@ -36,6 +101,7 @@ describe("Old Man", function()
 					realIsPlayerInNpcCity = OldMan.isPlayerInNpcCity
 					realSpawnOldMan = OldMan.spawnOldMan
 					realCreateSpawnOldManEvent = OldMan.createSpawnOldManEvent
+					realSaveOldManIdOnPlayer = OldMan.saveOldManIdOnPlayer
 				end)
 
 				teardown(function()
@@ -44,14 +110,16 @@ describe("Old Man", function()
 					OldMan.isPlayerInNpcCity = realIsPlayerInNpcCity
 					OldMan.spawnOldMan = realSpawnOldMan
 					OldMan.createSpawnOldManEvent = realCreateSpawnOldManEvent
+					OldMan.saveOldManIdOnPlayer = realSaveOldManIdOnPlayer
 				end)
 
 				before_each(function()					
 					OldMan.isPlayerOnline = spy.new(function() return true end)
 					OldMan.isPlayerInABuilding = spy.new(function() return false end)
 					OldMan.isPlayerInNpcCity = spy.new(function() return false end)
-					OldMan.spawnOldMan = spy.new(function() end)
+					OldMan.spawnOldMan = spy.new(function() return pOldMan end)
 					OldMan.createSpawnOldManEvent = spy.new(function() end)
+					OldMan.saveOldManIdOnPlayer = spy.new(function() end)
 				end)
 
 				it("Should spawn the old man if the player is online, not inside a building and outside all NPC cities.", function()
@@ -62,6 +130,12 @@ describe("Old Man", function()
 					assert.spy(OldMan.isPlayerInNpcCity).was.called_with(pCreatureObject)
 					assert.spy(OldMan.spawnOldMan).was.called_with(pCreatureObject)
 					assert.spy(OldMan.createSpawnOldManEvent).was.not_called()
+				end)
+
+				it("Should save the object id of the spawned old man on the player.", function()
+					OldMan:handleSpawnOldManEvent(pCreatureObject)
+
+					assert.spy(OldMan.saveOldManIdOnPlayer).was.called_with(pCreatureObject, pOldMan)
 				end)
 
 				it("Should reschedule the event if the player is offline.", function()
@@ -97,6 +171,18 @@ describe("Old Man", function()
 					assert.spy(OldMan.isPlayerInABuilding).was.called_with(pCreatureObject)
 					assert.spy(OldMan.isPlayerInNpcCity).was.called_with(pCreatureObject)
 					assert.spy(OldMan.spawnOldMan).was.not_called()
+					assert.spy(OldMan.createSpawnOldManEvent).was.called_with(pCreatureObject)
+				end)
+
+				it("Should reschedule the event if the spawning of the old man fails.", function()
+					OldMan.spawnOldMan = spy.new(function() return nil end)
+
+					OldMan:handleSpawnOldManEvent(pCreatureObject)
+
+					assert.spy(OldMan.isPlayerOnline).was.called_with(pCreatureObject)
+					assert.spy(OldMan.isPlayerInABuilding).was.called_with(pCreatureObject)
+					assert.spy(OldMan.isPlayerInNpcCity).was.called_with(pCreatureObject)
+					assert.spy(OldMan.spawnOldMan).was.called_with(pCreatureObject)
 					assert.spy(OldMan.createSpawnOldManEvent).was.called_with(pCreatureObject)
 				end)
 			end)
@@ -331,7 +417,7 @@ describe("Old Man", function()
 					assert.same(pso, pCreatureObject)
 					return performThisFunction(sceneObject)
 				end)
-				spawnMobile = spy.new(function() end)
+				spawnMobile = spy.new(function() return pOldMan end)
 			end)
 
 			after_each(function()
@@ -350,27 +436,74 @@ describe("Old Man", function()
 				end)
 
 				describe("and a spawn point is returned", function()
-					it("Should spawn the old man.", function()
+					before_each(function()
 						getSpawnPoint = spy.new(function() return { 1, 2, 3 } end)
+					end)
 
+					it("Should spawn the old man.", function()
 						OldMan.spawnOldMan(pCreatureObject)
 
 						assert.spy(getZoneNameSpy).was.called(1)
 						assert.spy(getParentIDSpy).was.called(1)
 						assert.spy(spawnMobile).was.called_with("testzone", OLD_MAN_TEMPLATE, OLD_MAN_RESPAWN_TIME, 1, 2, 3, OLD_MAN_HEADING, 0)
 					end)
+
+					it("Should return a pointer to the spawned old man.", function()
+						assert.same(OldMan.spawnOldMan(pCreatureObject), pOldMan)
+					end)
 				end)
 
 				describe("and no spawn point is returned", function()
-					it("Should not spawn the old man.", function()
+					before_each(function()
 						getSpawnPoint = spy.new(function() return nil end)
+					end)
 
+					it("Should not spawn the old man.", function()
 						OldMan.spawnOldMan(pCreatureObject)
 
 						assert.spy(getZoneNameSpy).was.not_called()
 						assert.spy(getParentIDSpy).was.not_called()
 						assert.spy(spawnMobile).was.not_called()
 					end)
+
+					it("Should return nil.", function()
+						assert.is_nil(OldMan.spawnOldMan(pCreatureObject))
+					end)
+				end)
+			end)
+		end)
+
+		describe("saveOldManIdOnPlayer", function()
+			describe("When called with player and old man", function()
+				it("Should store the object id of the old man on the player.", function()
+					local playerId = 12345678
+					local oldManId = 98765432
+					local realWriteData = writeData
+					writeData = spy.new(function() end)
+					getObjectIDPlayerSpy = spy.new(function() return playerId end)
+					getObjectIDOldManSpy = spy.new(function() return oldManId end)
+					local creatureObjectPlayer = { getObjectID = getObjectIDPlayerSpy }
+					local creatureObjectOldMan = { getObjectID = getObjectIDOldManSpy }
+					local realWithCreatureObject = OldMan.withCreatureObject
+					OldMan.withCreatureObject = spy.new(function(pco, performThisFunction)
+						if pco == pCreatureObject then
+							return performThisFunction(creatureObjectPlayer)
+						elseif pco == pOldMan then
+							return performThisFunction(creatureObjectOldMan)
+						else
+							return nil
+						end
+					end)					
+
+					OldMan.saveOldManIdOnPlayer(pCreatureObject, pOldMan)
+
+					assert.spy(writeData).was.called_with(playerId .. OLD_MAN_ID_STRING, oldManId)
+					assert.spy(OldMan.withCreatureObject).was.called(2)
+					assert.spy(getObjectIDPlayerSpy).was.called(1)
+					assert.spy(getObjectIDOldManSpy).was.called(1)
+
+					writeData = realWriteData
+					OldMan.withCreatureObject = realWithCreatureObject
 				end)
 			end)
 		end)

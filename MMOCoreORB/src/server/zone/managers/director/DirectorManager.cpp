@@ -154,6 +154,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getGCWDiscount", getGCWDiscount);
 	lua_register(luaEngine->getLuaState(), "getTerrainHeight", getTerrainHeight);
 	lua_register(luaEngine->getLuaState(), "awardSkill", awardSkill);
+	lua_register(luaEngine->getLuaState(), "getCityRegionAt", getCityRegionAt);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -1887,7 +1888,11 @@ int DirectorManager::getCityRegionAt(lua_State* L) {
 
 	CityRegion* cityRegion = planetManager->getRegionAt(x, y);
 
-	lua_pushlightuserdata(L, cityRegion);
+	if (cityRegion != NULL) {
+		lua_pushlightuserdata(L, cityRegion);
+	} else {
+		lua_pushnil(L);
+	}
 
 	return 1;
 }
