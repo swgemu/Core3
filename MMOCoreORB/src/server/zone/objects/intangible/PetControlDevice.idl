@@ -47,7 +47,6 @@ package server.zone.objects.intangible;
 import engine.lua.LuaObject;
 import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.intangible.ControlDevice;
-import server.zone.objects.creature.VehicleObject;
 import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
@@ -56,47 +55,49 @@ import server.zone.Zone;
 import system.lang.System;
 include server.zone.managers.radial.RadialOptions;
 import server.zone.objects.creature.CreatureObject;
-import server.zone.objects.intangible.VehicleControlObserver;
+import server.zone.objects.intangible.PetControlObserver;
 
-class VehicleControlDevice extends ControlDevice {
-	
-	VehicleControlObserver vehicleControlObserver;
-	
-	public VehicleControlDevice() {
-		Logger.setLoggingName("VehicleControlDevice");
+class PetControlDevice extends ControlDevice {
+
+	PetControlObserver petControlObserver;
+
+	int vitality;
+
+	public PetControlDevice() {
+		Logger.setLoggingName("PetControlDevice");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
-		
+		vitality = 100;
 	}
-	
+
 	public native void storeObject(CreatureObject player);
 	
-	public native void generateObject(CreatureObject player);
-	
+	public native void callObject(CreatureObject player);
+
 	public native void spawnObject(CreatureObject player);
 	
 	public native void cancelSpawnObject(CreatureObject player);
-	
+
 	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
 		Logger.info("selected call");
 		
 		TangibleObject controlledObject = super.controlledObject;
 		
-		if (selectedID == RadialOptions.VEHICLE_GENERATE) {
+		if (selectedID == 44) {
 			
 			if (controlledObject == null) {
-				Logger.error("null controlled object in vehicle control device");
+				Logger.error("null controlled object in pet control device");
 				return 1;
 			} else {
-				this.generateObject(player);
+				this.callObject(player);
 			}
-		} else if (selectedID == RadialOptions.VEHICLE_STORE) {
+		} else if (selectedID == 59) {
 			if (controlledObject == null) {
-				Logger.error("null controlled object in vehicle control device");
+				Logger.error("null controlled object in pet control device");
 				return 1;
 			} else {
 				if (super.status == 1 && !controlledObject.isInQuadTree()) {
-					this.generateObject(player);
+					this.callObject(player);
 				} else {
 					this.storeObject(player);
 				}
@@ -121,7 +122,7 @@ class VehicleControlDevice extends ControlDevice {
 	 * @returns 0 on succes, != 0 on error
 	 */
 	public native int canBeDestroyed(CreatureObject player);
-	
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
@@ -132,8 +133,7 @@ class VehicleControlDevice extends ControlDevice {
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);	
 
-	public boolean isVehicleControlDevice() {
+	public boolean isPetControlDevice() {
 		return true;
 	}
 }
-

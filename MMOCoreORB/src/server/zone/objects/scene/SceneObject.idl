@@ -1833,7 +1833,17 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isControlDevice() {
 		return false;
 	}
-	
+
+	@dirty
+	public abstract boolean isPetControlDevice() {
+		return false;
+	}
+
+	@dirty
+	public abstract boolean isVehicleControlDevice() {
+		return false;
+	}
+
 	@dirty
 	public abstract boolean isMissionTerminal() {
 		return false;
