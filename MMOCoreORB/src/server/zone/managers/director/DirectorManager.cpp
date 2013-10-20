@@ -1264,29 +1264,67 @@ int DirectorManager::giveItem(lua_State* L) {
 }
 
 int DirectorManager::giveControlDevice(lua_State* L) {
-	if (checkArgumentCount(L, 4) == 1) {
+	if (checkArgumentCount(L, 5) == 1) {
 		instance()->error("incorrect number of arguments passed to DirectorManager::giveControlDevice");
 		ERROR_CODE = INCORRECT_ARGUMENTS;
 		return 0;
 	}
 
-	SceneObject* obj = (SceneObject*) lua_touserdata(L, -4);
-	String objectString = lua_tostring(L, -3);
-	String controlledObjectPath = lua_tostring(L, -2);
-	int slot = lua_tointeger(L, -1);
+	SceneObject* datapad = (SceneObject*) lua_touserdata(L, -5);
+	String objectString = lua_tostring(L, -4);
+	String controlledObjectPath = lua_tostring(L, -3);
+	int slot = lua_tointeger(L, -2);
+	bool mobile = lua_toboolean(L, -1);
 
-	if (obj == NULL)
-		return 0;
+	if (datapad == NULL) {
+		lua_pushnil(L);
+		return 1;
+	}
 
-	ZoneServer* zoneServer = obj->getZoneServer();
+	ZoneServer* zoneServer = datapad->getZoneServer();
+	Zone* zone = datapad->getZone();
+
+	if (zone == NULL) {
+		lua_pushnil(L);
+		return 1;
+	}
 
 	ManagedReference<ControlDevice*> controlDevice = zoneServer->createObject(objectString.hashCode(), 1).castTo<ControlDevice*>();
 
-	ManagedReference<TangibleObject*> controlledObject = zoneServer->createObject(controlledObjectPath.hashCode(), 1).castTo<TangibleObject*>();
+	if (controlDevice == NULL) {
+		lua_pushnil(L);
+		return 1;
+	}
 
-	if (controlDevice != NULL && obj != NULL) {
+	ManagedReference<TangibleObject*> controlledObject = NULL;
+	ManagedReference<CreatureObject*> player = (datapad->getParent().get()).castTo<CreatureObject*>();
+
+	if (mobile) {
+		CreatureManager* creatureManager = zone->getCreatureManager();
+		controlledObject = creatureManager->spawnCreature(controlledObjectPath.hashCode(), 0, player->getPositionX(), player->getPositionZ(), player->getPositionY(), player->getParentID(), true);
+
+	} else {
+		controlledObject = zoneServer->createObject(controlledObjectPath.hashCode(), 1).castTo<TangibleObject*>();
+
+		SharedObjectTemplate* temp = controlledObject->getObjectTemplate();
+		controlledObject->loadTemplateData(temp);
+	}
+
+	if (controlledObject != NULL) {
 		controlDevice->setControlledObject(controlledObject);
-		obj->transferObject(controlDevice, slot, true);
+		StringId s;
+		s.setStringId(controlledObject->getDisplayedName());
+		controlDevice->setObjectName(s);
+
+		if (controlledObject->isAiAgent()) {
+			AiAgent* pet = controlledObject.castTo<AiAgent*>();
+			pet->setFollowObject(player);
+			pet->setCreatureLink(player);
+			pet->setControlDevice(controlDevice);
+			controlDevice->updateStatus(1);
+		}
+
+		datapad->transferObject(controlDevice, slot, true);
 
 		controlDevice->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 		lua_pushlightuserdata(L, controlDevice.get());

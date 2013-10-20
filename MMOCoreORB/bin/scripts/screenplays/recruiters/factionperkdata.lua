@@ -354,21 +354,23 @@ imperial_racial_penalty = {
 	imperial_hireling_list = {
 		--"assaulttrooper",
 		--"atst",
+		"stormtrooper",
 	
 	},
 	
 	imperial_hireling = {
-		
+		stormtrooper = { type=faction_reward_type.furniture, display="@mob/creature_names:stormtrooper", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="stormtrooper", cost=420},
 	},
 	
 	rebel_hireling_list = {
 		--"Comms Operator",
 		--"Senior SpecForce Guerilla",
 		--"marine",
+		"rebel_trooper",
 	},
 	
 	rebel_hireling = {
-	
+		rebel_trooper = { type=faction_reward_type.furniture, display="@mob/creature_names:rebel_trooper", item="object/intangible/pet/pet_control.iff", controlledObjectTemplate="rebel_trooper", cost=500},
 	}
 
 

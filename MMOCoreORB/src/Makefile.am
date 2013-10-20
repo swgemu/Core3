@@ -95,7 +95,9 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/objects/terrain/tests/BasicTerrainTest.cpp \
 			  	server/zone/tests/ZoneTest.cpp
 
-core3_IDLS =	autogen/server/zone/managers/space/SpaceManager.cpp \
+core3_IDLS =	autogen/server/zone/objects/intangible/PetControlObserver.cpp \
+				autogen/server/zone/objects/intangible/PetControlDevice.cpp \
+				autogen/server/zone/managers/space/SpaceManager.cpp \
 				autogen/server/zone/objects/player/sessions/StructureStatusSession.cpp \
 				autogen/server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp \
 				autogen/server/zone/objects/area/FsVillageArea.cpp \
@@ -539,6 +541,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/intangible/LuaIntangibleObject.cpp \
 		server/zone/objects/staticobject/StaticObjectImplementation.cpp \
 		server/zone/objects/intangible/VehicleControlDeviceImplementation.cpp \
+		server/zone/objects/intangible/PetControlDeviceImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/InstrumentImplementation.cpp \
 		server/zone/objects/tangible/InstrumentObserverImplementation.cpp \

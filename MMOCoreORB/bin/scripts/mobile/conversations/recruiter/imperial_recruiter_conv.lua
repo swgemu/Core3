@@ -373,7 +373,7 @@ imp_recruiter_faction_purchase = ConvoScreen:new {
 			{ "@faction_recruiter:option_purchase_uniforms", "fp_uniforms" }, -- I'm interested in uniforms
 			{ "@faction_recruiter:option_purchase_furniture", "fp_furniture"}, -- I'm interested in furniture.
 			{ "@faction_recruiter:option_purchase_installation", "fp_installations" }, -- I'm interested in installations.
-			--{ "@faction_recruiter:option_hirelings", "fp_hirelings" }, -- I would like some personnel support.
+			{ "@faction_recruiter:option_hirelings", "fp_hirelings" }, -- I would like some personnel support.
 	},
 }
 

@@ -63,8 +63,8 @@ void VehicleControlDeviceImplementation::generateObject(CreatureObject* player) 
 	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
 		ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
 
-		if (object->isControlDevice()) {
-			ControlDevice* device = cast<ControlDevice*>( object.get());
+		if (object->isVehicleControlDevice()) {
+			VehicleControlDevice* device = cast<VehicleControlDevice*>( object.get());
 
 			ManagedReference<SceneObject*> vehicle = device->getControlledObject();
 
