@@ -154,8 +154,11 @@ public:
 
 	static ZoneProcessServer* server;
 	static CommandList* slashCommands;
+	enum LUA_ERROR_CODE { NO_ERROR = 0, GENERAL_ERROR};
+	static int ERROR_CODE;
 
 	CommandConfigManager(ZoneProcessServer* serv);
+	~CommandConfigManager();
 
 	void registerFunctions();
 	void registerGlobals();
@@ -169,8 +172,12 @@ public:
 		loadCommandData("datatables/command/command_tables_shared.iff");
 		loadCommandData("datatables/command/command_tables_shared_ground.iff");
 		//loadCommandData("datatables/command/command_tables_shared_space.iff"); disabled cause taunt is conflicting
+		bool res = runFile("scripts/commands/commands.lua");
 
-		return runFile("scripts/commands/commands.lua");
+		if (!res)
+			ERROR_CODE = GENERAL_ERROR;
+
+		return res;
 	}
 
 	bool contains(String name) {

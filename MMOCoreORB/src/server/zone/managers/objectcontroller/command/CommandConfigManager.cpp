@@ -58,6 +58,7 @@ which carries forward this exception.
 
 CommandList* CommandConfigManager::slashCommands = NULL;
 ZoneProcessServer* CommandConfigManager::server = NULL;
+int CommandConfigManager::ERROR_CODE = 0;
 
 CommandConfigManager::CommandConfigManager(ZoneProcessServer* serv) {
 	server = serv;
@@ -70,6 +71,17 @@ CommandConfigManager::CommandConfigManager(ZoneProcessServer* serv) {
 	registerFunctions();
 	registerGlobals();
 	registerCommands();
+}
+
+CommandConfigManager::~CommandConfigManager() {
+	server = NULL;
+
+	if (slashCommands != NULL)
+		delete slashCommands;
+
+	slashCommands = NULL;
+
+	ERROR_CODE = 0;
 }
 
 void CommandConfigManager::loadCommandData(const String& filename) {
@@ -454,7 +466,10 @@ int CommandConfigManager::runSlashCommandsFile(lua_State* L) {
 
 	filename = getStringParameter(L);
 
-	runFile("scripts/commands/" + filename, L);
+	bool res = runFile("scripts/commands/" + filename, L);
+
+	if (!res)
+		ERROR_CODE = GENERAL_ERROR;
 
 	return 0;
 }
