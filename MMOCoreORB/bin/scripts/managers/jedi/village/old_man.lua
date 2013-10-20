@@ -39,7 +39,7 @@ end
 function OldMan.isPlayerOnline(pCreatureObject)
 	return OldMan.withCreaturePlayerObject(pCreatureObject, function(playerObject)
 		return playerObject:isOnline()
-	end)
+	end) == true
 end
 
 -- Check if the player is in a building or not.
@@ -48,7 +48,7 @@ end
 function OldMan.isPlayerInABuilding(pCreatureObject)
 	return OldMan.withSceneObject(pCreatureObject, function(sceneObject)
 		return not (sceneObject:getParentID() == NOTINABUILDING)
-	end)
+	end) == true
 end
 
 -- Check if the player is in a NPC city.
@@ -64,15 +64,31 @@ function OldMan.isPlayerInNpcCity(pCreatureObject)
 	end) == true
 end
 
+-- Check if the player is in a postion where the old man can be spawned.
+-- @param pCreatureObject pointer to the creature object of the player.
+-- @return true if the player is in a position where the old man can be spawned.
+function OldMan.canOldManBeSpawned(pCreatureObject)
+	return (OldMan.isPlayerOnline(pCreatureObject) and not OldMan.isPlayerInABuilding(pCreatureObject) and not OldMan.isPlayerInNpcCity(pCreatureObject))
+end
+
+-- Try to spawn the old man and create the needed events.
+-- @param pCreatureObject pointer to the creature object of the player who should get the old man spawned.
+-- @return true if everything were successful.
+function OldMan.tryToSpawnOldMan(pCreatureObject)
+	local pOldMan = OldMan.spawnOldMan(pCreatureObject)
+	if pOldMan ~= nil then
+		OldMan.saveOldManIdOnPlayer(pCreatureObject, pOldMan)
+		return true
+	else
+		return false
+	end
+end
+
 -- Function to handle the old man event.
 -- @param pCreatureObject pointer to the creature object who should have an event created for spawning the old man.
 function OldMan:handleSpawnOldManEvent(pCreatureObject)
-	if OldMan.isPlayerOnline(pCreatureObject) and not OldMan.isPlayerInABuilding(pCreatureObject) and 
-           not OldMan.isPlayerInNpcCity(pCreatureObject) then
-		local pOldMan = OldMan.spawnOldMan(pCreatureObject)
-		if pOldMan ~= nil then
-			OldMan.saveOldManIdOnPlayer(pCreatureObject, pOldMan)
-		else
+	if OldMan.canOldManBeSpawned(pCreatureObject) then
+		if not OldMan.tryToSpawnOldMan(pCreatureObject) then
 			OldMan.createSpawnOldManEvent(pCreatureObject)
 		end
 	else
