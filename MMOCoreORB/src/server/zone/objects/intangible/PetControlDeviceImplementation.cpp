@@ -210,10 +210,15 @@ void PetControlDeviceImplementation::cancelSpawnObject(CreatureObject* player) {
 void PetControlDeviceImplementation::storeObject(CreatureObject* player) {
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 
-	if (controlledObject == NULL)
+	if (controlledObject == NULL || !controlledObject->isCreatureObject())
 		return;
 
-	if (player->isRidingMount() && player->getParent() == controlledObject) {
+	ManagedReference<CreatureObject*> pet = cast<CreatureObject*>(controlledObject.get());
+
+	if (pet->isInCombat())
+		return;
+
+	if (player->isRidingMount() && player->getParent() == pet) {
 
 		if (!player->checkCooldownRecovery("mount_dismount"))
 			return;
@@ -224,10 +229,9 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player) {
 			return;
 	}
 
-	controlledObject->destroyObjectFromWorld(true);
+	pet->destroyObjectFromWorld(true);
 
-	if (controlledObject->isCreatureObject())
-		(cast<CreatureObject*>(controlledObject.get()))->setCreatureLink(NULL);
+	pet->setCreatureLink(NULL);
 
 	updateStatus(0);
 }
@@ -278,5 +282,5 @@ int PetControlDeviceImplementation::canBeDestroyed(CreatureObject* player) {
 void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	SceneObjectImplementation::fillAttributeList(alm, object);
 
-	alm->insertAttribute("creature_vitality", vitality);
+	alm->insertAttribute("creature_vitality", String::valueOf(vitality) + "/" + String::valueOf(maxVitality));
 }

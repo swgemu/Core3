@@ -61,13 +61,15 @@ class PetControlDevice extends ControlDevice {
 
 	PetControlObserver petControlObserver;
 
-	int vitality;
+	protected int vitality;
+	protected int maxVitality;
 
 	public PetControlDevice() {
 		Logger.setLoggingName("PetControlDevice");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
-		vitality = 100;
+		vitality = 1;
+		maxVitality = 1;
 	}
 
 	public native void storeObject(CreatureObject player);
@@ -135,5 +137,21 @@ class PetControlDevice extends ControlDevice {
 
 	public boolean isPetControlDevice() {
 		return true;
+	}
+
+	public int getVitality() {
+		return vitality;
+	}
+
+	public int getMaxVitality() {
+		return maxVitality;
+	}
+
+	public void setVitality(int vit) {
+		vitality = vit;
+	}
+
+	public void setMaxVitality(int vit) {
+		maxVitality = vit;
 	}
 }
