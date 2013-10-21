@@ -88,46 +88,36 @@ describe("Old Man", function()
 	describe("Private methods", function()
 		describe("handleSpawnOldManEvent", function()
 			describe("When event to spawn old man is triggered", function()
-				local realIsPlayerOnline
-				local realIsPlayerInABuilding
-				local realIsPlayerInNpcCity
+				local realCanOldManBeSpawned
 				local realSpawnOldMan
 				local realCreateSpawnOldManEvent
 				local realSaveOldManIdOnPlayer
 
 				setup(function()
-					realIsPlayerOnline = OldMan.isPlayerOnline
-					realIsPlayerInABuilding = OldMan.isPlayerInABuilding
-					realIsPlayerInNpcCity = OldMan.isPlayerInNpcCity
+					realCanOldManBeSpawned = OldMan.canOldManBeSpawned
 					realSpawnOldMan = OldMan.spawnOldMan
 					realCreateSpawnOldManEvent = OldMan.createSpawnOldManEvent
 					realSaveOldManIdOnPlayer = OldMan.saveOldManIdOnPlayer
 				end)
 
 				teardown(function()
-					OldMan.isPlayerOnline = realIsPlayerOnline
-					OldMan.isPlayerInABuilding = realIsPlayerInABuilding
-					OldMan.isPlayerInNpcCity = realIsPlayerInNpcCity
+					OldMan.canOldManBeSpawned = realCanOldManBeSpawned
 					OldMan.spawnOldMan = realSpawnOldMan
 					OldMan.createSpawnOldManEvent = realCreateSpawnOldManEvent
 					OldMan.saveOldManIdOnPlayer = realSaveOldManIdOnPlayer
 				end)
 
-				before_each(function()					
-					OldMan.isPlayerOnline = spy.new(function() return true end)
-					OldMan.isPlayerInABuilding = spy.new(function() return false end)
-					OldMan.isPlayerInNpcCity = spy.new(function() return false end)
+				before_each(function()
+					OldMan.canOldManBeSpawned = spy.new(function() return true end)
 					OldMan.spawnOldMan = spy.new(function() return pOldMan end)
 					OldMan.createSpawnOldManEvent = spy.new(function() end)
 					OldMan.saveOldManIdOnPlayer = spy.new(function() end)
 				end)
 
-				it("Should spawn the old man if the player is online, not inside a building and outside all NPC cities.", function()
+				it("Should spawn the old man if the player is in a place where the old man can be spawned.", function()
 					OldMan:handleSpawnOldManEvent(pCreatureObject)
 
-					assert.spy(OldMan.isPlayerOnline).was.called_with(pCreatureObject)
-					assert.spy(OldMan.isPlayerInABuilding).was.called_with(pCreatureObject)
-					assert.spy(OldMan.isPlayerInNpcCity).was.called_with(pCreatureObject)
+					assert.spy(OldMan.canOldManBeSpawned).was.called_with(pCreatureObject)
 					assert.spy(OldMan.spawnOldMan).was.called_with(pCreatureObject)
 					assert.spy(OldMan.createSpawnOldManEvent).was.not_called()
 				end)
@@ -138,38 +128,12 @@ describe("Old Man", function()
 					assert.spy(OldMan.saveOldManIdOnPlayer).was.called_with(pCreatureObject, pOldMan)
 				end)
 
-				it("Should reschedule the event if the player is offline.", function()
-					OldMan.isPlayerOnline = spy.new(function() return false end)
+				it("Should reschedule the event if the player is not in a place where the old man can be spawned.", function()
+					OldMan.canOldManBeSpawned = spy.new(function() return false end)
 
 					OldMan:handleSpawnOldManEvent(pCreatureObject)
 
-					assert.spy(OldMan.isPlayerOnline).was.called_with(pCreatureObject)
-					assert.spy(OldMan.isPlayerInABuilding).was.not_called()
-					assert.spy(OldMan.isPlayerInNpcCity).was.not_called()
-					assert.spy(OldMan.spawnOldMan).was.not_called()
-					assert.spy(OldMan.createSpawnOldManEvent).was.called_with(pCreatureObject)
-				end)
-
-				it("Should reschedule the event if the player is in a building.", function()
-					OldMan.isPlayerInABuilding = spy.new(function() return true end)
-
-					OldMan:handleSpawnOldManEvent(pCreatureObject)
-
-					assert.spy(OldMan.isPlayerOnline).was.called_with(pCreatureObject)
-					assert.spy(OldMan.isPlayerInABuilding).was.called_with(pCreatureObject)
-					assert.spy(OldMan.isPlayerInNpcCity).was.not_called()
-					assert.spy(OldMan.spawnOldMan).was.not_called()
-					assert.spy(OldMan.createSpawnOldManEvent).was.called_with(pCreatureObject)
-				end)
-
-				it("Should reschedule the event if the player is in a NPC city.", function()
-					OldMan.isPlayerInNpcCity = spy.new(function() return true end)
-
-					OldMan:handleSpawnOldManEvent(pCreatureObject)
-
-					assert.spy(OldMan.isPlayerOnline).was.called_with(pCreatureObject)
-					assert.spy(OldMan.isPlayerInABuilding).was.called_with(pCreatureObject)
-					assert.spy(OldMan.isPlayerInNpcCity).was.called_with(pCreatureObject)
+					assert.spy(OldMan.canOldManBeSpawned).was.called_with(pCreatureObject)
 					assert.spy(OldMan.spawnOldMan).was.not_called()
 					assert.spy(OldMan.createSpawnOldManEvent).was.called_with(pCreatureObject)
 				end)
@@ -179,11 +143,71 @@ describe("Old Man", function()
 
 					OldMan:handleSpawnOldManEvent(pCreatureObject)
 
-					assert.spy(OldMan.isPlayerOnline).was.called_with(pCreatureObject)
-					assert.spy(OldMan.isPlayerInABuilding).was.called_with(pCreatureObject)
-					assert.spy(OldMan.isPlayerInNpcCity).was.called_with(pCreatureObject)
+					assert.spy(OldMan.canOldManBeSpawned).was.called_with(pCreatureObject)
 					assert.spy(OldMan.spawnOldMan).was.called_with(pCreatureObject)
 					assert.spy(OldMan.createSpawnOldManEvent).was.called_with(pCreatureObject)
+				end)
+			end)
+		end)
+
+		describe("canOldManBeSpawned", function()
+			describe("When called with a creature object as argument", function()
+				local realIsPlayerOnline
+				local realIsPlayerInNpcCity
+				local realIsPlayerInABuilding
+
+				setup(function()
+					realIsPlayerOnline = OldMan.isPlayerOnline
+					realIsPlayerInNpcCity = OldMan.isPlayerInNpcCity
+					realIsPlayerInABuilding = OldMan.isPlayerInABuilding
+				end)
+
+				teardown(function()
+					OldMan.isPlayerOnline = realIsPlayerOnline
+					OldMan.isPlayerInNpcCity = realIsPlayerInNpcCity
+					OldMan.isPlayerInABuilding = realIsPlayerInABuilding
+				end)
+
+				before_each(function()
+					OldMan.isPlayerOnline = spy.new(function() return true end)
+					OldMan.isPlayerInNpcCity = spy.new(function() return false end)
+					OldMan.isPlayerInABuilding = spy.new(function() return false end)
+				end)
+
+				after_each(function()
+					--assert.spy(OldMan.isPlayerOnline).was.called_with(pCreatureObject)
+					--assert.spy(OldMan.isplayerInNpcCity).was.called_with(pCreatureObject)
+					--assert.spy(OldMan.isPlayerInABuilding).was.called_with(pCreatureObject)
+				end)
+
+				describe("and the player is outside, not in an npc city and online.", function()
+					it("Should return true.", function()
+						assert.is_true(OldMan.canOldManBeSpawned(pCreatureObject))
+					end)
+				end)
+
+				describe("and the player is offline", function()
+					it("Should return false.", function()
+						OldMan.isPlayerOnline = spy.new(function() return false end)
+
+						assert.is_false(OldMan.canOldManBeSpawned(pCreatureObject))
+					end)
+				end)
+
+				describe("and the player is in a NPC city", function()
+					it("Should return false.", function()
+						OldMan.isPlayerInNpcCity = spy.new(function() return true end)
+
+						assert.is_false(OldMan.canOldManBeSpawned(pCreatureObject))
+					end)
+				end)
+
+				describe("and the player is inside a building", function()
+					it("Should return false.", function()
+						OldMan.isPlayerInABuilding = spy.new(function() return true end)
+
+						assert.is_false(OldMan.canOldManBeSpawned(pCreatureObject))
+					end)
 				end)
 			end)
 		end)
@@ -230,6 +254,12 @@ describe("Old Man", function()
 					assert.spy(isOnlineSpy).was.called(1)
 				end)
 			end)
+
+			describe("When called with nil as argument", function()
+				it("Should return false.", function()
+					assert.is_false(OldMan.isPlayerOnline(nil))
+				end)
+			end)
 		end)
 
 		describe("isPlayerInABuilding", function()
@@ -272,6 +302,12 @@ describe("Old Man", function()
 
 					assert.spy(OldMan.withSceneObject).was.called(1)
 					assert.spy(getParentIDSpy).was.called(1)
+				end)
+			end)
+
+			describe("When called with nil as argument", function()
+				it("Should return false.", function()
+					assert.is_false(OldMan.isPlayerInABuilding(nil))
 				end)
 			end)
 		end)
