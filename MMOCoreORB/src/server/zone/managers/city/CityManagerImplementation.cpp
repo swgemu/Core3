@@ -1200,6 +1200,10 @@ void CityManagerImplementation::contractCity(CityRegion* city) {
 	if (obj != NULL && obj->isCreatureObject()) {
 		CreatureObject* mayor = cast<CreatureObject*> (obj.get());
 
+		if (newRank < TOWNSHIP && city->isRegistered()) {
+			unregisterCity(city, mayor);
+		}
+
 		//Send out contraction mail.
 		StringIdChatParameter params("city/city", "city_contract_body");
 		params.setTO(city->getRegionName());
@@ -1871,10 +1875,11 @@ void CityManagerImplementation::sendMaintenanceReport(CityRegion* city,
 
 				if (serverTemplate != NULL) {
 					int thiscost = maintenanceDiscount * serverTemplate->getCityMaintenanceAtRank(city->getCityRank()-1);
-					totalcost += thiscost;
 
 					if(structure->isCityHall() && city->isRegistered())
 							thiscost += 5000;
+
+					totalcost += thiscost;
 
 					maintString += " : " + String::valueOf(thiscost);
 
