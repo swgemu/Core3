@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_3558f8f9",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-10-21T22:53:40Z",
+      "side": 1,
+      "message": "I know it\u0027s not your doing, but this check seems redundant with the one on line 901. I would remove lines 905 and 907.",
+      "revId": "1550b0d59bc0481cf54d561022f5c8f1088c7426",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_55637cb1",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-10-21T22:53:40Z",
+      "side": 1,
+      "message": "You get the level here but then never use it. Seems unnecessary.",
+      "revId": "1550b0d59bc0481cf54d561022f5c8f1088c7426",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_d56e4c96",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-10-21T22:53:40Z",
+      "side": 1,
+      "message": "This block of code from line 928 - 959 to get the baseXp of the destructedObject doesn\u0027t need to be repeated with each iteration of the loop as the baseXp doesn\u0027t change. Create a new variable to store the baseXp and move the block of code to before the start of the for loop at line 908 above. Then change line 923 above to:\n\nfloat xpAmount \u003d baseXp;",
+      "revId": "1550b0d59bc0481cf54d561022f5c8f1088c7426",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_f5715078",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-10-21T22:53:40Z",
+      "side": 1,
+      "message": "if (lairObserver \u003d\u003d NULL)\n    return;\n\nIt may be safe now to assume that all tanos granting xp are lairs, but that may not always be the case. Safer to check, regardless.",
+      "revId": "1550b0d59bc0481cf54d561022f5c8f1088c7426",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
