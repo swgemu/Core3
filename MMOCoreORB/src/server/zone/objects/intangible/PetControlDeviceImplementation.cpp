@@ -102,6 +102,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 
 		petType = "creature";
 	} else if (pet->isNonPlayerCreatureObject()){
+		maxPets = 3;
 		petType = "npc";
 	}
 
@@ -192,7 +193,8 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 
 	AiAgent* pet = cast<AiAgent*>(creature.get());
 
-	pet->setFollowObject(player);
+	if (pet != NULL)
+		pet->setFollowObject(player);
 }
 
 void PetControlDeviceImplementation::cancelSpawnObject(CreatureObject* player) {
