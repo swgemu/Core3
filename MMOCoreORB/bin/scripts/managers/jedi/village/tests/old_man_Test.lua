@@ -1,110 +1,63 @@
-package.path = package.path .. ";scripts/managers/jedi/village/?.lua"
+package.path = package.path .. ";scripts/managers/jedi/village/?.lua;scripts/screenplays/mocks/?.lua"
 require("old_man")
+local DirectorManagerMocks = require("director_manager_mocks")
 
 describe("Old Man", function()
 	local pCreatureObject = { "creatureObjectPointer" }
+	local pPlayerObject = { "playerObjectPointer" }
 	local pOldMan = { "oldManPointer" }
 	local pCityRegion = { "cityRegionPointer" }
-	local realCreateEvent
 	local playerId = 12345678
 	local oldManId = 98765432
-	local realReadData
-	local realWithCreatureObject
 	local creatureObjectPlayer
 	local creatureObjectOldMan
-	local realWithCreaturePlayerObject
 	local playerObject
-	local realWithSceneObject
 	local sceneObject
 	local playerObject
-	local realGetCityRegionAt
-	local realWithCityRegion
 	local cityRegion
-	local realGetSpawnPoint
-	local realSpawnMobil
-	local realWriteData
 
 	setup(function()
-		realCreateEvent = createEvent
-		realReadData = readData
-		realWriteData = writeData
-		realWithCreatureObject = OldMan.withCreatureObject
-		realWithCreaturePlayerObject = OldMan.withCreaturePlayerObject
-		realWithSceneObject = OldMan.withSceneObject
-		realGetCityRegionAt = getCityRegionAt
-		realWithCityRegion = OldMan.withCityRegion
-		realGetSpawnPoint = getSpawnPoint
-		realSpawnMobil = spawnMobile
+		DirectorManagerMocks.setup()
 	end)
 
 	teardown(function()
-		createEvent = realCreateEvent
-		readData = realReadData
-		writeData = realWriteData
-		OldMan.withCreatureObject = realWithCreatureObject
-		OldMan.withCreaturePlayerObject = realWithCreaturePlayerObject
-		OldMan.withSceneObject = realWithSceneObject
-		getCityRegionAt = realGetCityRegionAt
-		OldMan.withCityRegion = realWithCityRegion
-		getSpawnPoint = realGetSpawnPoint
-		spawnMobile = realSpawnMobile
+		DirectorManagerMocks.teardown()
 	end)
 
 	before_each(function()
-		createEvent = spy.new(function() end)
-		readData = spy.new(function() return oldManId end)
-		writeData = spy.new(function() end)
-		getCityRegionAt = spy.new(function() return pCityRegion end)
-		spawnMobile = spy.new(function() return pOldMan end)
-		getSpawnPoint = spy.new(function() return { 1, 2, 3 } end)
+		DirectorManagerMocks.before_each()
 
-		creatureObjectPlayer = { getObjectID = 0 }
-		creatureObjectOldMan = { getObjectID = 0 }
+		getCityRegionAt = spy.new(function() return pCityRegion end)
+		getSpawnPoint = spy.new(function() return { 1, 2, 3 } end)
+		readData = spy.new(function() return oldManId end)
+		spawnMobile = spy.new(function() return pOldMan end)
+
+		creatureObjectPlayer = { getObjectID = nil, getPlayerObject = nil }
+		creatureObjectOldMan = { getObjectID = nil }
 		creatureObjectPlayer.getObjectID = spy.new(function() return playerId end)
+		creatureObjectPlayer.getPlayerObject = spy.new(function() return pPlayerObject end)
 		creatureObjectOldMan.getObjectID = spy.new(function() return oldManId end)
 
-		sceneObject = { getParentID = 0, getZoneName = 0, getWorldPositionX = 0, getWorldPositionY = 0 }
+		sceneObject = { getParentID = nil, getZoneName = nil, getWorldPositionX = nil, getWorldPositionY = nil }
 		sceneObject.getParentID = spy.new(function() return 0 end)
 		sceneObject.getZoneName = spy.new(function() return "testzone" end)
 		sceneObject.getWorldPositionX = spy.new(function() return 33 end)
 		sceneObject.getWorldPositionY = spy.new(function() return 22 end)
 
-		playerObject = { isOnline = 0 }
+		playerObject = { isOnline = nil }
 		playerObject.isOnline = spy.new(function() return true end)
 
-		cityRegion = { isClientRegion = 0 }
+		cityRegion = { isClientRegion = nil }
 		cityRegion.isClientRegion = spy.new(function() return false end)
 
-		OldMan.withCreatureObject = spy.new(function(pco, performThisFunction)
-			if pco == pCreatureObject then
-				return performThisFunction(creatureObjectPlayer)
-			elseif pco == pOldMan then
-				return performThisFunction(creatureObjectOldMan)
-			else
-				return nil
-			end
-		end)
+		DirectorManagerMocks.creatureObjects[pCreatureObject] = creatureObjectPlayer
+		DirectorManagerMocks.creatureObjects[pOldMan] = creatureObjectOldMan
 
-		OldMan.withCreaturePlayerObject = spy.new(function(pco, performThisFunction)
-			if pco == nil then
-				return nil
-			end
-			return performThisFunction(playerObject)
-		end)
+		DirectorManagerMocks.playerObjects[pPlayerObject] = playerObject
 
-		OldMan.withSceneObject = spy.new(function(pso, performThisFunction)
-			if pso == nil then
-				return nil
-			end
-			return performThisFunction(sceneObject)
-		end)
+		DirectorManagerMocks.sceneObjects[pCreatureObject] = sceneObject
 
-		OldMan.withCityRegion = spy.new(function(pcr, performThisFunction)
-			if pcr == nil then
-				return nil
-			end
-			return performThisFunction(cityRegion)
-		end)
+		DirectorManagerMocks.cityRegions[pCityRegion] = cityRegion
 	end)
 
 	describe("Interface methods", function()
@@ -123,7 +76,7 @@ describe("Old Man", function()
 				it("Should return true", function()
 					assert.is_true(OldMan.oldManBelongsToThePlayer(pCreatureObject, pOldMan))
 
-					assert.spy(OldMan.withCreatureObject).was.called(2)
+					assert.spy(LuaCreatureObject).was.called(2)
 					assert.spy(creatureObjectPlayer.getObjectID).was.called(1)
 					assert.spy(creatureObjectOldMan.getObjectID).was.called(1)
 					assert.spy(readData).was.called_with(playerId .. OLD_MAN_ID_STRING)
@@ -136,7 +89,7 @@ describe("Old Man", function()
 
 					assert.is_false(OldMan.oldManBelongsToThePlayer(pCreatureObject, pOldMan))
 
-					assert.spy(OldMan.withCreatureObject).was.called(2)
+					assert.spy(LuaCreatureObject).was.called(2)
 					assert.spy(creatureObjectPlayer.getObjectID).was.called(1)
 					assert.spy(creatureObjectOldMan.getObjectID).was.called(1)
 					assert.spy(readData).was.called_with(playerId .. OLD_MAN_ID_STRING)
@@ -273,7 +226,8 @@ describe("Old Man", function()
 
 					assert.is_true(OldMan.isPlayerOnline(pCreatureObject))
 
-					assert.spy(OldMan.withCreaturePlayerObject).was.called(1)
+					assert.spy(LuaCreatureObject).was.called_with(pCreatureObject)
+					assert.spy(LuaPlayerObject).was.called_with(pPlayerObject)
 					assert.spy(playerObject.isOnline).was.called(1)
 				end)
 
@@ -282,7 +236,8 @@ describe("Old Man", function()
 
 					assert.is_false(OldMan.isPlayerOnline(pCreatureObject))
 
-					assert.spy(OldMan.withCreaturePlayerObject).was.called(1)
+					assert.spy(LuaCreatureObject).was.called_with(pCreatureObject)
+					assert.spy(LuaPlayerObject).was.called_with(pPlayerObject)
 					assert.spy(playerObject.isOnline).was.called(1)
 				end)
 			end)
@@ -301,7 +256,7 @@ describe("Old Man", function()
 
 					assert.is_true(OldMan.isPlayerInABuilding(pCreatureObject))
 
-					assert.spy(OldMan.withSceneObject).was.called(1)
+					assert.spy(LuaSceneObject).was.called(1)
 					assert.spy(sceneObject.getParentID).was.called(1)
 				end)
 
@@ -310,7 +265,7 @@ describe("Old Man", function()
 
 					assert.is_false(OldMan.isPlayerInABuilding(pCreatureObject))
 
-					assert.spy(OldMan.withSceneObject).was.called(1)
+					assert.spy(LuaSceneObject).was.called(1)
 					assert.spy(sceneObject.getParentID).was.called(1)
 				end)
 			end)
@@ -326,8 +281,6 @@ describe("Old Man", function()
 			describe("When called with a nil pointer", function()
 				it("Should return false", function()
 					assert.is_false(OldMan.isPlayerInNpcCity(nil))
-
-					assert.spy(OldMan.withSceneObject).was.called(1)
 				end)
 			end)
 
@@ -336,7 +289,7 @@ describe("Old Man", function()
 					assert.spy(sceneObject.getZoneName).was.called(1)
 					assert.spy(sceneObject.getWorldPositionX).was.called(1)
 					assert.spy(sceneObject.getWorldPositionY).was.called(1)
-					assert.spy(OldMan.withSceneObject).was.called(1)
+					assert.spy(LuaSceneObject).was.called(1)
 					assert.spy(getCityRegionAt).was.called_with("testzone", 33, 22)
 				end)			
 
@@ -345,8 +298,6 @@ describe("Old Man", function()
 						getCityRegionAt = spy.new(function() return nil end)
 
 						assert.is_false(OldMan.isPlayerInNpcCity(pCreatureObject))
-
-						assert.spy(OldMan.withCityRegion).was.called(1)
 					end)
 				end)
 
@@ -356,7 +307,7 @@ describe("Old Man", function()
 
 						assert.is_true(OldMan.isPlayerInNpcCity(pCreatureObject))
 
-						assert.spy(OldMan.withCityRegion).was.called(1)
+						assert.spy(LuaCityRegion).was.called(1)
 					end)
 
 					it("Should return false if the city region belongs to a player city.", function()
@@ -364,7 +315,7 @@ describe("Old Man", function()
 
 						assert.is_false(OldMan.isPlayerInNpcCity(pCreatureObject))
 
-						assert.spy(OldMan.withCityRegion).was.called(1)
+						assert.spy(LuaCityRegion).was.called(1)
 					end)
 				end)
 			end)
@@ -374,7 +325,7 @@ describe("Old Man", function()
 			after_each(function()
 				assert.spy(sceneObject.getWorldPositionX).was.called(1)
 				assert.spy(sceneObject.getWorldPositionY).was.called(1)
-				assert.spy(OldMan.withSceneObject).was.called(1)
+				assert.spy(LuaSceneObject).was.called(1)
 			end)
 
 			describe("When called with a creature object pointer", function()
@@ -424,7 +375,7 @@ describe("Old Man", function()
 					OldMan.saveOldManIdOnPlayer(pCreatureObject, pOldMan)
 
 					assert.spy(writeData).was.called_with(playerId .. OLD_MAN_ID_STRING, oldManId)
-					assert.spy(OldMan.withCreatureObject).was.called(2)
+					assert.spy(LuaCreatureObject).was.called(2)
 					assert.spy(creatureObjectPlayer.getObjectID).was.called(1)
 					assert.spy(creatureObjectOldMan.getObjectID).was.called(1)
 				end)
