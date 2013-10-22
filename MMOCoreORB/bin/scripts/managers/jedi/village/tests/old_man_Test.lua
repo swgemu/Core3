@@ -1,14 +1,13 @@
-package.path = package.path .. ";scripts/managers/jedi/village/?.lua"
+package.path = package.path .. ";scripts/managers/jedi/village/?.lua;scripts/screenplays/mocks/?.lua"
 require("old_man")
+local DirectorManagerMocks = require("director_manager_mocks")
 
 describe("Old Man", function()
 	local pCreatureObject = { "creatureObjectPointer" }
 	local pOldMan = { "oldManPointer" }
 	local pCityRegion = { "cityRegionPointer" }
-	local realCreateEvent
 	local playerId = 12345678
 	local oldManId = 98765432
-	local realReadData
 	local realWithCreatureObject
 	local creatureObjectPlayer
 	local creatureObjectOldMan
@@ -17,46 +16,34 @@ describe("Old Man", function()
 	local realWithSceneObject
 	local sceneObject
 	local playerObject
-	local realGetCityRegionAt
 	local realWithCityRegion
 	local cityRegion
-	local realGetSpawnPoint
-	local realSpawnMobil
-	local realWriteData
 
 	setup(function()
-		realCreateEvent = createEvent
-		realReadData = readData
-		realWriteData = writeData
+		DirectorManagerMocks.setup()
+
 		realWithCreatureObject = OldMan.withCreatureObject
 		realWithCreaturePlayerObject = OldMan.withCreaturePlayerObject
 		realWithSceneObject = OldMan.withSceneObject
-		realGetCityRegionAt = getCityRegionAt
 		realWithCityRegion = OldMan.withCityRegion
-		realGetSpawnPoint = getSpawnPoint
-		realSpawnMobil = spawnMobile
 	end)
 
 	teardown(function()
-		createEvent = realCreateEvent
-		readData = realReadData
-		writeData = realWriteData
+		DirectorManagerMocks.teardown()
+
 		OldMan.withCreatureObject = realWithCreatureObject
 		OldMan.withCreaturePlayerObject = realWithCreaturePlayerObject
 		OldMan.withSceneObject = realWithSceneObject
-		getCityRegionAt = realGetCityRegionAt
 		OldMan.withCityRegion = realWithCityRegion
-		getSpawnPoint = realGetSpawnPoint
-		spawnMobile = realSpawnMobile
 	end)
 
 	before_each(function()
-		createEvent = spy.new(function() end)
-		readData = spy.new(function() return oldManId end)
-		writeData = spy.new(function() end)
+		DirectorManagerMocks.before_each()
+
 		getCityRegionAt = spy.new(function() return pCityRegion end)
-		spawnMobile = spy.new(function() return pOldMan end)
 		getSpawnPoint = spy.new(function() return { 1, 2, 3 } end)
+		readData = spy.new(function() return oldManId end)
+		spawnMobile = spy.new(function() return pOldMan end)
 
 		creatureObjectPlayer = { getObjectID = 0 }
 		creatureObjectOldMan = { getObjectID = 0 }
