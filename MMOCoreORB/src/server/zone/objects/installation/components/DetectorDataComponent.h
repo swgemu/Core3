@@ -14,7 +14,7 @@ protected:
 	int maxrange;
 	uint64 nextScanTime;
 	const static uint64 scanCooldown = 60;
-	Logger::Logger tlog;
+	//Logger::Logger tlog;
 
 public:
 	DetectorDataComponent()  {
