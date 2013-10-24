@@ -103,14 +103,6 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "spatialChat", spatialChat);
 	lua_register(luaEngine->getLuaState(), "spatialMoodChat", spatialMoodChat);
 
-	lua_register(luaEngine->getLuaState(), "setParameterDI", setParameterDI);
-	lua_register(luaEngine->getLuaState(), "setParameterDF", setParameterDF);
-	lua_register(luaEngine->getLuaState(), "setParameterTO", setParameterTO);
-	lua_register(luaEngine->getLuaState(), "setParameterTU", setParameterTU);
-	lua_register(luaEngine->getLuaState(), "setParameterTT", setParameterTT);
-	lua_register(luaEngine->getLuaState(), "createParameterMessage", createParameterMessage);
-	lua_register(luaEngine->getLuaState(), "sendParameterMessage", sendParameterMessage);
-
 	lua_register(luaEngine->getLuaState(), "forcePeace", forcePeace);
 
 	lua_register(luaEngine->getLuaState(), "readSharedMemory", readSharedMemory);
@@ -821,122 +813,6 @@ int DirectorManager::spatialChat(lua_State* L) {
 
 	if (creature != NULL)
 		chatManager->broadcastMessage(creature, message, 0, 0, 0);
-
-	return 0;
-}
-
-int DirectorManager::sendParameterMessage(lua_State* L) {
-	if (checkArgumentCount(L, 2) == 1) {
-		instance()->error("incorrect number of arguments passed to DirectorManager::sendParameterMessage");
-		ERROR_CODE = INCORRECT_ARGUMENTS;
-		return 0;
-	}
-
-	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -2);
-	StringIdChatParameter* msg = (StringIdChatParameter*)lua_touserdata(L, -1);
-
-	if (creature != NULL && msg != NULL)
-		creature->sendSystemMessage(*msg);
-
-	return 0;
-}
-
-int DirectorManager::createParameterMessage(lua_State* L) {
-	if (checkArgumentCount(L, 2) == 1) {
-		instance()->error("incorrect number of arguments passed to DirectorManager::createParameterMessage");
-		ERROR_CODE = INCORRECT_ARGUMENTS;
-		return 0;
-	}
-
-	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -2);
-	String message = lua_tostring(L, -1);
-
-	StringIdChatParameter* msg = (StringIdChatParameter*)new StringIdChatParameter(message);
-
-	if (msg != NULL)
-		lua_pushlightuserdata(L, msg);
-	else
-		lua_pushnil(L);
-
-	return 1;
-}
-
-int DirectorManager::setParameterDI(lua_State* L) {
-	if (checkArgumentCount(L, 2) == 1) {
-		instance()->error("incorrect number of arguments passed to DirectorManager::setParameterDI");
-		ERROR_CODE = INCORRECT_ARGUMENTS;
-		return 0;
-	}
-
-	StringIdChatParameter* msg = (StringIdChatParameter*)lua_touserdata(L, -2);
-	int di = lua_tonumber(L, -1);
-
-	if (msg != NULL)
-		msg->setDI(di);
-
-	return 0;
-}
-
-int DirectorManager::setParameterDF(lua_State* L) {
-	if (checkArgumentCount(L, 2) == 1) {
-		instance()->error("incorrect number of arguments passed to DirectorManager::setParameterDF");
-		ERROR_CODE = INCORRECT_ARGUMENTS;
-		return 0;
-	}
-
-	StringIdChatParameter* msg = (StringIdChatParameter*)lua_touserdata(L, -2);
-	float df = lua_tonumber(L, -1);
-
-	if (msg != NULL)
-		msg->setDF(df);
-
-	return 0;
-}
-
-int DirectorManager::setParameterTO(lua_State* L) {
-	if (checkArgumentCount(L, 2) == 1) {
-		instance()->error("incorrect number of arguments passed to DirectorManager::setParameterTO");
-		ERROR_CODE = INCORRECT_ARGUMENTS;
-		return 0;
-	}
-
-	StringIdChatParameter* msg = (StringIdChatParameter*)lua_touserdata(L, -2);
-	String to = lua_tostring(L, -1);
-
-	if (msg != NULL)
-		msg->setTO(to);
-
-	return 0;
-}
-
-int DirectorManager::setParameterTU(lua_State* L) {
-	if (checkArgumentCount(L, 2) == 1) {
-		instance()->error("incorrect number of arguments passed to DirectorManager::setParameterTU");
-		ERROR_CODE = INCORRECT_ARGUMENTS;
-		return 0;
-	}
-
-	StringIdChatParameter* msg = (StringIdChatParameter*)lua_touserdata(L, -2);
-	String tu = lua_tostring(L, -1);
-
-	if (msg != NULL)
-		msg->setTU(tu);
-
-	return 0;
-}
-
-int DirectorManager::setParameterTT(lua_State* L) {
-	if (checkArgumentCount(L, 2) == 1) {
-		instance()->error("incorrect number of arguments passed to DirectorManager::setParameterTT");
-		ERROR_CODE = INCORRECT_ARGUMENTS;
-		return 0;
-	}
-
-	StringIdChatParameter* msg = (StringIdChatParameter*)lua_touserdata(L, -2);
-	String tt = lua_tostring(L, -1);
-
-	if (msg != NULL)
-		msg->setTT(tt);
 
 	return 0;
 }
