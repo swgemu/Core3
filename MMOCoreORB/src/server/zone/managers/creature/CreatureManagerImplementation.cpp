@@ -39,6 +39,7 @@
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/managers/creature/LairObserver.h"
 #include "server/zone/packets/object/SpatialChat.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 
 Mutex CreatureManagerImplementation::loadMutex;
 
@@ -685,6 +686,65 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 	}
 }
 
+void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* player) {
+	Zone* zone = creature->getZone();
+
+	if (zone == NULL || !creature->isCreature())
+		return;
+
+	if (!creature->canTameMe(player))
+		return;
+
+	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
+
+	if (datapad == NULL)
+		return;
+
+	if (datapad->getContainerObjectsSize() >= datapad->getContainerVolumeLimit()) {
+		player->sendSystemMessage("@faction_recruiter:datapad_full"); // Your datapad is full. You must first free some space.
+		return;
+	}
+
+	int currentlySpawned = 0;
+	int numberStored = 0;
+	int spawnedLevel = 0;
+	int maxPets = player->getSkillMod("keep_creature");
+	int maxStoredPets = player->getSkillMod("stored_pets");
+	int maxLevelofPets = player->getSkillMod("tame_level");
+
+	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
+
+		if (object->isPetControlDevice()) {
+			PetControlDevice* device = cast<PetControlDevice*>( object.get());
+
+			ManagedReference<Creature*> object = cast<Creature*>(device->getControlledObject());
+
+			if (object != NULL) {
+				if (++numberStored >= maxStoredPets) {
+					player->sendSystemMessage("@pet/pet_menu:sys_too_many_stored"); // There are too many pets stored in this container. Release some of them to make room for more.
+					return;
+				}
+
+				if (object->isInQuadTree()) {
+					if (++currentlySpawned >= maxPets) {
+						player->sendSystemMessage("@pet/pet_menu:too_many"); // You can't control any more pets. Store one first
+						return;
+					}
+
+					if (++spawnedLevel >= maxLevelofPets) {
+						player->sendSystemMessage("Taming this pet would exceed your max level of pets");
+						return;
+					}
+				}
+
+			}
+		}
+	}
+
+	player->sendSystemMessage("You should be able to tame this creature, once taming is implemented.");
+}
+
 void CreatureManagerImplementation::milk(Creature* creature, CreatureObject* player) {
 	Zone* zone = creature->getZone();
 
@@ -742,6 +802,7 @@ void CreatureManagerImplementation::sample(Creature* creature, CreatureObject* p
 	player->addPendingTask("sampledna",task,0);
 
 }
+
 bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, TangibleObject* clothing) {
 
 	if (!clothing->isWearableObject() && !clothing->isWeaponObject())

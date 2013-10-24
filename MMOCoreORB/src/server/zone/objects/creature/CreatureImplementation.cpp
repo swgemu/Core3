@@ -83,6 +83,9 @@ void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResp
 			menuResponse->addRadialMenuItemToRadialID(112, 236, 3, "@sui:harvest_bone");
 	}
 
+	if (isBaby() && player->hasSkill("outdoors_creaturehandler_novice")) {
+		menuResponse->addRadialMenuItem(113, 3, "@pet/pet_menu:menu_tame");
+	}
 }
 
 int CreatureImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
@@ -100,6 +103,10 @@ int CreatureImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 
 			return 0;
 		}
+	}
+
+	if (selectedID == 113) {
+		getZone()->getCreatureManager()->tame(_this.get(), player);
 	}
 
 	return AiAgentImplementation::handleObjectMenuSelect(player, selectedID);
@@ -294,6 +301,28 @@ bool CreatureImplementation::hasSkillToHarvestMe(CreatureObject* player) {
 	return true;
 }
 
+bool CreatureImplementation::canTameMe(CreatureObject* player) {
+	if (!isBaby() || _this.get()->isInCombat() || _this.get()->isDead()) {
+		player->sendSystemMessage("@pet/pet_menu:sys_cant_tame"); // You can't tame that
+		return false;
+	}
+
+	if(!player->isInRange(_this.get(), 10.0f) || player->isInCombat() || player->isDead() || player->isIncapacitated() || player->isMounted())
+		return false;
+
+	if (!player->hasSkill("outdoors_creaturehandler_novice") || (getLevel() > player->getSkillMod("tame_level"))) {
+		player->sendSystemMessage("@pet/pet_menu:sys_lack_skill"); // You lack the skill to be able to tame that creature.
+		return false;
+	}
+
+	if (isAggressiveTo(player) && player->getSkillMod("tame_aggro") <= 0) {
+		player->sendSystemMessage("@pet/pet_menu:sys_lack_skill"); // You lack the skill to be able to tame that creature.
+		return false;
+	}
+
+	return true;
+}
+
 bool CreatureImplementation::canMilkMe(CreatureObject* player) {
 
 	if (!hasMilk() || milkState != CreatureManager::NOTMILKED  || _this.get()->isInCombat() || _this.get()->isDead())
@@ -304,6 +333,7 @@ bool CreatureImplementation::canMilkMe(CreatureObject* player) {
 
 	return true;
 }
+
 bool CreatureImplementation::hasSkillToSampleMe(CreatureObject* player) {
 
 	if(!player->hasSkill("outdoors_bio_engineer_novice"))
