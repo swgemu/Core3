@@ -78,6 +78,18 @@ function ScreenPlay:spawnContainerLoot(pContainer)
 	writeData(container:getObjectID(), time + self.lootContainerRespawn)
 end
 
+-- Perform the supplied function with an ai agent created from the pointer.
+-- @param pCreatureObject a pointer to a creature object that is an AiAgent.
+-- @param performThisFunction a function that takes an ai agent as its argument.
+-- @return whatever performThisFunction returns or nil if the pCreatureObject pointer is nil.
+function ScreenPlay.withCreatureAiAgent(pCreatureObject, performThisFunction)
+	if pCreatureObject == nil then
+		return nil
+	end
+	local aiAgent = LuaAiAgent(pCreatureObject)
+	return performThisFunction(aiAgent)
+end
+
 -- Perform the supplied function with a scene object created from the pointer.
 -- @param pSceneObject a pointer to a scene object.
 -- @param performThisFunction a function that takes a scene object as its argument.
