@@ -809,10 +809,20 @@ int DirectorManager::spatialChat(lua_State* L) {
 	ChatManager* chatManager = zoneServer->getChatManager();
 
 	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -2);
-	String message = lua_tostring(L, -1);
 
-	if (creature != NULL)
-		chatManager->broadcastMessage(creature, message, 0, 0, 0);
+	if (lua_isuserdata(L, -1)) {
+		StringIdChatParameter* message = (StringIdChatParameter*)lua_touserdata(L, -1);
+
+		if (creature != NULL) {
+			chatManager->broadcastMessage(creature, *message, 0, 0, 0);
+		}
+	} else {
+		String message = lua_tostring(L, -1);
+
+		if (creature != NULL) {
+			chatManager->broadcastMessage(creature, message, 0, 0, 0);
+		}
+	}
 
 	return 0;
 }
@@ -828,11 +838,21 @@ int DirectorManager::spatialMoodChat(lua_State* L) {
 	ChatManager* chatManager = zoneServer->getChatManager();
 
 	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -3);
-	String message = lua_tostring(L, -2);
 	int mood = lua_tonumber(L, -1);
 
-	if (creature != NULL)
-		chatManager->broadcastMessage(creature, message, 0, 0, mood);
+	if (lua_isuserdata(L, -2)) {
+		StringIdChatParameter* message = (StringIdChatParameter*)lua_touserdata(L, -2);
+
+		if (creature != NULL) {
+			chatManager->broadcastMessage(creature, *message, 0, 0, mood);
+		}
+	} else {
+		String message = lua_tostring(L, -2);
+
+		if (creature != NULL) {
+			chatManager->broadcastMessage(creature, message, 0, 0, mood);
+		}
+	}
 
 	return 0;
 }
