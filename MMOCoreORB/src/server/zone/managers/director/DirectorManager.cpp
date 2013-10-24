@@ -56,6 +56,7 @@
 #include "server/zone/managers/jedi/JediManager.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/objects/region/CityRegion.h"
+#include "server/zone/managers/creature/CreatureTemplateManager.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -1301,36 +1302,45 @@ int DirectorManager::giveControlDevice(lua_State* L) {
 
 	if (mobile) {
 		CreatureManager* creatureManager = zone->getCreatureManager();
-		controlledObject = creatureManager->spawnCreature(controlledObjectPath.hashCode(), 0, player->getPositionX(), player->getPositionZ(), player->getPositionY(), player->getParentID(), true);
+		CreatureTemplate* creoTempl = CreatureTemplateManager::instance()->getTemplate(controlledObjectPath.hashCode());
+
+		if (creoTempl == NULL) {
+			lua_pushnil(L);
+			return 1;
+		}
+
+		String templateToSpawn = creatureManager->getTemplateToSpawn(controlledObjectPath.hashCode());
+		controlledObject = creatureManager->createCreature(templateToSpawn.hashCode(), true, controlledObjectPath.hashCode());
+
+		if (controlledObject == NULL || !controlledObject->isAiAgent()) {
+			lua_pushnil(L);
+			return 1;
+		}
+
+		AiAgent* pet = controlledObject.castTo<AiAgent*>();
+		pet->loadTemplateData(creoTempl);
 
 	} else {
 		controlledObject = zoneServer->createObject(controlledObjectPath.hashCode(), 1).castTo<TangibleObject*>();
+
+		if (controlledObject == NULL) {
+			lua_pushnil(L);
+			return 1;
+		}
 
 		SharedObjectTemplate* temp = controlledObject->getObjectTemplate();
 		controlledObject->loadTemplateData(temp);
 	}
 
-	if (controlledObject != NULL) {
-		controlDevice->setControlledObject(controlledObject);
-		StringId s;
-		s.setStringId(controlledObject->getDisplayedName());
-		controlDevice->setObjectName(s);
+	controlDevice->setControlledObject(controlledObject);
+	StringId s;
+	s.setStringId(controlledObject->getDisplayedName());
+	controlDevice->setObjectName(s);
 
-		if (controlledObject->isAiAgent()) {
-			AiAgent* pet = controlledObject.castTo<AiAgent*>();
-			pet->setFollowObject(player);
-			pet->setCreatureLink(player);
-			pet->setControlDevice(controlDevice);
-			controlDevice->updateStatus(1);
-		}
+	datapad->transferObject(controlDevice, slot, true);
 
-		datapad->transferObject(controlDevice, slot, true);
-
-		controlDevice->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
-		lua_pushlightuserdata(L, controlDevice.get());
-	} else {
-		lua_pushnil(L);
-	}
+	controlDevice->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
+	lua_pushlightuserdata(L, controlDevice.get());
 
 	return 1;
 }
