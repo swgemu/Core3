@@ -391,9 +391,9 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					},
 					"Master", "combat_commando_master"
 				},
-				--"Creature Handler",
-				--{
-					--"Novice", "outdoors_creaturehandler_novice",
+				"Creature Handler",
+				{
+					"Novice", "outdoors_creaturehandler_novice",
 					--"Taming",
 					--{
 						--"Creature Taming I", "outdoors_creaturehandler_taming_01",
@@ -423,7 +423,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 						--"Creature Management IV", "outdoors_creaturehandler_support_04"
 					--},
 					--"Master", "outdoors_creaturehandler_master"
-				--},
+				},
 				"Dancer",
 				{
 					"Novice", "social_dancer_novice",
