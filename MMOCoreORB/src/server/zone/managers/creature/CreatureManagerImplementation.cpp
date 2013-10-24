@@ -221,6 +221,34 @@ String CreatureManagerImplementation::getTemplateToSpawn(uint32 templateCRC) {
 	return templateToSpawn;
 }
 
+CreatureObject* CreatureManagerImplementation::spawnCreatureAsBaby(uint32 templateCRC, int level, float x, float z, float y, uint64 parentID) {
+	CreatureTemplate* creoTempl = creatureTemplateManager->getTemplate(templateCRC);
+
+	if (creoTempl == NULL)
+		return NULL;
+
+	CreatureObject* creo = NULL;
+
+	String templateToSpawn = getTemplateToSpawn(templateCRC);
+	uint32 objectCRC = templateToSpawn.hashCode();
+
+	creo = createCreature(objectCRC, false, templateCRC);
+
+	if (creo != NULL && creo->isCreature()) {
+		Creature* creature = cast<Creature*>(creo);
+		creature->loadTemplateDataForBaby(creoTempl);
+		creature->setBaby(true);
+	} else if (creo == NULL) {
+		error("could not spawn template " + templateToSpawn + " as baby.");
+	}
+
+	creo->setLevel(level);
+
+	placeCreature(creo, x, z, y, parentID);
+
+	return creo;
+}
+
 CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC, uint32 objectCRC, float x, float z, float y, uint64 parentID, bool persistent) {
 	CreatureTemplate* creoTempl = creatureTemplateManager->getTemplate(templateCRC);
 
@@ -774,5 +802,3 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 Vector3 CreatureManagerImplementation::getRandomJediTrainer() {
 	return spawnAreaMap.getRandomJediTrainer();
 }
-
-

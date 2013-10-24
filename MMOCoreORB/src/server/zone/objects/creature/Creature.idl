@@ -112,7 +112,10 @@ class Creature extends AiAgent {
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-	
+
+	@local
+	public native void loadTemplateDataForBaby(CreatureTemplate templateData);
+
 	public native void scheduleDespawn(); 
 		
 	public native boolean hasOrganics();
@@ -142,7 +145,11 @@ class Creature extends AiAgent {
 	public boolean isBaby() {
 		return super.baby;
 	}
-	
+
+	public void setBaby(boolean bab) {
+		super.baby = bab;
+	}
+
 	public float getTame() {
 		if (super.npcTemplate == null)
 			return 0;
