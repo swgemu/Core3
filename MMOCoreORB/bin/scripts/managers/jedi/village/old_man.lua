@@ -7,6 +7,10 @@ OLD_MAN_TEMPLATE = "old_man"
 OLD_MAN_RESPAWN_TIME = 0
 OLD_MAN_HEADING = 0
 OLD_MAN_ID_STRING = ":old_man_id"
+--OLD_MAN_SPAWN_TIME = 12 * 60 * 60 * 1000 -- 12 hours as base
+--OLD_MAN_SPAWN_TIME = 12 * 60 * 1000 -- 12 minutes as base for testing
+OLD_MAN_SPAWN_TIME = 12 * 1000 -- 12 minutes as base for testing
+OLD_MAN_STOP_FOLLOW_TIME = 20 * 1000 -- 20 seconds
 
 OldMan = ScreenPlay:new {}
 
@@ -19,6 +23,15 @@ function OldMan.spawnOldMan(pCreatureObject)
 			return spawnMobile(sceneObject:getZoneName(), OLD_MAN_TEMPLATE, OLD_MAN_RESPAWN_TIME, spawnPoint[1], spawnPoint[2], spawnPoint[3], OLD_MAN_HEADING, sceneObject:getParentID())
 		end
 		return nil
+	end)
+end
+
+-- Read the id of the old man from the player he was spawned for.
+-- @param pCreatureObject pointer to the creature object of the player who got the old man spawned.
+-- @return the id of the old man stored on the player.
+function OldMan.readOldManIdFromPlayer(pCreatureObject)
+	return OldMan.withCreatureObject(pCreatureObject, function(creatureObject)
+		return readData(creatureObject:getObjectID() .. OLD_MAN_ID_STRING)
 	end)
 end
 
@@ -71,6 +84,23 @@ function OldMan.canOldManBeSpawned(pCreatureObject)
 	return (OldMan.isPlayerOnline(pCreatureObject) and not OldMan.isPlayerInABuilding(pCreatureObject) and not OldMan.isPlayerInNpcCity(pCreatureObject))
 end
 
+-- Set a creature to follow another creature.
+-- @param pCreatureObject pointer to the creature who should follow another creature.
+-- @param pFollowObject pointer to the creature object of the creature to follow.
+function OldMan.setToFollow(pCreatureObject, pFollowObject)
+	OldMan.withCreatureAiAgent(pCreatureObject, function(aiAgent)
+		aiAgent:setFollowObject(pFollowObject)
+	end)
+end
+
+-- Function to handle the stop follow player event for the old man.
+-- @param pCreatureObject pointer to the creature object of the player who got an old man that should stop following.
+function OldMan:handleStopFollowPlayerEvent(pCreatureObject)
+	local oldManId = OldMan.readOldManIdFromPlayer(pCreatureObject)
+	local pOldMan = getSceneObject(oldManId)
+	OldMan.setToFollow(pOldMan, nil)
+end
+
 -- Try to spawn the old man and create the needed events.
 -- @param pCreatureObject pointer to the creature object of the player who should get the old man spawned.
 -- @return true if everything were successful.
@@ -78,6 +108,8 @@ function OldMan.tryToSpawnOldMan(pCreatureObject)
 	local pOldMan = OldMan.spawnOldMan(pCreatureObject)
 	if pOldMan ~= nil then
 		OldMan.saveOldManIdOnPlayer(pCreatureObject, pOldMan)
+		OldMan.setToFollow(pOldMan, pCreatureObject)
+		createEvent(OLD_MAN_STOP_FOLLOW_TIME, "OldMan", "handleStopFollowPlayerEvent", pCreatureObject)
 		return true
 	else
 		return false
@@ -99,7 +131,7 @@ end
 -- Generate an event to spawn the old man for the player.
 -- @param pCreatureObject pointer to the creature object who should have an event created for spawning the old man.
 function OldMan.createSpawnOldManEvent(pCreatureObject)
-	createEvent(20000, "OldMan", "handleSpawnOldManEvent", pCreatureObject)
+	createEvent(OLD_MAN_SPAWN_TIME + math.random(OLD_MAN_SPAWN_TIME), "OldMan", "handleSpawnOldManEvent", pCreatureObject)
 end
 
 -- Check if the old man belongs to the player or not.
@@ -107,10 +139,8 @@ end
 -- @param pConversingNpc pointer to the creature object of the old man.
 -- @return true if the old man belongs to the player.
 function OldMan.oldManBelongsToThePlayer(pConversingPlayer, pConversingNpc)
-	return OldMan.withCreatureObject(pConversingPlayer, function(playerCreatureObject)
-		return OldMan.withCreatureObject(pConversingNpc, function(oldManCreatureObject)
-			return readData(playerCreatureObject:getObjectID() .. OLD_MAN_ID_STRING) == oldManCreatureObject:getObjectID()
-		end) == true
+	return OldMan.withCreatureObject(pConversingNpc, function(oldManCreatureObject)
+		return OldMan.readOldManIdFromPlayer(pConversingPlayer) == oldManCreatureObject:getObjectID()
 	end) == true
 end
 

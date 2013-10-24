@@ -15,6 +15,7 @@ describe("Old Man", function()
 	local sceneObject
 	local playerObject
 	local cityRegion
+	local aiAgent
 
 	setup(function()
 		DirectorManagerMocks.setup()
@@ -28,6 +29,7 @@ describe("Old Man", function()
 		DirectorManagerMocks.before_each()
 
 		getCityRegionAt = spy.new(function() return pCityRegion end)
+		getSceneObject = spy.new(function() return pOldMan end)
 		getSpawnPoint = spy.new(function() return { 1, 2, 3 } end)
 		readData = spy.new(function() return oldManId end)
 		spawnMobile = spy.new(function() return pOldMan end)
@@ -49,6 +51,11 @@ describe("Old Man", function()
 
 		cityRegion = { isClientRegion = nil }
 		cityRegion.isClientRegion = spy.new(function() return false end)
+		
+		aiAgent = { setFollowObject = nil }
+		aiAgent.setFollowObject = spy.new(function() end)
+		
+		DirectorManagerMocks.aiAgents[pOldMan] = aiAgent
 
 		DirectorManagerMocks.creatureObjects[pCreatureObject] = creatureObjectPlayer
 		DirectorManagerMocks.creatureObjects[pOldMan] = creatureObjectOldMan
@@ -102,43 +109,37 @@ describe("Old Man", function()
 		describe("handleSpawnOldManEvent", function()
 			describe("When event to spawn old man is triggered", function()
 				local realCanOldManBeSpawned
-				local realSpawnOldMan
+				local realTryToSpawnOldMan
 				local realCreateSpawnOldManEvent
 				local realSaveOldManIdOnPlayer
 
 				setup(function()
 					realCanOldManBeSpawned = OldMan.canOldManBeSpawned
-					realSpawnOldMan = OldMan.spawnOldMan
+					realTryToSpawnOldMan = OldMan.tryToSpawnOldMan
 					realCreateSpawnOldManEvent = OldMan.createSpawnOldManEvent
 					realSaveOldManIdOnPlayer = OldMan.saveOldManIdOnPlayer
 				end)
 
 				teardown(function()
 					OldMan.canOldManBeSpawned = realCanOldManBeSpawned
-					OldMan.spawnOldMan = realSpawnOldMan
+					OldMan.tryToSpawnOldMan = realTryToSpawnOldMan
 					OldMan.createSpawnOldManEvent = realCreateSpawnOldManEvent
 					OldMan.saveOldManIdOnPlayer = realSaveOldManIdOnPlayer
 				end)
 
 				before_each(function()
 					OldMan.canOldManBeSpawned = spy.new(function() return true end)
-					OldMan.spawnOldMan = spy.new(function() return pOldMan end)
+					OldMan.tryToSpawnOldMan = spy.new(function() return true end)
 					OldMan.createSpawnOldManEvent = spy.new(function() end)
 					OldMan.saveOldManIdOnPlayer = spy.new(function() end)
 				end)
 
-				it("Should spawn the old man if the player is in a place where the old man can be spawned.", function()
+				it("Should try to spawn the old man if the player is in a place where the old man can be spawned.", function()
 					OldMan:handleSpawnOldManEvent(pCreatureObject)
 
 					assert.spy(OldMan.canOldManBeSpawned).was.called_with(pCreatureObject)
-					assert.spy(OldMan.spawnOldMan).was.called_with(pCreatureObject)
+					assert.spy(OldMan.tryToSpawnOldMan).was.called_with(pCreatureObject)
 					assert.spy(OldMan.createSpawnOldManEvent).was.not_called()
-				end)
-
-				it("Should save the object id of the spawned old man on the player.", function()
-					OldMan:handleSpawnOldManEvent(pCreatureObject)
-
-					assert.spy(OldMan.saveOldManIdOnPlayer).was.called_with(pCreatureObject, pOldMan)
 				end)
 
 				it("Should reschedule the event if the player is not in a place where the old man can be spawned.", function()
@@ -147,17 +148,17 @@ describe("Old Man", function()
 					OldMan:handleSpawnOldManEvent(pCreatureObject)
 
 					assert.spy(OldMan.canOldManBeSpawned).was.called_with(pCreatureObject)
-					assert.spy(OldMan.spawnOldMan).was.not_called()
+					assert.spy(OldMan.tryToSpawnOldMan).was.not_called()
 					assert.spy(OldMan.createSpawnOldManEvent).was.called_with(pCreatureObject)
 				end)
 
 				it("Should reschedule the event if the spawning of the old man fails.", function()
-					OldMan.spawnOldMan = spy.new(function() return nil end)
+					OldMan.tryToSpawnOldMan = spy.new(function() return false end)
 
 					OldMan:handleSpawnOldManEvent(pCreatureObject)
 
 					assert.spy(OldMan.canOldManBeSpawned).was.called_with(pCreatureObject)
-					assert.spy(OldMan.spawnOldMan).was.called_with(pCreatureObject)
+					assert.spy(OldMan.tryToSpawnOldMan).was.called_with(pCreatureObject)
 					assert.spy(OldMan.createSpawnOldManEvent).was.called_with(pCreatureObject)
 				end)
 			end)
@@ -378,6 +379,161 @@ describe("Old Man", function()
 					assert.spy(LuaCreatureObject).was.called(2)
 					assert.spy(creatureObjectPlayer.getObjectID).was.called(1)
 					assert.spy(creatureObjectOldMan.getObjectID).was.called(1)
+				end)
+			end)
+		end)
+		
+		describe("tryToSpawnOldMan", function()
+			describe("When called with a player creature object", function()
+				local realSpawnOldMan
+				local realSaveOldManIdOnPlayer
+				local realSetToFollow
+				
+				setup(function()
+					realSpawnOldMan = OldMan.spawnOldMan
+					realSaveOldManIdOnPlayer = OldMan.saveOldManIdOnPlayer
+					realSetToFollow = OldMan.setToFollow
+				end)
+				
+				teardown(function()
+					OldMan.spawnOldMan = realSpawnOldMan
+					OldMan.saveOldManIdOnPlayer = realSaveOldManIdOnPlayer
+					OldMan.setToFollow = realSetToFollow
+				end)
+				
+				before_each(function()
+					OldMan.spawnOldMan = spy.new(function() end)
+					OldMan.saveOldManIdOnPlayer = spy.new(function() end)
+					OldMan.setToFollow = spy.new(function() end)
+				end)
+			
+				it("Should spawn the old man.", function()
+					OldMan.tryToSpawnOldMan(pCreatureObject)
+					
+					assert.spy(OldMan.spawnOldMan).was.called_with(pCreatureObject)
+				end)
+				
+				describe("and spawning the old man was successful", function()
+					before_each(function()
+						OldMan.spawnOldMan = spy.new(function() return pOldMan end)
+					end)
+					
+					it("Should save the id of the old man on the player.", function()
+						OldMan.tryToSpawnOldMan(pCreatureObject)
+						
+						assert.spy(OldMan.saveOldManIdOnPlayer).was.called_with(pCreatureObject, pOldMan)
+					end)
+					
+					it("Should return true.", function()
+						assert.is_true(OldMan.tryToSpawnOldMan(pCreatureObject))
+					end)
+					
+					it("Should set the old man to follow the player.", function()
+						OldMan.tryToSpawnOldMan(pCreatureObject)
+						
+						assert.spy(OldMan.setToFollow).was.called_with(pOldMan, pCreatureObject)
+					end)
+					
+					it("Should create an event for stopping the old man from following the player.", function()
+						OldMan.tryToSpawnOldMan(pCreatureObject)
+						
+						assert.spy(createEvent).was.called(1)
+					end)
+				end)
+				
+				describe("and spawning the old man failed", function()
+					before_each(function()
+						OldMan.spawnOldMan = spy.new(function() return nil end)
+					end)
+					
+					it("Should not save the id of the old man on the player, not make the old man follow the player nor create an event.", function()
+						OldMan.tryToSpawnOldMan(pCreatureObject)
+						assert.spy(OldMan.saveOldManIdOnPlayer).was.not_called()
+						assert.spy(OldMan.setToFollow).was.not_called()
+						assert.spy(createEvent).was.not_called()
+					end)
+					
+					it("Should return false.", function()
+						assert.is_false(OldMan.tryToSpawnOldMan(pCreatureObject))
+					end)
+				end)
+			end)
+		end)
+		
+		describe("setToFollow", function()
+			describe("When called with a old man and a player", function()
+				it("Should set the old man to follow the player", function()
+					OldMan.setToFollow(pOldMan, pCreatureObject)
+					
+					assert.spy(aiAgent.setFollowObject).was.called_with(aiAgent, pCreatureObject)
+				end)
+			end)
+			
+			describe("When called with old man argument equal to nil", function()
+				it("Should not do anything.", function()
+					OldMan.setToFollow(nil, pCreatureObject)
+					
+					assert.spy(aiAgent.setFollowObject).was.not_called()
+				end)
+			end)
+			
+			describe("When called with player argument equal to nil", function()
+				it("Should not do anything.", function()
+					OldMan.setToFollow(pOldMan, nil)
+					
+					assert.spy(aiAgent.setFollowObject).was.called_with(aiAgent, nil)
+				end)
+			end)
+		end)
+		
+		describe("handleStopFollowPlayerEvent", function()
+			local realSetToFollow
+			local realReadOldManIdFromPlayer
+			
+			setup(function()
+				realSetToFollow = OldMan.setToFollow
+				realReadOldManIdFromPlayer = OldMan.readOldManIdFromPlayer
+			end)
+			
+			teardown(function()
+				OldMan.setToFollow = realSetToFollow
+				OldMan.readOldManIdFromPlayer = realReadOldManIdFromPlayer
+			end)
+			
+			before_each(function()
+				OldMan.setToFollow = spy.new(function() end)
+				OldMan.readOldManIdFromPlayer = spy.new(function() return oldManId end)
+			end)
+			
+			describe("When called with the player as argument", function()
+				it("Should read the old man id from the player.", function()
+					OldMan:handleStopFollowPlayerEvent(pCreatureObject)
+					
+					assert.spy(OldMan.readOldManIdFromPlayer).was.called_with(pCreatureObject)
+				end)
+				
+				it("Should get a pointer to the old man.", function()
+					OldMan:handleStopFollowPlayerEvent(pCreatureObject)
+					
+					assert.spy(getSceneObject).was.called_with(oldManId)
+				end)
+				
+				it("Should tell the old man to follow no one.", function()
+					OldMan:handleStopFollowPlayerEvent(pCreatureObject)
+					
+					assert.spy(OldMan.setToFollow).was.called_with(pOldMan, nil)
+				end)
+			end)
+		end)
+		
+		describe("readOldManIdFromPlayer", function()
+			describe("When called with a pointer to a creature object of a player as argument", function()
+				it("Should read the old man id from the player.", function()
+					OldMan.readOldManIdFromPlayer(pCreatureObject)
+					
+					assert.spy(readData).was.called_with(playerId .. OLD_MAN_ID_STRING)
+					assert.spy(LuaCreatureObject).was.called(1)
+					assert.spy(creatureObjectPlayer.getObjectID).was.called(1)
 				end)
 			end)
 		end)
