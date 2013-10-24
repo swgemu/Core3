@@ -57,6 +57,7 @@
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/chat/LuaStringIdChatParameter.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -398,6 +399,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	Luna<LuaDeed>::Register(luaEngine->getLuaState());
 	Luna<LuaAiActor>::Register(luaEngine->getLuaState());
 	Luna<LuaCityRegion>::Register(luaEngine->getLuaState());
+	Luna<LuaStringIdChatParameter>::Register(luaEngine->getLuaState());
 }
 
 int DirectorManager::loadScreenPlays(Lua* luaEngine) {
