@@ -32,6 +32,7 @@
 #include "server/chat/room/ChatRoom.h"
 #include "server/chat/room/ChatRoomMap.h"
 #include "server/chat/SendMailTask.h"
+#include "server/zone/packets/chat/ChatSystemMessage.h"
 
 ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int initsize) : ManagedServiceImplementation() {
 	server = serv;
@@ -516,6 +517,10 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 
 	//zone->runlock();
 
+}
+
+void ChatManagerImplementation::broadcastMessage(CreatureObject* player, StringIdChatParameter& message,  uint64 target, uint32 moodid, uint32 mood2) {
+	broadcastMessage(player, ChatSystemMesage(message), target, moodid, mood2);
 }
 
 void ChatManagerImplementation::handleSpatialChatInternalMessage(CreatureObject* player, const UnicodeString& args) {
