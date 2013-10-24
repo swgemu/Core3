@@ -84,7 +84,7 @@ void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResp
 	}
 
 	if (isBaby() && player->hasSkill("outdoors_creaturehandler_novice")) {
-		menuResponse->addRadialMenuItem(113, 3, "@pet/pet_menu:menu_tame");
+		menuResponse->addRadialMenuItem(159, 3, "@pet/pet_menu:menu_tame");
 	}
 }
 
@@ -105,7 +105,7 @@ int CreatureImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 		}
 	}
 
-	if (selectedID == 113) {
+	if (selectedID == 159) {
 		getZone()->getCreatureManager()->tame(_this.get(), player);
 	}
 
