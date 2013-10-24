@@ -227,11 +227,17 @@ bool CreatureImplementation::hasOrganics() {
 }
 
 bool CreatureImplementation::hasDNA() {
+	if (isBaby())
+		return false;
+
 	return (dnaState == CreatureManager::HASDNA);
 }
 
 
 bool CreatureImplementation::hasMilk() {
+	if (isBaby())
+		return false;
+
 	return (getMilk() > 0);
 }
 
@@ -307,7 +313,7 @@ bool CreatureImplementation::canTameMe(CreatureObject* player) {
 		return false;
 	}
 
-	if(!player->isInRange(_this.get(), 10.0f) || player->isInCombat() || player->isDead() || player->isIncapacitated() || player->isMounted())
+	if(!player->isInRange(_this.get(), 8.0f) || player->isInCombat() || player->isDead() || player->isIncapacitated() || player->isMounted())
 		return false;
 
 	if (!player->hasSkill("outdoors_creaturehandler_novice") || (getLevel() > player->getSkillMod("tame_level"))) {
