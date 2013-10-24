@@ -104,10 +104,12 @@
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 
+#include "server/zone/managers/creature/LairObserver.h"
+
 int PlayerManagerImplementation::MAX_CHAR_ONLINE_COUNT = 2;
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
-		Logger("PlayerManager") {
+								Logger("PlayerManager") {
 	server = zoneServer;
 	processor = impl;
 
@@ -903,102 +905,127 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 	float gcwBonus = 1.0f;
 	uint32 winningFaction = -1;
+	float baseXp = 0;
 
 	Zone* zone = destructedObject->getZone();
 	if(zone != NULL){
 		GCWManager* gcwMan = zone->getGCWManager();
 		gcwBonus += (gcwMan->getGCWXPBonus() / 100.0f);
 		winningFaction = gcwMan->getWinningFaction();
-	}
+
+		for (int i = 0; i < threatMap->size(); ++i) {
+
+			CreatureObject* player = threatMap->elementAt(i).getKey();
+
+			ManagedReference<GroupObject*> group = player->getGroup();
+
+			ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
+
+			Locker crossLocker(player, destructedObject);
+
+			uint32 combatXp = 0;
+
+			for (int j = 0; j < entry->size(); ++j) {
+				uint32 damage = entry->elementAt(j).getValue();
+				String xpType = entry->elementAt(j).getKey();
+				float xpAmount = baseXp;
+
+				if (!destructedObject->isCreatureObject()) { // Safe to say it's a lair...
+					ManagedReference<LairObserver*> lairObserver = NULL;
+					SortedVector<ManagedReference<Observer*> > observers = destructedObject->getObservers(ObserverEventType::OBJECTDESTRUCTION);
+
+					for (int i = 0; i < observers.size(); i++) {
+						lairObserver = cast<LairObserver*>(observers.get(i).get());
+						if (lairObserver == NULL)
+							return;
+					}
+
+					Vector<ManagedReference<CreatureObject* > >* spawnedCreatures = lairObserver->getSpawnedCreatures();
+
+					ManagedReference<AiAgent*> ai = NULL;
+
+					for (int i = 0; i < spawnedCreatures->size(); i++) {
+						ai = cast<AiAgent*>(spawnedCreatures->get(i).get());
+						if (ai != NULL)
+							break;
+					}
 
 
-	if(zone != NULL)
-	for (int i = 0; i < threatMap->size(); ++i) {
+					if (ai != NULL)
+						xpAmount = ai->getBaseXp();
 
-		CreatureObject* player = threatMap->elementAt(i).getKey();
+				} else { // It is a creature object!
 
+					ManagedReference<AiAgent*> ai = cast<AiAgent*>(destructedObject);
 
-		if (!player->isPlayerCreature())
-			continue;
+					if (ai != NULL)
+						xpAmount = ai->getBaseXp();
 
-		ManagedReference<GroupObject*> group = player->getGroup();
+				}
 
-		ThreatMapEntry* entry = &threatMap->elementAt(i).getValue();
+				xpAmount *= (float) damage / totalDamage;
 
-		Locker crossLocker(player, destructedObject);
+				//Cap xp based on player level
+				xpAmount = MIN(xpAmount, calculatePlayerLevel(player) * 300.f);
 
-		uint32 combatXp = 0;
+				//Apply group bonus if in group
+				if (group != NULL)
+					xpAmount *= 1.20; //TODO: Add groupExperienceModifier to lua player_manager.lua - requires refactor of startingitems (move to player creation manager).
 
-		for (int j = 0; j < entry->size(); ++j) {
-			uint32 damage = entry->elementAt(j).getValue();
-			String xpType = entry->elementAt(j).getKey();
+				//Jedi experience doesn't count towards combat experience supposedly.
+				if (xpType != "jedi_general")
+					combatXp += xpAmount;
 
-			float xpAmount =  40.f * destructedObject->getLevel(); //TODO: need better formula for tano exp
+				if( winningFaction == player->getFaction()){
+					xpAmount *= gcwBonus;
+					combatXp *= gcwBonus;
+				}
+				//Award individual weapon exp.
 
-			ManagedReference<AiAgent*> ai = cast<AiAgent*>(destructedObject);
-
-			if (ai != NULL)
-				xpAmount = ai->getBaseXp();
-
-			xpAmount *= (float) damage / totalDamage;
-
-			//Cap xp based on player level
-			xpAmount = MIN(xpAmount, calculatePlayerLevel(player) * 300.f);
-
-			//Apply group bonus if in group
-			if (group != NULL)
-				xpAmount *= 1.20; //TODO: Add groupExperienceModifier to lua player_manager.lua - requires refactor of startingitems (move to player creation manager).
-
-			//Jedi experience doesn't count towards combat experience supposedly.
-			if (xpType != "jedi_general")
-				combatXp += xpAmount;
-
-			if( winningFaction == player->getFaction()){
-				xpAmount *= gcwBonus;
-				combatXp *= gcwBonus;
+				if (player->isPlayerCreature())
+					awardExperience(player, xpType, xpAmount);
 			}
-			//Award individual weapon exp.
-			awardExperience(player, xpType, xpAmount);
+
+			combatXp /= 10.f;
+
+			if (player->isPlayerCreature())
+				awardExperience(player, "combat_general", combatXp);
+
+			//Check if the group leader is a squad leader
+			if (group == NULL)
+				continue;
+
+			Vector3 pos(player->getWorldPositionX(), player->getWorldPositionY(), 0);
+
+			crossLocker.release();
+
+			ManagedReference<SceneObject*> groupLeader = group->getLeader();
+
+			if (groupLeader == NULL || !groupLeader->isPlayerCreature())
+				continue;
+
+			CreatureObject* squadLeader = groupLeader.castTo<CreatureObject*>();
+
+			Locker squadLock(squadLeader, destructedObject);
+
+			//If he is a squad leader, and is in range of this player, then add the combat exp for him to use.
+			if (squadLeader->hasSkill("outdoors_squadleader_novice") && pos.distanceTo(player->getWorldPosition()) <= 192.f) {
+				int v = slExperience.get(squadLeader) + combatXp;
+				slExperience.put(squadLeader, v);
+			}
 		}
 
-		combatXp /= 10.f;
+		//Send out squad leader experience.
+		for (int i = 0; i < slExperience.size(); ++i) {
+			VectorMapEntry<ManagedReference<CreatureObject*>, int>* entry = &slExperience.elementAt(i);
 
-		awardExperience(player, "combat_general", combatXp);
+			Locker clock(entry->getKey(), destructedObject);
 
-		//Check if the group leader is a squad leader
-		if (group == NULL)
-			continue;
-
-		Vector3 pos(player->getWorldPositionX(), player->getWorldPositionY(), 0);
-
-		crossLocker.release();
-
-		ManagedReference<SceneObject*> groupLeader = group->getLeader();
-
-		if (groupLeader == NULL || !groupLeader->isPlayerCreature())
-			continue;
-
-		CreatureObject* squadLeader = groupLeader.castTo<CreatureObject*>();
-
-		Locker squadLock(squadLeader, destructedObject);
-
-		//If he is a squad leader, and is in range of this player, then add the combat exp for him to use.
-		if (squadLeader->hasSkill("outdoors_squadleader_novice") && pos.distanceTo(player->getWorldPosition()) <= 192.f) {
-			int v = slExperience.get(squadLeader) + combatXp;
-			slExperience.put(squadLeader, v);
+			awardExperience(entry->getKey(), "squadleader", entry->getValue() * 2.f);
 		}
+
+		threatMap->removeAll();
 	}
-
-	//Send out squad leader experience.
-	for (int i = 0; i < slExperience.size(); ++i) {
-		VectorMapEntry<ManagedReference<CreatureObject*>, int>* entry = &slExperience.elementAt(i);
-
-		Locker clock(entry->getKey(), destructedObject);
-
-		awardExperience(entry->getKey(), "squadleader", entry->getValue() * 2.f);
-	}
-
-	threatMap->removeAll();
 }
 
 bool PlayerManagerImplementation::checkEncumbrancies(CreatureObject* player, ArmorObject* armor) {
@@ -1683,10 +1710,10 @@ int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureO
 	Reference<Buff*> buff = new Buff(patient, buffname.hashCode(), duration, BuffType::MEDICAL);
 
 	if(BuffAttribute::isProtection(attribute))
-			buff->setSkillModifier(BuffAttribute::getProtectionString(attribute), buffvalue);
+		buff->setSkillModifier(BuffAttribute::getProtectionString(attribute), buffvalue);
 	else{
-			buff->setAttributeModifier(attribute, buffvalue);
-			buff->setFillAttributesOnBuff(true);
+		buff->setAttributeModifier(attribute, buffvalue);
+		buff->setFillAttributesOnBuff(true);
 	}
 
 	patient->addBuff(buff);
@@ -3051,8 +3078,8 @@ bool PlayerManagerImplementation::offerTeaching(CreatureObject* teacher, Creatur
 
 	StringBuffer prompt;
 	prompt << teacher->getDisplayedName()
-							<< " has offered to teach you " << sklname << " (" << skill->getXpCost()
-							<< " " << expname  << " experience cost).";
+													<< " has offered to teach you " << sklname << " (" << skill->getXpCost()
+													<< " " << expname  << " experience cost).";
 
 	suibox->setPromptText(prompt.toString());
 	suibox->setCallback(new PlayerTeachConfirmSuiCallback(server, skill));
