@@ -8,8 +8,8 @@ OLD_MAN_RESPAWN_TIME = 0
 OLD_MAN_HEADING = 0
 OLD_MAN_ID_STRING = ":old_man_id"
 --OLD_MAN_SPAWN_TIME = 12 * 60 * 60 * 1000 -- 12 hours as base
---OLD_MAN_SPAWN_TIME = 12 * 60 * 1000 -- 12 minutes as base for testing
-OLD_MAN_SPAWN_TIME = 12 * 1000 -- 12 minutes as base for testing
+OLD_MAN_SPAWN_TIME = 12 * 60 * 1000 -- 12 minutes as base for testing
+--OLD_MAN_SPAWN_TIME = 12 * 1000 -- 12 seconds as base for testing
 OLD_MAN_STOP_FOLLOW_TIME = 15 * 1000 -- 15 seconds
 OLD_MAN_SPATIAL_CHAT_TIME = 5 * 1000 -- 5 seconds
 OLD_MAN_GREETING_STRING = "@quest/force_sensitive/intro:oldman_greeting"
@@ -167,7 +167,7 @@ end
 -- Generate an event to spawn the old man for the player.
 -- @param pCreatureObject pointer to the creature object who should have an event created for spawning the old man.
 function OldMan.createSpawnOldManEvent(pCreatureObject)
-	createEvent(OLD_MAN_SPAWN_TIME + math.random(OLD_MAN_SPAWN_TIME), "OldMan", "handleSpawnOldManEvent", pCreatureObject)
+	createEvent(true, OLD_MAN_SPAWN_TIME + math.random(OLD_MAN_SPAWN_TIME), "OldMan", "handleSpawnOldManEvent", pCreatureObject)
 end
 
 -- Check if the old man belongs to the player or not.
