@@ -1465,6 +1465,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isVehicleObject() {
 		return false;
 	}
+	
+	@dirty
+	public abstract boolean isDroidObject() {
+		return false;
+	}	
 
 	@dirty
 	public abstract boolean isBuildingObject() {
@@ -1613,6 +1618,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@dirty
 	public abstract boolean isVehicleDeedObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isDroidDeedObject() {
 		return false;
 	}
 	
@@ -1841,6 +1851,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	@dirty
 	public abstract boolean isVehicleControlDevice() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isDroidControlDevice() {
 		return false;
 	}
 

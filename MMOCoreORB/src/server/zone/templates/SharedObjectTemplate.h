@@ -181,6 +181,7 @@ public:
 	const static int PETDEED = 0x4000040;
 	const static int VEHICLECUSTOMKIT = 0x4000041;
 	const static int SKILLBUFF = 0x4000042;
+	const static int DROIDDEED = 0x4000043;
 
 public:
 	SharedObjectTemplate();
