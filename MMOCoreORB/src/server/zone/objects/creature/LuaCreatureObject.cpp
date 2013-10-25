@@ -69,7 +69,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "isImperial", &LuaCreatureObject::isImperial},
 		{ "isNeutral", &LuaCreatureObject::isNeutral},
 		{ "teleport", &LuaSceneObject::teleport},
-		{ "getName", &LuaCreatureObject::getName},
+		{ "getFirstName", &LuaCreatureObject::getFirstName},
 		{ "isAiAgent", &LuaCreatureObject::isAiAgent},
 		{ "setFactionRank", &LuaCreatureObject::setFactionRank},
 		{ "getFactionRank", &LuaCreatureObject::getFactionRank},
@@ -102,7 +102,7 @@ int LuaCreatureObject::_setObject(lua_State* L) {
 	return 0;
 }
 
-int LuaCreatureObject::getName(lua_State* L) {
+int LuaCreatureObject::getFirstName(lua_State* L) {
 	String text = realObject->getFirstName();
 	lua_pushstring(L, text.toCharArray());
 	return 1;
