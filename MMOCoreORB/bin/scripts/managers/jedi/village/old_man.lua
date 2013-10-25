@@ -10,7 +10,9 @@ OLD_MAN_ID_STRING = ":old_man_id"
 --OLD_MAN_SPAWN_TIME = 12 * 60 * 60 * 1000 -- 12 hours as base
 --OLD_MAN_SPAWN_TIME = 12 * 60 * 1000 -- 12 minutes as base for testing
 OLD_MAN_SPAWN_TIME = 12 * 1000 -- 12 minutes as base for testing
-OLD_MAN_STOP_FOLLOW_TIME = 20 * 1000 -- 20 seconds
+OLD_MAN_STOP_FOLLOW_TIME = 15 * 1000 -- 15 seconds
+OLD_MAN_SPATIAL_CHAT_TIME = 5 * 1000 -- 5 seconds
+OLD_MAN_GREETING_STRING = "@quest/force_sensitive/intro:oldman_greeting"
 
 OldMan = ScreenPlay:new {}
 
@@ -101,6 +103,39 @@ function OldMan:handleStopFollowPlayerEvent(pCreatureObject)
 	OldMan.setToFollow(pOldMan, nil)
 end
 
+-- Get the first name of the player.
+-- @param pCreatureObject pointer to the creature object of the player.
+-- @return the first name of the player.
+function OldMan.getPlayerFirstName(pCreatureObject)
+	local firstName = OldMan.withCreatureObject(pCreatureObject, function(creatureObject)
+		return creatureObject:getFirstName()
+	end)
+	
+	if firstName == nil then
+		return ""
+	end
+	
+	return firstName
+end
+
+-- FUnction that sends the greeting string to the player from the old man.
+-- @param pOldMan pointer to the creature object of the old man.
+-- @param pCreatureObject pointer to the creature object of the player.
+function OldMan.sendGreetingString(pOldMan, pCreatureObject)
+	local greetingString = LuaStringIdChatParameter(OLD_MAN_GREETING_STRING)
+	local firstName = OldMan.getPlayerFirstName(pCreatureObject)
+	greetingString:setTT(firstName)
+	spatialChat(pOldMan, greetingString:_getObject())
+end
+
+-- Function to handle the spatial chat event for the old man.
+-- @param pCreatureObject pointer to the creature object of the player who got an old man that should say something in spatial chat.
+function OldMan:handleSpatialChatEvent(pCreatureObject)
+	local oldManId = OldMan.readOldManIdFromPlayer(pCreatureObject)
+	local pOldMan = getSceneObject(oldManId)
+	OldMan.sendGreetingString(pOldMan, pCreatureObject)
+end
+
 -- Try to spawn the old man and create the needed events.
 -- @param pCreatureObject pointer to the creature object of the player who should get the old man spawned.
 -- @return true if everything were successful.
@@ -110,6 +145,7 @@ function OldMan.tryToSpawnOldMan(pCreatureObject)
 		OldMan.saveOldManIdOnPlayer(pCreatureObject, pOldMan)
 		OldMan.setToFollow(pOldMan, pCreatureObject)
 		createEvent(OLD_MAN_STOP_FOLLOW_TIME, "OldMan", "handleStopFollowPlayerEvent", pCreatureObject)
+		createEvent(OLD_MAN_SPATIAL_CHAT_TIME, "OldMan", "handleSpatialChatEvent", pCreatureObject)
 		return true
 	else
 		return false

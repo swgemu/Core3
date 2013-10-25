@@ -3,6 +3,7 @@ local realGetCityRegionAt
 local realGetSceneObject
 local realGetSpawnPoint
 local realReadData
+local realSpatialChat
 local realSpawnMobile
 local realWriteData
 
@@ -11,6 +12,7 @@ local realLuaCityRegion
 local realLuaCreatureObject
 local realLuaPlayerObject
 local realLuaSceneObject
+local realLuaStringIdChatParameter
 
 local DirectorManagerMocks = { }
 
@@ -19,6 +21,7 @@ DirectorManagerMocks.cityRegions = {}
 DirectorManagerMocks.creatureObjects = {}
 DirectorManagerMocks.playerObjects = {}
 DirectorManagerMocks.sceneObjects = {}
+DirectorManagerMocks.stringIds = {}
 
 -- Function to be called in the setup method for a test to prepare the mocks.
 function DirectorManagerMocks.setup()
@@ -27,6 +30,7 @@ function DirectorManagerMocks.setup()
 	realGetSceneObject = getSceneObject
 	realGetSpawnPoint = getSpawnPoint
 	realReadData = readData
+	realSpatialChat = spatialChat
 	realSpawnMobile = spawnMobile
 	realWriteData = writeData
 
@@ -35,6 +39,7 @@ function DirectorManagerMocks.setup()
 	realLuaCreatureObject = LuaCreatureObject
 	realLuaPlayerObject = LuaPlayerObject
 	realLuaSceneObject = LuaSceneObject
+	realLuaStringIdChatParameter = LuaStringIdChatParameter
 end
 
 -- Function to be called in the teardown method for a test to clean up the mocks.
@@ -44,6 +49,7 @@ function DirectorManagerMocks.teardown()
 	getSceneObject = realGetSceneObject
 	getSpawnPoint = realGetSpawnPoint
 	readData = realReadData
+	spatialChat = realSpatialChat
 	spawnMobile = realSpawnMobile
 	writeData = realWriteData
 
@@ -52,6 +58,7 @@ function DirectorManagerMocks.teardown()
 	LuaCreatureObject = realLuaCreatureObject
 	LuaPlayerObject = realLuaPlayerObject
 	LuaSceneObject = realLuaSceneObject
+	LuaStringIdChatParameter = realLuaStringIdChatParameter
 end
 
 -- Function to be called in the before_each method for a test to prepare the mocks.
@@ -61,6 +68,7 @@ function DirectorManagerMocks.before_each()
 	getSceneObject = spy.new(function() return nil end)
 	getSpawnPoint = spy.new(function() return nil end)
 	readData = spy.new(function() return nil end)
+	spatialChat = spy.new(function() end)
 	spawnMobile = spy.new(function() return nil end)
 	writeData = spy.new(function() end)
 
@@ -102,6 +110,10 @@ function DirectorManagerMocks.before_each()
 			return nil
 		end
 		return DirectorManagerMocks.sceneObjects[pSceneObject]
+	end)
+
+	LuaStringIdChatParameter = spy.new(function(stringId)
+		return DirectorManagerMocks.stringIds[stringId]
 	end)
 end
 

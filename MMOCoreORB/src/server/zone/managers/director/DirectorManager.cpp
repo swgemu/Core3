@@ -810,10 +810,10 @@ int DirectorManager::spatialChat(lua_State* L) {
 
 	CreatureObject* creature = (CreatureObject*)lua_touserdata(L, -2);
 
-	if (lua_isuserdata(L, -1)) {
+	if (lua_islightuserdata(L, -1)) {
 		StringIdChatParameter* message = (StringIdChatParameter*)lua_touserdata(L, -1);
 
-		if (creature != NULL) {
+		if (creature != NULL && message != NULL) {
 			chatManager->broadcastMessage(creature, *message, 0, 0, 0);
 		}
 	} else {

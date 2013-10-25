@@ -1589,7 +1589,7 @@ function DWB:checkDoor(sceneObject, creatureObject)
 	number = readData(terminal:getObjectID() .. ":dwb:terminal")
 	
 	if TEST == 1 then
-		printf(creature:getName() .. " trying to open door number " .. number .. "\n")
+		printf(creature:getFirstName() .. " trying to open door number " .. number .. "\n")
 	end
 	
 	type = DOORTYPE[number]
