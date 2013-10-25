@@ -90,8 +90,10 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		return;
 
 	int currentlySpawned = 0;
-
+	int spawnedLevel = 0;
 	int maxPets = 1;
+	int maxLevelofPets = player->getSkillMod("tame_level");
+	int level = pet->getLevel();
 
 	String petType;
 
@@ -115,7 +117,19 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 			ManagedReference<AiAgent*> object = cast<AiAgent*>(device->getControlledObject());
 
 			if (object != NULL && object->isInQuadTree()) {
-				if ((object->isCreature() && petType == "creature") || (object->isNonPlayerCreatureObject() && petType == "npc")) {
+				if (object->isCreature() && petType == "creature") {
+					if (++currentlySpawned >= maxPets) {
+						player->sendSystemMessage("@pet/pet_menu:at_max"); // You already have the maximum number of pets of this type that you can call.
+						return;
+					}
+
+					spawnedLevel += object->getLevel();
+
+					if ((spawnedLevel + level) > maxLevelofPets) {
+						player->sendSystemMessage("@pet/pet_menu:control_exceeded"); // Calling this pet would exceed your Control Level ability.
+						return;
+					}
+				} else if (object->isNonPlayerCreatureObject() && petType == "npc") {
 					if (++currentlySpawned >= maxPets) {
 						player->sendSystemMessage("@pet/pet_menu:at_max"); // You already have the maximum number of pets of this type that you can call.
 						return;

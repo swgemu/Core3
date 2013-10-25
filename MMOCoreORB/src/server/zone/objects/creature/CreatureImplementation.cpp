@@ -83,7 +83,7 @@ void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResp
 			menuResponse->addRadialMenuItemToRadialID(112, 236, 3, "@sui:harvest_bone");
 	}
 
-	if (isBaby() && player->hasSkill("outdoors_creaturehandler_novice")) {
+	if (canTameMe(player) && player->hasSkill("outdoors_creaturehandler_novice")) {
 		menuResponse->addRadialMenuItem(159, 3, "@pet/pet_menu:menu_tame");
 	}
 }
@@ -308,23 +308,11 @@ bool CreatureImplementation::hasSkillToHarvestMe(CreatureObject* player) {
 }
 
 bool CreatureImplementation::canTameMe(CreatureObject* player) {
-	if (!isBaby() || _this.get()->isInCombat() || _this.get()->isDead()) {
-		player->sendSystemMessage("@pet/pet_menu:sys_cant_tame"); // You can't tame that
+	if (!isBaby() || _this.get()->isInCombat() || _this.get()->isDead())
 		return false;
-	}
 
 	if(!player->isInRange(_this.get(), 8.0f) || player->isInCombat() || player->isDead() || player->isIncapacitated() || player->isMounted())
 		return false;
-
-	if (!player->hasSkill("outdoors_creaturehandler_novice") || (getLevel() > player->getSkillMod("tame_level"))) {
-		player->sendSystemMessage("@pet/pet_menu:sys_lack_skill"); // You lack the skill to be able to tame that creature.
-		return false;
-	}
-
-	if (isAggressiveTo(player) && player->getSkillMod("tame_aggro") <= 0) {
-		player->sendSystemMessage("@pet/pet_menu:sys_lack_skill"); // You lack the skill to be able to tame that creature.
-		return false;
-	}
 
 	return true;
 }

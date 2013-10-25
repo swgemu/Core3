@@ -24,6 +24,7 @@
 #include "server/zone/objects/creature/Creature.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/events/MilkCreatureTask.h"
+#include "server/zone/objects/creature/events/TameCreatureTask.h"
 #include "server/zone/objects/creature/events/SampleDnaTask.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -692,8 +693,20 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 	if (zone == NULL || !creature->isCreature())
 		return;
 
-	if (!creature->canTameMe(player))
+	if (!creature->canTameMe(player)) {
+		player->sendSystemMessage("@pet/pet_menu:sys_cant_tame"); // You can't tame that
 		return;
+	}
+
+	if (!player->hasSkill("outdoors_creaturehandler_novice") || (creature->getLevel() > player->getSkillMod("tame_level"))) {
+		player->sendSystemMessage("@pet/pet_menu:sys_lack_skill"); // You lack the skill to be able to tame that creature.
+		return;
+	}
+
+	if (creature->isAggressiveTo(player) && player->getSkillMod("tame_aggro") <= 0) {
+		player->sendSystemMessage("@pet/pet_menu:sys_lack_skill"); // You lack the skill to be able to tame that creature.
+		return;
+	}
 
 	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
 
@@ -742,7 +755,15 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 		}
 	}
 
-	player->sendSystemMessage("You should be able to tame this creature, once taming is implemented.");
+	ChatManager* chatManager = player->getZoneServer()->getChatManager();
+
+	chatManager->broadcastMessage(player, "@hireling/hireling:taming_1"); // Easy.
+
+	Locker clocker(creature);
+
+	ManagedReference<TameCreatureTask*> task = new TameCreatureTask(creature, player);
+
+	task->schedule(8000);
 }
 
 void CreatureManagerImplementation::milk(Creature* creature, CreatureObject* player) {
