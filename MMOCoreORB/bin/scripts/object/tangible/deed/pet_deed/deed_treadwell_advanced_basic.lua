@@ -43,6 +43,10 @@
 
 object_tangible_deed_pet_deed_deed_treadwell_advanced_basic = object_tangible_deed_pet_deed_shared_deed_treadwell_advanced_basic:new {
 
+	templateType = DROIDDEED,
+
+	controlDeviceObjectTemplate = "object/intangible/pet/wed_treadwell.iff",
+	generatedObjectTemplate = "object/mobile/wed_treadwell.iff",
 
 	numberExperimentalProperties = {1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR", "UT", "XX", "XX", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
