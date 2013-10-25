@@ -556,7 +556,7 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 	ManagedReference<ResourceManager*> resourceManager = zone->getZoneServer()->getResourceManager();
 
 	String restype = "";
-	int quantity = 0;
+	float quantity = 0;
 
 	if (selectedID == 112) {
 		int type = System::random(2);
