@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_75b680de",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-10-25T04:15:44Z",
+      "side": 1,
+      "message": "You got most of what I asked for you to do, but I\u0027d still like this block of code (currently line 933-964) moved out of the for loops (just after line 908). The two lines that have xpAmount \u003d ai-\u003egetBaseXp(); would change to baseXp \u003d ai-\u003egetBaseXp();",
+      "revId": "8af7fcf65dfa3a0ee985354c0642625bc16cc04e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
