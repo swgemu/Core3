@@ -7,6 +7,7 @@ describe("Old Man", function()
 	local pPlayerObject = { "playerObjectPointer" }
 	local pOldMan = { "oldManPointer" }
 	local pCityRegion = { "cityRegionPointer" }
+	local pGreetingStringId = { "greetingStringIdPointer" }
 	local playerId = 12345678
 	local oldManId = 98765432
 	local creatureObjectPlayer
@@ -16,6 +17,8 @@ describe("Old Man", function()
 	local playerObject
 	local cityRegion
 	local aiAgent
+	local greetingStringId
+	local playerFirstName = "firstName"
 
 	setup(function()
 		DirectorManagerMocks.setup()
@@ -34,37 +37,39 @@ describe("Old Man", function()
 		readData = spy.new(function() return oldManId end)
 		spawnMobile = spy.new(function() return pOldMan end)
 
-		creatureObjectPlayer = { getObjectID = nil, getPlayerObject = nil }
-		creatureObjectOldMan = { getObjectID = nil }
+		creatureObjectPlayer = { getFirstName = nil, getObjectID = nil, getPlayerObject = nil }
+		creatureObjectPlayer.getFirstName = spy.new(function() return playerFirstName end)
 		creatureObjectPlayer.getObjectID = spy.new(function() return playerId end)
 		creatureObjectPlayer.getPlayerObject = spy.new(function() return pPlayerObject end)
+		DirectorManagerMocks.creatureObjects[pCreatureObject] = creatureObjectPlayer
+		
+		creatureObjectOldMan = { getObjectID = nil }
 		creatureObjectOldMan.getObjectID = spy.new(function() return oldManId end)
+		DirectorManagerMocks.creatureObjects[pOldMan] = creatureObjectOldMan
 
 		sceneObject = { getParentID = nil, getZoneName = nil, getWorldPositionX = nil, getWorldPositionY = nil }
 		sceneObject.getParentID = spy.new(function() return 0 end)
 		sceneObject.getZoneName = spy.new(function() return "testzone" end)
 		sceneObject.getWorldPositionX = spy.new(function() return 33 end)
 		sceneObject.getWorldPositionY = spy.new(function() return 22 end)
+		DirectorManagerMocks.sceneObjects[pCreatureObject] = sceneObject
 
 		playerObject = { isOnline = nil }
 		playerObject.isOnline = spy.new(function() return true end)
+		DirectorManagerMocks.playerObjects[pPlayerObject] = playerObject
 
 		cityRegion = { isClientRegion = nil }
 		cityRegion.isClientRegion = spy.new(function() return false end)
+		DirectorManagerMocks.cityRegions[pCityRegion] = cityRegion
 		
 		aiAgent = { setFollowObject = nil }
 		aiAgent.setFollowObject = spy.new(function() end)
-		
 		DirectorManagerMocks.aiAgents[pOldMan] = aiAgent
-
-		DirectorManagerMocks.creatureObjects[pCreatureObject] = creatureObjectPlayer
-		DirectorManagerMocks.creatureObjects[pOldMan] = creatureObjectOldMan
-
-		DirectorManagerMocks.playerObjects[pPlayerObject] = playerObject
-
-		DirectorManagerMocks.sceneObjects[pCreatureObject] = sceneObject
-
-		DirectorManagerMocks.cityRegions[pCityRegion] = cityRegion
+		
+		greetingStringId = { _getObject = nil, setTT = nil }
+		greetingStringId._getObject = spy.new(function() return pGreetingStringId end)
+		greetingStringId.setTT = spy.new(function(object, string) assert.same(string, playerFirstName) end)
+		DirectorManagerMocks.stringIds[OLD_MAN_GREETING_STRING] = greetingStringId
 	end)
 
 	describe("Interface methods", function()
@@ -434,10 +439,10 @@ describe("Old Man", function()
 						assert.spy(OldMan.setToFollow).was.called_with(pOldMan, pCreatureObject)
 					end)
 					
-					it("Should create an event for stopping the old man from following the player.", function()
+					it("Should create events for the old man to send greeting string and to stop follow the player.", function()
 						OldMan.tryToSpawnOldMan(pCreatureObject)
 						
-						assert.spy(createEvent).was.called(1)
+						assert.spy(createEvent).was.called(2)
 					end)
 				end)
 				
@@ -526,6 +531,46 @@ describe("Old Man", function()
 			end)
 		end)
 		
+		describe("handleSpatialChatEvent", function()
+			local realSendGreetingString
+			local realReadOldManIdFromPlayer
+			
+			setup(function()
+				realSendGreetingString = OldMan.sendGreetingString
+				realReadOldManIdFromPlayer = OldMan.readOldManIdFromPlayer
+			end)
+			
+			teardown(function()
+				OldMan.sendGreetingString = realSendGreetingString
+				OldMan.readOldManIdFromPlayer = realReadOldManIdFromPlayer
+			end)
+			
+			before_each(function()
+				OldMan.sendGreetingString = spy.new(function() end)
+				OldMan.readOldManIdFromPlayer = spy.new(function() return oldManId end)
+			end)
+			
+			describe("When called with the player as argument", function()
+				it("Should read the old man id from the player.", function()
+					OldMan:handleSpatialChatEvent(pCreatureObject)
+					
+					assert.spy(OldMan.readOldManIdFromPlayer).was.called_with(pCreatureObject)
+				end)
+				
+				it("Should get a pointer to the old man.", function()
+					OldMan:handleSpatialChatEvent(pCreatureObject)
+					
+					assert.spy(getSceneObject).was.called_with(oldManId)
+				end)
+				
+				it("Should send the greeting string.", function()
+					OldMan:handleSpatialChatEvent(pCreatureObject)
+					
+					assert.spy(OldMan.sendGreetingString).was.called_with(pOldMan, pCreatureObject)
+				end)
+			end)
+		end)
+		
 		describe("readOldManIdFromPlayer", function()
 			describe("When called with a pointer to a creature object of a player as argument", function()
 				it("Should read the old man id from the player.", function()
@@ -537,5 +582,62 @@ describe("Old Man", function()
 				end)
 			end)
 		end)
+		
+		describe("sendGreetingString", function()
+			describe("When called with old man and player", function()
+				local realGetPlayerFirstName
+				
+				setup(function()
+					realGetPlayerFirstName = OldMan.getPlayerFirstName
+				end)
+				
+				teardown(function()
+					OldMan.getPlayerFirstName = realGetPlayerFirstName
+				end)
+				
+				before_each(function()
+					OldMan.getPlayerFirstName = spy.new(function() return playerFirstName end)
+				end)
+				
+				it("Should create a string id for the oldman_greeting string.", function()
+					OldMan.sendGreetingString(pOldMan, pCreatureObject)
+					
+					assert.spy(LuaStringIdChatParameter).was.called_with(OLD_MAN_GREETING_STRING)
+				end)
+				
+				it("Should get the name of the player.", function()
+					OldMan.sendGreetingString(pOldMan, pCreatureObject)
+					
+					assert.spy(OldMan.getPlayerFirstName).was.called_with(pCreatureObject)
+				end)
+				
+				it("Should set the %TT of the string to the name of the player.", function()
+					OldMan.sendGreetingString(pOldMan, pCreatureObject)
+					
+					assert.spy(greetingStringId.setTT).was.called(1)
+				end)
+				
+				it("Should send the string id to spatial chat.", function()
+					OldMan.sendGreetingString(pOldMan, pCreatureObject)
+					
+					assert.spy(spatialChat).was.called_with(pOldMan, pGreetingStringId)
+				end)
+			end)
+		end)
+		
+		describe("getPlayerFirstName", function()
+			describe("When called with a player", function()
+				it("Should return the first name of the player.", function()
+					assert.same(OldMan.getPlayerFirstName(pCreatureObject), playerFirstName)
+					
+					assert.spy(creatureObjectPlayer.getFirstName).was.called(1)
+				end)
+			end)
+			describe("When called with nil", function()
+				it("Should return an empty string.", function()
+					assert.same(OldMan.getPlayerFirstName(nil), "")
+				end)
+			end)
+		end)		
 	end)
 end)

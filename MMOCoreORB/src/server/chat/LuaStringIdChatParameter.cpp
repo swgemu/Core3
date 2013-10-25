@@ -72,13 +72,13 @@ int LuaStringIdChatParameter::_setObject(lua_State* L) {
 }
 
 int LuaStringIdChatParameter::_getObject(lua_State* L) {
-	lua_pushlightuserdata(L, &realObject);
+	lua_pushlightuserdata(L, realObject.get());
 
 	return 1;
 }
 
 int LuaStringIdChatParameter::setTT(lua_State *L) {
-	String tt = lua_tostring(L, 1);
+	String tt = lua_tostring(L, -1);
 
 	realObject->setTT(tt);
 
@@ -86,7 +86,7 @@ int LuaStringIdChatParameter::setTT(lua_State *L) {
 }
 
 int LuaStringIdChatParameter::setTU(lua_State *L) {
-	String tu = lua_tostring(L, 1);
+	String tu = lua_tostring(L, -1);
 
 	realObject->setTU(tu);
 
@@ -94,7 +94,7 @@ int LuaStringIdChatParameter::setTU(lua_State *L) {
 }
 
 int LuaStringIdChatParameter::setTO(lua_State *L) {
-	String to = lua_tostring(L, 1);
+	String to = lua_tostring(L, -1);
 
 	realObject->setTO(to);
 
@@ -102,7 +102,7 @@ int LuaStringIdChatParameter::setTO(lua_State *L) {
 }
 
 int LuaStringIdChatParameter::setDI(lua_State *L) {
-	int di = lua_tointeger(L, 1);
+	int di = lua_tointeger(L, -1);
 
 	realObject->setDI(di);
 
@@ -110,7 +110,7 @@ int LuaStringIdChatParameter::setDI(lua_State *L) {
 }
 
 int LuaStringIdChatParameter::setDF(lua_State *L) {
-	float df = lua_tonumber(L, 1);
+	float df = lua_tonumber(L, -1);
 
 	realObject->setDF(df);
 
