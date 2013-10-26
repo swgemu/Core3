@@ -114,10 +114,10 @@ object_weapon_ranged_pistol_pistol_launcher = object_weapon_ranged_pistol_shared
 	maxRange = 64,
 	maxRangeAccuracy = -70,
 
-	minDamage = 25,
-	maxDamage = 130,
+	minDamage = 35,
+	maxDamage = 175,
 
-	attackSpeed = 4.2,
+	attackSpeed = 4,
 
 	woundsRatio = 18,
 

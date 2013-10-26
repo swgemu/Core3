@@ -114,10 +114,10 @@ object_weapon_ranged_pistol_pistol_republic_blaster = object_weapon_ranged_pisto
 	maxRange = 64,
 	maxRangeAccuracy = -70,
 
-	minDamage = 30,
-	maxDamage = 140,
+	minDamage = 45,
+	maxDamage = 190,
 
-	attackSpeed = 3.5,
+	attackSpeed = 3.3,
 
 	woundsRatio = 15,
 

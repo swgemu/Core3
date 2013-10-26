@@ -114,8 +114,8 @@ object_weapon_ranged_rifle_rifle_jawa_ion = object_weapon_ranged_rifle_shared_ri
 	maxRange = 64,
 	maxRangeAccuracy = -80,
 
-	minDamage = 80,
-	maxDamage = 150,
+	minDamage = 110,
+	maxDamage = 205,
 
 	attackSpeed = 6.5,
 

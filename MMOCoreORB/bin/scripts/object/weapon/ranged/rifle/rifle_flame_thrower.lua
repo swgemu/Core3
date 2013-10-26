@@ -112,10 +112,10 @@ object_weapon_ranged_rifle_rifle_flame_thrower = object_weapon_ranged_rifle_shar
 	maxRange = 64,
 	maxRangeAccuracy = 0,
 
-	minDamage = 240,
-	maxDamage = 690,
+	minDamage = 480,
+	maxDamage = 830,
 
-	attackSpeed = 7.2,
+	attackSpeed = 6,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "CD", "OQ"},
