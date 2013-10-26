@@ -13,7 +13,8 @@ describe("Old Man", function()
 	local creatureObjectPlayer
 	local creatureObjectOldMan
 	local playerObject
-	local sceneObject
+	local sceneObjectPlayer
+	local sceneObjectOldMan
 	local playerObject
 	local cityRegion
 	local aiAgent
@@ -47,12 +48,16 @@ describe("Old Man", function()
 		creatureObjectOldMan.getObjectID = spy.new(function() return oldManId end)
 		DirectorManagerMocks.creatureObjects[pOldMan] = creatureObjectOldMan
 
-		sceneObject = { getParentID = nil, getZoneName = nil, getWorldPositionX = nil, getWorldPositionY = nil }
-		sceneObject.getParentID = spy.new(function() return 0 end)
-		sceneObject.getZoneName = spy.new(function() return "testzone" end)
-		sceneObject.getWorldPositionX = spy.new(function() return 33 end)
-		sceneObject.getWorldPositionY = spy.new(function() return 22 end)
-		DirectorManagerMocks.sceneObjects[pCreatureObject] = sceneObject
+		sceneObjectPlayer = { getParentID = nil, getZoneName = nil, getWorldPositionX = nil, getWorldPositionY = nil }
+		sceneObjectPlayer.getParentID = spy.new(function() return 0 end)
+		sceneObjectPlayer.getZoneName = spy.new(function() return "testzone" end)
+		sceneObjectPlayer.getWorldPositionX = spy.new(function() return 33 end)
+		sceneObjectPlayer.getWorldPositionY = spy.new(function() return 22 end)
+		DirectorManagerMocks.sceneObjects[pCreatureObject] = sceneObjectPlayer
+		
+		sceneObjectOldMan = { destroyObjectFromWorld = nil }
+		sceneObjectOldMan.destroyObjectFromWorld = spy.new(function() end)
+		DirectorManagerMocks.sceneObjects[pOldMan] = sceneObjectOldMan		
 
 		playerObject = { isOnline = nil }
 		playerObject.isOnline = spy.new(function() return true end)
@@ -258,21 +263,21 @@ describe("Old Man", function()
 		describe("isPlayerInABuilding", function()
 			describe("When called with a creature object pointer", function()
 				it("Should return true if the parent id of the player is not equal to 0", function()
-					sceneObject.getParentID = spy.new(function() return 1 end)
+					sceneObjectPlayer.getParentID = spy.new(function() return 1 end)
 
 					assert.is_true(OldMan.isPlayerInABuilding(pCreatureObject))
 
 					assert.spy(LuaSceneObject).was.called(1)
-					assert.spy(sceneObject.getParentID).was.called(1)
+					assert.spy(sceneObjectPlayer.getParentID).was.called(1)
 				end)
 
 				it("Should return false if the parent id of the player is equal to 0", function()
-					sceneObject.getParentID = spy.new(function() return 0 end)
+					sceneObjectPlayer.getParentID = spy.new(function() return 0 end)
 
 					assert.is_false(OldMan.isPlayerInABuilding(pCreatureObject))
 
 					assert.spy(LuaSceneObject).was.called(1)
-					assert.spy(sceneObject.getParentID).was.called(1)
+					assert.spy(sceneObjectPlayer.getParentID).was.called(1)
 				end)
 			end)
 
@@ -292,9 +297,9 @@ describe("Old Man", function()
 
 			describe("When called with a creature object pointer", function()
 				after_each(function()
-					assert.spy(sceneObject.getZoneName).was.called(1)
-					assert.spy(sceneObject.getWorldPositionX).was.called(1)
-					assert.spy(sceneObject.getWorldPositionY).was.called(1)
+					assert.spy(sceneObjectPlayer.getZoneName).was.called(1)
+					assert.spy(sceneObjectPlayer.getWorldPositionX).was.called(1)
+					assert.spy(sceneObjectPlayer.getWorldPositionY).was.called(1)
 					assert.spy(LuaSceneObject).was.called(1)
 					assert.spy(getCityRegionAt).was.called_with("testzone", 33, 22)
 				end)			
@@ -329,8 +334,8 @@ describe("Old Man", function()
 
 		describe("spawnOldMan", function()
 			after_each(function()
-				assert.spy(sceneObject.getWorldPositionX).was.called(1)
-				assert.spy(sceneObject.getWorldPositionY).was.called(1)
+				assert.spy(sceneObjectPlayer.getWorldPositionX).was.called(1)
+				assert.spy(sceneObjectPlayer.getWorldPositionY).was.called(1)
 				assert.spy(LuaSceneObject).was.called(1)
 			end)
 
@@ -345,8 +350,8 @@ describe("Old Man", function()
 					it("Should spawn the old man.", function()
 						OldMan.spawnOldMan(pCreatureObject)
 
-						assert.spy(sceneObject.getZoneName).was.called(1)
-						assert.spy(sceneObject.getParentID).was.called(1)
+						assert.spy(sceneObjectPlayer.getZoneName).was.called(1)
+						assert.spy(sceneObjectPlayer.getParentID).was.called(1)
 						assert.spy(spawnMobile).was.called_with("testzone", OLD_MAN_TEMPLATE, OLD_MAN_RESPAWN_TIME, 1, 2, 3, OLD_MAN_HEADING, 0)
 					end)
 
@@ -363,8 +368,8 @@ describe("Old Man", function()
 					it("Should not spawn the old man.", function()
 						OldMan.spawnOldMan(pCreatureObject)
 
-						assert.spy(sceneObject.getZoneName).was.not_called()
-						assert.spy(sceneObject.getParentID).was.not_called()
+						assert.spy(sceneObjectPlayer.getZoneName).was.not_called()
+						assert.spy(sceneObjectPlayer.getParentID).was.not_called()
 						assert.spy(spawnMobile).was.not_called()
 					end)
 
@@ -439,10 +444,10 @@ describe("Old Man", function()
 						assert.spy(OldMan.setToFollow).was.called_with(pOldMan, pCreatureObject)
 					end)
 					
-					it("Should create events for the old man to send greeting string and to stop follow the player.", function()
+					it("Should create events for the old man to send greeting string, to stop follow the player and for despawning.", function()
 						OldMan.tryToSpawnOldMan(pCreatureObject)
 						
-						assert.spy(createEvent).was.called(2)
+						assert.spy(createEvent).was.called(3)
 					end)
 				end)
 				
@@ -636,6 +641,64 @@ describe("Old Man", function()
 			describe("When called with nil", function()
 				it("Should return an empty string.", function()
 					assert.same(OldMan.getPlayerFirstName(nil), "")
+				end)
+			end)
+		end)
+		
+		describe("handleDespawnEvent", function()
+			local realDespawnOldMan
+			local realReadOldManIdFromPlayer
+			
+			setup(function()
+				realDespawnOldMan = OldMan.despawnOldMan
+				realReadOldManIdFromPlayer = OldMan.readOldManIdFromPlayer
+			end)
+			
+			teardown(function()
+				OldMan.despawnOldMan = realDespawnOldMan
+				OldMan.readOldManIdFromPlayer = realReadOldManIdFromPlayer
+			end)
+			
+			before_each(function()
+				OldMan.despawnOldMan = spy.new(function() end)
+				OldMan.readOldManIdFromPlayer = spy.new(function() return oldManId end)
+			end)
+			
+			describe("When called with the player as argument", function()
+				it("Should read the old man id from the player.", function()
+					OldMan:handleDespawnEvent(pCreatureObject)
+					
+					assert.spy(OldMan.readOldManIdFromPlayer).was.called_with(pCreatureObject)
+				end)
+				
+				it("Should get a pointer to the old man.", function()
+					OldMan:handleDespawnEvent(pCreatureObject)
+					
+					assert.spy(getSceneObject).was.called_with(oldManId)
+				end)
+				
+				it("Should despawn the old man.", function()
+					OldMan:handleDespawnEvent(pCreatureObject)
+					
+					assert.spy(OldMan.despawnOldMan).was.called_with(pOldMan)
+				end)
+			end)
+		end)
+		
+		describe("despawnOldMan", function()
+			describe("When called with an old man as argument", function()
+				it("Should destroy the old man from the world.", function()
+					OldMan.despawnOldMan(pOldMan)
+					
+					assert.spy(sceneObjectOldMan.destroyObjectFromWorld).was.called(1)
+				end)
+			end)
+			
+			describe("When called with nil as argument", function()
+				it("Should not try to destroy the old man from the world.", function()
+					OldMan.despawnOldMan(nil)
+					
+					assert.spy(sceneObjectOldMan.destroyObjectFromWorld).was.not_called()
 				end)
 			end)
 		end)		

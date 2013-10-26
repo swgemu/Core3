@@ -8,8 +8,10 @@ OLD_MAN_RESPAWN_TIME = 0
 OLD_MAN_HEADING = 0
 OLD_MAN_ID_STRING = ":old_man_id"
 --OLD_MAN_SPAWN_TIME = 12 * 60 * 60 * 1000 -- 12 hours as base
+OLD_MAN_DESPAWN_TIME = 5 * 60 * 1000 -- 5 minutes
 OLD_MAN_SPAWN_TIME = 12 * 60 * 1000 -- 12 minutes as base for testing
 --OLD_MAN_SPAWN_TIME = 12 * 1000 -- 12 seconds as base for testing
+--OLD_MAN_DESPAWN_TIME = 30 * 1000 -- 30 seconds as base for testing
 OLD_MAN_STOP_FOLLOW_TIME = 15 * 1000 -- 15 seconds
 OLD_MAN_SPATIAL_CHAT_TIME = 5 * 1000 -- 5 seconds
 OLD_MAN_GREETING_STRING = "@quest/force_sensitive/intro:oldman_greeting"
@@ -136,6 +138,22 @@ function OldMan:handleSpatialChatEvent(pCreatureObject)
 	OldMan.sendGreetingString(pOldMan, pCreatureObject)
 end
 
+-- Despawn the old man.
+-- @param pointer to the creature object of the old man.
+function OldMan.despawnOldMan(pOldMan)
+	OldMan.withSceneObject(pOldMan, function(sceneObject)
+		sceneObject:destroyObjectFromWorld()
+	end)
+end
+
+-- Function to handle the despawn of the old man.
+-- @param pCreatureObject pointer to the creature object of the player whos old man should despawn.
+function OldMan:handleDespawnEvent(pCreatureObject)
+	local oldManId = OldMan.readOldManIdFromPlayer(pCreatureObject)
+	local pOldMan = getSceneObject(oldManId)
+	OldMan.despawnOldMan(pOldMan)
+end
+
 -- Try to spawn the old man and create the needed events.
 -- @param pCreatureObject pointer to the creature object of the player who should get the old man spawned.
 -- @return true if everything were successful.
@@ -146,6 +164,7 @@ function OldMan.tryToSpawnOldMan(pCreatureObject)
 		OldMan.setToFollow(pOldMan, pCreatureObject)
 		createEvent(OLD_MAN_STOP_FOLLOW_TIME, "OldMan", "handleStopFollowPlayerEvent", pCreatureObject)
 		createEvent(OLD_MAN_SPATIAL_CHAT_TIME, "OldMan", "handleSpatialChatEvent", pCreatureObject)
+		createEvent(OLD_MAN_DESPAWN_TIME, "OldMan", "handleDespawnEvent", pCreatureObject)
 		return true
 	else
 		return false
