@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_18b9a9e9",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/droid/DroidDeedImplementation.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-26T16:18:02Z",
+      "side": 1,
+      "message": "destroyObjectFromDatabase too right?",
+      "revId": "c0529210ad8c01a8195ddcdc1fb5a486e06083c1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
