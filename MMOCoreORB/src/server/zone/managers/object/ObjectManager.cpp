@@ -101,7 +101,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Creature>(SceneObjectType::CREATURE);
 	objectFactory.registerObject<NonPlayerCreatureObject>(SceneObjectType::NPCCREATURE);
 	objectFactory.registerObject<JunkdealerCreature>(SceneObjectType::JUNKDEALERCREATURE);
-	objectFactory.registerObject<CreatureObject>(SceneObjectType::DROIDCREATURE);
 	objectFactory.registerObject<NonPlayerCreatureObject>(SceneObjectType::PROBOTCREATURE);
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::VENDOR);
 
@@ -229,6 +228,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Deed>(SceneObjectType::DEED);
 	objectFactory.registerObject<VehicleDeed>(SceneObjectType::VEHICLEDEED);
 	objectFactory.registerObject<PetDeed>(SceneObjectType::PETDEED);
+	objectFactory.registerObject<DroidDeed>(SceneObjectType::DROIDDEED);
 	objectFactory.registerObject<StructureDeed>(SceneObjectType::BUILDINGDEED);
 	objectFactory.registerObject<StructureDeed>(SceneObjectType::INSTALLATIONDEED);
 	objectFactory.registerObject<ResourceDeed>(SceneObjectType::RESOURCEDEED);
@@ -278,10 +278,13 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<VehicleControlDevice>(SceneObjectType::VEHICLECONTROLDEVICE);
 	objectFactory.registerObject<PetControlDevice>(SceneObjectType::PETCONTROLDEVICE);
+	objectFactory.registerObject<DroidControlDevice>(SceneObjectType::DROIDCONTROLDEVICE);
 	objectFactory.registerObject<ShipControlDevice>(SceneObjectType::SHIPCONTROLDEVICE);
 
 	objectFactory.registerObject<VehicleObject>(SceneObjectType::VEHICLE);
 	objectFactory.registerObject<VehicleObject>(SceneObjectType::HOVERVEHICLE);
+
+	objectFactory.registerObject<DroidObject>(SceneObjectType::DROIDCREATURE);
 
 	objectFactory.registerObject<ResourceSpawn>(SceneObjectType::RESOURCESPAWN);
 	objectFactory.registerObject<ResourceContainer>(SceneObjectType::RESOURCECONTAINER);
