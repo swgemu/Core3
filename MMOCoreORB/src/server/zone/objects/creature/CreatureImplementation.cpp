@@ -64,6 +64,7 @@ void CreatureImplementation::runAway(CreatureObject* target) {
 }
 
 void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
+	AiAgentImplementation::fillObjectMenuResponse(menuResponse, player);
 
 	if (canMilkMe(player)) {
 
@@ -261,9 +262,8 @@ void CreatureImplementation::notifyDespawn(Zone* zone) {
 
 bool CreatureImplementation::canHarvestMe(CreatureObject* player) {
 
-	if(!player->isInRange(_this.get(), 10.0f)
-			|| player->isInCombat() || !player->hasSkill("outdoors_scout_novice")
-			|| player->isDead() || player->isIncapacitated())
+	if(!player->isInRange(_this.get(), 10.0f) || player->isInCombat() || !player->hasSkill("outdoors_scout_novice")
+			|| player->isDead() || player->isIncapacitated() || isPet())
 		return false;
 
 	if (!hasOrganics())
@@ -308,7 +308,7 @@ bool CreatureImplementation::hasSkillToHarvestMe(CreatureObject* player) {
 }
 
 bool CreatureImplementation::canTameMe(CreatureObject* player) {
-	if (!isBaby() || _this.get()->isInCombat() || _this.get()->isDead())
+	if (!isBaby() || _this.get()->isInCombat() || _this.get()->isDead() || isPet())
 		return false;
 
 	if(!player->isInRange(_this.get(), 8.0f) || player->isInCombat() || player->isDead() || player->isIncapacitated() || player->isMounted())
@@ -319,7 +319,7 @@ bool CreatureImplementation::canTameMe(CreatureObject* player) {
 
 bool CreatureImplementation::canMilkMe(CreatureObject* player) {
 
-	if (!hasMilk() || milkState != CreatureManager::NOTMILKED  || _this.get()->isInCombat() || _this.get()->isDead())
+	if (!hasMilk() || milkState != CreatureManager::NOTMILKED  || _this.get()->isInCombat() || _this.get()->isDead() || isPet())
 		return false;
 
 	if(!player->isInRange(_this.get(), 5.0f) || player->isInCombat() || player->isDead() || player->isIncapacitated() || !(player->hasState(CreatureState::MASKSCENT)))
