@@ -107,8 +107,9 @@ public:
 
 		SceneObject* datapad = player->getSlottedObject("datapad");
 		PlayerManager* playerManager = zoneServer->getPlayerManager();
+		ObjectManager* objectManager = zoneServer->getObjectManager();
 
-		if (datapad == NULL || playerManager == NULL)
+		if (datapad == NULL || playerManager == NULL || objectManager == NULL)
 			return;
 
 		controlDevice->setControlledObject(creature);
@@ -122,7 +123,8 @@ public:
 		controlDevice->updateStatus(1);
 		datapad->transferObject(controlDevice, -1);
 
-		creature->setPersistent(1);
+		objectManager->persistSceneObjectsRecursively(creature, 1);
+
 		creature->setControlDevice(controlDevice);
 		creature->setCreatureLink(player);
 		creature->setFaction(player->getFaction());

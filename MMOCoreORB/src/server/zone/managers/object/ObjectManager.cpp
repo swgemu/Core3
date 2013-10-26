@@ -617,6 +617,37 @@ void ObjectManager::persistObject(ManagedObject* object, int persistenceLevel, c
 	updatePersistentObject(object);
 }
 
+void ObjectManager::persistSceneObjectsRecursively(SceneObject* object, int persistenceLevel) {
+	persistObject(object, persistenceLevel, "sceneobjects");
+
+	SortedVector<ManagedReference<SceneObject* > >* childObjects = object->getChildObjects();
+
+	for (int i = 0; i < childObjects->size(); i++) {
+		SceneObject* childObject = childObjects->get(i).get();
+
+		if (childObject != NULL)
+			persistSceneObjectsRecursively(childObject, persistenceLevel);
+	}
+
+	VectorMap<String, ManagedReference<SceneObject* > >* slottedObjects = object->getSlottedObjects();
+
+	for (int i = 0; i < slottedObjects->size(); i++) {
+		SceneObject* slottedObject = slottedObjects->get(i).get();
+
+		if (slottedObject != NULL)
+			persistSceneObjectsRecursively(slottedObject, persistenceLevel);
+	}
+
+	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* containerObjects = object->getContainerObjects();
+
+	for (int i = 0; i < containerObjects->size(); i++) {
+		SceneObject* containerObject = containerObjects->get(i).get();
+
+		if (containerObject != NULL)
+			persistSceneObjectsRecursively(containerObject, persistenceLevel);
+	}
+}
+
 Reference<DistributedObjectStub*> ObjectManager::loadPersistentObject(uint64 objectID) {
 	Reference<DistributedObjectStub*> object = NULL;
 
