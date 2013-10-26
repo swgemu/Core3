@@ -112,4 +112,9 @@ class LairObserver extends Observer implements Logger {
 	public int getSpawnNumber() {
 		return spawnNumber;
 	}
+
+	@local
+	public Vector<CreatureObject> getSpawnedCreatures() {
+		return spawnedCreatures;
+	}
 }
