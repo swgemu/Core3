@@ -91,6 +91,9 @@ void LairObserverImplementation::notifyDestruction(TangibleObject* lair, Tangibl
 	threatMap->removeObservers();
 	threatMap->removeAll(); // we can clear the original one
 
+	PlayerManager* playerManager = lair->getZoneServer()->getPlayerManager();
+	playerManager->disseminateExperience(lair, &copyThreatMap);
+
 	if (lair->getZone() == NULL) {
 		spawnedCreatures.removeAll();
 		return;
@@ -112,9 +115,6 @@ void LairObserverImplementation::notifyDestruction(TangibleObject* lair, Tangibl
 	}
 
 	spawnedCreatures.removeAll();
-
-	PlayerManager* playerManager = lair->getZoneServer()->getPlayerManager();
-	playerManager->disseminateExperience(lair, &copyThreatMap);
 }
 
 void LairObserverImplementation::doAggro(TangibleObject* lair, TangibleObject* attacker){
