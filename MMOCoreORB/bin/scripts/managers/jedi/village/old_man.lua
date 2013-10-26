@@ -152,6 +152,7 @@ function OldMan:handleDespawnEvent(pCreatureObject)
 	local oldManId = OldMan.readOldManIdFromPlayer(pCreatureObject)
 	local pOldMan = getSceneObject(oldManId)
 	OldMan.despawnOldMan(pOldMan)
+	OldMan.createSpawnOldManEvent(pCreatureObject)
 end
 
 -- Try to spawn the old man and create the needed events.

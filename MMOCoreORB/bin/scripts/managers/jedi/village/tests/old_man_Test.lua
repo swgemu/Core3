@@ -648,20 +648,24 @@ describe("Old Man", function()
 		describe("handleDespawnEvent", function()
 			local realDespawnOldMan
 			local realReadOldManIdFromPlayer
+			local realCreateSpawnOldManEvent
 			
 			setup(function()
 				realDespawnOldMan = OldMan.despawnOldMan
 				realReadOldManIdFromPlayer = OldMan.readOldManIdFromPlayer
+				realCreateSpawnOldManEvent = OldMan.createSpawnOldManEvent
 			end)
 			
 			teardown(function()
 				OldMan.despawnOldMan = realDespawnOldMan
 				OldMan.readOldManIdFromPlayer = realReadOldManIdFromPlayer
+				OldMan.createSpawnOldManEvent = realCreateSpawnOldManEvent
 			end)
 			
 			before_each(function()
 				OldMan.despawnOldMan = spy.new(function() end)
 				OldMan.readOldManIdFromPlayer = spy.new(function() return oldManId end)
+				OldMan.createSpawnOldManEvent = spy.new(function() end)
 			end)
 			
 			describe("When called with the player as argument", function()
@@ -681,6 +685,12 @@ describe("Old Man", function()
 					OldMan:handleDespawnEvent(pCreatureObject)
 					
 					assert.spy(OldMan.despawnOldMan).was.called_with(pOldMan)
+				end)
+				
+				it("Should reschedule the old man.", function()
+					OldMan:handleDespawnEvent(pCreatureObject)
+					
+					assert.spy(OldMan.createSpawnOldManEvent).was.called_with(pCreatureObject)
 				end)
 			end)
 		end)
