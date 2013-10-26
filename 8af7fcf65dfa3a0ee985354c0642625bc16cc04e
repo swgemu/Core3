@@ -16,6 +16,24 @@
       "revId": "8af7fcf65dfa3a0ee985354c0642625bc16cc04e",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_78d31539",
+        "filename": "MMOCoreORB/src/server/zone/managers/player/PlayerManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 29
+      },
+      "writtenOn": "2013-10-26T00:50:18Z",
+      "side": 1,
+      "message": "Ok, sorry about that. Acknowledged, would have commented sooner but was having signing in problems via Google.",
+      "parentUuid": "9a437d4f_75b680de",
+      "revId": "8af7fcf65dfa3a0ee985354c0642625bc16cc04e",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
