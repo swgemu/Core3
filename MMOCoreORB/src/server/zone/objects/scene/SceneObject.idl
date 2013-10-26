@@ -1970,6 +1970,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		sendToClient = val;
 	}
 
-	
+	public abstract boolean isPet() {
+		return false;
+	}	
 }
 

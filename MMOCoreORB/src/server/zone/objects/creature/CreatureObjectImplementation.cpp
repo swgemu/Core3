@@ -2713,7 +2713,7 @@ CampSiteActiveArea* CreatureObjectImplementation::getCurrentCamp() {
 }
 
 int CreatureObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (isDead() && isAiActor()) {
+	if (isDead() && isAiActor() && !isPet()) {
 		switch (selectedID) {
 		case 35:
 			player->executeObjectControllerAction(String("loot").hashCode(), getObjectID(), "");
