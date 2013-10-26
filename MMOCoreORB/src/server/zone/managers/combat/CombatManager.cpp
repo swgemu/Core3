@@ -204,6 +204,9 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	if (tano->isCreatureObject()) {
 		CreatureObject* defender = cast<CreatureObject*>( tano);
 
+		if (defender->getWeapon() == NULL)
+			return 0;
+
 		damage = doTargetCombatAction(attacker, weapon, defender, data);
 	} else {
 		int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
@@ -1733,7 +1736,9 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 
 	if (tano->isCreatureObject()) {
 		CreatureObject* defenderObject = cast<CreatureObject*>( tano);
-		damage = doTargetCombatAction(attacker, weapon, defenderObject, data);
+
+		if (defenderObject->getWeapon() != NULL)
+			damage = doTargetCombatAction(attacker, weapon, defenderObject, data);
 	} else {
 		// TODO: implement, tano->tano damage
 	}
