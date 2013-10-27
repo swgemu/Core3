@@ -457,6 +457,8 @@ includeFile("items/skill_buff/skill_buff_unarmed_accuracy.lua")
 includeFile("items/skill_buff/skill_buff_unarmed_speed.lua")
 
 --task_loot sub-folder
+includeFile("items/task_loot/ancient_lightsaber.lua")
+includeFile("items/task_loot/ancient_lightsaber_two.lua")
 includeFile("items/task_loot/booto_lubble_thermal_detonator.lua")
 includeFile("items/task_loot/booto_lubble_rank_cylinder.lua")
 includeFile("items/task_loot/charal_commlink.lua")

@@ -198,7 +198,6 @@ dathomir_static_spawns = {
 	{"scientist",60,-136.034,18,-1592.07,62.5196,0, "calm", ""},
 	{"shaki_hamachil",60,-101.049,18,-1542.62,293.515,0, "calm", "Shaki Hamachil"},
 	{"shibb_nisshil",60,-71.1537,18,-1639.84,66.4233,0, "", "Shibb Nisshil"},
-	{"singular_nak",60,571.41,6.00339,3091.62,138.627,0, "calm", "Singular Nak"},
 	{"wallow_loowobbli",60,1.19457,0.624999,6.04704,232.283,6955367, "calm", "Wallaw Loowobbli"},
 }
 
