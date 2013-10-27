@@ -57,6 +57,7 @@ which carries forward this exception.
 #include "LairAggroTask.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/managers/creature/DisseminateExperienceTask.h"
 
 int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	switch (eventType) {
@@ -85,11 +86,9 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 }
 
 void LairObserverImplementation::notifyDestruction(TangibleObject* lair, TangibleObject* attacker, int condition) {
-	ThreatMap* threatMap = lair->getThreatMap();
 
-	ThreatMap copyThreatMap(*threatMap);
-	threatMap->removeObservers();
-	threatMap->removeAll(); // we can clear the original one
+	Reference<DisseminateExperienceTask*> deTask = new DisseminateExperienceTask(lair, attacker, _this.get());
+	deTask->execute();
 
 	if (lair->getZone() == NULL) {
 		spawnedCreatures.removeAll();
@@ -112,9 +111,6 @@ void LairObserverImplementation::notifyDestruction(TangibleObject* lair, Tangibl
 	}
 
 	spawnedCreatures.removeAll();
-
-	PlayerManager* playerManager = lair->getZoneServer()->getPlayerManager();
-	playerManager->disseminateExperience(lair, &copyThreatMap);
 }
 
 void LairObserverImplementation::doAggro(TangibleObject* lair, TangibleObject* attacker){
