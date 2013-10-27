@@ -10,6 +10,8 @@
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/player/sessions/TradeSession.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/events/DroidPowerTask.h"
 
 
 void DroidControlDeviceImplementation::callObject(CreatureObject* player) {
@@ -159,10 +161,24 @@ void DroidControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	if (droidControlObserver != NULL)
 		player->dropObserver(ObserverEventType::STARTCOMBAT, droidControlObserver);
 
-	AiAgent* droid = cast<AiAgent*>(creature.get());
+	DroidObject* droid = cast<DroidObject*>(creature.get());
 
-	// TODO Temporarily set to autofollow player
-	droid->setFollowObject(player);
+	// Sanity check that there isn't another power task outstanding
+	droid->removePendingTask( "droid_power" );
+
+	// Submit new power task
+	Reference<Task*> droidPowerTask = new DroidPowerTask( droid );
+	droid->addPendingTask("droid_power", droidPowerTask, 60000); // 60 secs
+
+	if( droid->hasPower() ){
+		// TODO Temporarily set to autofollow player
+		droid->setFollowObject(player);
+	}
+	else{
+		droid->setOblivious();
+		droid->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
+	}
+
 }
 
 void DroidControlDeviceImplementation::cancelSpawnObject(CreatureObject* player) {
@@ -187,6 +203,8 @@ void DroidControlDeviceImplementation::storeObject(CreatureObject* player) {
 
 	if (droid->isInCombat())
 		return;
+
+	droid->removePendingTask( "droid_power" );
 
 	droid->destroyObjectFromWorld(true);
 
