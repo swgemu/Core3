@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_b81f3db7",
+        "filename": "MMOCoreORB/bin/scripts/mobile/dathomir/gruthashaal.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-10-27T22:43:08Z",
+      "side": 1,
+      "message": "You either need to give her a weapon group or have nothing between the brackets. Jenkins failed verification because \"\" is not a valid weapon group.",
+      "revId": "ee0e277def6bb0c1e1c509accf0966fce6926c30",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
