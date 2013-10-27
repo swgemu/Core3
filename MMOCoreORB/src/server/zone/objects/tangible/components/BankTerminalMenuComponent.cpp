@@ -89,7 +89,9 @@ int BankTerminalMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, 
 
 		sui->addCash(creature->getCashCredits());
 		sui->addBank(creature->getBankCredits());
-		sui->setCallback(new BankTerminalSuiCallback(playerZone->getZoneServer()));
+
+		// Callback disabled as it broke deposit/withdrawals
+		// sui->setCallback(new BankTerminalSuiCallback(playerZone->getZoneServer()));
 
 		ghost->addSuiBox(sui);
 		creature->sendMessage(sui->generateMessage());
