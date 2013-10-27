@@ -1464,65 +1464,36 @@ void SceneObjectImplementation::faceObject(SceneObject* obj) {
 	direction.setHeadingDirection(directionangle);
 }
 
-void SceneObjectImplementation::getSlottedObjects(VectorMap<String, ManagedReference<SceneObject*> >& objects) {
-	bool lock = !containerLock.isLockedByCurrentThread();
-
-	containerLock.rlock(lock);
-
-	objects = slottedObjects;
-
-	containerLock.runlock(lock);
-}
-
 void SceneObjectImplementation::getContainerObjects(VectorMap<uint64, ManagedReference<SceneObject*> >& objects) {
-	bool lock = !containerLock.isLockedByCurrentThread();
-
 	containerObjects.loadObjects();
 
-	containerLock.rlock(lock);
+	ReadLocker locker(&containerLock);
 
 	objects = *containerObjects.getContainerObjects();
+}
 
-	containerLock.runlock(lock);
+void SceneObjectImplementation::getSlottedObjects(VectorMap<String, ManagedReference<SceneObject*> >& objects) {
+	ReadLocker locker(&containerLock);
+
+	objects = slottedObjects;
 }
 
 Reference<SceneObject*> SceneObjectImplementation::getSlottedObject(const String& slot) {
 	ManagedReference<SceneObject*> obj = NULL;
 
-	bool lock = !containerLock.isLockedByCurrentThread();
+	ReadLocker locker(&containerLock);
 
-	containerLock.rlock(lock);
-
-	try {
-		obj = slottedObjects.get(slot);
-	} catch (...) {
-		containerLock.runlock(lock);
-
-		throw;
-	}
-
-	containerLock.runlock(lock);
+	obj = slottedObjects.get(slot);
 
 	return obj;
 }
 
-
 Reference<SceneObject*> SceneObjectImplementation::getSlottedObject(int idx) {
 	ManagedReference<SceneObject*> obj = NULL;
 
-	bool lock = !containerLock.isLockedByCurrentThread();
+	ReadLocker locker(&containerLock);
 
-	containerLock.rlock(lock);
-
-	try {
-		obj = slottedObjects.get(idx);
-	} catch (...) {
-		containerLock.runlock(lock);
-
-		throw;
-	}
-
-	containerLock.runlock(lock);
+	obj = slottedObjects.get(idx);
 
 	return obj;
 }
@@ -1669,4 +1640,35 @@ Reference<SceneObject*> SceneObjectImplementation::getContainerObjectRecursive(u
 	}
 
 	return obj;
+}
+
+Vector<String> SceneObjectImplementation::getArrangementDescriptor(int idx) {
+	return templateObject->getArrangementDescriptors().get(idx);
+}
+
+bool SceneObjectImplementation::hasObjectInSlottedContainer(SceneObject* object) {
+	int arrangementSize = object->getArrangementDescriptorSize();
+
+	if (arrangementSize == 0) {
+		return false;
+	}
+
+	ManagedReference<SceneObject* > obj = NULL;
+
+	Locker _locker((&containerLock));
+
+	for (int i = 0; i < arrangementSize; ++i) {
+		Vector<String> descriptors = object->getArrangementDescriptor(i);
+
+		for (int j = 0; j < descriptors.size(); ++j) {
+			if (slottedObjects.get(descriptors.get(j)) != NULL)
+				return true;
+		}
+	}
+
+	return false;
+}
+
+int SceneObjectImplementation::getArrangementDescriptorSize() {
+	return templateObject->getArrangementDescriptors().size();
 }
