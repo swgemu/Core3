@@ -453,7 +453,7 @@ Reference<TangibleObject*> PlayerManagerImplementation::createHairObject(const S
 		return NULL;
 	}
 
-	if (hair->getGameObjectType() != SceneObjectType::GENERICITEM || hair->getArrangementDescriptor(0) != "hair") {
+	if (hair->getGameObjectType() != SceneObjectType::GENERICITEM || hair->getArrangementDescriptor(0).get(0) != "hair") {
 		ManagedReference<SceneObject*> clearRef = hair;
 
 		return NULL;
