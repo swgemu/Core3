@@ -53,10 +53,21 @@ import engine.util.u3d.Coordinate;
 
 class DroidObject extends AiAgent {
 	
+	/**
+	 * Droid's power when recharged
+	 */
+	public static final int MAX_POWER = 1000;
+	
+	/**
+	 * Current amount of power
+	 */
+	protected int power;
+	
 	public DroidObject() {
 		Logger.setLoggingName("DroidObject");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
+		power = MAX_POWER;
 	}
 	
 	/**
@@ -102,4 +113,50 @@ class DroidObject extends AiAgent {
 	public boolean isCamouflaged(CreatureObject target) {
 		return isConcealed(target);
 	}
+	
+	public boolean hasPower(){
+		return power > 0;
+	}
+
+	/**
+	 * Consumes power
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 * @param amount int the amount of power to use
+	 */
+	public void usePower( int amount ){
+		power = power - amount;
+		
+		if( power <= 0 ){
+			power = 0;
+			handleLowPower();			
+		}
+		
+	}
+
+	/**
+	 * Handles the recharge droid radial selection
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @returns 0 if successful, 1 otherwise
+	 */
+	protected native int handleRechargeDroid(CreatureObject player);
+	
+	/**
+	 * Handles the store droid radial selection
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param player CreatureObject that selected the option
+	 * @returns 0 if successful, 1 otherwise
+	 */
+	protected native int handleStoreDroid(CreatureObject player);	
+	
+	/**
+	 * Called when the droid runs out of power
+	 * @pre { this object is locked }
+	 * @post { this object is locked }
+	 */
+	public native void handleLowPower();	
+	
 }

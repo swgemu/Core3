@@ -62,6 +62,11 @@ void DroidObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuR
 		return;
 
 	menuResponse->addRadialMenuItem(59, 3, "@pet/pet_menu:menu_store"); //PET_STORE
+
+	// Droid Options Submenu
+	menuResponse->addRadialMenuItem(132, 3, "@pet/pet_menu:droid_options"); // SERVER_ITEM_OPTIONS
+	menuResponse->addRadialMenuItemToRadialID(132, 234, 3, "@pet/pet_menu:menu_recharge" ); // PET_FEED
+
 }
 
 void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object){
@@ -72,31 +77,99 @@ void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 
 	msg->insertAttribute("@obj_attr_n:owner", linkedCreature->getFirstName());
 
+	float percentPower = ((float)power/(float)MAX_POWER)*100.0;
+	msg->insertAttribute("@obj_attr_n:battery_power", String::valueOf((int)percentPower) + "%");
+
 }
 
 int DroidObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
+
+	if( player == NULL )
+		return 0;
 
 	if( linkedCreature != player )
 		return 0;
 
 	if (selectedID == 59) { // PET_STORE
-		unlock();
-
-		try {
-			ManagedReference<ControlDevice* > strongRef = controlDevice.get();
-
-			if (strongRef != NULL)
-				strongRef->storeObject(player);
-		} catch (Exception& e) {
-
-		} catch (...) {
-			wlock(player);
-
-			throw;
-		}
-
-		wlock(player);
+		return handleStoreDroid(player);
+	}
+	else if (selectedID == 234 ){ // PET_FEED
+		return handleRechargeDroid(player);
 	}
 
 	return 0;
+}
+
+int DroidObjectImplementation::handleRechargeDroid(CreatureObject* player){
+
+	// Find droid battery in player inventory
+	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+	if (inventory == NULL){
+		player->sendSystemMessage("Player inventory not found");
+		return 0;
+	}
+
+	ManagedReference<SceneObject*> batterySceno = NULL;
+	for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> sceno = inventory->getContainerObject(i);
+		if( sceno->getObjectTemplate()->getFullTemplateString() == "object/tangible/droid_battery/battery.iff" ){
+			batterySceno = sceno;
+		}
+	}
+
+	// Battery not found
+	if( batterySceno == NULL ){
+		showFlyText("npc_reaction/flytext","nobattery", 204, 0, 0); // "You don't have a power storage device."
+		return 0;
+	}
+
+	// Battery found
+	ManagedReference<TangibleObject*> batteryTano = cast<TangibleObject*>(batterySceno.get());
+	if( batteryTano == NULL ){
+		player->sendSystemMessage("Error with droid battery object");
+		return 0;
+	}
+
+	// Reset power to max
+	power = MAX_POWER;
+
+	// Consume battery
+	batteryTano->decreaseUseCount();
+
+	// TODO: Temporarily autofollow player
+	setFollowObject( player );
+
+	showFlyText("npc_reaction/flytext","recharged", 0, 153, 0);  // "*Recharged*"
+	return 0;
+
+}
+
+int DroidObjectImplementation::handleStoreDroid(CreatureObject* player){
+	unlock();
+
+	try {
+		ManagedReference<ControlDevice* > strongRef = controlDevice.get();
+
+		if (strongRef != NULL)
+			strongRef->storeObject(player);
+	} catch (Exception& e) {
+
+	} catch (...) {
+		wlock(player);
+
+		throw;
+	}
+
+	wlock(player);
+	return 0;
+}
+
+void DroidObjectImplementation::handleLowPower(){
+
+	// Send fly text
+	showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
+
+	// Stop following
+	setOblivious();
+	return;
 }
