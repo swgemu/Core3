@@ -59,18 +59,21 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 	VectorMap<String, ManagedReference<SceneObject*> >* slottedObjects = sceneObject->getSlottedObjects();
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
 
-	if (containmentType == 4 || containmentType == 5) {
+	if (containmentType >= 4) {
 		Locker contLocker(sceneObject->getContainerLock());
 
-		int arrangementSize = object->getArrangementDescriptorSize();
+		int arrangementGroup = containmentType - 4;
 
-		for (int i = 0; i < arrangementSize; ++i) {
-			String childArrangement = object->getArrangementDescriptor(i);
+		if (object->getArrangementDescriptorSize() > arrangementGroup) {
+			Vector<String> descriptors = object->getArrangementDescriptor(arrangementGroup);
 
-			if (slottedObjects->contains(childArrangement)) {
-				errorDescription = "@container_error_message:container04"; //This slot is already occupied.
+			for (int i = 0; i < descriptors.size(); ++i){
+				String childArrangement = descriptors.get(i);
 
-				return TransferErrorCode::SLOTOCCUPIED;
+				if (slottedObjects->contains(childArrangement)) {
+					errorDescription = "@container_error_message:container04"; //This slot is already occupied.
+					return TransferErrorCode::SLOTOCCUPIED;
+				}
 			}
 		}
 	} else if (containmentType == -1) {
@@ -161,22 +164,27 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 	VectorMap<uint64, ManagedReference<SceneObject*> >* containerObjects = sceneObject->getContainerObjects();
 
 	//if (containerType == 1 || containerType == 5) {
-	if (containmentType == 4 || containmentType == 5) {
+	if (containmentType >= 4) {
 		Locker contLocker(sceneObject->getContainerLock());
 
-		int arrangementSize = object->getArrangementDescriptorSize();
+		int arrangementGroup = containmentType - 4;
 
-		for (int i = 0; i < arrangementSize; ++i) {
-			String childArrangement = object->getArrangementDescriptor(i);
+		if (object->getArrangementDescriptorSize() > arrangementGroup) {
+			Vector<String> descriptors = object->getArrangementDescriptor(arrangementGroup);
 
-			if (slottedObjects->contains(childArrangement)) {
-				return false;
+			for (int i = 0; i < descriptors.size(); ++i){
+				String childArrangement = descriptors.get(i);
+
+				if (slottedObjects->contains(childArrangement)) {
+					return false;
+				}
 			}
-		}
 
-		for (int i = 0; i < arrangementSize; ++i) {
-			slottedObjects->put(object->getArrangementDescriptor(i), object);
-		}
+			for (int i = 0; i < descriptors.size(); ++i)	{
+				 slottedObjects->put(descriptors.get(i), object);
+			}
+		} else
+			return false;
 
 		object->setParent(sceneObject);
 		object->setContainmentType(containmentType);
@@ -201,7 +209,7 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 		return false;
 	}
 
-	if ((containmentType == 4 || containmentType == 5) && objZone == NULL)
+	if ((containmentType >= 4) && objZone == NULL)
 		sceneObject->broadcastObject(object, true);
 	else if (notifyClient)
 		sceneObject->broadcastMessage(object->link(sceneObject->getObjectID(), containmentType), true);
@@ -252,26 +260,31 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 
 	int arrangementSize = object->getArrangementDescriptorSize();
 
-	bool removeFromSlot = false;
+	int arrangementGroup = MAX(0, containedType - 4);
 
-	for (int i = 0; i < arrangementSize; ++i) {
-		String childArrangement = object->getArrangementDescriptor(i);
-		ManagedReference<SceneObject*> obj = slottedObjects->get(childArrangement);
+	if (object->getArrangementDescriptorSize() > arrangementGroup) {
+		bool removeFromSlot = false;
 
-		if (obj == object) {
-			removeFromSlot = true;
-			//info("sloted objects contains a different object", true);
-			//object->setParent(NULL);
+		Vector<String> descriptors = object->getArrangementDescriptor(arrangementGroup);
 
-			//return false;
-			break;
+		for (int i = 0; i < descriptors.size(); ++i){
+			String childArrangement = descriptors.get(i);
+
+			ManagedReference<SceneObject*> obj = slottedObjects->get(childArrangement);
+
+			if (slottedObjects->get(childArrangement) == object) {
+				removeFromSlot = true;
+				break;
+			}
+		}
+
+		if (removeFromSlot) {
+			for (int i = 0; i < descriptors.size(); ++i)
+				slottedObjects->drop(descriptors.get(i));
 		}
 	}
 
-	if (removeFromSlot) {
-		for (int i = 0; i < arrangementSize; ++i)
-			slottedObjects->drop(object->getArrangementDescriptor(i));
-	}
+
 	//	} else if (containedType == -1) {
 	//Locker contLocker(sceneObject->getContainerLock());
 

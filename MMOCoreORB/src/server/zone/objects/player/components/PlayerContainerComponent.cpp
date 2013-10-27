@@ -120,8 +120,8 @@ int PlayerContainerComponent::notifyObjectInserted(SceneObject* sceneObject, Sce
 	/*CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(creo);
 	creo->broadcastMessage(msg6, true, true);*/
 
-	if (object->isTangibleObject() && object->getArrangementDescriptorSize() != 0) {
-		String arrangement = object->getArrangementDescriptor(0);
+	if (object->isTangibleObject() && object->getArrangementDescriptorSize() != 0 && object->getArrangementDescriptor(0).size() != 0) {
+		String arrangement = object->getArrangementDescriptor(0).get(0);
 
 		if (arrangement != "mission_bag" && arrangement != "ghost" && arrangement != "bank") {
 			creo->addWearableObject(cast<TangibleObject*>(object), true);
@@ -169,8 +169,8 @@ int PlayerContainerComponent::notifyObjectRemoved(SceneObject* sceneObject, Scen
 	/*CreatureObjectMessage6* msg6 = new CreatureObjectMessage6(creo);
 	creo->broadcastMessage(msg6, true, true);*/
 
-	if (object->isTangibleObject() && object->getArrangementDescriptorSize() != 0) {
-		String arrangement = object->getArrangementDescriptor(0);
+	if (object->isTangibleObject() && object->getArrangementDescriptorSize() != 0 && object->getArrangementDescriptor(0).size() != 0) {
+		String arrangement = object->getArrangementDescriptor(0).get(0); //CHK
 
 		if (arrangement != "mission_bag" && arrangement != "ghost" && arrangement != "bank") {
 			creo->removeWearableObject(cast<TangibleObject*>(object), true);

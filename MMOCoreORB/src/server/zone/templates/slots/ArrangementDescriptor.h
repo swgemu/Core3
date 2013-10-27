@@ -12,7 +12,7 @@
 #include "../IffTemplate.h"
 
 class ArrangementDescriptor : public IffTemplate {
-	Vector<String> arrangementSlots;
+	Vector< Vector<String> > arrangementSlots;
 
 public:
 	ArrangementDescriptor() {
@@ -26,15 +26,18 @@ public:
 		switch (version) {
 		case '0000':
 		{
-			//for (int i = 0; i < versionForm->getChunksSize(); ++i) {
-			for (int i = 0; i < MIN(versionForm->getChunksSize(), 1); ++i) { // TODO:figure out different arrangement groups
+			for (int i = 0; i < versionForm->getChunksSize(); ++i) {
 				Chunk* arg = iffStream->openChunk('ARG ');
+				Vector<String>  slot;
 
 				while (arg->hasData()) {
 					String slotName;
 					arg->readString(slotName);
-					arrangementSlots.add(slotName);
+
+					slot.add(slotName);
 				}
+
+				arrangementSlots.add(slot);
 
 				iffStream->closeChunk('ARG ');
 			}
@@ -47,12 +50,12 @@ public:
 		iffStream->closeForm('ARGD');
 	}
 
-	void clone(Vector<String>& copyVec) {
+	void clone(Vector< Vector<String> >& copyVec) {
 		arrangementSlots.clone(copyVec);
 	}
 
-	Vector<String>* getArrangementSlots() {
-		return &arrangementSlots;
+	Vector< Vector<String> >& getArrangementSlots() {
+		return arrangementSlots;
 	}
 };
 

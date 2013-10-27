@@ -154,11 +154,15 @@ public:
 				}
 
 				for (int i = 0; i < object->getArrangementDescriptorSize(); ++i) {
-					String descriptor = object->getArrangementDescriptor(i);
+					Vector<String> descriptors = object->getArrangementDescriptor(i);
 
-					if (descriptor == "inventory" || descriptor == "datapad" || descriptor == "default_weapon"
+					for (int j = 0; j < descriptors.size(); ++j) {
+						String descriptor = descriptors.get(j);
+
+						if (descriptor == "inventory" || descriptor == "datapad" || descriptor == "default_weapon"
 							|| descriptor == "mission_bag" || descriptor == "ghost" || descriptor == "bank" || descriptor == "hair")
 						return GENERALERROR;
+					}
 				}
 
 				object->destroyObjectFromWorld(true);
