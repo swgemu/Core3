@@ -28,6 +28,7 @@ rogue_bageraset = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bageraset_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/bageraset_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

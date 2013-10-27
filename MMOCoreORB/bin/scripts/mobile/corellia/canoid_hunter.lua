@@ -27,6 +27,7 @@ canoid_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/canoid.iff"},
+	controlDeviceTemplate = "object/intangible/pet/boar_wolf_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

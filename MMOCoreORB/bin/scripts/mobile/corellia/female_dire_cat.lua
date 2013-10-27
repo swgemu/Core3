@@ -27,6 +27,7 @@ female_dire_cat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/female_dire_cat.iff"},
+	controlDeviceTemplate = "object/intangible/pet/narglatch_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

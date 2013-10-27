@@ -27,6 +27,7 @@ female_razor_cat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/corellian_sand_panther_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/corellian_sand_panther_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -27,6 +27,7 @@ humbaba = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/savage_humbaba.iff"},
+	controlDeviceTemplate = "object/intangible/pet/falumpaset_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

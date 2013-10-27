@@ -27,6 +27,7 @@ carrion_spat_corpsereaver = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/carrion_spat_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/carrion_spat_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

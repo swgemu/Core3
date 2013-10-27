@@ -27,6 +27,7 @@ acicular_defender = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/paralope_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/swirl_prong_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -27,6 +27,7 @@ female_slice_hound = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/corellian_slice_hound_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/corellian_slice_hound_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

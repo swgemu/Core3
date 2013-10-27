@@ -27,6 +27,7 @@ agrilat_rasp = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/flite_rasp_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/horned_rasp_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

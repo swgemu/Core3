@@ -27,6 +27,7 @@ gubbur = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gubbur_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/gubbur_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -27,6 +27,7 @@ corellian_butterfly_defender = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/corellian_butterfly_defender.iff"},
+	controlDeviceTemplate = "object/intangible/pet/corellian_butterfly_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
