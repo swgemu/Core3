@@ -162,6 +162,11 @@ public:
 			object->setCurrentSpeed(0);
 
 			object->updateLocomotion();
+
+			ValidatedPosition pos;
+			pos.update(object);
+
+			bounceBack(object, pos);
 		}
 
 	}
