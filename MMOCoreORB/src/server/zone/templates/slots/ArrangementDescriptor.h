@@ -10,9 +10,10 @@
 
 #include "engine/engine.h"
 #include "../IffTemplate.h"
+#include <iostream>
 
 class ArrangementDescriptor : public IffTemplate {
-	Vector<String> arrangementSlots;
+	Vector< Vector<String> > arrangementSlots;
 
 public:
 	ArrangementDescriptor() {
@@ -22,19 +23,22 @@ public:
 		iffStream->openForm('ARGD');
 		uint32 version = iffStream->getNextFormType();
 		Chunk* versionForm = iffStream->openForm(version);
-
+		std::cout << "AD Ver:" << version << "\n";
 		switch (version) {
 		case '0000':
 		{
-			//for (int i = 0; i < versionForm->getChunksSize(); ++i) {
-			for (int i = 0; i < MIN(versionForm->getChunksSize(), 1); ++i) { // TODO:figure out different arrangement groups
+			std::cout << "AD Starting Reading Data\n";
+			for (int i = 0; i < versionForm->getChunksSize(); ++i) {
 				Chunk* arg = iffStream->openChunk('ARG ');
-
+				Vector<String>  slot;
+				std::cout << "AD Reading Data" << i <<"\n";
 				while (arg->hasData()) {
 					String slotName;
 					arg->readString(slotName);
-					arrangementSlots.add(slotName);
+					std::cout << "AD Adding Slot "<< i <<":" << slotName.toCharArray() << ":\n";
+					slot.add(slotName);
 				}
+				arrangementSlots.add(slot);
 
 				iffStream->closeChunk('ARG ');
 			}
@@ -47,12 +51,12 @@ public:
 		iffStream->closeForm('ARGD');
 	}
 
-	void clone(Vector<String>& copyVec) {
+	void clone(Vector< Vector<String> >& copyVec) {
 		arrangementSlots.clone(copyVec);
 	}
 
-	Vector<String>* getArrangementSlots() {
-		return &arrangementSlots;
+	Vector< Vector<String> > getArrangementSlots() {
+		return arrangementSlots;
 	}
 };
 

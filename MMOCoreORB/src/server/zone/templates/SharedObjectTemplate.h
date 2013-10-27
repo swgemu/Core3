@@ -286,7 +286,7 @@ public:
 	PortalLayout* getPortalLayout();
 	AppearanceTemplate* getAppearanceTemplate();
 
-	inline Vector<String>* getArrangementDescriptors() {
+	inline  Vector < Vector<String> > getArrangementDescriptors() {
 		if (arrangementDescriptors == NULL)
 			return NULL;
 		else
@@ -413,7 +413,13 @@ public:
 	}
 
 	bool hasArrangementDescriptor(String s) {
-		return arrangementDescriptors->getArrangementSlots()->contains(s);
+		bool foundIt=false;
+		Vector < Vector <String> > hAD= arrangementDescriptors->getArrangementSlots();
+		for (int i = 0; i < hAD.size()-1; ++i) {
+			Vector <String> slotItems = hAD.get(i);
+			foundIt=foundIt && slotItems.contains(s);
+		}
+		return foundIt;
 	}
 
 public:

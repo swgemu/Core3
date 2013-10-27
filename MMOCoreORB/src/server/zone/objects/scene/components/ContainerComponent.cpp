@@ -61,17 +61,26 @@ int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* obje
 
 	if (containmentType == 4 || containmentType == 5) {
 		Locker contLocker(sceneObject->getContainerLock());
-
-		int arrangementSize = object->getArrangementDescriptorSize();
-
-		for (int i = 0; i < arrangementSize; ++i) {
-			String childArrangement = object->getArrangementDescriptor(i);
-
-			if (slottedObjects->contains(childArrangement)) {
-				errorDescription = "@container_error_message:container04"; //This slot is already occupied.
-
-				return TransferErrorCode::SLOTOCCUPIED;
+		bool freeSlot = true;
+		for (int i = 0; i <  object->getArrangementDescriptorSize(); ++i) {
+			String childArrangement = object->getArrangementDescriptor(i).get(0);
+			std::cout << "CA 0:" << childArrangement.toCharArray() << "\n";
+			if (slottedObjects->contains(childArrangement) ) {
+				std::cout << "CA 0: Checking Further" << "\n";
+				for (int j=0; j< object->getArrangementDescriptor(i).size(); ++j){
+					String childArrangement = object->getArrangementDescriptor(i).get(j);
+					std::cout << "CAL " << i << ":" << j <<":" <<   childArrangement.toCharArray() << "\n";
+					if (!slottedObjects->contains(childArrangement)) {
+						break;
+					}
+				}
+				freeSlot = false;
+				std::cout << "CA "<< i <<": Check Finished:" << freeSlot << "\n";
 			}
+		}
+		if (freeSlot==false){
+			errorDescription = "@container_error_message:container04"; //This slot is already occupied.
+			return TransferErrorCode::SLOTOCCUPIED;
 		}
 	} else if (containmentType == -1) {
 		if (containerObjects->size() >= sceneObject->getContainerVolumeLimit()) {
@@ -163,20 +172,37 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 	//if (containerType == 1 || containerType == 5) {
 	if (containmentType == 4 || containmentType == 5) {
 		Locker contLocker(sceneObject->getContainerLock());
-
+		std::cout << "TA Size " << object->getArrangementDescriptorSize();
 		int arrangementSize = object->getArrangementDescriptorSize();
-
-		for (int i = 0; i < arrangementSize; ++i) {
-			String childArrangement = object->getArrangementDescriptor(i);
-
-			if (slottedObjects->contains(childArrangement)) {
-				return false;
+		String freeSlotName="";
+		bool freeSlot = true;
+		for (int i = 0; i <  object->getArrangementDescriptorSize(); ++i) {
+			String childArrangement = object->getArrangementDescriptor(i).get(0);
+			std::cout << "TA 0:" << object->getArrangementDescriptor(i).size() << ":" << childArrangement.toCharArray();
+			if (slottedObjects->contains(childArrangement) ) {
+				for (int j=0; j< object->getArrangementDescriptor(i).size(); ++j){
+					String childArrangement = object->getArrangementDescriptor(i).get(j);
+					std::cout << "TA " << i << ":" << j <<":" <<   childArrangement.toCharArray();
+					if (!slottedObjects->contains(childArrangement)) {
+						slottedObjects->put(object->getArrangementDescriptor(i).get(j), object);
+						std::cout << "put slot " << object->getArrangementDescriptor(i).get(j).toCharArray();
+						break;
+					}
+				}
+				freeSlot=false;
+			}else{
+				slottedObjects->put(childArrangement, object);
+				std::cout << "put slot " << childArrangement.toCharArray();
 			}
 		}
-
-		for (int i = 0; i < arrangementSize; ++i) {
-			slottedObjects->put(object->getArrangementDescriptor(i), object);
+		if (freeSlot==false){
+			return false;
 		}
+		//for (int i = 0; i < arrangementSize; ++i) {
+			//for (int j=0; j< object->getArrangementDescriptor(i).size(); ++j){
+
+			//}
+		//}
 
 		object->setParent(sceneObject);
 		object->setContainmentType(containmentType);
@@ -251,27 +277,19 @@ bool ContainerComponent::removeObject(SceneObject* sceneObject, SceneObject* obj
 	Locker contLocker(sceneObject->getContainerLock());
 
 	int arrangementSize = object->getArrangementDescriptorSize();
-
-	bool removeFromSlot = false;
-
 	for (int i = 0; i < arrangementSize; ++i) {
-		String childArrangement = object->getArrangementDescriptor(i);
-		ManagedReference<SceneObject*> obj = slottedObjects->get(childArrangement);
-
-		if (obj == object) {
-			removeFromSlot = true;
-			//info("sloted objects contains a different object", true);
-			//object->setParent(NULL);
-
-			//return false;
-			break;
+		bool bBreak =false;
+		for (int j=0; j< object->getArrangementDescriptor(i).size(); ++j){
+			String childArrangement = object->getArrangementDescriptor(i).get(j);
+			std::cout << "RM " << i << ":" << j <<":" <<  childArrangement.toCharArray();
+			ManagedReference<SceneObject*> obj = slottedObjects->get(childArrangement);
+			if (obj == object) {
+				slottedObjects->drop(childArrangement);
+			}
 		}
 	}
 
-	if (removeFromSlot) {
-		for (int i = 0; i < arrangementSize; ++i)
-			slottedObjects->drop(object->getArrangementDescriptor(i));
-	}
+
 	//	} else if (containedType == -1) {
 	//Locker contLocker(sceneObject->getContainerLock());
 

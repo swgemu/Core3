@@ -102,11 +102,13 @@ public:
 			return GENERALERROR;
 
 		for (int i = 0; i < object->getArrangementDescriptorSize(); ++i) {
-			String descriptor = object->getArrangementDescriptor(i);
+			for (int j = 0; j < object->getArrangementDescriptor(i).size(); ++j) {
+				String descriptor = object->getArrangementDescriptor(i).get(j);
 
-			if (descriptor == "inventory" || descriptor == "datapad" || descriptor == "default_weapon"
-					|| descriptor == "mission_bag" || descriptor == "ghost" || descriptor == "bank" || descriptor == "hair")
-				return GENERALERROR;
+				if (descriptor == "inventory" || descriptor == "datapad" || descriptor == "default_weapon"
+						|| descriptor == "mission_bag" || descriptor == "ghost" || descriptor == "bank" || descriptor == "hair")
+					return GENERALERROR;
+			}
 		}
 
 		if (object->isASubChildOf(creature))

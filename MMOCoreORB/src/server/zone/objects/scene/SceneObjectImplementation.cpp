@@ -1464,16 +1464,6 @@ void SceneObjectImplementation::faceObject(SceneObject* obj) {
 	direction.setHeadingDirection(directionangle);
 }
 
-void SceneObjectImplementation::getSlottedObjects(VectorMap<String, ManagedReference<SceneObject*> >& objects) {
-	bool lock = !containerLock.isLockedByCurrentThread();
-
-	containerLock.rlock(lock);
-
-	objects = slottedObjects;
-
-	containerLock.runlock(lock);
-}
-
 void SceneObjectImplementation::getContainerObjects(VectorMap<uint64, ManagedReference<SceneObject*> >& objects) {
 	bool lock = !containerLock.isLockedByCurrentThread();
 
@@ -1482,6 +1472,15 @@ void SceneObjectImplementation::getContainerObjects(VectorMap<uint64, ManagedRef
 	containerLock.rlock(lock);
 
 	objects = *containerObjects.getContainerObjects();
+
+	containerLock.runlock(lock);
+}
+void SceneObjectImplementation::getSlottedObjects(VectorMap<String, ManagedReference<SceneObject*> >& objects) {
+	bool lock = !containerLock.isLockedByCurrentThread();
+
+	containerLock.rlock(lock);
+
+	objects = slottedObjects;
 
 	containerLock.runlock(lock);
 }
@@ -1529,7 +1528,6 @@ Reference<SceneObject*> SceneObjectImplementation::getSlottedObject(int idx) {
 
 void SceneObjectImplementation::dropSlottedObject(const String& arrengementDescriptor) {
 	Locker locker(&containerLock);
-
 	slottedObjects.drop(arrengementDescriptor);
 }
 
@@ -1669,4 +1667,36 @@ Reference<SceneObject*> SceneObjectImplementation::getContainerObjectRecursive(u
 	}
 
 	return obj;
+}
+Vector<String> SceneObjectImplementation::getArrangementDescriptor(int idx) {
+	return templateObject->getArrangementDescriptors().get(idx);
+}
+
+
+bool SceneObjectImplementation::hasObjectInSlottedContainer(SceneObject* object) {
+	int arrangementSize = object->getArrangementDescriptorSize();
+	if (arrangementSize == 0){
+		return false;
+	}
+
+	ManagedReference<SceneObject* > obj = NULL;
+
+	Locker _locker((&containerLock));
+
+	obj = (&slottedObjects)->get(object->getArrangementDescriptor(0).get(0));
+
+
+	if (object == obj){
+
+		return true;
+	}else {
+		return false;
+	}
+}
+int SceneObjectImplementation::getArrangementDescriptorSize() {
+	// server/zone/objects/scene/SceneObject.idl():  		return
+	if (!templateObject->getArrangementDescriptors().isEmpty() )	// server/zone/objects/scene/SceneObject.idl():  			return templateObject.getArrangementDescriptors().size();
+	return templateObject->getArrangementDescriptors().size();
+	// server/zone/objects/scene/SceneObject.idl():  		return 0;
+	return 0;
 }

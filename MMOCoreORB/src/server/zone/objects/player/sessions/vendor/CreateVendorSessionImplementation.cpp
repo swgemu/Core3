@@ -228,13 +228,13 @@ void CreateVendorSessionImplementation::randomizeVendorLooks(CreatureObject* ven
 		if (obj == NULL)
 			continue;
 
-		for (int k = 0; k < obj->getArrangementDescriptorSize(); ++k) {
-			String arrangementDescriptor = obj->getArrangementDescriptor(k);
-			ManagedReference<SceneObject*> slot = vendor->getSlottedObject(arrangementDescriptor);
-			if (slot != NULL) {
-				slot->destroyObjectFromWorld(true);
-
-				slot->destroyObjectFromDatabase(true);
+		for (int j = 0; j < obj->getArrangementDescriptorSize(); ++j) {
+			for (int k=0;k < obj->getArrangementDescriptor(j).size();++k){
+				ManagedReference<SceneObject*> slot = vendor->getSlottedObject(obj->getArrangementDescriptor(i).get(j));
+				if (slot != NULL) {
+					slot->destroyObjectFromWorld(true);
+					slot->destroyObjectFromDatabase(true);
+				}
 			}
 		}
 

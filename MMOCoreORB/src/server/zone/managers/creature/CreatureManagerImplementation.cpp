@@ -867,12 +867,13 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 		return false;
 
 	for (int i = 0; i < clothing->getArrangementDescriptorSize(); ++i) {
-		String arrangementDescriptor = clothing->getArrangementDescriptor(i);
-		ManagedReference<SceneObject*> slot = creature->getSlottedObject(arrangementDescriptor);
+		for (int j = 0; j < clothing->getArrangementDescriptorSize(); ++j) {
+			ManagedReference<SceneObject*> slot = creature->getSlottedObject(clothing->getArrangementDescriptor(i).get(j));
 
-		if (slot != NULL) {
-			slot->destroyObjectFromWorld(true);
-			slot->destroyObjectFromDatabase(true);
+			if (slot != NULL) {
+				slot->destroyObjectFromWorld(true);
+				slot->destroyObjectFromDatabase(true);
+			}
 		}
 	}
 
