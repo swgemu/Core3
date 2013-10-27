@@ -25,6 +25,7 @@ veermok_ravager = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
+	controlDeviceTemplate = "object/intangible/pet/veermok_hue.iff",
 
 	templates = {"object/mobile/alpha_veermok.iff"},
 	lootGroups = {},

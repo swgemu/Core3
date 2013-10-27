@@ -25,6 +25,7 @@ vrelt_mother = Creature:new {
 	creatureBitmask = PACK + HERD,
 	optionsBitmask = 0,
 	diet = CARNIVORE,
+	controlDeviceTemplate = "object/intangible/pet/stintaril_hue.iff",
 
 	templates = {"object/mobile/startled_vrelt_mother.iff"},
 	lootGroups = {},

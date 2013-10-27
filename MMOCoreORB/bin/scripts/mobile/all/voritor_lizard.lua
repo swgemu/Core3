@@ -21,10 +21,11 @@ voritor_lizard = Creature:new {
 	milk = 0,
 	tamingChance = 0.25,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + STALKER,
 	optionsBitmask = 0,
 	diet = CARNIVORE,
+	controlDeviceTemplate = "object/intangible/pet/voritor_lizard_hue.iff",
 
 	templates = {"object/mobile/voritor_lizard.iff"},
 	lootGroups = {},

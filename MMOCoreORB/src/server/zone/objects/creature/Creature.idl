@@ -223,5 +223,12 @@ class Creature extends AiAgent {
 		else
 			return super.npcTemplate.getMeatMax();
 	}
+
+	public string getControlDeviceTemplate() {
+		if (super.npcTemplate == null)
+			return "";
+
+		return super.npcTemplate.getControlDeviceTemplate();
+	}
 }
 

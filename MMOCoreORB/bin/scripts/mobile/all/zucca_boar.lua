@@ -25,6 +25,7 @@ zucca_boar = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 0,
 	diet = HERBIVORE,
+	controlDeviceTemplate = "object/intangible/pet/zucca_boar_hue.iff",
 
 	templates = {"object/mobile/zucca_boar.iff"},
 	lootGroups = {},

@@ -22,10 +22,11 @@ wonderous_cu_pa = Creature:new {
 	milk = 105,
 	tamingChance = 0.05,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + HERD,
 	optionsBitmask = 0,
 	diet = HERBIVORE,
+	controlDeviceTemplate = "object/intangible/pet/cu_pa_hue.iff",
 
 	templates = {"object/mobile/cu_pa.iff"},
 	lootGroups = {},

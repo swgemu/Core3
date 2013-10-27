@@ -25,6 +25,7 @@ wolf_kima = Creature:new {
 	creatureBitmask = PACK + STALKER,
 	optionsBitmask = 0,
 	diet = CARNIVORE,
+	controlDeviceTemplate = "object/intangible/pet/kima_hue.iff",
 
 	templates = {"object/mobile/kima.iff"},
 	lootGroups = {},

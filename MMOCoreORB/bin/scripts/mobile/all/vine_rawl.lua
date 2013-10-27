@@ -25,6 +25,7 @@ vine_rawl = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 0,
 	diet = CARNIVORE,
+	controlDeviceTemplate = "object/intangible/pet/fanned_rawl_hue.iff",
 
 	templates = {"object/mobile/fanned_rawl.iff"},
 	lootGroups = {},

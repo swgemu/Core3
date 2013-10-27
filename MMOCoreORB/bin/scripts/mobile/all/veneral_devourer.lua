@@ -21,10 +21,11 @@ veneral_devourer = Creature:new {
 	milk = 0,
 	tamingChance = 0.05,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + HERD,
 	optionsBitmask = 0,
 	diet = HERBIVORE,
+	controlDeviceTemplate = "object/intangible/pet/pugoriss_hue.iff",
 
 	templates = {"object/mobile/pugoriss.iff"},
 	lootGroups = {},

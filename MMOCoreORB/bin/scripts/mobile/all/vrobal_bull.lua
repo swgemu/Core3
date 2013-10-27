@@ -26,6 +26,7 @@ vrobal_bull = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 	scale = 1.15,
+	controlDeviceTemplate = "object/intangible/pet/roba_hue.iff",
 
 	templates = {"object/mobile/vrobal_bull.iff"},
 	lootGroups = {},

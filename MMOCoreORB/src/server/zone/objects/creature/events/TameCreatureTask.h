@@ -98,8 +98,11 @@ public:
 
 	void success(CreatureObject* player, Creature* creature) {
 		ZoneServer* zoneServer = player->getZoneServer();
-		// TODO: Add control device template to creature templates and get objectString from there
-		String objectString = "object/intangible/pet/pet_control.iff";
+
+		String objectString = creature->getControlDeviceTemplate();
+		if (objectString == "")
+			objectString = "object/intangible/pet/pet_control.iff";
+
 		ManagedReference<PetControlDevice*> controlDevice = zoneServer->createObject(objectString.hashCode(), 1).castTo<PetControlDevice*>();
 
 		if (controlDevice == NULL)

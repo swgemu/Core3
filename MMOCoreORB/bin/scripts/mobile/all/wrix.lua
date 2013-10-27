@@ -25,6 +25,7 @@ wrix = Creature:new {
 	creatureBitmask = PACK + HERD,
 	optionsBitmask = 0,
 	diet = CARNIVORE,
+	controlDeviceTemplate = "object/intangible/pet/gurreck_hue.iff",
 
 	templates = {"object/mobile/wrix.iff"},
 	lootGroups = {},

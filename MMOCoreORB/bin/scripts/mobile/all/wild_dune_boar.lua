@@ -21,10 +21,11 @@ wild_dune_boar = Creature:new {
 	milk = 0,
 	tamingChance = 0.15,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + KILLER,
 	optionsBitmask = 0,
 	diet = CARNIVORE,
+	controlDeviceTemplate = "object/intangible/pet/zucca_boar_hue.iff",
 
 	templates = {"object/mobile/zucca_boar.iff"},
 	lootGroups = {},

@@ -21,10 +21,11 @@ verne_bull = Creature:new {
 	milk = 1,
 	tamingChance = 0.25,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + HERD,
 	optionsBitmask = 0,
 	diet = HERBIVORE,
+	controlDeviceTemplate = "object/intangible/pet/verne_hue.iff",
 
 	templates = {"object/mobile/verne_bull.iff"},
 	lootGroups = {},

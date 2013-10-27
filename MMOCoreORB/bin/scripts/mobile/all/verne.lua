@@ -25,6 +25,7 @@ verne = Creature:new {
 	creatureBitmask = PACK + HERD,
 	optionsBitmask = 0,
 	diet = HERBIVORE,
+	controlDeviceTemplate = "object/intangible/pet/verne_hue.iff",
 
 	templates = {"object/mobile/verne.iff"},
 	lootGroups = {},

@@ -25,6 +25,7 @@ wasteland_cu_pa = Creature:new {
 	creatureBitmask = PACK + HERD,
 	optionsBitmask = 0,
 	diet = HERBIVORE,
+	controlDeviceTemplate = "object/intangible/pet/cu_pa_hue.iff",
 
 	templates = {"object/mobile/cu_pa.iff"},
 	lootGroups = {},

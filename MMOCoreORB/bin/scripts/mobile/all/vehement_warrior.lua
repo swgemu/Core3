@@ -25,6 +25,7 @@ vehement_warrior = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 0,
 	diet = HERBIVORE,
+	controlDeviceTemplate = "object/intangible/pet/durni_hue.iff",
 
 	templates = {"object/mobile/durni.iff"},
 	lootGroups = {},

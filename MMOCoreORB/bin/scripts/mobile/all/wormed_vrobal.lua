@@ -25,6 +25,7 @@ wormed_vrobal = Creature:new {
 	creatureBitmask = NONE,
 	optionsBitmask = 0,
 	diet = NONE,
+	controlDeviceTemplate = "object/intangible/pet/roba_hue.iff",
 
 	templates = {"object/mobile/vrobal.iff"},
 	lootGroups = {},

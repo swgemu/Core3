@@ -25,6 +25,7 @@ vesp_hunter = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 0,
 	diet = CARNIVORE,
+	controlDeviceTemplate = "object/intangible/pet/vesp_hue.iff",
 
 	templates = {"object/mobile/vesp.iff"},
 	lootGroups = {},

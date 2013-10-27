@@ -21,10 +21,11 @@ vicious_squall = Creature:new {
 	milk = 0,
 	tamingChance = 0.25,
 	ferocity = 2,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + HERD,
 	optionsBitmask = 0,
 	diet = CARNIVORE,
+	controlDeviceTemplate = "object/intangible/pet/squall_hue.iff",
 
 	templates = {"object/mobile/squall.iff"},
 	lootGroups = {},

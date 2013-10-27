@@ -25,6 +25,7 @@ vampiric_gackle_bat = Creature:new {
 	creatureBitmask = PACK,
 	optionsBitmask = 0,
 	diet = CARNIVORE,
+	controlDeviceTemplate = "object/intangible/pet/gackle_bat_hue.iff",
 
 	templates = {"object/mobile/gackle_bat.iff"},
 	lootGroups = {},

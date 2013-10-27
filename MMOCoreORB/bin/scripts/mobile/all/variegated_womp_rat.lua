@@ -25,6 +25,7 @@ variegated_womp_rat = Creature:new {
 	creatureBitmask = HERD,
 	optionsBitmask = 0,
 	diet = CARNIVORE,
+	controlDeviceTemplate = "object/intangible/pet/womp_rat_hue.iff",
 
 	templates = {"object/mobile/variegated_womp_rat.iff"},
 	lootGroups = {},

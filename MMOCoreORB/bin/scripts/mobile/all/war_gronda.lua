@@ -25,6 +25,7 @@ war_gronda = Creature:new {
 	creatureBitmask = NONE,
 	optionsBitmask = 0,
 	diet = NONE,
+	controlDeviceTemplate = "object/intangible/pet/gronda_hue.iff",
 
 	templates = {"object/mobile/war_gronda.iff"},
 	lootGroups = {},

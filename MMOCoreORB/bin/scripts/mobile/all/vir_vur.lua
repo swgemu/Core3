@@ -25,6 +25,7 @@ vir_vur = Creature:new {
 	creatureBitmask = HERD + STALKER,
 	optionsBitmask = 0,
 	diet = HERBIVORE,
+	controlDeviceTemplate = "object/intangible/pet/vir_vur_hue.iff",
 
 	templates = {"object/mobile/vir_vur.iff"},
 	lootGroups = {},

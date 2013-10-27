@@ -25,6 +25,7 @@ wooded_paralope = Creature:new {
 	creatureBitmask = HERD,
 	optionsBitmask = 0,
 	diet = HERBIVORE,
+	controlDeviceTemplate = "object/intangible/pet/swirl_prong_hue.iff",
 
 	templates = {"object/mobile/paralope.iff"},
 	lootGroups = {},

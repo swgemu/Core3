@@ -91,6 +91,7 @@ protected:
 	String defaultWeapon;
 	String defaultAttack;
 
+	String controlDeviceTemplate;
 
 public:
 	CreatureTemplate();
@@ -321,6 +322,10 @@ public:
 
 	inline String getDefaultAttack(){
 		return defaultAttack;
+	}
+
+	inline String getControlDeviceTemplate() {
+		return controlDeviceTemplate;
 	}
 };
 

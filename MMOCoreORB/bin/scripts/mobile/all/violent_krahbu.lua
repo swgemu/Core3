@@ -25,6 +25,7 @@ violent_krahbu = Creature:new {
 	creatureBitmask = NONE,
 	optionsBitmask = 0,
 	diet = CARNIVORE,
+	controlDeviceTemplate = "object/intangible/pet/krahbu_hue.iff",
 
 	templates = {"object/mobile/violent_krahbu.iff"},
 	lootGroups = {},

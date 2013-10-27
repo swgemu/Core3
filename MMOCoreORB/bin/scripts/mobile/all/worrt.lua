@@ -25,6 +25,7 @@ worrt = Creature:new {
 	creatureBitmask = NONE,
 	optionsBitmask = 0,
 	diet = CARNIVORE,
+	controlDeviceTemplate = "object/intangible/pet/worrt_hue.iff",
 
 	templates = {"object/mobile/worrt_hue.iff"},
 	lootGroups = {},
