@@ -82,6 +82,7 @@ include server.zone.objects.creature.variables.CurrentFoundPath;
 import server.zone.objects.creature.ai.bt.Behavior;
 include server.zone.objects.creature.ai.bt.BehaviorTreeList;
 import server.zone.objects.creature.ai.bt.BehaviorTree;
+import server.zone.objects.intangible.ControlDevice;
 
 @mock
 class AiAgent extends CreatureObject {
@@ -750,6 +751,11 @@ class AiAgent extends CreatureObject {
 	}
 
 	public native boolean isEventMob();
+
+	@read
+	public boolean isPet() {
+		return (getControlDevice() != null);
+	}
 
 	public string getPvPFaction(){
 		if (npcTemplate.get() == null)

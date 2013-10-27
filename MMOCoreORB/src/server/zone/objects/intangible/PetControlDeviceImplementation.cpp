@@ -190,7 +190,8 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 		creature->setCreatureLink(player);
 		creature->setControlDevice(_this.get());
 		creature->setFaction(player->getFaction());
-		// TODO: need to have the pet take on the faction status of the owner (Special Forces, Combatant, or On Leave)
+		creature->setPvpStatusBitmask(player->getPvpStatusBitmask() - CreatureFlag::PLAYER, true);
+		creature->setObjectMenuComponent("PetMenuComponent");
 	}
 
 	Zone* zone = player->getZone();
@@ -226,10 +227,10 @@ void PetControlDeviceImplementation::cancelSpawnObject(CreatureObject* player) {
 void PetControlDeviceImplementation::storeObject(CreatureObject* player) {
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 
-	if (controlledObject == NULL || !controlledObject->isCreatureObject())
+	if (controlledObject == NULL || !controlledObject->isAiAgent())
 		return;
 
-	ManagedReference<CreatureObject*> pet = cast<CreatureObject*>(controlledObject.get());
+	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
 
 	if (pet->isInCombat())
 		return;
@@ -245,6 +246,9 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player) {
 			return;
 	}
 
+	pet->setPosture(CreaturePosture::UPRIGHT, false);
+	pet->setTargetObject(NULL);
+	pet->setFollowObject(NULL);
 	pet->destroyObjectFromWorld(true);
 
 	pet->setCreatureLink(NULL);

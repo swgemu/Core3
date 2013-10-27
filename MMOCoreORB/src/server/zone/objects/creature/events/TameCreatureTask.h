@@ -114,7 +114,7 @@ public:
 
 		controlDevice->setControlledObject(creature);
 
-		creature->setCustomObjectName("", true);
+		creature->setCustomObjectName("", false);
 		StringId s;
 		s.setStringId(creature->getDisplayedName());
 		controlDevice->setObjectName(s);
@@ -126,12 +126,14 @@ public:
 		objectManager->persistSceneObjectsRecursively(creature, 1);
 
 		creature->setControlDevice(controlDevice);
+		creature->setObjectMenuComponent("PetMenuComponent");
 		creature->setCreatureLink(player);
 		creature->setFaction(player->getFaction());
-		creature->setPvpStatusBitmask(player->getPvpStatusBitmask(), true);
+		creature->setPvpStatusBitmask(player->getPvpStatusBitmask() - CreatureFlag::PLAYER, false);
 		creature->setBaby(false);
 		creature->setFollowObject(player);
 
+		creature->getZone()->broadcastObject(creature, true);
 		datapad->broadcastObject(controlDevice, true);
 
 		playerManager->awardExperience(player, "creaturehandler", 25 * creature->getLevel());
