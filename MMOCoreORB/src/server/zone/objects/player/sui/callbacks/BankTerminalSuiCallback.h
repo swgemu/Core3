@@ -20,6 +20,30 @@ public:
 			return;
 		}
 
+		if (args->size() < 2)
+			return;
+
+		int cash = Integer::valueOf(args->get(0).toString());
+		int bank = Integer::valueOf(args->get(1).toString());
+
+		SuiBankTransferBox* suiBank = cast<SuiBankTransferBox*>( sui);
+
+		ManagedReference<SceneObject*> bankObject = suiBank->getBank();
+
+		if (bankObject == NULL)
+			return;
+
+		if (!player->isInRange(bankObject, 5))
+			return;
+
+		uint32 currentCash = player->getCashCredits();
+		uint32 currentBank = player->getBankCredits();
+
+		if ((currentCash + currentBank) == ((uint32) cash + (uint32) bank)) {
+			player->setCashCredits(cash);
+			player->setBankCredits(bank);
+		}
+
 		player->sendSystemMessage("@base_player:bank_success");
 	}
 };
