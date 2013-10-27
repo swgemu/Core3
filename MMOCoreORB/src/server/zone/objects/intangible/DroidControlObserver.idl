@@ -70,10 +70,12 @@ class DroidControlObserver extends Observer {
 		if (eventType != ObserverEventType.STARTCOMBAT) {
 			return 1;
 		}
+		
+		DroidControlDevice strongRef = droidControlDevice;
 
-		if (droidControlDevice != null) {
+		if (strongRef != null) {
 			CreatureObject creature = (CreatureObject) observable;
-			droidControlDevice.cancelSpawnObject(creature);
+			strongRef.cancelSpawnObject(creature);
 		}
 		
 		return 1;

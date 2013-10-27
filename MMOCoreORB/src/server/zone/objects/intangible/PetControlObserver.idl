@@ -70,10 +70,12 @@ class PetControlObserver extends Observer {
 		if (eventType != ObserverEventType.STARTCOMBAT) {
 			return 1;
 		}
-
-		if (petControlDevice != null) {
+		
+		PetControlDevice strongRef = petControlDevice;
+		
+		if (strongRef != null) {
 			CreatureObject creature = (CreatureObject) observable;
-			petControlDevice.cancelSpawnObject(creature);
+			strongRef.cancelSpawnObject(creature);
 		}
 		
 		return 1;
