@@ -124,8 +124,6 @@ public:
 			return GENERALERROR;
 		}
 
-
-
 		if (transferType == 4) {
 			ManagedReference<SceneObject*> parent = objectToTransfer->getParent();
 
@@ -144,15 +142,35 @@ public:
 				int arrangementSize = objectToTransfer->getArrangementDescriptorSize();
 
 				if (arrangementSize > 0) {
-					String childArrangement = objectToTransfer->getArrangementDescriptor(0);
+					int arrangementGroupToUse = -1;
 
-					ManagedReference<SceneObject*> objectToRemove = destinationObject->getSlottedObject(childArrangement);
+					for (int i = 0; i < arrangementSize && arrangementGroupToUse == -1; ++i) {
+						Vector<String> descriptors = objectToTransfer->getArrangementDescriptor(i);
 
-					if (objectToRemove == NULL)
-						return GENERALERROR;
+						for (int j = 0; j < descriptors.size(); ++j) {
+							String descriptor = descriptors.get(j);
 
-					if (!objectController->transferObject(objectToRemove, parent, 0xFFFFFFFF, true))
-						return GENERALERROR;
+							if (destinationObject->getSlottedObject(descriptor) == NULL && arrangementGroupToUse == -1) {
+								arrangementGroupToUse = i;
+							} else if (arrangementGroupToUse != -1) {
+								arrangementGroupToUse = -1;
+							}
+						}
+					}
+
+					if (arrangementGroupToUse != -1) {
+						transferType += arrangementGroupToUse;
+					} else {
+						String childArrangement = objectToTransfer->getArrangementDescriptor(0).get(0);
+
+						ManagedReference<SceneObject*> objectToRemove = destinationObject->getSlottedObject(childArrangement);
+
+						if (objectToRemove == NULL)
+							return GENERALERROR;
+
+						if (!objectController->transferObject(objectToRemove, parent, 0xFFFFFFFF, true))
+							return GENERALERROR;
+					}
 				}
 			} else if (transferPreProcess != 0) {
 				if (errorDescription.length() > 1)

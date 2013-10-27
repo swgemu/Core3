@@ -389,16 +389,28 @@ void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 
 			bool sendWithoutContents = false;
 
-			for (int i = 0; i < arrangementSize; ++i) {
-				String childArrangement = object->getArrangementDescriptor(i);
+			if (arrangementSize > 0) {
+				Vector<String> descriptors = object->getArrangementDescriptor(0);
 
-				if (player != _this.get() && ((childArrangement == "bank")
-						|| (childArrangement == "inventory") || (childArrangement
-								== "datapad") || (childArrangement == "mission_bag"))) {
-					sendWithoutContents = true;
-					break;
+				if (descriptors.size() > 0) {
+					String childArrangement = descriptors.get(0);
+
+					if (player != _this.get() && ((childArrangement == "bank")
+							|| (childArrangement == "inventory") || (childArrangement
+									== "datapad") || (childArrangement == "mission_bag"))) {
+						sendWithoutContents = true;
+						break;
+					}
 				}
 			}
+
+			/*for (int i = 0; i < arrangementSize; ++i) {
+
+				for (int j=0; j<object->getArrangementDescriptor(i).size() ;++j){
+					String childArrangement = getArrangementDescriptor(i).get(j);
+
+				}
+			}*/
 
 			if (objects.put(object) != -1) {
 				if (sendWithoutContents)

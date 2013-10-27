@@ -164,6 +164,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@dereferenced
 	protected VectorMap<string, SceneObject> slottedObjects;
+
 	
 	@dereferenced
 	protected transient ReadWriteLock containerLock;
@@ -698,6 +699,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@local
 	@read
 	public native void getSlottedObjects(@dereferenced VectorMap<string, SceneObject> objects);
+
 	
 	@local
 	@read
@@ -1055,18 +1057,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return;
 	}
 
-	@read
-	public int getArrangementDescriptorSize() {
-		if (templateObject.getArrangementDescriptors() != null)
-			return templateObject.getArrangementDescriptors().size();
-		
-		return 0;
-	}
+	public native int getArrangementDescriptorSize();
+ 	
+	@dereferenced
+	@local
+	public native Vector<string> getArrangementDescriptor(int idx);
 
-	@read
-	public string getArrangementDescriptor(int idx) {
-		return templateObject.getArrangementDescriptors().get(idx);
-	}
 
 	@read
 	public string getSlotDescriptor(int idx) {
@@ -1153,26 +1149,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return containerObjects.contains(objectID);
 	}
 	
-	@read
-	public boolean hasObjectInSlottedContainer(SceneObject object) {
-		int arrangementSize = object.getArrangementDescriptorSize();
-		
-		if (arrangementSize == 0) {
-			return false;
-		}
-		
-		SceneObject obj = null;
-		
-		synchronized (containerLock) {
-			obj = slottedObjects.get(object.getArrangementDescriptor(0));
-		}
-		
-		if (object == obj) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+	public native boolean hasObjectInSlottedContainer(SceneObject object) ;
 	
 	@read
 	@reference
