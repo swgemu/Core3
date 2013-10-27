@@ -27,6 +27,7 @@ vicious_huf_dun = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/huf_dun.iff"},
+	controlDeviceTemplate = "object/intangible/pet/huf_dun_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

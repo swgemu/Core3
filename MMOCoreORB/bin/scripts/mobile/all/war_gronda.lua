@@ -27,6 +27,7 @@ war_gronda = Creature:new {
 	diet = NONE,
 
 	templates = {"object/mobile/war_gronda.iff"},
+	controlDeviceTemplate = "object/intangible/pet/gronda_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

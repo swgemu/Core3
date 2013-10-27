@@ -27,6 +27,7 @@ vrobalet = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/vrobalet.iff"},
+	controlDeviceTemplate = "object/intangible/pet/roba_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

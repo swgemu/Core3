@@ -27,6 +27,7 @@ verne = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/verne.iff"},
+	controlDeviceTemplate = "object/intangible/pet/verne_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -1,4 +1,4 @@
-volatile_syck = Creature:new {
+volatile_scyk = Creature:new {
 	objectName = "@mob/creature_names:scyk_volatile",
 	socialGroup = "scyk",
 	pvpFaction = "",
@@ -21,12 +21,13 @@ volatile_syck = Creature:new {
 	milk = 0,
 	tamingChance = 0.05,
 	ferocity = 6,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = PACK + STALKER,
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/scyk.iff"},
+	controlDeviceTemplate = "object/intangible/pet/dune_lizard_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
@@ -35,4 +36,4 @@ volatile_syck = Creature:new {
 	}
 }
 
-CreatureTemplates:addCreatureTemplate(volatile_syck, "volatile_syck")
+CreatureTemplates:addCreatureTemplate(volatile_scyk, "volatile_scyk")
