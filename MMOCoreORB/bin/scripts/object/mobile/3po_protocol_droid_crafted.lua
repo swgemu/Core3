@@ -42,7 +42,7 @@
 
 
 object_mobile_3po_protocol_droid_crafted = object_mobile_shared_3po_protocol_droid_crafted:new {
-	gameObjectType = 1026
+
 }
 
 ObjectTemplates:addTemplate(object_mobile_3po_protocol_droid_crafted, "object/mobile/3po_protocol_droid_crafted.iff")
