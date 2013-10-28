@@ -73,6 +73,36 @@ DirectorManager::DirectorManager() : Logger("DirectorManager") {
 	screenPlays.setNoDuplicateInsertPlan();
 }
 
+void DirectorManager::loadPersistentEvents() {
+	info("Loading persistent events from events.db");
+
+	ObjectDatabaseManager* dbManager = ObjectDatabaseManager::instance();
+	ObjectDatabase* eventDatabase = ObjectDatabaseManager::instance()->loadObjectDatabase("events", true);
+
+	if (eventDatabase == NULL) {
+		error("Could not load the event database.");
+		return;
+	}
+
+	int i = 0;
+
+	try {
+		ObjectDatabaseIterator iterator(eventDatabase);
+
+		uint64 objectID;
+
+		while (iterator.getNextKey(objectID)) {
+			Core::getObjectBroker()->lookUp(objectID);
+			info("Loading persistent event object id: " + String::valueOf(objectID), true);
+			++i;
+		}
+	} catch (DatabaseException& e) {
+		error("Database exception in DirectorManager::loadPersistentEvents(): "	+ e.getMessage());
+	}
+
+	info(String::valueOf(i) + " persistent events loaded.", true);
+}
+
 void DirectorManager::startGlobalScreenPlays() {
 	for (int i = 0; i < screenPlays.size(); ++i) {
 		String screenPlay = screenPlays.elementAt(i).getKey();
@@ -755,7 +785,7 @@ int DirectorManager::createEvent(lua_State* L) {
 
 	//System::out << "scheduling task with mili:" << mili << endl;
 
-	Reference<Task*> task = new ScreenPlayTask(obj, key, play);
+	Reference<ScreenPlayTask*> task = new ScreenPlayTask(obj, key, play);
 	task->schedule(mili);
 
 	if (parameterCount > 4) {
@@ -773,6 +803,10 @@ int DirectorManager::createEvent(lua_State* L) {
 			pevent->setCurTime(currentTime);
 
 			ObjectManager::instance()->persistObject(pevent, 1, "events");
+
+			instance()->info("Persistent event object id: " + String::valueOf(pevent->_getObjectID()), true);
+
+			task->setPersistentEventObjectID(pevent->_getObjectID());
 		}
 	}
 
@@ -1550,6 +1584,17 @@ void DirectorManager::activateEvent(ScreenPlayTask* task) {
 	} catch (Exception& e) {
 		error("exception while running lua task " + play + ":" + key);
 		e.printStackTrace();
+	}
+
+	info("Activated persistent event object id: " + String::valueOf(task->getPersistentEventObjectID()));
+
+	if (task->getPersistentEventObjectID() != 0) {
+		Reference<PersistentEvent*> persistentEvent = Core::getObjectBroker()->lookUp(task->getPersistentEventObjectID()).castTo<PersistentEvent*>();
+
+		if (persistentEvent != NULL)
+			persistentEvent->setEventExecuted(true);
+
+		ObjectManager::instance()->destroyObjectFromDatabase(task->getPersistentEventObjectID());
 	}
 }
 

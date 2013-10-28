@@ -62,6 +62,8 @@ namespace server {
 	public:
 		DirectorManager();
 
+		void loadPersistentEvents();
+
 		void startGlobalScreenPlays();
 		void startScreenPlay(CreatureObject* creatureObject, const String& screenPlayName);
 		void activateEvent(ScreenPlayTask* task);

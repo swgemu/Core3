@@ -893,12 +893,15 @@ ObjectDatabase* ObjectManager::loadTable(const String& database, uint64 objectID
 int ObjectManager::destroyObjectFromDatabase(uint64 objectID) {
 	Locker _locker(this);
 
-	DistributedObject* obj = getObject(objectID);
+	Reference<DistributedObject*> obj = getObject(objectID);
+
+	if (obj == NULL)
+		loadPersistentObject(objectID);
 
 	if (obj != NULL)
 	{
 		//setLogging(true);
-		//info("Marking " + String::valueOf(objectID) + " for deletion deletion");
+		//info("Marking " + String::valueOf(objectID) + " for deletion deletion", true);
 	//	setLogging(false);
 		obj->_setMarkedForDeletion(true);
 
