@@ -897,7 +897,7 @@ void PlayerManagerImplementation::ejectPlayerFromBuilding(CreatureObject* player
 
 
 
-void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap) {
+void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap, Vector<ManagedReference<CreatureObject*> >* spawnedCreatures) {
 	uint32 totalDamage = threatMap->getTotalDamage();
 
 	VectorMap<ManagedReference<CreatureObject*>, int> slExperience;
@@ -916,21 +916,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 		winningFaction = gcwMan->getWinningFaction();
 	}
 
-	if (!destructedObject->isCreatureObject()) {
-		ManagedReference<LairObserver*> lairObserver = NULL;
-		SortedVector<ManagedReference<Observer*> > observers = destructedObject->getObservers(ObserverEventType::OBJECTDESTRUCTION);
-
-		for (int i = 0; i < observers.size(); i++) {
-			lairObserver = cast<LairObserver*>(observers.get(i).get());
-
-			if (lairObserver != NULL)
-				break;
-		}
-
-		if (lairObserver == NULL)
-			return;
-
-		Vector<ManagedReference<CreatureObject* > >* spawnedCreatures = lairObserver->getSpawnedCreatures();
+	if (!destructedObject->isCreatureObject() && spawnedCreatures != NULL) {
 		ManagedReference<AiAgent*> ai = NULL;
 
 		for (int i = 0; i < spawnedCreatures->size(); i++) {

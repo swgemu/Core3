@@ -16,10 +16,12 @@ class DisseminateExperienceTask : public Task {
 
 	ThreatMap copyThreatMap;
 
+	Vector<ManagedReference<CreatureObject*> > spawnedCreatures;
+
 public:
 
-	DisseminateExperienceTask(TangibleObject* obj, ThreatMap* threatMap) : lair(obj),
-		copyThreatMap(*threatMap) {
+	DisseminateExperienceTask(TangibleObject* obj, ThreatMap* threatMap, Vector<ManagedReference<CreatureObject*> >* creatures) : lair(obj),
+		copyThreatMap(*threatMap), spawnedCreatures(*creatures) {
 	}
 
 	void run() {
