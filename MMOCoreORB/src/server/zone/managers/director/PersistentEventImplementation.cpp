@@ -47,6 +47,9 @@ which carries forward this exception.
 #include "engine/engine.h"
 
 void PersistentEventImplementation::notifyLoadFromDatabase() {
+	if (eventExecuted)
+		return;
+
 	Time expireTime;
 	uint64 currentTime = expireTime.getMiliTime() / 1000;
 	uint64 downTime = expireTime.getMiliTime() / 1000;
@@ -54,7 +57,8 @@ void PersistentEventImplementation::notifyLoadFromDatabase() {
 	currentTime -= curTime + timeStamp;
 	uint64 remTime = timeStamp - downTime - currentTime;
 
-	Reference<Task*> task = new ScreenPlayTask(obj, key, play);
+	Reference<ScreenPlayTask*> task = new ScreenPlayTask(obj, key, play);
+	task->setPersistentEventObjectID(_this.get()->_getObjectID());
 
 	if (currentTime > (curTime + timeStamp)) {  // Reschedule the event if it's not past, if so reschedule for the time server was down minus the event time.
 		task->schedule(timeStamp);

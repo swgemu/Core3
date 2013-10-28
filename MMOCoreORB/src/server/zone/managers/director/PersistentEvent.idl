@@ -58,8 +58,12 @@ class PersistentEvent extends ManagedObject {
 	protected string play;
 	protected SceneObject obj;
 	
+	protected boolean eventExecuted;
+	
 	public PersistentEvent() {
 		play = "";
+		
+		eventExecuted = false;
 	}
 	
 	public int getTimeStamp() {
@@ -100,6 +104,10 @@ class PersistentEvent extends ManagedObject {
 
 	public void setObject(SceneObject o) {
 		obj = o;
+	}
+	
+	public void setEventExecuted(boolean val) {
+		eventExecuted = val;
 	}
 
 	public native void notifyLoadFromDatabase();

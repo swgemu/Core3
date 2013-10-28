@@ -38,10 +38,12 @@ describe("Old Man", function()
 		readData = spy.new(function() return oldManId end)
 		spawnMobile = spy.new(function() return pOldMan end)
 
-		creatureObjectPlayer = { getFirstName = nil, getObjectID = nil, getPlayerObject = nil }
+		creatureObjectPlayer = { getFirstName = nil, getObjectID = nil, getPlayerObject = nil, getScreenPlayState = nil, setScreenPlayState = nil }
 		creatureObjectPlayer.getFirstName = spy.new(function() return playerFirstName end)
 		creatureObjectPlayer.getObjectID = spy.new(function() return playerId end)
 		creatureObjectPlayer.getPlayerObject = spy.new(function() return pPlayerObject end)
+		creatureObjectPlayer.getScreenPlayState = spy.new(function() return 0 end)
+		creatureObjectPlayer.setScreenPlayState = spy.new(function() end)
 		DirectorManagerMocks.creatureObjects[pCreatureObject] = creatureObjectPlayer
 		
 		creatureObjectOldMan = { getObjectID = nil }
@@ -80,10 +82,56 @@ describe("Old Man", function()
 	describe("Interface methods", function()
 		describe("createSpawnOldManEvent", function()
 			describe("When called with a player as argument", function()
-				it("Should create an event for spawning the old man", function()
+				local realHasOldManSpawnEventScheduled
+				
+				setup(function()
+					realHasOldManSpawnEventScheduled = OldMan.hasOldManSpawnEventScheduled
+				end)
+				
+				teardown(function()
+					OldMan.hasOldManSpawnEventScheduled = realHasOldManSpawnEventScheduled
+				end)
+				
+				before_each(function()
+					OldMan.hasOldManSpawnEventScheduled = spy.new(function() return false end)
+				end)
+				
+				it("Should check if the player has an event already scheduled.", function()
 					OldMan.createSpawnOldManEvent(pCreatureObject)
 
-					assert.spy(createEvent).was.called(1)
+					assert.spy(OldMan.hasOldManSpawnEventScheduled).was.called_with(pCreatureObject)
+				end)
+				
+				describe("and no event is scheduled", function()
+					it("Should create an event for spawning the old man", function()
+						OldMan.createSpawnOldManEvent(pCreatureObject)
+	
+						assert.spy(createEvent).was.called(1)
+					end)
+					
+					it("Should save information about event being scheduled on the player", function()
+						OldMan.createSpawnOldManEvent(pCreatureObject)
+	
+						assert.spy(creatureObjectPlayer.setScreenPlayState).was.called_with(creatureObjectPlayer, OLD_MAN_SCHEDULED, OLD_MAN_EVENT_SCHEDULED_STRING)
+					end)
+				end)
+				
+				describe("and an event is already scheduled", function()
+					before_each(function()
+						OldMan.hasOldManSpawnEventScheduled = spy.new(function() return true end)
+					end)
+					
+					it("Should not create an event for spawning the old man.", function()
+						OldMan.createSpawnOldManEvent(pCreatureObject)
+	
+						assert.spy(createEvent).was.not_called()
+					end)
+					
+					it("Should not save information about event being scheduled on the player", function()
+						OldMan.createSpawnOldManEvent(pCreatureObject)
+	
+						assert.spy(writeData).was.not_called()
+					end)
 				end)
 			end)
 		end)
@@ -709,6 +757,32 @@ describe("Old Man", function()
 					OldMan.despawnOldMan(nil)
 					
 					assert.spy(sceneObjectOldMan.destroyObjectFromWorld).was.not_called()
+				end)
+			end)
+		end)
+		
+		describe("hasOldManSpawnEventScheduled", function()
+			describe("When called with a player as argument", function()
+				it("Should read the event scheduled information from the player.", function()
+					OldMan.hasOldManSpawnEventScheduled(pCreatureObject)
+					
+					assert.spy(creatureObjectPlayer.getScreenPlayState).was.called_with(creatureObjectPlayer, OLD_MAN_EVENT_SCHEDULED_STRING)
+				end)
+				
+				describe("and the data stored on the player indicates that the event is scheduled", function()
+					it("Should return true.", function()
+						creatureObjectPlayer.getScreenPlayState = spy.new(function() return OLD_MAN_SCHEDULED end)
+					
+						assert.is_true(OldMan.hasOldManSpawnEventScheduled(pCreatureObject))
+					end)
+				end)
+				
+				describe("and the data stored on the player indicates that the event is not scheduled", function()
+					it("Should return false.", function()
+						creatureObjectPlayer.getScreenPlayState = spy.new(function() return OLD_MAN_NOT_SCHEDULED end)
+					
+						assert.is_false(OldMan.hasOldManSpawnEventScheduled(pCreatureObject))
+					end)
 				end)
 			end)
 		end)		
