@@ -46,7 +46,7 @@ object_tangible_deed_pet_deed_deed_mse_basic = object_tangible_deed_pet_deed_sha
 	templateType = DROIDDEED,
 
 	controlDeviceObjectTemplate = "object/intangible/pet/mouse_droid_crafted.iff",
-	generatedObjectTemplate = "object/mobile/mouse_droid_crafted.iff",
+	generatedObjectTemplate = "object/creature/npc/droid/crafted/mse_6_droid.iff",
 
 	numberExperimentalProperties = {1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR", "UT", "XX", "XX", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},

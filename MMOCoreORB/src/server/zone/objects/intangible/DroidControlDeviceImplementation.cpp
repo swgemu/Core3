@@ -163,6 +163,9 @@ void DroidControlDeviceImplementation::spawnObject(CreatureObject* player) {
 
 	DroidObject* droid = cast<DroidObject*>(creature.get());
 
+	if( droid == NULL )
+		return;
+
 	// Sanity check that there isn't another power task outstanding
 	droid->removePendingTask( "droid_power" );
 

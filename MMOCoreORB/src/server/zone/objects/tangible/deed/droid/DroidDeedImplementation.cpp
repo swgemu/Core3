@@ -73,8 +73,12 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 	}
 
 	Reference<DroidControlDevice*> droidControlDevice = (server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1)).castTo<DroidControlDevice*>();
-	Reference<DroidObject*> droid = (server->getZoneServer()->createObject(generatedObjectTemplate.hashCode(), 1)).castTo<DroidObject*>();
+	if( droidControlDevice == NULL ){
+		player->sendSystemMessage("wrong droid control device template " + controlDeviceObjectTemplate);
+		return 1;
+	}
 
+	Reference<DroidObject*> droid = (server->getZoneServer()->createObject(generatedObjectTemplate.hashCode(), 1)).castTo<DroidObject*>();
 	if (droid == NULL) {
 		player->sendSystemMessage("wrong droid object template " + generatedObjectTemplate);
 		return 1;
