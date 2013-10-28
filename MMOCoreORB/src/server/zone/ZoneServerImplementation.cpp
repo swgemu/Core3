@@ -290,7 +290,8 @@ void ZoneServerImplementation::startManagers() {
 
 	cityManager->loadCityRegions();
 
-	//start global screne plays
+	//Start global screen plays
+	DirectorManager::instance()->loadPersistentEvents();
 	DirectorManager::instance()->startGlobalScreenPlays();
 
 	auctionManager->initialize();

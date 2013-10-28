@@ -17,12 +17,14 @@ class ScreenPlayTask : public Task {
 	ManagedReference<SceneObject*> obj;
 	String taskKey;
 	String screenPlay;
+	uint64 persistentEventObjectID;
 public:
 
 	ScreenPlayTask(SceneObject* scno, const String& key, const String& playName) {
 		obj = scno;
 		taskKey = key;
 		screenPlay = playName;
+		persistentEventObjectID = 0;
 	}
 
 	void run() {
@@ -45,6 +47,14 @@ public:
 
 	String getScreenPlay() {
 		return screenPlay;
+	}
+
+	void setPersistentEventObjectID(uint64 objectID) {
+		persistentEventObjectID = objectID;
+	}
+
+	uint64 getPersistentEventObjectID() {
+		return persistentEventObjectID;
 	}
 
 };
