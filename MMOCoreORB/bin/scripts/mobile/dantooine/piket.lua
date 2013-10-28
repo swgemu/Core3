@@ -28,6 +28,7 @@ piket = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/piket.iff"},
+	controlDeviceTemplate = "object/intangible/pet/piket_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

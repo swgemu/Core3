@@ -28,6 +28,7 @@ lesser_plains_bol = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bol.iff"},
+	controlDeviceTemplate = "object/intangible/pet/bol_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
