@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a437d4f_d850c160",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/DroidObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-10-28T01:59:38Z",
+      "side": 1,
+      "message": "I couldn\u0027t find evidence one way or the other so I went with top level like putting power into structures.  I can change it if QA find evidence otherwise.",
+      "parentUuid": "9a437d4f_7860b535",
+      "revId": "4cdfa015e3a918e1a97ea2f67c6375cf40dca0d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a437d4f_5865f143",
         "filename": "MMOCoreORB/src/server/zone/objects/intangible/DroidControlDeviceImplementation.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-10-28T01:04:44Z",
       "side": 1,
       "message": "Why not just call handleLowPower() here?",
+      "revId": "4cdfa015e3a918e1a97ea2f67c6375cf40dca0d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_b84dfdc6",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/DroidControlDeviceImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-10-28T01:59:38Z",
+      "side": 1,
+      "message": "Sure, sounds good.",
+      "parentUuid": "9a437d4f_5865f143",
       "revId": "4cdfa015e3a918e1a97ea2f67c6375cf40dca0d7",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
