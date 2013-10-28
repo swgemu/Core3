@@ -42,7 +42,7 @@
 
 
 object_mobile_r5_crafted = object_mobile_shared_r5_crafted:new {
-	gameObjectType = 1026
+
 }
 
 ObjectTemplates:addTemplate(object_mobile_r5_crafted, "object/mobile/r5_crafted.iff")

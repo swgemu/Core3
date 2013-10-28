@@ -46,7 +46,7 @@ object_tangible_deed_pet_deed_deed_le_repair_advanced_basic = object_tangible_de
 	templateType = DROIDDEED,
 
 	controlDeviceObjectTemplate = "object/intangible/pet/le_repair_droid.iff",
-	generatedObjectTemplate = "object/mobile/le_repair_droid.iff",
+	generatedObjectTemplate = "object/creature/npc/droid/crafted/le_repair_droid_advanced.iff",
 	
 	numberExperimentalProperties = {1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "XX", "XX", "OQ", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},

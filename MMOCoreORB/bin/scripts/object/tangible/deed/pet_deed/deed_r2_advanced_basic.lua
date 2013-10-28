@@ -46,7 +46,7 @@ object_tangible_deed_pet_deed_deed_r2_advanced_basic = object_tangible_deed_pet_
 	templateType = DROIDDEED,
 
 	controlDeviceObjectTemplate = "object/intangible/pet/r2_crafted.iff",
-	generatedObjectTemplate = "object/mobile/r2_crafted.iff",
+	generatedObjectTemplate = "object/creature/npc/droid/crafted/r2_droid_advanced.iff",
 
 	numberExperimentalProperties = {1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "XX", "XX", "OQ", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
