@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_7860b535",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/DroidObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-10-28T01:04:44Z",
+      "side": 1,
+      "message": "This will only find a battery in the top level inventory (and not one in an equipped backpack or other container in inventory. Is that intended behavior?",
+      "revId": "4cdfa015e3a918e1a97ea2f67c6375cf40dca0d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_5865f143",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/DroidControlDeviceImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-10-28T01:04:44Z",
+      "side": 1,
+      "message": "Why not just call handleLowPower() here?",
+      "revId": "4cdfa015e3a918e1a97ea2f67c6375cf40dca0d7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
