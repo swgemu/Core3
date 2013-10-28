@@ -27,6 +27,7 @@ blood_stained_merek = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/merek_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/merek_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",

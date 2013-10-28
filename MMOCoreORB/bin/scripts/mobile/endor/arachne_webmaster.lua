@@ -27,6 +27,7 @@ arachne_webmaster = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/angler_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/angler_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -27,6 +27,7 @@ pouncing_jax = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bearded_jax.iff"},
+	controlDeviceTemplate = "object/intangible/pet/bearded_jax_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

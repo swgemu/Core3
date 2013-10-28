@@ -27,6 +27,7 @@ delirious_merek_avenger = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/merek_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/merek_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

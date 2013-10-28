@@ -27,6 +27,7 @@ merek_assassin = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/merek_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/merek_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
