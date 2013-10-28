@@ -27,6 +27,7 @@ reclusive_shear_mite = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/shear_mite.iff"},
+	controlDeviceTemplate = "object/intangible/pet/shear_mite_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

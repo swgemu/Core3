@@ -27,6 +27,7 @@ kwi = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kwi.iff"},
+	controlDeviceTemplate = "object/intangible/pet/kwi_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

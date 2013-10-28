@@ -27,6 +27,7 @@ kinad_baz_nitch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/baz_nitch_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/nuna_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

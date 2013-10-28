@@ -27,6 +27,7 @@ shear_mite_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/shear_mite_hunter.iff"},
+	controlDeviceTemplate = "object/intangible/pet/shear_mite_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

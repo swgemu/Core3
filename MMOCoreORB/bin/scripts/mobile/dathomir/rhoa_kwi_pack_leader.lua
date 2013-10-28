@@ -27,6 +27,7 @@ rhoa_kwi_pack_leader = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kwi_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/kwi_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

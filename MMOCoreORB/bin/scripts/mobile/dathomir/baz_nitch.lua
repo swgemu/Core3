@@ -27,6 +27,7 @@ baz_nitch = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/baz_nitch.iff"},
+	controlDeviceTemplate = "object/intangible/pet/nuna_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

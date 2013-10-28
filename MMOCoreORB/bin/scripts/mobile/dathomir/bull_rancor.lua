@@ -27,6 +27,7 @@ bull_rancor = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bull_rancor.iff"},
+	controlDeviceTemplate = "object/intangible/pet/rancor_hue.iff",
 	lootGroups = {
 		{
 			groups = {

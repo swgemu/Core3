@@ -27,6 +27,7 @@ bolma_male = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bolma_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/bolma_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

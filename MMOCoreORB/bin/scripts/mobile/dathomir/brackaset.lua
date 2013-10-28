@@ -28,6 +28,7 @@ brackaset = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/brackaset.iff"},
+	controlDeviceTemplate = "object/intangible/pet/brackaset_hue.iff",
 	lootGroups = {
 		 {
 	        groups = {
