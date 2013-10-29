@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_e3abdad4",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDeviceImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-29T20:28:14Z",
+      "side": 1,
+      "message": "Reference\u003cSceneObject*\u003e strongRef \u003d player-\u003egetParentRecursively(SceneObjectType::Building);\nReference\u003cBuildingObject*\u003e building;\n\nif (strongRef !\u003d NULL)\n    building \u003d strongRef.castTo\u003cBuildingObject*\u003e();",
+      "revId": "1ae1e65c5e2e60dc79f161707765cff3161d24d4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_c3b8d62c",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDeviceImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-10-29T20:28:14Z",
+      "side": 1,
+      "message": "Reference\u003cSceneObject*\u003e parent \u003d player-\u003egetParent();",
+      "revId": "1ae1e65c5e2e60dc79f161707765cff3161d24d4",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
