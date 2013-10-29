@@ -16,9 +16,17 @@
 
 void DroidControlDeviceImplementation::callObject(CreatureObject* player) {
 
-	if (player->getParent() != NULL){
-		player->sendSystemMessage( "You must be outside to call this droid" );
-		return;
+	if (player->getParent() != NULL) {
+		ManagedReference<SceneObject*> strongRef = player->getParentRecursively(SceneObjectType::BUILDING);
+		ManagedReference<BuildingObject*> building;
+
+		if (strongRef != NULL)
+			building = strongRef.castTo<BuildingObject*>();
+
+		if (building == NULL || building->isPrivateStructure()) {
+			player->sendSystemMessage("@pet/pet_menu:private_house"); // You cannot call pets in a private building.
+			return;
+		}
 	}
 
 	if (!isASubChildOf(player)){
@@ -26,13 +34,15 @@ void DroidControlDeviceImplementation::callObject(CreatureObject* player) {
 	}
 
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
-	if (controlledObject == NULL){
+	if (controlledObject == NULL || !controlledObject->isAiAgent()){
 		return;
 	}
 
-	if (controlledObject->isInQuadTree()){
+	ManagedReference<AiAgent*> droid = cast<AiAgent*>(controlledObject.get());
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost->hasActivePet(droid))
 		return;
-	}
 
 	if (player->isInCombat() || player->isDead() || player->isIncapacitated()) {
 		player->sendSystemMessage("@pet/pet_menu:cant_call"); // You cannot call this pet right now.
@@ -43,17 +53,6 @@ void DroidControlDeviceImplementation::callObject(CreatureObject* player) {
 		player->sendSystemMessage("@pet/pet_menu:mounted_call_warning"); // You cannot call a pet while mounted or riding a vehicle.
 		return;
 	}
-
-	ManagedReference<TradeSession*> tradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
-	if (tradeContainer != NULL) {
-		server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
-	}
-
-	if (!controlledObject->isAiAgent()){
-		return;
-	}
-
-	ManagedReference<AiAgent*> droid = cast<AiAgent*>(controlledObject.get());
 
 	if(player->getPendingTask("call_droid") != NULL) {
 		StringIdChatParameter waitTime("pet/pet_menu", "call_delay_finish_pet"); // Already calling a Pet: Call will be finished in %DI seconds.
@@ -66,34 +65,27 @@ void DroidControlDeviceImplementation::callObject(CreatureObject* player) {
 		return;
 	}
 
-	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
-
-	if (datapad == NULL){
-		return;
-	}
-
 	int currentlySpawned = 0;
 
 	int maxDroids = 1;
 
-	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
-		ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
+	for (int i = 0; i < ghost->getActivePetsSize(); ++i) {
+		ManagedReference<AiAgent*> object = ghost->getActivePet(i);
 
-		if (object->isDroidControlDevice()) {
-			DroidControlDevice* device = cast<DroidControlDevice*>( object.get());
-
-			ManagedReference<AiAgent*> object = cast<AiAgent*>(device->getControlledObject());
-
-			if (object != NULL && object->isInQuadTree()) {
-				if ( object->isDroidObject()) {
-					if (++currentlySpawned >= maxDroids) {
-						player->sendSystemMessage("@pet/pet_menu:at_max"); // You already have the maximum number of pets of this type that you can call.
-						return;
-					}
+		if (object != NULL) {
+			if ( object->isDroidObject()) {
+				if (++currentlySpawned >= maxDroids) {
+					player->sendSystemMessage("@pet/pet_menu:at_max"); // You already have the maximum number of pets of this type that you can call.
+					return;
 				}
-
 			}
+
 		}
+	}
+
+	ManagedReference<TradeSession*> tradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
+	if (tradeContainer != NULL) {
+		server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
 	}
 
 	if(player->getCurrentCamp() == NULL && player->getCityRegion() == NULL) {
@@ -154,7 +146,12 @@ void DroidControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	if (zone == NULL)
 		return;
 
-	zone->transferObject(controlledObject, -1, true);
+	ManagedReference<SceneObject*> parent = player->getParent();
+
+	if (parent != NULL && parent->isCellObject())
+		parent->transferObject(controlledObject, -1, true);
+	else
+		zone->transferObject(controlledObject, -1, true);
 
 	updateStatus(1);
 
@@ -165,6 +162,9 @@ void DroidControlDeviceImplementation::spawnObject(CreatureObject* player) {
 
 	if( droid == NULL )
 		return;
+
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+	ghost->addToActivePets(droid);
 
 	// Sanity check that there isn't another power task outstanding
 	droid->removePendingTask( "droid_power" );
@@ -198,10 +198,10 @@ void DroidControlDeviceImplementation::cancelSpawnObject(CreatureObject* player)
 void DroidControlDeviceImplementation::storeObject(CreatureObject* player) {
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 
-	if (controlledObject == NULL || !controlledObject->isCreatureObject())
+	if (controlledObject == NULL || !controlledObject->isAiAgent())
 		return;
 
-	ManagedReference<CreatureObject*> droid = cast<CreatureObject*>(controlledObject.get());
+	ManagedReference<AiAgent*> droid = cast<AiAgent*>(controlledObject.get());
 
 	if (droid->isInCombat())
 		return;
@@ -213,6 +213,9 @@ void DroidControlDeviceImplementation::storeObject(CreatureObject* player) {
 	droid->setCreatureLink(NULL);
 
 	updateStatus(0);
+
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+	ghost->removeFromActivePets(droid);
 }
 
 
@@ -228,10 +231,11 @@ void DroidControlDeviceImplementation::destroyObjectFromDatabase(bool destroyCon
 }
 
 int DroidControlDeviceImplementation::canBeDestroyed(CreatureObject* player) {
-	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+	ManagedReference<AiAgent*> controlledObject = cast<AiAgent*>(this->controlledObject.get().get());
 
 	if (controlledObject != NULL) {
-		if (controlledObject->isInQuadTree())
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+		if (ghost->hasActivePet(controlledObject))
 			return 1;
 	}
 
