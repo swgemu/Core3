@@ -12,6 +12,7 @@
 #include "server/zone/templates/tangible/DroidDeedTemplate.h"
 #include "server/zone/objects/intangible/DroidControlDevice.h"
 #include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/tangible/deed/droid/DroidCraftingModule.h"
 
 void DroidDeedImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	DeedImplementation::loadTemplateData(templateData);
@@ -27,7 +28,33 @@ void DroidDeedImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 void DroidDeedImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	DeedImplementation::fillAttributeList(alm, object);
 
-	// @TODO Add attributes
+	// Add module attributes
+	for( int i=0; i<modules.size(); i++){
+		DroidModule* module = modules.get(i);
+
+		// Crafting modules
+		if( module->isCraftingModule() ){
+			DroidCraftingModule* craftingModule = cast<DroidCraftingModule*>(module);
+
+			if( craftingModule->isClothingArmor() ){
+				alm->insertAttribute("@obj_attr_n:crafting_station_clothing", "Installed");
+			}
+			else if( craftingModule->isFoodChemical() ){
+				alm->insertAttribute("@obj_attr_n:crafting_station_food", "Installed");
+			}
+			else if( craftingModule->isShip() ){
+				alm->insertAttribute("@obj_attr_n:crafting_station_space", "Installed");
+			}
+			else if( craftingModule->isStructureFurniture() ){
+				alm->insertAttribute("@obj_attr_n:crafting_station_structure", "Installed");
+			}
+			else if( craftingModule->isWeaponDroidGeneric() ){
+				alm->insertAttribute("@obj_attr_n:crafting_station_weapon", "Installed");
+			}
+
+		}
+
+	}
 
 }
 
@@ -43,7 +70,24 @@ void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool 
 	 *
 	 */
 
-	// @TODO Add crafting values
+	// Loop over all crafting properties looking for those of interest
+	for( int i=0; i < values->getExperimentalPropertySubtitleSize(); i++ ){
+
+		String propertyName = values->getExperimentalPropertySubtitle(i);
+		float v = values->getCurrentValue(i);
+
+		// Crafting Modules
+		if( propertyName == "crafting_module" ){
+
+			v = values->getCurrentValue("crafting_module");
+			if( v > 0 ){
+				DroidCraftingModule* module = new DroidCraftingModule();
+				module->addProperty(propertyName, v);
+				modules.add(module);
+			}
+		}
+	}
+
 }
 
 void DroidDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -91,6 +135,12 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 	droid->createChildObjects();
 	droid->setMaxCondition(1000); // @TODO Set appropriate condition from deed
 	droid->setConditionDamage(0);
+
+	// Add modules
+	for( int i=0; i<modules.size(); i++){
+		droid->addModule( modules.get(i) );
+	}
+
 	droidControlDevice->setControlledObject(droid);
 	datapad->transferObject(droidControlDevice, -1);
 

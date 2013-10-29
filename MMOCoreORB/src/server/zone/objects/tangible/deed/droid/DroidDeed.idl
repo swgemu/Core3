@@ -47,6 +47,7 @@ package server.zone.objects.tangible.deed.droid;
 import engine.lua.LuaObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.tangible.deed.Deed;
+include server.zone.objects.tangible.deed.droid.DroidModule;
 import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
@@ -58,7 +59,10 @@ import server.zone.templates.SharedObjectTemplate;
 class DroidDeed extends Deed {
 
 	protected string controlDeviceObjectTemplate;
-	
+
+	@dereferenced
+	protected Vector<DroidModule> modules; 
+		
 	public DroidDeed() {
 		Logger.setLoggingName("DroidDeed");
 	}

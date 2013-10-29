@@ -87,6 +87,7 @@ bin_PROGRAMS = core3 #odb3
 core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.cpp \
 			  	server/zone/managers/director/tests/BasicScreenPlayTest.cpp \
 			  	server/zone/managers/creature/tests/LuaMobileTest.cpp \
+			  	server/zone/objects/tangible/deed/droid/tests/DroidModuleTest.cpp \
 			  	server/zone/managers/jedi/tests/JediManagerTest.cpp \
 			  	server/zone/objects/creature/ai/bt/tests/BehaviorTest.cpp \
 			  	server/zone/objects/area/areashapes/tests/RectangularAreaShapeTest.cpp \
@@ -565,6 +566,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/consumable/DelayedBuffObserverImplementation.cpp \
 		server/zone/objects/tangible/deed/DeedImplementation.cpp \
 		server/zone/objects/tangible/deed/droid/DroidDeedImplementation.cpp \
+		server/zone/objects/tangible/deed/droid/DroidModule.cpp \
+		server/zone/objects/tangible/deed/droid/DroidCraftingModule.cpp \
 		server/zone/objects/tangible/deed/pet/PetDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/vehicle/VehicleDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/resource/ResourceDeedImplementation.cpp \
