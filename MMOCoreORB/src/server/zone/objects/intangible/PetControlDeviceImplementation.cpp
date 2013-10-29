@@ -13,18 +13,27 @@
 
 
 void PetControlDeviceImplementation::callObject(CreatureObject* player) {
-	if (player->getParent() != NULL)
-		return;
+	if (player->getParent() != NULL) {
+		BuildingObject* building = cast<BuildingObject*>(player->getParentRecursively(SceneObjectType::BUILDING).get().get());
+
+		if (building == NULL || building->isPrivateStructure()) {
+			player->sendSystemMessage("@pet/pet_menu:private_house"); // You cannot call pets in a private building.
+			return;
+		}
+	}
 
 	if (!isASubChildOf(player))
 		return;
 
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 
-	if (controlledObject == NULL)
+	if (controlledObject == NULL || !controlledObject->isAiAgent())
 		return;
 
-	if (controlledObject->isInQuadTree())
+	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost->hasActivePet(pet))
 		return;
 
 	if (player->isInCombat() || player->isDead() || player->isIncapacitated()) {
@@ -37,21 +46,10 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		return;
 	}
 
-	ManagedReference<TradeSession*> tradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
-
-	if (tradeContainer != NULL) {
-		server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
-	}
-
 	if (vitality <= 0) {
 		player->sendSystemMessage("@pet/pet_menu:dead_pet"); // This pet is dead. Select DESTROY from the radial menu to delete this pet control device.
 		return;
 	}
-
-	if (!controlledObject->isAiAgent())
-		return;
-
-	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
 
 	unsigned int petFaction = pet->getFaction();
 
@@ -63,7 +61,6 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 			return;
 		}
 
-		PlayerObject* ghost = player->getPlayerObject();
 		if (player->getFaction() != petFaction || ghost->getFactionStatus() == FactionStatus::ONLEAVE) {
 			StringIdChatParameter message("@faction_perk:prose_be_declared_faction"); // You must be a declared %TO to use %TT.
 			message.setTO(pet->getFactionString());
@@ -84,11 +81,6 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		return;
 	}
 
-	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
-
-	if (datapad == NULL)
-		return;
-
 	int currentlySpawned = 0;
 	int spawnedLevel = 0;
 	int maxPets = 1;
@@ -108,36 +100,36 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		petType = "npc";
 	}
 
-	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
-		ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
+	for (int i = 0; i < ghost->getActivePetsSize(); ++i) {
+		ManagedReference<AiAgent*> object = ghost->getActivePet(i);
 
-		if (object->isPetControlDevice()) {
-			PetControlDevice* device = cast<PetControlDevice*>( object.get());
-
-			ManagedReference<AiAgent*> object = cast<AiAgent*>(device->getControlledObject());
-
-			if (object != NULL && object->isInQuadTree()) {
-				if (object->isCreature() && petType == "creature") {
-					if (++currentlySpawned >= maxPets) {
-						player->sendSystemMessage("@pet/pet_menu:at_max"); // You already have the maximum number of pets of this type that you can call.
-						return;
-					}
-
-					spawnedLevel += object->getLevel();
-
-					if ((spawnedLevel + level) > maxLevelofPets) {
-						player->sendSystemMessage("@pet/pet_menu:control_exceeded"); // Calling this pet would exceed your Control Level ability.
-						return;
-					}
-				} else if (object->isNonPlayerCreatureObject() && petType == "npc") {
-					if (++currentlySpawned >= maxPets) {
-						player->sendSystemMessage("@pet/pet_menu:at_max"); // You already have the maximum number of pets of this type that you can call.
-						return;
-					}
+		if (object != NULL) {
+			if (object->isCreature() && petType == "creature") {
+				if (++currentlySpawned >= maxPets) {
+					player->sendSystemMessage("@pet/pet_menu:at_max"); // You already have the maximum number of pets of this type that you can call.
+					return;
 				}
 
+				spawnedLevel += object->getLevel();
+
+				if ((spawnedLevel + level) > maxLevelofPets) {
+					player->sendSystemMessage("@pet/pet_menu:control_exceeded"); // Calling this pet would exceed your Control Level ability.
+					return;
+				}
+			} else if (object->isNonPlayerCreatureObject() && petType == "npc") {
+				if (++currentlySpawned >= maxPets) {
+					player->sendSystemMessage("@pet/pet_menu:at_max"); // You already have the maximum number of pets of this type that you can call.
+					return;
+				}
 			}
+
 		}
+	}
+
+	ManagedReference<TradeSession*> tradeContainer = player->getActiveSession(SessionFacadeType::TRADE).castTo<TradeSession*>();
+
+	if (tradeContainer != NULL) {
+		server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
 	}
 
 	if(player->getCurrentCamp() == NULL && player->getCityRegion() == NULL) {
@@ -199,7 +191,12 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	if (zone == NULL)
 		return;
 
-	zone->transferObject(controlledObject, -1, true);
+	SceneObject* parent = player->getParent().get().get();
+
+	if (parent != NULL && parent->isCellObject())
+		parent->transferObject(controlledObject, -1, true);
+	else
+		zone->transferObject(controlledObject, -1, true);
 
 	updateStatus(1);
 
@@ -208,8 +205,12 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 
 	AiAgent* pet = cast<AiAgent*>(creature.get());
 
-	if (pet != NULL)
+	if (pet != NULL) {
 		pet->setFollowObject(player);
+
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+		ghost->addToActivePets(pet);
+	}
 }
 
 void PetControlDeviceImplementation::cancelSpawnObject(CreatureObject* player) {
@@ -254,6 +255,9 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player) {
 	pet->setCreatureLink(NULL);
 
 	updateStatus(0);
+
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+	ghost->removeFromActivePets(pet);
 }
 
 
@@ -289,10 +293,11 @@ void PetControlDeviceImplementation::destroyObjectFromDatabase(bool destroyConta
 }
 
 int PetControlDeviceImplementation::canBeDestroyed(CreatureObject* player) {
-	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+	ManagedReference<AiAgent*> controlledObject = cast<AiAgent*>(this->controlledObject.get().get());
 
 	if (controlledObject != NULL) {
-		if (controlledObject->isInQuadTree())
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+		if (ghost->hasActivePet(controlledObject))
 			return 1;
 	}
 

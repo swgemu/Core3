@@ -53,6 +53,7 @@ import server.zone.managers.objectcontroller.ObjectController;
 import server.zone.objects.building.BuildingObject;
 import server.zone.objects.creature.commands.QueueCommand;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.AiAgent;
 import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.player.events.PlayerDisconnectEvent;
 import server.zone.objects.player.events.PlayerRecoveryEvent;
@@ -245,6 +246,9 @@ class PlayerObject extends IntangibleObject {
 
 	@dereferenced
 	protected Time lastDigestion;
+
+	@dereferenced
+	protected SortedVector<AiAgent> activePets;
 	
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
@@ -296,6 +300,7 @@ class PlayerObject extends IntangibleObject {
 		duelList.setNoDuplicateInsertPlan();
 		persistentMessages.setNoDuplicateInsertPlan();
 		consentList.setNoDuplicateInsertPlan();
+		activePets.setNoDuplicateInsertPlan();
 
 		accountID = 0;		
 		
@@ -913,7 +918,28 @@ class PlayerObject extends IntangibleObject {
 	public int getDuelListSize() {
 		return duelList.size();
 	}
-	
+
+	//Active Pets manipulation methods
+	public void addToActivePets(AiAgent pet) {
+		activePets.put(pet);
+	}
+
+	public void removeFromActivePets(AiAgent pet) {
+		activePets.drop(pet);
+	}
+
+	public AiAgent getActivePet(int index) {
+		return activePets.get(index);
+	}
+
+	public boolean hasActivePet(AiAgent pet) {
+		return activePets.contains(pet);
+	}
+
+	public int getActivePetsSize() {
+		return activePets.size();
+	}
+
 	public unicode getBiography() {
 		return biography;
 	}
