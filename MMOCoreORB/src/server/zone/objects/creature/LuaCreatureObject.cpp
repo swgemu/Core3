@@ -320,11 +320,7 @@ int LuaCreatureObject::removeScreenPlayState(lua_State* L) {
 	uint64 stateToClear = lua_tointeger(L, -2);
 
 	if (realObject != NULL) {
-
-		uint64 stateMask = realObject->getScreenPlayState(play);
-
-		if (stateMask & stateToClear)
-			realObject->setScreenPlayState(play, stateMask - stateToClear);
+		realObject->setScreenPlayState(play, realObject->getScreenPlayState(play) & (~stateToClear));
 	}
 	return 0;
 }
@@ -536,9 +532,9 @@ int LuaCreatureObject::getGroupSize(lua_State* L) {
 
 int LuaCreatureObject::setOptionsBitmask(lua_State* L) {
 	uint32 bitmask = lua_tointeger(L, -1);
-	
+
 	realObject->setOptionsBitmask(bitmask, true);
-	
+
 	return 0;
 }
 
