@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/objects/creature/components/AiNPCComponent.h"
+#include "server/zone/objects/tangible/deed/droid/DroidCraftingModule.h"
 
 void DroidObjectImplementation::initializeTransientMembers() {
 	AiAgentImplementation::initializeTransientMembers();
@@ -80,6 +81,38 @@ void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 	float percentPower = ((float)power/(float)MAX_POWER)*100.0;
 	msg->insertAttribute("@obj_attr_n:battery_power", String::valueOf((int)percentPower) + "%");
 
+	// Add module attributes
+	for( int i=0; i<modules.size(); i++){
+		DroidModule* module = modules.get(i);
+
+		// Crafting modules
+		if( module->isCraftingModule() ){
+			DroidCraftingModule* craftingModule = cast<DroidCraftingModule*>(module);
+
+			if( craftingModule->isClothingArmor() ){
+				msg->insertAttribute("@obj_attr_n:crafting_station_clothing", "Installed");
+			}
+			else if( craftingModule->isFoodChemical() ){
+				msg->insertAttribute("@obj_attr_n:crafting_station_food", "Installed");
+			}
+			else if( craftingModule->isShip() ){
+				msg->insertAttribute("@obj_attr_n:crafting_station_space", "Installed");
+			}
+			else if( craftingModule->isStructureFurniture() ){
+				msg->insertAttribute("@obj_attr_n:crafting_station_structure", "Installed");
+			}
+			else if( craftingModule->isWeaponDroidGeneric() ){
+				msg->insertAttribute("@obj_attr_n:crafting_station_weapon", "Installed");
+			}
+
+		}
+
+	}
+
+}
+
+void DroidObjectImplementation::addModule( DroidModule* module ){
+	modules.add(module);
 }
 
 int DroidObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
