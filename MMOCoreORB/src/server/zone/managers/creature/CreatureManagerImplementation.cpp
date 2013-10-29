@@ -502,7 +502,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		if (pet) {
 			ManagedReference<PetControlDevice*> petControlDevice = destructedObject->getControlDevice().get().castTo<PetControlDevice*>();
 
-			if (petControlDevice != NULL)
+			if (petControlDevice != NULL && petControlDevice->getPetType() != PetControlDevice::DROIDPET)
 				petControlDevice->setVitality(petControlDevice->getVitality() - 1);
 		}
 	} catch (...) {

@@ -43,7 +43,7 @@ which carries forward this exception.
  */
 
 #include "server/zone/objects/creature/DroidObject.h"
-#include "server/zone/objects/intangible/DroidControlDevice.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/object/StartNpcConversation.h"
 #include "server/zone/packets/object/StopNpcConversation.h"

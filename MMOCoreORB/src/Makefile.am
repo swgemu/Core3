@@ -96,9 +96,7 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/intangible/DroidControlDevice.cpp \
-				autogen/server/zone/objects/intangible/DroidControlObserver.cpp \
-				autogen/server/zone/objects/creature/DroidObject.cpp \
+core3_IDLS =	autogen/server/zone/objects/creature/DroidObject.cpp \
 				autogen/server/zone/objects/tangible/deed/droid/DroidDeed.cpp \
 				autogen/server/zone/objects/intangible/PetControlObserver.cpp \
 				autogen/server/zone/objects/intangible/PetControlDevice.cpp \
@@ -548,7 +546,6 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/staticobject/StaticObjectImplementation.cpp \
 		server/zone/objects/intangible/VehicleControlDeviceImplementation.cpp \
 		server/zone/objects/intangible/PetControlDeviceImplementation.cpp \
-		server/zone/objects/intangible/DroidControlDeviceImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/InstrumentImplementation.cpp \
 		server/zone/objects/tangible/InstrumentObserverImplementation.cpp \

@@ -3,6 +3,7 @@
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/DroidObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
@@ -10,6 +11,7 @@
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/objects/player/sessions/TradeSession.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/objects/creature/events/DroidPowerTask.h"
 
 
 void PetControlDeviceImplementation::callObject(CreatureObject* player) {
@@ -91,24 +93,20 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	int maxLevelofPets = player->getSkillMod("tame_level");
 	int level = pet->getLevel();
 
-	String petType;
-
 	if (pet->isCreature()) {
 		if (player->hasSkill("outdoors_creaturehandler_novice")) {
 			maxPets = player->getSkillMod("keep_creature");
 		}
 
-		petType = "creature";
 	} else if (pet->isNonPlayerCreatureObject()){
 		maxPets = 3;
-		petType = "npc";
 	}
 
 	for (int i = 0; i < ghost->getActivePetsSize(); ++i) {
 		ManagedReference<AiAgent*> object = ghost->getActivePet(i);
 
 		if (object != NULL) {
-			if (object->isCreature() && petType == "creature") {
+			if (object->isCreature() && petType == CREATUREPET) {
 				if (++currentlySpawned >= maxPets) {
 					player->sendSystemMessage("@pet/pet_menu:at_max"); // You already have the maximum number of pets of this type that you can call.
 					return;
@@ -120,7 +118,12 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 					player->sendSystemMessage("@pet/pet_menu:control_exceeded"); // Calling this pet would exceed your Control Level ability.
 					return;
 				}
-			} else if (object->isNonPlayerCreatureObject() && petType == "npc") {
+			} else if (object->isNonPlayerCreatureObject() && petType == FACTIONPET) {
+				if (++currentlySpawned >= maxPets) {
+					player->sendSystemMessage("@pet/pet_menu:at_max"); // You already have the maximum number of pets of this type that you can call.
+					return;
+				}
+			} else if (object->isDroidObject() && petType == DROIDPET) {
 				if (++currentlySpawned >= maxPets) {
 					player->sendSystemMessage("@pet/pet_menu:at_max"); // You already have the maximum number of pets of this type that you can call.
 					return;
@@ -209,12 +212,38 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 
 	AiAgent* pet = cast<AiAgent*>(creature.get());
 
-	if (pet != NULL) {
-		pet->setFollowObject(player);
+	if (pet == NULL)
+		return;
 
-		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
-		ghost->addToActivePets(pet);
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+	ghost->addToActivePets(pet);
+
+	if (pet->isDroidObject()) {
+		DroidObject* droid = cast<DroidObject*>(pet);
+
+		if( droid == NULL )
+			return;
+
+		// Sanity check that there isn't another power task outstanding
+		droid->removePendingTask( "droid_power" );
+
+		// Submit new power task
+		Reference<Task*> droidPowerTask = new DroidPowerTask( droid );
+		droid->addPendingTask("droid_power", droidPowerTask, 60000); // 60 secs
+
+		if( droid->hasPower() ){
+			// TODO Temporarily set to autofollow player
+			droid->setFollowObject(player);
+		}
+		else{
+			droid->handleLowPower();
+		}
+
+	} else {
+		pet->setFollowObject(player);
 	}
+
+
 }
 
 void PetControlDeviceImplementation::cancelSpawnObject(CreatureObject* player) {
@@ -250,6 +279,9 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player) {
 		if (player->isRidingMount())
 			return;
 	}
+
+	if (pet->containsPendingTask("droid_power"))
+		pet->removePendingTask( "droid_power" );
 
 	pet->setPosture(CreaturePosture::UPRIGHT, false);
 	pet->setTargetObject(NULL);
@@ -311,5 +343,6 @@ int PetControlDeviceImplementation::canBeDestroyed(CreatureObject* player) {
 void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	SceneObjectImplementation::fillAttributeList(alm, object);
 
-	alm->insertAttribute("creature_vitality", String::valueOf(vitality) + "/" + String::valueOf(maxVitality));
+	if (petType == CREATUREPET)
+		alm->insertAttribute("creature_vitality", String::valueOf(vitality) + "/" + String::valueOf(maxVitality));
 }

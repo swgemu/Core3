@@ -16,7 +16,6 @@
 #include "server/zone/objects/intangible/IntangibleObject.h"
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
-#include "server/zone/objects/intangible/DroidControlDevice.h"
 #include "server/zone/objects/intangible/ShipControlDevice.h"
 #include "server/zone/objects/ship/FighterShipObject.h"
 #include "server/zone/objects/ship/SpaceStationObject.h"
