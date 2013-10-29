@@ -27,6 +27,7 @@ riverside_sulfur_mynok = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/riverside_sulfur_mynock.iff"},
+	controlDeviceTemplate = "object/intangible/pet/mynock_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

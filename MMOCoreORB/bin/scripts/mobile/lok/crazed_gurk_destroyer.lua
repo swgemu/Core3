@@ -27,6 +27,7 @@ crazed_gurk_destroyer = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gurk_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/gurk_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
