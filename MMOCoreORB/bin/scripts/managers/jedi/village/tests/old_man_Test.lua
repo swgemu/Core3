@@ -38,42 +38,43 @@ describe("Old Man", function()
 		readData = spy.new(function() return oldManId end)
 		spawnMobile = spy.new(function() return pOldMan end)
 
-		creatureObjectPlayer = { getFirstName = nil, getObjectID = nil, getPlayerObject = nil, getScreenPlayState = nil, setScreenPlayState = nil }
+		creatureObjectPlayer = {}
 		creatureObjectPlayer.getFirstName = spy.new(function() return playerFirstName end)
 		creatureObjectPlayer.getObjectID = spy.new(function() return playerId end)
 		creatureObjectPlayer.getPlayerObject = spy.new(function() return pPlayerObject end)
 		creatureObjectPlayer.getScreenPlayState = spy.new(function() return 0 end)
 		creatureObjectPlayer.setScreenPlayState = spy.new(function() end)
+		creatureObjectPlayer.removeScreenPlayState = spy.new(function() end)
 		DirectorManagerMocks.creatureObjects[pCreatureObject] = creatureObjectPlayer
 		
-		creatureObjectOldMan = { getObjectID = nil }
+		creatureObjectOldMan = {}
 		creatureObjectOldMan.getObjectID = spy.new(function() return oldManId end)
 		DirectorManagerMocks.creatureObjects[pOldMan] = creatureObjectOldMan
 
-		sceneObjectPlayer = { getParentID = nil, getZoneName = nil, getWorldPositionX = nil, getWorldPositionY = nil }
+		sceneObjectPlayer = {}
 		sceneObjectPlayer.getParentID = spy.new(function() return 0 end)
 		sceneObjectPlayer.getZoneName = spy.new(function() return "testzone" end)
 		sceneObjectPlayer.getWorldPositionX = spy.new(function() return 33 end)
 		sceneObjectPlayer.getWorldPositionY = spy.new(function() return 22 end)
 		DirectorManagerMocks.sceneObjects[pCreatureObject] = sceneObjectPlayer
 		
-		sceneObjectOldMan = { destroyObjectFromWorld = nil }
+		sceneObjectOldMan = {}
 		sceneObjectOldMan.destroyObjectFromWorld = spy.new(function() end)
 		DirectorManagerMocks.sceneObjects[pOldMan] = sceneObjectOldMan		
 
-		playerObject = { isOnline = nil }
+		playerObject = {}
 		playerObject.isOnline = spy.new(function() return true end)
 		DirectorManagerMocks.playerObjects[pPlayerObject] = playerObject
 
-		cityRegion = { isClientRegion = nil }
+		cityRegion = {}
 		cityRegion.isClientRegion = spy.new(function() return false end)
 		DirectorManagerMocks.cityRegions[pCityRegion] = cityRegion
 		
-		aiAgent = { setFollowObject = nil }
+		aiAgent = {}
 		aiAgent.setFollowObject = spy.new(function() end)
 		DirectorManagerMocks.aiAgents[pOldMan] = aiAgent
 		
-		greetingStringId = { _getObject = nil, setTT = nil }
+		greetingStringId = {}
 		greetingStringId._getObject = spy.new(function() return pGreetingStringId end)
 		greetingStringId.setTT = spy.new(function(object, string) assert.same(string, playerFirstName) end)
 		DirectorManagerMocks.stringIds[OLD_MAN_GREETING_STRING] = greetingStringId
