@@ -48,13 +48,14 @@ import engine.lua.LuaObject;
 import server.zone.objects.intangible.IntangibleObject;
 import server.zone.objects.intangible.ControlDevice;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.creature.AiAgent;
+import server.zone.objects.player.PlayerObject;
 import server.zone.objects.tangible.TangibleObject;
 import server.zone.objects.scene.SceneObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.Zone;
 import system.lang.System;
 include server.zone.managers.radial.RadialOptions;
-import server.zone.objects.creature.CreatureObject;
 import server.zone.objects.intangible.PetControlObserver;
 
 class PetControlDevice extends ControlDevice {
@@ -82,23 +83,29 @@ class PetControlDevice extends ControlDevice {
 
 	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
 		Logger.info("selected call");
-		
-		TangibleObject controlledObject = super.controlledObject;
+
+		TangibleObject strongRef = super.controlledObject;
+
+		if (strongRef == null)
+			return 1;
+
+		AiAgent pet = (AiAgent) strongRef;
+		PlayerObject ghost = player.getPlayerObject();
 		
 		if (selectedID == 44) {
 			
-			if (controlledObject == null) {
+			if (pet == null) {
 				Logger.error("null controlled object in pet control device");
 				return 1;
 			} else {
 				this.callObject(player);
 			}
 		} else if (selectedID == 59) {
-			if (controlledObject == null) {
+			if (pet == null) {
 				Logger.error("null controlled object in pet control device");
 				return 1;
 			} else {
-				if (super.status == 1 && !controlledObject.isInQuadTree()) {
+				if (super.status == 1 && !ghost.hasActivePet(pet)) {
 					this.callObject(player);
 				} else {
 					this.storeObject(player);
