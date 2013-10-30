@@ -26,7 +26,7 @@ seans_historian = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_sean_historian.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

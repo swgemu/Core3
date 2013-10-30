@@ -1,8 +1,9 @@
 megan_drlar = Creature:new {
 	objectName = "@mob/creature_names:megan_drlar",
-	socialGroup = "thug",
-	pvpFaction = "thug",
-	faction = "thug",
+	customeName = "Megan Dr'lar"
+	socialGroup = "",
+	pvpFaction = "",
+	faction = "",
 	level = 22,
 	chanceHit = 0.330000,
 	damageMin = 190,
@@ -21,9 +22,10 @@ megan_drlar = Creature:new {
 	milk = 0,
 	tamingChance = 0.000000,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
-	creatureBitmask = NONE,
+	pvpBitmask = NONE,
+	creatureBitmask = PACK,
 	diet = HERBIVORE,
+	optionsBitmask = 264,
 
 	templates = {"object/mobile/megan_drlar.iff"},
 	lootGroups = {},

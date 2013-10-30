@@ -1,6 +1,6 @@
 herald_naboo_ketter = Creature:new {
 	objectName = "",
-	customName = "Ketter",
+	customName = "Ketter Yaaran",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -27,7 +27,7 @@ herald_naboo_ketter = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_herald_pirate_naboo_human_male.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

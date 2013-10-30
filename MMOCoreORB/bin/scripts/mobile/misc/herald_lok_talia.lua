@@ -26,7 +26,7 @@ herald_lok_talia = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_herald_lok_01.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

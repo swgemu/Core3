@@ -1,9 +1,9 @@
 yith_seenath = Creature:new {
 	objectName = "",
 	customName = "Yith Seenath",
-	socialGroup = "townsperson",
-	pvpFaction = "townsperson",
-	faction = "townsperson",
+	socialGroup = "rebel",
+	pvpFaction = "rebel",
+	faction = "rebel",
 	level = 100,
 	chanceHit = 1,
 	damageMin = 645,
@@ -24,7 +24,7 @@ yith_seenath = Creature:new {
 	ferocity = 0,
 	pvpBitmask = NONE,
 	creatureBitmask = PACK,
-	optionsBitmask = 128,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_yith_seenath.iff"},

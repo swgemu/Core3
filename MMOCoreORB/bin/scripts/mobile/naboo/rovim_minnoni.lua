@@ -27,7 +27,7 @@ rovim_minnoni = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_noble_human_male_02.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

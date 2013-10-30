@@ -26,7 +26,7 @@ kathikiis_ruwahurr = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/selonian_female.iff"},
 	lootGroups = {},
 	weapons = {},
 	attacks = {}

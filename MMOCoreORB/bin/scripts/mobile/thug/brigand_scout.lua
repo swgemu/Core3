@@ -1,6 +1,6 @@
 brigand_scout = Creature:new {
 	objectName = "@mob/creature_names:brigand",
-	socialGroup = "Brigand",
+	socialGroup = "brigand",
 	pvpFaction = "",
 	faction = "",
 	level = 13,
@@ -26,7 +26,9 @@ brigand_scout = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {
+		"object/mobile/dressed_brigade_scout_trandoshan_female_01.iff",
+		"object/mobile/dressed_brigade_scout_trandoshan_male_01.iff"},
 	lootGroups = {},
 	weapons = {"pirate_weapons_light"},
 	conversationTemplate = "",
