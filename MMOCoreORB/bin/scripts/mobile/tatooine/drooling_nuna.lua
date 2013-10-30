@@ -26,7 +26,7 @@ drooling_nuna = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/dwarf_nuna.iff"},
+	templates = {"object/mobile/dwarf_nuna_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

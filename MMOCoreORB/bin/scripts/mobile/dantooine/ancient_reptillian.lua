@@ -27,7 +27,7 @@ ancient_reptillian = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/voritor_lizard.iff"},
+	templates = {"object/mobile/voritor_lizard_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

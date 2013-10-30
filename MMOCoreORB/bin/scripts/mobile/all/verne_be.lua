@@ -26,7 +26,7 @@ verne_be = Creature:new {
 	optionsBitmask = 0,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/verne.iff"},
+	templates = {"object/mobile/verne_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

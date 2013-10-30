@@ -26,7 +26,7 @@ vesp_be = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/vesp.iff"},
+	templates = {"object/mobile/vesp_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

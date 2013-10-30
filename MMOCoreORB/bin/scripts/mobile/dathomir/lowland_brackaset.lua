@@ -27,7 +27,7 @@ lowland_brackaset = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/brackaset.iff"},
+	templates = {"object/mobile/brackaset_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/brackaset_hue.iff",
 	lootGroups = {
 	 {

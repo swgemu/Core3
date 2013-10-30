@@ -26,7 +26,7 @@ eopie_herdmaster = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/eopie.iff"},
+	templates = {"object/mobile/eopie_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

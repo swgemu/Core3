@@ -26,7 +26,7 @@ warren_thune = Creature:new {
 	optionsBitmask = 0,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/thune.iff"},
+	templates = {"object/mobile/thune_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

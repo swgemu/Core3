@@ -26,7 +26,7 @@ grizzled_dewback = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/dewback.iff"},
+	templates = {"object/mobile/dewback_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

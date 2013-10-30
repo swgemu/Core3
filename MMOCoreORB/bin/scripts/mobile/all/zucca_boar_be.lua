@@ -26,7 +26,7 @@ zucca_boar_be = Creature:new {
 	optionsBitmask = 0,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/zucca_boar.iff"},
+	templates = {"object/mobile/zucca_boar_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

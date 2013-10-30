@@ -26,7 +26,7 @@ injured_kwi = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/kwi.iff"},
+	templates = {"object/mobile/kwi_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

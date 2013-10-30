@@ -26,7 +26,7 @@ dung_mite_worker = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/dung_mite.iff"},
+	templates = {"object/mobile/sickening_dung_mite_worker.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

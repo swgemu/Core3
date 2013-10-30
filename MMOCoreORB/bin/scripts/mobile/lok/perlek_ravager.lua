@@ -26,7 +26,7 @@ perlek_ravager = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/perlek.iff"},
+	templates = {"object/mobile/perlek_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/perlek_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

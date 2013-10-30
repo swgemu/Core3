@@ -26,7 +26,7 @@ wild_dune_boar = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/zucca_boar.iff"},
+	templates = {"object/mobile/zucca_boar_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/zucca_boar_hue.iff",
 	lootGroups = {},
 	weapons = {},

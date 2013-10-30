@@ -26,7 +26,7 @@ krayt_dragon_grand = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/krayt_dragon.iff"},
+	templates = {"object/mobile/krayt_dragon_hue.iff"},
 	scale = 1.1;
 	lootGroups = {
 		{

@@ -26,7 +26,7 @@ worrt_gutbuster = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/worrt.iff"},
+	templates = {"object/mobile/worrt_hue.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
