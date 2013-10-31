@@ -19,6 +19,7 @@ OLD_MAN_SPAWN_TIME = 12 * 1000 -- 12 seconds as base for testing
 OLD_MAN_STOP_FOLLOW_TIME = 15 * 1000 -- 15 seconds
 OLD_MAN_SPATIAL_CHAT_TIME = 5 * 1000 -- 5 seconds
 OLD_MAN_GREETING_STRING = "@quest/force_sensitive/intro:oldman_greeting"
+OLD_MAN_NO_OLD_MAN_SPAWNED = 0
 
 OldMan = ScreenPlay:new {}
 
@@ -202,6 +203,7 @@ function OldMan:handleDespawnEvent(pCreatureObject)
 	local oldManId = OldMan.readOldManIdFromPlayer(pCreatureObject)
 	local pOldMan = getSceneObject(oldManId)
 	OldMan.despawnOldMan(pOldMan)
+	OldMan.writeTransientDataToThePlayer(pCreatureObject, OLD_MAN_ID_STRING, OLD_MAN_NO_OLD_MAN_SPAWNED)
 	OldMan.createSpawnOldManEvent(pCreatureObject)
 end
 
@@ -252,7 +254,7 @@ end
 -- Generate an event to spawn the old man for the player.
 -- @param pCreatureObject pointer to the creature object who should have an event created for spawning the old man.
 function OldMan.createSpawnOldManEvent(pCreatureObject)
-	if not OldMan.hasOldManSpawnEventScheduled(pCreatureObject) then
+	if not OldMan.hasOldManSpawnEventScheduled(pCreatureObject) and OldMan.readOldManIdFromPlayer(pCreatureObject) == OLD_MAN_NO_OLD_MAN_SPAWNED then
 		OldMan.setScreenPlayStateOnPlayer(pCreatureObject, OLD_MAN_EVENT_SCHEDULED_STRING, OLD_MAN_SCHEDULED)
 		createEvent(true, OLD_MAN_SPAWN_TIME + math.random(OLD_MAN_SPAWN_TIME), "OldMan", "handleSpawnOldManEvent", pCreatureObject)
 	end
