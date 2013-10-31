@@ -27,6 +27,7 @@ great_borgle = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/great_borgle.iff"},
+	controlDeviceTemplate = "object/intangible/pet/borgle_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

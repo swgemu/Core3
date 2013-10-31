@@ -27,6 +27,7 @@ bearded_jax = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bearded_jax.iff"},
+	controlDeviceTemplate = "object/intangible/pet/bearded_jax_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

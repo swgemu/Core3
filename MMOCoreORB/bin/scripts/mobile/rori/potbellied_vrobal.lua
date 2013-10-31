@@ -28,6 +28,7 @@ potbellied_vrobal = Creature:new {
 	scale = .6,
 
 	templates = {"object/mobile/vrobal.iff"},
+	controlDeviceTemplate = "object/intangible/pet/roba_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

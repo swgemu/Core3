@@ -27,6 +27,7 @@ ravenous_torton = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/torton_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/torton_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -27,6 +27,7 @@ savage_pugoriss = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/pugoriss_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/pugoriss_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
