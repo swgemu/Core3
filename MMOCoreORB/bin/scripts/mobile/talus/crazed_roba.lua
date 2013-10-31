@@ -27,6 +27,7 @@ crazed_roba = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/roba_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/roba_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

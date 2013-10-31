@@ -27,6 +27,7 @@ minor_sludge_panther = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/minor_sludge_panther.iff"},
+	controlDeviceTemplate = "object/intangible/pet/corellian_sand_panther_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

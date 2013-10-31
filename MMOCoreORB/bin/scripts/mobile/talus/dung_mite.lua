@@ -27,6 +27,7 @@ dung_mite = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/dung_mite.iff"},
+	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

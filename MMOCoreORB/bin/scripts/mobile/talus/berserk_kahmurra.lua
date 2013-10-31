@@ -27,6 +27,7 @@ berserk_kahmurra = Creature:new {
        diet = CARNIVORE,
  
        templates = {"object/mobile/kahmurra.iff"},
+	controlDeviceTemplate = "object/intangible/pet/murra_hue.iff",
        lootGroups = {},
        weapons = {},
        conversationTemplate = "",
