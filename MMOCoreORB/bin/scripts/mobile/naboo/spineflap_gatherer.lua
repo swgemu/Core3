@@ -27,6 +27,7 @@ spineflap_gatherer = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/capper_spineflap_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/capper_spineflap_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

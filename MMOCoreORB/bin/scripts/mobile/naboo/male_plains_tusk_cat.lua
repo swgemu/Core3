@@ -27,6 +27,7 @@ male_plains_tusk_cat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/tusk_cat_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/tusk_cat_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

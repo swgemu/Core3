@@ -27,6 +27,7 @@ bachelor_gualama = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/gualama.iff"},
+	controlDeviceTemplate = "object/intangible/pet/gualama_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

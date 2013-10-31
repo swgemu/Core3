@@ -27,6 +27,7 @@ hermit_spider = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/hermit_spider.iff"},
+	controlDeviceTemplate = "object/intangible/pet/hermit_spider_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

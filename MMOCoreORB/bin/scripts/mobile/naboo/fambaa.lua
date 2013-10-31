@@ -28,6 +28,7 @@ fambaa = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/fambaa.iff"},
+	controlDeviceTemplate = "object/intangible/pet/fambaa_hue.iff",
 	lootGroups = {
 	 {
 	        groups = {

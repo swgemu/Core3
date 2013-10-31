@@ -28,6 +28,7 @@ ikopi = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/ikopi.iff"},
+	controlDeviceTemplate = "object/intangible/pet/ikopi_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

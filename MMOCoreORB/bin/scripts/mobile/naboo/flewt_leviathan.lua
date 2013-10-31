@@ -27,6 +27,7 @@ flewt_leviathan = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/flewt_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/flewt_hue.iff",
 	scale = 2,
 	lootGroups = {},
 	weapons = {},

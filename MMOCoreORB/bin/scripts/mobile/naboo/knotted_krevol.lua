@@ -27,6 +27,7 @@ knotted_krevol = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/horned_krevol_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/horned_krevol_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

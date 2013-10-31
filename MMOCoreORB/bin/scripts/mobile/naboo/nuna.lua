@@ -27,6 +27,7 @@ nuna = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/nuna.iff"},
+	controlDeviceTemplate = "object/intangible/pet/nuna_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

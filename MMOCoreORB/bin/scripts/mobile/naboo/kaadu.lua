@@ -28,6 +28,7 @@ kaadu = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kaadu.iff"},
+	controlDeviceTemplate = "object/intangible/pet/kaadu_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

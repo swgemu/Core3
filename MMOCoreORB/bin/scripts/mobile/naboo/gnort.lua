@@ -27,6 +27,7 @@ gnort = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gnort.iff"},
+	controlDeviceTemplate = "object/intangible/pet/gnort_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
