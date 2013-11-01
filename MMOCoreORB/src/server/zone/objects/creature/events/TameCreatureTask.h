@@ -121,6 +121,7 @@ public:
 		StringId s;
 		s.setStringId(creature->getDisplayedName());
 		controlDevice->setObjectName(s);
+		controlDevice->setPetType(PetControlDevice::CREATUREPET);
 		controlDevice->setMaxVitality(100);
 		controlDevice->setVitality(100);
 		controlDevice->updateStatus(1);

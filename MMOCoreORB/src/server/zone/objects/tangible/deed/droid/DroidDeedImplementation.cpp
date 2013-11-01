@@ -10,7 +10,7 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/templates/tangible/DroidDeedTemplate.h"
-#include "server/zone/objects/intangible/DroidControlDevice.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/creature/DroidObject.h"
 
 void DroidDeedImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
@@ -72,8 +72,8 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		return 1;
 	}
 
-	Reference<DroidControlDevice*> droidControlDevice = (server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1)).castTo<DroidControlDevice*>();
-	if( droidControlDevice == NULL ){
+	Reference<PetControlDevice*> controlDevice = (server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1)).castTo<PetControlDevice*>();
+	if( controlDevice == NULL ){
 		player->sendSystemMessage("wrong droid control device template " + controlDeviceObjectTemplate);
 		return 1;
 	}
@@ -86,16 +86,17 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 	StringId s;
 	s.setStringId(droid->getDisplayedName());
-	droidControlDevice->setObjectName(s);
+	controlDevice->setObjectName(s);
+	controlDevice->setPetType(PetControlDevice::DROIDPET);
 
 	droid->createChildObjects();
 	droid->setMaxCondition(1000); // @TODO Set appropriate condition from deed
 	droid->setConditionDamage(0);
-	droidControlDevice->setControlledObject(droid);
-	datapad->transferObject(droidControlDevice, -1);
+	controlDevice->setControlledObject(droid);
+	datapad->transferObject(controlDevice, -1);
 
-	datapad->broadcastObject(droidControlDevice, true);
-	droidControlDevice->callObject(player);
+	datapad->broadcastObject(controlDevice, true);
+	controlDevice->callObject(player);
 
 	//Remove the deed from its container.
 	ManagedReference<SceneObject*> deedContainer = getParent();
