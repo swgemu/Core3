@@ -90,15 +90,28 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	int currentlySpawned = 0;
 	int spawnedLevel = 0;
 	int maxPets = 1;
-	int maxLevelofPets = player->getSkillMod("tame_level");
+	int maxLevelofPets = 10;
 	int level = pet->getLevel();
 
-	if (pet->isCreature()) {
-		if (player->hasSkill("outdoors_creaturehandler_novice")) {
+	if (petType == CREATUREPET) {
+		bool ch = player->hasSkill("outdoors_creaturehandler_novice");
+
+		if (ch) {
 			maxPets = player->getSkillMod("keep_creature");
+			maxLevelofPets = player->getSkillMod("tame_level");
 		}
 
-	} else if (pet->isNonPlayerCreatureObject()){
+		if (level > maxLevelofPets) {
+			player->sendSystemMessage("@pet/pet_menu:control_exceeded"); // Calling this pet would exceed your Control Level ability.
+			return;
+		}
+
+		if (pet->isAggressiveTo(player) && (player->getSkillMod("tame_aggro") <= 0 || !ch)) {
+			player->sendSystemMessage("@pet/pet_menu:lack_skill"); // You lack the skill to call a pet of this type.
+			return;
+		}
+
+	} else if (petType == FACTIONPET){
 		maxPets = 3;
 	}
 
