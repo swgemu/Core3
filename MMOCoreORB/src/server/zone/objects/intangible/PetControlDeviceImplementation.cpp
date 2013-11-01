@@ -42,7 +42,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	if (ghost->hasActivePet(pet))
 		return;
 
-	if (player->isInCombat() || player->isDead() || player->isIncapacitated()) {
+	if (player->isInCombat() || player->isDead() || player->isIncapacitated() || player->getPendingTask("tame_pet") != NULL) {
 		player->sendSystemMessage("@pet/pet_menu:cant_call"); // You cannot call this pet right now.
 		return;
 	}
@@ -291,6 +291,10 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player) {
 	pet->setCreatureLink(NULL);
 
 	updateStatus(0);
+
+	CreatureTemplate* creoTemp = pet->getCreatureTemplate();
+	pet->setFaction(creoTemp->getFaction().hashCode());
+	pet->setPvpStatusBitmask(creoTemp->getPvpBitmask(), false);
 
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 	ghost->removeFromActivePets(pet);

@@ -30,6 +30,8 @@ public:
 
 		Locker _clocker(player, creature);
 
+		player->removePendingTask("tame_pet");
+
 		if (!creature->isInRange(player, 8.0f)) {
 			player->sendSystemMessage("@hireling/hireling:taming_toofar"); // You are too far away to continue taming.
 			creature->setPvpStatusBitmask(originalMask, true);
@@ -51,22 +53,22 @@ public:
 			chatManager->broadcastMessage(player, "@hireling/hireling:taming_2"); // Steady.
 			player->doAnimation("");
 			currentPhase = SECOND;
-			this->reschedule(8000);
+			player->addPendingTask("tame_pet", this, 8000);
 			break;
 		case SECOND:
 			chatManager->broadcastMessage(player, "@hireling/hireling:taming_3"); // Don't be scared.
 			currentPhase = THIRD;
-			this->reschedule(8000);
+			player->addPendingTask("tame_pet", this, 8000);
 			break;
 		case THIRD:
 			chatManager->broadcastMessage(player, "@hireling/hireling:taming_4"); // Don't bite me.
 			currentPhase = FOURTH;
-			this->reschedule(8000);
+			player->addPendingTask("tame_pet", this, 8000);
 			break;
 		case FOURTH:
 			chatManager->broadcastMessage(player, "@hireling/hireling:taming_5"); // Good... er... boy?
 			currentPhase = FINAL;
-			this->reschedule(8000);
+			player->addPendingTask("tame_pet", this, 8000);
 			break;
 		case FINAL:
 			int skill = 0;
@@ -139,6 +141,9 @@ public:
 
 		creature->getZone()->broadcastObject(creature, true);
 		datapad->broadcastObject(controlDevice, true);
+
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+		ghost->addToActivePets(creature);
 
 		playerManager->awardExperience(player, "creaturehandler", 25 * creature->getLevel());
 		player->sendSystemMessage("@hireling/hireling:taming_success"); // You successfully tame the creature.

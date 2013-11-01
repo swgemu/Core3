@@ -704,12 +704,25 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 	if (zone == NULL || !creature->isCreature())
 		return;
 
+	if(player->getPendingTask("tame_pet") != NULL) {
+		player->sendSystemMessage("You are already taming a pet");
+		return;
+	}
+
+	if(player->getPendingTask("call_pet") != NULL) {
+		player->sendSystemMessage("You cannot tame a pet while another is being called");
+		return;
+	}
+
 	if (!creature->canTameMe(player)) {
 		player->sendSystemMessage("@pet/pet_menu:sys_cant_tame"); // You can't tame that
 		return;
 	}
 
-	if (!player->hasSkill("outdoors_creaturehandler_novice") || (creature->getLevel() > player->getSkillMod("tame_level"))) {
+	int level = creature->getLevel();
+	int maxLevelofPets = player->getSkillMod("tame_level");
+
+	if (!player->hasSkill("outdoors_creaturehandler_novice") || (level > maxLevelofPets)) {
 		player->sendSystemMessage("@pet/pet_menu:sys_lack_skill"); // You lack the skill to be able to tame that creature.
 		return;
 	}
@@ -729,39 +742,45 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 		return;
 	}
 
-	int currentlySpawned = 0;
 	int numberStored = 0;
-	int spawnedLevel = 0;
-	int maxPets = player->getSkillMod("keep_creature");
 	int maxStoredPets = player->getSkillMod("stored_pets");
-	int maxLevelofPets = player->getSkillMod("tame_level");
 
 	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
 		ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
 
-		if (object->isPetControlDevice()) {
+		if (object != NULL && object->isPetControlDevice()) {
 			PetControlDevice* device = cast<PetControlDevice*>( object.get());
 
-			ManagedReference<Creature*> object = cast<Creature*>(device->getControlledObject());
-
-			if (object != NULL) {
+			if (device->getPetType() == PetControlDevice::CREATUREPET) {
 				if (++numberStored >= maxStoredPets) {
 					player->sendSystemMessage("@pet/pet_menu:sys_too_many_stored"); // There are too many pets stored in this container. Release some of them to make room for more.
 					return;
 				}
 
-				if (object->isInQuadTree()) {
-					if (++currentlySpawned >= maxPets) {
-						player->sendSystemMessage("@pet/pet_menu:too_many"); // You can't control any more pets. Store one first
-						return;
-					}
+			}
+		}
+	}
 
-					if (++spawnedLevel >= maxLevelofPets) {
-						player->sendSystemMessage("Taming this pet would exceed your max level of pets");
-						return;
-					}
-				}
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
+	int currentlySpawned = 0;
+	int spawnedLevel = 0;
+	int maxPets = player->getSkillMod("keep_creature");
+
+	for (int i = 0; i < ghost->getActivePetsSize(); ++i) {
+		ManagedReference<AiAgent*> object = ghost->getActivePet(i);
+
+		if (object != NULL && object->isCreature()) {
+			if (++currentlySpawned >= maxPets) {
+				player->sendSystemMessage("@pet/pet_menu:too_many"); // You can't control any more pets. Store one first
+				return;
+			}
+
+			spawnedLevel += object->getLevel();
+
+			if ((spawnedLevel + level) >= maxLevelofPets) {
+				player->sendSystemMessage("Taming this pet would exceed your control level ability.");
+				return;
 			}
 		}
 	}
@@ -774,7 +793,7 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 
 	ManagedReference<TameCreatureTask*> task = new TameCreatureTask(creature, player);
 
-	task->schedule(8000);
+	player->addPendingTask("tame_pet", task, 8000);
 }
 
 void CreatureManagerImplementation::milk(Creature* creature, CreatureObject* player) {
