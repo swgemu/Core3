@@ -84,23 +84,33 @@ describe("Old Man", function()
 		describe("createSpawnOldManEvent", function()
 			describe("When called with a player as argument", function()
 				local realHasOldManSpawnEventScheduled
+				local realReadOldManIdFromPlayer
 				
 				setup(function()
 					realHasOldManSpawnEventScheduled = OldMan.hasOldManSpawnEventScheduled
+					realReadOldManIdFromPlayer = OldMan.readOldManIdFromPlayer
 				end)
 				
 				teardown(function()
 					OldMan.hasOldManSpawnEventScheduled = realHasOldManSpawnEventScheduled
+					OldMan.readOldManIdFromPlayer = realReadOldManIdFromPlayer
 				end)
 				
 				before_each(function()
 					OldMan.hasOldManSpawnEventScheduled = spy.new(function() return false end)
+					OldMan.readOldManIdFromPlayer = spy.new(function() return OLD_MAN_NO_OLD_MAN_SPAWNED end)
 				end)
 				
 				it("Should check if the player has an event already scheduled.", function()
 					OldMan.createSpawnOldManEvent(pCreatureObject)
 
 					assert.spy(OldMan.hasOldManSpawnEventScheduled).was.called_with(pCreatureObject)
+				end)
+				
+				it("Should check if the player has an old man already spawned.", function()
+					OldMan.createSpawnOldManEvent(pCreatureObject)
+
+					assert.spy(OldMan.readOldManIdFromPlayer).was.called_with(pCreatureObject)
 				end)
 				
 				describe("and no event is scheduled", function()
@@ -131,7 +141,25 @@ describe("Old Man", function()
 					it("Should not save information about event being scheduled on the player", function()
 						OldMan.createSpawnOldManEvent(pCreatureObject)
 	
-						assert.spy(writeData).was.not_called()
+						assert.spy(creatureObjectPlayer.setScreenPlayState).was.not_called()
+					end)
+				end)
+				
+				describe("and an old man has already been spawned", function()
+					before_each(function()
+						OldMan.readOldManIdFromPlayer = spy.new(function() return oldManId end)
+					end)
+					
+					it("Should not create an event for spawning the old man.", function()
+						OldMan.createSpawnOldManEvent(pCreatureObject)
+	
+						assert.spy(createEvent).was.not_called()
+					end)
+					
+					it("Should not save information about event being scheduled on the player", function()
+						OldMan.createSpawnOldManEvent(pCreatureObject)
+	
+						assert.spy(creatureObjectPlayer.setScreenPlayState).was.not_called()
 					end)
 				end)
 			end)
@@ -159,6 +187,16 @@ describe("Old Man", function()
 					assert.spy(creatureObjectPlayer.getObjectID).was.called(1)
 					assert.spy(creatureObjectOldMan.getObjectID).was.called(1)
 					assert.spy(readData).was.called_with(playerId .. OLD_MAN_ID_STRING)
+				end)
+			end)
+		end)
+		
+		describe("scheduleDespawnOfOldMan", function()
+			describe("When called with a player and a time", function()
+				it("Should create an event to despawn the old man.", function()
+					OldMan.scheduleDespawnOfOldMan(pCreatureObject, OLD_MAN_DESPAWN_TIME)
+					
+					assert.spy(createEvent).was.called_with(OLD_MAN_DESPAWN_TIME, "OldMan", "handleDespawnEvent", pCreatureObject)
 				end)
 			end)
 		end)
@@ -191,6 +229,12 @@ describe("Old Man", function()
 					OldMan.tryToSpawnOldMan = spy.new(function() return true end)
 					OldMan.createSpawnOldManEvent = spy.new(function() end)
 					OldMan.saveOldManIdOnPlayer = spy.new(function() end)
+				end)
+				
+				it("Should reset screen play state about old man being scheduled.", function()
+					OldMan:handleSpawnOldManEvent(pCreatureObject)
+					
+					assert.spy(creatureObjectPlayer.removeScreenPlayState).was.called_with(creatureObjectPlayer, OLD_MAN_SCHEDULED, OLD_MAN_EVENT_SCHEDULED_STRING)
 				end)
 
 				it("Should try to spawn the old man if the player is in a place where the old man can be spawned.", function()
@@ -734,6 +778,12 @@ describe("Old Man", function()
 					OldMan:handleDespawnEvent(pCreatureObject)
 					
 					assert.spy(OldMan.despawnOldMan).was.called_with(pOldMan)
+				end)
+				
+				it("Should set the id of the spawned old man to 0 to indicate that he is despawned.", function()
+					OldMan:handleDespawnEvent(pCreatureObject)
+					
+					assert.spy(writeData).was.called_with(playerId .. OLD_MAN_ID_STRING, OLD_MAN_NO_OLD_MAN_SPAWNED)
 				end)
 				
 				it("Should reschedule the old man.", function()
