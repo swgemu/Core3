@@ -285,9 +285,6 @@ function dolac_legasi_screenplay:notifyDefeatedKnight(pVictim, pAttacker)
 		return 0
 	end
 	
-	local sithAltar = LuaSceneObject(pSithAltar)
-	sithAltar:sendTo(pOwner)
-	
 	--Incase the server resets, we need to keep the object id of the sith altar persistent, to avoid having to loop through inventory later.
 	writeScreenPlayData(pOwner, "dolac_legasi", "sithAltarID", sithAltar:getObjectID())
 	

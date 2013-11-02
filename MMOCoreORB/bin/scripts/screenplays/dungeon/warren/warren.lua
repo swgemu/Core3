@@ -556,11 +556,6 @@ function WarrenScreenPlay:givePasskey1(pPlayer)
 	end
 	
 	local pItem = giveItem(pInventory, self.entranceKey, -1)
-	
-	if (pItem ~= nil) then
-		local item = LuaSceneObject(pItem)
-		item:sendTo(pPlayer)
-	end
 end
 
 function WarrenScreenPlay:respawnDebris(pDebris)
@@ -937,8 +932,6 @@ function DownloadEvidenceMenuComponent:handleObjectMenuSelect(pSceneObject, pPla
 		local pItem = giveItem(pDatapad, WarrenScreenPlay.evidence["evidence_" .. object:getObjectID()].item, -1)
 		
 		if (pItem ~= nil) then
-			local item = LuaSceneObject(pItem)
-			item:sendTo(pPlayer)
 			local suiManager = LuaSuiManager()
 			suiManager:sendMessageBox(pSceneObject, pPlayer, "@sui:swg", "@theme_park/warren/warren_system_messages:download_complete", "@ok", "WarrenScreenPlay", "notifyOkPressed")
 		end
