@@ -56,7 +56,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 
 	templateType = CHARACTERBUILDERTERMINAL,
 
-	itemList = {
+	itemList = { --[[
 		"Character Options",
 		{
 			"Learn Skill",
@@ -2524,7 +2524,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				"Dark Jedi Holocron (gift)", "object/tangible/jedi/no_drop_jedi_holocron_dark.iff",
 				"Light Jedi Holocron (gift)", "object/tangible/jedi/no_drop_jedi_holocron_light.iff"
 			}
-		}
+		} --]]
 	}
 }
 
