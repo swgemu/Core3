@@ -72,6 +72,24 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		return 1;
 	}
 
+	// Check if this will exceed maximum number of droids allowed
+	int droidsInDatapad = 0;
+	for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
+		Reference<SceneObject*> obj =  datapad->getContainerObject(i).castTo<SceneObject*>();
+
+		if (obj != NULL && obj->isPetControlDevice() ){
+			Reference<PetControlDevice*> petDevice = cast<PetControlDevice*>(obj.get());
+			if( petDevice != NULL && petDevice->getPetType() == PetControlDevice::DROIDPET){
+				droidsInDatapad++;
+			}
+		}
+	}
+
+	if( droidsInDatapad == 5){
+		player->sendSystemMessage("You have too many droids in your datapad");
+		return 1;
+	}
+
 	Reference<PetControlDevice*> controlDevice = (server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1)).castTo<PetControlDevice*>();
 	if( controlDevice == NULL ){
 		player->sendSystemMessage("wrong droid control device template " + controlDeviceObjectTemplate);
@@ -106,7 +124,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 	}
 
 	generated = true;
-
+	player->sendSystemMessage("@pet/pet_menu:device_added"); // "A control device has been added to your datapad."
 	return 0;
 }
 
