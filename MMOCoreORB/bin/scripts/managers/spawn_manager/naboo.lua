@@ -444,7 +444,6 @@ naboo_static_spawns = {
 	{"trainer_architect",0,11,1.133,-14.5,0,1692093, "", ""},
 	{"trainer_architect",0,-4931,0,4020,39,0, "", ""},
 	{"trainer_architect",0,1533,25,2744,-93,0, "", ""},
-	{"trainer_armorsmith",0,4771,0,-1272,180,0, "", ""},
 	{"trainer_armorsmith",0,-15,1.1,0,90,1685237, "", ""},
 
 	{"trainer_armorsmith",0,1890,0,2767,180,0, "", ""},
