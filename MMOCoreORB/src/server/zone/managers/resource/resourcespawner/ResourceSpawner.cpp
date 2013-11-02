@@ -1022,12 +1022,7 @@ void ResourceSpawner::addResourceToPlayerInventory(CreatureObject* player, Resou
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject(
 			"inventory");
 
-	if (inventory->hasFullContainerObjects()) {
-		StringIdChatParameter err("survey", "no_inv_space");
-		player->sendSystemMessage(err);
-		player->setPosture(CreaturePosture::UPRIGHT, true);
-		return;
-	}
+
 
 	Locker locker(inventory);
 	// Check inventory for resource and add if existing
@@ -1041,14 +1036,23 @@ void ResourceSpawner::addResourceToPlayerInventory(CreatureObject* player, Resou
 
 			if (resource->getSpawnName() == resourceSpawn->getName() &&
 					resource->getQuantity() < ResourceContainer::MAXSIZE) {
-				int newStackSize = resource->getQuantity() + unitsExtracted;
-
-				resource->setQuantity(newStackSize);
-				return;
+				if  ((resource->getQuantity() + unitsExtracted) <= ResourceContainer::MAXSIZE ){
+					int newStackSize = resource->getQuantity() + unitsExtracted;
+					resource->setQuantity(newStackSize);
+					return;
+				}else{
+					unitsExtracted = unitsExtracted - (ResourceContainer::MAXSIZE - resource->getQuantity());
+					resource->setQuantity(ResourceContainer::MAXSIZE);
+				}
 			}
 		}
 	}
-
+	if (unitsExtracted  >0 && inventory->hasFullContainerObjects()) {
+		StringIdChatParameter err("survey", "no_inv_space");
+		player->sendSystemMessage(err);
+		player->setPosture(CreaturePosture::UPRIGHT, true);
+		return;
+	}
 	// Create New resource container if one isn't found in inventory
 	ResourceContainer* harvestedResource = resourceSpawn->createResource(unitsExtracted);
 
