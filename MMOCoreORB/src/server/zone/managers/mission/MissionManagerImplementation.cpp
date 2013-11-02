@@ -627,8 +627,7 @@ void MissionManagerImplementation::randomizeGenericDestroyMission(CreatureObject
 	mission->setMissionTargetName("@lair_n:" + lairTemplateObject->getName());
 	mission->setTargetTemplate(templateObject);
 	mission->setTargetOptionalTemplate(lairTemplate);
-
-	mission->setRewardCredits(System::random(difficulty * 100) + (difficulty * 200));
+	mission->setRewardCredits(System::random(difficulty * 100) + (difficulty * (player->isGrouped() ? 275 : 200)));
 	mission->setMissionDifficulty(difficulty, diffDisplay);
 
 	mission->setFaction(faction);
