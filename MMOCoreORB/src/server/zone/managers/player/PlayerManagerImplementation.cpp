@@ -105,6 +105,7 @@
 #include "server/zone/managers/gcw/GCWManager.h"
 
 #include "server/zone/managers/creature/LairObserver.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 
 int PlayerManagerImplementation::MAX_CHAR_ONLINE_COUNT = 2;
 
@@ -1408,6 +1409,8 @@ bool PlayerManagerImplementation::checkTradeItems(CreatureObject* player, Creatu
 	int playerItnos = 0;
 	int recieverTanos = 0;
 	int recieverItnos = 0;
+	int playerPetsTraded = 0;
+	int receiverPetsTraded = 0;
 
 	for (int i = 0; i < tradeContainer->getTradeSize(); ++i) {
 		ManagedReference<SceneObject*> scene = tradeContainer->getTradeItem(i);
@@ -1434,6 +1437,14 @@ bool PlayerManagerImplementation::checkTradeItems(CreatureObject* player, Creatu
 
 			if (!playerDatapad->hasObjectInContainer(scene->getObjectID()))
 				return false;
+
+			if (scene->isPetControlDevice()) {
+				PetControlDevice* petControlDevice = cast<PetControlDevice*>(scene.get());
+				if (!petControlDevice->canBeTradedTo(player, receiver, receiverPetsTraded))
+					return false;
+
+				receiverPetsTraded++;
+			}
 
 			recieverItnos++;
 
@@ -1467,6 +1478,14 @@ bool PlayerManagerImplementation::checkTradeItems(CreatureObject* player, Creatu
 
 			if (!receiverDatapad->hasObjectInContainer(scene->getObjectID()))
 				return false;
+
+			if (scene->isPetControlDevice()) {
+				PetControlDevice* petControlDevice = cast<PetControlDevice*>(scene.get());
+				if (!petControlDevice->canBeTradedTo(receiver, player, playerPetsTraded))
+					return false;
+
+				playerPetsTraded++;
+			}
 
 			playerItnos++;
 

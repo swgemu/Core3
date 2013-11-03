@@ -139,6 +139,8 @@ class PetControlDevice extends ControlDevice {
 	 */
 	public native int canBeDestroyed(CreatureObject player);
 
+	public native boolean canBeTradedTo(CreatureObject player, CreatureObject receiver, int numberInTrade);
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }

@@ -357,6 +357,65 @@ int PetControlDeviceImplementation::canBeDestroyed(CreatureObject* player) {
 	return IntangibleObjectImplementation::canBeDestroyed(player);
 }
 
+bool PetControlDeviceImplementation::canBeTradedTo(CreatureObject* player, CreatureObject* receiver, int numberInTrade) {
+	if (petType == FACTIONPET) {
+		player->sendSystemMessage("@pet/pet_menu:bad_type"); // You cannot trade a pet of that type. Transfer failed.
+		return false;
+	} else if (petType == DROIDPET) {
+		return true;
+	} else if (petType == CREATUREPET) {
+		ManagedReference<SceneObject*> datapad = receiver->getSlottedObject("datapad");
+		ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+
+		if (datapad == NULL || controlledObject == NULL || !controlledObject->isAiAgent())
+			return false;
+
+		ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
+
+		int numberStored = numberInTrade;
+		int maxStoredPets = 2;
+		int maxLevelofPets = 10;
+		int level = pet->getLevel();
+		bool ch = receiver->hasSkill("outdoors_creaturehandler_novice");
+
+		if (ch) {
+			maxStoredPets = receiver->getSkillMod("stored_pets");
+			maxLevelofPets = receiver->getSkillMod("tame_level");
+		}
+
+		if (level > maxLevelofPets) {
+			player->sendSystemMessage("@pet/pet_menu:no_chance"); // That person has no chance of controlling this creature. Transfer failed.
+			return false;
+		}
+
+		if (pet->isAggressiveTo(receiver) && (receiver->getSkillMod("tame_aggro") <= 0 || !ch)) {
+			player->sendSystemMessage("@pet/pet_menu:no_chance"); // That person has no chance of controlling this creature. Transfer failed.
+			return false;
+		}
+
+		for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
+			ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
+
+			if (object != NULL && object->isPetControlDevice()) {
+				PetControlDevice* device = cast<PetControlDevice*>( object.get());
+
+				if (device->getPetType() == PetControlDevice::CREATUREPET) {
+					if (++numberStored >= maxStoredPets) {
+						player->sendSystemMessage("@pet/pet_menu:targ_too_many_stored"); // That person has too many stored pets. Transfer failed.
+						receiver->sendSystemMessage("@pet/pet_menu:sys_too_many_stored"); // There are too many pets stored in this container. Release some of them to make room for more.
+						return false;
+					}
+
+				}
+			}
+		}
+
+		return true;
+	}
+
+	return false;
+}
+
 void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	SceneObjectImplementation::fillAttributeList(alm, object);
 
