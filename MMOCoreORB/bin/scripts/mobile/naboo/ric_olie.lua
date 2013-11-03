@@ -27,7 +27,7 @@ ric_olie = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_capt_ric_olie.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

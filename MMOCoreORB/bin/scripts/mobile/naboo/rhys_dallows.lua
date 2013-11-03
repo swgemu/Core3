@@ -27,7 +27,7 @@ rhys_dallows = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_naboo_captain_dallows.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
