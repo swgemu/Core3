@@ -78,7 +78,7 @@ function LokNymStrongholdScreenPlay:spawnMobiles()
 	spawnMobile("lok", "viopa",60,-2.2483,4.0782,-10.4691,138.087,6595511)
 
 	--trainer
+	spawnMobile("lok", "trainer_combatmedic",60,-17.1,0.26,9.2,-100,2745870)
 	spawnMobile("lok", "trainer_doctor",60,22.1279,0.26,-6.11676,91,2745866)
-	spawnMobile("lok", "trainer_doctor",60,-25.366,0.26,-4.25289,84,2745870)
 	spawnMobile("lok", "trainer_medic",60,-16.0068,0.26,-2.42861,117,2745870)
 end
