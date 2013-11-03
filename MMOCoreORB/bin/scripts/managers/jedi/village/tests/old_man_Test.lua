@@ -101,6 +101,7 @@ describe("Old Man", function()
 					OldMan.readOldManIdFromPlayer = spy.new(function() return OLD_MAN_NO_OLD_MAN_SPAWNED end)
 				end)
 				
+				--[[
 				it("Should check if the player has an event already scheduled.", function()
 					OldMan.createSpawnOldManEvent(pCreatureObject)
 
@@ -162,6 +163,7 @@ describe("Old Man", function()
 						assert.spy(creatureObjectPlayer.setScreenPlayState).was.not_called()
 					end)
 				end)
+				]]
 			end)
 		end)
 
