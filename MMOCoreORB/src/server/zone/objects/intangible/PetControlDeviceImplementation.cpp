@@ -310,6 +310,9 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player) {
 	if (creoTemp != NULL) {
 		pet->setFaction(creoTemp->getFaction().hashCode());
 		pet->setPvpStatusBitmask(creoTemp->getPvpBitmask(), false);
+	} else {
+		pet->setFaction(0);
+		pet->setPvpStatusBitmask(0, false);
 	}
 
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
