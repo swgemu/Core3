@@ -27,6 +27,7 @@ mawgax_raptor = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mawgax_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/mawgax_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

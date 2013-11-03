@@ -27,6 +27,7 @@ kliknik_hunter = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kliknik_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/kliknik_hue.iff",
 	lootGroups = {
 	 {
 	        groups = {

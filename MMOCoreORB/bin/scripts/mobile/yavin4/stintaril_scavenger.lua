@@ -27,6 +27,7 @@ stintaril_scavenger = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/stintaril_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/stintaril_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

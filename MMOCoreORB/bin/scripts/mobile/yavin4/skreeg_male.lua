@@ -27,6 +27,7 @@ skreeg_male = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/skreeg.iff"},
+	controlDeviceTemplate = "object/intangible/pet/skreeg_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

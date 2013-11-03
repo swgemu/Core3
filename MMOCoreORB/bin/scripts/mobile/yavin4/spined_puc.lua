@@ -27,6 +27,7 @@ spined_puc = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/spined_puc_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/spined_puc_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
