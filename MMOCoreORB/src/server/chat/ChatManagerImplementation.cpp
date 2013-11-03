@@ -24,6 +24,8 @@
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/guild/GuildObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/chat/StringIdChatParameter.h"
 #include "server/chat/PersistentMessage.h"
 #include "server/chat/ChatMessage.h"
@@ -493,6 +495,23 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 
 						creature->sendMessage(cmsg);
 					}
+				}
+				else if( object->isAiAgent() ){
+					AiAgent* aiAgent = cast<AiAgent*>(object);
+
+					if (aiAgent == NULL )
+						continue;
+
+					if( aiAgent->isPet() ){
+						ManagedReference<PetControlDevice*> petControlDevice = aiAgent->getControlDevice().get().castTo<PetControlDevice*>();
+
+						if( petControlDevice == NULL )
+							continue;
+
+						petControlDevice->handleSpatialChat( player, message.toString() );
+
+					}
+
 				}
 			}
 		}
