@@ -824,10 +824,6 @@ function recruiter_convo_handler:transferItem(player, pInventory, itemstring)
 				tano:setFaction(self:getRecruiterFactionHashCode())
 			end
 		end
-		
-		
-		item:sendTo(player)
-
 	else
 		return self.GIVEERROR
 	end
