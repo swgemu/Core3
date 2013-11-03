@@ -26,7 +26,7 @@ wood_mite_royal_guard = Creature:new {
 	optionsBitmask = 0,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/confused_wood_mite_hatchling.iff"},
+	templates = {"object/mobile/bark_mite_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
 	lootGroups = {},
 	weapons = {},

@@ -27,7 +27,7 @@ lowland_salt_mynock = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/salt_mynock_hue.iff"},
-	controlDeviceTemplate = "object/intangible/pet/mynock_hue.iff",
+	controlDeviceTemplate = "object/intangible/pet/salt_mynock_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
