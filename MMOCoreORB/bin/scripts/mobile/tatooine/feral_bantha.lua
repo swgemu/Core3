@@ -27,6 +27,7 @@ feral_bantha = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bantha_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/bantha_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

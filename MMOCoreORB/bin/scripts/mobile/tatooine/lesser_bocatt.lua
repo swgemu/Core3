@@ -27,6 +27,7 @@ lesser_bocatt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bocatt_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/bocatt_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

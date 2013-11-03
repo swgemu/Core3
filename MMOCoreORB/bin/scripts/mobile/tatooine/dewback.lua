@@ -27,6 +27,7 @@ dewback = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dewback.iff"},
+	controlDeviceTemplate = "object/intangible/pet/dewback_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
