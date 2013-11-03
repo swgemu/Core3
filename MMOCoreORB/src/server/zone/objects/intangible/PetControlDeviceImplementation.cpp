@@ -306,8 +306,11 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player) {
 	updateStatus(0);
 
 	CreatureTemplate* creoTemp = pet->getCreatureTemplate();
-	pet->setFaction(creoTemp->getFaction().hashCode());
-	pet->setPvpStatusBitmask(creoTemp->getPvpBitmask(), false);
+
+	if (creoTemp != NULL) {
+		pet->setFaction(creoTemp->getFaction().hashCode());
+		pet->setPvpStatusBitmask(creoTemp->getPvpBitmask(), false);
+	}
 
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 	ghost->removeFromActivePets(pet);
