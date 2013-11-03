@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_e3cd1a5f",
+        "filename": "MMOCoreORB/src/server/zone/managers/resource/resourcespawner/ResourceSpawner.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-11-03T16:19:04Z",
+      "side": 1,
+      "message": "check if its not dead or incapacitated",
+      "revId": "406958eaf66aab6b8a8073a49d99b505f8ce7747",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
