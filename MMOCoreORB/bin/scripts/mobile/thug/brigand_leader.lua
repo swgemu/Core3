@@ -25,7 +25,17 @@ brigand_leader = Creature:new {
 	creatureBitmask = PACK + KILLER,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates =
+		{
+			"object/mobile/dressed_brigade_captain_human_female_01.iff",
+			"object/mobile/dressed_brigade_captain_human_male_01.iff",
+			"object/mobile/dressed_brigade_general_human_female_01.iff",
+			"object/mobile/dressed_brigade_general_human_male_01.iff",
+			"object/mobile/dressed_brigade_officer_rodian_female_01.iff",
+			"object/mobile/dressed_brigade_officer_rodian_male_01.iff",
+			"object/mobile/dressed_brigade_sergeant_zabrak_female_01.iff",
+			"object/mobile/dressed_brigade_sergeant_zabrak_male_01.iff"
+		},
 	lootGroups = {},
 	weapons = {"pirate_weapons_heavy"},
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)

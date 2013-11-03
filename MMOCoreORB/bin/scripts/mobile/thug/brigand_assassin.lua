@@ -1,6 +1,6 @@
 brigand_assassin = Creature:new {
 	objectName = "@mob/creature_names:assassin",
-	socialGroup = "Brigand",
+	socialGroup = "brigand",
 	pvpFaction = "",
 	faction = "",
 	level = 17,
@@ -26,11 +26,13 @@ brigand_assassin = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {
-		"object/mobile/dressed_criminal_thug_human_male_01.iff",
-		"object/mobile/dressed_criminal_thug_human_male_02.iff",
-		"object/mobile/dressed_criminal_thug_human_female_01.iff",
-		"object/mobile/dressed_criminal_thug_human_female_02.iff"},
+	templates = 
+		{
+			"object/mobile/dressed_brigade_infiltrator_human_female_01.iff",
+			"object/mobile/dressed_brigade_infiltrator_human_male_01.iff",
+			"object/mobile/dressed_brigade_technician_human_female_01.iff",
+			"object/mobile/dressed_brigade_technician_human_male_01.iff",
+		},
 	lootGroups = {
 	    {
 			groups = {
