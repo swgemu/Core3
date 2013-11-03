@@ -1,6 +1,6 @@
 herald_naboo_hanna = Creature:new {
-	objectName = "",
-	customName = "Hanna",
+	objectName = "@npc_name:twilek_base_female",
+	customName = "Hanna S'kiyah",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
@@ -27,7 +27,7 @@ herald_naboo_hanna = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_herald_noble_twk_female_01.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

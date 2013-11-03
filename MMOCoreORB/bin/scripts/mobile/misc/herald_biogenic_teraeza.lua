@@ -1,6 +1,6 @@
 herald_biogenic_teraeza = Creature:new {
 	objectName = "",
-	customName = "Teraeza",
+	customName = "Teraeza Furloti",
 	socialGroup = "rebel",
 	pvpFaction = "rebel",
 	faction = "rebel",
@@ -27,7 +27,7 @@ herald_biogenic_teraeza = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_herald_biogenic_03.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
