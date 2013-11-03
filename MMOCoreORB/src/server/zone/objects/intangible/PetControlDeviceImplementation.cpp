@@ -364,16 +364,39 @@ int PetControlDeviceImplementation::canBeDestroyed(CreatureObject* player) {
 }
 
 bool PetControlDeviceImplementation::canBeTradedTo(CreatureObject* player, CreatureObject* receiver, int numberInTrade) {
+	ManagedReference<SceneObject*> datapad = receiver->getSlottedObject("datapad");
+
+	if (datapad == NULL)
+		return false;
+
 	if (petType == FACTIONPET) {
 		player->sendSystemMessage("@pet/pet_menu:bad_type"); // You cannot trade a pet of that type. Transfer failed.
 		return false;
 	} else if (petType == DROIDPET) {
+		int droidsInDatapad = numberInTrade;
+
+		for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
+			Reference<SceneObject*> obj =  datapad->getContainerObject(i).castTo<SceneObject*>();
+
+			if (obj != NULL && obj->isPetControlDevice() ){
+				Reference<PetControlDevice*> petDevice = cast<PetControlDevice*>(obj.get());
+				if( petDevice != NULL && petDevice->getPetType() == PetControlDevice::DROIDPET){
+					droidsInDatapad++;
+				}
+			}
+		}
+
+		if( droidsInDatapad >= 5){
+			player->sendSystemMessage("That person has too many droids in their datapad");
+			return false;
+		}
+
 		return true;
+
 	} else if (petType == CREATUREPET) {
-		ManagedReference<SceneObject*> datapad = receiver->getSlottedObject("datapad");
 		ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 
-		if (datapad == NULL || controlledObject == NULL || !controlledObject->isAiAgent())
+		if (controlledObject == NULL || !controlledObject->isAiAgent())
 			return false;
 
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
