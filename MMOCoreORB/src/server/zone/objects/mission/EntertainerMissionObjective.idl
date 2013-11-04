@@ -66,6 +66,9 @@ class EntertainerMissionObjective extends MissionObjective {
 	
 	protected CompleteMissionAfterCertainTimeTask completeTask;
 	
+	@dereferenced
+	protected transient Mutex loadMutex; 
+	
 	public EntertainerMissionObjective(MissionObject mission) {
 		super(mission);
 		

@@ -162,9 +162,13 @@ int EntertainerMissionObjectiveImplementation::notifyObserverEvent(MissionObserv
 		return 0;
 	}
 
+	Locker guard(&loadMutex);
+
 	if (cast<CreatureObject*>(arg1) != getPlayerOwner().get()) {
 		return 0;
 	}
+
+	guard.release();
 
 	Locker _lock(_this.get());
 
