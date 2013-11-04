@@ -162,7 +162,7 @@ int EntertainerMissionObjectiveImplementation::notifyObserverEvent(MissionObserv
 		return 0;
 	}
 
-	if (cast<CreatureObject*>(arg1) != getPlayerOwner().get()) {
+	if (cast<CreatureObject*>(arg1) != getPlayerOwner()) {
 		return 0;
 	}
 
