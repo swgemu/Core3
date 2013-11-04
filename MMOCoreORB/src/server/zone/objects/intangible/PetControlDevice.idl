@@ -70,6 +70,41 @@ class PetControlDevice extends ControlDevice {
 	public static final int FACTIONPET = 0;
 	public static final int CREATUREPET = 1;
 	public static final int DROIDPET = 2;
+	
+	// Default command strings
+	protected string DEFAULT_STAY_COMMAND;
+	protected string DEFAULT_FOLLOW_COMMAND;
+	protected string DEFAULT_STORE_COMMAND;
+	protected string DEFAULT_ATTACK_COMMAND;
+	protected string DEFAULT_GUARD_COMMAND;
+	protected string DEFAULT_FRIEND_COMMAND;
+	protected string DEFAULT_FOLLOWOTHER_COMMAND;
+	protected string DEFAULT_TRICK1_COMMAND;
+	protected string DEFAULT_TRICK2_COMMAND;
+	protected string DEFAULT_PATROL_COMMAND;
+	protected string DEFAULT_FORMATION_COMMAND;
+	protected string DEFAULT_SPECIALATTACK1_COMMAND;
+	protected string DEFAULT_SPECIALATTACK2_COMMAND;
+	protected string DEFAULT_TRANSFER_COMMAND;
+	protected string DEFAULT_RANGEDATTACK_COMMAND;
+	
+	
+	// Trained command strings
+	protected string stayCommand;
+	protected string followCommand;
+	protected string storeCommand;
+	protected string attackCommand;
+	protected string guardCommand;
+	protected string friendCommand;
+	protected string followOtherCommand;
+	protected string trick1Command;
+	protected string trick2Command;
+	protected string patrolCommand;
+	protected string formationCommand;
+	protected string specialAttack1Command;
+	protected string specialAttack2Command;
+	protected string transferCommand;
+	protected string rangedAttackCommand;
 
 	public PetControlDevice() {
 		Logger.setLoggingName("PetControlDevice");
@@ -78,6 +113,36 @@ class PetControlDevice extends ControlDevice {
 		vitality = 1;
 		maxVitality = 1;
 		petType = 0;
+		DEFAULT_STAY_COMMAND = "stay";
+		DEFAULT_FOLLOW_COMMAND = "follow";
+		DEFAULT_STORE_COMMAND = "store";
+		DEFAULT_ATTACK_COMMAND = "attack";
+		DEFAULT_GUARD_COMMAND = "guard";
+		DEFAULT_FRIEND_COMMAND = "friend";
+		DEFAULT_FOLLOWOTHER_COMMAND = "followother";
+		DEFAULT_TRICK1_COMMAND = "trick1";
+		DEFAULT_TRICK2_COMMAND = "trick2";
+		DEFAULT_PATROL_COMMAND = "patrol";
+		DEFAULT_FORMATION_COMMAND = "formation";
+		DEFAULT_SPECIALATTACK1_COMMAND = "special attack one";
+		DEFAULT_SPECIALATTACK2_COMMAND = "special attack two";
+		DEFAULT_TRANSFER_COMMAND = "transfer";
+		DEFAULT_RANGEDATTACK_COMMAND = "ranged attack";
+		stayCommand = DEFAULT_STAY_COMMAND;
+		followCommand = DEFAULT_FOLLOW_COMMAND;
+		storeCommand = DEFAULT_STORE_COMMAND;
+		attackCommand = DEFAULT_ATTACK_COMMAND;
+		guardCommand = DEFAULT_GUARD_COMMAND;
+		friendCommand = DEFAULT_FRIEND_COMMAND;
+		followOtherCommand = DEFAULT_FOLLOWOTHER_COMMAND;
+		trick1Command = DEFAULT_TRICK1_COMMAND;
+		trick2Command = DEFAULT_TRICK2_COMMAND;
+		patrolCommand = DEFAULT_PATROL_COMMAND;
+		formationCommand = DEFAULT_FORMATION_COMMAND;
+		specialAttack1Command = DEFAULT_SPECIALATTACK1_COMMAND;
+		specialAttack2Command = DEFAULT_SPECIALATTACK2_COMMAND;
+		transferCommand = DEFAULT_TRANSFER_COMMAND;
+		rangedAttackCommand = DEFAULT_RANGEDATTACK_COMMAND;
 	}
 
 	public native void storeObject(CreatureObject player);
@@ -149,8 +214,36 @@ class PetControlDevice extends ControlDevice {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);	
-
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+	
+	/**
+	 * Handles spatial chat messages near the pet
+	 * @pre { }
+	 * @post { }
+	 * @param object player creature speaking
+	 * @param string chat message
+	 */
+	@local
+	public native void handleSpatialChat(CreatureObject speaker, final string message);
+	
+	/**
+	 * Handles follow command
+	 * @pre { }
+	 * @post { }
+	 * @param object player creature commanding
+	 */
+	@local
+	public native void follow(CreatureObject player);
+	
+	/**
+	 * Handles stay command
+	 * @pre { }
+	 * @post { }
+	 * @param object player creature commanding
+	 */
+	@local
+	public native void stay(CreatureObject player);
+	
 	public boolean isPetControlDevice() {
 		return true;
 	}
