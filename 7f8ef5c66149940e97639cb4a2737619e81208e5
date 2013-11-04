@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_0377fed5",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-11-04T12:01:49Z",
+      "side": 1,
+      "message": "I would also continue here if the aiAgent is dead. We don\u0027t want dead pets following commands.",
+      "revId": "7f8ef5c66149940e97639cb4a2737619e81208e5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
