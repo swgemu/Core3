@@ -12,6 +12,8 @@
 #include "server/zone/objects/player/sessions/TradeSession.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/creature/events/DroidPowerTask.h"
+#include "server/zone/objects/tangible/weapon/WeaponObject.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 
 
 void PetControlDeviceImplementation::callObject(CreatureObject* player) {
@@ -448,6 +450,110 @@ bool PetControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Creat
 void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	SceneObjectImplementation::fillAttributeList(alm, object);
 
-	if (petType == CREATUREPET)
-		alm->insertAttribute("creature_vitality", String::valueOf(vitality) + "/" + String::valueOf(maxVitality));
+	if (petType == DROIDPET) {
+		ManagedReference<DroidObject*> droid = cast<DroidObject*>(this->controlledObject.get().get());
+
+		if (droid != NULL) {
+			droid->fillAttributeList(alm, object);
+		}
+	} else {
+		ManagedReference<AiAgent*> pet = cast<AiAgent*>(this->controlledObject.get().get());
+
+		if (pet != NULL) {
+			alm->insertAttribute("challenge_level", pet->getLevel());
+
+			if (petType == CREATUREPET)
+				alm->insertAttribute("creature_vitality", String::valueOf(vitality) + "/" + String::valueOf(maxVitality));
+
+			alm->insertAttribute("creature_health", pet->getHAM(0));
+			alm->insertAttribute("creature_action", pet->getHAM(3));
+			alm->insertAttribute("creature_mind", pet->getHAM(6));
+
+			int armor = pet->getArmor();
+			if (armor == 0)
+				alm->insertAttribute("armor_rating", "None");
+			if (armor == 1)
+				alm->insertAttribute("armor_rating", "Light");
+			if (armor == 2)
+				alm->insertAttribute("armor_rating", "Medium");
+			if (armor == 3)
+				alm->insertAttribute("armor_rating", "Heavy");
+
+			if (pet->getKinetic() < 0)
+				alm->insertAttribute("dna_comp_armor_kinetic", "Vulnerable");
+			else
+				alm->insertAttribute("dna_comp_armor_kinetic", pet->getKinetic());
+
+			if (pet->getEnergy() < 0)
+				alm->insertAttribute("dna_comp_armor_energy", "Vulnerable");
+			else
+				alm->insertAttribute("dna_comp_armor_energy", pet->getEnergy());
+
+			if (pet->getBlast() < 0)
+				alm->insertAttribute("dna_comp_armor_blast", "Vulnerable");
+			else
+				alm->insertAttribute("dna_comp_armor_blast", pet->getBlast());
+
+			if (pet->getHeat() < 0)
+				alm->insertAttribute("dna_comp_armor_heat", "Vulnerable");
+			else
+				alm->insertAttribute("dna_comp_armor_heat", pet->getHeat());
+
+			if (pet->getCold() < 0)
+				alm->insertAttribute("dna_comp_armor_cold", "Vulnerable");
+			else
+				alm->insertAttribute("dna_comp_armor_cold", pet->getCold());
+
+			if (pet->getElectricity() < 0)
+				alm->insertAttribute("dna_comp_armor_electric", "Vulnerable");
+			else
+				alm->insertAttribute("dna_comp_armor_electric", pet->getElectricity());
+
+			if (pet->getAcid() < 0)
+				alm->insertAttribute("dna_comp_armor_acid", "Vulnerable");
+			else
+				alm->insertAttribute("dna_comp_armor_acid", pet->getAcid());
+
+			if (pet->getStun() < 0)
+				alm->insertAttribute("dna_comp_armor_stun", "Vulnerable");
+			else
+				alm->insertAttribute("dna_comp_armor_stun", pet->getStun());
+
+			if (pet->getLightSaber() < 0)
+				alm->insertAttribute("dna_comp_armor_saber", "Vulnerable");
+			else
+				alm->insertAttribute("dna_comp_armor_saber", pet->getLightSaber());
+
+			WeaponObject* weapon = pet->getWeapon();
+			if (weapon != NULL)
+				alm->insertAttribute("creature_attack", weapon->getAttackSpeed());
+
+			alm->insertAttribute("creature_tohit", pet->getChanceHit());
+			alm->insertAttribute("creature_damage", String::valueOf(pet->getDamageMin()) + " - " + String::valueOf(pet->getDamageMax()));
+
+			if (petType == CREATUREPET) {
+				CreatureAttackMap* attMap = pet->getAttackMap();
+				if (attMap->size() > 0) {
+					String str = StringIdManager::instance()->getStringId(("@combat_effects:" + pet->getAttackMap()->getCommand(0)).hashCode()).toString();
+					alm->insertAttribute("spec_atk_1", str);
+				} else
+					alm->insertAttribute("spec_atk_1", "--");
+
+				if (attMap->size() > 1) {
+					String str = StringIdManager::instance()->getStringId(("@combat_effects:" + pet->getAttackMap()->getCommand(1)).hashCode()).toString();
+					alm->insertAttribute("spec_atk_2", str);
+				} else
+					alm->insertAttribute("spec_atk_2", "--");
+
+				CreatureTemplate* creatureTemplate = pet->getCreatureTemplate();
+				if (creatureTemplate != NULL) {
+					if (creatureTemplate->getWeapons().size() > 0)
+						alm->insertAttribute("dna_comp_ranged_attack", "Yes");
+					else
+						alm->insertAttribute("dna_comp_ranged_attack", "No");
+				} else
+					alm->insertAttribute("dna_comp_ranged_attack", "No");
+			}
+		}
+	}
 }
