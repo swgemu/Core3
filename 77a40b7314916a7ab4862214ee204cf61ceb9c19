@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_030c9e41",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDeviceImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-11-05T16:42:59Z",
+      "side": 1,
+      "message": "this-\u003econtrolledObject.get().castTo\u003cDroidObject*\u003e();",
+      "revId": "77a40b7314916a7ab4862214ee204cf61ceb9c19",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_e3087a2f",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDeviceImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-11-05T16:42:59Z",
+      "side": 1,
+      "message": "ManagedReference\u003cWeaponObject*\u003e weapon",
+      "revId": "77a40b7314916a7ab4862214ee204cf61ceb9c19",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
