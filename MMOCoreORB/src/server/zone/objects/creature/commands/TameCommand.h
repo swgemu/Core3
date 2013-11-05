@@ -46,6 +46,7 @@ which carries forward this exception.
 #define TAMECOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/Creature.h"
 
 class TameCommand : public QueueCommand {
 public:
@@ -62,6 +63,28 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		ManagedReference<SceneObject* > object = server->getZoneServer()->getObject(target);
+
+		if (object == NULL || !object->isCreature()) {
+			creature->sendSystemMessage("@pet/pet_menu:sys_cant_tame"); // You can't tame that
+			return INVALIDTARGET;
+		}
+
+		Creature* baby = cast<Creature*>(object.get());
+
+		if (!object->isInRange(creature, 8.0f)){
+			creature->sendSystemMessage("@system_msg:out_of_range"); // You are out of range
+			return TOOFAR;
+		}
+
+		Locker clocker(baby, creature);
+
+		ManagedReference<CreatureManager*> manager = creature->getZone()->getCreatureManager();
+		manager->tame(baby, creature);
 
 		return SUCCESS;
 	}

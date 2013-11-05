@@ -18,11 +18,11 @@ private:
 	ManagedReference<CreatureObject*> player;
 
 public:
-	TameCreatureTask(Creature* cre, CreatureObject* playo) : Task() {
+	TameCreatureTask(Creature* cre, CreatureObject* playo, int pvpMask) : Task() {
 		currentPhase = INITIAL;
 		creature = cre;
 		player = playo;
-		originalMask = 0;
+		originalMask = pvpMask;
 	}
 
 	void run() {
@@ -48,8 +48,6 @@ public:
 
 		switch (currentPhase) {
 		case INITIAL:
-			originalMask = creature->getPvpStatusBitmask();
-			creature->clearState(CreatureFlag::ATTACKABLE, true);
 			chatManager->broadcastMessage(player, "@hireling/hireling:taming_2"); // Steady.
 			player->doAnimation("");
 			currentPhase = SECOND;
