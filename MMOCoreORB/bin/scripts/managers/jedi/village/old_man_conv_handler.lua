@@ -44,8 +44,11 @@ function old_man_conv_handler:runScreenHandlers(pConversationTemplate, pConversi
 
 	if screenID == "init" then
 		pConversationScreen = old_man_conv_handler.handleInit(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
-	elseif screenID == "village_give_crystal" or screenID == "village_another_time" or screenID == "village_another_time2" or screenID == "mellichae_later" then
+	elseif screenID == "village_another_time" or screenID == "village_another_time2" or screenID == "mellichae_later" then
 		OldMan.scheduleDespawnOfOldMan(pConversingPlayer, OLD_MAN_CONVERSATION_ENDED_DESPAWN_TIME)
+	elseif screenID == "village_give_crystal" then
+		OldMan.scheduleDespawnOfOldMan(pConversingPlayer, OLD_MAN_CONVERSATION_ENDED_DESPAWN_TIME)
+		OldMan.giveForceCrystalToPlayer(pConversingPlayer)
 	end
 
 	return pConversationScreen

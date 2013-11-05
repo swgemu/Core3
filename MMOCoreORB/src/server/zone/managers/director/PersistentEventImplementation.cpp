@@ -58,7 +58,7 @@ void PersistentEventImplementation::notifyLoadFromDatabase() {
 	int64 remTime = timeStamp - downTime - currentTime;
 
 	Reference<ScreenPlayTask*> task = new ScreenPlayTask(obj, key, play);
-	task->setPersistentEventObjectID(_this.get()->_getObjectID());
+	task->setPersistentEvent(_this.get());
 
 	if (currentTime > (curTime + timeStamp)) {  // Reschedule the event if it's not past, if so reschedule for the time server was down minus the event time.
 		task->schedule(timeStamp);
