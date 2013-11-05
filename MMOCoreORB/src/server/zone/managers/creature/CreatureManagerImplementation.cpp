@@ -714,7 +714,7 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 		return;
 	}
 
-	if (!creature->canTameMe(player)) {
+	if (!creature->canTameMe(player) || !creature->isAttackableBy(player)) {
 		player->sendSystemMessage("@pet/pet_menu:sys_cant_tame"); // You can't tame that
 		return;
 	}
@@ -791,7 +791,10 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 
 	Locker clocker(creature);
 
-	ManagedReference<TameCreatureTask*> task = new TameCreatureTask(creature, player);
+	int mask = creature->getPvpStatusBitmask();
+	creature->setPvpStatusBitmask(0, true);
+
+	ManagedReference<TameCreatureTask*> task = new TameCreatureTask(creature, player, mask);
 
 	player->addPendingTask("tame_pet", task, 8000);
 }
