@@ -792,7 +792,7 @@ int DirectorManager::createEvent(lua_State* L) {
 
 		if (save) {
 			Time expireTime;
-			uint64 currentTime = expireTime.getMiliTime() / 1000;
+			uint64 currentTime = expireTime.getMiliTime();
 
 			ManagedReference<PersistentEvent*> pevent = new PersistentEvent();
 			pevent->setObject(obj);

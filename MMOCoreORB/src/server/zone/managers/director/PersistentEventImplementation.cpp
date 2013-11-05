@@ -51,11 +51,11 @@ void PersistentEventImplementation::notifyLoadFromDatabase() {
 		return;
 
 	Time expireTime;
-	uint64 currentTime = expireTime.getMiliTime() / 1000;
-	uint64 downTime = expireTime.getMiliTime() / 1000;
+	uint64 currentTime = expireTime.getMiliTime();
+	uint64 downTime = expireTime.getMiliTime();
 
 	currentTime -= curTime + timeStamp;
-	uint64 remTime = timeStamp - downTime - currentTime;
+	int64 remTime = timeStamp - downTime - currentTime;
 
 	Reference<ScreenPlayTask*> task = new ScreenPlayTask(obj, key, play);
 	task->setPersistentEventObjectID(_this.get()->_getObjectID());
