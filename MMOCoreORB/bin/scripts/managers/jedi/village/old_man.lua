@@ -14,12 +14,14 @@ OLD_MAN_SPAWNED = 2
 --OLD_MAN_SPAWN_TIME = 12 * 60 * 60 * 1000 -- 12 hours as base
 OLD_MAN_DESPAWN_TIME = 5 * 60 * 1000 -- 5 minutes
 --OLD_MAN_SPAWN_TIME = 12 * 60 * 1000 -- 12 minutes as base for testing
-OLD_MAN_SPAWN_TIME = 12 * 1000 -- 12 seconds as base for testing
+OLD_MAN_SPAWN_TIME = 30 * 1000 -- 12 seconds as base for testing
 --OLD_MAN_DESPAWN_TIME = 30 * 1000 -- 30 seconds as base for testing
 OLD_MAN_STOP_FOLLOW_TIME = 15 * 1000 -- 15 seconds
 OLD_MAN_SPATIAL_CHAT_TIME = 5 * 1000 -- 5 seconds
 OLD_MAN_GREETING_STRING = "@quest/force_sensitive/intro:oldman_greeting"
 OLD_MAN_NO_OLD_MAN_SPAWNED = 0
+OLD_MAN_INVENTORY_STRING = "inventory"
+OLD_MAN_FORCE_CRYSTAL_STRING = "object/tangible/loot/quest/force_sensitive/force_crystal.iff"
 
 OldMan = ScreenPlay:new {}
 
@@ -254,12 +256,11 @@ end
 -- Generate an event to spawn the old man for the player.
 -- @param pCreatureObject pointer to the creature object who should have an event created for spawning the old man.
 function OldMan.createSpawnOldManEvent(pCreatureObject)
---[[
 	if not OldMan.hasOldManSpawnEventScheduled(pCreatureObject) and OldMan.readOldManIdFromPlayer(pCreatureObject) == OLD_MAN_NO_OLD_MAN_SPAWNED then
 		OldMan.setScreenPlayStateOnPlayer(pCreatureObject, OLD_MAN_EVENT_SCHEDULED_STRING, OLD_MAN_SCHEDULED)
-		createEvent(true, OLD_MAN_SPAWN_TIME + math.random(OLD_MAN_SPAWN_TIME), "OldMan", "handleSpawnOldManEvent", pCreatureObject)
+		local time = OLD_MAN_SPAWN_TIME + math.random(OLD_MAN_SPAWN_TIME)
+		createEvent(true, time, "OldMan", "handleSpawnOldManEvent", pCreatureObject)
 	end
-	]]
 end
 
 -- Check if the old man belongs to the player or not.
@@ -270,6 +271,18 @@ function OldMan.oldManBelongsToThePlayer(pConversingPlayer, pConversingNpc)
 	return OldMan.withCreatureObject(pConversingNpc, function(oldManCreatureObject)
 		return OldMan.readOldManIdFromPlayer(pConversingPlayer) == oldManCreatureObject:getObjectID()
 	end) == true
+end
+
+-- Give the force crystal to the player.
+-- @param pCreatureObject pointer to the creature object of the player.
+function OldMan.giveForceCrystalToPlayer(pCreatureObject)
+	OldMan.withCreatureObject(pCreatureObject, function(creatureObject)
+		local pInventory = creatureObject:getSlottedObject(OLD_MAN_INVENTORY_STRING)
+		
+		if pInventory ~= nil then
+			giveItem(pInventory, OLD_MAN_FORCE_CRYSTAL_STRING, -1)
+		end
+	end)
 end
 
 return OldMan

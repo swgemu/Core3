@@ -803,7 +803,7 @@ int DirectorManager::createEvent(lua_State* L) {
 
 			ObjectManager::instance()->persistObject(pevent, 1, "events");
 
-			task->setPersistentEventObjectID(pevent->_getObjectID());
+			task->setPersistentEvent(pevent);
 		}
 	}
 
@@ -1589,13 +1589,13 @@ void DirectorManager::activateEvent(ScreenPlayTask* task) {
 		e.printStackTrace();
 	}
 
-	if (task->getPersistentEventObjectID() != 0) {
-		Reference<PersistentEvent*> persistentEvent = Core::getObjectBroker()->lookUp(task->getPersistentEventObjectID()).castTo<PersistentEvent*>();
+	if (task->getPersistentEvent() != NULL) {
+		Reference<PersistentEvent*> persistentEvent = task->getPersistentEvent();
 
 		if (persistentEvent != NULL)
 			persistentEvent->setEventExecuted(true);
 
-		ObjectManager::instance()->destroyObjectFromDatabase(task->getPersistentEventObjectID());
+		ObjectManager::instance()->destroyObjectFromDatabase(persistentEvent->_getObjectID());
 	}
 }
 

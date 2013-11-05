@@ -2,6 +2,7 @@ local realCreateEvent
 local realGetCityRegionAt
 local realGetSceneObject
 local realGetSpawnPoint
+local realGiveItem
 local realReadData
 local realSpatialChat
 local realSpawnMobile
@@ -29,6 +30,7 @@ function DirectorManagerMocks.setup()
 	realGetCityRegionAt = getCityRegionAt
 	realGetSceneObject = getSceneObject
 	realGetSpawnPoint = getSpawnPoint
+	realGiveItem = giveItem
 	realReadData = readData
 	realSpatialChat = spatialChat
 	realSpawnMobile = spawnMobile
@@ -48,6 +50,7 @@ function DirectorManagerMocks.teardown()
 	getCityRegionAt = realGetCityRegionAt
 	getSceneObject = realGetSceneObject
 	getSpawnPoint = realGetSpawnPoint
+	giveItem = realGiveItem
 	readData = realReadData
 	spatialChat = realSpatialChat
 	spawnMobile = realSpawnMobile
@@ -67,6 +70,7 @@ function DirectorManagerMocks.before_each()
 	getCityRegionAt = spy.new(function() return nil end)
 	getSceneObject = spy.new(function() return nil end)
 	getSpawnPoint = spy.new(function() return nil end)
+	giveItem = spy.new(function() end)
 	readData = spy.new(function() return nil end)
 	spatialChat = spy.new(function() end)
 	spawnMobile = spy.new(function() return nil end)

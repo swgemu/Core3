@@ -351,6 +351,8 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<FighterShipObject>(SceneObjectType::SHIPFIGHTER);
 	objectFactory.registerObject<SpaceStationObject>(SceneObjectType::SHIPSTATION);
+
+	objectFactory.registerObject<TangibleObject>(SceneObjectType::CRYSTAL);
 }
 
 void ObjectManager::updateObjectVersion() {

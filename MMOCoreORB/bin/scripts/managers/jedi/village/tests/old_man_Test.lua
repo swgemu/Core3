@@ -8,6 +8,7 @@ describe("Old Man", function()
 	local pOldMan = { "oldManPointer" }
 	local pCityRegion = { "cityRegionPointer" }
 	local pGreetingStringId = { "greetingStringIdPointer" }
+	local pPlayerInventory = { "playerInventoryPointer" }
 	local playerId = 12345678
 	local oldManId = 98765432
 	local creatureObjectPlayer
@@ -45,6 +46,7 @@ describe("Old Man", function()
 		creatureObjectPlayer.getScreenPlayState = spy.new(function() return 0 end)
 		creatureObjectPlayer.setScreenPlayState = spy.new(function() end)
 		creatureObjectPlayer.removeScreenPlayState = spy.new(function() end)
+		creatureObjectPlayer.getSlottedObject = spy.new(function() return pPlayerInventory end)
 		DirectorManagerMocks.creatureObjects[pCreatureObject] = creatureObjectPlayer
 		
 		creatureObjectOldMan = {}
@@ -199,6 +201,36 @@ describe("Old Man", function()
 					OldMan.scheduleDespawnOfOldMan(pCreatureObject, OLD_MAN_DESPAWN_TIME)
 					
 					assert.spy(createEvent).was.called_with(OLD_MAN_DESPAWN_TIME, "OldMan", "handleDespawnEvent", pCreatureObject)
+				end)
+			end)
+		end)
+		
+		describe("giveForceCrystalToPlayer", function()
+			describe("When called with a player as argument", function()
+				it("Should get the inventory of the player.", function()
+					OldMan.giveForceCrystalToPlayer(pCreatureObject)
+				
+					assert.spy(creatureObjectPlayer.getSlottedObject).was.called_with(creatureObjectPlayer, OLD_MAN_INVENTORY_STRING)
+				end)
+				
+				describe("and the inventory pointer return is not nil", function()
+					it("Should give the player a force crystal.", function()
+						OldMan.giveForceCrystalToPlayer(pCreatureObject)
+						
+						assert.spy(giveItem).was.called_with(pPlayerInventory, OLD_MAN_FORCE_CRYSTAL_STRING, -1)
+					end)
+				end)
+				
+				describe("and the inventory pointer return is not nil", function()
+					before_each(function()
+						creatureObjectPlayer.getSlottedObject = spy.new(function() return nil end)
+					end)
+					
+					it("Should not give the player a force crystal.", function()
+						OldMan.giveForceCrystalToPlayer(pCreatureObject)
+						
+						assert.spy(giveItem).was.not_called()
+					end)
 				end)
 			end)
 		end)
