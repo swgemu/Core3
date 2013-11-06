@@ -715,15 +715,21 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	String closestName = "None";
 	ManagedReference<CityRegion*> cr = closestCloning->getCityRegion();
 	unsigned long long playerID = player->getObjectID();
+	CloningBuildingObjectTemplate* cbot = cast<CloningBuildingObjectTemplate*>(closestCloning->getObjectTemplate());
 
 	if (cr != NULL) {
 		//Check if player is city banned where the closest facility is
-		if (cr->isBanned(playerID)) {
+		if (cr->isBanned(playerID) || cbot == NULL) {
 			int distance = 50000;
 			for (int j = 0; j < locations.size(); j++) {
 				ManagedReference<SceneObject*> location = locations.get(j);
 
 				if (location == NULL)
+					continue;
+
+				cbot = cast<CloningBuildingObjectTemplate*>(location->getObjectTemplate());
+
+				if (cbot == NULL)
 					continue;
 
 				cr = location->getCityRegion();
@@ -748,6 +754,37 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 			closestName = cr->getRegionName();
 		}
 
+	} else if (cbot == NULL) {
+		int distance = 50000;
+		for (int j = 0; j < locations.size(); j++) {
+			ManagedReference<SceneObject*> location = locations.get(j);
+
+			if (location == NULL)
+				continue;
+
+			cbot = cast<CloningBuildingObjectTemplate*>(location->getObjectTemplate());
+
+			if (cbot == NULL)
+				continue;
+
+			cr = location->getCityRegion();
+			String name;
+
+			if (cr != NULL) {
+				if (cr->isBanned(playerID))
+					continue;
+
+				name = cr->getRegionName();
+			} else {
+				name = location->getDisplayedName();
+			}
+
+			if (location->getDistanceTo(player) < distance) {
+				distance = location->getDistanceTo(player);
+				closestName = name;
+				closestCloning = location;
+			}
+		}
 	} else {
 		closestName = closestCloning->getDisplayedName();
 	}
