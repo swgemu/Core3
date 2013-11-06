@@ -1,8 +1,8 @@
 package.path = package.path .. ";scripts/managers/jedi/?.lua;scripts/managers/jedi/village/?.lua"
 JediManager = require("jedi_manager")
-VillageJediManagerHolocron = require("village_jedi_manager_holocron")
+require("village_jedi_manager_holocron")
 require("old_man_conv_handler")
-OldMan = require("old_man")
+require("old_man")
 
 jediManagerName = "VillageJediManager"
 
@@ -14,6 +14,13 @@ NUMBEROFPROFESSIONBADGESREQUIRED = 1
 NUMBEROFCONTENTBADGESREQUIRED = 5
 
 NOTINABUILDING = 0
+
+VILLAGE_JEDI_PROGRESSION_SCREEN_PLAY_STATE_STRING = "VillageJediProgression"
+VILLAGE_JEDI_PROGRESSION_GLOWING = 1
+VILLAGE_JEDI_PROGRESSION_HAS_CRYSTAL = 2
+VILLAGE_JEDI_PROGRESSION_HAS_VILLAGE_ACCESS = 4
+VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE = 8
+VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE = 16
 
 JEDIBADGES = { 
 	EXP_TAT_BENS_HUT, 
@@ -198,6 +205,7 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 function VillageJediManager.checkAndHandleJediProgression(pCreatureObject)
 	if VillageJediManager.countBadges(pCreatureObject) >= TOTALNUMBEROFBADGESREQUIRED then
+		VillageJediManager.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_GLOWING)
 		OldMan.createSpawnOldManEvent(pCreatureObject)
 	end
 end
@@ -230,7 +238,7 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @return true if the player is glowing and need access to the village.
 function VillageJediManager.isGlowing(pCreatureObject)
-	return true
+	return VillageJediManager.countBadges(pCreatureObject) >= TOTALNUMBEROFBADGESREQUIRED
 end
 
 -- Check if the player has complete the village grind and is ready for meeting Mellichae.
@@ -238,6 +246,25 @@ end
 -- @return true if the player has complete the village grind and is ready for meeting Mellichae.
 function VillageJediManager.readyForMellichae(pConversingPlayer)
 	return false
+end
+
+-- Set the jedi progression screen play state on the player.
+-- @param pCreatureObject pointer to the creature object of the player.
+-- @param state the state to set.
+function VillageJediManager.setJediProgressionScreenPlayState(pCreatureObject, state)
+	VillageJediManager.withCreatureObject(pCreatureObject, function(creatureObject)
+		creatureObject:setScreenPlayState(state, VILLAGE_JEDI_PROGRESSION_SCREEN_PLAY_STATE_STRING)
+	end)
+end
+
+-- Check ifthe player has the jedi progression screen play state.
+-- @param pCreatureObject pointer to the creature object of the player.
+-- @param state the state to check if the player has.
+-- @return true if the player has the state.
+function VillageJediManager.hasJediProgressionScreenPlayState(pCreatureObject, state)
+	return VillageJediManager.withCreatureObject(pCreatureObject, function(creatureObject)
+		return creatureObject:hasScreenPlayState(state, VILLAGE_JEDI_PROGRESSION_SCREEN_PLAY_STATE_STRING)
+	end) == true
 end
 
 registerScreenPlay("VillageJediManager", true)

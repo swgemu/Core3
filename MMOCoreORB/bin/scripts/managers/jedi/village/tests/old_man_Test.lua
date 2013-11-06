@@ -1,6 +1,7 @@
-package.path = package.path .. ";scripts/managers/jedi/village/?.lua;scripts/screenplays/mocks/?.lua"
-require("old_man")
+package.path = package.path .. ";scripts/managers/jedi/village/?.lua;scripts/managers/jedi/village/mocks/?.lua;scripts/screenplays/mocks/?.lua"
 local DirectorManagerMocks = require("director_manager_mocks")
+local VillageJediManagerMocks = require("village_jedi_manager_mocks")
+require("old_man")
 
 describe("Old Man", function()
 	local pCreatureObject = { "creatureObjectPointer" }
@@ -24,14 +25,17 @@ describe("Old Man", function()
 
 	setup(function()
 		DirectorManagerMocks.setup()
+		VillageJediManagerMocks.setup()
 	end)
 
 	teardown(function()
 		DirectorManagerMocks.teardown()
+		VillageJediManagerMocks.teardown()
 	end)
 
 	before_each(function()
 		DirectorManagerMocks.before_each()
+		VillageJediManagerMocks.before_each()
 
 		getCityRegionAt = spy.new(function() return pCityRegion end)
 		getSceneObject = spy.new(function() return pOldMan end)
@@ -102,8 +106,7 @@ describe("Old Man", function()
 					OldMan.hasOldManSpawnEventScheduled = spy.new(function() return false end)
 					OldMan.readOldManIdFromPlayer = spy.new(function() return OLD_MAN_NO_OLD_MAN_SPAWNED end)
 				end)
-				
-				--[[
+
 				it("Should check if the player has an event already scheduled.", function()
 					OldMan.createSpawnOldManEvent(pCreatureObject)
 
@@ -116,7 +119,13 @@ describe("Old Man", function()
 					assert.spy(OldMan.readOldManIdFromPlayer).was.called_with(pCreatureObject)
 				end)
 				
-				describe("and no event is scheduled", function()
+				it("Should check if the player already has the crystal.", function()
+					OldMan.createSpawnOldManEvent(pCreatureObject)
+
+					assert.spy(VillageJediManager.hasJediProgressionScreenPlayState).was.called_with(pCreatureObject, VILLAGE_JEDI_PROGRESSION_HAS_CRYSTAL)
+				end)
+				
+				describe("and no event is scheduled, no old man has been spawned and the player does not have the crystal.", function()
 					it("Should create an event for spawning the old man", function()
 						OldMan.createSpawnOldManEvent(pCreatureObject)
 	
@@ -165,7 +174,24 @@ describe("Old Man", function()
 						assert.spy(creatureObjectPlayer.setScreenPlayState).was.not_called()
 					end)
 				end)
-				]]
+				
+				describe("and the player has already gotten the crystal", function()
+					before_each(function()
+						VillageJediManager.hasJediProgressionScreenPlayState = spy.new(function() return true end)
+					end)
+					
+					it("Should not create an event for spawning the old man.", function()
+						OldMan.createSpawnOldManEvent(pCreatureObject)
+	
+						assert.spy(createEvent).was.not_called()
+					end)
+					
+					it("Should not save information about event being scheduled on the player", function()
+						OldMan.createSpawnOldManEvent(pCreatureObject)
+	
+						assert.spy(creatureObjectPlayer.setScreenPlayState).was.not_called()
+					end)
+				end)
 			end)
 		end)
 
@@ -219,6 +245,12 @@ describe("Old Man", function()
 						
 						assert.spy(giveItem).was.called_with(pPlayerInventory, OLD_MAN_FORCE_CRYSTAL_STRING, -1)
 					end)
+					
+					it("Should update the village jedi progression state on the player.", function()
+						OldMan.giveForceCrystalToPlayer(pCreatureObject)
+						
+						assert.spy(VillageJediManager.setJediProgressionScreenPlayState).was.called_with(pCreatureObject, VILLAGE_JEDI_PROGRESSION_HAS_CRYSTAL)
+					end)
 				end)
 				
 				describe("and the inventory pointer return is not nil", function()
@@ -230,6 +262,12 @@ describe("Old Man", function()
 						OldMan.giveForceCrystalToPlayer(pCreatureObject)
 						
 						assert.spy(giveItem).was.not_called()
+					end)
+					
+					it("Should not update the village jedi progression state on the player.", function()
+						OldMan.giveForceCrystalToPlayer(pCreatureObject)
+						
+						assert.spy(VillageJediManager.setJediProgressionScreenPlayState).was.not_called()
 					end)
 				end)
 			end)

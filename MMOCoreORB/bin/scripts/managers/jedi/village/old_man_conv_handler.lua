@@ -59,10 +59,10 @@ function old_man_conv_handler.handleInit(pConversationTemplate, pConversingPlaye
 	local nextScreen = "not_you"
 
 	if OldMan.oldManBelongsToThePlayer(pConversingPlayer, pConversingNpc) then
-		if VillageJediManager.isGlowing(pConversingPlayer) then
-			nextScreen = "village_intro"
-		elseif VillageJediManager.readyForMellichae(pConversingPlayer) then
+		if VillageJediManager.hasJediProgressionScreenPlayState(pConversingPlayer, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE) then
 			nextScreen = "mellichae_intro"
+		elseif VillageJediManager.hasJediProgressionScreenPlayState(pConversingPlayer, VILLAGE_JEDI_PROGRESSION_GLOWING) then
+			nextScreen = "village_intro"
 		end
 	end	
 
