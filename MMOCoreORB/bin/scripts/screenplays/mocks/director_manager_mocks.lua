@@ -1,20 +1,3 @@
-local realCreateEvent
-local realGetCityRegionAt
-local realGetSceneObject
-local realGetSpawnPoint
-local realGiveItem
-local realReadData
-local realSpatialChat
-local realSpawnMobile
-local realWriteData
-
-local realLuaAiAgent
-local realLuaCityRegion
-local realLuaCreatureObject
-local realLuaPlayerObject
-local realLuaSceneObject
-local realLuaStringIdChatParameter
-
 local DirectorManagerMocks = { }
 
 DirectorManagerMocks.aiAgents = {}
@@ -26,52 +9,22 @@ DirectorManagerMocks.stringIds = {}
 
 -- Function to be called in the setup method for a test to prepare the mocks.
 function DirectorManagerMocks.setup()
-	realCreateEvent = createEvent
-	realGetCityRegionAt = getCityRegionAt
-	realGetSceneObject = getSceneObject
-	realGetSpawnPoint = getSpawnPoint
-	realGiveItem = giveItem
-	realReadData = readData
-	realSpatialChat = spatialChat
-	realSpawnMobile = spawnMobile
-	realWriteData = writeData
-
-	realLuaAiAgent = LuaAiAgent
-	realLuaCityRegion = LuaCityRegion
-	realLuaCreatureObject = LuaCreatureObject
-	realLuaPlayerObject = LuaPlayerObject
-	realLuaSceneObject = LuaSceneObject
-	realLuaStringIdChatParameter = LuaStringIdChatParameter
 end
 
 -- Function to be called in the teardown method for a test to clean up the mocks.
 function DirectorManagerMocks.teardown()
-	createEvent = realCreateEvent
-	getCityRegionAt = realGetCityRegionAt
-	getSceneObject = realGetSceneObject
-	getSpawnPoint = realGetSpawnPoint
-	giveItem = realGiveItem
-	readData = realReadData
-	spatialChat = realSpatialChat
-	spawnMobile = realSpawnMobile
-	writeData = realWriteData
-
-	LuaAiAgent = realLuaAiAgent 
-	LuaCityRegion = realLuaCityRegion
-	LuaCreatureObject = realLuaCreatureObject
-	LuaPlayerObject = realLuaPlayerObject
-	LuaSceneObject = realLuaSceneObject
-	LuaStringIdChatParameter = realLuaStringIdChatParameter
 end
 
 -- Function to be called in the before_each method for a test to prepare the mocks.
 function DirectorManagerMocks.before_each()
 	createEvent = spy.new(function() end)
+	createObserver = spy.new(function() end)
 	getCityRegionAt = spy.new(function() return nil end)
 	getSceneObject = spy.new(function() return nil end)
 	getSpawnPoint = spy.new(function() return nil end)
 	giveItem = spy.new(function() end)
 	readData = spy.new(function() return nil end)
+	registerScreenPlay = spy.new(function() end)
 	spatialChat = spy.new(function() end)
 	spawnMobile = spy.new(function() return nil end)
 	writeData = spy.new(function() end)
@@ -124,5 +77,7 @@ end
 -- Function to be called in the after_each method for a test to verify the mocks.
 function DirectorManagerMocks.after_each()
 end
+
+DirectorManagerMocks.before_each()
 
 return DirectorManagerMocks
