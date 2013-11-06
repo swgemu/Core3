@@ -77,30 +77,6 @@ void CityRegionImplementation::notifyLoadFromDatabase() {
 	rescheduleUpdateEvent(seconds);
 	 */
 
-	if (hasShuttle){
-		Reference<CreatureObject*> shuttle = zone->getZoneServer()->getObject(shuttleID, false).castTo<CreatureObject*>();
-
-		if (shuttle == NULL) {
-			hasShuttle = false;
-			shuttleID = 0;
-			return;
-		}
-
-		float x = shuttle->getWorldPositionX();
-		float y = shuttle->getWorldPositionY();
-		float z = shuttle->getWorldPositionZ();
-
-		Vector3 arrivalVector(x, y, z);
-
-		PlanetTravelPoint* planetTravelPoint = new PlanetTravelPoint(zone->getZoneName(), getRegionName(), arrivalVector, arrivalVector, shuttle);
-		zone->getPlanetManager()->addPlayerCityTravelPoint(planetTravelPoint);
-
-		if (shuttle != NULL) {
-			zone->getPlanetManager()->scheduleShuttle(shuttle, PlanetManager::SHUTTLEPORT);
-			zone->registerObjectWithPlanetaryMap(zone->getZoneServer()->getObject(shuttleID, false));
-		}
-	}
-
 }
 
 void CityRegionImplementation::initialize() {
