@@ -56,7 +56,7 @@ public:
 	}
 	
 	bool checkRetreat(CreatureObject* creature) {
-		if (creature->isRidingCreature()) {
+		if (creature->isMounted()) {
 			creature->sendSystemMessage("@cbt_spam:no_burst"); // You cannot burst-run while mounted on a creature or vehicle.
 			return false;
 		}
