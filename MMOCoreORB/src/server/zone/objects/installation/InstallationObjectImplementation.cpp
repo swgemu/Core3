@@ -87,13 +87,15 @@ void InstallationObjectImplementation::fillAttributeList(AttributeListMessage* a
 }
 
 void InstallationObjectImplementation::broadcastMessage(BasePacket* message, bool sendSelf) {
-	if (getZone() == NULL)
+	Zone* zone = getZone();
+
+	if (zone == NULL)
 		return;
 
-	Locker zoneLocker(getZone());
+	Locker zoneLocker(zone);
 
 	SortedVector<ManagedReference<QuadTreeEntry*> > closeSceneObjects;
-	getZone()->getInRangeObjects(getPositionX(), getPositionY(), 512, &closeSceneObjects, false);
+	zone->getInRangeObjects(getPositionX(), getPositionY(), 512, &closeSceneObjects, false);
 
 	for (int i = 0; i < closeSceneObjects.size(); ++i) {
 		ManagedReference<SceneObject*> scno = cast<SceneObject*>( closeSceneObjects.get(i).get());
