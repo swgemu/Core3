@@ -1,6 +1,7 @@
-package.path = package.path .. ";scripts/managers/jedi/village/?.lua;scripts/screenplays/mocks/?.lua"
-require("old_man")
+package.path = package.path .. ";scripts/managers/jedi/village/?.lua;scripts/managers/jedi/village/mocks/?.lua;scripts/screenplays/mocks/?.lua"
 local DirectorManagerMocks = require("director_manager_mocks")
+local VillageJediManagerMocks = require("village_jedi_manager_mocks")
+require("old_man")
 
 describe("Old Man", function()
 	local pCreatureObject = { "creatureObjectPointer" }
@@ -24,14 +25,17 @@ describe("Old Man", function()
 
 	setup(function()
 		DirectorManagerMocks.setup()
+		VillageJediManagerMocks.setup()
 	end)
 
 	teardown(function()
 		DirectorManagerMocks.teardown()
+		VillageJediManagerMocks.teardown()
 	end)
 
 	before_each(function()
 		DirectorManagerMocks.before_each()
+		VillageJediManagerMocks.before_each()
 
 		getCityRegionAt = spy.new(function() return pCityRegion end)
 		getSceneObject = spy.new(function() return pOldMan end)
@@ -48,7 +52,7 @@ describe("Old Man", function()
 		creatureObjectPlayer.removeScreenPlayState = spy.new(function() end)
 		creatureObjectPlayer.getSlottedObject = spy.new(function() return pPlayerInventory end)
 		DirectorManagerMocks.creatureObjects[pCreatureObject] = creatureObjectPlayer
-		
+
 		creatureObjectOldMan = {}
 		creatureObjectOldMan.getObjectID = spy.new(function() return oldManId end)
 		DirectorManagerMocks.creatureObjects[pOldMan] = creatureObjectOldMan
@@ -59,10 +63,10 @@ describe("Old Man", function()
 		sceneObjectPlayer.getWorldPositionX = spy.new(function() return 33 end)
 		sceneObjectPlayer.getWorldPositionY = spy.new(function() return 22 end)
 		DirectorManagerMocks.sceneObjects[pCreatureObject] = sceneObjectPlayer
-		
+
 		sceneObjectOldMan = {}
 		sceneObjectOldMan.destroyObjectFromWorld = spy.new(function() end)
-		DirectorManagerMocks.sceneObjects[pOldMan] = sceneObjectOldMan		
+		DirectorManagerMocks.sceneObjects[pOldMan] = sceneObjectOldMan
 
 		playerObject = {}
 		playerObject.isOnline = spy.new(function() return true end)
@@ -71,11 +75,11 @@ describe("Old Man", function()
 		cityRegion = {}
 		cityRegion.isClientRegion = spy.new(function() return false end)
 		DirectorManagerMocks.cityRegions[pCityRegion] = cityRegion
-		
+
 		aiAgent = {}
 		aiAgent.setFollowObject = spy.new(function() end)
 		DirectorManagerMocks.aiAgents[pOldMan] = aiAgent
-		
+
 		greetingStringId = {}
 		greetingStringId._getObject = spy.new(function() return pGreetingStringId end)
 		greetingStringId.setTT = spy.new(function(object, string) assert.same(string, playerFirstName) end)
@@ -87,85 +91,107 @@ describe("Old Man", function()
 			describe("When called with a player as argument", function()
 				local realHasOldManSpawnEventScheduled
 				local realReadOldManIdFromPlayer
-				
+
 				setup(function()
 					realHasOldManSpawnEventScheduled = OldMan.hasOldManSpawnEventScheduled
 					realReadOldManIdFromPlayer = OldMan.readOldManIdFromPlayer
 				end)
-				
+
 				teardown(function()
 					OldMan.hasOldManSpawnEventScheduled = realHasOldManSpawnEventScheduled
 					OldMan.readOldManIdFromPlayer = realReadOldManIdFromPlayer
 				end)
-				
+
 				before_each(function()
 					OldMan.hasOldManSpawnEventScheduled = spy.new(function() return false end)
 					OldMan.readOldManIdFromPlayer = spy.new(function() return OLD_MAN_NO_OLD_MAN_SPAWNED end)
 				end)
-				
-				--[[
+
 				it("Should check if the player has an event already scheduled.", function()
 					OldMan.createSpawnOldManEvent(pCreatureObject)
 
 					assert.spy(OldMan.hasOldManSpawnEventScheduled).was.called_with(pCreatureObject)
 				end)
-				
+
 				it("Should check if the player has an old man already spawned.", function()
 					OldMan.createSpawnOldManEvent(pCreatureObject)
 
 					assert.spy(OldMan.readOldManIdFromPlayer).was.called_with(pCreatureObject)
 				end)
-				
-				describe("and no event is scheduled", function()
+
+				it("Should check if the player already has the crystal.", function()
+					OldMan.createSpawnOldManEvent(pCreatureObject)
+
+					assert.spy(VillageJediManager.hasJediProgressionScreenPlayState).was.called_with(pCreatureObject, VILLAGE_JEDI_PROGRESSION_HAS_CRYSTAL)
+				end)
+
+				describe("and no event is scheduled, no old man has been spawned and the player does not have the crystal.", function()
 					it("Should create an event for spawning the old man", function()
 						OldMan.createSpawnOldManEvent(pCreatureObject)
-	
+
 						assert.spy(createEvent).was.called(1)
 					end)
-					
+
 					it("Should save information about event being scheduled on the player", function()
 						OldMan.createSpawnOldManEvent(pCreatureObject)
-	
+
 						assert.spy(creatureObjectPlayer.setScreenPlayState).was.called_with(creatureObjectPlayer, OLD_MAN_SCHEDULED, OLD_MAN_EVENT_SCHEDULED_STRING)
 					end)
 				end)
-				
+
 				describe("and an event is already scheduled", function()
 					before_each(function()
 						OldMan.hasOldManSpawnEventScheduled = spy.new(function() return true end)
 					end)
-					
+
 					it("Should not create an event for spawning the old man.", function()
 						OldMan.createSpawnOldManEvent(pCreatureObject)
-	
+
 						assert.spy(createEvent).was.not_called()
 					end)
-					
+
 					it("Should not save information about event being scheduled on the player", function()
 						OldMan.createSpawnOldManEvent(pCreatureObject)
-	
+
 						assert.spy(creatureObjectPlayer.setScreenPlayState).was.not_called()
 					end)
 				end)
-				
+
 				describe("and an old man has already been spawned", function()
 					before_each(function()
 						OldMan.readOldManIdFromPlayer = spy.new(function() return oldManId end)
 					end)
-					
+
 					it("Should not create an event for spawning the old man.", function()
 						OldMan.createSpawnOldManEvent(pCreatureObject)
-	
+
 						assert.spy(createEvent).was.not_called()
 					end)
-					
+
 					it("Should not save information about event being scheduled on the player", function()
 						OldMan.createSpawnOldManEvent(pCreatureObject)
-	
+
 						assert.spy(creatureObjectPlayer.setScreenPlayState).was.not_called()
 					end)
 				end)
-				]]
+
+				describe("and the player has already gotten the crystal", function()
+					before_each(function()
+						VillageJediManager.hasJediProgressionScreenPlayState = spy.new(function() return true end)
+					end)
+
+					it("Should not create an event for spawning the old man.", function()
+						OldMan.createSpawnOldManEvent(pCreatureObject)
+
+						assert.spy(createEvent).was.not_called()
+					end)
+
+					it("Should not save information about event being scheduled on the player", function()
+						OldMan.createSpawnOldManEvent(pCreatureObject)
+
+						assert.spy(creatureObjectPlayer.setScreenPlayState).was.not_called()
+					end)
+				end)
 			end)
 		end)
 
@@ -194,42 +220,54 @@ describe("Old Man", function()
 				end)
 			end)
 		end)
-		
+
 		describe("scheduleDespawnOfOldMan", function()
 			describe("When called with a player and a time", function()
 				it("Should create an event to despawn the old man.", function()
 					OldMan.scheduleDespawnOfOldMan(pCreatureObject, OLD_MAN_DESPAWN_TIME)
-					
+
 					assert.spy(createEvent).was.called_with(OLD_MAN_DESPAWN_TIME, "OldMan", "handleDespawnEvent", pCreatureObject)
 				end)
 			end)
 		end)
-		
+
 		describe("giveForceCrystalToPlayer", function()
 			describe("When called with a player as argument", function()
 				it("Should get the inventory of the player.", function()
 					OldMan.giveForceCrystalToPlayer(pCreatureObject)
-				
+
 					assert.spy(creatureObjectPlayer.getSlottedObject).was.called_with(creatureObjectPlayer, OLD_MAN_INVENTORY_STRING)
 				end)
-				
+
 				describe("and the inventory pointer return is not nil", function()
 					it("Should give the player a force crystal.", function()
 						OldMan.giveForceCrystalToPlayer(pCreatureObject)
-						
+
 						assert.spy(giveItem).was.called_with(pPlayerInventory, OLD_MAN_FORCE_CRYSTAL_STRING, -1)
 					end)
+
+					it("Should update the village jedi progression state on the player.", function()
+						OldMan.giveForceCrystalToPlayer(pCreatureObject)
+
+						assert.spy(VillageJediManager.setJediProgressionScreenPlayState).was.called_with(pCreatureObject, VILLAGE_JEDI_PROGRESSION_HAS_CRYSTAL)
+					end)
 				end)
-				
+
 				describe("and the inventory pointer return is not nil", function()
 					before_each(function()
 						creatureObjectPlayer.getSlottedObject = spy.new(function() return nil end)
 					end)
-					
+
 					it("Should not give the player a force crystal.", function()
 						OldMan.giveForceCrystalToPlayer(pCreatureObject)
-						
+
 						assert.spy(giveItem).was.not_called()
+					end)
+
+					it("Should not update the village jedi progression state on the player.", function()
+						OldMan.giveForceCrystalToPlayer(pCreatureObject)
+
+						assert.spy(VillageJediManager.setJediProgressionScreenPlayState).was.not_called()
 					end)
 				end)
 			end)
@@ -264,10 +302,10 @@ describe("Old Man", function()
 					OldMan.createSpawnOldManEvent = spy.new(function() end)
 					OldMan.saveOldManIdOnPlayer = spy.new(function() end)
 				end)
-				
+
 				it("Should reset screen play state about old man being scheduled.", function()
 					OldMan:handleSpawnOldManEvent(pCreatureObject)
-					
+
 					assert.spy(creatureObjectPlayer.removeScreenPlayState).was.called_with(creatureObjectPlayer, OLD_MAN_SCHEDULED, OLD_MAN_EVENT_SCHEDULED_STRING)
 				end)
 
@@ -429,7 +467,7 @@ describe("Old Man", function()
 					assert.spy(sceneObjectPlayer.getWorldPositionY).was.called(1)
 					assert.spy(LuaSceneObject).was.called(1)
 					assert.spy(getCityRegionAt).was.called_with("testzone", 33, 22)
-				end)			
+				end)
 
 				describe("and player is in no region", function()
 					it("Should return false.", function()
@@ -519,249 +557,249 @@ describe("Old Man", function()
 				end)
 			end)
 		end)
-		
+
 		describe("tryToSpawnOldMan", function()
 			describe("When called with a player creature object", function()
 				local realSpawnOldMan
 				local realSaveOldManIdOnPlayer
 				local realSetToFollow
-				
+
 				setup(function()
 					realSpawnOldMan = OldMan.spawnOldMan
 					realSaveOldManIdOnPlayer = OldMan.saveOldManIdOnPlayer
 					realSetToFollow = OldMan.setToFollow
 				end)
-				
+
 				teardown(function()
 					OldMan.spawnOldMan = realSpawnOldMan
 					OldMan.saveOldManIdOnPlayer = realSaveOldManIdOnPlayer
 					OldMan.setToFollow = realSetToFollow
 				end)
-				
+
 				before_each(function()
 					OldMan.spawnOldMan = spy.new(function() end)
 					OldMan.saveOldManIdOnPlayer = spy.new(function() end)
 					OldMan.setToFollow = spy.new(function() end)
 				end)
-			
+
 				it("Should spawn the old man.", function()
 					OldMan.tryToSpawnOldMan(pCreatureObject)
-					
+
 					assert.spy(OldMan.spawnOldMan).was.called_with(pCreatureObject)
 				end)
-				
+
 				describe("and spawning the old man was successful", function()
 					before_each(function()
 						OldMan.spawnOldMan = spy.new(function() return pOldMan end)
 					end)
-					
+
 					it("Should save the id of the old man on the player.", function()
 						OldMan.tryToSpawnOldMan(pCreatureObject)
-						
+
 						assert.spy(OldMan.saveOldManIdOnPlayer).was.called_with(pCreatureObject, pOldMan)
 					end)
-					
+
 					it("Should return true.", function()
 						assert.is_true(OldMan.tryToSpawnOldMan(pCreatureObject))
 					end)
-					
+
 					it("Should set the old man to follow the player.", function()
 						OldMan.tryToSpawnOldMan(pCreatureObject)
-						
+
 						assert.spy(OldMan.setToFollow).was.called_with(pOldMan, pCreatureObject)
 					end)
-					
+
 					it("Should create events for the old man to send greeting string, to stop follow the player and for despawning.", function()
 						OldMan.tryToSpawnOldMan(pCreatureObject)
-						
+
 						assert.spy(createEvent).was.called(3)
 					end)
 				end)
-				
+
 				describe("and spawning the old man failed", function()
 					before_each(function()
 						OldMan.spawnOldMan = spy.new(function() return nil end)
 					end)
-					
+
 					it("Should not save the id of the old man on the player, not make the old man follow the player nor create an event.", function()
 						OldMan.tryToSpawnOldMan(pCreatureObject)
 						assert.spy(OldMan.saveOldManIdOnPlayer).was.not_called()
 						assert.spy(OldMan.setToFollow).was.not_called()
 						assert.spy(createEvent).was.not_called()
 					end)
-					
+
 					it("Should return false.", function()
 						assert.is_false(OldMan.tryToSpawnOldMan(pCreatureObject))
 					end)
 				end)
 			end)
 		end)
-		
+
 		describe("setToFollow", function()
 			describe("When called with a old man and a player", function()
 				it("Should set the old man to follow the player", function()
 					OldMan.setToFollow(pOldMan, pCreatureObject)
-					
+
 					assert.spy(aiAgent.setFollowObject).was.called_with(aiAgent, pCreatureObject)
 				end)
 			end)
-			
+
 			describe("When called with old man argument equal to nil", function()
 				it("Should not do anything.", function()
 					OldMan.setToFollow(nil, pCreatureObject)
-					
+
 					assert.spy(aiAgent.setFollowObject).was.not_called()
 				end)
 			end)
-			
+
 			describe("When called with player argument equal to nil", function()
 				it("Should not do anything.", function()
 					OldMan.setToFollow(pOldMan, nil)
-					
+
 					assert.spy(aiAgent.setFollowObject).was.called_with(aiAgent, nil)
 				end)
 			end)
 		end)
-		
+
 		describe("handleStopFollowPlayerEvent", function()
 			local realSetToFollow
 			local realReadOldManIdFromPlayer
-			
+
 			setup(function()
 				realSetToFollow = OldMan.setToFollow
 				realReadOldManIdFromPlayer = OldMan.readOldManIdFromPlayer
 			end)
-			
+
 			teardown(function()
 				OldMan.setToFollow = realSetToFollow
 				OldMan.readOldManIdFromPlayer = realReadOldManIdFromPlayer
 			end)
-			
+
 			before_each(function()
 				OldMan.setToFollow = spy.new(function() end)
 				OldMan.readOldManIdFromPlayer = spy.new(function() return oldManId end)
 			end)
-			
+
 			describe("When called with the player as argument", function()
 				it("Should read the old man id from the player.", function()
 					OldMan:handleStopFollowPlayerEvent(pCreatureObject)
-					
+
 					assert.spy(OldMan.readOldManIdFromPlayer).was.called_with(pCreatureObject)
 				end)
-				
+
 				it("Should get a pointer to the old man.", function()
 					OldMan:handleStopFollowPlayerEvent(pCreatureObject)
-					
+
 					assert.spy(getSceneObject).was.called_with(oldManId)
 				end)
-				
+
 				it("Should tell the old man to follow no one.", function()
 					OldMan:handleStopFollowPlayerEvent(pCreatureObject)
-					
+
 					assert.spy(OldMan.setToFollow).was.called_with(pOldMan, nil)
 				end)
 			end)
 		end)
-		
+
 		describe("handleSpatialChatEvent", function()
 			local realSendGreetingString
 			local realReadOldManIdFromPlayer
-			
+
 			setup(function()
 				realSendGreetingString = OldMan.sendGreetingString
 				realReadOldManIdFromPlayer = OldMan.readOldManIdFromPlayer
 			end)
-			
+
 			teardown(function()
 				OldMan.sendGreetingString = realSendGreetingString
 				OldMan.readOldManIdFromPlayer = realReadOldManIdFromPlayer
 			end)
-			
+
 			before_each(function()
 				OldMan.sendGreetingString = spy.new(function() end)
 				OldMan.readOldManIdFromPlayer = spy.new(function() return oldManId end)
 			end)
-			
+
 			describe("When called with the player as argument", function()
 				it("Should read the old man id from the player.", function()
 					OldMan:handleSpatialChatEvent(pCreatureObject)
-					
+
 					assert.spy(OldMan.readOldManIdFromPlayer).was.called_with(pCreatureObject)
 				end)
-				
+
 				it("Should get a pointer to the old man.", function()
 					OldMan:handleSpatialChatEvent(pCreatureObject)
-					
+
 					assert.spy(getSceneObject).was.called_with(oldManId)
 				end)
-				
+
 				it("Should send the greeting string.", function()
 					OldMan:handleSpatialChatEvent(pCreatureObject)
-					
+
 					assert.spy(OldMan.sendGreetingString).was.called_with(pOldMan, pCreatureObject)
 				end)
 			end)
 		end)
-		
+
 		describe("readOldManIdFromPlayer", function()
 			describe("When called with a pointer to a creature object of a player as argument", function()
 				it("Should read the old man id from the player.", function()
 					OldMan.readOldManIdFromPlayer(pCreatureObject)
-					
+
 					assert.spy(readData).was.called_with(playerId .. OLD_MAN_ID_STRING)
 					assert.spy(LuaCreatureObject).was.called(1)
 					assert.spy(creatureObjectPlayer.getObjectID).was.called(1)
 				end)
 			end)
 		end)
-		
+
 		describe("sendGreetingString", function()
 			describe("When called with old man and player", function()
 				local realGetPlayerFirstName
-				
+
 				setup(function()
 					realGetPlayerFirstName = OldMan.getPlayerFirstName
 				end)
-				
+
 				teardown(function()
 					OldMan.getPlayerFirstName = realGetPlayerFirstName
 				end)
-				
+
 				before_each(function()
 					OldMan.getPlayerFirstName = spy.new(function() return playerFirstName end)
 				end)
-				
+
 				it("Should create a string id for the oldman_greeting string.", function()
 					OldMan.sendGreetingString(pOldMan, pCreatureObject)
-					
+
 					assert.spy(LuaStringIdChatParameter).was.called_with(OLD_MAN_GREETING_STRING)
 				end)
-				
+
 				it("Should get the name of the player.", function()
 					OldMan.sendGreetingString(pOldMan, pCreatureObject)
-					
+
 					assert.spy(OldMan.getPlayerFirstName).was.called_with(pCreatureObject)
 				end)
-				
+
 				it("Should set the %TT of the string to the name of the player.", function()
 					OldMan.sendGreetingString(pOldMan, pCreatureObject)
-					
+
 					assert.spy(greetingStringId.setTT).was.called(1)
 				end)
-				
+
 				it("Should send the string id to spatial chat.", function()
 					OldMan.sendGreetingString(pOldMan, pCreatureObject)
-					
+
 					assert.spy(spatialChat).was.called_with(pOldMan, pGreetingStringId)
 				end)
 			end)
 		end)
-		
+
 		describe("getPlayerFirstName", function()
 			describe("When called with a player", function()
 				it("Should return the first name of the player.", function()
 					assert.same(OldMan.getPlayerFirstName(pCreatureObject), playerFirstName)
-					
+
 					assert.spy(creatureObjectPlayer.getFirstName).was.called(1)
 				end)
 			end)
@@ -771,105 +809,105 @@ describe("Old Man", function()
 				end)
 			end)
 		end)
-		
+
 		describe("handleDespawnEvent", function()
 			local realDespawnOldMan
 			local realReadOldManIdFromPlayer
 			local realCreateSpawnOldManEvent
-			
+
 			setup(function()
 				realDespawnOldMan = OldMan.despawnOldMan
 				realReadOldManIdFromPlayer = OldMan.readOldManIdFromPlayer
 				realCreateSpawnOldManEvent = OldMan.createSpawnOldManEvent
 			end)
-			
+
 			teardown(function()
 				OldMan.despawnOldMan = realDespawnOldMan
 				OldMan.readOldManIdFromPlayer = realReadOldManIdFromPlayer
 				OldMan.createSpawnOldManEvent = realCreateSpawnOldManEvent
 			end)
-			
+
 			before_each(function()
 				OldMan.despawnOldMan = spy.new(function() end)
 				OldMan.readOldManIdFromPlayer = spy.new(function() return oldManId end)
 				OldMan.createSpawnOldManEvent = spy.new(function() end)
 			end)
-			
+
 			describe("When called with the player as argument", function()
 				it("Should read the old man id from the player.", function()
 					OldMan:handleDespawnEvent(pCreatureObject)
-					
+
 					assert.spy(OldMan.readOldManIdFromPlayer).was.called_with(pCreatureObject)
 				end)
-				
+
 				it("Should get a pointer to the old man.", function()
 					OldMan:handleDespawnEvent(pCreatureObject)
-					
+
 					assert.spy(getSceneObject).was.called_with(oldManId)
 				end)
-				
+
 				it("Should despawn the old man.", function()
 					OldMan:handleDespawnEvent(pCreatureObject)
-					
+
 					assert.spy(OldMan.despawnOldMan).was.called_with(pOldMan)
 				end)
-				
+
 				it("Should set the id of the spawned old man to 0 to indicate that he is despawned.", function()
 					OldMan:handleDespawnEvent(pCreatureObject)
-					
+
 					assert.spy(writeData).was.called_with(playerId .. OLD_MAN_ID_STRING, OLD_MAN_NO_OLD_MAN_SPAWNED)
 				end)
-				
+
 				it("Should reschedule the old man.", function()
 					OldMan:handleDespawnEvent(pCreatureObject)
-					
+
 					assert.spy(OldMan.createSpawnOldManEvent).was.called_with(pCreatureObject)
 				end)
 			end)
 		end)
-		
+
 		describe("despawnOldMan", function()
 			describe("When called with an old man as argument", function()
 				it("Should destroy the old man from the world.", function()
 					OldMan.despawnOldMan(pOldMan)
-					
+
 					assert.spy(sceneObjectOldMan.destroyObjectFromWorld).was.called(1)
 				end)
 			end)
-			
+
 			describe("When called with nil as argument", function()
 				it("Should not try to destroy the old man from the world.", function()
 					OldMan.despawnOldMan(nil)
-					
+
 					assert.spy(sceneObjectOldMan.destroyObjectFromWorld).was.not_called()
 				end)
 			end)
 		end)
-		
+
 		describe("hasOldManSpawnEventScheduled", function()
 			describe("When called with a player as argument", function()
 				it("Should read the event scheduled information from the player.", function()
 					OldMan.hasOldManSpawnEventScheduled(pCreatureObject)
-					
+
 					assert.spy(creatureObjectPlayer.getScreenPlayState).was.called_with(creatureObjectPlayer, OLD_MAN_EVENT_SCHEDULED_STRING)
 				end)
-				
+
 				describe("and the data stored on the player indicates that the event is scheduled", function()
 					it("Should return true.", function()
 						creatureObjectPlayer.getScreenPlayState = spy.new(function() return OLD_MAN_SCHEDULED end)
-					
+
 						assert.is_true(OldMan.hasOldManSpawnEventScheduled(pCreatureObject))
 					end)
 				end)
-				
+
 				describe("and the data stored on the player indicates that the event is not scheduled", function()
 					it("Should return false.", function()
 						creatureObjectPlayer.getScreenPlayState = spy.new(function() return OLD_MAN_NOT_SCHEDULED end)
-					
+
 						assert.is_false(OldMan.hasOldManSpawnEventScheduled(pCreatureObject))
 					end)
 				end)
 			end)
-		end)		
+		end)
 	end)
 end)

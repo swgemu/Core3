@@ -165,11 +165,11 @@ function OldMan.getPlayerFirstName(pCreatureObject)
 	local firstName = OldMan.withCreatureObject(pCreatureObject, function(creatureObject)
 		return creatureObject:getFirstName()
 	end)
-	
+
 	if firstName == nil then
 		return ""
 	end
-	
+
 	return firstName
 end
 
@@ -253,10 +253,20 @@ function OldMan.hasOldManSpawnEventScheduled(pCreatureObject)
 	return OldMan.getScreenPlayStateFromPlayer(pCreatureObject, OLD_MAN_EVENT_SCHEDULED_STRING) == OLD_MAN_SCHEDULED
 end
 
+-- Check if the spawn event should be created.
+-- @param pCreatureObject pointer to the creature object of the player.
+-- @return true if the spawn event should be created.
+function OldMan.shouldSpawnOldManEventBeCreated(pCreatureObject)
+	local eventNotScheduled = not OldMan.hasOldManSpawnEventScheduled(pCreatureObject)
+	local oldManNotSpawned = OldMan.readOldManIdFromPlayer(pCreatureObject) == OLD_MAN_NO_OLD_MAN_SPAWNED
+	local doesNotHaveCrystal = not VillageJediManager.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_HAS_CRYSTAL)
+	return eventNotScheduled and oldManNotSpawned and doesNotHaveCrystal
+end
+
 -- Generate an event to spawn the old man for the player.
 -- @param pCreatureObject pointer to the creature object who should have an event created for spawning the old man.
 function OldMan.createSpawnOldManEvent(pCreatureObject)
-	if not OldMan.hasOldManSpawnEventScheduled(pCreatureObject) and OldMan.readOldManIdFromPlayer(pCreatureObject) == OLD_MAN_NO_OLD_MAN_SPAWNED then
+	if OldMan.shouldSpawnOldManEventBeCreated(pCreatureObject) then
 		OldMan.setScreenPlayStateOnPlayer(pCreatureObject, OLD_MAN_EVENT_SCHEDULED_STRING, OLD_MAN_SCHEDULED)
 		local time = OLD_MAN_SPAWN_TIME + math.random(OLD_MAN_SPAWN_TIME)
 		createEvent(true, time, "OldMan", "handleSpawnOldManEvent", pCreatureObject)
@@ -278,9 +288,10 @@ end
 function OldMan.giveForceCrystalToPlayer(pCreatureObject)
 	OldMan.withCreatureObject(pCreatureObject, function(creatureObject)
 		local pInventory = creatureObject:getSlottedObject(OLD_MAN_INVENTORY_STRING)
-		
+
 		if pInventory ~= nil then
 			giveItem(pInventory, OLD_MAN_FORCE_CRYSTAL_STRING, -1)
+			VillageJediManager.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_HAS_CRYSTAL)
 		end
 	end)
 end
