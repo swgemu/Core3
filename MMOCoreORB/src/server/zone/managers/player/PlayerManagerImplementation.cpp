@@ -715,41 +715,46 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	String closestName = "None";
 	ManagedReference<CityRegion*> cr = closestCloning->getCityRegion();
 	unsigned long long playerID = player->getObjectID();
+	CloningBuildingObjectTemplate* cbot = cast<CloningBuildingObjectTemplate*>(closestCloning->getObjectTemplate());
 
-	if (cr != NULL) {
-		//Check if player is city banned where the closest facility is
-		if (cr->isBanned(playerID)) {
-			int distance = 50000;
-			for (int j = 0; j < locations.size(); j++) {
-				ManagedReference<SceneObject*> location = locations.get(j);
+	//Check if player is city banned where the closest facility is or if it's not a valid cloner
+	if ((cr != NULL && cr->isBanned(playerID)) || cbot == NULL) {
+		int distance = 50000;
+		for (int j = 0; j < locations.size(); j++) {
+			ManagedReference<SceneObject*> location = locations.get(j);
 
-				if (location == NULL)
+			if (location == NULL)
+				continue;
+
+			cbot = cast<CloningBuildingObjectTemplate*>(location->getObjectTemplate());
+
+			if (cbot == NULL)
+				continue;
+
+			cr = location->getCityRegion();
+			String name;
+
+			if (cr != NULL) {
+				if (cr->isBanned(playerID))
 					continue;
 
-				cr = location->getCityRegion();
-				String name;
-
-				if (cr != NULL) {
-					if (cr->isBanned(playerID))
-						continue;
-
-					name = cr->getRegionName();
-				} else {
-					name = location->getDisplayedName();
-				}
-
-				if (location->getDistanceTo(player) < distance) {
-					distance = location->getDistanceTo(player);
-					closestName = name;
-					closestCloning = location;
-				}
+				name = cr->getRegionName();
+			} else {
+				name = location->getDisplayedName();
 			}
-		} else {
-			closestName = cr->getRegionName();
+
+			if (location->getDistanceTo(player) < distance) {
+				distance = location->getDistanceTo(player);
+				closestName = name;
+				closestCloning = location;
+			}
 		}
 
 	} else {
-		closestName = closestCloning->getDisplayedName();
+		if (cr != NULL)
+			closestName = cr->getRegionName();
+		else
+			closestName = closestCloning->getDisplayedName();
 	}
 
 	StringBuffer promptText;
