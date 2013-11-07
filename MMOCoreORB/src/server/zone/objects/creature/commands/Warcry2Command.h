@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/chat/ChatMessage.h"
 #include "CombatQueueCommand.h"
 
 class Warcry2Command : public CombatQueueCommand {
@@ -77,6 +78,10 @@ public:
 		if (res == GENERALERROR)
 			creature->sendSystemMessage("@combat_effects:warcry_miss");
 
+		if (res == SUCCESS && creature->isPlayerCreature() && creature->getPlayerObject()->getCommandMessageString(String("warcry2").hashCode()).isEmpty()==false) {
+			UnicodeString shout(creature->getPlayerObject()->getCommandMessageString(String("warcry2").hashCode()));
+ 	 	 	server->getChatManager()->broadcastMessage(creature, shout, 0, 0, 80);
+		}
 		return res;
 	}
 

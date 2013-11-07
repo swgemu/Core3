@@ -110,6 +110,10 @@ class PlayerObject extends IntangibleObject {
 	protected string bankLocation;
 	
 	protected boolean teleporting;
+
+	protected string intimidateMessage;
+
+	protected string warcryMessage;
 	
 	@dereferenced
 	protected SortedVector<unsigned long> ownedStructures;
@@ -273,6 +277,10 @@ class PlayerObject extends IntangibleObject {
 		commandMessageStrings.setNoDuplicateInsertPlan();
 		
 		bankLocation = "";
+
+		warcryMessage = "";
+
+		intimidateMessage = "";
 		
 		teleporting = false;
 		
@@ -1350,6 +1358,24 @@ class PlayerObject extends IntangibleObject {
 	}
 	
 	public native void destroyObjectFromDatabase(boolean destroyContainedObjects = false);
+
+
+	public void setWarcryMessage(final string mess) {
+		warcryMessage = mess;
+	}
+
+	public string getWarcryMessage() {
+		return warcryMessage;
+	}
+
+	public void setIntimidateMessage(final string mess) {
+		intimidateMessage = mess;
+	}
+
+	public string getIntimidateMessage() {
+		return intimidateMessage;
+	}
+
 	
 	public boolean isJedi() {
 		return jediState > 2; //TODO: Implement jedi constants.
