@@ -63,6 +63,28 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		CreatureObject* player = cast<CreatureObject*>(creature);
+
+		PlayerObject* ghost = player->getPlayerObject();
+
+		if (arguments.toString().length()==0){
+			player->sendSystemMessage("You didn't specify an Intimidate message.");
+			return GENERALERROR;
+		}
+		if (arguments.toString().length()>128){
+			player->sendSystemMessage("Your Intimidate message can only be up to 128 characters long.");
+			return GENERALERROR;
+		}
+		if (NameManager::instance()->isProfane(arguments.toString())){
+			player->sendSystemMessage("Your Intimidate message has failed the profanity filter.");
+			return GENERALERROR;
+		}
+		ghost->setIntimidateMessage(arguments.toString());
+		player->sendSystemMessage("Your Intimidate message was set to :-\n" + arguments.toString());
+
 		return SUCCESS;
 	}
 

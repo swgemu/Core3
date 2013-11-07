@@ -63,6 +63,26 @@ public:
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
 
+		if (!creature->isPlayerCreature())
+			return GENERALERROR;
+
+		CreatureObject* player = cast<CreatureObject*>(creature);
+
+		PlayerObject* ghost = player->getPlayerObject();
+		if (arguments.toString().length()==0){
+			player->sendSystemMessage("You didn't specify a Warcry message.");
+			return GENERALERROR;
+		}
+		if (arguments.toString().length()>128){
+			player->sendSystemMessage("Your Warcry message can only be up to 128 characters long.");
+			return GENERALERROR;
+		}
+		if (NameManager::instance()->isProfane(arguments.toString())){
+			player->sendSystemMessage("Your Warcry message has failed the profanity filter.");
+			return GENERALERROR;
+		}
+		ghost->setWarcryMessage(arguments.toString());
+		player->sendSystemMessage("Your Warcry message was set to :-\n" + arguments.toString());
 		return SUCCESS;
 	}
 
