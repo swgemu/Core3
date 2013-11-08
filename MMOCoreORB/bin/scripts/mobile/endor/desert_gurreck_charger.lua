@@ -27,6 +27,7 @@ desert_gurreck_charger = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gurreck_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/gurreck_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

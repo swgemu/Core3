@@ -112,7 +112,10 @@ class Creature extends AiAgent {
 	public native int handleObjectMenuSelect(CreatureObject player, byte selectedID);
 	
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-	
+
+	@local
+	public native void loadTemplateDataForBaby(CreatureTemplate templateData);
+
 	public native void scheduleDespawn(); 
 		
 	public native boolean hasOrganics();
@@ -124,6 +127,8 @@ class Creature extends AiAgent {
 	public native boolean canHarvestMe(CreatureObject player);
 
 	public native boolean hasSkillToHarvestMe(CreatureObject player);
+
+	public native boolean canTameMe(CreatureObject player);
 
 	public native boolean canMilkMe(CreatureObject player);
 
@@ -142,7 +147,11 @@ class Creature extends AiAgent {
 	public boolean isBaby() {
 		return super.baby;
 	}
-	
+
+	public void setBaby(boolean bab) {
+		super.baby = bab;
+	}
+
 	public float getTame() {
 		if (super.npcTemplate == null)
 			return 0;
@@ -188,22 +197,38 @@ class Creature extends AiAgent {
 	public float getHideMax() {
 		if (super.npcTemplate == null)
 			return 0;
-		
-		return super.npcTemplate.getHideMax();
+
+		if (isBaby())
+			return (super.npcTemplate.getHideMax() / 10);
+		else
+			return super.npcTemplate.getHideMax();
 	}
 	
 	public float getBoneMax() {
 		if (super.npcTemplate == null)
 			return 0;
-		
-		return super.npcTemplate.getBoneMax();
+
+		if (isBaby())
+			return (super.npcTemplate.getBoneMax() / 10);
+		else
+			return super.npcTemplate.getBoneMax();
 	}
 	
 	public float getMeatMax() {
 		if (super.npcTemplate == null)
 			return 0;
-		
-		return super.npcTemplate.getMeatMax();
+
+		if (isBaby())
+			return (super.npcTemplate.getMeatMax() / 10);
+		else
+			return super.npcTemplate.getMeatMax();
+	}
+
+	public string getControlDeviceTemplate() {
+		if (super.npcTemplate == null)
+			return "";
+
+		return super.npcTemplate.getControlDeviceTemplate();
 	}
 }
 

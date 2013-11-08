@@ -27,6 +27,7 @@ craggy_bolma = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bolma.iff"},
+	controlDeviceTemplate = "object/intangible/pet/bolma_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

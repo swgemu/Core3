@@ -27,6 +27,7 @@ bile_drenched_quenker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/bile_drenched_quenker.iff"},
+	controlDeviceTemplate = "object/intangible/pet/quenker_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_green"},
 	conversationTemplate = "",

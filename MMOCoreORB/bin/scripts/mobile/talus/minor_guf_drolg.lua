@@ -27,6 +27,7 @@ minor_guf_drolg = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/minor_guf_drolg.iff"},
+	controlDeviceTemplate = "object/intangible/pet/guf_drolg_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

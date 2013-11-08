@@ -27,6 +27,7 @@ choku_packmaster = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/choku_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/choku_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

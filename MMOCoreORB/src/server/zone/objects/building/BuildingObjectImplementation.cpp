@@ -690,7 +690,7 @@ void BuildingObjectImplementation::onEnter(CreatureObject* player) {
 	Locker acessLock(&paidAccessListMutex);
 
 	
-	if(isGCWBase()){
+	if(isGCWBase() && factionBaseType != GCWManager::STATICFACTIONBASE){
 		if(!checkContainerPermission(player,ContainerPermissions::WALKIN)){
 			ejectObject(player);
 		}

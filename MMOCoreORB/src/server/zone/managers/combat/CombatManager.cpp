@@ -204,6 +204,9 @@ int CombatManager::doTargetCombatAction(CreatureObject* attacker, WeaponObject* 
 	if (tano->isCreatureObject()) {
 		CreatureObject* defender = cast<CreatureObject*>( tano);
 
+		if (defender->getWeapon() == NULL)
+			return 0;
+
 		damage = doTargetCombatAction(attacker, weapon, defender, data);
 	} else {
 		int poolsToDamage = calculatePoolsToDamage(data.getPoolsToDamage());
@@ -544,12 +547,12 @@ int CombatManager::getDefenderSecondaryDefenseModifier(CreatureObject* defender)
 	return targetDefense;
 }
 
-float CombatManager::getDefenderToughnessModifier(CreatureObject* defender, int damType, float damage) {
+float CombatManager::getDefenderToughnessModifier(CreatureObject* defender, int attackType, int damType, float damage) {
 	ManagedReference<WeaponObject*> weapon = defender->getWeapon();
 
 	Vector<String>* defenseToughMods = weapon->getDefenderToughnessModifiers();
 
-	if (damType != WeaponObject::FORCEATTACK) {
+	if (attackType == weapon->getAttackType()) {
 		for (int i = 0; i < defenseToughMods->size(); ++i) {
 			int toughMod = defender->getSkillMod(defenseToughMods->get(i));
 			if (toughMod > 0) damage *= 1.f - (toughMod / 100.f);
@@ -1019,9 +1022,9 @@ float CombatManager::calculateDamage(CreatureObject* attacker, WeaponObject* wea
 
 	// Toughness reduction
 	if (data.getAttackType() == CombatManager::FORCEATTACK)
-		damage = getDefenderToughnessModifier(defender, WeaponObject::FORCEATTACK, damage);
+		damage = getDefenderToughnessModifier(defender, WeaponObject::FORCEATTACK, WeaponObject::FORCE, damage);
 	else
-		damage = getDefenderToughnessModifier(defender, weapon->getDamageType(), damage);
+		damage = getDefenderToughnessModifier(defender, weapon->getAttackType(), weapon->getDamageType(), damage);
 
 	// PvP Damage Reduction.
 	if (attacker->isPlayerCreature() && defender->isPlayerCreature())
@@ -1733,7 +1736,9 @@ int CombatManager::doTargetCombatAction(TangibleObject* attacker, WeaponObject* 
 
 	if (tano->isCreatureObject()) {
 		CreatureObject* defenderObject = cast<CreatureObject*>( tano);
-		damage = doTargetCombatAction(attacker, weapon, defenderObject, data);
+
+		if (defenderObject->getWeapon() != NULL)
+			damage = doTargetCombatAction(attacker, weapon, defenderObject, data);
 	} else {
 		// TODO: implement, tano->tano damage
 	}

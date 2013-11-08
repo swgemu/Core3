@@ -13,4 +13,6 @@ src/client/Makefile.in
 src/client/aclocal.m4
 src/client/config.h.in
 src/client/configure
+src/client/build/*
+INSTALL
 

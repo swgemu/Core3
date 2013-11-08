@@ -181,6 +181,7 @@ public:
 	const static int PETDEED = 0x4000040;
 	const static int VEHICLECUSTOMKIT = 0x4000041;
 	const static int SKILLBUFF = 0x4000042;
+	const static int DROIDDEED = 0x4000043;
 
 public:
 	SharedObjectTemplate();
@@ -285,9 +286,9 @@ public:
 	PortalLayout* getPortalLayout();
 	AppearanceTemplate* getAppearanceTemplate();
 
-	inline Vector<String>* getArrangementDescriptors() {
+	Vector < Vector<String> > getArrangementDescriptors() {
 		if (arrangementDescriptors == NULL)
-			return NULL;
+			return Vector < Vector<String> >();
 		else
 			return arrangementDescriptors->getArrangementSlots();
 	}
@@ -411,8 +412,18 @@ public:
 		return &groupPermissions;
 	}
 
-	bool hasArrangementDescriptor(String s) {
-		return arrangementDescriptors->getArrangementSlots()->contains(s);
+	bool hasArrangementDescriptor(const String& s) {
+		bool foundIt = false;
+
+		Vector < Vector <String> > hAD = arrangementDescriptors->getArrangementSlots();
+
+		for (int i = 0; i < hAD.size() && !foundIt; ++i) {
+			Vector <String> slotItems = hAD.get(i);
+
+			foundIt = slotItems.contains(s);
+		}
+
+		return foundIt;
 	}
 
 public:

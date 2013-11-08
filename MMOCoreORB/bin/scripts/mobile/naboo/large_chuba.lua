@@ -27,6 +27,7 @@ large_chuba = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/chuba_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/chuba_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

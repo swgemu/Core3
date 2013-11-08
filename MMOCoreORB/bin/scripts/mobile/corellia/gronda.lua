@@ -27,6 +27,7 @@ gronda = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/gronda.iff"},
+	controlDeviceTemplate = "object/intangible/pet/gronda_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

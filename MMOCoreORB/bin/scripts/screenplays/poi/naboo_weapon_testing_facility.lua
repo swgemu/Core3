@@ -41,6 +41,9 @@ function WeaponFacilityScreenPlay:spawnImperials(pBuilding)
 		local building = LuaBuildingObject(pBuilding)
 		building:initializeStaticGCWBase(FACTIONIMPERIAL)
 
+		building:spawnChildSceneObject("object/tangible/gcw/flip_banner_onpole_imperial.iff", 6.7, -12.0, 41.4, 6335643, 1, 0, 0, 0)
+		building:spawnChildSceneObject("object/tangible/gcw/flip_banner_onpole_imperial.iff", 0.2, -12.0, 41.4, 6335643, 1, 0, 0, 0)
+
     	--Cell [0]
         	building:spawnChildCreature("dark_trooper", 300, -6502.1, 40.0, -3312.7, -1, 0)
         	building:spawnChildCreature("stormtrooper", 300, -6509.6, 40.0, -3312.9, -1, 0)
@@ -228,6 +231,9 @@ function WeaponFacilityScreenPlay:spawnRebels(pBuilding)
 	if pBuilding ~= nil then
 		local building = LuaBuildingObject(pBuilding)
 		building:initializeStaticGCWBase(FACTIONREBEL)
+
+		building:spawnChildSceneObject("object/tangible/gcw/flip_banner_onpole_rebel.iff", 6.7, -12.0, 41.4, 6335643, 1, 0, 0, 0)
+		building:spawnChildSceneObject("object/tangible/gcw/flip_banner_onpole_rebel.iff", 0.2, -12.0, 41.4, 6335643, 1, 0, 0, 0)
 
     	--Cell [0]
         	building:spawnChildCreature("senior_specforce_infiltrator", 300, -6496.0, 40.0, -3324.7, -133, 0)

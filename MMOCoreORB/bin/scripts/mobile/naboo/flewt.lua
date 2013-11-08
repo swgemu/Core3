@@ -27,6 +27,7 @@ flewt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/flewt.iff"},
+	controlDeviceTemplate = "object/intangible/pet/flewt_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

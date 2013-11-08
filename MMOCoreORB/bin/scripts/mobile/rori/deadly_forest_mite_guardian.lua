@@ -27,6 +27,7 @@ deadly_forest_mite_guardian = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/forest_mite.iff"},
+	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

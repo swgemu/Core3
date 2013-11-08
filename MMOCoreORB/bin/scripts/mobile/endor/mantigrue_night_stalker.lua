@@ -27,6 +27,7 @@ mantigrue_night_stalker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mantigrue_night_stalker.iff"},
+	controlDeviceTemplate = "object/intangible/pet/perlek_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_red"},
 	conversationTemplate = "",

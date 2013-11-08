@@ -824,10 +824,6 @@ function recruiter_convo_handler:transferItem(player, pInventory, itemstring)
 				tano:setFaction(self:getRecruiterFactionHashCode())
 			end
 		end
-		
-		
-		item:sendTo(player)
-
 	else
 		return self.GIVEERROR
 	end
@@ -864,7 +860,11 @@ function recruiter_convo_handler:transferData(player, pDatapad, itemstring)
 		return self.TEMPLATEPATHERROR
 	end
 
-	pItem = giveControlDevice(pDatapad, templatePath, genPath, -1)
+	if (self:isHireling(itemstring)) then
+		pItem = giveControlDevice(pDatapad, templatePath, genPath, -1, true)
+	else
+		pItem = giveControlDevice(pDatapad, templatePath, genPath, -1, false)
+	end
 	
 	if (pItem ~= nil) then
 	

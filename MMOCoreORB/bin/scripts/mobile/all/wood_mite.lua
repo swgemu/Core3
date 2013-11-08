@@ -27,6 +27,7 @@ wood_mite = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/confused_wood_mite_hatchling.iff"},
+	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -391,9 +391,9 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					},
 					"Master", "combat_commando_master"
 				},
-				--"Creature Handler",
-				--{
-					--"Novice", "outdoors_creaturehandler_novice",
+				"Creature Handler",
+				{
+					"Novice", "outdoors_creaturehandler_novice",
 					--"Taming",
 					--{
 						--"Creature Taming I", "outdoors_creaturehandler_taming_01",
@@ -423,7 +423,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 						--"Creature Management IV", "outdoors_creaturehandler_support_04"
 					--},
 					--"Master", "outdoors_creaturehandler_master"
-				--},
+				},
 				"Dancer",
 				{
 					"Novice", "social_dancer_novice",
@@ -2394,37 +2394,37 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					--"Weapon Repair", "object/tangible/crafting/station/weapon_repair.iff"
 				--}
 			},
-			--"Weapons",
-			--{
-			--	"Carbines",
-			--	{
+			"Weapons",
+			{
+				"Carbines",
+				{
 			--		"CDEF Carbine", "object/weapon/ranged/carbine/carbine_cdef.iff",
 			--		"Corsec CDEF Carbine", "object/weapon/ranged/carbine/carbine_cdef_corsec.iff",
 			--		"DH17 Carbine", "object/weapon/ranged/carbine/carbine_dh17.iff",
 			--		"DH17 Carbine (black)", "object/weapon/ranged/carbine/carbine_dh17_black.iff",
 			--		"DH17 Short Carbine", "object/weapon/ranged/carbine/carbine_dh17_snubnose.iff",
-			--		"DXR6 Carbine", "object/weapon/ranged/carbine/carbine_dxr6.iff",
+					"DXR6 Carbine", "object/weapon/ranged/carbine/carbine_dxr6.iff",
 			--		"E11 Carbine", "object/weapon/ranged/carbine/carbine_e11.iff",
 			--		"Enhanced E11 Carbine", "object/weapon/ranged/carbine/carbine_e11_quest.iff",
 			--		"Lithitanium Carbine", "object/weapon/ranged/carbine/carbine_e11_victor_quest.iff",
 			--		"EE3 Carbine", "object/weapon/ranged/carbine/carbine_ee3.iff",
 			--		"Elite Carbine", "object/weapon/ranged/carbine/carbine_elite.iff",
-			--		"Laser Carbine", "object/weapon/ranged/carbine/carbine_laser.iff",
+					"Laser Carbine", "object/weapon/ranged/carbine/carbine_laser.iff",
 			--		"Nym's Slug-thrower Carbine", "object/weapon/ranged/carbine/carbine_nym_slugthrower.iff"
-			--	},
-			--	"Heavy",
-			--	{
+				},
+				"Heavy",
+				{
 			--		"Acid Stream Launcher", "object/weapon/ranged/heavy/heavy_acid_beam.iff",
 			--		"Beam Rifle", "object/weapon/ranged/rifle/rifle_beam.iff",
-			--		"Flame Thrower", "object/weapon/ranged/rifle/rifle_flame_thrower.iff",
+					"Flame Thrower", "object/weapon/ranged/rifle/rifle_flame_thrower.iff",
 			--		"Heavy Acid Rifle", "object/weapon/ranged/rifle/rifle_acid_beam.iff",
 			--		"Heavy Particle Beam Cannon", "object/weapon/ranged/heavy/heavy_particle_beam.iff",
 			--		"Lightning Beam Cannon", "object/weapon/ranged/heavy/heavy_lightning_beam.iff",
-			--		"Light Lightning Cannon", "object/weapon/ranged/rifle/rifle_lightning.iff",
+					"Light Lightning Cannon", "object/weapon/ranged/rifle/rifle_lightning.iff",
 			--		"Rocket Launcher", "object/weapon/ranged/heavy/heavy_rocket_launcher.iff"
-			--	},
-			--	"One-handed",
-			--	{
+				},
+				"One-handed",
+				{
 			--		"Sword", "object/weapon/melee/sword/sword_01.iff",
 			--		"Sword (noob)", "object/weapon/melee/sword/sword_01_noob.iff",
 			--		"Curved Sword", "object/weapon/melee/sword/sword_02.iff",
@@ -2440,12 +2440,12 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			--		"Stone Knife (noob)", "object/weapon/melee/knife/knife_stone_noob.iff",
 			--		"Vibroblade", "object/weapon/melee/knife/knife_vibroblade.iff",
 			--		"Jagged Vibroblade", "object/weapon/melee/knife/knife_vibroblade_quest.iff",
-			--		"Stun Baton", "object/weapon/melee/baton/baton_stun.iff",
-			--		"Gaderiffi Baton", "object/weapon/melee/baton/baton_gaderiffi.iff",
+					"Stun Baton", "object/weapon/melee/baton/baton_stun.iff",
+					"Gaderiffi Baton", "object/weapon/melee/baton/baton_gaderiffi.iff",
 			--		"Black Metal Gaderiffi Baton", "object/weapon/melee/baton/victor_baton_gaderiffi.iff"
-			--	},
-			--	"Pistols",
-			--	{
+				},
+				"Pistols",
+				{
 			--		"CDEF Pistol", "object/weapon/ranged/pistol/pistol_cdef.iff",
 			--		"CDEF Pistol (noob)", "object/weapon/ranged/pistol/pistol_cdef_noob.iff",
 			--		"Corsec CDEF Pistol", "object/weapon/ranged/pistol/pistol_cdef_corsec.iff",
@@ -2455,33 +2455,34 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			--		"DL44 Pistol", "object/weapon/ranged/pistol/pistol_dl44.iff",
 			--		"DL44 Metal Pistol", "object/weapon/ranged/pistol/pistol_dl44_metal.iff",
 			--		"DX2 Pistol", "object/weapon/ranged/pistol/pistol_dx2.iff",
-			--		"FWG5 Pistol", "object/weapon/ranged/pistol/pistol_fwg5.iff",
+					"FWG5 Pistol", "object/weapon/ranged/pistol/pistol_fwg5.iff",
 			--		"Featherweight FWG5 Pistol", "object/weapon/ranged/pistol/pistol_fwg5_quest.iff",
 			--		"Geonosian Sonic Blaster", "object/weapon/ranged/pistol/pistol_geonosian_sonic_blaster_loot.iff",
+					"Launcher Pistol", "object/weapon/ranged/pistol/pistol_launcher.iff",
 			--		"Power5 Pistol", "object/weapon/ranged/pistol/pistol_power5.iff",
-			--		"Republic Blaster", "object/weapon/ranged/pistol/pistol_republic_blaster.iff",
+					"Republic Blaster", "object/weapon/ranged/pistol/pistol_republic_blaster.iff",
 			--		"Modified Republic Blaster", "object/weapon/ranged/pistol/pistol_republic_blaster_quest.iff",
-			--		"Scatter Pistol", "object/weapon/ranged/pistol/pistol_scatter.iff",
+					"Scatter Pistol", "object/weapon/ranged/pistol/pistol_scatter.iff",
 			--		"Scout Blaster", "object/weapon/ranged/pistol/pistol_scout_blaster.iff",
 			--		"SR Combat Pistol", "object/weapon/ranged/pistol/pistol_srcombat.iff",
 			--		"Striker Pistol", "object/weapon/ranged/pistol/pistol_striker.iff",
 			--		"Striker Pistol (noob)", "object/weapon/ranged/pistol/pistol_striker_noob.iff",
 			--		"Tangle Pistol", "object/weapon/ranged/pistol/pistol_tangle.iff"
-			--	},
-			--	"Polearms",
-			--	{
+				},
+				"Polearms",
+				{
 			--		"Lance", "object/weapon/melee/polearm/lance_controllerfp.iff",
 			--		"Nightsister Lance", "object/weapon/melee/polearm/lance_controllerfp_nightsister.iff",
 			--		"Nightsister Energy Lance", "object/weapon/melee/polearm/lance_nightsister.iff",
 			--		"Janta Staff", "object/weapon/melee/polearm/lance_staff_janta.iff",
 			--		"Metal Staff", "object/weapon/melee/polearm/lance_staff_metal.iff",
-			--		"Vibro Lance", "object/weapon/melee/polearm/lance_vibrolance.iff",
-			--		"Long Vibro Axe", "object/weapon/melee/polearm/polearm_vibro_axe.iff",
+					"Vibro Lance", "object/weapon/melee/polearm/lance_vibrolance.iff",
+					"Long Vibro Axe", "object/weapon/melee/polearm/polearm_vibro_axe.iff",
 			--		"Wood Staff", "object/weapon/melee/polearm/lance_staff_wood_s1.iff",
 			--		"Reinforced Combat Staff", "object/weapon/melee/polearm/lance_staff_wood_s2.iff",
-			--	},
-			--	"Rifles",
-			--	{
+				},
+				"Rifles",
+				{
 			--		"Berserker Rifle", "object/weapon/ranged/rifle/rifle_berserker.iff",
 			--		"Bowcaster", "object/weapon/ranged/rifle/rifle_bowcaster.iff",
 			--		"CDEF Rifle", "object/weapon/ranged/rifle/rifle_cdef.iff",
@@ -2489,41 +2490,41 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 			--		"DLT20a Rifle", "object/weapon/ranged/rifle/rifle_dlt20a.iff",
 			--		"E11 Rifle", "object/weapon/ranged/rifle/rifle_e11.iff",
 			--		"An Ewok Crossbow", "object/weapon/ranged/rifle/rifle_ewok_crossbow.iff",
-			--		"Jawa Ion Rifle", "object/weapon/ranged/rifle/rifle_jawa_ion.iff",
+					"Jawa Ion Rifle", "object/weapon/ranged/rifle/rifle_jawa_ion.iff",
 			--		"Laser Rifle", "object/weapon/ranged/rifle/rifle_laser.iff",
 			--		"Laser Rifle (noob)", "object/weapon/ranged/rifle/rifle_laser_noob.iff",
 			--		"Lithitanium Rifle", "object/weapon/ranged/rifle/rifle_victor_tusken.iff",
 			--		"SG82 Rifle", "object/weapon/ranged/rifle/rifle_sg82.iff",
 			--		"Spraystick", "object/weapon/ranged/rifle/rifle_spraystick.iff",
 			--		"Tenloss DXR-6 Disruptor Rifle", "object/weapon/ranged/rifle/rifle_tenloss_dxr6_disruptor_loot.iff",
-			--		"T21", "object/weapon/ranged/rifle/rifle_t21.iff",
+					"T21", "object/weapon/ranged/rifle/rifle_t21.iff",
 			--		"Tusken Rifle", "object/weapon/ranged/rifle/rifle_tusken.iff"
-			--	},
-			--	"Two-handed",
-			--	{
-			--		"Two-handed Curved Sword", "object/weapon/melee/2h_sword/2h_sword_katana.iff",
+				},
+				"Two-handed",
+				{
+					"Two-handed Curved Sword", "object/weapon/melee/2h_sword/2h_sword_katana.iff",
 			--		"Grooved Two-handed Sword", "object/weapon/melee/2h_sword/2h_sword_katana_quest.iff",
 			--		"Scythe Blade", "object/weapon/melee/2h_sword/2h_sword_scythe.iff",
-			--		"Power Hammer", "object/weapon/melee/2h_sword/2h_sword_maul.iff",
+					"Power Hammer", "object/weapon/melee/2h_sword/2h_sword_maul.iff",
 			--		"Two-handed Cleaver", "object/weapon/melee/2h_sword/2h_sword_cleaver.iff",
 			--		"Black Sun Executioner's Hack", "object/weapon/melee/2h_sword/2h_sword_blacksun_hack.iff",
 			--		"Gamorrean Battleaxe", "object/weapon/melee/2h_sword/2h_sword_battleaxe_quest.iff",
 			--		"Heavy Axe", "object/weapon/melee/axe/axe_heavy_duty.iff",
 			--		"Vibro Axe", "object/weapon/melee/axe/axe_vibroaxe.iff"
-			--	},
-			--	"Unarmed",
-			--	{
-			--		"Vibro Knuckler", "object/weapon/melee/special/vibroknuckler.iff",
+				},
+				"Unarmed",
+				{
+					"Vibro Knuckler", "object/weapon/melee/special/vibroknuckler.iff",
 			--		"A Blacksun Razor Knuckler", "object/weapon/melee/special/blacksun_razor.iff"
-			--	}
-		--	},
-			"Holocrons",
-			{
-				"Dark Jedi Holocron", "object/tangible/jedi/jedi_holocron_dark.iff",
-				"Light Jedi Holocron", "object/tangible/jedi/jedi_holocron_light.iff",
-				"Dark Jedi Holocron (gift)", "object/tangible/jedi/no_drop_jedi_holocron_dark.iff",
-				"Light Jedi Holocron (gift)", "object/tangible/jedi/no_drop_jedi_holocron_light.iff"
-			}
+				}
+			},
+			--"Holocrons",
+			--{
+			--	"Dark Jedi Holocron", "object/tangible/jedi/jedi_holocron_dark.iff",
+			--	"Light Jedi Holocron", "object/tangible/jedi/jedi_holocron_light.iff",
+			--	"Dark Jedi Holocron (gift)", "object/tangible/jedi/no_drop_jedi_holocron_dark.iff",
+			--	"Light Jedi Holocron (gift)", "object/tangible/jedi/no_drop_jedi_holocron_light.iff"
+			--}
 		}
 	}
 }

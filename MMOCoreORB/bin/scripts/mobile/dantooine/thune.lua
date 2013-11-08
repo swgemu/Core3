@@ -27,6 +27,7 @@ thune = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/thune.iff"},
+	controlDeviceTemplate = "object/intangible/pet/thune_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -28,6 +28,7 @@ mamien_matriarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mamien_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/mamien_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

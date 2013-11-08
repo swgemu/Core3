@@ -27,6 +27,7 @@ bantha_e3 = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bantha.iff"},
+	controlDeviceTemplate = "object/intangible/pet/bantha_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

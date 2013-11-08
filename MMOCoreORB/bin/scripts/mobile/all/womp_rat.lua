@@ -27,6 +27,7 @@ womp_rat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/womp_rat.iff"},
+	controlDeviceTemplate = "object/intangible/pet/womp_rat_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -615,7 +615,6 @@ function ThemeParkLogic:giveMissionItems(mission, pConversingPlayer)
 		if (pItem ~= nil) then
 			local item = LuaSceneObject(pItem)
 			item:setCustomObjectName(itemsToGive[i].itemName)
-			item:sendTo(pConversingPlayer)
 			writeData(creature:getObjectID() .. ":missionItem:no" .. i, item:getObjectID())
 		end
 	end
@@ -959,11 +958,6 @@ function ThemeParkLogic:giveItem(pConversingPlayer, itemList)
 
 		for i = 1, numberOfItemsOfThisType, 1 do
 			local pItem = giveItem(pInventory, itemTemplate, -1)
-			
-			if (pItem ~= nil) then
-				local item = LuaSceneObject(pItem)
-				item:sendTo(pConversingPlayer)
-			end
 		end
 	end
 end

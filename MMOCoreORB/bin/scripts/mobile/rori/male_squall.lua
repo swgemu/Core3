@@ -27,6 +27,7 @@ male_squall = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/squall.iff"},
+	controlDeviceTemplate = "object/intangible/pet/squall_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

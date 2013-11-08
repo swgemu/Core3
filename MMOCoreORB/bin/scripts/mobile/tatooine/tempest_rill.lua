@@ -27,6 +27,7 @@ tempest_rill = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/rill.iff"},
+	controlDeviceTemplate = "object/intangible/pet/dune_lizard_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

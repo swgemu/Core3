@@ -325,7 +325,7 @@ void AiAgentImplementation::doRecovery() {
 }
 
 void AiAgentImplementation::doAttack() {
-	if (isDead()) {
+	if (isDead() || getWeapon() == NULL) {
 		removeDefenders();
 
 		setFollowObject(NULL);

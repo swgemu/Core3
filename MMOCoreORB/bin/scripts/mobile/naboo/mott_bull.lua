@@ -27,6 +27,7 @@
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mott_bull.iff"},
+	controlDeviceTemplate = "object/intangible/pet/mott_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

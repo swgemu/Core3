@@ -27,6 +27,7 @@ mature_hanadak_rock_smasher = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/hanadak_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/hanadak_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

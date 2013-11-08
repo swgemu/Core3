@@ -27,6 +27,7 @@ paralope = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/paralope.iff"},
+	controlDeviceTemplate = "object/intangible/pet/swirl_prong_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

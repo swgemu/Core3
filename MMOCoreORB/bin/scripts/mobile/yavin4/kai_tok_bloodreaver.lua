@@ -27,6 +27,7 @@ kai_tok_bloodreaver = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kai_tok_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/kai_tok_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

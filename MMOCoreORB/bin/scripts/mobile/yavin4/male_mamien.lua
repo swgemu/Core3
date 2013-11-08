@@ -27,6 +27,7 @@ male_mamien = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mamien.iff"},
+	controlDeviceTemplate = "object/intangible/pet/mamien_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

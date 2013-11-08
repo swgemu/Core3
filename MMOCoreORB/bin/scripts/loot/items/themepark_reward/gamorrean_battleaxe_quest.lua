@@ -23,6 +23,9 @@ gamorrean_battleaxe_quest = {
 	customizationValues = {},
 	skillMods = {{"block", 5}},
 
+	-- randomDotChance: The chance of this weapon object dropping with a random dot on it. Higher number means less chance. Set to 0 to always have a random dot.
+	randomDotChance = -1,
+
 	-- staticDotChance: The chance of this weapon object dropping with a static dot on it. Higher number means less chance. Set to 0 to always have a static dot.
 	staticDotChance = 0,
 

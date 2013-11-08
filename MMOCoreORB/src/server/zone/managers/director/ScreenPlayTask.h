@@ -10,6 +10,7 @@
 
 #include "engine/engine.h"
 #include "DirectorManager.h"
+#include "server/zone/managers/director/PersistentEvent.h"
 
 #include "server/zone/objects/scene/SceneObject.h"
 
@@ -17,12 +18,14 @@ class ScreenPlayTask : public Task {
 	ManagedReference<SceneObject*> obj;
 	String taskKey;
 	String screenPlay;
+	ManagedReference<PersistentEvent*> persistentEvent;
 public:
 
 	ScreenPlayTask(SceneObject* scno, const String& key, const String& playName) {
 		obj = scno;
 		taskKey = key;
 		screenPlay = playName;
+		persistentEvent = NULL;
 	}
 
 	void run() {
@@ -45,6 +48,14 @@ public:
 
 	String getScreenPlay() {
 		return screenPlay;
+	}
+
+	void setPersistentEvent(PersistentEvent* persistentEvent) {
+		this->persistentEvent = persistentEvent;
+	}
+
+	PersistentEvent* getPersistentEvent() {
+		return persistentEvent;
 	}
 
 };

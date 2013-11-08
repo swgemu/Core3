@@ -106,6 +106,9 @@ createMissionTargetConvoTemplate("lx_466_mission_target_convotemplate","lx_466_m
 createMissionTargetConvoTemplate("sg_567_mission_target_convotemplate","sg_567_mission_target_conv_handler")
 createMissionTargetConvoTemplate("xaan_talmaron_mission_target_convotemplate","xaan_talmaron_mission_target_conv_handler")
 
+--Dathomir
+createMissionTargetConvoTemplate("singular_nak_mission_target_convotemplate", "singular_nak_mission_target_conv_handler")
+
 --Rori
 createMissionTargetConvoTemplate("ajuva_vanasterin_mission_target_convotemplate","ajuva_vanasterin_mission_target_conv_handler")
 createMissionTargetConvoTemplate("biribas_tarun_mission_target_convotemplate","biribas_tarun_mission_target_conv_handler")

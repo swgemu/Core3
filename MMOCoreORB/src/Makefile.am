@@ -93,9 +93,15 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/objects/area/areashapes/tests/RingAreaShapeTest.cpp \
 			  	server/zone/tests/DeadlockTestBase.cpp \
 			  	server/zone/objects/terrain/tests/BasicTerrainTest.cpp \
-			  	server/zone/tests/ZoneTest.cpp
+			  	server/zone/tests/ZoneTest.cpp \
+			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/objects/player/sessions/StructureStatusSession.cpp \
+core3_IDLS =	autogen/server/zone/objects/creature/DroidObject.cpp \
+				autogen/server/zone/objects/tangible/deed/droid/DroidDeed.cpp \
+				autogen/server/zone/objects/intangible/PetControlObserver.cpp \
+				autogen/server/zone/objects/intangible/PetControlDevice.cpp \
+				autogen/server/zone/managers/space/SpaceManager.cpp \
+				autogen/server/zone/objects/player/sessions/StructureStatusSession.cpp \
 				autogen/server/zone/objects/player/sessions/ImageDesignPositionObserver.cpp \
 				autogen/server/zone/objects/area/FsVillageArea.cpp \
 				autogen/server/zone/objects/player/sessions/TradeSession.cpp \
@@ -321,6 +327,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/player/sui/SuiPageData.cpp \
 		server/zone/managers/vendor/VendorManager.cpp \
 		server/zone/managers/jedi/JediManager.cpp \
+		server/zone/managers/ship/ShipManager.cpp \
 		server/zone/managers/loot/LootGroupMap.cpp \
 		server/zone/managers/crafting/schematicmap/SchematicMap.cpp \
 		server/zone/managers/crafting/labratories/SharedLabratory.cpp \
@@ -338,6 +345,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/components/ElevatorDownMenuComponent.cpp \
 		server/zone/managers/player/PermissionLevelList.cpp \
 		server/zone/objects/creature/components/TrainerMenuComponent.cpp \
+		server/zone/objects/creature/components/PetMenuComponent.cpp \
 		server/zone/objects/creature/variables/CreatureTemplateReference.cpp \
 		server/zone/objects/player/sessions/ImageDesignPositionObserverImplementation.cpp \
 		server/zone/objects/building/components/CityHallZoneComponent.cpp \
@@ -539,6 +547,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/intangible/LuaIntangibleObject.cpp \
 		server/zone/objects/staticobject/StaticObjectImplementation.cpp \
 		server/zone/objects/intangible/VehicleControlDeviceImplementation.cpp \
+		server/zone/objects/intangible/PetControlDeviceImplementation.cpp \
 		server/zone/objects/tangible/TangibleObjectImplementation.cpp \
 		server/zone/objects/tangible/InstrumentImplementation.cpp \
 		server/zone/objects/tangible/InstrumentObserverImplementation.cpp \
@@ -554,6 +563,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/tangible/consumable/ConsumableImplementation.cpp \
 		server/zone/objects/tangible/consumable/DelayedBuffObserverImplementation.cpp \
 		server/zone/objects/tangible/deed/DeedImplementation.cpp \
+		server/zone/objects/tangible/deed/droid/DroidDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/pet/PetDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/vehicle/VehicleDeedImplementation.cpp \
 		server/zone/objects/tangible/deed/resource/ResourceDeedImplementation.cpp \
@@ -606,6 +616,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/objects/scene/LuaSceneObject.cpp \
 		server/zone/managers/sui/LuaSuiManager.cpp \
 		server/zone/objects/player/sui/LuaSuiBox.cpp \
+		server/zone/objects/creature/DroidObjectImplementation.cpp \
 		server/zone/objects/creature/VehicleObjectImplementation.cpp \
 		server/zone/objects/creature/variables/SkillList.cpp \
 		server/zone/objects/creature/ai/bt/BehaviorTree.cpp \
@@ -675,6 +686,7 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/chat/PersistentMessageImplementation.cpp \
 		server/chat/ChatParameter.cpp \
 		server/chat/StringIdChatParameter.cpp \
+		server/chat/LuaStringIdChatParameter.cpp \
 		server/chat/WaypointChatParameter.cpp \
 		server/zone/managers/objectcontroller/ObjectControllerImplementation.cpp \
 		server/zone/managers/objectcontroller/command/CommandConfigManager.cpp \

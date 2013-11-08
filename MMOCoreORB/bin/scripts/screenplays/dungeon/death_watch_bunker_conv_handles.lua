@@ -62,9 +62,6 @@ function death_watch_foreman_handler:getNextConversationScreen(conversationTempl
 					if (pmineral == nil) then
 						return 0
 					end
-					
-					local mineral = LuaSceneObject(pmineral)
-					mineral:sendTo(conversingPlayer)
 				end
 			end
 		end
@@ -155,9 +152,6 @@ function death_watch_foreman_handler:getNextConversationScreen(conversationTempl
 				if (pmineral == nil) then
 					return 0
 				end
-				
-				local mineral = LuaSceneObject(pmineral)
-				mineral:sendTo(conversingPlayer)
 			end
 		else
 			printf("[ERROR] Invalid else case in DWB: Foreman Conversation\n")
@@ -217,9 +211,6 @@ function death_watch_insane_miner_handler:getNextConversationScreen(conversation
 					if (pbattery == nil) then
 						return 0
 					end
-					
-					local obattery = LuaSceneObject(pbattery)
-					obattery:sendTo(conversingPlayer)
 				end
 			end
 			
@@ -312,9 +303,6 @@ function death_watch_g12_4j_handler:getNextConversationScreen(conversationTempla
 				if (pcure == nil) then
 					return 0
 				end
-				
-				local ocure = LuaSceneObject(pcure)
-				ocure:sendTo(conversingPlayer)
 			end
 		end
 	else
@@ -390,9 +378,7 @@ function death_watch_workshop_droid_handler:getNextConversationScreen(conversati
 						return 0
 					end
 					
-					local obattery = LuaSceneObject(pbattery)
 					creature:sendSystemMessage("@dungeon/death_watch:battery_cleaned")
-					obattery:sendTo(conversingPlayer)
 				end
 			end
 		end
@@ -469,11 +455,6 @@ function death_watch_rescue_scientist_handler:getNextConversationScreen(conversa
 		elseif (spoken_to_lutin == 1) then
 			nextConversationScreen = conversation:getInitialScreen()
 			creature:setScreenPlayState(2, "death_watch_bunker_rebel_sidequest")
-			--message = createParameterMessage(conversingPlayer, "@theme_park/messages:theme_park_credits_pp")
-			--if message ~= nil then
-			--	setParameterDI(message, 487)
-			--	sendParameterMessage(message)
-			--end
 			creature:addCashCredits(487, true)
 		else
 			nextConversationScreen = conversation:getScreen("convoscreen3")

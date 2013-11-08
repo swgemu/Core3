@@ -27,6 +27,7 @@ dune_beetle = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/giant_sand_beetle.iff"},
+	controlDeviceTemplate = "object/intangible/pet/rock_mite_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

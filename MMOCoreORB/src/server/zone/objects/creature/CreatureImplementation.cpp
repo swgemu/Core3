@@ -22,6 +22,7 @@
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/objects/creature/components/AiCreatureComponent.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 
 //#define DEBUG
 
@@ -63,6 +64,7 @@ void CreatureImplementation::runAway(CreatureObject* target) {
 }
 
 void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
+	AiAgentImplementation::fillObjectMenuResponse(menuResponse, player);
 
 	if (canMilkMe(player)) {
 
@@ -82,6 +84,9 @@ void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResp
 			menuResponse->addRadialMenuItemToRadialID(112, 236, 3, "@sui:harvest_bone");
 	}
 
+	if (canTameMe(player) && player->hasSkill("outdoors_creaturehandler_novice")) {
+		menuResponse->addRadialMenuItem(159, 3, "@pet/pet_menu:menu_tame");
+	}
 }
 
 int CreatureImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
@@ -99,6 +104,10 @@ int CreatureImplementation::handleObjectMenuSelect(CreatureObject* player, byte 
 
 			return 0;
 		}
+	}
+
+	if (selectedID == 159) {
+		getZone()->getCreatureManager()->tame(_this.get(), player);
 	}
 
 	return AiAgentImplementation::handleObjectMenuSelect(player, selectedID);
@@ -219,11 +228,17 @@ bool CreatureImplementation::hasOrganics() {
 }
 
 bool CreatureImplementation::hasDNA() {
+	if (isBaby())
+		return false;
+
 	return (dnaState == CreatureManager::HASDNA);
 }
 
 
 bool CreatureImplementation::hasMilk() {
+	if (isBaby())
+		return false;
+
 	return (getMilk() > 0);
 }
 
@@ -247,9 +262,8 @@ void CreatureImplementation::notifyDespawn(Zone* zone) {
 
 bool CreatureImplementation::canHarvestMe(CreatureObject* player) {
 
-	if(!player->isInRange(_this.get(), 10.0f)
-			|| player->isInCombat() || !player->hasSkill("outdoors_scout_novice")
-			|| player->isDead() || player->isIncapacitated())
+	if(!player->isInRange(_this.get(), 10.0f) || player->isInCombat() || !player->hasSkill("outdoors_scout_novice")
+			|| player->isDead() || player->isIncapacitated() || isPet())
 		return false;
 
 	if (!hasOrganics())
@@ -293,9 +307,19 @@ bool CreatureImplementation::hasSkillToHarvestMe(CreatureObject* player) {
 	return true;
 }
 
+bool CreatureImplementation::canTameMe(CreatureObject* player) {
+	if (!isBaby() || _this.get()->isInCombat() || _this.get()->isDead() || isPet())
+		return false;
+
+	if(!player->isInRange(_this.get(), 8.0f) || player->isInCombat() || player->isDead() || player->isIncapacitated() || player->isMounted())
+		return false;
+
+	return true;
+}
+
 bool CreatureImplementation::canMilkMe(CreatureObject* player) {
 
-	if (!hasMilk() || milkState != CreatureManager::NOTMILKED  || _this.get()->isInCombat() || _this.get()->isDead())
+	if (!hasMilk() || milkState != CreatureManager::NOTMILKED  || _this.get()->isInCombat() || _this.get()->isDead() || isPet())
 		return false;
 
 	if(!player->isInRange(_this.get(), 5.0f) || player->isInCombat() || player->isDead() || player->isIncapacitated() || !(player->hasState(CreatureState::MASKSCENT)))
@@ -303,6 +327,7 @@ bool CreatureImplementation::canMilkMe(CreatureObject* player) {
 
 	return true;
 }
+
 bool CreatureImplementation::hasSkillToSampleMe(CreatureObject* player) {
 
 	if(!player->hasSkill("outdoors_bio_engineer_novice"))
@@ -339,3 +364,73 @@ bool CreatureImplementation::canCollectDna(CreatureObject* player) {
 
 	return true;
 }
+
+void CreatureImplementation::loadTemplateDataForBaby(CreatureTemplate* templateData) {
+	npcTemplate = templateData;
+
+	setPvpStatusBitmask(npcTemplate->getPvpBitmask());
+	if (npcTemplate->getPvpBitmask() == 0)
+		closeobjects = NULL;
+
+	optionsBitmask = npcTemplate->getOptionsBitmask();
+	//npcTemplate->getCreatureBitmask() + CreatureFlag::BABY; -- TODO: need to add a bitmask for AI (pack, herd, etc)
+	level = npcTemplate->getLevel();
+
+	float minDmg = calculateAttackMinDamage(level) * 0.1;
+	float maxDmg = calculateAttackMaxDamage(level) * 0.1;
+	float speed = calculateAttackSpeed(level);
+
+	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
+
+	weapons.add(defaultWeapon);
+
+	if (defaultWeapon != NULL) {
+		// set the damage of the default weapon
+		defaultWeapon->setMinDamage(minDmg);
+		defaultWeapon->setMaxDamage(maxDmg);
+		defaultWeapon->setAttackSpeed(speed);
+	}
+
+	int ham;
+	baseHAM.removeAll();
+	for (int i = 0; i < 9; ++i) {
+		if (i % 3 == 0) {
+			ham = (System::random(npcTemplate->getBaseHAMmax() - npcTemplate->getBaseHAM()) + npcTemplate->getBaseHAM()) / 10;
+			baseHAM.add(ham);
+		} else
+			baseHAM.add(ham/10);
+	}
+
+	hamList.removeAll();
+	for (int i = 0; i < 9; ++i) {
+		hamList.add(baseHAM.get(i));
+	}
+
+	maxHamList.removeAll();
+	for (int i = 0; i < 9; ++i) {
+		maxHamList.add(baseHAM.get(i));
+	}
+
+	objectName = npcTemplate->getObjectName();
+
+	UnicodeString uName = StringIdManager::instance()->getStringId(objectName.getFullPath().hashCode());
+	setCustomObjectName(uName + " (baby)", false);
+
+	setHeight(templateData->getScale() * 0.5, false);
+
+	String currentLogName = getLoggingName();
+
+	if (!currentLogName.contains(npcTemplate->getTemplateName())) {
+		StringBuffer logName;
+		logName << getLoggingName() << "[" << npcTemplate->getTemplateName() << "]";
+
+		setLoggingName(logName.toString());
+	}
+
+	String pvpFaction = npcTemplate->getPvpFaction();
+
+	if (!pvpFaction.isEmpty() && (pvpFaction == "imperial" || pvpFaction == "rebel")) {
+		setFaction(pvpFaction.hashCode());
+	}
+}
+

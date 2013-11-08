@@ -69,7 +69,7 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "isImperial", &LuaCreatureObject::isImperial},
 		{ "isNeutral", &LuaCreatureObject::isNeutral},
 		{ "teleport", &LuaSceneObject::teleport},
-		{ "getName", &LuaCreatureObject::getName},
+		{ "getFirstName", &LuaCreatureObject::getFirstName},
 		{ "isAiAgent", &LuaCreatureObject::isAiAgent},
 		{ "setFactionRank", &LuaCreatureObject::setFactionRank},
 		{ "getFactionRank", &LuaCreatureObject::getFactionRank},
@@ -102,7 +102,7 @@ int LuaCreatureObject::_setObject(lua_State* L) {
 	return 0;
 }
 
-int LuaCreatureObject::getName(lua_State* L) {
+int LuaCreatureObject::getFirstName(lua_State* L) {
 	String text = realObject->getFirstName();
 	lua_pushstring(L, text.toCharArray());
 	return 1;
@@ -320,11 +320,7 @@ int LuaCreatureObject::removeScreenPlayState(lua_State* L) {
 	uint64 stateToClear = lua_tointeger(L, -2);
 
 	if (realObject != NULL) {
-
-		uint64 stateMask = realObject->getScreenPlayState(play);
-
-		if (stateMask & stateToClear)
-			realObject->setScreenPlayState(play, stateMask - stateToClear);
+		realObject->setScreenPlayState(play, realObject->getScreenPlayState(play) & (~stateToClear));
 	}
 	return 0;
 }
@@ -536,9 +532,9 @@ int LuaCreatureObject::getGroupSize(lua_State* L) {
 
 int LuaCreatureObject::setOptionsBitmask(lua_State* L) {
 	uint32 bitmask = lua_tointeger(L, -1);
-	
+
 	realObject->setOptionsBitmask(bitmask, true);
-	
+
 	return 0;
 }
 

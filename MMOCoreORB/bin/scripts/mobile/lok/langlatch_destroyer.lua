@@ -27,6 +27,7 @@ langlatch_destroyer = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/langlatch_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/langlatch_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

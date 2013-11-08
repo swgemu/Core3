@@ -2,6 +2,7 @@ package.path = package.path .. ";scripts/managers/jedi/?.lua;scripts/managers/je
 JediManager = require("jedi_manager")
 VillageJediManagerHolocron = require("village_jedi_manager_holocron")
 require("old_man_conv_handler")
+OldMan = require("old_man")
 
 jediManagerName = "VillageJediManager"
 
@@ -11,6 +12,8 @@ NUMBEROFDIFFICULTBADGESREQUIRED = 3
 NUMBEROFEASYBADGESREQUIRED = 5
 NUMBEROFPROFESSIONBADGESREQUIRED = 1
 NUMBEROFCONTENTBADGESREQUIRED = 5
+
+NOTINABUILDING = 0
 
 JEDIBADGES = { 
 	EXP_TAT_BENS_HUT, 
@@ -191,59 +194,11 @@ function VillageJediManager:checkForceStatusCommand(pCreatureObject)
 	end)
 end
 
--- Check if the player is in a NPC city.
--- @param pCreatureObject pointer to the creature object of the player who should be checked for being in a NPC city.
--- return true if the player is within a NPC city.
-function VillageJediManager.isInNpcCity(pCreatureObject)
-	return VillageJediManager.withSceneObject(pCreatureObject, function(sceneObject)
-		local pCityRegion = getCityRegionAt(sceneObject:getZoneName(), sceneObject:getWorldPositionX(), sceneObject:getWorldPositionY())
-		local inNpcCity = VillageJediManager.withCityRegion(pCityRegion, function(cityRegion)
-			return not cityRegion:isClientRegion()
-		end)
-		return inNpcCity == true
-	end)
-end
-
--- Checks if the player is in a position where the old man can spawn.
--- @param pCreatureObject pointer to the creature object of the player who should be checked for its current position.
--- @return true if the player is in a position where the old man can spawn.
-function VillageJediManager.isPlayerInAPositionWhereTheOldManCanSpawn(pCreatureObject)
-	return VillageJediManager.withSceneObject(pCreatureObject, function(sceneObject)
-		return (sceneObject:getParentID() == NOTINABUILDING) and (not VillageJediManager.isInNpcCity(pCreatureObject))
-	end)
-end
-
--- Get a suitable spawn point for the old man
--- @param pCreatureObject pointer to the creature object of the player who should get a old man spawn.
--- @return a suitable spawn point for the old man or nil if none was found.
-function VillageJediManager.getSuitableSpawnPoint(pCreatureObject)
-	local spawnPoint = nil
-
-	if VillageJediManager.isPlayerInAPositionWhereTheOldManCanSpawn(pCreatureObject) then
-		VillageJediManager.withSceneObject(pCreatureObject, function(sceneObject)
-			spawnPoint = getSpawnPoint(pCreatureObject, sceneObject:getPositionX(), sceneObject:getPositionY(), 32, 64)
-		end)
-	end
-
-	return spawnPoint
-end
-
--- Spawn the old man near the player.
--- @pCreatureObject pointer to the creature object of the player.
-function VillageJediManager.spawnOldMan(pCreatureObject)
-	VillageJediManager.withSceneObject(pCreatureObject, function(sceneObject)
-		local spawnPoint = getSpawnPoint(pCreatureObject, sceneObject:getPositionX(), sceneObject:getPositionY(), 32, 64)
-		if spawnPoint ~= nil then
-			spawnMobile(sceneObject:getZoneName(), "old_man", 1, spawnPoint[1], spawnPoint[2], spawnPoint[3], 0, sceneObject:getParentID())
-		end
-	end)
-end
-
 -- Check if the player should progress towards jedi and handle any events for it.
 -- @param pCreatureObject pointer to the creature object of the player.
 function VillageJediManager.checkAndHandleJediProgression(pCreatureObject)
 	if VillageJediManager.countBadges(pCreatureObject) >= TOTALNUMBEROFBADGESREQUIRED then
-		VillageJediManager.spawnOldMan(pCreatureObject)
+		OldMan.createSpawnOldManEvent(pCreatureObject)
 	end
 end
 
@@ -269,14 +224,6 @@ end
 function VillageJediManager:onPlayerLoggedIn(pCreatureObject)
 	VillageJediManager.checkAndHandleJediProgression(pCreatureObject)
 	VillageJediManager.registerObservers(pCreatureObject)
-end
-
--- Check if the old man belongs to the player or not.
--- @param pConversingPlayer pointer to the creature object of the conversing player.
--- @param pConversingNpc pointer to the creature object of the old man.
--- @return true if the old man belongs to the player.
-function VillageJediManager.oldManBelongsToThePlayer(pConversingPlayer, pConversingNpc)
-	return true
 end
 
 -- Check if the old man spawned due to the player becoming glowing and need access to the village.

@@ -27,6 +27,7 @@ furious_devastator = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/fambaa_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/fambaa_hue.iff",
 	lootGroups = {
 	 {
 	        groups = {

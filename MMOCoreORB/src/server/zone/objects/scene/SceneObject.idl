@@ -164,6 +164,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@dereferenced
 	protected VectorMap<string, SceneObject> slottedObjects;
+
 	
 	@dereferenced
 	protected transient ReadWriteLock containerLock;
@@ -698,6 +699,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	@local
 	@read
 	public native void getSlottedObjects(@dereferenced VectorMap<string, SceneObject> objects);
+
 	
 	@local
 	@read
@@ -1055,18 +1057,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return;
 	}
 
-	@read
-	public int getArrangementDescriptorSize() {
-		if (templateObject.getArrangementDescriptors() != null)
-			return templateObject.getArrangementDescriptors().size();
-		
-		return 0;
-	}
+	public native int getArrangementDescriptorSize();
+ 	
+	@dereferenced
+	@local
+	public native Vector<string> getArrangementDescriptor(int idx);
 
-	@read
-	public string getArrangementDescriptor(int idx) {
-		return templateObject.getArrangementDescriptors().get(idx);
-	}
 
 	@read
 	public string getSlotDescriptor(int idx) {
@@ -1153,26 +1149,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		return containerObjects.contains(objectID);
 	}
 	
-	@read
-	public boolean hasObjectInSlottedContainer(SceneObject object) {
-		int arrangementSize = object.getArrangementDescriptorSize();
-		
-		if (arrangementSize == 0) {
-			return false;
-		}
-		
-		SceneObject obj = null;
-		
-		synchronized (containerLock) {
-			obj = slottedObjects.get(object.getArrangementDescriptor(0));
-		}
-		
-		if (object == obj) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+	public native boolean hasObjectInSlottedContainer(SceneObject object) ;
 	
 	@read
 	@reference
@@ -1465,6 +1442,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isVehicleObject() {
 		return false;
 	}
+	
+	@dirty
+	public abstract boolean isDroidObject() {
+		return false;
+	}	
 
 	@dirty
 	public abstract boolean isBuildingObject() {
@@ -1613,6 +1595,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	
 	@dirty
 	public abstract boolean isVehicleDeedObject() {
+		return false;
+	}
+	
+	@dirty
+	public abstract boolean isDroidDeedObject() {
 		return false;
 	}
 	
@@ -1833,7 +1820,17 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isControlDevice() {
 		return false;
 	}
-	
+
+	@dirty
+	public abstract boolean isPetControlDevice() {
+		return false;
+	}
+
+	@dirty
+	public abstract boolean isVehicleControlDevice() {
+		return false;
+	}
+
 	@dirty
 	public abstract boolean isMissionTerminal() {
 		return false;
@@ -1945,6 +1942,8 @@ class SceneObject extends QuadTreeEntry implements Logger {
 		sendToClient = val;
 	}
 
-	
+	public abstract boolean isPet() {
+		return false;
+	}	
 }
 

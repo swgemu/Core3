@@ -27,6 +27,7 @@ relentless_purbole = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/purbole_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/purbole_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

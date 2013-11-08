@@ -27,6 +27,7 @@ enraged_reptilian_flier = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/reptilian_flier_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/reptilian_flier_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

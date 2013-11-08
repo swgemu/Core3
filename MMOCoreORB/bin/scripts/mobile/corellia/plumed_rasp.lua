@@ -27,6 +27,7 @@ plumed_rasp = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/plumed_rasp.iff"},
+	controlDeviceTemplate = "object/intangible/pet/plumed_rasp_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

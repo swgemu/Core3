@@ -27,6 +27,7 @@ minor_worrt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/worrt_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/worrt_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

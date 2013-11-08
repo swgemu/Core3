@@ -98,6 +98,10 @@ public:
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 
+	virtual String toString() {
+		return StringId::getFullPath();
+	}
+
 	StringIdChatParameter& operator=(const StringIdChatParameter& id) {
 		if (this == &id)
 			return *this;

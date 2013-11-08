@@ -59,6 +59,12 @@ public:
 		insertFloat(scno->getDirectionY());
 		insertFloat(scno->getDirectionZ());
 		insertFloat(scno->getDirectionW());
+/*
+		insertFloat(0);
+		insertFloat(0);
+		insertFloat(0);
+		insertFloat(1);
+*/
 		insertFloat(scno->getPositionX());
 		insertFloat(scno->getPositionZ());
 		//scno->info("sending z = " + String::valueOf(scno->getPositionZ()), true);

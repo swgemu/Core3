@@ -851,7 +851,7 @@ corellia_static_spawns = {
 	{"j_pai_brek",60,-5073.17,21,-2342.77,33.2325,0, "neutral", ""},
 	{"jadam_questrel",60,9.77643,-0.894992,-14.4836,262.46,3075432, "calm", ""},
 	{"jom_irimore",60,-5520,21.3,-2630.99,0,0, "calm", "Jom Irimore"},
-	{"junk_dealer",0,6840,315,-5630,-32,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
+	{"junk_dealer",0,6840,315,-5630,-32,0, "", "",JUNKCLOTHESANDJEWELLERY,JUNKCONVFINARY},
 	{"junk_dealer",0,-14.5,1.1,1.9,89,2365767, "", "",JUNKWEAPONS,JUNKCONVARMS},
 	{"junk_malik",0,6756.1,315,-5778,88,0, "", "Malik Pendron",JUNKCORSEC,JUNKCONVMALIKVISTAL},
 	{"junk_dealer",0,6970,330,-5588,92,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
@@ -860,7 +860,7 @@ corellia_static_spawns = {
 	{"junk_dealer",0,-14.5,1.1,2.5,88,3075358, "", "",JUNKWEAPONS,JUNKCONVARMS},
 	{"junk_dealer",0,3402.4,308,5679,5,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 
-	{"junk_dealer",0,-5639.2,21,-2799.2,-40,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
+	{"junk_dealer",0,-5639.2,21,-2799.2,-40,0, "", "",JUNKCLOTHESANDJEWELLERY,JUNKCONVFINARY},
 	{"junk_dealer",0,-5203.6,21,-2285.9,-11,0, "", "",JUNKGENERIC,JUNKCONVGENERIC},
 	{"karena_keer",60,-7.91182,-0.895002,18.5763,115.51,2625361, "calm", "Karena Keer"},
 	{"karin_featherlight",60,-185.082,28,-4460.71,86.3314,0, "calm", ""},
@@ -1091,6 +1091,7 @@ corellia_static_spawns = {
 	{"trainer_brawler",0,-11,1.13306,-14,0,3075361, "", ""},
 	{"trainer_brawler",0,-11,1.13306,-14,0,1935445, "", ""},
 	{"trainer_brawler",0,-164,30.9,-4754,88,0, "", ""},
+	{"trainer_brawler",0,3334,308,5517,0,0, "", ""},
 	{"trainer_brawler",0,-11,1.13306,-14,0,2365770, "", ""},
 
 	{"trainer_carbine",0,-5225,0,-2488,180,0, "", ""},
@@ -1152,6 +1153,7 @@ corellia_static_spawns = {
 	{"trainer_medic",0,-15.9755,0.26,0.30427,15,1935835, "", ""},
 	{"trainer_medic",0,13.8906,0.26,3.8275,183,1935831, "", ""},
 	{"trainer_medic",0,-5027,21,-2311,266,0, "", ""},
+	{"trainer_medic",0,-172,28,-4691,0,0, "", ""},
 	{"trainer_merchant",0,-369,28,-4533,92,0, "", ""},
 	{"trainer_merchant",0,12,1.13306,6,180,3075410, "", ""},
 
@@ -1172,6 +1174,7 @@ corellia_static_spawns = {
 	{"trainer_scout",0,-12,1.13306,5.5,180,1855505, "", ""},
 	{"trainer_scout",0,-12,1.13306,5.5,180,3075358, "", ""},
 	{"trainer_scout",0,3330.01,308,5512.46,204,0, "", ""},
+	{"trainer_scout",0,6724,315,-5682,0,0, "", ""},
 
 	{"trainer_scout",0,-5061.86,21,-2322.52,36,0, "", ""},
 	{"trainer_scout",0,-12,1.13306,5.5,180,1935442, "", ""},

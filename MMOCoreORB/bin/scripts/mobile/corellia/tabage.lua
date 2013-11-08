@@ -27,6 +27,7 @@ tabage = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/tabage.iff"},
+	controlDeviceTemplate = "object/intangible/pet/langlatch_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

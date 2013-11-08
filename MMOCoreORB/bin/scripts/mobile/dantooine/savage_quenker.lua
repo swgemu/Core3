@@ -27,6 +27,7 @@ savage_quenker = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/quenker_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/quenker_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_green"},
 	conversationTemplate = "",

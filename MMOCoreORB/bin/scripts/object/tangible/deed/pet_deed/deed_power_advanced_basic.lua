@@ -42,8 +42,12 @@
 
 
 object_tangible_deed_pet_deed_deed_power_advanced_basic = object_tangible_deed_pet_deed_shared_deed_power_advanced_basic:new {
+	
+	templateType = DROIDDEED,
 
-
+	controlDeviceObjectTemplate = "object/intangible/pet/eg6_power_droid_crafted.iff",
+	generatedObjectTemplate = "object/creature/npc/droid/crafted/eg_6_power_droid_advanced.iff",
+	
 	numberExperimentalProperties = {1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR", "UT", "XX", "XX", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

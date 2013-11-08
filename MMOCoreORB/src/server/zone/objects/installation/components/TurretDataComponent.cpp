@@ -36,7 +36,7 @@ void TurretDataComponent::rescheduleFireTask(float secondsToWait, bool manual){
 	CreatureObject* attacker = getController();
 	CreatureObject* target = getTarget();
 
-	Logger::Logger tlog("reschedule");
+	//Logger::Logger tlog("reschedule");
 	if(target != NULL){
 
 		Reference<TurretFireTask*> fireTask = new TurretFireTask(cast<TangibleObject*>(getParent()), getTarget(),manual);
@@ -44,7 +44,7 @@ void TurretDataComponent::rescheduleFireTask(float secondsToWait, bool manual){
 		getFireTask()->schedule(secondsToWait * 1000);
 
 	} else {
-		tlog.info("target is null",true);
+		//tlog.info("target is null",true);
 		setController(NULL);
 		setFireTask(NULL);
 		setTarget(NULL);

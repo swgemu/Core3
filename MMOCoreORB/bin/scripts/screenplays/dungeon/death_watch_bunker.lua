@@ -953,12 +953,7 @@ function DWB:haldo_killed(creatureObject, playerObject)
 			local scno = LuaSceneObject(creo)
 			inventory = scno:getSlottedObject("inventory")
 			
-			local pbattery = giveItem(inventory, "object/tangible/dungeon/death_watch_bunker/drill_battery.iff", -1)
-			
-			if (pbattery ~= nil) then
-				local battery = LuaSceneObject(pbattery)
-				battery:sendTo(creo)
-			end
+			giveItem(inventory, "object/tangible/dungeon/death_watch_bunker/drill_battery.iff", -1)
 		end
 	end
 end
@@ -1589,7 +1584,7 @@ function DWB:checkDoor(sceneObject, creatureObject)
 	number = readData(terminal:getObjectID() .. ":dwb:terminal")
 	
 	if TEST == 1 then
-		printf(creature:getName() .. " trying to open door number " .. number .. "\n")
+		printf(creature:getFirstName() .. " trying to open door number " .. number .. "\n")
 	end
 	
 	type = DOORTYPE[number]
@@ -1775,8 +1770,6 @@ function DWB:stopCraftingProcess(creatureObject, droid, successful, teleport)
 		end
 		--local rewardObject = LuaTangibleObject(pcure)
 		--tcure:setCustomizationVariable("index_color_1", 51)
-		local rewardObject = LuaSceneObject(reward)
-		rewardObject:sendTo(creatureObject)
 	end
 	
 	writeData(creature:getObjectID() .. ":dwb:terminal", 0)
@@ -1901,9 +1894,6 @@ function death_watch_bunker_filter_dispenser:handleObjectMenuSelect(sceneObject,
 			if (pfilter == nil) then
 				return 0
 			end
-			
-			local ofilter = LuaSceneObject(pfilter)
-			ofilter:sendTo(player)
 		end
 		
 		return 0
@@ -1955,7 +1945,6 @@ function death_watch_bunker_workbench:handleObjectMenuSelect(sceneObject, player
 	
 		local advrebreather = LuaSceneObject(pAdvrebreather)
 		advrebreather:setCustomObjectName("Advanced Rebreather")
-		advrebreather:sendTo(player)
 		
 		
 				
@@ -2005,11 +1994,7 @@ function death_watch_bunker_filter:handleObjectMenuSelect(sceneObject, player, s
 		
 		if (penhfilter == nil) then
 			return 0
-		end
-	
-		local enhfilter = LuaSceneObject(penhfilter)
-		enhfilter:sendTo(player)
-				
+		end	
 	end
 
 	return 0

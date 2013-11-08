@@ -43,7 +43,12 @@
 
 object_tangible_deed_pet_deed_deed_probot_advanced_basic = object_tangible_deed_pet_deed_shared_deed_probot_advanced_basic:new {
 
+	-- PROBOTS are a different sceno type than other droids.  Disabling them for now pending further investigation. 
+	--templateType = DROIDDEED,
 
+	--controlDeviceObjectTemplate = "object/intangible/pet/probot.iff",
+	--generatedObjectTemplate = "object/creature/npc/droid/crafted/imperial_probot_advanced.iff",
+	
 	numberExperimentalProperties = {1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "XX", "XX", "OQ", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

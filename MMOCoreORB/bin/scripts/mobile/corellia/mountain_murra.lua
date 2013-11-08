@@ -28,6 +28,7 @@ mountain_murra = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/mountain_murra.iff"},
+	controlDeviceTemplate = "object/intangible/pet/murra_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

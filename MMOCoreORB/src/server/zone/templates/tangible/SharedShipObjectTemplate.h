@@ -11,7 +11,10 @@
 #include "../SharedTangibleObjectTemplate.h"
 
 class SharedShipObjectTemplate : public SharedTangibleObjectTemplate {
-
+	StringParam interiorLayoutFileName;
+	StringParam cockpitFilename;
+	BoolParam hasWings;
+	BoolParam playerControlled;
 public:
 	SharedShipObjectTemplate() {
 
@@ -23,6 +26,43 @@ public:
 
 	void readObject(LuaObject* templateData) {
 		SharedTangibleObjectTemplate::readObject(templateData);
+	}
+
+	void parseVariableData(const String& varName, Chunk* data) {
+		if (varName == "interiorLayoutFileName") {
+			interiorLayoutFileName.parse(data);
+		} else if (varName == "cockpitFilename") {
+			cockpitFilename.parse(data);
+		} else if (varName == "hasWings") {
+			hasWings.parse(data);
+		} else if (varName == "playerControlled") {
+			playerControlled.parse(data);
+		}
+	}
+
+	void parseFileData(IffStream* iffStream) {
+		iffStream->openChunk('PCNT');
+
+		int variableCount = iffStream->getInt();
+
+		iffStream->closeChunk('PCNT');
+
+		for (int i = 0; i < variableCount; ++i) {
+			//while (iffStream->getRemainingSubChunksNumber() > 0) {
+			Chunk* chunk = iffStream->openChunk('XXXX');
+
+			if (chunk == NULL)
+				continue;
+
+			String varName;
+
+			iffStream->getString(varName);
+
+			//std::cout << "parsing wtf shit:[" << varName.toStdString() << "]\n";
+			parseVariableData(varName, chunk);
+
+			iffStream->closeChunk();
+		}
 	}
 
 	void readObject(IffStream* iffStream) {
@@ -46,14 +86,10 @@ public:
 			derv = iffStream->getNextFormType();
 		}
 
-		/*while (derv != 0) {
-									if (derv != '
-								}*/
-
 		iffStream->openForm(derv);
 
 		try {
-			//parseFileData(iffStream);
+			parseFileData(iffStream);
 		} catch (Exception& e) {
 			String msg;
 			msg += "exception caught parsing file data ->";

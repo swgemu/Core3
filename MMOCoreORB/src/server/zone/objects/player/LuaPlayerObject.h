@@ -47,6 +47,7 @@ public:
 	int setForcePower(lua_State* L);
 	int isJedi(lua_State* L);
 	int setJediState(lua_State* L);
+	int isOnline(lua_State* L);
 
 private:
 	// The pointer to the 'real object' defined in object.cc

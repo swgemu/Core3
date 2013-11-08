@@ -27,6 +27,7 @@ giant_mawgax = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/giant_mawgax.iff"},
+	controlDeviceTemplate = "object/intangible/pet/mawgax_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

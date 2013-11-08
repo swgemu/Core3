@@ -27,6 +27,7 @@ borgle_harvester = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/borgle_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/borgle_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

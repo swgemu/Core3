@@ -27,6 +27,7 @@ perlek = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/perlek.iff"},
+	controlDeviceTemplate = "object/intangible/pet/perlek_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

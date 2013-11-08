@@ -27,6 +27,7 @@ blood_thirsty_monarch = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/corellian_butterfly_monarch.iff"},
+	controlDeviceTemplate = "object/intangible/pet/corellian_butterfly_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

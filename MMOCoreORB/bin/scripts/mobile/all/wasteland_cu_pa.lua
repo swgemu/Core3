@@ -27,6 +27,7 @@ wasteland_cu_pa = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/cu_pa.iff"},
+	controlDeviceTemplate = "object/intangible/pet/cu_pa_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

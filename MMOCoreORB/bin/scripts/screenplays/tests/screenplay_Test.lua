@@ -2,6 +2,9 @@ package.path = package.path .. ";scripts/screenplays/?.lua"
 require("screenplay")
 
 describe("ScreenPlay", function()
+	it("Shall return nil if the creature object pointer is nil to the withCreatureAiAgent function.", function()
+		assert.is.Nil(ScreenPlay.withCreatureAiAgent(nil, function(sceneObject) end))
+	end)
 	it("Shall return nil if the scene object pointer is nil to the withSceneObject function.", function()
 		assert.is.Nil(ScreenPlay.withSceneObject(nil, function(sceneObject) end))
 	end)
@@ -24,6 +27,19 @@ describe("ScreenPlay", function()
 
 	it("Shall return nil if the creature object pointer is nil to the withCreatureAndPlayerObject function.", function()
 		assert.is.Nil(ScreenPlay.withCreatureAndPlayerObject(nil, function(creatureObject, playerObject) end))
+	end)
+
+	it("Shall call the supplied lambda expression with the AiAgent when calling the withCreatureAiAgent function.", function()
+		local pCreatureObject = { "creatureObjectPointer" }
+		local aiAgentCreated = { "sceneObject" }
+		local aiAgentArgument = nil
+		local realLuaAiAgent = LuaAiAgent
+		LuaAiAgent = spy.new(function() return aiAgentCreated end)
+
+		ScreenPlay.withCreatureAiAgent(pCreatureObject, function(aiAgent) aiAgentArgument = aiAgent end)
+		assert.same(aiAgentArgument, aiAgentCreated)
+
+		LuaAiAgent = realLuaAiAgent
 	end)
 
 	it("Shall call the supplied lambda expression with the SceneObject when calling the withSceneObject function.", function()

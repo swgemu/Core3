@@ -27,6 +27,7 @@ leviasquall = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/leviasquall.iff"},
+	controlDeviceTemplate = "object/intangible/pet/squall_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -44,6 +44,7 @@ which carries forward this exception.
 #include "server/zone/managers/creature/LairObserver.h"
 #include "server/zone/objects/scene/ObserverEventType.h"
 #include "server/zone/objects/creature/NonPlayerCreatureObject.h"
+#include "server/zone/objects/creature/Creature.h"
 #include "server/zone/packets/object/PlayClientEffectObjectMessage.h"
 #include "server/zone/packets/scene/PlayClientEffectLocMessage.h"
 #include "server/zone/managers/player/PlayerManager.h"
@@ -54,6 +55,9 @@ which carries forward this exception.
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "LairAggroTask.h"
+#include "server/zone/templates/mobile/CreatureTemplate.h"
+#include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/managers/creature/DisseminateExperienceTask.h"
 
 int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
 	switch (eventType) {
@@ -84,7 +88,9 @@ int LairObserverImplementation::notifyObserverEvent(unsigned int eventType, Obse
 void LairObserverImplementation::notifyDestruction(TangibleObject* lair, TangibleObject* attacker, int condition) {
 	ThreatMap* threatMap = lair->getThreatMap();
 
-	ThreatMap copyThreatMap(*threatMap);
+	Reference<DisseminateExperienceTask*> deTask = new DisseminateExperienceTask(lair, threatMap, &spawnedCreatures);
+	deTask->execute();
+
 	threatMap->removeObservers();
 	threatMap->removeAll(); // we can clear the original one
 
@@ -109,9 +115,6 @@ void LairObserverImplementation::notifyDestruction(TangibleObject* lair, Tangibl
 	}
 
 	spawnedCreatures.removeAll();
-
-	PlayerManager* playerManager = lair->getZoneServer()->getPlayerManager();
-	playerManager->disseminateExperience(lair, &copyThreatMap);
 }
 
 void LairObserverImplementation::doAggro(TangibleObject* lair, TangibleObject* attacker){
@@ -241,7 +244,6 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 	if (amountToSpawn < 1)
 		amountToSpawn = 1;
 
-
 	for(int i = 0; i < amountToSpawn; ++i) {
 
 		if (spawnedCreatures.size() >= lairTemplate->getSpawnLimit())
@@ -257,23 +259,36 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 
 		int levelDiff = objectsToSpawn->get(templateToSpawn);
 
-		ManagedReference<CreatureObject*> creature = creatureManager->spawnCreatureWithLevel(templateToSpawn.hashCode(), difficulty + levelDiff, x, z, y);
+		CreatureTemplate* creatureTemplate = CreatureTemplateManager::instance()->getTemplate(templateToSpawn);
 
-		if (creature == NULL)
-			return true;
+		if (creatureTemplate == NULL)
+			continue;
 
-		if (!creature->isAiAgent()) {
+		float tamingChance = creatureTemplate->getTame();
+
+		ManagedReference<CreatureObject*> creo = NULL;
+
+		if (tamingChance > 0 && System::random(20) == 1)
+			creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), difficulty + levelDiff, x, z, y);
+		else
+			creo = creatureManager->spawnCreatureWithLevel(templateToSpawn.hashCode(), difficulty + levelDiff, x, z, y);
+
+		if (creo == NULL)
+			continue;
+
+		if (!creo->isAiAgent()) {
 			error("spawned non player creature with template " + templateToSpawn);
 		} else {
-			AiAgent* npc = cast<AiAgent*>( creature.get());
+			AiAgent* ai = cast<AiAgent*>( creo.get());
 
 			//Locker clocker(npc, lair);
 
-			npc->setDespawnOnNoPlayerInRange(false);
-			npc->setHomeLocation(x, z, y);
-			npc->setRespawnTimer(0);
+			ai->setDespawnOnNoPlayerInRange(false);
+			ai->setHomeLocation(x, z, y);
+			ai->setRespawnTimer(0);
 
-			spawnedCreatures.add(creature);
+			spawnedCreatures.add(creo);
+
 		}
 	}
 

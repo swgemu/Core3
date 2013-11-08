@@ -234,7 +234,7 @@ class PlayerManager extends Observer implements Logger {
 	public native int healEnhance(CreatureObject enhancer, CreatureObject patient, byte attribute, int buffvalue, float duration);
 	
 	@local
-	public native void disseminateExperience(TangibleObject destructedObject, ThreatMap threatMap);
+	public native void disseminateExperience(TangibleObject destructedObject, ThreatMap threatMap, Vector<CreatureObject> lairSpawnedCreatures = null);
 	
 	public native int calculatePlayerLevel(CreatureObject player);
 	

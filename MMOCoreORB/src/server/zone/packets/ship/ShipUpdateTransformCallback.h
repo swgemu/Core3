@@ -22,7 +22,7 @@ class ShipUpdateTransformCallback : public MessageCallback {
 	uint16 unknownShort;
 
 	//PackedTransform dir is multiplied by 127, positions by 4.0958748
-	int8 dirX, dirY, dirZ, dirW;
+	uint8 dirX, dirY, dirZ, dirW;
 	int16 posX, posZ, posY;
 
 	//PackedVelocity
@@ -42,10 +42,10 @@ public:
 		//info(message->toStringData(), true);
 		unknownShort = message->parseShort();
 
-		dirX = message->parseSignedByte();
-		dirY = message->parseSignedByte();
-		dirZ = message->parseSignedByte();
-		dirW = message->parseSignedByte();
+		dirX = message->parseByte();
+		dirY = message->parseByte();
+		dirZ = message->parseByte();
+		dirW = message->parseByte();
 
 		posX = message->parseSignedShort();
 		posZ = message->parseSignedShort();
@@ -143,12 +143,12 @@ public:
 		ship->setMovementCounter(counter);
 		ship->setPosition(positionX, positionZ, positionY);
 		ship->setDirection(directionW, directionX, directionY, directionZ);
-		ship->updateZone(false);
+		ship->updateZone(false, false);
 
 		object->setPosition(positionX, positionZ, positionY);
-		object->setDirection(directionW, directionX, directionY, directionZ);
+		//object->setDirection(directionW, directionX, directionY, directionZ);
 
-		object->updateZone(false);
+		object->updateZone(false, false);
 
 		ShipUpdateTransformMessage* msga = new ShipUpdateTransformMessage(ship, dirX, dirY, dirZ, dirW, posX, posZ, posY, velA, velB, rotA, rotB, rotC);
 		object->broadcastMessage(msga, false);

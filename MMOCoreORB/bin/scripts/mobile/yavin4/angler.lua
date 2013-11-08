@@ -27,6 +27,7 @@ angler = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/angler.iff"},
+	controlDeviceTemplate = "object/intangible/pet/angler_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_green","creature_spit_small_green"},
 	conversationTemplate = "",

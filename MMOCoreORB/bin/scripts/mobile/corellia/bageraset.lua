@@ -28,6 +28,7 @@ bageraset = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/bageraset.iff"},
+	controlDeviceTemplate = "object/intangible/pet/bageraset_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

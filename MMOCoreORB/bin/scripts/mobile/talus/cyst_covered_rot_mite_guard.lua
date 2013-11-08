@@ -27,6 +27,7 @@ cyst_covered_rot_mite_guard = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/rot_mite.iff"},
+	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -134,6 +134,9 @@ namespace zone {
 		 */
 		void persistObject(ManagedObject* object, int persistenceLevel, const String& database);
 
+		// persists a sceneObject and all of it's child, slotted, and container objects, recursively
+		void persistSceneObjectsRecursively(SceneObject* object, int persistenceLevel);
+
 		void printInfo();
 		String getInfo();
 

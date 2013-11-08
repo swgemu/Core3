@@ -26,6 +26,7 @@ mountain_vesp_medium = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/vesp_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/vesp_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	attacks = {

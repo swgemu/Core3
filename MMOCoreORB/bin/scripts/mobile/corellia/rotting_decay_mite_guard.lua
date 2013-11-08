@@ -27,6 +27,7 @@ rotting_decay_mite_guard = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/decay_mite_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/bark_mite_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

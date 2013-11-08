@@ -62,6 +62,8 @@ namespace server {
 	public:
 		DirectorManager();
 
+		void loadPersistentEvents();
+
 		void startGlobalScreenPlays();
 		void startScreenPlay(CreatureObject* creatureObject, const String& screenPlayName);
 		void activateEvent(ScreenPlayTask* task);
@@ -114,13 +116,6 @@ namespace server {
 		static int getContainerObjectByTemplate(lua_State* L);
 		static int updateCellPermission(lua_State* L);
 		static int updateCellPermissionGroup(lua_State* L);
-		static int setParameterDI(lua_State* L);
-		static int setParameterDF(lua_State* L);
-		static int setParameterTO(lua_State* L);
-		static int setParameterTU(lua_State* L);
-		static int setParameterTT(lua_State* L);
-		static int createParameterMessage(lua_State* L);
-		static int sendParameterMessage(lua_State* L);
 		static int getTimestamp(lua_State* L);
 		static int getSpawnPoint(lua_State* L);
 		static int makeCreatureName(lua_State* L);

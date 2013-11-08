@@ -28,6 +28,7 @@ grand_tybis = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/tybis_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/tybis_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

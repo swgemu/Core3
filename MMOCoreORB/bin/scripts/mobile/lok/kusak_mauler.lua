@@ -27,6 +27,7 @@ kusak_mauler = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kusak_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/kusak_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

@@ -20,7 +20,7 @@ includeFile("recruiters/rebelrecruiter.lua")
 
 -- Dungeons
 includeFile("dungeon/death_watch_bunker.lua")
-includeFile("dungeon/geonosian_lab.lua")
+includeFile("dungeon/geonosian_lab/geonosian_lab.lua")
 includeFile("dungeon/warren/warren.lua")
 includeFile("dungeon/death_watch_bunker_conv_handles.lua")
 
@@ -48,6 +48,7 @@ includeFile("tasks/pfilbee_jhorn.lua")
 includeFile("tasks/rakir_banai.lua")
 includeFile("tasks/ris_armor_quest.lua")
 includeFile("tasks/sg_567.lua")
+includeFile("tasks/singular_nak.lua")
 includeFile("tasks/sloan_rusper.lua")
 includeFile("tasks/tekil_barje.lua")
 includeFile("tasks/vardias_tyne.lua")

@@ -101,7 +101,6 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Creature>(SceneObjectType::CREATURE);
 	objectFactory.registerObject<NonPlayerCreatureObject>(SceneObjectType::NPCCREATURE);
 	objectFactory.registerObject<JunkdealerCreature>(SceneObjectType::JUNKDEALERCREATURE);
-	objectFactory.registerObject<CreatureObject>(SceneObjectType::DROIDCREATURE);
 	objectFactory.registerObject<NonPlayerCreatureObject>(SceneObjectType::PROBOTCREATURE);
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::VENDOR);
 
@@ -229,6 +228,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<Deed>(SceneObjectType::DEED);
 	objectFactory.registerObject<VehicleDeed>(SceneObjectType::VEHICLEDEED);
 	objectFactory.registerObject<PetDeed>(SceneObjectType::PETDEED);
+	objectFactory.registerObject<DroidDeed>(SceneObjectType::DROIDDEED);
 	objectFactory.registerObject<StructureDeed>(SceneObjectType::BUILDINGDEED);
 	objectFactory.registerObject<StructureDeed>(SceneObjectType::INSTALLATIONDEED);
 	objectFactory.registerObject<ResourceDeed>(SceneObjectType::RESOURCEDEED);
@@ -277,10 +277,14 @@ void ObjectManager::registerObjectTypes() {
 
 
 	objectFactory.registerObject<VehicleControlDevice>(SceneObjectType::VEHICLECONTROLDEVICE);
+	objectFactory.registerObject<PetControlDevice>(SceneObjectType::PETCONTROLDEVICE);
+	objectFactory.registerObject<PetControlDevice>(SceneObjectType::DROIDCONTROLDEVICE);
 	objectFactory.registerObject<ShipControlDevice>(SceneObjectType::SHIPCONTROLDEVICE);
 
 	objectFactory.registerObject<VehicleObject>(SceneObjectType::VEHICLE);
 	objectFactory.registerObject<VehicleObject>(SceneObjectType::HOVERVEHICLE);
+
+	objectFactory.registerObject<DroidObject>(SceneObjectType::DROIDCREATURE);
 
 	objectFactory.registerObject<ResourceSpawn>(SceneObjectType::RESOURCESPAWN);
 	objectFactory.registerObject<ResourceContainer>(SceneObjectType::RESOURCECONTAINER);
@@ -347,6 +351,8 @@ void ObjectManager::registerObjectTypes() {
 
 	objectFactory.registerObject<FighterShipObject>(SceneObjectType::SHIPFIGHTER);
 	objectFactory.registerObject<SpaceStationObject>(SceneObjectType::SHIPSTATION);
+
+	objectFactory.registerObject<TangibleObject>(SceneObjectType::CRYSTAL);
 }
 
 void ObjectManager::updateObjectVersion() {
@@ -611,6 +617,37 @@ void ObjectManager::persistObject(ManagedObject* object, int persistenceLevel, c
 	object->setPersistent(persistenceLevel);
 
 	updatePersistentObject(object);
+}
+
+void ObjectManager::persistSceneObjectsRecursively(SceneObject* object, int persistenceLevel) {
+	persistObject(object, persistenceLevel, "sceneobjects");
+
+	SortedVector<ManagedReference<SceneObject* > >* childObjects = object->getChildObjects();
+
+	for (int i = 0; i < childObjects->size(); i++) {
+		SceneObject* childObject = childObjects->get(i).get();
+
+		if (childObject != NULL)
+			persistSceneObjectsRecursively(childObject, persistenceLevel);
+	}
+
+	VectorMap<String, ManagedReference<SceneObject* > >* slottedObjects = object->getSlottedObjects();
+
+	for (int i = 0; i < slottedObjects->size(); i++) {
+		SceneObject* slottedObject = slottedObjects->get(i).get();
+
+		if (slottedObject != NULL)
+			persistSceneObjectsRecursively(slottedObject, persistenceLevel);
+	}
+
+	VectorMap<unsigned long long, ManagedReference<SceneObject* > >* containerObjects = object->getContainerObjects();
+
+	for (int i = 0; i < containerObjects->size(); i++) {
+		SceneObject* containerObject = containerObjects->get(i).get();
+
+		if (containerObject != NULL)
+			persistSceneObjectsRecursively(containerObject, persistenceLevel);
+	}
 }
 
 Reference<DistributedObjectStub*> ObjectManager::loadPersistentObject(uint64 objectID) {
@@ -892,12 +929,15 @@ ObjectDatabase* ObjectManager::loadTable(const String& database, uint64 objectID
 int ObjectManager::destroyObjectFromDatabase(uint64 objectID) {
 	Locker _locker(this);
 
-	DistributedObject* obj = getObject(objectID);
+	Reference<DistributedObject*> obj = getObject(objectID);
+
+	if (obj == NULL)
+		loadPersistentObject(objectID);
 
 	if (obj != NULL)
 	{
 		//setLogging(true);
-		//info("Marking " + String::valueOf(objectID) + " for deletion deletion");
+		//info("Marking " + String::valueOf(objectID) + " for deletion deletion", true);
 	//	setLogging(false);
 		obj->_setMarkedForDeletion(true);
 

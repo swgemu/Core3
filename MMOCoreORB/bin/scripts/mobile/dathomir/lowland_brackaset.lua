@@ -28,6 +28,7 @@ lowland_brackaset = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/brackaset.iff"},
+	controlDeviceTemplate = "object/intangible/pet/brackaset_hue.iff",
 	lootGroups = {
 	 {
 	        groups = {

@@ -93,7 +93,7 @@ function DathomirStaticSpawnsSeScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "nightsister_slave", 360, 1064.5, 100.9, -4483.3, 95, 0)
 	spawnMobile("dathomir", "nightsister_slave", 360, 1068.0, 99.1, -4497.1, 35, 0)
 	spawnMobile("dathomir", "nightsister_slave", 360, 1075.5, 100.8, -4493.8, -5, 0)
-	spawnMobile("dathomir", "nightsister_elder", 360, 1085.0, 103.0, -4485.2, -95, 0)
+	spawnMobile("dathomir", "nightsister_elder", 3600, 1085.0, 103.0, -4485.2, -95, 0)
 
 	--giant bolma skeleton (1377,-3192)
 	spawnMobile("dathomir", "bull_rancor", 240, 1379.9, 98.3, -3193.3, -75, 0)

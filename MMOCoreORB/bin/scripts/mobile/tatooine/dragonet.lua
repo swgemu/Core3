@@ -27,6 +27,7 @@ dragonet = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/dune_lizard.iff"},
+	controlDeviceTemplate = "object/intangible/pet/dune_lizard_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",

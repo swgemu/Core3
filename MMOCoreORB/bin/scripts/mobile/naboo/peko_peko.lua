@@ -27,6 +27,7 @@ peko_peko = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/peko_peko.iff"},
+	controlDeviceTemplate = "object/intangible/pet/peko_peko_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

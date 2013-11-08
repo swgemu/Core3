@@ -24,6 +24,7 @@
 #include "server/zone/objects/creature/Creature.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/events/MilkCreatureTask.h"
+#include "server/zone/objects/creature/events/TameCreatureTask.h"
 #include "server/zone/objects/creature/events/SampleDnaTask.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
@@ -39,6 +40,7 @@
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/managers/creature/LairObserver.h"
 #include "server/zone/packets/object/SpatialChat.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 
 Mutex CreatureManagerImplementation::loadMutex;
 
@@ -219,6 +221,34 @@ String CreatureManagerImplementation::getTemplateToSpawn(uint32 templateCRC) {
 	}
 
 	return templateToSpawn;
+}
+
+CreatureObject* CreatureManagerImplementation::spawnCreatureAsBaby(uint32 templateCRC, int level, float x, float z, float y, uint64 parentID) {
+	CreatureTemplate* creoTempl = creatureTemplateManager->getTemplate(templateCRC);
+
+	if (creoTempl == NULL)
+		return NULL;
+
+	CreatureObject* creo = NULL;
+
+	String templateToSpawn = getTemplateToSpawn(templateCRC);
+	uint32 objectCRC = templateToSpawn.hashCode();
+
+	creo = createCreature(objectCRC, false, templateCRC);
+
+	if (creo != NULL && creo->isCreature()) {
+		Creature* creature = cast<Creature*>(creo);
+		creature->loadTemplateDataForBaby(creoTempl);
+		creature->setBaby(true);
+	} else if (creo == NULL) {
+		error("could not spawn template " + templateToSpawn + " as baby.");
+	}
+
+	creo->setLevel(level);
+
+	placeCreature(creo, x, z, y, parentID);
+
+	return creo;
 }
 
 CreatureObject* CreatureManagerImplementation::spawnCreature(uint32 templateCRC, uint32 objectCRC, float x, float z, float y, uint64 parentID, bool persistent) {
@@ -403,6 +433,8 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
 
+	bool pet = destructedObject->isPet();
+
 	// lets unlock destructor so we dont get into complicated deadlocks
 
 	// lets copy the damage map before we remove it all
@@ -444,12 +476,12 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 		}
 
-		if (playerManager != NULL)
+		if (playerManager != NULL && !pet)
 			playerManager->disseminateExperience(destructedObject, &copyThreatMap);
 
 		SceneObject* creatureInventory = destructedObject->getSlottedObject("inventory");
 
-		if (creatureInventory != NULL) {
+		if (creatureInventory != NULL && !pet) {
 			LootManager* lootManager = zoneServer->getLootManager();
 
 			if (destructedObject->isNonPlayerCreatureObject() && !destructedObject->isEventMob())
@@ -466,6 +498,13 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		// Check to see if we can expedite the despawn of this corpse
 		// We can expedite the despawn when corpse has no loot, no credits, player cannot harvest, and no group members in range can harvest
 		shouldRescheduleCorpseDestruction = playerManager->shouldRescheduleCorpseDestruction(player, destructedObject);
+
+		if (pet) {
+			ManagedReference<PetControlDevice*> petControlDevice = destructedObject->getControlDevice().get().castTo<PetControlDevice*>();
+
+			if (petControlDevice != NULL && petControlDevice->getPetType() != PetControlDevice::DROIDPET)
+				petControlDevice->setVitality(petControlDevice->getVitality() - 1);
+		}
 	} catch (...) {
 		destructedObject->scheduleDespawn();
 
@@ -476,15 +515,17 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		throw;
 	}
 
-	destructedObject->scheduleDespawn();
+	if (!pet) {
+		destructedObject->scheduleDespawn();
 
-	if (shouldRescheduleCorpseDestruction) {
+		if (shouldRescheduleCorpseDestruction) {
 
-		Reference<DespawnCreatureTask*> despawn = destructedObject->getPendingTask("despawn").castTo<DespawnCreatureTask*>();
+			Reference<DespawnCreatureTask*> despawn = destructedObject->getPendingTask("despawn").castTo<DespawnCreatureTask*>();
 
-		if (despawn != NULL) {
-			despawn->cancel();
-			despawn->reschedule(10000);
+			if (despawn != NULL) {
+				despawn->cancel();
+				despawn->reschedule(10000);
+			}
 		}
 	}
 
@@ -527,7 +568,7 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 	ManagedReference<ResourceManager*> resourceManager = zone->getZoneServer()->getResourceManager();
 
 	String restype = "";
-	int quantity = 0;
+	float quantity = 0;
 
 	if (selectedID == 112) {
 		int type = System::random(2);
@@ -657,6 +698,104 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 	}
 }
 
+void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* player) {
+	Zone* zone = creature->getZone();
+
+	if (zone == NULL || !creature->isCreature())
+		return;
+
+	if(player->getPendingTask("tame_pet") != NULL) {
+		player->sendSystemMessage("You are already taming a pet");
+		return;
+	}
+
+	if(player->getPendingTask("call_pet") != NULL) {
+		player->sendSystemMessage("You cannot tame a pet while another is being called");
+		return;
+	}
+
+	if (!creature->canTameMe(player)) {
+		player->sendSystemMessage("@pet/pet_menu:sys_cant_tame"); // You can't tame that
+		return;
+	}
+
+	int level = creature->getLevel();
+	int maxLevelofPets = player->getSkillMod("tame_level");
+
+	if (!player->hasSkill("outdoors_creaturehandler_novice") || (level > maxLevelofPets)) {
+		player->sendSystemMessage("@pet/pet_menu:sys_lack_skill"); // You lack the skill to be able to tame that creature.
+		return;
+	}
+
+	if (creature->isAggressiveTo(player) && player->getSkillMod("tame_aggro") <= 0) {
+		player->sendSystemMessage("@pet/pet_menu:sys_lack_skill"); // You lack the skill to be able to tame that creature.
+		return;
+	}
+
+	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
+
+	if (datapad == NULL)
+		return;
+
+	if (datapad->getContainerObjectsSize() >= datapad->getContainerVolumeLimit()) {
+		player->sendSystemMessage("@faction_recruiter:datapad_full"); // Your datapad is full. You must first free some space.
+		return;
+	}
+
+	int numberStored = 0;
+	int maxStoredPets = player->getSkillMod("stored_pets");
+
+	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
+		ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
+
+		if (object != NULL && object->isPetControlDevice()) {
+			PetControlDevice* device = cast<PetControlDevice*>( object.get());
+
+			if (device->getPetType() == PetControlDevice::CREATUREPET) {
+				if (++numberStored >= maxStoredPets) {
+					player->sendSystemMessage("@pet/pet_menu:sys_too_many_stored"); // There are too many pets stored in this container. Release some of them to make room for more.
+					return;
+				}
+
+			}
+		}
+	}
+
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	int currentlySpawned = 0;
+	int spawnedLevel = 0;
+	int maxPets = player->getSkillMod("keep_creature");
+
+	for (int i = 0; i < ghost->getActivePetsSize(); ++i) {
+		ManagedReference<AiAgent*> object = ghost->getActivePet(i);
+
+		if (object != NULL && object->isCreature()) {
+			if (++currentlySpawned >= maxPets) {
+				player->sendSystemMessage("@pet/pet_menu:too_many"); // You can't control any more pets. Store one first
+				return;
+			}
+
+			spawnedLevel += object->getLevel();
+
+			if ((spawnedLevel + level) >= maxLevelofPets) {
+				player->sendSystemMessage("Taming this pet would exceed your control level ability.");
+				return;
+			}
+		}
+	}
+
+	ChatManager* chatManager = player->getZoneServer()->getChatManager();
+
+	chatManager->broadcastMessage(player, "@hireling/hireling:taming_1"); // Easy.
+
+	Locker clocker(creature);
+
+	ManagedReference<TameCreatureTask*> task = new TameCreatureTask(creature, player);
+
+	player->addPendingTask("tame_pet", task, 8000);
+}
+
 void CreatureManagerImplementation::milk(Creature* creature, CreatureObject* player) {
 	Zone* zone = creature->getZone();
 
@@ -714,6 +853,7 @@ void CreatureManagerImplementation::sample(Creature* creature, CreatureObject* p
 	player->addPendingTask("sampledna",task,0);
 
 }
+
 bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, TangibleObject* clothing) {
 
 	if (!clothing->isWearableObject() && !clothing->isWeaponObject())
@@ -746,12 +886,15 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 		return false;
 
 	for (int i = 0; i < clothing->getArrangementDescriptorSize(); ++i) {
-		String arrangementDescriptor = clothing->getArrangementDescriptor(i);
-		ManagedReference<SceneObject*> slot = creature->getSlottedObject(arrangementDescriptor);
+		Vector<String> descriptors = clothing->getArrangementDescriptor(i);
 
-		if (slot != NULL) {
-			slot->destroyObjectFromWorld(true);
-			slot->destroyObjectFromDatabase(true);
+		for (int j = 0; j < descriptors.size(); ++j) {
+			ManagedReference<SceneObject*> slot = creature->getSlottedObject(descriptors.get(j));
+
+			if (slot != NULL) {
+				slot->destroyObjectFromWorld(true);
+				slot->destroyObjectFromDatabase(true);
+			}
 		}
 	}
 
@@ -774,5 +917,3 @@ bool CreatureManagerImplementation::addWearableItem(CreatureObject* creature, Ta
 Vector3 CreatureManagerImplementation::getRandomJediTrainer() {
 	return spawnAreaMap.getRandomJediTrainer();
 }
-
-

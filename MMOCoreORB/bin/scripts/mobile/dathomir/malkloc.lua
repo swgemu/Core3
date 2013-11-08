@@ -27,6 +27,7 @@ malkloc = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/malkloc.iff"},
+	controlDeviceTemplate = "object/intangible/pet/malkloc_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

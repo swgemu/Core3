@@ -32,6 +32,7 @@
 #include "server/chat/room/ChatRoom.h"
 #include "server/chat/room/ChatRoomMap.h"
 #include "server/chat/SendMailTask.h"
+#include "server/zone/packets/chat/ChatSystemMessage.h"
 
 ChatManagerImplementation::ChatManagerImplementation(ZoneServer* serv, int initsize) : ManagedServiceImplementation() {
 	server = serv;
@@ -516,6 +517,72 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 
 	//zone->runlock();
 
+}
+
+void ChatManagerImplementation::broadcastMessage(CreatureObject* player, StringIdChatParameter& message,  uint64 target, uint32 moodid, uint32 mood2) {
+	Zone* zone = player->getZone();
+
+	if (zone == NULL)
+		return;
+
+	int language = 0;
+
+	String firstName;
+
+	if (player->isPlayerCreature() /*|| !((Player *)player)->isChatMuted() */) {
+		CreatureObject* playerCreature = cast<CreatureObject*>(player);
+
+		firstName = playerCreature->getFirstName().toLowerCase();
+		PlayerObject* myGhost = playerCreature->getPlayerObject();
+
+		if (myGhost == NULL)
+			return;
+
+		language = myGhost->getLanguageID();
+	}
+
+	CloseObjectsVector* closeObjects = (CloseObjectsVector*) player->getCloseObjects();
+
+	SortedVector<ManagedReference<QuadTreeEntry*> > closeEntryObjects(200, 50);
+
+	if (closeObjects != NULL) {
+		closeObjects->safeCopyTo(closeEntryObjects);
+	} else {
+		zone->getInRangeObjects(player->getWorldPositionX(), player->getWorldPositionY(), 192, &closeEntryObjects, true);
+	}
+
+	try {
+		for (int i = 0; i < closeEntryObjects.size(); ++i) {
+			SceneObject* object = cast<SceneObject*>(closeEntryObjects.get(i).get());
+
+			if (player->isInRange(object, 128)) {
+
+				//Notify observers that are expecting spatial chat.
+				if (object->getObserverCount(ObserverEventType::SPATIALCHATRECEIVED)) {
+					ManagedReference<ChatMessage*> chatMessage = new ChatMessage();
+					chatMessage->setString(message.toString());
+
+					object->notifyObservers(ObserverEventType::SPATIALCHATRECEIVED, chatMessage);
+				}
+
+				if (object->isPlayerCreature()) {
+					CreatureObject* creature = cast<CreatureObject*>(object);
+					PlayerObject* ghost = creature->getPlayerObject();
+
+					if (ghost == NULL)
+						continue;
+
+					if (!ghost->isIgnoring(firstName)) {
+						SpatialChat* cmsg = new SpatialChat(player->getObjectID(), creature->getObjectID(), message, target, moodid, mood2);
+
+						creature->sendMessage(cmsg);
+					}
+				}
+			}
+		}
+	} catch (...) {
+		throw;
+	}
 }
 
 void ChatManagerImplementation::handleSpatialChatInternalMessage(CreatureObject* player, const UnicodeString& args) {

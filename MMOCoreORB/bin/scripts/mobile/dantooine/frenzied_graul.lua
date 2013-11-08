@@ -27,6 +27,7 @@ frenzied_graul = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/frenzied_graul.iff"},
+	controlDeviceTemplate = "object/intangible/pet/graul_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

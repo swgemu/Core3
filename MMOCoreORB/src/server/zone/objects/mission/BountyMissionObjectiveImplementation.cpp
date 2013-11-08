@@ -57,8 +57,11 @@ void BountyMissionObjectiveImplementation::deactivate() {
 	MissionObjectiveImplementation::deactivate();
 
 	if (activeDroid != NULL) {
-		activeDroid->destroyObjectFromDatabase();
-		activeDroid->destroyObjectFromWorld(true);
+		if (!activeDroid->isPlayerCreature()) {
+			activeDroid->destroyObjectFromDatabase();
+			activeDroid->destroyObjectFromWorld(true);
+		}
+
 		activeDroid = NULL;
 	}
 }

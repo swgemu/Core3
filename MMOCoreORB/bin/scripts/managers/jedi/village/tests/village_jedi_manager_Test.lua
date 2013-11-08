@@ -250,40 +250,40 @@ describe("Village Jedi Manager", function()
 
 		describe("checkAndHandleJediProgression", function()
 			describe("When player has all the needed badges", function()
-				it("Should spawn the old man", function()
+				it("Should create an event to spawn the old man", function()
 					local pCreatureObject = { "creatureObjectPointer" }
-					local realSpawnOldMan = VillageJediManager.spawnOldMan
-					VillageJediManager.spawnOldMan = spy.new(function() end)
+					local realCreateSpawnOldManEvent = OldMan.createSpawnOldManEvent
+					OldMan.createSpawnOldManEvent = spy.new(function() end)
 					local realCountBadges = VillageJediManager.countBadges
 					VillageJediManager.countBadges = spy.new(function() return TOTALNUMBEROFBADGESREQUIRED end)
 
 					VillageJediManager.checkAndHandleJediProgression(pCreatureObject)
 
 					assert.spy(VillageJediManager.countBadges).was.called(1)
-					assert.spy(VillageJediManager.spawnOldMan).was.called_with(pCreatureObject)
+					assert.spy(OldMan.createSpawnOldManEvent).was.called_with(pCreatureObject)
 
-					VillageJediManager.spawnOldMan = realSpawnOldMan
+					OldMan.createSpawnOldManEvent = realCreateSpawnOldManEvent
 					VillageJediManager.countBadges = realCountBadges
 				end)
 			end)
 
 			describe("When player does not have all the needed badges", function()
-				it("Should not spawn the old man", function()
+				it("Should not create an event to spawn the old man", function()
 					local pCreatureObject = { "creatureObjectPointer" }
-					local realSpawnOldMan = VillageJediManager.spawnOldMan
-					VillageJediManager.spawnOldMan = spy.new(function() end)
+					local realCreateOldManEvent = VillageJediManager.createOldManEvent
+					VillageJediManager.createOldManEvent = spy.new(function() end)
 					local realCountBadges = VillageJediManager.countBadges
 					VillageJediManager.countBadges = spy.new(function() return TOTALNUMBEROFBADGESREQUIRED - 1 end)
 
 					VillageJediManager.checkAndHandleJediProgression(pCreatureObject)
 
 					assert.spy(VillageJediManager.countBadges).was.called(1)
-					assert.spy(VillageJediManager.spawnOldMan).was.not_called()
+					assert.spy(VillageJediManager.createOldManEvent).was.not_called()
 
-					VillageJediManager.spawnOldMan = realSpawnOldMan
+					VillageJediManager.createOldManEvent = realCreateOldManEvent
 					VillageJediManager.countBadges = realCountBadges
 				end)
 			end)
-		end)		
+		end)
 	end)
 end)

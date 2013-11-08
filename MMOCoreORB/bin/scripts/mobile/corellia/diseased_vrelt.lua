@@ -27,6 +27,7 @@ diseased_vrelt = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/vrelt.iff"},
+	controlDeviceTemplate = "object/intangible/pet/stintaril_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

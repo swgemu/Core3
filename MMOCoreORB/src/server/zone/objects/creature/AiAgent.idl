@@ -82,6 +82,7 @@ include server.zone.objects.creature.variables.CurrentFoundPath;
 import server.zone.objects.creature.ai.bt.Behavior;
 include server.zone.objects.creature.ai.bt.BehaviorTreeList;
 import server.zone.objects.creature.ai.bt.BehaviorTree;
+import server.zone.objects.intangible.ControlDevice;
 
 @mock
 class AiAgent extends CreatureObject {
@@ -189,7 +190,6 @@ class AiAgent extends CreatureObject {
 		Logger.setGlobalLogging(true);
 		
 		fleeing = false;
-		baby = false;
 	}
 	
 	/**
@@ -692,8 +692,11 @@ class AiAgent extends CreatureObject {
 	public int getBaseXp() {
 		if (npcTemplate.get() == null)
 			return 0;
-		
-		return npcTemplate.get().getBaseXp();
+
+		if (baby)
+			return (npcTemplate.get().getBaseXp() / 10);
+		else
+			return npcTemplate.get().getBaseXp();
 	}
 	
 	public unsigned int getDiet() {
@@ -748,6 +751,11 @@ class AiAgent extends CreatureObject {
 	}
 
 	public native boolean isEventMob();
+
+	@read
+	public boolean isPet() {
+		return (getControlDevice() != null);
+	}
 
 	public string getPvPFaction(){
 		if (npcTemplate.get() == null)

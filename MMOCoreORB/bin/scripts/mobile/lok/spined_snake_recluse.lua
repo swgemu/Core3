@@ -27,6 +27,7 @@ spined_snake_recluse = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/spined_snake_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/spined_snake_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_toxicgreen"},
 	conversationTemplate = "",

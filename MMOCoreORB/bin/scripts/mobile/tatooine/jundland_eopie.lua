@@ -28,6 +28,7 @@ jundland_eopie = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/eopie.iff"},
+	controlDeviceTemplate = "object/intangible/pet/eopie_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

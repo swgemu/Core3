@@ -43,7 +43,11 @@
 
 object_tangible_deed_pet_deed_deed_surgical_advanced_basic = object_tangible_deed_pet_deed_shared_deed_surgical_advanced_basic:new {
 
+	templateType = DROIDDEED,
 
+	controlDeviceObjectTemplate = "object/intangible/pet/21b_surgical_droid.iff",
+	generatedObjectTemplate = "object/creature/npc/droid/crafted/2_1b_surgical_droid_advanced.iff",
+	
 	numberExperimentalProperties = {1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "XX", "XX", "OQ", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
 	experimentalWeights = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},

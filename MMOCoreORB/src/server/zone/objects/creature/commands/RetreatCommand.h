@@ -56,7 +56,7 @@ public:
 	}
 	
 	bool checkRetreat(CreatureObject* creature) {
-		if (creature->isRidingCreature()) {
+		if (creature->isMounted()) {
 			creature->sendSystemMessage("@cbt_spam:no_burst"); // You cannot burst-run while mounted on a creature or vehicle.
 			return false;
 		}
@@ -150,13 +150,6 @@ public:
 
 		if (groupRunMod > 100.0f)
 			groupRunMod = 100.0f;
-
-		int newHamCost = (int) (100.0f * (1.0f - (groupRunMod / 100.0f)));
-
-		if (!inflictHAM(player, newHamCost, newHamCost, newHamCost)) {
-			player->sendSystemMessage("@combat_effects:burst_run_wait"); //You are too tired to Burst Run.
-			return;
-		}	
 
 		StringIdChatParameter startStringId("cbt_spam", "burstrun_start_single");
 		StringIdChatParameter endStringId("cbt_spam", "burstrun_stop_single");

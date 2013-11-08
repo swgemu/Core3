@@ -1654,6 +1654,10 @@ class CreatureObject extends TangibleObject {
 		return false;
 	}
 	
+	public abstract boolean isDroidObject() {
+		return false;
+	}	
+	
 	public abstract boolean isCreature() {
 		return false;
 	}

@@ -27,6 +27,7 @@ vrelt_mother = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/startled_vrelt_mother.iff"},
+	controlDeviceTemplate = "object/intangible/pet/stintaril_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

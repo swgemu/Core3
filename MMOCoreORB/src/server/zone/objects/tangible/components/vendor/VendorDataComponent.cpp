@@ -80,15 +80,19 @@ void VendorDataComponent::initializeTransientMembers() {
 }
 
 void VendorDataComponent::notifyObjectDestroyingFromDatabase() {
+	ManagedReference<SceneObject*> strong = parent.get();
 
-	if(parent.get() == NULL)
+	if(strong == NULL)
 		return;
 
-	ManagedReference<CreatureObject*> player = parent.get()->getZoneServer()->getObject(ownerId).castTo<CreatureObject*>();
+	ManagedReference<CreatureObject*> player = strong->getZoneServer()->getObject(ownerId).castTo<CreatureObject*>();
 	if(player == NULL)
 		return;
 
-	player->getPlayerObject()->removeVendor(parent.get());
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost != NULL)
+		ghost->removeVendor(strong);
 }
 
 void VendorDataComponent::runVendorUpdate() {

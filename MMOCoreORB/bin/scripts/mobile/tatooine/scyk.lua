@@ -27,6 +27,7 @@ scyk = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/scyk.iff"},
+	controlDeviceTemplate = "object/intangible/pet/dune_lizard_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

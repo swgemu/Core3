@@ -104,10 +104,13 @@
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/managers/gcw/GCWManager.h"
 
+#include "server/zone/managers/creature/LairObserver.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
+
 int PlayerManagerImplementation::MAX_CHAR_ONLINE_COUNT = 2;
 
 PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer, ZoneProcessServer* impl) :
-		Logger("PlayerManager") {
+				Logger("PlayerManager") {
 	server = zoneServer;
 	processor = impl;
 
@@ -453,7 +456,7 @@ Reference<TangibleObject*> PlayerManagerImplementation::createHairObject(const S
 		return NULL;
 	}
 
-	if (hair->getGameObjectType() != SceneObjectType::GENERICITEM || hair->getArrangementDescriptor(0) != "hair") {
+	if (hair->getGameObjectType() != SceneObjectType::GENERICITEM || hair->getArrangementDescriptor(0).get(0) != "hair") {
 		ManagedReference<SceneObject*> clearRef = hair;
 
 		return NULL;
@@ -712,41 +715,46 @@ void PlayerManagerImplementation::sendActivateCloneRequest(CreatureObject* playe
 	String closestName = "None";
 	ManagedReference<CityRegion*> cr = closestCloning->getCityRegion();
 	unsigned long long playerID = player->getObjectID();
+	CloningBuildingObjectTemplate* cbot = cast<CloningBuildingObjectTemplate*>(closestCloning->getObjectTemplate());
 
-	if (cr != NULL) {
-		//Check if player is city banned where the closest facility is
-		if (cr->isBanned(playerID)) {
-			int distance = 50000;
-			for (int j = 0; j < locations.size(); j++) {
-				ManagedReference<SceneObject*> location = locations.get(j);
+	//Check if player is city banned where the closest facility is or if it's not a valid cloner
+	if ((cr != NULL && cr->isBanned(playerID)) || cbot == NULL) {
+		int distance = 50000;
+		for (int j = 0; j < locations.size(); j++) {
+			ManagedReference<SceneObject*> location = locations.get(j);
 
-				if (location == NULL)
+			if (location == NULL)
+				continue;
+
+			cbot = cast<CloningBuildingObjectTemplate*>(location->getObjectTemplate());
+
+			if (cbot == NULL)
+				continue;
+
+			cr = location->getCityRegion();
+			String name;
+
+			if (cr != NULL) {
+				if (cr->isBanned(playerID))
 					continue;
 
-				cr = location->getCityRegion();
-				String name;
-
-				if (cr != NULL) {
-					if (cr->isBanned(playerID))
-						continue;
-
-					name = cr->getRegionName();
-				} else {
-					name = location->getDisplayedName();
-				}
-
-				if (location->getDistanceTo(player) < distance) {
-					distance = location->getDistanceTo(player);
-					closestName = name;
-					closestCloning = location;
-				}
+				name = cr->getRegionName();
+			} else {
+				name = location->getDisplayedName();
 			}
-		} else {
-			closestName = cr->getRegionName();
+
+			if (location->getDistanceTo(player) < distance) {
+				distance = location->getDistanceTo(player);
+				closestName = name;
+				closestCloning = location;
+			}
 		}
 
 	} else {
-		closestName = closestCloning->getDisplayedName();
+		if (cr != NULL)
+			closestName = cr->getRegionName();
+		else
+			closestName = closestCloning->getDisplayedName();
 	}
 
 	StringBuffer promptText;
@@ -893,7 +901,9 @@ void PlayerManagerImplementation::ejectPlayerFromBuilding(CreatureObject* player
 	}
 }
 
-void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap) {
+
+
+void PlayerManagerImplementation::disseminateExperience(TangibleObject* destructedObject, ThreatMap* threatMap, Vector<ManagedReference<CreatureObject*> >* spawnedCreatures) {
 	uint32 totalDamage = threatMap->getTotalDamage();
 
 	VectorMap<ManagedReference<CreatureObject*>, int> slExperience;
@@ -903,6 +913,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 	float gcwBonus = 1.0f;
 	uint32 winningFaction = -1;
+	int baseXp = 0;
 
 	Zone* zone = destructedObject->getZone();
 	if(zone != NULL){
@@ -911,8 +922,32 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 		winningFaction = gcwMan->getWinningFaction();
 	}
 
+	if (!destructedObject->isCreatureObject() && spawnedCreatures != NULL) {
+		ManagedReference<AiAgent*> ai = NULL;
 
-	if(zone != NULL)
+		for (int i = 0; i < spawnedCreatures->size(); i++) {
+			ai = cast<AiAgent*>(spawnedCreatures->get(i).get());
+
+			if (ai != NULL) {
+				Creature* creature = cast<Creature*>(ai.get());
+
+				if (creature != NULL && creature->isBaby())
+					continue;
+				else
+					break;
+			}
+		}
+
+		if (ai != NULL)
+			baseXp = ai->getBaseXp();
+
+	} else {
+		ManagedReference<AiAgent*> ai = cast<AiAgent*>(destructedObject);
+
+		if (ai != NULL)
+			baseXp = ai->getBaseXp();
+	}
+
 	for (int i = 0; i < threatMap->size(); ++i) {
 
 		CreatureObject* player = threatMap->elementAt(i).getKey();
@@ -932,13 +967,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 		for (int j = 0; j < entry->size(); ++j) {
 			uint32 damage = entry->elementAt(j).getValue();
 			String xpType = entry->elementAt(j).getKey();
-
-			float xpAmount =  40.f * destructedObject->getLevel(); //TODO: need better formula for tano exp
-
-			ManagedReference<AiAgent*> ai = cast<AiAgent*>(destructedObject);
-
-			if (ai != NULL)
-				xpAmount = ai->getBaseXp();
+			float xpAmount =  baseXp;
 
 			xpAmount *= (float) damage / totalDamage;
 
@@ -949,16 +978,16 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 			if (group != NULL)
 				xpAmount *= 1.20; //TODO: Add groupExperienceModifier to lua player_manager.lua - requires refactor of startingitems (move to player creation manager).
 
-			//Jedi experience doesn't count towards combat experience supposedly.
-			if (xpType != "jedi_general")
-				combatXp += xpAmount;
+				//Jedi experience doesn't count towards combat experience supposedly.
+				if (xpType != "jedi_general")
+					combatXp += xpAmount;
 
-			if( winningFaction == player->getFaction()){
-				xpAmount *= gcwBonus;
-				combatXp *= gcwBonus;
-			}
-			//Award individual weapon exp.
-			awardExperience(player, xpType, xpAmount);
+				if( winningFaction == player->getFaction()){
+					xpAmount *= gcwBonus;
+					combatXp *= gcwBonus;
+				}
+				//Award individual weapon exp.
+				awardExperience(player, xpType, xpAmount);
 		}
 
 		combatXp /= 10.f;
@@ -1000,6 +1029,8 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 	threatMap->removeAll();
 }
+
+
 
 bool PlayerManagerImplementation::checkEncumbrancies(CreatureObject* player, ArmorObject* armor) {
 	int strength = player->getHAM(CreatureAttribute::STRENGTH);
@@ -1383,6 +1414,8 @@ bool PlayerManagerImplementation::checkTradeItems(CreatureObject* player, Creatu
 	int playerItnos = 0;
 	int recieverTanos = 0;
 	int recieverItnos = 0;
+	int playerPetsTraded = 0;
+	int receiverPetsTraded = 0;
 
 	for (int i = 0; i < tradeContainer->getTradeSize(); ++i) {
 		ManagedReference<SceneObject*> scene = tradeContainer->getTradeItem(i);
@@ -1409,6 +1442,14 @@ bool PlayerManagerImplementation::checkTradeItems(CreatureObject* player, Creatu
 
 			if (!playerDatapad->hasObjectInContainer(scene->getObjectID()))
 				return false;
+
+			if (scene->isPetControlDevice()) {
+				PetControlDevice* petControlDevice = cast<PetControlDevice*>(scene.get());
+				if (!petControlDevice->canBeTradedTo(player, receiver, receiverPetsTraded))
+					return false;
+
+				receiverPetsTraded++;
+			}
 
 			recieverItnos++;
 
@@ -1442,6 +1483,14 @@ bool PlayerManagerImplementation::checkTradeItems(CreatureObject* player, Creatu
 
 			if (!receiverDatapad->hasObjectInContainer(scene->getObjectID()))
 				return false;
+
+			if (scene->isPetControlDevice()) {
+				PetControlDevice* petControlDevice = cast<PetControlDevice*>(scene.get());
+				if (!petControlDevice->canBeTradedTo(receiver, player, playerPetsTraded))
+					return false;
+
+				playerPetsTraded++;
+			}
 
 			playerItnos++;
 
@@ -1683,10 +1732,10 @@ int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureO
 	Reference<Buff*> buff = new Buff(patient, buffname.hashCode(), duration, BuffType::MEDICAL);
 
 	if(BuffAttribute::isProtection(attribute))
-			buff->setSkillModifier(BuffAttribute::getProtectionString(attribute), buffvalue);
+		buff->setSkillModifier(BuffAttribute::getProtectionString(attribute), buffvalue);
 	else{
-			buff->setAttributeModifier(attribute, buffvalue);
-			buff->setFillAttributesOnBuff(true);
+		buff->setAttributeModifier(attribute, buffvalue);
+		buff->setFillAttributesOnBuff(true);
 	}
 
 	patient->addBuff(buff);
@@ -3051,8 +3100,8 @@ bool PlayerManagerImplementation::offerTeaching(CreatureObject* teacher, Creatur
 
 	StringBuffer prompt;
 	prompt << teacher->getDisplayedName()
-							<< " has offered to teach you " << sklname << " (" << skill->getXpCost()
-							<< " " << expname  << " experience cost).";
+									<< " has offered to teach you " << sklname << " (" << skill->getXpCost()
+									<< " " << expname  << " experience cost).";
 
 	suibox->setPromptText(prompt.toString());
 	suibox->setCallback(new PlayerTeachConfirmSuiCallback(server, skill));
@@ -3269,7 +3318,7 @@ bool PlayerManagerImplementation::shouldRescheduleCorpseDestruction(CreatureObje
 bool PlayerManagerImplementation::canGroupMemberHarvestCorpse(CreatureObject* player, Creature* creature) {
 
 	if (!player->isGrouped())
-			return false;
+		return false;
 
 	ManagedReference<GroupObject*> group = player->getGroup();
 	int groupSize = group->getGroupSize();

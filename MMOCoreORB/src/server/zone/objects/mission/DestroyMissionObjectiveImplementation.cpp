@@ -164,6 +164,11 @@ void DestroyMissionObjectiveImplementation::spawnLair() {
 
 	LairTemplate* lair = CreatureTemplateManager::instance()->getLairTemplate(lairTemplate.hashCode());
 
+	if (lair == NULL) {
+		error("incorrect lair template in lair mission objective " + lairTemplate);
+		return;
+	}
+
 	unsigned int faction = lair->getFaction();
 
 	if (lairObject == NULL) {

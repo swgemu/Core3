@@ -131,6 +131,9 @@ class VehicleControlDevice extends ControlDevice {
 	 */
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);	
-	
+
+	public boolean isVehicleControlDevice() {
+		return true;
+	}
 }
 

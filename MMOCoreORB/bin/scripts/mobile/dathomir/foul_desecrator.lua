@@ -27,6 +27,7 @@ foul_desecrator = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/voritor_lizard_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/voritor_lizard_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

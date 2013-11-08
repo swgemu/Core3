@@ -77,6 +77,7 @@ void VendorAdBarkingSessionImplementation::sendCustomMessageInput() {
 	input->setPromptText("@player_structure:cust_d");
 	input->setUsingObject(vendor);
 	input->setForceCloseDistance(16.f);
+	input->setMaxInputSize(128);
 	input->setCallback(new AdBarkingPhraseSuiCallback(owner->getZoneServer()));
 
 	owner->getPlayerObject()->addSuiBox(input);

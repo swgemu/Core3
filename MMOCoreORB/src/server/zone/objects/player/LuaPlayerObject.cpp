@@ -37,6 +37,7 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "setForcePower", &LuaPlayerObject::setForcePower },
 		{ "isJedi", &LuaPlayerObject::isJedi },
 		{ "setJediState", &LuaPlayerObject::setJediState },
+		{ "isOnline", &LuaPlayerObject::isOnline },
 		{ 0, 0 }
 };
 
@@ -263,4 +264,10 @@ int LuaPlayerObject::setJediState(lua_State* L) {
 	realObject->setJediState(jediState);
 
 	return 0;
+}
+
+int LuaPlayerObject::isOnline(lua_State* L) {
+	lua_pushboolean(L, realObject->isOnline());
+
+	return 1;
 }

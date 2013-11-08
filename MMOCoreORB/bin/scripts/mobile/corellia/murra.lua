@@ -27,6 +27,7 @@ murra = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/murra.iff"},
+	controlDeviceTemplate = "object/intangible/pet/murra_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

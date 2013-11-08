@@ -28,6 +28,7 @@ thune_grassland_guardian = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/thune_grassland_guardian.iff"},
+	controlDeviceTemplate = "object/intangible/pet/thune_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

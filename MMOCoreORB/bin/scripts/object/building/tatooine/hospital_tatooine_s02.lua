@@ -49,6 +49,7 @@ object_building_tatooine_hospital_tatooine_s02 = object_building_tatooine_shared
 	},
 
 	planetMapCategory = "medicalcenter",
+	ejectionPoint = {4, 24}
 }
 
 ObjectTemplates:addTemplate(object_building_tatooine_hospital_tatooine_s02, "object/building/tatooine/hospital_tatooine_s02.iff")

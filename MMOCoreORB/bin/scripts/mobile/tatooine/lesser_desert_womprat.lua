@@ -27,6 +27,7 @@ lesser_desert_womprat = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/lesser_desert_womp_rat.iff"},
+	controlDeviceTemplate = "object/intangible/pet/womp_rat_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",

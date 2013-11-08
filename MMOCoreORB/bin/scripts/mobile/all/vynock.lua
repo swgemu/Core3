@@ -27,6 +27,7 @@ vynock = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/vynock.iff"},
+	controlDeviceTemplate = "object/intangible/pet/vynock_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
