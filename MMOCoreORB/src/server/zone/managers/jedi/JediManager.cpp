@@ -69,6 +69,7 @@ void JediManager::setJediManagerName(String name) {
 }
 
 void JediManager::loadConfiguration(Lua* luaEngine) {
+	luaEngine->runFile("scripts/include/main.lua");
 	luaEngine->runFile("scripts/managers/jedi/jedi_manager.lua");
 
 	jediProgressionType = luaEngine->getGlobalInt(String("jediProgressionType"));
@@ -106,6 +107,10 @@ void JediManager::onPlayerLoggedIn(CreatureObject* creature) {
 	*luaOnPlayerLoggedIn << creature;
 
 	luaOnPlayerLoggedIn->callFunction();
+
+	Reference<LuaFunction*> testFunction = lua->createFunction("SuiSample", "onLoggedIn", 0);
+	*luaOnPlayerLoggedIn << creature;
+	testFunction->callFunction();
 }
 
 void JediManager::onPlayerLoggedOut(CreatureObject* creature) {

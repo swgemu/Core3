@@ -1,10 +1,10 @@
-5f4e26e was Loshult, 84 minutes ago, message: [Added] unit tests for the useHolocron function in the holocron jedi manager.
-82fe0eb was Loshult, 23 hours ago, message: [Added] useHolocron method to the jedi manager. [Added] connection from the holocron menu component to the jedi manager useHolocron method. [Removed] C++ implementation of the holocron responses. [Added] Lua implementation of the holocron response for the hologrind jedi progression system. [Changed] all holocrons to use the hologrind holocron menu component.
-e6c4774 was Loshult, 24 hours ago, message: [Added] observer event BADGEAWARDED that is triggered when a player is awarded a badge. [Added] observer in the Holocron Jedi Manager to trigger on BADGEAWARDED events and enable jedi on the player if all professions have been mastered.
-3db8b30 was Loshult, 32 hours ago, message: [Updated] documentation of functions in the lua jedi managers. [Changed] name of a few functions in the jedi manager.
-ee7036a was Loshult, 2 days ago, message: [Updated] checkForceStatus command to show progress of the jedi progression. [Added] Check at login if the player has mastered the professions to become jedi. A message will be sent to the player in that case.
-cc2a053 was Loshult, 2 days ago, message: [Added] More unit tests for the Lua jedi managers. [Updated] usage of . and : in the jedi manager lua files.
-bbd363d was Loshult, 3 days ago, message: [Added] Unit tests for the withXXXObject functions in the Jedi Manager.
-6bbb17c was Loshult, 3 days ago, message: [Added] addHologrindProfession method to LuaPlayerOjbect. [Added] getHologrindProfessions method to LuaPlayerOjbect.
-eab5352 was Loshult, 3 days ago, message: [Updated] naming of a few unit tests for the holocron jedi manager. [Added] Start method to jedi manager. [Added] useful functions in the jedi manager lua part that uses lambda expressions to simplifies writing functions that uses creature objects and player objects.
-ec55f01 was Victor Popovici, 3 days ago, message: Merge "[added] vehicle customization lifespan to datapad entry" into unstable
+23a2785 was Loshult, 3 weeks ago, message: [Changed] old man only spawns outside NPC cities and not when the player is in a building. [Added] LuaCityRegion. [Added] getCityRegionAt method to DirectorManager. [Added] withCityRegion method to ScreenPlay.
+36ab8b7 was Victor Popovici, 3 weeks ago, message: Merge "[fixed] mantis 3777 shellfish harvester cannot be used while moving" into unstable
+c57a9cc was Ivojedi, 3 weeks ago, message: [Adjusted] weapon dot chances, skill mod chances, and yellow chance/modifier to non-test values
+c01451a was Ivojedi, 3 weeks ago, message: [Fixed] typo in recruiter convo handler [Fixed] faction cost penalty now applies to neither side (instead of both) when neither side has control
+54a7e05 was Klivian, 3 weeks ago, message: [fixed] mantis 3777 shellfish harvester cannot be used while moving
+0c3bbf5 was Victor Popovici, 3 weeks ago, message: Merge "[added] SpaceTerrainAppearanceTemplate parsing" into unstable
+cc28fb7 was Victor Popovici, 3 weeks ago, message: [added] SpaceTerrainAppearanceTemplate parsing
+328a244 was Victor Popovici, 3 weeks ago, message: Merge "[Changed] Removed superfluous junk dealers in Coronet [Changed] Other junk dealers junk prefereneces changed to weapons " into unstable
+6e813a5 was Victor Popovici, 3 weeks ago, message: Merge "[Added] old man conversation and conversation handler." into unstable
+df83efc was Mack W, 3 weeks ago, message: [Changed] Removed superfluous junk dealers in Coronet [Changed] Other junk dealers junk prefereneces changed to weapons
