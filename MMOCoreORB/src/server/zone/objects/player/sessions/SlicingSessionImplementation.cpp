@@ -762,4 +762,14 @@ void SlicingSessionImplementation::handleSliceFailed() {
 	endSlicing();
 
 }
+int SlicingSessionImplementation::cancelSession() {
+	//ManagedWeakReference<CreatureObject* > player;
+	if (player != NULL)
+		player.get()->dropActiveSession(SessionFacadeType::SLICING);
 
+	if (tangibleObject != NULL)
+		tangibleObject.get()->dropActiveSession(SessionFacadeType::SLICING);
+	player.get()->getPlayerObject()->removeSuiBoxType(SuiWindowType::SLICING_MENU);
+	clearSession();
+	return 0;
+}
