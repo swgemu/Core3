@@ -24,7 +24,11 @@ theme_park_loot_rantok = {
 	customizationValues = {},
 	skillMods = {
 
-	}
+	},
+
+	-- randomDotChance: The chance of this weapon object dropping with a random dot on it. Higher number means less chance. Set to 0 to always have a random dot.
+	randomDotChance = -1,
+
 }
 
 addLootItemTemplate("theme_park_loot_rantok", theme_park_loot_rantok)
