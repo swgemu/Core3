@@ -752,7 +752,7 @@ void SlicingSessionImplementation::handleSliceFailed() {
 		if(zone != NULL){
 			GCWManager* gcwMan = zone->getGCWManager();
 			if(gcwMan != NULL)
-				gcwMan->failSecuritySlice(this->tangibleObject.get());
+				gcwMan->failSecuritySlice(tangibleObject.get());
 
 		}
 	} else if (!tangibleObject->isMissionTerminal()) {
@@ -762,4 +762,15 @@ void SlicingSessionImplementation::handleSliceFailed() {
 	endSlicing();
 
 }
-
+int SlicingSessionImplementation::cancelSession() {
+	ManagedReference<CreatureObject*> player = this->player.get();
+	ManagedReference<TangibleObject*> tangibleObject = this->tangibleObject.get();
+	if (player != NULL) {
+		player->dropActiveSession(SessionFacadeType::SLICING);
+		player->getPlayerObject()->removeSuiBoxType(SuiWindowType::SLICING_MENU);
+	}
+	if (tangibleObject != NULL)
+		tangibleObject->dropActiveSession(SessionFacadeType::SLICING);
+	clearSession();
+	return 0;
+}

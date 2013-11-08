@@ -46,6 +46,7 @@ which carries forward this exception.
 #include "server/zone/Zone.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sessions/SlicingSession.h"
 
 int ContainerComponent::canAddObject(SceneObject* sceneObject, SceneObject* object, int containmentType, String& errorDescription) {
 	if (sceneObject == object) {
@@ -138,6 +139,14 @@ bool ContainerComponent::transferObject(SceneObject* sceneObject, SceneObject* o
 
 	ManagedReference<SceneObject*> objParent = object->getParent();
 	ManagedReference<Zone*> objZone = object->getLocalZone();
+
+	if (object->containsActiveSession(SessionFacadeType::SLICING)) {
+		ManagedReference<Facade*> facade = object->getActiveSession(SessionFacadeType::SLICING);
+		ManagedReference<SlicingSession*> session = dynamic_cast<SlicingSession*>(facade.get());
+		if (session != NULL) {
+			session->cancelSession();
+		}
+	}
 
 	if (objParent != NULL || objZone != NULL) {
 		if (objParent != NULL)
