@@ -1,3 +1,5 @@
-includeFile("scripts/include/sui/SuiTemplate.lua")
-includeFile("scripts/include/sui/SuiListBox.lua")
-includeFile("scripts/include/sui/SuiSample.lua")
+package.path = package.path .. ";scripts/include/?.lua"
+
+require("sui.SuiTemplate")
+require("sui.SuiListBox")
+require("sui.SuiSample")

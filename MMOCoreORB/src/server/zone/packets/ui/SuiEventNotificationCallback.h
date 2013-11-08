@@ -12,7 +12,7 @@
 #include "server/zone/managers/sui/SuiManager.h"
 
 class SuiEventNotificationCallback : public MessageCallback {
-	uint32 opcode;
+	uint32 pageId;
 	uint32 cancel;
 	uint32 listSize1;
 	uint32 listSize2;
@@ -26,7 +26,7 @@ public:
 
 
 	void parse(Message* message) {
-		opcode = message->parseInt();
+		pageId = message->parseInt();
 
 		cancel = message->parseInt();
 		listSize1 = message->parseInt();
@@ -45,9 +45,9 @@ public:
 		if (playerClient == NULL)
 			return;
 
-		CreatureObject* playerCreature = cast<CreatureObject*>( playerClient.get());
+		CreatureObject* playerCreature = cast<CreatureObject*>(playerClient.get());
 
-		server->getSuiManager()->handleSuiEventNotification(opcode, playerCreature, cancel, &arguments);
+		server->getSuiManager()->handleSuiEventNotification(pageId, playerCreature, cancel, &arguments);
 	}
 };
 

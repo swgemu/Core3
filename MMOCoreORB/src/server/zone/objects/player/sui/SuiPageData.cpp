@@ -9,7 +9,10 @@
 #include "SuiPageData.h"
 #include "SuiCommand.h"
 #include "server/zone/ZoneClientSession.h"
-#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/packets/ui/SuiCreatePageMessage.h"
+
+AtomicInteger SuiPageData::lastId;
 
 void SuiPageData::setProperty(const String& widget, const String& property, const UnicodeString& value) {
 	SuiCommand* command = new SuiCommand(SuiCommand::SCT_setProperty);
@@ -126,6 +129,6 @@ bool SuiPageData::parseFromBinaryStream(ObjectInputStream* stream) {
 	return true;
 }
 
-void SuiPageData::sendTo(PlayerObject* player) {
-	player->getClient()->sendMessage(new SuiCreatePageMessage(this));
+void SuiPageData::sendTo(CreatureObject* creo) {
+	creo->getClient()->sendMessage(new SuiCreatePageMessage(this));
 }

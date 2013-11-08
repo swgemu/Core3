@@ -1,10 +1,10 @@
-23a2785 was Loshult, 3 weeks ago, message: [Changed] old man only spawns outside NPC cities and not when the player is in a building. [Added] LuaCityRegion. [Added] getCityRegionAt method to DirectorManager. [Added] withCityRegion method to ScreenPlay.
-36ab8b7 was Victor Popovici, 3 weeks ago, message: Merge "[fixed] mantis 3777 shellfish harvester cannot be used while moving" into unstable
-c57a9cc was Ivojedi, 3 weeks ago, message: [Adjusted] weapon dot chances, skill mod chances, and yellow chance/modifier to non-test values
-c01451a was Ivojedi, 3 weeks ago, message: [Fixed] typo in recruiter convo handler [Fixed] faction cost penalty now applies to neither side (instead of both) when neither side has control
-54a7e05 was Klivian, 3 weeks ago, message: [fixed] mantis 3777 shellfish harvester cannot be used while moving
-0c3bbf5 was Victor Popovici, 3 weeks ago, message: Merge "[added] SpaceTerrainAppearanceTemplate parsing" into unstable
-cc28fb7 was Victor Popovici, 3 weeks ago, message: [added] SpaceTerrainAppearanceTemplate parsing
-328a244 was Victor Popovici, 3 weeks ago, message: Merge "[Changed] Removed superfluous junk dealers in Coronet [Changed] Other junk dealers junk prefereneces changed to weapons " into unstable
-6e813a5 was Victor Popovici, 3 weeks ago, message: Merge "[Added] old man conversation and conversation handler." into unstable
-df83efc was Mack W, 3 weeks ago, message: [Changed] Removed superfluous junk dealers in Coronet [Changed] Other junk dealers junk prefereneces changed to weapons
+995f09a was Chris Rush, 4 hours ago, message: Merge branch 'unstable' of ssh://76.73.75.106/Core3 into unstable
+d667a04 was Chris Rush, 16 hours ago, message: [added] Base classes for SuiPageData and SuiCommand. [added] Lua SuiTemplates for common sui types. [added] Temporary stub added to JediManager to allow testing of new sui on character login. Change-Id: I93d580b0f501fe85b5b2aeb067dec3d70b1dcc91
+6a7ad59 was Victor Popovici, 22 hours ago, message: Merge "[Fixed] clone activation request now verifies that a location is actually a valid cloning facility before offering it as closest facility" into unstable
+34b0601 was Victor Popovici, 30 hours ago, message: [fixed] stability issue
+cd0f04f was Victor Popovici, 2 days ago, message: [fixed] stability issue
+a704472 was Ivojedi, 2 days ago, message: [Fixed] clone activation request now verifies that a location is actually a valid cloning facility before offering it as closest facility
+0e131bb was Victor Popovici, 2 days ago, message: Merge "[fixed] stability issue" into unstable
+f389c72 was Victor Popovici, 2 days ago, message: [fixed] stability issue
+fabb4c6 was Ivojedi, 2 days ago, message: [Fixed] retreat to no longer be applied to a group member that's riding a vehicle - mantis 4441
+8bfe670 was Ivojedi, 2 days ago, message: [Fixed] themepark reward weapons to not have random dots

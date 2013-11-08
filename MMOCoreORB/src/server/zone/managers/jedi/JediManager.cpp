@@ -103,13 +103,13 @@ void JediManager::onPlayerCreated(CreatureObject* creature) {
 
 void JediManager::onPlayerLoggedIn(CreatureObject* creature) {
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
+
 	Reference<LuaFunction*> luaOnPlayerLoggedIn = lua->createFunction(getJediManagerName(), "onPlayerLoggedIn", 0);
 	*luaOnPlayerLoggedIn << creature;
-
 	luaOnPlayerLoggedIn->callFunction();
 
 	Reference<LuaFunction*> testFunction = lua->createFunction("SuiSample", "onLoggedIn", 0);
-	*luaOnPlayerLoggedIn << creature;
+	*testFunction << creature;
 	testFunction->callFunction();
 }
 

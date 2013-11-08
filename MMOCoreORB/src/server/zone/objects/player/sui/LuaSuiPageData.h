@@ -20,8 +20,20 @@ public:
 	~LuaSuiPageData();
 
 	int _setObject(lua_State* L);
+
+	int sendTo(lua_State* L);
+	int setProperty(lua_State* L);
+	int addDataItem(lua_State* L);
+	int clearDataSource(lua_State* L);
+	int addDataSourceContainer(lua_State* L);
+	int clearDataSourceContainer(lua_State* L);
+	int addChildWidget(lua_State* L);
+	int subscribeToEvent(lua_State* L);
+	int subscribeToPropertyForEvent(lua_State* L);
+
 private:
 	Reference<SuiPageData*> realObject;
+
 };
 
 #endif /* LUASUIPAGEDATA_H_ */

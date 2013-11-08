@@ -13,14 +13,14 @@
 namespace server {
 	namespace zone {
 		namespace objects {
-			namespace player {
-				class PlayerObject;
+			namespace creature {
+				class CreatureObject;
 			}
 		}
 	}
 }
 
-using namespace server::zone::objects::player;
+using namespace server::zone::objects::creature;
 
 #include "SuiCommand.h"
 
@@ -57,7 +57,11 @@ public:
 	bool toBinaryStream(ObjectOutputStream* stream);
 	bool parseFromBinaryStream(ObjectInputStream* stream);
 
-	void sendTo(PlayerObject* player);
+	void sendTo(CreatureObject* creo);
+
+	inline String& getRootPage() {
+		return rootPage;
+	}
 
 private:
 	inline void init(const String& rootPage, const uint64& targetNetworkId, const float& forceCloseDistance) {

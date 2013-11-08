@@ -1,4 +1,4 @@
-require("scripts.include.sui.SuiTemplate")
+require("sui.SuiTemplate")
 
 SuiListBox = {}
 SuiListBox.new = function ()
@@ -31,6 +31,8 @@ SuiListBox.new = function ()
 	
 	self.add = function (text, value)
 		table.insert(data, {['text'] = text, ['value'] = value})
+		self.addDataItem("List.dataList", "Name", tostring(#data))
+		self.setProperty("List.dataList." .. tostring(#data), "Text", text)
 	end
 	
 	self.remove = function (index)
