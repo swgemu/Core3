@@ -109,6 +109,9 @@ void BuildingObjectImplementation::notifyLoadFromDatabase() {
 			}
 		}
 	}
+
+	if (isCivicStructure() && hasAccessFee())
+		removeAccessFee();
 }
 
 void BuildingObjectImplementation::notifyInsertToZone(Zone* zone) {
