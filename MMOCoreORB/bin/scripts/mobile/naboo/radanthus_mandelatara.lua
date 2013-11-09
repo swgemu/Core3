@@ -27,7 +27,7 @@ radanthus_mandelatara = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_commoner_naboo_human_male_02.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
