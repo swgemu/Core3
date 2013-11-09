@@ -173,7 +173,7 @@ rori = {
 	weatherEnabled = 1,
 
 	planetTravelPoints = {
-		{name = "Restuss Starport", x = 5394.64, z = 80, y = 5770.13, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1},
+		{name = "Restuss Starport", x = 5340, z = 80, y = 5734, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1},
 		{name = "Restuss Shuttleport", x = 5211, z = 80, y = 5791, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1},
 		{name = "Narmle Starport", x = -5374.0718, z = 80, y = -2188.6143, interplanetaryTravelAllowed = 1, incomingTravelAllowed = 1},
 		{name = "Narmle Shuttleport", x = -5255.4116, z = 80.664185, y = -2161.6274, interplanetaryTravelAllowed = 0, incomingTravelAllowed = 1},
