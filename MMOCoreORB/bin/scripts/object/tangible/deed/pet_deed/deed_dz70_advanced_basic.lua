@@ -47,6 +47,7 @@ object_tangible_deed_pet_deed_deed_dz70_advanced_basic = object_tangible_deed_pe
 
 	controlDeviceObjectTemplate = "object/intangible/pet/dz70_fugitive_tracker_droid.iff",
 	generatedObjectTemplate = "object/creature/npc/droid/crafted/dz_70_fugitive_tracker_droid_advanced.iff",
+	mobileTemplate = "dz70_crafted_advanced",
 
 	numberExperimentalProperties = {1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "SR", "UT", "XX", "XX", "SR", "UT", "OQ", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},

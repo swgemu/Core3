@@ -1,12 +1,12 @@
-r3_crafted = Creature:new {
+r3_crafted_advanced = Creature:new {
 	objectName = "@mob/creature_names:r3_crafted",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,
-	damageMin = 135,
-	damageMax = 150,
+	damageMin = 160,
+	damageMax = 170,
 	baseXp = 0,
 	baseHAM = 4000,
 	baseHAMmax = 4500,
@@ -27,11 +27,11 @@ r3_crafted = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-		"object/creature/npc/droid/crafted/r3_droid.iff"
+		"object/creature/npc/droid/crafted/r3_droid_advanced.iff"
 	},		
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 }
 
-CreatureTemplates:addCreatureTemplate(r3_crafted, "r3_crafted")
+CreatureTemplates:addCreatureTemplate(r3_crafted_advanced, "r3_crafted_advanced")
