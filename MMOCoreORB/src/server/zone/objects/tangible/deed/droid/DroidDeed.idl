@@ -58,6 +58,7 @@ import server.zone.templates.SharedObjectTemplate;
 class DroidDeed extends Deed {
 
 	protected string controlDeviceObjectTemplate;
+	protected string mobileTemplate;
 	
 	public DroidDeed() {
 		Logger.setLoggingName("DroidDeed");

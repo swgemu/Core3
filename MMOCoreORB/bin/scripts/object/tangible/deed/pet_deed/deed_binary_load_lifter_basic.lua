@@ -47,6 +47,7 @@ object_tangible_deed_pet_deed_deed_binary_load_lifter_basic = object_tangible_de
 
 	controlDeviceObjectTemplate = "object/intangible/pet/cll8_binary_load_lifter.iff",
 	generatedObjectTemplate = "object/creature/npc/droid/crafted/cll_8_binary_load_lifter.iff",
+	mobileTemplate = "cll8_binary_load_lifter_crafted",
 	
 	numberExperimentalProperties = {1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "SR", "UT", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX", "XX"},
