@@ -26,7 +26,7 @@ herald_tatooine_errik = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {},
+	templates = {"object/mobile/dressed_herald_tatooine_01.iff"},
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
