@@ -13,6 +13,7 @@
 class DroidDeedTemplate : public DeedTemplate {
 
 	String controlDeviceObjectTemplate;
+	String mobileTemplate;
 
 public:
 	DroidDeedTemplate() {
@@ -26,11 +27,17 @@ public:
 	void readObject(LuaObject* templateData) {
 		DeedTemplate::readObject(templateData);
 		controlDeviceObjectTemplate = templateData->getStringField("controlDeviceObjectTemplate");
+		mobileTemplate = templateData->getStringField("mobileTemplate");
     }
 
 	String getControlDeviceObjectTemplate()
 	{
 		return controlDeviceObjectTemplate;
+	}
+
+	String getMobileTemplate()
+	{
+		return mobileTemplate;
 	}
 };
 

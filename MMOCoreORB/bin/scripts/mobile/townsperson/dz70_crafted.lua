@@ -1,15 +1,15 @@
-r3_crafted = Creature:new {
-	objectName = "@mob/creature_names:r3_crafted",
+dz70_crafted = Creature:new {
+	objectName = "@mob/creature_names:dz70_fugitive_tracker_droid",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",
 	level = 4,
 	chanceHit = 0.24,
-	damageMin = 135,
-	damageMax = 150,
+	damageMin = 112,
+	damageMax = 118,
 	baseXp = 0,
-	baseHAM = 4000,
-	baseHAMmax = 4500,
+	baseHAM = 3000,
+	baseHAMmax = 3200,
 	armor = 0,
 	resists = {0,0,0,0,0,0,0,-1,-1},
 	meatType = "",
@@ -27,11 +27,11 @@ r3_crafted = Creature:new {
 	diet = HERBIVORE,
 
 	templates = {
-		"object/creature/npc/droid/crafted/r3_droid.iff"
+		"object/creature/npc/droid/crafted/dz_70_fugitive_tracker_droid.iff"
 	},		
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
 }
 
-CreatureTemplates:addCreatureTemplate(r3_crafted, "r3_crafted")
+CreatureTemplates:addCreatureTemplate(dz70_crafted, "dz70_crafted")

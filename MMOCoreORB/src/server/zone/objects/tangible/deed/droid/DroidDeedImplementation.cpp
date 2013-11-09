@@ -9,6 +9,9 @@
 #include"server/zone/ZoneServer.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
+#include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/templates/tangible/DroidDeedTemplate.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/creature/DroidObject.h"
@@ -22,6 +25,7 @@ void DroidDeedImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 		return;
 
 	controlDeviceObjectTemplate = deedData->getControlDeviceObjectTemplate();
+	mobileTemplate = deedData->getMobileTemplate();
 }
 
 void DroidDeedImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
@@ -96,11 +100,19 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		return 1;
 	}
 
-	Reference<DroidObject*> droid = (server->getZoneServer()->createObject(generatedObjectTemplate.hashCode(), 1)).castTo<DroidObject*>();
-	if (droid == NULL) {
-		player->sendSystemMessage("wrong droid object template " + generatedObjectTemplate);
+	Reference<CreatureManager*> creatureManager = player->getZone()->getCreatureManager();
+	if( creatureManager == NULL )
+		return 1;
+
+	Reference<CreatureObject*> creatureObject = creatureManager->createCreature(generatedObjectTemplate.hashCode(), true, mobileTemplate.hashCode() );
+	if( creatureObject == NULL ){
+		player->sendSystemMessage("wrong droid templates;mobileTemplate=[" + mobileTemplate + "];generatedObjectTemplate=[" + generatedObjectTemplate + "]" );
 		return 1;
 	}
+
+	Reference<DroidObject*> droid = creatureObject.castTo<DroidObject*>();
+	if( droid == NULL )
+		return 1;
 
 	StringId s;
 	s.setStringId(droid->getDisplayedName());
