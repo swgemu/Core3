@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_5ed83953",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-11-09T10:43:09Z",
+      "side": 1,
+      "message": "There is already a variable for these things:\n\ncommandMessageStrings\n\nand the methods are:\n\npublic void setCommandMessageString(unsigned int actionCRC, string message) {\n\t\tcommandMessageStrings.put(actionCRC, message);\n\t}\n\t\n\tpublic void removeCommandMessageString(unsigned int actionCRC) {\n\t\tcommandMessageStrings.drop(actionCRC);\n\t}",
+      "revId": "7991c77a02e6dc8be3b755c344484bb36d9c6cb0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
