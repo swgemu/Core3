@@ -16,6 +16,24 @@
       "revId": "7991c77a02e6dc8be3b755c344484bb36d9c6cb0",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_a9025109",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObject.idl",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 418
+      },
+      "writtenOn": "2013-11-10T19:32:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a437d4f_5ed83953",
+      "revId": "7991c77a02e6dc8be3b755c344484bb36d9c6cb0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
