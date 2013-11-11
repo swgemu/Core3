@@ -47,6 +47,7 @@ which carries forward this exception.
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/chat/ChatMessage.h"
 #include "CombatQueueCommand.h"
 
 class Intimidate1Command : public CombatQueueCommand {
@@ -76,7 +77,10 @@ public:
 		
 		if (res == GENERALERROR)
 			creature->sendSystemMessage("@combat_effects:intimidated_miss");
-
+		if (res == SUCCESS && creature->isPlayerCreature() && creature->getPlayerObject()->getCommandMessageString(String("intimidate1").hashCode()).isEmpty()==false) {
+			UnicodeString shout(creature->getPlayerObject()->getCommandMessageString(String("intimidate1").hashCode()));
+ 	 	 	server->getChatManager()->broadcastMessage(creature, shout, 0, 0, 80);
+		}
 		return res;
 	}
 

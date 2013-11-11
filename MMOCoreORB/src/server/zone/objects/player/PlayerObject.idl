@@ -1355,3 +1355,4 @@ class PlayerObject extends IntangibleObject {
 		return jediState > 2; //TODO: Implement jedi constants.
 	}
 }
+
