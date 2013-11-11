@@ -84,7 +84,7 @@ public:
 
 		ManagedReference<BuildingObject*> building = cast<BuildingObject*>( parent.get());
 
-		if (!building->isOnAdminList(player->getFirstName()) &&
+		if (!building->isOnAdminList(player) &&
 				!building->isOnPermissionList("VENDOR", player)) {
 			player->sendSystemMessage("@player_structure:drop_npc_vendor_perm"); // You don't have vendor permissions
 			return GENERALERROR;
