@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_b85e1811",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sessions/SlicingSessionImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-11-11T17:39:05Z",
+      "side": 1,
+      "message": "ManagedReference\u003cCreatureObject*\u003e strongReference \u003d player;\n\nif (strongReference !\u003d NULL) etc..\n\nsame for the tano",
+      "revId": "5e514688a7af75b0b3a5f64ed97f97d461834349",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
