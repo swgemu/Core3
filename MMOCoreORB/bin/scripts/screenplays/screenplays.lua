@@ -101,6 +101,7 @@ includeFile("cities/rori_restuss.lua")
 includeFile("cities/talus_dearic.lua")
 includeFile("cities/talus_nashal.lua")
 includeFile("cities/tatooine_mos_taike.lua")
+includeFile("cities/dantooine_mining_outpost.lua")
 
 -- POIs
 includeFile("poi/corellia_grand_theater_vreni_island.lua")
