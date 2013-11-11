@@ -114,14 +114,20 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 	if( droid == NULL )
 		return 1;
 
+	CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
+	Reference<CreatureTemplate*> creatureTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
+	if( creatureTemplate == NULL ){
+		player->sendSystemMessage("wrong droid template;mobileTemplate=[" + mobileTemplate + "]" );
+		return 1;
+	}
+
+	droid->loadTemplateData( creatureTemplate );
+
 	StringId s;
 	s.setStringId(droid->getDisplayedName());
 	controlDevice->setObjectName(s);
 	controlDevice->setPetType(PetControlDevice::DROIDPET);
-
 	droid->createChildObjects();
-	droid->setMaxCondition(1000); // @TODO Set appropriate condition from deed
-	droid->setConditionDamage(0);
 	controlDevice->setControlledObject(droid);
 	datapad->transferObject(controlDevice, -1);
 
