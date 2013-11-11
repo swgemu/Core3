@@ -42,12 +42,18 @@ void LootkitObjectImplementation::loadTemplateData(SharedObjectTemplate* templat
 	deleteComponents = LootkitData->getDeleteComponents();
 }
 
-ManagedWeakReference<CreatureObject*> LootkitObjectImplementation::getPlayer() {
-	return cast<CreatureObject*>(getParentRecursively(SceneObjectType::PLAYERCREATURE).get().get());
+Reference<CreatureObject*> LootkitObjectImplementation::getPlayer() {
+	ManagedReference<CreatureObject*> strong = getParentRecursively(SceneObjectType::PLAYERCREATURE).castTo<CreatureObject*>();
+	return strong.get();
 }
 
 int LootkitObjectImplementation::notifyObjectInserted(SceneObject* object) {
 	addToKit(object);
+	return 0;
+}
+
+int LootkitObjectImplementation::notifyObjectRemoved(SceneObject* object) {
+	removeFromKit(object);
 	return 0;
 }
 
@@ -58,13 +64,13 @@ void LootkitObjectImplementation::addToKit(SceneObject* object) {
 		if (hasObjectInContainer(object->getObjectID())) {
 
 			if (deleteComponents) {
-
-				if (getPlayer().get() == NULL)
+				ManagedReference<CreatureObject*> player = getPlayer();
+				if (player == NULL)
 					return;
 
-				getPlayer().get()->sendSystemMessage("@loot_kit:item_used");
+				player->sendSystemMessage("@loot_kit:item_used");
 
-				ManagedReference<SceneObject*> inventory = getPlayer().get()->getSlottedObject("inventory");
+				ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 				Locker locker(object);
 				Locker iLocker(inventory);
 				//removeObject(object, true);
@@ -81,6 +87,13 @@ void LootkitObjectImplementation::addToKit(SceneObject* object) {
 		}
 	}
 }
+void LootkitObjectImplementation::removeFromKit(SceneObject* object) {
+	uint32 crc = object->getServerObjectCRC();
+	if (!deleteComponents && components.contains(crc)) {
+		components.drop(crc);
+		components.put(crc,false);
+	}
+}
 
 void LootkitObjectImplementation::createItem() {
 	for (int i = 0; i<comps.size(); ++i) {
@@ -88,10 +101,10 @@ void LootkitObjectImplementation::createItem() {
 			return; // Still missing pieces
 		}
 	}
-	ManagedReference<CreatureObject*> player = getPlayer().get();
+	ManagedReference<CreatureObject*>  player = getPlayer();
 	if (player != NULL) {
 
-		getPlayer().get()->sendSystemMessage("@loot_kit:new_item_created");
+		player->sendSystemMessage("@loot_kit:new_item_created");
 
 		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 		ZoneServer* zoneServer = server->getZoneServer();
@@ -111,10 +124,10 @@ void LootkitObjectImplementation::createItem() {
 }
 
 int LootkitObjectImplementation::canAddObject(SceneObject* object, int containmentType, String& errorDescription) {
+	ManagedReference<CreatureObject*>  player = getPlayer();
 	if (components.contains(object->getServerObjectCRC())) {
-
-		if (!components.get(object->getServerObjectCRC()) && getPlayer().get() != NULL) {
-			ManagedReference<SceneObject*> inventory = getPlayer().get()->getSlottedObject("inventory");
+		if (!components.get(object->getServerObjectCRC()) && player != NULL) {
+			ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
 			if (inventory->hasFullContainerObjects()) {
 				errorDescription = "@error_message:inv_full";
@@ -125,7 +138,7 @@ int LootkitObjectImplementation::canAddObject(SceneObject* object, int containme
 
 		} else {
 
-			if (getPlayer().get() != NULL) {
+			if (player != NULL) {
 				errorDescription = "@loot_kit:already_contains";
 			}
 
@@ -133,7 +146,7 @@ int LootkitObjectImplementation::canAddObject(SceneObject* object, int containme
 		}
 	}
 
-	if (getPlayer().get() != NULL) {
+	if (player != NULL) {
 		errorDescription = "@loot_kit:incorrect_item";
 	}
 
