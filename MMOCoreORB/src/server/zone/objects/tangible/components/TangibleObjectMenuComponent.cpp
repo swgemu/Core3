@@ -24,14 +24,15 @@ void TangibleObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObjec
 	if(tano->isSliceable()) { // Check to see if the player has the correct skill level
 
 		bool hasSkill = true;
+		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
 
 		if ((gameObjectType == SceneObjectType::PLAYERLOOTCRATE || sceneObject->isContainerObject()) && !player->hasSkill("combat_smuggler_novice"))
 			hasSkill = false;
 		else if (sceneObject->isMissionTerminal() && !player->hasSkill("combat_smuggler_slicing_01"))
 			hasSkill = false;
-		else if (sceneObject->isWeaponObject() && !player->hasSkill("combat_smuggler_slicing_02"))
+		else if (sceneObject->isWeaponObject() && (!inventory->hasObjectInContainer(sceneObject->getObjectID()) || !player->hasSkill("combat_smuggler_slicing_02")))
 			hasSkill = false;
-		else if (sceneObject->isArmorObject() && !player->hasSkill("combat_smuggler_slicing_03"))
+		else if (sceneObject->isArmorObject() && (!inventory->hasObjectInContainer(sceneObject->getObjectID()) || !player->hasSkill("combat_smuggler_slicing_03")))
 			hasSkill = false;
 
 		if(hasSkill)
