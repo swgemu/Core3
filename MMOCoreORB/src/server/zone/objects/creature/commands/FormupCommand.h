@@ -102,6 +102,9 @@ public:
 				continue;
 
 			CreatureObject* memberPlayer = cast<CreatureObject*>( member.get());
+			if(memberPlayer->isAttackableBy(leader))
+				continue;
+
 			Locker clocker(memberPlayer, leader);
 
 			sendCombatSpam(memberPlayer);

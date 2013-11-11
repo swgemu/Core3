@@ -109,6 +109,10 @@ public:
 				continue;
 
 			ManagedReference<CreatureObject*> memberPlayer = cast<CreatureObject*>( member.get());
+
+			if(memberPlayer->isAttackableBy(leader))
+				continue;
+
 			Locker clocker(memberPlayer, leader);
 
 			ManagedReference<Buff*> buff = new Buff(memberPlayer, actionCRC, duration, BuffType::SKILL);

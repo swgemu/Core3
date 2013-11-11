@@ -122,6 +122,8 @@ public:
 				continue;				
 			
 			ManagedReference<CreatureObject*> memberPlayer = cast<CreatureObject*>( member.get());
+			if(memberPlayer->isAttackableBy(player))
+				continue;
 
 			Locker clocker(memberPlayer, player);
 

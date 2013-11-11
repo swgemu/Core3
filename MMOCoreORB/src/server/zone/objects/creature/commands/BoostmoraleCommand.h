@@ -110,6 +110,9 @@ public:
 				continue;
 
 			CreatureObject* memberPlayer = cast<CreatureObject*>( member.get());
+			if(memberPlayer->isAttackableBy(leader))
+				continue;
+
 			Locker clocker(memberPlayer, leader);
 
 			for (int j = 0; j < 9; j++) {
@@ -135,6 +138,9 @@ public:
 				continue;
 
 			CreatureObject* memberPlayer = cast<CreatureObject*>( member.get());
+
+			if(memberPlayer->isAttackableBy(leader))
+				continue;
 
 			Locker clocker(memberPlayer, leader);
 

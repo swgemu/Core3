@@ -127,7 +127,7 @@ public:
 
 			ManagedReference<CreatureObject*> memberPlayer = cast<CreatureObject*>( member.get());
 
-			if (!memberPlayer->isInCombat())
+			if (!memberPlayer->isInCombat() || memberPlayer->isAttackableBy(leader))
 				continue;
 
 			Locker clocker(memberPlayer, leader);
