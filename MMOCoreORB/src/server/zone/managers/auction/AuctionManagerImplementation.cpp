@@ -1233,6 +1233,12 @@ void AuctionManagerImplementation::getItemAttributes(CreatureObject* player, uin
 	AttributeListMessage* msg = new AttributeListMessage(objectid, description);
 
 	object->fillAttributeList(msg, player);
+
+	// For objects that don't fill the attribute list normally...
+	if (object->getAttributeListComponent() != NULL) {
+		object->getAttributeListComponent()->fillAttributeList(msg, player, object);
+	}
+
 	//msg->insertInt(0);
 	String templateFile = TemplateManager::instance()->getTemplateFile(object->getClientObjectCRC());
 	msg->insertAscii(templateFile);

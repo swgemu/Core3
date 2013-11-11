@@ -1376,6 +1376,12 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	@local
 	@read
+	public AttributeListComponent getAttributeListComponent() {
+		return attributeListComponent;
+	}
+
+	@local
+	@read
 	public DataObjectComponentReference getDataObjectComponent() {
 		return dataObjectComponent;
 	}
