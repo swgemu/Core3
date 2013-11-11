@@ -116,5 +116,5 @@
 #include "server/zone/objects/creature/aigroup/HerdGroup.h"
 #include "server/zone/objects/creature/aigroup/PackGroup.h"
 #include "server/zone/objects/creature/aigroup/LairGroup.h"
-
+#include "server/zone/objects/tangible/ticket/DungeonTicketObject.h"
 #endif /* OBJECTS_H_ */
