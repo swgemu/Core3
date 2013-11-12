@@ -38,5 +38,29 @@ function DantooineImperialOutpostScreenPlay:spawnMobiles()
 	spawnMobile("dantooine", "imperial_corporal", 450, -4204, 3, -2421, 0, 0)
 	spawnMobile("dantooine", "imperial_private", 450, -4241, 3, -2403, 300, 0)
 	spawnMobile("dantooine", "imperial_private", 450, -4198, 3, -2404, 240, 0)
+	spawnMobile("dantooine", "bek_rabor", 60, -4223.5, 3, -2386, 115, 0)
+	spawnMobile("dantooine", "businessman", 60, -4203, 3, -2357, 230, 0)
+	spawnMobile("dantooine", "businessman", 60, -4214.17, 3, -2394.5, 357.839, 0)
+	spawnMobile("dantooine", "businessman", 60, -4196.58, 3, -2425.71, 32.429, 0)
+	spawnMobile("dantooine", "cll8_binary_load_lifter", 60, -4244.24, 3, -2381.33, 238.12, 0)
+ 	spawnMobile("dantooine", "commoner", 60, -4234.61, 3, -2380.77, 150.893, 0)
+	spawnMobile("dantooine", "commoner", 60, -4244.41, 3, -2373.1, 149.71, 0)
+	spawnMobile("dantooine", "commoner", 60, -4272, 3, -2391, 117, 0)
+	spawnMobile("dantooine", "commoner", 60, -4258.64, 3, -2425.92, 281.664, 0)
+	spawnMobile("dantooine", "commoner", 60, -4229.36, 3, -2423.44, 122.777, 0)
+	spawnMobile("dantooine", "commoner", 60, -4210.71, 3, -2411.83, 81.6274, 0)
+	spawnMobile("dantooine", "commoner", 60, -4221.08, 3, -2370.49, 124.39, 0)
+	spawnMobile("dantooine", "commoner", 60, -4182.56, 3, -2422.72, 157.31, 0)
+	spawnMobile("dantooine", "commoner", 60, -4186.81, 3, -2388.66, 141.892, 0)
+	spawnMobile("dantooine", "juntah_herm", 60, -4222, 3, -2386.5, 300, 0)
+	spawnMobile("dantooine", "noble", 60, -4261, 3, -2384, 200, 0)
+	spawnMobile("dantooine", "imperial_recruiter", 0, -4197, 0, -2411, 270, 0)
+
+		--Left these in dantooine.lua because of the custom name etc
+	--{"noble", 60,-4223.6,3,-2409.3,345,0, "npc_use_terminal_high", ""},
+	--{"r4", 60,-4227.33,3,-2366.11,269.389,0, "calm", "R4-S7"},
+	--{"dantooine", "r5", 60,-4228.33,3,-2367.11,48.8478,0, "calm", "R5-L5"},
+	--{"dantooine", "insurgent" ,60,0,0,-5.7,0,1365878, "npc_imperial", ""},
+	
 
 end
