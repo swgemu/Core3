@@ -1,5 +1,5 @@
 surgical_droid_21b_crafted_advanced = Creature:new {
-	objectName = "@mob/creature_names:surgical_droid_21b",
+	objectName = "@droid_name:b_surgical_droid_crafted_advanced",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",

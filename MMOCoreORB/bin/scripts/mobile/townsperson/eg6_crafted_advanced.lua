@@ -1,5 +1,5 @@
 eg6_crafted_advanced = Creature:new {
-	objectName = "@mob/creature_names:eg6_power_droid_crafted",
+	objectName = "@droid_name:eg_6_power_droid_crafted_advanced",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",

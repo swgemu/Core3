@@ -1,5 +1,5 @@
 dz70_crafted = Creature:new {
-	objectName = "@mob/creature_names:dz70_fugitive_tracker_droid",
+	objectName = "@droid_name:dz_70_fugitive_tracker_crafted",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",

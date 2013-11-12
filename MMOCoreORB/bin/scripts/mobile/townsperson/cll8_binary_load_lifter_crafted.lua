@@ -1,5 +1,5 @@
 cll8_binary_load_lifter_crafted = Creature:new {
-	objectName = "@mob/creature_names:cll8_binary_load_lifter",
+	objectName = "@droid_name:cll_8_binary_load_lifter_crafted",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",

@@ -1,5 +1,5 @@
 c3p0_crafted = Creature:new {
-	objectName = "@mob/creature_names:protocol_droid_3po_crafted",
+	objectName = "@droid_name:po_crafted",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",

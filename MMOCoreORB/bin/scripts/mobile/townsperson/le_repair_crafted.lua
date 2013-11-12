@@ -1,5 +1,5 @@
 le_repair_crafted = Creature:new {
-	objectName = "@mob/creature_names:le_repair_droid",
+	objectName = "@droid_name:le_repair_droid_crafted",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",
