@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_ae725247",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/loot/LootkitObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-11-13T15:54:41Z",
+      "side": 1,
+      "message": "can you please change this to\n\nManagedWeakReference\u003cSceneObject*\u003e parent \u003d getParentRecursively(SceneObjectType::PLAYERCREATURE);\n\nreturn parent.get().castTo\u003cCreatureObject*\u003e().get();",
+      "revId": "63b59dbdcaec235347eddb00d735173099b75e28",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_8e8f8e23",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/loot/LootkitObjectImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-11-13T15:54:41Z",
+      "side": 1,
+      "message": "without the .get()",
+      "revId": "63b59dbdcaec235347eddb00d735173099b75e28",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
