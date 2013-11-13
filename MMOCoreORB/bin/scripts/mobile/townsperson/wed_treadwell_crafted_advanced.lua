@@ -1,5 +1,5 @@
 wed_treadwell_crafted_advanced = Creature:new {
-	objectName = "@mob/creature_names:wed_treadwell",
+	objectName = "@droid_name:wed_treadwell_crafted_advanced",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",

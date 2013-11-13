@@ -1,5 +1,5 @@
 r5_crafted_advanced = Creature:new {
-	objectName = "@mob/creature_names:r5_crafted",
+	objectName = "@droid_name:r5_crafted_advanced",
 	socialGroup = "",
 	pvpFaction = "",
 	faction = "",
