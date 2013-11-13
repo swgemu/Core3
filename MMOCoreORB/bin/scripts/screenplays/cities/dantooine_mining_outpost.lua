@@ -15,7 +15,6 @@ end
 function DantooineMiningOutpostScreenPlay:spawnMobiles()
 
 	--In The Cantina
-	spawnMobile("dantooine", "adwan_turoldine", 60, -9.3, 0.6, 3.1, 83, 6205565)
 	spawnMobile("dantooine", "businessman", 60, -8, 0.6, -6, 83, 6205566)
 
 	--Outside
@@ -42,21 +41,21 @@ function DantooineMiningOutpostScreenPlay:spawnMobiles()
 	spawnMobile("dantooine", "commoner", 60, -602, 3, 2506, 285, 0)
 	spawnMobile("dantooine", "commoner", 60, -568, 3, 2511, 51, 0)
 	spawnMobile("dantooine", "criminal", 300, -620, 3, 2450, 281, 0)
-	spawnMobile("dantooine", "fern_yarrow", 60, -625, 3, 2481, 119, 0)
-	spawnMobile("dantooine", "kess_yarrow", 60, -623, 3, 2481, 149, 0)
 	spawnMobile("dantooine", "mercenary", 300, -665, 3, 2462, 261, 0)
 	spawnMobile("dantooine", "mercenary", 300, -594, 3, 2500, 47, 0)
 	spawnMobile("dantooine", "mercenary", 300, -658, 3, 2480, 334, 0)
 	spawnMobile("dantooine", "mercenary", 300, -665, 3, 2465, 120, 0)
-	spawnMobile("dantooine", "r2", 60, -635, 3, 2503, 353, 0)
-	spawnMobile("dantooine", "r4", 60, -643, 3, 2506, 129, 0)
-	spawnMobile("dantooine", "r4", 60, -666, 3, 2494, 121, 0)
-	spawnMobile("dantooine", "imperial_colonel", 450, -588, 3, 2499, 264, 0)
-	spawnMobile("dantooine", "rane_yarrow", 60, -625, 3, 2479, 86, 0)
-	spawnMobile("dantooine", "stranded_imperial_soldier", 60, -604, 3, 2538, 200, 0)
-
-		--Left this in dantooine.lua 
+	
+	--Left these in dantooine.lua because of the custom name etc
+	--{"adwan_turoldine",60,-9.37871,0.625,2.98841,82.9313,6205565, "neutral", ""},
 	--{"quich_marae",60,1579.04,4,-6374.52,48.4898,0, "calm", "Quich Marae",JUNKJEDI,JUNKCONVQUICHDANTOOINE},
+	--{"kess_yarrow",60,-623.484,3,2481.77,149.192,0, "neutral", ""},
+	--{"rane_yarrow",60,-625.457,3,2479.41,86.8842,0, "neutral", ""},
+	--{"fern_yarrow",60,-625.684,3,2481.19,119.665,0, "neutral", ""},
+	--{"r2",60,-635.747,3,2503.81,353.861,0, "calm", "R2-H5"},
+	--{"r4",60,-643.739,3,2506.86,129.211,0, "calm", "R4-Y9"},
+	--{"r4",60,-666.582,3,2494.33,121.479,0, "calm", "R4-A2"},
+	--{"imperial_colonel", 450, -588.773, 3, 2499.09, 264.624, 0, "", ""},
 
 
 end
