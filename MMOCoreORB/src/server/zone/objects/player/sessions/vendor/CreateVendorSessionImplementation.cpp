@@ -30,13 +30,39 @@ int CreateVendorSessionImplementation::initializeSession() {
 		return 0;
 
 	if (player->containsActiveSession(SessionFacadeType::CREATEVENDOR)) {
-		player->sendSystemMessage("@player_structure:already_creating");
+		player->sendSystemMessage("@player_structure:already_creating"); // You are already creating a vendor.
 		return 0;
 
 	}
 
-	if (player->getPlayerObject()->getVendorCount() >= player->getSkillMod("manage_vendor")) {
-		player->sendSystemMessage("@player_structure:full_vendors");
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost == NULL)
+		return 0;
+
+	SortedVector<unsigned long long>* ownedVendors = ghost->getOwnedVendors();
+	for (int i = 0; i < ownedVendors->size(); i++) {
+		ManagedReference<SceneObject*> vendor = player->getZoneServer()->getObject(ownedVendors->elementAt(i));
+
+		if (vendor == NULL)
+			continue;
+
+		DataObjectComponentReference* data = vendor->getDataObjectComponent();
+		if(data == NULL || data->get() == NULL || !data->get()->isVendorData())
+			continue;
+
+		VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
+		if(vendorData == NULL)
+			continue;
+
+		if (!vendorData->isInitialized()) {
+			player->sendSystemMessage("@player_structure:already_creating"); // You are already creating a vendor.
+			return 0;
+		}
+	}
+
+	if (ghost->getVendorCount() >= player->getSkillMod("manage_vendor")) {
+		player->sendSystemMessage("@player_structure:full_vendors"); // You are already managing your maximum number of vendors. Fire someone or remove a terminal first!
 		cancelSession();
 		return 0;
 	}
