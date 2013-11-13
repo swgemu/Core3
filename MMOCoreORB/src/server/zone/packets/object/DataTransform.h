@@ -165,7 +165,22 @@ public:
 			ValidatedPosition pos;
 			pos.update(object);
 
-			bounceBack(object, pos);
+			Vector3 currentPos = pos.getPosition();
+			Vector3 newPos(positionX, positionY, positionZ);
+
+			object->setDirection(directionW, directionX, directionY, directionZ);
+
+			if (currentPos.squaredDistanceTo(newPos) > 0.01) {
+				bounceBack(object, pos);
+			} else {
+				ManagedReference<SceneObject*> currentParent = object->getParent();
+				bool light = objectControllerMain->getPriority() != 0x23;
+
+				if (currentParent != NULL)
+					object->updateZoneWithParent(currentParent, light);
+				else
+					object->updateZone(light);
+			}
 		}
 
 	}
