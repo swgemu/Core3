@@ -55,4 +55,8 @@ function DantooineMiningOutpostScreenPlay:spawnMobiles()
 	spawnMobile("dantooine", "rane_yarrow", 60, -625, 3, 2479, 86, 0)
 	spawnMobile("dantooine", "stranded_imperial_soldier", 60, -604, 3, 2538, 200, 0)
 
+		--Left this in dantooine.lua 
+	--{"quich_marae",60,1579.04,4,-6374.52,48.4898,0, "calm", "Quich Marae",JUNKJEDI,JUNKCONVQUICHDANTOOINE},
+
+
 end
