@@ -40,7 +40,7 @@ it is their choice whether to do so. The GNU Lesser General Public License
 gives permission to release a modified version without this exception;
 this exception also makes it possible to release a modified version
 which carries forward this exception.
-*/
+ */
 
 #ifndef DATATRANSFORMWITHPARENT_H_
 #define DATATRANSFORMWITHPARENT_H_
@@ -60,7 +60,7 @@ which carries forward this exception.
 class DataTransformWithParent : public ObjectControllerMessage {
 public:
 	DataTransformWithParent(SceneObject* creo)
-			: ObjectControllerMessage(creo->getObjectID(), 0x1B, 0xF1) {
+: ObjectControllerMessage(creo->getObjectID(), 0x1B, 0xF1) {
 
 		insertInt(creo->getMovementCounter());
 
@@ -90,34 +90,34 @@ class DataTransformWithParentCallback : public MessageCallback {
 	float parsedSpeed;
 
 	ObjectControllerMessageCallback* objectControllerMain;
-	
-//	taskqueue = 3;
+
+	//	taskqueue = 3;
 public:
 	DataTransformWithParentCallback(ObjectControllerMessageCallback* objectControllerCallback) :
 		MessageCallback(objectControllerCallback->getClient(), objectControllerCallback->getServer()) {
 
 		objectControllerMain = objectControllerCallback;
-		
-		
+
+
 		taskqueue = 3;
-		
-		 ManagedReference<SceneObject*> player = client->getPlayer();
-		 
-                 if (player != NULL) {
-                        Zone* zone = player->getLocalZone();
-                                    
-                         if (zone != NULL) {
-                             String zoneName = zone->getZoneName();
-                                                                           
-                              if (zoneName == "corellia")
-                                   taskqueue = 4;
-                              else if (zoneName == "tatooine")
-                                    taskqueue = 5;
-                               else if (zoneName == "naboo")
-                                        taskqueue = 6;
-                                                                                                                                                                                                      }
-                                                                                                                                                                                                                                                                                                                             }
-		                                                                                                                                                                                                                                                                                                                                                                 
+
+		ManagedReference<SceneObject*> player = client->getPlayer();
+
+		if (player != NULL) {
+			Zone* zone = player->getLocalZone();
+
+			if (zone != NULL) {
+				String zoneName = zone->getZoneName();
+
+				if (zoneName == "corellia")
+					taskqueue = 4;
+				else if (zoneName == "tatooine")
+					taskqueue = 5;
+				else if (zoneName == "naboo")
+					taskqueue = 6;
+			}
+		}
+
 	}
 
 	void parse(Message* message) {
@@ -155,7 +155,7 @@ public:
 
 		int posture = object->getPosture();
 		if(posture == CreaturePosture::UPRIGHT || posture == CreaturePosture::PRONE || posture == CreaturePosture::DRIVINGVEHICLE
-			|| posture == CreaturePosture::RIDINGCREATURE || posture == CreaturePosture::SKILLANIMATING ) {
+				|| posture == CreaturePosture::RIDINGCREATURE || posture == CreaturePosture::SKILLANIMATING ) {
 
 			updatePosition(object);
 		} else {
@@ -166,7 +166,19 @@ public:
 			ValidatedPosition pos;
 			pos.update(object);
 
-			bounceBack(object, pos);
+			Vector3 currentPos = pos.getPosition();
+			Vector3 newPos(positionX, positionY, positionZ);
+
+			object->setDirection(directionW, directionX, directionY, directionZ);
+
+			if (currentPos.squaredDistanceTo(newPos) > 0.01) {
+				bounceBack(object, pos);
+			} else {
+				if (objectControllerMain->getPriority() == 0x23)
+					object->updateZoneWithParent(object->getParent(), false);
+				else
+					object->updateZoneWithParent(object->getParent(), true);
+			}
 		}
 
 	}
@@ -311,9 +323,9 @@ public:
 			object->updateZoneWithParent(newParent, true);
 
 
-			object->setCurrentSpeed(parsedSpeed);
+		object->setCurrentSpeed(parsedSpeed);
 
-			object->updateLocomotion();
+		object->updateLocomotion();
 	}
 
 };
