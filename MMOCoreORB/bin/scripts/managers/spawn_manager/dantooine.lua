@@ -235,12 +235,28 @@ dantooine_regions = {
 }
 
 dantooine_static_spawns = {
+	{"adwan_turoldine",60,-9.37871,0.625,2.98841,82.9313,6205565, "neutral", ""},
 	{"dark_jedi_master",3600,-738.2,1.7,2103.9,55,0, "", ""},
-	{"quich_marae",60,1579.04,4,-6374.52,48.4898,0, "calm", "Quich Marae",JUNKJEDI,JUNKCONVQUICHDANTOOINE},
+	{"daiv_dekven",60,1603.42,4,-6434.54,102.877,0, "calm", "Daiv Dekven"},
+	{"fern_yarrow",60,-625.684,3,2481.19,119.665,0, "neutral", ""},
+	{"insurgent",60,0,0,-5.7,0,1365878, "npc_imperial", ""},
+	{"imperial_colonel",450,-588.773,3,2499.09,264.624,0, "", ""},
+	{"imperial_recruiter",0,-4197,0,-2411,270,0, "", ""},
+	{"kess_yarrow",60,-623.484,3,2481.77,149.192,0, "neutral", ""},
 	{"noble",60,-4223.6,3,-2409.3,345,0, "npc_use_terminal_high", ""},
+	{"quich_marae",60,1579.04,4,-6374.52,48.4898,0, "calm", "Quich Marae",JUNKJEDI,JUNKCONVQUICHDANTOOINE},
+	{"rane_yarrow",60,-625.457,3,2479.41,86.8842,0, "neutral", ""},
+	{"r2",60,-635.747,3,2503.81,353.861,0, "calm", "R2-H5"},
+	{"r2",60,1583.12,4,-6407.59,69.2539,0, "calm", "R2-Y8"},
+	{"r3",60,1592.98,4,-6400.58,80.56,0, "calm", "R3-M0"},
+	{"r4",60,-643.739,3,2506.86,129.211,0, "calm", "R4-Y9"},
+	{"r4",60,-666.582,3,2494.33,121.479,0, "calm", "R4-A2"},
 	{"r4",60,-4227.33,3,-2366.11,269.389,0, "calm", "R4-S7"},
 	{"r5",60,-4228.33,3,-2367.11,48.8478,0, "calm", "R5-L5"},
-	{"insurgent",60,0,0,-5.7,0,1365878, "npc_imperial", ""},
+	{"stranded_imperial_soldier",60,-604.016,3,2538.15,200.426,0, "npc_imperial", "Lt Nilsson (a Planet record keeper)"},
+	{"ussox",60,1635.07,4,-6402.37,321.844,0, "calm", "Ussox"},
+	{"yras_shen_jen",60,1572.26,4,-6417.06,75.0582,0, "neutral", ""},	
+	{"ytzosh",60,1636.98,4,-6402.56,321.838,0, "calm", "Ytzosh"},
 }
 
 dantooine_badges = {
