@@ -126,6 +126,7 @@ namespace server {
 		static int getCityRegionAt(lua_State* L);
 
 	private:
+		void setupLuaPackagePath(Lua* luaEngine);
 		void initializeLuaEngine(Lua* luaEngine);
 		int loadScreenPlays(Lua* luaEngine);
 		void loadJediManager(Lua* luaEngine);

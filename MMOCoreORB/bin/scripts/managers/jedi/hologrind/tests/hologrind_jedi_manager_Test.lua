@@ -1,13 +1,12 @@
 registerScreenPlay = spy.new(function() end)
 
-package.path = package.path .. ";scripts/managers/jedi/hologrind/?.lua"
-require("hologrind_jedi_manager")
+require("managers.jedi.hologrind.hologrind_jedi_manager")
 
 EXPECTEDNUMBEROFPROFESSIONSTOGRIND = 6
 EXPECTEDMAXIMUMNUMBEROFPROFESSIONSTOSHOWWITHHOLOCRON = 4
 
 describe("Hologrind Jedi Manager", function()
-	describe("Interface functions", function() 
+	describe("Interface functions", function()
 		describe("onPlayerCreated", function()
 			it("Should call the add hologrind profession method of the lua player object the defined number of times", function()
 				local creaturePointer = {}
@@ -16,7 +15,7 @@ describe("Hologrind Jedi Manager", function()
 				local getPlayerObjectSpy = spy.new(function() return playerPointer end)
 				local realWithCreaturePlayerObject = HologrindJediManager.withCreaturePlayerObject
 				HologrindJediManager.withCreaturePlayerObject = spy.new(function(pCreatureObject, performThisFunction)
-					return performThisFunction({ addHologrindProfession = addHologrindProfessionSpy }) 
+					return performThisFunction({ addHologrindProfession = addHologrindProfessionSpy })
 				end)
 
 				HologrindJediManager.onPlayerCreated(creaturePointer)
@@ -39,7 +38,7 @@ describe("Hologrind Jedi Manager", function()
 				HologrindJediManager:onPlayerLoggedIn(creaturePointer)
 
 				assert.spy(HologrindJediManager.checkIfProgressedToJedi).was.called_with(creaturePointer)
-		
+
 				HologrindJediManager.checkIfProgressedToJedi = realCheckIfProgressedToJedi
 				HologrindJediManager.registerObservers = realRegisterObservers
 			end)
@@ -54,14 +53,14 @@ describe("Hologrind Jedi Manager", function()
 				HologrindJediManager:onPlayerLoggedIn(creaturePointer)
 
 				assert.spy(HologrindJediManager.registerObservers).was.called_with(creaturePointer)
-		
+
 				HologrindJediManager.checkIfProgressedToJedi = realCheckIfProgressedToJedi
 				HologrindJediManager.registerObservers = realRegisterObservers
 			end)
 		end)
 
 		describe("useHolocron", function()
-			it("Should call sendHolocronMessage.", function() 
+			it("Should call sendHolocronMessage.", function()
 				local sceneObjectPointer = { "sceneObjectPointer" }
 				local creaturePointer = { "creaturePointer" }
 				local realSendHolocronMessage = HologrindJediManager.sendHolocronMessage
@@ -77,7 +76,7 @@ describe("Hologrind Jedi Manager", function()
 			end)
 
 			describe("When sendHolocronMessage returns false", function()
-				it("Should destroy the holocron.", function() 
+				it("Should destroy the holocron.", function()
 					local sceneObjectPointer = { "sceneObjectPointer" }
 					local creaturePointer = { "creaturePointer" }
 					local realSendHolocronMessage = HologrindJediManager.sendHolocronMessage
@@ -112,7 +111,7 @@ describe("Hologrind Jedi Manager", function()
 		end)
 	end)
 
-	describe("Private functions", function() 
+	describe("Private functions", function()
 		it("Should define the number of professions to master to 6", function()
 			assert.same(EXPECTEDNUMBEROFPROFESSIONSTOGRIND, NUMBEROFPROFESSIONSTOMASTER)
 		end)
@@ -208,7 +207,7 @@ describe("Hologrind Jedi Manager", function()
 		end)
 
 		describe("getNumberOfMasteredProfessions", function()
-			it("Should get the profession to master list for the player and count the number of mastered professions", function() 
+			it("Should get the profession to master list for the player and count the number of mastered professions", function()
 				local creaturePointer = { "creaturePointer" }
 				local getHologrindProfessionsSpy = spy.new(function() return { 1, 2, 3, 4 } end)
 				local hasBadgeSpy = spy.new(function(self, badgeNumber) return badgeNumber < 3 end)
@@ -254,7 +253,7 @@ describe("Hologrind Jedi Manager", function()
 		end)
 
 		describe("sendHolocronMessage", function()
-			it("Should send next profession message to the player if the number of mastered professions is below the threshold", function() 
+			it("Should send next profession message to the player if the number of mastered professions is below the threshold", function()
 				local creaturePointer = { "creaturePointer" }
 				local sendSystemMessageSpy = spy.new(function() end)
 				local sendSystemMessageWithTOSpy = spy.new(function() end)
@@ -267,11 +266,11 @@ describe("Hologrind Jedi Manager", function()
 				local realWithCreatureObject = HologrindJediManager.withCreatureObject
 				local realWithCreatureAndPlayerObject = HologrindJediManager.withCreatureAndPlayerObject
 				HologrindJediManager.getNumberOfMasteredProfessions = spy.new(function() return 2 end)
-				HologrindJediManager.withCreatureObject = spy.new(function(pCreatureObject, performThisFunction) 
-					return performThisFunction(creatureObject) 
+				HologrindJediManager.withCreatureObject = spy.new(function(pCreatureObject, performThisFunction)
+					return performThisFunction(creatureObject)
 				end)
-				HologrindJediManager.withCreatureAndPlayerObject = spy.new(function(pCreatureObject, performThisFunction) 
-					return performThisFunction(creatureObject, playerObject) 
+				HologrindJediManager.withCreatureAndPlayerObject = spy.new(function(pCreatureObject, performThisFunction)
+					return performThisFunction(creatureObject, playerObject)
 				end)
 
 				HologrindJediManager.sendHolocronMessage(creaturePointer)
@@ -287,7 +286,7 @@ describe("Hologrind Jedi Manager", function()
 				HologrindJediManager.withCreatureAndPlayerObject = realWithCreatureAndPlayerObject
 			end)
 
-			it("Should send find out on your own message to the player if the number of mastered professions is above the threshold", function() 
+			it("Should send find out on your own message to the player if the number of mastered professions is above the threshold", function()
 				local creaturePointer = { "creaturePointer" }
 				local sendSystemMessageSpy = spy.new(function() end)
 				local sendSystemMessageWithTOSpy = spy.new(function() end)
@@ -300,11 +299,11 @@ describe("Hologrind Jedi Manager", function()
 				local realWithCreatureObject = HologrindJediManager.withCreatureObject
 				local realWithCreatureAndPlayerObject = HologrindJediManager.withCreatureAndPlayerObject
 				HologrindJediManager.getNumberOfMasteredProfessions = spy.new(function() return 4 end)
-				HologrindJediManager.withCreatureObject = spy.new(function(pCreatureObject, performThisFunction) 
-					return performThisFunction(creatureObject) 
+				HologrindJediManager.withCreatureObject = spy.new(function(pCreatureObject, performThisFunction)
+					return performThisFunction(creatureObject)
 				end)
-				HologrindJediManager.withCreatureAndPlayerObject = spy.new(function(pCreatureObject, performThisFunction) 
-					return performThisFunction(creatureObject, playerObject) 
+				HologrindJediManager.withCreatureAndPlayerObject = spy.new(function(pCreatureObject, performThisFunction)
+					return performThisFunction(creatureObject, playerObject)
 				end)
 
 				HologrindJediManager.sendHolocronMessage(creaturePointer)
@@ -320,7 +319,7 @@ describe("Hologrind Jedi Manager", function()
 				HologrindJediManager.withCreatureAndPlayerObject = realWithCreatureAndPlayerObject
 			end)
 
-			it("Should return false if the number of mastered professions is below the threshold", function() 
+			it("Should return false if the number of mastered professions is below the threshold", function()
 				local creaturePointer = { "creaturePointer" }
 				local sendSystemMessageSpy = spy.new(function() end)
 				local sendSystemMessageWithTOSpy = spy.new(function() end)
@@ -333,11 +332,11 @@ describe("Hologrind Jedi Manager", function()
 				local realWithCreatureObject = HologrindJediManager.withCreatureObject
 				local realWithCreatureAndPlayerObject = HologrindJediManager.withCreatureAndPlayerObject
 				HologrindJediManager.getNumberOfMasteredProfessions = spy.new(function() return 2 end)
-				HologrindJediManager.withCreatureObject = spy.new(function(pCreatureObject, performThisFunction) 
-					return performThisFunction(creatureObject) 
+				HologrindJediManager.withCreatureObject = spy.new(function(pCreatureObject, performThisFunction)
+					return performThisFunction(creatureObject)
 				end)
-				HologrindJediManager.withCreatureAndPlayerObject = spy.new(function(pCreatureObject, performThisFunction) 
-					return performThisFunction(creatureObject, playerObject) 
+				HologrindJediManager.withCreatureAndPlayerObject = spy.new(function(pCreatureObject, performThisFunction)
+					return performThisFunction(creatureObject, playerObject)
 				end)
 
 				assert.is_not_true(HologrindJediManager.sendHolocronMessage(creaturePointer))
@@ -347,7 +346,7 @@ describe("Hologrind Jedi Manager", function()
 				HologrindJediManager.withCreatureAndPlayerObject = realWithCreatureAndPlayerObject
 			end)
 
-			it("Should return true if the number of mastered professions is above the threshold", function() 
+			it("Should return true if the number of mastered professions is above the threshold", function()
 				local creaturePointer = { "creaturePointer" }
 				local sendSystemMessageSpy = spy.new(function() end)
 				local sendSystemMessageWithTOSpy = spy.new(function() end)
@@ -360,11 +359,11 @@ describe("Hologrind Jedi Manager", function()
 				local realWithCreatureObject = HologrindJediManager.withCreatureObject
 				local realWithCreatureAndPlayerObject = HologrindJediManager.withCreatureAndPlayerObject
 				HologrindJediManager.getNumberOfMasteredProfessions = spy.new(function() return 4 end)
-				HologrindJediManager.withCreatureObject = spy.new(function(pCreatureObject, performThisFunction) 
-					return performThisFunction(creatureObject) 
+				HologrindJediManager.withCreatureObject = spy.new(function(pCreatureObject, performThisFunction)
+					return performThisFunction(creatureObject)
 				end)
-				HologrindJediManager.withCreatureAndPlayerObject = spy.new(function(pCreatureObject, performThisFunction) 
-					return performThisFunction(creatureObject, playerObject) 
+				HologrindJediManager.withCreatureAndPlayerObject = spy.new(function(pCreatureObject, performThisFunction)
+					return performThisFunction(creatureObject, playerObject)
 				end)
 
 				assert.is_true(HologrindJediManager.sendHolocronMessage(creaturePointer))

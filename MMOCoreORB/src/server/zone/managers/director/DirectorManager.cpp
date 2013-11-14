@@ -112,6 +112,18 @@ void DirectorManager::startGlobalScreenPlays() {
 	}
 }
 
+void DirectorManager::setupLuaPackagePath(Lua* luaEngine) {
+	lua_State* L = luaEngine->getLuaState();
+	lua_getglobal(L, "package");
+	lua_getfield(L, -1, "path");
+	String currentPath = lua_tostring(L, -1);
+	currentPath = currentPath.concat(";scripts/?.lua");
+	lua_pop(L, 1);
+	lua_pushstring(L, currentPath.toCharArray());
+	lua_setfield(L, -2, "path");
+	lua_pop(L, 1);
+}
+
 void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	if (DEBUG_MODE)
 		setLogging(true);
@@ -123,6 +135,8 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	luaEngine->setLoggingName("DirectorManagerLuaInstance");
 	luaEngine->setGlobalLogging(true);
 	luaEngine->setLogging(true);
+
+	setupLuaPackagePath(luaEngine);
 
 	lua_register(luaEngine->getLuaState(), "includeFile", includeFile);
 	lua_register(luaEngine->getLuaState(), "createEvent", createEvent);
@@ -1347,7 +1361,7 @@ int DirectorManager::spawnMobile(lua_State* L) {
 		lua_pushnil(L);
 	} else {
 		creature->updateDirection(Math::deg2rad(heading));
-		
+
 		if (creature->isAiAgent()) {
 			AiAgent* ai = cast<AiAgent*>(creature);
 			ai->setRespawnTimer(respawnTimer);
@@ -1717,11 +1731,11 @@ int DirectorManager::isZoneEnabled(lua_State* L) {
 	}
 
 	String zoneid = lua_tostring(L, -1);
-	
+
 	Zone* zone = ServerCore::getZoneServer()->getZone(zoneid);
-	
+
 	lua_pushboolean(L, (zone != NULL));
-	
+
 	return 1;
 }
 

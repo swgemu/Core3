@@ -1,32 +1,35 @@
+local OldMan = require("managers.jedi.village.old_man")
+
 local realCreateSpawnOldManEvent
 local realOldManBelongsToThePlayer
 local realScheduleDespawnOfOldMan
 local realGiveForceCrystalToPlayer
 
-local OldManMocks = {}
+local OldManMocks = OldMan
+OldManMocks.mocks = {}
 
-function OldManMocks.setup()
+function OldManMocks.mocks.setup()
 	realCreateSpawnOldManEvent = OldMan.createSpawnOldManEvent
 	realOldManBelongsToThePlayer = OldMan.oldManBelongsToThePlayer
 	realScheduleDespawnOfOldMan = OldMan.scheduleDespawnOfOldMan
 	realGiveForceCrystalToPlayer = OldMan.giveForceCrystalToPlayer
 end
 
-function OldManMocks.teardown()
+function OldManMocks.mocks.teardown()
 	OldMan.createSpawnOldManEvent = realCreateSpawnOldManEvent
 	OldMan.oldManBelongsToThePlayer = realOldManBelongsToThePlayer
 	OldMan.scheduleDespawnOfOldMan = realScheduleDespawnOfOldMan
 	OldMan.giveForceCrystalToPlayer = realGiveForceCrystalToPlayer
 end
 
-function OldManMocks.before_each()
+function OldManMocks.mocks.before_each()
 	OldMan.createSpawnOldManEvent = spy.new(function() end)
 	OldMan.oldManBelongsToThePlayer = spy.new(function() return false end)
 	OldMan.scheduleDespawnOfOldMan = spy.new(function() end)
 	OldMan.giveForceCrystalToPlayer = spy.new(function() end)
 end
 
-function OldManMocks.after_each()
+function OldManMocks.mocks.after_each()
 end
 
 return OldManMocks
