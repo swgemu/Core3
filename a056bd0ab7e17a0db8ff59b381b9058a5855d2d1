@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_f1215bb5",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/corellia_bela_vistal.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-11-14T20:45:28Z",
+      "side": 1,
+      "message": "60s is probably too fast for these troopers",
+      "revId": "a056bd0ab7e17a0db8ff59b381b9058a5855d2d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_1125ffc1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/cities/corellia_bela_vistal.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-11-14T20:45:28Z",
+      "side": 1,
+      "message": "60s is probably too fast for these stormtroopers",
+      "revId": "a056bd0ab7e17a0db8ff59b381b9058a5855d2d1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
