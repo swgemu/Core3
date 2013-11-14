@@ -1,5 +1,4 @@
-package.path = package.path .. ";scripts/screenplays?.lua"
-require("screenplay")
+require("screenplays.screenplay")
 
 USEDHOLOCRON = "used_holocron"
 HOLOCRONCOOLDOWNTIME = 24 * 60 * 60 * 1000 -- 24 hours
@@ -10,7 +9,7 @@ VillageJediManagerHolocron = ScreenPlay:new {}
 -- @param pCreatureObject pointer to the creature object of the player who tries to use the holocron.
 -- @return true if the player can use the holocron.
 function VillageJediManagerHolocron.canUseHolocron(pCreatureObject)
-	return VillageJediManagerHolocron.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject) 
+	return VillageJediManagerHolocron.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject)
 		return playerObject:isJedi() and not creatureObject:checkCooldownRecovery(USEDHOLOCRON)
 	end)
 end
@@ -28,7 +27,7 @@ end
 -- @param pSceneObject pointer to the scene object of the holocron.
 -- @param pCreatureObject pointer to the creature object of the player who is using the holocron.
 function VillageJediManagerHolocron.useTheHolocron(pSceneObject, pCreatureObject)
-	VillageJediManagerHolocron.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject) 
+	VillageJediManagerHolocron.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject)
 		-- The holocrom hums softly as you feel your Force power replenish.
 		creatureObject:sendSystemMessage("@jedi_spam:holocron_force_replenish")
 		playerObject:setForcePower(playerObject:getForcePowerMax());

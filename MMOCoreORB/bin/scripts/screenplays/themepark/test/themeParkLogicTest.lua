@@ -1,8 +1,6 @@
-package.path = package.path .. ";scripts/screenplays/themepark/?.lua"
-
 includeFile = spy.new(function() end)
 
-require("themeParkLogic")
+require("screenplays.themepark.themeParkLogic")
 
 describe("Theme Park Logic", function()
   it("Defines the purple color of waypoints to the value 5.", function()

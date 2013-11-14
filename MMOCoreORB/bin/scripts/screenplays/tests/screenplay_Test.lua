@@ -1,5 +1,4 @@
-package.path = package.path .. ";scripts/screenplays/?.lua"
-require("screenplay")
+require("screenplays.screenplay")
 
 describe("ScreenPlay", function()
 	it("Shall return nil if the creature object pointer is nil to the withCreatureAiAgent function.", function()
@@ -124,7 +123,7 @@ describe("ScreenPlay", function()
 		local getPlayerObjectSpy = spy.new(function() return pPlayerObject end)
 		local realLuaCreatureObject = LuaCreatureObject
 		LuaCreatureObject = spy.new(function() return { getPlayerObject = getPlayerObjectSpy } end)
-		local realLuaPlayerObject  = LuaPlayerObject 
+		local realLuaPlayerObject  = LuaPlayerObject
 		LuaPlayerObject = spy.new(function() return playerObjectCreated end)
 
 		ScreenPlay.withCreaturePlayerObject(pCreatureObject, function(playerObject) playerObjectArgument = playerObject end)
@@ -144,10 +143,10 @@ describe("ScreenPlay", function()
 		local creatureObjectCreated = { getPlayerObject = getPlayerObjectSpy }
 		local realLuaCreatureObject = LuaCreatureObject
 		LuaCreatureObject = spy.new(function() return creatureObjectCreated end)
-		local realLuaPlayerObject  = LuaPlayerObject 
+		local realLuaPlayerObject  = LuaPlayerObject
 		LuaPlayerObject = spy.new(function() return playerObjectCreated end)
 
-		ScreenPlay.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject) 
+		ScreenPlay.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject)
 			creatureObjectArgument = creatureObject
 			playerObjectArgument = playerObject
 		end)

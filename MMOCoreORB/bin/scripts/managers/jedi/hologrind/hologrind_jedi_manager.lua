@@ -1,5 +1,4 @@
-package.path = package.path .. ";scripts/managers/jedi/?.lua"
-JediManager = require("jedi_manager")
+JediManager = require("managers.jedi.jedi_manager")
 
 jediManagerName = "HologrindJediManager"
 
@@ -129,7 +128,7 @@ end
 -- Check if the player has mastered all hologrind professions and send sui window and award skills.
 -- @param pCreatureObject pointer to the creature object of the player to check the jedi progression on.
 function HologrindJediManager.checkIfProgressedToJedi(pCreatureObject)
-	if HologrindJediManager.getNumberOfMasteredProfessions(pCreatureObject) >= NUMBEROFPROFESSIONSTOMASTER and 
+	if HologrindJediManager.getNumberOfMasteredProfessions(pCreatureObject) >= NUMBEROFPROFESSIONSTOMASTER and
 	   not HologrindJediManager.isJedi(pCreatureObject) then
 		HologrindJediManager.sendSuiWindow(pCreatureObject)
 		HologrindJediManager.awardJediStatusAndSkill(pCreatureObject)
@@ -186,7 +185,7 @@ function HologrindJediManager.sendHolocronMessage(pCreatureObject)
 	else
 		HologrindJediManager.withCreatureAndPlayerObject(pCreatureObject, function(creatureObject, playerObject)
 			local professions = playerObject:getHologrindProfessions()
-			for i = 1, table.getn(professions), 1 do			
+			for i = 1, table.getn(professions), 1 do
 				if not playerObject:hasBadge(professions[i]) then
 					local professionText = HologrindJediManager.getProfessionStringIdFromBadgeNumber(professions[i])
 					creatureObject:sendSystemMessageWithTO("@jedi_spam:holocron_light_information", "@skl_n:" .. professionText)

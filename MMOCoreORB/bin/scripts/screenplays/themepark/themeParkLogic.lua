@@ -1,5 +1,4 @@
-package.path = package.path .. ";scripts/screenplays/?.lua"
-require("screenplay")
+require("screenplays.screenplay")
 
 WAYPOINT_COLOR_PURPLE = 5
 SIT = 1
@@ -42,10 +41,10 @@ function ThemeParkLogic:permissionObservers()
 		local permission = self.permissionMap[i]
 		self:setupPermissionGroups(permission)
 		local pRegion = getRegion(permission.planetName, permission.regionName)
-		
+
 		if pRegion ~= nil then
 			createObserver(ENTEREDAREA, self.className, "cellPermissionsObserver", pRegion)
-		end 
+		end
 	end
 end
 
@@ -72,7 +71,7 @@ function ThemeParkLogic:cellPermissionsObserver(pRegion, pCreature)
 	end
 
 	local creatureSceneObject = LuaSceneObject(pCreature)
-	
+
 	if creatureSceneObject:isCreatureObject() then
 		local region = LuaSceneObject(pRegion)
 		for i = 1, # self.permissionMap, 1 do
@@ -80,8 +79,8 @@ function ThemeParkLogic:cellPermissionsObserver(pRegion, pCreature)
 				self:setCellPermissions(self.permissionMap[i], pCreature)
 			end
 		end
-	end	
-	
+	end
+
 	return 0
 end
 
@@ -89,7 +88,7 @@ function ThemeParkLogic:setCellPermissions(permissions, pCreature)
 	if pCreature ~= nil then
 		local creature = LuaCreatureObject(pCreature)
 		local pGhost = creature:getPlayerObject()
-		if pGhost ~= nil then	
+		if pGhost ~= nil then
 			local ghost = LuaPlayerObject(pGhost)
 			for i = 1, # permissions.permissions, 1 do
 				if self:hasPermission(permissions.permissions[i].conditions, pCreature) == true then
@@ -130,7 +129,7 @@ function ThemeParkLogic:isInFaction(faction, pCreature)
 	end
 
 	local creature = LuaCreatureObject(pCreature)
-	
+
 	if creature:getFaction() == faction then
 		return true
 	else
@@ -160,9 +159,9 @@ function ThemeParkLogic:hasMissionState(mission, missionState, pCreature)
 	if pCreature == nil then
 		return false
 	end
-	
+
 	local npcNumber = self:getActiveNpcNumber(pCreature)
-	
+
 	if npcNumber > missionState then
 		return true
 	else
@@ -173,20 +172,20 @@ end
 function ThemeParkLogic:getNpcNumber(pNpc)
 	if pNpc == nil then
 		return 0
-	end	
+	end
 	local npc = LuaCreatureObject(pNpc)
-	
+
 	local x = npc:getPositionX()
 	local y = npc:getPositionY()
 	local z = npc:getPositionZ()
-	
+
 	for i = 1, # self.npcMap do
 		local npcData = self.npcMap[i].spawnData
 		if (math.abs(x - npcData.x) < 0.1) and (math.abs(z - npcData.z) < 0.1) and (math.abs(y - npcData.y) < 0.1) then
 			return self.npcMap[i].npcNumber
 		end
 	end
-	
+
 	return 1
 end
 
@@ -204,9 +203,9 @@ function ThemeParkLogic:getActiveNpcNumber(pConversingPlayer)
 	if pConversingPlayer == nil then
 		return -1
 	end
-	
+
 	local creature = LuaCreatureObject(pConversingPlayer)
-	
+
 	local npcNumber = 1
 	local activeNpcNumber = 1
 	for i = 1, 10, 1 do
@@ -223,7 +222,7 @@ function ThemeParkLogic:activeNpc(pConversingPlayer, pConversingNpc)
 	if pConversingPlayer == nil then
 		return -1
 	end
-	
+
 	local npcNumber = self:getNpcNumber(pConversingNpc)
 	local activeNpcNumber = self:getActiveNpcNumber(pConversingPlayer)
 	return npcNumber - activeNpcNumber
@@ -237,9 +236,9 @@ function ThemeParkLogic:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 
 	local npcData = self:getNpcData(npcNumber)
 	if npcData ~= nil then
-		local npcName = npcData.spawnData.npcTemplate	
+		local npcName = npcData.spawnData.npcTemplate
 		local numberOfMissionsTotal = table.getn(npcData.missions)
-		
+
 		local missionsCompleted = 0
 		local stateToCheck = 1
 		for i = 1, numberOfMissionsTotal, 1 do
@@ -248,7 +247,7 @@ function ThemeParkLogic:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 				missionsCompleted = missionsCompleted + 1
 			end
 		end
-		
+
 		return missionsCompleted + 1
 	else
 		return 0
@@ -260,17 +259,17 @@ function ThemeParkLogic:missionStatus(pConversingPlayer)
 		return 0
 	end
 	local creature = LuaCreatureObject(pConversingPlayer)
-	
+
 	return readData(creature:getObjectID() .. ":activeMission")
 end
 
-function ThemeParkLogic:getStfFile(npcNumber)	
+function ThemeParkLogic:getStfFile(npcNumber)
 	local npcData = self:getNpcData(npcNumber)
 
 	return npcData.stfFile
 end
 
-function ThemeParkLogic:getHasWaypointNames(npcNumber)	
+function ThemeParkLogic:getHasWaypointNames(npcNumber)
 	local npcData = self:getNpcData(npcNumber)
 
 	return npcData.hasWaypointNames
@@ -281,7 +280,7 @@ function ThemeParkLogic:handleMissionAccept(npcNumber, missionNumber, pConversin
 	local creature = LuaCreatureObject(pConversingPlayer)
 
 	writeStringData(creature:getObjectID() .. ":activeScreenPlay", self.className)
-	
+
 	if mission.missionType == "deliver" then
 		return self:handleDeliverMissionAccept(mission, pConversingPlayer, missionNumber)
 	elseif mission.missionType == "escort" then
@@ -299,20 +298,20 @@ function ThemeParkLogic:writeData(pConversingPlayer, dataName, value)
 	if pConversingPlayer == nil then
 		return
 	end
-	
+
 	local creature = LuaCreatureObject(pConversingPlayer)
 	writeData(creature:getObjectID() .. dataName, value)
 end
 
 function ThemeParkLogic:getMission(npcNumber, missionNumber)
 	local npcData = self:getNpcData(npcNumber)
-	
+
 	if (npcData == nil) then
 		printf("null npcData in ThemeParkLogic:getMission for %s", self.className);
 	end
-	
+
 	local missions = npcData.missions
-	
+
 	return missions[missionNumber]
 end
 
@@ -374,9 +373,9 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 	if table.getn(spawnPoints) ~= numberOfSpawns then
 		return false
 	end
-	
+
 	writeData(creature:getObjectID() .. ":missionSpawns", numberOfSpawns)
-	
+
 	local mainNpcs = mission.primarySpawns
 	for i = 1, table.getn(mission.primarySpawns), 1 do
 		local pNpc = self:spawnNpc(mainNpcs[i], spawnPoints[i], pConversingPlayer, i)
@@ -403,12 +402,12 @@ function ThemeParkLogic:spawnMissionNpcs(mission, pConversingPlayer)
 			end
 		end
 	end
-	
+
 	local secondaryNpcs = mission.secondarySpawns
 	for i = 1 + table.getn(mission.primarySpawns), numberOfSpawns, 1 do
 		self:spawnNpc(secondaryNpcs[i - table.getn(mission.primarySpawns)], spawnPoints[i], pConversingPlayer, i)
 	end
-	
+
 	return true
 end
 
@@ -419,7 +418,7 @@ function ThemeParkLogic:notifyDefeatedTargetWithLoot(pVictim, pAttacker)
 
 	local victim = LuaCreatureObject(pVictim)
 	local attacker = LuaCreatureObject(pAttacker)
-	
+
 	local victimID = victim:getObjectID()
 	local attackerID = attacker:getObjectID()
 
@@ -441,7 +440,7 @@ function ThemeParkLogic:notifyDefeatedTargetWithLoot(pVictim, pAttacker)
 	for j = 1, # requiredItems, 1 do
 		for i = 0, numberOfItems - 1, 1 do
 			local pItem = inventory:getContainerObject(i)
-			
+
 			if pItem ~= nil then
 				local item = LuaSceneObject(pItem)
 
@@ -489,11 +488,11 @@ function ThemeParkLogic:lootedByCorrectPlayer(itemID, looterID)
 	end
 end
 
-function ThemeParkLogic:getMissionLootCount(pLooter)	
+function ThemeParkLogic:getMissionLootCount(pLooter)
 	local npcNumber = self:getActiveNpcNumber(pLooter)
 	local missionNumber = self:getCurrentMissionNumber(npcNumber, pLooter)
 	local mission = self:getMission(npcNumber, missionNumber)
-	
+
 	if mission.missionType == "confiscate" then
 		return table.getn(mission.itemSpawns)
 	else
@@ -508,19 +507,19 @@ function ThemeParkLogic:notifyDefeatedTarget(pVictim, pAttacker)
 
 	local victim = LuaCreatureObject(pVictim)
 	local attacker = LuaCreatureObject(pAttacker)
-	
+
 	local victimID = victim:getObjectID()
 	local attackerID = attacker:getObjectID()
-	
+
 	if self:killedByCorrectPlayer(victimID, attackerID) == true then
 		local currentKillCount = readData(attackerID .. ":killedMissionNpcs") + 1
 		writeData(attackerID .. ":killedMissionNpcs", currentKillCount)
-		
+
 		if currentKillCount == self:getMissionKillCount(pAttacker) then
 			self:completeMission(pAttacker)
 		end
 	end
-	
+
 	return 1
 end
 
@@ -531,26 +530,26 @@ function ThemeParkLogic:notifyDamagedTarget(pTarget, pAttacker, damage)
 	local npcNumber = self:getActiveNpcNumber(pAttacker)
 	local missionNumber = self:getCurrentMissionNumber(npcNumber, pAttacker)
 	local stfFile = self:getStfFile(npcNumber)
-	
+
 	local attacker = LuaCreatureObject(pAttacker)
 	local target = LuaCreatureObject(pTarget)
-	
+
 	local targetID = target:getObjectID()
 	local attackerID = attacker:getObjectID()
-	
+
 	if self:killedByCorrectPlayer(targetID, attackerID) == true then
 		spatialChat(pTarget, stfFile .. ":npc_breech_" .. missionNumber)
 		return 1
 	end
-	
+
 	return 0
 end
 
-function ThemeParkLogic:getMissionKillCount(pAttacker)	
+function ThemeParkLogic:getMissionKillCount(pAttacker)
 	local npcNumber = self:getActiveNpcNumber(pAttacker)
 	local missionNumber = self:getCurrentMissionNumber(npcNumber, pAttacker)
 	local mission = self:getMission(npcNumber, missionNumber)
-	
+
 	if mission.missionType == "assassinate" then
 		return table.getn(mission.primarySpawns)
 	else
@@ -570,14 +569,14 @@ function ThemeParkLogic:spawnNpc(npcTemplate, position, pConversingPlayer, spawn
 	if pConversingPlayer == nil then
 		return nil
 	end
-	
+
 	local pNpc = spawnMobile(npcTemplate.planetName, npcTemplate.npcTemplate, 0, position[1], position[2], position[3], math.random(-180, 180), position[4])
-	
+
 	if pNpc ~= nil then
 		local npc = LuaCreatureObject(pNpc)
 		local npcName = self:getNpcName(npcTemplate.npcName)
 		npc:setCustomObjectName(npcName)
-		
+
 		local creature = LuaCreatureObject(pConversingPlayer)
 
 		writeData(creature:getObjectID() .. ":missionSpawn:no" .. spawnNumber, npc:getObjectID())
@@ -599,19 +598,19 @@ function ThemeParkLogic:giveMissionItems(mission, pConversingPlayer)
 
 	local creature = LuaCreatureObject(pConversingPlayer)
 	writeData(creature:getObjectID() .. ":activeMission", 1)
-	
+
 	local itemsToGive = mission.itemSpawns
-	
+
 	local pInventory = creature:getSlottedObject("inventory")
 	if pInventory == nil then
 		return
 	end
-	
+
 	writeData(creature:getObjectID() .. ":missionItems", table.getn(itemsToGive))
-	
+
 	for i = 1, table.getn(itemsToGive), 1 do
 		local pItem = giveItem(pInventory, itemsToGive[i].itemTemplate, -1)
-		
+
 		if (pItem ~= nil) then
 			local item = LuaSceneObject(pItem)
 			item:setCustomObjectName(itemsToGive[i].itemName)
@@ -624,13 +623,13 @@ function ThemeParkLogic:getMissionDescription(pConversingPlayer, direction)
 	local activeNpcNumber = self:getActiveNpcNumber(pConversingPlayer)
 	local missionNumber = self:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
 	local creature = LuaCreatureObject(pConversingPlayer)
-	
+
 	local npcNumber = 1
 	while (npcNumber < activeNpcNumber) do
 		missionNumber = missionNumber + table.getn(self:getNpcData(npcNumber).missions)
 		npcNumber = npcNumber * 2
 	end
-	
+
 	if self.missionDescriptionStf == "" then
 		local wpNames = self:getHasWaypointNames(activeNpcNumber)
 		local currentMissionNumber = self:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
@@ -714,7 +713,7 @@ end
 
 function ThemeParkLogic:getSpawnPoints(numberOfSpawns, x, y, pConversingPlayer)
 	local spawnPoints = {}
-	
+
 	local spawnDistance = self.distance
 
 	local firstSpawnPoint = getSpawnPoint(pConversingPlayer, x, y, spawnDistance, (spawnDistance/2)*3)
@@ -727,7 +726,7 @@ function ThemeParkLogic:getSpawnPoints(numberOfSpawns, x, y, pConversingPlayer)
 			end
 		end
 	end
-	
+
 	return spawnPoints
 end
 
@@ -737,22 +736,22 @@ function ThemeParkLogic:hasRequiredItem(pConversingPlayer)
 	end
 
 	local creature = LuaCreatureObject(pConversingPlayer)
-	
+
 	local pInventory = creature:getSlottedObject("inventory")
 	if pInventory == nil then
 		return false
 	end
 
 	local inventory = LuaSceneObject(pInventory)
-	
+
 	local itemID = readData(creature:getObjectID() .. ":missionItem:no1")
-		
+
 	local pItem = inventory:getContainerObjectById(itemID)
-	
+
 	if pItem == nil then
 		return false
 	end
-	
+
 	return true
 end
 
@@ -762,12 +761,12 @@ function ThemeParkLogic:hasLootedRequiredItem(activeNpcNumber, pConversingPlayer
 	end
 
 	local creature = LuaCreatureObject(pConversingPlayer)
-	
+
 	local pInventory = creature:getSlottedObject("inventory")
 	if pInventory == nil then
 		return false
 	end
-	
+
 	local inventory = LuaSceneObject(pInventory)
 
 	local numberOfItems = inventory:getContainerObjectsSize()
@@ -779,7 +778,7 @@ function ThemeParkLogic:hasLootedRequiredItem(activeNpcNumber, pConversingPlayer
 		unmatchedItems = unmatchedItems + 1
 		for i = 0, numberOfItems - 1, 1 do
 			local pItem = inventory:getContainerObject(i)
-			
+
 			if pItem ~= nil then
 				local item = LuaSceneObject(pItem)
 				if requiredItems[j].itemTemplate == item:getTemplateObjectPath() and requiredItems[j].itemName == item:getCustomObjectName() then
@@ -790,7 +789,7 @@ function ThemeParkLogic:hasLootedRequiredItem(activeNpcNumber, pConversingPlayer
 			end
 		end
 	end
-	
+
 	if unmatchedItems == 0 then
 		for i = 1, # itemsToDestroy, 1 do
 			itemsToDestroy[i]:destroyObjectFromWorld()
@@ -805,7 +804,7 @@ end
 function ThemeParkLogic:getRequiredItem(activeNpcNumber, pConversingPlayer)
 	local missionNumber = self:getCurrentMissionNumber(activeNpcNumber, pConversingPlayer)
 	local mission = self:getMission(activeNpcNumber, missionNumber)
-	
+
 	return mission.itemSpawns
 end
 
@@ -832,7 +831,7 @@ function ThemeParkLogic:completeMission(pConversingPlayer)
 	if pConversingPlayer == nil then
 		return
 	end
-	
+
 	local creature = LuaCreatureObject(pConversingPlayer)
 
 	local npcNumber = self:getActiveNpcNumber(pConversingPlayer)
@@ -859,7 +858,7 @@ function ThemeParkLogic:handleMissionReward(pConversingPlayer)
 	local missionNumber = self:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 	local mission = self:getMission(npcNumber, missionNumber)
 	local rewards = mission.rewards
-	
+
 	for i = 1, # rewards, 1 do
 		local reward = rewards[i]
 		if reward.rewardType == "credits" then
@@ -880,10 +879,10 @@ function ThemeParkLogic:givePermission(pConversingPlayer, permissionGroup)
 	if pConversingPlayer == nil then
 		return
 	end
-	
+
 	local creature = LuaCreatureObject(pConversingPlayer)
 	local pGhost = creature:getPlayerObject()
-	
+
 	if pGhost ~= nil then
 		local ghost = LuaPlayerObject(pGhost)
 		ghost:addPermissionGroup(permissionGroup, true)
@@ -894,10 +893,10 @@ function ThemeParkLogic:giveBadge(pConversingPlayer, badge)
 	if pConversingPlayer == nil then
 		return
 	end
-	
+
 	local creature = LuaCreatureObject(pConversingPlayer)
 	local pGhost = creature:getPlayerObject()
-	
+
 	if pGhost ~= nil then
 		local ghost = LuaPlayerObject(pGhost)
 		ghost:awardBadge(badge)
@@ -909,12 +908,12 @@ function ThemeParkLogic:giveLoot(pConversingPlayer, lootGroup)
 		return
 	end
 	local creature = LuaCreatureObject(pConversingPlayer)
-	
+
 	local pInventory = creature:getSlottedObject("inventory")
 	if pInventory == nil then
 		return
 	end
-	
+
 	createLoot(pInventory, lootGroup, 0, true)
 	creature:sendSystemMessage("@theme_park/messages:theme_park_reward")
 end
@@ -924,7 +923,7 @@ function ThemeParkLogic:giveCredits(pConversingPlayer, amount)
 		return
 	end
 	local creature = LuaCreatureObject(pConversingPlayer)
-	
+
 	creature:addCashCredits(amount, true)
 	creature:sendSystemMessageWithDI("@theme_park/messages:theme_park_credits_pp", amount)
 end
@@ -936,7 +935,7 @@ function ThemeParkLogic:giveFaction(pConversingPlayer, faction, points)
 	local creature = LuaCreatureObject(pConversingPlayer)
 	local pPlayerObject = creature:getSlottedObject("ghost")
 	local playerObject = LuaPlayerObject(pPlayerObject)
-	
+
 	playerObject:increaseFactionStanding(faction, points)
 end
 
@@ -945,12 +944,12 @@ function ThemeParkLogic:giveItem(pConversingPlayer, itemList)
 		return
 	end
 	local creature = LuaCreatureObject(pConversingPlayer)
-	
+
 	local pInventory = creature:getSlottedObject("inventory")
 	if pInventory == nil then
 		return
 	end
-	
+
 	for currentItem = 1, # itemList, 1 do
 		local thisItem = itemList[currentItem]
 		local itemTemplate = thisItem.itemTemplate
@@ -970,17 +969,17 @@ function ThemeParkLogic:cleanUpMission(pConversingPlayer)
 	self:removeWaypoint(pConversingPlayer)
 
 	local creature = LuaCreatureObject(pConversingPlayer)
-	
+
 	local numberOfSpawns = readData(creature:getObjectID() .. ":missionSpawns")
 	for i = 1, numberOfSpawns, 1 do
 		local objectID = readData(creature:getObjectID() .. ":missionSpawn:no" .. i)
 		local pNpc = getSceneObject(objectID)
-			
+
 		if pNpc ~= nil then
 			local npc = LuaSceneObject(pNpc)
 			npc:destroyObjectFromWorld()
 		end
-	end	
+	end
 end
 
 function ThemeParkLogic:removeDeliverItem(pConversingPlayer)
@@ -989,18 +988,18 @@ function ThemeParkLogic:removeDeliverItem(pConversingPlayer)
 	end
 
 	local creature = LuaCreatureObject(pConversingPlayer)
-			
+
 	local pInventory = creature:getSlottedObject("inventory")
 	if pInventory == nil then
 		return false
 	end
 
 	local inventory = LuaSceneObject(pInventory)
-	
+
 	local numberOfItems = readData(creature:getObjectID() .. ":missionItems")
 	for i = 1, numberOfItems, 1 do
 		local itemID = readData(creature:getObjectID() .. ":missionItem:no" .. i)
-			
+
 		local pItem = inventory:getContainerObjectById(itemID)
 		if pItem ~= nil then
 			local item = LuaSceneObject(pItem)
@@ -1014,17 +1013,17 @@ function ThemeParkLogic:goToNextMission(pConversingPlayer)
 	if pConversingPlayer == nil then
 		return
 	end
-	
+
 	local npcNumber = self:getActiveNpcNumber(pConversingPlayer)
 	local missionNumber = self:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 	local npcData = self:getNpcData(npcNumber)
-	local npcName = npcData.spawnData.npcTemplate	
-	
+	local npcName = npcData.spawnData.npcTemplate
+
 	local creature = LuaCreatureObject(pConversingPlayer)
 	writeData(creature:getObjectID() .. ":activeMission", 0)
 	writeStringData(creature:getObjectID() .. ":activeScreenPlay", "")
 	creature:setScreenPlayState(math.pow(2, missionNumber - 1), self.screenPlayState .. "_mission_" .. npcName)
-	
+
 	if missionNumber == table.getn(npcData.missions) then
 		creature:setScreenPlayState(npcNumber, self.screenPlayState)
 	end
@@ -1041,11 +1040,11 @@ function ThemeParkLogic:getMissionType(activeNpcNumber, pConversingPlayer)
 	if pConversingPlayer == nil then
 		return
 	end
-	
+
 	local npcNumber = self:getActiveNpcNumber(pConversingPlayer)
 	local missionNumber = self:getCurrentMissionNumber(npcNumber, pConversingPlayer)
 	local mission = self:getMission(npcNumber, missionNumber)
-	
+
 	return mission.missionType
 end
 
@@ -1056,16 +1055,16 @@ function ThemeParkLogic:escortedNpcCloseEnough(pConversingPlayer)
 
 	local creature = LuaCreatureObject(pConversingPlayer)
 	local playerSceneObject = LuaSceneObject(pConversingPlayer)
-	
+
 	local objectID = readData(creature:getObjectID() .. ":missionSpawn:no1")
 	local pNpc = getSceneObject(objectID)
-			
+
 	if pNpc ~= nil then
 		if playerSceneObject:getDistanceTo(pNpc) < 64 then
 			return true
 		end
 	end
-	
+
 	return false
 end
 
@@ -1073,10 +1072,10 @@ function ThemeParkLogic:resetCurrentMission(pConversingPlayer)
 	if pConversingPlayer == nil then
 		return
 	end
-	
+
 	local creature = LuaCreatureObject(pConversingPlayer)
 	writeData(creature:getObjectID() .. ":activeMission", 0)
 	writeStringData(creature:getObjectID() .. ":activeScreenPlay", "")
-	
+
 	self:cleanUpMission(pConversingPlayer)
 end

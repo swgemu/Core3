@@ -1,5 +1,4 @@
-package.path = package.path .. ";scripts/screenplays/?.lua"
-JediManager = require("screenplay")
+JediManager = require("screenplays.screenplay")
 
 NOJEDIPROGRESSION = 0
 HOLOGRINDJEDIPROGRESSION = 1

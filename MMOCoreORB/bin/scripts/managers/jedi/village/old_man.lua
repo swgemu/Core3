@@ -1,5 +1,23 @@
-package.path = package.path .. ";scripts/screenplays?.lua"
-require("screenplay")
+local ScreenPlay = require("screenplays.screenplay")
+local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
+
+local OldMan = {}
+OldManPublicEventsAndObservers = {}
+local OldManPrivate = ScreenPlay:new {}
+
+-- Expose private functions for testing.
+function OldMan.exposePrivateFunctions()
+	if BUSTED_TEST then
+		OldMan.private = OldManPrivate
+		OldMan.global = OldManPublicEventsAndObservers
+	end
+end
+
+-- Hide private functions.
+function OldMan.hidePrivateFunctions()
+	OldMan.private = {}
+	OldMan.global = {}
+end
 
 OLD_MAN_MIN_SPAWN_DISTANCE = 32
 OLD_MAN_MAX_SPAWN_DISTANCE = 64
@@ -23,12 +41,10 @@ OLD_MAN_NO_OLD_MAN_SPAWNED = 0
 OLD_MAN_INVENTORY_STRING = "inventory"
 OLD_MAN_FORCE_CRYSTAL_STRING = "object/tangible/loot/quest/force_sensitive/force_crystal.iff"
 
-OldMan = ScreenPlay:new {}
-
 -- Spawn the old man near the player.
 -- @pCreatureObject pointer to the creature object of the player.
-function OldMan.spawnOldMan(pCreatureObject)
-	return OldMan.withSceneObject(pCreatureObject, function(sceneObject)
+function OldManPrivate.spawnOldMan(pCreatureObject)
+	return OldManPrivate.withSceneObject(pCreatureObject, function(sceneObject)
 		local spawnPoint = getSpawnPoint(pCreatureObject, sceneObject:getWorldPositionX(), sceneObject:getWorldPositionY(), OLD_MAN_MIN_SPAWN_DISTANCE, OLD_MAN_MAX_SPAWN_DISTANCE)
 		if spawnPoint ~= nil then
 			return spawnMobile(sceneObject:getZoneName(), OLD_MAN_TEMPLATE, OLD_MAN_RESPAWN_TIME, spawnPoint[1], spawnPoint[2], spawnPoint[3], OLD_MAN_HEADING, sceneObject:getParentID())
@@ -41,8 +57,8 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param key the key to read the value from.
 -- @return the value written on the key.
-function OldMan.getScreenPlayStateFromPlayer(pCreatureObject, key)
-	return OldMan.withCreatureObject(pCreatureObject, function(creatureObject)
+function OldManPrivate.getScreenPlayStateFromPlayer(pCreatureObject, key)
+	return OldManPrivate.withCreatureObject(pCreatureObject, function(creatureObject)
 		return creatureObject:getScreenPlayState(key)
 	end)
 end
@@ -51,8 +67,8 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param key the key to read the value from.
 -- @return the value written on the key.
-function OldMan.readTransientDataFromThePlayer(pCreatureObject, key)
-	return OldMan.withCreatureObject(pCreatureObject, function(creatureObject)
+function OldManPrivate.readTransientDataFromThePlayer(pCreatureObject, key)
+	return OldManPrivate.withCreatureObject(pCreatureObject, function(creatureObject)
 		return readData(creatureObject:getObjectID() .. key)
 	end)
 end
@@ -60,16 +76,16 @@ end
 -- Read the id of the old man from the player he was spawned for.
 -- @param pCreatureObject pointer to the creature object of the player who got the old man spawned.
 -- @return the id of the old man stored on the player.
-function OldMan.readOldManIdFromPlayer(pCreatureObject)
-	return OldMan.readTransientDataFromThePlayer(pCreatureObject, OLD_MAN_ID_STRING)
+function OldManPrivate.readOldManIdFromPlayer(pCreatureObject)
+	return OldManPrivate.readTransientDataFromThePlayer(pCreatureObject, OLD_MAN_ID_STRING)
 end
 
 -- Write persistent data to the player.
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param key the key to write the value to.
 -- @param value the value to write.
-function OldMan.setScreenPlayStateOnPlayer(pCreatureObject, key, value)
-	OldMan.withCreatureObject(pCreatureObject, function(creatureObject)
+function OldManPrivate.setScreenPlayStateOnPlayer(pCreatureObject, key, value)
+	OldManPrivate.withCreatureObject(pCreatureObject, function(creatureObject)
 		creatureObject:setScreenPlayState(value, key)
 	end)
 end
@@ -78,8 +94,8 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param key the key to clear the value in.
 -- @param value the value to clear.
-function OldMan.removeScreenPlayStateOnPlayer(pCreatureObject, key, value)
-	OldMan.withCreatureObject(pCreatureObject, function(creatureObject)
+function OldManPrivate.removeScreenPlayStateOnPlayer(pCreatureObject, key, value)
+	OldManPrivate.withCreatureObject(pCreatureObject, function(creatureObject)
 		creatureObject:removeScreenPlayState(value, key)
 	end)
 end
@@ -88,8 +104,8 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param key the key to write the value to.
 -- @param value the value to write.
-function OldMan.writeTransientDataToThePlayer(pCreatureObject, key, value)
-	OldMan.withCreatureObject(pCreatureObject, function(creatureObject)
+function OldManPrivate.writeTransientDataToThePlayer(pCreatureObject, key, value)
+	OldManPrivate.withCreatureObject(pCreatureObject, function(creatureObject)
 		writeData(creatureObject:getObjectID() .. key, value)
 	end)
 end
@@ -97,17 +113,17 @@ end
 -- Save the id of the old man to only enable the old man for the player he was spawned for.
 -- @param pCreatureObject pointer to the creature object of the player who got the old man spawned.
 -- @param pOldMan pointer to the creature object of the spawned old man.
-function OldMan.saveOldManIdOnPlayer(pCreatureObject, pOldMan)
-	OldMan.withCreatureObject(pOldMan, function(oldManCreatureObject)
-		OldMan.writeTransientDataToThePlayer(pCreatureObject, OLD_MAN_ID_STRING, oldManCreatureObject:getObjectID())
+function OldManPrivate.saveOldManIdOnPlayer(pCreatureObject, pOldMan)
+	OldManPrivate.withCreatureObject(pOldMan, function(oldManCreatureObject)
+		OldManPrivate.writeTransientDataToThePlayer(pCreatureObject, OLD_MAN_ID_STRING, oldManCreatureObject:getObjectID())
 	end)
 end
 
 -- Check if the player is online.
 -- @param pCreatureObject pointer to the creature object of the player who should be checked if online.
 -- @return true if the player is online.
-function OldMan.isPlayerOnline(pCreatureObject)
-	return OldMan.withCreaturePlayerObject(pCreatureObject, function(playerObject)
+function OldManPrivate.isPlayerOnline(pCreatureObject)
+	return OldManPrivate.withCreaturePlayerObject(pCreatureObject, function(playerObject)
 		return playerObject:isOnline()
 	end) == true
 end
@@ -115,8 +131,8 @@ end
 -- Check if the player is in a building or not.
 -- @param pCreatureObject pointer to the creature object of the player that should be checked for being in a building or not.
 -- @return true if the player is in a building.
-function OldMan.isPlayerInABuilding(pCreatureObject)
-	return OldMan.withSceneObject(pCreatureObject, function(sceneObject)
+function OldManPrivate.isPlayerInABuilding(pCreatureObject)
+	return OldManPrivate.withSceneObject(pCreatureObject, function(sceneObject)
 		return not (sceneObject:getParentID() == NOTINABUILDING)
 	end) == true
 end
@@ -124,10 +140,10 @@ end
 -- Check if the player is in a NPC city.
 -- @param pCreatureObject pointer to the creature object of the player who should be checked for being in a NPC city.
 -- return true if the player is within a NPC city.
-function OldMan.isPlayerInNpcCity(pCreatureObject)
-	return OldMan.withSceneObject(pCreatureObject, function(sceneObject)
+function OldManPrivate.isPlayerInNpcCity(pCreatureObject)
+	return OldManPrivate.withSceneObject(pCreatureObject, function(sceneObject)
 		local pCityRegion = getCityRegionAt(sceneObject:getZoneName(), sceneObject:getWorldPositionX(), sceneObject:getWorldPositionY())
-		local inNpcCity = OldMan.withCityRegion(pCityRegion, function(cityRegion)
+		local inNpcCity = OldManPrivate.withCityRegion(pCityRegion, function(cityRegion)
 			return not cityRegion:isClientRegion()
 		end)
 		return inNpcCity == true
@@ -137,32 +153,32 @@ end
 -- Check if the player is in a postion where the old man can be spawned.
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @return true if the player is in a position where the old man can be spawned.
-function OldMan.canOldManBeSpawned(pCreatureObject)
-	return (OldMan.isPlayerOnline(pCreatureObject) and not OldMan.isPlayerInABuilding(pCreatureObject) and not OldMan.isPlayerInNpcCity(pCreatureObject))
+function OldManPrivate.canOldManBeSpawned(pCreatureObject)
+	return (OldManPrivate.isPlayerOnline(pCreatureObject) and not OldManPrivate.isPlayerInABuilding(pCreatureObject) and not OldManPrivate.isPlayerInNpcCity(pCreatureObject))
 end
 
 -- Set a creature to follow another creature.
 -- @param pCreatureObject pointer to the creature who should follow another creature.
 -- @param pFollowObject pointer to the creature object of the creature to follow.
-function OldMan.setToFollow(pCreatureObject, pFollowObject)
-	OldMan.withCreatureAiAgent(pCreatureObject, function(aiAgent)
+function OldManPrivate.setToFollow(pCreatureObject, pFollowObject)
+	OldManPrivate.withCreatureAiAgent(pCreatureObject, function(aiAgent)
 		aiAgent:setFollowObject(pFollowObject)
 	end)
 end
 
 -- Function to handle the stop follow player event for the old man.
 -- @param pCreatureObject pointer to the creature object of the player who got an old man that should stop following.
-function OldMan:handleStopFollowPlayerEvent(pCreatureObject)
-	local oldManId = OldMan.readOldManIdFromPlayer(pCreatureObject)
+function OldManPublicEventsAndObservers:handleStopFollowPlayerEvent(pCreatureObject)
+	local oldManId = OldManPrivate.readOldManIdFromPlayer(pCreatureObject)
 	local pOldMan = getSceneObject(oldManId)
-	OldMan.setToFollow(pOldMan, nil)
+	OldManPrivate.setToFollow(pOldMan, nil)
 end
 
 -- Get the first name of the player.
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @return the first name of the player.
-function OldMan.getPlayerFirstName(pCreatureObject)
-	local firstName = OldMan.withCreatureObject(pCreatureObject, function(creatureObject)
+function OldManPrivate.getPlayerFirstName(pCreatureObject)
+	local firstName = OldManPrivate.withCreatureObject(pCreatureObject, function(creatureObject)
 		return creatureObject:getFirstName()
 	end)
 
@@ -176,36 +192,36 @@ end
 -- FUnction that sends the greeting string to the player from the old man.
 -- @param pOldMan pointer to the creature object of the old man.
 -- @param pCreatureObject pointer to the creature object of the player.
-function OldMan.sendGreetingString(pOldMan, pCreatureObject)
+function OldManPrivate.sendGreetingString(pOldMan, pCreatureObject)
 	local greetingString = LuaStringIdChatParameter(OLD_MAN_GREETING_STRING)
-	local firstName = OldMan.getPlayerFirstName(pCreatureObject)
+	local firstName = OldManPrivate.getPlayerFirstName(pCreatureObject)
 	greetingString:setTT(firstName)
 	spatialChat(pOldMan, greetingString:_getObject())
 end
 
 -- Function to handle the spatial chat event for the old man.
 -- @param pCreatureObject pointer to the creature object of the player who got an old man that should say something in spatial chat.
-function OldMan:handleSpatialChatEvent(pCreatureObject)
-	local oldManId = OldMan.readOldManIdFromPlayer(pCreatureObject)
+function OldManPublicEventsAndObservers:handleSpatialChatEvent(pCreatureObject)
+	local oldManId = OldManPrivate.readOldManIdFromPlayer(pCreatureObject)
 	local pOldMan = getSceneObject(oldManId)
-	OldMan.sendGreetingString(pOldMan, pCreatureObject)
+	OldManPrivate.sendGreetingString(pOldMan, pCreatureObject)
 end
 
 -- Despawn the old man.
 -- @param pointer to the creature object of the old man.
-function OldMan.despawnOldMan(pOldMan)
-	OldMan.withSceneObject(pOldMan, function(sceneObject)
+function OldManPrivate.despawnOldMan(pOldMan)
+	OldManPrivate.withSceneObject(pOldMan, function(sceneObject)
 		sceneObject:destroyObjectFromWorld()
 	end)
 end
 
 -- Function to handle the despawn of the old man.
 -- @param pCreatureObject pointer to the creature object of the player whos old man should despawn.
-function OldMan:handleDespawnEvent(pCreatureObject)
-	local oldManId = OldMan.readOldManIdFromPlayer(pCreatureObject)
+function OldManPublicEventsAndObservers:handleDespawnEvent(pCreatureObject)
+	local oldManId = OldManPrivate.readOldManIdFromPlayer(pCreatureObject)
 	local pOldMan = getSceneObject(oldManId)
-	OldMan.despawnOldMan(pOldMan)
-	OldMan.writeTransientDataToThePlayer(pCreatureObject, OLD_MAN_ID_STRING, OLD_MAN_NO_OLD_MAN_SPAWNED)
+	OldManPrivate.despawnOldMan(pOldMan)
+	OldManPrivate.writeTransientDataToThePlayer(pCreatureObject, OLD_MAN_ID_STRING, OLD_MAN_NO_OLD_MAN_SPAWNED)
 	OldMan.createSpawnOldManEvent(pCreatureObject)
 end
 
@@ -213,19 +229,19 @@ end
 -- @param pCreatureObject pointer to the creature object of the player whos old man should be despawned.
 -- @param time time until the old man should despawn.
 function OldMan.scheduleDespawnOfOldMan(pCreatureObject, time)
-	createEvent(time, "OldMan", "handleDespawnEvent", pCreatureObject)
+	createEvent(time, "OldManPublicEventsAndObservers", "handleDespawnEvent", pCreatureObject)
 end
 
 -- Try to spawn the old man and create the needed events.
 -- @param pCreatureObject pointer to the creature object of the player who should get the old man spawned.
 -- @return true if everything were successful.
-function OldMan.tryToSpawnOldMan(pCreatureObject)
-	local pOldMan = OldMan.spawnOldMan(pCreatureObject)
+function OldManPrivate.tryToSpawnOldMan(pCreatureObject)
+	local pOldMan = OldManPrivate.spawnOldMan(pCreatureObject)
 	if pOldMan ~= nil then
-		OldMan.saveOldManIdOnPlayer(pCreatureObject, pOldMan)
-		OldMan.setToFollow(pOldMan, pCreatureObject)
-		createEvent(OLD_MAN_STOP_FOLLOW_TIME, "OldMan", "handleStopFollowPlayerEvent", pCreatureObject)
-		createEvent(OLD_MAN_SPATIAL_CHAT_TIME, "OldMan", "handleSpatialChatEvent", pCreatureObject)
+		OldManPrivate.saveOldManIdOnPlayer(pCreatureObject, pOldMan)
+		OldManPrivate.setToFollow(pOldMan, pCreatureObject)
+		createEvent(OLD_MAN_STOP_FOLLOW_TIME, "OldManPublicEventsAndObservers", "handleStopFollowPlayerEvent", pCreatureObject)
+		createEvent(OLD_MAN_SPATIAL_CHAT_TIME, "OldManPublicEventsAndObservers", "handleSpatialChatEvent", pCreatureObject)
 		OldMan.scheduleDespawnOfOldMan(pCreatureObject, OLD_MAN_DESPAWN_TIME)
 		return true
 	else
@@ -235,10 +251,10 @@ end
 
 -- Function to handle the old man event.
 -- @param pCreatureObject pointer to the creature object who should have an event created for spawning the old man.
-function OldMan:handleSpawnOldManEvent(pCreatureObject)
-	OldMan.removeScreenPlayStateOnPlayer(pCreatureObject, OLD_MAN_EVENT_SCHEDULED_STRING, OLD_MAN_SCHEDULED)
-	if OldMan.canOldManBeSpawned(pCreatureObject) then
-		if not OldMan.tryToSpawnOldMan(pCreatureObject) then
+function OldManPublicEventsAndObservers:handleSpawnOldManEvent(pCreatureObject)
+	OldManPrivate.removeScreenPlayStateOnPlayer(pCreatureObject, OLD_MAN_EVENT_SCHEDULED_STRING, OLD_MAN_SCHEDULED)
+	if OldManPrivate.canOldManBeSpawned(pCreatureObject) then
+		if not OldManPrivate.tryToSpawnOldMan(pCreatureObject) then
 			OldMan.createSpawnOldManEvent(pCreatureObject)
 		end
 	else
@@ -249,27 +265,27 @@ end
 -- Check if an event has already been scheduled for spawning the old man for this player.
 -- @param pCreatureObject pointer to the creature object of the player.
 -- return true if an event is already scheduled.
-function OldMan.hasOldManSpawnEventScheduled(pCreatureObject)
-	return OldMan.getScreenPlayStateFromPlayer(pCreatureObject, OLD_MAN_EVENT_SCHEDULED_STRING) == OLD_MAN_SCHEDULED
+function OldManPrivate.hasOldManSpawnEventScheduled(pCreatureObject)
+	return OldManPrivate.getScreenPlayStateFromPlayer(pCreatureObject, OLD_MAN_EVENT_SCHEDULED_STRING) == OLD_MAN_SCHEDULED
 end
 
 -- Check if the spawn event should be created.
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @return true if the spawn event should be created.
-function OldMan.shouldSpawnOldManEventBeCreated(pCreatureObject)
-	local eventNotScheduled = not OldMan.hasOldManSpawnEventScheduled(pCreatureObject)
-	local oldManNotSpawned = OldMan.readOldManIdFromPlayer(pCreatureObject) == OLD_MAN_NO_OLD_MAN_SPAWNED
-	local doesNotHaveCrystal = not VillageJediManager.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_HAS_CRYSTAL)
+function OldManPrivate.shouldSpawnOldManEventBeCreated(pCreatureObject)
+	local eventNotScheduled = not OldManPrivate.hasOldManSpawnEventScheduled(pCreatureObject)
+	local oldManNotSpawned = OldManPrivate.readOldManIdFromPlayer(pCreatureObject) == OLD_MAN_NO_OLD_MAN_SPAWNED
+	local doesNotHaveCrystal = not VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_HAS_CRYSTAL)
 	return eventNotScheduled and oldManNotSpawned and doesNotHaveCrystal
 end
 
 -- Generate an event to spawn the old man for the player.
 -- @param pCreatureObject pointer to the creature object who should have an event created for spawning the old man.
 function OldMan.createSpawnOldManEvent(pCreatureObject)
-	if OldMan.shouldSpawnOldManEventBeCreated(pCreatureObject) then
-		OldMan.setScreenPlayStateOnPlayer(pCreatureObject, OLD_MAN_EVENT_SCHEDULED_STRING, OLD_MAN_SCHEDULED)
+	if OldManPrivate.shouldSpawnOldManEventBeCreated(pCreatureObject) then
+		OldManPrivate.setScreenPlayStateOnPlayer(pCreatureObject, OLD_MAN_EVENT_SCHEDULED_STRING, OLD_MAN_SCHEDULED)
 		local time = OLD_MAN_SPAWN_TIME + math.random(OLD_MAN_SPAWN_TIME)
-		createEvent(true, time, "OldMan", "handleSpawnOldManEvent", pCreatureObject)
+		createEvent(true, time, "OldManPublicEventsAndObservers", "handleSpawnOldManEvent", pCreatureObject)
 	end
 end
 
@@ -278,20 +294,20 @@ end
 -- @param pConversingNpc pointer to the creature object of the old man.
 -- @return true if the old man belongs to the player.
 function OldMan.oldManBelongsToThePlayer(pConversingPlayer, pConversingNpc)
-	return OldMan.withCreatureObject(pConversingNpc, function(oldManCreatureObject)
-		return OldMan.readOldManIdFromPlayer(pConversingPlayer) == oldManCreatureObject:getObjectID()
+	return OldManPrivate.withCreatureObject(pConversingNpc, function(oldManCreatureObject)
+		return OldManPrivate.readOldManIdFromPlayer(pConversingPlayer) == oldManCreatureObject:getObjectID()
 	end) == true
 end
 
 -- Give the force crystal to the player.
 -- @param pCreatureObject pointer to the creature object of the player.
 function OldMan.giveForceCrystalToPlayer(pCreatureObject)
-	OldMan.withCreatureObject(pCreatureObject, function(creatureObject)
+	OldManPrivate.withCreatureObject(pCreatureObject, function(creatureObject)
 		local pInventory = creatureObject:getSlottedObject(OLD_MAN_INVENTORY_STRING)
 
 		if pInventory ~= nil then
 			giveItem(pInventory, OLD_MAN_FORCE_CRYSTAL_STRING, -1)
-			VillageJediManager.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_HAS_CRYSTAL)
+			VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_HAS_CRYSTAL)
 		end
 	end)
 end

@@ -1,16 +1,15 @@
-package.path = package.path .. ";scripts/managers/jedi/village/?.lua"
-VillageJediManagerHolocron = require("village_jedi_manager_holocron")
+VillageJediManagerHolocron = require("managers.jedi.village.village_jedi_manager_holocron")
 
 describe("Village Jedi Manager Holocron", function()
-	describe("Interface functions", function() 
+	describe("Interface functions", function()
 		describe("useHolocron", function()
-			it("Should use the holocron if the player is a jedi and does not have max force at the moment", function() 
+			it("Should use the holocron if the player is a jedi and does not have max force at the moment", function()
 				local pCreatureObject = { "creatureObjectPointer" }
 				local pSceneObject = { "sceneObjectPointer" }
 				local realCanUseHolocron = VillageJediManagerHolocron.canUseHolocron
 				local realCanReplenishForce = VillageJediManagerHolocron.canReplenishForce
 				local realUseTheHolocron = VillageJediManagerHolocron.useTheHolocron
-				
+
 				VillageJediManagerHolocron.canUseHolocron = spy.new(function() return true end)
 				VillageJediManagerHolocron.canReplenishForce = spy.new(function() return true end)
 				VillageJediManagerHolocron.useTheHolocron = spy.new(function() end)
@@ -26,13 +25,13 @@ describe("Village Jedi Manager Holocron", function()
 				VillageJediManagerHolocron.useTheHolocron = realUseTheHolocron
 			end)
 
-			it("Should send message about not able to replenish force if player is jedi but has full force", function() 
+			it("Should send message about not able to replenish force if player is jedi but has full force", function()
 				local pCreatureObject = { "creatureObjectPointer" }
 				local pSceneObject = { "sceneObjectPointer" }
 				local realCanUseHolocron = VillageJediManagerHolocron.canUseHolocron
 				local realCanReplenishForce = VillageJediManagerHolocron.canReplenishForce
 				local realCannotReplenishForce = VillageJediManagerHolocron.cannotReplenishForce
-				
+
 				VillageJediManagerHolocron.canUseHolocron = spy.new(function() return true end)
 				VillageJediManagerHolocron.canReplenishForce = spy.new(function() return false end)
 				VillageJediManagerHolocron.cannotReplenishForce = spy.new(function() end)
@@ -48,12 +47,12 @@ describe("Village Jedi Manager Holocron", function()
 				VillageJediManagerHolocron.cannotReplenishForce = realCannotReplenishForce
 			end)
 
-			it("Should send message about not being able to use the holocron if player is not jedi", function() 
+			it("Should send message about not being able to use the holocron if player is not jedi", function()
 				local pCreatureObject = { "creatureObjectPointer" }
 				local pSceneObject = { "sceneObjectPointer" }
 				local realCanUseHolocron = VillageJediManagerHolocron.canUseHolocron
 				local realCannotUseHolocron = VillageJediManagerHolocron.cannotUseHolocron
-				
+
 				VillageJediManagerHolocron.canUseHolocron = spy.new(function() return false end)
 				VillageJediManagerHolocron.cannotUseHolocron = spy.new(function() end)
 
@@ -68,7 +67,7 @@ describe("Village Jedi Manager Holocron", function()
 		end)
 	end)
 
-	describe("Private functions", function() 
+	describe("Private functions", function()
 		describe("canUseHolocron", function()
 			it("Should return false if player is not jedi", function()
 				local pCreatureObject = { "creatureObjectPointer" }

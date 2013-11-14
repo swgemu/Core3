@@ -1,6 +1,5 @@
-package.path = package.path .. ";scripts/managers/jedi/village/?.lua;scripts/screenplays/mocks/?.lua"
-local DirectorManagerMocks = require("director_manager_mocks")
-require("village_jedi_manager")
+local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
+require("managers.jedi.village.village_jedi_manager")
 
 local realCheckForceStatusCommand
 local realHasJediProgressionScreenPlayState
