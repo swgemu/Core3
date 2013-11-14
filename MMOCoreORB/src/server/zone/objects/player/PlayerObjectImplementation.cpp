@@ -1805,8 +1805,8 @@ void PlayerObjectImplementation::destroyObjectFromDatabase(bool destroyContained
 
 			if (zone != NULL)
 				StructureManager::instance()->destroyStructure(structure);
-
-			structure->destroyObjectFromDatabase(true);
+			else
+				structure->destroyObjectFromDatabase(true);
 		}
 	}
 }
