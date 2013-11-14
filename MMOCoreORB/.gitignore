@@ -15,4 +15,5 @@ src/client/config.h.in
 src/client/configure
 src/client/build/*
 INSTALL
+.settings/*
 
