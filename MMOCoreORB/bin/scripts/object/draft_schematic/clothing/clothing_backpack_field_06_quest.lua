@@ -64,7 +64,7 @@ object_draft_schematic_clothing_clothing_backpack_field_06_quest = object_draft_
 
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"primary_pocket", "secondary_pocket", "tertiary_pocket", "strap_pad", "strap_adjustment", "frame_reinforcement", "pocket_plating", "camouflage_net"},
-   ingredientSlotType = {2, 2, 2, 2, 0, 0, 0, 0},
+   ingredientSlotType = {2, 2, 2, 1, 0, 0, 0, 0},
    resourceTypes = {"object/tangible/component/clothing/shared_cargo_pocket.iff", "object/tangible/component/clothing/shared_cargo_pocket.iff", "object/tangible/component/clothing/shared_cargo_pocket.iff", "object/tangible/component/clothing/shared_leather_heavy_duty.iff", "metal", "aluminum_titanium", "aluminum_titanium", "vegetable_fungi_rori"},
    resourceQuantities = {1, 1, 1, 1, 5, 10, 10, 10},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
