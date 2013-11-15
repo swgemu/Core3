@@ -1951,5 +1951,11 @@ class SceneObject extends QuadTreeEntry implements Logger {
 	public abstract boolean isPet() {
 		return false;
 	}	
+	public abstract boolean isTicketObject() {
+		return true;
+	}
+	public abstract boolean isDungeonTicket() {
+		return false;
+	}
 }
 
