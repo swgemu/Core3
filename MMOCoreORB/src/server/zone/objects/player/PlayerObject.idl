@@ -82,8 +82,11 @@ include server.zone.objects.player.variables.FriendList;
 include server.zone.objects.player.variables.IgnoreList;
 include server.zone.objects.player.variables.SchematicList;
 include server.zone.objects.player.variables.WaypointList;
+include server.zone.objects.player.variables.PlayerQuestData;
 include server.zone.objects.scene.variables.DeltaVector;
 include server.zone.objects.scene.variables.DeltaVectorMap;
+include server.zone.objects.scene.variables.DeltaBitArray;
+
 
 class PlayerObject extends IntangibleObject {	
 	protected unsigned int characterBitmask;
@@ -249,6 +252,20 @@ class PlayerObject extends IntangibleObject {
 
 	@dereferenced
 	protected SortedVector<AiAgent> activePets;
+	
+	@dereferenced
+	protected DeltaBitArray activeQuests;
+	
+	@dereferenced
+	protected DeltaBitArray completedQuests;
+	
+	
+	/**
+	 * the key is the quest.hashCode()
+	 */
+	@dereferenced
+	@rawTemplate(value = "uint32, PlayerQuestData")
+	protected DeltaVectorMap playerQuestsData;
 	
 	public static final int LFG = 1;
 	public static final int NEWBIEHELPER = 2;
@@ -605,6 +622,29 @@ class PlayerObject extends IntangibleObject {
 	public native void logout(boolean doLock);
 	
 	public native void setJediState(int state, boolean notifyClient = true);
+	
+	public native void setActiveQuestsBit(int bitIndex, byte value, boolean notifyClient = true);
+	
+	public void clearActiveQuestsBit(int bitIndex, boolean notifyClient = true) {
+		setActiveQuestsBit(bitIndex, (byte)0, notifyClient);
+	}
+	
+	public native void setCompletedQuestsBit(int bitIndex, byte value, boolean notifyClient = true);
+	
+	public void clearCompletedQuestsBit(int bitIndex, boolean notifyClient = true) {
+		setCompletedQuestsBit(bitIndex, (byte)0, notifyClient);
+	}
+	
+	@dereferenced
+	@local
+	public native PlayerQuestData getQuestData(unsigned int questHashCode);
+	
+	public boolean hasQuestData(unsigned int questHashCode) {
+		return playerQuestsData.contains(questHashCode);
+	}
+	
+	@local
+	public native void setPlayerQuestData(unsigned int questHashCode, @dereferenced PlayerQuestData data, boolean notifyClient = true);
 	
 	/**
 	 * Gets the faction point list.
@@ -1056,6 +1096,22 @@ class PlayerObject extends IntangibleObject {
 	@local
 	public DeltaVectorMap<string, int> getExperienceList() {
 		return experienceList;
+	}
+	
+	@local
+	@rawTemplate(value = "uint32, PlayerQuestData")
+	public DeltaVectorMap getPlayerQuestsData() {
+		return playerQuestsData;
+	}
+	
+	@local
+	public DeltaBitArray getActiveQuests() {
+		return activeQuests;
+	}
+	
+	@local 
+	public DeltaBitArray getCompletedQuests() {
+		return completedQuests;
 	}
 	
 	public int getForcePower() {
