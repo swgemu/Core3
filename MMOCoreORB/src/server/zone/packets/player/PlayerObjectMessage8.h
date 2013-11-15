@@ -67,17 +67,17 @@ public:
 		insertInt(play->getForcePower());
 		insertInt(play->getForcePowerMax());
 
-		// padawan quests
-		insertInt(0);
-		insertInt(0);
+		// active quests
+		DeltaBitArray* activeQuests = play->getActiveQuests();
+		activeQuests->insertToMessage(this);
 
-		// FS quests
-		insertInt(0);
-		insertInt(0);
+		// completed quests
+		DeltaBitArray* completedQuests = play->getCompletedQuests();
+		completedQuests->insertToMessage(this);
 
 		// quests
-		insertInt(0);
-		insertInt(0);
+		DeltaVectorMap<uint32, PlayerQuestData>* quests = play->getPlayerQuestsData();
+		quests->insertToMessage(this);
 
 		//
 		insertInt(0);

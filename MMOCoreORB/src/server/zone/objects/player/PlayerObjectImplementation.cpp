@@ -1844,3 +1844,48 @@ void PlayerObjectImplementation::setJediState(int state, bool notifyClient) {
 
 	sendMessage(delta);
 }
+
+void PlayerObjectImplementation::setActiveQuestsBit(int bitIndex, byte value, bool notifyClient) {
+	activeQuests.setBit(bitIndex, value);
+
+	if (!notifyClient)
+		return;
+
+	PlayerObjectDeltaMessage8* delta = new PlayerObjectDeltaMessage8(this);
+	delta->startUpdate(4);
+	activeQuests.insertToMessage(delta);
+	delta->close();
+
+	sendMessage(delta);
+}
+
+void PlayerObjectImplementation::setCompletedQuestsBit(int bitIndex, byte value, bool notifyClient) {
+	completedQuests.setBit(bitIndex, value);
+
+	if (!notifyClient)
+		return;
+
+	PlayerObjectDeltaMessage8* delta = new PlayerObjectDeltaMessage8(this);
+	delta->startUpdate(5);
+	completedQuests.insertToMessage(delta);
+	delta->close();
+
+	sendMessage(delta);
+}
+
+void PlayerObjectImplementation::setPlayerQuestData(uint32 questHashCode, PlayerQuestData& data, bool notifyClient) {
+	if (notifyClient) {
+		PlayerObjectDeltaMessage8* dplay8 = new PlayerObjectDeltaMessage8(this);
+		dplay8->startUpdate(6);
+		playerQuestsData.set(questHashCode, data, dplay8, 1);
+		dplay8->close();
+
+		sendMessage(dplay8);
+	} else {
+		playerQuestsData.set(questHashCode, data);
+	}
+}
+
+PlayerQuestData PlayerObjectImplementation::getQuestData(uint32 questHashCode) {
+	return playerQuestsData.get(questHashCode);
+}
