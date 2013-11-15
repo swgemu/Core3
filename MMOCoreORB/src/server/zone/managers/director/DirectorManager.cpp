@@ -58,6 +58,7 @@
 #include "server/zone/objects/region/CityRegion.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/chat/LuaStringIdChatParameter.h"
+#include "server/zone/objects/tangible/ticket/DungeonTicketObject.h"
 
 int DirectorManager::DEBUG_MODE = 0;
 int DirectorManager::ERROR_CODE = NO_ERROR;
@@ -192,6 +193,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "getTerrainHeight", getTerrainHeight);
 	lua_register(luaEngine->getLuaState(), "awardSkill", awardSkill);
 	lua_register(luaEngine->getLuaState(), "getCityRegionAt", getCityRegionAt);
+	lua_register(luaEngine->getLuaState(), "setDungeonTicketAttributes", setDungeonTicketAttributes);
 
 	luaEngine->setGlobalInt("POSITIONCHANGED", ObserverEventType::POSITIONCHANGED);
 	luaEngine->setGlobalInt("CLOSECONTAINER", ObserverEventType::CLOSECONTAINER);
@@ -1899,6 +1901,31 @@ int DirectorManager::getCityRegionAt(lua_State* L) {
 	} else {
 		lua_pushnil(L);
 	}
+
+	return 1;
+}
+
+int DirectorManager::setDungeonTicketAttributes(lua_State* L) {
+	if (checkArgumentCount(L, 4) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::setDungeonTicketAttributes");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	TangibleObject* scene = (TangibleObject*)lua_touserdata(L, -4);
+	String ticketDepartPlanet = lua_tostring(L, -3);
+	String ticketDepartPoint = lua_tostring(L, -2);
+	String ticketArrivePoint = lua_tostring(L, -1);
+
+
+	if (scene == NULL || !scene->isDungeonTicket())
+		return 0;
+
+	ManagedReference<DungeonTicketObject*> tObj = cast<DungeonTicketObject*>(scene);
+
+	tObj->setDeparturePlanet(ticketDepartPlanet);
+	tObj->setDeparturePoint(ticketDepartPoint);
+	tObj->setArrivalPoint(ticketArrivePoint);
 
 	return 1;
 }

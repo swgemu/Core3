@@ -143,6 +143,7 @@ void ObjectManager::registerObjectTypes() {
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::CAMPKIT);
 	objectFactory.registerObject<Container>(SceneObjectType::STATICLOOTCONTAINER);
 	objectFactory.registerObject<TangibleObject>(SceneObjectType::PLAYERLOOTCRATE);
+	objectFactory.registerObject<DungeonTicketObject>(SceneObjectType::DUNGEONTRAVELTICKET);
 
 	objectFactory.registerObject<SlicingTool>(SceneObjectType::SLICINGTOOL);
 	objectFactory.registerObject<SlicingTool>(SceneObjectType::FLOWANALYZER);
