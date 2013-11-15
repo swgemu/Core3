@@ -91,7 +91,6 @@ includeFile("caves/tatooine_squill_cave.lua")
 includeFile("caves/tatooine_tusken_bunker.lua")
 
 -- Cities
-includeFile("cities/corellia_bela_vistal.lua")
 includeFile("cities/corellia_kor_vella.lua")
 includeFile("cities/dantooine_agro_outpost.lua")
 includeFile("cities/dantooine_imperial_outpost.lua")
@@ -110,6 +109,7 @@ includeFile("cities/talus_nashal.lua")
 includeFile("cities/tatooine_mos_taike.lua")
 
 -- POIs
+includeFile("poi/corellia_crystal_fountain_bela_vistal.lua")
 includeFile("poi/corellia_grand_theater_vreni_island.lua")
 includeFile("poi/corellia_rogue_corsec_base.lua")
 includeFile("poi/corellia_rebel_hideout.lua")
