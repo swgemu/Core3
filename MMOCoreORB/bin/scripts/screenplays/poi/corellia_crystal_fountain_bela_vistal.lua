@@ -68,6 +68,7 @@ function CrystalFountainBelaVistalScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "stormtrooper_bombardier", 360, 6646.02, 330, -5931.59, 357.677, 0)
 	spawnMobile("corellia", "stormtrooper_bombardier", 360, 6644.26, 330, -5937.08, 5.98245, 0)
 	spawnMobile("corellia", "stormtrooper_bombardier", 360, 6649.56, 330, -5935.6, 128.564, 0)
+	spawnMobile("corellia", "imperial_recruiter", 60,6718.8,315.0,-5804.6,-174,0)
 	
 	--Misc
 	spawnMobile("corellia", "informant_npc_lvl_1", 0, 20.9951, -0.894992, 21.3608, 100, 3375357)
