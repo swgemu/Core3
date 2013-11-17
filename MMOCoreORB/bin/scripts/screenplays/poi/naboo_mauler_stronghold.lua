@@ -66,4 +66,9 @@ function MaulerStrongholdScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "mauler_master",300,2958.5,94.1,1081,0,0)
 	
 	spawnMobile("naboo", "mauler_veermok",300,2924.5,94,1110.4,5,0)
+
+	spawnMobile("naboo", "mauler",300,5.4,0.7,-6.2,100,1696446)
+	spawnMobile("naboo", "mauler",300,5.1,0.7,-3.6,25,1696446)
+	spawnMobile("naboo", "mauler",300,-5.5,0.7,-1.7,-96,1696447)
+	spawnMobile("naboo", "mauler",300,-2,0.7,2.1,-5,1696447)
 end
