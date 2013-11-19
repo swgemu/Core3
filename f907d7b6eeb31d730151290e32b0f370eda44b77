@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_e4e1969b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/racetracks/agrilatswamp.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-19T16:34:55Z",
+      "side": 1,
+      "message": "Use the withSceneObject function already available in the ScreenPlay. It has checks for nil etc already and makes your code cleaner. Check the jedi manager for info on how to use it.",
+      "revId": "f907d7b6eeb31d730151290e32b0f370eda44b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_c4ee928b",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/racetracks/agrilatswamp.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-19T16:34:55Z",
+      "side": 1,
+      "message": "Use the withCreatureObject function here.",
+      "revId": "f907d7b6eeb31d730151290e32b0f370eda44b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_a4f38e72",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/racetracks/agrilatswamp.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-19T16:34:55Z",
+      "side": 1,
+      "message": "Use the withCreaturePlayerObject function here instead.",
+      "revId": "f907d7b6eeb31d730151290e32b0f370eda44b77",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
