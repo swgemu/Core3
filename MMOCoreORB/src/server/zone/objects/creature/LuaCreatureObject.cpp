@@ -86,6 +86,8 @@ Luna<LuaCreatureObject>::RegType LuaCreatureObject::Register[] = {
 		{ "getSlottedObject", &LuaSceneObject::getSlottedObject},
 		{ "checkCooldownRecovery", &LuaCreatureObject::checkCooldownRecovery},
 		{ "addCooldown", &LuaCreatureObject::addCooldown},
+		{ "setClientWaypoint", &LuaCreatureObject::setClientWaypoint},
+		{ "removeClientWaypoint", &LuaCreatureObject::removeClientWaypoint},
 		{ 0, 0 }
 };
 
@@ -585,5 +587,28 @@ int LuaCreatureObject::addCooldown(lua_State* L) {
 
 	realObject->addCooldown(cooldownName, milliseconds);
 
+	return 0;
+}
+
+int LuaCreatureObject::setClientWaypoint(lua_State* L) {
+	String planet = lua_tostring(L, -4);
+	String name = lua_tostring(L, -3);
+	float x = lua_tonumber(L, -2);
+	float y = lua_tonumber(L, -1);
+	ManagedReference<PlayerObject*> player = realObject->getPlayerObject();
+	ManagedReference<WaypointObject*> waypoint =  ( realObject->getZoneServer()->createObject(0xc456e788, 1)).castTo<WaypointObject*>();
+	waypoint->setPlanetCRC(planet.hashCode());
+	waypoint->setPosition(x, 0, y);
+	waypoint->setCustomObjectName(name, false);
+	waypoint->setActive(true);
+	player->setWaypoint(waypoint,true);
+	lua_pushinteger(L, waypoint->getObjectID());
+
+	return 1;
+}
+int LuaCreatureObject::removeClientWaypoint(lua_State* L) {
+	uint64 objId = lua_tointeger(L, -1);
+	ManagedReference<PlayerObject*> player = realObject->getPlayerObject();
+	player->removeWaypoint(objId,true);
 	return 0;
 }

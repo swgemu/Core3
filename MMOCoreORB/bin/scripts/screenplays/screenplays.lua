@@ -185,3 +185,7 @@ includeFile("static_spawns/yavin4_static_spawns.lua")
 --Tests
 --includeFile("tests/options_bitmask_test.lua")
 --includeFile("event/stresstest_20120128.lua")
+
+--includeFile("tests/samplequest.lua")
+
+includeFile("racetracks/agrilatswamp.lua")
