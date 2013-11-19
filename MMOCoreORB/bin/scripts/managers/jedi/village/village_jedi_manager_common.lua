@@ -1,4 +1,4 @@
-local ScreenPlay = require("screenplays.screenplay")
+local ObjectManager = require("managers.object.object_manager")
 
 local VillageJediManagerCommon = ScreenPlay:new {}
 
@@ -13,7 +13,7 @@ VILLAGE_JEDI_PROGRESSION_DEFEATED_MELLIACHAE = 16
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param state the state to set.
 function VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, state)
-	VillageJediManagerCommon.withCreatureObject(pCreatureObject, function(creatureObject)
+	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
 		creatureObject:setScreenPlayState(state, VILLAGE_JEDI_PROGRESSION_SCREEN_PLAY_STATE_STRING)
 	end)
 end
@@ -23,7 +23,7 @@ end
 -- @param state the state to check if the player has.
 -- @return true if the player has the state.
 function VillageJediManagerCommon.hasJediProgressionScreenPlayState(pCreatureObject, state)
-	return VillageJediManagerCommon.withCreatureObject(pCreatureObject, function(creatureObject)
+	return ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
 		return creatureObject:hasScreenPlayState(state, VILLAGE_JEDI_PROGRESSION_SCREEN_PLAY_STATE_STRING) == 1
 	end) == true
 end

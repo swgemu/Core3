@@ -1,10 +1,10 @@
-local ScreenPlay = require("screenplays.screenplay")
+local ObjectManager = require("managers.object.object_manager")
 local OldMan = require("managers.jedi.village.old_man")
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 
 local Glowing = {}
 GlowingEventsAndObservers = {}
-local GlowingPrivate = ScreenPlay:new {}
+local GlowingPrivate = {}
 
 -- Expose private functions for testing.
 function Glowing.exposePrivateFunctions()
@@ -151,7 +151,7 @@ PROFESSIONBADGES = {
 -- @return the number of badges in the list that the player has been awarded
 function GlowingPrivate.countBadgesInListToUpperLimit(pCreatureObject, list, upperLimit)
 	local numberOfBadges = 0
-	GlowingPrivate.withCreaturePlayerObject(pCreatureObject, function(playerObject)
+	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
 		for i = 1, table.getn(list), 1 do
 			if playerObject:hasBadge(list[i]) then
 				numberOfBadges = numberOfBadges + 1
@@ -221,7 +221,7 @@ end
 -- Handling of the checkForceStatus command.
 -- @param pCreatureObject pointer to the creature object of the player who performed the command
 function Glowing.checkForceStatusCommand(pCreatureObject)
-	GlowingPrivate.withCreatureObject(pCreatureObject, function(creatureObject)
+	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
 		creatureObject:sendSystemMessage("@jedi_spam:fs_progress_" .. GlowingPrivate.getJediProgressionStatus(pCreatureObject))
 	end)
 end

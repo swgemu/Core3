@@ -26,7 +26,7 @@ function readStringData(key)
 	return readStringSharedMemory(string.format(key))
 end
 
-ScreenPlay = ObjectManager:new {
+ScreenPlay = Object:new {
 	screenplayName = "",
 	numerOfActs = 0,
 	startingEvent = nil,
@@ -69,7 +69,7 @@ function ScreenPlay:spawnContainerLoot(pContainer)
 	writeData(container:getObjectID(), time + self.lootContainerRespawn)
 end
 
-Act = ObjectManager:new {
+Act = Object:new {
 
 }
 
