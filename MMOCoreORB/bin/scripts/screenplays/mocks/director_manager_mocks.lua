@@ -1,4 +1,5 @@
-local DirectorManagerMocks = { }
+local DirectorManagerMocks = {}
+DirectorManagerMocks.mocks = {}
 
 DirectorManagerMocks.aiAgents = {}
 DirectorManagerMocks.cityRegions = {}
@@ -8,15 +9,15 @@ DirectorManagerMocks.sceneObjects = {}
 DirectorManagerMocks.stringIds = {}
 
 -- Function to be called in the setup method for a test to prepare the mocks.
-function DirectorManagerMocks.setup()
+function DirectorManagerMocks.mocks.setup()
 end
 
 -- Function to be called in the teardown method for a test to clean up the mocks.
-function DirectorManagerMocks.teardown()
+function DirectorManagerMocks.mocks.teardown()
 end
 
 -- Function to be called in the before_each method for a test to prepare the mocks.
-function DirectorManagerMocks.before_each()
+function DirectorManagerMocks.mocks.before_each()
 	createEvent = spy.new(function() end)
 	createObserver = spy.new(function() end)
 	getCityRegionAt = spy.new(function() return nil end)
@@ -75,9 +76,9 @@ function DirectorManagerMocks.before_each()
 end
 
 -- Function to be called in the after_each method for a test to verify the mocks.
-function DirectorManagerMocks.after_each()
+function DirectorManagerMocks.mocks.after_each()
 end
 
-DirectorManagerMocks.before_each()
+DirectorManagerMocks.mocks.before_each()
 
 return DirectorManagerMocks

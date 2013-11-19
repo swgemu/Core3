@@ -25,21 +25,21 @@ describe("Old Man", function()
 	local playerFirstName = "firstName"
 
 	setup(function()
-		DirectorManagerMocks.setup()
+		DirectorManagerMocks.mocks.setup()
 		VillageJediManagerCommonMocks.mocks.setup()
 
 		OldMan.exposePrivateFunctions()
 	end)
 
 	teardown(function()
-		DirectorManagerMocks.teardown()
+		DirectorManagerMocks.mocks.teardown()
 		VillageJediManagerCommonMocks.mocks.teardown()
 
 		OldMan.hidePrivateFunctions()
 	end)
 
 	before_each(function()
-		DirectorManagerMocks.before_each()
+		DirectorManagerMocks.mocks.before_each()
 		VillageJediManagerCommonMocks.mocks.before_each()
 
 		getCityRegionAt = spy.new(function() return pCityRegion end)

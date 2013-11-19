@@ -10,7 +10,7 @@ describe("Village Jedi Manager - Glowing", function()
 	local playerObject
 
 	setup(function()
-		DirectorManagerMocks.setup()
+		DirectorManagerMocks.mocks.setup()
 		VillageJediManagerCommonMocks.mocks.setup()
 		OldManMocks.mocks.setup()
 
@@ -18,7 +18,7 @@ describe("Village Jedi Manager - Glowing", function()
 	end)
 
 	teardown(function()
-		DirectorManagerMocks.teardown()
+		DirectorManagerMocks.mocks.teardown()
 		VillageJediManagerCommonMocks.mocks.teardown()
 		OldManMocks.mocks.teardown()
 
@@ -26,7 +26,7 @@ describe("Village Jedi Manager - Glowing", function()
 	end)
 
 	before_each(function()
-		DirectorManagerMocks.before_each()
+		DirectorManagerMocks.mocks.before_each()
 		VillageJediManagerCommonMocks.mocks.before_each()
 		OldManMocks.mocks.before_each()
 

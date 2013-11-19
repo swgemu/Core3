@@ -7,15 +7,15 @@ describe("Village Jedi Manager Common", function()
 	local creatureObject
 
 	setup(function()
-		DirectorManagerMocks.setup()
+		DirectorManagerMocks.mocks.setup()
 	end)
 
 	teardown(function()
-		DirectorManagerMocks.teardown()
+		DirectorManagerMocks.mocks.teardown()
 	end)
 
 	before_each(function()
-		DirectorManagerMocks.before_each()
+		DirectorManagerMocks.mocks.before_each()
 
 		creatureObject = {}
 		creatureObject.hasScreenPlayState = spy.new(function() return 0 end)
