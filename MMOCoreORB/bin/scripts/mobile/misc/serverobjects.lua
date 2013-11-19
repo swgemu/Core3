@@ -126,3 +126,8 @@ includeFile("misc/wedge_antilles.lua")
 includeFile("misc/workshop_droid.lua")
 includeFile("misc/rebel_battle_droid.lua")
 includeFile("misc/protocol_droid_3po.lua")
+
+--includeFile("misc/boba_fett_samplequest.lua")
+--includeFile("misc/han_solo_quest.lua")
+--includeFile("misc/han_solo_samplequest.lua")
+includeFile("misc/agrilatracecoordinator.lua")

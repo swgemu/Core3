@@ -64,3 +64,9 @@ includeFile("conversations/tasks/ris_armor_quest_conv.lua")
 
 -- Village
 includeFile("conversations/village/old_man_conv.lua")
+
+includeFile("conversations/racetracks/agrilatswampconversation.lua")
+
+--includeFile("conversations/tests/samplequestconversation.lua")
+
+
