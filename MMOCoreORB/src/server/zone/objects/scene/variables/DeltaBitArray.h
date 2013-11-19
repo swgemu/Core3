@@ -31,9 +31,9 @@ public:
 		return *this;
 	}
 
-	void setBit(int bitIndex, byte value) {
+	void setBit(uint32 bitIndex, byte value) {
 		int vectorIndex = bitIndex / 8;
-		int vectorBitIndex = 1 << (bitIndex % 8);
+		byte vectorBitIndex = 1 << (bitIndex % 8);
 
 		while (size() <= vectorIndex)
 			add(0);
@@ -41,19 +41,21 @@ public:
 		byte currentVal = get(vectorIndex);
 
 		if (value) {
-			if (!currentVal & vectorBitIndex)
+			if (!(currentVal & vectorBitIndex)) {
 				currentVal |= vectorBitIndex;
+			}
 		} else {
-			if (currentVal & vectorBitIndex)
+			if (currentVal & vectorBitIndex) {
 				currentVal &= ~vectorBitIndex;
+			}
 		}
 
 		set(vectorIndex, currentVal);
 	}
 
-	bool getBitValue(int bitIndex) {
+	bool getBitValue(uint32 bitIndex) {
 		int vectorIndex = bitIndex / 8;
-		int vectorBitIndex = 1 << (bitIndex % 8);
+		byte vectorBitIndex = 1 << (bitIndex % 8);
 
 		if (vectorIndex >= size())
 			return false;
