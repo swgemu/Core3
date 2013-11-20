@@ -48,6 +48,12 @@ public:
 	int isJedi(lua_State* L);
 	int setJediState(lua_State* L);
 	int isOnline(lua_State* L);
+	int setActiveQuestsBit(lua_State* L);
+	int clearActiveQuestsBit(lua_State* L);
+	int hasActiveQuestBitSet(lua_State* L);
+	int hasCompletedQuestsBitSet(lua_State* L);
+	int setCompletedQuestsBit(lua_State* L);
+	int clearCompletedQuestsBit(lua_State* L);
 
 private:
 	// The pointer to the 'real object' defined in object.cc

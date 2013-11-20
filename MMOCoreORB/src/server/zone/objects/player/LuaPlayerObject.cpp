@@ -38,6 +38,12 @@ Luna<LuaPlayerObject>::RegType LuaPlayerObject::Register[] = {
 		{ "isJedi", &LuaPlayerObject::isJedi },
 		{ "setJediState", &LuaPlayerObject::setJediState },
 		{ "isOnline", &LuaPlayerObject::isOnline },
+		{ "setActiveQuestsBit", &LuaPlayerObject::setActiveQuestsBit },
+		{ "clearActiveQuestsBit", &LuaPlayerObject::clearActiveQuestsBit },
+		{ "hasActiveQuestBitSet", &LuaPlayerObject::hasActiveQuestBitSet },
+		{ "hasCompletedQuestsBitSet", &LuaPlayerObject::hasCompletedQuestsBitSet },
+		{ "setCompletedQuestsBit", &LuaPlayerObject::setCompletedQuestsBit },
+		{ "clearCompletedQuestsBit", &LuaPlayerObject::clearCompletedQuestsBit },
 		{ 0, 0 }
 };
 
@@ -270,4 +276,54 @@ int LuaPlayerObject::isOnline(lua_State* L) {
 	lua_pushboolean(L, realObject->isOnline());
 
 	return 1;
+}
+
+int LuaPlayerObject::setActiveQuestsBit(lua_State* L) {
+	int quest = lua_tointeger(L, -2);
+	byte value = lua_tointeger(L, -1);
+
+	realObject->setActiveQuestsBit(quest, value, true);
+
+	return 0;
+}
+
+int LuaPlayerObject::clearActiveQuestsBit(lua_State* L) {
+	int quest = lua_tointeger(L, -1);
+
+	realObject->clearActiveQuestsBit(quest, true);
+
+	return 0;
+}
+
+int LuaPlayerObject::hasActiveQuestBitSet(lua_State* L) {
+	int quest = lua_tointeger(L, -1);
+
+	lua_pushboolean(L, realObject->hasActiveQuestBitSet(quest));
+
+	return 1;
+}
+
+int LuaPlayerObject::hasCompletedQuestsBitSet(lua_State* L) {
+	int quest = lua_tointeger(L, -1);
+
+	lua_pushboolean(L, realObject->hasCompletedQuestsBitSet(quest));
+
+	return 1;
+}
+
+int LuaPlayerObject::setCompletedQuestsBit(lua_State* L) {
+	int quest = lua_tointeger(L, -2);
+	byte value = lua_tointeger(L, -1);
+
+	realObject->setCompletedQuestsBit(quest, value, true);
+
+	return 0;
+}
+
+int LuaPlayerObject::clearCompletedQuestsBit(lua_State* L) {
+	int quest = lua_tointeger(L, -1);
+
+	realObject->clearCompletedQuestsBit(quest, true);
+
+	return 0;
 }
