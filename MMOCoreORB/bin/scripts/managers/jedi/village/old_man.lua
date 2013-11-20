@@ -1,4 +1,5 @@
 local ObjectManager = require("managers.object.object_manager")
+local QuestManager = require("managers.quest.quest_manager")
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 
 local OldMan = {}
@@ -205,6 +206,7 @@ function OldManPublicEventsAndObservers:handleSpatialChatEvent(pCreatureObject)
 	local oldManId = OldManPrivate.readOldManIdFromPlayer(pCreatureObject)
 	local pOldMan = getSceneObject(oldManId)
 	OldManPrivate.sendGreetingString(pOldMan, pCreatureObject)
+	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.OLD_MAN_INITIAL)
 end
 
 -- Despawn the old man.
@@ -308,6 +310,8 @@ function OldMan.giveForceCrystalToPlayer(pCreatureObject)
 		if pInventory ~= nil then
 			giveItem(pInventory, OLD_MAN_FORCE_CRYSTAL_STRING, -1)
 			VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_HAS_CRYSTAL)
+			QuestManager.completeQuest(pCreatureObject, QuestManager.quests.OLD_MAN_INITIAL)
+			QuestManager.completeQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
 		end
 	end)
 end

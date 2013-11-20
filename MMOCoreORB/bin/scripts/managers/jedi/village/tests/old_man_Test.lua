@@ -3,6 +3,7 @@ BUSTED_TEST = true
 local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
 local OldMan = require("managers.jedi.village.old_man")
 local VillageJediManagerCommonMocks = require("managers.jedi.village.mocks.village_jedi_manager_common_mocks")
+local QuestManagerMocks = require("managers.quest.mocks.quest_manager_mocks")
 
 describe("Old Man", function()
 	local pCreatureObject = { "creatureObjectPointer" }
@@ -27,6 +28,7 @@ describe("Old Man", function()
 	setup(function()
 		DirectorManagerMocks.mocks.setup()
 		VillageJediManagerCommonMocks.mocks.setup()
+		QuestManagerMocks.mocks.setup()
 
 		OldMan.exposePrivateFunctions()
 	end)
@@ -34,6 +36,7 @@ describe("Old Man", function()
 	teardown(function()
 		DirectorManagerMocks.mocks.teardown()
 		VillageJediManagerCommonMocks.mocks.teardown()
+		QuestManagerMocks.mocks.teardown()
 
 		OldMan.hidePrivateFunctions()
 	end)
@@ -41,6 +44,7 @@ describe("Old Man", function()
 	before_each(function()
 		DirectorManagerMocks.mocks.before_each()
 		VillageJediManagerCommonMocks.mocks.before_each()
+		QuestManagerMocks.mocks.before_each()
 
 		getCityRegionAt = spy.new(function() return pCityRegion end)
 		getSceneObject = spy.new(function() return pOldMan end)
@@ -256,6 +260,12 @@ describe("Old Man", function()
 
 						assert.spy(VillageJediManagerCommonMocks.setJediProgressionScreenPlayState).was.called_with(pCreatureObject, VILLAGE_JEDI_PROGRESSION_HAS_CRYSTAL)
 					end)
+
+					it("Should complete the old man initial and the old man force crystal quests.", function()
+						OldMan.giveForceCrystalToPlayer(pCreatureObject)
+
+						assert.spy(QuestManagerMocks.completeQuest).was.called(2)
+					end)
 				end)
 
 				describe("and the inventory pointer return is not nil", function()
@@ -273,6 +283,12 @@ describe("Old Man", function()
 						OldMan.giveForceCrystalToPlayer(pCreatureObject)
 
 						assert.spy(VillageJediManagerCommonMocks.setJediProgressionScreenPlayState).was.not_called()
+					end)
+
+					it("Should not complete the old man initial and the old man force crystal quests.", function()
+						OldMan.giveForceCrystalToPlayer(pCreatureObject)
+
+						assert.spy(QuestManagerMocks.completeQuest).was.not_called()
 					end)
 				end)
 			end)
@@ -420,6 +436,12 @@ describe("Old Man", function()
 					OldMan.global:handleSpatialChatEvent(pCreatureObject)
 
 					assert.spy(OldMan.private.sendGreetingString).was.called_with(pOldMan, pCreatureObject)
+				end)
+
+				it("Should activate the OLD_MAN_INITIAL quest", function()
+					OldMan.global:handleSpatialChatEvent(pCreatureObject)
+
+					assert.spy(QuestManagerMocks.activateQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.OLD_MAN_INITIAL)
 				end)
 			end)
 		end)

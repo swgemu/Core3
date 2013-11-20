@@ -1632,7 +1632,7 @@ void PlayerObjectImplementation::activateForceRegen() {
 		setForcePower(0);
 
 	float modifier = 1.f;
-	
+
 	if (creature->isMeditating())
 		modifier = 3.f;
 
@@ -1852,7 +1852,7 @@ void PlayerObjectImplementation::setActiveQuestsBit(int bitIndex, byte value, bo
 		return;
 
 	PlayerObjectDeltaMessage8* delta = new PlayerObjectDeltaMessage8(this);
-	delta->startUpdate(4);
+	delta->startUpdate(5);
 	activeQuests.insertToMessage(delta);
 	delta->close();
 
@@ -1866,7 +1866,7 @@ void PlayerObjectImplementation::setCompletedQuestsBit(int bitIndex, byte value,
 		return;
 
 	PlayerObjectDeltaMessage8* delta = new PlayerObjectDeltaMessage8(this);
-	delta->startUpdate(5);
+	delta->startUpdate(4);
 	completedQuests.insertToMessage(delta);
 	delta->close();
 

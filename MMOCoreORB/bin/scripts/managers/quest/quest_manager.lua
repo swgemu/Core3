@@ -17,7 +17,7 @@ end
 -- Checks if the player has a quest active.
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param quest the index number for the quest to check if it is active.
-function QuestManager.hasActivateQuest(pCreatureObject, quest)
+function QuestManager.hasActiveQuest(pCreatureObject, quest)
 	return ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
 		return playerObject:hasActiveQuestBitSet(quest)
 	end) == true
