@@ -40,15 +40,15 @@ function LordNyaxCultScreenPlay:start()
 end
 
 function LordNyaxCultScreenPlay:spawnMobiles()
-	--TODO: Implement spawners in radius.
-	--spawnCreatures("fanatic_of_lord_nyax", 300, 0, 1350, -322, 50, 4)
-	--spawnCreatures("visionary_of_lord_nyax", 300, 0, 1350, -322, 50,4)
-	--spawnCreatures("servant_of_lord_nyax", 300, 0, 1350, -322, 50, 4)
-	--spawnCreatures("minion_of_lord_nyax", 300, 0, 1350, -322, 50, 4)
-	--spawnCreatures("fiend_of_lord_nyax", 300, 0, 1350, -322, 50, 4)
-	--spawnCreatures("disciple_of_lord_nyax", 300, 0, 1350, -322, 50, 4)
-	--spawnCreatures("zealot_of_lord_nyax", 300, 0, 1350, -322, 50, 4)
-
+	--Outside
+	spawnMobile("corellia", "fanatic_of_lord_nyax", 300, 1353.6, 31, -320.4, 9, 0)
+	spawnMobile("corellia", "visionary_of_lord_nyax", 300, 1359, 31, -317.6, -71, 0)
+	spawnMobile("corellia", "zealot_of_lord_nyax", 300, 1356.6, 31, -319.5, -36, 0)
+	spawnMobile("corellia", "fiend_of_lord_nyax", 300, 1381.1, 31, -334.4, -157, 0)
+	spawnMobile("corellia", "disciple_of_lord_nyax", 300, 1380.3, 31, -336.9, 19, 0)
+	spawnMobile("corellia", "minion_of_lord_nyax", 300, 1354.5, 31, -345.9, -120, 0)
+	spawnMobile("corellia", "servant_of_lord_nyax", 300, 1351.9, 31, -347.3, 51, 0)
+	--Inside
 	spawnMobile("corellia", "fiend_of_lord_nyax", 300, 0.200391, 0.25, 5.98459, 0, 6035995)
 	spawnMobile("corellia", "fiend_of_lord_nyax", 300, -0.494639, 0.25, 6.25404, 0, 6035995)
 	spawnMobile("corellia", "disciple_of_lord_nyax", 300, 3.6188, 0.25, -4.09898, 0, 6035996)
