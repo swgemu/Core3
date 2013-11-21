@@ -155,6 +155,11 @@ public:
 			return false;
 		}
 
+		if (!patient->isPlayerCreature()) {
+			enhancer->sendSystemMessage("@healing_response:healing_response_77"); //Target must be a player or a creature pet in order to apply enhancements.
+			return false;
+		}
+
 		if (patient->isInCombat()) {
 			enhancer->sendSystemMessage("You cannot do that while your target is in Combat.");
 			return false;
@@ -285,7 +290,7 @@ public:
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
 				} else
-					creature->sendSystemMessage("@healing_response:healing_response_77"); //Target must be a player or a creature pet in order to apply enhancements.				
+					creature->sendSystemMessage("@healing_response:healing_response_77"); //Target must be a player or a creature pet in order to apply enhancements.
 					return GENERALERROR;
 			}
 		} else
