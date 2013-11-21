@@ -22,16 +22,15 @@ lt_lance = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = ATTACKABLE,
-	creatureBitmask = PACK + KILLER,
-	optionsBitmask = 128,
+	pvpBitmask = NONE,
+	creatureBitmask = PACK,
+	optionsBitmask = 264,
 	diet = HERBIVORE,
 
 	templates = {"object/mobile/dressed_lieutenant_lance.iff"},
 	lootGroups = {},
-	weapons = {"rebel_weapons_medium"},
-	conversationTemplate = "",
-	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
+	weapons = {},
+	conversationTemplate = "RebelPilotConversationTemplate"
 }
 
 CreatureTemplates:addCreatureTemplate(lt_lance, "lt_lance")
