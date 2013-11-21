@@ -155,7 +155,7 @@ public:
 			return false;
 		}
 
-		if (!patient->isPlayerCreature()) {
+		if (!patient->isPlayerCreature() && !(patient->isCreature() && patient->isPet())) {
 			enhancer->sendSystemMessage("@healing_response:healing_response_77"); //Target must be a player or a creature pet in order to apply enhancements.
 			return false;
 		}
@@ -205,15 +205,17 @@ public:
 		if (!creature->isPlayerCreature())
 			return;
 
-		if (!target->isPlayerCreature())
-			return;
-
 		CreatureObject* enhancer = cast<CreatureObject*>( creature);
 		CreatureObject* patient = cast<CreatureObject*>( target);
 
 		String enhancerName = enhancer->getFirstName();
-		String patientName = patient->getFirstName();
+		String patientName;
 		String attributeName = BuffAttribute::getName(attribute, true);
+
+		if (target->isPlayerCreature())
+			patientName = patient->getFirstName();
+		else
+			patientName = patient->getDisplayedName();
 
 		if (BuffAttribute::isProtection(attribute))
 			attributeName += " Resistance";
