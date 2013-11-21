@@ -148,6 +148,11 @@ Reference<FindTargetTask*> BountyHunterDroid::transmitBiologicalSignature(SceneO
 		return NULL;
 	}
 
+	if (objective->hasArakydFindTask()) {
+		player->sendSystemMessage("@mission/mission_generic:bounty_already_tracking"); // You are already tracking your target.
+		return NULL;
+	}
+
 	if (player->isRidingCreature() || player->isRidingMount()) {
 		player->sendSystemMessage("@error_message:survey_on_mount"); // You cannot perform that action while mounted on a creature or driving a vehicle.
 		return NULL;

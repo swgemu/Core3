@@ -250,7 +250,27 @@ void BountyMissionObjectiveImplementation::performDroidAction(int action, SceneO
 
 	Reference<Task*> task = droid->performAction(action, sceneObject, player, getMissionObject().get());
 
-	droidTasks.add(task);
+	if (task != NULL)
+		droidTasks.add(task);
+}
+
+bool BountyMissionObjectiveImplementation::hasArakydFindTask() {
+	Locker locker(&syncMutex);
+
+	for (int i = 0; i < droidTasks.size(); i++) {
+		Reference<Task*> task = droidTasks.get(i);
+
+		if (task != NULL) {
+			Reference<FindTargetTask*> findTask = task.castTo<FindTargetTask*>();
+
+			if (findTask != NULL) {
+				if (!findTask->isCompleted() && findTask->isArakydTask())
+					return true;
+			}
+		}
+	}
+
+	return false;
 }
 
 bool BountyMissionObjectiveImplementation::playerHasMissionOfCorrectLevel(int action) {

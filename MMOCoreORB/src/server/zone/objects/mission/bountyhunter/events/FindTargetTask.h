@@ -332,6 +332,14 @@ public:
 		cancel();
 	}
 
+	bool isArakydTask() {
+		return arakyd;
+	}
+
+	bool isCompleted() {
+		return state & Completed;
+	}
+
 	void run() {
 		ManagedReference<CreatureObject*> droid = weakDroid.get();
 		ManagedReference<CreatureObject*> player = weakPlayer.get();

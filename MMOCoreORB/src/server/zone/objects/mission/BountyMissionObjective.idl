@@ -132,7 +132,9 @@ class BountyMissionObjective extends MissionObjective {
 	}
 	
 	public native void performDroidAction(int action, SceneObject sceneObject, CreatureObject player);
-	
+
+	public native boolean hasArakydFindTask();
+
 	public native boolean playerHasMissionOfCorrectLevel(int action);
 	
 	public native void updateWaypoint();
