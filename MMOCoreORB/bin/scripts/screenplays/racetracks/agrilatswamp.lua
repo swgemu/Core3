@@ -261,12 +261,13 @@ function agrilatswap_racetrack_screenplay:spawnFinish(pActiveArea, pObject)
 				if recordTime > seconds then
 					creatureObject:sendSystemMessage("@theme_park/racing/racing:beat_the_record")
 					writeSharedMemory("agrilat.swamp.track.recordtime",seconds)
-					local playername = creatureObject:getFirstName();
-					if firstName ~= nil then
+					local playername = creatureObject:getFirstName()
+					if playername ~= nil then
 						writeStringSharedMemory("agrilat.swamp.track.recordholder",playername)
 					end
-					
-					playerObject:awardBadge(BDG_RACING_AGRILAT_SWAMP)
+					if playerObject:hasBadge(BDG_RACING_AGRILAT_SWAMP) == false then
+						playerObject:awardBadge(BDG_RACING_AGRILAT_SWAMP)
+					end
 				end 
 				clearScreenPlayData(pObject,"AGSWRT")
 			end
