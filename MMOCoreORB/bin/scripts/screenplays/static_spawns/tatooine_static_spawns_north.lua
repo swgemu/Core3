@@ -108,6 +108,9 @@ function TatooineStaticSpawnsNorthScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "alkhara_bandit", 300, -4877.9, 94.6, 2951.1, -165, 0)
 
 	--Imperial Camp (-5332,2710) needs its own screenplay
+	spawnMobile("tatooine", "trainer_commando",0,-5292,6.76132,2718,183,0)
+	spawnMobile("tatooine", "informant_npc_lvl_2",0,-5284,9.1,2676,240,0)
+	spawnMobile("tatooine", "informant_npc_lvl_1",0,-5296,8.5,2654,0,0)
 
 	--Rocks With Fire on Top (-6112,3966)
 
@@ -146,6 +149,14 @@ function TatooineStaticSpawnsNorthScreenPlay:spawnMobiles()
 
 	--Building Ruins, Balcony and Stairs (576,353)
 		--unsure what if anything to populate here
+	spawnMobile("tatooine", "jawa", 300,579.1,160.5,355.3,179,0)
+	spawnMobile("tatooine", "jawa", 300,578.9,160.5,352.9,4,0)
+	spawnMobile("tatooine", "jawa", 300,596.6,153.4,340.7,-13,0)
+	spawnMobile("tatooine", "jawa", 300,596.5,153.4,342.4,168,0)
+	spawnMobile("tatooine", "jawa", 300,592,146.8,353.5,-1,0)
+	spawnMobile("tatooine", "jawa", 300,591.9,146.8,356.3,175,0)
+	spawnMobile("tatooine", "jawa", 300,603.2,141.3,363.9,174,0)
+	spawnMobile("tatooine", "jawa", 300,603.4,141.3,359.2,-4,0)
 
 	--Debris (1093,861)
 
