@@ -187,4 +187,4 @@ includeFile("static_spawns/yavin4_static_spawns.lua")
 --includeFile("event/stresstest_20120128.lua")
 
 --Race Tracks
-includeFile("racetracks/agrilatswamp.lua")
+includeFile("racetracks/racetracks.lua")
