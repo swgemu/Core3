@@ -64,7 +64,7 @@ public:
 
 		try {
 			StringTokenizer args(arguments.toString());
-			ManagedReference<CreatureObject*> player = NULL;
+			ManagedReference<CreatureObject*> patient = NULL;
 
 			ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(creature->getTargetID());
 
@@ -72,15 +72,15 @@ public:
 
 			if (!args.hasMoreTokens()) { // No arguments passed
 
-				if (object != NULL && object->isPlayerCreature()) { // Target is a player, rez target
-					player = cast<CreatureObject*>( object.get());
-					revivePlayer(creature, player);
+				if (object != NULL && (object->isPlayerCreature() || object->isPet())) { // Target is a player or pet, rez target
+					patient = cast<CreatureObject*>( object.get());
+					revivePatient(creature, patient);
 
 				} else if (object == NULL) { // No target, rez self
-					player = creature;
-					revivePlayer(creature, player);
+					patient = creature;
+					revivePatient(creature, patient);
 
-				} else { // Target is not a player
+				} else { // Target is not a player or pet
 					creature->sendSystemMessage("Syntax: /gmrevive [buff] [ [<name>] | [area [<range>] [imperial | rebel | neutral]] ]");
 					return INVALIDTARGET;
 				}
@@ -145,18 +145,24 @@ public:
 						for (int i = 0; i < closeObjects.size(); ++i) {
 							SceneObject* sceneObject = cast<SceneObject*>(closeObjects.get(i).get());
 
-							if (sceneObject->isPlayerCreature() && creature->isInRange(sceneObject, range)) {
-								ManagedReference<CreatureObject*> playerObject = cast<CreatureObject*>(sceneObject);
+							if ((sceneObject->isPlayerCreature() || sceneObject->isPet()) && creature->isInRange(sceneObject, range)) {
+								ManagedReference<CreatureObject*> patientObject = cast<CreatureObject*>(sceneObject);
 
-								if (playerObject != NULL) {
-									if (faction == "" || faction.hashCode() == playerObject->getFaction() || (faction == "neutral" && playerObject->getFaction() == 0)) {
+								if (patientObject != NULL) {
+									if (faction == "" || faction.hashCode() == patientObject->getFaction() || (faction == "neutral" && patientObject->getFaction() == 0)) {
 										if (buff) {
-											Locker clocker(playerObject, creature);
-											pm->enhanceCharacter(playerObject);
-											creature->sendSystemMessage(playerObject->getFirstName() + " has been enhanced.");
+											Locker clocker(patientObject, creature);
+
+											if (patientObject->isPlayerCreature()) {
+												pm->enhanceCharacter(patientObject);
+												creature->sendSystemMessage(patientObject->getFirstName() + " has been enhanced.");
+											} else if (patientObject->isCreature()) {
+												pm->enhanceCharacter(patientObject);
+												creature->sendSystemMessage(patientObject->getDisplayedName() + " has been enhanced.");
+											}
 
 										} else {
-											revivePlayer(creature, playerObject);
+											revivePatient(creature, patientObject);
 										}
 									}
 								}
@@ -164,32 +170,38 @@ public:
 						}
 
 					} else { // Not area
-						player = server->getZoneServer()->getChatManager()->getPlayer(firstName);
+						patient = server->getZoneServer()->getChatManager()->getPlayer(firstName);
 
-						if (player != NULL) {
+						if (patient != NULL) {
 							if (buff) {
-								Locker clocker(player, creature);
-								pm->enhanceCharacter(player);
-								creature->sendSystemMessage(player->getFirstName() + " has been enhanced.");
+								Locker clocker(patient, creature);
+								pm->enhanceCharacter(patient);
+								creature->sendSystemMessage(patient->getFirstName() + " has been enhanced.");
 
 							} else {
-								revivePlayer(creature, player);
+								revivePatient(creature, patient);
 							}
 						}
 					}
 
 				} else if (buff) {  // Buff was the only argument
 
-					if (object != NULL && object->isPlayerCreature()) { // Target is a player, buff target
-						player = cast<CreatureObject*>( object.get());
-						Locker clocker(player, creature);
-						pm->enhanceCharacter(player);
-						creature->sendSystemMessage(player->getFirstName() + " has been enhanced.");
+					if (object != NULL && (object->isPlayerCreature() || object->isPet())) { // Target is a player or pet, buff target
+						patient = cast<CreatureObject*>( object.get());
+						Locker clocker(patient, creature);
+
+						if (patient->isPlayerCreature()) {
+							pm->enhanceCharacter(patient);
+							creature->sendSystemMessage(patient->getFirstName() + " has been enhanced.");
+						} else if (patient->isCreature()) {
+							pm->enhanceCharacter(patient);
+							creature->sendSystemMessage(patient->getDisplayedName() + " has been enhanced.");
+						}
 
 					} else if (object == NULL) { // No target, buff self
 						pm->enhanceCharacter(creature);
 
-					} else { // Target is not a player
+					} else { // Target is not a player or pet
 						creature->sendSystemMessage("Syntax: /gmrevive [buff] [ [<name>] | [area [<range>] [imperial | rebel | neutral]] ]");
 						return INVALIDTARGET;
 					}
@@ -207,26 +219,29 @@ public:
 		return SUCCESS;
 	}
 
-	void revivePlayer(CreatureObject* creature, CreatureObject* player) {
-		Locker clocker(player, creature);
+	void revivePatient(CreatureObject* creature, CreatureObject* patient) {
+		Locker clocker(patient, creature);
 
-		player->healDamage(creature, CreatureAttribute::HEALTH, 5000);
-		player->healDamage(creature, CreatureAttribute::ACTION, 5000);
-		player->healDamage(creature, CreatureAttribute::MIND, 5000);
+		patient->healDamage(creature, CreatureAttribute::HEALTH, 5000);
+		patient->healDamage(creature, CreatureAttribute::ACTION, 5000);
+		patient->healDamage(creature, CreatureAttribute::MIND, 5000);
 
 		for (int i = 0; i < 9; ++i) {
-			player->setWounds(i, 0);
+			patient->setWounds(i, 0);
 		}
 
-		player->setShockWounds(0);
+		patient->setShockWounds(0);
 
-		player->setPosture(CreaturePosture::UPRIGHT);
+		patient->setPosture(CreaturePosture::UPRIGHT);
 
-		player->broadcastPvpStatusBitmask();
+		patient->broadcastPvpStatusBitmask();
 
-		player->sendSystemMessage("You have been restored.");
-
-		creature->sendSystemMessage(player->getFirstName() + " has been restored.");
+		if (patient->isPlayerCreature()) {
+			patient->sendSystemMessage("You have been restored.");
+			creature->sendSystemMessage(patient->getFirstName() + " has been restored.");
+		} else {
+			creature->sendSystemMessage(patient->getDisplayedName() + " has been restored.");
+		}
 	}
 };
 

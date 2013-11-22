@@ -500,6 +500,8 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		shouldRescheduleCorpseDestruction = playerManager->shouldRescheduleCorpseDestruction(player, destructedObject);
 
 		if (pet) {
+			destructedObject->clearBuffs(true);
+
 			ManagedReference<PetControlDevice*> petControlDevice = destructedObject->getControlDevice().get().castTo<PetControlDevice*>();
 
 			if (petControlDevice != NULL && petControlDevice->getPetType() != PetControlDevice::DROIDPET)
