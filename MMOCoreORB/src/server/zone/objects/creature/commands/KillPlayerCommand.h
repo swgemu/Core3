@@ -82,7 +82,7 @@ public:
 		PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 
 		if (targetObject != NULL) {
-			if (targetObject->isPlayerCreature())
+			if (targetObject->isPlayerCreature() || targetObject->isPet())
 				targetPlayer = cast<CreatureObject*>(targetObject.get());
 			else {
 				creature->sendSystemMessage("Invalid target.");
@@ -211,16 +211,18 @@ public:
 			if (damage) {
 				for (int i = 0; i < closeObjects.size(); i++) {
 					SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
-					if (targetObject->isPlayerCreature()) {
+					if (targetObject->isPlayerCreature() || targetObject->isPet()) {
 						targetPlayer = cast<CreatureObject*>(targetObject);
 
 						Locker locker(targetPlayer, creature);
-						//Deal damage if target is in range, a player
-						if (creature->isInRange(targetPlayer, range) && targetPlayer->isPlayerCreature() && targetPlayer != creature) {
+						//Deal damage if target is in range and is a player or pet
+						if (creature->isInRange(targetPlayer, range) && (targetPlayer->isPlayerCreature() || targetPlayer->isPet()) && targetPlayer != creature) {
 							targetPlayer->inflictDamage(creature, 0, healthDamage, true, true);
 							targetPlayer->inflictDamage(creature, 3, actionDamage, true, true);
 							targetPlayer->inflictDamage(creature, 6, mindDamage, true, true);
-							targetPlayer->sendSystemMessage("You have been damaged!");
+
+							if (targetPlayer->isPlayerCreature())
+								targetPlayer->sendSystemMessage("You have been damaged!");
 
 							++count;
 						}
@@ -234,7 +236,7 @@ public:
 			else {
 				for (int i = 0; i < closeObjects.size(); i++) {
 					SceneObject* targetObject = cast<SceneObject*>(closeObjects.get(i).get());
-					if (targetObject->isPlayerCreature()) {
+					if (targetObject->isPlayerCreature() || targetObject->isPet()) {
 						targetPlayer = cast<CreatureObject*>(targetObject);
 
 						if (targetPlayer->isPlayerCreature() && targetPlayer != creature) {
@@ -243,10 +245,16 @@ public:
 							playerManager->killPlayer(creature, targetPlayer, 1);
 
 							++count;
+						} else if (targetPlayer->isPet()) {
+							Locker locker(targetPlayer, creature);
+
+							targetPlayer->notifyObjectDestructionObservers(creature, 0);
+
+							++count;
 						}
 					}
 				}
-				creature->sendSystemMessage(String::valueOf(count) + " players killed.");
+				creature->sendSystemMessage(String::valueOf(count) + " players and/or pets killed.");
 				return SUCCESS;
 			}
 		}
@@ -254,14 +262,18 @@ public:
 		//Deal damage to single target
 		else if (damage) {
 			if (targetPlayer != NULL) {
-				if (targetPlayer->isPlayerCreature()) {
+				if (targetPlayer->isPlayerCreature() || targetPlayer->isPet()) {
 					Locker locker(targetPlayer, creature);
 
 					targetPlayer->inflictDamage(creature, 0, healthDamage, true, true);
 					targetPlayer->inflictDamage(creature, 3, actionDamage, true, true);
 					targetPlayer->inflictDamage(creature, 6, mindDamage, true, true);
 
-					creature->sendSystemMessage(targetPlayer->getFirstName() + " damaged.");
+					if (targetPlayer->isPlayerCreature())
+						creature->sendSystemMessage(targetPlayer->getFirstName() + " damaged.");
+					else
+						creature->sendSystemMessage(targetPlayer->getDisplayedName() + " damaged.");
+
 					return SUCCESS;
 				}
 			}
@@ -278,6 +290,10 @@ public:
 					Locker locker(targetPlayer, creature);
 
 					playerManager->killPlayer(creature, targetPlayer, 1);
+				} else if (targetPlayer->isPet()) {
+					Locker locker(targetPlayer, creature);
+
+					targetPlayer->notifyObjectDestructionObservers(creature, 0);
 				}
 			}
 			else {

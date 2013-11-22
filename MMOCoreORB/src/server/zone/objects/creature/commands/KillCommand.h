@@ -203,8 +203,8 @@ public:
 					targetCreature = cast<CreatureObject*>(targetObject);
 
 					Locker locker(targetCreature, creature);
-					//Deal damage if target is an attackable creature, in range, and not a player
-					if (targetCreature->isAttackableBy(creature) && creature->isInRange(targetObject, range) && !targetObject->isPlayerCreature()) {
+					//Deal damage if target is an attackable creature, in range, and not a player or pet
+					if (targetCreature->isAttackableBy(creature) && creature->isInRange(targetObject, range) && !targetObject->isPlayerCreature() && !targetObject->isPet()) {
 						targetCreature->inflictDamage(creature, 0, healthDamage, true, true);
 						targetCreature->inflictDamage(creature, 3, actionDamage, true, true);
 						targetCreature->inflictDamage(creature, 6, mindDamage, true, true);
@@ -216,9 +216,9 @@ public:
 
 		//Deal damage to selected target
 		else {
-			//Deal damage if target is not a player
+			//Deal damage if target is not a player or pet
 			if (targetCreature != NULL) {
-				if (!targetCreature->isPlayerCreature()) {
+				if (!targetCreature->isPlayerCreature() && !targetObject->isPet()) {
 					Locker locker(targetCreature, creature);
 
 					targetCreature->inflictDamage(creature, 0, healthDamage, true, true);
