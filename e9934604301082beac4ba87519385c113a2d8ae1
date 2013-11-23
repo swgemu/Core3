@@ -16,6 +16,24 @@
       "revId": "e9934604301082beac4ba87519385c113a2d8ae1",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_96a678c0",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDevice.idl",
+        "patchSetId": 9
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-11-23T22:16:13Z",
+      "side": 1,
+      "message": "The first set are the default strings for the commands.  They won\u0027t change.   The second set will be the trained strings that the player can modify to be whatever they want (not implemented yet).\n\nI think you can make a pet unlearn all their trained commands so I wanted to be able to reset to default easily.",
+      "parentUuid": "9a437d4f_3b2575c2",
+      "revId": "e9934604301082beac4ba87519385c113a2d8ae1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
