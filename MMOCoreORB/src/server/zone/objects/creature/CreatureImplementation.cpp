@@ -311,7 +311,7 @@ bool CreatureImplementation::canTameMe(CreatureObject* player) {
 	if (!isBaby() || _this.get()->isInCombat() || _this.get()->isDead() || isPet())
 		return false;
 
-	if(!player->isInRange(_this.get(), 8.0f) || player->isInCombat() || player->isDead() || player->isIncapacitated() || player->isMounted())
+	if(player->isInCombat() || player->isDead() || player->isIncapacitated() || player->isMounted())
 		return false;
 
 	return true;
