@@ -1,14 +1,14 @@
 CorsecBaseScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
-	
+
 	screenplayName = "CorsecBaseScreenPlay",
-	
+
 	lootContainers = {
 		6575944,
 		6575945
-		
-	},
 	
+	},
+
 	lootLevel = 26,	
 
 	lootGroups = {
@@ -24,7 +24,7 @@ CorsecBaseScreenPlay = ScreenPlay:new {
 			lootChance = 8000000
 		}					
 	},
-	
+
 	lootContainerRespawn = 1800 -- 30 minutes
 }
 
@@ -46,7 +46,7 @@ function CorsecBaseScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "rogue_corsec_trooper",300,-10,0.2,5.8,137,1855742)
 	spawnMobile("corellia", "rogue_corsec_trooper",300,5207,5,1515.2,76,0)
 	spawnMobile("corellia", "rogue_corsec_trooper",300,5203,5,1515.7,-34,0)
-		
+
 	spawnMobile("corellia", "renegade_corsec_trooper",300,5239.7,5,1532,169,0)
 	spawnMobile("corellia", "renegade_corsec_trooper",300,5242.2,5,1534.8,104,0)
 	spawnMobile("corellia", "renegade_corsec_trooper",300,-7.1,0.2,5.9,114,1855738)
@@ -54,7 +54,7 @@ function CorsecBaseScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "renegade_corsec_trooper",300,10.6,0.2,1.3,1,1855738)
 	spawnMobile("corellia", "renegade_corsec_trooper",300,11.2,0.2,5.3,-171,1855738)
 	spawnMobile("corellia", "renegade_corsec_trooper",300,1.6,-20.8,18.9,0,1855730)
-		
+
 	spawnMobile("corellia", "corsec_deserter",300,6.8,0.2,7.4,94,1855746)
 	spawnMobile("corellia", "corsec_deserter",300,-11.3,0.2,-5.7,-179,1855746)
 	spawnMobile("corellia", "corsec_deserter",300,-10.1,0.2,-1.3,95,1855742)
@@ -62,4 +62,10 @@ function CorsecBaseScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "corsec_deserter",300,5226.9,5,1616.6,-159,0)
 	spawnMobile("corellia", "corsec_deserter",300,5229.2,5,1613.3,-85,0)
 	spawnMobile("corellia", "corsec_deserter",300,-3.7,0.3,-3.7,4,1855722)
+
+	spawnMobile("corellia", "corsec_traitor",300,5221.2,5,1583.5,156,0)
+	spawnMobile("corellia", "corsec_traitor",300,5214.8,5,1588,-70,0)
+	spawnMobile("corellia", "corsec_traitor",300,-4.6,-10.3,-5.3,4,1855725)
+	spawnMobile("corellia", "corsec_traitor",300,-8.9,0.2,-5.8,-90,1855746)
+	spawnMobile("corellia", "corsec_traitor",300,11.1,0.2,6.8,-89,1855746)
 end
