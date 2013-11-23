@@ -73,8 +73,7 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		//TODO: Can diagnose pets too.
-		if (object == NULL || !object->isPlayerCreature()) {
+		if (object == NULL || (!object->isPlayerCreature() && !object->isPet())) {
 			creature->sendSystemMessage("@healing_response:healing_response_b6"); //You cannot diagnose that.
 			return GENERALERROR;
 		}	
