@@ -72,11 +72,10 @@ public:
 	}
 
 	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, int mindDamage) {
-		if (!creature->isPlayerCreature() || !creatureTarget->isPlayerCreature())
+		if (!creature->isPlayerCreature())
 			return;
 
 		CreatureObject* player = cast<CreatureObject*>(creature);
-		CreatureObject* playerTarget = cast<CreatureObject*>( creatureTarget);
 
 		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
 
@@ -88,12 +87,15 @@ public:
 
 		msgTail << " damage.";
 
-		if (creatureTarget) {
-			msgPlayer << "You heal " << playerTarget->getFirstName() << " for " << msgBody.toString() << msgTail.toString();
+		if (creatureTarget->isPlayerCreature()) {
+			msgPlayer << "You heal " << creatureTarget->getFirstName() << " for " << msgBody.toString() << msgTail.toString();
 			msgTarget << player->getFirstName() << " heals you for " << msgBody.toString() << msgTail.toString();
 
 			player->sendSystemMessage(msgPlayer.toString());
-			playerTarget->sendSystemMessage(msgTarget.toString());
+			creatureTarget->sendSystemMessage(msgTarget.toString());
+		} else {
+			msgPlayer << "You heal " << creatureTarget->getDisplayedName() << " for " << msgBody.toString() << msgTail.toString();
+			player->sendSystemMessage(msgPlayer.toString());
 		}
 	}
 
@@ -139,7 +141,8 @@ public:
 			return GENERALERROR;
 		}		
 
-		if (creatureTarget->isDead() || creatureTarget->isAiAgent()) {
+		if (creatureTarget->isDead() || (creatureTarget->isAiAgent() && !creatureTarget->isPet()) || creatureTarget->isDroidObject()) {
+			creature->sendSystemMessage("@healing:heal_mind_invalid_target"); // Target must be a player or a creature pet in order to heal mind.
 			return GENERALERROR;
 		}
 		
@@ -164,10 +167,14 @@ public:
 		}
 
 		if (creatureTarget->getHAM(CreatureAttribute::MIND) == 0 || !(creatureTarget->hasDamage(CreatureAttribute::MIND))) {
-			if (creatureTarget) {
+			if (creatureTarget->isPlayerCreature()) {
 				StringIdChatParameter stringId("healing", "no_mind_to_heal_target"); //%NT has no mind to heal.
 				stringId.setTT(creatureTarget->getObjectID());
 				creature->sendSystemMessage(stringId); 
+			} else {
+				StringBuffer message;
+				message << creatureTarget->getDisplayedName() << " has no mind to heal.";
+				creature->sendSystemMessage(message.toString());
 			}
 			return GENERALERROR;
 		}
@@ -190,7 +197,7 @@ public:
 
 		int healedMind = creatureTarget->healDamage(creature, CreatureAttribute::MIND, healPower);
 
-		if (creature->isPlayerCreature() && creatureTarget->isPlayerCreature()) {
+		if (creature->isPlayerCreature()) {
 			playerManager->sendBattleFatigueMessage(creature, creatureTarget);
 		}
 

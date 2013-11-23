@@ -103,9 +103,6 @@ public:
 		if (group == NULL || !group->hasMember(creatureTarget)) {
 			if (creature->isPlayerCreature()) {
 				CreatureObject* player = cast<CreatureObject*>(creature);
-
-				//At this point, we know that the creatureTarget is either a player or a creaturePet.
-				//TODO: Activate this switch once creature pet's are introduced.
 				CreatureObject* consentOwner = cast<CreatureObject*>( creatureTarget);
 
 				PlayerObject* ghost = consentOwner->getPlayerObject();
@@ -209,7 +206,7 @@ public:
 				if (tangibleObject != NULL && tangibleObject->isAttackableBy(creature)) {
 					object = creature;
 				} else 
-					creature->sendSystemMessage("@healing_response:cannot_resuscitate_kit");//You cannot resuscitate someone without a resuscitation kit!
+					creature->sendSystemMessage("@healing_response:healing_response_a2"); //You cannot apply resuscitation medication without a valid target!
 					return GENERALERROR;
 			}
 		} else
@@ -220,7 +217,7 @@ public:
 		Locker clocker(creatureTarget, creature);
 
 		if (!creatureTarget->isPlayerCreature()) {
-			creature->sendSystemMessage("@healing_response:healing_response_a2"); //You cannot apply resuscitation medication without a valid target!
+			creature->sendSystemMessage("@healing_response:healing_response_a3"); // You cannot apply resuscitation medication to a non-player entity!
 			return GENERALERROR;
 		}
 

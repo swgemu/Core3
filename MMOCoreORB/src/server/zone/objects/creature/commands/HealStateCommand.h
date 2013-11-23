@@ -109,30 +109,24 @@ public:
 		if (!creature->isPlayerCreature())
 			return;
 
-		if (!creatureTarget->isPlayerCreature())
-			return;
-
 		CreatureObject* player = cast<CreatureObject*>(creature);
-		CreatureObject* playerTarget = cast<CreatureObject*>( creatureTarget);
 		StringBuffer msgPlayer, msgTarget;
 
 		String stateName = CreatureState::instance()->getName(state, true);
 
-		if (player == playerTarget) {
+		if (player == creatureTarget) {
 			msgTarget << "You remove the " << stateName << " state from yourself.";
-		} else {
-			String creatureName = player->getFirstName();
-			String creatureTargetName = playerTarget->getFirstName();
+			creatureTarget->sendSystemMessage(msgTarget.toString());
+		} else if (creatureTarget->isPlayerCreature()) {
+			msgPlayer << "You remove the " << stateName << " state from " << creatureTarget->getFirstName() << ".";
+			msgTarget << player->getFirstName() << " removes the " << stateName << " from you.";
 
-			msgPlayer << "You remove the " << stateName << " state from " << creatureTargetName << ".";
-			msgTarget << creatureName << " removes the " << stateName << " from you.";
-		}
-
-
-		playerTarget->sendSystemMessage(msgTarget.toString());
-
-		if (player != playerTarget)
+			creatureTarget->sendSystemMessage(msgTarget.toString());
 			player->sendSystemMessage(msgPlayer.toString());
+		} else {
+			msgPlayer << "You remove the " << stateName << " state from " << creatureTarget->getDisplayedName() << ".";
+			player->sendSystemMessage(msgPlayer.toString());
+		}
 	}
 
 	void doAnimations(CreatureObject* creature, CreatureObject* creatureTarget) {
@@ -254,7 +248,7 @@ public:
 
 		Locker clocker(creatureTarget, creature);
 
-		if (creatureTarget->isAiAgent() || creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted() || creatureTarget->isAttackableBy(creature))
+		if ((creatureTarget->isAiAgent() && !creatureTarget->isPet()) || creatureTarget->isDroidObject() || creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted() || creatureTarget->isAttackableBy(creature))
 			creatureTarget = creature;
 
 		uint64 state = CreatureState::INVALID;
@@ -295,10 +289,14 @@ public:
 		if (!creatureTarget->removeStateBuff(state)) {
 			if (creature == creatureTarget)
 				creature->sendSystemMessage("@healing_response:healing_response_72"); //You have no state of that type to heal.
-			else {
+			else if (creatureTarget->isPlayerCreature()){
 				StringIdChatParameter msg("healing_response", "healing_response_74"); //%NT has no state of that type to heal.
 				msg.setTT(creatureTarget->getObjectID());
 				creature->sendSystemMessage(msg); 
+			} else {
+				StringBuffer message;
+				message << creatureTarget->getDisplayedName() << " has no state of that type to heal.";
+				creature->sendSystemMessage(message.toString());
 			}
 
 			return GENERALERROR;
@@ -313,8 +311,8 @@ public:
 		if (statePack != NULL)
 			statePack->decreaseUseCount();
 
-		if (creatureTarget != creature)
-			awardXp(creature, "medical", 50); //No experience for healing yourself.
+		if (creatureTarget != creature && !creatureTarget->isPet())
+			awardXp(creature, "medical", 50); //No experience for healing yourself or pets.
 
 		doAnimations(creature, creatureTarget);
 

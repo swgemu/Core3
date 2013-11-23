@@ -81,26 +81,29 @@ public:
 		if (!object->isPlayerCreature())
 			return;
 
-		if (!target->isPlayerCreature())
-			return;
-
 		CreatureObject* creature = cast<CreatureObject*>( object);
 		CreatureObject* creatureTarget = cast<CreatureObject*>( target);
 		StringBuffer msgTarget, msgPlayer;
-		String msgSelf;
+		String msgSelf, targetName;
+
+		if (creatureTarget->isPlayerCreature())
+			targetName = creatureTarget->getFirstName();
+		else
+			targetName = creatureTarget->getDisplayedName();
+
 		switch (state) {
 		case CreatureState::POISONED:
-			msgPlayer << "You apply poison antidote to " << creatureTarget->getFirstName() << ".";
+			msgPlayer << "You apply poison antidote to " << targetName << ".";
 			msgTarget << creature->getFirstName() << " applies poison antidote to you.";
 			msgSelf = "poison_antidote_self";
 			break;
 		case CreatureState::DISEASED:
-			msgPlayer << "You apply disease antidote to " << creatureTarget->getFirstName() << ".";
+			msgPlayer << "You apply disease antidote to " << targetName << ".";
 			msgTarget << creature->getFirstName() << " applies disease antidote to you.";
 			msgSelf = "disease_antidote_self";
 			break;
 		case CreatureState::ONFIRE:
-			msgPlayer << "You attempt to suppress the flames on " << creatureTarget->getFirstName() << ".";
+			msgPlayer << "You attempt to suppress the flames on " << targetName << ".";
 			msgTarget << creature->getFirstName() << " covers you in a suppressive blanket.";
 			msgSelf = "blanket";
 			break;
@@ -108,11 +111,13 @@ public:
 			return;
 		}
 
-		if (creature != creatureTarget) {
-			creature->sendSystemMessage(msgPlayer.toString());
-			creatureTarget->sendSystemMessage(msgTarget.toString());
-		} else {
+		if (creature == creatureTarget) {
 			creature->sendSystemMessage("@healing_response:" + msgSelf);
+		} else {
+			creature->sendSystemMessage(msgPlayer.toString());
+
+			if (creatureTarget->isPlayerCreature())
+				creatureTarget->sendSystemMessage(msgTarget.toString());
 		}
 	}
 
@@ -154,10 +159,6 @@ public:
 	}
 
 	bool checkTarget(CreatureObject* creature, CreatureObject* creatureTarget) {
-		// TODO: Pet Check
-		if (!creatureTarget->isPlayerCreature()) {
-			return false;
-		}
 
 		switch (state) {
 		case CreatureState::POISONED:
@@ -187,10 +188,6 @@ public:
 			return false;
 		}
 
-
-		/*if (creatureTarget->isOvert() && creatureTarget->getFaction() != creature->getFaction()) {
-			return false;
-		}*/
 		return true;
 	}
 
@@ -210,10 +207,10 @@ public:
 			for (int i = 0; i < closeObjects.size(); i++) {
 				SceneObject* object = cast<SceneObject*>( closeObjects.get(i).get());
 
-				if (!object->isPlayerCreature())
+				if (!object->isPlayerCreature() && !object->isPet())
 					continue;
 
-				if (object == areaCenter || object == creature)
+				if (object == areaCenter || object == creature || object->isDroidObject())
 					continue;
 
 				if (!areaCenter->isInRange(object, range))
@@ -254,8 +251,8 @@ public:
 
 		sendCureMessage(creature, creatureTarget);
 
-		if (creatureTarget != creature)
-			awardXp(creature, "medical", 50); //No experience for healing yourself.
+		if (creatureTarget != creature && !creatureTarget->isPet())
+			awardXp(creature, "medical", 50); //No experience for healing yourself or pets.
 	}
 
 	bool canPerformSkill(CreatureObject* creature, CreatureObject* creatureTarget, CurePack* curePack) {
@@ -264,10 +261,14 @@ public:
 			if (!creatureTarget->isPoisoned()) {
 				if (creature == creatureTarget)
 					creature->sendSystemMessage("@healing_response:healing_response_82"); //You are not poisoned.
-				else {
+				else if (creatureTarget->isPlayerCreature()) {
 					StringIdChatParameter stringId("healing_response", "healing_response_84");
 					stringId.setTT(creatureTarget->getObjectID());
 					creature->sendSystemMessage(stringId); //%NT is not poisoned.
+				} else {
+					StringBuffer message;
+					message << creatureTarget->getDisplayedName() << " is not poisoned.";
+					creature->sendSystemMessage(message.toString());
 				}
 				return false;
 			}
@@ -276,11 +277,14 @@ public:
 			if (!creatureTarget->isDiseased()) {
 				if (creature == creatureTarget)
 					creature->sendSystemMessage("@healing_response:healing_response_90"); //You are not diseased.
-				else {
+				else if (creatureTarget->isPlayerCreature()) {
 					StringIdChatParameter stringId("healing_response", "healing_response_92");
 					stringId.setTT(creatureTarget->getObjectID());
-					creature->sendSystemMessage(stringId); //%NT is not poisoned.
-					//creature->sendSystemMessage("healing_response", "healing_response_92", creatureTarget->getObjectID()); //%NT is not diseased.
+					creature->sendSystemMessage(stringId); //%NT is not diseased.
+				} else {
+					StringBuffer message;
+					message << creatureTarget->getDisplayedName() << " is not diseased.";
+					creature->sendSystemMessage(message.toString());
 				}
 				return false;
 			}
@@ -289,11 +293,14 @@ public:
 			if (!creatureTarget->isOnFire()) {
 				if (creature == creatureTarget)
 					creature->sendSystemMessage("@healing_response:healing_response_86"); //You are not on fire.
-				else {
+				else if (creatureTarget->isPlayerCreature()) {
 					StringIdChatParameter stringId("healing_response", "healing_response_88");
 					stringId.setTT(creatureTarget->getObjectID());
-					creature->sendSystemMessage(stringId); //%NT is not poisoned.
-					//creature->sendSystemMessage("healing_response", "healing_response_88", creatureTarget->getObjectID()); //%NT is not on fire.
+					creature->sendSystemMessage(stringId); //%NT is not on fire.
+				} else {
+					StringBuffer message;
+					message << creatureTarget->getDisplayedName() << " is not on fire.";
+					creature->sendSystemMessage(message.toString());
 				}
 				return false;
 			}
@@ -371,7 +378,7 @@ public:
 
 		Locker clocker(targetCreature, creature);
 
-		if (targetCreature->isAiAgent() || targetCreature->isDead() || targetCreature->isRidingCreature() || targetCreature->isMounted() || targetCreature->isAttackableBy(creature))
+		if ((targetCreature->isAiAgent() && !targetCreature->isPet()) || targetCreature->isDroidObject() || targetCreature->isDead() || targetCreature->isRidingCreature() || targetCreature->isMounted() || targetCreature->isAttackableBy(creature))
 			targetCreature = creature;
 
 		uint64 objectId = 0;
@@ -407,8 +414,8 @@ public:
 		if (curePack != NULL)
 			curePack->decreaseUseCount();
 
-		if (targetCreature != creature)
-			awardXp(creature, "medical", 50); //No experience for healing yourself.
+		if (targetCreature != creature && !targetCreature->isPet())
+			awardXp(creature, "medical", 50); //No experience for healing yourself or pets.
 
 		if (curePack->isArea()) {
 			if (creature != targetCreature)
