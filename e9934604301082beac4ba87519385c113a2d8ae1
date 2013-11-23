@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_3b2575c2",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDevice.idl",
+        "patchSetId": 9
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-11-23T14:17:48Z",
+      "side": 1,
+      "message": "why are there 2 of the same variables?",
+      "revId": "e9934604301082beac4ba87519385c113a2d8ae1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
