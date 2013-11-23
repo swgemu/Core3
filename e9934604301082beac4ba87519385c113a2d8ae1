@@ -34,6 +34,24 @@
       "revId": "e9934604301082beac4ba87519385c113a2d8ae1",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_d69be070",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDevice.idl",
+        "patchSetId": 9
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-11-23T22:36:26Z",
+      "side": 1,
+      "message": "It would probably be better to store the default commands in a manager (maybe CreatureManager) rather than on the control device. Storing them on every pet control device would just be a waste of resources.",
+      "parentUuid": "9a437d4f_96a678c0",
+      "revId": "e9934604301082beac4ba87519385c113a2d8ae1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
