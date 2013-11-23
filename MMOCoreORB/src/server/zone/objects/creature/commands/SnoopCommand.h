@@ -97,6 +97,14 @@ public:
 		if (container == "equipment") {
 			targetObj->sendWithoutParentTo(creature);
 			targetObj->openContainerTo(creature);
+		} else if (container == "datapad") {
+			SceneObject* creatureDatapad = targetObj->getSlottedObject("datapad");
+
+			if (creatureDatapad == NULL)
+				return GENERALERROR;
+
+			creatureDatapad->sendWithoutParentTo(creature);
+			creatureDatapad->openContainerTo(creature);
 		} else {
 			SceneObject* creatureInventory = targetObj->getSlottedObject("inventory");
 
