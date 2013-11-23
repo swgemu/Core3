@@ -70,6 +70,23 @@ class PetControlDevice extends ControlDevice {
 	public static final int FACTIONPET = 0;
 	public static final int CREATUREPET = 1;
 	public static final int DROIDPET = 2;
+	
+	// Trained command strings
+	protected string stayCommand;
+	protected string followCommand;
+	protected string storeCommand;
+	protected string attackCommand;
+	protected string guardCommand;
+	protected string friendCommand;
+	protected string followOtherCommand;
+	protected string trick1Command;
+	protected string trick2Command;
+	protected string patrolCommand;
+	protected string formationCommand;
+	protected string specialAttack1Command;
+	protected string specialAttack2Command;
+	protected string transferCommand;
+	protected string rangedAttackCommand;
 
 	public PetControlDevice() {
 		Logger.setLoggingName("PetControlDevice");
@@ -78,6 +95,22 @@ class PetControlDevice extends ControlDevice {
 		vitality = 1;
 		maxVitality = 1;
 		petType = 0;
+
+		stayCommand = "";
+		followCommand = "";
+		storeCommand = "";
+		attackCommand = "";
+		guardCommand = "";
+		friendCommand = "";
+		followOtherCommand = "";
+		trick1Command = "";
+		trick2Command = "";
+		patrolCommand = "";
+		formationCommand = "";
+		specialAttack1Command = "";
+		specialAttack2Command = "";
+		transferCommand = "";
+		rangedAttackCommand = "";
 	}
 
 	public native void storeObject(CreatureObject player);
@@ -149,8 +182,36 @@ class PetControlDevice extends ControlDevice {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);	
-
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+	
+	/**
+	 * Handles spatial chat messages near the pet
+	 * @pre { }
+	 * @post { }
+	 * @param object player creature speaking
+	 * @param string chat message
+	 */
+	@local
+	public native void handleSpatialChat(CreatureObject speaker, final string message);
+	
+	/**
+	 * Handles follow command
+	 * @pre { }
+	 * @post { }
+	 * @param object player creature commanding
+	 */
+	@local
+	public native void follow(CreatureObject player);
+	
+	/**
+	 * Handles stay command
+	 * @pre { }
+	 * @post { }
+	 * @param object player creature commanding
+	 */
+	@local
+	public native void stay(CreatureObject player);
+	
 	public boolean isPetControlDevice() {
 		return true;
 	}
@@ -177,5 +238,23 @@ class PetControlDevice extends ControlDevice {
 
 	public void setPetType(int type) {
 		petType = type;
+	}
+	
+	public void setDefaultCommands(){
+		stayCommand = "stay";
+		followCommand = "follow";
+		storeCommand = "store";
+		attackCommand = "attack";
+		guardCommand = "guard";
+		friendCommand = "friend";
+		followOtherCommand = "followother";
+		trick1Command = "trick1";
+		trick2Command = "trick2";
+		patrolCommand = "patrol";
+		formationCommand = "formation";
+		specialAttack1Command = "special attack one";
+		specialAttack2Command = "special attack two";
+		transferCommand = "transfer";
+		rangedAttackCommand = "ranged attack";		
 	}
 }

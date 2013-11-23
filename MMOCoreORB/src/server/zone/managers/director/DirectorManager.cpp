@@ -12,6 +12,7 @@
 #include "server/zone/objects/building/LuaBuildingObject.h"
 #include "server/zone/objects/intangible/LuaIntangibleObject.h"
 #include "server/zone/objects/intangible/ControlDevice.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/player/LuaPlayerObject.h"
 #include "server/zone/objects/tangible/LuaTangibleObject.h"
 #include "server/zone/packets/cell/UpdateCellPermissionsMessage.h"
@@ -1285,6 +1286,11 @@ int DirectorManager::giveControlDevice(lua_State* L) {
 	StringId s;
 	s.setStringId(controlledObject->getDisplayedName());
 	controlDevice->setObjectName(s);
+
+	PetControlDevice* petControlDevice = cast<PetControlDevice*>(controlDevice.get());
+	if( petControlDevice != NULL ){
+		petControlDevice->setDefaultCommands();
+	}
 
 	datapad->transferObject(controlDevice, slot, true);
 

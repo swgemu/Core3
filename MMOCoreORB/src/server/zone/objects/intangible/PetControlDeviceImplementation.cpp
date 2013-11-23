@@ -15,7 +15,6 @@
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 
-
 void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	if (player->getParent() != NULL) {
 		ManagedReference<SceneObject*> strongRef = player->getParentRecursively(SceneObjectType::BUILDING);
@@ -556,4 +555,118 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 			}
 		}
 	}
+}
+
+void PetControlDeviceImplementation::handleSpatialChat(CreatureObject* speaker, const String& message){
+
+	if( speaker == NULL )
+		return;
+
+	if( message.isEmpty() )
+		return;
+
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+	if (controlledObject == NULL || !controlledObject->isAiAgent())
+		return;
+
+	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
+	if( pet == NULL )
+		return;
+
+	ManagedWeakReference< CreatureObject*> linkedCreature = pet->getLinkedCreature();
+	if( linkedCreature == NULL )
+		return;
+
+	// Check if speaker has permission to command pet
+	// TODO: Add check for players other than owner that are on pet's friend list
+	if( linkedCreature != speaker)
+		return;
+
+	// Handle commands
+	if( message == stayCommand ){
+		stay( speaker );
+	}
+	else if( message == followCommand ){
+		follow( speaker );
+	}
+	else if( message == storeCommand ){
+		storeObject( linkedCreature.get() ); // Store object expects pet owner to be passed
+	}
+	else if( message == attackCommand ){
+		speaker->sendSystemMessage("That pet command is not yet implemented.");
+	}
+	else if( message == guardCommand ){
+		speaker->sendSystemMessage("That pet command is not yet implemented.");
+	}
+	else if( message == friendCommand ){
+		speaker->sendSystemMessage("That pet command is not yet implemented.");
+	}
+	else if( message == followOtherCommand ){
+		speaker->sendSystemMessage("That pet command is not yet implemented.");
+	}
+	else if( message == trick1Command ){
+		speaker->sendSystemMessage("That pet command is not yet implemented.");
+	}
+	else if( message == trick2Command ){
+		speaker->sendSystemMessage("That pet command is not yet implemented.");
+	}
+	else if( message == patrolCommand ){
+		speaker->sendSystemMessage("That pet command is not yet implemented.");
+	}
+	else if( message == formationCommand ){
+		speaker->sendSystemMessage("That pet command is not yet implemented.");
+	}
+	else if( message == specialAttack1Command ){
+		speaker->sendSystemMessage("That pet command is not yet implemented.");
+	}
+	else if( message == specialAttack2Command ){
+		speaker->sendSystemMessage("That pet command is not yet implemented.");
+	}
+	else if( message == transferCommand ){
+		speaker->sendSystemMessage("That pet command is not yet implemented.");
+	}
+	else if( message == rangedAttackCommand ){
+		speaker->sendSystemMessage("That pet command is not yet implemented.");
+	}
+
+
+}
+
+void PetControlDeviceImplementation::follow(CreatureObject* player){
+
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+	if (controlledObject == NULL || !controlledObject->isAiAgent())
+		return;
+
+	AiAgent* pet = cast<AiAgent*>(controlledObject.get());
+	if( pet == NULL )
+		return;
+
+	// Check if droid has power
+	if( petType == DROIDPET ){
+		DroidObject* droidPet = cast<DroidObject*>(pet);
+		if( droidPet == NULL )
+			return;
+
+		if( !droidPet->hasPower() ){
+			pet->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
+			return;
+		}
+	}
+
+	pet->setFollowObject(player);
+
+}
+
+void PetControlDeviceImplementation::stay(CreatureObject* player){
+
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+	if (controlledObject == NULL || !controlledObject->isAiAgent())
+		return;
+
+	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
+	if( pet == NULL )
+		return;
+
+	pet->setOblivious();
 }
