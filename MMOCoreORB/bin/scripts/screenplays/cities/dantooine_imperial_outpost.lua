@@ -54,6 +54,7 @@ function DantooineImperialOutpostScreenPlay:spawnMobiles()
 	spawnMobile("dantooine", "commoner", 60, -4186.81, 3, -2388.66, 141.892, 0)
 	spawnMobile("dantooine", "juntah_herm", 60, -4222, 3, -2386.5, 300, 0)
 	spawnMobile("dantooine", "noble", 60, -4261, 3, -2384, 200, 0)
+	spawnMobile("dantooine", "imperial_recruiter", 0,-4197,3,-2411,270,0)
 
 	--Left these in dantooine.lua because of the custom name etc
 	--{"noble", 60,-4223.6,3,-2409.3,345,0, "npc_use_terminal_high", ""},
@@ -62,6 +63,5 @@ function DantooineImperialOutpostScreenPlay:spawnMobiles()
 	--{"insurgent",60,0,0,-5.7,0,1365878, "npc_imperial", ""},
 	--{"dantooine", "r5", 60,-4228.33,3,-2367.11,48.8478,0, "calm", "R5-L5"},
 	--{"dantooine", "insurgent" ,60,0,0,-5.7,0,1365878, "npc_imperial", ""},
-	--{"imperial_recruiter",0,-4197,0,-2411,270,0, "", ""},
 
 end

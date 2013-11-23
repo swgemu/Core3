@@ -240,8 +240,6 @@ dantooine_static_spawns = {
 	{"daiv_dekven",60,1603.42,4,-6434.54,102.877,0, "calm", "Daiv Dekven"},
 	{"fern_yarrow",60,-625.684,3,2481.19,119.665,0, "neutral", ""},
 	{"insurgent",60,0,0,-5.7,0,1365878, "npc_imperial", ""},
-	{"imperial_colonel",450,-588.773,3,2499.09,264.624,0, "", ""},
-	{"imperial_recruiter",0,-4197,0,-2411,270,0, "", ""},
 	{"kess_yarrow",60,-623.484,3,2481.77,149.192,0, "neutral", ""},
 	{"noble",60,-4223.6,3,-2409.3,345,0, "npc_use_terminal_high", ""},
 	{"quich_marae",60,1579.04,4,-6374.52,48.4898,0, "calm", "Quich Marae",JUNKJEDI,JUNKCONVQUICHDANTOOINE},

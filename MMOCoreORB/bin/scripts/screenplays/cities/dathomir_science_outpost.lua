@@ -32,6 +32,7 @@ function DathomirScienceOutpostScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "mercenary", 60, -93.2763, 18, -1569.32, 343.205, 0)
 	spawnMobile("dathomir", "mercenary", 60, -43.9919, 18, -1585.86, 220.77, 0)
 	spawnMobile("dathomir", "scientist", 60, -136.034, 18, -1592.07, 62.5196, 0)
+	spawnMobile("dathomir", "informant_npc_lvl_3", 0,-68,18,-1565,270,0)
 
 		--Left these in dathomir.lua 
 	--{"arnecio_ulvaw_op",60,4.06465,0.624999,2.34456,30.9406,2835570, "neutral", ""},
@@ -39,6 +40,5 @@ function DathomirScienceOutpostScreenPlay:spawnMobiles()
 	--{"r4",60,-134.195,18,-1599.14,45.5678,0, "calm", "R4-J5"},
 	--{"shibb_nisshil",60,-71.1537,18,-1639.84,66.4233,0, "", "Shibb Nisshil"},
 	--{"shaki_hamachil",60,-101.049,18,-1542.62,293.515,0, "calm", "Shaki Hamachil"},
-	--{"informant_npc_lvl_3",0,-68,0,-1565,270,0, "", ""},
 
 end
