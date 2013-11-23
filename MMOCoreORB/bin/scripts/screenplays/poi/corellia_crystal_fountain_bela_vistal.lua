@@ -107,7 +107,6 @@ function CrystalFountainBelaVistalScreenPlay:spawnMobiles()
 	--{"crackdown_imperial_army_captain",400,6832.21,315,-5811.19,189.637,0, "npc_imperial", ""},
 	--{"comm_operator",60,-42.3991,0.105009,-24.3411,360.011,3375367, "conversation", ""},
 	--{"commoner",60,-42.3991,0.105009,-23.2411,180.016,3375367, "conversation", ""},
-	--{"imperial_recruiter",60,6718.8,315.0,-5804.6,-174,0, "calm", ""},
 	--{"imperial_sergeant",60,6712.78,315,-5810.38,112.467,0, "npc_imperial", ""},
 	--{"imperial_sergeant",60,6795.21,315,-5702.92,63.9209,0, "npc_imperial", ""},
 	--{"imperial_sergeant",60,6823.92,315,-5597.88,121.846,0, "npc_imperial", ""},
