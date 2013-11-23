@@ -91,11 +91,10 @@ public:
 	}
 
 	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, int healthDamage, int actionDamage) {
-		if (!creature->isPlayerCreature() || !creatureTarget->isPlayerCreature())
+		if (!creature->isPlayerCreature())
 			return;
 
 		CreatureObject* player = cast<CreatureObject*>(creature);
-		CreatureObject* playerTarget = cast<CreatureObject*>( creatureTarget);
 
 		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
 
@@ -114,12 +113,15 @@ public:
 		if (creature == creatureTarget) {
 			msgPlayer << "You heal yourself for " << msgBody.toString() << msgTail.toString();
 			player->sendSystemMessage(msgPlayer.toString());
-		} else {
-			msgPlayer << "You heal " << playerTarget->getFirstName() << " for " << msgBody.toString() << msgTail.toString();
+		} else if (creatureTarget->isPlayerCreature()){
+			msgPlayer << "You heal " << creatureTarget->getFirstName() << " for " << msgBody.toString() << msgTail.toString();
 			msgTarget << player->getFirstName() << " heals you for " << msgBody.toString() << msgTail.toString();
 
 			player->sendSystemMessage(msgPlayer.toString());
-			playerTarget->sendSystemMessage(msgTarget.toString());
+			creatureTarget->sendSystemMessage(msgTarget.toString());
+		} else {
+			msgPlayer << "You heal " << creatureTarget->getDisplayedName() << " for " << msgBody.toString() << msgTail.toString();
+			player->sendSystemMessage(msgPlayer.toString());
 		}
 	}
 
@@ -153,7 +155,7 @@ public:
 		if (!creature->isInRange(creatureTarget, range))
 			return TOOFAR;		
 
-		if (creatureTarget->isAiAgent() || creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted() || creatureTarget->isAttackableBy(creature))
+		if ((creatureTarget->isAiAgent() && !creatureTarget->isPet()) || creatureTarget->isDroidObject() || creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted() || creatureTarget->isAttackableBy(creature))
 			creatureTarget = creature;
 
 		if (creature->isProne() || creature->isMeditating()) {
@@ -190,10 +192,14 @@ public:
 		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION)) {
 			if (creatureTarget == creature)
 				creature->sendSystemMessage("@healing_response:healing_response_61"); //You have no damage to heal.
-			else {
+			else if (creatureTarget->isPlayerCreature()) {
 				StringIdChatParameter stringId("healing_response", "healing_response_63"); //%NT has no damage to heal.
 				stringId.setTT(creatureTarget->getObjectID());
-				creature->sendSystemMessage(stringId); 
+				creature->sendSystemMessage(stringId);
+			} else {
+				StringBuffer message;
+				message << creatureTarget->getDisplayedName() << " has no damage to heal.";
+				creature->sendSystemMessage(message.toString());
 			}
 
 			return GENERALERROR;
@@ -204,7 +210,7 @@ public:
 		int healedHealth = creatureTarget->healDamage(creature, CreatureAttribute::HEALTH, healPower);
 		int healedAction = creatureTarget->healDamage(creature, CreatureAttribute::ACTION, healPower);
 
-		if (creature->isPlayerCreature() && creatureTarget->isPlayerCreature()) {
+		if (creature->isPlayerCreature()) {
 			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 			playerManager->sendBattleFatigueMessage(creature, creatureTarget);
 		}

@@ -116,33 +116,29 @@ public:
 	}
 
 	void sendWoundMessage(CreatureObject* object, CreatureObject* target, uint8 attribute, uint32 woundsHealed) {
-		if (!object->isPlayerCreature() || !target->isPlayerCreature())
+		if (!object->isPlayerCreature())
 			return;
 
 		CreatureObject* creature = cast<CreatureObject*>( object);
 		CreatureObject* creatureTarget = cast<CreatureObject*>(  target);
 
-		String creatureName = creature->getFirstName();
-		String creatureTargetName = creatureTarget->getFirstName();
-
 		String poolName = CreatureAttribute::getName(attribute);
 
 		StringBuffer msgPlayer, msgTarget, msgTail;
 
-		if (creature == creatureTarget) {
-			msgTarget << "You heal yourself for ";
-		} else {
-			msgPlayer << "You heal " << creatureTargetName << " for ";
-			msgTarget << creatureName << " heals you for ";
-		}
-
 		msgTail << woundsHealed << " " << poolName << " wound damage.";
 
-		msgTarget << msgTail.toString();
-		creatureTarget->sendSystemMessage(msgTarget.toString());
+		if (creature == creatureTarget) {
+			msgTarget << "You heal yourself for " << msgTail.toString();
+			creatureTarget->sendSystemMessage(msgTarget.toString());
+		} else if (creatureTarget->isPlayerCreature()) {
+			msgPlayer << "You heal " << creatureTarget->getFirstName() << " for " << msgTail.toString();
+			msgTarget << creature->getFirstName() << " heals you for " << msgTail.toString();
 
-		if (creature != creatureTarget) {
-			msgPlayer << msgTail.toString();
+			creature->sendSystemMessage(msgPlayer.toString());
+			creatureTarget->sendSystemMessage(msgTarget.toString());
+		} else {
+			msgPlayer << "You heal " << creatureTarget->getDisplayedName() << " for " << msgTail.toString();
 			creature->sendSystemMessage(msgPlayer.toString());
 		}
 	}
@@ -288,7 +284,7 @@ public:
 
 		Locker clocker(creatureTarget, creature);
 
-		if (creatureTarget->isAiAgent() || creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted() || creatureTarget->isAttackableBy(creature))
+		if ((creatureTarget->isAiAgent() && !creatureTarget->isPet()) || creatureTarget->isDroidObject() || creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted() || creatureTarget->isAttackableBy(creature))
 			creatureTarget = creature;
 
 		if (!creature->isInRange(creatureTarget, range))
@@ -331,13 +327,15 @@ public:
 		if (creatureTarget->getWounds(attribute) == 0) {
 			if (creatureTarget == creature) {
 				creature->sendSystemMessage("@healing_response:healing_response_67"); //You have no wounds of that type to heal.
-			} else {
+			} else if (creatureTarget->isPlayerCreature()){
 				//TODO: Patch the tre later to include a %NT.
-				if (creatureTarget->isPlayerCreature()) {
 				StringBuffer message;
-				message << (cast<CreatureObject*>(creatureTarget))->getFirstName() << " has no wounds of that type to heal.";
+				message << creatureTarget->getFirstName() << " has no wounds of that type to heal.";
 				creature->sendSystemMessage(message.toString());
-				}
+			} else {
+				StringBuffer message;
+				message << creatureTarget->getDisplayedName() << " has no wounds of that type to heal.";
+				creature->sendSystemMessage(message.toString());
 			}
 
 			return 0;
@@ -349,7 +347,7 @@ public:
 
 		woundHealed = abs(woundHealed);
 
-		if (creature->isPlayerCreature() && creatureTarget->isPlayerCreature()) {
+		if (creature->isPlayerCreature()) {
 			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 			playerManager->sendBattleFatigueMessage(creature, creatureTarget);
 		}
@@ -362,8 +360,8 @@ public:
 
 		woundPack->decreaseUseCount();
 
-		if (creatureTarget != creature)
-			awardXp(creature, "medical", woundHealed); //No experience for healing yourself.
+		if (creatureTarget != creature && !creatureTarget->isPet())
+			awardXp(creature, "medical", woundHealed); //No experience for healing yourself or pets.
 
 		doAnimations(creature, creatureTarget);
 
