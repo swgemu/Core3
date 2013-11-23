@@ -49,12 +49,24 @@ function TaskPrivate.setTaskFinished(pCreatureObject)
 	end)
 end
 
+-- Call the supplied function with the argument if the function is not nil.
+-- An error will be issued if the function is nil.
+-- @param theFunction the function to call.
+-- @param argument the argument to use for the function.
+function TaskPrivate.callFunctionIfNotNil(theFunction, argument)
+	if theFunction ~= nil then
+		theFunction(argument)
+	else
+		error("The function to call is nil in " .. Task.taskName .. ".", 2)
+	end
+end
+
 -- Start the task.
 -- @param pCreatureObject pointer to the creature object of the player who should get the task started.
 function Task.start(pCreatureObject)
 	if not TaskPrivate.hasTaskStarted(pCreatureObject) then
 		TaskPrivate.setTaskStarted(pCreatureObject)
-		Task.taskStart(pCreatureObject)
+		TaskPrivate.callFunctionIfNotNil(Task.taskStart, pCreatureObject)
 	end
 end
 
@@ -62,7 +74,7 @@ end
 -- @param pCreatureObject pointer to the creature object of the player who should get the task finished.
 function Task.finish(pCreatureObject)
 	if TaskPrivate.hasTaskStarted(pCreatureObject) then
-		Task.taskFinish(pCreatureObject)
+		TaskPrivate.callFunctionIfNotNil(Task.taskFinish, pCreatureObject)
 		TaskPrivate.setTaskFinished(pCreatureObject)
 	end
 end

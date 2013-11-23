@@ -206,5 +206,39 @@ describe("Task", function()
 				end)
 			end)
 		end)
+
+		describe("callFunctionIfNotNil", function()
+			describe("When called with a function and an argument", function()
+				it("Should call the function with the argument.", function()
+					local theFunction = spy.new(function() end)
+
+					Task.private.callFunctionIfNotNil(theFunction, pCreatureObject)
+
+					assert.spy(theFunction).was.called_with(pCreatureObject)
+				end)
+			end)
+
+			describe("When called with the function equal to nil", function()
+				local realError
+
+				setup(function()
+					realError = error
+				end)
+
+				teardown(function()
+					error = realError
+				end)
+
+				setup(function()
+					error = spy.new(function() end)
+				end)
+
+				it("Should generate an error about the function being nil.", function()
+					Task.private.callFunctionIfNotNil(nil, pCreatureObject)
+
+					assert.spy(error).was.called()
+				end)
+			end)
+		end)
 	end)
 end)
