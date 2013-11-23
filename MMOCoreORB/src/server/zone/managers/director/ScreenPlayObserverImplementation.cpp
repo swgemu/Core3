@@ -45,25 +45,32 @@ which carries forward this exception.
 #include "DirectorManager.h"
 
 int ScreenPlayObserverImplementation::notifyObserverEvent(uint32 eventType, Observable* observable, ManagedObject* arg1, int64 arg2) {
-	Lua* lua = DirectorManager::instance()->getLuaInstance();
+	int ret = 1;
 
-	LuaFunction startScreenPlay(lua->getLuaState(), play, key, 1);
-	startScreenPlay << observable;
-	startScreenPlay << arg1;
-	startScreenPlay << arg2;
+	try {
+		Lua* lua = DirectorManager::instance()->getLuaInstance();
 
-	startScreenPlay.callFunction();
+		LuaFunction startScreenPlay(lua->getLuaState(), play, key, 1);
+		startScreenPlay << observable;
+		startScreenPlay << arg1;
+		startScreenPlay << arg2;
 
-	if (lua_gettop(lua->getLuaState()) == 0) {
-		Logger::console.error("ScreenPlayObserverImplementation::notifyObserverEvent didnt return a value from " + play + ":" + key);
+		startScreenPlay.callFunction();
 
-		assert(0 && "no return value in  ScreenPlayObserverImplementation::notifyObserverEvent");
+		if (lua_gettop(lua->getLuaState()) == 0) {
+			Logger::console.error("ScreenPlayObserverImplementation::notifyObserverEvent didnt return a value from " + play + ":" + key);
 
-		return 1;
+			assert(0 && "no return value in  ScreenPlayObserverImplementation::notifyObserverEvent");
+
+			return 1;
+		}
+
+
+		ret = lua->getIntParameter(lua->getLuaState());
+
+	} catch (LuaPanicException& panic) {
+		Logger::console.error("Panic exception while trying to run SceenPlayObserver: " + play + ":" + key);
 	}
-
-
-	int ret = lua->getIntParameter(lua->getLuaState());
 
 	//1 remove observer, 0 keep observer
 
