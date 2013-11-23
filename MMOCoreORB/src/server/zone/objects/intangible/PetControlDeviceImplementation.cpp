@@ -465,9 +465,9 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 			if (petType == CREATUREPET)
 				alm->insertAttribute("creature_vitality", String::valueOf(vitality) + "/" + String::valueOf(maxVitality));
 
-			alm->insertAttribute("creature_health", pet->getMaxHAM(0));
-			alm->insertAttribute("creature_action", pet->getMaxHAM(3));
-			alm->insertAttribute("creature_mind", pet->getMaxHAM(6));
+			alm->insertAttribute("creature_health", pet->getBaseHAM(0));
+			alm->insertAttribute("creature_action", pet->getBaseHAM(3));
+			alm->insertAttribute("creature_mind", pet->getBaseHAM(6));
 
 			int armor = pet->getArmor();
 			if (armor == 0)
