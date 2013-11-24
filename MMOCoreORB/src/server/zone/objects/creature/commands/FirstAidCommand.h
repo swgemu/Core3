@@ -72,19 +72,20 @@ public:
 		if (!object->isPlayerCreature())
 			return;
 
-		if (!target->isPlayerCreature())
-			return;
-
 		CreatureObject* creature = cast<CreatureObject*>( object);
 		CreatureObject* creatureTarget = cast<CreatureObject*>( target);
 		
 		if (creatureTarget != creature) {
+			StringBuffer msgPlayer;
 			if (creatureTarget->isPlayerCreature()) {
-				StringBuffer msgTarget, msgPlayer;
+				StringBuffer msgTarget;
 				msgTarget << creature->getFirstName() << " applies first aid to you.";
 				creatureTarget->sendSystemMessage(msgTarget.toString());
 
 				msgPlayer << "You apply first aid to " << creatureTarget->getFirstName() << ".";
+				creature->sendSystemMessage(msgPlayer.toString());
+			} else {
+				msgPlayer << "You apply first aid to " << creatureTarget->getDisplayedName() << ".";
 				creature->sendSystemMessage(msgPlayer.toString());
 			}
 		} else {
@@ -97,10 +98,14 @@ public:
 		if (!creatureTarget->isBleeding()) {
 			if (creature == creatureTarget)
 				creature->sendSystemMessage("@healing_response:healing_response_78"); //You are not bleeding.
-			else {
+			else if (creatureTarget->isPlayerCreature()) {
 				StringIdChatParameter stringId("healing_response", "healing_response_80"); //%NT is not bleeding.
 				stringId.setTT(creatureTarget->getObjectID());
-				creature->sendSystemMessage(stringId); 
+				creature->sendSystemMessage(stringId);
+			} else {
+				StringBuffer message;
+				message << creatureTarget->getDisplayedName() << " is not bleeding.";
+				creature->sendSystemMessage(message.toString());
 			}
 			return false;
 		}	
@@ -142,7 +147,7 @@ public:
 
 		Locker clocker(creatureTarget, creature);
 
-		if (creatureTarget->isAiAgent() || creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted() || creatureTarget->isAttackableBy(creature))
+		if ((creatureTarget->isAiAgent() && !creatureTarget->isPet()) || creatureTarget->isDroidObject() || creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted() || creatureTarget->isAttackableBy(creature))
 			creatureTarget = creature;
 
 		if (!creatureTarget->isInRange(creature, range))
