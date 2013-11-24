@@ -1,0 +1,259 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_563a5037",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_location.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-24T01:00:56Z",
+      "side": 1,
+      "message": "CamelCase please.",
+      "revId": "da6b9172ac3f72c464d5f727e4942526b447230b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_76355445",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_location.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-24T01:00:56Z",
+      "side": 1,
+      "message": "leave this name empty, this is template and it should be named and instantiated where it is used.",
+      "revId": "da6b9172ac3f72c464d5f727e4942526b447230b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_363fcc27",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_location.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-24T01:00:56Z",
+      "side": 1,
+      "message": "You need to do\nfunction(pCreatureObject, target, parameter1, parameter2) GoToLocation.startLocation(pCreatureObject, target, parameter1, parameter2) end",
+      "revId": "da6b9172ac3f72c464d5f727e4942526b447230b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_b6129cb2",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_location.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-24T01:00:56Z",
+      "side": 1,
+      "message": "name this x and y instead.",
+      "revId": "da6b9172ac3f72c464d5f727e4942526b447230b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_163cc82e",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_location.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-24T01:00:56Z",
+      "side": 1,
+      "message": "this is done automatically in Task. No need for it here.",
+      "revId": "da6b9172ac3f72c464d5f727e4942526b447230b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_f64824ce",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_location.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-24T01:00:56Z",
+      "side": 1,
+      "message": "Include the ObjectManager and use the withCreatureObject function from it instead.",
+      "revId": "da6b9172ac3f72c464d5f727e4942526b447230b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_961798a3",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_location.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-24T01:00:56Z",
+      "side": 1,
+      "message": "Add a withActiveArea in ObjectManager and use it here.",
+      "revId": "da6b9172ac3f72c464d5f727e4942526b447230b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_760c3495",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_location.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-24T01:00:56Z",
+      "side": 1,
+      "message": "pick the radius from a property in the GoToLocation instead.",
+      "revId": "da6b9172ac3f72c464d5f727e4942526b447230b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_561130ab",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_location.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-24T01:00:56Z",
+      "side": 1,
+      "message": "Remove this.",
+      "revId": "da6b9172ac3f72c464d5f727e4942526b447230b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_3626ac17",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_location.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-24T01:00:56Z",
+      "side": 1,
+      "message": "Fix comments for the function.",
+      "revId": "da6b9172ac3f72c464d5f727e4942526b447230b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_1623a806",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_location.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-24T01:00:56Z",
+      "side": 1,
+      "message": "Use withSceneObject from Object Manager.",
+      "revId": "da6b9172ac3f72c464d5f727e4942526b447230b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_f61f04b6",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_location.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-24T01:00:56Z",
+      "side": 1,
+      "message": "withCreatureObject",
+      "revId": "da6b9172ac3f72c464d5f727e4942526b447230b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_d61c00c4",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_location.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-24T01:00:56Z",
+      "side": 1,
+      "message": "Remove this.",
+      "revId": "da6b9172ac3f72c464d5f727e4942526b447230b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_b6797cfe",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_location.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-24T01:00:56Z",
+      "side": 1,
+      "message": "withActiveArea",
+      "revId": "da6b9172ac3f72c464d5f727e4942526b447230b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_967e78e3",
+        "filename": "MMOCoreORB/bin/scripts/quest/tasks/go_to_location.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-24T01:00:56Z",
+      "side": 1,
+      "message": "Call Task.finish(pCreatureObject) instead. And you can do that directly from the observer above instead.",
+      "revId": "da6b9172ac3f72c464d5f727e4942526b447230b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
