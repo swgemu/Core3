@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_56037073",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/racetracks/racetrackengine.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-24T00:50:56Z",
+      "side": 1,
+      "message": "Object:new here and you can remove the :new below.",
+      "revId": "0d3fc8b4d98aed4929749205724e80e03ca3a381",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_f6f14496",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/racetracks/racetrackengine.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-24T00:50:56Z",
+      "side": 1,
+      "message": "A better way to handle this is to let every race track inherit the RaceTrackManager and only have one observer function. The observer function then uses the race track config and the active area coordinates to find the waypoint number.\n\nThat will clean up a few of the other readScreenPlayData functions as well.",
+      "revId": "0d3fc8b4d98aed4929749205724e80e03ca3a381",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_d6ee40b4",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/racetracks/racetrackengine.lua",
+        "patchSetId": 6
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-24T00:50:56Z",
+      "side": 1,
+      "message": "withCreatureAndPlayerObject, then you get both the creature object and the player object.",
+      "revId": "0d3fc8b4d98aed4929749205724e80e03ca3a381",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
