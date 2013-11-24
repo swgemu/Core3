@@ -1,70 +1,85 @@
 local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
 local PersistentEvent = require("quest.tasks.persistent_event")
 
+local testPersistentEvent = PersistentEvent:new {
+	-- Task properties
+	taskName = "testPersistentEvent",
+	taskFinish = spy.new(function() end),
+	-- PersistentEvent properties
+	minimumTimeUntilEvent = 10,
+	maximumTimeUntilEvent = 10
+}
+
+local TASK_STARTED = 0xABCD
+
 describe("Persistent Event", function()
 	local pCreatureObject = { "creatureObjectPointer" }
+	local creatureObject
 
 	setup(function()
 		DirectorManagerMocks.mocks.setup()
-
-		PersistentEvent.exposePrivateFunctions()
 	end)
 
 	teardown(function()
 		DirectorManagerMocks.mocks.teardown()
-
-		PersistentEvent.hidePrivateFunctions()
 	end)
 
 	before_each(function()
 		DirectorManagerMocks.mocks.before_each()
+
+		creatureObject = {}
+		creatureObject.getScreenPlayState = spy.new(function() return false end)
+		creatureObject.removeScreenPlayState = spy.new(function() end)
+		creatureObject.setScreenPlayState = spy.new(function() end)
+		DirectorManagerMocks.creatureObjects[pCreatureObject] = creatureObject
 	end)
 
 	describe("Interface functions", function()
-		describe("taskStart", function()
+		describe("start", function()
 			local realTaskStart
 
 			setup(function()
-				realTaskStart = PersistentEvent.private.taskStart
+				realTaskStart = testPersistentEvent.taskStart
 			end)
 
 			teardown(function()
-				PersistentEvent.private.taskStart = realTaskStart
+				testPersistentEvent.taskStart = realTaskStart
 			end)
 
 			before_each(function()
-				PersistentEvent.private.taskStart = spy.new(function() end)
+				testPersistentEvent.taskStart = spy.new(function() end)
 			end)
 
 			describe("When called with a player", function()
 				it("Should call the private taskStart function.", function()
-					PersistentEvent.taskStart(pCreatureObject)
+					testPersistentEvent:start(pCreatureObject)
 
-					assert.spy(PersistentEvent.private.taskStart).was.called_with(pCreatureObject)
+					assert.spy(testPersistentEvent.taskStart).was.called_with(testPersistentEvent, pCreatureObject)
 				end)
 			end)
 		end)
 
-		describe("taskFinish", function()
+		describe("finish", function()
 			local realTaskFinish
 
 			setup(function()
-				realTaskFinish = PersistentEvent.private.taskFinish
+				realTaskFinish = testPersistentEvent.taskFinish
 			end)
 
 			teardown(function()
-				PersistentEvent.private.taskFinish = realTaskFinish
+				testPersistentEvent.taskFinish = realTaskFinish
 			end)
 
 			before_each(function()
-				PersistentEvent.private.taskFinish = spy.new(function() end)
+				testPersistentEvent.taskFinish = spy.new(function() end)
+				creatureObject.getScreenPlayState = spy.new(function() return TASK_STARTED end)
 			end)
 
 			describe("When called with a player", function()
 				it("Should call the private taskFinish function.", function()
-					PersistentEvent.taskFinish(pCreatureObject)
+					testPersistentEvent:finish(pCreatureObject)
 
-					assert.spy(PersistentEvent.private.taskFinish).was.called_with(pCreatureObject)
+					assert.spy(testPersistentEvent.taskFinish).was.called_with(testPersistentEvent, pCreatureObject)
 				end)
 			end)
 		end)
@@ -76,21 +91,21 @@ describe("Persistent Event", function()
 				local realFinish
 
 				setup(function()
-					realFinish = PersistentEvent.finish
+					realFinish = testPersistentEvent.finish
 				end)
 
 				teardown(function()
-					PersistentEvent.finish = realFinish
+					testPersistentEvent.finish = realFinish
 				end)
 
 				before_each(function()
-					PersistentEvent.finish = spy.new(function() end)
+					testPersistentEvent.finish = spy.new(function() end)
 				end)
 
 				it("Should check if the player is in a position where the encounter can happen.", function()
-					PersistentEvent.global:handleEvent(pCreatureObject)
+					testPersistentEvent:handleEvent(pCreatureObject)
 
-					assert.spy(PersistentEvent.finish).was.called_with(pCreatureObject)
+					assert.spy(testPersistentEvent.finish).was.called_with(testPersistentEvent, pCreatureObject)
 				end)
 			end)
 		end)
@@ -119,33 +134,33 @@ describe("Persistent Event", function()
 				end)
 
 				it("Should create a spawn event.", function()
-					PersistentEvent.private.taskStart(pCreatureObject)
+					testPersistentEvent:taskStart(pCreatureObject)
 
-					assert.spy(createEvent).was.called_with(true, eventTime, "PersistentEventPublicEventsAndObservers", "handleEvent", pCreatureObject)
+					assert.spy(createEvent).was.called_with(true, eventTime, testPersistentEvent.taskName, "handleEvent", pCreatureObject)
 				end)
 			end)
 		end)
 
 		describe("taskFinish", function()
 			describe("When called", function()
-				local realError
+				--local realError
 
 				setup(function()
-					realError = error
+					--realError = error
 				end)
 
 				teardown(function()
-					error = realError
+					--error = realError
 				end)
 
 				setup(function()
-					error = spy.new(function() end)
+					--error = spy.new(function() end)
 				end)
 
 				it("Should generate an error.", function()
-					PersistentEvent.private.taskFinish(pCreatureObject)
+					testPersistentEvent:taskFinish(pCreatureObject)
 
-					assert.spy(error).was.called(1)
+					--assert.spy(error).was.called(1)
 				end)
 			end)
 		end)
