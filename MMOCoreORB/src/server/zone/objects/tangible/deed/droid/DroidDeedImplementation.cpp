@@ -15,6 +15,8 @@
 #include "server/zone/templates/tangible/DroidDeedTemplate.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/tangible/deed/droid/DroidCraftingModule.h"
+#include <iostream>
 
 void DroidDeedImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	DeedImplementation::loadTemplateData(templateData);
@@ -31,7 +33,15 @@ void DroidDeedImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 void DroidDeedImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	DeedImplementation::fillAttributeList(alm, object);
 
-	// @TODO Add attributes
+	// Add module attributes
+	for( int i=0; i<modules.size(); i++){
+		DroidModule* module = modules.get(i);
+
+		if( module != NULL ){
+			module->fillAttributeList(alm, object);
+		}
+
+	}
 
 }
 
@@ -47,7 +57,15 @@ void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool 
 	 *
 	 */
 
-	// @TODO Add crafting values
+	std::string s(values->toString().toCharArray());
+	std::cout << s << "\n";
+
+	// Crafting Modules
+	if( values->getCurrentValue("crafting_module") > 0 ){
+		DroidCraftingModule* module = new DroidCraftingModule(values);
+		modules.add(module);
+	}
+
 }
 
 void DroidDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -130,6 +148,12 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 	droid->createChildObjects();
 	controlDevice->setControlledObject(droid);
 	datapad->transferObject(controlDevice, -1);
+
+	// Add modules
+	for( int i=0; i<modules.size(); i++){
+		droid->addModule( modules.get(i) );
+	}
+
 
 	datapad->broadcastObject(controlDevice, true);
 	controlDevice->callObject(player);
