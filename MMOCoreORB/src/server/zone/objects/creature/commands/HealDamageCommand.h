@@ -476,7 +476,11 @@ public:
 			return GENERALERROR;
 		}
 
-		uint32 stimPower = stimPack->calculatePower(creature, targetCreature);
+		uint32 stimPower = 0;
+		if (stimPack->isDroidRepairKit())
+			stimPower = stimPack->calculatePower(creature, targetCreature, false);
+		else
+			stimPower = stimPack->calculatePower(creature, targetCreature);
 
 		uint32 mindHealed = 0;
 		if (stimPack->isPetStimPack() || stimPack->isDroidRepairKit())
