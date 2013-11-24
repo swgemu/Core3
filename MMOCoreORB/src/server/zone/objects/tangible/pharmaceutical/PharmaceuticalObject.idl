@@ -86,7 +86,15 @@ class PharmaceuticalObject extends TangibleObject {
 	public abstract boolean isStimPack() {
 		return false;
 	}
-	
+
+	public abstract boolean isPetStimPack() {
+		return false;
+	}
+
+	public abstract boolean isDroidRepairKit() {
+		return false;
+	}
+
 	public abstract boolean isRangedStimPack() {
 		return false;
 	}

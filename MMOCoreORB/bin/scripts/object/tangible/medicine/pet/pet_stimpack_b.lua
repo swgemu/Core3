@@ -42,7 +42,11 @@
 
 
 object_tangible_medicine_pet_pet_stimpack_b = object_tangible_medicine_pet_shared_pet_stimpack_b:new {
-
+	gameObjectType = 8236,
+	templateType = STIMPACK,
+	useCount = 10,
+	medicineUse = 0,
+	effectiveness = 350,
 
 	numberExperimentalProperties = {1, 1, 2, 2, 1, 1},
 	experimentalProperties = {"XX", "XX", "OQ", "PE", "OQ", "UT", "XX", "XX"},

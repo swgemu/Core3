@@ -70,8 +70,15 @@ class StimPack extends PharmaceuticalObject {
 	
 	@local
 	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
-		effectiveness = values.getCurrentValue("power");
-		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
+		if (isPetStimPack()) {
+			effectiveness = values.getCurrentValue("power");
+		} else if (isDroidRepairKit()) {
+			effectiveness = values.getCurrentValue("energy");
+		} else {
+			effectiveness = values.getCurrentValue("power");
+			super.medicineUseRequired = values.getCurrentValue("skillmodmin");
+		}
+
 		setUseCount(values.getCurrentValue("charges"));
 	}
 	
@@ -101,9 +108,13 @@ class StimPack extends PharmaceuticalObject {
 			power = power - (power * patient.calculateBFRatio() * healer.calculateBFRatio());
 		}
 
-		float modSkill = (float) healer.getSkillMod("healing_injury_treatment");
+		if (isPetStimPack() || isDroidRepairKit()) {
+			return power;
+		} else {
+			float modSkill = (float) healer.getSkillMod("healing_injury_treatment");
 
-		return (100 + modSkill) / 100 * power;
+			return (100 + modSkill) / 100 * power;
+		}
 	}
 	
 	/**
@@ -122,7 +133,7 @@ class StimPack extends PharmaceuticalObject {
 		if (selectedID != 20)
 			return 1;
 
-		if (player.getSkillMod("healing_ability") < super.medicineUseRequired) {
+		if (player.getSkillMod("healing_ability") < super.medicineUseRequired && !isPetStimPack() && !isDroidRepairKit()) {
 			player.sendSystemMessage("@error_message:insufficient_skill"); //You lack the skill to use this item.
 			
 			return 0;
@@ -149,7 +160,12 @@ class StimPack extends PharmaceuticalObject {
 		if (!isRangedStimPack()) {
 			msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(effectiveness, 0));
 			msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(effectiveness, 0));
-			msg.insertAttribute("healing_ability", super.medicineUseRequired);
+
+			if (isPetStimPack() || isDroidRepairKit()) {
+				msg.insertAttribute("examine_heal_damage_mind", Math.getPrecision(effectiveness, 0));
+			} else {
+				msg.insertAttribute("healing_ability", super.medicineUseRequired);
+			}
 		}
 	}
 	
@@ -161,4 +177,7 @@ class StimPack extends PharmaceuticalObject {
 		return true;
 	}
 
+	public native boolean isPetStimPack();
+
+	public native boolean isDroidRepairKit();
 }
