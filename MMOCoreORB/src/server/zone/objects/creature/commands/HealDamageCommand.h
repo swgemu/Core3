@@ -214,10 +214,14 @@ public:
 		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION)) {
 			if (creatureTarget == creature) {
 				creature->sendSystemMessage("@healing_response:healing_response_61"); //You have no damage to heal.
-			} else {
+			} else if (creatureTarget->isPlayerCreature()) {
 				StringIdChatParameter stringId("healing_response", "healing_response_63"); //%NT has no damage to heal.
 				stringId.setTT(creatureTarget->getObjectID());
 				creature->sendSystemMessage(stringId);
+			} else {
+				StringBuffer message;
+				message << creatureTarget->getDisplayedName() << " has no damage to heal.";
+				creature->sendSystemMessage(message.toString());
 			}
 
 			return false;
@@ -238,11 +242,10 @@ public:
 	}
 
 	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint32 healthDamage, uint32 actionDamage) {
-		if (!creature->isPlayerCreature() || !creatureTarget->isPlayerCreature())
+		if (!creature->isPlayerCreature())
 			return;
 
 		CreatureObject* player = cast<CreatureObject*>(creature);
-		CreatureObject* playerTarget = cast<CreatureObject*>(  creatureTarget);
 
 		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
 
@@ -262,13 +265,14 @@ public:
 			msgPlayer << "You heal yourself for " << msgBody.toString() << msgTail.toString();
 			creature->sendSystemMessage(msgPlayer.toString());
 		} else if (creatureTarget->isPlayerCreature()) {
-			msgPlayer << "You heal " << playerTarget->getFirstName() << " for " << msgBody.toString() << msgTail.toString();
+			msgPlayer << "You heal " << creatureTarget->getFirstName() << " for " << msgBody.toString() << msgTail.toString();
 			player->sendSystemMessage(msgPlayer.toString());
 
 			msgTarget << player->getFirstName() << " heals you for " << msgBody.toString() << msgTail.toString();
-			playerTarget->sendSystemMessage(msgTarget.toString());
+			creatureTarget->sendSystemMessage(msgTarget.toString());
 		} else {
-			//TODO: Pet Message
+			msgPlayer << "You heal " << creatureTarget->getDisplayedName() << " for " << msgBody.toString() << msgTail.toString();
+			player->sendSystemMessage(msgPlayer.toString());
 		}
 	}
 
@@ -299,15 +303,15 @@ public:
 			uint32 healthHealed = targetCreature->healDamage(creature, CreatureAttribute::HEALTH, stimPower);
 			uint32 actionHealed = targetCreature->healDamage(creature, CreatureAttribute::ACTION, stimPower);
 
-			if (creature->isPlayerCreature() && targetCreature->isPlayerCreature()) {
+			if (creature->isPlayerCreature()) {
 				PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 				playerManager->sendBattleFatigueMessage(creature, targetCreature);
 			}
 
 			sendHealMessage(creature, targetCreature, healthHealed, actionHealed);
 
-			if (targetCreature != creature)
-				awardXp(creature, "medical", (healthHealed + actionHealed)); //No experience for healing yourself.
+			if (targetCreature != creature && !targetCreature->isPet())
+				awardXp(creature, "medical", (healthHealed + actionHealed)); //No experience for healing yourself or pets.
 		}
 	}
 
@@ -327,10 +331,10 @@ public:
 			for (int i = 0; i < closeObjects->size(); i++) {
 				SceneObject* object = cast<SceneObject*>( closeObjects->get(i).get());
 
-				if (!object->isPlayerCreature())
+				if (!object->isPlayerCreature() && !object->isPet())
 					continue;
 
-				if (object == areaCenter || object == creature)
+				if (object == areaCenter || object == creature || object->isDroidObject())
 					continue;
 
 				if (!areaCenter->isInRange(object, range))
@@ -392,7 +396,7 @@ public:
 
 		Locker clocker(targetCreature, creature);
 
-		if (targetCreature->isAiAgent() || targetCreature->isDead() || targetCreature->isRidingCreature() || targetCreature->isMounted() || targetCreature->isAttackableBy(creature))
+		if ((targetCreature->isAiAgent() && !targetCreature->isPet()) || targetCreature->isDroidObject() || targetCreature->isDead() || targetCreature->isRidingCreature() || targetCreature->isMounted() || targetCreature->isAttackableBy(creature))
 			targetCreature = creature;
 
 		uint64 pharmaceuticalObjectID = 0;
@@ -439,7 +443,7 @@ public:
 		uint32 healthHealed = targetCreature->healDamage(creature, CreatureAttribute::HEALTH, stimPower);
 		uint32 actionHealed = targetCreature->healDamage(creature, CreatureAttribute::ACTION, stimPower, true, false);
 
-		if (creature->isPlayerCreature() && targetCreature->isPlayerCreature()) {
+		if (creature->isPlayerCreature()) {
 			playerManager->sendBattleFatigueMessage(creature, targetCreature);
 		}
 
@@ -448,7 +452,7 @@ public:
 		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
 		stimPack->decreaseUseCount();
 
-		if (targetCreature != creature)
+		if (targetCreature != creature && !targetCreature->isPet())
 			awardXp(creature, "medical", (healthHealed + actionHealed)); //No experience for healing yourself.
 
 		if (targetCreature != creature)

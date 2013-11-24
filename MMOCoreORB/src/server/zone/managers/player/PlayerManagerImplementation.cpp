@@ -1684,19 +1684,19 @@ int PlayerManagerImplementation::notifyObserverEvent(uint32 eventType, Observabl
 }
 
 void PlayerManagerImplementation::sendBattleFatigueMessage(CreatureObject* player, CreatureObject* target) {
-	uint32 targetBattleFatigue = target->getShockWounds();
+	if (target->isPlayerCreature()) {
+		uint32 targetBattleFatigue = target->getShockWounds();
+
+		if (targetBattleFatigue >= 250 && targetBattleFatigue < 500) {
+			target->sendSystemMessage("@healing:shock_effect_low_target");
+		} else if (targetBattleFatigue >= 500 && targetBattleFatigue < 750) {
+			target->sendSystemMessage("@healing:shock_effect_medium_target");
+		} else if (targetBattleFatigue >= 750) {
+			target->sendSystemMessage("@healing:shock_effec_high_target");
+		}
+	}
 
 	uint32 playerBattleFatigue = player->getShockWounds();
-
-	String targetName = target->getFirstName();
-
-	if (targetBattleFatigue >= 250 && targetBattleFatigue < 500) {
-		target->sendSystemMessage("@healing:shock_effect_low_target");
-	} else if (targetBattleFatigue >= 500 && targetBattleFatigue < 750) {
-		target->sendSystemMessage("@healing:shock_effect_medium_target");
-	} else if (targetBattleFatigue >= 750) {
-		target->sendSystemMessage("@healing:shock_effec_high_target");
-	}
 
 	if (playerBattleFatigue >= 250 && playerBattleFatigue < 500) {
 		player->sendSystemMessage("@healing:shock_effect_low");
