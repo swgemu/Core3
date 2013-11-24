@@ -49,6 +49,7 @@ function GrandTheaterVreniScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "crackdown_rebel_soldier",300,-5664,14.6,-6179.3,94.0028,0)
 	spawnMobile("corellia", "crackdown_rebel_guardsman",300,-5664,14.7566,-6185.3,94.0028,0)
 	spawnMobile("corellia", "eg6_power_droid",60,-5690.7,14.6,-6154.2,-87,0)
+	spawnMobile("corellia", "eg6_power_droid",60,-5692.65,14.6,-6151.28,179.632,0)
 	spawnMobile("corellia", "farmer",60,-22.5021,1.6,4.63468,179.972,2775415)
 	spawnMobile("corellia", "gambler",60,-22.5017,1.59973,3.53494,359.971,2775415)
 	spawnMobile("corellia", "informant_npc_lvl_3",0,-5559,23.4,-6220,90,0)
@@ -57,7 +58,10 @@ function GrandTheaterVreniScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "r2",60,-5528,23.4,-6195.05,84.2678,0)                -- "R2-P2" When/if option customName is available to spawnMobile function
 	spawnMobile("corellia", "scientist",60,-5557.29,23.4,-6203.08,226.081,0)
 	spawnMobile("corellia", "scientist",60,-5691.18,14.6,-6133.32,248.134,0)
+
 	spawnMobile("corellia", "trainer_entertainer",0,22.0446,-0.894993,11.7787,189,3005697)
 	spawnMobile("corellia", "trainer_doctor",0,-2.9,0.7,2.5,132,7615446)
 	spawnMobile("corellia", "trainer_musician",0,-5408,24.7288,-6260,50,0)
+
 end
+
