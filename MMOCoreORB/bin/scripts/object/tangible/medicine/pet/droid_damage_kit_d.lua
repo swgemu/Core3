@@ -42,7 +42,11 @@
 
 
 object_tangible_medicine_pet_droid_damage_kit_d = object_tangible_medicine_pet_shared_droid_damage_kit_d:new {
-
+	gameObjectType = 8236,
+	templateType = STIMPACK,
+	useCount = 14,
+	medicineUse = 0,
+	effectiveness = 1000,
 
 	numberExperimentalProperties = {1, 1, 3, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "MA", "OQ", "OQ", "UT", "XX"},

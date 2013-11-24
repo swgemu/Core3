@@ -53,6 +53,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/events/InjuryTreatmentTask.h"
 #include "server/zone/objects/creature/buffs/Buff.h"
 #include "server/zone/objects/creature/buffs/DelayedBuff.h"
+#include "server/zone/objects/creature/DroidObject.h"
 #include "server/zone/packets/object/CombatAction.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 
@@ -68,12 +69,12 @@ public:
 		mindCost = 50;
 	}
 
-	void deactivateInjuryTreatment(CreatureObject* creature, bool isRangedStim) {
+	void deactivateInjuryTreatment(CreatureObject* creature, StimPack* stimPack) {
 		float modSkill = 0.0f;
 
-		if (isRangedStim)
+		if (stimPack->isRangedStimPack())
 			modSkill = (float)creature->getSkillMod("healing_range_speed");
-		else
+		else if (!stimPack->isPetStimPack() && !stimPack->isDroidRepairKit())
 			modSkill = (float)creature->getSkillMod("healing_injury_speed");
 
 		int delay = (int)round(20.0f - (modSkill / 5));
@@ -144,7 +145,7 @@ public:
 			if (tano->isPharmaceuticalObject()) {
 				PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>( tano);
 
-				if (melee && pharma->isStimPack()) {
+				if (melee && pharma->isStimPack() && !pharma->isPetStimPack() && !pharma->isDroidRepairKit()) {
 					StimPack* stimPack = cast<StimPack*>(pharma);
 
 					if (stimPack->getMedicineUseRequired() <= medicineUse)
@@ -211,20 +212,34 @@ public:
 			return false;
 		}
 
-		if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION)) {
-			if (creatureTarget == creature) {
-				creature->sendSystemMessage("@healing_response:healing_response_61"); //You have no damage to heal.
-			} else if (creatureTarget->isPlayerCreature()) {
-				StringIdChatParameter stringId("healing_response", "healing_response_63"); //%NT has no damage to heal.
-				stringId.setTT(creatureTarget->getObjectID());
-				creature->sendSystemMessage(stringId);
-			} else {
+		if ((stimPack->isPetStimPack() && !creatureTarget->isCreature()) || (stimPack->isDroidRepairKit() && !creatureTarget->isDroidObject()) || (creatureTarget->isDroidObject() && !stimPack->isDroidRepairKit())) {
+			creature->sendSystemMessage("Invalid target.");
+			return false;
+		}
+
+		if (stimPack->isPetStimPack() || stimPack->isDroidRepairKit()) {
+			if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION) && !creatureTarget->hasDamage(CreatureAttribute::MIND)) {
 				StringBuffer message;
 				message << creatureTarget->getDisplayedName() << " has no damage to heal.";
 				creature->sendSystemMessage(message.toString());
+				return false;
 			}
+		} else {
+			if (!creatureTarget->hasDamage(CreatureAttribute::HEALTH) && !creatureTarget->hasDamage(CreatureAttribute::ACTION)) {
+				if (creatureTarget == creature) {
+					creature->sendSystemMessage("@healing_response:healing_response_61"); //You have no damage to heal.
+				} else if (creatureTarget->isPlayerCreature()) {
+					StringIdChatParameter stringId("healing_response", "healing_response_63"); //%NT has no damage to heal.
+					stringId.setTT(creatureTarget->getObjectID());
+					creature->sendSystemMessage(stringId);
+				} else {
+					StringBuffer message;
+					message << creatureTarget->getDisplayedName() << " has no damage to heal.";
+					creature->sendSystemMessage(message.toString());
+				}
 
-			return false;
+				return false;
+			}
 		}
 
 		if (stimPack->isRangedStimPack()) {
@@ -241,7 +256,7 @@ public:
 		return true;
 	}
 
-	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint32 healthDamage, uint32 actionDamage) {
+	void sendHealMessage(CreatureObject* creature, CreatureObject* creatureTarget, uint32 healthDamage, uint32 actionDamage, uint32 mindDamage) {
 		if (!creature->isPlayerCreature())
 			return;
 
@@ -249,12 +264,20 @@ public:
 
 		StringBuffer msgPlayer, msgTarget, msgBody, msgTail;
 
-		if (healthDamage > 0 && actionDamage > 0) {
+		if (healthDamage > 0 && actionDamage > 0 && mindDamage > 0) {
+			msgBody << healthDamage << " health, " << actionDamage << " action, and " << mindDamage << " mind";
+		} else if (healthDamage > 0 && actionDamage > 0) {
 			msgBody << healthDamage << " health and " << actionDamage << " action";
+		} else if (healthDamage > 0 && mindDamage > 0) {
+			msgBody << healthDamage << " health and " << mindDamage << " mind";
+		} else if (actionDamage > 0 && mindDamage > 0) {
+			msgBody << actionDamage << " action and " << mindDamage << " mind";
 		} else if (healthDamage > 0) {
 			msgBody << healthDamage << " health";
 		} else if (actionDamage > 0) {
 			msgBody << actionDamage << " action";
+		} else if (mindDamage > 0) {
+			msgBody << mindDamage << " mind";
 		} else {
 			return; //No damage to heal.
 		}
@@ -270,6 +293,21 @@ public:
 
 			msgTarget << player->getFirstName() << " heals you for " << msgBody.toString() << msgTail.toString();
 			creatureTarget->sendSystemMessage(msgTarget.toString());
+		} else if (creatureTarget->isDroidObject()) {
+			StringIdChatParameter stringId("healing", "droid_repair_damage_self"); // You have repaired %TO and healed a total of %DI point of damage.
+			stringId.setTO(creatureTarget);
+			stringId.setDI(healthDamage + actionDamage + mindDamage);
+			creature->sendSystemMessage(stringId);
+
+			ManagedReference<DroidObject*> droid = cast<DroidObject*>(creatureTarget);
+			ManagedReference<CreatureObject*> droidOwner = droid->getLinkedCreature().get();
+
+			if (droidOwner != NULL && droidOwner != creature) {
+				StringIdChatParameter stringId("healing", "droid_repair_damage_other"); // %TT has repaired %TO and healed a total of %DI point of damage.
+				stringId.setTO(droid);
+				stringId.setDI(healthDamage + actionDamage + mindDamage);
+				droidOwner->sendSystemMessage(stringId);
+			}
 		} else {
 			msgPlayer << "You heal " << creatureTarget->getDisplayedName() << " for " << msgBody.toString() << msgTail.toString();
 			player->sendSystemMessage(msgPlayer.toString());
@@ -308,7 +346,7 @@ public:
 				playerManager->sendBattleFatigueMessage(creature, targetCreature);
 			}
 
-			sendHealMessage(creature, targetCreature, healthHealed, actionHealed);
+			sendHealMessage(creature, targetCreature, healthHealed, actionHealed, 0);
 
 			if (targetCreature != creature && !targetCreature->isPet())
 				awardXp(creature, "medical", (healthHealed + actionHealed)); //No experience for healing yourself or pets.
@@ -396,7 +434,7 @@ public:
 
 		Locker clocker(targetCreature, creature);
 
-		if ((targetCreature->isAiAgent() && !targetCreature->isPet()) || targetCreature->isDroidObject() || targetCreature->isDead() || targetCreature->isRidingCreature() || targetCreature->isMounted() || targetCreature->isAttackableBy(creature))
+		if ((targetCreature->isAiAgent() && !targetCreature->isPet()) || targetCreature->isDead() || targetCreature->isRidingCreature() || targetCreature->isMounted() || targetCreature->isAttackableBy(creature))
 			targetCreature = creature;
 
 		uint64 pharmaceuticalObjectID = 0;
@@ -440,6 +478,10 @@ public:
 
 		uint32 stimPower = stimPack->calculatePower(creature, targetCreature);
 
+		uint32 mindHealed = 0;
+		if (stimPack->isPetStimPack() || stimPack->isDroidRepairKit())
+			mindHealed = targetCreature->healDamage(creature, CreatureAttribute::MIND, stimPower, true, false);
+
 		uint32 healthHealed = targetCreature->healDamage(creature, CreatureAttribute::HEALTH, stimPower);
 		uint32 actionHealed = targetCreature->healDamage(creature, CreatureAttribute::ACTION, stimPower, true, false);
 
@@ -447,13 +489,13 @@ public:
 			playerManager->sendBattleFatigueMessage(creature, targetCreature);
 		}
 
-		sendHealMessage(creature, targetCreature, healthHealed, actionHealed);
+		sendHealMessage(creature, targetCreature, healthHealed, actionHealed, mindHealed);
 
 		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
 		stimPack->decreaseUseCount();
 
 		if (targetCreature != creature && !targetCreature->isPet())
-			awardXp(creature, "medical", (healthHealed + actionHealed)); //No experience for healing yourself.
+			awardXp(creature, "medical", (healthHealed + actionHealed)); //No experience for healing yourself or pets.
 
 		if (targetCreature != creature)
 			clocker.release();
@@ -467,7 +509,7 @@ public:
 		} else
 			doAnimations(creature, targetCreature);
 
-		deactivateInjuryTreatment(creature, stimPack->isRangedStimPack());
+		deactivateInjuryTreatment(creature, stimPack);
 
 		creature->notifyObservers(ObserverEventType::MEDPACKUSED);
 
