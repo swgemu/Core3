@@ -157,15 +157,17 @@ class StimPack extends PharmaceuticalObject {
 	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
 		super.fillAttributeList(msg, object);
 
-		if (!isRangedStimPack()) {
+		if (!isRangedStimPack() && !isDroidRepairKit()) {
 			msg.insertAttribute("examine_heal_damage_health", Math.getPrecision(effectiveness, 0));
 			msg.insertAttribute("examine_heal_damage_action", Math.getPrecision(effectiveness, 0));
 
-			if (isPetStimPack() || isDroidRepairKit()) {
+			if (isPetStimPack()) {
 				msg.insertAttribute("examine_heal_damage_mind", Math.getPrecision(effectiveness, 0));
 			} else {
 				msg.insertAttribute("healing_ability", super.medicineUseRequired);
 			}
+		} else if (isDroidRepairKit()) {
+			msg.insertAttribute("examine_repair_energy", Math.getPrecision(effectiveness, 0));
 		}
 	}
 	
