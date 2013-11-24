@@ -67,3 +67,5 @@ includeFile("conversations/village/old_man_conv.lua")
 
 -- Race Tracks
 includeFile("conversations/racetracks/agrilatswampconversation.lua")
+includeFile("conversations/racetracks/kerenconversation.lua")
+includeFile("conversations/racetracks/mosespaconversation.lua")
