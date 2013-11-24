@@ -24,13 +24,13 @@ end
 -- Handling of the checkForceStatus command.
 -- @param pCreatureObject pointer to the creature object of the player who performed the command
 function VillageJediManager:checkForceStatusCommand(pCreatureObject)
-	Glowing.checkForceStatusCommand(pCreatureObject)
+	Glowing:checkForceStatusCommand(pCreatureObject)
 end
 
 -- Handling of the onPlayerLoggedIn event. The progression of the player will be checked and observers will be registered.
 -- @param pCreatureObject pointer to the creature object of the player who logged in.
 function VillageJediManager:onPlayerLoggedIn(pCreatureObject)
-	Glowing.onPlayerLoggedIn(pCreatureObject)
+	Glowing:onPlayerLoggedIn(pCreatureObject)
 end
 
 registerScreenPlay("VillageJediManager", true)

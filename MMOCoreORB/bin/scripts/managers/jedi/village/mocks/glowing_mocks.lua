@@ -4,6 +4,7 @@ local realOnPlayerLoggedIn
 
 local GlowingMocks = Glowing
 GlowingMocks.mocks = {}
+GlowingMocks.realObject = Glowing
 
 function GlowingMocks.mocks.setup()
 	realCheckForceStatusCommand = Glowing.checkForceStatusCommand

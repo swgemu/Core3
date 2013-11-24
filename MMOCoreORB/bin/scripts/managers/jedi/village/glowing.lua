@@ -2,23 +2,7 @@ local ObjectManager = require("managers.object.object_manager")
 local OldMan = require("managers.jedi.village.old_man")
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 
-local Glowing = {}
-GlowingEventsAndObservers = {}
-local GlowingPrivate = {}
-
--- Expose private functions for testing.
-function Glowing.exposePrivateFunctions()
-	if BUSTED_TEST then
-		Glowing.private = GlowingPrivate
-		OldMan.global = GlowingEventsAndObservers
-	end
-end
-
--- Hide private functions.
-function Glowing.hidePrivateFunctions()
-	Glowing.private = {}
-	Glowing.global = {}
-end
+local Glowing = Object:new {}
 
 TOTALNUMBEROFBADGESREQUIRED = 17
 NUMBEROFJEDIBADGESREQUIRED = 3
@@ -149,7 +133,7 @@ PROFESSIONBADGES = {
 -- @param list the list of badge numbers to check if the player has.
 -- @param upperLimit only count up to this limit.
 -- @return the number of badges in the list that the player has been awarded
-function GlowingPrivate.countBadgesInListToUpperLimit(pCreatureObject, list, upperLimit)
+function Glowing:countBadgesInListToUpperLimit(pCreatureObject, list, upperLimit)
 	local numberOfBadges = 0
 	ObjectManager.withCreaturePlayerObject(pCreatureObject, function(playerObject)
 		for i = 1, table.getn(list), 1 do
@@ -167,19 +151,19 @@ end
 -- Count the total number of badges towards the jedi progression for the player
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @return the total number of interesting badges.
-function GlowingPrivate.countBadges(pCreatureObject)
-	local professionBadges = GlowingPrivate.countBadgesInListToUpperLimit(pCreatureObject, PROFESSIONBADGES, NUMBEROFPROFESSIONBADGESREQUIRED)
-	local jediBadges = GlowingPrivate.countBadgesInListToUpperLimit(pCreatureObject, JEDIBADGES, NUMBEROFJEDIBADGESREQUIRED)
-	local contentBadges = GlowingPrivate.countBadgesInListToUpperLimit(pCreatureObject, CONTENTBADGES, NUMBEROFCONTENTBADGESREQUIRED)
-	local difficultBadges = GlowingPrivate.countBadgesInListToUpperLimit(pCreatureObject, DIFFICULTBADGES, NUMBEROFDIFFICULTBADGESREQUIRED)
-	local easyBadges = GlowingPrivate.countBadgesInListToUpperLimit(pCreatureObject, EASYBADGES, NUMBEROFEASYBADGESREQUIRED)
+function Glowing:countBadges(pCreatureObject)
+	local professionBadges = self:countBadgesInListToUpperLimit(pCreatureObject, PROFESSIONBADGES, NUMBEROFPROFESSIONBADGESREQUIRED)
+	local jediBadges = self:countBadgesInListToUpperLimit(pCreatureObject, JEDIBADGES, NUMBEROFJEDIBADGESREQUIRED)
+	local contentBadges = self:countBadgesInListToUpperLimit(pCreatureObject, CONTENTBADGES, NUMBEROFCONTENTBADGESREQUIRED)
+	local difficultBadges = self:countBadgesInListToUpperLimit(pCreatureObject, DIFFICULTBADGES, NUMBEROFDIFFICULTBADGESREQUIRED)
+	local easyBadges = self:countBadgesInListToUpperLimit(pCreatureObject, EASYBADGES, NUMBEROFEASYBADGESREQUIRED)
 	return professionBadges + jediBadges + contentBadges + difficultBadges + easyBadges
 end
 
 -- Check if the player is glowing or not.
 -- @param pCreatureObject pointer to the creature object of the player.
-function GlowingPrivate.isGlowing(pCreatureObject)
-	if GlowingPrivate.countBadges(pCreatureObject) >= TOTALNUMBEROFBADGESREQUIRED then
+function Glowing:isGlowing(pCreatureObject)
+	if self:countBadges(pCreatureObject) >= TOTALNUMBEROFBADGESREQUIRED then
 		VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_GLOWING)
 		OldMan.createSpawnOldManEvent(pCreatureObject)
 	end
@@ -190,39 +174,39 @@ end
 -- @param pCreatureObject2 pointer to the creature object of the player who was awarded with a badge.
 -- @param badgeNumber the badge number that was awarded.
 -- @return 0 to keep the observer active.
-function GlowingEventsAndObservers:badgeAwardedEventHandler(pCreatureObject, pCreatureObject2, badgeNumber)
-	GlowingPrivate.isGlowing(pCreatureObject)
+function Glowing:badgeAwardedEventHandler(pCreatureObject, pCreatureObject2, badgeNumber)
+	self:isGlowing(pCreatureObject)
 
 	return 0
 end
 
 -- Register observer on the player for observing badge awards.
 -- @param pCreatureObject pointer to the creature object of the player to register observers on.
-function GlowingPrivate.registerObservers(pCreatureObject)
+function Glowing:registerObservers(pCreatureObject)
 	createObserver(BADGEAWARDED, "Glowing", "badgeAwardedEventHandler", pCreatureObject)
 end
 
 -- Handling of the onPlayerLoggedIn event. The progression of the player will be checked and observers will be registered.
 -- @param pCreatureObject pointer to the creature object of the player who logged in.
-function Glowing.onPlayerLoggedIn(pCreatureObject)
-	if not GlowingPrivate.isGlowing(pCreatureObject) then
-		GlowingPrivate.registerObservers(pCreatureObject)
+function Glowing:onPlayerLoggedIn(pCreatureObject)
+	if not self:isGlowing(pCreatureObject) then
+		self:registerObservers(pCreatureObject)
 	end
 end
 
 -- Get the jedi progression status for the player
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @return the jedi progression status, 0 to 5 to be used to return correct string id to the player.
-function GlowingPrivate.getJediProgressionStatus(pCreatureObject)
-	local numberOfBadges = GlowingPrivate.countBadges(pCreatureObject)
+function Glowing:getJediProgressionStatus(pCreatureObject)
+	local numberOfBadges = self:countBadges(pCreatureObject)
 	return math.floor((numberOfBadges / TOTALNUMBEROFBADGESREQUIRED) * 5)
 end
 
 -- Handling of the checkForceStatus command.
 -- @param pCreatureObject pointer to the creature object of the player who performed the command
-function Glowing.checkForceStatusCommand(pCreatureObject)
+function Glowing:checkForceStatusCommand(pCreatureObject)
 	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
-		creatureObject:sendSystemMessage("@jedi_spam:fs_progress_" .. GlowingPrivate.getJediProgressionStatus(pCreatureObject))
+		creatureObject:sendSystemMessage("@jedi_spam:fs_progress_" .. self:getJediProgressionStatus(pCreatureObject))
 	end)
 end
 

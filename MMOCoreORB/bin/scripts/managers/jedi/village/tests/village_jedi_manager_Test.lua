@@ -55,7 +55,7 @@ describe("Village Jedi Manager", function()
 			it("Should call checkForceStatusCommand in the glowing module.", function()
 				VillageJediManager:checkForceStatusCommand(pCreatureObject)
 
-				assert.spy(GlowingMocks.checkForceStatusCommand).was.called_with(pCreatureObject)
+				assert.spy(GlowingMocks.checkForceStatusCommand).was.called_with(GlowingMocks.realObject, pCreatureObject)
 			end)
 		end)
 
@@ -64,7 +64,7 @@ describe("Village Jedi Manager", function()
 				it("Should call the onPlayerLoggedIn function in the Glowing module with the player as argument.", function()
 					VillageJediManager:onPlayerLoggedIn(pCreatureObject)
 
-					assert.spy(GlowingMocks.onPlayerLoggedIn).was.called_with(pCreatureObject)
+					assert.spy(GlowingMocks.onPlayerLoggedIn).was.called_with(GlowingMocks.realObject, pCreatureObject)
 				end)
 			end)
 		end)
