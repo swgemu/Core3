@@ -88,4 +88,5 @@ function NabooKerenScreenPlay:spawnMobiles()
 	spawnMobile("naboo", "trainer_smuggler",0,1362.94,13,2833.96,82,0)
 	spawnMobile("naboo", "trainer_smuggler",0,1846,12,2772,31,0)
 	spawnMobile("naboo", "trainer_weaponsmith",0,1905,12,2767,180,0)
+	spawnMobile("naboo", "trainer_bountyhunter",0,2087,30,2575,180,0)
 end
