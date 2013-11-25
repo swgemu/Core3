@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_c00af5d1",
+        "filename": "MMOCoreORB/src/server/zone/objects/scene/SceneObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1574,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2013-11-25T22:58:04Z",
+      "side": 1,
+      "message": "The client doesn\u0027t seem to always handle StringId paths properly (especially when concatenated with other strings) and it can sometimes be a pain to work with them.\n\nI figured it would be nice if there was an easy way to always get actual string rather than the path. One can still get the objectName and get it\u0027s full path if desired so no functionality is lost.\n\nI went through each instance where this method is called and I don\u0027t think it\u0027ll break anything.",
+      "revId": "084cf91a89eeb0d916af26014204b7586b6a7820",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
