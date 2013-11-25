@@ -304,6 +304,7 @@ public:
 
 			if (droidOwner != NULL && droidOwner != creature) {
 				StringIdChatParameter stringId("healing", "droid_repair_damage_other"); // %TT has repaired %TO and healed a total of %DI point of damage.
+				stringId.setTT(creature);
 				stringId.setTO(droid);
 				stringId.setDI(healthDamage + actionDamage + mindDamage);
 				droidOwner->sendSystemMessage(stringId);
@@ -469,8 +470,6 @@ public:
 		if (!creature->isInRange(targetCreature, rangeToCheck))
 			return TOOFAR;
 
-		PlayerManager* playerManager = server->getPlayerManager();
-
 		if (creature != targetCreature && !CollisionManager::checkLineOfSight(creature, targetCreature)) {
 			creature->sendSystemMessage("@container_error_message:container18");
 			return GENERALERROR;
@@ -489,7 +488,8 @@ public:
 		uint32 healthHealed = targetCreature->healDamage(creature, CreatureAttribute::HEALTH, stimPower);
 		uint32 actionHealed = targetCreature->healDamage(creature, CreatureAttribute::ACTION, stimPower, true, false);
 
-		if (creature->isPlayerCreature()) {
+		if (creature->isPlayerCreature() && !targetCreature->isDroidObject()) {
+			PlayerManager* playerManager = server->getPlayerManager();
 			playerManager->sendBattleFatigueMessage(creature, targetCreature);
 		}
 
