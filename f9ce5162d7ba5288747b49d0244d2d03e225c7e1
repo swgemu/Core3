@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_8d7306b1",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/racetracks/agrilatswamp.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-25T01:35:57Z",
+      "side": 1,
+      "message": "why are you using the withPlayerObject if you send the pointer to the function? Same thing in the other tracks.",
+      "revId": "f9ce5162d7ba5288747b49d0244d2d03e225c7e1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_6d68e2ba",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/racetracks/agrilatswamp.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-25T01:35:57Z",
+      "side": 1,
+      "message": "withCreatureObject. Same thing in the other tracks.",
+      "revId": "f9ce5162d7ba5288747b49d0244d2d03e225c7e1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_4d651ee0",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/racetracks/racetrackengine.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-25T01:35:57Z",
+      "side": 1,
+      "message": "Remove this, it is already in the ScreenPlay.",
+      "revId": "f9ce5162d7ba5288747b49d0244d2d03e225c7e1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_2d62dad8",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/racetracks/racetrackengine.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-25T01:35:57Z",
+      "side": 1,
+      "message": "Can you split up this function? It is pretty big and has a high degree of complexity.",
+      "revId": "f9ce5162d7ba5288747b49d0244d2d03e225c7e1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_0d5f1610",
+        "filename": "MMOCoreORB/bin/scripts/screenplays/racetracks/racetrackengine.lua",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2013-11-25T01:35:57Z",
+      "side": 1,
+      "message": "Can you split up this function? It is pretty big and has a high degree of complexity.\nPerhaps some of the code can be shared with the processWaypoint?",
+      "revId": "f9ce5162d7ba5288747b49d0244d2d03e225c7e1",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
