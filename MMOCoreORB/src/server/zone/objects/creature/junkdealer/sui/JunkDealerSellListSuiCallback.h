@@ -69,12 +69,11 @@ void run(CreatureObject* player, SuiBox* suiBox, bool cancel, Vector<UnicodeStri
 		int iCredits = cast<TangibleObject*>(inventory->getContainerObject(itemId).get())->getJunkValue();
 		msg.setDI(iCredits);
 		player->sendSystemMessage(msg);
-		UnicodeString itemName = StringIdManager::instance()->getStringId(selectedObject->getDisplayedName().hashCode());
-		if (itemName == "")
-			itemName=selectedObject->getCustomObjectName();
+
 		selectedObject->destroyObjectFromWorld(true);
 		selectedObject->destroyObjectFromDatabase(true);
 		player->addCashCredits(iCredits,true);
+		//String itemName = selectedObject->getDisplayedName();
 		//player->sendSystemMessage("Index: " + String::valueOf(index) + " ItemID:" + String::valueOf(itemId) + " " + tst->getObjectNameStringIdName()+  " Cancel: " + String::valueOf(cancel) + " Other: " + String::valueOf(otherPressed));
 		//player->sendSystemMessage("You sell " + itemName + " for " + String::valueOf(iCredits) +" cr");
 		bool bHaveStuffToSell = false;
@@ -96,12 +95,11 @@ void run(CreatureObject* player, SuiBox* suiBox, bool cancel, Vector<UnicodeStri
 			box->setOkButton(true, "@loot_dealer:btn_sell");
 			box->setCancelButton(true, "@cancel");
 			for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-				UnicodeString itemName = StringIdManager::instance()->getStringId(inventory->getContainerObject(i)->getDisplayedName().hashCode());
-				if (itemName == "")
-					itemName=inventory->getContainerObject(i)->getCustomObjectName();
+				String itemName = inventory->getContainerObject(i)->getDisplayedName();
+
 				ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i).get());
 				if (cast<JunkdealerCreature*>(dealerScene)->canInventoryItemBeSoldAsJunk(item,dealerType)==true )
-					box->addMenuItem("[" + String::valueOf(item->getJunkValue()) + "] " +itemName.toString(), inventory->getContainerObject(i)->getObjectID());
+					box->addMenuItem("[" + String::valueOf(item->getJunkValue()) + "] " +itemName, inventory->getContainerObject(i)->getObjectID());
 			}
 			box->setUsingObject(suiBox->getUsingObject().get());
 			player->getPlayerObject()->addSuiBox(box);

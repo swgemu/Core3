@@ -126,8 +126,7 @@ public:
 			prototype->setCraftersName(name);
 
 			StringBuffer customName;
-			customName << StringIdManager::instance()->getStringId(prototype->getDisplayedName().hashCode()).toString()
-					<<  " (System Generated)";
+			customName << prototype->getDisplayedName() <<  " (System Generated)";
 			prototype->setCustomObjectName(customName.toString(), false);
 
 

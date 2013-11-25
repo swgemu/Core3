@@ -66,6 +66,7 @@ which carries forward this exception.
 #include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/managers/director/DirectorManager.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/object/ShowFlyText.h"
 
@@ -1570,7 +1571,7 @@ String SceneObjectImplementation::getDisplayedName() {
 	if(!customName.isEmpty())
 		return customName.toString();
 
-	return objectName.getFullPath();
+	return StringIdManager::instance()->getStringId(objectName.getFullPath().hashCode()).toString();
 }
 
 bool SceneObjectImplementation::setTransformForCollisionMatrixIfNull(Matrix4* mat) {

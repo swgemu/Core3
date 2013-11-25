@@ -738,12 +738,11 @@ void JunkdealerCreatureImplementation::createSellJunkLootSelection(CreatureObjec
 			box->setCancelButton(true, "@cancel");
 
 			for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
-				UnicodeString itemName = StringIdManager::instance()->getStringId(inventory->getContainerObject(i)->getDisplayedName().hashCode());
-				if (itemName == "")
-					itemName=inventory->getContainerObject(i)->getCustomObjectName();
+				String itemName = inventory->getContainerObject(i)->getDisplayedName();
+
 				ManagedReference<TangibleObject*>  item = cast<TangibleObject*>(inventory->getContainerObject(i).get());
 				if (canInventoryItemBeSoldAsJunk(item,dealerType)==true)
-					box->addMenuItem("[" + String::valueOf(item->getJunkValue()) + "] " + itemName.toString(), inventory->getContainerObject(i)->getObjectID());
+					box->addMenuItem("[" + String::valueOf(item->getJunkValue()) + "] " + itemName, inventory->getContainerObject(i)->getObjectID());
 			}
 
 			box->setUsingObject(_this.get());
