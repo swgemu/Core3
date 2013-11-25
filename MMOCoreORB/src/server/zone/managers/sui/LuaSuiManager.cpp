@@ -81,20 +81,23 @@ int LuaSuiManager::sendInputBox(lua_State* L) {
 }
 
 int LuaSuiManager::sendMessageBox(lua_State* L) {
-	if (lua_gettop(L) - 1 < 7) {
+	if (lua_gettop(L) - 1 < 10) {
 		Logger::console.error("incorrect number of arguments for LuaSuiManager::sendMessageBox");
 		return 0;
 	}
 
-	SceneObject* usingObject = (SceneObject*) lua_touserdata(L, -7);
-	SceneObject* targetPlayer = (SceneObject*) lua_touserdata(L, -6);
-	String title = lua_tostring(L, -5);
-	String text = lua_tostring(L, -4);
+	SceneObject* usingObject = (SceneObject*) lua_touserdata(L, -10);
+	SceneObject* targetPlayer = (SceneObject*) lua_touserdata(L, -9);
+	String title = lua_tostring(L, -8);
+	String text = lua_tostring(L, -7);
+	int numOfButtons = lua_tointeger(L, -6);
+	String cancelButton = lua_tostring(L, -5);
+	String otherButton = lua_tostring(L, -4);
 	String okButton = lua_tostring(L, -3);
 	String screenplay = lua_tostring(L, -2);
 	String callback = lua_tostring(L, -1);
 
-	realObject->sendMessageBox(usingObject, targetPlayer, title, text, okButton, screenplay, callback);
+	realObject->sendMessageBox(usingObject, targetPlayer, title, text, numOfButtons, cancelButton, otherButton, okButton, screenplay, callback);
 
 	return 0;
 }
