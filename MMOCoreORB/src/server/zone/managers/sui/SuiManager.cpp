@@ -632,7 +632,7 @@ void SuiManager::sendInputBox(SceneObject* terminal, SceneObject* player, const 
 
 }
 
-void SuiManager::sendMessageBox(SceneObject* usingObject, SceneObject* player, const String& title, const String& text, const String& okButton, const String& screenplay, const String& callback) {
+void SuiManager::sendMessageBox(SceneObject* usingObject, SceneObject* player, const String& title, const String& text, const uint8& numOfButtons, const String& cancelButton, const String& otherButton, const String& okButton, const String& screenplay, const String& callback) {
 	if (usingObject == NULL)
 		return;
 
@@ -644,16 +644,39 @@ void SuiManager::sendMessageBox(SceneObject* usingObject, SceneObject* player, c
 	PlayerObject* playerObject = creature->getPlayerObject();
 
 	if (playerObject != NULL) {
-		ManagedReference<SuiMessageBox*> messageBox = new SuiMessageBox(creature, 0x00);
-		messageBox->setCallback(new LuaSuiCallback(creature->getZoneServer(), screenplay, callback));
-		messageBox->setPromptTitle(title);
-		messageBox->setPromptText(text);
-		messageBox->setUsingObject(usingObject);
-		messageBox->setOkButton(true, okButton);
-		messageBox->setForceCloseDistance(32.f);
+		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, 0x00);
 
-		creature->sendMessage(messageBox->generateMessage());
-		playerObject->addSuiBox(messageBox);
+		switch (numOfButtons) {
+		case 1:
+			box->setCancelButton(false, "");
+			box->setOtherButton(false, "");
+			box->setOkButton(true, okButton);
+			break;
+		case 2:
+			box->setCancelButton(true, cancelButton);
+			box->setOtherButton(false, "");
+			box->setOkButton(true, okButton);
+			break;
+		case 3:
+			box->setCancelButton(true, cancelButton);
+			box->setOtherButton(true, otherButton);
+			box->setOkButton(true, okButton);
+			break;
+		default:
+			return;
+			break;
+		}
+
+
+		box->setCallback(new LuaSuiCallback(creature->getZoneServer(), screenplay, callback));
+		box->setPromptTitle(title);
+		box->setPromptText(text);
+		box->setUsingObject(usingObject);
+		box->setOkButton(true, okButton);
+		box->setForceCloseDistance(32.f);
+
+		creature->sendMessage(box->generateMessage());
+		playerObject->addSuiBox(box);
 	}
 }
 
