@@ -42,7 +42,12 @@
 
 
 object_tangible_medicine_pet_droid_wound_kit_d = object_tangible_medicine_pet_shared_droid_wound_kit_d:new {
-
+	gameObjectType = 8241,
+	templateType = WOUNDPACK,
+	useCount = 12,
+	medicineUse = 0,
+	effectiveness = 160,
+	attribute = 0,
 
 	numberExperimentalProperties = {1, 1, 3, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "MA", "OQ", "OQ", "UT", "XX"},

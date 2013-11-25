@@ -73,7 +73,11 @@ class WoundPack extends PharmaceuticalObject {
 	@local
 	public void updateCraftingValues(CraftingValues values, boolean firstUpdate) {
 		effectiveness = values.getCurrentValue("power");
-		super.medicineUseRequired = values.getCurrentValue("skillmodmin");
+
+		if (!isDroidReconstructionKit()) {
+			super.medicineUseRequired = values.getCurrentValue("skillmodmin");
+		}
+
 		setUseCount(values.getCurrentValue("charges"));
 	}
 
@@ -107,9 +111,13 @@ class WoundPack extends PharmaceuticalObject {
 	@local
 	public void fillAttributeList(AttributeListMessage msg, CreatureObject object) {
 		super.fillAttributeList(msg, object);
-		
-		msg.insertAttribute("examine_heal_wound_" + CreatureAttribute.getName(attribute), Math.getPrecision(effectiveness, 0));
-		msg.insertAttribute("healing_ability", super.medicineUseRequired);
+
+		if (isDroidReconstructionKit()) {
+			msg.insertAttribute("examine_repair_power", Math.getPrecision(effectiveness, 0));
+		} else {
+			msg.insertAttribute("examine_heal_wound_" + CreatureAttribute.getName(attribute), Math.getPrecision(effectiveness, 0));
+			msg.insertAttribute("healing_ability", super.medicineUseRequired);
+		}
 	}
 	
 	/**
@@ -128,7 +136,7 @@ class WoundPack extends PharmaceuticalObject {
 		if (selectedID != 20)
 			return 1;
 
-		if (player.getSkillMod("healing_ability") < super.medicineUseRequired) {
+		if (player.getSkillMod("healing_ability") < super.medicineUseRequired && !isDroidReconstructionKit()) {
 			player.sendSystemMessage("@error_message:insufficient_skill"); //You lack the skill to use this item.
 			
 			return 0;
@@ -152,13 +160,14 @@ class WoundPack extends PharmaceuticalObject {
 			power = power - (power * patient.calculateBFRatio() * healer.calculateBFRatio());
 		}
 
-		ZoneServer zoneServer = super.getZoneServer();
-		PlayerManager playerManager = zoneServer.getPlayerManager();
-		
-		float modEnvironment = 1 + ((float) healer.getSkillMod("private_medical_rating") / 100.0f);	
-		float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
+		if (isDroidReconstructionKit()) {
+			return power;
+		} else {
+			float modEnvironment = 1 + ((float) healer.getSkillMod("private_medical_rating") / 100.0f);	
+			float modSkill = (float) healer.getSkillMod("healing_wound_treatment");
 
-		return (power * modEnvironment * (100.0f + modSkill) / 100.0f);
+			return (power * modEnvironment * (100.0f + modSkill) / 100.0f);
+		}
 	}
 	
 	public float getEffectiveness() {
@@ -173,4 +182,5 @@ class WoundPack extends PharmaceuticalObject {
 		return attribute;
 	}
 
+	public native boolean isDroidReconstructionKit();
 }

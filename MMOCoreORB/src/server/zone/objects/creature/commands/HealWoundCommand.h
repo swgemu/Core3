@@ -68,8 +68,11 @@ public:
 		range = 6;
 	}
 
-	void deactivateWoundTreatment(CreatureObject* creature) {
-		float modSkill = (float)creature->getSkillMod("healing_wound_speed");
+	void deactivateWoundTreatment(CreatureObject* creature, WoundPack* woundPack) {
+		float modSkill = 0.0f;
+
+		if (!woundPack->isDroidReconstructionKit())
+			modSkill = (float)creature->getSkillMod("healing_wound_speed");
 
 		int delay = (int)round((modSkill * -(2.0f / 25.0f)) + 20.0f);
 
@@ -137,6 +140,22 @@ public:
 
 			creature->sendSystemMessage(msgPlayer.toString());
 			creatureTarget->sendSystemMessage(msgTarget.toString());
+		} else if (creatureTarget->isDroidObject()) {
+			StringIdChatParameter stringId("healing", "droid_repair_wound_self"); // You have repaired %TO and healed a total of %DI wounds.
+			stringId.setTO(creatureTarget);
+			stringId.setDI(woundsHealed);
+			creature->sendSystemMessage(stringId);
+
+			ManagedReference<DroidObject*> droid = cast<DroidObject*>(creatureTarget);
+			ManagedReference<CreatureObject*> droidOwner = droid->getLinkedCreature().get();
+
+			if (droidOwner != NULL && droidOwner != creature) {
+				StringIdChatParameter stringId("healing", "droid_repair_wound_other"); // %TT has repaired %TO and healed a total of %DI wounds.
+				stringId.setTT(creature);
+				stringId.setTO(droid);
+				stringId.setDI(woundsHealed);
+				droidOwner->sendSystemMessage(stringId);
+			}
 		} else {
 			msgPlayer << "You heal " << creatureTarget->getDisplayedName() << " for " << msgTail.toString();
 			creature->sendSystemMessage(msgPlayer.toString());
@@ -176,6 +195,11 @@ public:
 
 		if (creatureTarget->isInCombat()) {
 			creature->sendSystemMessage("You cannot do that while your target is in Combat.");
+			return false;
+		}
+
+		if (woundPack->isDroidReconstructionKit() && !creatureTarget->isDroidObject()) {
+			creature->sendSystemMessage("Invalid target.");
 			return false;
 		}
 
@@ -245,7 +269,7 @@ public:
 				if (item->isPharmaceuticalObject()) {
 					PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>( item);
 
-					if (pharma->isWoundPack()) {
+					if (pharma->isWoundPack() && !pharma->isDroidReconstructionKit()) {
 						WoundPack* woundPack = cast<WoundPack*>( pharma);
 
 						if (woundPack->getMedicineUseRequired() <= medicineUse && woundPack->getAttribute() == attribute)
@@ -284,7 +308,7 @@ public:
 
 		Locker clocker(creatureTarget, creature);
 
-		if ((creatureTarget->isAiAgent() && !creatureTarget->isPet()) || creatureTarget->isDroidObject() || creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted() || creatureTarget->isAttackableBy(creature))
+		if ((creatureTarget->isAiAgent() && !creatureTarget->isPet()) || creatureTarget->isDead() || creatureTarget->isRidingCreature() || creatureTarget->isMounted() || creatureTarget->isAttackableBy(creature))
 			creatureTarget = creature;
 
 		if (!creature->isInRange(creatureTarget, range))
@@ -324,7 +348,19 @@ public:
 		if (!canPerformSkill(creature, creatureTarget, woundPack))
 			return GENERALERROR;
 
-		if (creatureTarget->getWounds(attribute) == 0) {
+		if (creatureTarget->isDroidObject()) {
+			int searchAttribute = findAttribute(creatureTarget);
+
+			if (searchAttribute == CreatureAttribute::UNKNOWN) {
+				StringBuffer message;
+				message << creatureTarget->getDisplayedName() << " has no wounds to heal.";
+				creature->sendSystemMessage(message.toString());
+				return 0;
+			}
+
+			attribute = searchAttribute;
+
+		} else if (creatureTarget->getWounds(attribute) == 0) {
 			if (creatureTarget == creature) {
 				creature->sendSystemMessage("@healing_response:healing_response_67"); //You have no wounds of that type to heal.
 			} else if (creatureTarget->isPlayerCreature()){
@@ -341,13 +377,17 @@ public:
 			return 0;
 		}
 
-		uint32 woundPower = woundPack->calculatePower(creature, creatureTarget);
+		uint32 woundPower = 0;
+		if (creatureTarget->isDroidObject())
+			woundPower = woundPack->calculatePower(creature, creatureTarget, false);
+		else
+			woundPower = woundPack->calculatePower(creature, creatureTarget);
 
 		int woundHealed = creatureTarget->healWound(creature, attribute, woundPower);
 
 		woundHealed = abs(woundHealed);
 
-		if (creature->isPlayerCreature()) {
+		if (creature->isPlayerCreature() && !creatureTarget->isDroidObject()) {
 			PlayerManager* playerManager = server->getZoneServer()->getPlayerManager();
 			playerManager->sendBattleFatigueMessage(creature, creatureTarget);
 		}
@@ -356,7 +396,7 @@ public:
 
 		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
 
-		deactivateWoundTreatment(creature);
+		deactivateWoundTreatment(creature, woundPack);
 
 		woundPack->decreaseUseCount();
 
