@@ -37,7 +37,7 @@ registerScreenPlay("agrilatswamp_racetrack_screenplay", true)
 function agrilatswamp_racetrack_screenplay:start()
 	if (isZoneEnabled(self.trackConfig.planetName)) then
 		self:spawnMobiles()
-		self:createRaceTrack("agrilatswap_racetrack_screenplay")
+		self:createRaceTrack("agrilatswamp_racetrack_screenplay")
 	end
 end
 
