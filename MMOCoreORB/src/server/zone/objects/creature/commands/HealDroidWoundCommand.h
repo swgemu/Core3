@@ -46,6 +46,7 @@ which carries forward this exception.
 #define HEALDROIDWOUNDCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/DroidObject.h"
 #include "server/zone/objects/tangible/pharmaceutical/WoundPack.h"
 
 class HealDroidWoundCommand : public QueueCommand {
@@ -243,9 +244,9 @@ public:
 			if (inventory != NULL) {
 				woundPack = inventory->getContainerObject(objectId).castTo<WoundPack*>();
 			}
+		} else {
+			woundPack = findWoundPack(creature);
 		}
-
-		woundPack = findWoundPack(creature);
 
 		if (!canPerformSkill(creature, droid, woundPack))
 			return GENERALERROR;

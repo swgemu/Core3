@@ -133,7 +133,17 @@ class StimPack extends PharmaceuticalObject {
 		if (selectedID != 20)
 			return 1;
 
-		if (player.getSkillMod("healing_ability") < super.medicineUseRequired && !isPetStimPack() && !isDroidRepairKit()) {
+		if (isPetStimPack()) {
+			string command = "/healpet "; 
+			player.sendExecuteConsoleCommand(command + String.valueOf(super.getObjectID()));
+			
+			return 0;
+		} else if (isDroidRepairKit()) {
+			string command = "/healdroiddamage "; 
+			player.sendExecuteConsoleCommand(command + String.valueOf(super.getObjectID()));
+			
+			return 0;
+		} else if (player.getSkillMod("healing_ability") < super.medicineUseRequired) {
 			player.sendSystemMessage("@error_message:insufficient_skill"); //You lack the skill to use this item.
 			
 			return 0;
