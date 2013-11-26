@@ -55,6 +55,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.Zone;
 import system.lang.System;
+import system.util.VectorMap;
 include server.zone.managers.radial.RadialOptions;
 import server.zone.objects.intangible.PetControlObserver;
 
@@ -70,6 +71,27 @@ class PetControlDevice extends ControlDevice {
 	public static final int FACTIONPET = 0;
 	public static final int CREATUREPET = 1;
 	public static final int DROIDPET = 2;
+	
+	// Command IDs
+	public static final short STAY = 0;
+	public static final short FOLLOW = 1;
+	public static final short STORE = 2;
+	public static final short ATTACK = 3;
+	public static final short GUARD = 4;
+	public static final short FRIEND = 5;
+	public static final short FOLLOWOTHER = 6;
+	public static final short TRICK1 = 7;
+	public static final short TRICK2 = 8;
+	public static final short PATROL = 9;
+	public static final short FORMATION = 10;
+	public static final short SPECIAL_ATTACK1 = 11;
+	public static final short SPECIAL_ATTACK2 = 12;
+	public static final short TRANSFER = 13;
+	public static final short RANGED_ATTACK = 14;	
+	
+	// Trained command strings <commandid, chatstring>
+	@dereferenced 
+	protected VectorMap<unsigned int, string> trainedCommands;
 
 	public PetControlDevice() {
 		Logger.setLoggingName("PetControlDevice");
@@ -78,6 +100,9 @@ class PetControlDevice extends ControlDevice {
 		vitality = 1;
 		maxVitality = 1;
 		petType = 0;
+
+		trainedCommands.setNoDuplicateInsertPlan();
+		trainedCommands.setNullValue("");
 	}
 
 	public native void storeObject(CreatureObject player);
@@ -149,8 +174,44 @@ class PetControlDevice extends ControlDevice {
 	 * @param object player creature to which the message is sent
 	 */
 	@local
-	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);	
-
+	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+	
+	/**
+	 * Handles spatial chat messages near the pet
+	 * @pre { }
+	 * @post { }
+	 * @param object player creature speaking
+	 * @param string chat message
+	 */
+	@local
+	public native void handleSpatialChat(CreatureObject speaker, final string message);
+	
+	/**
+	 * Handles follow command
+	 * @pre { }
+	 * @post { }
+	 * @param object player creature commanding
+	 */
+	@local
+	public native void follow(CreatureObject player);
+	
+	/**
+	 * Handles stay command
+	 * @pre { }
+	 * @post { }
+	 * @param object player creature commanding
+	 */
+	@local
+	public native void stay(CreatureObject player);
+	
+	/**
+	 * Sets default trained commands and command strings for the pet
+	 * @pre { }
+	 * @post { }
+	 */
+	@local
+	public native void setDefaultCommands();	
+	
 	public boolean isPetControlDevice() {
 		return true;
 	}
@@ -178,4 +239,5 @@ class PetControlDevice extends ControlDevice {
 	public void setPetType(int type) {
 		petType = type;
 	}
+	
 }

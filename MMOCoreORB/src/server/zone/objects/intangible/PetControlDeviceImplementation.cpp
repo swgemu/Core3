@@ -15,7 +15,6 @@
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 
-
 void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	if (player->getParent() != NULL) {
 		ManagedReference<SceneObject*> strongRef = player->getParentRecursively(SceneObjectType::BUILDING);
@@ -556,4 +555,195 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 			}
 		}
 	}
+
+	// Trained Commands
+	if( trainedCommands.contains(STAY) ){
+		alm->insertAttribute("@cmd_n:pet_stay", trainedCommands.get(STAY) );
+	}
+
+	if( trainedCommands.contains(FOLLOW) ){
+		alm->insertAttribute("@cmd_n:pet_follow", trainedCommands.get(FOLLOW) );
+	}
+
+	if( trainedCommands.contains(STORE) ){
+		alm->insertAttribute("@cmd_n:pet_release", trainedCommands.get(STORE) );
+	}
+
+	if( trainedCommands.contains(ATTACK) ){
+		alm->insertAttribute("@cmd_n:pet_attack", trainedCommands.get(ATTACK) );
+	}
+
+	if( trainedCommands.contains(GUARD) ){
+		alm->insertAttribute("@cmd_n:pet_guard", trainedCommands.get(GUARD) );
+	}
+
+	if( trainedCommands.contains(FRIEND) ){
+		alm->insertAttribute("@cmd_n:pet_friend", trainedCommands.get(FRIEND) );
+	}
+
+	if( trainedCommands.contains(FOLLOWOTHER) ){
+		alm->insertAttribute("@cmd_n:pet_followother", trainedCommands.get(FOLLOWOTHER) );
+	}
+
+	if( trainedCommands.contains(TRICK1) ){
+		alm->insertAttribute("@cmd_n:trick1", trainedCommands.get(TRICK1) );
+	}
+
+	if( trainedCommands.contains(TRICK2) ){
+		alm->insertAttribute("@cmd_n:trick2", trainedCommands.get(TRICK2) );
+	}
+
+	if( trainedCommands.contains(PATROL) ){
+		alm->insertAttribute("@cmd_n:pet_patrol", trainedCommands.get(PATROL) );
+	}
+
+	if( trainedCommands.contains(FORMATION) ){
+		alm->insertAttribute("@cmd_n:pet_formation", trainedCommands.get(FORMATION) );
+	}
+
+	if( trainedCommands.contains(SPECIAL_ATTACK1) ){
+		alm->insertAttribute("@cmd_n:pet_specialattack1", trainedCommands.get(SPECIAL_ATTACK1) );
+	}
+
+	if( trainedCommands.contains(SPECIAL_ATTACK2) ){
+		alm->insertAttribute("@cmd_n:pet_specialattack2", trainedCommands.get(SPECIAL_ATTACK2) );
+	}
+
+	if( trainedCommands.contains(TRANSFER) ){
+		alm->insertAttribute("@cmd_n:pet_transfer", trainedCommands.get(TRANSFER) );
+	}
+
+	if( trainedCommands.contains(RANGED_ATTACK) ){
+		alm->insertAttribute("@cmd_n:pet_rangedattack", trainedCommands.get(RANGED_ATTACK) );
+	}
+
+}
+
+void PetControlDeviceImplementation::handleSpatialChat(CreatureObject* speaker, const String& message){
+
+	if( speaker == NULL )
+		return;
+
+	if( message.isEmpty() )
+		return;
+
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+	if (controlledObject == NULL || !controlledObject->isAiAgent())
+		return;
+
+	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
+	if( pet == NULL )
+		return;
+
+	ManagedWeakReference< CreatureObject*> linkedCreature = pet->getLinkedCreature();
+	if( linkedCreature == NULL )
+		return;
+
+	// Check if speaker has permission to command pet
+	// TODO: Add check for players other than owner that are on pet's friend list
+	if( linkedCreature != speaker)
+		return;
+
+	// Handle trained command
+	if( trainedCommands.contains(STAY) && trainedCommands.get(STAY) == message ){
+		stay( speaker );
+	}
+	else if( trainedCommands.contains(FOLLOW) && trainedCommands.get(FOLLOW) == message ){
+		follow( speaker );
+	}
+	else if( trainedCommands.contains(STORE) && trainedCommands.get(STORE) == message ){
+		storeObject( linkedCreature.get() ); // storeObject expects pet owner to be passed
+	}
+	else if( trainedCommands.contains(ATTACK) && trainedCommands.get(ATTACK) == message ){
+		speaker->sendSystemMessage("ATTACK pet command is not yet implemented.");
+	}
+	else if( trainedCommands.contains(GUARD) && trainedCommands.get(GUARD) == message ){
+		speaker->sendSystemMessage("GUARD pet command is not yet implemented.");
+	}
+	else if( trainedCommands.contains(FRIEND) && trainedCommands.get(FRIEND) == message ){
+		speaker->sendSystemMessage("FRIEND pet command is not yet implemented.");
+	}
+	else if( trainedCommands.contains(FOLLOWOTHER) && trainedCommands.get(FOLLOWOTHER) == message ){
+		speaker->sendSystemMessage("FOLLOWOTHER pet command is not yet implemented.");
+	}
+	else if( trainedCommands.contains(TRICK1) && trainedCommands.get(TRICK1) == message ){
+		speaker->sendSystemMessage("TRICK1 pet command is not yet implemented.");
+	}
+	else if( trainedCommands.contains(TRICK2) && trainedCommands.get(TRICK2) == message ){
+		speaker->sendSystemMessage("TRICK2 pet command is not yet implemented.");
+	}
+	else if( trainedCommands.contains(PATROL) && trainedCommands.get(PATROL) == message ){
+		speaker->sendSystemMessage("PATROL pet command is not yet implemented.");
+	}
+	else if( trainedCommands.contains(FORMATION) && trainedCommands.get(FORMATION) == message ){
+		speaker->sendSystemMessage("FORMATION pet command is not yet implemented.");
+	}
+	else if( trainedCommands.contains(SPECIAL_ATTACK1) && trainedCommands.get(SPECIAL_ATTACK1) == message ){
+		speaker->sendSystemMessage("SPECIAL_ATTACK1 pet command is not yet implemented.");
+	}
+	else if( trainedCommands.contains(SPECIAL_ATTACK2) && trainedCommands.get(SPECIAL_ATTACK2) == message ){
+		speaker->sendSystemMessage("SPECIAL_ATTACK2 pet command is not yet implemented.");
+	}
+	else if( trainedCommands.contains(TRANSFER) && trainedCommands.get(TRANSFER) == message ){
+		speaker->sendSystemMessage("TRANSFER pet command is not yet implemented.");
+	}
+	else if( trainedCommands.contains(RANGED_ATTACK) && trainedCommands.get(RANGED_ATTACK) == message ){
+		speaker->sendSystemMessage("RANGED_ATTACK pet command is not yet implemented.");
+	}
+
+}
+
+void PetControlDeviceImplementation::setDefaultCommands(){
+
+	trainedCommands.put(STAY, "stay");
+	trainedCommands.put(FOLLOW, "follow");
+	trainedCommands.put(STORE, "store");
+	trainedCommands.put(ATTACK, "attack");
+	trainedCommands.put(GUARD, "guard");
+	trainedCommands.put(FRIEND, "friend");
+	trainedCommands.put(FOLLOWOTHER, "followother");
+	trainedCommands.put(PATROL, "patrol");
+	trainedCommands.put(FORMATION, "formation");
+	trainedCommands.put(TRANSFER, "transfer");
+	trainedCommands.put(RANGED_ATTACK, "ranged attack");
+
+}
+
+void PetControlDeviceImplementation::follow(CreatureObject* player){
+
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+	if (controlledObject == NULL || !controlledObject->isAiAgent())
+		return;
+
+	AiAgent* pet = cast<AiAgent*>(controlledObject.get());
+	if( pet == NULL )
+		return;
+
+	// Check if droid has power
+	if( petType == DROIDPET ){
+		DroidObject* droidPet = cast<DroidObject*>(pet);
+		if( droidPet == NULL )
+			return;
+
+		if( !droidPet->hasPower() ){
+			pet->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
+			return;
+		}
+	}
+
+	pet->setFollowObject(player);
+
+}
+
+void PetControlDeviceImplementation::stay(CreatureObject* player){
+
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+	if (controlledObject == NULL || !controlledObject->isAiAgent())
+		return;
+
+	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
+	if( pet == NULL )
+		return;
+
+	pet->setOblivious();
 }
