@@ -65,7 +65,7 @@ object_draft_schematic_scout_item_camokit_lok = object_draft_schematic_scout_sha
    ingredientTemplateNames = {"craft_item_ingredients_n", "craft_item_ingredients_n", "craft_item_ingredients_n"},
    ingredientTitleNames = {"musk_extract", "native_animal_skins", "camo_dye"},
    ingredientSlotType = {0, 0, 0},
-   resourceTypes = {"meat_domesticated_lok", "hide_leathery_lok", "bone_mammal_lok"},
+   resourceTypes = {"meat_carnivore_lok", "hide_leathery_lok", "bone_mammal_lok"},
    resourceQuantities = {30, 40, 20},
    contribution = {100, 100, 100},
 
