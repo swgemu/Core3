@@ -366,70 +366,20 @@ bool CreatureImplementation::canCollectDna(CreatureObject* player) {
 }
 
 void CreatureImplementation::loadTemplateDataForBaby(CreatureTemplate* templateData) {
-	npcTemplate = templateData;
+	loadTemplateData(templateData);
 
-	setPvpStatusBitmask(npcTemplate->getPvpBitmask());
-	if (npcTemplate->getPvpBitmask() == 0)
-		closeobjects = NULL;
-
-	optionsBitmask = npcTemplate->getOptionsBitmask();
 	//npcTemplate->getCreatureBitmask() + CreatureFlag::BABY; -- TODO: need to add a bitmask for AI (pack, herd, etc)
-	level = npcTemplate->getLevel();
-
-	float minDmg = calculateAttackMinDamage(level) * 0.1;
-	float maxDmg = calculateAttackMaxDamage(level) * 0.1;
-	float speed = calculateAttackSpeed(level);
-
-	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
-
-	weapons.add(defaultWeapon);
-
-	if (defaultWeapon != NULL) {
-		// set the damage of the default weapon
-		defaultWeapon->setMinDamage(minDmg);
-		defaultWeapon->setMaxDamage(maxDmg);
-		defaultWeapon->setAttackSpeed(speed);
-	}
-
-	int ham;
-	baseHAM.removeAll();
-	for (int i = 0; i < 9; ++i) {
-		if (i % 3 == 0) {
-			ham = (System::random(npcTemplate->getBaseHAMmax() - npcTemplate->getBaseHAM()) + npcTemplate->getBaseHAM()) / 10;
-			baseHAM.add(ham);
-		} else
-			baseHAM.add(ham/10);
-	}
-
-	hamList.removeAll();
-	for (int i = 0; i < 9; ++i) {
-		hamList.add(baseHAM.get(i));
-	}
-
-	maxHamList.removeAll();
-	for (int i = 0; i < 9; ++i) {
-		maxHamList.add(baseHAM.get(i));
-	}
-
-	objectName = npcTemplate->getObjectName();
 
 	setCustomObjectName(getDisplayedName() + " (baby)", false);
 
 	setHeight(templateData->getScale() * 0.5, false);
 
-	String currentLogName = getLoggingName();
+	int newLevel = level / 10;
+	if (newLevel < 1)
+		newLevel = 1;
 
-	if (!currentLogName.contains(npcTemplate->getTemplateName())) {
-		StringBuffer logName;
-		logName << getLoggingName() << "[" << npcTemplate->getTemplateName() << "]";
+	setLevel(newLevel);
 
-		setLoggingName(logName.toString());
-	}
-
-	String pvpFaction = npcTemplate->getPvpFaction();
-
-	if (!pvpFaction.isEmpty() && (pvpFaction == "imperial" || pvpFaction == "rebel")) {
-		setFaction(pvpFaction.hashCode());
-	}
+	setBaby(true);
 }
 

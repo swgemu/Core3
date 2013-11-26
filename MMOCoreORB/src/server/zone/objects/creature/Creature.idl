@@ -56,17 +56,20 @@ import server.zone.objects.creature.CreatureObject;
 import server.zone.Zone;
 
 class Creature extends AiAgent {
-	
+
 	@dereferenced
 	private transient SortedVector<unsigned long> alreadyHarvested;
 
 	private short milkState;
-	
+
 	private short dnaState;
-	
+
 	private short dnaSampleCount;
 
+	protected boolean baby;
+
 	public Creature() {
+		baby = false;
 		Logger.setLoggingName("Creature");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
@@ -145,11 +148,11 @@ class Creature extends AiAgent {
 	public native void notifyDespawn(Zone zone);
 	
 	public boolean isBaby() {
-		return super.baby;
+		return baby;
 	}
 
 	public void setBaby(boolean bab) {
-		super.baby = bab;
+		baby = bab;
 	}
 
 	public float getTame() {
@@ -222,6 +225,16 @@ class Creature extends AiAgent {
 			return (super.npcTemplate.getMeatMax() / 10);
 		else
 			return super.npcTemplate.getMeatMax();
+	}
+
+	public int getBaseXp() {
+		if (super.npcTemplate == null)
+			return 0;
+
+		if (isBaby())
+			return (super.npcTemplate.getBaseXp() / 10);
+		else
+			return super.npcTemplate.getBaseXp();
 	}
 
 	public string getControlDeviceTemplate() {

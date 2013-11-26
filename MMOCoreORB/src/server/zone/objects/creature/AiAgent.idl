@@ -123,9 +123,7 @@ class AiAgent extends CreatureObject {
 	
 	@dereferenced
 	protected CreatureTemplateReference npcTemplate;
-	
-	protected boolean baby;
-	
+
 	//DEBUG
 	protected boolean showNextMovementPosition;
 	@dereferenced
@@ -171,8 +169,6 @@ class AiAgent extends CreatureObject {
 	
 	
 	public AiAgent() {
-		baby = false;
-		
 		followState = OBLIVIOUS;
 
 		respawnTimer = 0;
@@ -689,14 +685,11 @@ class AiAgent extends CreatureObject {
 		return getWeapon().getMaxDamage();
 	}
 	
-	public int getBaseXp() {
+	public abstract int getBaseXp() {
 		if (npcTemplate.get() == null)
 			return 0;
 
-		if (baby)
-			return (npcTemplate.get().getBaseXp() / 10);
-		else
-			return npcTemplate.get().getBaseXp();
+		return npcTemplate.get().getBaseXp();
 	}
 	
 	public unsigned int getDiet() {
