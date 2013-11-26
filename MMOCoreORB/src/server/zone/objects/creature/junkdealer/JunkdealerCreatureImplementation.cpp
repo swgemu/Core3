@@ -273,13 +273,23 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 		switch (option) {
 			case 0: { //                   0  1             2            3            4            5            6            7            8            9            10           11           12           13           14           15           16           17           18
 				String chatResponses[] = {"","s_84a67771", "s_24f30320","s_e8ceb290","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","start_trading","start_trading","start_trading","start_trading"};
-				sendConversationTerminate(player,stffile,chatResponses[_this.get()->getJunkDealerConversationType()]);
+
+				if (getJunkDealerConversationType() < 20)
+					sendConversationTerminate(player,stffile,chatResponses[getJunkDealerConversationType()]);
+				else
+					throw ArrayIndexOutOfBoundsException(getJunkDealerConversationType());
+
 				createSellJunkLootSelection(player);
 				break;
 			}
 			case 1: {
 				String chatResponses[] = {"","s_4bd9d15e", "s_df5bd64e","s_1eb9feb7","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","goodbye","goodbye","goodbye","goodbye"};
-				sendConversationTerminate(player,stffile,chatResponses[_this.get()->getJunkDealerConversationType()]);
+
+				if (getJunkDealerConversationType() < 20)
+					sendConversationTerminate(player,stffile,chatResponses[getJunkDealerConversationType()]);
+				else
+					throw ArrayIndexOutOfBoundsException(getJunkDealerConversationType());
+
 				break;
 			}
 			case 2: {
@@ -298,7 +308,7 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 		switch (option) {
 			case 0:{
 				ghost->setLastNpcConvMessStr("dealer_specific-2");
-				switch (_this.get()->getJunkDealerConversationType()){
+				switch (getJunkDealerConversationType()){
 					case JUNKCONVNADOWATTOS:{ //What sort of things do you buy?
 						sendConversationContinue(player,stffile,"s_17e67aee","s_a5d02a3c","s_90b63763");
 						break;
@@ -343,7 +353,7 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 				break;
 			}
 			case 1:{
-				switch (_this.get()->getJunkDealerConversationType()){
+				switch (getJunkDealerConversationType()){
 					case JUNKCONVNADOWATTOS:{ //I am just taking a look around.
 						sendConversationTerminate(player,stffile,"s_6afe640d");
 						break;
@@ -391,7 +401,7 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 		switch (option){
 			case 0:{
 				ghost->setLastNpcConvMessStr("dealer_specific-3");
-				switch (_this.get()->getJunkDealerConversationType()) {
+				switch (getJunkDealerConversationType()) {
 					case JUNKCONVNADOWATTOS:{ ///I think I might have a few things that will spark your interest.
 						sendConversationTerminate(player,stffile,"s_8441c2ce");
 						createSellJunkLootSelection(player);
@@ -441,7 +451,7 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 				break;
 			}
 			case 1:{
-				switch (_this.get()->getJunkDealerConversationType()) {
+				switch (getJunkDealerConversationType()) {
 					case JUNKCONVNADOWATTOS:{ //I am sorry but I don't have anything you would be interested in.
 						sendConversationTerminate(player,stffile,"s_6afe640d");
 						break;
@@ -490,7 +500,7 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 		switch (option){
 			case 0:{
 				ghost->setLastNpcConvMessStr("dealer_specific-4");
-				switch (_this.get()->getJunkDealerConversationType()) {
+				switch (getJunkDealerConversationType()) {
 					case JUNKCONVNATHANTAIKE:{ //I am sorry but I don't have anything you would be interested in.
 						sendConversationContinue(player,stffile,"s_aaac386c","s_ecf19442","s_69567be7");
 						break;
@@ -518,7 +528,7 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 				break;
 			}
 			case 1:{
-				switch (_this.get()->getJunkDealerConversationType()) {
+				switch (getJunkDealerConversationType()) {
 					case JUNKCONVNATHANTAIKE:{ //Bah! I should have figured that a stranger wouldn't understand the extent of the problem.
 						sendConversationTerminate(player,stffile,"s_eadc8d6e");
 						break;
