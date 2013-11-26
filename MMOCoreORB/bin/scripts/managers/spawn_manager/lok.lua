@@ -300,13 +300,10 @@ lok_static_spawns = {
 	{"pilot",60,31.1166,14.26,-9.06455,44.9979,2745876, "conversation", ""},
 	{"pilot",60,18.2791,-0.894996,-14.4794,0,8145379, "conversation", ""},
 	{"pilot",60,-23.8096,1.6,-6.26968,0,8145362, "conversation", ""},
-	{"protocol_droid_3po",60,630,12.7003,5055,150.762,0, "calm", "Race Coordinator"},
 	{"reclusive_gurk_king",1200,-3763.4,62.5,-3477.2,160,0, "", ""},
 	{"reclusive_gurk_king",1200,720.3,11.9,-3396.6,130,0, "", ""},
-
 	{"junk_dealer",60,367,12,5202.8,-178,0,"","",JUNKGENERIC,JUNKCONVGENERIC},
 	{"junk_reggi",60,443.925,12,4879.41,69.9891,0,"","Reggi Tirver",JUNKWEAPONS,JUNKCONVREGGINYM},
-
 	{"rifea_eicik",60,-23.1848,1.58812,1.95072,180.005,8145358, "conversation", "Rifea Eicik"},
 	{"rorha_wahe",60,7.54821,-0.894991,-8.57564,0,8145378, "conversation", "Rorha Wahe"},
 	{"scientist",60,363.384,11.8774,5104.73,315.983,0, "calm", ""},
