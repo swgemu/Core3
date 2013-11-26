@@ -116,8 +116,7 @@ public:
 				object->setCraftersName(name);
 
 				StringBuffer customName;
-				customName << StringIdManager::instance()->getStringId(object->getDisplayedName().hashCode()).toString()
-								<<  " (System Generated)";
+				customName << object->getDisplayedName() <<  " (System Generated)";
 
 				object->setCustomObjectName(customName.toString(), false);
 

@@ -413,8 +413,7 @@ void CreatureImplementation::loadTemplateDataForBaby(CreatureTemplate* templateD
 
 	objectName = npcTemplate->getObjectName();
 
-	UnicodeString uName = StringIdManager::instance()->getStringId(objectName.getFullPath().hashCode());
-	setCustomObjectName(uName + " (baby)", false);
+	setCustomObjectName(getDisplayedName() + " (baby)", false);
 
 	setHeight(templateData->getScale() * 0.5, false);
 
