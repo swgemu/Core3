@@ -46,22 +46,225 @@ which carries forward this exception.
 #define HEALDROIDWOUNDCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/tangible/pharmaceutical/WoundPack.h"
 
 class HealDroidWoundCommand : public QueueCommand {
+	int mindCost;
+	float range;
 public:
 
 	HealDroidWoundCommand(const String& name, ZoneProcessServer* server)
 		: QueueCommand(name, server) {
 
+		mindCost = 50;
+		range = 6;
+	}
+
+	void deactivateWoundTreatment(CreatureObject* creature) {
+		int delay = 20;
+
+		StringIdChatParameter message("healing_response", "healing_response_59");
+		Reference<InjuryTreatmentTask*> task = new InjuryTreatmentTask(creature, message, "woundTreatment");
+		creature->addPendingTask("woundTreatment", task, delay * 1000);
+	}
+
+	void doAnimations(CreatureObject* creature, CreatureObject* droid) {
+		droid->playEffect("clienteffect/healing_healwound.cef", "");
+
+		creature->doAnimation("heal_other");
+	}
+
+	void sendWoundMessage(CreatureObject* creature, DroidObject* droid, uint32 woundsHealed) {
+		if (!creature->isPlayerCreature())
+			return;
+
+		StringIdChatParameter stringId("healing", "droid_repair_wound_self"); // You have repaired %TO and healed a total of %DI wounds.
+		stringId.setTO(droid);
+		stringId.setDI(woundsHealed);
+		creature->sendSystemMessage(stringId);
+
+		ManagedReference<CreatureObject*> droidOwner = droid->getLinkedCreature().get();
+
+		if (droidOwner != NULL && droidOwner != creature) {
+			StringIdChatParameter stringId("healing", "droid_repair_wound_other"); // %TT has repaired %TO and healed a total of %DI wounds.
+			stringId.setTT(creature);
+			stringId.setTO(droid);
+			stringId.setDI(woundsHealed);
+			droidOwner->sendSystemMessage(stringId);
+		}
+	}
+
+	bool canPerformSkill(CreatureObject* creature, CreatureObject* droid, WoundPack* woundPack) {
+		if (!creature->canTreatWounds()) {
+			creature->sendSystemMessage("@healing_response:enhancement_must_wait"); //You must wait before you can heal wounds or apply enhancements again.
+			return false;
+		}
+
+		if (woundPack == NULL) {
+			creature->sendSystemMessage("No valid droid reconstruction kit found.");
+			return false;
+		}
+
+		if (creature->getSkillMod("private_medical_rating") <= 0) {
+			creature->sendSystemMessage("@healing_response:must_be_near_droid"); //You must be in a hospital, at a campsite, or near a surgical droid to do that.
+			return false;
+		}
+
+		if (creature->isProne() || creature->isMeditating()) {
+			creature->sendSystemMessage("@error_message:wrong_state"); //You cannot complete that action while in your current state.
+			return false;
+		}
+
+		if (creature->isRidingCreature() || creature->isMounted()) {
+			creature->sendSystemMessage("@error_message:survey_on_mount"); //You cannot perform that action while mounted on a creature or driving a vehicle.
+			return false;
+		}
+
+		if (creature->isInCombat()) {
+			creature->sendSystemMessage("You cannot do that while in Combat.");
+			return false;
+		}
+
+		if (droid->isInCombat()) {
+			creature->sendSystemMessage("You cannot do that while your target is in Combat.");
+			return false;
+		}
+
+		if (!droid->isHealableBy(creature)) {
+			creature->sendSystemMessage("@healing:pvp_no_help");  //It would be unwise to help such a patient.
+			return false;
+		}
+
+		if (creature->getHAM(CreatureAttribute::MIND) < mindCost) {
+			creature->sendSystemMessage("@healing_response:not_enough_mind"); //You do not have enough mind to do that.
+			return false;
+		}
+
+		if (!CollisionManager::checkLineOfSight(creature, droid)) {
+			creature->sendSystemMessage("@container_error_message:container18");
+			return false;
+		}
+
+		return true;
+	}
+
+	void parseModifier(const String& modifier, uint64& objectId) {
+		if (!modifier.isEmpty()) {
+			StringTokenizer tokenizer(modifier);
+
+			objectId = tokenizer.getLongToken();
+		} else {
+			objectId = 0;
+		}
+	}
+
+	uint8 findAttribute(CreatureObject* creature) {
+		for (int i = 0; i < 9; ++i) {
+			int wounds = creature->getWounds(i);
+
+			if (wounds != 0)
+				return i;
+		}
+
+		return CreatureAttribute::UNKNOWN;
+	}
+
+	WoundPack* findWoundPack(CreatureObject* creature) {
+		SceneObject* inventory = creature->getSlottedObject("inventory");
+
+		if (inventory != NULL) {
+			for (int i = 0; i < inventory->getContainerObjectsSize(); i++) {
+				SceneObject* object = inventory->getContainerObject(i);
+
+				if (!object->isTangibleObject())
+					continue;
+
+				TangibleObject* item = cast<TangibleObject*>( object);
+
+				if (item->isPharmaceuticalObject()) {
+					PharmaceuticalObject* pharma = cast<PharmaceuticalObject*>( item);
+
+					if (pharma->isDroidReconstructionKit()) {
+						WoundPack* woundPack = cast<WoundPack*>( pharma);
+
+						return woundPack;
+					}
+				}
+			}
+		}
+
+		return NULL;
 	}
 
 	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
-
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
+
+		if (object == NULL || !object->isDroidObject()) {
+			creature->sendSystemMessage("Invalid Target.");
+			return GENERALERROR;
+		}
+
+		DroidObject* droid = cast<DroidObject*>( object.get());
+
+		Locker clocker(droid, creature);
+
+		if (!droid->isPet() || droid->isDead() || droid->isAttackableBy(creature)) {
+			creature->sendSystemMessage("Invalid Target.");
+			return GENERALERROR;
+		}
+
+		if (!creature->isInRange(droid, range))
+			return TOOFAR;
+
+		uint8 attribute = findAttribute(droid);
+
+		if (attribute == CreatureAttribute::UNKNOWN) {
+			StringBuffer message;
+			message << droid->getDisplayedName() << " has no wounds to heal.";
+			creature->sendSystemMessage(message.toString());
+			return 0;
+		}
+
+		uint64 objectId = 0;
+
+		parseModifier(arguments.toString(), objectId);
+
+		ManagedReference<WoundPack*> woundPack = NULL;
+
+		if (objectId != 0) {
+			SceneObject* inventory = creature->getSlottedObject("inventory");
+
+			if (inventory != NULL) {
+				woundPack = inventory->getContainerObject(objectId).castTo<WoundPack*>();
+			}
+		}
+
+		woundPack = findWoundPack(creature);
+
+		if (!canPerformSkill(creature, droid, woundPack))
+			return GENERALERROR;
+
+		uint32 woundPower = woundPack->calculatePower(creature, droid, false);
+
+		int woundHealed = droid->healWound(creature, attribute, woundPower);
+
+		woundHealed = abs(woundHealed);
+
+		sendWoundMessage(creature, droid, woundHealed);
+
+		creature->inflictDamage(creature, CreatureAttribute::MIND, mindCost, false);
+
+		deactivateWoundTreatment(creature);
+
+		woundPack->decreaseUseCount();
+
+		doAnimations(creature, droid);
 
 		return SUCCESS;
 	}
