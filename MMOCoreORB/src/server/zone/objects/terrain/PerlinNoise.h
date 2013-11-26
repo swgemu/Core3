@@ -35,12 +35,21 @@ class PerlinNoise {
 
 #define lerp(t, a, b) ( a + t * (b - a) )
 
+#define setup(i,b0,b1,r0,r1, n)\
+                t = (double)vec[i] + (double)N;\
+                n = t < 0.0 && t != (double)(int32_t)t;\
+                b0 = ((int)t - n) & BM;\
+                b1 = (b0+1) & BM;\
+                r0 = t - ((int)t - n);\
+                r1 = r0 - 1.;
+/*
 #define setup(i,b0,b1,r0,r1)\
 		t = (double)vec[i] + (double)N;\
 		b0 = ((int)t) & BM;\
 		b1 = (b0+1) & BM;\
 		r0 = t - (int)t;\
 		r1 = r0 - 1.;
+*/
 
 public:
 	PerlinNoise(trn::ptat::Random* r) {
@@ -49,7 +58,7 @@ public:
 	}
 
 	float noise2(double vec[2]) {
-		int bx0, bx1, by0, by1, b00, b10, b01, b11;
+		int bx0, bx1, by0, by1, b00, b10, b01, b11, negx, negy;
 		double rx0, rx1, ry0, ry1;
 		float *q;
 		double t, sx, sy, a, b, u, v;
@@ -60,9 +69,9 @@ public:
 			init();
 		}
 
-		setup(0, bx0,bx1, rx0,rx1);
+		setup(0, bx0,bx1, rx0,rx1,negx);
 
-		setup(1, by0,by1, ry0,ry1);
+		setup(1, by0,by1, ry0,ry1,negy);
 
 		i = p[ bx0 ];
 		j = p[ bx1 ];
