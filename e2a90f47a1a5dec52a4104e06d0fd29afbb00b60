@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a437d4f_03aa4770",
+        "filename": "MMOCoreORB/src/server/chat/ChatManagerImplementation.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-11-26T19:56:41Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "9a437d4f_23b9cb2e",
+      "revId": "e2a90f47a1a5dec52a4104e06d0fd29afbb00b60",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a437d4f_03b6c73d",
         "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/droid/DroidDeedImplementation.cpp",
         "patchSetId": 12
@@ -30,6 +48,24 @@
       "writtenOn": "2013-11-26T16:09:06Z",
       "side": 1,
       "message": "cant you just call that in the construsctor of the pet control device instead of having to callit everywhere?",
+      "revId": "e2a90f47a1a5dec52a4104e06d0fd29afbb00b60",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_c3bb1fc3",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/deed/droid/DroidDeedImplementation.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2013-11-26T19:56:41Z",
+      "side": 1,
+      "message": "Unfortunately, the type (faction, droid, creature) of pet control device isn\u0027t known when the constructor is called.  Default commands are only set for faction and droid.",
+      "parentUuid": "9a437d4f_03b6c73d",
       "revId": "e2a90f47a1a5dec52a4104e06d0fd29afbb00b60",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
