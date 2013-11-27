@@ -5,7 +5,7 @@ function mozo_bondog_handler:getNextConversationScreen(conversationTemplate, con
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	
-	lastConversationScreen = nil
+	local lastConversationScreen = nil
 	
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)

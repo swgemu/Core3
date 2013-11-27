@@ -10,7 +10,7 @@ function mission_giver_conv_handler:getNextConversationScreen(pConversationTempl
 	local creature = LuaCreatureObject(pConversingPlayer)
 	local convosession = creature:getConversationSession()
 	
-	lastConversationScreen = nil
+	local lastConversationScreen = nil
 	
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
