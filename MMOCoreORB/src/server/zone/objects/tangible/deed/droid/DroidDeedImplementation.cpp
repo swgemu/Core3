@@ -127,6 +127,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 	s.setStringId(droid->getDisplayedName());
 	controlDevice->setObjectName(s);
 	controlDevice->setPetType(PetControlDevice::DROIDPET);
+	controlDevice->setDefaultCommands();
 	droid->createChildObjects();
 	controlDevice->setControlledObject(droid);
 	datapad->transferObject(controlDevice, -1);
