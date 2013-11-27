@@ -23,6 +23,7 @@ function RaceTrack:startRacing(pObject)
 		writeScreenPlayData(pObject, self.trackConfig.trackName, "waypointID", waypointID)
 		writeScreenPlayData(pObject, self.trackConfig.trackName, "waypoint", 1)
 		creatureObject:sendSystemMessage("@theme_park/racing/racing:go_fly")
+		creatureObject:playMusicMessage("sound/music_combat_bfield_lp.snd")
    end)
 end
 
@@ -55,13 +56,17 @@ function RaceTrack:actuallyProcessWaypoint(pObject,index)
 		creatureObject:sendSystemMessage("Time " .. seconds .. "s")
 		writeScreenPlayData(pObject, self.trackConfig.trackName, "waypointID", waypointID)
 		writeScreenPlayData(pObject,self.trackConfig.trackName, "waypoint", index+1)
+		creatureObject:playMusicMessage("sound/music_combat_bfield_lp.snd")
 	end)
 end
 
 function  RaceTrack:finalWaypoint(pActiveArea, pObject)
-	self:checkPersonalTime(pObject)
-	self:checkServerRecordTime(pObject)
-	clearScreenPlayData(pObject,self.trackConfig.trackName )
+	ObjectManager.withCreatureObject(pObject, function(creatureObject)
+		creatureObject:playMusicMessage("sound/music_combat_bfield_vict.snd")
+		self:checkPersonalTime(pObject)
+		self:checkServerRecordTime(pObject)
+		clearScreenPlayData(pObject,self.trackConfig.trackName )
+	end)
 end
 function RaceTrack:getLaptime(pObject)
 	local startTime = readScreenPlayData(pObject, self.trackConfig.trackName, "starttime")
