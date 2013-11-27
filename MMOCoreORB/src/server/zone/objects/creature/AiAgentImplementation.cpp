@@ -59,7 +59,7 @@ void AiAgentImplementation::loadTemplateData(SharedObjectTemplate* templateData)
 }
 
 int AiAgentImplementation::calculateAttackMinDamage(int level) {
-	int minDmg = MAX(npcTemplate->getDamageMin(), 50 + (level * 5));
+	int minDmg = MAX(npcTemplate->getDamageMin(), 20 + (level * 5));
 
 	return minDmg;
 }
