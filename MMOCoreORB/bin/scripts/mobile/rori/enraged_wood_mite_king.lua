@@ -26,7 +26,7 @@ enraged_wood_mite_king = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/wood_mite.iff"},
+	templates = {"object/mobile/enraged_wood_mite_king.iff"},
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
