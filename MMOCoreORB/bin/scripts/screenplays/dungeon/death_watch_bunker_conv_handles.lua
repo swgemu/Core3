@@ -6,7 +6,7 @@ function death_watch_foreman_handler:getNextConversationScreen(conversationTempl
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	
-	lastConversationScreen = nil
+	local lastConversationScreen = nil
 	
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
@@ -173,7 +173,7 @@ function death_watch_insane_miner_handler:getNextConversationScreen(conversation
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	
-	lastConversationScreen = nil
+	local lastConversationScreen = nil
 	
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
@@ -270,7 +270,7 @@ function death_watch_g12_4j_handler:getNextConversationScreen(conversationTempla
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	
-	lastConversationScreen = nil
+	local lastConversationScreen = nil
 	
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
@@ -339,7 +339,7 @@ function death_watch_workshop_droid_handler:getNextConversationScreen(conversati
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	
-	lastConversationScreen = nil
+	local lastConversationScreen = nil
 	
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
@@ -421,7 +421,7 @@ function death_watch_rescue_scientist_handler:getNextConversationScreen(conversa
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	
-	lastConversationScreen = nil
+	local lastConversationScreen = nil
 	
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
@@ -476,7 +476,7 @@ function lutin_nightstalker_handler:getNextConversationScreen(conversationTempla
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	
-	lastConversationScreen = nil
+	local lastConversationScreen = nil
 	
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
@@ -556,7 +556,7 @@ function commander_dkrn_handler:getNextConversationScreen(conversationTemplate, 
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	
-	lastConversationScreen = nil
+	local lastConversationScreen = nil
 	
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
@@ -667,7 +667,7 @@ function boba_fett_handler:getNextConversationScreen(conversationTemplate, conve
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	
-	lastConversationScreen = nil
+	local lastConversationScreen = nil
 	
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)

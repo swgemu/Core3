@@ -12,7 +12,7 @@ function imperial_officer_3_handler:getNextConversationScreen(conversationTempla
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	
-	lastConversationScreen = nil
+	local lastConversationScreen = nil
 	
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
@@ -84,7 +84,7 @@ function imperial_officer_5_handler:getNextConversationScreen(conversationTempla
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	
-	lastConversationScreen = nil
+	loacl lastConversationScreen = nil
 	
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
@@ -141,7 +141,7 @@ function imperial_officer_6_handler:getNextConversationScreen(conversationTempla
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	
-	lastConversationScreen = nil
+	local lastConversationScreen = nil
 	
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
@@ -195,7 +195,7 @@ function commoner_handler:getNextConversationScreen(conversationTemplate, conver
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	
-	lastConversationScreen = nil
+	local lastConversationScreen = nil
 	
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)

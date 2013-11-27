@@ -23,7 +23,7 @@ function recruiter_convo_handler:getNextConversationScreen(conversationTemplate,
 	local creature = LuaCreatureObject(conversingPlayer)
 	local convosession = creature:getConversationSession()
 	
-	lastConversationScreen = nil
+	local lastConversationScreen = nil
 	
 	if (convosession ~= nil) then
 		local session = LuaConversationSession(convosession)
@@ -522,7 +522,7 @@ function recruiter_convo_handler:processPurchase(conversingPlayer, conversationT
 
 	local convosession = player:getConversationSession()
 		
-	lastConversationScreen = nil
+	local lastConversationScreen = nil
 	local conversationScreen = nil
 		
 	if (convosession ~= nil) then
