@@ -119,7 +119,7 @@ public:
 
 		creature->setCustomObjectName("", false);
 		StringId s;
-		s.setStringId(creature->getDisplayedName());
+		s.setStringId(creature->getObjectName()->getFullPath());
 		controlDevice->setObjectName(s);
 		controlDevice->setPetType(PetControlDevice::CREATUREPET);
 		controlDevice->setMaxVitality(100);

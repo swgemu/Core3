@@ -124,7 +124,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 	droid->loadTemplateData( creatureTemplate );
 
 	StringId s;
-	s.setStringId(droid->getDisplayedName());
+	s.setStringId(droid->getObjectName()->getFullPath());
 	controlDevice->setObjectName(s);
 	controlDevice->setPetType(PetControlDevice::DROIDPET);
 	controlDevice->setDefaultCommands();

@@ -1286,7 +1286,7 @@ int DirectorManager::giveControlDevice(lua_State* L) {
 
 	controlDevice->setControlledObject(controlledObject);
 	StringId s;
-	s.setStringId(controlledObject->getDisplayedName());
+	s.setStringId(controlledObject->getObjectName()->getFullPath());
 	controlDevice->setObjectName(s);
 
 	PetControlDevice* petControlDevice = cast<PetControlDevice*>(controlDevice.get());
