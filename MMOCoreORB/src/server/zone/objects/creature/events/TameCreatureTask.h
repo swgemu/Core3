@@ -133,7 +133,12 @@ public:
 		creature->setObjectMenuComponent("PetMenuComponent");
 		creature->setCreatureLink(player);
 		creature->setFaction(player->getFaction());
-		creature->setPvpStatusBitmask(player->getPvpStatusBitmask() - CreatureFlag::PLAYER, false);
+
+		if (player->getPvpStatusBitmask() & CreatureFlag::PLAYER)
+			creature->setPvpStatusBitmask(player->getPvpStatusBitmask() - CreatureFlag::PLAYER, false);
+		else
+			creature->setPvpStatusBitmask(player->getPvpStatusBitmask(), false);
+
 		creature->setBaby(false);
 		creature->setFollowObject(player);
 

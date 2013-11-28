@@ -203,8 +203,12 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 		creature->setCreatureLink(player);
 		creature->setControlDevice(_this.get());
 		creature->setFaction(player->getFaction());
-		creature->setPvpStatusBitmask(player->getPvpStatusBitmask() - CreatureFlag::PLAYER, true);
 		creature->setObjectMenuComponent("PetMenuComponent");
+
+		if (player->getPvpStatusBitmask() & CreatureFlag::PLAYER)
+			creature->setPvpStatusBitmask(player->getPvpStatusBitmask() - CreatureFlag::PLAYER, true);
+		else
+			creature->setPvpStatusBitmask(player->getPvpStatusBitmask(), true);
 	}
 
 	Zone* zone = player->getZone();
