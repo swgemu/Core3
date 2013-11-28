@@ -276,7 +276,7 @@ void PetControlDeviceImplementation::cancelSpawnObject(CreatureObject* player) {
 		player->dropObserver(ObserverEventType::STARTCOMBAT, petControlObserver);
 }
 
-void PetControlDeviceImplementation::storeObject(CreatureObject* player) {
+void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool force) {
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 
 	if (controlledObject == NULL || !controlledObject->isAiAgent())
@@ -284,12 +284,12 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player) {
 
 	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
 
-	if (pet->isInCombat())
+	if (!force && pet->isInCombat())
 		return;
 
 	if (player->isRidingMount() && player->getParent() == pet) {
 
-		if (!player->checkCooldownRecovery("mount_dismount"))
+		if (!force && !player->checkCooldownRecovery("mount_dismount"))
 			return;
 
 		player->executeObjectControllerAction(String("dismount").hashCode());

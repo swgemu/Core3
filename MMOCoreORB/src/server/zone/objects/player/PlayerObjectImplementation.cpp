@@ -185,7 +185,7 @@ void PlayerObjectImplementation::unloadSpawnedChildren() {
 		if (object->isControlDevice()) {
 			ControlDevice* device = cast<ControlDevice*>( object.get());
 
-			device->storeObject(creo);
+			device->storeObject(creo, true);
 		}
 	}
 }

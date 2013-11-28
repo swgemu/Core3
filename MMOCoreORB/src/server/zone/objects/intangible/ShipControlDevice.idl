@@ -54,7 +54,7 @@ class ShipControlDevice extends ControlDevice {
 		Logger.setLoggingName("ShipControlDevice");
 	}
 	
-	public native void storeObject(CreatureObject player);
+	public native void storeObject(CreatureObject player, boolean force = false);
 	
 	public native void generateObject(CreatureObject player);
 	

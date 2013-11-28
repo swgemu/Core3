@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "server/zone/objects/tangible/TangibleObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/player/FactionStatus.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 
 class SetFactionCommand : public QueueCommand {
 public:
@@ -127,10 +128,10 @@ public:
 		if (faction == "imperial" || faction == "rebel" || faction == "hutt")
 			tano->setFaction(faction.hashCode());
 
+		String status;
 
 		if (tokenizer.hasMoreTokens()) {
 			//The next argument should be whether they are overt, onleave, or covert
-			String status;
 			tokenizer.getStringToken(status);
 
 
@@ -158,6 +159,39 @@ public:
 			tano->broadcastPvpStatusBitmask();
 		}
 
+		pvpStatus = tano->getPvpStatusBitmask();
+
+		for (int i = 0; i < targetPlayerObject->getActivePetsSize(); i++) {
+			Reference<AiAgent*> pet = targetPlayerObject->getActivePet(i);
+
+			if (pet != NULL) {
+				CreatureTemplate* creatureTemplate = pet->getCreatureTemplate();
+
+				if (creatureTemplate != NULL) {
+					String templateFaction = creatureTemplate->getFaction();
+
+					if (!templateFaction.isEmpty() && (templateFaction != faction || status == "onleave")) {
+						ManagedReference<PetControlDevice*> petControlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
+
+						if (petControlDevice != NULL) {
+							petControlDevice->storeObject(pobj, true);
+							pobj->sendSystemMessage("You're no longer the right faction or status for one of your pets, storing...");
+							continue;
+						}
+					}
+				}
+
+				if (faction == "neutral")
+					pet->setFaction(0);
+				else if (faction == "imperial" || faction == "rebel" || faction == "hutt")
+					pet->setFaction(faction.hashCode());
+
+				if (pvpStatus & CreatureFlag::PLAYER)
+					pvpStatus &= ~CreatureFlag::PLAYER;
+
+					pet->setPvpStatusBitmask(pvpStatus);
+			}
+		}
 
 		return SUCCESS;
 	}

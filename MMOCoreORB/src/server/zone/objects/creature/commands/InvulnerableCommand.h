@@ -72,6 +72,11 @@ public:
 		if (player->isRidingMount() || player->isRidingCreature())
 			return GENERALERROR;
 
+		Reference<PlayerObject*> ghost = player->getPlayerObject();
+
+		if (ghost == NULL)
+			return GENERALERROR;;
+
 		StringTokenizer args(arguments.toString());
 
 		if (args.hasMoreTokens()) {
@@ -97,14 +102,29 @@ public:
 				player->setPvpStatusBitmask(CreatureFlag::NONE);
 				player->sendSystemMessage("You are now invulnerable.");
 
+				for (int i = 0; i < ghost->getActivePetsSize(); i++) {
+					Reference<AiAgent*> pet = ghost->getActivePet(i);
+
+					if (pet != NULL)
+						pet->setPvpStatusBitmask(CreatureFlag::NONE);
+				}
+
+			} else if (ghost->getFactionStatus() == FactionStatus::OVERT) {
+				player->setPvpStatusBitmask(CreatureFlag::PLAYER + CreatureFlag::OVERT);
+				player->sendSystemMessage("You are no longer invulnerable");
+
+				for (int i = 0; i < ghost->getActivePetsSize(); i++) {
+					Reference<AiAgent*> pet = ghost->getActivePet(i);
+
+					if (pet != NULL)
+						pet->setPvpStatusBitmask(CreatureFlag::OVERT);
+				}
+
 			} else {
 				player->setPvpStatusBitmask(CreatureFlag::PLAYER);
 				player->sendSystemMessage("You are no longer invulnerable");
 
 			}
-
-			UpdatePVPStatusMessage* mess = new UpdatePVPStatusMessage(player);
-			player->broadcastMessage(mess, true);
 
 		}
 
