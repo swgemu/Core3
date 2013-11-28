@@ -69,8 +69,13 @@ public:
 			player->addPendingTask("tame_pet", this, 8000);
 			break;
 		case FINAL:
+			CreatureTemplate* creatureTemplate = creature->getCreatureTemplate();
+
+			if (creatureTemplate == NULL)
+				return;
+
 			int skill = 0;
-			int cl = creature->getLevel();
+			int cl = creatureTemplate->getLevel();
 			int ferocity = creature->getFerocity();
 			float tamingChance = creature->getTame();
 
