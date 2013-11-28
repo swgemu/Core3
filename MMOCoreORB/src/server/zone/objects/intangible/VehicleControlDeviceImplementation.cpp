@@ -166,7 +166,7 @@ void VehicleControlDeviceImplementation::cancelSpawnObject(CreatureObject* playe
 		player->dropObserver(ObserverEventType::STARTCOMBAT, vehicleControlObserver);
 }
 
-void VehicleControlDeviceImplementation::storeObject(CreatureObject* player) {
+void VehicleControlDeviceImplementation::storeObject(CreatureObject* player, bool force) {
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 
 	if (controlledObject == NULL)
@@ -177,7 +177,7 @@ void VehicleControlDeviceImplementation::storeObject(CreatureObject* player) {
 
 	if (player->isRidingMount() && player->getParent() == controlledObject) {
 
-		if (!player->checkCooldownRecovery("mount_dismount"))
+		if (!force && !player->checkCooldownRecovery("mount_dismount"))
 			return;
 
 		player->executeObjectControllerAction(String("dismount").hashCode());
