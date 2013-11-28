@@ -30,4 +30,15 @@ function LokStaticSpawnsScreenPlay:spawnMobiles()
 
 	--Imperial lookout (-2568 -862) Imperial Contact Story part 3 needs to be populated
 
+	--Torches andarches 720 -3389
+	spawnMobile("lok", "gurk",900,731.6,11.9,-3382,142,0)
+	spawnMobile("lok", "gurk",900,708,12,-3397,131,0)
+	spawnMobile("lok", "gurk",900,699,12,-3384,-97,0)
+	spawnMobile("lok", "gurk",900,704.1,12.1,-3359,16,0)
+	spawnMobile("lok", "reclusive_gurk_king",1200,720.3,11.9,-3396.6,130,0)
+
+	--Gurk camp -3763 -3477
+	spawnMobile("lok", "gurk",900,-3754.7,63.2,-3477.6,150,0)
+	spawnMobile("lok", "gurk",900,-3763.7,62,-3485.9,170,0)
+	spawnMobile("lok", "reclusive_gurk_king",1200,-3763.4,62.5,-3477.2,160,0)
 end
