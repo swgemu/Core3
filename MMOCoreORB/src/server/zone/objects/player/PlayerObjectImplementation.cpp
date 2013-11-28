@@ -91,6 +91,7 @@ which carries forward this exception.
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/intangible/ControlDevice.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/player/Races.h"
@@ -185,7 +186,7 @@ void PlayerObjectImplementation::unloadSpawnedChildren() {
 		if (object->isControlDevice()) {
 			ControlDevice* device = cast<ControlDevice*>( object.get());
 
-			device->storeObject(creo);
+			device->storeObject(creo, true);
 		}
 	}
 }
@@ -499,6 +500,34 @@ void PlayerObjectImplementation::setFactionStatus(int status) {
 			creature->sendSystemMessage("@faction_recruiter:on_leave_complete");
 
 		creature->setPvpStatusBitmask(pvpStatusBitmask);
+	}
+
+	for (int i = 0; i < getActivePetsSize(); i++) {
+		Reference<AiAgent*> pet = getActivePet(i);
+
+		if (pet == NULL)
+			continue;
+
+		CreatureTemplate* creatureTemplate = pet->getCreatureTemplate();
+
+		if (creatureTemplate != NULL) {
+			String templateFaction = creatureTemplate->getFaction();
+
+			if (!templateFaction.isEmpty() && factionStatus == FactionStatus::ONLEAVE) {
+				ManagedReference<PetControlDevice*> petControlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
+
+				if (petControlDevice != NULL) {
+					petControlDevice->storeObject(creature, true);
+					creature->sendSystemMessage("You're no longer the right faction status for one of your pets, storing...");
+					continue;
+				}
+			}
+		}
+
+		if (pvpStatusBitmask & CreatureFlag::PLAYER)
+			pvpStatusBitmask &= ~CreatureFlag::PLAYER;
+
+		pet->setPvpStatusBitmask(pvpStatusBitmask);
 	}
 
 	ManagedReference<SceneObject*> parent = getParent();

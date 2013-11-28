@@ -1306,7 +1306,7 @@ void PlayerManagerImplementation::handleAddItemToTradeWindow(CreatureObject* pla
 	}
 
 	if(objectToTrade->isControlDevice()) {
-		cast<ControlDevice*>(objectToTrade.get())->storeObject(player);
+		cast<ControlDevice*>(objectToTrade.get())->storeObject(player, true);
 	}
 
 	tradeContainer->addTradeItem(objectToTrade);

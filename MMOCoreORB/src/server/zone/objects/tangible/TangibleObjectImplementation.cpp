@@ -58,6 +58,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/CreatureFlag.h"
 #include "server/zone/packets/tangible/UpdatePVPStatusMessage.h"
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/managers/crafting/CraftingManager.h"
 #include "server/zone/objects/tangible/component/Component.h"
 #include "server/zone/objects/factorycrate/FactoryCrate.h"
@@ -73,6 +74,8 @@ which carries forward this exception.
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "engine/engine.h"
+#include "server/zone/templates/mobile/CreatureTemplate.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 
 
 void TangibleObjectImplementation::initializeTransientMembers() {
@@ -794,3 +797,43 @@ ThreatMap* TangibleObjectImplementation::getThreatMap() {
 	return threatMap;
 }
 
+void TangibleObjectImplementation::setFaction(unsigned int crc) {
+	faction = crc;
+
+	if (isPlayerCreature()) {
+		CreatureObject* player = _this.get().castTo<CreatureObject*>();
+
+		if (player == NULL)
+			return;
+
+		PlayerObject* ghost = player->getPlayerObject();
+
+		if (ghost == NULL)
+			return;
+
+		for (int i = 0; i < ghost->getActivePetsSize(); i++) {
+			Reference<AiAgent*> pet = ghost->getActivePet(i);
+
+			if (pet == NULL)
+				continue;
+
+			CreatureTemplate* creatureTemplate = pet->getCreatureTemplate();
+
+			if (creatureTemplate != NULL) {
+				String templateFaction = creatureTemplate->getFaction();
+
+				if (!templateFaction.isEmpty() && (templateFaction.hashCode() != crc)) {
+					ManagedReference<PetControlDevice*> petControlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
+
+					if (petControlDevice != NULL) {
+						petControlDevice->storeObject(player, true);
+						player->sendSystemMessage("You're no longer the right faction for one of your pets, storing...");
+						continue;
+					}
+				}
+			}
+
+			pet->setFaction(crc);
+		}
+	}
+}

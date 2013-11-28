@@ -76,7 +76,7 @@ void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
 		ghost->setTeleporting(true);
 }
 
-void ShipControlDeviceImplementation::storeObject(CreatureObject* player) {
+void ShipControlDeviceImplementation::storeObject(CreatureObject* player, bool force) {
 	player->clearState(CreatureState::PILOTINGSHIP);
 
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
