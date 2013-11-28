@@ -557,63 +557,63 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 	}
 
 	// Trained Commands
-	if( trainedCommands.contains(STAY) ){
-		alm->insertAttribute("@cmd_n:pet_stay", trainedCommands.get(STAY) );
+	if( trainedCommands.containsKey(STAY) ){
+		alm->insertAttribute("@cmd_n:pet_stay", trainedCommands.get(PetControlDevice::STAY) );
 	}
 
-	if( trainedCommands.contains(FOLLOW) ){
+	if( trainedCommands.containsKey(FOLLOW) ){
 		alm->insertAttribute("@cmd_n:pet_follow", trainedCommands.get(FOLLOW) );
 	}
 
-	if( trainedCommands.contains(STORE) ){
+	if( trainedCommands.containsKey(STORE) ){
 		alm->insertAttribute("@cmd_n:pet_release", trainedCommands.get(STORE) );
 	}
 
-	if( trainedCommands.contains(ATTACK) ){
+	if( trainedCommands.containsKey(ATTACK) ){
 		alm->insertAttribute("@cmd_n:pet_attack", trainedCommands.get(ATTACK) );
 	}
 
-	if( trainedCommands.contains(GUARD) ){
+	if( trainedCommands.containsKey(GUARD) ){
 		alm->insertAttribute("@cmd_n:pet_guard", trainedCommands.get(GUARD) );
 	}
 
-	if( trainedCommands.contains(FRIEND) ){
+	if( trainedCommands.containsKey(FRIEND) ){
 		alm->insertAttribute("@cmd_n:pet_friend", trainedCommands.get(FRIEND) );
 	}
 
-	if( trainedCommands.contains(FOLLOWOTHER) ){
+	if( trainedCommands.containsKey(FOLLOWOTHER) ){
 		alm->insertAttribute("@cmd_n:pet_followother", trainedCommands.get(FOLLOWOTHER) );
 	}
 
-	if( trainedCommands.contains(TRICK1) ){
+	if( trainedCommands.containsKey(TRICK1) ){
 		alm->insertAttribute("@cmd_n:trick1", trainedCommands.get(TRICK1) );
 	}
 
-	if( trainedCommands.contains(TRICK2) ){
+	if( trainedCommands.containsKey(TRICK2) ){
 		alm->insertAttribute("@cmd_n:trick2", trainedCommands.get(TRICK2) );
 	}
 
-	if( trainedCommands.contains(PATROL) ){
+	if( trainedCommands.containsKey(PATROL) ){
 		alm->insertAttribute("@cmd_n:pet_patrol", trainedCommands.get(PATROL) );
 	}
 
-	if( trainedCommands.contains(FORMATION) ){
+	if( trainedCommands.containsKey(FORMATION) ){
 		alm->insertAttribute("@cmd_n:pet_formation", trainedCommands.get(FORMATION) );
 	}
 
-	if( trainedCommands.contains(SPECIAL_ATTACK1) ){
+	if( trainedCommands.containsKey(SPECIAL_ATTACK1) ){
 		alm->insertAttribute("@cmd_n:pet_specialattack1", trainedCommands.get(SPECIAL_ATTACK1) );
 	}
 
-	if( trainedCommands.contains(SPECIAL_ATTACK2) ){
+	if( trainedCommands.containsKey(SPECIAL_ATTACK2) ){
 		alm->insertAttribute("@cmd_n:pet_specialattack2", trainedCommands.get(SPECIAL_ATTACK2) );
 	}
 
-	if( trainedCommands.contains(TRANSFER) ){
+	if( trainedCommands.containsKey(TRANSFER) ){
 		alm->insertAttribute("@cmd_n:pet_transfer", trainedCommands.get(TRANSFER) );
 	}
 
-	if( trainedCommands.contains(RANGED_ATTACK) ){
+	if( trainedCommands.containsKey(RANGED_ATTACK) ){
 		alm->insertAttribute("@cmd_n:pet_rangedattack", trainedCommands.get(RANGED_ATTACK) );
 	}
 
@@ -645,49 +645,49 @@ void PetControlDeviceImplementation::handleSpatialChat(CreatureObject* speaker, 
 		return;
 
 	// Handle trained command
-	if( trainedCommands.contains(STAY) && trainedCommands.get(STAY) == message ){
+	if( trainedCommands.containsKey(STAY) && trainedCommands.get(STAY) == message ){
 		stay( speaker );
 	}
-	else if( trainedCommands.contains(FOLLOW) && trainedCommands.get(FOLLOW) == message ){
+	else if( trainedCommands.containsKey(FOLLOW) && trainedCommands.get(FOLLOW) == message ){
 		follow( speaker );
 	}
-	else if( trainedCommands.contains(STORE) && trainedCommands.get(STORE) == message ){
+	else if( trainedCommands.containsKey(STORE) && trainedCommands.get(STORE) == message ){
 		storeObject( linkedCreature.get() ); // storeObject expects pet owner to be passed
 	}
-	else if( trainedCommands.contains(ATTACK) && trainedCommands.get(ATTACK) == message ){
+	else if( trainedCommands.containsKey(ATTACK) && trainedCommands.get(ATTACK) == message ){
 		speaker->sendSystemMessage("ATTACK pet command is not yet implemented.");
 	}
-	else if( trainedCommands.contains(GUARD) && trainedCommands.get(GUARD) == message ){
+	else if( trainedCommands.containsKey(GUARD) && trainedCommands.get(GUARD) == message ){
 		speaker->sendSystemMessage("GUARD pet command is not yet implemented.");
 	}
-	else if( trainedCommands.contains(FRIEND) && trainedCommands.get(FRIEND) == message ){
+	else if( trainedCommands.containsKey(FRIEND) && trainedCommands.get(FRIEND) == message ){
 		speaker->sendSystemMessage("FRIEND pet command is not yet implemented.");
 	}
-	else if( trainedCommands.contains(FOLLOWOTHER) && trainedCommands.get(FOLLOWOTHER) == message ){
+	else if( trainedCommands.containsKey(FOLLOWOTHER) && trainedCommands.get(FOLLOWOTHER) == message ){
 		speaker->sendSystemMessage("FOLLOWOTHER pet command is not yet implemented.");
 	}
-	else if( trainedCommands.contains(TRICK1) && trainedCommands.get(TRICK1) == message ){
+	else if( trainedCommands.containsKey(TRICK1) && trainedCommands.get(TRICK1) == message ){
 		speaker->sendSystemMessage("TRICK1 pet command is not yet implemented.");
 	}
-	else if( trainedCommands.contains(TRICK2) && trainedCommands.get(TRICK2) == message ){
+	else if( trainedCommands.containsKey(TRICK2) && trainedCommands.get(TRICK2) == message ){
 		speaker->sendSystemMessage("TRICK2 pet command is not yet implemented.");
 	}
-	else if( trainedCommands.contains(PATROL) && trainedCommands.get(PATROL) == message ){
+	else if( trainedCommands.containsKey(PATROL) && trainedCommands.get(PATROL) == message ){
 		speaker->sendSystemMessage("PATROL pet command is not yet implemented.");
 	}
-	else if( trainedCommands.contains(FORMATION) && trainedCommands.get(FORMATION) == message ){
+	else if( trainedCommands.containsKey(FORMATION) && trainedCommands.get(FORMATION) == message ){
 		speaker->sendSystemMessage("FORMATION pet command is not yet implemented.");
 	}
-	else if( trainedCommands.contains(SPECIAL_ATTACK1) && trainedCommands.get(SPECIAL_ATTACK1) == message ){
+	else if( trainedCommands.containsKey(SPECIAL_ATTACK1) && trainedCommands.get(SPECIAL_ATTACK1) == message ){
 		speaker->sendSystemMessage("SPECIAL_ATTACK1 pet command is not yet implemented.");
 	}
-	else if( trainedCommands.contains(SPECIAL_ATTACK2) && trainedCommands.get(SPECIAL_ATTACK2) == message ){
+	else if( trainedCommands.containsKey(SPECIAL_ATTACK2) && trainedCommands.get(SPECIAL_ATTACK2) == message ){
 		speaker->sendSystemMessage("SPECIAL_ATTACK2 pet command is not yet implemented.");
 	}
-	else if( trainedCommands.contains(TRANSFER) && trainedCommands.get(TRANSFER) == message ){
+	else if( trainedCommands.containsKey(TRANSFER) && trainedCommands.get(TRANSFER) == message ){
 		speaker->sendSystemMessage("TRANSFER pet command is not yet implemented.");
 	}
-	else if( trainedCommands.contains(RANGED_ATTACK) && trainedCommands.get(RANGED_ATTACK) == message ){
+	else if( trainedCommands.containsKey(RANGED_ATTACK) && trainedCommands.get(RANGED_ATTACK) == message ){
 		speaker->sendSystemMessage("RANGED_ATTACK pet command is not yet implemented.");
 	}
 

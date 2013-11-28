@@ -55,7 +55,7 @@ import server.zone.objects.scene.SceneObject;
 import server.zone.packets.scene.AttributeListMessage;
 import server.zone.Zone;
 import system.lang.System;
-import system.util.VectorMap;
+import system.util.HashTable;
 include server.zone.managers.radial.RadialOptions;
 import server.zone.objects.intangible.PetControlObserver;
 
@@ -73,25 +73,25 @@ class PetControlDevice extends ControlDevice {
 	public static final int DROIDPET = 2;
 	
 	// Command IDs
-	public static final short STAY = 0;
-	public static final short FOLLOW = 1;
-	public static final short STORE = 2;
-	public static final short ATTACK = 3;
-	public static final short GUARD = 4;
-	public static final short FRIEND = 5;
-	public static final short FOLLOWOTHER = 6;
-	public static final short TRICK1 = 7;
-	public static final short TRICK2 = 8;
-	public static final short PATROL = 9;
-	public static final short FORMATION = 10;
-	public static final short SPECIAL_ATTACK1 = 11;
-	public static final short SPECIAL_ATTACK2 = 12;
-	public static final short TRANSFER = 13;
-	public static final short RANGED_ATTACK = 14;	
+	public static final int STAY = 0;
+	public static final int FOLLOW = 1;
+	public static final int STORE = 2;
+	public static final int ATTACK = 3;
+	public static final int GUARD = 4;
+	public static final int FRIEND = 5;
+	public static final int FOLLOWOTHER = 6;
+	public static final int TRICK1 = 7;
+	public static final int TRICK2 = 8;
+	public static final int PATROL = 9;
+	public static final int FORMATION = 10;
+	public static final int SPECIAL_ATTACK1 = 11;
+	public static final int SPECIAL_ATTACK2 = 12;
+	public static final int TRANSFER = 13;
+	public static final int RANGED_ATTACK = 14;
 	
 	// Trained command strings <commandid, chatstring>
 	@dereferenced 
-	protected VectorMap<unsigned int, string> trainedCommands;
+	protected HashTable<int, string> trainedCommands;
 
 	public PetControlDevice() {
 		Logger.setLoggingName("PetControlDevice");
@@ -101,7 +101,6 @@ class PetControlDevice extends ControlDevice {
 		maxVitality = 1;
 		petType = 0;
 
-		trainedCommands.setNoDuplicateInsertPlan();
 		trainedCommands.setNullValue("");
 	}
 
