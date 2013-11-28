@@ -154,11 +154,11 @@ class AiAgent extends CreatureObject {
 	
 	public static final int UPDATEMOVEMENTINTERVAL = 500; // msec
 	
-	public static final unsigned int OBLIVIOUS = 0;
-	public static final unsigned int WATCHING = 1;
-	public static final unsigned int STALKING = 2;
-	public static final unsigned int FOLLOWING = 3;
-	public static final unsigned int PATROLING = 4;
+	public static final int OBLIVIOUS = 0;
+	public static final int WATCHING = 1;
+	public static final int STALKING = 2;
+	public static final int FOLLOWING = 3;
+	public static final int PATROLING = 4;
 
 	// AI bits
 	@dereferenced
