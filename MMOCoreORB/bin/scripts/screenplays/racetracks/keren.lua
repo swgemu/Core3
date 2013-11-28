@@ -9,7 +9,7 @@ keren_racetrack_screenplay = RaceTrack:new {
 		trackName="KERENRT",  -- Internal trackname , should be unique to the track
 		trackCheckpoint="@theme_park/racing/racing:keren_waypoint_name_checkpoint", --Waypoint names
 		trackLaptime="@theme_park/racing/racing:keren_laptime_checkpoint", -- System message sent at each waypoint
-		waypointRadius=25, -- size of the waypoint observer
+		waypointRadius=10, -- size of the waypoint observer
 		raceCoordinator = {x=1396,y=2686,z=13}, -- Location of the race coordinator. Note the Z coord is VERY important or conversations break
 		waypoints = { {x = 1518, y = 2732}, -- The coords of the waypoints
 					  {x = 1607, y = 2705},
@@ -51,7 +51,7 @@ keren_racetrack_convo_handler = Object:new {}
 function keren_racetrack_convo_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
 	return ObjectManager.withCreatureObject(conversingPlayer, function(creatureObject)
 		local convosession = creatureObject:getConversationSession()
-		lastConversation = nil
+		local lastConversationScreen = nil
 		local conversation = LuaConversationTemplate(conversationTemplate)
 		local nextConversationScreen
 		if ( conversation ~= nil ) then
