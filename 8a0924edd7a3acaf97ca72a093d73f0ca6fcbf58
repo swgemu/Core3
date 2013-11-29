@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_39da1879",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/TangibleObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-11-29T17:19:20Z",
+      "side": 1,
+      "message": "why dont you move this to CreatureObject instead of Tano?",
+      "revId": "8a0924edd7a3acaf97ca72a093d73f0ca6fcbf58",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a437d4f_19e75442",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/TangibleObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-11-29T17:19:20Z",
+      "side": 1,
+      "message": "Create a task for each pet store, otherwise this will cause deadlocks and you can reuse the task in PlayerObject::unload",
+      "revId": "8a0924edd7a3acaf97ca72a093d73f0ca6fcbf58",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
