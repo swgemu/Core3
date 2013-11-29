@@ -90,4 +90,6 @@ class IntangibleObject extends SceneObject {
 	public unsigned int getStatus() {
 		return status;
 	}
+
+	public native void setCustomObjectName(final unicode name, boolean notifyClient);
 }
