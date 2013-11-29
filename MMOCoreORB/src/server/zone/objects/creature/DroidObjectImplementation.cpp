@@ -51,6 +51,7 @@ which carries forward this exception.
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/objects/creature/components/AiNPCComponent.h"
+#include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
 
 void DroidObjectImplementation::initializeTransientMembers() {
 	AiAgentImplementation::initializeTransientMembers();
@@ -59,14 +60,58 @@ void DroidObjectImplementation::initializeTransientMembers() {
 
 void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object){
 
+	float percentPower = ((float)power/(float)MAX_POWER)*100.0;
+	msg->insertAttribute("@obj_attr_n:battery_power", String::valueOf((int)percentPower) + "%");
+
+	if (paintCount > 0){
+		msg->insertAttribute("customization_cnt", paintCount);
+	}
+
 	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
 	if( linkedCreature == NULL )
 		return;
 
 	msg->insertAttribute("@obj_attr_n:owner", linkedCreature->getFirstName());
 
-	float percentPower = ((float)power/(float)MAX_POWER)*100.0;
-	msg->insertAttribute("@obj_attr_n:battery_power", String::valueOf((int)percentPower) + "%");
+}
+
+void DroidObjectImplementation::notifyInsertToZone(Zone* zone) {
+	SceneObjectImplementation::notifyInsertToZone(zone);
+
+	if( this->linkedCreature == NULL )
+		return;
+
+	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
+	if( linkedCreature == NULL )
+		return;
+
+	// Decay customized paint (if any)
+	if (paintCount > 0){
+
+		// Paint starts to fade when there are 4 calls left
+		if (paintCount <= 4){
+
+			// Send player notification of decay
+			if( paintCount == 1 ){
+				linkedCreature->sendSystemMessage("@pet/pet_menu:customization_gone"); // "Your droid's customization has completely faded away."
+			}
+			else{
+				linkedCreature->sendSystemMessage("@pet/pet_menu:customization_fading"); // "Your droid's customization is fading away."
+			}
+
+			// Fade color to white
+			String appearanceFilename = getObjectTemplate()->getAppearanceFilename();
+			VectorMap<String, Reference<CustomizationVariable*> > variables;
+			AssetCustomizationManagerTemplate::instance()->getCustomizationVariables(appearanceFilename.hashCode(), variables, false);
+			for(int i = 0; i< variables.size(); ++i){
+				String varkey = variables.elementAt(i).getKey();
+				if (varkey.contains("color")){
+					setCustomizationVariable(varkey, paintCount-1, true); // Palette values 3,2,1,0 are grey->white
+				}
+			}
+		}
+		--paintCount;
+	}
 
 }
 
