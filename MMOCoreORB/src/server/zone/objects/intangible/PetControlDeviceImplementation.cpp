@@ -751,16 +751,44 @@ void PetControlDeviceImplementation::handleCommandTraining(CreatureObject* speak
 
 	// Train command
 	if (petType == CREATUREPET) {
-		// TODO Implement skill check to train
-		// TODO Reward XP for training
+		bool alreadyTrained = trainedCommands.contains(trainingCommand);
+
+		if (!alreadyTrained) {
+			bool success = false;
+
+			int skill = speaker->getSkillMod("tame_level");
+			int roll = System::random(skill + 30);
+
+			if (skill > roll)
+				success = true;
+
+			if (!success) {
+				pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+				speaker->sendSystemMessage("@pet/pet_menu:pet_nolearn"); // Your pet doesn't seem to understand you.
+				return;
+			}
+		}
 
 		// Success
 		trainedCommands.put( trainingCommand, message );
 		pet->showFlyText("npc_reaction/flytext","threaten", 204, 0, 0);  // "!"
+		speaker->sendSystemMessage("@pet/pet_menu:pet_learn"); // You teach your pet a new command.
+
+		if (!alreadyTrained) {
+			CreatureTemplate* creatureTemplate = pet->getCreatureTemplate();
+
+			if (creatureTemplate == NULL)
+				return;
+
+			ZoneServer* zoneServer = speaker->getZoneServer();
+			PlayerManager* playerManager = zoneServer->getPlayerManager();
+			playerManager->awardExperience(speaker, "creaturehandler", 10 * creatureTemplate->getLevel());
+		}
 	}
 	else{
 		trainedCommands.put( trainingCommand, message );
 		pet->showFlyText("npc_reaction/flytext","threaten", 204, 0, 0);  // "!"
+		speaker->sendSystemMessage("@pet/pet_menu:pet_learn"); // You teach your pet a new command.
 	}
 
 	// TODO set pet name
