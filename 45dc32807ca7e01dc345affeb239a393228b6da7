@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_79f8a0e5",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/InvulnerableCommand.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-11-29T17:16:02Z",
+      "side": 1,
+      "message": "CreatureFlag::PLAYER | CreatureFlag::OVE\nRT",
+      "revId": "45dc32807ca7e01dc345affeb239a393228b6da7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
