@@ -2,7 +2,7 @@ local ObjectManager = require("managers.object.object_manager")
 local OldMan = require("managers.jedi.village.old_man")
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 
-local Glowing = Object:new {}
+Glowing = Object:new {}
 
 TOTALNUMBEROFBADGESREQUIRED = 17
 NUMBEROFJEDIBADGESREQUIRED = 3
