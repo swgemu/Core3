@@ -73,7 +73,6 @@ class PetControlDevice extends ControlDevice {
 	public static final int DROIDPET = 2;
 	
 	// Command IDs
-	public static final unsigned int STAY = 0;
 	public static final unsigned int FOLLOW = 1;
 	public static final unsigned int STORE = 2;
 	public static final unsigned int ATTACK = 3;
@@ -83,15 +82,20 @@ class PetControlDevice extends ControlDevice {
 	public static final unsigned int TRICK1 = 7;
 	public static final unsigned int TRICK2 = 8;
 	public static final unsigned int PATROL = 9;
-	public static final unsigned int FORMATION = 10;
-	public static final unsigned int SPECIAL_ATTACK1 = 11;
-	public static final unsigned int SPECIAL_ATTACK2 = 12;
-	public static final unsigned int TRANSFER = 13;
-	public static final unsigned int RANGED_ATTACK = 14;	
+	public static final unsigned int FORMATION1 = 10;
+	public static final unsigned int FORMATION2 = 11;	
+	public static final unsigned int SPECIAL_ATTACK1 = 12;
+	public static final unsigned int SPECIAL_ATTACK2 = 13;
+	public static final unsigned int RANGED_ATTACK = 14;
+	public static final unsigned int GROUP = 15;
+	public static final unsigned int STAY = 16;	
 	
 	// Trained command strings <commandid, chatstring>
 	@dereferenced 
 	protected VectorMap<unsigned int, string> trainedCommands;
+	
+	// Command 
+	protected unsigned int trainingCommand;
 
 	public PetControlDevice() {
 		Logger.setLoggingName("PetControlDevice");
@@ -100,8 +104,9 @@ class PetControlDevice extends ControlDevice {
 		vitality = 1;
 		maxVitality = 1;
 		petType = 0;
+		trainingCommand = 0;
 
-		trainedCommands.setNoDuplicateInsertPlan();
+		trainedCommands.setAllowOverwriteInsertPlan();
 		trainedCommands.setNullValue("");
 	}
 
@@ -212,6 +217,24 @@ class PetControlDevice extends ControlDevice {
 	@local
 	public native void setDefaultCommands();	
 	
+	/**
+	 * Sets default trained commands and command strings for the pet
+	 * @pre { }
+	 * @post { }
+	 */	
+	@local
+	public native void setTrainingCommand( unsigned int commandID );
+	
+	/**
+	 * Handles command training
+	 * @pre { }
+	 * @post { }
+	 * @param object player creature speaking
+	 * @param string chat message
+	 */
+	@local
+	protected native void handleCommandTraining(CreatureObject speaker, final string message);
+	
 	public boolean isPetControlDevice() {
 		return true;
 	}
@@ -239,5 +262,5 @@ class PetControlDevice extends ControlDevice {
 	public void setPetType(int type) {
 		petType = type;
 	}
-	
+		
 }
