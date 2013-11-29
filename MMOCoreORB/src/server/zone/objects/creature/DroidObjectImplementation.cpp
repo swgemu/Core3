@@ -57,18 +57,6 @@ void DroidObjectImplementation::initializeTransientMembers() {
 	aiInterfaceComponents.add(ComponentManager::instance()->getComponent<AiNPCComponent*>("AiNPCComponent"));
 }
 
-void DroidObjectImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
-	if (!player->getPlayerObject()->isPrivileged() && linkedCreature != player)
-		return;
-
-	menuResponse->addRadialMenuItem(59, 3, "@pet/pet_menu:menu_store"); //PET_STORE
-
-	// Droid Options Submenu
-	menuResponse->addRadialMenuItem(132, 3, "@pet/pet_menu:droid_options"); // SERVER_ITEM_OPTIONS
-	menuResponse->addRadialMenuItemToRadialID(132, 234, 3, "@pet/pet_menu:menu_recharge" ); // PET_FEED
-
-}
-
 void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object){
 
 	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
@@ -80,24 +68,6 @@ void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 	float percentPower = ((float)power/(float)MAX_POWER)*100.0;
 	msg->insertAttribute("@obj_attr_n:battery_power", String::valueOf((int)percentPower) + "%");
 
-}
-
-int DroidObjectImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-
-	if( player == NULL )
-		return 0;
-
-	if( linkedCreature != player )
-		return 0;
-
-	if (selectedID == 59) { // PET_STORE
-		return handleStoreDroid(player);
-	}
-	else if (selectedID == 234 ){ // PET_FEED
-		return handleRechargeDroid(player);
-	}
-
-	return 0;
 }
 
 int DroidObjectImplementation::handleRechargeDroid(CreatureObject* player){
