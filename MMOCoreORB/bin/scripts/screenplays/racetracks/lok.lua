@@ -9,7 +9,7 @@ lok_racetrack_screenplay = RaceTrack:new {
 		trackName="LOKRT",  -- Internal trackname , should be unique to the track
 		trackCheckpoint="@theme_park/racing/racing:lok_waypoint_name_checkpoint", --Waypoint names
 		trackLaptime="@theme_park/racing/racing:lok_laptime_checkpoint", -- System message sent at each waypoint
-		waypointRadius=25, -- size of the waypoint observer
+		waypointRadius=10, -- size of the waypoint observer
 		raceCoordinator = {x=630,y=5055,z=12.7}, -- Location of the race coordinator. Note the Z coord is VERY important or conversations break
 		waypoints = { {x = 946, y = 4634}, -- The coords of the waypoints
 					  {x = 1065, y = 3156},
@@ -58,7 +58,7 @@ lok_racetrack_convo_handler = Object:new {}
 function lok_racetrack_convo_handler:getNextConversationScreen(conversationTemplate, conversingPlayer, selectedOption)
 	return ObjectManager.withCreatureObject(conversingPlayer, function(creatureObject)
 		local convosession = creatureObject:getConversationSession()
-		lastConversation = nil
+		local lastConversationScreen = nil
 		local conversation = LuaConversationTemplate(conversationTemplate)
 		local nextConversationScreen
 		if ( conversation ~= nil ) then
