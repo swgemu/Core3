@@ -1723,5 +1723,5 @@ class CreatureObject extends TangibleObject {
 
 	public native void updateSpeedAndAccelerationMods();
 
-
+	public native void setFaction(unsigned int crc);
 }

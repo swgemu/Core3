@@ -493,7 +493,7 @@ class TangibleObject extends SceneObject {
 		return conditionDamage >= maxCondition;
 	}
 	
-	public void setFaction(unsigned int crc) {
+	public abstract void setFaction(unsigned int crc) {
 		faction = crc;
 	}
 	

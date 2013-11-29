@@ -69,7 +69,7 @@ class VehicleControlDevice extends ControlDevice {
 		
 	}
 	
-	public native void storeObject(CreatureObject player);
+	public native void storeObject(CreatureObject player, boolean force = false);
 	
 	public native void generateObject(CreatureObject player);
 	

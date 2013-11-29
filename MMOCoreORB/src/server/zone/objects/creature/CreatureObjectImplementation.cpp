@@ -116,6 +116,7 @@
 #include "server/zone/managers/guild/GuildManager.h"
 #include "system/lang/ref/Reference.h"
 #include "server/zone/objects/player/events/LogoutTask.h"
+#include "server/zone/objects/player/events/StoreSpawnedChildrenTask.h"
 
 #include "server/zone/objects/creature/ai/AiActor.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
@@ -2757,3 +2758,44 @@ Reference<WeaponObject*> CreatureObjectImplementation::getWeapon() {
 		return weapon;
 }
 
+void CreatureObjectImplementation::setFaction(unsigned int crc) {
+	faction = crc;
+
+	if (isPlayerCreature()) {
+		CreatureObject* player = _this.get().castTo<CreatureObject*>();
+
+		if (player == NULL)
+			return;
+
+		PlayerObject* ghost = player->getPlayerObject();
+
+		if (ghost == NULL)
+			return;
+
+		Vector<ManagedReference<CreatureObject*> > petsToStore;
+
+		for (int i = 0; i < ghost->getActivePetsSize(); i++) {
+			ManagedReference<AiAgent*> pet = ghost->getActivePet(i);
+
+			if (pet == NULL)
+				continue;
+
+			CreatureTemplate* creatureTemplate = pet->getCreatureTemplate();
+
+			if (creatureTemplate != NULL) {
+				String templateFaction = creatureTemplate->getFaction();
+
+				if (!templateFaction.isEmpty() && (templateFaction.hashCode() != crc)) {
+					petsToStore.add(pet.castTo<CreatureObject*>());
+					player->sendSystemMessage("You're no longer the right faction for one of your pets, storing...");
+					continue;
+				}
+			}
+
+			pet->setFaction(crc);
+		}
+
+		StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(player, petsToStore);
+		task->execute();
+	}
+}

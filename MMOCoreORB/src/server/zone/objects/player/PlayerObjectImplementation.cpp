@@ -91,6 +91,7 @@ which carries forward this exception.
 #include "server/zone/objects/building/BuildingObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/objects/intangible/ControlDevice.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/objects/player/Races.h"
@@ -110,6 +111,7 @@ which carries forward this exception.
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/templates/intangible/SharedPlayerObjectTemplate.h"
 #include "server/zone/objects/player/sessions/TradeSession.h"
+#include "server/zone/objects/player/events/StoreSpawnedChildrenTask.h"
 #include "server/zone/objects/player/events/BountyHunterTefRemovalTask.h"
 #include "server/zone/managers/visibility/VisibilityManager.h"
 #include "server/zone/managers/gcw/GCWManager.h"
@@ -179,15 +181,22 @@ void PlayerObjectImplementation::unloadSpawnedChildren() {
 	if (datapad == NULL)
 		return;
 
+	Vector<ManagedReference<CreatureObject*> > childrenToStore;
+
 	for (int i = 0; i < datapad->getContainerObjectsSize(); ++i) {
 		ManagedReference<SceneObject*> object = datapad->getContainerObject(i);
 
 		if (object->isControlDevice()) {
 			ControlDevice* device = cast<ControlDevice*>( object.get());
 
-			device->storeObject(creo);
+			ManagedReference<CreatureObject*> child = cast<CreatureObject*>(device->getControlledObject());
+			if (child != NULL)
+				childrenToStore.add(child);
 		}
 	}
+
+	StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(creo, childrenToStore);
+	task->execute();
 }
 
 
@@ -500,6 +509,35 @@ void PlayerObjectImplementation::setFactionStatus(int status) {
 
 		creature->setPvpStatusBitmask(pvpStatusBitmask);
 	}
+
+	Vector<ManagedReference<CreatureObject*> > petsToStore;
+
+	for (int i = 0; i < getActivePetsSize(); i++) {
+		Reference<AiAgent*> pet = getActivePet(i);
+
+		if (pet == NULL)
+			continue;
+
+		CreatureTemplate* creatureTemplate = pet->getCreatureTemplate();
+
+		if (creatureTemplate != NULL) {
+			String templateFaction = creatureTemplate->getFaction();
+
+			if (!templateFaction.isEmpty() && factionStatus == FactionStatus::ONLEAVE) {
+				petsToStore.add(pet.castTo<CreatureObject*>());
+				creature->sendSystemMessage("You're no longer the right faction status for one of your pets, storing...");
+				continue;
+			}
+		}
+
+		if (pvpStatusBitmask & CreatureFlag::PLAYER)
+			pvpStatusBitmask &= ~CreatureFlag::PLAYER;
+
+		pet->setPvpStatusBitmask(pvpStatusBitmask);
+	}
+
+	StoreSpawnedChildrenTask* task = new StoreSpawnedChildrenTask(creature, petsToStore);
+	task->execute();
 
 	ManagedReference<SceneObject*> parent = getParent();
 
