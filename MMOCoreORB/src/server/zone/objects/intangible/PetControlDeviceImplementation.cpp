@@ -685,7 +685,7 @@ void PetControlDeviceImplementation::handleSpatialChat(CreatureObject* speaker, 
 		speaker->sendSystemMessage("FRIEND pet command is not yet implemented.");
 	}
 	else if( trainedCommands.contains(FOLLOWOTHER) && trainedCommands.get(FOLLOWOTHER) == message ){
-		speaker->sendSystemMessage("FOLLOWOTHER pet command is not yet implemented.");
+		followOther(speaker);
 	}
 	else if( trainedCommands.contains(TRICK1) && trainedCommands.get(TRICK1) == message ){
 		speaker->sendSystemMessage("TRICK1 pet command is not yet implemented.");
@@ -834,6 +834,44 @@ void PetControlDeviceImplementation::follow(CreatureObject* player){
 	}
 
 	pet->setFollowObject(player);
+
+}
+
+void PetControlDeviceImplementation::followOther(CreatureObject* player){
+
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+	if (controlledObject == NULL || !controlledObject->isAiAgent())
+		return;
+
+	AiAgent* pet = cast<AiAgent*>(controlledObject.get());
+	if( pet == NULL )
+		return;
+
+	uint64 targetID = player->getTargetID();
+	ZoneServer* server = player->getZoneServer();
+	if (server == NULL)
+		return;
+
+	// Target must be a player
+	Reference<SceneObject*> target = server->getObject(targetID, true).castTo<SceneObject*>();
+	if (target == NULL || !target->isPlayerCreature() ) {
+		pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+		return;
+	}
+
+	// Check if droid has power
+	if( petType == DROIDPET ){
+		DroidObject* droidPet = cast<DroidObject*>(pet);
+		if( droidPet == NULL )
+			return;
+
+		if( !droidPet->hasPower() ){
+			pet->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
+			return;
+		}
+	}
+
+	pet->setFollowObject(target);
 
 }
 
