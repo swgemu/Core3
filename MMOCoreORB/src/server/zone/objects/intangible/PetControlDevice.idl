@@ -94,7 +94,7 @@ class PetControlDevice extends ControlDevice {
 	@dereferenced 
 	protected VectorMap<unsigned int, string> trainedCommands;
 	
-	// Command 
+	// Command to be trained
 	protected unsigned int trainingCommand;
 
 	public PetControlDevice() {
@@ -199,6 +199,15 @@ class PetControlDevice extends ControlDevice {
 	 */
 	@local
 	public native void follow(CreatureObject player);
+	
+	/**
+	 * Handles followother command
+	 * @pre { }
+	 * @post { }
+	 * @param object player creature commanding
+	 */
+	@local
+	public native void followOther(CreatureObject player);	
 	
 	/**
 	 * Handles stay command
