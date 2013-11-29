@@ -97,6 +97,13 @@ class PetControlDevice extends ControlDevice {
 	// Command to be trained
 	protected unsigned int trainingCommand;
 
+	// The most recent name used in command training
+	protected string futureName;
+
+	// keeps track of the number of commands taught with futureName
+	// once it reaches 4, the pet is named
+	protected unsigned int namingProgress;
+
 	public PetControlDevice() {
 		Logger.setLoggingName("PetControlDevice");
 		Logger.setLogging(false);
@@ -105,6 +112,8 @@ class PetControlDevice extends ControlDevice {
 		maxVitality = 1;
 		petType = 0;
 		trainingCommand = 0;
+		namingProgress = 0;
+		futureName = "";
 
 		trainedCommands.setAllowOverwriteInsertPlan();
 		trainedCommands.setNullValue("");

@@ -1,6 +1,7 @@
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/intangible/PetControlObserver.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/managers/name/NameManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/creature/DroidObject.h"
@@ -791,7 +792,47 @@ void PetControlDeviceImplementation::handleCommandTraining(CreatureObject* speak
 		speaker->sendSystemMessage("@pet/pet_menu:pet_learn"); // You teach your pet a new command.
 	}
 
-	// TODO set pet name
+	// Check for naming string
+	StringTokenizer tokenizer(message);
+	tokenizer.setDelimeter(" ");
+	String parsedName = "";
+	int numberOfSubStrings = 0;
+
+	while (tokenizer.hasMoreTokens()) {
+		numberOfSubStrings++;
+
+		if (!parsedName.isEmpty())
+			break;
+
+		tokenizer.getStringToken(parsedName);
+	}
+
+	// Validate and check name
+	if (numberOfSubStrings > 1) {
+		ZoneProcessServer* zps = pet->getZoneProcessServer();
+		NameManager* nameManager = zps->getNameManager();
+
+		if (nameManager->validateName(parsedName, -1) != NameManagerResult::ACCEPTED) {
+			return;
+		}
+
+		if (futureName == parsedName)
+			namingProgress++;
+		else {
+			namingProgress = 1;
+			futureName = parsedName;
+			return;
+		}
+	} else {
+		return;
+	}
+
+	// Set name, if applicable
+	if (namingProgress == 4) {
+		UnicodeString newName = "(" + futureName + ")";
+		setCustomObjectName(newName, true);
+		pet->setCustomObjectName(newName, true);
+	}
 
 }
 

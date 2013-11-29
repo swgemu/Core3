@@ -87,3 +87,16 @@ void IntangibleObjectImplementation::updateStatus(int newStatus, bool notifyClie
 	delta->close();
 	player->sendMessage(delta);
 }
+
+void IntangibleObjectImplementation::setCustomObjectName(const UnicodeString& name, bool notifyClient) {
+	customName = name;
+
+	if (!notifyClient)
+		return;
+
+	IntangibleObjectDeltaMessage3* ditno3 = new IntangibleObjectDeltaMessage3(_this.get());
+	ditno3->updateName(name);
+	ditno3->close();
+
+	broadcastMessage(ditno3, true);
+}

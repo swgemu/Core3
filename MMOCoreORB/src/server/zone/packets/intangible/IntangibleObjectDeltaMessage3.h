@@ -61,7 +61,10 @@ public:
 	void updateStatus(uint32 value) {
 		addIntUpdate(0x04, value);
 	}	
-	
+
+	void updateName(const UnicodeString& name) {
+		addUnicodeUpdate(2, name);
+	}
 };
 
 
