@@ -117,6 +117,7 @@ namespace server {
 		static int updateCellPermission(lua_State* L);
 		static int updateCellPermissionGroup(lua_State* L);
 		static int getTimestamp(lua_State* L);
+		static int getTimestampMilli(lua_State* L);
 		static int getSpawnPoint(lua_State* L);
 		static int makeCreatureName(lua_State* L);
 		static int getGCWDiscount(lua_State* L);
