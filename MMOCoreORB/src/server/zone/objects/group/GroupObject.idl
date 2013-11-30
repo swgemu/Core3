@@ -128,7 +128,11 @@ class GroupObject extends SceneObject {
 	}
 
 	public SceneObject getLeader() {
-		return groupMembers.getSafe(0);
+		if (groupMembers.size() == 0) {
+			return null;
+		} else {
+			return groupMembers.getSafe(0);
+		}
 	}
 	
 	@local

@@ -17,6 +17,7 @@
 #include "server/zone/ZoneServer.h"
 #include "server/zone/objects/player/events/SquadLeaderBonusTask.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
+#include "server/zone/objects/group/RemovePetsFromGroupTask.h"
 
 void GroupObjectImplementation::sendBaselinesTo(SceneObject* player) {
 	ZoneClientSession* client = player->getClient();
@@ -57,9 +58,10 @@ void GroupObjectImplementation::destroyChatRoom() {
 
 void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
 	for (int i = 0; i < groupMembers.size(); i++) {
-		SceneObject* play = groupMembers.get(i);
+		SceneObject* member = groupMembers.get(i);
 
-		play->sendMessage(msg->clone());
+		if (member->isPlayerCreature())
+			member->sendMessage(msg->clone());
 	}
 
 	delete msg;
@@ -67,44 +69,46 @@ void GroupObjectImplementation::broadcastMessage(BaseMessage* msg) {
 
 void GroupObjectImplementation::broadcastMessage(CreatureObject* player, BaseMessage* msg, bool sendSelf) {
 	for (int i = 0; i < groupMembers.size(); i++) {
-		SceneObject* play = groupMembers.get(i);
+		SceneObject* member = groupMembers.get(i);
 
-		if(!sendSelf && play == player)
+		if(!sendSelf && member == player)
 			continue;
 
-		play->sendMessage(msg->clone());
+		if (member->isPlayerCreature())
+			member->sendMessage(msg->clone());
 	}
 
 	delete msg;
 }
 
-void GroupObjectImplementation::addMember(SceneObject* player) {
+void GroupObjectImplementation::addMember(SceneObject* member) {
 	Locker locker(_this.get());
 
 	GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(_this.get());
 	grp->startUpdate(1);
-	groupMembers.add(player, grp);
+	groupMembers.add(member, grp);
 	grp->close();
 
 	broadcastMessage(grp);
 
-	sendTo(player, true);
+	if (member->isPlayerCreature())
+		sendTo(member, true);
 
-	if (hasSquadLeader() && player->isPlayerCreature()) {
-		ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>( player);
+	if (hasSquadLeader() && member->isPlayerCreature()) {
+		ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>( member);
 		addGroupModifiers(playerCreature);
 	}
 
 	calcGroupLevel();
 }
 
-void GroupObjectImplementation::removeMember(SceneObject* player) {
-	ManagedReference<SceneObject*> obj = player;
+void GroupObjectImplementation::removeMember(SceneObject* member) {
+	ManagedReference<SceneObject*> obj = member;
 
 	for (int i = 0; i < groupMembers.size(); i++) {
 		SceneObject* scno = groupMembers.get(i);
 
-		if (scno == player) {
+		if (scno == member) {
 			GroupObjectDeltaMessage6* grp = new GroupObjectDeltaMessage6(_this.get());
 			grp->startUpdate(1);
 			groupMembers.remove(i, grp);
@@ -114,30 +118,37 @@ void GroupObjectImplementation::removeMember(SceneObject* player) {
 		}
 	}
 
-	if (hasSquadLeader() && player->isPlayerCreature()) {
-		ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>( player);
-		removeGroupModifiers(playerCreature);
+	if (member->isPlayerCreature()) {
+		// Remove member's pets
+		CreatureObject* mem = cast<CreatureObject*>(member);
+		RemovePetsFromGroupTask* task = new RemovePetsFromGroupTask(mem, _this.get());
+		task->execute();
+
+		if (hasSquadLeader()) {
+			ManagedReference<CreatureObject*> playerCreature = cast<CreatureObject*>( member);
+			removeGroupModifiers(playerCreature);
+		}
 	}
 
 	calcGroupLevel();
 }
 
-bool GroupObjectImplementation::hasMember(SceneObject* player) {
+bool GroupObjectImplementation::hasMember(SceneObject* member) {
 	for (int i = 0; i < groupMembers.size(); i++) {
 		SceneObject* play = groupMembers.get(i);
 
-		if (play == player)
+		if (play == member)
 			return true;
 	}
 
 	return false;
 }
 
-bool GroupObjectImplementation::hasMember(uint64 player) {
+bool GroupObjectImplementation::hasMember(uint64 member) {
 	for (int i = 0; i < groupMembers.size(); i++) {
 		SceneObject* play = groupMembers.get(i);
 
-		if (play->getObjectID() == player)
+		if (play->getObjectID() == member)
 			return true;
 	}
 
@@ -145,7 +156,7 @@ bool GroupObjectImplementation::hasMember(uint64 player) {
 }
 
 void GroupObjectImplementation::makeLeader(SceneObject* player) {
-	if (groupMembers.size() < 2)
+	if (groupMembers.size() < 2 || !player->isPlayerCreature())
 		return;
 
 	//SceneObject* obj = groupMembers.get();
@@ -195,16 +206,17 @@ void GroupObjectImplementation::disband() {
 					room->sendDestroyTo(play);
 				}
 
-				play->updateGroup(NULL);
-				//play->updateGroupId(0);
-
 			}
+
+			crea->updateGroup(NULL);
+			//play->updateGroupId(0);
 
 			//sendClosestWaypointDestroyTo(play);
 
 			//removeSquadLeaderBonuses(play);
 
-			sendDestroyTo(crea);
+			if (crea->isPlayerCreature())
+				sendDestroyTo(crea);
 
 		} catch (Exception& e) {
 			System::out << "Exception in GroupObject::disband(Player* player)\n";
@@ -404,7 +416,7 @@ void GroupObjectImplementation::sendSystemMessage(StringIdChatParameter& param) 
 
 		ManagedReference<SceneObject*> obj = member->get();
 
-		if (obj == NULL || !obj->isCreatureObject())
+		if (obj == NULL || !obj->isPlayerCreature())
 			continue;
 
 		CreatureObject* creature = cast<CreatureObject*>(obj.get());
@@ -420,7 +432,7 @@ void GroupObjectImplementation::sendSystemMessage(const String& fullPath) {
 
 		ManagedReference<SceneObject*> obj = member->get();
 
-		if (obj == NULL || !obj->isCreatureObject())
+		if (obj == NULL || !obj->isPlayerCreature())
 			continue;
 
 		CreatureObject* creature = cast<CreatureObject*>(obj.get());
@@ -432,7 +444,7 @@ bool GroupObjectImplementation::isOtherMemberPlayingMusic(CreatureObject* player
 	for (int i = 0; i < getGroupSize(); ++i) {
 		ManagedReference<CreatureObject*> groupMember = cast<CreatureObject*>(getGroupMember(i));
 
-		if (groupMember == NULL || groupMember == player)
+		if (groupMember == NULL || groupMember == player || !groupMember->isPlayerCreature())
 			continue;
 
 		if (groupMember->isPlayingMusic()) {
