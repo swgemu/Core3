@@ -240,6 +240,13 @@ public:
 		ticketObject->destroyObjectFromWorld(true);
 
 		ticketObject->destroyObjectFromDatabase(true);
+
+		//Store all spawned children
+		Reference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		if (ghost != NULL)
+			ghost->unloadSpawnedChildren();
+
 		return SUCCESS;
 	}
 
