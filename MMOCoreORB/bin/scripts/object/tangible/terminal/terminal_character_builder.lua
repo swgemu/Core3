@@ -493,34 +493,34 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				"Droid Engineer",
 				{
 					"Novice", "crafting_droidengineer_novice",
-					--"Production",
-					--{
-						--"Intermediate Droid Production", "crafting_droidengineer_production_01",
-						--"Advanced Droid Production", "crafting_droidengineer_production_02",
-						--"Expert Droid Production", "crafting_droidengineer_production_03",
-						--"Master Droid Production", "crafting_droidengineer_production_04"
-					--},
-					--"Construction Techniques",
-					--{
-						--"Intermediate Droid Construction Techniques", "crafting_droidengineer_techniques_01",
-						--"Advanced Droid Construction Techniques", "crafting_droidengineer_techniques_02",
-						--"Expert Droid Construction Techniques", "crafting_droidengineer_techniques_03",
-						--"Master Droid Construction Techniques", "crafting_droidengineer_techniques_04"
-					--},
-					--"Refinement",
-					--{
-						--"Intermediate Droid Refinement", "crafting_droidengineer_refinement_01",
-						--"Advanced Droid Refinement", "crafting_droidengineer_refinement_02",
-						--"Expert Droid Refinement", "crafting_droidengineer_refinement_03",
-						--"Master Droid Refinement", "crafting_droidengineer_refinement_04"
-					--},
-					--"Blueprints",
-					--{
-						--"Intermediate Droid Blueprints", "crafting_droidengineer_blueprints_01",
-						--"Advanced Droid Blueprints", "crafting_droidengineer_blueprints_02",
-						--"Expert Droid Blueprints", "crafting_droidengineer_blueprints_03",
-						--"Master Droid Blueprints", "crafting_droidengineer_blueprints_04"
-					--},
+					"Production",
+					{
+						"Intermediate Droid Production", "crafting_droidengineer_production_01",
+						"Advanced Droid Production", "crafting_droidengineer_production_02",
+						"Expert Droid Production", "crafting_droidengineer_production_03",
+						"Master Droid Production", "crafting_droidengineer_production_04"
+					},
+					"Construction Techniques",
+					{
+						"Intermediate Droid Construction Techniques", "crafting_droidengineer_techniques_01",
+						"Advanced Droid Construction Techniques", "crafting_droidengineer_techniques_02",
+						"Expert Droid Construction Techniques", "crafting_droidengineer_techniques_03",
+						"Master Droid Construction Techniques", "crafting_droidengineer_techniques_04"
+					},
+					"Refinement",
+					{
+						"Intermediate Droid Refinement", "crafting_droidengineer_refinement_01",
+						"Advanced Droid Refinement", "crafting_droidengineer_refinement_02",
+						"Expert Droid Refinement", "crafting_droidengineer_refinement_03",
+						"Master Droid Refinement", "crafting_droidengineer_refinement_04"
+					},
+					"Blueprints",
+					{
+						"Intermediate Droid Blueprints", "crafting_droidengineer_blueprints_01",
+						"Advanced Droid Blueprints", "crafting_droidengineer_blueprints_02",
+						"Expert Droid Blueprints", "crafting_droidengineer_blueprints_03",
+						"Master Droid Blueprints", "crafting_droidengineer_blueprints_04"
+					},
 					"Master", "crafting_droidengineer_master"
 				},
 				"Entertainer",
@@ -1503,7 +1503,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 					"Master", "crafting_weaponsmith_master"
 				}
 			},
-			--"Unlearn All Skills", "unlearn_all_skills",
+			"Unlearn All Skills", "unlearn_all_skills",
 			"Cleanse Character", "cleanse_character",
 			"Enhance Character", "enhance_character",
 			"Learn Languages", "language",
