@@ -111,6 +111,8 @@ public:
 				}
 
 			} else if (sceno != NULL) {
+				Locker clocker(scene, creature);
+
 				if (sceno->isVendor() && sceno->isCreatureObject()) {
 					if (object->isWearableObject() || object->isWeaponObject()) {
 
