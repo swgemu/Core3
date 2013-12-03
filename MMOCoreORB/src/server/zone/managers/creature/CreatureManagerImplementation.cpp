@@ -239,11 +239,13 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureAsBaby(uint32 templa
 	if (creo != NULL && creo->isCreature()) {
 		Creature* creature = cast<Creature*>(creo);
 		creature->loadTemplateDataForBaby(creoTempl);
-	} else if (creo == NULL) {
+	} else {
 		error("could not spawn template " + templateToSpawn + " as baby.");
+		creo = NULL;
 	}
 
-	placeCreature(creo, x, z, y, parentID);
+	if (creo != NULL)
+		placeCreature(creo, x, z, y, parentID);
 
 	return creo;
 }
