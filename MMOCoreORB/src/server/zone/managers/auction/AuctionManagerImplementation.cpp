@@ -1234,8 +1234,13 @@ void AuctionManagerImplementation::getItemAttributes(CreatureObject* player, uin
 
 	object->fillAttributeList(msg, player);
 
-	// For objects that don't fill the attribute list normally...
+	// For objects that don't fill the attribute list normally
 	if (object->getAttributeListComponent() != NULL) {
+		uint32 key = object->getServerObjectCRC();
+		String attributeListComponentName = TemplateManager::instance()->getTemplate(key)->getAttributeListComponent();
+
+		// Filter out the default ones, such as Resource containers...
+		if (attributeListComponentName != "AttributeListComponent")
 		object->getAttributeListComponent()->fillAttributeList(msg, player, object);
 	}
 

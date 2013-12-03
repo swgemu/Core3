@@ -32,9 +32,12 @@ public:
 		if(!object->isTangibleObject())
 			return;
 
-		ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(object);
+		// Already handled in tano.
+		object->fillAttributeList(alm, creature);
+
+		/* ManagedReference<TangibleObject*> tano = cast<TangibleObject*>(object);
 		if(tano->getUseCount() > 1)
-			alm->insertAttribute("quantity", tano->getUseCount());
+			alm->insertAttribute("quantity", tano->getUseCount()); */
 
 		VectorMap<String,float>* modifiers = skillBuff->getModifiers();
 
