@@ -57,8 +57,12 @@ public:
 
 				//Traverse the vector backwards since the size will change as objects are removed.
 				for (int j = childObjects - 1; j >= 0; --j) {
+					ReadLocker rlocker(cell->getContainerLock());
+
 					ManagedReference<SceneObject*> obj =
 							cellObject->getContainerObject(j);
+
+					rlocker.release();
 
 					if (obj->isPlayerCreature()) {
 						CreatureObject* playerCreature =
