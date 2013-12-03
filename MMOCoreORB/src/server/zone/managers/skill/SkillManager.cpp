@@ -488,37 +488,45 @@ void SkillManager::surrenderAllSkills(CreatureObject* creature, bool notifyClien
 
 	SkillList* skillList = creature->getSkillList();
 
-	while (skillList->size() > 0) {
-		Skill* skill = skillList->get(0);
+	Vector<String> listOfNames;
+	skillList->getStringList(listOfNames);
+	SkillList copyOfList;
 
-		creature->removeSkill(skill, notifyClient);
+	copyOfList.loadFromNames(listOfNames);
 
-		//Remove skill modifiers
-		VectorMap<String, int>* skillModifiers = skill->getSkillModifiers();
+	for (int i = 0; i < copyOfList.size(); i++) {
+		Skill* skill = copyOfList.get(i);
 
-		for (int i = 0; i < skillModifiers->size(); ++i) {
-			VectorMapEntry<String, int>* entry = &skillModifiers->elementAt(i);
-			creature->removeSkillMod(SkillModManager::SKILLBOX, entry->getKey(), entry->getValue(), notifyClient);
+		if (skill->getSkillPointsRequired() > 0) {
+			creature->removeSkill(skill, notifyClient);
 
-		}
+			//Remove skill modifiers
+			VectorMap<String, int>* skillModifiers = skill->getSkillModifiers();
 
-		SkillModManager::instance()->verifySkillBoxSkillMods(creature);
+			for (int i = 0; i < skillModifiers->size(); ++i) {
+				VectorMapEntry<String, int>* entry = &skillModifiers->elementAt(i);
+				creature->removeSkillMod(SkillModManager::SKILLBOX, entry->getKey(), entry->getValue(), notifyClient);
 
-		if (ghost != NULL) {
-			//Give the player the used skill points back.
-			ghost->addSkillPoints(skill->getSkillPointsRequired());
+			}
 
-			//Remove abilities
-			Vector<String>* abilityNames = skill->getAbilities();
-			removeAbilities(ghost, *abilityNames, notifyClient);
+			SkillModManager::instance()->verifySkillBoxSkillMods(creature);
 
-			//Remove draft schematic groups
-			Vector<String>* schematicsGranted = skill->getSchematicsGranted();
-			SchematicMap::instance()->removeSchematics(ghost, *schematicsGranted, notifyClient);
+			if (ghost != NULL) {
+				//Give the player the used skill points back.
+				ghost->addSkillPoints(skill->getSkillPointsRequired());
 
-			/// update force
-			ghost->setForcePowerMax(creature->getSkillMod("jedi_force_power_max"), true);
-			ghost->setForcePowerRegen(creature->getSkillMod("jedi_force_power_regen"));
+				//Remove abilities
+				Vector<String>* abilityNames = skill->getAbilities();
+				removeAbilities(ghost, *abilityNames, notifyClient);
+
+				//Remove draft schematic groups
+				Vector<String>* schematicsGranted = skill->getSchematicsGranted();
+				SchematicMap::instance()->removeSchematics(ghost, *schematicsGranted, notifyClient);
+
+				/// update force
+				ghost->setForcePowerMax(creature->getSkillMod("jedi_force_power_max"), true);
+				ghost->setForcePowerRegen(creature->getSkillMod("jedi_force_power_regen"));
+			}
 		}
 	}
 }
