@@ -226,7 +226,7 @@ String CreatureManagerImplementation::getTemplateToSpawn(uint32 templateCRC) {
 CreatureObject* CreatureManagerImplementation::spawnCreatureAsBaby(uint32 templateCRC, float x, float z, float y, uint64 parentID) {
 	CreatureTemplate* creoTempl = creatureTemplateManager->getTemplate(templateCRC);
 
-	if (creoTempl == NULL)
+	if (creoTempl == NULL || creoTempl->getTame() <= 0)
 		return NULL;
 
 	CreatureObject* creo = NULL;
@@ -239,8 +239,9 @@ CreatureObject* CreatureManagerImplementation::spawnCreatureAsBaby(uint32 templa
 	if (creo != NULL && creo->isCreature()) {
 		Creature* creature = cast<Creature*>(creo);
 		creature->loadTemplateDataForBaby(creoTempl);
-	} else if (creo == NULL) {
+	} else {
 		error("could not spawn template " + templateToSpawn + " as baby.");
+		creo = NULL;
 	}
 
 	placeCreature(creo, x, z, y, parentID);

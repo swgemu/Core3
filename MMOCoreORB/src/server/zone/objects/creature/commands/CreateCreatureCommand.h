@@ -74,6 +74,7 @@ public:
 		uint64 parID = creature->getParentID();
 
 		String objName = "", tempName = "object/mobile/boba_fett.iff";
+		bool baby = false;
 
 		if (!arguments.isEmpty()) {
 			UnicodeTokenizer tokenizer(arguments);
@@ -85,9 +86,13 @@ public:
 			if (tokenizer.hasMoreTokens())
 				tokenizer.getStringToken(objName);
 
-			if (!objName.isEmpty() && objName.indexOf("object") == -1 && objName.length() < 6)
+			if (!objName.isEmpty() && objName == "baby")
+				baby = true;
+
+			if (!objName.isEmpty() && objName.indexOf("object") == -1 && objName.length() < 6 && !baby) {
 				posX = Float::valueOf(objName);
-			else
+				objName = "";
+			} else
 				if (tokenizer.hasMoreTokens())
 					posX = tokenizer.getFloatToken();
 
@@ -112,12 +117,16 @@ public:
 		uint32 objTempl = objName.length() > 0 ? objName.hashCode() : 0;
 
 		CreatureObject* npc = NULL;
-		if (tempName.indexOf(".iff") != -1)
+		if (baby)
+			npc = creatureManager->spawnCreatureAsBaby(templ, posX, posZ, posY, parID);
+		else if (tempName.indexOf(".iff") != -1)
 			npc = creatureManager->spawnCreature(templ, posX, posZ, posY, parID);
 		else
 			npc = creatureManager->spawnCreature(templ, objTempl, posX, posZ, posY, parID);
 
-		if (npc == NULL)
+		if (baby && npc == NULL)
+			creature->sendSystemMessage("You cannot spawn " + tempName + " as a baby.");
+		else if (npc == NULL)
 			creature->sendSystemMessage("could not spawn " + arguments.toString());
 
 		return SUCCESS;
