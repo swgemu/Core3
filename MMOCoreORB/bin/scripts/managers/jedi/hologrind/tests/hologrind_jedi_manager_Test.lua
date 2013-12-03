@@ -409,7 +409,7 @@ describe("Hologrind Jedi Manager", function()
 				HologrindJediManager.sendSuiWindow(creaturePointer)
 
 				assert.spy(LuaSuiManager).was.called(1)
-				assert.spy(sendMessageBoxSpy).was.called_with(luaSuiManager, creaturePointer, creaturePointer, "@quest/force_sensitive/intro:force_sensitive", "Perhaps you should meditate somewhere alone...", "@ok", "HologrindJediManager", "notifyOkPressed")
+				assert.spy(sendMessageBoxSpy).was.called_with(luaSuiManager, 1, "", "", creaturePointer, creaturePointer, "@quest/force_sensitive/intro:force_sensitive", "Perhaps you should meditate somewhere alone...", "@ok", "HologrindJediManager", "notifyOkPressed")
 			end)
 		end)
 
