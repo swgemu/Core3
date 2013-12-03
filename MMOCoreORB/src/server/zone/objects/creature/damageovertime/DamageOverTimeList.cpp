@@ -12,6 +12,8 @@ uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 	uint64 states = 0;
 	uint64 statesBefore = 0;
 
+	Locker locker(&guard);
+
 	for (int i = 0; i < size(); ++i) {
 		Vector<DamageOverTime>* vector = &elementAt(i).getValue();
 
@@ -20,7 +22,17 @@ uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 			statesBefore |= dot->getType();
 
 			if (dot->nextTickPast()) {
-				dot->applyDot(victim);
+				//guard.unlock();
+
+				try {
+					dot->applyDot(victim);
+				} catch (...) {
+					//guard.wlock();
+
+					throw;
+				}
+
+				//guard.wlock();
 			}
 
 			Time nTime = dot->getNextTick();
@@ -67,6 +79,8 @@ uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 }
 
 int DamageOverTimeList::getStrength(uint8 pool, uint64 dotType) {
+	Locker locker(&guard);
+
 	Vector<DamageOverTime>* vector;
 	int strength = 0;
 
@@ -88,6 +102,8 @@ int DamageOverTimeList::getStrength(uint8 pool, uint64 dotType) {
 }
 
 uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint64 objectID, uint32 duration, uint64 dotType, uint8 pool, uint32 strength, float potency, uint32 defense, int secondaryStrength) {
+	Locker locker(&guard);
+
 	if (strength == 0) return 0;
 	int oldStrength = getStrength(pool, dotType);
 	float dotReductionMod = 1.0f;
@@ -135,7 +151,6 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint64 objectID, uint3
 	}
 	DamageOverTime newDot(dotType, pool, redStrength, duration, redPotency, secondaryStrength);
 	int dotPower = newDot.initDot(victim);
-	victim->setState(dotType);
 
 	Time nTime = newDot.getNextTick();
 
@@ -168,10 +183,15 @@ uint32 DamageOverTimeList::addDot(CreatureObject* victim, uint64 objectID, uint3
 
 	dot = true;
 
+	locker.release();
+	victim->setState(dotType);
+
 	return dotPower;
 }
 
 bool DamageOverTimeList::healState(CreatureObject* victim, uint64 dotType, float reduction) {
+	Locker locker(&guard);
+
 	if (!hasDot())
 		return reduction;
 
@@ -202,6 +222,7 @@ bool DamageOverTimeList::healState(CreatureObject* victim, uint64 dotType, float
 	}
 
 	if (/*tempReduction >= 0.0f*/expired) {
+		locker.release();
 		victim->clearState(dotType);
 		//sendStopMessage(victim,dotType);
 		return true;
@@ -213,6 +234,8 @@ bool DamageOverTimeList::healState(CreatureObject* victim, uint64 dotType, float
 }
 
 void DamageOverTimeList::clear(CreatureObject* creature) {
+	Locker locker(&guard);
+
 	dot = false;
 
 	for (int i = 0; i < size(); ++i) {
