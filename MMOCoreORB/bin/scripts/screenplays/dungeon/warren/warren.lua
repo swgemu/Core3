@@ -685,7 +685,7 @@ function WarrenScreenPlay:notifyTerminalMessage(pTerminal, pPlayer)
 	local message = self.terminals["terminal_" .. terminal:getObjectID()].message
 	
 	local suiManager = LuaSuiManager()
-	suiManager:sendMessageBox(pTerminal, pPlayer, "@sui:swg", message, "@ok", "WarrenScreenPlay", "notifyOkPressed")
+	suiManager:sendMessageBox(1, "", "", pTerminal, pPlayer, "@sui:swg", message, "@ok", "WarrenScreenPlay", "notifyOkPressed")
 	
 	return 0
 end
@@ -698,7 +698,7 @@ function WarrenScreenPlay:notifyTurretMessage(pTerminal, pPlayer)
 	end
 
 	local suiManager = LuaSuiManager()
-	suiManager:sendMessageBox(pTerminal, pPlayer, "@sui:swg", message, "@ok", "WarrenScreenPlay", "notifyOkPressed")
+	suiManager:sendMessageBox(1, "", "", pTerminal, pPlayer, "@sui:swg", message, "@ok", "WarrenScreenPlay", "notifyOkPressed")
 	
 	return 0
 end
@@ -736,7 +736,7 @@ WarrenTurrentMenuComponent = {}
 
 function WarrenTurrentMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
 	local suiManager = LuaSuiManager()
-	suiManager:sendMessageBox(pSceneObject, pPlayer, "@sui:swg", readStringData("warren:turret:code"), "@ok", "WarrenScreenPlay", "notifyOkPressed")
+	suiManager:sendMessageBox(1, "", "", pSceneObject, pPlayer, "@sui:swg", readStringData("warren:turret:code"), "@ok", "WarrenScreenPlay", "notifyOkPressed")
 end
 
 function WarrenTurrentMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
@@ -933,7 +933,7 @@ function DownloadEvidenceMenuComponent:handleObjectMenuSelect(pSceneObject, pPla
 		
 		if (pItem ~= nil) then
 			local suiManager = LuaSuiManager()
-			suiManager:sendMessageBox(pSceneObject, pPlayer, "@sui:swg", "@theme_park/warren/warren_system_messages:download_complete", "@ok", "WarrenScreenPlay", "notifyOkPressed")
+			suiManager:sendMessageBox(1, "", "", pSceneObject, pPlayer, "@sui:swg", "@theme_park/warren/warren_system_messages:download_complete", "@ok", "WarrenScreenPlay", "notifyOkPressed")
 		end
 	else
 		creature:sendSystemMessage("@theme_park/warren/warren_system_messages:got_evidence") --You have already downloaded evidence from this terminal
