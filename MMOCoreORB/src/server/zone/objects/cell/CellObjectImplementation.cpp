@@ -158,7 +158,9 @@ int CellObjectImplementation::getCurrentNumberOfPlayerItems() {
 
 	if (parent != NULL) {
 		for (int j = 0; j < getContainerObjectsSize(); ++j) {
+			ReadLocker rlocker(getContainerLock());
 			ManagedReference<SceneObject*> containerObject = getContainerObject(j);
+			rlocker.release();
 
 			if (!getParent().get()->containsChildObject(containerObject) && !containerObject->isCreatureObject()) {
 
@@ -180,7 +182,9 @@ void CellObjectImplementation::destroyAllPlayerItems() {
 	int containerSize = getContainerObjectsSize();
 
 	for (int j = containerSize - 1; j >= 0; --j) {
+		ReadLocker rlocker(getContainerLock());
 		ManagedReference<SceneObject*> containerObject = getContainerObject(j);
+		rlocker.release();
 
 		if (getParent().get()->containsChildObject(containerObject))
 			continue;
