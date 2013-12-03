@@ -810,7 +810,9 @@ void StructureManager::moveFirstItemTo(CreatureObject* creature,
 
 		int size = cell->getContainerObjectsSize();
 
-		for (int j = 0; j < size; ++j) {
+		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+			ReadLocker rlocker(cell->getContainerLock());
+
 			ManagedReference<SceneObject*> childObject =
 					cell->getContainerObject(j);
 
@@ -823,6 +825,8 @@ void StructureManager::moveFirstItemTo(CreatureObject* creature,
 					&& !childObject->isCreatureObject()) {
 				if (creature->getParent().get()->getParent().get()
 						== childObject->getParent().get()->getParent().get()) {
+
+					rlocker.release();
 
 					childObject->teleport(creature->getPositionX(),
 							creature->getPositionZ(), creature->getPositionY(),

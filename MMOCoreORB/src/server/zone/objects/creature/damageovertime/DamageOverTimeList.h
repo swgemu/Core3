@@ -15,6 +15,7 @@ class DamageOverTimeList : public VectorMap<uint64, Vector<DamageOverTime> > {
 protected:
 	Time nextTick;
 	bool dot;
+	Mutex guard;
 public:
 	DamageOverTimeList() {
 		setNoDuplicateInsertPlan();
