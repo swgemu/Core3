@@ -103,7 +103,11 @@ void BuildingObjectImplementation::notifyLoadFromDatabase() {
 			CellObject* cell = cells.get(i);
 
 			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+				ReadLocker rlocker(cell->getContainerLock());
+
 				SceneObject* child = cell->getContainerObject(j);
+
+				rlocker.release();
 
 				zone->updateActiveAreas(child);
 			}
@@ -120,7 +124,11 @@ void BuildingObjectImplementation::notifyInsertToZone(Zone* zone) {
 		CellObject* cell = cells.get(i);
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+			ReadLocker rlocker(cell->getContainerLock());
+
 			SceneObject* child = cell->getContainerObject(j);
+
+			rlocker.release();
 
 			notifyObjectInsertedToZone(child);
 		}
@@ -193,7 +201,11 @@ void BuildingObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 		}
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+			ReadLocker rlocker(cell->getContainerLock());
+
 			ManagedReference<SceneObject*> containerObject = cell->getContainerObject(j);
+
+			rlocker.release();
 
 			if (containerObject != NULL && ((containerObject->isCreatureObject() && publicStructure) || player == containerObject
 							|| (closeObjects != NULL && closeObjects->contains(containerObject.get()))))
@@ -285,7 +297,9 @@ void BuildingObjectImplementation::notifyRemoveFromZone() {
 		//cell->resetCurrentNumerOfPlayerItems();
 
 		while (cell->getContainerObjectsSize() > 0) {
+			ReadLocker rlocker(cell->getContainerLock());
 			ManagedReference<SceneObject*> obj = cell->getContainerObject(0);
+			rlocker.release();
 
 			/*obj->removeFromZone();
 
@@ -443,7 +457,9 @@ void BuildingObjectImplementation::notifyInsert(QuadTreeEntry* obj) {
 
 		try {
 			for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-				SceneObject* child = cell->getContainerObject(j);
+				ReadLocker rlocker(cell->getContainerLock());
+				ManagedReference<SceneObject*> child = cell->getContainerObject(j);
+				rlocker.release();
 
 				if (child != obj && child != NULL) {
 					if ((objectInThisBuilding || (child->isCreatureObject() && isPublicStructure())) || isStaticBuilding()) {
@@ -487,7 +503,10 @@ void BuildingObjectImplementation::notifyDissapear(QuadTreeEntry* obj) {
 		CellObject* cell = cells.get(i);
 
 		for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
+
+			ReadLocker rlocker(cell->getContainerLock());
 			ManagedReference<SceneObject*> child = cell->getContainerObject(j);
+			rlocker.release();
 
 			if (child == NULL)
 				continue;
@@ -544,7 +563,9 @@ void BuildingObjectImplementation::destroyObjectFromDatabase(
 		CellObject* cell = cells.get(i);
 
 		for (int j = cell->getContainerObjectsSize() - 1; j >= 0 ; --j) {
-			SceneObject* child = cell->getContainerObject(j);
+			ReadLocker rlocker(cell->getContainerLock());
+			ManagedReference<SceneObject*> child = cell->getContainerObject(j);
+			rlocker.release();
 
 			if (child->isPlayerCreature()) {
 				child->teleport(x, z, y);
@@ -832,7 +853,10 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 
 				if (cell != NULL) {
 					for (int j = 0; j < cell->getContainerObjectsSize(); ++j) {
-						SceneObject* child = cell->getContainerObject(j);
+
+						ReadLocker rlocker(cell->getContainerLock());
+						ManagedReference<SceneObject*> child = cell->getContainerObject(j);
+						rlocker.release();
 
 						if (child != object) {
 							//if (is)
@@ -846,8 +870,8 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 								child->notifyInsert(object);
 
 							if (object->getCloseObjects() != NULL) {
-								if (!object->getCloseObjects()->contains(child)) {
-									object->addInRangeObject(child, false);
+								if (!object->getCloseObjects()->contains(child.get())) {
+									object->addInRangeObject(child.get(), false);
 									child->sendTo(object, true);//sendTo because notifyInsert doesnt send objects with parent
 								} else {
 									if (object->getClient() != NULL && child->isCreatureObject()) {
@@ -855,7 +879,7 @@ int BuildingObjectImplementation::notifyObjectInsertedToChild(SceneObject* objec
 									}
 								}
 							} else {
-								object->notifyInsert(child);
+								object->notifyInsert(child.get());
 							}
 
 						}
