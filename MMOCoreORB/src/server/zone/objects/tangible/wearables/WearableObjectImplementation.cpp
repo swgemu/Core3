@@ -163,7 +163,8 @@ void WearableObjectImplementation::applySkillModsTo(CreatureObject* creature, bo
 		String name = wearableSkillMods.elementAt(i).getKey();
 		int value = wearableSkillMods.get(name);
 
-		creature->addSkillMod(SkillModManager::WEARABLE, name, value, true);
+		if (!SkillModManager::instance()->isWearableModDisabled(name))
+			creature->addSkillMod(SkillModManager::WEARABLE, name, value, true);
 	}
 
 	if(doCheck)
@@ -179,7 +180,8 @@ void WearableObjectImplementation::removeSkillModsFrom(CreatureObject* creature)
 		String name = wearableSkillMods.elementAt(i).getKey();
 		int value = wearableSkillMods.get(name);
 
-		creature->removeSkillMod(SkillModManager::WEARABLE, name, value, true);
+		if (!SkillModManager::instance()->isWearableModDisabled(name))
+			creature->removeSkillMod(SkillModManager::WEARABLE, name, value, true);
 	}
 }
 

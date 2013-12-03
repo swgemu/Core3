@@ -61,3 +61,10 @@ skillModLimits = {
 	{2711, -125, 125}, -- BUFFMOD
 	{2712, -125, 125}, -- ABILITYBONUSMOD
 }
+
+disabledWearableSkillMods = {
+	"combat_healing_ability",
+	"healing_ability",
+	"keep_creature",
+	"stored_pets",
+}
