@@ -10,23 +10,23 @@ mosespa_racetrack_screenplay = RaceTrack:new {
 		trackCheckpoint="@theme_park/racing/racing:waypoint_name_checkpoint", --Waypoint names
 		trackLaptime="@theme_park/racing/racing:laptime_checkpoint", -- System message sent at each waypoint
 		waypointRadius=10, -- size of the waypoint observer
-		raceCoordinator = {x=2380,y=5000,z=2}, -- Location of the race coordinator. Note the Z coord is VERY important
-		waypoints = { {x = 1980, y = 4823}, -- The coords of the waypoints
-					  {x = 1540, y = 4984},
-					  {x = 1364, y = 5429},
-					  {x = 709,  y = 5429},
-					  {x = 167,  y = 5330},
-					  {x = 416,  y = 5077},
-					  {x = -672, y = 4842},
-					  {x = -770, y = 4327},
-					  {x = -717, y = 3993},
-					  {x = 64,   y = 4074},
-					  {x = 602,  y = 4293},
-					  {x = 926,  y = 3853},
-					  {x = 133,  y = 4469},
-					  {x = 1637, y = 4336},
-					  {x = 2136, y = 4344},
-					  {x = 2380, y = 5000}
+		raceCoordinator = {x=2400,y=5000,z=2}, -- Location of the race coordinator. Note the Z coord is VERY important
+		waypoints = { {x = 1943, y = 4792}, -- The coords of the waypoints
+					  {x = 1546, y = 4959},
+					  {x = 1316, y = 5434},
+					  {x = 688,  y = 5439},
+					  {x = 156,  y = 5326},
+					  {x = -414,  y = 5090},
+					  {x = -664, y = 4832},
+					  {x = -769, y = 4340},
+					  {x = -710, y = 3993},
+					  {x = 81,   y = 4092},
+					  {x = 594,  y = 4284},
+					  {x = 917,  y = 3841},
+					  {x = 1333,  y = 4457},
+					  {x = 1630, y = 4326},
+					  {x = 2132, y = 4346},
+					  {x = 2400, y = 5000}
 					}
 		}
 }
