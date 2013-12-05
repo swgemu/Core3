@@ -64,11 +64,22 @@ class DroidObject extends AiAgent {
 	 */
 	protected int power;
 	
+	/**
+	 * Current paint decay
+	 */
+	protected int paintCount;
+	
+	/**
+	 * Maximum paint charges
+	 */
+	public static final int PAINTCHARGES = 20;
+	
 	public DroidObject() {
 		Logger.setLoggingName("DroidObject");
 		Logger.setLogging(false);
 		Logger.setGlobalLogging(true);
 		power = MAX_POWER;
+		paintCount = 0;
 	}
 	
 	/**
@@ -87,6 +98,15 @@ class DroidObject extends AiAgent {
 	 */
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
+
+	/**
+	 * Inserts this object into zone
+	 * @pre { this object is locked }
+	 * @post { this object is locked and inserted into zone }
+	 * @param zone Zone object where this object will be inserted
+	 */
+	@local
+	public native void notifyInsertToZone(Zone zone);	
 		
 	public boolean isDroidObject() {
 		return true;
@@ -114,6 +134,13 @@ class DroidObject extends AiAgent {
 			handleLowPower();			
 		}
 		
+	}
+	
+	/**
+	 * Reset paint back to full
+	 */
+	public void refreshPaint() {
+		paintCount = PAINTCHARGES;
 	}
 
 	/**
