@@ -464,6 +464,14 @@ void SuiManager::handleCharacterBuilderSelectItem(CreatureObject* player, SuiBox
 				player->addCashCredits(50000, true);
 				player->sendSystemMessage("You have received 50.000 Credits");
 
+			} else if (templatePath == "faction_rebel") {
+
+				ghost->increaseFactionStanding("rebel", 100000);
+
+			} else if (templatePath == "faction_imperial") {
+
+				ghost->increaseFactionStanding("imperial", 100000);
+
 			} else if (templatePath == "language") {
 
 				ManagedReference<SceneObject*> scob = cbSui->getUsingObject();
