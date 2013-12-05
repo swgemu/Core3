@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_194e34c2",
+        "filename": "MMOCoreORB/src/server/zone/managers/sui/LuaSuiManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-12-05T15:42:39Z",
+      "side": 1,
+      "message": "what happened to stack positions 4 and 5?",
+      "revId": "6278d5d125f9499b37cab5f19ffde993cf5370d0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
