@@ -2,10 +2,12 @@
 #include "server/zone/objects/intangible/PetControlObserver.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/name/NameManager.h"
+#include "server/zone/managers/group/GroupManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/creature/DroidObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
 #include "tasks/CallPetTask.h"
@@ -329,6 +331,11 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 
 	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 	ghost->removeFromActivePets(pet);
+
+	GroupObject* group = pet->getGroup();
+
+	if (group != NULL)
+		GroupManager::instance()->leaveGroup(group, pet);
 }
 
 
@@ -568,6 +575,10 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 	}
 
 	// Trained Commands
+	if ( trainedCommands.size() > 0) {
+		alm->insertAttribute("pet_command", "" );
+	}
+
 	if( trainedCommands.contains(STAY) ){
 		alm->insertAttribute("pet_command_1", trainedCommands.get(STAY) );
 	}
@@ -713,7 +724,7 @@ void PetControlDeviceImplementation::handleSpatialChat(CreatureObject* speaker, 
 		speaker->sendSystemMessage("RANGED_ATTACK pet command is not yet implemented.");
 	}
 	else if( trainedCommands.contains(GROUP) && trainedCommands.get(GROUP) == message ){
-		speaker->sendSystemMessage("GROUP pet command is not yet implemented.");
+		group(speaker);
 	}
 
 }
@@ -944,6 +955,20 @@ void PetControlDeviceImplementation::followOther(CreatureObject* player){
 
 	pet->setFollowObject(target);
 
+}
+
+void PetControlDeviceImplementation::group(CreatureObject* player) {
+
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+	if (controlledObject == NULL || !controlledObject->isAiAgent())
+		return;
+
+	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
+	if( pet == NULL )
+		return;
+
+	if (pet->getGroup() == NULL)
+		GroupManager::instance()->inviteToGroup(player, pet);
 }
 
 void PetControlDeviceImplementation::stay(CreatureObject* player){

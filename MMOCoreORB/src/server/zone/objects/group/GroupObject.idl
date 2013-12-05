@@ -88,14 +88,14 @@ class GroupObject extends SceneObject {
 	public native void sendSystemMessage(@dereferenced StringIdChatParameter param);
 	public native void sendSystemMessage(final string fullPath);
 	
-	public native void addMember(SceneObject player);
-	public native void removeMember(SceneObject player);
+	public native void addMember(SceneObject newMember);
+	public native void removeMember(SceneObject member);
 
 	public native void disband();
 	public native void makeLeader(SceneObject player);
 
-	public native boolean hasMember(SceneObject player);
-	public native boolean hasMember(unsigned long player);
+	public native boolean hasMember(SceneObject member);
+	public native boolean hasMember(unsigned long member);
 
 	public native void startChatRoom();
 	public native void destroyChatRoom();
@@ -128,7 +128,11 @@ class GroupObject extends SceneObject {
 	}
 
 	public SceneObject getLeader() {
-		return groupMembers.getSafe(0);
+		if (groupMembers.size() == 0) {
+			return null;
+		} else {
+			return groupMembers.getSafe(0);
+		}
 	}
 	
 	@local
