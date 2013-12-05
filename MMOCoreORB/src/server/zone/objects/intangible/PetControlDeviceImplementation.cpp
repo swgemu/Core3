@@ -803,6 +803,10 @@ void PetControlDeviceImplementation::handleCommandTraining(CreatureObject* speak
 		speaker->sendSystemMessage("@pet/pet_menu:pet_learn"); // You teach your pet a new command.
 	}
 
+	// No renaming of faction pets
+	if (petType == FACTIONPET)
+		return;
+
 	// Check for naming string
 	StringTokenizer tokenizer(message);
 	tokenizer.setDelimeter(" ");
