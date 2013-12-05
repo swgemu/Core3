@@ -18,7 +18,8 @@ function RaceTrack:startRacing(pObject)
   ObjectManager.withCreatureAndPlayerObject(pObject, function(creatureObject, playerObject)
   		clearScreenPlayData(pObject,self.trackConfig.trackName )
 		local waypointID = playerObject:addWaypoint(self.trackConfig.planetName,self.trackConfig.trackCheckpoint .. "0",self.trackConfig.trackCheckpoint .. "0",self.trackConfig.waypoints[1].x,self.trackConfig.waypoints[1].y,WAYPOINTWHITE,true,true)
-		local time = os.time()
+		--local time = os.time()
+		local time = getTimestampMilli()
 		writeScreenPlayData(pObject, self.trackConfig.trackName, "starttime", time)
 		writeScreenPlayData(pObject, self.trackConfig.trackName, "waypointID", waypointID)
 		writeScreenPlayData(pObject, self.trackConfig.trackName, "waypoint", 1)
@@ -48,12 +49,18 @@ function RaceTrack:processWaypoint(pActiveArea, pObject)
 	end)
 end
 
+function RaceTrack:roundNumber(num)
+  local mult = 10 ^ (self.trackConfig.timeResolution or 0 )
+  return math.floor(num * mult + 0.5) / mult
+end
+
+
 function RaceTrack:actuallyProcessWaypoint(pObject,index)
 	ObjectManager.withCreatureAndPlayerObject(pObject, function(creatureObject,playerObject)
 		local waypointID = playerObject:addWaypoint(self.trackConfig.planetName,self.trackConfig.trackCheckpoint .. index,self.trackConfig.trackCheckpoint .. index,self.trackConfig.waypoints[index+1].x,self.trackConfig.waypoints[index+1].y,WAYPOINTWHITE,true,true)
 		local seconds = self:getLaptime(pObject)
 		creatureObject:sendSystemMessage(self.trackConfig.trackLaptime .. index)
-		creatureObject:sendSystemMessage("Time " .. seconds .. "s")
+		creatureObject:sendSystemMessage("Time " .. self:roundNumber(seconds/1000) .. "s")
 		writeScreenPlayData(pObject, self.trackConfig.trackName, "waypointID", waypointID)
 		writeScreenPlayData(pObject,self.trackConfig.trackName, "waypoint", index+1)
 		creatureObject:playMusicMessage("sound/music_combat_bfield_lp.snd")
@@ -70,21 +77,22 @@ function  RaceTrack:finalWaypoint(pActiveArea, pObject)
 end
 function RaceTrack:getLaptime(pObject)
 	local startTime = readScreenPlayData(pObject, self.trackConfig.trackName, "starttime")
-	local seconds = os.difftime(os.time(), startTime)
+	local seconds = getTimestampMilli() - tonumber(startTime)
 	return seconds
 end
+
 
 function RaceTrack:checkPersonalTime(pObject)
 	ObjectManager.withCreatureAndPlayerObject(pObject, function(creatureObject,playerObject)
 		local seconds = self:getLaptime(pObject)
 		creatureObject:sendSystemMessage("@theme_park/racing/racing:finish_message")
-		creatureObject:sendSystemMessage("Time " .. seconds .. "s")
-		local personalTime = tonumber(readScreenPlayData(pObject, self.trackConfig.trackName ..".STATS", "RecordTime"))
+		creatureObject:sendSystemMessage("Time " .. self:roundNumber(seconds/1000) .. "s")
+		local personalTime = tonumber(readScreenPlayData(pObject, self.trackConfig.trackName ..".STATS", "PersonalRecordTime"))
 		if personalTime == nil then
-			personalTime = 99999999
+			personalTime = 9999999999
 		end
 		if personalTime > seconds then
-			writeScreenPlayData(pObject, self.trackConfig.trackName ..".STATS", "PersonalRecordTime",seconds )
+			writeScreenPlayData(pObject, self.trackConfig.trackName ..".STATS", "PersonalRecordTime",seconds)
 			creatureObject:sendSystemMessage("@theme_park/racing/racing:new_record")
 		end
 	end)
@@ -93,7 +101,7 @@ function RaceTrack:checkServerRecordTime(pObject)
 	ObjectManager.withCreatureAndPlayerObject(pObject, function(creatureObject,playerObject)
 		local recordTime = readSharedMemory(self.trackConfig.trackName ..".recordtime")
 		if recordTime == 0 then
-			recordTime = 99999999
+			recordTime = 9999999999
 		end
 		local seconds = self:getLaptime(pObject)
 		if recordTime > seconds then
@@ -130,7 +138,7 @@ function RaceTrack:displayPersonalBestTime(pObject,trackConfig)
 		if personalTime == nil then
 			creatureObject:sendSystemMessage("No Time Set!")
 		else
-			creatureObject:sendSystemMessage("Time " .. personalTime .. "s")
+			creatureObject:sendSystemMessage("Time " .. self:roundNumber(personalTime/1000) .. "s")
 		end
 	end)
 end
@@ -142,7 +150,7 @@ function RaceTrack:displayTrackBestTime(pObject,trackConfig)
 		if recordTime == 0 then
 			creatureObject:sendSystemMessage("No Time Set!")
 		else
-			creatureObject:sendSystemMessage(readStringSharedMemory(self.trackConfig.trackName ..".recordholder") .. " with a time of " .. recordTime .. "s")
+			creatureObject:sendSystemMessage(readStringSharedMemory(self.trackConfig.trackName ..".recordholder") .. " with a time of " .. self:roundNumber(recordTime/1000) .. "s")
 		end
 	end)
 end
