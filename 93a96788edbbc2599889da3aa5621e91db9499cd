@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_596ddc31",
+        "filename": "MMOCoreORB/src/server/zone/managers/group/GroupManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-12-05T15:38:36Z",
+      "side": 1,
+      "message": "ManagedReference\u003cCreatureObject*\u003e",
+      "revId": "93a96788edbbc2599889da3aa5621e91db9499cd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
