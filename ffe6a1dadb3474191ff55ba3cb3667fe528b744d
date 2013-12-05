@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a437d4f_59027c3f",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/DroidCustomKitObjectMenuComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-12-05T15:50:44Z",
+      "side": 1,
+      "message": "Locker crossLock(targetOwner, sceneObject);",
+      "revId": "ffe6a1dadb3474191ff55ba3cb3667fe528b744d",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
