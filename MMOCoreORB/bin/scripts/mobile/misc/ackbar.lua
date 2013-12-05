@@ -1,5 +1,6 @@
 ackbar = Creature:new {
-	objectName = "@theme_park_name:admiral_ackbar",
+	objectName = "@theme_park_name:",
+	customName = "Captain Ackbar",
 	socialGroup = "rebel",
 	pvpFaction = "rebel",
 	faction = "rebel",
