@@ -1,3 +1,4 @@
+
 /*
 Copyright (C) 2013 <SWGEmu>
 
@@ -122,22 +123,34 @@ class DroidObject extends AiAgent {
 	 * @param player CreatureObject that selected the option
 	 * @returns 0 if successful, 1 otherwise
 	 */
-	public native int handleRechargeDroid(CreatureObject player);
+	public native int rechargeFromBattery(CreatureObject player);
 	
 	/**
-	 * Handles the store droid radial selection
+	 * Handles droid being recharged by another droid
 	 * @pre { this object is locked, player is locked }
 	 * @post { this object is locked, player is locked }
 	 * @param player CreatureObject that selected the option
-	 * @returns 0 if successful, 1 otherwise
 	 */
-	protected native int handleStoreDroid(CreatureObject player);	
-	
+	public native void rechargeFromDroid();	
+		
+	/**
+	 * Instructs droid to recharge another droid
+	 * @pre { this object is locked, droid is locked }
+	 * @post { this object is locked, droid is locked }
+	 * @param droid DroidObject that selected the option
+	 */
+	public native void rechargeOtherDroid( DroidObject otherDroid );	
+		
 	/**
 	 * Called when the droid runs out of power
 	 * @pre { this object is locked }
 	 * @post { this object is locked }
 	 */
-	public native void handleLowPower();	
+	public native void handleLowPower();
+	
+	/**
+	 * Whether or not droid is a power droid
+	 */
+	public native boolean isPowerDroid();	
 	
 }

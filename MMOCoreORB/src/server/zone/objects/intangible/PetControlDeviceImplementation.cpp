@@ -632,6 +632,10 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 		alm->insertAttribute("pet_command_16", trainedCommands.get(GROUP) );
 	}
 
+	if( trainedCommands.contains(RECHARGEOTHER) ){
+		alm->insertAttribute("@pet/pet_menu:menu_recharge_other", trainedCommands.get(RECHARGEOTHER) );
+	}
+
 }
 
 void PetControlDeviceImplementation::handleSpatialChat(CreatureObject* speaker, const String& message){
@@ -714,6 +718,9 @@ void PetControlDeviceImplementation::handleSpatialChat(CreatureObject* speaker, 
 	}
 	else if( trainedCommands.contains(GROUP) && trainedCommands.get(GROUP) == message ){
 		speaker->sendSystemMessage("GROUP pet command is not yet implemented.");
+	}
+	else if( trainedCommands.contains(RECHARGEOTHER) && trainedCommands.get(RECHARGEOTHER) == message ){
+		rechargeOther(speaker);
 	}
 
 }
@@ -957,4 +964,58 @@ void PetControlDeviceImplementation::stay(CreatureObject* player){
 		return;
 
 	pet->setOblivious();
+}
+
+void PetControlDeviceImplementation::rechargeOther(CreatureObject* player){
+
+	// Droid specific command
+	if( petType != DROIDPET )
+		return;
+
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+	if (controlledObject == NULL || !controlledObject->isAiAgent())
+		return;
+
+	AiAgent* pet = cast<AiAgent*>(controlledObject.get());
+	if( pet == NULL )
+		return;
+
+	uint64 targetID = player->getTargetID();
+	ZoneServer* server = player->getZoneServer();
+	if (server == NULL)
+		return;
+
+	// Target must be a droid
+	Reference<DroidObject*> target = server->getObject(targetID, true).castTo<DroidObject*>();
+	if (target == NULL || !target->isDroidObject() ) {
+		pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+		return;
+	}
+
+	DroidObject* droidPet = cast<DroidObject*>(pet);
+	if( droidPet == NULL )
+		return;
+
+	// Check range between droids
+	if (!droidPet->isInRange(target, 30.0f)){ // Same range as auto-repair
+		pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+		return;
+	}
+
+	// Target can't be this droid
+	if (droidPet == target ) {
+		pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+		return;
+	}
+
+	// Check if droid has power
+	if( !droidPet->hasPower() ){
+		pet->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
+		return;
+	}
+
+	// Recharge other droid
+	Locker clocker(target, player);
+	droidPet->rechargeOtherDroid( target );
+
 }
