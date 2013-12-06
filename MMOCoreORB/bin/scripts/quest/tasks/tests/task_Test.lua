@@ -205,6 +205,13 @@ describe("Task", function()
 
 					assert.spy(theFunction).was.called_with(testTask, pCreatureObject)
 				end)
+
+				it("Should return what the function returns.", function()
+					local returnValue = { "returnValue" }
+					local theFunction = spy.new(function() return returnValue end)
+
+					assert.same(returnValue, testTask:callFunctionIfNotNil(theFunction, pCreatureObject))
+				end)
 			end)
 
 			describe("When called with the function equal to nil", function()
@@ -215,17 +222,21 @@ describe("Task", function()
 				end)
 
 				teardown(function()
-					--error = realError
+					error = realError
 				end)
 
 				setup(function()
-					--error = spy.new(function() end)
+					error = spy.new(function() end)
 				end)
 
 				it("Should generate an error about the function being nil.", function()
 					testTask:callFunctionIfNotNil(nil, pCreatureObject)
 
-					--assert.spy(error).was.called()
+					assert.spy(error).was.called()
+				end)
+
+				it("Should return nil.", function()
+					assert.is_nil(testTask:callFunctionIfNotNil(nil, pCreatureObject))
 				end)
 			end)
 		end)

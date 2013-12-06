@@ -181,28 +181,28 @@ describe("Spawn Mobile", function()
 
 		describe("despawnMobiles", function()
 			describe("When called with a prefix", function()
-				local realGetSpawnedMobilesList
+				local realGetSpawnedMobiles
 				local realDespawnMobilesInList
 
 				setup(function()
-					realGetSpawnedMobilesList = SpawnMobiles.getSpawnedMobilesList
+					realGetSpawnedMobiles = SpawnMobiles.getSpawnedMobiles
 					realDespawnMobilesInList = SpawnMobiles.despawnMobilesInList
 				end)
 
 				teardown(function()
-					SpawnMobiles.getSpawnedMobilesList = realGetSpawnedMobilesList
+					SpawnMobiles.getSpawnedMobiles = realGetSpawnedMobiles
 					SpawnMobiles.despawnMobilesInList = realDespawnMobilesInList
 				end)
 
 				before_each(function()
-					SpawnMobiles.getSpawnedMobilesList = spy.new(function() return spawnedMobilesList end)
+					SpawnMobiles.getSpawnedMobiles = spy.new(function() return spawnedMobilesList end)
 					SpawnMobiles.despawnMobilesInList = spy.new(function() end)
 				end)
 
 				it("Should get a list with pointers to the spawned mobiles from the prefix.", function()
 					SpawnMobiles.despawnMobiles(pCreatureObject, prefix)
 
-					assert.spy(SpawnMobiles.getSpawnedMobilesList).was.called_with(pCreatureObject, prefix)
+					assert.spy(SpawnMobiles.getSpawnedMobiles).was.called_with(pCreatureObject, prefix)
 				end)
 
 				it("Should call the despawnMobilesInList function.", function()
@@ -215,6 +215,56 @@ describe("Spawn Mobile", function()
 					SpawnMobiles.despawnMobiles(pCreatureObject, prefix)
 
 					assert.spy(writeData).was.called_with(playerID .. prefix .. SPAWN_MOBILES_STRING .. IN_USE_STRING, PREFIX_FREE)
+				end)
+			end)
+		end)
+
+		describe("getSpawnedMobiles", function()
+			describe("When called with a player and a prefix", function()
+				local realIsPrefixFree
+				local realGetSpawnedMobilePointersList
+
+				setup(function()
+					realIsPrefixFree = SpawnMobiles.isPrefixFree
+					realGetSpawnedMobilePointersList = SpawnMobiles.getSpawnedMobilePointersList
+				end)
+
+				teardown(function()
+					SpawnMobiles.isPrefixFree = realIsPrefixFree
+					SpawnMobiles.getSpawnedMobilePointersList = realGetSpawnedMobilePointersList
+				end)
+
+				before_each(function()
+					SpawnMobiles.isPrefixFree = spy.new(function() return true end)
+					SpawnMobiles.getSpawnedMobilePointersList = spy.new(function() return spawnedMobilesList end)
+				end)
+
+				it("Should check if the prefix is in use.", function()
+					SpawnMobiles.getSpawnedMobiles(pCreatureObject, prefix)
+
+					assert.spy(SpawnMobiles.isPrefixFree).was.called_with(pCreatureObject, prefix)
+				end)
+
+				describe("and the prefix is not in use", function()
+					it("Should return nil.", function()
+						assert.is_nil(SpawnMobiles.getSpawnedMobiles(pCreatureObject, prefix))
+					end)
+				end)
+
+				describe("and the prefix is in use", function()
+					before_each(function()
+						SpawnMobiles.isPrefixFree = spy.new(function() return false end)
+					end)
+
+					it("Should call the getSpawnedMobilesPointersList function.", function()
+					SpawnMobiles.getSpawnedMobiles(pCreatureObject, prefix)
+
+					assert.spy(SpawnMobiles.getSpawnedMobilePointersList).was.called_with(pCreatureObject, prefix)
+					end)
+
+					it("Should return a list with pointers to the spawned mobiles.", function()
+						assert.same(spawnedMobilesList, SpawnMobiles.getSpawnedMobiles(pCreatureObject, prefix))
+					end)
 				end)
 			end)
 		end)
@@ -686,56 +736,6 @@ describe("Spawn Mobile", function()
 					SpawnMobiles.saveSpawnedEncounterObjects(pCreatureObject, prefix, spawnedMobilesList)
 
 					assert.spy(writeData).was.called(7)
-				end)
-			end)
-		end)
-
-		describe("getSpawnedMobilesList", function()
-			describe("When called with a player and a prefix", function()
-				local realIsPrefixFree
-				local realGetSpawnedMobilePointersList
-
-				setup(function()
-					realIsPrefixFree = SpawnMobiles.isPrefixFree
-					realGetSpawnedMobilePointersList = SpawnMobiles.getSpawnedMobilePointersList
-				end)
-
-				teardown(function()
-					SpawnMobiles.isPrefixFree = realIsPrefixFree
-					SpawnMobiles.getSpawnedMobilePointersList = realGetSpawnedMobilePointersList
-				end)
-
-				before_each(function()
-					SpawnMobiles.isPrefixFree = spy.new(function() return true end)
-					SpawnMobiles.getSpawnedMobilePointersList = spy.new(function() return spawnedMobilesList end)
-				end)
-
-				it("Should check if the prefix is in use.", function()
-					SpawnMobiles.getSpawnedMobilesList(pCreatureObject, prefix)
-
-					assert.spy(SpawnMobiles.isPrefixFree).was.called_with(pCreatureObject, prefix)
-				end)
-
-				describe("and the prefix is not in use", function()
-					it("Should return nil.", function()
-						assert.is_nil(SpawnMobiles.getSpawnedMobilesList(pCreatureObject, prefix))
-					end)
-				end)
-
-				describe("and the prefix is in use", function()
-					before_each(function()
-						SpawnMobiles.isPrefixFree = spy.new(function() return false end)
-					end)
-
-					it("Should call the getSpawnedMobilesPointersList function.", function()
-					SpawnMobiles.getSpawnedMobilesList(pCreatureObject, prefix)
-
-					assert.spy(SpawnMobiles.getSpawnedMobilePointersList).was.called_with(pCreatureObject, prefix)
-					end)
-
-					it("Should return a list with pointers to the spawned mobiles.", function()
-						assert.same(spawnedMobilesList, SpawnMobiles.getSpawnedMobilesList(pCreatureObject, prefix))
-					end)
 				end)
 			end)
 		end)
