@@ -16,7 +16,7 @@ function SpawnMobilesMocks.mocks.teardown()
 end
 
 function SpawnMobilesMocks.mocks.before_each()
-	SpawnMobiles.spawnMobiles = spy.new(function() end)
+	SpawnMobiles.spawnMobiles = spy.new(function() return nil end)
 	SpawnMobiles.despawnMobiles = spy.new(function() end)
 end
 

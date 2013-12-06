@@ -37,11 +37,12 @@ end
 -- An error will be issued if the function is nil.
 -- @param theFunction the function to call.
 -- @param argument the argument to use for the function.
-function Task:callFunctionIfNotNil(theFunction,  argument)
+function Task:callFunctionIfNotNil(theFunction, ...)
 	if theFunction ~= nil then
-		theFunction(self, argument)
+		return theFunction(self, unpack(arg))
 	else
-		--error("The function to call is nil in " .. Task.taskName .. ".", 2)
+		error("The function to call is nil in " .. Task.taskName .. ".", 2)
+		return nil
 	end
 end
 
