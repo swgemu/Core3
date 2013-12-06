@@ -167,6 +167,8 @@ function SpawnMobiles.generateMobileObjects(pCreatureObject, prefix, mobileList,
 	if spawnedObjects ~= nil then
 		SpawnMobiles.saveSpawnedMobileObjects(pCreatureObject, prefix, spawnedObjects)
 	end
+
+	return spawnedObjects
 end
 
 -- Spawn the mobiles with the supplied prefix.

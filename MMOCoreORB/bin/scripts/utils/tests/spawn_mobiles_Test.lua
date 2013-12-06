@@ -554,6 +554,10 @@ describe("Spawn Mobile", function()
 
 					assert.spy(SpawnMobiles.saveSpawnedMobileObjects).was.called_with(pCreatureObject, prefix, spawnedMobilesList)
 				end)
+
+				it("Should return a list with pointers to the spawned mobiles.", function()
+					assert.same(spawnedMobilesList, SpawnMobiles.generateMobileObjects(pCreatureObject, prefix, spawnList, spawnPoints))
+				end)
 			end)
 
 			describe("and non of the objects could be spawned", function()
@@ -565,6 +569,10 @@ describe("Spawn Mobile", function()
 					SpawnMobiles.generateMobileObjects(pCreatureObject, prefix, spawnList, spawnPoints)
 
 					assert.spy(SpawnMobiles.saveSpawnedMobileObjects).was.not_called()
+				end)
+
+				it("Should return nil.", function()
+					assert.is_nil(SpawnMobiles.generateMobileObjects(pCreatureObject, prefix, spawnList, spawnPoints))
 				end)
 			end)
 		end)
