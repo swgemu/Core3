@@ -85,10 +85,10 @@ class GroupManager : public Singleton<GroupManager>, public Object {
 public:
 	GroupManager();
 
-	void inviteToGroup(CreatureObject* leader, CreatureObject* player);
+	void inviteToGroup(CreatureObject* leader, CreatureObject* target);
 	void joinGroup(CreatureObject* player);
 
-	void kickFromGroup(ManagedReference<GroupObject*> group, CreatureObject* player, CreatureObject* playerToKick);
+	void kickFromGroup(ManagedReference<GroupObject*> group, CreatureObject* player, CreatureObject* memberToKick);
 	void leaveGroup(ManagedReference<GroupObject*> group, CreatureObject* player);
 	void makeLeader(GroupObject* group, CreatureObject* player, CreatureObject* newLeader);
 
