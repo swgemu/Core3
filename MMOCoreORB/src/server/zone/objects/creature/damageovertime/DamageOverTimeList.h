@@ -11,7 +11,7 @@
 #include "engine/engine.h"
 #include "DamageOverTime.h"
 
-class DamageOverTimeList : public VectorMap<uint64, Vector<DamageOverTime> > {
+class DamageOverTimeList : private VectorMap<uint64, Vector<DamageOverTime> > {
 protected:
 	Time nextTick;
 	bool dot;
@@ -27,6 +27,14 @@ public:
 
 		nextTick = list.nextTick;
 		dot = list.dot;
+	}
+
+	bool toBinaryStream(ObjectOutputStream* stream) {
+		return VectorMap<uint64, Vector<DamageOverTime> >::toBinaryStream(stream);
+	}
+
+	bool parseFromBinaryStream(ObjectInputStream* stream) {
+		return VectorMap<uint64, Vector<DamageOverTime> >::parseFromBinaryStream(stream);
 	}
 
 	uint64 activateDots(CreatureObject* victim);

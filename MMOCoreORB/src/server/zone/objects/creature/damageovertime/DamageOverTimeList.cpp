@@ -43,8 +43,10 @@ uint64 DamageOverTimeList::activateDots(CreatureObject* victim) {
 			if (!dot->isPast()) {
 				states |= dot->getType();
 			} else {
-				vector->remove(j);
-				--j;
+				if (i < size()) {
+					vector->remove(j);
+					--j;
+				}
 			}
 		}
 	}
