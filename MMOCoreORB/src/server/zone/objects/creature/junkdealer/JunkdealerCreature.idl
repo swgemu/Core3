@@ -92,6 +92,8 @@ class JunkdealerCreature extends CreatureObject {
 	public JunkdealerCreature() {
 		Logger.setLoggingName("JunkdealerCreature");
 
+		junkDealerConversationType = 0;
+		junkDealerBuyerType = 0;
 	}
 	
 	@local

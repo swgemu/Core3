@@ -274,7 +274,7 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 			case 0: { //                   0  1             2            3            4            5            6            7            8            9            10           11           12           13           14           15           16           17           18
 				String chatResponses[] = {"","s_84a67771", "s_24f30320","s_e8ceb290","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","start_trading","start_trading","start_trading","start_trading"};
 
-				if (getJunkDealerConversationType() < 20)
+				if (getJunkDealerConversationType() < 20 && getJunkDealerConversationType() >= 0)
 					sendConversationTerminate(player,stffile,chatResponses[getJunkDealerConversationType()]);
 				else
 					throw ArrayIndexOutOfBoundsException(getJunkDealerConversationType());
@@ -285,7 +285,7 @@ void JunkdealerCreatureImplementation::selectConversationOption(int option, Scen
 			case 1: {
 				String chatResponses[] = {"","s_4bd9d15e", "s_df5bd64e","s_1eb9feb7","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","s_84a67771","goodbye","goodbye","goodbye","goodbye"};
 
-				if (getJunkDealerConversationType() < 20)
+				if (getJunkDealerConversationType() < 20 && getJunkDealerConversationType() >= 0)
 					sendConversationTerminate(player,stffile,chatResponses[getJunkDealerConversationType()]);
 				else
 					throw ArrayIndexOutOfBoundsException(getJunkDealerConversationType());
