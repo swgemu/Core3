@@ -115,7 +115,7 @@ function NightSisterStrongholdScreenPlay:spawnMobiles()
 	spawnMobile("dathomir", "nightsister_slave",120,-15.0,7.2,-14.3,3,189384)
 
 	--in the cave
-	spawnMobile("dathomir", "axkva_min",6400,-90.5,-101,-102.2,172,4115629)
+	spawnMobileRandom("dathomir", "axkva_min",6400,-90.5,-101,-102.2,172,4115629)
 	spawnMobile("dathomir", "nightsister_protector",1200,-98.1117,-102.689,-131.572,7,4115626)
 	spawnMobile("dathomir", "nightsister_sentinel",720,-89.6414,-100.547,-149.769,2,4115626)
 	spawnMobile("dathomir", "nightsister_sentinel",720,-28.3439,-80.1922,-151.496,7,4115628)
