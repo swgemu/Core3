@@ -1,7 +1,7 @@
 --If this convo has errors - Loc-nar
-biogenic_construction_convoConversationTemplate = ConvoTemplate:new {
+biogenic_construction_ConversationTemplate = ConvoTemplate:new {
 	initialScreen = "screenconvo1",
-	templateType = "lua",
+	templateType = "Normal",
 	luaClassHandler = "",
 	screens = {}
 
@@ -17,7 +17,7 @@ screenconvo1 = ConvoScreen:new {
 	}
 }
 
-biogenic_construction_convoConversationTemplate:addScreen(screenconvo1);
+biogenic_construction_ConversationTemplate:addScreen(screenconvo1);
 
 screenconvo2 = ConvoScreen:new {
 	id = "screenconvo2",
@@ -28,7 +28,7 @@ screenconvo2 = ConvoScreen:new {
 	}
 }
 
-biogenic_construction_convoConversationTemplate:addScreen(screenconvo2);
+biogenic_construction_ConversationTemplate:addScreen(screenconvo2);
 
 screenconvo3 = ConvoScreen:new {
 	id = "screenconvo3",
@@ -39,7 +39,7 @@ screenconvo3 = ConvoScreen:new {
 	}
 }
 
-biogenic_construction_convoConversationTemplate:addScreen(screenconvo3);
+biogenic_construction_ConversationTemplate:addScreen(screenconvo3);
 
 screenconvo4 = ConvoScreen:new {
 	id = "screenconvo4",
@@ -50,7 +50,7 @@ screenconvo4 = ConvoScreen:new {
 	}
 }
 
-biogenic_construction_convoConversationTemplate:addScreen(screenconvo4);
+biogenic_construction_ConversationTemplate:addScreen(screenconvo4);
 
 screenconvo5 = ConvoScreen:new {
 	id = "screenconvo5",
@@ -61,7 +61,7 @@ screenconvo5 = ConvoScreen:new {
 	}
 }
 
-biogenic_construction_convoConversationTemplate:addScreen(screenconvo5);
+biogenic_construction_ConversationTemplate:addScreen(screenconvo5);
 
 screenconvo6 = ConvoScreen:new {
 	id = "screenconvo6",
@@ -72,7 +72,7 @@ screenconvo6 = ConvoScreen:new {
 	}
 }
 
-biogenic_construction_convoConversationTemplate:addScreen(screenconvo6);
+biogenic_construction_ConversationTemplate:addScreen(screenconvo6);
 
 screenconvo7 = ConvoScreen:new {
 	id = "screenconvo7",
@@ -83,7 +83,7 @@ screenconvo7 = ConvoScreen:new {
 	}
 }
 
-biogenic_construction_convoConversationTemplate:addScreen(screenconvo7);
+biogenic_construction_ConversationTemplate:addScreen(screenconvo7);
 
 screenconvo8 = ConvoScreen:new {
 	id = "screenconvo8",
@@ -94,7 +94,7 @@ screenconvo8 = ConvoScreen:new {
 	}
 }
 
-biogenic_construction_convoConversationTemplate:addScreen(screenconvo8);
+biogenic_construction_ConversationTemplate:addScreen(screenconvo8);
 
 screenconvo9 = ConvoScreen:new {
 	id = "screenconvo9",
@@ -105,7 +105,7 @@ screenconvo9 = ConvoScreen:new {
 	}
 }
 
-biogenic_construction_convoConversationTemplate:addScreen(screenconvo9);
+biogenic_construction_ConversationTemplate:addScreen(screenconvo9);
 
 screenconvo10 = ConvoScreen:new {
 	id = "screenconvo10",
@@ -116,7 +116,7 @@ screenconvo10 = ConvoScreen:new {
 	}
 }
 
-biogenic_construction_convoConversationTemplate:addScreen(screenconvo10);
+biogenic_construction_ConversationTemplate:addScreen(screenconvo10);
 
 screenconvo11 = ConvoScreen:new {
 	id = "screenconvo11",
@@ -127,8 +127,8 @@ screenconvo11 = ConvoScreen:new {
 	}
 }
 
-biogenic_construction_convoConversationTemplate:addScreen(screenconvo11);
+biogenic_construction_ConversationTemplate:addScreen(screenconvo11);
 
-addConversationTemplate("biogenic_construction_convoConversationTemplate", biogenic_construction_convoConversationTemplate);
+addConversationTemplate("biogenic_construction_ConversationTemplate", biogenic_construction_ConversationTemplate);
 
 

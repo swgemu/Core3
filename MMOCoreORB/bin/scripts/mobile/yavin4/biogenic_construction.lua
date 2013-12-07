@@ -31,7 +31,7 @@ biogenic_construction = Creature:new {
 		"object/mobile/dressed_geonosian_scientist_02.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "biogenic_construction_convoConversationTemplate",
+	conversationTemplate = "biogenic_construction_ConversationTemplate",
 	attacks = {}
 }
 
