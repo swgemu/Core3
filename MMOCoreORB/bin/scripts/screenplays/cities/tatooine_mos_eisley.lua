@@ -245,7 +245,7 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "jawa",60,3475.25,4.93605,-4852.73,96.6921,0)
 	spawnMobile("tatooine", "jawa",60,3451.49,4.87154,-4524.17,186.748,0)
 	spawnMobile("tatooine", "jawa",60,3654.1,5,-4784.9,150,0)
-	spawnMobile("tatooine", "jawa",60,3657.01,5,-4812.31,10.3887,0)
+	spawnMobile("tatooine", "jawa",60,3655.6,5,-4785,-116,0)
 	spawnMobile("tatooine", "jawa",60,3654.8,5,-4786.2,-25,0)
 	--{"jawa_engineer",60,3661.1,5,-4748.9,230,0, "npc_use_terminal_high", ""},
 	spawnMobile("tatooine", "jawa_henchman",60,3663,5,-4858.6,348,0)
