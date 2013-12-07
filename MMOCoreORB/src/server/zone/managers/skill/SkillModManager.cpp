@@ -55,6 +55,7 @@ SkillModManager::SkillModManager()
 		: Logger("SkillModManager") {
 	skillModMin.setNullValue(0);
 	skillModMax.setNullValue(0);
+	disabledWearableSkillMods.setNoDuplicateInsertPlan();
 	init();
 }
 
@@ -78,23 +79,35 @@ void SkillModManager::init() {
 	if (!skillLimits.isValidTable()) {
 		error("Invalid configuration");
 		setDefaults();
-		return;
+	} else {
+
+		for(int i = 1; i <= skillLimits.getTableSize(); ++i) {
+			LuaObject entry = skillLimits.getObjectAt(i);
+
+			uint32 type = entry.getIntAt(1);
+			int min = entry.getIntAt(2);
+			int max = entry.getIntAt(3);
+
+			skillModMin.put(type, min);
+			skillModMax.put(type, max);
+
+			entry.pop();
+		}
+
+		skillLimits.pop();
 	}
 
-	for(int i = 1; i <= skillLimits.getTableSize(); ++i) {
-		LuaObject entry = skillLimits.getObjectAt(i);
+	LuaObject disabledMods = lua->getGlobalObject("disabledWearableSkillMods");
 
-		uint32 type = entry.getIntAt(1);
-		int min = entry.getIntAt(2);
-		int max = entry.getIntAt(3);
+	if (disabledMods.isValidTable()) {
+		for(int i = 1; i <= disabledMods.getTableSize(); ++i) {
+			String mod = disabledMods.getStringAt(i);
+			disabledWearableSkillMods.put(mod);
+		}
 
-		skillModMin.put(type, min);
-		skillModMax.put(type, max);
-
-		entry.pop();
+		disabledMods.pop();
 	}
 
-	skillLimits.pop();
 	delete lua;
 	lua = NULL;
 	return;
@@ -139,6 +152,10 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 
 				for (int j = 0; j < wearableSkillMods->size(); ++j) {
 					String name = wearableSkillMods->elementAt(j).getKey();
+
+					if (isWearableModDisabled(name))
+						continue;
+
 					int value = wearableSkillMods->get(name);
 
 					if(mods.contains(name)) {
@@ -156,6 +173,10 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 
 				for (int j = 0; j < wearableSkillMods->size(); ++j) {
 					String name = wearableSkillMods->elementAt(j).getKey();
+
+					if (isWearableModDisabled(name))
+						continue;
+
 					int value = wearableSkillMods->get(name);
 
 					if(mods.contains(name)) {
@@ -173,6 +194,10 @@ void SkillModManager::verifyWearableSkillMods(CreatureObject* creature) {
 
 				for (int j = 0; j < wearableSkillMods->size(); ++j) {
 					String name = wearableSkillMods->elementAt(j).getKey();
+
+					if (isWearableModDisabled(name))
+						continue;
+
 					int value = wearableSkillMods->get(name);
 
 					if(mods.contains(name)) {

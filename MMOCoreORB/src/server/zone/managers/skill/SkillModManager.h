@@ -109,6 +109,7 @@ public:
 private:
 	VectorMap<uint32, int> skillModMax;
 	VectorMap<uint32, int> skillModMin;
+	SortedVector<String> disabledWearableSkillMods;
 public:
 	SkillModManager();
 	~SkillModManager();
@@ -137,6 +138,10 @@ public:
 
 	inline int getMaxSkill(const uint32 modType) {
 		return skillModMax.get(modType);
+	}
+
+	inline bool isWearableModDisabled(String mod) {
+		return disabledWearableSkillMods.contains(mod);
 	}
 };
 
