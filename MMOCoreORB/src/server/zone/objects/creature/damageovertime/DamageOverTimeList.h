@@ -11,7 +11,7 @@
 #include "engine/engine.h"
 #include "DamageOverTime.h"
 
-class DamageOverTimeList : public VectorMap<uint64, Vector<DamageOverTime> > {
+class DamageOverTimeList : private VectorMap<uint64, Vector<DamageOverTime> > {
 protected:
 	Time nextTick;
 	bool dot;
