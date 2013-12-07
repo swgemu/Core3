@@ -46,6 +46,11 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 		menuResponse->addRadialMenuItemToRadialID(141, 164, 3, "@pet/pet_menu:menu_store" );
 		menuResponse->addRadialMenuItemToRadialID(141, 165, 3, "@pet/pet_menu:menu_follow_other" );
 
+		ManagedReference<DroidObject*> droidObject = dynamic_cast<DroidObject*>(controlDevice->getControlledObject());
+		if( droidObject != NULL && droidObject->isPowerDroid() ){
+			menuResponse->addRadialMenuItemToRadialID(141, 235, 3, "@pet/pet_menu:menu_recharge_other" );
+		}
+
 	}
 	// FACTION
 	else if( controlDevice->getPetType() == PetControlDevice::FACTIONPET ){
@@ -157,8 +162,13 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 	if (selectedID == 234 ){
 		ManagedReference<DroidObject*> droidObject = dynamic_cast<DroidObject*>(petControlDevice->getControlledObject());
 		if( droidObject != NULL ){
-			return droidObject->handleRechargeDroid(player);
+			return droidObject->rechargeFromBattery(player);
 		}
+	}
+
+	// Trained Command: Recharge Other
+	if (selectedID == 235 ){
+		petControlDevice->setTrainingCommand( PetControlDevice::RECHARGEOTHER );
 	}
 
 	// Train Command: Follow

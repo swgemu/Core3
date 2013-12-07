@@ -70,7 +70,7 @@ void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 
 }
 
-int DroidObjectImplementation::handleRechargeDroid(CreatureObject* player){
+int DroidObjectImplementation::rechargeFromBattery(CreatureObject* player){
 
 	// Find droid battery in player inventory
 	ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
@@ -106,40 +106,43 @@ int DroidObjectImplementation::handleRechargeDroid(CreatureObject* player){
 	// Consume battery
 	batteryTano->decreaseUseCount();
 
-	// TODO: Temporarily autofollow player
-	setFollowObject( player );
-
 	showFlyText("npc_reaction/flytext","recharged", 0, 153, 0);  // "*Recharged*"
+	doAnimation("power_up");
 	return 0;
 
 }
 
-int DroidObjectImplementation::handleStoreDroid(CreatureObject* player){
-	unlock();
+void DroidObjectImplementation::rechargeFromDroid(){
 
-	try {
-		ManagedReference<ControlDevice* > strongRef = controlDevice.get();
+	// Reset power to max
+	power = MAX_POWER;
 
-		if (strongRef != NULL)
-			strongRef->storeObject(player);
-	} catch (Exception& e) {
+	showFlyText("npc_reaction/flytext","recharged", 0, 153, 0);  // "*Recharged*"
+	doAnimation("power_up");
+	return;
 
-	} catch (...) {
-		wlock(player);
+}
 
-		throw;
-	}
+void DroidObjectImplementation::rechargeOtherDroid(DroidObject* otherDroid){
 
-	wlock(player);
-	return 0;
+	otherDroid->rechargeFromDroid();
+	usePower(100);
+
 }
 
 void DroidObjectImplementation::handleLowPower(){
 
 	// Send fly text
 	showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
+	doAnimation("power_down");
 
 	// Stop following
 	setOblivious();
 	return;
+}
+
+bool DroidObjectImplementation::isPowerDroid(){
+
+	return getObjectTemplate()->getFullTemplateString().contains( "eg_6_power_droid" );
+
 }
