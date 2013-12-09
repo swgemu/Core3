@@ -6,6 +6,7 @@
 -- To spawn the the mobiles, call the spawnMobiles function with the appropriate arguments. The format of the arguments are described below.
 -- This function will return a list with pointers to all spawned mobiles.
 -- To despawn the mobiles, call the despawnMobiles function with the appropriate arguments.
+-- To get a list with all spawned mobiles, call the getSpawnedMobiles function with the approprate arguments.
 --
 -- Arguments:
 -- prefix - a string used to store the id of all spawned mobiles. The information will not be stored persistent.
@@ -213,7 +214,7 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param prefix the prefix to read the spawned mobiles from.
 -- @return a list with pointers to the spawned mobiles or nil if none have been spawned.
-function SpawnMobiles.getSpawnedMobilesList(pCreatureObject, prefix)
+function SpawnMobiles.getSpawnedMobiles(pCreatureObject, prefix)
 	if not SpawnMobiles.isPrefixFree(pCreatureObject, prefix) then
 		return SpawnMobiles.getSpawnedMobilePointersList(pCreatureObject, prefix)
 	else
@@ -249,7 +250,7 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param prefix the prefix to use for reading information about the mobiles to despawn.
 function SpawnMobiles.despawnMobiles(pCreatureObject, prefix)
-	SpawnMobiles.despawnMobilesInList(SpawnMobiles.getSpawnedMobilesList(pCreatureObject, prefix))
+	SpawnMobiles.despawnMobilesInList(SpawnMobiles.getSpawnedMobiles(pCreatureObject, prefix))
 	ObjectManager.withSceneObject(pCreatureObject, function(sceneObject)
 		writeData(sceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. IN_USE_STRING, PREFIX_FREE)
 	end)
