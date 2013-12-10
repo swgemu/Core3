@@ -1,4 +1,4 @@
---If this convo has errors - Loc-nar
+--If this convo has errors - Loc-nar this is the NPC behind the Fire Spider gives key code to scientist room 51892
 biogenic_construction_ConversationTemplate = ConvoTemplate:new {
 	initialScreen = "screenconvo1",
 	templateType = "Normal",
