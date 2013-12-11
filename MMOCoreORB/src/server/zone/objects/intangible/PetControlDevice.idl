@@ -192,14 +192,14 @@ class PetControlDevice extends ControlDevice {
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
 	
 	/**
-	 * Handles spatial chat messages near the pet
+	 * Handles chat messages to the pet
 	 * @pre { }
 	 * @post { }
 	 * @param object player creature speaking
 	 * @param string chat message
 	 */
 	@local
-	public native void handleSpatialChat(CreatureObject speaker, final string message);
+	public native void handleChat(CreatureObject speaker, final string message);
 	
 	/**
 	 * Handles follow command
