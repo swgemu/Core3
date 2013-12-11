@@ -3,7 +3,7 @@ librarian = Creature:new {
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
-	level = 6,
+	level = 1,
 	chanceHit = 0.25,
 	damageMin = 50,
 	damageMax = 55,
@@ -22,14 +22,15 @@ librarian = Creature:new {
 	tamingChance = 0,
 	ferocity = 0,
 	pvpBitmask = NONE,
-	creatureBitmask = HERD,
-	optionsBitmask = 128,
+	creatureBitmask = NONE,
+	optionsBitmask = 136,
 	diet = HERBIVORE,
 
-	templates = {},
+	-- TODO: Find correct template
+	templates = {"object/mobile/dressed_theed_palace_chamberlain.iff"},
 	lootGroups = {},
 	weapons = {},
-	conversationTemplate = "",
+	conversationTemplate = "librarian_convotemplate",
 	attacks = {
 	}
 }
