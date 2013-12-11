@@ -16,13 +16,15 @@ private:
 	int originalMask;
 	ManagedReference<Creature*> creature;
 	ManagedReference<CreatureObject*> player;
+	bool force;
 
 public:
-	TameCreatureTask(Creature* cre, CreatureObject* playo, int pvpMask) : Task() {
+	TameCreatureTask(Creature* cre, CreatureObject* playo, int pvpMask, bool forced) : Task() {
 		currentPhase = INITIAL;
 		creature = cre;
 		player = playo;
 		originalMask = pvpMask;
+		force = forced;
 	}
 
 	void run() {
@@ -31,6 +33,11 @@ public:
 		Locker _clocker(player, creature);
 
 		player->removePendingTask("tame_pet");
+
+		if (force) {
+			success(player, creature);
+			return;
+		}
 
 		if (!creature->isInRange(player, 8.0f)) {
 			player->sendSystemMessage("@hireling/hireling:taming_toofar"); // You are too far away to continue taming.
