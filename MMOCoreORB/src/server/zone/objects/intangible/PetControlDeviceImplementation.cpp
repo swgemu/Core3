@@ -638,7 +638,7 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 
 }
 
-void PetControlDeviceImplementation::handleSpatialChat(CreatureObject* speaker, const String& message){
+void PetControlDeviceImplementation::handleChat(CreatureObject* speaker, const String& message){
 
 	// Handle command training
 	if( trainingCommand > 0 ){

@@ -46,6 +46,9 @@ which carries forward this exception.
 #define TELLPETCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 
 class TellpetCommand : public QueueCommand {
 public:
@@ -62,6 +65,25 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		ManagedReference<PlayerObject*> player = creature->getPlayerObject();
+		if( player == NULL )
+			return GENERALERROR;
+
+		// Send message to all player's pets within range
+		for (int i = 0; i < player->getActivePetsSize(); ++i) {
+
+			ManagedReference<AiAgent*> pet = player->getActivePet(i);
+			if (pet != NULL) {
+
+				ManagedReference<PetControlDevice*> petControlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
+				if( petControlDevice != NULL && creature->isInRange( pet, 150.0 ) ){
+
+					Locker clocker(pet, creature);
+					petControlDevice->handleChat( creature, arguments.toString() );
+				}
+			}
+		}
 
 		return SUCCESS;
 	}

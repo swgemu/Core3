@@ -512,7 +512,7 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 							continue;
 
 						Locker clocker(aiAgent, player);
-						petControlDevice->handleSpatialChat( player, message.toString() );
+						petControlDevice->handleChat( player, message.toString() );
 
 					}
 
