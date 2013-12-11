@@ -47,6 +47,7 @@ function TatooineWayfarScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "trainer_bountyhunter",0,19,-0.894,-17,0,1134561)
 	--{"yondalla",60,20.1921,-0.894996,-19.0778,25.109,1134561, "calm", "Yondalla"},
 	--{"farmer",60,-25.6583,-0.894991,24.4065,134.995,1134569, "conversation", ""},
+	spawnMobile("tatooine", "informant_npc_lvl_1",0,-5216,75,-6563,270,0)
 	spawnMobile("tatooine", "informant_npc_lvl_3",0,-31.4241,-0.894991,19.0307,70,1134569)
 	--{"rodian_clan_captain",60,-24.5583,-0.894991,23.3065,360.011,1134569, "conversation", ""},
 	--{"rodian_clan_warchief",60,-24.5583,-0.894991,24.4065,179.993,1134569, "conversation", ""},

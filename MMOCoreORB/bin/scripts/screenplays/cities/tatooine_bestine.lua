@@ -52,7 +52,7 @@ function TatooineBestineScreenPlay:spawnMobiles()
 	--Imperial Mini Base -1136 -3901
 	--{"imperial_sergeant",400,-2.3,0,-3.9,13,1279924, "npc_use_terminal_high", ""},
 	--{"imperial_first_lieutenant",400,3.9,0,0.5,180,1279922, "npc_sitting_table", ""},
-	spawnMobile("tatooine", "imperial_recruiter",0,-1138,0,-3897,0,0)
+	spawnMobile("tatooine", "imperial_recruiter",0,-1138,98,-3897,0,0)
 
 	--Inside a House -1346 -3891
 	--{"farious_gletch",60,1.7,-0.4,-5.5,315,1278989, "calm", "Farious Gletch"},
