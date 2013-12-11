@@ -385,6 +385,7 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "trainer_medic",0,3522,5,-4774,200,0)
 	spawnMobile("tatooine", "trainer_musician",0,3393,5,-4791,300,0)
 	--{"trainer_pistol",0,3358.6,5,-4841.3,36,0, "npc_sitting_chair", ""},
+	spawnMobile("tatooine", "trainer_rifleman",0,3426,5,-4917,0,0)
 	spawnMobile("tatooine", "trainer_scout",0,3519.76,5,-4786.9,77,0)
 	--{"trainer_smuggler",0,3401,5,-4879,340,0, "worried", ""},
 end
