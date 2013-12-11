@@ -15,8 +15,8 @@ end
 
 function EmperorsRetreatScreenPlay:spawnSceneObjects()
 	local elevatorUp = spawnSceneObject("naboo", "object/tangible/terminal/terminal_elevator_up.iff", 13, 1, -36, 1418877, 1, 0, 0, 0)
-	spawnSceneObject("naboo", "object/tangible/terminal/terminal_elevator_down.iff", 13, 21, -36, 1418877, 1, 0, 0, 0)
-	
+	spawnSceneObject("naboo", "object/tangible/terminal/terminal_elevator_down.iff", 13, 20.5, -36, 1418877, 1, 0, 0, 0)
+
 	if (elevatorUp ~= nil) then
 		local terminal = LuaSceneObject(elevatorUp)
 		terminal:setObjectMenuComponent("EmperorElevatorMenuComponent")
