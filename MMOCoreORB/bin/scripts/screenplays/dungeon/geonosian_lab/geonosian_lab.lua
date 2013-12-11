@@ -1,7 +1,14 @@
-geonosian_lab_screenplay = ScreenPlay:new {
+--Additional Includes
+includeFile("dungeon/geonosian_lab/biogenic_scientist_geonosian_convo_handler.lua")
+includeFile("dungeon/geonosian_lab/biogenic_scientist_human_convo_handler.lua")
+
+
+geonosian_labscreenplay = ScreenPlay:new {
 	numberOfActs = 1,
 	
 	states = {
+		datapad = {started = 1, done = 2},
+		tenloss = {started = 4, noreward = 8, done = 16}		
 	},
 	
 	keypadCodes = {
@@ -54,15 +61,20 @@ geonosian_lab_screenplay = ScreenPlay:new {
 	debrisS5 = {x = -74.1, z = -22.5, y = -110.7, cell = 1627792, respawn = 240000}, 
 	
 	
-	poisonShutoffDuration = 30000 --30 seconds
+	poisonShutoffDuration = 30000, --30 seconds
+	
+	geoDatapad = "object/tangible/loot/dungeon/geonosian_mad_bunker/engineering_datapad.iff",
+
+	geoTenloss = "object/tangible/loot/loot_schematic/geonosian_tenloss_dxr6_schematic.iff"
+
 }
 
-registerScreenPlay("geonosian_lab_screenplay", true)
+registerScreenPlay("geonosian_labscreenplay", true)
 
 --------------------------------------
 --   Initialize screenplay           -
 --------------------------------------
-function geonosian_lab_screenplay:start()
+function geonosian_labscreenplay:start()
 	if (isZoneEnabled("yavin4")) then
 		self:spawnActiveAreas()
 		self:spawnSceneObjects()
@@ -70,14 +82,14 @@ function geonosian_lab_screenplay:start()
 	end
 end
 
-function geonosian_lab_screenplay:spawnActiveAreas()
+function geonosian_labscreenplay:spawnActiveAreas()
 	local pPoisonCloudAA = spawnSceneObject("yavin4", "object/active_area.iff", -6435.5, 85.6, -367, 0, 0, 0, 0, 0)
 	
 	if (pPoisonCloudAA ~= nil) then
 		local activeArea = LuaActiveArea(pPoisonCloudAA)
 		activeArea:setCellObjectID(1627783)
 		activeArea:setRadius(10)
-		createObserver(ENTEREDAREA, "geonosian_lab_screenplay", "notifyEnteredPoisonGas", pPoisonCloudAA)
+		createObserver(ENTEREDAREA, "geonosian_labscreenplay", "notifyEnteredPoisonGas", pPoisonCloudAA)
 	end
 
 
@@ -89,7 +101,7 @@ function geonosian_lab_screenplay:spawnActiveAreas()
 		local activeArea = LuaActiveArea(pPoisonCloudBB)
 		activeArea:setCellObjectID(1627822)
 		activeArea:setRadius(4)
-		createObserver(ENTEREDAREA, "geonosian_lab_screenplay", "notifyEnteredPoisonGasStrong", pPoisonCloudBB)
+		createObserver(ENTEREDAREA, "geonosian_labscreenplay", "notifyEnteredPoisonGasStrong", pPoisonCloudBB)
 	end
 
 
@@ -101,14 +113,14 @@ function geonosian_lab_screenplay:spawnActiveAreas()
 		local activeArea = LuaActiveArea(pElectroShock)
 		activeArea:setCellObjectID(1627813)
 		activeArea:setRadius(3)
-		createObserver(ENTEREDAREA, "geonosian_lab_screenplay", "notifyElectroShock", pElectroShock)
+		createObserver(ENTEREDAREA, "geonosian_labscreenplay", "notifyElectroShock", pElectroShock)
 	end
 end
 
 
 
 
-function geonosian_lab_screenplay:spawnSceneObjects()
+function geonosian_labscreenplay:spawnSceneObjects()
 	local pSceneObject = spawnSceneObject("yavin4", "object/tangible/dungeon/poison_gas_cloud.iff", 21.7, 3.3, -29.1, 1627783, 0, 0, 0, 0)
         --graphic for poison cloud in acklay room
 	local pSceneObject = spawnSceneObject("yavin4", "object/tangible/dungeon/poison_gas_cloud.iff", 37.6, -34.0, -334.7, 1627822, 0, 0, 0, 0)
@@ -116,11 +128,11 @@ function geonosian_lab_screenplay:spawnSceneObjects()
 	
 	--Building observer to lock all security doors.
 	local pBuilding = getSceneObject(self.geonosianLabObjectID)
-	createObserver(ENTEREDBUILDING, "geonosian_lab_screenplay", "notifyEnteredLab", pBuilding)
+	createObserver(ENTEREDBUILDING, "geonosian_labscreenplay", "notifyEnteredLab", pBuilding)
 	
 	--Gas Valve
 	pSceneObject = spawnSceneObject("yavin4", "object/tangible/dungeon/wall_terminal_s1.iff", 2.27, -1.9, -15.73, 1627824, 0.701707, 0, -0.701707, 0)
-	createObserver(OBJECTRADIALUSED, "geonosian_lab_screenplay", "notifyGasValveUsed", pSceneObject);
+	createObserver(OBJECTRADIALUSED, "geonosian_labscreenplay", "notifyGasValveUsed", pSceneObject);
 	writeData("geonosian_lab:gasleak", 1) --set the gas leak as started
 	
 	
@@ -128,93 +140,93 @@ function geonosian_lab_screenplay:spawnSceneObjects()
 	pSceneObject = spawnSceneObject("yavin4", "object/tangible/dungeon/wall_terminal_s3.iff", -34, -18, -31, 1627784, 0.707107, 0, 0.707107, 0)
 	sceneObject:_setObject(pSceneObject)
 	writeData(sceneObject:getObjectID() .. ":geonosian_lab:keypad_index", 1)
-	createObserver(OBJECTRADIALUSED, "geonosian_lab_screenplay", "notifyKeypadUsed", pSceneObject)
+	createObserver(OBJECTRADIALUSED, "geonosian_labscreenplay", "notifyKeypadUsed", pSceneObject)
 	
 	pSceneObject = spawnSceneObject("yavin4", "object/tangible/dungeon/wall_terminal_s3.iff", -47, -18, -56, 1627785, 1, 0, 0, 0)
 	sceneObject:_setObject(pSceneObject)
 	writeData(sceneObject:getObjectID() .. ":geonosian_lab:keypad_index", 2)
-	createObserver(OBJECTRADIALUSED, "geonosian_lab_screenplay", "notifyKeypadUsed", pSceneObject)
+	createObserver(OBJECTRADIALUSED, "geonosian_labscreenplay", "notifyKeypadUsed", pSceneObject)
 	
 	pSceneObject = spawnSceneObject("yavin4", "object/tangible/dungeon/wall_terminal_s3.iff", -105, -18, -64, 1627789, 0, 0, -1, 0)
 	sceneObject:_setObject(pSceneObject)
 	writeData(sceneObject:getObjectID() .. ":geonosian_lab:keypad_index", 3)
-	createObserver(OBJECTRADIALUSED, "geonosian_lab_screenplay", "notifyKeypadUsed", pSceneObject)
+	createObserver(OBJECTRADIALUSED, "geonosian_labscreenplay", "notifyKeypadUsed", pSceneObject)
 	
 	pSceneObject = spawnSceneObject("yavin4", "object/tangible/dungeon/wall_terminal_s3.iff", -79, -22, -146, 1627804, 1, 0, 0, 0)
 	sceneObject:_setObject(pSceneObject)
 	writeData(sceneObject:getObjectID() .. ":geonosian_lab:keypad_index", 4)
-	createObserver(OBJECTRADIALUSED, "geonosian_lab_screenplay", "notifyKeypadUsed", pSceneObject)
+	createObserver(OBJECTRADIALUSED, "geonosian_labscreenplay", "notifyKeypadUsed", pSceneObject)
 	
 	pSceneObject = spawnSceneObject("yavin4", "object/tangible/dungeon/wall_terminal_s3.iff", -67, -34, -260, 1627811, 1, 0, 0, 0)
 	sceneObject:_setObject(pSceneObject)
 	writeData(sceneObject:getObjectID() .. ":geonosian_lab:keypad_index", 5)
-	createObserver(OBJECTRADIALUSED, "geonosian_lab_screenplay", "notifyKeypadUsed", pSceneObject)
+	createObserver(OBJECTRADIALUSED, "geonosian_labscreenplay", "notifyKeypadUsed", pSceneObject)
 	
 	pSceneObject = spawnSceneObject("yavin4", "object/tangible/dungeon/wall_terminal_s3.iff", -133, -34, -204, 1627814, 0, 0, -1, 0)
 	sceneObject:_setObject(pSceneObject)
 	writeData(sceneObject:getObjectID() .. ":geonosian_lab:keypad_index", 6)
-	createObserver(OBJECTRADIALUSED, "geonosian_lab_screenplay", "notifyKeypadUsed", pSceneObject)
+	createObserver(OBJECTRADIALUSED, "geonosian_labscreenplay", "notifyKeypadUsed", pSceneObject)
 	
 	pSceneObject = spawnSceneObject("yavin4", "object/tangible/dungeon/wall_terminal_s3.iff", -4, -34, -417, 1627821, 0.707107, 0, -0.707107, 0)
 	sceneObject:_setObject(pSceneObject)
 	writeData(sceneObject:getObjectID() .. ":geonosian_lab:keypad_index", 7)
-	createObserver(OBJECTRADIALUSED, "geonosian_lab_screenplay", "notifyKeypadUsed", pSceneObject)
+	createObserver(OBJECTRADIALUSED, "geonosian_labscreenplay", "notifyKeypadUsed", pSceneObject)
 	
 	pSceneObject = spawnSceneObject("yavin4", "object/tangible/dungeon/wall_terminal_s3.iff", 38, -34, -333, 1627822, 0.707107, 0, -0.707107, 0)
 	sceneObject:_setObject(pSceneObject)
 	writeData(sceneObject:getObjectID() .. ":geonosian_lab:keypad_index", 8)
-	createObserver(OBJECTRADIALUSED, "geonosian_lab_screenplay", "notifyKeypadUsed", pSceneObject)
+	createObserver(OBJECTRADIALUSED, "geonosian_labscreenplay", "notifyKeypadUsed", pSceneObject)
 	
 	--debri fields
 	--main rock wall
 	local pDebrisM = spawnSceneObject("yavin4", "object/static/destructible/destructible_cave_wall_damprock.iff", self.debrisM.x, self.debrisM.z, self.debrisM.y, self.debrisM.cell, 1, 0, 0, 0)
-	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisMDestroyed", pDebrisM)
+	createObserver(OBJECTDESTRUCTION, "geonosian_labscreenplay", "notifyDebrisMDestroyed", pDebrisM)
 	--acklay doorway
 	local pDebrisA1 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_drum_dented.iff", self.debrisA1.x, self.debrisA1.z, self.debrisA1.y, self.debrisA1.cell, 1, 0, 0, 0)
-	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisADestroyed", pDebrisA1)
+	createObserver(OBJECTDESTRUCTION, "geonosian_labscreenplay", "notifyDebrisADestroyed", pDebrisA1)
 
 	local pDebrisA2 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_drum_storage1.iff", self.debrisA2.x, self.debrisA2.z, self.debrisA2.y, self.debrisA2.cell, 1, 0, 0, 0)
-	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisADestroyed", pDebrisA2)
+	createObserver(OBJECTDESTRUCTION, "geonosian_labscreenplay", "notifyDebrisADestroyed", pDebrisA2)
 	
 	local pDebrisA3 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_drum_storage1.iff", self.debrisA3.x, self.debrisA3.z, self.debrisA3.y, self.debrisA3.cell, 1, 0, 0, 0)
-	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisADestroyed", pDebrisA3)
+	createObserver(OBJECTDESTRUCTION, "geonosian_labscreenplay", "notifyDebrisADestroyed", pDebrisA3)
 
 	local pDebrisA4 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_drum_storage1.iff", self.debrisA4.x, self.debrisA4.z, self.debrisA4.y, self.debrisA4.cell, 1, 0, 0, 0)
-	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisADestroyed", pDebrisA4)
+	createObserver(OBJECTDESTRUCTION, "geonosian_labscreenplay", "notifyDebrisADestroyed", pDebrisA4)
 	--hallway
 	local pDebrisH1 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_lg.iff", self.debrisH1.x, self.debrisH1.z, self.debrisH1.y, self.debrisH1.cell, 1, 0, 0, 0)
-	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisHDestroyed", pDebrisH1)
+	createObserver(OBJECTDESTRUCTION, "geonosian_labscreenplay", "notifyDebrisHDestroyed", pDebrisH1)
 
 	local pDebrisH2 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_med.iff", self.debrisH2.x, self.debrisH2.z, self.debrisH2.y, self.debrisH2.cell, 1, 0, 0, 0)
-	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisHDestroyed", pDebrisH2)
+	createObserver(OBJECTDESTRUCTION, "geonosian_labscreenplay", "notifyDebrisHDestroyed", pDebrisH2)
 
 	local pDebrisH3 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_med.iff", self.debrisH3.x, self.debrisH3.z, self.debrisH3.y, self.debrisH3.cell, 1, 0, 0, 0)
-	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisHDestroyed", pDebrisH3)
+	createObserver(OBJECTDESTRUCTION, "geonosian_labscreenplay", "notifyDebrisHDestroyed", pDebrisH3)
 
 	local pDebrisH4 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_med.iff", self.debrisH4.x, self.debrisH4.z, self.debrisH4.y, self.debrisH4.cell, 1, 0, 0, 0)
-	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisHDestroyed", pDebrisH4)
+	createObserver(OBJECTDESTRUCTION, "geonosian_labscreenplay", "notifyDebrisHDestroyed", pDebrisH4)
 
 	local pDebrisH5 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_med.iff", self.debrisH5.x, self.debrisH5.z, self.debrisH5.y, self.debrisH5.cell, 1, 0, 0, 0)
-	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisHDestroyed", pDebrisH5)
+	createObserver(OBJECTDESTRUCTION, "geonosian_labscreenplay", "notifyDebrisHDestroyed", pDebrisH5)
 	--spider hallway
 	local pDebrisS1 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_med.iff", self.debrisS1.x, self.debrisS1.z, self.debrisS1.y, self.debrisS1.cell, 1, 0, 0, 0)
-	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisSDestroyed", pDebrisS1)
+	createObserver(OBJECTDESTRUCTION, "geonosian_labscreenplay", "notifyDebrisSDestroyed", pDebrisS1)
 
 	local pDebrisS2 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_med.iff", self.debrisS2.x, self.debrisS2.z, self.debrisS2.y, self.debrisS2.cell, 1, 0, 0, 0)
-	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisSDestroyed", pDebrisS2)
+	createObserver(OBJECTDESTRUCTION, "geonosian_labscreenplay", "notifyDebrisSDestroyed", pDebrisS2)
 
 	local pDebrisS3 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_med.iff", self.debrisS3.x, self.debrisS3.z, self.debrisS3.y, self.debrisS3.cell, 1, 0, 0, 0)
-	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisSDestroyed", pDebrisS3)
+	createObserver(OBJECTDESTRUCTION, "geonosian_labscreenplay", "notifyDebrisSDestroyed", pDebrisS3)
 
 	local pDebrisS4 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_med.iff", self.debrisS4.x, self.debrisS4.z, self.debrisS4.y, self.debrisS4.cell, 1, 0, 0, 0)
-	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisSDestroyed", pDebrisS4)
+	createObserver(OBJECTDESTRUCTION, "geonosian_labscreenplay", "notifyDebrisSDestroyed", pDebrisS4)
 
 	local pDebrisS5 = spawnSceneObject("yavin4", "object/static/destructible/destructible_tato_cave_rock_lg.iff", self.debrisS5.x, self.debrisS5.z, self.debrisS5.y, self.debrisS5.cell, 1, 0, 0, 0)
-	createObserver(OBJECTDESTRUCTION, "geonosian_lab_screenplay", "notifyDebrisSDestroyed", pDebrisS5)
+	createObserver(OBJECTDESTRUCTION, "geonosian_labscreenplay", "notifyDebrisSDestroyed", pDebrisS5)
 
 end
 
-function geonosian_lab_screenplay:spawnMobiles()
+function geonosian_labscreenplay:spawnMobiles()
 	spawnMobile("yavin4", "biogenic_crazyguy", 1, -2.8, 10.8, 10.2, 69, 1627781)--biogen_crazy
 	spawnMobile("yavin4", "biogenic_securitytech", 1, -48, -18, -31, -180, 1627785)--biogen_security
         spawnMobile("yavin4", "biogenic_scientist_human", 1, 23.8, -32, -83.2, 130, 1627798)--biogen_human
@@ -314,7 +326,7 @@ function geonosian_lab_screenplay:spawnMobiles()
 	spawnMobile("yavin4", "mercenary_sentry",210,-82.2,-22,-155.1,106,1627805)
 end
 
-function geonosian_lab_screenplay:notifyGasValveUsed(pGasValve, pPlayer, radialSelected)
+function geonosian_labscreenplay:notifyGasValveUsed(pGasValve, pPlayer, radialSelected)
 	if (radialSelected == 20) then
 		local player = LuaCreatureObject(pPlayer)
 		local isGasLeaking = readData("geonosian_lab:gasleak")
@@ -322,26 +334,26 @@ function geonosian_lab_screenplay:notifyGasValveUsed(pGasValve, pPlayer, radialS
 		if (isGasLeaking == 1) then
 			player:sendSystemMessage("@dungeon/geonosian_madbio:gas_off") --You have shut off the gas leak.
 			writeData("geonosian_lab:gasleak", 0)
-			createEvent(self.poisonShutoffDuration, "geonosian_lab_screenplay", "restartGasLeak", pGasValve)
+			createEvent(self.poisonShutoffDuration, "geonosian_labscreenplay", "restartGasLeak", pGasValve)
 		else
 				player:sendSystemMessage("@dungeon/geonosian_madbio:gas_already_off") --The gas leak has already been repaired...
 		end
 	end
 end
 
-function geonosian_lab_screenplay:notifyKeypadUsed(pKeypad, pPlayer, radialSelected)
+function geonosian_labscreenplay:notifyKeypadUsed(pKeypad, pPlayer, radialSelected)
 	if (radialSelected == 20) then
 		--We need to show to the user the keypad sui.
 		local suiManager = LuaSuiManager()
-		suiManager:sendKeypadSui(pKeypad, pPlayer, "geonosian_lab_screenplay", "keypadSuiCallback")
+		suiManager:sendKeypadSui(pKeypad, pPlayer, "geonosian_labscreenplay", "keypadSuiCallback")
 	end
 end
 
-function geonosian_lab_screenplay:restartGasLeak(pGasLeak)
+function geonosian_labscreenplay:restartGasLeak(pGasLeak)
 	writeData("geonosian_lab:gasleak", 1)
 end
 
-function geonosian_lab_screenplay:keypadSuiCallback(pCreature, pSui, cancelPressed, enteredCode)
+function geonosian_labscreenplay:keypadSuiCallback(pCreature, pSui, cancelPressed, enteredCode)
 	local player = LuaCreatureObject(pCreature)
 	local suiBox = LuaSuiBox(pSui)
 	local pUsingObject = suiBox:getUsingObject()
@@ -375,7 +387,7 @@ function geonosian_lab_screenplay:keypadSuiCallback(pCreature, pSui, cancelPress
 	end
 end
 
-function geonosian_lab_screenplay:notifyEnteredLab(pBuilding, pPlayer)
+function geonosian_labscreenplay:notifyEnteredLab(pBuilding, pPlayer)
 	local player = LuaCreatureObject(pPlayer)
 	
 	if (player:isAiAgent()) then
@@ -387,6 +399,9 @@ function geonosian_lab_screenplay:notifyEnteredLab(pBuilding, pPlayer)
 		
 		if (pCell ~= nil) then
 			updateCellPermission(pCell, 0, pPlayer)
+			player:removeScreenPlayState(geonosian_labscreenplay.states.datapad.done, "geonosian_lab")
+			player:removeScreenPlayState(geonosian_labscreenplay.states.tenloss.done, "geonosian_lab")
+			player:removeScreenPlayState(geonosian_labscreenplay.states.tenloss.noreward, "geonosian_lab")	
 		end
 	end
 	
@@ -396,7 +411,7 @@ end
 --------------------------------------
 --   ActiveArea observers            -
 --------------------------------------
-function geonosian_lab_screenplay:notifyEnteredPoisonGas(pActiveArea, pMovingObject)
+function geonosian_labscreenplay:notifyEnteredPoisonGas(pActiveArea, pMovingObject)
 	local movingObject = LuaSceneObject(pMovingObject)
 	
 	if (movingObject:isCreatureObject()) then
@@ -425,7 +440,7 @@ function geonosian_lab_screenplay:notifyEnteredPoisonGas(pActiveArea, pMovingObj
 	return 0
 end
 
-function geonosian_lab_screenplay:notifyEnteredPoisonGasStrong(pActiveArea, pMovingObject)
+function geonosian_labscreenplay:notifyEnteredPoisonGasStrong(pActiveArea, pMovingObject)
 	local movingObject = LuaSceneObject(pMovingObject)
 	
 	if (movingObject:isCreatureObject()) then
@@ -454,7 +469,7 @@ function geonosian_lab_screenplay:notifyEnteredPoisonGasStrong(pActiveArea, pMov
 end
 
 
-function geonosian_lab_screenplay:notifyElectroShock(pActiveArea, pMovingObject)
+function geonosian_labscreenplay:notifyElectroShock(pActiveArea, pMovingObject)
 	local movingObject = LuaSceneObject(pMovingObject)
 	
 	if (movingObject:isCreatureObject()) then
@@ -468,7 +483,7 @@ function geonosian_lab_screenplay:notifyElectroShock(pActiveArea, pMovingObject)
 end
 
 
-function geonosian_lab_screenplay:hasRebreather(scno)
+function geonosian_labscreenplay:hasRebreather(scno)
 	--TODO: Change this to be a skill mod check for private_poison_rebreather
 	local pRebreather = scno:getSlottedObject("eyes")
 
@@ -486,7 +501,7 @@ function geonosian_lab_screenplay:hasRebreather(scno)
 	return 0
 end
 
-function geonosian_lab_screenplay:respawnMDebris(pDebrisM)
+function geonosian_labscreenplay:respawnMDebris(pDebrisM)
 	if (pDebrisM == nil) then
 		return
 	end
@@ -501,18 +516,18 @@ function geonosian_lab_screenplay:respawnMDebris(pDebrisM)
 	end
 end
 
-function geonosian_lab_screenplay:notifyDebrisMDestroyed(pDebrisM, pPlayer)
+function geonosian_labscreenplay:notifyDebrisMDestroyed(pDebrisM, pPlayer)
 	local player = LuaCreatureObject(pPlayer)
 	local debris = LuaSceneObject(pDebrisM)
 	debris:destroyObjectFromWorld()
 	player:clearCombatState(1)
 	
-	createEvent(self.debrisM.respawn, "geonosian_lab_screenplay", "respawnMDebris", pDebrisM)
+	createEvent(self.debrisM.respawn, "geonosian_labscreenplay", "respawnMDebris", pDebrisM)
 	
 	return 0
 end
 
-function geonosian_lab_screenplay:respawnADebris(pDebrisA1)
+function geonosian_labscreenplay:respawnADebris(pDebrisA1)
 	if (pDebrisA1 == nil) then
 		return
 	end
@@ -527,21 +542,21 @@ function geonosian_lab_screenplay:respawnADebris(pDebrisA1)
 	end
 end
 
-function geonosian_lab_screenplay:notifyDebrisADestroyed(pDebrisA1, pPlayer)
+function geonosian_labscreenplay:notifyDebrisADestroyed(pDebrisA1, pPlayer)
 	local player = LuaCreatureObject(pPlayer)
 	local debris = LuaSceneObject(pDebrisA1)
 	debris:destroyObjectFromWorld()
 	player:clearCombatState(1)
 	
-	createEvent(self.debrisA1.respawn, "geonosian_lab_screenplay", "respawnADebris", pDebrisA1)
-	createEvent(self.debrisA2.respawn, "geonosian_lab_screenplay", "respawnADebris", pDebrisA2)
-	createEvent(self.debrisA3.respawn, "geonosian_lab_screenplay", "respawnADebris", pDebrisA3)
-	createEvent(self.debrisA4.respawn, "geonosian_lab_screenplay", "respawnADebris", pDebrisA4)
+	createEvent(self.debrisA1.respawn, "geonosian_labscreenplay", "respawnADebris", pDebrisA1)
+	createEvent(self.debrisA2.respawn, "geonosian_labscreenplay", "respawnADebris", pDebrisA2)
+	createEvent(self.debrisA3.respawn, "geonosian_labscreenplay", "respawnADebris", pDebrisA3)
+	createEvent(self.debrisA4.respawn, "geonosian_labscreenplay", "respawnADebris", pDebrisA4)
 	
 	return 0
 end
 
-function geonosian_lab_screenplay:respawnHDebris(pDebrisH1)
+function geonosian_labscreenplay:respawnHDebris(pDebrisH1)
 	if (pDebrisH1 == nil) then
 		return
 	end
@@ -556,22 +571,22 @@ function geonosian_lab_screenplay:respawnHDebris(pDebrisH1)
 	end
 end
 
-function geonosian_lab_screenplay:notifyDebrisHDestroyed(pDebrisH1, pPlayer)
+function geonosian_labscreenplay:notifyDebrisHDestroyed(pDebrisH1, pPlayer)
 	local player = LuaCreatureObject(pPlayer)
 	local debris = LuaSceneObject(pDebrisH1)
 	debris:destroyObjectFromWorld()
 	player:clearCombatState(1)
 	
-	createEvent(self.debrisH1.respawn, "geonosian_lab_screenplay", "respawnHDebris", pDebrisH1)
-	createEvent(self.debrisH1.respawn, "geonosian_lab_screenplay", "respawnHDebris", pDebrisH2)
-	createEvent(self.debrisH1.respawn, "geonosian_lab_screenplay", "respawnHDebris", pDebrisH3)
-	createEvent(self.debrisH1.respawn, "geonosian_lab_screenplay", "respawnHDebris", pDebrisH4)
-	createEvent(self.debrisH1.respawn, "geonosian_lab_screenplay", "respawnHDebris", pDebrisH5)
+	createEvent(self.debrisH1.respawn, "geonosian_labscreenplay", "respawnHDebris", pDebrisH1)
+	createEvent(self.debrisH1.respawn, "geonosian_labscreenplay", "respawnHDebris", pDebrisH2)
+	createEvent(self.debrisH1.respawn, "geonosian_labscreenplay", "respawnHDebris", pDebrisH3)
+	createEvent(self.debrisH1.respawn, "geonosian_labscreenplay", "respawnHDebris", pDebrisH4)
+	createEvent(self.debrisH1.respawn, "geonosian_labscreenplay", "respawnHDebris", pDebrisH5)
 	
 	return 0
 end
 
-function geonosian_lab_screenplay:respawnSDebris(pDebrisS1)
+function geonosian_labscreenplay:respawnSDebris(pDebrisS1)
 	if (pDebrisS1 == nil) then
 		return
 	end
@@ -586,24 +601,124 @@ function geonosian_lab_screenplay:respawnSDebris(pDebrisS1)
 	end
 end
 
-function geonosian_lab_screenplay:notifyDebrisSDestroyed(pDebrisS1, pPlayer)
+function geonosian_labscreenplay:notifyDebrisSDestroyed(pDebrisS1, pPlayer)
 	local player = LuaCreatureObject(pPlayer)
 	local debris = LuaSceneObject(pDebrisS1)
 	debris:destroyObjectFromWorld()
 	player:clearCombatState(1)
 	
-	createEvent(self.debrisS1.respawn, "geonosian_lab_screenplay", "respawnSDebris", pDebrisS1)
-	createEvent(self.debrisS1.respawn, "geonosian_lab_screenplay", "respawnSDebris", pDebrisS2)
-	createEvent(self.debrisS1.respawn, "geonosian_lab_screenplay", "respawnSDebris", pDebrisS3)
-	createEvent(self.debrisS1.respawn, "geonosian_lab_screenplay", "respawnSDebris", pDebrisS4)
-	createEvent(self.debrisS1.respawn, "geonosian_lab_screenplay", "respawnSDebris", pDebrisS5)
+	createEvent(self.debrisS1.respawn, "geonosian_labscreenplay", "respawnSDebris", pDebrisS1)
+	createEvent(self.debrisS1.respawn, "geonosian_labscreenplay", "respawnSDebris", pDebrisS2)
+	createEvent(self.debrisS1.respawn, "geonosian_labscreenplay", "respawnSDebris", pDebrisS3)
+	createEvent(self.debrisS1.respawn, "geonosian_labscreenplay", "respawnSDebris", pDebrisS4)
+	createEvent(self.debrisS1.respawn, "geonosian_labscreenplay", "respawnSDebris", pDebrisS5)
 	
 	return 0
+end
+
+function geonosian_labscreenplay:giveGeoDatapad(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+	
+	local player = LuaSceneObject(pPlayer)
+	local pPlayerObject = player:getSlottedObject("ghost")
+	local playerObject = LuaPlayerObject(pPlayerObject)
+	local pInventory = player:getSlottedObject("inventory")
+	local pBackpack = player:getSlottedObject("back")
+	
+	if (pInventory ~= nil) and (pBackpack ~= nil) then
+		local pDatapadMain = getContainerObjectByTemplate(pInventory, geonosian_labscreenplay.geoDatapad, true)
+		local pDatapadPack = getContainerObjectByTemplate(pBackpack, geonosian_labscreenplay.geoDatapad, true)
+		
+		if (pDatapadMain == nil) and (pDatapadPack == nil) then
+
+			local pItem = giveItem(pInventory, self.geoDatapad, -1)
+	
+			if (pItem ~= nil) then
+				local item = LuaSceneObject(pItem)
+				item:sendTo(pPlayer)
+			end
+			
+		end
+
+	end
+
+	if (pInventory ~= nil) and (pBackpack == nil) then
+		local pDatapadMain = getContainerObjectByTemplate(pInventory, geonosian_labscreenplay.geoDatapad, true)
+
+		if (pDatapadMain == nil) then
+		
+			local pItem = giveItem(pInventory, self.geoDatapad, -1)
+	
+			if (pItem ~= nil) then
+				local item = LuaSceneObject(pItem)
+				item:sendTo(pPlayer)
+			
+			end
+	
+		end
+
+	end
+
+	return
+
+end
+
+function geonosian_labscreenplay:giveGeoTenloss(pPlayer)
+	if (pPlayer == nil) then
+		return
+	end
+	
+	local player = LuaSceneObject(pPlayer)
+	local pPlayerObject = player:getSlottedObject("ghost")
+	local playerObject = LuaPlayerObject(pPlayerObject)
+	local pInventory = player:getSlottedObject("inventory")
+	local pBackpack = player:getSlottedObject("back")
+	
+
+	if (pInventory ~= nil) and (pBackpack ~= nil) then
+		local pTenlossMain = getContainerObjectByTemplate(pInventory, geonosian_labscreenplay.geoTenloss, true)
+		local pTenlossPack = getContainerObjectByTemplate(pBackpack, geonosian_labscreenplay.geoTenloss, true)
+
+		if (pTenlossMain == nil) and (pTenlossPack == nil) then
+		
+			local pItem = giveItem(pInventory, self.geoTenloss, -1)
+	
+			if (pItem ~= nil) then
+				local item = LuaSceneObject(pItem)
+				item:sendTo(pPlayer)
+	
+			end
+
+		end
+
+	end
+
+	if (pInventory ~= nil) and (pBackpack == nil) then
+		local pTenlossMain = getContainerObjectByTemplate(pInventory, geonosian_labscreenplay.geoTenloss, true)
+
+		if (pTenlossMain == nil) then
+		
+			local pItem = giveItem(pInventory, self.geoTenloss, -1)
+	
+			if (pItem ~= nil) then
+				local item = LuaSceneObject(pItem)
+				item:sendTo(pPlayer)
+			
+			end
+	
+		end
+
+	end
+
+	return
+
 end
 --------------------------------------
 --   Common functions                -
 --------------------------------------
-function geonosian_lab_screenplay:hasState(player, state)
+function geonosian_labscreenplay:hasState(player, state)
 	if (player == nil) then
 		return false
 	end
@@ -617,7 +732,7 @@ function geonosian_lab_screenplay:hasState(player, state)
 	return false
 end
 
-function geonosian_lab_screenplay:hasSpawned(objectID, key)
+function geonosian_labscreenplay:hasSpawned(objectID, key)
 	local val = readData(objectID .. ":geonosian_lab:spawned:" .. key)
 	
 	if (val == 1) then
@@ -627,26 +742,30 @@ function geonosian_lab_screenplay:hasSpawned(objectID, key)
 	return false
 end
 
-function geonosian_lab_screenplay:setSpawned(objectID, key)
+function geonosian_labscreenplay:setSpawned(objectID, key)
 	writeData(objectID .. ":geonosian_lab:spawned:" .. key)
 end
 
-function geonosian_lab_screenplay:deleteSpawned(objectID, key)
+function geonosian_labscreenplay:deleteSpawned(objectID, key)
 	deleteData(objectID .. ":geonosian_lab:spawned:" .. key)
 end
 
-function geonosian_lab_screenplay:writeObjectData(objectID, key, value)
+function geonosian_labscreenplay:writeObjectData(objectID, key, value)
 	writeData(objectID .. ":geonosian_lab:" .. key, value)
 end
 
-function geonosian_lab_screenplay:readObjectData(objectID, key)
+function geonosian_labscreenplay:readObjectData(objectID, key)
 	return readData(objectID .. ":geonosian_lab:" .. key)
 end
 
-function geonosian_lab_screenplay:deleteObjectData(objectID, key)
+function geonosian_labscreenplay:deleteObjectData(objectID, key)
 	deleteData(objectID .. ":geonosian_lab:" .. key)
 end
 
-function geonosian_lab_screenplay:setState(creatureObject, state)
+function geonosian_labscreenplay:setState(creatureObject, state)
 	creatureObject:setScreenPlayState(state, "geonosian_lab")
+end
+
+function geonosian_labscreenplay:removeState(creatureObject, state)
+	creatureObject:removeScreenPlayState(state, "geonosian_lab")
 end

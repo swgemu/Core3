@@ -40,7 +40,8 @@ includeFile("conversations/dungeon/warren/manx_try_conv.lua")
 
 -- Geonosian Lab
 includeFile("conversations/dungeon/geonosian_lab/biogenic_construction_convo.lua")
-
+includeFile("conversations/dungeon/geonosian_lab/biogenic_scientist_geonosian_convo.lua")
+includeFile("conversations/dungeon/geonosian_lab/biogenic_scientist_human_convo.lua")
 
 -- ** OTHER **
 
