@@ -5,6 +5,7 @@
 #include "server/zone/managers/group/GroupManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/Creature.h"
 #include "server/zone/objects/creature/DroidObject.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/group/GroupObject.h"
@@ -199,6 +200,8 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 		server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
 	}
 
+	growPet();
+
 	controlledObject->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 	ManagedReference<CreatureObject*> creature = NULL;
 
@@ -315,6 +318,46 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 	task->execute();
 }
 
+void PetControlDeviceImplementation::growPet() {
+	if (petType != CREATUREPET)
+		return;
+
+	if (growthStage <= 0 || growthStage >= 10)
+		return;
+
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+
+	if (controlledObject == NULL || !controlledObject->isCreature())
+		return;
+
+	ManagedReference<Creature*> pet = cast<Creature*>(controlledObject.get());
+
+	ManagedReference<CreatureTemplate*> creatureTemplate = pet->getCreatureTemplate();
+
+	if (creatureTemplate == NULL)
+		return;
+
+	Time currentTime;
+	uint32 timeDelta = currentTime.getTime() - lastGrowth.getTime();
+	int stagesToGrow = timeDelta / 3600; // 1 hour, for testing. TODO: Change to correct frequency (12h)
+
+	if (stagesToGrow == 0)
+		return;
+
+	int newStage = growthStage + stagesToGrow;
+	if (newStage > 10)
+		newStage = 10;
+
+	int newLevel = ((float)creatureTemplate->getLevel() / 10) * (float)newStage;
+	if (newLevel < 1)
+		newLevel = 1;
+
+	pet->setHeight(creatureTemplate->getScale() * (0.5 + (newStage * 0.05)), false);
+	pet->setPetLevel(newLevel);
+
+	growthStage = newStage;
+	lastGrowth.updateToCurrentTime();
+}
 
 void PetControlDeviceImplementation::destroyObjectFromDatabase(bool destroyContainedObjects) {
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
