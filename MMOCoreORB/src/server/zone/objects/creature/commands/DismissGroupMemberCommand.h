@@ -69,7 +69,7 @@ public:
 
 		ManagedReference<SceneObject*> object = server->getZoneServer()->getObject(target);
 
-		if (object == NULL || !object->isPlayerCreature())
+		if (object == NULL || (!object->isPlayerCreature() && !object->isPet()))
 			return GENERALERROR;
 
 		CreatureObject* targetObject = cast<CreatureObject*>( object.get());
