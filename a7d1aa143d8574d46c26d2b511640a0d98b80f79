@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a288981_0eb96be9",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/RemovePetsFromGroupTask.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-12-11T18:08:08Z",
+      "side": 1,
+      "message": "Locker locker(player);",
+      "revId": "a7d1aa143d8574d46c26d2b511640a0d98b80f79",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a288981_eecdff87",
+        "filename": "MMOCoreORB/src/server/zone/objects/group/RemovePetsFromGroupTask.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-12-11T18:08:08Z",
+      "side": 1,
+      "message": "Locker clocker(group, player);",
+      "revId": "a7d1aa143d8574d46c26d2b511640a0d98b80f79",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a288981_ceca436e",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDeviceImplementation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-12-11T18:08:08Z",
+      "side": 1,
+      "message": "ManagedReference\u003c\u003e",
+      "revId": "a7d1aa143d8574d46c26d2b511640a0d98b80f79",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
