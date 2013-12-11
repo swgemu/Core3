@@ -1,0 +1,144 @@
+npcMapLibrarian = 
+{ 
+	{ 
+		spawnData = { planetName = "naboo", npcTemplate = "librarian", x = 40.7, z = 33, y = -93.9, direction = -97, cellID = 1688867, position = STAND },
+		npcNumber = 1,
+		stfFile = "@celebrity/librarian",
+		hasWaypointNames = "no",
+	},
+}
+
+Librarian = ThemeParkLogic:new {
+	numberOfActs = 1,
+	npcMap = npcMapLibrarian,
+	permissionMap = {},
+	className = "Librarian",
+	screenPlayState = "librarian",
+	distance = 500,
+	missionDescriptionStf = "",
+	missionCompletionMessageStf = "",
+
+}
+
+registerScreenPlay("Librarian", true)
+
+librarian_handler = Object:new {
+}
+
+function librarian_handler:getNextConversationScreen(pConversationTemplate, pPlayer, selectedOption, pConversingNpc)
+	local player = LuaCreatureObject(pPlayer)
+	local pConversationSession = player:getConversationSession()
+	
+	local pLastConversationScreen = nil
+	
+	if (pConversationSession ~= nil) then
+		local conversationSession = LuaConversationSession(pConversationSession)
+		pLastConversationScreen = conversationSession:getLastConversationScreen()
+	end
+	
+	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
+	
+	if (pLastConversationScreen ~= nil) then	
+		local lastConversationScreen = LuaConversationScreen(pLastConversationScreen)
+		local optionLink = lastConversationScreen:getOptionLink(selectedOption)
+		
+		return conversationTemplate:getScreen(optionLink)
+	end
+	
+	return self:getInitialScreen(pPlayer, pConversingNpc, pConversationTemplate)
+end
+
+function librarian_handler:getInitialScreen(pPlayer, npc, pConversationTemplate)
+	local convoTemplate = LuaConversationTemplate(pConversationTemplate)
+        local conversingPlayer = LuaCreatureObject(pPlayer)
+        local pPlayerObject = conversingPlayer:getPlayerObject()
+        local conversingObject = LuaSceneObject(pPlayer)
+
+        if (pPlayerObject == nil) then
+        	return nil
+        end
+
+	local objectID = conversingPlayer:getObjectID()
+	writeData(objectID .. ":librarian", 1)
+      
+        local playerObject = LuaPlayerObject(pPlayerObject)
+      
+        return convoTemplate:getScreen("want_trivia")
+end
+
+function librarian_handler:runScreenHandlers(conversationTemplate, conversingPlayer, conversingNPC, selectedOption, conversationScreen)
+	local screen = LuaConversationScreen(conversationScreen)
+	local screenID = screen:getScreenID()
+
+	rightResponses = { "winner_is_you", "you_are_right", "good_answer", "correct", "correctamundo", "you_got_it" }
+
+	wrongResponses = { "too_bad_so_sad", "worst_ever_guesser", "thats_not_it", "no_sir", "you_are_wrong", "incorrect", 
+			  "buzz_wrong_answer", "couldnt_be_wronger", "most_wrong", "bad_answer", "most_unfortunate",
+			  "most_incorrect", "worst_answer_ever", "wrongest", "wrong_squared", "you_are_weakest_link", "not_even_trying" }
+	
+	local player = LuaCreatureObject(conversingPlayer)
+	local objectID = player:getObjectID()
+
+	local playerObjectPointer = player:getPlayerObject()
+
+	conversationScreen = screen:cloneScreen()
+	local clonedConversation = LuaConversationScreen(conversationScreen)	
+
+	if (string.find(screenID, "question") ~= nil) then
+		local questionNum = string.match(screenID, '%d+')
+		local possibleAnswers = { { "wrong_one_" .. questionNum, wrongResponses[math.random(#wrongResponses)] }, 
+					  { "wrong_two_" .. questionNum, wrongResponses[math.random(#wrongResponses)] }, 
+					  { "wrong_three_" .. questionNum, wrongResponses[math.random(#wrongResponses)] } }
+
+		if questionNum == "20" then
+			possibleAnswers[#possibleAnswers+1] = { "right_" .. questionNum, "done" }
+		else
+			possibleAnswers[#possibleAnswers+1] = { "right_" .. questionNum, rightResponses[math.random(#rightResponses)] }
+		end
+		possibleAnswers = self:shuffleAnswers(possibleAnswers)
+
+		writeData(objectID .. ":librarian", questionNum)
+
+		clonedConversation:addOption("@celebrity/librarian:" .. possibleAnswers[1][1], possibleAnswers[1][2])
+		clonedConversation:addOption("@celebrity/librarian:" .. possibleAnswers[2][1], possibleAnswers[2][2])
+		clonedConversation:addOption("@celebrity/librarian:" .. possibleAnswers[3][1], possibleAnswers[3][2])
+		clonedConversation:addOption("@celebrity/librarian:" .. possibleAnswers[4][1], possibleAnswers[4][2])
+	end
+
+	if (self:existsInTable(rightResponses, screenID)) then
+		nextQuestion = readData(objectID .. ":librarian") + 1
+		clonedConversation:addOption("@celebrity/librarian:yes", "question_" .. nextQuestion)
+		clonedConversation:addOption("@celebrity/librarian:no", "good_bye")
+	end
+
+	if (self:existsInTable(wrongResponses, screenID)) then
+		writeData(objectID .. ":librarian", 1)
+		clonedConversation:addOption("@celebrity/librarian:yes", "question_1")
+		clonedConversation:addOption("@celebrity/librarian:no", "good_bye")
+	end
+
+	if (screenID == "done") then
+		if playerObjectPointer ~= nil then
+			local ghost = LuaPlayerObject(playerObjectPointer)
+			ghost:awardBadge(111)
+		end
+	end
+	
+	return conversationScreen
+end
+
+function librarian_handler:shuffleAnswers(array)
+    local arrayCount = #array
+    for i = arrayCount, 2, -1 do
+        local j = math.random(1, i)
+        array[i], array[j] = array[j], array[i]
+    end
+    return array
+end
+
+function librarian_handler:existsInTable(table, item)
+	for key, value in pairs(table) do
+		if value == item then return true end
+	end
+	return false
+end
