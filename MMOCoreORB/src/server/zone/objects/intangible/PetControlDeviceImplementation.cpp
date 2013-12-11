@@ -17,6 +17,7 @@
 #include "server/zone/objects/creature/events/DroidPowerTask.h"
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
+#include "tasks/StorePetTask.h"
 
 void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	if (player->getParent() != NULL) {
@@ -304,38 +305,14 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 			return;
 	}
 
-	if (pet->containsPendingTask("droid_power"))
-		pet->removePendingTask( "droid_power" );
 
 	// Not training any commands
 	trainingCommand = 0;
 
-	pet->setPosture(CreaturePosture::UPRIGHT, false);
-	pet->setTargetObject(NULL);
-	pet->setFollowObject(NULL);
-	pet->destroyObjectFromWorld(true);
-
-	pet->setCreatureLink(NULL);
-
 	updateStatus(0);
 
-	CreatureTemplate* creoTemp = pet->getCreatureTemplate();
-
-	if (creoTemp != NULL) {
-		pet->setFaction(creoTemp->getFaction().hashCode());
-		pet->setPvpStatusBitmask(creoTemp->getPvpBitmask(), false);
-	} else {
-		pet->setFaction(0);
-		pet->setPvpStatusBitmask(0, false);
-	}
-
-	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
-	ghost->removeFromActivePets(pet);
-
-	ManagedReference<GroupObject*> group = pet->getGroup();
-
-	if (group != NULL)
-		GroupManager::instance()->leaveGroup(group, pet);
+	StorePetTask* task = new StorePetTask(player, pet);
+	task->execute();
 }
 
 
