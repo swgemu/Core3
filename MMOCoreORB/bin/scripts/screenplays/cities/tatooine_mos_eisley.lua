@@ -9,7 +9,43 @@ registerScreenPlay("TatooineMosEisleyScreenPlay", true)
 function TatooineMosEisleyScreenPlay:start()
 	if (isZoneEnabled("tatooine")) then
 		self:spawnMobiles()
+		self:spawnSceneObjects()
 	end
+end
+
+--Elevator switch for 'Lucky Despot Cantina'
+function TatooineMosEisleyScreenPlay:spawnSceneObjects()
+	local elevatorDown = spawnSceneObject("tatooine", "object/tangible/terminal/terminal_elevator_down.iff", -3.5, 9, -21.3, 1076970, 1, 0, 0, 0)
+	spawnSceneObject("tatooine", "object/tangible/terminal/terminal_elevator_up.iff", -3.5, 0, -21.3, 1076970, 1, 0, 0, 0)
+
+	if (elevatorDown ~= nil) then
+		local terminal = LuaSceneObject(elevatorDown)
+		terminal:setObjectMenuComponent("MosEisleyElevatorMenuComponent")
+	end
+end
+
+MosEisleyElevatorMenuComponent = {}
+
+function MosEisleyElevatorMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
+	local menuResponse = LuaObjectMenuResponse(pMenuResponse)
+	menuResponse:addRadialMenuItem(198, 3, "@elevator_text:down")
+end
+
+function MosEisleyElevatorMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
+	local creature = LuaCreatureObject(pPlayer)
+
+	local obj = LuaSceneObject(pSceneObject)
+
+	if (creature:getParent() ~= obj:getParent()) then
+		return
+	end
+
+	local z = obj:getPositionZ() - 9
+	local x = creature:getPositionX()
+	local y = creature:getPositionY()
+
+	creature:playEffect("clienteffect", "elevator_descend.cef")
+	creature:teleport(x, z, y, obj:getParentID())
 end
 
 function TatooineMosEisleyScreenPlay:spawnMobiles()
@@ -110,7 +146,7 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	--{"imperial_captain",400,-8.8,1,6.7,90,1280132, "npc_sitting_table", ""},
 	--{"imperial_general",400,1.2,1,7.5,315,1280132, "npc_use_terminal_high", ""},
 
-	--Crashed Ship 3332 -4604
+	--Lucky Despot Cantina 3332 -4604
 	--{"junk_sneg",60,-1.63376,7.01,7.35289,203.569,1076943, "calm", "Sneg the Hand",JUNKWEAPONS,JUNKCONVSNEGVALARIAN},
 	--{"kavas_urdano",60,-13.7911,7.01,-3.96167,12.0127,1076943, "calm", "Kavas"},
 	spawnMobile("tatooine", "ind",60,-24.6235,9.01,-8.0138,133.595,1076944)
@@ -118,9 +154,7 @@ function TatooineMosEisleyScreenPlay:spawnMobiles()
 	spawnMobile("tatooine", "criminal",60,5.61884,7.01001,14.3502,118.356,1076949)
 	spawnMobile("tatooine", "criminal",60,6.01244,7.01,-14.2554,63.6677,1076948)
 	spawnMobile("tatooine", "informant_npc_lvl_3",0,3.8,7,-12.5,84,1076948)
-
-	--Their's 13 more npcs in here but it seems you need to take a elavator to them that doesn't have a switch???
-	--The 13 off overhead map
+	--Lower Floor
 	--{"gambler",60,30.8955,-0.255725,2.05785,180.009,1076968, "conversation", ""},
 	--{"rodian_gladiator",60,30.8955,-0.255725,0.957845,360.011,1076968, "conversation", ""},
 	--{"miner",60,29.7955,-0.255725,2.05785,135.01,1076968, "conversation", ""},
