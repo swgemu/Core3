@@ -117,11 +117,9 @@ PlayerManagerImplementation::PlayerManagerImplementation(ZoneServer* zoneServer,
 	playerMap = new PlayerMap(3000);
 	nameMap = new CharacterNameMap();
 
-	globalExpMultiplier = 1.0f;
-
 	DirectorManager::instance()->getLuaInstance()->runFile("scripts/screenplays/checklnum.lua");
 
-	loadStartingItems();
+	loadLuaConfig();
 	loadStartingLocations();
 	loadBadgeMap();
 	loadPermissionLevels();
@@ -149,15 +147,27 @@ bool PlayerManagerImplementation::createPlayer(MessageCallback* data) {
 	return pcm->createCharacter(data);
 }
 
-void PlayerManagerImplementation::loadStartingItems() {
-	try {
-		startingItemList = StartingItemList::instance();
+void PlayerManagerImplementation::loadLuaConfig() {
+	info("Loading configuration script.");
 
-		startingItemList->loadItems();
-	} catch (Exception& e) {
-		error("unknown error while loadStartingItems");
-		error(e.getMessage());
-	}
+	Lua* lua = new Lua();
+	lua->init();
+
+	lua->runFile("scripts/managers/player_manager.lua");
+
+	performanceBuff = lua->getGlobalInt("performanceBuff");
+	medicalBuff = lua->getGlobalInt("medicalBuff");
+	performanceDuration = lua->getGlobalInt("performanceDuration");
+	medicalDuration = lua->getGlobalInt("medicalDuration");
+
+	groupExpMultiplier = lua->getGlobalFloat("groupExpMultiplier");
+
+	globalExpMultiplier = lua->getGlobalFloat("globalExpMultiplier");
+
+	baseStoredPets = lua->getGlobalInt("baseStoredPets");
+
+	delete lua;
+	lua = NULL;
 }
 
 void PlayerManagerImplementation::loadStartingLocations() {
@@ -976,7 +986,7 @@ void PlayerManagerImplementation::disseminateExperience(TangibleObject* destruct
 
 			//Apply group bonus if in group
 			if (group != NULL)
-				xpAmount *= 1.20; //TODO: Add groupExperienceModifier to lua player_manager.lua - requires refactor of startingitems (move to player creation manager).
+				xpAmount *= groupExpMultiplier;
 
 				//Jedi experience doesn't count towards combat experience supposedly.
 				if (xpType != "jedi_general")

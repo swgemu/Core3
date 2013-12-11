@@ -420,14 +420,16 @@ bool PetControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Creat
 
 		ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
 
+		ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
+
 		int numberStored = numberInTrade;
-		int maxStoredPets = 2;
+		int maxStoredPets = playerManager->getBaseStoredPets();
 		int maxLevelofPets = 10;
 		int level = pet->getLevel();
 		bool ch = receiver->hasSkill("outdoors_creaturehandler_novice");
 
 		if (ch) {
-			maxStoredPets = receiver->getSkillMod("stored_pets");
+			maxStoredPets += receiver->getSkillMod("stored_pets");
 			maxLevelofPets = receiver->getSkillMod("tame_level");
 		}
 
