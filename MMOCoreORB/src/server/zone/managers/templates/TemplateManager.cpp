@@ -86,6 +86,7 @@
 #include "server/zone/templates/tangible/CreatureHabitatTemplate.h"
 #include "server/zone/templates/tangible/tool/RepairToolTemplate.h"
 #include "server/zone/templates/tangible/VehicleCustomKitTemplate.h"
+#include "server/zone/templates/tangible/DroidCustomKitTemplate.h"
 
 #include "server/conf/ConfigManager.h"
 #include "server/zone/templates/installation/FactoryObjectTemplate.h"
@@ -564,6 +565,7 @@ void TemplateManager::registerTemplateObjects() {
 	templateFactory.registerObject<CreatureHabitatTemplate>(SharedObjectTemplate::CREATUREHABITAT);
 	templateFactory.registerObject<RepairToolTemplate>(SharedObjectTemplate::REPAIRTOOL);
 	templateFactory.registerObject<VehicleCustomKitTemplate>(SharedObjectTemplate::VEHICLECUSTOMKIT);
+	templateFactory.registerObject<DroidCustomKitTemplate>(SharedObjectTemplate::DROIDCUSTOMKIT);
 	templateFactory.registerObject<LightsaberCrystalObjectTemplate>(SharedObjectTemplate::LIGHTSABERCRYSTAL);
 	templateFactory.registerObject<DnaSampleTemplate>(SharedObjectTemplate::DNASAMPLE);
 }
@@ -718,6 +720,7 @@ void TemplateManager::registerGlobals() {
 	luaTemplatesInstance->setGlobalInt("CREATUREHABITAT", SharedObjectTemplate::CREATUREHABITAT);
 	luaTemplatesInstance->setGlobalInt("REPAIRTOOL", SharedObjectTemplate::REPAIRTOOL);
 	luaTemplatesInstance->setGlobalInt("VEHICLECUSTOMKIT", SharedObjectTemplate::VEHICLECUSTOMKIT);
+	luaTemplatesInstance->setGlobalInt("DROIDCUSTOMKIT", SharedObjectTemplate::DROIDCUSTOMKIT);
 	luaTemplatesInstance->setGlobalInt("DNASAMPLE", SharedObjectTemplate::DNASAMPLE);
 
 	luaTemplatesInstance->setGlobalInt("NO_HITLOCATION", CombatManager::NOLOCATION);

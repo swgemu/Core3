@@ -182,6 +182,7 @@ public:
 	const static int VEHICLECUSTOMKIT = 0x4000041;
 	const static int SKILLBUFF = 0x4000042;
 	const static int DROIDDEED = 0x4000043;
+	const static int DROIDCUSTOMKIT = 0x4000044;
 
 public:
 	SharedObjectTemplate();
@@ -691,6 +692,9 @@ public:
 	}
 	virtual bool isPetDeedTemplate() {
 		return false;
+	}
+	virtual bool isDroidCustomKitTemplate() {
+	    	return false;
 	}
 };
 
