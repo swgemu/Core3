@@ -42,7 +42,8 @@
 
 
 object_creature_npc_droid_crafted_imperial_probot_advanced = object_creature_npc_droid_crafted_shared_imperial_probot_advanced:new {
-
+	-- Override object type to be DROIDCREATURE instead of PROBOTCREATURE in template
+	gameObjectType = 1026
 }
 
 ObjectTemplates:addTemplate(object_creature_npc_droid_crafted_imperial_probot_advanced, "object/creature/npc/droid/crafted/imperial_probot_advanced.iff")
