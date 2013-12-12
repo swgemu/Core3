@@ -698,7 +698,7 @@ void CreatureManagerImplementation::harvest(Creature* creature, CreatureObject* 
 	}
 }
 
-void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* player) {
+void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* player, bool force) {
 	Zone* zone = creature->getZone();
 
 	if (zone == NULL || !creature->isCreature())
@@ -793,6 +793,9 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 		}
 	}
 
+	if (force && !ghost->isPrivileged())
+		force = false;
+
 	ChatManager* chatManager = player->getZoneServer()->getChatManager();
 
 	chatManager->broadcastMessage(player, "@hireling/hireling:taming_1"); // Easy.
@@ -802,7 +805,7 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 	int mask = creature->getPvpStatusBitmask();
 	creature->setPvpStatusBitmask(0, true);
 
-	ManagedReference<TameCreatureTask*> task = new TameCreatureTask(creature, player, mask);
+	ManagedReference<TameCreatureTask*> task = new TameCreatureTask(creature, player, mask, force);
 
 	player->addPendingTask("tame_pet", task, 8000);
 }

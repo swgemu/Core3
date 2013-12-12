@@ -81,10 +81,27 @@ public:
 			return TOOFAR;
 		}
 
+		bool force = false;
+
+		UnicodeTokenizer args(arguments);
+
+		if (args.hasMoreTokens()) {
+			if (creature->isPlayerCreature()) {
+				PlayerObject* ghost = creature->getPlayerObject();
+
+				if (ghost == NULL)
+					return GENERALERROR;
+
+				if (ghost->hasAbility("admin")) {
+					force = true;
+				}
+			}
+		}
+
 		Locker clocker(baby, creature);
 
 		ManagedReference<CreatureManager*> manager = creature->getZone()->getCreatureManager();
-		manager->tame(baby, creature);
+		manager->tame(baby, creature, force);
 
 		return SUCCESS;
 	}
