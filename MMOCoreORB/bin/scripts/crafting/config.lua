@@ -1205,6 +1205,7 @@ schematics = {
 {path="object/draft_schematic/weapon/component/projectile_rifle_barrel_advanced.iff"},
 {path="object/draft_schematic/weapon/heavy_particle_beam.iff"},
 {path="object/draft_schematic/weapon/heavy_lightning_beam.iff"},
+{path="object/draft_schematic/weapon/razor_knuckler.iff"},
 {path="object/draft_schematic/weapon/rifle_lightning.iff"},
 {path="object/draft_schematic/weapon/rifle_beam.iff"},
 {path="object/draft_schematic/weapon/rifle_tangle_gun7.iff"},
