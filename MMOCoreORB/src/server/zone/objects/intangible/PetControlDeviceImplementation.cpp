@@ -93,6 +93,8 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		return;
 	}
 
+	growPet();
+
 	int currentlySpawned = 0;
 	int spawnedLevel = 0;
 	int maxPets = 1;
@@ -199,8 +201,6 @@ void PetControlDeviceImplementation::spawnObject(CreatureObject* player) {
 	if (tradeContainer != NULL) {
 		server->getZoneServer()->getPlayerManager()->handleAbortTradeMessage(player);
 	}
-
-	growPet();
 
 	controlledObject->initializePosition(player->getPositionX(), player->getPositionZ(), player->getPositionY());
 	ManagedReference<CreatureObject*> creature = NULL;
