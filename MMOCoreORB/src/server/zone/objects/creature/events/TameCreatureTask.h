@@ -161,7 +161,13 @@ public:
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 		ghost->addToActivePets(creature);
 
-		playerManager->awardExperience(player, "creaturehandler", 25 * creature->getLevel());
+		CreatureTemplate* creatureTemplate = creature->getCreatureTemplate();
+
+		if (creatureTemplate != NULL)
+			playerManager->awardExperience(player, "creaturehandler", 20 * creatureTemplate->getLevel());
+		else
+			playerManager->awardExperience(player, "creaturehandler", 20 * creature->getLevel());
+
 		player->sendSystemMessage("@hireling/hireling:taming_success"); // You successfully tame the creature.
 	}
 };
