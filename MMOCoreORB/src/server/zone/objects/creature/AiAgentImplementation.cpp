@@ -233,7 +233,7 @@ void AiAgentImplementation::setLevel(int lvl) {
 
 	float minDmg = calculateAttackMinDamage(baseLevel);
 	float maxDmg = calculateAttackMaxDamage(baseLevel);
-	float speed = calculateAttackSpeed(baseLevel);
+	float speed = calculateAttackSpeed(lvl);
 
 	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
 
@@ -241,12 +241,6 @@ void AiAgentImplementation::setLevel(int lvl) {
 
 	minDmg *= ratio;
 	maxDmg *= ratio;
-
-	if (ratio != 0) {
-		float newSpeed = speed / ratio;
-
-		speed = MIN(4, newSpeed);
-	}
 
 	for (int i = 0; i < weapons.size(); ++i) {
 		WeaponObject* weao = weapons.get(i);

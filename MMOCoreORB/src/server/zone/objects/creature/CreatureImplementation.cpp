@@ -383,3 +383,62 @@ void CreatureImplementation::loadTemplateDataForBaby(CreatureTemplate* templateD
 	setBaby(true);
 }
 
+void CreatureImplementation::setPetLevel(int newLevel) {
+	if (newLevel == 0)
+		return;
+
+	int oldLevel = level;
+
+	CreatureObjectImplementation::setLevel(newLevel);
+
+	level = newLevel;
+
+	if (npcTemplate == NULL) {
+		return;
+	}
+
+	int baseLevel = npcTemplate->getLevel();
+
+	float minDmg = calculateAttackMinDamage(baseLevel);
+	float maxDmg = calculateAttackMaxDamage(baseLevel);
+	float speed = calculateAttackSpeed(newLevel);
+
+	Reference<WeaponObject*> defaultWeapon = getSlottedObject("default_weapon").castTo<WeaponObject*>();
+
+	float ratio = ((float)newLevel) / (float)baseLevel;
+
+	minDmg *= ratio;
+	maxDmg *= ratio;
+
+	for (int i = 0; i < weapons.size(); ++i) {
+		WeaponObject* weao = weapons.get(i);
+
+		weao->setMinDamage(minDmg * 0.5);
+		weao->setMaxDamage(maxDmg * 0.5);
+		weao->setAttackSpeed(speed);
+	}
+
+	if (defaultWeapon != NULL) {
+		defaultWeapon->setMinDamage(minDmg);
+		defaultWeapon->setMaxDamage(maxDmg);
+		defaultWeapon->setAttackSpeed(speed);
+	}
+
+	int ham;
+
+	for (int i = 0; i < 9; ++i) {
+		if (i % 3 == 0) {
+			ham = (getBaseHAM(i) / oldLevel) * newLevel;
+			setBaseHAM(i, ham);
+		} else
+			setBaseHAM(i, ham / 100);
+	}
+
+	for (int i = 0; i < 9; ++i) {
+		setHAM(i, baseHAM.get(i));
+	}
+
+	for (int i = 0; i < 9; ++i) {
+		setMaxHAM(i, baseHAM.get(i));
+	}
+}

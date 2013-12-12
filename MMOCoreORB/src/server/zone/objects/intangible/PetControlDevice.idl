@@ -105,6 +105,11 @@ class PetControlDevice extends ControlDevice {
 	// once it reaches 4, the pet is named
 	protected unsigned int namingProgress;
 
+	protected int growthStage;
+
+	@dereferenced
+	protected Time lastGrowth;
+
 	public PetControlDevice() {
 		Logger.setLoggingName("PetControlDevice");
 		Logger.setLogging(false);
@@ -115,6 +120,9 @@ class PetControlDevice extends ControlDevice {
 		trainingCommand = 0;
 		namingProgress = 0;
 		futureName = "";
+		growthStage = 0;
+
+		lastGrowth.updateToCurrentTime();
 
 		trainedCommands.setAllowOverwriteInsertPlan();
 		trainedCommands.setNullValue("");
@@ -127,6 +135,8 @@ class PetControlDevice extends ControlDevice {
 	public native void spawnObject(CreatureObject player);
 	
 	public native void cancelSpawnObject(CreatureObject player);
+
+	public native void growPet();
 
 	public int handleObjectMenuSelect(CreatureObject player, byte selectedID) {
 		Logger.info("selected call");
@@ -299,5 +309,9 @@ class PetControlDevice extends ControlDevice {
 	public void setPetType(int type) {
 		petType = type;
 	}
-		
+
+	public void setGrowthStage(int stage) {
+		growthStage = stage;
+	}
+	
 }

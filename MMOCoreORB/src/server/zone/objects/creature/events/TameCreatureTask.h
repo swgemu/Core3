@@ -129,6 +129,7 @@ public:
 		controlDevice->setPetType(PetControlDevice::CREATUREPET);
 		controlDevice->setMaxVitality(100);
 		controlDevice->setVitality(100);
+		controlDevice->setGrowthStage(1);
 		controlDevice->updateStatus(1);
 		datapad->transferObject(controlDevice, -1);
 

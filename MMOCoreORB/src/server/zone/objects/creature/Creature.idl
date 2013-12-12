@@ -146,7 +146,9 @@ class Creature extends AiAgent {
 	public native void setDnaState(short dnaState);
 	
 	public native void notifyDespawn(Zone zone);
-	
+
+	public native void setPetLevel(int newLevel);
+
 	public boolean isBaby() {
 		return baby;
 	}
