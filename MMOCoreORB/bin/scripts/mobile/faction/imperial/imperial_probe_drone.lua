@@ -26,7 +26,7 @@ imperial_probe_drone = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/creature/npc/droid/crafted/imperial_probot.iff"},
+	templates = {"object/mobile/probot.iff"},
 	lootGroups = {},
 	conversationTemplate = "",
 	defaultWeapon = "object/weapon/ranged/droid/droid_droideka_ranged.iff",

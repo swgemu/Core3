@@ -42,7 +42,7 @@
 
 
 object_mobile_probot = object_mobile_shared_probot:new {
-
+	objectMenuComponent = {"cpp", "BountyHunterDroidMenuComponent"}
 }
 
 ObjectTemplates:addTemplate(object_mobile_probot, "object/mobile/probot.iff")
