@@ -69,7 +69,6 @@ import server.zone.objects.tangible.tool.CraftingStation;
 include server.zone.managers.player.StartingLocationList;
 include server.zone.managers.player.StartingLocation;
 include server.zone.objects.player.ValidatedPosition;
-include server.zone.managers.player.StartingItemList;
 import server.zone.objects.tangible.threat.ThreatMap;
 include server.zone.objects.creature.CreatureObject;
 include server.zone.managers.player.PlayerMap;
@@ -86,12 +85,13 @@ class PlayerManager extends Observer implements Logger {
 	transient ZoneProcessServer processor;
 
 	// Used for frog/gm buffs
-	// TODO: make configurable in lua
-	protected static final int performanceBuff = 1000;
-	protected static final int medicalBuff = 1900;
-	protected static final int performanceDuration = 7200;
-	protected static final int medicalDuration = 7200;
-	
+	protected int performanceBuff;
+	protected int medicalBuff;
+	protected int performanceDuration;
+	protected int medicalDuration;
+
+	protected int baseStoredPets;
+
 	@dereferenced
 	private transient VectorMap<int, string> badgeMap;
 	
@@ -102,6 +102,7 @@ class PlayerManager extends Observer implements Logger {
 	transient PlayerMap playerMap;
 	transient CharacterNameMap nameMap;
 	private float globalExpMultiplier;
+	private float groupExpMultiplier;
 	
 	@dereferenced
 	private transient ReadWriteLock onlineMapMutex;
@@ -113,8 +114,8 @@ class PlayerManager extends Observer implements Logger {
 	
 	public native PlayerManager(ZoneServer zoneServer, ZoneProcessServer impl);
 	public native void loadNameMap();
-	
-	private native void loadStartingItems();
+
+	private native void loadLuaConfig();
 	private native void loadStartingLocations();
 	private native void loadBadgeMap();
 	private native void loadPermissionLevels();
@@ -124,9 +125,7 @@ class PlayerManager extends Observer implements Logger {
 	}
 	
 	public native void finalize();
-	
-	private transient StartingItemList startingItemList;
-	
+
 	private transient PermissionLevelList permissionLevelList;
 	
 	@dereferenced
@@ -352,4 +351,8 @@ class PlayerManager extends Observer implements Logger {
 	 * @param crc CRC of the buff, player target of buff, amount is the attribute modifier for the buff, duration of the buff, buffType specifies whether medical or performance and attribute sets the creature attribute to modify
 	 */
 	private native boolean doEnhanceCharacter(unsigned int crc, CreatureObject player, int amount, int duration, int buffType, byte attribute);
+
+	public int getBaseStoredPets() {
+		return baseStoredPets;
+	}
 }
