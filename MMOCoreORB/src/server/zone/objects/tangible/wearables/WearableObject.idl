@@ -95,7 +95,7 @@ class WearableObject extends TangibleObject {
 
 	public native void applyAttachment(CreatureObject player, Attachment attachment);
 	
-	public abstract native void applySkillModsTo(CreatureObject creature, boolean doCheck = true);
+	public abstract native void applySkillModsTo(CreatureObject creature);
 	
 	public abstract native void removeSkillModsFrom(CreatureObject creature);
 	

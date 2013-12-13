@@ -562,7 +562,7 @@ class WeaponObject extends TangibleObject {
 		speedSlice = 1 - value;
 	}
 	
-	public abstract native void applySkillModsTo(CreatureObject creature, boolean doCheck = true);
+	public abstract native void applySkillModsTo(CreatureObject creature);
 	
 	public abstract native void removeSkillModsFrom(CreatureObject creature);
 	

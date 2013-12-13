@@ -176,6 +176,8 @@ public:
 
 			//player->info("sending login Message:" + zoneServer->getLoginMessage(), true);
 
+			SkillModManager::instance()->verifyWearableSkillMods(player);
+
 		} else {
 			if (obj != NULL)
 				client->error("could get from zone server character id " + String::valueOf(characterID) + " but is not a player creature");

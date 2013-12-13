@@ -29,7 +29,7 @@ void WearableContainerObjectImplementation::fillAttributeList(AttributeListMessa
 	}
 }
 
-void WearableContainerObjectImplementation::applySkillModsTo(CreatureObject* creature, bool doCheck) {
+void WearableContainerObjectImplementation::applySkillModsTo(CreatureObject* creature) {
 	if (creature == NULL) {
 		return;
 	}
@@ -38,11 +38,11 @@ void WearableContainerObjectImplementation::applySkillModsTo(CreatureObject* cre
 		String name = wearableSkillMods.elementAt(i).getKey();
 		int value = wearableSkillMods.get(name);
 
-		creature->addSkillMod(SkillModManager::WEARABLE, name, value, true);
+		if (!SkillModManager::instance()->isWearableModDisabled(name))
+			creature->addSkillMod(SkillModManager::WEARABLE, name, value, true);
 	}
 
-	if(doCheck)
-		SkillModManager::instance()->verifyWearableSkillMods(creature);
+	SkillModManager::instance()->verifyWearableSkillMods(creature);
 }
 
 void WearableContainerObjectImplementation::removeSkillModsFrom(CreatureObject* creature) {
@@ -54,8 +54,11 @@ void WearableContainerObjectImplementation::removeSkillModsFrom(CreatureObject* 
 		String name = wearableSkillMods.elementAt(i).getKey();
 		int value = wearableSkillMods.get(name);
 
-		creature->removeSkillMod(SkillModManager::WEARABLE, name, value, true);
+		if (!SkillModManager::instance()->isWearableModDisabled(name))
+			creature->removeSkillMod(SkillModManager::WEARABLE, name, value, true);
 	}
+
+	SkillModManager::instance()->verifyWearableSkillMods(creature);
 }
 
 bool WearableContainerObjectImplementation::isEquipped() {

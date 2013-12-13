@@ -148,7 +148,7 @@ class TangibleObject extends SceneObject {
 	@local
 	public abstract native void addTemplateSkillMods(TangibleObject targetObject);
 	
-	public abstract void applySkillModsTo(CreatureObject creature, boolean doCheck = true) {
+	public abstract void applySkillModsTo(CreatureObject creature) {
 		
 	}
 	
