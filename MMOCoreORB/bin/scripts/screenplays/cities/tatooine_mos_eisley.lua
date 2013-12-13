@@ -13,39 +13,20 @@ function TatooineMosEisleyScreenPlay:start()
 	end
 end
 
---Elevator switch for 'Lucky Despot Cantina'
 function TatooineMosEisleyScreenPlay:spawnSceneObjects()
-	local elevatorDown = spawnSceneObject("tatooine", "object/tangible/terminal/terminal_elevator_down.iff", -3.5, 9, -21.3, 1076970, 1, 0, 0, 0)
-	spawnSceneObject("tatooine", "object/tangible/terminal/terminal_elevator_up.iff", -3.5, 0, -21.3, 1076970, 1, 0, 0, 0)
+	--Lower Floor
+	spawnSceneObject("tatooine", "object/tangible/terminal/terminal_elevator_down.iff", -3.5, 9, -21.4, 1076970, 1, 0, 0, 0) --Middle
+	spawnSceneObject("tatooine", "object/tangible/terminal/terminal_elevator_up.iff", -3.5, 0, -21.4, 1076970, 1, 0, 0, 0)
 
-	if (elevatorDown ~= nil) then
-		local terminal = LuaSceneObject(elevatorDown)
-		terminal:setObjectMenuComponent("MosEisleyElevatorMenuComponent")
-	end
-end
+	spawnSceneObject("tatooine", "object/tangible/terminal/terminal_elevator_down.iff", .5, 9, -21.4, 1076971, 1, 0, 0, 0) --Left side
+	spawnSceneObject("tatooine", "object/tangible/terminal/terminal_elevator_up.iff", .5, 0, -21.4, 1076971, 1, 0, 0, 0)
 
-MosEisleyElevatorMenuComponent = {}
+	spawnSceneObject("tatooine", "object/tangible/terminal/terminal_elevator_down.iff", -7.5, 9, -21.4, 1076969, 1, 0, 0, 0) --Right side
+	spawnSceneObject("tatooine", "object/tangible/terminal/terminal_elevator_up.iff", -7.5, 0, -21.4, 1076969, 1, 0, 0, 0)
 
-function MosEisleyElevatorMenuComponent:fillObjectMenuResponse(pSceneObject, pMenuResponse, pPlayer)
-	local menuResponse = LuaObjectMenuResponse(pMenuResponse)
-	menuResponse:addRadialMenuItem(198, 3, "@elevator_text:down")
-end
-
-function MosEisleyElevatorMenuComponent:handleObjectMenuSelect(pSceneObject, pPlayer, selectedID)
-	local creature = LuaCreatureObject(pPlayer)
-
-	local obj = LuaSceneObject(pSceneObject)
-
-	if (creature:getParent() ~= obj:getParent()) then
-		return
-	end
-
-	local z = obj:getPositionZ() - 9
-	local x = creature:getPositionX()
-	local y = creature:getPositionY()
-
-	creature:playEffect("clienteffect", "elevator_descend.cef")
-	creature:teleport(x, z, y, obj:getParentID())
+	--Upper Floor
+	spawnSceneObject("tatooine", "object/tangible/terminal/terminal_elevator_up.iff", 13.5, 7, -17.95, 1076972, 1, 0, 0, 0)
+	spawnSceneObject("tatooine", "object/tangible/terminal/terminal_elevator_down.iff", 13.5, 15, -17.95, 1076972, 1, 0, 0, 0)
 end
 
 function TatooineMosEisleyScreenPlay:spawnMobiles()
