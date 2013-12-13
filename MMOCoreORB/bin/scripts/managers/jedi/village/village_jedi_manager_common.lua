@@ -1,4 +1,5 @@
 local ObjectManager = require("managers.object.object_manager")
+local ScreenPlay = require("screenplays.screenplay")
 
 local VillageJediManagerCommon = ScreenPlay:new {}
 
