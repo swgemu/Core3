@@ -76,29 +76,16 @@ public:
 			player->addPendingTask("tame_pet", this, 8000);
 			break;
 		case FINAL:
-			CreatureTemplate* creatureTemplate = creature->getCreatureTemplate();
+			float tamingChance = creature->getChanceToTame(player);
 
-			if (creatureTemplate == NULL)
-				return;
-
-			int skill = 0;
-			int cl = creatureTemplate->getLevel();
-			int ferocity = creature->getFerocity();
-			float tamingChance = creature->getTame();
-
-			if (creature->isAggressiveTo(player))
-				skill = player->getSkillMod("tame_aggro");
-			else
-				skill = player->getSkillMod("tame_non_aggro");
-
-			// TODO: possibly come up with a better formula for determining success or failure
-			if ((System::random((100.0f * tamingChance) + skill)) > (cl + ferocity))
+			if (tamingChance > System::random(100))
 				success(player, creature);
 			else {
 				player->sendSystemMessage("@hireling/hireling:taming_fail"); // You fail to tame the creature.
 				creature->setPvpStatusBitmask(originalMask, true);
 
-				if (System::random(10) == 1)
+				int ferocity = creature->getFerocity();
+				if (System::random(20 - ferocity) == 0)
 					CombatManager::instance()->startCombat(creature,player,true);
 			}
 
