@@ -154,7 +154,7 @@ void WearableObjectImplementation::applyAttachment(CreatureObject* player,
 
 }
 
-void WearableObjectImplementation::applySkillModsTo(CreatureObject* creature, bool doCheck) {
+void WearableObjectImplementation::applySkillModsTo(CreatureObject* creature) {
 	if (creature == NULL) {
 		return;
 	}
@@ -167,8 +167,7 @@ void WearableObjectImplementation::applySkillModsTo(CreatureObject* creature, bo
 			creature->addSkillMod(SkillModManager::WEARABLE, name, value, true);
 	}
 
-	if(doCheck)
-		SkillModManager::instance()->verifyWearableSkillMods(creature);
+	SkillModManager::instance()->verifyWearableSkillMods(creature);
 }
 
 void WearableObjectImplementation::removeSkillModsFrom(CreatureObject* creature) {
@@ -183,6 +182,8 @@ void WearableObjectImplementation::removeSkillModsFrom(CreatureObject* creature)
 		if (!SkillModManager::instance()->isWearableModDisabled(name))
 			creature->removeSkillMod(SkillModManager::WEARABLE, name, value, true);
 	}
+
+	SkillModManager::instance()->verifyWearableSkillMods(creature);
 }
 
 bool WearableObjectImplementation::isEquipped() {

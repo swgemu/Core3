@@ -722,7 +722,7 @@ void WeaponObjectImplementation::decay(CreatureObject* user, float damage) {
 	}
 }
 
-void WeaponObjectImplementation::applySkillModsTo(CreatureObject* creature, bool doCheck) {
+void WeaponObjectImplementation::applySkillModsTo(CreatureObject* creature) {
 	if (creature == NULL) {
 		return;
 	}
@@ -731,11 +731,11 @@ void WeaponObjectImplementation::applySkillModsTo(CreatureObject* creature, bool
 		String name = wearableSkillMods.elementAt(i).getKey();
 		int value = wearableSkillMods.get(name);
 
-		creature->addSkillMod(SkillModManager::WEARABLE, name, value, true);
+		if (!SkillModManager::instance()->isWearableModDisabled(name))
+			creature->addSkillMod(SkillModManager::WEARABLE, name, value, true);
 	}
 
-	if(doCheck)
-		SkillModManager::instance()->verifyWearableSkillMods(creature);
+	SkillModManager::instance()->verifyWearableSkillMods(creature);
 }
 
 void WeaponObjectImplementation::removeSkillModsFrom(CreatureObject* creature) {
@@ -747,6 +747,9 @@ void WeaponObjectImplementation::removeSkillModsFrom(CreatureObject* creature) {
 		String name = wearableSkillMods.elementAt(i).getKey();
 		int value = wearableSkillMods.get(name);
 
-		creature->removeSkillMod(SkillModManager::WEARABLE, name, value, true);
+		if (!SkillModManager::instance()->isWearableModDisabled(name))
+			creature->removeSkillMod(SkillModManager::WEARABLE, name, value, true);
 	}
+
+	SkillModManager::instance()->verifyWearableSkillMods(creature);
 }
