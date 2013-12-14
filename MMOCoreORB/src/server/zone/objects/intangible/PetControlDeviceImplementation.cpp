@@ -7,6 +7,7 @@
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/creature/Creature.h"
 #include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/ZoneServer.h"
@@ -726,10 +727,10 @@ void PetControlDeviceImplementation::handleChat(CreatureObject* speaker, const S
 		followOther(speaker);
 	}
 	else if( trainedCommands.contains(TRICK1) && trainedCommands.get(TRICK1) == message ){
-		speaker->sendSystemMessage("TRICK1 pet command is not yet implemented.");
+		trick1(speaker);
 	}
 	else if( trainedCommands.contains(TRICK2) && trainedCommands.get(TRICK2) == message ){
-		speaker->sendSystemMessage("TRICK2 pet command is not yet implemented.");
+		trick2(speaker);
 	}
 	else if( trainedCommands.contains(PATROL) && trainedCommands.get(PATROL) == message ){
 		speaker->sendSystemMessage("PATROL pet command is not yet implemented.");
@@ -1071,5 +1072,93 @@ void PetControlDeviceImplementation::rechargeOther(CreatureObject* player){
 	// Recharge other droid
 	Locker clocker(target, player);
 	droidPet->rechargeOtherDroid( target );
+
+}
+
+void PetControlDeviceImplementation::trick1(CreatureObject* player){
+
+	// Creature specific command
+	if( petType != CREATUREPET )
+		return;
+
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+	if (controlledObject == NULL || !controlledObject->isAiAgent())
+		return;
+
+	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
+	if( pet == NULL )
+		return;
+
+	if( pet->getCooldownTimerMap() == NULL )
+		return;
+
+	// Check pet states
+	if( pet->isInCombat() || pet->isDead() || pet->isIncapacitated() )
+		return;
+
+	// Check cooldown (single cooldown for both tricks as we can't animate both at once)
+	if( !pet->getCooldownTimerMap()->isPast("trickCooldown") )
+		return;
+
+	// Heal 10% of base in wounds
+	int mindHeal = pet->getBaseHAM(CreatureAttribute::MIND) * 0.10;
+	int focusHeal = pet->getBaseHAM(CreatureAttribute::FOCUS) * 0.10;
+	int willHeal = pet->getBaseHAM(CreatureAttribute::WILLPOWER) * 0.10;
+	int shockHeal = 100;
+
+	pet->addWounds(CreatureAttribute::MIND, -mindHeal);
+	pet->addWounds(CreatureAttribute::FOCUS, -focusHeal);
+	pet->addWounds(CreatureAttribute::WILLPOWER, -willHeal);
+	pet->addShockWounds(-shockHeal);
+
+	// Perform trick animation
+	pet->doAnimation("trick_1");
+
+	// Set cooldown
+	pet->getCooldownTimerMap()->updateToCurrentAndAddMili("trickCooldown", 5000); // 5 sec
+
+}
+
+void PetControlDeviceImplementation::trick2(CreatureObject* player){
+
+	// Creature specific command
+	if( petType != CREATUREPET )
+		return;
+
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+	if (controlledObject == NULL || !controlledObject->isAiAgent())
+		return;
+
+	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
+	if( pet == NULL )
+		return;
+
+	if( pet->getCooldownTimerMap() == NULL )
+		return;
+
+	// Check pet states
+	if( pet->isInCombat() || pet->isDead() || pet->isIncapacitated() )
+		return;
+
+	// Check cooldown (single cooldown for both tricks as we can't animate both at once)
+	if( !pet->getCooldownTimerMap()->isPast("trickCooldown") )
+		return;
+
+	// Heal 20% of base in wounds
+	int mindHeal = pet->getBaseHAM(CreatureAttribute::MIND) * 0.20;
+	int focusHeal = pet->getBaseHAM(CreatureAttribute::FOCUS) * 0.20;
+	int willHeal = pet->getBaseHAM(CreatureAttribute::WILLPOWER) * 0.20;
+	int shockHeal = 200;
+
+	pet->addWounds(CreatureAttribute::MIND, -mindHeal);
+	pet->addWounds(CreatureAttribute::FOCUS, -focusHeal);
+	pet->addWounds(CreatureAttribute::WILLPOWER, -willHeal);
+	pet->addShockWounds(-shockHeal);
+
+	// Perform trick animation
+	pet->doAnimation("trick_2");
+
+	// Set cooldown
+	pet->getCooldownTimerMap()->updateToCurrentAndAddMili("trickCooldown", 5000); // 5 sec
 
 }
