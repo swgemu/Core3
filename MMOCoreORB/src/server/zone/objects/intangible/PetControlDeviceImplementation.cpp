@@ -21,6 +21,16 @@
 #include "tasks/StorePetTask.h"
 
 void PetControlDeviceImplementation::callObject(CreatureObject* player) {
+	if (player->isInCombat() || player->isDead() || player->isIncapacitated() || player->getPendingTask("tame_pet") != NULL) {
+		player->sendSystemMessage("@pet/pet_menu:cant_call"); // You cannot call this pet right now.
+		return;
+	}
+
+	if (player->isRidingMount()) {
+		player->sendSystemMessage("@pet/pet_menu:mounted_call_warning"); // You cannot call a pet while mounted or riding a vehicle.
+		return;
+	}
+
 	if (player->getParent() != NULL) {
 		ManagedReference<SceneObject*> strongRef = player->getParentRecursively(SceneObjectType::BUILDING);
 		ManagedReference<BuildingObject*> building;
@@ -47,16 +57,6 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 
 	if (ghost->hasActivePet(pet))
 		return;
-
-	if (player->isInCombat() || player->isDead() || player->isIncapacitated() || player->getPendingTask("tame_pet") != NULL) {
-		player->sendSystemMessage("@pet/pet_menu:cant_call"); // You cannot call this pet right now.
-		return;
-	}
-
-	if (player->isRidingMount()) {
-		player->sendSystemMessage("@pet/pet_menu:mounted_call_warning"); // You cannot call a pet while mounted or riding a vehicle.
-		return;
-	}
 
 	if (vitality <= 0) {
 		player->sendSystemMessage("@pet/pet_menu:dead_pet"); // This pet is dead. Select DESTROY from the radial menu to delete this pet control device.
