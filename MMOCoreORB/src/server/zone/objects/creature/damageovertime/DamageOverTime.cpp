@@ -235,9 +235,9 @@ uint32 DamageOverTime::doFireTick(CreatureObject* victim) {
 		victim->addShockWounds((int)(woundsToApply * 0.075f));
 	}
 
-
+/*
 	if (attr < strengthToApply)
-		strengthToApply = attr - 1;
+		strengthToApply = attr - 1; */
 
 	victim->inflictDamage(victim, attribute, strengthToApply, true);
 	if (victim->hasAttackDelay())

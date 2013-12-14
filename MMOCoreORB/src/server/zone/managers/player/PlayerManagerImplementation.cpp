@@ -1509,13 +1509,13 @@ bool PlayerManagerImplementation::checkTradeItems(CreatureObject* player, Creatu
 		}
 	}
 
-	if (receiverInventory->getContainerObjectsSize() + recieverTanos >= receiverInventory->getContainerVolumeLimit()) {
+	if (recieverTanos != 0 && (receiverInventory->getContainerObjectsSize() + recieverTanos >= receiverInventory->getContainerVolumeLimit())) {
 		player->sendSystemMessage("@container_error_message:container19");
 		receiver->sendSystemMessage("@container_error_message:container19");
 		return false;
 	}
 
-	if (playerInventory->getContainerObjectsSize() + playerTanos >= playerInventory->getContainerVolumeLimit()) {
+	if (playerTanos != 0 && (playerInventory->getContainerObjectsSize() + playerTanos >= playerInventory->getContainerVolumeLimit())) {
 		player->sendSystemMessage("@container_error_message:container19");
 		receiver->sendSystemMessage("@container_error_message:container19");
 		return false;
