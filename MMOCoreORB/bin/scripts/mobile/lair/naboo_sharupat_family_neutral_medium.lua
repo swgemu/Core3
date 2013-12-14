@@ -1,4 +1,4 @@
-naboo_shaupaut_family_neutral_medium = Lair:new {
+naboo_sharupat_family_neutral_medium = Lair:new {
 	mobiles = {{"shaupaut", 0}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/earthmound_dark.iff"},
@@ -7,5 +7,5 @@ naboo_shaupaut_family_neutral_medium = Lair:new {
 	buildingsHard = {"object/tangible/lair/base/earthmound_dark.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/earthmound_dark.iff"},
 }
-
-addLairTemplate("naboo_shaupaut_family_neutral_medium", naboo_shaupaut_family_neutral_medium)
+--Client has sharupat, so don't change to back shaupaut, future reference. 
+addLairTemplate("naboo_sharupat_family_neutral_medium", naboo_sharupat_family_neutral_medium)
