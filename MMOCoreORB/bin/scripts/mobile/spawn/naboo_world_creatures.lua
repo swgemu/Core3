@@ -97,7 +97,7 @@ naboo_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "naboo_shaupaut_family_neutral_medium",
+			lairTemplateName = "naboo_sharupat_family_neutral_medium",
 			spawnLimit = -1,
 			minDifficulty = 7,
 			maxDifficulty = 7,
@@ -268,7 +268,7 @@ naboo_world_creatures = {
 			size = 25
 		},
 		{
-			lairTemplateName = "naboo_shaupaut_pack_diseased_neutral_none",
+			lairTemplateName = "naboo_sharupat_pack_diseased_neutral_none",
 			spawnLimit = -1,
 			minDifficulty = 22,
 			maxDifficulty = 22,

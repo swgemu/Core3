@@ -1,4 +1,4 @@
-naboo_shaupaut_pack_diseased_neutral_none = Lair:new {
+naboo_sharupat_pack_diseased_neutral_none = Lair:new {
 	mobiles = {{"shaupaut_hunter", 0}},
 	spawnLimit = 15,
 	buildingsVeryEasy = {"object/tangible/lair/base/earthmound_dark.iff"},
@@ -7,5 +7,5 @@ naboo_shaupaut_pack_diseased_neutral_none = Lair:new {
 	buildingsHard = {"object/tangible/lair/base/earthmound_dark.iff"},
 	buildingsVeryHard = {"object/tangible/lair/base/earthmound_dark.iff"},
 }
-
-addLairTemplate("naboo_shaupaut_pack_diseased_neutral_none", naboo_shaupaut_pack_diseased_neutral_none)
+--Mispelled in cilent so dont change back to shaupaut
+addLairTemplate("naboo_sharupat_pack_diseased_neutral_none", naboo_sharupat_pack_diseased_neutral_none)
