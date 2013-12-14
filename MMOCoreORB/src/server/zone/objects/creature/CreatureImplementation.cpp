@@ -84,7 +84,7 @@ void CreatureImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResp
 			menuResponse->addRadialMenuItemToRadialID(112, 236, 3, "@sui:harvest_bone");
 	}
 
-	if (canTameMe(player) && player->hasSkill("outdoors_creaturehandler_novice")) {
+	if (canTameMe(player) && player->hasSkill("outdoors_creaturehandler_novice") && getChanceToTame(player) >= 15) {
 		menuResponse->addRadialMenuItem(159, 3, "@pet/pet_menu:menu_tame");
 	}
 }
@@ -315,6 +315,22 @@ bool CreatureImplementation::canTameMe(CreatureObject* player) {
 		return false;
 
 	return true;
+}
+
+float CreatureImplementation::getChanceToTame(CreatureObject* player) {
+	int skill = player->getSkillMod("tame_bonus");
+	int cl = npcTemplate->getLevel();
+	int ferocity = getFerocity();
+	float tamingChance = getTame() * 100.0f;
+
+	if (isAggressiveTo(player))
+		skill += player->getSkillMod("tame_aggro");
+	else
+		skill += player->getSkillMod("tame_non_aggro");
+
+	float chanceToTame = tamingChance + skill - (cl + ferocity);
+
+	return chanceToTame;
 }
 
 bool CreatureImplementation::canMilkMe(CreatureObject* player) {

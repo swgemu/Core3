@@ -268,7 +268,7 @@ bool LairObserverImplementation::checkForNewSpawns(TangibleObject* lair, bool fo
 
 		ManagedReference<CreatureObject*> creo = NULL;
 
-		if (tamingChance > 0 && System::random(20) == 1)
+		if (tamingChance > 0 && System::random(100) < (tamingChance * 100.0f))
 			creo = creatureManager->spawnCreatureAsBaby(templateToSpawn.hashCode(), x, z, y);
 		else
 			creo = creatureManager->spawnCreatureWithLevel(templateToSpawn.hashCode(), difficulty + levelDiff, x, z, y);

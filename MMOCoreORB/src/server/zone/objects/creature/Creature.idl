@@ -133,6 +133,8 @@ class Creature extends AiAgent {
 
 	public native boolean canTameMe(CreatureObject player);
 
+	public native float getChanceToTame(CreatureObject player);
+
 	public native boolean canMilkMe(CreatureObject player);
 
 	public native boolean canCollectDna(CreatureObject player);

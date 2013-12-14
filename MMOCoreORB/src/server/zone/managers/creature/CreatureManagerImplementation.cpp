@@ -732,7 +732,7 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 		return;
 	}
 
-	if (creature->isAggressiveTo(player) && player->getSkillMod("tame_aggro") <= 0) {
+	if (creature->getChanceToTame(player) <= 0) {
 		player->sendSystemMessage("@pet/pet_menu:sys_lack_skill"); // You lack the skill to be able to tame that creature.
 		return;
 	}
