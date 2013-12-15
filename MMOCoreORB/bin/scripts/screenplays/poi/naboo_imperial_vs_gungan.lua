@@ -93,6 +93,9 @@ end
 function ImperialVsGunganScreenPlay:notifyMarshallDead(pMarshall, pKiller)
 	if (readData("nabooimperialvgungan:imperial_army_captain") == 0) then
 		local pCaptain = spawnMobile("naboo", "imperial_army_captain", 0, 4758.1, 10.6, -3824.5, 133, 0)
+
+		--[[ temporarily disabled to prevent infestation of swamp troopers, should work once AI is done and they fight on their own 
+
 			spawnMobile("naboo", "swamp_trooper", 0, 4774.8, 11.3, -3827.9, -75, 0)
 			spawnMobile("naboo", "swamp_trooper", 0, 4774.8, 11.4, -3830.9, -75, 0)
 			spawnMobile("naboo", "swamp_trooper", 0, 4781.3, 11.6, -3832.0, -75, 0)
@@ -108,6 +111,7 @@ function ImperialVsGunganScreenPlay:notifyMarshallDead(pMarshall, pKiller)
 			spawnMobile("naboo", "swamp_trooper", 0, 4731.7, 10.2, -3839.1, 180, 0)
 			spawnMobile("naboo", "swamp_trooper", 0, 4727.7, 10.1, -3839.1, 180, 0)
 			spawnMobile("naboo", "swamp_trooper", 0, 4723.7, 10.1, -3839.1, 180, 0)
+		]]
 
 		createObserver(OBJECTDESTRUCTION, "ImperialVsGunganScreenPlay", "notifyCaptainDead", pCaptain)
 		writeData("nabooimperialvgungan:imperial_army_captain",1)
@@ -128,6 +132,9 @@ end
 function ImperialVsGunganScreenPlay:notifyPriestDead(pPriest, pKiller)
 	if (readData("nabooimperialvgungan:gungan_veermok") == 0) then
 		local pVeermok = spawnMobile("naboo", "gungan_veermok", 0, 4777.3, 13.1, -3868.9, 0, 0)
+		
+		--[[ temporarily disabled to prevent infestation of swamp troopers, should work once AI is done and they fight on their own
+
 			spawnMobile("naboo", "gungan_guard", 0, 4781.3, 13.1, -3868.9, 0, 0)
 			spawnMobile("naboo", "gungan_guard", 0, 4785.3, 13.2, -3867.4, -30, 0)
 			spawnMobile("naboo", "gungan_guard", 0, 4789.3, 13.2, -3865.9, -35, 0)
@@ -144,6 +151,8 @@ function ImperialVsGunganScreenPlay:notifyPriestDead(pPriest, pKiller)
 			spawnMobile("naboo", "gungan_scout", 0, math.random(16) + 4778.5, 14.2, math.random(16) + -3897.4, 0, 0)
 			spawnMobile("naboo", "gungan_kaadu_rider", 0, 4743.0, 13.0, -3893.2, 15, 0)
 			spawnMobile("naboo", "gungan_kaadu", 0, 4739.0, 12.9, -3893.2, 15, 0)
+
+		]]
 
 		createObserver(OBJECTDESTRUCTION, "ImperialVsGunganScreenPlay", "notifyVeermokDead", pVeermok)
 		writeData("nabooimperialvgungan:gungan_veermok",1)
