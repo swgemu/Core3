@@ -117,6 +117,30 @@ void LairObserverImplementation::notifyDestruction(TangibleObject* lair, Tangibl
 	spawnedCreatures.removeAll();
 }
 
+int LairObserverImplementation::getLivingCreatureCount() {
+	int alive = 0;
+	Vector<CreatureObject*> pets;
+
+	for(int i = 0; i < spawnedCreatures.size(); i++){
+		CreatureObject* cr = spawnedCreatures.get(i);
+
+		if (cr->isPet()) {
+			pets.add(cr);
+			continue;
+		}
+
+		if(!cr->isDead() && cr->getZone() != NULL)
+			alive++;
+	}
+
+	for (int j = 0; j < pets.size(); j++) {
+		CreatureObject* pet = pets.get(j);
+		spawnedCreatures.removeElement(pet);
+	}
+
+	return alive;
+}
+
 void LairObserverImplementation::doAggro(TangibleObject* lair, TangibleObject* attacker){
 
 	for (int i = 0; i < spawnedCreatures.size() ; ++i) {

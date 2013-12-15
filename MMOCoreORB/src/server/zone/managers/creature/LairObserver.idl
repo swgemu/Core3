@@ -95,15 +95,7 @@ class LairObserver extends Observer implements Logger {
 		return true;
 	}
 
-	public int getLivingCreatureCount(){
-		int alive = 0;		
-		for(int i = 0; i < spawnedCreatures.size(); i++){
-			CreatureObject cr = spawnedCreatures.get(i);
-			if(!cr.isDead() && cr.getZone() != null)
-				alive++;
-		}
-		return alive;
-	}
+	public native int getLivingCreatureCount();
 
 	public int getLairType() {
 		return lairTemplate.getLairType();
