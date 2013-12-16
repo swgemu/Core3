@@ -1,7 +1,7 @@
 tantel_armor_chest_plate = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Tanlet Armor Chest Plate",
+	customObjectName = "Tantel Armor Chest Plate",
 	directObjectTemplate = "object/tangible/wearables/armor/tantel/armor_tantel_skreej_chest_plate.iff",
 	craftingValues = {
 		{"armor_rating",1,1,0},
