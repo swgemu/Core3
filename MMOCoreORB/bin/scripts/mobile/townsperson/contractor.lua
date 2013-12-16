@@ -1,5 +1,6 @@
 contractor = Creature:new {
 	objectName = "@mob/creature_names:crafting_contractor",
+	generateRandomName =true,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

@@ -27,6 +27,8 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
 #include "server/zone/managers/loot/LootManager.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/collision/PathFinderManager.h"
 #include "server/zone/managers/collision/CollisionManager.h"
 #include "server/zone/packets/scene/UpdateTransformMessage.h"
@@ -49,6 +51,7 @@
 #include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/objects/creature/components/AiDefaultComponent.h"
 #include "events/CamoTask.h"
+
 
 //#define SHOW_WALK_PATH
 //#define DEBUG
@@ -150,9 +153,31 @@ void AiAgentImplementation::loadTemplateData(CreatureTemplate* templateData) {
 		maxHamList.add(baseHAM.get(i));
 	}
 
+
 	objectName = npcTemplate->getObjectName();
 
-	setCustomObjectName(templateData->getCustomName(), false);
+	if(npcTemplate->getGenerateRandomName())//generateRandomName
+	{
+		NameManager* nm = server->getNameManager();
+		if(npcTemplate->getUseOnlyRandomName())
+		{
+			setCustomObjectName(nm->makeCreatureName(npcTemplate->getHasLastName()), false);
+		}
+		else
+		{
+			String newName = nm->makeCreatureName(npcTemplate->getHasLastName());
+			newName += " (";
+			newName += StringIdManager::instance()->getStringId(objectName.getFullPath().hashCode()).toString();
+			StringIdManager::instance()->getStringId(objectName.getFullPath().hashCode()).toString();
+			newName += ")";
+			setCustomObjectName(newName, false);
+		}
+	}
+	else// if(templateData->getCustomName().count != 0)//not nessicary.
+	{
+		setCustomObjectName(templateData->getCustomName(), false);
+	}
+
 
 	setHeight(templateData->getScale(), false);
 

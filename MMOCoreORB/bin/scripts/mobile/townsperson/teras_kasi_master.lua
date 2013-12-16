@@ -1,5 +1,6 @@
 teras_kasi_master = Creature:new {
 	objectName = "@mob/creature_names:teras_kasi_master",
+	generateRandomName = true,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

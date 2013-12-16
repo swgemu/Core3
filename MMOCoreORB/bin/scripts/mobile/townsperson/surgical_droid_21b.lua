@@ -1,5 +1,6 @@
 surgical_droid_21b = Creature:new {
 	objectName = "@mob/creature_names:surgical_droid_21b",
+	generateRandomName = true,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
