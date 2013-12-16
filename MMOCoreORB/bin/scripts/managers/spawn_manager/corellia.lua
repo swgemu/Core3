@@ -474,7 +474,6 @@ corellia_static_spawns = {
 	{"info_broker",60,-5095.02,21,-2513.56,180.005,0, "conversation", ""},
 	{"info_broker",60,-14.8394,2.32744,25.4359,180.013,4395401, "conversation", ""},
 	{"info_broker",60,21.6023,-0.894996,-17.4913,180.012,3375356, "conversation", ""},
-	{"io_tsomcren",60,-140.701,28,-4719.16,44.0418,0, "neutral", ""},
 	{"j_pai_brek",60,-5073.17,21,-2342.77,33.2325,0, "neutral", ""},
 	{"jom_irimore",60,-5520,21.3,-2630.99,0,0, "calm", "Jom Irimore"},
 	{"junk_dealer",0,6840,315,-5630,-32,0, "", "",JUNKCLOTHESANDJEWELLERY,JUNKCONVFINARY},
