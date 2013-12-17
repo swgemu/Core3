@@ -39,23 +39,26 @@ void PetDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRespo
 }
 
 int PetDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (selectedID != 20) // not use object
-		return 1;
 
-	if (generated || !isASubChildOf(player))
-		return 1;
+	if (selectedID != 20) {
 
-	if (player->isInCombat() || player->getParentRecursively(SceneObjectType::BUILDING) != NULL) {
-		player->sendSystemMessage("@pet/pet_menu:cant_call"); //You can only unpack vehicles while Outside and not in Combat.
-		return 1;
+		if (generated || !isASubChildOf(player))
+			return 1;
+
+		if (player->isInCombat() || player->getParentRecursively(SceneObjectType::BUILDING) != NULL) {
+			player->sendSystemMessage("@pet/pet_menu:cant_call"); //You can only unpack vehicles while Outside and not in Combat.
+			return 1;
+		}
+
+		ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
+
+		if (datapad == NULL) {
+			player->sendSystemMessage("Datapad doesn't exist when trying to call pet");
+			return 1;
+		}
+		return 0;
 	}
 
-	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
-
-	if (datapad == NULL) {
-		player->sendSystemMessage("Datapad doesn't exist when trying to call pet");
-		return 1;
-	}
-	return 0;
+	return DeedImplementation::handleObjectMenuSelect(player, selectedID);
 }
 

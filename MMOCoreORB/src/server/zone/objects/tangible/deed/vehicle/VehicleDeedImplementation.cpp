@@ -54,52 +54,55 @@ void VehicleDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuR
 }
 
 int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (selectedID != 20) // not use object
-		return 1;
 
-	if (generated || !isASubChildOf(player))
-		return 1;
+	if (selectedID == 20) {
 
-	if (player->isInCombat() || player->getParentRecursively(SceneObjectType::BUILDING) != NULL) {
-		player->sendSystemMessage("@pet/pet_menu:cant_call_vehicle"); //You can only unpack vehicles while Outside and not in Combat.
-		return 1;
+		if (generated || !isASubChildOf(player))
+			return 1;
+
+		if (player->isInCombat() || player->getParentRecursively(SceneObjectType::BUILDING) != NULL) {
+			player->sendSystemMessage("@pet/pet_menu:cant_call_vehicle"); //You can only unpack vehicles while Outside and not in Combat.
+			return 1;
+		}
+
+		ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
+
+		if (datapad == NULL) {
+			player->sendSystemMessage("Datapad doesn't exist when trying to create vehicle");
+			return 1;
+		}
+
+		Reference<VehicleControlDevice*> vehicleControlDevice = (server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1)).castTo<VehicleControlDevice*>();
+		Reference<VehicleObject*> vehicle = (server->getZoneServer()->createObject(generatedObjectTemplate.hashCode(), 1)).castTo<VehicleObject*>();
+
+		if (vehicle == NULL) {
+			player->sendSystemMessage("wrong vehicle object template " + generatedObjectTemplate);
+			return 1;
+		}
+
+		vehicle->createChildObjects();
+		vehicle->setMaxCondition(hitPoints);
+		vehicle->setConditionDamage(0);
+		vehicleControlDevice->setControlledObject(vehicle);
+		datapad->transferObject(vehicleControlDevice, -1);
+
+		datapad->broadcastObject(vehicleControlDevice, true);
+		vehicleControlDevice->generateObject(player);
+
+		//Remove the deed from it's container.
+		ManagedReference<SceneObject*> deedContainer = getParent();
+
+		if (deedContainer != NULL) {
+			/*deedContainer->removeObject(_this, true);
+			broadcastDestroy(_this, false);*/
+			destroyObjectFromWorld(true);
+		}
+
+		generated = true;
+
+		return 0;
 	}
 
-	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
-
-	if (datapad == NULL) {
-		player->sendSystemMessage("Datapad doesn't exist when trying to create vehicle");
-		return 1;
-	}
-
-	Reference<VehicleControlDevice*> vehicleControlDevice = (server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1)).castTo<VehicleControlDevice*>();
-	Reference<VehicleObject*> vehicle = (server->getZoneServer()->createObject(generatedObjectTemplate.hashCode(), 1)).castTo<VehicleObject*>();
-
-	if (vehicle == NULL) {
-		player->sendSystemMessage("wrong vehicle object template " + generatedObjectTemplate);
-		return 1;
-	}
-
-	vehicle->createChildObjects();
-	vehicle->setMaxCondition(hitPoints);
-	vehicle->setConditionDamage(0);
-	vehicleControlDevice->setControlledObject(vehicle);
-	datapad->transferObject(vehicleControlDevice, -1);
-
-	datapad->broadcastObject(vehicleControlDevice, true);
-	vehicleControlDevice->generateObject(player);
-
-	//Remove the deed from it's container.
-	ManagedReference<SceneObject*> deedContainer = getParent();
-
-	if (deedContainer != NULL) {
-		/*deedContainer->removeObject(_this, true);
-		broadcastDestroy(_this, false);*/
-		destroyObjectFromWorld(true);
-	}
-
-	generated = true;
-
-	return 0;
+	return DeedImplementation::handleObjectMenuSelect(player, selectedID);
 }
 
