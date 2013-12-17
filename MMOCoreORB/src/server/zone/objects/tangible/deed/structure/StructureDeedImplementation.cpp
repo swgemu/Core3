@@ -24,15 +24,18 @@ void StructureDeedImplementation::initializeTransientMembers() {
 }
 
 int StructureDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (!isASubChildOf(player))
+
+	if (selectedID == 20) {
+
+		if (!isASubChildOf(player))
+			return 0;
+
+		player->executeObjectControllerAction(String("placestructuremode").hashCode(), getObjectID(), "");
+
 		return 0;
+	}
 
-	if (selectedID != 20)
-		return 1;
-
-	player->executeObjectControllerAction(String("placestructuremode").hashCode(), getObjectID(), "");
-
-	return 0;
+	return DeedImplementation::handleObjectMenuSelect(player, selectedID);
 }
 
 void StructureDeedImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {

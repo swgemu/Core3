@@ -58,92 +58,95 @@ void DroidDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuRes
 }
 
 int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (selectedID != 20) // not use object
-		return 1;
 
-	if (generated || !isASubChildOf(player))
-		return 1;
+	if (selectedID == 20) {
 
-	if (player->isInCombat() || player->isRidingMount() || player->isSwimming() || player->isDead() || player->isIncapacitated() ){
-		player->sendSystemMessage("@pet/pet_menu:cant_call"); // "You cannot call this pet right now."
-		return 1;
-	}
+		if (generated || !isASubChildOf(player))
+			return 1;
 
-	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
+		if (player->isInCombat() || player->isRidingMount() || player->isSwimming() || player->isDead() || player->isIncapacitated() ){
+			player->sendSystemMessage("@pet/pet_menu:cant_call"); // "You cannot call this pet right now."
+			return 1;
+		}
 
-	if (datapad == NULL) {
-		player->sendSystemMessage("Datapad doesn't exist when trying to generate droid");
-		return 1;
-	}
+		ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
 
-	// Check if this will exceed maximum number of droids allowed
-	int droidsInDatapad = 0;
-	for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
-		Reference<SceneObject*> obj =  datapad->getContainerObject(i).castTo<SceneObject*>();
+		if (datapad == NULL) {
+			player->sendSystemMessage("Datapad doesn't exist when trying to generate droid");
+			return 1;
+		}
 
-		if (obj != NULL && obj->isPetControlDevice() ){
-			Reference<PetControlDevice*> petDevice = cast<PetControlDevice*>(obj.get());
-			if( petDevice != NULL && petDevice->getPetType() == PetControlDevice::DROIDPET){
-				droidsInDatapad++;
+		// Check if this will exceed maximum number of droids allowed
+		int droidsInDatapad = 0;
+		for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
+			Reference<SceneObject*> obj =  datapad->getContainerObject(i).castTo<SceneObject*>();
+
+			if (obj != NULL && obj->isPetControlDevice() ){
+				Reference<PetControlDevice*> petDevice = cast<PetControlDevice*>(obj.get());
+				if( petDevice != NULL && petDevice->getPetType() == PetControlDevice::DROIDPET){
+					droidsInDatapad++;
+				}
 			}
 		}
+
+		if( droidsInDatapad >= 5){
+			player->sendSystemMessage("You have too many droids in your datapad");
+			return 1;
+		}
+
+		Reference<PetControlDevice*> controlDevice = (server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1)).castTo<PetControlDevice*>();
+		if( controlDevice == NULL ){
+			player->sendSystemMessage("wrong droid control device template " + controlDeviceObjectTemplate);
+			return 1;
+		}
+
+		Reference<CreatureManager*> creatureManager = player->getZone()->getCreatureManager();
+		if( creatureManager == NULL )
+			return 1;
+
+		Reference<CreatureObject*> creatureObject = creatureManager->createCreature(generatedObjectTemplate.hashCode(), true, mobileTemplate.hashCode() );
+		if( creatureObject == NULL ){
+			player->sendSystemMessage("wrong droid templates;mobileTemplate=[" + mobileTemplate + "];generatedObjectTemplate=[" + generatedObjectTemplate + "]" );
+			return 1;
+		}
+
+		Reference<DroidObject*> droid = creatureObject.castTo<DroidObject*>();
+		if( droid == NULL )
+			return 1;
+
+		CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
+		Reference<CreatureTemplate*> creatureTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
+		if( creatureTemplate == NULL ){
+			player->sendSystemMessage("wrong droid template;mobileTemplate=[" + mobileTemplate + "]" );
+			return 1;
+		}
+
+		droid->loadTemplateData( creatureTemplate );
+
+		StringId s;
+		s.setStringId(droid->getObjectName()->getFullPath());
+		controlDevice->setObjectName(s);
+		controlDevice->setPetType(PetControlDevice::DROIDPET);
+		controlDevice->setDefaultCommands();
+		droid->createChildObjects();
+		controlDevice->setControlledObject(droid);
+		datapad->transferObject(controlDevice, -1);
+
+		datapad->broadcastObject(controlDevice, true);
+		controlDevice->callObject(player);
+
+		//Remove the deed from its container.
+		ManagedReference<SceneObject*> deedContainer = getParent();
+
+		if (deedContainer != NULL) {
+			destroyObjectFromWorld(true);
+		}
+
+		generated = true;
+		player->sendSystemMessage("@pet/pet_menu:device_added"); // "A control device has been added to your datapad."
+		return 0;
 	}
 
-	if( droidsInDatapad >= 5){
-		player->sendSystemMessage("You have too many droids in your datapad");
-		return 1;
-	}
-
-	Reference<PetControlDevice*> controlDevice = (server->getZoneServer()->createObject(controlDeviceObjectTemplate.hashCode(), 1)).castTo<PetControlDevice*>();
-	if( controlDevice == NULL ){
-		player->sendSystemMessage("wrong droid control device template " + controlDeviceObjectTemplate);
-		return 1;
-	}
-
-	Reference<CreatureManager*> creatureManager = player->getZone()->getCreatureManager();
-	if( creatureManager == NULL )
-		return 1;
-
-	Reference<CreatureObject*> creatureObject = creatureManager->createCreature(generatedObjectTemplate.hashCode(), true, mobileTemplate.hashCode() );
-	if( creatureObject == NULL ){
-		player->sendSystemMessage("wrong droid templates;mobileTemplate=[" + mobileTemplate + "];generatedObjectTemplate=[" + generatedObjectTemplate + "]" );
-		return 1;
-	}
-
-	Reference<DroidObject*> droid = creatureObject.castTo<DroidObject*>();
-	if( droid == NULL )
-		return 1;
-
-	CreatureTemplateManager* creatureTemplateManager = CreatureTemplateManager::instance();
-	Reference<CreatureTemplate*> creatureTemplate =  creatureTemplateManager->getTemplate( mobileTemplate.hashCode() );
-	if( creatureTemplate == NULL ){
-		player->sendSystemMessage("wrong droid template;mobileTemplate=[" + mobileTemplate + "]" );
-		return 1;
-	}
-
-	droid->loadTemplateData( creatureTemplate );
-
-	StringId s;
-	s.setStringId(droid->getObjectName()->getFullPath());
-	controlDevice->setObjectName(s);
-	controlDevice->setPetType(PetControlDevice::DROIDPET);
-	controlDevice->setDefaultCommands();
-	droid->createChildObjects();
-	controlDevice->setControlledObject(droid);
-	datapad->transferObject(controlDevice, -1);
-
-	datapad->broadcastObject(controlDevice, true);
-	controlDevice->callObject(player);
-
-	//Remove the deed from its container.
-	ManagedReference<SceneObject*> deedContainer = getParent();
-
-	if (deedContainer != NULL) {
-		destroyObjectFromWorld(true);
-	}
-
-	generated = true;
-	player->sendSystemMessage("@pet/pet_menu:device_added"); // "A control device has been added to your datapad."
-	return 0;
+	return DeedImplementation::handleObjectMenuSelect(player, selectedID);
 }
 
