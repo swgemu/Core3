@@ -1,5 +1,6 @@
 patron_chiss = Creature:new {
 	objectName = "@mob/creature_names:patron_chiss_male",
+	generateRandomName = true,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

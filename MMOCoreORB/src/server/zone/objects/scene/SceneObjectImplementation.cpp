@@ -70,6 +70,8 @@ which carries forward this exception.
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/packets/object/ShowFlyText.h"
 
+#include "server/zone/managers/name/NameManager.h"
+
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/Zone.h"
 #include "server/zone/ZoneServer.h"

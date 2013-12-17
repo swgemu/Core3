@@ -1,6 +1,7 @@
 audience_member = Creature:new {
 	objectName = "",
-	customName = "audience_member",
+	generateRandomName =true,
+	--customName = "audience_member",
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

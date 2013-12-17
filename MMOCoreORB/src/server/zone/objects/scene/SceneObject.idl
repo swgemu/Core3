@@ -137,7 +137,7 @@ class SceneObject extends QuadTreeEntry implements Logger {
 
 	@dereferenced
 	protected StringId objectName;
-		
+
 	protected transient PendingTasksMap pendingTasks;
 	
 	protected boolean staticObject;
