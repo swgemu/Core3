@@ -1517,10 +1517,6 @@ class CreatureObject extends TangibleObject {
 		return owner;
 	}
 
-	public boolean isRidingMount() {
-		return stateBitmask & CreatureState.RIDINGMOUNT;
-	}
-	
 	@weakReference
 	public ControlDevice getControlDevice() {
 		return controlDevice;
@@ -1622,11 +1618,11 @@ class CreatureObject extends TangibleObject {
 		return stateBitmask & CreatureState.ONFIRE;
 	}
 
-	public boolean isMounted() {
+	public boolean isRidingMount() {
 		return stateBitmask & CreatureState.RIDINGMOUNT;
 	}
 
-	public boolean isRidingCreature() {
+	public boolean hasRidingCreature() {
 		return stateBitmask & CreatureState.MOUNTEDCREATURE;
 	}
 

@@ -82,8 +82,8 @@ public:
 	static const uint64 BLEEDING = 0x1000000;
 	static const uint64 DISEASED = 0x2000000;
 	static const uint64 ONFIRE = 0x4000000;
-	static const uint64 RIDINGMOUNT = 0x8000000;
-	static const uint64 MOUNTEDCREATURE = 0x10000000;
+	static const uint64 RIDINGMOUNT = 0x8000000; // Is riding a vehicle or creature mount
+	static const uint64 MOUNTEDCREATURE = 0x10000000; // Is a vehicle or creature mount that has a rider
 	static const uint64 PILOTINGSHIP = 0x20000000;
 	static const uint64 SHIPOPERATIONS = 0x40000000;
 	static const uint64 SHIPGUNNER = 0x80000000;

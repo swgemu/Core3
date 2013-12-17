@@ -73,7 +73,7 @@ void GamblingTerminalImplementation::setEvent(GamblingEvent* event) {
 }
 
 bool GamblingTerminalImplementation::invalidPosture(CreatureObject* player) {
-	if (player->isIncapacitated() || player->isInCombat() || player->isSwimming() || player->isMounted() || player->isDead() || player->isMeditating())
+	if (player->isIncapacitated() || player->isInCombat() || player->isSwimming() || player->isRidingMount() || player->isDead() || player->isMeditating())
 		return true;
 	return false;
 }

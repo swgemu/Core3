@@ -93,7 +93,7 @@ void SurveySessionImplementation::startSurvey(const String& resname) {
 		return;
 	}
 
-	if (surveyer->isMounted()) {
+	if (surveyer->isRidingMount()) {
 		if(surveyer->isInWater()) {
 			surveyer->sendSystemMessage("@error_message:survey_cant");
 			return;
@@ -181,7 +181,7 @@ void SurveySessionImplementation::startSample(const String& resname) {
 		return;
 	}
 
-	if (surveyer->isMounted()) {
+	if (surveyer->isRidingMount()) {
 		surveyer->sendSystemMessage("@error_message:survey_on_mount");
 		return;
 	}

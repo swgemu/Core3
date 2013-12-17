@@ -78,7 +78,7 @@ public:
 
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
-		if (player->isRidingMount() || player->isRidingCreature())
+		if (player->isRidingMount())
 			return GENERALERROR;
 
 		Reference<PlayerObject*> ghost = player->getPlayerObject();
