@@ -20,6 +20,7 @@
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "tasks/StorePetTask.h"
+#include "tasks/TransferPetTask.h"
 
 void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	if (player->isInCombat() || player->isDead() || player->isIncapacitated() || player->getPendingTask("tame_pet") != NULL) {
@@ -456,11 +457,13 @@ bool PetControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Creat
 
 		if (level > maxLevelofPets) {
 			player->sendSystemMessage("@pet/pet_menu:no_chance"); // That person has no chance of controlling this creature. Transfer failed.
+			receiver->sendSystemMessage("@pet/pet_menu:cannot_control"); // You have no chance of controlling that creature.
 			return false;
 		}
 
 		if (pet->isAggressiveTo(receiver) && (receiver->getSkillMod("tame_aggro") <= 0 || !ch)) {
 			player->sendSystemMessage("@pet/pet_menu:no_chance"); // That person has no chance of controlling this creature. Transfer failed.
+			receiver->sendSystemMessage("@pet/pet_menu:cannot_control"); // You have no chance of controlling that creature.
 			return false;
 		}
 
@@ -670,6 +673,10 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 		alm->insertAttribute("@pet/pet_menu:menu_recharge_other", trainedCommands.get(RECHARGEOTHER) );
 	}
 
+	if( trainedCommands.contains(TRANSFER) ){
+		alm->insertAttribute("pet_command_10", trainedCommands.get(TRANSFER) );
+	}
+
 }
 
 void PetControlDeviceImplementation::handleChat(CreatureObject* speaker, const String& message){
@@ -755,6 +762,9 @@ void PetControlDeviceImplementation::handleChat(CreatureObject* speaker, const S
 	}
 	else if( trainedCommands.contains(RECHARGEOTHER) && trainedCommands.get(RECHARGEOTHER) == message ){
 		rechargeOther(speaker);
+	}
+	else if( trainedCommands.contains(TRANSFER) && trainedCommands.get(TRANSFER) == message ){
+		transfer(speaker);
 	}
 
 }
@@ -1117,5 +1127,93 @@ void PetControlDeviceImplementation::trick(CreatureObject* player, int trickNumb
 
 	// Set cooldown
 	pet->getCooldownTimerMap()->updateToCurrentAndAddMili("trickCooldown", 5000); // 5 sec
+
+}
+
+void PetControlDeviceImplementation::transfer(CreatureObject* player){
+
+	// Creature specific command
+	if( petType != CREATUREPET )
+		return;
+
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+	if (controlledObject == NULL || !controlledObject->isAiAgent())
+		return;
+
+	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
+	if( pet == NULL )
+		return;
+
+	ManagedReference< CreatureObject*> linkedCreature = pet->getLinkedCreature().get();
+	if( linkedCreature == NULL )
+		return;
+
+	// Only owner may transfer
+	if( linkedCreature != player)
+		return;
+
+	ManagedReference<SceneObject*> target = server->getZoneServer()->getObject(player->getTargetID());
+
+	if (target == NULL || !target->isPlayerCreature()) {
+		player->sendSystemMessage("Your target must be a player to transfer a pet.");
+		return;
+	}
+
+	ManagedReference<CreatureObject*> targetPlayer = cast<CreatureObject*>(target.get());
+
+	if (!targetPlayer->hasSkill("outdoors_creaturehandler_novice")) {
+		player->sendSystemMessage("@pet/pet_menu:pet_nothandler"); // You cannot transfer a creature to someone who is not a trained Creature Handler.
+		return;
+	}
+
+	if (!player->isInRange(targetPlayer, 15)) {
+		player->sendSystemMessage("@error_message:target_out_of_range"); // Your target is out of range for this action.
+		return;
+	}
+
+	if (!canBeTradedTo(player, targetPlayer, 0))
+		return;
+
+	ManagedReference<PlayerObject*> targetGhost = targetPlayer->getPlayerObject();
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (targetGhost == NULL || ghost == NULL)
+		return;
+
+	int activePets = 0;
+	int petLevel = 0;
+
+	for (int i = 0; i < targetGhost->getActivePetsSize(); i++) {
+		ManagedReference<AiAgent*> targetPet = targetGhost->getActivePet(i);
+
+		ManagedReference<PetControlDevice*> device = targetPet->getControlDevice().get().castTo<PetControlDevice*>();
+
+		if (device == NULL)
+			continue;
+
+		if (device->getPetType() == CREATUREPET) {
+			activePets++;
+			petLevel += targetPet->getLevel();
+		}
+	}
+
+	if (activePets >= targetPlayer->getSkillMod("keep_creature")) {
+		player->sendSystemMessage("@pet/pet_menu:targ_too_many"); // That person has too many pets. Transfer failed.
+		targetPlayer->sendSystemMessage("@pet/pet_menu:too_many"); // You can't control any more pets. Store one first.
+		return;
+	}
+
+	if ((petLevel + pet->getLevel()) > targetPlayer->getSkillMod("tame_level")) {
+		player->sendSystemMessage("@pet/pet_menu:no_chance"); // That person has no chance of controlling this creature. Transfer failed.
+		return;
+	}
+
+	ManagedReference<SceneObject*> targetDatapad = targetPlayer->getSlottedObject("datapad");
+
+	if (targetDatapad == NULL)
+		return;
+
+	TransferPetTask* task = new TransferPetTask(player, _this.get(), targetPlayer);
+	task->execute();
 
 }

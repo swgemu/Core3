@@ -147,6 +147,7 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 
 		if( player->hasSkill( "outdoors_creaturehandler_master" ) ){
 			menuResponse->addRadialMenuItemToRadialID(141, 163, 3, "@pet/pet_menu:menu_ranged_attack" );
+			menuResponse->addRadialMenuItemToRadialID(141, 152, 3, "@pet/pet_menu:menu_transfer" ); // PET_TRANSFER
 		}
 
 	}
@@ -236,6 +237,11 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 	// Train Command: Column Formation
 	if (selectedID == 151 ){ // PET_ASSUME_FORMATION_2
 		petControlDevice->setTrainingCommand( PetControlDevice::FORMATION2 );
+	}
+
+	// Train Command: Transfer
+	if (selectedID == 152 ){ // PET_TRANSFER
+		petControlDevice->setTrainingCommand( PetControlDevice::TRANSFER );
 	}
 
 	// Train Command: Trick 1

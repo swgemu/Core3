@@ -90,6 +90,7 @@ class PetControlDevice extends ControlDevice {
 	public static final unsigned int GROUP = 15;
 	public static final unsigned int STAY = 16;
 	public static final unsigned int RECHARGEOTHER = 17;
+	public static final unsigned int TRANSFER = 18;
 	
 	// Trained command strings <commandid, chatstring>
 	@dereferenced 
@@ -264,6 +265,15 @@ class PetControlDevice extends ControlDevice {
 	 */
 	@local
 	public native void trick(CreatureObject player, int trickNumber);
+
+	/**
+	 * Transfers pet to target
+	 * @pre { }
+	 * @post { }
+	 * @param object player creature commanding
+	 */
+	@local
+	public native void transfer(CreatureObject player);
 
 	/**
 	 * Sets default trained commands and command strings for the pet
