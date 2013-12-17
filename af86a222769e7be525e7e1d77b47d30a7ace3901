@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a288981_51d5d641",
+        "filename": "MMOCoreORB/src/server/zone/objects/intangible/PetControlDeviceImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-12-17T21:46:10Z",
+      "side": 1,
+      "message": "Move this to a task\n\nLock player.\nCross lock the pet to player, set all the pet variables, unlock(release) the pet crosslock, then crosslock the target to the player and add to the datapad etc..",
+      "revId": "af86a222769e7be525e7e1d77b47d30a7ace3901",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
