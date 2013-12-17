@@ -1,5 +1,6 @@
 commoner_technician = Creature:new {
 	objectName = "@mob/creature_names:technician",
+	generateRandomName =true,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

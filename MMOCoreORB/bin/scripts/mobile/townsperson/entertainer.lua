@@ -1,5 +1,6 @@
 entertainer = Creature:new {
 	objectName = "@mob/creature_names:entertainer",
+	generateRandomName =true,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
