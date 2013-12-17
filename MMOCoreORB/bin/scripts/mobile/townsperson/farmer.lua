@@ -1,5 +1,6 @@
 farmer = Creature:new {
 	objectName = "@mob/creature_names:farmer",
+	generateRandomName =true,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

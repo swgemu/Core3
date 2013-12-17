@@ -1,6 +1,7 @@
 ris_inventor = Creature:new {
 	objectName = "",
 	customName = "an R.I.S. Inventor",
+	generateRandomName = true,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",
