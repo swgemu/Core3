@@ -3,6 +3,7 @@
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/group/GroupManager.h"
+#include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/creature/Creature.h"
@@ -722,7 +723,7 @@ void PetControlDeviceImplementation::handleChat(CreatureObject* speaker, const S
 		storeObject( linkedCreature.get() ); // storeObject expects pet owner to be passed
 	}
 	else if( trainedCommands.contains(ATTACK) && trainedCommands.get(ATTACK) == message ){
-		speaker->sendSystemMessage("ATTACK pet command is not yet implemented.");
+		attack(speaker);
 	}
 	else if( trainedCommands.contains(GUARD) && trainedCommands.get(GUARD) == message ){
 		speaker->sendSystemMessage("GUARD pet command is not yet implemented.");
@@ -935,6 +936,55 @@ void PetControlDeviceImplementation::setTrainingCommand( unsigned int commandID 
 	trainingCommand = commandID;
 	pet->showFlyText("npc_reaction/flytext","alert", 204, 0, 0);  // "?"
 
+}
+
+void PetControlDeviceImplementation::attack(CreatureObject* player){
+
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+	if (controlledObject == NULL || !controlledObject->isAiAgent())
+		return;
+
+	AiAgent* pet = cast<AiAgent*>(controlledObject.get());
+	if( pet == NULL )
+		return;
+
+	// Check if droid has power
+	if( petType == DROIDPET ){
+		DroidObject* droidPet = cast<DroidObject*>(pet);
+		if( droidPet == NULL )
+			return;
+
+		if( !droidPet->hasPower() ){
+			pet->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
+			return;
+		}
+	}
+
+	uint64 targetID = player->getTargetID();
+	ZoneServer* server = player->getZoneServer();
+	if (server == NULL)
+		return;
+
+	// TODO: allow non-player targets when Ai vs Ai combat is enabled
+	Reference<SceneObject*> target = server->getObject(targetID, true).castTo<SceneObject*>();
+	if (target == NULL || !target->isPlayerCreature() ) {
+		pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
+		player->sendSystemMessage("Attack command only works against attackable players for now.");
+		return;
+	}
+
+	ManagedReference<CreatureObject*> targetPlayer = target.castTo<CreatureObject*>();
+
+	if (!targetPlayer->isAttackableBy(pet)) {
+		player->sendSystemMessage("@player/player_utility:invalid_target"); // Target for this command is invalid.
+		return;
+	}
+
+	CombatManager* combatManager = CombatManager::instance();
+
+	Locker locker(pet);
+
+	combatManager->startCombat(pet, targetPlayer);
 }
 
 void PetControlDeviceImplementation::follow(CreatureObject* player){

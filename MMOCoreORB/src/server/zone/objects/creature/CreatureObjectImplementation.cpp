@@ -2519,6 +2519,13 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 
 	if (object->isAiAgent()){
 
+		if (object->isPet() && isPlayerCreature()) {
+			ManagedReference<CreatureObject*> owner = object->getLinkedCreature().get();
+
+			if (owner != NULL)
+				return isAttackableBy(owner);
+		}
+
 		if(!object->isRebel() && !object->isImperial())
 			return true;
 

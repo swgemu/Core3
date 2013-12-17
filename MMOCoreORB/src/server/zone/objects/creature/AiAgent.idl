@@ -435,10 +435,7 @@ class AiAgent extends CreatureObject {
 	public boolean isAttackableBy(CreatureObject object) {
 		if (object == this)
 			return false;
-		
-		if (super.pvpStatusBitmask == 0)
-			return false;
-		
+
 		if (isRetreating())
 			return false;
 		
@@ -447,7 +444,17 @@ class AiAgent extends CreatureObject {
 		
 		if (object.isAiAgent())
 			return false;
-		
+
+		if (isPet() && object.isPlayerCreature()) { // TODO: remove isPlayerCreature check when Ai vs. Ai combat is enabled
+			CreatureObject owner = getLinkedCreature();
+
+			if (owner != null)
+				return owner.isAttackableBy(object);
+		}
+
+		if (super.pvpStatusBitmask == 0)
+			return false;
+
 		unsigned int targetFaction = object.getFaction();
 		
 		if (targetFaction != 0 && super.getFaction() != 0) {

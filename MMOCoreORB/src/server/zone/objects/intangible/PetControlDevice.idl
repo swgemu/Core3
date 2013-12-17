@@ -211,7 +211,16 @@ class PetControlDevice extends ControlDevice {
 	 */
 	@local
 	public native void handleChat(CreatureObject speaker, final string message);
-	
+
+	/**
+	 * Handles attack command
+	 * @pre { }
+	 * @post { }
+	 * @param object player creature commanding
+	 */
+	@local
+	public native void attack(CreatureObject player);
+
 	/**
 	 * Handles follow command
 	 * @pre { }
