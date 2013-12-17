@@ -257,23 +257,14 @@ class PetControlDevice extends ControlDevice {
 	public native void rechargeOther(CreatureObject player);
 	
 	/**
-	 * Performs trick1 and heal mind
+	 * Performs a trick and heals mind
 	 * @pre { }
 	 * @post { }
 	 * @param object player creature commanding
 	 */
 	@local
-	public native void trick1(CreatureObject player);
-	
-	/**
-	 * Performs trick2 and heal mind
-	 * @pre { }
-	 * @post { }
-	 * @param object player creature commanding
-	 */
-	@local
-	public native void trick2(CreatureObject player);	
-	
+	public native void trick(CreatureObject player, int trickNumber);
+
 	/**
 	 * Sets default trained commands and command strings for the pet
 	 * @pre { }

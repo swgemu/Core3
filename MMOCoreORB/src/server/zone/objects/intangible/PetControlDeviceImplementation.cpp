@@ -727,10 +727,10 @@ void PetControlDeviceImplementation::handleChat(CreatureObject* speaker, const S
 		followOther(speaker);
 	}
 	else if( trainedCommands.contains(TRICK1) && trainedCommands.get(TRICK1) == message ){
-		trick1(speaker);
+		trick(speaker, 1);
 	}
 	else if( trainedCommands.contains(TRICK2) && trainedCommands.get(TRICK2) == message ){
-		trick2(speaker);
+		trick(speaker, 2);
 	}
 	else if( trainedCommands.contains(PATROL) && trainedCommands.get(PATROL) == message ){
 		speaker->sendSystemMessage("PATROL pet command is not yet implemented.");
@@ -1075,7 +1075,7 @@ void PetControlDeviceImplementation::rechargeOther(CreatureObject* player){
 
 }
 
-void PetControlDeviceImplementation::trick1(CreatureObject* player){
+void PetControlDeviceImplementation::trick(CreatureObject* player, int trickNumber){
 
 	// Creature specific command
 	if( petType != CREATUREPET )
@@ -1101,10 +1101,10 @@ void PetControlDeviceImplementation::trick1(CreatureObject* player){
 		return;
 
 	// Heal 10% of base in wounds
-	int mindHeal = pet->getBaseHAM(CreatureAttribute::MIND) * 0.10;
-	int focusHeal = pet->getBaseHAM(CreatureAttribute::FOCUS) * 0.10;
-	int willHeal = pet->getBaseHAM(CreatureAttribute::WILLPOWER) * 0.10;
-	int shockHeal = 100;
+	int mindHeal = pet->getBaseHAM(CreatureAttribute::MIND) * 0.10 * trickNumber;
+	int focusHeal = pet->getBaseHAM(CreatureAttribute::FOCUS) * 0.10 * trickNumber;
+	int willHeal = pet->getBaseHAM(CreatureAttribute::WILLPOWER) * 0.10 * trickNumber;
+	int shockHeal = 100 * trickNumber;
 
 	pet->addWounds(CreatureAttribute::MIND, -mindHeal);
 	pet->addWounds(CreatureAttribute::FOCUS, -focusHeal);
@@ -1112,51 +1112,8 @@ void PetControlDeviceImplementation::trick1(CreatureObject* player){
 	pet->addShockWounds(-shockHeal);
 
 	// Perform trick animation
-	pet->doAnimation("trick_1");
-
-	// Set cooldown
-	pet->getCooldownTimerMap()->updateToCurrentAndAddMili("trickCooldown", 5000); // 5 sec
-
-}
-
-void PetControlDeviceImplementation::trick2(CreatureObject* player){
-
-	// Creature specific command
-	if( petType != CREATUREPET )
-		return;
-
-	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
-	if (controlledObject == NULL || !controlledObject->isAiAgent())
-		return;
-
-	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
-	if( pet == NULL )
-		return;
-
-	if( pet->getCooldownTimerMap() == NULL )
-		return;
-
-	// Check pet states
-	if( pet->isInCombat() || pet->isDead() || pet->isIncapacitated() )
-		return;
-
-	// Check cooldown (single cooldown for both tricks as we can't animate both at once)
-	if( !pet->getCooldownTimerMap()->isPast("trickCooldown") )
-		return;
-
-	// Heal 20% of base in wounds
-	int mindHeal = pet->getBaseHAM(CreatureAttribute::MIND) * 0.20;
-	int focusHeal = pet->getBaseHAM(CreatureAttribute::FOCUS) * 0.20;
-	int willHeal = pet->getBaseHAM(CreatureAttribute::WILLPOWER) * 0.20;
-	int shockHeal = 200;
-
-	pet->addWounds(CreatureAttribute::MIND, -mindHeal);
-	pet->addWounds(CreatureAttribute::FOCUS, -focusHeal);
-	pet->addWounds(CreatureAttribute::WILLPOWER, -willHeal);
-	pet->addShockWounds(-shockHeal);
-
-	// Perform trick animation
-	pet->doAnimation("trick_2");
+	String animation = "trick_" + String::valueOf(trickNumber);
+	pet->doAnimation(animation);
 
 	// Set cooldown
 	pet->getCooldownTimerMap()->updateToCurrentAndAddMili("trickCooldown", 5000); // 5 sec
