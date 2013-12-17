@@ -1,5 +1,6 @@
 spacer = Creature:new {
 	objectName = "@mob/creature_names:spacer",
+	generateRandomName = true,
 	socialGroup = "townsperson",
 	pvpFaction = "townsperson",
 	faction = "townsperson",

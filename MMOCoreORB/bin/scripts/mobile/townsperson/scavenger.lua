@@ -1,5 +1,6 @@
 scavenger = Creature:new {
 	objectName = "@mob/creature_names:scavenger",
+	generateRandomName = true,
 	socialGroup = "thug",
 	pvpFaction = "thug",
 	faction = "thug",
