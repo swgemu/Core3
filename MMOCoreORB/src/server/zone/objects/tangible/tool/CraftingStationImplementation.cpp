@@ -90,7 +90,7 @@ int CraftingStationImplementation::handleObjectMenuSelect(CreatureObject* player
 		}
 	}*/
 
-	return 1;
+	return TangibleObjectImplementation::handleObjectMenuSelect(player, selectedID);
 }
 
 void CraftingStationImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
