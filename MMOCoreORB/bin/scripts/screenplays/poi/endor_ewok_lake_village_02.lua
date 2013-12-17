@@ -1,17 +1,17 @@
-EndorGondulaTreeVillageScreenPlay = ScreenPlay:new {
+EndorEwokLakeVillage02ScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 
 }
 
-registerScreenPlay("EndorGondulaTreeVillageScreenPlay", true)
+registerScreenPlay("EndorEwokLakeVillage02ScreenPlay", true)
 
-function EndorGondulaTreeVillageScreenPlay:start()
+function EndorEwokLakeVillage02ScreenPlay:start()
 	if (isZoneEnabled("endor")) then
 		self:spawnMobiles()
 	end
 end
 
-function EndorGondulaTreeVillageScreenPlay:spawnMobiles()   
+function EndorEwokLakeVillage02ScreenPlay:spawnMobiles()
     	spawnMobile("endor", "gondula_loremaster",300, -473.5, 2.1, -5051.7, 147, 0)
 	spawnMobile("endor", "gondula_veteran",300, -479.0, 1.0, -5040.9, -26, 0)
 	spawnMobile("endor", "gondula_tribesman",300, -498.5, 0.5, -5009.5, -99, 0)
