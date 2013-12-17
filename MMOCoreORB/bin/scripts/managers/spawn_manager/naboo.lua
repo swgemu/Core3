@@ -224,7 +224,6 @@ naboo_static_spawns = {
 	{"rsf_security_officer",60,5.4,1.2,-3.9,87,1305892, "conversation", ""},
 	{"scoundrel",60,-4.2087,0.999986,1.15452,0,1677394, "conversation", ""},
 	{"stormtrooper_groupleader",400,-5969.83,6,4246.76,173.432,0, "", "VK-481"},
-	{"trainer_merchant",0,-4.4,0.6,-4.0,82,189545, "", ""},
 	{"trainer_shipwright",0,4727,4.3,-4649,0,0, "", "a shipwright trainer"},
 	{"trainer_shipwright",0,1352,13,2768,141,0, "", "a shipwright trainer"},
 	{"trainer_shipwright",0,0.2,0.7,-71.4,-177,1692101, "", "a shipwright trainer"},
