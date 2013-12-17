@@ -1,7 +1,7 @@
 tantel_armor_boots = {
 	minimumLevel = 0,
 	maximumLevel = -1,
-	customObjectName = "Tanlet Armor Boots",
+	customObjectName = "Tantel Armor Boots",
 	directObjectTemplate = "object/tangible/wearables/armor/tantel/armor_tantel_skreej_boots.iff",
 	craftingValues = {
 		{"armor_rating",1,1,0},
