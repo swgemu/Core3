@@ -185,7 +185,7 @@ void WeatherManagerImplementation::applySandstormDamage(CreatureObject* player) 
 		return;
 
 	//Check if player is in a shelter.
-	if ((!player->isMounted() && player->getParentID() != 0) || player->getCurrentCamp() != NULL) //TODO: Add camp protection.
+	if ((!player->isRidingMount() && player->getParentID() != 0) || player->getCurrentCamp() != NULL) //TODO: Add camp protection.
 		return;
 
 	//Blind player
@@ -205,7 +205,7 @@ void WeatherManagerImplementation::applySandstormDamage(CreatureObject* player) 
 	//Apply knockdown.
 	int applicableKDChance = sandstormDamage - totalCoverings;
 	if (applicableKDChance > 0 && !player->isProne() && !player->isKnockedDown() && System::random(200) > 198 ) {
-		if (player->isMounted()) {
+		if (player->isRidingMount()) {
 			player->sendSystemMessage("A gust of wind blows you off your vehicle!");
 			player->dismount();
 		} else

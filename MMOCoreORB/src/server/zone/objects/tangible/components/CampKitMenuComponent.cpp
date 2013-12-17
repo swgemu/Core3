@@ -115,7 +115,7 @@ int CampKitMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 			return 0;
 		}
 
-		if(!player->isStanding() || player->isMounted()) {
+		if(!player->isStanding() || player->isRidingMount()) {
 			player->sendSystemMessage("@camp:error_cmd_fail");
 			return 0;
 		}

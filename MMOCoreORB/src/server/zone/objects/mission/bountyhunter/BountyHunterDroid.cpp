@@ -56,7 +56,7 @@ Reference<FindTargetTask*> BountyHunterDroid::findTarget(SceneObject* droidObjec
 		return NULL;
 	}
 
-	if (player->isRidingCreature() || player->isRidingMount()) {
+	if (player->isRidingMount()) {
 		player->sendSystemMessage("@error_message:survey_on_mount"); // You cannot perform that action while mounted on a creature or driving a vehicle.
 		return NULL;
 	}
@@ -109,7 +109,7 @@ Reference<CallArakydTask*> BountyHunterDroid::callArakydDroid(SceneObject* droid
 		}
 	}
 
-	if (player->isRidingCreature() || player->isRidingMount()) {
+	if (player->isRidingMount()) {
 		player->sendSystemMessage("@error_message:survey_on_mount"); // You cannot perform that action while mounted on a creature or driving a vehicle.
 		return NULL;
 	}
@@ -153,7 +153,7 @@ Reference<FindTargetTask*> BountyHunterDroid::transmitBiologicalSignature(SceneO
 		return NULL;
 	}
 
-	if (player->isRidingCreature() || player->isRidingMount()) {
+	if (player->isRidingMount()) {
 		player->sendSystemMessage("@error_message:survey_on_mount"); // You cannot perform that action while mounted on a creature or driving a vehicle.
 		return NULL;
 	}

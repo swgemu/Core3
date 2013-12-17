@@ -59,7 +59,7 @@ public:
 	}
 	
 	bool checkBurstRun(CreatureObject* creature) {
-		if (creature->isRidingCreature()) {
+		if (creature->isRidingMount()) {
 			creature->sendSystemMessage("@cbt_spam:no_burst"); //"You cannot burst-run while mounted on a creature or vehicle."
 			return false;
 		}

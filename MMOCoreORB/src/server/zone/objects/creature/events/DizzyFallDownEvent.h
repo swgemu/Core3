@@ -22,7 +22,7 @@ public:
 		Locker locker(creature);
 
 		if (creature->isDizzied()) {
-			if (creature->isMounted()) {
+			if (creature->isRidingMount()) {
 				creature->updateCooldownTimer("mount_dismount", 0);
 				creature->dismount();
 			}

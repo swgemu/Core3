@@ -68,7 +68,7 @@ public:
 		if (ghost == NULL)
 			return GENERALERROR;
 
-		if (creature->isRidingCreature() || creature->isRidingMount()) {
+		if (creature->isRidingMount()) {
 			creature->sendSystemMessage("@player_structure:cant_place_mounted");
 			return INVALIDLOCOMOTION;
 		}

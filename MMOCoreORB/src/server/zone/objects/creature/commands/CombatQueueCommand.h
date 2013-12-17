@@ -556,7 +556,7 @@ public:
 				break;
 			}
 
-			if (creature->isMounted()) {
+			if (creature->isRidingMount()) {
 				creature->updateCooldownTimer("mount_dismount", 0);
 				creature->dismount();
 			}
@@ -570,7 +570,7 @@ public:
 
 			break;
 		case CommandEffect::POSTUREUP:
-			if (creature->isMounted()) {
+			if (creature->isRidingMount()) {
 				creature->updateCooldownTimer("mount_dismount", 0);
 				creature->dismount();
 			}
@@ -587,7 +587,7 @@ public:
 
 			break;
 		case CommandEffect::POSTUREDOWN:
-			if (creature->isMounted()) {
+			if (creature->isRidingMount()) {
 				creature->updateCooldownTimer("mount_dismount", 0);
 				creature->dismount();
 			}

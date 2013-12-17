@@ -145,7 +145,7 @@ public:
 			return false;
 		}
 
-		if (enhancer->isRidingCreature() || enhancer->isMounted()) {
+		if (enhancer->isRidingMount()) {
 			enhancer->sendSystemMessage("@error_message:survey_on_mount"); //You cannot perform that action while mounted on a creature or driving a vehicle.
 			return false;
 		}
@@ -329,7 +329,7 @@ public:
 
 		Locker clocker(patient, creature);
 
-		if (patient->isDead() || patient->isRidingCreature() || patient->isMounted())
+		if (patient->isDead() || patient->isRidingMount())
 			patient = enhancer;
 
 		if (!canPerformSkill(enhancer, patient, enhancePack))

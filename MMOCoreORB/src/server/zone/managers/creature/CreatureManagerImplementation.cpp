@@ -819,7 +819,7 @@ void CreatureManagerImplementation::milk(Creature* creature, CreatureObject* pla
 	if (!creature->canMilkMe(player))
 		return;
 
-	if (player->isMounted()) {
+	if (player->isRidingMount()) {
 		player->sendSystemMessage("@skl_use:skl_use"); //You cannot milk while mounted.
 		return;
 	}
@@ -847,7 +847,7 @@ void CreatureManagerImplementation::sample(Creature* creature, CreatureObject* p
 		return;
 	}
 
-	if (player->isMounted()) {
+	if (player->isRidingMount()) {
 		player->sendSystemMessage("You cannot sample DNA while mounted");
 		return;
 	}
