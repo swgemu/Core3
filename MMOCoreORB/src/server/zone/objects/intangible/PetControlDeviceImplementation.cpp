@@ -457,11 +457,13 @@ bool PetControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Creat
 
 		if (level > maxLevelofPets) {
 			player->sendSystemMessage("@pet/pet_menu:no_chance"); // That person has no chance of controlling this creature. Transfer failed.
+			receiver->sendSystemMessage("@pet/pet_menu:cannot_control"); // You have no chance of controlling that creature.
 			return false;
 		}
 
 		if (pet->isAggressiveTo(receiver) && (receiver->getSkillMod("tame_aggro") <= 0 || !ch)) {
 			player->sendSystemMessage("@pet/pet_menu:no_chance"); // That person has no chance of controlling this creature. Transfer failed.
+			receiver->sendSystemMessage("@pet/pet_menu:cannot_control"); // You have no chance of controlling that creature.
 			return false;
 		}
 
@@ -671,6 +673,9 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 		alm->insertAttribute("@pet/pet_menu:menu_recharge_other", trainedCommands.get(RECHARGEOTHER) );
 	}
 
+	if( trainedCommands.contains(TRANSFER) ){
+		alm->insertAttribute("pet_command_10", trainedCommands.get(TRANSFER) );
+	}
 }
 
 void PetControlDeviceImplementation::handleChat(CreatureObject* speaker, const String& message){
@@ -728,10 +733,10 @@ void PetControlDeviceImplementation::handleChat(CreatureObject* speaker, const S
 		followOther(speaker);
 	}
 	else if( trainedCommands.contains(TRICK1) && trainedCommands.get(TRICK1) == message ){
-		trick(speaker, 1);
+		enqueuePetCommand(speaker, String("petTrick").toLowerCase().hashCode(), "1");
 	}
 	else if( trainedCommands.contains(TRICK2) && trainedCommands.get(TRICK2) == message ){
-		trick(speaker, 2);
+		enqueuePetCommand(speaker, String("petTrick").toLowerCase().hashCode(), "2");
 	}
 	else if( trainedCommands.contains(PATROL) && trainedCommands.get(PATROL) == message ){
 		speaker->sendSystemMessage("PATROL pet command is not yet implemented.");
@@ -756,6 +761,9 @@ void PetControlDeviceImplementation::handleChat(CreatureObject* speaker, const S
 	}
 	else if( trainedCommands.contains(RECHARGEOTHER) && trainedCommands.get(RECHARGEOTHER) == message ){
 		rechargeOther(speaker);
+	}
+	else if( trainedCommands.contains(TRANSFER) && trainedCommands.get(TRANSFER) == message ){
+		enqueueOwnerOnlyPetCommand(speaker, String("petTransfer").toLowerCase().hashCode(), "");
 	}
 
 }
@@ -1076,11 +1084,7 @@ void PetControlDeviceImplementation::rechargeOther(CreatureObject* player){
 
 }
 
-void PetControlDeviceImplementation::trick(CreatureObject* player, int trickNumber){
-
-	// Creature specific command
-	if( petType != CREATUREPET )
-		return;
+void PetControlDeviceImplementation::enqueuePetCommand(CreatureObject* player, uint32 command, const String& args){
 
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 	if (controlledObject == NULL || !controlledObject->isAiAgent())
@@ -1091,6 +1095,30 @@ void PetControlDeviceImplementation::trick(CreatureObject* player, int trickNumb
 		return;
 
 	//CreatureObject* pet, uint32 command, const String& args, uint64 target, int priority = -1
-	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, String("petTrick").hashCode(), String::valueOf(trickNumber), player->getTargetID());
+	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, command, args, player->getTargetID());
 	enqueueCommand->execute();
+}
+
+void PetControlDeviceImplementation::enqueueOwnerOnlyPetCommand(CreatureObject* player, uint32 command, const String& args){
+
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+	if (controlledObject == NULL || !controlledObject->isAiAgent())
+		return;
+
+	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
+	if( pet == NULL )
+		return;
+
+	ManagedReference< CreatureObject*> linkedCreature = pet->getLinkedCreature().get();
+	if( linkedCreature == NULL )
+		return;
+
+	// Player must be pet's owner
+	if( linkedCreature != player)
+		return;
+
+	//CreatureObject* pet, uint32 command, const String& args, uint64 target, int priority = -1
+	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, command, args, player->getTargetID());
+	enqueueCommand->execute();
+
 }
