@@ -20,6 +20,7 @@
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "tasks/StorePetTask.h"
+#include "tasks/EnqueuePetCommand.h"
 
 void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	if (player->isInCombat() || player->isDead() || player->isIncapacitated() || player->getPendingTask("tame_pet") != NULL) {
@@ -1089,33 +1090,7 @@ void PetControlDeviceImplementation::trick(CreatureObject* player, int trickNumb
 	if( pet == NULL )
 		return;
 
-	if( pet->getCooldownTimerMap() == NULL )
-		return;
-
-	// Check pet states
-	if( pet->isInCombat() || pet->isDead() || pet->isIncapacitated() )
-		return;
-
-	// Check cooldown (single cooldown for both tricks as we can't animate both at once)
-	if( !pet->getCooldownTimerMap()->isPast("trickCooldown") )
-		return;
-
-	// Heal 10% of base in wounds
-	int mindHeal = pet->getBaseHAM(CreatureAttribute::MIND) * 0.10 * trickNumber;
-	int focusHeal = pet->getBaseHAM(CreatureAttribute::FOCUS) * 0.10 * trickNumber;
-	int willHeal = pet->getBaseHAM(CreatureAttribute::WILLPOWER) * 0.10 * trickNumber;
-	int shockHeal = 100 * trickNumber;
-
-	pet->addWounds(CreatureAttribute::MIND, -mindHeal);
-	pet->addWounds(CreatureAttribute::FOCUS, -focusHeal);
-	pet->addWounds(CreatureAttribute::WILLPOWER, -willHeal);
-	pet->addShockWounds(-shockHeal);
-
-	// Perform trick animation
-	String animation = "trick_" + String::valueOf(trickNumber);
-	pet->doAnimation(animation);
-
-	// Set cooldown
-	pet->getCooldownTimerMap()->updateToCurrentAndAddMili("trickCooldown", 5000); // 5 sec
-
+	//CreatureObject* pet, uint32 command, const String& args, uint64 target, int priority = -1
+	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, String("petTrick").hashCode(), String::valueOf(trickNumber), player->getTargetID());
+	enqueueCommand->execute();
 }
