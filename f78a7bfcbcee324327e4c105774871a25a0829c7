@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a288981_115cee24",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/LairObserverImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-12-18T00:40:39Z",
+      "side": 1,
+      "message": "Vector\u003cManagedReference\u003cCreatureObject*\u003e \u003e",
+      "revId": "f78a7bfcbcee324327e4c105774871a25a0829c7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a288981_f1404237",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/LairObserverImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-12-18T00:40:39Z",
+      "side": 1,
+      "message": "ManagedReference\u003cCreatureObject*\u003e",
+      "revId": "f78a7bfcbcee324327e4c105774871a25a0829c7",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
