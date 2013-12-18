@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 
 #include "server/zone/objects/creature/commands/pet/PetTrickCommand.h"
+#include "server/zone/objects/creature/commands/pet/PetTransferCommand.h"
 
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
@@ -339,6 +340,7 @@ void CommandConfigManager::registerSpecialCommands(CommandList* sCommands) {
 	createCommand(String("defaultDroidAttack").toLowerCase())->setCommandGroup(0xe1c9a54a);
 
 	//Pet commands
+	createCommand(String("petTransfer").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petTrick").toLowerCase())->setCommandGroup(0xe1c9a54a);
 }
 
@@ -1495,5 +1497,6 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<RequestSpaceTrainerCommand>(String("requestSpaceTrainer").toLowerCase());
 
 	//pet commands
+	commandFactory.registerCommand<PetTransferCommand>(String("petTransfer").toLowerCase());
 	commandFactory.registerCommand<PetTrickCommand>(String("petTrick").toLowerCase());
 }
