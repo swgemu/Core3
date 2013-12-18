@@ -47,6 +47,9 @@ which carries forward this exception.
 #include "server/zone/objects/creature/commands/effect/StateEffect.h"
 #include "server/zone/objects/creature/commands/effect/DotEffect.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
+
+#include "server/zone/objects/creature/commands/pet/PetTrickCommand.h"
+
 #include "server/zone/objects/creature/CreatureState.h"
 #include "server/zone/objects/creature/CreaturePosture.h"
 #include "server/zone/objects/creature/CreatureLocomotion.h"
@@ -334,6 +337,9 @@ void CommandConfigManager::registerSpecialCommands(CommandList* sCommands) {
 	createCommand(String("minefieldAttack").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("creatureRangedAttack").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("defaultDroidAttack").toLowerCase())->setCommandGroup(0xe1c9a54a);
+
+	//Pet commands
+	createCommand(String("petTrick").toLowerCase())->setCommandGroup(0xe1c9a54a);
 }
 
 void CommandConfigManager::registerFunctions() {
@@ -1487,4 +1493,7 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<InspacereloadCommand>(String("inspacereload").toLowerCase());
 	commandFactory.registerCommand<InspacerrCommand>(String("inspacerr").toLowerCase());
 	commandFactory.registerCommand<RequestSpaceTrainerCommand>(String("requestSpaceTrainer").toLowerCase());
+
+	//pet commands
+	commandFactory.registerCommand<PetTrickCommand>(String("petTrick").toLowerCase());
 }
