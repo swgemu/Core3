@@ -48,9 +48,11 @@ which carries forward this exception.
 #include "server/zone/objects/creature/commands/effect/DotEffect.h"
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 
+#include "server/zone/objects/creature/commands/pet/PetFollowCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetGroupCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetRechargeOtherCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetStayCommand.h"
+#include "server/zone/objects/creature/commands/pet/PetStoreCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetTrickCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetTransferCommand.h"
 
@@ -343,9 +345,11 @@ void CommandConfigManager::registerSpecialCommands(CommandList* sCommands) {
 	createCommand(String("defaultDroidAttack").toLowerCase())->setCommandGroup(0xe1c9a54a);
 
 	//Pet commands
+	createCommand(String("petFollow").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petGroup").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petRechargeOther").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petStay").toLowerCase())->setCommandGroup(0xe1c9a54a);
+	createCommand(String("petStore").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petTransfer").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petTrick").toLowerCase())->setCommandGroup(0xe1c9a54a);
 }
@@ -1503,9 +1507,11 @@ void CommandConfigManager::registerCommands() {
 	commandFactory.registerCommand<RequestSpaceTrainerCommand>(String("requestSpaceTrainer").toLowerCase());
 
 	//pet commands
+	commandFactory.registerCommand<PetFollowCommand>(String("petFollow").toLowerCase());
 	commandFactory.registerCommand<PetGroupCommand>(String("petGroup").toLowerCase());
 	commandFactory.registerCommand<PetRechargeOtherCommand>(String("petRechargeOther").toLowerCase());
 	commandFactory.registerCommand<PetStayCommand>(String("petStay").toLowerCase());
+	commandFactory.registerCommand<PetStoreCommand>(String("petStore").toLowerCase());
 	commandFactory.registerCommand<PetTransferCommand>(String("petTransfer").toLowerCase());
 	commandFactory.registerCommand<PetTrickCommand>(String("petTrick").toLowerCase());
 }
