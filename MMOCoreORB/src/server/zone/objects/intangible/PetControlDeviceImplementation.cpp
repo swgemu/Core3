@@ -682,8 +682,10 @@ void PetControlDeviceImplementation::handleChat(CreatureObject* speaker, const S
 
 	// Handle command training
 	if( trainingCommand > 0 ){
-		handleCommandTraining( speaker, message );
-		trainingCommand = 0; // no longer training
+		bool ownerChat = handleCommandTraining( speaker, message );
+		if (ownerChat)
+			trainingCommand = 0; // no longer training
+
 		return;
 	}
 
@@ -715,10 +717,10 @@ void PetControlDeviceImplementation::handleChat(CreatureObject* speaker, const S
 		enqueuePetCommand(speaker, String("petStay").toLowerCase().hashCode(), "");
 	}
 	else if( trainedCommands.contains(FOLLOW) && trainedCommands.get(FOLLOW) == message ){
-		follow( speaker );
+		enqueuePetCommand(speaker, String("petFollow").toLowerCase().hashCode(), "", true);
 	}
 	else if( trainedCommands.contains(STORE) && trainedCommands.get(STORE) == message ){
-		storeObject( linkedCreature.get() ); // storeObject expects pet owner to be passed
+		enqueueOwnerOnlyPetCommand(speaker, String("petStore").toLowerCase().hashCode(), "");
 	}
 	else if( trainedCommands.contains(ATTACK) && trainedCommands.get(ATTACK) == message ){
 		speaker->sendSystemMessage("ATTACK pet command is not yet implemented.");
@@ -730,7 +732,7 @@ void PetControlDeviceImplementation::handleChat(CreatureObject* speaker, const S
 		speaker->sendSystemMessage("FRIEND pet command is not yet implemented.");
 	}
 	else if( trainedCommands.contains(FOLLOWOTHER) && trainedCommands.get(FOLLOWOTHER) == message ){
-		followOther(speaker);
+		enqueuePetCommand(speaker, String("petFollow").toLowerCase().hashCode(), "");
 	}
 	else if( trainedCommands.contains(TRICK1) && trainedCommands.get(TRICK1) == message ){
 		enqueuePetCommand(speaker, String("petTrick").toLowerCase().hashCode(), "1");
@@ -768,35 +770,35 @@ void PetControlDeviceImplementation::handleChat(CreatureObject* speaker, const S
 
 }
 
-void PetControlDeviceImplementation::handleCommandTraining(CreatureObject* speaker, const String& message){
+bool PetControlDeviceImplementation::handleCommandTraining(CreatureObject* speaker, const String& message){
 
 	if( speaker == NULL )
-		return;
+		return false;
 
 	if( message.isEmpty() )
-		return;
+		return false;
 
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 	if (controlledObject == NULL || !controlledObject->isAiAgent())
-		return;
+		return false;
 
 	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
 	if( pet == NULL )
-		return;
+		return false;
 
 	ManagedWeakReference< CreatureObject*> linkedCreature = pet->getLinkedCreature();
 	if( linkedCreature == NULL )
-		return;
+		return false;
 
 	// Only owner may train
 	if( linkedCreature != speaker)
-		return;
+		return false;
 
 	// Check if command string already exists
 	for( int i = 0; i < trainedCommands.size(); i++ ){
 		if( trainedCommands.get(i) == message ){
 			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
-			return;
+			return true;
 		}
 	}
 
@@ -816,7 +818,7 @@ void PetControlDeviceImplementation::handleCommandTraining(CreatureObject* speak
 			if (!success) {
 				pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
 				speaker->sendSystemMessage("@pet/pet_menu:pet_nolearn"); // Your pet doesn't seem to understand you.
-				return;
+				return true;
 			}
 		}
 
@@ -829,7 +831,7 @@ void PetControlDeviceImplementation::handleCommandTraining(CreatureObject* speak
 			CreatureTemplate* creatureTemplate = pet->getCreatureTemplate();
 
 			if (creatureTemplate == NULL)
-				return;
+				return true;
 
 			ZoneServer* zoneServer = speaker->getZoneServer();
 			PlayerManager* playerManager = zoneServer->getPlayerManager();
@@ -844,7 +846,7 @@ void PetControlDeviceImplementation::handleCommandTraining(CreatureObject* speak
 
 	// No renaming of faction pets
 	if (petType == FACTIONPET)
-		return;
+		return true;
 
 	// Check for naming string
 	StringTokenizer tokenizer(message);
@@ -867,7 +869,7 @@ void PetControlDeviceImplementation::handleCommandTraining(CreatureObject* speak
 		NameManager* nameManager = zps->getNameManager();
 
 		if (nameManager->validateName(parsedName, -1) != NameManagerResult::ACCEPTED) {
-			return;
+			return true;
 		}
 
 		if (futureName == parsedName)
@@ -875,12 +877,12 @@ void PetControlDeviceImplementation::handleCommandTraining(CreatureObject* speak
 		else {
 			namingProgress = 1;
 			futureName = parsedName;
-			return;
+			return true;
 		}
 	} else {
 		namingProgress = 0;
 		futureName = "";
-		return;
+		return true;
 	}
 
 	// Set name, if applicable
@@ -890,6 +892,7 @@ void PetControlDeviceImplementation::handleCommandTraining(CreatureObject* speak
 		pet->setCustomObjectName(newName, true);
 	}
 
+	return true;
 }
 
 void PetControlDeviceImplementation::setDefaultCommands(){
@@ -936,71 +939,7 @@ void PetControlDeviceImplementation::setTrainingCommand( unsigned int commandID 
 
 }
 
-void PetControlDeviceImplementation::follow(CreatureObject* player){
-
-	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
-	if (controlledObject == NULL || !controlledObject->isAiAgent())
-		return;
-
-	AiAgent* pet = cast<AiAgent*>(controlledObject.get());
-	if( pet == NULL )
-		return;
-
-	// Check if droid has power
-	if( petType == DROIDPET ){
-		DroidObject* droidPet = cast<DroidObject*>(pet);
-		if( droidPet == NULL )
-			return;
-
-		if( !droidPet->hasPower() ){
-			pet->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
-			return;
-		}
-	}
-
-	pet->setFollowObject(player);
-
-}
-
-void PetControlDeviceImplementation::followOther(CreatureObject* player){
-
-	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
-	if (controlledObject == NULL || !controlledObject->isAiAgent())
-		return;
-
-	AiAgent* pet = cast<AiAgent*>(controlledObject.get());
-	if( pet == NULL )
-		return;
-
-	uint64 targetID = player->getTargetID();
-	ZoneServer* server = player->getZoneServer();
-	if (server == NULL)
-		return;
-
-	// Target must be a player
-	Reference<SceneObject*> target = server->getObject(targetID, true).castTo<SceneObject*>();
-	if (target == NULL || !target->isPlayerCreature() ) {
-		pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
-		return;
-	}
-
-	// Check if droid has power
-	if( petType == DROIDPET ){
-		DroidObject* droidPet = cast<DroidObject*>(pet);
-		if( droidPet == NULL )
-			return;
-
-		if( !droidPet->hasPower() ){
-			pet->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
-			return;
-		}
-	}
-
-	pet->setFollowObject(target);
-
-}
-
-void PetControlDeviceImplementation::enqueuePetCommand(CreatureObject* player, uint32 command, const String& args){
+void PetControlDeviceImplementation::enqueuePetCommand(CreatureObject* player, uint32 command, const String& args, bool selfTarget){
 
 	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 	if (controlledObject == NULL || !controlledObject->isAiAgent())
@@ -1010,8 +949,14 @@ void PetControlDeviceImplementation::enqueuePetCommand(CreatureObject* player, u
 	if( pet == NULL )
 		return;
 
+	uint64 targetID;
+	if (selfTarget)
+		targetID = player->getObjectID();
+	else
+		targetID = player->getTargetID();
+
 	//CreatureObject* pet, uint32 command, const String& args, uint64 target, int priority = -1
-	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, command, args, player->getTargetID());
+	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, command, args, targetID);
 	enqueueCommand->execute();
 }
 

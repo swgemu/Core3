@@ -211,24 +211,6 @@ class PetControlDevice extends ControlDevice {
 	 */
 	@local
 	public native void handleChat(CreatureObject speaker, final string message);
-	
-	/**
-	 * Handles follow command
-	 * @pre { }
-	 * @post { }
-	 * @param object player creature commanding
-	 */
-	@local
-	public native void follow(CreatureObject player);
-	
-	/**
-	 * Handles followother command
-	 * @pre { }
-	 * @post { }
-	 * @param object player creature commanding
-	 */
-	@local
-	public native void followOther(CreatureObject player);	
 
 	/**
 	 * Enqueues a pet command
@@ -237,9 +219,10 @@ class PetControlDevice extends ControlDevice {
 	 * @param object player creature commanding
 	 * @param unsigned long command CRC
 	 * @param const string arguments
+	 * @param boolean if true, uses player as target, if false uses player's target
 	 */
 	@local
-	public native void enqueuePetCommand(CreatureObject player, unsigned int command, final string args);
+	public native void enqueuePetCommand(CreatureObject player, unsigned int command, final string args, boolean selfTarget = false);
 
 	/**
 	 * Enqueues a pet command, player must be the pet's owner
@@ -274,9 +257,10 @@ class PetControlDevice extends ControlDevice {
 	 * @post { }
 	 * @param object player creature speaking
 	 * @param string chat message
+	 * @return returns true if chat came from pet's owner
 	 */
 	@local
-	protected native void handleCommandTraining(CreatureObject speaker, final string message);
+	protected native boolean handleCommandTraining(CreatureObject speaker, final string message);
 	
 	public boolean isPetControlDevice() {
 		return true;
