@@ -1,17 +1,17 @@
-EndorDonkuwahStaticScreenPlay = ScreenPlay:new {
+EndorDulokVillageNorthScreenPlay = ScreenPlay:new {
 	numberOfActs = 1,
 
 }
 
-registerScreenPlay("EndorDonkuwahStaticScreenPlay", true)
+registerScreenPlay("EndorDulokVillageNorthScreenPlay", true)
 
-function EndorDonkuwahStaticScreenPlay:start()
+function EndorDulokVillageNorthScreenPlay:start()
 	if (isZoneEnabled("endor")) then
 		self:spawnMobiles()
 	end
 end
 
-function EndorDonkuwahStaticScreenPlay:spawnMobiles()    
+function EndorDulokVillageNorthScreenPlay:spawnMobiles()
     	spawnMobile("endor", "donkuwah_chieftain",300, -1194.2, 25.0, 2988.4, 26, 0)
 	spawnMobile("endor", "enraged_donkuwah",300, -1199.9, 25.0, 2981.6, 175, 0)
 	spawnMobile("endor", "enraged_donkuwah",300, -1198.1, 25.0, 2980.0, -104, 0)
@@ -53,7 +53,6 @@ function EndorDonkuwahStaticScreenPlay:spawnMobiles()
 	spawnMobile("endor", "frenzied_donkuwah",300, -1228.9, 18.0, 2990.7, -22, 0)
 	spawnMobile("endor", "frenzied_donkuwah",300, -1230.3, 18.0, 2993.7, 108, 0)
 	spawnMobile("endor", "frenzied_donkuwah",300, -1227.4, 18.0, 2993.4, -125, 0)
-	spawnMobile("endor", "vicious_donkuwah_battlelord",300, -1210.4, 21.3, 2993.1, 102,  0)
-	spawnMobile("endor", "tainted_donkuwah_dark_shaman",300, 4023.3, 0.8, -7668.6, 138, 0)	 --donkuwah hut
+	spawnMobile("endor", "vicious_donkuwah_battlelord",300, -1221.6, 18, 2986.1, 27,  0)
 
 end
