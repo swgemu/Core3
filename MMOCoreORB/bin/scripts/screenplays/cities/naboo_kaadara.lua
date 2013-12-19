@@ -216,7 +216,7 @@ function NabooKadaaraScreenPlay:spawnMobiles()
 	--{"trainer_shipwright",5.1,0.6,66.6,119,1741539, "", "a shipwright trainer"},
 
 	--misc
-	spawnMobile("naboo", "informant_npc_lvl_1", 1, 5044, -192, 6721, 0, 0)
+	spawnMobile("naboo", "informant_npc_lvl_1", 1, 5042, -188, 6734, 0, 0) --this one
 	spawnMobile("naboo", "informant_npc_lvl_1", 1, 5199, -192, 6546, 0, 0)
 	spawnMobile("naboo", "informant_npc_lvl_2", 1, 5410, -192, 6672, 225, 0)
 	spawnMobile("naboo", "informant_npc_lvl_2", 1, 5075, -192, 6784, 0, 0)
