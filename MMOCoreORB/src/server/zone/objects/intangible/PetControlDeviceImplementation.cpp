@@ -712,7 +712,7 @@ void PetControlDeviceImplementation::handleChat(CreatureObject* speaker, const S
 
 	// Handle trained command
 	if( trainedCommands.contains(STAY) && trainedCommands.get(STAY) == message ){
-		stay( speaker );
+		enqueuePetCommand(speaker, String("petStay").toLowerCase().hashCode(), "");
 	}
 	else if( trainedCommands.contains(FOLLOW) && trainedCommands.get(FOLLOW) == message ){
 		follow( speaker );
@@ -757,10 +757,10 @@ void PetControlDeviceImplementation::handleChat(CreatureObject* speaker, const S
 		speaker->sendSystemMessage("RANGED_ATTACK pet command is not yet implemented.");
 	}
 	else if( trainedCommands.contains(GROUP) && trainedCommands.get(GROUP) == message ){
-		group(speaker);
+		enqueueOwnerOnlyPetCommand(speaker, String("petGroup").toLowerCase().hashCode(), "");
 	}
 	else if( trainedCommands.contains(RECHARGEOTHER) && trainedCommands.get(RECHARGEOTHER) == message ){
-		rechargeOther(speaker);
+		enqueuePetCommand(speaker, String("petRechargeOther").toLowerCase().hashCode(), "");
 	}
 	else if( trainedCommands.contains(TRANSFER) && trainedCommands.get(TRANSFER) == message ){
 		enqueueOwnerOnlyPetCommand(speaker, String("petTransfer").toLowerCase().hashCode(), "");
@@ -997,90 +997,6 @@ void PetControlDeviceImplementation::followOther(CreatureObject* player){
 	}
 
 	pet->setFollowObject(target);
-
-}
-
-void PetControlDeviceImplementation::group(CreatureObject* player) {
-
-	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
-	if (controlledObject == NULL || !controlledObject->isAiAgent())
-		return;
-
-	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
-	if( pet == NULL )
-		return;
-
-	ManagedReference<GroupObject*> group = pet->getGroup();
-	if (group == NULL)
-		GroupManager::instance()->inviteToGroup(player, pet);
-	else
-		GroupManager::instance()->leaveGroup(group, pet);
-}
-
-void PetControlDeviceImplementation::stay(CreatureObject* player){
-
-	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
-	if (controlledObject == NULL || !controlledObject->isAiAgent())
-		return;
-
-	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
-	if( pet == NULL )
-		return;
-
-	pet->setOblivious();
-}
-
-void PetControlDeviceImplementation::rechargeOther(CreatureObject* player){
-
-	// Droid specific command
-	if( petType != DROIDPET )
-		return;
-
-	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
-	if (controlledObject == NULL || !controlledObject->isAiAgent())
-		return;
-
-	AiAgent* pet = cast<AiAgent*>(controlledObject.get());
-	if( pet == NULL )
-		return;
-
-	uint64 targetID = player->getTargetID();
-	ZoneServer* server = player->getZoneServer();
-	if (server == NULL)
-		return;
-
-	// Target must be a droid
-	Reference<DroidObject*> target = server->getObject(targetID, true).castTo<DroidObject*>();
-	if (target == NULL || !target->isDroidObject() ) {
-		pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
-		return;
-	}
-
-	DroidObject* droidPet = cast<DroidObject*>(pet);
-	if( droidPet == NULL )
-		return;
-
-	// Check range between droids
-	if (!droidPet->isInRange(target, 30.0f)){ // Same range as auto-repair
-		pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
-		return;
-	}
-
-	// Target can't be this droid
-	if (droidPet == target ) {
-		pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
-		return;
-	}
-
-	// Check if droid has power
-	if( !droidPet->hasPower() ){
-		pet->showFlyText("npc_reaction/flytext","low_power", 204, 0, 0);  // "*Low Power*"
-		return;
-	}
-
-	// Recharge other droid
-	Locker clocker(target, player);
-	droidPet->rechargeOtherDroid( target );
 
 }
 

@@ -231,33 +231,6 @@ class PetControlDevice extends ControlDevice {
 	public native void followOther(CreatureObject player);	
 
 	/**
-	 * Handles group command
-	 * @pre { }
-	 * @post { }
-	 * @param object player creature commanding
-	 */
-	@local
-	public native void group(CreatureObject player);
-
-	/**
-	 * Handles stay command
-	 * @pre { }
-	 * @post { }
-	 * @param object player creature commanding
-	 */
-	@local
-	public native void stay(CreatureObject player);
-	
-	/**
-	 * Handles recharge other command
-	 * @pre { }
-	 * @post { }
-	 * @param object player creature commanding
-	 */
-	@local
-	public native void rechargeOther(CreatureObject player);
-	
-	/**
 	 * Enqueues a pet command
 	 * @pre { }
 	 * @post { }
