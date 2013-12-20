@@ -47,13 +47,15 @@
 
 #include "engine/core/Task.h"
 
+#include "system/util/SynchronizedVectorMap.h"
+
 namespace server {
 namespace zone {
 namespace objects {
 namespace player {
 namespace events {
 
-class BountyHunterTefRemovalTaskMap : public VectorMap<uint64, Reference<Task*> > {
+class BountyHunterTefRemovalTaskMap : public SynchronizedVectorMap<uint64, Reference<Task*> > {
 
 };
 
