@@ -240,7 +240,7 @@ void GamblingTerminalImplementation::closeMenu(CreatureObject* player, bool payo
 
 	if (ghost->hasSuiBox(boxID)) {
 
-		ManagedReference<SuiSlotMachineBox*> box = dynamic_cast<SuiSlotMachineBox*>(ghost->getSuiBox(boxID));
+		ManagedReference<SuiSlotMachineBox*> box = ghost->getSuiBox(boxID).castTo<SuiSlotMachineBox*>();
 
 		if (payout) {
 			uint32 payoutBoxID = box->getPayoutBoxID();

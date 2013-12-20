@@ -1611,9 +1611,12 @@ Reference<MissionObject*> MissionManagerImplementation::getBountyHunterMission(C
 	ManagedReference<SceneObject*> datapad = player->getSlottedObject("datapad");
 
 	if (datapad != NULL) {
-		for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
-			if (datapad->getContainerObject(i)->isMissionObject()) {
-				Reference<MissionObject*> mission = datapad->getContainerObject(i).castTo<MissionObject*>();
+		VectorMap<uint64, ManagedReference<SceneObject*> > objects;
+		datapad->getContainerObjects(objects);
+
+		for (int i = 0; i < objects.size(); i++) {
+			if (objects.get(i)->isMissionObject()) {
+				Reference<MissionObject*> mission = objects.get(i).castTo<MissionObject*>();
 
 				if (mission != NULL && mission->getTypeCRC() == MissionObject::BOUNTY) {
 					return mission;

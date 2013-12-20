@@ -68,6 +68,7 @@ import server.zone.ZoneClientSession;
 import system.util.SortedVector;
 import system.util.Vector;
 import system.util.VectorMap;
+import system.util.SynchronizedSortedVector;
 include server.zone.objects.creature.variables.Skill;
 include server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.objects.manufactureschematic.ManufactureSchematic;
@@ -165,7 +166,7 @@ class PlayerObject extends IntangibleObject {
 	protected SortedVector<ChatRoom> chatRooms;
 		
 	@dereferenced
-	protected transient SortedVector<CreatureObject> duelList;
+	protected transient SynchronizedSortedVector<CreatureObject> duelList;
 	
 	@dereferenced
 	protected BountyHunterTefRemovalTaskMap bountyLockList;
@@ -853,6 +854,7 @@ class PlayerObject extends IntangibleObject {
 		return suiBoxes.contains(boxID);
 	}
 	
+	@reference
 	public SuiBox getSuiBox(unsigned int boxID) {
 		return suiBoxes.get(boxID);
 	}
@@ -890,7 +892,8 @@ class PlayerObject extends IntangibleObject {
 		}
 	}
 	
-	public unsigned SuiBox getSuiBoxFromWindowType(unsigned int windowType) {
+	@reference
+	public SuiBox getSuiBoxFromWindowType(unsigned int windowType) {
 		unsigned int type = 0;
 		
 		for (int i = 0; i < suiBoxes.size(); ++i) {
@@ -951,6 +954,7 @@ class PlayerObject extends IntangibleObject {
 		duelList.drop(targetPlayer);
 	}
 
+	@reference
 	public CreatureObject getDuelListObject(int index) {
 		return duelList.get(index);
 	}
