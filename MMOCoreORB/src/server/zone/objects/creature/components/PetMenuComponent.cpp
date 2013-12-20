@@ -7,6 +7,7 @@
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/group/GroupObject.h"
+#include "server/zone/managers/creature/PetManager.h"
 
 void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
 	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
@@ -37,6 +38,10 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 
 	ManagedReference<PetControlDevice*> controlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
 	if( controlDevice == NULL )
+		return;
+
+	PetManager* petManager = pet->getZoneServer()->getPetManager();
+	if (petManager == NULL)
 		return;
 
 	// DROIDS
@@ -150,6 +155,9 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 			menuResponse->addRadialMenuItemToRadialID(141, 152, 3, "@pet/pet_menu:menu_transfer" ); // PET_TRANSFER
 		}
 
+		if( player->hasSkill( "outdoors_creaturehandler_support_04") && petManager->checkMountEligibility(controlDevice) == PetManager::CANBEMOUNTTRAINED){
+			menuResponse->addRadialMenuItemToRadialID(141, 207, 3, "@pet/pet_menu:menu_train_mount" ); // Train Pet As A Mount
+		}
 	}
 
 }
@@ -282,6 +290,11 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 	// Train Command: Follow Other
 	if (selectedID == 165 ){
 		petControlDevice->setTrainingCommand( PetControlDevice::FOLLOWOTHER );
+	}
+
+	// Train Pet As A Mount
+	if (selectedID == 207 ){
+		petControlDevice->trainAsMount(player);
 	}
 
 	return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);

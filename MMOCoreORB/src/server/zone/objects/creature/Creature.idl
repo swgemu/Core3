@@ -247,5 +247,7 @@ class Creature extends AiAgent {
 
 		return super.npcTemplate.getControlDeviceTemplate();
 	}
+
+	public native boolean isMount();
 }
 

@@ -23,6 +23,7 @@
 #include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/objects/creature/components/AiCreatureComponent.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
+#include "server/zone/objects/intangible/PetControlDevice.h"
 
 //#define DEBUG
 
@@ -457,4 +458,18 @@ void CreatureImplementation::setPetLevel(int newLevel) {
 	for (int i = 0; i < 9; ++i) {
 		setMaxHAM(i, baseHAM.get(i));
 	}
+}
+
+bool CreatureImplementation::isMount() {
+	if (!isPet())
+		return false;
+
+	ManagedReference<PetControlDevice*> pcd = getControlDevice().get().castTo<PetControlDevice*>();
+	if (pcd == NULL)
+		return false;
+
+	if (pcd->isTrainedAsMount())
+		return true;
+
+	return false;
 }

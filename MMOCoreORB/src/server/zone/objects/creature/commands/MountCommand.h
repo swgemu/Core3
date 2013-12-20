@@ -80,7 +80,7 @@ public:
 		if (object == NULL)
 			return INVALIDTARGET;
 
-		if (!object->isVehicleObject() /* && !object->isPetObject() */)
+		if (!object->isVehicleObject() && !object->isMount())
 			return GENERALERROR;
 
 		CreatureObject* vehicle = cast<CreatureObject*>( object.get());
