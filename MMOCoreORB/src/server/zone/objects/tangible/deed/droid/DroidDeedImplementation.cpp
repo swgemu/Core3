@@ -123,6 +123,13 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 		droid->loadTemplateData( creatureTemplate );
 
+		// Transfer crafting components from deed to droid
+		ManagedReference<SceneObject*> craftingComponents = getSlottedObject("crafted_components");
+		if(craftingComponents != NULL) {
+			droid->transferObject(craftingComponents, 4, false);
+			craftingComponents->setSendToClient(false);
+		}
+
 		StringId s;
 		s.setStringId(droid->getObjectName()->getFullPath());
 		controlDevice->setObjectName(s);
