@@ -68,6 +68,7 @@ import server.zone.ZoneClientSession;
 import system.util.SortedVector;
 import system.util.Vector;
 import system.util.VectorMap;
+import system.util.SynchronizedSortedVector;
 include server.zone.objects.creature.variables.Skill;
 include server.zone.objects.draftschematic.DraftSchematic;
 include server.zone.objects.manufactureschematic.ManufactureSchematic;
@@ -165,7 +166,7 @@ class PlayerObject extends IntangibleObject {
 	protected SortedVector<ChatRoom> chatRooms;
 		
 	@dereferenced
-	protected transient SortedVector<CreatureObject> duelList;
+	protected transient SynchronizedSortedVector<CreatureObject> duelList;
 	
 	@dereferenced
 	protected BountyHunterTefRemovalTaskMap bountyLockList;
