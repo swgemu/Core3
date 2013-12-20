@@ -24,6 +24,9 @@ public:
 		if( pet == NULL )
 			return GENERALERROR;
 
+		if (pet->hasRidingCreature())
+			return GENERALERROR;
+
 		// Check if droid has power
 		if( controlDevice->getPetType() == PetControlDevice::DROIDPET ){
 			ManagedReference<DroidObject*> droidPet = cast<DroidObject*>(pet.get());

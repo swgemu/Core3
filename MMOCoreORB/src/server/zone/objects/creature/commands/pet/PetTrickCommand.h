@@ -30,10 +30,6 @@ public:
 		if( controlDevice->getPetType() != PetControlDevice::CREATUREPET )
 			return GENERALERROR;
 
-		/*ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
-		if (controlledObject == NULL || !controlledObject->isAiAgent())
-			return;*/
-
 		if (!creature->isAiAgent())
 			return GENERALERROR;
 
@@ -52,7 +48,7 @@ public:
 			return GENERALERROR;
 
 		// Check pet states
-		if( pet->isInCombat() || pet->isDead() || pet->isIncapacitated() )
+		if( pet->isInCombat() || pet->isDead() || pet->isIncapacitated() || pet->hasRidingCreature() )
 			return GENERALERROR;
 
 		// Check cooldown (single cooldown for both tricks as we can't animate both at once)

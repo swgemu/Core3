@@ -18,6 +18,9 @@ public:
 		if( pet == NULL )
 			return GENERALERROR;
 
+		if (pet->hasRidingCreature())
+			return GENERALERROR;
+
 		pet->setOblivious();
 
 		return SUCCESS;

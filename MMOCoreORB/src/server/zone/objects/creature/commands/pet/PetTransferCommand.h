@@ -59,6 +59,12 @@ public:
 		if (!controlDevice->canBeTradedTo(player, targetPlayer, 0))
 			return GENERALERROR;
 
+		if (pet->isInCombat() || player->isInCombat() || targetPlayer->isInCombat())
+			return GENERALERROR;
+
+		if (pet->hasRidingCreature())
+			return GENERALERROR;
+
 		ManagedReference<PlayerObject*> targetGhost = targetPlayer->getPlayerObject();
 		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
 
