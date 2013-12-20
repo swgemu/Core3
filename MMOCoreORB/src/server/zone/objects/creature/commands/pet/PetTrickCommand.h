@@ -48,7 +48,7 @@ public:
 			return GENERALERROR;
 
 		// Check pet states
-		if( pet->isInCombat() || pet->isDead() || pet->isIncapacitated() || pet->hasRidingCreature() )
+		if( pet->isInCombat() || pet->isDead() || pet->isIncapacitated() )
 			return GENERALERROR;
 
 		// Check cooldown (single cooldown for both tricks as we can't animate both at once)

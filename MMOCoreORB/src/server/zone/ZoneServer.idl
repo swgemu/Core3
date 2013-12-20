@@ -87,6 +87,7 @@ import server.zone.managers.minigames.ForageManager;
 import server.zone.managers.stringid.StringIdManager;
 import server.zone.managers.creature.CreatureTemplateManager;
 import server.zone.managers.creature.DnaManager;
+import server.zone.managers.creature.PetManager;
 import server.zone.managers.guild.GuildManager;
 import server.zone.managers.city.CityManager;
 
@@ -116,6 +117,7 @@ class ZoneServer extends ManagedService implements Logger {
 	private AuctionManager auctionManager;
 	private MissionManager missionManager;
 	private GuildManager guildManager;
+	private PetManager petManager;
 	
 	private transient StringIdManager stringIdManager;
 	
@@ -394,7 +396,12 @@ class ZoneServer extends ManagedService implements Logger {
 	public AuctionManager getAuctionManager() {
 		return auctionManager;
 	}
-	
+
+	@dirty
+	public PetManager getPetManager() {
+		return petManager;
+	}
+
 	//public native Account getAccount(unsigned int accountID);
 	
 	@local

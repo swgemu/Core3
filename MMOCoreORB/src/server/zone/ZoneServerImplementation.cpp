@@ -71,6 +71,7 @@ which carries forward this exception.
 #include "server/zone/managers/mission/MissionManager.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/DnaManager.h"
+#include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/managers/guild/GuildManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/faction/FactionManager.h"
@@ -122,6 +123,7 @@ ZoneServerImplementation::ZoneServerImplementation(ConfigManager* config) :
 	creatureTemplateManager = NULL;
 	guildManager = NULL;
 	cityManager = NULL;
+	petManager = NULL;
 
 	totalSentPackets = 0;
 	totalResentPackets = 0;
@@ -220,6 +222,9 @@ void ZoneServerImplementation::initialize() {
 
 	missionManager = new MissionManager(_this.get(), processor);
 	missionManager->deploy("MissionManager");
+
+	petManager = new PetManager(_this.get());
+	petManager->initialize();
 
 	startZones();
 

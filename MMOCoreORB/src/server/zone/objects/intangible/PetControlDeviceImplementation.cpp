@@ -3,6 +3,7 @@
 #include "server/zone/managers/objectcontroller/ObjectController.h"
 #include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/group/GroupManager.h"
+#include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/creature/Creature.h"
@@ -982,4 +983,15 @@ void PetControlDeviceImplementation::enqueueOwnerOnlyPetCommand(CreatureObject* 
 	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, command, args, player->getTargetID());
 	enqueueCommand->execute();
 
+}
+
+void PetControlDeviceImplementation::trainAsMount(CreatureObject* player) {
+	PetManager* petManager = player->getZoneServer()->getPetManager();
+	if (petManager == NULL)
+		return;
+
+	if (petManager->checkMountEligibility(_this.get()) != PetManager::CANBEMOUNTTRAINED)
+		return;
+
+	player->sendSystemMessage("Training as a mount isn't implemented yet.");
 }
