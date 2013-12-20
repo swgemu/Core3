@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a288981_d1c66649",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/pet/PetStoreCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2013-12-20T05:20:19Z",
+      "side": 1,
+      "message": "Locker clocker(player, pet);",
+      "revId": "df2b1e103562099cdf9d0b5b694f46deb8c62b24",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
