@@ -2519,6 +2519,18 @@ bool CreatureObjectImplementation::isAttackableBy(CreatureObject* object) {
 
 	if (object->isAiAgent()){
 
+		if (object->isPet()) {
+			ManagedReference<CreatureObject*> owner = object->getLinkedCreature().get();
+
+			if (owner == NULL)
+				return false;
+
+			if (isPlayerCreature()) // TODO: remove player check once Ai vs. Ai combat is enabled
+				return isAttackableBy(owner);
+			else
+				return false;
+		}
+
 		if(!object->isRebel() && !object->isImperial())
 			return true;
 

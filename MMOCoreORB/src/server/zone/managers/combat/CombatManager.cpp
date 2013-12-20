@@ -1547,6 +1547,18 @@ void CombatManager::requestDuel(CreatureObject* player, CreatureObject* targetPl
 				| CreatureFlag::AGGRESSIVE);
 		player->sendMessage(pvpstat);
 
+		for (int i = 0; i < targetGhost->getActivePetsSize(); i++) {
+			ManagedReference<AiAgent*> pet = targetGhost->getActivePet(i);
+
+			if (pet != NULL) {
+				BaseMessage* petpvpstat = new UpdatePVPStatusMessage(pet,
+						pet->getPvpStatusBitmask()
+						| CreatureFlag::ATTACKABLE
+						| CreatureFlag::AGGRESSIVE);
+				player->sendMessage(petpvpstat);
+			}
+		}
+
 		StringIdChatParameter stringId("duel", "accept_self");
 		stringId.setTT(targetPlayer->getObjectID());
 		player->sendSystemMessage(stringId);
@@ -1555,6 +1567,18 @@ void CombatManager::requestDuel(CreatureObject* player, CreatureObject* targetPl
 				player->getPvpStatusBitmask() | CreatureFlag::ATTACKABLE
 				| CreatureFlag::AGGRESSIVE);
 		targetPlayer->sendMessage(pvpstat2);
+
+		for (int i = 0; i < ghost->getActivePetsSize(); i++) {
+			ManagedReference<AiAgent*> pet = ghost->getActivePet(i);
+
+			if (pet != NULL) {
+				BaseMessage* petpvpstat = new UpdatePVPStatusMessage(pet,
+						pet->getPvpStatusBitmask()
+						| CreatureFlag::ATTACKABLE
+						| CreatureFlag::AGGRESSIVE);
+				targetPlayer->sendMessage(petpvpstat);
+			}
+		}
 
 		StringIdChatParameter stringId2("duel", "accept_target");
 		stringId2.setTT(player->getObjectID());
@@ -1599,11 +1623,29 @@ void CombatManager::requestEndDuel(CreatureObject* player, CreatureObject* targe
 
 		player->sendPvpStatusTo(targetPlayer);
 
+		for (int i = 0; i < ghost->getActivePetsSize(); i++) {
+			ManagedReference<AiAgent*> pet = ghost->getActivePet(i);
+
+			if (pet != NULL) {
+				pet->sendPvpStatusTo(targetPlayer);
+				targetPlayer->removeDefender(pet);
+			}
+		}
+
 		StringIdChatParameter stringId("duel", "end_self");
 		stringId.setTT(targetPlayer->getObjectID());
 		player->sendSystemMessage(stringId);
 
 		targetPlayer->sendPvpStatusTo(player);
+
+		for (int i = 0; i < targetGhost->getActivePetsSize(); i++) {
+			ManagedReference<AiAgent*> pet = targetGhost->getActivePet(i);
+
+			if (pet != NULL) {
+				pet->sendPvpStatusTo(player);
+				player->removeDefender(pet);
+			}
+		}
 
 		StringIdChatParameter stringId2("duel", "end_target");
 		stringId2.setTT(player->getObjectID());

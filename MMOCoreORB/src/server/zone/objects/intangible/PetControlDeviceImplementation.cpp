@@ -723,7 +723,7 @@ void PetControlDeviceImplementation::handleChat(CreatureObject* speaker, const S
 		enqueueOwnerOnlyPetCommand(speaker, String("petStore").toLowerCase().hashCode(), "");
 	}
 	else if( trainedCommands.contains(ATTACK) && trainedCommands.get(ATTACK) == message ){
-		speaker->sendSystemMessage("ATTACK pet command is not yet implemented.");
+		enqueuePetCommand(speaker, String("petAttack").toLowerCase().hashCode(), "");
 	}
 	else if( trainedCommands.contains(GUARD) && trainedCommands.get(GUARD) == message ){
 		speaker->sendSystemMessage("GUARD pet command is not yet implemented.");
