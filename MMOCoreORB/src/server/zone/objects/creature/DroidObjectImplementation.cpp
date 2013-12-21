@@ -52,10 +52,14 @@ which carries forward this exception.
 #include "server/zone/managers/components/ComponentManager.h"
 #include "server/zone/objects/creature/components/AiNPCComponent.h"
 #include "server/zone/templates/customization/AssetCustomizationManagerTemplate.h"
+#include "server/zone/objects/tangible/tool/CraftingTool.h"
+#include "server/zone/objects/tangible/components/droid/DroidModuleFactory.h"
+#include "server/zone/objects/tangible/components/droid/DroidCraftingModule.h"
 
 void DroidObjectImplementation::initializeTransientMembers() {
 	AiAgentImplementation::initializeTransientMembers();
 	aiInterfaceComponents.add(ComponentManager::instance()->getComponent<AiNPCComponent*>("AiNPCComponent"));
+	initDroidModules();
 }
 
 void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, CreatureObject* object){
@@ -67,11 +71,21 @@ void DroidObjectImplementation::fillAttributeList(AttributeListMessage* msg, Cre
 		msg->insertAttribute("customization_cnt", paintCount);
 	}
 
+	// Add module attributes
+	for( int i=0; i<modules.size(); i++){
+		DroidModule* module = modules.get(i);
+		if( module != NULL ){
+			module->fillAttributeList(msg, object);
+		}
+	}
+
 	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
 	if( linkedCreature == NULL )
 		return;
 
 	msg->insertAttribute("@obj_attr_n:owner", linkedCreature->getFirstName());
+
+
 
 }
 
@@ -189,5 +203,51 @@ void DroidObjectImplementation::handleLowPower(){
 bool DroidObjectImplementation::isPowerDroid(){
 
 	return getObjectTemplate()->getFullTemplateString().contains( "eg_6_power_droid" );
+
+}
+
+void DroidObjectImplementation::initDroidModules(){
+
+	// Initialize module objects
+	ManagedReference<SceneObject*> container = getSlottedObject("crafted_components");
+	if(container != NULL && container->getContainerObjectsSize() > 0) {
+
+		SceneObject* satchel = container->getContainerObject(0);
+		if(satchel != NULL && satchel->getContainerObjectsSize() > 0) {
+
+			for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
+				ManagedReference<SceneObject*> sceno = satchel->getContainerObject(i);
+
+				DroidModule* module = DroidModuleFactory::getModule( sceno );
+				if( module != NULL ){
+					modules.add(module);
+				}
+			}
+		}
+	}
+
+}
+
+CraftingStation* DroidObjectImplementation::getCraftingStation(int type){
+
+	for( int i=0; i<modules.size(); i++){
+
+		DroidModule* module = modules.get(i);
+		if( module != NULL && module->isCraftingModule() ){
+
+			DroidCraftingModule* craftingModule = dynamic_cast<DroidCraftingModule*>(module);
+			if( craftingModule != NULL ){
+				CraftingStation* craftingStation = craftingModule->getCraftingStation();
+
+				if( craftingModule->getCraftingType() == type ||
+				   (type == CraftingTool::JEDI && craftingModule->getCraftingType() == CraftingTool::WEAPON) ){
+
+					return craftingModule->getCraftingStation();
+				}
+			}
+		}
+	}
+
+	return NULL;
 
 }

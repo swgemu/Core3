@@ -30,6 +30,7 @@
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/objects/creature/VehicleObject.h"
+#include "server/zone/objects/creature/DroidObject.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/login/packets/ErrorMessage.h"
 #include "server/zone/packets/player/LogoutMessage.h"
@@ -106,6 +107,7 @@
 
 #include "server/zone/managers/creature/LairObserver.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
+#include <iostream>
 
 int PlayerManagerImplementation::MAX_CHAR_ONLINE_COUNT = 2;
 
@@ -2659,6 +2661,24 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 
 				return station;
 			}
+		}
+		else if( scno->isDroidObject() && (abs(scno->getPositionZ() - player->getPositionZ()) < 7.0f) && player->isInRange(scno, 7.0f)){
+
+			std::cout << "Droid object in range\n";
+
+			DroidObject* droid = cast<DroidObject*>(scno);
+			if( droid == NULL )
+				continue;
+
+			station = droid->getCraftingStation( type );
+			if( station != NULL ){
+				std::cout << "Correct station found\n";
+				std::cout << "stationType = " << station->getStationType() << "\n";
+				std::cout << "complexityLevel = " << station->getComplexityLevel() << "\n";
+
+				return station;
+			}
+
 		}
 	}
 
