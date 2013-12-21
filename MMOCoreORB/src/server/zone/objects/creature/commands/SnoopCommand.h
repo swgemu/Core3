@@ -105,6 +105,14 @@ public:
 
 			creatureDatapad->sendWithoutParentTo(creature);
 			creatureDatapad->openContainerTo(creature);
+		}  else if (container == "bank") {
+			SceneObject* creatureBank = targetObj->getSlottedObject("bank");
+
+			if (creatureBank == NULL)
+				return GENERALERROR;
+
+			creatureBank->sendWithoutParentTo(creature);
+			creatureBank->openContainerTo(creature);
 		} else {
 			SceneObject* creatureInventory = targetObj->getSlottedObject("inventory");
 
