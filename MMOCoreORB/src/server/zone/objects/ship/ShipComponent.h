@@ -26,9 +26,9 @@ public:
 	void readObject(DataTableRow* row) {
 		row->getCell(0)->getValue(name);
 		row->getCell(1)->getValue(objectTemplate);
-		row->getCell(1)->getValue(sharedObjectTemplate);
-		row->getCell(2)->getValue(componentType);
-		row->getCell(3)->getValue(compatibility);
+		row->getCell(2)->getValue(sharedObjectTemplate);
+		row->getCell(3)->getValue(componentType);
+		row->getCell(4)->getValue(compatibility);
 	}
 
 	const String& getCompatibility() const {
