@@ -50,6 +50,7 @@ import server.zone.objects.tangible.deed.Deed;
 import server.zone.Zone;
 import server.zone.packets.object.ObjectMenuResponse;
 include server.zone.objects.manufactureschematic.craftingvalues.CraftingValues;
+include server.zone.objects.tangible.components.droid.DroidModule;
 include server.zone.packets.scene.AttributeListMessage;
 import server.zone.objects.creature.CreatureObject;
 
@@ -59,6 +60,9 @@ class DroidDeed extends Deed {
 
 	protected string controlDeviceObjectTemplate;
 	protected string mobileTemplate;
+	
+	@dereferenced	
+	protected Vector<DroidModule> modules;
 	
 	public DroidDeed() {
 		Logger.setLoggingName("DroidDeed");
@@ -95,4 +99,7 @@ class DroidDeed extends Deed {
 	public boolean isDroidDeedObject() {
 		return true;
 	}
+	
+	@local
+	private native void initDroidModules();
 }
