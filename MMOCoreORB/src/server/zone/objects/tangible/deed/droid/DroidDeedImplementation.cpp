@@ -31,7 +31,13 @@ void DroidDeedImplementation::loadTemplateData(SharedObjectTemplate* templateDat
 void DroidDeedImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	DeedImplementation::fillAttributeList(alm, object);
 
-	// @TODO Add attributes
+	// Add module attributes
+	for( int i=0; i<modules.size(); i++){
+		DroidModuleDataComponent* module = modules.get(i);
+		if( module != NULL ){
+			module->fillAttributeList(alm, object);
+		}
+	}
 
 }
 
@@ -39,6 +45,37 @@ void DroidDeedImplementation::initializeTransientMembers() {
 	DeedImplementation::initializeTransientMembers();
 
 	setLoggingName("DroidDeed");
+
+	initDroidModules();
+}
+
+void DroidDeedImplementation::initDroidModules(){
+
+	// Initialize list of modules
+	ManagedReference<SceneObject*> container = getSlottedObject("crafted_components");
+	if(container != NULL && container->getContainerObjectsSize() > 0) {
+
+		SceneObject* satchel = container->getContainerObject(0);
+		if(satchel != NULL && satchel->getContainerObjectsSize() > 0) {
+
+			for (int i = 0; i < satchel->getContainerObjectsSize(); ++i) {
+
+				ManagedReference<SceneObject*> sceno = satchel->getContainerObject(i);
+				if( sceno == NULL )
+					continue;
+
+				DataObjectComponentReference* data = sceno->getDataObjectComponent();
+				if(data == NULL || data->get() == NULL || !data->get()->isDroidModuleData() )
+					continue;
+
+				DroidModuleDataComponent* module = cast<DroidModuleDataComponent*>(data->get());
+				if( module != NULL ){
+					modules.add(module);
+				}
+
+			}
+		}
+	}
 }
 
 void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool firstUpdate) {
@@ -47,7 +84,9 @@ void DroidDeedImplementation::updateCraftingValues(CraftingValues* values, bool 
 	 *
 	 */
 
-	// @TODO Add crafting values
+	if( firstUpdate ){
+		initDroidModules();
+	}
 }
 
 void DroidDeedImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
@@ -127,6 +166,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		ManagedReference<SceneObject*> craftingComponents = getSlottedObject("crafted_components");
 		if(craftingComponents != NULL) {
 			droid->transferObject(craftingComponents, 4, false);
+			droid->initDroidModules();
 			craftingComponents->setSendToClient(false);
 		}
 

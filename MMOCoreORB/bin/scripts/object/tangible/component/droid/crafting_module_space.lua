@@ -43,6 +43,7 @@
 
 object_tangible_component_droid_crafting_module_space = object_tangible_component_droid_shared_crafting_module_space:new {
 
+	dataObjectComponent = "DroidCraftingModuleDataComponent",
 
 	numberExperimentalProperties = {1, 1, 2, 1, 2, 1},
 	experimentalProperties = {"XX", "XX", "CD", "OQ", "XX", "CD", "OQ", "XX"},

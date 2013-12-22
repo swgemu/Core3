@@ -344,6 +344,8 @@ core3_SOURCES =	$(core3_IDLS) \
 		server/zone/managers/player/PermissionLevelList.cpp \
 		server/zone/objects/creature/components/TrainerMenuComponent.cpp \
 		server/zone/objects/creature/components/PetMenuComponent.cpp \
+		server/zone/objects/tangible/components/droid/DroidModuleDataComponent.cpp \
+		server/zone/objects/tangible/components/droid/DroidCraftingModuleDataComponent.cpp \
 		server/zone/objects/creature/variables/CreatureTemplateReference.cpp \
 		server/zone/objects/player/sessions/ImageDesignPositionObserverImplementation.cpp \
 		server/zone/objects/building/components/CityHallZoneComponent.cpp \
