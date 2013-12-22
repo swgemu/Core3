@@ -21,7 +21,7 @@ public:
 			return GENERALERROR;
 
 		// Droid specific command
-		if( controlDevice->getPetType() != PetControlDevice::DROIDPET )
+		if( controlDevice->getPetType() != PetManager::DROIDPET )
 			return GENERALERROR;
 
 		ManagedReference<DroidObject*> droidPet = cast<DroidObject*>(creature);

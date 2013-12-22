@@ -48,6 +48,7 @@ import engine.core.ManagedService;
 import server.zone.objects.creature.AiAgent;
 import server.zone.objects.intangible.PetControlDevice;
 import server.zone.ZoneServer;
+import server.zone.objects.creature.CreatureObject;
 include server.zone.managers.creature.ValidMountScaleRange;
 
 class PetManager extends ManagedService implements Logger {
@@ -56,10 +57,36 @@ class PetManager extends ManagedService implements Logger {
 	@dereferenced
 	protected Vector<Reference<ValidMountScaleRange> > validMountScaleRanges;
 
+	// Pet Types
+	public static final int FACTIONPET = 0;
+	public static final int CREATUREPET = 1;
+	public static final int DROIDPET = 2;
+
+	// Mount Training States
 	public static final short INVALIDCREATURE = 0x00;
 	public static final short TOOSMALL = 0x01;
 	public static final short TOOLARGE = 0x02;
 	public static final short CANBEMOUNTTRAINED = 0x03;
+
+	// Command IDs
+	public static final unsigned int FOLLOW = 1;
+	public static final unsigned int STORE = 2;
+	public static final unsigned int ATTACK = 3;
+	public static final unsigned int GUARD = 4;
+	public static final unsigned int FRIEND = 5;
+	public static final unsigned int FOLLOWOTHER = 6;
+	public static final unsigned int TRICK1 = 7;
+	public static final unsigned int TRICK2 = 8;
+	public static final unsigned int PATROL = 9;
+	public static final unsigned int FORMATION1 = 10;
+	public static final unsigned int FORMATION2 = 11;	
+	public static final unsigned int SPECIAL_ATTACK1 = 12;
+	public static final unsigned int SPECIAL_ATTACK2 = 13;
+	public static final unsigned int RANGED_ATTACK = 14;
+	public static final unsigned int GROUP = 15;
+	public static final unsigned int STAY = 16;
+	public static final unsigned int RECHARGEOTHER = 17;
+	public static final unsigned int TRANSFER = 18;
 
 	public PetManager(ZoneServer server) {
 		zoneServer = server;
@@ -76,4 +103,50 @@ class PetManager extends ManagedService implements Logger {
 	public native short isValidMountScale(final string appearanceFilename, int saddleCapacity, float scale);
 
 	public native short checkMountEligibility(PetControlDevice petControlDevice);
+
+	/**
+	 * Handles chat messages to the pet
+	 * @pre { }
+	 * @post { }
+	 * @param object player creature speaking
+	 * @param object pet receiving chat
+	 * @param string chat message
+	 */
+	@local
+	public native void handleChat(CreatureObject speaker, AiAgent pet, final string message);
+
+	/**
+	 * Handles command training
+	 * @pre { }
+	 * @post { }
+	 * @param object player creature speaking
+	 * @param object pet being trained
+	 * @param string chat message
+	 * @return returns true if chat came from pet's owner
+	 */
+	@local
+	protected native boolean handleCommandTraining(CreatureObject speaker, AiAgent pet, final string message);
+
+	/**
+	 * Enqueues a pet command
+	 * @pre { }
+	 * @post { }
+	 * @param object player creature commanding
+	 * @param unsigned long command CRC
+	 * @param const string arguments
+	 * @param boolean if true, uses player as target, if false uses player's target
+	 */
+	@local
+	public native void enqueuePetCommand(CreatureObject player, AiAgent pet, unsigned int command, final string args, boolean selfTarget = false);
+
+	/**
+	 * Enqueues a pet command, player must be the pet's owner
+	 * @pre { }
+	 * @post { }
+	 * @param object player creature commanding
+	 * @param unsigned long command CRC
+	 * @param const string arguments
+	 */
+	@local
+	public native void enqueueOwnerOnlyPetCommand(CreatureObject player, AiAgent pet, unsigned int command, final string args);
 }

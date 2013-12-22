@@ -4,6 +4,7 @@
 
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/chat/ChatManager.h"
@@ -120,7 +121,7 @@ public:
 		StringId s;
 		s.setStringId(creature->getObjectName()->getFullPath());
 		controlDevice->setObjectName(s);
-		controlDevice->setPetType(PetControlDevice::CREATUREPET);
+		controlDevice->setPetType(PetManager::CREATUREPET);
 		controlDevice->setMaxVitality(100);
 		controlDevice->setVitality(100);
 		controlDevice->setGrowthStage(1);

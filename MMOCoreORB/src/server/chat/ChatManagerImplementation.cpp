@@ -11,6 +11,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/player/PlayerMap.h"
 #include "server/zone/managers/object/ObjectManager.h"
+#include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/packets/chat/ChatRoomList.h"
 #include "server/zone/packets/chat/ChatRoomMessage.h"
 #include "server/zone/packets/object/SpatialChat.h"
@@ -496,25 +497,18 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, const U
 						creature->sendMessage(cmsg);
 					}
 				}
-				else if( object->isAiAgent() ){
-					AiAgent* aiAgent = cast<AiAgent*>(object);
+				else if( object->isPet() ){
+					AiAgent* pet = cast<AiAgent*>(object);
 
-					if (aiAgent == NULL )
+					if (pet == NULL )
 						continue;
 
-					if( aiAgent->isDead() || aiAgent->isIncapacitated() )
+					if( pet->isDead() || pet->isIncapacitated() )
 						continue;
 
-					if( aiAgent->isPet() ){
-						ManagedReference<PetControlDevice*> petControlDevice = aiAgent->getControlDevice().get().castTo<PetControlDevice*>();
-
-						if( petControlDevice == NULL )
-							continue;
-
-						Locker clocker(aiAgent, player);
-						petControlDevice->handleChat( player, message.toString() );
-
-					}
+					PetManager* petManager = server->getPetManager();
+					Locker clocker(pet, player);
+					petManager->handleChat( player, pet, message.toString() );
 
 				}
 			}

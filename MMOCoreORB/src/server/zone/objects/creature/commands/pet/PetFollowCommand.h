@@ -33,7 +33,7 @@ public:
 		}
 
 		// Check if droid has power
-		if( controlDevice->getPetType() == PetControlDevice::DROIDPET ){
+		if( controlDevice->getPetType() == PetManager::DROIDPET ){
 			ManagedReference<DroidObject*> droidPet = cast<DroidObject*>(pet.get());
 			if( droidPet == NULL )
 				return GENERALERROR;

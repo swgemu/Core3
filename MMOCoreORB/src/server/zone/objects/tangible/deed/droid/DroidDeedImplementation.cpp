@@ -6,11 +6,12 @@
  */
 
 #include "server/zone/objects/tangible/deed/droid/DroidDeed.h"
-#include"server/zone/ZoneServer.h"
+#include "server/zone/ZoneServer.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/objects/manufactureschematic/ManufactureSchematic.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/templates/tangible/DroidDeedTemplate.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
@@ -83,7 +84,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 
 			if (obj != NULL && obj->isPetControlDevice() ){
 				Reference<PetControlDevice*> petDevice = cast<PetControlDevice*>(obj.get());
-				if( petDevice != NULL && petDevice->getPetType() == PetControlDevice::DROIDPET){
+				if( petDevice != NULL && petDevice->getPetType() == PetManager::DROIDPET){
 					droidsInDatapad++;
 				}
 			}
@@ -133,7 +134,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		StringId s;
 		s.setStringId(droid->getObjectName()->getFullPath());
 		controlDevice->setObjectName(s);
-		controlDevice->setPetType(PetControlDevice::DROIDPET);
+		controlDevice->setPetType(PetManager::DROIDPET);
 		controlDevice->setDefaultCommands();
 		droid->createChildObjects();
 		controlDevice->setControlledObject(droid);

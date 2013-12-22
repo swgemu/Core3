@@ -45,7 +45,7 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 		return;
 
 	// DROIDS
-	if( controlDevice->getPetType() == PetControlDevice::DROIDPET ){
+	if( controlDevice->getPetType() == PetManager::DROIDPET ){
 
 		menuResponse->addRadialMenuItem(132, 3, "@pet/pet_menu:droid_options"); // SERVER_ITEM_OPTIONS
 		menuResponse->addRadialMenuItemToRadialID(132, 234, 3, "@pet/pet_menu:menu_recharge" ); // PET_FEED
@@ -73,7 +73,7 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 
 	}
 	// FACTION
-	else if( controlDevice->getPetType() == PetControlDevice::FACTIONPET ){
+	else if( controlDevice->getPetType() == PetManager::FACTIONPET ){
 
 		menuResponse->addRadialMenuItem(141, 3, "@pet/pet_menu:menu_command"); // PET_COMMAND
 		menuResponse->addRadialMenuItemToRadialID(141, 142, 3, "@pet/pet_menu:menu_follow" ); // PET_FOLLOW
@@ -93,7 +93,7 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 
 	}
 	// CREATURES
-	else if( controlDevice->getPetType() == PetControlDevice::CREATUREPET ){
+	else if( controlDevice->getPetType() == PetManager::CREATUREPET ){
 
 		menuResponse->addRadialMenuItem(141, 3, "@pet/pet_menu:menu_command"); // PET_COMMAND
 
@@ -192,37 +192,37 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 
 	// Trained Command: Recharge Other
 	if (selectedID == 235 ){
-		petControlDevice->setTrainingCommand( PetControlDevice::RECHARGEOTHER );
+		petControlDevice->setTrainingCommand( PetManager::RECHARGEOTHER );
 	}
 
 	// Train Command: Follow
 	if (selectedID == 142 ){ // PET_FOLLOW
-		petControlDevice->setTrainingCommand( PetControlDevice::FOLLOW );
+		petControlDevice->setTrainingCommand( PetManager::FOLLOW );
 	}
 
 	// Train Command: Stay
 	if (selectedID == 143 ){ // PET_STAY
-		petControlDevice->setTrainingCommand( PetControlDevice::STAY );
+		petControlDevice->setTrainingCommand( PetManager::STAY );
 	}
 
 	// Train Command: Guard
 	if (selectedID == 144 ){ // PET_GUARD
-		petControlDevice->setTrainingCommand( PetControlDevice::GUARD );
+		petControlDevice->setTrainingCommand( PetManager::GUARD );
 	}
 
 	// Train Command: Friend
 	if (selectedID == 145 ){ // PET_FRIEND
-		petControlDevice->setTrainingCommand( PetControlDevice::FRIEND );
+		petControlDevice->setTrainingCommand( PetManager::FRIEND );
 	}
 
 	// Train Command: Attack
 	if (selectedID == 146 ){ // PET_ATTACK
-		petControlDevice->setTrainingCommand( PetControlDevice::ATTACK );
+		petControlDevice->setTrainingCommand( PetManager::ATTACK );
 	}
 
 	// Train Command: Patrol
 	if (selectedID == 147 ){ // PET_PATROL
-		petControlDevice->setTrainingCommand( PetControlDevice::PATROL );
+		petControlDevice->setTrainingCommand( PetManager::PATROL );
 	}
 
 	// Get Patrol Point
@@ -239,57 +239,57 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 
 	// Train Command: Wedge Formation
 	if (selectedID == 150 ){ // PET_ASSUME_FORMATION_1
-		petControlDevice->setTrainingCommand( PetControlDevice::FORMATION1 );
+		petControlDevice->setTrainingCommand( PetManager::FORMATION1 );
 	}
 
 	// Train Command: Column Formation
 	if (selectedID == 151 ){ // PET_ASSUME_FORMATION_2
-		petControlDevice->setTrainingCommand( PetControlDevice::FORMATION2 );
+		petControlDevice->setTrainingCommand( PetManager::FORMATION2 );
 	}
 
 	// Train Command: Transfer
 	if (selectedID == 152 ){ // PET_TRANSFER
-		petControlDevice->setTrainingCommand( PetControlDevice::TRANSFER );
+		petControlDevice->setTrainingCommand( PetManager::TRANSFER );
 	}
 
 	// Train Command: Trick 1
 	if (selectedID == 154 ){ // PET_TRICK_1
-		petControlDevice->setTrainingCommand( PetControlDevice::TRICK1 );
+		petControlDevice->setTrainingCommand( PetManager::TRICK1 );
 	}
 
 	// Train Command: Trick 2
 	if (selectedID == 155 ){ // PET_TRICK_2
-		petControlDevice->setTrainingCommand( PetControlDevice::TRICK2 );
+		petControlDevice->setTrainingCommand( PetManager::TRICK2 );
 	}
 
 	// Train Command: Group
 	if (selectedID == 158 ){ // PET_GROUP
-		petControlDevice->setTrainingCommand( PetControlDevice::GROUP );
+		petControlDevice->setTrainingCommand( PetManager::GROUP );
 	}
 
 	// Train Command: Special Attack 1
 	if (selectedID == 161 ){ // PET_SPECIAL_ATTACK_ONE
-		petControlDevice->setTrainingCommand( PetControlDevice::SPECIAL_ATTACK1 );
+		petControlDevice->setTrainingCommand( PetManager::SPECIAL_ATTACK1 );
 	}
 
 	// Train Command: Special Attack 2
 	if (selectedID == 162 ){ // PET_SPECIAL_ATTACK_TWO
-		petControlDevice->setTrainingCommand( PetControlDevice::SPECIAL_ATTACK2 );
+		petControlDevice->setTrainingCommand( PetManager::SPECIAL_ATTACK2 );
 	}
 
 	// Train Command: Ranged Attack
 	if (selectedID == 163 ){
-		petControlDevice->setTrainingCommand( PetControlDevice::RANGED_ATTACK );
+		petControlDevice->setTrainingCommand( PetManager::RANGED_ATTACK );
 	}
 
 	// Train Command: Store
 	if (selectedID == 164 ){
-		petControlDevice->setTrainingCommand( PetControlDevice::STORE );
+		petControlDevice->setTrainingCommand( PetManager::STORE );
 	}
 
 	// Train Command: Follow Other
 	if (selectedID == 165 ){
-		petControlDevice->setTrainingCommand( PetControlDevice::FOLLOWOTHER );
+		petControlDevice->setTrainingCommand( PetManager::FOLLOWOTHER );
 	}
 
 	// Train Pet As A Mount

@@ -68,30 +68,6 @@ class PetControlDevice extends ControlDevice {
 
 	protected int petType;
 
-	public static final int FACTIONPET = 0;
-	public static final int CREATUREPET = 1;
-	public static final int DROIDPET = 2;
-	
-	// Command IDs
-	public static final unsigned int FOLLOW = 1;
-	public static final unsigned int STORE = 2;
-	public static final unsigned int ATTACK = 3;
-	public static final unsigned int GUARD = 4;
-	public static final unsigned int FRIEND = 5;
-	public static final unsigned int FOLLOWOTHER = 6;
-	public static final unsigned int TRICK1 = 7;
-	public static final unsigned int TRICK2 = 8;
-	public static final unsigned int PATROL = 9;
-	public static final unsigned int FORMATION1 = 10;
-	public static final unsigned int FORMATION2 = 11;	
-	public static final unsigned int SPECIAL_ATTACK1 = 12;
-	public static final unsigned int SPECIAL_ATTACK2 = 13;
-	public static final unsigned int RANGED_ATTACK = 14;
-	public static final unsigned int GROUP = 15;
-	public static final unsigned int STAY = 16;
-	public static final unsigned int RECHARGEOTHER = 17;
-	public static final unsigned int TRANSFER = 18;
-	
 	// Trained command strings <commandid, chatstring>
 	@dereferenced 
 	protected VectorMap<unsigned int, string> trainedCommands;
@@ -210,39 +186,6 @@ class PetControlDevice extends ControlDevice {
 	 */
 	@local
 	public native void fillAttributeList(AttributeListMessage msg, CreatureObject object);
-	
-	/**
-	 * Handles chat messages to the pet
-	 * @pre { }
-	 * @post { }
-	 * @param object player creature speaking
-	 * @param string chat message
-	 */
-	@local
-	public native void handleChat(CreatureObject speaker, final string message);
-
-	/**
-	 * Enqueues a pet command
-	 * @pre { }
-	 * @post { }
-	 * @param object player creature commanding
-	 * @param unsigned long command CRC
-	 * @param const string arguments
-	 * @param boolean if true, uses player as target, if false uses player's target
-	 */
-	@local
-	public native void enqueuePetCommand(CreatureObject player, unsigned int command, final string args, boolean selfTarget = false);
-
-	/**
-	 * Enqueues a pet command, player must be the pet's owner
-	 * @pre { }
-	 * @post { }
-	 * @param object player creature commanding
-	 * @param unsigned long command CRC
-	 * @param const string arguments
-	 */
-	@local
-	public native void enqueueOwnerOnlyPetCommand(CreatureObject player, unsigned int command, final string args);
 
 	/**
 	 * Sets default trained commands and command strings for the pet
@@ -259,18 +202,52 @@ class PetControlDevice extends ControlDevice {
 	 */	
 	@local
 	public native void setTrainingCommand( unsigned int commandID );
-	
-	/**
-	 * Handles command training
-	 * @pre { }
-	 * @post { }
-	 * @param object player creature speaking
-	 * @param string chat message
-	 * @return returns true if chat came from pet's owner
-	 */
-	@local
-	protected native boolean handleCommandTraining(CreatureObject speaker, final string message);
-	
+
+	public unsigned int getTrainingCommand() {
+		return trainingCommand;
+	}
+
+	public boolean hasTrainedCommand(unsigned int command) {
+		return trainedCommands.contains(command);
+	}
+
+	public boolean hasTrainedCommandString(final string message) {
+		for (int i = 0; i < trainedCommands.size(); i++) {
+			if (trainedCommands.get(i) == message)
+				return true;
+		}
+
+		return false;
+	}
+
+	public string getTrainedCommand(unsigned int command) {
+		return trainedCommands.get(command);
+	}
+
+	public void addTrainedCommand(unsigned int command, final string message) {
+		trainedCommands.put(command, message);
+	}
+
+	public string getFutureName() {
+		return futureName;
+	}
+
+	public void setFutureName(string name) {
+		futureName = name;
+	}
+
+	public unsigned int getNamingProgress() {
+		return namingProgress;
+	}
+
+	public void incrementNamingProgress() {
+		namingProgress++;
+	}
+
+	public void resetNamingProgress() {
+		namingProgress = 0;
+	}
+
 	public boolean isPetControlDevice() {
 		return true;
 	}

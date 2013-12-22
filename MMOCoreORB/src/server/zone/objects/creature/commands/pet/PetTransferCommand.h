@@ -21,7 +21,7 @@ public:
 			return GENERALERROR;
 
 		// Creature specific command
-		if( controlDevice->getPetType() != PetControlDevice::CREATUREPET )
+		if( controlDevice->getPetType() != PetManager::CREATUREPET )
 			return GENERALERROR;
 
 		if (!creature->isAiAgent())
@@ -82,7 +82,7 @@ public:
 			if (device == NULL)
 				continue;
 
-			if (device->getPetType() == PetControlDevice::CREATUREPET) {
+			if (device->getPetType() == PetManager::CREATUREPET) {
 				activePets++;
 				petLevel += targetPet->getLevel();
 			}

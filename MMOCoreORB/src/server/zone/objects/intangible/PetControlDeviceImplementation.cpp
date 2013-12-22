@@ -1,7 +1,6 @@
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/intangible/PetControlObserver.h"
 #include "server/zone/managers/objectcontroller/ObjectController.h"
-#include "server/zone/managers/name/NameManager.h"
 #include "server/zone/managers/group/GroupManager.h"
 #include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/objects/creature/CreatureObject.h"
@@ -21,7 +20,6 @@
 #include "server/zone/objects/tangible/weapon/WeaponObject.h"
 #include "server/zone/managers/stringid/StringIdManager.h"
 #include "tasks/StorePetTask.h"
-#include "tasks/EnqueuePetCommand.h"
 
 void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	if (player->isInCombat() || player->isDead() || player->isIncapacitated() || player->getPendingTask("tame_pet") != NULL) {
@@ -104,7 +102,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 	int maxLevelofPets = 10;
 	int level = pet->getLevel();
 
-	if (petType == CREATUREPET) {
+	if (petType == PetManager::CREATUREPET) {
 		bool ch = player->hasSkill("outdoors_creaturehandler_novice");
 
 		if (ch) {
@@ -122,7 +120,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 			return;
 		}
 
-	} else if (petType == FACTIONPET){
+	} else if (petType == PetManager::FACTIONPET){
 		maxPets = 3;
 	}
 
@@ -130,7 +128,7 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		ManagedReference<AiAgent*> object = ghost->getActivePet(i);
 
 		if (object != NULL) {
-			if (object->isCreature() && petType == CREATUREPET) {
+			if (object->isCreature() && petType == PetManager::CREATUREPET) {
 				if (++currentlySpawned >= maxPets) {
 					player->sendSystemMessage("@pet/pet_menu:at_max"); // You already have the maximum number of pets of this type that you can call.
 					return;
@@ -142,12 +140,12 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 					player->sendSystemMessage("@pet/pet_menu:control_exceeded"); // Calling this pet would exceed your Control Level ability.
 					return;
 				}
-			} else if (object->isNonPlayerCreatureObject() && petType == FACTIONPET) {
+			} else if (object->isNonPlayerCreatureObject() && petType == PetManager::FACTIONPET) {
 				if (++currentlySpawned >= maxPets) {
 					player->sendSystemMessage("@pet/pet_menu:at_max"); // You already have the maximum number of pets of this type that you can call.
 					return;
 				}
-			} else if (object->isDroidObject() && petType == DROIDPET) {
+			} else if (object->isDroidObject() && petType == PetManager::DROIDPET) {
 				if (++currentlySpawned >= maxPets) {
 					player->sendSystemMessage("@pet/pet_menu:at_max"); // You already have the maximum number of pets of this type that you can call.
 					return;
@@ -322,7 +320,7 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 }
 
 void PetControlDeviceImplementation::growPet() {
-	if (petType != CREATUREPET)
+	if (petType != PetManager::CREATUREPET)
 		return;
 
 	if (growthStage <= 0 || growthStage >= 10)
@@ -411,10 +409,10 @@ bool PetControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Creat
 	if (datapad == NULL)
 		return false;
 
-	if (petType == FACTIONPET) {
+	if (petType == PetManager::FACTIONPET) {
 		player->sendSystemMessage("@pet/pet_menu:bad_type"); // You cannot trade a pet of that type. Transfer failed.
 		return false;
-	} else if (petType == DROIDPET) {
+	} else if (petType == PetManager::DROIDPET) {
 		int droidsInDatapad = numberInTrade;
 
 		for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
@@ -422,7 +420,7 @@ bool PetControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Creat
 
 			if (obj != NULL && obj->isPetControlDevice() ){
 				Reference<PetControlDevice*> petDevice = cast<PetControlDevice*>(obj.get());
-				if( petDevice != NULL && petDevice->getPetType() == PetControlDevice::DROIDPET){
+				if( petDevice != NULL && petDevice->getPetType() == PetManager::DROIDPET){
 					droidsInDatapad++;
 				}
 			}
@@ -435,7 +433,7 @@ bool PetControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Creat
 
 		return true;
 
-	} else if (petType == CREATUREPET) {
+	} else if (petType == PetManager::CREATUREPET) {
 		ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 
 		if (controlledObject == NULL || !controlledObject->isAiAgent())
@@ -474,7 +472,7 @@ bool PetControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Creat
 			if (object != NULL && object->isPetControlDevice()) {
 				PetControlDevice* device = cast<PetControlDevice*>( object.get());
 
-				if (device->getPetType() == PetControlDevice::CREATUREPET) {
+				if (device->getPetType() == PetManager::CREATUREPET) {
 					if (++numberStored >= maxStoredPets) {
 						player->sendSystemMessage("@pet/pet_menu:targ_too_many_stored"); // That person has too many stored pets. Transfer failed.
 						receiver->sendSystemMessage("@pet/pet_menu:sys_too_many_stored"); // There are too many pets stored in this container. Release some of them to make room for more.
@@ -494,7 +492,7 @@ bool PetControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Creat
 void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	SceneObjectImplementation::fillAttributeList(alm, object);
 
-	if (petType == DROIDPET) {
+	if (petType == PetManager::DROIDPET) {
 		ManagedReference<DroidObject*> droid = this->controlledObject.get().castTo<DroidObject*>();
 
 		if (droid != NULL) {
@@ -506,7 +504,7 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 		if (pet != NULL) {
 			alm->insertAttribute("challenge_level", pet->getLevel());
 
-			if (petType == CREATUREPET)
+			if (petType == PetManager::CREATUREPET)
 				alm->insertAttribute("creature_vitality", String::valueOf(vitality) + "/" + String::valueOf(maxVitality));
 
 			alm->insertAttribute("creature_health", pet->getBaseHAM(0));
@@ -575,7 +573,7 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 			alm->insertAttribute("creature_tohit", pet->getChanceHit());
 			alm->insertAttribute("creature_damage", String::valueOf(pet->getDamageMin()) + " - " + String::valueOf(pet->getDamageMax()));
 
-			if (petType == CREATUREPET) {
+			if (petType == PetManager::CREATUREPET) {
 				CreatureAttackMap* attMap = pet->getAttackMap();
 				if (attMap->size() > 0) {
 					String str = StringIdManager::instance()->getStringId(("@combat_effects:" + pet->getAttackMap()->getCommand(0)).hashCode()).toString();
@@ -606,310 +604,93 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 		alm->insertAttribute("pet_command", "" );
 	}
 
-	if( trainedCommands.contains(STAY) ){
-		alm->insertAttribute("pet_command_1", trainedCommands.get(STAY) );
+	if( trainedCommands.contains(PetManager::STAY) ){
+		alm->insertAttribute("pet_command_1", trainedCommands.get(PetManager::STAY) );
 	}
 
-	if( trainedCommands.contains(FOLLOW) ){
-		alm->insertAttribute("pet_command_0", trainedCommands.get(FOLLOW) );
+	if( trainedCommands.contains(PetManager::FOLLOW) ){
+		alm->insertAttribute("pet_command_0", trainedCommands.get(PetManager::FOLLOW) );
 	}
 
-	if( trainedCommands.contains(STORE) ){
-		alm->insertAttribute("pet_command_11", trainedCommands.get(STORE) );
+	if( trainedCommands.contains(PetManager::STORE) ){
+		alm->insertAttribute("pet_command_11", trainedCommands.get(PetManager::STORE) );
 	}
 
-	if( trainedCommands.contains(ATTACK) ){
-		alm->insertAttribute("pet_command_4", trainedCommands.get(ATTACK) );
+	if( trainedCommands.contains(PetManager::ATTACK) ){
+		alm->insertAttribute("pet_command_4", trainedCommands.get(PetManager::ATTACK) );
 	}
 
-	if( trainedCommands.contains(GUARD) ){
-		alm->insertAttribute("pet_command_2", trainedCommands.get(GUARD) );
+	if( trainedCommands.contains(PetManager::GUARD) ){
+		alm->insertAttribute("pet_command_2", trainedCommands.get(PetManager::GUARD) );
 	}
 
-	if( trainedCommands.contains(FRIEND) ){
-		alm->insertAttribute("pet_command_3", trainedCommands.get(FRIEND) );
+	if( trainedCommands.contains(PetManager::FRIEND) ){
+		alm->insertAttribute("pet_command_3", trainedCommands.get(PetManager::FRIEND) );
 	}
 
-	if( trainedCommands.contains(FOLLOWOTHER) ){
-		alm->insertAttribute("pet_command_17", trainedCommands.get(FOLLOWOTHER) );
+	if( trainedCommands.contains(PetManager::FOLLOWOTHER) ){
+		alm->insertAttribute("pet_command_17", trainedCommands.get(PetManager::FOLLOWOTHER) );
 	}
 
-	if( trainedCommands.contains(TRICK1) ){
-		alm->insertAttribute("pet_command_12", trainedCommands.get(TRICK1) );
+	if( trainedCommands.contains(PetManager::TRICK1) ){
+		alm->insertAttribute("pet_command_12", trainedCommands.get(PetManager::TRICK1) );
 	}
 
-	if( trainedCommands.contains(TRICK2) ){
-		alm->insertAttribute("pet_command_13", trainedCommands.get(TRICK2) );
+	if( trainedCommands.contains(PetManager::TRICK2) ){
+		alm->insertAttribute("pet_command_13", trainedCommands.get(PetManager::TRICK2) );
 	}
 
-	if( trainedCommands.contains(PATROL) ){
-		alm->insertAttribute("pet_command_5", trainedCommands.get(PATROL) );
+	if( trainedCommands.contains(PetManager::PATROL) ){
+		alm->insertAttribute("pet_command_5", trainedCommands.get(PetManager::PATROL) );
 	}
 
-	if( trainedCommands.contains(FORMATION1) ){
-		alm->insertAttribute("pet_command_8", trainedCommands.get(FORMATION1) );
+	if( trainedCommands.contains(PetManager::FORMATION1) ){
+		alm->insertAttribute("pet_command_8", trainedCommands.get(PetManager::FORMATION1) );
 	}
 
-	if( trainedCommands.contains(FORMATION2) ){
-		alm->insertAttribute("pet_command_9", trainedCommands.get(FORMATION2) );
+	if( trainedCommands.contains(PetManager::FORMATION2) ){
+		alm->insertAttribute("pet_command_9", trainedCommands.get(PetManager::FORMATION2) );
 	}
 
-	if( trainedCommands.contains(SPECIAL_ATTACK1) ){
-		alm->insertAttribute("pet_command_18", trainedCommands.get(SPECIAL_ATTACK1) );
+	if( trainedCommands.contains(PetManager::SPECIAL_ATTACK1) ){
+		alm->insertAttribute("pet_command_18", trainedCommands.get(PetManager::SPECIAL_ATTACK1) );
 	}
 
-	if( trainedCommands.contains(SPECIAL_ATTACK2) ){
-		alm->insertAttribute("pet_command_19", trainedCommands.get(SPECIAL_ATTACK2) );
+	if( trainedCommands.contains(PetManager::SPECIAL_ATTACK2) ){
+		alm->insertAttribute("pet_command_19", trainedCommands.get(PetManager::SPECIAL_ATTACK2) );
 	}
 
-	if( trainedCommands.contains(RANGED_ATTACK) ){
-		alm->insertAttribute("pet_command_20", trainedCommands.get(RANGED_ATTACK) );
+	if( trainedCommands.contains(PetManager::RANGED_ATTACK) ){
+		alm->insertAttribute("pet_command_20", trainedCommands.get(PetManager::RANGED_ATTACK) );
 	}
 
-	if( trainedCommands.contains(GROUP) ){
-		alm->insertAttribute("pet_command_16", trainedCommands.get(GROUP) );
+	if( trainedCommands.contains(PetManager::GROUP) ){
+		alm->insertAttribute("pet_command_16", trainedCommands.get(PetManager::GROUP) );
 	}
 
-	if( trainedCommands.contains(RECHARGEOTHER) ){
-		alm->insertAttribute("@pet/pet_menu:menu_recharge_other", trainedCommands.get(RECHARGEOTHER) );
+	if( trainedCommands.contains(PetManager::RECHARGEOTHER) ){
+		alm->insertAttribute("@pet/pet_menu:menu_recharge_other", trainedCommands.get(PetManager::RECHARGEOTHER) );
 	}
 
-	if( trainedCommands.contains(TRANSFER) ){
-		alm->insertAttribute("pet_command_10", trainedCommands.get(TRANSFER) );
+	if( trainedCommands.contains(PetManager::TRANSFER) ){
+		alm->insertAttribute("pet_command_10", trainedCommands.get(PetManager::TRANSFER) );
 	}
-}
-
-void PetControlDeviceImplementation::handleChat(CreatureObject* speaker, const String& message){
-
-	// Handle command training
-	if( trainingCommand > 0 ){
-		bool ownerChat = handleCommandTraining( speaker, message );
-		if (ownerChat)
-			trainingCommand = 0; // no longer training
-
-		return;
-	}
-
-	if( speaker == NULL )
-		return;
-
-	if( message.isEmpty() )
-		return;
-
-	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
-	if (controlledObject == NULL || !controlledObject->isAiAgent())
-		return;
-
-	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
-	if( pet == NULL )
-		return;
-
-	ManagedWeakReference< CreatureObject*> linkedCreature = pet->getLinkedCreature();
-	if( linkedCreature == NULL )
-		return;
-
-	// Check if speaker has permission to command pet
-	// TODO: Add check for players other than owner that are on pet's friend list
-	if( linkedCreature != speaker)
-		return;
-
-	// Handle trained command
-	if( trainedCommands.contains(STAY) && trainedCommands.get(STAY) == message ){
-		enqueuePetCommand(speaker, String("petStay").toLowerCase().hashCode(), "");
-	}
-	else if( trainedCommands.contains(FOLLOW) && trainedCommands.get(FOLLOW) == message ){
-		enqueuePetCommand(speaker, String("petFollow").toLowerCase().hashCode(), "", true);
-	}
-	else if( trainedCommands.contains(STORE) && trainedCommands.get(STORE) == message ){
-		enqueueOwnerOnlyPetCommand(speaker, String("petStore").toLowerCase().hashCode(), "");
-	}
-	else if( trainedCommands.contains(ATTACK) && trainedCommands.get(ATTACK) == message ){
-		enqueuePetCommand(speaker, String("petAttack").toLowerCase().hashCode(), "");
-	}
-	else if( trainedCommands.contains(GUARD) && trainedCommands.get(GUARD) == message ){
-		speaker->sendSystemMessage("GUARD pet command is not yet implemented.");
-	}
-	else if( trainedCommands.contains(FRIEND) && trainedCommands.get(FRIEND) == message ){
-		speaker->sendSystemMessage("FRIEND pet command is not yet implemented.");
-	}
-	else if( trainedCommands.contains(FOLLOWOTHER) && trainedCommands.get(FOLLOWOTHER) == message ){
-		enqueuePetCommand(speaker, String("petFollow").toLowerCase().hashCode(), "");
-	}
-	else if( trainedCommands.contains(TRICK1) && trainedCommands.get(TRICK1) == message ){
-		enqueuePetCommand(speaker, String("petTrick").toLowerCase().hashCode(), "1");
-	}
-	else if( trainedCommands.contains(TRICK2) && trainedCommands.get(TRICK2) == message ){
-		enqueuePetCommand(speaker, String("petTrick").toLowerCase().hashCode(), "2");
-	}
-	else if( trainedCommands.contains(PATROL) && trainedCommands.get(PATROL) == message ){
-		speaker->sendSystemMessage("PATROL pet command is not yet implemented.");
-	}
-	else if( trainedCommands.contains(FORMATION1) && trainedCommands.get(FORMATION1) == message ){
-		speaker->sendSystemMessage("FORMATION2 pet command is not yet implemented.");
-	}
-	else if( trainedCommands.contains(FORMATION2) && trainedCommands.get(FORMATION2) == message ){
-		speaker->sendSystemMessage("FORMATION2 pet command is not yet implemented.");
-	}
-	else if( trainedCommands.contains(SPECIAL_ATTACK1) && trainedCommands.get(SPECIAL_ATTACK1) == message ){
-		speaker->sendSystemMessage("SPECIAL_ATTACK1 pet command is not yet implemented.");
-	}
-	else if( trainedCommands.contains(SPECIAL_ATTACK2) && trainedCommands.get(SPECIAL_ATTACK2) == message ){
-		speaker->sendSystemMessage("SPECIAL_ATTACK2 pet command is not yet implemented.");
-	}
-	else if( trainedCommands.contains(RANGED_ATTACK) && trainedCommands.get(RANGED_ATTACK) == message ){
-		speaker->sendSystemMessage("RANGED_ATTACK pet command is not yet implemented.");
-	}
-	else if( trainedCommands.contains(GROUP) && trainedCommands.get(GROUP) == message ){
-		enqueueOwnerOnlyPetCommand(speaker, String("petGroup").toLowerCase().hashCode(), "");
-	}
-	else if( trainedCommands.contains(RECHARGEOTHER) && trainedCommands.get(RECHARGEOTHER) == message ){
-		enqueuePetCommand(speaker, String("petRechargeOther").toLowerCase().hashCode(), "");
-	}
-	else if( trainedCommands.contains(TRANSFER) && trainedCommands.get(TRANSFER) == message ){
-		enqueueOwnerOnlyPetCommand(speaker, String("petTransfer").toLowerCase().hashCode(), "");
-	}
-
-}
-
-bool PetControlDeviceImplementation::handleCommandTraining(CreatureObject* speaker, const String& message){
-
-	if( speaker == NULL )
-		return false;
-
-	if( message.isEmpty() )
-		return false;
-
-	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
-	if (controlledObject == NULL || !controlledObject->isAiAgent())
-		return false;
-
-	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
-	if( pet == NULL )
-		return false;
-
-	ManagedWeakReference< CreatureObject*> linkedCreature = pet->getLinkedCreature();
-	if( linkedCreature == NULL )
-		return false;
-
-	// Only owner may train
-	if( linkedCreature != speaker)
-		return false;
-
-	// Check if command string already exists
-	for( int i = 0; i < trainedCommands.size(); i++ ){
-		if( trainedCommands.get(i) == message ){
-			pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
-			return true;
-		}
-	}
-
-	// Train command
-	if (petType == CREATUREPET) {
-		bool alreadyTrained = trainedCommands.contains(trainingCommand);
-
-		if (!alreadyTrained) {
-			bool success = false;
-
-			int skill = speaker->getSkillMod("tame_level");
-			int roll = System::random(skill + 30);
-
-			if (skill > roll)
-				success = true;
-
-			if (!success) {
-				pet->showFlyText("npc_reaction/flytext","confused", 204, 0, 0);  // "?!!?!?!"
-				speaker->sendSystemMessage("@pet/pet_menu:pet_nolearn"); // Your pet doesn't seem to understand you.
-				return true;
-			}
-		}
-
-		// Success
-		trainedCommands.put( trainingCommand, message );
-		pet->showFlyText("npc_reaction/flytext","threaten", 204, 0, 0);  // "!"
-		speaker->sendSystemMessage("@pet/pet_menu:pet_learn"); // You teach your pet a new command.
-
-		if (!alreadyTrained) {
-			CreatureTemplate* creatureTemplate = pet->getCreatureTemplate();
-
-			if (creatureTemplate == NULL)
-				return true;
-
-			ZoneServer* zoneServer = speaker->getZoneServer();
-			PlayerManager* playerManager = zoneServer->getPlayerManager();
-			playerManager->awardExperience(speaker, "creaturehandler", 10 * creatureTemplate->getLevel());
-		}
-	}
-	else{
-		trainedCommands.put( trainingCommand, message );
-		pet->showFlyText("npc_reaction/flytext","threaten", 204, 0, 0);  // "!"
-		speaker->sendSystemMessage("@pet/pet_menu:pet_learn"); // You teach your pet a new command.
-	}
-
-	// No renaming of faction pets
-	if (petType == FACTIONPET)
-		return true;
-
-	// Check for naming string
-	StringTokenizer tokenizer(message);
-	tokenizer.setDelimeter(" ");
-	String parsedName = "";
-	int numberOfSubStrings = 0;
-
-	while (tokenizer.hasMoreTokens()) {
-		numberOfSubStrings++;
-
-		if (!parsedName.isEmpty())
-			break;
-
-		tokenizer.getStringToken(parsedName);
-	}
-
-	// Validate and check name
-	if (numberOfSubStrings > 1) {
-		ZoneProcessServer* zps = pet->getZoneProcessServer();
-		NameManager* nameManager = zps->getNameManager();
-
-		if (nameManager->validateName(parsedName, -1) != NameManagerResult::ACCEPTED) {
-			return true;
-		}
-
-		if (futureName == parsedName)
-			namingProgress++;
-		else {
-			namingProgress = 1;
-			futureName = parsedName;
-			return true;
-		}
-	} else {
-		namingProgress = 0;
-		futureName = "";
-		return true;
-	}
-
-	// Set name, if applicable
-	if (namingProgress == 4) {
-		UnicodeString newName = "(" + futureName + ")";
-		setCustomObjectName(newName, true);
-		pet->setCustomObjectName(newName, true);
-	}
-
-	return true;
 }
 
 void PetControlDeviceImplementation::setDefaultCommands(){
 
-	trainedCommands.put(STAY, "stay");
-	trainedCommands.put(FOLLOW, "follow");
-	trainedCommands.put(STORE, "store");
-	trainedCommands.put(ATTACK, "attack");
-	trainedCommands.put(GUARD, "guard");
-	trainedCommands.put(FRIEND, "friend");
-	trainedCommands.put(FOLLOWOTHER, "followother");
-	trainedCommands.put(PATROL, "patrol");
-	trainedCommands.put(FORMATION1, "formation1");
-	trainedCommands.put(FORMATION2, "formation2");
-	trainedCommands.put(RANGED_ATTACK, "ranged attack");
-	trainedCommands.put(GROUP, "group");
+	trainedCommands.put(PetManager::STAY, "stay");
+	trainedCommands.put(PetManager::FOLLOW, "follow");
+	trainedCommands.put(PetManager::STORE, "store");
+	trainedCommands.put(PetManager::ATTACK, "attack");
+	trainedCommands.put(PetManager::GUARD, "guard");
+	trainedCommands.put(PetManager::FRIEND, "friend");
+	trainedCommands.put(PetManager::FOLLOWOTHER, "followother");
+	trainedCommands.put(PetManager::PATROL, "patrol");
+	trainedCommands.put(PetManager::FORMATION1, "formation1");
+	trainedCommands.put(PetManager::FORMATION2, "formation2");
+	trainedCommands.put(PetManager::RANGED_ATTACK, "ranged attack");
+	trainedCommands.put(PetManager::GROUP, "group");
 
 }
 
@@ -924,7 +705,7 @@ void PetControlDeviceImplementation::setTrainingCommand( unsigned int commandID 
 		return;
 
 	// Check power on droids
-	if( petType == DROIDPET) {
+	if( petType == PetManager::DROIDPET) {
 		ManagedReference<DroidObject*> droid = this->controlledObject.get().castTo<DroidObject*>();
 		if (droid == NULL)
 			return;
@@ -937,51 +718,6 @@ void PetControlDeviceImplementation::setTrainingCommand( unsigned int commandID 
 
 	trainingCommand = commandID;
 	pet->showFlyText("npc_reaction/flytext","alert", 204, 0, 0);  // "?"
-
-}
-
-void PetControlDeviceImplementation::enqueuePetCommand(CreatureObject* player, uint32 command, const String& args, bool selfTarget){
-
-	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
-	if (controlledObject == NULL || !controlledObject->isAiAgent())
-		return;
-
-	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
-	if( pet == NULL )
-		return;
-
-	uint64 targetID;
-	if (selfTarget)
-		targetID = player->getObjectID();
-	else
-		targetID = player->getTargetID();
-
-	//CreatureObject* pet, uint32 command, const String& args, uint64 target, int priority = -1
-	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, command, args, targetID);
-	enqueueCommand->execute();
-}
-
-void PetControlDeviceImplementation::enqueueOwnerOnlyPetCommand(CreatureObject* player, uint32 command, const String& args){
-
-	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
-	if (controlledObject == NULL || !controlledObject->isAiAgent())
-		return;
-
-	ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
-	if( pet == NULL )
-		return;
-
-	ManagedReference< CreatureObject*> linkedCreature = pet->getLinkedCreature().get();
-	if( linkedCreature == NULL )
-		return;
-
-	// Player must be pet's owner
-	if( linkedCreature != player)
-		return;
-
-	//CreatureObject* pet, uint32 command, const String& args, uint64 target, int priority = -1
-	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, command, args, player->getTargetID());
-	enqueueCommand->execute();
 
 }
 

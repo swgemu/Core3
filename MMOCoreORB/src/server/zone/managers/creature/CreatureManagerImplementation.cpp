@@ -16,6 +16,7 @@
 #include "server/chat/ChatManager.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
+#include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/managers/faction/FactionManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -502,7 +503,7 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 			ManagedReference<PetControlDevice*> petControlDevice = destructedObject->getControlDevice().get().castTo<PetControlDevice*>();
 
-			if (petControlDevice != NULL && petControlDevice->getPetType() != PetControlDevice::DROIDPET)
+			if (petControlDevice != NULL && petControlDevice->getPetType() != PetManager::DROIDPET)
 				petControlDevice->setVitality(petControlDevice->getVitality() - 1);
 		}
 	} catch (...) {
@@ -758,7 +759,7 @@ void CreatureManagerImplementation::tame(Creature* creature, CreatureObject* pla
 		if (object != NULL && object->isPetControlDevice()) {
 			PetControlDevice* device = cast<PetControlDevice*>( object.get());
 
-			if (device->getPetType() == PetControlDevice::CREATUREPET) {
+			if (device->getPetType() == PetManager::CREATUREPET) {
 				if (++numberStored >= maxStoredPets) {
 					player->sendSystemMessage("@pet/pet_menu:sys_too_many_stored"); // There are too many pets stored in this container. Release some of them to make room for more.
 					return;

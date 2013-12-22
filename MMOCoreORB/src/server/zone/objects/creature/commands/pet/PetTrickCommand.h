@@ -27,7 +27,7 @@ public:
 			return GENERALERROR;
 
 		// Creature specific command
-		if( controlDevice->getPetType() != PetControlDevice::CREATUREPET )
+		if( controlDevice->getPetType() != PetManager::CREATUREPET )
 			return GENERALERROR;
 
 		if (!creature->isAiAgent())

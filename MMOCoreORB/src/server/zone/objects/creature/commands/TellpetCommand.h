@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/managers/creature/PetManager.h"
 
 class TellpetCommand : public QueueCommand {
 public:
@@ -76,11 +77,10 @@ public:
 			ManagedReference<AiAgent*> pet = player->getActivePet(i);
 			if (pet != NULL) {
 
-				ManagedReference<PetControlDevice*> petControlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
-				if( petControlDevice != NULL && creature->isInRange( pet, 150.0 ) ){
+				if( creature->isInRange( pet, 150.0 ) ){
 
 					Locker clocker(pet, creature);
-					petControlDevice->handleChat( creature, arguments.toString() );
+					server->getZoneServer()->getPetManager()->handleChat( creature, pet, arguments.toString() );
 				}
 			}
 		}
