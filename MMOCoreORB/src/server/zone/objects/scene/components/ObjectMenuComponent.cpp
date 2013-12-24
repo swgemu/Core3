@@ -34,7 +34,7 @@ void ObjectMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, Objec
 	if (!buio->isOnAdminList(player))
 		return;
 
-	if (sceneObject->isPlayerCreature())
+	if (sceneObject->isPlayerCreature() || sceneObject->isPet())
 		return;
 
 	menuResponse->addRadialMenuItem(10, 3, "@ui_radial:item_pickup"); //Pick up
