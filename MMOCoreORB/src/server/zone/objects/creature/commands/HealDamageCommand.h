@@ -324,12 +324,15 @@ public:
 			return;
 
 		try {
-			zone->rlock();
+			//zone->rlock();
 
-			SortedVector<ManagedReference<QuadTreeEntry*> >* closeObjects = areaCenter->getCloseObjects();
+			CloseObjectsVector* closeObjectsVector = (CloseObjectsVector*) areaCenter->getCloseObjects();
 
-			for (int i = 0; i < closeObjects->size(); i++) {
-				SceneObject* object = cast<SceneObject*>( closeObjects->get(i).get());
+			SortedVector<ManagedReference<QuadTreeEntry*> > closeObjects;
+			closeObjectsVector->safeCopyTo(closeObjects);
+
+			for (int i = 0; i < closeObjects.size(); i++) {
+				SceneObject* object = cast<SceneObject*>( closeObjects.get(i).get());
 
 				if (!object->isPlayerCreature() && !object->isPet())
 					continue;
@@ -345,7 +348,7 @@ public:
 				if (creatureTarget->isAttackableBy(creature))
 					continue;
 
-				zone->runlock();
+				//zone->runlock();
 
 				try {
 
@@ -359,13 +362,13 @@ public:
 
 				}
 
-				zone->rlock();
+				//zone->rlock();
 
 			}
 
-			zone->runlock();
+			//zone->runlock();
 		} catch (Exception& e) {
-			zone->runlock();
+			//zone->runlock();
 		}
 	}
 
