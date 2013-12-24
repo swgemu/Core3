@@ -103,7 +103,7 @@ public:
 		ZoneServer* zoneServer = creature->getZoneServer();
 		ManagedReference<SceneObject*> obj = zoneServer->getObject(target);
 
-		if (obj == NULL) {
+		if (obj == NULL || !obj->isTangibleObject() || obj->isPlayerCreature() || obj->isPet()) {
 			creature->sendSystemMessage("@player_structure:rotate_what"); //What do you want to rotate?
 			return GENERALERROR;
 		}
