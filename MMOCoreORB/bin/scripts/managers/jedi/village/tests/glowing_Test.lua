@@ -1,6 +1,6 @@
 local Glowing = require("managers.jedi.village.glowing")
 local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
-local OldManMocks = require("managers.jedi.village.mocks.old_man_mocks")
+local OldManEncounterMocks = require("managers.jedi.village.mocks.old_man_encounter_mocks")
 local VillageJediManagerCommonMocks = require("managers.jedi.village.mocks.village_jedi_manager_common_mocks")
 
 local testGlowing = Glowing:new {}
@@ -14,19 +14,19 @@ describe("Village Jedi Manager - Glowing", function()
 	setup(function()
 		DirectorManagerMocks.mocks.setup()
 		VillageJediManagerCommonMocks.mocks.setup()
-		OldManMocks.mocks.setup()
+		OldManEncounterMocks.mocks.setup()
 	end)
 
 	teardown(function()
 		DirectorManagerMocks.mocks.teardown()
 		VillageJediManagerCommonMocks.mocks.teardown()
-		OldManMocks.mocks.teardown()
+		OldManEncounterMocks.mocks.teardown()
 	end)
 
 	before_each(function()
 		DirectorManagerMocks.mocks.before_each()
 		VillageJediManagerCommonMocks.mocks.before_each()
-		OldManMocks.mocks.before_each()
+		OldManEncounterMocks.mocks.before_each()
 
 		creatureObject = {}
 		creatureObject.getPlayerObject = spy.new(function() return pPlayerObject end)
@@ -268,26 +268,26 @@ describe("Village Jedi Manager - Glowing", function()
 						testGlowing.countBadges = spy.new(function() return TOTALNUMBEROFBADGESREQUIRED end)
 					end)
 
-					it("Should set the village jedi progression screen play state glowing on the player", function()
+					it("Should set the village jedi progression screen play state glowing on the player.", function()
 						testGlowing:isGlowing(pCreatureObject)
 
 						assert.spy(VillageJediManagerCommonMocks.setJediProgressionScreenPlayState).was.called_with(pCreatureObject, VILLAGE_JEDI_PROGRESSION_GLOWING)
 					end)
 
-					it("Should create an event to spawn the old man", function()
+					it("Should start the old man encounter.", function()
 						testGlowing:isGlowing(pCreatureObject)
 
-						assert.spy(OldManMocks.createSpawnOldManEvent).was.called_with(pCreatureObject)
+						assert.spy(OldManEncounterMocks.start).was.called_with(OldManEncounterMocks, pCreatureObject)
 					end)
 				end)
 
 				describe("and the player does not have all the needed badges", function()
-					it("Should not create an event to spawn the old man", function()
+					it("Should not start the old man encounter.", function()
 						testGlowing.countBadges = spy.new(function() return TOTALNUMBEROFBADGESREQUIRED - 1 end)
 
 						testGlowing:isGlowing(pCreatureObject)
 
-						assert.spy(OldManMocks.createSpawnOldManEvent).was.not_called()
+						assert.spy(OldManEncounterMocks.start).was.not_called()
 					end)
 				end)
 			end)

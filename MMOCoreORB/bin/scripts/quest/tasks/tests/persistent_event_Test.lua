@@ -7,7 +7,9 @@ local testPersistentEvent = PersistentEvent:new {
 	taskFinish = spy.new(function() end),
 	-- PersistentEvent properties
 	minimumTimeUntilEvent = 10,
-	maximumTimeUntilEvent = 10
+	maximumTimeUntilEvent = 10,
+	handlerName = "TestPersistentEvent",
+	handlerFunction = "handleEventTest"
 }
 
 local TASK_STARTED = 0xABCD
@@ -86,26 +88,26 @@ describe("Persistent Event", function()
 	end)
 
 	describe("Event handlers", function()
-		describe("handleSpawnEvent", function()
+		describe("handleEvent", function()
 			describe("When called with a player", function()
-				local realFinish
+				local realError
 
 				setup(function()
-					realFinish = testPersistentEvent.finish
+					realError = error
 				end)
 
 				teardown(function()
-					testPersistentEvent.finish = realFinish
+					error = realError
 				end)
 
 				before_each(function()
-					testPersistentEvent.finish = spy.new(function() end)
+					error = spy.new(function() end)
 				end)
 
-				it("Should check if the player is in a position where the encounter can happen.", function()
+				it("Should generate an error.", function()
 					testPersistentEvent:handleEvent(pCreatureObject)
 
-					assert.spy(testPersistentEvent.finish).was.called_with(testPersistentEvent, pCreatureObject)
+					assert.spy(error).was.called(1)
 				end)
 			end)
 		end)
@@ -136,31 +138,7 @@ describe("Persistent Event", function()
 				it("Should create a spawn event.", function()
 					testPersistentEvent:taskStart(pCreatureObject)
 
-					assert.spy(createEvent).was.called_with(true, eventTime, testPersistentEvent.taskName, "handleEvent", pCreatureObject)
-				end)
-			end)
-		end)
-
-		describe("taskFinish", function()
-			describe("When called", function()
-				--local realError
-
-				setup(function()
-					--realError = error
-				end)
-
-				teardown(function()
-					--error = realError
-				end)
-
-				setup(function()
-					--error = spy.new(function() end)
-				end)
-
-				it("Should generate an error.", function()
-					testPersistentEvent:taskFinish(pCreatureObject)
-
-					--assert.spy(error).was.called(1)
+					assert.spy(createEvent).was.called_with(true, eventTime, testPersistentEvent.handlerName, testPersistentEvent.handlerFunction, pCreatureObject)
 				end)
 			end)
 		end)

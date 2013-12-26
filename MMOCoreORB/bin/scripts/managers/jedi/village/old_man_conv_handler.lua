@@ -1,7 +1,5 @@
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
-local OldMan = require("managers.jedi.village.old_man")
-
-OLD_MAN_CONVERSATION_ENDED_DESPAWN_TIME = 10 * 1000 -- 10 seconds
+local OldManEncounter = require("managers.jedi.village.old_man_encounter")
 
 old_man_conv_handler = Object:new {
 }
@@ -48,10 +46,10 @@ function old_man_conv_handler:runScreenHandlers(pConversationTemplate, pConversi
 	if screenID == "init" then
 		pConversationScreen = old_man_conv_handler.handleInit(pConversationTemplate, pConversingPlayer, pConversingNpc, selectedOption, pConversationScreen)
 	elseif screenID == "village_another_time" or screenID == "village_another_time2" or screenID == "mellichae_later" then
-		OldMan.scheduleDespawnOfOldMan(pConversingPlayer, OLD_MAN_CONVERSATION_ENDED_DESPAWN_TIME)
+		OldManEncounter:scheduleDespawnOfOldMan(pConversingPlayer)
 	elseif screenID == "village_give_crystal" then
-		OldMan.scheduleDespawnOfOldMan(pConversingPlayer, OLD_MAN_CONVERSATION_ENDED_DESPAWN_TIME)
-		OldMan.giveForceCrystalToPlayer(pConversingPlayer)
+		OldManEncounter:scheduleDespawnOfOldMan(pConversingPlayer)
+		OldManEncounter:giveForceCrystalToPlayer(pConversingPlayer)
 	end
 
 	return pConversationScreen
@@ -61,7 +59,7 @@ function old_man_conv_handler.handleInit(pConversationTemplate, pConversingPlaye
 	local conversationTemplate = LuaConversationTemplate(pConversationTemplate)
 	local nextScreen = "not_you"
 
-	if OldMan.oldManBelongsToThePlayer(pConversingPlayer, pConversingNpc) then
+	if OldManEncounter:doesOldManBelongToThePlayer(pConversingPlayer, pConversingNpc) then
 		if VillageJediManagerCommon.hasJediProgressionScreenPlayState(pConversingPlayer, VILLAGE_JEDI_PROGRESSION_COMPLETED_VILLAGE) then
 			nextScreen = "mellichae_intro"
 		elseif VillageJediManagerCommon.hasJediProgressionScreenPlayState(pConversingPlayer, VILLAGE_JEDI_PROGRESSION_GLOWING) then

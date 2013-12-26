@@ -1,5 +1,6 @@
 -- Base module for all tasks.
 local ObjectManager = require("managers.object.object_manager")
+local Logger = require("utils.logger")
 
 Task = Object:new {
 	taskName = "",
@@ -41,7 +42,7 @@ function Task:callFunctionIfNotNil(theFunction, ...)
 	if theFunction ~= nil then
 		return theFunction(self, unpack(arg))
 	else
-		error("The function to call is nil in " .. Task.taskName .. ".", 2)
+		Logger:log("The function to call is nil in " .. Task.taskName .. ".", LT_INFO)
 		return nil
 	end
 end
@@ -50,6 +51,7 @@ end
 -- @param pCreatureObject pointer to the creature object of the player who should get the task started.
 function Task:start(pCreatureObject)
 	if not self:hasTaskStarted(pCreatureObject) then
+		Logger:log("Starting task " .. self.taskName, LT_INFO)
 		self:setTaskStarted(pCreatureObject)
 		self:callFunctionIfNotNil(self.taskStart, pCreatureObject)
 	end
@@ -59,6 +61,7 @@ end
 -- @param pCreatureObject pointer to the creature object of the player who should get the task finished.
 function Task:finish(pCreatureObject)
 	if self:hasTaskStarted(pCreatureObject) then
+		Logger:log("Finishing task " .. self.taskName, LT_INFO)
 		self:callFunctionIfNotNil(self.taskFinish, pCreatureObject)
 		self:setTaskFinished(pCreatureObject)
 	end

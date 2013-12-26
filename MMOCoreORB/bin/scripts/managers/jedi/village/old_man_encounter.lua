@@ -13,9 +13,12 @@ OldManEncounter = Encounter:new {
 	-- Task properties
 	taskName = "OldManEncounter",
 	-- Encounter properties
-	minimumTimeUntilEncounter = 12 * 60 * 60 * 1000, -- 12 hours
-	maximumTimeUntilEncounter = 24 * 60 * 60 * 1000, -- 24 hours
-	encounterDespawnTime = 5 * 60 * 1000, -- 5 minutes
+	--minimumTimeUntilEncounter = 12 * 60 * 60 * 1000, -- 12 hours
+	--maximumTimeUntilEncounter = 24 * 60 * 60 * 1000, -- 24 hours
+	minimumTimeUntilEncounter = 12 * 1000, -- 12 hours
+	maximumTimeUntilEncounter = 24 * 1000, -- 24 hours
+	--encounterDespawnTime = 5 * 60 * 1000, -- 5 minutes
+	encounterDespawnTime = 60 * 1000, -- 5 minutes
 	spawnObjectList = {
 		{ template = "old_man", minimumDistance = 32, maximumDistance = 64, referencePoint = 0, followPlayer = true }
 	},
@@ -44,6 +47,7 @@ end
 -- @param pOldMan pointer to the old man.
 -- @param pCreatureObject pointer to the creature object of the player.
 function OldManEncounter:sendGreetingString(pOldMan, pCreatureObject)
+	Logger:log("Sending greeting string.", LT_INFO)
 	local greetingString = LuaStringIdChatParameter(OLD_MAN_GREETING_STRING)
 	local firstName = self:getPlayerFirstName(pCreatureObject)
 	greetingString:setTT(firstName)
@@ -68,12 +72,14 @@ end
 -- Schedule despawn of old man due to player conversation has ended.
 -- @param pCreatureObject pointer to the creature object of the player.
 function OldManEncounter:scheduleDespawnOfOldMan(pCreatureObject)
+	Logger:log("Scheduling despawn of old man.", LT_INFO)
 	createEvent(OLD_MAN_DESPAWN_TIME, "OldManEncounter", "handleScheduledDespawn", pCreatureObject)
 end
 
 -- Give the force crystal to the player.
 -- @param pCreatureObject pointer to the creature object of the player.
 function OldManEncounter:giveForceCrystalToPlayer(pCreatureObject)
+	Logger:log("Giving crystal to player.", LT_INFO)
 	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
 		local pInventory = creatureObject:getSlottedObject(OLD_MAN_INVENTORY_STRING)
 

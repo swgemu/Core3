@@ -8,6 +8,8 @@ LT_TRACE = 1
 
 local MAX_NUMBER_OF_ENTRIES = 100
 
+local FORCE_PRINT = false
+
 Logger = {}
 Logger.logEntries = {}
 
@@ -18,7 +20,17 @@ function Logger:log(message, level)
 	if table.getn(Logger.logEntries) > MAX_NUMBER_OF_ENTRIES then
 		table.remove(Logger.logEntries, 1)
 	end
-	table.insert(Logger.logEntries, { message = message, level = level, info = debug.getinfo(2) })
+
+	local info = debug.getinfo(2)
+	if info.name == nil then
+		info.name = "unknown function"
+	end
+
+	table.insert(Logger.logEntries, { message = message, level = level, info = info })
+
+	if not _TEST and FORCE_PRINT then
+		print(message .. " - " .. info.name .. ", " .. info.short_src .. ", " .. info.currentline)
+	end
 end
 
 -- Print the log and clear the log.

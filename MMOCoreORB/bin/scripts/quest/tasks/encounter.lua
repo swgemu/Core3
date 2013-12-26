@@ -25,6 +25,7 @@ local Task = require("quest.tasks.task")
 local PersistentEvent = require("quest.tasks.persistent_event")
 local ObjectManager = require("managers.object.object_manager")
 local SpawnMobiles = require("utils.spawn_mobiles")
+local Logger = require("utils.logger")
 
 local NOTINABUILDING = 0
 local ENCOUNTER_OBJECTS_STRING = "encounter_objects"
@@ -42,32 +43,42 @@ Encounter = Task:new {
 	onEncounterSpawned = nil,
 	isEncounterFinished = nil,
 	onEncounterClosingIn = nil,
-	onEncounterAtPlayer = nil
+	onEncounterAtPlayer = nil,
+	spawnTask = nil,
+	despawnTask = nil
 }
 
 -- Setup persistent events
 function Encounter:setupSpawnAndDespawnEvents()
-	self.spawnTask = PersistentEvent:new {
-		-- Task properties
-		taskName = "encounter_spawn_task",
-		taskFinish = function(self, pCreatureObject) self.encounter:spawnEncounter(pCreatureObject) end,
-		-- PersistentEvent properties
-		minimumTimeUntilEvent = self.minimumTimeUntilEncounter,
-		maximumTimeUntilEvent = self.maximumTimeUntilEncounter,
-		-- Spawn task properties
-		encounter = self
-	}
+	if self.spawnTask == nil then
+		self.spawnTask = PersistentEvent:new {
+			-- Task properties
+			taskName = "encounter_spawn_task",
+			taskFinish = nil,
+			-- PersistentEvent properties
+			minimumTimeUntilEvent = self.minimumTimeUntilEncounter,
+			maximumTimeUntilEvent = self.maximumTimeUntilEncounter,
+			handlerName = self.taskName,
+			handlerFunction = "handleSpawnEvent",
+			-- Spawn task properties
+			encounter = self
+		}
+	end
 
-	self.despawnTask = PersistentEvent:new {
-		-- Task properties
-		taskName = "encounter_despawn_task",
-		taskFinish = function(self, pCreatureObject) self.encounter:despawnEncounter(pCreatureObject) end,
-		-- PersistentEvent properties
-		minimumTimeUntilEvent = self.encounterDespawnTime,
-		maximumTimeUntilEvent = self.encounterDespawnTime,
-		-- Spawn task properties
-		encounter = self
-	}
+	if self.despawnTask == nil then
+		self.despawnTask = PersistentEvent:new {
+			-- Task properties
+			taskName = "encounter_despawn_task",
+			taskFinish = nil,
+			-- PersistentEvent properties
+			minimumTimeUntilEvent = self.encounterDespawnTime,
+			maximumTimeUntilEvent = self.encounterDespawnTime,
+			handlerName = self.taskName,
+			handlerFunction = "handleDespawnEvent",
+			-- Spawn task properties
+			encounter = self
+		}
+	end
 end
 
 -- Start the encounter.
@@ -117,6 +128,7 @@ end
 -- Empty handler for the handleEncounterClosingIn event.
 -- @param pCreatureObject pointer to the player object of the player.
 function Encounter:handleEncounterClosingIn(pCreatureObject)
+	Logger:log("Mobiles closing in in encounter " .. self.taskName .. ".", LT_INFO)
 	local spawnedObjects = SpawnMobiles.getSpawnedMobiles(pCreatureObject, self.taskName)
 	self:callFunctionIfNotNil(self.onEncounterClosingIn, pCreatureObject, spawnedObjects)
 end
@@ -124,6 +136,7 @@ end
 -- Empty handler for the handleEncounterAtPlayer event.
 -- @param pCreatureObject pointer to the player object of the player.
 function Encounter:handleEncounterAtPlayer(pCreatureObject)
+	Logger:log("Mobiles at player in encounter " .. self.taskName .. ".", LT_INFO)
 	local spawnedObjects = SpawnMobiles.getSpawnedMobiles(pCreatureObject, self.taskName)
 	self:setSpawnedObjectsToFollow(spawnedObjects, nil)
 	self:callFunctionIfNotNil(self.onEncounterAtPlayer, pCreatureObject, spawnedObjects)
@@ -133,6 +146,7 @@ end
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param spawnedObjects list with pointers to the spawned objects.
 function Encounter:createEncounterEvents(pCreatureObject, spawnedObjects)
+	Logger:log("Creating encounter events in " .. self.taskName .. ".", LT_INFO)
 	createEvent(ENCOUNTER_CLOSING_IN_TIME, self.taskName, "handleEncounterClosingIn", pCreatureObject)
 	createEvent(ENCOUNTER_AT_PLAYER_TIME, self.taskName, "handleEncounterAtPlayer", pCreatureObject)
 end
@@ -153,9 +167,11 @@ end
 -- Create the encounter, spawn objects, setup observers and events.
 -- @param pCreatureObject pointer to the creature object of the player.
 function Encounter:createEncounter(pCreatureObject)
+	Logger:log("Spawning mobiles in encounter " .. self.taskName .. ".", LT_INFO)
 	local spawnedObjects = SpawnMobiles.spawnMobiles(pCreatureObject, self.taskName, self.spawnObjectList)
 
 	if spawnedObjects ~= nil then
+		Logger:log("Set spawned mobiles to follow in encounter " .. self.taskName .. ".", LT_INFO)
 		self:setSpawnedObjectsToFollow(spawnedObjects, pCreatureObject)
 		self:createEncounterEvents(pCreatureObject, spawnedObjects)
 		self:callFunctionIfNotNil(self.onEncounterSpawned, pCreatureObject, spawnedObjects)
@@ -165,20 +181,25 @@ end
 -- Spawn encounter
 -- Function to call from the spawn event.
 -- @param pCreatureObject pointer to the creature object of the player.
-function Encounter:spawnEncounter(pCreatureObject)
+function Encounter:handleSpawnEvent(pCreatureObject)
+	Logger:log("Spawn encounter in " .. self.taskName .. " triggered.", LT_INFO)
 	if self:isPlayerInPositionForEncounter(pCreatureObject) then
 		self:createEncounter(pCreatureObject)
 	end
+	self:setupSpawnAndDespawnEvents()
 	self.despawnTask:start(pCreatureObject)
 end
 
 -- Despawn encounter
 -- Function to call from the despawn event.
 -- @param pCreatureObject pointer to the creature object of the player.
-function Encounter:despawnEncounter(pCreatureObject)
+function Encounter:handleDespawnEvent(pCreatureObject)
+	Logger:log("Despawning mobiles in encounter " .. self.taskName .. ".", LT_INFO)
 	SpawnMobiles.despawnMobiles(pCreatureObject, self.taskName)
 
 	if not self:callFunctionIfNotNil(self.isEncounterFinished, pCreatureObject) then
+		Logger:log("Restarting encounter " .. self.taskName .. ".", LT_INFO)
+		self:setupSpawnAndDespawnEvents()
 		self.spawnTask:start(pCreatureObject)
 	else
 		self:finish(pCreatureObject)

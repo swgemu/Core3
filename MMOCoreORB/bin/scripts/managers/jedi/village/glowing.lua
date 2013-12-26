@@ -1,5 +1,5 @@
 local ObjectManager = require("managers.object.object_manager")
-local OldMan = require("managers.jedi.village.old_man")
+local OldManEncounter = require("managers.jedi.village.old_man_encounter")
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
 
 Glowing = Object:new {}
@@ -165,7 +165,7 @@ end
 function Glowing:isGlowing(pCreatureObject)
 	if self:countBadges(pCreatureObject) >= TOTALNUMBEROFBADGESREQUIRED then
 		VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_GLOWING)
-		OldMan.createSpawnOldManEvent(pCreatureObject)
+		OldManEncounter:start(pCreatureObject)
 	end
 end
 

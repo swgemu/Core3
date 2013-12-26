@@ -158,55 +158,124 @@ describe("Encounter", function()
 	end)
 
 	describe("Events", function()
-		describe("Spawn Task Handle Event", function()
+		describe("spawnEncounter", function()
 			describe("When called with a player", function()
-				local realSpawnEncounter
+				local realIsPlayerInPositionForEncounter
+				local realStart
+				local realCreateEncounter
 
 				setup(function()
-					realSpawnEncounter = testEncounter.spawnEncounter
+					testEncounter:setupSpawnAndDespawnEvents()
+					realIsPlayerInPositionForEncounter = testEncounter.isPlayerInPositionForEncounter
+					realStart = testEncounter.despawnTask.start
+					realCreateEncounter = testEncounter.createEncounter
 				end)
 
 				teardown(function()
-					testEncounter.spawnEncounter = realSpawnEncounter
+					testEncounter.isPlayerInPositionForEncounter = realIsPlayerInPositionForEncounter
+					testEncounter.despawnTask.start = realStart
+					testEncounter.createEncounter = realCreateEncounter
 				end)
 
 				before_each(function()
-					testEncounter:start(pCreatureObject)
-					testEncounter.spawnEncounter = spy.new(function() end)
-
-					creatureObject.getScreenPlayState = spy.new(function() return TASK_STARTED end)
+					testEncounter.isPlayerInPositionForEncounter = spy.new(function() return false end)
+					testEncounter.despawnTask.start = spy.new(function() end)
+					testEncounter.createEncounter = spy.new(function() end)
 				end)
 
-				it("Should call the spawnEncounter function on the set encounter.", function()
-					testEncounter.spawnTask:handleEvent(pCreatureObject)
+				it("Should check if the player is in a position where the encounter can happen.", function()
+					testEncounter:handleSpawnEvent(pCreatureObject)
 
-					assert.spy(testEncounter.spawnEncounter).was.called_with(testEncounter, pCreatureObject)
+					assert.spy(testEncounter.isPlayerInPositionForEncounter).was.called_with(testEncounter, pCreatureObject)
+				end)
+
+				it("Should start the despawn task.", function()
+					testEncounter:handleSpawnEvent(pCreatureObject)
+
+					assert.spy(testEncounter.despawnTask.start).was.called_with(testEncounter.despawnTask, pCreatureObject)
+				end)
+
+				describe("and the player is in a position where the encounter can be spawned.", function()
+					before_each(function()
+						testEncounter.isPlayerInPositionForEncounter = spy.new(function() return true end)
+					end)
+
+					it("Should call the createEncounter function.", function()
+						testEncounter:handleSpawnEvent(pCreatureObject)
+
+						assert.spy(testEncounter.createEncounter).was.called_with(testEncounter, pCreatureObject)
+					end)
+				end)
+
+				describe("and the player is not in a position where the encounter can be spawned.", function()
+					it("Should not call the createEncounter function.", function()
+						testEncounter:handleSpawnEvent(pCreatureObject)
+
+						assert.spy(testEncounter.createEncounter).was.not_called()
+					end)
 				end)
 			end)
 		end)
-		describe("Despawn Task Handle Event", function()
+
+		describe("handleDespawnEvent", function()
 			describe("When called with a player", function()
-				local realDespawnEncounter
+				it("Should despawn the encounter objects.", function()
+					testEncounter:handleDespawnEvent(pCreatureObject)
 
-				setup(function()
-					realDespawnEncounter = testEncounter.despawnEncounter
+					assert.spy(SpawnMobilesMocks.despawnMobiles).was.called_with(pCreatureObject, testEncounter.taskName)
 				end)
 
-				teardown(function()
-					testEncounter.despawnEncounter = realDespawnEncounter
+				it("Should call the isEncounterFinished function.", function()
+					testEncounter:handleDespawnEvent(pCreatureObject)
+
+					assert.spy(testEncounter.isEncounterFinished).was.called_with(testEncounter, pCreatureObject)
 				end)
 
-				before_each(function()
-					testEncounter:start(pCreatureObject)
-					testEncounter.despawnEncounter = spy.new(function() end)
+				describe("and the encounter is not finished yet", function()
+					local realSpawnTask
 
-					creatureObject.getScreenPlayState = spy.new(function() return TASK_STARTED end)
+					setup(function()
+						testEncounter:setupSpawnAndDespawnEvents()
+						realSpawnTask = testEncounter.spawnTask
+					end)
+
+					teardown(function()
+						testEncounter.spawnTask = realSpawnTask
+					end)
+
+					before_each(function()
+						testEncounter.spawnTask = {}
+						testEncounter.spawnTask.start = spy.new(function() end)
+					end)
+
+					it("Should start the spawn task.", function()
+						testEncounter:handleDespawnEvent(pCreatureObject)
+
+						assert.spy(testEncounter.spawnTask.start).was.called_with(testEncounter.spawnTask, pCreatureObject)
+					end)
 				end)
 
-				it("Should call the despawnEncounter function on the set encounter.", function()
-					testEncounter.despawnTask:handleEvent(pCreatureObject)
+				describe("and the encounter is finished", function()
+					local realFinish
 
-					assert.spy(testEncounter.despawnEncounter).was.called_with(testEncounter, pCreatureObject)
+					setup(function()
+						realFinish = testEncounter.finish
+					end)
+
+					teardown(function()
+						testEncounter.finish = realFinish
+					end)
+
+					before_each(function()
+						testEncounter.isEncounterFinished = spy.new(function() return true end)
+						testEncounter.finish = spy.new(function() end)
+					end)
+
+					it("Should call finish on the encounter.", function()
+						testEncounter:handleDespawnEvent(pCreatureObject)
+
+						assert.spy(testEncounter.finish).was.called_with(testEncounter, pCreatureObject)
+					end)
 				end)
 			end)
 		end)
@@ -250,15 +319,6 @@ describe("Encounter", function()
 
 		describe("setupSpawnAndDespawnEvents", function()
 			describe("When called with a player", function()
-				before_each(function()
-					testEncounter.spawnTask.minimumTimeUntilEvent = 0
-					testEncounter.spawnTask.maximumTimeUntilEvent = 0
-					testEncounter.spawnTask.encounter = nil
-					testEncounter.despawnTask.minimumTimeUntilEvent = 0
-					testEncounter.despawnTask.maximumTimeUntilEvent = 0
-					testEncounter.despawnTask.encounter = nil
-				end)
-
 				it("Should set the minimum event time on the spawn task to the minimum spawn time for the encounter.", function()
 					testEncounter:taskStart(pCreatureObject)
 
@@ -293,64 +353,6 @@ describe("Encounter", function()
 					testEncounter:taskStart(pCreatureObject)
 
 					assert.same(testEncounter, testEncounter.despawnTask.encounter)
-				end)
-			end)
-		end)
-
-		describe("spawnEncounter", function()
-			describe("When called with a player", function()
-				local realIsPlayerInPositionForEncounter
-				local realStart
-				local realCreateEncounter
-
-				setup(function()
-					realIsPlayerInPositionForEncounter = testEncounter.isPlayerInPositionForEncounter
-					realStart = testEncounter.despawnTask.start
-					realCreateEncounter = testEncounter.createEncounter
-				end)
-
-				teardown(function()
-					testEncounter.isPlayerInPositionForEncounter = realIsPlayerInPositionForEncounter
-					testEncounter.despawnTask.start = realStart
-					testEncounter.createEncounter = realCreateEncounter
-				end)
-
-				before_each(function()
-					testEncounter.isPlayerInPositionForEncounter = spy.new(function() return false end)
-					testEncounter.despawnTask.start = spy.new(function() end)
-					testEncounter.createEncounter = spy.new(function() end)
-				end)
-
-				it("Should check if the player is in a position where the encounter can happen.", function()
-					testEncounter:spawnEncounter(pCreatureObject)
-
-					assert.spy(testEncounter.isPlayerInPositionForEncounter).was.called_with(testEncounter, pCreatureObject)
-				end)
-
-				it("Should start the despawn task.", function()
-					testEncounter:spawnEncounter(pCreatureObject)
-
-					assert.spy(testEncounter.despawnTask.start).was.called_with(testEncounter.despawnTask, pCreatureObject)
-				end)
-
-				describe("and the player is in a position where the encounter can be spawned.", function()
-					before_each(function()
-						testEncounter.isPlayerInPositionForEncounter = spy.new(function() return true end)
-					end)
-
-					it("Should call the createEncounter function.", function()
-						testEncounter:spawnEncounter(pCreatureObject)
-
-						assert.spy(testEncounter.createEncounter).was.called_with(testEncounter, pCreatureObject)
-					end)
-				end)
-
-				describe("and the player is not in a position where the encounter can be spawned.", function()
-					it("Should not call the createEncounter function.", function()
-						testEncounter:spawnEncounter(pCreatureObject)
-
-						assert.spy(testEncounter.createEncounter).was.not_called()
-					end)
 				end)
 			end)
 		end)
@@ -618,68 +620,6 @@ describe("Encounter", function()
 					assert.spy(aiAgentObject1.setFollowObject).was.called_with(aiAgentObject1, pCreatureObject)
 					assert.spy(aiAgentObject2.setFollowObject).was.not_called()
 					assert.spy(aiAgentObject3.setFollowObject).was.called_with(aiAgentObject3, pCreatureObject)
-				end)
-			end)
-		end)
-
-		describe("despawnEncounter", function()
-			describe("When called with a player", function()
-				it("Should despawn the encounter objects.", function()
-					testEncounter:despawnEncounter(pCreatureObject)
-
-					assert.spy(SpawnMobilesMocks.despawnMobiles).was.called_with(pCreatureObject, testEncounter.taskName)
-				end)
-
-				it("Should call the isEncounterFinished function.", function()
-					testEncounter:despawnEncounter(pCreatureObject)
-
-					assert.spy(testEncounter.isEncounterFinished).was.called_with(testEncounter, pCreatureObject)
-				end)
-
-				describe("and the encounter is not finished yet", function()
-					local realSpawnTask
-
-					setup(function()
-						realSpawnTask = testEncounter.spawnTask
-					end)
-
-					teardown(function()
-						testEncounter.spawnTask = realSpawnTask
-					end)
-
-					before_each(function()
-						testEncounter.spawnTask = {}
-						testEncounter.spawnTask.start = spy.new(function() end)
-					end)
-
-					it("Should start the spawn task.", function()
-						testEncounter:despawnEncounter(pCreatureObject)
-
-						assert.spy(testEncounter.spawnTask.start).was.called_with(testEncounter.spawnTask, pCreatureObject)
-					end)
-				end)
-
-				describe("and the encounter is finished", function()
-					local realFinish
-
-					setup(function()
-						realFinish = testEncounter.finish
-					end)
-
-					teardown(function()
-						testEncounter.finish = realFinish
-					end)
-
-					before_each(function()
-						testEncounter.isEncounterFinished = spy.new(function() return true end)
-						testEncounter.finish = spy.new(function() end)
-					end)
-
-					it("Should call finish on the encounter.", function()
-						testEncounter:despawnEncounter(pCreatureObject)
-
-						assert.spy(testEncounter.finish).was.called_with(testEncounter, pCreatureObject)
-					end)
 				end)
 			end)
 		end)

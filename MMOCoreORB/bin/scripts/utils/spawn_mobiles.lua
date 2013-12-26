@@ -22,6 +22,7 @@
 --									This value must be lower than the current list item number.
 
 local ObjectManager = require("managers.object.object_manager")
+local Logger = require("utils.logger")
 
 local SpawnMobiles = {}
 
@@ -140,18 +141,21 @@ function SpawnMobiles.spawnMobileObjects(pCreatureObject, mobileList, spawnPoint
 	return spawnedObjects
 end
 
--- Save id of the spawned encounter objects on the player for later use.
+-- Save id of the spawned mobile objects on the player for later use.
 -- @param pCreatureObject pointer to the creature object of the player.
 -- @param prefix the prefix to use for storing information about the spawned mobiles.
 -- @param spawnedObjects list with pointers to the spawned objects.
-function SpawnMobiles.saveSpawnedEncounterObjects(pCreatureObject, prefix, spawnedObjects)
+function SpawnMobiles.saveSpawnedMobileObjects(pCreatureObject, prefix, spawnedObjects)
 	ObjectManager.withSceneObject(pCreatureObject, function(playerSceneObject)
 		writeData(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. IN_USE_STRING, PREFIX_IN_USE)
+		Logger:log(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. IN_USE_STRING .. " set to " .. PREFIX_IN_USE)
 		writeData(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. NUMBER_OF_SPAWNS_STRING, table.getn(spawnedObjects))
+		Logger:log(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. NUMBER_OF_SPAWNS_STRING .. " set to " .. table.getn(spawnedObjects))
 
 		for i = 1, table.getn(spawnedObjects), 1 do
 			ObjectManager.withSceneObject(spawnedObjects[i], function(sceneObject)
 				writeData(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. i, sceneObject:getObjectID())
+				Logger:log(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. i .. " set to " .. sceneObject:getObjectID())
 			end)
 		end
 	end)
@@ -196,9 +200,11 @@ function SpawnMobiles.getSpawnedMobilePointersList(pCreatureObject, prefix)
 
 	ObjectManager.withSceneObject(pCreatureObject, function(playerSceneObject)
 		local numberOfSpawns = readData(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. NUMBER_OF_SPAWNS_STRING)
+		Logger:log(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. NUMBER_OF_SPAWNS_STRING .. " = " .. numberOfSpawns, LT_INFO)
 
 		for i = 1, numberOfSpawns, 1 do
 			local mobileID = readData(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. i)
+			Logger:log(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. i .. " = " .. mobileID, LT_INFO)
 			local mobile = getSceneObject(mobileID)
 
 			if mobile ~= nil then
@@ -215,6 +221,7 @@ end
 -- @param prefix the prefix to read the spawned mobiles from.
 -- @return a list with pointers to the spawned mobiles or nil if none have been spawned.
 function SpawnMobiles.getSpawnedMobiles(pCreatureObject, prefix)
+	Logger:log("Getting spawned mobiles for prefix '" .. prefix .. "'.", LT_INFO)
 	if not SpawnMobiles.isPrefixFree(pCreatureObject, prefix) then
 		return SpawnMobiles.getSpawnedMobilePointersList(pCreatureObject, prefix)
 	else

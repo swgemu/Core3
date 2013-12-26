@@ -733,7 +733,7 @@ describe("Spawn Mobile", function()
 				end)
 
 				it("Should save each object id on the player witht the encounter name as prefix and a running number", function()
-					SpawnMobiles.saveSpawnedEncounterObjects(pCreatureObject, prefix, spawnedMobilesList)
+					SpawnMobiles.saveSpawnedMobileObjects(pCreatureObject, prefix, spawnedMobilesList)
 
 					assert.spy(writeData).was.called(7)
 				end)
