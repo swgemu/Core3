@@ -3,6 +3,7 @@ local QuestManager = require("managers.quest.quest_manager")
 local ObjectManager = require("managers.object.object_manager")
 local SpawnMobiles = require("utils.spawn_mobiles")
 local VillageJediManagerCommon = require("managers.jedi.village.village_jedi_manager_common")
+local SithShadowEncounter = require("managers.jedi.village.sith_shadow_encounter")
 
 local OLD_MAN_GREETING_STRING = "@quest/force_sensitive/intro:oldman_greeting"
 local OLD_MAN_DESPAWN_TIME = 10 * 1000
@@ -66,7 +67,7 @@ end
 -- Event handler for the scheduled despawn of the old man when the player has finished the conversation.
 -- @param pCreatureObject pointer to the creatureObject of the player.
 function OldManEncounter:handleScheduledDespawn(pCreatureObject)
-	self:despawnEncounter(pCreatureObject)
+	self:handleDespawnEvent(pCreatureObject)
 end
 
 -- Schedule despawn of old man due to player conversation has ended.
@@ -108,6 +109,19 @@ function OldManEncounter:doesOldManBelongToThePlayer(pConversingPlayer, pConvers
 	else
 		return false
 	end
+end
+
+-- Check if the old man encounter is finished or not.
+-- @param pCreatureObject pointer to the creature object of the player.
+-- @return true if the encounter is finished. I.e. the player has the crystal.
+function OldManEncounter:isEncounterFinished(pCreatureObject)
+	return QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
+end
+
+-- Handling of finishing the encounter.
+-- @param pCreatureObject pointer to the creature object of the player.
+function OldManEncounter:taskFinish(pCreatureObject)
+	SithShadowEncounter:start(pCreatureObject)
 end
 
 return OldManEncounter

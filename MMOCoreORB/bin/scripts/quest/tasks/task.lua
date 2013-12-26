@@ -14,6 +14,7 @@ local TASK_STARTED = 0xABCD
 -- @param pCreatureObject pointer to the creature object of the player.
 function Task:hasTaskStarted(pCreatureObject)
 	return ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
+		Logger:log("Screen play state for " .. self.taskName .. " is " .. creatureObject:getScreenPlayState(self.taskName))
 		return creatureObject:getScreenPlayState(self.taskName) == TASK_STARTED
 	end) == true
 end
