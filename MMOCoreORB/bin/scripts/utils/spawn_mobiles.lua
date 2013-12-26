@@ -232,10 +232,12 @@ end
 -- Despawn the mobiles.
 -- @param spawnedMobilesList a list of pointers to the spawned mobiles.
 function SpawnMobiles.despawnMobilesInList(spawnedMobilesList)
-	for i = 1, table.getn(spawnedMobilesList), 1 do
-		ObjectManager.withSceneObject(spawnedMobilesList[i], function(sceneObject)
-			sceneObject:destroyObjectFromWorld()
-		end)
+	if spawnedMobilesList ~= nil then
+		for i = 1, table.getn(spawnedMobilesList), 1 do
+			ObjectManager.withSceneObject(spawnedMobilesList[i], function(sceneObject)
+				sceneObject:destroyObjectFromWorld()
+			end)
+		end
 	end
 end
 

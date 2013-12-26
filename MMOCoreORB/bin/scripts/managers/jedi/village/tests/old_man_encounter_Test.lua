@@ -218,24 +218,24 @@ describe("OldManEncounter", function()
 	describe("Events", function()
 		describe("handleScheduledDespawn", function()
 			describe("When called with a pointer to a player", function()
-				local realDespawnEncounter
+				local realHandleDespawnEncounter
 
 				setup(function()
-					realDespawnEncounter = OldManEncounter.despawnEncounter
+					realHandleDespawnEncounter = OldManEncounter.handleDespawnEvent
 				end)
 
 				setup(function()
-					OldManEncounter.despawnEncounter = realDespawnEncounter
+					OldManEncounter.handleDespawnEvent = realHandleDespawnEncounter
 				end)
 
 				setup(function()
-					OldManEncounter.despawnEncounter = spy.new(function() end)
+					OldManEncounter.handleDespawnEvent = spy.new(function() end)
 				end)
 
 				it("Should despawn the old man.", function()
 					OldManEncounter:handleScheduledDespawn(pCreatureObject)
 
-					assert.spy(OldManEncounter.despawnEncounter).was.called_with(OldManEncounter, pCreatureObject)
+					assert.spy(OldManEncounter.handleDespawnEvent).was.called_with(OldManEncounter, pCreatureObject)
 				end)
 			end)
 		end)
