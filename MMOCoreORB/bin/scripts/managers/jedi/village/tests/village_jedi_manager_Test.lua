@@ -1,6 +1,5 @@
 local DirectorManagerMocks = require("screenplays.mocks.director_manager_mocks")
 local GlowingMocks = require("managers.jedi.village.mocks.glowing_mocks")
-local OldManMocks = require("managers.jedi.village.mocks.old_man_mocks")
 local VillageJediManager = require("managers.jedi.village.village_jedi_manager")
 local VillageJediManagerHolocronMocks = require("managers.jedi.village.mocks.village_jedi_manager_holocron_mocks")
 
@@ -14,21 +13,18 @@ describe("Village Jedi Manager", function()
 	setup(function()
 		DirectorManagerMocks.mocks.setup()
 		GlowingMocks.mocks.setup()
-		OldManMocks.mocks.setup()
 		VillageJediManagerHolocronMocks.setup()
 	end)
 
 	teardown(function()
 		DirectorManagerMocks.mocks.teardown()
 		GlowingMocks.mocks.teardown()
-		OldManMocks.mocks.teardown()
 		VillageJediManagerHolocronMocks.teardown()
 	end)
 
 	before_each(function()
 		DirectorManagerMocks.mocks.before_each()
 		GlowingMocks.mocks.before_each()
-		OldManMocks.mocks.before_each()
 		VillageJediManagerHolocronMocks.before_each()
 
 		creatureObject = {}
