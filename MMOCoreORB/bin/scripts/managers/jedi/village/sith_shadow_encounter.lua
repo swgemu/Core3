@@ -14,8 +14,8 @@ SithShadowEncounter = Encounter:new {
 	--encounterDespawnTime = 5 * 60 * 1000, -- 5 minutes
 	encounterDespawnTime = 60 * 1000, -- 5 minutes
 	spawnObjectList = {
-		{ template = "sith_shadow_pirate", minimumDistance = 32, maximumDistance = 64, referencePoint = 0, followPlayer = true },
-		{ template = "sith_shadow_pirate", minimumDistance = 4, maximumDistance = 8, referencePoint = 1, followPlayer = true }
+		{ template = "sith_shadow_datapad", minimumDistance = 32, maximumDistance = 64, referencePoint = 0, followPlayer = true },
+		{ template = "sith_shadow", minimumDistance = 4, maximumDistance = 8, referencePoint = 1, followPlayer = true }
 	},
 	onEncounterSpawned = nil,
 	isEncounterFinished = nil,

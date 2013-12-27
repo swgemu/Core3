@@ -414,6 +414,9 @@ includeFile("items/loot_kit/sculpture_structure_5.lua")
 includeFile("items/loot_kit/sculpture_structure_6.lua")
 includeFile("items/loot_kit/sculpture_structure_7.lua")
 
+--quest sub-folder
+includeFile("items/quest/waypoint_datapad.lua")
+
 --recycler sub-folder
 includeFile("items/recycler/agitator_motor_schematic.lua")
 includeFile("items/recycler/blue_wiring.lua")
