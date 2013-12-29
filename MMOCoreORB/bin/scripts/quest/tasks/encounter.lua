@@ -84,9 +84,13 @@ end
 -- Start the encounter.
 -- @param pCreatureObject pointer to the creature object of the player.
 function Encounter:taskStart(pCreatureObject)
-	Logger:log("Starting spawn task in " .. self.taskName, LT_INFO)
 	self:setupSpawnAndDespawnEvents()
-	self.spawnTask:start(pCreatureObject)
+	if not self:callFunctionIfNotNil(self.isEncounterFinished, pCreatureObject) then
+		Logger:log("Starting spawn task in " .. self.taskName, LT_INFO)
+		self.spawnTask:start(pCreatureObject)
+	else
+		self:finish(pCreatureObject)
+	end
 end
 
 -- Check if the player is online.
@@ -206,12 +210,7 @@ function Encounter:handleDespawnEvent(pCreatureObject)
 
 	SpawnMobiles.despawnMobiles(pCreatureObject, self.taskName)
 
-	if not self:callFunctionIfNotNil(self.isEncounterFinished, pCreatureObject) then
-		Logger:log("Restarting encounter " .. self.taskName .. ".", LT_INFO)
-		self.spawnTask:start(pCreatureObject)
-	else
-		self:finish(pCreatureObject)
-	end
+	self:taskStart(pCreatureObject)
 end
 
 return Encounter
