@@ -189,11 +189,15 @@ function Encounter:handleSpawnEvent(pCreatureObject)
 	self:setupSpawnAndDespawnEvents()
 	self.spawnTask:finish(pCreatureObject)
 
-	if self:isPlayerInPositionForEncounter(pCreatureObject) then
-		self:createEncounter(pCreatureObject)
-	end
+	if not self:callFunctionIfNotNil(self.isEncounterFinished, pCreatureObject) then
+		if self:isPlayerInPositionForEncounter(pCreatureObject) then
+			self:createEncounter(pCreatureObject)
+		end
 
-	self.despawnTask:start(pCreatureObject)
+		self.despawnTask:start(pCreatureObject)
+	else
+		self:finish(pCreatureObject)
+	end
 end
 
 -- Despawn encounter
@@ -206,12 +210,7 @@ function Encounter:handleDespawnEvent(pCreatureObject)
 
 	SpawnMobiles.despawnMobiles(pCreatureObject, self.taskName)
 
-	if not self:callFunctionIfNotNil(self.isEncounterFinished, pCreatureObject) then
-		Logger:log("Restarting encounter " .. self.taskName .. ".", LT_INFO)
-		self.spawnTask:start(pCreatureObject)
-	else
-		self:finish(pCreatureObject)
-	end
+	self:taskStart(pCreatureObject)
 end
 
 return Encounter
