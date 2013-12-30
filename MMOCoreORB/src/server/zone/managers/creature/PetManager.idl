@@ -102,7 +102,7 @@ class PetManager extends ManagedService implements Logger {
 
 	public native short isValidMountScale(final string appearanceFilename, int saddleCapacity, float scale);
 
-	public native short checkMountEligibility(PetControlDevice petControlDevice);
+	public native short checkMountEligibility(PetControlDevice petControlDevice, float height = -1);
 
 	/**
 	 * Handles chat messages to the pet

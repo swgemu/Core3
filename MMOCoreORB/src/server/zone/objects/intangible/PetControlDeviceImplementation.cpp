@@ -9,6 +9,8 @@
 #include "server/zone/objects/creature/DroidObject.h"
 #include "server/zone/objects/creature/CreatureAttribute.h"
 #include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/objects/player/sui/listbox/SuiListBox.h"
+#include "server/zone/objects/player/sui/callbacks/MountGrowthArrestSuiCallback.h"
 #include "server/zone/objects/group/GroupObject.h"
 #include "server/zone/ZoneServer.h"
 #include "server/zone/Zone.h"
@@ -94,7 +96,8 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 		return;
 	}
 
-	growPet();
+	if (!growPet(player))
+		return;
 
 	int currentlySpawned = 0;
 	int spawnedLevel = 0;
@@ -319,7 +322,85 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 	task->execute();
 }
 
-void PetControlDeviceImplementation::growPet() {
+bool PetControlDeviceImplementation::growPet(CreatureObject* player, bool force) {
+	if (petType != PetManager::CREATUREPET)
+		return true;
+
+	if (growthStage <= 0 || growthStage >= 10)
+		return true;
+
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+
+	if (controlledObject == NULL || !controlledObject->isCreature())
+		return true;
+
+	ManagedReference<Creature*> pet = cast<Creature*>(controlledObject.get());
+
+	ManagedReference<CreatureTemplate*> creatureTemplate = pet->getCreatureTemplate();
+
+	if (creatureTemplate == NULL)
+		return true;
+
+	PetManager* petManager = pet->getZoneServer()->getPetManager();
+	if (petManager == NULL)
+		return true;
+
+	Time currentTime;
+	uint32 timeDelta = currentTime.getTime() - lastGrowth.getTime();
+	int stagesToGrow = timeDelta / 3600; // 1 hour, for testing. TODO: Change to correct frequency (12h)
+
+	if (stagesToGrow == 0)
+		return true;
+
+	int newStage = growthStage + stagesToGrow;
+	if (newStage > 10)
+		newStage = 10;
+
+	float newLevel = ((float)creatureTemplate->getLevel() / 10.0) * (float)newStage;
+	if (newLevel < 1)
+		newLevel = 1;
+
+	float newHeight = creatureTemplate->getScale() * (0.46 + ((float)newStage * 0.06));
+
+	short preEligibility = petManager->checkMountEligibility(_this.get());
+	short postEligibility = petManager->checkMountEligibility(_this.get(), newHeight);
+
+	if (preEligibility == PetManager::CANBEMOUNTTRAINED && postEligibility == PetManager::TOOLARGE && !force) {
+		if (isTrainedAsMount()) {
+			arrestGrowth();
+			return true;
+		}
+
+		PlayerObject* ghost = player->getPlayerObject();
+
+		if (ghost == NULL)
+			return true;
+
+		ManagedReference<SuiListBox*> box = new SuiListBox(player, SuiWindowType::MOUNT_GROWTH_ARREST);
+		box->setPromptTitle("@pet/pet_menu:mount_growth_title"); // Pet Growth Arrest
+		box->setPromptText("@pet/pet_menu:mount_growth_prompt"); // Your pet could be trained as a mount, but is about to grow too large to serve as one. If you ever plan on training this pet as a mount you must arrest it's growth now. Stop pet's growth?
+		box->setUsingObject(_this.get());
+		box->setCancelButton(true, "@cancel");
+		box->setOkButton(true, "@yes");
+		box->setOtherButton(true, "@no");
+		box->setCallback(new MountGrowthArrestSuiCallback(player->getZoneServer(), _this.get()));
+
+		ghost->addSuiBox(box);
+		player->sendMessage(box->generateMessage());
+
+		return false;
+	}
+
+	pet->setHeight(newHeight, false);
+	pet->setPetLevel(newLevel);
+
+	growthStage = newStage;
+	lastGrowth.updateToCurrentTime();
+
+	return true;
+}
+
+void PetControlDeviceImplementation::arrestGrowth() {
 	if (petType != PetManager::CREATUREPET)
 		return;
 
@@ -338,25 +419,35 @@ void PetControlDeviceImplementation::growPet() {
 	if (creatureTemplate == NULL)
 		return;
 
-	Time currentTime;
-	uint32 timeDelta = currentTime.getTime() - lastGrowth.getTime();
-	int stagesToGrow = timeDelta / 3600; // 1 hour, for testing. TODO: Change to correct frequency (12h)
-
-	if (stagesToGrow == 0)
+	PetManager* petManager = pet->getZoneServer()->getPetManager();
+	if (petManager == NULL)
 		return;
 
-	int newStage = growthStage + stagesToGrow;
-	if (newStage > 10)
-		newStage = 10;
+	int newStage = growthStage;
 
-	int newLevel = ((float)creatureTemplate->getLevel() / 10) * (float)newStage;
-	if (newLevel < 1)
-		newLevel = 1;
+	for (int i = (growthStage + 1); i < 11; i++) {
+		float newHeight = creatureTemplate->getScale() * (0.46 + ((float)i * 0.06));
 
-	pet->setHeight(creatureTemplate->getScale() * (0.5 + (newStage * 0.05)), false);
-	pet->setPetLevel(newLevel);
+		short mountEligibility = petManager->checkMountEligibility(_this.get(), newHeight);
 
-	growthStage = newStage;
+		if (mountEligibility == PetManager::TOOLARGE)
+			break;
+		else if (mountEligibility == PetManager::CANBEMOUNTTRAINED)
+			newStage = i;
+	}
+
+	if (newStage > growthStage) {
+		float newLevel = ((float)creatureTemplate->getLevel() / 10.0) * (float)newStage;
+		if (newLevel < 1)
+			newLevel = 1;
+
+		float newHeight = creatureTemplate->getScale() * (0.46 + ((float)newStage * 0.06));
+
+		pet->setHeight(newHeight, false);
+		pet->setPetLevel(newLevel);
+	}
+
+	growthStage = 10;
 	lastGrowth.updateToCurrentTime();
 }
 
@@ -722,6 +813,9 @@ void PetControlDeviceImplementation::setTrainingCommand( unsigned int commandID 
 }
 
 void PetControlDeviceImplementation::trainAsMount(CreatureObject* player) {
+	if (isTrainedAsMount())
+		return;
+
 	PetManager* petManager = player->getZoneServer()->getPetManager();
 	if (petManager == NULL)
 		return;
@@ -730,4 +824,5 @@ void PetControlDeviceImplementation::trainAsMount(CreatureObject* player) {
 		return;
 
 	player->sendSystemMessage("Training as a mount isn't implemented yet.");
+
 }

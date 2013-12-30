@@ -59,10 +59,7 @@ short PetManagerImplementation::isValidMountScale(const String& appearanceFilena
 	return INVALIDCREATURE;
 }
 
-short PetManagerImplementation::checkMountEligibility(PetControlDevice* petControlDevice) {
-	if (petControlDevice->isTrainedAsMount())
-		return PetManager::INVALIDCREATURE;
-
+short PetManagerImplementation::checkMountEligibility(PetControlDevice* petControlDevice, float height) {
 	ManagedReference<TangibleObject*> controlledObject = petControlDevice->getControlledObject();
 	if (controlledObject == NULL || !controlledObject->isAiAgent())
 		return PetManager::INVALIDCREATURE;
@@ -79,7 +76,12 @@ short PetManagerImplementation::checkMountEligibility(PetControlDevice* petContr
 	if (objectTemplate == NULL)
 		return PetManager::INVALIDCREATURE;
 
-	short result = isValidMountScale(objectTemplate->getAppearanceFilename(), 1, pet->getHeight());
+	short result;
+
+	if (height == -1)
+		result = isValidMountScale(objectTemplate->getAppearanceFilename(), 1, pet->getHeight());
+	else
+		result = isValidMountScale(objectTemplate->getAppearanceFilename(), 1, height);
 
 	return result;
 }

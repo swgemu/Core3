@@ -389,7 +389,7 @@ void CreatureImplementation::loadTemplateDataForBaby(CreatureTemplate* templateD
 
 	setCustomObjectName(getDisplayedName() + " (baby)", false);
 
-	setHeight(templateData->getScale() * 0.5, false);
+	setHeight(templateData->getScale() * 0.46, false);
 
 	int newLevel = level / 10;
 	if (newLevel < 1)

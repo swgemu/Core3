@@ -155,8 +155,18 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 			menuResponse->addRadialMenuItemToRadialID(141, 152, 3, "@pet/pet_menu:menu_transfer" ); // PET_TRANSFER
 		}
 
-		if( player->hasSkill( "outdoors_creaturehandler_support_04") && petManager->checkMountEligibility(controlDevice) == PetManager::CANBEMOUNTTRAINED){
+		if( player->hasSkill( "outdoors_creaturehandler_support_04") && !controlDevice->isTrainedAsMount() && petManager->checkMountEligibility(controlDevice) == PetManager::CANBEMOUNTTRAINED){
 			menuResponse->addRadialMenuItemToRadialID(141, 207, 3, "@pet/pet_menu:menu_train_mount" ); // Train Pet As A Mount
+		}
+
+		if (controlDevice->isTrainedAsMount()) {
+			Reference<SceneObject*> rider = pet->getSlottedObject("rider");
+
+			if (rider == NULL) {
+				menuResponse->addRadialMenuItem(205, 3, "@pet/pet_menu:menu_mount"); // Climb Aboard Pet
+			} else {
+				menuResponse->addRadialMenuItem(206, 3, "@pet/pet_menu:menu_dismount"); // Climb Off Of Pet
+			}
 		}
 	}
 
