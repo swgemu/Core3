@@ -109,6 +109,9 @@ public:
 
 		text << "Online Status:\t  " << (targetGhost->isOffline() ? "\\#ff3300 Offline" : "\\#00ff33 Online") << "\\#.\n";
 
+		if (targetObject->getZone() != NULL)
+			text << "Planet Name:\t " << targetObject->getZone()->getZoneName() << "\n";
+
 		Vector3 worldPosition = targetObject->getWorldPosition();
 		text << "World Position:\t  {x:" << worldPosition.getX() << ", z:" << worldPosition.getZ() << ", y:" << worldPosition.getY() << "} " << "\n";
 
