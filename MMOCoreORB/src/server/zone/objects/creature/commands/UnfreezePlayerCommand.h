@@ -96,12 +96,16 @@ public:
 
 			Locker playerlocker(targetPlayer);
 
+			targetPlayer->setMutedState(false);
+			String mutedResonse = "";
+			targetPlayer->setMutedReason(mutedResonse);
+
 			targetPlayer->removeStateBuff(CreatureState::FROZEN);
-			targetPlayer->sendSystemMessage("You have been unfrozen by \'" + player->getFirstName() + "\'");
+			targetPlayer->sendSystemMessage("You have been unfrozen and unmuted by \'" + player->getFirstName() + "\'");
 
 			targetPlayer->setSpeedMultiplierBase(1.f, true);
 
-			player->sendSystemMessage(targetPlayer->getFirstName() + " has been unfrozen.");
+			player->sendSystemMessage(targetPlayer->getFirstName() + " has been unfrozen and unmuted.");
 
 		} catch (Exception& e) {
 			player->sendSystemMessage(syntaxerror);

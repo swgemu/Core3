@@ -105,6 +105,9 @@ class CreatureObject extends TangibleObject {
 	protected byte factionRank;
 	
 	protected boolean invisible;
+
+	protected boolean muted;
+	protected string mutedReason;
 	
 	@weakReference
 	protected CreatureObject linkedCreature;
@@ -1709,7 +1712,23 @@ class CreatureObject extends TangibleObject {
 	public void setInvisible(boolean invis) {
 		invisible = invis;
 	}
-	
+
+	public boolean isMuted() {
+		return muted;
+	}
+
+	public void setMutedState(boolean mute) {
+		muted = mute;
+	}
+
+	public string getMutedReason() {
+		return mutedReason;
+	}
+
+	public void setMutedReason(string reason) {
+		mutedReason = reason;
+	}
+
 	@local
 	public Mutex getSkillModMutex() {
 		return skillModMutex;
