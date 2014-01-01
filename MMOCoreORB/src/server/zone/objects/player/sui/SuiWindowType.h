@@ -164,6 +164,7 @@ public:
 	static const uint16 ADMIN_BAN_REASON = 178;
 	static const uint16 ADMIN_BAN_SUMMARY = 179;
 	static const uint16 ADMIN_UNBAN_SUMMARY = 180;
+	static const uint16 ADMIN_PLAYER_CREDITS = 181;
 
 	//Teach 221 - 230
 	static const uint16 TEACH_SKILL = 221;
@@ -234,7 +235,7 @@ public:
 	static const uint16 VENDOR_ANIMATION = 1012;
 	static const uint16 COLOR_GOGGLES = 1013;
 	static const uint16 COLOR_ARMOR = 1014;	
-	static const uint16 CUSTOMIZE_KIT = 1015;//listbox to select FRAME or TRIM 
+	static const uint16 CUSTOMIZE_KIT = 1015;//listbox to select FRAME or TRIM
 };
 
 #endif /*SuiWindowType_H_*/
