@@ -44,7 +44,7 @@ public:
 		if (guild == NULL)
 			return;
 
-		guildManager->disbandGuild(player, guild);
+		guildManager->disbandGuild(player, guildTerminal,  guild);
 	}
 };
 

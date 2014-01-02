@@ -693,7 +693,7 @@ GuildObject* GuildManagerImplementation::createGuild(CreatureObject* player, Gui
 	return guild;
 }
 
-bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObject* guild) {
+bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildTerminal* guildTerminal, GuildObject* guild) {
 	Locker _lock(_this.get());
 
 	if (guild == NULL)
@@ -703,6 +703,8 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObjec
 		player->sendSystemMessage("@guild:generic_fail_no_permission"); //You do not have permission to perform that operation.
 		return false;
 	}
+
+
 
 	ManagedReference<ChatRoom*> guildChat = guild->getChatRoom();
 
@@ -786,6 +788,8 @@ bool GuildManagerImplementation::disbandGuild(CreatureObject* player, GuildObjec
 		//Send the delta to everyone currently online!
 		chatManager->broadcastMessage(gildd3);
 	}
+
+	guildTerminal->setGuildObject(NULL);
 
 	info("Guild " + guild->getGuildName() + " <" + guild->getGuildAbbrev() + "> disbanded.", true);
 
