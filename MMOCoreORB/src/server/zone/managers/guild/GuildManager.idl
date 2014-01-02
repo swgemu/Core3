@@ -184,7 +184,7 @@ class GuildManager extends ManagedService implements Logger {
 	
 	public native GuildObject createGuild(CreatureObject player, GuildTerminal guildTerminal, final string guildName, final string guildAbbrev);
 	
-	public native boolean disbandGuild(CreatureObject player, GuildObject guild);
+	public native boolean disbandGuild(CreatureObject player, GuildTerminal guildTerminal, GuildObject guild);
 	
 	public native void sponsorPlayer(CreatureObject player, GuildTerminal guildTerminal, final string playerName);
 	
