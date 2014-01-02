@@ -43,8 +43,13 @@ public:
 
 		if (guild == NULL)
 			return;
+		else {
 
-		guildManager->disbandGuild(player, guild);
+			Logger tlog("mylog");
+			tlog.info("not disbanding snie the guild is null");
+		}
+
+		guildManager->disbandGuild(player, guildTerminal,  guild);
 	}
 };
 
