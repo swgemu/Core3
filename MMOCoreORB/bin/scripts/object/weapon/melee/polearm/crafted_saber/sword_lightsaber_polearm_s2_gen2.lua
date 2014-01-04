@@ -95,17 +95,9 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_s2_gen2 = obj
 
 	-- Leave blank for now
 	damageModifiers = { },
-	
-	defenderToughnessModifiers = { "lightsaber_toughness" },
 
-	noTrade = 1,
-	
-	objectMenuComponent = {"cpp", "LightsaberObjectMenuComponent"},
-	
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
-	gameObjectType = 131090,
-	
 	healthAttackCost = 47,
 	actionAttackCost = 55,
 	mindAttackCost = 25,
@@ -119,12 +111,31 @@ object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_s2_gen2 = obj
 
 	maxRange = 5,
 	maxRangeAccuracy = 5,
+	
 
 	minDamage = 125,
 	maxDamage = 215,
 
-	attackSpeed = 5.1
+	attackSpeed = 5.1,
+	
+	defenderToughnessModifiers = { "lightsaber_toughness" },
 
+	noTrade = 1,
+	
+	childObjects = {
+		{templateFile = "object/tangible/inventory/lightsaber_inventory_2.iff", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = 4}
+	},
+
+
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "SR", "UT", "CD", "OQ", "OQ", "OQ", "OQ"},
+	experimentalWeights = {1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "expEffeciency", "expEffeciency", "expEffeciency"},
+	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "forcecost", "attackhealthcost", "attackactioncost", "attackmindcost"},
+	experimentalMin = {0, 0, 125, 215, 5.1, 13, 28, 47, 55, 25},
+	experimentalMax = {0, 0, 145, 255, 4.8, 25, 24, 32, 40, 20},
+	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1},
 }
 
 ObjectTemplates:addTemplate(object_weapon_melee_polearm_crafted_saber_sword_lightsaber_polearm_s2_gen2, "object/weapon/melee/polearm/crafted_saber/sword_lightsaber_polearm_s2_gen2.iff")

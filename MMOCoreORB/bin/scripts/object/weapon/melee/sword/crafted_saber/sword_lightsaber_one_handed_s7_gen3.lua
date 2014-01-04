@@ -95,10 +95,7 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_s7_gen3 = ob
 
 	-- Leave blank for now
 	damageModifiers = { },
-	
-	defenderToughnessModifiers = { "lightsaber_toughness" },
 
-	noTrade = 1,
 
 	-- The values below are the default values.  To be used for blue frog objects primarily
 	healthAttackCost = 35,
@@ -114,11 +111,31 @@ object_weapon_melee_sword_crafted_saber_sword_lightsaber_one_handed_s7_gen3 = ob
 
 	maxRange = 5,
 	maxRangeAccuracy = 5,
+	
 
 	minDamage = 130,
 	maxDamage = 220,
 
-	attackSpeed = 4.5
+	attackSpeed = 4.5,
+	
+	defenderToughnessModifiers = { "lightsaber_toughness" },
+
+	noTrade = 1,
+	
+	childObjects = {
+		{templateFile = "object/tangible/inventory/lightsaber_inventory_3.iff", x = 0, z = 0, y = 0, ox = 0, oy = 0, oz = 0, ow = 0, cellid = -1, containmentType = 4}
+	},
+
+	numberExperimentalProperties = {1, 1, 2, 2, 2, 2, 2, 1, 1, 1},
+	experimentalProperties = {"XX", "XX", "CD", "OQ", "CD", "OQ", "CD", "OQ", "SR", "UT", "CD", "OQ", "OQ", "OQ", "OQ"},
+	experimentalWeights = {1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1},
+	experimentalGroupTitles = {"null", "null", "expDamage", "expDamage", "expDamage", "expDamage", "expEffeciency", "expEffeciency", "expEffeciency", "expEffeciency"},
+	experimentalSubGroupTitles = {"null", "null", "mindamage", "maxdamage", "attackspeed", "woundchance", "forcecost", "attackhealthcost", "attackactioncost", "attackmindcost"},
+	experimentalMin = {0, 0, 130, 220, 4.5, 19, 40, 35, 50, 85},
+	experimentalMax = {0, 0, 150, 260, 4.2, 31, 36, 30, 45, 55},
+	experimentalPrecision = {0, 0, 0, 0, 1, 0, 0, 0, 0, 0},
+	experimentalCombineType = {0, 0, 1, 1, 1, 1, 1, 1, 1, 1},
+}
 
 }
 
