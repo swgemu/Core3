@@ -90,24 +90,10 @@ describe("Persistent Event", function()
 	describe("Event handlers", function()
 		describe("handleEvent", function()
 			describe("When called with a player", function()
-				local realError
-
-				setup(function()
-					realError = error
-				end)
-
-				teardown(function()
-					error = realError
-				end)
-
-				before_each(function()
-					error = spy.new(function() end)
-				end)
-
 				it("Should generate an error.", function()
-					testPersistentEvent:handleEvent(pCreatureObject)
+					local callFunctionWithErrors = function() testPersistentEvent:handleEvent(pCreatureObject) end
 
-					assert.spy(error).was.called(1)
+					assert.has.errors(callFunctionWithErrors)
 				end)
 			end)
 		end)

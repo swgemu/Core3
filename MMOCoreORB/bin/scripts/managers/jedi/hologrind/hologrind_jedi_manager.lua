@@ -196,16 +196,19 @@ function HologrindJediManager.sendHolocronMessage(pCreatureObject)
 	end
 end
 
--- Handling of the useHolocron event.
--- @param pSceneObject pointer to the holocron object.
--- @param pCreatureObject pointer to the creature object that used the holocron.
-function HologrindJediManager:useHolocron(pSceneObject, pCreatureObject)
-	local isSilent = HologrindJediManager.sendHolocronMessage(pCreatureObject)
-	if isSilent then
-		return
-	else
-		local sceneObject = LuaSceneObject(pSceneObject)
-		sceneObject:destroyObjectFromWorld()
+-- Handling of the useItem event.
+-- @param pSceneObject pointer to the item object.
+-- @param itemType the type of item that is used.
+-- @param pCreatureObject pointer to the creature object that used the item.
+function HologrindJediManager:useItem(pSceneObject, itemType, pCreatureObject)
+	if itemType == ITEMHOLOCRON then
+		local isSilent = HologrindJediManager.sendHolocronMessage(pCreatureObject)
+		if isSilent then
+			return
+		else
+			local sceneObject = LuaSceneObject(pSceneObject)
+			sceneObject:destroyObjectFromWorld()
+		end
 	end
 end
 

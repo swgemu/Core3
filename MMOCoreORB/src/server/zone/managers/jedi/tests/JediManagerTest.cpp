@@ -249,7 +249,7 @@ TEST_F(JediManagerTest, CheckForceStatusCommandShouldCallTheCheckForceStatusComm
 	DirectorManager::setSingletonInstance(realDirectorManager);
 }
 
-TEST_F(JediManagerTest, UseHolocronShouldCallTheUseHolocronMethodInTheLuaJediManager) {
+TEST_F(JediManagerTest, UseItemShouldCallTheUseItemMethodInTheLuaJediManager) {
 	MockLua mockLua;
 	Reference<MockLuaFunction*> mockLuaFunction = new MockLuaFunction();
 	Reference<MockDirectorManager*> mockDirectorManager = new MockDirectorManager();
@@ -257,15 +257,16 @@ TEST_F(JediManagerTest, UseHolocronShouldCallTheUseHolocronMethodInTheLuaJediMan
 	Reference<MockSceneObject*> mockSceneObject = new MockSceneObject();
 
 	EXPECT_CALL(*mockDirectorManager, getLuaInstance()).WillOnce(Return(&mockLua));
-	EXPECT_CALL(mockLua, createFunction(String("JediManager"), String("useHolocron"), 0)).WillOnce(Return(mockLuaFunction));
+	EXPECT_CALL(mockLua, createFunction(String("JediManager"), String("useItem"), 0)).WillOnce(Return(mockLuaFunction));
 	EXPECT_CALL(*mockLuaFunction, addArgument(An<void*>())).Times(2);
+	EXPECT_CALL(*mockLuaFunction, addArgument(An<int>())).Times(1);
 	EXPECT_CALL(*mockLuaFunction, callFunction()).Times(1);
 
 	Reference<DirectorManager*> realDirectorManager = DirectorManager::instance();
 
 	DirectorManager::setSingletonInstance(mockDirectorManager);
 
-	jediManager->useHolocron(mockSceneObject, mockCreatureObject);
+	jediManager->useItem(mockSceneObject, JediManager::ITEMHOLOCRON, mockCreatureObject);
 
 	DirectorManager::setSingletonInstance(realDirectorManager);
 }

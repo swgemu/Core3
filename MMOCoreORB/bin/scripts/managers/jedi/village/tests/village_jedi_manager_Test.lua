@@ -37,10 +37,10 @@ describe("Village Jedi Manager", function()
 	end)
 
 	describe("Interface functions", function()
-		describe("useHolocron", function()
+		describe("useItem", function()
 			describe("When called with holocron and creature object", function()
 				it("Should call the useHolocron function in the VillageJediManagerHolocron", function()
-					VillageJediManager:useHolocron(pSceneObject, pCreatureObject)
+					VillageJediManager:useItem(pSceneObject, ITEMHOLOCRON, pCreatureObject)
 
 					assert.spy(VillageJediManagerHolocron.useHolocron).was.called_with(pSceneObject, pCreatureObject)
 				end)

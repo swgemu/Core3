@@ -68,6 +68,12 @@ private:
 	 */
 	String jediManagerName;
 
+	/**
+	 * Setup Lua global values.
+	 * @param luaEngine the lua instance.
+	 */
+	void setupLuaValues(Lua* luaEngine);
+
 public:
 	/**
 	 * Jedi progression not available.
@@ -88,6 +94,16 @@ public:
 	 * Custom defined jedi progression system.
 	 */
 	static const int CUSTOMJEDIPROGRESSION = 3;
+
+	/**
+	 * Item type holocron.
+	 */
+	static const int ITEMHOLOCRON = 0;
+
+	/**
+	 * Item type waypoint datapad.
+	 */
+	static const int ITEMWAYPOINTDATAPAD = 1;
 
 	/**
 	 * Constructor for the Jedi Manager.
@@ -143,11 +159,12 @@ public:
 	void setJediManagerName(String name);
 
 	/**
-	 * Handle the holocron use messages.
-	 * @param holocron pointer to the holocron object.
-	 * @param creature the creature that used the holocron.
+	 * Handle usage of any item related to the jedi progression.
+	 * @param item pointer to the item object.
+	 * @param itemType the type of item.
+	 * @param creature the creature that used the item.
 	 */
-	void useHolocron(SceneObject* holocron, CreatureObject* creature);
+	void useItem(SceneObject* item, const int itemType, CreatureObject* creature);
 };
 
 }
