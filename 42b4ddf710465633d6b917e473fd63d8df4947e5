@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_ad1c9d6b",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminalImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-01-06T22:50:55Z",
+      "side": 1,
+      "message": "Locker crossLocker(pet, player);",
+      "revId": "42b4ddf710465633d6b917e473fd63d8df4947e5",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
