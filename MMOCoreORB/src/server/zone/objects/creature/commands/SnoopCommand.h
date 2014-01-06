@@ -46,6 +46,7 @@ which carries forward this exception.
 #define SNOOPCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/sui/messagebox/SuiMessageBox.h"
 
 class SnoopCommand : public QueueCommand {
 public:
@@ -113,6 +114,23 @@ public:
 
 			creatureBank->sendWithoutParentTo(creature);
 			creatureBank->openContainerTo(creature);
+		} else if (container == "credits") {
+			int cash = targetObj->getCashCredits();
+			int bank = targetObj->getBankCredits();
+			StringBuffer body;
+
+			body << "Player Name:\t" << targetObj->getFirstName();
+			body << "\nCash Credits:\t" << String::valueOf(cash);
+			body << "\nBank Credits:\t" << String::valueOf(bank);
+
+			ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, SuiWindowType::ADMIN_PLAYER_CREDITS);
+			box->setPromptTitle("Player Credits");
+			box->setPromptText(body.toString());
+			box->setUsingObject(targetObj);
+			box->setForceCloseDisabled();
+
+			ghost->addSuiBox(box);
+			creature->sendMessage(box->generateMessage());
 		} else {
 			SceneObject* creatureInventory = targetObj->getSlottedObject("inventory");
 
