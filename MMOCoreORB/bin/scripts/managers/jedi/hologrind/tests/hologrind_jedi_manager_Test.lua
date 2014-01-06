@@ -59,7 +59,7 @@ describe("Hologrind Jedi Manager", function()
 			end)
 		end)
 
-		describe("useHolocron", function()
+		describe("useItem", function()
 			it("Should call sendHolocronMessage.", function()
 				local sceneObjectPointer = { "sceneObjectPointer" }
 				local creaturePointer = { "creaturePointer" }
@@ -68,7 +68,7 @@ describe("Hologrind Jedi Manager", function()
 				local destroyObjectFromWorldSpy = spy.new(function() end)
 				LuaSceneObject = spy.new(function() return { destroyObjectFromWorld = destroyObjectFromWorldSpy } end)
 
-				HologrindJediManager:useHolocron(sceneObjectPointer, creaturePointer)
+				HologrindJediManager:useItem(sceneObjectPointer, ITEMHOLOCRON, creaturePointer)
 
 				assert.spy(HologrindJediManager.sendHolocronMessage).was.called_with(creaturePointer)
 
@@ -84,7 +84,7 @@ describe("Hologrind Jedi Manager", function()
 					local destroyObjectFromWorldSpy = spy.new(function() end)
 					LuaSceneObject = spy.new(function() return { destroyObjectFromWorld = destroyObjectFromWorldSpy } end)
 
-					HologrindJediManager:useHolocron(sceneObjectPointer, creaturePointer)
+					HologrindJediManager:useItem(sceneObjectPointer, ITEMHOLOCRON, creaturePointer)
 
 					assert.spy(destroyObjectFromWorldSpy).was.called(1)
 
@@ -101,7 +101,7 @@ describe("Hologrind Jedi Manager", function()
 					local destroyObjectFromWorldSpy = spy.new(function() end)
 					LuaSceneObject = spy.new(function() return { destroyObjectFromWorld = destroyObjectFromWorldSpy } end)
 
-					HologrindJediManager:useHolocron(sceneObjectPointer, creaturePointer)
+					HologrindJediManager:useItem(sceneObjectPointer, ITEMHOLOCRON, creaturePointer)
 
 					assert.spy(destroyObjectFromWorldSpy).was_not.called()
 

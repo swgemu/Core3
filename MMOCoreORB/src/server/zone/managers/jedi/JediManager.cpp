@@ -68,6 +68,15 @@ void JediManager::setJediManagerName(String name) {
 	jediManagerName = name;
 }
 
+void JediManager::setupLuaValues(Lua* luaEngine) {
+	luaEngine->setGlobalInt("NOJEDIPROGRESSION", JediManager::NOJEDIPROGRESSION);
+	luaEngine->setGlobalInt("HOLOGRINDJEDIPROGRESSION", JediManager::HOLOGRINDJEDIPROGRESSION);
+	luaEngine->setGlobalInt("VILLAGEJEDIPROGRESSION", JediManager::VILLAGEJEDIPROGRESSION);
+	luaEngine->setGlobalInt("CUSTOMJEDIPROGRESSION", JediManager::CUSTOMJEDIPROGRESSION);
+	luaEngine->setGlobalInt("ITEMHOLOCRON", JediManager::ITEMHOLOCRON);
+	luaEngine->setGlobalInt("ITEMWAYPOINTDATAPAD", JediManager::ITEMWAYPOINTDATAPAD);
+}
+
 void JediManager::loadConfiguration(Lua* luaEngine) {
 	luaEngine->runFile("scripts/managers/jedi/jedi_manager.lua");
 
@@ -124,11 +133,12 @@ void JediManager::checkForceStatusCommand(CreatureObject* creature) {
 	luaCheckForceStatusCommand->callFunction();
 }
 
-void JediManager::useHolocron(SceneObject* holocron, CreatureObject* creature) {
+void JediManager::useItem(SceneObject* item, const int itemType, CreatureObject* creature) {
 	Lua* lua = DirectorManager::instance()->getLuaInstance();
-	Reference<LuaFunction*> luaUseHolocron = lua->createFunction(getJediManagerName(), "useHolocron", 0);
-	*luaUseHolocron << holocron;
-	*luaUseHolocron << creature;
+	Reference<LuaFunction*> luaUseItem = lua->createFunction(getJediManagerName(), "useItem", 0);
+	*luaUseItem << item;
+	*luaUseItem << itemType;
+	*luaUseItem << creature;
 
-	luaUseHolocron->callFunction();
+	luaUseItem->callFunction();
 }

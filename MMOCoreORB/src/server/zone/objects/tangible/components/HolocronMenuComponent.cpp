@@ -22,7 +22,7 @@ int HolocronMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, Crea
 	if (!sceneObject->isASubChildOf(creature))
 		return 0;
 
-	JediManager::instance()->useHolocron(sceneObject, creature);
+	JediManager::instance()->useItem(sceneObject, JediManager::ITEMHOLOCRON, creature);
 
 	return 0;
 }

@@ -14,11 +14,14 @@ VillageJediManager = JediManager:new {
 	startingEvent = nil,
 }
 
--- Handling of the useHolocron event.
--- @param pSceneObject pointer to the holocron object.
--- @param pCreatureObject pointer to the creature object that used the holocron.
-function VillageJediManager:useHolocron(pSceneObject, pCreatureObject)
-	VillageJediManagerHolocron.useHolocron(pSceneObject, pCreatureObject)
+-- Handling of the useItem event.
+-- @param pSceneObject pointer to the item object.
+-- @param itemType the type of item that is used.
+-- @param pCreatureObject pointer to the creature object that used the item.
+function VillageJediManager:useItem(pSceneObject, itemType, pCreatureObject)
+	if itemType == ITEMHOLOCRON then
+		VillageJediManagerHolocron.useHolocron(pSceneObject, pCreatureObject)
+	end
 end
 
 -- Handling of the checkForceStatus command.

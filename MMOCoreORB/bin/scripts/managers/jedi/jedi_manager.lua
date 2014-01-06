@@ -1,9 +1,14 @@
 JediManager = require("screenplays.screenplay")
 
-NOJEDIPROGRESSION = 0
-HOLOGRINDJEDIPROGRESSION = 1
-VILLAGEJEDIPROGRESSION = 2
-CUSTOMJEDIPROGRESSION = 3
+if _TEST then
+	NOJEDIPROGRESSION = 0
+	HOLOGRINDJEDIPROGRESSION = 1
+	VILLAGEJEDIPROGRESSION = 2
+	CUSTOMJEDIPROGRESSION = 3
+
+	ITEMHOLOCRON = 0
+	ITEMWAYPOINTDATAPAD = 1
+end
 
 jediProgressionType = VILLAGEJEDIPROGRESSION
 
@@ -48,11 +53,12 @@ function JediManager:checkForceStatusCommand(pCreatureObject)
 	-- Default behaviour for the checkForceStatus command, do nothing.
 end
 
--- Default handling of the useHolocron event.
--- @param pSceneObject pointer to the holocron object.
--- @param pCreatureObject pointer to the creature object that used the holocron.
-function JediManager:useHolocron(pSceneObject, pCreatureObject)
-	-- Default behaviour for the useHolocron event, do nothing.
+-- Default handling of the useItem event.
+-- @param pSceneObject pointer to the item object.
+-- @param itemType the type of item that is used.
+-- @param pCreatureObject pointer to the creature object that used the item.
+function JediManager:useItem(pSceneObject, itemType, pCreatureObject)
+	-- Default behaviour for the useItem event, do nothing.
 end
 
 return JediManager

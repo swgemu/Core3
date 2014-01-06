@@ -215,26 +215,6 @@ describe("Task", function()
 			end)
 
 			describe("When called with the function equal to nil", function()
-				local realError
-
-				setup(function()
-					realError = error
-				end)
-
-				teardown(function()
-					error = realError
-				end)
-
-				setup(function()
-					error = spy.new(function() end)
-				end)
-
-				it("Should generate an error about the function being nil.", function()
-					testTask:callFunctionIfNotNil(nil, pCreatureObject)
-
-					assert.spy(error).was.called()
-				end)
-
 				it("Should return nil.", function()
 					assert.is_nil(testTask:callFunctionIfNotNil(nil, pCreatureObject))
 				end)
