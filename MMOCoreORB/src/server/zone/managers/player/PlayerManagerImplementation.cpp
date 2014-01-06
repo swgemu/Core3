@@ -1755,324 +1755,366 @@ int PlayerManagerImplementation::healEnhance(CreatureObject* enhancer, CreatureO
 	return buffdiff;
 }
 
-void PlayerManagerImplementation::stopListen(CreatureObject* creature, uint64 entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
+void PlayerManagerImplementation::stopListen(CreatureObject* creature,
+		uint64 entid, bool doSendPackets, bool forced, bool doLock,
+		bool outOfRange) {
+
+	if (creature == NULL || !creature->isPlayerCreature())
+		return; //... surely this should be an assert... why would anything not a player be asking to stopListen?
+
 	Locker locker(creature);
 
-	ManagedReference<SceneObject*> object = server->getObject(entid);
 	uint64 listenID = creature->getListenID();
-
-	if (object == NULL)
+	if (listenID == 0) {
+		creature->sendSystemMessage(
+				"You are not currently listening to anybody.");
 		return;
+	}
+
+	ManagedReference<SceneObject*> object = server->getObject(entid);
+
+	if (object == NULL) {
+		//... assume the player wants to stop listening... get the entertainer they are listening to and use it
+		object = server->getObject(listenID);
+		if (object == NULL) {
+			//... hmmm... this should probably be assert... we have an entid for an entertainer that can't be instantiated
+			return;
+		}
+	}
 
 	if (!object->isPlayerCreature()) {
-		creature->sendSystemMessage("You cannot stop listening an object.");
+		creature->sendSystemMessage("You cannot stop listening to an object.");
 		return;
 	}
 
-	CreatureObject* entertainer = cast<CreatureObject*>( object.get());
+	CreatureObject* entertainer = cast<CreatureObject*> (object.get());
 
-	if (entertainer == creature)
-		return;
-
-	String entName;
-	ManagedReference<EntertainingSession*> esession;
-
-	if (entertainer != NULL) {
-		Locker clocker(entertainer, creature);
-
-		entName = entertainer->getFirstName();
-
-		ManagedReference<Facade*> session = entertainer->getActiveSession(SessionFacadeType::ENTERTAINING);
-
-		if (session != NULL) {
-			esession = dynamic_cast<EntertainingSession*>(session.get());
-
-			if (esession != NULL) {
-				esession->activateEntertainerBuff(creature, PerformanceType::MUSIC);
-
-				esession->removeListener(creature);
-			}
+	if (entertainer == creature) {
+		//... the player has themselves targeted... use the entertainer they are listening to
+		object = server->getObject(listenID);
+		if (object == NULL) {
+			//... hmmm... this should probably be assert... we have an entid for an entertainer that can't be instantiated
+			return;
 		}
-
-		clocker.release();
+		entertainer = cast<CreatureObject*> (object.get());
 	}
 
-	if (entid != listenID && entertainer != NULL) {
-		creature->sendSystemMessage("You are not currently listening to " + entName + ".");
+	//... to get here... the 'creature' is the player and the 'entertainer' is... well... the entertainer!
 
-		return;
+	String entName = entertainer->getFirstName();
+
+	ManagedReference<Facade*> session = entertainer->getActiveSession(
+			SessionFacadeType::ENTERTAINING);
+
+	if (session != NULL) {
+		Locker clocker(entertainer, creature);
+		ManagedReference<EntertainingSession*> esession;
+		esession = dynamic_cast<EntertainingSession*> (session.get());
+		if (esession != NULL) {
+			esession->activateEntertainerBuff(creature, PerformanceType::MUSIC);
+			esession->removeListener(creature);
+			if (doSendPackets)
+				esession->sendEntertainmentUpdate(creature, 0,
+						creature->getMoodString());
+
+		}
+		clocker.release();
 	}
 
 	creature->setMood(creature->getMoodID());
 
-	if (doSendPackets && esession != NULL)
-		esession->sendEntertainmentUpdate(creature, 0, creature->getMoodString());
+	CreatureObject* player = cast<CreatureObject*> (creature);
 
-	if (creature->isPlayerCreature() && entertainer != NULL) {
-		CreatureObject* player = cast<CreatureObject*>( creature);
+	StringIdChatParameter stringID;
 
-		StringIdChatParameter stringID;
+	if (forced) {
+		stringID.setTU(entid);
+		stringID.setStringId("performance", "music_stop_other");
 
-		if (forced) {
-			stringID.setTU(entid);
-			stringID.setStringId("performance", "music_stop_other");
+		player->sendSystemMessage(stringID);
+		//player->sendSystemMessage("performance", "dance_stop_other", params); //"%TU stops dancing."
+	} else if (outOfRange) {
+		StringBuffer msg;
+		msg << "You stop listenting to " << entName
+				<< " because they are too far away.";
+		player->sendSystemMessage(msg.toString());
 
-			player->sendSystemMessage(stringID);
-			//player->sendSystemMessage("performance", "dance_stop_other", params); //"%TU stops dancing."
-		} else if (outOfRange) {
-			StringBuffer msg;
-			msg << "You stop watching " << entertainer->getFirstName() << " because they are too far away.";
-			player->sendSystemMessage(msg.toString());
-
-			//TODO: Why does %OT say "him/her" instead of "he/she"?
-			//params->addTT(entid);
-			//player->sendSystemMessage("performance", "dance_watch_out_of_range", params); //"You stop watching %TT because %OT is too far away."
-		} else {
-			player->sendSystemMessage("@performance:music_listen_stop_self"); //"You stop watching."
-		}
+		//TODO: Why does %OT say "him/her" instead of "he/she"?
+		//params->addTT(entid);
+		//player->sendSystemMessage("performance", "dance_watch_out_of_range", params); //"You stop watching %TT because %OT is too far away."
+	} else {
+		player->sendSystemMessage("@performance:music_listen_stop_self"); //"You stop watching."
 	}
 
 	//esession->setEntertainerBuffDuration(creature, PerformanceType::MUSIC, 0.0f); // reset
 	//esession->setEntertainerBuffStrength(creature, PerformanceType::MUSIC, 0.0f);
 	creature->info("stopped watching [" + entName + "]");
 
-	//creature->setListenToID(0, true);
+	creature->setListenToID(0, true);
 }
 
+void PlayerManagerImplementation::stopWatch(CreatureObject* creature,
+		uint64 entid, bool doSendPackets, bool forced, bool doLock,
+		bool outOfRange) {
 
-void PlayerManagerImplementation::stopWatch(CreatureObject* creature, uint64 entid, bool doSendPackets, bool forced, bool doLock, bool outOfRange) {
+	if (creature == NULL || !creature->isPlayerCreature())
+		return; //... surely this should be an assert... why would anything not a player be asking to stopWatch?
+
 	Locker locker(creature);
 
-	ManagedReference<SceneObject*> object = server->getObject(entid);
 	uint64 watchID = creature->getWatchToID();
 
-	if (object == NULL)
+	if (watchID == 0) {
+		creature->sendSystemMessage("You are not currently watching anybody.");
 		return;
+	}
+
+	ManagedReference<SceneObject*> object = server->getObject(entid);
+
+	if (object == NULL) {
+		//... assume the player wants to stop watching... get the entertainer they are watching and use it
+		object = server->getObject(watchID);
+		if (object == NULL) {
+			//... hmmm... this should probably be an assert... we have an entid for an entertainer that can't be instantiated
+			return;
+		}
+	}
 
 	if (!object->isPlayerCreature()) {
 		creature->sendSystemMessage("You cannot stop watching an object.");
 		return;
 	}
 
-	CreatureObject* entertainer = cast<CreatureObject*>( object.get());
+	CreatureObject* entertainer = cast<CreatureObject*> (object.get());
 
-	if (entertainer == creature)
-		return;
-
-	ManagedReference<EntertainingSession*> esession = NULL;
-
-	String entName;
-	if (entertainer != NULL) {
-		Locker clocker(entertainer, creature);
-
-		entName = entertainer->getFirstName();
-
-		ManagedReference<Facade*> session = entertainer->getActiveSession(SessionFacadeType::ENTERTAINING);
-
-		if (session != NULL) {
-			esession = dynamic_cast<EntertainingSession*>(session.get());
-
-			if (esession != NULL) {
-				esession->activateEntertainerBuff(creature, PerformanceType::DANCE);
-
-				esession->removeWatcher(creature);
-			}
+	if (entertainer == creature) {
+		//... the player has themselves targeted... use the entertainer they are watching
+		object = server->getObject(watchID);
+		if (object == NULL) {
+			//... hmmm... this should probably be assert... we have an entid for an entertainer that can't be instantiated
+			return;
 		}
-
-		clocker.release();
+		entertainer = cast<CreatureObject*> (object.get());
 	}
 
-	if (entid != watchID) {
-		creature->sendSystemMessage("You are not currently watching " + entName + ".");
+	//... to get here... the 'creature' is the player and the 'entertainer' is... well... the entertainer!
 
-		return;
+	String entName = entertainer->getFirstName();
+
+	ManagedReference<Facade*> session = entertainer->getActiveSession(
+			SessionFacadeType::ENTERTAINING);
+
+	if (session != NULL) {
+		Locker clocker(entertainer, creature);
+		ManagedReference<EntertainingSession*> esession;
+		esession = dynamic_cast<EntertainingSession*> (session.get());
+		if (esession != NULL) {
+			esession->activateEntertainerBuff(creature, PerformanceType::DANCE);
+			esession->removeWatcher(creature);
+			if (doSendPackets)
+				esession->sendEntertainmentUpdate(creature, 0,
+						creature->getMoodString());
+
+		}
+		clocker.release();
 	}
 
 	creature->setMood(creature->getMoodID());
 
-	if (doSendPackets && esession != NULL)
-		esession->sendEntertainmentUpdate(creature, 0, creature->getMoodString());
+	CreatureObject* player = cast<CreatureObject*> (creature);
 
-	//System Message.
-	if (creature->isPlayerCreature() && entertainer != NULL) {
-		CreatureObject* player = cast<CreatureObject*>( creature);
+	StringIdChatParameter stringID;
 
-		StringIdChatParameter stringID;
-		//StfParameter* params = new StfParameter;
+	if (forced) {
+		stringID.setTU(entid);
+		stringID.setStringId("performance", "dance_stop_other");
 
-		if (forced) {
-			stringID.setTU(entid);
-			stringID.setStringId("performance", "dance_stop_other");
+		player->sendSystemMessage(stringID);
+		//player->sendSystemMessage("performance", "dance_stop_other", params); //"%TU stops dancing."
+	} else if (outOfRange) {
+		StringBuffer msg;
+		msg << "You stop watching " << entName
+				<< " because they are too far away.";
+		player->sendSystemMessage(msg.toString());
 
-			player->sendSystemMessage(stringID);
-			//player->sendSystemMessage("performance", "dance_stop_other", params); //"%TU stops dancing."
-		} else if (outOfRange) {
-			StringBuffer msg;
-			msg << "You stop watching " << entertainer->getFirstName() << " because they are too far away.";
-			player->sendSystemMessage(msg.toString());
-
-			//TODO: Why does %OT say "him/her" instead of "he/she"?
-			//params->addTT(entid);
-			//player->sendSystemMessage("performance", "dance_watch_out_of_range", params); //"You stop watching %TT because %OT is too far away."
-		} else {
-			player->sendSystemMessage("@performance:dance_watch_stop_self"); //"You stop watching."
-		}
+		//TODO: Why does %OT say "him/her" instead of "he/she"?
+		//params->addTT(entid);
+		//player->sendSystemMessage("performance", "dance_watch_out_of_range", params); //"You stop watching %TT because %OT is too far away."
+	} else {
+		player->sendSystemMessage("@performance:dance_watch_stop_self"); //"You stop watching."
 	}
-
 
 	//esession->setEntertainerBuffDuration(creature, PerformanceType::DANCE, 0.0f); // reset
 	//esession->setEntertainerBuffStrength(creature, PerformanceType::DANCE, 0.0f);
 	creature->info("stopped watching [" + entName + "]");
 
 	creature->setWatchToID(0);
-	/*doWatching = false;
-	watchID = 0;*/
 }
 
-void PlayerManagerImplementation::startWatch(CreatureObject* creature, uint64 entid) {
+void PlayerManagerImplementation::startWatch(CreatureObject* creature,
+		uint64 entid) {
+
+	if (creature == NULL || !creature->isPlayerCreature())
+		return; //... this should probably be an assert... why would anything not a player be asking to watch?
+
 	Locker locker(creature);
 
 	ManagedReference<SceneObject*> object = server->getObject(entid);
-	uint64 watchID = creature->getWatchToID();
 
-	if (object == NULL)
+	if (object == NULL) {
+		creature->sendSystemMessage(
+				"You must target a player to /watch or enter /watch <playerName>.");
 		return;
-
-	/*if (object->isNonPlayerCreature()) {
-		creature->sendSystemMessage("@performance:dance_watch_npc");
-		return;
-	}*/
+	}
 
 	if (!object->isPlayerCreature()) {
 		creature->sendSystemMessage("You cannot start watching an object.");
 		return;
 	}
 
-	CreatureObject* entertainer = cast<CreatureObject*>( object.get());
+	CreatureObject* entertainer = cast<CreatureObject*> (object.get());
 
-	if (creature == entertainer)
+	if (entertainer == NULL) {
+		creature->sendSystemMessage(
+				"You must target a player to /watch or enter /watch <playerName>.");
 		return;
+	}
+
+	if (creature == entertainer) {
+		creature->sendSystemMessage("You cannot target yourself for /watch.");
+		return;
+	}
+
+	String entName = entertainer->getCustomObjectName().toString();
 
 	Locker clocker(entertainer, creature);
 
 	if (creature->isDancing() || creature->isPlayingMusic()) {
 		creature->sendSystemMessage("You cannot /watch while skill animating.");
-
-		return;
-	} else if (!entertainer->isDancing()) {
-		creature->sendSystemMessage(entertainer->getCustomObjectName().toString() + " is not currently dancing.");
-
-		return;
-	} else if (entid == watchID) {
-		creature->sendSystemMessage("You are already watching " + entertainer->getCustomObjectName().toString() + ".");
-
 		return;
 	}
 
-	ManagedReference<Facade*> facade = entertainer->getActiveSession(SessionFacadeType::ENTERTAINING);
+	if (!entertainer->isDancing()) {
+		creature->sendSystemMessage(entName + " is not currently dancing.");
+		return;
+	}
+
+	uint64 watchID = creature->getWatchToID();
+	if (entid == watchID) {
+		creature->sendSystemMessage("You are already watching " + entName + ".");
+		return;
+	}
+
+	ManagedReference<Facade*> facade = entertainer->getActiveSession(
+			SessionFacadeType::ENTERTAINING);
 
 	if (facade == NULL)
 		return;
 
-	EntertainingSession* entertainingSession = dynamic_cast<EntertainingSession*>(facade.get());
+	EntertainingSession* entertainingSession =
+			dynamic_cast<EntertainingSession*> (facade.get());
 
 	if (entertainingSession == NULL)
 		return;
 
-	if (creature->isWatching()) {
+	if (creature->isWatching()){
+		//... it is highly unlikely this code is ever called... i could not make it happen in any testing
+		//... i've left it here as it was here before and... hey... i'm not perfect
 		stopWatch(creature, watchID, false);
 	}
 
-	//sendEntertainmentUpdate(entid, "entertained");
+	creature->setWatchToID(entid);
 
 	entertainingSession->sendEntertainmentUpdate(creature, entid, "entertained");
 	entertainingSession->addWatcher(creature);
 
-	//creature->addWatcher(_this);
+	creature->sendSystemMessage("You begin watching " + entName + ".");
+	creature->info("started watching [" + entName + "]");
 
-	//if (isPlayer())
-	creature->sendSystemMessage("You begin watching " + entertainer->getCustomObjectName().toString() + ".");
-
-	//setEntertainerBuffDuration(PerformanceType::DANCE, 0.0f);
-	//setEntertainerBuffStrength(PerformanceType::DANCE, 0.0f);
-
-	creature->info("started watching [" + entertainer->getCustomObjectName().toString() + "]");
-
-	creature->setWatchToID(entertainer->getObjectID());
-	//watchID =  entid;
 }
 
-void PlayerManagerImplementation::startListen(CreatureObject* creature, uint64 entid) {
+void PlayerManagerImplementation::startListen(CreatureObject* creature,
+		uint64 entid) {
+
+	if (creature == NULL || !creature->isPlayerCreature())
+		return; //... this should probably be an assert... why would anything not a player be asking to watch?
+
 	Locker locker(creature);
 
 	ManagedReference<SceneObject*> object = server->getObject(entid);
-	uint64 listenID = creature->getListenID();
 
-	if (object == NULL)
-		return;
-
-	/*if (object->isNonPlayerCreature()) {
-		creature->sendSystemMessage("@performance:dance_watch_npc");
-		return;
-	}*/
-
-	if (!object->isPlayerCreature()) {
-		creature->sendSystemMessage("You cannot start listening an object.");
+	if (object == NULL) {
+		creature->sendSystemMessage(
+				"You must target a player to /listen or enter /listen <playerName>.");
 		return;
 	}
 
-	CreatureObject* entertainer = cast<CreatureObject*>( object.get());
-
-	if (creature == entertainer)
+	if (!object->isPlayerCreature()) {
+		creature->sendSystemMessage("You cannot start listening to an object.");
 		return;
+	}
+
+	CreatureObject* entertainer = cast<CreatureObject*> (object.get());
+
+	if (entertainer == NULL) {
+		creature->sendSystemMessage(
+				"You must target a player to /listen or enter /listen <playerName>.");
+		return;
+	}
+
+	if (creature == entertainer) {
+		creature->sendSystemMessage("You cannot target yourself for /watch.");
+		return;
+	}
+
+	String entName = entertainer->getCustomObjectName().toString();
 
 	Locker clocker(entertainer, creature);
 
 	if (creature->isDancing() || creature->isPlayingMusic()) {
-		creature->sendSystemMessage("You cannot /watch while skill animating.");
-
-		return;
-	} else if (!entertainer->isPlayingMusic()) {
-		creature->sendSystemMessage(entertainer->getCustomObjectName().toString() + " is not currently playing music.");
-
-		return;
-	} else if (entid == listenID) {
-		creature->sendSystemMessage("You are already listening " + entertainer->getCustomObjectName().toString() + ".");
-
+		creature->sendSystemMessage("You cannot /listen while skill animating.");
 		return;
 	}
 
-	ManagedReference<Facade*> facade = entertainer->getActiveSession(SessionFacadeType::ENTERTAINING);
+	if (!entertainer->isPlayingMusic()) {
+		creature->sendSystemMessage(
+				entName + " is not currently playing music.");
+		return;
+	}
+
+	uint64 listenID = creature->getListenID();
+	if (entid == listenID) {
+		creature->sendSystemMessage(
+				"You are already listening to " + entName + ".");
+		return;
+	}
+
+	ManagedReference<Facade*> facade = entertainer->getActiveSession(
+			SessionFacadeType::ENTERTAINING);
 
 	if (facade == NULL)
 		return;
 
-	EntertainingSession* entertainingSession = dynamic_cast<EntertainingSession*>(facade.get());
+	EntertainingSession* entertainingSession =
+			dynamic_cast<EntertainingSession*> (facade.get());
 
 	if (entertainingSession == NULL)
 		return;
 
-	if (creature->isListening()) {
+	if (creature->isListening()){
+		//... it is highly unlikely this code is ever called... i could not make it happen in any testing
+		//... i've left it here as it was here before and... hey... i'm not perfect
 		stopListen(creature, listenID, false);
 	}
 
-	//sendEntertainmentUpdate(entid, "entertained");
+	creature->setListenToID(entid);
 
 	entertainingSession->sendEntertainmentUpdate(creature, entid, "entertained");
 	entertainingSession->addListener(creature);
 
-	//creature->addWatcher(_this);
+	creature->sendSystemMessage("You begin to listen to " + entName + ".");
+	creature->info("started listening to [" + entName + "]");
 
-	//if (isPlayer())
-	creature->sendSystemMessage("You begin to listen " + entertainer->getCustomObjectName().toString() + ".");
-
-	//setEntertainerBuffDuration(PerformanceType::DANCE, 0.0f);
-	//setEntertainerBuffStrength(PerformanceType::DANCE, 0.0f);
-
-	creature->info("started watching [" + entertainer->getCustomObjectName().toString() + "]");
-
-	creature->setListenToID(entertainer->getObjectID());
-	//watchID =  entid;
 }
 
 
