@@ -194,7 +194,7 @@ void CityManagerImplementation::loadCityRegions() {
 
 CityRegion* CityManagerImplementation::createCity(CreatureObject* mayor,
 		const String& cityName, float x, float y) {
-	ManagedReference<CityRegion*> city = new CityRegion();
+	ManagedReference<CityRegion*> city = new CityRegion(true);
 	ObjectManager::instance()->persistObject(city, 1, "cityregions");
 	city->setCustomRegionName(cityName);
 	city->setZone(mayor->getZone());

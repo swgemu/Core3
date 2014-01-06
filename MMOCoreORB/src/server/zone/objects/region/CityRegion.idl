@@ -129,8 +129,8 @@ class CityRegion extends ManagedObject implements Logger {
 	public static final byte TAX_TRAVEL = 3;
 	public static final byte TAX_GARAGE = 4;
 	
-	public CityRegion() {
-		loaded = false;
+	public CityRegion(boolean newCity = false) {
+		loaded = newCity;
 		
 		initialize();
 		
