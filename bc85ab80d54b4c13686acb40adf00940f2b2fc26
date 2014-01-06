@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_6dffd502",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/MountGrowthArrestSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-01-06T22:47:48Z",
+      "side": 1,
+      "message": "crosslock to the pet instead",
+      "revId": "bc85ab80d54b4c13686acb40adf00940f2b2fc26",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
