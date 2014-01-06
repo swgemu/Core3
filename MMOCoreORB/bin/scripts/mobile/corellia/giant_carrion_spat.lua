@@ -25,6 +25,7 @@ giant_carrion_spat = Creature:new {
 	creatureBitmask = PACK + KILLER + STALKER,
 	optionsBitmask = 128,
 	diet = CARNIVORE,
+	scale = 2.0,
 
 	templates = {"object/mobile/giant_carrion_spat.iff"},
 	controlDeviceTemplate = "object/intangible/pet/carrion_spat_hue.iff",
