@@ -46,6 +46,7 @@
 #include "server/zone/objects/tangible/components/BankTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/components/CloningTerminalMenuComponent.h"
 #include "server/zone/objects/tangible/components/HolocronMenuComponent.h"
+#include "server/zone/objects/tangible/components/WaypointDatapadMenuComponent.h"
 #include "server/zone/objects/tangible/components/ForceShrineMenuComponent.h"
 #include "server/zone/objects/tangible/components/RobeObjectMenuComponent.h"
 #include "server/zone/objects/tangible/components/generic/ArtCrateMenuComponent.h"
@@ -153,6 +154,7 @@ ComponentManager::ComponentManager() {
 	components.put("ZoneContainerComponent", new ZoneContainerComponent());
 
 	components.put("HolocronMenuComponent", new HolocronMenuComponent());
+	components.put("WaypointDatapadMenuComponent", new WaypointDatapadMenuComponent());
 
 	components.put("AttributeListComponent", new AttributeListComponent());
 	components.put("LootSchematicAttributeListComponent", new LootSchematicAttributeListComponent());
@@ -167,7 +169,7 @@ ComponentManager::ComponentManager() {
 	components.put("PlaceGCWBaseComponent", new PlaceGCWBaseComponent());
 	components.put("StructureTerminalMenuComponent", new StructureTerminalMenuComponent());
 	components.put("FactoryObjectMenuComponent", new FactoryObjectMenuComponent());
-	components.put("MinefieldMenuComponent", new MinefieldMenuComponent());	
+	components.put("MinefieldMenuComponent", new MinefieldMenuComponent());
 	components.put("InstallationObjectMenuComponent", new InstallationObjectMenuComponent());
 
 
@@ -213,7 +215,7 @@ ComponentManager::ComponentManager() {
 
 	components.put("CreatureHabitatMenuComponent", new CreatureHabitatMenuComponent());
 	components.put("WearableObjectMenuComponent", new WearableObjectMenuComponent());
-	components.put("ArmorObjectMenuComponent", new ArmorObjectMenuComponent());	
+	components.put("ArmorObjectMenuComponent", new ArmorObjectMenuComponent());
 
 	components.put("CityHallZoneComponent", new CityHallZoneComponent());
 

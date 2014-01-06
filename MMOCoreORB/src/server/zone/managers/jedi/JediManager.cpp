@@ -78,6 +78,8 @@ void JediManager::setupLuaValues(Lua* luaEngine) {
 }
 
 void JediManager::loadConfiguration(Lua* luaEngine) {
+	setupLuaValues(luaEngine);
+
 	luaEngine->runFile("scripts/managers/jedi/jedi_manager.lua");
 
 	jediProgressionType = luaEngine->getGlobalInt(String("jediProgressionType"));
