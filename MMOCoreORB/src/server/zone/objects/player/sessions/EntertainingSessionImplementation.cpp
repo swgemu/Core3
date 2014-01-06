@@ -780,7 +780,8 @@ void EntertainingSessionImplementation::setEntertainerBuffStrength(CreatureObjec
 }
 
 void EntertainingSessionImplementation::sendEntertainmentUpdate(CreatureObject* creature, uint64 entid, const String& mood, bool updateEntValue) {
-	creature->setListenToID(entid, true);
+//... the entid is already set... besides... this call could be for listen or watch... and this sets listen only
+//	creature->setListenToID(entid, true);
 
 	/*if (updateEntValue)
 		creature->setTerrainNegotiation(0.8025000095f, true);*/
