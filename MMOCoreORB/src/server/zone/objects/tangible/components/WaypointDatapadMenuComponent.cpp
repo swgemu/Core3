@@ -42,28 +42,36 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef MOCKLUA_H_
-#define MOCKLUA_H_
+#include "WaypointDatapadMenuComponent.h"
 
-#include "engine/lua/Lua.h"
+#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
+#include "server/zone/packets/object/ObjectMenuResponse.h"
 
-namespace engine {
-namespace lua {
+#include "server/zone/ZoneServer.h"
+#include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/jedi/JediManager.h"
 
-class MockLua: public Lua {
-public:
-	MOCK_METHOD1(runFile, bool(const String& filename));
-	MOCK_METHOD1(getGlobalInt, sys::uint32(const String& name));
-	MOCK_METHOD1(getGlobalString, String(const String& name));
-	MOCK_METHOD0(getLuaState, lua_State*());
-	MOCK_METHOD2(createFunction, LuaFunction*(const String& func, int argsThatWillReturn));
-	MOCK_METHOD3(createFunction, LuaFunction*(const String& object, const String& func, int argsThatWillReturn));
-	MOCK_METHOD2(setGlobalInt, void(const String& name, const int value));
-};
+void WaypointDatapadMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player) {
+	if (sceneObject == NULL || !sceneObject->isTangibleObject() || player == NULL) {
+		return;
+	}
 
+	TangibleObjectMenuComponent::fillObjectMenuResponse(sceneObject, menuResponse, player);
+
+	menuResponse->addRadialMenuItem(6, 3, "@ui_radial:item_activate"); //Activate
 }
+
+int WaypointDatapadMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID) {
+	if (selectedID != 6)
+		return 0;
+
+	if (!sceneObject->isASubChildOf(player))
+		return 0;
+
+	JediManager::instance()->useItem(sceneObject, JediManager::ITEMWAYPOINTDATAPAD, player);
+
+	return 0;
 }
 
-using namespace engine::lua;
-
-#endif /* MOCKLUA_H_ */

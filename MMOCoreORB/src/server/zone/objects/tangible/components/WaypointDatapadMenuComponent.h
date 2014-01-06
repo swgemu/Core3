@@ -42,28 +42,59 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef MOCKLUA_H_
-#define MOCKLUA_H_
+#ifndef WAYPOINTDATAPADMENUCOMPONENT_H_
+#define WAYPOINTDATAPADMENUCOMPONENT_H_
 
-#include "engine/lua/Lua.h"
+#include "TangibleObjectMenuComponent.h"
 
-namespace engine {
-namespace lua {
+namespace server {
+namespace zone {
+namespace objects {
+namespace scene {
+	class SceneObject;
+}
+}
+}
+}
 
-class MockLua: public Lua {
+using namespace server::zone::objects::scene;
+
+namespace server {
+namespace zone {
+namespace objects {
+namespace creature {
+	class CreatureObject;
+}
+}
+}
+}
+
+using namespace server::zone::objects::creature;
+
+class WaypointDatapadMenuComponent : public TangibleObjectMenuComponent {
 public:
-	MOCK_METHOD1(runFile, bool(const String& filename));
-	MOCK_METHOD1(getGlobalInt, sys::uint32(const String& name));
-	MOCK_METHOD1(getGlobalString, String(const String& name));
-	MOCK_METHOD0(getLuaState, lua_State*());
-	MOCK_METHOD2(createFunction, LuaFunction*(const String& func, int argsThatWillReturn));
-	MOCK_METHOD3(createFunction, LuaFunction*(const String& object, const String& func, int argsThatWillReturn));
-	MOCK_METHOD2(setGlobalInt, void(const String& name, const int value));
+
+	/**
+	 * Fills the radial options, needs to be overridden
+	 * @pre { this object is locked }
+	 * @post { this object is locked, menuResponse is complete}
+	 * @param sceneObject the scene object that the radial options should be filled in for.
+	 * @param menuResponse ObjectMenuResponse that will be sent to the client
+	 * @param player the player using the object.
+	 */
+	virtual void fillObjectMenuResponse(SceneObject* sceneObject, ObjectMenuResponse* menuResponse, CreatureObject* player);
+
+	/**
+	 * Handles the radial selection sent by the client, must be overriden by inherited objects
+	 * @pre { this object is locked, player is locked }
+	 * @post { this object is locked, player is locked }
+	 * @param sceneObject the scene object that the selected radial option should be handled for.
+	 * @param player PlayerCreature that selected the option
+	 * @param selectedID selected menu id
+	 * @returns 0 if successful
+	 */
+	virtual int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID);
 };
 
-}
-}
 
-using namespace engine::lua;
-
-#endif /* MOCKLUA_H_ */
+#endif /* WAYPOINTDATAPADMENUCOMPONENT_H_ */
