@@ -116,7 +116,9 @@ class PetControlDevice extends ControlDevice {
 	
 	public native void cancelSpawnObject(CreatureObject player);
 
-	protected native void growPet();
+	public native boolean growPet(CreatureObject player, boolean force = false);
+
+	public native void arrestGrowth();
 
 	public native void trainAsMount(CreatureObject player);
 
