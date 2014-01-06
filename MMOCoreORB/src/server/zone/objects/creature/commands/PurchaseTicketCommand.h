@@ -88,6 +88,7 @@ public:
 		String departurePlanet, departurePoint, arrivalPlanet, arrivalPoint;
 		bool roundTrip;
 
+
 		try {
 			UnicodeTokenizer tokenizer(arguments);
 			tokenizer.getStringToken(departurePlanet);
@@ -166,10 +167,10 @@ public:
 			return GENERALERROR;
 		}
 
-		fare = fare + arrivalTax + departureTax;
+		fare = fare + departureTax;
 
 		if (roundTrip)
-			fare += pmArrival->getTravelFare(arrivalPlanet, departurePlanet);
+			fare *= 2;
 
 		//Make sure they have space in the inventory for the tickets before purchasing them.
 		Locker _lock(inventory, creature);
