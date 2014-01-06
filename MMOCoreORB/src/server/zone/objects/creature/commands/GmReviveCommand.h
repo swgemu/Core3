@@ -232,6 +232,8 @@ public:
 
 		patient->setShockWounds(0);
 
+		patient->clearDots();
+
 		patient->setPosture(CreaturePosture::UPRIGHT);
 
 		patient->broadcastPvpStatusBitmask();

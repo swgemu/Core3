@@ -1,6 +1,6 @@
 #include "server/zone/objects/tangible/terminal/characterbuilder/CharacterBuilderTerminal.h"
 #include "server/zone/objects/creature/CreatureObject.h"
-#include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/creature/AiAgent.h"
 #include "server/zone/objects/player/sui/characterbuilderbox/SuiCharacterBuilderBox.h"
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/templates/tangible/CharacterBuilderTerminalTemplate.h"
@@ -57,6 +57,21 @@ void CharacterBuilderTerminalImplementation::enhanceCharacter(CreatureObject* pl
 	PlayerManager* pm = player->getZoneServer()->getPlayerManager();
 
 	pm->enhanceCharacter(player);
+
+	ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+	if (ghost == NULL)
+		return;
+
+	for (int i = 0; i < ghost->getActivePetsSize(); i++) {
+		ManagedReference<AiAgent*> pet = ghost->getActivePet(i);
+
+		if (pet != NULL) {
+			Locker crossLocker(pet, player);
+
+			pm->enhanceCharacter(pet);
+		}
+	}
 }
 
 void CharacterBuilderTerminalImplementation::giveLanguages(CreatureObject* player) {
