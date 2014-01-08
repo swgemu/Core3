@@ -114,7 +114,10 @@ class PlayerObject extends IntangibleObject {
 	protected string bankLocation;
 	
 	protected boolean teleporting;
-	
+
+	protected boolean muted;
+	protected string mutedReason;
+
 	@dereferenced
 	protected SortedVector<unsigned long> ownedStructures;
 	
@@ -293,7 +296,10 @@ class PlayerObject extends IntangibleObject {
 		bankLocation = "";
 		
 		teleporting = false;
-		
+
+		muted = false;
+		mutedReason = "";
+
 		debugOutput = false;
 		
 		suiBoxNextID = 0;
@@ -1426,6 +1432,22 @@ class PlayerObject extends IntangibleObject {
 	
 	public boolean isJedi() {
 		return jediState > 2; //TODO: Implement jedi constants.
+	}
+
+	public boolean isMuted() {
+		return muted;
+	}
+
+	public void setMutedState(boolean mute) {
+		muted = mute;
+	}
+
+	public string getMutedReason() {
+		return mutedReason;
+	}
+
+	public void setMutedReason(string reason) {
+		mutedReason = reason;
 	}
 }
 

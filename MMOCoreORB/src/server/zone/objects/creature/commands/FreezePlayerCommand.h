@@ -93,6 +93,13 @@ public:
 			return INVALIDPARAMETERS;
 		}
 
+		ManagedReference<PlayerObject*> targetGhost = targetPlayer->getPlayerObject();
+
+		if (targetGhost == NULL) {
+			player->sendSystemMessage(syntaxerror);
+			return INVALIDPARAMETERS;
+		}
+
 		while (args.hasMoreTokens()) {
 			String reason;
 			args.getStringToken(reason);
@@ -103,7 +110,7 @@ public:
 
 			Locker playerlocker(targetPlayer);
 
-			targetPlayer->setMutedState(true);
+			targetGhost->setMutedState(true);
 			targetPlayer->setRootedState(3600);
 			targetPlayer->setSpeedMultiplierBase(0.f, true);
 
@@ -112,7 +119,7 @@ public:
 				player->sendSystemMessage(targetPlayer->getFirstName() + " is now frozen and muted.");
 			} else {
 				String reason = fullReason.toString();
-				targetPlayer->setMutedReason(reason);
+				targetGhost->setMutedReason(reason);
 
 				StringBuffer muteMessage, targetMuteMessage;
 
