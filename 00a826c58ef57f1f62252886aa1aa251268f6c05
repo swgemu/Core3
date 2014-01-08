@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_8de32133",
+        "filename": "MMOCoreORB/src/server/zone/objects/tangible/components/droid/DroidCraftingModuleDataComponent.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-01-08T12:30:57Z",
+      "side": 1,
+      "message": "I would set the initial effectivness to something more reasonable. If we ever change crafting so that station effectiveness matters, we wouldn\u0027t want some old droid stations with a 500 effectiveness floating around (since the normal range on stations is -45 to 45).\n\nCraftingStation\u0027s constructor sets them to 25 initially. I would just leave them at that. You can include this line, but comment it out for now until you\u0027re getting the number from the sceno.",
+      "revId": "00a826c58ef57f1f62252886aa1aa251268f6c05",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
