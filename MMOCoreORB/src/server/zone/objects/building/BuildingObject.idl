@@ -131,6 +131,7 @@ class BuildingObject extends StructureObject {
 	public native void createContainerComponent();
 
 	public void setCustomObjectName(final unicode name, boolean notifyClient) {
+		super.customName = name;
 		signName = name;
 		updateSignName(notifyClient);
 	}
