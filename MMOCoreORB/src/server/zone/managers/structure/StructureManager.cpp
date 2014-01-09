@@ -1090,6 +1090,16 @@ void StructureManager::promptPayMaintenance(StructureObject* structure,
 
 void StructureManager::payMaintenance(StructureObject* structure,
 		CreatureObject* creature, int amount) {
+	if (amount < 0)
+		return;
+
+	int currentMaint = structure->getSurplusMaintenance();
+
+	if (currentMaint + amount > 100000000 || currentMaint + amount < 0) {
+		creature->sendMessage("The maximum maintenance a house can hold is 100.000.000");
+		return;
+	}
+
 	if (!creature->isInRange(structure, 16.f)
 			&& creature->getRootParent() != structure) {
 		creature->sendSystemMessage("@player_structure:pay_out_of_range"); //You have moved out of range of your original /payMaintenance target. Aborting...
