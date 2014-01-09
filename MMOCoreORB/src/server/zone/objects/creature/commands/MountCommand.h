@@ -132,6 +132,7 @@ public:
 
 			creature->updateToDatabase();
 
+			creature->setRunSpeed(vehicle->getRunSpeed());
 
 		} catch (Exception& e) {
 

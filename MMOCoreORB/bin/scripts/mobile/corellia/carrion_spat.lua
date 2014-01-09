@@ -26,7 +26,7 @@ carrion_spat = Creature:new {
 	optionsBitmask = 128,
 	diet = CARNIVORE,
 
-	templates = {"object/mobile/carrion_spat.iff"},
+	templates = {"object/mobile/carrion_spat_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/carrion_spat_hue.iff",
 	lootGroups = {},
 	weapons = {},

@@ -48,6 +48,7 @@ which carries forward this exception.
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/VehicleObject.h"
 #include "server/zone/objects/intangible/ControlDevice.h"
+#include "server/zone/templates/tangible/SharedCreatureObjectTemplate.h"
 
 class DismountCommand : public QueueCommand {
 public:
@@ -140,6 +141,14 @@ public:
 			device->storeObject(creature);
 		
 		creature->updateToDatabase();
+
+		SharedObjectTemplate* templateData = creature->getObjectTemplate();
+		SharedCreatureObjectTemplate* playerTemplate = dynamic_cast<SharedCreatureObjectTemplate*> (templateData);
+
+		if (playerTemplate != NULL) {
+			Vector<FloatParam> speedTempl = playerTemplate->getSpeed();
+			creature->setRunSpeed(speedTempl.get(0));
+		}
 
 		creature->updateCooldownTimer("mount_dismount", 2000);
 

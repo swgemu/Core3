@@ -27,7 +27,7 @@ cu_pa = Creature:new {
 	optionsBitmask = 128,
 	diet = HERBIVORE,
 
-	templates = {"object/mobile/cu_pa.iff"},
+	templates = {"object/mobile/cu_pa_hue.iff"},
 	controlDeviceTemplate = "object/intangible/pet/cu_pa_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},

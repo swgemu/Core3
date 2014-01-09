@@ -823,6 +823,14 @@ void PetControlDeviceImplementation::trainAsMount(CreatureObject* player) {
 	if (petManager->checkMountEligibility(_this.get()) != PetManager::CANBEMOUNTTRAINED)
 		return;
 
-	player->sendSystemMessage("Training as a mount isn't implemented yet.");
+	ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
+	if (controlledObject == NULL || !controlledObject->isAiAgent())
+		return;
 
+	AiAgent* pet = cast<AiAgent*>(controlledObject.get());
+	if( pet == NULL )
+		return;
+
+	trainedAsMount = true;
+	pet->setOptionsBitmask(0x1080);
 }
