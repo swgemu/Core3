@@ -2497,6 +2497,8 @@ void PlayerManagerImplementation::lootAll(CreatureObject* player, CreatureObject
 		player->sendSystemMessage(param);
 	}
 
+	ai->notifyObservers(ObserverEventType::LOOTCREATURE, player, 0);
+
 	SceneObject* playerInventory = player->getSlottedObject("inventory");
 
 	if (playerInventory == NULL)

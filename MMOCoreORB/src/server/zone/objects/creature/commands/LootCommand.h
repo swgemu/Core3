@@ -89,6 +89,7 @@ public:
 						return GENERALERROR;
 						}
 
+				ai->notifyObservers(ObserverEventType::LOOTCREATURE, creature, 0);
 				creatureInventory->openContainerTo(creature);
 			}
 

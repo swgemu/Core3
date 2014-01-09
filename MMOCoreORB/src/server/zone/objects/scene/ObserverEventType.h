@@ -62,6 +62,7 @@ public:
 	const static int MEDPACKUSED 				= 50; // ManagedObject arg1 = null, long arg2 = 0
 	const static int BADGEAWARDED 				= 51; // ManagedObject arg1 = player, long arg2 = badge number awarded
 	const static int FACTIONBASEFLIPPED			= 52; // ManagedObject arg1 = null, long arg2 = 0
+	const static int LOOTCREATURE				= 53; // ManagedObject arg1 = player who is looting, long arg2 = 0, event occurs before looting starts, i.e. it is possible to change loot with this event.
 };
 
 #endif /* OBSERVEREVENTTYPES_H_ */
