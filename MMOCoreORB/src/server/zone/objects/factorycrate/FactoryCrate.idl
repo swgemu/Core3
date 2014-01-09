@@ -122,6 +122,7 @@ class FactoryCrate extends TangibleObject {
 	
 	public native void setUseCount(unsigned int newUseCount, boolean notifyClient = true);
 
+	@reference
 	public native TangibleObject getPrototype();
 	
 	public native string getCraftersName();

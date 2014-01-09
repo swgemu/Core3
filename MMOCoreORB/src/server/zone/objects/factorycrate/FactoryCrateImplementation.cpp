@@ -48,7 +48,7 @@ void FactoryCrateImplementation::fillAttributeList(AttributeListMessage* alm, Cr
 
 	TangibleObjectImplementation::fillAttributeList(alm, object);
 
-	TangibleObject* prototype = getPrototype();
+	Reference<TangibleObject*> prototype = getPrototype();
 
 	if(prototype == NULL || !prototype->isTangibleObject()) {
 		object->sendSystemMessage("This crate is broken, please contact Kyle if you get this message");
@@ -90,7 +90,7 @@ int FactoryCrateImplementation::handleObjectMenuSelect(CreatureObject* player, b
 	return 0;
 }
 
-TangibleObject* FactoryCrateImplementation::getPrototype() {
+Reference<TangibleObject*> FactoryCrateImplementation::getPrototype() {
 
 	if(getContainerObjectsSize() == 0) {
 		error("FactoryCrateImplementation::getPrototype there isn't an object in the container");
@@ -108,7 +108,7 @@ TangibleObject* FactoryCrateImplementation::getPrototype() {
 
 String FactoryCrateImplementation::getCraftersName() {
 
-	TangibleObject* prototype = getPrototype();
+	Reference<TangibleObject*> prototype = getPrototype();
 
 	if(prototype == NULL || !prototype->isTangibleObject()) {
 		error("FactoryCrateImplementation::getCraftersName has a NULL or non-tangible item");
@@ -120,7 +120,7 @@ String FactoryCrateImplementation::getCraftersName() {
 
 String FactoryCrateImplementation::getSerialNumber() {
 
-	TangibleObject* prototype = getPrototype();
+	Reference<TangibleObject*> prototype = getPrototype();
 
 	if(prototype == NULL || !prototype->isTangibleObject()) {
 		error("FactoryCrateImplementation::getCraftersSerial has a NULL or non-tangible item");
@@ -139,7 +139,7 @@ bool FactoryCrateImplementation::extractObjectToParent() {
 		return false;
 	}
 
-	TangibleObject* prototype = getPrototype();
+	Reference<TangibleObject*> prototype = getPrototype();
 
 	if (prototype == NULL || !prototype->isTangibleObject() || parent == NULL) {
 		error("FactoryCrateImplementation::extractObject has a NULL or non-tangible item");
@@ -188,7 +188,7 @@ TangibleObject* FactoryCrateImplementation::extractObject(int count) {
 	if(count > getUseCount())
 		return NULL;
 
-	TangibleObject* prototype = getPrototype();
+	Reference<TangibleObject*> prototype = getPrototype();
 
 	if(prototype == NULL || !prototype->isTangibleObject()) {
 		error("FactoryCrateImplementation::extractObject has a NULL or non-tangible item");
@@ -223,7 +223,7 @@ void FactoryCrateImplementation::split(int newStackSize) {
 	if(newStackSize > getUseCount())
 		newStackSize = getUseCount();
 
-	TangibleObject* prototype = getPrototype();
+	Reference<TangibleObject*> prototype = getPrototype();
 
 	if(prototype == NULL || !prototype->isTangibleObject()) {
 		error("FactoryCrateImplementation::split has a NULL or non-tangible item");
