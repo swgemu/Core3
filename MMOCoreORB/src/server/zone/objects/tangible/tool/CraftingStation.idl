@@ -118,6 +118,10 @@ class CraftingStation extends ToolTangibleObject {
 		complexityLevel = level;
 	}
 	
+	public void setEffectiveness(float eff) {
+		effectiveness = eff;
+	}	
+	
 	public native SceneObject findCraftingTool(CreatureObject player);
 	
 	public native void createChildObjects();
