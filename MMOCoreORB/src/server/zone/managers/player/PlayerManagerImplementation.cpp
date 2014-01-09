@@ -2307,6 +2307,11 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player,
 
 		allowedSpeedMod = vehicle->getSpeedMultiplierMod();
 		allowedSpeedBase = vehicle->getRunSpeed();
+	} else if (parent != NULL && parent->isMount()){
+		Creature* mount = cast<Creature*>( parent.get());
+
+		allowedSpeedMod = mount->getSpeedMultiplierMod();
+		allowedSpeedBase = mount->getRunSpeed();
 	}
 
 	float maxAllowedSpeed = allowedSpeedMod * allowedSpeedBase;

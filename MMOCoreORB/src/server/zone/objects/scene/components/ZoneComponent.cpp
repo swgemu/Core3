@@ -190,7 +190,7 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 	if (zone == NULL)
 		zone = parent->getRootParent().get()->getZone();
 
-	if (parent != NULL && parent->isVehicleObject())
+	if (parent != NULL && (parent->isVehicleObject() || parent->isMount()))
 		sceneObject->updateVehiclePosition(sendPackets);
 
 	Locker _locker(zone);
@@ -232,7 +232,7 @@ void ZoneComponent::updateZone(SceneObject* sceneObject, bool lightUpdate, bool 
 		}
 
 
-	if (!isInvis && sendPackets && (parent == NULL || !parent->isVehicleObject())) {
+	if (!isInvis && sendPackets && (parent == NULL || (!parent->isVehicleObject() && !parent->isMount()))) {
 		if (lightUpdate) {
 			LightUpdateTransformMessage* message = new LightUpdateTransformMessage(sceneObject);
 			sceneObject->broadcastMessage(message, false, true);
