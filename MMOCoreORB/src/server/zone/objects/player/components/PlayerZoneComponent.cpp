@@ -83,7 +83,7 @@ void PlayerZoneComponent::switchZone(SceneObject* sceneObject, const String& new
 
 		ManagedReference<SceneObject*> par = sceneObject->getParent();
 
-		if (par != NULL && par->isVehicleObject()) {
+		if (par != NULL && (par->isVehicleObject() || par->isMount())) {
 			player->executeObjectControllerAction(String("dismount").hashCode());
 		}
 
@@ -109,7 +109,7 @@ void PlayerZoneComponent::teleport(SceneObject* sceneObject, float newPositionX,
 	if (player != NULL && sceneObject->getParent() != NULL && parentID != 0) {
 		ManagedReference<SceneObject*> par = sceneObject->getParent();
 
-		if (par->isVehicleObject()) {
+		if (par->isVehicleObject() || par->isMount()) {
 			player->executeObjectControllerAction(String("dismount").hashCode());
 		}
 	}

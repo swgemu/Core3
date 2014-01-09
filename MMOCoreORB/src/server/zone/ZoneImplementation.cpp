@@ -239,7 +239,7 @@ int ZoneImplementation::getInRangeObjects(float x, float y, float range, SortedV
 					}
 					}
 				}
-			} else if (sceneObject != NULL && sceneObject->isVehicleObject()) {
+			} else if (sceneObject != NULL && (sceneObject->isVehicleObject() || sceneObject->isMount())) {
 				ManagedReference<SceneObject*> rider = sceneObject->getSlottedObject("rider");
 
 				if (rider != NULL)
