@@ -27,6 +27,9 @@ describe("OldManEncounter", function()
 	local pOtherOldMan = { "otherOldManPointer" }
 	local creatureObjectConversingOldMan
 	local creatureObjectOtherOldMan
+	local pForceCrystal = { "forceCrystalPointer" }
+	local forceCrystal
+	local forceCrystalId = 34567
 
 	setup(function()
 		DirectorManagerMocks.mocks.setup()
@@ -50,12 +53,9 @@ describe("OldManEncounter", function()
 
 		creatureObjectPlayer = {}
 		creatureObjectPlayer.getFirstName = spy.new(function() return playerFirstName end)
-		--creatureObjectPlayer.getObjectID = spy.new(function() return playerId end)
-		--creatureObjectPlayer.getPlayerObject = spy.new(function() return pPlayerObject end)
-		--creatureObjectPlayer.getScreenPlayState = spy.new(function() return 0 end)
-		--creatureObjectPlayer.setScreenPlayState = spy.new(function() end)
-		--creatureObjectPlayer.removeScreenPlayState = spy.new(function() end)
 		creatureObjectPlayer.getSlottedObject = spy.new(function() return pPlayerInventory end)
+		creatureObjectPlayer.removeScreenPlayState = spy.new(function() end)
+		creatureObjectPlayer.setScreenPlayState = spy.new(function() end)
 		DirectorManagerMocks.creatureObjects[pCreatureObject] = creatureObjectPlayer
 
 		creatureObjectConversingOldMan = {}
@@ -70,6 +70,10 @@ describe("OldManEncounter", function()
 		greetingStringId._getObject = spy.new(function() return pGreetingStringId end)
 		greetingStringId.setTT = spy.new(function(object, string) assert.same(string, playerFirstName) end)
 		DirectorManagerMocks.stringIds[OLD_MAN_GREETING_STRING] = greetingStringId
+
+		forceCrystal = {}
+		forceCrystal.getObjectID = spy.new(function() return forceCrystalId end)
+		DirectorManagerMocks.sceneObjects[pForceCrystal] = forceCrystal
 	end)
 
 	describe("Properties", function()
@@ -136,9 +140,57 @@ describe("OldManEncounter", function()
 
 						assert.spy(QuestManagerMocks.completeQuest).was.called(2)
 					end)
+
+					describe("and a force crystal was given", function()
+						before_each(function()
+							giveItem = spy.new(function() return pForceCrystal end)
+						end)
+
+						it("Should get the object ID of the force crystal.", function()
+							OldManEncounter:giveForceCrystalToPlayer(pCreatureObject)
+
+							assert.spy(forceCrystal.getObjectID).was.called_with(forceCrystal)
+						end)
+
+						it("Should remove any saved object id of a crystal.", function()
+							OldManEncounter:giveForceCrystalToPlayer(pCreatureObject)
+
+							assert.spy(creatureObjectPlayer.removeScreenPlayState).was.called_with(creatureObjectPlayer, 0xFFFFFFFFFFFFFFFF)
+						end)
+
+						it("Should save the object ID of the force crystal.", function()
+							OldManEncounter:giveForceCrystalToPlayer(pCreatureObject)
+
+							assert.spy(creatureObjectPlayer.setScreenPlayState).was.called_with(creatureObjectPlayer, forceCrystalId)
+						end)
+					end)
+
+					describe("and a force crystal was not given", function()
+						before_each(function()
+							giveItem = spy.new(function() return nil end)
+						end)
+
+						it("Should not get the object ID of the force crystal.", function()
+							OldManEncounter:giveForceCrystalToPlayer(pCreatureObject)
+
+							assert.spy(forceCrystal.getObjectID).was.not_called()
+						end)
+
+						it("Should remove any saved object id of a crystal.", function()
+							OldManEncounter:giveForceCrystalToPlayer(pCreatureObject)
+
+							assert.spy(creatureObjectPlayer.removeScreenPlayState).was.not_called()
+						end)
+
+						it("Should not save the object ID of the force crystal.", function()
+							OldManEncounter:giveForceCrystalToPlayer(pCreatureObject)
+
+							assert.spy(creatureObjectPlayer.setScreenPlayState).was.not_called()
+						end)
+					end)
 				end)
 
-				describe("and the inventory pointer return is not nil", function()
+				describe("and the inventory pointer return is nil", function()
 					before_each(function()
 						creatureObjectPlayer.getSlottedObject = spy.new(function() return nil end)
 					end)
