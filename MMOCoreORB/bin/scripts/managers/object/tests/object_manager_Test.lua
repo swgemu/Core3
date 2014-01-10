@@ -11,6 +11,7 @@ describe("Object Manager", function()
 	local creatureObject = { "creatureObject" }
 	local playerObject = { "playerObject" }
 	local cityRegion = { "cityRegion" }
+	local pInventory = { "inventoryPointer" }
 
 	setup(function()
 		DirectorManagerMocks.mocks.setup()
@@ -29,6 +30,7 @@ describe("Object Manager", function()
 		DirectorManagerMocks.cityRegions[pCityRegion] = cityRegion
 
 		creatureObject.getPlayerObject = spy.new(function() return pPlayerObject end)
+		creatureObject.getSlottedObject = spy.new(function() return pInventory end)
 		DirectorManagerMocks.creatureObjects[pCreatureObject] = creatureObject
 	end)
 
@@ -57,6 +59,10 @@ describe("Object Manager", function()
 
 	it("Shall return nil if the creature object pointer is nil to the withCreatureAndPlayerObject function.", function()
 		assert.is.Nil(ObjectManager.withCreatureAndPlayerObject(nil, function(creatureObject, playerObject) end))
+	end)
+
+	it("Shall return nil if the creature object pointer is nil to the withInventoryPointer function.", function()
+		assert.is.Nil(ObjectManager.withInventoryPointer(nil, function(pInventory) end))
 	end)
 
 	it("Shall call the supplied lambda expression with the AiAgent when calling the withCreatureAiAgent function.", function()
@@ -123,5 +129,26 @@ describe("Object Manager", function()
 		end)
 		assert.same(creatureObjectArgument, creatureObject)
 		assert.same(playerObjectArgument, playerObject)
+	end)
+
+	it("Shall call the getSlottedObject function with 'inventory' as argument when calling the withInventoryPointer function.", function()
+		ObjectManager.withInventoryPointer(pCreatureObject, function() end)
+
+		assert.spy(creatureObject.getSlottedObject).was.called_with(creatureObject, "inventory")
+	end)
+
+	it("Shall call the supplied lambda expression with the pointer to inventory when calling the withInventoryPointer function.", function()
+		local pInventoryArgument = nil
+
+		ObjectManager.withInventoryPointer(pCreatureObject, function(pInventory) pInventoryArgument = pInventory end)
+		assert.same(pInventoryArgument, pInventory)
+	end)
+
+	it("Shall not call the supplied lambda expression with the pointer to inventory when calling the withInventoryPointer function if the creature does not have an inventory.", function()
+		local lambdaExpressionCalled = false
+		creatureObject.getSlottedObject = spy.new(function() return nil end)
+
+		ObjectManager.withInventoryPointer(pCreatureObject, function(pInventory) lambdaExpressionCalled = true end)
+		assert.is_false(lambdaExpressionCalled)
 	end)
 end)

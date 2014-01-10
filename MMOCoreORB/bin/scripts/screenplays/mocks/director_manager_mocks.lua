@@ -19,6 +19,7 @@ end
 -- Function to be called in the before_each method for a test to prepare the mocks.
 function DirectorManagerMocks.mocks.before_each()
 	createEvent = spy.new(function() end)
+	createLoot = spy.new(function() end)
 	createObserver = spy.new(function() end)
 	getCityRegionAt = spy.new(function() return nil end)
 	getSceneObject = spy.new(function() return nil end)

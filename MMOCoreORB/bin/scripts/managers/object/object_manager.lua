@@ -92,4 +92,21 @@ function ObjectManager.withCreatureAndPlayerObject(pCreatureObject, performThisF
 	end)
 end
 
+-- Perform the supplied function with the inventory pointer from the pointer to the creature object.
+-- @param pCreatureObject a pointer to a creature object.
+-- @param performThisFunction a function that takes a pointer to an inventory as its argument.
+-- @return whatever performThisFunction returns or nil if the pCreatureObject pointer is nil or does not have an inventory.
+function ObjectManager.withInventoryPointer(pCreatureObject, performThisFunction)
+	return ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
+		local pInventory = creatureObject:getSlottedObject("inventory")
+
+		if pInventory ~= nil then
+			return performThisFunction(pInventory)
+		else
+			return nil
+		end
+	end)
+end
+
+
 return ObjectManager
