@@ -123,6 +123,7 @@ private:
 
 	void doObjectDBQuery(CreatureObject* creature, String db, uint64 objectID){
 		StringBuffer msg;
+		//info("doing object query for " + db + " with object " + String::valueOf(objectID),true);
 
 		try {
 			ObjectDatabaseManager* dManager = ObjectDatabaseManager::instance();
@@ -145,14 +146,15 @@ private:
 				uint32 serverObjectCRC;
 				String className;
 
-				if (Serializable::getVariable<uint32>(String("SceneObject.serverObjectCRC").hashCode(), &serverObjectCRC, &objectData)) {
+				if (Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData)) {
 
-					Serializable::getVariable<String>(String("_className").hashCode(), &className, &objectData);
-					StringBuffer msg;
 					msg << endl << "OID: " + String::valueOf(objectID) << endl;
 					msg << "Database: " << db << endl;
 					msg << "ClassName: " << className << endl;
 					creature->sendSystemMessage(msg.toString());
+				} else {
+
+					msg << "ERROR desrializing from db" << endl;
 				}
 
 			} else {

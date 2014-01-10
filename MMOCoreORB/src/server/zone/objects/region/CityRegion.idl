@@ -703,4 +703,6 @@ class CityRegion extends ManagedObject implements Logger {
 
 	public native void cleanupDecorations(int decorationLimit);
 
+	public native unsigned long getObjectID();
+
 }
