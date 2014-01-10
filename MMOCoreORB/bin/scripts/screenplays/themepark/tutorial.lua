@@ -620,23 +620,24 @@ function TutorialScreenPlay:spawnObjects(creatureObject)
 	  -- crafting_artisan_novice
 	  -- combat_marksman_novice
 	  -- combat_brawler_novice
-	if (player:hasSkill("social_entertainer_novice") == 1) then
+
+	if (player:hasSkill("social_entertainer_novice")) then
 		trainerTemplate = "trainer_entertainer"
 		player:removeSkill("social_entertainer_novice")
 		writeData(creature:getObjectID() .. ":tutorial:skill", 0)
-	elseif (player:hasSkill("outdoors_scout_novice") == 1) then
+	elseif (player:hasSkill("outdoors_scout_novice")) then
 		trainerTemplate = "trainer_scout"
 		player:removeSkill("outdoors_scout_novice")
 		writeData(creature:getObjectID() .. ":tutorial:skill", 1)
-	elseif (player:hasSkill("science_medic_novice") == 1) then
+	elseif (player:hasSkill("science_medic_novice")) then
 		trainerTemplate = "trainer_medic"
 		player:removeSkill("science_medic_novice")
 		writeData(creature:getObjectID() .. ":tutorial:skill", 2)
-	elseif (player:hasSkill("crafting_artisan_novice") == 1) then
+	elseif (player:hasSkill("crafting_artisan_novice")) then
 		trainerTemplate = "trainer_artisan"
 		player:removeSkill("crafting_artisan_novice")
 		writeData(creature:getObjectID() .. ":tutorial:skill", 3)
-	elseif (player:hasSkill("combat_marksman_novice") == 1) then
+	elseif (player:hasSkill("combat_marksman_novice")) then
 		trainerTemplate = "trainer_marksman"
 		player:removeSkill("combat_marksman_novice")
 		writeData(creature:getObjectID() .. ":tutorial:skill", 4)
