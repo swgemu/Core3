@@ -8,6 +8,7 @@ local SithShadowEncounter = require("managers.jedi.village.sith_shadow_encounter
 local OLD_MAN_GREETING_STRING = "@quest/force_sensitive/intro:oldman_greeting"
 local OLD_MAN_DESPAWN_TIME = 10 * 1000
 local OLD_MAN_FORCE_CRYSTAL_STRING = "object/tangible/loot/quest/force_sensitive/force_crystal.iff"
+local OLD_MAN_FORCE_CRYSTAL_ID_STRING = "force_crystal_id"
 
 OldManEncounter = Encounter:new {
 	-- Task properties
@@ -81,7 +82,13 @@ end
 function OldManEncounter:giveForceCrystalToPlayer(pCreatureObject)
 	Logger:log("Giving crystal to player.", LT_INFO)
 	ObjectManager.withInventoryPointer(pCreatureObject, function(pInventory)
-		giveItem(pInventory, OLD_MAN_FORCE_CRYSTAL_STRING, -1)
+		local pCrystal = giveItem(pInventory, OLD_MAN_FORCE_CRYSTAL_STRING, -1)
+		ObjectManager.withSceneObject(pCrystal, function(crystal)
+			ObjectManager.withCreatureObject(pCreatureObject, function(creature)
+				creature:removeScreenPlayState(0xFFFFFFFFFFFFFFFF, self.taskName .. OLD_MAN_FORCE_CRYSTAL_ID_STRING)
+				creature:setScreenPlayState(crystal:getObjectID(), self.taskName .. OLD_MAN_FORCE_CRYSTAL_ID_STRING)
+			end)
+		end)
 		VillageJediManagerCommon.setJediProgressionScreenPlayState(pCreatureObject, VILLAGE_JEDI_PROGRESSION_HAS_CRYSTAL)
 		QuestManager.completeQuest(pCreatureObject, QuestManager.quests.OLD_MAN_INITIAL)
 		QuestManager.completeQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
