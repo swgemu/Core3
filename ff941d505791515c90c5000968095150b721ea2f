@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_4da659c3",
+        "filename": "MMOCoreORB/bin/scripts/ai/ai.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-01-11T01:34:04Z",
+      "side": 1,
+      "message": "I would like to have each \"class\" in a separate file. By using require() you can include them into the ai file so that all other files only have to do require on that one.",
+      "revId": "ff941d505791515c90c5000968095150b721ea2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_6da115a9",
+        "filename": "MMOCoreORB/bin/scripts/ai/ai.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-01-11T01:34:04Z",
+      "side": 1,
+      "message": "Add a withAgentObject or something in object_manager.lua and use that function instead. Check the village jedi progression on how to do it.\n\nDon\u0027t forget to check pointers for nil before calling LuaAgent.",
+      "revId": "ff941d505791515c90c5000968095150b721ea2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_2dab0d8b",
+        "filename": "MMOCoreORB/build/unix/Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-01-11T01:34:04Z",
+      "side": 1,
+      "message": "You should not cmmit this file...",
+      "revId": "ff941d505791515c90c5000968095150b721ea2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_0db051f3",
+        "filename": "MMOCoreORB/build/unix/config.status",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-01-11T01:34:04Z",
+      "side": 1,
+      "message": "Nor this....",
+      "revId": "ff941d505791515c90c5000968095150b721ea2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_ed94e545",
+        "filename": "MMOCoreORB/src/client/Makefile.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-01-11T01:34:04Z",
+      "side": 1,
+      "message": "and this....",
+      "revId": "ff941d505791515c90c5000968095150b721ea2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
