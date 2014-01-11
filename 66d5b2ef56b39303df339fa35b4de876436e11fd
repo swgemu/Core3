@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_4d8d3931",
+        "filename": "MMOCoreORB/bin/scripts/ai/tests/AiBaseTest.lua",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-01-11T02:41:06Z",
+      "side": 1,
+      "message": "Try to switch to require() instead and remove this spy.",
+      "revId": "66d5b2ef56b39303df339fa35b4de876436e11fd",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
