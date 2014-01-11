@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_cd78092e",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/old_man_encounter.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-01-11T20:45:26Z",
+      "side": 1,
+      "message": "Both of the above methods require 2 arguments",
+      "revId": "33e615701dd3b2b6f622fea98a46de7e0ed3e173",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
