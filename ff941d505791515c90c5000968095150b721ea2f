@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5a2585a7_8d9b2172",
+        "filename": "MMOCoreORB/bin/scripts/ai/ai.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-01-11T01:35:19Z",
+      "side": 1,
+      "message": "Use require for all inclusions.",
+      "revId": "ff941d505791515c90c5000968095150b721ea2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a2585a7_4da659c3",
         "filename": "MMOCoreORB/bin/scripts/ai/ai.lua",
         "patchSetId": 1
@@ -30,6 +47,23 @@
       "writtenOn": "2014-01-11T01:34:04Z",
       "side": 1,
       "message": "Add a withAgentObject or something in object_manager.lua and use that function instead. Check the village jedi progression on how to do it.\n\nDon\u0027t forget to check pointers for nil before calling LuaAgent.",
+      "revId": "ff941d505791515c90c5000968095150b721ea2f",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_ad9edd61",
+        "filename": "MMOCoreORB/bin/scripts/ai/ai.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-01-11T01:35:19Z",
+      "side": 1,
+      "message": "Check the callFunctionIfNotNil in task.lua, move it to a util file and use it here as well.",
       "revId": "ff941d505791515c90c5000968095150b721ea2f",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
