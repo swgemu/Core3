@@ -176,7 +176,7 @@ public:
 			return InstrumentImplementation::SLITHERHORN;
 		} else if (instrument == "fanfar") {
 			return InstrumentImplementation::FANFAR;
-		} else if (instrument == "flutedroopy") {
+		} else if (instrument == "chidinkalu") {
 			return InstrumentImplementation::FLUTEDROOPY;
 		} else if (instrument == "kloohorn") {
 			return InstrumentImplementation::KLOOHORN;
