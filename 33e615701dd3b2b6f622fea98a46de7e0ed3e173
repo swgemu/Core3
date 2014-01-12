@@ -16,6 +16,24 @@
       "revId": "33e615701dd3b2b6f622fea98a46de7e0ed3e173",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_0db5f1cc",
+        "filename": "MMOCoreORB/bin/scripts/managers/jedi/village/old_man_encounter.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2014-01-12T13:56:29Z",
+      "side": 1,
+      "message": "Yeah, I noticed that when I tested it.",
+      "parentUuid": "5a2585a7_cd78092e",
+      "revId": "33e615701dd3b2b6f622fea98a46de7e0ed3e173",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
