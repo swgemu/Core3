@@ -28,7 +28,6 @@ local SpawnMobiles = require("utils.spawn_mobiles")
 local Logger = require("utils.logger")
 
 local NOTINABUILDING = 0
-local ENCOUNTER_OBJECTS_STRING = "encounter_objects"
 local ENCOUNTER_CLOSING_IN_TIME = 10 * 1000
 local ENCOUNTER_AT_PLAYER_TIME = 30 * 1000
 

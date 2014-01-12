@@ -6,9 +6,11 @@
 -- To spawn the the mobiles, call the spawnMobiles function with the appropriate arguments. The format of the arguments are described below.
 -- This function will return a list with pointers to all spawned mobiles.
 -- To despawn the mobiles, call the despawnMobiles function with the appropriate arguments.
--- To get a list with all spawned mobiles, call the getSpawnedMobiles function with the approprate arguments.
+-- To get a list with all spawned mobiles, call the getSpawnedMobiles function with the appropriate arguments.
+-- To check if a creature belongs to a spawn call the isFromSpawn function with the appropriate arguments
 --
 -- Arguments:
+-- pSceneObject - pointer to the scene object of the spawn is related to.
 -- prefix - a string used to store the id of all spawned mobiles. The information will not be stored persistent.
 --          The module will check that no data is overwritten before storing anything.
 -- x - the center x coordinate for the spawn. The spawned mobiles will use this point as the center for their spawn points.
@@ -33,22 +35,22 @@ local IN_USE_STRING = "_in_use"
 local NUMBER_OF_SPAWNS_STRING = "_number_of_spawns"
 
 -- Check if the prefix is free to use.
--- @param pCreatureObject pointer to the creature object of the player.
+-- @param pSceneObject pointer to the scene object that the spawn is related to.
 -- @param prefix the prefix to check.
 -- @return true if the prefix is free to use.
-function SpawnMobiles.isPrefixFree(pCreatureObject, prefix)
-	return ObjectManager.withSceneObject(pCreatureObject, function(sceneObject)
+function SpawnMobiles.isPrefixFree(pSceneObject, prefix)
+	return ObjectManager.withSceneObject(pSceneObject, function(sceneObject)
 		return readData(sceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. IN_USE_STRING) ~= PREFIX_IN_USE
 	end)
 end
 
 -- Get the spawn point parameters for the specified spawn point generation.
--- @param pCreatureObject pointer to the creature object of the player.
+-- @param pSceneObject pointer to the scene object that the spawn is related to.
 -- @param mobileList a list with information about what mobiles to spawn.
 -- @param spawnPoints a list of already generated spawn points.
 -- @param spawnObjectNumber the sequence number of the spawn point that should be generated.
 -- @return a table with the relvant spawn point parameters containing, x, y, min and max.
-function SpawnMobiles.getSpawnPointParameters(pCreatureObject, mobileList, spawnPoints, spawnObjectNumber)
+function SpawnMobiles.getSpawnPointParameters(pSceneObject, mobileList, spawnPoints, spawnObjectNumber)
 	if spawnObjectNumber < 1 or spawnObjectNumber > table.getn(mobileList) or mobileList[spawnObjectNumber]["referencePoint"] < 0 then
 		return nil
 	end
@@ -64,7 +66,7 @@ function SpawnMobiles.getSpawnPointParameters(pCreatureObject, mobileList, spawn
 	parameters["max"] = mobileList[spawnObjectNumber]["maximumDistance"]
 
 	if mobileList[spawnObjectNumber]["referencePoint"] == 0 then
-		ObjectManager.withSceneObject(pCreatureObject, function(sceneObject)
+		ObjectManager.withSceneObject(pSceneObject, function(sceneObject)
 			parameters["x"] = sceneObject:getWorldPositionX()
 			parameters["y"] = sceneObject:getWorldPositionY()
 		end)
@@ -78,16 +80,16 @@ end
 
 -- Generate spawn points for all objects in the mobile list.
 -- Return nil if not all spawn points were generated.
--- @param pCreatureObject pointer to the creature object of the player.
+-- @param pSceneObject pointer to the scene object that the spawn is related to.
 -- @param mobileList a list with information about what mobiles to spawn.
 -- @return a list with spawn points to use for the mobiles, or nil if generation of spawn points failed.
-function SpawnMobiles.generateSpawnPoints(pCreatureObject, mobileList)
+function SpawnMobiles.generateSpawnPoints(pSceneObject, mobileList)
 	local spawnPoints = {}
 
 	for spawnObjectNumber = 1, table.getn(mobileList), 1 do
-		local spawnPointParams = SpawnMobiles.getSpawnPointParameters(pCreatureObject, mobileList, spawnPoints, spawnObjectNumber)
+		local spawnPointParams = SpawnMobiles.getSpawnPointParameters(pSceneObject, mobileList, spawnPoints, spawnObjectNumber)
 		if spawnPointParams ~= nil then
-			local spawnPoint = getSpawnPoint(pCreatureObject, spawnPointParams["x"], spawnPointParams["y"], spawnPointParams["min"], spawnPointParams["max"])
+			local spawnPoint = getSpawnPoint(pSceneObject, spawnPointParams["x"], spawnPointParams["y"], spawnPointParams["min"], spawnPointParams["max"])
 			if spawnPoint ~= nil then
 				table.insert(spawnPoints, spawnPoint)
 			else
@@ -102,15 +104,15 @@ function SpawnMobiles.generateSpawnPoints(pCreatureObject, mobileList)
 end
 
 -- Spawn the objects at the spawn points.
--- @param pCreatureObject pointer to the creature object of the player.
+-- @param pSceneObject pointer to the scene object that the spawn is related to.
 -- @param mobileList a list with information about what mobiles to spawn.
 -- @param spawnPoints a list of spawn points to use.
 -- @return a list with pointers to the spawned mobiles.
-function SpawnMobiles.spawnMobileObjects(pCreatureObject, mobileList, spawnPoints)
+function SpawnMobiles.spawnMobileObjects(pSceneObject, mobileList, spawnPoints)
 	local spawnedObjects = {}
 	local success = true
 
-	ObjectManager.withSceneObject(pCreatureObject, function(sceneObject)
+	ObjectManager.withSceneObject(pSceneObject, function(sceneObject)
 		for spawnNumber = 1, table.getn(spawnPoints), 1 do
 			local spawnedObject = spawnMobile(sceneObject:getZoneName(),
 											  mobileList[spawnNumber]["template"],
@@ -142,11 +144,11 @@ function SpawnMobiles.spawnMobileObjects(pCreatureObject, mobileList, spawnPoint
 end
 
 -- Save id of the spawned mobile objects on the player for later use.
--- @param pCreatureObject pointer to the creature object of the player.
+-- @param pSceneObject pointer to the scene object that the spawn is related to.
 -- @param prefix the prefix to use for storing information about the spawned mobiles.
 -- @param spawnedObjects list with pointers to the spawned objects.
-function SpawnMobiles.saveSpawnedMobileObjects(pCreatureObject, prefix, spawnedObjects)
-	ObjectManager.withSceneObject(pCreatureObject, function(playerSceneObject)
+function SpawnMobiles.saveSpawnedMobileObjects(pSceneObject, prefix, spawnedObjects)
+	ObjectManager.withSceneObject(pSceneObject, function(playerSceneObject)
 		writeData(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. IN_USE_STRING, PREFIX_IN_USE)
 		Logger:log(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. IN_USE_STRING .. " set to " .. PREFIX_IN_USE)
 		writeData(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. NUMBER_OF_SPAWNS_STRING, table.getn(spawnedObjects))
@@ -162,43 +164,43 @@ function SpawnMobiles.saveSpawnedMobileObjects(pCreatureObject, prefix, spawnedO
 end
 
 -- Generate the mobile objects.
--- @param pCreatureObject pointer to the creature object of the player.
+-- @param pSceneObject pointer to the scene object that the spawn is related to.
 -- @param prefix the prefix to use for storing information about the spawned mobiles.
 -- @param mobileList a list with information about what mobiles to spawn.
 -- @param spawnPoints a list with spawn points to use for the mobile objects.
-function SpawnMobiles.generateMobileObjects(pCreatureObject, prefix, mobileList, spawnPoints)
-	local spawnedObjects = SpawnMobiles.spawnMobileObjects(pCreatureObject, mobileList, spawnPoints)
+function SpawnMobiles.generateMobileObjects(pSceneObject, prefix, mobileList, spawnPoints)
+	local spawnedObjects = SpawnMobiles.spawnMobileObjects(pSceneObject, mobileList, spawnPoints)
 
 	if spawnedObjects ~= nil then
-		SpawnMobiles.saveSpawnedMobileObjects(pCreatureObject, prefix, spawnedObjects)
+		SpawnMobiles.saveSpawnedMobileObjects(pSceneObject, prefix, spawnedObjects)
 	end
 
 	return spawnedObjects
 end
 
 -- Spawn the mobiles with the supplied prefix.
--- @param pCreatureObject pointer to the creature object of the player.
+-- @param pSceneObject pointer to the scene object that the spawn is related to.
 -- @param prefix the prefix to use for storing information about the spawned mobiles.
 -- @param mobileList a list with information about what mobiles to spawn.
 -- @return a list with pointers to all spawned mobiles. If anything fails in this function it will clean up and return nil.
-function SpawnMobiles.spawnMobilesWithPrefix(pCreatureObject, prefix, mobileList)
-	local spawnPoints = SpawnMobiles.generateSpawnPoints(pCreatureObject, mobileList)
+function SpawnMobiles.spawnMobilesWithPrefix(pSceneObject, prefix, mobileList)
+	local spawnPoints = SpawnMobiles.generateSpawnPoints(pSceneObject, mobileList)
 
 	if spawnPoints ~= nil then
-		return SpawnMobiles.generateMobileObjects(pCreatureObject, prefix, mobileList, spawnPoints)
+		return SpawnMobiles.generateMobileObjects(pSceneObject, prefix, mobileList, spawnPoints)
 	else
 		return nil
 	end
 end
 
 -- Returns a list with pointers to the mobiles saved with the prefix.
--- @param pCreatureObject pointer to the creature object of the player.
+-- @param pSceneObject pointer to the scene object that the spawn is related to.
 -- @param prefix the prefix to read the spawned mobiles from.
 -- @return a list with pointers to the spawned mobiles or nil if none have been spawned.
-function SpawnMobiles.getSpawnedMobilePointersList(pCreatureObject, prefix)
+function SpawnMobiles.getSpawnedMobilePointersList(pSceneObject, prefix)
 	local spawnedMobiles = {}
 
-	ObjectManager.withSceneObject(pCreatureObject, function(playerSceneObject)
+	ObjectManager.withSceneObject(pSceneObject, function(playerSceneObject)
 		local numberOfSpawns = readData(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. NUMBER_OF_SPAWNS_STRING)
 		Logger:log(playerSceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. NUMBER_OF_SPAWNS_STRING .. " = " .. numberOfSpawns, LT_INFO)
 
@@ -217,13 +219,13 @@ function SpawnMobiles.getSpawnedMobilePointersList(pCreatureObject, prefix)
 end
 
 -- Return a list with pointers to the objects that was spawned on the prefix.
--- @param pCreatureObject pointer to the creature object of the player.
+-- @param pSceneObject pointer to the scene object that the spawn is related to.
 -- @param prefix the prefix to read the spawned mobiles from.
 -- @return a list with pointers to the spawned mobiles or nil if none have been spawned.
-function SpawnMobiles.getSpawnedMobiles(pCreatureObject, prefix)
+function SpawnMobiles.getSpawnedMobiles(pSceneObject, prefix)
 	Logger:log("Getting spawned mobiles for prefix '" .. prefix .. "'.", LT_INFO)
-	if not SpawnMobiles.isPrefixFree(pCreatureObject, prefix) then
-		return SpawnMobiles.getSpawnedMobilePointersList(pCreatureObject, prefix)
+	if not SpawnMobiles.isPrefixFree(pSceneObject, prefix) then
+		return SpawnMobiles.getSpawnedMobilePointersList(pSceneObject, prefix)
 	else
 		return nil
 	end
@@ -242,13 +244,13 @@ function SpawnMobiles.despawnMobilesInList(spawnedMobilesList)
 end
 
 -- Spawn the mobiles and store information about their ids.
--- @param pCreatureObject pointer to the creature object of the player.
+-- @param pSceneObject pointer to the scene object that the spawn is related to.
 -- @param prefix the prefix to use for storing information about the spawned mobiles.
 -- @param mobileList a list with information about what mobiles to spawn.
 -- @return a list with pointers to all spawned mobiles. If anything fails in this function it will clean up and return nil.
-function SpawnMobiles.spawnMobiles(pCreatureObject, prefix, mobileList)
-	if SpawnMobiles.isPrefixFree(pCreatureObject, prefix) then
-		return SpawnMobiles.spawnMobilesWithPrefix(pCreatureObject, prefix, mobileList)
+function SpawnMobiles.spawnMobiles(pSceneObject, prefix, mobileList)
+	if SpawnMobiles.isPrefixFree(pSceneObject, prefix) then
+		return SpawnMobiles.spawnMobilesWithPrefix(pSceneObject, prefix, mobileList)
 	else
 		return nil
 	end
@@ -256,13 +258,35 @@ end
 
 -- Despawn the mobiles stored with the prefix.
 -- This function will clean up the information stored with the prefix so that spawnMobiles can be called again with the same prefix.
--- @param pCreatureObject pointer to the creature object of the player.
+-- @param pSceneObject pointer to the scene object that the spawn is related to.
 -- @param prefix the prefix to use for reading information about the mobiles to despawn.
-function SpawnMobiles.despawnMobiles(pCreatureObject, prefix)
-	SpawnMobiles.despawnMobilesInList(SpawnMobiles.getSpawnedMobiles(pCreatureObject, prefix))
-	ObjectManager.withSceneObject(pCreatureObject, function(sceneObject)
+function SpawnMobiles.despawnMobiles(pSceneObject, prefix)
+	SpawnMobiles.despawnMobilesInList(SpawnMobiles.getSpawnedMobiles(pSceneObject, prefix))
+	ObjectManager.withSceneObject(pSceneObject, function(sceneObject)
 		writeData(sceneObject:getObjectID() .. prefix .. SPAWN_MOBILES_STRING .. IN_USE_STRING, PREFIX_FREE)
 	end)
+end
+
+-- Despawn the mobiles stored with the prefix.
+-- This function will clean up the information stored with the prefix so that spawnMobiles can be called again with the same prefix.
+-- @param pSceneObject pointer to the scene object that the spawn is related to.
+-- @param prefix the prefix to use for reading information about the mobiles to despawn.
+-- @param pMobile pointer to the mobile that should be checked if it belongs to the spawn or not.
+-- @return true if the mobile is from the spawn, false otherwise.
+function SpawnMobiles.isFromSpawn(pSceneObject, prefix, pMobile)
+	local spawnedMobiles = SpawnMobiles.getSpawnedMobiles(pSceneObject, prefix)
+	local objectIdToCheck = ObjectManager.withSceneObject(pMobile, function(mobile) return mobile:getObjectID() end)
+
+	if spawnedMobiles ~= nil then
+		for i = 1, table.getn(spawnedMobiles), 1 do
+			local objectId = ObjectManager.withSceneObject(spawnedMobiles[i], function(spawnedObject) return spawnedObject:getObjectID() end)
+			if objectIdToCheck == objectId then
+				return true
+			end
+		end
+	end
+
+	return false
 end
 
 return SpawnMobiles

@@ -108,5 +108,12 @@ function ObjectManager.withInventoryPointer(pCreatureObject, performThisFunction
 	end)
 end
 
+-- Perform the supplied function with a scene object with the supplied object id.
+-- @param objectId the object id of the scene object to send to the function.
+-- @param performThisFunction a function that takes a scene object as argument.
+-- @return whatever performThisFunction returns or nil if no object with the specified id can be found.
+function ObjectManager.withSceneObjectFromId(objectId, performThisFunction)
+	return ObjectManager.withSceneObject(getSceneObject(objectId), performThisFunction)
+end
 
 return ObjectManager

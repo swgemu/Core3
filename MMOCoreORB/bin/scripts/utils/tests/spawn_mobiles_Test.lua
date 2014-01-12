@@ -268,6 +268,58 @@ describe("Spawn Mobile", function()
 				end)
 			end)
 		end)
+
+		describe("isFromSpawn", function()
+			describe("When called with a pointer to a creature and a prefix", function()
+				local realGetSpawnedMobiles
+
+				setup(function()
+					realGetSpawnedMobiles = SpawnMobiles.getSpawnedMobiles
+				end)
+
+				teardown(function()
+					SpawnMobiles.getSpawnedMobiles = realGetSpawnedMobiles
+				end)
+
+				before_each(function()
+					SpawnMobiles.getSpawnedMobiles = spy.new(function() return spawnedMobilesList end)
+				end)
+
+				it("Should get the list of spawned mobiles for the prefix.", function()
+					SpawnMobiles.isFromSpawn(pCreatureObject, prefix, pSpawnedObject1)
+
+					assert.spy(SpawnMobiles.getSpawnedMobiles).was.called_with(pCreatureObject, prefix)
+				end)
+
+				it("Should get the object id of the creature.", function()
+					SpawnMobiles.isFromSpawn(pCreatureObject, prefix, pSpawnedObject1)
+
+					assert.spy(spawnedObject1.getObjectID).was.called_with(spawnedObject1)
+				end)
+
+				describe("and the creature was spawned with the prefix", function()
+					it("Should return true.", function()
+						assert.is_true(SpawnMobiles.isFromSpawn(pCreatureObject, prefix, pSpawnedObject1))
+					end)
+				end)
+
+				describe("and the creature was not spawned with the prefix", function()
+					it("Should return false.", function()
+						assert.is_false(SpawnMobiles.isFromSpawn(pCreatureObject, prefix, pCreatureObject))
+					end)
+
+					it("Should get the object id of every mobile in the spawn.", function()
+						SpawnMobiles.isFromSpawn(pCreatureObject, prefix, pCreatureObject)
+
+						assert.spy(spawnedObject1.getObjectID).was.called_with(spawnedObject1)
+						assert.spy(spawnedObject2.getObjectID).was.called_with(spawnedObject2)
+						assert.spy(spawnedObject3.getObjectID).was.called_with(spawnedObject3)
+						assert.spy(spawnedObject4.getObjectID).was.called_with(spawnedObject4)
+						assert.spy(spawnedObject5.getObjectID).was.called_with(spawnedObject5)
+					end)
+				end)
+			end)
+		end)
 	end)
 
 	describe("Private functions", function()
