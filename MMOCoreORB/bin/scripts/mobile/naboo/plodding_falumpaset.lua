@@ -20,7 +20,7 @@ plodding_falumpaset = Creature:new {
 	boneAmount = 80,
 	milkType = "milk_domesticated",
 	milk = 125,
-	tamingChance = 0,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
@@ -28,6 +28,7 @@ plodding_falumpaset = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/falumpaset_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/falumpaset_hue.iff",
 	lootGroups = {},
 	weapons = {"creature_spit_small_yellow"},
 	conversationTemplate = "",
