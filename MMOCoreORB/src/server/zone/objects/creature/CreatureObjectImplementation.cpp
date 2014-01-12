@@ -287,6 +287,16 @@ void CreatureObjectImplementation::sendTo(SceneObject* player, bool doClose) {
 	if (isInvisible() && player != _this.get())
 		return;
 
+	if(player->isVehicleObject() || player->isMount()) {
+		ManagedReference<CreatureObject* > vehicle = cast<CreatureObject*>(player);
+		ManagedReference<CreatureObject* > linkedCreature = vehicle->getLinkedCreature().get();
+
+		if (linkedCreature != NULL && linkedCreature->getParent().get() == vehicle) {
+			sendTo(linkedCreature, doClose);
+			return;
+		}
+	}
+
 	TangibleObjectImplementation::sendTo(player, doClose);
 }
 
