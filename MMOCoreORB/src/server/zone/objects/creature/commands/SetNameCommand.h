@@ -97,8 +97,11 @@ public:
 				uint64 oid = targetPlayer->getOwnedStructure(i);
 
 				ManagedReference<StructureObject*> structure = (targetPlayer->getZoneServer()->getObject(oid)).castTo<StructureObject*>();
-				structure->revokePermission("ADMIN", oldName);
-				structure->grantPermission("ADMIN", newName);
+
+				if (structure != NULL) {
+					structure->revokePermission("ADMIN", oldName);
+					structure->grantPermission("ADMIN", newName);
+				}
 			}
 
 			StringBuffer charDirtyQuery;
