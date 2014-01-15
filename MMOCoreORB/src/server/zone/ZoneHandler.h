@@ -84,6 +84,8 @@ namespace server {
 
 		ZoneSessionMap clients;
 
+		ReadWriteLock guard;
+
 	public:
 		ZoneHandler(ZoneServer* server) {
 			zoneServerRef = server;
@@ -98,7 +100,9 @@ namespace server {
 		ServiceClient* createConnection(Socket* sock, SocketAddress& addr) {
 			ZoneServer* server =  zoneServerRef.getForUpdate();
 
-			ZoneClientSession* client = server->createConnection(sock, addr);
+			Reference<ZoneClientSession*> client = server->createConnection(sock, addr);
+
+			Locker locker(&guard);
 
 			clients.add(client);
 
@@ -106,11 +110,12 @@ namespace server {
 		}
 
 		bool deleteConnection(ServiceClient* session) {
-			ZoneClientSession* client = getClientSession(session);
+			Reference<ZoneClientSession*> client = getClientSession(session);
 
 			client->disconnect();
-
 			client->disconnect(true);
+
+			Locker locker(&guard);
 
 			clients.remove(client);
 
@@ -122,7 +127,8 @@ namespace server {
 
 			ManagedReference<ZoneClientSession*> client = getClientSession(session);
 
-			server->handleMessage(client, message);
+			if (client != NULL)
+				server->handleMessage(client, message);
 		}
 
 		void processMessage(Message* message) {
@@ -134,14 +140,15 @@ namespace server {
 		bool handleError(ServiceClient* session, Exception& e) {
 			ZoneServer* server =  zoneServerRef.getForUpdate();
 
-			ZoneClientSession* client = getClientSession(session);
+			Reference<ZoneClientSession*> client = getClientSession(session);
 
 			return server->handleError(client, e);
 		}
 
-		ZoneClientSession* getClientSession(ServiceClient* session) {
-				return clients.get(session->getNetworkID());
-			}
+		Reference<ZoneClientSession*> getClientSession(ServiceClient* session) {
+			ReadLocker locker(&guard);
+			return clients.get(session->getNetworkID());
+		}
 	};
 
   } // namespace zone
