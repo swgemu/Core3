@@ -401,19 +401,14 @@ void CreatureObjectImplementation::sendSlottedObjectsTo(SceneObject* player) {
 					if (player != _this.get() && ((childArrangement == "bank")
 							|| (childArrangement == "inventory") || (childArrangement
 									== "datapad") || (childArrangement == "mission_bag"))) {
+
 						sendWithoutContents = true;
-						break;
+
 					}
 				}
 			}
 
-			/*for (int i = 0; i < arrangementSize; ++i) {
 
-				for (int j=0; j<object->getArrangementDescriptor(i).size() ;++j){
-					String childArrangement = getArrangementDescriptor(i).get(j);
-
-				}
-			}*/
 
 			if (objects.put(object) != -1) {
 				if (sendWithoutContents)
