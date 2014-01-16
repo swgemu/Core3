@@ -260,7 +260,7 @@ void CityManagerImplementation::sendCityReport(CreatureObject* creature, const S
 	report << endl << "===============================" << endl;
 	report << "City Report / Planet = " << planetName.toUpperCase() << "  Rank = " << String::valueOf(rank) << endl;
 	report << "===================================" << endl;
-	report << "City, citizens, structures, treasury, Loc, Next Update" << endl;
+	report << "City, oid, citizens, civicstructures, totalstructures, treasury, Loc, Next Update" << endl;
 
 
 
@@ -279,9 +279,12 @@ void CityManagerImplementation::sendCityReport(CreatureObject* creature, const S
 		}
 
 		totalCitiesAtRank++;
-		report << city->getRegionName() << ", " << String::valueOf(city->getCitizenCount())
-			<< ", " << String::valueOf((int)city->getCityTreasury())
+		report << city->getRegionName()
+			<< ", " << String::valueOf(city->getObjectID())
+			<< ", " << String::valueOf(city->getCitizenCount())
+			<< ", " << String::valueOf(city->getStructuresCount())
 			<< ", " << String::valueOf(city->getAllStructuresCount())
+			<< ", " << String::valueOf((int)city->getCityTreasury())
 			<< ",x: " << String::valueOf(city->getPositionX()) << " y:" << String::valueOf(city->getPositionY())
 			<< ", " << city->getNextUpdateTime()->getFormattedTime()<<  endl;
 

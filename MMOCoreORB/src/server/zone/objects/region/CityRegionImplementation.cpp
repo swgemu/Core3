@@ -789,3 +789,7 @@ void CityRegionImplementation::cleanupDecorations(int limit){
 		}
 	}
 }
+
+uint64 CityRegionImplementation::getObjectID() {
+	return _this.get()->_getObjectID();
+}
