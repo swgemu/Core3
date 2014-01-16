@@ -92,13 +92,20 @@ public:
 			return INVALIDPARAMETERS;
 		}
 
+		ManagedReference<PlayerObject*> targetGhost = targetPlayer->getPlayerObject();
+
+		if (targetGhost == NULL) {
+			player->sendSystemMessage(syntaxerror);
+			return INVALIDPARAMETERS;
+		}
+
 		try {
 
 			Locker playerlocker(targetPlayer);
 
-			targetPlayer->setMutedState(false);
+			targetGhost->setMutedState(false);
 			String mutedResonse = "";
-			targetPlayer->setMutedReason(mutedResonse);
+			targetGhost->setMutedReason(mutedResonse);
 
 			targetPlayer->removeStateBuff(CreatureState::FROZEN);
 			targetPlayer->sendSystemMessage("You have been unfrozen and unmuted by \'" + player->getFirstName() + "\'");
