@@ -15,6 +15,7 @@
 #include "server/zone/objects/player/sessions/SlicingSession.h"
 
 void MissionTerminalImplementation::fillObjectMenuResponse(ObjectMenuResponse* menuResponse, CreatureObject* player) {
+	TerminalImplementation::fillObjectMenuResponse(menuResponse, player);
 
 	ManagedReference<CityRegion*> city = player->getCityRegion();
 
