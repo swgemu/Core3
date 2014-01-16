@@ -249,5 +249,8 @@ class Creature extends AiAgent {
 	}
 
 	public native boolean isMount();
+
+	@dirty
+	public native void sendMessage(BasePacket msg);
 }
 

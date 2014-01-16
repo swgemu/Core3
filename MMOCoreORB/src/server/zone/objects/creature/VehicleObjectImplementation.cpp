@@ -236,7 +236,7 @@ int VehicleObjectImplementation::notifyObjectDestructionObservers(TangibleObject
 void VehicleObjectImplementation::sendMessage(BasePacket* msg) {
 	ManagedReference<CreatureObject* > linkedCreature = this->linkedCreature.get();
 
-	if (linkedCreature != NULL && linkedCreature->isRidingMount())
+	if (linkedCreature != NULL && linkedCreature->getParent().get() == _this.get())
 		linkedCreature->sendMessage(msg);
 	else
 		delete msg;
