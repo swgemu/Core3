@@ -16,6 +16,24 @@
       "revId": "af020b13a1a6a57b9955ef12f382e8c56f7e6672",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_ed25050b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-01-17T04:28:25Z",
+      "side": 1,
+      "message": "It may not be, but here\u0027s my thinking:\n\nIn SceneObjectImplementation::broadcastObjectPrivate() we are calling sendTo to send the object to any close object that is a vehicle, a mount, or has a client (SceneObjectImplementation line 680). I added the mount check, but the vehicle one was already there.\n\nIn one of the first checks that SceneObjectImplementation::sendTo() does, it returns if the \"player\" doesn\u0027t have a client. It seemed odd to call sendTo for vehicles if you were just going to return.\n\nI also looked at SceneObjectImplementation::broadcastMessagePrivate() and sendMessage(). broadcastMessagePrivate() calls sendMessage() with any close object that is a vehicle, mount, or has a client.  In this case, however, VehicleObject has it\u0027s own overridden sendMessage() where it sends the message on to it\u0027s rider. I figured the same thing was probably intended to happen for sendTo, but wasn\u0027t happening.\n\nHmm, now that I\u0027m thinking about this more, this solution isn\u0027t doing what I had intended. With sendMessage, it\u0027s called by the object that we\u0027re sending the message to. In the case of SendTo, it\u0027s called by the object we\u0027re sending and we pass the object we\u0027re sending to as an argument. What I\u0027ve done here would only send creos on to the rider of a vehicle. tanos and scenos still would not be. I\u0027ll fix it.",
+      "parentUuid": "5a2585a7_6d2b55ec",
+      "revId": "af020b13a1a6a57b9955ef12f382e8c56f7e6672",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
