@@ -34,6 +34,23 @@
       "revId": "af020b13a1a6a57b9955ef12f382e8c56f7e6672",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_ad1ffdb6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/CreatureObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-01-17T04:38:13Z",
+      "side": 1,
+      "message": "sendTo to the linked creature should get called when the player gets in range with it... i think... this would make it send it twice",
+      "revId": "af020b13a1a6a57b9955ef12f382e8c56f7e6672",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
