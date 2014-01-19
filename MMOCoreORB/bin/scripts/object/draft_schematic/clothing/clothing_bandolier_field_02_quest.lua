@@ -64,7 +64,7 @@ object_draft_schematic_clothing_clothing_bandolier_field_02_quest = object_draft
    ingredientTemplateNames = {"craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n", "craft_clothing_ingredients_n"},
    ingredientTitleNames = {"utility_pocket", "load_bearing_harness", "steel_interstructure", "steel_crossframe", "reinforcement", "tool_mount", "tool_set", "clasps"},
    ingredientSlotType = {2, 0, 0, 0, 2, 0, 2, 1},
-   resourceTypes = {"object/tangible/component/clothing/shared_cargo_pocket.iff", "fiberplast", "metal", "metal", "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff", "metal_nonferrous", "object/tangible/crafting/station/shared_droid_repair.iff", "object/tangible/component/clothing/shared_clasp_heavy_duty.iff"},
+   resourceTypes = {"object/tangible/component/clothing/shared_cargo_pocket.iff", "fiberplast", "metal", "metal", "object/tangible/component/clothing/shared_reinforced_fiber_panels.iff", "metal_nonferrous", "object/tangible/medicine/pet/shared_droid_damage_kit_a.iff", "object/tangible/component/clothing/shared_clasp_heavy_duty.iff"},
    resourceQuantities = {1, 20, 15, 10, 1, 15, 1, 2},
    contribution = {100, 100, 100, 100, 100, 100, 100, 100},
 
