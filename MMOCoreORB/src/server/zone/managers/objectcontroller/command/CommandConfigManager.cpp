@@ -49,8 +49,10 @@ which carries forward this exception.
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 
 #include "server/zone/objects/creature/commands/pet/PetAttackCommand.h"
+#include "server/zone/objects/creature/commands/pet/PetFeedCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetFollowCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetGroupCommand.h"
+#include "server/zone/objects/creature/commands/pet/PetRechargeCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetRechargeOtherCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetStayCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetStoreCommand.h"
@@ -347,8 +349,10 @@ void CommandConfigManager::registerSpecialCommands(CommandList* sCommands) {
 
 	//Pet commands
 	createCommand(String("petAttack").toLowerCase())->setCommandGroup(0xe1c9a54a);
+	createCommand(String("petFeed").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petFollow").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petGroup").toLowerCase())->setCommandGroup(0xe1c9a54a);
+	createCommand(String("petRecharge").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petRechargeOther").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petStay").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petStore").toLowerCase())->setCommandGroup(0xe1c9a54a);
@@ -1510,8 +1514,10 @@ void CommandConfigManager::registerCommands() {
 
 	//pet commands
 	commandFactory.registerCommand<PetAttackCommand>(String("petAttack").toLowerCase());
+	commandFactory.registerCommand<PetFeedCommand>(String("petFeed").toLowerCase());
 	commandFactory.registerCommand<PetFollowCommand>(String("petFollow").toLowerCase());
 	commandFactory.registerCommand<PetGroupCommand>(String("petGroup").toLowerCase());
+	commandFactory.registerCommand<PetRechargeCommand>(String("petRecharge").toLowerCase());
 	commandFactory.registerCommand<PetRechargeOtherCommand>(String("petRechargeOther").toLowerCase());
 	commandFactory.registerCommand<PetStayCommand>(String("petStay").toLowerCase());
 	commandFactory.registerCommand<PetStoreCommand>(String("petStore").toLowerCase());
