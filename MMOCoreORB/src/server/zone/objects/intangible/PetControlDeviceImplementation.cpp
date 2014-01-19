@@ -181,10 +181,22 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 
 		player->registerObserver(ObserverEventType::STARTCOMBAT, petControlObserver);
 
-	} else {
+	} else { // Player is in a city or camp, spawn pet immediately
+
+		if( player->getCooldownTimerMap() == NULL )
+			return;
+
+		// Check cooldown
+		if( !player->getCooldownTimerMap()->isPast("petCallOrStoreCooldown") ){
+			player->sendSystemMessage("@pet/pet_menu:cant_call_1sec"); //"You cannot CALL for 1 second."
+			return;
+		}
 
 		Locker clocker(controlledObject, player);
 		spawnObject(player);
+
+		// Set cooldown
+		player->getCooldownTimerMap()->updateToCurrentAndAddMili("petCallOrStoreCooldown", 1000); // 1 sec
 	}
 
 }
@@ -312,6 +324,14 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 			return;
 	}
 
+	if( player->getCooldownTimerMap() == NULL )
+		return;
+
+	// Check cooldown
+	if( !player->getCooldownTimerMap()->isPast("petCallOrStoreCooldown") ){
+		player->sendSystemMessage("@pet/pet_menu:cant_store_1sec"); //"You cannot STORE for 1 second."
+		return;
+	}
 
 	// Not training any commands
 	trainingCommand = 0;
@@ -320,6 +340,9 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 
 	StorePetTask* task = new StorePetTask(player, pet);
 	task->execute();
+
+	// Set cooldown
+	player->getCooldownTimerMap()->updateToCurrentAndAddMili("petCallOrStoreCooldown", 1000); // 1 sec
 }
 
 bool PetControlDeviceImplementation::growPet(CreatureObject* player, bool force) {
