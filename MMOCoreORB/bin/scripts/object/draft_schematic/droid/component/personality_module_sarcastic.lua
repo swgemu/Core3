@@ -64,7 +64,7 @@ object_draft_schematic_droid_component_personality_module_sarcastic = object_dra
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "data_smart_indexer", "sarcasm_sub_processor", "primary_phrase_database"},
-   ingredientSlotType = {0, 0, 0, 0},
+   ingredientSlotType = {0, 1, 1, 1},
    resourceTypes = {"copper", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_gp_module.iff", "object/tangible/component/item/shared_electronics_memory_module.iff"},
    resourceQuantities = {10, 1, 1, 1},
    combineTypes = {0, 0, 0, 0},

@@ -1769,4 +1769,9 @@ schematics = {
 {path="object/draft_schematic/weapon/component/sword_core_geo.iff"},
 {path="object/draft_schematic/armor/shield_generator_personal_imperial_test.iff"},
 {path="object/draft_schematic/weapon/component/chemical_dispersion_mechanism_advanced.iff"},
+{path="object/draft_schematic/droid/component/personality_module_geek.iff"},
+{path="object/draft_schematic/droid/component/personality_module_sarcastic.iff"},
+{path="object/draft_schematic/droid/component/struct_maint_module_1.iff"},
+{path="object/draft_schematic/droid/component/module_socket_bank.iff"},
+{path="object/draft_schematic/droid/component/data_storage_module_3.iff"},
 };
