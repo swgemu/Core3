@@ -875,7 +875,7 @@ npcMapRebel =
 	},
 	{ 
 		spawnData = { planetName = "lok", npcTemplate = "han_solo", x = -30.2, z = -0.519991, y = 7.24, direction = 45.0013, cellID = 8145388, position = STAND }, 
-		worldPosition = { x = 417.5, y = 5052.1 }, 
+		worldPosition = { x = 471.5, y = 5052.1 }, 
 		npcNumber = 32,  
 		stfFile = "@theme_park_rebel/han_solo",       
 		missions = han_missions 
