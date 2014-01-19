@@ -42,6 +42,7 @@ public:
 
 		if (!creature->isInRange(player, 8.0f)) {
 			player->sendSystemMessage("@hireling/hireling:taming_toofar"); // You are too far away to continue taming.
+			creature->showFlyText("npc_reaction/flytext","toofar", 204, 0, 0);  // You are too far away to tame the creature.
 			creature->setPvpStatusBitmask(originalMask, true);
 			return;
 		}
@@ -83,6 +84,7 @@ public:
 				success(player, creature);
 			else {
 				player->sendSystemMessage("@hireling/hireling:taming_fail"); // You fail to tame the creature.
+				creature->showFlyText("npc_reaction/flytext","fail", 204, 0, 0);  // You fail to tame the creature.
 				creature->setPvpStatusBitmask(originalMask, true);
 
 				int ferocity = creature->getFerocity();
@@ -157,6 +159,7 @@ public:
 			playerManager->awardExperience(player, "creaturehandler", 20 * creature->getLevel());
 
 		player->sendSystemMessage("@hireling/hireling:taming_success"); // You successfully tame the creature.
+		creature->showFlyText("npc_reaction/flytext","success", 0, 204, 0);  // You tame the creature.
 	}
 };
 
