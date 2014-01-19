@@ -64,7 +64,7 @@ object_draft_schematic_droid_component_data_storage_module_3 = object_draft_sche
 
    ingredientTemplateNames = {"craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n", "craft_droid_ingredients_n"},
    ingredientTitleNames = {"module_frame", "contaminent_neutralization_medium", "thermal_shielding", "circuit_mounting_unit", "memory_circuit"},
-   ingredientSlotType = {0, 0, 0, 0, 0},
+   ingredientSlotType = {0, 0, 0, 0, 1},
    resourceTypes = {"copper", "gas_inert", "ore_extrusive", "chemical", "object/tangible/droid/shared_droid_space_memory_module_1.iff"},
    resourceQuantities = {13, 6, 4, 5, 1},
    combineTypes = {0, 0, 0, 0, 0},
