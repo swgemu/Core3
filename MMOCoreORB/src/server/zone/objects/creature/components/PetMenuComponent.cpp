@@ -95,6 +95,8 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 	// CREATURES
 	else if( controlDevice->getPetType() == PetManager::CREATUREPET ){
 
+		menuResponse->addRadialMenuItem(234, 3, "@pet/pet_menu:menu_feed" ); // PET_FEED
+
 		menuResponse->addRadialMenuItem(141, 3, "@pet/pet_menu:menu_command"); // PET_COMMAND
 
 		if( player->hasSkill( "outdoors_creaturehandler_novice" ) ){
@@ -186,6 +188,10 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 	if (petControlDevice == NULL)
 		return 0;
 
+	PetManager* petManager = pet->getZoneServer()->getPetManager();
+	if (petManager == NULL)
+		return 0;
+
 	// Store
 	if (selectedID == 59) {
 		petControlDevice->storeObject(player);
@@ -193,11 +199,13 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 	}
 
 	// Recharge
-	if (selectedID == 234 ){
-		ManagedReference<DroidObject*> droidObject = dynamic_cast<DroidObject*>(petControlDevice->getControlledObject());
-		if( droidObject != NULL ){
-			return droidObject->rechargeFromBattery(player);
-		}
+	if (selectedID == 234 && petControlDevice->getPetType() == PetManager::DROIDPET ){
+		petManager->enqueueOwnerOnlyPetCommand(player, pet, String("petRecharge").toLowerCase().hashCode(), "");
+	}
+
+	// Feed
+	if (selectedID == 234 && petControlDevice->getPetType() == PetManager::CREATUREPET ){
+		petManager->enqueueOwnerOnlyPetCommand(player, pet, String("petFeed").toLowerCase().hashCode(), "");
 	}
 
 	// Trained Command: Recharge Other
