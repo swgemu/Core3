@@ -228,15 +228,22 @@ void ChatManagerImplementation::populateRoomListMessage(ChatRoom* channel, ChatR
 }
 
 void ChatManagerImplementation::handleChatRoomMessage(CreatureObject* sender, const UnicodeString& message, unsigned int roomID, unsigned int counter) {
-	if (sender->isMuted()) {
-		String reason = sender->getMutedReason();
+	if (sender->isPlayerCreature()) {
+		ManagedReference<PlayerObject*> senderGhost = sender->getPlayerObject();
 
-		if (reason != "")
-			sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support for '" + reason + "'.");
-		else
-			sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support.");
+		if (senderGhost == NULL)
+			return;
 
-		return;
+		if (senderGhost->isMuted()) {
+			String reason = senderGhost->getMutedReason();
+
+			if (reason != "")
+				sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support for '" + reason + "'.");
+			else
+				sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support.");
+
+			return;
+		}
 	}
 
 	String name = sender->getFirstName();
@@ -272,15 +279,22 @@ void ChatManagerImplementation::handleChatEnterRoomById(CreatureObject* player, 
 }
 
 void ChatManagerImplementation::handleSocialInternalMessage(CreatureObject* sender, const UnicodeString& arguments) {
-	if (sender->isMuted()) {
-		String reason = sender->getMutedReason();
+	if (sender->isPlayerCreature()) {
+		ManagedReference<PlayerObject*> senderGhost = sender->getPlayerObject();
 
-		if (reason != "")
-			sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support for '" + reason + "'.");
-		else
-			sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support.");
+		if (senderGhost == NULL)
+			return;
 
-		return;
+		if (senderGhost->isMuted()) {
+			String reason = senderGhost->getMutedReason();
+
+			if (reason != "")
+				sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support for '" + reason + "'.");
+			else
+				sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support.");
+
+			return;
+		}
 	}
 
 	Zone* zone = sender->getZone();
@@ -620,8 +634,22 @@ void ChatManagerImplementation::broadcastMessage(CreatureObject* player, StringI
 }
 
 void ChatManagerImplementation::handleSpatialChatInternalMessage(CreatureObject* player, const UnicodeString& args) {
-	if (player->isMuted()) {
-		return;
+	if (player->isPlayerCreature()) {
+		ManagedReference<PlayerObject*> ghost = player->getPlayerObject();
+
+		if (ghost == NULL)
+			return;
+
+		if (ghost->isMuted()) {
+			String reason = ghost->getMutedReason();
+
+			if (reason != "")
+				player->sendSystemMessage("Your chat abilities are currently disabled by Customer Support for '" + reason + "'.");
+			else
+				player->sendSystemMessage("Your chat abilities are currently disabled by Customer Support.");
+
+			return;
+		}
 	}
 
 	try {
@@ -671,15 +699,22 @@ void ChatManagerImplementation::handleChatInstantMessageToCharacter(ChatInstantM
 	if (sender == NULL)
 		return;
 
-	if (sender->isMuted()) {
-		String reason = sender->getMutedReason();
+	if (sender->isPlayerCreature()) {
+		ManagedReference<PlayerObject*> senderGhost = sender->getPlayerObject();
 
-		if (reason != "")
-			sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support for '" + reason + "'.");
-		else
-			sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support.");
+		if (senderGhost == NULL)
+			return;
 
-		return;
+		if (senderGhost->isMuted()) {
+			String reason = senderGhost->getMutedReason();
+
+			if (reason != "")
+				sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support for '" + reason + "'.");
+			else
+				sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support.");
+
+			return;
+		}
 	}
 
 	uint32 sequence = message->getSequence();
@@ -759,15 +794,22 @@ void ChatManagerImplementation::destroyRoom(ChatRoom* room) {
 
 
 void ChatManagerImplementation::handleGroupChat(CreatureObject* sender, const UnicodeString& message) {
-	if (sender->isMuted()) {
-		String reason = sender->getMutedReason();
+	if (sender->isPlayerCreature()) {
+		ManagedReference<PlayerObject*> senderGhost = sender->getPlayerObject();
 
-		if (reason != "")
-			sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support for '" + reason + "'.");
-		else
-			sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support.");
+		if (senderGhost == NULL)
+			return;
 
-		return;
+		if (senderGhost->isMuted()) {
+			String reason = senderGhost->getMutedReason();
+
+			if (reason != "")
+				sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support for '" + reason + "'.");
+			else
+				sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support.");
+
+			return;
+		}
 	}
 
 	String name = sender->getFirstName();
@@ -807,15 +849,22 @@ void ChatManagerImplementation::handleGroupChat(CreatureObject* sender, const Un
 }
 
 void ChatManagerImplementation::handleGuildChat(CreatureObject* sender, const UnicodeString& message) {
-	if (sender->isMuted()) {
-		String reason = sender->getMutedReason();
+	if (sender->isPlayerCreature()) {
+		ManagedReference<PlayerObject*> senderGhost = sender->getPlayerObject();
 
-		if (reason != "")
-			sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support for '" + reason + "'.");
-		else
-			sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support.");
+		if (senderGhost == NULL)
+			return;
 
-		return;
+		if (senderGhost->isMuted()) {
+			String reason = senderGhost->getMutedReason();
+
+			if (reason != "")
+				sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support for '" + reason + "'.");
+			else
+				sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support.");
+
+			return;
+		}
 	}
 
 	String name = sender->getFirstName();
@@ -841,15 +890,22 @@ void ChatManagerImplementation::handleGuildChat(CreatureObject* sender, const Un
 }
 
 void ChatManagerImplementation::handlePlanetChat(CreatureObject* sender, const UnicodeString& message) {
-	if (sender->isMuted()) {
-		String reason = sender->getMutedReason();
+	if (sender->isPlayerCreature()) {
+		ManagedReference<PlayerObject*> senderGhost = sender->getPlayerObject();
 
-		if (reason != "")
-			sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support for '" + reason + "'.");
-		else
-			sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support.");
+		if (senderGhost == NULL)
+			return;
 
-		return;
+		if (senderGhost->isMuted()) {
+			String reason = senderGhost->getMutedReason();
+
+			if (reason != "")
+				sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support for '" + reason + "'.");
+			else
+				sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support.");
+
+			return;
+		}
 	}
 
 	String name = sender->getFirstName();
