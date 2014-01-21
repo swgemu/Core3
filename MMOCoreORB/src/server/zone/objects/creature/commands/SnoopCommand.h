@@ -131,6 +131,10 @@ public:
 
 			ghost->addSuiBox(box);
 			creature->sendMessage(box->generateMessage());
+		} else if (container == "lots") {
+			return sendLots(creature, targetObj);
+		} else if (container == "vendors") {
+			return sendVendorInfo(creature, targetObj);
 		} else {
 			SceneObject* creatureInventory = targetObj->getSlottedObject("inventory");
 
@@ -146,6 +150,136 @@ public:
 		return SUCCESS;
 	}
 
+	int sendVendorInfo(CreatureObject* creature, CreatureObject* target) {
+		ManagedReference<PlayerObject*> targetGhost = target->getPlayerObject();
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		if (targetGhost == NULL || ghost == NULL)
+			return GENERALERROR;
+
+		StringBuffer body;
+		body << "Player Name:\t" << target->getFirstName() << endl;
+		body << "Max # of vendors:\t" << target->getSkillMod("manage_vendor") << endl << endl;
+		body << "Vendors:" << endl;
+
+		SortedVector<unsigned long long>* ownedVendors = targetGhost->getOwnedVendors();
+		for (int i = 0; i < ownedVendors->size(); i++) {
+			ManagedReference<SceneObject*> vendor = creature->getZoneServer()->getObject(ownedVendors->elementAt(i));
+
+			int num = i + 1;
+			body << endl << String::valueOf(num) << ". ";
+
+			if (vendor == NULL) {
+				body << "NULL Vendor" << endl << endl;
+				continue;
+			}
+
+			body << "VendorID:\t" << vendor->getObjectID() << endl;
+
+			DataObjectComponentReference* data = vendor->getDataObjectComponent();
+			if(data == NULL || data->get() == NULL || !data->get()->isVendorData()) {
+				body << "    NULL Data Component" << endl << endl;
+				continue;
+			}
+
+			VendorDataComponent* vendorData = cast<VendorDataComponent*>(data->get());
+			if(vendorData == NULL) {
+				body << "    NULL Vendor Data Component" << endl << endl;
+				continue;
+			}
+
+			bool init = false;
+			if (vendorData->isInitialized())
+				init = true;
+
+			body << "    Initialized?\t" << (init ? "Yes" : "No");
+			body << endl;
+
+			body << "    ParentID:\t";
+
+			ManagedReference<SceneObject*> parent = vendor->getParent().get();
+			if (parent == NULL)
+				body << "NULL" << endl;
+			else
+				body << parent->getObjectID() << endl;
+
+			body << "    Zone:\t";
+
+			Zone* zone = vendor->getZone();
+			if (zone == NULL) {
+				body << "NULL" << endl;
+			} else {
+				body << zone->getZoneName() << endl;
+				body << "    World Position:\t" << vendor->getWorldPositionX() << ", " << vendor->getWorldPositionY() << endl;
+			}
+
+		}
+
+		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, 0);
+
+		box->setPromptTitle("Vendor Info");
+		box->setPromptText(body.toString());
+		box->setUsingObject(target);
+		box->setForceCloseDisabled();
+
+		ghost->addSuiBox(box);
+		creature->sendMessage(box->generateMessage());
+
+		return SUCCESS;
+	}
+
+	int sendLots(CreatureObject* creature, CreatureObject* target) {
+		ManagedReference<PlayerObject*> targetGhost = target->getPlayerObject();
+		ManagedReference<PlayerObject*> ghost = creature->getPlayerObject();
+
+		if (targetGhost == NULL || ghost == NULL)
+			return GENERALERROR;
+
+		int lotsRemaining = targetGhost->getLotsRemaining();
+
+		StringBuffer body;
+
+		body << "Player Name:\t" << target->getFirstName() << endl;
+		body << "Unused Lots:\t" << String::valueOf(lotsRemaining) << endl << endl;
+		body << "Player Structures:";
+
+		for (int i = 0; i < targetGhost->getTotalOwnedStructureCount(); i++) {
+			ManagedReference<StructureObject*> structure = creature->getZoneServer()->getObject(targetGhost->getOwnedStructure(i)).castTo<StructureObject*>();
+
+			int num = i + 1;
+			body << endl << String::valueOf(num) << ". ";
+
+			if (structure == NULL) {
+				body << "NULL Structure" << endl << endl;
+				continue;
+			}
+
+			body << "StructureID:\t" << structure->getObjectID() << endl;
+			body << "    Name:\t" << structure->getCustomObjectName().toString() << endl;
+			body << "    Type:\t" << structure->getObjectTemplate()->getFullTemplateString() << endl;
+			body << "    Lots:\t" << String::valueOf(structure->getLotSize()) << endl;
+
+			body << "    Zone:\t";
+			Zone* zone = structure->getZone();
+			if (zone == NULL) {
+				body << "NULL" << endl;
+			} else {
+				body << zone->getZoneName() << endl;
+				body << "    World Position:\t" << structure->getWorldPositionX() << ", " << structure->getWorldPositionY() << endl;
+			}
+		}
+
+		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(creature, 0);
+		box->setPromptTitle("Player Lots");
+		box->setPromptText(body.toString());
+		box->setUsingObject(target);
+		box->setForceCloseDisabled();
+
+		ghost->addSuiBox(box);
+		creature->sendMessage(box->generateMessage());
+
+		return SUCCESS;
+	}
 };
 
 #endif //SNOOPCOMMAND_H_
