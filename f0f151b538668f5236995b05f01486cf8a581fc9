@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_cd5a4950",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SniperShotCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-01-21T18:45:04Z",
+      "side": 1,
+      "message": "this will crash if the targetObject is null",
+      "revId": "f0f151b538668f5236995b05f01486cf8a581fc9",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
