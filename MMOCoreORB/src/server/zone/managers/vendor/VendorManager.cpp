@@ -86,6 +86,16 @@ void VendorManager::handleDisplayStatus(CreatureObject* player, TangibleObject* 
 	statusBox->setPromptTitle("@player_structure:vendor_status");
 	statusBox->setPromptText("Vendor Status");
 
+	ManagedReference<CreatureObject*> owner = server->getZoneServer()->getObject(vendorData->getOwnerId()).castTo<CreatureObject*>();
+	String ownerName;
+
+	if (owner == NULL)
+		ownerName = "NULL";
+	else
+		ownerName = owner->getFirstName();
+
+	statusBox->addMenuItem("Owner: " + ownerName);
+
 	int condition = (((float)vendor->getMaxCondition() - (float)vendor->getConditionDamage()) / (float)vendor->getMaxCondition()) * 100;
 	statusBox->addMenuItem("Condition: " + String::valueOf(condition) + "%");
 

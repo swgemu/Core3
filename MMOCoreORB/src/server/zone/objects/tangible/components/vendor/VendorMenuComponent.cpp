@@ -6,6 +6,7 @@
  */
 
 #include "server/zone/objects/creature/CreatureObject.h"
+#include "server/zone/objects/player/PlayerObject.h"
 #include "VendorMenuComponent.h"
 #include "server/zone/objects/scene/components/ObjectMenuComponent.h"
 #include "server/zone/objects/scene/components/DataObjectComponentReference.h"
@@ -37,10 +38,19 @@ void VendorMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject,
 		return;
 	}
 
-	if(vendorData->getOwnerId() != player->getObjectID())
+	bool owner = vendorData->getOwnerId() == player->getObjectID();
+
+	if(!owner && !player->getPlayerObject()->isPrivileged())
 		return;
 
 	menuResponse->addRadialMenuItem(70, 3, "@player_structure:vendor_control");
+
+	if (!owner) {
+		if (vendorData->isInitialized())
+			menuResponse->addRadialMenuItemToRadialID(70, 71, 3, "@player_structure:vendor_status");
+
+		return;
+	}
 
 	if (!vendorData->isInitialized()) {
 
@@ -98,13 +108,20 @@ int VendorMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject,
 		return 0;
 	}
 
-	if(vendorData->getOwnerId() != player->getObjectID()) {
-		return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
-	}
-
 	ManagedReference<TangibleObject*> vendor = cast<TangibleObject*>(sceneObject);
 	if(vendor == NULL)
 		return 0;
+
+	bool owner = vendorData->getOwnerId() == player->getObjectID();
+
+	if(!owner) {
+		if (player->getPlayerObject()->isPrivileged() && selectedID == 71) {
+			VendorManager::instance()->handleDisplayStatus(player, vendor);
+			return 0;
+		}
+
+		return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject, player, selectedID);
+	}
 
 	switch (selectedID) {
 	case 71: {
