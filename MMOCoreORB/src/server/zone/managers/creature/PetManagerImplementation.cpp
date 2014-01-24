@@ -140,10 +140,10 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 		enqueuePetCommand(speaker, pet, String("petFollow").toLowerCase().hashCode(), "");
 	}
 	else if( pcd->hasTrainedCommand(TRICK1) && pcd->getTrainedCommand(TRICK1) == message ){
-		enqueuePetCommand(speaker, pet, String("petTrick").toLowerCase().hashCode(), "1");
+		enqueuePetCommand(speaker, pet, String("petTrick").toLowerCase().hashCode(), "1", true);
 	}
 	else if( pcd->hasTrainedCommand(TRICK2) && pcd->getTrainedCommand(TRICK2) == message ){
-		enqueuePetCommand(speaker, pet, String("petTrick").toLowerCase().hashCode(), "2");
+		enqueuePetCommand(speaker, pet, String("petTrick").toLowerCase().hashCode(), "2", true);
 	}
 	else if( pcd->hasTrainedCommand(PATROL) && pcd->getTrainedCommand(PATROL) == message ){
 		speaker->sendSystemMessage("PATROL pet command is not yet implemented.");
