@@ -6,7 +6,7 @@ rebel_recruiter_convotemplate = ConvoTemplate:new {
 }
 
 --greet_hated
-imp_recruiter_greet_hated = ConvoScreen:new {
+rebel_recruiter_greet_hated = ConvoScreen:new {
 	id = "greet_hated",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_462",
 	stopConversation = "true",
@@ -14,11 +14,11 @@ imp_recruiter_greet_hated = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_greet_hated);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_greet_hated);
+
 
 --greet_changing_status
-
-imp_recruiter_greet_changing_status = ConvoScreen:new {
+rebel_recruiter_greet_changing_status = ConvoScreen:new {
 	id = "greet_changing_status",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_596",
 	stopConversation = "true",
@@ -26,10 +26,11 @@ imp_recruiter_greet_changing_status = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_greet_changing_status);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_greet_changing_status);
+
 
 --greet_enemy
-imp_recruiter_greet_enemy = ConvoScreen:new {
+rebel_recruiter_greet_enemy = ConvoScreen:new {
 	id = "greet_enemy",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_464",
 	stopConversation = "true",
@@ -37,10 +38,11 @@ imp_recruiter_greet_enemy = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_greet_enemy);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_greet_enemy);
+
 
 --member start
-imp_recruiter_member_covert_start = ConvoScreen:new {
+rebel_recruiter_member_covert_start = ConvoScreen:new {
 	id = "greet_member_start_covert",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_466",
 	stopConversation = "false",
@@ -51,9 +53,10 @@ imp_recruiter_member_covert_start = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_member_covert_start);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_member_covert_start);
 
-imp_recruiter_member_overt_start = ConvoScreen:new {
+
+rebel_recruiter_member_overt_start = ConvoScreen:new {
 id = "greet_member_start_overt",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_466",
 	stopConversation = "false",
@@ -64,9 +67,10 @@ id = "greet_member_start_overt",
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_member_overt_start);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_member_overt_start);
 
-imp_recruiter_neutral_start = ConvoScreen:new {
+
+rebel_recruiter_neutral_start = ConvoScreen:new {
 	id = "greet_neutral_start",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_566",
 	stopConversation = "false",
@@ -75,9 +79,10 @@ imp_recruiter_neutral_start = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_neutral_start);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_neutral_start);
 
-imp_recruiter_onleave_start = ConvoScreen:new {
+
+rebel_recruiter_onleave_start = ConvoScreen:new {
 	id = "greet_onleave_start",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_448",
 	stopConversation = "false",
@@ -86,10 +91,11 @@ imp_recruiter_onleave_start = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_onleave_start);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_onleave_start);
+
 
 --join military
-imp_recruiter_join_military = ConvoScreen:new {
+rebel_recruiter_join_military = ConvoScreen:new {
 	id = "join_military",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_584",
 	stopConversation = "false",
@@ -99,11 +105,11 @@ imp_recruiter_join_military = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_join_military);
---
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_join_military);
+
 
 --accept_join
-imp_recruiter_accept_join = ConvoScreen:new {
+rebel_recruiter_accept_join = ConvoScreen:new {
 	id = "accept_join",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_588",
 	stopConversation = "false",
@@ -112,11 +118,11 @@ imp_recruiter_accept_join = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_accept_join);
----
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accept_join);
+
 
 --accepted_join
-imp_recruiter_accepted_join = ConvoScreen:new {
+rebel_recruiter_accepted_join = ConvoScreen:new {
 	id = "accepted_join",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_588",
 	stopConversation = "true",
@@ -124,12 +130,11 @@ imp_recruiter_accepted_join = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_accepted_join);
---
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accepted_join);
 
 
 --think_more
-imp_recruiter_think_more = ConvoScreen:new {
+rebel_recruiter_think_more = ConvoScreen:new {
 	id = "think_more",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_594",
 	stopConversation = "true",
@@ -137,11 +142,11 @@ imp_recruiter_think_more = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_think_more);
------
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_think_more);
 
--- confirm_go_overt
-imp_recruiter_confirm_go_overt = ConvoScreen:new {
+
+--confirm_go_overt
+rebel_recruiter_confirm_go_overt = ConvoScreen:new {
 	id = "confirm_go_overt",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_516",
 	stopConversation = "false",
@@ -151,11 +156,11 @@ imp_recruiter_confirm_go_overt = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_confirm_go_overt);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_confirm_go_overt);
 
 
--- confirm_go_covert
-imp_recruiter_confirm_go_covert = ConvoScreen:new {
+--confirm_go_covert
+rebel_recruiter_confirm_go_covert = ConvoScreen:new {
 	id = "confirm_go_covert",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_506",
 	stopConversation = "false",
@@ -165,10 +170,11 @@ imp_recruiter_confirm_go_covert = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_confirm_go_covert);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_confirm_go_covert);
+
 
 --accepted_go_overt
-imp_recruiter_accepted_go_overt = ConvoScreen:new {
+rebel_recruiter_accepted_go_overt = ConvoScreen:new {
 	id = "accepted_go_overt",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_520",
 	stopConversation = "true",
@@ -176,10 +182,11 @@ imp_recruiter_accepted_go_overt = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_accepted_go_overt);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accepted_go_overt);
+
 
 --accepted_go_covert
-imp_recruiter_accepted_go_covert = ConvoScreen:new {
+rebel_recruiter_accepted_go_covert = ConvoScreen:new {
 	id = "accepted_go_covert",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_514",
 	stopConversation = "true",
@@ -187,11 +194,11 @@ imp_recruiter_accepted_go_covert = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_accepted_go_covert);
----
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accepted_go_covert);
+
 
 --leave_time
-imp_recruiter_leave_time_covert = ConvoScreen:new {
+rebel_recruiter_leave_time_covert = ConvoScreen:new {
 	id = "leave_time_covert",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_528",
 	stopConversation = "false",
@@ -201,9 +208,10 @@ imp_recruiter_leave_time_covert = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_leave_time_covert);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_leave_time_covert);
 
-imp_recruiter_leave_time_overt = ConvoScreen:new {
+
+rebel_recruiter_leave_time_overt = ConvoScreen:new {
 	id = "leave_time_overt",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_528",
 	stopConversation = "false",
@@ -213,12 +221,11 @@ imp_recruiter_leave_time_overt = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_leave_time_overt);
---
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_leave_time_overt);
 
--- accepted_go_on_leave
 
-imp_recruiter_accepted_go_on_leave = ConvoScreen:new {
+--accepted_go_on_leave
+rebel_recruiter_accepted_go_on_leave = ConvoScreen:new {
 	id = "accepted_go_on_leave",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_532",
 	stopConversation = "true",
@@ -226,12 +233,11 @@ imp_recruiter_accepted_go_on_leave = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_accepted_go_on_leave);
----
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accepted_go_on_leave);
 
 
 --resign
-imp_recruiter_leave_resign_covert = ConvoScreen:new {
+rebel_recruiter_leave_resign_covert = ConvoScreen:new {
 	id = "resign_covert",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_540",
 	stopConversation = "false",
@@ -241,9 +247,10 @@ imp_recruiter_leave_resign_covert = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_leave_resign_covert);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_leave_resign_covert);
 
-imp_recruiter_leave_resign_overt = ConvoScreen:new {
+
+rebel_recruiter_leave_resign_overt = ConvoScreen:new {
 	id = "resign_overt",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_540",
 	stopConversation = "false",
@@ -253,10 +260,11 @@ imp_recruiter_leave_resign_overt = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_leave_resign_overt);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_leave_resign_overt);
+
 
 --accepted_resign
-imp_recruiter_accepted_resign = ConvoScreen:new {
+rebel_recruiter_accepted_resign = ConvoScreen:new {
 	id = "accepted_resign",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_544",
 	stopConversation = "true",
@@ -264,11 +272,12 @@ imp_recruiter_accepted_resign = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_accepted_resign);
---
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accepted_resign);
+
+
 -------------------------------------------
 --resume_duties
-imp_recruiter_resume_duties = ConvoScreen:new {
+rebel_recruiter_resume_duties = ConvoScreen:new {
 	id = "resume_duties",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_452",
 	stopConversation = "false",
@@ -278,10 +287,11 @@ imp_recruiter_resume_duties = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_resume_duties);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_resume_duties);
+
 
 --accept_resume_duties
-imp_recruiter_accepted_resume_duties = ConvoScreen:new {
+rebel_recruiter_accepted_resume_duties = ConvoScreen:new {
 	id = "accepted_resume_duties",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_456",
 	stopConversation = "true",
@@ -289,23 +299,25 @@ imp_recruiter_accepted_resume_duties = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_accepted_resume_duties);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accepted_resume_duties);
+
 
 --confirm_promotion
-imp_recruiter_confirm_promotion = ConvoScreen:new {
+rebel_recruiter_confirm_promotion = ConvoScreen:new {
 	id = "confirm_promotion",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_470",
 	stopConversation = "false",
 	options = {
 		{"@conversation/faction_recruiter_rebel:s_472", "accepted_promotion"}
-		--{"@conversation/faction_recruiter_rebel:s_320", ""}
+--		{"@conversation/faction_recruiter_rebel:s_476", "declined_promotion"}
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_confirm_promotion);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_confirm_promotion);
+
 
 --accepted_promotion
-imp_recruiter_accepted_promotion = ConvoScreen:new {
+rebel_recruiter_accepted_promotion = ConvoScreen:new {
 	id = "accepted_promotion",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_474",
 	stopConversation = "true",
@@ -313,10 +325,23 @@ imp_recruiter_accepted_promotion = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_accepted_promotion);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accepted_promotion);
+
+
+--declined_promotion
+rebel_recruiter_declined_promotion = ConvoScreen:new {
+	id = "declined_promotion",
+	leftDialog = "@conversation/faction_recruiter_rebel:s_478",
+	stopConversation = "true",
+	options = {
+	}
+}
+
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_declined_promotion);
+
 
 --not enough points
-imp_recruiter_not_enough_points = ConvoScreen:new {
+rebel_recruiter_not_enough_points = ConvoScreen:new {
 	id = "not_enough_points",
 	leftDialog = "@faction_recruiter:not_enough_for_promotion",
 	stopConversation = "true",
@@ -324,10 +349,11 @@ imp_recruiter_not_enough_points = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_not_enough_points);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_not_enough_points);
+
 
 --confirm_bribe
-imp_recruiter_confirm_bribe = ConvoScreen:new {
+rebel_recruiter_confirm_bribe = ConvoScreen:new {
 	id = "confirm_bribe",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_570",
 	stopConversation = "false",
@@ -336,10 +362,11 @@ imp_recruiter_confirm_bribe = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_confirm_bribe);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_confirm_bribe);
+
 
 --accepted_bribe_20k
-imp_recruiter_accepted_bribe_20k = ConvoScreen:new {
+rebel_recruiter_accepted_bribe_20k = ConvoScreen:new {
 	id = "accepted_bribe_20k",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_574",
 	stopConversation = "true",
@@ -347,10 +374,11 @@ imp_recruiter_accepted_bribe_20k = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_accepted_bribe_20k);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accepted_bribe_20k);
+
 
 --accepted_bribe_100k
-imp_recruiter_accepted_bribe_100k = ConvoScreen:new {
+rebel_recruiter_accepted_bribe_100k = ConvoScreen:new {
 	id = "accepted_bribe_100k",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_574",
 	stopConversation = "true",
@@ -358,10 +386,11 @@ imp_recruiter_accepted_bribe_100k = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_accepted_bribe_100k);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_accepted_bribe_100k);
+
 
 -- selected option to purchase faction items
-imp_recruiter_faction_purchase = ConvoScreen:new {
+rebel_recruiter_faction_purchase = ConvoScreen:new {
 	id = "faction_purchase",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_482",  -- we have some things.  what do you need?
 	stopConversation = "false",
@@ -373,12 +402,12 @@ imp_recruiter_faction_purchase = ConvoScreen:new {
 	},
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_faction_purchase);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_faction_purchase);
 
 
 
 -- selected option to view furniture
-imp_recruiter_fp_furniture = ConvoScreen:new {
+rebel_recruiter_fp_furniture = ConvoScreen:new {
 	id = "fp_furniture",
 	leftDialog = "@faction_recruiter:select_item_purchase", -- select the item you wish to request.  All costs are in faction standing poitns.
 	stopConversation = "false",
@@ -387,10 +416,10 @@ imp_recruiter_fp_furniture = ConvoScreen:new {
 		},
 	
 }
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_fp_furniture);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_fp_furniture);
 
--- selected option to view weapoins and armor
-imp_recruiter_fp_weapons_armor = ConvoScreen:new {
+-- selected option to view weapons and armor
+rebel_recruiter_fp_weapons_armor = ConvoScreen:new {
 	id = "fp_weapons_armor",
 	leftDialog = "@faction_recruiter:select_item_purchase", -- select the item you wish to request.  All costs are in faction standing poitns.
 	stopConversation = "false",
@@ -399,10 +428,10 @@ imp_recruiter_fp_weapons_armor = ConvoScreen:new {
 		},
 	
 }
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_fp_weapons_armor);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_fp_weapons_armor);
 
 -- selected option to view installations
-imp_recruiter_fp_installations = ConvoScreen:new {
+rebel_recruiter_fp_installations = ConvoScreen:new {
 	id = "fp_installations",
 	leftDialog = "@faction_recruiter:select_item_purchase", -- select the item you wish to request.  All costs are in faction standing poitns.
 	stopConversation = "false",
@@ -411,10 +440,10 @@ imp_recruiter_fp_installations = ConvoScreen:new {
 		},
 	
 }
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_fp_installations);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_fp_installations);
 
 -- selected option to view hirelings
-imp_recruiter_fp_hirelings = ConvoScreen:new {
+rebel_recruiter_fp_hirelings = ConvoScreen:new {
 	id = "fp_hirelings",
 	leftDialog = "@faction_recruiter:select_item_purchase", -- select the item you wish to request.  All costs are in faction standing poitns.
 	stopConversation = "false",
@@ -423,10 +452,10 @@ imp_recruiter_fp_hirelings = ConvoScreen:new {
 		},
 	
 }
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_fp_hirelings);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_fp_hirelings);
 
 -- purchase failed
-imp_recruiter_purchased_not_enough= ConvoScreen:new {
+rebel_recruiter_purchased_not_enough= ConvoScreen:new {
 	id = "purchased_not_enough",
 	leftDialog = "@faction_recruiter:not_enough_standing_spend", -- YOu do not have enough faction standing to spend.
 	stopConversation = "true",
@@ -435,10 +464,10 @@ imp_recruiter_purchased_not_enough= ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_purchased_not_enough);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_purchased_not_enough);
 
 -- inventory is full screen
-imp_recruiter_inventory_full= ConvoScreen:new {
+rebel_recruiter_inventory_full= ConvoScreen:new {
 	id = "inventory_full",
 	leftDialog = "@dispenser:inventory_full", -- Your inventory is full.  You must make some room before you can purchase.  
 	stopConversation = "true",
@@ -447,10 +476,10 @@ imp_recruiter_inventory_full= ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_inventory_full);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_inventory_full);
 
 -- datapad is full screen
-imp_recruiter_datapad_full= ConvoScreen:new {
+rebel_recruiter_datapad_full= ConvoScreen:new {
 	id = "datapad_full",
 	leftDialog = "@faction_recruiter:datapad_full", -- Your datapad is full. You must first free some space.
 	stopConversation = "true",
@@ -459,10 +488,10 @@ imp_recruiter_datapad_full= ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_datapad_full);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_datapad_full);
 
 -- item purchase screen
-imp_recruiter_purchased_item = ConvoScreen:new {
+rebel_recruiter_purchased_item = ConvoScreen:new {
 	id = "purchased_item",
 	leftDialog = "@faction_recruiter:item_purchase_complete", -- Your requisition of %TT is complete.
 	stopConversation = "true",
@@ -471,10 +500,10 @@ imp_recruiter_purchased_item = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_purchased_item);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_purchased_item);
 
 -- hireling purchase screen
-imp_recruiter_purchased_hireling = ConvoScreen:new {
+rebel_recruiter_purchased_hireling = ConvoScreen:new {
 	id = "purchased_hireling",
 	leftDialog = "@faction_recruiter:hireling_purchase_complete", -- The %TT is now under your command.
 	stopConversation = "true",
@@ -483,7 +512,7 @@ imp_recruiter_purchased_hireling = ConvoScreen:new {
 	}
 }
 
-rebel_recruiter_convotemplate:addScreen(imp_recruiter_purchased_hireling);
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_purchased_hireling);
 
 
 addConversationTemplate("rebel_recruiter_convotemplate", rebel_recruiter_convotemplate);

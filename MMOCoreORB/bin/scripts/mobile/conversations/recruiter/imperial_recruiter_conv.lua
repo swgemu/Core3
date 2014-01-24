@@ -16,8 +16,8 @@ imp_recruiter_greet_hated = ConvoScreen:new {
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_greet_hated);
 
---greet_changing_status
 
+--greet_changing_status
 imp_recruiter_greet_changing_status = ConvoScreen:new {
 	id = "greet_changing_status",
 	leftDialog = "@conversation/faction_recruiter_imperial:s_444",
@@ -27,6 +27,7 @@ imp_recruiter_greet_changing_status = ConvoScreen:new {
 }
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_greet_changing_status);
+
 
 --greet_enemy
 imp_recruiter_greet_enemy = ConvoScreen:new {
@@ -38,6 +39,7 @@ imp_recruiter_greet_enemy = ConvoScreen:new {
 }
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_greet_enemy);
+
 
 --member start
 imp_recruiter_member_covert_start = ConvoScreen:new {
@@ -53,6 +55,7 @@ imp_recruiter_member_covert_start = ConvoScreen:new {
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_member_covert_start);
 
+
 imp_recruiter_member_overt_start = ConvoScreen:new {
 	id = "greet_member_start_overt",
 	leftDialog = "@conversation/faction_recruiter_imperial:s_310",
@@ -66,6 +69,7 @@ imp_recruiter_member_overt_start = ConvoScreen:new {
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_member_overt_start);
 
+
 imp_recruiter_neutral_start = ConvoScreen:new {
 	id = "greet_neutral_start",
 	leftDialog = "@conversation/faction_recruiter_imperial:s_414",
@@ -77,6 +81,7 @@ imp_recruiter_neutral_start = ConvoScreen:new {
 }
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_neutral_start);
+
 
 imp_recruiter_onleave_start = ConvoScreen:new {
 	id = "greet_onleave_start",
@@ -90,6 +95,7 @@ imp_recruiter_onleave_start = ConvoScreen:new {
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_onleave_start);
 
+
 --join military
 imp_recruiter_join_military = ConvoScreen:new {
 	id = "join_military",
@@ -102,7 +108,7 @@ imp_recruiter_join_military = ConvoScreen:new {
 }
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_join_military);
---
+
 
 --accept_join
 imp_recruiter_accept_join = ConvoScreen:new {
@@ -115,7 +121,7 @@ imp_recruiter_accept_join = ConvoScreen:new {
 }
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_accept_join);
----
+
 
 --accepted_join
 imp_recruiter_accepted_join = ConvoScreen:new {
@@ -127,7 +133,6 @@ imp_recruiter_accepted_join = ConvoScreen:new {
 }
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_accepted_join);
---
 
 
 --think_more
@@ -140,7 +145,7 @@ imp_recruiter_think_more = ConvoScreen:new {
 }
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_think_more);
------
+
 
 -- confirm_go_overt
 imp_recruiter_confirm_go_overt = ConvoScreen:new {
@@ -169,6 +174,7 @@ imp_recruiter_confirm_go_covert = ConvoScreen:new {
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_confirm_go_covert);
 
+
 --accepted_go_overt
 imp_recruiter_accepted_go_overt = ConvoScreen:new {
 	id = "accepted_go_overt",
@@ -180,6 +186,7 @@ imp_recruiter_accepted_go_overt = ConvoScreen:new {
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_accepted_go_overt);
 
+
 --accepted_go_covert
 imp_recruiter_accepted_go_covert = ConvoScreen:new {
 	id = "accepted_go_covert",
@@ -190,7 +197,7 @@ imp_recruiter_accepted_go_covert = ConvoScreen:new {
 }
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_accepted_go_covert);
----
+
 
 --leave_time
 imp_recruiter_leave_time_covert = ConvoScreen:new {
@@ -205,6 +212,7 @@ imp_recruiter_leave_time_covert = ConvoScreen:new {
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_leave_time_covert);
 
+
 imp_recruiter_leave_time_overt = ConvoScreen:new {
 	id = "leave_time_overt",
 	leftDialog = "@conversation/faction_recruiter_imperial:s_376",
@@ -216,10 +224,9 @@ imp_recruiter_leave_time_overt = ConvoScreen:new {
 }
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_leave_time_overt);
---
+
 
 -- accepted_go_on_leave
-
 imp_recruiter_accepted_go_on_leave = ConvoScreen:new {
 	id = "accepted_go_on_leave",
 	leftDialog = "@conversation/faction_recruiter_imperial:s_380",
@@ -229,7 +236,6 @@ imp_recruiter_accepted_go_on_leave = ConvoScreen:new {
 }
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_accepted_go_on_leave);
----
 
 
 --resign
@@ -245,6 +251,7 @@ imp_recruiter_leave_resign_covert = ConvoScreen:new {
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_leave_resign_covert);
 
+
 imp_recruiter_leave_resign_overt = ConvoScreen:new {
 	id = "resign_overt",
 	leftDialog = "@conversation/faction_recruiter_imperial:s_388",
@@ -257,6 +264,7 @@ imp_recruiter_leave_resign_overt = ConvoScreen:new {
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_leave_resign_overt);
 
+
 --accepted_resign
 imp_recruiter_accepted_resign = ConvoScreen:new {
 	id = "accepted_resign",
@@ -267,8 +275,8 @@ imp_recruiter_accepted_resign = ConvoScreen:new {
 }
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_accepted_resign);
---
--------------------------------------------
+
+
 --resume_duties
 imp_recruiter_resume_duties = ConvoScreen:new {
 	id = "resume_duties",
@@ -282,6 +290,7 @@ imp_recruiter_resume_duties = ConvoScreen:new {
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_resume_duties);
 
+
 --accept_resume_duties
 imp_recruiter_accepted_resume_duties = ConvoScreen:new {
 	id = "accepted_resume_duties",
@@ -293,18 +302,20 @@ imp_recruiter_accepted_resume_duties = ConvoScreen:new {
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_accepted_resume_duties);
 
+
 --confirm_promotion
 imp_recruiter_confirm_promotion = ConvoScreen:new {
-id = "confirm_promotion",
+	id = "confirm_promotion",
 	leftDialog = "@conversation/faction_recruiter_imperial:s_314",
 	stopConversation = "false",
 	options = {
-		{"@conversation/faction_recruiter_imperial:s_93", "accepted_promotion"}
-		--{"@conversation/faction_recruiter_imperial:s_320", ""}
+		{"@conversation/faction_recruiter_imperial:s_93", "accepted_promotion"},
+		--{"@conversation/faction_recruiter_imperial:s_320", "declined_promotion"}
 	}
 }
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_confirm_promotion);
+
 
 --accepted_promotion
 imp_recruiter_accepted_promotion = ConvoScreen:new {
@@ -317,6 +328,19 @@ imp_recruiter_accepted_promotion = ConvoScreen:new {
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_accepted_promotion);
 
+
+--declined_promotion
+imp_recruiter_declined_promotion = ConvoScreen:new {
+	id = "declined_promotion",
+	leftDialog = "@conversation/faction_recruiter_imperial:s_322",
+	stopConversation = "true",
+	options = {
+	}
+}
+
+imperial_recruiter_convotemplate:addScreen(imp_recruiter_declined_promotion);
+
+
 --not enough points
 imp_recruiter_not_enough_points = ConvoScreen:new {
 	id = "not_enough_points",
@@ -327,6 +351,7 @@ imp_recruiter_not_enough_points = ConvoScreen:new {
 }
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_not_enough_points);
+
 
 --confirm_bribe
 imp_recruiter_confirm_bribe = ConvoScreen:new {
@@ -340,6 +365,7 @@ imp_recruiter_confirm_bribe = ConvoScreen:new {
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_confirm_bribe);
 
+
 --accepted_bribe_20k
 imp_recruiter_accepted_bribe_20k = ConvoScreen:new {
 	id = "accepted_bribe_20k",
@@ -350,6 +376,7 @@ imp_recruiter_accepted_bribe_20k = ConvoScreen:new {
 }
 
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_accepted_bribe_20k);
+
 
 --accepted_bribe_100k
 imp_recruiter_accepted_bribe_100k = ConvoScreen:new {
@@ -363,7 +390,7 @@ imp_recruiter_accepted_bribe_100k = ConvoScreen:new {
 imperial_recruiter_convotemplate:addScreen(imp_recruiter_accepted_bribe_100k);
 
 
--- selected option to purchase faction items
+--selected option to purchase faction items
 imp_recruiter_faction_purchase = ConvoScreen:new {
 	id = "faction_purchase",
 	leftDialog = "@conversation/faction_recruiter_rebel:s_482", 

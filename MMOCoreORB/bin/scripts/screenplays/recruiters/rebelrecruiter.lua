@@ -24,7 +24,7 @@ function rebel_recruiter_handler:addRankReviewOption(screen)
 end
 
 function rebel_recruiter_handler:getRejectPromotionString()
-	return "@conversation/faction_recruiter_rebel:s_478"
+	return "@conversation/faction_recruiter_rebel:s_476"
 end
 
 function rebel_recruiter_handler:addBribeOption(screen)

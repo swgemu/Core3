@@ -135,10 +135,11 @@ function recruiter_convo_handler:runScreenHandlers(conversationTemplate, convers
 			
 			local rejectString = self:getRejectPromotionString()
 			
-			if (playerObject:isCovert()) then
-				clonedConversation:addOption(rejectString, "greet_member_start_covert")
-			elseif (playerObject:isOvert()) then
-				clonedConversation:addOption(rejectString, "greet_member_start_overt")
+			if (playerObject:isCovert() or playerObject:isOvert()) then
+				clonedConversation:addOption(rejectString, "declined_promotion")
+					--printf("pew pew fired\n")				
+			--elseif (playerObject:isOvert()) then
+				--clonedConversation:addOption(rejectString, "declined_promotion")
 			end
 		end
 			
