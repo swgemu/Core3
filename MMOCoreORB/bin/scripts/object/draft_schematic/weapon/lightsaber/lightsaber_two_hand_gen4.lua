@@ -57,6 +57,7 @@ object_draft_schematic_weapon_lightsaber_lightsaber_two_hand_gen4 = object_draft
    assemblySkill = "jedi_saber_assembly", 
    experimentingSkill = "jedi_saber_experimentation", 
    customizationSkill = "jedi_customization", 
+   disableFactoryRun = true,   
 
    customizationOptions = {},
    customizationStringNames = {},
