@@ -111,6 +111,18 @@ public:
 			if (!vehicle->transferObject(creature, 4, true))
 				vehicle->error("could not add creature");
 
+			if (creature->hasBuff(String("gallop").hashCode())) {
+				//Clear the active negation of the gallop buff.
+				creature->setSpeedMultiplierMod(1.f);
+				creature->setAccelerationMultiplierMod(1.f);
+			}
+
+			if (vehicle->hasBuff(String("gallop").hashCode())) {
+				//Clear the active negation of the gallop buff.
+				vehicle->setSpeedMultiplierMod(1.f);
+				vehicle->setAccelerationMultiplierMod(1.f);
+			}
+
 			if (creature->hasBuff(String("burstrun").hashCode())
 					|| creature->hasBuff(String("retreat").hashCode())) {
 				//Negate effect of the active burst run or retreat buff. The negation will be cleared automatically when the buff is deactivated.

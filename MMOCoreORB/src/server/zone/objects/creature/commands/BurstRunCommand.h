@@ -109,6 +109,11 @@ public:
 			return GENERALERROR;
 		}
 
+		if (creature->hasBuff(String("gallop").hashCode())) {
+			creature->sendSystemMessage("You cannot burst run while gallop is active.");
+			return GENERALERROR;
+		}
+
 		float burstRunMod = (float) creature->getSkillMod("burst_run");
 
 		if (burstRunMod > 100.0f) {
