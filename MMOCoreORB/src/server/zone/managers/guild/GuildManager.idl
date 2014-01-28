@@ -71,7 +71,7 @@ class GuildManager extends ManagedService implements Logger {
 	
 	@dereferenced
 	private transient VectorMap<unsigned long, GuildObject> sponsoredPlayers;
-	
+
 	private int requiredMembers;
 	private int maximumMembers;
 	private int guildUpdateInterval;
@@ -139,8 +139,12 @@ class GuildManager extends ManagedService implements Logger {
 	public native void loadGuilds();
 	
 	public native void sendGuildCreateNameTo(CreatureObject player, GuildTerminal guildTerminal);
+
+	public native void sendGuildChangeNameTo(CreatureObject player, GuildObject guild, GuildTerminal guildTerminal);
 	
 	public native void sendGuildCreateAbbrevTo(CreatureObject player, GuildTerminal guildTerminal);
+
+	public native void sendGuildChangeAbbrevTo(CreatureObject player, GuildObject guild, GuildTerminal guildTerminal);
 	
 	public native void sendGuildInformationTo(CreatureObject player, GuildObject guild, GuildTerminal guildTerminal);
 	
@@ -177,11 +181,19 @@ class GuildManager extends ManagedService implements Logger {
 	public native boolean validateGuildName(CreatureObject player, final string guildName);
 	
 	public native boolean validateGuildAbbrev(CreatureObject player, final string guildAbbrev);
+
+	public native boolean validateGuildRename(CreatureObject player, final string guildName, GuildObject guild);
 	
+	public native boolean validateGuildRenameAbbrev(CreatureObject player, final string guildAbbrev, GuildObject guild);
+
 	public native boolean guildNameExists(final string guildName);
 	
 	public native boolean guildAbbrevExists(final string guildAbbrev);
-	
+
+	public native void scheduleGuildRename(CreatureObject player, GuildObject guild);
+
+	public native void renameGuild(GuildObject guild, final string newName, final string newAbbrev);
+
 	public native GuildObject createGuild(CreatureObject player, GuildTerminal guildTerminal, final string guildName, final string guildAbbrev);
 	
 	public native boolean disbandGuild(CreatureObject player, GuildTerminal guildTerminal, GuildObject guild);
