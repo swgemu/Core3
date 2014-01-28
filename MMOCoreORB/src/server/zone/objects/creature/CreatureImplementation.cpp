@@ -135,7 +135,7 @@ void CreatureImplementation::fillAttributeList(AttributeListMessage* alm, Creatu
 	}
 
 	if (creaKnowledge >= 10) {
-		if (getTame() >= 0.0f && isBaby())
+		if (getTame() >= 0.0f)
 			alm->insertAttribute("tamable", "yes");
 		else
 			alm->insertAttribute("tamable", "no");
