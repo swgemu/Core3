@@ -49,6 +49,7 @@ which carries forward this exception.
 #include "server/zone/objects/creature/commands/effect/CommandEffect.h"
 
 #include "server/zone/objects/creature/commands/pet/PetAttackCommand.h"
+#include "server/zone/objects/creature/commands/pet/PetEmoteCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetFeedCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetFollowCommand.h"
 #include "server/zone/objects/creature/commands/pet/PetGroupCommand.h"
@@ -349,6 +350,7 @@ void CommandConfigManager::registerSpecialCommands(CommandList* sCommands) {
 
 	//Pet commands
 	createCommand(String("petAttack").toLowerCase())->setCommandGroup(0xe1c9a54a);
+	createCommand(String("petEmote").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petFeed").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petFollow").toLowerCase())->setCommandGroup(0xe1c9a54a);
 	createCommand(String("petGroup").toLowerCase())->setCommandGroup(0xe1c9a54a);
@@ -1514,6 +1516,7 @@ void CommandConfigManager::registerCommands() {
 
 	//pet commands
 	commandFactory.registerCommand<PetAttackCommand>(String("petAttack").toLowerCase());
+	commandFactory.registerCommand<PetEmoteCommand>(String("petEmote").toLowerCase());
 	commandFactory.registerCommand<PetFeedCommand>(String("petFeed").toLowerCase());
 	commandFactory.registerCommand<PetFollowCommand>(String("petFollow").toLowerCase());
 	commandFactory.registerCommand<PetGroupCommand>(String("petGroup").toLowerCase());
