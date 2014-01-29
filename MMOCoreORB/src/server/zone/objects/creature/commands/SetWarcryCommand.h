@@ -69,9 +69,9 @@ public:
 		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		PlayerObject* ghost = player->getPlayerObject();
-		String message =arguments.toString();
+		String message = arguments.toString();
 		if (message.isEmpty()){
-			player->sendSystemMessage("You Warcry message has been removed.");
+			player->sendSystemMessage("Your Warcry message has been removed.");
 			ghost->removeCommandMessageString(String("warcry1").hashCode());
 			ghost->removeCommandMessageString(String("warcry2").hashCode());
 			return SUCCESS;
