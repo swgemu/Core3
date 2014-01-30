@@ -57,6 +57,7 @@ object_draft_schematic_weapon_lightsaber_lightsaber_polearm_gen2 = object_draft_
    assemblySkill = "jedi_saber_assembly", 
    experimentingSkill = "jedi_saber_experimentation", 
    customizationSkill = "jedi_customization", 
+   disableFactoryRun = true,   
 
    customizationOptions = {},
    customizationStringNames = {},
