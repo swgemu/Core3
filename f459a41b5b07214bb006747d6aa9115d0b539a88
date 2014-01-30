@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_50a032f4",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DismountCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-01-30T17:06:27Z",
+      "side": 1,
+      "message": "Locker vehicleLocker(vehicle, creature);",
+      "revId": "f459a41b5b07214bb006747d6aa9115d0b539a88",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_30a5a604",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/DismountCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-01-30T17:06:27Z",
+      "side": 1,
+      "message": "vehicleLocker.release();",
+      "revId": "f459a41b5b07214bb006747d6aa9115d0b539a88",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_905e9a11",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GallopCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-01-30T17:06:27Z",
+      "side": 1,
+      "message": "Locker crossLocker(mount, creature);",
+      "revId": "f459a41b5b07214bb006747d6aa9115d0b539a88",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a2585a7_709b2eca",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/GallopStopCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-01-30T17:06:27Z",
+      "side": 1,
+      "message": "Locker crossLocker(mount, creature);",
+      "revId": "f459a41b5b07214bb006747d6aa9115d0b539a88",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
