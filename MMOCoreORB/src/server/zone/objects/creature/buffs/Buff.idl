@@ -197,6 +197,20 @@ class Buff extends ManagedObject implements Logger {
 		setSkillModifier("private_acceleration_multiplier", multiplier * 100);
 	}
 
+	public float getSpeedMultiplierMod() {
+		int speed = getSkillModifierValue("private_speed_multiplier");
+		float multiplier = speed / 100.0;
+
+		return multiplier;
+	}
+
+	public float getAccelerationMultiplierMod() {
+		int acceleration = getSkillModifierValue("private_acceleration_multiplier");
+		float multiplier = acceleration / 100.0;
+
+		return multiplier;
+	}
+
 	public void setFillAttributesOnBuff(boolean val) {
 		fillAttributesOnBuff = val;
 	}

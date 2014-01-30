@@ -42,68 +42,31 @@ this exception also makes it possible to release a modified version
 which carries forward this exception.
 */
 
-#ifndef GALLOPSTOPCOMMAND_H_
-#define GALLOPSTOPCOMMAND_H_
+#ifndef GALLOPNOTIFYAVAILABLEEVENT_H_
+#define GALLOPNOTIFYAVAILABLEEVENT_H_
 
-#include "server/zone/objects/scene/SceneObject.h"
+#include "server/zone/objects/creature/CreatureObject.h"
 
-class GallopStopCommand : public QueueCommand {
+class GallopNotifyAvailableEvent : public Task {
+	ManagedWeakReference<CreatureObject*> creo;
+
 public:
-
-	GallopStopCommand(const String& name, ZoneProcessServer* server)
-		: QueueCommand(name, server) {
-
+	GallopNotifyAvailableEvent(CreatureObject* cr) : Task() {
+		creo = cr;
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	void run() {
+		ManagedReference<CreatureObject*> creature = creo.get();
 
-		if (!checkStateMask(creature))
-			return INVALIDSTATE;
+		if (creature == NULL)
+			return;
 
-		if (!checkInvalidLocomotions(creature))
-			return INVALIDLOCOMOTION;
+		Locker locker(creature);
 
-		ManagedReference<SceneObject*> parent = creature->getParent().get();
-
-		if (parent == NULL || !parent->isMount()) {
-			creature->sendSystemMessage("@combat_effects:cant_stop_gallop_not_mounted"); // You can't stop galloping if you aren't mounted.
-			return GENERALERROR;
-		}
-
-		ManagedReference<CreatureObject*> mount = cast<CreatureObject*>(parent.get());
-		if (mount == NULL)
-			return GENERALERROR;
-
-		Locker crossLocker(mount, creature);
-
-		uint32 crc = String("gallop").hashCode();
-
-		if (!creature->hasBuff(crc)) {
-			if (mount->hasBuff(crc))
-				mount->removeBuff(crc);
-
-			creature->sendSystemMessage("@combat_effects:cant_stop_galloping_not_galloping"); // You can't stop galloping if you aren't already galloping.
-			return GENERALERROR;
-		} else if (!mount->hasBuff(crc)) {
-			creature->removeBuff(crc);
-
-			return GENERALERROR;
-		}
-
-		//TODO: get correct cooldowns
-		int cooldown = 300;
-
-		creature->removeBuff(crc);
-		mount->removeBuff(crc);
-		creature->getCooldownTimerMap()->updateToCurrentAndAddMili("gallop", cooldown * 1000);
 		creature->removePendingTask("gallop_notify");
-
-		Reference<GallopNotifyAvailableEvent*> task = new GallopNotifyAvailableEvent(creature);
-		creature->addPendingTask("gallop_notify", task, cooldown * 1000);
-
-		return SUCCESS;
+		creature->sendSystemMessage("@combat_effects:mount_not_tired"); // Your mount is no longer winded.
 	}
 
 };
 
-#endif //GALLOPSTOPCOMMAND_H_
+#endif /*GALLOPNOTIFYAVAILABLEEVENT_H_*/
