@@ -907,6 +907,13 @@ void PlayerObjectImplementation::doDigest(int fillingReduction) {
 	if (!isDigesting())
 		return;
 
+	// Make sure filling isn't over max before we reduce
+	if (foodFilling > foodFillingMax)
+		foodFilling = foodFillingMax;
+
+	if (drinkFilling > drinkFillingMax)
+		drinkFilling = drinkFillingMax;
+
 	if (foodFilling > 0) {
 		setFoodFilling(foodFilling - fillingReduction);
 		if (foodFilling < 0)
