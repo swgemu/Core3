@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2585a7_f0aefee6",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/SocialInternalCommand.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-01-30T17:08:02Z",
+      "side": 1,
+      "message": "Locker crossLocker(aiAgent, creature);",
+      "revId": "9ebfc59c30d6f1e7b3cdfcced55606900c98048c",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
