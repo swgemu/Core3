@@ -81,11 +81,15 @@ public:
 		if (!inflictHAM(player, healthCost, actionCost, mindCost))
 			return GENERALERROR;
 
-		shoutCommand(player, group);
-
+//		shoutCommand(player, group);
 
 		if (!doFormUp(player, group))
 			return GENERALERROR;
+			
+		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(String("formup").hashCode()).isEmpty()==false) {
+			UnicodeString shout(player->getPlayerObject()->getCommandMessageString(String("formup").hashCode()));
+ 	 	 	server->getChatManager()->broadcastMessage(player, shout, 0, 0, 80);
+		}			
 
 		return SUCCESS;
 	}
