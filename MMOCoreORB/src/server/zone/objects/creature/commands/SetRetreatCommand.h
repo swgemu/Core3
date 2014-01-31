@@ -55,7 +55,7 @@ public:
 		: SquadLeaderCommand(name, server) {
 	}
 
-	int doQueueCommand(CreatureObject* creature, const uint64& target, const UnicodeString& arguments) {
+	int doQueueCommand(CreatureObject* creature, /*Skill* skill,*/ const uint64& target, const UnicodeString& arguments) {
 
 		if (!checkStateMask(creature))
 			return INVALIDSTATE;
@@ -65,11 +65,36 @@ public:
 
 		if (creature == NULL)
 			return GENERALERROR;
-
-		String message = arguments.toString();
-
-		if (!setCommandMessage(creature, message))
+		
+		if (!creature->hasSkill("outdoors_squadleader_support_03")) {
+//			StringIdChatParameter params("@error_message:prose_nsf_skill_cmd"); //You lack sufficient skill to use the %TO command.	
+//			params.setTO("@skl_n:" + skill->getSkillName());
+			creature->sendSystemMessage("You lack sufficient skill to use the SetRetreat command."); //SetRetreat isn't a skill...		
 			return GENERALERROR;
+		}			
+			
+        ManagedReference<CreatureObject*> player = (creature);
+        ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();	
+
+		String message = arguments.toString();		
+		
+		if (message.length()>128){
+			player->sendSystemMessage("Your Retreat message can only be up to 128 characters long.");
+			return false;
+		}	
+		
+		if (NameManager::instance()->isProfane(message)){
+			player->sendSystemMessage("Your Retreat message has failed the profanity filter.");
+			return false;				
+		}
+		
+        if(message.isEmpty()) {
+            playerObject->removeCommandMessageString(String("retreat").hashCode());
+			player->sendSystemMessage("Your Retreat message has been removed.");
+		} else {
+            playerObject->setCommandMessageString(String("retreat").hashCode(), message);
+			player->sendSystemMessage("Your Retreat message was set to :-\n" + message);
+		}	
 
 		return SUCCESS;
 

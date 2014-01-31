@@ -10,6 +10,7 @@
 
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/chat/ChatManager.h"
+#include "server/zone/managers/stringid/StringIdManager.h"
 #include "CombatQueueCommand.h"
 
 class SquadLeaderCommand : public CombatQueueCommand {
@@ -55,12 +56,12 @@ public:
 		if (group->getLeader() != player) {
 			player->sendSystemMessage("@error_message:not_group_leader");
 			return false;
-		}
+		}	
 
 		return true;
 	}
 
-	bool shoutCommand(CreatureObject* player, GroupObject* group) {
+/*	bool shoutCommand(CreatureObject* player, GroupObject* group) {
 		if (player == NULL || group == NULL)
 			return false;
 
@@ -76,7 +77,7 @@ public:
 
 		return true;
 	}
-
+*/
 	float calculateGroupModifier(GroupObject* group) {
 		if (group == NULL)
 			return 0;
@@ -87,7 +88,7 @@ public:
 
 			return modifier;
     }
-    bool inflictHAM(CreatureObject *player, int health, int action, int mind){
+    bool inflictHAM(CreatureObject* player, int health, int action, int mind){
         if (player == NULL)
 			return false;
         if(health < 0 || action < 0 || mind < 0)
@@ -108,7 +109,7 @@ public:
         return true;
     }
 	
-    void sendCombatSpam(CreatureObject *player){
+    void sendCombatSpam(CreatureObject* player){
         if (player == NULL)
 			return;
         if(combatSpam == "")
@@ -117,20 +118,33 @@ public:
         player->sendSystemMessage("@cbt_spam:" + combatSpam);
     }
 	
-    bool setCommandMessage(CreatureObject *creature, String message){
+/*    bool setCommandMessage(CreatureObject* creature, String message){
         if(!creature->isPlayerCreature())
             return false;
-
+			
         ManagedReference<CreatureObject*> player = (creature);
-        ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();
-        if(message.isEmpty())
+        ManagedReference<PlayerObject*> playerObject = player->getPlayerObject();	
+			
+		if (message.length()>128){
+			player->sendSystemMessage("Your message can only be up to 128 characters long.");
+			return false;
+		}
+		if (NameManager::instance()->isProfane(message)){
+			player->sendSystemMessage("Your message has failed the profanity filter.");
+			return false;				
+		}
+		
+        if(message.isEmpty()) {
             playerObject->removeCommandMessageString(actionCRC);
-        else
+			player->sendSystemMessage("Your message has been removed.");
+		} else {
             playerObject->setCommandMessageString(actionCRC, message);
-
+			player->sendSystemMessage("Your message was set to :-\n" + message);
+		}		
+		
         return true;
     }
-	
+*/	
     bool isSquadLeaderCommand(){
         return true;
     }

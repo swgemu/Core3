@@ -61,7 +61,7 @@ public:
 			return false;
 		}
 
-		Zone* zone = creature->getZone();
+		Zone* zone = creature->getZone();		
 
 		if (creature->getZone() == NULL) {
 			return false;
@@ -82,7 +82,7 @@ public:
 		if (!creature->checkCooldownRecovery("retreat")) {
 			creature->sendSystemMessage("@combat_effects:burst_run_no"); //You cannot burst run right now.
 			return false;
-		}
+		}			
 
 		return true;
 	}	
@@ -113,7 +113,7 @@ public:
 		if (!inflictHAM(player, 0, actionCost, mindCost))
 			return GENERALERROR;
 
-		shoutCommand(player, group);
+//		shoutCommand(player, group);
 
 		for (int i = 1; i < group->getGroupSize(); ++i) {
 			ManagedReference<SceneObject*> member = group->getGroupMember(i);
@@ -128,6 +128,11 @@ public:
 			sendCombatSpam(memberPlayer);
 			doRetreat(memberPlayer);
 		}
+		
+		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(String("retreat").hashCode()).isEmpty()==false) {
+			UnicodeString shout(player->getPlayerObject()->getCommandMessageString(String("retreat").hashCode()));
+ 	 	 	server->getChatManager()->broadcastMessage(player, shout, 0, 0, 80);
+		}		
 
 		return SUCCESS;
 	}

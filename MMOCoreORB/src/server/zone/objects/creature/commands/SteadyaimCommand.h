@@ -82,12 +82,17 @@ public:
 		if (!inflictHAM(player, healthCost, actionCost, mindCost))
 			return GENERALERROR;
 
-		shoutCommand(player, group);
+//		shoutCommand(player, group);
 
 		int amount = 5 + skillMod;
 
 		if (!doSteadyAim(player, group, amount))
 			return GENERALERROR;
+			
+		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(String("steadyaim").hashCode()).isEmpty()==false) {
+			UnicodeString shout(player->getPlayerObject()->getCommandMessageString(String("steadyaim").hashCode()));
+ 	 	 	server->getChatManager()->broadcastMessage(player, shout, 0, 0, 80);
+		}					
 
 		return SUCCESS;
 	}

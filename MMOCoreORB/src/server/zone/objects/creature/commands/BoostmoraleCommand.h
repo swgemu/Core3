@@ -83,7 +83,7 @@ public:
 		if (!inflictHAM(player, healthCost, actionCost, mindCost))
 			return GENERALERROR;
 
-		shoutCommand(player, group);
+//		shoutCommand(player, group);
 
 		int wounds[9] = {0,0,0,0,0,0,0,0,0};
 		if (!getWounds(player, group, wounds))
@@ -91,6 +91,11 @@ public:
 
 		if (!distributeWounds(player, group, wounds))
 			return GENERALERROR;
+			
+		if (player->isPlayerCreature() && player->getPlayerObject()->getCommandMessageString(String("boostmorale").hashCode()).isEmpty()==false) {
+			UnicodeString shout(player->getPlayerObject()->getCommandMessageString(String("boostmorale").hashCode()));
+ 	 	 	server->getChatManager()->broadcastMessage(player, shout, 0, 0, 80);
+		}			
 
 		return SUCCESS;
 	}
