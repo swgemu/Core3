@@ -5,7 +5,7 @@ JUNKWEAPONS = 4
 JUNKARMOUR = 8
 JUNKTUSKEN = 16
 JUNKJEDI = 32
-JUNKJAWA =64
+JUNKJAWA = 64
 JUNKGUNGAN = 128
 
 JUNKCONVGENERIC = 1
@@ -32,6 +32,8 @@ JUNKCONVJAWATUSKEN = 18
 -- Tier is a bit mask with the following possible values where each hexadecimal position is one possible configuration.
 -- That means that it is not possible to have both a world spawn area and imperial spawn area in the same region, but
 -- a dynamic rebel spawn area that is also a no build zone is possible.
+
+
 UNDEFINEDAREA       = 0x0000
 WORLDSPAWNAREA      = 0x0001
 REBELSPAWNAREA      = 0x0002
