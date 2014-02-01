@@ -182,4 +182,12 @@ class Consumable extends TangibleObject {
 		return (isSpiceEffect() && isFood());
 	}
 	
+	public int getDuration(){
+		return duration;
+	}
+	
+	public string getSpeciesRestriction(){
+		return speciesRestriction;
+	}
+	
 }

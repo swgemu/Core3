@@ -48,10 +48,12 @@ which carries forward this exception.
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/managers/resource/ResourceManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
+#include "server/zone/managers/creature/PetManager.h"
 
 #include "server/zone/objects/tangible/attachment/Attachment.h"
 #include "server/zone/objects/tangible/wearables/WearableObject.h"
 #include "server/zone/objects/tangible/components/vendor/VendorDataComponent.h"
+#include "server/zone/objects/creature/AiAgent.h"
 
 class GiveItemCommand : public QueueCommand {
 public:
@@ -153,7 +155,24 @@ public:
 							return GENERALERROR;
 
 					}
-				} else if (sceno->isCreatureObject()) {
+				}
+				else if( sceno->isPet() && object->getGameObjectType() == SceneObjectType::FOOD){
+
+					Reference<AiAgent*> aiAgent = sceno.castTo<AiAgent*>();
+					if( aiAgent != NULL ){
+
+						Locker crossLocker(aiAgent, creature);
+
+						PetManager* petManager = aiAgent->getZoneServer()->getPetManager();
+						if (petManager == NULL)
+							return GENERALERROR;
+
+						petManager->enqueueOwnerOnlyPetCommand(creature, aiAgent,String("petFeed").toLowerCase().hashCode(), String::valueOf( object->getObjectID() ) );
+
+					}
+
+				}
+				else if (sceno->isCreatureObject()) {
 					String err;
 					if (sceno->canAddObject(object, -1, err) == 0) {
 						sceno->transferObject(object, -1, true);

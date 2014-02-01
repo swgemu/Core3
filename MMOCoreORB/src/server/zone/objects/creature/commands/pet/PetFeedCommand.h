@@ -11,6 +11,7 @@
 #include "server/zone/objects/creature/commands/QueueCommand.h"
 #include "server/zone/objects/scene/SceneObject.h"
 #include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/tangible/consumable/Consumable.h"
 
 class PetFeedCommand : public QueueCommand {
 public:
@@ -47,38 +48,80 @@ public:
 		if( pet->isInCombat() || pet->isDead() || pet->isIncapacitated() )
 			return GENERALERROR;
 
-		// Check cooldown
-		if( !pet->getCooldownTimerMap()->isPast("feedCooldown") )
-			return GENERALERROR;
-
-		// Find food in player inventory
+		// Find food sceno (either provided in arguments or first food in inventory)
 		Locker clocker(player, creature);
-		ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
-		if (inventory == NULL){
-			player->sendSystemMessage("Player inventory not found");
-			return 0;
-		}
-
 		ManagedReference<SceneObject*> foodSceno = NULL;
-		for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
-			ManagedReference<SceneObject*> sceno = inventory->getContainerObject(i);
-			if( sceno->getGameObjectType() == SceneObjectType::FOOD ){
-				foodSceno = sceno;
-				break;
+		StringTokenizer args(arguments.toString());
+		if (!args.hasMoreTokens()){
+
+			// Find food in player inventory
+			ManagedReference<SceneObject*> inventory = player->getSlottedObject("inventory");
+			if (inventory == NULL){
+				player->sendSystemMessage("Player inventory not found");
+				return GENERALERROR;
 			}
+
+
+			for (int i = 0; i < inventory->getContainerObjectsSize(); ++i) {
+				ManagedReference<SceneObject*> sceno = inventory->getContainerObject(i);
+				if( sceno->getGameObjectType() == SceneObjectType::FOOD ){
+					foodSceno = sceno;
+					break;
+				}
+			}
+
+		}
+		else{
+			uint64 targetObjectID = 0;
+
+			try {
+				targetObjectID = args.getLongToken();
+			} catch (Exception& e) {
+				error("could not get long token in " + arguments.toString());
+				error(e.getMessage());
+				return INVALIDPARAMETERS;
+			}
+
+			foodSceno = server->getZoneServer()->getObject(targetObjectID);
+
 		}
 
-		// Food not found
-		if( foodSceno == NULL ){
+		// Valid food not found
+		if( foodSceno == NULL || foodSceno->getGameObjectType() != SceneObjectType::FOOD){
 			pet->showFlyText("npc_reaction/flytext","nofood", 204, 0, 0); // "You don't have any food to give!"
-			return 0;
+			return GENERALERROR;
+		}
+
+		// Check cooldown
+		if( !pet->getCooldownTimerMap()->isPast("feedCooldown") ){
+			pet->showFlyText("npc_reaction/flytext","nothungry", 204, 0, 0); // "Your pet isn't hungry."
+			return GENERALERROR;
 		}
 
 		// Food found
-		ManagedReference<TangibleObject*> foodTano = cast<TangibleObject*>(foodSceno.get());
-		if( foodTano == NULL ){
-			player->sendSystemMessage("Error with food object");
-			return 0;
+		ManagedReference<Consumable*> consumable = cast<Consumable*>(foodSceno.get());
+		if( consumable == NULL ){
+			player->sendSystemMessage("Error with consumable object");
+			return GENERALERROR;
+		}
+
+		// Apply buff if this is a pet specific food
+		if( consumable->getSpeciesRestriction() == "pets" ){
+
+			unsigned int buffCRC = String("petFoodBuff").hashCode();
+
+			// Check if pet already has buff
+			if ( pet->hasBuff(buffCRC) ){
+				player->sendSystemMessage("Your pet is still fortified from its last meal!");
+				return SUCCESS;
+			}
+			else{
+				ManagedReference<Buff*> buff = new Buff(pet, buffCRC, consumable->getDuration(), BuffType::FOOD);
+				consumable->setModifiers(buff, false);
+				pet->addBuff(buff);
+				player->sendSystemMessage("Your pet is fortified by the food!");
+			}
+
 		}
 
 		// Heal 10% of base in wounds
@@ -101,7 +144,7 @@ public:
 		pet->showFlyText("npc_reaction/flytext","yum", 0, 153, 0); // "Yummy!"
 
 		// Consume food
-		foodTano->decreaseUseCount();
+		consumable->decreaseUseCount();
 
 		// Set cooldown
 		pet->getCooldownTimerMap()->updateToCurrentAndAddMili("feedCooldown", 5000); // 5 sec
