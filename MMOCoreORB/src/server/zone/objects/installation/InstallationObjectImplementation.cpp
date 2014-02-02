@@ -37,6 +37,7 @@
 #include "server/zone/objects/player/FactionStatus.h"
 #include "server/zone/objects/tangible/wearables/ArmorObject.h"
 #include "server/zone/templates/tangible/ArmorObjectTemplate.h"
+#include "server/zone/objects/tangible/OptionBitmask.h"
 
 void InstallationObjectImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	StructureObjectImplementation::loadTemplateData(templateData);
@@ -155,13 +156,12 @@ void InstallationObjectImplementation::setOperating(bool value, bool notifyClien
 	extractionRemainder = 0;
 
 	if (operating) {
-		if (!(optionsBitmask & 1)) {
-			optionsBitmask |= 1;
-		}
+		setOptionBit(OptionBitmask::ACTIVATED, false);
+
 		lastStartTime.updateToCurrentTime();
 	} else {
-		if (optionsBitmask & 1)
-			optionsBitmask &= ~1;
+		clearOptionBit(OptionBitmask::ACTIVATED, false);
+
 		lastStopTime.updateToCurrentTime();
 	}
 
@@ -349,7 +349,7 @@ bool InstallationObjectImplementation::updateMaintenance(Time& workingTime) {
 		if (enegeryAmount > surplusPower) {
 			enegeryAmount = surplusPower;
 
-			float workPowerPermitted = surplusPower / basePowerRate * 3600;
+			float workPowerPermitted = (surplusPower / basePowerRate) * 3600;
 
 			if (workPowerPermitted < elapsedTime) {
 				Time workTill(lastMaintenanceTime.getTime() + (int) workPowerPermitted);
@@ -428,12 +428,11 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	// Update Timestamp
 	resourceHopperTimestamp.updateToCurrentTime();
 
-	if(getHopperSize() + harvestAmount >= getHopperSizeMax())
+	if(getHopperSize() >= getHopperSizeMax())
 		shutdownAfterUpdate = true;
 
 	if(spawnExpireTimestamp.compareTo(currentTime) > 0) {
 		shutdownAfterUpdate = true;
-
 	}
 
 	if (shutdownAfterUpdate)
