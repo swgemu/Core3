@@ -2183,7 +2183,7 @@ object_tangible_terminal_terminal_character_builder = object_tangible_terminal_s
 				},
 				"Miscellaneous Decorations",
 				{
-					"Bacta Tank", "object/tangible/furniture/decorative/bacta_tank.iff",
+					"Bacta Tank", "object/tangible/item/quest/force_sensitive/bacta_tank.iff",
 					"Bottle (Style 1)", "object/tangible/furniture/decorative/bottle_pear.iff",
 					"Bottle (Style 2)", "object/tangible/furniture/decorative/bottle_fat.iff",
 					"Bottle (Style 3)", "object/tangible/furniture/decorative/bottle_tall.iff",

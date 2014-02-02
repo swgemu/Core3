@@ -90,7 +90,7 @@ function TalusDearicScreenPlay:spawnMobiles()
 	spawnMobile("talus", "informant_npc_lvl_3",0,255,6,-3024,270,0)
 	spawnMobile("talus", "informant_npc_lvl_3",0,265,6,-2974,315,0)
 	spawnMobile("talus", "informant_npc_lvl_3",0,682,13,-3219,180,0)
-	spawnMobile("talus", "junk_dealer",0,183.6,6,-3065.1,87,0)
+	--spawnMobile("talus", "junk_dealer",0,183.6,6,-3065.1,87,0)
 	spawnMobile("talus", "rebel_recruiter",60,-26,0,0,90,3175399)
 	spawnMobile("talus", "rebel_recruiter",60,17,3,-36,0,6255475)
 
