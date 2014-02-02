@@ -428,12 +428,11 @@ void InstallationObjectImplementation::updateHopper(Time& workingTime, bool shut
 	// Update Timestamp
 	resourceHopperTimestamp.updateToCurrentTime();
 
-	if(getHopperSize() + harvestAmount >= getHopperSizeMax())
+	if(getHopperSize() >= getHopperSizeMax())
 		shutdownAfterUpdate = true;
 
 	if(spawnExpireTimestamp.compareTo(currentTime) > 0) {
 		shutdownAfterUpdate = true;
-
 	}
 
 	if (shutdownAfterUpdate)
