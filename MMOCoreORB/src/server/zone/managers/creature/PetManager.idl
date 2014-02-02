@@ -114,6 +114,8 @@ class PetManager extends ManagedService implements Logger {
 	@local
 	public native MountSpeedData getMountSpeedData(final string appearanceFilename);
 
+	public native float getMountedRunSpeed(CreatureObject mount);
+
 	/**
 	 * Handles chat messages to the pet
 	 * @pre { }
