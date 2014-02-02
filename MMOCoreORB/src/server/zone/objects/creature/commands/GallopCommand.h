@@ -94,13 +94,25 @@ public:
 			return GENERALERROR;
 		}
 
+		PetManager* petManager = server->getZoneServer()->getPetManager();
+		ManagedReference<PetControlDevice*> pcd = mount->getControlDevice().get().castTo<PetControlDevice*>();
+		if (petManager == NULL || pcd == NULL)
+			return GENERALERROR;
+
+		SharedObjectTemplate* objectTemplate = pcd->getObjectTemplate();
+		if (objectTemplate == NULL)
+			return GENERALERROR;
+
+		MountSpeedData* mountSpeedData = petManager->getMountSpeedData(objectTemplate->getAppearanceFilename());
+		if (mountSpeedData == NULL)
+			return GENERALERROR;
+
+		int duration = mountSpeedData->getGallopDuration();
+		float magnitude = mountSpeedData->getGallopSpeedMultiplier();
+		int cooldown = mountSpeedData->getGallopCooldown();
+
 		StringIdChatParameter startStringId("combat_effects", "gallop_start"); // Your mount runs as fast as it can.
 		StringIdChatParameter endStringId("combat_effects", "gallop_stop"); // Your mount is winded and slows down.
-
-		//TODO: Get correct durations, magnitudes, and cooldowns for gallop buff
-		int duration = 30;
-		float magnitude = 1.822f;
-		int cooldown = 300;
 
 		ManagedReference<Buff*> buff = new Buff(mount, crc, duration, BuffType::SKILL);
 		buff->setSpeedMultiplierMod(magnitude);

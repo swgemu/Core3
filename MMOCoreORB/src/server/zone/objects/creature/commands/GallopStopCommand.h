@@ -90,8 +90,20 @@ public:
 			return GENERALERROR;
 		}
 
-		//TODO: get correct cooldowns
-		int cooldown = 300;
+		PetManager* petManager = server->getZoneServer()->getPetManager();
+		ManagedReference<PetControlDevice*> pcd = mount->getControlDevice().get().castTo<PetControlDevice*>();
+		if (petManager == NULL || pcd == NULL)
+			return GENERALERROR;
+
+		SharedObjectTemplate* objectTemplate = pcd->getObjectTemplate();
+		if (objectTemplate == NULL)
+			return GENERALERROR;
+
+		MountSpeedData* mountSpeedData = petManager->getMountSpeedData(objectTemplate->getAppearanceFilename());
+		if (mountSpeedData == NULL)
+			return GENERALERROR;
+
+		int cooldown = mountSpeedData->getGallopCooldown();
 
 		creature->removeBuff(crc);
 		mount->removeBuff(crc);

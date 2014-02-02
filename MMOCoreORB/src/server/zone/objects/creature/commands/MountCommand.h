@@ -140,11 +140,29 @@ public:
 				changeBuffer->remove(0);
 			}
 
-			changeBuffer->add(SpeedModChange(vehicle->getRunSpeed() / creature->getRunSpeed()));
+			float newSpeed = vehicle->getRunSpeed();
+
+			if (vehicle->isMount()) {
+				PetManager* petManager = server->getZoneServer()->getPetManager();
+				ManagedReference<PetControlDevice*> pcd = vehicle->getControlDevice().get().castTo<PetControlDevice*>();
+
+				if (petManager != NULL && pcd != NULL) {
+					SharedObjectTemplate* objectTemplate = pcd->getObjectTemplate();
+
+					if (objectTemplate != NULL) {
+						MountSpeedData* mountSpeedData = petManager->getMountSpeedData(objectTemplate->getAppearanceFilename());
+
+						if (mountSpeedData != NULL)
+							newSpeed = mountSpeedData->getRunSpeed();
+					}
+				}
+			}
+
+			changeBuffer->add(SpeedModChange(newSpeed / creature->getRunSpeed()));
 
 			creature->updateToDatabase();
 
-			creature->setRunSpeed(vehicle->getRunSpeed());
+			creature->setRunSpeed(newSpeed);
 
 		} catch (Exception& e) {
 
