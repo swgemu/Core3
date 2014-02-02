@@ -547,6 +547,18 @@ void TangibleObjectImplementation::setOptionsBitmask(uint32 bitmask, bool notify
 	broadcastMessage(dtano3, true);
 }
 
+void TangibleObjectImplementation::setOptionBit(uint32 option, bool notifyClient) {
+	if (!(optionsBitmask & option)) {
+		setOptionsBitmask(optionsBitmask | option, notifyClient);
+	}
+}
+
+void TangibleObjectImplementation::clearOptionBit(uint32 option, bool notifyClient) {
+	if (optionsBitmask & option) {
+		setOptionsBitmask(optionsBitmask & ~option, notifyClient);
+	}
+}
+
 void TangibleObjectImplementation::updateCraftingValues(CraftingValues* values,
 		bool firstUpdate) {
 	/// I know its kind dirty, but we want generics to have quantities

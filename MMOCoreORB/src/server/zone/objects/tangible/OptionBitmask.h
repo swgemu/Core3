@@ -48,7 +48,7 @@ which carries forward this exception.
 class OptionBitmask {
 public:
 	static const uint32 NONE       = 0x00000000;
-	static const uint32 UNKNOWN1   = 0x00000001;
+	static const uint32 ACTIVATED   = 0x00000001;
 	static const uint32 VENDOR     = 0x00000002; //Vendor flag in creatures
 	static const uint32 INSURED    = 0x00000004;
 	static const uint32 CONVERSE   = 0x00000008; //Converse flag in creatures

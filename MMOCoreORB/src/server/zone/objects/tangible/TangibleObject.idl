@@ -396,6 +396,9 @@ class TangibleObject extends SceneObject {
 	
 	public native void setOptionsBitmask(unsigned int bitmask, boolean notifyClient = true);
 	
+	public native void setOptionBit(unsigned int option, boolean notifyClient = true);
+	public native void clearOptionBit(unsigned int option, boolean notifyClient = true);
+	
 	@local
 	public abstract native void updateCraftingValues(CraftingValues values, boolean firstUpdate);
 	
