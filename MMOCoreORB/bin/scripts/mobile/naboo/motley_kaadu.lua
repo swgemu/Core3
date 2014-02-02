@@ -19,7 +19,7 @@ motley_kaadu = Creature:new {
 	boneType = "bone_avian",
 	boneAmount = 65,
 	milk = 0,
-	tamingChance = 0,
+	tamingChance = 0.25,
 	ferocity = 0,
 	pvpBitmask = ATTACKABLE,
 	creatureBitmask = HERD,
@@ -27,6 +27,7 @@ motley_kaadu = Creature:new {
 	diet = CARNIVORE,
 
 	templates = {"object/mobile/kaadu_hue.iff"},
+	controlDeviceTemplate = "object/intangible/pet/kaadu_hue.iff",
 	lootGroups = {},
 	weapons = {},
 	conversationTemplate = "",
