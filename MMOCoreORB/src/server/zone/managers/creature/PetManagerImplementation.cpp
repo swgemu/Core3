@@ -12,6 +12,40 @@
 #include "server/zone/templates/datatables/DataTableRow.h"
 #include "server/zone/templates/params/primitives/StringParam.h"
 
+void PetManagerImplementation::loadLuaConfig() {
+	info("Loading configuration file.", true);
+
+	Lua* lua = new Lua();
+	lua->init();
+
+	lua->runFile("scripts/managers/pet_manager.lua");
+
+	LuaObject luaObject = lua->getGlobalObject("mountSpeedData");
+
+	if (luaObject.isValidTable()) {
+		for (int i = 1; i <= luaObject.getTableSize(); ++i) {
+			LuaObject speedData = luaObject.getObjectAt(i);
+
+			if (speedData.isValidTable()) {
+				String filename = speedData.getStringAt(1);
+				float runSpeed = speedData.getFloatAt(2);
+				float gallopSpeedMultiplier = speedData.getFloatAt(3);
+				int gallopDuration = speedData.getIntAt(4);
+				int gallopCooldown = speedData.getIntAt(5);
+
+				Reference<MountSpeedData*> data = new MountSpeedData(filename, runSpeed, gallopSpeedMultiplier, gallopDuration, gallopCooldown);
+
+				mountSpeedData.add(data);
+			}
+
+			speedData.pop();
+		}
+	}
+
+	luaObject.pop();
+
+	info("Loaded " + String::valueOf(mountSpeedData.size()) + " mount speeds.", true);
+}
 
 void PetManagerImplementation::loadValidMountScaleRanges() {
 	IffStream* iffStream = TemplateManager::instance()->openIffFile("datatables/mount/valid_scale_range.iff");
@@ -84,6 +118,17 @@ short PetManagerImplementation::checkMountEligibility(PetControlDevice* petContr
 		result = isValidMountScale(objectTemplate->getAppearanceFilename(), 1, height);
 
 	return result;
+}
+
+MountSpeedData* PetManagerImplementation::getMountSpeedData(const String& appearanceFilename) {
+	for (int i = 0; i < mountSpeedData.size(); i++) {
+		Reference<MountSpeedData*> data = mountSpeedData.get(i);
+
+		if (appearanceFilename == data->getAppearanceFilename())
+			return data;
+	}
+
+	return NULL;
 }
 
 void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet, const String& message){

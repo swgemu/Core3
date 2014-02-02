@@ -50,12 +50,16 @@ import server.zone.objects.intangible.PetControlDevice;
 import server.zone.ZoneServer;
 import server.zone.objects.creature.CreatureObject;
 include server.zone.managers.creature.ValidMountScaleRange;
+include server.zone.managers.creature.MountSpeedData;
 
 class PetManager extends ManagedService implements Logger {
 	private transient ZoneServer zoneServer;
 
 	@dereferenced
 	protected Vector<Reference<ValidMountScaleRange> > validMountScaleRanges;
+
+	@dereferenced
+	protected Vector<Reference<MountSpeedData> > mountSpeedData;
 
 	// Pet Types
 	public static final int FACTIONPET = 0;
@@ -95,14 +99,20 @@ class PetManager extends ManagedService implements Logger {
 	}
 
 	public void initialize() {
+		loadLuaConfig();
 		loadValidMountScaleRanges();
 	}
+
+	public native void loadLuaConfig();
 
 	public native void loadValidMountScaleRanges();
 
 	public native short isValidMountScale(final string appearanceFilename, int saddleCapacity, float scale);
 
 	public native short checkMountEligibility(PetControlDevice petControlDevice, float height = -1);
+
+	@local
+	public native MountSpeedData getMountSpeedData(final string appearanceFilename);
 
 	/**
 	 * Handles chat messages to the pet
