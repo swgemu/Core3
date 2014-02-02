@@ -106,6 +106,7 @@
 
 #include "server/zone/managers/creature/LairObserver.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
+#include "server/zone/managers/creature/PetManager.h"
 
 int PlayerManagerImplementation::MAX_CHAR_ONLINE_COUNT = 2;
 
@@ -2311,7 +2312,13 @@ int PlayerManagerImplementation::checkSpeedHackFirstTest(CreatureObject* player,
 		Creature* mount = cast<Creature*>( parent.get());
 
 		allowedSpeedMod = mount->getSpeedMultiplierMod();
-		allowedSpeedBase = mount->getRunSpeed();
+
+		PetManager* petManager = server->getPetManager();
+
+		if (petManager != NULL) {
+			allowedSpeedBase = petManager->getMountedRunSpeed(mount);
+		}
+
 	}
 
 	float maxAllowedSpeed = allowedSpeedMod * allowedSpeedBase;

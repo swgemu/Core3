@@ -131,6 +131,26 @@ MountSpeedData* PetManagerImplementation::getMountSpeedData(const String& appear
 	return NULL;
 }
 
+float PetManagerImplementation::getMountedRunSpeed(CreatureObject* mount) {
+	if (!mount->isMount())
+		return mount->getRunSpeed();
+
+	ManagedReference<PetControlDevice*> pcd = mount->getControlDevice().get().castTo<PetControlDevice*>();
+
+	if (pcd != NULL) {
+		SharedObjectTemplate* objectTemplate = pcd->getObjectTemplate();
+
+		if (objectTemplate != NULL) {
+			MountSpeedData* mountSpeedData = getMountSpeedData(objectTemplate->getAppearanceFilename());
+
+			if (mountSpeedData != NULL)
+				return mountSpeedData->getRunSpeed();
+		}
+	}
+
+	return mount->getRunSpeed();
+}
+
 void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet, const String& message){
 
 	if( speaker == NULL || pet == NULL )

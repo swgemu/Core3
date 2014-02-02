@@ -111,14 +111,11 @@ public:
 			if (!vehicle->transferObject(creature, 4, true))
 				vehicle->error("could not add creature");
 
-			if (creature->hasBuff(String("gallop").hashCode())) {
+			uint32 crc = String("gallop").hashCode();
+			if (creature->hasBuff(crc) && vehicle->hasBuff(crc)) {
 				//Clear the active negation of the gallop buff.
 				creature->setSpeedMultiplierMod(1.f);
 				creature->setAccelerationMultiplierMod(1.f);
-			}
-
-			if (vehicle->hasBuff(String("gallop").hashCode())) {
-				//Clear the active negation of the gallop buff.
 				vehicle->setSpeedMultiplierMod(1.f);
 				vehicle->setAccelerationMultiplierMod(1.f);
 			}
@@ -144,17 +141,9 @@ public:
 
 			if (vehicle->isMount()) {
 				PetManager* petManager = server->getZoneServer()->getPetManager();
-				ManagedReference<PetControlDevice*> pcd = vehicle->getControlDevice().get().castTo<PetControlDevice*>();
 
-				if (petManager != NULL && pcd != NULL) {
-					SharedObjectTemplate* objectTemplate = pcd->getObjectTemplate();
-
-					if (objectTemplate != NULL) {
-						MountSpeedData* mountSpeedData = petManager->getMountSpeedData(objectTemplate->getAppearanceFilename());
-
-						if (mountSpeedData != NULL)
-							newSpeed = mountSpeedData->getRunSpeed();
-					}
+				if (petManager != NULL) {
+					newSpeed = petManager->getMountedRunSpeed(vehicle);
 				}
 			}
 
