@@ -151,6 +151,8 @@ class Creature extends AiAgent {
 
 	public native void setPetLevel(int newLevel);
 
+	public native boolean isVicious();
+
 	public boolean isBaby() {
 		return baby;
 	}

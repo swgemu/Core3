@@ -324,7 +324,7 @@ float CreatureImplementation::getChanceToTame(CreatureObject* player) {
 	int ferocity = getFerocity();
 	float tamingChance = getTame() * 100.0f;
 
-	if (isAggressiveTo(player))
+	if (isVicious())
 		skill += player->getSkillMod("tame_aggro");
 	else
 		skill += player->getSkillMod("tame_non_aggro");
@@ -332,6 +332,12 @@ float CreatureImplementation::getChanceToTame(CreatureObject* player) {
 	float chanceToTame = tamingChance + skill - (cl + ferocity);
 
 	return chanceToTame;
+}
+
+bool CreatureImplementation::isVicious() {
+	CreatureTemplate* creatureTemplate = npcTemplate.get();
+
+	return creatureTemplate->getPvpBitmask() & CreatureFlag::AGGRESSIVE;
 }
 
 bool CreatureImplementation::canMilkMe(CreatureObject* player) {
@@ -398,6 +404,9 @@ void CreatureImplementation::loadTemplateDataForBaby(CreatureTemplate* templateD
 	setLevel(newLevel);
 
 	setBaby(true);
+
+	clearPvpStatusBit(CreatureFlag::AGGRESSIVE, false);
+	clearPvpStatusBit(CreatureFlag::ENEMY, false);
 }
 
 void CreatureImplementation::setPetLevel(int newLevel) {

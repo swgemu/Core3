@@ -183,6 +183,18 @@ void TangibleObjectImplementation::setPvpStatusBitmask(int bitmask, bool notifyC
 
 }
 
+void TangibleObjectImplementation::setPvpStatusBit(uint32 pvpStatus, bool notifyClient) {
+	if (!(pvpStatusBitmask & pvpStatus)) {
+		setPvpStatusBitmask(pvpStatusBitmask | pvpStatus, notifyClient);
+	}
+}
+
+void TangibleObjectImplementation::clearPvpStatusBit(uint32 pvpStatus, bool notifyClient) {
+	if (pvpStatusBitmask & pvpStatus) {
+		setPvpStatusBitmask(pvpStatusBitmask & ~pvpStatus, notifyClient);
+	}
+}
+
 void TangibleObjectImplementation::synchronizedUIListen(SceneObject* player, int value) {
 	// Send TANO7 Baseline
 	TangibleObjectMessage7* tano7 = new TangibleObjectMessage7(_this.get());
