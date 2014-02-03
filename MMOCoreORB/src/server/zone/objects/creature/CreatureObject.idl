@@ -381,7 +381,11 @@ class CreatureObject extends TangibleObject {
 	 * @param clearDefenders if true the defender vector willl be emptied
 	 */
 	public native void clearCombatState(boolean clearDefenders = true);
-	
+
+	public native void addMountedCombatSlow();
+
+	public native void removeMountedCombatSlow();
+
 	/**
 	 * Sets a new posture
 	 * @pre { this object is locked }

@@ -52,6 +52,7 @@
 #include "server/zone/managers/skill/SkillManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/mission/MissionManager.h"
+#include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/ZoneClientSession.h"
 #include "server/zone/packets/creature/CreatureObjectMessage1.h"
 #include "server/zone/packets/creature/CreatureObjectMessage3.h"
@@ -598,6 +599,79 @@ void CreatureObjectImplementation::addShockWounds(int shockToAdd,
 	setShockWounds(newShockWounds, notifyClient);
 }
 
+void CreatureObjectImplementation::addMountedCombatSlow() {
+	if (!isPlayerCreature() || !isRidingMount() || !isInCombat())
+		return;
+
+	uint32 crc = String("mounted_combat_slow").hashCode();
+
+	if (hasBuff(crc))
+		return;
+
+	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
+
+	if (parent == NULL)
+		return;
+
+	if (parent->isVehicleObject()) {
+		sendSystemMessage("@combat_effects:no_combat_while_driving"); // You cannot attack or react to an attack while driving.
+		return;
+	}
+
+	if (!parent->isMount())
+		return;
+
+	if (hasBuff(String("gallop").hashCode())) {
+		sendSystemMessage("@combat_effects:no_combat_while_galloping"); // You cannot attack or react to an attack while galloping. Use /gallopStop to stop galloping.
+		return;
+	}
+
+	float newSpeed = 1;
+	SharedObjectTemplate* templateData = getObjectTemplate();
+	SharedCreatureObjectTemplate* playerTemplate = dynamic_cast<SharedCreatureObjectTemplate*> (templateData);
+
+	if (playerTemplate != NULL) {
+		Vector<FloatParam> speedTempl = playerTemplate->getSpeed();
+		newSpeed = speedTempl.get(0);
+	}
+
+	float oldSpeed = 1;
+	PetManager* petManager = server->getZoneServer()->getPetManager();
+
+	if (petManager != NULL) {
+		oldSpeed = petManager->getMountedRunSpeed(parent);
+	}
+
+	float magnitude = newSpeed / oldSpeed;
+
+	StringIdChatParameter startStringId("combat_effects", "mount_slow_for_combat"); // Your mount slows down to prepare for combat.
+	StringIdChatParameter endStringId("combat_effects", "mount_speed_after_combat"); // Your mount speeds up.
+
+	ManagedReference<Buff*> buff = new Buff(_this.get(), crc, 604800, BuffType::OTHER);
+	buff->setSpeedMultiplierMod(magnitude);
+	buff->setAccelerationMultiplierMod(magnitude);
+	buff->setStartMessage(startStringId);
+	buff->setEndMessage(endStringId);
+
+	addBuff(buff);
+
+	ManagedReference<Buff*> buff2 = new Buff(parent, crc, 604800, BuffType::OTHER);
+	buff2->setSpeedMultiplierMod(magnitude);
+	buff2->setAccelerationMultiplierMod(magnitude);
+
+	parent->addBuff(buff2);
+}
+
+void CreatureObjectImplementation::removeMountedCombatSlow() {
+	uint32 crc = String("mounted_combat_slow").hashCode();
+	removeBuff(crc);
+
+	ManagedReference<CreatureObject*> parent = getParent().get().castTo<CreatureObject*>();
+
+	if (parent != NULL)
+		parent->removeBuff(crc);
+}
+
 void CreatureObjectImplementation::setCombatState() {
 	//lastCombatAction.update();
 
@@ -626,6 +700,8 @@ void CreatureObjectImplementation::setCombatState() {
 
 		if (isEntertaining())
 			stopEntertaining();
+
+		addMountedCombatSlow();
 
 		// Clear Conceal
 		uint32 crc = String("skill_buff_mask_scent").hashCode();
@@ -659,6 +735,8 @@ void CreatureObjectImplementation::clearCombatState(bool removedefenders) {
 
 	if (removedefenders)
 		removeDefenders();
+
+	removeMountedCombatSlow();
 
 	//info("finished clearCombatState");
 }

@@ -152,6 +152,7 @@ public:
 			creature->updateToDatabase();
 
 			creature->setRunSpeed(newSpeed);
+			creature->addMountedCombatSlow();
 
 		} catch (Exception& e) {
 

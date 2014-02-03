@@ -46,7 +46,7 @@ which carries forward this exception.
 #define GALLOPCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/objects/creature/buffs/Buff.h"
+#include "server/zone/objects/creature/buffs/GallopBuff.h"
 #include "server/zone/objects/creature/events/GallopNotifyAvailableEvent.h"
 
 class GallopCommand : public QueueCommand {
@@ -111,16 +111,19 @@ public:
 		float magnitude = mountSpeedData->getGallopSpeedMultiplier();
 		int cooldown = mountSpeedData->getGallopCooldown();
 
+		if (creature->getPlayerObject()->isPrivileged())
+			cooldown = 5;
+
 		StringIdChatParameter startStringId("combat_effects", "gallop_start"); // Your mount runs as fast as it can.
 		StringIdChatParameter endStringId("combat_effects", "gallop_stop"); // Your mount is winded and slows down.
 
-		ManagedReference<Buff*> buff = new Buff(mount, crc, duration, BuffType::SKILL);
+		ManagedReference<GallopBuff*> buff = new GallopBuff(mount, crc, duration);
 		buff->setSpeedMultiplierMod(magnitude);
 		buff->setAccelerationMultiplierMod(magnitude);
 
 		mount->addBuff(buff);
 
-		ManagedReference<Buff*> buff2 = new Buff(creature, crc, duration, BuffType::SKILL);
+		ManagedReference<GallopBuff*> buff2 = new GallopBuff(creature, crc, duration);
 		buff2->setSpeedMultiplierMod(magnitude);
 		buff2->setAccelerationMultiplierMod(magnitude);
 		buff2->setStartMessage(startStringId);
