@@ -118,7 +118,8 @@ void PetControlDeviceImplementation::callObject(CreatureObject* player) {
 			return;
 		}
 
-		if (pet->isAggressiveTo(player) && (player->getSkillMod("tame_aggro") <= 0 || !ch)) {
+		ManagedReference<Creature*> creaturePet = cast<Creature*>(pet.get());
+		if (creaturePet != NULL && creaturePet->isVicious() && (player->getSkillMod("tame_aggro") <= 0 || !ch)) {
 			player->sendSystemMessage("@pet/pet_menu:lack_skill"); // You lack the skill to call a pet of this type.
 			return;
 		}
@@ -550,10 +551,10 @@ bool PetControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Creat
 	} else if (petType == PetManager::CREATUREPET) {
 		ManagedReference<TangibleObject*> controlledObject = this->controlledObject.get();
 
-		if (controlledObject == NULL || !controlledObject->isAiAgent())
+		if (controlledObject == NULL || !controlledObject->isCreature())
 			return false;
 
-		ManagedReference<AiAgent*> pet = cast<AiAgent*>(controlledObject.get());
+		ManagedReference<Creature*> pet = cast<Creature*>(controlledObject.get());
 
 		ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
 
@@ -574,7 +575,7 @@ bool PetControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Creat
 			return false;
 		}
 
-		if (pet->isAggressiveTo(receiver) && (receiver->getSkillMod("tame_aggro") <= 0 || !ch)) {
+		if (pet->isVicious() && (receiver->getSkillMod("tame_aggro") <= 0 || !ch)) {
 			player->sendSystemMessage("@pet/pet_menu:no_chance"); // That person has no chance of controlling this creature. Transfer failed.
 			receiver->sendSystemMessage("@pet/pet_menu:cannot_control"); // You have no chance of controlling that creature.
 			return false;

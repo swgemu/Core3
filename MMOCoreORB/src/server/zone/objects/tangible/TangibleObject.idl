@@ -556,7 +556,10 @@ class TangibleObject extends SceneObject {
 	}
 	
 	public native void setPvpStatusBitmask(int bitmask, boolean notifyClient = true);
-	
+
+	public native void setPvpStatusBit(unsigned int pvpStatus, boolean notifyClient = true);
+	public native void clearPvpStatusBit(unsigned int pvpStatus, boolean notifyClient = true);
+
 	public void setCraftersName(string name) {
 		craftersName = name;
 	}
