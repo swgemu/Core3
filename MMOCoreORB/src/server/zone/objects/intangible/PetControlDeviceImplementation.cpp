@@ -328,7 +328,7 @@ void PetControlDeviceImplementation::storeObject(CreatureObject* player, bool fo
 		return;
 
 	// Check cooldown
-	if( !player->getCooldownTimerMap()->isPast("petCallOrStoreCooldown") ){
+	if( !player->getCooldownTimerMap()->isPast("petCallOrStoreCooldown") && !force ){
 		player->sendSystemMessage("@pet/pet_menu:cant_store_1sec"); //"You cannot STORE for 1 second."
 		return;
 	}
