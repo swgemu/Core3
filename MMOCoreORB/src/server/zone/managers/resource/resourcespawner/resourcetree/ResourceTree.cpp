@@ -184,7 +184,7 @@ void ResourceTree::setZoneRestriction(ResourceTreeEntry* entry) {
 	for(int i = 0; i < activeZones.size(); ++i) {
 		String zonename = activeZones.get(i);
 
-		if(name.indexOf(zonename) != -1) {
+		if(name.indexOf("_" + zonename) != -1) {
 			entry->setZoneRestriction(zonename);
 			return;
 		}
