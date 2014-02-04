@@ -151,17 +151,6 @@ bool ResourceManagerImplementation::loadConfigData() {
 	String natpoolexc = lua->getGlobalString("nativepoolexcludes");
 	resourceSpawner->initializeNativePool(natpoolinc, natpoolexc);
 
-	String recycledResources = lua->getGlobalString("recycledresources");
-
-	StringTokenizer recycledTokens(recycledResources);
-	recycledTokens.setDelimeter(",");
-
-	while(recycledTokens.hasMoreTokens()) {
-		String token;
-		recycledTokens.getStringToken(token);
-		resourceSpawner->addRecycledResource(token);
-	}
-
 	return true;
 }
 
