@@ -21,7 +21,7 @@ escaped_singing_mountain_clan_slave = Creature:new {
 	milk = 0,
 	tamingChance = 0,
 	ferocity = 0,
-	pvpBitmask = AGGRESSIVE + ATTACKABLE,
+	pvpBitmask = AGGRESSIVE + ATTACKABLE + ENEMY,
 	creatureBitmask = NONE,
 	optionsBitmask = 128,
 	diet = HERBIVORE,
@@ -34,7 +34,7 @@ escaped_singing_mountain_clan_slave = Creature:new {
 				{group = "tailor_components", chance = 2500000},
 				{group = "loot_kit_parts", chance = 1500000}
 			},
-			lootChance = 1200000
+			lootChance = 1500000
 		}
 	},
 	weapons = {"primitive_weapons"},

@@ -32,13 +32,15 @@ nightsister_ranger = Creature:new {
 			groups = {
 				{group = "crystals_good", chance = 500000},
 				{group = "color_crystals", chance = 500000},
-				{group = "nightsister_common", chance = 6500000},
-				{group = "armor_attachments", chance = 550000},
-				{group = "clothing_attachments", chance = 550000},
-				{group = "melee_baton", chance = 700000},
-				{group = "melee_two_handed", chance = 700000}
+				{group = "nightsister_common", chance = 2500000},
+				{group = "armor_attachments", chance = 250000},
+				{group = "clothing_attachments", chance = 250000},
+				{group = "melee_weapons", chance = 2700000},
+				{group = "rifles", chance = 1100000},
+				{group = "pistols", chance = 1100000},
+				{group = "carbines", chance = 1100000}
 			},
-			lootChance = 5300000
+			lootChance = 2600000
 		}
 	},
 	weapons = {"mixed_force_weapons"},

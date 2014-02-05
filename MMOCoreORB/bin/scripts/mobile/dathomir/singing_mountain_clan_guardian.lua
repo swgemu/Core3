@@ -30,15 +30,17 @@ singing_mountain_clan_guardian = Creature:new {
 	lootGroups = {
 		{
 			groups = {
+				{group = "junk", chance = 1500000},
 				{group = "crystals_select", chance = 500000},
 				{group = "color_crystals", chance = 500000},
-				{group = "melee_weapons", chance = 2500000},
-				{group = "armor_attachments", chance = 550000},
-				{group = "clothing_attachments", chance = 550000},
-				{group = "pistols", chance = 2700000},
-				{group = "rifles", chance = 2700000}
+				{group = "armor_attachments", chance = 450000},
+				{group = "clothing_attachments", chance = 450000},
+				{group = "melee_weapons", chance = 3000000},
+				{group = "rifles", chance = 1200000},
+				{group = "pistols", chance = 1200000},
+				{group = "carbines", chance = 1200000}
 			},
-			lootChance = 4800000
+			lootChance = 4100000
 		}			
 	},
 	weapons = {"mixed_force_weapons"},

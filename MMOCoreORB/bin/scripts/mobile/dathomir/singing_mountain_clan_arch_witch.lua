@@ -30,15 +30,17 @@ singing_mountain_clan_arch_witch = Creature:new {
 	lootGroups = {
 		{
 			groups = {
+				{group = "junk", chance = 1500000},
 				{group = "crystals_quality", chance = 500000},
 				{group = "color_crystals", chance = 500000},
-				{group = "melee_weapons", chance = 6500000},
-				{group = "armor_attachments", chance = 550000},
-				{group = "clothing_attachments", chance = 550000},
-				{group = "pistols", chance = 700000},
-				{group = "rifles", chance = 700000}
+				{group = "armor_attachments", chance = 400000},
+				{group = "clothing_attachments", chance = 400000},
+				{group = "melee_weapons", chance = 3100000},
+				{group = "rifles", chance = 1200000},
+				{group = "pistols", chance = 1200000},
+				{group = "carbines", chance = 1200000}
 			},
-			lootChance = 4800000
+			lootChance = 3100000
 		}	
 	},
 	weapons = {"mixed_force_weapons"},

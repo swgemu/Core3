@@ -5,16 +5,23 @@ melee_weapons = {
 	minimumLevel = 0,
 	maximumLevel = 0,
 	lootItems = {
-		{itemTemplate = "axe_heavy_duty", weight = 1000000},
-		{itemTemplate = "knife_dagger", weight = 1000000},
-		{itemTemplate = "knife_survival", weight = 1000000},
-		{itemTemplate = "melee_vibroknuckler", weight = 1000000},
-		{itemTemplate = "polearm_staff_metal", weight = 1000000},
-		{itemTemplate = "polearm_staff_wood_reinforced", weight = 1000000},
-		{itemTemplate = "polearm_vibro_axe", weight = 1000000},
-		{itemTemplate = "two_handed_sword_battleaxe", weight = 1000000},
-		{itemTemplate = "two_handed_sword_cleaver", weight = 1000000},
-		{itemTemplate = "two_handed_sword_maul", weight = 1000000}
+		{itemTemplate = "axe_heavy_duty", weight = 588236},
+		{itemTemplate = "axe_vibroaxe", weight = 588235},
+		{itemTemplate = "baton_stun", weight = 588235},
+		{itemTemplate = "baton_gaderiffi", weight = 588235},
+		{itemTemplate = "knife_dagger", weight = 588236},
+		{itemTemplate = "knife_survival", weight = 588236},
+		{itemTemplate = "knife_stone", weight = 588235},
+		{itemTemplate = "melee_vibroknuckler", weight = 588236},
+		{itemTemplate = "polearm_staff_metal", weight = 588235},
+		{itemTemplate = "polearm_staff_wood_reinforced", weight = 588236},
+		{itemTemplate = "polearm_vibro_axe", weight = 588235},
+		{itemTemplate = "polearm_lance", weight = 588235},
+		{itemTemplate = "polearm_lance_vibrolance", weight = 588235},
+		{itemTemplate = "two_handed_sword_battleaxe", weight = 588235},
+		{itemTemplate = "two_handed_sword_cleaver", weight = 588235},
+		{itemTemplate = "two_handed_sword_maul", weight = 588235},
+		{itemTemplate = "two_handed_sword_katana", weight = 588235},
 	}
 }
 
