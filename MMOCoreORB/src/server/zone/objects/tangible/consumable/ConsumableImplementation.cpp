@@ -16,6 +16,8 @@
 #include "server/zone/packets/scene/AttributeListMessage.h"
 #include "server/zone/templates/tangible/ConsumableTemplate.h"
 #include "server/zone/objects/tangible/consumable/DelayedBuffObserver.h"
+#include "server/zone/objects/creature/events/BurstRunNotifyAvailableEvent.h"
+
 
 void ConsumableImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	TangibleObjectImplementation::loadTemplateData(templateData);
@@ -244,7 +246,13 @@ int ConsumableImplementation::handleObjectMenuSelect(CreatureObject* player, byt
 				player->sendSystemMessage("@combat_effects:instant_burst_run"); //You instantly burst run at increased efficiency!
 
 				Reference<Task*> task = player->getPendingTask("burst_run_notify");
-				task->reschedule(((300 * reduction) + duration) * 1000);
+
+				if (task != NULL)
+					task->reschedule(((300 * reduction) + duration) * 1000);
+				else {
+					task = new BurstRunNotifyAvailableEvent(player);
+					player->addPendingTask("burst_run_notify", task, ((300 * reduction) + duration) * 1000);
+				}
 
 			} else {
 				//Couldnt burst run yet.
