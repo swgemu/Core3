@@ -183,6 +183,7 @@ public:
 	const static int SKILLBUFF = 0x4000042;
 	const static int DROIDDEED = 0x4000043;
 	const static int DROIDCUSTOMKIT = 0x4000044;
+	const static int DROIDCRAFTINGMODULE = 0x4000045;
 
 public:
 	SharedObjectTemplate();
@@ -695,6 +696,9 @@ public:
 	}
 	virtual bool isDroidCustomKitTemplate() {
 	    	return false;
+	}
+	virtual bool isDroidCraftingModuleTemplate() {
+			return false;
 	}
 };
 

@@ -93,6 +93,10 @@ public:
 	virtual bool isDecoration(){
 		return false;
 	}
+
+	virtual bool isDroidModuleData(){
+		return false;
+	}
 };
 
 

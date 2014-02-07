@@ -30,6 +30,7 @@
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/tangible/threat/ThreatMap.h"
 #include "server/zone/objects/creature/VehicleObject.h"
+#include "server/zone/objects/creature/DroidObject.h"
 #include "server/zone/objects/area/ActiveArea.h"
 #include "server/login/packets/ErrorMessage.h"
 #include "server/zone/packets/player/LogoutMessage.h"
@@ -2673,6 +2674,21 @@ CraftingStation* PlayerManagerImplementation::getNearbyCraftingStation(CreatureO
 
 				return station;
 			}
+		}
+		else if( scno->isDroidObject() && (abs(scno->getPositionZ() - player->getPositionZ()) < 7.0f) && player->isInRange(scno, 7.0f)){
+
+			DroidObject* droid = cast<DroidObject*>(scno);
+			if( droid == NULL )
+				continue;
+
+			// Droid crafting stations only benefit the owner
+			if( droid->getLinkedCreature() != player )
+				continue;
+
+			station = droid->getCraftingStation( type );
+			if( station != NULL )
+				return station;
+
 		}
 	}
 
