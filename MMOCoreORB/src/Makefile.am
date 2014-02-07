@@ -96,7 +96,8 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/tests/ZoneTest.cpp \
 			  	server/zone/managers/objectcontroller/command/tests/CommandLuaTest.cpp
 
-core3_IDLS =	autogen/server/zone/managers/creature/PetManager.cpp \
+core3_IDLS =	autogen/server/zone/objects/creature/buffs/GallopBuff.cpp \
+				autogen/server/zone/managers/creature/PetManager.cpp \
 				autogen/server/zone/objects/creature/DroidObject.cpp \
 				autogen/server/zone/objects/tangible/deed/droid/DroidDeed.cpp \
 				autogen/server/zone/objects/intangible/PetControlObserver.cpp \

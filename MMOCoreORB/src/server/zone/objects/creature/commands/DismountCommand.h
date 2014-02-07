@@ -105,6 +105,8 @@ public:
 		if (terrainManager == NULL)
 			return GENERALERROR;
 
+		creature->removeMountedCombatSlow();
+
 		zone->transferObject(creature, -1, false);
 
 		clocker.release();
