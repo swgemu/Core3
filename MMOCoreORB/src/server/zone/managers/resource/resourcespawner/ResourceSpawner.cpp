@@ -133,10 +133,6 @@ void ResourceSpawner::addJtlResource(const String& resourceName) {
 	jtlResources.add(resourceName);
 }
 
-void ResourceSpawner::addRecycledResource(const String& resourceName) {
-	recycledResources.add(resourceName);
-}
-
 void ResourceSpawner::setSpawningParameters(bool loadFromScript, const int dur, const float throt,
 		const int override, const int spawnquantity) {
 
@@ -600,17 +596,10 @@ Vector<String>& ResourceSpawner::getJtlResources() {
 	return jtlResources;
 }
 
-Vector<String>& ResourceSpawner::getRecycledResources() {
-	return recycledResources;
-}
-
 bool ResourceSpawner::isRecycledResource(ResourceSpawn* resource) {
-	String type = resource->getType();
-	if (recycledResources.contains(type)) {
-		return true;
-	} else {
-		return false;
-	}
+	ResourceTreeEntry* entry = resourceTree->getEntry(resource->getType());
+
+	return entry->isRecycled();
 }
 
 ResourceSpawn* ResourceSpawner::getRecycledVersion(ResourceSpawn* resource) {

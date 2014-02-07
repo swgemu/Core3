@@ -120,11 +120,6 @@ private:
 	void setJtl(ResourceTreeEntry* entry);
 
 	/*
-	 * Sets if resource is a recycled type
-	 */
-	void setRecycled(ResourceTreeEntry* entry);
-
-	/*
 	 * Sets the survey tool type
 	 */
 	void setSurveyToolType(ResourceTreeEntry* entry);

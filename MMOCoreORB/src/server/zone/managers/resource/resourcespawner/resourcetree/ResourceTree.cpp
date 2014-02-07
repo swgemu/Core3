@@ -159,7 +159,6 @@ bool ResourceTree::buildTreeFromClient() {
 
 		setZoneRestriction(entry);
 		setJtl(entry);
-		setRecycled(entry);
 		setSurveyToolType(entry);
 		setRecycleToolType(entry);
 
@@ -201,21 +200,6 @@ void ResourceTree::setJtl(ResourceTreeEntry* entry) {
 
 		if(name == jtlresource) {
 			entry->setJTL(true);
-			return;
-		}
-	}
-}
-
-void ResourceTree::setRecycled(ResourceTreeEntry* entry) {
-	String name = entry->getType();
-
-	Vector<String>& recycledResources = spawner->getRecycledResources();
-
-	for(int i = 0; i < recycledResources.size(); ++i) {
-		String recycledresource = recycledResources.get(i);
-
-		if(name == recycledresource) {
-			entry->setRecycled(true);
 			return;
 		}
 	}
