@@ -148,7 +148,7 @@ function CorelliaKorVellaScreenPlay:spawnMobiles()
 	spawnMobile("corellia", "informant_npc_lvl_1", 10, -3124, 31, 2808, 180, 0)
 	spawnMobile("corellia", "informant_npc_lvl_1", 10, -3128, 31, 3008, 180, 0)
 
-	spawnMobile("corellia", "junk_dealer", 10, -3133.8, 31, 2975.5, 7, 0)
+	--spawnMobile("corellia", "junk_dealer", 10,-3133.8,31,2975.5,7,0)
 
 	spawnMobile("corellia", "medic", 60, -3591.74, 86, 3179.01, 0, 0)
 
