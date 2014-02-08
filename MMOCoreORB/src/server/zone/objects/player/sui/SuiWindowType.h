@@ -165,6 +165,7 @@ public:
 	static const uint16 ADMIN_BAN_SUMMARY = 179;
 	static const uint16 ADMIN_UNBAN_SUMMARY = 180;
 	static const uint16 ADMIN_PLAYER_CREDITS = 181;
+	static const uint16 ADMIN_FIND_OBJECT = 181;
 
 	//Teach 221 - 230
 	static const uint16 TEACH_SKILL = 221;

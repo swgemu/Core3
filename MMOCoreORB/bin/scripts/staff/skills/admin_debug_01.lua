@@ -24,7 +24,6 @@ admin_debug_01 = {
 		"aiIgnore",
 		"combat",
 		"craft",
-		"findObject",
 		"forceCommand",
 		"generateCraftedItem",
 		"getObjVars",
