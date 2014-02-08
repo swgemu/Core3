@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_ac6143d5",
+        "filename": "MMOCoreORB/bin/scripts/staff/skills/admin_general_admin_01.lua",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-02-08T22:22:54Z",
+      "side": 1,
+      "message": "Moved it from admin_debug_01 to here so that CSRs would have access to it.",
+      "revId": "37f73d8622492509ef08bd1e46b030ea10a7c352",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
