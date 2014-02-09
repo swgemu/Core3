@@ -183,60 +183,90 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 		return;
 
 	// Handle trained command
-	if( pcd->hasTrainedCommand(STAY) && pcd->getTrainedCommand(STAY) == message ){
+	if( isTrainedCommand( pcd, STAY, message ) ){
 		enqueuePetCommand(speaker, pet, String("petStay").toLowerCase().hashCode(), "");
 	}
-	else if( pcd->hasTrainedCommand(FOLLOW) && pcd->getTrainedCommand(FOLLOW) == message ){
+	else if( isTrainedCommand( pcd, FOLLOW, message ) ){
 		enqueuePetCommand(speaker, pet, String("petFollow").toLowerCase().hashCode(), "", true);
 	}
-	else if( pcd->hasTrainedCommand(STORE) && pcd->getTrainedCommand(STORE) == message ){
+	else if( isTrainedCommand( pcd, STORE, message ) ){
 		enqueueOwnerOnlyPetCommand(speaker, pet, String("petStore").toLowerCase().hashCode(), "");
 	}
-	else if( pcd->hasTrainedCommand(ATTACK) && pcd->getTrainedCommand(ATTACK) == message ){
+	else if( isTrainedCommand( pcd, ATTACK, message ) ){
 		enqueuePetCommand(speaker, pet, String("petAttack").toLowerCase().hashCode(), "");
 	}
-	else if( pcd->hasTrainedCommand(GUARD) && pcd->getTrainedCommand(GUARD) == message ){
+	else if( isTrainedCommand( pcd, GUARD, message ) ){
 		speaker->sendSystemMessage("GUARD pet command is not yet implemented.");
 	}
-	else if( pcd->hasTrainedCommand(FRIEND) && pcd->getTrainedCommand(FRIEND) == message ){
+	else if( isTrainedCommand( pcd, FRIEND, message ) ){
 		speaker->sendSystemMessage("FRIEND pet command is not yet implemented.");
 	}
-	else if( pcd->hasTrainedCommand(FOLLOWOTHER) && pcd->getTrainedCommand(FOLLOWOTHER) == message ){
+	else if( isTrainedCommand( pcd, FOLLOWOTHER, message ) ){
 		enqueuePetCommand(speaker, pet, String("petFollow").toLowerCase().hashCode(), "");
 	}
-	else if( pcd->hasTrainedCommand(TRICK1) && pcd->getTrainedCommand(TRICK1) == message ){
+	else if( isTrainedCommand( pcd, TRICK1, message ) ){
 		enqueuePetCommand(speaker, pet, String("petTrick").toLowerCase().hashCode(), "1", true);
 	}
-	else if( pcd->hasTrainedCommand(TRICK2) && pcd->getTrainedCommand(TRICK2) == message ){
+	else if( isTrainedCommand( pcd, TRICK2, message ) ){
 		enqueuePetCommand(speaker, pet, String("petTrick").toLowerCase().hashCode(), "2", true);
 	}
-	else if( pcd->hasTrainedCommand(PATROL) && pcd->getTrainedCommand(PATROL) == message ){
+	else if( isTrainedCommand( pcd, PATROL, message ) ){
 		speaker->sendSystemMessage("PATROL pet command is not yet implemented.");
 	}
-	else if( pcd->hasTrainedCommand(FORMATION1) && pcd->getTrainedCommand(FORMATION1) == message ){
+	else if( isTrainedCommand( pcd, FORMATION1, message ) ){
 		speaker->sendSystemMessage("FORMATION2 pet command is not yet implemented.");
 	}
-	else if( pcd->hasTrainedCommand(FORMATION2) && pcd->getTrainedCommand(FORMATION2) == message ){
+	else if( isTrainedCommand( pcd, FORMATION2, message ) ){
 		speaker->sendSystemMessage("FORMATION2 pet command is not yet implemented.");
 	}
-	else if( pcd->hasTrainedCommand(SPECIAL_ATTACK1) && pcd->getTrainedCommand(SPECIAL_ATTACK1) == message ){
+	else if( isTrainedCommand( pcd, SPECIAL_ATTACK1, message ) ){
 		speaker->sendSystemMessage("SPECIAL_ATTACK1 pet command is not yet implemented.");
 	}
-	else if( pcd->hasTrainedCommand(SPECIAL_ATTACK2) && pcd->getTrainedCommand(SPECIAL_ATTACK2) == message ){
+	else if( isTrainedCommand( pcd, SPECIAL_ATTACK2, message ) ){
 		speaker->sendSystemMessage("SPECIAL_ATTACK2 pet command is not yet implemented.");
 	}
-	else if( pcd->hasTrainedCommand(RANGED_ATTACK) && pcd->getTrainedCommand(RANGED_ATTACK) == message ){
+	else if( isTrainedCommand( pcd, RANGED_ATTACK, message ) ){
 		speaker->sendSystemMessage("RANGED_ATTACK pet command is not yet implemented.");
 	}
-	else if( pcd->hasTrainedCommand(GROUP) && pcd->getTrainedCommand(GROUP) == message ){
+	else if( isTrainedCommand( pcd, GROUP, message ) ){
 		enqueueOwnerOnlyPetCommand(speaker, pet, String("petGroup").toLowerCase().hashCode(), "");
 	}
-	else if( pcd->hasTrainedCommand(RECHARGEOTHER) && pcd->getTrainedCommand(RECHARGEOTHER) == message ){
+	else if( isTrainedCommand( pcd, RECHARGEOTHER, message ) ){
 		enqueuePetCommand(speaker, pet, String("petRechargeOther").toLowerCase().hashCode(), "");
 	}
-	else if( pcd->hasTrainedCommand(TRANSFER) && pcd->getTrainedCommand(TRANSFER) == message ){
+	else if( isTrainedCommand( pcd, TRANSFER, message ) ){
 		enqueueOwnerOnlyPetCommand(speaker, pet, String("petTransfer").toLowerCase().hashCode(), "");
 	}
+
+}
+
+bool PetManagerImplementation::isTrainedCommand( PetControlDevice* petControlDevice, unsigned int commandId, const String& msg ){
+
+	// Check if pet is trained in the command
+	if( !petControlDevice->hasTrainedCommand( commandId ) )
+		return false;
+
+	// Check if string exactly matches registered command
+	if( petControlDevice->getTrainedCommand(commandId) == msg )
+		return true;
+
+	// Check if string matches registered command with or without the pet's name
+	String name = petControlDevice->getCustomObjectName().toString();
+	if( name.length() > 2 ){
+
+		String petName = name.subString( 1, name.length()-1 ); // Remove parenthesis
+
+		String cmdWithName = petName + " " + petControlDevice->getTrainedCommand(commandId);
+		if( cmdWithName == msg )
+			return true;
+
+		String msgWithName = petName + " " + msg;
+		if( petControlDevice->getTrainedCommand(commandId) == msgWithName )
+			return true;
+
+	}
+
+	return false;
 
 }
 
