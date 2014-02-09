@@ -49,6 +49,7 @@ import server.zone.objects.creature.AiAgent;
 import server.zone.objects.intangible.PetControlDevice;
 import server.zone.ZoneServer;
 import server.zone.objects.creature.CreatureObject;
+import server.zone.objects.tangible.TangibleObject;
 include server.zone.managers.creature.ValidMountScaleRange;
 include server.zone.managers.creature.MountSpeedData;
 
@@ -161,4 +162,23 @@ class PetManager extends ManagedService implements Logger {
 	 */
 	@local
 	public native void enqueueOwnerOnlyPetCommand(CreatureObject player, AiAgent pet, unsigned int command, final string args);
+
+	/**
+	 * @pre { destructor and destructedObject locked }
+	 * @post { destructor and destructedObject locked }
+	 */
+	@local
+	public native int notifyDestruction(TangibleObject destructor, AiAgent destructedObject, int condition);
+
+	/**
+	 * Calculates the length of time that incapacitation should last. 2 minute minimum.
+	 * \return Returns the number of seconds until the pet should recover from incapacitation.
+	 */
+	public native unsigned int calculateIncapacitationTimer(AiAgent player, int condition);
+
+	/**
+	 * @pre { attacker and player locked }
+	 * @post { attacker and player locked }
+	 */
+	public native void killPet(TangibleObject attacker, AiAgent pet);
 }
