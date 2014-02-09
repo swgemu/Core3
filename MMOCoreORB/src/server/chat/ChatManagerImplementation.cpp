@@ -96,6 +96,9 @@ void ChatManagerImplementation::initiateRooms() {
 	guildRoom->setPrivate();
 	core3Room->addSubRoom(guildRoom);
 
+	auctionRoom = createRoom("Auction", core3Room);
+	core3Room->addSubRoom(auctionRoom);
+
 	ChatRoom* generalRoom = createRoom("general", core3Room);
 	core3Room->addSubRoom(generalRoom);
 
@@ -925,6 +928,40 @@ void ChatManagerImplementation::handlePlanetChat(CreatureObject* sender, const U
 	if (room != NULL) {
 		BaseMessage* msg = new ChatRoomMessage(name, message, room->getRoomID());
 		room->broadcastMessage(msg);
+	}
+
+}
+
+void ChatManagerImplementation::handleAuctionChat(CreatureObject* sender, const UnicodeString& message) {
+	if (sender->isPlayerCreature()) {
+		ManagedReference<PlayerObject*> senderGhost = sender->getPlayerObject();
+
+		if (senderGhost == NULL)
+			return;
+
+		if (senderGhost->isMuted()) {
+			String reason = senderGhost->getMutedReason();
+
+			if (reason != "")
+				sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support for '" + reason + "'.");
+			else
+				sender->sendSystemMessage("Your chat abilities are currently disabled by Customer Support.");
+
+			return;
+		}
+	}
+
+	String name = sender->getFirstName();
+
+	StringTokenizer args(message.toString());
+	if (!args.hasMoreTokens()) {
+		sender->sendSystemMessage("@ui:im_no_message"); // You need to include a message!
+		return;
+	}
+
+	if (auctionRoom != NULL) {
+		BaseMessage* msg = new ChatRoomMessage(name, message, auctionRoom->getRoomID());
+		auctionRoom->broadcastMessage(msg);
 	}
 
 }

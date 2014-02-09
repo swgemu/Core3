@@ -46,6 +46,7 @@ which carries forward this exception.
 #define AUCTIONSAYCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/chat/ChatManager.h"
 
 class AuctionsayCommand : public QueueCommand {
 public:
@@ -62,6 +63,9 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		ChatManager* chatManager = server->getZoneServer()->getChatManager();
+		chatManager->handleAuctionChat( creature, arguments);
 
 		return SUCCESS;
 	}
