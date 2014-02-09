@@ -6,6 +6,7 @@
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/objects/creature/AiAgent.h"
+#include "server/zone/objects/creature/events/PetIncapacitationRecoverTask.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/intangible/tasks/EnqueuePetCommand.h"
 #include "server/zone/templates/datatables/DataTableIff.h"
@@ -392,5 +393,94 @@ void PetManagerImplementation::enqueueOwnerOnlyPetCommand(CreatureObject* player
 	//CreatureObject* pet, uint32 command, const String& args, uint64 target, int priority = -1
 	EnqueuePetCommand* enqueueCommand = new EnqueuePetCommand(pet, command, args, player->getTargetID());
 	enqueueCommand->execute();
+
+}
+
+int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAgent* destructedObject, int condition) {
+	if (!destructedObject->isPet() || destructedObject->isDead() || destructedObject->isIncapacitated())
+		return 1;
+
+	if (destructedObject->isMount() && destructedObject->hasRidingCreature()) {
+		Reference<CreatureObject*> rider = destructedObject->getSlottedObject("rider").castTo<CreatureObject*>();
+
+		rider->executeObjectControllerAction(String("dismount").hashCode());
+	}
+
+	destructor->removeDefender(destructedObject);
+
+	destructedObject->clearDots();
+
+	if (!destructor->isKiller()) {
+		destructedObject->setCurrentSpeed(0);
+		destructedObject->setPosture(CreaturePosture::INCAPACITATED, true);
+		destructedObject->updateLocomotion();
+
+		uint32 incapTime = calculateIncapacitationTimer(destructedObject, condition);
+
+		Reference<Task*> oldTask = destructedObject->getPendingTask("incapacitationRecovery");
+
+		if (oldTask != NULL && oldTask->isScheduled()) {
+			oldTask->cancel();
+			destructedObject->removePendingTask("incapacitationRecovery");
+		}
+
+		bool store = false;
+
+		if (incapTime > 240) {
+			store = true;
+			incapTime = 240;
+		}
+
+		Reference<Task*> task = new PetIncapacitationRecoverTask(destructedObject, store);
+		destructedObject->addPendingTask("incapacitationRecovery", task, incapTime * 1000);
+
+	} else {
+		if (destructor->isKiller()) {
+			killPet(destructor, destructedObject);
+		}
+	}
+
+	return 0;
+}
+
+uint32 PetManagerImplementation::calculateIncapacitationTimer(AiAgent* pet, int condition) {
+	//Switch the sign of the value
+	int32 value = -condition;
+
+	if (value < 0)
+		return 120; // 2 minute minimum recovery
+
+	uint32 recoveryTime = (value / 5); // In seconds
+
+	if (recoveryTime < 120)
+		recoveryTime = 120; // 2 minute minimum recovery
+
+	return recoveryTime;
+}
+
+void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet) {
+	StringIdChatParameter stringId;
+
+	if (attacker->isPlayerCreature()) {
+		stringId.setStringId("base_player", "prose_target_dead");
+		stringId.setTT(pet->getObjectID());
+		(cast<CreatureObject*>(attacker))->sendSystemMessage(stringId);
+	}
+
+	pet->setCurrentSpeed(0);
+	pet->setPosture(CreaturePosture::DEAD, true);
+	pet->updateLocomotion();
+
+	pet->updateTimeOfDeath();
+	pet->clearBuffs(false);
+
+	if (!attacker->isPlayerCreature() && !attacker->isPet()) {
+		ManagedReference<PetControlDevice*> petControlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
+
+		if (petControlDevice != NULL && petControlDevice->getPetType() != PetManager::DROIDPET)
+			petControlDevice->setVitality(petControlDevice->getVitality() - 2);
+	}
+
+	pet->notifyObjectKillObservers(attacker);
 
 }

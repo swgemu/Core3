@@ -23,6 +23,7 @@
 #include "server/zone/managers/templates/TemplateManager.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
+#include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/managers/combat/CombatManager.h"
 #include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
@@ -1436,10 +1437,17 @@ void AiAgentImplementation::broadcastNextPositionUpdate(PatrolPoint* point) {
 }
 
 int AiAgentImplementation::notifyObjectDestructionObservers(TangibleObject* attacker, int condition) {
-	if (getZone() != NULL) {
-		CreatureManager* creatureManager = getZone()->getCreatureManager();
+	if (isPet()) {
+		PetManager* petManager = server->getZoneServer()->getPetManager();
 
-		creatureManager->notifyDestruction(attacker, _this.get(), condition);
+		petManager->notifyDestruction(attacker, _this.get(), condition);
+
+	} else {
+		if (getZone() != NULL) {
+			CreatureManager* creatureManager = getZone()->getCreatureManager();
+
+			creatureManager->notifyDestruction(attacker, _this.get(), condition);
+		}
 	}
 
 	return CreatureObjectImplementation::notifyObjectDestructionObservers(attacker, condition);

@@ -246,11 +246,16 @@ public:
 
 							++count;
 						} else if (targetPlayer->isPet()) {
-							Locker locker(targetPlayer, creature);
+							AiAgent* pet = cast<AiAgent*>(targetPlayer.get());
 
-							targetPlayer->notifyObjectDestructionObservers(creature, 0);
+							if (pet != NULL) {
+								Locker locker(pet, creature);
 
-							++count;
+								PetManager* petManager = server->getZoneServer()->getPetManager();
+								petManager->killPet(creature, pet);
+
+								++count;
+							}
 						}
 					}
 				}
