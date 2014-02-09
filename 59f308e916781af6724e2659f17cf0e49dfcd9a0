@@ -16,6 +16,24 @@
       "revId": "59f308e916781af6724e2659f17cf0e49dfcd9a0",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_2c7c3372",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/PetManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 336
+      },
+      "writtenOn": "2014-02-09T23:46:31Z",
+      "side": 1,
+      "message": "http://swg.wikia.com/wiki/Publish_5_Notes:_16_December_03\n\nPets will not suffer from vitality loss more often that once per 5 minutes",
+      "parentUuid": "3a3291f1_6c823b54",
+      "revId": "59f308e916781af6724e2659f17cf0e49dfcd9a0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
