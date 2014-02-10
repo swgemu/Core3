@@ -608,6 +608,8 @@ void PetControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm
 	SceneObjectImplementation::fillAttributeList(alm, object);
 
 	if (petType == PetManager::DROIDPET) {
+		alm->insertAttribute("creature_vitality", String::valueOf(vitality) + "/" + String::valueOf(maxVitality));
+
 		ManagedReference<DroidObject*> droid = this->controlledObject.get().castTo<DroidObject*>();
 
 		if (droid != NULL) {

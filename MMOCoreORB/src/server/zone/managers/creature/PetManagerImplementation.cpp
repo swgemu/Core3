@@ -476,7 +476,7 @@ void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet) {
 	if (!attacker->isPlayerCreature() && !attacker->isPet()) {
 		ManagedReference<PetControlDevice*> petControlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
 
-		if (petControlDevice != NULL && petControlDevice->getPetType() != PetManager::DROIDPET)
+		if (petControlDevice != NULL)
 			petControlDevice->setVitality(petControlDevice->getVitality() - 2);
 	}
 
