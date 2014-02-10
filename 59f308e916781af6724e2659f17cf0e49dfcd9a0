@@ -34,6 +34,42 @@
       "revId": "59f308e916781af6724e2659f17cf0e49dfcd9a0",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_ac8f0375",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/PetManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-02-10T05:37:45Z",
+      "side": 1,
+      "message": "Good find. We\u0027ll need to change more than this bit in order to get them using vitality. It\u0027s a bit beyond the scope of this patch and I see no reason to hold it up for it. We can just change that in a subsequent patch.",
+      "parentUuid": "3a3291f1_6c823b54",
+      "revId": "59f308e916781af6724e2659f17cf0e49dfcd9a0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_8c8c4781",
+        "filename": "MMOCoreORB/src/server/zone/managers/creature/PetManagerImplementation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-02-10T05:37:45Z",
+      "side": 1,
+      "message": "Noted. I\u0027ll have to add in a cooldown timer for it. Again, I see no reason why it should hold up this patch. We can get it added in a subsequent patch.",
+      "parentUuid": "3a3291f1_2c7c3372",
+      "revId": "59f308e916781af6724e2659f17cf0e49dfcd9a0",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
