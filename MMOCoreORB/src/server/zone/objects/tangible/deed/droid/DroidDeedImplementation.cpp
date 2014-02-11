@@ -16,6 +16,8 @@
 #include "server/zone/templates/tangible/DroidDeedTemplate.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
 #include "server/zone/objects/creature/DroidObject.h"
+#include "server/zone/managers/customization/CustomizationIdManager.h"
+#include "server/zone/objects/scene/variables/CustomizationVariables.h"
 
 void DroidDeedImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	DeedImplementation::loadTemplateData(templateData);
@@ -129,6 +131,21 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		if(craftingComponents != NULL) {
 			droid->transferObject(craftingComponents, 4, false);
 			craftingComponents->setSendToClient(false);
+		}
+
+		// Copy color customization from deed to droid
+		CustomizationVariables* customVars = getCustomizationVariables();
+		if( customVars != NULL ){
+			for (int i = 0; i < customVars->size(); ++i) {
+				uint8 id = customVars->elementAt(i).getKey();
+				int16 val = customVars->elementAt(i).getValue();
+
+				String name = CustomizationIdManager::instance()->getCustomizationVariable(id);
+				if( name.contains( "color" ) ){
+					droid->setCustomizationVariable( name, val, true );
+				}
+			}
+			droid->refreshPaint();
 		}
 
 		StringId s;
