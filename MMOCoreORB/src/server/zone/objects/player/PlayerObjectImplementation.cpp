@@ -1934,3 +1934,20 @@ void PlayerObjectImplementation::setPlayerQuestData(uint32 questHashCode, Player
 PlayerQuestData PlayerObjectImplementation::getQuestData(uint32 questHashCode) {
 	return playerQuestsData.get(questHashCode);
 }
+
+int PlayerObjectImplementation::getVendorCount() {
+	// Cleanup vendor list before returning the count
+	for (int i = ownedVendors.size() - 1; i >= 0; --i) {
+		ManagedReference<SceneObject*> vendor = server->getZoneServer()->getObject(ownedVendors.get(i)).get();
+
+		if (vendor == NULL) {
+			ownedVendors.remove(i);
+			continue;
+		}
+
+		if (vendor->getParent().get() == NULL)
+			vendor->destroyObjectFromDatabase(true);
+	}
+
+	return ownedVendors.size();
+}

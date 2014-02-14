@@ -162,7 +162,7 @@ int CellObjectImplementation::getCurrentNumberOfPlayerItems() {
 			ManagedReference<SceneObject*> containerObject = getContainerObject(j);
 			rlocker.release();
 
-			if (!getParent().get()->containsChildObject(containerObject) && !containerObject->isCreatureObject()) {
+			if (!getParent().get()->containsChildObject(containerObject) && !containerObject->isCreatureObject() && !containerObject->isVendor()) {
 
 				if (containerObject->isContainerObject())
 					count += containerObject->getCountableObjectsRecursive();

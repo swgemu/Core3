@@ -1419,9 +1419,7 @@ class PlayerObject extends IntangibleObject {
 		ownedVendors.removeElement(vendor.getObjectID());
 	}
 	
-	public int getVendorCount() {
-		return ownedVendors.size();
-	}
+	public native int getVendorCount();
 
 	@local
 	public SortedVector<unsigned long> getOwnedVendors() {
