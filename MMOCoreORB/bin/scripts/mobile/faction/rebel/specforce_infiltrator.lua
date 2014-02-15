@@ -1,4 +1,4 @@
-specforce_infiltator = Creature:new {
+specforce_infiltrator = Creature:new {
 	objectName = "@mob/creature_names:specforce_infiltrator",
 	socialGroup = "rebel",
 	pvpFaction = "rebel",
@@ -40,8 +40,8 @@ specforce_infiltator = Creature:new {
 				{group = "junk", chance = 5700000},
 				{group = "rifles", chance = 1000000},
 				{group = "pistols", chance = 1000000},
-                {group = "melee_weapons", chance = 1000000},
-                {group = "carbines", chance = 1000000},
+				{group = "melee_weapons", chance = 1000000},
+				{group = "carbines", chance = 1000000},
 				{group = "clothing_attachments", chance = 100000},
 				{group = "armor_attachments", chance = 100000}
 			},
@@ -53,4 +53,4 @@ specforce_infiltator = Creature:new {
 	attacks = merge(riflemanmaster,pistoleermaster,carbineermaster,brawlermaster)
 }
 
-CreatureTemplates:addCreatureTemplate(specforce_infiltator, "specforce_infiltator")
+CreatureTemplates:addCreatureTemplate(specforce_infiltrator, "specforce_infiltrator")
