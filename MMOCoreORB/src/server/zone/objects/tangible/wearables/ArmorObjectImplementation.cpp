@@ -266,7 +266,7 @@ float ArmorObjectImplementation::getTypeValue(int type, float value) {
 		newValue = baseProtection + value;
 		newValue *= effectivenessSlice;
 
-		if(sliced) {
+		if(sliced && effectivenessSlice > 1) {
 			if(newValue > 90)
 				newValue = 90;
 		} else {
