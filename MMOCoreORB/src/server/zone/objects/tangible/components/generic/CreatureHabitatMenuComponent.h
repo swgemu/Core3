@@ -32,6 +32,13 @@ public:
 	 */
 	virtual int handleObjectMenuSelect(SceneObject* sceneObject, CreatureObject* player, byte selectedID);
 
+private:
+
+	/**
+	 * Returns the live creatures stored inside the habitat when it was crafted
+	 */
+	ManagedReference<TangibleObject*> getLiveCreatures( TangibleObject* creatureHabitat );
+
 };
 
 

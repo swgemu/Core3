@@ -43,7 +43,6 @@
 
 object_tangible_bug_jar_sample_bats = object_tangible_bug_jar_shared_sample_bats:new {
 	templateType = LIVESAMPLE,
-	objectMenuComponent = {"cpp", "CreatureHabitatMenuComponent"},
 
 	animation = "clienteffect/item_bugs_bats.cef",
 }
