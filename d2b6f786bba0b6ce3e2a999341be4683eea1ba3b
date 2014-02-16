@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_6c2c7b4b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/events/PetIncapacitationRecoverTask.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-02-16T14:19:50Z",
+      "side": 1,
+      "message": "Locker clocker(owner, pet);",
+      "revId": "d2b6f786bba0b6ce3e2a999341be4683eea1ba3b",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
