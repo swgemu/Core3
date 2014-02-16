@@ -42,7 +42,10 @@
 
 
 object_tangible_bug_jar_sample_bugs = object_tangible_bug_jar_shared_sample_bugs:new {
+	templateType = LIVESAMPLE,
 
+	-- No unique animation available for generic sample of bugs so just reuse the flies animation
+	animation = "clienteffect/item_bugs_flies.cef",
 }
 
 ObjectTemplates:addTemplate(object_tangible_bug_jar_sample_bugs, "object/tangible/bug_jar/sample_bugs.iff")
