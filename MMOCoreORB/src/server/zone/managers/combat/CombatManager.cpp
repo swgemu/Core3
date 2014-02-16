@@ -39,7 +39,14 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 	if (attacker->getZone() == NULL || defender->getZone() == NULL)
 		return false;
 
-	if (attacker->isRidingMount())
+	if (attacker->isRidingMount()) {
+		ManagedReference<CreatureObject*> parent = attacker->getParent().get().castTo<CreatureObject*>();
+
+		if (parent == NULL || !parent->isMount())
+			return false;
+	}
+
+	if (attacker->hasRidingCreature())
 		return false;
 
 	if (!defender->isAttackableBy(attacker))
