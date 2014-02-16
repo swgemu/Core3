@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_ec94eb45",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/tasks/DestroyStructureTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-02-16T17:26:05Z",
+      "side": 1,
+      "message": "Destroying from the world removes the contained objects (including vendors) from the cells. Thus, when destroying from database, there are no contained items and all of the previously contained items do not get destroyed from the database but sit in limbo with a null parent.\n\nCalling the methods in reverse order seems to have the desired effect (i.e. the structure is destroyed along with all of it\u0027s contained items).",
+      "revId": "7a065d28739d3355101ec432f7f8d8b8de5769ce",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_cc912f54",
+        "filename": "MMOCoreORB/src/server/zone/objects/cell/CellObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-02-16T17:26:05Z",
+      "side": 1,
+      "message": "Terminal vendors aren\u0027t creos so I added this check to catch them as well.",
+      "revId": "7a065d28739d3355101ec432f7f8d8b8de5769ce",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_ac9ee361",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/PlayerObjectImplementation.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1939,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-02-16T17:26:05Z",
+      "side": 1,
+      "message": "This may be unnecessary in the long term, but I figured it would be nice for players to get their vendor slots freed up that are occupied by missing vendors.",
+      "revId": "7a065d28739d3355101ec432f7f8d8b8de5769ce",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_0cb057f3",
+        "filename": "MMOCoreORB/src/server/zone/managers/structure/tasks/DestroyStructureTask.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 9
+      },
+      "writtenOn": "2014-02-16T17:26:05Z",
+      "side": 0,
+      "message": "This block of code was added by me in an attempt to fix vendors not being removed from players when in a structure that\u0027s destroyed. I later discovered that this is already handled in VendorDataComponent::notifyObjectDestroyingFromDatabase()",
+      "revId": "32289bd26cf9189a1230c20d0494ac8e8d9fa9af",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
