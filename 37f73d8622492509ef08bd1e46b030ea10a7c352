@@ -16,6 +16,23 @@
       "revId": "37f73d8622492509ef08bd1e46b030ea10a7c352",
       "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a3291f1_6c059bc1",
+        "filename": "MMOCoreORB/src/server/zone/objects/player/sui/callbacks/FindObjectSuiCallback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-02-16T14:16:48Z",
+      "side": 1,
+      "message": "Locker locker(object, creature);",
+      "revId": "37f73d8622492509ef08bd1e46b030ea10a7c352",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
     }
   ]
 }
