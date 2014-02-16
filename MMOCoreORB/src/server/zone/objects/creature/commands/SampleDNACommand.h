@@ -72,15 +72,19 @@ public:
 				return GENERALERROR;
 			}
 		}
+
 		ManagedReference<SceneObject* > object = server->getZoneServer()->getObject(target);
 		ManagedReference<CreatureObject*> player = cast<CreatureObject*>(creature);
 		if (player && !player->hasSkill("outdoors_bio_engineer_novice")) {
+			player->sendSystemMessage("@bio_engineer:harvest_dna_skill_too_low");
 			return GENERALERROR;
 		}
+
 		if (object == NULL) {
-			creature->sendSystemMessage("@bio_engineer:harvest_dna_need_target");
+			player->sendSystemMessage("@bio_engineer:harvest_dna_need_target");
 			return INVALIDTARGET;
 		}
+
 		if (!object->isCreatureObject() || object == player){
 			player->sendSystemMessage("@bio_engineer:harvest_dna_invalid_target");
 			return INVALIDTARGET;
@@ -91,41 +95,55 @@ public:
 		Locker crosslocker(creo,creature);
 
 		if (!CollisionManager::checkLineOfSight(creature, creo)) {
-			creature->sendSystemMessage("@container_error_message:container18");
+			player->sendSystemMessage("@container_error_message:container18");
 			return GENERALERROR;
 		}
-		if (creo->isDead()) {
-			creature->sendSystemMessage("@bio_engineer:harvest_dna_target_corpse");
-			return INVALIDTARGET;
-		}
+
 		if (cr == NULL){
 			player->sendSystemMessage("@bio_engineer:harvest_dna_invalid_target");
 			return INVALIDTARGET;
 		}
+
 		// Sample DNa is a 16M max range
 		if (!object->isInRange(creature, 16.0f)){
-			creature->sendSystemMessage("@bio_engineer:harvest_dna_out_of_range");
+			player->sendSystemMessage("@bio_engineer:harvest_dna_out_of_range");
 			return TOOFAR;
 		}
+
 		//if (creature->)
 		// At this point we know its a living creature we are targetting
+		if (cr->isDead()){
+			player->sendSystemMessage("@bio_engineer:harvest_dna_target_corpse");
+			return INVALIDTARGET;
+		}
+
+		if (cr->isBaby()) {
+			player->sendSystemMessage("@bio_engineer:harvest_dna_target_baby");
+			return INVALIDTARGET;
+		}
+
+		if (cr->isPet()) {
+			player->sendSystemMessage("@bio_engineer:harvest_dna_target_pet");
+			return INVALIDTARGET;
+		}
+
+		if (cr->isInCombat()) {
+			player->sendSystemMessage("@bio_engineer:harvest_dna_creature_in_combat");
+			return INVALIDTARGET;
+		}
+
 		if (cr->canCollectDna(player)) {
-			if (cr->isDead()){
-				creature->sendSystemMessage("@bio_engineer:harvest_dna_target_corpse");
-				return INVALIDTARGET;
-			}
+
 			if (cr->getZone() == NULL){
 				return GENERALERROR;
 			}
-			if (cr->isBaby()) {
-				creature->sendSystemMessage("@bio_engineer:harvest_dna_target_baby");
-				return INVALIDTARGET;
-			}
+
 			ManagedReference<CreatureManager*> manager = cr->getZone()->getCreatureManager();
 			manager->sample(cr, player);
 		} else {
-			creature->sendSystemMessage("@bio_engineer:harvest_dna_cant_harvest");
+			player->sendSystemMessage("@bio_engineer:harvest_dna_cant_harvest");
 		}
+
 		return SUCCESS;
 	}
 };

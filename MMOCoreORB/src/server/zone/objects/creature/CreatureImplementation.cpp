@@ -229,7 +229,7 @@ bool CreatureImplementation::hasOrganics() {
 }
 
 bool CreatureImplementation::hasDNA() {
-	if (isBaby())
+	if (isBaby() || isPet())
 		return false;
 
 	return (dnaState == CreatureManager::HASDNA);
