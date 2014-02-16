@@ -263,6 +263,9 @@ class PlayerObject extends IntangibleObject {
 	@dereferenced
 	protected DeltaBitArray completedQuests;
 	
+	protected string installedHoloEmote;
+	
+	protected int holoEmoteUseCount;
 	
 	/**
 	 * the key is the quest.hashCode()
@@ -346,6 +349,10 @@ class PlayerObject extends IntangibleObject {
 		lastVisibilityUpdateTimestamp.updateToCurrentTime();
 
 		lastDigestion.updateToCurrentTime();
+		
+		installedHoloEmote = "";
+		
+		holoEmoteUseCount = 0;
 		
 		Logger.setLoggingName("PlayerObject");
 	}
@@ -1448,6 +1455,30 @@ class PlayerObject extends IntangibleObject {
 
 	public void setMutedReason(string reason) {
 		mutedReason = reason;
+	}
+	
+	public string getInstalledHoloEmote(){
+		return installedHoloEmote;
+	}
+	
+	public void setInstalledHoloEmote(string holoEmote){	
+		installedHoloEmote = holoEmote;
+		holoEmoteUseCount = 20;
+	}
+	
+	public void removeInstalledHoloEmote(){
+		installedHoloEmote = "";
+		holoEmoteUseCount = 0;
+	}
+	
+	public int getHoloEmoteUseCount(){
+		return holoEmoteUseCount;
+	}
+	
+	public void decreaseHoloEmoteUseCount(){
+		holoEmoteUseCount = holoEmoteUseCount - 1;
+		if( holoEmoteUseCount < 0 )
+			holoEmoteUseCount = 0;
 	}
 }
 
