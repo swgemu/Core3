@@ -370,6 +370,15 @@ void PlayerObjectImplementation::notifySceneReady() {
 		planetChat->addPlayer(creature);
 	}
 
+	// Join auction chat room
+	ChatManager* chatManager = server->getZoneServer()->getChatManager();
+	ManagedReference<ChatRoom*> auctionChat = chatManager->getAuctionRoom();
+	if( auctionChat == NULL )
+		return;
+
+	auctionChat->sendTo(creature);
+	auctionChat->addPlayer(creature);
+
 	if(creature->getZone() != NULL && creature->getZone()->getPlanetManager() != NULL) {
 		ManagedReference<WeatherManager*> weatherManager = creature->getZone()->getPlanetManager()->getWeatherManager();
 		if(weatherManager != NULL) {
