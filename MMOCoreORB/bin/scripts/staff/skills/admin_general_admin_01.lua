@@ -22,6 +22,7 @@ admin_general_admin_01 = {
 	skillAbility = {},
 	commands = {
 		"goto",
+		"findObject",
 		"teleport",
 		"teleportto",
 		"invulnerable",

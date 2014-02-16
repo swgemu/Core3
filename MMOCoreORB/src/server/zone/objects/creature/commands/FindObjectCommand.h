@@ -46,8 +46,7 @@ which carries forward this exception.
 #define FINDOBJECTCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
-#include "server/zone/managers/collision/PathFinderManager.h"
-#include "server/zone/packets/ui/DestroyClientPathMessage.h"
+#include "server/zone/objects/player/sui/callbacks/FindObjectSuiCallback.h"
 
 class FindObjectCommand : public QueueCommand {
 public:
@@ -68,65 +67,87 @@ public:
 		if (!creature->isPlayerCreature())
 			return GENERALERROR;
 
-		Reference<SceneObject*> targetObject = server->getZoneServer()->getObject(creature->getTargetID());
+		try {
+			StringTokenizer tokenizer(arguments.toString());
 
-		if (targetObject == NULL) {
-			creature->info("invalid targetObject 0x" + String::hexvalueOf((int64)target), true);
-			return INVALIDTARGET;
-		}
+			Reference<SceneObject*> targetObject = NULL;
+			Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
 
-		PathFinderManager* manager = PathFinderManager::instance();
+			if (!tokenizer.hasMoreTokens()) {
+				targetObject = server->getZoneServer()->getObject(creature->getTargetID());
 
-		Vector<WorldCoordinates>* path = manager->findPath(creature, targetObject.get());
+				if (targetObject != NULL) {
+					Vector3 worldPosition = targetObject->getWorldPosition();
 
-		if (path == NULL || path->size() == 0) {
-			creature->info("path NULL ||�size == 0", true);
-			return GENERALERROR;
-		}
+					ManagedReference<WaypointObject*> obj = server->getZoneServer()->createObject(0xc456e788, 1).castTo<WaypointObject*>();
+					obj->setPlanetCRC(targetObject->getPlanetCRC());
+					obj->setPosition(worldPosition.getX(), 0, worldPosition.getY());
 
-		//if (path-)
+					obj->setActive(true);
 
-		//creature->sendMessage(new DestroyClientPathMessage());
-
-		//CreateClientPathMessage* msg = new CreateClientPathMessage();
-
-		Reference<PlayerObject*> ghost = creature->getSlottedObject("ghost").castTo<PlayerObject*>();
-
-		for (int i = 0; i < path->size(); ++i) {
-			WorldCoordinates* coord = &path->get(i);
-			Vector3 worldPosition = coord->getWorldPosition();
-
-			//msg->addCoordinate(worldPosition.getX(), worldPosition.getZ(), worldPosition.getY());
-
-			ManagedReference<WaypointObject*> obj = server->getZoneServer()->createObject(0xc456e788, 1).castTo<WaypointObject*>();
-			obj->setPlanetCRC(targetObject->getPlanetCRC());
-			obj->setPosition(worldPosition.getX(), 0, worldPosition.getY());
-
-			if (coord->getCell() != NULL) {
-				CellObject* cell = cast<CellObject*>( coord->getCell());
-				obj->setCellID(cell->getCellNumber());
+					ghost->addWaypoint(obj, false, true);
+					return SUCCESS;
+				}
 			}
 
-			obj->setActive(true);
+			Zone* zone = creature->getZone();
+			if(zone == NULL)
+				return GENERALERROR;
 
-			ghost->addWaypoint(obj, false, true);
+			String objectFilter;
+			float range = zone->getMaxX() * 2;
 
-			/*if (coord->getCell() != NULL)
-				obj->setUnknown(coord->getCell()->getObjectID());*/
+			tokenizer.getStringToken(objectFilter);
 
-			//obj->setActive(true);
+			if (tokenizer.hasMoreTokens())
+				range = tokenizer.getFloatToken();
 
+			ManagedReference<SuiListBox*> findResults = new SuiListBox(creature, SuiWindowType::ADMIN_FIND_OBJECT);
+			findResults->setCallback(new FindObjectSuiCallback(server->getZoneServer()));
+			findResults->setPromptTitle("Find Object");
+			findResults->setPromptText("Here are the objects that match your search:");
+			findResults->setCancelButton(true, "");
+			findResults->setOkButton(true, "@treasure_map/treasure_map:store_waypoint");
+			findResults->setOtherButton(true, "@go");
 
-			//ghost->addWaypoint("tatooine", worldPosition.getX(), worldPosition.getY(), true);
+			StringBuffer results;
 
-			StringBuffer objectFoorBar;
-			objectFoorBar << "path node point x:" << worldPosition.getX() << " z:" << worldPosition.getZ() << " y:" << worldPosition.getY();
-			creature->info(objectFoorBar.toString(), true);
+			SortedVector<ManagedReference<QuadTreeEntry*> > objects(512, 512);
+			zone->getInRangeObjects(creature->getPositionX(), creature->getPositionY(), range, &objects, true);
+
+			for (int i = 0; i < objects.size(); ++i) {
+				ManagedReference<SceneObject*> object = cast<SceneObject*>(objects.get(i).get());
+
+				if (object == NULL)
+					continue;
+
+				if(object == creature)
+					continue;
+
+				results.deleteAll();
+				String name = object->getDisplayedName();
+
+				if (!name.toLowerCase().contains(objectFilter.toLowerCase()))
+					continue;
+
+				results << name;
+				results << " (" << String::valueOf(object->getWorldPositionX());
+				results << ", " << String::valueOf(object->getWorldPositionY()) << ")";
+
+				findResults->addMenuItem(results.toString(), object->getObjectID());
+			}
+
+			if (findResults->getMenuSize() < 1) {
+				creature->sendSystemMessage("No objects were found that matched that filter.");
+				return SUCCESS;
+			}
+
+			ghost->addSuiBox(findResults);
+			creature->sendMessage(findResults->generateMessage());
+
+		} catch (Exception& e) {
+			creature->sendSystemMessage("Syntax: /findobject <string filter> <range>");
 		}
-
-		//creature->sendMessage(msg);
-
-		delete path;
 
 		return SUCCESS;
 	}
