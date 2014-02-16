@@ -18,6 +18,7 @@
 #include "server/zone/objects/player/sessions/ImageDesignPositionObserver.h"
 #include "server/zone/objects/player/events/ImageDesignTimeoutEvent.h"
 #include "server/zone/objects/player/sessions/MigrateStatsSession.h"
+#include "server/zone/objects/player/PlayerObject.h"
 
 void ImageDesignSessionImplementation::initializeTransientMembers() {
 	FacadeImplementation::initializeTransientMembers();
@@ -208,6 +209,20 @@ void ImageDesignSessionImplementation::updateImageDesign(CreatureObject* updater
 		}
 
 		imageDesignManager->updateHairObject(strongReferenceTarget, hairObject);
+
+		// Add holo emote
+		String holoemote = imageDesignData.getHoloEmote();
+		if( !holoemote.isEmpty() ){
+
+			PlayerObject* ghost = strongReferenceTarget->getPlayerObject();
+			ghost->setInstalledHoloEmote( holoemote );  // Also resets number of uses available
+
+			strongReferenceTarget->sendSystemMessage("@image_designer:new_holoemote"); //"Congratulations! You have purchased a new Holo-Emote generator. Type '/holoemote help' for instructions."
+
+			if(xpGranted < 100)
+				xpGranted = 100;
+
+		}
 
 		// Drop the Session for both the designer and the targetCreature;
 		strongReferenceDesigner->dropActiveSession(SessionFacadeType::IMAGEDESIGN);

@@ -237,6 +237,7 @@ public:
 	static const uint16 COLOR_ARMOR = 1014;	
 	static const uint16 CUSTOMIZE_KIT = 1015;//listbox to select FRAME or TRIM
 	static const uint16 MOUNT_GROWTH_ARREST = 1016;
+	static const uint16 HOLO_EMOTE_HELP = 1017;
 };
 
 #endif /*SuiWindowType_H_*/

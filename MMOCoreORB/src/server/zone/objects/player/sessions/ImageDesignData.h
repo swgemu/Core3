@@ -242,6 +242,10 @@ public:
 	inline VectorMap<String, uint32>* getColorAttributesMap() {
 		return &colorAttributes;
 	}
+
+	inline String getHoloEmote(){
+		return holoEmote;
+	}
 };
 
 #endif /* IMAGEDESIGNDATA_H_ */
