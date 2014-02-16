@@ -161,4 +161,10 @@ class PetManager extends ManagedService implements Logger {
 	 */
 	@local
 	public native void enqueueOwnerOnlyPetCommand(CreatureObject player, AiAgent pet, unsigned int command, final string args);
+	
+	/**
+	 * Returns whether the pet has the given message trained for the command
+	 */
+	@local
+	public native boolean isTrainedCommand( PetControlDevice petControlDevice, unsigned int command, final string msg );
 }
