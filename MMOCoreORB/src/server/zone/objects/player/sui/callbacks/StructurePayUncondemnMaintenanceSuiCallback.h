@@ -74,7 +74,7 @@ public:
 
 		int uncondemnCost = -structure->getSurplusMaintenance();
 
-		if (creature->getBankCredits() + creature->getCashCredits() < uncondemnCost) {
+		if (uncondemnCost < 0 || (creature->getBankCredits() + creature->getCashCredits() < uncondemnCost)) {
 			//TODO: add error message;
 			return;
 		}
