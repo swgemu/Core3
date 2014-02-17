@@ -182,7 +182,7 @@ public:
 		body << "beehive, blossom, brainstorm, bubblehead\n";
 		body << "bullhorns, butterflies, champagne, haunted\n";
 		body << "hearts, hologlitter, holonotes, imperial\n";
-		body << "kitty, phonytail, rebel, spark\n";
+		body << "kitty, phonytail, rebel, sparky\n";
 
 		ManagedReference<SuiMessageBox*> box = new SuiMessageBox(player, SuiWindowType::HOLO_EMOTE_HELP);
 		box->setPromptTitle("HOLO-EMOTE HELP");
