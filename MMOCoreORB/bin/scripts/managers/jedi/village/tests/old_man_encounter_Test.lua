@@ -57,6 +57,7 @@ describe("OldManEncounter", function()
 		creatureObjectPlayer.getSlottedObject = spy.new(function() return pPlayerInventory end)
 		creatureObjectPlayer.removeScreenPlayState = spy.new(function() end)
 		creatureObjectPlayer.setScreenPlayState = spy.new(function() end)
+		creatureObjectPlayer.getScreenPlayState = spy.new(function() end)
 		DirectorManagerMocks.creatureObjects[pCreatureObject] = creatureObjectPlayer
 
 		creatureObjectConversingOldMan = {}
@@ -74,6 +75,7 @@ describe("OldManEncounter", function()
 
 		forceCrystal = {}
 		forceCrystal.getObjectID = spy.new(function() return forceCrystalId end)
+		forceCrystal.destroyObjectFromWorld = spy.new(function() end)
 		DirectorManagerMocks.sceneObjects[pForceCrystal] = forceCrystal
 	end)
 
@@ -213,6 +215,61 @@ describe("OldManEncounter", function()
 
 						assert.spy(QuestManagerMocks.completeQuest).was.not_called()
 					end)
+				end)
+			end)
+		end)
+
+		describe("removeForceCrystalFromPlayer", function()
+			describe("When called with a player", function()
+				local realGetSceneObject
+
+				setup(function()
+					realGetSceneObject = getSceneObject
+				end)
+
+				teardown(function()
+					getSceneObject = realGetSceneObject
+				end)
+
+				before_each(function()
+					getSceneObject = spy.new(function() return pForceCrystal end)
+					creatureObjectPlayer.getScreenPlayState = spy.new(function() return forceCrystalId end)
+				end)
+
+				it("Should read the force crystal id from the player.", function()
+					OldManEncounter:removeForceCrystalFromPlayer(pCreatureObject)
+
+					assert.spy(creatureObjectPlayer.getScreenPlayState).was.called_with(creatureObjectPlayer, OldManEncounter.taskName .. OLD_MAN_FORCE_CRYSTAL_ID_STRING)
+				end)
+
+				it("Should get a pointer to the scene object of the force crystal.", function()
+					OldManEncounter:removeForceCrystalFromPlayer(pCreatureObject)
+
+					assert.spy(getSceneObject).was.called_with(forceCrystalId)
+				end)
+
+				describe("and the force crystal exists.", function()
+					before_each(function()
+						getSceneObject = spy.new(function() return pForceCrystal end)
+					end)
+
+					it("Should delete the force crystal from the world.", function()
+						OldManEncounter:removeForceCrystalFromPlayer(pCreatureObject)
+
+						assert.spy(forceCrystal.destroyObjectFromWorld).was.called(1)
+					end)
+				end)
+
+				it("Should clear the force crystal id from the player.", function()
+					OldManEncounter:removeForceCrystalFromPlayer(pCreatureObject)
+
+					assert.spy(creatureObjectPlayer.removeScreenPlayState).was.called_with(creatureObjectPlayer, 0xFFFFFFFFFFFFFFFF, OldManEncounter.taskName .. OLD_MAN_FORCE_CRYSTAL_ID_STRING)
+				end)
+
+				it("Should reset the old man initial and the old man force crystal quests.", function()
+					OldManEncounter:removeForceCrystalFromPlayer(pCreatureObject)
+
+					assert.spy(QuestManagerMocks.resetQuest).was.called(2)
 				end)
 			end)
 		end)

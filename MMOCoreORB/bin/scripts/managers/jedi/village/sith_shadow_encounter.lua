@@ -10,12 +10,12 @@ SithShadowEncounter = Encounter:new {
 	-- Encounter properties
 	--minimumTimeUntilEncounter = 12 * 60 * 60 * 1000, -- 12 hours
 	--maximumTimeUntilEncounter = 24 * 60 * 60 * 1000, -- 24 hours
-	minimumTimeUntilEncounter = 12 * 1000, -- 12 hours
-	maximumTimeUntilEncounter = 24 * 1000, -- 24 hours
+	minimumTimeUntilEncounter = 30 * 1000, -- 12 hours
+	maximumTimeUntilEncounter = 60 * 1000, -- 24 hours
 	--encounterDespawnTime = 5 * 60 * 1000, -- 5 minutes
 	encounterDespawnTime = 60 * 1000, -- 5 minutes
 	spawnObjectList = {
-		{ template = "sith_shadow", minimumDistance = 32, maximumDistance = 64, referencePoint = 0, followPlayer = true },
+		{ template = "sith_shadow", minimumDistance = 64, maximumDistance = 96, referencePoint = 0, followPlayer = true },
 		{ template = "sith_shadow", minimumDistance = 4, maximumDistance = 8, referencePoint = 1, followPlayer = true }
 	},
 	onEncounterSpawned = nil,
@@ -24,11 +24,11 @@ SithShadowEncounter = Encounter:new {
 	onEncounterAtPlayer = nil
 }
 
--- Check if the sith shadow belongs to the player.
+-- Check if the sith shadow is the first one spawned for the player.
 -- @param pSithShadow pointer to the sith shadow.
 -- @param pCreatureObject pointer to the creature object of the player.
--- @return true if the sith shadow belongs to the encounter of the player.
-function SithShadowEncounter:isSithShadowOwnedByPlayer(pSithShadow, pCreatureObject)
+-- @return true if the sith shadow is the first one spawned for the player.
+function SithShadowEncounter:isTheFirstSithShadowOfThePlayer(pSithShadow, pCreatureObject)
 	local spawnedSithShadows = SpawnMobiles.getSpawnedMobiles(pCreatureObject, self.taskName)
 
 	if spawnedSithShadows ~= nil then
@@ -56,9 +56,25 @@ end
 -- @param nothing unused variable for the default footprint of event handlers.
 -- @return 1 if the correct player looted the creature to remove the observer, 0 otherwise to keep the observer.
 function SithShadowEncounter:onLoot(pLootedCreature, pLooter, nothing)
-	Logger:log("Looting", LT_INFO)
-	if self:isSithShadowOwnedByPlayer(pLootedCreature, pLooter) then
+	Logger:log("Looting the sith shadow.", LT_INFO)
+	if self:isTheFirstSithShadowOfThePlayer(pLootedCreature, pLooter) then
 		self:addWaypointDatapadAsLoot(pLootedCreature)
+		return 1
+	end
+
+	return 0
+end
+
+-- Handle the event PLAYERKILLED.
+-- @param pCreatureObject pointer to the creature object of the killed player.
+-- @param pKiller pointer to the creature object of the killer.
+-- @param noting unused variable for the default footprint of event handlers.
+-- @return 1 if the player was killed by one of the sith shadows, otherwise 0 to keep the observer.
+function SithShadowEncounter:onPlayerKilled(pCreatureObject, pKiller, nothing)
+	Logger:log("Player was killed.", LT_INFO)
+	if SpawnMobiles.isFromSpawn(pCreatureObject, SithShadowEncounter.taskName, pKiller) then
+		OldManEncounter:removeForceCrystalFromPlayer(pCreatureObject)
+		OldManEncounter:start(pCreatureObject)
 		return 1
 	end
 
@@ -70,8 +86,16 @@ end
 -- @param pCreatureObject pointer to the creature object of the player who has this encounter.
 -- @param spawnedObject list of pointers to the spawned sith shadows.
 function SithShadowEncounter:onEncounterSpawned(pCreatureObject, spawnedObjects)
-	Logger:log("Register loot observer", LT_INFO)
-	createObserver(LOOTCREATURE, "SithShadowEncounter", "onLoot", spawnedObjects[1])
+	Logger:log("Register Sith Shadow Encounter observers.", LT_INFO)
+	createObserver(LOOTCREATURE, self.taskName, "onLoot", spawnedObjects[1])
+	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pCreatureObject)
+end
+
+-- Check if the sith shadow encounter is finished or not.
+-- @param pCreatureObject pointer to the creature object of the player.
+-- @return true if the encounter is finished. I.e. the player has access to the village or lost the crystal.
+function SithShadowEncounter:isEncounterFinished(pCreatureObject)
+	return not QuestManager.hasCompletedQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
 end
 
 return SithShadowEncounter
