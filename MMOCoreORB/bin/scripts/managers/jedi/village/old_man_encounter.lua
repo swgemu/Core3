@@ -16,12 +16,12 @@ OldManEncounter = Encounter:new {
 	-- Encounter properties
 	--minimumTimeUntilEncounter = 12 * 60 * 60 * 1000, -- 12 hours
 	--maximumTimeUntilEncounter = 24 * 60 * 60 * 1000, -- 24 hours
-	minimumTimeUntilEncounter = 12 * 1000, -- 12 hours
-	maximumTimeUntilEncounter = 24 * 1000, -- 24 hours
+	minimumTimeUntilEncounter = 30 * 1000, -- 12 hours
+	maximumTimeUntilEncounter = 60 * 1000, -- 24 hours
 	--encounterDespawnTime = 5 * 60 * 1000, -- 5 minutes
 	encounterDespawnTime = 60 * 1000, -- 5 minutes
 	spawnObjectList = {
-		{ template = "old_man", minimumDistance = 32, maximumDistance = 64, referencePoint = 0, followPlayer = true }
+		{ template = "old_man", minimumDistance = 64, maximumDistance = 96, referencePoint = 0, followPlayer = true }
 	},
 	onEncounterSpawned = nil,
 	isEncounterFinished = nil,
@@ -93,6 +93,29 @@ function OldManEncounter:giveForceCrystalToPlayer(pCreatureObject)
 		QuestManager.completeQuest(pCreatureObject, QuestManager.quests.OLD_MAN_INITIAL)
 		QuestManager.completeQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
 	end)
+end
+
+-- Remove the force crystal from the player.
+-- @param pCreatureObject pointer to the creature object of the player.
+function OldManEncounter:removeForceCrystalFromPlayer(pCreatureObject)
+	Logger:log("Removing crystal from player.", LT_INFO)
+	local forceCrystalId = ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
+		return creatureObject:getScreenPlayState(self.taskName .. OLD_MAN_FORCE_CRYSTAL_ID_STRING)
+	end)
+	local pForceCrystal = getSceneObject(forceCrystalId)
+
+	if pForceCrystal ~= nil then
+		ObjectManager.withSceneObject(pForceCrystal, function(forceCrystal)
+			forceCrystal:destroyObjectFromWorld()
+		end)
+	end
+
+	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
+		return creatureObject:removeScreenPlayState(0xFFFFFFFFFFFFFFFF, self.taskName .. OLD_MAN_FORCE_CRYSTAL_ID_STRING)
+	end)
+
+	QuestManager.resetQuest(pCreatureObject, QuestManager.quests.OLD_MAN_INITIAL)
+	QuestManager.resetQuest(pCreatureObject, QuestManager.quests.OLD_MAN_FORCE_CRYSTAL)
 end
 
 -- Check if the player is conversing with the old man that is spawned for the player

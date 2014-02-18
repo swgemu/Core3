@@ -1,5 +1,5 @@
 --Should all created players start with God Mode? 1 = yes, 0 = no
-freeGodMode = 0;
+freeGodMode = 1;
 --How many cash credits new characters start with after creating a character (changed during test phase, normal value is 100)
 startingCash = 100
 --startingCash = 100000
@@ -20,7 +20,7 @@ professions = {
 }
 
 marksmanPistol = "object/weapon/ranged/pistol/pistol_cdef.iff"
-	
+
 marksmanRifle = "object/weapon/ranged/rifle/rifle_cdef.iff"
 
 marksmanCarbine = "object/weapon/ranged/carbine/carbine_cdef.iff"
