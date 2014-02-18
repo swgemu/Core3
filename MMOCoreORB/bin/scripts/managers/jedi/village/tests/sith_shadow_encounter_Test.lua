@@ -5,6 +5,7 @@ local SpawnMobilesMocks = require("utils.mocks.spawn_mobiles_mocks")
 local OldManEncounterMocks = require("managers.jedi.village.mocks.old_man_encounter_mocks")
 
 LOOTCREATURE = 53
+SITH_SHADOW_THREATEN_STRING = "@quest/force_sensitive/intro:military_threaten"
 
 describe("Sith Shadow Encounter", function()
 	local pCreatureObject = { "creatureObjectPointer" }
@@ -20,6 +21,9 @@ describe("Sith Shadow Encounter", function()
 	local pInventory = { "inventoryPointer" }
 	local firstSithShadowId = 12345
 	local secondSithShadowId = 23456
+	local pThreatenStringId = { "threatenPointer" }
+	local threatenStringId
+	local playerFirstName = "firstName"
 
 	setup(function()
 		DirectorManagerMocks.mocks.setup()
@@ -42,6 +46,7 @@ describe("Sith Shadow Encounter", function()
 		QuestManagerMocks.mocks.before_each()
 
 		creatureObject = {}
+		creatureObject.getFirstName = spy.new(function() return playerFirstName end)
 		DirectorManagerMocks.creatureObjects[pCreatureObject] = creatureObject
 
 		firstSithShadowObject = {}
@@ -52,6 +57,11 @@ describe("Sith Shadow Encounter", function()
 		secondSithShadowObject = {}
 		secondSithShadowObject.getObjectID = spy.new(function() return secondSithShadowId end)
 		DirectorManagerMocks.creatureObjects[pSecondSithShadow] = secondSithShadowObject
+
+		threatenStringId = {}
+		threatenStringId._getObject = spy.new(function() return pThreatenStringId end)
+		threatenStringId.setTT = spy.new(function() end)
+		DirectorManagerMocks.stringIds[SITH_SHADOW_THREATEN_STRING] = threatenStringId
 	end)
 
 	describe("onEncounterSpawned", function()
@@ -66,6 +76,12 @@ describe("Sith Shadow Encounter", function()
 				SithShadowEncounter:onEncounterSpawned(pCreatureObject, spawnedSithShadowList)
 
 				assert.spy(createObserver).was.called_with(OBJECTDESTRUCTION, SithShadowEncounter.taskName, "onPlayerKilled", pCreatureObject)
+			end)
+
+			it("Should activate the sith shadow ambush quest.", function()
+				SithShadowEncounter:onEncounterSpawned(pCreatureObject, spawnedSithShadowList)
+
+				assert.spy(QuestManagerMocks.activateQuest).was.called_with(pCreatureObject, QuestManagerMocks.quests.TwO_MILITARY)
 			end)
 		end)
 	end)
@@ -226,6 +242,28 @@ describe("Sith Shadow Encounter", function()
 				it("Should return false", function()
 					assert.is_false(SithShadowEncounter:isEncounterFinished(pCreatureObject))
 				end)
+			end)
+		end)
+	end)
+
+	describe("onEncounterClosingIn", function()
+		describe("When called with a player and a list of spawned sith shadows", function()
+			it("Should get the first name of the player.", function()
+				SithShadowEncounter:onEncounterClosingIn(pCreatureObject, spawnedSithShadowList)
+
+				assert.spy(creatureObject.getFirstName).was.called_with(creatureObject)
+			end)
+
+			it("Should put the player name in the threaten string.", function()
+				SithShadowEncounter:onEncounterClosingIn(pCreatureObject, spawnedSithShadowList)
+
+				assert.spy(threatenStringId.setTT).was.called_with(threatenStringId, playerFirstName)
+			end)
+
+			it("Should send the threaten string to the player.", function()
+				SithShadowEncounter:onEncounterClosingIn(pCreatureObject, spawnedSithShadowList)
+
+				assert.spy(spatialChat).was.called_with(pFirstSithShadow, pThreatenStringId)
 			end)
 		end)
 	end)
