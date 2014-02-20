@@ -5,6 +5,7 @@ local SpawnMobiles = require("utils.spawn_mobiles")
 local Logger = require("utils.logger")
 
 SITH_SHADOW_THREATEN_STRING = "@quest/force_sensitive/intro:military_threaten"
+SITH_SHADOW_MILITARY_TAKE_CRYSTAL = "@quest/force_sensitive/intro:military_take_crystal"
 
 SithShadowEncounter = Encounter:new {
 	-- Task properties
@@ -61,6 +62,8 @@ function SithShadowEncounter:onLoot(pLootedCreature, pLooter, nothing)
 	Logger:log("Looting the sith shadow.", LT_INFO)
 	if self:isTheFirstSithShadowOfThePlayer(pLootedCreature, pLooter) then
 		self:addWaypointDatapadAsLoot(pLootedCreature)
+		QuestManager.completeQuest(pLooter, QuestManager.quests.TwO_MILITARY)
+		QuestManager.completeQuest(pLooter, QuestManager.quests.LOOT_DATAPAD_1)
 		return 1
 	end
 
@@ -76,7 +79,10 @@ function SithShadowEncounter:onPlayerKilled(pCreatureObject, pKiller, nothing)
 	Logger:log("Player was killed.", LT_INFO)
 	if SpawnMobiles.isFromSpawn(pCreatureObject, SithShadowEncounter.taskName, pKiller) then
 		OldManEncounter:removeForceCrystalFromPlayer(pCreatureObject)
+		spatialChat(pKiller, SITH_SHADOW_MILITARY_TAKE_CRYSTAL)
 		OldManEncounter:start(pCreatureObject)
+		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.TwO_MILITARY)
+		QuestManager.resetQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
 		return 1
 	end
 
@@ -105,6 +111,7 @@ function SithShadowEncounter:onEncounterClosingIn(pCreatureObject, spawnedObject
 		threatenString:setTT(creatureObject:getFirstName())
 		spatialChat(spawnedObjects[1], threatenString:_getObject())
 	end)
+	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.LOOT_DATAPAD_1)
 end
 
 -- Check if the sith shadow encounter is finished or not.
