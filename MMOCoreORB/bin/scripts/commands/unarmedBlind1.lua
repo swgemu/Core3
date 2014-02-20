@@ -54,7 +54,7 @@ UnarmedBlind1Command = {
 
 	animationCRC = hashCode("attack_high_center_light_1"),
 
-	combatSpam = "unarmed_blind",
+	combatSpam = "aryxslash",
 
 	stateEffects = {
 	  StateEffect( 
