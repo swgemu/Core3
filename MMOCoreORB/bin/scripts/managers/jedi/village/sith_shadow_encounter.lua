@@ -4,6 +4,8 @@ local ObjectManager = require("managers.object.object_manager")
 local SpawnMobiles = require("utils.spawn_mobiles")
 local Logger = require("utils.logger")
 
+SITH_SHADOW_THREATEN_STRING = "@quest/force_sensitive/intro:military_threaten"
+
 SithShadowEncounter = Encounter:new {
 	-- Task properties
 	taskName = "SithShadowEncounter",
@@ -89,6 +91,20 @@ function SithShadowEncounter:onEncounterSpawned(pCreatureObject, spawnedObjects)
 	Logger:log("Register Sith Shadow Encounter observers.", LT_INFO)
 	createObserver(LOOTCREATURE, self.taskName, "onLoot", spawnedObjects[1])
 	createObserver(OBJECTDESTRUCTION, self.taskName, "onPlayerKilled", pCreatureObject)
+	QuestManager.activateQuest(pCreatureObject, QuestManager.quests.TwO_MILITARY)
+end
+
+-- Handling of the encounter closing in event.
+-- Send a spatial chat from the first sith shadow.
+-- @param pCreatureObject pointer to the creature object of the player who has this encounter.
+-- @param spawnedObjects list of pointers to the spawned sith shadows.
+function SithShadowEncounter:onEncounterClosingIn(pCreatureObject, spawnedObjects)
+	Logger:log("Sending threaten string.", LT_INFO)
+	ObjectManager.withCreatureObject(pCreatureObject, function(creatureObject)
+		local threatenString = LuaStringIdChatParameter(SITH_SHADOW_THREATEN_STRING)
+		threatenString:setTT(creatureObject:getFirstName())
+		spatialChat(spawnedObjects[1], threatenString:_getObject())
+	end)
 end
 
 -- Check if the sith shadow encounter is finished or not.
