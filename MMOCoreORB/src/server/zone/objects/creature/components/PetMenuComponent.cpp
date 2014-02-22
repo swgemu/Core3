@@ -161,7 +161,7 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 			menuResponse->addRadialMenuItemToRadialID(141, 207, 3, "@pet/pet_menu:menu_train_mount" ); // Train Pet As A Mount
 		}
 
-		if (controlDevice->isTrainedAsMount()) {
+		if (controlDevice->isTrainedAsMount() && !pet->isDead() && !pet->isIncapacitated()) {
 			Reference<SceneObject*> rider = pet->getSlottedObject("rider");
 
 			if (rider == NULL) {
@@ -170,6 +170,10 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 				menuResponse->addRadialMenuItem(206, 3, "@pet/pet_menu:menu_dismount"); // Climb Off Of Pet
 			}
 		}
+
+		if (pet->isIncapacitated() && pet->isAttackableBy(player))
+			menuResponse->addRadialMenuItem(6, 3, "@ui_radial:combat_death_blow"); // Death Blow
+
 	}
 
 }
