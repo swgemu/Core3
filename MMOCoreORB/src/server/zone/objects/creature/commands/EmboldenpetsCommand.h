@@ -80,7 +80,7 @@ public:
 			return GENERALERROR;
 
 		// Check player mind
-		if (player->getHAM(CreatureAttribute::MIND) < mindCost) {
+		if (player->getHAM(CreatureAttribute::MIND) <= mindCost) {
 			player->sendSystemMessage("@pet/pet_menu:sys_fail_embolden"); // "You do not have enough mental focus to embolden."
 			return GENERALERROR;
 		}
