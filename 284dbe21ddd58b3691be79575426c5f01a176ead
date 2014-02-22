@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_0cedf78b",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/WaypointCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-02-22T14:52:19Z",
+      "side": 1,
+      "message": "Locker crosslocker(targetObject, creature);",
+      "revId": "284dbe21ddd58b3691be79575426c5f01a176ead",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
