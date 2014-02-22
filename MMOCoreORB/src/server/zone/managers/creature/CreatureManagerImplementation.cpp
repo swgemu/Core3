@@ -432,8 +432,6 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 	ManagedReference<PlayerManager*> playerManager = zoneServer->getPlayerManager();
 
-	bool pet = destructedObject->isPet();
-
 	// lets unlock destructor so we dont get into complicated deadlocks
 
 	// lets copy the damage map before we remove it all
@@ -475,12 +473,12 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 
 		}
 
-		if (playerManager != NULL && !pet)
+		if (playerManager != NULL)
 			playerManager->disseminateExperience(destructedObject, &copyThreatMap);
 
 		SceneObject* creatureInventory = destructedObject->getSlottedObject("inventory");
 
-		if (creatureInventory != NULL && !pet) {
+		if (creatureInventory != NULL) {
 			LootManager* lootManager = zoneServer->getLootManager();
 
 			if (destructedObject->isNonPlayerCreatureObject() && !destructedObject->isEventMob())
@@ -498,14 +496,6 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		// We can expedite the despawn when corpse has no loot, no credits, player cannot harvest, and no group members in range can harvest
 		shouldRescheduleCorpseDestruction = playerManager->shouldRescheduleCorpseDestruction(player, destructedObject);
 
-		if (pet) {
-			destructedObject->clearBuffs(true);
-
-			ManagedReference<PetControlDevice*> petControlDevice = destructedObject->getControlDevice().get().castTo<PetControlDevice*>();
-
-			if (petControlDevice != NULL && petControlDevice->getPetType() != PetManager::DROIDPET)
-				petControlDevice->setVitality(petControlDevice->getVitality() - 1);
-		}
 	} catch (...) {
 		destructedObject->scheduleDespawn();
 
@@ -516,17 +506,15 @@ int CreatureManagerImplementation::notifyDestruction(TangibleObject* destructor,
 		throw;
 	}
 
-	if (!pet) {
-		destructedObject->scheduleDespawn();
+	destructedObject->scheduleDespawn();
 
-		if (shouldRescheduleCorpseDestruction) {
+	if (shouldRescheduleCorpseDestruction) {
 
-			Reference<DespawnCreatureTask*> despawn = destructedObject->getPendingTask("despawn").castTo<DespawnCreatureTask*>();
+		Reference<DespawnCreatureTask*> despawn = destructedObject->getPendingTask("despawn").castTo<DespawnCreatureTask*>();
 
-			if (despawn != NULL) {
-				despawn->cancel();
-				despawn->reschedule(10000);
-			}
+		if (despawn != NULL) {
+			despawn->cancel();
+			despawn->reschedule(10000);
 		}
 	}
 
