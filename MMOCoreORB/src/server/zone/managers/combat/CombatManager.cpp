@@ -44,6 +44,9 @@ bool CombatManager::startCombat(CreatureObject* attacker, TangibleObject* defend
 
 		if (parent == NULL || !parent->isMount())
 			return false;
+
+		if (attacker->hasBuff(String("gallop").hashCode()))
+			return false;
 	}
 
 	if (attacker->hasRidingCreature())
