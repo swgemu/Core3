@@ -46,6 +46,7 @@ which carries forward this exception.
 #define PLANETCOMMAND_H_
 
 #include "server/zone/objects/scene/SceneObject.h"
+#include "server/chat/ChatManager.h"
 
 class PlanetCommand : public QueueCommand {
 public:
@@ -62,6 +63,9 @@ public:
 
 		if (!checkInvalidLocomotions(creature))
 			return INVALIDLOCOMOTION;
+
+		ChatManager* chatManager = server->getZoneServer()->getChatManager();
+		chatManager->handlePlanetChat( creature, arguments);
 
 		return SUCCESS;
 	}
