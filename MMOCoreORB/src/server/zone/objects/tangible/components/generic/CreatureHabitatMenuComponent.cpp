@@ -117,11 +117,10 @@ int CreatureHabitatMenuComponent::handleObjectMenuSelect(SceneObject* sceneObjec
 			player->sendSystemMessage("Invalid Animation");
 		}
 
-
+		return 0;
 	} else {
 		return TangibleObjectMenuComponent::handleObjectMenuSelect(sceneObject,	player, selectedID);
 	}
-
 }
 
 
