@@ -77,6 +77,8 @@ public:
 				targetObject = server->getZoneServer()->getObject(creature->getTargetID());
 
 				if (targetObject != NULL) {
+					Locker crossLocker(targetObject, creature);
+
 					Vector3 worldPosition = targetObject->getWorldPosition();
 
 					ManagedReference<WaypointObject*> obj = server->getZoneServer()->createObject(0xc456e788, 1).castTo<WaypointObject*>();
@@ -125,6 +127,9 @@ public:
 					continue;
 
 				results.deleteAll();
+
+				Locker crlocker(object, creature);
+
 				String name = object->getDisplayedName();
 
 				if (!name.toLowerCase().contains(objectFilter.toLowerCase()))
