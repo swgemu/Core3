@@ -159,7 +159,8 @@ class MissionTerminal extends Terminal {
 	}
 
 	public void addSlicer(CreatureObject slicer) {
-		slicers.add(slicer);
+		if (!slicers.contains(slicer))
+			slicers.add(slicer);
 	}
 
 	public void removeSlicer(CreatureObject slicer) {
