@@ -152,6 +152,8 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		s.setStringId(droid->getObjectName()->getFullPath());
 		controlDevice->setObjectName(s);
 		controlDevice->setPetType(PetManager::DROIDPET);
+		controlDevice->setMaxVitality(100);
+		controlDevice->setVitality(100);
 		controlDevice->setDefaultCommands();
 		droid->createChildObjects();
 		controlDevice->setControlledObject(droid);
