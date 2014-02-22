@@ -101,6 +101,16 @@ public:
 			}
 		}
 
+		ManagedReference<SceneObject*> targetObject = server->getZoneServer()->getObject(target).get();
+
+		if (targetObject != NULL) {
+			Locker crosslocker(targetObject, creature);
+
+			x = targetObject->getWorldPositionX();
+			y = targetObject->getWorldPositionY();
+			waypointName = targetObject->getDisplayedName();
+		}
+
 		StringTokenizer tokenizer(waypointData);
 		tokenizer.setDelimeter(" ");
 
