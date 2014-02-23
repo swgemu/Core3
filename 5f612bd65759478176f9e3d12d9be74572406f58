@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3291f1_ac05c315",
+        "filename": "MMOCoreORB/src/server/zone/objects/creature/commands/pet/PetRecoverCommand.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1
+      },
+      "writtenOn": "2014-02-23T23:35:05Z",
+      "side": 1,
+      "message": "Locker crosssLocker(player, pet);",
+      "revId": "5f612bd65759478176f9e3d12d9be74572406f58",
+      "serverId": "87af08d3-5c3e-4272-a6b6-bb0c36cf31f2",
+      "unresolved": false
+    }
+  ]
+}
