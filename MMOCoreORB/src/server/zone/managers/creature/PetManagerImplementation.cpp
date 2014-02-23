@@ -497,6 +497,7 @@ void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet) {
 	}
 
 	pet->setCurrentSpeed(0);
+	pet->clearCombatState(true);
 	pet->setPosture(CreaturePosture::DEAD, true);
 	pet->updateLocomotion();
 
@@ -504,10 +505,16 @@ void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet) {
 	pet->clearBuffs(false);
 
 	if (!attacker->isPlayerCreature() && !attacker->isPet()) {
-		ManagedReference<PetControlDevice*> petControlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
 
-		if (petControlDevice != NULL)
-			petControlDevice->setVitality(petControlDevice->getVitality() - 2);
+		if (pet->getCooldownTimerMap() != NULL && pet->getCooldownTimerMap()->isPast("vitalityLossCooldown")) {
+			ManagedReference<PetControlDevice*> petControlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
+
+			if (petControlDevice != NULL) {
+				petControlDevice->setVitality(petControlDevice->getVitality() - 2);
+				pet->getCooldownTimerMap()->updateToCurrentAndAddMili("vitalityLossCooldown", 300000);
+			}
+		}
+
 	}
 
 	pet->notifyObjectKillObservers(attacker);
