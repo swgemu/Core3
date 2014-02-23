@@ -46,10 +46,6 @@ bool TerrainManager::initialize(const String& terrainFile) {
  *x0,y0 |----------------|
  */
 float TerrainManager::getHighestHeight(float x0, float y0, float x1, float y1, int stepping) {
-	/*StringBuffer msg2;
-	msg2 << "getHeights for (x0, y0) = (" << x0 << ", " << y0 << ") (x1, y1) = (" << x1 << ", " << y1 << ")";
-	info(msg2.toString(), true);*/
-
 	int deltaX = (int)fabs(x1 - x0);
 	int deltaY = (int)fabs(y1 - y0);
 
@@ -59,16 +55,34 @@ float TerrainManager::getHighestHeight(float x0, float y0, float x1, float y1, i
 		for (int j = (int)x0; j < (int)x0 + deltaX; j += stepping) {
 			float height = zone->getHeight(j, i);
 
-			/*StringBuffer msg;
-			msg << "checking x:" << j << " y:" << i << " height:" << height;
-			info(msg.toString(), true);*/
-
 			if (height > maxHeight)
 				maxHeight = height;
 		}
 	}
 
 	return maxHeight;
+}
+
+float TerrainManager::getLowestHeight(float x0, float y0, float x1, float y1, int stepping) {
+	int deltaX = (int)fabs(x1 - x0);
+	int deltaY = (int)fabs(y1 - y0);
+
+	float minHeight = 16000.f;
+
+	for (int i = (int)y0; i < (int)y0 + deltaY; i += stepping) {
+		for (int j = (int)x0; j < (int)x0 + deltaX; j += stepping) {
+			float height = zone->getHeight(j, i);
+
+			if (height < minHeight)
+				minHeight = height;
+		}
+	}
+
+	return minHeight;
+}
+
+float TerrainManager::getHighestHeightDifference(float x0, float y0, float x1, float y1, int stepping) {
+	return getHighestHeight(x0, y0, x1, y1, stepping) - getLowestHeight(x0, y0, x1, y1, stepping);
 }
 
 int TerrainManager::notifyPositionUpdate(CreatureObject* object) {

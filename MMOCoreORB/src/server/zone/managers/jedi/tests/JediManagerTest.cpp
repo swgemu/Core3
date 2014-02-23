@@ -89,6 +89,7 @@ public:
 		EXPECT_CALL(mockLua, runFile(_)).Times(AnyNumber());
 		EXPECT_CALL(mockLua, getGlobalInt(_)).Times(AnyNumber());
 		EXPECT_CALL(mockLua, getGlobalString(_)).Times(AnyNumber());
+		EXPECT_CALL(mockLua, setGlobalInt(_, _)).Times(AnyNumber());
 		ON_CALL(mockLua, getGlobalString(_)).WillByDefault(Return(String("")));
 	}
 };

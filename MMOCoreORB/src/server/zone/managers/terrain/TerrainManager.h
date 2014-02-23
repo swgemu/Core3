@@ -47,6 +47,8 @@ public:
 	 *x0,y0 |----------------|
 	 */
 	float getHighestHeight(float x0, float y0, float x1, float y1, int stepping = 1);
+	float getLowestHeight(float x0, float y0, float x1, float y1, int stepping = 1);
+	float getHighestHeightDifference(float x0, float y0, float x1, float y1, int stepping = 1);
 
 	int notifyPositionUpdate(CreatureObject* object);
 
