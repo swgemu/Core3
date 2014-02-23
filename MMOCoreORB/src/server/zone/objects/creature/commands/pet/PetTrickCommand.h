@@ -69,23 +69,24 @@ public:
 		}
 
 		// Check player HAM
-		int actionCost = 50 * trickNumber;
-		int mindCost = 50 * trickNumber;
+		int actionCost = player->calculateCostAdjustment(CreatureAttribute::QUICKNESS, 50 * trickNumber );
+		int mindCost = player->calculateCostAdjustment(CreatureAttribute::FOCUS, 50 * trickNumber );
 		if (player->getHAM(CreatureAttribute::ACTION) <= actionCost || player->getHAM(CreatureAttribute::MIND) <= mindCost) {
 			player->sendSystemMessage("@pet/pet_menu:cant_trick"); // "You need to rest before you can have your pet perform a trick."
 			return INSUFFICIENTHAM;
 		}
 
-		// Heal 10% of base in wounds
-		int mindHeal = pet->getBaseHAM(CreatureAttribute::MIND) * 0.10 * trickNumber;
-		int focusHeal = pet->getBaseHAM(CreatureAttribute::FOCUS) * 0.10 * trickNumber;
-		int willHeal = pet->getBaseHAM(CreatureAttribute::WILLPOWER) * 0.10 * trickNumber;
+		// Heal 20% or 40% of base in wounds and damage
+		int mindHeal = pet->getBaseHAM(CreatureAttribute::MIND) * 0.20 * trickNumber;
+		int focusHeal = pet->getBaseHAM(CreatureAttribute::FOCUS) * 0.20 * trickNumber;
+		int willHeal = pet->getBaseHAM(CreatureAttribute::WILLPOWER) * 0.20 * trickNumber;
 		int shockHeal = 100 * trickNumber;
 
 		pet->addWounds(CreatureAttribute::MIND, -mindHeal);
 		pet->addWounds(CreatureAttribute::FOCUS, -focusHeal);
 		pet->addWounds(CreatureAttribute::WILLPOWER, -willHeal);
 		pet->addShockWounds(-shockHeal);
+		pet->inflictDamage(pet, CreatureAttribute::MIND, -mindHeal, false);
 
 		// Perform trick animation
 		String animation = "trick_" + String::valueOf(trickNumber);

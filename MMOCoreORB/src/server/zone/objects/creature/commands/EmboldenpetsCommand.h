@@ -63,7 +63,7 @@ public:
 
 		int cooldownMilli = 300000; // 5 min
 		int durationSec =  60; // 1 min
-		int mindCost = 100;
+		int mindCost = player->calculateCostAdjustment(CreatureAttribute::FOCUS, 100 );
 		unsigned int buffCRC = String("emboldenPet").hashCode();
 
 		if (!checkStateMask(player))
