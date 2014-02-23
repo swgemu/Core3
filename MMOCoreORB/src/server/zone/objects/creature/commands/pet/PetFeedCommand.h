@@ -123,6 +123,18 @@ public:
 			}
 
 		}
+		else{
+
+			// Pet must have wounds to eat non-specific food
+			int wounds = pet->getWounds( CreatureAttribute::HEALTH ) + 	pet->getWounds( CreatureAttribute::STRENGTH ) +
+					     pet->getWounds( CreatureAttribute::CONSTITUTION ) + pet->getWounds( CreatureAttribute::ACTION ) +
+					     pet->getWounds( CreatureAttribute::QUICKNESS ) + pet->getWounds( CreatureAttribute::STAMINA );
+			if( wounds == 0 ){
+				pet->showFlyText("npc_reaction/flytext","nothungry", 204, 0, 0); // "Your pet isn't hungry."
+				return GENERALERROR;
+			}
+
+		}
 
 		// Heal 10% of base in wounds
 		int healthHeal = pet->getBaseHAM(CreatureAttribute::HEALTH) * 0.10;
