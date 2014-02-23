@@ -23,7 +23,15 @@ public:
 		if (pet->containsPendingTask("droid_power"))
 			pet->removePendingTask( "droid_power" );
 
-		pet->setPosture(CreaturePosture::UPRIGHT, false);
+		if (pet->getHAM(CreatureAttribute::HEALTH) < 1)
+			pet->setHAM(CreatureAttribute::HEALTH, 1);
+		if (pet->getHAM(CreatureAttribute::ACTION) < 1)
+			pet->setHAM(CreatureAttribute::ACTION, 1);
+		if (pet->getHAM(CreatureAttribute::MIND) < 1)
+			pet->setHAM(CreatureAttribute::MIND, 1);
+
+		pet->setPosture(CreaturePosture::UPRIGHT, true);
+		pet->clearCombatState(true);
 		pet->setTargetObject(NULL);
 		pet->setFollowObject(NULL);
 		pet->destroyObjectFromWorld(true);

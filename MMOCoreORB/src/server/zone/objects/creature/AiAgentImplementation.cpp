@@ -469,7 +469,7 @@ int AiAgentImplementation::notifyCallForHelp(Observable* observable, ManagedObje
 }
 
 int AiAgentImplementation::handleObjectMenuSelect(CreatureObject* player, byte selectedID) {
-	if (isDead()) {
+	if (isDead() && !isPet()) {
 		switch (selectedID) {
 		case 35:
 			player->executeObjectControllerAction(String("loot").hashCode(), getObjectID(), "");
@@ -1187,7 +1187,7 @@ void AiAgentImplementation::doMovement() {
 		nextStepPosition.setReached(true);
 	}
 
-	if (isDead() || (getZone() == NULL)) {
+	if (isDead() || isIncapacitated() || (getZone() == NULL)) {
 		setFollowObject(NULL);
 		return;
 	}
