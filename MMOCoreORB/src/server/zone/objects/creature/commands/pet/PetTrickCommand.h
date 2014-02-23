@@ -71,7 +71,7 @@ public:
 		// Check player HAM
 		int actionCost = 50 * trickNumber;
 		int mindCost = 50 * trickNumber;
-		if (player->getHAM(CreatureAttribute::ACTION) < actionCost || player->getHAM(CreatureAttribute::MIND) < mindCost) {
+		if (player->getHAM(CreatureAttribute::ACTION) <= actionCost || player->getHAM(CreatureAttribute::MIND) <= mindCost) {
 			player->sendSystemMessage("@pet/pet_menu:cant_trick"); // "You need to rest before you can have your pet perform a trick."
 			return INSUFFICIENTHAM;
 		}
