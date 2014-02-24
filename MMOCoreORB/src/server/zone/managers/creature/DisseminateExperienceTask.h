@@ -33,7 +33,7 @@ public:
 		Locker locker(strongRef);
 
 		PlayerManager* playerManager = strongRef->getZoneServer()->getPlayerManager();
-		playerManager->disseminateExperience(strongRef, &copyThreatMap);
+		playerManager->disseminateExperience(strongRef, &copyThreatMap, &spawnedCreatures);
 	}
 };
 
