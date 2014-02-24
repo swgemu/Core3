@@ -90,7 +90,11 @@ class PlayerManager extends Observer implements Logger {
 	protected int performanceDuration;
 	protected int medicalDuration;
 
-	protected int baseStoredPets;
+	protected int baseStoredCreaturePets;
+	protected int baseStoredFactionPets;
+	protected int baseStoredDroids;
+	protected int baseStoredVehicles;
+	protected int baseStoredShips;
 
 	@dereferenced
 	private transient VectorMap<int, string> badgeMap;
@@ -352,7 +356,23 @@ class PlayerManager extends Observer implements Logger {
 	 */
 	private native boolean doEnhanceCharacter(unsigned int crc, CreatureObject player, int amount, int duration, int buffType, byte attribute);
 
-	public int getBaseStoredPets() {
-		return baseStoredPets;
+	public int getBaseStoredCreaturePets() {
+		return baseStoredCreaturePets;
+	}
+
+	public int getBaseStoredFactionPets() {
+		return baseStoredFactionPets;
+	}
+
+	public int getBaseStoredDroids() {
+		return baseStoredDroids;
+	}
+
+	public int getBaseStoredVehicles() {
+		return baseStoredVehicles;
+	}
+
+	public int getBaseStoredShips() {
+		return baseStoredShips;
 	}
 }

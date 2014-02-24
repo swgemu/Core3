@@ -12,6 +12,7 @@
 #include "server/zone/managers/creature/CreatureTemplateManager.h"
 #include "server/zone/managers/creature/CreatureManager.h"
 #include "server/zone/managers/creature/PetManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/templates/mobile/CreatureTemplate.h"
 #include "server/zone/templates/tangible/DroidDeedTemplate.h"
 #include "server/zone/objects/intangible/PetControlDevice.h"
@@ -80,7 +81,11 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 		}
 
 		// Check if this will exceed maximum number of droids allowed
+		ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
+
 		int droidsInDatapad = 0;
+		int maxStoredDroids = playerManager->getBaseStoredDroids();
+
 		for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
 			Reference<SceneObject*> obj =  datapad->getContainerObject(i).castTo<SceneObject*>();
 
@@ -92,7 +97,7 @@ int DroidDeedImplementation::handleObjectMenuSelect(CreatureObject* player, byte
 			}
 		}
 
-		if( droidsInDatapad >= 5){
+		if( droidsInDatapad >= maxStoredDroids){
 			player->sendSystemMessage("You have too many droids in your datapad");
 			return 1;
 		}

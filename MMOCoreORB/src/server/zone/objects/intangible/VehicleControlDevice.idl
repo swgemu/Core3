@@ -121,7 +121,9 @@ class VehicleControlDevice extends ControlDevice {
 	 * @returns 0 on succes, != 0 on error
 	 */
 	public native int canBeDestroyed(CreatureObject player);
-	
+
+	public native boolean canBeTradedTo(CreatureObject player, CreatureObject receiver, int numberInTrade);
+
 	/**
 	 * Fills the attribute list message options that are sent to player creature
 	 * @pre { }
