@@ -237,6 +237,34 @@ int VehicleControlDeviceImplementation::canBeDestroyed(CreatureObject* player) {
 	return IntangibleObjectImplementation::canBeDestroyed(player);
 }
 
+bool VehicleControlDeviceImplementation::canBeTradedTo(CreatureObject* player, CreatureObject* receiver, int numberInTrade) {
+	ManagedReference<SceneObject*> datapad = receiver->getSlottedObject("datapad");
+
+	if (datapad == NULL)
+		return false;
+
+	ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
+
+	int vehiclesInDatapad = numberInTrade;
+	int maxStoredVehicles = playerManager->getBaseStoredVehicles();
+
+	for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
+		Reference<SceneObject*> obj =  datapad->getContainerObject(i).castTo<SceneObject*>();
+
+		if (obj != NULL && obj->isVehicleControlDevice() ){
+			vehiclesInDatapad++;
+		}
+	}
+
+	if( vehiclesInDatapad >= maxStoredVehicles){
+		player->sendSystemMessage("That person has too many vehicles in their datapad");
+		receiver->sendSystemMessage("@pet/pet_menu:has_max_vehicle"); // You already have the maximum number of vehicles that you can own.
+		return false;
+	}
+
+	return true;
+}
+
 void VehicleControlDeviceImplementation::fillAttributeList(AttributeListMessage* alm, CreatureObject* object) {
 	SceneObjectImplementation::fillAttributeList(alm, object);
 

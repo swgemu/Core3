@@ -528,7 +528,10 @@ bool PetControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Creat
 		player->sendSystemMessage("@pet/pet_menu:bad_type"); // You cannot trade a pet of that type. Transfer failed.
 		return false;
 	} else if (petType == PetManager::DROIDPET) {
+		ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
+
 		int droidsInDatapad = numberInTrade;
+		int maxStoredDroids = playerManager->getBaseStoredDroids();
 
 		for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
 			Reference<SceneObject*> obj =  datapad->getContainerObject(i).castTo<SceneObject*>();
@@ -541,7 +544,7 @@ bool PetControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Creat
 			}
 		}
 
-		if( droidsInDatapad >= 5){
+		if( droidsInDatapad >= maxStoredDroids){
 			player->sendSystemMessage("That person has too many droids in their datapad");
 			return false;
 		}
@@ -559,7 +562,7 @@ bool PetControlDeviceImplementation::canBeTradedTo(CreatureObject* player, Creat
 		ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
 
 		int numberStored = numberInTrade;
-		int maxStoredPets = playerManager->getBaseStoredPets();
+		int maxStoredPets = playerManager->getBaseStoredCreaturePets();
 		int maxLevelofPets = 10;
 		int level = pet->getLevel();
 		bool ch = receiver->hasSkill("outdoors_creaturehandler_novice");

@@ -26,7 +26,9 @@
 #include "server/zone/managers/director/ScreenPlayObserver.h"
 #include "server/zone/managers/director/PersistentEvent.h"
 #include "server/zone/managers/creature/CreatureManager.h"
+#include "server/zone/managers/creature/PetManager.h"
 #include "server/zone/managers/planet/PlanetManager.h"
+#include "server/zone/managers/player/PlayerManager.h"
 #include "server/zone/managers/player/creation/PlayerCreationManager.h"
 #include "server/ServerCore.h"
 #include "server/chat/ChatManager.h"
@@ -164,6 +166,7 @@ void DirectorManager::initializeLuaEngine(Lua* luaEngine) {
 	lua_register(luaEngine->getLuaState(), "setAuthorizationState", setAuthorizationState);
 	lua_register(luaEngine->getLuaState(), "giveItem", giveItem);
 	lua_register(luaEngine->getLuaState(), "giveControlDevice", giveControlDevice);
+	lua_register(luaEngine->getLuaState(), "checkTooManyHirelings", checkTooManyHirelings);
 	lua_register(luaEngine->getLuaState(), "checkInt64Lua", checkInt64Lua);
 	lua_register(luaEngine->getLuaState(), "getChatMessage", getChatMessage);
 	lua_register(luaEngine->getLuaState(), "getRankName", getRankName);
@@ -1307,6 +1310,42 @@ int DirectorManager::giveControlDevice(lua_State* L) {
 
 	controlDevice->_setUpdated(true); //mark updated so the GC doesnt delete it while in LUA
 	lua_pushlightuserdata(L, controlDevice.get());
+
+	return 1;
+}
+
+int DirectorManager::checkTooManyHirelings(lua_State* L) {
+	if (checkArgumentCount(L, 1) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::checkTooManyHirelings");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	SceneObject* datapad = (SceneObject*) lua_touserdata(L, -1);
+
+	if (datapad == NULL) {
+		lua_pushboolean(L, true);
+		return 1;
+	}
+
+	int numberOfHirelings = 0;
+
+	for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
+		Reference<SceneObject*> object = datapad->getContainerObject(i);
+
+		if (object != NULL && object->isPetControlDevice()) {
+			PetControlDevice* device = object.castTo<PetControlDevice*>();
+
+			if (device->getPetType() == PetManager::FACTIONPET)
+				numberOfHirelings++;
+		}
+	}
+
+	ManagedReference<PlayerManager*> playerManager = ServerCore::getZoneServer()->getPlayerManager();
+
+	bool result = numberOfHirelings >= playerManager->getBaseStoredFactionPets();
+
+	lua_pushboolean(L, result);
 
 	return 1;
 }

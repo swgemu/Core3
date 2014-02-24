@@ -514,5 +514,17 @@ rebel_recruiter_purchased_hireling = ConvoScreen:new {
 
 rebel_recruiter_convotemplate:addScreen(rebel_recruiter_purchased_hireling);
 
+-- too many hirelings screen
+rebel_recruiter_too_many_hirelings = ConvoScreen:new {
+	id = "too_many_hirelings",
+	leftDialog = "@faction_recruiter:too_many_hirelings", -- You already have too much under your command.
+	stopConversation = "true",
+	options = {
+	
+	}
+}
+
+rebel_recruiter_convotemplate:addScreen(rebel_recruiter_too_many_hirelings);
+
 
 addConversationTemplate("rebel_recruiter_convotemplate", rebel_recruiter_convotemplate);
