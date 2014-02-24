@@ -101,7 +101,8 @@ Vector3 DestroyMissionObjectiveImplementation::findValidSpawnPosition(Zone* zone
 	while ((!zone->isWithinBoundaries(position) ||
 			(terrain->getWaterHeight(newX, newY, waterHeight) && waterHeight > height)
 			|| CollisionManager::checkSphereCollision(position, 25.f , zone) ||
-			zone->getPlanetManager()->isInObjectsNoBuildZone(newX, newY, 25)) && tries < 128) {
+			zone->getPlanetManager()->isInObjectsNoBuildZone(newX, newY, 25) ||
+			terrain->getHighestHeightDifference(newX - 10, newY - 10, newX + 10, newY + 10) > 10.0) && tries < 256) {
 		newX = spawnActiveArea->getPositionX() + (distance - (float) System::random(distance * 2));
 		newY = spawnActiveArea->getPositionY() + (distance - (float) System::random(distance * 2));
 		height = zone->getHeight(newX, newY);
@@ -110,8 +111,8 @@ Vector3 DestroyMissionObjectiveImplementation::findValidSpawnPosition(Zone* zone
 
 		++tries;
 
-		//Increase distance every tenth try.
-		if (tries % 16 == 0) {
+		//Increase distance every if 32 tries failed.
+		if (tries % 32 == 0) {
 			distance = distance * 2;
 		}
 	}

@@ -62,7 +62,7 @@ void LairSpawnAreaImplementation::notifyEnter(SceneObject* object) {
 
 	if (parent != NULL && parent->isCellObject())
 		return;
-		
+
 	if (object->getCityRegion() != NULL)
 		return;
 
@@ -91,7 +91,7 @@ int LairSpawnAreaImplementation::notifyObserverEvent(unsigned int eventType, Obs
 			spawnedGroupsCount.put(lairTemplate, currentSpawnCount);
 
 		--currentlySpawnedLairs;
-		
+
 		locker.release();
 
 		ManagedReference<ActiveArea*> area = (ServerCore::getZoneServer()->createObject(String("object/active_area.iff").hashCode(), 0)).castTo<ActiveArea*>();
@@ -185,6 +185,11 @@ int LairSpawnAreaImplementation::trySpawnLair(SceneObject* object) {
 	//check in range objects for no build radi
 	if (!planetManager->isBuildingPermittedAt(randomPosition.getX(), randomPosition.getY(), object)) {
 		return 9;
+	}
+
+	// Only spawn on relatively flat land
+	if (planetManager->getTerrainManager()->getHighestHeightDifference(randomPosition.getX() - 10, randomPosition.getY() - 10, randomPosition.getX() + 10, randomPosition.getY() + 10) > 10.0) {
+		return 13;
 	}
 
 	//Lets choose 3 random spawns;

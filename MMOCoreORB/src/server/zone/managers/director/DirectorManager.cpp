@@ -1756,6 +1756,33 @@ int DirectorManager::isZoneEnabled(lua_State* L) {
 	return 1;
 }
 
+Vector3 DirectorManager::generateSpawnPoint(CreatureObject* creatureObject, float x, float y, float minimumDistance, float maximumDistance, float extraNoBuildRadius, float sphereCollision) {
+	bool found = false;
+	Vector3 position(0, 0, 0);
+	int retries = 40;
+
+	while (!found && retries > 0) {
+		float distance = minimumDistance + System::random(maximumDistance - minimumDistance);
+		float angle = System::random(360);
+		float newAngle = angle * (M_PI / 180.0f);
+
+		float newX = x + (cos(newAngle) * distance); // client has x/y inverted
+		float newY = y + (sin(newAngle) * distance);
+		float newZ = creatureObject->getZone()->getHeight(newX, newY);
+
+		position = Vector3(newX, newY, newZ);
+
+		if (creatureObject->getZone()->isWithinBoundaries(position)) {
+			found = creatureObject->getZone()->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL) &
+					!creatureObject->getZone()->getPlanetManager()->isInObjectsNoBuildZone(position.getX(), position.getY(), extraNoBuildRadius) &
+					!CollisionManager::checkSphereCollision(position, sphereCollision, creatureObject->getZone());
+		}
+		retries--;
+	}
+
+	return position;
+}
+
 int DirectorManager::getSpawnPoint(lua_State* L) {
 	if (checkArgumentCount(L, 5) == 1) {
 		instance()->error("incorrect number of arguments passed to DirectorManager::getSpawnPoint");
@@ -1773,26 +1800,55 @@ int DirectorManager::getSpawnPoint(lua_State* L) {
 		return 0;
 	}
 
+	Vector3 position = generateSpawnPoint(creatureObject, x, y, minimumDistance, maximumDistance, 5.0, 20);
+
+	if (position != Vector3(0, 0, 0)) {
+		lua_newtable(L);
+		lua_pushnumber(L, position.getX());
+		lua_pushnumber(L, position.getZ());
+		lua_pushnumber(L, position.getY());
+		lua_rawseti(L, -4, 3);
+		lua_rawseti(L, -3, 2);
+		lua_rawseti(L, -2, 1);
+
+		return 1;
+	} else {
+		return 0;
+	}
+}
+
+int DirectorManager::getSpawnArea(lua_State* L) {
+	if (checkArgumentCount(L, 7) == 1) {
+		instance()->error("incorrect number of arguments passed to DirectorManager::getSpawnArea");
+		ERROR_CODE = INCORRECT_ARGUMENTS;
+		return 0;
+	}
+
+	float maximumHeightDifference = lua_tonumber(L, -1);
+	float areaSize = lua_tonumber(L, -2);
+	float maximumDistance = lua_tonumber(L, -3);
+	float minimumDistance = lua_tonumber(L, -4);
+	float y = lua_tonumber(L, -5);
+	float x = lua_tonumber(L, -6);
+	CreatureObject* creatureObject = (CreatureObject*) lua_touserdata(L, -7);
+
+	if (creatureObject == NULL) {
+		return 0;
+	}
+
 	bool found = false;
 	Vector3 position;
 	int retries = 40;
 
 	while (!found && retries > 0) {
-		float distance = minimumDistance + System::random(maximumDistance - minimumDistance);
-		float angle = System::random(360);
-		float newAngle = angle * (M_PI / 180.0f);
+		position = generateSpawnPoint(creatureObject, x, y, minimumDistance, maximumDistance, areaSize + 5.0, areaSize + 20);
 
-		float newX = x + (cos(newAngle) * distance); // client has x/y inverted
-		float newY = y + (sin(newAngle) * distance);
-		float newZ = creatureObject->getZone()->getHeight(newX, newY);
+		int x0 = position.getX() - areaSize;
+		int x1 = position.getX() + areaSize;
+		int y0 = position.getY() - areaSize;
+		int y1 = position.getY() + areaSize;
 
-		position = Vector3(newX, newY, newZ);
-
-		if (creatureObject->getZone()->isWithinBoundaries(position)) {
-			found = creatureObject->getZone()->getPlanetManager()->isBuildingPermittedAt(position.getX(), position.getY(), NULL) &
-					!creatureObject->getZone()->getPlanetManager()->isInObjectsNoBuildZone(position.getX(), position.getY(), 5.0) &
-					!CollisionManager::checkSphereCollision(position, 20, creatureObject->getZone());
-		}
+		found = creatureObject->getZone()->getPlanetManager()->getTerrainManager()->getHighestHeightDifference(x0, y0, x1, y1) <= maximumHeightDifference;
 		retries--;
 	}
 

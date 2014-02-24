@@ -88,6 +88,7 @@ core3_TESTS = 	server/zone/objects/area/areashapes/tests/CircularAreaShapeTest.c
 			  	server/zone/managers/director/tests/BasicScreenPlayTest.cpp \
 			  	server/zone/managers/creature/tests/LuaMobileTest.cpp \
 			  	server/zone/managers/jedi/tests/JediManagerTest.cpp \
+			  	server/zone/managers/terrain/tests/TerrainManagerTest.cpp \
 			  	server/zone/objects/creature/ai/bt/tests/BehaviorTest.cpp \
 			  	server/zone/objects/area/areashapes/tests/RectangularAreaShapeTest.cpp \
 			  	server/zone/objects/area/areashapes/tests/RingAreaShapeTest.cpp \

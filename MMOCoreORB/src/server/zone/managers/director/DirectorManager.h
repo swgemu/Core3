@@ -119,6 +119,7 @@ namespace server {
 		static int getTimestamp(lua_State* L);
 		static int getTimestampMilli(lua_State* L);
 		static int getSpawnPoint(lua_State* L);
+		static int getSpawnArea(lua_State* L);
 		static int makeCreatureName(lua_State* L);
 		static int getGCWDiscount(lua_State* L);
 		static int getTerrainHeight(lua_State* L);
@@ -132,6 +133,7 @@ namespace server {
 		void initializeLuaEngine(Lua* luaEngine);
 		int loadScreenPlays(Lua* luaEngine);
 		void loadJediManager(Lua* luaEngine);
+		static Vector3 generateSpawnPoint(CreatureObject* creatureObject, float x, float y, float minimumDistance, float maximumDistance, float extraNoBuildRadius, float sphereCollision);
 	};
 
    }
