@@ -165,7 +165,11 @@ void PlayerManagerImplementation::loadLuaConfig() {
 
 	globalExpMultiplier = lua->getGlobalFloat("globalExpMultiplier");
 
-	baseStoredPets = lua->getGlobalInt("baseStoredPets");
+	baseStoredCreaturePets = lua->getGlobalInt("baseStoredCreaturePets");
+	baseStoredFactionPets = lua->getGlobalInt("baseStoredFactionPets");
+	baseStoredDroids = lua->getGlobalInt("baseStoredDroids");
+	baseStoredVehicles = lua->getGlobalInt("baseStoredVehicles");
+	baseStoredShips = lua->getGlobalInt("baseStoredShips");
 
 	delete lua;
 	lua = NULL;
@@ -1425,8 +1429,16 @@ bool PlayerManagerImplementation::checkTradeItems(CreatureObject* player, Creatu
 	int playerItnos = 0;
 	int recieverTanos = 0;
 	int recieverItnos = 0;
-	int playerPetsTraded = 0;
-	int receiverPetsTraded = 0;
+	int playerCreaturePetsTraded = 0;
+	int receiverCreaturePetsTraded = 0;
+	int playerFactionPetsTraded = 0;
+	int receiverFactionPetsTraded = 0;
+	int playerDroidsTraded = 0;
+	int receiverDroidsTraded = 0;
+	int playerVehiclesTraded = 0;
+	int receiverVehiclesTraded = 0;
+	int playerShipsTraded = 0;
+	int receiverShipsTraded = 0;
 
 	for (int i = 0; i < tradeContainer->getTradeSize(); ++i) {
 		ManagedReference<SceneObject*> scene = tradeContainer->getTradeItem(i);
@@ -1456,10 +1468,37 @@ bool PlayerManagerImplementation::checkTradeItems(CreatureObject* player, Creatu
 
 			if (scene->isPetControlDevice()) {
 				PetControlDevice* petControlDevice = cast<PetControlDevice*>(scene.get());
-				if (!petControlDevice->canBeTradedTo(player, receiver, receiverPetsTraded))
+
+				if (petControlDevice->getPetType() == PetManager::CREATUREPET) {
+					if (!petControlDevice->canBeTradedTo(player, receiver, receiverCreaturePetsTraded))
+						return false;
+
+					receiverCreaturePetsTraded++;
+				} else if (petControlDevice->getPetType() == PetManager::FACTIONPET) {
+					if (!petControlDevice->canBeTradedTo(player, receiver, receiverFactionPetsTraded))
+						return false;
+
+					receiverFactionPetsTraded++;
+				} else if (petControlDevice->getPetType() == PetManager::DROIDPET) {
+					if (!petControlDevice->canBeTradedTo(player, receiver, receiverDroidsTraded))
+						return false;
+
+					receiverDroidsTraded++;
+				}
+			} else if (scene->isVehicleControlDevice()) {
+				VehicleControlDevice* vehicleControlDevice = cast<VehicleControlDevice*>(scene.get());
+
+				if (!vehicleControlDevice->canBeTradedTo(player, receiver, receiverVehiclesTraded))
 					return false;
 
-				receiverPetsTraded++;
+				receiverVehiclesTraded++;
+			} else if (scene->isShipControlDevice()) {
+				ShipControlDevice* shipControlDevice = cast<ShipControlDevice*>(scene.get());
+
+				if (!shipControlDevice->canBeTradedTo(player, receiver, receiverShipsTraded))
+					return false;
+
+				receiverShipsTraded++;
 			}
 
 			recieverItnos++;
@@ -1497,10 +1536,37 @@ bool PlayerManagerImplementation::checkTradeItems(CreatureObject* player, Creatu
 
 			if (scene->isPetControlDevice()) {
 				PetControlDevice* petControlDevice = cast<PetControlDevice*>(scene.get());
-				if (!petControlDevice->canBeTradedTo(receiver, player, playerPetsTraded))
+
+				if (petControlDevice->getPetType() == PetManager::CREATUREPET) {
+					if (!petControlDevice->canBeTradedTo(receiver, player, playerCreaturePetsTraded))
+						return false;
+
+					playerCreaturePetsTraded++;
+				} else if (petControlDevice->getPetType() == PetManager::FACTIONPET) {
+					if (!petControlDevice->canBeTradedTo(receiver, player, playerFactionPetsTraded))
+						return false;
+
+					playerFactionPetsTraded++;
+				} else if (petControlDevice->getPetType() == PetManager::DROIDPET) {
+					if (!petControlDevice->canBeTradedTo(receiver, player, playerDroidsTraded))
+						return false;
+
+					playerDroidsTraded++;
+				}
+			} else if (scene->isVehicleControlDevice()) {
+				VehicleControlDevice* vehicleControlDevice = cast<VehicleControlDevice*>(scene.get());
+
+				if (!vehicleControlDevice->canBeTradedTo(receiver, player, playerVehiclesTraded))
 					return false;
 
-				playerPetsTraded++;
+				playerVehiclesTraded++;
+			} else if (scene->isShipControlDevice()) {
+				ShipControlDevice* shipControlDevice = cast<ShipControlDevice*>(scene.get());
+
+				if (!shipControlDevice->canBeTradedTo(receiver, player, playerShipsTraded))
+					return false;
+
+				playerShipsTraded++;
 			}
 
 			playerItnos++;

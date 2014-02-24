@@ -100,6 +100,7 @@ namespace server {
 		static int setAuthorizationState(lua_State* L);
 		static int giveItem(lua_State* L);
 		static int giveControlDevice(lua_State* L);
+		static int checkTooManyHirelings(lua_State* L);
 		static int checkInt64Lua(lua_State* L);
 		static int getChatMessage(lua_State* L);
 		static int createConversationScreen(lua_State* L);
