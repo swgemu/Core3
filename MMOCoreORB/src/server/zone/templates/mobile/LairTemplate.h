@@ -22,6 +22,7 @@ public:
 
 protected:
 	VectorMap<String, int> mobiles;
+	VectorMap<String, int> bossMobiles;
 	int spawnLimit;
 
 	VectorMap<uint32, Reference<Vector<String>*> > buildings;
@@ -42,6 +43,8 @@ public:
 		buildings.setNullValue(NULL);
 
 		name = templateName;
+		faction = 0;
+		lairType = CREATURE;
 	}
 
 	virtual ~LairTemplate() {
@@ -84,20 +87,12 @@ public:
 				faction = GCWManager::IMPERIALHASH;
 			} else if (factionString == "rebel") {
 				faction = GCWManager::REBELHASH;
-			} else {
-				faction = 0;
 			}
-		} else {
-			faction = 0;
 		}
 
 		if (templateData->getStringField("lairType").length() > 0) {
 			if (templateData->getStringField("lairType") == "npc")
 				lairType = NPC;
-			else
-				lairType = CREATURE;
-		} else {
-			lairType = CREATURE;
 		}
 
 		LuaObject mobs = templateData->getObjectField("mobiles");
@@ -117,6 +112,24 @@ public:
 		}
 
 		mobs.pop();
+
+		LuaObject bossMobs = templateData->getObjectField("bossMobiles");
+
+		for (int i = 1; i <= bossMobs.getTableSize(); ++i) {
+			lua_rawgeti(bossMobs.getLuaState(), -1, i);
+			LuaObject mobile(bossMobs.getLuaState());
+
+			if (mobile.isValidTable()) {
+				String mob = mobile.getStringAt(1);
+				int number = (int)mobile.getIntAt(2);
+
+				bossMobiles.put(mob, number);
+			}
+
+			mobile.pop();
+		}
+
+		bossMobs.pop();
 
 		LuaObject veryEasy = templateData->getObjectField("buildingsVeryEasy");
 		Vector<String>* buildings = this->buildings.get((uint32)VERYEASY);
@@ -199,6 +212,10 @@ public:
 
 	VectorMap<String, int>* getMobiles() {
 		return &mobiles;
+	}
+
+	VectorMap<String, int>* getBossMobiles() {
+		return &bossMobiles;
 	}
 
 	bool isLairTemplate() {
