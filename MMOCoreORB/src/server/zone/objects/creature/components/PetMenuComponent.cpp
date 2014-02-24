@@ -74,6 +74,10 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 			menuResponse->addRadialMenuItemToRadialID(141, 235, 3, "@pet/pet_menu:menu_recharge_other" );
 		}
 
+		if( pet->isIncapacitated() ){
+			menuResponse->addRadialMenuItem(166, 3, "@pet/pet_menu:awaken" );
+		}
+
 	}
 	// FACTION
 	else if( controlDevice->getPetType() == PetManager::FACTIONPET ){
@@ -93,6 +97,10 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 		menuResponse->addRadialMenuItemToRadialID(141, 163, 3, "@pet/pet_menu:menu_ranged_attack" );
 		menuResponse->addRadialMenuItemToRadialID(141, 164, 3, "@pet/pet_menu:menu_store" );
 		menuResponse->addRadialMenuItemToRadialID(141, 165, 3, "@pet/pet_menu:menu_follow_other" );
+
+		if( pet->isIncapacitated() ){
+			menuResponse->addRadialMenuItem(166, 3, "@pet/pet_menu:awaken" );
+		}
 
 	}
 	// CREATURES
@@ -162,6 +170,10 @@ void PetMenuComponent::fillObjectMenuResponse(SceneObject* sceneObject, ObjectMe
 
 		if( player->hasSkill( "outdoors_creaturehandler_support_04") && !controlDevice->isTrainedAsMount() && petManager->checkMountEligibility(controlDevice) == PetManager::CANBEMOUNTTRAINED){
 			menuResponse->addRadialMenuItemToRadialID(141, 207, 3, "@pet/pet_menu:menu_train_mount" ); // Train Pet As A Mount
+		}
+
+		if( pet->isIncapacitated() ){
+			menuResponse->addRadialMenuItem(166, 3, "@pet/pet_menu:awaken" );
 		}
 
 		if (controlDevice->isTrainedAsMount() && !pet->isDead() && !pet->isIncapacitated()) {
@@ -312,6 +324,10 @@ int PetMenuComponent::handleObjectMenuSelect(SceneObject* sceneObject, CreatureO
 	// Train Command: Follow Other
 	if (selectedID == 165 ){
 		petControlDevice->setTrainingCommand( PetManager::FOLLOWOTHER );
+	}
+
+	if (selectedID == 166 ){
+		petManager->enqueueOwnerOnlyPetCommand(player, pet, String("petRecover").toLowerCase().hashCode(), "");
 	}
 
 	// Train Pet As A Mount
