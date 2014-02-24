@@ -46,6 +46,7 @@ which carries forward this exception.
 #include "server/zone/objects/player/PlayerObject.h"
 #include "server/zone/packets/object/ObjectMenuResponse.h"
 #include "server/zone/Zone.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 void ShipControlDeviceImplementation::generateObject(CreatureObject* player) {
 	//info("generating ship", true);
@@ -113,4 +114,32 @@ void ShipControlDeviceImplementation::fillObjectMenuResponse(ObjectMenuResponse*
 	} else
 		menuResponse->addRadialMenuItem(61, 3, "Land Ship"); //Launch
 	//menuResponse->addRadialMenuItem(61, 3, "Launch Ship"); //Launch
+}
+
+bool ShipControlDeviceImplementation::canBeTradedTo(CreatureObject* player, CreatureObject* receiver, int numberInTrade) {
+	ManagedReference<SceneObject*> datapad = receiver->getSlottedObject("datapad");
+
+	if (datapad == NULL)
+		return false;
+
+	ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
+
+	int shipsInDatapad = numberInTrade;
+	int maxStoredShips = playerManager->getBaseStoredShips();
+
+	for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
+		Reference<SceneObject*> obj =  datapad->getContainerObject(i).castTo<SceneObject*>();
+
+		if (obj != NULL && obj->isShipControlDevice() ){
+			shipsInDatapad++;
+		}
+	}
+
+	if( shipsInDatapad >= maxStoredShips){
+		player->sendSystemMessage("That person has too many ships in their datapad");
+		receiver->sendSystemMessage("You already have the maximum number of ships that you can own.");
+		return false;
+	}
+
+	return true;
 }

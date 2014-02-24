@@ -12,6 +12,7 @@
 #include "server/zone/templates/tangible/VehicleDeedTemplate.h"
 #include "server/zone/objects/intangible/VehicleControlDevice.h"
 #include "server/zone/objects/creature/VehicleObject.h"
+#include "server/zone/managers/player/PlayerManager.h"
 
 void VehicleDeedImplementation::loadTemplateData(SharedObjectTemplate* templateData) {
 	DeedImplementation::loadTemplateData(templateData);
@@ -69,6 +70,25 @@ int VehicleDeedImplementation::handleObjectMenuSelect(CreatureObject* player, by
 
 		if (datapad == NULL) {
 			player->sendSystemMessage("Datapad doesn't exist when trying to create vehicle");
+			return 1;
+		}
+
+		// Check if this will exceed maximum number of vehicles allowed
+		ManagedReference<PlayerManager*> playerManager = player->getZoneServer()->getPlayerManager();
+
+		int vehiclesInDatapad = 0;
+		int maxStoredVehicles = playerManager->getBaseStoredVehicles();
+
+		for (int i = 0; i < datapad->getContainerObjectsSize(); i++) {
+			Reference<SceneObject*> obj =  datapad->getContainerObject(i).castTo<SceneObject*>();
+
+			if (obj != NULL && obj->isVehicleControlDevice() )
+				vehiclesInDatapad++;
+
+		}
+
+		if (vehiclesInDatapad >= maxStoredVehicles) {
+			player->sendSystemMessage("@pet/pet_menu:has_max_vehicle"); // You already have the maximum number of vehicles that you can own.
 			return 1;
 		}
 

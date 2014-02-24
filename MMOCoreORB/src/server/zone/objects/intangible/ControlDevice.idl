@@ -103,7 +103,12 @@ class ControlDevice extends IntangibleObject {
 	public abstract void callObject(CreatureObject player) {
 		Logger.error("called callObject on an abstract method");
 	}
-	
+
+	public abstract boolean canBeTradedTo(CreatureObject player, CreatureObject receiver, int numberInTrade) {
+		Logger.error("called canBeTradedTo on an abstract method");
+		return false;
+	}
+
 	public void setControlledObject(TangibleObject object) {
 		controlledObject = object;
 	}

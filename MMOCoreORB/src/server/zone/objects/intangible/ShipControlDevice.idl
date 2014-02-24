@@ -93,4 +93,10 @@ class ShipControlDevice extends ControlDevice {
 	 */
 	@local
 	public native void fillObjectMenuResponse(ObjectMenuResponse menuResponse, CreatureObject player);
+
+	public native boolean canBeTradedTo(CreatureObject player, CreatureObject receiver, int numberInTrade);
+
+	public boolean isShipControlDevice() {
+		return true;
+	}
 }
