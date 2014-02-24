@@ -183,6 +183,17 @@ void PetManagerImplementation::handleChat(CreatureObject* speaker, AiAgent* pet,
 	if( linkedCreature != speaker)
 		return;
 
+	ManagedWeakReference<SceneObject*> speakerParent = speaker->getRootParent();
+	ManagedWeakReference<SceneObject*> petParent = pet->getRootParent();
+
+	// If speaker is mounted, pet must be outdoors
+	if( speaker->isRidingMount() && petParent != NULL )
+		return;
+
+	// If speaker is unmounted, pet and speaker must both be outdoors or inside same building
+	if( !speaker->isRidingMount() && speakerParent != petParent )
+		return;
+
 	// Handle trained command
 	if( isTrainedCommand( pcd, STAY, message ) ){
 		enqueuePetCommand(speaker, pet, String("petStay").toLowerCase().hashCode(), "");
