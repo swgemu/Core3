@@ -514,7 +514,7 @@ void BountyMissionObjectiveImplementation::handleNpcTargetKilled(ManagedObject* 
 		complete();
 	} else {
 		//Target killed by other player, fail mission.
-		attacker->sendSystemMessage("@mission/mission_generic:failed"); // Mission failed
+		owner->sendSystemMessage("@mission/mission_generic:failed"); // Mission failed
 		abort();
 		removeMissionFromPlayer();
 	}
