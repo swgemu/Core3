@@ -106,12 +106,7 @@ public:
 			return GENERALERROR;
 		}
 
-		float range = 128.f;
-
-		if (creature->getParent() == NULL)
-			range = 25.f; //If they are outside, the range is decreased to 25m.
-
-		if (!shuttle->isInRange(creature, range)) {
+		if (!shuttle->isInRange(creature, 25.f)) {
 			creature->sendSystemMessage("@player_structure:boarding_too_far"); //You are too far from the shuttle to board.
 			return GENERALERROR;
 		}
@@ -236,9 +231,7 @@ public:
 		creature->switchZone(arrivalZone->getZoneName(), x, p.getPositionZ(), y, 0);
 
 		//remove the ticket from inventory and destory it.
-		ManagedReference<SceneObject*> inventory = creature->getSlottedObject("inventory");
 		ticketObject->destroyObjectFromWorld(true);
-
 		ticketObject->destroyObjectFromDatabase(true);
 
 		//Store all spawned children
