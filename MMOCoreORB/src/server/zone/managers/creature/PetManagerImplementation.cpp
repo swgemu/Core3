@@ -452,7 +452,9 @@ int PetManagerImplementation::notifyDestruction(TangibleObject* destructor, AiAg
 
 	destructedObject->clearDots();
 
-	if (!destructor->isKiller()) {
+	ManagedReference<PetControlDevice*> petControlDevice = destructedObject->getControlDevice().get().castTo<PetControlDevice*>();
+
+	if (!destructor->isKiller() && petControlDevice != NULL && petControlDevice->getPetType() == CREATUREPET) {
 		destructedObject->setCurrentSpeed(0);
 		destructedObject->setPosture(CreaturePosture::INCAPACITATED, true);
 		destructedObject->updateLocomotion();
@@ -515,12 +517,23 @@ void PetManagerImplementation::killPet(TangibleObject* attacker, AiAgent* pet) {
 	pet->updateTimeOfDeath();
 	pet->clearBuffs(false);
 
-	if (!attacker->isPlayerCreature() && !attacker->isPet()) {
+	ManagedReference<PetControlDevice*> petControlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
 
-		if (pet->getCooldownTimerMap() != NULL && pet->getCooldownTimerMap()->isPast("vitalityLossCooldown")) {
-			ManagedReference<PetControlDevice*> petControlDevice = pet->getControlDevice().get().castTo<PetControlDevice*>();
+	if (petControlDevice != NULL) {
 
-			if (petControlDevice != NULL) {
+		if (petControlDevice->getPetType() == FACTIONPET) {
+			ManagedReference<CreatureObject*> owner = zoneServer->getObject(pet->getCreatureLinkID()).castTo<CreatureObject*>();
+
+			if (owner != NULL)
+				petControlDevice->storeObject(owner, true);
+
+			petControlDevice->destroyObjectFromWorld(true);
+			petControlDevice->destroyObjectFromDatabase(true);
+
+		} else if (!attacker->isPlayerCreature() && !attacker->isPet()) {
+
+			if (pet->getCooldownTimerMap() != NULL && pet->getCooldownTimerMap()->isPast("vitalityLossCooldown")) {
+
 				petControlDevice->setVitality(petControlDevice->getVitality() - 2);
 				pet->getCooldownTimerMap()->updateToCurrentAndAddMili("vitalityLossCooldown", 300000);
 			}
