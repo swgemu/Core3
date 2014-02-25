@@ -61,19 +61,19 @@ public:
 
 	}
 
-	static void doBandFlourish(CreatureObject* leader, String& number, bool musicflourish, int instrumentType) {
-		ManagedReference<GroupObject*> group = leader->getGroup();
+	static void doBandFlourish(CreatureObject* player, String& number, bool musicflourish, int instrumentType) {
+		ManagedReference<GroupObject*> group = player->getGroup();
 
-		ManagedReference<Facade*> facade = leader->getActiveSession(SessionFacadeType::ENTERTAINING);
+		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::ENTERTAINING);
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
 
-		ManagedReference<Instrument*> instrument = session->getInstrument(leader);
+		ManagedReference<Instrument*> instrument = session->getInstrument(player);
 		int leaderInstrument = instrument == NULL ? -1 : instrument->getInstrumentType();
 
-		//Make the leader flourish.
-		if (group == NULL) { //leader is not in a group.
-			if (instrumentType > 0) { //the leader specified a valid instrument.
-				if (!leader->isPlayingMusic() || leaderInstrument != instrumentType) {
+		//Make the player flourish.
+		if (group == NULL) { //player is not in a group.
+			if (instrumentType > 0) { //the player specified a valid instrument.
+				if (!player->isPlayingMusic() || leaderInstrument != instrumentType) {
 					return;
 				}
 			}
@@ -84,36 +84,31 @@ public:
 
 			return;
 
-		} else { //leader is in a group.
-			CreatureObject* groupLeader = cast<CreatureObject*>(group->getLeader());
+		} else { //player is in a group.
 
-			if (leader == groupLeader) {
-				if (instrumentType > 0) { //the leader specified a valid instrument.
-					if (!musicflourish) {
-						return;
-					}
-					leader->sendSystemMessage("@performance:flourish_perform_band_self"); //"Your band performs a flourish."
-					if (leader->isPlayingMusic() && leaderInstrument == instrumentType && session->isAcceptingBandFlourishes()) {
-						session->doFlourish(Integer::valueOf(number));
-					}
-
-				} else { //no instrument specified.
-					leader->sendSystemMessage("@performance:flourish_perform_band_self"); //"Your band performs a flourish."
-					if (session->isAcceptingBandFlourishes()) {
-						session->doFlourish(Integer::valueOf(number));
-					}
+			if (instrumentType > 0) { //the player specified a valid instrument.
+				if (!musicflourish) {
+					return;
 				}
-			} else {
-				leader->sendSystemMessage("You must be the leader to issue a band flourish.");
-				return;
+				player->sendSystemMessage("@performance:flourish_perform_band_self"); //"Your band performs a flourish."
+				if (player->isPlayingMusic() && leaderInstrument == instrumentType && session->isAcceptingBandFlourishes()) {
+					session->doFlourish(Integer::valueOf(number));
+				}
+
+			} else { //no instrument specified.
+				player->sendSystemMessage("@performance:flourish_perform_band_self"); //"Your band performs a flourish."
+				if (session->isAcceptingBandFlourishes()) {
+					session->doFlourish(Integer::valueOf(number));
+				}
 			}
+
 		}
 		//Make group members flourish.
 		StringIdChatParameter params;
-		params.setTT(leader->getFirstName());
+		params.setTT(player->getFirstName());
 
 
-		leader->unlock();
+		player->unlock();
 
 		try {
 			Locker locker(group);
@@ -123,17 +118,17 @@ public:
 
 				Locker clocker(groupMember, group);
 
-				if (groupMember != leader && groupMember->isPlayerCreature()) {
-					CreatureObject* player = cast<CreatureObject*>(groupMember.get());
+				if (groupMember != player && groupMember->isPlayerCreature()) {
+					CreatureObject* member = cast<CreatureObject*>(groupMember.get());
 
-					ManagedReference<Facade*> pfacade = player->getActiveSession(SessionFacadeType::ENTERTAINING);
+					ManagedReference<Facade*> pfacade = member->getActiveSession(SessionFacadeType::ENTERTAINING);
 
 					ManagedReference<EntertainingSession*> psession = dynamic_cast<EntertainingSession*>(pfacade.get());
 
 					if (psession == NULL)
 						continue;
 
-					ManagedReference<Instrument*> pinstrument = psession->getInstrument(player);
+					ManagedReference<Instrument*> pinstrument = psession->getInstrument(member);
 					int playerInstrumentType = pinstrument == NULL ? -1 : pinstrument->getInstrumentType();
 
 					if (psession->isAcceptingBandFlourishes()) {
@@ -141,7 +136,7 @@ public:
 						//Handle dance flourish
 						if (!musicflourish && psession->isDancing()) {
 							params.setStringId("performance", "flourish_perform_band_member");
-							player->sendSystemMessage(params);
+							member->sendSystemMessage(params);
 							psession->doFlourish(Integer::valueOf(number));
 						}
 
@@ -149,7 +144,7 @@ public:
 						if (musicflourish && psession->isPlayingMusic()) {
 							if (instrumentType < 1 || (playerInstrumentType == instrumentType)) {
 								params.setStringId("performance", "flourish_perform_band_member");
-								player->sendSystemMessage(params);
+								member->sendSystemMessage(params);
 								psession->doFlourish(Integer::valueOf(number));
 							}
 						}
@@ -158,12 +153,12 @@ public:
 
 			}
 		} catch (Exception& e) {
-			leader->wlock();
+			player->wlock();
 
 			throw;
 		}
 
-		leader->wlock();
+		player->wlock();
 
 		return;
 	}
@@ -195,9 +190,9 @@ public:
 		}
 	}
 
-	static bool parseOptions(CreatureObject* leader, const String& options, String& stringA, String& stringB) {
+	static bool parseOptions(CreatureObject* player, const String& options, String& stringA, String& stringB) {
 		if (options.isEmpty()) {
-			leader->sendSystemMessage("@performance:band_flourish_format");
+			player->sendSystemMessage("@performance:band_flourish_format");
 			return false;
 		}
 
@@ -215,44 +210,44 @@ public:
 		}
 
 		if (tokenizer.hasMoreTokens()) {
-			leader->sendSystemMessage("@performance:band_flourish_format");
+			player->sendSystemMessage("@performance:band_flourish_format");
 			return false;
 		}
 
 		return true;
 	}
 
-	static void changeStatus(CreatureObject* leader, bool newstatus) {
-		ManagedReference<Facade*> facade = leader->getActiveSession(SessionFacadeType::ENTERTAINING);
+	static void changeStatus(CreatureObject* player, bool newstatus) {
+		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::ENTERTAINING);
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
 
 		if (session->isAcceptingBandFlourishes()) {
 			if (newstatus == true) {
-				leader->sendSystemMessage("@performance:band_flourish_status_on");
+				player->sendSystemMessage("@performance:band_flourish_status_on");
 			} else {
 				session->setAcceptingBandFlourishes(false);
-				leader->sendSystemMessage("@performance:band_flourish_off");
+				player->sendSystemMessage("@performance:band_flourish_off");
 			}
 		} else {
 			if (newstatus == false) {
-				leader->sendSystemMessage("@performance:band_flourish_status_off");
+				player->sendSystemMessage("@performance:band_flourish_status_off");
 			} else {
 				session->setAcceptingBandFlourishes(true);
-				leader->sendSystemMessage("@performance:band_flourish_on");
+				player->sendSystemMessage("@performance:band_flourish_on");
 			}
 		}
 
 		return;
 	}
 
-	void printStatus(CreatureObject* leader) {
-		ManagedReference<Facade*> facade = leader->getActiveSession(SessionFacadeType::ENTERTAINING);
+	void printStatus(CreatureObject* player) {
+		ManagedReference<Facade*> facade = player->getActiveSession(SessionFacadeType::ENTERTAINING);
 		ManagedReference<EntertainingSession*> session = dynamic_cast<EntertainingSession*>(facade.get());
 
 		if (session->isAcceptingBandFlourishes()) {
-			leader->sendSystemMessage("@performance:band_flourish_status_on");
+			player->sendSystemMessage("@performance:band_flourish_status_on");
 		} else {
-			leader->sendSystemMessage("@performance:band_flourish_status_off");
+			player->sendSystemMessage("@performance:band_flourish_status_off");
 		}
 		return;
 	}
@@ -271,15 +266,15 @@ public:
 
 		String stringA, stringB;
 
-		CreatureObject* leader = cast<CreatureObject*>(creature);
+		CreatureObject* player = cast<CreatureObject*>(creature);
 
 		if (!creature->isEntertaining()) {
-			leader->sendSystemMessage("@performance:flourish_not_performing");
+			player->sendSystemMessage("@performance:flourish_not_performing");
 			return GENERALERROR;
 		}
 
 		//Parse the options from the input string. This is the text the player entered after "/bandFlourish"
-		if (!parseOptions(leader, arguments.toString(), stringA, stringB))
+		if (!parseOptions(player, arguments.toString(), stringA, stringB))
 			return GENERALERROR;
 
 		//Check if leader specified an instrument to flourish.
@@ -288,7 +283,7 @@ public:
 			instrumentType = determineInstrumentType(stringB);
 
 			if (instrumentType < 0) {
-				leader->sendSystemMessage("@performance:flourish_instrument_unknown");
+				player->sendSystemMessage("@performance:flourish_instrument_unknown");
 				return GENERALERROR;
 			}
 		}
@@ -297,33 +292,33 @@ public:
 		int number = Integer::valueOf(stringA);
 
 		if (number > 0 && number < 9) {
-			if (leader->isDancing()) {
-				doBandFlourish(leader, stringA, false, instrumentType);
+			if (player->isDancing()) {
+				doBandFlourish(player, stringA, false, instrumentType);
 
-			} else if (leader->isPlayingMusic()) {
-				doBandFlourish(leader, stringA, true, instrumentType);
+			} else if (player->isPlayingMusic()) {
+				doBandFlourish(player, stringA, true, instrumentType);
 
 			} else {
-				leader->sendSystemMessage("@performance:flourish_not_performing");
+				player->sendSystemMessage("@performance:flourish_not_performing");
 				return GENERALERROR;
 			}
 
 			//Check if the player is changing an option.
 		} else if (stringA == "on") {
-			changeStatus(leader, true);
+			changeStatus(player, true);
 
 		} else if (stringA == "off") {
-			changeStatus(leader, false);
+			changeStatus(player, false);
 
 		} else if (stringA == "status") {
-			printStatus(leader);
+			printStatus(player);
 
 		} else if (number > 8) {
-			leader->sendSystemMessage("@performance:flourish_not_valid");
+			player->sendSystemMessage("@performance:flourish_not_valid");
 			return GENERALERROR;
 
 		} else {
-			leader->sendSystemMessage("@performance:band_flourish_format");
+			player->sendSystemMessage("@performance:band_flourish_format");
 			return GENERALERROR;
 		}
 
