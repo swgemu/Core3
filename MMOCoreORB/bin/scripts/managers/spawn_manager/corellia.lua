@@ -178,7 +178,7 @@ corellia_regions = {
 	{"riverlands_4",0,0,{1,0},UNDEFINEDAREA,1},
 	{"riverlands_5",0,0,{1,0},UNDEFINEDAREA,1},
 	{"riverlands_6",0,0,{1,0},UNDEFINEDAREA,1},
-	{"rogue_corsec_base",5210,1590,{1,200},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
+	{"rogue_corsec_base",5210,1590,{1,300},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
         {"ruined_guard_tower",-5900,4670,{1,30},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
         {"ruined_military_installation",-5330,220,{1,50},STATICSPAWNAREA + NOSPAWNAREA + NOBUILDZONEAREA,1},
 	{"southeast_mountain_peak",0,0,{1,0},UNDEFINEDAREA,1},
